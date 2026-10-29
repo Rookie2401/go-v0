@@ -27,14 +27,14 @@ function stepper(id: string, label: string, value: number, min: number, max: num
   return { root: h('div', { class: 'stepper', role: 'group', 'aria-label': label }, less, input, more), input, set };
 }
 
-const goalNames = ['recognition', 'retrieval', 'listening', 'application'] as const;
+// listening is not among them: "Include listening practice" below is its one switch (clampPrefs keeps the goal in step)
+const goalNames = ['recognition', 'retrieval', 'application'] as const;
 const goalLabels: Record<typeof goalNames[number], string> = {
-  recognition: 'Reading recognition', retrieval: 'Recall from meaning', listening: 'Listening recognition', application: 'Grammar and context',
+  recognition: 'Reading recognition', retrieval: 'Recall from meaning', application: 'Grammar and context',
 };
 const goalHelp: Record<typeof goalNames[number], string> = {
   recognition: 'Recognize a written word or phrase.',
   retrieval: 'Produce a word from its meaning after independent recognition evidence.',
-  listening: 'Only available when listening is enabled and suitable audio exists.',
   application: 'Use contextual or grammatical practice after sufficient recognition evidence.',
 };
 
@@ -109,7 +109,7 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
     h('fieldset', { class: 'field', id: 'pref-practice-goals' }, h('legend', {}, 'Deliberate practice goals'),
       ...goalNames.map((goal) => toggle(goals[goal], goalLabels[goal], goalHelp[goal])),
       p('Goals select one practice dimension at a time. Multiple choice and assisted answers do not establish productive mastery.', 'help')),
-    toggle(listening, 'Include listening practice', 'Needs audio. Synthetic speech is practice only and is never recorded as listening evidence.'),
+    toggle(listening, 'Include listening practice', 'Words you already read well are also asked by ear, where this device has a voice for the language. A computer voice is practice only and is never recorded as listening evidence.'),
     toggle(saved, 'Prioritise items I saved', 'Items you marked as saved are proposed first.'),
     toggle(shortcuts, 'Keyboard shortcuts in a session', 'The keys 1 to 4 answer or grade and Space plays the audio. Turn them off if speech input or a switch device triggers them by accident; every action stays a button, and Enter and Esc still work.'),
     p('Kept on this device.', 'muted'),

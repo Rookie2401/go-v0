@@ -49,7 +49,7 @@ export const clampDeckSize = (v: unknown): number => (typeof v === 'number' && N
 export const cardsFromMinutes = (minutes: number): number => (minutes === 0 ? DEFAULT_CARDS_PER_DECK : clampDeckSize(minutes * 2));
 
 export const DEFAULT_PREFERENCES = (languageId: string): ReviewPreferences => ({
-  languageId, sessionMinutes: 10, maxNew: 5, dailyNewLimit: 5, practiceGoals: ['recognition', 'retrieval', 'application'], desiredRetention: 0.9, includeListening: true, grammarShare: 0.2, prioritizeSaved: true, cardsPerDeck: DEFAULT_CARDS_PER_DECK,
+  languageId, sessionMinutes: 10, maxNew: 5, dailyNewLimit: 5, practiceGoals: ['recognition', 'retrieval', 'listening', 'application'], desiredRetention: 0.9, includeListening: true, grammarShare: 0.2, prioritizeSaved: true, cardsPerDeck: DEFAULT_CARDS_PER_DECK,
 });
 
 // ───────────────────────────── key-value areas ─────────────────────────────
@@ -319,6 +319,8 @@ export interface StateStore {
   clearCaches(learnerId?: string): Promise<number>;
 }
 
+const PRACTICE_GOALS = ['recognition', 'retrieval', 'listening', 'application'] as const;
+
 export const clampPrefs = (p: Partial<ReviewPreferences> & { languageId: string }): ReviewPreferences => {
   const d = DEFAULT_PREFERENCES(p.languageId);
   const num = (v: unknown, lo: number, hi: number, def: number): number => (typeof v === 'number' && Number.isFinite(v) ? Math.min(hi, Math.max(lo, v)) : def);
@@ -327,7 +329,8 @@ export const clampPrefs = (p: Partial<ReviewPreferences> & { languageId: string 
     sessionMinutes: p.sessionMinutes === 0 ? 0 : Math.round(num(p.sessionMinutes, 1, 120, d.sessionMinutes)),
     maxNew: Math.round(num(p.maxNew, 0, 50, d.maxNew)),
     dailyNewLimit: Math.round(num(p.dailyNewLimit, 0, 200, d.dailyNewLimit ?? d.maxNew)),
-    practiceGoals: Array.isArray(p.practiceGoals) ? [...new Set(p.practiceGoals.filter(g => ['recognition','retrieval','listening','application'].includes(g)))] : d.practiceGoals,
+    // the listening goal is the listening switch itself (one control in Settings): on exactly when listening is on
+    practiceGoals: PRACTICE_GOALS.filter((g) => g === 'listening' ? p.listeningOff !== true : (Array.isArray(p.practiceGoals) ? p.practiceGoals : d.practiceGoals ?? []).includes(g)),
     desiredRetention: num(p.desiredRetention, 0.7, 0.97, d.desiredRetention),
     // on unless the learner turned it off (the owner, 2026-10-28: listening practice on by default; the planner still asks
     // listening only where a voice can speak the language)

@@ -40,8 +40,13 @@ describe('review preferences in Settings', () => {
 
     rig.q('#pref-daily-new-more').click();
     await until(async () => (await prefs()).dailyNewLimit === 6, 'daily limit saved');
-    rig.q<HTMLInputElement>('#pref-goal-listening').click();
-    await until(async () => (await prefs()).practiceGoals?.includes('listening') === true, 'practice goal saved');
+    // listening has one switch, "Include listening practice", and the listening goal follows it (the owner, 2026-10-28)
+    expect(rig.root.querySelector('#pref-goal-listening')).toBeNull();
+    expect((await prefs()).practiceGoals).toContain('listening');
+    rig.q<HTMLInputElement>('#pref-listening').click();
+    await until(async () => (await prefs()).includeListening === false && !(await prefs()).practiceGoals?.includes('listening'), 'listening off, goal and all');
+    rig.q<HTMLInputElement>('#pref-listening').click();
+    await until(async () => (await prefs()).includeListening && (await prefs()).practiceGoals?.includes('listening') === true, 'listening back on');
 
     type(rig.q<HTMLInputElement>('#pref-max-new'), '3');
     await until(async () => (await prefs()).maxNew === 3, 'a typed value saved');

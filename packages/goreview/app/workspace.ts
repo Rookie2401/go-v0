@@ -30,7 +30,7 @@ async function prepareAdmissions(ctx: AppContext, model: ReviewModel): Promise<R
   for (const outcome of candidates) {
     if (ready.size >= limit) break;
     const proposed = outcome.proposed!;
-    if (proposed.family.startsWith('audio-') && (!model.prefs.includeListening || !model.audio.available || !model.audio.eligibleForEvidence)) continue;
+    if (proposed.family.startsWith('audio-') && (!model.prefs.includeListening || !model.audio.available)) continue; // a computer voice is practice: allowed
     try {
       if (ctx.engine.exerciseAvailable && await ctx.engine.exerciseAvailable({ unitId: outcome.unitId, unitKind: outcome.candidate.kind,
         languageId: model.identity.languageId, dimension: proposed.dimension, family: proposed.family, api, now: model.now })) ready.add(outcome.unitId);

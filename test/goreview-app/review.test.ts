@@ -188,7 +188,7 @@ describe('the session controls', () => {
     await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).includeListening, 'the preferences to be saved');
     await flush(4);
     expect(await rig.app.ctx.state.getPrefs('L1', 'sq')).toEqual({
-      languageId: 'sq', sessionMinutes: 10, cardsPerDeck: 25, dailyNewLimit: 5, practiceGoals: ['recognition','application'], maxNew: 3, desiredRetention: 0.85, includeListening: true, grammarShare: 0.2, prioritizeSaved: false,
+      languageId: 'sq', sessionMinutes: 10, cardsPerDeck: 25, dailyNewLimit: 5, practiceGoals: ['recognition','listening','application'], maxNew: 3, desiredRetention: 0.85, includeListening: true, grammarShare: 0.2, prioritizeSaved: false,
     });
     const { area } = rig;
     rig.app.destroy();

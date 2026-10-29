@@ -31,6 +31,30 @@ function cleanProject(): string {
   return root;
 }
 
+/** Install a fake package under projectRoot: package.json (name, version) plus the given files. Returns the absolute path of each file. */
+function installPackage(root: string, directory: string, pkg: { name: string; version: string }, files: Record<string, string>): string[] {
+  fs.mkdirSync(path.join(root, directory), { recursive: true });
+  fs.writeFileSync(path.join(root, directory, 'package.json'), JSON.stringify(pkg));
+  return Object.entries(files).map(([file, text]) => {
+    const target = path.join(root, directory, file);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, text);
+    return target;
+  });
+}
+type PackageEntry = { name: string; version: string; path: string; fileCount: number; sha256: string };
+type Scheduler = { library: string; version: string; algorithm: string; sha256: string } | null;
+const SCHEDULER_SOURCE = 'packages/goreview/src/scheduler/fsrs.ts';
+const installedTsFsrs = JSON.parse(fs.readFileSync('node_modules/ts-fsrs/package.json', 'utf8')) as { version: string };
+/** Rewrite the manifest in an artifact directory, as a tamperer would; rehash recomputes the integrity hash that covers the package list. */
+function rewriteManifest(dir: string, change: (manifest: { compiledDependencyPackages: PackageEntry[]; compiledDependencyPackagesSha256: string; scheduler: Scheduler }) => void, rehash = true) {
+  const file = path.join(dir, 'goreview-release-manifest.json');
+  const manifest = JSON.parse(fs.readFileSync(file, 'utf8'));
+  change(manifest);
+  if (rehash) manifest.compiledDependencyPackagesSha256 = hash(canonical(manifest.compiledDependencyPackages));
+  fs.writeFileSync(file, canonical(manifest));
+}
+
 const identity = ['-c', 'user.name=GoReview Test', '-c', 'user.email=goreview-test@example.invalid'];
 const commit = (root: string, ...args: string[]) => execFileSync('git', [...identity, 'commit', '-q', ...args], { cwd: root });
 const head = (root: string) => execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
@@ -105,9 +129,7 @@ describe('GoReview release traceability', () => {
     expect(normalizeCompiledModuleId('\0virtual:goreview', root)).toBeUndefined();
     expect(normalizeCompiledModuleId(path.join(root, '..', 'outside.ts'), root)).toBeUndefined();
 
-    const dependencyPath = path.join(root, 'node_modules', 'tiny-dependency', 'index.mjs');
-    fs.mkdirSync(path.dirname(dependencyPath), { recursive: true });
-    fs.writeFileSync(dependencyPath, 'export const installed = true;');
+    const [dependencyPath] = installPackage(root, 'node_modules/tiny-dependency', { name: 'tiny-dependency', version: '1.2.3' }, { 'index.mjs': 'export const installed = true;' });
     const artifact = artifactDir();
     const manifest = createReleaseManifest(artifact, 'developer', [...REQUIRED_CAPABILITIES], root, [dependencyPath]) as {
       compiledDependencyFiles: Array<{ path: string; sha256: string }>;
@@ -182,5 +204,129 @@ describe('GoReview release traceability', () => {
       commit(root, '-m', `change ${file}`);
       expect(build().sourceManifestSha256, file).not.toBe(before.sourceManifestSha256);
     }
+  });
+  it('keeps real node_modules dependencies whose compiled files live in dist/, dist-*/, web/ or build/ folders', () => {
+    // the real scheduler, resolved against the repository's own node_modules
+    expect(normalizeCompiledModuleId('node_modules/ts-fsrs/dist/index.mjs')).toEqual({ dependencyPath: 'node_modules/ts-fsrs/dist/index.mjs' });
+    const root = cleanProject();
+    const scoped = installPackage(root, 'node_modules/@open-spaced-repetition/binding', { name: '@open-spaced-repetition/binding', version: '0.1.0' }, { 'dist/x.js': 'export {};', 'build/y.js': 'export {};', 'web/z.js': 'export {};' });
+    const nested = installPackage(root, 'node_modules/outer/node_modules/@scope/inner', { name: '@scope/inner', version: '2.0.0' }, { 'dist-esm/w.js': 'export {};' });
+    for (const file of [...scoped, ...nested]) {
+      const relative = path.relative(root, file).split(path.sep).join('/');
+      expect(normalizeCompiledModuleId(file, root), relative).toEqual({ dependencyPath: relative });
+      expect(normalizeCompiledModuleId(relative, root), relative).toEqual({ dependencyPath: relative });
+    }
+    // the repository's own build output is still not a source and not a dependency
+    for (const generated of ['packages/goreview/app/dist-review/index.js', 'packages/goreview/app/dist/assets/a.js', 'packages/goreview-ios/web/app.js', 'packages/goreview-ios/.eas-project/x.js', 'packages/goreview/app/.review-build/y.js', 'packages/goreview/app/dist-review/node_modules/pkg/index.js']) {
+      fs.mkdirSync(path.dirname(path.join(root, generated)), { recursive: true });
+      fs.writeFileSync(path.join(root, generated), 'export {};');
+      expect(normalizeCompiledModuleId(generated, root), generated).toBeUndefined();
+    }
+    // a dependency that is not on disk is still dropped
+    expect(normalizeCompiledModuleId('node_modules/absent/dist/index.js', root)).toBeUndefined();
+  });
+
+  it('records name, exact version and a per-package sha256 for every bundled dependency package, including scoped and nested ones', () => {
+    const root = cleanProject();
+    const a = installPackage(root, 'node_modules/@open-spaced-repetition/binding', { name: '@open-spaced-repetition/binding', version: '0.1.0' }, { 'dist/x.js': 'x', 'dist/a.js': 'a' });
+    // dist/package.json carries no version here, so the nearest package.json with one is the package root
+    fs.writeFileSync(path.join(root, 'node_modules/@open-spaced-repetition/binding/dist/package.json'), '{"type":"module"}');
+    const b = installPackage(root, 'node_modules/outer/node_modules/inner', { name: 'inner', version: '9.9.9' }, { 'build/i.js': 'i' });
+    const c = installPackage(root, 'node_modules/outer', { name: 'outer', version: '3.0.0' }, { 'dist/o.js': 'o' });
+    const artifact = artifactDir();
+    const manifest = createReleaseManifest(artifact, 'developer', [...REQUIRED_CAPABILITIES], root, [...a, ...b, ...c]) as { compiledDependencyPackages: PackageEntry[]; compiledDependencyPackagesSha256: string; scheduler: Scheduler };
+    expect(manifest.scheduler).toBeNull();
+    expect(manifest.compiledDependencyPackages).toEqual([
+      { name: 'inner', version: '9.9.9', path: 'node_modules/outer/node_modules/inner', fileCount: 1, sha256: hash(canonical([{ path: 'node_modules/outer/node_modules/inner/build/i.js', sha256: hash('i') }])) },
+      { name: '@open-spaced-repetition/binding', version: '0.1.0', path: 'node_modules/@open-spaced-repetition/binding', fileCount: 2, sha256: hash(canonical([{ path: 'node_modules/@open-spaced-repetition/binding/dist/a.js', sha256: hash('a') }, { path: 'node_modules/@open-spaced-repetition/binding/dist/x.js', sha256: hash('x') }])) },
+      { name: 'outer', version: '3.0.0', path: 'node_modules/outer', fileCount: 1, sha256: hash(canonical([{ path: 'node_modules/outer/dist/o.js', sha256: hash('o') }])) },
+    ].sort((p, q) => p.path.localeCompare(q.path)));
+    expect(manifest.compiledDependencyPackagesSha256).toBe(hash(canonical(manifest.compiledDependencyPackages)));
+    expect(verifyReleaseArtifact(artifact, { compareCurrentSource: true, projectRoot: root })).toMatchObject({ artifactKind: 'embedded-web' });
+
+    // the installed version moves on: refused by name, even though the manifest is untouched
+    fs.writeFileSync(path.join(root, 'node_modules/outer/package.json'), JSON.stringify({ name: 'outer', version: '3.0.1' }));
+    expect(() => verifyReleaseArtifact(artifact, { compareCurrentSource: true, projectRoot: root })).toThrow(/Installed bundled dependency outer is 3\.0\.1 but the artifact was built with 3\.0\.0/);
+  });
+
+  it('refuses a bundled dependency whose package version cannot be resolved', () => {
+    const root = cleanProject();
+    const file = path.join(root, 'node_modules', 'no-manifest', 'dist', 'index.js');
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, 'export {};');
+    expect(() => createReleaseManifest(artifactDir(), 'developer', [...REQUIRED_CAPABILITIES], root, [file])).toThrow(/Cannot resolve the package name and version of bundled dependency node_modules\/no-manifest\/dist\/index\.js/);
+  });
+
+  it('treats files under a junctioned or symlinked node_modules (a worktree sharing another install) as the checkout dependencies', () => {
+    const root = cleanProject();
+    const shared = fs.mkdtempSync(path.join(os.tmpdir(), 'goreview-shared-install-'));
+    temporary.push(shared);
+    const [file] = installPackage(shared, 'ts-fsrs', { name: 'ts-fsrs', version: '7.7.7' }, { 'dist/index.mjs': 'export const FSRSVersion = `v7.7.7 using FSRS-9.9`;' });
+    fs.symlinkSync(shared, path.join(root, 'node_modules'), 'junction');
+    // Vite reports the real path, outside the checkout
+    expect(normalizeCompiledModuleId(file, root)).toEqual({ dependencyPath: 'node_modules/ts-fsrs/dist/index.mjs' });
+    expect(normalizeCompiledModuleId(path.join(shared, 'absent', 'dist', 'x.js'), root)).toBeUndefined();
+    expect(normalizeCompiledModuleId(path.join(path.dirname(shared), 'outside.ts'), root)).toBeUndefined();
+    const manifest = createReleaseManifest(artifactDir(), 'developer', [...REQUIRED_CAPABILITIES, SCHEDULER_SOURCE], root, [file]) as { scheduler: Scheduler };
+    expect(manifest.scheduler).toMatchObject({ library: 'ts-fsrs', version: '7.7.7', algorithm: 'FSRS-9.9' });
+  });
+
+  describe('the bundled ts-fsrs scheduler', () => {
+    const schedulerBuild = () => {
+      const artifact = artifactDir();
+      const manifest = createReleaseManifest(artifact, 'developer', [...REQUIRED_CAPABILITIES, SCHEDULER_SOURCE], undefined, [path.resolve('node_modules/ts-fsrs/dist/index.mjs')]) as { compiledDependencyFiles: { path: string; sha256: string }[]; compiledDependencyPackages: PackageEntry[]; scheduler: Scheduler };
+      return { artifact, manifest };
+    };
+
+    it('appears in the manifest with the installed package.json version, its algorithm and the sha256 of its bundled files', () => {
+      const { artifact, manifest } = schedulerBuild();
+      const entry = manifest.compiledDependencyPackages.find((candidate) => candidate.name === 'ts-fsrs');
+      expect(entry).toMatchObject({ name: 'ts-fsrs', version: installedTsFsrs.version, path: 'node_modules/ts-fsrs' });
+      expect(manifest.compiledDependencyFiles.map((file) => file.path)).toContain('node_modules/ts-fsrs/dist/index.mjs');
+      expect(manifest.scheduler).toEqual({ library: 'ts-fsrs', version: installedTsFsrs.version, algorithm: expect.stringMatching(/^FSRS-\d/), sha256: entry!.sha256 });
+      expect(entry!.sha256).toBe(hash(canonical(manifest.compiledDependencyFiles.filter((file) => file.path.startsWith('node_modules/ts-fsrs/')))));
+      expect(verifyReleaseArtifact(artifact, { compareCurrentSource: true })).toMatchObject({ scheduler: { library: 'ts-fsrs', version: installedTsFsrs.version } });
+    });
+
+    it('is required once the scheduler adapter is compiled in', () => {
+      expect(() => createReleaseManifest(artifactDir(), 'developer', [...REQUIRED_CAPABILITIES, SCHEDULER_SOURCE], undefined, [])).toThrow(/no bundled ts-fsrs package was recorded/);
+      const { artifact } = schedulerBuild();
+      rewriteManifest(artifact, (manifest) => { manifest.scheduler = null; });
+      expect(() => verifyReleaseArtifact(artifact)).toThrow(/records no ts-fsrs scheduler/);
+    });
+
+    it('fails verification when the manifest records a different ts-fsrs version than the checkout has installed', () => {
+      const { artifact } = schedulerBuild();
+      rewriteManifest(artifact, (manifest) => {
+        manifest.compiledDependencyPackages.find((entry) => entry.name === 'ts-fsrs')!.version = '0.0.1';
+        manifest.scheduler!.version = '0.0.1';
+      });
+      const message = new RegExp(`Installed bundled dependency ts-fsrs is ${installedTsFsrs.version.replaceAll('.', '\\.')} but the artifact was built with 0\\.0\\.1`);
+      expect(() => verifyReleaseArtifact(artifact, { compareCurrentSource: true })).toThrow(message);
+      // a development-only manifest is refused earlier under --release, but never accepted
+      expect(() => verifyReleaseArtifact(artifact, { requireRelease: true, compareCurrentSource: true })).toThrow();
+    });
+
+    it('fails verification when a recorded package list was edited without its integrity hash, or the scheduler no longer matches it', () => {
+      const { artifact } = schedulerBuild();
+      rewriteManifest(artifact, (manifest) => { manifest.compiledDependencyPackages.find((entry) => entry.name === 'ts-fsrs')!.version = '0.0.1'; }, false);
+      expect(() => verifyReleaseArtifact(artifact)).toThrow(/Compiled dependency package manifest integrity/);
+      const second = schedulerBuild().artifact;
+      rewriteManifest(second, (manifest) => { manifest.scheduler!.version = '0.0.1'; });
+      expect(() => verifyReleaseArtifact(second)).toThrow(/Scheduler record does not match/);
+    });
+
+    it('fails verification when the algorithm recorded for ts-fsrs differs from the installed library', () => {
+      const { artifact } = schedulerBuild();
+      rewriteManifest(artifact, (manifest) => { manifest.scheduler!.algorithm = 'FSRS-0.1'; });
+      expect(() => verifyReleaseArtifact(artifact, { compareCurrentSource: true })).toThrow(/Installed scheduler \(ts-fsrs .*FSRS-.*\) differs from the scheduler recorded/);
+    });
+
+    it('prints the scheduler library and version in the verify command summary', () => {
+      const { artifact } = schedulerBuild();
+      const output = execFileSync(process.execPath, [path.resolve('scripts/goreview-release.mjs'), 'verify', artifact], { encoding: 'utf8' });
+      expect(output).toContain(`scheduler: ts-fsrs ${installedTsFsrs.version} (FSRS-`);
+      expect(output).toMatch(/bundled dependency packages checked/);
+    });
   });
 });

@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "b3818214ec4732e70d3cc323035b9ca5cf9c196e",
-    "tree": "b1f4ac24a4bd7fae9726526a4dce9eb82045decf",
+    "commit": "a5bf8ae39e2781c1775e37d21d006d6c33ed7b68",
+    "tree": "70c5611e9e2391f85404fc8c2b18dca43f0c5294",
     "dirty": false
   },
-  "sourceManifestSha256": "d242603d0500baf4ded9c632d278a614e482639af27dbd9308ce331e3cad7b9d",
+  "sourceManifestSha256": "1bad7ceaf068aa69a23f3bd66be5d1726854036f8525d046a3d849246684976e",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -633,7 +633,7 @@
     },
     {
       "path": "packages/goreview/app/styles.css",
-      "sha256": "ff91a85d4de06bfd22647e3f7e975447901c75d4b9bc4a45b2c673ed8c66fa2c"
+      "sha256": "9b4304ee125aeb817288d1b22d8c6dd4c1a0c53c6c87c27890909e85a6450d3d"
     },
     {
       "path": "packages/goreview/app/tellEngine.ts",
@@ -18764,7 +18764,7 @@
   ],
   "compiledDependencyFiles": [],
   "compiledDependencyManifestSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
-  "artifactManifestSha256": "ab116c3438b82aea833ed96ec6d9f0e3be2d8f1ab05ed613ec433265058a8198",
+  "artifactManifestSha256": "401f7fa941f4f380b22ec48ae592e551021b3a98feac3d22575f2803d2b8d000",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -18811,8 +18811,8 @@
       "sha256": "9c3921d85505c7e01d62ba7f2dbd341e9748f877dec5c0190fbbef1b25a860bf"
     },
     {
-      "path": "assets/style-BjgAnIgB.css",
-      "sha256": "7396e929c1b4bdcefcbe36af4040327f65484944e0d173f783d7b34bacc4b9f3"
+      "path": "assets/style-Dd-_Zasv.css",
+      "sha256": "e70fce4919879d3a14bb4a6e042172349be3f2786d3b1001c2227905aeefe619"
     },
     {
       "path": "config.json",
@@ -31352,7 +31352,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "afc21eee3170b05d88b8142cb754df082731fa7c26b5fc1970d2763777860813"
+      "sha256": "096ec04f2f8a73034d01c5527a01bee5d27feee9dd52ebdb68778dfbe9eee550"
     },
     {
       "path": "manifest.webmanifest",
@@ -31360,7 +31360,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "a93f50a99a7ee23f4550c8784345624fa09b61152c5a347fa374a5e3762ade11"
+      "sha256": "8741f1435d6d481835a0f0105927309e2b8d6fb4befc7e4542608b3f04ec0117"
     }
   ]
 }

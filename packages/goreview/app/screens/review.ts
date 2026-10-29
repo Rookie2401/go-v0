@@ -290,8 +290,10 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
           const holdOut = await holdOutOf(ctx, current.identity.learnerId, current.identity.languageId);
           const now = await planCurrentDeck(ctx, current, holdOut);
           const saved = await saveDeck(ctx, current.identity, now.entries);
-          const savedMessage = now.summary.newAvailable > 0
-            ? `Deck saved. ${plural(now.summary.newAvailable, 'unseen eligible new item', 'unseen eligible new items')} available; due reviews remain ready.`
+          // what is left once the saved units are held out: the plan after the save, not the one before it (audit finding 12, 2026-10-29)
+          const after = saved ? await planCurrentDeck(ctx, current, await holdOutOf(ctx, current.identity.learnerId, current.identity.languageId)) : now;
+          const savedMessage = after.summary.newAvailable > 0
+            ? `Deck saved. ${plural(after.summary.newAvailable, 'unseen eligible new item', 'unseen eligible new items')} available; due reviews remain ready.`
             : 'Deck saved. No unseen eligible alternatives; due obligations remain ready.';
           setStatus(status, saved ? savedMessage : 'There is no deck to save yet.', saved ? 'ok' : 'info');
           await paint();

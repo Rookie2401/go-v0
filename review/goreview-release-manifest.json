@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "a5bf8ae39e2781c1775e37d21d006d6c33ed7b68",
-    "tree": "70c5611e9e2391f85404fc8c2b18dca43f0c5294",
+    "commit": "4ddc7f8a022900e64023ed6e0adf37387d520d3c",
+    "tree": "05c117e099ef3a5fbc48a1106eadb22b7dab4d0e",
     "dirty": false
   },
-  "sourceManifestSha256": "1bad7ceaf068aa69a23f3bd66be5d1726854036f8525d046a3d849246684976e",
+  "sourceManifestSha256": "ceb022800f1ee988fd3a66196f403727698af79c226156d8ce6c0a90b9fae592",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -360,6 +360,10 @@
       "sha256": "eff89c87bd2ff70009ad6430fa497c836ab0a2d2286aba0f776a805a66278d75"
     },
     {
+      "path": "packages/goreview/app/admissionExplanation.ts",
+      "sha256": "1897065d8dbdb0b8329f62d5300463d4d55e2f25f30aba183a98dc322e7282b6"
+    },
+    {
       "path": "packages/goreview/app/app.ts",
       "sha256": "7d6af9f0d30a11c3518dd5bbc51e1bdb3b467341d14c65fec208f3bbad9c36b4"
     },
@@ -385,7 +389,7 @@
     },
     {
       "path": "packages/goreview/app/deckModel.ts",
-      "sha256": "523f7154f7d32e8c7b251d23f1156e27bf24a1a7df02529aadcc4281cc1b0b96"
+      "sha256": "203e48c6d25774e59d7b5742e6930683e8e5bd2dc23c1ce1f8f32fa54df4567f"
     },
     {
       "path": "packages/goreview/app/dom.ts",
@@ -402,6 +406,10 @@
     {
       "path": "packages/goreview/app/format.ts",
       "sha256": "7f82da0edd86dc2e9bd51172255be5356a57f4f1cf34d4bea8d11f966d1f2d98"
+    },
+    {
+      "path": "packages/goreview/app/freshness.ts",
+      "sha256": "edb44cc8dcb377ce07d10230b40315817b7bfc4404d6e4122a61403d17081cf6"
     },
     {
       "path": "packages/goreview/app/index.html",
@@ -505,7 +513,7 @@
     },
     {
       "path": "packages/goreview/app/screens/developer.ts",
-      "sha256": "43b05027ebcfe277302d3e8a87497ea50acbd74737b79b4683c5a30450d705a4"
+      "sha256": "ef95705c609ee51e981015e3c67440ac1fb569d6347edc03189c4966aa555fdb"
     },
     {
       "path": "packages/goreview/app/screens/history.ts",
@@ -529,19 +537,19 @@
     },
     {
       "path": "packages/goreview/app/screens/remediation.ts",
-      "sha256": "c6d57ee93237b4e9f8680cd7eafc5fd9075d046473b84123643a39484fd633e4"
+      "sha256": "845476c20a789cb428252ed5cd95ee3669f549fd537f13cc3ef12d4f62bdef4c"
     },
     {
       "path": "packages/goreview/app/screens/review.ts",
-      "sha256": "5f5fbb6a4ccf0a867bcdd98a0896537b573b3cfb9aed48e2f73bad122c8504f7"
+      "sha256": "52bb83a43fdca3ac478973b2341a7732190684905ec23edbe904b029bd1f0972"
     },
     {
       "path": "packages/goreview/app/screens/reviewDetails.ts",
-      "sha256": "180a534da30020be2ec170483ffe900cf1d3cf6a91ef2405614443870ebdb3f8"
+      "sha256": "cae5b4572e395ee2839d66c45370276dc97cce3e37f49092c919f44e29205ce9"
     },
     {
       "path": "packages/goreview/app/screens/session.ts",
-      "sha256": "541e604fa82d5b04d89e26bba7f61e8a84fd4b3fe2b5a06645c6b982c0f39c43"
+      "sha256": "6a8056f7a86064f346337bc5b9274a3f2e99c850824a4c5455841905fd1d9282"
     },
     {
       "path": "packages/goreview/app/screens/settings.ts",
@@ -608,6 +616,10 @@
       "sha256": "909c17e31d453122969aceb8b4d62cb9b7d836b7a37c52fa0d41ce6a5e6071b2"
     },
     {
+      "path": "packages/goreview/app/selectionReport.ts",
+      "sha256": "d7c3a38429aa18b21d39cf04212ee602168f9eddad0c931f5fb3373b86a2d823"
+    },
+    {
       "path": "packages/goreview/app/snapshot.ts",
       "sha256": "13dfb536f6e3055962b4c06bd855d5dcd5795b5bee9f4e1948540de1749c632f"
     },
@@ -649,7 +661,7 @@
     },
     {
       "path": "packages/goreview/app/workspace.ts",
-      "sha256": "cbbcb01baef6668cbfd7eef7068a2cc940457cf58b6ef3e9ebdf2b5bdbe7ec7c"
+      "sha256": "a23d93578079fa89a16b285701974550529b244e2b213bd07d69f452bb31ec8b"
     },
     {
       "path": "packages/goreview/src/exercises/README.md",
@@ -753,7 +765,7 @@
     },
     {
       "path": "packages/goreview/src/intake/fetch.ts",
-      "sha256": "96c3e263997775543539e914f4bb3f28cdc70de212807a33e0851ad87cf6aa8f"
+      "sha256": "1f59867772903ae55d5f5d57a9a8f0825195524726bbddca793927d94fc6cd38"
     },
     {
       "path": "packages/goreview/src/intake/index.ts",
@@ -781,7 +793,7 @@
     },
     {
       "path": "packages/goreview/src/planner/budget.ts",
-      "sha256": "54c38997b1d78b5c4fd333c86ff2e5b5f0bf3a731228125906d259333aa5d5dd"
+      "sha256": "7ae74c47d3195509f288fd3fedbcb61a04fc746df3711681093c4409b98ab093"
     },
     {
       "path": "packages/goreview/src/planner/controls.ts",
@@ -789,7 +801,7 @@
     },
     {
       "path": "packages/goreview/src/planner/eligibility.ts",
-      "sha256": "5c2e300584ce443afca290218455fab5e408ccbf03e709ab641ff87008de7c12"
+      "sha256": "65797bf7dfe6d7c5474fb9bffeace69c6866ee3b81bf2634a000909dcfe81e7d"
     },
     {
       "path": "packages/goreview/src/planner/index.ts",
@@ -805,7 +817,7 @@
     },
     {
       "path": "packages/goreview/src/planner/planner.ts",
-      "sha256": "dd72e06779a271df68a0ad87eca546e783a32cd8677db4a740c1f46dd189d008"
+      "sha256": "6f919ee0c8b3edb250169aea587494db141aefbbb28fb2a92ff58023c107168f"
     },
     {
       "path": "packages/goreview/src/planner/priority-policy.ts",
@@ -821,7 +833,7 @@
     },
     {
       "path": "packages/goreview/src/scheduler/deck.ts",
-      "sha256": "a3de05f9153976dd6c779982e4b029cc4a73f4b52dd11215b169c28ae5c22686"
+      "sha256": "866a496f9eaa77dc74f27d575659f8b073b51a4cd6080651d28e93728a50369f"
     },
     {
       "path": "packages/goreview/src/scheduler/fsrs.ts",
@@ -849,7 +861,7 @@
     },
     {
       "path": "packages/goreview/src/session/runner.ts",
-      "sha256": "ebcdfb64a4f16805610a6dcac57a6e0234977c8113ae09e92dd26424767b51a5"
+      "sha256": "bad3b359b7de3cbe5cbebfbfe4be6025c7adf1e43b43d18b24568009f37445f2"
     },
     {
       "path": "packages/goreview/src/transfer/index.ts",
@@ -857,7 +869,7 @@
     },
     {
       "path": "packages/goreview/src/transfer/learning-metrics.ts",
-      "sha256": "4d8a4b6f9043747944df086a7495e71d28bc8ab951f4641ecedd8e22c8ca23dd"
+      "sha256": "3098d872d071d1be23b6c3f9b61a39e61598e79bb5bdb4cd2c4143107dae4a2c"
     },
     {
       "path": "packages/goreview/src/transfer/measures.ts",
@@ -869,7 +881,7 @@
     },
     {
       "path": "packages/goreview/src/types.ts",
-      "sha256": "b7332f85ed1e48983436049fb308fd0590b813a5e17a9857a2b2dabcf442dad5"
+      "sha256": "55b74a9afc5924e86bdb0bb12dd2aa9f23f8bc94880ed7308c1c685eeb8f0f8b"
     },
     {
       "path": "packages/gotell/src/documents/README.md",
@@ -1197,7 +1209,7 @@
     },
     {
       "path": "packages/repository-contract/src/review-classification.ts",
-      "sha256": "e85655d72a50dbf4220ca6c97db520f30fe64ea4d31afc3793b7e44e6b6644bf"
+      "sha256": "6efe8ece281ca3e6e36b85c45f5c9484ad310bbfe960143bdedac7d246a43ee5"
     },
     {
       "path": "packages/repository-contract/src/review-corrections.ts",
@@ -13965,7 +13977,7 @@
     },
     {
       "path": "scripts/goreview-release.mjs",
-      "sha256": "d994009693fb963e8928560de9b2d198242ee1c26dea4f782823ae7d96725ac0"
+      "sha256": "77e2e94f43b9595a40b824d6ec8859672a88b3dc2637a3f473d309b467db49fc"
     },
     {
       "path": "scripts/vite.config.ts",
@@ -18278,6 +18290,7 @@
     "packages/golisten/src/registry.ts",
     "packages/golisten/src/resolve.ts",
     "packages/goreview/app/accountClient.ts",
+    "packages/goreview/app/admissionExplanation.ts",
     "packages/goreview/app/app.ts",
     "packages/goreview/app/audio.ts",
     "packages/goreview/app/classEssentials.ts",
@@ -18288,6 +18301,7 @@
     "packages/goreview/app/engine.ts",
     "packages/goreview/app/events.ts",
     "packages/goreview/app/format.ts",
+    "packages/goreview/app/freshness.ts",
     "packages/goreview/app/index.html",
     "packages/goreview/app/legal.ts",
     "packages/goreview/app/live.ts",
@@ -18328,6 +18342,7 @@
     "packages/goreview/app/screens/tell/write.ts",
     "packages/goreview/app/screens/uiprefs.ts",
     "packages/goreview/app/screens/vocabulary.ts",
+    "packages/goreview/app/selectionReport.ts",
     "packages/goreview/app/snapshot.ts",
     "packages/goreview/app/speechBridge.ts",
     "packages/goreview/app/speechUnlock.ts",
@@ -18762,9 +18777,41 @@
     "src/dict/map.ts",
     "src/dict/sharded.ts"
   ],
-  "compiledDependencyFiles": [],
-  "compiledDependencyManifestSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
-  "artifactManifestSha256": "401f7fa941f4f380b22ec48ae592e551021b3a98feac3d22575f2803d2b8d000",
+  "compiledDependencyFiles": [
+    {
+      "path": "node_modules/@capacitor/core/dist/index.js",
+      "sha256": "ff26656120e7613d0718f353f7be460790473d441b44550be847f1acb23fa606"
+    },
+    {
+      "path": "node_modules/ts-fsrs/dist/index.mjs",
+      "sha256": "ad4a4b3b7e259fcbf02764454c8f9db4ea3bf5aae2f473198129ecb7728f1a19"
+    }
+  ],
+  "compiledDependencyManifestSha256": "79ebde972c17486dee805138c05724c6edff190a2346b97cea575bfe6bb9796c",
+  "compiledDependencyPackages": [
+    {
+      "name": "@capacitor/core",
+      "version": "8.5.3",
+      "path": "node_modules/@capacitor/core",
+      "fileCount": 1,
+      "sha256": "fc829d1ef7aa480110b33077ac9774d953bc13182ff8dc4681f31bf500693dc1"
+    },
+    {
+      "name": "ts-fsrs",
+      "version": "5.4.2",
+      "path": "node_modules/ts-fsrs",
+      "fileCount": 1,
+      "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
+    }
+  ],
+  "compiledDependencyPackagesSha256": "7bd9f25b495274b19587f087869258cd0e39cb9512f9e0697b9562f99094e3f9",
+  "scheduler": {
+    "library": "ts-fsrs",
+    "version": "5.4.2",
+    "algorithm": "FSRS-6.0",
+    "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
+  },
+  "artifactManifestSha256": "16e240f60bafc99b1e954f1559055564c50ca66537cf982bb10239386a75c518",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -18807,8 +18854,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-Czr83K1r.js",
-      "sha256": "9c3921d85505c7e01d62ba7f2dbd341e9748f877dec5c0190fbbef1b25a860bf"
+      "path": "assets/index-wDbrNKIX.js",
+      "sha256": "7ad1c74fd7c389be9e3ee3f2ddf22eeab6661c422b6e8fcd6586eca9695b75c1"
     },
     {
       "path": "assets/style-Dd-_Zasv.css",
@@ -31352,7 +31399,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "096ec04f2f8a73034d01c5527a01bee5d27feee9dd52ebdb68778dfbe9eee550"
+      "sha256": "7632a9b55b7f3d80f6663c0eb5f81e30e44556395dbb85715810f794fb758f89"
     },
     {
       "path": "manifest.webmanifest",
@@ -31360,7 +31407,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "8741f1435d6d481835a0f0105927309e2b8d6fb4befc7e4542608b3f04ec0117"
+      "sha256": "f4dfaa6791aeddec6b16bea7ca3375984bc21b4c0d9b40c11503c93bbb2c82da"
     }
   ]
 }

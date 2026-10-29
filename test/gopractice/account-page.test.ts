@@ -45,8 +45,11 @@ describe('the account page', () => {
     const actions = [...rig.q('.account-actions').querySelectorAll('button')];
     expect(actions.map((b) => b.id)).toEqual(['sign-out', 'export-data', 'delete-open']);
     expect(actions.map((b) => b.textContent)).toEqual(['Sign out', 'Download my data', 'Delete account']);
-    for (const b of actions) expect(b.classList.contains('linklike'), b.id).toBe(true);
+    // friendly pills, not underlined text (the owner, 2026-10-28); Delete account keeps its red
+    for (const b of actions) expect(b.classList.contains('btn') && b.classList.contains('friendly'), b.id).toBe(true);
+    expect(rig.root.querySelector('.account-actions .linklike')).toBeNull();
     expect(rig.q('#delete-open').classList.contains('danger')).toBe(true);
+    expect(rig.q('#account-name-edit').classList.contains('friendly')).toBe(true);
     // there is no "remove this device's data" link anywhere on the page: Sign out is the one exit
     expect(rig.root.querySelector('#sign-out-forget')).toBeNull();
     expect(rig.q('#account-card').textContent).not.toContain('remove this device');

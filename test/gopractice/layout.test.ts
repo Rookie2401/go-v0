@@ -27,7 +27,7 @@ describe('the phone layout', () => {
     expect(phone).not.toBe('');
     expect(phone).toMatch(/\.screen \{[^}]*padding: 1rem max\(16px, env\(safe-area-inset-right[^}]*calc\(2rem \+ env\(safe-area-inset-bottom[^}]*max\(16px, env\(safe-area-inset-left/);
     // the header row right under the status bar, as Duolingo's (the owner, 2026-10-28, later): the whole inset, always (--top-inset)
-    expect(phone).toMatch(/\.topbar \{[^}]*padding-top: var\(--top-inset\);[^}]*max\(16px, env\(safe-area-inset-left/);
+    expect(phone).toMatch(/\.topbar \{[^}]*padding-top: calc\(\.375rem \+ var\(--top-inset\)\);[^}]*max\(16px, env\(safe-area-inset-left/); // 6 px under the status bar (the owner: "Lower it just a little bit")
     expect(css).toMatch(/--top-inset: env\(safe-area-inset-top, 0px\);/);
     // nothing may zero it: a check that did ("the page already starts below the status bar") put the header under the clock on the owner's phone
     expect(css).not.toMatch(/data-status-bar|--top-inset: 0/);
@@ -42,7 +42,7 @@ describe('the phone layout', () => {
   });
 
   it('keeps the header one line (44 px of targets plus the room above), the card full width with 16px padding, and the four grades on one line', () => {
-    expect(phone).toMatch(/\.topbar \{[^}]*flex-wrap: nowrap[^}]*min-height: calc\(3\.125rem \+ var\(--top-inset\)\)/);
+    expect(phone).toMatch(/\.topbar \{[^}]*flex-wrap: nowrap[^}]*min-height: calc\(3\.5rem \+ var\(--top-inset\)\)/);
     expect(phone).toMatch(/\.card, \.exercise, \.feedback \{ padding: 16px; \}/);
     expect(phone).toMatch(/\.grades \{ flex-wrap: nowrap/);
     expect(phone).toMatch(/button\.grade \{ flex: 1 1 0; min-width: 0/);

@@ -121,7 +121,7 @@ export function learningMetrics(events: readonly GoEvent[], deck: readonly DeckI
   };
   if (!Number.isFinite(now)) return out;
 
-  // Pass complete raw history so corrections and causal branches resolve before scope/time filtering.
+  // Resolve corrections and causal branches from the complete as-of history; future events must not affect current measures.
   const asOfEvents=events.filter(e=>Number.isFinite(Date.parse(e.at))&&Date.parse(e.at)<=now);
   const selection = selectReviewEvidenceEvents(asOfEvents);
   const rows = selection.events.filter(e => !selection.assistedIds.has(e.id) && typeof e.subject.cardId==='string' && e.subject.cardId.length>0 && e.learnerId === scope.learnerId && e.languageId === scope.languageId &&

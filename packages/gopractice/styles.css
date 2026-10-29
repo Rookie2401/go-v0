@@ -129,6 +129,13 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .btn.primary, button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .btn.primary:hover, button.primary:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); opacity: .92; }
 .btn.small, button.small { padding: .1rem .65rem; font-size: .92rem; }
+/* the friendly pill: the house button made bigger and warmer, for what a learner does gladly (Save deck beside Begin, the account page's
+   actions; the owner, 2026-10-28: the underlined text links read as sterile and uninviting) */
+.btn.friendly, button.friendly { border-radius: 999px; padding: .5rem 1.6rem; font-size: 1.02rem; letter-spacing: .02em; color: var(--ink); border: 1px solid var(--accent-soft); background: color-mix(in srgb, var(--accent) 8%, var(--panel)); }
+.btn.friendly:hover:not(:disabled), button.friendly:hover:not(:disabled) { background: color-mix(in srgb, var(--accent) 16%, var(--panel)); border-color: var(--accent); }
+.btn.friendly.small, button.friendly.small { padding: .25rem 1rem; font-size: .92rem; }
+.btn.friendly.danger, button.friendly.danger { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 55%, transparent); background: color-mix(in srgb, var(--bad) 6%, var(--panel)); }
+.btn.friendly.danger:hover:not(:disabled), button.friendly.danger:hover:not(:disabled) { background: color-mix(in srgb, var(--bad) 12%, var(--panel)); border-color: var(--bad); }
 
 .status { min-height: 1.4em; margin: .4rem 0; }
 .status[data-kind="error"] { color: var(--bad); }
@@ -329,8 +336,6 @@ html[data-edition="review"] { overscroll-behavior-y: none; }
 }
 
 /* the deck size: a quiet stepper, centred on the home (the preset pills were cut 2026-10-28; the box keeps the room they took, so Begin stays put) */
-.deck-size-line { margin: .5rem 0 0; max-width: none; }
-.deck-size-box { margin: .6rem 0 0; padding-bottom: 2.2rem; }
 .deck-size { display: grid; gap: .6rem; max-width: 24rem; }
 .stepper { display: inline-flex; align-items: center; gap: .4rem; }
 .stepper-btn { width: 2.4rem; height: 2.4rem; padding: 0; border-radius: 999px; font-size: 1.3rem; line-height: 1; background: none; border: 1px solid var(--rule-strong); color: var(--ink); }
@@ -353,21 +358,25 @@ details.advanced[open] > summary { color: var(--ink); margin-bottom: .4rem; }
 .account-facts .help { display: block; margin-top: .2rem; }
 .account-name-edit { display: inline-flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
 .account-name-edit input { max-width: 16rem; }
-.account-actions { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin: 1.4rem 0 .6rem; }
-.account-actions .linklike { font-size: 1rem; }
+.account-actions { display: flex; flex-direction: column; align-items: center; gap: .8rem; margin: 1.6rem 0 .8rem; }
+.account-actions .btn { min-width: 15rem; justify-content: center; text-align: center; }
 .linklike.danger { color: var(--bad); text-decoration-color: color-mix(in srgb, var(--bad) 45%, transparent); }
 .linklike.danger:hover:not(:disabled) { color: var(--bad); text-decoration-color: var(--bad); }
 .btn.danger { color: var(--bad); border-color: var(--bad); }
 .btn.danger:hover:not(:disabled) { background: color-mix(in srgb, var(--bad) 10%, transparent); }
 #delete-body { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
 #delete-body .steps { padding-left: 1.2rem; display: grid; gap: .5rem; }
-details.quiet { margin-top: 1.4rem; }
-details.quiet > summary { color: var(--ink-soft); font-size: .9rem; }
-details.quiet > .card { margin-top: .6rem; box-shadow: none; }
+/* the devices disclosure as a pill of the same family, centred; its card opens under it, left-aligned */
+details.quiet { margin-top: 1.6rem; text-align: center; }
+details.quiet > summary { display: inline-flex; align-items: center; gap: .5rem; padding: .4rem 1.3rem; border: 1px solid var(--rule-strong); border-radius: 999px; font-size: 1rem; color: var(--ink); list-style: none; }
+details.quiet > summary::-webkit-details-marker { display: none; }
+details.quiet > summary::before { content: '▸'; font-size: .85em; color: var(--ink-soft); }
+details.quiet[open] > summary::before { content: '▾'; }
+details.quiet > summary:hover { border-color: var(--accent); color: var(--ink); }
+details.quiet > .card { margin-top: .8rem; box-shadow: none; text-align: left; }
 .developer-line { margin-top: 1.6rem; font-size: .85rem; }
 @media (pointer: coarse), (display-mode: standalone) {
   .stepper-btn { width: 2.75rem; height: 2.75rem; }
-  .deck-size-box { padding-bottom: 3.35rem; }
   #deck-size-link { min-height: 2.75rem; }
 }
 
@@ -380,8 +389,8 @@ body { min-height: 100vh; min-height: 100dvh; overflow-x: hidden; }
 img, svg, video, canvas { max-width: 100%; }
 @media (max-width: 430px) {
   body { font-size: 1rem; line-height: 1.55; }
-  /* the header row right under the status bar, as Duolingo sets its own (the owner, 2026-10-28): the 44 px targets centred 22 px below it */
-  .topbar { flex-wrap: nowrap; gap: .5rem; align-items: center; min-height: calc(3.125rem + var(--top-inset)); padding-top: var(--top-inset); padding-bottom: .375rem;
+  /* the header row right under the status bar, as Duolingo sets its own (the owner, 2026-10-28): the 44 px targets centred 28 px below it (lowered 6 px, the owner, 2026-10-28) */
+  .topbar { flex-wrap: nowrap; gap: .5rem; align-items: center; min-height: calc(3.5rem + var(--top-inset)); padding-top: calc(.375rem + var(--top-inset)); padding-bottom: .375rem;
     padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
   .language { flex: 1 1 auto; min-width: 0; }
   .language-picker, #language-name { max-width: 100%; }
@@ -472,14 +481,15 @@ img, svg, video, canvas { max-width: 100%; }
 
 /* The loading mark (loading.ts): the logo's globe, its sphere turning inside the still meridian and stand, in the ink; the shell shows it while a
    screen opens, the home while its deck loads. Both layers are CSS masks whose images are inline styles on the spans (absolute URLs from the
-   script), so they resolve wherever the stylesheet lives. It appears only after a moment, so a load that ends within a blink shows nothing. */
-.go-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; min-height: 38vh; color: var(--brand); opacity: 0; }
+   script), so they resolve wherever the stylesheet lives. The turning span carries no mask of its own (WebKit does not repaint a transform
+   animation on a masked element; the sphere's mask is on its child) and has its own layer. The turning IS the loading indicator, so it goes on
+   under reduced motion too, only slower; the fade-in is what reduced motion drops. It appears only after a moment, so a load that ends within
+   a blink shows nothing. */
+.go-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; min-height: 38vh; color: var(--brand); opacity: 0; animation: go-appear .2s ease .15s forwards; }
 .go-globe { position: relative; display: block; width: 104px; height: 104px; }
-.go-globe > span { position: absolute; inset: 0; display: block; background: currentColor; -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: contain; mask-position: center; mask-repeat: no-repeat; }
-@keyframes go-spin { to { transform: rotate(360deg); } }
+.go-globe > span, .go-globe-sphere { position: absolute; inset: 0; display: block; }
+.go-globe-frame, .go-globe-sphere { background: currentColor; -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: contain; mask-position: center; mask-repeat: no-repeat; }
+.go-globe-disc { animation: go-spin 2.2s linear infinite; transform-origin: 50% 50%; will-change: transform; }
+@keyframes go-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes go-appear { to { opacity: 1; } }
-@media (prefers-reduced-motion: no-preference) {
-  .go-loading { animation: go-appear .2s ease .15s forwards; }
-  .go-globe-disc { animation: go-spin 2.2s linear infinite; transform-origin: 50% 50%; }
-}
-@media (prefers-reduced-motion: reduce) { .go-loading { opacity: 1; } } /* the mark stands still, and at once */
+@media (prefers-reduced-motion: reduce) { .go-loading { animation: none; opacity: 1; } .go-globe-disc { animation-duration: 6s; } } /* at once, and a slow turn */

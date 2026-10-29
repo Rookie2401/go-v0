@@ -24,10 +24,13 @@ describe('the loading mark', () => {
     expect(globe?.getAttribute('aria-hidden')).toBe('true');
     const frame = el.querySelector<HTMLElement>('.go-globe-frame');
     const disc = el.querySelector<HTMLElement>('.go-globe-disc');
-    expect(frame && disc).toBeTruthy();
-    // the images are inline absolute URLs (so they resolve wherever the stylesheet lives), one layer each
+    const sphere = disc?.querySelector<HTMLElement>('.go-globe-sphere');
+    expect(frame && disc && sphere).toBeTruthy();
+    // the images are inline absolute URLs (so they resolve wherever the stylesheet lives), one layer each; the turning span itself carries
+    // no mask (WebKit does not repaint a transform animation on a masked element), its child does
     expect(frame!.style.getPropertyValue('mask-image')).toMatch(/^url\("[a-z]+:\/\/[^"]*\/go-globe-frame\.png"\)$/);
-    expect(disc!.style.getPropertyValue('mask-image')).toMatch(/^url\("[a-z]+:\/\/[^"]*\/go-globe-disc\.png"\)$/);
+    expect(disc!.getAttribute('style')).toBeNull();
+    expect(sphere!.style.getPropertyValue('mask-image')).toMatch(/^url\("[a-z]+:\/\/[^"]*\/go-globe-disc\.png"\)$/);
     expect(el.querySelector('img')).toBeNull();
   });
 
@@ -41,14 +44,15 @@ describe('the loading mark', () => {
     expect(disc[25]).toBe(6);
   });
 
-  it('turns the sphere only when motion is welcome, appears after a moment, and stands still at once under reduced motion', () => {
-    expect(css).toMatch(/@keyframes go-spin \{ to \{ transform: rotate\(360deg\); \} \}/);
-    const welcome = /@media \(prefers-reduced-motion: no-preference\) \{\s*\.go-loading \{ animation: go-appear[^}]*\}\s*\.go-globe-disc \{ animation: go-spin [^}]*infinite[^}]*\}/;
-    expect(css).toMatch(welcome);
-    expect(css).toMatch(/\.go-loading \{[^}]*opacity: 0;/);
-    expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\) \{ \.go-loading \{ opacity: 1; \} \}/);
-    // the layers take the ink and are masks, not images
+  it('turns the sphere always (slower under reduced motion), on an unmasked span of its own layer; appears after a moment, at once under reduced motion', () => {
+    expect(css).toMatch(/@keyframes go-spin \{ from \{ transform: rotate\(0deg\); \} to \{ transform: rotate\(360deg\); \} \}/);
+    // the spin is not behind a media query: it is the loading indicator itself
+    expect(css).toMatch(/^\.go-globe-disc \{ animation: go-spin 2\.2s linear infinite; transform-origin: 50% 50%; will-change: transform; \}$/m);
+    expect(css).toMatch(/\.go-loading \{[^}]*opacity: 0;[^}]*animation: go-appear/);
+    expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\) \{ \.go-loading \{ animation: none; opacity: 1; \} \.go-globe-disc \{ animation-duration: 6s; \} \}/);
+    // the layers take the ink and are masks, not images; the mask is never on the turning span
     expect(css).toMatch(/\.go-loading \{[^}]*color: var\(--brand\)/);
-    expect(css).toMatch(/\.go-globe > span \{[^}]*background: currentColor;[^}]*mask-size: contain/);
+    expect(css).toMatch(/\.go-globe-frame, \.go-globe-sphere \{ background: currentColor;[^}]*mask-size: contain/);
+    expect(css).not.toMatch(/\.go-globe-disc \{[^}]*mask/);
   });
 });

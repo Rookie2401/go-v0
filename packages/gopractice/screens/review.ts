@@ -2,7 +2,8 @@
  * #/review — the GoReview home. Four things and nothing else, each a large serif title over a one-line kicker:
  *
  *   GoTell          its own hierarchy (above a rule): the writing workspace, #/tell
- *   Current deck    accurate due/new/remediation counts, an adaptive bounded batch, and a separate optional selected-practice action
+ *   Current deck    "N cards ready", Begin, and Save deck as a friendly pill. The deck is always ready (../deckModel); its size is set
+ *                   in Settings alone (the owner, 2026-10-28: the "deck size" line that opened the stepper here is gone)
  *   Saved decks     "N saved" → #/review/decks
  *   My vocab        "N words" → #/review/vocab
  *
@@ -17,7 +18,6 @@ import { loadingMark } from '../loading';
 import { readSnapshot, restoreMissing, type ReviewSnapshot } from '../snapshot';
 import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import * as decksScreen from './decks';
-import { deckSizeControl } from './cardsper';
 import { renderHistory, renderTransfer } from './history';
 import * as myVocab from './myvocab';
 import { renderDetails } from './reviewDetails';
@@ -75,8 +75,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   const status = statusLine();
   /** How many events the painted model was folded from; a sync that brings more repaints the home. */
   let paintedEvents = -1;
-  /** Whether the inline deck-size stepper is open (it stays open across the re-plan a change causes). */
-  let sizeOpen = false;
   let nextDueTimer: number | undefined;
 
   function armNextDueRefresh(model: ReviewModel): void {
@@ -292,19 +290,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
           setStatus(status, saved ? savedMessage : 'There is no deck to save yet.', saved ? 'ok' : 'info');
           await paint();
         })();
-      }, { class: 'linklike', id: 'save-deck' }));
+      }, { class: 'btn friendly', id: 'save-deck' }));
     }
-    // the deck's size, one quiet line: it opens the same stepper as Settings, inline
-    const sizeBox = h('div', { class: 'deck-size-box', id: 'deck-size-box', hidden: !sizeOpen });
-    const sizeLink = button(`deck size: ${m.prefs.cardsPerDeck ?? 10}`, () => {
-      sizeOpen = !sizeOpen;
-      sizeBox.hidden = !sizeOpen;
-      sizeLink.setAttribute('aria-expanded', sizeOpen ? 'true' : 'false');
-    }, { class: 'linklike', id: 'deck-size-link', 'aria-expanded': sizeOpen ? 'true' : 'false', 'aria-controls': 'deck-size-box' });
-    sizeBox.append(deckSizeControl(ctx, m.identity.learnerId, m.identity.languageId, m.prefs.cardsPerDeck, () => {
-      if (resumeId) { setStatus(status, 'A session is open: the new size applies to the next deck.', 'info'); return; }
-      void paint();
-    }, 'home', { centred: true }));
     return h('section', { class: 'entry', 'data-entry': 'deck', id: 'current-deck' },
       h('h2', { class: 'entry-title' }, 'GoReview'),
       m.schedulerIssue ? p(m.schedulerIssue, 'notice') : null,
@@ -317,7 +304,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       deck.summary.remediation ? h('p', { class: 'entry-actions' }, h('a', { class: 'btn', id: 'open-remediation', href: '#/review/remediation' }, 'Review remediation (' + deck.summary.remediation + ')')) : null,
       h('p', { class: 'muted' }, 'Scheduled work is primary. Remediation, saved decks and selected vocabulary are separate optional practice.'),
       h('p', { class: 'entry-kicker', id: 'deck-count', 'data-cards': String(count) }, kicker),
-      h('p', { class: 'deck-size-line' }, sizeLink), sizeBox, actions);
+      actions);
   }
 
   await paint();

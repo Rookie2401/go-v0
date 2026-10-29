@@ -10,6 +10,7 @@ import { append, button, clear, embedTarget, h, langProps, p, setStatus, statusL
 import { itemMarked } from '../events';
 import { DIMENSION_LABEL, FAMILY_LABEL, languageName, unitLabel } from '../format';
 import { beginSession, endSavedSession, loadReviewModel, observedReviewSeconds, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
+import { freshModel } from '../freshness';
 import { deckSizeControl } from './cardsper';
 import { prefsForm } from './prefs';
 import { addToDeck, planCurrentDeck } from '../deckModel';
@@ -97,26 +98,13 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
       p(`Scheduler: ${m.algorithm}. Scheduling is retention bookkeeping, not a measure of what you know.`, 'muted'));
   }
 
-  /**
-   * The model to plan with: the one on screen, unless the saved preferences or the local log have moved on since it was painted
-   * (a preference changed an instant ago, a sync brought a card from another device), in which case it is loaded again.
-   */
-  async function freshModel(m: ReviewModel): Promise<ReviewModel> {
-    await Promise.allSettled(saving);
-    try {
-      const prefs = await ctx.state.getPrefs(m.identity.learnerId, m.identity.languageId);
-      const events = await ctx.events(m.identity.languageId);
-      if (JSON.stringify(prefs) === JSON.stringify(m.prefs) && events.length === m.events.length) return m;
-      return (await loadReviewModel(ctx)) ?? m;
-    } catch { return m; }
-  }
-
   function startBlock(m: ReviewModel): HTMLElement {
     const note = p('', 'muted');
     const start = button('Start a session', () => {
       start.disabled = true;
       void (async () => {
-        const current = await freshModel(m);
+        await Promise.allSettled(saving);
+        const current = await freshModel(ctx, m);
         const planned = await planCurrentDeck(ctx, current);
         const r = await beginSession(ctx, current, { plan: planned.plan });
         if (!r.ok) { start.disabled = false; setStatus(status, r.message, 'info'); return; }

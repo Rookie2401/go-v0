@@ -1,5 +1,5 @@
 import type { GoEvent, UnitKnowledge } from '../../../repository-contract/src';
-import type { DeckItem, ReviewIntent } from '../types';
+import type { DeckItem, ExclusionCode, ReviewIntent } from '../types';
 import { confirmedAutomaticFailureUnitsFromSelected, hasConfirmedAutomaticFailure, seenEligibility } from './priority-policy';
 import { indexRemediationEvidence, remediationBacklog, type RemediationCandidate, type RemediationEvidenceIndex } from './remediation';
 import { selectReviewEvidenceEvents } from '../../../repository-contract/src';
@@ -14,7 +14,7 @@ export interface ReviewEligibilityContext {
   remediationEvidence: RemediationEvidenceIndex;
 }
 export interface ReviewEligibilityInput { item?: DeckItem; itemId?: string; unitId: string; knowledge?: UnitKnowledge; events: readonly GoEvent[]; now: string; intent?: ReviewIntent; remainingNew?: number; factsInvalidated?: boolean; context?: ReviewEligibilityContext }
-export interface ReviewEligibilityResult { eligible: boolean; reason?: string }
+export interface ReviewEligibilityResult { eligible: boolean; reason?: string; code?: ExclusionCode }
 
 /** One immutable evidence/index snapshot shared by every card in a single planning call. */
 export function createReviewEligibilityContext(deck: readonly DeckItem[], events: readonly GoEvent[], now: string): ReviewEligibilityContext {
@@ -36,26 +36,26 @@ export function createReviewEligibilityContext(deck: readonly DeckItem[], events
 
 export function reviewEligibility(x: ReviewEligibilityInput): ReviewEligibilityResult {
   const t = Date.parse(x.now), item = x.item;
-  if (!Number.isFinite(t)) return { eligible: false, reason: 'invalid planning timestamp' };
+  if (!Number.isFinite(t)) return { eligible: false, reason: 'invalid planning timestamp', code: 'invalid-request' };
   const intent = x.intent ?? { kind: 'automatic' }, explicit = intent.kind === 'explicit';
-  if (explicit && (!Number.isFinite(Date.parse(intent.requestedAt)) || Date.parse(intent.requestedAt) > t)) return { eligible: false, reason: 'invalid explicit practice request' };
-  if (item?.schedulingIssue || item?.invalidatedAt) return {eligible:false,reason:item.schedulingIssue ?? item.suspendedReason ?? 'question invalidated; a verified facts repair is required'};
-  if (item?.status === 'dismissed' || item?.status === 'suspended') return { eligible: false, reason: item.suspendedReason ?? (item.status + '; resume deliberately before practice') };
-  if (item?.status === 'snoozed' && (!item.snoozedUntil || !Number.isFinite(Date.parse(item.snoozedUntil)) || Date.parse(item.snoozedUntil) > t)) return { eligible: false, reason: 'snoozed until its deadline' };
+  if (explicit && (!Number.isFinite(Date.parse(intent.requestedAt)) || Date.parse(intent.requestedAt) > t)) return { eligible: false, reason: 'invalid explicit practice request', code: 'invalid-request' };
+  if (item?.schedulingIssue || item?.invalidatedAt) return {eligible:false,reason:item.schedulingIssue ?? item.suspendedReason ?? 'question invalidated; a verified facts repair is required',code:item.schedulingIssue ? 'other' : 'invalidated'};
+  if (item?.status === 'dismissed' || item?.status === 'suspended') return { eligible: false, reason: item.suspendedReason ?? (item.status + '; resume deliberately before practice'), code: item.status === 'dismissed' ? 'dismissed' : 'suspended' };
+  if (item?.status === 'snoozed' && (!item.snoozedUntil || !Number.isFinite(Date.parse(item.snoozedUntil)) || Date.parse(item.snoozedUntil) > t)) return { eligible: false, reason: 'snoozed until its deadline', code: 'snoozed' };
   const sorted = x.context?.sortedEvents ?? [...x.events].filter(e => Number.isFinite(Date.parse(e.at))).sort((a,b) => Date.parse(a.at)-Date.parse(b.at) || a.id.localeCompare(b.id));
   const mark = x.context ? x.context.latestMarkByUnit.get(x.unitId)
     : sorted.filter(e => e.kind === 'ItemMarked' && e.subject.itemIds?.includes(x.unitId)).at(-1)?.payload.mark;
-  if (mark === 'ignore') return {eligible:false,reason:'dismissed vocabulary; restore it deliberately before practice'};
+  if (mark === 'ignore') return {eligible:false,reason:'dismissed vocabulary; restore it deliberately before practice',code:'dismissed'};
   const cardId = item?.itemId ?? x.itemId;
   const lifecycle = cardId ? (x.context ? x.context.latestLifecycleByCard.get(cardId)
     : sorted.filter(e => e.subject.cardId === cardId && (e.kind === 'CardRemoved' || e.kind === 'ReviewItemInvalidated' || e.kind === 'CardAdded' && e.payload.lifecycle !== 'create')).at(-1)) : undefined;
-  if (lifecycle?.kind === 'ReviewItemInvalidated') return {eligible:false,reason:'question invalidated; repair its facts before assessment'};
+  if (lifecycle?.kind === 'ReviewItemInvalidated') return {eligible:false,reason:'question invalidated; repair its facts before assessment',code:'invalidated'};
   if (lifecycle?.kind === 'CardRemoved') {
     const reason = lifecycle.payload.reason, until = Date.parse(String(lifecycle.payload.until));
     if (reason === 'suspended' || reason === 'dismissed' || reason === 'snoozed' && (!Number.isFinite(until) || until > t))
-      return {eligible:false,reason:String(reason) + '; learner control remains effective'};
+      return {eligible:false,reason:String(reason) + '; learner control remains effective',code:'learner-control'};
   }
-  if (x.factsInvalidated) return { eligible: false, reason: 'exercise facts are invalid or unavailable' };
+  if (x.factsInvalidated) return { eligible: false, reason: 'exercise facts are invalid or unavailable', code: 'facts-unavailable' };
   const history = item?.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict) ?? [];
   const due = !!item && history.length > 0 && Date.parse(item.schedule.due) <= t;
   if (item) {
@@ -71,16 +71,16 @@ export function reviewEligibility(x: ReviewEligibilityInput): ReviewEligibilityR
       : x.events.filter(e => e.subject?.cardId === item.itemId && ['CardReviewed','AssessmentAnswered','ListeningAssessed'].includes(e.kind));
     const historyRepresented = history.length > 0 && history.every(h => !!h.eventId && reviewEvents.some(e => e.id === h.eventId));
     const repairRequired = repair?.repairRequired ?? (!historyRepresented && history.slice(-10).filter(h => h.rating === 1).length >= 5);
-    if (repairRequired && !(explicit && intent.reason === 'reassessment' && repair?.ready)) return { eligible: false, reason: 'content repair and a delayed independent reassessment are required' };
+    if (repairRequired && !(explicit && intent.reason === 'reassessment' && repair?.ready)) return { eligible: false, reason: 'content repair and a delayed independent reassessment are required', code: 'repair-required' };
   }
   if (!history.length) {
-    if (!explicit && (!x.knowledge?.level || x.knowledge.level === 'new')) return { eligible: false, reason: 'automatic admission needs observed knowledge beyond New' };
-    if (!explicit && x.remainingNew !== undefined && x.remainingNew <= 0) return { eligible: false, reason: 'new-card budget exhausted' };
-    if (!explicit && x.knowledge?.level === 'seen' && !seenEligibility({ knowledge: x.knowledge })) return { eligible: false, reason: 'Seen has insufficient admission evidence' };
+    if (!explicit && (!x.knowledge?.level || x.knowledge.level === 'new')) return { eligible: false, reason: 'automatic admission needs observed knowledge beyond New', code: 'knowledge-beyond-new-required' };
+    if (!explicit && x.remainingNew !== undefined && x.remainingNew <= 0) return { eligible: false, reason: 'new-card budget exhausted', code: 'new-budget-exhausted' };
+    if (!explicit && x.knowledge?.level === 'seen' && !seenEligibility({ knowledge: x.knowledge })) return { eligible: false, reason: 'Seen has insufficient admission evidence', code: 'seen-evidence-insufficient' };
   }
   // A due obligation survives Knowability promotion to Automatic.
   if (due) return { eligible: true };
-  if (!explicit && x.knowledge?.level === 'automatic' && !(x.context ? x.context.automaticFailureUnits.has(x.unitId) : hasConfirmedAutomaticFailure(x.events, x.unitId))) return { eligible: false, reason: 'Automatic suppresses optional practice' };
-  if (item && history.length && !explicit) return { eligible: false, reason: 'not due; early review requires an explicit request' };
+  if (!explicit && x.knowledge?.level === 'automatic' && !(x.context ? x.context.automaticFailureUnits.has(x.unitId) : hasConfirmedAutomaticFailure(x.events, x.unitId))) return { eligible: false, reason: 'Automatic suppresses optional practice', code: 'automatic-suppressed' };
+  if (item && history.length && !explicit) return { eligible: false, reason: 'not due; early review requires an explicit request', code: ['learning','relearning'].includes(item.schedule.phase) ? 'learning-not-due' : 'scheduled-not-due' };
   return { eligible: true };
 }

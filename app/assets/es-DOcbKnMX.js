@@ -1,0 +1,1 @@
+import{t as e}from"./es-Dia88GXt.js";export{e as adapter};

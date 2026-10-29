@@ -1,7 +1,7 @@
 # GoReview 3 release candidate, 2026-10-29
 
 The candidate is branch `rc/goreview-3`: the Codex agent's `codex/goreview-3-2026-10-28` (GoReview 3: the adaptive review, evidence
-validity and release provenance; four commits ending 40d0175f) merged with GitHub master 6b8a6f9a across the GoPractice-into-GoReview
+validity and release provenance; four commits ending 40d0175f) merged with GitHub master 6b8a6f9a (and fe25e147 after it) across the GoPractice-into-GoReview
 rename (78c1d342), then the fixes the 2026-10-29 reviews called for. The commit that carries this note is the candidate; its parent
 3134cd5b is the revision the counts below were measured on (this note and the post-save message are the only differences).
 

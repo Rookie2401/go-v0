@@ -59,6 +59,21 @@ export interface DeckCounts {
   total: number;
 }
 
+export interface KnowledgeStatus {
+  /** live: every batch answered; partial: some did not (rows that arrived are kept, a gap may be filled from the last snapshot);
+   * cached: the last complete copy stands in for the service; unavailable: nothing could be loaded. */
+  source: 'live' | 'partial' | 'cached' | 'unavailable';
+  requested: number;
+  resolved: number;
+  /** Unit ids whose knowledge is unknown (their batch failed and no earlier copy covers them). */
+  missing: string[];
+  /** ISO time of the data in use (now when live; the snapshot's or cache's time when an earlier copy is used). */
+  fetchedAt: string;
+  note?: string;
+}
+
+export interface WithheldUnit { unitId: string; code: 'knowledge-unresolved'; detail: string }
+
 export interface ReviewModel {
   /** The Class Essentials cards in the deck fold: kept apart from `deck`, so the ordinary queue never meets them. */
   classDeck?: DeckItem[];
@@ -78,6 +93,10 @@ export interface ReviewModel {
   saved: Set<string>;
   candidateSource: 'live' | 'cached' | 'none';
   candidateNote?: string;
+  /** How complete the knowledge behind `knowledge` is: a unit in `missing` has NO row because its batch failed, which is not the same as New. */
+  knowledgeStatus: KnowledgeStatus;
+  /** Candidates held out of AUTOMATIC new admission because their knowledge could not be loaded (never treated as New). */
+  withheld: WithheldUnit[];
   now: string;
   algorithm: string;
   parametersVersion: string;
@@ -113,6 +132,11 @@ export function countDeck(deck: DeckItem[], model: { scheduler: { isDue(s: DeckI
 
 /** How many `GET /knowledge` batches one home load asks for at once. */
 export const KNOWLEDGE_PARALLEL = 4;
+/** How many unit ids one `GET /knowledge` batch carries. */
+export const KNOWLEDGE_BATCH = 200;
+
+const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
+const utc = (iso: string): string => iso.slice(0, 16).replace('T', ' ') + ' UTC';
 
 interface CandidateCache { fetchedAt: string; candidates: ReviewCandidate[]; knowledge: UnitKnowledge[] }
 
@@ -142,6 +166,12 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   let knowledge: UnitKnowledge[] = [];
   let candidateSource: ReviewModel['candidateSource'] = 'none';
   let candidateNote: string | undefined;
+  let knowledgeStatus: KnowledgeStatus = { source: 'unavailable', requested: 0, resolved: 0, missing: [], fetchedAt: now };
+  /** Units whose knowledge batch failed and that no earlier copy covers. */
+  const missing = new Set<string>();
+  let knowledgeNote: string | undefined;
+  /** True only when every knowledge batch of a live load answered: the one case that may replace the last complete snapshot. */
+  let knowledgeComplete = false;
   const objectives = [
     ...(prefs.practiceGoals?.includes('retrieval') ? ['productiveRetrieval' as const] : []),
     ...(prefs.practiceGoals?.includes('application') ? ['grammaticalUnderstanding' as const, 'contextualProduction' as const] : []),
@@ -163,19 +193,59 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
       if (cursor) cursors.add(cursor);
     } while (cursor);
     const unitIds = [...new Set([...candidates.map((x) => x.unitId), ...deck.map((x) => x.unitId)])];
-    // the knowledge batches are independent of one another: ask for them together (four at a time) instead of one after another
+    // the knowledge batches are independent of one another: ask for them together (four at a time) instead of one after another.
+    // A batch that fails (an HTTP error, a timeout, a thrown network error) is recorded, never silently dropped and never fatal.
     const batches: string[][] = [];
-    for (let offset = 0; offset < unitIds.length; offset += 200) batches.push(unitIds.slice(offset, offset + 200));
+    for (let offset = 0; offset < unitIds.length; offset += KNOWLEDGE_BATCH) batches.push(unitIds.slice(offset, offset + KNOWLEDGE_BATCH));
+    const rows = new Map<string, UnitKnowledge>();
+    const failedIds = new Set<string>();
+    const failures: string[] = [];
     for (let i = 0; i < batches.length; i += KNOWLEDGE_PARALLEL) {
-      const answers = await Promise.all(batches.slice(i, i + KNOWLEDGE_PARALLEL).map((ids) => api.knowledge(ids)));
-      for (const k of answers) if (k.ok) knowledge.push(...k.data.knowledge);
+      const group = batches.slice(i, i + KNOWLEDGE_PARALLEL);
+      const answers = await Promise.allSettled(group.map(async (ids) => api.knowledge(ids)));
+      answers.forEach((answer, n) => {
+        if (answer.status === 'fulfilled' && answer.value.ok) { for (const k of answer.value.data.knowledge) rows.set(k.unitId, k); return; }
+        for (const id of group[n]) failedIds.add(id);
+        failures.push(answer.status === 'fulfilled'
+          ? `the service answered ${answer.value.status}`
+          : `the request failed (${answer.reason instanceof Error ? answer.reason.message : 'unknown error'})`);
+      });
     }
+    knowledge = [...rows.values()];
     candidateSource = 'live';
-    await deps.area.set({ [cacheKey]: { fetchedAt: now, candidates, knowledge } satisfies CandidateCache });
+    if (!failedIds.size) {
+      knowledgeComplete = true;
+      knowledgeStatus = { source: 'live', requested: unitIds.length, resolved: unitIds.length, missing: [], fetchedAt: now };
+      await deps.area.set({ [cacheKey]: { fetchedAt: now, candidates, knowledge } satisfies CandidateCache });
+    } else {
+      // Some batches failed: keep what arrived, fill the gap from the last complete snapshot where it covers a unit, and
+      // report the rest. The candidate cache and the snapshot (the last complete copies) are NOT overwritten by a partial load.
+      const snapModel = (await readSnapshot(ctx, identity.learnerId, identity.languageId))?.model;
+      const earlier = new Map((snapModel?.knowledge ?? []).map((k) => [k.unitId, k]));
+      let filled = 0;
+      for (const id of failedIds) {
+        if (rows.has(id)) continue;
+        const row = earlier.get(id);
+        if (row) { knowledge.push(row); filled += 1; } else missing.add(id);
+      }
+      const reason = failures[0] + (failures.length > 1 ? ` and ${plural(failures.length - 1, 'other failure', 'other failures')}` : '')
+        + ` for ${failures.length === 1 ? 'one batch' : plural(failures.length, 'batch', 'batches')}`;
+      const nothing = !rows.size && !filled && unitIds.length > 0;
+      knowledgeStatus = { source: nothing ? 'unavailable' : 'partial', requested: unitIds.length, resolved: unitIds.length - missing.size, missing: [...missing],
+        fetchedAt: filled && snapModel ? snapModel.savedAt : now };
+      knowledgeNote = (missing.size
+        ? `Knowledge for ${plural(missing.size, 'word', 'words')} could not be loaded (${reason}); their new admissions are withheld until it loads.`
+        : '')
+        + (filled && snapModel ? `${missing.size ? ' ' : ''}Knowledge for ${plural(filled, 'word', 'words')} could not be refreshed (${reason}); this device's copy of ${utc(snapModel.savedAt)} is used for ${filled === 1 ? 'it' : 'them'}.` : '');
+      knowledgeStatus.note = knowledgeNote;
+    }
   } catch (e) {
     const cached = (await deps.area.get(cacheKey))[cacheKey] as CandidateCache | undefined;
     if (cached && Array.isArray(cached.candidates)) {
       candidates = cached.candidates; knowledge = cached.knowledge ?? []; candidateSource = 'cached';
+      // the cache is written only after a complete live load, so its knowledge stands for every unit it listed
+      const cachedUnits = new Set([...candidates.map((x) => x.unitId), ...deck.map((x) => x.unitId)]);
+      knowledgeStatus = { source: 'cached', requested: cachedUnits.size, resolved: cachedUnits.size, missing: [], fetchedAt: cached.fetchedAt };
       candidateNote = `The service could not be reached (${e instanceof Error ? e.message : 'unknown error'}); these candidates are from ${cached.fetchedAt.slice(0, 16).replace('T', ' ')} UTC.`;
     } else {
       candidateNote = `Candidates could not be fetched (${e instanceof Error ? e.message : 'unknown error'}). The deck below still works offline.`;
@@ -191,7 +261,8 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   }
   // Offline the service cannot answer for intake: the outcomes of the last successful load stand in (minus what the deck has taken since).
   if (candidateSource === 'live' && !intakeFailed) {
-    await writeSnapshot(ctx, identity.learnerId, identity.languageId, { model: { savedAt: now, outcomes, knowledge } });
+    // only a fully resolved live load replaces the last complete snapshot
+    if (knowledgeComplete) await writeSnapshot(ctx, identity.learnerId, identity.languageId, { model: { savedAt: now, outcomes, knowledge } });
   } else if (!outcomes.length || intakeFailed) {
     const snap = (await readSnapshot(ctx, identity.learnerId, identity.languageId))?.model;
     if (snap) {
@@ -206,13 +277,28 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
       outcomes = snap.outcomes.filter((o) => !ignored.has(o.unitId)
         && !(o.proposed && held.has(`${o.unitId}|${o.proposed.dimension}`))
         && (!o.proposed || o.explicitlySelected || stillSelected(o.proposed.family)));
-      if (!knowledge.length) knowledge = snap.knowledge;
+      if (!knowledge.length) { knowledge = snap.knowledge; knowledgeStatus = { source: 'cached', requested: snap.knowledge.length, resolved: snap.knowledge.length, missing: [], fetchedAt: snap.savedAt }; }
       candidateNote = `The service could not be reached; the proposals are from this device's copy of ${snap.savedAt.slice(0, 16).replace('T', ' ')} UTC.`;
     }
   }
+  // A unit whose knowledge could not be loaded is not New: it is held out of automatic admission, with a stable code and an
+  // explanation. Explicitly selected work and scheduled (due) deck cards need no knowledge row and are untouched.
+  const withheld: WithheldUnit[] = [];
+  if (missing.size) {
+    outcomes = outcomes.filter((o) => {
+      if (!missing.has(o.unitId) || o.explicitlySelected) return true;
+      withheld.push({ unitId: o.unitId, code: 'knowledge-unresolved',
+        detail: 'Its knowledge could not be loaded, so it is not treated as new; it can be admitted automatically once the service answers.' });
+      return false;
+    });
+    knowledgeNote = knowledgeNote?.replace('their new admissions are withheld', withheld.length
+      ? `${plural(withheld.length, 'new admission is', 'new admissions are')} withheld` : 'no new admission is affected');
+    knowledgeStatus.note = knowledgeNote;
+  }
+  if (knowledgeNote) candidateNote = [candidateNote, knowledgeNote].filter(Boolean).join(' ');
   const choices = await state.getChoices(identity.learnerId);
   const base: ReviewModel = {
-    identity, prefs, events, deck, classDeck, counts, audio, outcomes, knowledge, schedulerProfile, schedulerIssue: profileSelection.error, dismissed: [...ignored], choices, saved, candidateSource,
+    identity, prefs, events, deck, classDeck, counts, audio, outcomes, knowledge, schedulerProfile, schedulerIssue: profileSelection.error, dismissed: [...ignored], choices, saved, candidateSource, knowledgeStatus, withheld,
     ...(candidateNote ? { candidateNote } : {}), now, algorithm: scheduler.algorithm, parametersVersion: scheduler.parametersVersion,
   };
   return prepareAdmissions(ctx, base);

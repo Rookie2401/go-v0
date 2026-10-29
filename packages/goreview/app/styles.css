@@ -351,6 +351,16 @@ details.advanced { margin: 1.2rem 0 .4rem; }
 details.advanced > summary { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); padding: .4rem 0; }
 details.advanced[open] > summary { color: var(--ink); margin-bottom: .4rem; }
 .prefs-reset { margin-top: 1rem; }
+/* Settings, Review preferences: more room between the parts (the owner, 2026-10-29: "increase the vertical spacing so that it looks less cluttered") */
+#settings-prefs > h2 { margin-bottom: 1rem; }
+#settings-prefs > h2 + p { margin: 0 0 2rem; }
+#settings-prefs .field { gap: .5rem; margin: 1.5rem 0; }
+#settings-prefs .deck-field { gap: .8rem; margin: 0 0 2.2rem; }
+#settings-prefs .deck-field .help { margin-top: .35rem; line-height: 1.6; }
+#settings-prefs details.advanced { margin: 2.2rem 0 .6rem; }
+#settings-prefs details.advanced[open] > summary { margin-bottom: 1.2rem; }
+#settings-prefs .toggle { margin: 1.1rem 0; }
+#settings-prefs .prefs-reset { margin-top: 2rem; }
 /* #/account: two facts, then the plain actions in a centred column; the deletion as a guided step below */
 .account-facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .5rem 1.2rem; margin: .4rem 0 1.2rem; align-items: baseline; }
 .account-facts dt { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }

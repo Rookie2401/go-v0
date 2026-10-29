@@ -6,7 +6,7 @@ Written 2026-10-15, after the owner's complaint: "the syncing system is very slo
 
 ```
 GoLearn extension (Brave, desktop)            Repository service (one Node process, SQLite)            GoReview (iPhone shell / PWA)
- background worker                              http://127.0.0.1:8790  ->  HTTPS tunnel/host             packages/gopractice
+ background worker                              http://127.0.0.1:8790  ->  HTTPS tunnel/host             packages/goreview/app
  queue (chrome.storage.local, durable)  -push-> POST /sync/push   (events immutable, idempotent on id)
  pull is for the cursor only            <-pull- POST /sync/pull   (paged, afterSeq, hasMore)  <-pull-     sync client + local queue/log
                                                 POST /sync/wait   (held <= 25 s, wakes on a push) <-wait-  live loop while visible
@@ -83,7 +83,7 @@ The "simulated phone" rows are what the bench's `--link` model predicts, not mea
 1. **Backoff held events back for minutes (extension).** The sync client backs off 2 s, 4 s ... to 5 minutes after each failed round and `syncOnce()` without `force` returns "skipped: backoff". The debounce and the alarm both called it unforced, so after an outage the stranded events waited out the backoff: median 2.5-3.5 minutes, worst 8.6. Now a queue that is not empty is always tried; the backoff is capped at 30 s; failures are retried on a 5/10/20/30 s ladder. Proof: `test/extension/sync-timing.test.ts` ("are sent by the next debounce round even while the sync client is in its backoff", "are sent at once by the alarm") fails on the old `sync.ts`.
 2. **Alarm every 5 minutes (extension).** A worker that Chrome had put to sleep woke up to five minutes later to send what was waiting. Now every minute; installs that already hold the 5-minute alarm get it replaced.
 3. **`online` did not send (extension).** Coming back online scheduled an unforced round, which the backoff could skip. Now forced.
-4. **A new answer waited out the backoff (phone).** `record()` called `syncNow()` unforced and the backoff reached two minutes. Now a forced push, at most every 5 s while failing, and the cap is 30 s. Proof: `test/gopractice/sync-speed.test.ts` ("is sent at once when the service is back ...") fails on the old `context.ts`.
+4. **A new answer waited out the backoff (phone).** `record()` called `syncNow()` unforced and the backoff reached two minutes. Now a forced push, at most every 5 s while failing, and the cap is 30 s. Proof: `test/goreview-app/sync-speed.test.ts` ("is sent at once when the service is back ...") fails on the old `context.ts`.
 5. **Everything travelled uncompressed.** 800 bytes per event; a cold pull of 3,000 events was 2.4 MB in seven round trips. Now gzip, pages of 1000.
 6. **Every pull could carry every document body.** Neither client keeps documents in its sync client, but without `documentsSince` the service returned all of them each round. Now `documents: false`. (The test accounts hold no documents, so there is no number; the structure is covered by `sync-speed.test.ts`.)
 7. **No validators.** A vocabulary page was 96 KB every time. Now ETag/304 and an in-memory client cache.
@@ -97,13 +97,13 @@ The "simulated phone" rows are what the bench's `--link` model predicts, not mea
 
 **Not changed on purpose**
 
-12. **The phone's queue and log are keyed by service address.** A new address signs the native app out and starts an empty queue; events recorded on the phone while the old address was dead stay under the old address (`test/gopractice/mobile.test.ts`, "retaining its queued events under its origin", states this as intended). Adopting them under the new address when the learner id matches would fix it, but it contradicts that test and Codex's stated design, so it needs the owner's decision. A stable address makes it moot. A new address now costs a 137 KB history download, not 2.5 MB.
+12. **The phone's queue and log are keyed by service address.** A new address signs the native app out and starts an empty queue; events recorded on the phone while the old address was dead stay under the old address (`test/goreview-app/mobile.test.ts`, "retaining its queued events under its origin", states this as intended). Adopting them under the new address when the learner id matches would fix it, but it contradicts that test and Codex's stated design, so it needs the owner's decision. A stable address makes it moot. A new address now costs a 137 KB history download, not 2.5 MB. **2026-10-28:** no client can change the address any more (the fields are gone); it changes only with a build whose `config.json` names another, and the same rule applies then.
 13. **Preflight round trips.** The PWA and the Capacitor shell call the service cross-origin with `Authorization`, so each distinct URL is preceded by an `OPTIONS` round trip until the browser remembers it (7200 s now; WebKit caps remembering at five minutes). Not measured here (the Browser pane would not make the cross-origin call). The real fix is native HTTP (the CapacitorHttp plugin) or serving the app from the service's own origin; both are changes in `packages/goreview-ios`, which is Codex's untracked work.
 
 **Disproved**
 
 14. **Sessions are not invalidated by a service restart.** Sessions are rows in SQLite (hash of the token, 30-day expiry); a restart keeps them. After 30 days, or a sign-out elsewhere, the phone says "Sign in again to sync. Nothing on this device was lost." and the extension sets `needsSignIn`; nothing is lost either way.
-15. **The native shell does use `/sync/wait`.** The live loop (`packages/gopractice/live.ts`) holds it while the app is visible. iOS suspends the app in the background by design.
+15. **The native shell does use `/sync/wait`.** The live loop (`packages/goreview/app/live.ts`) holds it while the app is visible. iOS suspends the app in the background by design.
 16. **Projection is not slow.** See the push timings above.
 
 ## What still costs, and was left alone
@@ -124,6 +124,12 @@ The "simulated phone" rows are what the bench's `--link` model predicts, not mea
 
 The Repository service is reachable at https://repo.golearn-global-languages.com through a named Cloudflare tunnel from the
 owner's PC (infra/cloudflare/README.md: tunnel goreview-repository, zone golearn-global-languages.com). Build the installable
-edition against it with GOPRACTICE_SERVICE_URL=https://repo.golearn-global-languages.com (the copied config.json gets that
+edition against it with GOREVIEW_SERVICE_URL=https://repo.golearn-global-languages.com (the copied config.json gets that
 serviceUrl; the source config.json keeps the local address), and use the same address as REPOSITORY_SERVICE_URL for the
 next TestFlight build. The PC must still be on and online; the tunnel is not yet installed as a Windows service.
+
+**Default address (2026-10-27).** The owner made `https://go-v0.onrender.com` the default address of every system: the hosted GoReview and Biblia and the setup
+app are built and published with it, the extension's `app/config.json` names it, and the iPhone shells take it as `REPOSITORY_SERVICE_URL`. The
+canonical name `https://repo.golearn-global-languages.com` is a DNS-only CNAME to the same Render service; it stays valid for anyone who typed it, but it is
+blocked by some home routers (the owner's among them), which is why it is no longer the default anywhere. Build against the default:
+`GOREVIEW_SERVICE_URL=https://go-v0.onrender.com` for the installable GoReview, `REPOSITORY_SERVICE_URL=https://go-v0.onrender.com` for a TestFlight stage.

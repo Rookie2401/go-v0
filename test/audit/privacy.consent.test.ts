@@ -4,7 +4,7 @@
  *
  * Real pieces: the service (checked to make no outbound call at all), GoTell's assistance ladder with the real Albanian checker
  * and a SPY standing for a remote assistant, GoTell's consent switch, GoListen over the real Albanian registry with a spy for
- * the network, the extension worker and GoPractice's context for the settings that hold the remote-speech switch.
+ * the network, the extension worker and GoReview's context for the settings that hold the remote-speech switch.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,7 +14,7 @@ import { createPackRuntime, packFor } from '../../packages/language-packs/src';
 import {
   RemoteAssistantGate, createAnalyzer, createAssistance, createRemoteConsent, type RemoteAssistant,
 } from '../../packages/gotell/src';
-import { createAudioDeps } from '../../packages/gopractice/audio';
+import { createAudioDeps } from '../../packages/goreview/app/audio';
 import { albanianRegistry } from '../../packages/golisten/src';
 import {
   PASSWORD, STORE_KINDS, createDevice, createNet, createPracticeDevice, createStack, lookup, serverEvents, signUp,
@@ -23,7 +23,7 @@ import {
 import { accountFor, createWorkerRig } from './offline.support';
 import { createContext as createSetupContext } from '../../packages/golearn-extension/app/context';
 import { setRemoteSpeechConsent as setupSetRemoteSpeech } from '../../packages/golearn-extension/app/consent';
-import { setRemoteSpeechConsent as practiceSetRemoteSpeech } from '../../packages/gopractice/screens/consent';
+import { setRemoteSpeechConsent as practiceSetRemoteSpeech } from '../../packages/goreview/app/screens/consent';
 import type { ChromeApi } from '../../packages/golearn-extension/src/platform';
 
 const stacks: Stack[] = [];
@@ -184,10 +184,10 @@ describe('remote speech consent: GoListen sends nothing without it', () => {
 });
 
 describe.each(STORE_KINDS)('consent as a recorded fact in the apps and the service — %s store', (kind) => {
-  // P-09 (fixed): the GoLearn setup page's remote-speech switch (`golearn:settings`) and GoPractice's (`gopractice:settings`) used to be
+  // P-09 (fixed): the GoLearn setup page's remote-speech switch (`golearn:settings`) and GoReview's (`gopractice:settings`) used to be
   // local flags. They now record a ConsentGiven / ConsentWithdrawn event (scope remote-speech) through the app's own event path,
   // so the Repository (and an export, and GET /me) can say what the learner agreed to. The tests drive the same function the
-  // switch on each screen calls (app/consent.ts, screens/consent.ts) over the real worker / the real GoPractice context.
+  // switch on each screen calls (app/consent.ts, screens/consent.ts) over the real worker / the real GoReview context.
   it('P-09: switching on remote speech in the GoLearn setup page records a ConsentGiven event that reaches the Repository', async () => {
     const s = make(kind);
     const net = createNet(s);
@@ -216,7 +216,7 @@ describe.each(STORE_KINDS)('consent as a recorded fact in the apps and the servi
     expect((await serverEvents(s, a.learnerId)).filter((e) => e.kind === 'ConsentWithdrawn').length).toBe(1);
   });
 
-  it('P-09: switching on remote speech in GoPractice records a ConsentGiven event that reaches the Repository', async () => {
+  it('P-09: switching on remote speech in GoReview records a ConsentGiven event that reaches the Repository', async () => {
     const s = make(kind);
     const net = createNet(s);
     const a = await signUp(s, 'ana@example.com', 'setup');
@@ -234,7 +234,7 @@ describe.each(STORE_KINDS)('consent as a recorded fact in the apps and the servi
     expect((await serverEvents(s, a.learnerId)).filter((e) => e.kind === 'ConsentWithdrawn').length).toBe(1);
   });
 
-  it('P-09: a refused or impossible record keeps the GoPractice switch off (consent is never on without its record)', async () => {
+  it('P-09: a refused or impossible record keeps the GoReview switch off (consent is never on without its record)', async () => {
     const s = make(kind);
     const net = createNet(s);
     const dev = createPracticeDevice(net);                     // signed out: there is no learner to record the consent against

@@ -25,6 +25,9 @@ export interface FsrsSchedulerOptions {
   enableFuzz?: false;
   /** The 21 FSRS-6 weights; default: the library's published defaults. Do not tune by hand. */
   parameters?: number[];
+  enableShortTerm?: boolean;
+  learningSteps?: string[];
+  relearningSteps?: string[];
 }
 
 export const ALGORITHM = `fsrs@${FSRSVersion}`;
@@ -128,6 +131,9 @@ export function createFsrsScheduler(opts: FsrsSchedulerOptions = {}): Scheduler 
     maximum_interval: maximumInterval,
     w: opts.parameters ?? [...default_w],
     enable_fuzz: false,
+    ...(opts.enableShortTerm !== undefined ? { enable_short_term: opts.enableShortTerm } : {}),
+    ...(opts.learningSteps !== undefined ? { learning_steps: [...opts.learningSteps] as import('ts-fsrs').Steps } : {}),
+    ...(opts.relearningSteps !== undefined ? { relearning_steps: [...opts.relearningSteps] as import('ts-fsrs').Steps } : {}),
   });
   const engine = fsrs(params);
   // The effective weights (the library may migrate an older-length vector), so the identity matches what is actually run.

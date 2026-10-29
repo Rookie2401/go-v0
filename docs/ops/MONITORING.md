@@ -11,7 +11,7 @@ Open (no token), used by Caddy, uptime monitors and the hosting gate. Never hold
 ```
 
 `store` is `sqlite` or `postgres`, `migrations` the newest applied schema version, `uptimeSec` seconds since the process started. Point an external
-monitor (UptimeRobot, Better Stack, Healthchecks) at `https://repo.golearn-global-languages.com/health` and alert on a non-200 or on `ok` missing.
+monitor (UptimeRobot, Better Stack, Healthchecks) at `https://go-v0.onrender.com/health` (the default address of every system since 2026-10-27; `https://repo.golearn-global-languages.com/health` is the same service through its DNS-only canonical name) and alert on a non-200 or on `ok` missing.
 While a hosted deployment is waiting for a restored database the gate answers `{ "ok": true, "service": "migration-pending" }` instead: treat that as down.
 
 ## `GET /metrics` (Prometheus text format 0.0.4)

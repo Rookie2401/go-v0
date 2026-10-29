@@ -27,6 +27,7 @@ const DAY_MS = 86_400_000;
 /** Rule weights (documented in README). */
 export const CANDIDATE_RULES = {
   recentEncounter: { weight: 0.15, withinDays: 7 },
+  repeatedEncounters: { weight: 0.1, minimum: 3 },
   repeatedLookups: { weight: 0.2, minNegativeExposure: 2 },
   demonstratedError: { weight: 0.25 },
   weakButSeen: { weight: 0.2, readingBelow: 0.5 },
@@ -77,7 +78,7 @@ export const GOAL_UNIT_KINDS: Record<LearningGoal['kind'], readonly UnitKind[]> 
   custom: [],
 };
 
-export interface CardState { covered: boolean; lastReviewAt?: string }
+export interface CardState { covered: boolean; coveredDimensions?: ReadonlySet<Dimension>; blockedDimensions?: ReadonlySet<Dimension>; blocked?: boolean; lastReviewAt?: string }
 
 export interface CandidateInputs {
   rows: UnitKnowledge[];
@@ -87,6 +88,8 @@ export interface CandidateInputs {
   realizedBy: Map<string, string[]>;
   cards: Map<string, CardState>;
   goals: LearningGoal[];
+  /** Locally selected skill objectives; used only when the primary objective is already represented. */
+  objectiveDimensions?: readonly Dimension[];
   now: string;
   limit: number;
   /** unit id -> instants of lookups, assistance requests and failed recognitions (the construction rule's window reads these). Absent: the row's exposure is used. */
@@ -116,8 +119,8 @@ const LEVEL_PURPOSE: Record<KnowledgeLevel, string> = {
   seen: 'met or looked up, nothing shows it was understood; proposed for recognition practice',
   recognized: 'understood once or with help; reading it unaided moves it to Familiar',
   familiar: 'recognised repeatedly; reliable recognition moves it to Known',
-  known: 'recognised reliably; retrieving it moves it to Automatic',
-  automatic: 'produced without help; checked only because later evidence or retention decay questions it',
+  known: 'spaced, independent recognition meets the Known threshold; a selected retrieval goal is the next distinct skill',
+  automatic: 'learner-marked Automatic; checked only because later evidence or retention decay questions the mark',
 };
 
 const levelRank = (l: KnowledgeLevel): number => KNOWLEDGE_LEVEL_RANK[l];
@@ -180,6 +183,7 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
     const lookups = row?.dimensions.exposure.negative ?? 0;
     // The level (projection@4; a row stored by an older projection has none, and the rules compute it from the row).
     const level: KnowledgeLevel = row ? row.level ?? levelOf(row) : 'new';
+    const card = inp.cards.get(id);
     const mark = row?.selfMark;
     const markLevel = mark ? levelOfMark(mark.mark) : undefined;
     // contradicted: the learner's mark claims two or more levels more than the evidence since supports (the level is then the evidence's)
@@ -195,14 +199,20 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
       case 'recognized': case 'familiar': drawn = signalled; break; // decayed retention only adds weight (below)
       default: drawn = signalled || contradicted; // new, seen
     }
-    if (!drawn) continue;
-    const card = inp.cards.get(id);
-    if (card?.covered && !inp.includeCovered) continue; // already in the deck: not proposed again
+    // A locally selected skill is itself a valid progression request once the learner
+    // has established recognition and a reading card already covers that dimension.
+    // Automatic remains controlled by decay, contradiction, commonness, or real difficulty.
+    const alternateGoalRequest = level !== 'automatic' && card?.coveredDimensions?.has('readingRecognition') === true
+      && (inp.objectiveDimensions ?? []).some((dimension) => dimension !== 'readingRecognition'
+        && !card.coveredDimensions?.has(dimension) && eligibilityFor(unit, unit?.kind === 'form' ? inp.analyses.get(id) ?? [] : [], dimension).eligible);
+    if (!drawn && !alternateGoalRequest) continue;
+    if (card?.blocked || (card?.blockedDimensions?.size ?? 0) > 0) continue; // a new objective cannot bypass a learner or content control
 
     const reasons: ReviewCandidate['reasons'] = [];
     const add = (rule: string, weight: number, detail?: string): void => { reasons.push(detail === undefined ? { rule, weight } : { rule, weight, detail }); };
 
     if (row?.lastSeenAt !== undefined && nowMs - Date.parse(row.lastSeenAt) <= R.recentEncounter.withinDays * DAY_MS) add('recentEncounter', R.recentEncounter.weight, `last seen ${row.lastSeenAt}`);
+    if ((row?.encounters ?? 0) >= R.repeatedEncounters.minimum) add('repeatedEncounters', R.repeatedEncounters.weight, `${row!.encounters} distinct encounters and judgements`);
     if (lookups >= R.repeatedLookups.minNegativeExposure) add('repeatedLookups', R.repeatedLookups.weight, `${lookups} lookups or assistance requests`);
     if (hasError(row)) {
       const dims = JUDGED.filter((d) => row!.dimensions[d].negative > 0);
@@ -217,7 +227,6 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
     if (common) add('wordFrequency', rank! <= R.wordFrequency.veryCommonRank ? R.wordFrequency.veryCommonWeight : R.wordFrequency.weight, `frequency rank ${rank}`);
     if (unit && inp.goals.some((g) => GOAL_UNIT_KINDS[g.kind].includes(unit.kind))) add('goalMatch', R.goalMatch.weight, 'unit kind serves a stated goal');
     if (inp.missionUnits?.has(id)) add('missionRelevance', R.missionRelevance.weight, "in the pack's mission word list");
-    if (card?.covered) add('existingCoverage', R.existingCoverage.weight, 'already covered by a card');
     if (card?.lastReviewAt !== undefined && nowMs - Date.parse(card.lastReviewAt) <= R.priorReview.withinDays * DAY_MS) add('priorReview', R.priorReview.weight, `reviewed ${card.lastReviewAt}`);
     let target = targetOf(row, unit, level);
     const analysesOfUnit = unit?.kind === 'form' ? inp.analyses.get(id) ?? [] : [];
@@ -227,8 +236,35 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
       const fallback = eligibilityFor(unit, analysesOfUnit, 'readingRecognition');
       if (fallback.eligible) { target = 'readingRecognition'; eligibility = fallback; add('levelTarget', 0, 'retrieval is not supported by this analysis; recognition is asked instead'); }
     }
-    const tconf = row?.dimensions[target].confidence ?? 0;
-    if (tconf >= R.expectedBenefit.confidenceFrom && tconf <= R.expectedBenefit.confidenceTo) add('expectedBenefit', R.expectedBenefit.weight, `confidence ${tconf.toFixed(2)} on ${target}: more evidence would change the estimate`);
+
+    // A unit can have one objective per demonstrated skill. If its primary objective is
+    // already represented, offer at most one other goal-aligned objective at a time.
+    // Coverage is dimension-scoped: a reading card cannot satisfy listening or production.
+    const covered = new Set<Dimension>(card?.coveredDimensions ?? []);
+    if (card?.covered) covered.add(target); // legacy lifecycle event: preserve same-target coverage only
+    let objectiveDimension = target;
+    if (covered.has(target) && !inp.includeCovered) {
+      const secondary: Dimension[] = [...(inp.objectiveDimensions ?? [])];
+      for (const goal of inp.goals) {
+        if (!unit || !GOAL_UNIT_KINDS[goal.kind].includes(unit.kind)) continue;
+        if (goal.kind === 'listening') secondary.push('listeningRecognition');
+        else if (goal.kind === 'speaking' || goal.kind === 'conversation') secondary.push('productiveRetrieval');
+        else if (goal.kind === 'writing') secondary.push('contextualProduction');
+      }
+      const next = [...new Set(secondary)].find((dimension) => {
+        if (covered.has(dimension)) return false;
+        const check = eligibilityFor(unit, analysesOfUnit, dimension);
+        return check.eligible;
+      });
+      if (!next) continue;
+      objectiveDimension = next;
+      eligibility = eligibilityFor(unit, analysesOfUnit, next);
+      add('dimensionObjective', 0, `the primary objective ${target} is already covered; this is the next unrepresented goal skill`);
+    } else if (covered.has(target) && inp.includeCovered) {
+      add('existingCoverage', R.existingCoverage.weight, `already covered for ${target}`);
+    }
+    const tconf = row?.dimensions[objectiveDimension].confidence ?? 0;
+    if (tconf >= R.expectedBenefit.confidenceFrom && tconf <= R.expectedBenefit.confidenceTo) add('expectedBenefit', R.expectedBenefit.weight, `confidence ${tconf.toFixed(2)} on ${objectiveDimension}: more evidence would change the estimate`);
 
     const cost = Math.round(Math.min(1, R.cost.base + R.cost.perWord * (unit?.label.trim().split(/\s+/u).filter(Boolean).length ?? 1)) * 1e9) / 1e9;
 
@@ -249,7 +285,7 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
     }
 
     const raw = reasons.reduce((s, r) => s + r.weight, 0);
-    const cand: ReviewCandidate = { unitId: id, kind: unit?.kind ?? 'unknown', score: 0, reasons, targetDimension: target, eligibility, cost };
+    const cand: ReviewCandidate = { unitId: id, kind: unit?.kind ?? 'unknown', score: 0, reasons, targetDimension: target, ...(objectiveDimension !== target ? { objectiveDimension } : {}), eligibility, cost };
     if (lev) cand.explains = lev;
     if (!eligibility.eligible) {
       if (raw <= 0) continue;

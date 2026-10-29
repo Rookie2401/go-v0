@@ -11,13 +11,13 @@ const failure = (over: Partial<GoEvent> = {}): GoEvent => ({
   id: 'r1', v: 2, learnerId: 'L', enrolmentId: 'E', languageId: 'sq', at: '2026-10-01T00:00:00.000Z',
   producer: { app: 'gopractice-review', version: '1', deviceId: 'd' }, kind: 'CardReviewed',
   subject: { cardId: 'card:written-recognition:lemma:sq:libër', itemIds: ['lemma:sq:libër'] },
-  payload: { correct: false, hinted: false, answerShownBefore: false, rating: 1 }, evidence: { quality: 'moderate', assisted: false }, ...over,
+  payload: { family: 'meaning-to-form', correct: false, hinted: false, answerShownBefore: false, rating: 1 }, evidence: { quality: 'moderate', assisted: false }, ...over,
 });
 
 describe('versioned Knowability policy and transparent priority', () => {
   it('publishes the experimental defaults separately from FSRS', () => {
-    expect(KNOWABILITY_PRIORITY_POLICY_VERSION).toBe('knowability-priority@1');
-    expect(DEFAULT_KNOWABILITY_WEIGHTS).toEqual({ new: 0, seen: 0.3, recognized: 1.5, familiar: 1.5, known: 0.25, automatic: 0.03 });
+    expect(KNOWABILITY_PRIORITY_POLICY_VERSION).toBe('knowability-priority@2');
+    expect(DEFAULT_KNOWABILITY_WEIGHTS).toEqual({ new: 0, seen: 15, recognized: 100, familiar: 100, known: 25, automatic: 3 });
   });
 
   it('excludes New and ordinary Automatic, while allowing an explicit practice request', () => {
@@ -43,6 +43,13 @@ describe('versioned Knowability policy and transparent priority', () => {
     expect(hasConfirmedAutomaticFailure([failure({ evidence: { quality: 'none', assisted: true } })], 'lemma:sq:libër')).toBe(false);
     const corrected = { ...failure({ id: 'undo', at: '2026-10-02T00:00:00.000Z', correctionOf: 'r1', payload: { rating: null, challenged: true }, evidence: { quality: 'none' } }) };
     expect(hasConfirmedAutomaticFailure([failure(), corrected], 'lemma:sq:libër')).toBe(false);
+    const duplicateCorrection = { ...corrected, id: 'undo-2', at: '2026-10-02T01:00:00.000Z' };
+    expect(hasConfirmedAutomaticFailure([failure(), corrected, duplicateCorrection], 'lemma:sq:libër')).toBe(false);
+  });
+
+  it('does not reactivate Automatic from unresolved or recognition-only failures', () => {
+    expect(hasConfirmedAutomaticFailure([failure({ payload: { family: 'written-recognition', correct: false, hinted: false, rating: 1 } })], 'lemma:sq:libër')).toBe(false);
+    expect(hasConfirmedAutomaticFailure([failure({ payload: { ...failure().payload, expectedPreviousReviewId: 'missing-parent' } })], 'lemma:sq:libër')).toBe(false);
   });
 
   it('exposes weighted contributors, favors Recognized over Seen, and handles missing factors conservatively', () => {

@@ -213,10 +213,10 @@ export const SQ_TUTORIAL_STEPS: TutorialStep[] = [
   {
     id: 'concept-practice',
     kind: 'concept',
-    title: 'How GoPractice later tests selected material',
+    title: 'How GoReview later tests selected material',
     estimatedMinutes: 1,
     body:
-      'GoPractice is a separate application. It builds review cards only from words you actually met while reading, and a recognition counts for less than recalling a word yourself. What you do there changes what GoLearn thinks you know, and what you read changes what GoPractice asks you; neither one invents knowledge you have not shown. Using GoPractice is optional.',
+      'GoReview is a separate application. It builds review cards only from words you actually met while reading, and a recognition counts for less than recalling a word yourself. What you do there changes what GoLearn thinks you know, and what you read changes what GoReview asks you; neither one invents knowledge you have not shown. Using GoReview is optional.',
   },
 ];
 

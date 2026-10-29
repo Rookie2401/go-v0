@@ -16,14 +16,14 @@ Design sources: `docs/ecosystem/READER-ARCHITECTURE-DECISION.md`, `GOLEARN-EXTEN
 
 * **Content script** (`src/content/`, `src/popup/`, `src/parser/`): selection → context → the bundled Albanian analyser → card. Its only way out of the page is a message to the background. The built `content.js` contains no `fetch(`, no `XMLHttpRequest`, no storage access and no token key (`test/extension/bundle.test.ts` checks the text of the file). Pronunciation uses **GoListen's device provider** only (strict language match; a non-local browser voice needs consent).
 * **Background worker** (`src/background/`): the Repository connection, the durable event queue, sync, the learner-model cache, dictionary glosses, grammar explanations, settings. It checks every message sender (see Security).
-* **Action popup** (`action/`): connection status, per-tab switch, language, sync state, "Open GoLearn setup" (`chrome.runtime.openOptionsPage()`), export / delete.
+* **Action popup** (`action/`): since 2026-10-28 (the owner) a greeting ("Welcome, <name>" from the session's display name), the brand as the one button to setup (`chrome.runtime.openOptionsPage()`), the GoLearn Active switch with one line about the page in front and Biblia's one-line legend, and the language switch. No Practise, no sync line or button (the worker syncs by itself), no voices line, no explanations; export / delete stay under the setup page's Privacy.
 * **Setup page** (`app/`, built by its own `app/vite.config.ts`, declared as `options_page: app/index.html`): not part of this config. Build it **after** `npm run ext:build` (the content build clears `dist/` but keeps `dist/app/`).
 
 ## Layout
 
 ```
 manifest.json               MV3; options_page app/index.html; permissions below; no host permission by default (optional for GoLearn Active); Alt+Shift+G
-action/popup.html|ts        connection, Practise, per-tab switch, GoLearn Active (switch, Speak on click, legend, withdraw), language, sync, export / delete
+action/popup.html|ts        greeting, the brand → setup, GoLearn Active (switch, the page line, the one-line legend, withdraw), language
 src/active/*.ts             GoLearn Active: levels and legend, the exclude list from the registry, CSS highlights, the page scan
 src/content/active.ts       GoLearn Active on the page: language, scan, learner-model batches, click to look up, speak, stop
 src/background/active.ts    GoLearn Active in the worker: the switches, the permission check, the dynamic content script, broadcast
@@ -117,7 +117,7 @@ Storage (`chrome.storage.local` unless noted): `golearn:service { baseUrl, asset
 
 ## Sync
 
-`createLocalQueue(adaptStorageArea(chrome.storage.local))` + `createSyncClient` with a transport over the API client's `syncPush` / `syncPull`. Runs once, debounced 2 s after an event is queued; every 5 minutes on a `chrome.alarms` alarm; on request. Events recorded while signed out are attributed to `local:<deviceId>` (invisible to the sync client) and rewritten to the account's identity on sign-in or enrolment (`reattributeQueued`); events queued under a different account are set aside under `rejected:`, never sent as the new learner and never dropped. A 401 sets `needsSignIn` and stops sync until the next sign-in; offline backs off. Pulled events are counted and dropped (the extension keeps no copy of other devices' events; knowledge comes from the Repository's projection). After each successful round the cached learner-model rows are re-fetched, so what GoPractice changed reaches the reader on the next lookup.
+`createLocalQueue(adaptStorageArea(chrome.storage.local))` + `createSyncClient` with a transport over the API client's `syncPush` / `syncPull`. Runs once, debounced 2 s after an event is queued; every 5 minutes on a `chrome.alarms` alarm; on request. Events recorded while signed out are attributed to `local:<deviceId>` (invisible to the sync client) and rewritten to the account's identity on sign-in or enrolment (`reattributeQueued`); events queued under a different account are set aside under `rejected:`, never sent as the new learner and never dropped. A 401 sets `needsSignIn` and stops sync until the next sign-in; offline backs off. Pulled events are counted and dropped (the extension keeps no copy of other devices' events; knowledge comes from the Repository's projection). After each successful round the cached learner-model rows are re-fetched, so what GoReview changed reaches the reader on the next lookup.
 
 ## Permissions (least privilege)
 
@@ -147,12 +147,12 @@ No host permissions by default, no `content_scripts`, no `externally_connectable
 ```
 npm run ext:build        # -> dist/content.js, dist/background.js, dist/action/popup.{html,js}, dist/manifest.json
 # then the setup page's own build (packages/golearn-extension/app), which writes dist/app/
-npx vite build -c packages/gopractice/vite.config.ts --mode extension   # GoPractice as a page of the extension -> dist/practice/ (the popup's "Practise" button opens it)
+npx vite build -c packages/goreview/app/vite.config.ts --mode extension   # GoReview as a page of the extension -> dist/review/ (the popup's "Practise" button opens it)
 ```
 
-`npm run ext:build` empties `dist/` except `dist/app/`, so `dist/practice/` has to be built after it, every time.
+`npm run ext:build` empties `dist/` except `dist/app/`, so `dist/review/` has to be built after it, every time.
 
-Load `dist/` with chrome://extensions → Developer mode → Load unpacked. Open **GoLearn setup** (popup button). Since 2026-10-10 the setup is two pages: a clean **sign in / create an account** page first (optional: "Continue without an account"; an account only keeps progress across devices, and after sign-in everything else happens by itself), then **Choose your languages**: six compact rows, each with a **Download language** menu (Norwegian asks Bokmål or Nynorsk, Spanish offers Honduras); downloading saves the choice and installs and checks the pack, several languages stay enabled at once, and the one marked "Reading now" is the one GoLearn records against. The cog at the top right opens **Settings** (Account, then Sync, Privacy, Diagnostics and updates, How GoLearn reads pages); **Status** is in the top bar. Then open a page in the language and switch on **GoLearn Active** in the popup (or select a word and press Alt+Shift+G / right-click "Look up with GoLearn"). The popup's **Practise** button opens GoPractice, which also works with no account and draws from the language you read most recently. Without the setup page built, Chrome refuses to load the extension (the manifest names `app/index.html`).
+Load `dist/` with chrome://extensions → Developer mode → Load unpacked. Open **GoLearn setup** (popup button). Since 2026-10-10 the setup is two pages: a clean **sign in / create an account** page first (optional: "Continue without an account"; an account only keeps progress across devices, and after sign-in everything else happens by itself), then **Choose your languages**: six compact rows, each with a **Download language** menu (Norwegian asks Bokmål or Nynorsk, Spanish offers Honduras); downloading saves the choice and installs and checks the pack, several languages stay enabled at once, and the one marked "Reading now" is the one GoLearn records against. The cog at the top right opens **Settings** (Account, then Sync, Privacy, Diagnostics and updates, How GoLearn reads pages); **Status** is in the top bar. Then open a page in the language and switch on **GoLearn Active** in the popup (or select a word and press Alt+Shift+G / right-click "Look up with GoLearn"). The popup's **Practise** button opens GoReview, which also works with no account and draws from the language you read most recently. Without the setup page built, Chrome refuses to load the extension (the manifest names `app/index.html`).
 
 Sizes (minified): see the report of the build in the commit / test log; `content.js` carries the Albanian analyser and the card, `background.js` the API client, the sync client and the language-pack runtime (which bundles the analyser again for glosses).
 

@@ -3,7 +3,7 @@
  * ACCESSIBILITY audit, lane 3 of 4 (docs/ecosystem/audit/ACCESSIBILITY.md): the lookup card (popup) in jsdom: every state is audited
  * (accessible names, labels, `lang`), and the behaviour a keyboard or screen-reader user depends on is tested: focus moves in, Tab
  * stays inside, Escape closes and focus returns, the disclosure buttons say whether they are open, the status line is live,
- * pronunciation says when there is no audio.   Plus the focus behaviour of the GoPractice and setup-app shells.
+ * pronunciation says when there is no audio.   Plus the focus behaviour of the GoReview and setup-app shells.
  */
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createCardUI, type CardUI, type DismissReason } from '../../packages/golearn-extension/src/popup/card';
@@ -12,7 +12,7 @@ import type { PopupAnchor } from '../../packages/golearn-extension/src/contract/
 import type { Pronouncer } from '../../packages/golearn-extension/src/popup/view';
 import { setBody, stubLayout } from '../extension/dom';
 import { auditDom, accessibleName, flushAfterAll, isHidden, row } from './a11y.support';
-import { defaultService, flush, key, makeRig as makePracticeRig, destroyRigs as destroyPracticeRigs, until } from '../gopractice/helpers';
+import { defaultService, flush, key, makeRig as makePracticeRig, destroyRigs as destroyPracticeRigs, until } from '../goreview-app/helpers';
 import { makeTellRig, resetTellRig } from '../gotell-ui/rig';
 import { destroyRigs as destroyAppRigs, makeRig as makeAppRig } from '../golearn-app/helpers';
 
@@ -228,19 +228,19 @@ describe('language of the words the card shows', () => {
 
 // ───────────────────────────── focus in the application shells ─────────────────────────────
 
-describe('focus in the GoPractice and setup-app shells', () => {
+describe('focus in the GoReview and setup-app shells', () => {
   afterEach(() => { resetTellRig(); destroyPracticeRigs(); destroyAppRigs(); });
 
-  it('A-D11 GoPractice: a route change moves focus to the screen (main, tabindex -1) so a keyboard or screen-reader user starts at the new content', async () => {
+  it('A-D11 GoReview: a route change moves focus to the screen (main, tabindex -1) so a keyboard or screen-reader user starts at the new content', async () => {
     const rig = await makePracticeRig({ service: defaultService(), signedIn: true });
     await rig.go('settings');
     expect(document.activeElement).toBe(rig.q('main#screen'));
     expect(rig.q('main#screen').getAttribute('tabindex')).toBe('-1');
-    expect(document.title).toBe('GoPractice — Settings');
+    expect(document.title).toBe('GoReview — Settings');
     await rig.go('review');
     expect(document.activeElement).toBe(rig.q('main#screen'));
-    expect(document.title).toBe('GoPractice — GoReview');
-    row('A-D11', 'focus', 'GoPractice: focus and document title on route change', 'pass', 'main#screen receives focus; the title names the screen');
+    expect(document.title).toBe('GoReview'); // the home carries the bare name in every edition (one brand since the GoPractice layer went, 2026-10-28)
+    row('A-D11', 'focus', 'GoReview: focus and document title on route change', 'pass', 'main#screen receives focus; the title names the screen');
   });
 
   it('A-D12 setup app: a route change moves focus to the screen', async () => {
@@ -251,7 +251,7 @@ describe('focus in the GoPractice and setup-app shells', () => {
   });
 
   it('A-D13 a session answer: focus goes to Next when the feedback appears, and to the answer box of the next item', async () => {
-    const { startWith, dueCard, ids, type: typeIn } = await import('../gopractice/helpers');
+    const { startWith, dueCard, ids, type: typeIn } = await import('../goreview-app/helpers');
     const rig = await makePracticeRig({ signedIn: true });
     const A = ids('L1', 'sq');
     await startWith(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
@@ -269,7 +269,7 @@ describe('focus in the GoPractice and setup-app shells', () => {
 
   // Entering the session: the session puts focus in the answer box, then the router, once the render is over, focuses <main>.
   it('A-16 on entering a session the answer box of the first item has focus (the shell focuses <main> after the screen has rendered and takes it away)', async () => {
-    const { startWith, dueCard, ids } = await import('../gopractice/helpers');
+    const { startWith, dueCard, ids } = await import('../goreview-app/helpers');
     const rig = await makePracticeRig({ signedIn: true });
     const A = ids('L1', 'sq');
     await startWith(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);

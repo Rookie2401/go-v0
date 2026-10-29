@@ -1,6 +1,6 @@
 /**
- * The GoTell workspace port. The writing screens (packages/gopractice/screens/tell/**) and the DOM-free session logic in
- * this folder depend on these interfaces only. `packages/gopractice/tellEngine.ts` is the one file that wires the real
+ * The GoTell workspace port. The writing screens (packages/goreview/app/screens/tell/**) and the DOM-free session logic in
+ * this folder depend on these interfaces only. `packages/goreview/app/tellEngine.ts` is the one file that wires the real
  * modules (engine, prompts, profile, documents, evidence, privacy) to the port; a test supplies a small fake.
  *
  * Independence: nothing here reads or writes anything of the review side of the application. The workspace needs the

@@ -1,6 +1,6 @@
 # GoReview iPhone shell
 
-This package wraps the existing `packages/gopractice` review edition in a Capacitor 8 iOS app. The review site is compiled from local repository files and copied into the app bundle. The release configuration does not set `server.url` and the staged web bundle has no PWA service worker registration or manifest.
+This package wraps the existing `packages/goreview/app` review edition in a Capacitor 8 iOS app. The review site is compiled from local repository files and copied into the app bundle. The release configuration does not set `server.url` and the staged web bundle has no PWA service worker registration or manifest.
 
 The Capacitor setup follows its [official existing-web-app setup](https://capacitorjs.com/docs/getting-started) and [custom iOS plugin registration guide](https://capacitorjs.com/docs/ios/custom-code). Apple requires Xcode for iOS builds; current Capacitor 8 iOS setup calls for Xcode 26 or newer. See Apple's [upload builds guide](https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds/) and [TestFlight overview](https://developer.apple.com/help/app-store-connect/test-a-beta-version/testflight-overview/) for the final App Store Connect steps.
 
@@ -14,7 +14,17 @@ npm run prepare:web
 npx cap sync ios
 ```
 
-`prepare:web` runs the repository's existing GoReview Vite build and stages it at `web/`. It is useful for local inspection and does not create a release configuration. `sync:ios` combines preparation with Capacitor sync. On a Mac with Xcode installed, open the app with `npm run open:ios` or open `ios/App/App.xcodeproj`.
+`prepare:web` explicitly runs the developer-mode GoReview Vite build and stages it at `web/`. Each output contains `goreview-release-manifest.json`, which records the verified GoReview source/build, and `goreview-native-payload-manifest.json`, which links that parent build to the final transformed native payload (including Biblia). The latter hashes the final files after configuration changes and PWA removal. `sync:ios` verifies the copied Capacitor web directory too. On a Mac with Xcode installed, open the app with `npm run open:ios` or open `ios/App/App.xcodeproj`.
+
+Run the local regression and artifact check before changing or staging a native release:
+
+```sh
+npm run release:preflight:local
+```
+
+It runs the GoReview type check and bounded regression suites across the Repository contract/engine/service/store/sync, GoLearn, GoListen, GoTell, GoReview, GoPractice, and review optimizer, prepares and verifies an explicit developer-mode native payload, then writes a command/exit-code and source/artifact hash receipt to the ignored `.preflight/` folder outside the hashed web payload. Vitest also writes a JSON report there; the receipt summarizes passed, failed, skipped, and test-file counts from this run. The previous report is removed before testing, and artifacts are only referenced in the receipt after this run verifies them. The test child has `TEST_DATABASE_URL` unset so this local check cannot touch an inherited external test database. `npm run release:preflight` runs the same checks before release-mode native preparation; that path requires a clean source tree, real Bundle ID/service configuration, and the Repository health check.
+
+To validate a clean web release without Apple setup or any Repository health request, run `node packages/goreview-ios/scripts/release-preflight.mjs --web-only` from the repository root. It runs the same checks, builds GoReview directly in explicit release mode, verifies the release artifact, and writes its receipt beside (not inside) the ignored `.preflight/web-release/` artifact.
 
 The generated Bundle ID `com.example.provisional.goreview` is deliberately provisional. The release stage requires the reverse-DNS App ID registered to the owner's Apple Developer account. Do not put signing certificates, passwords, App Store Connect API keys, or provisioning credentials in this package.
 
@@ -27,7 +37,7 @@ EAS monorepo uploads include the whole repository, which would include unrelated
 On Windows PowerShell, set the public backend URL, registered App ID, and unused build number in the current shell, then prepare the stage:
 
 ```powershell
-$env:REPOSITORY_SERVICE_URL = 'https://your-public-repository-host'
+$env:REPOSITORY_SERVICE_URL = 'https://go-v0.onrender.com'   # the default address of every system (2026-10-27)
 $env:GOREVIEW_BUNDLE_ID = 'your.registered.bundle.id'
 $env:GOREVIEW_BUILD_NUMBER = '1'
 $env:GOREVIEW_MARKETING_VERSION = '1.0.0'
@@ -35,6 +45,8 @@ npm run release:stage
 ```
 
 Preparation fails unless the URL is public HTTPS and `<URL>/health` reports `ok: true`, `service: "repository"`, and `contractVersion: 3`. No backend host is provisioned by this package.
+
+The EAS staging command verifies the linked native payload before copying it into `.eas-project/web`, and verifies the copy again. The standalone staged-release validator repeats that payload check before its endpoint health check.
 
 The generated stage has no EAS project ID until the owner links or creates one. After confirming the Bundle ID and endpoint, go to `.eas-project/` and run `npx eas init --account rookie56r` once, then configure the App Store distribution credentials with `npx eas credentials --platform ios`. These are account changes and are intentionally left to the owner. The cloud build command is:
 
@@ -54,7 +66,7 @@ EAS Build returns an App Store Connect IPA but does not submit it. After the App
 Set these values in the shell or a local ignored environment file, never in a committed file:
 
 ```sh
-export REPOSITORY_SERVICE_URL='https://your-public-repository-host'
+export REPOSITORY_SERVICE_URL='https://go-v0.onrender.com'   # the default address of every system (2026-10-27)
 export GOREVIEW_BUNDLE_ID='your.registered.bundle.id'
 export APPLE_TEAM_ID='ABCDEFGHIJ'
 export GOREVIEW_BUILD_NUMBER='1'

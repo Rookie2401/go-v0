@@ -23,6 +23,13 @@ describe.skipIf(!has('dist/app/app.js'))('the options-page build (dist/app)', ()
     expect(JSON.parse(read('dist/app/config.json'))).toMatchObject({ serviceUrl: expect.stringMatching(/^https?:\/\//) });
   });
 
+  it('ships the brand mark beside the icons and resolves it from the page: a classic script has no import.meta.url (the setup page opened blank, 2026-10-28)', () => {
+    expect(has('dist/app/icons/go-logo.png')).toBe(true);
+    const code = read('dist/app/app.js');
+    expect(code).toContain('icons/go-logo.png');
+    expect(code).not.toContain('shared-brand');
+  });
+
   it('the script has no module syntax and no eval, so an extension page with a strict CSP can run it', () => {
     const code = read('dist/app/app.js');
     expect(code).not.toMatch(/^\s*(import|export)\s/m);
@@ -47,6 +54,10 @@ describe.skipIf(!has('dist/app/app.js'))('the options-page build (dist/app)', ()
 });
 
 describe.skipIf(!has('dist-web/index.html'))('the web build (dist-web)', () => {
+  it('ships the brand mark beside the icons (the web build bundles the stylesheet under assets/, so the mark is resolved from the page, not the stylesheet)', () => {
+    expect(has('dist-web/icons/go-logo.png')).toBe(true);
+  });
+
   it('is a static site with relative URLs that works from any sub-path', () => {
     const html = read('dist-web/index.html');
     expect(html).toMatch(/src="\.\/assets\/[^"]+\.js"/);

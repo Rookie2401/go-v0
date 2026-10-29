@@ -13,7 +13,7 @@ Prior decisions this audit is checked against: `docs/ecosystem/RIGHTS-AND-PRIVAC
 
 ## 0. Ten-line summary
 
-1. Everything the new product distributes is in four static builds plus one service: extension `packages/golearn-extension/dist` (incl. `dist/app`), hosted setup page `packages/golearn-extension/dist-web`, GoPractice `packages/gopractice/dist`, the Repository service (source only, not hosted), and the controlled reader (prototype, not built on disk).
+1. Everything the new product distributes is in four static builds plus one service: extension `packages/golearn-extension/dist` (incl. `dist/app`), hosted setup page `packages/golearn-extension/dist-web`, GoPractice `packages/goreview/app/dist`, the Repository service (source only, not hosted), and the controlled reader (prototype, not built on disk).
 2. Third-party **content** in the builds is exactly one item: the Albanian Wiktionary dictionary (kaikki, CC BY-SA 4.0, 91,271 entries, 256 shards + manifest + frequency.json), copied identically into all three builds. No other language's dictionary is in any build.
 3. Everything else shipped is owner-authored or AI-drafted (Albanian hand lexicon, rules, phrase list, tutorial, validation sentences, pack grammar text), unreviewed by a native speaker, and labelled so in the manifests and the UI.
 4. Confirmed with evidence: no retired-corpus file is in any build (0 byte-identical files out of 13,817 retired files; 0 shared 8-word sequences across 13,784 prose files); no Scripture text; the extension stores no page text; `data/repository/` and `data/private/` are git-ignored and untracked.
@@ -30,12 +30,12 @@ Prior decisions this audit is checked against: `docs/ecosystem/RIGHTS-AND-PRIVAC
 |---|---|---|---|
 | Extension | `packages/golearn-extension/dist` | `manifest.json`, `background.js`, `content.js`, `action/popup.{html,js}`, `app/{index.html,app.js,styles.css,config.json}`, `app/dict/sq/*` (258 files) | 7.4 MB |
 | Hosted setup page | `packages/golearn-extension/dist-web` (git-ignored) | `index.html`, `assets/index-CQKNM1HY.js`, `assets/style-CFI_Ujhx.css`, `config.json`, `dict/sq/*` (258 files) | 6.8 MB |
-| GoPractice | `packages/gopractice/dist` | `index.html`, `assets/index-CwDy2gnG.js`, `assets/style-CEmuchdQ.css`, `config.json`, `dict/sq/*` (258 files) | 6.9 MB |
+| GoPractice | `packages/goreview/app/dist` | `index.html`, `assets/index-CwDy2gnG.js`, `assets/style-CEmuchdQ.css`, `config.json`, `dict/sq/*` (258 files) | 6.9 MB |
 | Repository service | `packages/repository-service` (source; run with `vite-node`, SQLite store) | own code, Node built-ins only; imports no third-party package | not built |
 | Controlled reader | `packages/controlled-reader` (prototype; `npm run reader:build`) | **no `dist` exists on disk**; if built it adds `epubjs` and the three EPUB fixtures (prototype mode only) | n/a |
 
 Dictionary language selection: `app/vite.config.ts` copies `public/dict/<lang>` for `GOLEARN_APP_DICT` (default `sq`);
-`packages/gopractice/vite.config.ts` does the same for `GOPRACTICE_DICT` (default `sq`). Both default to `sq` only, and all
+`packages/goreview/app/vite.config.ts` does the same for `GOREVIEW_DICT` (default `sq`). Both default to `sq` only, and all
 three build directories contain `dict/sq` only (checked by listing; 256 shards + `manifest.json` + `frequency.json` each).
 `public/dict/` holds de, es, hi, sq, th (manifests) and nb (frequency only, no manifest); none of these except sq is
 copied. **Risk:** setting either environment variable to another language would ship that kaikki dictionary and its
@@ -217,12 +217,12 @@ Caveat: a learner could still look up Scripture words on any web page they visit
 * `test/extension/bundle.test.ts`: content script and popup contain no network call (47); content script holds no token, no storage, no service address (54); the background is the only bundle with `fetch` (61); no hard-wired URL (38).
 * `test/extension/security.test.ts`: a content script may not sync/enrol/change settings; identity is replaced in the background; the settings default to everything off and "`keepSnippets` is not implemented and stays off however it is asked" (141); `settings.ts` forces `keepSnippets: false`.
 * `test/ecosystem/boundaries.test.ts` line 105: an event whose subject carries text is refused.
-* Scope note: GoPractice's GoTell screen (`packages/gopractice/screens/tell.ts`) does store the **learner's own typed drafts** (title, body, kind) locally and via the workspace; that is the learner's own writing, not page text, and is a terms/privacy matter (Q6).
+* Scope note: GoPractice's GoTell screen (`packages/goreview/app/screens/tell.ts`) does store the **learner's own typed drafts** (title, body, kind) locally and via the workspace; that is the learner's own writing, not page text, and is a terms/privacy matter (Q6).
 
 ### (d) `data/repository/` and `data/private` are git-ignored - CONFIRMED
 
 `git check-ignore -v`: `.gitignore:30: data/repository/`, `.gitignore:6: data/private/`, also `packages/golearn-extension/dist`
-(line 2 `dist`), `packages/golearn-extension/dist-web/` (line 31), `packages/gopractice/dist` (line 2), `public/dict/` (9), `public/library/` (11).
+(line 2 `dist`), `packages/golearn-extension/dist-web/` (line 31), `packages/goreview/app/dist` (line 2), `public/dict/` (9), `public/library/` (11).
 `git ls-files data/repository data/private` lists nothing; `git log --all -- data/private data/repository` shows no commit
 touching them. `data/repository/` currently holds `repository.sqlite` (+ `-shm`, `-wal`, 0.7 MB) from local runs.
 Still tracked and relevant to rights (not in builds): `data/sources` (1,036 files), `data/corpus` (147), `data/review` (132), and a `gh-pages` branch on `origin` (`Rookie2401/go-v0`) that holds the retired library shards per annex C. Untracked at the repo root: `work/`, `work-thai.zip` (invalid zip per annex C), `work-hi-*.txt`.
@@ -235,7 +235,7 @@ Still tracked and relevant to rights (not in builds): `data/sources` (1,036 file
 | licence **link** (e.g. creativecommons.org/licenses/by-sa/4.0/) and a way to the sources/page history | next to the attribution | **No.** 0 occurrences of `creativecommons` or `wiktionary.org` in any build file. `boundaries` doc §2 requires "with a licence link". |
 | statement that the shards are adapted (compacted, truncated) and carry the same licence | Pack screen / a `dict/sq/LICENSE` or NOTICE file | **No.** `manifest.json` carries `licence`/`attribution` fields only. |
 | word-list / tutorial / passage "AI-drafted, not checked by a native speaker" | tutorial and card | **Yes.** `tutorial/sq.ts` notice; `parser/index.ts` line 48 text in `content.js`; pack `rights.reviewStatus: machine-drafted`; Pack screen lists the licence rows. |
-| "kaikki.org" / "Wiktionary" in the extension popup or the GoPractice front page | about/licences screen | **No.** `action/popup.js` has 0; GoPractice has no about/licences screen (`packages/gopractice/screens/` has none; `index.html` has no footer). |
+| "kaikki.org" / "Wiktionary" in the extension popup or the GoPractice front page | about/licences screen | **No.** `action/popup.js` has 0; GoPractice has no about/licences screen (`packages/goreview/app/screens/` has none; `index.html` has no footer). |
 | ts-fsrs MIT notice ("Copyright (c) 2026 Open Spaced Repetition") | GoPractice licences/about, or `dist/THIRD-PARTY-NOTICES.txt` | **No** (0 hits for the notice or "Open Spaced"). |
 | epub.js BSD-2 (and its dependencies) notice | the controlled reader, if shipped | **n/a today** (not built); would be **No**: Vite minification strips banners. |
 | Vite helper (MIT) notice | dist-web / GoPractice | **No**; trivial amount of code, but the same fix covers it. |
@@ -269,7 +269,7 @@ Still tracked and relevant to rights (not in builds): `data/sources` (1,036 file
 4. Rebuild `dict/sq/frequency.json` from `data/ladder/sq/units` + `data/corpus/sq` only (the owner-authored sources) and add a test that `frequency.json` `sources` contain no `kind: 'library'`.
 5. Add a build test that scans each dist for the retired directories, `.wav/.oga/.epub/.usfm` and the strings `Luther`, `RV1909`, `IRV` (the scan in section 3 can be turned into one).
 6. Record the exact kaikki `+tables` download URL and kaikki's licence statement for it in the dictionary manifest `source`.
-7. Guard `GOLEARN_APP_DICT` / `GOPRACTICE_DICT`: refuse any language that is not `installable` in the pack registry.
+7. Guard `GOLEARN_APP_DICT` / `GOREVIEW_DICT`: refuse any language that is not `installable` in the pack registry.
 
 
 ## 8. Distribution scan 2026-10-09
@@ -285,7 +285,7 @@ and it was run against freshly built folders. Facts only; nothing here is a stat
 | `npm run ext:build` (content, background, action) | 4.3 s / 1.7 s | `packages/golearn-extension/dist/` |
 | `npx vite build -c packages/golearn-extension/app/vite.config.ts --mode options` | 3.9 s / 2.0 s | `packages/golearn-extension/dist/app/` |
 | `npx vite build -c packages/golearn-extension/app/vite.config.ts --mode web` | 4.2 s / 1.6 s | `packages/golearn-extension/dist-web/` |
-| `npx vite build -c packages/gopractice/vite.config.ts` | 4.4 s / 1.5 s | `packages/gopractice/dist/` |
+| `npx vite build -c packages/goreview/app/vite.config.ts` | 4.4 s / 1.5 s | `packages/goreview/app/dist/` |
 
 Sizes after the second (warm) round, bytes on disk by `find -printf %s`:
 
@@ -293,9 +293,9 @@ Sizes after the second (warm) round, bytes on disk by `find -printf %s`:
 |---|---|---|---|---|
 | `packages/golearn-extension/dist` | 267 | 7,690,353 (7.33 MiB) | 6,113,784 (257 files) | `app/app.js` 586,513; `background.js` 496,425; `content.js` 464,384; `action/popup.js` 15,999 |
 | `packages/golearn-extension/dist-web` | 262 | 6,709,771 (6.40 MiB) | 6,113,784 | `assets/index-*.js` 587,167 |
-| `packages/gopractice/dist` | 262 | 6,957,894 (6.64 MiB) | 6,113,784 | `assets/index-*.js` 835,244 |
+| `packages/goreview/app/dist` | 262 | 6,957,894 (6.64 MiB) | 6,113,784 | `assets/index-*.js` 835,244 |
 
-A sibling session rebuilt `packages/gopractice/dist` at 09:30 (new hashed file name); the scan reads whatever is on disk.
+A sibling session rebuilt `packages/goreview/app/dist` at 09:30 (new hashed file name); the scan reads whatever is on disk.
 Without the three folders the test skips each check with the build command in its title and skip note.
 
 ### 8.2 What the scan compares

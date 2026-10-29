@@ -177,6 +177,21 @@ describe('the scan', () => {
     expect(a.state.scanned).toBe(5); // the four words of the new sentence and the link's
   });
 
+  it('a dictionary that does not have a name or another language word changes nothing (2026-10-25 rule kept); the words it was asked about are counted', async () => {
+    const shalom = String.fromCharCode(0x5E9, 0x5DC, 0x5D5, 0x5DD); // a Hebrew word, unpointed
+    document.getElementById('p')!.textContent = `${SENTENCE} Beni ${shalom}`;
+    const requested: string[][] = [];
+    const base = await make({ confirmForms: undefined }).start({ speak: false });
+    active!.stop();
+    const s = await make({ confirmForms: async (forms) => { requested.push(forms); return { ok: true, forms: Object.fromEntries(forms.map((f) => [f, null])) }; } }).start({ speak: false });
+    expect(s.marked).toEqual(base.marked);
+    expect(s.skipped).toBe(base.skipped);
+    expect(s).toMatchObject({ confirmed: 0, unconfirmed: 1 });
+    expect(requested).toHaveLength(1);
+    expect(requested[0]).toEqual([shalom]); // Beni is in the course word list (not asked); the Hebrew word is asked and not found
+    expect([...registry.values()].flatMap((h) => [...(h as FakeHighlight).ranges].map((r) => r.toString()))).not.toContain(shalom);
+  });
+
   it('a mark on the card ("New", "Seen" …) refreshes the word: its rows are asked again and the underline follows the mark', async () => {
     const a = make();
     await a.start({ speak: false });

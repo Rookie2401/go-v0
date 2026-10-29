@@ -2,7 +2,7 @@
 /**
  * Offline / failure audit — "what works offline" (brief §23), one capability at a time, with the network cut at the boundary.
  * Each capability is answered "works", "degraded" or "needs connection" by a test whose title says which; OFFLINE-FAILURE.md quotes
- * these titles. Real pieces throughout (worker, pack runtime with the real dictionary files, GoListen, GoTell, GoPractice context,
+ * these titles. Real pieces throughout (worker, pack runtime with the real dictionary files, GoListen, GoTell, GoReview context,
  * the Repository service); only `fetch` is cut.
  */
 import { afterEach, describe, expect, it } from 'vitest';
@@ -295,7 +295,7 @@ describe('export', () => {
     if (!out.ok) expect(out.message).toMatch(/cannot be reached/i);
   });
 
-  it('DEGRADED offline: a GoPractice device lets the learner see what is waiting to be sent (pending count) but has no whole-account export (that is the service\'s)', async () => {
+  it('DEGRADED offline: a GoReview device lets the learner see what is waiting to be sent (pending count) but has no whole-account export (that is the service\'s)', async () => {
     const s = make();
     const net = createNet(s);
     const a = await signUp(s, 'ana@example.com', 'setup');

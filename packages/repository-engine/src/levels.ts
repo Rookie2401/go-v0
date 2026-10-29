@@ -1,5 +1,5 @@
 /**
- * The six knowledge levels, computed (projection@4). One function, `levelOf`, turns a unit's dimension estimates and the learner's own
+ * The six knowledge levels, computed (projection@7). One function, `levelOf`, turns a unit's dimension estimates and the learner's own
  * latest mark into the level every app reads: new, seen, recognized, familiar, known, automatic (vocabulary and words in
  * `repository-contract/src/knowledge-levels.ts`; the full description is docs/ecosystem/KNOWLEDGE-LEVELS.md).
  *
@@ -9,10 +9,11 @@
  *   recognized  understood with help (a positive assistedRecognition), OR recognised at least once without help (a positive recognition
  *               observation) while the estimate is still below FAMILIAR_SCORE. A produced answer or a correct unaided recall counts too.
  *   familiar    a recognition dimension with score >= 0.6 over >= 2 observations.
- *   known       a recognition dimension with score >= 0.8 over >= 4 observations.
+ *   known       a recognition dimension with score >= 0.8 over >= 4 observations, >= 4 independent positive events, and >= 2 positive events
+ *               each at least 24 hours after the preceding qualifying positive (first success is not delayed).
  *   automatic   not inferred from production counts in the current model; it requires an explicit learner mark or preserved legacy state.
- * "A recognition dimension" is readingRecognition or listeningRecognition (the owner's rule: listening counts too) and, because a phrase or a
- * construction is understood as a whole, also phraseComprehension and grammaticalUnderstanding; the highest level any of them reaches counts.
+ * "A recognition dimension" is readingRecognition, listeningRecognition, phraseComprehension or grammaticalUnderstanding. The highest qualifying
+ * dimension determines the overall level; this does not assert equal mastery of production, listening and reading.
  * The score is the engine's own estimate (prior 0.5, weighted positives), so a self-report alone (weight <= 0.09) never reaches a threshold.
  *
  * WHAT THE LEARNER SAYS (`UnitKnowledge.selfMark`, already a level): the newest self-mark decides the level outright, and it holds until the
@@ -20,7 +21,7 @@
  * word's state):
  *   - a mark of `new` is released by ANY later observation (2026-10-10): "new" means not met, so meeting the word after saying so (a click
  *     that looks it up, an exposure, a help request, a failed attempt: anything dated after the mark) makes it at least `seen`; the level is
- *     max(seen, what the evidence says). An observation dated BEFORE the mark never releases it.
+ *     max(seen, what post-mark evidence says). Historical evidence never promotes a New reset. An observation dated BEFORE the mark never releases it.
  *   - every other mark is in force whatever comes after it: a lookup, an exposure, a help request, a failed or a correct answer neither
  *     lowers nor raises the level. (Until 2026-10-26 evidence two levels against the mark "contradicted" it, so opening the card of a word
  *     marked Known read it back down to Seen, and evidence two levels above "released" it upward; `MarkStatus` keeps both words for the
@@ -28,9 +29,8 @@
  * Without a mark, the level is what the evidence says, so the first lookup of a word takes it from New to Seen by itself.
  * `evidenceDims` is the unit folded WITHOUT its self-mark observations, so a self-report never counts toward a threshold it did not earn (the fold
  * builds it exactly; without it the row's own dimensions are used, self-report included, which can only add a weak observation).
- * `since` is the evidence dated after the mark, which the fold builds exactly from the unit's observations. Without it (a caller holding
- * only a stored row) the dimensions whose latest observation is after the mark stand in for it, which is coarser: a pre-mark lookup in a
- * dimension that was touched again counts as later.
+ * `since` is the evidence dated after the mark, which the fold builds exactly from the unit's observations. A caller holding only a stored row
+ * has no such history; the fallback can release New to Seen after a later meeting but conservatively cannot infer higher levels.
  */
 import { DIMENSIONS, KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_RANK } from '../../repository-contract/src';
 import type { Dimension, DimensionEstimate, KnowledgeLevel, UnitKnowledge } from '../../repository-contract/src';
@@ -40,7 +40,7 @@ export const LEVEL_THRESHOLDS = {
   /** familiar: recognition score and observations. */
   familiar: { score: 0.6, observations: 2 },
   /** known: recognition score and observations. */
-  known: { score: 0.8, observations: 4 },
+  known: { score: 0.8, observations: 4, independentPositiveEvents: 4, delayedIndependentPositiveEvents: 2, spacingMs: 24 * 60 * 60 * 1000, sourceReliability: 0.8 },
   /** A mark is contradicted / released when the evidence is this many levels away from it. */
   contradictionGap: 2,
 } as const;
@@ -51,7 +51,7 @@ export const RECOGNITION_LEVEL_DIMENSIONS: readonly Dimension[] = ['readingRecog
 export const PRODUCTION_LEVEL_DIMENSIONS: readonly Dimension[] = ['productiveRetrieval', 'contextualProduction'];
 
 /** The part of a dimension estimate the level rules read. */
-export type LevelEstimate = Pick<DimensionEstimate, 'observations' | 'positive' | 'negative' | 'score'> & Partial<Pick<DimensionEstimate, 'lastAt'>>;
+export type LevelEstimate = Pick<DimensionEstimate, 'observations' | 'positive' | 'negative' | 'score'> & Partial<Pick<DimensionEstimate, 'lastAt' | 'independentPositiveEvents' | 'delayedIndependentPositiveEvents' | 'lastIndependentPositiveAt'>>;
 export type LevelDimensions = Record<Dimension, LevelEstimate>;
 export type LevelInput = { dimensions: LevelDimensions; selfMark?: UnitKnowledge['selfMark'] };
 
@@ -67,7 +67,9 @@ export function evidenceLevelOf(dims: LevelDimensions): KnowledgeLevel {
   for (const d of RECOGNITION_LEVEL_DIMENSIONS) {
     const e = dims[d];
     if (!e || e.observations === 0) continue;
-    if (e.score >= T.known.score && e.observations >= T.known.observations) level = higher(level, 'known');
+    if (e.score >= T.known.score && e.observations >= T.known.observations &&
+      (e.independentPositiveEvents ?? 0) >= T.known.independentPositiveEvents &&
+      (e.delayedIndependentPositiveEvents ?? 0) >= T.known.delayedIndependentPositiveEvents) level = higher(level, 'known');
     else if (e.score >= T.familiar.score && e.observations >= T.familiar.observations) level = higher(level, 'familiar');
     else if (e.positive > 0) level = higher(level, 'recognized');
   }
@@ -84,12 +86,18 @@ export function holdsEvidenceAgainst(dims: LevelDimensions): boolean {
   return DIMENSIONS.some((d) => dims[d]?.negative > 0);
 }
 
-/** The dimensions whose latest observation is after `markAt` (all other dimensions emptied): the coarse stand-in for "evidence since the mark". */
+/**
+ * A stored-row-only fallback cannot separate pre- and post-mark sums. Mark touched dimensions only as a meeting,
+ * without carrying historical score or knowability aggregates into the New reset. Full projection folds pass exact
+ * post-mark dimensions from `finalizeRow` instead.
+ */
 function dimensionsTouchedAfter(dims: LevelDimensions, markAt: string): LevelDimensions {
   const out = {} as LevelDimensions;
   for (const d of DIMENSIONS) {
     const e = dims[d];
-    out[d] = e && e.lastAt !== undefined && Date.parse(e.lastAt) > Date.parse(markAt) ? e : { observations: 0, positive: 0, negative: 0, score: 0.5 };
+    out[d] = e && e.lastAt !== undefined && Date.parse(e.lastAt) > Date.parse(markAt)
+      ? { observations: 1, positive: 0, negative: 0, score: 0.5 }
+      : { observations: 0, positive: 0, negative: 0, score: 0.5 };
   }
   return out;
 }
@@ -105,7 +113,7 @@ export function markStatus(k: LevelInput, since?: LevelDimensions, evidenceDims?
   const fresh = since ?? dimensionsTouchedAfter(k.dimensions, mark.at);
   if (!DIMENSIONS.some((d) => fresh[d]?.observations > 0)) return { status: 'in-force', evidence };
   // a mark of "new" says "not met": any observation after it is a meeting, so the evidence decides (and it is never below seen)
-  if (mark.mark === 'new') return { status: 'released', evidence: higher('seen', evidence) };
+  if (mark.mark === 'new') return { status: 'released', evidence: higher('seen', evidenceLevelOf(fresh)) };
   // every other mark holds until the learner marks the word again (2026-10-26, the owner's rule): a lookup, an exposure, a help request, a
   // failed or a correct answer after the mark neither lowers nor raises the level. Before, evidence two levels against the mark contradicted
   // it, so opening the card of a word marked Known read it back down to Seen; and evidence two levels above released it upward.

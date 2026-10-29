@@ -6,8 +6,8 @@ import type { View } from './view';
 import { SURFACES } from '../surfaces';
 import { languageLabel } from './language';
 
-/** Where GoPractice lives, relative to this page, when this page is the extension's own (the build writes it to dist/practice/). */
-export const PRACTICE_HREF = '../practice/index.html';
+/** Where GoReview lives, relative to this page, when this page is the extension's own (the build writes it to dist/review/). */
+export const PRACTICE_HREF = '../review/index.html';
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const [session, progress, completion, active] = await Promise.all([ctx.state.getSession(), ctx.state.getProgress(), computeCompletion(ctx), ctx.activeLanguage()]);
@@ -32,7 +32,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       ),
     h('p', {}, ctx.inExtension
       ? h('span', {}, h('a', { class: 'btn primary', id: 'practise', href: PRACTICE_HREF }, 'Practise'), ' ', h('a', { class: 'btn', id: 'my-vocabulary', href: `${PRACTICE_HREF}#/vocabulary` }, 'My words'))
-      : h('span', { class: 'muted', id: 'practise-note' }, 'Practice (GoPractice) runs in the extension, on this device.'),
+      : h('span', { class: 'muted', id: 'practise-note' }, 'GoReview runs in the extension, on this device.'),
     ctx.inExtension ? ' ' : null, ctx.inExtension ? h('span', { class: 'muted' }, 'Review what you met and write in the language, without an account.') : null),
     p(`Works on: ${SURFACES.filter((s) => s.status !== 'not-supported').map((s) => s.name).join('; ')}.`, 'muted'),
     h('p', {}, h('a', { class: 'btn', href: '#/languages' }, 'Languages'), ' ', h('a', { class: 'btn', href: '#/sync' }, 'Sync settings'), ' ', h('a', { class: 'btn', href: '#/privacy' }, 'Privacy settings'), ' ', h('a', { class: 'btn', href: '#/diagnostics' }, 'Diagnostics'), ' ', h('a', { class: 'btn', href: '#/share' }, 'Look up shared text')),

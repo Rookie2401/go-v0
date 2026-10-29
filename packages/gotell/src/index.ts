@@ -1,5 +1,5 @@
 /**
- * GoTell — the writing workspace, independent of GoReview (docs/ecosystem/GOPRACTICE-DESIGN.md §3). It initialises with no
+ * GoTell — the writing workspace, independent of GoReview (docs/ecosystem/GOREVIEW-APP-DESIGN.md §3). It initialises with no
  * review schedule, no session and no review event. `createGoTellWorkspace` (below) is the small boundary: it reads what the
  * Repository knows about the learner's production ("words you can use"), lists the learner's private drafts and saves a
  * draft as a `PrivateDocument` with revisions. The writing engine proper (sentence-by-sentence checking, the assistance
@@ -7,7 +7,7 @@
  * screens reach all of it through the `TellEngine` port in ./workspace.
  *
  * Imports: the Repository contract, the typed API client, the sync package and (for guidance and the checker) the language
- * packs. Never GoReview: the two workspaces are siblings. The module has no DOM; the GoPractice shell renders it.
+ * packs. Never GoReview: the two workspaces are siblings. The module has no DOM; the GoReview shell renders it.
  */
 import type { PrivateDocument, UnitKnowledge } from '../../repository-contract/src';
 import type { ApiResult, DocumentMeta, RepositoryApi } from '../../repository-service/src/api';

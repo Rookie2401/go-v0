@@ -25,6 +25,57 @@ export interface ScanToken {
    * a number-like run. Active leaves such a word alone, neither underlined nor recorded (2026-10-25).
    */
   known: boolean;
+  /**
+   * True when the word was not in the analyser's word list but the language's dictionary (its forms index) has it: `known` was
+   * then set and the lemma id added after tokenising (`applyConfirmations`), never by the analyser (2026-10-27).
+   */
+  confirmed?: boolean;
+}
+
+/** What the dictionary said about a normalised form id (`form:<lang>:<normalised>`): the lemma id to credit it with, or `null` = the dictionary does not have it. */
+export type Confirmations = ReadonlyMap<string, string | null>;
+
+const FORM_LETTERS = /^[\p{L}\p{M}]+$/u;
+
+/**
+ * The form ids of the words the analyser did not confirm that are worth asking the dictionary about: words of letters only, once each,
+ * and not the ones already answered. A name, a foreign word or a typo is asked too (the dictionary decides), but a number-like run or a
+ * run with punctuation never is.
+ */
+export function formsToConfirm(tokens: readonly ScanToken[], languageId: string, answered: Confirmations): string[] {
+  const prefix = `form:${languageId}:`;
+  const out = new Set<string>();
+  for (const t of tokens) {
+    if (t.known) continue;
+    const id = t.ids[0];
+    if (!id || !id.startsWith(prefix) || answered.has(id)) continue;
+    if (FORM_LETTERS.test(id.slice(prefix.length))) out.add(id);
+  }
+  return [...out];
+}
+
+/**
+ * Apply the dictionary's answers to the tokens the analyser did not confirm: a hit becomes `known` and gets its lemma id, the same id
+ * shape the scanner gives an analysed word. The tokens are the scanner's per-node CACHE entries, so a hit is written onto the cached token
+ * itself: it stays confirmed for as long as the node's text is unchanged (an edited node is tokenised afresh and confirmed again from the
+ * answers, with no new request). `known` only ever flips from false to true here, and the answers never change within a tab, so the
+ * cache is not frozen in a wrong state. Returns the tokens it confirmed and the ones the dictionary was asked about and did not have.
+ */
+export function applyConfirmations(tokens: readonly ScanToken[], answers: Confirmations): { confirmed: number; unconfirmed: number } {
+  let confirmed = 0;
+  let unconfirmed = 0;
+  for (const t of tokens) {
+    if (t.confirmed) { confirmed++; continue; }
+    if (t.known) continue;
+    const answer = answers.get(t.ids[0]);
+    if (answer === undefined) continue; // never asked (or not answered yet)
+    if (answer === null) { unconfirmed++; continue; }
+    t.known = true;
+    t.confirmed = true;
+    if (!t.ids.includes(answer)) t.ids.push(answer);
+    confirmed++;
+  }
+  return { confirmed, unconfirmed };
 }
 
 export interface ScannerOptions {

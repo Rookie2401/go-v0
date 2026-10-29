@@ -48,6 +48,7 @@
     "dict:verify-full": "vite-node --config scripts/vite.config.ts scripts/dict-verify-full.mts",
     "dict:publish": "vite-node --config scripts/vite.config.ts scripts/dict-publish.mts",
     "dict:build-reverse": "vite-node --config scripts/vite.config.ts scripts/build-reverse-gloss.mts",
+    "dict:build-forms": "vite-node --config scripts/vite.config.ts scripts/build-forms-index.mts",
     "rights:check": "vite-node --config scripts/vite.config.ts scripts/rights-gate.mts",
     "hi:gold": "vite-node --config scripts/vite.config.ts scripts/hi-gold.mts",
     "hi:eval-gold": "vite-node --config scripts/vite.config.ts scripts/eval-hi-gold.mts",
@@ -91,7 +92,7 @@
     "reader:fixture": "vite-node --config scripts/vite.config.ts packages/controlled-reader/scripts/make-fixture.mts",
     "reader:build": "vite build --config packages/controlled-reader/vite.config.ts --mode prototype",
     "ext:build:harness": "vite build -c packages/golearn-extension/vite.config.ts --mode content-harness",
-    "local:build": "npm run ext:build && vite build -c packages/golearn-extension/app/vite.config.ts --mode options && vite build -c packages/golearn-extension/app/vite.config.ts --mode web && vite build -c packages/gopractice/vite.config.ts && vite build -c packages/gopractice/vite.config.ts --mode extension",
+    "local:build": "npm run ext:build && vite build -c packages/golearn-extension/app/vite.config.ts --mode options && vite build -c packages/golearn-extension/app/vite.config.ts --mode web && vite build -c packages/goreview/app/vite.config.ts && vite build -c packages/goreview/app/vite.config.ts --mode extension",
     "local:seed": "vite-node scripts/local/seed-teams.ts",
     "local:service": "vite-node packages/repository-service/src/main.ts --port 8790 --data data/local-repository --host 127.0.0.1"
   },

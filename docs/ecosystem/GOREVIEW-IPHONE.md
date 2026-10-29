@@ -9,7 +9,7 @@ and the same account, and while it is open it hears about new lookups within sec
 A **Progressive Web App**, not a store app. The same static site as GoPractice, built in a third mode:
 
 ```
-npx vite build -c packages/gopractice/vite.config.ts --mode review      ->  packages/gopractice/dist-review/
+npx vite build -c packages/goreview/app/vite.config.ts --mode review      ->  packages/goreview/app/dist-review/
 ```
 
 It adds, to the ordinary build: a web manifest ("GoReview", standalone, portrait, starts at `#/review`), icons (an SVG, a 180 px
@@ -25,8 +25,8 @@ Build options (environment variables):
 
 | variable | effect |
 | --- | --- |
-| `GOPRACTICE_DICT=hi` (comma list: `sq,es,de,hi,th`) | which dictionaries are copied in. The default is all five and the folder is about **880 MB** (de 440, es 296, hi 94, sq 35, th 20): too big for comfort on GitHub Pages (1 GB site limit) and slow to drag to Netlify. Ship only the language(s) you study on the phone, e.g. `GOPRACTICE_DICT=sq,hi`. The exercises read glosses from the dictionary shard by shard. |
-| `GOPRACTICE_OUT=<folder>` | build somewhere other than `dist-review/`. |
+| `GOREVIEW_DICT=hi` (comma list: `sq,es,de,hi,th`) | which dictionaries are copied in. The default is all five and the folder is about **880 MB** (de 440, es 296, hi 94, sq 35, th 20): too big for comfort on GitHub Pages (1 GB site limit) and slow to drag to Netlify. Ship only the language(s) you study on the phone, e.g. `GOREVIEW_DICT=sq,hi`. The exercises read glosses from the dictionary shard by shard. |
+| `GOREVIEW_OUT=<folder>` | build somewhere other than `dist-review/`. |
 
 ## Hosting `dist-review/` over HTTPS
 
@@ -38,7 +38,7 @@ update it later by dragging a fresh folder onto the same site.
 
 **GitHub Pages**: push the contents of `dist-review/` to a `gh-pages` branch of a repository (an orphan branch holding only the
 built files), then Settings -> Pages -> that branch. The app works from a sub-path (`https://<you>.github.io/goreview/`): every
-URL in it is relative and the routes are hash routes. Keep the site under the 1 GB limit (see `GOPRACTICE_DICT`).
+URL in it is relative and the routes are hash routes. Keep the site under the 1 GB limit (see `GOREVIEW_DICT`).
 
 To publish an update, build again and put the new folder up the same way. Phones that have the app pick the new build up the
 next time they open it (see "Updates").
@@ -56,8 +56,9 @@ has to be **reachable from the phone**:
   2. **A development tunnel** to the service running on the laptop (a Cloudflare quick tunnel, `ngrok http 8790`, Tailscale Funnel,
      or similar): an `https://….` address that forwards to `127.0.0.1:8790`. Fine for trying it; the address changes with some tunnels
      and it only works while the laptop and the tunnel are running.
-- Tell the app the address one of two ways: put it in `dist-review/config.json` (`"serviceUrl": "https://repository.example.org"`)
-  before you host the folder, or type it under "Service address" on the sign-in page of the phone (it is remembered on the phone).
+- Tell the app the address by putting it in `dist-review/config.json` (`"serviceUrl": "https://repository.example.org"`, written by
+  `GOREVIEW_SERVICE_URL` at build time) before you host the folder. Until 2026-10-28 it could also be typed under "Service address" on
+  the phone's sign-in page; that field is gone, the address is the build's.
   The service must allow the app's origin (CORS) for the `Authorization` header.
 - **No secrets in the repository or in `config.json`.** The service address is public information; a password and a token are
   typed on the phone and live only in that phone's storage. Do not paste tokens, keys or passwords into any file of this repo.
@@ -128,6 +129,12 @@ time the app returns to the foreground.)
 
 The Repository service is reachable at https://repo.golearn-global-languages.com through a named Cloudflare tunnel from the
 owner's PC (infra/cloudflare/README.md: tunnel goreview-repository, zone golearn-global-languages.com). Build the installable
-edition against it with GOPRACTICE_SERVICE_URL=https://repo.golearn-global-languages.com (the copied config.json gets that
+edition against it with GOREVIEW_SERVICE_URL=https://repo.golearn-global-languages.com (the copied config.json gets that
 serviceUrl; the source config.json keeps the local address), and use the same address as REPOSITORY_SERVICE_URL for the
 next TestFlight build. The PC must still be on and online; the tunnel is not yet installed as a Windows service.
+
+**Default address (2026-10-27).** The owner made `https://go-v0.onrender.com` the default address of every system: the hosted GoReview and Biblia and the setup
+app are built and published with it, the extension's `app/config.json` names it, and the iPhone shells take it as `REPOSITORY_SERVICE_URL`. The
+canonical name `https://repo.golearn-global-languages.com` is a DNS-only CNAME to the same Render service; it stays valid for anyone who typed it, but it is
+blocked by some home routers (the owner's among them), which is why it is no longer the default anywhere. Build against the default:
+`GOREVIEW_SERVICE_URL=https://go-v0.onrender.com` for the installable GoReview, `REPOSITORY_SERVICE_URL=https://go-v0.onrender.com` for a TestFlight stage.

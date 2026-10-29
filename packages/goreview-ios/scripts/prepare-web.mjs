@@ -1,14 +1,24 @@
-import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { spawnSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import { isIP } from 'node:net';
+import { verifyReleaseArtifact } from '../../../scripts/goreview-release.mjs';
+import { createNativePayloadManifest, resolveNativeBuildMode, transformNativeWebPayload, verifyNativePayloadManifest } from './native-payload.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const pkg = path.resolve(here, '..');
 const repo = path.resolve(pkg, '../..');
 const web = path.join(pkg, 'web');
-const release = process.argv.includes('--release');
+const args = process.argv.slice(2);
+const mode = resolveNativeBuildMode(args);
+const release = mode === 'release';
+const sourceCommitAtStart = release ? execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo, encoding: 'utf8' }).trim() : undefined;
+function assertReleaseHeadUnchanged() {
+  if (release && execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo, encoding: 'utf8' }).trim() !== sourceCommitAtStart) {
+    throw new Error('Git HEAD changed during the clean GoReview release build.');
+  }
+}
 
 function serviceUrl(value) {
   if (!value) throw new Error('REPOSITORY_SERVICE_URL is required for release preparation. Set it to the public HTTPS Repository service URL.');
@@ -67,14 +77,16 @@ if (healthCheckUrl) console.warn(`prepare-web: health check sent to ${healthChec
 if (release) await verifyRepositoryEndpoint(healthCheckUrl ? healthCheckUrl.origin + healthCheckUrl.pathname.replace(/\/+$/, '') : releaseServiceUrl);
 
 const vite = path.join(repo, 'node_modules', 'vite', 'bin', 'vite.js');
-const build = spawnSync(process.execPath, [vite, 'build', '-c', 'packages/gopractice/vite.config.ts', '--mode', 'review'], {
+const build = spawnSync(process.execPath, [vite, 'build', '-c', 'packages/goreview/app/vite.config.ts', '--mode', 'review'], {
   cwd: repo,
-  env: { ...process.env, GOPRACTICE_OUT: path.join(pkg, '.review-build') },
+  env: { ...process.env, GOREVIEW_OUT: path.join(pkg, '.review-build'), GOREVIEW_RELEASE_MODE: mode },
   stdio: 'inherit',
 });
 if (build.status !== 0) throw new Error(`GoReview review build failed (exit ${build.status ?? 'unknown'}).`);
 
 const source = path.join(pkg, '.review-build');
+verifyReleaseArtifact(source, { requireRelease: release, compareCurrentSource: true, projectRoot: repo });
+assertReleaseHeadUnchanged();
 await rm(web, { recursive: true, force: true });
 await mkdir(web, { recursive: true });
 await cp(source, web, { recursive: true });
@@ -89,21 +101,13 @@ const biblia = spawnSync(process.execPath, [vite, 'build', '-c', 'packages/bibli
 });
 if (biblia.status !== 0) throw new Error(`Biblia build failed (exit ${biblia.status ?? 'unknown'}).`);
 
-const configPath = path.join(web, 'config.json');
-const config = JSON.parse(await readFile(configPath, 'utf8'));
-if (release) config.serviceUrl = releaseServiceUrl;
-config.bibliaUrl = './biblia/index.html';
-await writeFile(configPath, `${JSON.stringify(config, null, 2)}\n`);
+const transformations = transformNativeWebPayload(web, { ...(releaseServiceUrl ? { serviceUrl: releaseServiceUrl } : {}) });
+assertReleaseHeadUnchanged();
 
-// The PWA worker is for the browser edition. Capacitor packages immutable app assets, so remove its registration and files.
-const htmlPath = path.join(web, 'index.html');
-let html = await readFile(htmlPath, 'utf8');
-html = html.replace(/<script>\s*[\s\S]*?serviceWorker\.register\(['"]\.\/sw\.js['"]\)[\s\S]*?<\/script>\s*/i, '');
-html = html.replace(/<link\s+rel="manifest"[^>]*>\s*/i, '');
-html = html.replace(/<meta\s+name="(?:apple-mobile-web-app-capable|mobile-web-app-capable|apple-mobile-web-app-status-bar-style|apple-mobile-web-app-title)"[^>]*>\s*/gi, '');
-html = html.replace(/<link\s+rel="apple-touch-icon"[^>]*>\s*/i, '');
-await writeFile(htmlPath, html);
-await rm(path.join(web, 'sw.js'), { force: true });
-await rm(path.join(web, 'manifest.webmanifest'), { force: true });
+createNativePayloadManifest(web, {
+  mode,
+  transformations,
+});
+verifyNativePayloadManifest(web, { requireRelease: release });
 
-console.log(`Prepared bundled GoReview web assets at ${path.relative(pkg, web)}${release ? ' with validated Bundle ID and healthy HTTPS Repository URL' : ''}.`);
+console.log(`Prepared and verified ${mode} native web payload at ${path.relative(pkg, web)}${release ? ' with validated Bundle ID and healthy HTTPS Repository URL' : ''}.`);

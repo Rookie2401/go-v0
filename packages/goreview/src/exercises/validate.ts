@@ -115,7 +115,8 @@ export function validateExercise(exercise: Exercise): { ok: boolean; issues: str
         if (e.prompt.sentenceWithGap.split(GAP).length !== 2) bad('the sentence has to hold exactly one gap');
         const first = accepted[0] ? normalizeAnswer(accepted[0], 'exact') : '';
         if (first) {
-          const rest = normalizeAnswer(e.prompt.sentenceWithGap.replace(GAP, ' '), 'exact').split(/[^\p{L}\p{N}']+/u);
+          // combining marks (Devanagari signs, Thai vowel / tone marks, Hebrew points) are part of a word, not separators
+          const rest = normalizeAnswer(e.prompt.sentenceWithGap.replace(GAP, ' '), 'exact').split(/[^\p{L}\p{M}\p{N}']+/u);
           if (rest.includes(first)) bad('the rest of the sentence still contains the answer');
         }
         if ((e.family === 'sentence-completion' || e.family === 'grammar-application') && !accepted.some((a) => normalizeAnswer(a, 'exact') === normalizeAnswer(ctx.surface, 'exact'))) bad('the word that was removed is not an accepted answer');

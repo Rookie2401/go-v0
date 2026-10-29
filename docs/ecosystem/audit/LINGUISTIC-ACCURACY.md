@@ -37,7 +37,7 @@ Run today, all passing unless noted:
 | `test/repository` | 18 | 460 | 460 |
 | `test/extension/parser.test.ts` + `card.test.ts` | 2 | 52 | 52 |
 | `test/goreview/exercises` (real pack, adapter, dictionary) | 6 | 121 | 121 |
-| `test/gopractice/real-engine.test.ts` | 1 | 1 | 1 |
+| `test/goreview-app/real-engine.test.ts` | 1 | 1 | 1 |
 | `test/bench/sq-*.test.ts` | 7 | 94 | 93 (1 failure, not linguistic: `sq-library-assets` source-bytes hash mismatch) |
 | whole `test/adapters` directory | 85 | 4691 | 4691 |
 

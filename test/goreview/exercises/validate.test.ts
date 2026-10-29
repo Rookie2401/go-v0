@@ -179,6 +179,22 @@ describe('validateExercise catches a bad exercise', () => {
     expect(issues(d)).toContain('still contains the answer');
   });
 
+  it('the answer-leak check keeps combining marks inside a word (Hindi signs), and a word differing in its last sign is not a leak', () => {
+    const cp = (...c: number[]) => String.fromCodePoint(...c);
+    const hindi = cp(0x939, 0x93F, 0x928, 0x94D, 0x926, 0x940); // हिन्दी
+    const hindu = cp(0x939, 0x93F, 0x928, 0x94D, 0x926, 0x942); // हिन्दू
+    const hi = (rest: string): ReviewExercise => {
+      const e = clone(good.cloze!);
+      const sentence = `${hindi} ${rest}`;
+      e.context = { sentence, surface: hindi, start: 0, end: hindi.length, source: 'pack-validation' };
+      e.answerKey.accepted = [hindi];
+      e.prompt.sentenceWithGap = `${GAP} ${rest}`;
+      return e;
+    };
+    expect(issues(hi(`${hindi} है`))).toContain('still contains the answer');
+    expect(issues(hi(`${hindu} है`))).not.toContain('still contains the answer');
+  });
+
   it('choice questions: the answer among distinct options, exactly one correct, no options for typed ones', () => {
     const a = clone(good.feature!);
     a.prompt.options = a.prompt.options!.filter((o) => o !== a.answerKey.accepted[0]);

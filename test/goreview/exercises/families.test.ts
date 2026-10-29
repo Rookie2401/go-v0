@@ -83,7 +83,7 @@ describe('written-recognition', () => {
     expect(e.answerKey.accepted).toEqual(expect.arrayContaining(['house, home', 'house', 'home']));
     expect(gradeAndRate(e, resp({ typed: 'Home' }), { now: '' })).toMatchObject({ grading: { outcome: 'correct' }, rating: 3 });
     expect(gradeAndRate(e, resp({ typed: 'dog' }), { now: '' })).toMatchObject({ grading: { outcome: 'incorrect' }, rating: 1 });
-    expect(gradeAndRate(e, resp({ selfGrade: 'hard' }), { now: '' })).toMatchObject({ grading: { outcome: 'partial' }, rating: 2 });
+    expect(gradeAndRate(e, resp({ selfGrade: 'hard' }), { now: '' })).toMatchObject({ grading: { outcome: 'correct' }, rating: 2 });
     // the gloss shown is the word list’s own, so no dictionary attribution is owed ...
     expect(e.answerKey.explanation).not.toContain('Wiktionary');
     // ... but a meaning that comes from the dictionary carries it
@@ -103,7 +103,7 @@ describe('meaning-to-form', () => {
     expect(e.prompt.stimulusText).toBeUndefined();
     expect(e.answerKey.accepted).toEqual(['libër']);
     expect(e.responseMode).toBe('typed');
-    expect(gradeAndRate(e, resp({ typed: 'liber' }), { now: '' })).toMatchObject({ grading: { outcome: 'partial' }, rating: 2 });
+    expect(gradeAndRate(e, resp({ typed: 'liber' }), { now: '' })).toMatchObject({ grading: { outcome: 'partial' }, rating: 1 });
     expect(gradeAndRate(e, resp({ typed: 'libër' }), { now: '' }).rating).toBe(3);
   });
 
@@ -122,7 +122,7 @@ describe('meaning-to-form', () => {
     const e = await ok(w, 'meaning-to-form', IDS.shkolle, ctxOf(), forged);
     expect(e.answerKey.accepted).toEqual(['shkollën']);
     expect(e.answerKey.partial).toEqual(['shkollë']);
-    expect(gradeAndRate(e, resp({ typed: 'shkollë' }), { now: '' })).toMatchObject({ grading: { outcome: 'partial' }, rating: 2 });
+    expect(gradeAndRate(e, resp({ typed: 'shkollë' }), { now: '' })).toMatchObject({ grading: { outcome: 'partial' }, rating: 1 });
     expect(gradeAndRate(e, resp({ typed: 'shkollën' }), { now: '' }).grading.outcome).toBe('correct');
   });
 
@@ -302,7 +302,7 @@ describe('sentence-completion', () => {
     expect(e.prompt.sentenceWithGap).not.toContain('shkollë');
     expect(e.context).toMatchObject({ surface: 'shkollë', source: 'pack-validation' });
     expect(gradeAndRate(e, resp({ typed: 'shkollë' }), { now: '' }).rating).toBe(3);
-    expect(gradeAndRate(e, resp({ typed: 'shkolle' }), { now: '' })).toMatchObject({ grading: { outcome: 'partial' }, rating: 2 });
+    expect(gradeAndRate(e, resp({ typed: 'shkolle' }), { now: '' })).toMatchObject({ grading: { outcome: 'partial' }, rating: 1 });
     const l = await ok(w, 'sentence-completion', IDS.liber);
     expect(l.prompt.sentenceWithGap).toBe('Ajo ka një _____.'); // the provisional occurrence "librin" is never the gap
   });

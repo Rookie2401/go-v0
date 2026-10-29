@@ -12,7 +12,7 @@ function trustedReviewSender(senderUrl: string | undefined, extensionId: string 
   try {
     const u = new URL(senderUrl);
     return (u.protocol === 'chrome-extension:' || u.protocol === 'moz-extension:') && !u.username && !u.password && u.hostname === extensionId &&
-      u.pathname === '/practice/index.html' && !u.search;
+      u.pathname === '/review/index.html' && !u.search;
   } catch { return false; }
 }
 

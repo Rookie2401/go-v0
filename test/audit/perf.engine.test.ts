@@ -112,9 +112,9 @@ async function seed(kind: 'memory' | 'sqlite', count: number): Promise<{ store: 
   return { store, engine: createProjectionEngine({ store, now: clock }), events };
 }
 
-describe.each([['memory'], ['sqlite']] as const)('projection fold on the %s store (projection@5)', (kind) => {
+describe.each([['memory'], ['sqlite']] as const)('projection fold on the %s store (projection@6)', (kind) => {
   it.each([[1000, 7], [10000, 5]] as const)('PF-M2x: %i events, full rebuild + pure fold + one-event increment', async (count, runs) => {
-    expect(MODEL_VERSION).toBe('projection@5');
+    expect(MODEL_VERSION).toBe('projection@6');
     const { store, engine } = await seed(kind, count);
     const tag = `${kind} ${count >= 1000 ? `${count / 1000}k` : count}`;
     const idBase = kind === 'memory' ? 20 : 26;
@@ -247,7 +247,7 @@ function walk(dir: string): Array<{ rel: string; bytes: number; gzip: number }> 
 
 describe('built artefacts (not built here: read as they stand)', () => {
   const targets: Array<[string, string]> = [
-    ['PF-M50', 'packages/golearn-extension/dist'], ['PF-M51', 'packages/golearn-extension/dist-web'], ['PF-M52', 'packages/gopractice/dist'],
+    ['PF-M50', 'packages/golearn-extension/dist'], ['PF-M51', 'packages/golearn-extension/dist-web'], ['PF-M52', 'packages/goreview/app/dist'],
   ];
   it.each(targets)('%s %s', (id, rel) => {
     const dir = path.join(REPO, rel);

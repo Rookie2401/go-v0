@@ -19,7 +19,7 @@
 
 - No dictionary panel of its own: Biblia's BDB / Abbott-Smith HTML entries are not shown; the card's Meanings come from the analysers' glosses
   (BDB / Strong's short glosses for the Tanakh, Dodson / Abbott-Smith / Strong's for the New Testament) until the he / el dictionaries exist.
-- No search, vocabulary list or progress screens: vocabulary and knowledge live in the Repository and are shown by GoPractice; Biblia keeps
+- No search, vocabulary list or progress screens: vocabulary and knowledge live in the Repository and are shown by GoReview; Biblia keeps
   only the last position per device.
 - No per-token gold hint yet: the source's reading of the very token (the `w` column) reaches the card through the installed full index, which
   carries every reading of that written form; a form the Bible reads two ways is shown with both, the commoner first (PLAN14 follow-up).
@@ -33,7 +33,7 @@ npx vite -c packages/biblia/vite.config.ts  # development server (port 5199)
 vite build -c packages/biblia/vite.config.ts                   # packages/biblia/dist
 vite build -c packages/biblia/vite.config.ts --mode extension  # packages/golearn-extension/dist/biblia/ (after npm run ext:build)
 npm run biblia:build-ext                    # the same; since 2026-10-23 npm run local:build no longer runs it (the extension links to the hosted edition instead)
-BIBLIA_SERVICE_URL=https://repo.golearn-global-languages.com npm run biblia:build-standalone   # packages/biblia/dist-standalone: the installable web app
+BIBLIA_SERVICE_URL=https://go-v0.onrender.com npm run biblia:build-standalone   # packages/biblia/dist-standalone: the installable web app
 ```
 
 Standalone edition (2026-10-22): `--mode standalone` builds the same site as an installable web app (docs/ecosystem/BIBLIA-STANDALONE.md,

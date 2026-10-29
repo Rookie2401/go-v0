@@ -12,15 +12,15 @@ https://appstoreconnect.apple.com/apps/6822923834/testflight/ios
 | EAS submissions | `36ad7d87-13af-4692-8191-b251c1b2cf98` failed ("Unknown error", see below); `18c3d4d3-b08e-44f0-aa50-b1074d99dacf` uploaded |
 | staged version | 1.0.0 (8), bundle `com.cjwalker.goreview` |
 | Repository address in the bundle | `https://repo.golearn-global-languages.com` (the named Cloudflare tunnel, now the Windows service `cloudflared`) |
-| web assets staged | 216 MB: GoReview + Hindi and Latin dictionaries (`GOPRACTICE_DICT=hi,la`) + **Biblia 49 MB** (texts, the Biblical Hebrew and Koine indexes whole, the Ancient Greek, Modern Greek and Modern Hebrew shards) |
+| web assets staged | 216 MB: GoReview + Hindi and Latin dictionaries (`GOREVIEW_DICT=hi,la`) + **Biblia 49 MB** (texts, the Biblical Hebrew and Koine indexes whole, the Ancient Greek, Modern Greek and Modern Hebrew shards) |
 | IPA | 67,446,273 bytes (the dictionaries and shards compress well) |
 | what is in it | everything committed through the Hebrew/Greek shard work of 2026-10-22 plus this build's Biblia-in-app changes (committed with this file) |
 
 ## What changed for this build
 
-- `packages/gopractice/config.ts`: `config.json` may carry `bibliaUrl` (a relative page `./…` or https); `ports.ts` `links.biblia`;
+- `packages/goreview/app/config.ts`: `config.json` may carry `bibliaUrl` (a relative page `./…` or https); `ports.ts` `links.biblia`;
   `main.ts` passes it (the extension's GoPractice page links `../biblia/index.html` on its own); `screens/review.ts` renders the
-  fifth home entry `data-entry="biblia"` when the link exists. Tests: `test/gopractice/home.test.ts`, `shell.test.ts`.
+  fifth home entry `data-entry="biblia"` when the link exists. Tests: `test/goreview-app/home.test.ts`, `shell.test.ts`.
 - `packages/biblia/main.ts`: on a native Capacitor platform the page reads `../config.json`, takes the app's session from Keychain
   (`createMobileRuntime(window).getSession(serviceUrl)`) and records through `createRepositoryApi` with that token (recorder mode
   `'app'`, device `iphone:<platform>`); without a session it is a reader only and says "Sign in to GoReview…". `src/app.ts`: the
@@ -54,7 +54,7 @@ the first submission's log there if the reason matters.
 cd packages\goreview-ios
 $env:REPOSITORY_SERVICE_URL='https://repo.golearn-global-languages.com'
 $env:REPOSITORY_HEALTH_CHECK_URL='http://127.0.0.1:8790'   # local staging check only (router blocks the domain here)
-$env:GOPRACTICE_DICT='hi,la'
+$env:GOREVIEW_DICT='hi,la'
 $env:GOREVIEW_BUNDLE_ID='com.cjwalker.goreview'
 $env:GOREVIEW_BUILD_NUMBER='8'
 $env:GOREVIEW_MARKETING_VERSION='1.0.0'

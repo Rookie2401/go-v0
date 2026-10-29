@@ -72,6 +72,17 @@ export interface AppHandle {
   destroy(): void;
 }
 
+/**
+ * The Go mark's image for the top bar: app/icons/go-logo.png (a copy of packages/shared-brand/go-logo.png, kept by scripts/sync-go-brand.ps1),
+ * resolved against the page itself so the absolute URL holds wherever the stylesheet lives (the web build bundles it under assets/).
+ * Never import.meta.url: the extension's options page is one classic script, where that is undefined and the constructor throws
+ * (2026-10-28: the setup page opened blank from the toolbar).
+ */
+export function brandMarkUrl(doc: Document): string {
+  const rel = 'icons/go-logo.png';
+  try { return new URL(rel, doc.baseURI || undefined).href; } catch { return `./${rel}`; }
+}
+
 export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   const win = deps.win;
   let seq = 0;
@@ -85,7 +96,9 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   const statusLink = h('a', { href: '#/home', id: 'status-link', class: 'top-link' }, 'Status');
   const cog = h('a', { href: '#/settings', id: 'settings-link', class: 'cog', 'aria-label': 'Settings', title: 'Settings' }, h('span', { 'aria-hidden': 'true' }, '⚙'));
   const bar = h('header', { class: 'topbar' },
-    h('a', { class: 'brand', href: '#/languages' }, 'GoLearn'), titleEl,
+    // the Go mark (the G and the globe, packages/shared-brand) as a silhouette filled with the accent colour, beside the name
+    h('a', { class: 'brand go-brand', href: '#/languages', 'aria-label': 'GoLearn home' },
+      h('span', { class: 'go-brand-mark', 'aria-hidden': 'true', style: `--go-brand-mask: url("${brandMarkUrl(deps.doc)}")` }), h('span', {}, 'GoLearn')), titleEl,
     h('nav', { class: 'top-actions', 'aria-label': 'GoLearn' }, statusLink, cog));
   const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
   const shell = h('div', { class: 'shell' }, bar, main);

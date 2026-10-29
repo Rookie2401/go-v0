@@ -100,7 +100,7 @@ import {
   buildCardAdded, createFsrsScheduler, createSessionRunner, foldDeckItems, planSession, registry, FAMILY_DIMENSION,
   type ExerciseFamily, type ReviewPreferences, type SessionPlan, type SessionRunner,
 } from '../../packages/goreview/src';
-import { packFactsFor } from '../../packages/gopractice/packFacts';
+import { packFactsFor } from '../../packages/goreview/app/packFacts';
 import type { AssessmentSource } from '../../packages/golisten/src/contracts';
 import { createMemoryArea, type KeyValueArea } from '../../packages/repository-sync/src';
 import { createDevice, serverEvents, type Device } from './privacy.support';

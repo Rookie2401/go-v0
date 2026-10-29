@@ -1,6 +1,6 @@
 /**
  * The six knowledge levels (owner, 2026-10-10): how well a learner knows a unit, as one scale shared by the Repository
- * (the projection computes `UnitKnowledge.level`), GoLearn (the underline on the page, the card's rating row), GoPractice
+ * (the projection computes `UnitKnowledge.level`), GoLearn (the underline on the page, the card's rating row), GoReview
  * (what to draw from) and GoReview (review is a natural progression along this scale, not a separate metric).
  *
  * The thresholds live in the engine (`packages/repository-engine`, `levelOf`), documented there and in

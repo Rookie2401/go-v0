@@ -40,10 +40,12 @@
  * (an `exposure`/`assistedRecognition` target means "the learner has only met or been helped with it": the next honest
  * question is plain recognition.)
  */
-import { KNOWLEDGE_LEVEL_WORDS } from '../../../repository-contract/src';
+import { ANALYSIS_STATUSES, KNOWLEDGE_LEVEL_WORDS, VALIDATION_LEVELS, provenanceOf } from '../../../repository-contract/src';
 import type { Dimension, KnowledgeLevel, ReviewCandidate, UnitKnowledge } from '../../../repository-contract/src';
 import { FAMILY_DIMENSION, REPOSITORY_DIMENSION } from '../types';
 import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeDecision, IntakeInput, IntakeOutcome } from '../types';
+import { reviewEligibility } from '../planner/eligibility';
+import { choosePractice } from '../planner/learning-policy';
 import { eligibleByKnowability, hasConfirmedAutomaticFailure, seenEligibility } from '../planner/priority-policy';
 
 export const SCORE_TEST_NOW = 0.5;
@@ -66,13 +68,13 @@ export const reasonTokens = (reasons: readonly string[]): string[] => reasons.fl
 export const isRecognitionDimension = (d: Dimension): boolean => RECOGNITION.has(d);
 
 /** The family (and so the assessment dimension) a candidate is tested through. */
-export function proposeFor(candidate: Pick<ReviewCandidate, 'kind' | 'targetDimension'>, secondaryPractice = false): { dimension: AssessmentDimension; family: ExerciseFamily } {
-  if (!secondaryPractice) {
+export function proposeFor(candidate: Pick<ReviewCandidate, 'kind' | 'targetDimension' | 'objectiveDimension'>, secondaryPractice = false): { dimension: AssessmentDimension; family: ExerciseFamily } {
+  if (!secondaryPractice && candidate.objectiveDimension === undefined) {
     const family: ExerciseFamily = candidate.kind === 'multiword' ? 'phrase-comprehension' : 'written-recognition';
     return { dimension: FAMILY_DIMENSION[family], family };
   }
   let family: ExerciseFamily;
-  switch (candidate.targetDimension) {
+  switch (candidate.objectiveDimension ?? candidate.targetDimension) {
     case 'productiveRetrieval': family = 'meaning-to-form'; break;
     case 'grammaticalUnderstanding': family = candidate.kind === 'form' ? 'morphological-identification' : 'grammar-application'; break;
     case 'listeningRecognition': family = 'audio-to-meaning'; break;
@@ -84,7 +86,7 @@ export function proposeFor(candidate: Pick<ReviewCandidate, 'kind' | 'targetDime
 
 const pct = (x: number): string => `${Math.round(x * 100)}%`;
 
-/** What the level means for the next question (shown in the reasons, so GoPractice says why a unit is asked as it is). */
+/** What the level means for the next question (shown in the reasons, so GoReview says why a unit is asked as it is). */
 const LEVEL_ASK: Record<KnowledgeLevel, string> = {
   new: 'not understood yet, so a recognition question',
   seen: 'met but not shown to be understood, so a recognition question',
@@ -107,15 +109,17 @@ const sameDimension = (item: DeckItem, d: Dimension): boolean => REPOSITORY_DIME
 
 export function decideIntake(input: IntakeInput): IntakeOutcome {
   const { candidate, knowledge, facts, existing, audio, saved, preferences } = input;
-  const makeDecision = (...args: Parameters<typeof decide>): IntakeOutcome => ({ ...decide(...args), ...(knowledge ? { knowledge } : {}), ...(saved.has(candidate.unitId) ? { explicitlySelected: true } : {}) });
-  const d = candidate.targetDimension;
-  const proposed = proposeFor(candidate, input.secondaryPractice === true);
+  const makeDecision = (...args: Parameters<typeof decide>): IntakeOutcome => ({ ...decide(...args), ...(knowledge ? { knowledge } : {}), ...(input.intent ? { intent: input.intent } : {}), ...(saved.has(candidate.unitId) ? { explicitlySelected: true } : {}) });
+  const d = candidate.objectiveDimension ?? candidate.targetDimension;
+  const proposed = input.secondaryPractice || !preferences.practiceGoals ? proposeFor(candidate, input.secondaryPractice === true)
+    : choosePractice({ candidate, knowledge, preferences, events: input.readingSignals ?? [], deck: existing, now: input.now, evidenceByUnit: input.practiceEvidenceByUnit });
+  if (!proposed) return makeDecision(candidate, 'low-priority', ['No selected learning goal matches this objective.']);
   const proposedRepositoryDimension = REPOSITORY_DIMENSION[proposed.dimension];
   const caveats: string[] = [];
 
   // Stages govern whether a card may be proposed; candidate score and FSRS due state do not override this gate.
   if (knowledge?.level === 'new') {
-    const explicitRecognition = saved.has(candidate.unitId) && !input.secondaryPractice && isRecognitionDimension(d);
+    const explicitRecognition = input.intent?.kind === 'explicit' && !input.secondaryPractice && isRecognitionDimension(d);
     if (!explicitRecognition) return makeDecision(candidate, 'low-priority', ['level New: automatic review excludes items not yet understood']);
     caveats.push('level New: learner explicitly requested a written recognition practice item');
   }
@@ -124,7 +128,7 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
     const recent = (input.readingSignals ?? []).filter((e) => e.subject?.itemIds?.includes(candidate.unitId) &&
       ['EncounterRecorded', 'SelectionLookedUp', 'AnalysisShown'].includes(e.kind) &&
       Number.isFinite(Date.parse(e.at)) && Date.parse(input.now) >= Date.parse(e.at) && Date.parse(input.now) - Date.parse(e.at) <= 30 * 86_400_000).length >= 2;
-    const explicitRequest = saved.has(candidate.unitId);
+    const explicitRequest = input.intent?.kind === 'explicit';
     if (!seenEligibility({ knowledge, assistanceRequests, explicitRequest, readingRelevance: recent ? 1 : 0 })) {
       return makeDecision(candidate, 'low-priority', ['level Seen: no qualifying repeated encounter, repeated assistance, current reading relevance, or explicit request for practice']);
     }
@@ -133,8 +137,8 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
     }
   }
   if (knowledge?.level === 'automatic' && !eligibleByKnowability({
-    level: 'automatic', explicitRequest: saved.has(candidate.unitId),
-    automaticFailure: hasConfirmedAutomaticFailure(input.readingSignals ?? [], candidate.unitId),
+    level: 'automatic', explicitRequest: input.intent?.kind === 'explicit',
+    automaticFailure: input.automaticFailureUnits?.has(candidate.unitId) ?? hasConfirmedAutomaticFailure(input.readingSignals ?? [], candidate.unitId),
   })) {
     return makeDecision(candidate, 'already-covered', ['level Automatic: ordinary review is suppressed until an explicit request or confirmed unassisted retrieval failure']);
   }
@@ -155,11 +159,44 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
   if (facts && (facts.status === 'conflicted' || facts.status === 'invalidated')) {
     return makeDecision(candidate, 'too-uncertain', [`the pack facts for this unit are ${facts.status}; nothing sound can be asked yet`]);
   }
+  if (facts && (!facts.unit || typeof facts.unit !== 'object' || typeof facts.unit.unitId !== 'string'
+    || typeof facts.unit.languageId !== 'string' || !facts.unit.provenance || typeof facts.unit.provenance !== 'object'
+    || !ANALYSIS_STATUSES.includes(facts.status) || !ANALYSIS_STATUSES.includes(facts.unit.status)
+    || (facts.unit.provenance.validation !== undefined && !VALIDATION_LEVELS.includes(facts.unit.provenance.validation))
+    || !Array.isArray(facts.analyses) || facts.analyses.some(a => !a || !ANALYSIS_STATUSES.includes(a.status)))) {
+    return makeDecision(candidate, 'needs-validation', ['the fetched unit facts are incomplete; a verified unit and provenance are required before practice']);
+  }
+  if (facts && (facts.unit.unitId !== candidate.unitId || facts.unit.languageId !== preferences.languageId)) {
+    return makeDecision(candidate, 'needs-validation', ['the fetched facts do not match this candidate and language; no exercise is built from another unit']);
+  }
+  if (facts && preferences.varietyId && facts.unit.varietyId && facts.unit.varietyId !== preferences.varietyId) {
+    return makeDecision(candidate, 'needs-validation', [`the available facts are for variety ${facts.unit.varietyId}, not the selected variety ${preferences.varietyId}`]);
+  }
+  if (facts && facts.status === 'requires-review') {
+    return makeDecision(candidate, 'needs-validation', ['the fetched analysis requires review before it can support an exercise']);
+  }
+  if (facts) {
+    const validation = provenanceOf(facts.unit.provenance).validation;
+    if (validation === 'unsupported' || validation === 'incomplete') {
+      return makeDecision(candidate, 'needs-validation', [`the fetched unit is ${validation}; it cannot support a practice exercise`]);
+    }
+    if (!isRecognitionDimension(d) && validation !== 'production-validated') {
+      return makeDecision(candidate, 'needs-validation', [`the fetched unit is ${validation}; ${d} requires production-validated facts`]);
+    }
+    const statusRank = { invalidated: 0, conflicted: 1, 'requires-review': 2, provisional: 3, 'high-confidence': 4, verified: 5 } as const;
+    if (statusRank[facts.status] < statusRank[candidate.eligibility.status === 'unknown' ? 'requires-review' : candidate.eligibility.status]) {
+      return makeDecision(candidate, 'needs-validation', ['the fetched analysis is weaker than the Repository candidate eligibility; refresh the candidate before practice']);
+    }
+  }
   // The unit row's status is never lowered by the store (a unit can only be superseded), so an invalidated ANALYSIS is
   // visible only in `facts.analyses`: a candidate computed before a reviewer withdrew every analysis is refused here.
   if (facts && facts.analyses.length > 0 && facts.analyses.every((a) => a.status === 'invalidated')) {
     return makeDecision(candidate, 'needs-validation', ['every analysis of this unit has been invalidated; it is not asked until a reviewer supplies a verified one']);
   }
+
+  const existingTarget = existing.find(item => item.unitId === candidate.unitId && item.dimension === proposed.dimension);
+  const sharedGate = reviewEligibility({ item: existingTarget, itemId:'card:'+proposed.dimension+':'+candidate.unitId, unitId: candidate.unitId, knowledge, events: input.readingSignals ?? [], now: input.now, intent: input.intent, context: input.eligibilityContext });
+  if (!sharedGate.eligible && existingTarget?.status !== 'dismissed') return makeDecision(candidate, existingTarget ? 'already-covered' : 'low-priority', [sharedGate.reason ?? 'not eligible for automatic practice']);
 
   // 3 ── same unit, same dimension already in the deck ───────────────────────────────────────────────────────────
   const mine = existing.filter((i) => i.unitId === candidate.unitId && sameDimension(i, proposedRepositoryDimension));

@@ -5,9 +5,9 @@
  * What the page keeps is the session the service gave (session.ts).
  */
 import { createRepositoryApi, type RepositoryApi } from '../../repository-service/src/api';
-import { createAccountClient, explainAccountFailure, type AccountClient } from '../../gopractice/accountClient';
-import { explainFailure, type Refused } from '../../gopractice/config';
-import { PRIVACY_POLICY_MD, TERMS_MD_TEXT, renderMarkdown } from '../../gopractice/legal';
+import { createAccountClient, explainAccountFailure, type AccountClient } from '../../goreview/app/accountClient';
+import { explainFailure, type Refused } from '../../goreview/app/config';
+import { PRIVACY_POLICY_MD, TERMS_MD_TEXT, renderMarkdown } from '../../goreview/app/legal';
 import type { GoEvent } from '../../repository-contract/src';
 import { clearSession, deviceIdFor, loadSession, saveSession, type BibliaSession } from './session';
 
@@ -167,31 +167,12 @@ export interface AccountScreenDeps {
   topbar: HTMLElement;
   /** Where to go once the learner is signed in. */
   done(): void;
-  /**
-   * The Repository address this copy uses and the way to change it on this device (GoReview's "Service address" field, 2026-10-25): for a
-   * network that filters the usual name, or a service of one's own. `set(undefined)` returns to `standard`. The page reloads after a change,
-   * since sessions and queues are kept per address. Absent inside the GoReview app, whose address is the app's.
-   */
-  serviceAddress?: { current: string; standard: string; set(url: string | undefined): void };
-}
-
-/** A Repository address as typed: https (http only for a local machine), no credentials, query or fragment; the trailing slash dropped. */
-export function normalizeServiceAddress(raw: string): string | undefined {
-  const text = raw.trim();
-  if (!text) return undefined;
-  // another scheme (ftp://, file://) is not made https by prefixing it
-  if (/^[a-z][a-z0-9+.-]*:/i.test(text) && !/^https?:\/\//i.test(text)) return undefined;
-  let u: URL;
-  try { u = new URL(/^https?:\/\//i.test(text) ? text : `https://${text}`); } catch { return undefined; }
-  const local = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(u.hostname);
-  if (!(u.protocol === 'https:' || (u.protocol === 'http:' && local)) || u.username || u.password || u.search || u.hash) return undefined;
-  return u.origin + u.pathname.replace(/\/+$/, '');
 }
 
 type Child = Node | string | null | undefined | false;
 
 /**
- * The account screen, in GoReview's design (packages/gopractice/screens/signin.ts): a title with its rule, a WELCOME card that says what the
+ * The account screen, in GoReview's design (packages/goreview/app/screens/signin.ts): a title with its rule, a WELCOME card that says what the
  * account is for, the SIGN IN card with its EMAIL and PASSWORD labels and the gold Sign in button, the "Forgot password?" disclosure, the
  * note about email links and the line to the drafts. Signed in, the same page says who and offers Sign out.
  */
@@ -218,8 +199,7 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
       h('section', { class: 'card', id: 'account-signed-in', 'aria-labelledby': 'account-signed-in-h' },
         h('h2', { id: 'account-signed-in-h' }, 'Signed in'),
         h('p', { id: 'account-who' }, `Signed in as ${st.email ?? 'your account'}. What you look up and mark in Biblia is recorded in your GoLearn account, and the words you have met anywhere are shown on the page.`),
-        h('div', { class: 'row' }, h('button', { type: 'button', class: 'btn', id: 'account-signout' }, 'Sign out')),
-        d.serviceAddress ? h('p', { class: 'muted', id: 'account-service' }, `Service: ${d.serviceAddress.current}${d.serviceAddress.current === d.serviceAddress.standard ? '' : ' (not the usual address; sign out to change it)'}`) : null),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'btn', id: 'account-signout' }, 'Sign out'))),
       legal);
     (box.querySelector('#account-signout') as HTMLButtonElement).addEventListener('click', () => { void account.signOut().then(() => d.done()); });
     return box;
@@ -310,37 +290,14 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
     })();
   });
 
-  // the Service address, as in GoReview's sign-in (2026-10-25): where this copy sends its sign-in and its activity; changed only when a
-  // network filters the usual name or a service of one's own is meant. Saved on this device; the page reloads with the new address.
-  let service: HTMLElement | null = null;
-  if (d.serviceAddress) {
-    const sa = d.serviceAddress;
-    const sUrl = h('input', { type: 'url', id: 'service-url', name: 'service-url', inputmode: 'url', autocomplete: 'off', spellcheck: 'false', placeholder: sa.standard, value: sa.current }) as HTMLInputElement;
-    const sOut = status();
-    const sSave = h('button', { type: 'button', id: 'service-save', class: 'btn' }, 'Use this address') as HTMLButtonElement;
-    const sReset = h('button', { type: 'button', id: 'service-reset', class: 'btn' }, 'Back to the usual address') as HTMLButtonElement;
-    sReset.hidden = sa.current === sa.standard;
-    service = h('details', { id: 'service-address', class: 'card forgot' },
-      h('summary', {}, 'Service address (only if you were told to change it)'),
-      h('p', { class: 'hint muted' }, `Where Biblia signs in and sends what you read. The usual address is ${sa.standard}. Change it only when your network cannot reach that name (another name for the same service) or when you run a service of your own. Your sign-in belongs to the address it was made at.`),
-      field('Address', sUrl), h('div', { class: 'row' }, sSave, sReset), sOut);
-    sSave.addEventListener('click', () => {
-      const next = normalizeServiceAddress(sUrl.value);
-      if (!next) { say(sOut, 'Enter an https address such as https://example.org (http only for a local machine), without a query or a fragment.', 'error'); return; }
-      if (next === sa.current) { say(sOut, 'That is the address in use.', 'info'); return; }
-      say(sOut, `Using ${next}. Reloading…`, 'ok');
-      sa.set(next === sa.standard ? undefined : next);
-    });
-    sReset.addEventListener('click', () => { say(sOut, `Back to ${sa.standard}. Reloading…`, 'ok'); sa.set(undefined); });
-  }
-
+  // no Service address field: the address is config.json's and nothing on the page changes it (2026-10-28; the field existed 2026-10-25 to 28)
   screen.append(
     h('h1', {}, 'Sign in'),
     h('section', { class: 'card', id: 'account-welcome', 'aria-labelledby': 'account-welcome-h' },
       h('h2', { id: 'account-welcome-h' }, 'Welcome to Biblia'),
       h('p', {}, 'Biblia records what you read with GoLearn on the same account. Sign in with the account you use in GoLearn: what you look up and mark here is kept in it, GoReview and the GoLearn extension see it too, and the words you have met anywhere are marked on the page by how well you know them.'),
       h('p', { class: 'muted' }, 'Without an account Biblia is a reader only: every word can be looked up, but nothing is recorded and nothing is marked.')),
-    form, forgot, ...(service ? [service] : []),
+    form, forgot,
     h('p', { class: 'muted', id: 'email-links-note' }, 'Links in confirmation and password-reset emails open GoLearn setup.'),
     legal);
   return box;

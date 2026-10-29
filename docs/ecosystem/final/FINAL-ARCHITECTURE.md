@@ -10,7 +10,7 @@ this was written; section 6 says what that did to the boundary tests.
 | part | package | entry points (built output) |
 |---|---|---|
 | GoLearn extension + setup app (one application) | `packages/golearn-extension` | `src/background/index.ts` (`dist/background.js`, MV3 worker), `src/content/index.ts` (`dist/content.js`), `action/popup.ts`, `app/main.ts` (`dist/app/` options page and `dist-web/` hosted setup page) |
-| GoPractice shell (one application, two workspaces) | `packages/gopractice` | `main.ts` (`packages/gopractice/dist/`, static; `config.json` names the service URL) |
+| GoPractice shell (one application, two workspaces) | `packages/goreview/app` | `main.ts` (`packages/goreview/app/dist/`, static; `config.json` names the service URL) |
 | GoReview workspace | `packages/goreview` | no entry of its own; hosted by the shell through `engine.ts` |
 | GoTell workspace | `packages/gotell` | no entry of its own; hosted by the shell through `tellEngine.ts` |
 | shared: contract, device sync, packs, pronunciation | `repository-contract`, `repository-sync`, `language-packs`, `golisten` | libraries |
@@ -62,7 +62,7 @@ That is 26 kinds in the source (`REPOSITORY-DATA-MODEL.md` §3 says 27; unresolv
 
 ## 5. Deployment shape (the owner deploys; nothing here was deployed by the build sessions)
 
-* Static: `dist/` of the extension (load unpacked), `dist-web/` (setup page; it can only explain installation), `packages/gopractice/dist/` (any host, `base './'`). Each carries the Albanian dictionary shards (about 6 MB, CC BY-SA 4.0) and `THIRD-PARTY-NOTICES.md`.
+* Static: `dist/` of the extension (load unpacked), `dist-web/` (setup page; it can only explain installation), `packages/goreview/app/dist/` (any host, `base './'`). Each carries the Albanian dictionary shards (about 6 MB, CC BY-SA 4.0) and `THIRD-PARTY-NOTICES.md`.
 * Service: `npx vite-node packages/repository-service/src/main.ts --port 8790 --data data/repository`; Node 24 (`node:sqlite`), one SQLite file. TLS, backups and at-rest protection belong to the host. The Cloudflare D1 twin is not built (`REPOSITORY-API-AND-OPERATIONS.md` §6).
 * The optional speech proxy (`server/speechHandler.ts`) is separate, holds the key, has no authentication of its own (SECURITY A-08) and has only been exercised against a mock.
 * Not verified: any hosted (https) deployment; the installed extension on third-party sites (manual steps in `audit/READER-COMPATIBILITY-RETEST.md` §6).

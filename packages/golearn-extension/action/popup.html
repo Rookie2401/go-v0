@@ -26,68 +26,61 @@
   * { box-sizing: border-box; }
   body { margin: 0; width: 21.25rem; max-width: 100%; background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 0.9375rem; line-height: 1.45; -webkit-font-smoothing: antialiased; font-feature-settings: 'kern' 1, 'liga' 1, 'locl' 0; }
   main { padding: 12px 14px 14px; }
-  h1 { font-size: 0.82rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 2px; }
-  .sub { color: var(--ink-soft); font-style: italic; font-size: 0.9375rem; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  /* the greeting, then the brand as the one way to the setup page (the owner, 2026-10-28): "Welcome, <name>" over GOLEARN → */
+  .welcome { margin: 0 0 .35rem; font-size: 1.15rem; color: var(--ink); }
+  .setup-link { display: inline-flex; align-items: center; gap: .5rem; margin: 0 0 .2rem; padding: .15rem .3rem .15rem 0; border: 0; border-radius: 6px; background: none; color: var(--ink); font: inherit; cursor: pointer; }
+  .setup-link:hover { color: var(--accent); }
+  /* the Go mark (the G and the globe, packages/shared-brand/go-logo.png, copied into ../icons by scripts/sync-go-brand.ps1) as a silhouette filled with
+     the ink colour, the way the GoReview and setup-page headers draw it: dark on paper, the cream of the dark theme; no tile, no border */
+  .go-brand-mark { display: block; width: 72px; height: 36px; background: currentColor; -webkit-mask: var(--go-brand-mask) center / contain no-repeat; mask: var(--go-brand-mask) center / contain no-repeat; }
+  .go-brand-word { font-size: 0.82rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+  .go-brand-arrow { font-size: 1.1rem; line-height: 1; }
   .row { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
   .row label { flex: 1; }
   .row .grow { flex: 1; }
   select, button { font: inherit; font-size: 0.9rem; }
-  button { padding: 3px 10px; border: 1px solid var(--control-line); border-radius: 6px; background: var(--paper-raised); color: var(--ink); cursor: pointer; }
-  button:hover:not(:disabled) { border-color: var(--accent-soft); }
-  button:disabled { opacity: .5; cursor: not-allowed; }
+  select { padding: 3px 6px; border: 1px solid var(--control-line); border-radius: 6px; background: var(--paper-raised); color: var(--ink); }
+  button:disabled, select:disabled { opacity: .5; cursor: not-allowed; }
   input[type="checkbox"] { accent-color: var(--accent); width: 1.1rem; height: 1.1rem; }
   .err { color: var(--bad); margin: 6px 0; min-height: 1.2em; }
-  .hint { color: var(--ink-soft); font-style: italic; font-size: 0.875rem; margin: 6px 0; }
+  .err:empty { display: none; }
   .status-line { margin: 4px 0; }
+  .status-line:empty { display: none; }
   .status-line.warn { color: var(--bad); }
   .muted { color: var(--ink-soft); font-size: 0.875rem; }
   hr { border: 0; border-top: 1px solid var(--rule); margin: 10px 0; }
-  .legend { margin: 4px 0 6px; padding-left: 18px; font-size: 0.875rem; color: var(--ink-soft); }
-  .legend li { margin: 2px 0; }
-  .legend .sw { color: var(--ink); text-underline-offset: 0.2em; }
-  .legend .sw-new { text-decoration: underline dashed; text-decoration-thickness: 1px; text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); }
-  .legend .sw-seen { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
-  .legend .sw-recognized { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-decoration-color: color-mix(in srgb, currentColor 65%, transparent); }
-  .legend .sw-familiar { text-decoration: underline solid; text-decoration-thickness: 1px; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); }
-  .legend .sw-known { text-decoration: underline solid; text-decoration-thickness: 0.5px; text-decoration-color: color-mix(in srgb, currentColor 22%, transparent); }
-  .legend .sw-automatic { text-decoration: underline solid; text-decoration-thickness: 0.5px; text-decoration-color: color-mix(in srgb, currentColor 10%, transparent); }
-  @media (prefers-reduced-motion: no-preference) { button { transition: border-color .15s; } }
+  /* the legend, one line, as Biblia's reader shows it: a sample word in each mark, then the names; known words carry no mark */
+  .legend { margin: 6px 0 2px; font-size: 0.875rem; color: var(--ink-faint); }
+  .legend .sw { color: var(--ink); padding: 0 0.15em; border-radius: 3px; text-underline-offset: 0.2em; }
+  .legend .sw-new { background-color: rgba(173, 216, 230, 0.45); }
+  .legend .sw-seen { text-decoration: underline solid; text-decoration-thickness: 2px; text-decoration-color: color-mix(in srgb, currentColor 80%, transparent); }
+  .legend .sw-recognized { text-decoration: underline solid; text-decoration-thickness: 1.25px; text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); }
+  .legend .sw-familiar { text-decoration: underline solid; text-decoration-thickness: 0.75px; text-decoration-color: color-mix(in srgb, currentColor 30%, transparent); }
+  @media (prefers-reduced-motion: no-preference) { .setup-link { transition: color .15s; } }
 </style>
 </head>
 <body>
 <main id="golearn-popup">
-  <h1>GoLearn</h1>
-  <div class="sub">Reading acquisition</div>
-
-  <div class="row">
-    <span class="grow status-line" id="connection" role="status" aria-live="polite">Checking the connection…</span>
-    <button type="button" id="open-setup">Open GoLearn setup</button>
-  </div>
-  <div class="row"><button type="button" id="practise">Practise</button><span class="muted grow">Review what you met and write; no account needed.</span></div>
+  <p class="welcome" id="welcome" role="status" aria-live="polite">Welcome</p>
+  <button type="button" class="setup-link" id="open-setup" aria-label="Open GoLearn setup"><span class="go-brand-mark" aria-hidden="true" style="--go-brand-mask: url('../icons/go-logo.png')"></span><span class="go-brand-word">GoLearn</span><span class="go-brand-arrow" aria-hidden="true">→</span></button>
+  <div class="status-line" id="connection" role="status" aria-live="polite"></div>
 
   <hr>
   <div class="row">
-    <label for="active"><strong>GoLearn Active</strong>: read each page before me, underline the words I have met, and open a word's card when I click it</label>
+    <label for="active"><strong>GoLearn Active</strong>: underline the words on the pages you read, and open a word's card when you select it</label>
     <input type="checkbox" id="active">
   </div>
   <div class="status-line" id="active-status" role="status" aria-live="polite"></div>
   <div class="status-line" id="active-page" role="status" aria-live="polite"></div>
-  <ul class="legend" id="active-legend" aria-label="What the underlines mean"></ul>
-  <div class="status-line muted" id="voices"></div>
-  <div class="hint">Pages are read on this device only and nothing of them is kept; the words are matched against your own history here, never sent anywhere. A click speaks the word when this device has a voice for the language. Readers that refuse (Kindle, Kobo, readAwrite, MEB, Pratilipi) are never read. Switching on asks Brave once to let GoLearn read pages; switching off withdraws that.</div>
+  <p class="legend" id="active-legend"></p>
   <div class="err" id="error" role="status" aria-live="polite"></div>
-  <hr>
 
+  <hr>
   <div class="row">
     <label for="language-select">Language</label>
-    <select id="language-select" class="grow" aria-describedby="language-note"><option value="">Checking…</option></select>
+    <select id="language-select" class="grow" aria-describedby="language"><option value="">Checking…</option></select>
   </div>
   <div class="status-line muted" id="language" role="status" aria-live="polite"></div>
-  <div class="muted" id="language-note">The language GoLearn reads in and records against; only the languages downloaded in GoLearn setup are listed. Pages that are Active start again in it.</div>
-
-  <div class="status-line" id="sync" role="status" aria-live="polite"></div>
-  <div class="row"><button type="button" id="sync-now">Sync now</button><span class="muted" id="sync-detail"></span></div>
-  <div class="muted">Your history is kept on this device as hashes and item ids, never page text; export and deletion are in the setup page under Privacy. Signed in, it is sent to your GoLearn service by the extension's background worker; the web page never sees it.</div>
 </main>
 <script src="popup.js"></script>
 </body>

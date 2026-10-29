@@ -11,11 +11,11 @@ progress across devices. There are no teams and no seeding step.
 
 ```bash
 cd C:\Users\CJWal\dev\go-v0
-npm run local:build                                                   # extension (dist/), setup page (dist/app + dist-web/), hosted GoPractice (packages/gopractice/dist)
-npx vite build -c packages/gopractice/vite.config.ts --mode extension # GoPractice as a page of the extension (dist/practice) — run it AFTER local:build
+npm run local:build                                                   # extension (dist/), setup page (dist/app + dist-web/), hosted GoPractice (packages/goreview/app/dist)
+npx vite build -c packages/goreview/app/vite.config.ts --mode extension # GoPractice as a page of the extension (dist/review) — run it AFTER local:build
 ```
 
-`npm run ext:build` (inside `local:build`) empties the extension's `dist/` except `dist/app/`, so `dist/practice/` has to be built after it, every time.
+`npm run ext:build` (inside `local:build`) empties the extension's `dist/` except `dist/app/`, so `dist/review/` has to be built after it, every time.
 
 ## 2. Load the extension into Brave (you do this part; it is a browser setting)
 
@@ -59,7 +59,7 @@ scripts\local\start.cmd    # three windows: service :8790, hosted GoPractice :51
 
 Check <http://127.0.0.1:8790/health> answers `{"ok":true,…}`. Stop everything with `scripts\local\stop.cmd`.
 
-1. Setup page → cog → Account → **Sign in** (the first page of a first run is the same sign-in page; ignore it with **Continue without an account** to stay on this device; the service address is under the form): keep the service address `http://127.0.0.1:8790`, create an account (any email, a password of at least 10 characters; it stays on this PC).
+1. Setup page → cog → Account → **Sign in** (the first page of a first run is the same sign-in page; ignore it with **Continue without an account** to stay on this device): the service address is the extension's own `app/config.json` (no field on the page since 2026-10-28; for a local service put `http://127.0.0.1:8790` there before `npm run ext:build`), create an account (any email, a password of at least 10 characters; it stays on this PC).
 2. Creating the account moves you to the languages page, which says who you are signed in as. It uploads what is already on this device **once**, says how many events, and switches the status to **Synced to your account**. Your language is also enrolled on the account (no team), and if the account already holds a language its pack is installed for you. GoPractice (in the extension) offers the same step through **Keep your progress across devices (optional)** in its header.
 3. Signing out (cog → Account → Sign out of this device) returns to **On this device only** and removes nothing. **Privacy → Clear local data** (and GoPractice → Settings → Clear local data) is the explicit way to remove the device's data.
 4. The hosted copies still exist: <http://localhost:5199/> (GoPractice) needs an account and says so (it points to the extension's copy, which does not); <http://localhost:5198/#/share> is the phone-style share path (paste text → pick a word → the card and the encounter).
@@ -74,4 +74,4 @@ Check <http://127.0.0.1:8790/health> answers `{"ok":true,…}`. Stop everything 
 
 ## 6. Rebuilding after code changes
 
-`npm run local:build`, then `npx vite build -c packages/gopractice/vite.config.ts --mode extension`, then in `brave://extensions` press the reload arrow on "GoLearn reader", and refresh the local pages.
+`npm run local:build`, then `npx vite build -c packages/goreview/app/vite.config.ts --mode extension`, then in `brave://extensions` press the reload arrow on "GoLearn reader", and refresh the local pages.

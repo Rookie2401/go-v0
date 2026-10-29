@@ -92,6 +92,7 @@ p { margin: .55rem 0; max-width: 42rem; }
 .card > :first-child { margin-top: 0; }
 .row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; margin: .65rem 0; }
 .field { display: grid; gap: .25rem; margin: .8rem 0; max-width: 28rem; }
+.field[hidden] { display: none; } /* the grid would otherwise win over the hidden attribute (the name field under "Sign in") */
 .field .cap { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
 .field .help { color: var(--muted); font-size: .92rem; font-style: italic; }
 input[type="text"], input[type="url"], input[type="email"], input[type="password"], select, textarea {
@@ -180,6 +181,23 @@ progress { width: 100%; max-width: 28rem; height: .6rem; accent-color: var(--acc
 .service-address { margin: 1.1rem 0 .4rem; }
 .footer-link { margin-top: 2.5rem; font-size: .95rem; }
 
+/* the main page's two sections, Language and Audio, as disclosures whose summary is the heading (the owner, 2026-10-28) */
+details.disclosure { margin: 1.4rem 0 0; border-top: 1px solid var(--rule); }
+details.disclosure > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: .6rem; padding: .9rem 0 .7rem; }
+details.disclosure > summary::-webkit-details-marker { display: none; }
+details.disclosure > summary::before { content: '▸'; color: var(--ink-faint); font-size: .95rem; }
+details.disclosure[open] > summary::before { content: '▾'; }
+details.disclosure > summary > h2 { margin: 0; padding: 0; border: 0; font-size: 1.05rem; }
+details.disclosure > summary:hover > h2 { color: var(--ink); }
+details.disclosure > .body { padding: 0 0 1rem; }
+.audio-guide h3 { margin: 1.3rem 0 .3rem; font-size: 1.05rem; }
+.audio-guide ol, .audio-guide ul { padding-inline-start: 1.3rem; }
+.audio-guide li { margin: .35rem 0; }
+.audio-guide table { border-collapse: collapse; margin: .4rem 0 .8rem; }
+.audio-guide th, .audio-guide td { text-align: start; vertical-align: top; padding: .15rem .8rem .15rem 0; border-bottom: 1px solid var(--divider); font-size: .95rem; font-weight: 400; }
+.audio-guide th { color: var(--ink-faint); white-space: nowrap; }
+.audio-guide code { font-size: .9em; }
+
 /* a language row: name and level at the left, the Download language menu (or the downloaded state) at the right, feedback and Details under */
 .lang-rows { list-style: none; margin: .5rem 0; padding: 0; border-top: 1px solid var(--divider); }
 .lang-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 22rem); gap: .2rem 1.25rem; align-items: start; padding: .75rem .6rem; border-bottom: 1px solid var(--divider); border-inline-start: 3px solid transparent; }
@@ -206,6 +224,12 @@ details.download .dl-panel .field { margin: .2rem 0; max-width: none; }
 details.download .dl-panel .dl-note { font-size: .92rem; margin: .4rem 0; }
 .lang-row details.about .row { margin: .4rem 0; }
 .account-line { margin: .3rem 0 .6rem; font-size: .98rem; }
+/* the name on the account, the one GoReview shows: "NAME  Ana  Edit", edited in place (the owner, 2026-10-28) */
+.account-name-line { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .6rem; margin: .3rem 0; }
+.account-name-cap { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+.account-name-line #account-name { font-size: 1.05rem; }
+.account-name-edit input { max-width: 16rem; }
+.account-name .status:empty { display: none; }
 
 /* the sign-in page: one quiet column */
 .signin { max-width: 28rem; margin: 0 auto; }
@@ -234,3 +258,9 @@ details.forgot > summary { cursor: pointer; }
 @media (max-width: 640px) {
   .lang-row { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* The Go mark (the G and the globe) beside the name: a silhouette filled with the accent colour (brown on paper; the lighter brown of the dark theme). */
+.go-brand { display: inline-flex; align-items: center; gap: .5rem; flex-shrink: 0; color: var(--ink); text-decoration: none; }
+.go-brand-mark { display: block; width: 72px; height: 36px; background: currentColor; -webkit-mask: var(--go-brand-mask) center / contain no-repeat; mask: var(--go-brand-mask) center / contain no-repeat; }
+.go-brand:hover { text-decoration: none; }
+@media (max-width: 380px) { .go-brand-mark { width: 60px; height: 30px; } }

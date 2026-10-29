@@ -6,6 +6,9 @@ import type { ExerciseFamily, Grading, Response } from '../../../packages/gorevi
 import { validateEvent } from '../../../packages/repository-contract/src';
 import type { GoEvent } from '../../../packages/repository-contract/src';
 import { observationsOf } from '../../../packages/repository-engine/src/evidence';
+import { foldEvents } from '../../../packages/repository-engine/src/projection';
+import { remediationBacklog } from '../../../packages/goreview/src/planner/remediation';
+import { deckItem } from '../intake/fixtures';
 import { IDS, NOW, ctxOf, fakeAudio, makeWorld, target } from './support';
 
 const resp = (over: Partial<Response> = {}): Response => ({ hinted: false, assistance: [], ...over });
@@ -45,10 +48,22 @@ describe('written families → CardReviewed', () => {
     expect(must(event(e, resp({ typed: 'volume' })).ev).payload).toMatchObject({ grade: 'again', correct: false, rating: 1 });
     expect(must(event(e, resp({ typed: 'book', hinted: true })).ev)).toMatchObject({ payload: { grade: 'good', correct: true, hinted: true, rating: null }, evidence: { quality: 'none', assisted: true } });
     expect(must(event(e, resp({ selfGrade: 'easy' })).ev)).toMatchObject({ payload: { grade: 'easy', correct: true, rating: 4 }, evidence: { quality: 'weak', sourceReliability: 0.6 } });
-    expect(must(event(e, resp({ selfGrade: 'hard' })).ev).payload).toMatchObject({ grade: 'hard', correct: false, rating: 2 });
+    expect(must(event(e, resp({ selfGrade: 'hard' })).ev)).toMatchObject({ payload: { grade: 'hard', outcome: 'correct', correct: true, rating: 2 }, evidence: { quality: 'weak', sourceReliability: 0.6 } });
     const t = await exercise('audio-transcription', IDS.liber);
     // a listening event has no card grade; the rating and the outcome carry it
-    expect(must(event(t, resp({ typed: 'liber', audioPlayed: true })).ev).payload).toMatchObject({ outcome: 'partial', correct: false, rating: 2 });
+    expect(must(event(t, resp({ typed: 'liber', audioPlayed: true })).ev).payload).toMatchObject({ outcome: 'partial', correct: false, rating: 1 });
+  });
+
+  it('carries self-Hard as successful, low-reliability evidence through grading, event, projection and remediation', async () => {
+    const e = await exercise('written-recognition', IDS.liber);
+    const hard = must(event(e, resp({ selfGrade: 'hard' })).ev);
+    hard.payload.expectedPreviousReviewId = null;
+    expect(hard.payload).toMatchObject({ grade: 'hard', outcome: 'correct', correct: true, rating: 2 });
+    expect(hard.evidence).toMatchObject({ quality: 'weak', sourceReliability: 0.6 });
+    const row = foldEvents([hard], { modelVersion: 'phase1-test' }).find(r => r.unitId === IDS.liber)!;
+    expect(row.dimensions.readingRecognition.positive).toBeGreaterThan(0);
+    expect(row.dimensions.readingRecognition.negative).toBe(0);
+    expect(remediationBacklog([deckItem({ unitId: IDS.liber, itemId: identity.itemId })], [hard], NOW)).toEqual([]);
   });
 
   it('meaning-to-form is a recall card; sentence-completion a cloze card; phrase-comprehension a recognition card', async () => {

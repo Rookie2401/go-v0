@@ -71,7 +71,7 @@ export interface Rig {
 /** The shard the fake dictionary serves (one file, no content that matters). */
 const shard = (): Response => new Response('{}', { status: 200, headers: { 'content-type': 'application/json' } });
 
-export function createRig(): Rig {
+export function createRig(opts: { defaultServiceUrl?: string } = {}): Rig {
   const h = createHarness();
   h.clock.set(new Date().toISOString()); // the service and the worker agree on the time, whatever day the tests run
   const fake = createChromeFake();
@@ -89,7 +89,7 @@ export function createRig(): Rig {
     if (u.includes('/dict/')) { if (offline.value) throw new TypeError('Failed to fetch'); log.push({ method: 'GET', path: new URL(u).pathname, status: 200 }); return shard(); }
     return svcFetch(input, init);
   }) as typeof fetch;
-  const bg = createBackground(fake, { fetch: fetchImpl, packs: fakePacks(glossCalls), now: () => clock.now, timers: { set: (fn, ms) => { const t = { ms, cleared: false, fired: false, fire() { if (!t.cleared && !t.fired) { t.fired = true; fn(); } } }; timers.push(t); return t; }, clear: (h) => { (h as { cleared: boolean }).cleared = true; } } });
+  const bg = createBackground(fake, { fetch: fetchImpl, packs: fakePacks(glossCalls), now: () => clock.now, ...(opts.defaultServiceUrl ? { defaultServiceUrl: opts.defaultServiceUrl } : {}), timers: { set: (fn, ms) => { const t = { ms, cleared: false, fired: false, fire() { if (!t.cleared && !t.fired) { t.fired = true; fn(); } } }; timers.push(t); return t; }, clear: (h) => { (h as { cleared: boolean }).cleared = true; } } });
   bg.register();
   const rig: Rig = {
     fake, h, bg, log, glossCalls, offline, clock, timers,
@@ -111,7 +111,7 @@ export function createRig(): Rig {
   return rig;
 }
 
-/** A knowledge row for the fake engine's store (what GoPractice's activity would have produced). */
+/** A knowledge row for the fake engine's store (what GoReview's activity would have produced). */
 export function knowledgeRow(learnerId: string, unitId: string, dims: Partial<Record<string, { score?: number; confidence?: number; observations?: number; positive?: number; negative?: number }>>): UnitKnowledge {
   const dim = (d?: { score?: number; confidence?: number; observations?: number; positive?: number; negative?: number }) => ({
     score: d?.score ?? 0, confidence: d?.confidence ?? 0, observations: d?.observations ?? 0, positive: d?.positive ?? 0, negative: d?.negative ?? 0, weight: 0, contexts: 0,

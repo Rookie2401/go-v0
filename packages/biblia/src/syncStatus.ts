@@ -25,7 +25,11 @@ export interface SyncStatusView {
 
 const countText = (count: number): string => `${count} pending ${count === 1 ? 'item' : 'items'}`;
 
-/** A compact, live sync notice for the standalone Biblia account edition. */
+/**
+ * A compact, live sync notice for the standalone Biblia account edition. It is NOT a bar of its own: until 2026-10-27 it sat sticky above
+ * every page ("Uploads complete · Last sent at …" over the reading), and the owner asked for it to live in Settings only. The app places the
+ * element in the Settings page's Account card (app.ts renderSettings, `BibliaDeps.syncStatus`); it keeps rendering itself wherever it is.
+ */
 export function createSyncStatus(options: SyncStatusOptions): SyncStatusView {
   const { doc, account, recorder } = options;
   const now = options.now ?? Date.now;
@@ -34,14 +38,13 @@ export function createSyncStatus(options: SyncStatusOptions): SyncStatusView {
   element.setAttribute('role', 'status');
   element.setAttribute('aria-live', 'polite');
   element.setAttribute('aria-atomic', 'true');
-  Object.assign(element.style, { position: 'sticky', top: '0', zIndex: '30', padding: '0.5rem 1rem', fontSize: '0.85rem', background: 'var(--paper, #f7f2e8)', borderBottom: '1px solid var(--rule, #d7cfc2)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.65rem' });
   element.hidden = true;
 
   const message = doc.createElement('span');
   message.className = 'sync-status__message';
   const action = doc.createElement('button');
   action.type = 'button';
-  action.className = 'sync-status__action';
+  action.className = 'btn sync-status__action';
   action.textContent = 'Sync now';
   action.hidden = true;
 
@@ -99,8 +102,6 @@ export function createSyncStatus(options: SyncStatusOptions): SyncStatusView {
     action.hidden = !showAction;
     signIn.hidden = !showSignIn;
     element.hidden = text.length === 0;
-    // the page's sticky top bars read --sync-h (styles.css) so they stick just below this bar instead of under it
-    try { doc.documentElement.style.setProperty('--sync-h', element.hidden ? '0px' : `${element.offsetHeight || 0}px`); } catch { /* no layout (tests) */ }
   };
 
   const onClick = (): void => { void recorder.flush().catch(() => undefined); };

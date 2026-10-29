@@ -30,11 +30,11 @@ describe('intake: the level is in the reasons', () => {
     expect(o.reasons.some((r) => r.includes('encountered, so eligible'))).toBe(true);
   });
 
-  it('a row with no level (an older projection) adds no level line and changes nothing else', () => {
+  it('a row with no level (an older projection) requires admission evidence rather than inferring a stage', () => {
     const { level: _l, ...old } = at('seen');
     const o = decideIntake(intakeInput({ knowledge: old as never }));
     expect(o.reasons.some((r) => r.startsWith('level '))).toBe(false);
-    expect(o.decision).toBe('test-now');
+    expect(o.decision).toBe('low-priority');
   });
 
   it('Automatic with nothing questioning it is already-covered (a stale cached candidate must not re-test it)', () => {

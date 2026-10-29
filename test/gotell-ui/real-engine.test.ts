@@ -2,9 +2,9 @@
 /** The workspace over GoTell's real modules (documents, evidence, privacy, prompts, the Albanian checker), through the shell. */
 import { afterEach, describe, expect, it } from 'vitest';
 import { validateEvent } from '../../packages/repository-contract/src';
-import { tellOverrides } from '../../packages/gopractice/screens/tell/overrides';
+import { tellOverrides } from '../../packages/goreview/app/screens/tell/overrides';
 import { decodeBody } from '../../packages/gotell/src/documents';
-import { defaultService, destroyRigs, makeRig, queued, until, type Rig } from '../gopractice/helpers';
+import { defaultService, destroyRigs, makeRig, queued, until, type Rig } from '../goreview-app/helpers';
 import { draftIdFromHash, press, typeInto } from './rig';
 
 afterEach(() => { tellOverrides.download = undefined; tellOverrides.timers = undefined; destroyRigs(); });

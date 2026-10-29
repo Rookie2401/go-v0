@@ -57,8 +57,8 @@ export class FakeService {
     const api = {
       get token() { return state.token; }, set token(t: string | undefined) { state.token = t; },
       async health() { self.rec('health'); if (self.down) throw new Error('network down'); return self.health; },
-      async createAccount(input: { email: string; password: string }) {
-        self.rec('createAccount', input.email);
+      async createAccount(input: { email: string; password: string; displayName?: string }) {
+        self.rec('createAccount', input.email, input.displayName);
         if (self.accounts.has(input.email)) return self.fail(409, 'email-taken', 'That email is taken.');
         if (input.password.length < 10) return self.fail(400, 'weak-password', 'Password too short.');
         const learnerId = `learner-${++self.n}`;
@@ -367,10 +367,11 @@ export function submit(form: HTMLFormElement): void {
  * Sign in through the sign-in page's form. The application moves on to the languages page by itself once the learner is in
  * (what the form said is carried there as the #flash note), so this waits for that.
  */
-export async function signIn(rig: Rig, email = 'ana@example.org', password = 'correct horse battery', create = false): Promise<void> {
+export async function signIn(rig: Rig, email = 'ana@example.org', password = 'correct horse battery', create = false, name = 'Test Learner'): Promise<void> {
   if (!create && !rig.service.accounts.has(email)) rig.service.accounts.set(email, { password, learnerId: `learner-${email.split('@')[0]}`, email });
   await rig.go('signin');
   choose(rig.q<HTMLSelectElement>('#acct-mode'), create ? 'create' : 'signin');
+  if (create) type(rig.q<HTMLInputElement>('#acct-name'), name); // creating an account asks for a name
   type(rig.q<HTMLInputElement>('#acct-email'), email);
   type(rig.q<HTMLInputElement>('#acct-password'), password);
   submit(rig.q<HTMLFormElement>('#acct-form'));
@@ -434,7 +435,7 @@ export function fakeBackground(rig: Rig, only?: string[]): FakeBackground {
         case 'connect':
         case 'create-account': {
           const api = rig.service.api();
-          if (type === 'create-account') { const made = await api.createAccount({ email: msg.email, password: msg.password }); if (!made.ok) return respond({ ok: false, error: made.error, message: 'The service refused the account.' }); }
+          if (type === 'create-account') { const made = await api.createAccount({ email: msg.email, password: msg.password, ...(typeof msg.displayName === 'string' ? { displayName: msg.displayName } : {}) }); if (!made.ok) return respond({ ok: false, error: made.error, message: 'The service refused the account.' }); }
           const made = await api.createSession({ email: msg.email, password: msg.password, deviceId: 'dev-bg' });
           if (!made.ok) return respond({ ok: false, error: 'unauthorized', message: 'The email or password was not accepted.' });
           const enrolment = rig.service.enrolments.filter((e) => e.learnerId === made.data.learnerId).at(-1);

@@ -23,7 +23,7 @@ describe('Languages: download your languages', () => {
     const rig = await makeRig();
     expect(rig.app.current()).toBe('languages');
     expect(rig.q('#screen h1').textContent).toBe('Choose your languages');
-    expect(rig.q('#languages h2').textContent).toBe('Languages');
+    expect(rig.q('#languages h2').textContent).toBe('Language'); // the heading of the Language disclosure (2026-10-28)
     const cards = [...rig.root.querySelectorAll('#language-cards > .lang')];
     expect(cards.map((c) => c.getAttribute('data-language'))).toEqual(LANGUAGES_FAKE.map((l) => l.languageId));
     expect(cards.map((c) => c.querySelector('h3')!.firstChild!.textContent)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin']);

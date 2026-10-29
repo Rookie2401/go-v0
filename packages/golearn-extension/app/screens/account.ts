@@ -2,16 +2,18 @@
  * Sign in (optional): the form on the sign-in page, and the account state with sign-out under Settings. Without an account everything stays on this device; signing in keeps
  * the learner’s progress across devices: what is already on this device is uploaded once, the languages chosen here become
  * enrolments on the account, and from then on the two are kept in step. Signing out returns to the device alone and removes nothing.
- * The service address (create account / sign in go there) is kept as an advanced detail under the form.
+ * The service address (create account / sign in go there) is config.json's; nothing on the page names or changes it (2026-10-28).
+ * The name: asked for when the account is created (the field shows only under "Create an account"), and shown on the signed-in state
+ * with Edit / Add a name in place (POST /me/profile), so GoLearn names the account the way GoReview's account page does (the owner, 2026-10-28).
  *
  * The password goes to the service address and nowhere else (in the extension: to the background worker, which sends
  * it to the service); it is never stored, logged or kept beyond the request. The bearer token is written only into
  * `golearn:session` (by the worker, or by this page when there is no worker).
  */
-import { validateServiceUrl } from '../config';
 import { recordTermsAcceptance } from '../consent';
 import type { AppContext } from '../context';
 import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } from '../dom';
+import { explainAccountFailure } from '../accountClient';
 import { setCheckEmail } from '../flash';
 import type { View } from './view';
 
@@ -30,7 +32,7 @@ export interface AccountHooks {
 
 export interface AccountOptions {
   /**
-   * true (default): the sign in / create form and the service address, as on the sign-in page.
+   * true (default): the sign in / create form, as on the sign-in page.
    * false: only who is signed in and the way out (the Account section of Settings); the form is a link to the sign-in page.
    */
   form?: boolean;
@@ -47,27 +49,9 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
   const stateBox = h('p', { id: 'account-state', class: 'status-note', role: 'status' });
   const sessionBox = h('div', { id: 'account-session' });
   const formBox = h('div', { id: 'account-form-box' });
-  const serviceBox = h('details', { class: 'service-address', id: 'service-address' });
   append(el, [
     opts.intro === false ? null : p(opts.intro ?? ACCOUNT_INTRO),
-    stateBox, sessionBox, withForm ? formBox : null, withForm ? serviceBox : null,
-  ]);
-
-  // ── service address
-  const urlInput = h('input', { type: 'url', id: 'svc-url', name: 'svc-url', autocomplete: 'off', spellcheck: 'false', value: await ctx.serviceUrl() }) as HTMLInputElement;
-  const svcStatus = statusLine();
-  const save = button('Use this address', async () => {
-    const raw = urlInput.value.trim();
-    if (raw) { const c = validateServiceUrl(raw); if (!c.ok) { setStatus(svcStatus, c.message, 'error'); return; } }
-    const r = await ctx.saveService(raw || undefined);
-    if (!r.ok) { setStatus(svcStatus, r.message, 'error'); return; }
-    urlInput.value = await ctx.serviceUrl();
-    setStatus(svcStatus, raw ? `Service address set to ${urlInput.value}.` : 'Back to the default address.', 'ok');
-  }, { id: 'svc-save' });
-  append(serviceBox, [
-    h('summary', { id: 'svc-h' }, 'Service address (only used if you sign in)'),
-    field('Go Repository service', urlInput, 'https, or http on localhost for development. Leave empty to use the default.'),
-    h('div', { class: 'row' }, save), svcStatus,
+    stateBox, sessionBox, withForm ? formBox : null,
   ]);
 
   // ── session
@@ -89,6 +73,7 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
     const out = statusLine();
     append(sessionBox, [
       h('p', { id: 'signed-in-as' }, `Signed in as ${s.email}`),
+      nameLine(),
       h('p', { class: 'muted' }, `Learner ${s.learnerId} · session ${expired ? 'expired' : 'valid'} until ${shortDate(s.expiresAt)}`),
       expired ? p('The session has expired. Sign in again below.', 'error') : null,
       h('div', { class: 'row' }, button('Sign out of this device', async () => {
@@ -103,12 +88,67 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
         : h('p', {}, h('a', { href: '#/signin', id: 'settings-signin' }, 'Sign in with another account')),
     ]);
   }
+  /**
+   * "Name: Ana  Edit" — the display name on the account, the one GoReview's account page shows; fetched from the service after the line
+   * is on the page, and set in place (an empty name is refused; an older service that has no POST /me/profile is explained).
+   */
+  function nameLine(): HTMLElement {
+    const text = h('span', { id: 'account-name' }, '…');
+    const edit = button('Edit', () => openEditor(), { class: 'btn small', id: 'account-name-edit', hidden: true });
+    const row = h('p', { class: 'account-name-line', id: 'account-name-line' }, h('span', { class: 'account-name-cap' }, 'Name'), ' ', text, ' ', edit);
+    const note = statusLine();
+    let current = '';
+    function show(name: string | undefined): void {
+      current = name ?? '';
+      text.textContent = name || 'No name yet';
+      text.classList.toggle('muted', !name);
+      edit.textContent = name ? 'Edit' : 'Add a name';
+      edit.hidden = false;
+    }
+    function openEditor(): void {
+      const input = h('input', { type: 'text', id: 'account-name-input', name: 'name', autocomplete: 'name', maxlength: 100, value: current, 'aria-label': 'Your name' }) as HTMLInputElement;
+      const save = button('Save', () => {
+        void (async () => {
+          const name = input.value.trim();
+          if (!name) { setStatus(note, 'Enter a name, or cancel.', 'error'); return; }
+          save.disabled = true;
+          setStatus(note, 'Saving…', 'info');
+          const { client } = await ctx.accountApi();
+          const r = await client.rename(name);
+          if (!view.alive()) return;
+          save.disabled = false;
+          if (!r.ok) { setStatus(note, r.status === 404 ? 'This service cannot change names yet; the name stays as it was.' : explainAccountFailure(r), 'error'); return; }
+          show(name);
+          editor.replaceWith(row);
+          setStatus(note, 'Name saved. GoReview shows it too.', 'ok');
+        })();
+      }, { class: 'btn small', id: 'account-name-save' });
+      const cancel = button('Cancel', () => { editor.replaceWith(row); setStatus(note, '', 'info'); }, { class: 'linklike small', id: 'account-name-cancel' });
+      const editor = h('p', { class: 'account-name-line account-name-edit' }, h('span', { class: 'account-name-cap' }, 'Name'), ' ', input, ' ', save, ' ', cancel);
+      row.replaceWith(editor);
+      input.focus();
+    }
+    void (async () => {
+      const { client } = await ctx.accountApi();
+      const r = await client.state();
+      if (!view.alive()) return;
+      show(r.ok ? r.data.name : undefined);
+    })();
+    const box = h('div', { class: 'account-name' }, row, note);
+    return box;
+  }
+
   await paintSession();
   if (!withForm) return;
 
   // ── sign in / create
   const mode = h('select', { id: 'acct-mode', name: 'mode' }, h('option', { value: 'signin' }, 'Sign in'), h('option', { value: 'create' }, 'Create an account')) as HTMLSelectElement;
   const email = h('input', { type: 'email', id: 'acct-email', name: 'email', autocomplete: 'email', required: true }) as HTMLInputElement;
+  // the name goes on the account's learner record (shown on the account pages); asked for only when creating an account
+  const name = h('input', { type: 'text', id: 'acct-name', name: 'name', autocomplete: 'name', maxlength: 100 }) as HTMLInputElement;
+  const nameField = field('Your name', name, 'Shown on your account in GoLearn and GoReview.');
+  nameField.id = 'acct-name-field';
+  nameField.hidden = true;
   const password = h('input', { type: 'password', id: 'acct-password', name: 'password', autocomplete: 'current-password', required: true }) as HTMLInputElement;
   const hint = h('p', { class: 'muted' });
   const terms = h('p', { class: 'muted', id: 'terms-note', hidden: true }, 'By creating an account you accept the ', h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' and the ', h('a', { href: '#/privacy', id: 'link-privacy' }, 'Privacy Policy'), '.');
@@ -116,12 +156,13 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
     password.setAttribute('autocomplete', mode.value === 'create' ? 'new-password' : 'current-password');
     hint.textContent = mode.value === 'create' ? `At least ${MIN_PASSWORD} characters. The password is sent to the service only; it is never stored here.` : '';
     terms.hidden = mode.value !== 'create';
+    nameField.hidden = mode.value !== 'create';
   });
   const status = statusLine();
   const submit = h('button', { type: 'submit', id: 'acct-submit', class: 'btn primary' }, 'Continue') as HTMLButtonElement;
   const unverified = h('div', { id: 'unverified-notice' });
   const form = h('form', { id: 'acct-form', novalidate: true },
-    field('What would you like to do?', mode), field('Email', email), field('Password', password), hint, terms, h('div', { class: 'row' }, submit), status, unverified);
+    field('What would you like to do?', mode), nameField, field('Email', email), field('Password', password), hint, terms, h('div', { class: 'row' }, submit), status, unverified);
   append(formBox, [form, forgotBlock(ctx, email)]);
 
   form.addEventListener('submit', (ev) => {
@@ -133,11 +174,13 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
       if (!EMAIL.test(addr)) { setStatus(status, 'Enter a valid email address.', 'error'); return; }
       if (!secret) { setStatus(status, 'Enter your password.', 'error'); return; }
       if (creating && secret.length < MIN_PASSWORD) { setStatus(status, `Choose a password of at least ${MIN_PASSWORD} characters.`, 'error'); return; }
+      const who = name.value.trim();
+      if (creating && !who) { setStatus(status, 'Enter your name.', 'error'); return; }
       submit.disabled = true;
       clear(unverified);
       setStatus(status, creating ? 'Creating the account…' : 'Signing in…', 'info');
       try {
-        const r = await ctx.signIn({ email: addr, password: secret, create: creating });
+        const r = await ctx.signIn({ email: addr, password: secret, create: creating, ...(creating ? { displayName: who } : {}) });
         const sent = r.ok && r.uploaded !== undefined ? ` ${r.uploaded === 0 ? 'Nothing needed uploading from this device.' : `Uploaded ${r.uploaded} event${r.uploaded === 1 ? '' : 's'} from this device to your account.`} Progress is now synced to your account.` : r.ok ? ' Progress is now synced to your account.' : '';
         const said = r.ok ? (creating ? `Account created and signed in as ${addr}.` : `Signed in as ${addr}.`) + sent + (creating ? ' Check your email to confirm the address.' : '') : r.message;
         setStatus(status, said, r.ok ? 'ok' : 'error');

@@ -37,6 +37,9 @@ export class FakeAccountService {
   count(method: string, path: string): number { return this.calls.filter((c) => c.method === method && c.path === path).length; }
   last(method: string, path: string): { body?: Record<string, unknown>; auth?: string } | undefined { return [...this.calls].reverse().find((c) => c.method === method && c.path === path); }
 
+  /** The display name on the learner record (GET /me carries it; POST /me/profile sets it). */
+  name?: string;
+
   private json(status: number, body?: unknown): Response {
     return status === 204 ? new Response(null, { status }) : new Response(body === undefined ? '' : JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
   }
@@ -77,7 +80,7 @@ export class FakeAccountService {
     const denied = need();
     if (method === 'GET' && path === '/me') {
       if (denied) return denied;
-      return this.json(200, { learner: null, account: { accountId: 'acct-1', email: this.email, createdAt: '2026-09-01T00:00:00.000Z', ...(this.reportVerified ? { verified: this.verified } : {}), ...(this.scheduledPurgeAt ? { scheduledPurgeAt: this.scheduledPurgeAt } : {}) }, enrolments: [], devices: [], consents: [] });
+      return this.json(200, { learner: this.name ? { learnerId: 'learner-1', createdAt: '2026-09-01T00:00:00.000Z', displayName: this.name } : null, account: { accountId: 'acct-1', email: this.email, createdAt: '2026-09-01T00:00:00.000Z', ...(this.reportVerified ? { verified: this.verified } : {}), ...(this.scheduledPurgeAt ? { scheduledPurgeAt: this.scheduledPurgeAt } : {}) }, enrolments: [], devices: [], consents: [] });
     }
     if (method === 'GET' && path === '/me/sessions') return denied ?? this.json(200, { sessions: this.sessions });
     if (method === 'DELETE' && path === '/me/sessions') {
@@ -92,6 +95,12 @@ export class FakeAccountService {
       return this.json(204);
     }
     if (method === 'GET' && path === '/me/export') return denied ?? new Response(JSON.stringify(this.exportBody), { status: 200, headers: { 'Content-Type': 'application/json', 'Content-Disposition': 'attachment; filename="export.json"' } });
+    if (method === 'POST' && path === '/me/profile') {
+      if (denied) return denied;
+      if (typeof body?.displayName !== 'string') return this.json(400, { error: 'invalid', message: '"displayName" must be a string.' });
+      this.name = body.displayName.trim() || undefined;
+      return this.json(200, { learner: { learnerId: 'learner-1', createdAt: '2026-09-01T00:00:00.000Z', ...(this.name ? { displayName: this.name } : {}) } });
+    }
     if (method === 'DELETE' && path === '/me') {
       if (denied) return denied;
       if (body?.password !== this.password) return this.json(403, { error: 'bad-password', message: 'Wrong password.' });

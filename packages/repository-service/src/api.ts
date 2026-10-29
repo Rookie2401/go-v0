@@ -9,7 +9,7 @@
 import type {
   AssistancePreferences, Enrolment, GoEvent, LearningGoal, LinguisticUnit, Learner, PrivateDocument, ReviewCandidate,
   StoredEvent, SyncPullRequest, SyncPullResponse, SyncPushRequest, SyncPushResponse, Tombstone, UnitKnowledge, KnowledgeLevel, SourceRef,
-  UnitRelation, FormAnalysis, LanguagePackInfo, AppendOutcome, UnitProvenance, ProvenanceOrigin, ValidationLevel,
+  UnitRelation, FormAnalysis, LanguagePackInfo, AppendOutcome, UnitProvenance, ProvenanceOrigin, ValidationLevel, Dimension,
 } from '../../repository-contract/src';
 import type { CorrectionResult, ServiceDeps } from './deps';
 import { handle } from './handler';
@@ -51,6 +51,8 @@ export interface RepositoryApi {
   createSession(input: { email: string; password: string; deviceId: string; platform?: string }): Promise<ApiResult<{ token: string; learnerId: string; expiresAt: string }>>;
   deleteSession(): Promise<ApiResult<null>>;
   me(): Promise<ApiResult<MeResponse>>;
+  /** The learner's display name: set with a non-empty string, cleared with an empty one. */
+  updateProfile(input: { displayName: string }): Promise<ApiResult<{ learner: Learner }>>;
   deleteMe(confirmEmail: string): Promise<ApiResult<null>>;
   listEnrolments(): Promise<ApiResult<{ enrolments: Enrolment[] }>>;
   enrol(input: EnrolInput): Promise<ApiResult<{ enrolment: Enrolment }>>;
@@ -67,7 +69,7 @@ export interface RepositoryApi {
   listEvents(q?: EventsQuery): Promise<ApiResult<{ events: StoredEvent[]; head: number }>>;
   knowledge(unitIds?: string[]): Promise<ApiResult<{ knowledge: UnitKnowledge[] }>>;
   vocabulary(query: VocabularyQuery): Promise<ApiResult<VocabularyPage>>;
-  candidates(enrolmentId: string, limit?: number, after?: string): Promise<ApiResult<{ candidates: ReviewCandidate[]; nextCursor?: string }>>;
+  candidates(enrolmentId: string, limit?: number, after?: string, objectiveDimensions?: Dimension[]): Promise<ApiResult<{ candidates: ReviewCandidate[]; nextCursor?: string }>>;
   preferences(languageId?: string): Promise<ApiResult<{ preferences: AssistancePreferences }>>;
   submitReviews(events: GoEvent[]): Promise<ApiResult<EventsResponse>>;
   submitWriting(input: { observation: GoEvent; document?: { doc: PrivateDocument; expectedRevision: number } }): Promise<ApiResult<{ outcome: AppendOutcome; document?: DocumentMeta; projected: boolean }>>;
@@ -134,6 +136,7 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
       return r;
     },
     me: () => call('GET', '/me'),
+    updateProfile: (input) => call('POST', '/me/profile', input),
     deleteMe: (confirmEmail) => call('DELETE', '/me', { confirmEmail }),
     listEnrolments: () => call('GET', '/enrolments'),
     enrol: (input) => call('POST', '/enrolments', input),
@@ -152,7 +155,7 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
       requiresAssistance: q.requiresAssistance === undefined ? undefined : String(q.requiresAssistance),
       unresolved: q.unresolved === undefined ? undefined : String(q.unresolved), reviewStatus: q.reviewStatus, sourceRef: q.sourceRef,
     }),
-    candidates: (enrolmentId, limit, after) => call('GET', '/candidates', undefined, { enrolmentId, limit, after }),
+    candidates: (enrolmentId, limit, after, objectiveDimensions) => call('GET', '/candidates', undefined, { enrolmentId, limit, after, objectives: objectiveDimensions?.join(',') }),
     preferences: (languageId) => call('GET', '/preferences', undefined, { languageId }),
     submitReviews: (events) => call('POST', '/reviews', { events }),
     submitWriting: (input) => call('POST', '/writing', input),

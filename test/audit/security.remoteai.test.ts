@@ -92,7 +92,7 @@ describe('source inventory: where a network or a remote provider can be reached'
     expect(voice).not.toMatch(/AZURE_SPEECH_KEY|api-key|authorization/i);
   });
 
-  it('GoReview, GoPractice\'s review/tell engines and the sync package send nothing but Repository calls (no provider URL, no model API)', () => {
+  it('GoReview, GoReview\'s review/tell engines and the sync package send nothing but Repository calls (no provider URL, no model API)', () => {
     const hits: string[] = [];
     for (const d of ['packages/goreview/src', 'packages/repository-sync/src', 'packages/repository-engine/src', 'packages/repository-linguistics/src', 'packages/repository-contract/src']) {
       for (const f of walk(path.join(root, d))) {

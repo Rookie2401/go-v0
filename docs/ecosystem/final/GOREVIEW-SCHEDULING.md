@@ -1,6 +1,6 @@
 # GoReview scheduling — FSRS adoption and what was verified
 
-Status: 2026-10-09. Sources: `packages/goreview/src/scheduler/README.md`, `GOPRACTICE-TEST-REPORT.md` §2, `audit/MODEL-SCHEDULER-LISTEN.md` §4, and the test files named below.
+Status: 2026-10-09. Sources: `packages/goreview/src/scheduler/README.md`, `GOREVIEW-APP-TEST-REPORT.md` §2, `audit/MODEL-SCHEDULER-LISTEN.md` §4, and the test files named below.
 I ran `test/goreview/scheduler`, `test/audit/scheduler.core.test.ts` and `test/audit/scheduler.deck.test.ts` on 2026-10-09 at 10:09 (with the GoTell and ecosystem suites): all passed.
 The scheduler decides when an existing deck item is next reviewed. It does not decide what a learner knows: the Repository's seven dimensions are the learner model, and GoReview's
 stability, interval or streak is retention bookkeeping.
@@ -45,7 +45,7 @@ Also: retrievability is monotone in time and within 0..1; late success earns mor
 
 ## 3. What this does not claim
 
-* No validation of the forgetting model against any learner. The vectors are library behaviour, not a calibration (`GOPRACTICE-TEST-REPORT.md` §2, §7).
+* No validation of the forgetting model against any learner. The vectors are library behaviour, not a calibration (`GOREVIEW-APP-TEST-REPORT.md` §2, §7).
 * Elapsed time is whole days, so retrievability a stability-length after a review is about 0.906, not 0.900 (scheduler README).
 * De-duplication on `dedupeKey` lives only in the store: a repeated `dedupeKey` under another id fed directly to `foldDeck` is applied twice (audit S16/O5; test "the fold collapses a repeated id by itself; a repeated dedupeKey ... is applied twice (the store is the only guard)").
 * A stored schedule from one regime handed to another scheduler is silently re-stamped; this cannot happen through `foldDeck`, which restarts from a new state (S8).

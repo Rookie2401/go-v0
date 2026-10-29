@@ -1,5 +1,5 @@
 /**
- * NOT NEEDED BY THE APPS ANY MORE. Any learner picks any language freely, there are no mission teams in GoLearn, GoPractice or the popup, and an
+ * NOT NEEDED BY THE APPS ANY MORE. Any learner picks any language freely, there are no mission teams in GoLearn, GoReview or the popup, and an
  * account is optional, so the local test flow (docs/TEST-ON-THIS-PC.md) has no seeding step. This helper is kept because the Repository service
  * itself still stores teams (its own tests and an operator may use them); it is harmless, and nothing calls it.
  *

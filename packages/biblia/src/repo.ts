@@ -1,6 +1,6 @@
 /**
  * Where Biblia's events go. Inside the GoLearn extension (this page served from chrome-extension://…/biblia/) the extension's background
- * worker owns the device's Repository and this page reaches it over `golearn:local-repo` (the same route GoPractice uses); the learner's
+ * worker owns the device's Repository and this page reaches it over `golearn:local-repo` (the same route GoReview uses); the learner's
  * enrolment in Hebrew or Greek is found or made there, with the period the text is in as its variety. Anywhere else there is no repository:
  * the reader works, records nothing, and says so. Two further modes sit beside these: 'app' (inside the GoReview iPhone app, over its Keychain
  * session) and, in the standalone web edition, 'account' (signed in to the Repository service named in config.json; see `accountRecorder`,

@@ -19,6 +19,7 @@ import { METRIC_KEY_PREFIX, } from '../metrics';
 import { EVENT_KEY_PREFIX, getDeviceId } from '../store';
 import { createActiveService } from './active';
 import { createGlossService, defaultPacks, type PackProvider } from './gloss';
+import { createFormsService } from './forms';
 import { levelOf } from '../../../language-packs/src/manifest';
 import { PACKS } from '../../../language-packs/src/registry';
 import { createLocalRepoService } from './localRepo';
@@ -46,6 +47,8 @@ export interface BackgroundOptions {
   /** The language packs (tests pass a fake). */
   packs?: PackProvider;
   timers?: { set(fn: () => void, ms: number): unknown; clear(handle: unknown): void };
+  /** The service address the extension ships with; read from app/config.json when absent (tests pass one). */
+  defaultServiceUrl?: string;
 }
 
 type SenderKind = 'page' | 'content' | 'foreign';
@@ -59,6 +62,7 @@ const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.record, MSG.profile, MSG.gloss, MSG.entry, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
   MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
   MSG.activeProfile, // the scan's learner-model question: device rows only, and only while Active is on (below)
+  MSG.confirmForms, // the scan's dictionary question: public dictionary data only, forms in, lemmas out
   MSG.translateSentence,
   MSG.speech,
 ]);
@@ -106,9 +110,27 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   const packs = bg.packs ?? defaultPacks;
   const packAvailable = (l: string): boolean => packs.manifest(l)?.status === 'installable';
   const holder: { recorder?: ReturnType<typeof createRecorder>; sync?: ReturnType<typeof createSyncService>; profile?: ReturnType<typeof createProfileService>; local?: ReturnType<typeof createLocalRepoService> } = {};
+  /** The service address the extension ships with (app/config.json's serviceUrl), read once; undefined outside an extension or without one.
+   * When there is one it is the address in use, whatever golearn:service holds (2026-10-28: no client can change the service address). */
+  let defaultServiceP: Promise<string | undefined> | undefined;
+  function defaultServiceUrl(): Promise<string | undefined> {
+    defaultServiceP ??= (async () => {
+      if (bg.defaultServiceUrl) return bg.defaultServiceUrl.replace(/\/+$/, '');
+      try {
+        const url = chrome.runtime.getURL?.('app/config.json');
+        if (!url) return undefined;
+        const res = await doFetch(url);
+        if (!res.ok) return undefined;
+        const cfg = JSON.parse(await res.text()) as { serviceUrl?: unknown };
+        return typeof cfg.serviceUrl === 'string' && /^https?:\/\//.test(cfg.serviceUrl) ? cfg.serviceUrl.replace(/\/+$/, '') : undefined;
+      } catch { return undefined; }
+    })();
+    return defaultServiceP;
+  }
+
   const session = createSessionManager({
     extensionId: chrome.runtime.id,
-    area: local, fetch: doFetch, now, packAvailable,
+    area: local, fetch: doFetch, now, packAvailable, shippedBaseUrl: defaultServiceUrl,
     onConnect: async (s) => {
       await holder.profile?.clear();
       await holder.recorder?.setAsideForeign(s.learnerId);
@@ -124,6 +146,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     onDisconnect: async () => { await holder.profile?.clear(); },
   });
   const gloss = createGlossService({ area: local, session, fetch: doFetch, packs, now, getURL: (path) => chrome.runtime.getURL?.(path) });
+  const forms = createFormsService({ gloss });
   const translation = createLocalTranslationService({
     fetch: doFetch,
     extensionId: chrome.runtime.id,
@@ -253,10 +276,19 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     let onDevice = false;
     let onAccount = false;
     const list = await localRepo.handle({ op: 'enrolments' }) as { ok: boolean; enrolments?: Array<{ enrolmentId: string; languageId: string; endedAt?: string; explicit: boolean }> };
-    const local = list.ok ? (list.enrolments ?? []).find((e) => e.languageId === languageId && !e.endedAt && e.explicit) : undefined;
-    if (local) {
-      const r = await localRepo.handle({ op: 'select', enrolmentId: local.enrolmentId }) as { ok: boolean };
+    const have = list.ok ? (list.enrolments ?? []).find((e) => e.languageId === languageId && !e.endedAt && e.explicit) : undefined;
+    if (have) {
+      const r = await localRepo.handle({ op: 'select', enrolmentId: have.enrolmentId }) as { ok: boolean };
       onDevice = r.ok;
+    } else {
+      // a language chosen on the account (the hosted setup app, another device) but not yet on this one: enrol it here too, as the setup
+      // page's Download would, so the switch works even while the service cannot be reached (2026-10-27). The dictionary pack is not
+      // fetched by this; meanings then come from the service or the hosted copy, and Settings says "no pack yet" until it is downloaded.
+      const chosen = (await accountLanguages()).languages.includes(languageId) || !!packs.manifest(languageId);
+      if (chosen) {
+        const r = await localRepo.handle({ op: 'enrol', languageId, goals: [{ kind: 'reading' }] }) as { ok: boolean };
+        onDevice = r.ok;
+      }
     }
     const a = await session.authenticated();
     if (a) {
@@ -270,25 +302,48 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     return { ok: true, languageId, languageName: languageNameOf(languageId), where: onDevice && onAccount ? 'both' : onDevice ? 'device' : 'account' };
   }
 
-  /** The languages of the account's open enrolments, when signed in and the service answers within a moment; else none (the popup never waits on the network). */
-  async function accountLanguages(): Promise<string[]> {
+  /**
+   * The languages of the account's open enrolments: read from the service when signed in and it answers within a moment, and kept in
+   * storage so that the next time it does not answer (the owner's network filters a name, the address is stale) the popup still lists
+   * them (2026-10-27). `fresh` is false only when neither the service nor the stored copy gave a list. The popup never waits on the network.
+   */
+  const ACCOUNT_LANGUAGES_KEY = 'golearn:account-languages';
+  async function accountLanguages(): Promise<{ languages: string[]; fresh: boolean }> {
     const a = await session.authenticated();
-    if (!a) return [];
-    const quiet = new Promise<string[]>((resolve) => setTimeout(() => resolve([]), 2500));
-    const ask = a.api.listEnrolments().then((r) => (r.ok ? [...new Set(r.data.enrolments.filter((e) => !e.endedAt).map((e) => e.languageId))] : []), () => []);
-    return Promise.race([ask, quiet]);
+    if (!a) return { languages: [], fresh: true };
+    const quiet = new Promise<string[] | undefined>((resolve) => setTimeout(() => resolve(undefined), 2500));
+    const ask = a.api.listEnrolments().then((r) => (r.ok ? [...new Set(r.data.enrolments.filter((e) => !e.endedAt).map((e) => e.languageId))] : undefined), () => undefined);
+    const live = await Promise.race([ask, quiet]);
+    if (live) {
+      try { await local.set({ [ACCOUNT_LANGUAGES_KEY]: { learnerId: a.session.learnerId, languages: live } }); } catch { /* the list still serves this call */ }
+      return { languages: live, fresh: true };
+    }
+    try {
+      const kept = (await local.get(ACCOUNT_LANGUAGES_KEY))[ACCOUNT_LANGUAGES_KEY] as { learnerId?: string; languages?: unknown } | undefined;
+      if (kept && kept.learnerId === a.session.learnerId && Array.isArray(kept.languages)) return { languages: kept.languages.filter((l): l is string => typeof l === 'string'), fresh: true };
+    } catch { /* no copy */ }
+    return { languages: [], fresh: false };
   }
 
+  /** A session from before the name was kept (2026-10-28): the enrolments are re-read once per worker life, which stores the name for the next status. */
+  let nameAsked = false;
   async function pageStatus(): Promise<PageStatus> {
     const [pub, s, st, sy] = await Promise.all([publicStatus(), session.status(), settings.get(), sync.status()]);
+    if (s.connected && !s.expired && !s.displayName && !nameAsked) { nameAsked = true; void session.refresh().catch(() => undefined); }
     // `revocationPending`: the last sign-out could not reach the service (audit P-08); the setup page may say so
     const out: PageStatus & { revocationPending?: boolean } = {
       // a language chosen on this device counts: an account without an enrolment yet must not make the popup say "choose a language"
-      ...pub, email: s.email, baseUrl: s.baseUrl, assetBase: s.assetBase, expiresAt: s.expiresAt, hasEnrolment: s.hasEnrolment || pub.installedLanguages !== undefined && (await localRepo.chosenLanguages()).length > 0, settings: st,
+      ...pub, email: s.email, displayName: s.displayName, baseUrl: s.baseUrl, assetBase: s.assetBase, expiresAt: s.expiresAt, hasEnrolment: s.hasEnrolment || pub.installedLanguages !== undefined && (await localRepo.chosenLanguages()).length > 0, settings: st,
       // the popup's language switch lists these: the account's enrolment first, then the device's open enrolments in setup order, then the
       // account's other open enrolments (a language chosen in the hosted setup app or on another device; read from the service when it
-      // answers within a moment, never waited for)
-      chosenLanguages: [...new Set([s.languageId, ...(await localRepo.chosenLanguages()), ...(await accountLanguages())].filter((l): l is string => !!l))],
+      // answers within a moment, else the copy kept from the last time it did)
+      ...(await (async () => {
+        const acct = await accountLanguages();
+        return {
+          chosenLanguages: [...new Set([s.languageId, ...(await localRepo.chosenLanguages()), ...acct.languages].filter((l): l is string => !!l))],
+          accountLanguagesFresh: acct.fresh,
+        };
+      })()),
       needsSignIn: pub.needsSignIn || sy.needsSignIn,
       sync: { pending: sy.pending, localOnly: sy.localOnly, rejected: sy.rejected, lastPushAt: sy.lastPushAt, lastError: sy.lastError, online: sy.online, needsSignIn: sy.needsSignIn || (s.connected && s.expired) },
       ...(s.revocationPending ? { revocationPending: true } : {}),
@@ -384,6 +439,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       }
       case MSG.gloss: return gloss.glossFor(m) satisfies Promise<GlossReply>;
       case MSG.entry: return gloss.entryFor(m);
+      case MSG.confirmForms: return forms.confirm(m);
       case MSG.explain: return gloss.explainFor(m);
       case MSG.pronounceInfo: return pronounceInfo(m);
       case MSG.speechConfig: return kind === 'page' ? speech.configure(m) : { ok: false };

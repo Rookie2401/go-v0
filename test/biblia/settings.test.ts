@@ -60,8 +60,8 @@ afterEach(() => { app?.destroy(); app = undefined; restore(); document.head.quer
 const q = <T extends Element>(sel: string): T => document.querySelector(sel) as T;
 const text = (el: Element | null | undefined): string => (el?.textContent ?? '').replace(/\s+/g, ' ').trim();
 const root = document.documentElement;
-async function open(opts: { storage?: Storage; account?: AccountService } = {}): Promise<BibliaApp> {
-  app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder, ...(opts.storage ? { storage: opts.storage } : {}), ...(opts.account ? { account: opts.account } : {}), now: () => new Date('2026-10-24T12:00:00Z') });
+async function open(opts: { storage?: Storage; account?: AccountService; syncStatus?: HTMLElement } = {}): Promise<BibliaApp> {
+  app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder, ...(opts.storage ? { storage: opts.storage } : {}), ...(opts.account ? { account: opts.account } : {}), ...(opts.syncStatus ? { syncStatus: opts.syncStatus } : {}), now: () => new Date('2026-10-24T12:00:00Z') });
   return app;
 }
 const pill = (group: string, value: string): HTMLButtonElement => q<HTMLButtonElement>(`.pills[aria-label="${group}"] button[data-value="${value}"]`);
@@ -198,6 +198,35 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Settings in GoReview\'s d
       await vi.waitFor(() => expect(account.state().signedIn).toBe(false));
       await vi.waitFor(() => expect(document.querySelector('#settings-signin')).not.toBeNull());
       expect(document.querySelector('#settings-email')).toBeNull();
+    });
+
+    it('signed in: the sync notice ("Uploads complete · Last sent at …", pending items) is a line of the Account card, not a bar above the page (2026-10-27)', async () => {
+      const { account, storage } = make();
+      expect(await account.signIn('ana@example.org', PASSWORD)).toEqual({ ok: true });
+      const syncStatus = document.createElement('aside');
+      syncStatus.className = 'sync-status';
+      syncStatus.textContent = 'Uploads complete · Last sent at 9:41 AM.';
+      const a = await open({ storage, account, syncStatus });
+      await a.go('#/');
+      expect(document.querySelector('.sync-status')).toBeNull(); // the library page carries no notice
+      await a.go('#/settings');
+      const inCard = document.querySelector('#settings-account .sync-status');
+      expect(inCard).toBe(syncStatus);
+      expect(text(q('#settings-account'))).toContain('Uploads complete');
+      // the Settings page itself has one notice, inside the card, after who is signed in
+      expect(document.querySelectorAll('.sync-status').length).toBe(1);
+      expect(q('#settings-email').compareDocumentPosition(syncStatus) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+      await a.go('#/');
+      expect(document.querySelector('.sync-status')).toBeNull();
+    });
+
+    it('signed out and not expired: the Account card shows no sync notice', async () => {
+      const { account, storage } = make();
+      const syncStatus = document.createElement('aside');
+      syncStatus.className = 'sync-status';
+      const a = await open({ storage, account, syncStatus });
+      await a.go('#/settings');
+      expect(document.querySelector('#settings-account .sync-status')).toBeNull();
     });
   });
 });

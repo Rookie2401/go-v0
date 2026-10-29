@@ -7,6 +7,7 @@
  * a Repository event through the Recorder (repo.ts) when one exists.
  */
 import { createCardUI, type CardUI } from '../../golearn-extension/src/popup/card';
+import type { CardView } from '../../golearn-extension/src/popup/view';
 import type { CardModel } from '../../golearn-extension/src/parser';
 import { parseSelection } from '../../golearn-extension/src/parser';
 import { hasAnalyser, languageMeta, registerAnalyser } from '../../golearn-extension/src/parser/registry';
@@ -31,8 +32,8 @@ export interface BibliaDeps {
   recorder: Recorder;
   /** The standalone web edition's account (sign-in state, the screen at #/account); absent in the extension, in the iPhone app and in a plain reader. With it, the chapter on screen carries the learner's knowledge levels while signed in. */
   account?: AccountService;
-  /** With the account: the Repository address in use, the usual one, and the way to change it on this device (the sign-in screen's "Service address", 2026-10-25). */
-  serviceAddress?: { current: string; standard: string; set(url: string | undefined): void };
+  /** With the account: the live sync notice (src/syncStatus.ts), shown in the Settings page's Account card and nowhere else (2026-10-27: it used to be a bar above every page). */
+  syncStatus?: HTMLElement;
   storage?: Storage;
   /** Where "GoReview" at the top leads when Biblia is a page of the GoReview app (the iPhone edition); absent elsewhere. */
   backUrl?: string;
@@ -129,7 +130,8 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
 
   const card: CardUI = createCardUI({ doc, speech: (win as unknown as { speechSynthesis?: SpeechSynthesis }).speechSynthesis ?? null, onDismiss: () => clearSelection() });
   let selectedButton: HTMLElement | undefined;
-  const clearSelection = (): void => { selectedButton?.classList.remove('sel'); selectedButton = undefined; };
+  let offCardLevel: (() => void) | undefined; // the open card follows its word's level on the page until it closes
+  const clearSelection = (): void => { selectedButton?.classList.remove('sel'); selectedButton = undefined; offCardLevel?.(); offCardLevel = undefined; };
 
   let route = '';
   const account = deps.account;
@@ -369,9 +371,24 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       const site = siteByEl.get(button);
       if (levels && site) { levels.learn(site, model.itemIds); levels.met(model.itemIds); }
     }
+    // the card opens showing how well the word is known (the level the page paints on it: the learner's own mark first, else the service's
+    // rows; a word still New is Seen from this tap, which is the only state the tap itself changes) and follows it while open, so the rows
+    // fetched after the tap, or a mark made on another device, show on the card without reopening it
+    const profileNow = (): Partial<CardView> | undefined => {
+      const p = levels?.profileOf(button);
+      if (!p) return undefined;
+      return { profile: { state: p.level ? 'ready' : 'loading', weak: [], ...(p.level ? { level: p.level } : {}), ...(p.encounters !== undefined ? { encounters: p.encounters } : {}) } };
+    };
+    offCardLevel?.();
+    offCardLevel = levels?.subscribe(() => {
+      if (selectedButton !== button) return;
+      const p = profileNow();
+      if (p) card.update(p);
+    });
     card.show(model, anchor, {
       view: {
         languageName: `${LANGUAGE_NAME[ref.lang]} · ${canon.refLabel(ref.book, ref.ch)}:${ref.v}`,
+        ...(profileNow() ?? {}),
         // "view sources": the analyser's own sources for this language (the Open Scriptures morphology, MorphGNT, the Wiktionary tables, the rules)
         sources: Object.values((ref.lang === 'he' ? heAdapter : elAdapter).sources ?? {}).map((s) => ({ label: s.label, ...(s.licence ? { licence: s.licence } : {}) })),
       },
@@ -542,13 +559,16 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         accountCard.append(
           h('p', { id: 'settings-email' }, `Signed in as ${st.email ?? 'your account'}`),
           para(recordingNotice(), 'muted'),
-          ...(waiting ? [para(`${waiting} lookup${waiting === 1 ? '' : 's'} and mark${waiting === 1 ? '' : 's'} waiting on this device to be sent.`, 'muted')] : []),
+          // the live sync notice (pending items, Sync now, last sent) lives here; without it, the plain count
+          ...(deps.syncStatus ? [deps.syncStatus] : waiting ? [para(`${waiting} lookup${waiting === 1 ? '' : 's'} and mark${waiting === 1 ? '' : 's'} waiting on this device to be sent.`, 'muted')] : []),
           h('div', { class: 'row' }, out, h('a', { class: 'btn', href: '#/account' }, 'Account')),
           legalLinks());
       } else {
         accountCard.append(
           h('p', { id: 'settings-signed-out', class: st.expired ? 'error' : 'muted' }, st.expired ? 'Your sign-in ended. Sign in again; what you did since is kept on this device and sent after.' : 'Not signed in.'),
           para(recordingNotice(), 'muted'),
+          // an expired sign-in's notice names what waits on the device
+          ...(deps.syncStatus && st.expired ? [deps.syncStatus] : []),
           h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/account', id: 'settings-signin' }, 'Sign in')),
           legalLinks());
       }
@@ -589,7 +609,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
           h('li', {}, 'Greek New Testament: The Greek New Testament: SBL Edition (Michael W. Holmes, ed.; SBL / Logos, 2010) — CC BY 4.0; analysis: MorphGNT (CC BY-SA 3.0); glosses: Dodson, Abbott-Smith, Strong’s (public domain); Septuagint counts: lxx-morph.'),
           h('li', {}, 'Both copied from the owner’s Biblia app’s data build (npm run biblia:import). None of that app’s parsing code is used: every word is read by the Go analysers adapter-he and adapter-el, whose readings are the sources’ own readings of these very words; the compiled cores hold the commonest words and the full indexes (loaded here when built) the rest.'))),
       kickerCard('sources-limits', 'Limits',
-        para('No dictionary panel yet (BDB / Abbott-Smith entries are not shown); no search, no vocabulary list (GoPractice shows the vocabulary); a form the Bible reads two ways shows both, the commoner first; nothing has been reviewed by a Hebrew scholar, a classicist or a native speaker; no voice exists for Biblical Hebrew or Koine Greek.')),
+        para('No dictionary panel yet (BDB / Abbott-Smith entries are not shown); no search, no vocabulary list (GoReview shows the vocabulary); a form the Bible reads two ways shows both, the commoner first; nothing has been reviewed by a Hebrew scholar, a classicist or a native speaker; no voice exists for Biblical Hebrew or Koine Greek.')),
       kickerCard('sources-type', 'Type',
         para('EB Garamond (Latin and Greek) and Frank Ruhl Libre (Hebrew), SIL Open Font License 1.1.', 'muted')),
       h('p', {}, h('a', { class: 'btn', href: '#/' }, 'Library'))));
@@ -610,7 +630,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     if (id === 'read' && m?.[2]) { route = `read/${m[2]}/${m[3] ?? '1'}`; view = await renderReader(decodeURIComponent(m[2]), Number(m[3] ?? '1')); }
     else if (id === 'settings') { route = 'settings'; view = renderSettings(); }
     else if (id === 'sources') { route = 'sources'; view = renderSources(); }
-    else if (id === 'account' && account) { route = 'account'; view = renderAccountScreen({ doc, account, topbar: plainBar('Biblia', 'account'), done: () => { void api.go('#/'); }, ...(deps.serviceAddress ? { serviceAddress: deps.serviceAddress } : {}) }); }
+    else if (id === 'account' && account) { route = 'account'; view = renderAccountScreen({ doc, account, topbar: plainBar('Biblia', 'account'), done: () => { void api.go('#/'); } }); }
     else if ((id === 'privacy' || id === 'terms') && account) { route = id; view = renderLegalScreen({ doc, which: id, topbar: plainBar('Biblia', undefined, '#/account') }); }
     else { route = 'library'; view = renderLibrary(); }
     root.replaceChildren(view);

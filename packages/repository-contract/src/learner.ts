@@ -28,6 +28,12 @@ export interface DimensionEstimate {
   observations: number;
   positive: number;
   negative: number;
+  /** projection@7: count of distinct, causally valid, independent positive events; absent on pre-@7 rows. */
+  independentPositiveEvents?: number;
+  /** projection@7: qualifying positives at least the configured delay after the prior qualifying positive. */
+  delayedIndependentPositiveEvents?: number;
+  /** Instant of the latest qualifying independent positive, for deterministic incremental folds. */
+  lastIndependentPositiveAt?: string;
   /** Sum of evidence weights, so the score can be explained ("rests on 3.4 weighted observations"). */
   weight: number;
   lastAt?: string;
@@ -110,6 +116,8 @@ export interface ReviewCandidate {
   reasons: Array<{ rule: string; weight: number; detail?: string }>;
   /** Which dimension the candidate mainly targets. */
   targetDimension: Dimension;
+  /** Actual skill objective when it differs from the primary trigger dimension. Older candidates may omit it. */
+  objectiveDimension?: Dimension;
   /** Eligibility of the underlying analysis for an assessment (§11). */
   eligibility: ReviewEligibility;
   /** When the candidate explains several others (a construction behind many vocabulary failures), their ids. */

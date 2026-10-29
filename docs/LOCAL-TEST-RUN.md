@@ -12,7 +12,7 @@ Everything below is on this PC; nothing needs the network except the phone's own
 | Biblia, hosted edition (installable, records to the public service when signed in; `docs/ecosystem/BIBLIA-STANDALONE.md`) | https://rookie2401.github.io/biblia/ | published by the owner from `packages/biblia/dist-standalone`; on this PC's Masters-WiFi the public service address is blocked, so here it reads but cannot record |
 | Biblia, standalone edition served locally against the local service | http://localhost:4199 | `npm run biblia:build-standalone` then `npx vite preview --outDir packages/biblia/dist-standalone --port 4199` (localhost, so its service worker can register) |
 | Biblia, standalone (reader only: nothing is recorded; carries the Biblical Hebrew and Koine indexes whole and the Ancient Greek, Modern Greek and Modern Hebrew shards) | http://127.0.0.1:5199 | `npx vite preview -c packages/biblia/vite.config.ts --port 5199` over `packages/biblia/dist` |
-| GoPractice, web copy (needs an account; points at the local service) | http://127.0.0.1:5198 | `npx vite preview -c packages/gopractice/vite.config.ts --port 5198` over `packages/gopractice/dist` |
+| GoPractice, web copy (needs an account; points at the local service) | http://127.0.0.1:5198 | `npx vite preview -c packages/goreview/app/vite.config.ts --port 5198` over `packages/goreview/app/dist` |
 
 The two previews were started from a Claude session and stop with it; the commands above restart them. The builds come from
 `npm run local:build` (extension + setup app + GoPractice + Biblia, in that order; `dist/` is about 450 MB with the dictionaries).
@@ -21,7 +21,7 @@ The two previews were started from a Claude session and stop with it; the comman
 
 1. Chrome → `chrome://extensions` → Developer mode → **Load unpacked** → `C:\Users\CJWal\dev\go-v0\packages\golearn-extension\dist`.
 2. Pin the GoLearn button. Open **GoLearn setup** (popup button). Choose languages: for this round take **Hebrew** and **Greek** (both are
-   experimental packs) beside Albanian or Spanish. Create a local account or sign in; the service address is `http://127.0.0.1:8790`.
+   experimental packs) beside Albanian or Spanish. Create a local account or sign in; the service address is the one in the extension's `app/config.json` (set it to `http://127.0.0.1:8790` before `npm run ext:build`; no field on the page since 2026-10-28).
 3. Settings → *How GoLearn reads pages* → **Open Biblia** opens https://rookie2401.github.io/biblia/ in a new tab. Sign in there with the same
    GoLearn account; its lookups and ratings are then recorded under the Hebrew or Greek enrolment through the public service (from this PC's
    network that address is blocked, so test the recording from the phone or another network, or use the local :4199 copy against

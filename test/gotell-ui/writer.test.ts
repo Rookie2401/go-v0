@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 /** The writer: autosave, Save, Analyse, the ladder, accept / reject, versions, export, delete, keyboard. */
 import { afterEach, describe, expect, it } from 'vitest';
-import { queued } from '../gopractice/helpers';
+import { queued } from '../goreview-app/helpers';
 import { draftIdFromHash, flush, makeTellRig, press, resetTellRig, typeInto, until, type TellRig } from './rig';
 
 afterEach(() => resetTellRig());

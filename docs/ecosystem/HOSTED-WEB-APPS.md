@@ -1,12 +1,13 @@
 # The hosted web apps on GitHub Pages (2026-10-23)
 
-Three of the ecosystem's apps are served from GitHub Pages; all three talk to the same Go Repository service,
-`https://repo.golearn-global-languages.com` (the PC behind the named Cloudflare tunnel until the server cut-over,
-`docs/ops/DEPLOY.md`). Same account everywhere: what is read or reviewed in one shows in the others.
+Three of the ecosystem's apps are served from GitHub Pages; all three talk to the same Go Repository service, on Render at
+`https://go-v0.onrender.com` (the default address of every system since 2026-10-27; the canonical name `https://repo.golearn-global-languages.com`
+is a DNS-only CNAME to the same service, blocked by some home routers, so no longer a default; before 2026-10-24 the service was the PC behind
+a named Cloudflare tunnel, `docs/ops/DEPLOY.md`). Same account everywhere: what is read or reviewed in one shows in the others.
 
 | app | address | branch / folder | built from | notes |
 |---|---|---|---|---|
-| GoReview, web edition | https://rookie2401.github.io/go-v0/review/ | `Rookie2401/go-v0` `gh-pages`, `review/` | `packages/gopractice/dist-review` (`GOPRACTICE_SERVICE_URL=https://repo.golearn-global-languages.com GOPRACTICE_DICT=hi,la npx vite build -c packages/gopractice/vite.config.ts --mode review`), `sw.js` `BUILD_ID ebb80c3e7dad`, 187 MB (gh-pages `c29deb7f`, 2026-10-25; before: Hindi only, 58 MB, `0debfb0790d6`) | installable; the Hindi and Latin dictionaries bundled (Latin added 2026-10-25 so the hosted edition can be tested as far as the native one, short of the shell), other languages' meanings come from the service |
+| GoReview, web edition | https://rookie2401.github.io/go-v0/review/ | `Rookie2401/go-v0` `gh-pages`, `review/` | `packages/goreview/app/dist-review` (`GOREVIEW_SERVICE_URL=https://go-v0.onrender.com GOREVIEW_DICT=hi,la npx vite build -c packages/goreview/app/vite.config.ts --mode review`; until 2026-10-27 the canonical name), `sw.js` `BUILD_ID ebb80c3e7dad`, 187 MB (gh-pages `c29deb7f`, 2026-10-25; before: Hindi only, 58 MB, `0debfb0790d6`) | installable; the Hindi and Latin dictionaries bundled (Latin added 2026-10-25 so the hosted edition can be tested as far as the native one, short of the shell), other languages' meanings come from the service |
 | GoLearn setup app | https://rookie2401.github.io/go-v0/app/ | same branch, `app/` | `packages/golearn-extension/dist-web` (`vite build -c packages/golearn-extension/app/vite.config.ts --mode web`), then `config.json`'s `serviceUrl` set to the public address by hand (that build has no environment override) | the address the account emails should open: set `APP_PUBLIC_URL=https://rookie2401.github.io/go-v0/app/` on the service |
 | Biblia | https://rookie2401.github.io/biblia/ | `Rookie2401/biblia` `gh-pages` (root) | `packages/biblia/dist-standalone`, see `BIBLIA-STANDALONE.md` | published 2026-10-23 |
 
@@ -15,18 +16,20 @@ The root of the `go-v0` Pages site (the earlier Go PWA, `dict/` with the hosted 
 
 ## Publishing again
 
+Since 2026-10-28 the GoReview application lives in `packages/goreview/app` (it was `packages/gopractice`, named GoPractice) and the build switches are
+`GOREVIEW_SERVICE_URL`, `GOREVIEW_DICT` and `GOREVIEW_OUT` (the `GOPRACTICE_*` names are no longer read); inside the GoLearn extension the page is `review/`, not `practice/`.
+
 ```powershell
 cd C:\Users\CJWal\dev\go-v0
-$env:GOPRACTICE_SERVICE_URL='https://repo.golearn-global-languages.com'; $env:GOPRACTICE_DICT='hi,la'
-npx vite build -c packages/gopractice/vite.config.ts --mode review
+$env:GOREVIEW_SERVICE_URL='https://go-v0.onrender.com'; $env:GOREVIEW_DICT='hi,la'; $env:BIBLIA_SERVICE_URL='https://go-v0.onrender.com'
+npx vite build -c packages/goreview/app/vite.config.ts --mode review
 npx vite build -c packages/golearn-extension/app/vite.config.ts --mode web
 # worktree of gh-pages (never under OneDrive); .git in a worktree is a FILE: never let a mirror copy delete it
 git worktree add -B gh-pages C:\Users\CJWal\dev\go-v0-pages origin/gh-pages      # or: cd there; git fetch origin; git reset --hard origin/gh-pages
 cd C:\Users\CJWal\dev\go-v0-pages
 robocopy C:\Users\CJWal\dev\go-v0\packages\gopractice\dist-review .\review /MIR
 robocopy C:\Users\CJWal\dev\go-v0\packages\golearn-extension\dist-web .\app /MIR
-# set the setup app's service address in the copy (the web build keeps the development address)
-$c = Get-Content .\app\config.json -Raw | ConvertFrom-Json; $c.serviceUrl = 'https://repo.golearn-global-languages.com'; $c | ConvertTo-Json -Depth 5 | Set-Content .\app\config.json -Encoding utf8
+# the setup app's config.json already names the default address (packages/golearn-extension/app/config.json: https://go-v0.onrender.com); nothing to edit in the copy
 git add -- review app; git commit -m "Deploy: GoReview web + GoLearn setup app"; git push origin gh-pages
 ```
 Pages serves the new files within a minute or two. The service workers of GoReview and Biblia replace their caches by `BUILD_ID`.
@@ -52,6 +55,28 @@ What the owner asked: that the GitHub build syncs with the greater GoLearn syste
    database; what differs is the network path, which the outside probe covers. A check from a phone on cellular (open the review address,
    sign in, see the two Hebrew words) closes that last gap and is the owner's to do.
 
+## No client can change the service address (2026-10-28)
+
+The owner: "Remove the option to change the service address. The client cannot have access to that." Gone the same day: GoReview's
+"Service address" disclosure on the sign-in page and the section on `#/developer` (the page still names the address, read-only, among the
+diagnostics); the GoLearn setup app's disclosure under the sign-in form and the popup's "Use … instead" button; Biblia's disclosure on the
+account page. The address in use is the one in each copy's `config.json` (written by the build: `GOREVIEW_SERVICE_URL`,
+`BIBLIA_SERVICE_URL`, the extension's own `app/config.json`, `REPOSITORY_SERVICE_URL` for a TestFlight stage), else the development
+default `http://127.0.0.1:8790`. A value a learner stored earlier is ignored everywhere: the extension's worker uses its own address whatever
+`golearn:service` holds (a sign-in made at the old address is then refused and the popup says "Sign in again"); Biblia drops its stored
+override; GoReview no longer reads its `gopractice:service` key. The setup app's dictionary address (where dictionary shards are read from
+first) is unchanged. The iPhone shells get this with their next builds (GoReview 12, Biblia 4); builds 11 and 3 still carry the field.
+
+## The default address is the Render one (2026-10-27)
+
+The owner: "Make v0.gorender the default address for every system." Done the same evening: GoReview web (`review/`, `BUILD_ID 18600d52ca75`),
+the setup app (`app/`) and Biblia (`BUILD_ID 58891c4898f8`) rebuilt from master with `https://go-v0.onrender.com` in their `config.json` and republished;
+the extension's own `app/config.json` already named it; the iPhone shells' `.env.example` and READMEs name it as `REPOSITORY_SERVICE_URL` for the
+next TestFlight stage (GoReview 11 and Biblia 3, already uploaded, still carry the canonical name in their bundles: their sign-in screens' "Service
+address" field accepts the Render one until the next build). Both service workers fetch `config.json` network-first, so an installed copy takes the
+new default on its next open; a learner who typed an address of their own keeps it (the override wins over config.json everywhere). The canonical
+name keeps resolving to the same service; it is simply not a default any more, because the owner's home router blocks it.
+
 ## The service moved to Render (2026-10-24, evening)
 
 Codex ("Team Luna") cut the Repository service over to Render: service `go-v0` (Oregon, 0.5 CPU / 512 MB, 1 GB persistent disk,
@@ -73,9 +98,8 @@ master as `12e15b66`. Full report: the owner's Codex outputs folder, `cloud-serv
 Why the Render address and not the canonical one in these tests: this PC's network still blocks `golearn-global-languages.com`;
 from anywhere else the canonical name works, and the apps' configs keep it. `go-v0.onrender.com` is reachable from here.
 
-Still to do on the owner's desktop: the installed GoLearn extension names `http://127.0.0.1:8790` (the stopped PC service); on its
-Sign-in screen expand "Service address", enter `https://go-v0.onrender.com` (this network) or leave the canonical name (any other),
-"Use this address", sign in. Known cosmetic issue from the merged branch: Biblia's sync-status bar offers "Sign in" even while signed in.
+Done since (2026-10-28, below): the installed extension takes its address from its own `app/config.json` when its worker starts, so the
+stale `http://127.0.0.1:8790` it named is replaced without anyone typing; the "Service address" fields are gone from every client. Known cosmetic issue from the merged branch: Biblia's sync-status bar offers "Sign in" even while signed in.
 
 ## Loose ends
 

@@ -32,8 +32,8 @@ const styleFromHtml = (rel: string): string => /<style>([\s\S]*?)<\/style>/.exec
 interface Sheet { key: string; label: string; css: string; rules: CssRule[] }
 const sheet = (key: string, label: string, css: string): Sheet => ({ key, label, css, rules: parseCss(css) });
 const SHEETS: Sheet[] = [
-  sheet('practice', 'GoPractice styles.css', read('packages/gopractice/styles.css')),
-  sheet('tell', 'GoTell workspace styles (screens/tell/styles.ts)', cssFromTs('packages/gopractice/screens/tell/styles.ts')),
+  sheet('practice', 'GoReview styles.css', read('packages/goreview/app/styles.css')),
+  sheet('tell', 'GoTell workspace styles (screens/tell/styles.ts)', cssFromTs('packages/goreview/app/screens/tell/styles.ts')),
   sheet('app', 'GoLearn setup app styles.css', read('packages/golearn-extension/app/styles.css')),
   sheet('card', 'Lookup card (popup/card.ts, shadow DOM)', cssFromTs('packages/golearn-extension/src/popup/card.ts')),
   sheet('action', 'Action popup (action/popup.html <style>)', styleFromHtml('packages/golearn-extension/action/popup.html')),
@@ -69,7 +69,7 @@ describe('font sizes: relative units or fixed pixels', () => {
     }
   });
 
-  it('the application stylesheets (GoPractice, GoTell, setup app) declare no pixel font size except the root', () => {
+  it('the application stylesheets (GoReview, GoTell, setup app) declare no pixel font size except the root', () => {
     for (const key of ['practice', 'tell', 'app']) {
       const px = fontSizes(by(key).rules).filter((x) => x.unit === 'px' && x.selector !== ':root');
       expect(px, key).toEqual([]);
@@ -80,7 +80,7 @@ describe('font sizes: relative units or fixed pixels', () => {
 // ───────────────────────────── focus, motion, scheme ─────────────────────────────
 
 describe('focus indicators, motion and colour scheme', () => {
-  it('A-C02 GoPractice, GoTell and the setup app declare :focus-visible with a 3px outline, and never remove the outline from a control', () => {
+  it('A-C02 GoReview, GoTell and the setup app declare :focus-visible with a 3px outline, and never remove the outline from a control', () => {
     for (const key of ['practice', 'app']) {
       const fv = by(key).rules.filter((r) => r.selector.includes(':focus-visible'));
       expect(fv.length, key).toBeGreaterThan(0);
@@ -102,11 +102,17 @@ describe('focus indicators, motion and colour scheme', () => {
     expect(r.length).toBe(0);
   });
 
-  it('A-C04 transitions are limited to prefers-reduced-motion: no-preference; there are no animations or smooth scrolling anywhere', () => {
+  it('A-C04 transitions are limited to prefers-reduced-motion: no-preference; there are no animations or smooth scrolling anywhere, except the loading indicator\u2019s turn', () => {
+    // The one allowance (2026-10-28): the loading mark's globe turns outside the media query (.go-globe-turn, the strip of land sliding across
+    // the sphere), because the turning IS the loading indicator (WCAG 2.3.3 excludes motion essential to the information conveyed); reduced
+    // motion only slows it (animation-duration).
+    const essential = (selector: string): boolean => selector === '.go-globe-turn';
     for (const s of SHEETS) {
       const motion = s.rules.filter((r) => 'transition' in r.decls || 'animation' in r.decls || r.decls['scroll-behavior'] === 'smooth');
-      for (const r of motion) expect(r.media.join(' '), `${s.key} ${r.selector}`).toContain('prefers-reduced-motion: no-preference');
-      row(`A-C04:${s.key}`, 'css', `${s.label}: motion`, motion.length ? `${motion.length} transition rule(s), all inside prefers-reduced-motion: no-preference` : 'none');
+      for (const r of motion) if (!essential(r.selector)) expect(r.media.join(' '), `${s.key} ${r.selector}`).toContain('prefers-reduced-motion: no-preference');
+      const allowed = motion.filter((r) => essential(r.selector));
+      for (const r of allowed) expect(r.media.join(' '), `${s.key} ${r.selector} is the indicator and must not be gated off`).not.toContain('prefers-reduced-motion');
+      row(`A-C04:${s.key}`, 'css', `${s.label}: motion`, motion.length ? `${motion.length - allowed.length} transition rule(s), all inside prefers-reduced-motion: no-preference${allowed.length ? `; ${allowed.length} allowed outside it (the loading indicator's turn, slowed under reduced motion)` : ''}` : 'none');
     }
   });
 
@@ -171,7 +177,7 @@ const fmtRows = (rs: Result[]): void => {
 };
 
 describe('contrast of the colour pairs actually used (WCAG 2.x, AA)', () => {
-  // ── GoPractice, GoTell and the setup app share one token set; each sheet is evaluated from its own tokens
+  // ── GoReview, GoTell and the setup app share one token set; each sheet is evaluated from its own tokens
   const appPairs = (s: Sheet): Pair[] => {
     const P = (id: string, what: string, fg: string, bg: string, extra: Partial<Pair> = {}): Pair => ({ id, sheet: s.key, what, fg, bg, kind: 'text', ...extra });
     const common: Pair[] = [
@@ -279,8 +285,9 @@ describe('contrast of the colour pairs actually used (WCAG 2.x, AA)', () => {
     const white: Rgba = { r: 255, g: 255, b: 255, a: 1 };
     const text: Array<[string, string, string]> = [
       ['body', 'body text (body)', 'body'], ['err', 'error text (.err)', '.err'], ['warn', 'warning status (.status-line.warn)', '.status-line.warn'],
-      // the protocol note (.proto) left the popup with its housekeeping controls on 2026-10-09; the closing note uses .muted
-      ['sub', 'sub-title (.sub)', '.sub'], ['hint', 'hint (.hint)', '.hint'], ['legend', 'underline legend (.legend)', '.legend'], ['muted', 'muted detail (.muted)', '.muted'], ['title', 'popup title (h1)', 'h1'],
+      // the protocol note (.proto) left the popup with its housekeeping controls on 2026-10-09; the sub-title, the hint and the h1 left with
+      // the owner's cut of 2026-10-28 (the greeting, the brand button to setup and the one-line legend took their place)
+      ['welcome', 'greeting (.welcome)', '.welcome'], ['setup', 'the brand button to setup (.setup-link)', '.setup-link'], ['legend', 'the one-line legend (.legend)', '.legend'], ['sample', 'a sample word of the legend (.legend .sw)', '.legend .sw'], ['muted', 'muted detail (.muted)', '.muted'],
     ];
     const rs: Result[] = [];
     for (const scheme of ['light', 'dark'] as const) {

@@ -2,7 +2,7 @@
  * The learner model as the reader sees it. `knowledgeFor(unitIds)` asks the Repository (`GET /knowledge?unitIds=`) and
  * caches each unit's row, found or not, in `chrome.storage.session` (cleared when the browser closes; a content script
  * cannot read it) with a 10-minute lifetime. After each successful sync the cached units are re-fetched, so what
- * GoPractice changed reaches the reader on the next lookup. Rows are shaped for the content script: the seven
+ * GoReview changed reaches the reader on the next lookup. Rows are shaped for the content script: the seven
  * dimensions, never a learner id.
  *
  * With no account (no session) the rows come from the device's own Repository (`local`), and the reply says so (`source: 'device'`, `connected: false`).

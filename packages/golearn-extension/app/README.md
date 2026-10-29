@@ -36,7 +36,7 @@ rewritten to `#/languages` (`ALIASES` in `app.ts`).
 | `share` | the web share target and deep link; not in the navigation |
 
 The orientation (tutorial) is no longer part of setup: the screen and its lookup driver were removed from this application; the tutorial
-data stays in `packages/language-packs` for GoPractice.
+data stays in `packages/language-packs` for GoReview.
 
 ## Storage keys
 

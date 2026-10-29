@@ -2,7 +2,7 @@
 
 Turns learner events into multidimensional knowledge estimates, assistance preferences, review candidates, review
 eligibility and reading suitability. Imports only `../../repository-contract/src`. Implements `ProjectionEngine`
-(`createProjectionEngine`, `modelVersion = 'projection@4'`); consumes `EventLog`, `ProjectionStore`, `LinguisticStore`
+(`createProjectionEngine`, `modelVersion = 'projection@6'`); consumes `EventLog`, `ProjectionStore`, `LinguisticStore`
 (read only), `TombstoneStore` and `IdentityStore.listEnrolments`.
 
 **These estimates are hypotheses until calibrated against independent assessments.** Every number below is a first
@@ -172,12 +172,16 @@ The effective status is the lowest of the unit's status and its best live (non-i
 ## Review candidates (`candidates.ts`)
 
 REVIEW IS A PROGRESSION (projection@4): which units are drawn, and for what, follows `UnitKnowledge.level` (table below); the learner never requests a review. A candidate exists only for a unit with a row (or a construction promoted by leverage) that has a lookup / assistance request (`exposure.negative > 0`), a demonstrated error (any judged dimension with `negative > 0`),
-leverage, or a frequency rank <= 2000. Exposure alone excludes it. **A unit whose latest deck event (CardAdded / CardRemoved / ReviewItemInvalidated) is CardAdded is not proposed again**
-(`candidates(..., { includeCovered: true })` lists it with the penalty below). Score = sum of reason weights, clamped to 0..1; ties by unit id. `targetDimension` = the weakest dimension with errors (constructions: grammaticalUnderstanding; default readingRecognition).
+leverage, or a frequency rank <= 2000. Exposure alone excludes it. **A unit is not proposed again for an objective dimension already covered by a live card** (`includeCovered: true` lists that same objective with the penalty below). Another unrepresented goal skill may be returned as one `objectiveDimension`. Score = sum of reason weights, clamped to 0..1; ties by unit id. `targetDimension` = the weakest dimension with errors (constructions: grammaticalUnderstanding; default readingRecognition).
+
+Coverage and admission are objective-dimension scoped. A live reading card does not count as listening or production coverage. When the primary target is covered, the engine may return one `ReviewCandidate.objectiveDimension` for the next unrepresented skill named by the enrolment goals; this field is an objective proposal, while `targetDimension` continues to describe the primary difficulty signal. GoReview independently requires spaced, moderate-or-strong, unassisted evidence before a productive/listening progression and checks the fetched facts and audio before creating a card. The candidate feed does not multiply one unit into every family. A dismissed, suspended, snoozed, or invalidated card suppresses new objectives for that unit until the learner control is cleared or verified repair adds the card again.
+
+Ranking uses signals the Repository can observe: distinct learner events, lookup/assistance counts, recent event time, enrolment goal kinds, unit frequency rank, judged dimension errors, and verified `realizes` relations. It does not infer per-reader relevance from sentence text, learner intent from lookup alone, lexical difficulty from spelling length, or a GoTell correctness grade from `ProductionRecorded` (that event is not an independent adjudication). The pack mission list is absent in current packs, so mission relevance is skipped and reported in notes.
 
 | Rule | Weight | Condition |
 |---|---|---|
 | recentEncounter | +0.15 | `lastSeenAt` within 7 days of `now` |
+| repeatedEncounters | +0.1 | at least 3 distinct unit events (encounters, lookups, assistance, or judgements); this ranks an already signalled candidate but exposure alone still does not draw it |
 | repeatedLookups | +0.2 | `exposure.negative >= 2` |
 | demonstratedError | +0.25 | any judged dimension `negative > 0` |
 | weakButSeen | +0.2 | readingRecognition weight > 0 and score < 0.5 |
@@ -194,7 +198,7 @@ leverage, or a frequency rank <= 2000. Exposure alone excludes it. **A unit whos
 | selfMarkContradicted | 0 | the learner's mark is two or more levels above the evidence dated after it (a lookup, assistance request or failed judgement); the unit is drawn by the level the evidence supports. Explanation only: "you marked it as \"Known\" (...), but later evidence disagrees: it supports Recognized". Evidence from before the mark, a re-encounter and a correct answer never contradict it |
 | knowledgeLevel | 0 | always present: names the level and what it is proposed for, e.g. "Known (4 encounters): recognised reliably; retrieving it moves it to Automatic" |
 | missionRelevance | +0.1 | the unit is in the pack's mission word list **if the pack facts expose one** (`LanguagePackInfo.missionUnitIds`, none today). Otherwise the rule is skipped and `candidates(..., { notes })` receives `MISSION_SKIPPED_NOTE` |
-| existingCoverage | -0.3 | only with `includeCovered`: the unit already has a card ("already covered"). By default such a unit is dropped |
+| existingCoverage | -0.3 | only with `includeCovered`: the requested objective dimension already has a live card. Other skills on that unit have separate coverage |
 | priorReview | -0.15 | a CardReviewed within 2 days |
 | expectedBenefit | +0.1 | confidence on the target dimension between 0.2 and 0.7 |
 | benefitVsBurden | +0.05 / -0.05 | benefit = sum of the positive reasons so far, burden = `cost`: ratio >= 2 gains 0.05 (cheap for what it offers), ratio < 0.5 loses 0.05 (costly); the detail prints both numbers; silent in between |

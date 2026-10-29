@@ -190,6 +190,30 @@ const packInstalledOk = (p: Record<string, unknown>): ValidationIssue[] => [
 ];
 
 type Check = (p: Record<string, unknown>) => ValidationIssue[];
+/** The intent a batch was planned with, as GoReview stamps it on a review (practiceIntent) and on a typed creation (admission.intent). */
+export const REVIEW_INTENT_REASONS = ['saved-deck', 'selected-vocabulary', 'early-review', 'reassessment'] as const;
+const INSTANT = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$/;
+const isInstant = (v: unknown): boolean => typeof v === 'string' && INSTANT.test(v) && !Number.isNaN(Date.parse(v));
+function intentOk(i: unknown, at: string): ValidationIssue[] {
+  if (i === undefined) return [];
+  if (!i || typeof i !== 'object' || Array.isArray(i)) return [{ path: at, message: "{ kind: 'automatic' } or { kind: 'explicit', reason, requestedAt }" }];
+  const x = i as Record<string, unknown>;
+  if (x.kind === 'automatic') return [];
+  if (x.kind !== 'explicit') return [{ path: `${at}.kind`, message: "'automatic' or 'explicit'" }];
+  return [
+    ...((REVIEW_INTENT_REASONS as readonly string[]).includes(x.reason as string) ? [] : [{ path: `${at}.reason`, message: REVIEW_INTENT_REASONS.join(' | ') }]),
+    ...(isInstant(x.requestedAt) ? [] : [{ path: `${at}.requestedAt`, message: 'ISO 8601 instant' }]),
+  ];
+}
+/** What a CardAdded may say it is: a typed creation, or a verified facts repair that re-links an invalidated card (scheduler/deck.ts). */
+export const CARD_LIFECYCLES = ['create', 'facts-repaired'] as const;
+/** A typed creation's admission (GoReview 3, 2026-10-28): the instant of the first answer and the intent, which the UTC-day allowance counts. Optional: older creations carry none. */
+function admissionOk(a: unknown): ValidationIssue[] {
+  if (a === undefined) return [];
+  if (!a || typeof a !== 'object' || Array.isArray(a)) return [{ path: 'payload.admission', message: 'object with at and intent' }];
+  const x = a as Record<string, unknown>;
+  return [...(isInstant(x.at) ? [] : [{ path: 'payload.admission.at', message: 'ISO 8601 instant of the first answer' }]), ...(x.intent === undefined ? [{ path: 'payload.admission.intent', message: 'required' }] : intentOk(x.intent, 'payload.admission.intent'))];
+}
 const need = (p: Record<string, unknown>, k: string, t: 'string' | 'number' | 'boolean', path = 'payload'): ValidationIssue[] =>
   typeof p[k] === t ? [] : [{ path: `${path}.${k}`, message: `required ${t}` }];
 const oneOf = (p: Record<string, unknown>, k: string, vals: readonly string[]): ValidationIssue[] =>
@@ -202,7 +226,7 @@ const surfaceOk = (p: Record<string, unknown>): ValidationIssue[] => {
   return [];
 };
 const schedulerMetadataOk = (p: Record<string, unknown>): ValidationIssue[] => {
-  const out: ValidationIssue[] = [];
+  const out: ValidationIssue[] = [...intentOk(p.practiceIntent, 'payload.practiceIntent')]; // the intent the batch was planned with, when stamped
   if (p.expectedPreviousReviewId !== undefined && p.expectedPreviousReviewId !== null &&
       (typeof p.expectedPreviousReviewId !== 'string' || p.expectedPreviousReviewId.length < 1 || p.expectedPreviousReviewId.length > 200)) {
     out.push({ path: 'payload.expectedPreviousReviewId', message: 'null or a string of 1 to 200 characters' });
@@ -310,7 +334,8 @@ const CHECKS: Record<string, Check> = {
   ],
   'written-review': (p) => [...oneOf(p, 'cardKind', ['recognition', 'recall', 'cloze']), ...oneOf(p, 'grade', ['again', 'hard', 'good', 'easy']), ...need(p, 'correct', 'boolean'), ...need(p, 'hinted', 'boolean'),
     ...(p.rating === undefined || p.rating === null || (typeof p.rating === 'number' && Number.isInteger(p.rating) && p.rating >= 1 && p.rating <= 4) ? [] : [{ path: 'payload.rating', message: 'integer 1..4 or null' }]), ...schedulerMetadataOk(p)],
-  card: () => [],
+  // CardAdded and CardRemoved. A typed creation says lifecycle 'create' and carries the admission the day's allowance counts; both stay optional for older histories.
+  card: (p) => [...(p.lifecycle === undefined || (CARD_LIFECYCLES as readonly string[]).includes(p.lifecycle as string) ? [] : [{ path: 'payload.lifecycle', message: CARD_LIFECYCLES.join(' | ') + ' (a removal is CardRemoved)' }]), ...admissionOk(p.admission)],
   'grammar-assessment': (p) => [...need(p, 'constructionId', 'string'), ...oneOf(p, 'task', ['interpret', 'apply', 'choose-form', 'explain']), ...need(p, 'correct', 'boolean'), ...need(p, 'hinted', 'boolean'), ...schedulerMetadataOk(p)],
   draft: (p) => need(p, 'draftId', 'string'),
   'correction-response': () => [],

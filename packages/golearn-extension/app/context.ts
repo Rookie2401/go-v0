@@ -53,9 +53,10 @@ export interface AppContext {
   inExtension: boolean;
   /** Ask the background worker; `answered: false` when there is no extension, no listener or no reply in time. */
   ask<T = unknown>(message: Record<string, unknown>, timeoutMs?: number): Promise<BackgroundReply<T>>;
+  /** The service address: config.json's, else the development default. Nothing on the pages can change it (2026-10-28). */
   serviceUrl(): Promise<string>;
-  /** The service address and the dictionary address as stored (the latter may be unset). */
-  saveService(baseUrl: string | undefined, assetBase?: string | null): Promise<Saved>;
+  /** The dictionary address (where dictionary shards are read from first; packInstall.ts); null or '' clears it. Stored beside the service address, which stays config.json's. */
+  saveDictionaryAddress(assetBase: string | null): Promise<Saved>;
   api(): Promise<{ api: RepositoryApi; session: Session | undefined; baseUrl: string }>;
   /** The account-hardening routes (confirmation, reset, sessions, export, deletion) on the service address, with the session’s token when there is one. */
   accountApi(): Promise<{ client: AccountClient; session: Session | undefined; baseUrl: string }>;
@@ -82,7 +83,7 @@ export interface AppContext {
   deviceId(): Promise<string>;
   identity(): Promise<AppIdentity>;
   /** Sign in (or create the account and sign in). A different sign-in replaces the old session and clears the cached profile. */
-  signIn(input: { email: string; password: string; create: boolean }): Promise<SignInResult>;
+  signIn(input: { email: string; password: string; create: boolean; /** The name for a new account's learner record. */ displayName?: string }): Promise<SignInResult>;
   /** Sign out of this device: the service session is revoked when reachable; the local session and cached profile go either way. */
   signOut(): Promise<void>;
   /** Make this enrolment the one events are recorded against. */
@@ -121,12 +122,12 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   };
 
   /** Sign-in without a background worker: the typed API client from this page, the session in the shared storage. */
-  async function directSignIn(input: { email: string; password: string; create: boolean }, baseUrl: string): Promise<SignInResult> {
+  async function directSignIn(input: { email: string; password: string; create: boolean; displayName?: string }, baseUrl: string): Promise<SignInResult> {
     try {
       const api = deps.createApi(baseUrl);
       let sent: unknown;
       if (input.create) {
-        const made = await api.createAccount({ email: input.email, password: input.password });
+        const made = await api.createAccount({ email: input.email, password: input.password, ...(input.displayName ? { displayName: input.displayName } : {}) });
         if (!made.ok) return { ok: false, message: explainFailure(made, 'create'), code: made.error };
         sent = (made.data as { verificationSent?: unknown } | null)?.verificationSent;
       }
@@ -286,15 +287,12 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     },
     destroy() { const o = localOpen; localOpen = undefined; if (o) void o.then((l) => { try { return l?.close(); } catch { return undefined; } }, () => undefined); },
     async serviceUrl() {
-      const stored = await state.getService();
-      return resolveServiceUrl(stored?.baseUrl, deps.config);
+      return resolveServiceUrl(deps.config);
     },
-    async saveService(baseUrl, assetBase) {
-      const cur = await state.getService();
-      const base = baseUrl ?? resolveServiceUrl(undefined, deps.config);
-      const check = validateServiceUrl(base);
+    async saveDictionaryAddress(assetBase) {
+      const check = validateServiceUrl(resolveServiceUrl(deps.config));
       if (!check.ok) return { ok: false, message: check.message };
-      let asset: string | undefined = assetBase === undefined ? cur?.assetBase : assetBase === null || assetBase === '' ? undefined : assetBase;
+      let asset: string | undefined = assetBase === null || assetBase === '' ? undefined : assetBase;
       if (asset !== undefined) {
         const a = validateServiceUrl(asset);
         if (!a.ok) return { ok: false, message: `Dictionary address: ${a.message}` };
@@ -330,7 +328,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       const email = input.email.trim();
       if (inExtension) {
         const r = await ask<{ ok?: boolean; message?: string }>(
-          { type: input.create ? MSG.createAccount : MSG.connect, baseUrl: check.url, email, password: input.password }, SIGN_IN_TIMEOUT_MS);
+          { type: input.create ? MSG.createAccount : MSG.connect, baseUrl: check.url, email, password: input.password, ...(input.create && input.displayName ? { displayName: input.displayName } : {}) }, SIGN_IN_TIMEOUT_MS);
         if (r.answered && r.value && typeof (r.value as { ok?: unknown }).ok === 'boolean') {
           if (okOf(r)) {
             await state.clearProfile();

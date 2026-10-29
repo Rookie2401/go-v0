@@ -4,13 +4,13 @@
  * (garbage JSON, a wrong type, a half-written row, a lost key) and the app is started again. The question each time: does it
  * come back, and is the durable queue (the learner's unsent evidence) still delivered, exactly once?
  *
- * Stores of the app under test: chrome.storage.local / .session for the GoLearn worker, localStorage (JSON text) for GoPractice;
+ * Stores of the app under test: chrome.storage.local / .session for the GoLearn worker, localStorage (JSON text) for GoReview;
  * IndexedDB / Dexie is not used by any of the Go packages (the legacy `src/` app only), so it is not tested here. The Repository
  * is the real one (memory store: the corruption is on the device, the server side is store-independent and covered elsewhere).
  */
 import { afterEach, describe, expect, it } from 'vitest';
 import { createLocalQueue, createMemoryArea, QUEUE_PREFIX } from '../../packages/repository-sync/src';
-import { createWebKeyValueArea } from '../../packages/gopractice/state';
+import { createWebKeyValueArea } from '../../packages/goreview/app/state';
 import {
   PASSWORD, createNet, createPracticeDevice, createStack, fakeLocalStorage, lookup, review, serverEvents, signUp,
   type Stack,
@@ -192,7 +192,7 @@ describe('GoLearn worker: DEFECTS found by damaging the cache', () => {
   // DEFECT O-03: the device id lives in its own storage key and the session on the server is bound to it (/sync/push answers 403
   // not-your-device for any other). If the key is lost or damaged while the session survives, the worker invents a new id and every
   // sync is refused with 403, reported as an opaque error with `needsSignIn:false`. Nothing is lost, and signing in again repairs it,
-  // but the learner is never told to do that (GoPractice, by contrast, treats the same 403 as "sign in again").
+  // but the learner is never told to do that (GoReview, by contrast, treats the same 403 as "sign in again").
   it('O-03 (fixed): when the device id is lost, the learner is told to sign in again (or the sync repairs itself)', async () => {
     const w = await worker();
     await damage(w, async (local) => { await local.remove('golearn:deviceId'); });
@@ -229,9 +229,9 @@ describe('GoLearn worker: DEFECTS found by damaging the cache', () => {
   });
 });
 
-// ───────────────────────────── GoPractice over localStorage ─────────────────────────────
+// ───────────────────────────── GoReview over localStorage ─────────────────────────────
 
-describe('GoPractice over localStorage: damaged local data', () => {
+describe('GoReview over localStorage: damaged local data', () => {
   const area = (ls: Storage) => Object.assign(createWebKeyValueArea(ls), { dump: () => ({}) });
   async function practice(deviceName = 'first') {
     const s = make();
@@ -285,7 +285,7 @@ describe('GoPractice over localStorage: damaged local data', () => {
     expect(st.rejected + st.quarantined).toBeGreaterThanOrEqual(1);
   });
 
-  // Same defect as O-01, in GoPractice: a queue row that is valid JSON of the wrong shape.
+  // Same defect as O-01, in GoReview: a queue row that is valid JSON of the wrong shape.
   const wrongShape: Array<[string, string]> = [
     ['a JSON string', JSON.stringify('garbage')], ['JSON null', 'null'], ['an empty object', '{}'],
     ['an event without required fields', JSON.stringify({ event: { id: 'bad' }, ord: 99, enqueuedAt: 'x', attempts: 0 })],
@@ -314,14 +314,14 @@ describe('GoPractice over localStorage: damaged local data', () => {
     p.ls.setItem('gopractice:session', '{oops');
     const dev2 = restart(p);
     expect(await dev2.ctx.session()).toBeUndefined();
-    expect((await dev2.ctx.record([lookup(p.id)])).refused.length).toBe(1);                 // GoPractice does not record for nobody; it says so
+    expect((await dev2.ctx.record([lookup(p.id)])).refused.length).toBe(1);                 // GoReview does not record for nobody; it says so
     expect(Object.keys((await Promise.resolve(Object.fromEntries(p.ls.raw)))).filter((k) => k.startsWith(`${prefix(p)}queue:`)).length).toBe(2);
     expect((await dev2.ctx.signIn({ email: p.a.email, password: PASSWORD })).ok).toBe(true);
     await dev2.ctx.syncNow({ force: true });
     for (const id of p.ids) expect(await countOf(p.s, p.a.learnerId, id)).toBe(1);
   });
 
-  it('a lost device id (the session survives): the sync is refused as "different device", GoPractice reports authExpired (sign in again), nothing is lost, and signing in repairs it', async () => {
+  it('a lost device id (the session survives): the sync is refused as "different device", GoReview reports authExpired (sign in again), nothing is lost, and signing in repairs it', async () => {
     const p = await practice('first');
     p.ls.removeItem('gopractice:deviceId');
     const dev2 = restart(p, 'second');                                                       // a new device id is generated

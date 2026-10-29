@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
-import { SCREENS, HOME, ALIASES, computeCompletion, setupComplete } from '../../packages/golearn-extension/app/app';
+import { SCREENS, HOME, ALIASES, brandMarkUrl, computeCompletion, setupComplete } from '../../packages/golearn-extension/app/app';
 import { KEYS } from '../../packages/golearn-extension/app/state';
 import { downloadLanguage, destroyRigs, flush, makeRig, signIn, until } from './helpers';
 
@@ -9,6 +9,16 @@ afterEach(() => destroyRigs());
 const CHOICE = { enrolmentId: 'loc-1', languageId: 'sq', varietyId: 'sq-standard', packId: 'pack:sq' };
 
 describe('the router and the shell', () => {
+  it('draws the brand mark from app/icons/go-logo.png resolved against the page, never import.meta.url (undefined in the extension’s classic-script build, where the setup page opened blank on 2026-10-28)', async () => {
+    const rig = await makeRig();
+    const mask = rig.q<HTMLElement>('.topbar .go-brand-mark').style.getPropertyValue('--go-brand-mask');
+    expect(mask).toMatch(/^url\("[^"]*\/icons\/go-logo\.png"\)$/);
+    expect(mask).not.toContain('undefined');
+    expect(mask).not.toContain('shared-brand');
+    expect(brandMarkUrl(document)).toBe(new URL('icons/go-logo.png', document.baseURI).href);
+    expect(brandMarkUrl({ baseURI: '' } as Document)).toBe('./icons/go-logo.png'); // no base to resolve against: the relative path, never a throw
+  });
+
   it('renders every screen with its heading and no error, under a slim top bar with the brand, the page title, Status and the cog', async () => {
     const rig = await makeRig();
     for (const screen of [HOME, ...SCREENS]) {
@@ -132,7 +142,7 @@ describe('the router and the shell', () => {
     expect(rig.q('#progress-mode').textContent).toContain('On this device only');
     expect(rig.q('#progress-mode').getAttribute('data-state')).toBe('device');
     expect(rig.q<HTMLAnchorElement>('#keep-progress').getAttribute('href')).toBe('#/signin');
-    expect(rig.q<HTMLAnchorElement>('#practise').getAttribute('href')).toBe('../practice/index.html');
+    expect(rig.q<HTMLAnchorElement>('#practise').getAttribute('href')).toBe('../review/index.html');
     expect(rig.q('#status-list li[data-route="languages"]').textContent).toContain('Albanian');
     expect(rig.root.querySelector('a[href="#/tutorial"], a[href="#/account"], a[href="#/language"], a[href="#/pack"], a[href="#/welcome"]')).toBeNull();
     await rig.go('diagnostics');

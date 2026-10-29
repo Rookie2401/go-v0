@@ -64,7 +64,7 @@ describe('answer: record before advancing', () => {
     const persist = { ...base, set: async (i: Record<string, unknown>) => { order.push('persist'); return base.set(i); } };
     const { runner } = setup({ persist, record: async () => { order.push('record'); } });
     await runner.answer(right());
-    expect(order).toEqual(['persist', 'record', 'persist']);
+    expect(order).toEqual(['persist', 'persist', 'record', 'persist']); // state, displayed prompt, durable event, advanced state
   });
 
   it('if record throws, nothing advanced: same exercise, no result, nothing persisted, and a retry works', async () => {
@@ -495,7 +495,7 @@ describe('challenge', () => {
     const answered = await runner.answer(wrong());
     await runner.challenge('the key is wrong', { keyIsWrong: true });
     const inv = rec.all().find((e) => e.kind === 'ReviewItemInvalidated');
-    expect(inv?.payload).toEqual({ reason: 'analysis-invalidated', cardId: answered.itemId });
+    expect(inv?.payload).toEqual({ reason: 'analysis-invalidated', cardId: answered.itemId, reviewEventId: answered.evidence!.id });
     expect(validateEvent(inv!)).toEqual([]);
   });
 
@@ -509,17 +509,17 @@ describe('challenge', () => {
 describe('new items', () => {
   it('a new item gets its CardAdded in the same batch as its first event; a deck item does not', async () => {
     const plan = makePlan({ due: 1, newItems: [{ unitId: 'form:sq:fresh' }] });
-    expect(plan.items.map((p) => p.isNew)).toEqual([true, false]);
+    expect(plan.items.map((p) => p.isNew)).toEqual([false, true]);
     const { runner, rec } = setup({ plan });
     await runner.answer(right());
     await runner.answer(right());
-    expect(rec.batches.map((b) => b.map((e) => e.kind))).toEqual([['CardAdded', 'CardReviewed'], ['CardReviewed']]);
-    const added = rec.batches[0][0];
+    expect(rec.batches.map((b) => b.map((e) => e.kind))).toEqual([['CardReviewed'], ['CardAdded', 'CardReviewed']]);
+    const added = rec.batches[1][0];
     expect(added.subject.cardId).toBe('card:written-recognition:form:sq:fresh');
     expect(added.payload).toMatchObject({ unitId: 'form:sq:fresh', dimension: 'written-recognition', family: 'written-recognition', addedBy: 'intake' });
     expect(validateEvent(added)).toEqual([]);
     const fold = foldDeck(rec.all(), fakeScheduler, { now: '2026-10-09T00:00:00.000Z' });
-    expect(fold.items.map((i) => i.unitId)).toEqual(['form:sq:fresh']);
+    expect(fold.items.map((i) => i.unitId)).toEqual(['form:sq:fresh', 'form:sq:u1']); // the canonical older orphan is recovered without rewriting its event
     expect(fold.items[0].history).toHaveLength(1);
   });
 
@@ -539,7 +539,7 @@ describe('summary', () => {
     await runner.answer(wrong({ challenged: true }));
     await runner.skip();
     const s = summarize(runner.state(), runner.skips());
-    expect(s).toEqual({ answered: 2, correct: 1, incorrect: 1, notJudged: 0, challenged: 1, skipped: 1, unbuildable: 0, remaining: 0, events: 2 });
+    expect(s).toEqual({ answered: 2, correct: 1, incorrect: 1, notJudged: 0, challenged: 1, skipped: 1, unbuildable: 0, remaining: 0, events: 2, planned: 3, presented: 2, deferred: 0 });
   });
 
   it('preview grades without recording anything', async () => {

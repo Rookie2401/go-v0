@@ -42,4 +42,11 @@ describe('the popup', () => {
   it('mentions no team, mission team or leader', () => {
     expect(html).not.toMatch(/team|leader/i);
   });
+
+  it('uses plain-language Active copy without browser-specific permission wording', () => {
+    expect(html).toContain('Look up words as you read');
+    expect(html).toContain('scan pages on this device');
+    expect(html).toContain('asks your browser for site access');
+    expect(html).not.toMatch(/Brave|Reading acquisition|read each page before me/i);
+  });
 });

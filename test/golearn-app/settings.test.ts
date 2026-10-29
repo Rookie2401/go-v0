@@ -50,7 +50,9 @@ describe('How GoLearn reads pages (the reader integration, an advanced screen)',
     await rig.go('reader');
     expect(rig.q('#ext-version').textContent).toBe(`Installed, version ${rig.chrome!.runtime.getManifest!().version}.`);
     const text = rig.q('#reader-installed').textContent!;
-    expect(text).toContain('per tab');
+    expect(text).toContain('temporary tab access expires when you navigate to another site or close the tab');
+    expect(text).toContain('turn on “GoLearn Active”');
+    expect(text).toContain('until you switch Active off or revoke access');
     expect(text).toContain('Alt+Shift+G');
     expect(text).toContain('right-click');
     expect(rig.root.querySelector('#reader-install')).toBeNull();
@@ -84,7 +86,8 @@ describe('How GoLearn reads pages (the reader integration, an advanced screen)',
     expect(rig.q('#surfaces li[data-surface="controlled-reader"]').textContent).toMatch(/DRM-free/);
     expect(rig.text()).toMatch(/never bypasses DRM/);
     for (const perm of PERMISSIONS) expect(rig.text()).toContain(perm.name);
-    expect(rig.text()).toContain('no host permissions');
+    expect(rig.text()).toContain('optional site access');
+    expect(rig.text()).toContain('GoLearn Active is off by default');
   });
 });
 

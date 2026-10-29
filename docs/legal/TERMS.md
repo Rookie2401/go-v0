@@ -14,7 +14,7 @@ GoLearn helps you read in another language: select a word on a page and it shows
 
 ## 3. Accounts
 
-- You must be at least [13 / 16 — counsel to decide] years old.
+- The proposed 4+ designation describes content suitability, not a minimum account age. GoLearn does not impose an additional restriction on reading content permitted by the user's browser. [Account eligibility and any applicable parent/guardian authorization requirements remain to be finalized before these draft terms are adopted.]
 - Give a real email address that you control. We send a link to confirm it; some features may stop working if it stays unconfirmed.
 - Keep your password to yourself. You are responsible for what happens under your account. Tell us if you think it has been misused, and use Settings → Sessions to end sessions you do not recognise.
 - One account is for one person.
@@ -49,7 +49,7 @@ We may change these Terms. If a change matters, the apps will show the new versi
 
 ## 11. Contact
 
-[CONTACT NAME AND EMAIL — to be filled in]
+Christian Walker, GoLearn — GoLearntech@outlook.com. Arizona, United States.
 
 ---
 

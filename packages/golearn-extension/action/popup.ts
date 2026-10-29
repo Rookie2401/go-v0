@@ -172,8 +172,8 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     activeToggle.disabled = false;
     activeToggle.checked = r.settings.active;
     if (!r.ok && r.message) { activeStatus.textContent = r.message; activeStatus.classList.add('warn'); return; }
-    if (r.settings.active && r.registered) activeStatus.textContent = `On. Every page you open is read on this device and the words you have met are underlined (${r.excluded} refusing readers excluded). Words that stay visible briefly are recorded in My words as exposure, not proof that you know them. A page that was already open gets it when you reload it.`;
-    else if (r.settings.active) { activeStatus.textContent = 'On, but GoLearn is not registered for pages; switch it off and on again.'; activeStatus.classList.add('warn'); }
+    if (r.settings.active && r.registered) activeStatus.textContent = `On. GoLearn scans supported pages on this device and underlines words from your history (${r.excluded} reading apps are excluded). Vocabulary encounters are recorded as exposure, not proof that you know a word. Reload a page that was already open to start scanning it.`;
+    else if (r.settings.active) { activeStatus.textContent = 'On, but GoLearn is not ready to scan pages; switch it off and on again.'; activeStatus.classList.add('warn'); }
     else activeStatus.textContent = 'Off. Nothing is read before you select a word.';
   }
   /** What Active did on the page in front: words read, words underlined per level, or why it read nothing. */
@@ -181,7 +181,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     if (!on || tabId === undefined) { pageLine.textContent = ''; return; }
     let ping: PingReply | undefined;
     try { ping = (await chrome.tabs?.sendMessage(tabId, { type: MSG.ping })) as PingReply | undefined; } catch { ping = undefined; }
-    if (!ping || !ping.ok) { pageLine.textContent = 'This page: GoLearn is not running here yet. Reload the page (Brave\'s own pages and the store cannot be read).'; return; }
+    if (!ping || !ping.ok) { pageLine.textContent = 'This page: GoLearn is not running here yet. Reload the page, if supported. Browser settings pages and extension stores cannot be read.'; return; }
     const s = ping.activeState;
     if (!ping.active || !s) { pageLine.textContent = 'This page: GoLearn is here but Active has not started on it. Reload the page.'; return; }
     if (s.reason) { pageLine.textContent = `This page: ${s.reason}`; return; }
@@ -197,7 +197,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
       // the browser's own prompt, inside this click; a "no" keeps everything as it was
       let granted = false;
       try { granted = (await chrome.permissions?.request({ origins: [...ACTIVE_ORIGINS] })) === true; } catch { granted = false; }
-      if (!granted) { activeToggle.checked = false; activeToggle.disabled = false; activeStatus.textContent = 'Brave did not allow GoLearn to read pages, so Active stays off.'; activeStatus.classList.add('warn'); return; }
+      if (!granted) { activeToggle.checked = false; activeToggle.disabled = false; activeStatus.textContent = 'Site access was not allowed, so GoLearn Active stays off.'; activeStatus.classList.add('warn'); return; }
       const r = await activeCall('set', { active: true });
       showActive(r);
       await showPage(!!r?.settings.active);

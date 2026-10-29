@@ -24,7 +24,7 @@
   }
   @media (prefers-color-scheme: dark) { .err, .status-line.warn { color: #ff9a9a; } }
   * { box-sizing: border-box; }
-  body { margin: 0; width: 21.25rem; max-width: 100%; background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 0.9375rem; line-height: 1.45; -webkit-font-smoothing: antialiased; font-feature-settings: 'kern' 1, 'liga' 1, 'locl' 0; }
+  body { margin: 0; width: 21.25rem; max-width: 100%; background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 0.9375rem; line-height: 1.45; -webkit-font-smoothing: antialiased; font-feature-settings: 'kern' 1, 'liga' 1; }
   main { padding: 12px 14px 14px; }
   h1 { font-size: 0.82rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 2px; }
   .sub { color: var(--ink-soft); font-style: italic; font-size: 0.9375rem; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
@@ -32,10 +32,10 @@
   .row label { flex: 1; }
   .row .grow { flex: 1; }
   select, button { font: inherit; font-size: 0.9rem; }
-  button { padding: 3px 10px; border: 1px solid var(--control-line); border-radius: 6px; background: var(--paper-raised); color: var(--ink); cursor: pointer; }
+  button { min-height: 44px; padding: 6px 12px; border: 1px solid var(--control-line); border-radius: 6px; background: var(--paper-raised); color: var(--ink); cursor: pointer; }
   button:hover:not(:disabled) { border-color: var(--accent-soft); }
   button:disabled { opacity: .5; cursor: not-allowed; }
-  input[type="checkbox"] { accent-color: var(--accent); width: 1.1rem; height: 1.1rem; }
+  input[type="checkbox"] { accent-color: var(--accent); width: 24px; height: 24px; flex: none; }
   .err { color: var(--bad); margin: 6px 0; min-height: 1.2em; }
   .hint { color: var(--ink-soft); font-style: italic; font-size: 0.875rem; margin: 6px 0; }
   .status-line { margin: 4px 0; }
@@ -57,7 +57,7 @@
 <body>
 <main id="golearn-popup">
   <h1 style="display:flex;align-items:center;gap:10px"><img src="../icons/icon-128.png" alt="" width="56" height="56" style="border-radius:6px">GoLearn</h1>
-  <div class="sub">Reading acquisition</div>
+  <div class="sub">Look up words as you read</div>
 
   <div class="row">
     <span class="grow status-line" id="connection" role="status" aria-live="polite">Checking the connection…</span>
@@ -67,14 +67,14 @@
 
   <hr>
   <div class="row">
-    <label for="active"><strong>GoLearn Active</strong>: read each page before me, underline the words I have met, and open a word's card when I click it</label>
+    <label for="active"><strong>GoLearn Active</strong>: scan pages on this device, underline words from your history, and open a word card when you select a word</label>
     <input type="checkbox" id="active">
   </div>
   <div class="status-line" id="active-status" role="status" aria-live="polite"></div>
   <div class="status-line" id="active-page" role="status" aria-live="polite"></div>
   <ul class="legend" id="active-legend" aria-label="What the underlines mean"></ul>
   <div class="status-line muted" id="voices"></div>
-  <div class="hint">Pages are read on this device only and nothing of them is kept; the words are matched against your own history here, never sent anywhere. A click speaks the word when this device has a voice for the language. Readers that refuse (Kindle, Kobo, readAwrite, MEB, Pratilipi) are never read. Switching on asks Brave once to let GoLearn read pages; switching off withdraws that.</div>
+  <div class="hint">Active scans page text on this device; the scan does not send or retain page text. It records vocabulary encounters using word IDs. If you are signed in, your GoLearn history syncs with your account. Selecting a word opens its card; after a successful lookup, GoLearn may speak it automatically according to your speech settings. Some reading apps block extensions from reading their pages. Switching on asks your browser for site access; switching off asks it to remove that access.</div>
   <div class="err" id="error" role="status" aria-live="polite"></div>
   <hr>
 

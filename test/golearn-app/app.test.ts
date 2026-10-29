@@ -148,6 +148,19 @@ describe('the router and the shell', () => {
     await flush();
   });
 
+  it('the hosted status home sends readers to paste lookup instead of extension controls', async () => {
+    const rig = await makeRig();
+    await rig.deps.area.set({ [KEYS.choice]: CHOICE });
+    await rig.deps.area.set({ [KEYS.app]: { visited: [], tutorial: 'pending', tutorialStep: 0, packs: { 'pack:sq': { version: '9', ok: true, verifiedAt: '2026-10-08T00:00:00Z' } }, readerAck: false } });
+    await rig.go('home');
+
+    expect(rig.text()).toContain('Look up shared text');
+    expect(rig.text()).toContain('paste a word or passage');
+    expect(rig.text()).toContain('Android Chrome');
+    expect(rig.text()).not.toContain('press the GoLearn button in the toolbar');
+    expect(rig.q<HTMLAnchorElement>('a[href="#/share"]').textContent).toBe('Look up shared text');
+  });
+
   it('a pack that did not verify does not complete setup', async () => {
     const rig = await makeRig({ extension: true });
     await rig.deps.area.set({ [KEYS.choice]: CHOICE });

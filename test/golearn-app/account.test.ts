@@ -324,6 +324,11 @@ describe('an account is optional and only keeps progress across devices', () => 
     for (const id of ['#acct-form', '#acct-email', '#acct-password', '#acct-mode', '#acct-submit']) expect(rig.root.querySelector(id), id).not.toBeNull();
     expect(rig.root.querySelector('#service-address')).toBeNull(); // no way to change the service address (2026-10-28)
     expect(rig.q('#continue-without-account').textContent).toBe('Continue without an account');
+    // the three bars of the sign-in page span the whole screen with their words centred (the owner, 2026-10-28)
+    expect(rig.q('#continue-without-account').classList.contains('bar')).toBe(true);
+    expect(rig.q('#signin-continue').classList.contains('bar')).toBe(true);
+    expect(rig.q('#done-reading').classList.contains('bar')).toBe(true);
+    expect(readFileSync('packages/golearn-extension/app/styles.css', 'utf8')).toMatch(/\.btn\.bar, button\.bar \{ display: block; width: 100%;[^}]*text-align: center/);
     expect(rig.text()).toContain('An account is optional: it only keeps your progress across devices');
     expect(rig.q('#account-state').textContent).toBe('On this device only');
     expect(rig.root.querySelector('#acct-not-now')).toBeNull();

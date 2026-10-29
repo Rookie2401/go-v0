@@ -115,6 +115,8 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .btn.danger { background: var(--bad); color: var(--panel); border-color: var(--bad); }
 .btn.danger:hover, button.danger:hover:not(:disabled) { background: var(--bad); border-color: var(--bad); opacity: .92; }
 .btn.small, button.small { padding: .1rem .65rem; font-size: .92rem; }
+/* a bar: the button spans the whole screen with its words centred (Continue to GoLearn, Continue without an account, Done — back to reading; the owner, 2026-10-28) */
+.btn.bar, button.bar { display: block; width: 100%; flex: 1 1 100%; box-sizing: border-box; text-align: center; padding: .7rem 1rem; font-size: 1.05rem; }
 button[hidden] { display: none; }
 
 .status { min-height: 1.4em; margin: .4rem 0; }
@@ -237,6 +239,7 @@ details.download .dl-panel .dl-note { font-size: .92rem; margin: .4rem 0; }
 .signin .lede { text-align: center; margin-inline: auto; }
 .signin .part { margin-top: 1.25rem; }
 .signin .skip-row { justify-content: center; margin-top: 1.1rem; }
+.signin #signin-proceed { margin-top: 1.1rem; }
 .signin > .muted { text-align: center; margin-inline: auto; }
 
 /* Settings: the advanced screens as a plain list of links */

@@ -36,6 +36,10 @@ describe('adaptive micro-deck target', () => {
       observedSeconds:10, expectedSeconds:25, correct:true }));
     expect(chooseMicrodeckTarget({ observations, configuredMaximum:20 }).targetQuestions).toBe(12);
     expect(chooseMicrodeckTarget({ observations, configuredMaximum:11 }).targetQuestions).toBe(11);
+    // the configured maximum is the ceiling: above 20 the batch may still grow, and a policy target above 20 is honoured up to it (2026-10-29)
+    expect(chooseMicrodeckTarget({ observations, configuredMaximum:30 }).targetQuestions).toBe(12);
+    expect(chooseMicrodeckTarget({ observations, configuredMaximum:30, policy:{ adaptive:false, defaultTarget:25 } }).targetQuestions).toBe(25);
+    expect(chooseMicrodeckTarget({ observations, configuredMaximum:30, policy:{ adaptive:false, defaultTarget:70 } }).targetQuestions).toBe(30);
     expect(chooseMicrodeckTarget({ observations, configuredMaximum:20, policy:{ adaptive:false, defaultTarget:9 } }).targetQuestions).toBe(9);
   });
 

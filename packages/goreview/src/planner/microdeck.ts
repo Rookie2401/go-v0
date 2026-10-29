@@ -1,7 +1,8 @@
 import type { ExerciseFamily } from '../types';
 
 /** Provisional, versioned heuristics; the session time budget remains an independent hard limit. */
-export const MICRODECK_POLICY = Object.freeze({ defaultTarget: 10, minTarget: 4, maxTarget: 20,
+/** The adaptive ceiling follows the learner's configured maximum (the Cards-per-deck control, 5 to 60); 20 was a silent cap above it until 2026-10-29. */
+export const MICRODECK_POLICY = Object.freeze({ defaultTarget: 10, minTarget: 4, maxTarget: 60,
   slowRatio: 1.4, fastRatio: 0.65, minSlowSamples: 6, minFastSamples: 10, minModalities: 2,
   lowIndependentAccuracy: 0.62, overloadFailureRate: 0.3 });
 

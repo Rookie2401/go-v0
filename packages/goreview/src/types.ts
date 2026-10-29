@@ -325,6 +325,8 @@ export interface ReviewPreferences {
   practiceGoals?: Array<'recognition' | 'retrieval' | 'listening' | 'application'>;
   desiredRetention: number;
   includeListening: boolean;
+  /** The learner turned listening off. Only this marker turns it off: a stored record from before listening was on by default (2026-10-28) says includeListening: false without having been asked, and reads as on. */
+  listeningOff?: true;
   /** Preferred share of grammar items in a session, 0..1. */
   grammarShare: number;
   prioritizeSaved: boolean;

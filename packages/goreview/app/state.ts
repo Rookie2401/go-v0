@@ -49,7 +49,7 @@ export const clampDeckSize = (v: unknown): number => (typeof v === 'number' && N
 export const cardsFromMinutes = (minutes: number): number => (minutes === 0 ? DEFAULT_CARDS_PER_DECK : clampDeckSize(minutes * 2));
 
 export const DEFAULT_PREFERENCES = (languageId: string): ReviewPreferences => ({
-  languageId, sessionMinutes: 10, maxNew: 5, dailyNewLimit: 5, practiceGoals: ['recognition', 'retrieval', 'application'], desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true, cardsPerDeck: DEFAULT_CARDS_PER_DECK,
+  languageId, sessionMinutes: 10, maxNew: 5, dailyNewLimit: 5, practiceGoals: ['recognition', 'retrieval', 'application'], desiredRetention: 0.9, includeListening: true, grammarShare: 0.2, prioritizeSaved: true, cardsPerDeck: DEFAULT_CARDS_PER_DECK,
 });
 
 // ───────────────────────────── key-value areas ─────────────────────────────
@@ -329,12 +329,19 @@ export const clampPrefs = (p: Partial<ReviewPreferences> & { languageId: string 
     dailyNewLimit: Math.round(num(p.dailyNewLimit, 0, 200, d.dailyNewLimit ?? d.maxNew)),
     practiceGoals: Array.isArray(p.practiceGoals) ? [...new Set(p.practiceGoals.filter(g => ['recognition','retrieval','listening','application'].includes(g)))] : d.practiceGoals,
     desiredRetention: num(p.desiredRetention, 0.7, 0.97, d.desiredRetention),
-    includeListening: p.includeListening === true,
+    // on unless the learner turned it off (the owner, 2026-10-28: listening practice on by default; the planner still asks
+    // listening only where a voice can speak the language)
+    includeListening: p.listeningOff !== true,
+    ...(p.listeningOff === true ? { listeningOff: true as const } : {}),
     grammarShare: num(p.grammarShare, 0, 1, d.grammarShare),
     prioritizeSaved: p.prioritizeSaved !== false,
     cardsPerDeck: clampDeckSize(p.cardsPerDeck ?? d.cardsPerDeck),
   };
 };
+
+/** A write that sets includeListening says whether the learner has it off (the marker clampPrefs reads). */
+const offWhen = (includeListening: boolean | undefined): { listeningOff?: true } =>
+  includeListening === false ? { listeningOff: true } : includeListening === true ? { listeningOff: undefined } : {};
 
 export interface SecureSessionStore {
   get(): Promise<Session | undefined>;
@@ -388,12 +395,12 @@ export function createStateStore(area: KeyValueArea, secureSession?: SecureSessi
     updatePrefs: (learnerId, languageId, patch) => serial(async () => {
       const v = await read<Partial<ReviewPreferences>>(prefsKey(learnerId, languageId));
       const migrated = v && v.cardsPerDeck === undefined && typeof v.sessionMinutes === 'number' ? { cardsPerDeck: cardsFromMinutes(v.sessionMinutes) } : {};
-      const next = clampPrefs({ ...(v ?? {}), ...migrated, ...patch, languageId });
+      const next = clampPrefs({ ...(v ?? {}), ...migrated, ...patch, ...offWhen(patch.includeListening), languageId });
       await area.set({ [prefsKey(learnerId, languageId)]: next });
       return next;
     }),
     async setPrefs(learnerId, prefs) {
-      const next = clampPrefs(prefs);
+      const next = clampPrefs({ ...prefs, ...offWhen(prefs.includeListening) });
       await area.set({ [prefsKey(learnerId, next.languageId)]: next });
       return next;
     },

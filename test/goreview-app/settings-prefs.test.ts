@@ -62,19 +62,20 @@ describe('review preferences in Settings', () => {
     const goal = rig.q<HTMLInputElement>('#pref-goal-retrieval');
     goal.checked = false; goal.dispatchEvent(new Event('change'));
     const listening = rig.q<HTMLInputElement>('#pref-listening');
-    listening.checked = true; listening.dispatchEvent(new Event('change'));
+    expect(listening.checked).toBe(true); // on by default (the owner, 2026-10-28)
+    listening.checked = false; listening.dispatchEvent(new Event('change'));
     const shortcuts = rig.q<HTMLInputElement>('#pref-shortcuts');
     shortcuts.checked = false; shortcuts.dispatchEvent(new Event('change'));
-    await until(async () => (await prefs()).includeListening && (await prefs()).maxNew === 3 && (await prefs()).dailyNewLimit === 9, 'the changes saved');
+    await until(async () => !(await prefs()).includeListening && (await prefs()).maxNew === 3 && (await prefs()).dailyNewLimit === 9, 'the changes saved');
     rig.q('#pref-reset').click();
-    await until(async () => (await prefs()).cardsPerDeck === 10 && !(await prefs()).includeListening, 'the defaults restored');
+    await until(async () => (await prefs()).cardsPerDeck === 10 && (await prefs()).includeListening, 'the defaults restored');
     expect(await prefs()).toEqual(DEFAULT_PREFERENCES('sq'));
     expect(rig.q<HTMLInputElement>('#pref-size').value).toBe('10');
     expect(rig.q<HTMLInputElement>('#pref-max-new').value).toBe('5');
     expect(rig.q<HTMLInputElement>('#pref-daily-new').value).toBe('5');
     expect(rig.q<HTMLInputElement>('#pref-retention').value).toBe('90');
     expect(rig.q<HTMLInputElement>('#pref-goal-retrieval').checked).toBe(true);
-    expect(rig.q<HTMLInputElement>('#pref-listening').checked).toBe(false);
+    expect(rig.q<HTMLInputElement>('#pref-listening').checked).toBe(true);
     expect(rig.q<HTMLInputElement>('#pref-saved').checked).toBe(true);
     expect(rig.q<HTMLInputElement>('#pref-shortcuts').checked).toBe(true);
     expect(rig.q('#prefs-form > .status').textContent).toContain('Back to the defaults');

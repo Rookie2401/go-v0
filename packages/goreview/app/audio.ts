@@ -22,15 +22,15 @@ export function createAudioDeps(opts: { consent: () => boolean; extensionRuntime
     pronounce: (request) => listen.pronounce(request),
     async availability(languageId): Promise<AudioAvailability> {
       const a = await listen.availability(languageId);
-      if (!a.canPronounce) {
-        return { available: false, eligibleForEvidence: false, reason: a.gaps[0] ?? `no voice can speak ${languageId} on this device right now` };
-      }
       const voices = await listen.voices(languageId);
-      let evidence = false;
-      for (const v of voices) {
-        if (!isAssessmentQualified(v)) continue;
-        if ((await v.availability()) === 'available') { evidence = true; break; }
+      // only a voice that can say any word counts: a recording of one fixed phrase (GoListen's German demonstration asset)
+      // made German "available" on a device with no German voice, and every German card then failed to speak (2026-10-28)
+      const speaking: typeof voices = [];
+      for (const v of voices) if (v.supports.includes('word') && (await v.availability()) === 'available') speaking.push(v);
+      if (!speaking.length) {
+        return { available: false, eligibleForEvidence: false, reason: (a.canPronounce ? undefined : a.gaps[0]) ?? `no voice can speak ${languageId} on this device right now` };
       }
+      const evidence = speaking.some(isAssessmentQualified);
       return evidence
         ? { available: true, eligibleForEvidence: true, reason: 'a reviewed human recording is available' }
         : { available: true, eligibleForEvidence: false, reason: 'only synthetic or unreviewed speech is available: listening practice, never listening evidence' };

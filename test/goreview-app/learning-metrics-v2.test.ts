@@ -74,7 +74,7 @@ describe('local learning measurements', () => {
   });
   it('keeps qualified sibling activity consistent whether or not a schedule projection is supplied',()=>{
     const root=event('root','2026-10-20T10:00:00Z',3,{scheduledDueBefore:'2026-10-20T10:00:00Z'});root.payload.expectedPreviousReviewId=null;
-    const sibling=event('sibling','2026-10-21T10:00:00Z',3,{scheduledDueBefore:'2026-10-20T10:00:00Z',retrievabilityBefore:.8});sibling.payload.expectedPreviousReviewId=null;sibling.producer.deviceId='D2';
+    const sibling=event('sibling','2026-10-21T09:00:00Z',3,{scheduledDueBefore:'2026-10-20T10:00:00Z',retrievabilityBefore:.8});sibling.payload.expectedPreviousReviewId=null;sibling.producer.deviceId='D2'; // under 24 h after the root: an independent sibling (exactly 24 h would be delayed evidence instead, 2026-10-29)
     const later=event('later','2026-10-22T10:00:00Z',3,{scheduledDueBefore:'2026-10-21T10:00:00Z',retrievabilityBefore:.8});later.payload.expectedPreviousReviewId=root.id;
     const noDeck=learningMetrics([root,sibling],[],scope);
     const deck=[{itemId:'C',unitId:'U',unitKind:'lexeme',languageId:'sq',dimension:'written-recognition',family:'written-recognition',addedAt:'2026-10-01T00:00:00Z',addedBy:'intake',reasons:[],schedule:{due:'2026-10-01T00:00:00Z',stability:1,difficulty:1,elapsedDays:1,scheduledDays:1,reps:1,lapses:0,phase:'review',algorithm:'fake',parametersVersion:'0'},history:[{at:root.at,rating:3,outcome:'correct',deviceId:'D1',exerciseId:'x',family:'written-recognition',elapsedDays:1,eventId:root.id},{at:sibling.at,rating:3,outcome:'correct',deviceId:'D2',exerciseId:'x',family:'written-recognition',elapsedDays:1,eventId:sibling.id,scheduleExcluded:'concurrent sibling',conflict:true}],status:'active'}] as never;

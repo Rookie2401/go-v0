@@ -1,1 +1,0 @@
-import{t as e}from"./hi-Cstkl0mk.js";export{e as adapter};

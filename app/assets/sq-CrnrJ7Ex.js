@@ -1,0 +1,1 @@
+import{n as e}from"./index-DfVmmJd1.js";export{e as adapter};

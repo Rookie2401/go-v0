@@ -47,7 +47,7 @@ const cardOf = (unit: string, kind: Kind): string => itemIdFor(unit, SPEC[kind].
 const AUTO: ReviewIntent = { kind: 'automatic' };
 const SAVED = (requestedAt: number): ReviewIntent => ({ kind: 'explicit', reason: 'saved-deck', requestedAt: iso(requestedAt) });
 
-const producer = { app: 'gopractice-review', version: 'nine-words', deviceId: 'D1' };
+const producer = { app: 'gopractice-review' as const, version: 'nine-words', deviceId: 'D1' };
 function cardAdded(unit: string, kind: Kind, at: number, intent: ReviewIntent = AUTO, unitKind = 'form', admissionAt = at): GoEvent {
   const s = SPEC[kind];
   const e: GoEvent = { id: nid('add'), v: 3, learnerId: L, enrolmentId: E, languageId: LANG, at: iso(at), producer, kind: 'CardAdded',

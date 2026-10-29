@@ -82,8 +82,9 @@ describe('on the device, with no account', () => {
     await reopenDetails(rig);
     expect(rig.q('#due-summary').textContent).toContain('Due');
     expect(rig.q('#count-candidates').textContent).toBe('0'); // missing admission evidence stays out; zog was already covered
-    expect(rig.q(`#candidates [data-unit="${unitOf('det')}"]`).getAttribute('data-decision')).toBe('needs-validation');
-    expect(rig.q(`#candidates [data-unit="${unitOf('det')}"]`).textContent).toContain('no verified facts');
+    // det has no knowledge row: the gate's own reason leads (until 2026-10-29 the missing facts relabelled it "no verified facts" first)
+    expect(rig.q(`#candidates [data-unit="${unitOf('det')}"]`).getAttribute('data-decision')).toBe('low-priority');
+    expect(rig.q(`#candidates [data-unit="${unitOf('det')}"]`).textContent).toContain('beyond New');
     expect((await rig.app.ctx.events('sq')).some((e) => e.kind === 'CardAdded' && e.subject.itemIds?.includes(unitOf('det')))).toBe(false);
     expect(rig.qa('#candidates li[data-unit]').length).toBe(2);
     expect(service.calls).toContain('candidates'); // asked of the device’s own Repository, not of a server

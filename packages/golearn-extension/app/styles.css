@@ -92,6 +92,7 @@ p { margin: .55rem 0; max-width: 42rem; }
 .card > :first-child { margin-top: 0; }
 .row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; margin: .65rem 0; }
 .field { display: grid; gap: .25rem; margin: .8rem 0; max-width: 28rem; }
+.field[hidden] { display: none; } /* the grid would otherwise win over the hidden attribute (the name field under "Sign in") */
 .field .cap { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
 .field .help { color: var(--muted); font-size: .92rem; font-style: italic; }
 input[type="text"], input[type="url"], input[type="email"], input[type="password"], select, textarea {
@@ -223,6 +224,12 @@ details.download .dl-panel .field { margin: .2rem 0; max-width: none; }
 details.download .dl-panel .dl-note { font-size: .92rem; margin: .4rem 0; }
 .lang-row details.about .row { margin: .4rem 0; }
 .account-line { margin: .3rem 0 .6rem; font-size: .98rem; }
+/* the name on the account, the one GoReview shows: "NAME  Ana  Edit", edited in place (the owner, 2026-10-28) */
+.account-name-line { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .6rem; margin: .3rem 0; }
+.account-name-cap { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+.account-name-line #account-name { font-size: 1.05rem; }
+.account-name-edit input { max-width: 16rem; }
+.account-name .status:empty { display: none; }
 
 /* the sign-in page: one quiet column */
 .signin { max-width: 28rem; margin: 0 auto; }

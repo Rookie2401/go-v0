@@ -4,6 +4,8 @@ import { DEFAULT_SERVICE_URL, loadConfig, resolveServiceUrl, validateServiceUrl 
 import { KEYS, type Session } from '../../packages/golearn-extension/app/state';
 import { DEVICE_KEY } from '../../packages/golearn-extension/src/store';
 import { cardStatus, downloadLanguage, destroyRigs, fakeBackground, flush, makeRig, signIn, submit, type, until, choose } from './helpers';
+import { FakeAccountService } from './accountFake';
+import { readFileSync } from 'node:fs';
 
 afterEach(() => destroyRigs());
 
@@ -157,6 +159,81 @@ describe('Sign-in page (optional)', () => {
     expect(rig.service.calls.map((c) => c.method)).toContain('deleteSession');
     expect(await rig.app.ctx.state.getProfile()).toBeUndefined();
     expect(rig.text()).toContain('Not signed in');
+  });
+});
+
+describe('the name on the account (the one GoReview shows; the owner, 2026-10-28)', () => {
+  const clickThrough = async (el: Element): Promise<void> => { (el as HTMLElement).click(); await flush(15); };
+
+  it('the create-account form asks for the name only under "Create an account": hidden under "Sign in", and the stylesheet lets hidden win over the field grid', async () => {
+    const rig = await makeRig();
+    await rig.go('signin');
+    expect(rig.q<HTMLElement>('#acct-name-field').hidden).toBe(true);
+    choose(rig.q('#acct-mode'), 'create');
+    expect(rig.q<HTMLElement>('#acct-name-field').hidden).toBe(false);
+    expect(rig.q('#acct-name-field .help').textContent).toBe('Shown on your account in GoLearn and GoReview.');
+    const css = readFileSync('packages/golearn-extension/app/styles.css', 'utf8');
+    expect(css).toMatch(/\.field\[hidden\]\s*\{\s*display:\s*none/);
+  });
+
+  it('signed in, Settings and the sign-in page name the account as the service has it, with Edit', async () => {
+    const acct = new FakeAccountService();
+    acct.name = 'Ana';
+    const rig = await makeRig({ fetch: acct.fetch });
+    await signIn(rig);
+    await rig.go('settings');
+    await until(() => rig.q('#account-name').textContent === 'Ana');
+    expect(rig.q('#account-name-line').textContent).toBe('Name Ana Edit');
+    expect(rig.q<HTMLElement>('#account-name-edit').hidden).toBe(false);
+    expect(acct.count('GET', '/me')).toBeGreaterThan(0);
+    await rig.go('signin');
+    await until(() => rig.q('#account-name').textContent === 'Ana');
+  });
+
+  it('without a name: "No name yet" and "Add a name"; the name is set in place and sent to the service as POST /me/profile', async () => {
+    const acct = new FakeAccountService();
+    const rig = await makeRig({ fetch: acct.fetch });
+    await signIn(rig);
+    await rig.go('settings');
+    await until(() => rig.q('#account-name').textContent === 'No name yet');
+    expect(rig.q('#account-name-edit').textContent).toBe('Add a name');
+    await clickThrough(rig.q('#account-name-edit'));
+    // an empty name is refused before any request
+    await clickThrough(rig.q('#account-name-save'));
+    expect(rig.q('.account-name .status').textContent).toBe('Enter a name, or cancel.');
+    expect(acct.count('POST', '/me/profile')).toBe(0);
+    type(rig.q<HTMLInputElement>('#account-name-input'), 'Ana Lima');
+    await clickThrough(rig.q('#account-name-save'));
+    await until(() => rig.q('#account-name').textContent === 'Ana Lima');
+    expect(acct.last('POST', '/me/profile')!.body).toEqual({ displayName: 'Ana Lima' });
+    expect(acct.name).toBe('Ana Lima');
+    expect(rig.q('#account-name-edit').textContent).toBe('Edit');
+    expect(rig.q('.account-name .status').textContent).toBe('Name saved. GoReview shows it too.');
+    expect(rig.root.querySelector('#account-name-input')).toBeNull();
+    // Cancel puts the line back unchanged
+    await clickThrough(rig.q('#account-name-edit'));
+    type(rig.q<HTMLInputElement>('#account-name-input'), 'Someone else');
+    await clickThrough(rig.q('#account-name-cancel'));
+    expect(rig.q('#account-name').textContent).toBe('Ana Lima');
+    expect(acct.count('POST', '/me/profile')).toBe(1);
+  });
+
+  it('an older service without POST /me/profile is explained and the name stays; nothing is shown about a name while signed out', async () => {
+    const acct = new FakeAccountService();
+    acct.name = 'Ana';
+    acct.failNext.set('POST /me/profile', { status: 404, body: { error: 'not-found', message: 'Not found' } });
+    const rig = await makeRig({ fetch: acct.fetch });
+    await signIn(rig);
+    await rig.go('settings');
+    await until(() => rig.q('#account-name').textContent === 'Ana');
+    await clickThrough(rig.q('#account-name-edit'));
+    type(rig.q<HTMLInputElement>('#account-name-input'), 'Ana Lima');
+    await clickThrough(rig.q('#account-name-save'));
+    await until(() => /cannot change names yet/.test(rig.q('.account-name .status').textContent ?? ''));
+    expect(acct.name).toBe('Ana');
+    rig.q('#acct-disconnect').click();
+    await until(() => /Not signed in/.test(rig.text()));
+    expect(rig.root.querySelector('#account-name-line')).toBeNull();
   });
 });
 

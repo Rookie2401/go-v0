@@ -494,7 +494,7 @@ img, svg, video, canvas { max-width: 100%; }
 .go-globe { position: relative; display: block; width: 104px; height: 104px; }
 .go-globe > span { position: absolute; inset: 0; display: block; }
 .go-globe-frame, .go-globe-rim { background: currentColor; -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: contain; mask-position: center; mask-repeat: no-repeat; }
-.go-globe-sphere { overflow: hidden; clip-path: circle(38.56% at 50% 50%); transform: rotate(32deg); }
+.go-globe-sphere { overflow: hidden; clip-path: circle(33.57% at 50% 50%); transform: rotate(32deg); }
 .go-globe-turn { position: absolute; top: 0; left: 0; width: 200%; height: 100%; display: block; animation: go-turn 3.6s linear infinite; will-change: transform; }
 .go-globe-land { position: absolute; inset: 0; display: block; background: currentColor; -webkit-mask-size: 50% 100%; -webkit-mask-position: 0 0; -webkit-mask-repeat: repeat-x; mask-size: 50% 100%; mask-position: 0 0; mask-repeat: repeat-x; }
 @keyframes go-turn { from { transform: translateX(-50%); } to { transform: translateX(0); } }

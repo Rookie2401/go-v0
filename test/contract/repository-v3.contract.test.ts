@@ -344,3 +344,32 @@ describe('provenance (P-12) and the requires-review status', () => {
     expect(paths(validateUnit({ ...unit, provenance: { ...base, origin: 'bogus' } }))).toContain('provenance.origin');
   });
 });
+
+describe('typed card creation and practice intent (GoReview 3, validated since 2026-10-29)', () => {
+  const base = (kind: 'CardAdded' | 'CardReviewed', payload: Record<string, unknown>) => ({
+    id: 'e1', v: 3, learnerId: 'L', enrolmentId: 'E', languageId: 'sq', at: '2026-10-08T10:00:00.000Z',
+    producer: { app: 'gopractice-review', version: '1', deviceId: 'D' }, kind,
+    subject: { cardId: 'card:written-recognition:form:sq:x', itemIds: ['form:sq:x'] }, payload, evidence: { quality: 'none' },
+  });
+  const creation = (payload: Record<string, unknown>) => base('CardAdded', { unitId: 'form:sq:x', unitKind: 'form', dimension: 'written-recognition', family: 'written-recognition', addedBy: 'intake', ...payload });
+  const paths = (e: unknown) => validateEvent(e).map((i) => i.path);
+  it('accepts a bare creation, a typed automatic creation and a typed explicit one', () => {
+    expect(paths(creation({}))).toEqual([]);
+    expect(paths(creation({ lifecycle: 'create', admission: { at: '2026-10-08T10:00:00.000Z', intent: { kind: 'automatic' } } }))).toEqual([]);
+    expect(paths(creation({ lifecycle: 'create', admission: { at: '2026-10-08T10:00:00.000Z', intent: { kind: 'explicit', reason: 'saved-deck', requestedAt: '2026-10-08T09:59:00.000Z' } } }))).toEqual([]);
+  });
+  it('names what is wrong: another lifecycle, a missing instant, an intent of another kind, an explicit intent without its reason', () => {
+    expect(paths(creation({ lifecycle: 'remove' }))).toEqual(['payload.lifecycle']);
+    expect(paths(creation({ lifecycle: 'create', admission: { intent: { kind: 'automatic' } } }))).toEqual(['payload.admission.at']);
+    expect(paths(creation({ lifecycle: 'create', admission: { at: 'yesterday', intent: { kind: 'maybe' } } }))).toEqual(['payload.admission.at', 'payload.admission.intent.kind']);
+    expect(paths(creation({ admission: { at: '2026-10-08T10:00:00.000Z', intent: { kind: 'explicit', reason: 'because', requestedAt: 'now' } } }))).toEqual(['payload.admission.intent.reason', 'payload.admission.intent.requestedAt']);
+    expect(paths(creation({ admission: 'explicit' }))).toEqual(['payload.admission']);
+  });
+  it('a review carries its practice intent in the same shape, or none', () => {
+    const review = (practiceIntent?: unknown) => base('CardReviewed', { cardKind: 'recognition', grade: 'good', correct: true, hinted: false, rating: 3, ...(practiceIntent !== undefined ? { practiceIntent } : {}) });
+    expect(paths(review())).toEqual([]);
+    expect(paths(review({ kind: 'explicit', reason: 'selected-vocabulary', requestedAt: '2026-10-08T09:59:00.000Z' }))).toEqual([]);
+    expect(paths(review({ kind: 'explicit' }))).toEqual(['payload.practiceIntent.reason', 'payload.practiceIntent.requestedAt']);
+    expect(paths(review('explicit'))).toEqual(['payload.practiceIntent']);
+  });
+});

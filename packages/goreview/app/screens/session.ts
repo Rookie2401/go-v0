@@ -982,7 +982,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
     p('GoReview records why each repeated presentation was scheduled, requested, or part of remediation.', 'muted'),
     h('ul', {}, ...overlapPresentations.map(row => {
       const item = run.plan.items.find(planItem => planItem.item.itemId === row.itemId)?.item;
-      return h('li', { 'data-overlap': row.overlap }, `${item ? unitLabel(item.unitId) : 'Question'} · ${presentationReasonLabel(row.presentationReason, row.overlap!)}`);
+      return h('li', { 'data-overlap': row.overlap }, item ? h('span', langProps(tag), unitLabel(item.unitId)) : 'Question', ` · ${presentationReasonLabel(row.presentationReason, row.overlap!)}`);
     }))) : null;
 
   append(root, [

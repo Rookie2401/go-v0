@@ -11,7 +11,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { afterAll, afterEach, describe, expect, it } from 'vitest';
 import { accessibleName, auditDom, flushAfterAll, row, tabSequence, type Finding } from './a11y.support';
-import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, key, makeRig, reopen, reopenDetails, seed, startWith, type as typeIn, until } from '../goreview-app/helpers';
+import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, key, knowledgeRow, makeRig, reopen, reopenDetails, seed, startWith, type as typeIn, unitOf, until } from '../goreview-app/helpers';
+import { DEFAULT_PREFERENCES } from '../../packages/goreview/app/state';
+import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
+import { FakeAccountService } from '../golearn-app/accountFake';
 import { destroyRigs } from '../goreview-app/helpers';
 import { makeTellRig, resetTellRig, typeInto, type TellRig } from '../gotell-ui/rig';
 import { HOME, SCREENS } from '../../packages/golearn-extension/app/app';
@@ -54,13 +57,15 @@ describe('GoReview screens', () => {
     destroyRigs();
   });
 
-  it('A-S02 GoReview home, session (every family, question and feedback), summary, transfer, history', async () => {
+  it('A-S02 GoReview home, details (proposals), My vocab (Select), session (every family, question and feedback), summary (next deck, optional practice), remediation, transfer, history', async () => {
     const A = ids('L1', 'sq');
     const service = defaultService();
     const rig = await makeTellRig({ service });
-    // the proposals arrive after the first paint and no card is admitted automatically, so they keep their "Test now" and "Dismiss" buttons to be audited
+    // GoReview 3: new words are admitted automatically under budgets, so the proposals on the details page keep their "Test now" (optional selected practice), "Later" and "Dismiss" while no new-item budget is open
     await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', sessionMinutes: 10, maxNew: 0, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });
     service.candidates.set('L1-e1', [candidate('det', 0.8), candidate('diell', 0.3), candidate('hene', 0.05), candidate('zog', 0.9)]);
+    // a proposal needs observed knowledge beyond New (the Seen gate); the due and added cards below make zog and hene "already covered"
+    service.knowledge.set('L1', ['det', 'diell', 'hene'].map((x) => ({ ...knowledgeRow('L1', unitOf(x), 'sq', {}), level: 'recognized' as const })));
     await seed(rig, [
       ...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'written-recognition'), ...dueCard(A, 'qen', 'audio-to-meaning'),
       ...dueCard(A, 'shtepi', 'phrase-comprehension'), ...dueCard(A, 'diell', 'sentence-completion'),
@@ -75,20 +80,57 @@ describe('GoReview screens', () => {
     for (const d of rig.qa<HTMLDetailsElement>('details')) { d.open = true; d.dispatchEvent(new Event('toggle')); }
     await flush(4);
     audit(rig.root, 'practice/review-details (details open)');
+    expect(rig.root.querySelector(`[data-unit="${unitOf('det')}"] [data-act="test-now"]`), 'a proposal offers "Test now"').toBeTruthy();
 
-    // a status message that quotes a target-language word inside an English sentence
-    click(rig.q('[data-act="test-now"]'));
-    await until(() => /Added .* to your deck/.test(rig.root.querySelector('#review-details > .status')?.textContent ?? ''), `the status message (now: ${rig.root.querySelector('#review-details > .status')?.textContent})`);
+    // "Later" keeps a proposal out of the next session; "Test now" selects it for optional practice and quotes the word in the status
+    click(rig.q(`[data-unit="${unitOf('diell')}"] [data-act="later"]`));
+    await until(() => rig.root.querySelector(`[data-unit="${unitOf('diell')}"]`)?.getAttribute('data-choice') === 'later', 'the later note');
+    audit(rig.root, 'practice/review-details (after Later)');
+    click(rig.q(`[data-unit="${unitOf('det')}"] [data-act="test-now"]`));
+    await until(() => /Added .* to optional selected practice/.test(rig.root.querySelector('#review-details > .status')?.textContent ?? ''), `the status message (now: ${rig.root.querySelector('#review-details > .status')?.textContent})`);
     audit(rig.root, 'practice/review-details (after Test now)');
 
-    // a session
+    // the home offers the selected words as a separate, optional practice beside Begin
+    await reopen(rig);
+    expect(rig.root.querySelector('#start-selected-practice'), 'the home offers the selected words').toBeTruthy();
+    audit(rig.root, 'practice/review-home (selected practice)');
+
+    // My vocab: a word added by hand from the list (its status quotes the word). The fake Repository has no vocabulary list, so a page of it is supplied.
+    const realApi = rig.app.ctx.api;
+    const entry = (label: string): { knowledge: unknown; unit: unknown; surfaceForms: string[]; lastEncounter: string; sources: unknown[] } => {
+      const unitId = unitOf(label);
+      return {
+        knowledge: { unitId, languageId: 'sq', level: 'new', encounters: 1, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-06T00:00:00.000Z' },
+        unit: { unitId, languageId: 'sq', label, kind: 'lexeme' }, surfaceForms: [label], lastEncounter: '2026-10-06T00:00:00.000Z', sources: [],
+      };
+    };
+    const items = [entry('gabim'), entry('mace')];
+    rig.app.ctx.api = async () => {
+      const r = await realApi();
+      const vocabulary = async (): Promise<unknown> => ({ ok: true as const, status: 200, data: { items, catalog: { total: items.length, counts: { new: items.length, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 } } } });
+      return { ...r, api: { ...r.api, vocabulary } as unknown as typeof r.api };
+    };
+    forgetPaintedHome(rig.app.ctx);
+    await rig.go('review/vocab');
+    await until(() => rig.qa('.vocab-item').length === 2, 'the words of My vocab');
+    audit(rig.root, 'practice/my-vocab');
+    click(rig.q(`[data-unit-id="${unitOf('gabim')}"] button.vocab-row`));
+    await until(() => !!rig.root.querySelector('[data-action="add-to-deck"]'), 'the question under the word');
+    audit(rig.root, 'practice/my-vocab (question open)');
+    click(rig.q('[data-action="add-to-deck"]'));
+    await until(() => !!rig.root.querySelector(`[data-unit-id="${unitOf('gabim')}"] .vocab-selected`), 'the word to be selected');
+    audit(rig.root, 'practice/my-vocab (after Select)');
+    rig.app.ctx.api = realApi;
+    forgetPaintedHome(rig.app.ctx);
+
+    // a session: the budgets are open now, so the proposals may join as new cards; listening is on and the fake voice is available
     const prefs = await rig.app.ctx.identity();
     await rig.app.ctx.state.setPrefs(prefs!.learnerId, { languageId: 'sq', sessionMinutes: 20, maxNew: 5, desiredRetention: 0.9, includeListening: true, grammarShare: 0.3, prioritizeSaved: true });
     await reopen(rig);
     click(rig.q('#start-session'));
     await until(() => !!rig.root.querySelector('#session .exercise'), 'the first exercise');
     const families: string[] = [];
-    for (let guard = 0; guard < 10 && !rig.root.querySelector('#summary'); guard++) {
+    for (let guard = 0; guard < 12 && !rig.root.querySelector('#summary'); guard++) {
       const ex = rig.q('.exercise');
       const family = ex.getAttribute('data-family') ?? '?';
       families.push(family);
@@ -104,23 +146,69 @@ describe('GoReview screens', () => {
       await until(() => !!rig.root.querySelector('#summary') || (!!rig.root.querySelector('.exercise') && rig.root.querySelector('.exercise')!.getAttribute('data-item') !== was), 'the next item');
     }
     await until(() => !!rig.root.querySelector('#summary'), 'the summary');
+    await until(() => !!rig.root.querySelector('#summary-next'), 'the next-deck section of the summary');
     audit(rig.root, 'practice/session summary');
+    // the optional extra practice (repeat this batch) and the remediation parts of the next-deck section
+    const extra = rig.q<HTMLDetailsElement>('#optional-extra-practice');
+    extra.open = true; extra.dispatchEvent(new Event('toggle'));
+    await flush(2);
+    expect(rig.root.querySelector('#next-remediation-note'), 'the summary names the remediation backlog').toBeTruthy();
+    audit(rig.root, 'practice/session summary (next deck, optional practice open)');
     row('A-S02', 'screens', 'exercise families met in the session', [...new Set(families)].join(', '));
     expect(new Set(families).size).toBeGreaterThanOrEqual(4);
+
+    // the remediation page, with the backlog the wrong answers left
+    click(rig.q('#open-remediation'));
+    await until(() => !!rig.root.querySelector('#remediation-backlog'), 'the remediation backlog');
+    expect(rig.root.querySelectorAll('#remediation-backlog [data-item-id]').length, 'a backlog to audit').toBeGreaterThanOrEqual(1);
+    await flush(4);
+    audit(rig.root, 'practice/remediation (backlog)');
+    const study = rig.root.querySelector<HTMLButtonElement>('[data-action="mark-studied"]');
+    if (study) {
+      click(study);
+      await until(() => !!rig.root.querySelector('#remediation .status')?.getAttribute('data-kind'), 'the study marker to be saved');
+      audit(rig.root, 'practice/remediation (after Mark studied)');
+      // ten minutes later the delayed reassessment is offered
+      rig.clock.set(new Date(rig.clock.now.getTime() + 11 * 60_000).toISOString());
+      await rig.go('review');
+      await rig.go('review/remediation');
+      await until(() => !!rig.root.querySelector('#remediation-backlog'), 'the backlog again');
+      if (rig.root.querySelector('[data-action="begin-reassessment"]')) audit(rig.root, 'practice/remediation (reassessment ready)');
+    }
 
     await rig.go('review/transfer');
     audit(rig.root, 'practice/transfer');
     await reopen(rig);
     // Save deck moves the deck to the saved decks; the list is audited too
-    click(rig.q('#save-deck'));
-    await until(() => /Deck saved/.test(rig.root.querySelector('#review-home > .status')?.textContent ?? ''), 'the deck to be saved');
-    audit(rig.root, 'practice/review-home (after Save deck)');
+    if (rig.root.querySelector('#save-deck')) {
+      click(rig.q('#save-deck'));
+      await until(() => /Deck saved/.test(rig.root.querySelector('#review-home > .status')?.textContent ?? ''), 'the deck to be saved');
+      audit(rig.root, 'practice/review-home (after Save deck)');
+    }
     await rig.go('review/decks');
     audit(rig.root, 'practice/previous-decks');
     await reopenDetails(rig);
     const hist = rig.root.querySelector<HTMLAnchorElement>('a[href^="#/review/history"]');
     if (hist) { await rig.go(hist.getAttribute('href')!.replace(/^#\//, '')); audit(rig.root, 'practice/history'); }
   }, 60_000);
+
+  it('A-S12 the account page (signed in): name, email, actions, the devices disclosure and the deletion step', async () => {
+    const acct = new FakeAccountService();
+    acct.name = 'Ana';
+    acct.reportVerified = true; acct.verified = true;
+    const rig = await makeRig({ signedIn: true, fetch: acct.fetch });
+    await rig.go('account');
+    await until(() => rig.q('#account-name').textContent === 'Ana', 'the name from the service');
+    audit(rig.root, 'practice/account');
+    const devices = rig.q<HTMLDetailsElement>('#acct-devices');
+    devices.open = true; devices.dispatchEvent(new Event('toggle'));
+    await flush(6);
+    audit(rig.root, 'practice/account (devices open)');
+    click(rig.q('#delete-open'));
+    await flush(6);
+    audit(rig.root, 'practice/account (deletion step)');
+    destroyRigs();
+  });
 
   it('A-S03 GoTell: home, prompts, writer (typed, analysed, with the help ladder open), goals, privacy; settings', async () => {
     const rig: TellRig = await makeTellRig();
@@ -156,7 +244,7 @@ describe('GoReview screens', () => {
 // ───────────────────────────── audio-only questions, shortcuts, the clock ─────────────────────────────
 
 describe('audio-only interactions, character-key shortcuts and the session clock', () => {
-  it('A-S06 an audio-only question has a named group, named controls, a live replay count, and a non-audio way out; with no voice the home says so and asks in writing', async () => {
+  it('A-S06 an audio-only question has a named group, named controls, a live replay count, and a non-audio way out; with no voice the details say so and the listening card is withheld, not asked in writing', async () => {
     const A = ids('L1', 'sq');
     const rig = await makeRig({ signedIn: true });
     await startWith(rig, dueCard(A, 'qen', 'audio-to-meaning'), { includeListening: true });
@@ -170,13 +258,27 @@ describe('audio-only interactions, character-key shortcuts and the session clock
     audit(rig.root, 'practice/session audio question (audio check)');
     destroyRigs();
 
+    // GoReview 3: with no voice the planner does not ask a listening card in writing (writing cannot satisfy a listening obligation): the card stays due and unasked,
+    // and a session over written cards goes on without it. Only an audio card due and nothing else leaves Begin off, and the home says nothing is eligible.
     const mute = await makeRig({ signedIn: true, audio: fakeAudio({ available: false }) });
-    await startWith(mute, dueCard(A, 'qen', 'audio-to-meaning'), { includeListening: true });
+    await startWith(mute, [...dueCard(A, 'qen', 'audio-to-meaning'), ...dueCard(A, 'mace', 'written-recognition')], { includeListening: true });
     expect(mute.root.querySelector('#audio')).toBeNull();
     expect(mute.q('.exercise').getAttribute('data-family')).toBe('written-recognition');
+    expect(mute.q('.exercise').getAttribute('data-item')).toContain('mace');
+    audit(mute.root, 'practice/session written question (no voice installed)');
     await reopenDetails(mute);
     expect(mute.q('#listening-availability').textContent).toMatch(/^not available: no Albanian voice is installed/);
-    row('A-S06', 'audio', 'audio-only question: alternatives and honest notices', 'pass', 'group "Audio question"; Play/Replay (Space) and "I could not hear it" are buttons; choices are written; with no voice the item is asked in writing and the home says "not available: …"; "Include listening practice" can be switched off');
+    audit(mute.root, 'practice/review-details (no voice installed)');
+    destroyRigs();
+
+    const only = await makeRig({ signedIn: true, audio: fakeAudio({ available: false }) });
+    await seed(only, dueCard(A, 'qen', 'audio-to-meaning'));
+    await only.app.ctx.state.setPrefs('L1', { ...DEFAULT_PREFERENCES('sq'), includeListening: true });
+    await reopen(only);
+    expect(only.q<HTMLButtonElement>('#start-session').disabled).toBe(true);
+    expect(only.q('#deck-count').textContent).toBe('No eligible reviews right now');
+    audit(only.root, 'practice/review-home (listening card due, no voice)');
+    row('A-S06', 'audio', 'audio-only question: alternatives and honest notices', 'pass', 'group "Audio question"; Play/Replay (Space) and "I could not hear it" are buttons; choices are written; with no voice the audio card is never asked in writing (it stays due, Begin is off when it is all that is due, the home says "No eligible reviews right now") and the details say "not available: …"; "Include listening practice" can be switched off');
     destroyRigs();
   }, 30_000);
 
@@ -299,7 +401,7 @@ describe('what the audits found', () => {
     expect(findingsOf('dangling-reference').map(where)).toEqual([]);
   });
 
-  it('A-11 Albanian words inside English sentences are wrapped in lang="sq" (review reasons, session item line and explanations, the "Added … to your deck" status, transfer measures, GoTell issue text) (WCAG 3.1.2)', () => {
+  it('A-11 Albanian words inside English sentences are wrapped in lang="sq" (review reasons, session item line and explanations, the "Added … to optional selected practice" status, the My vocab "is selected for optional practice" status, transfer measures, GoTell issue text) (WCAG 3.1.2)', () => {
     expect(findingsOf('embedded-target-word', (x) => x.startsWith('practice/')).map(where)).toEqual([]);
   });
 

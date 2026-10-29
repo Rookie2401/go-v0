@@ -91,9 +91,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       if (deck?.entries.some((e) => e.unitId === r.unitId)) {
         selectedUnits = new Set([...selectedUnits, ...deck.entries.map((e) => e.unitId)]);
         asking = undefined;
-        setStatus(status, `${r.label} is selected for optional practice. It leads the next deck you start; with “prioritise saved words” on (the default), a word GoReview was already proposing also moves to the front of the automatic batch.`, 'ok');
+        setStatus(status, [h('span', langProps(tag), r.label), ` is selected for optional practice. It leads the next deck you start; with “prioritise saved words” on (the default), a word GoReview was already proposing also moves to the front of the automatic batch.`], 'ok');
       } else {
-        setStatus(status, `${r.label} is selected for optional practice, but no usable question fits the current session limits. It remains selected for a later practice session.`, 'info');
+        setStatus(status, [h('span', langProps(tag), r.label), ' is selected for optional practice, but no usable question fits the current session limits. It remains selected for a later practice session.'], 'info');
       }
       paintList();
     } catch (e) { setStatus(status, e instanceof Error ? e.message : 'The word could not be added.', 'error'); } finally { busy = false; }

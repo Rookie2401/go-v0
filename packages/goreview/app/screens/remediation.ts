@@ -3,7 +3,7 @@ import { remediationBacklog, type RemediationCandidate, type RemediationReason }
 import { buildRemediationStudiedEvent } from '../../src/planner/remediation';
 import type { Exercise, UnitFacts } from '../../src/types';
 import type { AppContext } from '../context';
-import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
+import { append, button, clear, embedTarget, h, p, setStatus, statusLine } from '../dom';
 import { unitLabel } from '../format';
 import { beginSession, loadReviewModel, type ReviewModel } from '../workspace';
 import type { DeckItem } from '../../src/types';
@@ -30,7 +30,7 @@ async function studyMaterial(ctx: AppContext, item: DeckItem, api: import('../..
 }
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
-  const root = h('main', { id: 'remediation' });
+  const root = h('section', { id: 'remediation', 'aria-labelledby': 'remediation-h' }); // inside the shell's main, under the shell's h1
   el.append(h('p', {}, h('a', { href: '#/review' }, '← GoReview')), root);
   const status = statusLine();
 
@@ -38,12 +38,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const model = await loadReviewModel(ctx);
     if (!view.alive()) return;
     clear(root);
-    if (!model) { append(root, [h('h1', {}, 'Remediation'), p('Choose a language to continue.')]); return; }
+    if (!model) { append(root, [h('h2', { id: 'remediation-h' }, 'Remediation'), p('Choose a language to continue.')]); return; }
     const allItems = [...model.deck, ...(model.classDeck ?? [])];
     const candidates = remediationBacklog(allItems.filter(item => !item.invalidatedAt), model.events, model.now);
     const repairItems = allItems.filter(item => !!item.invalidatedAt);
     const tag = model.identity.varietyId ?? model.identity.languageId;
-    append(root, [h('h1', {}, 'Remediation'),
+    append(root, [h('h2', { id: 'remediation-h' }, 'Remediation'),
       p('Revisit usable facts, examples and an explanation behind an unresolved answer. GoReview validates the material before it can be studied. Studying records a marker only; it does not change review history or scheduling. Reassessment is a separate retrieval after ten minutes.'),
       repairItems.length ? h('section', { id: 'facts-repair-backlog', class: 'card' }, h('h2', {}, 'Questions awaiting facts repair'), p('These answer keys were invalidated and are withheld from assessment. They are not counted as learner weaknesses.', 'muted'),
         ...await Promise.all(repairItems.map(async item => {
@@ -77,7 +77,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const classSource = isClassUnit(item.unitId);
     const section = h('li', { class: 'candidate remediation-item', 'data-item-id': c.itemId, 'data-source': classSource ? 'class-essentials' : 'vocabulary' },
       h('p', { class: 'muted' }, classSource ? 'Class Essentials' : 'My vocabulary'),
-      h('h2', { lang: tag }, unitLabel(item.unitId)),
+      h('h3', { lang: tag }, unitLabel(item.unitId)),
       p(`${(c.reasons ?? ['failed-retrieval']).map(reason => REASON_LABEL[reason]).join(' · ')} · ${c.failures} recent Again response(s) · unresolved after ${when(c.failureEventId ? model.events.find(e => e.id === c.failureEventId)?.at ?? model.now : model.now)}`, 'muted'),
       p('These labels describe the recorded question type and result; they do not diagnose why an answer was difficult.', 'help'));
     if (c.repairRequired) section.append(p('Five or more recent Again responses were recorded. Study the verified material, then reassess after the delay. This does not mean the answer key was invalidated.', 'notice'));
@@ -86,12 +86,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       if (facts.features && Object.keys(facts.features).length) section.append(h('p', {}, h('strong', {}, 'Form: '), Object.entries(facts.features).map(([k,v]) => `${k} ${v}`).join(' · ')));
       if (facts.constructionExplanation) section.append(h('p', {}, h('strong', {}, 'Explanation: '), facts.constructionExplanation));
       for (const [feature, explanation] of Object.entries(facts.featureExplanations ?? {})) section.append(p(`${feature}: ${explanation}`));
-      if (exercise?.answerKey.explanation) section.append(h('p', {}, h('strong', {}, 'Explanation: '), exercise.answerKey.explanation));
+      if (exercise?.answerKey.explanation) section.append(h('p', {}, h('strong', {}, 'Explanation: '), ...embedTarget(exercise.answerKey.explanation, [unitLabel(item.unitId)], tag)));
       const examples = [...new Map((facts.exampleSentences ?? [])
         .filter(example => example.source === 'pack-validation' || example.source === 'pack-tutorial')
         .map(example => [example.text.trim(), example])).values()];
       if (examples.length) {
-        section.append(h('h3', {}, 'Pack examples'));
+        section.append(h('h4', {}, 'Pack examples'));
         for (const example of examples.slice(0, 3)) section.append(h('blockquote', {}, h('p', { lang: tag }, example.text), p(`Source: ${example.source}`, 'muted')));
       }
     } else section.append(p(factsError || 'Verified study material is not available for this item right now.', 'muted'));
@@ -115,7 +115,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
           if (result.refused.length) throw new Error(result.refused[0].issues.join('; '));
         } finally { material.release(); }
         await paint();
-      }), { class: 'btn', 'data-action': 'mark-studied' });
+      }), { class: 'btn', 'data-action': 'mark-studied', 'aria-label': `Mark studied: ${unitLabel(item.unitId)}` });
       section.append(study);
     } else if (!c.ready) {
       section.append(p(`Studied ${when(c.studiedAt ?? model.now)}. Reassessment becomes available at ${when(c.readyAt ?? model.now)}; no waiting is required, and GoReview keeps the timing for later.`, 'muted'));

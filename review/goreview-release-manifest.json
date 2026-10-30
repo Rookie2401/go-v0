@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "4ddc7f8a022900e64023ed6e0adf37387d520d3c",
-    "tree": "05c117e099ef3a5fbc48a1106eadb22b7dab4d0e",
+    "commit": "d85d86cb3af2f9c323fcaa9b74ccf5ef3a84d4e0",
+    "tree": "4acd537a440a388615b11443a50541f8f8bff5f3",
     "dirty": false
   },
-  "sourceManifestSha256": "ceb022800f1ee988fd3a66196f403727698af79c226156d8ce6c0a90b9fae592",
+  "sourceManifestSha256": "71a9c2427dee8b7352a85c94cc58802031a7110da028152b60a527a470832657",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -533,7 +533,7 @@
     },
     {
       "path": "packages/goreview/app/screens/prefs.ts",
-      "sha256": "4623b30d1b92332aa49ce48c0b75bfacef89698422e79edb3c8dca75465af224"
+      "sha256": "6690538f4c20689bec215d8825d8212672c7219acba65ff08cfcd5244e74aafd"
     },
     {
       "path": "packages/goreview/app/screens/remediation.ts",
@@ -641,7 +641,7 @@
     },
     {
       "path": "packages/goreview/app/state.ts",
-      "sha256": "2f9703bf282974593d61ae5e08c3c81f93c2062e7cc3a4bc0c65876a8fb51f41"
+      "sha256": "f9224564d3956a86b217976d034fb61d249153487e058c341885ef07047addab"
     },
     {
       "path": "packages/goreview/app/styles.css",
@@ -881,7 +881,7 @@
     },
     {
       "path": "packages/goreview/src/types.ts",
-      "sha256": "55b74a9afc5924e86bdb0bb12dd2aa9f23f8bc94880ed7308c1c685eeb8f0f8b"
+      "sha256": "c4d188e8d5b9e021b47f7b0d94ebf81a8e83a57ab02c269c881b1e3c17747a67"
     },
     {
       "path": "packages/gotell/src/documents/README.md",
@@ -18811,7 +18811,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "16e240f60bafc99b1e954f1559055564c50ca66537cf982bb10239386a75c518",
+  "artifactManifestSha256": "7bfdb3c6402641f7c0e816c6cad0cf6af7d209d51654d33d80fd46526cb049fb",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -18854,8 +18854,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-wDbrNKIX.js",
-      "sha256": "7ad1c74fd7c389be9e3ee3f2ddf22eeab6661c422b6e8fcd6586eca9695b75c1"
+      "path": "assets/index-B2Xb6Fld.js",
+      "sha256": "e13f07a0a6de07526bf94aa2e90b1d01351db9a4347a67af8ecc12bea243ba8a"
     },
     {
       "path": "assets/style-Dd-_Zasv.css",
@@ -31399,7 +31399,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "7632a9b55b7f3d80f6663c0eb5f81e30e44556395dbb85715810f794fb758f89"
+      "sha256": "553891b84665cc220c140902e48c0d265f4523b2eb30bb6243d28dd0e64bad90"
     },
     {
       "path": "manifest.webmanifest",
@@ -31407,7 +31407,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "f4dfaa6791aeddec6b16bea7ca3375984bc21b4c0d9b40c11503c93bbb2c82da"
+      "sha256": "d35233d1a5581b69d8b7bb08a6c83e5b92db9b2848d354cd155a6defd861f467"
     }
   ]
 }

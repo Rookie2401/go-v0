@@ -28,6 +28,22 @@ describe('review preferences in Settings', () => {
     expect(controls[controls.length - 1].id).toBe('pref-reset');
   });
 
+  it('the new-item steppers follow the deck size on screen as it is stepped, until one is moved; then they stay (2026-10-30)', async () => {
+    const rig = await makeRig({ signedIn: true });
+    await rig.go('settings');
+    await until(() => !!rig.root.querySelector('#pref-more'), 'the deck stepper');
+    const value = (id: string) => rig.q<HTMLInputElement>(id).value;
+    expect([value('#pref-size'), value('#pref-max-new'), value('#pref-daily-new')]).toEqual(['10', '10', '10']);
+    rig.q('#pref-more').click();
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 11, 'the deck size saved');
+    expect([value('#pref-max-new'), value('#pref-daily-new')]).toEqual(['11', '11']); // the open form shows the follow
+    rig.q('#pref-daily-new-more').click();
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).dailyNewLimit === 12, 'the day set apart');
+    rig.q('#pref-more').click();
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 12, 'the deck size saved again');
+    expect([value('#pref-max-new'), value('#pref-daily-new')]).toEqual(['11', '12']); // set apart: the deck no longer moves them
+  });
+
   it('provides accessible steppers that save together, allow typing, and clamp at their ends', async () => {
     const rig = await makeRig({ signedIn: true });
     await rig.go('settings');

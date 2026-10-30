@@ -61,8 +61,13 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
   }
 
   async function save(): Promise<void> {
+    // only a stepper the learner moved is written: the other keeps following (the deck size, or the per-session number) until touched
+    const newItems = {
+      ...(Number(maxNew.input.value) !== current.maxNew ? { maxNew: Number(maxNew.input.value) } : {}),
+      ...(Number(dailyNew.input.value) !== (current.dailyNewLimit ?? current.maxNew) ? { dailyNewLimit: Number(dailyNew.input.value) } : {}),
+    };
     const next = await ctx.state.updatePrefs(learnerId, current.languageId, {
-      maxNew: Number(maxNew.input.value), dailyNewLimit: Number(dailyNew.input.value),
+      ...newItems,
       desiredRetention: Number(retention.input.value) / 100,
       includeListening: listening.checked, prioritizeSaved: saved.checked,
       practiceGoals: goalNames.filter((goal) => goals[goal].checked),

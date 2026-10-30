@@ -145,12 +145,19 @@ describe('storage areas', () => {
 
 describe('review preferences', () => {
   it('have defaults and are clamped', () => {
-    expect(DEFAULT_PREFERENCES('sq')).toEqual({ languageId: 'sq', sessionMinutes: 10, maxNew: 5, dailyNewLimit: 5, practiceGoals: ['recognition','retrieval','listening','application'], desiredRetention: 0.9, includeListening: true, grammarShare: 0.2, prioritizeSaved: true, cardsPerDeck: 10 });
+    expect(DEFAULT_PREFERENCES('sq')).toEqual({ languageId: 'sq', sessionMinutes: 10, maxNew: 10, dailyNewLimit: 10, practiceGoals: ['recognition','retrieval','listening','application'], desiredRetention: 0.9, includeListening: true, grammarShare: 0.2, prioritizeSaved: true, cardsPerDeck: 10 });
     expect(clampPrefs({ languageId: 'sq', cardsPerDeck: 1 }).cardsPerDeck).toBe(5);
     expect(clampPrefs({ languageId: 'sq', cardsPerDeck: 9999 }).cardsPerDeck).toBe(60);
     expect(clampPrefs({ languageId: 'sq', cardsPerDeck: 12.6 }).cardsPerDeck).toBe(13);
     expect(clampPrefs({ languageId: 'sq', cardsPerDeck: Number.NaN }).cardsPerDeck).toBe(10);
-    expect(clampPrefs({ languageId: 'sq', sessionMinutes: -4, maxNew: 1000, desiredRetention: 2, grammarShare: 5 })).toMatchObject({ sessionMinutes: 1, maxNew: 50, desiredRetention: 0.97, grammarShare: 1 });
+    // the new-item numbers follow the deck size until set apart (the owner, 2026-10-30)
+    expect(clampPrefs({ languageId: 'sq', cardsPerDeck: 20 })).toMatchObject({ maxNew: 20, dailyNewLimit: 20 });
+    expect(clampPrefs({ languageId: 'sq', cardsPerDeck: 20, maxNew: 5, dailyNewLimit: 5 })).toMatchObject({ maxNew: 20, dailyNewLimit: 20 }); // stored numbers without the marker (a device from before) follow the deck size
+    expect(clampPrefs({ languageId: 'sq', cardsPerDeck: 20, maxNew: 7, newItemsSet: true })).toMatchObject({ maxNew: 7, dailyNewLimit: 7, newItemsSet: true });
+    expect(clampPrefs({ languageId: 'sq', cardsPerDeck: 20, maxNew: 7, dailyNewLimit: 30, newItemsSet: true })).toMatchObject({ maxNew: 7, dailyNewLimit: 30 });
+    expect(clampPrefs({ languageId: 'sq', cardsPerDeck: 20 }).newItemsSet).toBeUndefined();
+    expect(clampPrefs({ languageId: 'sq', cardsPerDeck: 60 })).toMatchObject({ maxNew: 50, dailyNewLimit: 50 }); // the session cap
+    expect(clampPrefs({ languageId: 'sq', sessionMinutes: -4, maxNew: 1000, newItemsSet: true, desiredRetention: 2, grammarShare: 5 })).toMatchObject({ sessionMinutes: 1, maxNew: 50, desiredRetention: 0.97, grammarShare: 1 });
     expect(clampPrefs({ languageId: 'sq', sessionMinutes: Number.NaN })).toMatchObject({ sessionMinutes: 10 });
     expect(clampPrefs({ languageId: 'sq', sessionMinutes: 0 })).toMatchObject({ sessionMinutes: 0 });
     expect(clampPrefs({ languageId: 'sq' }).practiceGoals).toEqual(['recognition','retrieval','listening','application']);
@@ -168,6 +175,15 @@ describe('review preferences', () => {
     expect(await state.updatePrefs('L1', 'sq', { includeListening: false })).toMatchObject({ includeListening: false, listeningOff: true });
     expect((await state.getPrefs('L1', 'sq')).includeListening).toBe(false);
     expect((await state.updatePrefs('L1', 'sq', { maxNew: 2 })).includeListening).toBe(false); // another change keeps it off
+    // the new-item numbers follow the deck size until a write names them (2026-10-30)
+    const s2 = createStateStore(createMemoryArea());
+    expect(await s2.updatePrefs('L2', 'sq', { cardsPerDeck: 20 })).toMatchObject({ maxNew: 20, dailyNewLimit: 20 });
+    expect(await s2.updatePrefs('L2', 'sq', { includeListening: false })).toMatchObject({ maxNew: 20, dailyNewLimit: 20 }); // another control leaves them following
+    expect(await s2.updatePrefs('L2', 'sq', { cardsPerDeck: 30 })).toMatchObject({ maxNew: 30, dailyNewLimit: 30 });
+    expect(await s2.updatePrefs('L2', 'sq', { maxNew: 4 })).toMatchObject({ maxNew: 4, dailyNewLimit: 4, newItemsSet: true });
+    expect(await s2.updatePrefs('L2', 'sq', { cardsPerDeck: 40 })).toMatchObject({ maxNew: 4, dailyNewLimit: 4, cardsPerDeck: 40 }); // set apart: the deck size no longer moves them
+    expect(await s2.setPrefs('L2', DEFAULT_PREFERENCES('sq'))).toMatchObject({ maxNew: 10, dailyNewLimit: 10 }); // Reset to default follows again
+    expect((await s2.getPrefs('L2', 'sq')).newItemsSet).toBeUndefined();
     const on = await state.updatePrefs('L1', 'sq', { includeListening: true });
     expect(on.includeListening).toBe(true);
     expect('listeningOff' in on).toBe(false);

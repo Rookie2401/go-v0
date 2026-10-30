@@ -49,7 +49,7 @@ export const clampDeckSize = (v: unknown): number => (typeof v === 'number' && N
 export const cardsFromMinutes = (minutes: number): number => (minutes === 0 ? DEFAULT_CARDS_PER_DECK : clampDeckSize(minutes * 2));
 
 export const DEFAULT_PREFERENCES = (languageId: string): ReviewPreferences => ({
-  languageId, sessionMinutes: 10, maxNew: 5, dailyNewLimit: 5, practiceGoals: ['recognition', 'retrieval', 'listening', 'application'], desiredRetention: 0.9, includeListening: true, grammarShare: 0.2, prioritizeSaved: true, cardsPerDeck: DEFAULT_CARDS_PER_DECK,
+  languageId, sessionMinutes: 10, maxNew: DEFAULT_CARDS_PER_DECK, dailyNewLimit: DEFAULT_CARDS_PER_DECK, practiceGoals: ['recognition', 'retrieval', 'listening', 'application'], desiredRetention: 0.9, includeListening: true, grammarShare: 0.2, prioritizeSaved: true, cardsPerDeck: DEFAULT_CARDS_PER_DECK,
 });
 
 // ───────────────────────────── key-value areas ─────────────────────────────
@@ -324,11 +324,19 @@ const PRACTICE_GOALS = ['recognition', 'retrieval', 'listening', 'application'] 
 export const clampPrefs = (p: Partial<ReviewPreferences> & { languageId: string }): ReviewPreferences => {
   const d = DEFAULT_PREFERENCES(p.languageId);
   const num = (v: unknown, lo: number, hi: number, def: number): number => (typeof v === 'number' && Number.isFinite(v) ? Math.min(hi, Math.max(lo, v)) : def);
+  const cardsPerDeck = clampDeckSize(p.cardsPerDeck ?? d.cardsPerDeck);
+  // New items follow the deck size (the owner, 2026-10-30: "the same as the deck size"): per session equals Cards per deck (at most the
+  // session cap of 50), the day's allowance equals the session's, until the learner sets them apart, which the marker records (the
+  // Settings steppers, or a write that names them). A device set up before carries no marker, so it follows its deck size too.
+  const set = p.newItemsSet === true;
+  const maxNew = Math.round(set ? num(p.maxNew, 0, 50, Math.min(50, cardsPerDeck)) : Math.min(50, cardsPerDeck));
+  const dailyNewLimit = Math.round(set ? num(p.dailyNewLimit, 0, 200, maxNew) : maxNew);
   return {
     languageId: p.languageId,
     sessionMinutes: p.sessionMinutes === 0 ? 0 : Math.round(num(p.sessionMinutes, 1, 120, d.sessionMinutes)),
-    maxNew: Math.round(num(p.maxNew, 0, 50, d.maxNew)),
-    dailyNewLimit: Math.round(num(p.dailyNewLimit, 0, 200, d.dailyNewLimit ?? d.maxNew)),
+    maxNew,
+    dailyNewLimit,
+    ...(set ? { newItemsSet: true as const } : {}),
     // the listening goal is the listening switch itself (one control in Settings): on exactly when listening is on
     practiceGoals: PRACTICE_GOALS.filter((g) => g === 'listening' ? p.listeningOff !== true : (Array.isArray(p.practiceGoals) ? p.practiceGoals : d.practiceGoals ?? []).includes(g)),
     desiredRetention: num(p.desiredRetention, 0.7, 0.97, d.desiredRetention),
@@ -338,7 +346,7 @@ export const clampPrefs = (p: Partial<ReviewPreferences> & { languageId: string 
     ...(p.listeningOff === true ? { listeningOff: true as const } : {}),
     grammarShare: num(p.grammarShare, 0, 1, d.grammarShare),
     prioritizeSaved: p.prioritizeSaved !== false,
-    cardsPerDeck: clampDeckSize(p.cardsPerDeck ?? d.cardsPerDeck),
+    cardsPerDeck,
   };
 };
 
@@ -398,12 +406,22 @@ export function createStateStore(area: KeyValueArea, secureSession?: SecureSessi
     updatePrefs: (learnerId, languageId, patch) => serial(async () => {
       const v = await read<Partial<ReviewPreferences>>(prefsKey(learnerId, languageId));
       const migrated = v && v.cardsPerDeck === undefined && typeof v.sessionMinutes === 'number' ? { cardsPerDeck: cardsFromMinutes(v.sessionMinutes) } : {};
-      const next = clampPrefs({ ...(v ?? {}), ...migrated, ...patch, ...offWhen(patch.includeListening), languageId });
+      // a write that names a new-item number sets both apart from the deck size (a stored marker stays); the first such write starts the
+      // number it does not name from the one it names (the stored numbers until then were the deck size's, not the learner's)
+      const names = patch.maxNew !== undefined || patch.dailyNewLimit !== undefined;
+      const firstApart = names && v?.newItemsSet !== true ? { maxNew: undefined, dailyNewLimit: undefined } : {};
+      const apart = names || v?.newItemsSet === true ? { newItemsSet: true as const } : {};
+      const next = clampPrefs({ ...(v ?? {}), ...migrated, ...firstApart, ...patch, ...apart, ...offWhen(patch.includeListening), languageId });
       await area.set({ [prefsKey(learnerId, languageId)]: next });
       return next;
     }),
     async setPrefs(learnerId, prefs) {
-      const next = clampPrefs({ ...prefs, ...offWhen(prefs.includeListening) });
+      // a whole record whose new-item numbers are not what following the deck size would give has them set apart (Reset to default passes
+      // the defaults, which follow; a test or a migration that writes its own numbers keeps them)
+      const following = clampPrefs({ ...prefs, newItemsSet: undefined, ...offWhen(prefs.includeListening) });
+      const apart = prefs.newItemsSet === true || (typeof prefs.maxNew === 'number' && prefs.maxNew !== following.maxNew)
+        || (typeof prefs.dailyNewLimit === 'number' && prefs.dailyNewLimit !== following.dailyNewLimit) ? { newItemsSet: true as const } : {};
+      const next = clampPrefs({ ...prefs, ...apart, ...offWhen(prefs.includeListening) });
       await area.set({ [prefsKey(learnerId, next.languageId)]: next });
       return next;
     },

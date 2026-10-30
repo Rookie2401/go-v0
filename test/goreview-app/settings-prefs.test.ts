@@ -39,7 +39,7 @@ describe('review preferences in Settings', () => {
     expect(rig.q<HTMLInputElement>('#pref-retention').value).toBe('89');
 
     rig.q('#pref-daily-new-more').click();
-    await until(async () => (await prefs()).dailyNewLimit === 6, 'daily limit saved');
+    await until(async () => (await prefs()).dailyNewLimit === 11, 'daily limit saved'); // from the deck size, 10, since 2026-10-30
     // listening has one switch, "Include listening practice", and the listening goal follows it (the owner, 2026-10-28)
     expect(rig.root.querySelector('#pref-goal-listening')).toBeNull();
     expect((await prefs()).practiceGoals).toContain('listening');
@@ -76,8 +76,8 @@ describe('review preferences in Settings', () => {
     await until(async () => (await prefs()).cardsPerDeck === 10 && (await prefs()).includeListening, 'the defaults restored');
     expect(await prefs()).toEqual(DEFAULT_PREFERENCES('sq'));
     expect(rig.q<HTMLInputElement>('#pref-size').value).toBe('10');
-    expect(rig.q<HTMLInputElement>('#pref-max-new').value).toBe('5');
-    expect(rig.q<HTMLInputElement>('#pref-daily-new').value).toBe('5');
+    expect(rig.q<HTMLInputElement>('#pref-max-new').value).toBe('10');
+    expect(rig.q<HTMLInputElement>('#pref-daily-new').value).toBe('10');
     expect(rig.q<HTMLInputElement>('#pref-retention').value).toBe('90');
     expect(rig.q<HTMLInputElement>('#pref-goal-retrieval').checked).toBe(true);
     expect(rig.q<HTMLInputElement>('#pref-listening').checked).toBe(true);

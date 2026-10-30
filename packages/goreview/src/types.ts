@@ -322,6 +322,8 @@ export interface ReviewPreferences {
   varietyId?: string;
   sessionMinutes: number;
   maxNew: number;
+  /** The learner set the new-item numbers apart from the deck size (Settings, or a write that names them); without it they follow Cards per deck (2026-10-30). */
+  newItemsSet?: true;
   /** Automatic first effective reviews allowed in a UTC day; counted from shared history. */
   dailyNewLimit?: number;
   practiceGoals?: Array<'recognition' | 'retrieval' | 'listening' | 'application'>;

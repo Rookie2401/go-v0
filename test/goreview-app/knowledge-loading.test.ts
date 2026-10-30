@@ -50,7 +50,7 @@ async function setup(opts: { withDueCard?: boolean } = {}): Promise<Rig> {
   ];
   service.candidates.set('L1-e1', candidates);
   service.knowledge.set('L1', candidates.map((c) => ({ ...knowledgeRow('L1', c.unitId, 'sq', {}), level: 'recognized' as const })));
-  await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', maxNew: 5, sessionMinutes: 10, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });
+  await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', maxNew: 5, newItemsSet: true, sessionMinutes: 10, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });
   if (opts.withDueCard) await seed(rig, dueCard(ids('L1', 'sq'), 'zog', 'meaning-to-form'));
   return rig;
 }

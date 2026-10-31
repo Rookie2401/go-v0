@@ -1,5 +1,8 @@
 /** Exact owner-authored language-pack material allowed for account phrase/sentence pronunciation. */
-import { packFor, tutorialFor } from '../../language-packs/src';
+// Import data-only entrypoints. The package barrel also exports analyzers, dictionaries and
+// runtime installers; loading that graph in the Repository handler needlessly inflates startup.
+import { packFor } from '../../language-packs/src/registry';
+import { tutorialFor } from '../../language-packs/src/tutorial';
 
 const canonical = (text: string): string => text.normalize('NFC').trim();
 

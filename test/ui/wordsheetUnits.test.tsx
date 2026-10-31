@@ -95,7 +95,8 @@ describe('a lexical unit written as several words', () => {
     expect(t('word-unit')).toBe('steht … auf = aufstehen — this word is the separable prefix');
     expect(q(mounted!.container, '.card__gloss')?.textContent).toBe('to get up');
     expect(q(mounted!.container, '.panel')?.textContent).toContain('aufstehen'); // the lemma line
-    expect(qa(mounted!.container, '.card__line').some((l) => l.textContent === 'Lemmaaufstehen')).toBe(true);
+    expect(qa(mounted!.container, '.card__line').some((l) => l.textContent?.startsWith('Lemmaaufstehen'))).toBe(true);
+    expect(qa(mounted!.container, '.card__line').some((l) => l.textContent?.includes('to get up'))).toBe(true);
   });
 
   it('the head says it is the main part', async () => {

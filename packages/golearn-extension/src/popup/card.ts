@@ -479,7 +479,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const wordMeaning = m.wordAnalysis?.contextualMeaning?.text ?? m.wordAnalysis?.inflectedMeaning?.text ?? m.wordAnalysis?.lexicalMeaning?.text;
     if (m.gloss) {
       const onlyLemmaGloss = !m.wordAnalysis?.contextualMeaning && !m.wordAnalysis?.inflectedMeaning;
-      return { text: m.gloss, muted: false, from: onlyLemmaGloss && wordMeaning ? 'Lemma gloss (inflected/contextual meaning unavailable)' : m.wordAnalysis?.contextualMeaning?.source ?? m.wordAnalysis?.inflectedMeaning?.source ?? m.wordAnalysis?.lexicalMeaning?.source ?? m.glossSource ?? 'Word list' };
+      return { text: m.gloss, muted: false, from: onlyLemmaGloss && wordMeaning ? 'Lemma meaning' : m.wordAnalysis?.contextualMeaning?.source ?? m.wordAnalysis?.inflectedMeaning?.source ?? m.wordAnalysis?.lexicalMeaning?.source ?? m.glossSource ?? 'Lemma meaning' };
     }
     // a dictionary-only meaning carries its attribution beside it (CC BY-SA: the notice goes wherever the entry is shown)
     if (dict.state === 'ready' && dict.senses.length) return { text: dict.senses.slice(0, 3).join('; '), ...(dict.attribution ? { attr: dict.attribution } : {}), muted: false, from: 'Wiktionary' };
@@ -508,28 +508,14 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     rows.push(gloss);
     if (from) rows.push(h('div', { class: 'kicker' }, `Meaning · ${from}`));
     const lexicalMeaning = m.wordAnalysis?.lexicalMeaning;
-    const shownMeaning = m.wordAnalysis?.contextualMeaning ?? m.wordAnalysis?.inflectedMeaning;
-    if (lexicalMeaning && shownMeaning && lexicalMeaning.text !== shownMeaning.text)
-      rows.push(h('div', { class: 'kicker', 'data-row': 'lemma-gloss' }, `Lemma gloss · ${lexicalMeaning.text}`));
-    if (m.wordAnalysis?.contextualMeaning && m.wordAnalysis.inflectedMeaning)
-      rows.push(h('div', { class: 'kicker', 'data-row': 'inflected-meaning' }, `Literal inflected meaning · ${m.wordAnalysis.inflectedMeaning.text}`));
-    if (m.wordAnalysis?.contextualMeaning && m.wordAnalysis.references.length)
-      rows.push(h('div', { class: 'kicker', 'data-row': 'contextual-meaning' }, `Context-specific rendering · ${m.wordAnalysis.references.map((r) => r.label).join(', ')}`));
-    if (m.wordAnalysis?.ambiguity.length)
-      rows.push(h('div', { class: 'kicker', 'data-row': 'word-ambiguity' }, `Morphology remains ambiguous · ${m.wordAnalysis.ambiguity.join('; ')}`));
     const same = !m.lemma || m.lemma.normalize('NFC').toLowerCase() === m.surface.normalize('NFC').trim().toLowerCase();
     if (!same && m.lemma && m.tokenCount === 1) {
       const lemmaRom = m.lemmaTransliteration ?? dictRom;
       const lemmaRomSource = m.lemmaTransliteration ? 'Romanization by the analyser\'s rules' : 'Wiktionary romanization';
-      rows.push(h('div', { class: 'lemmaLine' }, h('span', { class: 'lv', lang: m.languageId }, m.lemma, m.pos ? h('span', { class: 'pos' }, m.pos) : null), lemmaRom ? h('span', { class: 'translit', role: 'note', 'aria-label': 'lemma transliteration', title: lemmaRomSource }, lemmaRom) : null, h('span', { class: 'kicker' }, m.unconfirmed ? 'lemma (guess)' : 'lemma')));
+      rows.push(h('div', { class: 'lemmaLine' }, h('span', { class: 'lv', lang: m.languageId }, m.lemma, m.pos ? h('span', { class: 'pos' }, m.pos) : null), lexicalMeaning ? h('span', { class: 'lemmaMeaning', 'data-row': 'lemma-gloss' }, `— ${lexicalMeaning.text}`) : null, lemmaRom ? h('span', { class: 'translit', role: 'note', 'aria-label': 'lemma transliteration', title: lemmaRomSource }, lemmaRom) : null, h('span', { class: 'kicker' }, m.unconfirmed ? 'lemma (guess)' : 'lemma')));
     }
-    if (m.unconfirmed && m.tokenCount === 1) rows.push(h('div', { class: 'card__text' }, 'The lemma is a guess from the ending; the word list does not hold this word.'));
+    if (m.unconfirmed && m.tokenCount === 1) rows.push(h('div', { class: 'card__text', 'data-row': 'lemma-note' }, 'The lemma is inferred from the ending.'));
     // a language with period varieties: which period this text was read in, and why (the analyser's own basis)
-    if (m.period) rows.push(h('div', { class: 'periodLine', 'data-row': 'period', title: m.period.basis }, `Read as ${m.period.label} — ${m.period.basis}`));
-    if (m.words.length > 1) {
-      const ul = h('ul', {}, ...m.words.map((w) => h('li', {}, h('span', { lang: m.languageId }, w.surface), ': ', w.lemma ? h('span', { lang: m.languageId }, w.lemma) : 'unknown', `${w.gloss ? ` – ${w.gloss}` : ''} (${w.confidence.toFixed(2)})`)));
-      rows.push(h('div', { class: 'more-inline' }, ul));
-    }
     parts.rows.replaceChildren(...rows);
   }
 
@@ -919,6 +905,13 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   }
 
   function fillMeaning(panel: HTMLElement, m: CardModel, v: CardView): void {
+    if (m.wordAnalysis?.lexicalMeaning) panel.append(row('lemma-gloss-detail', 'lemma meaning', m.wordAnalysis.lexicalMeaning.text, 'analysis'));
+    if (m.wordAnalysis?.inflectedMeaning) panel.append(row('inflected-meaning', 'literal meaning', m.wordAnalysis.inflectedMeaning.text, 'analysis'));
+    if (m.wordAnalysis?.contextualMeaning) {
+      panel.append(row('contextual-meaning', 'context meaning', m.wordAnalysis.contextualMeaning.text, 'analysis'));
+      if (m.wordAnalysis.references.length) panel.append(h('div', { class: 'note', 'data-row': 'meaning-references' }, `References: ${m.wordAnalysis.references.map((r) => r.label).join(', ')}.`));
+    }
+    if (m.wordAnalysis?.ambiguity.length) panel.append(h('div', { class: 'note', 'data-row': 'word-ambiguity' }, `Other possible readings: ${m.wordAnalysis.ambiguity.join('; ')}.`));
     if (m.gloss) panel.append(h('div', { class: 'row' }, h('span', { class: 'v' }, h('strong', {}, 'Word list: '), m.gloss), tag(m.labels.gloss)));
     // the dictionary's own senses (the immediate card shows the word list's meaning when it has one), with the attribution CC BY-SA asks for
     if (m.gloss && v.gloss.state === 'ready' && v.gloss.senses.length) panel.append(row('dictionary', 'dictionary', `${v.gloss.senses.slice(0, 4).join('; ')}${v.gloss.attribution ? ` (${v.gloss.attribution})` : ''}`, 'analysis', true));

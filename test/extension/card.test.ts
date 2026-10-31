@@ -120,7 +120,7 @@ describe('the card in the page', () => {
     expect(v).toContain('view sources');
     expect(v).toContain('Go deeper');
     expect(v).not.toMatch(/confidence/i);
-    expect(v).toContain('Lemma gloss (inflected/contextual meaning unavailable)');
+    expect(v).toContain('Meaning · Lemma meaning');
     expect(v).toMatch(/shtëpi.*lemma/); // the lemma line, only because the lemma differs from the word
     expect(v).not.toMatch(/definite feminine/); // the morphology line is in Go deeper
     expect(v).not.toMatch(/Pronounce|practice/i);

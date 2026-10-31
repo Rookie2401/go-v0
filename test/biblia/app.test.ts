@@ -92,7 +92,7 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
       word.click();
       await new Promise((r) => setTimeout(r, 20));
       const root = app.cardRoot()!;
-      expect(root.querySelector('[data-row="period"]')!.textContent).toMatch(/^Read as Biblical Aramaic/);
+      expect(root.querySelector('#panel-variants')!.textContent).toMatch(/This text is read as Biblical Aramaic/);
       (root.querySelector('.variantsBtn') as HTMLButtonElement).click();
       const rows = [...root.querySelectorAll('table.variants tr')].map((tr) => [tr.classList.contains('current'), tr.querySelector('th')!.textContent]);
       expect(rows[0]).toEqual([true, 'Biblical Aramaic (this text)']);
@@ -105,7 +105,7 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
       word.click();
       await new Promise((r) => setTimeout(r, 20));
       const root = app.cardRoot()!;
-      expect(root.querySelector('.kicker')!.textContent).toBe('Meaning · Lemma gloss (inflected/contextual meaning unavailable)');
+      expect(root.querySelector('.kicker')!.textContent).toBe('Meaning · Lemma meaning');
       (root.querySelector('.sourcesBtn') as HTMLButtonElement).click();
       const sources = [...root.querySelectorAll('.sources li')].map((li) => li.textContent ?? '');
       expect(sources.some((s) => /Open Scriptures Hebrew Bible morphology/.test(s))).toBe(true);
@@ -131,7 +131,7 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
       expect(word.classList.contains('sel')).toBe(true);
       const card = app.cardRoot();
       expect(card?.textContent).toMatch(/Variants/);
-      expect(card?.textContent).toMatch(/Read as Biblical Hebrew/);
+      expect(card?.querySelector('#panel-variants')!.textContent).toMatch(/This text is read as Biblical Hebrew/);
       expect(rec.enrolments).toEqual(['he|he-bib']);
       expect(rec.events.map((e) => e.kind)).toEqual(['SelectionLookedUp', 'EncounterRecorded']); // the tap, and the verse's other words as read
       const ev = rec.events[0];

@@ -180,7 +180,7 @@ describe('facts provider: form', () => {
     });
     const wrong = await makeProvider('I love').factsFor(unit.unitId, 'el') as ReviewFacts;
     expect(wrong.glosses).toEqual(['You will love']);
-    expect(wrong.wordAnalysis?.lexicalMeaning?.text).toBe('I love');
+    expect(wrong.wordAnalysis?.lexicalMeaning?.text).toBe('to love');
     expect(wrong.wordAnalysis?.inflectedMeaning?.text).toBe('You will love');
     expect(wrong.wordAnalysis?.contextualMeaning).toBeNull();
     expect(wrong.glossAttribution).toBeUndefined(); // the selected answer came from the form analysis, not the dictionary

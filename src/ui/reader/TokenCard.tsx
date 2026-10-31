@@ -220,48 +220,20 @@ export function TokenCard(props: TokenCardProps) {
                 ? <p className="card__note" data-testid="not-analysed">Not analysed yet. Go has no dictionary entry for this word, and it will not guess.</p>
                 : <p className="card__note">No gloss for this word yet.</p>
             )}
-            {wordAnalysis?.lexicalMeaning && (wordAnalysis.contextualMeaning || wordAnalysis.inflectedMeaning)
-              && wordAnalysis.lexicalMeaning.text !== (wordAnalysis.contextualMeaning?.text ?? wordAnalysis.inflectedMeaning?.text)
-              && <p className="card__note" data-testid="lemma-gloss">Lemma gloss: {wordAnalysis.lexicalMeaning.text}</p>}
-            {wordAnalysis?.lexicalMeaning && !wordAnalysis.contextualMeaning && !wordAnalysis.inflectedMeaning
-              && <p className="card__note" data-testid="lemma-gloss-only">Lemma gloss; inflected/contextual meaning unavailable.</p>}
-            {wordAnalysis?.contextualMeaning && wordAnalysis.inflectedMeaning
-              && <p className="card__note" data-testid="inflected-meaning">Literal inflected meaning: {wordAnalysis.inflectedMeaning.text}</p>}
-            {wordAnalysis?.references.map((r) => <p className="card__note" data-testid="word-analysis-reference" key={r.uri ?? r.label}>Context-specific rendering: {r.label}</p>)}
-            {!!wordAnalysis?.ambiguity.length && <p className="card__note" data-testid="word-ambiguity">Morphology remains ambiguous: {wordAnalysis.ambiguity.join('; ')}</p>}
-            {fromDictionary && gloss && <p className="card__note" data-testid="dictionary-gloss">dictionary meaning, not checked for this sentence</p>}
+            {fromDictionary && gloss && !wordAnalysis?.contextualMeaning && <p className="card__note" data-testid="dictionary-gloss">dictionary meaning, not checked for this sentence</p>}
             {sourceLine && <p className="card__note sheet__source" data-testid="analysis-source">{sourceLine}</p>}
             {variety && <p className="card__note sheet__variety" data-testid="variety">{variety}</p>}
             {familyText && <p className="card__note sheet__variety" data-testid="family" title="The same idea in the other written standard; it is a different word, counted on its own">{familyText}</p>}
-            {unit && (
-              <p className="card__note sheet__unit" data-testid="word-unit">
-                <span lang={lang} data-testid="unit-pieces">{unitText(unitPieces ?? [], unit.display)}</span>
-                {' — '}<span data-testid="unit-role">{unitRoleText(unit.role)}</span>
-              </p>
-            )}
-            {parts.length > 0 && (
-              <p className="card__note sheet__parts" data-testid="word-parts">
-                <span lang={lang}>{surface}</span> ={' '}
-                {parts.map((p, i) => {
-                  const role = partRole(p);
-                  return <span key={`${p.start}-${i}`}>{i > 0 ? ' + ' : ''}<span lang={lang}>{partText(p)}</span>{role ? ` (${role})` : ''}</span>;
-                })}
-              </p>
-            )}
+            {unit && <p className="card__note sheet__unit" data-testid="word-unit"><span lang={lang} data-testid="unit-pieces">{unitText(unitPieces ?? [], unit.display)}</span>{' — '}<span data-testid="unit-role">{unitRoleText(unit.role)}</span></p>}
+            {parts.length > 0 && <p className="card__note sheet__parts" data-testid="word-parts"><span lang={lang}>{surface}</span> ={' '}{parts.map((p, i) => { const role = partRole(p); return <span key={`${p.start}-${i}`}>{i > 0 ? ' + ' : ''}<span lang={lang}>{partText(p)}</span>{role ? ` (${role})` : ''}</span>; })}</p>}
             {headLine && <p className="card__note sheet__parts" data-testid="compound-head">{headLine}</p>}
             {varietyTagsLine && <p className="card__note sheet__variety" data-testid="variety-tags">{varietyTagsLine}</p>}
-            {spelling && (
-              <p className="card__note" data-testid="older-spelling" title="Today's spelling beside the text; the text itself stays as written">
-                today: <span lang={lang}>{spelling.modern}</span>{spelling.label ? ` — ${spelling.label}` : ''}
-              </p>
-            )}
-            {modern &&<p className="card__note" data-testid="modern-form" title="A modern aid beside the text; the text itself stays as written">today: <span lang={lang}>{modern}</span></p>}
+            {spelling && <p className="card__note" data-testid="older-spelling" title="Today's spelling beside the text; the text itself stays as written">today: <span lang={lang}>{spelling.modern}</span>{spelling.label ? ` — ${spelling.label}` : ''}</p>}
+            {modern && <p className="card__note" data-testid="modern-form" title="A modern aid beside the text; the text itself stays as written">today: <span lang={lang}>{modern}</span></p>}
             {uncertain && anyLoaded && <p className="card__note">The analysis here is uncertain.</p>}
-            {!legacy && analysis?.role && (
-              <div className="card__line"><span className="k">What it does here</span><span data-testid="word-role">{roleText(analysis.role)}</span></div>
-            )}
+            {!legacy && analysis?.role && <div className="card__line"><span className="k">What it does here</span><span data-testid="word-role">{roleText(analysis.role)}</span></div>}
             {lemma && lemma.lemma !== subject.token.surface.toLowerCase() && (
-              <div className="card__line"><span className="k">Lemma</span><span lang={lang}>{lemma.lemma}</span></div>
+              <div className="card__line"><span className="k">Lemma</span><span lang={lang}>{lemma.lemma}{wordAnalysis?.lexicalMeaning?.text ? ` — ${wordAnalysis.lexicalMeaning.text}` : lemma.gloss ? ` — ${lemma.gloss}` : ''}</span></div>
             )}
             {lemma?.pos && <div className="card__line"><span className="k">Part of speech</span><span>{posWord(lemma.pos)}</span></div>}
             {senses.length > 0 && (
@@ -316,6 +288,15 @@ export function TokenCard(props: TokenCardProps) {
                 return (
                   <section key={layer} className="card__section" aria-label="Grammar">
                     <h3 className="label">Grammar</h3>
+                    {variety && <p className="card__note sheet__variety" data-testid="variety">{variety}</p>}
+                    {familyText && <p className="card__note sheet__variety" data-testid="family" title="The same idea in the other written standard; it is a different word, counted on its own">{familyText}</p>}
+                    {unit && <p className="card__note sheet__unit" data-testid="word-unit"><span lang={lang} data-testid="unit-pieces">{unitText(unitPieces ?? [], unit.display)}</span>{' — '}<span data-testid="unit-role">{unitRoleText(unit.role)}</span></p>}
+                    {parts.length > 0 && <p className="card__note sheet__parts" data-testid="word-parts"><span lang={lang}>{surface}</span> ={' '}{parts.map((p, i) => { const role = partRole(p); return <span key={`${p.start}-${i}`}>{i > 0 ? ' + ' : ''}<span lang={lang}>{partText(p)}</span>{role ? ` (${role})` : ''}</span>; })}</p>}
+                    {headLine && <p className="card__note sheet__parts" data-testid="compound-head">{headLine}</p>}
+                    {varietyTagsLine && <p className="card__note sheet__variety" data-testid="variety-tags">{varietyTagsLine}</p>}
+                    {spelling && <p className="card__note" data-testid="older-spelling" title="Today's spelling beside the text; the text itself stays as written">today: <span lang={lang}>{spelling.modern}</span>{spelling.label ? ` — ${spelling.label}` : ''}</p>}
+                    {modern && <p className="card__note" data-testid="modern-form" title="A modern aid beside the text; the text itself stays as written">today: <span lang={lang}>{modern}</span></p>}
+                    {!legacy && analysis?.role && <div className="card__line"><span className="k">What it does here</span><span data-testid="word-role">{roleText(analysis.role)}</span></div>}
                     {morphText ? (
                       <div className="card__line"><span className="k">Morphology</span><span data-testid="morph-line">{morphText}</span></div>
                     ) : (
@@ -343,6 +324,16 @@ export function TokenCard(props: TokenCardProps) {
                 return (
                   <section key={layer} className="card__section" aria-label="Definition">
                     <h3 className="label">Definition</h3>
+                    {wordAnalysis?.lexicalMeaning && (wordAnalysis.contextualMeaning || wordAnalysis.inflectedMeaning)
+                      && wordAnalysis.lexicalMeaning.text !== (wordAnalysis.contextualMeaning?.text ?? wordAnalysis.inflectedMeaning?.text)
+                      && <p className="card__note" data-testid="lemma-gloss">Lemma meaning: {wordAnalysis.lexicalMeaning.text}</p>}
+                    {wordAnalysis?.lexicalMeaning && !wordAnalysis.contextualMeaning && !wordAnalysis.inflectedMeaning
+                      && <p className="card__note" data-testid="lemma-gloss-only">Lemma meaning: {wordAnalysis.lexicalMeaning.text}</p>}
+                    {wordAnalysis?.contextualMeaning && wordAnalysis.inflectedMeaning
+                      && <p className="card__note" data-testid="inflected-meaning">Literal meaning: {wordAnalysis.inflectedMeaning.text}</p>}
+                    {wordAnalysis?.contextualMeaning && <p className="card__note" data-testid="contextual-meaning">Context meaning: {wordAnalysis.contextualMeaning.text}</p>}
+                    {wordAnalysis?.references.map((r) => <p className="card__note" data-testid="word-analysis-reference" key={r.uri ?? r.label}>Reference: {r.label}</p>)}
+                    {!!wordAnalysis?.ambiguity.length && <p className="card__note" data-testid="word-ambiguity">Other possible readings: {wordAnalysis.ambiguity.join('; ')}</p>}
                     <p className="card__text" lang={lang} data-testid="word-definition">{analysis?.definition ?? <span className="faint">No definition in the language of the text for this word.</span>}</p>
                   </section>
                 );

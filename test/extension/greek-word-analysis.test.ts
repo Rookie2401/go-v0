@@ -14,7 +14,7 @@ const present3 = { ...present, Person: '3' };
 describe('Koine Greek lexical and inflected meanings', () => {
   it('keeps the citation gloss distinct from the first-person present form', () => {
     const a = greekWordAnalysis({ surface: 'ἀγαπῶ', lemma: 'ἀγαπάω', pos: 'VERB', lemmaGloss: 'I love', morph: present, source: 'MorphGNT', confidence: 0.92 });
-    expect(a.lexicalMeaning?.text).toBe('I love');
+    expect(a.lexicalMeaning?.text).toBe('to love');
     expect(a.inflectedMeaning?.text).toBe('I love');
     expect(a.contextualMeaning).toBeNull();
   });
@@ -55,11 +55,20 @@ describe('Koine Greek lexical and inflected meanings', () => {
     setBody('<main></main>');
     const ui = createCardUI({ doc: document, speech: null });
     ui.show(model, { rect: { top: 100, left: 20, right: 120, bottom: 120, width: 100, height: 20 }, viewport: { width: 800, height: 600 }, rtl: false, source: 'range' });
-    const visible = ui.root()?.textContent ?? '';
-    expect(visible).toContain('You shall love');
-    expect(visible).toContain('Literal inflected meaning · You will love');
-    expect(visible).toContain('Lemma gloss · I love');
-    expect(visible).toContain('Galatians 5:14');
+    const main = ui.root()?.querySelector('.rows')?.textContent ?? '';
+    expect(main).toContain('You shall love');
+    expect(main).not.toContain('Literal inflected meaning');
+    expect(main).not.toContain('I love');
+    expect(main.match(/Galatians 5:14/g)).toHaveLength(1); // the one source line keeps its citation
+    expect(main).not.toContain('Morphology remains ambiguous');
+    (ui.root()!.querySelector('.deeperBtn') as HTMLButtonElement).click();
+    const meanings = ui.root()!.querySelector('[data-layer="meaning"]')!.textContent ?? '';
+    expect(meanings).toContain('literal meaning');
+    expect(meanings).toContain('You will love');
+    expect(meanings).toContain('context meaning');
+    expect(meanings).toContain('Galatians 5:14');
+    expect(meanings).toContain('lemma meaning');
+    expect(meanings).toContain('to love');
     ui.destroy();
   });
 

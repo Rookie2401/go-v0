@@ -54,6 +54,7 @@ async function copySafe(source, destination, relative = '') {
 
 run('npm', ['run', 'release:sync'], packageDir);
 verifyNativePayloadManifest(path.join(packageDir, 'web'), { requireRelease: true });
+verifyNativePayloadManifest(path.join(packageDir, 'ios', 'App', 'App', 'public'), { requireRelease: true });
 // Reset the stage. A terminal left open inside .eas-project keeps the folder itself busy on Windows (EBUSY on rmdir) while its CONTENTS
 // can still be removed, so fall back to emptying it; if even that fails, say what to close (2026-10-24, seen on the Biblia shell).
 async function resetStage() {
@@ -71,6 +72,7 @@ await mkdir(path.join(stageDir, 'scripts'), { recursive: true });
 await copySafe(path.join(packageDir, 'web'), path.join(stageDir, 'web'), 'web');
 verifyNativePayloadManifest(path.join(stageDir, 'web'), { requireRelease: true });
 await copySafe(path.join(packageDir, 'ios'), path.join(stageDir, 'ios'), 'ios');
+verifyNativePayloadManifest(path.join(stageDir, 'ios', 'App', 'App', 'public'), { requireRelease: true });
 await cp(path.join(packageDir, '.eas', 'build'), path.join(stageDir, '.eas', 'build'), { recursive: true });
 await cp(path.join(packageDir, 'templates', 'eas-project', 'package.json'), path.join(stageDir, 'package.json'));
 await cp(path.join(packageDir, 'scripts', 'validate-staged-release.mjs'), path.join(stageDir, 'scripts', 'validate-staged-release.mjs'), { recursive: true });

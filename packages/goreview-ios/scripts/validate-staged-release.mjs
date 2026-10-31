@@ -11,6 +11,7 @@ const serviceUrl = webConfig?.serviceUrl;
 
 await validateAppIcons(process.cwd());
 verifyNativePayloadManifest('web', { requireRelease: true });
+verifyNativePayloadManifest('ios/App/App/public', { requireRelease: true });
 
 if (!bundleId || !/^[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$/.test(bundleId) || /(^|\.)(example|invalid|test|localhost)(\.|$)/i.test(bundleId)) {
   throw new Error('The staged app.json must contain the real registered reverse-DNS Bundle ID.');

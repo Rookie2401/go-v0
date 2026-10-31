@@ -4,3 +4,4 @@ export function resolveNativeBuildMode(args: string[]): 'release' | 'developer';
 export function transformNativeWebPayload(payloadDir: string, options?: { serviceUrl?: string; bibliaUrl?: string }): string[];
 export function createNativePayloadManifest(payloadDir: string, options: { mode: 'release' | 'developer'; parentManifestName?: string; transformations?: string[] }): unknown;
 export function verifyNativePayloadManifest(payloadDir: string, options?: { requireRelease?: boolean }): unknown;
+export function finalizeCapacitorPayload(sourceDir: string, nativeDir: string, options?: { requireRelease?: boolean }): unknown;

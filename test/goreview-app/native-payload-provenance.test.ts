@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
-import { createNativePayloadManifest, resolveNativeBuildMode, transformNativeWebPayload, verifyNativePayloadManifest } from '../../packages/goreview-ios/scripts/native-payload.mjs';
+import { createNativePayloadManifest, finalizeCapacitorPayload, resolveNativeBuildMode, transformNativeWebPayload, verifyNativePayloadManifest } from '../../packages/goreview-ios/scripts/native-payload.mjs';
 
 const temporary: string[] = [];
 const hash = (value: string | Buffer) => createHash('sha256').update(value).digest('hex');
@@ -66,5 +66,40 @@ describe('native embedded-web provenance', () => {
     fs.appendFileSync(path.join(root, 'biblia', 'index.html'), 'tampered');
     expect(() => verifyNativePayloadManifest(root)).toThrow(/payload integrity/);
     expect(() => createNativePayloadManifest(fixture(), { mode: 'release' })).toThrow(/clean, release-eligible/);
+  });
+
+  it('binds only Capacitor’s two empty Cordova shims after an exact source copy', () => {
+    const source = fixture(true);
+    const transformations = transformNativeWebPayload(source, { serviceUrl: 'https://repository.example.com' });
+    createNativePayloadManifest(source, { mode: 'release', transformations });
+    const native = fs.mkdtempSync(path.join(os.tmpdir(), 'goreview-capacitor-payload-'));
+    temporary.push(native);
+    fs.cpSync(source, native, { recursive: true });
+    fs.writeFileSync(path.join(native, 'cordova.js'), '');
+    fs.writeFileSync(path.join(native, 'cordova_plugins.js'), '');
+
+    const manifest = finalizeCapacitorPayload(source, native, { requireRelease: true }) as {
+      payloadFiles: Array<{ path: string }>; transformations: string[];
+    };
+    expect(manifest.payloadFiles.map((file) => file.path)).toContain('cordova.js');
+    expect(manifest.payloadFiles.map((file) => file.path)).toContain('cordova_plugins.js');
+    expect(manifest.transformations.at(-1)).toMatch(/empty cordova\.js and cordova_plugins\.js/);
+    expect(verifyNativePayloadManifest(native, { requireRelease: true })).toMatchObject({ releaseEligible: true });
+
+    fs.writeFileSync(path.join(native, 'unreviewed.js'), 'unexpected');
+    expect(() => verifyNativePayloadManifest(native, { requireRelease: true })).toThrow(/payload integrity/);
+  });
+
+  it('does not bless unexpected files or modifications made by Capacitor sync', () => {
+    const source = fixture(true);
+    const transformations = transformNativeWebPayload(source, { serviceUrl: 'https://repository.example.com' });
+    createNativePayloadManifest(source, { mode: 'release', transformations });
+    const native = fs.mkdtempSync(path.join(os.tmpdir(), 'goreview-capacitor-payload-'));
+    temporary.push(native);
+    fs.cpSync(source, native, { recursive: true });
+    fs.writeFileSync(path.join(native, 'cordova.js'), '');
+    fs.writeFileSync(path.join(native, 'cordova_plugins.js'), '');
+    fs.writeFileSync(path.join(native, 'unexpected.js'), 'not from the verified source');
+    expect(() => finalizeCapacitorPayload(source, native, { requireRelease: true })).toThrow(/changed the prepared web payload or added unexpected files/);
   });
 });

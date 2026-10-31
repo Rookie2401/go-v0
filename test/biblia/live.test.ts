@@ -239,11 +239,14 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`) || !fs.existsSync(`${DATA}/
     // a tap: recorded under the account's Greek enrolment, and the word (and its other occurrences) is Seen at once
     const tapped = words().find((b) => b.textContent === 'λόγος')!;
     tapped.click();
-    await vi.waitFor(() => expect(svc.events.map((e) => e.kind)).toEqual(['SelectionLookedUp']));
+    await vi.waitFor(() => expect(svc.events.map((e) => e.kind)).toEqual(['SelectionLookedUp', 'EncounterRecorded']));
     expect(svc.events[0]).toMatchObject({ learnerId: 'L1', enrolmentId: 'enr-el', languageId: 'el' });
     expect(svc.events[0].producer.deviceId).toMatch(/^biblia:web:/);
     const recorded = svc.events[0].subject.itemIds ?? [];
     expect(recorded.length).toBeGreaterThan(0);
+    const exposure = svc.events[1].subject.itemIds ?? []; // the verse's other words, read without a tap
+    expect(exposure.length).toBeGreaterThan(0);
+    for (const id of exposure) { expect(svc.asked, id).toContain(id); expect(recorded).not.toContain(id); }
     for (const id of recorded) expect(svc.asked, id).toContain(id); // the ids the recorder sent are among the ids the page asked about
     const same = words().filter((b) => b.textContent === 'λόγος');
     expect(same.length).toBeGreaterThan(1);
@@ -256,7 +259,7 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`) || !fs.existsSync(`${DATA}/
     expect(same.every((b) => b.getAttribute(LEVEL_ATTR) === 'known')).toBe(true);
     svc.down = false;
     await recorder.flush();
-    expect(svc.events.map((e) => e.kind)).toEqual(['SelectionLookedUp', 'ItemMarked']);
+    expect(svc.events.map((e) => e.kind)).toEqual(['SelectionLookedUp', 'EncounterRecorded', 'ItemMarked']);
     window.dispatchEvent(new Event('focus'));
     await vi.waitFor(() => expect(svc.rows.get(recorded[0])?.selfMark?.mark).toBe('known'));
     await new Promise((r) => setTimeout(r, 20));
@@ -290,13 +293,13 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`) || !fs.existsSync(`${DATA}/
     expect(identityFirst?.enrolmentId).toBe('enr-el');
     svc.down = true;
     words().find((b) => b.textContent === 'ἀρχῇ')!.click();
-    await vi.waitFor(() => expect(recorder.pending()).toBe(1));
-    expect(JSON.parse(storage.getItem('biblia:queue')!)).toHaveLength(1);
-    await vi.waitFor(() => expect(q('.notice[role="status"]').textContent).toMatch(/Saved on this device \(1 waiting\)/));
+    await vi.waitFor(() => expect(recorder.pending()).toBe(2));
+    expect(JSON.parse(storage.getItem('biblia:queue')!)).toHaveLength(2);
+    await vi.waitFor(() => expect(q('.notice[role="status"]').textContent).toMatch(/Saved on this device \(2 waiting\)/));
     expect(svc.events).toHaveLength(0);
     svc.down = false;
     window.dispatchEvent(new Event('online'));
-    await vi.waitFor(() => expect(svc.events.map((e) => e.kind)).toEqual(['SelectionLookedUp']));
+    await vi.waitFor(() => expect(svc.events.map((e) => e.kind)).toEqual(['SelectionLookedUp', 'EncounterRecorded']));
     await vi.waitFor(() => expect(recorder.pending()).toBe(0));
     expect(storage.getItem('biblia:queue')).toBeNull();
   });

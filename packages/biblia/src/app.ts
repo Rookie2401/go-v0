@@ -4,15 +4,16 @@
  *
  * Parsing is GoLearn's: a tapped word is parsed by `parseSelection` with the he / el analyser, in the period the reader declares for the text
  * (he-bib for the Tanakh, arc-bib for its Aramaic chapters, el-koi for the New Testament); the card is `createCardUI`'s. Every lookup and mark is
- * a Repository event through the Recorder (repo.ts) when one exists.
+ * a Repository event through the Recorder (repo.ts) when one exists. A tap in a verse also records, once per verse per session, one
+ * `EncounterRecorded` (surface 'biblia-reading') for the unit ids of the verse's other words, so the Repository learns what was read without a tap.
  */
 import { createCardUI, type CardUI } from '../../golearn-extension/src/popup/card';
 import type { CardView } from '../../golearn-extension/src/popup/view';
 import type { CardModel } from '../../golearn-extension/src/parser';
 import { parseSelection } from '../../golearn-extension/src/parser';
 import { hasAnalyser, languageMeta, registerAnalyser } from '../../golearn-extension/src/parser/registry';
-import { buildAssistanceEvent, buildMarkEvent, buildSelectionEvent, type InteractionContext } from '../../golearn-extension/src/store';
-import type { ExpandedLayer } from '../../golearn-extension/src/store';
+import { buildAssistanceEvent, buildEncounterEvent, buildMarkEvent, buildSelectionEvent, type InteractionContext } from '../../golearn-extension/src/store';
+import type { ExpandedLayer, LanguageEvidenceInfo } from '../../golearn-extension/src/store';
 import type { PopupAnchor } from '../../golearn-extension/src/contract/readerAdapter';
 import type { KnowledgeLevel } from '../../repository-contract/src/knowledge-levels';
 import { heAdapter } from '../../../src/adapters/he';
@@ -20,9 +21,9 @@ import { elAdapter } from '../../../src/adapters/el';
 import { consonantal } from '../../../src/adapters/hebrew/text';
 import { Canon, TREE, numeral, parseCanon, type BibliaLang, type BookInfo } from './canon';
 import { Texts, greekVerseText, installFullIndexes, verseIsAramaic, type AnyBook, type DataSource, type GrVerse, type HeVerse } from './data';
-import { APP_VERSION, READER_ID, type Recorder } from './repo';
+import { APP_VERSION, READER_ID, type Identity, type Recorder } from './repo';
 import { renderAccountScreen, renderLegalScreen, type AccountService } from './account';
-import { createLevels, type LevelSite } from './levels';
+import { createLevels, unitIdsOfSite, type LevelSite } from './levels';
 import type { GoEvent } from '../../repository-contract/src';
 
 export interface BibliaDeps {
@@ -150,6 +151,8 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   // the knowledge levels on the chapter being read: only with an account (the standalone edition), only while signed in
   const levels = account ? createLevels({ win, doc, api: () => account.api(), onAuthExpired: () => account.expire() }) : undefined;
   const siteByEl = new WeakMap<HTMLElement, LevelSite>();
+  /** The verses whose words were already recorded as read this session (`lang|book.ch.v`): one exposure event per verse. */
+  const verseExposed = new Set<string>();
   const sitesOfView = new WeakMap<HTMLElement, LevelSite[]>();
   const unitsOf = (events: GoEvent[]): string[] => [...new Set(events.flatMap((e) => e.subject?.itemIds ?? []))];
   const offAppended = account?.onAppended((events) => { void levels?.refresh(unitsOf(events)); });
@@ -341,12 +344,29 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   function wordButton(ref: WordRef, sites: LevelSite[]): HTMLElement {
     const b = h('button', { type: 'button', class: 'word', lang: ref.lang }, ref.surface);
     b.addEventListener('click', () => { void lookup(ref, b); });
-    if (levels) {
-      const site: LevelSite = { el: b, lang: ref.lang, sentence: ref.sentence, start: ref.start, end: ref.end, surface: ref.surface, varietyId: ref.varietyId, ...(ref.gold ? { gold: { lemmaId: ref.gold.lemmaId, code: ref.gold.code } } : {}) };
-      siteByEl.set(b, site);
-      sites.push(site);
-    }
+    // every word's site is kept (it is cheap), levels or not: a tap needs its verse's other words for the exposure event
+    const site: LevelSite = { el: b, lang: ref.lang, sentence: ref.sentence, start: ref.start, end: ref.end, surface: ref.surface, varietyId: ref.varietyId, ...(ref.gold ? { gold: { lemmaId: ref.gold.lemmaId, code: ref.gold.code } } : {}) };
+    siteByEl.set(b, site);
+    if (levels) sites.push(site);
     return b;
+  }
+
+  /** The exposure of a verse: one EncounterRecorded, the first time a word of the verse is tapped this session, for the unit ids of the verse's other words. */
+  function verseExposure(ref: WordRef, button: HTMLElement, tappedIds: string[], base: { identity: Identity; version: string; sessionId: string; now: Date; language: LanguageEvidenceInfo }): GoEvent | undefined {
+    const key = `${ref.lang}|${ref.book}.${ref.ch}.${ref.v}`;
+    if (verseExposed.has(key)) return undefined;
+    const verseEl = button.closest('.verse');
+    if (!verseEl) return undefined;
+    const sites: LevelSite[] = [];
+    for (const w of verseEl.querySelectorAll<HTMLElement>('button.word')) { const s = siteByEl.get(w); if (s) sites.push(s); }
+    if (!sites.length) return undefined;
+    verseExposed.add(key);
+    const readings: NonNullable<Parameters<typeof unitIdsOfSite>[1]> = new Map();
+    const own = new Set(tappedIds);
+    const ids = new Set<string>();
+    for (const s of sites) for (const id of unitIdsOfSite(s, readings)) if (!own.has(id)) ids.add(id);
+    if (!ids.size) return undefined;
+    return buildEncounterEvent({ languageId: ref.lang, itemIds: [...ids], readerId: READER_ID, identity: base.identity, version: base.version, sessionId: base.sessionId, now: base.now, language: base.language, surface: 'biblia-reading', tokenCount: sites.length, contextKind: 'sentence' });
   }
 
   async function lookup(ref: WordRef, button: HTMLElement): Promise<void> {
@@ -367,7 +387,10 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       const base = { card: model, readerId: READER_ID, identity, version: APP_VERSION, sessionId, now, direction, language: { languageId: ref.lang, varietyId: ref.varietyId, basis: 'override' as const, confidence: 1, source: `biblia:${ref.book}.${ref.ch}.${ref.v}` } };
       const selection = buildSelectionEvent(base);
       ictx = { ...base, selectionEventId: selection.id };
-      void deps.recorder.record([selection]).then((r2) => { if (!r2.ok) showNotice(`Could not record this lookup: ${r2.message ?? 'unknown reason'}.`); else if (r2.message) showNotice(r2.message); });
+      const events: GoEvent[] = [selection];
+      const exposure = verseExposure(ref, button, model.itemIds, base);
+      if (exposure) events.push(exposure);
+      void deps.recorder.record(events).then((r2) => { if (!r2.ok) showNotice(`Could not record this lookup: ${r2.message ?? 'unknown reason'}.`); else if (r2.message) showNotice(r2.message); });
       const site = siteByEl.get(button);
       if (levels && site) { levels.learn(site, model.itemIds); levels.met(model.itemIds); }
     }

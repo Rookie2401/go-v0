@@ -290,6 +290,48 @@ describe('repeat encounter ranking', () => {
   });
 });
 
+describe('repeated encounters draw a candidate', () => {
+  const F = 'form:sq:meet';
+  const meetings = (n: number): GoEvent[] => Array.from({ length: n }, (_, i) => encounter([F], { at: `2026-10-06T1${i % 10}:00:00.000Z` }));
+  const setup = (s: FakeStore): void => { s.units.set(F, unit(F, 'form', 'verified')); };
+
+  it('a seen unit met three times, with no lookup, error, rank or mark, is drawn with the repeatedEncounters reason', async () => {
+    resetIds();
+    const { list, engine } = await run(meetings(3), setup);
+    expect((await engine.knowledge(L)).find((r) => r.unitId === F)).toMatchObject({ level: 'seen', encounters: 3 });
+    const c = by(list, F)!;
+    expect(c).toBeDefined();
+    expect(c.reasons.find((r) => r.rule === 'repeatedEncounters')).toMatchObject({ weight: 0.1, detail: '3 distinct encounters and judgements' });
+    expect(rules(c)).not.toContain('repeatedLookups');
+    expect(rules(c)).not.toContain('wordFrequency');
+  });
+
+  it('two encounters do not draw it', async () => {
+    resetIds();
+    expect(by((await run(meetings(2), setup)).list, F)).toBeUndefined();
+    expect(by((await run(meetings(1), setup)).list, F)).toBeUndefined();
+  });
+
+  it('a known unit met ten times is not drawn by them: known keeps its own draw rules', async () => {
+    resetIds();
+    const review = (i: number): GoEvent => {
+      const event = card([F], 'recognition', true,
+        { outcome: 'correct', rating: 3, expectedPreviousReviewId: i ? `typed-${i - 1}` : null },
+        { id: `typed-${i}`, at: `2026-10-0${4 + i}T08:00:00.000Z`, evidence: { quality: 'moderate', assisted: false, sourceReliability: 1 } });
+      event.producer.app = 'gopractice-review';
+      event.producer.deviceId = 'device-a';
+      event.subject.cardId = 'card:review';
+      return event;
+    };
+    const events = [...Array.from({ length: 4 }, (_, i) => review(i)), ...meetings(10)];
+    const { list, engine } = await run(events, setup);
+    const row = (await engine.knowledge(L)).find((r) => r.unitId === F)!;
+    expect(row.level).toBe('known');
+    expect(row.encounters).toBeGreaterThanOrEqual(10);
+    expect(by(list, F)).toBeUndefined();
+  });
+});
+
 describe('missionRelevance', () => {
   const F = 'form:sq:librin';
   const events = (): GoEvent[] => [card([F], 'recognition', false, {}, { at: RECENT })];

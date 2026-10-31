@@ -105,7 +105,7 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
       word.click();
       await new Promise((r) => setTimeout(r, 20));
       const root = app.cardRoot()!;
-      expect(root.querySelector('.kicker')!.textContent).toBe('Meaning · Open Scriptures Hebrew Bible morphology');
+      expect(root.querySelector('.kicker')!.textContent).toBe('Meaning · Lemma gloss (inflected/contextual meaning unavailable)');
       (root.querySelector('.sourcesBtn') as HTMLButtonElement).click();
       const sources = [...root.querySelectorAll('.sources li')].map((li) => li.textContent ?? '');
       expect(sources.some((s) => /Open Scriptures Hebrew Bible morphology/.test(s))).toBe(true);

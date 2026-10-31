@@ -76,5 +76,5 @@ export async function render(el: HTMLElement, ctx: AppContext, _view: View): Pro
       else setStatus(consentStatus, wanted ? 'Remote speech is allowed on this device. Your consent is recorded.' : r.recorded ? 'Remote speech is off. Your withdrawal is recorded.' : 'Remote speech is off.', 'ok');
     }, () => { consent.checked = !wanted; setStatus(consentStatus, 'The switch could not be changed.', 'error'); });
   });
-  prefsBox.append(h('label', { class: 'toggle' }, consent, h('span', {}, 'Allow my text to be sent to a remote speech service ', h('span', { class: 'help' }, '(only for listening practice; off by default; the browser\'s own voices do not need this)'))), consentStatus);
+  prefsBox.append(h('label', { class: 'toggle' }, consent, h('span', {}, 'Allow my text to be sent to a remote speech service ', h('span', { class: 'help' }, '(off by default; local voices need no remote consent, cloud-backed browser voices do)'))), consentStatus);
 }

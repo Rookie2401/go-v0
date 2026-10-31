@@ -17,6 +17,9 @@ import { ensureAnalyser } from '../analysers';
 import type { PopupAnchor } from '../../src/contract/readerAdapter';
 import { createCardUI, type CardUI } from '../../src/popup/card';
 import { DEVICE_TAGS } from '../../src/content/voiceTags';
+import { createGoListenPronouncer } from '../../src/content/voice';
+import type { SpeechMessage, SpeechReply } from '../../src/speechProtocol';
+import type { SpeechLike as ListenSpeechLike } from '../../../golisten/src/ports';
 import {
   candidateWords, chooseWord, encounterFromShare, normaliseSharedPassage, passageFromShareParams, pastedPassage, readShareParams,
   shareReaderId, type NormalisedShare, type ShareContext, type SharedPassage,
@@ -45,7 +48,26 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   let languageName = nameOf(languageId);
   let analysed = PARSER_LANGUAGES.includes(languageId);
   const sessionId = `share-${ctx.deps.now().getTime().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
-  const ui: CardUI = createCardUI({ doc, speech: ctx.deps.speech, voiceTags: DEVICE_TAGS });
+  let maySendWord = false;
+  let remoteSpeech = false;
+  const pronouncer = createGoListenPronouncer({
+    speech: (ctx.deps.speech ?? null) as unknown as ListenSpeechLike | null,
+    localOnly: () => !remoteSpeech,
+    remoteConsent: () => remoteSpeech,
+    refreshConsent: async () => {
+      try {
+        const settings = await ctx.state.getSettings();
+        remoteSpeech = settings.localOnlySpeech === false && settings.remoteSpeechConsent === true;
+        return remoteSpeech;
+      } catch { remoteSpeech = false; return false; }
+    },
+    processingPermission: () => maySendWord ? 'allowed' : 'forbidden',
+    speechBridge: async (request: SpeechMessage): Promise<SpeechReply | undefined> => {
+      const reply = await ctx.ask<SpeechReply>({ type: 'golearn:speech', ...request }, request.op === 'synthesize' ? 30_000 : 8_000);
+      return reply.answered ? reply.value : undefined;
+    },
+  });
+  const ui: CardUI = createCardUI({ doc, speech: ctx.deps.speech, voiceTags: DEVICE_TAGS, pronouncer });
   view.onDispose(() => ui.destroy());
 
   const status = statusLine();
@@ -73,7 +95,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       setStatus(status, `The lookup failed: ${e instanceof Error ? e.message : String(e)}. Nothing was recorded.`, 'error');
       return;
     }
-    ui.show(card, fallbackAnchor());
+    ui.show(card, fallbackAnchor(), { view: { pronunciationContext: { readerId: 'golearn-share', kind: 'word' } } });
     const id = await ctx.identity();
     const base = encounterFromShare({
       card, passage, identity: { learnerId: id.learnerId, enrolmentId: id.enrolmentId, deviceId: id.deviceId },
@@ -137,6 +159,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   // the languages this build can look up in (a pack that is not planned and an analyser that is bundled)
   const choices = ctx.deps.packs.packs().filter((k) => k.level !== 'planned' && PARSER_LANGUAGES.includes(k.languageId));
   const languageLine = h('p', { id: 'share-language', class: 'muted' });
+  const sourcePermission = h('input', { type: 'checkbox', id: 'share-audio-permission' }) as HTMLInputElement;
+  sourcePermission.addEventListener('change', () => { maySendWord = sourcePermission.checked; });
   const unanalysed = p('', 'error');
   unanalysed.id = 'share-unanalysed';
   const describeLanguage = (): void => {
@@ -162,6 +186,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   append(el, [
     p('Share a word, a sentence or a short passage from another app to GoLearn, or paste it below. The text is looked up once with the same card as on a web page, and only the word you look up is recorded, with where it came from. The text itself is not kept.'),
+    h('p', { class: 'muted' }, h('label', {}, sourcePermission, ' I have permission to send the selected word to a remote speech service if I press its speaker. This applies to that word only; remote speech must also be enabled in Privacy.')),
     languageLine,
     choices.length > 1 ? field('Language of what you share', select, 'Only needed when it is not your active language. Your choice is recorded with the lookup.') : null,
     unanalysed,

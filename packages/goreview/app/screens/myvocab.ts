@@ -165,6 +165,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   }
 
   const offlineNote = (at: string): string => `You are offline: these are the words this device saved on ${at.slice(0, 10)}. New ones appear when you are back online.`;
+  const incompleteNote = (loaded: Awaited<ReturnType<typeof loadVocab>>): string => !loaded.complete
+    ? loaded.incompleteReason === 'snapshot-cap'
+      ? `This saved copy is capped at ${loaded.total.toLocaleString()} words. Reconnect to load the full list.`
+      : `The vocabulary list is incomplete: at least ${loaded.total.toLocaleString()} words loaded before the Repository repeated a page cursor. Try again later for the rest.`
+    : '';
+  const loadNote = (loaded: Awaited<ReturnType<typeof loadVocab>>): string => [loaded.stale ? offlineNote(loaded.stale) : '', incompleteNote(loaded)].filter(Boolean).join(' ');
   const signature = (list: readonly VocabRow[]): string => JSON.stringify(list.map((r) => [r.unitId, r.level, r.encounters, r.lastSeenAt ?? '']));
 
   /** A live update (GoLearn pushed new lookups): the list is read again and repainted in place, unless the learner is in the middle of an Add. */
@@ -174,10 +180,11 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     try {
       const loaded = await loadVocab(ctx, identity.languageId);
       if (!view.alive() || loaded.stale) return;
+      const note = loadNote(loaded);
       const next = loaded.rows.filter((r) => KNOWLEDGE_LEVELS.includes(r.level));
-      if (signature(next) === signature(rows)) return;
+      if (signature(next) === signature(rows)) { setStatus(status, note, note ? 'info' : 'ok'); return; }
       rows = next;
-      setStatus(status, '');
+      setStatus(status, note, note ? 'info' : 'ok');
       paintList();
       deckUnits = undefined; void refreshDeck();
     } catch { /* the list stays as painted */ } finally { busy = false; }
@@ -193,7 +200,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const loaded = await loadVocab(ctx, identity.languageId);
     if (!view.alive()) return;
     rows = loaded.rows.filter((r) => KNOWLEDGE_LEVELS.includes(r.level));
-    setStatus(status, loaded.stale ? offlineNote(loaded.stale) : '', loaded.stale ? 'info' : 'info');
+    const note = loadNote(loaded);
+    setStatus(status, note, 'info');
     busy = false;
     paintList();
     void refreshDeck();

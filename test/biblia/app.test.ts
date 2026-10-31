@@ -45,6 +45,26 @@ beforeEach(() => { restore = stubLayout(); setBody('<div id="app"></div>'); wind
 afterEach(() => { app?.destroy(); app = undefined; restore(); });
 
 describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported texts', () => {
+  it('keeps account speech off until explicit consent is recorded, then records withdrawal immediately', async () => {
+    const rec = fakeRecorder();
+    app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: rec,
+      speechAccount: async () => ({ serviceUrl: 'https://repo.example', token: 'session', learnerId: 'L1' }), now: () => new Date('2026-10-18T12:00:00Z') });
+    await app.go('#/settings');
+    const toggle = document.querySelector<HTMLInputElement>('#settings-remote-speech')!;
+    expect(toggle.disabled).toBe(false);
+    expect(toggle.checked).toBe(false);
+    toggle.checked = true;
+    toggle.dispatchEvent(new Event('change'));
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(rec.events.at(-1)).toMatchObject({ kind: 'ConsentGiven', payload: { consent: 'remote-speech', scope: 'remote-speech' } });
+    expect(toggle.checked).toBe(true);
+    toggle.checked = false;
+    toggle.dispatchEvent(new Event('change'));
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(rec.events.at(-1)).toMatchObject({ kind: 'ConsentWithdrawn', payload: { consent: 'remote-speech', scope: 'remote-speech' } });
+    expect(toggle.checked).toBe(false);
+  });
+
   it('shows the library as Biblia organises it, with the notices that are true of this build', async () => {
     const rec = fakeRecorder();
     app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: rec, now: () => new Date('2026-10-18T12:00:00Z') });

@@ -17,7 +17,7 @@ import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planClassEssentia
 import { explainAdmissions } from '../admissionExplanation';
 import { freshModel, planCouldHaveChanged } from '../freshness';
 import { loadingMark } from '../loading';
-import { readSnapshot, restoreMissing, type ReviewSnapshot } from '../snapshot';
+import { MAX_SNAPSHOT_WORDS, readSnapshot, restoreMissing, type ReviewSnapshot } from '../snapshot';
 import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import * as decksScreen from './decks';
 import { renderHistory, renderTransfer } from './history';
@@ -39,7 +39,8 @@ const timeEstimate = (seconds: number): string => seconds < 60 ? 'about 1 minute
  * decks, the open sessions and the device's vocabulary snapshot (written by My vocab and by every live read). The candidates can only
  * move with the events, so they are not asked for again while the key holds; after HOME_MEMO_MS they are asked for anyway.
  */
-interface PaintedHome { key: string; at: number; model: ReviewModel; deck: CurrentDeck; classDue?: Awaited<ReturnType<typeof planClassEssentialsDue>>; selectedCount: number; resumeId: string | undefined; saved: number; words: number }
+type VocabCompleteness = 'complete' | 'partial' | 'loading' | 'unavailable' | 'stale';
+interface PaintedHome { key: string; at: number; model: ReviewModel; deck: CurrentDeck; classDue?: Awaited<ReturnType<typeof planClassEssentialsDue>>; selectedCount: number; resumeId: string | undefined; saved: number; words: number; vocabCompleteness: VocabCompleteness }
 const painted = new WeakMap<AppContext, Map<string, PaintedHome>>();
 /** How long a painted home is reused unchanged before the Repository is asked again anyway. */
 export const HOME_MEMO_MS = 10 * 60_000;
@@ -97,11 +98,11 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
 
   /** Draws the four entries. */
   function draw(model: ReviewModel, deck: CurrentDeck, resumeId: string | undefined, savedCount: number, words: number,
-    selectedCount: number, classDue?: Awaited<ReturnType<typeof planClassEssentialsDue>>): void {
+    selectedCount: number, classDue?: Awaited<ReturnType<typeof planClassEssentialsDue>>, vocabCompleteness: VocabCompleteness = 'complete'): void {
     const bibliaLink = ctx.deps.links?.biblia;
     clear(root);
     root.setAttribute('lang', 'en');
-    append(root, [tellEntry(), deckEntry(model, deck, resumeId, selectedCount), ...(classDue ? [classDueEntry(model, classDue, deck.summary.classRemediation)] : []), previousEntry(savedCount), vocabEntry(Math.max(words, 0)), ...(bibliaLink ? [bibliaEntry(bibliaLink)] : []), status]);
+    append(root, [tellEntry(), deckEntry(model, deck, resumeId, selectedCount), ...(classDue ? [classDueEntry(model, classDue, deck.summary.classRemediation)] : []), previousEntry(savedCount), vocabEntry(Math.max(words, 0), vocabCompleteness), ...(bibliaLink ? [bibliaEntry(bibliaLink)] : []), status]);
   }
 
   async function paint(force = false): Promise<void> {
@@ -111,7 +112,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     if (!force && memo && local && memo.key === local.key && now - memo.at < HOME_MEMO_MS && !scheduleMovedSince(memo.model, now) && !planCouldHaveChanged(memo.model, now)) {
       if (!view.alive()) return;
       paintedEvents = memo.model.events.length;
-      draw(memo.model, memo.deck, memo.resumeId, memo.saved, memo.words, memo.selectedCount, memo.classDue);
+      draw(memo.model, memo.deck, memo.resumeId, memo.saved, memo.words, memo.selectedCount, memo.classDue, memo.vocabCompleteness);
       return;
     }
     // the first paint shows the loading mark; a repaint over a painted home keeps it until the new one is ready
@@ -139,37 +140,38 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       recoverableSessions(ctx),
       readSnapshot(ctx, id.learnerId, id.languageId).catch(() => undefined),
     ]);
-    // My vocab: the Repository's list takes a page per hundred words, each a slow read that holds the service's other answers back; the
-    // device's snapshot of it (written at every live read) paints the home now, the live list is read once the home is drawn, and its count
-    // replaces the snapshot's when it arrives. With no snapshot yet, the live list is waited for.
+    // My vocab is a separate paged inventory. A device snapshot paints its count when present; live paging runs after the deck paints.
     const snapRows = (snapshot?.vocab?.rows ?? []) as VocabRow[];
-    let live: Promise<VocabRow[]> | undefined = snapRows.length ? undefined : loadVocabSafe(ctx, id.languageId);
-    const vocab = live ? await live : snapRows;
+    // Vocabulary is a separate inventory view, not an admission input. A cold
+    // home must be able to paint the justified deck before its paged count loads.
+    const vocab = snapRows;
     const deck = await planCurrentDeck(ctx, model, holdOut, vocab);
     const classDue = classLanguageOf(model.identity.languageId) ? await planClassEssentialsDue(ctx, model) : undefined;
     const selected = await selectedPracticeUnits(ctx, id.learnerId, id.languageId);
     armNextDueRefresh(model);
     const words = vocab.length || model.knowledge.length;
+    const vocabCompleteness: VocabCompleteness = vocab.length >= MAX_SNAPSHOT_WORDS ? 'partial' : 'loading';
     if (!view.alive()) return;
-    draw(model, deck, resumable[0]?.sessionId, saved.length, words, selected.length, classDue);
+    draw(model, deck, resumable[0]?.sessionId, saved.length, words, selected.length, classDue, vocabCompleteness);
+    // Start the separate paged inventory only after the useful deck is on screen; its pages can contend with Repository deck requests.
+    const live = loadVocabSafe(ctx, id.languageId);
     // the key as the stores stand now, after the paint (a restored deck or preference is part of it)
     const after = await homeLocal(ctx).catch(() => undefined);
     const same = after && after.id === `${id.learnerId}|${id.enrolmentId}` ? after : undefined;
     if (same) {
       const map = painted.get(ctx) ?? new Map<string, PaintedHome>();
-      map.set(same.id, { key: same.key, at: now, model, deck, classDue, selectedCount: selected.length, resumeId: resumable[0]?.sessionId, saved: saved.length, words });
+      map.set(same.id, { key: same.key, at: now, model, deck, classDue, selectedCount: selected.length, resumeId: resumable[0]?.sessionId, saved: saved.length, words, vocabCompleteness });
       painted.set(ctx, map);
     }
-    if (!live) {
-      live = loadVocabSafe(ctx, id.languageId);
-      void live.then((rows) => {
-        if (!view.alive() || !rows.length || rows.length === words) return;
-        const m = same ? painted.get(ctx)?.get(same.id) : undefined;
-        if (m && m.model === model) m.words = rows.length;
-        const kicker = root.querySelector('#vocab-count');
-        if (kicker) kicker.textContent = plural(rows.length, 'word', 'words');
-      });
-    }
+    void live.then((result) => {
+      const count = result ? result.rows.length : model.knowledge.length;
+      const completeness: VocabCompleteness = !result ? 'unavailable' : result.stale ? 'stale' : result.complete ? 'complete' : 'partial';
+      const m = same ? painted.get(ctx)?.get(same.id) : undefined;
+      if (m && m.model === model) { m.words = count; m.vocabCompleteness = completeness; }
+      if (!view.alive()) return;
+      const kicker = root.querySelector<HTMLElement>('#vocab-count');
+      if (kicker) setVocabCount(kicker, count, completeness);
+    });
   }
 
   /** GoTell: of its own hierarchy, not pedagogically related to what follows; set apart above a rule. */
@@ -191,10 +193,27 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
         h('span', { class: 'entry-title' }, 'Saved decks'), h('span', { class: 'entry-kicker', id: 'previous-count' }, count ? `${count} saved` : 'None saved yet')));
   }
 
-  function vocabEntry(count: number): HTMLElement {
+  function setVocabCount(kicker: HTMLElement, count: number, completeness: VocabCompleteness): void {
+    const base = plural(count, 'word', 'words');
+    const label = completeness === 'partial' ? `${count.toLocaleString()}+ words` : base;
+    kicker.textContent = label;
+    kicker.dataset.completeness = completeness;
+    kicker.setAttribute('aria-label', completeness === 'partial' ? `${count.toLocaleString()} or more words; the full vocabulary list did not load` :
+      completeness === 'loading' ? `${base}; the full vocabulary count is still loading` :
+        completeness === 'unavailable' ? `${base}; the vocabulary count could not be refreshed` :
+          completeness === 'stale' ? `${base}; showing the saved vocabulary count from the last successful load` : label);
+    kicker.title = completeness === 'partial' ? 'Only a partial vocabulary list loaded. More words may be available.' :
+      completeness === 'loading' ? 'The deck is ready; the separate vocabulary count is still loading.' :
+        completeness === 'unavailable' ? 'The vocabulary count could not be refreshed.' :
+          completeness === 'stale' ? 'Showing the last saved count because the Repository is unavailable.' : '';
+  }
+
+  function vocabEntry(count: number, completeness: VocabCompleteness = 'complete'): HTMLElement {
+    const kicker = h('span', { class: 'entry-kicker', id: 'vocab-count' }, plural(count, 'word', 'words'));
+    setVocabCount(kicker, count, completeness);
     return h('section', { class: 'entry', 'data-entry': 'vocab' },
       h('a', { class: 'entry-link', href: '#/review/vocab', id: 'entry-vocab' },
-        h('span', { class: 'entry-title' }, 'My vocab'), h('span', { class: 'entry-kicker', id: 'vocab-count' }, plural(count, 'word', 'words'))));
+        h('span', { class: 'entry-title' }, 'My vocab'), kicker));
   }
 
   function classDueEntry(m: ReviewModel, due: Awaited<ReturnType<typeof planClassEssentialsDue>>, classRemediation: number): HTMLElement {

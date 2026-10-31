@@ -4,7 +4,7 @@
  *   vite build -c packages/goreview/app/vite.config.ts
  *       -> packages/goreview/app/dist/   a static site with relative URLs (base './'), any host or sub-path:
  *          index.html, assets/*.js, styles.css, config.json, and dict/<lang>/ for the languages in GOREVIEW_DICT
- *          (default "sq,es,de,hi,th", the currently supported installable packs; set it empty to leave the dictionaries out). Review exercises read
+ *          (default "sq,es,de,hi,th,la", the packs declaring dictionaries; set it empty when using a shared dictionary tree). Review exercises read
  *          glosses from there, lazily, shard by shard.
  *   vite build -c packages/goreview/app/vite.config.ts --mode extension
  *       -> packages/golearn-extension/dist/review/   the same app as a page of the GoLearn extension (chrome-extension://<id>/review/index.html).
@@ -27,7 +27,7 @@ import { createReleaseManifest, normalizeCompiledModuleId, verifyReleaseArtifact
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '../../..');
 
-const dictLanguages = (): string[] => (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th').split(',').map((s) => s.trim()).filter(Boolean);
+const dictLanguages = (): string[] => (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th,la').split(',').map((s) => s.trim()).filter(Boolean);
 
 const fontsSource = path.join(repoRoot, 'packages', 'shared-fonts');
 
@@ -67,7 +67,7 @@ function staticFiles(outDir: string, pwa = false): Plugin {
       // GOREVIEW_SERVICE_URL (https, or http on localhost) replaces config.json's serviceUrl in the copy: the installable review
       // edition is built against the public Repository address (e.g. https://repo.golearn-global-languages.com), the source file
       // keeps the local development address. Anything else is refused so a typo cannot ship.
-      const config = JSON.parse(fs.readFileSync(path.join(here, 'config.json'), 'utf8')) as { serviceUrl: string };
+      const config = JSON.parse(fs.readFileSync(path.join(here, 'config.json'), 'utf8')) as { serviceUrl: string; assetBaseUrl?: string };
       const override = process.env.GOREVIEW_SERVICE_URL;
       if (override) {
         const u = new URL(override);
@@ -75,11 +75,20 @@ function staticFiles(outDir: string, pwa = false): Plugin {
         if (!(u.protocol === 'https:' || (u.protocol === 'http:' && local)) || u.search || u.hash || u.username) throw new Error(`GOREVIEW_SERVICE_URL must be an https URL (http only on localhost): ${override}`);
         config.serviceUrl = u.origin + u.pathname.replace(/\/$/, '');
       }
+      // Hosted editions can share the complete dictionary tree beside /review/;
+      // native/extension builds keep './' and bundle their selected dictionaries.
+      const assetBase = process.env.GOREVIEW_ASSET_BASE;
+      if (assetBase) {
+        const u = new URL(assetBase, 'https://asset-base.invalid/review/');
+        if (u.protocol !== 'https:' || u.username || u.password || u.search || u.hash || assetBase.startsWith('//')) throw new Error('GOREVIEW_ASSET_BASE must be a relative path or an https URL without credentials, query or fragment.');
+        config.assetBaseUrl = assetBase;
+      }
       fs.writeFileSync(path.join(outDir, 'config.json'), JSON.stringify(config, null, 2) + '\n');
       for (const lang of dictLanguages()) {
         const from = path.join(repoRoot, 'public', 'dict', lang);
         // the frequency sidecar was counted from the retired library and is quarantined (RIGHTS-AND-PRIVACY-BOUNDARIES §2): never shipped
-        if (fs.existsSync(from)) fs.cpSync(from, path.join(outDir, 'dict', lang), { recursive: true, filter: (src) => path.basename(src) !== 'frequency.json' });
+        if (!fs.existsSync(path.join(from, 'manifest.json'))) throw new Error(`The selected ${lang} dictionary is missing its manifest; refusing an incomplete build.`);
+        fs.cpSync(from, path.join(outDir, 'dict', lang), { recursive: true, filter: (src) => path.basename(src) !== 'frequency.json' });
         const shipped = path.join(outDir, 'dict', lang, 'manifest.json');
         // the shipped manifest must not promise the sidecar that was left out
         if (fs.existsSync(shipped)) fs.writeFileSync(shipped, JSON.stringify({ ...JSON.parse(fs.readFileSync(shipped, 'utf8')), hasFrequency: false }, null, 2));

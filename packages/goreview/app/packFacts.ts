@@ -31,7 +31,8 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string }): (l
     };
     return {
       prime: (unitIds: string[]) => plain.prime(unitIds),
+      clearPrime: () => plain.clearPrime?.(),
       factsFor: (unitId, languageId, varietyId) => forVariety(varietyId).factsFor(unitId, languageId, varietyId),
-    } as FactsProvider & { prime(unitIds: string[]): Promise<void> };
+    } as FactsProvider & { prime(unitIds: string[]): Promise<void>; clearPrime(): void };
   };
 }

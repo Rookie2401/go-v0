@@ -63,7 +63,7 @@ describe('GoReview startup performance guards', () => {
   });
 
   it('uses one successful intake facts read for the first exercise check only', async () => {
-    const api = {} as RepositoryApi;
+    const api = { unit: async () => ({ ok: false as const }), units: async () => ({ ok: false as const }) } as unknown as RepositoryApi;
     const factsFor = vi.fn(async () => fakeFacts.factsFor('lemma:sq:zog:NOUN', 'sq'));
     const engine = createReviewEngine({ builders: [], evidenceFor: vi.fn() as never, ratingFor: vi.fn() as never, factsFor: () => ({ factsFor }) });
     const c = candidate('zog', 0.8);
@@ -74,7 +74,8 @@ describe('GoReview startup performance guards', () => {
 
     await engine.intake(request);
     expect(factsFor).toHaveBeenCalledTimes(1);
-    const check = { api, unitId: c.unitId, unitKind: c.kind, languageId: 'sq', dimension: 'written-recognition' as const, family: 'written-recognition' as const, now: request.now };
+    const scopedApi = Object.create(api) as RepositoryApi;
+    const check = { api: scopedApi, unitId: c.unitId, unitKind: c.kind, languageId: 'sq', dimension: 'written-recognition' as const, family: 'written-recognition' as const, now: request.now };
     await engine.exerciseAvailable?.(check);
     expect(factsFor).toHaveBeenCalledTimes(1);
     await engine.exerciseAvailable?.(check);

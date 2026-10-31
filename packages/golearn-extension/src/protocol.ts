@@ -30,6 +30,8 @@ export interface PrivacySettings {
 }
 
 export const DEFAULT_SETTINGS: PrivacySettings = { keepSnippets: false, remoteSpeechConsent: false, externalProcessingConsent: false, localOnlySpeech: true };
+/** Learner who last explicitly granted remote speech; prevents a persisted device switch crossing accounts. */
+export const REMOTE_SPEECH_CONSENT_OWNER_KEY = 'golearn:speech-consent-owner';
 
 export interface SyncView {
   pending: number;

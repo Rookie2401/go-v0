@@ -14,6 +14,8 @@ import { packFactsFor } from './packFacts';
 import type { Deps } from './ports';
 import { createIndexedDbKeyValueArea, createWebKeyValueArea } from './state';
 import { createMobileRuntime } from './mobile';
+import { withRequestTimeout } from '../../repository-service/src/requestTimeout';
+import { resolveServiceUrl } from './config';
 import { APP_VERSION } from './version';
 
 function storageArea(mobile: ReturnType<typeof createMobileRuntime>): Deps['area'] {
@@ -43,25 +45,22 @@ class NativeStorageUnavailableError extends Error {}
 
 /** Bound waits for repository requests on a phone with a stale tunnel or no route. Asset fetches keep using `doFetch`. */
 export function withApiRequestTimeout(fetcher: typeof fetch, timeoutMs = 8_000): typeof fetch {
-  return (input, init = {}) => {
-    const controller = new AbortController();
-    const upstream = init.signal;
-    const abort = (): void => controller.abort(upstream?.reason);
-    if (upstream?.aborted) abort();
-    else upstream?.addEventListener('abort', abort, { once: true });
-    const timer = setTimeout(() => controller.abort(new DOMException('Repository request timed out', 'TimeoutError')), timeoutMs);
-    return fetcher(input, { ...init, signal: controller.signal }).finally(() => {
-      clearTimeout(timer);
-      upstream?.removeEventListener('abort', abort);
-    });
-  };
+  return withRequestTimeout(fetcher, timeoutMs);
 }
 
-export async function createRealDeps(): Promise<Deps> {
+export async function createRealDeps(fetcher?: typeof fetch): Promise<Deps> {
   const mobile = createMobileRuntime(window);
   if (mobile.native && !(await mobile.probe?.())) throw new NativeStorageUnavailableError();
-  const doFetch: typeof fetch = (input, init) => globalThis.fetch(input, init);
-  const apiFetch = withApiRequestTimeout(doFetch);
+  const rawFetch: typeof fetch = fetcher ?? ((input, init) => globalThis.fetch(input, init));
+  const doFetch: typeof fetch = (input, init = {}) => {
+    const value = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
+    let path = value;
+    try { path = new URL(value, location.href).pathname; } catch { /* relative-path matcher below */ }
+    const timeout = path.endsWith('/sync/wait') ? 30_000 : /\/sync\/wait(?:\?|$)/.test(value) ? 30_000 : 8_000;
+    return withApiRequestTimeout(rawFetch, timeout)(input, init);
+  };
+  const apiFetch = doFetch;
+  const speechFetch = withRequestTimeout(rawFetch, 30_000);
   const config = await loadConfig(doFetch);
   const engine = createReviewEngine({
     builders: registry, evidenceFor, ratingFor,
@@ -79,8 +78,9 @@ export async function createRealDeps(): Promise<Deps> {
     },
     createApi: (baseUrl, token) => createRepositoryApi({ baseUrl, fetch: apiFetch, token }),
     engine,
-    audio: (consent) => createAudioDeps({ consent,
-      ...(ext ? { extensionRuntime: ext.runtime, extensionUrl: `${location.protocol}//${location.host}${location.pathname}` } : config.speechProxyBase ? { speechProxyBase: config.speechProxyBase } : {}),
+    audio: (consent, accountToken) => createAudioDeps({ consent, fetch: speechFetch,
+      ...(!ext ? { speechProxyBase: `${resolveServiceUrl(config).replace(/\/+$/, '')}/api/speech`, ...(accountToken ? { accountToken } : {}) } : {}),
+      ...(ext ? { extensionRuntime: ext.runtime, extensionUrl: `${location.protocol}//${location.host}${location.pathname}` } : {}),
     }),
     ...(document.querySelector('meta[name="goreview-edition"][content="review"]') ? { edition: 'review' as const } : {}),
     now: () => new Date(), newId: uuid, random: Math.random, appVersion: APP_VERSION, autoSync: true,

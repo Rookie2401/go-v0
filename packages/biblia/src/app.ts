@@ -25,6 +25,8 @@ import { APP_VERSION, READER_ID, type Identity, type Recorder } from './repo';
 import { renderAccountScreen, renderLegalScreen, type AccountService } from './account';
 import { createLevels, unitIdsOfSite, type LevelSite } from './levels';
 import type { GoEvent } from '../../repository-contract/src';
+import { CONTRACT_VERSION } from '../../repository-contract/src';
+import type { Pronouncer } from '../../golearn-extension/src/popup/view';
 
 export interface BibliaDeps {
   win: Window;
@@ -33,6 +35,9 @@ export interface BibliaDeps {
   recorder: Recorder;
   /** The standalone web edition's account (sign-in state, the screen at #/account); absent in the extension, in the iPhone app and in a plain reader. With it, the chapter on screen carries the learner's knowledge levels while signed in. */
   account?: AccountService;
+  /** Current authenticated session and service URL for account-backed speech; omitted in the extension/local-only editions. */
+  speechAccount?: () => Promise<{ serviceUrl: string; token: string; learnerId: string } | undefined>;
+  createPronouncer?: (consent: () => boolean, consentOwner: () => string | undefined) => Pronouncer;
   /** With the account: the live sync notice (src/syncStatus.ts), shown in the Settings page's Account card and nowhere else (2026-10-27: it used to be a bar above every page). */
   syncStatus?: HTMLElement;
   storage?: Storage;
@@ -129,7 +134,10 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   }
   applyPrefs();
 
-  const card: CardUI = createCardUI({ doc, speech: (win as unknown as { speechSynthesis?: SpeechSynthesis }).speechSynthesis ?? null, onDismiss: () => clearSelection() });
+  let remoteSpeechConsent = false;
+  let remoteSpeechConsentOwner: string | undefined;
+  const card: CardUI = createCardUI({ doc, speech: (win as unknown as { speechSynthesis?: SpeechSynthesis }).speechSynthesis ?? null,
+    ...(deps.createPronouncer ? { pronouncer: deps.createPronouncer(() => remoteSpeechConsent, () => remoteSpeechConsentOwner) } : {}), onDismiss: () => clearSelection() });
   let selectedButton: HTMLElement | undefined;
   let offCardLevel: (() => void) | undefined; // the open card follows its word's level on the page until it closes
   const clearSelection = (): void => { selectedButton?.classList.remove('sel'); selectedButton = undefined; offCardLevel?.(); offCardLevel = undefined; };
@@ -549,6 +557,33 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   }
 
   function renderSettings(): HTMLElement {
+    const remoteSpeech = h('input', { type: 'checkbox', id: 'settings-remote-speech' }) as HTMLInputElement;
+    remoteSpeech.checked = remoteSpeechConsent;
+    remoteSpeech.disabled = !deps.speechAccount;
+    remoteSpeech.addEventListener('change', () => {
+      const on = remoteSpeech.checked;
+      if (!on) { remoteSpeechConsent = false; remoteSpeechConsentOwner = undefined; }
+      void (async () => {
+        const account = await deps.speechAccount?.().catch(() => undefined);
+        if (!account) { remoteSpeechConsent = false; remoteSpeech.checked = false; return; }
+        const identity = await deps.recorder.identity('he', 'he-bib');
+        if (!identity) { remoteSpeechConsent = false; remoteSpeech.checked = false; return; }
+        const at = deps.now().toISOString();
+        const eventId = `speech-consent-${deps.now().getTime().toString(36)}-${Math.random().toString(36).slice(2, 9)}`;
+        const event: GoEvent = {
+          id: eventId, v: CONTRACT_VERSION, learnerId: identity.learnerId, enrolmentId: identity.enrolmentId, languageId: 'he', at,
+          producer: { app: 'golearn-app', version: APP_VERSION, deviceId: identity.deviceId, surface: 'settings' },
+          kind: on ? 'ConsentGiven' : 'ConsentWithdrawn', subject: {}, payload: { consent: 'remote-speech', scope: 'remote-speech' },
+          dedupeKey: `remote-speech:${on ? 'given' : 'withdrawn'}:${eventId}`,
+        };
+        const result = await deps.recorder.record([event]);
+        if (on && !result.ok) { remoteSpeechConsent = false; remoteSpeechConsentOwner = undefined; remoteSpeech.checked = false; return; }
+        remoteSpeechConsentOwner = on ? account.learnerId : undefined;
+        remoteSpeechConsent = on;
+        remoteSpeech.checked = on;
+        if (on && result.queued) await deps.recorder.flush?.();
+      })().catch(() => { if (on) { remoteSpeechConsent = false; remoteSpeechConsentOwner = undefined; remoteSpeech.checked = false; } });
+    });
     const reading = kickerCard('settings-reading', 'Reading',
       labelled('Theme', pills<Theme>('Theme', [['auto', 'auto'], ['light', 'light'], ['dark', 'dark']], theme, (v) => { theme = v; setPref('theme', v); applyPrefs(); })),
       slider('set-hebrew-size', 'Hebrew size', 18, 44, 1, hebrewSize, (n) => `${n}px`, (n) => { hebrewSize = n; setPref('hebrewSize', String(n)); applyPrefs(); }),
@@ -622,7 +657,13 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         h('a', { href: './fonts/EB-Garamond-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-garamond' }, 'EB Garamond licence'), ' · ',
         h('a', { href: './fonts/frank-ruhl-libre-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-frank' }, 'Frank Ruhl Libre licence')));
 
-    return h('div', { class: 'settings' }, plainBar('Biblia', 'settings'), h('div', { class: 'screen' }, h('h1', {}, 'Settings'), reading, accountCard, serviceCard, offline, sources));
+    const speech = kickerCard('settings-speech', 'Speech',
+      h('label', { class: 'toggle' }, remoteSpeech, h('span', {}, 'Allow remote speech for selected words')),
+      para(deps.speechAccount
+        ? 'When enabled, pressing a word’s speaker can send that one word to the Repository service and its configured speech provider. No passage or chapter is sent. This setting is off until you turn it on; local device voices still work.'
+        : 'Remote speech requires a signed-in Repository account in the GoReview or standalone Biblia edition. Local device voices work without an account.', 'muted'));
+
+    return h('div', { class: 'settings' }, plainBar('Biblia', 'settings'), h('div', { class: 'screen' }, h('h1', {}, 'Settings'), reading, speech, accountCard, serviceCard, offline, sources));
   }
   function renderSources(): HTMLElement {
     return h('div', {}, plainBar('Biblia'), h('div', { class: 'screen' }, h('h1', {}, 'Sources and limits'),

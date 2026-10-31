@@ -48,7 +48,7 @@ describe('GoLearn Azure playback through privileged messages', () => {
   it('surfaces the remote failure when no local fallback voice exists', async () => {
     const h = harness(async () => ({ ok: false, status: 403 }));
     const result = await h.pron.play('नमस्ते', 'hi', { varietyId: 'hi-IN', kind: 'word' });
-    expect(result).toMatchObject({ ok: false, message: 'The speech proxy refused the request (it accepts same-origin requests only).' });
+    expect(result).toMatchObject({ ok: false, message: 'The speech service refused this request. Check the account consent and source permissions.' });
     expect(h.speech.spoken).toHaveLength(0);
   });
   it('a consent withdrawal while Azure is loading releases its audio without playing', async () => {

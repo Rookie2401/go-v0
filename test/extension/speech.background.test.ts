@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { createSpeechService, SPEECH_CONFIG_KEY, speechBase } from '../../packages/golearn-extension/src/background/speech';
 import { createMemoryStorageArea } from '../../packages/golearn-extension/src/store';
 import type { PrivacySettings } from '../../packages/golearn-extension/src/protocol';
+import { REMOTE_SPEECH_CONSENT_OWNER_KEY } from '../../packages/golearn-extension/src/protocol';
 
 const token = 'test-backend-token-12345678901234567890';
 const req = { op: 'synthesize', requestId: 'r1', languageId: 'es', readerId: 'web-generic', kind: 'sentence', text: 'Buenos días.', voice: 'es-HN-KarlaNeural', locale: 'es-HN' };
@@ -29,7 +30,7 @@ describe('authenticated speech background boundary', () => {
     expect(r.ok).toBe(true); expect(r.bytes).toHaveLength(48);
     const init = h.fetch.mock.calls[0]?.[1] as RequestInit | undefined;
     expect(init?.headers).toMatchObject({ Authorization: `Bearer ${token}` });
-    expect(JSON.parse(String(init?.body))).toMatchObject({ text: req.text, sourcePermission: 'allowed', kind: 'sentence' });
+    expect(JSON.parse(String(init?.body))).toMatchObject({ languageId: req.languageId, text: req.text, sourcePermission: 'allowed', kind: 'sentence' });
     expect(JSON.stringify(r)).not.toContain(token);
     expect((await h.area.get(SPEECH_CONFIG_KEY))[SPEECH_CONFIG_KEY]).toBeTruthy();
   });
@@ -75,5 +76,59 @@ describe('authenticated speech background boundary', () => {
     expect((await h.service.handle({ ...review, kind: 'phrase' }, 'page', 'chrome-extension://ext-id/review/index.html')).status).toBe(400);
     expect((await h.service.handle(review, 'page', 'chrome-extension://ext-id/review/index.html?x=1')).status).toBe(403);
     expect((await h.service.handle(review, 'page', 'chrome-extension://other/review/index.html')).status).toBe(403);
+  });
+  it('uses the signed account Repository route when no private endpoint is configured', async () => {
+    const h = harness();
+    await h.area.set({ [REMOTE_SPEECH_CONSENT_OWNER_KEY]: 'account-1' });
+    const accountToken = 'account-session-token-abcdefghijklmnopqrstuvwxyz';
+    const service = createSpeechService({ area: h.area, settings: async () => ({ keepSnippets: false, remoteSpeechConsent: true, externalProcessingConsent: false, localOnlySpeech: false }),
+      fetch: h.fetch as typeof globalThis.fetch, hasPermission: async () => true, extensionId: 'ext-id',
+      account: async () => ({ baseUrl: 'https://repo.example/', token: accountToken, learnerId: 'account-1' }) });
+    const shareWord = { ...req, requestId: 'share:1', readerId: 'golearn-share', kind: 'word' as const, text: 'hola', processingPermission: 'allowed' as const };
+    const result = await service.handle(shareWord, 'page', 'chrome-extension://ext-id/app/index.html');
+    expect(result.ok).toBe(true);
+    expect(String(h.fetch.mock.calls[0]?.[0])).toBe('https://repo.example/api/speech/synthesize');
+    expect((h.fetch.mock.calls[0]?.[1] as RequestInit).headers).toMatchObject({ Authorization: `Bearer ${accountToken}` });
+    expect(JSON.parse(String((h.fetch.mock.calls[0]?.[1] as RequestInit).body))).toMatchObject({ languageId: 'es', kind: 'word', text: 'hola' });
+    expect(JSON.stringify(result)).not.toContain(accountToken);
+  });
+  it('forwards a GoReview phrase candidate with its language id for the service material check', async () => {
+    const h = harness();
+    await h.area.set({ [REMOTE_SPEECH_CONSENT_OWNER_KEY]: 'account-1' });
+    const accountToken = 'account-session-token-abcdefghijklmnopqrstuvwxyz';
+    const service = createSpeechService({ area: h.area, settings: async () => ({ keepSnippets: false, remoteSpeechConsent: true, externalProcessingConsent: false, localOnlySpeech: false }),
+      fetch: h.fetch as typeof globalThis.fetch, hasPermission: async () => true, extensionId: 'ext-id',
+      account: async () => ({ baseUrl: 'https://repo.example', token: accountToken, learnerId: 'account-1' }) });
+    const candidate = { ...req, requestId: 'review:phrase', readerId: 'gopractice-review', kind: 'phrase' as const, text: 'approved example', processingPermission: 'allowed' as const };
+    const result = await service.handle(candidate, 'page', 'chrome-extension://ext-id/review/index.html');
+    expect(result.ok).toBe(true);
+    expect(JSON.parse(String((h.fetch.mock.calls[0]?.[1] as RequestInit).body))).toMatchObject({ languageId: 'es', kind: 'phrase', text: 'approved example' });
+  });
+  it('share speech needs the explicit per-word permission and refuses passages', async () => {
+    const h = harness();
+    await h.area.set({ [REMOTE_SPEECH_CONSENT_OWNER_KEY]: 'account-1' });
+    const service = createSpeechService({ area: h.area, settings: async () => ({ keepSnippets: false, remoteSpeechConsent: true, externalProcessingConsent: false, localOnlySpeech: false }),
+      fetch: h.fetch as typeof globalThis.fetch, hasPermission: async () => true, extensionId: 'ext-id',
+      account: async () => ({ baseUrl: 'https://repo.example', token, learnerId: 'account-1' }) });
+    const base = { ...req, requestId: 'share:2', readerId: 'golearn-share', kind: 'word' as const, text: 'hola' };
+    expect((await service.handle(base, 'page', 'chrome-extension://ext-id/app/index.html')).status).toBe(403);
+    expect((await service.handle({ ...base, processingPermission: 'allowed', text: 'hola mundo' }, 'page', 'chrome-extension://ext-id/app/index.html')).status).toBe(400);
+    expect((await service.handle({ ...base, processingPermission: 'allowed' }, 'page', 'chrome-extension://ext-id/app/index.html?redirect=x')).status).toBe(403);
+    expect(h.fetch).not.toHaveBeenCalled();
+  });
+  it('does not substitute a Bokmål cloud voice for Nynorsk', async () => {
+    const h = harness(); await h.configure();
+    const result = await h.service.handle({ op: 'voices', requestId: 'nn:voices', languageId: 'nn' }, 'page');
+    expect(result).toMatchObject({ ok: true, json: { voices: [] } });
+    expect(h.fetch).not.toHaveBeenCalled();
+  });
+  it('does not send to a signed-in account after consent was granted to another learner', async () => {
+    const h = harness();
+    await h.area.set({ [REMOTE_SPEECH_CONSENT_OWNER_KEY]: 'previous-learner' });
+    const service = createSpeechService({ area: h.area, settings: async () => ({ keepSnippets: false, remoteSpeechConsent: true, externalProcessingConsent: false, localOnlySpeech: false }),
+      fetch: h.fetch as typeof globalThis.fetch, hasPermission: async () => true, account: async () => ({ baseUrl: 'https://repo.example', token, learnerId: 'current-learner' }) });
+    const result = await service.handle({ ...req, readerId: 'web-generic' }, 'page', 'https://my-content.example/read');
+    expect(result).toMatchObject({ ok: false, status: 403 });
+    expect(h.fetch).not.toHaveBeenCalled();
   });
 });

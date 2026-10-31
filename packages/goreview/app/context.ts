@@ -141,6 +141,8 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   let authExpired = false;
   let lastStatus: SyncStatus | undefined;
   let consentCache = false;
+  let speechConsentOwner: string | undefined;
+  const SPEECH_CONSENT_OWNER_KEY = 'goreview:remote-speech-consent-owner';
   let audioDeps: AudioDeps | null | undefined;
   const listeners = new Set<(v: SyncView) => void>();
   const dataListeners = new Set<() => void>();
@@ -160,7 +162,11 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   const view = (): SyncView => ({ status: lastStatus, authExpired, syncing });
   const notify = (): void => { const v = view(); for (const l of [...listeners]) { try { l(v); } catch { /* a listener must not break sync */ } } };
 
-  void state.getSettings().then((s) => { consentCache = s.remoteSpeechConsent; }, () => undefined);
+  void state.getSettings().then(async (s) => {
+    consentCache = s.remoteSpeechConsent;
+    const saved = (await deps.area.get(SPEECH_CONSENT_OWNER_KEY))[SPEECH_CONSENT_OWNER_KEY];
+    speechConsentOwner = s.remoteSpeechConsent && typeof saved === 'string' && saved ? saved : undefined;
+  }, () => undefined);
 
   const onlineNow = (): boolean => (deps.win.navigator ? deps.win.navigator.onLine !== false : true);
 
@@ -617,12 +623,22 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     async audio() {
       if (audioDeps !== undefined) return audioDeps;
       const a = deps.audio;
-      audioDeps = typeof a === 'function' ? a(() => consentCache) : a;
+      audioDeps = typeof a === 'function' ? a(() => consentCache, async () => {
+        const [session, baseUrl] = await Promise.all([state.getSession(), serviceUrl()]);
+        // A bearer is only valid for the exact Repository service that issued it. Older sessions without an origin
+        // must be refreshed by signing in again; never send their token to a changed config.json address.
+        return session?.serviceUrl === baseUrl && session.learnerId === speechConsentOwner ? session.token : undefined;
+      }) : a;
       return audioDeps;
     },
     async setSettings(patch) {
       const next = await state.patchSettings(patch);
       consentCache = next.remoteSpeechConsent;
+      if (typeof patch.remoteSpeechConsent === 'boolean') {
+        speechConsentOwner = next.remoteSpeechConsent ? (await state.getSession())?.learnerId : undefined;
+        if (speechConsentOwner) await deps.area.set({ [SPEECH_CONSENT_OWNER_KEY]: speechConsentOwner });
+        else await deps.area.remove(SPEECH_CONSENT_OWNER_KEY);
+      }
       return next;
     },
     go: hooks.go,

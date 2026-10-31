@@ -132,6 +132,8 @@ export interface ReviewEngine {
   exerciseAvailable?(request: { unitId: string; unitKind: string; languageId: string; varietyId?: string; dimension: import('../src/types').AssessmentDimension; family: import('../src/types').ExerciseFamily; api: RepositoryApi; now: string }): Promise<boolean>;
   /** Reads the Repository units that the next `exerciseAvailable` calls will ask about, fifty at a time, so they do not go one request each. */
   primeFacts?(languageId: string, api: RepositoryApi, unitIds: string[]): Promise<void>;
+  /** Discard unused one-shot Repository unit rows after an explicit facts/build pass. */
+  clearPrimedFacts?(languageId: string, api: RepositoryApi): void;
   scheduler(prefs: ReviewPreferences, profile?: SchedulerProfile): Scheduler;
   /** The deck of one language as a fold over the learner's events (a snooze that has ended by `now` is over). */
   foldDeck(events: GoEvent[], languageId: string, prefs: ReviewPreferences, now: string): DeckItem[];
@@ -182,7 +184,7 @@ export interface Deps {
    * null = no audio at all. A function receives the learner's remote-speech consent as a getter and returns the audio
    * (the real app builds it from GoListen); tests pass a ready-made fake.
    */
-  audio: AudioDeps | null | ((consent: () => boolean) => AudioDeps | null);
+  audio: AudioDeps | null | ((consent: () => boolean, accountToken?: () => Promise<string | undefined>) => AudioDeps | null);
   now(): Date;
   newId(): string;
   random(): number;

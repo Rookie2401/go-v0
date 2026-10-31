@@ -105,6 +105,10 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   const settings = createSettings(local);
   const speech = createSpeechService({ area: local, settings: settings.get, fetch: doFetch,
     extensionId: chrome.runtime.id,
+    account: async () => {
+      const authenticated = await session.authenticated();
+        return authenticated ? { baseUrl: authenticated.service.baseUrl, token: authenticated.session.token, learnerId: authenticated.session.learnerId } : undefined;
+    },
     hasPermission: async (origin) => await chrome.permissions?.contains({ origins: [origin] }) === true,
   });
   const packs = bg.packs ?? defaultPacks;

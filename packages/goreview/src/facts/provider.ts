@@ -84,12 +84,14 @@ export interface FactsProviderDeps {
 }
 
 /** A `unit` dependency that can be told which units are about to be asked for, so they come in a few calls instead of one each (audit PF-02). */
-export type UnitLookup = FactsProviderDeps['unit'] & { prime?(unitIds: string[]): Promise<void> };
+export type UnitLookup = FactsProviderDeps['unit'] & { prime?(unitIds: string[]): Promise<void>; clearPrime?(): void };
 
 /** The ids per `POST /units/batch` call (the service's limit). */
 export const UNIT_BATCH_SIZE = 50;
 /** A primed answer is used within this long of being fetched (a unit the facts never asked for must not be read later, stale). */
 const PRIMED_TTL_MS = 30_000;
+/** Maximum independent `/units/batch` requests the facts provider overlaps during priming. */
+export const UNIT_PRIME_PARALLEL = 4;
 
 /**
  * Adapts the typed Repository client (`RepositoryApi.unit`) to the `unit` dependency. When the client also has `units` (several in one call),
@@ -113,16 +115,31 @@ export function repositoryLookup(api: {
   };
   const many = api.units;
   if (many) {
+    lookup.clearPrime = () => primed.clear();
     lookup.prime = async (unitIds) => {
+      // A prime call starts a new one-shot facts pass. Discard unused values
+      // from an earlier pass so another session cannot consume them as current.
+      primed.clear();
       const wanted = [...new Set(unitIds)];
-      for (let i = 0; i < wanted.length; i += UNIT_BATCH_SIZE) {
-        const chunk = wanted.slice(i, i + UNIT_BATCH_SIZE);
-        try {
-          const r = await many.call(api, chunk);
-          if (!r.ok) continue;
-          for (const id of chunk) primed.set(id, { at: Date.now(), unit: r.data.units[id] });   // an id the service does not know is answered as unknown, without a second call
-        } catch { /* the single-unit route answers instead */ }
+      const chunks: string[][] = [];
+      for (let i = 0; i < wanted.length; i += UNIT_BATCH_SIZE) chunks.push(wanted.slice(i, i + UNIT_BATCH_SIZE));
+      const fetched = new Map<string, RepositoryUnit | undefined>();
+      for (let i = 0; i < chunks.length; i += UNIT_PRIME_PARALLEL) {
+        const group = chunks.slice(i, i + UNIT_PRIME_PARALLEL);
+        const answers = await Promise.all(group.map(async (chunk) => {
+          try { const r = await many.call(api, chunk); return r.ok ? { chunk, units: r.data.units } : undefined; }
+          catch { return undefined; }
+        }));
+        answers.forEach((answer) => {
+          if (!answer) return; // the single-unit route answers when the batch failed
+          for (const id of answer.chunk) fetched.set(id, answer.units[id]); // missing IDs are answered as unknown without another call
+        });
       }
+      // The primed map is a one-operation snapshot. Start its short consume window
+      // only after every bounded batch wave finishes, so early waves cannot expire
+      // during a large but slow prime. The caller clears it in its operation finally.
+      const at = Date.now();
+      for (const [id, unit] of fetched) primed.set(id, { at, unit });
     };
   }
   return lookup;
@@ -187,7 +204,7 @@ interface Sent { text: string; source: ExampleSentence['source']; occs: Occ[]; p
 
 // ───────────────────────────── the provider ─────────────────────────────
 
-export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { prime(unitIds: string[]): Promise<void> } {
+export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { prime(unitIds: string[]): Promise<void>; clearPrime(): void } {
   const { adapter, pack } = deps;
   const manifest = pack.manifest;
   const lang = manifest.languageId;
@@ -652,6 +669,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
   return {
     /** Asks the Repository for these units in a few calls; the `factsFor` calls that follow use that answer. A no-op when the lookup cannot batch. */
     async prime(unitIds) { try { await (deps.unit as UnitLookup).prime?.(unitIds); } catch { /* factsFor asks one by one */ } },
+    clearPrime() { (deps.unit as UnitLookup).clearPrime?.(); },
     async factsFor(unitId, languageId) {
       try {
         if (languageId !== lang || typeof unitId !== 'string') return undefined;

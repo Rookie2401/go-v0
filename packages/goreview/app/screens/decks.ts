@@ -35,7 +35,17 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const model = await loadReviewModel(ctx);
     if (!model) { setStatus(status, 'Choose a language first.', 'error'); return; }
     const plan = await planFromSaved(ctx, model, saved);
-    if (!plan.items.length) { setStatus(status, 'None of these cards can be asked right now.', 'info'); return; }
+    if (!plan.items.length) {
+      const explanations = plan.skipped.slice(0, 3).map(skip => {
+        const label = saved.items.find(item => item.itemId === skip.itemId)?.label ?? skip.itemId;
+        return `${label}: ${skip.why}`;
+      });
+      const remaining = Math.max(0, plan.skipped.length - explanations.length);
+      setStatus(status, explanations.length
+        ? `None of these cards can be asked right now. ${explanations.join(' ')}${remaining ? ` ${remaining} more card(s) were skipped.` : ''}`
+        : 'None of these cards can be asked right now. They remain saved and no review was recorded.', 'info');
+      return;
+    }
     const r = await beginSession(ctx, model, { plan });
     if (!r.ok) { setStatus(status, r.message, 'info'); return; }
     ctx.run.active = r.run;

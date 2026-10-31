@@ -163,7 +163,7 @@ function walkFiles(root, directory) {
 
 /** Source fingerprint captured before local preflight commands run, including expected copied static inputs. */
 export function captureReleaseSourceFingerprint(projectRoot = ROOT) {
-  const languages = (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th').split(',').map(value => value.trim()).filter(Boolean);
+  const languages = (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th,la').split(',').map(value => value.trim()).filter(Boolean);
   const staticInputs = [
     ...languages.flatMap(language => walkFiles(projectRoot, `public/dict/${language}`).filter(file => path.basename(file) !== 'frequency.json')),
     ...walkFiles(projectRoot, 'public/lexicon'),

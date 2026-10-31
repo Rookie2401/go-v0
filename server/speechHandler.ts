@@ -50,6 +50,8 @@ export interface SpeechRequest {
   body?: string | Uint8Array;
   /** Caller identity for the rate limit (remote address); optional. */
   remote?: string;
+  /** Optional authenticated account identity for per-account daily speech budgets. */
+  budgetKey?: string;
   signal?: AbortSignal;
 }
 export interface SpeechEnv {
@@ -202,7 +204,7 @@ async function callUpstream(url: string, init: RequestInit, env: SpeechEnv, deps
 const dailyUsage = new Map<string, { day: string; chars: number }>();
 function chargeDaily(env: SpeechEnv, req: SpeechRequest, chars: number): boolean {
   const limit = speechLimits(env).dailyCharacterLimit;
-  const key = env.authToken ?? `unauthed:${req.remote ?? 'local'}`;
+  const key = req.budgetKey ?? env.authToken ?? `unauthed:${req.remote ?? 'local'}`;
   const day = new Date().toISOString().slice(0, 10);
   const current = dailyUsage.get(key);
   const used = current?.day === day ? current.chars : 0;
@@ -291,7 +293,7 @@ async function voices(req: SpeechRequest, env: { key: string; region: string }, 
         return { id: v.ShortName as string, name: `Azure ${v.ShortName as string}`, lang: (v.Locale as string).split('-')[0].toLowerCase(), locale: v.Locale as string, ...(g === 'female' || g === 'male' || g === 'neutral' ? { gender: g } : {}) };
       });
     return json(200, { voices: out });
-  });
+  }, req.signal);
 }
 
 async function synthesize(req: SpeechRequest, env: SpeechEnv & { key: string; region: string }, deps: SpeechDeps): Promise<SpeechResponse> {

@@ -230,11 +230,43 @@ export function pronunciationRegistries(): VoiceRegistry[] {
     spanishRegistry(),
     hindiRegistry(),
     thaiRegistry(),
-    deviceRegistry('nb', [...BOKMAL_DEVICE_TAGS], 'Norwegian Bokmål'),
+    {
+      ...deviceRegistry('nb', [...BOKMAL_DEVICE_TAGS], 'Norwegian Bokmål'),
+      entries: [
+        ...deviceRegistry('nb', [...BOKMAL_DEVICE_TAGS], 'Norwegian Bokmål').entries,
+        azureEntry('nb-NO-FinnNeural', 'Finn', 'male', { languageId: 'nb', locale: 'nb-NO', name: 'Norwegian Bokmål (Norway)' }),
+        azureEntry('nb-NO-IselinNeural', 'Iselin', 'female', { languageId: 'nb', locale: 'nb-NO', name: 'Norwegian Bokmål (Norway)' }),
+      ],
+      gaps: ['No Bokmål recordings are registered; nothing is claimed.', 'The registered remote voices are Norwegian Bokmål only; they are never substituted for Nynorsk.'],
+    },
     deviceRegistry('nn', [...NYNORSK_DEVICE_TAGS], 'Norwegian Nynorsk'),
-    { ...deviceRegistry('he', [...HEBREW_DEVICE_TAGS], 'Hebrew'), gaps: ['No Hebrew recordings are registered; nothing is claimed.', 'No voice exists for Biblical Hebrew: a Modern Hebrew device voice is the only playback, and it is labelled Modern (it does not pronounce Biblical Hebrew).'] },
-    { ...deviceRegistry('el', [...GREEK_DEVICE_TAGS], 'Greek'), gaps: ['No Greek recordings are registered; nothing is claimed.', 'No voice exists for ancient Greek (Homeric, Attic or Koine): a Modern Greek device voice is the only playback, and it is labelled Modern (it does not pronounce ancient Greek).'] },
-    { ...deviceRegistry('la', [...LATIN_DEVICE_TAGS], 'Latin'), gaps: ['No Latin recordings are registered; nothing is claimed.', 'No device ships a Latin voice: an Italian device voice (it-IT) is the registered stand-in for the Ecclesiastical (Church) reading of the Vulgate texts, and it is labelled a stand-in (it does not pronounce classical Latin; vowel length is not spoken).'] },
+    {
+      ...deviceRegistry('he', [...HEBREW_DEVICE_TAGS], 'Hebrew'),
+      entries: [
+        ...deviceRegistry('he', [...HEBREW_DEVICE_TAGS], 'Hebrew').entries,
+        azureEntry('he-IL-HilaNeural', 'Hila', 'female', { languageId: 'he', locale: 'he-IL', name: 'Modern Hebrew (Israel)' }),
+        azureEntry('he-IL-AvriNeural', 'Avri', 'male', { languageId: 'he', locale: 'he-IL', name: 'Modern Hebrew (Israel)' }),
+      ],
+      gaps: ['No Hebrew recordings are registered; nothing is claimed.', 'The remote Hebrew voice is Modern Hebrew; it is not validated for Biblical Hebrew or Biblical Aramaic.'],
+    },
+    {
+      ...deviceRegistry('el', [...GREEK_DEVICE_TAGS], 'Greek'),
+      entries: [
+        ...deviceRegistry('el', [...GREEK_DEVICE_TAGS], 'Greek').entries,
+        azureEntry('el-GR-AthinaNeural', 'Athina', 'female', { languageId: 'el', locale: 'el-GR', name: 'Modern Greek (Greece)' }),
+        azureEntry('el-GR-NestorasNeural', 'Nestoras', 'male', { languageId: 'el', locale: 'el-GR', name: 'Modern Greek (Greece)' }),
+      ],
+      gaps: ['No Greek recordings are registered; nothing is claimed.', 'The remote Greek voice is Modern Greek; it is not validated for Homeric, Attic or Koine Greek.'],
+    },
+    {
+      ...deviceRegistry('la', [...LATIN_DEVICE_TAGS], 'Latin'),
+      entries: [
+        ...deviceRegistry('la', [...LATIN_DEVICE_TAGS], 'Latin').entries,
+        azureEntry('it-IT-DiegoNeural', 'Diego', 'male', { languageId: 'la', locale: 'it-IT', name: 'Italian stand-in for Ecclesiastical Latin' }),
+        azureEntry('it-IT-ElsaNeural', 'Elsa', 'female', { languageId: 'la', locale: 'it-IT', name: 'Italian stand-in for Ecclesiastical Latin' }),
+      ],
+      gaps: ['No Latin recordings are registered; nothing is claimed.', 'No Latin voice exists: these remote Italian voices are stand-ins for the Ecclesiastical (Church) reading only; they do not pronounce Classical Latin or preserve vowel length.'],
+    },
   ];
 }
 

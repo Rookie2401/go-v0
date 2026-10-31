@@ -24,6 +24,7 @@ import { isLoopback } from './ratelimit';
 import type { Ctx, Handler, Route } from './http';
 import { MAX_WAIT_MS, createChangeNotifier } from './notifier';
 import type { ChangeNotifier } from './notifier';
+import { speechStatus, speechSynthesize, speechVoices } from './speech';
 
 export const SERVICE_VERSION = 1;
 /** The largest request body accepted (bytes), counted on the stream; over it is 413. */
@@ -386,6 +387,10 @@ route('GET', '/health', false, async (ctx) => {
     ...(info ? { store: info.storeKind, ...(schemaVersion !== undefined ? { migrations: schemaVersion } : {}), uptimeSec: Math.max(0, Math.floor((Date.now() - info.startedAt) / 1000)) } : {}),
   });
 });
+
+route('GET', '/api/speech/status', true, speechStatus);
+route('GET', '/api/speech/voices', true, speechVoices);
+route('POST', '/api/speech/synthesize', true, speechSynthesize);
 
 /**
  * Prometheus text. With a configured `METRICS_TOKEN` only a request carrying it (Bearer) is answered; without one only a request from this machine, and

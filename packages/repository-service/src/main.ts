@@ -155,6 +155,11 @@ async function wire(dataDir: string, cfg: ServiceConfig): Promise<{ deps: Servic
     metrics: { registry, ...(cfg.metricsToken ? { token: cfg.metricsToken } : {}), collect: collector(store, notifier, startedAt, kind) },
     info: { storeKind: kind, startedAt, schemaVersion: async () => (await store.stats?.())?.schemaVersion },
     mailer,
+    speech: {
+      // Azure credentials remain server-side. They are deliberately not logged or copied into any client response.
+      ...(process.env.AZURE_SPEECH_KEY ? { key: process.env.AZURE_SPEECH_KEY } : {}),
+      ...(process.env.AZURE_SPEECH_REGION ? { region: process.env.AZURE_SPEECH_REGION } : {}),
+    },
     accountPolicy: {
       graceDays: cfg.graceDays,
       deleteGraceDays: cfg.deleteGraceDays,

@@ -61,7 +61,10 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   const configuredFactsOf = (languageId: string, api: RepositoryApi): FactsProvider | undefined => opts.factsFor?.(languageId, api);
   const factsKey = (languageId: string, unitId: string, varietyId?: string): string => `${languageId}\u0000${varietyId ?? ''}\u0000${unitId}`;
   const takeWarmFacts = (api: RepositoryApi, languageId: string, unitId: string, varietyId?: string): Awaited<ReturnType<FactsProvider['factsFor']>> | undefined => {
-    const cache = warmFacts.get(api);
+    // Admission may use Object.create(api) as its provider scope; intake's
+    // one-shot built facts still belong to the underlying API identity.
+    const parent = Object.getPrototypeOf(api) as RepositoryApi | null;
+    const cache = warmFacts.get(api) ?? (parent && typeof parent.units === 'function' && typeof parent.unit === 'function' ? warmFacts.get(parent) : undefined);
     const key = factsKey(languageId, unitId, varietyId);
     const entry = cache?.get(key);
     cache?.delete(key); // successful intake facts are consumed exactly once by deck admission
@@ -105,6 +108,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     factsFor: (unitId, languageId, api) => factsOf(languageId, api).factsFor(unitId, languageId),
     // the pack's provider batches unit reads (prime); a provider without it answers one by one, as before
     primeFacts: (languageId, api, unitIds) => (factsOf(languageId, api) as FactsProvider & { prime?(ids: string[]): Promise<void> }).prime?.(unitIds) ?? Promise.resolve(),
+    clearPrimedFacts: (languageId, api) => (factsOf(languageId, api) as FactsProvider & { clearPrime?(): void }).clearPrime?.(),
     async exerciseAvailable(request) {
       const facts = takeWarmFacts(request.api, request.languageId, request.unitId, request.varietyId) ?? await factsOf(request.languageId, request.api).factsFor(request.unitId, request.languageId, request.varietyId);
       const builder = resolveBuilder(opts.builders, request.family);
@@ -121,30 +125,37 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     foldDeck: (events, languageId, _prefs, at) => foldDeckItems(events, scheduler(0.9), { languageId, now: at }),
 
     async intake(req) {
+      // Intake starts a new facts snapshot. Unused one-shot values from the last
+      // dashboard/session must not be consumed as if they belonged to this pass.
+      warmFacts.get(req.api)?.clear();
       const facts = configuredFactsOf(req.prefs.languageId, req.api);
       if (facts) {
-        const cache = warmFacts.get(req.api);
-        for (const id of new Set([...req.candidates.map((c) => c.unitId), ...req.deck.map((item) => item.unitId)])) {
-          if (cache) for (const key of cache.keys()) if (key.startsWith(`${req.prefs.languageId}\u0000`) && key.endsWith(`\u0000${id}`)) cache.delete(key);
-        }
         const captured = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
-        const capturing: FactsProvider = { ...facts, async factsFor(unitId, languageId, varietyId) {
+        const capturing: FactsProvider & { clearPrime?(): void; prime?(ids: string[]): Promise<void> } = { ...facts, async factsFor(unitId, languageId, varietyId) {
           const value = await facts.factsFor(unitId, languageId, varietyId);
           if (value) captured.set(unitId, value); // never retain missing/failed facts
           return value;
-        } };
+        }, clearPrime: () => (facts as FactsProvider & { clearPrime?(): void }).clearPrime?.() };
         const out = await gatherCandidates({
           api: { candidates: async () => req.candidates, knowledge: async () => req.knowledge },
-          facts: Object.assign(capturing, { prime: (ids: string[]) => (facts as FactsProvider & { prime?(ids: string[]): Promise<void> }).prime?.(ids) ?? Promise.resolve() }),
+          facts: Object.assign(capturing, {
+            prime: (ids: string[]) => (facts as FactsProvider & { prime?(ids: string[]): Promise<void> }).prime?.(ids) ?? Promise.resolve(),
+            clearPrime: () => (facts as FactsProvider & { clearPrime?(): void }).clearPrime?.(),
+          }),
           audio: async () => req.audio, deck: req.deck, saved: req.saved, preferences: req.prefs, now: req.now, enrolmentId: '', limit: req.candidates.length || 1,
           readingSignals: req.events, secondaryPractice: req.secondaryPractice, intent: req.intent,
         });
         if (captured.size) {
           let cache = warmFacts.get(req.api);
           if (!cache) { cache = new Map(); warmFacts.set(req.api, cache); }
-          for (const [key, entry] of cache) if (Date.now() - entry.at >= WARM_FACTS_TTL_MS) cache.delete(key);
-          for (const [id, value] of captured) cache.set(factsKey(req.prefs.languageId, id, req.prefs.varietyId), { at: Date.now(), facts: value });
-          while (cache.size > 256) cache.delete(cache.keys().next().value!);
+          const rankedIds = out.filter(o => o.proposed).sort((a,b) => b.candidate.score - a.candidate.score || a.unitId.localeCompare(b.unitId)).map(o => o.unitId);
+          const stored = new Set<string>();
+          for (const id of [...rankedIds, ...captured.keys()]) {
+            if (stored.has(id) || !captured.has(id)) continue;
+            stored.add(id);
+            cache.set(factsKey(req.prefs.languageId, id, req.prefs.varietyId), { at: Date.now(), facts: captured.get(id)! });
+            if (cache.size >= 256) break; // keep the highest-ranked build candidates for prepareAdmissions
+          }
         }
         return out;
       }

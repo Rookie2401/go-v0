@@ -84,14 +84,18 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
     [...model.deck, ...(model.classDeck ?? [])].find((i) => i.unitId === w.unitId && i.dimension === w.dimension && i.status !== 'dismissed' && i.status !== 'suspended');
   const direct = new Map<string, PlannedItem>();
   const fresh: IntakeOutcome[] = [];
+  const preSkipped: SessionPlan['skipped'] = [];
   const order: string[] = [];
-  const api = (await ctx.api()).api;
+  const baseApi = (await ctx.api()).api;
+  // Give this admission pass its own provider/cache identity. Other screen gloss lookups may run concurrently through the base provider.
+  const api = Object.create(baseApi) as typeof baseApi;
   // Prime the facts cache in one request for the likely candidates; factsFor remains
   // the fallback when a batch read is unavailable.
   if (ctx.engine.primeFacts && !opts.unchecked) {
     const probe = [...new Set(wanted.filter((w) => !holds(w) && !(isAudio(w.family) && !listeningOk)).slice(0, (size + 4) * 3).map((w) => w.unitId))];
     if (probe.length) { try { await ctx.engine.primeFacts(model.identity.languageId, api, probe); } catch { /* factsFor still answers one by one */ } }
   }
+  try {
   let remainingNew = Math.min(model.prefs.maxNew, budgetFor(model).remaining);
   for (const w of wanted) {
     if (order.length >= requestedLimit) break;
@@ -106,7 +110,11 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
     } else {
       // No unchecked fallback: an unbuildable or invalid exercise is never demand.
       if (!ctx.engine.exerciseAvailable || !(await ctx.engine.exerciseAvailable({ unitId: w.unitId, unitKind: w.unitKind,
-        languageId: model.identity.languageId, ...(model.prefs.varietyId ? { varietyId: model.prefs.varietyId } : {}), dimension: w.dimension, family: w.family, api, now: model.now }).catch(() => false))) continue;
+        languageId: model.identity.languageId, ...(model.prefs.varietyId ? { varietyId: model.prefs.varietyId } : {}), dimension: w.dimension, family: w.family, api, now: model.now }).catch(() => false))) {
+        preSkipped.push({ itemId: itemIdFor(w.unitId, w.dimension), code: 'facts-unavailable',
+          why: 'Current facts or an exercise template are unavailable; this card stays saved and no review is recorded.' });
+        continue;
+      }
       const base: IntakeOutcome = w.outcome ?? { unitId: w.unitId, decision: 'test-now', reasons: ['Explicit vocabulary practice.'],
         candidate: { unitId: w.unitId, kind: w.unitKind, score: .5, reasons: [], targetDimension: 'readingRecognition',
           eligibility: { eligible: true, status: 'high-confidence', caveats: [] }, cost: .2 } };
@@ -121,7 +129,7 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
   const built = new Map(skeleton.items.map(p => [p.item.unitId + '|' + p.item.dimension,
     { ...p, schedulingCardExists: false, origin: opts.origin ?? 'explicit', intent }]));
   const timeLimit = model.prefs.sessionMinutes === 0 ? Infinity : Math.max(0,model.prefs.sessionMinutes * 60);
-  const selected: PlannedItem[] = [], skipped = [...skeleton.skipped]; let usedSeconds=0;
+  const selected: PlannedItem[] = [], skipped = [...skeleton.skipped, ...preSkipped]; let usedSeconds=0;
   for (const key of order) {
     const planned = direct.get(key) ?? built.get(key);
     if (!planned) continue;
@@ -138,10 +146,13 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
     dueCount: items.filter(p => effective(p.item).length && Date.parse(p.item.schedule.due) <= Date.parse(model.now)).length,
     newCount: items.filter(p => p.isNew).length, listeningCount: items.filter(p => isAudio(p.family)).length,
     grammarCount: items.filter(p => GRAMMAR.has(p.family)).length };
+  } finally {
+    ctx.engine.clearPrimedFacts?.(model.identity.languageId, api);
+  }
 }
 export const VOCAB_NOTE = 'Optional vocabulary practice uses actual review times and does not create a due obligation just to fill a batch.';
-export async function loadVocabSafe(ctx: AppContext, languageId: string): Promise<VocabRow[]> {
-  try { return (await loadVocab(ctx, languageId)).rows; } catch { return []; }
+export async function loadVocabSafe(ctx: AppContext, languageId: string): Promise<VocabLoadResult | undefined> {
+  try { return await loadVocab(ctx, languageId); } catch { return undefined; }
 }
 /** Only justified scheduler/intake work is offered. Catalog membership never fills a batch. */
 export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string> = new Set(), vocab?: readonly VocabRow[]): Promise<CurrentDeck> {
@@ -452,34 +463,51 @@ export function sortVocab<T extends VocabRow>(rows: readonly T[], sort: VocabSor
     : (a, b) => rankOf(a.level) - rankOf(b.level) || a.encounters - b.encounters || text(a.label, b.label) || text(a.unitId, b.unitId));
 }
 
-const MAX_VOCAB_PAGES = 60;
 const UNITS_PER_BATCH = 50;
+
+export interface VocabLoadResult {
+  rows: VocabRow[];
+  /** The merged rows loaded so far; this is a lower bound when `complete` is false. */
+  total: number;
+  complete: boolean;
+  incompleteReason?: 'cursor-loop' | 'snapshot-cap';
+  /** Set when the Repository could not answer and the rows are the device's snapshot: when it was taken (ISO). */
+  stale?: string;
+}
 
 /**
  * Every word the learner has met in the language: the Repository's vocabulary records (its knowledge rows), with each form's lemma
  * looked up, folded to one entry per word. Without the lemma lookup (it fails, or the Repository cannot answer) forms that are spelled
  * like their lemma still fold, and the rest stay their own entries.
  */
-export async function loadVocab(ctx: AppContext, languageId: string): Promise<{ rows: VocabRow[]; total: number; /** Set when the Repository could not answer and the rows are the device's snapshot: when it was taken (ISO). */ stale?: string }> {
+export async function loadVocab(ctx: AppContext, languageId: string): Promise<VocabLoadResult> {
   try {
     const fresh = await loadVocabLive(ctx, languageId);
     const who = await ctx.identity().catch(() => undefined);
-    if (who && who.languageId === languageId) await writeSnapshot(ctx, who.learnerId, languageId, { vocab: { savedAt: ctx.deps.now().toISOString(), rows: fresh.rows.slice(0, MAX_SNAPSHOT_WORDS) } });
+    // A partial page sequence is useful to show in this view, but must not replace
+    // the last complete offline copy.
+    if (fresh.complete && who && who.languageId === languageId) await writeSnapshot(ctx, who.learnerId, languageId, { vocab: { savedAt: ctx.deps.now().toISOString(), rows: fresh.rows.slice(0, MAX_SNAPSHOT_WORDS) } });
     return fresh;
   } catch (e) {
     // offline (or the service is down): the words this device last saw, said to be so
     const who = await ctx.identity().catch(() => undefined);
     const snap = who ? await readSnapshot(ctx, who.learnerId, languageId) : undefined;
-    if (snap?.vocab && who?.languageId === languageId) return { rows: snap.vocab.rows as VocabRow[], total: snap.vocab.rows.length, stale: snap.vocab.savedAt };
+    if (snap?.vocab && who?.languageId === languageId) {
+      const rows = snap.vocab.rows as VocabRow[];
+      return { rows, total: rows.length, complete: rows.length < MAX_SNAPSHOT_WORDS, ...(rows.length >= MAX_SNAPSHOT_WORDS ? { incompleteReason: 'snapshot-cap' as const } : {}), stale: snap.vocab.savedAt };
+    }
     throw e;
   }
 }
 
-async function loadVocabLive(ctx: AppContext, languageId: string): Promise<{ rows: VocabRow[]; total: number }> {
+async function loadVocabLive(ctx: AppContext, languageId: string): Promise<VocabLoadResult> {
   const { api } = await ctx.api();
   const records: VocabRecord[] = [];
   let after: string | undefined;
-  for (let page = 0; page < MAX_VOCAB_PAGES; page++) {
+  const cursors = new Set<string>();
+  let complete = false;
+  let incompleteReason: VocabLoadResult['incompleteReason'];
+  while (true) {
     const r = await api.vocabulary({ languageId, sort: 'recent', limit: 100, ...(after ? { after } : {}) });
     if (!r.ok) throw new Error(r.message || `The Repository answered ${r.status}.`);
     for (const item of r.data.items) {
@@ -492,7 +520,9 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<{ row
       });
     }
     after = r.data.nextCursor;
-    if (!after) break;
+    if (!after) { complete = true; break; }
+    if (cursors.has(after)) { incompleteReason = 'cursor-loop'; after = undefined; break; }
+    cursors.add(after);
   }
   const forms = records.filter((r) => r.kind === 'form');
   const present = new Set(records.map((r) => r.unitId));
@@ -510,7 +540,7 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<{ row
     });
   }
   const rows = mergeVocab(records);
-  return { rows, total: rows.length };
+  return { rows, total: rows.length, complete, ...(incompleteReason ? { incompleteReason } : {}) };
 }
 
 /** How many words the learner has met: the merged entries of My vocab. */

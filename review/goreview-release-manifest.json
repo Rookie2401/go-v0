@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "cc5e5017bd394aad429fe930bbb8c3f10ea788da",
-    "tree": "9692e02ca14c6261d0eba439eb2d129b6b0e2005",
+    "commit": "309660d119c35061a73aa657ee9f6d7c0a63a7d3",
+    "tree": "07d7d801c7b40d28296caeb14487a2170b98e0da",
     "dirty": false
   },
-  "sourceManifestSha256": "38f15a35558e3c429edb0ac386a2b9200c620e7aa604c2b0acf84176f4ba8876",
+  "sourceManifestSha256": "860268f14fcd0a2deb94ce289049e97f00ac8ea089cc4b77dbd8964bab960191",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -42,6 +42,286 @@
     {
       "path": "packages/biblia/index.html",
       "sha256": "9b231e940a367d3644e97414b2a7baba0eb571769f28aee1f17cb2edcfe845d5"
+    },
+    {
+      "path": "packages/biblia/public/data/SOURCES.json",
+      "sha256": "c2e9d348503cf697f5879e4ae49f324cca574eff011ba277dea6a6ee13b5fbf1"
+    },
+    {
+      "path": "packages/biblia/public/data/canon.json",
+      "sha256": "0e3fe1661f7cbc9fb185a2f44bba640b1346c2ae0e17d291660a9e8dfa00eab6"
+    },
+    {
+      "path": "packages/biblia/public/data/el/1Cor.json",
+      "sha256": "7d95014fc2190e0a418d2b8d1ec700ce21db49d01ab73f6e50c77dbe20cae161"
+    },
+    {
+      "path": "packages/biblia/public/data/el/1John.json",
+      "sha256": "2e0443d8af6a50aa92e1284510bbac9803f68317d7eeb882239b29edf87dd75b"
+    },
+    {
+      "path": "packages/biblia/public/data/el/1Pet.json",
+      "sha256": "f7e1839ca50081f3c5c655a9caee878436c528a57b9ef05dad0dbfcf7e692942"
+    },
+    {
+      "path": "packages/biblia/public/data/el/1Thess.json",
+      "sha256": "fe010782cdb9cb9450709c7490d0680303329ccece6dac76204bf33b76d360fc"
+    },
+    {
+      "path": "packages/biblia/public/data/el/1Tim.json",
+      "sha256": "73364e4c7b328049ff8022f8415cda9e37a359a81494e62014bb276b1033b72f"
+    },
+    {
+      "path": "packages/biblia/public/data/el/2Cor.json",
+      "sha256": "8ed4f3d8122af568ce99cd3afb3dc4e8444b2ebc40a7d0059695c7b3faccc315"
+    },
+    {
+      "path": "packages/biblia/public/data/el/2John.json",
+      "sha256": "e35d10934149ff4b6edc5c3ec2ef8c5ba5067fe62e32cd9b7c8ebd959cc05ad0"
+    },
+    {
+      "path": "packages/biblia/public/data/el/2Pet.json",
+      "sha256": "972358f9984845908a6a1ecd11bcf1b8614f799497179ca4759e048d426321d6"
+    },
+    {
+      "path": "packages/biblia/public/data/el/2Thess.json",
+      "sha256": "b4c2be307cfb7946b383a0f09d606f2ff253ae954510292ae5f1fa32d1cfd38a"
+    },
+    {
+      "path": "packages/biblia/public/data/el/2Tim.json",
+      "sha256": "3c17e2e86dc26d2788dff8454aa57bf2e99577409f47fce9d118b9a63adf3ecb"
+    },
+    {
+      "path": "packages/biblia/public/data/el/3John.json",
+      "sha256": "595d266a42cf9fa256cbe890311c150450d31b1dc1e3f68c8a3c80184062af43"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Acts.json",
+      "sha256": "250a61688ce58ebf6b898c2137851f26a4904c650c5bd2aef915b1a40ac2a146"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Col.json",
+      "sha256": "5af95cd58978e37e3921dc044c943391f42080cc6281cad4de03c91e2ed41b6d"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Eph.json",
+      "sha256": "6edd73a8d4765672521a47e2f37121cd38be9b250dd16a36af20c0125b7142ac"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Gal.json",
+      "sha256": "24807d0cf6d74599170b73758332f64cd7c4f21c52b1d6ea6c0a7581e696f7f7"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Heb.json",
+      "sha256": "87d55009f50061767afc6479875205e92fb5d2b0469543c1102b10ab8751f738"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Jas.json",
+      "sha256": "d0d87ea6131840178237d3abbee1b4fc674ef500cf8cc3caa0e5bf2d07446c14"
+    },
+    {
+      "path": "packages/biblia/public/data/el/John.json",
+      "sha256": "b2113786088d49418553b8928df4bb89cce44611a2c16ae998a9fb9ebb301a0f"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Jude.json",
+      "sha256": "98f90dcd15f5d9103749f7b13536668a5abf09a68aba7bcd966c00b8a5310eb4"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Luke.json",
+      "sha256": "bff64c4e8c652042e5e041c42a8320ae16253d49d812c25cbd6f5e49381fe5b1"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Mark.json",
+      "sha256": "bfdabb55a518640a626acf47a3ec0477d533efa2855fbf371eda9bac6fd8a866"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Matt.json",
+      "sha256": "ea92b82f5fff592393a23608e49bc8a35a01c430668856af904783676ce81643"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Phil.json",
+      "sha256": "ae130f121885b525265daf59bc01708b4b027061e5e87a8b34747fb459ac9eff"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Phlm.json",
+      "sha256": "847fbbbe8398c74041c336eb321310ca3d39392c49206bec4e2f5e2ac645e1dd"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Rev.json",
+      "sha256": "0f05a109dc2055856025d5005d9751b5eff8d97b26f7c66bf90fe0db1537a4e0"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Rom.json",
+      "sha256": "16b193563f114911780baa88677aa31f462142e311d1d6d0c2829908d3adb3e7"
+    },
+    {
+      "path": "packages/biblia/public/data/el/SOURCES.json",
+      "sha256": "2a0d66743c04aa91c6e48db79bdbcb228f895af10d3b1cf3813f1ee22634cf22"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Titus.json",
+      "sha256": "0f802e2db411c6e27985813150e7523a1cc6a995563279f7fc4902d76653225f"
+    },
+    {
+      "path": "packages/biblia/public/data/he/1Chr.json",
+      "sha256": "8ddcfae14b31f32fb970c72ce32872da1c6d89dfdef5cb705b47e1c955711967"
+    },
+    {
+      "path": "packages/biblia/public/data/he/1Kgs.json",
+      "sha256": "5109ae1e44e628b8d6e24f6aa6dd714177b236a2bcc6c430c6d68f4a8f61f0e4"
+    },
+    {
+      "path": "packages/biblia/public/data/he/1Sam.json",
+      "sha256": "9c96ebbb80d6a20e94fdee88ceb9a95ed526c54f07713c21be91b783e47a7f63"
+    },
+    {
+      "path": "packages/biblia/public/data/he/2Chr.json",
+      "sha256": "93cafb1d103ac593f3f06c8e2fa03a0f0db1a9ac7846c48fedffb20725b48cdf"
+    },
+    {
+      "path": "packages/biblia/public/data/he/2Kgs.json",
+      "sha256": "7640c255ff12fe441770030f934a8f0666287ad2c1e432c2510e41d45de8cb96"
+    },
+    {
+      "path": "packages/biblia/public/data/he/2Sam.json",
+      "sha256": "bf1609629f745a4e6f5f2a911dc810bb771d72555118e40344435b5da0f1e123"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Amos.json",
+      "sha256": "3604773fdc848f853440d6021402ed2c4080b4a50081db3ddc16ed185547888a"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Dan.json",
+      "sha256": "5ebc4dd1bdf976c33fdc92324f1abbdce30b24589543877f293768d82f7d912d"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Deut.json",
+      "sha256": "a6014106280154aec443ea06d6f8ab076801e10cfef27b5d3eeb29429518690b"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Eccl.json",
+      "sha256": "7a754128063f0cd05c87225c0fd0f58b8860377bad76033c77c52b2e59456f99"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Esth.json",
+      "sha256": "fe2f8bb538d3950fd084cb923318abef44ae9c4bd08ff2dfc3458c5b1ac49fdb"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Exod.json",
+      "sha256": "6884a5d10a51e1772e7ccbefafe36f9108b32db3419904aa1c4ceff0fa87b6e7"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Ezek.json",
+      "sha256": "042d98f3410f2f6b53bc91b97948c672ba93f6f00ab77f8f9f17540bb525170b"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Ezra.json",
+      "sha256": "eb47f4f1a65d4e559b7176def6c39192df7ddd8728cd5ab03cf2fba86d470f3a"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Gen.json",
+      "sha256": "8e5ff3c5bb3c8f5c6765da41645f1cde7697c582077809e97e5476692bf8b736"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Hab.json",
+      "sha256": "7b2e1fd6c2b97f42c5f84c8b6bac2c816a74a895d65fd2792fcdc7b7795280ec"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Hag.json",
+      "sha256": "8c57cd4a96b9449cb66448d89d971e4beb3d1321cbdc258cfa725307aabf9a21"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Hos.json",
+      "sha256": "d67a6520799ebb17e8b8c0af02ac5501f9947922b3d365497e0413b0457eff03"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Isa.json",
+      "sha256": "9c484fdb22d6e66293eadd8d37e1c64efa82a459ffb67c3ce2340bea6b9db181"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Jer.json",
+      "sha256": "2324fab25bc354aa031f65e0ceadc0f6eb95486de98b4108a1aa2c0c9a3eb934"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Job.json",
+      "sha256": "5fd828c661fcfed08e29ba457a985f4722a86e796d0091540a1a8eaf2a3453c2"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Joel.json",
+      "sha256": "0ebfb62e3b78b14655bd1872657576a9afe84d21292a49c60d75fc49074a28e1"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Jonah.json",
+      "sha256": "80005c997588115ed82d3ec868aaf531e26897b30e6989095baedadaa6807562"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Josh.json",
+      "sha256": "d4ec4437d9b8ed82f1ed6233c8b3ddba78d1bcff6e48702adb19613e98bcbd8e"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Judg.json",
+      "sha256": "51c556e5b81021e84d0d93debc9077414d2daf3f8aedc351b24b74f4b2a1438f"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Lam.json",
+      "sha256": "ec52fe6a02a512ab8e1d16d649462ad08a1e9f04b3da4caa43cc27a8152c0009"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Lev.json",
+      "sha256": "3a3001cd6a84c5db1d64c44501cb56b9b629e042430dc82fc04bfb18b7128ea4"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Mal.json",
+      "sha256": "53003b65f9421ec677d78d543f0cf350f1626b2cf5930b36e2487e99c422f3f2"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Mic.json",
+      "sha256": "7cc180b292a512d728165fcd5d98aeec87bd5f245a5a14bfecf3e1fca15e2c71"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Nah.json",
+      "sha256": "128a097475803274fe67f8e5daf2fc0e4d1d822f5fbaab0459c380c64ff59550"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Neh.json",
+      "sha256": "9bac45b7e6a85a59bf1c5ccf058bf361fcd0c97f0ed65f23f9c07f78591861e4"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Num.json",
+      "sha256": "566f95b49d96575591f6c0f2f7aaf139f2499ff050aed8719dbf31201419bbeb"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Obad.json",
+      "sha256": "a8187862ed703867ea05f7c5daa40518e082561eeb14d8a7d4df21685d5e7e1b"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Prov.json",
+      "sha256": "774d01fbde5b2ad622c3c3bd54f7e18a2119bd121f81f46dceaf0f3ed7543660"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Ps.json",
+      "sha256": "5ec077f194992e45efe6c1561b04c819f0ee158bc66b713208814fb9c2dca86f"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Ruth.json",
+      "sha256": "343a395afc9015867dccefcf78d9574330e1dc48bcb72ebd9ebcf34bfe70e5c3"
+    },
+    {
+      "path": "packages/biblia/public/data/he/SOURCES.json",
+      "sha256": "4cf00b1e8e932f2e9d20758293a3be44f751c970e68888f746bcb7a15a782710"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Song.json",
+      "sha256": "9afc502a9315fe72c49771a41bc8bcaace629f838022834d4e19d9c2a127d956"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Zech.json",
+      "sha256": "63d28c5469a655ddea420985b1af00cb4d1720fccb81e432a7526d5770f9729e"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Zeph.json",
+      "sha256": "b8ea46f8ddc2db513b93f620067b8ccc0fc39a573a777f311c2f93200a74b547"
     },
     {
       "path": "packages/biblia/public/fonts/EB-Garamond-OFL.txt",
@@ -137,7 +417,7 @@
     },
     {
       "path": "packages/biblia/src/app.ts",
-      "sha256": "f1056fabf354c65e9778a93ad0cb617a0e00e22b697cbbd877b65b2c94154cf5"
+      "sha256": "df75e6b1f00a210ecb2925c5e51f5216346cc223d6c3de937e334fa515ea9342"
     },
     {
       "path": "packages/biblia/src/canon.ts",
@@ -389,7 +669,7 @@
     },
     {
       "path": "packages/goreview/app/deckModel.ts",
-      "sha256": "203e48c6d25774e59d7b5742e6930683e8e5bd2dc23c1ce1f8f32fa54df4567f"
+      "sha256": "32415d7a5c2dcccbcf3fdbd5a2421dd757be6b0a550363caa840cb38a1e7dc2c"
     },
     {
       "path": "packages/goreview/app/dom.ts",
@@ -397,7 +677,7 @@
     },
     {
       "path": "packages/goreview/app/engine.ts",
-      "sha256": "4ed3970bf54233ebe04b78ad132b7538191c599a9be113d338f97b4f8323e1f1"
+      "sha256": "355dea91a94c2d5fd74a91c62b57992529b93a7bcc862e3f3f1bd1e071d42a7a"
     },
     {
       "path": "packages/goreview/app/events.ts",
@@ -449,7 +729,7 @@
     },
     {
       "path": "packages/goreview/app/ports.ts",
-      "sha256": "96f52a61ce577fbcd214dab5301176d6d91a472d83f8d97c67bad93071249ade"
+      "sha256": "ef30f35f4e515173eccf7c2b055e66818a00e44c870fec8de948933e9552937b"
     },
     {
       "path": "packages/goreview/app/profiles.ts",
@@ -661,7 +941,7 @@
     },
     {
       "path": "packages/goreview/app/workspace.ts",
-      "sha256": "a23d93578079fa89a16b285701974550529b244e2b213bd07d69f452bb31ec8b"
+      "sha256": "6794602736a8016834e4848d9d1f0882d4cd9f1b244135192d6e182d0f21c760"
     },
     {
       "path": "packages/goreview/src/exercises/README.md",
@@ -733,11 +1013,11 @@
     },
     {
       "path": "packages/goreview/src/facts/provider.ts",
-      "sha256": "550481862a15fc448b2f39f0cb60422b35fc314e572e5d80e88a629c6d6fdfb0"
+      "sha256": "b163e2f04d520346e736abe41eea26b03e57c163e034116c2720b5de58137d20"
     },
     {
       "path": "packages/goreview/src/facts/review-facts.ts",
-      "sha256": "95287716f084da334c54aac478f24f0dbae04fc9dc87b6919b7d4a94d67debba"
+      "sha256": "5736b74b0d9a6cdb90464041bcbec98a7840527c1a63e8118e23990c864818ec"
     },
     {
       "path": "packages/goreview/src/grading/grade.ts",
@@ -1229,7 +1509,7 @@
     },
     {
       "path": "packages/repository-engine/src/candidates.ts",
-      "sha256": "eb7fc18185f63fb4463d1940890d6683726e245caf0ab8fadd4332ec43535313"
+      "sha256": "9f0df7cde25fad0a4f6d84225357c3da2e0b03e84bad01f978e8e767d67716ff"
     },
     {
       "path": "packages/repository-engine/src/eligibility.ts",
@@ -14388,6 +14668,10 @@
       "sha256": "288b33773c8fa8eecb95119cab52361a0e9339d7f76db519c4761851c271af05"
     },
     {
+      "path": "src/adapters/greek/word-analysis.ts",
+      "sha256": "a84f6dcfad67676ad872578fea69e1d443803c1b177b307a5eb53449237630c0"
+    },
+    {
       "path": "src/adapters/he.ts",
       "sha256": "b6dda8bdf9fbe41c88b8b951c8b0af060bbbf92741ea7b1746768448c62a7207"
     },
@@ -15074,6 +15358,10 @@
     {
       "path": "src/core/syntax.ts",
       "sha256": "5941e2bfc088e0a0ebf1393831b32690b34e11dcdc1118c73ddabecd57d90372"
+    },
+    {
+      "path": "src/core/word-analysis.ts",
+      "sha256": "0697f4c91066daac3f8ba41e185ddcd320b39812f87f35745339020d78401776"
     },
     {
       "path": "src/dict/build.ts",
@@ -18593,6 +18881,7 @@
     "src/adapters/greek/tags.ts",
     "src/adapters/greek/text.ts",
     "src/adapters/greek/varieties.ts",
+    "src/adapters/greek/word-analysis.ts",
     "src/adapters/he.ts",
     "src/adapters/hebrew/analyze.ts",
     "src/adapters/hebrew/describe.ts",
@@ -18765,6 +19054,7 @@
     "src/core/adapters.ts",
     "src/core/paradigm.ts",
     "src/core/syntax.ts",
+    "src/core/word-analysis.ts",
     "src/dict/build.ts",
     "src/dict/format.ts",
     "src/dict/frequency.ts",
@@ -18811,7 +19101,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "b70400bc112db56970010a55e5032d07c48e10cb384c7ab67e78a286fa1c3452",
+  "artifactManifestSha256": "772c70e1bba54a060aab7f93af1f55f655fd506fcd6784ebb8b2658ac774a561",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -18854,8 +19144,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-aqSuCsS2.js",
-      "sha256": "f94b46b624293c23058c51625a22f8ce4a18db68723fa77d35bb1e811ba4a5c0"
+      "path": "assets/index-BhtQjTrR.js",
+      "sha256": "eecbef9ff0ecb01794954f95c0fd0f8f38ae4f53cc2ff06e7309ab2bb1f25dac"
     },
     {
       "path": "assets/style-Dd-_Zasv.css",
@@ -31399,7 +31689,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "4aedc8a85da997743bd91a12094c2f90f5c481324b5a9582347574137236ca17"
+      "sha256": "55256d7e64ecc6d4a68cf281dc8bc3ceb95659b3f219219185c793d3164f0eed"
     },
     {
       "path": "manifest.webmanifest",
@@ -31407,7 +31697,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "fcc185912f2a8bfd3e0ee8f2ccdbb51b24e505c9127441371999e425cd0bf0f6"
+      "sha256": "1b8f8d1de19461f3d11069754d64a43485f793ccff3974d75b8b08e3acc16e0e"
     }
   ]
 }

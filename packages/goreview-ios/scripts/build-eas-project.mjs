@@ -77,6 +77,7 @@ await cp(path.join(packageDir, '.eas', 'build'), path.join(stageDir, '.eas', 'bu
 await cp(path.join(packageDir, 'templates', 'eas-project', 'package.json'), path.join(stageDir, 'package.json'));
 await cp(path.join(packageDir, 'scripts', 'validate-staged-release.mjs'), path.join(stageDir, 'scripts', 'validate-staged-release.mjs'), { recursive: true });
 await cp(path.join(packageDir, 'scripts', 'native-payload.mjs'), path.join(stageDir, 'scripts', 'native-payload.mjs'));
+await cp(path.join(packageDir, 'scripts', 'finalize-capacitor-payload.mjs'), path.join(stageDir, 'scripts', 'finalize-capacitor-payload.mjs'));
 await cp(path.join(packageDir, 'scripts', 'verify-native-payload.mjs'), path.join(stageDir, 'scripts', 'verify-native-payload.mjs'));
 await cp(path.join(packageDir, 'scripts', 'set-build-version.mjs'), path.join(stageDir, 'scripts', 'set-build-version.mjs'), { recursive: true });
 await cp(path.join(packageDir, 'scripts', 'prepare-eas-ios-project.mjs'), path.join(stageDir, 'scripts', 'prepare-eas-ios-project.mjs'));

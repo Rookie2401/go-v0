@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "sync:ios": "cap sync ios"
+    "sync:ios": "cap sync ios && node scripts/finalize-capacitor-payload.mjs web ios/App/App/public --release && node scripts/verify-native-payload.mjs ios/App/App/public --release"
   },
   "dependencies": {
     "@capacitor/core": "8.5.3"

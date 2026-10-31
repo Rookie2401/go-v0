@@ -33,6 +33,16 @@ function fixture(release = false): string {
 afterEach(() => { for (const root of temporary.splice(0)) fs.rmSync(root, { recursive: true, force: true }); });
 
 describe('native embedded-web provenance', () => {
+  it('keeps the isolated EAS sync command integrity-checked after Capacitor rewrites the iOS public folder', () => {
+    const template = JSON.parse(fs.readFileSync(path.resolve('packages/goreview-ios/templates/eas-project/package.json'), 'utf8'));
+    const sync = template.scripts['sync:ios'] as string;
+    expect(sync.indexOf('cap sync ios')).toBeGreaterThanOrEqual(0);
+    expect(sync.indexOf('cap sync ios')).toBeLessThan(sync.indexOf('finalize-capacitor-payload.mjs'));
+    expect(sync.indexOf('finalize-capacitor-payload.mjs')).toBeLessThan(sync.indexOf('verify-native-payload.mjs'));
+    expect(fs.readFileSync(path.resolve('packages/goreview-ios/scripts/build-eas-project.mjs'), 'utf8'))
+      .toContain("'finalize-capacitor-payload.mjs'");
+  });
+
   it('forces an explicit developer default and lets the release flag override inherited release settings', () => {
     expect(resolveNativeBuildMode([])).toBe('developer');
     expect(resolveNativeBuildMode(['--developer'])).toBe('developer');

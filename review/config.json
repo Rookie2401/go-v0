@@ -1,4 +1,4 @@
 {
   "serviceUrl": "https://go-v0.onrender.com",
-  "assetBaseUrl": "./"
+  "assetBaseUrl": "../"
 }

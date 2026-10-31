@@ -106,7 +106,7 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
     } else {
       // No unchecked fallback: an unbuildable or invalid exercise is never demand.
       if (!ctx.engine.exerciseAvailable || !(await ctx.engine.exerciseAvailable({ unitId: w.unitId, unitKind: w.unitKind,
-        languageId: model.identity.languageId, dimension: w.dimension, family: w.family, api, now: model.now }).catch(() => false))) continue;
+        languageId: model.identity.languageId, ...(model.prefs.varietyId ? { varietyId: model.prefs.varietyId } : {}), dimension: w.dimension, family: w.family, api, now: model.now }).catch(() => false))) continue;
       const base: IntakeOutcome = w.outcome ?? { unitId: w.unitId, decision: 'test-now', reasons: ['Explicit vocabulary practice.'],
         candidate: { unitId: w.unitId, kind: w.unitKind, score: .5, reasons: [], targetDimension: 'readingRecognition',
           eligibility: { eligible: true, status: 'high-confidence', caveats: [] }, cost: .2 } };

@@ -20,6 +20,8 @@ import type { GrammarConstruction, PackManifest } from '../../../language-packs/
 import type { GlossResult } from '../../../language-packs/src/runtime';
 import type { Tutorial } from '../../../language-packs/src/tutorial/types';
 import type { AnalysisCandidate, AnalyzedToken, PhraseCandidate, RawToken } from '../../../../src/core';
+import { projectWordAnalysis } from '../../../../src/core/word-analysis';
+import { greekWordAnalysis } from '../../../../src/adapters/greek/word-analysis';
 import type { ExampleSentence, FactsProvider } from '../types';
 import type { ExampleReading, FeatureDef, FormGroup, FormInfo, ReviewFacts } from './review-facts';
 
@@ -64,7 +66,7 @@ export const SQ_CONSTRUCTION_PATTERNS: ConstructionPattern[] = [
 export interface FactsProviderDeps {
   /** The Repository lookup (`RepositoryApi.unit` adapted, or a fake): undefined when the Repository does not know the unit. */
   unit(unitId: string): Promise<RepositoryUnit | undefined>;
-  pack: { manifest: PackManifest; runtime: { gloss(lemma: string, pos?: string): Promise<GlossResult | undefined> } };
+  pack: { manifest: PackManifest; runtime: { gloss(lemma: string, pos?: string, forms?: readonly string[]): Promise<GlossResult | undefined> } };
   adapter: FactsAdapter;
   /** The pack's orientation (its passage and example sentences). Default: the Albanian tutorial for `sq`, none otherwise. */
   tutorial?: Tutorial | null;
@@ -334,13 +336,15 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     }
   }
 
-  async function glossesOf(lemma: string, pos: string | undefined, lexicon: string[]): Promise<{ glosses: string[]; lexiconCount: number; attribution?: string }> {
+  async function glossesOf(lemma: string, pos: string | undefined, lexicon: string[], forms?: readonly string[], inflectedOnly = false, features: Record<string, string> = {}): Promise<{ glosses: string[]; lexiconCount: number; attribution?: string }> {
     const glosses = [...new Set(lexicon.filter((g) => g && g.trim()))];
     const lexiconCount = glosses.length;
     let attribution: string | undefined;
     try {
-      const d = await pack.runtime.gloss(lemma, pos);
-      if (d && d.senses.length) {
+      // A form unit may have dictionary senses of its own. Ask with that surface first,
+      // without falling through to the lemma: its gloss may describe a different person, tense, or mood.
+      const d = await pack.runtime.gloss(lemma, pos, forms);
+      if (d && d.senses.length && (!inflectedOnly || !d.via)) {
         const have = new Set(glosses.map((g) => g.normalize('NFC').toLowerCase()));
         let taken = 0;
         for (const sense of d.senses) {
@@ -348,6 +352,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
           // the runtime's `pos` is only a preference; a sense of another part of speech is another word (çaj "tea" is not çaj "to split")
           if (pos && sense.pos && !posCompatible(pos, sense.pos)) continue;
           const g = (sense.gloss ?? '').trim();
+          if (inflectedOnly && firstPersonVerbGlossMismatch(g, pos, forms, features)) continue;
           if (!g || have.has(g.normalize('NFC').toLowerCase())) continue;
           glosses.push(g);
           have.add(g.normalize('NFC').toLowerCase());
@@ -357,6 +362,20 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       }
     } catch { /* an absent dictionary leaves the word-list gloss alone */ }
     return { glosses, lexiconCount, ...(attribution ? { attribution } : {}) };
+  }
+
+  /** Refuse a first-person answer for a form the adapter explicitly analysed as second/third person. */
+  function firstPersonVerbGlossMismatch(gloss: string, pos: string | undefined, forms: readonly string[] | undefined, features: Record<string, string> = {}): boolean {
+    if (!pos || !['VERB', 'AUX'].includes(pos) || !/^(?:I|we)\b/iu.test(gloss)) return false;
+    const label = forms?.[0];
+    if (!label) return false;
+    let reading: AnalysisCandidate | undefined;
+    try {
+      reading = adapter.analyze(adapter.tokenize(label)).flatMap((a) => a.candidates)
+        .find((c) => !c.unconfirmed && (!pos || c.pos === pos));
+    } catch { reading = undefined; }
+    const person = reading?.morph.Person ?? features.Person;
+    return person === '2' || person === '3';
   }
 
   function explanationsFor(features: Record<string, string>): Record<string, string> {
@@ -427,6 +446,9 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       unit, relations: rec?.relations ?? [], analyses: rec?.analyses ?? [], status: unit.status,
       lemma, ...(pos ? { pos } : {}),
       glosses: g.glosses, ...(g.attribution ? { glossAttribution: g.attribution } : {}),
+      wordAnalysis: projectWordAnalysis({ language: lang, surface: lemma, normalizedForm: adapter.normalize(lemma), lemma, pos,
+        lexicalMeaning: read.cand?.gloss ? { text: read.cand.gloss, source: read.cand.sourceId, confidence: read.cand.confidence } : undefined,
+        grammaticalFeatures: [] }),
       constructionIds, featureExplanations: {},
       siblingForms: forms.map((f) => ({ surface: f.surface, features: f.features })),
       exampleSentences: examples, pronunciationNotes: pronunciationOf(read.token, read.analysis),
@@ -498,13 +520,13 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     // a gloss from the surface. This keeps recognition useful while the normal eligibility gate still
     // treats the underlying analysis as provisional.
     let g: Awaited<ReturnType<typeof glossesOf>> = lemma
-      ? await glossesOf(lemma, lemmaPos ?? pos, lexGloss)
-      : { glosses: lexGloss, lexiconCount: lexGloss.length };
+      ? await glossesOf(lemma, lemmaPos ?? pos, [], [label], true, features)
+      : { glosses: [], lexiconCount: 0 };
     if (!lemma && !g.glosses.length) {
       try {
         const surfaceGloss = await pack.runtime.gloss(label, pos);
-        if (surfaceGloss?.senses.length) {
-          g = { glosses: [...new Set(surfaceGloss.senses.map((s) => s.gloss).filter((s) => !!s))], lexiconCount: 0, attribution: surfaceGloss.attribution };
+        if (surfaceGloss?.senses.length && !surfaceGloss.via) {
+          g = { glosses: [...new Set(surfaceGloss.senses.map((s) => s.gloss).filter((gloss) => !!gloss && !firstPersonVerbGlossMismatch(gloss, pos, [label], features)))], lexiconCount: 0, attribution: surfaceGloss.attribution };
         }
       } catch { /* an absent dictionary leaves this surface-only fact without an answer */ }
     }
@@ -513,12 +535,25 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     const matched = matchConstruction(pos, features, lemma);
     const own: FormInfo[] = lemma ? formsOfLemma(lemma, lemmaPos) : [];
     const morphDescription = describe(features, pos);
+    const wordAnalysis = lang === 'el'
+      ? greekWordAnalysis({ surface: label, lemma, pos, lemmaGloss: lexCand?.gloss, morph: features,
+          source: topAlone?.sourceId ?? unit.provenance.ref, confidence: topAlone?.confidence,
+          alternatives: (alone?.candidates.slice(1) ?? []).map((c) => ({ morph: c.morph, confidence: c.confidence })) })
+      : projectWordAnalysis({ language: lang, surface: label, normalizedForm: formNorm, ...(lemma ? { lemma } : {}), ...(pos ? { pos } : {}),
+          lexicalMeaning: lexCand?.gloss ? { text: lexCand.gloss, source: lexCand.sourceId, confidence: lexCand.confidence } : undefined,
+          grammaticalFeatures: Object.entries(features).map(([key, value]) => ({ key, value })),
+          inflectedMeaning: g.glosses[0] ? { text: g.glosses[0], source: 'dictionary', confidence: topAlone?.confidence } : undefined,
+          references: g.attribution ? [{ label: g.attribution, source: 'dictionary' }] : [] });
+    const answerGlosses = lang === 'el' && wordAnalysis.inflectedMeaning?.text
+      ? [wordAnalysis.inflectedMeaning.text]
+      : g.glosses;
 
     return {
       unit, relations: rec?.relations ?? [], analyses: rec?.analyses ?? [], status,
       ...(lemma ? { lemma } : {}), ...(pos ? { pos } : {}),
       ...(Object.keys(features).length ? { features } : {}),
-      glosses: g.glosses, ...(g.attribution ? { glossAttribution: g.attribution } : {}),
+      glosses: answerGlosses, ...(g.attribution && !(lang === 'el' && wordAnalysis.inflectedMeaning?.text) ? { glossAttribution: g.attribution } : {}),
+      wordAnalysis,
       constructionIds: constructionId ? [constructionId] : [],
       ...(matched ? { constructionLabel: matched.label, constructionExplanation: `${matched.label}. ${matched.explain}` } : {}),
       featureExplanations: explanationsFor(features),

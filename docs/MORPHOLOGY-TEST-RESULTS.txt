@@ -1,0 +1,1037 @@
+
+ RUN  v3.2.7 C:/Users/CJWal/dev/go-v0-master
+
+ ❯ test/extension/card.test.ts (49 tests | 1 failed) 541ms
+   ✓ placement > goes below the selection by default 7ms
+   ✓ placement > flips above when it does not fit below and there is more room above 1ms
+   ✓ placement > stays below when neither side fits, clamped inside the viewport 1ms
+   ✓ placement > is clamped horizontally at both edges 1ms
+   ✓ placement > aligns the end edge for right-to-left text 1ms
+   ✓ placement > the fallback corner puts the card top-right 1ms
+   ✓ the card in the page > is a fixed host with a closed shadow root appended to body, and holds word, lemma, meaning, form and confidence (the last three in "Go deeper") 130ms
+   ✓ the card in the page > labels each analysis line as analysis, and names the context, confidence, labels, limits and analyser in "About this analysis", the last block of "Go deeper" 15ms
+   × the card in the page > the immediate card is the word with its speaker, the meaning and the subscript "view sources", then "Go deeper": no form line, confidence, context, you-row, pronounce button or Review button 19ms
+     → expected 'Word×shtëpinëhouse, homeMeaning · Lem…' not to match /context/i
+   ✓ the card in the page > does not touch the page: no page element changes, no style added to the document, nothing inserted but the host 11ms
+   ✓ the card in the page > keeps its style inside the shadow root 10ms
+   ✓ the card in the page > gives touch users 44px controls while keeping the six knowledge marks in a tight row 7ms
+   ✓ the card in the page > page text reaches the DOM only as text: markup in a selection is shown literally and runs nothing 7ms
+   ✓ the card in the page > does not steal focus unless asked to 8ms
+   ✓ dismissal > Escape dismisses 14ms
+   ✓ dismissal > a click outside dismisses; a click inside does not 10ms
+   ✓ dismissal > the close button dismisses 8ms
+   ✓ dismissal > leaves no listener behind after a dismissal or a destroy 19ms
+   ✓ dismissal > showing again replaces the card; there is only ever one host 22ms
+   ✓ dismissal > re-attaches to the new body when the page replaced it 15ms
+   ✓ keyboard and tab order > with no voice: the controls are Close, view sources, the six circles of the level meter, Go deeper, See full sentence and Report; the speaker is disabled and its title says why 12ms
+   ✓ keyboard and tab order > with a voice: the speaker comes right after Close, and the list is Close, Play with GoListen, view sources, the six levels, Go deeper, See full sentence, Report 6ms
+   ✓ keyboard and tab order > Tab wraps inside the card in both directions while focus is in it 13ms
+   ✓ keyboard and tab order > focus returns to where it was when a card that took focus is dismissed 8ms
+   ✓ keyboard and tab order > "Go deeper" is one disclosure: the sections are hidden by default, aria-expanded follows, the button reads "Less" while open 7ms
+   ✓ keyboard and tab order > "Go deeper" shows every section at once, in the order Form, Syntax, All forms, Meanings, Origin, Word structure, About this analysis (Sentence has its own pill) 14ms
+   ✓ pronunciation > plays through a local Albanian voice when the speaker beside the word is clicked 6ms
+   ✓ pronunciation > does not use a remote voice: disabled, the title says why 9ms
+   ✓ pronunciation > no Albanian voice at all: disabled 6ms
+   ✓ the built-in local pronouncer (the GoLearn web app card, on an iPhone too) > takes the same voices as the extension: Latin is read by an Italian voice, and says so (2026-10-29) 1ms
+   ✓ the built-in local pronouncer (the GoLearn web app card, on an iPhone too) > without a voice says which language is missing and where to add one; for Latin, an Italian voice 1ms
+   ✓ the built-in local pronouncer (the GoLearn web app card, on an iPhone too) > an empty voice list is still loading (Safari fills it only once asked), not a device without voices 0ms
+   ✓ status, messages and repositioning > shows "Encounter recorded." after the write, or says it was not recorded 5ms
+   ✓ status, messages and repositioning > shows a one-line message as an alert 1ms
+   ✓ status, messages and repositioning > repositions on request, and does nothing when closed 5ms
+   ✓ status, messages and repositioning > flips above near the bottom of the viewport 5ms
+   ✓ evidence boundaries in deeper layers > keeps the pack explanation for comma-union morphology instead of falling back to codes 9ms
+   ✓ evidence boundaries in deeper layers > collapses duplicate feature reports and preserves unresolved alternatives 6ms
+   ✓ evidence boundaries in deeper layers > distinguishes an unavailable paradigm from a language-level non-inflecting result 17ms
+   ✓ view sources > is a subscript button that opens a list of links (new tab, no opener) with the licence; the course word list is named without a link 16ms
+   ✓ view sources > with no source it says so 6ms
+   ✓ view sources > shows the dictionary's attribution notice beside the links 7ms
+   ✓ view sources > only an https address becomes a link: javascript:, data: and http: addresses a reply carries are shown as names 9ms
+   ✓ the rating row and the footer > offers the six levels in order, each sends its word as the mark, and the current level is the pressed one 12ms
+   ✓ the rating row and the footer > the kicker "· N× encounters" under the meter is the number only, shown once the model has answered 18ms
+   ✓ the rating row and the footer > "Report" is the quiet pill beside "Go deeper" that opens the correction form (and closes it again); there is no "This analysis is wrong" and no "Review this" 7ms
+   ✓ the rating row and the footer > "Go deeper" reports every section once, in order, each time it is opened (the paradigm only for a single word); closing reports nothing 8ms
+   ✓ the rows of Form never let a kicker run under its value > a long kicker ("lemma (guess)") comes first in its row, is nowrap with no max-width, and the row is auto width: it pushes the value, it cannot overlap it 8ms
+   ✓ the rows of Form never let a kicker run under its value > the "analysis" subscript sits in the value column of the form row, with no rule between them, its spacer as wide as that row's kicker 9ms
+ ✓ test/extension/controller.test.ts (27 tests) 1244ms
+stdout | test/goreview/transfer/nine-words.test.ts > nine words: chronological reproduction (every answer rated Easy)
+
+===== TRACE (nine words with history, 40 inventory units, ineligible units; every answer Easy=4; allowance 5/day) =====
+── [answers rated 4] S1 (auto) 2026-10-26T09:00Z  allowance used 0->4, remaining 5->1; planned 10/10 (dueCount 6, newCount 4); availableWork {"questions":10,"newQuestions":4}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + written-recognition:form:sq:w6                 learning new=n automatic            due 10-24T09:10 R 0.8808 relearning -> due 11-03T09:00 review S 7.7832 sd 8
+   + written-recognition:form:sq:w7                 learning new=n automatic            due 10-26T08:30 R 1 relearning -> due 10-30T09:00 review S 3.6109 sd 4
+   + written-recognition:form:sq:w5                 learning new=n automatic            due 10-26T08:45 R 1 relearning -> due 10-30T09:01 review S 3.5751 sd 4
+   + written-recognition:form:sq:w4                 due      new=n automatic            due 10-23T09:15 R 0.7307 review -> due 10-30T09:01 review S 3.5567 sd 4
+   + written-recognition:form:sq:w8                 due      new=n automatic            due 10-25T09:00 R 0.8908 review -> due 11-13T09:01 review S 18.1735 sd 18
+   + written-recognition:form:sq:w1                 due      new=n automatic            due 10-26T09:00 R 0.9007 review -> due 11-08T09:02 review S 12.8778 sd 13
+   + written-recognition:form:sq:inv02              new      new=Y automatic            due  R - new -> due 11-03T09:02 review S 8.2956 sd 8
+   + auditory-recognition:form:sq:w3                new      new=Y automatic            due  R - new -> due 11-03T09:02 review S 8.2956 sd 8
+   + meaning-to-target-retrieval:form:sq:w2         new      new=Y automatic            due  R - new -> due 11-03T09:03 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv01              new      new=Y automatic            due  R - new -> due 11-03T09:03 review S 8.2956 sd 8
+   - skipped x9: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x1: another card for this word is already in this batch; deferred to a later batch
+   intake decisions: {"already-covered":7,"test-now":5,"low-priority":42,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 47
+── [answers rated 4] S2 (auto) 2026-10-26T09:20Z  allowance used 4->5, remaining 1->0; planned 2/10 (dueCount 1, newCount 1); availableWork {"questions":2,"newQuestions":1}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + written-recognition:form:sq:w9                 learning new=n automatic            due 10-26T09:05 R 1 relearning -> due 10-29T09:20 review S 2.8743 sd 3
+   + written-recognition:form:sq:inv03              new      new=Y automatic            due  R - new -> due 11-03T09:20 review S 8.2956 sd 8
+   - skipped x18: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x4: session or daily new-item budget exhausted
+   intake decisions: {"already-covered":11,"test-now":5,"low-priority":38,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 43
+── [answers rated 4] S3 (auto) 2026-10-26T09:40Z  allowance used 5->5, remaining 0->0; planned 0/10 (dueCount 0, newCount 0); availableWork {"questions":0,"newQuestions":0}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Automatic new-card limit is zero.
+   - skipped x20: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x5: new-card budget exhausted
+   intake decisions: {"already-covered":12,"test-now":5,"low-priority":37,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 42
+── [answers rated 4] S4 (auto) 2026-10-27T09:00Z  allowance used 0->5, remaining 5->0; planned 6/10 (dueCount 1, newCount 5); availableWork {"questions":6,"newQuestions":5}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + written-recognition:form:sq:w2                 due      new=n automatic            due 10-27T09:00 R 0.8934 review -> due 11-08T09:00 review S 12.3571 sd 12
+   + written-recognition:form:sq:inv05              new      new=Y automatic            due  R - new -> due 11-04T09:00 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv06              new      new=Y automatic            due  R - new -> due 11-04T09:01 review S 8.2956 sd 8
+   + productive-recall:form:sq:w5                   new      new=Y automatic            due  R - new -> due 11-04T09:01 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv04              new      new=Y automatic            due  R - new -> due 11-04T09:01 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv07              new      new=Y automatic            due  R - new -> due 11-04T09:02 review S 8.2956 sd 8
+   - skipped x19: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   intake decisions: {"already-covered":12,"test-now":5,"low-priority":37,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 42
+── [answers rated 4] S5 (auto) 2026-10-27T09:20Z  allowance used 5->5, remaining 0->0; planned 0/10 (dueCount 0, newCount 0); availableWork {"questions":0,"newQuestions":0}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Automatic new-card limit is zero.
+   - skipped x25: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x5: new-card budget exhausted
+   intake decisions: {"already-covered":17,"test-now":5,"low-priority":32,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 37
+── [answers rated 4] SD1 (saved) 2026-10-27T15:00Z  allowance used 5->5, remaining 0->0; planned 9/9 (dueCount 0, newCount 0); availableWork {"questions":0,"newQuestions":0}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Explicit practice is capped by the requested collection, configured maximum, and available session time.
+   + written-recognition:form:sq:w1                 ?        new=n explicit:saved-deck  due 11-08T09:02 R 0.9888 review -> due 11-08T09:02 review S 12.8778 sd 13 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w2                 ?        new=n explicit:saved-deck  due 11-08T09:00 R 1 review -> due 11-08T09:00 review S 12.3571 sd 12 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w3                 ?        new=n explicit:saved-deck  due 10-30T09:00 R 0.9396 review -> due 10-30T09:00 review S 5.9128 sd 6 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w4                 ?        new=n explicit:saved-deck  due 10-30T09:01 R 0.9632 review -> due 10-30T09:01 review S 3.5567 sd 4 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w5                 ?        new=n explicit:saved-deck  due 10-30T09:01 R 0.9633 review -> due 10-30T09:01 review S 3.5751 sd 4 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w6                 ?        new=n explicit:saved-deck  due 11-03T09:00 R 0.9819 review -> due 11-03T09:00 review S 7.7832 sd 8 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w7                 ?        new=n explicit:saved-deck  due 10-30T09:00 R 0.9636 review -> due 10-30T09:00 review S 3.6109 sd 4 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w8                 ?        new=n explicit:saved-deck  due 11-13T09:01 R 0.9919 review -> due 11-13T09:01 review S 18.1735 sd 18 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w9                 ?        new=n explicit:saved-deck  due 10-29T09:20 R 0.9558 review -> due 10-29T09:20 review S 2.8743 sd 3 EARLY-PRACTICE(schedule unchanged)
+── [answers rated 4] SD2 (saved) 2026-10-27T15:10Z  allowance used 5->5, remaining 0->0; planned 9/9 (dueCount 0, newCount 0); availableWork {"questions":0,"newQuestions":0}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Explicit practice is capped by the requested collection, configured maximum, and available session time.
+   + written-recognition:form:sq:w1                 ?        new=n explicit:saved-deck  due 11-08T09:02 R 0.9888 review -> due 11-08T09:02 review S 12.8778 sd 13 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w2                 ?        new=n explicit:saved-deck  due 11-08T09:00 R 1 review -> due 11-08T09:00 review S 12.3571 sd 12 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w3                 ?        new=n explicit:saved-deck  due 10-30T09:00 R 0.9396 review -> due 10-30T09:00 review S 5.9128 sd 6 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w4                 ?        new=n explicit:saved-deck  due 10-30T09:01 R 0.9632 review -> due 10-30T09:01 review S 3.5567 sd 4 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w5                 ?        new=n explicit:saved-deck  due 10-30T09:01 R 0.9633 review -> due 10-30T09:01 review S 3.5751 sd 4 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w6                 ?        new=n explicit:saved-deck  due 11-03T09:00 R 0.9819 review -> due 11-03T09:00 review S 7.7832 sd 8 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w7                 ?        new=n explicit:saved-deck  due 10-30T09:00 R 0.9636 review -> due 10-30T09:00 review S 3.6109 sd 4 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w8                 ?        new=n explicit:saved-deck  due 11-13T09:01 R 0.9919 review -> due 11-13T09:01 review S 18.1735 sd 18 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w9                 ?        new=n explicit:saved-deck  due 10-29T09:20 R 0.9558 review -> due 10-29T09:20 review S 2.8743 sd 3 EARLY-PRACTICE(schedule unchanged)
+── [answers rated 4] S6 (auto) 2026-10-28T09:00Z  allowance used 0->4, remaining 5->1; planned 10/10 (dueCount 6, newCount 4); availableWork {"questions":11,"newQuestions":5}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + auditory-recognition:form:sq:w1                due      new=n automatic            due 10-27T21:00 R 0.9026 review -> due 11-09T09:00 review S 11.6395 sd 12
+   + auditory-recognition:form:sq:w4                due      new=n automatic            due 10-27T21:00 R 0.9026 review -> due 11-09T09:00 review S 11.6395 sd 12
+   + auditory-recognition:form:sq:w8                due      new=n automatic            due 10-27T21:00 R 0.9026 review -> due 11-09T09:01 review S 11.6395 sd 12
+   + meaning-to-target-retrieval:form:sq:w1         due      new=n automatic            due 10-28T09:00 R 0.8934 review -> due 11-09T09:01 review S 12.3571 sd 12
+   + meaning-to-target-retrieval:form:sq:w4         due      new=n automatic            due 10-28T09:00 R 0.8934 review -> due 11-09T09:01 review S 12.3571 sd 12
+   + meaning-to-target-retrieval:form:sq:w8         due      new=n automatic            due 10-28T09:00 R 0.8934 review -> due 11-09T09:02 review S 12.3571 sd 12
+   + written-recognition:form:sq:inv08              new      new=Y automatic            due  R - new -> due 11-05T09:02 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv09              new      new=Y automatic            due  R - new -> due 11-05T09:02 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv11              new      new=Y automatic            due  R - new -> due 11-05T09:03 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv12              new      new=Y automatic            due  R - new -> due 11-05T09:03 review S 8.2956 sd 8
+   - skipped x19: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x1: eligible for the next micro-deck; no scheduling card was created
+   intake decisions: {"already-covered":17,"test-now":5,"low-priority":32,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 37
+── [answers rated 4] S7 (auto) 2026-10-28T09:20Z  allowance used 4->5, remaining 1->0; planned 1/10 (dueCount 0, newCount 1); availableWork {"questions":1,"newQuestions":1}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + written-recognition:form:sq:inv14              new      new=Y automatic            due  R - new -> due 11-05T09:20 review S 8.2956 sd 8
+   - skipped x29: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x4: session or daily new-item budget exhausted
+   intake decisions: {"already-covered":21,"test-now":5,"low-priority":28,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 33
+── [answers rated 4] SD3 (saved) 2026-10-28T12:00Z  allowance used 5->5, remaining 0->0; planned 9/9 (dueCount 0, newCount 0); availableWork {"questions":0,"newQuestions":0}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Explicit practice is capped by the requested collection, configured maximum, and available session time.
+   + written-recognition:form:sq:w1                 ?        new=n explicit:saved-deck  due 11-08T09:02 R 0.9784 review -> due 11-08T09:02 review S 12.8778 sd 13 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w2                 ?        new=n explicit:saved-deck  due 11-08T09:00 R 0.9883 review -> due 11-08T09:00 review S 12.3571 sd 12 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w3                 ?        new=n explicit:saved-deck  due 10-30T09:00 R 0.9245 review -> due 10-30T09:00 review S 5.9128 sd 6 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w4                 ?        new=n explicit:saved-deck  due 10-30T09:01 R 0.9345 review -> due 10-30T09:01 review S 3.5567 sd 4 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w5                 ?        new=n explicit:saved-deck  due 10-30T09:01 R 0.9348 review -> due 10-30T09:01 review S 3.5751 sd 4 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w6                 ?        new=n explicit:saved-deck  due 11-03T09:00 R 0.9659 review -> due 11-03T09:00 review S 7.7832 sd 8 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w7                 ?        new=n explicit:saved-deck  due 10-30T09:00 R 0.9353 review -> due 10-30T09:00 review S 3.6109 sd 4 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w8                 ?        new=n explicit:saved-deck  due 11-13T09:01 R 0.9843 review -> due 11-13T09:01 review S 18.1735 sd 18 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w9                 ?        new=n explicit:saved-deck  due 10-29T09:20 R 0.9229 review -> due 10-29T09:20 review S 2.8743 sd 3 EARLY-PRACTICE(schedule unchanged)
+── [answers rated 4] S8 (auto) 2026-10-30T09:00Z  allowance used 0->5, remaining 5->0; planned 7/10 (dueCount 2, newCount 5); availableWork {"questions":7,"newQuestions":5}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + written-recognition:form:sq:w9                 due      new=n automatic            due 10-29T09:20 R 0.897 review -> due 11-16T09:00 review S 16.5915 sd 17
+   + written-recognition:form:sq:w3                 due      new=n automatic            due 10-30T09:00 R 0.899 review -> due 11-15T09:00 review S 15.684 sd 16
+   + written-recognition:form:sq:inv15              new      new=Y automatic            due  R - new -> due 11-07T09:01 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv17              new      new=Y automatic            due  R - new -> due 11-07T09:01 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv10              new      new=Y automatic            due  R - new -> due 11-07T09:01 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv13              new      new=Y automatic            due  R - new -> due 11-07T09:02 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv16              new      new=Y automatic            due  R - new -> due 11-07T09:02 review S 8.2956 sd 8
+   - skipped x28: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   intake decisions: {"already-covered":22,"test-now":5,"low-priority":27,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 32
+── [answers rated 4] S9 (auto) 2026-11-03T09:00Z  allowance used 0->5, remaining 5->0; planned 8/10 (dueCount 3, newCount 5); availableWork {"questions":8,"newQuestions":5}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + written-recognition:form:sq:w7                 due      new=n automatic            due 10-30T09:00 R 0.8486 review -> due 11-29T09:00 review S 25.7408 sd 26
+   + written-recognition:form:sq:w5                 due      new=n automatic            due 10-30T09:01 R 0.8477 review -> due 11-29T09:00 review S 25.6486 sd 26
+   + written-recognition:form:sq:w4                 due      new=n automatic            due 10-30T09:01 R 0.8473 review -> due 11-17T09:01 review S 14.3507 sd 14
+   + written-recognition:form:sq:inv18              new      new=Y automatic            due  R - new -> due 11-11T09:01 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv20              new      new=Y automatic            due  R - new -> due 11-11T09:01 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv21              new      new=Y automatic            due  R - new -> due 11-11T09:02 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv19              new      new=Y automatic            due  R - new -> due 11-11T09:02 review S 8.2956 sd 8
+   + written-recognition:form:sq:inv22              new      new=Y automatic            due  R - new -> due 11-11T09:02 review S 8.2956 sd 8
+   - skipped x32: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   intake decisions: {"already-covered":27,"test-now":5,"low-priority":22,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 27
+
+===== VARIANT TRACE: the same world, every answer rated Good=3 =====
+── [answers rated 3] S1 (auto) 2026-10-26T09:00Z  allowance used 0->4, remaining 5->1; planned 10/10 (dueCount 6, newCount 4); availableWork {"questions":10,"newQuestions":4}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + written-recognition:form:sq:w6                 learning new=n automatic            due 10-24T09:10 R 0.8808 relearning -> due 10-31T09:00 review S 4.8708 sd 5
+   + written-recognition:form:sq:w7                 learning new=n automatic            due 10-26T08:30 R 1 relearning -> due 10-28T09:00 review S 2.099 sd 2
+   + written-recognition:form:sq:w5                 learning new=n automatic            due 10-26T08:45 R 1 relearning -> due 10-28T09:01 review S 2.0782 sd 2
+   + written-recognition:form:sq:w4                 due      new=n automatic            due 10-23T09:15 R 0.7307 review -> due 10-28T09:01 review S 2.1051 sd 2
+   + written-recognition:form:sq:w8                 due      new=n automatic            due 10-25T09:00 R 0.8908 review -> due 11-07T09:01 review S 11.7503 sd 12
+   + written-recognition:form:sq:w1                 due      new=n automatic            due 10-26T09:00 R 0.9007 review -> due 11-04T09:02 review S 8.7603 sd 9
+   + written-recognition:form:sq:inv02              new      new=Y automatic            due  R - new -> due 10-26T09:12 learning S 2.3065 sd 0
+   + auditory-recognition:form:sq:w3                new      new=Y automatic            due  R - new -> due 10-26T09:12 learning S 2.3065 sd 0
+   + meaning-to-target-retrieval:form:sq:w2         new      new=Y automatic            due  R - new -> due 10-26T09:13 learning S 2.3065 sd 0
+   + written-recognition:form:sq:inv01              new      new=Y automatic            due  R - new -> due 10-26T09:13 learning S 2.3065 sd 0
+   - skipped x9: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x1: another card for this word is already in this batch; deferred to a later batch
+   intake decisions: {"already-covered":7,"test-now":5,"low-priority":42,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 47
+── [answers rated 3] S2 (auto) 2026-10-26T09:20Z  allowance used 4->5, remaining 1->0; planned 6/10 (dueCount 5, newCount 1); availableWork {"questions":6,"newQuestions":1}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + written-recognition:form:sq:w9                 learning new=n automatic            due 10-26T09:05 R 1 relearning -> due 10-28T09:20 review S 1.6708 sd 2
+   + written-recognition:form:sq:inv02              learning new=n automatic            due 10-26T09:12 R 1 learning -> due 10-28T09:20 review S 2.3065 sd 2
+   + auditory-recognition:form:sq:w3                learning new=n automatic            due 10-26T09:12 R 1 learning -> due 10-28T09:21 review S 2.3065 sd 2
+   + meaning-to-target-retrieval:form:sq:w2         learning new=n automatic            due 10-26T09:13 R 1 learning -> due 10-28T09:21 review S 2.3065 sd 2
+   + written-recognition:form:sq:inv01              learning new=n automatic            due 10-26T09:13 R 1 learning -> due 10-28T09:21 review S 2.3065 sd 2
+   + written-recognition:form:sq:inv03              new      new=Y automatic            due  R - new -> due 10-26T09:32 learning S 2.3065 sd 0
+   - skipped x14: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x4: session or daily new-item budget exhausted
+   intake decisions: {"already-covered":11,"test-now":5,"low-priority":38,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 43
+── [answers rated 3] S3 (auto) 2026-10-26T09:40Z  allowance used 5->5, remaining 0->0; planned 1/10 (dueCount 1, newCount 0); availableWork {"questions":1,"newQuestions":0}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Automatic new-card limit is zero.
+   + written-recognition:form:sq:inv03              learning new=n automatic            due 10-26T09:32 R 1 learning -> due 10-28T09:40 review S 2.3065 sd 2
+   - skipped x19: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x5: new-card budget exhausted
+   intake decisions: {"already-covered":12,"test-now":5,"low-priority":37,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 42
+── [answers rated 3] S4 (auto) 2026-10-27T09:00Z  allowance used 0->5, remaining 5->0; planned 6/10 (dueCount 1, newCount 5); availableWork {"questions":6,"newQuestions":5}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + written-recognition:form:sq:w2                 due      new=n automatic            due 10-27T09:00 R 0.8934 review -> due 11-04T09:00 review S 8.2938 sd 8
+   + written-recognition:form:sq:inv05              new      new=Y automatic            due  R - new -> due 10-27T09:10 learning S 2.3065 sd 0
+   + written-recognition:form:sq:inv06              new      new=Y automatic            due  R - new -> due 10-27T09:11 learning S 2.3065 sd 0
+   + productive-recall:form:sq:w5                   new      new=Y automatic            due  R - new -> due 10-27T09:11 learning S 2.3065 sd 0
+   + written-recognition:form:sq:inv04              new      new=Y automatic            due  R - new -> due 10-27T09:11 learning S 2.3065 sd 0
+   + written-recognition:form:sq:inv07              new      new=Y automatic            due  R - new -> due 10-27T09:12 learning S 2.3065 sd 0
+   - skipped x19: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   intake decisions: {"already-covered":12,"test-now":5,"low-priority":37,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 42
+── [answers rated 3] S5 (auto) 2026-10-27T09:20Z  allowance used 5->5, remaining 0->0; planned 5/10 (dueCount 5, newCount 0); availableWork {"questions":5,"newQuestions":0}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Automatic new-card limit is zero.
+   + written-recognition:form:sq:inv05              learning new=n automatic            due 10-27T09:10 R 1 learning -> due 10-29T09:20 review S 2.3065 sd 2
+   + written-recognition:form:sq:inv06              learning new=n automatic            due 10-27T09:11 R 1 learning -> due 10-29T09:20 review S 2.3065 sd 2
+   + productive-recall:form:sq:w5                   learning new=n automatic            due 10-27T09:11 R 1 learning -> due 10-29T09:21 review S 2.3065 sd 2
+   + written-recognition:form:sq:inv04              learning new=n automatic            due 10-27T09:11 R 1 learning -> due 10-29T09:21 review S 2.3065 sd 2
+   + written-recognition:form:sq:inv07              learning new=n automatic            due 10-27T09:12 R 1 learning -> due 10-29T09:21 review S 2.3065 sd 2
+   - skipped x20: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x5: new-card budget exhausted
+   intake decisions: {"already-covered":17,"test-now":5,"low-priority":32,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 37
+── [answers rated 3] SD1 (saved) 2026-10-27T15:00Z  allowance used 5->5, remaining 0->0; planned 9/9 (dueCount 0, newCount 0); availableWork {"questions":0,"newQuestions":0}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Explicit practice is capped by the requested collection, configured maximum, and available session time.
+   + written-recognition:form:sq:w1                 ?        new=n explicit:saved-deck  due 11-04T09:02 R 0.9838 review -> due 11-04T09:02 review S 8.7603 sd 9 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w2                 ?        new=n explicit:saved-deck  due 11-04T09:00 R 1 review -> due 11-04T09:00 review S 8.2938 sd 8 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w3                 ?        new=n explicit:saved-deck  due 10-30T09:00 R 0.9396 review -> due 10-30T09:00 review S 5.9128 sd 6 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w4                 ?        new=n explicit:saved-deck  due 10-28T09:01 R 0.9427 review -> due 10-28T09:01 review S 2.1051 sd 2 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w5                 ?        new=n explicit:saved-deck  due 10-28T09:01 R 0.9422 review -> due 10-28T09:01 review S 2.0782 sd 2 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w6                 ?        new=n explicit:saved-deck  due 10-31T09:00 R 0.9721 review -> due 10-31T09:00 review S 4.8708 sd 5 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w7                 ?        new=n explicit:saved-deck  due 10-28T09:00 R 0.9426 review -> due 10-28T09:00 review S 2.099 sd 2 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w8                 ?        new=n explicit:saved-deck  due 11-07T09:01 R 0.9877 review -> due 11-07T09:01 review S 11.7503 sd 12 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w9                 ?        new=n explicit:saved-deck  due 10-28T09:20 R 0.9313 review -> due 10-28T09:20 review S 1.6708 sd 2 EARLY-PRACTICE(schedule unchanged)
+── [answers rated 3] SD2 (saved) 2026-10-27T15:10Z  allowance used 5->5, remaining 0->0; planned 9/9 (dueCount 0, newCount 0); availableWork {"questions":0,"newQuestions":0}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Explicit practice is capped by the requested collection, configured maximum, and available session time.
+   + written-recognition:form:sq:w1                 ?        new=n explicit:saved-deck  due 11-04T09:02 R 0.9838 review -> due 11-04T09:02 review S 8.7603 sd 9 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w2                 ?        new=n explicit:saved-deck  due 11-04T09:00 R 1 review -> due 11-04T09:00 review S 8.2938 sd 8 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w3                 ?        new=n explicit:saved-deck  due 10-30T09:00 R 0.9396 review -> due 10-30T09:00 review S 5.9128 sd 6 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w4                 ?        new=n explicit:saved-deck  due 10-28T09:01 R 0.9427 review -> due 10-28T09:01 review S 2.1051 sd 2 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w5                 ?        new=n explicit:saved-deck  due 10-28T09:01 R 0.9422 review -> due 10-28T09:01 review S 2.0782 sd 2 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w6                 ?        new=n explicit:saved-deck  due 10-31T09:00 R 0.9721 review -> due 10-31T09:00 review S 4.8708 sd 5 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w7                 ?        new=n explicit:saved-deck  due 10-28T09:00 R 0.9426 review -> due 10-28T09:00 review S 2.099 sd 2 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w8                 ?        new=n explicit:saved-deck  due 11-07T09:01 R 0.9877 review -> due 11-07T09:01 review S 11.7503 sd 12 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w9                 ?        new=n explicit:saved-deck  due 10-28T09:20 R 0.9313 review -> due 10-28T09:20 review S 1.6708 sd 2 EARLY-PRACTICE(schedule unchanged)
+── [answers rated 3] S6 (auto) 2026-10-28T09:00Z  allowance used 0->4, remaining 5->1; planned 10/10 (dueCount 6, newCount 4); availableWork {"questions":11,"newQuestions":5}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + auditory-recognition:form:sq:w1                due      new=n automatic            due 10-27T21:00 R 0.9026 review -> due 11-05T09:00 review S 7.6678 sd 8
+   + auditory-recognition:form:sq:w4                due      new=n automatic            due 10-27T21:00 R 0.9026 review -> due 11-05T09:00 review S 7.6678 sd 8
+   + auditory-recognition:form:sq:w8                due      new=n automatic            due 10-27T21:00 R 0.9026 review -> due 11-05T09:01 review S 7.6678 sd 8
+   + meaning-to-target-retrieval:form:sq:w1         due      new=n automatic            due 10-28T09:00 R 0.8934 review -> due 11-05T09:01 review S 8.2938 sd 8
+   + meaning-to-target-retrieval:form:sq:w4         due      new=n automatic            due 10-28T09:00 R 0.8934 review -> due 11-05T09:01 review S 8.2938 sd 8
+   + meaning-to-target-retrieval:form:sq:w8         due      new=n automatic            due 10-28T09:00 R 0.8934 review -> due 11-05T09:02 review S 8.2938 sd 8
+   + written-recognition:form:sq:inv08              new      new=Y automatic            due  R - new -> due 10-28T09:12 learning S 2.3065 sd 0
+   + written-recognition:form:sq:inv09              new      new=Y automatic            due  R - new -> due 10-28T09:12 learning S 2.3065 sd 0
+   + written-recognition:form:sq:inv11              new      new=Y automatic            due  R - new -> due 10-28T09:13 learning S 2.3065 sd 0
+   + written-recognition:form:sq:inv12              new      new=Y automatic            due  R - new -> due 10-28T09:13 learning S 2.3065 sd 0
+   - skipped x19: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x1: eligible for the next micro-deck; no scheduling card was created
+   intake decisions: {"already-covered":17,"test-now":5,"low-priority":32,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 37
+── [answers rated 3] S7 (auto) 2026-10-28T09:20Z  allowance used 4->5, remaining 1->0; planned 8/10 (dueCount 7, newCount 1); availableWork {"questions":8,"newQuestions":1}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + written-recognition:form:sq:inv08              learning new=n automatic            due 10-28T09:12 R 1 learning -> due 10-30T09:20 review S 2.3065 sd 2
+   + written-recognition:form:sq:inv09              learning new=n automatic            due 10-28T09:12 R 1 learning -> due 10-30T09:20 review S 2.3065 sd 2
+   + written-recognition:form:sq:inv11              learning new=n automatic            due 10-28T09:13 R 1 learning -> due 10-30T09:21 review S 2.3065 sd 2
+   + written-recognition:form:sq:inv12              learning new=n automatic            due 10-28T09:13 R 1 learning -> due 10-30T09:21 review S 2.3065 sd 2
+   + written-recognition:form:sq:w7                 due      new=n automatic            due 10-28T09:00 R 0.9033 review -> due 11-03T09:21 review S 5.5956 sd 6
+   + written-recognition:form:sq:w5                 due      new=n automatic            due 10-28T09:01 R 0.9026 review -> due 11-03T09:22 review S 5.5709 sd 6
+   + written-recognition:form:sq:w4                 due      new=n automatic            due 10-28T09:01 R 0.9035 review -> due 11-01T09:22 review S 3.9435 sd 4
+   + written-recognition:form:sq:inv14              new      new=Y automatic            due  R - new -> due 10-28T09:32 learning S 2.3065 sd 0
+   - skipped x22: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x4: session or daily new-item budget exhausted
+   intake decisions: {"already-covered":21,"test-now":5,"low-priority":28,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 33
+── [answers rated 3] SD3 (saved) 2026-10-28T12:00Z  allowance used 5->5, remaining 0->0; planned 9/9 (dueCount 1, newCount 0); availableWork {"questions":0,"newQuestions":0}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Explicit practice is capped by the requested collection, configured maximum, and available session time.
+   + written-recognition:form:sq:w1                 ?        new=n explicit:saved-deck  due 11-04T09:02 R 0.9693 review -> due 11-04T09:02 review S 8.7603 sd 9 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w2                 ?        new=n explicit:saved-deck  due 11-04T09:00 R 0.9829 review -> due 11-04T09:00 review S 8.2938 sd 8 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w3                 ?        new=n explicit:saved-deck  due 10-30T09:00 R 0.9245 review -> due 10-30T09:00 review S 5.9128 sd 6 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w4                 ?        new=n explicit:saved-deck  due 11-01T09:22 R 1 review -> due 11-01T09:22 review S 3.9435 sd 4 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w5                 ?        new=n explicit:saved-deck  due 11-03T09:22 R 1 review -> due 11-03T09:22 review S 5.5709 sd 6 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w6                 ?        new=n explicit:saved-deck  due 10-31T09:00 R 0.9492 review -> due 10-31T09:00 review S 4.8708 sd 5 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w7                 ?        new=n explicit:saved-deck  due 11-03T09:21 R 1 review -> due 11-03T09:21 review S 5.5956 sd 6 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w8                 ?        new=n explicit:saved-deck  due 11-07T09:01 R 0.9765 review -> due 11-07T09:01 review S 11.7503 sd 12 EARLY-PRACTICE(schedule unchanged)
+   + written-recognition:form:sq:w9                 ?        new=n explicit:saved-deck  due 10-28T09:20 R 0.8872 review -> due 11-02T12:03 review S 5.0634 sd 5
+── [answers rated 3] S8 (auto) 2026-10-30T09:00Z  allowance used 0->0, remaining 5->5; planned 10/10 (dueCount 10, newCount 0); availableWork {"questions":17,"newQuestions":5}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + written-recognition:form:sq:inv14              learning new=n automatic            due 10-28T09:32 R 0.9468 learning -> due 11-10T09:00 review S 10.9643 sd 11
+   + written-recognition:form:sq:inv02              due      new=n automatic            due 10-28T09:20 R 0.8809 review -> due 11-15T09:00 review S 16.188 sd 16
+   + auditory-recognition:form:sq:w3                due      new=n automatic            due 10-28T09:21 R 0.8809 review -> due 11-15T09:01 review S 16.188 sd 16
+   + meaning-to-target-retrieval:form:sq:w2         due      new=n automatic            due 10-28T09:21 R 0.8809 review -> due 11-15T09:01 review S 16.188 sd 16
+   + written-recognition:form:sq:inv01              due      new=n automatic            due 10-28T09:21 R 0.8809 review -> due 11-15T09:01 review S 16.188 sd 16
+   + written-recognition:form:sq:inv03              due      new=n automatic            due 10-28T09:40 R 0.8809 review -> due 11-15T09:02 review S 16.188 sd 16
+   + written-recognition:form:sq:inv05              due      new=n automatic            due 10-29T09:20 R 0.9095 review -> due 11-13T09:02 review S 13.8358 sd 14
+   + written-recognition:form:sq:inv06              due      new=n automatic            due 10-29T09:20 R 0.9095 review -> due 11-13T09:02 review S 13.8358 sd 14
+   + productive-recall:form:sq:w5                   due      new=n automatic            due 10-29T09:21 R 0.9095 review -> due 11-13T09:03 review S 13.8358 sd 14
+   + written-recognition:form:sq:inv04              due      new=n automatic            due 10-29T09:21 R 0.9095 review -> due 11-13T09:03 review S 13.8358 sd 14
+   - skipped x18: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x7: eligible for the next micro-deck; no scheduling card was created
+   intake decisions: {"already-covered":22,"test-now":5,"low-priority":27,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 32
+── [answers rated 3] S9 (auto) 2026-11-03T09:00Z  allowance used 0->1, remaining 5->4; planned 10/10 (dueCount 9, newCount 1); availableWork {"questions":14,"newQuestions":5}
+   batch: Adaptive policy starts at 10; user limit 20 caps this initial batch. | Available workload capacity supports the remaining hard new-card allowance.
+   + written-recognition:form:sq:inv07              due      new=n automatic            due 10-29T09:21 R 0.8225 review -> due 11-24T09:00 review S 21.4262 sd 21
+   + written-recognition:form:sq:w3                 due      new=n automatic            due 10-30T09:00 R 0.8601 review -> due 11-16T09:00 review S 13.2549 sd 13
+   + written-recognition:form:sq:inv08              due      new=n automatic            due 10-30T09:20 R 0.8389 review -> due 11-23T09:01 review S 19.9057 sd 20
+   + written-recognition:form:sq:inv09              due      new=n automatic            due 10-30T09:20 R 0.8389 review -> due 11-23T09:01 review S 19.9057 sd 20
+   + written-recognition:form:sq:inv11              due      new=n automatic            due 10-30T09:21 R 0.8389 review -> due 11-23T09:01 review S 19.9057 sd 20
+   + written-recognition:form:sq:inv12              due      new=n automatic            due 10-30T09:21 R 0.8389 review -> due 11-23T09:02 review S 19.9057 sd 20
+   + written-recognition:form:sq:w6                 due      new=n automatic            due 10-31T09:00 R 0.8625 review -> due 11-18T09:02 review S 15.0588 sd 15
+   + written-recognition:form:sq:w4                 due      new=n automatic            due 11-01T09:22 R 0.8829 review -> due 11-11T09:02 review S 8.2543 sd 8
+   + written-recognition:form:sq:w9                 due      new=n automatic            due 11-02T12:03 R 0.9009 review -> due 11-17T09:03 review S 13.5801 sd 14
+   + written-recognition:form:sq:inv15              new      new=Y automatic            due  R - new -> due 11-03T09:13 learning S 2.3065 sd 0
+   - skipped x21: not due; optional remediation is separate from scheduled review
+   - skipped x1: suspended; resume deliberately before practice
+   - skipped x4: eligible for the next micro-deck; no scheduling card was created
+   intake decisions: {"already-covered":22,"test-now":5,"low-priority":27,"needs-validation":3}; tracked units in neither plan.items nor plan.skipped: 32
+
+stdout | test/goreview/transfer/nine-words.test.ts > nine words: chronological reproduction (every answer rated Easy) > starting point: the nine words, three of them with retrieval and listening variants
+START STATES {"w1":"review@10-26T09:00","w3":"review@10-30T09:00","w8":"review@10-25T09:00","w2":"review@10-27T09:00","w4":"review@10-23T09:15","w5":"relearning@10-26T08:45","w7":"relearning@10-26T08:30","w6":"relearning@10-24T09:10","w9":"relearning@10-26T09:05"}
+
+stdout | test/goreview/transfer/nine-words.test.ts > nine words: chronological reproduction (every answer rated Easy) > 3: once the nine are not due, the next sessions admit new eligible inventory units up to the daily allowance, and are not empty
+NEW CARDS BY UTC DAY {"2026-10-26":["form:sq:inv02","form:sq:w3","form:sq:w2","form:sq:inv01","form:sq:inv03"],"2026-10-27":["form:sq:inv05","form:sq:inv06","form:sq:w5","form:sq:inv04","form:sq:inv07"],"2026-10-28":["form:sq:inv08","form:sq:inv09","form:sq:inv11","form:sq:inv12","form:sq:inv14"],"2026-10-30":["form:sq:inv15","form:sq:inv17","form:sq:inv10","form:sq:inv13","form:sq:inv16"],"2026-11-03":["form:sq:inv18","form:sq:inv20","form:sq:inv21","form:sq:inv19","form:sq:inv22"]}
+
+stdout | test/extension/active.coverage.de.test.ts > the Manifest's opening paragraphs, read as German > the word list alone leaves a large share unmarked; the forms index catches nearly every German word and no English or Hebrew one
+Manifest coverage: analyser 220/317 (69 %), with the forms index, endings and compounds 316/317 (100 %); left: Umschiffung
+
+ ✓ test/extension/active.coverage.de.test.ts (1 test) 1292ms
+   ✓ the Manifest's opening paragraphs, read as German > the word list alone leaves a large share unmarked; the forms index catches nearly every German word and no English or Hebrew one  1291ms
+stdout | test/goreview/transfer/nine-words.test.ts > nine words: chronological reproduction (every answer rated Easy) > 4: when nothing is due and the allowance is spent, planSession returns no items; skipped explains the deck cards and the test-now outcomes only
+NOTHING-DUE STATE {"at":"2026-10-26T12:00:00.000Z","budget":{"used":5,"remaining":0},"dueNow":0,"items":0,"availableWork":{"questions":0,"newQuestions":0},"whys":["new-card budget exhausted","not due; optional remediation is separate from scheduled review","suspended; resume deliberately before practice"],"decisions":{"already-covered":12,"test-now":5,"low-priority":37,"needs-validation":3},"deckSize":41}
+
+stdout | test/goreview/transfer/nine-words.test.ts > nine words: chronological reproduction (every answer rated Easy) > 4b: the distinct `why` strings the planner used across the whole simulation; dismissed vocabulary has its own reason at the shared gate
+DISTINCT skipped.why STRINGS:
+  another card for this word is already in this batch; deferred to a later batch
+  eligible for the next micro-deck; no scheduling card was created
+  new-card budget exhausted
+  not due; optional remediation is separate from scheduled review
+  session or daily new-item budget exhausted
+  suspended; resume deliberately before practice
+
+stdout | test/goreview/transfer/nine-words.test.ts > nine words: chronological reproduction (every answer rated Easy) > 5: cards per unit, and whether the retrieval / listening variants come due independently
+UNITS WITH MORE THAN ONE CARD (end of simulation): form:sq:w1=3, form:sq:w3=2, form:sq:w8=3, form:sq:w2=2, form:sq:w4=3, form:sq:w5=2
+w1 due instants at start (rec | ret | lis): 2026-10-26T09:00:00.000Z | 2026-10-28T09:00:00.000Z | 2026-10-27T21:00:00.000Z
+second-card admissions for words already in the deck: card:auditory-recognition:form:sq:w3 2026-10-26T09:02; card:meaning-to-target-retrieval:form:sq:w2 2026-10-26T09:03; card:productive-recall:form:sq:w5 2026-10-27T09:01
+
+stdout | test/goreview/transfer/nine-words.test.ts > variant: the same world, every answer rated Good > 6: Good on a new card puts it in a 10-minute learning step, so the new cards of the day come straight back and the later sessions hold only 1-6 cards
+GOOD VARIANT planned per auto session: S1=10(llldddnnnn) S2=6(llllln) S3=1(l) S4=6(dnnnnn) S5=5(lllll) S6=10(ddddddnnnn) S7=8(lllldddn) S8=10(lddddddddd) S9=10(dddddddddn)
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P1 Class Essentials: ten first-time class cards in one UTC day, asked as an explicit saved deck
+P1 admissionBudget with 10 / 3 class cards created today: {"used":0,"remaining":5} {"used":0,"remaining":5}
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P1 Class Essentials: ten first-time class cards in one UTC day, asked as an explicit saved deck
+P1 plan: new items 3 | skipped reasons ["not due; optional remediation is separate from scheduled review","suspended; resume deliberately before practice","eligible for the next micro-deck; no scheduling card was created"] | batch Available workload capacity supports the remaining hard new-card allowance.
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P1 Class Essentials: ten first-time class cards in one UTC day, asked as an explicit saved deck
+P1 control (no class cards today): new items 3
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P2 knowledge missing: with no knowledge rows no candidate reaches the planner; intake files every one under needs-validation with the "beyond New" reason SECOND
+P2 first outcome: ["automatic admission needs observed knowledge beyond New","the pack has no verified facts for this unit, so no exercise can be built"] | decisions {"low-priority":40} | plan.skipped []
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P3 facts unavailable: a provider returning undefined makes the unit needs-validation; the planner never sees it (no skipped row either)
+P3 decisions (provider answers undefined for everything): {"needs-validation":40}
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P4 learning steps: New+Good -> learning, due +10 min, planned FIRST (tier 0) 20 min later; New+Easy graduates, due >= 1 day
+P4 Good: learning 2026-10-26T09:10:10.000Z | Easy: review 2026-11-03T09:00:10.000Z scheduledDays 8
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P5 per-dimension variants: a familiar word with spaced recognition successes is offered other skills; each is its own card with its own schedule
+P5 choosePractice: {"readingRecognition":"written-recognition/written-recognition","productiveRetrieval":"meaning-to-form/meaning-to-target-retrieval","listeningRecognition":"audio-to-meaning/auditory-recognition","contextualProduction":"sentence-completion/productive-recall","grammaticalUnderstanding":"morphological-identification/morphological-analysis","retrievalButGoalOff":"written-recognition/written-recognition","listeningButAudioOff":"written-recognition/written-recognition"}
+P5 intake for the retrieval objective: test-now meaning-to-form | level Familiar: recognised repeatedly, so reliable recognition is the next step / score 0.80 ≥ 0.5
+P5 refusal text: the fetched unit is unreviewed; productiveRetrieval requires production-validated facts
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P6 explicit saved-deck practice of a not-due card rated Easy leaves the schedule unchanged (earlyPractice); a failure is still a lapse
+P6 due before/after an explicit Easy: 2026-11-23T09:00:00.000Z 2026-11-23T09:00:00.000Z | reps 3 3 | stability 29.5735795 29.5735795
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P7 remediation: three cards whose last rating is Again are needsStudy, are not planned before they are due, and stay unresolved with no study marker
+P7 at +0: {"items":0,"why":["not due; optional remediation is separate from scheduled review"],"backlog":[{"id":"r1","needsStudy":true,"ready":false,"failures":1,"reasons":["failed-retrieval"]},{"id":"r2","needsStudy":true,"ready":false,"failures":1,"reasons":["failed-retrieval"]},{"id":"r3","needsStudy":true,"ready":false,"failures":1,"reasons":["failed-retrieval"]}]}
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P8 workload throttle: due work is reserved out of the session time before any new admission (a short session admits 0 new with allowance left)
+P8 [{"minutes":1,"items":2,"newItems":0,"reason":"New admissions are capped at 0 after reserving 175 seconds for due and upcoming scheduled work plus 35% expected short-term returns."},{"minutes":3,"items":7,"newItems":0,"reason":"New admissions are capped at 0 after reserving 175 seconds for due and upcoming scheduled work plus 35% expected short-term returns."},{"minutes":5,"items":10,"newItems":3,"reason":"Available workload capacity supports the remaining hard new-card allowance."},{"minutes":10,"items":10,"newItems":3,"reason":"Available workload capacity supports the remaining hard new-card allowance."},{"minutes":20,"items":10,"newItems":3,"reason":"Available workload capacity supports the remaining hard new-card allowance."}]
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P9 a stale causal predecessor makes an Easy a no-op: the same-device sibling is excluded and the card is planned again
+P9 history: [{"rating":1},{"rating":4,"excluded":"stale same-device sibling; canonical event is rev-00645"}] | phase relearning | due 2026-10-26T09:10:00.000Z
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P11 an unrated answer never schedules: a card whose answers carry rating null stays NEW and is planned as new in every session (computer-voice listening at master 19b66367)
+P11 [{"at":"10-26T10:00","items":1,"isNew":true,"queue":"new","budget":{"used":1,"remaining":4},"historyLen":0},{"at":"10-26T11:00","items":1,"isNew":true,"queue":"new","budget":{"used":1,"remaining":4},"historyLen":0},{"at":"10-27T09:00","items":1,"isNew":true,"queue":"new","budget":{"used":0,"remaining":5},"historyLen":0},{"at":"10-27T10:00","items":1,"isNew":true,"queue":"new","budget":{"used":0,"remaining":5},"historyLen":0},{"at":"10-29T09:00","items":1,"isNew":true,"queue":"new","budget":{"used":0,"remaining":5},"historyLen":0}]
+P11 same answers with rating 4 + listeningPractice:true, quality none -> reps scheduled at this revision (0 = master 19b66367, 1 = a revision that honours the flag): 1
+
+stdout | test/goreview/transfer/nine-words.test.ts > probes P1-P11 > P11b nine such cards fill the new-card slots every day: the same five are planned in every session, the other four never advance (cycling through nine words)
+P11b [{"at":"10-26T10:00","items":"","skipped":["new-card budget exhausted"]},{"at":"10-26T11:00","items":"","skipped":["new-card budget exhausted"]},{"at":"10-27T09:00","items":"12345","skipped":["session or daily new-item budget exhausted"]},{"at":"10-28T09:00","items":"12345","skipped":["session or daily new-item budget exhausted"]},{"at":"10-31T09:00","items":"12345","skipped":["session or daily new-item budget exhausted"]}]
+
+ ✓ test/goreview/transfer/nine-words.test.ts (21 tests) 3533ms
+ ✓ test/extension/active.confirm.test.ts (13 tests) 1259ms
+   ✓ confirming through the dictionary > records the confirmed words as encounters, with the form and lemma ids  906ms
+ ✓ test/extension/active.content.test.ts (13 tests) 6337ms
+   ✓ the scan > records newly visible words only after the dwell, one token group per event  1833ms
+   ✓ the scan > does not record when layout gives no rectangle, and cancelling Active cancels a pending dwell  1731ms
+   ✓ the scan > retries a rejected durable write without marking the words as captured  1978ms
+   ✓ the scan > a mark on the card ("New", "Seen" …) refreshes the word: its rows are asked again and the underline follows the mark  360ms
+ ✓ test/goreview-app/next-deck.test.ts (3 tests) 967ms
+   ✓ Repository-backed remediation > persists a study marker without review credit and starts only a delayed typed reassessment after reload  484ms
+   ✓ Repository-backed remediation > keeps every unresolved item visible while only one studied item is ready for the limited follow-up  388ms
+ ✓ test/goreview-app/knowledge-loading.test.ts (7 tests) 1182ms
+ ✓ test/goreview-app/account-page.test.ts (5 tests) 1232ms
+   ✓ the account page > an unconfirmed address gets the note and the resend link; the name can be added in place and is sent to the service  306ms
+ ✓ test/goreview-app/sync-speed.test.ts (10 tests) 1199ms
+ ✓ test/goreview-app/licences.test.ts (6 tests) 1342ms
+   ✓ the Licences and attribution section in Settings > treats a missing file, an HTTP error and a host that answers with the app's own page as a failure  713ms
+ ✓ test/goreview-app/flashcards.test.ts (5 tests) 1384ms
+   ✓ traditional word flashcards > uses GoListen pronunciation for the visible word, marks it as assistance, and keeps it out of listening evidence  374ms
+ ✓ test/goreview-app/recent-language.test.ts (8 tests) 1424ms
+   ✓ with an account, and Albanian and German enabled > a lookup that arrives later by sync moves the default; a pick is remembered through state and wins over it  419ms
+ ✓ test/goreview-app/vocabulary.test.ts (5 tests) 1442ms
+   ✓ My Vocabulary > shows encountered New items, observed forms and safe source titles without adding them to GoReview  309ms
+   ✓ My Vocabulary > sends search and knowledge filters to the Repository, and loads the next page on request  509ms
+ ✓ test/goreview-app/phase-one-v2.test.ts (10 tests) 1582ms
+ ✓ test/goreview-app/live-app.test.ts (11 tests) 2152ms
+   ✓ live updates in the app > the session > after the card is graded the session carries on, and a summary already on screen is drawn again when something arrives  350ms
+ ✓ test/goreview-app/deck-size.test.ts (7 tests) 2160ms
+   ✓ cards per deck > defaults to 10; the home sizes the deck to it and carries no deck-size control (Settings keeps the stepper; the owner, 2026-10-28)  328ms
+   ✓ cards per deck > the typed number and the stepper in Settings change the plan size for the next visit to the home, and the size is clamped to 5 to 60 (no preset pills, 2026-10-28)  605ms
+   ✓ cards per deck > the saved deck keeps its own size  315ms
+   ✓ cards per deck > with a session open a new size set in Settings is kept for the next deck; the open session stays resumable  355ms
+ ✓ test/goreview-app/class-essentials.test.ts (14 tests) 2182ms
+   ✓ Class Essentials: in Saved decks > is there on the first visit with no GoLearn encounter, and seeding again never duplicates it  308ms
+   ✓ Class Essentials: in Saved decks > opens through the flashcard flow: the phrase, the meaning hidden, then revealed, graded once, and the ordinary queue never meets it  343ms
+   ✓ Class Essentials: in Saved decks > shows the active language's own set, and no deck for a language without one  387ms
+ ✓ test/goreview-app/freshness.test.ts (19 tests) 2284ms
+ ✓ test/goreview-app/local-mode.test.ts (19 tests) 2276ms
+   ✓ on the device, with no account > does not redirect a deep link to the sign-in page, and shows no team, leader or mission team on any screen  605ms
+   ✓ on the device, with no account > shows no team even for an account whose enrolment carries one, and labels the language only  436ms
+ ✓ test/goreview-app/sync-settings.test.ts (13 tests) 2455ms
+ ✓ test/goreview-app/a11y-fixes.test.ts (15 tests) 2575ms
+   ✓ one-key shortcuts and the session clock (A-08, A-09) > turning the shortcuts off is remembered on the device, and a session then ignores 1 to 4 and Space (the buttons still work)  377ms
+ ✓ test/goreview-app/review.test.ts (11 tests) 2961ms
+   ✓ the due-review summary > offers the deck size stepper in place of the session time (no preset pills since 2026-10-28), and saves the choice  362ms
+   ✓ the one active language > re-folds the deck for the language it switches to, from the same local log  328ms
+   ✓ the session controls > are saved as ReviewPreferences on every change and survive a restart  310ms
+ ✓ test/extension/level.save.test.ts (8 tests) 2648ms
+   ✓ A. a level pressed on the card is saved as soon as it is pressed > the meter shows it in the same tick; the device holds the event before any timer runs; the next profile reply carries the level; the page marks and counts follow  346ms
+   ✓ C. a press the worker cannot save says why (the reason is the worker's own), for every level, signed out and signed in > signed out: each of the six levels, refused by a full store, says "Could not save that: <reason>" and is taken back; saved once the store takes it  405ms
+   ✓ C. a press the worker cannot save says why (the reason is the worker's own), for every level, signed out and signed in > signed in: each of the six levels, refused by a full store, says "Could not save that: <reason>" and is taken back; saved once the store takes it  441ms
+   ✓ B. clicking a new word turns it from New into Seen > a word the learner marked New is released by the next lookup: Seen again (a repeat of the same sentence is the same lookup and does not count)  594ms
+ ✓ test/goreview-app/offline.test.ts (15 tests) 3010ms
+   ✓ offline: My vocab > the home counts the saved words offline too  328ms
+   ✓ offline: the home keeps its deck > Saved decks and the preferences come back from the snapshot if the storage lost them, and are never overwritten when present  512ms
+ ✓ test/goreview-app/remediation-projection.test.ts (5 tests) 1058ms
+   ✓ effectiveRemediation: one projection over ordinary and Class Essentials cards > lists, counts and splits an ordinary and a class failure the same way on the model, the home and the remediation screen  314ms
+ ✓ test/extension/layers.test.ts (45 tests) 1590ms
+ ✓ test/goreview-app/home.test.ts (18 tests) 3653ms
+   ✓ the GoReview home > shows a fifth entry, Biblia, when the app ships Biblia beside it (the iPhone edition, the extension), linking to it  312ms
+   ✓ the GoReview home > Save deck moves the deck to Saved decks, keeps due obligations ready, and the card starts practice with Remove beside it (2026-10-28)  312ms
+   ✓ My vocab: add a word to the current deck > Add records selected optional practice without claiming the word joins the next automatic batch  385ms
+ ✓ test/goreview-app/account-hardening.test.ts (18 tests) 3981ms
+   ✓ #/account > shows the verification state: not confirmed (with a resend), confirmed, and not reported  438ms
+   ✓ #/account > a refused or unreachable download downloads nothing and says why  318ms
+   ✓ deleting the account > needs the password, explains the 14-day grace, then shows the pending deletion with a Cancel  404ms
+   ✓ the changed pages are accessible > sign-in with the forgot form, Settings with the account blocks and a pending deletion, the privacy policy and the terms audit clean  476ms
+ ✓ test/extension/language.chosen.test.ts (9 tests) 1136ms
+   ✓ one clicked word on a page declared as English, with the language chosen in setup > 'de': the card opens in the chosen language, decided from the words around the selection  398ms
+ ✓ test/extension/analysers.loading.test.ts (16 tests) 1057ms
+   ✓ parseSelection and a language that is not loaded > reads the language once it is registered, and Albanian without any load  580ms
+ ✓ test/extension/sites.controller.test.ts (21 tests) 962ms
+   ✓ the registry picks the adapter and the lookup records which > Libroteka: an Albanian page with lang=sq is looked up as Albanian, on the document's own word, with the basis recorded everywhere  300ms
+ ✓ test/extension/sites.fixtures.test.ts (44 tests) 847ms
+ ✓ test/extension/background.test.ts (17 tests) 904ms
+   ✓ background: gestures inject the content script > the context-menu item injects and asks the page to look up, handing over the browser's copy of the selected text  441ms
+ ✓ test/extension/structure.test.ts (28 tests) 819ms
+   ✓ structureOf: the analyser > compound components from the real German analyser: provisional, named, with the link kept apart  401ms
+ ✓ test/extension/active.integration.test.ts (2 tests) 873ms
+   ✓ GoLearn Active, real page to real worker > a word looked up on the device is underlined by the scan after the switch goes on; the words asked about never reach the service  333ms
+   ✓ GoLearn Active, real page to real worker > a click on a word opens the card through the real stack and records the lookup on the device; switching off clears the page  426ms
+ ✓ test/extension/syntax.card.test.ts (5 tests) 592ms
+   ✓ the card model > carries the relation, its basis, the head, the alternatives and the dependents of the selected word  491ms
+ ✓ test/extension/integration.test.ts (5 tests) 1052ms
+ ✓ test/extension/translation.ui.test.ts (7 tests) 555ms
+   ✓ sentence translation card flow > keeps the word-by-word list and reports a safe unavailable state without a provider  320ms
+ ✓ test/goreview-app/settings-prefs.test.ts (4 tests) 847ms
+ ✓ test/goreview-app/home-reload.test.ts (5 tests) 994ms
+   ✓ the home on a return > paints again from memory after Settings and after the account page: no candidates request, the same entries  495ms
+ ✓ test/extension/language.evidence.test.ts (11 tests) 588ms
+ ✓ test/extension/webGeneric.test.ts (25 tests) 398ms
+ ✓ test/extension/card.playback.test.ts (11 tests) 370ms
+ ✓ test/extension/popupStatus.test.ts (12 tests) 806ms
+ ✓ test/extension/translit.test.ts (12 tests) 353ms
+ ✓ test/goreview-app/myvocab-add.test.ts (3 tests) 659ms
+ ✓ test/goreview-app/automatic-deck.test.ts (3 tests) 777ms
+   ✓ GoReview automatic deck admission > proposes the highest scored buildable items without creating cards and stays idempotent across reloads  327ms
+   ✓ GoReview automatic deck admission > retries the same evidence snapshot when admission preferences or buildability change  308ms
+ ✓ test/goreview-app/shell.test.ts (11 tests) 894ms
+   ✓ the hash router > after sign-in the header has the Go logo, the account and Settings icons, and is the same on every screen (no language, no "← GoReview"; the logo is the way home)  410ms
+ ✓ test/extension/restrictions.test.ts (10 tests) 370ms
+ ✓ test/goreview-app/overlap-provenance-ui.test.ts (3 tests) 627ms
+ ✓ test/extension/active.popup.test.ts (8 tests) 362ms
+ ✓ test/extension/active.scan.test.ts (8 tests) 170ms
+ ✓ test/extension/card.forms.test.ts (4 tests) 251ms
+ ✓ test/goreview-app/workspace-recovery.test.ts (3 tests) 485ms
+ ✓ test/goreview-app/selection-report.test.ts (8 tests) 441ms
+ ✓ test/extension/card.variants.test.ts (5 tests) 84ms
+ ✓ test/goreview-app/splash.test.ts (4 tests) 20ms
+ ✓ test/extension/actionPopup.test.ts (4 tests) 48ms
+ ✓ test/extension/sites.registry.test.ts (42 tests) 26ms
+ ✓ test/extension/active.highlight.test.ts (3 tests) 11ms
+ ✓ test/goreview-app/loading.test.ts (3 tests) 14ms
+ ✓ test/extension/greek-word-analysis.test.ts (7 tests) 54ms
+ ✓ test/extension/voice.test.ts (14 tests) 10ms
+warning: in the working copy of 'packages/goreview/src/planner/admission-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/budget.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/eligibility.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/learning-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/microdeck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/remediation.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/deck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/replay-profile.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/review-convergence.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/repository-contract/src/review-evidence.ts', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/goreview-app/real-engine.test.ts (1 test) 474ms
+   ✓ GoReview's real modules behind the shell > asks a real Albanian retrieval question from pack facts and records a real CardReviewed  473ms
+ ✓ test/extension/contract.test.ts (10 tests) 8ms
+ ✓ test/extension/harness.hook.test.ts (12 tests) 536ms
+   ✓ a fixture address chooses the entry and decides nothing about it > positive control: a fixture naming an enabled, unverified entry is read  391ms
+ ✓ test/goreview-app-e2e/review-reference.test.ts (13 tests) 1113ms
+   ✓ Prompt 5 §21 — GoReview over the real Repository, pack, scheduler, GoListen and GoLearn > 14–16. back in GoLearn the card shows the learner's history and the full explanation stays available  435ms
+ ✓ test/goreview-app/performance.test.ts (7 tests) 348ms
+ ↓ test/extension/bundle.test.ts (10 tests | 10 skipped)
+ ✓ test/goreview-app/session.test.ts (36 tests) 10653ms
+   ✓ a written exercise > records active time for an explicitly attempted answer, measured from card display  379ms
+   ✓ pending GoListen playback > keeps a managed unanswered stimulus playable after leaving and reopening  373ms
+   ✓ a self-graded question > omits elapsed time after a long idle interval and records nothing for an abandoned prompt  593ms
+   ✓ an audio-only question > removes typing after revealing the answer and explains the self-grades  312ms
+   ✓ an audio-only question > withholds a delayed shared playback failure and lets a completed retry count  564ms
+   ✓ skipping, finishing early and setting items aside > Esc skips and writes nothing; finishing early leaves the rest due  328ms
+   ✓ skipping, finishing early and setting items aside > leaving mid-feedback records the answer and keeps the remaining session resumable  318ms
+   ✓ skipping, finishing early and setting items aside > offers recovery on the session route after a reload cleared the in-memory run  308ms
+   ✓ skipping, finishing early and setting items aside > snooze, suspend and dismiss are events, and the session moves on  336ms
+   ✓ challenging an answer and reporting an analysis error > "Report an analysis error" goes to the correction route with the form and what it should be, and challenges the answer  400ms
+ ✓ test/goreview-app/home-stale-return.test.ts (2 tests) 330ms
+   ✓ the home after a learning return comes due > drops the memo and shows the card once its return fell due while the memo held; Begin then plans with it  328ms
+ ✓ test/goreview-app/mobile.test.ts (9 tests) 169ms
+ ✓ test/goreview/transfer/scenarios.test.ts (8 tests) 333ms
+ ✓ test/goreview-app/hi-real-deck.test.ts (1 test) 307ms
+   ✓ real Hindi automatic deck > proposes dictionary-backed surfaces and persists only answered cards  306ms
+ ✓ test/goreview-app/state.test.ts (10 tests) 49ms
+warning: in the working copy of 'packages/goreview/src/planner/admission-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/budget.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/eligibility.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/learning-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/microdeck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/remediation.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/deck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/replay-profile.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/review-convergence.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/repository-contract/src/review-evidence.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/admission-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/budget.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/eligibility.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/learning-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/microdeck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/remediation.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/deck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/replay-profile.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/review-convergence.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/repository-contract/src/review-evidence.ts', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/adapters/german-production.test.ts (70 tests) 751ms
+   ✓ German production checks on the real adapter > finds and fixes: auxiliary: habe → bin  430ms
+stdout | test/adapters/german-morphology-real.test.ts > real lexicon: cost > builds the index and answers 20,000 lookups quickly
+index build 335 ms for 1476 nouns, 890 verbs, 358 adjectives; 20,000 first lookups 157 ms (10350 distinct forms), 20,000 repeated 87 ms, 55892 readings
+
+ ✓ test/adapters/german-morphology-real.test.ts (175 tests) 2575ms
+   ✓ real lexicon: nouns > Männern is a form of Mann  474ms
+   ✓ real lexicon: every entry > every form of every verb analyses back to its own lemma  830ms
+   ✓ real lexicon: cost > builds the index and answers 20,000 lookups quickly  595ms
+ ✓ test/adapters/latin-gaps.test.ts (8 tests) 1629ms
+warning: in the working copy of 'packages/goreview/src/planner/admission-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/budget.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/eligibility.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/learning-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/microdeck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/remediation.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/deck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/replay-profile.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/review-convergence.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/repository-contract/src/review-evidence.ts', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/goreview/transfer/scale-scenarios.test.ts (3 tests) 3034ms
+   ✓ scale and the remaining learner scenarios > I a returning learner: 1,500 cards all overdue after sixty days away plan as one bounded batch, with the whole backlog counted and nothing invented  343ms
+   ✓ scale and the remaining learner scenarios > J thousands of cards and tens of thousands of chained reviews reconstruct within bounds, and identically from any delivery order  2683ms
+ ✓ test/goreview-app/profiles.test.ts (7 tests) 17ms
+ ✓ test/goreview-app/repair-material-v2.test.ts (7 tests) 23ms
+ ✓ test/adapters/hindi-paradigm.test.ts (21 tests) 809ms
+   ✓ round trip on the word list > every cell of a listed noun, adjective or verb is found again from the analysis of its own form  790ms
+ ✓ test/adapters/german-syntax.test.ts (38 tests) 2626ms
+   ✓ German syntax: the adapter offers it > is wired into the adapter and names its analyzer  489ms
+   ✓ German syntax: invariants over every gold sentence and every corpus sentence > every relation has a non-empty basis, a head inside the sentence, no self-loop, and the heads form a forest with one root at most  1300ms
+   ✓ German syntax: invariants over every gold sentence and every corpus sentence > the corpus and gold sentences are attached to a measured share (97 % of the word tokens; floor 95 %)  467ms
+warning: in the working copy of 'packages/goreview/src/planner/admission-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/budget.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/eligibility.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/learning-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/microdeck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/remediation.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/deck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/replay-profile.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/review-convergence.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/repository-contract/src/review-evidence.ts', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/adapters/albanian-paradigm.test.ts (23 tests) 675ms
+   ✓ round trip over the whole word list: every generated form is read back to the cell it came from > every noun, adjective and verb cell: the analysis of its form has a reading whose features find that cell  661ms
+ ✓ test/adapters/hindi-syntax.test.ts (36 tests) 712ms
+   ✓ the Hindi corpus > attaches nearly every word, always makes a tree with one root, and keeps a few alternatives  492ms
+warning: in the working copy of 'packages/goreview/src/planner/admission-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/budget.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/eligibility.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/learning-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/microdeck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/remediation.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/deck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/replay-profile.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/review-convergence.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/repository-contract/src/review-evidence.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/.eas/build/ios-testflight.yml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/app.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/capacitor.config.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/eas.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/scripts/archive-testflight.sh', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/scripts/prepare-eas-ios-project.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/scripts/set-build-version.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/scripts/validate-app-icon.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/templates/eas-project/nested/extra.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/templates/eas-project/package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/app.json', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/adapters/spanish-paradigm.test.ts (23 tests) 1063ms
+   ✓ round trip: an analysed form finds its cell > every reading the analysis gives a sampled form of the word-list verbs and irregular tables has a cell with that form  1030ms
+ ✓ test/adapters/hebrew-biblical.test.ts (25 tests) 1105ms
+   ✓ with the full indexes installed (built locally) > a lemma held by the compiled core AND the full index is counted once in Variants (2,599 for אֱלֹהִים, not twice that)  491ms
+ ✓ test/adapters/latin-paradigm.test.ts (24 tests) 855ms
+   ✓ round trip: every generated one-word cell analyses back to its lemma and its own features > reads each cell back  832ms
+ ✓ test/adapters/german-ladder-pass2.test.ts (20 tests) 451ms
+   ✓ 1. separable verbs: zusammen and a particle in front of und > zusammen at the end of a clause is the adverb unless the list holds the verb with it  335ms
+warning: in the working copy of 'packages/goreview-ios/app.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/eas.json', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/goreview-app/service-url.test.ts (3 tests) 7814ms
+   ✓ the review build and the service address > writes the public https address into the copied config.json and leaves the source config alone  1992ms
+   ✓ the review build and the service address > without the variable the copy is the source config  1893ms
+   ✓ the review build and the service address > refuses a plain-http public address and an address carrying a query or credentials  3906ms
+ ✓ test/adapters/hindi-constructions.test.ts (166 tests) 417ms
+   ✓ Hindi construction detectors: ambiguity, confidence, shape > is deterministic and linear on a long sentence  332ms
+warning: in the working copy of 'packages/goreview-ios/capacitor.config.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/eas.json', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/adapters/norwegian-paradigm.test.ts (25 tests) 946ms
+   ✓ round trip: every observed form of the engine's word list finds its cell > nb: form -> analyze -> the cell with those features has that form  428ms
+ ✓ test/adapters/german-paradigm.test.ts (39 tests) 5174ms
+   ✓ noun round trip over the whole word list > every form the engine declines is a cell, and the analysis of the form names that cell  1102ms
+   ✓ adjective round trip over the whole word list > every declined form the analysis reads is a cell of the paradigm  3213ms
+   ✓ verb round trip over the whole word list > every cell of a listed verb that is one written word is a form the analysis reads, with these features  747ms
+ ✓ test/adapters/de.test.ts (16 tests) 428ms
+   ✓ German adapter > detects the separable verb anfangen across the sentence (fing … an)  362ms
+ ✓ test/adapters/german-refine-dictionary.test.ts (3 tests) 395ms
+   ✓ refine after a dictionary replaced a neighbour: the readings of a token stay the same set > hatte stays the perfect auxiliary when the participle after it is now a dictionary entry that names no form (Sie hatte nicht ausgeschlafen)  348ms
+ ✓ test/adapters/latin-wiring.test.ts (6 tests) 843ms
+   ✓ the Latin corpus > reads at least 90 % of the words of the Vulgate sample with a lemma, and the unconfirmed guesses are marked  686ms
+ ✓ test/adapters/greek-shards.test.ts (6 tests) 824ms
+   ✓ the real shards (built locally) > John 1:1 needs a handful of shards; λόγος then has Attic readings beside the Koine core, and the Variants tab shows them  803ms
+ ✓ test/adapters/verification.test.ts (30 tests) 1116ms
+   ✓ Hindi: grapheme integrity, combining marks, danda and double danda > no token and no sentence span starts or ends inside a grapheme cluster (samples and every bundled Hindi text)  348ms
+   ✓ German: inflection and separable constructions > relate(): inflected forms share a lemma, umlaut plurals too; compounds relate to their parts  485ms
+warning: in the working copy of 'packages/goreview-ios/.eas/build/ios-testflight.yml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/capacitor.config.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/eas.json', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/adapters/albanian-verbal.test.ts (48 tests) 551ms
+ ✓ test/adapters/greek-periods.test.ts (20 tests) 7512ms
+   ✓ with the full indexes installed (built locally) > a lemma held by the compiled core AND the full index is counted once in Variants (330× for λόγος in the New Testament, not twice that)  3774ms
+warning: in the working copy of 'packages/goreview-ios/.eas/build/ios-testflight.yml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/scripts/set-build-version.mjs', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/adapters/albanian-constructions.test.ts (183 tests) 299ms
+ ✓ test/adapters/albanian-syntax.test.ts (49 tests | 1 skipped) 231ms
+ ✓ test/adapters/albanian-nominal.test.ts (90 tests) 313ms
+ ✓ test/extension/lexicon.prepare.test.ts (3 tests) 2705ms
+   ✓ preparing a lookup > over the real shards: a Greek sentence gets its Ancient and Modern shards, and λόγος then has an Attic reading  2698ms
+ ✓ test/adapters/german-constructions.test.ts (91 tests) 513ms
+   ✓ German constructions on the real adapter > finds each construction in a plain sentence  354ms
+ ✓ test/adapters/hindi-wiring.test.ts (46 tests) 1242ms
+ ✓ test/adapters/thai-decoding-real.test.ts (8 tests) 422ms
+warning: in the working copy of 'packages/goreview-ios/scripts/prepare-eas-ios-project.mjs', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/adapters/latin-full.test.ts (32 tests) 1123ms
+ ✓ test/adapters/spanish-refine.test.ts (28 tests) 349ms
+   ✓ refine: the adapter's own tokens > equals analyze on every sentence of the bundled Spanish documents, and the flag matches the notes  301ms
+ ✓ test/adapters/albanian-sentence.test.ts (195 tests) 200ms
+ ✓ test/adapters/spanish-morphology.test.ts (29 tests) 439ms
+   ✓ analysis agrees with generation > every generated form of ~60 verbs analyses back to its verb with the same features and varieties  347ms
+ ✓ test/adapters/german-ladder-words.test.ts (14 tests) 455ms
+   ✓ words of the ladder plan that were not in the list > a noun keeps one lemma in its plural and genitive (Kurs, Kurse, Kurses)  398ms
+ ✓ test/adapters/offsets.test.ts (21 tests) 1449ms
+   ✓ token offsets round-trip (all five languages) > de: sample strings  546ms
+ ✓ test/adapters/hebrew-shards.test.ts (3 tests) 404ms
+   ✓ the real shards (built locally) > an unpointed Modern sentence reads as Modern once its shards are in; Genesis 1:1 reads as Biblical from the Biblical shards  381ms
+stdout | test/adapters/german-sentence.test.ts > every candidate of the bundled German documents is well formed > coverage (share of word tokens with a confirmed reading) per family: weg at least 90 %
+German coverage by document family (a confirmed reading):
+  bible: 99.9 % of 1401 word tokens
+  deutschland: 100.0 % of 682 word tokens
+  gespraeche: 100.0 % of 650 word tokens
+  grimm: 96.7 % of 520 word tokens
+  other: 100.0 % of 119 word tokens
+  weg: 100.0 % of 3089 word tokens
+
+ ✓ test/adapters/hindi-lexicon.test.ts (60 tests) 2153ms
+   ✓ forms written alike are separate readings, each with features a learner can be told > no form the list generates has a comma list in any feature, and every bundle is described in words by the adapter  1048ms
+warning: in the working copy of 'packages/goreview-ios/scripts/prepare-eas-ios-project.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/scripts/validate-app-icon.mjs', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/adapters/hindi-morph-guess.test.ts (19 tests) 222ms
+ ✓ test/adapters/spanish-engine-dev.test.ts (42 tests) 243ms
+ ✓ test/adapters/albanian-production.test.ts (43 tests) 168ms
+stdout | test/adapters/german-sentence.test.ts > F. two nouns, one spelling > every pair the rule fires on in the bundled texts is a real homograph of two lemmas
+Homograph nouns the rule fired on (bundled texts): 2 × the plural of Fest or the singular of Feste; 1 × the singular of Arme or the plural of Arm
+
+ ✓ test/adapters/german-sentence.test.ts (271 tests) 3882ms
+   ✓ noun phrase: agreement, government, declension > den guten Mann  552ms
+   ✓ refine > equals analyze on every sentence of the bundled German documents  869ms
+   ✓ every candidate of the bundled German documents is well formed > a unit candidate comes first on both pieces unless it is an unconfirmed guess  303ms
+   ✓ every candidate of the bundled German documents is well formed > every reading has a lemma and a part of speech; a confirmed reading has a gloss or a role; a guess has no gloss  751ms
+ ✓ test/adapters/german-morphology.test.ts (123 tests) 123ms
+warning: in the working copy of 'packages/goreview-ios/scripts/archive-testflight.sh', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/scripts/validate-app-icon.mjs', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/adapters/hindi-morph-persons.test.ts (8 tests) 142ms
+ ✓ test/adapters/hindi-sentences.test.ts (68 tests) 204ms
+ ✓ test/goreview-app/pwa.test.ts (26 tests) 11059ms
+   ✓ sw.js (run in a sandbox) > caches dictionary shards on demand, keeps at most 400, and does not keep one over 3 MB  6171ms
+ ✓ test/adapters/german-lexicon.test.ts (273 tests) 172ms
+ ✓ test/adapters/hindi-morph-verbs.test.ts (10 tests) 129ms
+ ✓ test/adapters/spanish-context.test.ts (63 tests) 159ms
+ ✓ test/extension/sync.test.ts (15 tests) 753ms
+warning: in the working copy of 'packages/goreview-ios/scripts/archive-testflight.sh', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/scripts/validate-app-icon.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/templates/eas-project/package.json', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/extension/sync-timing.test.ts (9 tests) 955ms
+   ✓ events waiting after a failed round > are retried after 5 s, 10 s, 20 s, 30 s, 30 s ... without waiting for the next alarm  350ms
+ ✓ test/adapters/spanish-lexicon.test.ts (28 tests) 360ms
+ ✓ test/extension/parser.test.ts (23 tests) 165ms
+ ✓ test/adapters/thai-syntax.test.ts (35 tests) 288ms
+ ✓ test/goreview/session/runner.test.ts (46 tests) 132ms
+ ✓ test/extension/store.test.ts (12 tests) 156ms
+ ✓ test/adapters/spanish-syntax.test.ts (30 tests) 272ms
+warning: in the working copy of 'packages/goreview-ios/templates/eas-project/nested/extra.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview-ios/templates/eas-project/package.json', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/extension/background.local.test.ts (14 tests) 419ms
+ ✓ test/adapters/albanian-gheg-participles.test.ts (14 tests) 131ms
+ ✓ test/adapters/hindi-gaps.test.ts (17 tests) 177ms
+ ✓ test/extension/sq-stub.test.ts (4 tests) 132ms
+ ✓ test/adapters/hindi-constructions-real.test.ts (80 tests) 151ms
+ ✓ test/adapters/thai-orthography.test.ts (140 tests) 98ms
+ ✓ test/adapters/albanian-closed.test.ts (252 tests) 97ms
+warning: in the working copy of 'packages/goreview/src/planner/admission-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/budget.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/eligibility.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/learning-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/microdeck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/remediation.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/deck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/replay-profile.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/review-convergence.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/repository-contract/src/review-evidence.ts', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/adapters/norwegian-syntax.test.ts (39 tests) 199ms
+ ✓ test/adapters/albanian-ladder.test.ts (11 tests) 183ms
+ ✓ test/extension/entry.integration.test.ts (8 tests) 110ms
+ ✓ test/extension/sync-live.test.ts (2 tests) 381ms
+ ✓ test/adapters/latin-morphology.test.ts (118 tests) 85ms
+ ✓ test/adapters/hindi-morph.test.ts (21 tests) 77ms
+warning: in the working copy of 'packages/goreview/src/planner/admission-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/budget.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/eligibility.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/learning-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/microdeck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/remediation.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/deck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/replay-profile.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/review-convergence.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/repository-contract/src/review-evidence.ts', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/adapters/spanish-literary.test.ts (23 tests) 92ms
+ ✓ test/adapters/thai-lexicon.test.ts (181 tests) 135ms
+ ✓ test/adapters/hindi-production.test.ts (115 tests) 64ms
+ ✓ test/extension/session.test.ts (14 tests) 263ms
+ ✓ test/goreview-app/native-payload-provenance.test.ts (3 tests) 74ms
+ ✓ test/goreview/session/timed-v2.test.ts (14 tests) 116ms
+ ✓ test/goreview/scheduler/deck.test.ts (27 tests) 86ms
+ ✓ test/adapters/hindi-phrases.test.ts (112 tests) 134ms
+ ✓ test/adapters/sq.test.ts (13 tests) 216ms
+ ✓ test/adapters/spanish-constructions.test.ts (42 tests) 128ms
+ ✓ test/adapters/speech.test.ts (56 tests) 176ms
+ ✓ test/adapters/hindi-phrases-real.test.ts (140 tests) 77ms
+warning: in the working copy of 'packages/goreview/src/planner/admission-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/budget.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/eligibility.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/learning-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/microdeck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/remediation.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/deck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/replay-profile.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/review-convergence.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/repository-contract/src/review-evidence.ts', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/extension/security.test.ts (13 tests) 194ms
+ ✓ test/adapters/hindi-script.test.ts (35 tests) 63ms
+ ✓ test/adapters/hindi-pronunciation.test.ts (50 tests) 60ms
+ ✓ test/goreview/intake/batch-evidence-context.test.ts (1 test) 83ms
+ ✓ test/goreview/exercises/audio.test.ts (16 tests) 246ms
+ ✓ test/goreview/scheduler/verified-repair-v2.test.ts (6 tests) 63ms
+ ✓ test/adapters/german-historical.test.ts (153 tests) 46ms
+ ✓ test/adapters/hindi-disambiguate-real.test.ts (9 tests) 43ms
+ ✓ test/goreview/exercises/families.test.ts (27 tests) 417ms
+warning: in the working copy of 'packages/goreview/src/planner/admission-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/budget.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/eligibility.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/learning-policy.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/microdeck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/planner/remediation.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/deck.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/replay-profile.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/goreview/src/scheduler/review-convergence.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'packages/repository-contract/src/review-evidence.ts', LF will be replaced by CRLF the next time Git touches it
+ ✓ test/adapters/hindi-production-real.test.ts (74 tests) 63ms
+ ✓ test/adapters/hindi-morph-causative.test.ts (8 tests) 37ms
+ ✓ test/adapters/spanish-real-engine.test.ts (8 tests) 121ms
+ ✓ test/adapters/hindi-morph-fempl.test.ts (4 tests) 31ms
+ ✓ test/extension/gloss.test.ts (29 tests) 167ms
+ ✓ test/adapters/hindi-morph-batch2.test.ts (10 tests) 41ms
+ ✓ test/goreview/session/identity-v2.test.ts (8 tests) 46ms
+ ✓ test/adapters/albanian-writing.test.ts (74 tests) 30ms
+ ✓ test/adapters/hindi-disambiguate.test.ts (78 tests) 31ms
+ ✓ test/goreview/exercises/facts.test.ts (15 tests) 178ms
+ ✓ test/goreview/scheduler/replay-convergence-v2.test.ts (21 tests) 32ms
+ ✓ test/adapters/hindi-ladder-fixes.test.ts (68 tests) 71ms
+ ✓ test/adapters/hindi-paradigm-table.test.ts (20 tests) 25ms
+ ✓ test/extension/background.forms.test.ts (10 tests) 74ms
+ ✓ test/goreview/planner/planner.test.ts (40 tests) 38ms
+ ✓ test/adapters/hi.test.ts (16 tests) 65ms
+ ✓ test/adapters/es.test.ts (16 tests) 56ms
+ ✓ test/adapters/spanish-voseo-vosotros.test.ts (6 tests) 39ms
+ ✓ test/adapters/german-paradigm-table.test.ts (20 tests) 30ms
+stdout | test/adapters/norwegian-gold.test.ts > Norwegian gold set (machine-drafted, pending native review) > Bokmål: measured lemma and part-of-speech accuracy
+[gold nb] sentences 74/74 (100.0%); words 311: lemma 311 (100.0%), POS 311 (100.0%), both 311 (100.0%)
+
+
+stdout | test/adapters/norwegian-gold.test.ts > Norwegian gold set (machine-drafted, pending native review) > Nynorsk: measured lemma and part-of-speech accuracy
+[gold nn] sentences 24/24 (100.0%); words 91: lemma 91 (100.0%), POS 91 (100.0%), both 91 (100.0%)
+
+
+stdout | test/adapters/norwegian-gold.test.ts > Norwegian gold set (machine-drafted, pending native review) > Bokmål, second set (written after the lexicon was fixed; first-pass score before any change for it: lemma 95.7%, POS 96.6%, both 94.8%, 20/25 sentences, two of the misses were errors in the annotation)
+[gold nb second set, after fixes] sentences 25/25; words 116: lemma 116, POS 116, both 116
+
+ ✓ test/adapters/norwegian-gold.test.ts (5 tests) 35ms
+ ✓ test/adapters/spanish-paradigm-tags.test.ts (11 tests) 26ms
+ ✓ test/adapters/spanish-tags.test.ts (88 tests) 44ms
+ ✓ test/adapters/thai-phrases.test.ts (9 tests) 42ms
+ ✓ test/goreview-app/extension-build.test.ts (4 tests) 18183ms
+ ✓ test/goreview-app/live.test.ts (18 tests) 26ms
+ ✓ test/adapters/norwegian-morphology.test.ts (28 tests) 53ms
+stdout | test/adapters/norwegian-holdout.test.ts > Norwegian holdout (machine-drafted holdout, written without seeing the lexicon; needs native review) > nb: scores 50 holdout sentences and reports every mismatch
+=== NORWEGIAN HOLDOUT [nb] ===
+sentences: 50   words scored: 406   unaligned: 0
+lemma accuracy: 398/406 = 98.03%
+POS accuracy:   404/406 = 99.51%
+lemma+POS both: 396/406 = 97.54%
+sentences all-correct: 45/50 = 90.00%
+--- mismatches (10) ---
+[nb #10] "står" (lemma): gold stå/VERB  got stå opp/VERB   | Jeg står opp klokka sju hver dag.
+[nb #10] "opp" (lemma): gold opp/ADV  got stå opp/ADV   | Jeg står opp klokka sju hver dag.
+[nb #11] "slår" (lemma): gold slå/VERB  got slå på/VERB   | Hun slår på lyset og setter seg ved bordet.
+[nb #11] "på" (lemma): gold på/ADV  got slå på/ADV   | Hun slår på lyset og setter seg ved bordet.
+[nb #12] "funnet" (lemma): gold finne/VERB  got finne ut/VERB   | Vi har endelig funnet ut hva som har skjedd.
+[nb #12] "ut" (lemma): gold ut/ADV  got finne ut/ADV   | Vi har endelig funnet ut hva som har skjedd.
+[nb #12] "som" (pos): gold som/SCONJ  got som/PRON   | Vi har endelig funnet ut hva som har skjedd.
+[nb #14] "går" (lemma): gold gå/VERB  got gå ut/VERB   | Hvis det regner, går vi ikke ut.
+[nb #14] "ut" (lemma): gold ut/ADV  got gå ut/ADV   | Hvis det regner, går vi ikke ut.
+[nb #43] "som" (pos): gold som/SCONJ  got som/PRON   | Hvem er den mannen som står ved døra?
+
+stdout | test/adapters/norwegian-holdout.test.ts > Norwegian holdout (machine-drafted holdout, written without seeing the lexicon; needs native review) > nn: scores 15 holdout sentences and reports every mismatch
+=== NORWEGIAN HOLDOUT [nn] ===
+sentences: 15   words scored: 118   unaligned: 0
+lemma accuracy: 112/118 = 94.92%
+POS accuracy:   118/118 = 100.00%
+lemma+POS both: 112/118 = 94.92%
+sentences all-correct: 13/15 = 86.67%
+--- mismatches (6) ---
+[nn #4] "stod" (lemma): gold stå/VERB  got stå opp/VERB   | Eg stod opp klokka sju og slo på lyset.
+[nn #4] "opp" (lemma): gold opp/ADV  got stå opp/ADV   | Eg stod opp klokka sju og slo på lyset.
+[nn #4] "slo" (lemma): gold slå/VERB  got slå på/VERB   | Eg stod opp klokka sju og slo på lyset.
+[nn #4] "på" (lemma): gold på/ADV  got slå på/ADV   | Eg stod opp klokka sju og slo på lyset.
+[nn #6] "går" (lemma): gold gå/VERB  got gå ut/VERB   | Dersom det regnar, går vi ikkje ut.
+[nn #6] "ut" (lemma): gold ut/ADV  got gå ut/ADV   | Dersom det regnar, går vi ikkje ut.
+
+ ✓ test/adapters/norwegian-holdout.test.ts (2 tests) 35ms
+ ✓ test/goreview/session/live-predecessor.test.ts (2 tests) 20ms
+ ✓ test/extension/active.background.test.ts (8 tests) 69ms
+ ✓ test/extension/speech.background.test.ts (8 tests) 13ms
+ ✓ test/goreview/planner/exclusion-codes.test.ts (13 tests) 16ms
+ ✓ test/extension/active.encounters.test.ts (2 tests) 19ms
+ ✓ test/extension/status.chosen.test.ts (1 test) 43ms
+ ✓ test/goreview/exercises/evidence.test.ts (22 tests) 81ms
+ ✓ test/goreview/transfer/policy-evaluation.test.ts (4 tests) 16ms
+ ✓ test/goreview/scheduler/listening-practice.test.ts (5 tests) 20ms
+ ✓ test/goreview/scheduler/fsrs.test.ts (20 tests) 16ms
+ ✓ test/goreview-app/release-traceability.test.ts (21 tests) 19115ms
+   ✓ GoReview release traceability > accepts a clean reviewed source snapshot and distinguishes a later dirty developer build  1507ms
+   ✓ GoReview release traceability > records source commit, required SRS2 modules, and hashes for the actual web artifact  320ms
+   ✓ GoReview release traceability > rejects a source checkout whose required SRS2 module did not enter the emitted bundle  343ms
+   ✓ GoReview release traceability > normalizes Vite query ids, rejects virtual/outside ids, and hashes installed compiled dependencies  823ms
+   ✓ GoReview release traceability > verifies a release artifact at the commit it was built from and refuses it once an empty commit moves HEAD  1386ms
+   ✓ GoReview release traceability > --expect-commit verifies against a named commit: the right sha passes, a wrong sha or a malformed one fails  950ms
+   ✓ GoReview release traceability > hashes the native-shell workflow inputs, so changing one changes the manifest  7111ms
+   ✓ GoReview release traceability > keeps real node_modules dependencies whose compiled files live in dist/, dist-*/, web/ or build/ folders  477ms
+   ✓ GoReview release traceability > records name, exact version and a per-package sha256 for every bundled dependency package, including scoped and nested ones  931ms
+   ✓ GoReview release traceability > refuses a bundled dependency whose package version cannot be resolved  586ms
+   ✓ GoReview release traceability > treats files under a junctioned or symlinked node_modules (a worktree sharing another install) as the checkout dependencies  756ms
+   ✓ GoReview release traceability > the bundled ts-fsrs scheduler > appears in the manifest with the installed package.json version, its algorithm and the sha256 of its bundled files  496ms
+   ✓ GoReview release traceability > the bundled ts-fsrs scheduler > is required once the scheduler adapter is compiled in  643ms
+   ✓ GoReview release traceability > the bundled ts-fsrs scheduler > fails verification when the manifest records a different ts-fsrs version than the checkout has installed  456ms
+   ✓ GoReview release traceability > the bundled ts-fsrs scheduler > fails verification when a recorded package list was edited without its integrity hash, or the scheduler no longer matches it  747ms
+   ✓ GoReview release traceability > the bundled ts-fsrs scheduler > fails verification when the algorithm recorded for ts-fsrs differs from the installed library  541ms
+   ✓ GoReview release traceability > the bundled ts-fsrs scheduler > prints the scheduler library and version in the verify command summary  474ms
+ ✓ test/goreview/planner/policy-v2.test.ts (12 tests) 20ms
+ ✓ test/goreview/intake/intake.test.ts (48 tests) 17ms
+ ✓ test/adapters/german-tags.test.ts (89 tests) 18ms
+ ✓ test/extension/translation.background.test.ts (8 tests) 38ms
+ ✓ test/goreview/planner/unit-diversity.test.ts (4 tests) 16ms
+ ✓ test/goreview/facts.period.test.ts (7 tests) 17ms
+ ✓ test/goreview/planner/remediation-reasons.test.ts (11 tests) 16ms
+ ✓ test/adapters/german-sentences.test.ts (60 tests) 15ms
+ ✓ test/adapters/thai-prose.test.ts (13 tests) 39ms
+ ✓ test/goreview/planner/learning-policy.test.ts (12 tests) 15ms
+ ✓ test/goreview/exercises/validate.test.ts (11 tests) 45ms
+ ✓ test/adapters/hebrew-greek-packs.test.ts (6 tests) 16ms
+ ✓ test/adapters/norwegian-constructions.test.ts (29 tests) 31ms
+ ✓ test/adapters/norwegian-production.test.ts (12 tests) 30ms
+ ✓ test/extension/background.compounds.test.ts (12 tests) 10ms
+ ✓ test/adapters/thai-constructions.test.ts (68 tests) 23ms
+ ✓ test/goreview/scheduler/early-practice.test.ts (3 tests) 12ms
+ ✓ test/goreview-app/saved-sync-v2.test.ts (5 tests) 14ms
+ ✓ test/extension/metrics.test.ts (8 tests) 12ms
+ ✓ test/adapters/thai-scripture-words.test.ts (18 tests) 13ms
+ ✓ test/extension/enrich.selection.test.ts (10 tests) 13ms
+ ✓ test/goreview-app/learning-metrics-v2.test.ts (13 tests) 10ms
+ ✓ test/extension/entry.transport.test.ts (10 tests) 16ms
+ ✓ test/goreview/scheduler/vectors.test.ts (9 tests) 11ms
+ ✓ test/adapters/spanish-wiring.test.ts (27 tests) 26ms
+ ✓ test/extension/translation.provider.test.ts (11 tests) 10ms
+ ✓ test/goreview/intake/review-eligibility.test.ts (12 tests) 16ms
+ ✓ test/adapters/th.test.ts (20 tests) 22ms
+ ✓ test/adapters/hindi-translit.test.ts (68 tests) 10ms
+ ✓ test/extension/translation.multilingual-provider.test.ts (13 tests) 11ms
+ ✓ test/goreview/exercises/grading.test.ts (38 tests) 11ms
+ ✓ test/goreview/planner/queue-order.test.ts (2 tests) 9ms
+ ✓ test/extension/voice.azure.test.ts (10 tests) 11ms
+ ✓ test/goreview/transfer/transfer.test.ts (15 tests) 8ms
+ ✓ test/adapters/thai-units.test.ts (12 tests) 11ms
+ ✓ test/goreview/planner/priority-policy.test.ts (8 tests) 8ms
+ ✓ test/extension/translation.localProvider.test.ts (3 tests) 7ms
+ ✓ test/core/readsLangs.test.ts (8 tests) 20ms
+ ✓ test/extension/translation.reference.test.ts (16 tests) 7ms
+ ✓ test/adapters/albanian-paradigm-table.test.ts (18 tests) 11ms
+ ✓ test/core/core.test.ts (5 tests) 6ms
+ ✓ test/goreview-app/layout.test.ts (9 tests) 4ms
+ ✓ test/adapters/thai-ladder-words.test.ts (16 tests) 71ms
+ ✓ test/extension/voiceTags.test.ts (14 tests) 6ms
+ ✓ test/goreview/intake/levels.test.ts (12 tests) 9ms
+ ✓ test/core/word-analysis.test.ts (12 tests) 4ms
+ ✓ test/goreview-app/speechBridge.test.ts (5 tests) 6ms
+ ✓ test/goreview/exercises/grading-defects.test.ts (11 tests) 5ms
+ ✓ test/goreview/planner/microdeck.test.ts (6 tests) 7ms
+ ✓ test/extension/enrich.test.ts (8 tests) 6ms
+ ✓ test/extension/active.exclude.test.ts (5 tests) 6ms
+ ✓ test/adapters/norwegian-compounds.test.ts (9 tests) 17ms
+ ✓ test/adapters/norwegian-historical.test.ts (12 tests) 17ms
+ ✓ test/goreview-app/pronunciation-audio.test.ts (1 test) 5ms
+ ✓ test/goreview/planner/budget-class-essentials.test.ts (3 tests) 5ms
+ ✓ test/extension/active.levels.test.ts (14 tests) 6ms
+ ✓ test/adapters/norwegian-families.test.ts (8 tests) 20ms
+ ✓ test/goreview-app/speech-protocol-mirror.test.ts (1 test) 2ms
+ ✓ test/goreview/planner/admission-policy.test.ts (5 tests) 4ms
+ ✓ test/extension/platform.test.ts (4 tests) 2ms
+ ✓ test/adapters/norwegian-units.test.ts (13 tests) 15ms
+ ✓ test/adapters/shared.test.ts (11 tests) 9ms
+ ✓ test/adapters/thai-paradigm.test.ts (23 tests) 12ms
+ ✓ test/adapters/thai-decoding.test.ts (18 tests) 9ms
+ ✓ test/adapters/norwegian-pronunciation.test.ts (11 tests) 5ms
+ ✓ test/adapters/spanish-sentences.test.ts (10 tests) 6ms
+ ✓ test/adapters/registry.test.ts (4 tests) 3ms
+ ↓ test/extension/translation.live-local.test.ts (7 tests | 7 skipped)
+ ✓ test/extension/profile.local.test.ts (9 tests) 5ms
+ ✓ test/goreview-app/admission-explanation.test.ts (7 tests) 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/extension/card.test.ts > the card in the page > the immediate card is the word with its speaker, the meaning and the subscript "view sources", then "Go deeper": no form line, confidence, context, you-row, pronounce button or Review button
+AssertionError: expected 'Word×shtëpinëhouse, homeMeaning · Lem…' not to match /context/i
+
+- Expected: 
+/context/i
+
++ Received: 
+"Word×shtëpinëhouse, homeMeaning · Lemma gloss (inflected/contextual meaning unavailable)shtëpiNOUNlemmaview sourcesHow well do you know it?Go deeperSee full sentenceReportSpeech is not available in this browser."
+
+ ❯ test/extension/card.test.ts:123:19
+    121|     expect(v).toContain('Go deeper');
+    122|     expect(v).not.toMatch(/confidence/i);
+    123|     expect(v).not.toMatch(/context/i);
+       |                   ^
+    124|     expect(v).toMatch(/shtëpi.*lemma/); // the lemma line, only becaus…
+    125|     expect(v).not.toMatch(/definite feminine/); // the morphology line…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 274 passed | 2 skipped (277)
+      Tests  1 failed | 7314 passed | 18 skipped (7333)
+   Start at  22:21:27
+   Duration  43.99s (transform 48.87s, setup 0ms, collect 539.85s, tests 212.95s, environment 83.56s, prepare 36.39s)
+

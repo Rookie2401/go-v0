@@ -73,7 +73,12 @@ describe('written families → CardReviewed', () => {
   });
 
   it('a provisional target caps the evidence at weak', async () => {
-    const e = await exercise('written-recognition', IDS.librin);
+    const facts = await world.facts(IDS.librin);
+    // This test targets evidence quality; supply an explicit form translation so it does not rely on the lemma gloss.
+    const supported = { ...facts, glosses: ['book'], wordAnalysis: { ...facts.wordAnalysis!, inflectedMeaning: { text: 'book', source: 'reviewed-test-fixture' } } };
+    const r = await BUILDERS['written-recognition'].build(target(IDS.librin, FAMILY_DIMENSION['written-recognition']), supported, ctxOf({ audio: fakeAudio() }));
+    if ('unavailable' in r) throw new Error(r.reason);
+    const e = r as ReviewExercise;
     expect(must(event(e, resp({ typed: 'book' })).ev).evidence).toMatchObject({ quality: 'weak' });
   });
 

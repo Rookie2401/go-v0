@@ -59,9 +59,10 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     return byLanguage.get(languageId)!;
   };
   const configuredFactsOf = (languageId: string, api: RepositoryApi): FactsProvider | undefined => opts.factsFor?.(languageId, api);
-  const takeWarmFacts = (api: RepositoryApi, languageId: string, unitId: string): Awaited<ReturnType<FactsProvider['factsFor']>> | undefined => {
+  const factsKey = (languageId: string, unitId: string, varietyId?: string): string => `${languageId}\u0000${varietyId ?? ''}\u0000${unitId}`;
+  const takeWarmFacts = (api: RepositoryApi, languageId: string, unitId: string, varietyId?: string): Awaited<ReturnType<FactsProvider['factsFor']>> | undefined => {
     const cache = warmFacts.get(api);
-    const key = `${languageId}\u0000${unitId}`;
+    const key = factsKey(languageId, unitId, varietyId);
     const entry = cache?.get(key);
     cache?.delete(key); // successful intake facts are consumed exactly once by deck admission
     return entry && Date.now() - entry.at < WARM_FACTS_TTL_MS ? entry.facts ?? undefined : undefined;
@@ -105,10 +106,10 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     // the pack's provider batches unit reads (prime); a provider without it answers one by one, as before
     primeFacts: (languageId, api, unitIds) => (factsOf(languageId, api) as FactsProvider & { prime?(ids: string[]): Promise<void> }).prime?.(unitIds) ?? Promise.resolve(),
     async exerciseAvailable(request) {
-      const facts = takeWarmFacts(request.api, request.languageId, request.unitId) ?? await factsOf(request.languageId, request.api).factsFor(request.unitId, request.languageId);
+      const facts = takeWarmFacts(request.api, request.languageId, request.unitId, request.varietyId) ?? await factsOf(request.languageId, request.api).factsFor(request.unitId, request.languageId, request.varietyId);
       const builder = resolveBuilder(opts.builders, request.family);
       if (!facts || !builder) return false;
-      const target = { unitId: request.unitId, unitKind: request.unitKind, languageId: request.languageId, dimension: request.dimension };
+      const target = { unitId: request.unitId, unitKind: request.unitKind, languageId: request.languageId, dimension: request.dimension, ...(request.varietyId ? { varietyId: request.varietyId } : {}) };
       const context = { now: request.now, random: () => 0 };
       if (!builder.canBuild(target, facts, context)) return false;
       const built = await builder.build(target, facts, context);
@@ -124,7 +125,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
       if (facts) {
         const cache = warmFacts.get(req.api);
         for (const id of new Set([...req.candidates.map((c) => c.unitId), ...req.deck.map((item) => item.unitId)])) {
-          cache?.delete(`${req.prefs.languageId}\u0000${id}`);
+          if (cache) for (const key of cache.keys()) if (key.startsWith(`${req.prefs.languageId}\u0000`) && key.endsWith(`\u0000${id}`)) cache.delete(key);
         }
         const captured = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
         const capturing: FactsProvider = { ...facts, async factsFor(unitId, languageId, varietyId) {
@@ -142,7 +143,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
           let cache = warmFacts.get(req.api);
           if (!cache) { cache = new Map(); warmFacts.set(req.api, cache); }
           for (const [key, entry] of cache) if (Date.now() - entry.at >= WARM_FACTS_TTL_MS) cache.delete(key);
-          for (const [id, value] of captured) cache.set(`${req.prefs.languageId}\u0000${id}`, { at: Date.now(), facts: value });
+          for (const [id, value] of captured) cache.set(factsKey(req.prefs.languageId, id, req.prefs.varietyId), { at: Date.now(), facts: value });
           while (cache.size > 256) cache.delete(cache.keys().next().value!);
         }
         return out;

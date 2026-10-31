@@ -10,6 +10,8 @@ import { sqAdapter } from '../../../../src/adapters/sq';
 import type { AnalysisCandidate, AnalyzedToken, LanguageAdapter, PatternCandidate, PhraseCandidate, RawToken, SyntaxAnalysis } from '../../../../src/core';
 import { unitIds } from '../../../repository-contract/src';
 import { sentenceKeyOf, fnv1a64 } from '../text';
+import { greekWordAnalysis } from '../../../../src/adapters/greek/word-analysis';
+import { projectWordAnalysis } from '../../../../src/core/word-analysis';
 import type { Alternative, CardModel, SyntaxNote, CardProvenance, ConstructionNote, ContextReport, EvidenceLabel, FeatureItem, LabelledField, PhraseNote, SentenceWord, WordLine } from './cardModel';
 import { AnalyserNotLoaded, LANGUAGE_META, PARSER_LANGUAGES, clearAnalysers, getAnalyser, hasAnalyser, languageMeta, registerAnalyser, type LanguageMeta } from './registry';
 
@@ -66,6 +68,8 @@ export interface ParseContext {
    * the analyser's candidate with this lemma id and code is put first and says so. Never invents a reading: a gold the analyser does not hold is ignored.
    */
   gold?: { lemmaId: string; code: string; source?: string };
+  /** A source reference attached by a Scripture reader; never inferred from the surface alone. */
+  references?: string[];
 }
 
 /** `languageId` is the language of the learner's enrolment; absent = Albanian (PARSER_LANGUAGE). An unlisted language throws a RangeError; a listed language whose analyser has not been loaded throws `AnalyserNotLoaded` (the caller loads it first: see registry.ts). */
@@ -169,6 +173,7 @@ export function parseSelection(input: ParseInput): CardModel {
   let transliteration: string | undefined; let lemmaTransliteration: string | undefined;
   let features: FeatureItem[] = []; let role: string | undefined; const syntaxNotes: string[] = []; let syntax: SyntaxNote | undefined;
   let period: CardModel['period']; let variants: CardModel['variants']; let glossSource: string | undefined;
+  let wordAnalysis: CardModel['wordAnalysis'];
   const varietyLabel = (code: string): string => L.adapter.varieties?.[code]?.label ?? code;
   const constructions: ConstructionNote[] = patternsFor(L, tokens, analyses, selected).map((p) => ({
     id: p.key, unitId: unitIds.syntactic(L.lang, p.key), title: p.title, explanation: p.explanation, confidence: clamp01(p.confidence), source: 'pattern' as const,
@@ -183,6 +188,19 @@ export function parseSelection(input: ParseInput): CardModel {
     if (selStart > tokens[i].start || selEnd < tokens[i].end) notes.push(`The selection is part of the word "${tokens[i].surface}"; the reading is for the whole word.`);
     if (c) {
       lemma = c.lemma; pos = c.pos; gloss = c.unconfirmed ? undefined : c.gloss;
+      wordAnalysis = L.lang === 'el'
+        ? greekWordAnalysis({ surface: tokens[i].surface, lemma: c.lemma, pos: c.pos, lemmaGloss: c.unconfirmed ? undefined : c.gloss,
+            morph: c.morph, source: c.sourceId ? L.adapter.sources?.[c.sourceId]?.label : undefined, confidence: c.confidence,
+            alternatives: analyses[i].candidates.slice(1).map((x) => ({ lemma: x.lemma, pos: x.pos, morph: x.morph, confidence: x.confidence })), sentence: kind === 'sentence' ? text : undefined, references: ctx.references })
+        : projectWordAnalysis({ language: L.lang, surface: tokens[i].surface, lemma: c.lemma ?? null, pos: c.pos ?? null,
+            lexicalMeaning: !c.unconfirmed && c.gloss ? { text: c.gloss, source: c.sourceId ? L.adapter.sources?.[c.sourceId]?.label : undefined, confidence: c.confidence } : null,
+            grammaticalFeatures: Object.entries(c.morph).map(([key, value]) => ({ key, value, source: c.sourceId ? L.adapter.sources?.[c.sourceId]?.label : undefined, confidence: c.confidence })),
+            sentenceContext: kind === 'sentence' ? { text, confidence: context.confidence } : null,
+            references: ctx.references?.map((r) => ({ label: r, uri: r })) ?? [],
+            confidence: c.confidence,
+            ambiguity: analyses[i].candidates.slice(1).map((x) => `${x.lemma ?? 'unknown'} (${x.pos ?? 'unclassified'}; ${Object.entries(x.morph).map(([k, v]) => `${k}=${v}`).join(', ') || 'no morphology'})`) });
+      const resolvedMeaning = wordAnalysis.contextualMeaning?.text ?? wordAnalysis.inflectedMeaning?.text ?? wordAnalysis.lexicalMeaning?.text;
+      if (resolvedMeaning) gloss = resolvedMeaning;
       // a reading from an external source (the Open Scriptures morphology, MorphGNT, the Wiktionary tables): the card names it, not "course word list"
       if (c.origin === 'dictionary' && c.sourceId && L.adapter.sources?.[c.sourceId]) glossSource = L.adapter.sources[c.sourceId].label.replace(/\s*\(.*$/, '').replace(/,.*$/, '');
       morphology = describe(L, c);
@@ -263,7 +281,7 @@ export function parseSelection(input: ParseInput): CardModel {
     words: selected.length > 1 ? lines.slice(0, MAX_WORD_LINES) : [],
     alternatives: alternatives.slice(0, 3), basis, notes, pronunciation, ...(transliteration ? { transliteration } : {}), ...(lemmaTransliteration ? { lemmaTransliteration } : {}), itemIds,
     features, constructions, role, syntaxNotes, ...(syntax ? { syntax } : {}), sentenceWords, unitIds: unitIdsToAsk, formId: formUnit,
-    ...(period ? { period } : {}), ...(variants ? { variants } : {}), ...(glossSource ? { glossSource } : {}),
+    ...(period ? { period } : {}), ...(variants ? { variants } : {}), ...(glossSource ? { glossSource } : {}), ...(wordAnalysis ? { wordAnalysis } : {}),
   };
 }
 

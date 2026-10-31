@@ -104,6 +104,7 @@ export function TokenCard(props: TokenCardProps) {
   const patterns = pick(supports, 'patterns') ?? [];
   const lemma = pick(supports, 'lemma');
   const morphologyLine = pick(supports, 'morphologyLine');
+  const wordAnalysis = pick(supports, 'wordAnalysis');
   const prior = pick(supports, 'priorEncounters') ?? [];
   const exampleIds = pick(supports, 'knownExamples') ?? [];
   const uncertain = pick(supports, 'uncertain') ?? false;
@@ -219,6 +220,15 @@ export function TokenCard(props: TokenCardProps) {
                 ? <p className="card__note" data-testid="not-analysed">Not analysed yet. Go has no dictionary entry for this word, and it will not guess.</p>
                 : <p className="card__note">No gloss for this word yet.</p>
             )}
+            {wordAnalysis?.lexicalMeaning && (wordAnalysis.contextualMeaning || wordAnalysis.inflectedMeaning)
+              && wordAnalysis.lexicalMeaning.text !== (wordAnalysis.contextualMeaning?.text ?? wordAnalysis.inflectedMeaning?.text)
+              && <p className="card__note" data-testid="lemma-gloss">Lemma gloss: {wordAnalysis.lexicalMeaning.text}</p>}
+            {wordAnalysis?.lexicalMeaning && !wordAnalysis.contextualMeaning && !wordAnalysis.inflectedMeaning
+              && <p className="card__note" data-testid="lemma-gloss-only">Lemma gloss; inflected/contextual meaning unavailable.</p>}
+            {wordAnalysis?.contextualMeaning && wordAnalysis.inflectedMeaning
+              && <p className="card__note" data-testid="inflected-meaning">Literal inflected meaning: {wordAnalysis.inflectedMeaning.text}</p>}
+            {wordAnalysis?.references.map((r) => <p className="card__note" data-testid="word-analysis-reference" key={r.uri ?? r.label}>Context-specific rendering: {r.label}</p>)}
+            {!!wordAnalysis?.ambiguity.length && <p className="card__note" data-testid="word-ambiguity">Morphology remains ambiguous: {wordAnalysis.ambiguity.join('; ')}</p>}
             {fromDictionary && gloss && <p className="card__note" data-testid="dictionary-gloss">dictionary meaning, not checked for this sentence</p>}
             {sourceLine && <p className="card__note sheet__source" data-testid="analysis-source">{sourceLine}</p>}
             {variety && <p className="card__note sheet__variety" data-testid="variety">{variety}</p>}

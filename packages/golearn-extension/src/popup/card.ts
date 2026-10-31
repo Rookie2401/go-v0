@@ -476,7 +476,11 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   /** The meaning under the word: the lexicon gloss at once, else the dictionary's, else "looking up…" while it is on its way. */
   function meaningText(m: CardModel, v: CardView): { text: string; attr?: string; muted: boolean; from?: string } {
     const dict = v.gloss;
-    if (m.gloss) return { text: m.gloss, muted: false, from: m.glossSource ?? 'Course word list' };
+    const wordMeaning = m.wordAnalysis?.contextualMeaning?.text ?? m.wordAnalysis?.inflectedMeaning?.text ?? m.wordAnalysis?.lexicalMeaning?.text;
+    if (m.gloss) {
+      const onlyLemmaGloss = !m.wordAnalysis?.contextualMeaning && !m.wordAnalysis?.inflectedMeaning;
+      return { text: m.gloss, muted: false, from: onlyLemmaGloss && wordMeaning ? 'Lemma gloss (inflected/contextual meaning unavailable)' : m.wordAnalysis?.contextualMeaning?.source ?? m.wordAnalysis?.inflectedMeaning?.source ?? m.wordAnalysis?.lexicalMeaning?.source ?? m.glossSource ?? 'Word list' };
+    }
     // a dictionary-only meaning carries its attribution beside it (CC BY-SA: the notice goes wherever the entry is shown)
     if (dict.state === 'ready' && dict.senses.length) return { text: dict.senses.slice(0, 3).join('; '), ...(dict.attribution ? { attr: dict.attribution } : {}), muted: false, from: 'Wiktionary' };
     if (dict.state === 'loading') return { text: 'looking up…', muted: true };
@@ -503,6 +507,16 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (wordRom) rows.push(h('div', { class: 'translit wordTranslit', role: 'note', 'aria-label': 'transliteration', title: wordRomSource, 'data-row': 'transliteration' }, wordRom));
     rows.push(gloss);
     if (from) rows.push(h('div', { class: 'kicker' }, `Meaning · ${from}`));
+    const lexicalMeaning = m.wordAnalysis?.lexicalMeaning;
+    const shownMeaning = m.wordAnalysis?.contextualMeaning ?? m.wordAnalysis?.inflectedMeaning;
+    if (lexicalMeaning && shownMeaning && lexicalMeaning.text !== shownMeaning.text)
+      rows.push(h('div', { class: 'kicker', 'data-row': 'lemma-gloss' }, `Lemma gloss · ${lexicalMeaning.text}`));
+    if (m.wordAnalysis?.contextualMeaning && m.wordAnalysis.inflectedMeaning)
+      rows.push(h('div', { class: 'kicker', 'data-row': 'inflected-meaning' }, `Literal inflected meaning · ${m.wordAnalysis.inflectedMeaning.text}`));
+    if (m.wordAnalysis?.contextualMeaning && m.wordAnalysis.references.length)
+      rows.push(h('div', { class: 'kicker', 'data-row': 'contextual-meaning' }, `Context-specific rendering · ${m.wordAnalysis.references.map((r) => r.label).join(', ')}`));
+    if (m.wordAnalysis?.ambiguity.length)
+      rows.push(h('div', { class: 'kicker', 'data-row': 'word-ambiguity' }, `Morphology remains ambiguous · ${m.wordAnalysis.ambiguity.join('; ')}`));
     const same = !m.lemma || m.lemma.normalize('NFC').toLowerCase() === m.surface.normalize('NFC').trim().toLowerCase();
     if (!same && m.lemma && m.tokenCount === 1) {
       const lemmaRom = m.lemmaTransliteration ?? dictRom;

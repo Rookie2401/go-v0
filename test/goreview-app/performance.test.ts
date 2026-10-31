@@ -81,6 +81,28 @@ describe('GoReview startup performance guards', () => {
     expect(factsFor).toHaveBeenCalledTimes(2); // consumed warm facts are never reused twice
   });
 
+  it('does not reuse warm facts across target varieties', async () => {
+    const api = {} as RepositoryApi;
+    const varieties: Array<string | undefined> = [];
+    const factsFor = vi.fn(async (_unitId: string, _languageId: string, varietyId?: string) => {
+      varieties.push(varietyId);
+      return fakeFacts.factsFor('lemma:sq:zog:NOUN', 'sq');
+    });
+    const engine = createReviewEngine({ builders: [], evidenceFor: vi.fn() as never, ratingFor: vi.fn() as never, factsFor: () => ({ factsFor }) });
+    const c = candidate('zog', 0.8);
+    const request = {
+      api, candidates: [c], knowledge: [knowledgeRow('L1',c.unitId,'sq',{})], deck: [], saved: new Set<string>(),
+      prefs: { ...DEFAULT_PREFERENCES('sq'), varietyId: 'he-bib' },
+      audio: { available: false, eligibleForEvidence: false, reason: 'unavailable' }, now: '2026-10-14T12:00:00.000Z',
+    };
+    await engine.intake(request);
+    const check = { api, unitId: c.unitId, unitKind: c.kind, languageId: 'sq', dimension: 'written-recognition' as const, family: 'written-recognition' as const, now: request.now };
+    await engine.exerciseAvailable?.({ ...check, varietyId: 'he-bib' });
+    expect(varieties).toEqual(['he-bib']);
+    await engine.exerciseAvailable?.({ ...check, varietyId: 'he-mod' });
+    expect(varieties).toEqual(['he-bib', 'he-mod']);
+  });
+
   it('aborts a repository request that stalls past its deadline', async () => {
     let observedSignal: AbortSignal | undefined;
     const pendingFetch = vi.fn((_input: RequestInfo | URL, init?: RequestInit) => {

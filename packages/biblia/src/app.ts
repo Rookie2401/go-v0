@@ -356,7 +356,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     const direction = ref.lang === 'he' ? 'rtl' : 'ltr';
     let model: CardModel;
     try {
-      model = parseSelection({ surface: ref.surface, languageId: ref.lang, context: { kind: 'sentence', confidence: 1, sentence: ref.sentence, selStart: ref.start, selEnd: ref.end, direction, varietyId: ref.varietyId, ...(ref.gold ? { gold: ref.gold } : {}) } });
+      model = parseSelection({ surface: ref.surface, languageId: ref.lang, context: { kind: 'sentence', confidence: 1, sentence: ref.sentence, selStart: ref.start, selEnd: ref.end, direction, varietyId: ref.varietyId, references: [`${ref.book}.${ref.ch}.${ref.v}`], ...(ref.gold ? { gold: ref.gold } : {}) } });
     } catch (e) { showNotice(`This word could not be parsed: ${e instanceof Error ? e.message : String(e)}`); return; }
     const r = button.getBoundingClientRect();
     const anchor: PopupAnchor = { rect: { top: r.top, left: r.left, right: r.right, bottom: r.bottom, width: r.width, height: r.height }, viewport: { width: win.innerWidth, height: win.innerHeight }, rtl: direction === 'rtl', source: 'range' };

@@ -12,6 +12,7 @@ export * from './memory';
 export * from './bus';
 export * from './config';
 export * from './testing';
+export * from './word-analysis';
 export type * from './contracts/golearn';
 export type * from './contracts/golisten';
 export type * from './contracts/gotell';

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { sqAdapter } from '../../../src/adapters/sq';
-import { KAIKKI_ATTRIBUTION, albanianManifest } from '../../../packages/language-packs/src';
+import { KAIKKI_ATTRIBUTION, albanianManifest, packFor } from '../../../packages/language-packs/src';
 import { unitIds } from '../../../packages/repository-contract/src';
 import { createFactsProvider } from '../../../packages/goreview/src/facts';
 import type { ReviewFacts } from '../../../packages/goreview/src/facts';
@@ -128,10 +128,65 @@ describe('facts provider: form', () => {
     expect(f.constructionLabel).toBe('Definite accusative singular');
     expect(f.constructionExplanation).toContain('The -in/-n ending marks a definite masculine noun as the direct object');
     expect(f.morphDescription).toBe('definite masculine accusative singular');
-    expect(f.glosses).toEqual(['book']);
+    expect(f.glosses).toEqual([]); // a form answer needs evidence for this form, not only its lemma
     expect(f.siblingForms.map((s) => s.surface)).toEqual(['libër']);
     expect(f.exampleSentences).toHaveLength(1);
     expect(f.exampleSentences[0]).toMatchObject({ text: SENT.librin, surface: 'librin', source: 'pack-validation' });
+  });
+
+  it('looks up exact-form dictionary meanings while preserving the word-list lemma gloss and stored review analysis', async () => {
+    const repo = makeWorld().repo;
+    const before = await repo.unit(IDS.librin);
+    const calls: Array<{ lemma: string; pos?: string; forms?: readonly string[] }> = [];
+    const provider = createFactsProvider({
+      unit: (id) => repo.unit(id),
+      pack: { manifest: albanianManifest(), runtime: { gloss: async (lemma, pos, forms) => {
+        calls.push({ lemma, pos, forms });
+        return { senses: [{ gloss: 'the particular book form', pos: 'NOUN' }], attribution: 'test dictionary' };
+      } } },
+      adapter: sqAdapter,
+      now: () => NOW,
+    });
+    const f = await provider.factsFor(IDS.librin, 'sq') as ReviewFacts;
+    expect(calls[0]).toMatchObject({ lemma: 'libër', pos: 'NOUN', forms: ['librin'] });
+    expect(f.glosses).toEqual(['the particular book form']);
+    expect(f.wordAnalysis?.lexicalMeaning?.text).toBe('book');
+    expect(f.wordAnalysis?.inflectedMeaning?.text).toBe('the particular book form');
+    expect(f.lexiconGlossCount).toBe(0);
+    expect(f.glossAttribution).toBe('test dictionary');
+    expect(await repo.unit(IDS.librin)).toEqual(before);
+  });
+
+  it('does not turn a lemma gloss into a Greek form answer, and rejects a first-person gloss for a second-person verb', async () => {
+    const surface = 'ἀγαπήσεις';
+    const lemma = 'ἀγαπάω';
+    const candidate = { lemma, pos: 'VERB' as const, morph: { VerbForm: 'Fin', Person: '2', Number: 'Sing', Tense: 'Fut', Voice: 'Act', Mood: 'Ind' }, gloss: 'I love', confidence: 0.96, origin: 'dictionary' as const, sourceId: 'morphgnt-sblgnt' };
+    const tokens = (text: string) => [...text.matchAll(/[^\s]+/gu)].map((m) => {
+      const start = m.index!; const word = m[0];
+      return { surface: word, normalized: word.normalize('NFC'), start, end: start + word.length, isWord: /\p{L}/u.test(word) };
+    });
+    const adapter = {
+      tokenize: tokens,
+      normalize: (text: string) => text.normalize('NFC'),
+      analyze: (ts: ReturnType<typeof tokens>) => ts.map((token) => ({ token, analyzer: 'test-greek', candidates: token.surface === surface || token.surface === lemma ? [candidate] : [] })),
+      describeMorph: () => 'second person singular future indicative',
+    };
+    const unit = { unitId: `form:el:${surface}`, kind: 'form' as const, languageId: 'el', label: surface, pos: 'VERB', features: candidate.morph, packId: 'pack:el', packVersion: '1', provenance: { source: 'dictionary' as const, ref: 'test', confidence: 0.96 }, status: 'high-confidence' as const, createdAt: NOW };
+    const makeProvider = (gloss: string) => createFactsProvider({
+      unit: async () => ({ unit, relations: [], analyses: [] }),
+      pack: { manifest: packFor('el')!, runtime: { gloss: async () => ({ senses: [{ gloss, pos: 'VERB' }], attribution: 'test dictionary' }) } },
+      adapter,
+      now: () => NOW,
+    });
+    const wrong = await makeProvider('I love').factsFor(unit.unitId, 'el') as ReviewFacts;
+    expect(wrong.glosses).toEqual(['You will love']);
+    expect(wrong.wordAnalysis?.lexicalMeaning?.text).toBe('I love');
+    expect(wrong.wordAnalysis?.inflectedMeaning?.text).toBe('You will love');
+    expect(wrong.wordAnalysis?.contextualMeaning).toBeNull();
+    expect(wrong.glossAttribution).toBeUndefined(); // the selected answer came from the form analysis, not the dictionary
+    const supported = await makeProvider('you will love').factsFor(unit.unitId, 'el') as ReviewFacts;
+    expect(supported.glosses).toEqual(['You will love']);
+    expect(supported.wordAnalysis?.inflectedMeaning?.text).toBe('You will love');
   });
 
   it('shkollë: high-confidence from the word list, both of its pack sentences, no other form to offer', async () => {

@@ -148,6 +148,7 @@ describe('the router and the shell', () => {
     await rig.go('diagnostics');
     const done = rig.q<HTMLButtonElement>('#done-reading');
     expect(done.textContent).toBe('Done — back to reading');
+    expect(done.classList.contains('bar')).toBe(true); // a bar across the screen, its words centred (the owner, 2026-10-28)
     done.click();
     expect(rig.closed.count).toBe(1);
     expect(rig.q('.finish-note').textContent).toContain('close this tab');

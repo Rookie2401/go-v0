@@ -504,11 +504,29 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     }
 
     let rating: Rating | null = NO_EVENT_OUTCOMES.has(grading.outcome) || res.challenged ? null : gradingPort.ratingFor(grading, res);
-    if (res.audioFailed || listening && !listening.eligibleForEvidence) rating = null;
-    return { exercise, evidenceExercise: b.exercise, family, response: res, grading, listening, scoring, rating, at, factsFingerprint: b.factsFingerprint };
+    // extra replays are help (listening/assessment.ts marks the score `hinted`): no rating, whatever the grading port said
+    if (res.audioFailed || listening?.hinted) rating = null;
+    // A valid answer to a computer voice (or an unreviewed recording) keeps its rating as SCHEDULE bookkeeping only: the card then comes back
+    // on its own interval instead of as fresh work in every session (2026-10-29: a card whose answers never rated was re-planned as new
+    // every time and ate the new-card allowance). The evidence note stays quality 'none' (golisten assessmentEvidence), so the Repository
+    // never reads listening knowledge from it; the event is stamped `listeningPractice` so every reader of ratings can tell it apart.
+    const listeningPractice = rating !== null && !!listening && !listening.eligibleForEvidence;
+    return { exercise, evidenceExercise: b.exercise, family, response: res, grading, listening, scoring, rating, at, factsFingerprint: b.factsFingerprint, listeningPractice };
   }
 
-  function normalise(ev: GoEvent, cur: CurrentExercise, rating: Rating | null, result: Pick<ReviewResult, 'exerciseId' | 'family' | 'grading' | 'response'>, index: number, quality?: 'none'): GoEvent {
+  /**
+   * The card as the log has it NOW (this device's committed events plus what this session recorded), for the causal predecessor and the
+   * schedule a review is chained to. The plan's snapshot is stale once the card was answered elsewhere (another device, a saved deck
+   * opened in between): a review chained to the snapshot's head was then excluded as a stale sibling and the Easy looked ignored
+   * (2026-10-29). A card not yet created (new from intake) has no live row and the snapshot stands.
+   */
+  async function liveItem(planned: PlannedItem, at: string): Promise<DeckItem> {
+    const events = await eventSnapshot();
+    if (!events.length) return planned.item;
+    return foldDeckItems(events, deps.scheduler, { languageId: st.plan.languageId, learnerId: identity.learnerId, now: at }).find((i) => i.itemId === planned.item.itemId) ?? planned.item;
+  }
+
+  function normalise(ev: GoEvent, cur: CurrentExercise, rating: Rating | null, result: Pick<ReviewResult, 'exerciseId' | 'family' | 'grading' | 'response'>, index: number, quality?: 'none', live: DeckItem = cur.planned.item): GoEvent {
     const e = clone(ev);
     e.id = `gr:${st.sessionId}:${index}:${e.kind}`;
     e.dedupeKey = `goreview:${st.sessionId}:${index}:${e.kind}`;
@@ -525,10 +543,10 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     };
     if (['CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'].includes(e.kind)) {
       const scheduler = schedulerFor(cur.planned.item);
-      e.payload.scheduledDueBefore = cur.planned.item.schedule.due;
-      e.payload.retrievabilityBefore = scheduler.retrievability(cur.planned.item.schedule, e.at);
+      e.payload.scheduledDueBefore = live.schedule.due;
+      e.payload.retrievabilityBefore = scheduler.retrievability(live.schedule, e.at);
       if (cur.planned.intent) e.payload.practiceIntent = clone(cur.planned.intent);
-      e.payload.expectedPreviousReviewId = [...cur.planned.item.history].reverse().find((h) => !h.retracted && !h.scheduleExcluded && !h.conflict)?.eventId ?? null;
+      e.payload.expectedPreviousReviewId = [...live.history].reverse().find((h) => !h.retracted && !h.scheduleExcluded && !h.conflict)?.eventId ?? null;
       if (scheduler.profile) e.payload.schedulerProfile = {
         ...(scheduler.profile ? structuredClone(scheduler.profile) : {}),
         algorithm: scheduler.algorithm,
@@ -575,8 +593,9 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     if (claimable) {
       const raw = gradingPort.evidenceFor({ exercise: a.evidenceExercise, response: a.response, grading: a.grading, rating: a.rating, item, identity, at: a.at, ...(a.listening ? { listening: a.listening } : {}) });
       if (raw) {
-        evidence = normalise(raw, cur, a.rating, result, index, a.response.challenged ? 'none' : undefined);
+        evidence = normalise(raw, cur, a.rating, result, index, a.response.challenged ? 'none' : undefined, await liveItem(cur.planned, a.at));
         evidence.payload.assessmentFingerprint = a.factsFingerprint;
+        if (a.listeningPractice) evidence.payload.listeningPractice = true;
       }
     }
     if (evidence) {

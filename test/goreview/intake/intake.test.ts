@@ -196,10 +196,12 @@ describe('decideIntake: audio', () => {
     expect(o.proposed?.family).toBe('audio-to-meaning');
   });
 
-  it('audio available but practice-only → test-later (cannot be listening evidence)', () => {
+  it('audio available but practice-only (a computer voice) → proposed as listening practice, flagged as never evidence (the owner, 2026-10-28)', () => {
     const o = decideIntake(intakeInput({ candidate: listening, audio: audioPractice, secondaryPractice: true }));
-    expect(o.decision).toBe('test-later');
-    expect(o.reasons.join(' ')).toContain('practice only');
+    expect(o.decision).not.toBe('test-later');
+    expect(o.proposed?.family).toBe('audio-to-meaning');
+    expect(o.reasons.join(' ')).toContain('listening practice only');
+    expect(o.reasons.join(' ')).toContain('never listening evidence');
   });
 
   it('listening switched off → test-later', () => {

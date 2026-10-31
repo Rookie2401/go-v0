@@ -134,7 +134,8 @@ export interface PlanInput {
   admissionPolicy?: Partial<WorkloadAdmissionPolicy>;
   dueOrdering?: DueOrderingPolicy;
 }
-export const recentAgains = (item: DeckItem): number => item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict).slice(-WEAK_WINDOW).filter(h => h.rating === 1).length;
+/** Recent failures in the effective history; a listening-practice answer (computer voice) is schedule bookkeeping, never a failure signal. */
+export const recentAgains = (item: DeckItem): number => item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict && !h.listeningPractice).slice(-WEAK_WINDOW).filter(h => h.rating === 1).length;
 export const benefitOf = (deficit: number, score: number, seconds: number, cost: number): number => deficit * score / Math.max(.1, seconds / 30 * (1 + cost));
 export type DueOrderingPolicy = 'strict-due' | 'bounded-remediation';
 interface QueueCandidate { planned: PlannedItem; tier: number; score: number; due: number }
@@ -174,9 +175,9 @@ export function planSession(input: PlanInput): SessionPlan {
     const hist = item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict), fresh = !hist.length;
     const decision = reviewEligibility({ item: exists ? item : undefined, itemId:item.itemId, unitId: item.unitId, knowledge: knowledge.get(item.unitId), events,
       now, intent: requested, remainingNew: automaticNewLimit, context:eligibilityContext });
-    if (!decision.eligible) { skipped.push({ itemId: item.itemId, why: decision.reason ?? 'not eligible' }); return; }
+    if (!decision.eligible) { skipped.push({ itemId: item.itemId, why: decision.reason ?? 'not eligible', code: decision.code ?? 'other' }); return; }
     if (isAudioFamily(item.family) && (!preferences.includeListening || !audio.available)) {
-      skipped.push({ itemId: item.itemId, why: 'Listening remains due: suitable assessment audio is unavailable; writing cannot satisfy this listening obligation.' }); return;
+      skipped.push({ itemId: item.itemId, why: 'Listening remains due: suitable assessment audio is unavailable; writing cannot satisfy this listening obligation.', code: 'listening-audio-unavailable' }); return;
     }
     if (isAudioFamily(item.family) && !audio.eligibleForEvidence) why = [...why, 'listening practice only: cannot count as listening evidence or a memory update'];
     const due = !fresh && scheduler.isDue(item.schedule, now);
@@ -206,7 +207,7 @@ export function planSession(input: PlanInput): SessionPlan {
     if (!history.length) make(item, ['new in the deck: not reviewed yet'], true, explicit);
     else if (scheduler.isDue(item.schedule,now)) make(item, ['due: independent review at the actual review time'], true, explicit);
     else if (explicit.kind === 'explicit') make(item, ['optional early practice at the actual review time'], true, explicit);
-    else skipped.push({ itemId:item.itemId, why:'not due; optional remediation is separate from scheduled review' });
+    else skipped.push({ itemId:item.itemId, why:'not due; optional remediation is separate from scheduled review', code: ['learning','relearning'].includes(item.schedule.phase) ? 'learning-not-due' : 'scheduled-not-due' });
   }
   // Instructions are persisted opportunities, not scored questions. A scored reassessment only
   // enters this queue after the learner selects a studied, delayed-ready card.
@@ -214,7 +215,7 @@ export function planSession(input: PlanInput): SessionPlan {
     for (const itemId of input.remediationItemIds ?? []) {
       const candidate = remediationById.get(itemId), item = deck.find(x => x.itemId === itemId);
       if (!candidate || !candidate.ready || !item || pool.some(x => x.planned.item.itemId === itemId)) {
-        skipped.push({ itemId, why: candidate ? 'study the repair material and wait for the reassessment delay' : 'no current unresolved failure for this card' });
+        skipped.push({ itemId, why: candidate ? 'study the repair material and wait for the reassessment delay' : 'no current unresolved failure for this card', code: candidate ? 'repair-required' : 'other' });
         continue;
       }
       make(item, ['delayed, independent reassessment selected after studying repair material'], true, intent, 'remediation');
@@ -236,17 +237,25 @@ export function planSession(input: PlanInput): SessionPlan {
   }
   const orderedPool = orderQueueCandidates(pool, input.dueOrdering);
   const items: PlannedItem[] = []; let used=0,newCount=0,availableNewCount=0,availableQuestions=0;
+  // One word, one NEW card per batch (2026-10-29): the Repository proposes a word once per objective (recognition, retrieval, listening,
+  // application), and intake can turn several of those into cards at once. A due card is an obligation and is kept whatever its word;
+  // a second automatic NEW card for a word that already has a card in this batch is deferred: it stays eligible for a later batch.
+  const unitsInBatch = new Set<string>();
   for (const { planned } of orderedPool) {
-    if (planned.isNew && planned.intent?.kind !== 'explicit' && availableNewCount >= automaticNewLimit) { skipped.push({itemId:planned.item.itemId,why:'session or daily new-item budget exhausted'});continue; }
-    if (used+planned.estimatedSeconds > timeLimit) { skipped.push({itemId:planned.item.itemId,why:'over budget (still due; nothing was written)'});continue; }
+    if (planned.isNew && planned.intent?.kind !== 'explicit' && unitsInBatch.has(planned.item.unitId)) {
+      skipped.push({itemId:planned.item.itemId,why:'another card for this word is already in this batch; deferred to a later batch',code:'same-unit-in-batch'});continue;
+    }
+    if (planned.isNew && planned.intent?.kind !== 'explicit' && availableNewCount >= automaticNewLimit) { skipped.push({itemId:planned.item.itemId,why:'session or daily new-item budget exhausted',code:'new-budget-exhausted'});continue; }
+    if (used+planned.estimatedSeconds > timeLimit) { skipped.push({itemId:planned.item.itemId,why:'over budget (still due; nothing was written)',code:'over-time-budget'});continue; }
     used+=planned.estimatedSeconds;
     availableQuestions++;
     if(planned.isNew && planned.intent?.kind!=='explicit')availableNewCount++;
     if (items.length >= target.targetQuestions) {
-      skipped.push({itemId:planned.item.itemId,why:'eligible for the next micro-deck; no scheduling card was created'});
+      skipped.push({itemId:planned.item.itemId,why:'eligible for the next micro-deck; no scheduling card was created',code:'beyond-micro-deck'});
       continue;
     }
     items.push(planned);
+    unitsInBatch.add(planned.item.unitId);
     if(planned.isNew && planned.intent?.kind!=='explicit')newCount++;
   }
   const workloadLimit = Number.isFinite(timeLimit) ? timeLimit : 0;

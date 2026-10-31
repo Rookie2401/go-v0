@@ -26,9 +26,9 @@ import type { ActiveRun, ItemControl, Presented } from '../ports';
 import type { ReviewExercise } from '../../src/exercises/shared';
 import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession } from '../workspace';
 import { fillItemHistory } from './history';
-import { entriesOf, planFromEntries, planRemediation, planCurrentDeck, VOCAB_NOTE } from '../deckModel';
-import { remediationBacklog } from '../../src/planner/remediation';
+import { entriesOf, planFromEntries, planRemediation, planCurrentDeck, effectiveRemediation, VOCAB_NOTE } from '../deckModel';
 import { DEFAULT_UI, getUiPrefs, type UiPrefs } from './uiprefs';
+import { unlockSpeech } from '../speechUnlock';
 import type { View } from './view';
 
 const GRADES = ['again', 'hard', 'good', 'easy'] as const;
@@ -619,6 +619,7 @@ class Controller {
 
   private pronounce(target: { text: string; kind: 'word' | 'phrase' }): void {
     if ((this.stage !== 'prompt' && this.stage !== 'feedback') || !this.presented) return;
+    unlockSpeech(); // still inside the tap: on an iPhone the speech that follows the preparation is otherwise refused
     const generation = ++this.pronunciationGeneration;
     this.disposePronunciation();
     const abortController = new AbortController();
@@ -693,6 +694,7 @@ class Controller {
   private playOrReplay(): void {
     const stimulus = this.presented?.exercise.prompt.audio;
     if (!stimulus || this.stage !== 'prompt') return;
+    unlockSpeech(); // still inside the tap (as in pronounce)
     const generation = ++this.audioGeneration;
     void (async () => {
       const audio = await this.ctx.audio();
@@ -902,7 +904,7 @@ async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextAct
   const status = statusLine();
   const model = await loadReviewModel(ctx);
   const scheduled = model ? await planCurrentDeck(ctx, model) : undefined;
-  const remediation = model ? remediationBacklog(model.deck.filter(item => !item.invalidatedAt), model.events, model.now) : [];
+  const remediation = model ? effectiveRemediation(model).all : [];
   const cards = (n: number): string => `${n} card${n === 1 ? '' : 's'}`;
   const begin = async (make: (model: NonNullable<Awaited<ReturnType<typeof loadReviewModel>>>) => Promise<SessionPlan | undefined>, buttons: HTMLButtonElement[]): Promise<void> => {
     for (const b of buttons) b.disabled = true;

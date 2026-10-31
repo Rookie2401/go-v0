@@ -155,7 +155,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     try { main.focus({ preventScroll: true }); } catch { /* focus is a convenience */ }
   }
 
-  /** No pager between screens: the foot of a screen holds the way back (where there is one) and the way back to reading. */
+  /** No pager between screens: the foot of a screen holds the way back (where there is one) and the way back to reading, a bar across the screen. */
   function footer(def: ScreenDef): HTMLElement {
     if (def.id === SHARE.id) return h('footer', {}, h('div', { class: 'pager' }, h('a', { class: 'btn', href: '#/home' }, '← Status')));
     if (def.id === VERIFY.id || def.id === RESET.id) return h('footer', {}, h('div', { class: 'pager' }, h('a', { class: 'btn', href: '#/languages' }, '← Languages')));
@@ -166,7 +166,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     else if (def.id === HOME.id || def.group === 'settings') pager.append(h('a', { class: 'btn', href: '#/languages' }, '← Languages'));
     pager.append(button('Done — back to reading', () => {
       done.textContent = deps.closeWindow() ? '' : 'You can close this tab now and go back to your reading. GoLearn is switched on per tab from the toolbar button.';
-    }, { class: 'btn primary', id: 'done-reading' }));
+    }, { class: 'btn primary bar', id: 'done-reading' }));
     return h('footer', {}, pager, done);
   }
 

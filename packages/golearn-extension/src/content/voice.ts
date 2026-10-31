@@ -17,7 +17,7 @@ import { createHtmlAudioPort, clipDriver } from '../../../golisten/src/providers
 import { DEVICE_PRACTICE_NOTE, deviceDriver, findNativeVoice, prepareDevice } from '../../../golisten/src/providers/device';
 import { prepareRemote } from '../../../golisten/src/providers/remote';
 import { albanianRegistry, pronunciationRegistries, deviceRegistry, type VoiceRegistry } from '../../../golisten/src/registry';
-import { languageNameOf } from '../protocol';
+import { languageNameOf, noVoiceNote } from '../protocol';
 import type { SpeechMessage, SpeechReply } from '../speechProtocol';
 import type { PlayResult, PronounceAvailability, Pronouncer } from '../popup/view';
 
@@ -165,11 +165,13 @@ export function createGoListenPronouncer(opts: GoListenPronouncerOptions): Prono
     const message = typeof reply?.message === 'string' ? reply.message.trim() : '';
     return message ? message.slice(0, 240) : fallback;
   };
-  const localOrRemoteDiagnostic = async (lang: string, diagnostic: string): Promise<PronounceAvailability> => {
+  // No voice for the language: say so and where to add one. Remote speech being off is not the reason and is not given
+  // as one (2026-10-29: every language without a voice read "Check GoLearn Privacy", which looked like GoListen switched off).
+  const localOrRemoteDiagnostic = async (lang: string, diagnostic: string, remoteTried = true): Promise<PronounceAvailability> => {
     const local = await base.availability(lang);
     return local.available
       ? { available: true, note: `${local.note} Azure speech unavailable: ${diagnostic}` }
-      : { available: false, note: diagnostic };
+      : { available: false, note: remoteTried ? diagnostic : noVoiceNote(lang) }; // a backend refusal stays the actionable reason
   };
   const environment = (lang: string, context?: PronunciationContext): GoListenEnv => ({
     consent: () => ({ remoteSpeech: true, localOnly: opts.localOnly?.() === true }),
@@ -195,9 +197,9 @@ export function createGoListenPronouncer(opts: GoListenPronouncerOptions): Prono
   return {
     async availability(lang) {
       const localOnly = opts.localOnly?.() === true;
-      if (localOnly) return localOrRemoteDiagnostic(lang, 'Local-only speech is on.');
+      if (localOnly) return localOrRemoteDiagnostic(lang, 'Local-only speech is on.', false);
       if (!(await consent(lang))) return localOrRemoteDiagnostic(lang,
-        opts.localOnly ? 'Remote speech is off.' : 'Remote speech is off or local-only speech is on. Check GoLearn Privacy.');
+        opts.localOnly ? 'Remote speech is off.' : 'Remote speech is off or local-only speech is on. Check GoLearn Privacy.', false);
       const reg = registries.get(lang);
       const entry = reg?.entries.find((e) => e.provider === 'remote' && e.source.kind === 'remote');
       if (!entry || entry.source.kind !== 'remote') return localOrRemoteDiagnostic(lang, `No Azure voice is registered for ${lang}.`);

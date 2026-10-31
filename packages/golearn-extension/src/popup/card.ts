@@ -19,7 +19,7 @@
 import { GOLEARN_HOST_ATTR, type PopupAnchor } from '../contract/readerAdapter';
 import { cellOf, cellsWithForm, featureKey, type ParadigmCell, type SegmentationCut } from '../../../../src/core/paradigm';
 import { contextLine, type CardModel, type EvidenceLabel } from '../parser/cardModel';
-import { languageNameOf, type SelfMark } from '../protocol';
+import { noVoiceNote, type SelfMark } from '../protocol';
 import { KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_WORDS } from '../../../repository-contract/src/knowledge-levels';
 import { cognateText, etymologyStepText, type StructurePart } from '../content/enrich';
 import {
@@ -43,6 +43,8 @@ export interface CardUIOptions {
   /** The device's speech synthesis, used by the built-in local-voice pronouncer when no `pronouncer` is given. */
   speech?: SpeechLike | null;
   makeUtterance?: (text: string, voice: VoiceLike) => unknown;
+  /** The language tags a local voice must carry, per language (the web app passes GoListen's DEVICE_TAGS); without them a voice matches by its language prefix. */
+  voiceTags?: Readonly<Record<string, readonly string[]>>;
   /** The pronouncer (GoListen's device provider in the real content script). */
   pronouncer?: Pronouncer;
   onDismiss?: (reason: DismissReason) => void;
@@ -285,7 +287,7 @@ const describeFeatures = (f: Record<string, string>): string => Object.keys(f).s
 // ───────────────────────────── the built-in local pronouncer ─────────────────────────────
 
 /** The device's own voice for the language, nothing remote (used when no GoListen pronouncer is injected). */
-export function localSpeechPronouncer(speech: SpeechLike | null, makeUtterance?: (text: string, voice: VoiceLike) => unknown): Pronouncer {
+export function localSpeechPronouncer(speech: SpeechLike | null, makeUtterance?: (text: string, voice: VoiceLike) => unknown, voiceTags?: Readonly<Record<string, readonly string[]>>): Pronouncer {
   const make = makeUtterance ?? ((text: string, voice: VoiceLike) => {
     const U = (globalThis as { SpeechSynthesisUtterance?: new (t: string) => { voice?: unknown; lang?: string } }).SpeechSynthesisUtterance;
     if (!U) return undefined;
@@ -294,14 +296,27 @@ export function localSpeechPronouncer(speech: SpeechLike | null, makeUtterance?:
     return u;
   });
   const variants = (lang: string): string => (lang === 'sq' ? 'sq|als|alb' : lang);
+  const norm = (t: string): string => t.toLowerCase().replace(/_/g, '-');
+  // `voiceTags`: the accepted tags of GoListen in the extension (DEVICE_TAGS, passed in by the web app: this module must not
+  // reach audio code), in their order, so Latin is read by an Italian voice here too (2026-10-29: on the iPhone the web
+  // app's card found no Latin voice while the extension used it-IT)
   const voiceFor = (lang: string): VoiceLike | undefined => {
-    try { return speech?.getVoices().find((v) => new RegExp(`^(${variants(lang)})(-|_|$)`, 'i').test(v.lang) && v.localService !== false); } catch { return undefined; }
+    try {
+      const local = (speech?.getVoices() ?? []).filter((v) => v.localService !== false);
+      const tags = voiceTags?.[lang];
+      if (tags) { for (const t of tags) { const v = local.find((x) => norm(x.lang) === norm(t)); if (v) return v; } return undefined; }
+      return local.find((v) => new RegExp(`^(${variants(lang)})(-|_|$)`, 'i').test(v.lang));
+    } catch { return undefined; }
   };
+  const listed = (): number => { try { return speech?.getVoices().length ?? 0; } catch { return 0; } };
   return {
     availability(lang): PronounceAvailability {
       if (!speech) return { available: false, note: 'Speech is not available in this browser.' };
-      if (voiceFor(lang)) return { available: true, note: 'Practice only: a local system voice, not a checked pronunciation. Nothing is sent anywhere.' };
-      return { available: false, note: `No local ${languageNameOf(lang)} voice on this device, so there is nothing to play (remote voices are not used).` };
+      const v = voiceFor(lang);
+      if (v) return { available: true, note: `Practice only: a local system voice${norm(v.lang).startsWith(`${lang}-`) || norm(v.lang) === lang ? '' : ` (${v.lang}, standing in)`}, not a checked pronunciation. Nothing is sent anywhere.` };
+      // Safari fills the voice list only once asked: an empty list is still loading, not a device without voices (voiceschanged re-asks)
+      if (!listed()) return { available: false, note: 'Looking for a voice on this device…' };
+      return { available: false, note: noVoiceNote(lang) };
     },
     play(text, lang): PlayResult {
       const v = voiceFor(lang);
@@ -325,7 +340,7 @@ export function localSpeechPronouncer(speech: SpeechLike | null, makeUtterance?:
 export function createCardUI(options: CardUIOptions = {}): CardUI {
   const doc = options.doc ?? document;
   const speech = options.speech === undefined ? ((globalThis as { speechSynthesis?: SpeechLike }).speechSynthesis ?? null) : options.speech;
-  const pronouncer: Pronouncer = options.pronouncer ?? localSpeechPronouncer(speech, options.makeUtterance);
+  const pronouncer: Pronouncer = options.pronouncer ?? localSpeechPronouncer(speech, options.makeUtterance, options.voiceTags);
 
   let host: HTMLElement | undefined;
   let root: ShadowRoot | undefined;

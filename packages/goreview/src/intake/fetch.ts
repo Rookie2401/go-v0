@@ -157,7 +157,12 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
       if (factErrors.has(candidate.unitId)) throw new Error(factErrors.get(candidate.unitId));
       const facts = factsByUnit.get(candidate.unitId);
       if (!facts) {
-        out.push({ ...first, decision: 'needs-validation', reasons: ['the pack has no verified facts for this unit, so no exercise can be built', ...first.reasons] });
+        // A unit intake already set aside (low-priority: its level, its score, a missing knowledge row) keeps that decision and reason first;
+        // the missing facts are noted after it. Relabelling it "no verified facts" hid the real cause (2026-10-29: a failed knowledge
+        // batch, a New word and a word without facts all read the same).
+        const noFacts = 'the pack has no verified facts for this unit, so no exercise can be built';
+        if (first.decision === 'low-priority') { out.push({ ...first, reasons: [...first.reasons, noFacts] }); continue; }
+        out.push({ ...first, decision: 'needs-validation', reasons: [noFacts, ...first.reasons] });
         continue;
       }
       out.push(decideIntake({ ...base, facts }));

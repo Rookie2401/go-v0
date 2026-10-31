@@ -54,13 +54,40 @@ const BUILD_INPUT_DIRECTORIES = [
   'packages/goreview-ios/.eas/build', 'packages/goreview-ios/templates/eas-project',
 ];
 
+// The repository's own generated output. It is only ever tested against the part of a path that lies in the repository (see repositoryPart):
+// a package installed under node_modules legitimately ships its compiled files in dist/, dist-*/, web/ or build/ folders, and those are real dependencies.
+const GENERATED_OUTPUT = /(^|\/)(?:dist(?:-[^/]*)?|web|\.review-build|\.eas-project|DerivedData|build)(\/|$)/i;
+const REPOSITORY_OUTPUT = /(^|\/)(?:dist(?:-[^/]*)?|web|\.review-build|\.eas-project)(\/|$)/i;
+const NODE_MODULES_SEGMENT = /(^|\/)node_modules\//;
+
+/** Split a normalized repo-relative path at its first node_modules segment: { repository: the part before it, installed: whether there is one }. */
+function repositoryPart(normalizedPath) {
+  const match = NODE_MODULES_SEGMENT.exec(normalizedPath);
+  return match ? { repository: normalizedPath.slice(0, match.index), installed: true } : { repository: normalizedPath, installed: false };
+}
+
 const toRepoRelative = (absolute, root) => {
   const relative = path.relative(root, absolute);
   if (relative === '..' || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) return undefined;
   const normalizedPath = normalized(relative);
-  if (/(^|\/)(?:node_modules|dist(?:-[^/]*)?|web|\.review-build|\.eas-project|DerivedData|build)(\/|$)/i.test(normalizedPath)) return undefined;
+  const { repository, installed } = repositoryPart(normalizedPath);
+  if (installed) return undefined; // dependencies are not repository files; normalizeCompiledModuleId reports them as dependencyPath
+  if (GENERATED_OUTPUT.test(repository)) return undefined;
   return normalizedPath;
 };
+
+const isOutside = (relative) => relative === '..' || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative);
+
+/** Path of an absolute module file relative to the project root, or undefined when it is outside the checkout. A node_modules folder that is a symlink or junction (a git worktree sharing another checkout's install) resolves outside the root; its files are still the checkout's dependencies, as node_modules/<rest>. */
+function relativeToProject(absolute, projectRoot) {
+  const relative = path.relative(projectRoot, absolute);
+  if (!isOutside(relative)) return relative;
+  try {
+    const inside = path.relative(fs.realpathSync(path.join(projectRoot, 'node_modules')), absolute);
+    if (inside && !isOutside(inside)) return path.join('node_modules', inside);
+  } catch { /* no node_modules folder */ }
+  return undefined;
+}
 
 /** Convert Vite/Rollup module ids to stable local paths; return dependency paths separately. */
 export function normalizeCompiledModuleId(id, projectRoot = ROOT) {
@@ -72,11 +99,13 @@ export function normalizeCompiledModuleId(id, projectRoot = ROOT) {
   // Vite appends query flags such as ?commonjs-proxy and ?v=...; those are not filenames.
   value = value.split(/[?#]/, 1)[0].replaceAll('/', path.sep);
   const absolute = path.resolve(projectRoot, value);
-  const relative = path.relative(projectRoot, absolute);
-  if (relative === '..' || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) return undefined;
+  const relative = relativeToProject(absolute, projectRoot);
+  if (relative === undefined) return undefined;
   const normalizedPath = normalized(relative);
-  if (/(^|\/)(?:dist(?:-[^/]*)?|web|\.review-build|\.eas-project)(\/|$)/i.test(normalizedPath)) return undefined;
-  if (normalizedPath.startsWith('node_modules/')) return fs.existsSync(absolute) ? { dependencyPath: normalizedPath } : undefined;
+  // node_modules is decided first: only the repository part of a path can be build output, never the dist/ folder inside an installed package.
+  const { repository, installed } = repositoryPart(normalizedPath);
+  if (REPOSITORY_OUTPUT.test(repository)) return undefined;
+  if (installed) return fs.existsSync(absolute) ? { dependencyPath: normalizedPath } : undefined;
   return fs.existsSync(absolute) ? { sourcePath: normalizedPath } : undefined;
 }
 
@@ -150,6 +179,64 @@ function dependencySnapshot(root, paths = []) {
   });
 }
 
+/** The installed package a node_modules file belongs to: the nearest package.json at or above the file (inside its node_modules/<name> or node_modules/@scope/<name> folder) that has a version. */
+function resolveInstalledPackage(root, file) {
+  const parts = file.split('/');
+  const at = parts.lastIndexOf('node_modules');
+  const scoped = parts[at + 1]?.startsWith('@');
+  const boundary = at + 1 + (scoped ? 2 : 1); // index of the first segment after the package folder
+  if (at < 0 || parts.length <= boundary) throw new Error(`Compiled dependency file is not inside an installed package: ${file}`);
+  for (let end = parts.length - 1; end >= boundary; end -= 1) {
+    const directory = parts.slice(0, end).join('/');
+    const manifestPath = path.join(root, directory, 'package.json');
+    if (!fs.existsSync(manifestPath)) continue;
+    let parsed;
+    try { parsed = JSON.parse(fs.readFileSync(manifestPath, 'utf8')); } catch { throw new Error(`Bundled dependency package.json is not valid JSON: ${directory}/package.json`); }
+    if (typeof parsed?.version === 'string' && parsed.version) {
+      return { directory, name: typeof parsed.name === 'string' && parsed.name ? parsed.name : parts.slice(at + 1, boundary).join('/'), version: parsed.version };
+    }
+  }
+  throw new Error(`Cannot resolve the package name and version of bundled dependency ${file}: no package.json with a version at or above it inside ${parts.slice(0, boundary).join('/')}`);
+}
+
+/** Per bundled package: name, exact installed version, and a sha256 over the set of its bundled files (the {path, sha256} entries, sorted). */
+function packageFingerprints(root, dependencyFiles) {
+  const groups = new Map();
+  for (const entry of dependencyFiles) {
+    const owner = resolveInstalledPackage(root, entry.path);
+    const group = groups.get(owner.directory) ?? { ...owner, files: [] };
+    group.files.push({ path: entry.path, sha256: entry.sha256 });
+    groups.set(owner.directory, group);
+  }
+  return [...groups.values()].sort((a, b) => a.directory.localeCompare(b.directory)).map((group) => ({
+    name: group.name,
+    version: group.version,
+    path: group.directory,
+    fileCount: group.files.length,
+    sha256: sha256(json(group.files.sort((a, b) => a.path.localeCompare(b.path)))),
+  }));
+}
+
+const SCHEDULER_LIBRARY = 'ts-fsrs';
+const SCHEDULER_SOURCE = 'packages/goreview/src/scheduler/fsrs.ts';
+
+/** The algorithm the bundled library names in its exported FSRSVersion (`v5.4.2 using FSRS-6.0` gives FSRS-6.0); falls back to the package version when the file does not say. */
+function schedulerAlgorithm(root, dependencyFiles, entry) {
+  for (const file of dependencyFiles.filter((candidate) => candidate.path.startsWith(`${entry.path}/`))) {
+    if (!/\.(?:mjs|cjs|js)$/.test(file.path)) continue;
+    const match = /FSRSVersion\s*=\s*[`'"][^`'"]*?(FSRS-[0-9][0-9A-Za-z.]*)[^`'"]*[`'"]/.exec(fs.readFileSync(path.join(root, file.path), 'utf8'));
+    if (match) return match[1];
+  }
+  return `${entry.name}@${entry.version}`;
+}
+
+/** The scheduler the app bundles: { library, version, algorithm, sha256 } from the ts-fsrs entry among the bundled packages, or null when it is not bundled. */
+function schedulerEntry(root, dependencyFiles, packages) {
+  const entry = packages.filter((candidate) => candidate.name === SCHEDULER_LIBRARY).sort((a, b) => a.path.length - b.path.length)[0];
+  if (!entry) return null;
+  return { library: SCHEDULER_LIBRARY, version: entry.version, algorithm: schedulerAlgorithm(root, dependencyFiles, entry), sha256: entry.sha256 };
+}
+
 function staticSourceInputs(artifactList) {
   const inputs = [];
   for (const { path: file } of artifactList) {
@@ -185,11 +272,14 @@ export function createReleaseManifest(outDir, mode = process.env.GOREVIEW_RELEAS
   assertBuildModeAllowed(mode, dirty);
   const compiled = [...new Set(compiledModules.map((id) => typeof id === 'string' ? normalizeCompiledModuleId(id, projectRoot)?.sourcePath : undefined).filter(Boolean))].sort();
   const dependencies = dependencySnapshot(projectRoot, compiledDependencies.map((id) => typeof id === 'string' ? normalizeCompiledModuleId(id, projectRoot)?.dependencyPath : undefined).filter(Boolean));
+  const dependencyPackages = packageFingerprints(projectRoot, dependencies);
+  const scheduler = schedulerEntry(projectRoot, dependencies, dependencyPackages);
   const artifacts = artifactFiles(outDir);
   const staticInputs = staticSourceInputs(artifacts);
   const source = sourceSnapshot(projectRoot, compiled, staticInputs);
   const missingCompiled = REQUIRED_CAPABILITIES.filter((file) => !compiled.includes(file));
   if (missingCompiled.length) throw new Error(`Required GoReview capability was not compiled into the web artifact: ${missingCompiled.join(', ')}`);
+  if (compiled.includes(SCHEDULER_SOURCE) && !scheduler) throw new Error(`The scheduler adapter was compiled into the web artifact but no bundled ${SCHEDULER_LIBRARY} package was recorded.`);
   const manifest = {
     schemaVersion: 1,
     product: 'GoReview',
@@ -204,6 +294,9 @@ export function createReleaseManifest(outDir, mode = process.env.GOREVIEW_RELEAS
     compiledSourceModules: compiled,
     compiledDependencyFiles: dependencies,
     compiledDependencyManifestSha256: sha256(json(dependencies)),
+    compiledDependencyPackages: dependencyPackages,
+    compiledDependencyPackagesSha256: sha256(json(dependencyPackages)),
+    scheduler,
     artifactManifestSha256: sha256(json(artifacts)),
     artifactFiles: artifacts,
   };
@@ -236,6 +329,58 @@ function assertArtifactMatchesCheckout(manifest, projectRoot, expectCommit) {
   if (manifest.git.tree !== headTree) throw new Error(`Release verification refused: the artifact records tree ${manifest.git.tree} but HEAD's tree is ${headTree}.`);
 }
 
+/** The recorded package whose folder most deeply contains the file (a package nested inside another owns its own files). */
+function owningPackage(packages, file) {
+  let owner;
+  for (const entry of packages) if (file.startsWith(`${entry.path}/`) && (!owner || entry.path.length > owner.path.length)) owner = entry;
+  return owner;
+}
+
+/** The recorded package fingerprints must agree with the recorded dependency files, and a build that compiled the scheduler adapter must name its scheduler library. Needs no checkout. */
+function assertDependencyPackagesConsistent(manifest) {
+  const files = manifest.compiledDependencyFiles ?? [];
+  const packages = manifest.compiledDependencyPackages;
+  if (!Array.isArray(packages) || !Array.isArray(files)) throw new Error('Compiled dependency package manifest is missing: the artifact predates per-package dependency fingerprints; rebuild it.');
+  if (manifest.compiledDependencyPackagesSha256 !== sha256(json(packages))) throw new Error('Compiled dependency package manifest integrity check failed.');
+  const covered = new Set();
+  for (const entry of packages) {
+    if (typeof entry?.name !== 'string' || typeof entry.version !== 'string' || typeof entry.path !== 'string') throw new Error('Compiled dependency package manifest integrity check failed.');
+    const owned = files.filter((file) => owningPackage(packages, file.path) === entry).map((file) => ({ path: file.path, sha256: file.sha256 })).sort((a, b) => a.path.localeCompare(b.path));
+    owned.forEach((file) => covered.add(file.path));
+    if (entry.fileCount !== owned.length || entry.sha256 !== sha256(json(owned))) throw new Error(`Compiled dependency package manifest integrity check failed for ${entry.name}@${entry.version}.`);
+  }
+  if (covered.size !== files.length) throw new Error('Compiled dependency package manifest integrity check failed: a bundled dependency file belongs to no recorded package.');
+  const scheduler = manifest.scheduler;
+  if (scheduler !== null && scheduler !== undefined) {
+    const entry = packages.find((candidate) => candidate.name === scheduler.library && candidate.version === scheduler.version && candidate.sha256 === scheduler.sha256);
+    if (scheduler.library !== SCHEDULER_LIBRARY || !entry || typeof scheduler.algorithm !== 'string' || !scheduler.algorithm) throw new Error('Scheduler record does not match the recorded dependency packages.');
+  } else if (manifest.compiledSourceModules?.includes(SCHEDULER_SOURCE)) {
+    throw new Error(`The scheduler adapter was compiled into the artifact but the manifest records no ${SCHEDULER_LIBRARY} scheduler.`);
+  }
+}
+
+const describeScheduler = (scheduler) => scheduler ? `${scheduler.library} ${scheduler.version}, ${scheduler.algorithm}` : 'none';
+
+/** Compare the recorded dependency packages and scheduler with what node_modules of this checkout holds now; a different installed version is refused by name. */
+function assertInstalledPackagesMatch(manifest, projectRoot) {
+  for (const entry of manifest.compiledDependencyPackages) {
+    const installed = installedVersion(projectRoot, entry.path);
+    if (installed === undefined) throw new Error(`Bundled dependency ${entry.name}@${entry.version} is not installed in this checkout (${entry.path}).`);
+    if (installed !== entry.version) throw new Error(`Installed bundled dependency ${entry.name} is ${installed} but the artifact was built with ${entry.version}.`);
+  }
+  const current = packageFingerprints(projectRoot, dependencySnapshot(projectRoot, manifest.compiledDependencyFiles.map((file) => file.path)));
+  if (json(current) !== json(manifest.compiledDependencyPackages)) throw new Error('Installed bundled dependency packages differ from those recorded in the artifact.');
+  const scheduler = schedulerEntry(projectRoot, manifest.compiledDependencyFiles, current);
+  if (json(scheduler) !== json(manifest.scheduler ?? null)) throw new Error(`Installed scheduler (${describeScheduler(scheduler)}) differs from the scheduler recorded in the artifact (${describeScheduler(manifest.scheduler)}).`);
+}
+
+function installedVersion(root, directory) {
+  try {
+    const parsed = JSON.parse(fs.readFileSync(path.join(root, directory, 'package.json'), 'utf8'));
+    return typeof parsed?.version === 'string' ? parsed.version : undefined;
+  } catch { return undefined; }
+}
+
 export function verifyReleaseArtifact(outDir, options = {}) {
   const manifestPath = path.join(outDir, MANIFEST_NAME);
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
@@ -247,6 +392,7 @@ export function verifyReleaseArtifact(outDir, options = {}) {
   if (manifest.artifactManifestSha256 !== sha256(json(manifest.artifactFiles)) || json(actualArtifacts) !== json(manifest.artifactFiles)) throw new Error('Built artifact integrity check failed.');
   if (manifest.sourceManifestSha256 !== sha256(json(manifest.sourceFiles))) throw new Error('Source manifest integrity check failed.');
   if (manifest.compiledDependencyManifestSha256 !== sha256(json(manifest.compiledDependencyFiles ?? []))) throw new Error('Compiled dependency manifest integrity check failed.');
+  assertDependencyPackagesConsistent(manifest);
   const sourceMap = new Map(manifest.sourceFiles.map((entry) => [entry.path, entry.sha256]));
   for (const capability of REQUIRED_CAPABILITIES) {
     if (!manifest.requiredCapabilities.includes(capability) || !sourceMap.has(capability)) throw new Error(`Required GoReview capability is absent from the source manifest: ${capability}`);
@@ -255,6 +401,7 @@ export function verifyReleaseArtifact(outDir, options = {}) {
   if (options.compareCurrentSource) {
     const current = sourceSnapshot(options.projectRoot ?? ROOT, manifest.compiledSourceModules ?? [], manifest.staticSourceInputs ?? []);
     if (json(current.files) !== json(manifest.sourceFiles)) throw new Error('Current GoReview source differs from the source recorded in the artifact.');
+    assertInstalledPackagesMatch(manifest, options.projectRoot ?? ROOT);
     const currentDependencies = dependencySnapshot(options.projectRoot ?? ROOT, (manifest.compiledDependencyFiles ?? []).map((file) => file.path));
     if (json(currentDependencies) !== json(manifest.compiledDependencyFiles ?? [])) throw new Error('Installed bundled dependencies differ from those recorded in the artifact.');
   }
@@ -286,5 +433,6 @@ export function parseVerifyArgs(args) {
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const { target, requireRelease, expectCommit } = parseVerifyArgs(process.argv.slice(2));
   const manifest = verifyReleaseArtifact(path.resolve(ROOT, target), { requireRelease, expectCommit, compareCurrentSource: true });
-  console.log(`Verified ${manifest.buildMode} GoReview artifact from ${manifest.git.commit}; ${manifest.artifactFiles.length} files checked.`);
+  const scheduler = manifest.scheduler ? `${manifest.scheduler.library} ${manifest.scheduler.version} (${manifest.scheduler.algorithm})` : 'none bundled';
+  console.log(`Verified ${manifest.buildMode} GoReview artifact from ${manifest.git.commit}; ${manifest.artifactFiles.length} files checked; ${manifest.compiledDependencyPackages.length} bundled dependency packages checked; scheduler: ${scheduler}.`);
 }

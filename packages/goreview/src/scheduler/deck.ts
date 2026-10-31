@@ -102,9 +102,11 @@ function orderAtAndCausality(events: readonly GoEvent[]): GoEvent[] {
 
 const isRating = (x: unknown): x is Rating => x === 1 || x === 2 || x === 3 || x === 4;
 const isExplicitIntent = (x: unknown): boolean => !!x && typeof x === 'object' && (x as { kind?: unknown }).kind === 'explicit';
+// A listening answer to a computer voice (`payload.listeningPractice`, session/runner.ts) is the one rated event with evidence quality 'none'
+// that schedules: retention bookkeeping for the card, never knowledge (the Repository's projection ignores quality none), 2026-10-29.
 const isSchedulableReview = (e: GoEvent): boolean => isValidReviewClaim(e) && !!e.subject?.cardId && isRating(e.payload.rating)
   && e.payload.hinted !== true && e.payload.answerShownBefore !== true && e.payload.transcriptShownBefore !== true
-  && e.evidence?.assisted !== true && e.evidence?.quality !== 'none';
+  && e.evidence?.assisted !== true && (e.evidence?.quality !== 'none' || e.payload.listeningPractice === true);
 const isDimension = (x: unknown): x is AssessmentDimension => typeof x === 'string' && (ASSESSMENT_DIMENSIONS as readonly string[]).includes(x);
 const isFamily = (x: unknown): x is ExerciseFamily => typeof x === 'string' && (EXERCISE_FAMILIES as readonly string[]).includes(x);
 const nonEmpty = (x: unknown): x is string => typeof x === 'string' && x.length > 0;
@@ -337,7 +339,7 @@ export function foldDeck(events: readonly GoEvent[], scheduler: Scheduler, opts:
       const entry: ReviewLogEntry = { at: e.at, rating: gradeRating, outcome: outcomeOf(payload), deviceId: e.producer?.deviceId ?? 'unknown',
         exerciseId: nonEmpty(payload.exerciseId) ? payload.exerciseId : e.id, family: isFamily(payload.family) ? payload.family : item.family,
         elapsedDays: next.elapsedDays, eventId: e.id, ...(retracted.has(e.id) ? { retracted: true } : {}),
-        ...(earlyPractice ? { earlyPractice: true } : {}),
+        ...(earlyPractice ? { earlyPractice: true } : {}), ...(payload.listeningPractice === true ? { listeningPractice: true } : {}),
         ...(excluded ? { scheduleExcluded: excluded, conflict: !retracted.has(e.id) } : {}) };
       item.history.push(entry);
       if (excluded) { if (!retracted.has(e.id)) ignore(e,excluded); }

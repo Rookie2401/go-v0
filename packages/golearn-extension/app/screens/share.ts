@@ -16,6 +16,7 @@ import { PARSER_LANGUAGES, parseSelection } from '../../src/parser';
 import { ensureAnalyser } from '../analysers';
 import type { PopupAnchor } from '../../src/contract/readerAdapter';
 import { createCardUI, type CardUI } from '../../src/popup/card';
+import { DEVICE_TAGS } from '../../src/content/voiceTags';
 import {
   candidateWords, chooseWord, encounterFromShare, normaliseSharedPassage, passageFromShareParams, pastedPassage, readShareParams,
   shareReaderId, type NormalisedShare, type ShareContext, type SharedPassage,
@@ -44,7 +45,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   let languageName = nameOf(languageId);
   let analysed = PARSER_LANGUAGES.includes(languageId);
   const sessionId = `share-${ctx.deps.now().getTime().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
-  const ui: CardUI = createCardUI({ doc, speech: ctx.deps.speech });
+  const ui: CardUI = createCardUI({ doc, speech: ctx.deps.speech, voiceTags: DEVICE_TAGS });
   view.onDispose(() => ui.destroy());
 
   const status = statusLine();

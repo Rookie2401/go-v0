@@ -238,9 +238,9 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
     if (!audio.available) {
       return makeDecision(candidate, 'test-later', [...caveats, `no suitable audio: ${audio.reason}`, 'no written substitute: a reading question would credit reading, not listening'], proposed);
     }
-    if (!audio.eligibleForEvidence) {
-      return makeDecision(candidate, 'test-later', [...caveats, `no suitable audio: ${audio.reason}`, 'the available audio is practice only and cannot be listening evidence'], proposed);
-    }
+    // a computer voice is good listening PRACTICE (the owner, 2026-10-28: "add computer-voice listening cards"); the
+    // stimulus's own validity keeps the answer from ever counting as listening evidence (exercises/evidence.ts)
+    if (!audio.eligibleForEvidence) caveats.push('listening practice only: the voice is synthetic or unreviewed, so the answer is never listening evidence');
   }
 
   // 8 ── explicitly saved ────────────────────────────────────────────────────────────────────────────────────────

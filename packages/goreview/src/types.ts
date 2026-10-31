@@ -252,7 +252,9 @@ export interface ScheduleState {
 
 export interface ReviewLogEntry { at: string; rating: Rating; outcome: GradeOutcome; deviceId: string; exerciseId: string; family: ExerciseFamily; elapsedDays: number; eventId?: string; retracted?: boolean; scheduleExcluded?: string; conflict?: boolean;
   /** An explicit practice answer (saved deck, selected words, Repeat this batch) given before the card was due: in the chain and in the evidence, but the schedule was kept (2026-10-29). */
-  earlyPractice?: boolean }
+  earlyPractice?: boolean;
+  /** A listening answer to a computer voice: it moved the schedule (so the card returns on its interval, not in every session) and claimed no knowledge (2026-10-29). */
+  listeningPractice?: boolean }
 
 export type ItemStatus = 'active' | 'snoozed' | 'suspended' | 'dismissed';
 
@@ -320,11 +322,15 @@ export interface ReviewPreferences {
   varietyId?: string;
   sessionMinutes: number;
   maxNew: number;
+  /** The learner set the new-item numbers apart from the deck size (Settings, or a write that names them); without it they follow Cards per deck (2026-10-30). */
+  newItemsSet?: true;
   /** Automatic first effective reviews allowed in a UTC day; counted from shared history. */
   dailyNewLimit?: number;
   practiceGoals?: Array<'recognition' | 'retrieval' | 'listening' | 'application'>;
   desiredRetention: number;
   includeListening: boolean;
+  /** The learner turned listening off. Only this marker turns it off: a stored record from before listening was on by default (2026-10-28) says includeListening: false without having been asked, and reads as on. */
+  listeningOff?: true;
   /** Preferred share of grammar items in a session, 0..1. */
   grammarShare: number;
   prioritizeSaved: boolean;
@@ -372,6 +378,12 @@ export interface IntakeOutcome {
 
 export interface PlannedItem { item: DeckItem; family: ExerciseFamily; why: string[]; estimatedSeconds: number; isNew: boolean; origin?: 'scheduled' | 'intake' | 'vocabulary' | 'saved-deck' | 'explicit' | 'remediation'; schedulingCardExists?: boolean; admissionKnowledge?: UnitKnowledge; intent?: ReviewIntent; queue?: 'learning' | 'due' | 'remediation' | 'new'; overlap?: 'scheduled' | 'remediation' | 'explicit'; presentationReason?: string }
 
+/** Stable, machine-readable reason a card was or was not placed in a plan. Additive: `why` strings are unchanged. */
+export type ExclusionCode = 'scheduled-not-due' | 'learning-not-due' | 'new-budget-exhausted' | 'daily-allowance-exhausted' | 'workload-admission-cap'
+  | 'over-time-budget' | 'beyond-micro-deck' | 'knowledge-beyond-new-required' | 'seen-evidence-insufficient' | 'automatic-suppressed'
+  | 'listening-audio-unavailable' | 'snoozed' | 'suspended' | 'dismissed' | 'invalidated' | 'repair-required' | 'learner-control'
+  | 'invalid-request' | 'facts-unavailable' | 'knowledge-unresolved' | 'same-unit-in-batch' | 'selected' | 'outranked' | 'other';
+
 export interface SessionBatch { targetQuestions: number; workloadLimit: number; estimatedSeconds: number; reasons: string[] }
 
 export interface SessionPlan {
@@ -380,7 +392,7 @@ export interface SessionPlan {
   languageId: string;
   budgetMinutes: number;
   items: PlannedItem[];
-  skipped: Array<{ itemId: string; why: string }>;
+  skipped: Array<{ itemId: string; why: string; /** Stable machine-readable reason; `why` stays the human text. */ code?: ExclusionCode }>;
   dueCount: number;
   newCount: number;
   listeningCount: number;

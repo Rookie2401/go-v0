@@ -191,7 +191,9 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
     // a mark of new / seen in force is a request for help the learner made by marking, not by asking for a review
     const markedNew = markLevel !== undefined && !contradicted && level === markLevel && levelRank(level) <= levelRank('seen');
     const decayed = decayedRetention(row);
-    const signalled = hasError(row) || lookups > 0 || common || !!lev || markedNew; // exposure alone is not a reason to review
+    // Three distinct encounters (projection@4 UnitKnowledge.encounters: encounters, lookups, assistance, recognitions) are a reason to review; a single exposure is not.
+    const repeated = (row?.encounters ?? 0) >= R.repeatedEncounters.minimum;
+    const signalled = hasError(row) || lookups > 0 || common || !!lev || markedNew || repeated;
     let drawn: boolean;
     switch (level) {
       case 'known': drawn = contradicted || decayed || common || !!lev; break; // a known unit is retrieved when its retention decayed or it is a common word

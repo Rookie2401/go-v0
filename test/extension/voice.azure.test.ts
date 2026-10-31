@@ -83,3 +83,13 @@ describe('GoLearn Azure playback through privileged messages', () => {
     expect(result).toEqual({ available: false, note: 'Grant access to the configured speech backend from GoLearn setup.' });
   });
 });
+
+describe('GoLearn with no voice for the language and remote speech off', () => {
+  it('says the device has no voice and where to add one, not "Check GoLearn Privacy" (2026-10-29)', async () => {
+    const pron = createGoListenPronouncer({ speech: fakeSpeech([voice('English', 'en-US')]), audio: fakeAudio(), objectUrl: fakeObjectUrls(), utterance: fakeUtterance, voiceWaitMs: 0,
+      refreshConsent: async () => false, speechBridge: async () => reply });
+    const a = await pron.availability('de');
+    expect(a).toEqual({ available: false, note: "No German voice on this device. Add one in the system's speech settings; GoLearn setup, Audio, shows how." });
+    expect((await pron.availability('la')).note).toContain('Add an Italian voice');
+  });
+});

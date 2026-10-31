@@ -28,6 +28,22 @@ describe('review preferences in Settings', () => {
     expect(controls[controls.length - 1].id).toBe('pref-reset');
   });
 
+  it('the new-item steppers follow the deck size on screen as it is stepped, until one is moved; then they stay (2026-10-30)', async () => {
+    const rig = await makeRig({ signedIn: true });
+    await rig.go('settings');
+    await until(() => !!rig.root.querySelector('#pref-more'), 'the deck stepper');
+    const value = (id: string) => rig.q<HTMLInputElement>(id).value;
+    expect([value('#pref-size'), value('#pref-max-new'), value('#pref-daily-new')]).toEqual(['10', '10', '10']);
+    rig.q('#pref-more').click();
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 11, 'the deck size saved');
+    expect([value('#pref-max-new'), value('#pref-daily-new')]).toEqual(['11', '11']); // the open form shows the follow
+    rig.q('#pref-daily-new-more').click();
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).dailyNewLimit === 12, 'the day set apart');
+    rig.q('#pref-more').click();
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 12, 'the deck size saved again');
+    expect([value('#pref-max-new'), value('#pref-daily-new')]).toEqual(['11', '12']); // set apart: the deck no longer moves them
+  });
+
   it('provides accessible steppers that save together, allow typing, and clamp at their ends', async () => {
     const rig = await makeRig({ signedIn: true });
     await rig.go('settings');
@@ -39,9 +55,14 @@ describe('review preferences in Settings', () => {
     expect(rig.q<HTMLInputElement>('#pref-retention').value).toBe('89');
 
     rig.q('#pref-daily-new-more').click();
-    await until(async () => (await prefs()).dailyNewLimit === 6, 'daily limit saved');
-    rig.q<HTMLInputElement>('#pref-goal-listening').click();
-    await until(async () => (await prefs()).practiceGoals?.includes('listening') === true, 'practice goal saved');
+    await until(async () => (await prefs()).dailyNewLimit === 11, 'daily limit saved'); // from the deck size, 10, since 2026-10-30
+    // listening has one switch, "Include listening practice", and the listening goal follows it (the owner, 2026-10-28)
+    expect(rig.root.querySelector('#pref-goal-listening')).toBeNull();
+    expect((await prefs()).practiceGoals).toContain('listening');
+    rig.q<HTMLInputElement>('#pref-listening').click();
+    await until(async () => (await prefs()).includeListening === false && !(await prefs()).practiceGoals?.includes('listening'), 'listening off, goal and all');
+    rig.q<HTMLInputElement>('#pref-listening').click();
+    await until(async () => (await prefs()).includeListening && (await prefs()).practiceGoals?.includes('listening') === true, 'listening back on');
 
     type(rig.q<HTMLInputElement>('#pref-max-new'), '3');
     await until(async () => (await prefs()).maxNew === 3, 'a typed value saved');
@@ -62,19 +83,20 @@ describe('review preferences in Settings', () => {
     const goal = rig.q<HTMLInputElement>('#pref-goal-retrieval');
     goal.checked = false; goal.dispatchEvent(new Event('change'));
     const listening = rig.q<HTMLInputElement>('#pref-listening');
-    listening.checked = true; listening.dispatchEvent(new Event('change'));
+    expect(listening.checked).toBe(true); // on by default (the owner, 2026-10-28)
+    listening.checked = false; listening.dispatchEvent(new Event('change'));
     const shortcuts = rig.q<HTMLInputElement>('#pref-shortcuts');
     shortcuts.checked = false; shortcuts.dispatchEvent(new Event('change'));
-    await until(async () => (await prefs()).includeListening && (await prefs()).maxNew === 3 && (await prefs()).dailyNewLimit === 9, 'the changes saved');
+    await until(async () => !(await prefs()).includeListening && (await prefs()).maxNew === 3 && (await prefs()).dailyNewLimit === 9, 'the changes saved');
     rig.q('#pref-reset').click();
-    await until(async () => (await prefs()).cardsPerDeck === 10 && !(await prefs()).includeListening, 'the defaults restored');
+    await until(async () => (await prefs()).cardsPerDeck === 10 && (await prefs()).includeListening, 'the defaults restored');
     expect(await prefs()).toEqual(DEFAULT_PREFERENCES('sq'));
     expect(rig.q<HTMLInputElement>('#pref-size').value).toBe('10');
-    expect(rig.q<HTMLInputElement>('#pref-max-new').value).toBe('5');
-    expect(rig.q<HTMLInputElement>('#pref-daily-new').value).toBe('5');
+    expect(rig.q<HTMLInputElement>('#pref-max-new').value).toBe('10');
+    expect(rig.q<HTMLInputElement>('#pref-daily-new').value).toBe('10');
     expect(rig.q<HTMLInputElement>('#pref-retention').value).toBe('90');
     expect(rig.q<HTMLInputElement>('#pref-goal-retrieval').checked).toBe(true);
-    expect(rig.q<HTMLInputElement>('#pref-listening').checked).toBe(false);
+    expect(rig.q<HTMLInputElement>('#pref-listening').checked).toBe(true);
     expect(rig.q<HTMLInputElement>('#pref-saved').checked).toBe(true);
     expect(rig.q<HTMLInputElement>('#pref-shortcuts').checked).toBe(true);
     expect(rig.q('#prefs-form > .status').textContent).toContain('Back to the defaults');

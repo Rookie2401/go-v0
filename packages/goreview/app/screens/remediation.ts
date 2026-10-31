@@ -1,5 +1,5 @@
 /** Repository-backed study and delayed reassessment for unresolved review failures. */
-import { remediationBacklog, type RemediationCandidate, type RemediationReason } from '../../src/planner/remediation';
+import type { RemediationCandidate, RemediationReason } from '../../src/planner/remediation';
 import { buildRemediationStudiedEvent } from '../../src/planner/remediation';
 import type { Exercise, UnitFacts } from '../../src/types';
 import type { AppContext } from '../context';
@@ -7,7 +7,7 @@ import { append, button, clear, embedTarget, h, p, setStatus, statusLine } from 
 import { unitLabel } from '../format';
 import { beginSession, loadReviewModel, type ReviewModel } from '../workspace';
 import type { DeckItem } from '../../src/types';
-import { planRemediation } from '../deckModel';
+import { effectiveRemediation, planRemediation } from '../deckModel';
 import { isClassUnit } from '../classEssentials';
 import type { View } from './view';
 
@@ -40,7 +40,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     clear(root);
     if (!model) { append(root, [h('h2', { id: 'remediation-h' }, 'Remediation'), p('Choose a language to continue.')]); return; }
     const allItems = [...model.deck, ...(model.classDeck ?? [])];
-    const candidates = remediationBacklog(allItems.filter(item => !item.invalidatedAt), model.events, model.now);
+    const candidates = effectiveRemediation(model).all;
     const repairItems = allItems.filter(item => !!item.invalidatedAt);
     const tag = model.identity.varietyId ?? model.identity.languageId;
     append(root, [h('h2', { id: 'remediation-h' }, 'Remediation'),
@@ -99,8 +99,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       const study = button('Mark studied', () => void act(async () => {
         const current = await loadReviewModel(ctx);
         if (!current) throw new Error('Choose a language first.');
-        const fresh = remediationBacklog([...current.deck, ...(current.classDeck ?? [])].filter(row => !row.invalidatedAt), current.events, current.now)
-          .find(row => row.itemId === c.itemId);
+        const fresh = effectiveRemediation(current).all.find(row => row.itemId === c.itemId);
         const currentItem = [...current.deck, ...(current.classDeck ?? [])].find(row => row.itemId === c.itemId);
         if (!fresh || fresh.failureEventId !== c.failureEventId || !fresh.needsStudy || !currentItem)
           throw new Error('This remediation item changed; review the current backlog before studying it.');
@@ -124,8 +123,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       section.append(button('Begin delayed reassessment', () => void act(async () => {
         const current = await loadReviewModel(ctx);
         if (!current) throw new Error('Choose a language first.');
-        const fresh = remediationBacklog([...current.deck, ...(current.classDeck ?? [])].filter(item => !item.invalidatedAt), current.events, current.now);
-        const plan = await planRemediation(ctx, current, fresh.filter(x => x.itemId === c.itemId));
+        const plan = await planRemediation(ctx, current, effectiveRemediation(current).all.filter(x => x.itemId === c.itemId));
         if (!plan.items.length) throw new Error('This item is no longer eligible for reassessment.');
         const result = await beginSession(ctx, current, { plan });
         if (!result.ok) throw new Error(result.message);

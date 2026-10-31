@@ -264,6 +264,15 @@ const LANGUAGE_NAMES: Record<string, string> = {
 /** A learner-facing name for a language id; the id itself when the name is not known. */
 export const languageNameOf = (id: string): string => LANGUAGE_NAMES[id] ?? id;
 
+/**
+ * What a card says when the device has no voice for the language: that, and where to add one (GoLearn setup, Audio).
+ * Latin has no voice anywhere, so it names the Italian voice that stands in for it.
+ */
+export function noVoiceNote(languageId: string): string {
+  const add = languageId === 'la' ? 'Add an Italian voice, which reads Latin here,' : 'Add one';
+  return `No ${languageNameOf(languageId)} voice on this device. ${add} in the system's speech settings; GoLearn setup, Audio, shows how.`;
+}
+
 // ───────────────────────────── the device-local Repository (no account) ─────────────────────────────
 
 /** One enrolment of the device-local learner. `explicit` = the learner chose the language (setup page); otherwise the Repository made it to be able to record a lookup. */

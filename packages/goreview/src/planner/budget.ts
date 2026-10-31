@@ -3,6 +3,17 @@ export interface AdmissionBudgetInput { learnerId: string; languageId: string; n
 export interface AdmissionBudgetResult { used: number; remaining: number }
 const REVIEW = new Set(['CardReviewed', 'AssessmentAnswered', 'ListeningAssessed']);
 const utcDay = (at: string) => new Date(Date.parse(at)).toISOString().slice(0, 10);
+/**
+ * Units whose first answers do not consume the day's allowance: the allowance bounds how much GoLearn VOCABULARY is introduced a day,
+ * and the Class Essentials phrases (`class:<lang>:<phrase>`, the app's built-in deck, which no learner met in a text) are not that.
+ * Before 2026-10-29 a first Class Essentials session of twenty cards spent the whole allowance (default 5), and the home then said
+ * "0 eligible new admissions" for the rest of the UTC day with no vocabulary introduced at all.
+ */
+export const NEW_ALLOWANCE_EXEMPT_UNIT_PREFIXES: readonly string[] = ['class:'];
+const exemptUnit = (e: GoEvent): boolean => {
+  const unitId = e.subject.itemIds?.[0] ?? (typeof e.payload.unitId === 'string' ? e.payload.unitId : undefined);
+  return !!unitId && NEW_ALLOWANCE_EXEMPT_UNIT_PREFIXES.some((p) => unitId.startsWith(p));
+};
 /** One durable introduction per canonical scheduling card consumes the UTC-day allowance.
  * New creation events record the actual first-answer time and typed intent. Legacy histories
  * use the first recorded response. Assistance or a later grade correction does not refund
@@ -18,7 +29,7 @@ export function admissionBudget(events: readonly GoEvent[], x: AdmissionBudgetIn
   if (!Number.isFinite(now)) return { used: 0, remaining: 0 };
   const rows: Array<{cardId:string;at:string;intent:unknown;id:string;creation:boolean}> = [];
   for (const e of events) {
-    if(e.learnerId!==x.learnerId || e.languageId!==x.languageId || !e.subject.cardId || e.correctionOf)continue;
+    if(e.learnerId!==x.learnerId || e.languageId!==x.languageId || !e.subject.cardId || e.correctionOf || exemptUnit(e))continue;
     const admission=e.payload.admission as {at?:unknown;intent?:unknown}|undefined;
     const creation=e.kind==='CardAdded' && e.payload.lifecycle==='create' && admission && typeof admission.at==='string';
     const rating=e.payload.rating;

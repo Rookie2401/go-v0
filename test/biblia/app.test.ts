@@ -133,12 +133,66 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
       expect(card?.textContent).toMatch(/Variants/);
       expect(card?.textContent).toMatch(/Read as Biblical Hebrew/);
       expect(rec.enrolments).toEqual(['he|he-bib']);
-      expect(rec.events.map((e) => e.kind)).toEqual(['SelectionLookedUp']);
+      expect(rec.events.map((e) => e.kind)).toEqual(['SelectionLookedUp', 'EncounterRecorded']); // the tap, and the verse's other words as read
       const ev = rec.events[0];
       expect(ev.languageId).toBe('he');
       expect(ev.producer.app).toBe('golearn-ext'); // the shared builder's producer; readerId says where it came from
       expect((ev.payload as { readerId?: string }).readerId).toBe('biblia');
       expect((ev.payload as { language?: { varietyId?: string } }).language?.varietyId).toBe('he-bib');
+    });
+
+    describe('the verse as read (an EncounterRecorded beside the first tap in a verse)', () => {
+      const tap = async (verse: number, index: number): Promise<HTMLButtonElement> => {
+        const b = document.querySelectorAll(`.reader .prose .verse[data-v="${verse}"] button.word`)[index] as HTMLButtonElement;
+        b.click();
+        await new Promise((r) => setTimeout(r, 20));
+        return b;
+      };
+      it('the first tap in a verse records the selection and one EncounterRecorded for the verse’s other words; a second tap there records only the selection; another verse gets its own', async () => {
+        const rec = fakeRecorder();
+        app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: rec, now: () => new Date('2026-10-30T12:00:00Z') });
+        await app.go('#/read/Gen/1');
+        const verseWords = document.querySelectorAll('.reader .prose .verse[data-v="1"] button.word').length;
+        expect(verseWords).toBeGreaterThan(3);
+        await tap(1, 2);
+        expect(rec.events.map((e) => e.kind)).toEqual(['SelectionLookedUp', 'EncounterRecorded']);
+        const [sel, enc] = rec.events;
+        const tapped = new Set(sel.subject.itemIds ?? []);
+        const ids = enc.subject.itemIds ?? [];
+        expect(ids.length).toBeGreaterThan(3);
+        expect(ids.length).toBeLessThanOrEqual(100);
+        expect(new Set(ids).size).toBe(ids.length);
+        for (const id of ids) expect(tapped.has(id), id).toBe(false);
+        expect(ids.some((id) => id.startsWith('form:he:'))).toBe(true);
+        expect(enc.languageId).toBe('he');
+        expect(enc.enrolmentId).toBe(sel.enrolmentId);
+        expect(enc.producer).toMatchObject({ app: 'golearn-ext', surface: 'biblia-reading', deviceId: 'D1' });
+        expect(enc.payload).toMatchObject({ contextKind: 'sentence', tokenCount: verseWords, readerId: 'biblia' });
+        expect((enc.payload as { language?: { varietyId?: string } }).language?.varietyId).toBe('he-bib');
+        expect(enc.dedupeKey!.length).toBeLessThanOrEqual(300);
+        // a second tap in the same verse: the lookup only
+        await tap(1, 0);
+        expect(rec.events.map((e) => e.kind)).toEqual(['SelectionLookedUp', 'EncounterRecorded', 'SelectionLookedUp']);
+        // a tap in the next verse: its own exposure
+        await tap(2, 1);
+        expect(rec.events.map((e) => e.kind)).toEqual(['SelectionLookedUp', 'EncounterRecorded', 'SelectionLookedUp', 'SelectionLookedUp', 'EncounterRecorded']);
+        expect(rec.events[4].subject.itemIds).not.toEqual(ids);
+      });
+      it('works in Greek, and with no identity (nothing is recorded) there is no exposure either', async () => {
+        const rec = fakeRecorder();
+        app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: rec, now: () => new Date() });
+        await app.go('#/read/John/1');
+        await tap(1, 1);
+        expect(rec.events.map((e) => e.kind)).toEqual(['SelectionLookedUp', 'EncounterRecorded']);
+        expect(rec.events[1]).toMatchObject({ languageId: 'el', payload: { contextKind: 'sentence' } });
+        expect(rec.events[1].subject.itemIds!.some((id) => id.startsWith('form:el:'))).toBe(true);
+        app.destroy();
+        const none: ReturnType<typeof fakeRecorder> = { ...fakeRecorder(), mode: 'none', reason: 'not signed in', async identity() { return undefined; } };
+        app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: none, now: () => new Date() });
+        await app.go('#/read/John/1');
+        await tap(1, 1);
+        expect(none.events).toEqual([]);
+      });
     });
   });
 });

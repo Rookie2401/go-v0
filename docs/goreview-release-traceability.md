@@ -19,6 +19,25 @@ vite build -c packages/goreview/app/vite.config.ts --mode review
 node scripts/goreview-release.mjs verify packages/goreview/app/dist-review
 ```
 
+## Bundled dependencies and the scheduler
+
+The manifest lists every file under `node_modules` that entered the emitted bundle (`compiledDependencyFiles`, each with its SHA-256) and, additively, groups them by package. A file counts as a dependency whenever its path contains a `node_modules/` segment, even when the package ships its compiled code in a `dist/`, `dist-*/`, `web/` or `build/` folder (as `node_modules/ts-fsrs/dist/index.mjs` does). Only the part of a path inside the repository is tested against the build-output exclusions (`dist*`, `web`, `.review-build`, `.eas-project`), so the repository's own `packages/goreview/app/dist-review/...` is still never a source or a dependency. A `node_modules` that is a symlink or junction (a Git worktree sharing another checkout's install) resolves outside the checkout; its files are recorded as `node_modules/<rest>` all the same.
+
+New fields (every earlier field is unchanged):
+
+- `compiledDependencyPackages`: one entry per bundled package, found from the nearest `package.json` with a version at or above the file (scoped and nested `node_modules` packages included): `name`, the exact installed `version`, `path` (the package folder), `fileCount`, and `sha256`, the hash over that package's bundled `{path, sha256}` entries. A bundled file whose package version cannot be read stops the build.
+- `compiledDependencyPackagesSha256`: integrity hash of the list above, like `compiledDependencyManifestSha256` for the file list.
+- `scheduler`: `{ library: 'ts-fsrs', version, algorithm, sha256 }`, with `algorithm` read from the `FSRSVersion` the bundled library exports (`v5.4.2 using FSRS-6.0` gives `FSRS-6.0`; if the file does not say, `ts-fsrs@<version>`) and `sha256` the hash of the bundled ts-fsrs files. It is `null` only when the scheduler adapter (`packages/goreview/src/scheduler/fsrs.ts`) was not compiled in; a build that compiled the adapter without a bundled ts-fsrs is refused, and so is a manifest that records none.
+
+```json
+"scheduler": { "library": "ts-fsrs", "version": "5.4.2", "algorithm": "FSRS-6.0", "sha256": "4968e995..." },
+"compiledDependencyPackages": [
+  { "name": "ts-fsrs", "version": "5.4.2", "path": "node_modules/ts-fsrs", "fileCount": 1, "sha256": "4968e995..." }
+]
+```
+
+`verify` (with or without `--release`) checks the package list against the manifest's own file list, then against the checkout's `node_modules`: an installed package whose version differs from the recorded one is refused by name (`Installed bundled dependency ts-fsrs is 5.4.3 but the artifact was built with 5.4.2`), as are changed package fingerprints, a changed scheduler record, and a missing package. An artifact built before these fields existed is refused with a request to rebuild. Its summary line names the scheduler, for example `scheduler: ts-fsrs 5.4.2 (FSRS-6.0)`.
+
 ## Verifying against the checkout
 
 `verify --release` refuses an artifact unless it is release-eligible and the Git commit and tree recorded in its manifest are the HEAD commit and tree of the checkout that contains the artifact source (the repository root, or the `projectRoot` the caller passes). An artifact built at one commit therefore stops verifying as soon as HEAD moves, even by an empty commit; check out the recorded commit and verify again. The message names both commits.

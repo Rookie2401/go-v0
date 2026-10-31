@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "309660d119c35061a73aa657ee9f6d7c0a63a7d3",
-    "tree": "07d7d801c7b40d28296caeb14487a2170b98e0da",
+    "commit": "c183609c037f1fc1ba9ee0e41f0386eeffd4e322",
+    "tree": "f01ddaf460037f299c9f35ba44609525fd80288e",
     "dirty": false
   },
-  "sourceManifestSha256": "860268f14fcd0a2deb94ce289049e97f00ac8ea089cc4b77dbd8964bab960191",
+  "sourceManifestSha256": "8bcae6505587de5c6648ffdbdbcd58844cdd1993a7d519061a060a743a9563e1",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -14628,6 +14628,10 @@
       "sha256": "c81c82519d3efd5eb43d09f272b587f4ef782251caac372f974a249f729cf888"
     },
     {
+      "path": "src/adapters/greek/english-verbs.ts",
+      "sha256": "5859f08d2456737e2a79e973a30749c7af58b3984e2acbf9945236a24d85b0b6"
+    },
+    {
       "path": "src/adapters/greek/generated/koine-core.ts",
       "sha256": "f50bae9a9564b04a26959f98fc3437ebc44c0d09463167ff36bf1336f2883745"
     },
@@ -14669,7 +14673,7 @@
     },
     {
       "path": "src/adapters/greek/word-analysis.ts",
-      "sha256": "a84f6dcfad67676ad872578fea69e1d443803c1b177b307a5eb53449237630c0"
+      "sha256": "6856c68fdb7609e2d4b2857cdc7e556f2e3caf727b3fc960a8ae77a0abb9699d"
     },
     {
       "path": "src/adapters/he.ts",
@@ -18871,6 +18875,7 @@
     "src/adapters/german/varieties.ts",
     "src/adapters/greek/analyze.ts",
     "src/adapters/greek/describe.ts",
+    "src/adapters/greek/english-verbs.ts",
     "src/adapters/greek/generated/koine-core.ts",
     "src/adapters/greek/index-store.ts",
     "src/adapters/greek/morphgnt.ts",
@@ -19101,7 +19106,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "772c70e1bba54a060aab7f93af1f55f655fd506fcd6784ebb8b2658ac774a561",
+  "artifactManifestSha256": "3970f33a43dece14d52f6c29352101aa0905a40024d09ba27ec8755b24c900aa",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -19144,8 +19149,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-BhtQjTrR.js",
-      "sha256": "eecbef9ff0ecb01794954f95c0fd0f8f38ae4f53cc2ff06e7309ab2bb1f25dac"
+      "path": "assets/index-BodnPK8x.js",
+      "sha256": "6bb7b5db70af3dc853d1e3796adb0280a1277c7207fb3dc22163af52c6efc2f7"
     },
     {
       "path": "assets/style-Dd-_Zasv.css",
@@ -31689,7 +31694,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "55256d7e64ecc6d4a68cf281dc8bc3ceb95659b3f219219185c793d3164f0eed"
+      "sha256": "3c026b07c1ff93a2e8840e482b711ec039f046ba10ad132612a9e37a3311929f"
     },
     {
       "path": "manifest.webmanifest",
@@ -31697,7 +31702,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "1b8f8d1de19461f3d11069754d64a43485f793ccff3974d75b8b08e3acc16e0e"
+      "sha256": "70cae4b898c7a8dd1b746447d47d63e8de7fad902ba2b9f02800d97998c5239d"
     }
   ]
 }

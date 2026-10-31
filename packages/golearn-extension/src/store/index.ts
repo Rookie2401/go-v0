@@ -187,6 +187,10 @@ export interface EncounterContext {
   sessionId: string;
   now: Date;
   language?: LanguageEvidenceInfo;
+  /** A reader other than the page-reading content script (Biblia): the surface the producer names (default 'active-reading'), the number of words the exposure covers (default 1) and the kind of context they were read in (default 'none'). */
+  surface?: string;
+  tokenCount?: number;
+  contextKind?: 'sentence' | 'fragment' | 'none';
 }
 
 let counter = 0;
@@ -198,15 +202,30 @@ export const newEventId = (now: Date): string => `ev:${now.getTime().toString(36
 
 export function buildEncounterEvent(b: EncounterContext): GoEvent {
   const itemIds = [...new Set(b.itemIds)].slice(0, 100);
-  const payload: Record<string, unknown> = { tokenCount: 1, contextKind: 'none', readerId: b.readerId };
+  const payload: Record<string, unknown> = { tokenCount: b.tokenCount ?? 1, contextKind: b.contextKind ?? 'none', readerId: b.readerId };
   const language = languagePayload(b.language, b.languageId);
   if (language) payload.language = language;
+  // the contract caps a dedupe key at 300 characters; a long list of ids (a whole verse) is keyed by a hash of the list instead of the list
+  let dedupeKey = `enc:${b.sessionId}:${itemIds.join(',')}`;
+  if (dedupeKey.length > 300) dedupeKey = `enc:${b.sessionId}:${itemIds.length}:${hashOf(itemIds.join(','))}`;
   return {
     id: newEventId(b.now), v: CONTRACT_VERSION, learnerId: b.identity.learnerId, enrolmentId: b.identity.enrolmentId,
-    languageId: b.languageId, at: b.now.toISOString(), producer: { app: 'golearn-ext', version: b.version, deviceId: b.identity.deviceId, surface: 'active-reading' },
+    languageId: b.languageId, at: b.now.toISOString(), producer: { app: 'golearn-ext', version: b.version, deviceId: b.identity.deviceId, surface: b.surface ?? 'active-reading' },
     kind: 'EncounterRecorded', subject: { itemIds }, payload,
-    dedupeKey: `enc:${b.sessionId}:${itemIds.join(',')}`,
+    dedupeKey,
   };
+}
+
+/** A 53-bit string hash (cyrb53): enough to tell two lists of ids apart inside one session's dedupe keys. */
+function hashOf(text: string): string {
+  let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text.charCodeAt(i);
+    h1 = Math.imul(h1 ^ ch, 2654435761); h2 = Math.imul(h2 ^ ch, 1597334677);
+  }
+  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
 }
 
 /** Prototype identity: there is no account yet. Not a real learner id; it never leaves the device. */

@@ -172,7 +172,7 @@ The effective status is the lowest of the unit's status and its best live (non-i
 ## Review candidates (`candidates.ts`)
 
 REVIEW IS A PROGRESSION (projection@4): which units are drawn, and for what, follows `UnitKnowledge.level` (table below); the learner never requests a review. A candidate exists only for a unit with a row (or a construction promoted by leverage) that has a lookup / assistance request (`exposure.negative > 0`), a demonstrated error (any judged dimension with `negative > 0`),
-leverage, or a frequency rank <= 2000. Exposure alone excludes it. **A unit is not proposed again for an objective dimension already covered by a live card** (`includeCovered: true` lists that same objective with the penalty below). Another unrepresented goal skill may be returned as one `objectiveDimension`. Score = sum of reason weights, clamped to 0..1; ties by unit id. `targetDimension` = the weakest dimension with errors (constructions: grammaticalUnderstanding; default readingRecognition).
+leverage, a frequency rank <= 2000, or at least 3 distinct encounters (`UnitKnowledge.encounters`). A single exposure excludes it; repeated encounters never draw a known or automatic unit. Drawing is not admission: GoReview intake still needs verified facts for the unit, so a drawn word without facts is reported as such on the home ("no verified facts yet"), which is not the rule failing. **A unit is not proposed again for an objective dimension already covered by a live card** (`includeCovered: true` lists that same objective with the penalty below). Another unrepresented goal skill may be returned as one `objectiveDimension`. Score = sum of reason weights, clamped to 0..1; ties by unit id. `targetDimension` = the weakest dimension with errors (constructions: grammaticalUnderstanding; default readingRecognition).
 
 Coverage and admission are objective-dimension scoped. A live reading card does not count as listening or production coverage. When the primary target is covered, the engine may return one `ReviewCandidate.objectiveDimension` for the next unrepresented skill named by the enrolment goals; this field is an objective proposal, while `targetDimension` continues to describe the primary difficulty signal. GoReview independently requires spaced, moderate-or-strong, unassisted evidence before a productive/listening progression and checks the fetched facts and audio before creating a card. The candidate feed does not multiply one unit into every family. A dismissed, suspended, snoozed, or invalidated card suppresses new objectives for that unit until the learner control is cleared or verified repair adds the card again.
 
@@ -181,7 +181,7 @@ Ranking uses signals the Repository can observe: distinct learner events, lookup
 | Rule | Weight | Condition |
 |---|---|---|
 | recentEncounter | +0.15 | `lastSeenAt` within 7 days of `now` |
-| repeatedEncounters | +0.1 | at least 3 distinct unit events (encounters, lookups, assistance, or judgements); this ranks an already signalled candidate but exposure alone still does not draw it |
+| repeatedEncounters | +0.1 | at least 3 distinct unit events (encounters, lookups, assistance, or judgements); this draws a new, seen, recognized or familiar unit and adds the weight; a single exposure does not draw it, and known / automatic units keep their own draw rules |
 | repeatedLookups | +0.2 | `exposure.negative >= 2` |
 | demonstratedError | +0.25 | any judged dimension `negative > 0` |
 | weakButSeen | +0.2 | readingRecognition weight > 0 and score < 0.5 |

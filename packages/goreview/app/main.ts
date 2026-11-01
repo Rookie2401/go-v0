@@ -64,7 +64,7 @@ export async function createRealDeps(fetcher?: typeof fetch): Promise<Deps> {
   const config = await loadConfig(doFetch);
   const engine = createReviewEngine({
     builders: registry, evidenceFor, ratingFor,
-    factsFor: packFactsFor({ fetch: doFetch, baseUrl: config.assetBaseUrl ?? './' }),
+    factsFor: packFactsFor({ fetch: doFetch, baseUrl: config.assetBaseUrl ?? './', lexiconBaseUrl: './' }),
   });
   // Inside the GoLearn extension (this page is served from chrome-extension://…/review/) GoReview works on the device with no account: the
   // on-device Repository is reached through the extension's worker. Anywhere else (the hosted copy) there is none, and an account is needed.

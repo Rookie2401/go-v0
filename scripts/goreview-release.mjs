@@ -249,6 +249,8 @@ function staticSourceInputs(artifactList) {
     const bibleData = file.match(/^biblia\/(data|lexicon)\/(.+)$/);
     if (bibleData?.[1] === 'data') inputs.push(`packages/biblia/public/data/${bibleData[2]}`);
     if (bibleData?.[1] === 'lexicon') inputs.push(`public/lexicon/${bibleData[2]}`);
+    const hebrewLexicon = file.match(/^lexicon\/he\/(biblical|modern)\/(.+)$/);
+    if (hebrewLexicon) inputs.push(`public/lexicon/he/${hebrewLexicon[1]}/${hebrewLexicon[2]}`);
   }
   return [...new Set(inputs)].sort();
 }

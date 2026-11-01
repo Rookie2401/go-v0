@@ -40,6 +40,31 @@ function copyFonts(fontsOut: string, licenceOut: string): void {
   if (fs.existsSync(licence)) { fs.copyFileSync(licence, path.join(fontsOut, 'EB-Garamond-OFL.txt')); fs.copyFileSync(licence, licenceOut); }
 }
 
+/** Hebrew's Bible and modern tables are loaded by the runtime's sharded lexicon reader. */
+function copyHebrewLexicons(outDir: string): void {
+  for (const period of ['biblical', 'modern']) {
+    const source = path.join(repoRoot, 'public', 'lexicon', 'he', period);
+    const manifestPath = path.join(source, 'manifest.json');
+    if (!fs.existsSync(manifestPath)) throw new Error(`The Hebrew ${period} lexicon is missing its manifest; refusing an incomplete build.`);
+    let manifest: { shards?: Record<string, { file?: string }> };
+    try { manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8')); }
+    catch { throw new Error(`The Hebrew ${period} lexicon manifest is invalid JSON; refusing an incomplete build.`); }
+    if (!manifest.shards || typeof manifest.shards !== 'object' || !Object.keys(manifest.shards).length) throw new Error(`The Hebrew ${period} lexicon manifest has no shards; refusing an incomplete build.`);
+    const target = path.join(outDir, 'lexicon', 'he', period);
+    fs.mkdirSync(target, { recursive: true });
+    for (const shard of Object.values(manifest.shards)) {
+      const name = shard?.file;
+      if (typeof name !== 'string' || path.basename(name) !== name || !name.endsWith('.json.gz')) throw new Error(`The Hebrew ${period} lexicon manifest contains an invalid shard path; refusing an incomplete build.`);
+      const from = path.join(source, name);
+      if (!fs.existsSync(from) || !fs.statSync(from).isFile()) throw new Error(`The Hebrew ${period} lexicon shard ${name} is missing; refusing an incomplete build.`);
+      const bytes = fs.readFileSync(from);
+      if (bytes.length < 2 || bytes[0] !== 0x1f || bytes[1] !== 0x8b) throw new Error(`The Hebrew ${period} lexicon shard ${name} is not a valid gzip file; refusing an incomplete build.`);
+      fs.copyFileSync(from, path.join(target, name));
+    }
+    fs.copyFileSync(manifestPath, path.join(target, 'manifest.json'));
+  }
+}
+
 /** Development only: serve /fonts/<file>.woff2 from packages/shared-fonts. */
 function devFonts(): Plugin {
   return {
@@ -93,6 +118,7 @@ function staticFiles(outDir: string, pwa = false): Plugin {
         // the shipped manifest must not promise the sidecar that was left out
         if (fs.existsSync(shipped)) fs.writeFileSync(shipped, JSON.stringify({ ...JSON.parse(fs.readFileSync(shipped, 'utf8')), hasFrequency: false }, null, 2));
       }
+      copyHebrewLexicons(outDir);
       const notices = path.join(repoRoot, 'THIRD-PARTY-NOTICES.md');
       if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(outDir, 'THIRD-PARTY-NOTICES.md'));
       // the stylesheet is bundled into assets/, so its ./fonts/ URLs resolve to assets/fonts/
@@ -104,14 +130,14 @@ function staticFiles(outDir: string, pwa = false): Plugin {
 
 const pwaSource = path.join(here, 'public');
 
-/** Every file of the build except the dictionary shards, the worker itself and its source maps: what the worker precaches. */
+/** Every file of the build except the on-demand dictionary and lexicon shards, the worker itself and its source maps: what the worker precaches. */
 function shellFiles(outDir: string): string[] {
   const out: string[] = [];
   const walk = (dir: string): void => {
     for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
       const full = path.join(dir, e.name);
       const rel = path.relative(outDir, full).split(path.sep).join('/');
-      if (e.isDirectory()) { if (rel === 'dict') continue; walk(full); } else if (rel !== 'sw.js' && !rel.endsWith('.map')) out.push(rel);
+      if (e.isDirectory()) { if (rel === 'dict' || rel === 'lexicon') continue; walk(full); } else if (rel !== 'sw.js' && !rel.endsWith('.map')) out.push(rel);
     }
   };
   walk(outDir);

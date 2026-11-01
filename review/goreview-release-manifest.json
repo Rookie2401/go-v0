@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "a270eebe3a6df98c2b7d0b49fac92941444dec1c",
-    "tree": "e88c50198705b0216b8986e64d4400cc83a6b0d9",
+    "commit": "b316e4964f55dfda648c27fd5cb89b166774b61f",
+    "tree": "4d170250aab5cfcc1541c23cac89373be0fa9674",
     "dirty": false
   },
-  "sourceManifestSha256": "d82aa3d1eccdd2985e360b4241d8b531abea60abac6b8dd8e218f636f47b672e",
+  "sourceManifestSha256": "8488cb2d3af4fcb4ebb90a4e2df7e992ab26e4e77b60d3d444938bc3b358eb1c",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -681,7 +681,7 @@
     },
     {
       "path": "packages/goreview/app/engine.ts",
-      "sha256": "ff612bedc2181cfd35cfbc1ca5fd372dff4ed6f36ae584c34a5eed940119d987"
+      "sha256": "bf2f618f81191cdc1a5f831800d5cf3251394ab0b5e3ed601bc70620cf72067a"
     },
     {
       "path": "packages/goreview/app/events.ts",
@@ -694,6 +694,10 @@
     {
       "path": "packages/goreview/app/freshness.ts",
       "sha256": "edb44cc8dcb377ce07d10230b40315817b7bfc4404d6e4122a61403d17081cf6"
+    },
+    {
+      "path": "packages/goreview/app/hebrewFrequencyAssets.ts",
+      "sha256": "498cf2f50c53b56fa558a27ebbfffe892ccc698347b47e8837d84da602255881"
     },
     {
       "path": "packages/goreview/app/index.html",
@@ -729,11 +733,11 @@
     },
     {
       "path": "packages/goreview/app/packFacts.ts",
-      "sha256": "1f08f3c245de6e1492210f6ee97347907191ccb5baf2f8b7cd7e09f07b382544"
+      "sha256": "26012a548e9fe27cfd55bfd0b0ca02f4c71a53e22813ec7313d74aeaa19b125c"
     },
     {
       "path": "packages/goreview/app/ports.ts",
-      "sha256": "54e40a141339eb14d8b1e3b67d4e889043df165d17b9ee1282f3a6386b107969"
+      "sha256": "8289aeccbb6d17d3d0b61edbda2f2649a4c0d0bd34006d27f4c56f19907d163e"
     },
     {
       "path": "packages/goreview/app/profiles.ts",
@@ -770,6 +774,10 @@
     {
       "path": "packages/goreview/app/public/sw.js",
       "sha256": "7403f41d54e61490caaa8c0b0887dab72029f31c2219c51179681fecfcaf3428"
+    },
+    {
+      "path": "packages/goreview/app/recoveredCandidates.ts",
+      "sha256": "9f1c0977c7be93a3864d6b8f5e32a6dd4afd45fe9352aa6062a66794708ca4ff"
     },
     {
       "path": "packages/goreview/app/savedDeckSync.ts",
@@ -825,7 +833,7 @@
     },
     {
       "path": "packages/goreview/app/screens/review.ts",
-      "sha256": "21212d9cde5596acaa26eda9e511a6e077e3c52a4f7ad0d99f1eed2b181f5428"
+      "sha256": "83dba12498cda9a57dd41c0b6fead80b05f5eeeee3b47f6e398a7f233948d0d7"
     },
     {
       "path": "packages/goreview/app/screens/reviewDetails.ts",
@@ -941,11 +949,11 @@
     },
     {
       "path": "packages/goreview/app/vite.config.ts",
-      "sha256": "7a1825b06191c0be3b728fa15f0e41344ade4629edd95c54bcc7d8895d14616a"
+      "sha256": "37b330721a1c82fc77c0fa31a9e7ac2fc43cd0462ebf838cb45662bcbbe9f582"
     },
     {
       "path": "packages/goreview/app/workspace.ts",
-      "sha256": "6794602736a8016834e4848d9d1f0882d4cd9f1b244135192d6e182d0f21c760"
+      "sha256": "a9dc129f40a74561382f30d11a54d8570cec14137b024dfff8e3ac6531e31546"
     },
     {
       "path": "packages/goreview/src/exercises/README.md",
@@ -1017,7 +1025,7 @@
     },
     {
       "path": "packages/goreview/src/facts/provider.ts",
-      "sha256": "ebb7cc702f73b65fe13506b8c6fab55f6754f47e11f0bd713d4f274ba5f9d69f"
+      "sha256": "1c77091df20d3023dd5b8da1d83abea9bfd5217e23b452ef0a9a1f0124a3a17a"
     },
     {
       "path": "packages/goreview/src/facts/review-facts.ts",
@@ -1760,6 +1768,10 @@
       "sha256": "6a195b7e4f518d53813581f415d7956e02049dd2762b4b9a3af80d56b4257e28"
     },
     {
+      "path": "public/lexicon/he/biblical-index.json",
+      "sha256": "89584317af26fdad3d720027c819c327367040f6c0b61b4dfb84b672ffe8890b"
+    },
+    {
       "path": "public/lexicon/he/biblical/manifest.json",
       "sha256": "c552473d46ec2070b2fc8dcaaf8e967f6294f45091d929f8c3e623e941198234"
     },
@@ -1953,7 +1965,7 @@
     },
     {
       "path": "scripts/goreview-release.mjs",
-      "sha256": "9b758fe2164d9245429c053e7a7c6e92cc8717f4f08c6b31d2dc8985e351331f"
+      "sha256": "4952c3409f84e90c2e929aceb04191438e9f2d3389540c9f93218b03ecdd27d5"
     },
     {
       "path": "scripts/vite.config.ts",
@@ -3130,6 +3142,7 @@
     "packages/shared-fonts/eb-garamond-latin-400-italic.woff2",
     "packages/shared-fonts/eb-garamond-latin-400.woff2",
     "packages/shared-fonts/eb-garamond-latin-600.woff2",
+    "public/lexicon/he/biblical-index.json",
     "public/lexicon/he/biblical/manifest.json",
     "public/lexicon/he/biblical/א.json.gz",
     "public/lexicon/he/biblical/ב.json.gz",
@@ -3232,6 +3245,7 @@
     "packages/goreview/app/mobile.ts",
     "packages/goreview/app/packFacts.ts",
     "packages/goreview/app/profiles.ts",
+    "packages/goreview/app/recoveredCandidates.ts",
     "packages/goreview/app/savedDeckSync.ts",
     "packages/goreview/app/screens/account.ts",
     "packages/goreview/app/screens/accountSecurity.ts",
@@ -3390,12 +3404,21 @@
     "packages/language-packs/src/tutorial/th.ts",
     "packages/repository-contract/src/index.ts",
     "packages/repository-contract/src/knowledge-levels.ts",
+    "packages/repository-contract/src/learner.ts",
     "packages/repository-contract/src/payloads.ts",
     "packages/repository-contract/src/review-classification.ts",
     "packages/repository-contract/src/review-corrections.ts",
     "packages/repository-contract/src/review-evidence.ts",
     "packages/repository-contract/src/sources.ts",
     "packages/repository-contract/src/units.ts",
+    "packages/repository-engine/src/candidates.ts",
+    "packages/repository-engine/src/eligibility.ts",
+    "packages/repository-engine/src/engine.ts",
+    "packages/repository-engine/src/evidence.ts",
+    "packages/repository-engine/src/index.ts",
+    "packages/repository-engine/src/levels.ts",
+    "packages/repository-engine/src/preferences.ts",
+    "packages/repository-engine/src/projection.ts",
     "packages/repository-local/src/proxy.ts",
     "packages/repository-service/src/accounts.ts",
     "packages/repository-service/src/api.ts",
@@ -3740,7 +3763,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "248a2b53b1e562ed685987bb8b25decd99b2130908b92b1909b551824df4782f",
+  "artifactManifestSha256": "d02e0d4c35576d067462d8c395721179c54d07ab167bb659a17fe0d78db48413",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -3783,8 +3806,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-CXEKwBVF.js",
-      "sha256": "44220a5efffdcbaf0756664f88acd9fa163370e461a4407233d86f36997c074d"
+      "path": "assets/index-B_Dekmkx.js",
+      "sha256": "fa661a093b273f7745f1b9f78ad6f1f7455c30fa47046b8cb36d0fb11536c40d"
     },
     {
       "path": "assets/style-LYcJkNvc.css",
@@ -3820,7 +3843,11 @@
     },
     {
       "path": "index.html",
-      "sha256": "9d969875f9acc4b527d36ed1115e83ad3979c67172b53b027760c706bf1b433f"
+      "sha256": "3d5a07f262b5a389186dfb0b8ef9437115a117edd2a4569318f50362706b07d3"
+    },
+    {
+      "path": "lexicon/he/biblical/form-frequency.json.gz",
+      "sha256": "567be7be4f519c8beeec068a5fb98a7ef8cc028575fb12cc9ae2ca6a9ffcd9e3"
     },
     {
       "path": "lexicon/he/biblical/manifest.json",
@@ -4016,7 +4043,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "f4b9a8afdd5e95097d315480bf7b4954699a5aafb2d8a9fde38c7fdf89d87353"
+      "sha256": "05d7376b39dc1915a2f96e73141d25cbabbb53f3bfd494553d9059c443f67d08"
     }
   ]
 }

@@ -47,6 +47,10 @@ export interface ChromeFake extends ChromeApi {
   /** What the browser's permission prompt answers when `permissions.request` is called (the learner's choice). */
   promptAnswer: boolean;
   permissionsRemoved: ReturnType<typeof emitter<(p: PermissionsDescriptor) => void>>;
+  permissionsAdded: ReturnType<typeof emitter<(p: PermissionsDescriptor) => void>>;
+  /** What the browser does on its own: withdraw site access (its extension menu, an update, a reload) and give it back, firing the events. */
+  browserWithdraws(origins: readonly string[]): void;
+  browserGrants(origins: readonly string[]): void;
   /** Grant origins as if the learner had already said yes. */
   grantOrigins(origins: readonly string[]): void;
   alarmsCreated: Array<{ name: string; periodInMinutes?: number }>;
@@ -69,6 +73,7 @@ export function createChromeFake(): ChromeFake {
   const command = emitter<(command: string, tab?: TabInfo) => void>();
   const alarmEvent = emitter<(a: AlarmInfo) => void>();
   const permissionsRemoved = emitter<(p: PermissionsDescriptor) => void>();
+  const permissionsAdded = emitter<(p: PermissionsDescriptor) => void>();
   let failure: Error | undefined;
   const dispatch = (message: unknown, sender: MessageSender): Promise<unknown> => new Promise((resolve) => {
     let answered = false;
@@ -81,8 +86,10 @@ export function createChromeFake(): ChromeFake {
   const fake: ChromeFake = {
     local, sessionArea,
     injected: [], messagesToTabs: [], badges: [], titles: [], menus: [], alarmsCreated: [], alarmEvent, options: { opened: 0 }, dispatch,
-    registeredScripts: [], grantedOrigins: [], permissionRequests: [], promptAnswer: true, permissionsRemoved,
+    registeredScripts: [], grantedOrigins: [], permissionRequests: [], promptAnswer: true, permissionsRemoved, permissionsAdded,
     grantOrigins(origins) { for (const o of origins) if (!fake.grantedOrigins.includes(o)) fake.grantedOrigins.push(o); },
+    browserWithdraws(origins) { for (const o of origins) { const i = fake.grantedOrigins.indexOf(o); if (i >= 0) fake.grantedOrigins.splice(i, 1); } permissionsRemoved.fire({ origins: [...origins] }); },
+    browserGrants(origins) { fake.grantOrigins(origins); permissionsAdded.fire({ origins: [...origins] }); },
     contentChrome(tabId = 7) {
       const tabEvents = emitter<MessageListener>();
       fake.tabListeners = tabEvents.listeners;
@@ -145,6 +152,7 @@ export function createChromeFake(): ChromeFake {
       remove: async (p) => { for (const o of p.origins ?? []) { const i = fake.grantedOrigins.indexOf(o); if (i >= 0) fake.grantedOrigins.splice(i, 1); } permissionsRemoved.fire(p); return true; },
       contains: async (p) => (p.origins ?? []).every((o) => fake.grantedOrigins.includes(o)) && (p.permissions ?? []).every((x) => ['activeTab', 'scripting', 'storage', 'contextMenus', 'alarms'].includes(x)),
       onRemoved: permissionsRemoved,
+      onAdded: permissionsAdded,
     },
     contextMenus: {
       create: (props) => { fake.menus.push(props); },

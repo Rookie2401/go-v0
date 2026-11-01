@@ -103,6 +103,39 @@ describe('GoLearn Active in the popup', () => {
     expect($('active-page').textContent).toBe('');
   });
 
+  it('before the worker answers, the switch is disabled and says "Checking…", never a bare unticked box (2026-10-31)', () => {
+    const box = $<HTMLInputElement>('active');
+    expect(box.disabled).toBe(true);
+    expect(box.checked).toBe(false);
+    expect($('active-status').textContent).toBe('Checking…');
+  });
+
+  it('Active on and the status slow to answer (the service it waits on): the switch shows On at once, without waiting for the status', async () => {
+    fake.grantOrigins(ACTIVE_ORIGINS);
+    await fake.local.set({ 'golearn:active': { active: true, speakOnClick: true } });
+    const send = fake.runtime.sendMessage;
+    fake.runtime.sendMessage = (m: unknown) => ((m as { type?: string }).type === MSG.status ? new Promise(() => { /* the service never answers */ }) : send(m));
+    void initPopup(document, fake);
+    await flush(40);
+    expect($<HTMLInputElement>('active').checked).toBe(true);
+    expect($<HTMLInputElement>('active').disabled).toBe(false);
+    expect($('active-status').textContent).toMatch(/^On/);
+    expect($<HTMLSelectElement>('language-select').textContent).toBe('Checking…'); // the language waits, the switch does not
+  });
+
+  it('switched off by the browser (its site access withdrawn): the popup says so and when, and one click turns it on again', async () => {
+    await fake.local.set({ 'golearn:active': { active: false, speakOnClick: true, offBy: 'browser', offAt: '2026-10-30T09:00:00.000Z' } });
+    await initPopup(document, fake);
+    expect($<HTMLInputElement>('active').checked).toBe(false);
+    expect($('active-status').textContent).toMatch(/^Off: the browser withdrew GoLearn's access to web pages on .+, so Active stopped\. It comes back by itself/);
+    expect($('active-status').classList.contains('warn')).toBe(true);
+    change($('active'), true);
+    await flush(30);
+    expect($<HTMLInputElement>('active').checked).toBe(true);
+    expect($('active-status').textContent).toBe('On.');
+    expect((await fake.local.get('golearn:active'))['golearn:active']).toEqual({ active: true, speakOnClick: true });
+  });
+
   it('the language switch (2026-10-25): the downloaded languages as a select, a change makes the chosen one the reading language on the device and restarts every Active page in it', async () => {
     const page = { id: fake.runtime.id, url: `chrome-extension://${fake.runtime.id}/action/popup.html` };
     // two languages chosen on this device (no account): Spanish first, German last, so German is the one in use

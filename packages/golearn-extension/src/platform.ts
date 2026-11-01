@@ -73,6 +73,7 @@ export interface ChromeApi {
     remove(p: PermissionsDescriptor): Promise<boolean>;
     contains(p: PermissionsDescriptor): Promise<boolean>;
     onRemoved?: ChromeEvent<(p: PermissionsDescriptor) => void>;
+    onAdded?: ChromeEvent<(p: PermissionsDescriptor) => void>;
   };
   contextMenus?: {
     create(props: { id: string; title: string; contexts: string[] }): void | Promise<void>;

@@ -2,8 +2,14 @@
  * GoLearn Active, the privileged half: the two switches (golearn:active), the host permission check, and the dynamic
  * content script that reads a page on load. The popup asks the browser for the permission inside the learner's own
  * click (a worker cannot); this service only checks that it was granted, registers or unregisters the script, and
- * tells open pages to start or stop. It never grants itself anything: with the permission gone (the learner revoked it
- * in the popup or in the browser's settings), Active turns itself off and says so.
+ * tells open pages to start or stop. It never grants itself anything.
+ *
+ * The browser can withdraw the access on its own: its extension menu set to "on click", an update or a reload of the
+ * extension (Brave does this). Active then stops, records that the BROWSER switched it off and when (`offBy`, `offAt`),
+ * the popup says so instead of showing a bare "off", and Active comes back by itself as soon as the browser gives the
+ * access back (2026-10-31: the owner saw Active "deactivating itself" with nothing to say why). The learner's own
+ * switch, on or off, clears the record. Every change goes through one queue, so the popup's switch and a browser event
+ * arriving at the same moment cannot interleave a register with an unregister.
  *
  * The registration excludes every host of every refusing reader (src/active/exclude.ts, from the registry); the content
  * script's own scan checks the registry again before it reads anything.
@@ -20,23 +26,35 @@ export interface ActiveServiceOptions {
   area: StorageArea;
   /** The content script file the registration names (core.ts CONTENT_FILE). */
   contentFile: string;
+  /** Epoch ms; the time stamped on a browser switch-off. */
+  now?: () => number;
 }
 
 export function sanitizeActive(raw: unknown): ActiveSettings {
   const r = (raw && typeof raw === 'object' ? raw : {}) as Record<string, unknown>;
-  return { active: r.active === true, speakOnClick: r.speakOnClick !== false };
+  const out: ActiveSettings = { active: r.active === true, speakOnClick: r.speakOnClick !== false };
+  if (!out.active && r.offBy === 'browser') {
+    out.offBy = 'browser';
+    if (typeof r.offAt === 'string' && Number.isFinite(Date.parse(r.offAt))) out.offAt = r.offAt;
+  }
+  return out;
 }
 
 export function createActiveService(o: ActiveServiceOptions) {
   const { chrome, area } = o;
   const origins = [...ACTIVE_ORIGINS];
+  const now = o.now ?? Date.now;
+
+  /** One change at a time: the popup's switch, a browser event and the worker start can arrive together. */
+  let chain: Promise<unknown> = Promise.resolve();
+  const serial = <T>(fn: () => Promise<T>): Promise<T> => { const run = chain.then(fn, fn); chain = run.catch(() => undefined); return run; };
 
   async function get(): Promise<ActiveSettings> {
     try { return sanitizeActive((await area.get(ACTIVE_KEY))[ACTIVE_KEY]); } catch { return { ...DEFAULT_ACTIVE }; }
   }
 
   async function store(s: ActiveSettings): Promise<boolean> {
-    try { await area.set({ [ACTIVE_KEY]: s }); return true; } catch { return false; }
+    try { await area.set({ [ACTIVE_KEY]: sanitizeActive(s) }); return true; } catch { return false; }
   }
 
   /** The browser's answer, never assumed: no permissions API means nothing was granted. */
@@ -93,45 +111,80 @@ export function createActiveService(o: ActiveServiceOptions) {
     return { ok: true, settings, granted: await granted(), registered: await registered(), excluded: activeExcludeMatches().length, ...extra };
   }
 
-  /** Change the switches. Turning Active on needs the permission to be there already (the popup asked for it). */
-  async function set(patch: Partial<ActiveSettings> | undefined): Promise<ActiveReply> {
-    const cur = await get();
-    const p = (patch && typeof patch === 'object' ? patch : {}) as Record<string, unknown>;
-    const next: ActiveSettings = { ...cur };
-    if (typeof p.speakOnClick === 'boolean') next.speakOnClick = p.speakOnClick;
-    if (typeof p.active === 'boolean') next.active = p.active;
-
-    if (next.active && !cur.active) {
-      if (!supported()) { next.active = false; await store(next); return reply(next, { ok: false, error: 'unsupported', message: 'This browser cannot register GoLearn on pages.' }); }
-      if (!(await granted())) { next.active = false; await store(next); return reply(next, { ok: false, error: 'permission', message: 'The browser has not allowed GoLearn to read pages, so Active stays off.' }); }
-      if (!(await register())) { next.active = false; await store(next); return reply(next, { ok: false, error: 'register-failed', message: 'GoLearn could not register itself for pages.' }); }
-      if (!(await store(next))) return reply(next, { ok: false, error: 'storage', message: 'The switch could not be saved.' });
-      await activateFrontTab(next.speakOnClick);
-      return reply(next);
-    }
-    if (!next.active && cur.active) {
-      await unregister();
-      await store(next);
-      await broadcast({ type: MSG.deactivate });
-      return reply(next);
-    }
-    if (!(await store(next))) return reply(next, { ok: false, error: 'storage', message: 'The switch could not be saved.' });
-    if (next.active && next.speakOnClick !== cur.speakOnClick) await broadcast({ type: MSG.activate, speak: next.speakOnClick } satisfies ActivateMessage);
-    return reply(next);
+  /** Turn on (the permission must be there already). Shared by the learner's switch and the browser giving the access back. */
+  async function switchOn(cur: ActiveSettings, next: ActiveSettings): Promise<ActiveReply> {
+    const off = (error: ActiveReply['error'], message: string) => ({ ok: false as const, error, message });
+    // a failed attempt keeps a browser switch-off on record: the access is still the browser's to give back
+    const keep: ActiveSettings = { ...next, active: false, ...(cur.offBy ? { offBy: cur.offBy, ...(cur.offAt ? { offAt: cur.offAt } : {}) } : {}) };
+    if (!supported()) { await store(keep); return reply(sanitizeActive(keep), off('unsupported', 'This browser cannot register GoLearn on pages.')); }
+    if (!(await granted())) { await store(keep); return reply(sanitizeActive(keep), off('permission', 'The browser has not allowed GoLearn to read pages, so Active stays off.')); }
+    if (!(await register())) { await store(keep); return reply(sanitizeActive(keep), off('register-failed', 'GoLearn could not register itself for pages.')); }
+    const on: ActiveSettings = { active: true, speakOnClick: next.speakOnClick };
+    if (!(await store(on))) return reply(on, off('storage', 'The switch could not be saved.'));
+    await activateFrontTab(on.speakOnClick);
+    return reply(on);
   }
 
-  /** At worker start: keep the registration and the switch in agreement with the permission (which the learner may have revoked). */
-  async function restore(): Promise<void> {
+  /** The browser withdrew the access: stop everywhere and say that it was the browser, and when. */
+  async function browserSwitchedOff(): Promise<void> {
     const s = await get();
     if (!s.active) return;
-    if (!(await granted())) { await unregister(); await store({ ...s, active: false }); return; }
-    if (!(await registered())) await register();
+    await unregister();
+    await store({ active: false, speakOnClick: s.speakOnClick, offBy: 'browser', offAt: new Date(now()).toISOString() });
+    await broadcast({ type: MSG.deactivate });
+  }
+
+  /** The browser gave the access back after it had taken it: Active returns as the learner left it. */
+  async function browserGaveBack(): Promise<void> {
+    const s = await get();
+    if (s.active || s.offBy !== 'browser' || !(await granted())) return;
+    await switchOn(s, { ...s, active: true });
+  }
+
+  /** Change the switches (the learner, from an extension page). Turning Active on needs the permission to be there already (the popup asked for it). */
+  function set(patch: Partial<ActiveSettings> | undefined): Promise<ActiveReply> {
+    return serial(async () => {
+      const cur = await get();
+      const p = (patch && typeof patch === 'object' ? patch : {}) as Record<string, unknown>;
+      const next: ActiveSettings = { active: cur.active, speakOnClick: cur.speakOnClick };
+      if (typeof p.speakOnClick === 'boolean') next.speakOnClick = p.speakOnClick;
+      if (typeof p.active === 'boolean') next.active = p.active;
+      else if (cur.offBy) { next.offBy = cur.offBy; if (cur.offAt) next.offAt = cur.offAt; } // only the learner's own on/off clears the record
+
+      if (next.active && !cur.active) return switchOn(cur, next);
+      if (!next.active && cur.active) {
+        await unregister();
+        await store(next);
+        await broadcast({ type: MSG.deactivate });
+        return reply(next);
+      }
+      if (!(await store(next))) return reply(next, { ok: false, error: 'storage', message: 'The switch could not be saved.' });
+      if (next.active && next.speakOnClick !== cur.speakOnClick) await broadcast({ type: MSG.activate, speak: next.speakOnClick } satisfies ActivateMessage);
+      return reply(sanitizeActive(next));
+    });
+  }
+
+  /**
+   * At worker start: keep the registration and the switch in agreement with the permission. With the access gone while Active was on,
+   * the browser switched it off (recorded as such); with the access back after the browser had switched it off, it comes back.
+   */
+  function restore(): Promise<void> {
+    return serial(async () => {
+      const s = await get();
+      if (!s.active) { if (s.offBy === 'browser') await browserGaveBack(); return; }
+      if (!(await granted())) { await browserSwitchedOff(); return; }
+      if (!(await registered())) await register();
+    });
   }
 
   function watchPermission(): void {
     chrome.permissions?.onRemoved?.addListener((p) => {
       if (!p.origins?.some((x) => origins.includes(x))) return;
-      void get().then((s) => (s.active ? set({ active: false }) : undefined));
+      void serial(browserSwitchedOff);
+    });
+    chrome.permissions?.onAdded?.addListener((p) => {
+      if (!p.origins?.some((x) => origins.includes(x))) return;
+      void serial(browserGaveBack);
     });
   }
 

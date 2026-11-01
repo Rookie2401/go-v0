@@ -160,7 +160,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       : undefined,
   });
   // GoLearn Active: the switches, the host-permission check and the dynamic content script (the popup asks the browser for the permission)
-  const active = createActiveService({ chrome, area: local, contentFile: CONTENT_FILE });
+  const active = createActiveService({ chrome, area: local, contentFile: CONTENT_FILE, now });
   // the device's own Repository: GoLearn works with no account, and the account only keeps the history across devices
   const localRepo = createLocalRepoService({ area: local, deviceId, session, packs, now });
   const profile = createProfileService({ area: cache, session, settings: settings.get, now, local: localRepo.forProfile });

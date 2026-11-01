@@ -126,7 +126,12 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     if (!r.ok && r.message) { activeStatus.textContent = r.message; activeStatus.classList.add('warn'); return; }
     if (r.settings.active && r.registered) activeStatus.textContent = 'On.';
     else if (r.settings.active) { activeStatus.textContent = 'On, but GoLearn is not ready to scan pages; switch it off and on again.'; activeStatus.classList.add('warn'); }
-    else activeStatus.textContent = 'Off.';
+    else if (r.settings.offBy === 'browser') {
+      // the browser withdrew GoLearn's site access (its extension menu, an update or a reload of the extension): say so, never a bare "Off"
+      const when = r.settings.offAt && Number.isFinite(Date.parse(r.settings.offAt)) ? ` on ${new Date(r.settings.offAt).toLocaleString()}` : '';
+      activeStatus.textContent = `Off: the browser withdrew GoLearn's access to web pages${when}, so Active stopped. It comes back by itself when the browser allows access again; or switch it on here.`;
+      activeStatus.classList.add('warn');
+    } else activeStatus.textContent = 'Off.';
   }
   /** One line about the page in front: its words, how many carry a mark (per level), how many are known; or why nothing was read. */
   async function showPage(on: boolean): Promise<void> {
@@ -165,12 +170,15 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     try { void chrome.runtime.openOptionsPage?.(); } catch { errorEl.textContent = 'GoLearn could not open the setup page.'; }
   });
 
+  /**
+   * The switch is read FIRST and on its own (2026-10-31): the status waits on the service for up to a few seconds, and while it did the
+   * switch was drawn unticked and enabled, which looked as if Active had switched itself off (and a click there acted on a state nobody
+   * had read). Until the worker answers, the switch stays disabled with "Checking…" (popup.html).
+   */
   async function refresh(): Promise<void> {
-    const s = await status();
-    renderStatus(s);
-    const a = await activeCall('get');
-    showActive(a);
-    await showPage(!!a?.settings.active);
+    const switchShown = activeCall('get').then(async (a) => { showActive(a); await showPage(!!a?.settings.active); });
+    const statusShown = status().then(renderStatus);
+    await Promise.all([switchShown, statusShown]);
   }
 
   await refresh();

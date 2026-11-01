@@ -3,13 +3,13 @@ import { readFileSync } from 'node:fs';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
-import { destroyRigs, dueCard, ids, makeRig, reopen, seed, type, until, type Rig } from './helpers';
+import { destroyRigs, dueCard, ids, makeRig, reopen, seed, type, until, type Rig, readyCards } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
 const click = (el: Element): void => (el as HTMLElement).click();
 const dueMany = (n: number) => Array.from({ length: n }, (_, i) => `w${i}`).flatMap((l) => dueCard(A, l, 'meaning-to-form'));
-const cards = (rig: Rig): number => Number(rig.q('#deck-count').getAttribute('data-cards'));
+const cards = (rig: Rig): number => Number(String(readyCards(rig)));
 
 function word(label: string, level: UnitKnowledge['level'], encounters: number, at: string): VocabularyItem {
   const unitId = `lemma:sq:${label}:NOUN`;
@@ -68,7 +68,7 @@ describe('cards per deck', () => {
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 20 });
     await reopen(rig);
     expect(cards(rig)).toBe(0);
-    expect(rig.q('#deck-count').textContent).toBe('No eligible reviews right now');
+    expect(readyCards(rig)).toBe(0);
     expect(rig.q<HTMLButtonElement>('#start-session').disabled).toBe(true);
     expect(rig.q('#vocab-count').textContent).toBe('4 words');
   });

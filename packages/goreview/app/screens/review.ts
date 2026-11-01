@@ -1,19 +1,22 @@
 /**
- * #/review — the GoReview home. Four things and nothing else, each a large serif title over a one-line kicker:
+ * #/review — the GoReview home (the owner, 2026-10-31):
  *
  *   GoTell          its own hierarchy (above a rule): the writing workspace, #/tell
- *   Current deck    "N cards ready", Begin, and Save deck as a friendly pill. The deck is always ready (../deckModel); its size is set
- *                   in Settings alone (the owner, 2026-10-28: the "deck size" line that opened the stepper here is gone)
- *   Saved decks     "N saved" → #/review/decks
+ *   GoReview        Current Deck   what the system has you drilling: new words, cards never answered, learning and relearning returns
+ *                                  (and the missed words to study, under it). A press starts it; Begin new deck beside it draws a fresh
+ *                                  set of new words (the words already answered keep their schedule).
+ *                   Review Deck    the spaced reviews that are due. A press starts it.
+ *                   Saved decks    "N saved" → #/review/decks (Class Essentials lives there)
  *   My vocab        "N words" → #/review/vocab
  *
+ * A deck's size is set in Settings alone (the owner, 2026-10-28).
  * Everything the home used to show (intake proposals with their reasons, the dimension counts, the session controls, the deck
  * with its per-item controls) lives on #/review/details, reached from Settings. Sub-routes:
  * #/review/session, #/review/history/<item>, #/review/transfer, #/review/decks, #/review/vocab, #/review/details.
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planClassEssentialsDue, planCurrentDeck, planSelectedPractice, selectedPracticeUnits, releaseHoldOut, saveDeck, type CurrentDeck, type SavedDeck, type VocabRow } from '../deckModel';
+import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planCurrentDeck, planFreshDeck, planSelectedPractice, selectedPracticeUnits, releaseHoldOut, saveDeck, setHoldOut, type CurrentDeck, type DeckPart, type SavedDeck, type VocabRow } from '../deckModel';
 import { explainAdmissions } from '../admissionExplanation';
 import { freshModel, planCouldHaveChanged } from '../freshness';
 import { loadingMark } from '../loading';
@@ -25,11 +28,10 @@ import * as myVocab from './myvocab';
 import { renderDetails } from './reviewDetails';
 import * as sessionScreen from './session';
 import * as remediationScreen from './remediation';
-import { classLanguageOf } from '../classEssentials';
 import type { View } from './view';
 
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
-const timeEstimate = (seconds: number): string => seconds < 60 ? 'about 1 minute' : `about ${Math.max(1, Math.round(seconds / 60))} minutes`;
+const when = (at: string): string => new Date(at).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
 
 /**
  * The home as it was last painted, per app instance (a restart starts afresh) and per learner and enrolment. Coming back from Settings
@@ -40,7 +42,7 @@ const timeEstimate = (seconds: number): string => seconds < 60 ? 'about 1 minute
  * move with the events, so they are not asked for again while the key holds; after HOME_MEMO_MS they are asked for anyway.
  */
 type VocabCompleteness = 'complete' | 'partial' | 'loading' | 'unavailable' | 'stale';
-interface PaintedHome { key: string; at: number; model: ReviewModel; deck: CurrentDeck; classDue?: Awaited<ReturnType<typeof planClassEssentialsDue>>; selectedCount: number; resumeId: string | undefined; saved: number; words: number; vocabCompleteness: VocabCompleteness }
+interface PaintedHome { key: string; at: number; model: ReviewModel; deck: CurrentDeck; review: CurrentDeck; selectedCount: number; resumeId: string | undefined; saved: number; words: number; vocabCompleteness: VocabCompleteness }
 const painted = new WeakMap<AppContext, Map<string, PaintedHome>>();
 /** How long a painted home is reused unchanged before the Repository is asked again anyway. */
 export const HOME_MEMO_MS = 10 * 60_000;
@@ -96,13 +98,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     nextDueTimer = ctx.deps.win.setTimeout(() => { nextDueTimer = undefined; if (view.alive()) void paint(true); }, delay) as unknown as number;
   }
 
-  /** Draws the four entries. */
-  function draw(model: ReviewModel, deck: CurrentDeck, resumeId: string | undefined, savedCount: number, words: number,
-    selectedCount: number, classDue?: Awaited<ReturnType<typeof planClassEssentialsDue>>, vocabCompleteness: VocabCompleteness = 'complete'): void {
-    const bibliaLink = ctx.deps.links?.biblia;
+  /** Draws GoTell, GoReview (Current Deck, Review Deck, Saved decks) and My vocab. */
+  function draw(model: ReviewModel, deck: CurrentDeck, review: CurrentDeck, resumeId: string | undefined, savedCount: number, words: number,
+    selectedCount: number, vocabCompleteness: VocabCompleteness = 'complete'): void {
     clear(root);
     root.setAttribute('lang', 'en');
-    append(root, [tellEntry(), deckEntry(model, deck, resumeId, selectedCount), ...(classDue ? [classDueEntry(model, classDue, deck.summary.classRemediation)] : []), previousEntry(savedCount), vocabEntry(Math.max(words, 0), vocabCompleteness), ...(bibliaLink ? [bibliaEntry(bibliaLink)] : []), status]);
+    append(root, [tellEntry(), goReviewEntry(model, deck, review, resumeId, selectedCount, savedCount), vocabEntry(Math.max(words, 0), vocabCompleteness), ...(ctx.deps.links?.biblia ? [bibliaEntry(ctx.deps.links.biblia)] : []), status]);
   }
 
   async function paint(force = false): Promise<void> {
@@ -112,7 +113,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     if (!force && memo && local && memo.key === local.key && now - memo.at < HOME_MEMO_MS && !scheduleMovedSince(memo.model, now) && !planCouldHaveChanged(memo.model, now)) {
       if (!view.alive()) return;
       paintedEvents = memo.model.events.length;
-      draw(memo.model, memo.deck, memo.resumeId, memo.saved, memo.words, memo.selectedCount, memo.classDue, memo.vocabCompleteness);
+      draw(memo.model, memo.deck, memo.review, memo.resumeId, memo.saved, memo.words, memo.selectedCount, memo.vocabCompleteness);
       return;
     }
     // the first paint shows the loading mark; a repaint over a painted home keeps it until the new one is ready
@@ -145,14 +146,14 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     // Vocabulary is a separate inventory view, not an admission input. A cold
     // home must be able to paint the justified deck before its paged count loads.
     const vocab = snapRows;
-    const deck = await planCurrentDeck(ctx, model, holdOut, vocab);
-    const classDue = classLanguageOf(model.identity.languageId) ? await planClassEssentialsDue(ctx, model) : undefined;
+    const deck = await planCurrentDeck(ctx, model, holdOut, vocab, 'current');
+    const review = await planCurrentDeck(ctx, model, holdOut, vocab, 'review');
     const selected = await selectedPracticeUnits(ctx, id.learnerId, id.languageId);
     armNextDueRefresh(model);
     const words = vocab.length || model.knowledge.length;
     const vocabCompleteness: VocabCompleteness = vocab.length >= MAX_SNAPSHOT_WORDS ? 'partial' : 'loading';
     if (!view.alive()) return;
-    draw(model, deck, resumable[0]?.sessionId, saved.length, words, selected.length, classDue, vocabCompleteness);
+    draw(model, deck, review, resumable[0]?.sessionId, saved.length, words, selected.length, vocabCompleteness);
     // Start the separate paged inventory only after the useful deck is on screen; its pages can contend with Repository deck requests.
     const live = loadVocabSafe(ctx, id.languageId);
     // the key as the stores stand now, after the paint (a restored deck or preference is part of it)
@@ -160,7 +161,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const same = after && after.id === `${id.learnerId}|${id.enrolmentId}` ? after : undefined;
     if (same) {
       const map = painted.get(ctx) ?? new Map<string, PaintedHome>();
-      map.set(same.id, { key: same.key, at: now, model, deck, classDue, selectedCount: selected.length, resumeId: resumable[0]?.sessionId, saved: saved.length, words, vocabCompleteness });
+      map.set(same.id, { key: same.key, at: now, model, deck, review, selectedCount: selected.length, resumeId: resumable[0]?.sessionId, saved: saved.length, words, vocabCompleteness });
       painted.set(ctx, map);
     }
     void live.then((result) => {
@@ -187,12 +188,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       h('a', { class: 'entry-link', href, id: 'entry-biblia' },
         h('span', { class: 'entry-title' }, 'Biblia'), h('span', { class: 'entry-kicker' }, 'The Hebrew Bible and the Greek New Testament, read with GoLearn')));
   }
-  function previousEntry(count: number): HTMLElement {
-    return h('section', { class: 'entry', 'data-entry': 'previous' },
-      h('a', { class: 'entry-link', href: '#/review/decks', id: 'entry-previous' },
-        h('span', { class: 'entry-title' }, 'Saved decks'), h('span', { class: 'entry-kicker', id: 'previous-count' }, count ? `${count} saved` : 'None saved yet')));
-  }
-
   function setVocabCount(kicker: HTMLElement, count: number, completeness: VocabCompleteness): void {
     const base = plural(count, 'word', 'words');
     const label = completeness === 'partial' ? `${count.toLocaleString()}+ words` : base;
@@ -216,40 +211,37 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
         h('span', { class: 'entry-title' }, 'My vocab'), kicker));
   }
 
-  function classDueEntry(m: ReviewModel, due: Awaited<ReturnType<typeof planClassEssentialsDue>>, classRemediation: number): HTMLElement {
-    const count = due.availableWork?.questions ?? due.items.length;
-    const learningDue = due.items.filter(p => p.item.schedule.phase === 'learning' || p.item.schedule.phase === 'relearning').length;
-    const reviewDue = due.items.length - learningDue;
-    const start = button('Review Class Essentials due', () => {
-      start.disabled = true;
-      void (async () => {
-        const current = await freshModel(ctx, m);
-        const plan = await planClassEssentialsDue(ctx, current);
-        if (!plan.items.length) { setStatus(status, 'No Class Essentials cards are due for this capped session.', 'info'); return; }
-        const result = await beginSession(ctx, current, { plan });
-        if (!result.ok) { setStatus(status, result.message, 'info'); return; }
-        ctx.run.active = result.run; ctx.go('review/session');
-      })().catch(error => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) start.disabled = false; });
-    }, { id: 'start-class-essentials-due', class: 'btn', ...(due.items.length ? {} : { disabled: true }) });
-    const limit = due.batch?.workloadLimit ?? (m.prefs.sessionMinutes === 0 ? 0 : m.prefs.sessionMinutes * 60);
-    const nextReturn = (m.classDeck ?? []).filter(item => item.status === 'active' && !item.invalidatedAt && !item.suspendedReason
-      && (item.schedule.phase === 'learning' || item.schedule.phase === 'relearning') && Date.parse(item.schedule.due) > Date.parse(m.now))
-      .sort((a, b) => Date.parse(a.schedule.due) - Date.parse(b.schedule.due))[0];
-    return h('section', { class: 'entry', 'data-entry': 'class-essentials-due', id: 'class-essentials-due' },
-      h('h2', { class: 'entry-title' }, 'Class Essentials'),
-      h('p', { class: 'entry-kicker', id: 'class-essentials-due-count' }, count ? `${plural(count, 'due card', 'due cards')} · ${reviewDue} scheduled review(s) · ${learningDue} learning return(s)` : 'No reviewed cards due'),
-      h('p', { class: 'muted' }, `Due-only practice · ${due.items.length} question(s) in this session${limit ? ` · up to ${Math.round(limit / 60)} minutes` : ''}. Unreviewed phrases stay in the saved collection and are not counted as due.`),
-      due.items.length ? start : null,
-      classRemediation ? h('p', { class: 'entry-actions' }, h('a', { class: 'btn', id: 'open-class-remediation', href: '#/review/remediation' }, `Study Class Essentials remediation (${classRemediation})`)) : null,
-      nextReturn ? h('p', { class: 'muted', id: 'class-essentials-next-return' }, `Next short-term class return: ${new Date(nextReturn.schedule.due).toLocaleString()}.`) : null);
-  }
-
-  async function begin(m: ReviewModel): Promise<void> {
+  async function begin(m: ReviewModel, part: DeckPart): Promise<void> {
     const current = await freshModel(ctx, m);
     const { learnerId, languageId } = current.identity;
-    const planned = await planCurrentDeck(ctx, current, await holdOutOf(ctx, learnerId, languageId));
+    const planned = await planCurrentDeck(ctx, current, await holdOutOf(ctx, learnerId, languageId), undefined, part);
     const r = await beginSession(ctx, current, { plan: planned.plan });
     if (!r.ok) { setStatus(status, r.message, 'info'); return; }
+    await releaseHoldOut(ctx, learnerId, languageId, { preserveAdded: true });
+    ctx.run.active = r.run;
+    ctx.go('review/session');
+  }
+
+  /**
+   * Begin new deck: a fresh set of new words now. A deck in progress is ended (what was answered keeps its schedule and comes back
+   * through the Review Deck); the new words the Current Deck holds are set aside for this draw only, and go back into the pool once
+   * the new session starts. With no other new word ready, nothing is ended or set aside and the Current Deck stays as it is.
+   */
+  async function beginNewDeck(m: ReviewModel, resumeId: string | undefined): Promise<void> {
+    const current = await freshModel(ctx, m);
+    const { learnerId, languageId } = current.identity;
+    const held = await holdOutOf(ctx, learnerId, languageId);
+    const before = await planCurrentDeck(ctx, current, held, undefined, 'current');
+    const setAside = new Set([...held, ...before.plan.items.filter((p) => p.isNew).map((p) => p.item.unitId)]);
+    const fresh = await planFreshDeck(ctx, current, setAside);
+    if (!fresh.plan.items.some((p) => p.isNew)) {
+      setStatus(status, 'No other new words are ready right now. Your Current Deck stays as it is.', 'info');
+      return;
+    }
+    if (resumeId && !(await endSavedSession(ctx, resumeId))) { setStatus(status, 'The deck in progress could not be ended.', 'error'); return; }
+    await setHoldOut(ctx, learnerId, languageId, setAside);
+    const r = await beginSession(ctx, current, { plan: fresh.plan });
+    if (!r.ok) { await setHoldOut(ctx, learnerId, languageId, held); setStatus(status, r.message, 'info'); return; }
     await releaseHoldOut(ctx, learnerId, languageId, { preserveAdded: true });
     ctx.run.active = r.run;
     ctx.go('review/session');
@@ -262,67 +254,68 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     ctx.go('review/session');
   }
 
-  function deckEntry(m: ReviewModel, deck: CurrentDeck, resumeId: string | undefined, selectedCount: number): HTMLElement {
-    const count = deck.entries.length;
-    const ready = count > 0;
-    const kicker = ready ? `${plural(count, 'card', 'cards')} ready` : 'No eligible reviews right now';
-    const start = button(resumeId ? 'Resume' : 'Begin', () => {
-      start.disabled = true;
-      void (resumeId ? resume(resumeId) : begin(m)).finally(() => { if (view.alive()) start.disabled = false; });
-    }, { id: 'start-session', class: 'btn primary', ...(resumeId ? { 'data-action': 'resume-session' } : {}), ...(!ready && !resumeId ? { disabled: true } : {}) });
-    const actions = h('div', { class: 'entry-actions' }, start);
-    if (selectedCount) actions.append(button(`Practice selected words (${selectedCount})`, () => {
+  /** One of the two deck buttons: the deck's name over its count, the whole button a press that starts it (greyed out when empty). */
+  function deckButton(id: string, title: string, kicker: string, count: number, onPress: () => Promise<void>): HTMLButtonElement {
+    const b = h('button', { type: 'button', class: 'deck-button', id, 'data-cards': String(count), ...(count ? {} : { disabled: true }) },
+      h('span', { class: 'deck-button-title' }, title), h('span', { class: 'deck-button-kicker', id: `${id}-count` }, kicker)) as HTMLButtonElement;
+    b.addEventListener('click', () => {
+      b.disabled = true;
+      void onPress().catch((error) => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) b.disabled = false; });
+    });
+    return b;
+  }
+
+  function goReviewEntry(m: ReviewModel, deck: CurrentDeck, review: CurrentDeck, resumeId: string | undefined, selectedCount: number, savedCount: number): HTMLElement {
+    const drilling = deck.entries.length;
+    const reviewing = review.entries.length;
+    const currentKicker = drilling ? plural(drilling, 'card', 'cards')
+      : deck.summary.nextReturnAt ? `Nothing to drill now · next return ${when(deck.summary.nextReturnAt)}` : 'Nothing to drill right now';
+    const reviewKicker = reviewing ? `${plural(reviewing, 'card', 'cards')} due`
+      : review.summary.nextReviewAt ? `Nothing due · next review ${when(review.summary.nextReviewAt)}` : 'Nothing due';
+    const current = deckButton('start-session', 'Current Deck', currentKicker, drilling, () => begin(m, 'current'));
+    const newDeck = button('Begin new deck', () => {
+      newDeck.disabled = true;
+      void beginNewDeck(m, resumeId).catch((error) => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) newDeck.disabled = false; });
+    }, { class: 'btn friendly deck-new', id: 'start-new', 'data-action': 'begin-new-deck' });
+    const reviewButton = deckButton('start-review', 'Review Deck', reviewKicker, reviewing, () => begin(m, 'review'));
+
+    // under the Current Deck: the missed words to study, words picked by hand, and saving the deck for later
+    const extras = h('div', { class: 'deck-extras' });
+    if (deck.summary.remediation) extras.append(h('a', { class: 'linklike', id: 'open-remediation', href: '#/review/remediation' }, `${plural(deck.summary.remediation, 'missed word', 'missed words')} to study`));
+    if (selectedCount) extras.append(button(`Practice selected words (${selectedCount})`, () => {
       void (async () => {
-        const current = await freshModel(ctx, m);
-        const plan = await planSelectedPractice(ctx, current);
+        const fresh = await freshModel(ctx, m);
+        const plan = await planSelectedPractice(ctx, fresh);
         if (!plan.items.length) { setStatus(status, 'Selected words are controlled or no usable exercise is available.', 'info'); return; }
-        const result = await beginSession(ctx, current, { plan });
+        const result = await beginSession(ctx, fresh, { plan });
         if (!result.ok) { setStatus(status, result.message, 'info'); return; }
-        await releaseHoldOut(ctx, current.identity.learnerId, current.identity.languageId);
+        await releaseHoldOut(ctx, fresh.identity.learnerId, fresh.identity.languageId);
         ctx.run.active = result.run; ctx.go('review/session');
       })().catch(error => setStatus(status, String(error), 'error'));
-    }, { id: 'start-selected-practice', class: 'btn' }));
-    if (resumeId) {
-      actions.append(button('Begin a new deck', () => {
-        void (async () => {
-          const ended = await endSavedSession(ctx, resumeId);
-          if (!ended) { setStatus(status, 'The saved session could not be ended.', 'error'); return; }
-          await paint();
-        })();
-      }, { class: 'linklike', id: 'start-new', 'data-action': 'end-session' }));
-    }
-    if (ready) {
-      actions.append(button('Save deck', () => {
-        void (async () => {
-          const current = await freshModel(ctx, m);
-          const holdOut = await holdOutOf(ctx, current.identity.learnerId, current.identity.languageId);
-          const now = await planCurrentDeck(ctx, current, holdOut);
-          const saved = await saveDeck(ctx, current.identity, now.entries);
-          // what is left once the saved units are held out: the plan after the save, not the one before it (audit finding 12, 2026-10-29)
-          const after = saved ? await planCurrentDeck(ctx, current, await holdOutOf(ctx, current.identity.learnerId, current.identity.languageId)) : now;
-          const savedMessage = after.summary.newAvailable > 0
-            ? `Deck saved. ${plural(after.summary.newAvailable, 'unseen eligible new item', 'unseen eligible new items')} available; due reviews remain ready.`
-            : 'Deck saved. No unseen eligible alternatives; due obligations remain ready.';
-          setStatus(status, saved ? savedMessage : 'There is no deck to save yet.', saved ? 'ok' : 'info');
-          await paint();
-        })();
-      }, { class: 'btn friendly', id: 'save-deck' }));
-    }
-    const whyNoNew = explainAdmissions(m, deck);
-    return h('section', { class: 'entry', 'data-entry': 'deck', id: 'current-deck' },
+    }, { id: 'start-selected-practice', class: 'linklike' }));
+    if (drilling) extras.append(button('Save this deck', () => {
+      void (async () => {
+        const fresh = await freshModel(ctx, m);
+        const holdOut = await holdOutOf(ctx, fresh.identity.learnerId, fresh.identity.languageId);
+        const now = await planCurrentDeck(ctx, fresh, holdOut, undefined, 'current');
+        const saved = await saveDeck(ctx, fresh.identity, now.entries);
+        setStatus(status, saved ? 'Deck saved. It waits in Saved decks; a fresh Current Deck is drawn.' : 'There is no deck to save yet.', saved ? 'ok' : 'info');
+        await paint();
+      })();
+    }, { class: 'linklike', id: 'save-deck' }));
+    const whyNoNew = drilling ? undefined : explainAdmissions(m, deck);
+
+    return h('section', { class: 'entry entry-goreview', 'data-entry': 'deck', id: 'current-deck' },
       h('h2', { class: 'entry-title' }, 'GoReview'),
       m.schedulerIssue ? p(m.schedulerIssue, 'notice') : null,
-      h('p', { id: 'review-obligations', class: 'entry-kicker' }, `${deck.summary.dueReviews} due reviews · ${deck.summary.dueLearning} due learning/relearning · ${deck.summary.newAvailable} eligible new admissions · ${deck.summary.remediation} unresolved remediation`),
-      whyNoNew ? h('p', { id: 'why-no-new', class: 'muted', 'data-code': whyNoNew.code }, whyNoNew.text) : null,
-      h('p', { id: 'microdeck-size', class: 'muted' }, `${deck.summary.batchQuestions} question(s) in this batch · ${deck.summary.questionsAvailable} eligible now · target ${deck.summary.targetQuestions}.`),
-      h('p', { id: 'microdeck-estimate', class: 'muted' }, `${timeEstimate(deck.summary.estimatedSeconds)} active practice${deck.summary.workloadLimit ? `, within a ${Math.round(deck.summary.workloadLimit / 60)} minute workload limit` : ', with no fixed session-time limit'}. Estimates are approximate.`),
-      deck.plan.batch?.reasons.length ? p(deck.plan.batch.reasons.join(' '), 'help') : null,
-      deck.summary.nextReturnAt ? h('p', { id: 'next-learning-return', class: 'muted' }, 'Next short-term learning return: ' + new Date(deck.summary.nextReturnAt).toLocaleString() + '. Leave whenever you like; it remains scheduled in GoReview.') : null,
-      deck.summary.nextReviewAt ? h('p', { id: 'next-scheduled-review', class: 'muted' }, 'Next scheduled review: ' + new Date(deck.summary.nextReviewAt).toLocaleString() + '.') : null,
-      deck.summary.remediation ? h('p', { class: 'entry-actions' }, h('a', { class: 'btn', id: 'open-remediation', href: '#/review/remediation' }, 'Review remediation (' + deck.summary.remediation + ')')) : null,
-      h('p', { class: 'muted' }, 'Scheduled work is primary. Remediation, saved decks and selected vocabulary are separate optional practice.'),
-      h('p', { class: 'entry-kicker', id: 'deck-count', 'data-cards': String(count) }, kicker),
-      actions);
+      resumeId ? h('p', { class: 'deck-resume' }, h('span', { class: 'muted' }, 'A deck is in progress.'), ' ',
+        button('Resume', () => { void resume(resumeId); }, { class: 'btn primary', id: 'resume-session', 'data-action': 'resume-session' })) : null,
+      h('div', { class: 'deck-row', 'data-deck': 'current' }, current, newDeck),
+      extras.childElementCount ? extras : null,
+      whyNoNew ? h('p', { id: 'why-no-new', class: 'muted deck-why', 'data-code': whyNoNew.code }, whyNoNew.text) : null,
+      h('div', { class: 'deck-row', 'data-deck': 'review' }, reviewButton),
+      h('a', { class: 'deck-saved entry-link', href: '#/review/decks', id: 'entry-previous' },
+        h('span', { class: 'deck-button-title' }, 'Saved decks'), h('span', { class: 'deck-button-kicker', id: 'previous-count' }, savedCount ? `${savedCount} saved` : 'None saved yet')));
   }
 
   await paint();

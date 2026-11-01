@@ -561,6 +561,11 @@ export async function startWith(rig: Rig, events: GoEvent[], prefs: Partial<Revi
   await until(() => !!rig.root.querySelector('#session .exercise'), 'the first exercise');
 }
 
+/** The cards the home's two decks hold, Current Deck plus Review Deck (the owner, 2026-10-31: they replaced the single "N cards ready"). */
+export function readyCards(rig: Rig): number {
+  return Number(rig.q('#start-session').getAttribute('data-cards')) + Number(rig.q('#start-review').getAttribute('data-cards'));
+}
+
 /** A card reviewed long ago, so that it is due. */
 export function dueCard(a: Ids, label: string, family: ExerciseFamily): GoEvent[] {
   return [cardAdded(a, label, family, '2026-09-01T09:00:00.000Z'), reviewed(a, label, family, 1, '2026-09-01T10:00:00.000Z')];

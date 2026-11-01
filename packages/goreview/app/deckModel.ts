@@ -10,6 +10,7 @@ import { admissionBudget } from '../src/planner/budget';
 import { chooseMicrodeckTarget, microdeckMaximum } from '../src/planner/microdeck';
 import { estimateSeconds, microdeckObservations } from '../src/planner/planner';
 import { remediationBacklog, type RemediationCandidate } from '../src/planner/remediation';
+import { rankComparativePriority } from '../src/intake/intake';
 import type { AppContext } from './context';
 import { unitLabel } from './format';
 import { recordSavedDeckChange, sharedSavedDecks } from './savedDeckSync';
@@ -60,12 +61,20 @@ const budgetFor = (model: ReviewModel) => admissionBudget(model.events, {
   learnerId: model.identity.learnerId, languageId: model.identity.languageId, now: model.now,
   maxNew: model.prefs.maxNew, dailyNewLimit: model.prefs.dailyNewLimit ?? model.prefs.maxNew,
 });
-function scheduledPlan(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string>): SessionPlan {
+/**
+ * The home's two decks (the owner, 2026-10-31): the Review Deck is the spaced reviews (a card answered before, in the review phase); the
+ * Current Deck is what is still being drilled (new admissions, cards never answered, learning and relearning returns). 'all' is both, as
+ * one plan: the session's next panel, the details page and the developer tools read it.
+ */
+export type DeckPart = 'all' | 'current' | 'review';
+const isSpacedReview = (item: DeckItem): boolean => effective(item).length > 0 && item.schedule.phase === 'review';
+function scheduledPlan(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string>, part: DeckPart = 'all'): SessionPlan {
   return ctx.engine.plan({ deck: model.deck.filter(i => !isClassUnit(i.unitId)
+      && (part === 'all' || (part === 'review') === isSpacedReview(i))
       // A saved collection may hold a unit out of fresh admission, but it cannot
       // erase an existing scheduled obligation from the primary automatic plan.
       && (!holdOut.has(i.unitId) || Date.parse(i.schedule.due) <= Date.parse(model.now))),
-    intake: model.outcomes.filter(o => model.choices[o.unitId] !== 'later' && !holdOut.has(o.unitId)),
+    intake: part === 'review' ? [] : model.outcomes.filter(o => model.choices[o.unitId] !== 'later' && !holdOut.has(o.unitId)),
     prefs: model.prefs, audio: model.audio, now: model.now, knowledge: model.knowledge, readingSignals: model.events,
     schedulerProfile: model.schedulerProfile, observedReviewSeconds: observedReviewSeconds(model.events), intent: { kind: 'automatic' } });
 }
@@ -155,8 +164,8 @@ export async function loadVocabSafe(ctx: AppContext, languageId: string): Promis
   try { return await loadVocab(ctx, languageId); } catch { return undefined; }
 }
 /** Only justified scheduler/intake work is offered. Catalog membership never fills a batch. */
-export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string> = new Set(), vocab?: readonly VocabRow[]): Promise<CurrentDeck> {
-  const planned = scheduledPlan(ctx, model, holdOut);
+export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string> = new Set(), vocab?: readonly VocabRow[], part: DeckPart = 'all'): Promise<CurrentDeck> {
+  const planned = scheduledPlan(ctx, model, holdOut, part);
   const items = (model.schedulerIssue ? [] : planned.items).map(p => ({ ...p, schedulingCardExists: !!knownItem(model, p.item),
     origin: knownItem(model, p.item) ? 'scheduled' as const : 'intake' as const, intent: { kind: 'automatic' as const } }));
   const { ordinary: remediation, class: classRemediation } = effectiveRemediation(model);
@@ -192,6 +201,18 @@ export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdO
     newCount: items.filter(p => p.isNew).length });
   return { plan, entries: items.map(entryOf), filled: false, summary, remediation,
     hasVocabulary: !!(items.length || model.outcomes.length || model.deck.length || model.knowledge.length || vocab?.length) };
+}
+
+/**
+ * Begin new deck (the owner, 2026-10-31): the Current Deck planned without the set-aside units. Intake selects only the top `maxNew`
+ * encountered words for immediate practice and leaves the rest at comparatively lower priority, so the ranking runs again over what
+ * remains: the next-ranked words take the set-aside words' place.
+ */
+export function planFreshDeck(ctx: AppContext, model: ReviewModel, setAside: ReadonlySet<string>): Promise<CurrentDeck> {
+  const key = (o: IntakeOutcome): string => `${o.unitId}|${o.proposed?.dimension ?? ''}`;
+  const rest = model.outcomes.filter((o) => !setAside.has(o.unitId));
+  const ranked = new Map(rankComparativePriority(rest, { limit: model.prefs.maxNew, prioritizeSaved: model.prefs.prioritizeSaved }).map((o) => [key(o), o] as const));
+  return planCurrentDeck(ctx, { ...model, outcomes: rest.map((o) => ranked.get(key(o)) ?? o) }, setAside, undefined, 'current');
 }
 
 /** Due-only Class Essentials practice. Unreviewed seeded cards are never admitted as new work here. */
@@ -354,6 +375,14 @@ export function restoreClassEssentials(ctx: AppContext, learnerId: string, langu
 }
 export async function holdOutOf(ctx: AppContext, learnerId: string, languageId: string): Promise<Set<string>> {
   return new Set((await readStore(ctx, learnerId, languageId)).holdOut);
+}
+/** Replaces the held-out units (Begin new deck holds the current deck's new words out so a fresh set is drawn; the session's start releases them). */
+export function setHoldOut(ctx: AppContext, learnerId: string, languageId: string, unitIds: Iterable<string>): Promise<void> {
+  return serial(async () => {
+    const store = await readStore(ctx, learnerId, languageId);
+    store.holdOut = [...new Set(unitIds)];
+    await writeStore(ctx, learnerId, languageId, store);
+  });
 }
 
 /** Moves the deck to the saved list; its units are held out of the next deck so a fresh one is planned. */

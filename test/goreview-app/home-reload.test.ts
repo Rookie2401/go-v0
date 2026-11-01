@@ -13,7 +13,7 @@ import { createReviewEngine } from '../../packages/goreview/app/engine';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { loadVocab } from '../../packages/goreview/app/deckModel';
 import type { AppContext } from '../../packages/goreview/app/context';
-import { candidate, destroyRigs, dueCard, ids, makeRig, seed, until } from './helpers';
+import { candidate, destroyRigs, dueCard, ids, makeRig, seed, until, readyCards } from './helpers';
 
 afterEach(() => { destroyRigs(); });
 
@@ -34,7 +34,7 @@ describe('the home on a return', () => {
     const api = new Proxy(base, { get(target, key) {
       if (key === 'vocabulary') return () => {
         requested++;
-        if (!rig.root.querySelector('#deck-count')) requestedBeforeDeckPaint++;
+        if (!rig.root.querySelector('#start-session')) requestedBeforeDeckPaint++;
         return new Promise((resolve) => { release = resolve; });
       };
       return Reflect.get(target, key);
@@ -43,10 +43,10 @@ describe('the home on a return', () => {
     forgetPaintedHome(rig.app.ctx);
     await rig.go('settings');
     await rig.go('review');
-    await until(() => !!rig.root.querySelector('#deck-count'), 'the deck to paint without waiting for vocabulary');
+    await until(() => !!rig.root.querySelector('#start-session'), 'the deck to paint without waiting for vocabulary');
     expect(requested).toBe(1);
     expect(requestedBeforeDeckPaint).toBe(0);
-    expect(rig.q('#deck-count').textContent).toBe('2 cards ready');
+    expect(readyCards(rig)).toBe(2);
 
     release({ ok: true, status: 200, data: { items: [], catalog: { total: 0, counts: {} } } });
     await until(() => rig.q('#vocab-count').getAttribute('data-completeness') === 'complete', 'the vocabulary load to finish');
@@ -56,18 +56,18 @@ describe('the home on a return', () => {
     const rig = await makeRig({ signedIn: true });
     rig.service.candidates.set('e1', [candidate('lemma:sq:mace:NOUN', 0.9)]);
     await rig.go('review');
-    await until(() => !!rig.root.querySelector('#deck-count'), 'the home');
-    const first = rig.q('#deck-count').textContent;
+    await until(() => !!rig.root.querySelector('#start-session'), 'the home');
+    const first = rig.q('#current-deck').textContent;
     const before = calls(rig, 'candidates');
     expect(before).toBeGreaterThan(0);
     await rig.go('settings');
     await rig.go('review');
-    await until(() => !!rig.root.querySelector('#deck-count'), 'the home again');
-    expect(rig.q('#deck-count').textContent).toBe(first);
+    await until(() => !!rig.root.querySelector('#start-session'), 'the home again');
+    expect(rig.q('#current-deck').textContent).toBe(first);
     expect(calls(rig, 'candidates')).toBe(before);
     await rig.go('account');
     await rig.go('review');
-    await until(() => !!rig.root.querySelector('#deck-count'), 'the home a third time');
+    await until(() => !!rig.root.querySelector('#start-session'), 'the home a third time');
     expect(calls(rig, 'candidates')).toBe(before);
     expect(rig.root.querySelector('.go-loading')).toBeNull(); // nothing left to wait for
   });
@@ -76,12 +76,12 @@ describe('the home on a return', () => {
     const rig = await makeRig({ signedIn: true });
     rig.service.candidates.set('e1', [candidate('lemma:sq:mace:NOUN', 0.9)]);
     await rig.go('review');
-    await until(() => !!rig.root.querySelector('#deck-count'), 'the home');
+    await until(() => !!rig.root.querySelector('#start-session'), 'the home');
     const before = calls(rig, 'candidates');
     await seed(rig, [...dueCard(ids('L1', 'sq'), 'zog', 'meaning-to-form')]); // more events in the local log
     await rig.go('settings');
     await rig.go('review');
-    await until(() => !!rig.root.querySelector('#deck-count'), 'the home after an event');
+    await until(() => !!rig.root.querySelector('#start-session'), 'the home after an event');
     expect(calls(rig, 'candidates')).toBeGreaterThan(before);
   });
 

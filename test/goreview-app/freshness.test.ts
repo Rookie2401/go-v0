@@ -11,7 +11,7 @@ import type { DeckItem } from '../../packages/goreview/src/types';
 import { planRemediation } from '../../packages/goreview/app/deckModel';
 import { freshModel, modelIsFresh, nextChangeAt } from '../../packages/goreview/app/freshness';
 import { loadReviewModel, type ReviewModel } from '../../packages/goreview/app/workspace';
-import { cardAdded, destroyRigs, dueCard, ids, makeRig, reopen, reviewed, seed, T0, until, type Rig } from './helpers';
+import { cardAdded, destroyRigs, dueCard, ids, makeRig, reopen, reviewed, seed, T0, until, type Rig, readyCards } from './helpers';
 
 afterEach(() => { destroyRigs(); });
 
@@ -210,7 +210,7 @@ describe('Start after the screen has been open', () => {
     const model = (await loadReviewModel(rig.app.ctx))!;
     const due = Date.parse(model.deck.find((i) => i.unitId.includes('zog'))!.schedule.due);
     await reopen(rig);
-    await until(() => Number(rig.q('#deck-count').getAttribute('data-cards')) === 1, 'one card ready');
+    await until(() => Number(String(readyCards(rig))) === 1, 'one card ready');
     rig.clock.set(iso(due + 1000));
     rig.q('#start-session').click();
     await until(() => !!rig.root.querySelector('#session .exercise'), 'the session starts');

@@ -63,9 +63,10 @@ describe('effectiveRemediation: one projection over ordinary and Class Essential
     expect(current.summary.classRemediation).toBe(r.class.length);
     expect(current.remediation.map(c => c.itemId)).toEqual(r.ordinary.map(c => c.itemId));
     await reopen(rig);
-    expect(rig.q('#review-obligations').textContent).toContain('1 unresolved remediation');
-    expect(rig.q('#open-remediation').textContent).toBe('Review remediation (1)');
-    expect(rig.q('#open-class-remediation').textContent).toBe('Study Class Essentials remediation (1)');
+    expect(rig.q('#open-remediation').textContent).toBe('1 missed word to study'); // under the Current Deck
+    await rig.go('review/decks'); // Class Essentials' missed phrases sit under its card in Saved decks
+    await until(() => !!rig.root.querySelector('#open-class-remediation'), 'the class remediation link');
+    expect(rig.q('#open-class-remediation').textContent).toBe('1 missed phrase to study');
 
     // the remediation screen lists exactly the projection, each row tagged with its source
     await rig.go('review/remediation');

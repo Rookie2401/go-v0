@@ -10,7 +10,7 @@ import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packag
 import { saveDeck } from '../../packages/goreview/app/deckModel';
 import { createLive } from '../../packages/goreview/app/live';
 import { createRealDeps } from '../../packages/goreview/app/main';
-import { cardAdded, defaultService, destroyRigs, dueCard, ids, key, makeRig, startWith, type, until, type FakeService, type Rig } from './helpers';
+import { cardAdded, defaultService, destroyRigs, dueCard, ids, key, makeRig, startWith, type, until, type FakeService, type Rig, readyCards } from './helpers';
 
 afterEach(() => { destroyRigs(); vi.useRealTimers(); });
 const A = ids('L1', 'sq');
@@ -86,11 +86,11 @@ describe('live updates in the app', () => {
     const rig = await makeRig({ service, fetch: svc.fetchFn, live, signedIn: true });
     await ready(rig, svc);
     expect(svc.calls).toContain('GET /sync/status');
-    expect(rig.q('#deck-count').getAttribute('data-cards')).toBe('0');
+    expect(String(readyCards(rig))).toBe('0');
     for (const e of dueCard(A, 'zog', 'meaning-to-form')) service.inject('L1', e);   // GoLearn on the desktop
     svc.push();
-    await until(() => rig.q('#deck-count').getAttribute('data-cards') === '1', 'the home to show the new card');
-    expect(rig.q('#deck-count').textContent).toBe('1 card ready');
+    await until(() => String(readyCards(rig)) === '1', 'the home to show the new card');
+    expect(readyCards(rig)).toBe(1);
     // and it is waiting again, from the new cursor
     await until(() => svc.held.length > 0, 'the next wait');
   });
@@ -139,7 +139,7 @@ describe('live updates in the app', () => {
     const own = cardAdded(A, 'zog', 'meaning-to-form', '2026-10-08T09:00:00.000Z');
     await d.log.append(d.learnerId, [own]);
     await rig.app.ctx.syncNow({ force: true });
-    await until(() => rig.q('#deck-count').getAttribute('data-cards') !== null, 'the home');
+    await until(() => String(readyCards(rig)) !== null, 'the home');
     await new Promise((r) => setTimeout(r, 40));
     const seen = dataEvents(rig);
     const home = rig.q('#current-deck');

@@ -6,7 +6,7 @@ import type { GoEvent } from '../../packages/repository-contract/src';
 import { classCards, classDeckFor, classFacts, CLASS_ESSENTIALS_DESCRIPTION, CLASS_ESSENTIALS_NOTES_LA, CLASS_LANGUAGES, isClassUnit } from '../../packages/goreview/app/classEssentials';
 import { decksKey, listSavedDecks, type SavedDeck } from '../../packages/goreview/app/deckModel';
 import { languageName } from '../../packages/goreview/app/format';
-import { defaultService, destroyRigs, dueCard, FakeService, ids, makeRig, queued, reopen, reviewed, seed, until, type Rig } from './helpers';
+import { defaultService, destroyRigs, dueCard, FakeService, ids, makeRig, queued, reopen, reviewed, seed, until, type Rig, readyCards } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -110,12 +110,13 @@ describe('Class Essentials: the cards', () => {
 describe('Class Essentials: in Saved decks', () => {
   it('is there on the first visit with no GoLearn encounter, and seeding again never duplicates it', async () => {
     const rig = await makeRig({ signedIn: true });
-    expect(rig.root.querySelector('#class-essentials-due-count')?.textContent).toBe('No reviewed cards due');
-    expect(rig.root.querySelector('#start-class-essentials-due')).toBeNull(); // the saved 28-card set does not become due work by being seeded
     expect(await stored(rig)).toHaveLength(1); // the first visit of the home already seeded it
     const first = await listSavedDecks(rig.app.ctx, 'L1', 'sq', 'sq-AL');
     const second = await listSavedDecks(rig.app.ctx, 'L1', 'sq', 'sq-AL');
-    await rig.go('review/decks');
+    await rig.go('review/decks'); // its due line sits under its card in Saved decks (the owner, 2026-10-31)
+    await until(() => !!rig.root.querySelector('#class-essentials-due-count'), 'the Class Essentials due line');
+    expect(rig.q('#class-essentials-due-count').textContent).toBe('Nothing due');
+    expect(rig.root.querySelector('#start-class-essentials-due')).toBeNull(); // the saved 28-card set does not become due work by being seeded
     await rig.go('review');
     expect(first.map((d) => d.id)).toEqual(['class-essentials:sq']);
     expect(second).toHaveLength(1);
@@ -160,13 +161,15 @@ describe('Class Essentials: in Saved decks', () => {
     await seed(rig, [...classReviews, ...dueCard(A, 'zog', 'meaning-to-form')]);
     await rig.app.ctx.state.setPrefs('L1', { ...(await rig.app.ctx.state.getPrefs('L1', 'sq')), cardsPerDeck: 5 });
     await reopen(rig);
-    expect(rig.q('#class-essentials-due-count').textContent).toContain('due card');
-    expect(rig.qa('#class-essentials-due button')).toHaveLength(1);
-    expect(rig.root.querySelector('#open-class-remediation')?.textContent).toBe('Study Class Essentials remediation (5)');
+    expect(rig.root.querySelector('#review-home #class-essentials-due')).toBeNull(); // not on the home: under its card in Saved decks (the owner, 2026-10-31)
     click(rig.q('#save-deck'));
     await until(() => rig.q('#previous-count').textContent === '2 saved', 'ordinary due card saved');
-    expect(rig.q('#deck-count').getAttribute('data-cards')).toBe('1'); // saving does not hide due work from the current automatic plan
-    expect(rig.q('#class-essentials-due-count').textContent).toContain('due card');
+    expect(String(readyCards(rig))).toBe('1'); // saving does not hide due work from the current automatic plan
+    await rig.go('review/decks');
+    await until(() => !!rig.root.querySelector('#class-essentials-due-count'), 'the Class Essentials due line');
+    expect(rig.q('#class-essentials-due-count').textContent).toContain('cards due');
+    expect(rig.qa('#class-essentials-due button')).toHaveLength(1);
+    expect(rig.root.querySelector('#open-class-remediation')?.textContent).toBe('5 missed phrases to study');
     expect((await stored(rig)).find((deck) => deck.id === 'class-essentials:sq')!.items).toHaveLength(28);
 
     click(rig.q('#start-class-essentials-due'));
@@ -208,8 +211,8 @@ describe('Class Essentials: in Saved decks', () => {
 
     // the cards are reviewed, but they stay out of the ordinary queue, My vocab's candidates and the home's deck
     await reopen(rig);
-    expect(rig.q('#deck-count').getAttribute('data-cards')).toBe('0');
-    expect(rig.q('#deck-count').textContent).toBe('No eligible reviews right now');
+    expect(String(readyCards(rig))).toBe('0');
+    expect(readyCards(rig)).toBe(0);
     await rig.go('review/details');
     expect(rig.q('#deck').textContent).not.toContain('Përshëndetje');
   });

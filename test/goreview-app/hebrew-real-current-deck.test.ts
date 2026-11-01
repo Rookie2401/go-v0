@@ -28,8 +28,8 @@ const files = (async (input: RequestInfo | URL) => {
   return fs.existsSync(file) ? new Response(fs.readFileSync(file)) : new Response('not found', { status: 404 });
 }) as unknown as typeof fetch;
 
-const unknown = (unitId: string): ReviewCandidate => ({ unitId, kind: 'unknown', score: 0, reasons: [], targetDimension: 'readingRecognition',
-  eligibility: { eligible: false, status: 'unknown', reason: 'not catalogued' }, cost: 0.2 });
+const coveredCandidate: ReviewCandidate = { unitId: 'lemma:he:reviewed-word:NOUN', kind: 'lemma', score: 0.8, reasons: [], targetDimension: 'readingRecognition',
+  eligibility: { eligible: true, status: 'high-confidence', caveats: [] }, cost: 0.2 };
 
 const encounter = (): GoEvent => ({
   id: 'biblia-encounter-darkness', v: CONTRACT_VERSION, learnerId: L, enrolmentId: ENROLMENT, languageId: 'he', at: '2026-10-30T12:00:00.000Z',
@@ -42,7 +42,10 @@ const encounter = (): GoEvent => ({
 afterEach(() => { destroyRigs(); });
 
 describe('event-only Hebrew Current Deck recovery', () => {
-  it('uses one real Biblia encounter and OSHB exact-form frequency while preserving the existing review card', async () => {
+  it.each([
+    ['an empty candidate response', []],
+    ['only a valid candidate already covered by Review', [coveredCandidate]],
+  ] as const)('uses one real Biblia encounter and OSHB exact-form frequency with %s while preserving the existing review card', async (_label, apiCandidates) => {
     const service = new FakeService();
     service.addAccount('ana@example.org', 'correct-horse-battery', L, [{ languageId: 'he', varietyId: 'he-bib', goals: [{ kind: 'reading' }] }]);
     const rig = await makeRig({ service, signedIn: true });
@@ -51,7 +54,7 @@ describe('event-only Hebrew Current Deck recovery', () => {
     const knowledge: UnitKnowledge[] = foldEvents(events, { modelVersion: 'projection@7' });
     const vocabulary: VocabularyItem[] = [{ knowledge: knowledge[0]!, surfaceForms: ['חֹשֶׁךְ'], sources: [] }];
     Object.assign(api, {
-      async candidates() { return { ok: true, status: 200, data: { candidates: [unknown(DARKNESS)] } }; },
+      async candidates() { return { ok: true, status: 200, data: { candidates: [...apiCandidates] } }; },
       async knowledge(unitIds?: string[]) { return { ok: true, status: 200, data: { knowledge: unitIds ? knowledge.filter(row => unitIds.includes(row.unitId)) : knowledge } }; },
       async vocabulary() { return { ok: true, status: 200, data: { items: vocabulary } }; },
       async units(unitIds: string[]) { return { ok: true, status: 200, data: { units: {}, missing: unitIds } }; },
@@ -71,6 +74,7 @@ describe('event-only Hebrew Current Deck recovery', () => {
     await rig.go('review');
 
     const model = await loadReviewModel(rig.app.ctx);
+    expect(model?.candidateRecoveryIncomplete).toBeUndefined();
     expect(model?.knowledge.find(row => row.unitId === DARKNESS)).toMatchObject({ level: 'seen', encounters: 1 });
     expect(model?.outcomes.find(row => row.unitId === DARKNESS)).toMatchObject({ decision: 'test-now', proposed: { family: 'written-recognition' } });
     const current = await planCurrentDeck(rig.app.ctx, model!, new Set(), undefined, 'current');

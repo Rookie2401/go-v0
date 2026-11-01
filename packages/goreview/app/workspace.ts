@@ -260,12 +260,9 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   }
 
   // Some event-derived Hebrew words exist in the vocabulary projection but not in the
-  // Repository's linguistic catalogue. The server deliberately caps unknown-unit
-  // candidates, so only do this slower full inventory read when that missing-catalogue
-  // state is visible in its live candidate response.
-  if (candidateSource === 'live' && identity.languageId === 'he'
-    && candidates.some((candidate) => candidate.eligibility.status === 'unknown')
-    && candidateApi && ctx.engine.recoverCandidates) {
+  // Repository's linguistic catalogue. They may never appear in the capped candidate
+  // response, so scan raw Hebrew vocabulary on every live Hebrew model load.
+  if (candidateSource === 'live' && identity.languageId === 'he' && candidateApi && ctx.engine.recoverCandidates) {
     const unresolvedVocabulary: VocabularyItem[] = [];
     const cursors = new Set<string>();
     let after: string | undefined;

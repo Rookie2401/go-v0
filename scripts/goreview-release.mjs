@@ -250,7 +250,9 @@ function staticSourceInputs(artifactList) {
     if (bibleData?.[1] === 'data') inputs.push(`packages/biblia/public/data/${bibleData[2]}`);
     if (bibleData?.[1] === 'lexicon') inputs.push(`public/lexicon/${bibleData[2]}`);
     const hebrewLexicon = file.match(/^lexicon\/he\/(biblical|modern)\/(.+)$/);
-    if (hebrewLexicon) inputs.push(`public/lexicon/he/${hebrewLexicon[1]}/${hebrewLexicon[2]}`);
+    if (hebrewLexicon && file !== 'lexicon/he/biblical/form-frequency.json.gz') inputs.push(`public/lexicon/he/${hebrewLexicon[1]}/${hebrewLexicon[2]}`);
+    // Generated from this licensed public index during the app build; the generated file itself is not a public source input.
+    if (file === 'lexicon/he/biblical/form-frequency.json.gz') inputs.push('public/lexicon/he/biblical-index.json');
   }
   return [...new Set(inputs)].sort();
 }

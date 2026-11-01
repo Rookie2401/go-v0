@@ -11,6 +11,7 @@ import { createApp } from '../../packages/goreview/app/app';
 import { planCurrentDeck } from '../../packages/goreview/app/deckModel';
 import { loadReviewModel } from '../../packages/goreview/app/workspace';
 import { installHebrewIndex, resetHebrewIndexes, type HebrewFormIndex } from '../../src/adapters/hebrew/index-store';
+import { gzipHebrewFormFrequency } from '../../packages/goreview/app/hebrewFrequencyAssets';
 
 const requests: string[] = [];
 let failPathOnce: string | undefined;
@@ -20,6 +21,10 @@ const fileFetch = (async (input: RequestInfo | URL) => {
   const file = path.join(path.resolve(__dirname, '../../public'), pathname);
   requests.push(pathname);
   if (failPathOnce === pathname) { failPathOnce = undefined; return new Response('temporary failure', { status: 503 }); }
+  if (pathname === '/lexicon/he/biblical/form-frequency.json.gz') {
+    const indexPath = path.resolve(__dirname, '../../public/lexicon/he/biblical-index.json');
+    return new Response(gzipHebrewFormFrequency(JSON.parse(fs.readFileSync(indexPath, 'utf8'))) as unknown as BodyInit);
+  }
   return fs.existsSync(file) ? new Response(fs.readFileSync(file)) : new Response('not found', { status: 404 });
 }) as unknown as typeof fetch;
 afterEach(() => { failPathOnce = undefined; resetHebrewIndexes((id) => id === 'oshb-tanakh-core'); });

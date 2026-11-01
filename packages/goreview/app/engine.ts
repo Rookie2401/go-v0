@@ -14,8 +14,9 @@ import {
 } from '../src';
 import type { BuilderRegistry, FactsProvider, GradingPort, IntakeOutcome, Exercise } from '../src';
 import type { RepositoryApi } from '../../repository-service/src/api';
-import type { ItemControl, ReviewEngine } from './ports';
+import type { ItemControl, RecoveryRequest, ReviewEngine } from './ports';
 import { classFacts, isClassUnit } from './classEssentials';
+import { recoverHebrewCandidates } from './recoveredCandidates';
 
 export interface EngineOptions {
   builders: BuilderRegistry;
@@ -43,6 +44,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   // provider only for the exact API client (the context keeps that client stable per service/token).
   const providers = new WeakMap<RepositoryApi, Map<string, FactsProvider>>();
   const warmFacts = new WeakMap<RepositoryApi, Map<string, { at: number; facts: Awaited<ReturnType<FactsProvider['factsFor']>> }>>();
+  const stagedFacts = new WeakMap<RepositoryApi, Map<string, { at: number; facts: Awaited<ReturnType<FactsProvider['factsFor']>> }>>();
   /** Class Essentials phrases are answered from the deck's own table; every other unit goes to the pack, as before. */
   const withClass = (base: FactsProvider): FactsProvider => ({ ...base, factsFor: async (unitId, languageId, varietyId) => (isClassUnit(unitId) ? classFacts(unitId, languageId) : base.factsFor(unitId, languageId, varietyId)) });
   const factsOf = (languageId: string, api: RepositoryApi): FactsProvider => withClass(packFactsOf(languageId, api));
@@ -70,8 +72,37 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     cache?.delete(key); // successful intake facts are consumed exactly once by deck admission
     return entry && Date.now() - entry.at < WARM_FACTS_TTL_MS ? entry.facts ?? undefined : undefined;
   };
+  const takeStagedFacts = (api: RepositoryApi, languageId: string, unitId: string, varietyId?: string): Awaited<ReturnType<FactsProvider['factsFor']>> | undefined => {
+    const cache = stagedFacts.get(api);
+    const key = factsKey(languageId, unitId, varietyId);
+    const entry = cache?.get(key);
+    cache?.delete(key);
+    return entry && Date.now() - entry.at < WARM_FACTS_TTL_MS ? entry.facts ?? undefined : undefined;
+  };
 
   return {
+    async recoverCandidates(request: RecoveryRequest) {
+      const base = configuredFactsOf(request.languageId, request.api);
+      if (request.languageId !== 'he') return { candidates: [], complete: true };
+      if (!base) return { candidates: [], complete: false, note: 'The Hebrew pack facts are unavailable.' };
+      const captured = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
+      const capturing: FactsProvider & { prime?(ids: string[]): Promise<void>; clearPrime?(): void } = {
+        async factsFor(unitId, languageId, varietyId) {
+          const value = await base.factsFor(unitId, languageId, varietyId);
+          if (value) captured.set(factsKey(languageId, unitId, varietyId), value);
+          return value;
+        },
+        prime: ids => (base as FactsProvider & { prime?(unitIds: string[]): Promise<void> }).prime?.(ids) ?? Promise.resolve(),
+        clearPrime: () => (base as FactsProvider & { clearPrime?(): void }).clearPrime?.(),
+      };
+      const recovered = await recoverHebrewCandidates({ ...request, facts: capturing });
+      if (captured.size) {
+        let cache = stagedFacts.get(request.api);
+        if (!cache) { cache = new Map(); stagedFacts.set(request.api, cache); }
+        for (const [key, facts] of captured) cache.set(key, { at: Date.now(), facts });
+      }
+      return recovered;
+    },
     async repairMaterial(request) {
       const prepared=new Set<NonNullable<Exercise['prompt']['audio']>>();
       let handedOff=false,released=false;
@@ -132,7 +163,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
       if (facts) {
         const captured = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
         const capturing: FactsProvider & { clearPrime?(): void; prime?(ids: string[]): Promise<void> } = { ...facts, async factsFor(unitId, languageId, varietyId) {
-          const value = await facts.factsFor(unitId, languageId, varietyId);
+          const value = takeStagedFacts(req.api, languageId, unitId, varietyId) ?? await facts.factsFor(unitId, languageId, varietyId);
           if (value) captured.set(unitId, value); // never retain missing/failed facts
           return value;
         }, clearPrime: () => (facts as FactsProvider & { clearPrime?(): void }).clearPrime?.() };

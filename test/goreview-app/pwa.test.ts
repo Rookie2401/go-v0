@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import vm from 'node:vm';
+import { gunzipSync } from 'node:zlib';
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 
 const root = path.resolve(__dirname, '../..');
@@ -35,13 +36,27 @@ describe('the bundled Hebrew lexicons', () => {
       const manifest = JSON.parse(read(target, 'manifest.json')) as { shards: Record<string, { file: string }> };
       const names = Object.values(manifest.shards).map((shard) => shard.file).sort();
       expect(names.length).toBeGreaterThan(0);
-      expect(fs.readdirSync(target).sort()).toEqual(['manifest.json', ...names].sort());
+      const expected = ['manifest.json', ...names];
+      if (period === 'biblical') expected.push('form-frequency.json.gz');
+      expect(fs.readdirSync(target).sort()).toEqual(expected.sort());
       for (const name of names) {
         const bytes = fs.readFileSync(path.join(target, name));
         expect(bytes.subarray(0, 2).toString('hex')).toBe('1f8b');
         expect(bytes.equals(fs.readFileSync(path.join(source, name)))).toBe(true);
       }
     }
+    const sourceIndex = JSON.parse(read(root, 'public', 'lexicon', 'he', 'biblical-index.json')) as { source: Record<string, unknown> };
+    for (const out of Object.values(outs)) {
+      const frequency = path.join(out, 'lexicon', 'he', 'biblical', 'form-frequency.json.gz');
+      const parsed = JSON.parse(gunzipSync(fs.readFileSync(frequency)).toString('utf8')) as { id: string; indexId: string; source: { label: string }; forms: Record<string, { rank: number; count: number }> };
+      expect(parsed).toMatchObject({ schema: 1, id: 'oshb-tanakh-form-frequency', indexId: 'oshb-tanakh' });
+      expect(parsed.forms['אֶת']).toEqual({ rank: 1, count: 6715 });
+      expect(parsed.source).toEqual(sourceIndex.source);
+      expect(parsed.source.label).toContain('Open Scriptures Hebrew Bible');
+    }
+    const manifest = JSON.parse(read(outs.review, 'goreview-release-manifest.json')) as { staticSourceInputs: string[] };
+    expect(manifest.staticSourceInputs).toContain('public/lexicon/he/biblical-index.json');
+    expect(manifest.staticSourceInputs).not.toContain('public/lexicon/he/biblical/form-frequency.json.gz');
     expect(fs.existsSync(path.join(outs.review, 'lexicon', 'el'))).toBe(false);
     expect(fs.existsSync(path.join(outs.review, 'lexicon', 'he', 'biblical', 'index.json'))).toBe(false);
   });
@@ -209,6 +224,7 @@ describe('sw.js (as built)', () => {
     expect(list.some((p) => /\.woff2$/.test(p))).toBe(true);
     expect(list.some((p) => p.startsWith('./dict/'))).toBe(false);
     expect(list.some((p) => p.startsWith('./lexicon/'))).toBe(false);
+    expect(list).not.toContain('./lexicon/he/biblical/form-frequency.json.gz');
     expect(list).not.toContain('./sw.js');
   });
 

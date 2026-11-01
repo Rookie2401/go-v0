@@ -12,10 +12,21 @@ import { createHebrewShardLoader } from '../../../src/adapters/hebrew/shards';
 import type { HebrewShardLoader } from '../../../src/adapters/hebrew/shards';
 import type { ShardSource } from '../../../src/adapters/shared/shards';
 import { heAdapter } from '../../../src/adapters/he';
+import { readShardBytes } from '../../../src/adapters/shared/shards';
+
+interface HebrewFormFrequencyIndex {
+  schema: 1;
+  id: 'oshb-tanakh-form-frequency';
+  indexId: 'oshb-tanakh';
+  source: { label: string; licence: string; url: string; retrieved: string; note: string };
+  built: string;
+  forms: Record<string, { rank: number; count: number }>;
+}
 
 export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexiconBaseUrl?: string }): (languageId: string, api: RepositoryApi) => FactsProvider | undefined {
   const runtimes = new Map<string, ReturnType<typeof createPackRuntime>>();
   const hebrewLoaders = new Map<string, Promise<HebrewShardLoader>>();
+  let hebrewFrequency: Promise<HebrewFormFrequencyIndex> | undefined;
   const lexiconBase = opts.lexiconBaseUrl ?? opts.baseUrl;
   const source: ShardSource = {
     async fetchJson(path) { const r = await opts.fetch(`${lexiconBase}${path}`); if (!r.ok) throw new Error(`${path}: ${r.status}`); return r.json(); },
@@ -36,6 +47,25 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
       const result = await loader.ensure(keys);
       if (result.failed.length) throw new Error(`${base}: ${result.failed.map((x) => x[1]).join(', ')}`);
     }));
+  };
+  const ensureHebrewFrequency = (): Promise<HebrewFormFrequencyIndex> => {
+    if (!hebrewFrequency) {
+      hebrewFrequency = source.fetchBytes!('lexicon/he/biblical/form-frequency.json.gz')
+        .then(readShardBytes)
+        .then((value) => {
+          if (!value || typeof value !== 'object') throw new Error('Invalid OSHB form-frequency index');
+          const index = value as Partial<HebrewFormFrequencyIndex>;
+          if (index.schema !== 1 || index.id !== 'oshb-tanakh-form-frequency' || index.indexId !== 'oshb-tanakh'
+            || !index.source || typeof index.source !== 'object' || typeof index.source.label !== 'string'
+            || typeof index.source.licence !== 'string' || typeof index.source.url !== 'string'
+            || typeof index.source.retrieved !== 'string' || typeof index.source.note !== 'string'
+            || typeof index.built !== 'string' || !index.built
+            || !index.forms || typeof index.forms !== 'object' || Array.isArray(index.forms)) throw new Error('Invalid OSHB form-frequency index');
+          return index as HebrewFormFrequencyIndex;
+        })
+        .catch((error) => { hebrewFrequency = undefined; throw error; });
+    }
+    return hebrewFrequency;
   };
   const hebrewSentencesReady = new Map<string, Promise<void>>();
   const ensureHebrewSentenceSet = (manifest: NonNullable<ReturnType<typeof packFor>>): Promise<void> => {
@@ -77,7 +107,15 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
       return p;
     };
     return {
-      prime: (unitIds: string[]) => plain.prime(unitIds),
+      prime: async (unitIds: string[]) => {
+        if (languageId === 'he' && unitIds.some((id) => id.startsWith('form:he:'))) {
+          await ensureHebrewSentenceSet(manifest);
+          await ensureHebrewKeys(unitIds.flatMap(hebrewUnitKeys));
+          await ensureHebrewFrequency();
+        }
+        // Start the Repository snapshot's consume window after remote pack assets load.
+        await plain.prime(unitIds);
+      },
       clearPrime: () => plain.clearPrime?.(),
       factsFor: async (unitId, requestedLanguage, varietyId) => {
         if (languageId === 'he' && requestedLanguage === 'he') {
@@ -88,7 +126,22 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
             await ensureHebrewKeys(hebrewUnitKeys(unitId));
           } catch { return undefined; }
         }
-        return forVariety(varietyId).factsFor(unitId, requestedLanguage, varietyId);
+        const facts = await forVariety(varietyId).factsFor(unitId, requestedLanguage, varietyId);
+        if (!facts || languageId !== 'he' || requestedLanguage !== 'he' || !unitId.startsWith('form:he:')
+          || !facts.unit.provenance.ref?.startsWith('goreview-facts:pack-derived@') || facts.unit.frequency) return facts;
+        try {
+          const index = await ensureHebrewFrequency();
+          // Frequency belongs to the exact Biblical Hebrew form key. Never copy a lemma
+          // rank or normalize an unpointed surface into a different attested form.
+          const exactForm = unitId.slice('form:he:'.length);
+          if (facts.unit.label !== exactForm) return facts;
+          const frequency = index.forms[exactForm];
+          if (!frequency || !Number.isInteger(frequency.rank) || frequency.rank < 1
+            || !Number.isInteger(frequency.count) || frequency.count < 1) return facts;
+          return { ...facts, unit: { ...facts.unit, frequency: {
+            rank: frequency.rank, source: 'Open Scriptures Hebrew Bible — attested Hebrew form frequency',
+          } } };
+        } catch { return undefined; }
       },
     } as FactsProvider & { prime(unitIds: string[]): Promise<void>; clearPrime(): void };
   };

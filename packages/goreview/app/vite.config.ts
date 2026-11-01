@@ -23,6 +23,7 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, type Plugin } from 'vite';
 import { createReleaseManifest, normalizeCompiledModuleId, verifyReleaseArtifact } from '../../../scripts/goreview-release.mjs';
+import { gzipHebrewFormFrequency } from './hebrewFrequencyAssets.ts';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '../../..');
@@ -63,6 +64,13 @@ function copyHebrewLexicons(outDir: string): void {
     }
     fs.copyFileSync(manifestPath, path.join(target, 'manifest.json'));
   }
+  const indexPath = path.join(repoRoot, 'public', 'lexicon', 'he', 'biblical-index.json');
+  if (!fs.existsSync(indexPath) || !fs.statSync(indexPath).isFile()) throw new Error('The Hebrew biblical frequency source index is missing; refusing an incomplete build.');
+  let frequency: Buffer;
+  try { frequency = gzipHebrewFormFrequency(JSON.parse(fs.readFileSync(indexPath, 'utf8'))); }
+  catch (error) { throw new Error(`The Hebrew biblical frequency source index is invalid; refusing an incomplete build. ${error instanceof Error ? error.message : String(error)}`); }
+  const frequencyPath = path.join(outDir, 'lexicon', 'he', 'biblical', 'form-frequency.json.gz');
+  fs.writeFileSync(frequencyPath, frequency);
 }
 
 /** Development only: serve /fonts/<file>.woff2 from packages/shared-fonts. */
@@ -77,6 +85,29 @@ function devFonts(): Plugin {
         if (!name.endsWith('.woff2') || !fs.existsSync(file)) return next();
         res.setHeader('Content-Type', 'font/woff2');
         res.end(fs.readFileSync(file));
+      });
+    },
+  };
+}
+
+/** Development only: generate the licensed Hebrew frequency sidecar from its source index on request. */
+function devHebrewFrequency(): Plugin {
+  return {
+    name: 'hebrew-frequency-dev',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use('/lexicon/he/biblical/form-frequency.json.gz', (_req, res) => {
+        try {
+          const indexPath = path.join(repoRoot, 'public', 'lexicon', 'he', 'biblical-index.json');
+          const bytes = gzipHebrewFormFrequency(JSON.parse(fs.readFileSync(indexPath, 'utf8')));
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/gzip');
+          res.setHeader('Cache-Control', 'no-store');
+          res.end(bytes);
+        } catch (error) {
+          res.statusCode = 500;
+          res.end(`Unable to build Hebrew frequency asset: ${error instanceof Error ? error.message : String(error)}`);
+        }
       });
     },
   };
@@ -224,7 +255,7 @@ function reviewProvenance(outDir: string): Plugin {
 
 export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
-    return { root: here, base: './', publicDir: path.join(repoRoot, 'public'), plugins: [devFonts()], server: { port: 5198, strictPort: true, watch: { ignored: ['**/public/dict/**', '**/public/library/**', '**/data/**'] } } };
+    return { root: here, base: './', publicDir: path.join(repoRoot, 'public'), plugins: [devFonts(), devHebrewFrequency()], server: { port: 5198, strictPort: true, watch: { ignored: ['**/public/dict/**', '**/public/library/**', '**/data/**'] } } };
   }
   if (mode !== 'production' && mode !== 'extension' && mode !== 'review') throw new Error('mode must be "extension" or "review" (or left out for the web build)');
   const extension = mode === 'extension';

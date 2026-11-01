@@ -5,6 +5,7 @@
  */
 import type { GoEvent, ReviewCandidate, UnitKnowledge, SchedulerProfile } from '../../repository-contract/src';
 import { effectiveReviewEvents } from '../../repository-contract/src';
+import type { VocabularyItem } from '../../repository-service/src/api';
 import { reviewEligibility } from '../src/planner/eligibility';
 import { admissionBudget } from '../src/planner/budget';
 import type { AudioAvailability, DeckItem, IntakeOutcome, ReviewPreferences, SessionPlan, SessionState } from '../src/types';
@@ -93,6 +94,8 @@ export interface ReviewModel {
   saved: Set<string>;
   candidateSource: 'live' | 'cached' | 'none';
   candidateNote?: string;
+  /** A Hebrew catalogue recovery attempt was incomplete; the home must retry on its next visit. */
+  candidateRecoveryIncomplete?: boolean;
   /** How complete the knowledge behind `knowledge` is: a unit in `missing` has NO row because its batch failed, which is not the same as New. */
   knowledgeStatus: KnowledgeStatus;
   /** Candidates held out of AUTOMATIC new admission because their knowledge could not be loaded (never treated as New). */
@@ -166,6 +169,9 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   let knowledge: UnitKnowledge[] = [];
   let candidateSource: ReviewModel['candidateSource'] = 'none';
   let candidateNote: string | undefined;
+  let candidateApi: Awaited<ReturnType<AppContext['api']>>['api'] | undefined;
+  let recoveryIncomplete = false;
+  const recoveryNotes: string[] = [];
   let knowledgeStatus: KnowledgeStatus = { source: 'unavailable', requested: 0, resolved: 0, missing: [], fetchedAt: now };
   /** Units whose knowledge batch failed and that no earlier copy covers. */
   const missing = new Set<string>();
@@ -181,6 +187,7 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   const cacheKey = `${candidatesKey(identity.learnerId, identity.enrolmentId)}:${objectives.join(',')}`;
   try {
     const { api } = await ctx.api();
+    candidateApi = api;
     if ((await ctx.mode()) === 'none') throw new Error('not signed in');
     let cursor: string | undefined;
     const cursors = new Set<string>();
@@ -252,6 +259,84 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     }
   }
 
+  // Some event-derived Hebrew words exist in the vocabulary projection but not in the
+  // Repository's linguistic catalogue. The server deliberately caps unknown-unit
+  // candidates, so only do this slower full inventory read when that missing-catalogue
+  // state is visible in its live candidate response.
+  if (candidateSource === 'live' && identity.languageId === 'he'
+    && candidates.some((candidate) => candidate.eligibility.status === 'unknown')
+    && candidateApi && ctx.engine.recoverCandidates) {
+    const unresolvedVocabulary: VocabularyItem[] = [];
+    const cursors = new Set<string>();
+    let after: string | undefined;
+    let vocabularyComplete = false;
+    try {
+      while (true) {
+        const page = await candidateApi.vocabulary({ languageId: identity.languageId, sort: 'recent', limit: 100, ...(after ? { after } : {}) });
+        if (!page.ok) throw new Error(page.message || `the service answered ${page.status}`);
+        unresolvedVocabulary.push(...page.data.items.filter((item) => item.knowledge.languageId === identity.languageId && !item.unit));
+        after = page.data.nextCursor;
+        if (!after) { vocabularyComplete = true; break; }
+        if (cursors.has(after)) throw new Error('the vocabulary service repeated a page cursor');
+        cursors.add(after);
+      }
+    } catch (e) {
+      recoveryIncomplete = true;
+      recoveryNotes.push(`Some Hebrew vocabulary rows could not be checked for local review (${e instanceof Error ? e.message : 'unknown error'}); the service's candidates remain available.`);
+    }
+
+    // The raw vocabulary endpoint carries the original UnitKnowledge rows even when
+    // its optional catalogue unit is absent. The full knowledge read is authoritative
+    // where present; vocabulary rows fill any gaps without crossing language scopes.
+    let fullKnowledge: UnitKnowledge[] = [];
+    let fullKnowledgeRead = false;
+    try {
+      const result = await candidateApi.knowledge();
+      if (!result.ok) throw new Error(result.message || `the service answered ${result.status}`);
+      fullKnowledge = result.data.knowledge.filter((row) => row.languageId === identity.languageId && typeof row.unitId === 'string');
+      fullKnowledgeRead = true;
+    } catch (e) {
+      recoveryIncomplete = true;
+      recoveryNotes.push(`Hebrew learning history could not be fully refreshed (${e instanceof Error ? e.message : 'unknown error'}); local candidates are based only on rows that loaded.`);
+    }
+    const byKnowledge = new Map(knowledge.filter((row) => row.languageId === identity.languageId && typeof row.unitId === 'string').map((row) => [row.unitId, row]));
+    for (const row of fullKnowledge) byKnowledge.set(row.unitId, row);
+    for (const item of unresolvedVocabulary) if (!byKnowledge.has(item.knowledge.unitId)) byKnowledge.set(item.knowledge.unitId, item.knowledge);
+    knowledge = [...byKnowledge.values()];
+    const unresolvedIds = new Set(unresolvedVocabulary.map((item) => item.knowledge.unitId));
+    knowledgeStatus = {
+      ...knowledgeStatus,
+      source: vocabularyComplete && fullKnowledgeRead ? 'live' : 'partial',
+      requested: Math.max(knowledgeStatus.requested, unresolvedIds.size, knowledge.length),
+      resolved: Math.max(knowledgeStatus.resolved, knowledge.length),
+      fetchedAt: now,
+      missing: knowledgeStatus.missing.filter((unitId) => !byKnowledge.has(unitId)),
+    };
+    if (vocabularyComplete && fullKnowledgeRead) {
+      try {
+        const recovery = await ctx.engine.recoverCandidates({
+          api: candidateApi, enrolmentId: identity.enrolmentId, languageId: identity.languageId,
+          ...(identity.varietyId ? { varietyId: identity.varietyId } : {}), prefs, events, deck, knowledge,
+          unresolvedVocabulary, existingCandidates: candidates, now,
+        });
+        if (!recovery.complete) {
+          recoveryIncomplete = true;
+          if (recovery.note) recoveryNotes.push(recovery.note);
+        }
+        const recovered = recovery.candidates;
+        if (recovered.length) {
+          const recoveredById = new Map(recovered.map((candidate) => [candidate.unitId, candidate]));
+          candidates = candidates.map((candidate) => recoveredById.get(candidate.unitId) ?? candidate);
+          const knownIds = new Set(candidates.map((candidate) => candidate.unitId));
+          candidates.push(...recovered.filter((candidate) => !knownIds.has(candidate.unitId)));
+        }
+      } catch (e) {
+        recoveryIncomplete = true;
+        recoveryNotes.push(`Local Hebrew review candidates could not be checked (${e instanceof Error ? e.message : 'unknown error'}); the service's candidates remain available.`);
+      }
+    } else recoveryIncomplete = true;
+  }
+
   const proposed = candidates.filter((c) => !ignored.has(c.unitId));
   let outcomes: IntakeOutcome[] = [];
   let intakeFailed = false;
@@ -262,7 +347,7 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   // Offline the service cannot answer for intake: the outcomes of the last successful load stand in (minus what the deck has taken since).
   if (candidateSource === 'live' && !intakeFailed) {
     // only a fully resolved live load replaces the last complete snapshot
-    if (knowledgeComplete) await writeSnapshot(ctx, identity.learnerId, identity.languageId, { model: { savedAt: now, outcomes, knowledge } });
+    if (knowledgeComplete && !recoveryIncomplete) await writeSnapshot(ctx, identity.learnerId, identity.languageId, { model: { savedAt: now, outcomes, knowledge } });
   } else if (!outcomes.length || intakeFailed) {
     const snap = (await readSnapshot(ctx, identity.learnerId, identity.languageId))?.model;
     if (snap) {
@@ -296,9 +381,11 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     knowledgeStatus.note = knowledgeNote;
   }
   if (knowledgeNote) candidateNote = [candidateNote, knowledgeNote].filter(Boolean).join(' ');
+  if (recoveryNotes.length) candidateNote = [candidateNote, ...recoveryNotes].filter(Boolean).join(' ');
   const choices = await state.getChoices(identity.learnerId);
   const base: ReviewModel = {
     identity, prefs, events, deck, classDeck, counts, audio, outcomes, knowledge, schedulerProfile, schedulerIssue: profileSelection.error, dismissed: [...ignored], choices, saved, candidateSource, knowledgeStatus, withheld,
+    ...(recoveryIncomplete ? { candidateRecoveryIncomplete: true } : {}),
     ...(candidateNote ? { candidateNote } : {}), now, algorithm: scheduler.algorithm, parametersVersion: scheduler.parametersVersion,
   };
   return prepareAdmissions(ctx, base);

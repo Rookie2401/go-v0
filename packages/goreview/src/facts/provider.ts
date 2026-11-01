@@ -503,7 +503,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       }
     }
     let alone: AnalyzedToken | undefined;
-    try { alone = adapter.analyze(adapter.tokenize(label)).find((a) => a.token.isWord); } catch { alone = undefined; }
+    try { alone = adapter.analyze(adapter.tokenize(label), deps.varietyId ? { varietyId: deps.varietyId } : undefined).find((a) => a.token.isWord); } catch { alone = undefined; }
     if (!lemma) {
       const o = sentences().flatMap((s) => s.occs).find((x) => x.normalized === formNorm && x.top?.lemma);
       const c = o?.top ?? alone?.candidates[0];
@@ -527,6 +527,16 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     const read = lemma ? readLemma(lemma, lemmaPos) : { all: [] as AnalysisCandidate[] };
     const lexCand = read.cand;
     const lexGloss: string[] = lexCand && !lexCand.unconfirmed && lexCand.gloss ? [lexCand.gloss] : [];
+    // Narrow exception for a Biblical Hebrew citation-form noun: when the
+    // source says this surface IS the singular absolute lexeme, its headword
+    // meaning is the meaning of this exact form. Keep it separate from the
+    // inflected-meaning field, which remains reserved for attested form senses.
+    const citationNounGloss = lang === 'he' && pos === 'NOUN' && !!lemma && !!lexCand?.gloss
+      && !lexCand.unconfirmed && lexCand.origin === 'dictionary' && lexCand.sourceId === 'oshb-tanakh'
+      && !topAlone?.unconfirmed && topAlone?.origin === 'dictionary' && topAlone.sourceId === 'oshb-tanakh'
+      && adapter.normalize(label) === adapter.normalize(lemma)
+      && features?.Number === 'Sing' && features?.State === 'Abs' && !features?.Definite
+      && !topAlone.parts?.some(part => part.kind !== 'stem');
     if (!lexGloss.length) {
       const c = sentences().flatMap((s) => s.occs).find((x) => x.normalized === formNorm && x.top?.gloss && !x.top.unconfirmed)?.top;
       if (c?.gloss) lexGloss.push(c.gloss);
@@ -563,13 +573,17 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
           references: g.attribution ? [{ label: g.attribution, source: 'dictionary' }] : [] });
     const answerGlosses = lang === 'el' && wordAnalysis.inflectedMeaning?.text
       ? [wordAnalysis.inflectedMeaning.text]
-      : g.glosses;
+      : lang === 'he' && citationNounGloss && !g.glosses.length
+        ? [lexCand!.gloss!]
+        : g.glosses;
 
     return {
       unit, relations: rec?.relations ?? [], analyses: rec?.analyses ?? [], status,
       ...(lemma ? { lemma } : {}), ...(pos ? { pos } : {}),
       ...(Object.keys(features).length ? { features } : {}),
-      glosses: answerGlosses, ...(g.attribution && !(lang === 'el' && wordAnalysis.inflectedMeaning?.text) ? { glossAttribution: g.attribution } : {}),
+      glosses: answerGlosses,
+      ...(lang === 'el' && wordAnalysis.inflectedMeaning?.text ? {} : g.attribution ? { glossAttribution: g.attribution }
+        : citationNounGloss && answerGlosses.length ? { glossAttribution: 'Open Scriptures Hebrew Bible (OSHB)' } : {}),
       wordAnalysis,
       constructionIds: constructionId ? [constructionId] : [],
       ...(matched ? { constructionLabel: matched.label, constructionExplanation: `${matched.label}. ${matched.explain}` } : {}),
@@ -577,7 +591,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       siblingForms: siblings.map((f) => ({ surface: f.surface, features: f.features })),
       exampleSentences: examples, pronunciationNotes: pronunciationOf(alone?.token, alone),
       ...(rec ? {} : { derivedFromPack: true }),
-      source: unit.provenance.source, lemmaInWordList: inWordList(lexCand), lexiconGlossCount: g.lexiconCount,
+      source: unit.provenance.source, lemmaInWordList: inWordList(lexCand), lexiconGlossCount: g.lexiconCount + (answerGlosses.length && !g.lexiconCount && citationNounGloss ? 1 : 0),
       ...(morphDescription ? { morphDescription } : {}),
       featureDefs, exampleReadings: readings,
       formGroups: lemma ? [{ lemma, ...(lemmaPos ?? pos ? { pos: lemmaPos ?? pos } : {}), forms: own }] : [],

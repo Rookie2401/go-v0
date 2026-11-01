@@ -5,7 +5,7 @@
  */
 import type { AppendOutcome, Enrolment, GoEvent, ReviewCandidate, UnitKnowledge, SchedulerProfile } from '../../repository-contract/src';
 import type { AssessmentSource, PlaybackHandle, PronunciationRequest, PronunciationResult } from '../../golisten/src/contracts';
-import type { RepositoryApi } from '../../repository-service/src/api';
+import type { RepositoryApi, VocabularyItem } from '../../repository-service/src/api';
 import type {
   AudioAvailability, DeckItem, Exercise, Grading, IntakeOutcome, PlannedItem, Response, ReviewIntent, ReviewPreferences, ReviewResult, Scheduler, SessionPlan, SessionState, UnitFacts,
 } from '../src/types';
@@ -46,6 +46,29 @@ export interface IntakeRequest {
   prefs: ReviewPreferences;
   audio: AudioAvailability;
   now: string;
+}
+
+/** Read-only recovery input for event-derived Hebrew words absent from the Repository catalogue. */
+export interface RecoveryRequest {
+  api: RepositoryApi;
+  enrolmentId: string;
+  languageId: string;
+  varietyId?: string;
+  prefs: ReviewPreferences;
+  events: GoEvent[];
+  deck: DeckItem[];
+  /** All projected knowledge rows for this language, not just the service's capped candidate page. */
+  knowledge: UnitKnowledge[];
+  /** Raw unresolved vocabulary rows preserve form/lemma IDs; display-merged vocabulary is not suitable here. */
+  unresolvedVocabulary: VocabularyItem[];
+  existingCandidates: ReviewCandidate[];
+  now: string;
+}
+export interface RecoveryResult {
+  candidates: ReviewCandidate[];
+  /** False when any part of the catalogue/facts read failed and results must not replace a complete snapshot. */
+  complete: boolean;
+  note?: string;
 }
 
 /** The exercise the session is showing now. */
@@ -125,6 +148,8 @@ export interface PlanRequest {
 }
 
 export interface ReviewEngine {
+  /** Recover review candidates for genuinely absent Hebrew catalogue rows using the installed pack and the normal ranking rules. */
+  recoverCandidates?(request: RecoveryRequest): Promise<RecoveryResult>;
   /** Rebuild current study/repair material with the configured facts and exercise builder. Release prepared audio afterwards. */
   repairMaterial?(request:{item:DeckItem;api:RepositoryApi;now:string;assessment?:AssessmentSource}):Promise<{facts:UnitFacts;exercise:Exercise;release:()=>void}|{unavailable:string}>;
   factsFor?(unitId: string, languageId: string, api: RepositoryApi): Promise<UnitFacts | undefined>;

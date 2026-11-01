@@ -134,6 +134,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       return;
     }
     const id = model.identity;
+    const homeId = `${id.learnerId}|${id.enrolmentId}`;
+    if (model.candidateRecoveryIncomplete) painted.get(ctx)?.delete(homeId);
     // the local stores are read after the model: loading it may have brought decks and preferences back from the snapshot (restoreMissing)
     const [holdOut, saved, resumable, snapshot] = await Promise.all([
       holdOutOf(ctx, id.learnerId, id.languageId),
@@ -158,8 +160,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const live = loadVocabSafe(ctx, id.languageId);
     // the key as the stores stand now, after the paint (a restored deck or preference is part of it)
     const after = await homeLocal(ctx).catch(() => undefined);
-    const same = after && after.id === `${id.learnerId}|${id.enrolmentId}` ? after : undefined;
-    if (same) {
+    const same = after && after.id === homeId ? after : undefined;
+    if (same && !model.candidateRecoveryIncomplete) {
       const map = painted.get(ctx) ?? new Map<string, PaintedHome>();
       map.set(same.id, { key: same.key, at: now, model, deck, review, selectedCount: selected.length, resumeId: resumable[0]?.sessionId, saved: saved.length, words, vocabCompleteness });
       painted.set(ctx, map);

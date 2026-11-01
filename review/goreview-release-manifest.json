@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "b316e4964f55dfda648c27fd5cb89b166774b61f",
-    "tree": "4d170250aab5cfcc1541c23cac89373be0fa9674",
+    "commit": "02f5c949416b2f1a24bde14aecc6e65f169f2d69",
+    "tree": "1dc33b987edf8a0ef9897ed05eb0c25567ff10a3",
     "dirty": false
   },
-  "sourceManifestSha256": "8488cb2d3af4fcb4ebb90a4e2df7e992ab26e4e77b60d3d444938bc3b358eb1c",
+  "sourceManifestSha256": "9c0c3104d362d5e282a9c1b2a5342b98a3b95b4ae97a48bba4385424b88d3f17",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -953,7 +953,7 @@
     },
     {
       "path": "packages/goreview/app/workspace.ts",
-      "sha256": "a9dc129f40a74561382f30d11a54d8570cec14137b024dfff8e3ac6531e31546"
+      "sha256": "2737c94c810157bd1efa62da5516ba3a1687be12403bdf7f8ba4eb127ca8aaa7"
     },
     {
       "path": "packages/goreview/src/exercises/README.md",
@@ -3763,7 +3763,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "d02e0d4c35576d067462d8c395721179c54d07ab167bb659a17fe0d78db48413",
+  "artifactManifestSha256": "8b3dc4e366704e5153b8c7ad1f0b12852c54f5abb03c34c423072e8636f3ddce",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -3806,8 +3806,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-B_Dekmkx.js",
-      "sha256": "fa661a093b273f7745f1b9f78ad6f1f7455c30fa47046b8cb36d0fb11536c40d"
+      "path": "assets/index-BUCsOkaU.js",
+      "sha256": "bff0b3072e2702f3bd7cf0718dcd8590d50dd5e7e6895193173e84c19dddf0f5"
     },
     {
       "path": "assets/style-LYcJkNvc.css",
@@ -3843,7 +3843,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "3d5a07f262b5a389186dfb0b8ef9437115a117edd2a4569318f50362706b07d3"
+      "sha256": "aa91035171c4b2ca0e6503f29e6f6f4ae9324e455e83a8d69634e04b29185a02"
     },
     {
       "path": "lexicon/he/biblical/form-frequency.json.gz",
@@ -4043,7 +4043,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "05d7376b39dc1915a2f96e73141d25cbabbb53f3bfd494553d9059c443f67d08"
+      "sha256": "b4ab82b04edb433ae7a2f3d068a3da1551cbae67fa24a8bc75a9e209706ba52e"
     }
   ]
 }

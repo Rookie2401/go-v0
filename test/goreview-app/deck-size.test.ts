@@ -52,7 +52,8 @@ describe('cards per deck', () => {
     type(rig.q<HTMLInputElement>('#pref-size'), '15');
     await until(async () => (await prefs()) === 15, 'fifteen');
     await rig.go('review');
-    await until(() => cards(rig) === 10, 'the adaptive microdeck target remains near ten under the configured fifteen-card maximum');
+    // the batch starts at the deck size (the owner, 2026-10-31): fifteen asked, fourteen due, so all fourteen
+    await until(() => cards(rig) === 14, 'every due card under the fifteen-card deck size');
     await rig.go('settings');
     type(rig.q<HTMLInputElement>('#pref-size'), '1');
     await until(async () => (await prefs()) === 5, 'the lower clamp');

@@ -28,6 +28,8 @@ function policyWithOverrides(overrides: MicrodeckPolicyOptions = {}) {
     Number.isFinite(value) ? Math.max(min, Math.min(max, value!)) : fallback;
   const maxTarget = Math.floor(bounded(overrides.maxTarget, MICRODECK_POLICY.maxTarget, 1, MICRODECK_POLICY.maxTarget));
   return { ...MICRODECK_POLICY,
+    /** A caller named a start (tests, policy experiments); otherwise the batch starts at the learner's deck size. */
+    explicitStart: Number.isFinite(overrides.defaultTarget),
     adaptive: overrides.adaptive !== false,
     defaultTarget: Math.floor(bounded(overrides.defaultTarget, MICRODECK_POLICY.defaultTarget, 1, maxTarget)),
     minTarget: Math.floor(bounded(overrides.minTarget, MICRODECK_POLICY.minTarget, 1, maxTarget)), maxTarget,
@@ -62,8 +64,12 @@ export function chooseMicrodeckTarget(input: MicrodeckInput = {}): MicrodeckDeci
   const p = policyWithOverrides(input.policy);
   const configuredMaximum = microdeckMaximum(input.configuredMaximum);
   const maximum = Math.min(p.maxTarget, configuredMaximum);
-  let targetQuestions = Math.min(p.defaultTarget, maximum);
-  const reasons = [`${p.adaptive ? 'Adaptive' : 'Fixed'} policy starts at ${p.defaultTarget}; user limit ${configuredMaximum} caps this initial batch.`];
+  // The batch starts at the deck size the learner chose (the owner, 2026-10-31: "make the batch start at the deck size"); with no deck size
+  // given it starts at the default of 10. A caller that names a start keeps it, below the deck size.
+  let targetQuestions = p.explicitStart ? Math.min(p.defaultTarget, maximum) : maximum;
+  const reasons = [p.explicitStart
+    ? `${p.adaptive ? 'Adaptive' : 'Fixed'} policy starts at ${p.defaultTarget}; user limit ${configuredMaximum} caps this initial batch.`
+    : `The batch starts at your deck size, ${maximum}.`];
   if (!p.adaptive) return { targetQuestions: targetQuestions, reasons };
   const observations = (input.observations ?? []).filter(o => typeof o.family === 'string');
   const latencyObservations = observations.filter(o => Number.isFinite(o.observedSeconds) && o.observedSeconds! > 0

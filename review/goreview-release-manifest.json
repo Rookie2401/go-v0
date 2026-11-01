@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "63b32ea2d2eee127ec6dd2c87ed0c4fb2426fbc0",
-    "tree": "f8a010220a29704b0a3d04ce2aaab3ba4f119329",
+    "commit": "a206c4dc28dc9ed2f807536563a6ca73bee1d120",
+    "tree": "c2c3b5b41f587dd20526e40e0c12586aa196d918",
     "dirty": false
   },
-  "sourceManifestSha256": "c403e503fe5cf1382b22bc1aff3728f8640513720f653c36b3639a248a729309",
+  "sourceManifestSha256": "d25b07021f69e2247afdb7c8fd03b9c87008cdc690deda1188221e58e63b3c7c",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -817,7 +817,7 @@
     },
     {
       "path": "packages/goreview/src/planner/microdeck.ts",
-      "sha256": "79a2304f91b1158785992b632d298f30e8932322ba332e8cf2bb2d0eceb028fb"
+      "sha256": "fc804321901972b5a197bad8fbfe3ba98e5d537309dd0201eae821654e9ddb6d"
     },
     {
       "path": "packages/goreview/src/planner/planner.ts",
@@ -3215,7 +3215,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "1822e81e9983b60c67998a81c5bfc89456df495ca88dd6a21ef7b84a32b82064",
+  "artifactManifestSha256": "155256440b95b0f1e296681ed24259c4fb14b7d3a6f938352aaf2ee42b8fcc32",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -3258,8 +3258,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-Kd3o_72O.js",
-      "sha256": "d891251f1264a78cf9de6a888c166accbb96cb999794db967a5848918f9bc6ee"
+      "path": "assets/index-DODZZjvE.js",
+      "sha256": "d22a2d02f6a8257184ed6a2475ba0b6007d7274ec9551fe6878f9439118170aa"
     },
     {
       "path": "assets/style-LYcJkNvc.css",
@@ -3295,7 +3295,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "98989864d23f25895a834e6d65f0e4c1f1804d1b09f773072d49d56b2fa947c5"
+      "sha256": "9dcc2537882f641e4bcb410824853619c10e2c50e7a8e930e9f5e29a11580b7e"
     },
     {
       "path": "manifest.webmanifest",
@@ -3303,7 +3303,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "87b568c319afcaab996b08783782a3c11c16eba6dd359454821b78969f42d2a2"
+      "sha256": "37e04b5c62f34773e972a7a6c5553fa6701fdfc8a2b538dc191c9e9da67ada54"
     }
   ]
 }

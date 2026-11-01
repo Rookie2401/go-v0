@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "a206c4dc28dc9ed2f807536563a6ca73bee1d120",
-    "tree": "c2c3b5b41f587dd20526e40e0c12586aa196d918",
+    "commit": "a270eebe3a6df98c2b7d0b49fac92941444dec1c",
+    "tree": "e88c50198705b0216b8986e64d4400cc83a6b0d9",
     "dirty": false
   },
-  "sourceManifestSha256": "d25b07021f69e2247afdb7c8fd03b9c87008cdc690deda1188221e58e63b3c7c",
+  "sourceManifestSha256": "d82aa3d1eccdd2985e360b4241d8b531abea60abac6b8dd8e218f636f47b672e",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -42,6 +42,286 @@
     {
       "path": "packages/biblia/index.html",
       "sha256": "9b231e940a367d3644e97414b2a7baba0eb571769f28aee1f17cb2edcfe845d5"
+    },
+    {
+      "path": "packages/biblia/public/data/SOURCES.json",
+      "sha256": "c2e9d348503cf697f5879e4ae49f324cca574eff011ba277dea6a6ee13b5fbf1"
+    },
+    {
+      "path": "packages/biblia/public/data/canon.json",
+      "sha256": "0e3fe1661f7cbc9fb185a2f44bba640b1346c2ae0e17d291660a9e8dfa00eab6"
+    },
+    {
+      "path": "packages/biblia/public/data/el/1Cor.json",
+      "sha256": "7d95014fc2190e0a418d2b8d1ec700ce21db49d01ab73f6e50c77dbe20cae161"
+    },
+    {
+      "path": "packages/biblia/public/data/el/1John.json",
+      "sha256": "2e0443d8af6a50aa92e1284510bbac9803f68317d7eeb882239b29edf87dd75b"
+    },
+    {
+      "path": "packages/biblia/public/data/el/1Pet.json",
+      "sha256": "f7e1839ca50081f3c5c655a9caee878436c528a57b9ef05dad0dbfcf7e692942"
+    },
+    {
+      "path": "packages/biblia/public/data/el/1Thess.json",
+      "sha256": "fe010782cdb9cb9450709c7490d0680303329ccece6dac76204bf33b76d360fc"
+    },
+    {
+      "path": "packages/biblia/public/data/el/1Tim.json",
+      "sha256": "73364e4c7b328049ff8022f8415cda9e37a359a81494e62014bb276b1033b72f"
+    },
+    {
+      "path": "packages/biblia/public/data/el/2Cor.json",
+      "sha256": "8ed4f3d8122af568ce99cd3afb3dc4e8444b2ebc40a7d0059695c7b3faccc315"
+    },
+    {
+      "path": "packages/biblia/public/data/el/2John.json",
+      "sha256": "e35d10934149ff4b6edc5c3ec2ef8c5ba5067fe62e32cd9b7c8ebd959cc05ad0"
+    },
+    {
+      "path": "packages/biblia/public/data/el/2Pet.json",
+      "sha256": "972358f9984845908a6a1ecd11bcf1b8614f799497179ca4759e048d426321d6"
+    },
+    {
+      "path": "packages/biblia/public/data/el/2Thess.json",
+      "sha256": "b4c2be307cfb7946b383a0f09d606f2ff253ae954510292ae5f1fa32d1cfd38a"
+    },
+    {
+      "path": "packages/biblia/public/data/el/2Tim.json",
+      "sha256": "3c17e2e86dc26d2788dff8454aa57bf2e99577409f47fce9d118b9a63adf3ecb"
+    },
+    {
+      "path": "packages/biblia/public/data/el/3John.json",
+      "sha256": "595d266a42cf9fa256cbe890311c150450d31b1dc1e3f68c8a3c80184062af43"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Acts.json",
+      "sha256": "250a61688ce58ebf6b898c2137851f26a4904c650c5bd2aef915b1a40ac2a146"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Col.json",
+      "sha256": "5af95cd58978e37e3921dc044c943391f42080cc6281cad4de03c91e2ed41b6d"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Eph.json",
+      "sha256": "6edd73a8d4765672521a47e2f37121cd38be9b250dd16a36af20c0125b7142ac"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Gal.json",
+      "sha256": "24807d0cf6d74599170b73758332f64cd7c4f21c52b1d6ea6c0a7581e696f7f7"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Heb.json",
+      "sha256": "87d55009f50061767afc6479875205e92fb5d2b0469543c1102b10ab8751f738"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Jas.json",
+      "sha256": "d0d87ea6131840178237d3abbee1b4fc674ef500cf8cc3caa0e5bf2d07446c14"
+    },
+    {
+      "path": "packages/biblia/public/data/el/John.json",
+      "sha256": "b2113786088d49418553b8928df4bb89cce44611a2c16ae998a9fb9ebb301a0f"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Jude.json",
+      "sha256": "98f90dcd15f5d9103749f7b13536668a5abf09a68aba7bcd966c00b8a5310eb4"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Luke.json",
+      "sha256": "bff64c4e8c652042e5e041c42a8320ae16253d49d812c25cbd6f5e49381fe5b1"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Mark.json",
+      "sha256": "bfdabb55a518640a626acf47a3ec0477d533efa2855fbf371eda9bac6fd8a866"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Matt.json",
+      "sha256": "ea92b82f5fff592393a23608e49bc8a35a01c430668856af904783676ce81643"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Phil.json",
+      "sha256": "ae130f121885b525265daf59bc01708b4b027061e5e87a8b34747fb459ac9eff"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Phlm.json",
+      "sha256": "847fbbbe8398c74041c336eb321310ca3d39392c49206bec4e2f5e2ac645e1dd"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Rev.json",
+      "sha256": "0f05a109dc2055856025d5005d9751b5eff8d97b26f7c66bf90fe0db1537a4e0"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Rom.json",
+      "sha256": "16b193563f114911780baa88677aa31f462142e311d1d6d0c2829908d3adb3e7"
+    },
+    {
+      "path": "packages/biblia/public/data/el/SOURCES.json",
+      "sha256": "2a0d66743c04aa91c6e48db79bdbcb228f895af10d3b1cf3813f1ee22634cf22"
+    },
+    {
+      "path": "packages/biblia/public/data/el/Titus.json",
+      "sha256": "0f802e2db411c6e27985813150e7523a1cc6a995563279f7fc4902d76653225f"
+    },
+    {
+      "path": "packages/biblia/public/data/he/1Chr.json",
+      "sha256": "8ddcfae14b31f32fb970c72ce32872da1c6d89dfdef5cb705b47e1c955711967"
+    },
+    {
+      "path": "packages/biblia/public/data/he/1Kgs.json",
+      "sha256": "5109ae1e44e628b8d6e24f6aa6dd714177b236a2bcc6c430c6d68f4a8f61f0e4"
+    },
+    {
+      "path": "packages/biblia/public/data/he/1Sam.json",
+      "sha256": "9c96ebbb80d6a20e94fdee88ceb9a95ed526c54f07713c21be91b783e47a7f63"
+    },
+    {
+      "path": "packages/biblia/public/data/he/2Chr.json",
+      "sha256": "93cafb1d103ac593f3f06c8e2fa03a0f0db1a9ac7846c48fedffb20725b48cdf"
+    },
+    {
+      "path": "packages/biblia/public/data/he/2Kgs.json",
+      "sha256": "7640c255ff12fe441770030f934a8f0666287ad2c1e432c2510e41d45de8cb96"
+    },
+    {
+      "path": "packages/biblia/public/data/he/2Sam.json",
+      "sha256": "bf1609629f745a4e6f5f2a911dc810bb771d72555118e40344435b5da0f1e123"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Amos.json",
+      "sha256": "3604773fdc848f853440d6021402ed2c4080b4a50081db3ddc16ed185547888a"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Dan.json",
+      "sha256": "5ebc4dd1bdf976c33fdc92324f1abbdce30b24589543877f293768d82f7d912d"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Deut.json",
+      "sha256": "a6014106280154aec443ea06d6f8ab076801e10cfef27b5d3eeb29429518690b"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Eccl.json",
+      "sha256": "7a754128063f0cd05c87225c0fd0f58b8860377bad76033c77c52b2e59456f99"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Esth.json",
+      "sha256": "fe2f8bb538d3950fd084cb923318abef44ae9c4bd08ff2dfc3458c5b1ac49fdb"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Exod.json",
+      "sha256": "6884a5d10a51e1772e7ccbefafe36f9108b32db3419904aa1c4ceff0fa87b6e7"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Ezek.json",
+      "sha256": "042d98f3410f2f6b53bc91b97948c672ba93f6f00ab77f8f9f17540bb525170b"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Ezra.json",
+      "sha256": "eb47f4f1a65d4e559b7176def6c39192df7ddd8728cd5ab03cf2fba86d470f3a"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Gen.json",
+      "sha256": "8e5ff3c5bb3c8f5c6765da41645f1cde7697c582077809e97e5476692bf8b736"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Hab.json",
+      "sha256": "7b2e1fd6c2b97f42c5f84c8b6bac2c816a74a895d65fd2792fcdc7b7795280ec"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Hag.json",
+      "sha256": "8c57cd4a96b9449cb66448d89d971e4beb3d1321cbdc258cfa725307aabf9a21"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Hos.json",
+      "sha256": "d67a6520799ebb17e8b8c0af02ac5501f9947922b3d365497e0413b0457eff03"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Isa.json",
+      "sha256": "9c484fdb22d6e66293eadd8d37e1c64efa82a459ffb67c3ce2340bea6b9db181"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Jer.json",
+      "sha256": "2324fab25bc354aa031f65e0ceadc0f6eb95486de98b4108a1aa2c0c9a3eb934"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Job.json",
+      "sha256": "5fd828c661fcfed08e29ba457a985f4722a86e796d0091540a1a8eaf2a3453c2"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Joel.json",
+      "sha256": "0ebfb62e3b78b14655bd1872657576a9afe84d21292a49c60d75fc49074a28e1"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Jonah.json",
+      "sha256": "80005c997588115ed82d3ec868aaf531e26897b30e6989095baedadaa6807562"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Josh.json",
+      "sha256": "d4ec4437d9b8ed82f1ed6233c8b3ddba78d1bcff6e48702adb19613e98bcbd8e"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Judg.json",
+      "sha256": "51c556e5b81021e84d0d93debc9077414d2daf3f8aedc351b24b74f4b2a1438f"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Lam.json",
+      "sha256": "ec52fe6a02a512ab8e1d16d649462ad08a1e9f04b3da4caa43cc27a8152c0009"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Lev.json",
+      "sha256": "3a3001cd6a84c5db1d64c44501cb56b9b629e042430dc82fc04bfb18b7128ea4"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Mal.json",
+      "sha256": "53003b65f9421ec677d78d543f0cf350f1626b2cf5930b36e2487e99c422f3f2"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Mic.json",
+      "sha256": "7cc180b292a512d728165fcd5d98aeec87bd5f245a5a14bfecf3e1fca15e2c71"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Nah.json",
+      "sha256": "128a097475803274fe67f8e5daf2fc0e4d1d822f5fbaab0459c380c64ff59550"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Neh.json",
+      "sha256": "9bac45b7e6a85a59bf1c5ccf058bf361fcd0c97f0ed65f23f9c07f78591861e4"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Num.json",
+      "sha256": "566f95b49d96575591f6c0f2f7aaf139f2499ff050aed8719dbf31201419bbeb"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Obad.json",
+      "sha256": "a8187862ed703867ea05f7c5daa40518e082561eeb14d8a7d4df21685d5e7e1b"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Prov.json",
+      "sha256": "774d01fbde5b2ad622c3c3bd54f7e18a2119bd121f81f46dceaf0f3ed7543660"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Ps.json",
+      "sha256": "5ec077f194992e45efe6c1561b04c819f0ee158bc66b713208814fb9c2dca86f"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Ruth.json",
+      "sha256": "343a395afc9015867dccefcf78d9574330e1dc48bcb72ebd9ebcf34bfe70e5c3"
+    },
+    {
+      "path": "packages/biblia/public/data/he/SOURCES.json",
+      "sha256": "4cf00b1e8e932f2e9d20758293a3be44f751c970e68888f746bcb7a15a782710"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Song.json",
+      "sha256": "9afc502a9315fe72c49771a41bc8bcaace629f838022834d4e19d9c2a127d956"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Zech.json",
+      "sha256": "63d28c5469a655ddea420985b1af00cb4d1720fccb81e432a7526d5770f9729e"
+    },
+    {
+      "path": "packages/biblia/public/data/he/Zeph.json",
+      "sha256": "b8ea46f8ddc2db513b93f620067b8ccc0fc39a573a777f311c2f93200a74b547"
     },
     {
       "path": "packages/biblia/public/fonts/EB-Garamond-OFL.txt",
@@ -441,7 +721,7 @@
     },
     {
       "path": "packages/goreview/app/main.ts",
-      "sha256": "97ade2c84fb31127d946f1df34db201cd337a56a101caf87cb37a419c775712f"
+      "sha256": "f6c431cfc363f2a33e75fc650e3b0d18000db19e193c01fd797ea5a559bddfb7"
     },
     {
       "path": "packages/goreview/app/mobile.ts",
@@ -449,7 +729,7 @@
     },
     {
       "path": "packages/goreview/app/packFacts.ts",
-      "sha256": "0eb4ac75e5d4218fb3eb9737a153da4557c8ac075be0f02fe233e21ec0d0f5f0"
+      "sha256": "1f08f3c245de6e1492210f6ee97347907191ccb5baf2f8b7cd7e09f07b382544"
     },
     {
       "path": "packages/goreview/app/ports.ts",
@@ -489,7 +769,7 @@
     },
     {
       "path": "packages/goreview/app/public/sw.js",
-      "sha256": "00207b9ae1fdb4431db2176623f7bc94ac88b30e547f69d0f60be2215636bc5d"
+      "sha256": "7403f41d54e61490caaa8c0b0887dab72029f31c2219c51179681fecfcaf3428"
     },
     {
       "path": "packages/goreview/app/savedDeckSync.ts",
@@ -661,7 +941,7 @@
     },
     {
       "path": "packages/goreview/app/vite.config.ts",
-      "sha256": "d08e65ac4822129ef89e8fadad20a933af775c3a1c66b576a3a6d0e51d5cea09"
+      "sha256": "7a1825b06191c0be3b728fa15f0e41344ade4629edd95c54bcc7d8895d14616a"
     },
     {
       "path": "packages/goreview/app/workspace.ts",
@@ -1480,12 +1760,200 @@
       "sha256": "6a195b7e4f518d53813581f415d7956e02049dd2762b4b9a3af80d56b4257e28"
     },
     {
+      "path": "public/lexicon/he/biblical/manifest.json",
+      "sha256": "c552473d46ec2070b2fc8dcaaf8e967f6294f45091d929f8c3e623e941198234"
+    },
+    {
+      "path": "public/lexicon/he/biblical/א.json.gz",
+      "sha256": "8cd855af10dd980eb363d01c8cd6006bc20479cbee4a3237d198a0f1382e5f70"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ב.json.gz",
+      "sha256": "34b79e8f811b94d03a4699fe154764c1f1c77d1c0ac7dea064601469dd59a485"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ג.json.gz",
+      "sha256": "75c9de9e54a7214b2ccabac39dc1f4934d0111c90510ee1ae554d751628e3a0e"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ד.json.gz",
+      "sha256": "beca00a0b241e0ee81482a4893e25d6f5819351682512cd3bda2cfde377e038a"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ה.json.gz",
+      "sha256": "dd09fe892b74492def5d93467ee5d6656ca9f90463b5e32710ddb5cd1cac2967"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ו.json.gz",
+      "sha256": "848387af2c6a7abe05d0dd45dfbbef9a9a481b0247d8b37d3a583411bf2a080c"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ז.json.gz",
+      "sha256": "461b4a942775a09823aedfd5926313ffd4ebec0c9e2d4ae2e7265ffdf1b11d26"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ח.json.gz",
+      "sha256": "4d584b2058ce1467dc935f8814146e185ae0f093c7849844277cdef8a6b8b8a1"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ט.json.gz",
+      "sha256": "572a83f857618bdead234d65cafee69ba24ac73774b6a1f2d70a7aa2015f934a"
+    },
+    {
+      "path": "public/lexicon/he/biblical/י.json.gz",
+      "sha256": "04fecfc8f57dccd7589224cd838f8b3f11e481a6325d28c228e706bb8512b8c8"
+    },
+    {
+      "path": "public/lexicon/he/biblical/כ.json.gz",
+      "sha256": "f0c695962d8e0227e15d70f9238e0e451d7c1f415de72552838773b6f102ad48"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ל.json.gz",
+      "sha256": "0b7ee062169d48ab6d222ca8f145e205bd8c5b2f7024c1ee158a142bd1093ea9"
+    },
+    {
+      "path": "public/lexicon/he/biblical/מ.json.gz",
+      "sha256": "d263c175164f9ba520d9b7d05c06adca064e1aca5f878aac870c0a5a63118b71"
+    },
+    {
+      "path": "public/lexicon/he/biblical/נ.json.gz",
+      "sha256": "544ef07c14274dc2d55fee3fb905c2d8192f960d45fe779fb96e5459324a4571"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ס.json.gz",
+      "sha256": "255d572efab6b1217afd2dac81bcadc00cfa90cb578eff9e2c0bbd6a8d441295"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ע.json.gz",
+      "sha256": "bebea55226d1f80efd6a61de3afc3a73a579f477e3d34e38e6cdb6822022d68a"
+    },
+    {
+      "path": "public/lexicon/he/biblical/פ.json.gz",
+      "sha256": "e009d6d137ff9cfb3f4e9e3907ca1ecbb0e4e828c22ebfbe7e556a16c9581559"
+    },
+    {
+      "path": "public/lexicon/he/biblical/צ.json.gz",
+      "sha256": "62cdcee35b669e41759be361ddb7332a0ba859f8eb1e8af34d95d7db69eb6786"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ק.json.gz",
+      "sha256": "87047fa8a20022f1fc5ec8d5918cb6bb83a512954eeb9f996d44ddfaccfdb15f"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ר.json.gz",
+      "sha256": "313451a20bca491ab5a766a25c2a5915bc39ea0b435af37283d31934c953150d"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ש.json.gz",
+      "sha256": "4c9eea420b49a6b9d6f0d6074d37fa6590eed0c57f173ad2130109aacc1ab62a"
+    },
+    {
+      "path": "public/lexicon/he/biblical/ת.json.gz",
+      "sha256": "43986771ecf8decb84ce9535e32cfa855e9159df668d65c401ee7ff71c0d9bca"
+    },
+    {
+      "path": "public/lexicon/he/modern/_.json.gz",
+      "sha256": "3f317b3a70a3e7238d2d31b56e5d8607b6cb59e1711e3eb52c1607b2c64d0712"
+    },
+    {
+      "path": "public/lexicon/he/modern/manifest.json",
+      "sha256": "866c697d5539efddd8e5582d5dfe57b9cc54f4adc31840c02913746fb06cef6b"
+    },
+    {
+      "path": "public/lexicon/he/modern/א.json.gz",
+      "sha256": "f01ccf5db0fced194e9ef04381f2da6a04659822cffc3dcc1ec4d94fc0382e90"
+    },
+    {
+      "path": "public/lexicon/he/modern/ב.json.gz",
+      "sha256": "196e321f7360b14c380fdc6a1dac7514a3b215ca75d3c829bcf1a6eff41b57ed"
+    },
+    {
+      "path": "public/lexicon/he/modern/ג.json.gz",
+      "sha256": "ad9c77943d1b33404fa0b7a0e242529f8b71e531c718601a503b7ff3640a3e53"
+    },
+    {
+      "path": "public/lexicon/he/modern/ד.json.gz",
+      "sha256": "b3fa0c9ad393c7f405977cec99fd17a81960c9400663512d2a69fcfde9f4dad2"
+    },
+    {
+      "path": "public/lexicon/he/modern/ה.json.gz",
+      "sha256": "3d4bb3ca829afa147e69f8950e02ed4dd5fb3faadee71c8f2ed745e782f12999"
+    },
+    {
+      "path": "public/lexicon/he/modern/ו.json.gz",
+      "sha256": "f6c52ec5835bbee60ca4ff32475dfe23912dba580a989b20d97af0a6c5719fec"
+    },
+    {
+      "path": "public/lexicon/he/modern/ז.json.gz",
+      "sha256": "6cb8933b0d38aec0e7b33de84442d1b8c7c5792b1a6c08f51487149525f90943"
+    },
+    {
+      "path": "public/lexicon/he/modern/ח.json.gz",
+      "sha256": "a08eb1f3c83da3ac17fe2efad26719577bed925af66e843724cf054793931d34"
+    },
+    {
+      "path": "public/lexicon/he/modern/ט.json.gz",
+      "sha256": "6ca7618e33ac28e50e8662a7b0ee635fc596772de6abb98884daf68d04ffdc56"
+    },
+    {
+      "path": "public/lexicon/he/modern/י.json.gz",
+      "sha256": "cc2ae22f693def0061cd5580d2f0028bf89c1c7d64e6f65f153c01173903a29e"
+    },
+    {
+      "path": "public/lexicon/he/modern/כ.json.gz",
+      "sha256": "5403df2e394a8ba6b0f5bf91ba47bcb5e45e7d9ff3d429f52d0050095fee404a"
+    },
+    {
+      "path": "public/lexicon/he/modern/ל.json.gz",
+      "sha256": "05f9393d48187e5b93b2386a1d4cf5937363d0d124d99f45c0fc83ea098aad0d"
+    },
+    {
+      "path": "public/lexicon/he/modern/מ.json.gz",
+      "sha256": "ac49797ff5983124b395c17e355ef67f7baff2b9f17ed313e95f0121b04e6416"
+    },
+    {
+      "path": "public/lexicon/he/modern/נ.json.gz",
+      "sha256": "fdcfb82940b1563982e7aa3a18e1517671ab427baa0a169cd2faf2121c4215f9"
+    },
+    {
+      "path": "public/lexicon/he/modern/ס.json.gz",
+      "sha256": "f4198dcbd7c89a5c8577b59c3b20725163408904651b2cc1c1783837e30e9172"
+    },
+    {
+      "path": "public/lexicon/he/modern/ע.json.gz",
+      "sha256": "e48e3ad18cbffc5e4f75823dcb452c2d6934246207c8718ff7131d91f83c7b9f"
+    },
+    {
+      "path": "public/lexicon/he/modern/פ.json.gz",
+      "sha256": "da4f13720cfb11636cb2c875ee530be7d86ab73f1ca404b0b0aa10e16cc048da"
+    },
+    {
+      "path": "public/lexicon/he/modern/צ.json.gz",
+      "sha256": "5cac64990e0c775c48c63cd1c4c89b6e2e67aabc0f3589f75c677ebed0762a84"
+    },
+    {
+      "path": "public/lexicon/he/modern/ק.json.gz",
+      "sha256": "6a6831f6a16b64fb8a7db6f55675ecadb08ebd1afbf6de1206306ad6a16962d9"
+    },
+    {
+      "path": "public/lexicon/he/modern/ר.json.gz",
+      "sha256": "f51202924a872d5e808c158274d8ed2a0aabf47cba021b6b0fcd8853819ed2fb"
+    },
+    {
+      "path": "public/lexicon/he/modern/ש.json.gz",
+      "sha256": "d3ea3d7f925749d90cb7252a02f457a41cc3dd0ee319f4e9edbefac23df05ddd"
+    },
+    {
+      "path": "public/lexicon/he/modern/ת.json.gz",
+      "sha256": "e5e33238009595149e2b506751d3a8b9c5aa818621ad791300f1eacdc78d5b95"
+    },
+    {
       "path": "scripts/goreview-release.d.mts",
       "sha256": "15ed3293cf316de8735898d1cda0e4350ff22937b61982ed28dbdfcff0148330"
     },
     {
       "path": "scripts/goreview-release.mjs",
-      "sha256": "6c3f963f324a782b9c266a485d98368776519ee16f5826ae04ba58d12a37ac34"
+      "sha256": "9b758fe2164d9245429c053e7a7c6e92cc8717f4f08c6b31d2dc8985e351331f"
     },
     {
       "path": "scripts/vite.config.ts",
@@ -1948,6 +2416,10 @@
       "sha256": "671a699a4a616469f5920c3dc92aa982324137868c4b06138fa3d913cf85cdb4"
     },
     {
+      "path": "src/adapters/hebrew/shards.ts",
+      "sha256": "979323ed85cc9201020eccd95dbd8cae8e592e70eb09fee19926260c679fba0c"
+    },
+    {
       "path": "src/adapters/hebrew/tags.ts",
       "sha256": "443da083fbe733aa278ea679fd14055228483dfb31fc29008a14d1ebdd080b7d"
     },
@@ -2404,6 +2876,10 @@
       "sha256": "d68ebd032f71071bf4c64943af9f50ba90305b22c06c23a6ce075563962a20d9"
     },
     {
+      "path": "src/adapters/shared/shards.ts",
+      "sha256": "817eda5315c6f2688e29ea74911cbbbf36ecd9e896692d19ca21f6929116f522"
+    },
+    {
       "path": "src/adapters/spanish/constructions.ts",
       "sha256": "343ad4f23262e7c9e41f9e9e7402060b71693c260ebddc886c2cb0830d1192dd"
     },
@@ -2653,7 +3129,54 @@
     "packages/shared-fonts/EB-Garamond-OFL.txt",
     "packages/shared-fonts/eb-garamond-latin-400-italic.woff2",
     "packages/shared-fonts/eb-garamond-latin-400.woff2",
-    "packages/shared-fonts/eb-garamond-latin-600.woff2"
+    "packages/shared-fonts/eb-garamond-latin-600.woff2",
+    "public/lexicon/he/biblical/manifest.json",
+    "public/lexicon/he/biblical/א.json.gz",
+    "public/lexicon/he/biblical/ב.json.gz",
+    "public/lexicon/he/biblical/ג.json.gz",
+    "public/lexicon/he/biblical/ד.json.gz",
+    "public/lexicon/he/biblical/ה.json.gz",
+    "public/lexicon/he/biblical/ו.json.gz",
+    "public/lexicon/he/biblical/ז.json.gz",
+    "public/lexicon/he/biblical/ח.json.gz",
+    "public/lexicon/he/biblical/ט.json.gz",
+    "public/lexicon/he/biblical/י.json.gz",
+    "public/lexicon/he/biblical/כ.json.gz",
+    "public/lexicon/he/biblical/ל.json.gz",
+    "public/lexicon/he/biblical/מ.json.gz",
+    "public/lexicon/he/biblical/נ.json.gz",
+    "public/lexicon/he/biblical/ס.json.gz",
+    "public/lexicon/he/biblical/ע.json.gz",
+    "public/lexicon/he/biblical/פ.json.gz",
+    "public/lexicon/he/biblical/צ.json.gz",
+    "public/lexicon/he/biblical/ק.json.gz",
+    "public/lexicon/he/biblical/ר.json.gz",
+    "public/lexicon/he/biblical/ש.json.gz",
+    "public/lexicon/he/biblical/ת.json.gz",
+    "public/lexicon/he/modern/_.json.gz",
+    "public/lexicon/he/modern/manifest.json",
+    "public/lexicon/he/modern/א.json.gz",
+    "public/lexicon/he/modern/ב.json.gz",
+    "public/lexicon/he/modern/ג.json.gz",
+    "public/lexicon/he/modern/ד.json.gz",
+    "public/lexicon/he/modern/ה.json.gz",
+    "public/lexicon/he/modern/ו.json.gz",
+    "public/lexicon/he/modern/ז.json.gz",
+    "public/lexicon/he/modern/ח.json.gz",
+    "public/lexicon/he/modern/ט.json.gz",
+    "public/lexicon/he/modern/י.json.gz",
+    "public/lexicon/he/modern/כ.json.gz",
+    "public/lexicon/he/modern/ל.json.gz",
+    "public/lexicon/he/modern/מ.json.gz",
+    "public/lexicon/he/modern/נ.json.gz",
+    "public/lexicon/he/modern/ס.json.gz",
+    "public/lexicon/he/modern/ע.json.gz",
+    "public/lexicon/he/modern/פ.json.gz",
+    "public/lexicon/he/modern/צ.json.gz",
+    "public/lexicon/he/modern/ק.json.gz",
+    "public/lexicon/he/modern/ר.json.gz",
+    "public/lexicon/he/modern/ש.json.gz",
+    "public/lexicon/he/modern/ת.json.gz"
   ],
   "requiredCapabilities": [
     "packages/goreview/src/scheduler/deck.ts",
@@ -3006,6 +3529,7 @@
     "src/adapters/hebrew/paradigm.ts",
     "src/adapters/hebrew/production.ts",
     "src/adapters/hebrew/pronunciation.ts",
+    "src/adapters/hebrew/shards.ts",
     "src/adapters/hebrew/tags.ts",
     "src/adapters/hebrew/text.ts",
     "src/adapters/hebrew/varieties.ts",
@@ -3120,6 +3644,7 @@
     "src/adapters/norwegian/varieties.ts",
     "src/adapters/norwegian/verbs.ts",
     "src/adapters/shared.ts",
+    "src/adapters/shared/shards.ts",
     "src/adapters/spanish/constructions.ts",
     "src/adapters/spanish/disambiguate.ts",
     "src/adapters/spanish/entries.ts",
@@ -3215,7 +3740,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "155256440b95b0f1e296681ed24259c4fb14b7d3a6f938352aaf2ee42b8fcc32",
+  "artifactManifestSha256": "248a2b53b1e562ed685987bb8b25decd99b2130908b92b1909b551824df4782f",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -3258,8 +3783,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-DODZZjvE.js",
-      "sha256": "d22a2d02f6a8257184ed6a2475ba0b6007d7274ec9551fe6878f9439118170aa"
+      "path": "assets/index-CXEKwBVF.js",
+      "sha256": "44220a5efffdcbaf0756664f88acd9fa163370e461a4407233d86f36997c074d"
     },
     {
       "path": "assets/style-LYcJkNvc.css",
@@ -3295,7 +3820,195 @@
     },
     {
       "path": "index.html",
-      "sha256": "9dcc2537882f641e4bcb410824853619c10e2c50e7a8e930e9f5e29a11580b7e"
+      "sha256": "9d969875f9acc4b527d36ed1115e83ad3979c67172b53b027760c706bf1b433f"
+    },
+    {
+      "path": "lexicon/he/biblical/manifest.json",
+      "sha256": "c552473d46ec2070b2fc8dcaaf8e967f6294f45091d929f8c3e623e941198234"
+    },
+    {
+      "path": "lexicon/he/biblical/א.json.gz",
+      "sha256": "8cd855af10dd980eb363d01c8cd6006bc20479cbee4a3237d198a0f1382e5f70"
+    },
+    {
+      "path": "lexicon/he/biblical/ב.json.gz",
+      "sha256": "34b79e8f811b94d03a4699fe154764c1f1c77d1c0ac7dea064601469dd59a485"
+    },
+    {
+      "path": "lexicon/he/biblical/ג.json.gz",
+      "sha256": "75c9de9e54a7214b2ccabac39dc1f4934d0111c90510ee1ae554d751628e3a0e"
+    },
+    {
+      "path": "lexicon/he/biblical/ד.json.gz",
+      "sha256": "beca00a0b241e0ee81482a4893e25d6f5819351682512cd3bda2cfde377e038a"
+    },
+    {
+      "path": "lexicon/he/biblical/ה.json.gz",
+      "sha256": "dd09fe892b74492def5d93467ee5d6656ca9f90463b5e32710ddb5cd1cac2967"
+    },
+    {
+      "path": "lexicon/he/biblical/ו.json.gz",
+      "sha256": "848387af2c6a7abe05d0dd45dfbbef9a9a481b0247d8b37d3a583411bf2a080c"
+    },
+    {
+      "path": "lexicon/he/biblical/ז.json.gz",
+      "sha256": "461b4a942775a09823aedfd5926313ffd4ebec0c9e2d4ae2e7265ffdf1b11d26"
+    },
+    {
+      "path": "lexicon/he/biblical/ח.json.gz",
+      "sha256": "4d584b2058ce1467dc935f8814146e185ae0f093c7849844277cdef8a6b8b8a1"
+    },
+    {
+      "path": "lexicon/he/biblical/ט.json.gz",
+      "sha256": "572a83f857618bdead234d65cafee69ba24ac73774b6a1f2d70a7aa2015f934a"
+    },
+    {
+      "path": "lexicon/he/biblical/י.json.gz",
+      "sha256": "04fecfc8f57dccd7589224cd838f8b3f11e481a6325d28c228e706bb8512b8c8"
+    },
+    {
+      "path": "lexicon/he/biblical/כ.json.gz",
+      "sha256": "f0c695962d8e0227e15d70f9238e0e451d7c1f415de72552838773b6f102ad48"
+    },
+    {
+      "path": "lexicon/he/biblical/ל.json.gz",
+      "sha256": "0b7ee062169d48ab6d222ca8f145e205bd8c5b2f7024c1ee158a142bd1093ea9"
+    },
+    {
+      "path": "lexicon/he/biblical/מ.json.gz",
+      "sha256": "d263c175164f9ba520d9b7d05c06adca064e1aca5f878aac870c0a5a63118b71"
+    },
+    {
+      "path": "lexicon/he/biblical/נ.json.gz",
+      "sha256": "544ef07c14274dc2d55fee3fb905c2d8192f960d45fe779fb96e5459324a4571"
+    },
+    {
+      "path": "lexicon/he/biblical/ס.json.gz",
+      "sha256": "255d572efab6b1217afd2dac81bcadc00cfa90cb578eff9e2c0bbd6a8d441295"
+    },
+    {
+      "path": "lexicon/he/biblical/ע.json.gz",
+      "sha256": "bebea55226d1f80efd6a61de3afc3a73a579f477e3d34e38e6cdb6822022d68a"
+    },
+    {
+      "path": "lexicon/he/biblical/פ.json.gz",
+      "sha256": "e009d6d137ff9cfb3f4e9e3907ca1ecbb0e4e828c22ebfbe7e556a16c9581559"
+    },
+    {
+      "path": "lexicon/he/biblical/צ.json.gz",
+      "sha256": "62cdcee35b669e41759be361ddb7332a0ba859f8eb1e8af34d95d7db69eb6786"
+    },
+    {
+      "path": "lexicon/he/biblical/ק.json.gz",
+      "sha256": "87047fa8a20022f1fc5ec8d5918cb6bb83a512954eeb9f996d44ddfaccfdb15f"
+    },
+    {
+      "path": "lexicon/he/biblical/ר.json.gz",
+      "sha256": "313451a20bca491ab5a766a25c2a5915bc39ea0b435af37283d31934c953150d"
+    },
+    {
+      "path": "lexicon/he/biblical/ש.json.gz",
+      "sha256": "4c9eea420b49a6b9d6f0d6074d37fa6590eed0c57f173ad2130109aacc1ab62a"
+    },
+    {
+      "path": "lexicon/he/biblical/ת.json.gz",
+      "sha256": "43986771ecf8decb84ce9535e32cfa855e9159df668d65c401ee7ff71c0d9bca"
+    },
+    {
+      "path": "lexicon/he/modern/_.json.gz",
+      "sha256": "3f317b3a70a3e7238d2d31b56e5d8607b6cb59e1711e3eb52c1607b2c64d0712"
+    },
+    {
+      "path": "lexicon/he/modern/manifest.json",
+      "sha256": "866c697d5539efddd8e5582d5dfe57b9cc54f4adc31840c02913746fb06cef6b"
+    },
+    {
+      "path": "lexicon/he/modern/א.json.gz",
+      "sha256": "f01ccf5db0fced194e9ef04381f2da6a04659822cffc3dcc1ec4d94fc0382e90"
+    },
+    {
+      "path": "lexicon/he/modern/ב.json.gz",
+      "sha256": "196e321f7360b14c380fdc6a1dac7514a3b215ca75d3c829bcf1a6eff41b57ed"
+    },
+    {
+      "path": "lexicon/he/modern/ג.json.gz",
+      "sha256": "ad9c77943d1b33404fa0b7a0e242529f8b71e531c718601a503b7ff3640a3e53"
+    },
+    {
+      "path": "lexicon/he/modern/ד.json.gz",
+      "sha256": "b3fa0c9ad393c7f405977cec99fd17a81960c9400663512d2a69fcfde9f4dad2"
+    },
+    {
+      "path": "lexicon/he/modern/ה.json.gz",
+      "sha256": "3d4bb3ca829afa147e69f8950e02ed4dd5fb3faadee71c8f2ed745e782f12999"
+    },
+    {
+      "path": "lexicon/he/modern/ו.json.gz",
+      "sha256": "f6c52ec5835bbee60ca4ff32475dfe23912dba580a989b20d97af0a6c5719fec"
+    },
+    {
+      "path": "lexicon/he/modern/ז.json.gz",
+      "sha256": "6cb8933b0d38aec0e7b33de84442d1b8c7c5792b1a6c08f51487149525f90943"
+    },
+    {
+      "path": "lexicon/he/modern/ח.json.gz",
+      "sha256": "a08eb1f3c83da3ac17fe2efad26719577bed925af66e843724cf054793931d34"
+    },
+    {
+      "path": "lexicon/he/modern/ט.json.gz",
+      "sha256": "6ca7618e33ac28e50e8662a7b0ee635fc596772de6abb98884daf68d04ffdc56"
+    },
+    {
+      "path": "lexicon/he/modern/י.json.gz",
+      "sha256": "cc2ae22f693def0061cd5580d2f0028bf89c1c7d64e6f65f153c01173903a29e"
+    },
+    {
+      "path": "lexicon/he/modern/כ.json.gz",
+      "sha256": "5403df2e394a8ba6b0f5bf91ba47bcb5e45e7d9ff3d429f52d0050095fee404a"
+    },
+    {
+      "path": "lexicon/he/modern/ל.json.gz",
+      "sha256": "05f9393d48187e5b93b2386a1d4cf5937363d0d124d99f45c0fc83ea098aad0d"
+    },
+    {
+      "path": "lexicon/he/modern/מ.json.gz",
+      "sha256": "ac49797ff5983124b395c17e355ef67f7baff2b9f17ed313e95f0121b04e6416"
+    },
+    {
+      "path": "lexicon/he/modern/נ.json.gz",
+      "sha256": "fdcfb82940b1563982e7aa3a18e1517671ab427baa0a169cd2faf2121c4215f9"
+    },
+    {
+      "path": "lexicon/he/modern/ס.json.gz",
+      "sha256": "f4198dcbd7c89a5c8577b59c3b20725163408904651b2cc1c1783837e30e9172"
+    },
+    {
+      "path": "lexicon/he/modern/ע.json.gz",
+      "sha256": "e48e3ad18cbffc5e4f75823dcb452c2d6934246207c8718ff7131d91f83c7b9f"
+    },
+    {
+      "path": "lexicon/he/modern/פ.json.gz",
+      "sha256": "da4f13720cfb11636cb2c875ee530be7d86ab73f1ca404b0b0aa10e16cc048da"
+    },
+    {
+      "path": "lexicon/he/modern/צ.json.gz",
+      "sha256": "5cac64990e0c775c48c63cd1c4c89b6e2e67aabc0f3589f75c677ebed0762a84"
+    },
+    {
+      "path": "lexicon/he/modern/ק.json.gz",
+      "sha256": "6a6831f6a16b64fb8a7db6f55675ecadb08ebd1afbf6de1206306ad6a16962d9"
+    },
+    {
+      "path": "lexicon/he/modern/ר.json.gz",
+      "sha256": "f51202924a872d5e808c158274d8ed2a0aabf47cba021b6b0fcd8853819ed2fb"
+    },
+    {
+      "path": "lexicon/he/modern/ש.json.gz",
+      "sha256": "d3ea3d7f925749d90cb7252a02f457a41cc3dd0ee319f4e9edbefac23df05ddd"
+    },
+    {
+      "path": "lexicon/he/modern/ת.json.gz",
+      "sha256": "e5e33238009595149e2b506751d3a8b9c5aa818621ad791300f1eacdc78d5b95"
     },
     {
       "path": "manifest.webmanifest",
@@ -3303,7 +4016,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "37e04b5c62f34773e972a7a6c5553fa6701fdfc8a2b538dc191c9e9da67ada54"
+      "sha256": "f4b9a8afdd5e95097d315480bf7b4954699a5aafb2d8a9fde38c7fdf89d87353"
     }
   ]
 }

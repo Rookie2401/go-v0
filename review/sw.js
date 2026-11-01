@@ -6,12 +6,13 @@
  *                beside it and WAITS: the page offers "Update ready - reload" and only then sends SKIP_WAITING.
  *   config.json  network-first, the cached copy only when the network fails.
  *   dict/        the dictionary shards are NOT precached (hundreds of MB): cached on demand in "goreview-dict-v1", capped.
+ *   lexicon/     the Hebrew lexicon is NOT precached: shards are cached on demand in a build-versioned cache, capped.
  *   everything else  untouched: the Repository service (any origin, /sync, /vocabulary, /candidates, /me, /sessions ...) is NEVER
  *                cached, and a request that carries an Authorization header is never answered from a cache.
  */
 'use strict';
 
-var BUILD_ID = 'a83ad43efaf3';
+var BUILD_ID = 'e8d863f0cc1d';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -24,7 +25,7 @@ var PRECACHE = [
   "./assets/go-globe-land-Cvq06yS5.png",
   "./assets/go-globe-rim-CzbKbQV5.png",
   "./assets/go-logo-D1Qp-DDg.png",
-  "./assets/index-DODZZjvE.js",
+  "./assets/index-CXEKwBVF.js",
   "./assets/style-LYcJkNvc.css",
   "./config.json",
   "./icons/apple-touch-icon.png",
@@ -40,6 +41,8 @@ var PRECACHE = [
 var SHELL_PREFIX = 'goreview-shell-';
 var SHELL_CACHE = SHELL_PREFIX + BUILD_ID;
 var DICT_CACHE = 'goreview-dict-v1';
+var LEXICON_PREFIX = 'goreview-lexicon-';
+var LEXICON_CACHE = LEXICON_PREFIX + BUILD_ID;
 var DICT_MAX_ENTRIES = 400;
 var DICT_MAX_BYTES = 3 * 1024 * 1024; // one shard larger than this is served but not kept
 
@@ -72,7 +75,7 @@ self.addEventListener('activate', function (event) {
   event.waitUntil(
     caches.keys().then(function (keys) {
       return Promise.all(keys.filter(function (k) {
-        return k.indexOf(SHELL_PREFIX) === 0 && k !== SHELL_CACHE;
+        return (k.indexOf(SHELL_PREFIX) === 0 && k !== SHELL_CACHE) || (k.indexOf(LEXICON_PREFIX) === 0 && k !== LEXICON_CACHE);
       }).map(function (k) { return caches.delete(k); }));
     }).then(function () { return self.clients.claim(); })
   );
@@ -109,8 +112,8 @@ function trim(cache) {
   });
 }
 
-function dictOnDemand(request) {
-  return caches.open(DICT_CACHE).then(function (cache) {
+function dictOnDemand(request, cacheName) {
+  return caches.open(cacheName || DICT_CACHE).then(function (cache) {
     return cache.match(request).then(function (hit) {
       if (hit) return hit;
       return fetch(request).then(function (response) {
@@ -139,5 +142,6 @@ self.addEventListener('fetch', function (event) {
   }
   if (rel === 'config.json') { event.respondWith(networkFirstConfig(request)); return; }
   if (rel.indexOf('dict/') === 0) { event.respondWith(dictOnDemand(request)); return; }
+  if (rel.indexOf('lexicon/') === 0) { event.respondWith(dictOnDemand(request, LEXICON_CACHE)); return; }
   event.respondWith(cachedShell(request).then(function (r) { return r || fetch(request); }));
 });

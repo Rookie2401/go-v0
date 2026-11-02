@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "6a9f3a08a419e7f0db5da2e36c093a01671d14cd",
-    "tree": "179db401d63b0070262c7407c5964347a9c638be",
+    "commit": "3f30a1a7a8504b054ce76730b29584ae0c986c3a",
+    "tree": "b0dbd0ed9eaf2bee77d71f7f690b0502acd94569",
     "dirty": false
   },
-  "sourceManifestSha256": "c7dd4d695144f8ffbdb3e9ebb71e3f0b0dc7ddcd0b397212dbd7446bed59a6aa",
+  "sourceManifestSha256": "100e87bc0298edd34442fa84f1f3a0aaee6718aa5ef1c385f0f7b2108e1cbba3",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -937,7 +937,7 @@
     },
     {
       "path": "packages/goreview/app/styles.css",
-      "sha256": "5bbf6dbebd125ebcb7278094f3f8717998c4a46727d27749fa232a420251075f"
+      "sha256": "da80bb7ee24aa73e715d1f946ab1684ff4f63728540350b166a60591902b7cac"
     },
     {
       "path": "packages/goreview/app/tellEngine.ts",
@@ -4708,7 +4708,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "2d16d1ac5ef131e4585f001e2394006e29748712835c976aa519a8fb4319f873",
+  "artifactManifestSha256": "6288b7e871c67d341ed69d04c166ea65d8028acd03bf2bcfee7238390a3d7c69",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4755,8 +4755,8 @@
       "sha256": "9ebd1cdc5eb2b9fde981210318c8a197897189fd2be2f26d1db752578d5f7af1"
     },
     {
-      "path": "assets/style-LYcJkNvc.css",
-      "sha256": "140be9df75ea3a7ac7ae30cea9f46c2fdbb95e8d92ee6212ca13f6ddcee084a0"
+      "path": "assets/style-B4fUlhlq.css",
+      "sha256": "c1df879567601214915d3154b003df944a62dc7ced94373e9bde8382677bd6b9"
     },
     {
       "path": "config.json",
@@ -4788,7 +4788,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "9fb6baf89ac82f355c0052d446b0e16412299db220adeed3ec44d3b6022a9b73"
+      "sha256": "d610c3c14951bf51f76b8b4a7699d6b5aa6cc47c1299bb97bbaf6abaea32ec2b"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5732,7 +5732,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "abcc0834abb04f6e04a96a5c9a2f10a12604191cbd343c0b51fe3b99e9084125"
+      "sha256": "ac40bdd36c075176b9c67a9ad1c444aa29eac7256e4e25ecebc2f75e0683c67a"
     }
   ]
 }

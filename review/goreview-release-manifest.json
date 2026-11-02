@@ -5,15 +5,15 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "02f5c949416b2f1a24bde14aecc6e65f169f2d69",
-    "tree": "1dc33b987edf8a0ef9897ed05eb0c25567ff10a3",
+    "commit": "6a9f3a08a419e7f0db5da2e36c093a01671d14cd",
+    "tree": "179db401d63b0070262c7407c5964347a9c638be",
     "dirty": false
   },
-  "sourceManifestSha256": "9c0c3104d362d5e282a9c1b2a5342b98a3b95b4ae97a48bba4385424b88d3f17",
+  "sourceManifestSha256": "c7dd4d695144f8ffbdb3e9ebb71e3f0b0dc7ddcd0b397212dbd7446bed59a6aa",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
-      "sha256": "922e04c80e62266a1b6cc35db8ed45497b75564982b65665aeac3b6ea9e9178d"
+      "sha256": "6192b526e21f5844534181a8d7108a581803333182f025d91eaa639d54e1fb1f"
     },
     {
       "path": "docs/legal/PRIVACY-POLICY.md",
@@ -645,7 +645,7 @@
     },
     {
       "path": "packages/goreview/app/admissionExplanation.ts",
-      "sha256": "1897065d8dbdb0b8329f62d5300463d4d55e2f25f30aba183a98dc322e7282b6"
+      "sha256": "e566cf2e2968ba7e5c6218996175b5d21810c99700e618a856ea8922c27d9d86"
     },
     {
       "path": "packages/goreview/app/app.ts",
@@ -673,7 +673,7 @@
     },
     {
       "path": "packages/goreview/app/deckModel.ts",
-      "sha256": "be578b24b68bbd15dff8b4fe60cfda278b3304b7bf77f21dddc8457416852e64"
+      "sha256": "aa3083b7ef39233ef47ab6fa52fa9214686f1484667e6d9e8460be30a48b385b"
     },
     {
       "path": "packages/goreview/app/dom.ts",
@@ -681,7 +681,7 @@
     },
     {
       "path": "packages/goreview/app/engine.ts",
-      "sha256": "bf2f618f81191cdc1a5f831800d5cf3251394ab0b5e3ed601bc70620cf72067a"
+      "sha256": "71edbdbd760b0fb22996ee0952647e1039edb566904b34a633a5f1253e27ca88"
     },
     {
       "path": "packages/goreview/app/events.ts",
@@ -733,11 +733,11 @@
     },
     {
       "path": "packages/goreview/app/packFacts.ts",
-      "sha256": "26012a548e9fe27cfd55bfd0b0ca02f4c71a53e22813ec7313d74aeaa19b125c"
+      "sha256": "9237aee9906842f1fd1688577a12f7ac4ed382981ab2ad1d9e3855fb278de1ac"
     },
     {
       "path": "packages/goreview/app/ports.ts",
-      "sha256": "8289aeccbb6d17d3d0b61edbda2f2649a4c0d0bd34006d27f4c56f19907d163e"
+      "sha256": "aeebdfefe6fee247eb878a87f093c9925652a4f1217958d3bf080a59424a8b9c"
     },
     {
       "path": "packages/goreview/app/profiles.ts",
@@ -773,11 +773,11 @@
     },
     {
       "path": "packages/goreview/app/public/sw.js",
-      "sha256": "7403f41d54e61490caaa8c0b0887dab72029f31c2219c51179681fecfcaf3428"
+      "sha256": "26fa4a46ae1f4fa15fc8a0232458029531655d2ec57e21a983ed6413965e3784"
     },
     {
       "path": "packages/goreview/app/recoveredCandidates.ts",
-      "sha256": "9f1c0977c7be93a3864d6b8f5e32a6dd4afd45fe9352aa6062a66794708ca4ff"
+      "sha256": "899fea55d3748363c8a6901219c56990dea18047661bd9acf805d346c17996b2"
     },
     {
       "path": "packages/goreview/app/savedDeckSync.ts",
@@ -805,7 +805,7 @@
     },
     {
       "path": "packages/goreview/app/screens/developer.ts",
-      "sha256": "ef95705c609ee51e981015e3c67440ac1fb569d6347edc03189c4966aa555fdb"
+      "sha256": "a1374cabdca0d01f8ee24a792fd609fb395136493208a65c0bd90e6902e79407"
     },
     {
       "path": "packages/goreview/app/screens/history.ts",
@@ -833,11 +833,11 @@
     },
     {
       "path": "packages/goreview/app/screens/review.ts",
-      "sha256": "83dba12498cda9a57dd41c0b6fead80b05f5eeeee3b47f6e398a7f233948d0d7"
+      "sha256": "fca08e6fb5b2a1e3391e3137497d5b0643cf25f41840ca01cf6b1ac5a65a51c9"
     },
     {
       "path": "packages/goreview/app/screens/reviewDetails.ts",
-      "sha256": "cae5b4572e395ee2839d66c45370276dc97cce3e37f49092c919f44e29205ce9"
+      "sha256": "d752489e634f5d6e851d6709424e5ff8f6213e36c8458ea358daeb2bb222fd07"
     },
     {
       "path": "packages/goreview/app/screens/session.ts",
@@ -909,11 +909,11 @@
     },
     {
       "path": "packages/goreview/app/selectionReport.ts",
-      "sha256": "d7c3a38429aa18b21d39cf04212ee602168f9eddad0c931f5fb3373b86a2d823"
+      "sha256": "132cb23f8ef176c814355ddac57bdb40dab305eb200969ee802ca86d81d1ed07"
     },
     {
       "path": "packages/goreview/app/snapshot.ts",
-      "sha256": "13dfb536f6e3055962b4c06bd855d5dcd5795b5bee9f4e1948540de1749c632f"
+      "sha256": "8d1944c4d70d557e956ec5dae86b03b735b9c98b42f5a9cacce741639a611879"
     },
     {
       "path": "packages/goreview/app/speechBridge.ts",
@@ -949,11 +949,11 @@
     },
     {
       "path": "packages/goreview/app/vite.config.ts",
-      "sha256": "37b330721a1c82fc77c0fa31a9e7ac2fc43cd0462ebf838cb45662bcbbe9f582"
+      "sha256": "c9282ae90c9a98008d137a2634c2a1b4da03f93f7e0b31b865e0c96ea833d30a"
     },
     {
       "path": "packages/goreview/app/workspace.ts",
-      "sha256": "2737c94c810157bd1efa62da5516ba3a1687be12403bdf7f8ba4eb127ca8aaa7"
+      "sha256": "d9854cf6e948462ab7834d9772d03647cae391ab07eb9be5296d7b74462b65e5"
     },
     {
       "path": "packages/goreview/src/exercises/README.md",
@@ -1017,7 +1017,7 @@
     },
     {
       "path": "packages/goreview/src/exercises/written-recognition.ts",
-      "sha256": "a78a55cd6d174dd46c817db1a3313cece28c61988d4694038571d5f180d87809"
+      "sha256": "051d35bdf2430e4c6756fa78b4539203db2d9ccbc3e8c09cabd6c8059a4d7dbe"
     },
     {
       "path": "packages/goreview/src/facts/index.ts",
@@ -1025,7 +1025,7 @@
     },
     {
       "path": "packages/goreview/src/facts/provider.ts",
-      "sha256": "1c77091df20d3023dd5b8da1d83abea9bfd5217e23b452ef0a9a1f0124a3a17a"
+      "sha256": "31bb18b237f14c28be574544512bff616be849befd276283fa725d41db04ea9e"
     },
     {
       "path": "packages/goreview/src/facts/review-facts.ts",
@@ -1057,7 +1057,7 @@
     },
     {
       "path": "packages/goreview/src/intake/fetch.ts",
-      "sha256": "ee0cf9edbbf6b4b86128310fad4e6e7663ff1f5be739daa966a8d6760d6cc8c7"
+      "sha256": "60ad30b0e24eaed8773b20e4f51cc4acc9b96e49d58e03502db7594e2aca4d38"
     },
     {
       "path": "packages/goreview/src/intake/index.ts",
@@ -1065,7 +1065,7 @@
     },
     {
       "path": "packages/goreview/src/intake/intake.ts",
-      "sha256": "91aab567c1f4cde20cc79173a165ab7fa7799616136669167548f96d5fca6420"
+      "sha256": "a59c1d95b01a7ff6053db708bda3c2b3516bc651f302ad3e1d48056a720ed44d"
     },
     {
       "path": "packages/goreview/src/intake/review-eligibility.ts",
@@ -1109,11 +1109,15 @@
     },
     {
       "path": "packages/goreview/src/planner/planner.ts",
-      "sha256": "6f919ee0c8b3edb250169aea587494db141aefbbb28fb2a92ff58023c107168f"
+      "sha256": "09ccd399f913ce99b654ee0a446a78decb5051dc8b21f1b69df1a745bd4695f7"
     },
     {
       "path": "packages/goreview/src/planner/priority-policy.ts",
-      "sha256": "65bcd1c6e00c81614771f356549c91ac8c7120affcc275f5c0696d75b19ebde3"
+      "sha256": "7b2274d7b4abafef3696fd417a3d1ea8fc732079ee2fe4ddcad42e542b48e9bb"
+    },
+    {
+      "path": "packages/goreview/src/planner/reading-relevance.ts",
+      "sha256": "14e409fa0695f731cf3b8f3081340fe44632b228da4d4a7b26e4ef07f1d7896e"
     },
     {
       "path": "packages/goreview/src/planner/remediation.ts",
@@ -1173,7 +1177,7 @@
     },
     {
       "path": "packages/goreview/src/types.ts",
-      "sha256": "c4d188e8d5b9e021b47f7b0d94ebf81a8e83a57ab02c269c881b1e3c17747a67"
+      "sha256": "491a30cda66d9eeb543e0afde48e08b128d498fa97eb26960d6522d6692d28bc"
     },
     {
       "path": "packages/gotell/src/documents/README.md",
@@ -1625,7 +1629,7 @@
     },
     {
       "path": "packages/repository-service/src/requestTimeout.ts",
-      "sha256": "cf5313a2c35842b09e06b3e6817f0ef27cc367f9163e69f08e979415478cfebb"
+      "sha256": "e3c187f3820863c20c5c343c2263ebe4af5867c496d10f32b6a56170209c4b51"
     },
     {
       "path": "packages/repository-service/src/source-policy.json",
@@ -1766,6 +1770,750 @@
     {
       "path": "packages/shared-fonts/eb-garamond-latin-600.woff2",
       "sha256": "6a195b7e4f518d53813581f415d7956e02049dd2762b4b9a3af80d56b4257e28"
+    },
+    {
+      "path": "public/lexicon/el/ancient/_.json.gz",
+      "sha256": "e1d486f972200bb52fa3747fd77a4cf14021db9ea18f9b4bfb1bcba8ebe1796e"
+    },
+    {
+      "path": "public/lexicon/el/ancient/manifest.json",
+      "sha256": "f08a9ee3ccb5954a15e3de92bd0586e8ba75d1c9fc5cb70d3aa0d7a296d026f0"
+    },
+    {
+      "path": "public/lexicon/el/ancient/α.json.gz",
+      "sha256": "05a3c2114c9c567a9bbc18270c71eb2dfc15420b9a25fd9f1f871f31faf89009"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αα.json.gz",
+      "sha256": "8435444bb9e704c5e393393c8b0e686b02aa295b96b7c6599081744e0293e87f"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αβ.json.gz",
+      "sha256": "a871509e172aa3c50212268aef2bdcf80525c0c769a316aac085ac048959a0ce"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αγ.json.gz",
+      "sha256": "6504064e47d87bd906ede0582f359fc82fbb65dfbc5e9a97be7d723664401bc7"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αδ.json.gz",
+      "sha256": "93f83355f6e6f96f601101d9498ccbd221eeb16631013c1ddc6b6453d8e73fed"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αε.json.gz",
+      "sha256": "73d599340624ccc565ec2c83897690817bdde9966202f7ce5c44d29c784d0e89"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αζ.json.gz",
+      "sha256": "f3e2e271ab9ddd5d1f5b1fe58327a9e4003676200494f80a0ff9a8f5488d7bda"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αη.json.gz",
+      "sha256": "70cd98009e895188a7828258754d91c2294b022e00e3490cf8cf8a72788d09cd"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αθ.json.gz",
+      "sha256": "438f462cf413f2fa88196a2f0a2c1a6f9fccec856a17dd730ca8193a6ee6713f"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αι.json.gz",
+      "sha256": "aa860a687bd0cdb52037a4f80496bd51ad300a10d1e2ffd4de3e24dc43ee38f4"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ακ.json.gz",
+      "sha256": "2924c5b2aac6c1903c2893f07f27e35d6d70c2922fe60ecbd5ec8c32956d2906"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αλ.json.gz",
+      "sha256": "c35a02fe80e40e8e47587f234e6c9a463405a5713d8f2d1b9812921ca9dcfff0"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αμ.json.gz",
+      "sha256": "9780d43250756a12cd30141bb89ba7d6898743be64d91ece7bfbf98bf17ec0b3"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αν.json.gz",
+      "sha256": "b9487ecdaa857667cae0b9e4199920a709a1986d7c0db8c3fabb8ee8803cb739"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αξ.json.gz",
+      "sha256": "1271c638d841077614e248ff058690d2a4312c3913d9db9d9d167870f3f30b39"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αο.json.gz",
+      "sha256": "95509a7db6e6e45f389bc86b37e480f42dc58b1c2277177fb5e2eb11fd2d5405"
+    },
+    {
+      "path": "public/lexicon/el/ancient/απ.json.gz",
+      "sha256": "2ea80292a9f98699923e5b22840502c7ebeaf6ec19b6962a0b82af99017e6eee"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αρ.json.gz",
+      "sha256": "7894e15a239bca0ffaa71cc3c3ea55ac75c82fc4ae0ce727961a0202bffcfa47"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ασ.json.gz",
+      "sha256": "c73ed4f7eed3fdc407964e3c47280ef2f5912e80cb726245ad5f38d91c0e7f36"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ατ.json.gz",
+      "sha256": "5ba8d2ae187a98535b3d0f5167b32543658d650b76d6aa7c817f2ece9dffccfd"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αυ.json.gz",
+      "sha256": "be2017382cf4d14f48b9ab759ec1c2e80210bb832165b2be254d555d1a8696df"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αφ.json.gz",
+      "sha256": "e291014ad44a82c5bd0201b0386c600a934bd3d83dc6283caec71fe4f885819d"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αχ.json.gz",
+      "sha256": "374882d09d2cac8e7feb3fc71bdaa4578ef273e8e3b35a1e1c9567a464e9826f"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αψ.json.gz",
+      "sha256": "28b71af833fa95afce41bb36b174e9cf448048bf127d87693ef8c468a6ba5b30"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αω.json.gz",
+      "sha256": "b3f77f5bb2c7967089ced3e4f14a0f4b0a557d9414aae33263fc3921daa3c5a9"
+    },
+    {
+      "path": "public/lexicon/el/ancient/αϝ.json.gz",
+      "sha256": "00b492402acd3e9dd98bd3b039f3af08a3438662dc4dffa0e424b4de9039cacf"
+    },
+    {
+      "path": "public/lexicon/el/ancient/β.json.gz",
+      "sha256": "16fc18ab8952741ae6d20eab5ea94499e4542e0c77ba11e376f67b442feb2535"
+    },
+    {
+      "path": "public/lexicon/el/ancient/γ.json.gz",
+      "sha256": "9a094542125ba8e91aff378cb0d1febe4616db3ba457b3562a3344d265acbe49"
+    },
+    {
+      "path": "public/lexicon/el/ancient/δ.json.gz",
+      "sha256": "f632e1a0b482f35fe4bac800179f313eb8634db919cad0df24f5b30804999d4f"
+    },
+    {
+      "path": "public/lexicon/el/ancient/δα.json.gz",
+      "sha256": "7a62b3e8d2607797c167deec8410027d7b7191475eef4dcd141a81963b8db7f6"
+    },
+    {
+      "path": "public/lexicon/el/ancient/δε.json.gz",
+      "sha256": "83f0a44eac9fba8ed270890919b8cf4063bc65030ea43c87ed5bf611f6df9f4f"
+    },
+    {
+      "path": "public/lexicon/el/ancient/δη.json.gz",
+      "sha256": "3eef03fa589e9498c4135ac6949f9e66b4641755f74af3aabbb27ec4f294d1ef"
+    },
+    {
+      "path": "public/lexicon/el/ancient/δι.json.gz",
+      "sha256": "355f3ffe260d2577864441223ce4b7597ecccbdee2a5a92676c5bacf0a1f7e10"
+    },
+    {
+      "path": "public/lexicon/el/ancient/δμ.json.gz",
+      "sha256": "3035abb308082ceb47c1f32b922b2de5e08d34bca90c4061ca2c433cc09c1cf8"
+    },
+    {
+      "path": "public/lexicon/el/ancient/δν.json.gz",
+      "sha256": "8d0172ac15400f2f7a7ee53382c521020a4302825390f6d343a1238ac0f2dba8"
+    },
+    {
+      "path": "public/lexicon/el/ancient/δο.json.gz",
+      "sha256": "cd4bdae21726799073b8f18253ed8909b980400dc462e54fc0c50e938df3cced"
+    },
+    {
+      "path": "public/lexicon/el/ancient/δρ.json.gz",
+      "sha256": "9e61056ef79c207c22578a07c5e39b0fc0cef04c16b6012be1d0264fc032eac2"
+    },
+    {
+      "path": "public/lexicon/el/ancient/δυ.json.gz",
+      "sha256": "cfdfeb49e73324d6713f3bc2faad24114659961f96aa02ee4c5fff6761900439"
+    },
+    {
+      "path": "public/lexicon/el/ancient/δω.json.gz",
+      "sha256": "499d6a6690d9b95614021c217a788c473da4ac0829f271f163866d01856ba70b"
+    },
+    {
+      "path": "public/lexicon/el/ancient/δϝ.json.gz",
+      "sha256": "fa117f004c45001259a46aa55cffaf7b2f9789bd1f691653656994f44cd9974c"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ε.json.gz",
+      "sha256": "6415a4bfebeb603857355e410ec55c5f740005de2b2528a5ab650576d1dffcc6"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εα.json.gz",
+      "sha256": "e1da631f88bf4d154e481362becbdfdf046a11282a5d2bcbc71685bb4d3c50c3"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εβ.json.gz",
+      "sha256": "a4f68bb50514a66de30b28b17f8750c0e916a2b97c5c43a9ac812f64c0f5033e"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εγ.json.gz",
+      "sha256": "ed144f6f65f48be6e76b7a65c46cdff5fa89c09ba43b3629b11024419829878a"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εδ.json.gz",
+      "sha256": "71c1a68eaa47f8e075867470d4250975ffac252dc52ac011f9095080872990d4"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εε.json.gz",
+      "sha256": "67bf9fee57f326d48651fb89199bd82f0191813fb97e1b43c49420a35456fdef"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εζ.json.gz",
+      "sha256": "0d5310864bf555e18147ac38f1371b2cdff0fe7ab70e8bdacbc8fee335a4a5ce"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εη.json.gz",
+      "sha256": "16f3eb630d0cd6a7a0057e763bda7b78f9a573c6ca61447bbd603c22d3996be3"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εθ.json.gz",
+      "sha256": "9a173f7aef830967d216c1f831228ef0216f63f8c422952159dddf5805cb3342"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ει.json.gz",
+      "sha256": "bc63e14940188b84aa725fea38d67d614515a4e0dff9ac4f442ae097e8ed99d9"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εκ.json.gz",
+      "sha256": "a30509d42b020ed802830409606218529f429c4f3cc4788a0cd7e31e7e792051"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ελ.json.gz",
+      "sha256": "e421b264daa31277875e1f72dda6a0a18e50baaa654033a1f9899b939497b2fc"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εμ.json.gz",
+      "sha256": "a78ff6b04717de7464d2bdd8ed2eec09cabf237d9f57ba5ac6dd57b11fe3c900"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εν.json.gz",
+      "sha256": "28f44ba8a56dcc01fda6f6342ce18e4151e77b62ca6729f95dabc6ada712f6a1"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εξ.json.gz",
+      "sha256": "eb695519cff5eed53310fd12feba5ddc8b1ed6643800766378515da77d476063"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εο.json.gz",
+      "sha256": "866ba6b8d2907b51411ad7402d79d3ba79b2e5a00d79fa4d6453af0809e4a04c"
+    },
+    {
+      "path": "public/lexicon/el/ancient/επ.json.gz",
+      "sha256": "6e0f17f487dce9db08e21c7ebdebcd604c9a8ff55ab6e01d4700b2425953af2e"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ερ.json.gz",
+      "sha256": "c696a6d778c4198cd77cd80b3e3f69f739919dd5e51b64e6b30eaad0b37f72c8"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εσ.json.gz",
+      "sha256": "40a3a898d416d8589daf72a87c3271d02235a8866b851e5345a217ea93db983e"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ετ.json.gz",
+      "sha256": "5af651da0456b45107f10608c0da4a029f6ab4cdd5dd6977903429b23017e109"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ευ.json.gz",
+      "sha256": "c912ef3adaf92daa693268829e404d323aed9496e3edef9292b9223549812381"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εφ.json.gz",
+      "sha256": "7cb0ca0237e56a76f1406123dc89be7af1dddbb04e6254b71cfd3832a2135ee5"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εχ.json.gz",
+      "sha256": "30c875380627345395a080c90cb252fd37861bf0debb0440f1e1b2cf1c60849d"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εψ.json.gz",
+      "sha256": "db87ccc2eddaa63a5d62111ec6b3260f32239d3afbe45ed321e7466b0b8d4c57"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εω.json.gz",
+      "sha256": "5ca47098c85f01ed2bb33a278a9fe65b3faf7ea3c305990bebd91f25f449bc4b"
+    },
+    {
+      "path": "public/lexicon/el/ancient/εϝ.json.gz",
+      "sha256": "7d149727bf8eeed83da508c93cddb37eeace8766334cdd49ba23a1b13c0fe5e8"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ζ.json.gz",
+      "sha256": "e7627f739d3a5b001155e5a30d5fe64fccaac8704ce98a8121d33a2eaba05b18"
+    },
+    {
+      "path": "public/lexicon/el/ancient/η.json.gz",
+      "sha256": "903cebddb31adedc129555fe17b3f0b24e986f9b10000973d36ad8678001af14"
+    },
+    {
+      "path": "public/lexicon/el/ancient/θ.json.gz",
+      "sha256": "b82567c3b919ba54f99df4e3a1acb0ead4605a21e02738e4a68001352c92a634"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ι.json.gz",
+      "sha256": "6ec1928457cffec59912a7b5574f8fcb16375c24fab9c5bc760595407e0df86d"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κ.json.gz",
+      "sha256": "50bccb483b96ca63695051dd55b1028adfba1782ae94186d268b02df981844e9"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κα.json.gz",
+      "sha256": "714940295d64551edede87320e52c3127776103583fb8bc7efb35195bfa06e3d"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κε.json.gz",
+      "sha256": "5472f7222834b8d3431059911a1a36157e42aa810f558a1cb96508ecfadd31b2"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κη.json.gz",
+      "sha256": "37d8101e56474a16de67e5629d578d0924b820789b4379f417af0a8c56554f28"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κι.json.gz",
+      "sha256": "3be458f0ee0582c4e0a3ebeb03efa273f8e5ca8175e27b2aae0dca4ce61eca54"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κλ.json.gz",
+      "sha256": "15ab8587635021911d0c05cd2ee0e52f841a373ef66998bc848568873823739a"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κμ.json.gz",
+      "sha256": "a5ecdaba3b45458a5dde8a543b1079f07b13411706fcc6985f42589aca8132b1"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κν.json.gz",
+      "sha256": "6236b86af4b5ee4aefdaa27291edefeb24708328159049a16bf98aa24ca04ee0"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κο.json.gz",
+      "sha256": "5af04479b119c87293695e6db58d5a8c09aa60c1c3403b29580f088e0c52f0f7"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κρ.json.gz",
+      "sha256": "ff6eca9258a80f1ca536b0b65b73f6ce0e8c2f41c9921021d3bda33f966409b2"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κσ.json.gz",
+      "sha256": "403e03e12d1aa7145f0ec9a2b81bbdb14918a3d87788b58bea722422a6044c38"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κτ.json.gz",
+      "sha256": "6ddfd7062cbdaebca285700758daac2daad761a04b2a8b779d43c833d08b04bc"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κυ.json.gz",
+      "sha256": "40560874f3a97c7399aed2d8d54f895433d3b80269b77aa03d159dd07f7ea15c"
+    },
+    {
+      "path": "public/lexicon/el/ancient/κω.json.gz",
+      "sha256": "7fb533ed2d9e4ce189a572aa0b26f02773ddce35f4c6db6adc03d567587ca709"
+    },
+    {
+      "path": "public/lexicon/el/ancient/λ.json.gz",
+      "sha256": "c2790119f58711e1e37423c0b023e7c450329b94cd5a702cb3a7073440dc9ac9"
+    },
+    {
+      "path": "public/lexicon/el/ancient/μ.json.gz",
+      "sha256": "de3dec9099b0ebaaa8496c9293d02fbcbca50ad9adb5dcf0d80fc05709adb7ab"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ν.json.gz",
+      "sha256": "4690edf6282e79b6bdf0aa61ee6bb1833d874e0b2a0861a952f7b5ca075aa16e"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ξ.json.gz",
+      "sha256": "fb8556fe06e057372361f04cac9d086976330f933957b8406225dd77914870d7"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ο.json.gz",
+      "sha256": "2e0d427d8e4b4f860105d465d75e9655b1bf56213319812ea2f0e3af103144ce"
+    },
+    {
+      "path": "public/lexicon/el/ancient/πα.json.gz",
+      "sha256": "dcabd9297690abd2ad96d05c5e76c7798327e92b49317a5dec2c28b6c35721de"
+    },
+    {
+      "path": "public/lexicon/el/ancient/πε.json.gz",
+      "sha256": "11eb93aa602c63b97d9a6c17082316bfc120191cfc8b209a6365631ddf9d9513"
+    },
+    {
+      "path": "public/lexicon/el/ancient/πη.json.gz",
+      "sha256": "a11ab3470a4f5ca954117df19118567971c97b2a7562cf40c0a6be3c48ee490a"
+    },
+    {
+      "path": "public/lexicon/el/ancient/πι.json.gz",
+      "sha256": "b13107e240f8e40c255dd5735a5066345347666b3829c1bb13e98f90afa49b9a"
+    },
+    {
+      "path": "public/lexicon/el/ancient/πλ.json.gz",
+      "sha256": "b77442c361eb83b4a7a9646051f912e2117a5d6f5fc15c626dca03004b9fbc69"
+    },
+    {
+      "path": "public/lexicon/el/ancient/πν.json.gz",
+      "sha256": "144cf581d0b6762146dbf0ae36c6f0fffaa4eb1bd8e459fbf2af4b21181f2d73"
+    },
+    {
+      "path": "public/lexicon/el/ancient/πο.json.gz",
+      "sha256": "e88f1a7d84a3c4e8e5cccf29443cd80361a9102d321a29e2fd02f31d989b5baf"
+    },
+    {
+      "path": "public/lexicon/el/ancient/πρ.json.gz",
+      "sha256": "c5125dacef56a9cd579b92aae689833d609d9595f64913b2fbe25f7708a4ddc4"
+    },
+    {
+      "path": "public/lexicon/el/ancient/πσ.json.gz",
+      "sha256": "5e611a876b437f8d4a8276cff6c99f8025b4702324f221f76e25622115ce3e60"
+    },
+    {
+      "path": "public/lexicon/el/ancient/πτ.json.gz",
+      "sha256": "e4d7ab73359a654ee2105c2c4669fc476dd393d43cdee117ce2dae7f618a6982"
+    },
+    {
+      "path": "public/lexicon/el/ancient/πυ.json.gz",
+      "sha256": "3d6f890fe97a7446e9edba9845d1016cd0215252cbc819c66e785bdf7083f465"
+    },
+    {
+      "path": "public/lexicon/el/ancient/πω.json.gz",
+      "sha256": "99d454c4467ea3ac387c90a803a2612356afe07f9bda864a880c637055eb43bd"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ρ.json.gz",
+      "sha256": "4665db8292d94ccaf1c2c95cb4c130f6d953860e1e51921111369c9cf281b313"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σ.json.gz",
+      "sha256": "06b570962118de66e038b769a9292c3390df7a77d8155b15d68f6d5100dbb5f0"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σα.json.gz",
+      "sha256": "503b5f935df337e69752c320e4d329654c4d1b3b2c7604e04beb4d66e7240816"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σβ.json.gz",
+      "sha256": "6ed233c448d5d6ee122b912bb2070f5a1bc30b6a2c8a8ea7014edfd6defdc4e0"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σδ.json.gz",
+      "sha256": "7d06870d95d6536b0e38fdbb8ed9a3dbddff9584d9b87defaa7a0666671e2ec2"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σε.json.gz",
+      "sha256": "58ae58f5bb5c0a553b28796ddd569a427cd877ea6b1f776613399c70d2e23224"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ση.json.gz",
+      "sha256": "8978e873e3e48a5beead2d9fb9dcbbfec4b2a91d96944390ba737c0807829ef7"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σθ.json.gz",
+      "sha256": "efacdf62e0c838b59cab71c9e82a36feacca8e3e84e1ecf7872e2d7a72e1027a"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σι.json.gz",
+      "sha256": "a46b4d37dcddbe82a51313fcaa069c8e0c2684b6703bbf09076bd0464eb13323"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σκ.json.gz",
+      "sha256": "d275b052665b5d0a9c30e0493e68275e4268d69232b923d5d536ccb235d223b5"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σμ.json.gz",
+      "sha256": "d7362e5c31844fd8a161196d18e3be379738bf49ac69c0cc118df223641c9f11"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σο.json.gz",
+      "sha256": "21cce4249951455e736ac452b2e22d2781d0f84fa48d36db35b176f8dd6606ae"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σπ.json.gz",
+      "sha256": "609d64384dd4f9447764068a62dfb9d382f365a39ea3a43ba7e23d7504db1208"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σρ.json.gz",
+      "sha256": "1957b6f3fef20b176698ef7d9ef2fd756fe6c427370a668536f19f36c275a893"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σσ.json.gz",
+      "sha256": "55571d65cd2b8b69bd525f730750ba81bb0ff00f0f9beca963fa9c9e76609d3d"
+    },
+    {
+      "path": "public/lexicon/el/ancient/στ.json.gz",
+      "sha256": "28a52f6372f60b4a66edb9eae17f77b49d1443c355e45ddb9ab40a9d546056c6"
+    },
+    {
+      "path": "public/lexicon/el/ancient/συ.json.gz",
+      "sha256": "ed202616862d422c7875c0b0ff0ac94cf329ee21db0f7cc992e55bbcd8d79aff"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σφ.json.gz",
+      "sha256": "db2d5469519c379f0f0d7023e6e649daf02ff449867058faf92106c1f64d74d6"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σχ.json.gz",
+      "sha256": "99000da1237c248314e33612580c246049ab50d811a124ce92dbc0d72ce9567e"
+    },
+    {
+      "path": "public/lexicon/el/ancient/σω.json.gz",
+      "sha256": "15811a7629902152a59aa9b95d5de5ddc7001b12b440bf614bcd3748ea84708c"
+    },
+    {
+      "path": "public/lexicon/el/ancient/τ.json.gz",
+      "sha256": "fb168d8f0ab648c19bd7173783ee5cf46c3e3e1c777aef477d4d719fdc61f046"
+    },
+    {
+      "path": "public/lexicon/el/ancient/υ.json.gz",
+      "sha256": "efd7ae3ee17ae62d74b8db3bc2ab46ab6a35e83483dfbcdeb900df342a5eee88"
+    },
+    {
+      "path": "public/lexicon/el/ancient/φ.json.gz",
+      "sha256": "1ae8a08fada64a0ec7520cf3c5e425c035e7bd7f53056d547579d11f521ce480"
+    },
+    {
+      "path": "public/lexicon/el/ancient/χ.json.gz",
+      "sha256": "186a06e95d08427c1f13f04800112d4a30e565369e59b4c5c3c775bc30b895dc"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ψ.json.gz",
+      "sha256": "fb1c12b3af70ffab1a33d59d01275dfc100be6d9000cb59c9b6e362268120ba0"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ω.json.gz",
+      "sha256": "4dfcd13e0899d563cdc04b674916d75d2d8992908753215cd767bd398dea5699"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ϙ.json.gz",
+      "sha256": "f6fef2e32c5b1edbc81eb033a897e4e08c2392b8c4c2eab5637afbdd8bb31cbd"
+    },
+    {
+      "path": "public/lexicon/el/ancient/ϝ.json.gz",
+      "sha256": "adb0d57ed5f456cac3ce0758293773d3317c4d4326c952ba82e789a15586fa8c"
+    },
+    {
+      "path": "public/lexicon/el/koine-index.json",
+      "sha256": "78f7d137a67067aaa9c925b6510240aed2802b005d7bf277faaee52b81f11bc2"
+    },
+    {
+      "path": "public/lexicon/el/modern/_.json.gz",
+      "sha256": "b0e245f83c911df0c36f7f24b205d61df419e45b30c432e2caec8b3f618bf0ee"
+    },
+    {
+      "path": "public/lexicon/el/modern/manifest.json",
+      "sha256": "4859d88af7ca6f7bf056f44b6cd05324e383b33b0a8ef7c1c56d982f57d6e8de"
+    },
+    {
+      "path": "public/lexicon/el/modern/α.json.gz",
+      "sha256": "0a30ab8d3ab95a9fd0dff9983984a544d93a211e0345eb818078a4848aa85cce"
+    },
+    {
+      "path": "public/lexicon/el/modern/αα.json.gz",
+      "sha256": "52b9a7f319947f16540ba7d5e9ebfede30f5a8614482584c059f2f05318ac973"
+    },
+    {
+      "path": "public/lexicon/el/modern/αβ.json.gz",
+      "sha256": "15f0adeb27d43657b34ab4c514b77b7480461c2edb1379fbab6a2b8a6f8a977a"
+    },
+    {
+      "path": "public/lexicon/el/modern/αγ.json.gz",
+      "sha256": "1ffb065b56754f02d07259496499912dd4448b6770a57fe115c8911b5f50d48c"
+    },
+    {
+      "path": "public/lexicon/el/modern/αδ.json.gz",
+      "sha256": "5c3637fbfdfead14fda9ff76b15a8bcd2a1ade3c51ba6b4f0ef6648711d0e585"
+    },
+    {
+      "path": "public/lexicon/el/modern/αε.json.gz",
+      "sha256": "098dab62da26e34e36d133493fa41dd4a25001bc6a9f1231e6f209caf1eb46fd"
+    },
+    {
+      "path": "public/lexicon/el/modern/αζ.json.gz",
+      "sha256": "d7e6cfa31569fc7f7f7a8d461d22d7133a148db02adf96cb2428248649d6e5f7"
+    },
+    {
+      "path": "public/lexicon/el/modern/αη.json.gz",
+      "sha256": "1fa6af6b332a3ee18bb6d55b2a3cd2c711d25f72d7092f360ca4d72bcd38dc5a"
+    },
+    {
+      "path": "public/lexicon/el/modern/αθ.json.gz",
+      "sha256": "30293793902afd7e076210dddd39eeee37009180dd606f7594cbb2c7e11197bf"
+    },
+    {
+      "path": "public/lexicon/el/modern/αι.json.gz",
+      "sha256": "9809d17d7b424fa0a15d3a740336cd16cb67da11d28e38cd6675adafcede4a70"
+    },
+    {
+      "path": "public/lexicon/el/modern/ακ.json.gz",
+      "sha256": "35d2d12eb93f93c1ddff0ea587a259d98974653ca6cfacedbd2a2ca973ce21d5"
+    },
+    {
+      "path": "public/lexicon/el/modern/αλ.json.gz",
+      "sha256": "0729cdd105be05d820d3a63d1319fef06436d90a87dac8abdca97c9c35f4426d"
+    },
+    {
+      "path": "public/lexicon/el/modern/αμ.json.gz",
+      "sha256": "443101a63399ae7c14fdf4633cdbea8ced7fdb143d69c2f734587f3e22c2d401"
+    },
+    {
+      "path": "public/lexicon/el/modern/αν.json.gz",
+      "sha256": "b92104bd903299fe5ecd4a6c17f73a5a2c40be4b9081ec419e06f36f9838317c"
+    },
+    {
+      "path": "public/lexicon/el/modern/αξ.json.gz",
+      "sha256": "6de86ceac974be56132eb30d80a45af02474feed9b02c49876fa869b557fcf1e"
+    },
+    {
+      "path": "public/lexicon/el/modern/αο.json.gz",
+      "sha256": "5c14b6f8e6a8c1eac471efda66f0902c5e71965091e8c5f91b8172459eeb545b"
+    },
+    {
+      "path": "public/lexicon/el/modern/απ.json.gz",
+      "sha256": "4ffb3ff8bd0c616ba0f0c24bcdc96245f7473d48c2f993d1f05009ae8d2902db"
+    },
+    {
+      "path": "public/lexicon/el/modern/αρ.json.gz",
+      "sha256": "33e7bf5812ecf682d967fdaba6d81637e4adbe1ce3e87a107e0ea1ca67ab777b"
+    },
+    {
+      "path": "public/lexicon/el/modern/ασ.json.gz",
+      "sha256": "4f229032a3f1257c0a682d64d96866c83e32235a953f2754588b31ebaf502cbd"
+    },
+    {
+      "path": "public/lexicon/el/modern/ατ.json.gz",
+      "sha256": "766f477a181c99e487bb8384431895c5a4cbccc1509e0daf69ccc1fa45ed7ad5"
+    },
+    {
+      "path": "public/lexicon/el/modern/αυ.json.gz",
+      "sha256": "536aaf92442f8641d77b9d6931d43a0b45fc178229c186247b6c99709874efc3"
+    },
+    {
+      "path": "public/lexicon/el/modern/αφ.json.gz",
+      "sha256": "ea122d3e5713a87de4583a05911f10813ddc2bf6d5333f58e715a0425d8df3d9"
+    },
+    {
+      "path": "public/lexicon/el/modern/αχ.json.gz",
+      "sha256": "b8e794411eb7fa64a32c803443aabd3ae81941d0632cf72f9902f3f50e79072d"
+    },
+    {
+      "path": "public/lexicon/el/modern/αψ.json.gz",
+      "sha256": "5a1428fddb7f67633744b295dc2a72179c91394ed993e8613df1aef48e57d23a"
+    },
+    {
+      "path": "public/lexicon/el/modern/αω.json.gz",
+      "sha256": "357d4ffa42d3db1c16e3026e12dc8dceb2b1f6f091640a6e13c6a2be7a01ce26"
+    },
+    {
+      "path": "public/lexicon/el/modern/β.json.gz",
+      "sha256": "02cec5336de9ca9fe793e7478a16cc16c96689f319f53c461697b7c3106901e2"
+    },
+    {
+      "path": "public/lexicon/el/modern/γ.json.gz",
+      "sha256": "bff7fadc01e4f2ae776259cd7a5dcf039429083b58cde0094ed6d0aa3de41921"
+    },
+    {
+      "path": "public/lexicon/el/modern/δ.json.gz",
+      "sha256": "f44d39d5ac6476847d9aa8b47d19459650f83bee5d2fdab8a8d5ff486b22cf44"
+    },
+    {
+      "path": "public/lexicon/el/modern/ε.json.gz",
+      "sha256": "0ac596d5fc540c77bde21c8296cdc458c8c15c01195c936ede79ba48fac23657"
+    },
+    {
+      "path": "public/lexicon/el/modern/ζ.json.gz",
+      "sha256": "481b8910027ecd93e0f3c2ffb9eac745906324d99850be8030fb343d22c6ba70"
+    },
+    {
+      "path": "public/lexicon/el/modern/η.json.gz",
+      "sha256": "59145300b005afdda071d7a1eed0460223e7ebbfed6d1517e2abb3585b61128f"
+    },
+    {
+      "path": "public/lexicon/el/modern/θ.json.gz",
+      "sha256": "058f7f1e7664613bf378691016f0f020819a197f71acc8758f80f77823477852"
+    },
+    {
+      "path": "public/lexicon/el/modern/ι.json.gz",
+      "sha256": "c6249ddb988129e301686f50e5f353839798c5efbed89632da5812ce7f3b7373"
+    },
+    {
+      "path": "public/lexicon/el/modern/κ.json.gz",
+      "sha256": "2ee4048aba8e688434d7bda67d94857222cd444a0ae03551c0e94c0d969719c5"
+    },
+    {
+      "path": "public/lexicon/el/modern/λ.json.gz",
+      "sha256": "7c7bb1282930af8263aad2220b7d0f7a387e720a49b40c9652a10eaf6a6deecb"
+    },
+    {
+      "path": "public/lexicon/el/modern/μ.json.gz",
+      "sha256": "a1927a5172393341f7b8d49bed83d89dd8cdbeed458262f5d74a68e59817d8bb"
+    },
+    {
+      "path": "public/lexicon/el/modern/ν.json.gz",
+      "sha256": "b002c66209e93aee09abe80b5855286133392950d1b944cbcde0c31c434fde2a"
+    },
+    {
+      "path": "public/lexicon/el/modern/ξ.json.gz",
+      "sha256": "224b4a6e408d5d1fc1025159cd47fe79a443557feac9a335bd1631d2cd5641cf"
+    },
+    {
+      "path": "public/lexicon/el/modern/ο.json.gz",
+      "sha256": "0d0157af60720f69fc0648af78260d0547dcb19cc21136e903b281b935773e13"
+    },
+    {
+      "path": "public/lexicon/el/modern/π.json.gz",
+      "sha256": "de4709bf2047b9919630d5adfbd7b82d141ca5afddc4a7e1453b6f7d2c8996bf"
+    },
+    {
+      "path": "public/lexicon/el/modern/ρ.json.gz",
+      "sha256": "bb26ef3a2538f3239a53c7ff3e409a0803b6eda7e15e079f307fb91186ff50fa"
+    },
+    {
+      "path": "public/lexicon/el/modern/σ.json.gz",
+      "sha256": "6ab3426d39e839b352fe80eb493418ff79d0b37236f4a2f3d4311f94b1767199"
+    },
+    {
+      "path": "public/lexicon/el/modern/τ.json.gz",
+      "sha256": "55d1443abb865bd0f3ac941596d52b6aed97fd28a6a2ea597a3b79121d2ae6f8"
+    },
+    {
+      "path": "public/lexicon/el/modern/υ.json.gz",
+      "sha256": "7e0d24248c6bbc089637d4c63e71d8cebce509f83c0cadb6ac09bd674aba298b"
+    },
+    {
+      "path": "public/lexicon/el/modern/φ.json.gz",
+      "sha256": "0cd29bbf1647808658ef4587d8cbb577aaa72ef82b8b610584cb46e5dea39195"
+    },
+    {
+      "path": "public/lexicon/el/modern/χ.json.gz",
+      "sha256": "4b2bc386b314667480fd885bdac4953bf65fe836723482b67713ab94f585e93c"
+    },
+    {
+      "path": "public/lexicon/el/modern/ψ.json.gz",
+      "sha256": "5a0441f88392917edc6054772f67089504fde432502537d9109346ef0b228b5c"
+    },
+    {
+      "path": "public/lexicon/el/modern/ω.json.gz",
+      "sha256": "442503ffaa02569de038ce309fdaefb31faaa22c48ba3111840abc307a2b6f64"
+    },
+    {
+      "path": "public/lexicon/el/modern/ϛ.json.gz",
+      "sha256": "60630cef355c3d819ef9810e6f13eb40cce5d1e1ee4dc8e8cf658c6fda3956b2"
+    },
+    {
+      "path": "public/lexicon/el/modern/ϝ.json.gz",
+      "sha256": "0903375f420ebb82f7359ee2bd53478eaf56b8c9f7ee7830ec384bf386d45649"
+    },
+    {
+      "path": "public/lexicon/el/modern/ϟ.json.gz",
+      "sha256": "182eb0243995061e07a7cedb09f6061bee8fb75d736b24be77595c4250612877"
+    },
+    {
+      "path": "public/lexicon/el/modern/ϡ.json.gz",
+      "sha256": "69d0b10a5b060850fab4233aea69b522eb16d7635ca16eb7408f77d9c3eea3d6"
     },
     {
       "path": "public/lexicon/he/biblical-index.json",
@@ -1965,7 +2713,7 @@
     },
     {
       "path": "scripts/goreview-release.mjs",
-      "sha256": "4952c3409f84e90c2e929aceb04191438e9f2d3389540c9f93218b03ecdd27d5"
+      "sha256": "eddfd5403caf3584ebb7aa1a3bd1f4827ca16ed166f84c2750ab13ea10252056"
     },
     {
       "path": "scripts/vite.config.ts",
@@ -2370,6 +3118,10 @@
     {
       "path": "src/adapters/greek/pronunciation.ts",
       "sha256": "d3f338f59e06936ce189e9490576c6065b1ce9dc45f20962ee805cd13e7f6f0b"
+    },
+    {
+      "path": "src/adapters/greek/shards.ts",
+      "sha256": "ca0cc06f81a860eb5ae22d80ed00236cbcd31851677e89689274280eca917809"
     },
     {
       "path": "src/adapters/greek/tags.ts",
@@ -3096,6 +3848,10 @@
       "sha256": "9f9c8ff83ec719ce37a332fdef94f74e9e34e35976a59d3f9f1f0211f21738e5"
     },
     {
+      "path": "src/dict/forms.ts",
+      "sha256": "497ae8624255127ec4ad4ea72d1ce855c069bcf4d6417617aed147cc3c2716db"
+    },
+    {
       "path": "src/dict/frequency.ts",
       "sha256": "40a61db925c97ce8ca8e030055707b38e65a976bf77851fdc0c7851a3d6b08b0"
     },
@@ -3142,6 +3898,192 @@
     "packages/shared-fonts/eb-garamond-latin-400-italic.woff2",
     "packages/shared-fonts/eb-garamond-latin-400.woff2",
     "packages/shared-fonts/eb-garamond-latin-600.woff2",
+    "public/lexicon/el/ancient/_.json.gz",
+    "public/lexicon/el/ancient/manifest.json",
+    "public/lexicon/el/ancient/α.json.gz",
+    "public/lexicon/el/ancient/αα.json.gz",
+    "public/lexicon/el/ancient/αβ.json.gz",
+    "public/lexicon/el/ancient/αγ.json.gz",
+    "public/lexicon/el/ancient/αδ.json.gz",
+    "public/lexicon/el/ancient/αε.json.gz",
+    "public/lexicon/el/ancient/αζ.json.gz",
+    "public/lexicon/el/ancient/αη.json.gz",
+    "public/lexicon/el/ancient/αθ.json.gz",
+    "public/lexicon/el/ancient/αι.json.gz",
+    "public/lexicon/el/ancient/ακ.json.gz",
+    "public/lexicon/el/ancient/αλ.json.gz",
+    "public/lexicon/el/ancient/αμ.json.gz",
+    "public/lexicon/el/ancient/αν.json.gz",
+    "public/lexicon/el/ancient/αξ.json.gz",
+    "public/lexicon/el/ancient/αο.json.gz",
+    "public/lexicon/el/ancient/απ.json.gz",
+    "public/lexicon/el/ancient/αρ.json.gz",
+    "public/lexicon/el/ancient/ασ.json.gz",
+    "public/lexicon/el/ancient/ατ.json.gz",
+    "public/lexicon/el/ancient/αυ.json.gz",
+    "public/lexicon/el/ancient/αφ.json.gz",
+    "public/lexicon/el/ancient/αχ.json.gz",
+    "public/lexicon/el/ancient/αψ.json.gz",
+    "public/lexicon/el/ancient/αω.json.gz",
+    "public/lexicon/el/ancient/αϝ.json.gz",
+    "public/lexicon/el/ancient/β.json.gz",
+    "public/lexicon/el/ancient/γ.json.gz",
+    "public/lexicon/el/ancient/δ.json.gz",
+    "public/lexicon/el/ancient/δα.json.gz",
+    "public/lexicon/el/ancient/δε.json.gz",
+    "public/lexicon/el/ancient/δη.json.gz",
+    "public/lexicon/el/ancient/δι.json.gz",
+    "public/lexicon/el/ancient/δμ.json.gz",
+    "public/lexicon/el/ancient/δν.json.gz",
+    "public/lexicon/el/ancient/δο.json.gz",
+    "public/lexicon/el/ancient/δρ.json.gz",
+    "public/lexicon/el/ancient/δυ.json.gz",
+    "public/lexicon/el/ancient/δω.json.gz",
+    "public/lexicon/el/ancient/δϝ.json.gz",
+    "public/lexicon/el/ancient/ε.json.gz",
+    "public/lexicon/el/ancient/εα.json.gz",
+    "public/lexicon/el/ancient/εβ.json.gz",
+    "public/lexicon/el/ancient/εγ.json.gz",
+    "public/lexicon/el/ancient/εδ.json.gz",
+    "public/lexicon/el/ancient/εε.json.gz",
+    "public/lexicon/el/ancient/εζ.json.gz",
+    "public/lexicon/el/ancient/εη.json.gz",
+    "public/lexicon/el/ancient/εθ.json.gz",
+    "public/lexicon/el/ancient/ει.json.gz",
+    "public/lexicon/el/ancient/εκ.json.gz",
+    "public/lexicon/el/ancient/ελ.json.gz",
+    "public/lexicon/el/ancient/εμ.json.gz",
+    "public/lexicon/el/ancient/εν.json.gz",
+    "public/lexicon/el/ancient/εξ.json.gz",
+    "public/lexicon/el/ancient/εο.json.gz",
+    "public/lexicon/el/ancient/επ.json.gz",
+    "public/lexicon/el/ancient/ερ.json.gz",
+    "public/lexicon/el/ancient/εσ.json.gz",
+    "public/lexicon/el/ancient/ετ.json.gz",
+    "public/lexicon/el/ancient/ευ.json.gz",
+    "public/lexicon/el/ancient/εφ.json.gz",
+    "public/lexicon/el/ancient/εχ.json.gz",
+    "public/lexicon/el/ancient/εψ.json.gz",
+    "public/lexicon/el/ancient/εω.json.gz",
+    "public/lexicon/el/ancient/εϝ.json.gz",
+    "public/lexicon/el/ancient/ζ.json.gz",
+    "public/lexicon/el/ancient/η.json.gz",
+    "public/lexicon/el/ancient/θ.json.gz",
+    "public/lexicon/el/ancient/ι.json.gz",
+    "public/lexicon/el/ancient/κ.json.gz",
+    "public/lexicon/el/ancient/κα.json.gz",
+    "public/lexicon/el/ancient/κε.json.gz",
+    "public/lexicon/el/ancient/κη.json.gz",
+    "public/lexicon/el/ancient/κι.json.gz",
+    "public/lexicon/el/ancient/κλ.json.gz",
+    "public/lexicon/el/ancient/κμ.json.gz",
+    "public/lexicon/el/ancient/κν.json.gz",
+    "public/lexicon/el/ancient/κο.json.gz",
+    "public/lexicon/el/ancient/κρ.json.gz",
+    "public/lexicon/el/ancient/κσ.json.gz",
+    "public/lexicon/el/ancient/κτ.json.gz",
+    "public/lexicon/el/ancient/κυ.json.gz",
+    "public/lexicon/el/ancient/κω.json.gz",
+    "public/lexicon/el/ancient/λ.json.gz",
+    "public/lexicon/el/ancient/μ.json.gz",
+    "public/lexicon/el/ancient/ν.json.gz",
+    "public/lexicon/el/ancient/ξ.json.gz",
+    "public/lexicon/el/ancient/ο.json.gz",
+    "public/lexicon/el/ancient/πα.json.gz",
+    "public/lexicon/el/ancient/πε.json.gz",
+    "public/lexicon/el/ancient/πη.json.gz",
+    "public/lexicon/el/ancient/πι.json.gz",
+    "public/lexicon/el/ancient/πλ.json.gz",
+    "public/lexicon/el/ancient/πν.json.gz",
+    "public/lexicon/el/ancient/πο.json.gz",
+    "public/lexicon/el/ancient/πρ.json.gz",
+    "public/lexicon/el/ancient/πσ.json.gz",
+    "public/lexicon/el/ancient/πτ.json.gz",
+    "public/lexicon/el/ancient/πυ.json.gz",
+    "public/lexicon/el/ancient/πω.json.gz",
+    "public/lexicon/el/ancient/ρ.json.gz",
+    "public/lexicon/el/ancient/σ.json.gz",
+    "public/lexicon/el/ancient/σα.json.gz",
+    "public/lexicon/el/ancient/σβ.json.gz",
+    "public/lexicon/el/ancient/σδ.json.gz",
+    "public/lexicon/el/ancient/σε.json.gz",
+    "public/lexicon/el/ancient/ση.json.gz",
+    "public/lexicon/el/ancient/σθ.json.gz",
+    "public/lexicon/el/ancient/σι.json.gz",
+    "public/lexicon/el/ancient/σκ.json.gz",
+    "public/lexicon/el/ancient/σμ.json.gz",
+    "public/lexicon/el/ancient/σο.json.gz",
+    "public/lexicon/el/ancient/σπ.json.gz",
+    "public/lexicon/el/ancient/σρ.json.gz",
+    "public/lexicon/el/ancient/σσ.json.gz",
+    "public/lexicon/el/ancient/στ.json.gz",
+    "public/lexicon/el/ancient/συ.json.gz",
+    "public/lexicon/el/ancient/σφ.json.gz",
+    "public/lexicon/el/ancient/σχ.json.gz",
+    "public/lexicon/el/ancient/σω.json.gz",
+    "public/lexicon/el/ancient/τ.json.gz",
+    "public/lexicon/el/ancient/υ.json.gz",
+    "public/lexicon/el/ancient/φ.json.gz",
+    "public/lexicon/el/ancient/χ.json.gz",
+    "public/lexicon/el/ancient/ψ.json.gz",
+    "public/lexicon/el/ancient/ω.json.gz",
+    "public/lexicon/el/ancient/ϙ.json.gz",
+    "public/lexicon/el/ancient/ϝ.json.gz",
+    "public/lexicon/el/koine-index.json",
+    "public/lexicon/el/modern/_.json.gz",
+    "public/lexicon/el/modern/manifest.json",
+    "public/lexicon/el/modern/α.json.gz",
+    "public/lexicon/el/modern/αα.json.gz",
+    "public/lexicon/el/modern/αβ.json.gz",
+    "public/lexicon/el/modern/αγ.json.gz",
+    "public/lexicon/el/modern/αδ.json.gz",
+    "public/lexicon/el/modern/αε.json.gz",
+    "public/lexicon/el/modern/αζ.json.gz",
+    "public/lexicon/el/modern/αη.json.gz",
+    "public/lexicon/el/modern/αθ.json.gz",
+    "public/lexicon/el/modern/αι.json.gz",
+    "public/lexicon/el/modern/ακ.json.gz",
+    "public/lexicon/el/modern/αλ.json.gz",
+    "public/lexicon/el/modern/αμ.json.gz",
+    "public/lexicon/el/modern/αν.json.gz",
+    "public/lexicon/el/modern/αξ.json.gz",
+    "public/lexicon/el/modern/αο.json.gz",
+    "public/lexicon/el/modern/απ.json.gz",
+    "public/lexicon/el/modern/αρ.json.gz",
+    "public/lexicon/el/modern/ασ.json.gz",
+    "public/lexicon/el/modern/ατ.json.gz",
+    "public/lexicon/el/modern/αυ.json.gz",
+    "public/lexicon/el/modern/αφ.json.gz",
+    "public/lexicon/el/modern/αχ.json.gz",
+    "public/lexicon/el/modern/αψ.json.gz",
+    "public/lexicon/el/modern/αω.json.gz",
+    "public/lexicon/el/modern/β.json.gz",
+    "public/lexicon/el/modern/γ.json.gz",
+    "public/lexicon/el/modern/δ.json.gz",
+    "public/lexicon/el/modern/ε.json.gz",
+    "public/lexicon/el/modern/ζ.json.gz",
+    "public/lexicon/el/modern/η.json.gz",
+    "public/lexicon/el/modern/θ.json.gz",
+    "public/lexicon/el/modern/ι.json.gz",
+    "public/lexicon/el/modern/κ.json.gz",
+    "public/lexicon/el/modern/λ.json.gz",
+    "public/lexicon/el/modern/μ.json.gz",
+    "public/lexicon/el/modern/ν.json.gz",
+    "public/lexicon/el/modern/ξ.json.gz",
+    "public/lexicon/el/modern/ο.json.gz",
+    "public/lexicon/el/modern/π.json.gz",
+    "public/lexicon/el/modern/ρ.json.gz",
+    "public/lexicon/el/modern/σ.json.gz",
+    "public/lexicon/el/modern/τ.json.gz",
+    "public/lexicon/el/modern/υ.json.gz",
+    "public/lexicon/el/modern/φ.json.gz",
+    "public/lexicon/el/modern/χ.json.gz",
+    "public/lexicon/el/modern/ψ.json.gz",
+    "public/lexicon/el/modern/ω.json.gz",
+    "public/lexicon/el/modern/ϛ.json.gz",
+    "public/lexicon/el/modern/ϝ.json.gz",
+    "public/lexicon/el/modern/ϟ.json.gz",
+    "public/lexicon/el/modern/ϡ.json.gz",
     "public/lexicon/he/biblical-index.json",
     "public/lexicon/he/biblical/manifest.json",
     "public/lexicon/he/biblical/א.json.gz",
@@ -3323,6 +4265,7 @@
     "packages/goreview/src/planner/microdeck.ts",
     "packages/goreview/src/planner/planner.ts",
     "packages/goreview/src/planner/priority-policy.ts",
+    "packages/goreview/src/planner/reading-relevance.ts",
     "packages/goreview/src/planner/remediation.ts",
     "packages/goreview/src/scheduler/deck.ts",
     "packages/goreview/src/scheduler/fsrs.ts",
@@ -3538,6 +4481,7 @@
     "src/adapters/greek/paradigm.ts",
     "src/adapters/greek/production.ts",
     "src/adapters/greek/pronunciation.ts",
+    "src/adapters/greek/shards.ts",
     "src/adapters/greek/tags.ts",
     "src/adapters/greek/text.ts",
     "src/adapters/greek/varieties.ts",
@@ -3719,6 +4663,7 @@
     "src/core/word-analysis.ts",
     "src/dict/build.ts",
     "src/dict/format.ts",
+    "src/dict/forms.ts",
     "src/dict/frequency.ts",
     "src/dict/full-format.ts",
     "src/dict/full.ts",
@@ -3763,7 +4708,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "8b3dc4e366704e5153b8c7ad1f0b12852c54f5abb03c34c423072e8636f3ddce",
+  "artifactManifestSha256": "2d16d1ac5ef131e4585f001e2394006e29748712835c976aa519a8fb4319f873",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -3771,7 +4716,7 @@
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
-      "sha256": "922e04c80e62266a1b6cc35db8ed45497b75564982b65665aeac3b6ea9e9178d"
+      "sha256": "6192b526e21f5844534181a8d7108a581803333182f025d91eaa639d54e1fb1f"
     },
     {
       "path": "assets/fonts/EB-Garamond-OFL.txt",
@@ -3806,8 +4751,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-BUCsOkaU.js",
-      "sha256": "bff0b3072e2702f3bd7cf0718dcd8590d50dd5e7e6895193173e84c19dddf0f5"
+      "path": "assets/index-Ceiu4V-c.js",
+      "sha256": "9ebd1cdc5eb2b9fde981210318c8a197897189fd2be2f26d1db752578d5f7af1"
     },
     {
       "path": "assets/style-LYcJkNvc.css",
@@ -3843,7 +4788,751 @@
     },
     {
       "path": "index.html",
-      "sha256": "aa91035171c4b2ca0e6503f29e6f6f4ae9324e455e83a8d69634e04b29185a02"
+      "sha256": "9fb6baf89ac82f355c0052d446b0e16412299db220adeed3ec44d3b6022a9b73"
+    },
+    {
+      "path": "lexicon/el/ancient/_.json.gz",
+      "sha256": "e1d486f972200bb52fa3747fd77a4cf14021db9ea18f9b4bfb1bcba8ebe1796e"
+    },
+    {
+      "path": "lexicon/el/ancient/manifest.json",
+      "sha256": "f08a9ee3ccb5954a15e3de92bd0586e8ba75d1c9fc5cb70d3aa0d7a296d026f0"
+    },
+    {
+      "path": "lexicon/el/ancient/α.json.gz",
+      "sha256": "05a3c2114c9c567a9bbc18270c71eb2dfc15420b9a25fd9f1f871f31faf89009"
+    },
+    {
+      "path": "lexicon/el/ancient/αα.json.gz",
+      "sha256": "8435444bb9e704c5e393393c8b0e686b02aa295b96b7c6599081744e0293e87f"
+    },
+    {
+      "path": "lexicon/el/ancient/αβ.json.gz",
+      "sha256": "a871509e172aa3c50212268aef2bdcf80525c0c769a316aac085ac048959a0ce"
+    },
+    {
+      "path": "lexicon/el/ancient/αγ.json.gz",
+      "sha256": "6504064e47d87bd906ede0582f359fc82fbb65dfbc5e9a97be7d723664401bc7"
+    },
+    {
+      "path": "lexicon/el/ancient/αδ.json.gz",
+      "sha256": "93f83355f6e6f96f601101d9498ccbd221eeb16631013c1ddc6b6453d8e73fed"
+    },
+    {
+      "path": "lexicon/el/ancient/αε.json.gz",
+      "sha256": "73d599340624ccc565ec2c83897690817bdde9966202f7ce5c44d29c784d0e89"
+    },
+    {
+      "path": "lexicon/el/ancient/αζ.json.gz",
+      "sha256": "f3e2e271ab9ddd5d1f5b1fe58327a9e4003676200494f80a0ff9a8f5488d7bda"
+    },
+    {
+      "path": "lexicon/el/ancient/αη.json.gz",
+      "sha256": "70cd98009e895188a7828258754d91c2294b022e00e3490cf8cf8a72788d09cd"
+    },
+    {
+      "path": "lexicon/el/ancient/αθ.json.gz",
+      "sha256": "438f462cf413f2fa88196a2f0a2c1a6f9fccec856a17dd730ca8193a6ee6713f"
+    },
+    {
+      "path": "lexicon/el/ancient/αι.json.gz",
+      "sha256": "aa860a687bd0cdb52037a4f80496bd51ad300a10d1e2ffd4de3e24dc43ee38f4"
+    },
+    {
+      "path": "lexicon/el/ancient/ακ.json.gz",
+      "sha256": "2924c5b2aac6c1903c2893f07f27e35d6d70c2922fe60ecbd5ec8c32956d2906"
+    },
+    {
+      "path": "lexicon/el/ancient/αλ.json.gz",
+      "sha256": "c35a02fe80e40e8e47587f234e6c9a463405a5713d8f2d1b9812921ca9dcfff0"
+    },
+    {
+      "path": "lexicon/el/ancient/αμ.json.gz",
+      "sha256": "9780d43250756a12cd30141bb89ba7d6898743be64d91ece7bfbf98bf17ec0b3"
+    },
+    {
+      "path": "lexicon/el/ancient/αν.json.gz",
+      "sha256": "b9487ecdaa857667cae0b9e4199920a709a1986d7c0db8c3fabb8ee8803cb739"
+    },
+    {
+      "path": "lexicon/el/ancient/αξ.json.gz",
+      "sha256": "1271c638d841077614e248ff058690d2a4312c3913d9db9d9d167870f3f30b39"
+    },
+    {
+      "path": "lexicon/el/ancient/αο.json.gz",
+      "sha256": "95509a7db6e6e45f389bc86b37e480f42dc58b1c2277177fb5e2eb11fd2d5405"
+    },
+    {
+      "path": "lexicon/el/ancient/απ.json.gz",
+      "sha256": "2ea80292a9f98699923e5b22840502c7ebeaf6ec19b6962a0b82af99017e6eee"
+    },
+    {
+      "path": "lexicon/el/ancient/αρ.json.gz",
+      "sha256": "7894e15a239bca0ffaa71cc3c3ea55ac75c82fc4ae0ce727961a0202bffcfa47"
+    },
+    {
+      "path": "lexicon/el/ancient/ασ.json.gz",
+      "sha256": "c73ed4f7eed3fdc407964e3c47280ef2f5912e80cb726245ad5f38d91c0e7f36"
+    },
+    {
+      "path": "lexicon/el/ancient/ατ.json.gz",
+      "sha256": "5ba8d2ae187a98535b3d0f5167b32543658d650b76d6aa7c817f2ece9dffccfd"
+    },
+    {
+      "path": "lexicon/el/ancient/αυ.json.gz",
+      "sha256": "be2017382cf4d14f48b9ab759ec1c2e80210bb832165b2be254d555d1a8696df"
+    },
+    {
+      "path": "lexicon/el/ancient/αφ.json.gz",
+      "sha256": "e291014ad44a82c5bd0201b0386c600a934bd3d83dc6283caec71fe4f885819d"
+    },
+    {
+      "path": "lexicon/el/ancient/αχ.json.gz",
+      "sha256": "374882d09d2cac8e7feb3fc71bdaa4578ef273e8e3b35a1e1c9567a464e9826f"
+    },
+    {
+      "path": "lexicon/el/ancient/αψ.json.gz",
+      "sha256": "28b71af833fa95afce41bb36b174e9cf448048bf127d87693ef8c468a6ba5b30"
+    },
+    {
+      "path": "lexicon/el/ancient/αω.json.gz",
+      "sha256": "b3f77f5bb2c7967089ced3e4f14a0f4b0a557d9414aae33263fc3921daa3c5a9"
+    },
+    {
+      "path": "lexicon/el/ancient/αϝ.json.gz",
+      "sha256": "00b492402acd3e9dd98bd3b039f3af08a3438662dc4dffa0e424b4de9039cacf"
+    },
+    {
+      "path": "lexicon/el/ancient/β.json.gz",
+      "sha256": "16fc18ab8952741ae6d20eab5ea94499e4542e0c77ba11e376f67b442feb2535"
+    },
+    {
+      "path": "lexicon/el/ancient/γ.json.gz",
+      "sha256": "9a094542125ba8e91aff378cb0d1febe4616db3ba457b3562a3344d265acbe49"
+    },
+    {
+      "path": "lexicon/el/ancient/δ.json.gz",
+      "sha256": "f632e1a0b482f35fe4bac800179f313eb8634db919cad0df24f5b30804999d4f"
+    },
+    {
+      "path": "lexicon/el/ancient/δα.json.gz",
+      "sha256": "7a62b3e8d2607797c167deec8410027d7b7191475eef4dcd141a81963b8db7f6"
+    },
+    {
+      "path": "lexicon/el/ancient/δε.json.gz",
+      "sha256": "83f0a44eac9fba8ed270890919b8cf4063bc65030ea43c87ed5bf611f6df9f4f"
+    },
+    {
+      "path": "lexicon/el/ancient/δη.json.gz",
+      "sha256": "3eef03fa589e9498c4135ac6949f9e66b4641755f74af3aabbb27ec4f294d1ef"
+    },
+    {
+      "path": "lexicon/el/ancient/δι.json.gz",
+      "sha256": "355f3ffe260d2577864441223ce4b7597ecccbdee2a5a92676c5bacf0a1f7e10"
+    },
+    {
+      "path": "lexicon/el/ancient/δμ.json.gz",
+      "sha256": "3035abb308082ceb47c1f32b922b2de5e08d34bca90c4061ca2c433cc09c1cf8"
+    },
+    {
+      "path": "lexicon/el/ancient/δν.json.gz",
+      "sha256": "8d0172ac15400f2f7a7ee53382c521020a4302825390f6d343a1238ac0f2dba8"
+    },
+    {
+      "path": "lexicon/el/ancient/δο.json.gz",
+      "sha256": "cd4bdae21726799073b8f18253ed8909b980400dc462e54fc0c50e938df3cced"
+    },
+    {
+      "path": "lexicon/el/ancient/δρ.json.gz",
+      "sha256": "9e61056ef79c207c22578a07c5e39b0fc0cef04c16b6012be1d0264fc032eac2"
+    },
+    {
+      "path": "lexicon/el/ancient/δυ.json.gz",
+      "sha256": "cfdfeb49e73324d6713f3bc2faad24114659961f96aa02ee4c5fff6761900439"
+    },
+    {
+      "path": "lexicon/el/ancient/δω.json.gz",
+      "sha256": "499d6a6690d9b95614021c217a788c473da4ac0829f271f163866d01856ba70b"
+    },
+    {
+      "path": "lexicon/el/ancient/δϝ.json.gz",
+      "sha256": "fa117f004c45001259a46aa55cffaf7b2f9789bd1f691653656994f44cd9974c"
+    },
+    {
+      "path": "lexicon/el/ancient/ε.json.gz",
+      "sha256": "6415a4bfebeb603857355e410ec55c5f740005de2b2528a5ab650576d1dffcc6"
+    },
+    {
+      "path": "lexicon/el/ancient/εα.json.gz",
+      "sha256": "e1da631f88bf4d154e481362becbdfdf046a11282a5d2bcbc71685bb4d3c50c3"
+    },
+    {
+      "path": "lexicon/el/ancient/εβ.json.gz",
+      "sha256": "a4f68bb50514a66de30b28b17f8750c0e916a2b97c5c43a9ac812f64c0f5033e"
+    },
+    {
+      "path": "lexicon/el/ancient/εγ.json.gz",
+      "sha256": "ed144f6f65f48be6e76b7a65c46cdff5fa89c09ba43b3629b11024419829878a"
+    },
+    {
+      "path": "lexicon/el/ancient/εδ.json.gz",
+      "sha256": "71c1a68eaa47f8e075867470d4250975ffac252dc52ac011f9095080872990d4"
+    },
+    {
+      "path": "lexicon/el/ancient/εε.json.gz",
+      "sha256": "67bf9fee57f326d48651fb89199bd82f0191813fb97e1b43c49420a35456fdef"
+    },
+    {
+      "path": "lexicon/el/ancient/εζ.json.gz",
+      "sha256": "0d5310864bf555e18147ac38f1371b2cdff0fe7ab70e8bdacbc8fee335a4a5ce"
+    },
+    {
+      "path": "lexicon/el/ancient/εη.json.gz",
+      "sha256": "16f3eb630d0cd6a7a0057e763bda7b78f9a573c6ca61447bbd603c22d3996be3"
+    },
+    {
+      "path": "lexicon/el/ancient/εθ.json.gz",
+      "sha256": "9a173f7aef830967d216c1f831228ef0216f63f8c422952159dddf5805cb3342"
+    },
+    {
+      "path": "lexicon/el/ancient/ει.json.gz",
+      "sha256": "bc63e14940188b84aa725fea38d67d614515a4e0dff9ac4f442ae097e8ed99d9"
+    },
+    {
+      "path": "lexicon/el/ancient/εκ.json.gz",
+      "sha256": "a30509d42b020ed802830409606218529f429c4f3cc4788a0cd7e31e7e792051"
+    },
+    {
+      "path": "lexicon/el/ancient/ελ.json.gz",
+      "sha256": "e421b264daa31277875e1f72dda6a0a18e50baaa654033a1f9899b939497b2fc"
+    },
+    {
+      "path": "lexicon/el/ancient/εμ.json.gz",
+      "sha256": "a78ff6b04717de7464d2bdd8ed2eec09cabf237d9f57ba5ac6dd57b11fe3c900"
+    },
+    {
+      "path": "lexicon/el/ancient/εν.json.gz",
+      "sha256": "28f44ba8a56dcc01fda6f6342ce18e4151e77b62ca6729f95dabc6ada712f6a1"
+    },
+    {
+      "path": "lexicon/el/ancient/εξ.json.gz",
+      "sha256": "eb695519cff5eed53310fd12feba5ddc8b1ed6643800766378515da77d476063"
+    },
+    {
+      "path": "lexicon/el/ancient/εο.json.gz",
+      "sha256": "866ba6b8d2907b51411ad7402d79d3ba79b2e5a00d79fa4d6453af0809e4a04c"
+    },
+    {
+      "path": "lexicon/el/ancient/επ.json.gz",
+      "sha256": "6e0f17f487dce9db08e21c7ebdebcd604c9a8ff55ab6e01d4700b2425953af2e"
+    },
+    {
+      "path": "lexicon/el/ancient/ερ.json.gz",
+      "sha256": "c696a6d778c4198cd77cd80b3e3f69f739919dd5e51b64e6b30eaad0b37f72c8"
+    },
+    {
+      "path": "lexicon/el/ancient/εσ.json.gz",
+      "sha256": "40a3a898d416d8589daf72a87c3271d02235a8866b851e5345a217ea93db983e"
+    },
+    {
+      "path": "lexicon/el/ancient/ετ.json.gz",
+      "sha256": "5af651da0456b45107f10608c0da4a029f6ab4cdd5dd6977903429b23017e109"
+    },
+    {
+      "path": "lexicon/el/ancient/ευ.json.gz",
+      "sha256": "c912ef3adaf92daa693268829e404d323aed9496e3edef9292b9223549812381"
+    },
+    {
+      "path": "lexicon/el/ancient/εφ.json.gz",
+      "sha256": "7cb0ca0237e56a76f1406123dc89be7af1dddbb04e6254b71cfd3832a2135ee5"
+    },
+    {
+      "path": "lexicon/el/ancient/εχ.json.gz",
+      "sha256": "30c875380627345395a080c90cb252fd37861bf0debb0440f1e1b2cf1c60849d"
+    },
+    {
+      "path": "lexicon/el/ancient/εψ.json.gz",
+      "sha256": "db87ccc2eddaa63a5d62111ec6b3260f32239d3afbe45ed321e7466b0b8d4c57"
+    },
+    {
+      "path": "lexicon/el/ancient/εω.json.gz",
+      "sha256": "5ca47098c85f01ed2bb33a278a9fe65b3faf7ea3c305990bebd91f25f449bc4b"
+    },
+    {
+      "path": "lexicon/el/ancient/εϝ.json.gz",
+      "sha256": "7d149727bf8eeed83da508c93cddb37eeace8766334cdd49ba23a1b13c0fe5e8"
+    },
+    {
+      "path": "lexicon/el/ancient/ζ.json.gz",
+      "sha256": "e7627f739d3a5b001155e5a30d5fe64fccaac8704ce98a8121d33a2eaba05b18"
+    },
+    {
+      "path": "lexicon/el/ancient/η.json.gz",
+      "sha256": "903cebddb31adedc129555fe17b3f0b24e986f9b10000973d36ad8678001af14"
+    },
+    {
+      "path": "lexicon/el/ancient/θ.json.gz",
+      "sha256": "b82567c3b919ba54f99df4e3a1acb0ead4605a21e02738e4a68001352c92a634"
+    },
+    {
+      "path": "lexicon/el/ancient/ι.json.gz",
+      "sha256": "6ec1928457cffec59912a7b5574f8fcb16375c24fab9c5bc760595407e0df86d"
+    },
+    {
+      "path": "lexicon/el/ancient/κ.json.gz",
+      "sha256": "50bccb483b96ca63695051dd55b1028adfba1782ae94186d268b02df981844e9"
+    },
+    {
+      "path": "lexicon/el/ancient/κα.json.gz",
+      "sha256": "714940295d64551edede87320e52c3127776103583fb8bc7efb35195bfa06e3d"
+    },
+    {
+      "path": "lexicon/el/ancient/κε.json.gz",
+      "sha256": "5472f7222834b8d3431059911a1a36157e42aa810f558a1cb96508ecfadd31b2"
+    },
+    {
+      "path": "lexicon/el/ancient/κη.json.gz",
+      "sha256": "37d8101e56474a16de67e5629d578d0924b820789b4379f417af0a8c56554f28"
+    },
+    {
+      "path": "lexicon/el/ancient/κι.json.gz",
+      "sha256": "3be458f0ee0582c4e0a3ebeb03efa273f8e5ca8175e27b2aae0dca4ce61eca54"
+    },
+    {
+      "path": "lexicon/el/ancient/κλ.json.gz",
+      "sha256": "15ab8587635021911d0c05cd2ee0e52f841a373ef66998bc848568873823739a"
+    },
+    {
+      "path": "lexicon/el/ancient/κμ.json.gz",
+      "sha256": "a5ecdaba3b45458a5dde8a543b1079f07b13411706fcc6985f42589aca8132b1"
+    },
+    {
+      "path": "lexicon/el/ancient/κν.json.gz",
+      "sha256": "6236b86af4b5ee4aefdaa27291edefeb24708328159049a16bf98aa24ca04ee0"
+    },
+    {
+      "path": "lexicon/el/ancient/κο.json.gz",
+      "sha256": "5af04479b119c87293695e6db58d5a8c09aa60c1c3403b29580f088e0c52f0f7"
+    },
+    {
+      "path": "lexicon/el/ancient/κρ.json.gz",
+      "sha256": "ff6eca9258a80f1ca536b0b65b73f6ce0e8c2f41c9921021d3bda33f966409b2"
+    },
+    {
+      "path": "lexicon/el/ancient/κσ.json.gz",
+      "sha256": "403e03e12d1aa7145f0ec9a2b81bbdb14918a3d87788b58bea722422a6044c38"
+    },
+    {
+      "path": "lexicon/el/ancient/κτ.json.gz",
+      "sha256": "6ddfd7062cbdaebca285700758daac2daad761a04b2a8b779d43c833d08b04bc"
+    },
+    {
+      "path": "lexicon/el/ancient/κυ.json.gz",
+      "sha256": "40560874f3a97c7399aed2d8d54f895433d3b80269b77aa03d159dd07f7ea15c"
+    },
+    {
+      "path": "lexicon/el/ancient/κω.json.gz",
+      "sha256": "7fb533ed2d9e4ce189a572aa0b26f02773ddce35f4c6db6adc03d567587ca709"
+    },
+    {
+      "path": "lexicon/el/ancient/λ.json.gz",
+      "sha256": "c2790119f58711e1e37423c0b023e7c450329b94cd5a702cb3a7073440dc9ac9"
+    },
+    {
+      "path": "lexicon/el/ancient/μ.json.gz",
+      "sha256": "de3dec9099b0ebaaa8496c9293d02fbcbca50ad9adb5dcf0d80fc05709adb7ab"
+    },
+    {
+      "path": "lexicon/el/ancient/ν.json.gz",
+      "sha256": "4690edf6282e79b6bdf0aa61ee6bb1833d874e0b2a0861a952f7b5ca075aa16e"
+    },
+    {
+      "path": "lexicon/el/ancient/ξ.json.gz",
+      "sha256": "fb8556fe06e057372361f04cac9d086976330f933957b8406225dd77914870d7"
+    },
+    {
+      "path": "lexicon/el/ancient/ο.json.gz",
+      "sha256": "2e0d427d8e4b4f860105d465d75e9655b1bf56213319812ea2f0e3af103144ce"
+    },
+    {
+      "path": "lexicon/el/ancient/πα.json.gz",
+      "sha256": "dcabd9297690abd2ad96d05c5e76c7798327e92b49317a5dec2c28b6c35721de"
+    },
+    {
+      "path": "lexicon/el/ancient/πε.json.gz",
+      "sha256": "11eb93aa602c63b97d9a6c17082316bfc120191cfc8b209a6365631ddf9d9513"
+    },
+    {
+      "path": "lexicon/el/ancient/πη.json.gz",
+      "sha256": "a11ab3470a4f5ca954117df19118567971c97b2a7562cf40c0a6be3c48ee490a"
+    },
+    {
+      "path": "lexicon/el/ancient/πι.json.gz",
+      "sha256": "b13107e240f8e40c255dd5735a5066345347666b3829c1bb13e98f90afa49b9a"
+    },
+    {
+      "path": "lexicon/el/ancient/πλ.json.gz",
+      "sha256": "b77442c361eb83b4a7a9646051f912e2117a5d6f5fc15c626dca03004b9fbc69"
+    },
+    {
+      "path": "lexicon/el/ancient/πν.json.gz",
+      "sha256": "144cf581d0b6762146dbf0ae36c6f0fffaa4eb1bd8e459fbf2af4b21181f2d73"
+    },
+    {
+      "path": "lexicon/el/ancient/πο.json.gz",
+      "sha256": "e88f1a7d84a3c4e8e5cccf29443cd80361a9102d321a29e2fd02f31d989b5baf"
+    },
+    {
+      "path": "lexicon/el/ancient/πρ.json.gz",
+      "sha256": "c5125dacef56a9cd579b92aae689833d609d9595f64913b2fbe25f7708a4ddc4"
+    },
+    {
+      "path": "lexicon/el/ancient/πσ.json.gz",
+      "sha256": "5e611a876b437f8d4a8276cff6c99f8025b4702324f221f76e25622115ce3e60"
+    },
+    {
+      "path": "lexicon/el/ancient/πτ.json.gz",
+      "sha256": "e4d7ab73359a654ee2105c2c4669fc476dd393d43cdee117ce2dae7f618a6982"
+    },
+    {
+      "path": "lexicon/el/ancient/πυ.json.gz",
+      "sha256": "3d6f890fe97a7446e9edba9845d1016cd0215252cbc819c66e785bdf7083f465"
+    },
+    {
+      "path": "lexicon/el/ancient/πω.json.gz",
+      "sha256": "99d454c4467ea3ac387c90a803a2612356afe07f9bda864a880c637055eb43bd"
+    },
+    {
+      "path": "lexicon/el/ancient/ρ.json.gz",
+      "sha256": "4665db8292d94ccaf1c2c95cb4c130f6d953860e1e51921111369c9cf281b313"
+    },
+    {
+      "path": "lexicon/el/ancient/σ.json.gz",
+      "sha256": "06b570962118de66e038b769a9292c3390df7a77d8155b15d68f6d5100dbb5f0"
+    },
+    {
+      "path": "lexicon/el/ancient/σα.json.gz",
+      "sha256": "503b5f935df337e69752c320e4d329654c4d1b3b2c7604e04beb4d66e7240816"
+    },
+    {
+      "path": "lexicon/el/ancient/σβ.json.gz",
+      "sha256": "6ed233c448d5d6ee122b912bb2070f5a1bc30b6a2c8a8ea7014edfd6defdc4e0"
+    },
+    {
+      "path": "lexicon/el/ancient/σδ.json.gz",
+      "sha256": "7d06870d95d6536b0e38fdbb8ed9a3dbddff9584d9b87defaa7a0666671e2ec2"
+    },
+    {
+      "path": "lexicon/el/ancient/σε.json.gz",
+      "sha256": "58ae58f5bb5c0a553b28796ddd569a427cd877ea6b1f776613399c70d2e23224"
+    },
+    {
+      "path": "lexicon/el/ancient/ση.json.gz",
+      "sha256": "8978e873e3e48a5beead2d9fb9dcbbfec4b2a91d96944390ba737c0807829ef7"
+    },
+    {
+      "path": "lexicon/el/ancient/σθ.json.gz",
+      "sha256": "efacdf62e0c838b59cab71c9e82a36feacca8e3e84e1ecf7872e2d7a72e1027a"
+    },
+    {
+      "path": "lexicon/el/ancient/σι.json.gz",
+      "sha256": "a46b4d37dcddbe82a51313fcaa069c8e0c2684b6703bbf09076bd0464eb13323"
+    },
+    {
+      "path": "lexicon/el/ancient/σκ.json.gz",
+      "sha256": "d275b052665b5d0a9c30e0493e68275e4268d69232b923d5d536ccb235d223b5"
+    },
+    {
+      "path": "lexicon/el/ancient/σμ.json.gz",
+      "sha256": "d7362e5c31844fd8a161196d18e3be379738bf49ac69c0cc118df223641c9f11"
+    },
+    {
+      "path": "lexicon/el/ancient/σο.json.gz",
+      "sha256": "21cce4249951455e736ac452b2e22d2781d0f84fa48d36db35b176f8dd6606ae"
+    },
+    {
+      "path": "lexicon/el/ancient/σπ.json.gz",
+      "sha256": "609d64384dd4f9447764068a62dfb9d382f365a39ea3a43ba7e23d7504db1208"
+    },
+    {
+      "path": "lexicon/el/ancient/σρ.json.gz",
+      "sha256": "1957b6f3fef20b176698ef7d9ef2fd756fe6c427370a668536f19f36c275a893"
+    },
+    {
+      "path": "lexicon/el/ancient/σσ.json.gz",
+      "sha256": "55571d65cd2b8b69bd525f730750ba81bb0ff00f0f9beca963fa9c9e76609d3d"
+    },
+    {
+      "path": "lexicon/el/ancient/στ.json.gz",
+      "sha256": "28a52f6372f60b4a66edb9eae17f77b49d1443c355e45ddb9ab40a9d546056c6"
+    },
+    {
+      "path": "lexicon/el/ancient/συ.json.gz",
+      "sha256": "ed202616862d422c7875c0b0ff0ac94cf329ee21db0f7cc992e55bbcd8d79aff"
+    },
+    {
+      "path": "lexicon/el/ancient/σφ.json.gz",
+      "sha256": "db2d5469519c379f0f0d7023e6e649daf02ff449867058faf92106c1f64d74d6"
+    },
+    {
+      "path": "lexicon/el/ancient/σχ.json.gz",
+      "sha256": "99000da1237c248314e33612580c246049ab50d811a124ce92dbc0d72ce9567e"
+    },
+    {
+      "path": "lexicon/el/ancient/σω.json.gz",
+      "sha256": "15811a7629902152a59aa9b95d5de5ddc7001b12b440bf614bcd3748ea84708c"
+    },
+    {
+      "path": "lexicon/el/ancient/τ.json.gz",
+      "sha256": "fb168d8f0ab648c19bd7173783ee5cf46c3e3e1c777aef477d4d719fdc61f046"
+    },
+    {
+      "path": "lexicon/el/ancient/υ.json.gz",
+      "sha256": "efd7ae3ee17ae62d74b8db3bc2ab46ab6a35e83483dfbcdeb900df342a5eee88"
+    },
+    {
+      "path": "lexicon/el/ancient/φ.json.gz",
+      "sha256": "1ae8a08fada64a0ec7520cf3c5e425c035e7bd7f53056d547579d11f521ce480"
+    },
+    {
+      "path": "lexicon/el/ancient/χ.json.gz",
+      "sha256": "186a06e95d08427c1f13f04800112d4a30e565369e59b4c5c3c775bc30b895dc"
+    },
+    {
+      "path": "lexicon/el/ancient/ψ.json.gz",
+      "sha256": "fb1c12b3af70ffab1a33d59d01275dfc100be6d9000cb59c9b6e362268120ba0"
+    },
+    {
+      "path": "lexicon/el/ancient/ω.json.gz",
+      "sha256": "4dfcd13e0899d563cdc04b674916d75d2d8992908753215cd767bd398dea5699"
+    },
+    {
+      "path": "lexicon/el/ancient/ϙ.json.gz",
+      "sha256": "f6fef2e32c5b1edbc81eb033a897e4e08c2392b8c4c2eab5637afbdd8bb31cbd"
+    },
+    {
+      "path": "lexicon/el/ancient/ϝ.json.gz",
+      "sha256": "adb0d57ed5f456cac3ce0758293773d3317c4d4326c952ba82e789a15586fa8c"
+    },
+    {
+      "path": "lexicon/el/koine-index.json.gz",
+      "sha256": "0d4ab25684395fd07a97ac96091a88a1f64f60e2ee6ad7a35ca5003358d36af9"
+    },
+    {
+      "path": "lexicon/el/modern/_.json.gz",
+      "sha256": "b0e245f83c911df0c36f7f24b205d61df419e45b30c432e2caec8b3f618bf0ee"
+    },
+    {
+      "path": "lexicon/el/modern/manifest.json",
+      "sha256": "4859d88af7ca6f7bf056f44b6cd05324e383b33b0a8ef7c1c56d982f57d6e8de"
+    },
+    {
+      "path": "lexicon/el/modern/α.json.gz",
+      "sha256": "0a30ab8d3ab95a9fd0dff9983984a544d93a211e0345eb818078a4848aa85cce"
+    },
+    {
+      "path": "lexicon/el/modern/αα.json.gz",
+      "sha256": "52b9a7f319947f16540ba7d5e9ebfede30f5a8614482584c059f2f05318ac973"
+    },
+    {
+      "path": "lexicon/el/modern/αβ.json.gz",
+      "sha256": "15f0adeb27d43657b34ab4c514b77b7480461c2edb1379fbab6a2b8a6f8a977a"
+    },
+    {
+      "path": "lexicon/el/modern/αγ.json.gz",
+      "sha256": "1ffb065b56754f02d07259496499912dd4448b6770a57fe115c8911b5f50d48c"
+    },
+    {
+      "path": "lexicon/el/modern/αδ.json.gz",
+      "sha256": "5c3637fbfdfead14fda9ff76b15a8bcd2a1ade3c51ba6b4f0ef6648711d0e585"
+    },
+    {
+      "path": "lexicon/el/modern/αε.json.gz",
+      "sha256": "098dab62da26e34e36d133493fa41dd4a25001bc6a9f1231e6f209caf1eb46fd"
+    },
+    {
+      "path": "lexicon/el/modern/αζ.json.gz",
+      "sha256": "d7e6cfa31569fc7f7f7a8d461d22d7133a148db02adf96cb2428248649d6e5f7"
+    },
+    {
+      "path": "lexicon/el/modern/αη.json.gz",
+      "sha256": "1fa6af6b332a3ee18bb6d55b2a3cd2c711d25f72d7092f360ca4d72bcd38dc5a"
+    },
+    {
+      "path": "lexicon/el/modern/αθ.json.gz",
+      "sha256": "30293793902afd7e076210dddd39eeee37009180dd606f7594cbb2c7e11197bf"
+    },
+    {
+      "path": "lexicon/el/modern/αι.json.gz",
+      "sha256": "9809d17d7b424fa0a15d3a740336cd16cb67da11d28e38cd6675adafcede4a70"
+    },
+    {
+      "path": "lexicon/el/modern/ακ.json.gz",
+      "sha256": "35d2d12eb93f93c1ddff0ea587a259d98974653ca6cfacedbd2a2ca973ce21d5"
+    },
+    {
+      "path": "lexicon/el/modern/αλ.json.gz",
+      "sha256": "0729cdd105be05d820d3a63d1319fef06436d90a87dac8abdca97c9c35f4426d"
+    },
+    {
+      "path": "lexicon/el/modern/αμ.json.gz",
+      "sha256": "443101a63399ae7c14fdf4633cdbea8ced7fdb143d69c2f734587f3e22c2d401"
+    },
+    {
+      "path": "lexicon/el/modern/αν.json.gz",
+      "sha256": "b92104bd903299fe5ecd4a6c17f73a5a2c40be4b9081ec419e06f36f9838317c"
+    },
+    {
+      "path": "lexicon/el/modern/αξ.json.gz",
+      "sha256": "6de86ceac974be56132eb30d80a45af02474feed9b02c49876fa869b557fcf1e"
+    },
+    {
+      "path": "lexicon/el/modern/αο.json.gz",
+      "sha256": "5c14b6f8e6a8c1eac471efda66f0902c5e71965091e8c5f91b8172459eeb545b"
+    },
+    {
+      "path": "lexicon/el/modern/απ.json.gz",
+      "sha256": "4ffb3ff8bd0c616ba0f0c24bcdc96245f7473d48c2f993d1f05009ae8d2902db"
+    },
+    {
+      "path": "lexicon/el/modern/αρ.json.gz",
+      "sha256": "33e7bf5812ecf682d967fdaba6d81637e4adbe1ce3e87a107e0ea1ca67ab777b"
+    },
+    {
+      "path": "lexicon/el/modern/ασ.json.gz",
+      "sha256": "4f229032a3f1257c0a682d64d96866c83e32235a953f2754588b31ebaf502cbd"
+    },
+    {
+      "path": "lexicon/el/modern/ατ.json.gz",
+      "sha256": "766f477a181c99e487bb8384431895c5a4cbccc1509e0daf69ccc1fa45ed7ad5"
+    },
+    {
+      "path": "lexicon/el/modern/αυ.json.gz",
+      "sha256": "536aaf92442f8641d77b9d6931d43a0b45fc178229c186247b6c99709874efc3"
+    },
+    {
+      "path": "lexicon/el/modern/αφ.json.gz",
+      "sha256": "ea122d3e5713a87de4583a05911f10813ddc2bf6d5333f58e715a0425d8df3d9"
+    },
+    {
+      "path": "lexicon/el/modern/αχ.json.gz",
+      "sha256": "b8e794411eb7fa64a32c803443aabd3ae81941d0632cf72f9902f3f50e79072d"
+    },
+    {
+      "path": "lexicon/el/modern/αψ.json.gz",
+      "sha256": "5a1428fddb7f67633744b295dc2a72179c91394ed993e8613df1aef48e57d23a"
+    },
+    {
+      "path": "lexicon/el/modern/αω.json.gz",
+      "sha256": "357d4ffa42d3db1c16e3026e12dc8dceb2b1f6f091640a6e13c6a2be7a01ce26"
+    },
+    {
+      "path": "lexicon/el/modern/β.json.gz",
+      "sha256": "02cec5336de9ca9fe793e7478a16cc16c96689f319f53c461697b7c3106901e2"
+    },
+    {
+      "path": "lexicon/el/modern/γ.json.gz",
+      "sha256": "bff7fadc01e4f2ae776259cd7a5dcf039429083b58cde0094ed6d0aa3de41921"
+    },
+    {
+      "path": "lexicon/el/modern/δ.json.gz",
+      "sha256": "f44d39d5ac6476847d9aa8b47d19459650f83bee5d2fdab8a8d5ff486b22cf44"
+    },
+    {
+      "path": "lexicon/el/modern/ε.json.gz",
+      "sha256": "0ac596d5fc540c77bde21c8296cdc458c8c15c01195c936ede79ba48fac23657"
+    },
+    {
+      "path": "lexicon/el/modern/ζ.json.gz",
+      "sha256": "481b8910027ecd93e0f3c2ffb9eac745906324d99850be8030fb343d22c6ba70"
+    },
+    {
+      "path": "lexicon/el/modern/η.json.gz",
+      "sha256": "59145300b005afdda071d7a1eed0460223e7ebbfed6d1517e2abb3585b61128f"
+    },
+    {
+      "path": "lexicon/el/modern/θ.json.gz",
+      "sha256": "058f7f1e7664613bf378691016f0f020819a197f71acc8758f80f77823477852"
+    },
+    {
+      "path": "lexicon/el/modern/ι.json.gz",
+      "sha256": "c6249ddb988129e301686f50e5f353839798c5efbed89632da5812ce7f3b7373"
+    },
+    {
+      "path": "lexicon/el/modern/κ.json.gz",
+      "sha256": "2ee4048aba8e688434d7bda67d94857222cd444a0ae03551c0e94c0d969719c5"
+    },
+    {
+      "path": "lexicon/el/modern/λ.json.gz",
+      "sha256": "7c7bb1282930af8263aad2220b7d0f7a387e720a49b40c9652a10eaf6a6deecb"
+    },
+    {
+      "path": "lexicon/el/modern/μ.json.gz",
+      "sha256": "a1927a5172393341f7b8d49bed83d89dd8cdbeed458262f5d74a68e59817d8bb"
+    },
+    {
+      "path": "lexicon/el/modern/ν.json.gz",
+      "sha256": "b002c66209e93aee09abe80b5855286133392950d1b944cbcde0c31c434fde2a"
+    },
+    {
+      "path": "lexicon/el/modern/ξ.json.gz",
+      "sha256": "224b4a6e408d5d1fc1025159cd47fe79a443557feac9a335bd1631d2cd5641cf"
+    },
+    {
+      "path": "lexicon/el/modern/ο.json.gz",
+      "sha256": "0d0157af60720f69fc0648af78260d0547dcb19cc21136e903b281b935773e13"
+    },
+    {
+      "path": "lexicon/el/modern/π.json.gz",
+      "sha256": "de4709bf2047b9919630d5adfbd7b82d141ca5afddc4a7e1453b6f7d2c8996bf"
+    },
+    {
+      "path": "lexicon/el/modern/ρ.json.gz",
+      "sha256": "bb26ef3a2538f3239a53c7ff3e409a0803b6eda7e15e079f307fb91186ff50fa"
+    },
+    {
+      "path": "lexicon/el/modern/σ.json.gz",
+      "sha256": "6ab3426d39e839b352fe80eb493418ff79d0b37236f4a2f3d4311f94b1767199"
+    },
+    {
+      "path": "lexicon/el/modern/τ.json.gz",
+      "sha256": "55d1443abb865bd0f3ac941596d52b6aed97fd28a6a2ea597a3b79121d2ae6f8"
+    },
+    {
+      "path": "lexicon/el/modern/υ.json.gz",
+      "sha256": "7e0d24248c6bbc089637d4c63e71d8cebce509f83c0cadb6ac09bd674aba298b"
+    },
+    {
+      "path": "lexicon/el/modern/φ.json.gz",
+      "sha256": "0cd29bbf1647808658ef4587d8cbb577aaa72ef82b8b610584cb46e5dea39195"
+    },
+    {
+      "path": "lexicon/el/modern/χ.json.gz",
+      "sha256": "4b2bc386b314667480fd885bdac4953bf65fe836723482b67713ab94f585e93c"
+    },
+    {
+      "path": "lexicon/el/modern/ψ.json.gz",
+      "sha256": "5a0441f88392917edc6054772f67089504fde432502537d9109346ef0b228b5c"
+    },
+    {
+      "path": "lexicon/el/modern/ω.json.gz",
+      "sha256": "442503ffaa02569de038ce309fdaefb31faaa22c48ba3111840abc307a2b6f64"
+    },
+    {
+      "path": "lexicon/el/modern/ϛ.json.gz",
+      "sha256": "60630cef355c3d819ef9810e6f13eb40cce5d1e1ee4dc8e8cf658c6fda3956b2"
+    },
+    {
+      "path": "lexicon/el/modern/ϝ.json.gz",
+      "sha256": "0903375f420ebb82f7359ee2bd53478eaf56b8c9f7ee7830ec384bf386d45649"
+    },
+    {
+      "path": "lexicon/el/modern/ϟ.json.gz",
+      "sha256": "182eb0243995061e07a7cedb09f6061bee8fb75d736b24be77595c4250612877"
+    },
+    {
+      "path": "lexicon/el/modern/ϡ.json.gz",
+      "sha256": "69d0b10a5b060850fab4233aea69b522eb16d7635ca16eb7408f77d9c3eea3d6"
     },
     {
       "path": "lexicon/he/biblical/form-frequency.json.gz",
@@ -4043,7 +5732,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "b4ab82b04edb433ae7a2f3d068a3da1551cbae67fa24a8bc75a9e209706ba52e"
+      "sha256": "abcc0834abb04f6e04a96a5c9a2f10a12604191cbd343c0b51fe3b99e9084125"
     }
   ]
 }

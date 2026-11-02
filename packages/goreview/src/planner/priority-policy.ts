@@ -5,7 +5,7 @@
 import { KNOWLEDGE_LEVELS, selectReviewEvidenceEvents } from '../../../repository-contract/src';
 import type { GoEvent, KnowledgeLevel, UnitKnowledge } from '../../../repository-contract/src';
 
-export const KNOWABILITY_PRIORITY_POLICY_VERSION = 'knowability-priority@2';
+export const KNOWABILITY_PRIORITY_POLICY_VERSION = 'knowability-priority@3';
 export const DEFAULT_KNOWABILITY_WEIGHTS: Readonly<Record<KnowledgeLevel, number>> = Object.freeze({
   new: 0,
   seen: 15,

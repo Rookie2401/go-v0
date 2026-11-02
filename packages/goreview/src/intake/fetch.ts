@@ -43,7 +43,7 @@ const toRecord = (k: Record<string, UnitKnowledge> | UnitKnowledge[]): Record<st
   Array.isArray(k) ? Object.fromEntries(k.map((r) => [r.unitId, r])) : k;
 
 /** A facts provider that can fetch the Repository's units for many candidates at once (`createFactsProvider` does, over a client with `units`). */
-export type PrimableFacts = FactsProvider & { prime?(unitIds: string[]): Promise<void>; clearPrime?(): void };
+export type PrimableFacts = FactsProvider & { prime?(unitIds: string[], varietyId?: string): Promise<void>; clearPrime?(): void };
 
 export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[]> {
   const { preferences, deck, saved, now } = deps;
@@ -83,7 +83,7 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
   const factsByUnit = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
   const factErrors = new Map<string, string>();
   try {
-    try { await (deps.facts as PrimableFacts).prime?.(factsWanted); } catch { /* factsFor still works one by one */ }
+    try { await (deps.facts as PrimableFacts).prime?.(factsWanted, preferences.varietyId); } catch { /* factsFor still works one by one */ }
     for (let i = 0; i < factsWanted.length; i += FACTS_LOOKUP_PARALLEL) {
       const group = factsWanted.slice(i, i + FACTS_LOOKUP_PARALLEL);
       await Promise.all(group.map(async (id) => {
@@ -177,6 +177,7 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
     }
   }
   const outcomeKey = (outcome: IntakeOutcome): string => `${outcome.unitId}|${outcome.proposed?.dimension ?? ''}`;
-  const ranked = new Map(rankComparativePriority(out, { limit: preferences.maxNew, prioritizeSaved: preferences.prioritizeSaved }).map((outcome) => [outcomeKey(outcome), outcome] as const));
+  const ranked = new Map(rankComparativePriority(out, { limit: preferences.maxNew, prioritizeSaved: preferences.prioritizeSaved,
+    readingSignals: deps.readingSignals, languageId: preferences.languageId, now }).map((outcome) => [outcomeKey(outcome), outcome] as const));
   return out.map((outcome) => ranked.get(outcomeKey(outcome)) ?? outcome);
 }

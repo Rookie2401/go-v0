@@ -5,11 +5,12 @@
  * (`planCurrentDeck(...).plan`) and gives EVERY deck card, every class card and every intake outcome exactly one row with a
  * stable machine-readable `code` (the engine's `ExclusionCode`). It writes nothing and changes no ordering or count.
  *
- * Privacy. Rows carry unit ids and scheduling numbers only. The word itself (`label`) appears ONLY when the caller asks for
- * it (`includeLabels`). Never a sentence, a gloss, a credential or the learner's email; detail text is built from codes,
- * dates and engine reason strings, and any occurrence of the word inside a reason is masked unless labels are requested.
+ * Privacy. Rows carry unit ids, queue/rank metadata and scheduling numbers. Unit ids can contain word forms. The resolved
+ * label (`label`) appears ONLY when the caller asks for it (`includeLabels`). Never a sentence, a gloss, a credential or the
+ * learner's email; detail text is built from codes, dates and engine reason strings, and masks matching labels by default.
  */
 import { KNOWABILITY_PRIORITY_POLICY_VERSION } from '../src/planner/priority-policy';
+import { admissionBudget } from '../src/planner/budget';
 import { createFsrsScheduler } from '../src/scheduler/fsrs';
 import { schedulerForReviewProfile } from '../src/scheduler/replay-profile';
 import { itemIdFor } from '../src/scheduler/deck';
@@ -35,6 +36,8 @@ export interface SelectionRow {
   reps?: number;
   queue?: string;
   intakeDecision?: string;
+  /** Comparative position among candidates that passed intake, not a promise of final inclusion. */
+  intakeRank?: { position: number; of: number; comparisonScore?: number; candidateScore?: number; readingRelevance?: number };
   /** Present only when `includeLabels` was requested. */
   label?: string;
 }
@@ -44,6 +47,29 @@ export interface SelectionReport {
   languageId: string;
   policy: { algorithm: string; parametersVersion: string; priorityPolicyVersion: string };
   counts: { vocabularyUnits: number; knowledgeRows: number; candidates: number; deckCards: number; classCards: number; selected: number; skipped: number; withheld: number };
+  planning: {
+    currentDeckItemsInPlan: number;
+    reviewDeckItemsInPlan: number;
+    remediationItemsInPlan: number;
+    selectedNew: number;
+    targetQuestions: number;
+    availableQuestions: number;
+    availableNewQuestions: number;
+    cardsPerDeck: number;
+    maxNewPerSession: number;
+    dailyNewAllowanceRemaining: number;
+    workloadLimitSeconds: number;
+    selectedEstimatedSeconds: number;
+  };
+  freshness: {
+    candidates: ReviewModel['candidateSource'];
+    knowledge: { source: string; fetchedAt?: string; requested?: number; resolved?: number; missing?: number };
+  };
+  coverage: {
+    candidateFormsMergedToVerifiedBaseWord: number;
+    verifiedBaseWordsInCandidateMerge: number;
+    proposedSkills: string[];
+  };
   knowledge?: unknown;
   rows: SelectionRow[];
 }
@@ -141,7 +167,9 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
     const cardId = o.proposed ? itemIdFor(o.unitId, o.proposed.dimension) : undefined;
     const base = { unitId: o.unitId, ...(cardId ? { cardId } : {}), ...(o.proposed ? { dimension: o.proposed.dimension, family: o.proposed.family } : {}), kind: 'candidate' as const };
     const level = o.knowledge?.level ?? levelOf.get(o.unitId);
-    const tail = { ...(level ? { level } : {}), intakeDecision: o.decision, ...labelProps(o.unitId) };
+    const rankText = o.reasons.join(' ').match(/candidate rank (\d+) of (\d+) \(comparison ([\d.]+); base score ([\d.]+); reading usefulness ([\d.]+)/i);
+    const intakeRank = rankText ? { position: Number(rankText[1]), of: Number(rankText[2]), comparisonScore: Number(rankText[3]), candidateScore: Number(rankText[4]), readingRelevance: Number(rankText[5]) } : undefined;
+    const tail = { ...(level ? { level } : {}), intakeDecision: o.decision, ...(intakeRank ? { intakeRank } : {}), ...labelProps(o.unitId) };
     const finish = (status: SelectionRow['status'], code: ExclusionCode, detail: string, queue?: string): SelectionRow =>
       ({ ...base, status, code, detail: scrub(detail, o.unitId), ...(queue ? { queue } : {}), ...tail });
     const planned = cardId ? plannedById.get(cardId) : undefined;
@@ -159,7 +187,7 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
       const facts = /fact|validat|exercise/i.test(o.reasons.join(' '));
       return finish('excluded', facts ? 'facts-unavailable' : 'other', o.decision);
     }
-    return finish('excluded', 'other', o.decision);
+    return finish('excluded', 'other', o.reasons.length ? o.reasons.join('; ') : o.decision);
   };
 
   for (const o of model.outcomes) rows.push(outcomeRow(o));
@@ -176,6 +204,15 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
   for (const o of model.outcomes) units.add(o.unitId);
   for (const k of model.knowledge) units.add(k.unitId);
   const withheld = optional.withheld;
+  const dailyBudget = admissionBudget(model.events, { learnerId: model.identity.learnerId, languageId: model.identity.languageId,
+    now: model.now, maxNew: model.prefs.maxNew, dailyNewLimit: model.prefs.dailyNewLimit ?? model.prefs.maxNew });
+  const knowledgeStatus = optional.knowledgeStatus as { source?: unknown; fetchedAt?: unknown; requested?: unknown; resolved?: unknown; missing?: unknown } | undefined;
+  const canonicalMergeTargets = new Set<string>();
+  let candidateFormsMergedToVerifiedBaseWord = 0;
+  for (const outcome of model.outcomes) {
+    const target = outcome.reasons.map(reason => reason.match(/merged into canonical lexeme ([^ ]+) through one reliable lexical form-of relation/i)?.[1]).find(Boolean);
+    if (target) { canonicalMergeTargets.add(target); candidateFormsMergedToVerifiedBaseWord++; }
+  }
   return {
     generatedAt: model.now,
     languageId: model.identity.languageId,
@@ -185,6 +222,35 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
       deckCards: model.deck.length, classCards: classDeck.length,
       selected: rows.filter(r => r.status === 'selected').length, skipped: plan.skipped.length,
       withheld: Array.isArray(withheld) ? withheld.length : typeof withheld === 'number' ? withheld : 0,
+    },
+    planning: {
+      currentDeckItemsInPlan: plan.items.filter(p => p.queue === 'new' || p.queue === 'learning').length,
+      reviewDeckItemsInPlan: plan.items.filter(p => p.queue === 'due').length,
+      remediationItemsInPlan: plan.items.filter(p => p.queue === 'remediation').length,
+      selectedNew: plan.newCount,
+      targetQuestions: plan.batch?.targetQuestions ?? plan.questionLimit ?? plan.items.length,
+      availableQuestions: plan.availableWork?.questions ?? plan.items.length,
+      availableNewQuestions: plan.availableWork?.newQuestions ?? plan.newCount,
+      cardsPerDeck: model.prefs.cardsPerDeck ?? 10,
+      maxNewPerSession: model.prefs.maxNew,
+      dailyNewAllowanceRemaining: dailyBudget.remaining,
+      workloadLimitSeconds: plan.batch?.workloadLimit ?? 0,
+      selectedEstimatedSeconds: plan.items.reduce((sum, p) => sum + p.estimatedSeconds, 0),
+    },
+    freshness: {
+      candidates: model.candidateSource,
+      knowledge: {
+        source: typeof knowledgeStatus?.source === 'string' ? knowledgeStatus.source : 'unknown',
+        ...(typeof knowledgeStatus?.fetchedAt === 'string' ? { fetchedAt: knowledgeStatus.fetchedAt } : {}),
+        ...(typeof knowledgeStatus?.requested === 'number' ? { requested: knowledgeStatus.requested } : {}),
+        ...(typeof knowledgeStatus?.resolved === 'number' ? { resolved: knowledgeStatus.resolved } : {}),
+        ...(Array.isArray(knowledgeStatus?.missing) ? { missing: knowledgeStatus.missing.length } : {}),
+      },
+    },
+    coverage: {
+      candidateFormsMergedToVerifiedBaseWord,
+      verifiedBaseWordsInCandidateMerge: canonicalMergeTargets.size,
+      proposedSkills: [...new Set(model.outcomes.flatMap(o => o.proposed ? [o.proposed.family] : []))].sort(),
     },
     ...(optional.knowledgeStatus !== undefined ? { knowledge: optional.knowledgeStatus } : {}),
     rows,

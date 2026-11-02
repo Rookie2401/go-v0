@@ -98,5 +98,13 @@ describe('event-only Biblical Hebrew recovery', () => {
       const facts = await provider.factsFor(unitId, 'he', 'he-bib');
       expect(facts?.glosses, label).toEqual([]);
     }
+    const engine = createReviewEngine({ builders: registry, evidenceFor, ratingFor, now: () => NOW, random: () => 0.5,
+      factsFor: packFactsFor({ fetch: files, baseUrl: 'http://assets.local/' }) });
+    for (const [unitId, label] of cases) {
+      const readiness = await engine.exerciseReadiness!({ unitId, unitKind: 'form', languageId: 'he', varietyId: 'he-bib',
+        dimension: 'written-recognition', family: 'written-recognition', api, now: NOW });
+      expect(readiness.available, label).toBe(false);
+      expect(readiness.retryable, label).toBe(false);
+    }
   });
 });

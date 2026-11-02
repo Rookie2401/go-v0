@@ -16,7 +16,7 @@ const failure = (over: Partial<GoEvent> = {}): GoEvent => ({
 
 describe('versioned Knowability policy and transparent priority', () => {
   it('publishes the experimental defaults separately from FSRS', () => {
-    expect(KNOWABILITY_PRIORITY_POLICY_VERSION).toBe('knowability-priority@2');
+    expect(KNOWABILITY_PRIORITY_POLICY_VERSION).toBe('knowability-priority@3');
     expect(DEFAULT_KNOWABILITY_WEIGHTS).toEqual({ new: 0, seen: 15, recognized: 100, familiar: 100, known: 25, automatic: 3 });
   });
 

@@ -66,11 +66,11 @@ describe('the candidate list', () => {
     expect(row('det').getAttribute('data-decision')).toBe('low-priority');
     expect(row('diell').getAttribute('data-decision')).toBe('low-priority');
     expect(row('hene').getAttribute('data-decision')).toBe('low-priority');
-    expect(row('hene').querySelector('.reason')!.textContent).toContain('comparative priority');
+    expect(row('hene').querySelector('.reason')!.textContent).toContain('Candidate rank compares the words');
     expect(row('zog').getAttribute('data-decision')).toBe('already-covered');
     expect(row('zog').querySelector('.reason')!.textContent).toContain('already in the deck');
     const why = row('hene').querySelector('details.why')!;
-    expect(why.textContent).toContain('Low comparative priority');
+    expect(why.textContent).toContain('Lower candidate rank');
   });
 
   it('"Test now" selects optional recognition practice without creating scheduling history', async () => {

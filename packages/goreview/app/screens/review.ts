@@ -110,7 +110,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const local = await homeLocal(ctx).catch(() => undefined);
     const now = ctx.deps.now().getTime();
     const memo = local ? painted.get(ctx)?.get(local.id) : undefined;
-    if (!force && memo && local && memo.key === local.key && now - memo.at < HOME_MEMO_MS && !scheduleMovedSince(memo.model, now) && !planCouldHaveChanged(memo.model, now)) {
+    const memoTtl = memo && (memo.model.candidateSource === 'cached' || memo.model.knowledgeStatus.source === 'partial' || memo.model.candidateRecoveryIncomplete || memo.model.candidateReadinessIncomplete)
+      ? 30_000 : HOME_MEMO_MS;
+    if (!force && memo && local && memo.key === local.key && now - memo.at < memoTtl && !scheduleMovedSince(memo.model, now) && !planCouldHaveChanged(memo.model, now)) {
       if (!view.alive()) return;
       paintedEvents = memo.model.events.length;
       draw(memo.model, memo.deck, memo.review, memo.resumeId, memo.saved, memo.words, memo.selectedCount, memo.vocabCompleteness);
@@ -135,7 +137,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     }
     const id = model.identity;
     const homeId = `${id.learnerId}|${id.enrolmentId}`;
-    if (model.candidateRecoveryIncomplete) painted.get(ctx)?.delete(homeId);
     // the local stores are read after the model: loading it may have brought decks and preferences back from the snapshot (restoreMissing)
     const [holdOut, saved, resumable, snapshot] = await Promise.all([
       holdOutOf(ctx, id.learnerId, id.languageId),
@@ -161,7 +162,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     // the key as the stores stand now, after the paint (a restored deck or preference is part of it)
     const after = await homeLocal(ctx).catch(() => undefined);
     const same = after && after.id === homeId ? after : undefined;
-    if (same && !model.candidateRecoveryIncomplete) {
+    if (same) {
       const map = painted.get(ctx) ?? new Map<string, PaintedHome>();
       map.set(same.id, { key: same.key, at: now, model, deck, review, selectedCount: selected.length, resumeId: resumable[0]?.sessionId, saved: saved.length, words, vocabCompleteness });
       painted.set(ctx, map);
@@ -211,6 +212,19 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     return h('section', { class: 'entry', 'data-entry': 'vocab' },
       h('a', { class: 'entry-link', href: '#/review/vocab', id: 'entry-vocab' },
         h('span', { class: 'entry-title' }, 'My vocab'), kicker));
+  }
+
+  function candidateFreshness(model: ReviewModel): HTMLElement | null {
+    const status = model.knowledgeStatus;
+    if (model.candidateSource === 'cached') {
+      const readiness = model.candidateReadinessIncomplete ? ' Some exercises could not be checked yet.' : '';
+      return h('p', { class: 'muted', id: 'candidate-freshness', 'data-source': status.source }, `Using saved word data from ${when(status.fetchedAt)}.${readiness}`);
+    }
+    if (status.source === 'partial' || model.candidateRecoveryIncomplete || model.candidateReadinessIncomplete) {
+      return h('p', { class: 'muted', id: 'candidate-freshness', 'data-source': status.source }, model.candidateReadinessIncomplete
+        ? 'Some exercises could not be checked; this view may be incomplete.' : 'Some word data could not be refreshed; this view may be incomplete.');
+    }
+    return null;
   }
 
   async function begin(m: ReviewModel, part: DeckPart): Promise<void> {
@@ -310,6 +324,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     return h('section', { class: 'entry entry-goreview', 'data-entry': 'deck', id: 'current-deck' },
       h('h2', { class: 'entry-title' }, 'GoReview'),
       m.schedulerIssue ? p(m.schedulerIssue, 'notice') : null,
+      candidateFreshness(m),
       resumeId ? h('p', { class: 'deck-resume' }, h('span', { class: 'muted' }, 'A deck is in progress.'), ' ',
         button('Resume', () => { void resume(resumeId); }, { class: 'btn primary', id: 'resume-session', 'data-action': 'resume-session' })) : null,
       h('div', { class: 'deck-row', 'data-deck': 'current' }, current, newDeck),

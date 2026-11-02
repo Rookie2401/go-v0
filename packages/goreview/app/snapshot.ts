@@ -17,6 +17,9 @@ import type { UnitKnowledge } from '../../repository-contract/src';
 import type { IntakeOutcome, ReviewPreferences } from '../src/types';
 import type { AppContext } from './context';
 import { snapshotKey } from './state';
+import { KNOWABILITY_PRIORITY_POLICY_VERSION } from '../src/planner/priority-policy';
+
+export const RECOVERY_SCOPE_VERSION = 'pack-derived-canonical-unit-recovery@2';
 
 /** Most words kept: a phone's storage is small, and the list is a fallback, not the source. */
 export const MAX_SNAPSHOT_WORDS = 6000;
@@ -24,10 +27,10 @@ export const MAX_SNAPSHOT_WORDS = 6000;
 export interface SnapshotVocabRow { unitId: string; label: string; level: string; encounters: number; lastSeenAt?: string; metAs?: string[]; kind?: string; unitIds?: string[] }
 
 export interface ReviewSnapshot {
-  v: 1;
+  v: 2;
   savedAt: string;
   vocab?: { savedAt: string; rows: SnapshotVocabRow[] };
-  model?: { savedAt: string; outcomes: IntakeOutcome[]; knowledge: UnitKnowledge[] };
+  model?: { savedAt: string; contextVersion?: 2; priorityPolicyVersion?: string; recoveryScopeVersion?: string; enrolmentId?: string; varietyId?: string; objectives?: string[]; outcomes: IntakeOutcome[]; knowledge: UnitKnowledge[]; candidates?: import('../../repository-contract/src').ReviewCandidate[]; markEventIds?: Record<string, string> };
   decks?: unknown;
   prefs?: ReviewPreferences;
 }
@@ -39,11 +42,17 @@ export async function readSnapshot(ctx: AppContext, learnerId: string, languageI
   const key = snapshotKey(learnerId, languageId);
   try {
     const raw = (await ctx.deps.area.get(key))[key];
-    if (!isObj(raw) || raw.v !== 1 || typeof raw.savedAt !== 'string') return undefined;
-    const out: ReviewSnapshot = { v: 1, savedAt: raw.savedAt };
+    if (!isObj(raw) || (raw.v !== 1 && raw.v !== 2) || typeof raw.savedAt !== 'string') return undefined;
+    const out: ReviewSnapshot = { v: 2, savedAt: raw.savedAt };
     if (isObj(raw.vocab) && Array.isArray(raw.vocab.rows) && typeof raw.vocab.savedAt === 'string') out.vocab = raw.vocab as unknown as NonNullable<ReviewSnapshot['vocab']>;
     if (isObj(raw.model) && Array.isArray(raw.model.outcomes) && typeof raw.model.savedAt === 'string') {
-      out.model = { savedAt: raw.model.savedAt, outcomes: raw.model.outcomes as IntakeOutcome[], knowledge: Array.isArray(raw.model.knowledge) ? raw.model.knowledge as UnitKnowledge[] : [] };
+      const model = raw.model;
+      if (model.contextVersion === 2 && model.priorityPolicyVersion === KNOWABILITY_PRIORITY_POLICY_VERSION && model.recoveryScopeVersion === RECOVERY_SCOPE_VERSION && typeof model.enrolmentId === 'string' && Array.isArray(model.objectives) && Array.isArray(model.candidates) && isObj(model.markEventIds)) {
+        out.model = { savedAt: String(model.savedAt), contextVersion: 2, priorityPolicyVersion: KNOWABILITY_PRIORITY_POLICY_VERSION, recoveryScopeVersion: RECOVERY_SCOPE_VERSION, enrolmentId: String(model.enrolmentId),
+          ...(typeof model.varietyId === 'string' ? { varietyId: model.varietyId } : {}), objectives: model.objectives as string[],
+          outcomes: model.outcomes as IntakeOutcome[], knowledge: Array.isArray(model.knowledge) ? model.knowledge as UnitKnowledge[] : [],
+          candidates: model.candidates as import('../../repository-contract/src').ReviewCandidate[], markEventIds: model.markEventIds as Record<string, string> };
+      }
     }
     if (raw.decks !== undefined) out.decks = raw.decks;
     if (isObj(raw.prefs)) out.prefs = raw.prefs as unknown as ReviewPreferences;
@@ -59,11 +68,11 @@ const memoOf = (ctx: AppContext): Map<string, string> => { let m = memos.get(ctx
 export async function writeSnapshot(ctx: AppContext, learnerId: string, languageId: string, patch: Partial<Pick<ReviewSnapshot, 'vocab' | 'model'>>): Promise<void> {
   try {
     const key = snapshotKey(learnerId, languageId);
-    const cur = (await readSnapshot(ctx, learnerId, languageId)) ?? { v: 1 as const, savedAt: '' };
+    const cur = (await readSnapshot(ctx, learnerId, languageId)) ?? { v: 2 as const, savedAt: '' };
     const decksKey = `gopractice:decks:${learnerId}:${languageId}`;
     const prefs = await ctx.state.getPrefs(learnerId, languageId);
     const decks = (await ctx.deps.area.get(decksKey))[decksKey];
-    const next: ReviewSnapshot = { ...cur, ...patch, v: 1, savedAt: ctx.deps.now().toISOString(), prefs, ...(decks !== undefined ? { decks } : {}) };
+    const next: ReviewSnapshot = { ...cur, ...patch, v: 2, savedAt: ctx.deps.now().toISOString(), prefs, ...(decks !== undefined ? { decks } : {}) };
     // the signature leaves the timestamps out: only a real change is worth a write
     const sig = JSON.stringify({ ...next, savedAt: 0, vocab: next.vocab && { ...next.vocab, savedAt: 0 }, model: next.model && { ...next.model, savedAt: 0 } });
     const memo = memoOf(ctx);

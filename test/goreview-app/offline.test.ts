@@ -9,7 +9,8 @@ import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
 import { decksKey } from '../../packages/goreview/app/deckModel';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
-import { readSnapshot, writeSnapshot } from '../../packages/goreview/app/snapshot';
+import { KNOWABILITY_PRIORITY_POLICY_VERSION } from '../../packages/goreview/src/planner/priority-policy';
+import { readSnapshot, RECOVERY_SCOPE_VERSION, writeSnapshot } from '../../packages/goreview/app/snapshot';
 import { candidate, knowledgeRow, cardAdded, defaultService, destroyRigs, dueCard, flush, ids, makeRig, queued, reopen, seed, until, unitOf, type Rig, readyCards } from './helpers';
 
 const A = ids('L1', 'sq');
@@ -100,7 +101,17 @@ describe('offline: the home keeps its deck', () => {
       includeListening: false, grammarShare: 0.2, prioritizeSaved: true, practiceGoals: ['recognition'] });
     await seed(rig, dueCard(A, 'mace', 'meaning-to-form'));
     const stale = candidate('det', 0.8, { objectiveDimension: 'productiveRetrieval' });
-    await writeSnapshot(rig.app.ctx, 'L1', 'sq', { model: { savedAt: '2026-10-08T10:00:00.000Z', knowledge: [], outcomes: [{
+    const identity = (await rig.app.ctx.identity())!;
+    const prefs = await rig.app.ctx.state.getPrefs('L1', 'sq');
+    const objectives = [
+      ...(prefs.practiceGoals?.includes('retrieval') ? ['productiveRetrieval'] : []),
+      ...(prefs.practiceGoals?.includes('application') ? ['grammaticalUnderstanding', 'contextualProduction'] : []),
+      ...(prefs.includeListening && prefs.practiceGoals?.includes('listening') ? ['listeningRecognition'] : []),
+      ...(prefs.practiceGoals?.includes('recognition') ? ['readingRecognition'] : []),
+    ];
+    await writeSnapshot(rig.app.ctx, 'L1', 'sq', { model: { savedAt: '2026-10-08T10:00:00.000Z', contextVersion: 2,
+      priorityPolicyVersion: KNOWABILITY_PRIORITY_POLICY_VERSION, recoveryScopeVersion: RECOVERY_SCOPE_VERSION,
+      enrolmentId: identity.enrolmentId, objectives, candidates: [stale], markEventIds: {}, knowledge: [], outcomes: [{
       unitId: stale.unitId, candidate: stale, decision: 'test-now', reasons: ['saved productive proposal'],
       proposed: { dimension: 'meaning-to-target-retrieval', family: 'meaning-to-form' },
     }] } });

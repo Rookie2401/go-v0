@@ -102,7 +102,7 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
   // the fallback when a batch read is unavailable.
   if (ctx.engine.primeFacts && !opts.unchecked) {
     const probe = [...new Set(wanted.filter((w) => !holds(w) && !(isAudio(w.family) && !listeningOk)).slice(0, (size + 4) * 3).map((w) => w.unitId))];
-    if (probe.length) { try { await ctx.engine.primeFacts(model.identity.languageId, api, probe); } catch { /* factsFor still answers one by one */ } }
+    if (probe.length) { try { await ctx.engine.primeFacts(model.identity.languageId, api, probe, model.identity.varietyId); } catch { /* factsFor still answers one by one */ } }
   }
   try {
   let remainingNew = Math.min(model.prefs.maxNew, budgetFor(model).remaining);
@@ -211,7 +211,8 @@ export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdO
 export function planFreshDeck(ctx: AppContext, model: ReviewModel, setAside: ReadonlySet<string>): Promise<CurrentDeck> {
   const key = (o: IntakeOutcome): string => `${o.unitId}|${o.proposed?.dimension ?? ''}`;
   const rest = model.outcomes.filter((o) => !setAside.has(o.unitId));
-  const ranked = new Map(rankComparativePriority(rest, { limit: model.prefs.maxNew, prioritizeSaved: model.prefs.prioritizeSaved }).map((o) => [key(o), o] as const));
+  const ranked = new Map(rankComparativePriority(rest, { limit: model.prefs.maxNew, prioritizeSaved: model.prefs.prioritizeSaved,
+    readingSignals: model.events, languageId: model.identity.languageId, now: model.now }).map((o) => [key(o), o] as const));
   return planCurrentDeck(ctx, { ...model, outcomes: rest.map((o) => ranked.get(key(o)) ?? o) }, setAside, undefined, 'current');
 }
 

@@ -22,7 +22,7 @@ import type { Tutorial } from '../../../language-packs/src/tutorial/types';
 import type { AnalysisCandidate, AnalyzedToken, PhraseCandidate, RawToken } from '../../../../src/core';
 import { projectWordAnalysis } from '../../../../src/core/word-analysis';
 import { greekWordAnalysis } from '../../../../src/adapters/greek/word-analysis';
-import type { ExampleSentence, FactsProvider } from '../types';
+import type { ExampleSentence, FactsProvider, UnitFacts } from '../types';
 import type { ExampleReading, FeatureDef, FormGroup, FormInfo, ReviewFacts } from './review-facts';
 
 // ───────────────────────────── dependencies ─────────────────────────────
@@ -38,9 +38,13 @@ export interface FactsAdapter {
   describeMorph?(morph: Record<string, string>, pos?: AnalysisCandidate['pos']): string;
   detectPhrases?(tokens: RawToken[], analyses: AnalyzedToken[]): PhraseCandidate[];
   pronunciation?(token: RawToken, analysis?: AnalyzedToken): { notes?: string[] };
+  readonly sources?: Readonly<Record<string, { label: string; licence?: string }>>;
 }
 
 export interface RepositoryUnit { unit: LinguisticUnit; relations: UnitRelation[]; analyses: FormAnalysis[] }
+export type AttestedFormLemma =
+  | { lemma: string; pos?: string; status?: undefined; reason?: undefined }
+  | { status: 'ambiguous'; reason: string; lemma?: never; pos?: never };
 
 /**
  * Which manifest construction a feature structure realises. The manifest names constructions in prose only
@@ -66,7 +70,9 @@ export const SQ_CONSTRUCTION_PATTERNS: ConstructionPattern[] = [
 export interface FactsProviderDeps {
   /** The Repository lookup (`RepositoryApi.unit` adapted, or a fake): undefined when the Repository does not know the unit. */
   unit(unitId: string): Promise<RepositoryUnit | undefined>;
-  pack: { manifest: PackManifest; runtime: { gloss(lemma: string, pos?: string, forms?: readonly string[]): Promise<GlossResult | undefined> } };
+  pack: { manifest: PackManifest; runtime: { gloss(lemma: string, pos?: string, forms?: readonly string[]): Promise<GlossResult | undefined> }; attestedFormLemma?(form: string): Promise<AttestedFormLemma | undefined> };
+  /** Monotonic count of failed pack dictionary asset fetches; used to distinguish missing data from transient source faults. */
+  sourceFailureCount?(): number;
   adapter: FactsAdapter;
   /** The pack's orientation (its passage and example sentences). Default: the Albanian tutorial for `sq`, none otherwise. */
   tutorial?: Tutorial | null;
@@ -204,7 +210,7 @@ interface Sent { text: string; source: ExampleSentence['source']; occs: Occ[]; p
 
 // ───────────────────────────── the provider ─────────────────────────────
 
-export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { prime(unitIds: string[]): Promise<void>; clearPrime(): void } {
+export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { prime(unitIds: string[]): Promise<void>; clearPrime(): void; clearSentenceCache(): void } {
   const { adapter, pack } = deps;
   const manifest = pack.manifest;
   const lang = manifest.languageId;
@@ -353,10 +359,11 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     }
   }
 
-  async function glossesOf(lemma: string, pos: string | undefined, lexicon: string[], forms?: readonly string[], inflectedOnly = false, features: Record<string, string> = {}): Promise<{ glosses: string[]; lexiconCount: number; attribution?: string }> {
+  async function glossesOf(lemma: string, pos: string | undefined, lexicon: string[], forms?: readonly string[], inflectedOnly = false, features: Record<string, string> = {}): Promise<{ glosses: string[]; lexiconCount: number; attribution?: string; sourceFailed?: boolean }> {
     const glosses = [...new Set(lexicon.filter((g) => g && g.trim()))];
     const lexiconCount = glosses.length;
     let attribution: string | undefined;
+    let sourceFailed = false;
     try {
       // A form unit may have dictionary senses of its own. Ask with that surface first,
       // without falling through to the lemma: its gloss may describe a different person, tense, or mood.
@@ -377,8 +384,8 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
         }
         if (taken > 0) attribution = d.attribution || manifest.lexical.dictionary?.attribution;
       }
-    } catch { /* an absent dictionary leaves the word-list gloss alone */ }
-    return { glosses, lexiconCount, ...(attribution ? { attribution } : {}) };
+    } catch { sourceFailed = true; /* an absent dictionary leaves the word-list gloss alone */ }
+    return { glosses, lexiconCount, ...(attribution ? { attribution } : {}), ...(sourceFailed ? { sourceFailed: true } : {}) };
   }
 
   /** Refuse a first-person answer for a form the adapter explicitly analysed as second/third person. */
@@ -478,6 +485,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
 
   // ───────── form ─────────
   async function formFacts(unitId: string, rec: RepositoryUnit | undefined): Promise<ReviewFacts | undefined> {
+    const sourceFailuresBefore = deps.sourceFailureCount?.() ?? 0;
     const formNorm = unitId.slice(`form:${lang}:`.length);
     if (!formNorm) return undefined;
     const label = rec?.unit.label || formNorm;
@@ -504,12 +512,15 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     }
     let alone: AnalyzedToken | undefined;
     try { alone = adapter.analyze(adapter.tokenize(label), deps.varietyId ? { varietyId: deps.varietyId } : undefined).find((a) => a.token.isWord); } catch { alone = undefined; }
+    let attestedGermanLink: AttestedFormLemma | undefined;
+    let germanFormsSourceFailed = false;
+    if (lang === 'de') { try { attestedGermanLink = await pack.attestedFormLemma?.(formNorm); } catch { germanFormsSourceFailed = true; } }
     if (!lemma) {
       const o = sentences().flatMap((s) => s.occs).find((x) => x.normalized === formNorm && x.top?.lemma);
       const c = o?.top ?? alone?.candidates[0];
       if (c?.lemma) { lemma = c.lemma; lemmaPos = c.pos; }
     }
-    if (!rec && !lemma && !alone?.candidates.length) return undefined;
+    if (!rec && !lemma && !alone?.candidates.length && !attestedGermanLink) return undefined;
 
     const pos = rec?.unit.pos ?? lemmaPos;
     const occFilter = (o: Occ): boolean => o.normalized === formNorm && (!lemma || lemmaMatches(o, lemma, lemmaPos));
@@ -549,13 +560,14 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     let g: Awaited<ReturnType<typeof glossesOf>> = lemma
       ? await glossesOf(lemma, lemmaPos ?? pos, [], [label], true, features)
       : { glosses: [], lexiconCount: 0 };
+    let surfaceSourceFailed = false;
     if (!lemma && !g.glosses.length) {
       try {
         const surfaceGloss = await pack.runtime.gloss(label, pos);
         if (surfaceGloss?.senses.length && !surfaceGloss.via) {
           g = { glosses: [...new Set(surfaceGloss.senses.map((s) => s.gloss).filter((gloss) => !!gloss && !firstPersonVerbGlossMismatch(gloss, pos, [label], features)))], lexiconCount: 0, attribution: surfaceGloss.attribution };
         }
-      } catch { /* an absent dictionary leaves this surface-only fact without an answer */ }
+      } catch { surfaceSourceFailed = true; /* an absent dictionary leaves this surface-only fact without an answer */ }
     }
     const siblings = lemma ? formsOfLemma(lemma, lemmaPos).filter((f) => f.surface !== formNorm) : [];
     const constructionId = pos && Object.keys(features).length ? unitIds.morph(lang, pos, unitIds.featureKey(features)) : undefined;
@@ -576,12 +588,68 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       : lang === 'he' && citationNounGloss && !g.glosses.length
         ? [lexCand!.gloss!]
         : g.glosses;
+    let lexicalRecognition: UnitFacts['lexicalRecognition'];
+    const greekBaseGloss = topAlone?.gloss;
+    const greekIdentities = new Set((alone?.candidates ?? []).map(c => `${adapter.normalize(c.lemma ?? '')}|${c.pos ?? ''}`));
+    if (!answerGlosses.length && !['invalidated', 'conflicted', 'requires-review'].includes(status) && lang === 'el' && lemma && greekBaseGloss
+      && topAlone?.origin === 'dictionary' && !topAlone.unconfirmed
+      && ['morphgnt-sblgnt', 'kaikki-grc-tables', 'kaikki-el-tables'].includes(topAlone.sourceId ?? '')
+      && alone?.candidates.length && greekIdentities.size === 1
+      && greekIdentities.has(`${adapter.normalize(lemma)}|${topAlone.pos ?? ''}`)
+      && alone.candidates.every(c => c.origin === 'dictionary' && !c.unconfirmed && c.sourceId === topAlone.sourceId
+        && (!deps.varietyId || !c.varieties?.length || c.varieties.includes(deps.varietyId)))
+      && topAlone.lemma && adapter.normalize(topAlone.lemma) === adapter.normalize(lemma)
+      && topAlone.pos === pos) {
+      const source = adapter.sources?.[topAlone.sourceId!];
+      lexicalRecognition = { status: 'verified', lemma, pos: topAlone.pos, glosses: [greekBaseGloss], source: topAlone.sourceId,
+        attribution: source ? `${source.label}${source.licence ? ` — ${source.licence}` : ''}` : topAlone.sourceId,
+        evidence: 'attested-form-reading' };
+    }
+    let germanGlossSourceFailed = false;
+    if (!answerGlosses.length && !['invalidated', 'conflicted', 'requires-review'].includes(status) && lang === 'de') {
+      try {
+        const link = attestedGermanLink;
+        if (link?.status === 'ambiguous') lexicalRecognition = { status: 'withheld', reason: link.reason ?? 'The dictionary records several different lemma readings for this form.' };
+        else if (link) {
+          const dictionary = await pack.runtime.gloss(link.lemma, link.pos);
+          const glosses = [...new Set((dictionary?.senses ?? []).filter(s => !link.pos || s.pos === link.pos).map(s => s.gloss.trim()).filter(Boolean))];
+          if (glosses.length && dictionary?.attribution) lexicalRecognition = { status: 'verified', lemma: link.lemma, pos: link.pos ?? pos,
+            glosses, source: manifest.lexical.dictionary?.id ?? 'Wiktionary via kaikki.org', attribution: dictionary.attribution,
+            evidence: 'attested-form-reading' };
+        }
+      } catch { germanGlossSourceFailed = true; /* a missing/offline dictionary withholds the base-meaning exercise */ }
+    }
+    if (!answerGlosses.length && lang === 'el' && !lexicalRecognition) {
+      const identities = new Set((alone?.candidates ?? []).map(c => `${adapter.normalize(c.lemma ?? '')}|${c.pos ?? ''}`));
+      const reason = identities.size > 1 ? 'The attested readings do not identify one Greek lemma and part of speech.'
+        : topAlone?.origin !== 'dictionary' ? 'The form is supported only by a rule reading, not an attested form source.'
+          : !greekBaseGloss || lexCand?.unconfirmed ? 'The attested lemma has no confirmed base-meaning gloss.'
+            : 'The form-to-lemma evidence did not pass the single-lexeme source checks.';
+      lexicalRecognition = { status: 'withheld', reason };
+    }
+    const lexicalRelation = lexicalRecognition?.status === 'verified' && lexicalRecognition.lemma && lexicalRecognition.pos
+      && !['invalidated', 'conflicted', 'requires-review'].includes(status)
+      && !(rec?.relations ?? []).some(relation => relation.fromId === unitId && relation.relation === 'form-of')
+      ? [{ fromId: unitId, relation: 'form-of' as const, toId: unitIds.lexeme(lang, lexicalRecognition.lemma, lexicalRecognition.pos),
+          confidence: 0.9,
+          provenance: { source: 'dictionary' as const, ref: lexicalRecognition.source ?? 'attested-form-reading', confidence: 0.9 },
+          // This status is for the explicit lexical form→lemma link only; the form's own `status` remains unchanged.
+          status: 'high-confidence' as const }]
+      : [];
+
+    // An empty result after a failed required source read is transient, not
+    // evidence that this form is permanently unsupported. Keep usable exact
+    // word-list meanings and authoritative ambiguity refusals intact.
+    if (!answerGlosses.length && !lexicalRecognition && (g.sourceFailed || surfaceSourceFailed || germanFormsSourceFailed || germanGlossSourceFailed
+      || (deps.sourceFailureCount?.() ?? sourceFailuresBefore) > sourceFailuresBefore))
+      throw new Error('A required dictionary or form-index source could not be read.');
 
     return {
-      unit, relations: rec?.relations ?? [], analyses: rec?.analyses ?? [], status,
+      unit, relations: [...(rec?.relations ?? []), ...lexicalRelation], analyses: rec?.analyses ?? [], status,
       ...(lemma ? { lemma } : {}), ...(pos ? { pos } : {}),
       ...(Object.keys(features).length ? { features } : {}),
       glosses: answerGlosses,
+      ...(lexicalRecognition ? { lexicalRecognition } : {}),
       ...(lang === 'el' && wordAnalysis.inflectedMeaning?.text ? {} : g.attribution ? { glossAttribution: g.attribution }
         : citationNounGloss && answerGlosses.length ? { glossAttribution: 'Open Scriptures Hebrew Bible (OSHB)' } : {}),
       wordAnalysis,
@@ -684,6 +752,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     /** Asks the Repository for these units in a few calls; the `factsFor` calls that follow use that answer. A no-op when the lookup cannot batch. */
     async prime(unitIds) { try { await (deps.unit as UnitLookup).prime?.(unitIds); } catch { /* factsFor asks one by one */ } },
     clearPrime() { (deps.unit as UnitLookup).clearPrime?.(); },
+    clearSentenceCache() { sentencesCache = undefined; },
     async factsFor(unitId, languageId) {
       try {
         if (languageId !== lang || typeof unitId !== 'string') return undefined;

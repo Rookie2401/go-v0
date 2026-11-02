@@ -148,15 +148,19 @@ export interface PlanRequest {
 }
 
 export interface ReviewEngine {
-  /** Recover review candidates for genuinely absent Hebrew catalogue rows using the installed pack and the normal ranking rules. */
+  /** Recover review candidates for genuinely absent installable-language catalogue rows using pack facts and normal ranking. */
   recoverCandidates?(request: RecoveryRequest): Promise<RecoveryResult>;
+  /** True only when an installed pack can provide facts for event-only catalogue recovery. */
+  canRecoverCandidates?(languageId: string, api: RepositoryApi): boolean;
   /** Rebuild current study/repair material with the configured facts and exercise builder. Release prepared audio afterwards. */
   repairMaterial?(request:{item:DeckItem;api:RepositoryApi;now:string;assessment?:AssessmentSource}):Promise<{facts:UnitFacts;exercise:Exercise;release:()=>void}|{unavailable:string}>;
   factsFor?(unitId: string, languageId: string, api: RepositoryApi): Promise<UnitFacts | undefined>;
   /** Whether the proposed family has verified facts and can produce a valid exercise. */
-  exerciseAvailable?(request: { unitId: string; unitKind: string; languageId: string; varietyId?: string; dimension: import('../src/types').AssessmentDimension; family: import('../src/types').ExerciseFamily; api: RepositoryApi; now: string }): Promise<boolean>;
+  exerciseAvailable?(request: ExerciseReadinessRequest): Promise<boolean>;
+  /** Honest per-word exercise preflight; useful when a card is blocked by missing or ambiguous source evidence. */
+  exerciseReadiness?(request: ExerciseReadinessRequest): Promise<ExerciseReadiness>;
   /** Reads the Repository units that the next `exerciseAvailable` calls will ask about, fifty at a time, so they do not go one request each. */
-  primeFacts?(languageId: string, api: RepositoryApi, unitIds: string[]): Promise<void>;
+  primeFacts?(languageId: string, api: RepositoryApi, unitIds: string[], varietyId?: string): Promise<void>;
   /** Discard unused one-shot Repository unit rows after an explicit facts/build pass. */
   clearPrimedFacts?(languageId: string, api: RepositoryApi): void;
   scheduler(prefs: ReviewPreferences, profile?: SchedulerProfile): Scheduler;
@@ -178,6 +182,13 @@ export interface ReviewEngine {
   /** The research measures of one unit (descriptions of the record, not conclusions). */
   measures(events: GoEvent[], unitId: string): Measure[];
 }
+
+export interface ExerciseReadinessRequest {
+  unitId: string; unitKind: string; languageId: string; varietyId?: string;
+  dimension: import('../src/types').AssessmentDimension; family: import('../src/types').ExerciseFamily;
+  api: RepositoryApi; now: string;
+}
+export interface ExerciseReadiness { available: boolean; reason?: string; retryable?: boolean }
 
 // ───────────────────────────── audio ─────────────────────────────
 

@@ -1,5 +1,5 @@
 /**
- * Rebuild candidates for Hebrew words whose events reached the account but whose
+ * Rebuild candidates for installable-language words whose events reached the account but whose
  * analyser never materialised a Repository catalogue unit. This is deliberately
  * read-only: pack facts are used as inputs to the Repository's existing ranking
  * function and never written back to the account catalogue.
@@ -14,7 +14,8 @@ import type { RecoveryResult } from './ports';
 const UNIT_BATCH = 50;
 const FACTS_PARALLEL = 8;
 
-const isRecoverableHebrewId = (id: string): boolean => id.startsWith('form:he:') || id.startsWith('lemma:he:');
+const isRecoverableUnitId = (id: string, languageId: string): boolean =>
+  id.startsWith(`form:${languageId}:`) || id.startsWith(`lemma:${languageId}:`);
 
 const FAMILY_DIMENSION: Record<string, Dimension> = {
   'written-recognition': 'readingRecognition', 'phrase-comprehension': 'phraseComprehension',
@@ -72,7 +73,7 @@ async function genuinelyMissing(api: RepositoryApi, ids: string[]): Promise<{ mi
   return { missing, complete };
 }
 
-export interface RecoverHebrewCandidatesInput {
+export interface RecoverCandidatesInput {
   api: RepositoryApi;
   facts: FactsProvider;
   enrolmentId: string;
@@ -88,42 +89,44 @@ export interface RecoverHebrewCandidatesInput {
 }
 
 /**
- * Use only pack-derived, local Hebrew facts for IDs the account confirms are
+ * Use only pack-derived, local facts for IDs the account confirms are
  * absent. Existing catalogue units, including invalidated or conflicted ones,
  * stay under the Repository's authority.
  */
-export async function recoverHebrewCandidates(input: RecoverHebrewCandidatesInput): Promise<RecoveryResult> {
-  if (input.languageId !== 'he') return { candidates: [], complete: true };
-  const knowledgeById = new Map(input.knowledge.filter(row => row.languageId === 'he').map(row => [row.unitId, row]));
-  const existingById = new Map(input.existingCandidates.map(candidate => [candidate.unitId, candidate]));
+export async function recoverCandidates(input: RecoverCandidatesInput): Promise<RecoveryResult> {
+  const languageId = input.languageId;
+  const knowledgeById = new Map(input.knowledge.filter(row => row.languageId === languageId).map(row => [row.unitId, row]));
+  const protectedCandidateIds = new Set(input.existingCandidates
+    .filter(candidate => candidate.eligibility.status !== 'unknown')
+    .map(candidate => candidate.unitId));
   const eligibleIds = [...new Set(input.unresolvedVocabulary
     .filter(item => !item.unit)
     .map(item => item.knowledge.unitId)
-    .filter((id): id is string => typeof id === 'string' && isRecoverableHebrewId(id)))]
+    .filter((id): id is string => typeof id === 'string' && isRecoverableUnitId(id, languageId)))]
     .filter(id => knowledgeById.has(id))
-    .filter(id => !existingById.has(id) || existingById.get(id)?.eligibility.status === 'unknown');
+    .filter(id => !protectedCandidateIds.has(id));
   if (!eligibleIds.length) return { candidates: [], complete: true };
 
   const absent = await genuinelyMissing(input.api, eligibleIds);
   const ids = eligibleIds.filter(id => absent.missing.has(id));
-  if (!ids.length) return { candidates: [], complete: absent.complete, ...(absent.complete ? {} : { note: 'The Repository could not confirm whether Hebrew vocabulary units are missing.' }) };
+  if (!ids.length) return { candidates: [], complete: absent.complete, ...(absent.complete ? {} : { note: `The Repository could not confirm whether ${languageId} vocabulary units are missing.` }) };
 
-  const primable = input.facts as FactsProvider & { prime?(unitIds: string[]): Promise<void>; clearPrime?(): void };
-  try { await primable.prime?.(ids); }
-  catch { return { candidates: [], complete: false, note: 'The Hebrew pack assets could not be prepared.' }; }
+  const primable = input.facts as FactsProvider & { prime?(unitIds: string[], varietyId?: string): Promise<void>; clearPrime?(): void };
+  try { await primable.prime?.(ids, input.varietyId); }
+  catch { return { candidates: [], complete: false, note: `${languageId} pack assets could not be prepared.` }; }
   const recovered = new Map<string, UnitFacts>();
   let factsComplete = true;
   try {
     for (let i = 0; i < ids.length; i += FACTS_PARALLEL) {
       const group = ids.slice(i, i + FACTS_PARALLEL);
       const values = await Promise.all(group.map(async id => {
-        try { return [id, await input.facts.factsFor(id, 'he', input.varietyId), false] as const; }
+        try { return [id, await input.facts.factsFor(id, languageId, input.varietyId), false] as const; }
         catch { return [id, undefined, true] as const; }
       }));
       for (const [id, facts, failed] of values) {
         if (failed) { factsComplete = false; continue; }
         if (!facts) continue; // validly prepared pack facts can still have no analysis for a surface
-        if (facts.unit.unitId !== id || facts.unit.languageId !== 'he') { factsComplete = false; continue; }
+        if (facts.unit.unitId !== id || facts.unit.languageId !== languageId) { factsComplete = false; continue; }
         if (facts.status === 'invalidated' || facts.status === 'conflicted' || facts.status === 'requires-review') continue;
         if (!facts.unit.provenance?.ref?.startsWith('goreview-facts:pack-derived@')) { factsComplete = false; continue; }
         recovered.set(id, facts);
@@ -133,7 +136,7 @@ export async function recoverHebrewCandidates(input: RecoverHebrewCandidatesInpu
     primable.clearPrime?.();
   }
   if (!recovered.size) return { candidates: [], complete: absent.complete && factsComplete,
-    ...(!absent.complete || !factsComplete ? { note: 'Hebrew pack facts could not be loaded for the unresolved vocabulary.' } : {}) };
+    ...(!absent.complete || !factsComplete ? { note: `${languageId} pack facts could not be loaded for the unresolved vocabulary.` } : {}) };
 
   const rows = ids.flatMap(id => {
     const row = knowledgeById.get(id);
@@ -153,10 +156,10 @@ export async function recoverHebrewCandidates(input: RecoverHebrewCandidatesInpu
   }
   let enrolments;
   try { enrolments = await input.api.listEnrolments(); }
-  catch { return { candidates: [], complete: false, note: 'The Hebrew enrolment could not be confirmed.' }; }
-  if (!enrolments.ok) return { candidates: [], complete: false, note: 'The Hebrew enrolment could not be confirmed.' };
-  const enrolment = enrolments.data.enrolments.find(row => row.enrolmentId === input.enrolmentId && row.languageId === 'he' && !row.endedAt);
-  if (!enrolment) return { candidates: [], complete: false, note: 'The Hebrew enrolment could not be confirmed.' };
+  catch { return { candidates: [], complete: false, note: `${languageId} enrolment could not be confirmed.` }; }
+  if (!enrolments.ok) return { candidates: [], complete: false, note: `${languageId} enrolment could not be confirmed.` };
+  const enrolment = enrolments.data.enrolments.find(row => row.enrolmentId === input.enrolmentId && row.languageId === languageId && !row.endedAt);
+  if (!enrolment) return { candidates: [], complete: false, note: `${languageId} enrolment could not be confirmed.` };
   const candidates = rankCandidates({
     rows, units, analyses, realizedBy, cards: cardStates(input.deck), goals: enrolment.goals,
     now: input.now, limit: rows.length, objectiveDimensions: objectiveDimensions(input.prefs),
@@ -167,6 +170,9 @@ export async function recoverHebrewCandidates(input: RecoverHebrewCandidatesInpu
   // we loaded facts; unrelated synthesized IDs remain under the catalogue pipeline.
   const recoveredIds = new Set(ids);
   return { candidates: candidates.filter(candidate => recoveredIds.has(candidate.unitId)), complete,
-    ...(!complete ? { note: 'Some Hebrew pack facts could not be loaded; recovered candidates may be incomplete.' } : {}) };
+    ...(!complete ? { note: `Some ${languageId} pack facts could not be loaded; recovered candidates may be incomplete.` } : {}) };
 }
+
+/** Backwards-compatible name for the original Hebrew-only caller. */
+export const recoverHebrewCandidates = recoverCandidates;
 

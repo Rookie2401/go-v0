@@ -65,6 +65,26 @@ describe('buildSelectionReport', () => {
     expect(counts.selected).toBe(plan.items.length);
   });
 
+  it('reports Current learning plus fresh items separately from due Review Deck items in the combined plan', () => {
+    const { model } = fixture();
+    const learning = deckItem({ unitId: 'form:sq:learning', schedule: scheduleState({ phase: 'learning', due: NOW }) });
+    const expanded = { ...model, deck: [...model.deck, learning] };
+    const plan = planSession({ deck: expanded.deck, intake: expanded.outcomes, preferences: prefs(), audio: audioOk,
+      scheduler: fakeScheduler, now: NOW, random: () => 0.5, knowledge: expanded.knowledge });
+    const report = buildSelectionReport(expanded, plan);
+    expect(plan.items.find(p => p.item.unitId === learning.unitId)?.queue).toBe('learning');
+    expect(report.planning).toMatchObject({ currentDeckItemsInPlan: 2, reviewDeckItemsInPlan: 2, remediationItemsInPlan: 0 });
+  });
+
+  it('reports only verified candidate form-to-base-word merges as word-family coverage', () => {
+    const { model, plan } = fixture();
+    const merged = { unitId: 'form:sq:known-form', decision: 'redundant' as const,
+      reasons: ['merged into canonical lexeme lemma:sq:known:NOUN through one reliable lexical form-of relation; one encounter creates one reading-recognition objective'],
+      candidate: candidate({ unitId: 'form:sq:known-form' }) };
+    const report = buildSelectionReport({ ...model, outcomes: [...model.outcomes, merged] } as unknown as ReviewModel, plan);
+    expect(report.coverage).toMatchObject({ candidateFormsMergedToVerifiedBaseWord: 1, verifiedBaseWordsInCandidateMerge: 1 });
+  });
+
   it('derives codes for cards the plan neither selected nor recorded, and marks an unplanned test-now outcome outranked', () => {
     const { model, plan } = fixture(false);
     const bare = { ...plan, items: [], skipped: [] };
@@ -124,7 +144,7 @@ describe('#/developer: Why these cards', () => {
     expect(rig.q('#why-h').textContent).toBe('Why these cards');
     expect(rig.q('#why-build').textContent).toBe('Build selection report');
     expect(rig.q('#why-copy').textContent).toBe('Copy diagnostic JSON');
-    expect(rig.q('#why-these-cards').textContent).toContain('unit ids and scheduling numbers only');
+    expect(rig.q('#why-these-cards').textContent).toContain('unit ids (which can contain word forms)');
     expect(rig.root.querySelector('#why-rows')).toBeNull(); // built on demand, not on page load
     rig.q('#why-build').click();
     await until(() => !!rig.root.querySelector('#why-counts'), 'the report');

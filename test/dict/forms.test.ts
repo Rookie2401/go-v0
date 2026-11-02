@@ -251,6 +251,17 @@ describe('forms source over a fixture directory', () => {
     expect((await src2.lookupForms(['kampf'])).size).toBe(0);
     expect((await src2.lookupForms(['kampf'])).get('kampf')?.[0].lemma).toBe('Kampf');
   });
+  it('strict callers get errors for malformed manifests and manifest-named missing shards', async () => {
+    const malformed = createFormsSource('de', { throwOnError: true, fetch: (async () => new Response('{not json')) as typeof fetch });
+    await expect(malformed.lookupForms(['kampf'])).rejects.toThrow(/invalid JSON/u);
+
+    const bucket = bucketOf('kampf', BUCKETS);
+    const shardName = formsShardFile(bucket, BUCKETS);
+    const manifest = { version: FORMS_VERSION, lang: 'de', buckets: BUCKETS, forms: 1, lemmas: 1, fromTables: 0, shardFiles: [shardName], builtFrom: 'strict-fixture' };
+    const missingShard = createFormsSource('de', { throwOnError: true, fetch: (async (input: string | URL | Request) =>
+      String(input).endsWith('/manifest.json') ? new Response(JSON.stringify(manifest)) : new Response('', { status: 404 })) as typeof fetch });
+    await expect(missingShard.lookupForms(['kampf'])).rejects.toThrow(/shard is missing/u);
+  });
 });
 
 // The real built indexes (npm run dict:build-forms): present on a machine that has built them, absent on a clean checkout.

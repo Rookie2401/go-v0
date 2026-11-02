@@ -46,7 +46,9 @@ import { FAMILY_DIMENSION, REPOSITORY_DIMENSION } from '../types';
 import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeDecision, IntakeInput, IntakeOutcome } from '../types';
 import { reviewEligibility } from '../planner/eligibility';
 import { choosePractice } from '../planner/learning-policy';
-import { eligibleByKnowability, hasConfirmedAutomaticFailure, seenEligibility } from '../planner/priority-policy';
+import { eligibleByKnowability, hasConfirmedAutomaticFailure, seenEligibility, PRIORITY_FACTOR_WEIGHTS } from '../planner/priority-policy';
+import { indexReadingRelevance, readingRelevanceFromIndex } from '../planner/reading-relevance';
+import type { ReadingRelevance } from '../planner/reading-relevance';
 
 export const SCORE_TEST_NOW = 0.5;
 export const SCORE_LOW_PRIORITY = 0.15;
@@ -251,7 +253,7 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
   // 9 ── not worth a card ────────────────────────────────────────────────────────────────────────────────────────
   if (candidate.score < SCORE_LOW_PRIORITY) {
     return makeDecision(candidate, 'low-priority', [
-      `comparative priority: raw score ${candidate.score.toFixed(2)} is considered against the other encountered words`,
+      'Candidate rank compares the words you have recently met.',
     ], proposed);
   }
 
@@ -269,8 +271,8 @@ const HEADLINE: Record<IntakeDecision, string> = {
   redundant: 'Not needed',
   'too-uncertain': 'Too uncertain',
   'needs-validation': 'Needs validation first',
-  'low-priority': 'Low comparative priority',
-  'test-now': 'Test now',
+  'low-priority': 'Lower candidate rank',
+  'test-now': 'Practice candidate',
   'test-later': 'Test later',
 };
 
@@ -281,26 +283,49 @@ export function explainIntake(outcome: IntakeOutcome): string {
 }
 
 /**
- * Candidates that pass intake's hard gates compete by score within the encountered set.
+ * Candidates that pass the practice gates compete by score within the encountered set.
  * The order is stable across runs: equal scores are resolved by unit id. Low-priority is
  * retained as the persisted compatibility decision, while its proposal stays eligible.
  */
-export function rankComparativePriority(outcomes: readonly IntakeOutcome[], options: { limit?: number; prioritizeSaved?: boolean } = {}): IntakeOutcome[] {
-  const eligible = outcomes
+export interface IntakePriorityCandidate { outcome: IntakeOutcome; comparisonScore: number; reading: ReadingRelevance }
+export interface IntakePriorityOptions { prioritizeSaved?: boolean; readingSignals?: import('../../../repository-contract/src').GoEvent[]; languageId?: string; now?: string }
+
+/** Stable candidate ordering shared by intake and the later buildability preflight. Builds one reading-signal index per call. */
+export function orderIntakeByPriority(outcomes: readonly IntakeOutcome[], options: IntakePriorityOptions = {}): IntakePriorityCandidate[] {
+  const relevanceIndex = options.readingSignals && options.languageId && options.now
+    ? indexReadingRelevance(options.readingSignals, options.languageId, options.now,
+      new Map(outcomes.flatMap(outcome => outcome.knowledge ? [[outcome.unitId, outcome.knowledge] as const] : []))) : new Map();
+  const relevanceByOutcome = new Map(outcomes.map(outcome => [outcome, readingRelevanceFromIndex(relevanceIndex, outcome.unitId)] as const));
+  const priority = (outcome: IntakeOutcome): number => {
+    const relevance = relevanceByOutcome.get(outcome)?.readingRelevance ?? 0;
+    // Reuse the existing policy share; this redistributes the bounded score rather than
+    // applying an unversioned boost on top of Repository candidate scores.
+    return outcome.candidate.score * (1 - PRIORITY_FACTOR_WEIGHTS.readingRelevance)
+      + relevance * PRIORITY_FACTOR_WEIGHTS.readingRelevance;
+  };
+  return outcomes
     .filter((outcome) => !!outcome.proposed && (outcome.decision === 'test-now' || outcome.decision === 'test-later' || outcome.decision === 'low-priority'))
     .sort((a, b) => (options.prioritizeSaved ? Number(b.explicitlySelected === true) - Number(a.explicitlySelected === true) : 0) ||
-      b.candidate.score - a.candidate.score || (a.unitId < b.unitId ? -1 : a.unitId > b.unitId ? 1 : 0));
+      priority(b) - priority(a) || (a.unitId < b.unitId ? -1 : a.unitId > b.unitId ? 1 : 0))
+    .map(outcome => ({ outcome, comparisonScore: priority(outcome), reading: relevanceByOutcome.get(outcome) ?? readingRelevanceFromIndex(relevanceIndex, outcome.unitId) }));
+}
+
+export function rankComparativePriority(outcomes: readonly IntakeOutcome[], options: IntakePriorityOptions & { limit?: number } = {}): IntakeOutcome[] {
+  const ordered = orderIntakeByPriority(outcomes, options);
   const limit = Math.max(0, Math.floor(options.limit ?? 5));
-  return eligible.map((outcome, index) => {
+  return ordered.map(({ outcome, comparisonScore, reading }, index) => {
     const audioDeferred = outcome.decision === 'test-later' && outcome.reasons.some((reason) =>
       reason.includes('listening practice is switched off') || reason.includes('no suitable audio') || reason.includes('practice only'));
     const selected = index < limit && !audioDeferred;
     const decision: IntakeOutcome['decision'] = audioDeferred ? 'test-later' : selected ? 'test-now' : 'low-priority';
-    const status = audioDeferred ? 'audio deferred' : selected ? 'selected for immediate practice' : 'comparatively lower priority';
+    const status = audioDeferred ? 'audio deferred' : selected ? 'ranked among practice candidates; the session plan decides what fits' : 'lower candidate rank';
+    const relevanceNote = reading?.recentContexts
+      ? `recent reading usefulness: ${reading.recentContexts} sentence context(s)${reading.recentSources ? ` across ${reading.recentSources} identified source(s)` : ''}` : undefined;
     return {
       ...outcome,
       decision,
-      reasons: [...outcome.reasons, `comparative rank ${index + 1} of ${eligible.length} encountered words (score ${outcome.candidate.score.toFixed(2)}; ${status})`],
+      reasons: [...outcome.reasons, ...(relevanceNote ? [relevanceNote] : []),
+        `candidate rank ${index + 1} of ${ordered.length} (comparison ${comparisonScore.toFixed(2)}; base score ${outcome.candidate.score.toFixed(2)}; reading usefulness ${(reading?.readingRelevance ?? 0).toFixed(2)}; ${status})`],
     };
   });
 }

@@ -28,7 +28,7 @@ function build(mode: 'review' | 'extension' | 'web'): void {
 beforeAll(() => { build('review'); build('web'); build('extension'); }, 300_000);
 afterAll(() => { fs.rmSync(scratch, { recursive: true, force: true }); });
 
-describe('the bundled Hebrew lexicons', () => {
+describe('the bundled Hebrew and Greek lexicons', () => {
   it('ships both manifests and every manifest-named gzip shard in each app build', () => {
     for (const out of Object.values(outs)) for (const period of ['biblical', 'modern']) {
       const source = path.join(root, 'public', 'lexicon', 'he', period);
@@ -57,8 +57,36 @@ describe('the bundled Hebrew lexicons', () => {
     const manifest = JSON.parse(read(outs.review, 'goreview-release-manifest.json')) as { staticSourceInputs: string[] };
     expect(manifest.staticSourceInputs).toContain('public/lexicon/he/biblical-index.json');
     expect(manifest.staticSourceInputs).not.toContain('public/lexicon/he/biblical/form-frequency.json.gz');
-    expect(fs.existsSync(path.join(outs.review, 'lexicon', 'el'))).toBe(false);
+    const greekSource = JSON.parse(read(root, 'public', 'lexicon', 'el', 'koine-index.json')) as { id: string; period: string; source: { label: string; licence: string; url: string } };
+    for (const out of Object.values(outs)) {
+      const compressed = fs.readFileSync(path.join(out, 'lexicon', 'el', 'koine-index.json.gz'));
+      const koine = JSON.parse(gunzipSync(compressed).toString('utf8')) as typeof greekSource;
+      expect(koine).toMatchObject({ id: 'morphgnt-sblgnt', period: 'el-koi', source: greekSource.source });
+      for (const period of ['ancient', 'modern']) {
+        const source = path.join(root, 'public', 'lexicon', 'el', period);
+        const target = path.join(out, 'lexicon', 'el', period);
+        const manifest = JSON.parse(read(target, 'manifest.json')) as { shards: Record<string, { file: string }> };
+        const names = Object.values(manifest.shards).map(shard => shard.file).sort();
+        expect(names.length).toBeGreaterThan(0);
+        expect(fs.readdirSync(target).sort()).toEqual(['manifest.json', ...names].sort());
+        const first = fs.readFileSync(path.join(target, names[0]!));
+        expect(first.subarray(0, 2).toString('hex')).toBe('1f8b');
+        expect(fs.statSync(path.join(source, names[0]!)).size).toBeGreaterThan(0);
+      }
+    }
     expect(fs.existsSync(path.join(outs.review, 'lexicon', 'he', 'biblical', 'index.json'))).toBe(false);
+    const releaseManifest = JSON.parse(read(outs.review, 'goreview-release-manifest.json')) as { staticSourceInputs: string[] };
+    expect(releaseManifest.staticSourceInputs).toContain('public/lexicon/el/koine-index.json');
+    expect(releaseManifest.staticSourceInputs).toContain('public/lexicon/el/ancient/manifest.json');
+    expect(releaseManifest.staticSourceInputs).toContain('public/lexicon/el/modern/manifest.json');
+    for (const out of Object.values(outs)) {
+      const notices = read(out, 'THIRD-PARTY-NOTICES.md');
+      expect(notices).toContain('Ancient Greek forms and inflection tables');
+      expect(notices).toContain('Modern Greek forms and inflection tables');
+      expect(notices).toContain('Koine Greek form index');
+      expect(notices).toMatch(/SBL Greek New Testament text is CC BY 4\.0/u);
+      expect(notices).toMatch(/MorphGNT\s+morphological parsing and lemmatization are CC BY-SA 3\.0/u);
+    }
   });
 });
 
@@ -342,17 +370,19 @@ describe('sw.js (run in a sandbox)', () => {
     expect(names).toEqual(expect.arrayContaining(['goreview-dict-v1', 'something-else', ...s.SHELL()]));
   });
 
-  it('caches a requested Hebrew shard for offline use and removes only obsolete lexicon versions on activation', async () => {
+  it('caches Hebrew and Greek lexicon assets for offline use and removes only obsolete lexicon versions on activation', async () => {
     let offline = false;
     const s = sandbox({ fetchImpl: async (r) => { if (offline) throw new TypeError('offline'); return new Response('gzip shard ' + r.url, { status: 200 }); } });
     await s.fire('install', {});
-    const shard = './lexicon/he/biblical/א.json.gz';
-    const online = (await s.fire('fetch', { request: s.request(shard) })) as Response;
-    expect(await online.text()).toContain('gzip shard');
+    const assets = ['./lexicon/he/biblical/א.json.gz', './lexicon/el/koine-index.json.gz', './lexicon/el/ancient/α.json.gz'];
+    for (const asset of assets) {
+      const online = (await s.fire('fetch', { request: s.request(asset) })) as Response;
+      expect(await online.text()).toContain('gzip shard');
+    }
     await new Promise((r) => setTimeout(r, 5));
     const current = (await s.caches.keys()).find((key) => key.startsWith('goreview-lexicon-'))!;
     expect(current).toMatch(/^goreview-lexicon-[0-9a-f]{12}$/);
-    expect([...s.store.get(current)!.keys()].some((key) => key.includes('/lexicon/he/biblical/'))).toBe(true);
+    for (const asset of assets) expect([...s.store.get(current)!.keys()].some((key) => decodeURIComponent(key).includes(asset.slice(1))), asset).toBe(true);
     expect([...s.store.get(s.SHELL()[0])!.keys()].some((key) => key.includes('/lexicon/'))).toBe(false);
     await s.caches.open('goreview-lexicon-oldbuild');
     await s.caches.open('goreview-dict-v1');
@@ -360,9 +390,11 @@ describe('sw.js (run in a sandbox)', () => {
     expect(await s.caches.keys()).not.toContain('goreview-lexicon-oldbuild');
     expect(await s.caches.keys()).toContain(current);
     offline = true;
-    const cached = (await s.fire('fetch', { request: s.request(shard) })) as Response;
-    expect(await cached.text()).toContain('gzip shard');
-    expect(s.fetchFn).toHaveBeenCalledTimes(1);
+    for (const asset of assets) {
+      const cached = (await s.fire('fetch', { request: s.request(asset) })) as Response;
+      expect(await cached.text()).toContain('gzip shard');
+    }
+    expect(s.fetchFn).toHaveBeenCalledTimes(assets.length);
   });
 
   it('NEVER caches or answers anything of the Repository service: another origin, the service paths under the scope, anything with a credential', async () => {

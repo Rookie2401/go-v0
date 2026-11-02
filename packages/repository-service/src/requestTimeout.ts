@@ -41,7 +41,11 @@ export function withRequestTimeout(fetcher: typeof fetch, timeoutMs = 8_000): ty
       const response = await fetcher(input, { ...init, signal: controller.signal });
       // A fetcher may ignore abort and resolve after its deadline; do not hand out a body without a live deadline.
       if (controller.signal.aborted) throw controller.signal.reason ?? new DOMException('Request aborted', 'AbortError');
-      if (!response.body) {
+      const requestMethod = (init.method ?? (typeof Request !== 'undefined' && input instanceof Request ? input.method : 'GET')).toUpperCase();
+      // Response forbids a body for these statuses even when a nonstandard fetch
+      // implementation exposes an empty stream (or a mock does so in tests).
+      // Keep the original response intact for HEAD and the bodyless statuses.
+      if (requestMethod === 'HEAD' || response.status === 204 || response.status === 205 || response.status === 304 || !response.body) {
         cleanup();
         controller.signal.removeEventListener('abort', timedBodyAbort);
         return response;

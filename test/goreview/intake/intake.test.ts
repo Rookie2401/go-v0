@@ -122,7 +122,7 @@ describe('decideIntake: score, saved and the proposal', () => {
   it('score below 0.15 → low comparative priority with a retained proposal', () => {
     const o = decideIntake(intakeInput({ candidate: candidate({ score: 0.1 }) }));
     expect(o.decision).toBe('low-priority');
-    expect(o.reasons[0]).toContain('0.10');
+    expect(o.reasons[0]).toContain('Candidate rank compares');
     expect(o.proposed?.family).toBe('written-recognition');
   });
 
@@ -135,7 +135,23 @@ describe('decideIntake: score, saved and the proposal', () => {
     expect(ranked.map((o) => o.unitId)).toEqual(['form:sq:a', 'form:sq:b', 'form:sq:high', 'form:sq:low']);
     expect(ranked.slice(0, 2).every((o) => o.decision === 'test-now')).toBe(true);
     expect(ranked.slice(2).every((o) => o.decision === 'low-priority')).toBe(true);
-    expect(ranked.at(-1)?.reasons.at(-1)).toContain('comparatively lower priority');
+    expect(ranked.at(-1)?.reasons.at(-1)).toContain('lower candidate rank');
+  });
+
+  it('uses recent reading usefulness inside the existing priority share and calls shortlist status provisional', () => {
+    const inText = { ...decideIntake(intakeInput({ candidate: candidate({ unitId: 'form:sq:in-text', score: 0.5 }) })), knowledge: { ...knowledge('form:sq:in-text'), encounters: 3 } };
+    const higherRaw = decideIntake(intakeInput({ candidate: candidate({ unitId: 'form:sq:higher-raw', score: 0.65 }) }));
+    const signals = ['chapter-1', 'chapter-2', 'chapter-3'].map((locator, index) => ({
+      id: `read-${index}`, v: 3, learnerId: 'L', enrolmentId: 'E', languageId: 'sq', at: '2026-10-12T10:00:00.000Z',
+      producer: { app: 'golearn-app' as const, version: '1', deviceId: 'd' }, kind: 'EncounterRecorded' as const,
+      subject: { itemIds: ['form:sq:in-text'], sentenceKey: `hash-${index}`, sourceRef: { kind: 'ebook' as const, locator } },
+      payload: { contextKind: 'sentence', language: { languageId: 'sq', basis: 'book-metadata', confidence: 0.95, override: false } },
+    }));
+    const ranked = rankComparativePriority([higherRaw, inText], { limit: 1, readingSignals: signals, languageId: 'sq', now: '2026-10-12T12:00:00.000Z' });
+    expect(ranked[0]?.unitId).toBe(inText.unitId);
+    expect(ranked[0]?.reasons.join(' ')).toContain('recent reading usefulness');
+    expect(ranked[0]?.reasons.join(' ')).toContain('session plan');
+    expect(ranked[0]?.reasons.at(-1)).not.toContain('selected for immediate practice');
   });
 
   it('prioritizes explicitly saved proposals only when requested by the ranking options', () => {
@@ -236,10 +252,10 @@ describe('decideIntake: audio', () => {
 describe('explainIntake', () => {
   it('reads as one line with the headline, the skill and the reasons', () => {
     const s = explainIntake(decideIntake(intakeInput()));
-    expect(s.startsWith('Test now as written-recognition: ')).toBe(true);
+    expect(s.startsWith('Practice candidate as written-recognition: ')).toBe(true);
     expect(s).toContain('looked-up-often (3 lookups this week)');
     const t = explainIntake(decideIntake(intakeInput({ candidate: candidate({ score: 0.05 }) })));
-    expect(t.startsWith('Low comparative priority as written-recognition: ')).toBe(true);
+    expect(t.startsWith('Lower candidate rank as written-recognition: ')).toBe(true);
   });
 });
 

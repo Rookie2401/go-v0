@@ -29,6 +29,7 @@ import { cardReasonFor } from '../intake/intake';
 import { scoreReviewPriority, type KnowabilityPolicy } from './priority-policy';
 import { chooseMicrodeckTarget, microdeckMaximum, type MicrodeckObservation, type MicrodeckPolicyOptions } from './microdeck';
 import { workloadAwareAdmission, type WorkloadAdmissionPolicy } from './admission-policy';
+import { indexReadingRelevance, readingRelevanceFromIndex } from './reading-relevance';
 
 const GRAMMAR_FAMILY_SET: ReadonlySet<ExerciseFamily> = new Set<ExerciseFamily>(['morphological-identification', 'grammar-application']);
 const AUDIO_FAMILY_SET: ReadonlySet<ExerciseFamily> = new Set<ExerciseFamily>(['audio-to-meaning', 'audio-transcription']);
@@ -159,6 +160,7 @@ export function planSession(input: PlanInput): SessionPlan {
   const learnerIds = [...new Set(events.map(e => e.learnerId))];
   const learnerId = input.learnerId ?? (learnerIds.length === 1 ? learnerIds[0] : '');
   const eligibilityContext = createReviewEligibilityContext(deck, events, now);
+  const readingRelevance = indexReadingRelevance(events, preferences.languageId, now, knowledge);
   const budget = admissionBudget(events, { learnerId, languageId: preferences.languageId, now, maxNew: preferences.maxNew, dailyNewLimit: preferences.dailyNewLimit ?? preferences.maxNew });
   const admission = workloadAdmissionLimit({ deck, intake, now, preferences, scheduler, events, learnerId, dailyRemaining: budget.remaining, policy:input.admissionPolicy, context:eligibilityContext });
   const automaticNewLimit = admission.limit;
@@ -186,8 +188,10 @@ export function planSession(input: PlanInput): SessionPlan {
     const seconds = measured && Number.isFinite(measured) && measured > 0 && measured <= 900 ? measured : estimateSeconds(item.family,item.schedule.phase);
     const r = fresh ? 0 : scheduler.retrievability(item.schedule, now), k = knowledge.get(item.unitId), stage = k?.level ?? (fresh ? 'seen' : 'known');
     const candidate = intake.find(o => o.unitId === item.unitId)?.candidate;
+    const reading = readingRelevanceFromIndex(readingRelevance, item.unitId);
     const score = scoreReviewPriority({ level: stage, retrievability: r, due, overdueDays: due ? Math.max(0,(nowMs-Date.parse(item.schedule.due))/86_400_000) : 0,
       recentFailures: recentAgains(item), encounters: k?.encounters, evidenceQuality: k ? 1-k.uncertainty : .5,
+      readingRelevance: reading.readingRelevance, recentExposure: reading.recentExposure,
       seenEligible: true, automaticFailure: eligibilityContext.automaticFailureUnits.has(item.unitId), explicitRequest: requested.kind === 'explicit' }, input.priorityPolicy)
       * benefitOf(fresh ? 1 : Math.max(.01,1-r), candidate?.score ?? .5, seconds, candidate?.cost ?? 0);
     const overlap = !fresh && (queue === 'learning' || queue === 'due') ? 'scheduled' as const

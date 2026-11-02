@@ -437,6 +437,9 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
   const engine = createReviewEngine({
     builders: opts.builders ?? FAKE_BUILDERS, evidenceFor: fakeEvidenceFor, ratingFor, factsFor: () => fakeFacts, now, random: () => 0.5,
   });
+  // The shared fake facts are exercise fixtures, not an installed pack provider.
+  // Recovery tests opt in explicitly so unrelated sync/home tests don't scan the full vocabulary.
+  engine.canRecoverCandidates = () => false;
   const local: FakeLocalRepo | undefined = !opts.local ? undefined
     : typeof opts.local === 'object' && 'uploads' in opts.local ? opts.local
       : fakeLocalRepo(service, typeof opts.local === 'object' ? opts.local : {});

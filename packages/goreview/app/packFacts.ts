@@ -5,14 +5,20 @@
  * invents a gloss or a sentence.
  */
 import { createFactsProvider, repositoryLookup } from '../src';
+import type { AttestedFormLemma } from '../src/facts/provider';
 import type { FactsProvider } from '../src';
 import { createPackRuntime, packFor } from '../../language-packs/src';
 import type { RepositoryApi } from '../../repository-service/src/api';
 import { createHebrewShardLoader } from '../../../src/adapters/hebrew/shards';
 import type { HebrewShardLoader } from '../../../src/adapters/hebrew/shards';
+import { createGreekShardLoader } from '../../../src/adapters/greek/shards';
+import { installGreekIndex, installedGreekIndexes, type GreekFormIndex } from '../../../src/adapters/greek/index-store';
+import type { GreekShardLoader } from '../../../src/adapters/greek/shards';
 import type { ShardSource } from '../../../src/adapters/shared/shards';
 import { heAdapter } from '../../../src/adapters/he';
+import { elAdapter } from '../../../src/adapters/el';
 import { readShardBytes } from '../../../src/adapters/shared/shards';
+import { createFormsSource } from '../../../src/dict/forms';
 
 interface HebrewFormFrequencyIndex {
   schema: 1;
@@ -25,7 +31,11 @@ interface HebrewFormFrequencyIndex {
 
 export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexiconBaseUrl?: string }): (languageId: string, api: RepositoryApi) => FactsProvider | undefined {
   const runtimes = new Map<string, ReturnType<typeof createPackRuntime>>();
+  const formsIndexes = new Map<string, ReturnType<typeof createFormsSource>>();
+  const runtimeSourceFailures = new Map<string, number>();
   const hebrewLoaders = new Map<string, Promise<HebrewShardLoader>>();
+  const greekLoaders = new Map<string, Promise<GreekShardLoader>>();
+  let koineIndex: Promise<void> | undefined;
   let hebrewFrequency: Promise<HebrewFormFrequencyIndex> | undefined;
   const lexiconBase = opts.lexiconBaseUrl ?? opts.baseUrl;
   const source: ShardSource = {
@@ -47,6 +57,42 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
       const result = await loader.ensure(keys);
       if (result.failed.length) throw new Error(`${base}: ${result.failed.map((x) => x[1]).join(', ')}`);
     }));
+  };
+  const ensureGreekKoine = (): Promise<boolean> => {
+    if (!koineIndex && installedGreekIndexes().some(index => index.id === 'morphgnt-sblgnt' && !index.shard)) {
+      koineIndex = Promise.resolve();
+      return Promise.resolve(false);
+    }
+    if (!koineIndex) {
+      koineIndex = source.fetchBytes!('lexicon/el/koine-index.json.gz').then(readShardBytes).then((value) => {
+        const index = value as Partial<GreekFormIndex>;
+        if (index.schema !== 1 || index.id !== 'morphgnt-sblgnt' || index.codes !== 'morphgnt' || index.period !== 'el-koi'
+          || typeof index.built !== 'string' || !index.built || !index.source?.label || !index.source.licence || !index.source.url
+          || !index.forms || !index.lemmas || !index.bare)
+          throw new Error('Invalid MorphGNT Koine index');
+        installGreekIndex(index as GreekFormIndex);
+      }).catch((error) => { koineIndex = undefined; throw error; });
+      return koineIndex.then(() => true);
+    }
+    return koineIndex.then(() => false);
+  };
+  const ensureGreekKeys = async (keys: string[], period: 'ancient' | 'modern'): Promise<boolean> => {
+    if (!keys.length) return false;
+    const base = `lexicon/el/${period}`;
+    let job = greekLoaders.get(base);
+    if (!job) {
+      job = createGreekShardLoader(source, { base, maxLoaded: 24 });
+      greekLoaders.set(base, job);
+      job.catch(() => { if (greekLoaders.get(base) === job) greekLoaders.delete(base); });
+    }
+    const loader = await job;
+    let changed = false;
+    for (let i = 0; i < keys.length; i += 8) {
+      const result = await loader.ensure(keys.slice(i, i + 8));
+      if (result.failed.length) throw new Error(`${base}: ${result.failed.map((x) => x[1]).join(', ')}`);
+      if (result.loaded.length) changed = true;
+    }
+    return changed;
   };
   const ensureHebrewFrequency = (): Promise<HebrewFormFrequencyIndex> => {
     if (!hebrewFrequency) {
@@ -88,30 +134,81 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
     }
     return [];
   };
+  const ensureGreekFor = async (unitIds: string[], varietyId?: string): Promise<boolean> => {
+    const keys = unitIds.flatMap(greekUnitKeys);
+    if (varietyId === 'el-koi') return ensureGreekKoine();
+    const body = unitIds.find(id => id.startsWith('form:el:') || id.startsWith('lemma:el:'))?.replace(/^(?:form|lemma):el:/u, '').replace(/:[A-Z]+$/u, '') ?? '';
+    const period = varietyId === 'el-mod' ? 'modern' : varietyId === 'el-att' || varietyId === 'el-hom'
+      ? 'ancient' : /[\u0313-\u0345]/u.test(body.normalize('NFD')) ? 'ancient' : 'modern';
+    return ensureGreekKeys(keys, period);
+  };
+  const greekUnitKeys = (unitId: string): string[] => {
+    if (unitId.startsWith('form:el:')) return elAdapter.tokenize(unitId.slice('form:el:'.length)).filter((t) => t.isWord).map((t) => t.normalized);
+    if (unitId.startsWith('lemma:el:')) {
+      const body = unitId.slice('lemma:el:'.length);
+      const split = body.lastIndexOf(':');
+      return elAdapter.tokenize(split < 0 ? body : body.slice(0, split)).filter((t) => t.isWord).map((t) => t.normalized);
+    }
+    return [];
+  };
   return (languageId, api) => {
     const manifest = packFor(languageId);
     if (!manifest || manifest.status !== 'installable') return undefined;
     let runtime = runtimes.get(languageId);
-    if (!runtime) { runtime = createPackRuntime(manifest, { fetch: opts.fetch, baseUrl: opts.baseUrl }); runtimes.set(languageId, runtime); }
+    if (!runtime) {
+      const trackedFetch: typeof fetch = async (input, init) => {
+        try {
+          const response = await opts.fetch(input, init);
+          if (!response.ok) runtimeSourceFailures.set(languageId, (runtimeSourceFailures.get(languageId) ?? 0) + 1);
+          return response;
+        } catch (error) { runtimeSourceFailures.set(languageId, (runtimeSourceFailures.get(languageId) ?? 0) + 1); throw error; }
+      };
+      runtime = createPackRuntime(manifest, { fetch: trackedFetch, baseUrl: opts.baseUrl });
+      runtimes.set(languageId, runtime);
+    }
+    let attestedFormLemma: ((form: string) => Promise<AttestedFormLemma | undefined>) | undefined;
+    if (languageId === 'de') {
+      let formIndex = formsIndexes.get(languageId);
+      if (!formIndex) {
+        const dictionaryPath = manifest.lexical.dictionary?.baseUrl ?? 'dict/de';
+        const root = dictionaryPath.replace(/\/?de\/?$/u, '');
+        formIndex = createFormsSource('de', { fetch: opts.fetch, base: `${opts.baseUrl.replace(/\/+$/u, '')}${root ? `/${root.replace(/^\/+|\/+$/gu, '')}` : ''}`, throwOnError: true });
+        formsIndexes.set(languageId, formIndex);
+      }
+      attestedFormLemma = async form => {
+        const rows = await formIndex!.lookupForms([form]);
+        const hits = rows.get(form) ?? [];
+        const identities = new Map(hits.map(hit => [`${hit.lemma}\0${hit.pos ?? ''}`, hit]));
+        if (identities.size === 1) return [...identities.values()][0];
+        if (identities.size > 1) return { status: 'ambiguous', reason: 'The German forms index records several different lemma readings for this form.' };
+        return undefined;
+      };
+    }
     const adapter = runtime.analyzer().adapter;
     if (!adapter) return undefined;
     // one facts provider per target variety: a period (Biblical Hebrew, Koine Greek) reads the pack's sentences in that period and
     // prefers its examples; the plain provider serves a learner with no variety and every language without period varieties
     const unit = repositoryLookup(api);
-    const plain = createFactsProvider({ unit, pack: { manifest, runtime }, adapter });
+    const plain = createFactsProvider({ unit, pack: { manifest, runtime, ...(attestedFormLemma ? { attestedFormLemma } : {}) }, adapter,
+      sourceFailureCount: () => runtimeSourceFailures.get(languageId) ?? 0 });
     const byVariety = new Map<string, ReturnType<typeof createFactsProvider>>();
     const forVariety = (varietyId?: string): ReturnType<typeof createFactsProvider> => {
       if (!varietyId || adapter.varieties?.[varietyId]?.kind !== 'period') return plain;
       let p = byVariety.get(varietyId);
-      if (!p) { p = createFactsProvider({ unit, pack: { manifest, runtime }, adapter, varietyId }); byVariety.set(varietyId, p); }
+      if (!p) { p = createFactsProvider({ unit, pack: { manifest, runtime, ...(attestedFormLemma ? { attestedFormLemma } : {}) }, adapter, varietyId,
+        sourceFailureCount: () => runtimeSourceFailures.get(languageId) ?? 0 }); byVariety.set(varietyId, p); }
       return p;
     };
+    const clearGreekSentenceCaches = (): void => { plain.clearSentenceCache(); byVariety.forEach(provider => provider.clearSentenceCache()); };
     return {
-      prime: async (unitIds: string[]) => {
+      prime: async (unitIds: string[], varietyId?: string) => {
         if (languageId === 'he' && unitIds.some((id) => id.startsWith('form:he:'))) {
           await ensureHebrewSentenceSet(manifest);
           await ensureHebrewKeys(unitIds.flatMap(hebrewUnitKeys));
           await ensureHebrewFrequency();
+        }
+        if (languageId === 'el') {
+          if (await ensureGreekFor(unitIds, varietyId ?? manifest.varietyId)) clearGreekSentenceCaches();
         }
         // Start the Repository snapshot's consume window after remote pack assets load.
         await plain.prime(unitIds);
@@ -124,6 +221,11 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
             // so an installation error there could otherwise build and retain a core-only sentence cache.
             await ensureHebrewSentenceSet(manifest);
             await ensureHebrewKeys(hebrewUnitKeys(unitId));
+          } catch { return undefined; }
+        }
+        if (languageId === 'el' && requestedLanguage === 'el') {
+          try {
+            if (await ensureGreekFor([unitId], varietyId ?? manifest.varietyId)) clearGreekSentenceCaches();
           } catch { return undefined; }
         }
         const facts = await forVariety(varietyId).factsFor(unitId, requestedLanguage, varietyId);
@@ -143,6 +245,6 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
           } } };
         } catch { return undefined; }
       },
-    } as FactsProvider & { prime(unitIds: string[]): Promise<void>; clearPrime(): void };
+    } as FactsProvider & { prime(unitIds: string[], varietyId?: string): Promise<void>; clearPrime(): void };
   };
 }

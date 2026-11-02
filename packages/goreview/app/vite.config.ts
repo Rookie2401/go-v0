@@ -20,6 +20,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { gzipSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, type Plugin } from 'vite';
 import { createReleaseManifest, normalizeCompiledModuleId, verifyReleaseArtifact } from '../../../scripts/goreview-release.mjs';
@@ -73,6 +74,38 @@ function copyHebrewLexicons(outDir: string): void {
   fs.writeFileSync(frequencyPath, frequency);
 }
 
+/** Greek's ancient and modern indexes are fetched from their provenance-bearing manifests, then loaded shard by shard. */
+function copyGreekLexicons(outDir: string): void {
+  for (const period of ['ancient', 'modern']) {
+    const source = path.join(repoRoot, 'public', 'lexicon', 'el', period);
+    const manifestPath = path.join(source, 'manifest.json');
+    if (!fs.existsSync(manifestPath)) throw new Error(`The Greek ${period} lexicon is missing its manifest; refusing an incomplete build.`);
+    let manifest: { shards?: Record<string, { file?: string }> };
+    try { manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8')); }
+    catch { throw new Error(`The Greek ${period} lexicon manifest is invalid JSON; refusing an incomplete build.`); }
+    if (!manifest.shards || typeof manifest.shards !== 'object' || !Object.keys(manifest.shards).length) throw new Error(`The Greek ${period} lexicon manifest has no shards; refusing an incomplete build.`);
+    const target = path.join(outDir, 'lexicon', 'el', period);
+    fs.mkdirSync(target, { recursive: true });
+    for (const shard of Object.values(manifest.shards)) {
+      const name = shard?.file;
+      if (typeof name !== 'string' || path.basename(name) !== name || !name.endsWith('.json.gz')) throw new Error(`The Greek ${period} lexicon manifest contains an invalid shard path; refusing an incomplete build.`);
+      const from = path.join(source, name);
+      if (!fs.existsSync(from) || !fs.statSync(from).isFile()) throw new Error(`The Greek ${period} lexicon shard ${name} is missing; refusing an incomplete build.`);
+      const bytes = fs.readFileSync(from);
+      if (bytes.length < 2 || bytes[0] !== 0x1f || bytes[1] !== 0x8b) throw new Error(`The Greek ${period} lexicon shard ${name} is not a valid gzip file; refusing an incomplete build.`);
+      fs.copyFileSync(from, path.join(target, name));
+    }
+    fs.copyFileSync(manifestPath, path.join(target, 'manifest.json'));
+  }
+  const indexPath = path.join(repoRoot, 'public', 'lexicon', 'el', 'koine-index.json');
+  if (!fs.existsSync(indexPath) || !fs.statSync(indexPath).isFile()) throw new Error('The MorphGNT Koine index is missing; refusing an incomplete build.');
+  const index = JSON.parse(fs.readFileSync(indexPath, 'utf8')) as { schema?: number; id?: string; period?: string; source?: { label?: string; licence?: string; url?: string } };
+  if (index.schema !== 1 || index.id !== 'morphgnt-sblgnt' || index.period !== 'el-koi' || !index.source?.label || !index.source?.licence || !index.source?.url) throw new Error('The MorphGNT Koine index is missing valid provenance; refusing an incomplete build.');
+  const target = path.join(outDir, 'lexicon', 'el', 'koine-index.json.gz');
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, gzipSync(fs.readFileSync(indexPath), { level: 9 }));
+}
+
 /** Development only: serve /fonts/<file>.woff2 from packages/shared-fonts. */
 function devFonts(): Plugin {
   return {
@@ -107,6 +140,28 @@ function devHebrewFrequency(): Plugin {
         } catch (error) {
           res.statusCode = 500;
           res.end(`Unable to build Hebrew frequency asset: ${error instanceof Error ? error.message : String(error)}`);
+        }
+      });
+    },
+  };
+}
+
+/** Development only: serve the licensed Koine index in the same compressed form used by releases. */
+function devGreekKoine(): Plugin {
+  return {
+    name: 'greek-koine-dev',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use('/lexicon/el/koine-index.json.gz', (_req, res) => {
+        try {
+          const indexPath = path.join(repoRoot, 'public', 'lexicon', 'el', 'koine-index.json');
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/gzip');
+          res.setHeader('Cache-Control', 'no-store');
+          res.end(gzipSync(fs.readFileSync(indexPath), { level: 9 }));
+        } catch (error) {
+          res.statusCode = 500;
+          res.end(`Unable to prepare the Koine Greek index: ${error instanceof Error ? error.message : String(error)}`);
         }
       });
     },
@@ -150,6 +205,7 @@ function staticFiles(outDir: string, pwa = false): Plugin {
         if (fs.existsSync(shipped)) fs.writeFileSync(shipped, JSON.stringify({ ...JSON.parse(fs.readFileSync(shipped, 'utf8')), hasFrequency: false }, null, 2));
       }
       copyHebrewLexicons(outDir);
+      copyGreekLexicons(outDir);
       const notices = path.join(repoRoot, 'THIRD-PARTY-NOTICES.md');
       if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(outDir, 'THIRD-PARTY-NOTICES.md'));
       // the stylesheet is bundled into assets/, so its ./fonts/ URLs resolve to assets/fonts/
@@ -255,7 +311,7 @@ function reviewProvenance(outDir: string): Plugin {
 
 export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
-    return { root: here, base: './', publicDir: path.join(repoRoot, 'public'), plugins: [devFonts(), devHebrewFrequency()], server: { port: 5198, strictPort: true, watch: { ignored: ['**/public/dict/**', '**/public/library/**', '**/data/**'] } } };
+    return { root: here, base: './', publicDir: path.join(repoRoot, 'public'), plugins: [devFonts(), devHebrewFrequency(), devGreekKoine()], server: { port: 5198, strictPort: true, watch: { ignored: ['**/public/dict/**', '**/public/library/**', '**/data/**'] } } };
   }
   if (mode !== 'production' && mode !== 'extension' && mode !== 'review') throw new Error('mode must be "extension" or "review" (or left out for the web build)');
   const extension = mode === 'extension';

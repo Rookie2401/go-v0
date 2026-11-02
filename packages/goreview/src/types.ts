@@ -81,6 +81,17 @@ export interface UnitFacts {
   features?: Record<string, string>;
   /** Glosses, lexicon first then dictionary senses; empty when none. */
   glosses: string[];
+  /** Explicit base-meaning recognition for a confirmed inflected-form → lexeme link; never an inflected/contextual translation. */
+  lexicalRecognition?: {
+    status: 'verified' | 'withheld';
+    lemma?: string;
+    pos?: string;
+    glosses?: string[];
+    source?: string;
+    attribution?: string;
+    evidence?: 'attested-form-reading';
+    reason?: string;
+  };
   /** Attribution line to show whenever a dictionary gloss is shown. */
   glossAttribution?: string;
   /** Morphological constructions the form realizes (Repository ids). */

@@ -99,4 +99,22 @@ describe('withRequestTimeout', () => {
     expect(response.redirected).toBe(true);
     await expect(response.text()).resolves.toBe('ok');
   });
+
+  it.each([
+    ['HEAD', 200], ['GET', 204], ['GET', 205], ['GET', 304],
+  ])('returns bodyless %s/%s responses unchanged and clears the deadline', async (method, status) => {
+    let signal: AbortSignal | undefined;
+    const original = {
+      status, statusText: 'bodyless', headers: new Headers(), body: new ReadableStream<Uint8Array>(),
+      url: 'https://repo.invalid/conditional', redirected: false, type: 'basic',
+    } as unknown as Response;
+    const fetcher = (async (_input: RequestInfo | URL, init?: RequestInit) => {
+      signal = init?.signal ?? undefined;
+      return original;
+    }) as typeof fetch;
+    const response = await withRequestTimeout(fetcher, 15)('https://repo.invalid/conditional', { method });
+    expect(response).toBe(original);
+    await new Promise(resolve => setTimeout(resolve, 25));
+    expect(signal?.aborted).toBe(false);
+  });
 });

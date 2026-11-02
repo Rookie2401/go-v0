@@ -13,6 +13,23 @@ const plan = (over: Partial<Parameters<typeof planSession>[0]> = {}) => {
 };
 
 describe('planSession: tiers and ordering', () => {
+  it('replays the same eligible pool with recent reading contexts changing only relative order', () => {
+    const a = testNow('lemma:sq:a', { score: 0.5 });
+    const b = testNow('lemma:sq:b', { score: 0.5 });
+    const events = ['source-1', 'source-2', 'source-3'].map((locator, index) => ({
+      id: `reading-${index}`, v: 3, learnerId: 'L', enrolmentId: 'E', languageId: 'sq', at: '2026-10-07T10:00:00.000Z',
+      producer: { app: 'golearn-app' as const, version: '1', deviceId: 'd' }, kind: 'EncounterRecorded' as const,
+      subject: { itemIds: [b.unitId], sentenceKey: `hash-${index}`, sourceRef: { kind: 'ebook' as const, locator } },
+      payload: { contextKind: 'sentence', language: { languageId: 'sq', basis: 'book-metadata', confidence: 0.95, override: false } },
+    }));
+    const projected = [knowledge(a.unitId, {}), knowledge(b.unitId, {})].map(k => ({ ...k, encounters: 3 }));
+    const without = plan({ intake: [a, b], knowledge: projected, preferences: prefs({ sessionMinutes: 0 }) });
+    const withReading = plan({ intake: [a, b], knowledge: projected, readingSignals: events, preferences: prefs({ sessionMinutes: 0 }) });
+    expect(without.items.map(x => x.item.unitId)).toEqual([a.unitId, b.unitId]);
+    expect(withReading.items.map(x => x.item.unitId)).toEqual([b.unitId, a.unitId]);
+    expect(withReading.availableWork).toEqual(without.availableWork);
+  });
+
   it('exposes eligible workload beyond the initial micro-deck without admitting it yet', () => {
     const p = plan({ deck:Array.from({length:12},(_,i)=>dueItem(`form:available-${i}`,0.5)), preferences:prefs({sessionMinutes:0}) });
     expect(p.items).toHaveLength(10);

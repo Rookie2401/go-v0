@@ -6,7 +6,7 @@
  *                beside it and WAITS: the page offers "Update ready - reload" and only then sends SKIP_WAITING.
  *   config.json  network-first, the cached copy only when the network fails.
  *   dict/        the dictionary shards are NOT precached (hundreds of MB): cached on demand in "goreview-dict-v1", capped.
- *   lexicon/     the Hebrew lexicon is NOT precached: shards are cached on demand in a build-versioned cache, capped.
+ *   lexicon/     Hebrew and Greek indexes are NOT precached: shards and the Koine index are cached on demand in a build-versioned cache, capped.
  *   everything else  untouched: the Repository service (any origin, /sync, /vocabulary, /candidates, /me, /sessions ...) is NEVER
  *                cached, and a request that carries an Authorization header is never answered from a cache.
  */

@@ -227,22 +227,27 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 .entry-link:hover .entry-title { color: var(--accent); }
 .entry-actions { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; align-items: center; margin: 1.15rem 0 0; }
 .entry-actions .btn.primary { border-radius: 999px; padding: .4rem 1.7rem; letter-spacing: .04em; }
-/* GoReview's two decks (the owner, 2026-10-31): each a large raised button, its name over its count; Begin new deck beside the Current Deck */
+/* GoReview decks: quiet, full-width typographic rows with hairline separators. */
 .entry-goreview .entry-title { margin-bottom: 1rem; }
-.deck-row { display: flex; align-items: center; gap: .9rem; margin: .9rem 0 0; }
-.deck-button { flex: 1 1 auto; display: flex; flex-direction: column; align-items: flex-start; gap: .3rem; min-height: 4.6rem; padding: .9rem 1.15rem;
-  text-align: left; font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--rule-strong); border-radius: 12px; box-shadow: var(--shadow-raised); cursor: pointer; }
-.deck-button:hover:not(:disabled) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, var(--panel)); }
-.deck-button:disabled { cursor: default; box-shadow: none; background: transparent; opacity: 1; }
+.deck-row { display: block; margin: 0; border-bottom: 1px solid var(--rule); }
+.deck-row[data-deck="current"] { border-bottom-color: var(--rule-strong); }
+.deck-button { position: relative; width: 100%; min-height: 4.5rem; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: .22rem; padding: .75rem 2rem .75rem .15rem;
+  text-align: left; font: inherit; color: var(--ink); background: transparent; border: 0; border-radius: 0; box-shadow: none; cursor: pointer; }
+.deck-button::after, .deck-saved::after { content: ""; position: absolute; inset-inline-end: .55rem; top: 50%; width: .48rem; height: .48rem; border-top: 1px solid var(--accent-soft); border-right: 1px solid var(--accent-soft); transform: translateY(-50%) rotate(45deg); }
+.deck-button:hover:not(:disabled) { background: color-mix(in srgb, var(--ink) 3.5%, transparent); }
+.deck-button:disabled { cursor: default; background: transparent; opacity: 1; }
+.deck-button:disabled::after { content: none; }
 .deck-button-title { font-size: 1.55rem; line-height: 1.15; letter-spacing: .005em; }
+.deck-row[data-deck="current"] .deck-button-title { color: var(--accent); }
 .deck-button:disabled .deck-button-title { color: var(--ink-soft); }
-.deck-button-kicker { font-size: .74rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
-.deck-new { flex: 0 0 auto; white-space: nowrap; }
+.deck-button-kicker { max-width: 100%; font-size: .8rem; line-height: 1.4; color: var(--ink-soft); overflow-wrap: anywhere; }
+.entry-goreview .deck-new { display: block; min-height: 44px; margin: .15rem 0 .25rem; padding: .35rem .15rem; white-space: normal; font: inherit; font-size: .98rem; letter-spacing: 0; color: var(--accent); text-decoration: underline; text-underline-offset: .2em; text-decoration-color: var(--rule-strong); border: 0; border-radius: 0; background: transparent; }
+.entry-goreview .deck-new:hover:not(:disabled) { color: var(--ink); background: transparent; border-color: transparent; text-decoration-color: var(--accent); }
 .deck-resume { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin: 0 0 .4rem; }
 .deck-extras { display: flex; flex-wrap: wrap; gap: .3rem 1.3rem; margin: .55rem .2rem 0; }
 .deck-why { margin: .55rem .2rem 0; font-size: .9rem; }
-.entry-goreview .deck-saved { display: flex; flex-direction: column; gap: .3rem; margin: .9rem 0 0; padding: .8rem 1.15rem; border: 1px solid var(--rule); border-radius: 12px; }
-.entry-goreview .deck-saved:hover { border-color: var(--accent); }
+.entry-goreview .deck-saved { position: relative; display: flex; flex-direction: column; justify-content: center; gap: .22rem; min-height: 4.5rem; margin: 0; padding: .7rem 2rem .7rem .15rem; border: 0; border-radius: 0; }
+.entry-goreview .deck-saved:hover { background: color-mix(in srgb, var(--ink) 3.5%, transparent); text-decoration: none; }
 .entry-goreview .deck-saved .deck-button-title { font-size: 1.3rem; }
 .deckrow-due { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.1rem; margin: .65rem 0 0; }
 .linklike { font: inherit; font-size: .95rem; background: none; border: 0; padding: .1rem 0; color: var(--ink-soft); text-decoration: underline; text-underline-offset: .2em; text-decoration-color: var(--rule-strong); cursor: pointer; border-radius: 2px; }
@@ -434,11 +439,10 @@ img, svg, video, canvas { max-width: 100%; }
   .entry-title { font-size: 1.7rem; }
   .entry-kicker { font-size: .7rem; letter-spacing: .14em; }
   .entry-actions { gap: .25rem 1.2rem; }
-  .deck-row { gap: .6rem; }
-  .deck-button { min-height: 4.2rem; padding: .8rem .95rem; }
+  .deck-button { min-height: 4.5rem; padding: .7rem 1.8rem .7rem .1rem; }
   .deck-button-title { font-size: 1.35rem; }
-  .deck-button-kicker { font-size: .66rem; letter-spacing: .12em; }
-  .deck-new { padding: .45rem 1rem; font-size: .95rem; }
+  .deck-button-kicker { font-size: .82rem; letter-spacing: 0; }
+  .deck-new { padding: .35rem .1rem; font-size: .98rem; }
   .card, .exercise, .feedback { padding: 16px; }
   .exercise, .feedback { margin: 1rem 0; }
   .session-bar { gap: .1rem .75rem; }

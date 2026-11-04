@@ -1,1 +1,0 @@
-import{t as e}from"./engine-CRN1QWoY.js";var t=e(`nb`);export{t as adapter};

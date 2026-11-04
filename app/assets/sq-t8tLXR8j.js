@@ -1,1 +1,0 @@
-import{i as e}from"./index-DFkPAnuD.js";export{e as adapter};

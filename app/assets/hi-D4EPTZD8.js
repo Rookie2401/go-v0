@@ -1,1 +1,0 @@
-import{t as e}from"./hi-BXMv8hil.js";export{e as adapter};

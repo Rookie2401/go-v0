@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "b2e68d1994a99459b1831c7723daf981db9e9c3a",
-    "tree": "f0fbe0c6e19f7523df1db63395aa72416efac7b6",
+    "commit": "eae7701fd08633f85deaaf1e125d25649606d9be",
+    "tree": "d90b24798792bbd6d854b5f369eb3acc32932736",
     "dirty": false
   },
-  "sourceManifestSha256": "73b24a2a9fdf321141f8f4a855df5df9cf3aee003843a5b39b018abd9ae467f6",
+  "sourceManifestSha256": "5a2de75ac48b0b224ccd0b81121a0348faa8f4a7a708c77ce4c58ad4d58f66e0",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -745,7 +745,7 @@
     },
     {
       "path": "packages/goreview/src/facts/provider.ts",
-      "sha256": "31bb18b237f14c28be574544512bff616be849befd276283fa725d41db04ea9e"
+      "sha256": "3d395ded2f9aa56e114c1ec120678c9b5623da0cd13405824ee9098fe0d2f984"
     },
     {
       "path": "packages/goreview/src/facts/review-facts.ts",
@@ -2812,10 +2812,6 @@
       "sha256": "c81c82519d3efd5eb43d09f272b587f4ef782251caac372f974a249f729cf888"
     },
     {
-      "path": "src/adapters/greek/english-verbs.ts",
-      "sha256": "5859f08d2456737e2a79e973a30749c7af58b3984e2acbf9945236a24d85b0b6"
-    },
-    {
       "path": "src/adapters/greek/generated/koine-core.ts",
       "sha256": "f50bae9a9564b04a26959f98fc3437ebc44c0d09463167ff36bf1336f2883745"
     },
@@ -2861,7 +2857,7 @@
     },
     {
       "path": "src/adapters/greek/word-analysis.ts",
-      "sha256": "6856c68fdb7609e2d4b2857cdc7e556f2e3caf727b3fc960a8ae77a0abb9699d"
+      "sha256": "6464ef8f3735cc686c46f26868c2339b03f21f9acd42f31bb56e5710e3930350"
     },
     {
       "path": "src/adapters/he.ts",
@@ -3552,6 +3548,10 @@
       "sha256": "24364606eca8f67e8a7202d46e38dc533d6d92642c62454fdef2607be5debef9"
     },
     {
+      "path": "src/core/english-verb.ts",
+      "sha256": "2cb8246e07a65a6a1fb7db8cea6effb2961d1b6ec40688fdb7bd265a6c853ca3"
+    },
+    {
       "path": "src/core/paradigm.ts",
       "sha256": "0f9dca985b020778226e3edabb3c49a0c08f956984d7912ae76379cf800fc871"
     },
@@ -3561,7 +3561,7 @@
     },
     {
       "path": "src/core/word-analysis.ts",
-      "sha256": "0697f4c91066daac3f8ba41e185ddcd320b39812f87f35745339020d78401776"
+      "sha256": "df6187850cd5b743bc2cdbeada0a1e0de2268fde25988a29324c1c1c89ce792b"
     },
     {
       "path": "src/dict/build.ts",
@@ -4197,7 +4197,6 @@
     "src/adapters/german/varieties.ts",
     "src/adapters/greek/analyze.ts",
     "src/adapters/greek/describe.ts",
-    "src/adapters/greek/english-verbs.ts",
     "src/adapters/greek/generated/koine-core.ts",
     "src/adapters/greek/index-store.ts",
     "src/adapters/greek/morphgnt.ts",
@@ -4382,6 +4381,7 @@
     "src/adapters/thai/table-tags.ts",
     "src/adapters/thai/text.ts",
     "src/core/adapters.ts",
+    "src/core/english-verb.ts",
     "src/core/paradigm.ts",
     "src/core/syntax.ts",
     "src/core/word-analysis.ts",
@@ -4432,7 +4432,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "e45469773b31e66c7e65c6c4bc09a1dd4c4767c3984670b95b5930f76633de09",
+  "artifactManifestSha256": "4261768c31bdf7dcff9795a4442519a28d5751fda6d89ff11cdfec536025a4bf",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4475,8 +4475,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-DREy7Jbw.js",
-      "sha256": "67632266aefe00f5c343a812c142e86ef6c6544745493c0283b1c636e73b2844"
+      "path": "assets/index-JE08N56V.js",
+      "sha256": "bbab53bde45357fbce630fda6bdeccfacd5c37f0692deb737719d80b256b96ee"
     },
     {
       "path": "assets/style-CTa3RDaW.css",
@@ -4512,7 +4512,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "b62d60fdb3dafcd6054991af196e5002d869101dc9adfd9f8c50dc3d66db9ed9"
+      "sha256": "784af8bc77631c733d26b9fc5684bfacec40fa4964e6555ce78a7e39e258f973"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5456,7 +5456,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "6d1210f732736edb2e76fe202ea3c316dd877e82a3e22401f50b8731507db6ee"
+      "sha256": "1e649c7c3de908dd812065348efb1e0f640854ce2661ad1979ccaba7214f3572"
     }
   ]
 }

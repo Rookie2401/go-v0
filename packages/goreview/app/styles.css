@@ -519,7 +519,7 @@ img, svg, video, canvas { max-width: 100%; }
 /* The loading mark (loading.ts): the logo's globe turning about its axis, in the ink; the shell shows it while a screen opens, the home while its
    deck loads. The frame and the rim are still masks. The sphere is the circle the land is clipped to (its radius is the rim's inner edge,
    landRadiusShare in packages/shared-brand/go-globe-geometry.json). Inside it the disc shows one cell of the sheet go-globe-turn.png, 12 columns by
-   10 rows of a whole turn: the rows slide once in 6 s in 10 steps, the columns once in .5 s in 12 steps, so a frame lasts 1/20 s. The disc is a whole
+   10 rows of a whole turn: the rows slide once in 6 s in 10 steps, the columns once in .6 s (one row step) in 12 steps, so a frame lasts 1/20 s. The column loop must equal one row step, or frames play out of order. The disc is a whole
    70 px so every step lands on a whole pixel and the land does not shimmer. The transforms keep turning under reduced motion, slower: the turn is the
    loading indicator itself. It waits a moment before appearing, so a load that ends within a blink shows nothing. */
 .go-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; min-height: 38vh; color: var(--brand); opacity: 0; }
@@ -529,10 +529,10 @@ img, svg, video, canvas { max-width: 100%; }
 .go-globe-sphere { overflow: hidden; clip-path: circle(33.57% at 50% 50%); }
 .go-globe-disc { position: absolute; top: 17px; left: 17px; width: 70px; height: 70px; display: block; overflow: hidden; }
 .go-globe-rows { position: absolute; top: 0; left: 0; width: 100%; height: 1000%; display: block; animation: go-turn-rows 6s steps(10) infinite; will-change: transform; }
-.go-globe-turn { position: absolute; top: 0; left: 0; width: 1200%; height: 10%; display: block; animation: go-turn-cols .5s steps(12) infinite; will-change: transform; }
+.go-globe-turn { position: absolute; top: 0; left: 0; width: 1200%; height: 10%; display: block; animation: go-turn-cols .6s steps(12) infinite; will-change: transform; }
 .go-globe-land { position: absolute; top: 0; left: 0; width: 100%; height: 1000%; display: block; background: currentColor; -webkit-mask-size: 100% 100%; -webkit-mask-position: 0 0; -webkit-mask-repeat: no-repeat; mask-size: 100% 100%; mask-position: 0 0; mask-repeat: no-repeat; }
 @keyframes go-turn-rows { to { transform: translateY(-100%); } }
 @keyframes go-turn-cols { to { transform: translateX(-100%); } }
 @keyframes go-appear { to { opacity: 1; } }
 @media (prefers-reduced-motion: no-preference) { .go-loading { animation: go-appear .2s ease .15s forwards; } }
-@media (prefers-reduced-motion: reduce) { .go-loading { opacity: 1; } .go-globe-rows { animation-duration: 15s; } .go-globe-turn { animation-duration: 1.25s; } } /* at once, and a slow turn */
+@media (prefers-reduced-motion: reduce) { .go-loading { opacity: 1; } .go-globe-rows { animation-duration: 15s; } .go-globe-turn { animation-duration: 1.5s; } } /* at once, and a slow turn */

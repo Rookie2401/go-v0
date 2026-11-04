@@ -10,6 +10,7 @@ import { default_w } from 'ts-fsrs';
 import { createFsrsScheduler, buildCardAdded, buildCardRemoved, foldDeck, itemIdFor } from '../../packages/goreview/src/scheduler';
 import { planSession } from '../../packages/goreview/src/planner';
 import { decideIntake, proposeFor } from '../../packages/goreview/src/intake';
+import { knowledge } from '../goreview/intake/fixtures';
 import type { DeckItem, IntakeOutcome, Rating, ReviewPreferences } from '../../packages/goreview/src/types';
 import type { EventKind, GoEvent, ReviewCandidate } from '../../packages/repository-contract/src';
 import { validateEvent } from '../../packages/repository-contract/src';
@@ -199,7 +200,10 @@ describe('§18 scheduler-version upgrade', () => {
 // ═════════════════════════════ backlog and the planner budget ═════════════════════════════
 
 describe('§18 backlog: 50 due items against a ten-minute budget', () => {
-  const PREFS: ReviewPreferences = { languageId: 'sq', sessionMinutes: 10, maxNew: 3, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true };
+  const PREFS: ReviewPreferences = { languageId: 'sq', sessionMinutes: 10, maxNew: 3, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true,
+    // Since a206c4dc (2026-10-31) a batch is capped by the learner's deck size (cardsPerDeck, default 10, max 60), a second limit beside the time budget.
+    // These tests are about the TIME budget, so the deck size is raised to its maximum and the clock stays the only binding limit.
+    cardsPerDeck: 60 };
   const AUDIO = { available: false, eligibleForEvidence: false, reason: 'off' };
 
   /** 50 items, each reviewed Good twice early (so it is in Review state), at different ages so the recall probabilities differ. */
@@ -251,10 +255,10 @@ describe('§18 backlog: 50 due items against a ten-minute budget', () => {
     expect(none.items).toHaveLength(50);
     expect(none.skipped).toHaveLength(0);
     expect(mkPlan(deck, { sessionMinutes: 20 }).items.length).toBeGreaterThan(mkPlan(deck, { sessionMinutes: 10 }).items.length);
-    const fresh: IntakeOutcome = { unitId: 'lemma:sq:brandnew:NOUN', decision: 'test-now', reasons: ['score high'], proposed: { dimension: 'written-recognition', family: 'written-recognition' }, candidate: { unitId: 'lemma:sq:brandnew:NOUN', kind: 'lexeme', score: 0.9, reasons: [], targetDimension: 'readingRecognition', eligibility: { eligible: true, status: 'verified', caveats: [] }, cost: 0.2 } };
+    const fresh: IntakeOutcome = { unitId: 'lemma:sq:brandnew:NOUN', decision: 'test-now', reasons: ['score high'], proposed: { dimension: 'written-recognition', family: 'written-recognition' }, candidate: { unitId: 'lemma:sq:brandnew:NOUN', kind: 'lexeme', score: 0.9, reasons: [], targetDimension: 'readingRecognition', eligibility: { eligible: true, status: 'verified', caveats: [] }, cost: 0.2 }, knowledge: knowledge('lemma:sq:brandnew:NOUN') };   // known to the learner, so only the budget can keep it out
     const withNew = mkPlan(deck, {}, [fresh]);
     expect(withNew.newCount).toBe(0); // the backlog used the whole budget: a new item is not added on top of 50 overdue ones
-    expect(withNew.skipped.some((s) => s.itemId === itemIdFor('lemma:sq:brandnew:NOUN', 'written-recognition'))).toBe(true);
+    expect(withNew.skipped.find((s) => s.itemId === itemIdFor('lemma:sq:brandnew:NOUN', 'written-recognition'))?.code).toBe('new-budget-exhausted');
   });
 
   it('answering the planned items clears them from the due list and the next plan moves on to the rest (the backlog drains)', () => {
@@ -281,14 +285,16 @@ describe('§18 backlog: 50 due items against a ten-minute budget', () => {
 describe('§18 candidate de-duplication', () => {
   const cand = (unitId: string): ReviewCandidate => ({ unitId, kind: 'lexeme', score: 0.8, reasons: [{ rule: 'demonstratedError', weight: 0.25 }], targetDimension: 'readingRecognition', eligibility: { eligible: true, status: 'verified', caveats: [] }, cost: 0.2 });
   const PREFS: ReviewPreferences = { languageId: 'sq', sessionMinutes: 10, maxNew: 5, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true };
-  const outcome = (unitId: string): IntakeOutcome => ({ unitId, decision: 'test-now', explicitlySelected: true, reasons: ['learner selected practice'], proposed: proposeFor(cand(unitId)), candidate: cand(unitId) });
+  // Since 690028d4 / 3134cd5b a never-reviewed card is admitted automatically only for a word with observed knowledge beyond New ("review follows the level"),
+  // so the learner's knowledge of the unit (a recognized word) travels with the intake outcome, as the app's planner receives it.
+  const outcome = (unitId: string): IntakeOutcome => ({ unitId, decision: 'test-now', explicitlySelected: true, reasons: ['learner selected practice'], proposed: proposeFor(cand(unitId)), candidate: cand(unitId), knowledge: knowledge(unitId) });
 
   it('intake: once the item is in the deck, the same unit is already-covered; a dismissed one is not re-proposed', () => {
     const c = cand(UNIT);
-    const first = decideIntake({ candidate: c, existing: [], audio: { available: false, eligibleForEvidence: false, reason: '' }, saved: new Set(), preferences: PREFS, now: T0 });
+    const first = decideIntake({ candidate: c, knowledge: knowledge(UNIT), existing: [], audio: { available: false, eligibleForEvidence: false, reason: '' }, saved: new Set(), preferences: PREFS, now: T0 });
     expect(first.decision).toBe('test-now');
     const deck = foldDeck([cardAdded()], SCHED, { now: T0 }).items;
-    expect(decideIntake({ candidate: c, existing: deck, audio: { available: false, eligibleForEvidence: false, reason: '' }, saved: new Set(), preferences: PREFS, now: T0 }).decision).toBe('already-covered');
+    expect(decideIntake({ candidate: c, knowledge: knowledge(UNIT), existing: deck, audio: { available: false, eligibleForEvidence: false, reason: '' }, saved: new Set(), preferences: PREFS, now: T0 }).decision).toBe('already-covered');
     note('S20', '§18', 'same unit offered to intake twice', 'first test-now; once in the deck already-covered', 'test-now → already-covered');
   });
 
@@ -343,7 +349,7 @@ describe('§18 audio-based reviews fold like any review; scheduling and evidence
     const unit = 'form:sq:shkollë';
     const item = itemIdFor(unit, 'auditory-recognition');
     const added = cardAdded(unit, T0, 'dev-A', 'auditory-recognition');
-    const synthetic = review(t(DAY), 3, { kind: 'ListeningAssessed', unit, item, voice: 'synthetic', evidence: { quality: 'none', assisted: false }, id: 'syn-1' });
+    const synthetic = review(t(DAY), 3, { kind: 'ListeningAssessed', unit, item, voice: 'synthetic', evidence: { quality: 'none', assisted: false }, id: 'syn-1', extra: { listeningPractice: true } });   // b985083b: the runner stamps listeningPractice on a computer-voice answer; the fold then schedules it
     const recorded = review(t(2 * DAY), 3, { kind: 'ListeningAssessed', unit, item, voice: 'recorded', evidence: { quality: 'moderate', assisted: false }, id: 'rec-1' });
     expect(validateEvent(synthetic)).toEqual([]);
     expect(validateEvent(recorded)).toEqual([]);

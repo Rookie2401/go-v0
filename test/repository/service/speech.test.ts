@@ -1,6 +1,7 @@
 // @vitest-environment node
 import { describe, expect, it, vi } from 'vitest';
 import { handle } from '../../../packages/repository-service/src/handler';
+import * as speechEngine from '../../../server/speechHandler';
 import { makeEvent, raw, createHarness, signUp } from './fakes';
 
 const VOICE = 'es-MX-DaliaNeural';
@@ -30,7 +31,7 @@ describe('account-authenticated Azure Speech routes', () => {
   it('requires a valid account session for status and voices before any upstream request', async () => {
     const h = createHarness();
     const upstream = vi.fn(async () => voiceResponse());
-    h.deps.speech = { key: 'test-azure-key', region: 'westus', fetch: upstream };
+    h.deps.speech = { engine: speechEngine, key: 'test-azure-key', region: 'westus', fetch: upstream };
     const status = await raw(h, 'GET', '/api/speech/status');
     const voices = await raw(h, 'GET', '/api/speech/voices?lang=es');
     const synth = await raw(h, 'POST', '/api/speech/synthesize', { body: { languageId: 'es', text: 'Hola', voice: VOICE, locale: 'es-MX', format: 'riff-24khz-16bit-mono-pcm', kind: 'word', sourcePermission: 'allowed' } });
@@ -55,7 +56,7 @@ describe('account-authenticated Azure Speech routes', () => {
     const h = createHarness();
     const s = await signUp(h, 'voices@example.com');
     const upstream = vi.fn(async () => voiceResponse());
-    h.deps.speech = { key: 'test-azure-key', region: 'westus', fetch: upstream };
+    h.deps.speech = { engine: speechEngine, key: 'test-azure-key', region: 'westus', fetch: upstream };
     const status = await raw(h, 'GET', '/api/speech/status', { token: s.token });
     const voices = await raw(h, 'GET', '/api/speech/voices?lang=es', { token: s.token });
     expect(status.body).toMatchObject({ configured: true, provider: 'azure-speech', region: 'westus' });
@@ -67,7 +68,7 @@ describe('account-authenticated Azure Speech routes', () => {
     const h = createHarness();
     const s = await signUp(h, 'synthesis@example.com');
     const upstream = vi.fn(async () => wavResponse());
-    h.deps.speech = { key: 'test-azure-key', region: 'westus', fetch: upstream };
+    h.deps.speech = { engine: speechEngine, key: 'test-azure-key', region: 'westus', fetch: upstream };
     const body = { languageId: 'es', text: 'Hola', voice: VOICE, locale: 'es-MX', format: 'riff-24khz-16bit-mono-pcm', kind: 'word', sourcePermission: 'allowed' };
     const noConsent = await synthesize(h, s.token, body);
     expect(noConsent.status).toBe(403);
@@ -96,7 +97,7 @@ describe('account-authenticated Azure Speech routes', () => {
     const h = createHarness();
     const s = await signUp(h, 'word-only@example.com');
     const upstream = vi.fn(async () => wavResponse());
-    h.deps.speech = { key: 'test-azure-key', region: 'westus', fetch: upstream };
+    h.deps.speech = { engine: speechEngine, key: 'test-azure-key', region: 'westus', fetch: upstream };
     await h.store.append(s.learnerId, [consentEvent(s.learnerId, s.enrolmentId!, 'ConsentGiven', h.clock.now())]);
     const base = { languageId: 'es', text: 'Hola', voice: VOICE, locale: 'es-MX', format: 'riff-24khz-16bit-mono-pcm', kind: 'word', sourcePermission: 'allowed' };
     const invalid = [
@@ -119,7 +120,7 @@ describe('account-authenticated Azure Speech routes', () => {
     const h = createHarness();
     const s = await signUp(h, 'published-material@example.com');
     const upstream = vi.fn(async () => wavResponse());
-    h.deps.speech = { key: 'test-azure-key', region: 'westus', fetch: upstream };
+    h.deps.speech = { engine: speechEngine, key: 'test-azure-key', region: 'westus', fetch: upstream };
     await h.store.append(s.learnerId, [consentEvent(s.learnerId, s.enrolmentId!, 'ConsentGiven', h.clock.now())]);
     const base = { languageId: 'es', voice: VOICE, locale: 'es-MX', format: 'riff-24khz-16bit-mono-pcm', sourcePermission: 'allowed' };
     for (const [kind, text] of [
@@ -139,7 +140,7 @@ describe('account-authenticated Azure Speech routes', () => {
     const h = createHarness();
     const s = await signUp(h, 'withdraw@example.com');
     const upstream = vi.fn(async () => wavResponse());
-    h.deps.speech = { key: 'test-azure-key', region: 'westus', fetch: upstream };
+    h.deps.speech = { engine: speechEngine, key: 'test-azure-key', region: 'westus', fetch: upstream };
     await h.store.append(s.learnerId, [
       consentEvent(s.learnerId, s.enrolmentId!, 'ConsentGiven', '2026-10-08T10:00:00.000Z'),
       consentEvent(s.learnerId, s.enrolmentId!, 'ConsentWithdrawn', '2026-10-08T10:01:00.000Z'),
@@ -165,7 +166,7 @@ describe('account-authenticated Azure Speech routes', () => {
     const first = await signUp(h, 'budget-one@example.com');
     const second = await signUp(h, 'budget-two@example.com');
     const upstream = vi.fn(async () => voiceResponse());
-    const speech = { key: 'test-azure-key', region: 'westus', fetch: upstream, rateLimitPerMinute: 1, dailyCharacterLimit: 3 };
+    const speech = { engine: speechEngine, key: 'test-azure-key', region: 'westus', fetch: upstream, rateLimitPerMinute: 1, dailyCharacterLimit: 3 };
     h.deps.speech = speech;
     const one = await raw(h, 'GET', '/api/speech/voices?lang=es', { token: first.token });
     const oneLimited = await raw(h, 'GET', '/api/speech/voices?lang=es', { token: first.token });
@@ -185,7 +186,7 @@ describe('account-authenticated Azure Speech routes', () => {
   it('keeps repository CORS and bounded body handling on the authenticated routes', async () => {
     const h = createHarness();
     const s = await signUp(h, 'cors@example.com');
-    h.deps.speech = { key: 'test-azure-key', region: 'westus', fetch: vi.fn(async () => voiceResponse()) };
+    h.deps.speech = { engine: speechEngine, key: 'test-azure-key', region: 'westus', fetch: vi.fn(async () => voiceResponse()) };
     const preflight = await handle(new Request('http://repository.local/api/speech/synthesize', { method: 'OPTIONS' }), h.deps);
     expect(preflight.status).toBe(204);
     expect(preflight.headers.get('access-control-allow-origin')).toBe('*');

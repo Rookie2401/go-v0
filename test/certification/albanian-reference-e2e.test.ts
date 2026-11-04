@@ -200,7 +200,9 @@ function shown(): Shown | undefined {
 }
 /** Answers the current item: typed when there is an input, else a choice; `pick` returns the text to give. */
 async function answer(pick: (s: Shown) => string): Promise<string> {
-  const s = shown(); if (!s) throw new Error('no exercise on screen');
+  let s = shown(); if (!s) throw new Error('no exercise on screen');
+  // A written-recognition card is a flashcard first ("Show answer" / "Type an answer", 78c1d342); the learner who types an answer presses "Type an answer".
+  if (practiceRoot.querySelector('#type-answer')) { pq('#type-answer').click(); await flush(6); s = shown()!; }
   const give = pick(s);
   if (s.hasInput) { const input = pq<HTMLInputElement>('#answer-input'); typeInto(input, give); keyOn('Enter', input); }
   else { const btn = pqa('.choice').find((b) => b.getAttribute('data-choice') === give) ?? pqa('.choice')[0]; if (!btn) throw new Error('no way to answer'); btn.click(); }
@@ -259,6 +261,7 @@ describe('§14 Acquisition (steps 1–11): GoLearn over the real Repository', ()
 
     expect(setup.current()).toBe('signin');                                            // 1. create a learner (the first page of a first run: sign in, optional)
     choose(q('#acct-mode'), 'create');
+    type(q<HTMLInputElement>('#acct-name'), 'Ana');                                   //    the name on the account (fe25e147, 2026-10-28): asked for when creating an account, shown by GoLearn and GoReview
     type(q<HTMLInputElement>('#acct-email'), EMAIL);
     type(q<HTMLInputElement>('#acct-password'), PASSWORD);
     submit(q<HTMLFormElement>('#acct-form'));
@@ -350,7 +353,9 @@ describe('§14 Review (steps 12–19): the real GoReview shell on the real Repos
     await until(async () => !!(await practiceArea.get('gopractice:session'))['gopractice:session'], 8000);
     expect(JSON.stringify(await practiceArea.get(null))).not.toContain(PASSWORD);
     await practice!.ready(); await flush(10);
+    // 63b32ea2 (2026-10-31): the home is two deck buttons (Current Deck, Review Deck); the candidate list with its reasons, and the session start, moved to the details page.
     await go('review', '#review-home > *');
+    await go('review/details', '#candidates');
     await until(() => !!practiceRoot.querySelector(`#candidates li[data-unit="${LEMMA}"]`), 10_000);
     const row = pq(`#candidates li[data-unit="${LEMMA}"]`);                                // 13. the review candidate
     const why = row.querySelector('details.why')!.textContent ?? '';                       // 14. why it was selected
@@ -358,15 +363,20 @@ describe('§14 Review (steps 12–19): the real GoReview shell on the real Repos
     expect(why).toMatch(/level New: automatic review excludes/i);
     expect(why).toMatch(/repeatedLookups|saved|looked up|met/i);
     expect(why.length).toBeGreaterThan(20);
-    // This fixture explicitly requests written practice; New items are not admitted automatically.
-    ok(await api.appendEvents([buildCardAdded({ learnerId, enrolmentId, languageId: 'sq', at: nowIso(), deviceId: learnerDevice, producerVersion: 'cert', unitId: LEMMA, unitKind: 'lexeme', dimension: 'written-recognition', family: 'written-recognition', addedBy: 'learner' })]));
-    await practice!.ctx.syncNow({ force: true });
-    await go('review', '#review-home > *');
+    // A New word is not admitted automatically (and a New candidate offers no "Test now"). The learner asks for written practice in My vocab: tap the word,
+    // "Select for optional practice" (explicit intent, 63b32ea2); the home then offers "Practice selected words".
+    await go('review/vocab', `li.vocab-item[data-unit-id="${LEMMA}"]`);
+    (pq(`li.vocab-item[data-unit-id="${LEMMA}"] button.vocab-row`)).click();
+    await until(() => !!practiceRoot.querySelector(`li.vocab-item[data-unit-id="${LEMMA}"] [data-action="add-to-deck"]`), 8000);
+    pq(`li.vocab-item[data-unit-id="${LEMMA}"] [data-action="add-to-deck"]`).click();
+    await until(() => !!practiceRoot.querySelector(`li.vocab-item[data-unit-id="${LEMMA}"] .vocab-selected`), 8000);
+    await go('review', '#start-selected-practice');
   }, 30_000);
 
   it('15–17. a written exercise is presented; an incorrect response lowers the relevant estimate only', async () => {
     const before = await dimsOf(learnerId, LEMMA);
-    await startSession();
+    pq('#start-selected-practice').click();                                                 // the selected word, asked as the explicit written practice it was requested as
+    await until(() => !!practiceRoot.querySelector('#session .exercise') || !!practiceRoot.querySelector('#summary'), 10_000);
     const s = shown();
     expect(s, practiceRoot.textContent ?? '').toBeDefined();
     expect(s!.family).not.toMatch(/^audio/);                                                // 15. written, not listening
@@ -423,11 +433,13 @@ describe('§14 Listening (steps 20–24): GoListen through the real shell, with 
     expect(availability).toMatchObject({ available: true, eligibleForEvidence: true });
     await openPractice();
     await practice!.ctx.syncNow({ force: true });                                              // the device pulls the card added from the other device
-    await go('review', '#review-home > *');
-    await until(() => !!practiceRoot.querySelector('#pref-listening'), 8000);
+    // 63b32ea2 (2026-10-31): the home carries no preferences; the listening preference is on the Settings page (and under Session controls on the details page).
+    await go('settings', '#pref-listening');
     const pref = pq<HTMLInputElement>('#pref-listening');
-    if (!pref.checked) { pref.click(); pref.dispatchEvent(new Event('change', { bubbles: true })); await flush(10); await go('settings'); await go('review', '#review-home > *'); }   // leave and return: the home is re-read with the saved preference
+    if (!pref.checked) { pref.click(); pref.dispatchEvent(new Event('change', { bubbles: true })); await flush(10); }
+    await go('review', '#review-home > *'); await go('settings', '#pref-listening');   // leave and return: the saved preference is read again
     expect(pq<HTMLInputElement>('#pref-listening').checked).toBe(true);
+    await go('review', '#review-home > *');
     try { await startSession(); } catch (e) {
       const deck = foldDeckItems(await events(learnerId), scheduler, { languageId: 'sq', now: nowIso() });
       const plan = planSession({ deck, intake: [], preferences: { languageId: 'sq', sessionMinutes: 10, maxNew: 5, desiredRetention: 0.9, includeListening: true, grammarShare: 0.2, prioritizeSaved: true }, audio: availability, scheduler, now: nowIso(), random: () => 0.5 });

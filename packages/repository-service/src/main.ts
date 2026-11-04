@@ -157,6 +157,7 @@ async function wire(dataDir: string, cfg: ServiceConfig): Promise<{ deps: Servic
     info: { storeKind: kind, startedAt, schemaVersion: async () => (await store.stats?.())?.schemaVersion, ...(kind === 'sqlite' ? { durability: () => backupHealth(dataDir) } : {}) },
     mailer,
     speech: {
+      engine: await import('../../../server/speechHandler'),
       // Azure credentials remain server-side. They are deliberately not logged or copied into any client response.
       ...(process.env.AZURE_SPEECH_KEY ? { key: process.env.AZURE_SPEECH_KEY } : {}),
       ...(process.env.AZURE_SPEECH_REGION ? { region: process.env.AZURE_SPEECH_REGION } : {}),

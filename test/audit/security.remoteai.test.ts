@@ -97,7 +97,7 @@ describe('source inventory: where a network or a remote provider can be reached'
     for (const d of ['packages/goreview/src', 'packages/repository-sync/src', 'packages/repository-engine/src', 'packages/repository-linguistics/src', 'packages/repository-contract/src']) {
       for (const f of walk(path.join(root, d))) {
         const code = stripComments(fs.readFileSync(f, 'utf8'));
-        const m = code.match(/\bfetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon|api\.(openai|anthropic)\.com|generativelanguage|azure|cognitive|speech\.microsoft/i);
+        const m = code.match(/\bfetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon|api\.(openai|anthropic)\.com|generativelanguage|azure|cognitive(?!\s*cost\b)|speech\.microsoft/i); // cognitive(?!\s*cost): the planner's own cognitiveCost field and its "cognitive cost" reason text (690028d4; microdeck sizing, a number summed from candidate costs, no network) are not Azure Cognitive Services
         if (m && !/goreview\/src\/intake\/fetch\.ts$/.test(rel(f))) hits.push(`${rel(f)}: ${m[0]}`);
       }
     }

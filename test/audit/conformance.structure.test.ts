@@ -85,7 +85,8 @@ describe('what each entry may reach (exact package sets)', () => {
     'golearn-app': ['golearn-extension', 'golearn-share', 'golisten', 'language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-local', 'repository-service', 'repository-store', 'repository-sync'],
     // shared-brand: the Go mark and the loading mark's globe (PNG masks the app resolves with new URL(..., import.meta.url))
     'goreview-app': ['goreview-app', 'goreview', 'gotell', 'golisten', 'language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-local', 'repository-service', 'repository-store', 'repository-sync', 'shared-brand'],
-    'repository-service': ['repository-contract', 'repository-engine', 'repository-linguistics', 'repository-service', 'repository-store'],
+    // language-packs: since 53abe689 (authenticated cloud speech, 2026-10-31) the handler's speech route checks a phrase against the owner-authored pack and tutorial text (speechMaterial.ts); data-only entrypoints, pinned below
+    'repository-service': ['language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-service', 'repository-store'],
   };
   it.each(ENTRIES.map((e) => [e.id, e.file]))('%s reaches exactly the packages listed in the doc', (id, file) => {
     expect(pkgSet(reach(file).files)).toEqual([...EXPECT[id]].sort());
@@ -104,14 +105,20 @@ describe('what each entry may reach (exact package sets)', () => {
       // the handler module brings its own browser-safe helpers: the long-poll notifier (sync, 2026-10-17) and, since the accounts
       // hardening of the same day, accounts.ts, http.ts (request ids, body caps), metrics.ts, ratelimit.ts and throttle.ts. None of
       // them imports node:* (the device bundle builds from them); the Node bridge, the mailer, the purge job and the stores stay out.
-      const ALLOWED_SERVICE = ['api.ts', 'deps.ts', 'handler.ts', 'accounts.ts', 'http.ts', 'metrics.ts', 'notifier.ts', 'ratelimit.ts', 'throttle.ts'].map((f) => 'packages/repository-service/src/' + f);
+      const ALLOWED_SERVICE = ['api.ts', 'deps.ts', 'handler.ts', 'accounts.ts', 'http.ts', 'metrics.ts', 'notifier.ts', 'ratelimit.ts', 'throttle.ts', 'speech.ts', 'speechMaterial.ts', 'requestTimeout.ts' /* a fetch wrapper with no imports, used by GoReview's client */].map((f) => 'packages/repository-service/src/' + f); // speech.ts, speechMaterial.ts: authenticated cloud speech route, 53abe689 (its only Node-free imports: http.ts, deps.ts, language-packs data)
       expect(service.filter((f) => !ALLOWED_SERVICE.includes(f)), e.id).toEqual([]);
     }
   });
 
-  it('the service reaches no application, no GoListen, no language pack and no sync client', () => {
-    const pk = pkgSet(reach('packages/repository-service/src/main.ts').files);
-    for (const banned of ['golearn-extension', 'goreview-app', 'goreview', 'gotell', 'golisten', 'language-packs', 'repository-sync', 'controlled-reader']) expect(pk).not.toContain(banned);
+  it('the service reaches no application, no GoListen and no sync client, and a language pack only through speechMaterial.ts (the exact-text check for account speech, 53abe689)', () => {
+    const r = reach('packages/repository-service/src/main.ts');
+    const pk = pkgSet(r.files);
+    for (const banned of ['golearn-extension', 'goreview-app', 'goreview', 'gotell', 'golisten', 'repository-sync', 'controlled-reader']) expect(pk).not.toContain(banned);
+    const packs = [...r.files].filter((f) => f.startsWith('packages/language-packs/'));
+    expect(packs.length).toBeGreaterThan(0);
+    for (const f of packs) expect(chainTo(r, f).includes('packages/repository-service/src/speechMaterial.ts'), `${f} is reached other than through speechMaterial.ts`).toBe(true);
+    // data-only: the service never loads a pack's analysers or installers (the entrypoints speechMaterial.ts names are the registry and the tutorial index)
+    expect(packs.filter((f) => /analy[sz]er|install|dictionar/i.test(f)), 'analysers or installers reached').toEqual([]);
   });
 
   it('the content script reaches no Repository client, sync, store or service code (it only messages the worker)', () => {
@@ -122,7 +129,9 @@ describe('what each entry may reach (exact package sets)', () => {
   it('GoLearn keeps audio behind the content voice adapter: the setup page (its Audio guide) reaches tag data only; the popup and the worker none; content uses injected providers', () => {
     for (const e of ENTRIES.filter((x) => x.group === 'golearn-extension' && x.id !== 'golearn-content')) {
       const listen = [...reach(e.file).files].filter((f) => f.startsWith('packages/golisten/')).sort();
-      expect(listen, e.id).toEqual(e.id === 'golearn-app' ? ['packages/golisten/src/deviceTags.ts'] : []);
+      // golearn-app: since 53abe689 (2026-10-31) the Share screen builds the card's pronouncer (content/voice.ts), which brings GoListen's playback and providers; the network is never reached from them (they take injected ports: checked below), and remote speech goes through the worker's speech bridge only after the learner's consent
+      expect(listen, e.id).toEqual(e.id === 'golearn-app' ? ['contracts', 'deviceTags', 'environment', 'phonetics', 'playback', 'ports', 'providers/audio', 'providers/device', 'providers/remote', 'providers/types', 'registry'].map((n) => `packages/golisten/src/${n}.ts`) : []);
+      for (const f of listen) expect(readText(f), `${f} opens its own network path`).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon|EventSource|importScripts/);
     }
     const content = [...reach('packages/golearn-extension/src/content/index.ts').files].filter((f) => f.startsWith('packages/golisten/'));
     expect(content.length).toBeGreaterThan(0);
@@ -154,10 +163,11 @@ describe('shared packages never reach an application, the service, the store or 
   it('repository-local reaches the contract, the store (memory), the engine, the linguistic layer, the sync area and the service client and handler, and nothing else', () => {
     const reached = new Set<string>();
     for (const root of listFiles('packages/repository-local')) for (const f of reach(root).files) reached.add(f);
-    expect(pkgSet(reached).filter((x) => !['repository-local', 'repository-contract', 'repository-store', 'repository-engine', 'repository-linguistics', 'repository-sync', 'repository-service'].includes(x))).toEqual([]);
+    // language-packs: via the service handler's speech route (speechMaterial.ts, 53abe689), data-only
+    expect(pkgSet(reached).filter((x) => !['repository-local', 'repository-contract', 'repository-store', 'repository-engine', 'repository-linguistics', 'repository-sync', 'repository-service', 'language-packs'].includes(x))).toEqual([]);
     // of the service: the client, its dependency types, the handler and the handler's browser-safe helpers (accounts, http, metrics,
     // notifier, ratelimit, throttle: 2026-10-17), and nothing else (no Node bridge, no Node crypto, no mailer, no purge job, no source-policy file reader)
-    expect([...reached].filter((f) => f.startsWith('packages/repository-service/')).sort()).toEqual(['accounts.ts', 'api.ts', 'deps.ts', 'handler.ts', 'http.ts', 'metrics.ts', 'notifier.ts', 'ratelimit.ts', 'throttle.ts'].map((f) => 'packages/repository-service/src/' + f));
+    expect([...reached].filter((f) => f.startsWith('packages/repository-service/')).sort()).toEqual(['accounts.ts', 'api.ts', 'deps.ts', 'handler.ts', 'http.ts', 'metrics.ts', 'notifier.ts', 'ratelimit.ts', 'speech.ts', 'speechMaterial.ts', 'throttle.ts'].map((f) => 'packages/repository-service/src/' + f));
     // of the store: the memory implementation and its rules; never the SQLite one (node:sqlite) or the export module
     expect([...reached].filter((f) => f.startsWith('packages/repository-store/')).sort()).toEqual(['packages/repository-store/src/deletion.ts', 'packages/repository-store/src/memory.ts', 'packages/repository-store/src/rules.ts']);
     // and no Node-only import anywhere in what it reaches

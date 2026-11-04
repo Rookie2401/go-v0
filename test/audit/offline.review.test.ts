@@ -7,18 +7,45 @@
  */
 import { afterEach, describe, expect, it } from 'vitest';
 import type { GoEvent } from '../../packages/repository-contract/src';
-import { foldDeckItems } from '../../packages/goreview/src';
+import { foldDeckItems, planSession, type SessionPlan } from '../../packages/goreview/src';
 import { albanianRegistry, createGoListen } from '../../packages/golisten/src';
 import { createAudioDeps } from '../../packages/goreview/app/audio';
 import { createMemoryArea } from '../../packages/repository-sync/src';
 import {
-  STORE_KINDS, createNet, createStack, serverEvents, signUp, text, type Stack, type StoreKind,
+  STORE_KINDS, createNet, createStack, lookup, serverEvents, signUp, text, type Learner, type Stack, type StoreKind,
 } from './privacy.support';
-import { createReviewRig } from './offline.support';
+import type { UnitKnowledge } from '../../packages/repository-contract/src';
+import type { ExerciseFamily } from '../../packages/goreview/src';
+import { createReviewRig, NO_AUDIO, REVIEW_PREFS, SQ_UNITS, type ReviewRig } from './offline.support';
 
 const stacks: Stack[] = [];
 const make = (kind: StoreKind): Stack => { const s = createStack(kind); stacks.push(s); return s; };
 afterEach(async () => { while (stacks.length) await stacks.pop()!.close(); });
+
+/**
+ * GoReview 3 (690028d4, 3134cd5b): a deck card with no review yet is admitted automatically only for a word whose observed knowledge is beyond
+ * New (eligibility.ts "knowledge-beyond-new-required"), and the app passes the Repository's knowledge to the planner. The rig's `seedDeck` adds
+ * cards only and its `plan()` passes no knowledge, so nothing would be planned. Here the learner has also met each word in reading (one
+ * SelectionLookedUp, the event GoLearn writes), and the plan carries the Repository's knowledge of those words, as the app's candidate cache does.
+ */
+// A fourth word: since a72529d4 (2026-10-29) one word gets ONE new card per batch, so three words plan three cards however many families are seeded.
+const SHTEPI = 'lemma:sq:shtëpi:NOUN';
+const UNITS = [...SQ_UNITS, SHTEPI];
+const knowledgeOf = new WeakMap<ReviewRig, UnitKnowledge[]>();
+async function seedDeck(_s: Stack, a: Learner, rig: ReviewRig, families?: ExerciseFamily[]): Promise<void> {
+  await a.api.lookup({ languageId: 'sq', surface: 'shtëpinë', sentence: 'Unë po lexoj një libër të bukur në shtëpinë time.' });   // registers the unit in the Repository, as the rig does for the others
+  const met = UNITS.map((unit, i) => lookup(a, { at: `2026-09-01T08:0${i}:00.000Z`, subject: { itemIds: [unit], sentenceKey: `ab1${i}` } }));
+  const put = await a.api.appendEvents(met);
+  if (!put.ok) throw new Error(`lookups ${put.status} ${put.error}`);
+  await rig.seedDeck(families, UNITS);
+  const known = await a.api.knowledge(UNITS);
+  if (!known.ok) throw new Error(`knowledge ${known.status}`);
+  knowledgeOf.set(rig, known.data.knowledge);
+}
+async function planOf(s: Stack, a: Learner, rig: ReviewRig, opts: { includeListening?: boolean } = {}): Promise<SessionPlan> {
+  const deck = foldDeckItems(await serverEvents(s, a.learnerId), rig.scheduler, { languageId: 'sq', now: rig.now() });
+  return planSession({ deck, intake: [], knowledge: knowledgeOf.get(rig) ?? [], preferences: { ...REVIEW_PREFS, includeListening: opts.includeListening ?? false }, audio: NO_AUDIO, scheduler: rig.scheduler, now: rig.now(), random: () => 0.5 });
+}
 
 const quietSpeech = { getVoices: () => [], speak() {}, cancel() {}, pause() {}, resume() {} };
 const reviewEvents = (evs: GoEvent[]): GoEvent[] => evs.filter((e) => ['CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'].includes(e.kind));
@@ -95,8 +122,8 @@ describe.each(STORE_KINDS)('the review session when audio is unavailable — %s 
     const net = createNet(s);
     const a = await signUp(s, 'ana@example.com', 'phone');
     const rig = await createReviewRig(s, net, a);
-    await rig.seedDeck(['written-recognition', 'audio-to-meaning']);                     // the deck holds listening cards too
-    const plan = await rig.plan({ includeListening: true });
+    await seedDeck(s, a, rig, ['written-recognition', 'audio-to-meaning']);                     // the deck holds listening cards too
+    const plan = await planOf(s, a, rig, { includeListening: true });
     expect(plan.items.length).toBeGreaterThan(0);
     expect(plan.items.every((p) => !p.family.startsWith('audio'))).toBe(true);           // the planner never asks for audio it cannot play
     const runner = rig.runner(plan);
@@ -117,8 +144,8 @@ describe.each(STORE_KINDS)('the review session when audio is unavailable — %s 
     const net = createNet(s);
     const a = await signUp(s, 'ana@example.com', 'phone');
     const rig = await createReviewRig(s, net, a);
-    await rig.seedDeck(['written-recognition']);
-    const plan = await rig.plan();
+    await seedDeck(s, a, rig, ['written-recognition']);
+    const plan = await planOf(s, a, rig);
     const runner = rig.runner(plan);
     const cur = (await runner.current())!;
     const failed = await runner.answer({ typed: '', hinted: false, assistance: [], audioFailed: true });
@@ -135,8 +162,8 @@ describe.each(STORE_KINDS)('an interrupted review session — %s store', (kind) 
     const net = createNet(s);
     const a = await signUp(s, 'ana@example.com', 'phone');
     const rig = await createReviewRig(s, net, a);
-    await rig.seedDeck(families);
-    const plan = await rig.plan();
+    await seedDeck(s, a, rig, families);
+    const plan = await planOf(s, a, rig);
     expect(plan.items.length).toBeGreaterThanOrEqual(n);
     return { s, net, a, rig, plan };
   }
@@ -147,7 +174,7 @@ describe.each(STORE_KINDS)('an interrupted review session — %s store', (kind) 
   const keyOf = (p: { item: { unitId: string }; family: string }): string => p.item.unitId + '|' + p.family;
 
   it('the page dies after two answers: the reopened session continues after them; the answered items are kept once, the unanswered ones are not credited', async () => {
-    const { s, a, rig, plan } = await sessionOf(4, ['written-recognition', 'meaning-to-form']);
+    const { s, a, rig, plan } = await sessionOf(4);                         // four words, one written card each (a72529d4: one new card per word per batch, so a second family adds nothing)
     const persist = createMemoryArea();                                                // the session survives in storage, the page does not
     const first = rig.runner(plan, { persist, sessionId: 'sess-1' });
     const done = [await rig.answerRight(first), await rig.answerRight(first)];
@@ -238,7 +265,7 @@ describe.each(STORE_KINDS)('an interrupted review session — %s store', (kind) 
     const skipped = deck.find((d) => d.unitId === plan.items[0].item.unitId)!;
     expect(skipped.schedule.reps).toBe(0);
     expect(new Date(skipped.schedule.due).getTime()).toBeLessThanOrEqual(Date.parse(rig.now()));   // still due
-    const tomorrow = await rig.plan();
+    const tomorrow = await planOf(s, a, rig);
     expect(tomorrow.items.map((p) => p.item.unitId)).toContain(plan.items[0].item.unitId);
     expect(runner.state().status).toBe('finished');
     expect(runner.skips().filter((k) => k.kind === 'learner').length).toBe(1);
@@ -263,8 +290,8 @@ describe.each(STORE_KINDS)('a review session with the Repository unreachable —
     const net = createNet(s);
     const a = await signUp(s, 'ana@example.com', 'phone');
     const rig = await createReviewRig(s, net, a);
-    await rig.seedDeck(['written-recognition']);
-    const plan = await rig.plan();
+    await seedDeck(s, a, rig, ['written-recognition']);
+    const plan = await planOf(s, a, rig);
     net.down = true;
     const runner = rig.runner(plan, { facts: 'offline', sessionId: 'off-1' });
     let done = 0;

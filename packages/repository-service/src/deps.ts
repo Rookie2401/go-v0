@@ -2,6 +2,7 @@
  * What the service needs from the outside. The handler depends on the contract's ports and on these small interfaces
  * only, so the real packages (repository-store, -engine, -linguistics) and the test fakes plug in the same way.
  */
+import type { createRateLimiter, handleSpeechRequest } from '../../../server/speechHandler';
 import type {
   FormAnalysis, LinguisticUnit, ProjectionEngine, RepositoryStore, SourceRestrictions, UnitRelation,
 } from '../../repository-contract/src';
@@ -114,6 +115,11 @@ export interface ServiceInfo {
 
 /** Server-held Azure Speech configuration and speech policy. The browser never receives the Azure key. */
 export interface SpeechService {
+  /**
+   * The Azure proxy (`server/speechHandler`), handed in by the one process that serves it (`main.ts`). The handler also runs inside the extension and the
+   * review site as the device-local Repository, so it must not import server code itself. Absent: speech is not configured.
+   */
+  engine?: { createRateLimiter: typeof createRateLimiter; handleSpeechRequest: typeof handleSpeechRequest };
   key?: string;
   region?: string;
   /** Injected upstream for tests; production defaults to the global fetch. */

@@ -147,6 +147,20 @@ async function computeBaseline(): Promise<Shape> {
 const SAFE_ATTRS = new Set(['class', 'id', 'for', 'hidden', 'role', 'type', 'tabindex', 'title', 'value', 'name', 'placeholder', 'style', 'lang', 'dir', 'disabled', 'checked', 'open']);
 const allowedAttr = (name: string, base: Shape): boolean => (base.attrs.has(name) || SAFE_ATTRS.has(name) || /^(aria|data)-/.test(name)) && !/^on/i.test(name) && !['href', 'src', 'srcdoc', 'action', 'formaction', 'xlink:href', 'srcset', 'data'].includes(name);
 
+// The word card carries ONE static svg: the speaker icon inside the Play button (packages/golearn-extension/src/popup/card.ts speakerIcon, commit 342e296c;
+// built with createElementNS from constants, nothing from the page reaches it). Any other svg, or one that is not exactly that drawing, is page-made and fails.
+const SPEAKER_SVG_ATTRS = ['aria-hidden', 'focusable', 'viewBox'];
+function strayVectors(root: ParentNode): string[] {
+  const out: string[] = [];
+  for (const svg of Array.from(root.querySelectorAll('svg'))) {
+    const inSay = !!svg.parentElement?.matches('button.say');
+    const attrsOk = Array.from(svg.attributes).map((a) => a.name).sort().join() === SPEAKER_SVG_ATTRS.join() && svg.getAttribute('viewBox') === '0 0 24 24';
+    const kidsOk = svg.children.length === 3 && Array.from(svg.children).every((k) => k.tagName === 'path' && Array.from(k.attributes).map((a) => a.name).join() === 'd' && /^[MmLlHhVvCcSsQqTtAaZz0-9 .,-]+$/.test(k.getAttribute('d') ?? ''));
+    if (!(inSay && attrsOk && kidsOk)) out.push(svg.outerHTML.slice(0, 80));
+  }
+  return out;
+}
+
 describe('the card renders hostile page text as text', () => {
   for (const [label, payload] of Object.entries(PAYLOADS)) {
     for (const select of ['the payload itself', 'a neighbouring word'] as const) {
@@ -172,7 +186,10 @@ describe('the card renders hostile page text as text', () => {
           const shape = shapeOf(root);
           for (const tag of shape.tags) expect(base.tags.has(tag), `unexpected <${tag}> in the card`).toBe(true);
           for (const attr of shape.attrs) expect(allowedAttr(attr, base), `unexpected attribute ${attr}`).toBe(true);
-          expect(root.querySelectorAll('img,script,iframe,object,embed,link,a,svg,video,audio,base,meta,frame').length).toBe(0);
+          expect(root.querySelectorAll('img,script,iframe,object,embed,link,a,video,audio,base,meta,frame').length).toBe(0);
+          expect(strayVectors(root), "an svg that is not the card's own speaker icon").toEqual([]);
+          // the payload did not become an element: no handler attribute anywhere in the card
+          expect(root.querySelectorAll('[onerror],[onload],[onclick],[onfocus],[onmouseover]').length).toBe(0);
           // the visible text may contain the payload, as characters
           if (out.status === 'shown' && select === 'the payload itself' && payload.startsWith('<')) expect(root.textContent).toContain(payload.normalize('NFC').split(' ')[0].slice(0, 4));
         }
@@ -307,7 +324,8 @@ describe('data that comes back from the background or the dictionary is data too
     }
     // every other element of the card carries no href, src or handler; the markup in a label is text
     for (const el of Array.from(root.querySelectorAll('*'))) if (el.tagName !== 'A') for (const a of Array.from(el.attributes)) expect(['href', 'src', 'srcdoc', 'action', 'formaction'].includes(a.name) || /^on/i.test(a.name), `${el.tagName} ${a.name}`).toBe(false);
-    expect(root.querySelectorAll('img,script,iframe,object,embed,svg').length).toBe(0);
+    expect(root.querySelectorAll('img,script,iframe,object,embed').length).toBe(0);
+    expect(strayVectors(root), "an svg that is not the card's own speaker icon").toEqual([]);
     expect(root.querySelector('.sources')!.textContent).toContain('<img src=x onerror=window.__pwned=1>');
     expect(sinks.calls).toEqual([]);
     expect((window as unknown as Record<string, unknown>).__pwned).toBeUndefined();

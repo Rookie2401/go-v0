@@ -2,9 +2,9 @@
  * The loading mark: the Go logo's globe turning about its axis, a whole sphere and not a picture sliding behind a window (the owner, 2026-11-03: the
  * flat strip showed the logo's cut Africa and Europe as crescents at the top left and bottom right, and half the loop was empty). The meridian, the
  * stand and the sphere's rim stay still, drawn in the page's ink as CSS masks cut from go-logo.png by scripts/split-go-globe.cjs. The land is one
- * full turn rendered on a real sphere by scripts/render-go-globe-turn.cjs: 120 frames in a sheet of 12 columns and 10 rows (the logo's Americas,
+ * full turn rendered on a real sphere by scripts/render-go-globe-turn.cjs: 361 frames in a sheet of 19 columns and 19 rows (the logo's Americas,
  * Greenland and Iceland, the rest of the world drawn in the same style, the land fading before the rim), shown through a disc by one stepped
- * animation of 120 stops. A transform on the compositor keeps it turning while the page is busy loading.
+ * animation of 361 stops. A transform on the compositor keeps it turning while the page is busy loading.
  * A home load shows up to three marks in a row. Each one takes its place in the turn from the clock, so the globe carries on instead of restarting
  * at its first frame, and one that follows another within a moment shows at once instead of fading in again.
  * The shell shows the mark while a screen opens and the home shows it while its deck loads. The label is for assistive technology

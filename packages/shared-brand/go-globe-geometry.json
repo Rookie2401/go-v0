@@ -29,9 +29,9 @@
   },
   "inkInBandOutsideCircle": 9364.666666666666,
   "turn": {
-    "cols": 12,
-    "rows": 10,
-    "frames": 120,
+    "cols": 19,
+    "rows": 19,
+    "frames": 361,
     "cell": 150,
     "axisTiltDeg": 32,
     "viewLatDeg": 8,

@@ -79,7 +79,7 @@ describe('the loading mark', () => {
     const clip = /\.go-globe-sphere \{[^}]*clip-path: circle\(([\d.]+)% at 50% 50%\)/.exec(css);
     expect(clip, 'the sphere clip').toBeTruthy();
     expect(Number(clip![1])).toBeCloseTo(geometry.landRadiusShare * 100, 1);
-    expect(geometry.turn).toMatchObject({ cols: 12, rows: 10, frames: 120 });
+    expect(geometry.turn).toMatchObject({ cols: 19, rows: 19, frames: 361 });
     const sheet = fs.readFileSync(path.join(brand, 'go-globe-turn.png'));
     expect(sheet.readUInt32BE(16)).toBe(geometry.turn.cols * geometry.turn.cell);
     expect(sheet.readUInt32BE(20)).toBe(geometry.turn.rows * geometry.turn.cell);
@@ -109,16 +109,16 @@ describe('the loading mark', () => {
     }
   });
 
-  it('walks the 120 frames in order on ONE timer, whole pixels each (2026-11-04: two timers played them out of order, and could again if they slipped apart)', () => {
+  it('walks the 361 frames in order on ONE timer, whole pixels each (2026-11-04: two timers played them out of order, and could again if they slipped apart)', () => {
     const block = /@keyframes go-turn \{([\s\S]*?)\n\}/.exec(css);
     expect(block, 'the keyframes').toBeTruthy();
     const stops = [...block![1]!.matchAll(/([\d.]+)% \{ transform: translate\((0|-\d+px), (0|-\d+px)\); \}/g)].map((m) => ({ at: Number(m[1]), x: -parseInt(m[2]!, 10) || 0, y: -parseInt(m[3]!, 10) || 0 }));
-    expect(stops).toHaveLength(121); // 120 frames and the closing 100%
-    stops.slice(0, 120).forEach((s, k) => {
-      expect(s.at, `stop ${k}`).toBeCloseTo(k / 120 * 100, 3);
-      expect(s.y / 70 * 12 + s.x / 70, `frame at stop ${k}`).toBe(k);
+    expect(stops).toHaveLength(362); // 361 frames (one degree each, 60 a second, 2026-11-04; 19 x 19 keeps the layer under 4096 device px at 3x) and the closing 100%
+    stops.slice(0, 361).forEach((s, k) => {
+      expect(s.at, `stop ${k}`).toBeCloseTo(k / 361 * 100, 3);
+      expect(s.y / 70 * 19 + s.x / 70, `frame at stop ${k}`).toBe(k);
     });
-    expect(stops[120]).toMatchObject({ at: 100, x: stops[119]!.x, y: stops[119]!.y }); // the last frame holds to the end; the loop then returns to the first
+    expect(stops[361]).toMatchObject({ at: 100, x: stops[360]!.x, y: stops[360]!.y }); // the last frame holds to the end; the loop then returns to the first
     expect(css).not.toMatch(/go-turn-rows|go-turn-cols|go-globe-rows/);
     const animated = [...css.matchAll(/\.go-globe-[a-z]+ \{[^}]*animation/g)].map((m) => m[0].split(' ')[0]);
     expect(animated).toEqual(['.go-globe-turn', '.go-globe-turn']); // the turn and its slower duration under reduced motion, nothing else moves
@@ -146,8 +146,8 @@ describe('the loading mark', () => {
   });
 
   it('turns the land always (slower under reduced motion), on an unmasked span of its own; appears after a moment when motion is welcome, at once under reduced motion', () => {
-    expect(css).toMatch(/^\.go-globe-turn \{[^}]*width: 1200%; height: 1000%;[^}]*animation: go-turn 6s step-end infinite; will-change: transform; \}$/m);
-    expect(css).toMatch(/^\.go-globe-disc \{[^}]*width: 70px; height: 70px;[^}]*overflow: hidden; \}$/m); // whole pixels: the span is 12 x 70 by 10 x 70
+    expect(css).toMatch(/^\.go-globe-turn \{[^}]*width: 1900%; height: 1900%;[^}]*animation: go-turn 6s step-end infinite; will-change: transform; \}$/m);
+    expect(css).toMatch(/^\.go-globe-disc \{[^}]*width: 70px; height: 70px;[^}]*overflow: hidden; \}$/m); // whole pixels: the span is 19 x 70 by 19 x 70, under 4096 device px at 3x
     expect(css).toMatch(/^\.go-globe-land \{[^}]*mask-size: 100% 100%;[^}]*mask-repeat: no-repeat; \}$/m);
     // the sphere: the land clipped to a circle, nothing animated on it, and no flat picture leaning or sliding any more
     expect(css).toMatch(/^\.go-globe-sphere \{ overflow: hidden; clip-path: circle\([\d.]+% at 50% 50%\); \}$/m);

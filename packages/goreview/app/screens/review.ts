@@ -284,9 +284,15 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   function goReviewEntry(m: ReviewModel, deck: CurrentDeck, review: CurrentDeck, resumeId: string | undefined, selectedCount: number, savedCount: number): HTMLElement {
     const drilling = deck.entries.length;
     const reviewing = review.entries.length;
-    const currentKicker = drilling ? plural(drilling, 'card', 'cards')
+    // Deck fill (the owner, 2026-11-03): a deck is always the size the learner set, topped up with early reviews, so the kickers read the
+    // deck's card count and never "due". When the whole eligible pool is smaller than the size (nothing new can be admitted, no due review
+    // waits in the Review Deck, nothing was held back for time or batch room) the Current Deck says it holds all of the learner's cards.
+    const heldBack = deck.plan.skipped.some(s => s.code === 'over-time-budget' || s.code === 'beyond-micro-deck' || s.code === 'same-unit-in-batch');
+    const poolExhausted = drilling > 0 && drilling < deck.summary.targetQuestions && deck.summary.newAvailable === 0 && deck.summary.dueReviews === 0 && !heldBack;
+    const currentKicker = poolExhausted ? (drilling === 1 ? '1 card · your only one' : `all ${drilling} of your cards`)
+      : drilling ? plural(drilling, 'card', 'cards')
       : deck.summary.nextReturnAt ? `Nothing to drill now · next return ${when(deck.summary.nextReturnAt)}` : 'Nothing to drill right now';
-    const reviewKicker = reviewing ? `${plural(reviewing, 'card', 'cards')} due`
+    const reviewKicker = reviewing ? plural(reviewing, 'card', 'cards')
       : review.summary.nextReviewAt ? `Nothing due · next review ${when(review.summary.nextReviewAt)}` : 'Nothing due';
     const current = deckButton('start-session', 'Current Deck', currentKicker, drilling, () => begin(m, 'current'));
     const newDeck = button('Begin new deck', () => {

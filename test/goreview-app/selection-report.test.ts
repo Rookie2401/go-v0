@@ -46,7 +46,8 @@ describe('buildSelectionReport', () => {
     const by = Object.fromEntries(report.rows.map(r => [r.unitId, r]));
     expect(by[U.zog]).toMatchObject({ kind: 'deck', status: 'selected', code: 'selected', cardId: expect.stringContaining(U.zog) });
     expect(by[U.mace]).toMatchObject({ kind: 'deck', status: 'selected', code: 'selected' });
-    expect(by[U.qen]).toMatchObject({ kind: 'deck', status: 'excluded', code: 'scheduled-not-due' });
+    // deck fill (2026-11-03): the not-due card completes the deck as early practice, so it is selected with the stable code 'deck-fill'
+    expect(by[U.qen]).toMatchObject({ kind: 'deck', status: 'selected', code: 'deck-fill', queue: 'due' });
     expect(by[U.det]).toMatchObject({ kind: 'deck', status: 'excluded', code: 'snoozed' });
     expect(by[U.cls]).toMatchObject({ kind: 'class', status: 'excluded', code: 'scheduled-not-due' });
     expect(by[U.shtepi]).toMatchObject({ kind: 'candidate', status: 'selected', code: 'selected', intakeDecision: 'test-now' });
@@ -56,10 +57,21 @@ describe('buildSelectionReport', () => {
     expect(by[U.qen]!.due).toBe(FUTURE);
   });
 
+  it("reports a deck-fill item with the stable code 'deck-fill' and its queue, and every due item still as 'selected'", () => {
+    const { model, plan } = fixture();
+    const fill = plan.items.filter(p => p.presentationReason === 'deck-fill');
+    expect(fill.map(p => p.item.unitId)).toEqual([U.qen]);
+    const rows = buildSelectionReport(model, plan).rows;
+    expect(rows.filter(r => r.code === 'deck-fill').map(r => [r.unitId, r.status, r.queue])).toEqual([[U.qen, 'selected', 'due']]);
+    for (const unit of [U.zog, U.mace, U.shtepi]) expect(rows.find(r => r.unitId === unit)!.code, unit).toBe('selected');
+    expect(rows.filter(r => r.cardId === fill[0]!.item.itemId)).toHaveLength(1); // still exactly one row per card
+    expect(selectionReportJson(buildSelectionReport(model, plan))).toContain('"code": "deck-fill"');
+  });
+
   it('counts add up', () => {
     const { model, plan } = fixture();
     const { counts, rows } = buildSelectionReport(model, plan);
-    expect(counts).toEqual({ vocabularyUnits: 7, knowledgeRows: 1, candidates: 2, deckCards: 4, classCards: 1, selected: 3, skipped: plan.skipped.length, withheld: 0 });
+    expect(counts).toEqual({ vocabularyUnits: 7, knowledgeRows: 1, candidates: 2, deckCards: 4, classCards: 1, selected: 4, skipped: plan.skipped.length, withheld: 0 });
     expect(counts.selected).toBe(rows.filter(r => r.status === 'selected').length);
     expect(counts.deckCards + counts.classCards + counts.candidates).toBe(rows.length);
     expect(counts.selected).toBe(plan.items.length);

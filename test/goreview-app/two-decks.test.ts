@@ -6,7 +6,8 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { decksKey, holdOutOf, planCurrentDeck } from '../../packages/goreview/app/deckModel';
 import { loadReviewModel } from '../../packages/goreview/app/workspace';
-import { candidate, defaultService, destroyRigs, dueCard, ids, knowledgeRow, makeRig, reopen, reviewed, seed, until, type FakeService, type Rig } from './helpers';
+import type { GoEvent } from '../../packages/repository-contract/src';
+import { candidate, cardAdded, defaultService, destroyRigs, dueCard, ids, knowledgeRow, makeRig, reopen, reviewed, seed, until, type FakeService, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -33,7 +34,7 @@ describe('the two decks on the GoReview home', () => {
     await reopen(rig);
     expect(cards(rig, 'start-session')).toBe(1);
     expect(cards(rig, 'start-review')).toBe(1);
-    expect(rig.q('#start-review-count').textContent).toBe('1 card due');
+    expect(rig.q('#start-review-count').textContent).toBe('1 card'); // the count of the deck, never "due" (a deck may hold deck-fill)
 
     click(rig.q('#start-review'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the review session');
@@ -84,5 +85,72 @@ describe('the two decks on the GoReview home', () => {
     expect(cards(rig, 'start-session')).toBe(before);
     const key = decksKey('L1', 'sq');
     expect(((await rig.area.get(key))[key] as { holdOut?: string[] } | undefined)?.holdOut ?? []).toEqual([]);
+  });
+});
+
+describe('deck fill: each deck is always the size the learner set (the owner, 2026-11-03)', () => {
+  const labels = (n: number, prefix: string): string[] => Array.from({ length: n }, (_, i) => `${prefix}${i}`);
+  /** A card answered Easy a few days ago: an established spaced review that is not due for a good while. */
+  const spaced = (label: string, day: string): GoEvent[] => [cardAdded(A, label, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, label, 'meaning-to-form', 4, `2026-10-${day}T10:00:00.000Z`)];
+  /** A card answered Good six minutes ago: still in its learning steps, with its return not yet due. */
+  const stepping = (label: string): GoEvent[] => [cardAdded(A, label, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, label, 'meaning-to-form', 3, '2026-10-08T09:54:00.000Z')];
+  const planOf = async (rig: Rig, part: 'current' | 'review') => {
+    const model = (await loadReviewModel(rig.app.ctx))!;
+    return { model, deck: await planCurrentDeck(rig.app.ctx, model, await holdOutOf(rig.app.ctx, 'L1', 'sq'), undefined, part) };
+  };
+
+  it('the Review Deck fills with early spaced reviews, soonest due first, up to the size', async () => {
+    const rig = await makeRig({ signedIn: true });
+    await rig.app.ctx.state.setPrefs('L1', PREFS);
+    // one established review that is due, and seven that are not
+    await seed(rig, [...dueCard(A, 'mace', 'meaning-to-form'), reviewed(A, 'mace', 'meaning-to-form', 4, '2026-09-02T10:00:00.000Z'),
+      ...labels(7, 'later').flatMap((l, i) => spaced(l, `0${1 + (i % 7)}`))]);
+    await reopen(rig);
+    expect(cards(rig, 'start-review')).toBe(5);
+    const { model, deck } = await planOf(rig, 'review');
+    const items = deck.plan.items;
+    expect(items).toHaveLength(5);
+    expect(items[0].item.unitId).toContain('mace');
+    expect(items[0].presentationReason).not.toBe('deck-fill'); // the due review is an obligation
+    const fill = items.slice(1);
+    expect(fill.every((p) => p.presentationReason === 'deck-fill' && p.intent?.kind === 'explicit' && !p.isNew)).toBe(true);
+    const dues = fill.map((p) => Date.parse(p.item.schedule.due));
+    expect(dues).toEqual([...dues].sort((a, b) => a - b)); // soonest due first
+    const rest = model.deck.filter((d) => !items.some((p) => p.item.itemId === d.itemId) && d.schedule.phase === 'review').map((d) => Date.parse(d.schedule.due));
+    expect(rest.every((t) => t >= Math.max(...dues))).toBe(true); // nothing sooner was left out
+    expect(deck.plan.dueCount).toBe(1);
+    expect(deck.summary.dueReviews).toBe(1); // the home still counts only what is due
+  });
+
+  it('the Current Deck takes learning returns first, then spaced reviews, so it is full', async () => {
+    const rig = await makeRig({ signedIn: true });
+    await rig.app.ctx.state.setPrefs('L1', PREFS);
+    // zog: due learning return (answered Again long ago); two cards in their learning steps, not yet due; four spaced reviews, not due
+    await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...stepping('step1'), ...stepping('step2'),
+      ...spaced('rev1', '05'), ...spaced('rev2', '02'), ...spaced('rev3', '06'), ...spaced('rev4', '01')]);
+    await reopen(rig);
+    expect(cards(rig, 'start-session')).toBe(5);
+    const { deck } = await planOf(rig, 'current');
+    const items = deck.plan.items;
+    expect(items).toHaveLength(5);
+    expect(items[0].item.unitId).toContain('zog');
+    expect(items[0].presentationReason).toBe('due-learning-return');
+    expect(items.slice(1, 3).map((p) => p.item.unitId.split(':')[2]).sort()).toEqual(['step1', 'step2']); // learning returns first
+    expect(items.slice(1, 3).every((p) => p.queue === 'learning' && p.presentationReason === 'deck-fill')).toBe(true);
+    expect(items.slice(3).every((p) => p.presentationReason === 'deck-fill' && p.item.schedule.phase === 'review')).toBe(true); // then spaced reviews
+    const due = items.slice(3).map((p) => Date.parse(p.item.schedule.due));
+    expect(due).toEqual([...due].sort((a, b) => a - b));
+    expect(deck.plan.dueCount).toBe(1);
+    expect(deck.plan.newCount).toBe(0);
+  });
+
+  it('a deck that due work already fills gets no fill, and the Current Deck never borrows Class Essentials or set-aside cards', async () => {
+    const rig = await makeRig({ signedIn: true });
+    await rig.app.ctx.state.setPrefs('L1', PREFS);
+    await seed(rig, [...labels(5, 'due').flatMap((l) => dueCard(A, l, 'meaning-to-form')), ...spaced('later', '05')]);
+    await reopen(rig);
+    const { deck } = await planOf(rig, 'current');
+    expect(deck.plan.items).toHaveLength(5);
+    expect(deck.plan.items.some((p) => p.presentationReason === 'deck-fill')).toBe(false);
   });
 });

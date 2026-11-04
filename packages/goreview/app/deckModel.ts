@@ -68,8 +68,23 @@ const budgetFor = (model: ReviewModel) => admissionBudget(model.events, {
  */
 export type DeckPart = 'all' | 'current' | 'review';
 const isSpacedReview = (item: DeckItem): boolean => effective(item).length > 0 && item.schedule.phase === 'review';
+/**
+ * Deck fill (the owner, 2026-11-03): the cards the planner may use as early practice when the due work falls short of the deck size.
+ * Review Deck: spaced reviews not yet due. Current Deck: learning returns not yet due first, then spaced reviews not yet due (it borrows
+ * the soonest spaced reviews when its own run out). Whole deck: every card not yet due. Soonest due first within each group.
+ * Class units and set-aside units are never fill; catalog words that are not deck cards are never fill.
+ */
+function fillPoolFor(model: ReviewModel, holdOut: ReadonlySet<string>, part: DeckPart): DeckItem[] {
+  const nowMs = Date.parse(model.now), dueAt = (i: DeckItem): number => Date.parse(i.schedule.due);
+  const notDue = model.deck.filter(i => !isClassUnit(i.unitId) && !holdOut.has(i.unitId) && effective(i).length > 0 && dueAt(i) > nowMs);
+  const soonest = (a: DeckItem, b: DeckItem): number => dueAt(a) - dueAt(b) || a.itemId.localeCompare(b.itemId);
+  const learning = (i: DeckItem): boolean => i.schedule.phase === 'learning' || i.schedule.phase === 'relearning';
+  if (part === 'review') return notDue.filter(isSpacedReview).sort(soonest);
+  if (part === 'current') return [...notDue.filter(learning).sort(soonest), ...notDue.filter(isSpacedReview).sort(soonest)];
+  return [...notDue].sort(soonest);
+}
 function scheduledPlan(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string>, part: DeckPart = 'all'): SessionPlan {
-  return ctx.engine.plan({ deck: model.deck.filter(i => !isClassUnit(i.unitId)
+  return ctx.engine.plan({ fillPool: fillPoolFor(model, holdOut, part), deck: model.deck.filter(i => !isClassUnit(i.unitId)
       && (part === 'all' || (part === 'review') === isSpacedReview(i))
       // A saved collection may hold a unit out of fresh admission, but it cannot
       // erase an existing scheduled obligation from the primary automatic plan.
@@ -167,7 +182,9 @@ export async function loadVocabSafe(ctx: AppContext, languageId: string): Promis
 export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string> = new Set(), vocab?: readonly VocabRow[], part: DeckPart = 'all'): Promise<CurrentDeck> {
   const planned = scheduledPlan(ctx, model, holdOut, part);
   const items = (model.schedulerIssue ? [] : planned.items).map(p => ({ ...p, schedulingCardExists: !!knownItem(model, p.item),
-    origin: knownItem(model, p.item) ? 'scheduled' as const : 'intake' as const, intent: { kind: 'automatic' as const } }));
+    origin: knownItem(model, p.item) ? 'scheduled' as const : 'intake' as const,
+    // deck fill stays explicit early practice (a success keeps the schedule); every other item is automatic work
+    intent: p.presentationReason === 'deck-fill' && p.intent ? p.intent : { kind: 'automatic' as const } }));
   const { ordinary: remediation, class: classRemediation } = effectiveRemediation(model);
   const plan: SessionPlan = { ...planned, items, initialQuestionCount:items.length,
     availableWork: model.schedulerIssue ? { questions:0,newQuestions:0 } : planned.availableWork ?? { questions:items.length,newQuestions:items.filter(p=>p.isNew).length },

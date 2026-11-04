@@ -35,7 +35,7 @@ describe('the GoReview home', () => {
     expect(rig.q('#entry-tell .entry-kicker').textContent).toBe('Write and be corrected');
     // two cards answered Again are still being drilled: the Current Deck holds them, the Review Deck has nothing due
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('2');
-    expect(rig.q('#start-session-count').textContent).toBe('2 cards');
+    expect(rig.q('#start-session-count').textContent).toBe('all 2 of your cards'); // the two are the whole eligible pool: deck fill (2026-11-03) says so instead of a bare count
     expect(rig.q<HTMLButtonElement>('#start-review').disabled).toBe(true);
     expect(rig.q('#start-review-count').textContent).toMatch(/^Nothing due/);
     expect(rig.q('#start-new').closest('[data-deck]')?.getAttribute('data-deck')).toBe('current'); // Begin new deck sits beside the Current Deck

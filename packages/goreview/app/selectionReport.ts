@@ -3,7 +3,7 @@
  *
  * It joins the Review model (deck, Class Essentials deck, intake outcomes, knowledge) with the plan the home built
  * (`planCurrentDeck(...).plan`) and gives EVERY deck card, every class card and every intake outcome exactly one row with a
- * stable machine-readable `code` (the engine's `ExclusionCode`). It writes nothing and changes no ordering or count.
+ * stable machine-readable `code` (the engine's `ExclusionCode`; a deck-fill item, early practice that completes the deck, is `deck-fill`). It writes nothing and changes no ordering or count.
  *
  * Privacy. Rows carry unit ids, queue/rank metadata and scheduling numbers. Unit ids can contain word forms. The resolved
  * label (`label`) appears ONLY when the caller asks for it (`includeLabels`). Never a sentence, a gloss, a credential or the
@@ -79,6 +79,8 @@ interface OptionalModelFields { knowledgeStatus?: unknown; withheld?: unknown }
 
 const effective = (item: DeckItem) => item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict);
 const LEARNING = new Set(['learning', 'relearning']);
+/** A planned item's code: deck-fill early practice (2026-11-03) is reported as 'deck-fill', every other planned item as 'selected'. */
+const selectedCode = (p: PlannedItem): ExclusionCode => (p.presentationReason === 'deck-fill' ? 'deck-fill' : 'selected');
 const round = (n: number, digits = 4): number => Math.round(n * 10 ** digits) / 10 ** digits;
 
 function resolveScheduler(model: ReviewModel): Scheduler {
@@ -135,7 +137,7 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
     const planned = plannedById.get(item.itemId);
     const finish = (status: SelectionRow['status'], code: ExclusionCode, detail: string, queue?: string): SelectionRow =>
       ({ ...base, status, code, detail: scrub(detail, item.unitId), ...numbers, ...(queue ? { queue } : {}), ...labelProps(item.unitId) } as SelectionRow);
-    if (planned) return finish('selected', 'selected', planned.why.join('; '), planned.queue);
+    if (planned) return finish('selected', selectedCode(planned), planned.why.join('; '), planned.queue);
     const skip = skippedById.get(item.itemId);
     if (skip) return finish('excluded', skip.code ?? 'other', skip.why);
     // Not in the plan and not recorded as skipped (class cards, a held-out saved-deck unit, a scheduler issue): derive it.
@@ -175,7 +177,7 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
     const planned = cardId ? plannedById.get(cardId) : undefined;
     // A proposed card that already exists in the deck is accounted for by its deck row; this row records the overlap and never double-counts.
     if (cardId && deckIds.has(cardId) && (planned || o.decision === 'test-now')) return finish('excluded', 'other', 'proposed card already in the deck; see its deck row');
-    if (planned) return finish('selected', 'selected', planned.why.join('; '), planned.queue);
+    if (planned) return finish('selected', selectedCode(planned), planned.why.join('; '), planned.queue);
     if (model.dismissed.includes(o.unitId)) return finish('excluded', 'dismissed', 'vocabulary dismissed by the learner');
     if (o.decision === 'test-now') {
       if (model.choices[o.unitId] === 'later') return finish('excluded', 'learner-control', 'postponed by the learner');
@@ -196,7 +198,7 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
   for (const p of plan.items) {
     if (covered.has(p.item.itemId)) continue;
     rows.push({ unitId: p.item.unitId, cardId: p.item.itemId, dimension: p.item.dimension, family: p.family, kind: 'candidate', status: 'selected',
-      code: 'selected', detail: scrub(p.why.join('; '), p.item.unitId), phase: p.item.schedule.phase, due: p.item.schedule.due,
+      code: selectedCode(p), detail: scrub(p.why.join('; '), p.item.unitId), phase: p.item.schedule.phase, due: p.item.schedule.due,
       ...(p.queue ? { queue: p.queue } : {}), ...labelProps(p.item.unitId) });
   }
 

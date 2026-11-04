@@ -82,28 +82,42 @@ describe('planSession: tiers and ordering', () => {
     expect(p.items.map((x) => x.item.unitId)[0]).toBe(due.unitId);
   });
 
-  it('due obligations precede new admissions and non-due weak cards stay deferred', () => {
+  it('due obligations precede new admissions; a non-due weak card is only fill, after both, and stays deferred once the deck is full', () => {
     const weak = deckItem({
       unitId: 'form:weak', schedule: scheduleState({ stability: 0.8, due: '2026-10-20T00:00:00.000Z' }),
       history: [1, 3, 1].map((rating, i) => ({ at: `2026-10-0${i + 1}T10:00:00.000Z`, rating: rating as 1 | 3, outcome: rating === 1 ? 'incorrect' as const : 'correct' as const, deviceId: 'D', exerciseId: `x${i}`, family: 'written-recognition' as const, elapsedDays: 1 })),
     });
     const p = plan({ deck: [weak, dueItem('form:due', 0.4)], intake: [testNow('form:new')] });
-    expect(p.items.map((i) => i.item.unitId)).toEqual(['form:due', 'form:new']);
-    expect(p.skipped.find(x=>x.itemId===weak.itemId)?.why).toContain('not due');
+    // the weak card is no obligation: it follows the due card and the new admission, as explicit early practice that fills the deck
+    expect(p.items.map((i) => i.item.unitId)).toEqual(['form:due', 'form:new', 'form:weak']);
     expect(p.items[1].isNew).toBe(true);
     expect(p.items[1].why[0]).toBe('new from intake');
+    expect(p.items[2]).toMatchObject({ isNew: false, intent: { kind: 'explicit', reason: 'early-review' }, presentationReason: 'deck-fill', overlap: 'explicit' });
+    expect(p.dueCount).toBe(1);
+    expect(p.skipped.find(x=>x.itemId===weak.itemId)).toBeUndefined();
+    // once the deck is already full the weak card is left alone, as before
+    const full = plan({ deck: [weak, dueItem('form:due', 0.4)], intake: [testNow('form:new')], preferences: prefs({ cardsPerDeck: 2 }) });
+    expect(full.items.map((i) => i.item.unitId)).toEqual(['form:due', 'form:new']);
+    expect(full.skipped.find(x=>x.itemId===weak.itemId)?.why).toContain('not due');
   });
 
   it('help requests do not fabricate a due memory obligation', () => {
     const idle = deckItem({ unitId: 'form:helped', schedule: scheduleState({ stability: 0.9, due: '2026-10-20T00:00:00.000Z' }) });
-    const p = plan({ deck: [idle, deckItem({ unitId: 'form:fine', schedule: scheduleState({ stability: 0.9, due: '2026-10-20T00:00:00.000Z' }) })], recentHelp: new Set(['form:helped']) });
-    expect(p.items).toEqual([]);
-    expect(p.skipped).toHaveLength(2);
+    const fine = deckItem({ unitId: 'form:fine', schedule: scheduleState({ stability: 0.9, due: '2026-10-20T00:00:00.000Z' }) });
+    const p = plan({ deck: [idle, fine], recentHelp: new Set(['form:helped']) });
+    // neither card is an obligation: no due count, and both are only deck fill (explicit early practice)
+    expect(p.dueCount).toBe(0);
+    expect(p.items.every((i) => i.presentationReason === 'deck-fill' && i.intent?.kind === 'explicit')).toBe(true);
+    // with the deck already full (one due card, deck size 1) neither is planned: they are skipped as not due
+    const full = plan({ deck: [idle, fine, dueItem('form:due', 0.5)], recentHelp: new Set(['form:helped']), preferences: prefs({ cardsPerDeck: 1 }) });
+    expect(full.items.map((i) => i.item.unitId)).toEqual(['form:due']);
+    expect(full.skipped).toHaveLength(2);
   });
 
-  it('items that are not due and not weak are left alone', () => {
-    const p = plan({ deck: [deckItem({ schedule: scheduleState({ stability: 0.95, due: '2026-10-20T00:00:00.000Z' }) })] });
-    expect(p.items).toHaveLength(0);
+  it('items that are not due and not weak are left alone once the deck is full', () => {
+    const later = deckItem({ schedule: scheduleState({ stability: 0.95, due: '2026-10-20T00:00:00.000Z' }) });
+    const p = plan({ deck: [dueItem('form:due', 0.5), later], preferences: prefs({ cardsPerDeck: 1 }) });
+    expect(p.items.map((i) => i.item.unitId)).toEqual(['form:due']);
     expect(p.skipped[0].why).toContain('not due');
   });
 
@@ -180,7 +194,7 @@ describe('planSession: new items', () => {
       preferences:prefs({ sessionMinutes:2,maxNew:10,dailyNewLimit:10 }) });
     expect(p.items.filter(item=>item.isNew)).toHaveLength(3);
     expect(p.batch?.workloadLimit).toBe(120);
-    expect(p.batch?.reasons.at(-1)).toContain('upcoming scheduled work');
+    expect(p.batch?.reasons.some((r) => r.includes('upcoming scheduled work'))).toBe(true); // the fill sentence may follow it
   });
 
   it('supports a fixed-admission comparison without changing the default workload-aware policy', () => {
@@ -253,6 +267,135 @@ describe('planSession: new items', () => {
   it('a due item with a larger deficit outranks a cheaper one (retrievability first)', () => {
     const p = plan({ deck: [dueItem('form:ok', 0.8, 'written-recognition'), dueItem('form:forgotten', 0.1, 'sentence-completion')] });
     expect(p.items[0].item.unitId).toBe('form:forgotten');
+  });
+});
+
+describe('planSession: filling the deck to its size', () => {
+  // not-due, reviewed cards: the i-th falls due on 2026-10-(10+i), so a smaller i is sooner
+  const later = (i: number, over: Partial<Parameters<typeof deckItem>[0]> = {}) =>
+    deckItem({ unitId: `form:later-${String(i).padStart(2, '0')}`, schedule: scheduleState({ stability: 0.9, due: `2026-10-${String(10 + i).padStart(2, '0')}T10:00:00.000Z` }), ...over });
+  const FILL = { kind: 'explicit', reason: 'early-review' };
+
+  it('(a) two due cards and eight not-due cards make ten items: the two due first, then the eight soonest as fill', () => {
+    const notDue = Array.from({ length: 8 }, (_, i) => later(7 - i)); // listed latest first on purpose
+    const p = plan({ deck: [...notDue, dueItem('form:due-a', 0.3), dueItem('form:due-b', 0.5)], preferences: prefs({ cardsPerDeck: 10, sessionMinutes: 0 }) });
+    expect(p.items).toHaveLength(10);
+    expect(p.items.slice(0, 2).map((i) => i.item.unitId)).toEqual(['form:due-a', 'form:due-b']);
+    expect(p.items.slice(0, 2).every((i) => i.presentationReason === 'scheduled-review')).toBe(true);
+    expect(p.items.slice(2).map((i) => i.item.unitId)).toEqual(Array.from({ length: 8 }, (_, i) => `form:later-0${i}`));
+    for (const i of p.items.slice(2)) {
+      expect(i).toMatchObject({ isNew: false, intent: FILL, queue: 'due', overlap: 'explicit', presentationReason: 'deck-fill', origin: 'scheduled', schedulingCardExists: true });
+      expect(i.intent && 'requestedAt' in i.intent ? i.intent.requestedAt : '').toBe(NOW);
+      expect(i.why).toEqual(['early practice that fills the deck to its size; a success keeps the schedule, a miss reschedules']);
+    }
+    expect(p.dueCount).toBe(2); // fill is no obligation
+    expect(p.newCount).toBe(0);
+    expect(p.skipped).toEqual([]);
+    expect(p.batch?.reasons).toContain('Filled to the deck size with 8 early reviews (soonest due first).');
+    expect(p.batch?.estimatedSeconds).toBe(p.items.reduce((sum, i) => sum + i.estimatedSeconds, 0));
+  });
+
+  it('a learning-phase card used as fill is queued as learning, not as a due learning return', () => {
+    const steps = deckItem({ unitId: 'form:steps', schedule: scheduleState({ phase: 'learning', stability: 0.5, due: '2026-10-08T10:30:00.000Z' }) });
+    const p = plan({ deck: [dueItem('form:due', 0.4), steps], preferences: prefs({ sessionMinutes: 0 }) });
+    expect(p.items.map((i) => i.item.unitId)).toEqual(['form:due', 'form:steps']);
+    expect(p.items[1]).toMatchObject({ queue: 'learning', intent: FILL, presentationReason: 'deck-fill', overlap: 'explicit' });
+    expect(p.dueCount).toBe(1);
+  });
+
+  it('(b) with twenty not-due cards and a deck size of ten, exactly the ten soonest are used and the rest stay skipped as not due', () => {
+    const deck = Array.from({ length: 20 }, (_, i) => later(19 - i));
+    const p = plan({ deck, preferences: prefs({ cardsPerDeck: 10, sessionMinutes: 0 }) });
+    expect(p.items).toHaveLength(10);
+    expect(p.items.map((i) => i.item.unitId)).toEqual(Array.from({ length: 10 }, (_, i) => `form:later-${String(i).padStart(2, '0')}`));
+    expect(p.skipped).toHaveLength(10);
+    expect(p.skipped.every((x) => x.code === 'scheduled-not-due')).toBe(true);
+    expect(p.skipped.some((x) => p.items.some((i) => i.item.itemId === x.itemId))).toBe(false);
+  });
+
+  it('cards due at the same time are taken lowest recall first', () => {
+    const sameDay = '2026-10-15T10:00:00.000Z';
+    const a = deckItem({ unitId: 'form:strong', schedule: scheduleState({ stability: 0.9, due: sameDay }) });
+    const b = deckItem({ unitId: 'form:weak', schedule: scheduleState({ stability: 0.4, due: sameDay }) });
+    const p = plan({ deck: [a, b], preferences: prefs({ cardsPerDeck: 1, sessionMinutes: 0 }) });
+    expect(p.items.map((i) => i.item.unitId)).toEqual(['form:weak']);
+  });
+
+  it('(c) an Automatic-level word and a repair-required card are never fill', () => {
+    const auto = later(0, { unitId: 'form:auto' });
+    const leech = later(1, { unitId: 'form:leech', history: Array.from({ length: 5 }, (_, i) => ({ at: `2026-10-0${i + 1}T10:00:00.000Z`, rating: 1 as const, outcome: 'incorrect' as const, deviceId: 'D', exerciseId: `l${i}`, family: 'written-recognition' as const, elapsedDays: 1 })) });
+    const ok = later(2, { unitId: 'form:ok' });
+    const p = plan({ deck: [auto, leech, ok], knowledge: [{ ...knowledge(auto.unitId), level: 'automatic' }], preferences: prefs({ sessionMinutes: 0 }) });
+    expect(p.items.map((i) => i.item.unitId)).toEqual(['form:ok']);
+    expect(p.skipped.map((s) => s.itemId).sort()).toEqual([auto.itemId, leech.itemId].sort());
+  });
+
+  it('suspended, dismissed and snoozed cards are never fill', () => {
+    const base = { schedule: scheduleState({ stability: 0.9, due: '2026-10-15T10:00:00.000Z' }) };
+    const deck = [deckItem({ unitId: 'form:s', status: 'suspended', ...base }), deckItem({ unitId: 'form:d', status: 'dismissed', ...base }),
+      deckItem({ unitId: 'form:z', status: 'snoozed', snoozedUntil: '2026-10-20T00:00:00.000Z', ...base }), later(3, { unitId: 'form:fine' })];
+    const p = plan({ deck, preferences: prefs({ sessionMinutes: 0 }) });
+    expect(p.items.map((i) => i.item.unitId)).toEqual(['form:fine']);
+  });
+
+  it('(d) an explicit plan (a saved deck, a reassessment) does no fill', () => {
+    const deck = [dueItem('form:due', 0.4), later(0), later(1)];
+    const saved = plan({ deck, intent: { kind: 'explicit', reason: 'saved-deck', requestedAt: NOW }, preferences: prefs({ sessionMinutes: 0 }) });
+    expect(saved.items.every((i) => i.presentationReason !== 'deck-fill')).toBe(true);
+    expect(saved.batch?.reasons.some((r) => r.startsWith('Filled'))).toBe(false);
+    const reassess = plan({ deck, intent: { kind: 'explicit', reason: 'reassessment', requestedAt: NOW }, preferences: prefs({ sessionMinutes: 0 }) });
+    expect(reassess.items.map((i) => i.item.unitId)).toEqual(['form:due']);
+  });
+
+  it('(e) the time limit still caps fill: a card that does not fit is over-time-budget, not planned', () => {
+    // 60 s: two due cards take 50 s, so one 25 s fill card would pass the limit
+    const p = plan({ deck: [dueItem('form:a', 0.1), dueItem('form:b', 0.2), later(0), later(1)], preferences: prefs({ sessionMinutes: 1 }) });
+    expect(p.items.map((i) => i.item.unitId)).toEqual(['form:a', 'form:b']);
+    expect(p.skipped.filter((s) => s.code === 'over-time-budget').map((s) => s.itemId)).toEqual([later(0).itemId, later(1).itemId]);
+    expect(p.skipped.some((s) => s.code === 'scheduled-not-due')).toBe(false);
+    expect(p.batch!.estimatedSeconds).toBeLessThanOrEqual(60);
+    expect(p.batch?.reasons.some((r) => r.startsWith('Filled'))).toBe(false);
+    // a cheaper later fill card (a 15 s learning choice question) may still use the leftover time
+    const short = later(1, { unitId: 'form:short', schedule: scheduleState({ phase: 'learning', stability: 0.9, due: '2026-10-11T10:00:00.000Z' }) });
+    const mixed = plan({ deck: [dueItem('form:a', 0.1), later(0, { family: 'sentence-completion' }), short], preferences: prefs({ sessionMinutes: 1 }) });
+    expect(mixed.items.map((i) => i.item.unitId)).toEqual(['form:a', 'form:short']); // 25 s due + 40 s sentence completion would pass 60 s; 25 + 15 does not
+    expect(mixed.batch!.estimatedSeconds).toBeLessThanOrEqual(60);
+  });
+
+  it('(f) fill does not touch the new-card budget: new items stay capped by maxNew and fill is never counted as new', () => {
+    const deck = Array.from({ length: 12 }, (_, i) => later(i));
+    const intake = ['a', 'b', 'c', 'd', 'e'].map((u) => testNow(`form:fresh-${u}`));
+    const withFill = plan({ deck, intake, preferences: prefs({ maxNew: 2, sessionMinutes: 0 }) });
+    const withoutFill = plan({ deck: [], intake, preferences: prefs({ maxNew: 2, sessionMinutes: 0 }) });
+    expect(withFill.items).toHaveLength(10);
+    expect(withFill.newCount).toBe(2);
+    expect(withFill.newCount).toBe(withoutFill.newCount);
+    expect(withFill.availableWork?.newQuestions).toBe(withoutFill.availableWork?.newQuestions);
+    expect(withFill.items.filter((i) => i.isNew).map((i) => i.item.unitId)).toEqual(withoutFill.items.map((i) => i.item.unitId));
+    expect(withFill.items.filter((i) => i.presentationReason === 'deck-fill').every((i) => !i.isNew)).toBe(true);
+    expect(withFill.skipped.filter((s) => s.code === 'new-budget-exhausted')).toHaveLength(3);
+  });
+
+  it('a deck that due work already fills gets no fill', () => {
+    const deck = [...Array.from({ length: 10 }, (_, i) => dueItem(`form:due-${i}`, 0.3 + i / 100)), later(0)];
+    const p = plan({ deck, preferences: prefs({ sessionMinutes: 0 }) });
+    expect(p.items).toHaveLength(10);
+    expect(p.items.some((i) => i.presentationReason === 'deck-fill')).toBe(false);
+    expect(p.skipped.find((s) => s.itemId === later(0).itemId)?.code).toBe('scheduled-not-due');
+  });
+
+  it('(g) a given fillPool is honoured in its own order, and may hold cards outside the deck', () => {
+    const pool = [later(5), later(1), later(9)];
+    const p = plan({ deck: [dueItem('form:due', 0.4)], fillPool: pool, preferences: prefs({ cardsPerDeck: 3, sessionMinutes: 0 }) });
+    expect(p.items.map((i) => i.item.unitId)).toEqual(['form:due', 'form:later-05', 'form:later-01']);
+    // a due or already-planned card in the pool is not taken twice
+    const twice = plan({ deck: [dueItem('form:due', 0.4)], fillPool: [dueItem('form:due', 0.4), later(2)], preferences: prefs({ cardsPerDeck: 3, sessionMinutes: 0 }) });
+    expect(twice.items.map((i) => i.item.unitId)).toEqual(['form:due', 'form:later-02']);
+  });
+
+  it('an empty fillPool disables fill', () => {
+    const p = plan({ deck: [dueItem('form:due', 0.4), later(0)], fillPool: [], preferences: prefs({ sessionMinutes: 0 }) });
+    expect(p.items.map((i) => i.item.unitId)).toEqual(['form:due']);
   });
 });
 

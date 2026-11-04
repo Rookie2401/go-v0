@@ -210,13 +210,18 @@ describe('Start after the screen has been open', () => {
     const model = (await loadReviewModel(rig.app.ctx))!;
     const due = Date.parse(model.deck.find((i) => i.unitId.includes('zog'))!.schedule.due);
     await reopen(rig);
-    await until(() => Number(String(readyCards(rig))) === 1, 'one card ready');
+    // deck fill (2026-11-03): the deck is the size the learner set, so the home counts the not-yet-due return as early practice beside the due card
+    await until(() => Number(String(readyCards(rig))) === 2, 'the due card and the not-yet-due return (deck-fill)');
     rig.clock.set(iso(due + 1000));
     rig.q('#start-session').click();
     await until(() => !!rig.root.querySelector('#session .exercise'), 'the session starts');
     const items = startedItems(rig);
     expect(items.some((id) => id.includes('mace'))).toBe(true);
     expect(items.some((id) => id.includes('zog'))).toBe(true);
+    // the return that came due is planned as DUE work now, not as deck-fill early practice
+    const planned = rig.app.ctx.run.active!.plan.items;
+    expect(planned.find((p) => p.item.itemId.includes('zog'))!.presentationReason).toBe('due-learning-return');
+    expect(planned.some((p) => p.presentationReason === 'deck-fill')).toBe(false);
   });
 
   it('does not load again when nothing changed and the clock moved a minute', async () => {

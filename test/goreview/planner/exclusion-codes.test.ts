@@ -17,8 +17,8 @@ describe('planSession: every skip carries a stable exclusion code (reason string
   it('a card that is not due is scheduled-not-due, or learning-not-due while it is still in its steps', () => {
     const review = deckItem({ unitId: 'form:later', schedule: scheduleState({ due: FUTURE }) });
     const learning = deckItem({ unitId: 'form:steps', schedule: scheduleState({ due: FUTURE, phase: 'learning' }) });
-    const p = plan({ deck: [review, learning] });
-    expect(p.items).toEqual([]);
+    const p = plan({ deck: [dueItem('form:due', 0.5), review, learning], preferences: prefs({ cardsPerDeck: 1 }) }); // the deck is full: nothing is needed as fill
+    expect(p.items).toHaveLength(1);
     expect(codeOf(p, review.itemId)).toBe('scheduled-not-due');
     expect(codeOf(p, learning.itemId)).toBe('learning-not-due');
     expect(p.skipped.find(s => s.itemId === review.itemId)!.why).toBe('not due; optional remediation is separate from scheduled review');

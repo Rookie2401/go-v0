@@ -898,7 +898,12 @@ export function parseCorrection(text: string): { lexemeId: string } | { features
 
 // ───────────────────────────── summary ─────────────────────────────
 
-/** Next paths are labeled by their actual scheduling purpose. */
+/**
+ * Next paths are labeled by their actual scheduling purpose. A finished deck is at once replaced by another of the size the learner set
+ * (the owner, 2026-11-03): the next deck is planned here at once, and "Begin next deck (N cards)" is the primary action, first after the
+ * heading and enabled whenever N > 0. The "Next scheduled session" line is truthful about what the N cards are: due reviews, due learning
+ * returns, new admissions, and the early reviews (deck-fill) that top the deck up; the four add up to N.
+ */
 async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, _tag: string): Promise<HTMLElement> {
   const planned = run.plan.initialQuestionCount ?? run.plan.items.length;
   const status = statusLine();
@@ -929,7 +934,12 @@ async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextAct
   fresh.disabled = !remediation.some(c => c.ready);
   const nextAt = scheduled?.summary.nextReturnAt;
   const nextReviewAt = scheduled?.summary.nextReviewAt;
-  const continueWork = scheduled?.entries.length ? button(`Continue ready work (${cards(scheduled.entries.length)})`, (event) => {
+  const nextItems = scheduled?.plan.items ?? [];
+  const nextCount = nextItems.length;
+  const early = nextItems.filter(p => p.presentationReason === 'deck-fill').length;
+  const fromQueue = (queue: 'due' | 'learning'): number => nextItems.filter(p => p.presentationReason !== 'deck-fill' && !p.isNew && p.queue === queue).length;
+  const admissions = nextItems.filter(p => p.isNew && p.presentationReason !== 'deck-fill').length;
+  const continueWork = nextCount > 0 ? button(`Begin next deck (${cards(nextCount)})`, (event) => {
     void begin(async (model) => (await planCurrentDeck(ctx, model)).plan, [event.currentTarget as HTMLButtonElement]);
   }, { id: 'continue-due-work', class: 'btn primary' }) : undefined;
   const setupLink = ctx.deps.links?.setup ?? ctx.deps.links?.extension;
@@ -940,8 +950,8 @@ async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextAct
     h('p', { class: 'muted', id: 'optional-repeat-note' }, 'Repeat the same session items, capped by your current deck size and session time settings. Other saved-deck members remain available in their collection; this does not represent a new due session.'), repeat);
   return h('section', { id: 'summary-next', class: 'card', 'aria-labelledby': 'summary-next-heading' },
     h('h2', { id: 'summary-next-heading' }, 'Next'),
-    p(`Next scheduled session: ${scheduled?.entries.length ?? 0} eligible question(s) now · ${scheduled?.summary.dueReviews ?? 0} due reviews · ${scheduled?.summary.dueLearning ?? 0} due learning returns · ${scheduled?.summary.newAvailable ?? 0} new admissions.`, 'muted'),
     continueWork ?? null,
+    h('p', { class: 'muted', id: 'next-deck-line' }, `Next scheduled session: ${cards(nextCount)} in the next deck · ${fromQueue('due')} due reviews · ${fromQueue('learning')} due learning returns · ${admissions} new admissions · ${early} early reviews.`),
     nextAt ? p(`Next short-term learning return: ${new Date(nextAt).toLocaleString()}. GoReview keeps it scheduled; you do not need to wait here.`, 'muted') : null,
     nextReviewAt ? p(`Next scheduled review: ${new Date(nextReviewAt).toLocaleString()}.`, 'muted') : null,
     remediationNote,

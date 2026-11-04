@@ -66,12 +66,14 @@ describe('listening practice with a computer voice', () => {
     expect(withPractice).toEqual(without); // the practice link adds no observation to the knowledge rows
   });
 
-  it('after a practice answer the card is not fresh work any more: the planner leaves it until it is due', () => {
+  it('after a practice answer the card is not fresh work any more: the planner never plans it as new or due until it is due (as the only card it can be deck-fill early practice)', () => {
     const events = [card(), practice(at(DAY), 3)];
     const deck = foldDeckItems(events, sched, { languageId: 'grc', now: at(DAY + 60_000) });
     const soon = planSession({ deck, intake: [], preferences: prefs({ languageId: 'grc', includeListening: true }), audio: audioOk, scheduler: sched, now: at(DAY + 60_000), readingSignals: events, learnerId: LEARNER, random: () => 0.1 });
-    expect(soon.items).toHaveLength(0);
-    expect(soon.skipped.map((s) => s.why)).toContain('not due; optional remediation is separate from scheduled review');
+    // deck fill (2026-11-03): nothing is due and nothing is new; the one card completes the deck only as explicit early practice
+    expect(soon.dueCount).toBe(0);
+    expect(soon.newCount).toBe(0);
+    expect(soon.items.map((p) => [p.isNew, p.presentationReason])).toEqual([[false, 'deck-fill']]);
     // and before the fix shape (no history) it was planned as new every time
     // (the app hands the planner the Repository's knowledge row for every deck unit; a Familiar word is admissible as new work)
     const familiar = { ...knowledge(UNIT), languageId: 'grc', level: 'familiar' as const, encounters: 4 };
@@ -79,7 +81,8 @@ describe('listening practice with a computer voice', () => {
     const again = planSession({ deck: unscored, intake: [], knowledge: [familiar], preferences: prefs({ languageId: 'grc', includeListening: true }), audio: audioOk, scheduler: sched, now: at(DAY + 60_000), readingSignals: events, learnerId: LEARNER, random: () => 0.1 });
     expect(again.items.map((p) => p.isNew)).toEqual([true]);
     const fixed = planSession({ deck, intake: [], knowledge: [familiar], preferences: prefs({ languageId: 'grc', includeListening: true }), audio: audioOk, scheduler: sched, now: at(DAY + 60_000), readingSignals: events, learnerId: LEARNER, random: () => 0.1 });
-    expect(fixed.items).toHaveLength(0);
+    expect(fixed.items.map((p) => [p.isNew, p.presentationReason])).toEqual([[false, 'deck-fill']]);
+    expect(fixed.newCount).toBe(0);
   });
 
   it('readers of ratings other than the scheduler ignore it: learning metrics, micro-deck observations, remediation, the optimizer history', () => {

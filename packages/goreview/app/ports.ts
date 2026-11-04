@@ -145,6 +145,8 @@ export interface PlanRequest {
   recentHelp?: Set<string>;
   knowledge?: UnitKnowledge[];
   readingSignals?: GoEvent[];
+  /** Deck fill: the cards an automatic plan may use as early practice to reach the deck size, in the order to try them (default: the deck, soonest due first). */
+  fillPool?: readonly DeckItem[];
 }
 
 export interface ReviewEngine {

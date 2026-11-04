@@ -198,7 +198,8 @@ const entriesFor = (deck: DeckItem[], units: string[]): DeckEntry[] => units.map
 interface ItemTrace { cardId: string; unitId: string; family: string; queue: string; isNew: boolean; intent: string; origin: string;
   dueBefore: string | null; rBefore: number | null; phaseBefore: string; answerAt: string;
   dueAfter: string; phaseAfter: string; stabilityAfter: number; scheduledDaysAfter: number; repsAfter: number; historyBefore: number; historyAfter: number;
-  earlyPractice: boolean; independentDueAfter: string; independentPhaseAfter: string }
+  earlyPractice: boolean; independentDueAfter: string; independentPhaseAfter: string;
+  /** a deck-fill item (2026-11-03): early practice of a not-due card that completes the deck to its size */ fill: boolean }
 interface SessionTrace { n: string; kind: 'auto' | 'saved'; at: string; budgetBefore: { used: number; remaining: number }; budgetAfter: { used: number; remaining: number };
   batchReasons: string[]; availableWork: SessionPlan['availableWork']; dueCount: number; newCount: number; planned: number; target: number | undefined;
   items: ItemTrace[]; skipped: Array<{ itemId: string; why: string }>; skippedByWhy: Record<string, number>; decisions: Record<string, number>;
@@ -263,7 +264,7 @@ async function simulate(rating: 3 | 4 = 4): Promise<Simulation> {
         phaseBefore: fresh ? 'new' : planned.item.schedule.phase, answerAt: iso(answerAt),
         dueAfter: a.schedule.due, phaseAfter: a.schedule.phase, stabilityAfter: f4(a.schedule.stability), scheduledDaysAfter: a.schedule.scheduledDays, repsAfter: a.schedule.reps,
         historyBefore: b ? b.history.length : 0, historyAfter: a.history.length, earlyPractice: a.history.at(-1)?.earlyPractice === true,
-        independentDueAfter: independent.due, independentPhaseAfter: independent.phase };
+        independentDueAfter: independent.due, independentPhaseAfter: independent.phase, fill: planned.presentationReason === 'deck-fill' };
     });
     const budgetAfter = admissionBudget(events, { learnerId: L, languageId: LANG, now: iso(end), maxNew: PREFS.maxNew, dailyNewLimit: PREFS.dailyNewLimit! });
     const mentioned = new Set([...plan.items.map((p) => p.item.unitId), ...plan.skipped.map((x) => x.itemId.split(':').slice(2).join(':'))]);
@@ -305,8 +306,19 @@ describe('nine words: chronological reproduction (every answer rated Easy)', () 
   });
 
   it('1: every Easy lands in the fold and moves the schedule forward; a review-phase Easy is >= 1 day out; a (re)learning Easy graduates', () => {
-    const autoItems = SIM.rows.filter((r) => r.kind === 'auto').flatMap((r) => r.items);
+    // deck-fill items (2026-11-03) are explicit early practice of not-due cards: their fold is asserted separately below
+    const allAuto = SIM.rows.filter((r) => r.kind === 'auto').flatMap((r) => r.items);
+    const autoItems = allAuto.filter((r) => !r.fill);
     expect(autoItems.length).toBeGreaterThan(20);
+    expect(allAuto.some((r) => r.fill)).toBe(true);
+    for (const r of allAuto.filter((x) => x.fill)) { // a fill answer rated Easy keeps the schedule and is recorded as early practice
+      expect(r.intent, r.cardId).toBe('explicit:early-review');
+      expect(r.historyAfter, r.cardId).toBe(r.historyBefore + 1);
+      if (Date.parse(r.answerAt) < Date.parse(r.dueBefore!)) { // (a card whose due fell between the plan and its answer schedules as usual)
+        expect(r.earlyPractice, r.cardId).toBe(true);
+        expect(r.dueAfter, r.cardId).toBe(r.dueBefore);
+      }
+    }
     for (const r of autoItems) {
       expect(r.historyAfter, r.cardId).toBe(r.historyBefore + 1);
       expect(r.earlyPractice, r.cardId).toBe(false);
@@ -324,7 +336,7 @@ describe('nine words: chronological reproduction (every answer rated Easy)', () 
     const lastAnswer = new Map<string, string>();
     const returns: string[] = [];
     for (const row of SIM.rows) {
-      if (row.kind === 'auto') for (const item of row.items) {
+      if (row.kind === 'auto') for (const item of row.items.filter((i) => !i.fill)) { // a deck-fill item is early practice by design
         const dueAfter = lastAnswer.get(item.cardId);
         if (dueAfter && Date.parse(dueAfter) > Date.parse(row.at)) returns.push(`${item.cardId} in ${row.n} before due ${dueAfter}`);
       }
@@ -365,7 +377,7 @@ describe('nine words: chronological reproduction (every answer rated Easy)', () 
     expect(allAdmitted.filter((u) => INVENTORY.includes(u)).length).toBeGreaterThan(0);
   });
 
-  it('4: when nothing is due and the allowance is spent, planSession returns no items; skipped explains the deck cards and the test-now outcomes only', async () => {
+  it('4: when nothing is due and the allowance is spent, planSession holds only deck-fill items (no due, no new); skipped explains the deck cards and the test-now outcomes only', async () => {
     // Day 1 at 12:00Z: S1-S3 answered everything that was due, and the allowance was used on day 1
     const events = SIM.events, world = SIM.world, now = SIM0 + 3 * HOUR;
     const deck = deckAt(events, now.valueOf());
@@ -378,9 +390,21 @@ describe('nine words: chronological reproduction (every answer rated Easy)', () 
     console.log('NOTHING-DUE STATE', JSON.stringify({ at: iso(now), budget, dueNow: dueNow.length, items: plan.items.length, availableWork: plan.availableWork, whys, decisions: countBy(outcomes, (o) => o.decision), deckSize: deck.length }));
     expect(budget.remaining).toBe(0);
     expect(dueNow).toHaveLength(0);
-    expect(plan.items).toEqual([]);
+    // nothing is DUE and no new card is admitted: the deck holds only deck-fill (explicit early practice of not-due cards, none new)
+    expect(plan.dueCount).toBe(0);
+    expect(plan.newCount).toBe(0);
+    expect(plan.items.length).toBeGreaterThan(0);
+    for (const p of plan.items) {
+      expect(p.presentationReason, p.item.itemId).toBe('deck-fill');
+      expect(p.intent, p.item.itemId).toMatchObject({ kind: 'explicit', reason: 'early-review' });
+      expect(p.isNew, p.item.itemId).toBe(false);
+    }
     expect(plan.availableWork).toEqual({ questions: 0, newQuestions: 0 });
-    expect(whys).toContain('not due; optional remediation is separate from scheduled review');
+    // every not-due card is either taken as deck-fill (and then not skipped) or still explained as "not due"; the deck is the planned size
+    const notDue = deckAt(dayEvents, now).filter((i) => effective(i).length && !scheduler.isDue(i.schedule, iso(now)) && i.status === 'active');
+    const accounted = new Set([...plan.items.map((p) => p.item.itemId), ...plan.skipped.filter((x) => x.why === 'not due; optional remediation is separate from scheduled review').map((x) => x.itemId)]);
+    for (const i of notDue) expect(accounted.has(i.itemId), i.itemId).toBe(true);
+    expect(plan.items).toHaveLength(PREFS.cardsPerDeck ?? 10);
     expect(whys).toContain('new-card budget exhausted');
     // OBSERVED: `skipped` lists deck cards and the TEST-NOW outcomes (planner.ts:224-236). Units intake did not make test-now
     // (level New, facts missing, suspended, beyond the comparative rank ...) appear nowhere in the plan; their reasons exist only on the IntakeOutcome.
@@ -430,24 +454,27 @@ describe('nine words: chronological reproduction (every answer rated Easy)', () 
 });
 
 describe('variant: the same world, every answer rated Good', () => {
-  it('6: Good on a new card puts it in a 10-minute learning step, so the new cards of the day come straight back and the later sessions hold only 1-6 cards', () => {
+  it('6: Good on a new card puts it in a 10-minute learning step, so the new cards of the day come straight back and the later sessions hold only 1-6 due cards (plus deck-fill)', () => {
     const rows = SIM_GOOD.rows.filter((r) => r.kind === 'auto');
     const byName = Object.fromEntries(rows.map((r) => [r.n, r]));
     console.log('GOOD VARIANT planned per auto session:', rows.map((r) => `${r.n}=${r.planned}(${r.items.map((i) => i.queue[0]).join('')})`).join(' '));
+    // the deck is topped up to its size with deck-fill early practice (2026-11-03); the DUE work of a session is what it planned without the fill
+    const core = (row: SessionTrace): ItemTrace[] => row.items.filter((i) => !i.fill);
     // S2 / S3 / S5 (20 and 40 minutes later, allowance already spent): learning returns only, no new cards
     for (const n of ['S2', 'S3', 'S5']) {
       const row = byName[n]!;
       expect(row.budgetBefore.remaining === 0 || n === 'S2', n).toBe(true);
-      expect(row.items.filter((i) => i.isNew && i.historyBefore === 0 && i.queue === 'new').length, n).toBeLessThanOrEqual(1);
-      expect(row.planned, n).toBeLessThanOrEqual(6);
+      expect(core(row).filter((i) => i.isNew && i.historyBefore === 0 && i.queue === 'new').length, n).toBeLessThanOrEqual(1);
+      expect(core(row).length, n).toBeLessThanOrEqual(6);
+      expect(row.items.filter((i) => i.fill).every((i) => !i.isNew && i.intent === 'explicit:early-review'), n).toBe(true);
     }
-    expect(byName.S3!.items.every((i) => i.queue === 'learning')).toBe(true);
-    expect(byName.S5!.items.every((i) => i.queue === 'learning')).toBe(true);
-    expect(byName.S3!.planned).toBeLessThanOrEqual(3); // OBSERVED: a 2-3 card session is the learning returns of cards introduced 40 minutes earlier
+    expect(core(byName.S3!).every((i) => i.queue === 'learning')).toBe(true);
+    expect(core(byName.S5!).every((i) => i.queue === 'learning')).toBe(true);
+    expect(core(byName.S3!).length).toBeLessThanOrEqual(3); // OBSERVED: a 2-3 card session is the learning returns of cards introduced 40 minutes earlier
     // every one of those returning cards was introduced (CardAdded) in the previous session of the same day
-    for (const i of byName.S5!.items) expect(i.historyBefore).toBe(1);
-    // and with Easy the same sessions are empty or nearly so
-    expect(SIM.rows.find((r) => r.n === 'S3')!.planned).toBe(0);
+    for (const i of core(byName.S5!)) expect(i.historyBefore).toBe(1);
+    // and with Easy the same sessions hold no due work (only deck-fill)
+    expect(SIM.rows.find((r) => r.n === 'S3')!.items.filter((i) => !i.fill)).toHaveLength(0);
   });
 });
 
@@ -557,8 +584,10 @@ describe('probes P1-P11', () => {
     const plan = planSession({ deck, intake: [], preferences: PREFS, audio: audioOk, scheduler, now: iso(later), readingSignals: events, learnerId: L, random: () => 0.1 });
     expect(plan.items[0]!.item.unitId).toBe(unitGood);
     expect(plan.items[0]!.queue).toBe('learning');
-    expect(plan.items.some((p) => p.item.unitId === unitEasy)).toBe(false);
-    expect(plan.skipped.find((x) => x.itemId === easy.itemId)!.why).toBe('not due; optional remediation is separate from scheduled review');
+    // the not-due Easy card is no scheduled work; it can only appear as deck-fill early practice (it is then not skipped)
+    expect(plan.items.filter((p) => p.item.unitId === unitEasy).every((p) => p.presentationReason === 'deck-fill' && p.queue === 'due')).toBe(true);
+    expect(plan.items.filter((p) => p.presentationReason !== 'deck-fill').some((p) => p.item.unitId === unitEasy)).toBe(false);
+    expect(plan.dueCount).toBe(2); // the learning return and the overdue review; the Easy card is not due
     expect(plan.items.some((p) => p.item.unitId === other && p.queue === 'due')).toBe(true);
     events.push(reviewEvent({ unit: unitGood, kind: 'rec', at: later, rating: 3, previous: good.history[0]!.eventId! }));
     const graduated = deckAt(events, later + MIN).find((i) => i.unitId === unitGood)!;
@@ -626,7 +655,8 @@ describe('probes P1-P11', () => {
     expect(afterEasy.history).toHaveLength(before.history.length + 1);
     expect(afterEasy.history.at(-1)!.earlyPractice).toBe(true);
     const planEarly = planSession({ deck: [afterEasy], intake: [], preferences: PREFS, audio: audioOk, scheduler, now: iso(t + HOUR), readingSignals: [...events, easy], learnerId: L, random: () => 0.1 });
-    expect(planEarly.items).toEqual([]); // not planned automatically before the original due time
+    expect(planEarly.dueCount).toBe(0); // not DUE before the original due time; as the only card it is offered only as deck-fill early practice
+    expect(planEarly.items.map((p) => p.presentationReason)).toEqual(['deck-fill']);
     const atDue = Date.parse(before.schedule.due) + MIN;
     const planDue = planSession({ deck: deckAt([...events, easy], atDue), intake: [], preferences: PREFS, audio: audioOk, scheduler, now: iso(atDue), readingSignals: [...events, easy], learnerId: L, random: () => 0.1 });
     expect(planDue.items.map((p) => p.item.unitId)).toEqual([unit]); // and planned at it
@@ -655,8 +685,9 @@ describe('probes P1-P11', () => {
     console.log('P7 at +0:', JSON.stringify({ items: early.items.length, why: [...new Set(early.skipped.map((x) => x.why))], backlog: b0.map((b) => ({ id: b.itemId.slice(-2), needsStudy: b.needsStudy, ready: b.ready, failures: b.failures, reasons: b.reasons })) }));
     expect(b0).toHaveLength(3);
     expect(b0.every((b) => b.needsStudy && !b.ready && !b.repairRequired)).toBe(true);
-    expect(early.items).toEqual([]); // relearning is due 10 min after the Again; three minutes later it is not due
-    expect([...new Set(early.skipped.map((x) => x.why))]).toEqual(['not due; optional remediation is separate from scheduled review']);
+    expect(early.dueCount).toBe(0); // relearning is due 10 min after the Again; three minutes later it is not due (it may be deck-fill early practice only)
+    expect(early.items.every((p) => p.presentationReason === 'deck-fill')).toBe(true);
+    expect([...new Set(early.skipped.map((x) => x.why))].filter((w) => w !== 'not due; optional remediation is separate from scheduled review')).toEqual([]);
     expect(early.remediation?.length).toBe(3);
     const due = plan(20 * MIN);
     expect(due.items.map((p) => p.queue)).toEqual(['learning', 'learning', 'learning']); // OBSERVED: due learning returns, AND still unresolved remediation

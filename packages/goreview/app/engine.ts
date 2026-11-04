@@ -234,6 +234,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
       ...(req.recentHelp ? { recentHelp: req.recentHelp } : {}), random,
       knowledge: req.knowledge, readingSignals: req.readingSignals,
       observedReviewSeconds: req.observedReviewSeconds, intent: req.intent, learnerId: req.learnerId, remediationItemIds:req.remediationItemIds,
+      ...(req.fillPool ? { fillPool: req.fillPool } : {}),
     }),
 
     startSession(start) {

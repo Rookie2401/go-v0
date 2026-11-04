@@ -614,10 +614,13 @@ route('GET', '/units/:id', true, async (ctx) => {
 });
 
 /**
- * A learner's (or, later, a reviewer's) challenge to a unit (contract v3, P-12). The correction is APPENDED to the unit's `provenance.corrections`
- * with a role and a bounded reason and no learner id. For a form unit given a `lexemeId` or `features`, the linguistics port's `correct()` also
- * writes the superseding analysis (the same path as `POST /corrections`); otherwise the unit is moved to `requires-review`, but only from
- * `provisional`: one learner cannot lower a high-confidence or verified unit for everyone, the correction waits there for a reviewer.
+ * A learner's challenge to a unit (contract v3, P-12). The word list is shared, so on the service this is a REPORT: one AnalysisCorrected event in
+ * the learner's own log (exported and deleted with their account), for a reviewer (`scripts/ops/corrections.mts`). The unit, its analyses and its
+ * status are not touched, and nobody else's text lands on a row every learner reads.
+ *
+ * With `applyLearnerCorrections` (a Repository with one learner) the correction is appended to the unit's `provenance.corrections` with a role and
+ * a bounded reason and no learner id. For a form unit given a `lexemeId` or `features`, the linguistics port's `correct()` also writes the
+ * superseding analysis (the same path as `POST /corrections`); otherwise the unit is moved to `requires-review`, but only from `provisional`.
  */
 route('POST', '/units/:id/corrections', true, async (ctx) => {
   const b = await ctx.body();
@@ -638,6 +641,18 @@ route('POST', '/units/:id/corrections', true, async (ctx) => {
   const { store, linguistics } = ctx.deps;
   const [unit] = await store.getUnits([id]);
   if (!unit) throw new Refusal(404, 'no-such-unit', 'There is no unit with that id.');
+  if (ctx.deps.applyLearnerCorrections !== true) {
+    const enrolment = (await store.listEnrolments(ctx.session.learnerId)).filter((e) => e.languageId === unit.languageId && !e.endedAt).at(-1);
+    if (!enrolment) throw new Refusal(422, 'no-enrolment', 'A correction is recorded against one of your enrolments; enrol in the language first.');
+    const to = typeof b.lexemeId === 'string' ? b.lexemeId : correction.to;
+    const event = analysisReport(ctx, enrolment, id, at, {
+      ...(to !== undefined ? { correctedLexemeId: to } : {}),
+      ...(b.features ? { correctedFeatures: b.features as Record<string, string> } : {}),
+      reason: correction.reason,
+    });
+    const [outcome] = await store.append(ctx.session.learnerId, [event]);
+    return respond(200, { unit, provenance: provenanceOf(unit.provenance), statusChanged: false, outcome });
+  }
   if ((unit.provenance.corrections?.length ?? 0) >= MAX_CORRECTIONS) {
     throw new Refusal(409, 'corrections-full', `This unit already has ${MAX_CORRECTIONS} corrections waiting for a reviewer.`);
   }
@@ -1083,6 +1098,16 @@ route('DELETE', '/documents/:id', true, async (ctx) => {
 
 // ── corrections ──
 
+/** The learner's own record of a correction. On the shared service it is also the whole of the report: it never reaches a shared row. */
+function analysisReport(ctx: Ctx, enrolment: { enrolmentId: string; languageId: string }, formId: string, at: string, fields: { analysisId?: string; correctedLexemeId?: string; correctedFeatures?: Record<string, string>; reason?: string }): GoEvent {
+  return {
+    id: uuid(), v: CONTRACT_VERSION, learnerId: ctx.session.learnerId, enrolmentId: enrolment.enrolmentId, languageId: enrolment.languageId, at,
+    producer: { app: 'repository', version: String(SERVICE_VERSION), deviceId: ctx.session.deviceId },
+    kind: 'AnalysisCorrected', subject: { itemIds: [formId] },
+    payload: { formId, by: 'learner', ...fields },
+  };
+}
+
 route('POST', '/corrections', true, async (ctx) => {
   const b = await ctx.body();
   assertSelf(ctx, b.learnerId);
@@ -1099,28 +1124,23 @@ route('POST', '/corrections', true, async (ctx) => {
   const enrolment = isStr(b.enrolmentId) ? enrolments.find((e) => e.enrolmentId === b.enrolmentId) : enrolments.filter((e) => e.languageId === languageId && !e.endedAt).at(-1);
   if (!enrolment) throw new Refusal(422, 'no-enrolment', 'A correction is recorded against one of your enrolments; enrol in the language first.');
   const at = ctx.now();
-  const result = await linguistics.correct(b.formId, {
+  // The word list is shared: only a Repository with one learner lets a learner's correction change it (see `applyLearnerCorrections`).
+  const result = ctx.deps.applyLearnerCorrections === true ? await linguistics.correct(b.formId, {
     by: 'learner', learnerId,
     ...(typeof b.lexemeId === 'string' ? { lexemeId: b.lexemeId } : {}),
     ...(b.features ? { features: b.features as Record<string, string> } : {}),
     ...(typeof b.reason === 'string' ? { reason: b.reason } : {}),
     ...(typeof b.sentenceKey === 'string' ? { sentenceKey: b.sentenceKey } : {}),
-  }, at);
-  const event: GoEvent = {
-    id: uuid(), v: CONTRACT_VERSION, learnerId, enrolmentId: enrolment.enrolmentId, languageId: enrolment.languageId, at,
-    producer: { app: 'repository', version: String(SERVICE_VERSION), deviceId: ctx.session.deviceId },
-    kind: 'AnalysisCorrected', subject: { itemIds: [b.formId] },
-    payload: {
-      formId: b.formId, by: 'learner',
-      ...(result.analysis ? { analysisId: result.analysis.analysisId } : {}),
-      ...(typeof b.lexemeId === 'string' ? { correctedLexemeId: b.lexemeId } : {}),
-      ...(b.features ? { correctedFeatures: b.features } : {}),
-      ...(typeof b.reason === 'string' ? { reason: b.reason } : {}),
-    },
-  };
+  }, at) : undefined;
+  const event = analysisReport(ctx, enrolment, b.formId, at, {
+    ...(result?.analysis ? { analysisId: result.analysis.analysisId } : {}),
+    ...(typeof b.lexemeId === 'string' ? { correctedLexemeId: b.lexemeId } : {}),
+    ...(b.features ? { correctedFeatures: b.features as Record<string, string> } : {}),
+    ...(typeof b.reason === 'string' ? { reason: b.reason } : {}),
+  });
   const [outcome] = await store.append(learnerId, [event]);
   const projected = await project(ctx);
-  return respond(200, { result, outcome, projected });
+  return respond(200, { ...(result ? { result } : {}), outcome, projected });
 });
 
 // ── sync ──

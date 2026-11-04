@@ -847,13 +847,13 @@ class Controller {
         try {
           const r = await api.correct({ formId, ...parsed, ...(reason.value.trim() ? { reason: reason.value.trim() } : {}), enrolmentId: this.run.ctx.enrolmentId, languageId: this.run.ctx.languageId });
           if (!r.ok) { setStatus(out, explainFailure(r), 'error'); return; }
-          setStatus(out, 'Reported. The correction is recorded and the analysis may be replaced; this answer will not count as evidence, and the card waits until the analysis is repaired.', 'ok');
+          setStatus(out, `${r.data.result ? 'Corrected on this device.' : 'Reported. A reviewer checks it before the word changes.'} This answer will not count as evidence, and the card waits until the analysis is repaired.`, 'ok');
           this.challenge({ keyIsWrong: true });
         } catch { setStatus(out, 'The service could not be reached. Try again when you are online.', 'error'); }
       })();
     }, { id: 'report-send', class: 'btn' });
     return h('details', { id: 'report-error' }, h('summary', {}, 'Report an analysis error'),
-      p('If the word was analysed wrongly (a wrong lemma or wrong grammar), tell the Repository. It records a correction you made; it does not change your answer.'),
+      p('If the word was analysed wrongly (a wrong lemma or wrong grammar), report it here. A reviewer checks the report before the word changes for anyone; it does not change your answer.'),
       field('What is wrong?', reason), field('What it should be', fix, 'A lemma id (lemma:…) or features such as case=gen.'), h('div', { class: 'row' }, send), out);
   }
 

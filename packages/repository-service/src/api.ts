@@ -60,7 +60,7 @@ export interface RepositoryApi {
   endEnrolment(enrolmentId: string): Promise<ApiResult<{ enrolment: Enrolment }>>;
   packs(languageId?: string): Promise<ApiResult<{ packs: LanguagePackInfo[] }>>;
   unit(unitId: string): Promise<ApiResult<UnitReport>>;
-  /** A learner's challenge to a unit: appended to its provenance, and (from `provisional` only) the unit becomes `requires-review`; for a form given a lexeme or features, a superseding analysis as well. */
+  /** A learner's challenge to a unit. On the shared service, a report for a reviewer that changes nothing shared; on a Repository with one learner (`applyLearnerCorrections`), it is applied: appended to the unit's provenance, and (from `provisional` only) the unit becomes `requires-review`; for a form given a lexeme or features, a superseding analysis as well. */
   correctUnit(unitId: string, input: UnitCorrectionInput): Promise<ApiResult<{ unit: LinguisticUnit; provenance: ReportedProvenance; statusChanged: boolean; result?: CorrectionResult }>>;
   /** Several units in one call (1 to 50 ids): the same view as `unit`, by id; unknown ids are in `missing`. */
   units(unitIds: string[]): Promise<ApiResult<{ units: Record<string, UnitReport>; missing: string[] }>>;
@@ -77,7 +77,7 @@ export interface RepositoryApi {
   getDocument(docId: string): Promise<ApiResult<{ document: PrivateDocument }>>;
   putDocument(docId: string, doc: Partial<PrivateDocument> & Pick<PrivateDocument, 'languageId' | 'kind' | 'body'>, expectedRevision: number): Promise<ApiResult<{ document: DocumentMeta }>>;
   deleteDocument(docId: string): Promise<ApiResult<null>>;
-  correct(input: { formId: string; lexemeId?: string; features?: Record<string, string>; reason?: string; enrolmentId?: string; languageId?: string }): Promise<ApiResult<{ result: CorrectionResult; outcome: AppendOutcome; projected: boolean }>>;
+  correct(input: { formId: string; lexemeId?: string; features?: Record<string, string>; reason?: string; enrolmentId?: string; languageId?: string }): Promise<ApiResult<{ result?: CorrectionResult; outcome: AppendOutcome; projected: boolean }>>;
   syncPush(req: SyncPushRequest): Promise<ApiResult<SyncPushResponse>>;
   syncPull(req: SyncPullRequest): Promise<ApiResult<SyncPullResponse>>;
   exportAll(): Promise<ApiResult<Record<string, unknown>>>;

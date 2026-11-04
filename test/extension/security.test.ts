@@ -171,7 +171,7 @@ describe('remote data is data', () => {
     const r = await rig.content({ type: MSG.correct, formId: 'form:sq:bukur', languageId: 'sq', lexemeId: 'lemma:sq:i bukur:ADJ', reason: 'chose another reading of this form' });
     expect(r).toEqual({ ok: true, posted: true });
     expect(rig.log.at(-1)).toMatchObject({ method: 'POST', path: '/corrections', status: 200 });
-    expect(rig.h.linguistics.correctCalls[0]).toMatchObject({ formId: 'form:sq:bukur' });
+    expect(rig.h.linguistics.correctCalls).toEqual([]); // a report: the shared word list does not change
     // not connected: nothing is sent and the card is told why
     const off = createRig();
     expect(await off.content({ type: MSG.correct, formId: 'form:sq:bukur', languageId: 'sq', lexemeId: 'lemma:sq:i bukur:ADJ' })).toEqual({ ok: true, posted: false, reason: 'not-connected' });

@@ -144,6 +144,12 @@ export interface ServiceDeps {
   notifier?: ChangeNotifier;
   /** Replaces the default export assembled from the store ports. */
   exporter?: (learnerId: string) => Promise<unknown>;
+  /**
+   * Whether a learner's correction changes the word list. ONLY a Repository with one learner may set this (the device-local one): the service's word
+   * list is shared by every account, so there a correction is a report, one event in the learner's own log, and a reviewer decides
+   * (`scripts/ops/corrections.mts`). Absent means a report: a deployment cannot open this by leaving something out.
+   */
+  applyLearnerCorrections?: boolean;
   /** Authenticated Azure Speech routes. Absent credentials leave status available but synthesis disabled. */
   speech?: SpeechService;
 

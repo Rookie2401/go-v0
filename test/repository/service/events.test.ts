@@ -209,8 +209,21 @@ describe('POST /lookup', () => {
 });
 
 describe('POST /corrections', () => {
-  it("corrects through linguistics as the learner and records an AnalysisCorrected event", async () => {
+  it('on the shared service a correction does not reach linguistics: it is an AnalysisCorrected event in the learner\'s own log', async () => {
     const h = createHarness();
+    const s = await signUp(h, 'ana@example.com');
+    const r = await s.api.correct({ formId: 'form:sq:librin', lexemeId: 'lemma:sq:libër:NOUN', reason: 'wrong lemma' });
+    expect(r.ok && r.data.outcome.stored).toBe(true);
+    expect(r.ok && r.data.result).toBeUndefined();
+    expect(h.linguistics.correctCalls).toEqual([]);
+    const [ev] = await h.store.list({ learnerId: s.learnerId, kinds: ['AnalysisCorrected'] });
+    expect(ev).toMatchObject({ enrolmentId: s.enrolmentId, languageId: 'sq', producer: { app: 'repository' }, payload: { formId: 'form:sq:librin', by: 'learner', correctedLexemeId: 'lemma:sq:libër:NOUN' } });
+    expect(ev.payload).not.toHaveProperty('analysisId');
+  });
+
+  it("on a Repository with one learner it corrects through linguistics and records an AnalysisCorrected event", async () => {
+    const h = createHarness();
+    h.deps.applyLearnerCorrections = true;
     const s = await signUp(h, 'ana@example.com');
     const r = await s.api.correct({ formId: 'form:sq:librin', lexemeId: 'lemma:sq:libër:NOUN', reason: 'wrong lemma' });
     expect(r.ok && r.data.outcome.stored).toBe(true);

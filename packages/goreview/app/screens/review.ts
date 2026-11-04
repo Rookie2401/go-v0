@@ -130,7 +130,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       append(root, [enrolments.length ? p('Choose a language above.') : h('div', { class: 'notice', id: 'no-enrolment' },
         p(mode === 'device'
           ? 'You have no language yet. GoReview reviews what you met while reading, so choose your language in GoLearn setup first; it appears here at once, and no account is needed.'
-          : 'You have no language yet. GoReview reviews what you met while reading, so set up a language in GoLearn first; it will appear here after the next sync.'),
+          : 'You have no language yet. GoReview reviews what you met while reading, so choose a language in GoLearn setup, on the same account. It appears here after the next sync.'),
         setup ? h('p', {}, h('a', { class: 'btn', id: 'link-setup', href: setup }, 'Choose your language')) : null,
         button('Check again', () => { void (async () => { await ctx.refreshProfile(); await paint(); })(); }, { id: 'recheck' }))]);
       return;

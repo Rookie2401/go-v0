@@ -318,5 +318,5 @@ export function renderAccountDetails(el: HTMLElement, ctx: AppContext, view: Vie
 
 /** The two legal links, as a quiet line. */
 export function legalLinks(): HTMLElement {
-  return h('p', { class: 'muted', id: 'legal-links' }, 'The ', h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' and the ', h('a', { href: '#/privacy', id: 'link-privacy-policy' }, 'Privacy Policy'), ' (drafts).');
+  return h('p', { class: 'muted', id: 'legal-links' }, h('a', { href: '#/help', id: 'link-help-settings' }, 'Help'), '. The ', h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' and the ', h('a', { href: '#/privacy', id: 'link-privacy-policy' }, 'Privacy Policy'), ' (drafts).');
 }

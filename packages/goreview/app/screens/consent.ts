@@ -29,6 +29,23 @@ export function remoteSpeechConsentEvent(input: { identity: ConsentIdentity; app
   };
 }
 
+/** Creating an account records that the learner accepted the Terms and the Privacy Policy, as GoLearn setup does. Best effort: an account is not refused because the record failed. */
+export async function recordTermsAcceptance(ctx: AppContext): Promise<void> {
+  try {
+    const session = await ctx.state.getSession();
+    if (!session) return;
+    const eventId = `consent-${ctx.deps.newId()}`;
+    const { api } = await ctx.api();
+    await api.appendEvents([{
+      id: eventId, v: CONTRACT_VERSION, learnerId: session.learnerId, enrolmentId: 'account', languageId: 'und', at: ctx.deps.now().toISOString(),
+      producer: { app: 'gopractice-review', version: ctx.deps.appVersion, deviceId: 'signin', surface: 'signin' },
+      kind: 'ConsentGiven', subject: {},
+      payload: { consent: 'terms-and-privacy', scope: 'terms-and-privacy', documents: ['terms', 'privacy-policy'], version: 'draft-2026-10-17' },
+      dedupeKey: `terms-and-privacy:given:${eventId}`,
+    }]);
+  } catch { /* the account stands either way */ }
+}
+
 export type RemoteSpeechResult =
   | { ok: true; settings: Settings; recorded: boolean }
   | { ok: false; message: string; settings: Settings };

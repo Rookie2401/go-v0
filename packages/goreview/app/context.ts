@@ -68,7 +68,7 @@ export interface AppContext {
   /** The signed-in learner and the one active language; undefined when signed out or without an enrolment. */
   identity(): Promise<Identity | undefined>;
   setLanguage(enrolmentId: string): Promise<boolean>;
-  signIn(input: { email: string; password: string }): Promise<SignInResult>;
+  signIn(input: { email: string; password: string; /** Make the account first (the hosted copy and the iPhone app, which have no setup page to do it). */ create?: boolean; displayName?: string }): Promise<SignInResult>;
   signOut(opts?: { forget?: boolean }): Promise<{ pendingLeft: number }>;
   /** Deliberately removes this device's own data: the on-device Repository and the learner's local queue, log and preferences. Never a side effect of signing out. */
   clearLocalData(): Promise<number>;
@@ -513,6 +513,10 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       let result: ApiResult<{ token: string; learnerId: string; expiresAt: string }>;
       try {
         const platform = deps.mobile?.native ? deps.mobile.platform : 'web';
+        if (input.create) {
+          const made = await deps.createApi(check.url).createAccount({ email, password: input.password, ...(input.displayName ? { displayName: input.displayName } : {}) });
+          if (!made.ok) return { ok: false, message: explainFailure(made, 'signin'), code: made.error };
+        }
         result = await deps.createApi(check.url).createSession({ email, password: input.password, deviceId: device, platform });
       } catch {
         return { ok: false, message: `Could not reach the service at ${check.url}. Check that it is running and that the address is right.` };

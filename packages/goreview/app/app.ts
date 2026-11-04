@@ -20,6 +20,7 @@ import { languageName } from './format';
 import { createContext, type AppContext, type Mode, type SyncView } from './context';
 import type { Deps } from './ports';
 import * as legalScreen from './screens/legal';
+import * as helpScreen from './screens/help';
 import * as reviewScreen from './screens/review';
 import * as settingsScreen from './screens/settings';
 import * as accountScreen from './screens/account';
@@ -34,7 +35,7 @@ import { dismissSplash } from './splash';
 import { loadingMark } from './loading';
 
 export interface RouteDef {
-  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'developer' | 'signin' | 'privacy' | 'terms';
+  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'developer' | 'signin' | 'privacy' | 'terms' | 'help';
   title: string;
   render(el: HTMLElement, ctx: AppContext, view: View, params: string[]): void | Promise<void>;
 }
@@ -49,6 +50,7 @@ export const ROUTES: readonly RouteDef[] = [
   { id: 'signin', title: 'Sign in', render: signinScreen.render },
   { id: 'privacy', title: 'Privacy Policy', render: legalScreen.renderPrivacy },
   { id: 'terms', title: 'Terms of use', render: legalScreen.renderTerms },
+  { id: 'help', title: 'Help', render: helpScreen.render },
 ];
 // The Go mark in the top bar returns to the GoReview home from every screen.
 
@@ -290,7 +292,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     let target: RouteDef['id'] = id;
     let subs = params;
     // the hosted copy needs an account for anything but the sign-in page; inside the extension nothing is behind it
-    if (mode === 'none' && target !== 'signin' && target !== 'privacy' && target !== 'terms') { target = 'signin'; subs = []; if (win.location.hash !== '#/signin') win.location.hash = '#/signin'; }
+    if (mode === 'none' && target !== 'signin' && target !== 'privacy' && target !== 'terms' && target !== 'help') { target = 'signin'; subs = []; if (win.location.hash !== '#/signin') win.location.hash = '#/signin'; }
     if (my !== seq) return;
     const def = ROUTES.find((r) => r.id === target)!;
     route = [def.id, ...subs].join('/');

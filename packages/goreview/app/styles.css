@@ -557,3 +557,6 @@ img, svg, video, canvas { max-width: 100%; }
 @keyframes go-appear { to { opacity: 1; } }
 @media (prefers-reduced-motion: no-preference) { .go-loading { animation: go-appear .2s ease .15s forwards; } .go-loading.continues { animation: none; opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .go-loading { opacity: 1; } .go-globe-turn { animation-duration: 15s; } } /* at once, and a slow turn */
+
+/* the session summary leads with the result */
+.summary-headline { font-size: 1.5rem; font-weight: 600; margin: 0.25rem 0 0.5rem; }

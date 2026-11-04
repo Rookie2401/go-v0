@@ -41,8 +41,8 @@ const goalHelp: Record<typeof goalNames[number], string> = {
 export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPreferences, onSaved?: (p: ReviewPreferences) => void, track?: (saving: Promise<unknown>) => void, opts: { deckSize?: boolean } = {}): HTMLElement {
   let current = initial;
   const status = statusLine();
-  const maxNew = stepper('pref-max-new', 'New items per session', initial.maxNew, 0, 50, 1);
-  const dailyNew = stepper('pref-daily-new', 'Automatic new items per UTC day', initial.dailyNewLimit ?? initial.maxNew, 0, 200, 1);
+  const maxNew = stepper('pref-max-new', 'New words per session', initial.maxNew, 0, 50, 1);
+  const dailyNew = stepper('pref-daily-new', 'New words per day', initial.dailyNewLimit ?? initial.maxNew, 0, 200, 1);
   const retention = stepper('pref-retention', 'Desired retention, per cent', Math.round(initial.desiredRetention * 100), 70, 97, 1);
   const listening = h('input', { type: 'checkbox', id: 'pref-listening', name: 'pref-listening', checked: initial.includeListening }) as HTMLInputElement;
   const saved = h('input', { type: 'checkbox', id: 'pref-saved', name: 'pref-saved', checked: initial.prioritizeSaved }) as HTMLInputElement;
@@ -109,13 +109,13 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
   }, { class: 'btn', id: 'pref-reset' });
 
   const advanced = [
-    field('New items per session (at most)', maxNew.root),
-    field('Automatic new items per UTC day', dailyNew.root, 'Counted from synchronized review history. Independent offline devices can temporarily exceed the shared allowance; optional practice is separate.'),
+    field('New words per session (at most)', maxNew.root),
+    field('New words per day', dailyNew.root, 'The day turns over at 00:00 UTC. A device that is offline can go over until it syncs. Words you choose to practise yourself do not count.'),
     field('Desired retention (%)', retention.root, 'How likely you want to recall an item when it comes due. Higher means more reviews.'),
     h('fieldset', { class: 'field', id: 'pref-practice-goals' }, h('legend', {}, 'Deliberate practice goals'),
       ...goalNames.map((goal) => toggle(goals[goal], goalLabels[goal], goalHelp[goal])),
-      p('Goals select one practice dimension at a time. Multiple choice and assisted answers do not establish productive mastery.', 'help')),
-    toggle(listening, 'Include listening practice', 'Words you already read well are also asked by ear, where this device has a voice for the language. A computer voice is practice only and is never recorded as listening evidence.'),
+      p('Each goal practises one skill at a time. Multiple choice and answers with help do not show that you can produce the word yourself.', 'help')),
+    toggle(listening, 'Include listening practice', 'Words you already read well are also asked by ear, where this device has a voice for the language. A computer voice is practice only and is never counted as listening progress.'),
     toggle(saved, 'Prioritise items I saved', 'Items you marked as saved are proposed first.'),
     toggle(shortcuts, 'Keyboard shortcuts in a session', 'The keys 1 to 4 answer or grade and Space plays the audio. Turn them off if speech input or a switch device triggers them by accident; every action stays a button, and Enter and Esc still work.'),
     p('Kept on this device.', 'muted'),

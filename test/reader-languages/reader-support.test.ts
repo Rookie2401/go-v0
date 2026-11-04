@@ -77,7 +77,8 @@ describe('audio: GoListen’s registry, read by the extension’s view, not a ha
     expect(de.gaps.join(' ')).toMatch(/demonstration asset, not a pronunciation resource/);
     for (const lang of ['nb', 'nn']) {
       const a = audioOf(lang);
-      expect(a, lang).toMatchObject({ recordings: 0, deviceVoiceTemplate: true, remoteVoices: [], phoneticNotes: false, listeningEvidence: false });
+      // Bokmål has two Azure cloud voices since 53abe689 (2026-10-31); Nynorsk has none
+      expect(a, lang).toMatchObject({ recordings: 0, deviceVoiceTemplate: true, phoneticNotes: false, listeningEvidence: false, remoteVoices: lang === 'nb' ? ['azure-speech:nb-NO-FinnNeural', 'azure-speech:nb-NO-IselinNeural'] : [] });
       expect(a.gaps.join(' '), lang).toMatch(/No .* recordings are registered/);
     }
     for (const lang of ['hi', 'th']) {

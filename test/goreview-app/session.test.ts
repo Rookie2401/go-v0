@@ -244,7 +244,7 @@ describe('an audio-only question', () => {
     expect(rig.q('#transcript').textContent).toBe('qen');
     expect(rig.q('#audio-reveal').textContent).toContain('Device voice (Albanian)');
     expect(rig.q('#audio-reveal').textContent).toContain('practice only');
-    expect(rig.q('#recording').textContent).toContain('listening practice with no evidence weight');
+    expect(rig.q('#recording').textContent).toContain('listening practice. It does not count');
   });
 
   it('plays on Space, replays on Space, counts the replays, and records practice with evidence quality none', async () => {
@@ -465,7 +465,7 @@ describe('challenging an answer and reporting an analysis error', () => {
     await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
     rig.q('#challenge').click();
     expect(rig.q<HTMLButtonElement>('#challenge').disabled).toBe(true);
-    expect(rig.q('#recording').textContent).toContain('not counted as evidence');
+    expect(rig.q('#recording').textContent).toContain('will not count toward your progress');
     rig.q('#next').click();
     await until(() => !!rig.root.querySelector('#summary'), 'the summary');
     const [ev] = await queued(rig);
@@ -529,7 +529,7 @@ describe('without a network', () => {
       await until(async () => (await queued(rig)).length === i, `${i} queued`);
     }
     await until(() => !!rig.root.querySelector('#summary'), 'the summary');
-    expect(rig.q('#summary').textContent).toContain('2 event(s) wait to be sent');
+    expect(rig.q('#summary').textContent).toContain('2 answers wait to be sent');
     const failed = await rig.app.ctx.syncNow({ force: true });
     expect(failed?.ok).toBe(false);
     expect((await queued(rig)).length).toBe(2);
@@ -570,7 +570,7 @@ describe('an exercise that cannot be built', () => {
 });
 
 describe('the summary', () => {
-  it('reports results by dimension, what was recorded and what was withheld', async () => {
+  it('reports results by kind of question, what was saved and what did not count', async () => {
     const rig = await makeRig({ signedIn: true });
     await startWith(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'shtepi', 'phrase-comprehension')]);
     for (let i = 0; i < 2; i++) {
@@ -584,9 +584,9 @@ describe('the summary', () => {
     await until(() => !!rig.root.querySelector('#summary'), 'the summary');
     const rows = rig.qa('#sum-dimensions tbody tr').map((r) => r.querySelector('th')!.textContent);
     expect(rows.sort()).toEqual(['Meaning to word', 'Phrases']);
-    expect(rig.q('#sum-recorded').textContent).toContain('2 event(s)');
+    expect(rig.q('#sum-recorded').textContent).toContain('2 answers were saved');
     expect(rig.q('#sum-answered').textContent).toBe('2 answered; 2 prompt(s) shown; 2 initially planned; 1 correct');
-    expect(rig.q('#summary').textContent).toContain('Nothing was withheld');
+    expect(rig.q('#summary').textContent).toContain('Everything counted');
     expect(rig.q('#summary').textContent).not.toMatch(/streak|points|badge/i);
   });
 

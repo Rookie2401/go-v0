@@ -19,7 +19,7 @@ import { buildExercise } from '../../packages/goreview/src/exercises';
 import { decideIntake, gatherCandidates } from '../../packages/goreview/src/intake';
 import type { IntakeInput, ReviewPreferences } from '../../packages/goreview/src/types';
 import {
-  append, changed, ENROL, ev, flushRowsAfterAll, grammar, LEARNER, LEM, makeWorld, normal, note, recognition, resolve, rowsOf, CONSTR, FORM, SENT_SHKOLLE, iso, BASE_MS, DAY,
+  append, changed, ENROL, ev, flushRowsAfterAll, grammar, LEARNER, LEM, makeWorld, normal, note, recognition, resolve, rowsOf, CONSTR, FORM, SENT_SHKOLLE, iso, BASE_MS, DAY, MIN,
 } from './model.support';
 import type { World } from './model.support';
 
@@ -32,7 +32,9 @@ const AUDIO = { available: true, eligibleForEvidence: false, reason: 'synthetic'
 function factsProviderOf(w: World) {
   return createFactsProvider({
     unit: async (id) => { const l = await w.linguistics.lookup(id); return l.unit ? { unit: l.unit, relations: [...l.relations.out, ...l.relations.in], analyses: l.analyses } : undefined; },
-    pack: { manifest: albanianManifest(), runtime: { gloss: async () => undefined } },
+    // d545c547 (2026-10-30): a form's gloss is its OWN dictionary sense, no longer the lemma's word-list gloss, so the dictionary must say something
+    // for the word or a form has no gloss and nothing can be built from it. This dictionary has the one sense these tests need.
+    pack: { manifest: albanianManifest(), runtime: { gloss: async (lemma: string) => (lemma === 'shkollë' ? { senses: [{ gloss: 'school', pos: 'NOUN' }], attribution: 'test dictionary' } : undefined) } },
     adapter: sqAdapter,
     now: () => NOW,
   });
@@ -49,6 +51,12 @@ const candidateOf = async (w: World, unitId: string): Promise<ReviewCandidate> =
   if (!c) throw new Error(`${unitId} is not a candidate`);
   return c;
 };
+
+/**
+ * The learner's knowledge of the unit, as the Repository projects it. Since 690028d4 / 3134cd5b intake follows the knowledge LEVEL ("review follows the
+ * level"): a candidate with no knowledge row is set aside as low-priority, so the tests that expect a proposal pass the real row, as gatherCandidates does.
+ */
+const knowledgeOf = async (w: World, unitId: string) => (await w.engine.knowledge(LEARNER, [unitId]))[0];
 
 const intakeFor = (candidate: ReviewCandidate, over: Partial<IntakeInput> = {}): IntakeInput =>
   ({ candidate, existing: [], audio: AUDIO, saved: new Set(), preferences: PREFS, now: NOW, ...over });
@@ -228,7 +236,7 @@ describe('§17 intake refuses a candidate whose analysis is conflicted, invalida
     await struggle(w, r.formId);
     const rec = await candidateOf(w, r.formId);
     expect(rec.targetDimension).toBe('readingRecognition');
-    const allowed = decideIntake(intakeFor(rec));
+    const allowed = decideIntake(intakeFor(rec, { knowledge: await knowledgeOf(w, r.formId) }));
     expect(['test-now', 'test-later']).toContain(allowed.decision);
     expect(allowed.reasons.join(' ')).toMatch(/provisional/);
     note('B4', '§17', 'provisional (rule-derived) analysis: grammar vs recognition target', 'grammar target refused (needs-validation); recognition target allowed with a provisional caveat', `grammar → ${refused.decision}; recognition → ${allowed.decision} (${allowed.reasons.find((x) => /caveat/.test(x))?.slice(0, 70)}…)`);
@@ -241,11 +249,12 @@ describe('§17 intake refuses a candidate whose analysis is conflicted, invalida
     await struggle(w, CONSTR, 'grammar');
     const c = await candidateOf(w, CONSTR);
     expect(c.eligibility.eligible).toBe(true);
-    const out = decideIntake(intakeFor(c, { secondaryPractice: true }));
+    const knowledge = await knowledgeOf(w, CONSTR);
+    const out = decideIntake(intakeFor(c, { secondaryPractice: true, knowledge }));
     expect(['test-now', 'test-later']).toContain(out.decision);
     expect(c.targetDimension).toBe('grammaticalUnderstanding');
     expect(out.proposed?.family).toBe('grammar-application');
-    expect(decideIntake(intakeFor(c)).proposed?.family).toBe('written-recognition');
+    expect(decideIntake(intakeFor(c, { knowledge })).proposed?.family).toBe('written-recognition');
     note('B5', '§17', 'control: high-confidence construction with repeated grammar failures', 'test-now/test-later as grammar-application with secondary practice enabled; written recognition by default', `${out.decision} as ${out.proposed?.family}; score ${c.score}`);
   });
 
@@ -264,7 +273,7 @@ describe('§17 intake refuses a candidate whose analysis is conflicted, invalida
 // ═════════════════════════════ C. ReviewItemInvalidated ═════════════════════════════
 
 describe('§17 ReviewItemInvalidated: what it does and what it does not', () => {
-  const invalidatedEvent = (itemId: string, unitId: string, at: string) => ev('ReviewItemInvalidated', [unitId], { reason: 'analysis-invalidated', cardId: itemId }, { cardId: itemId, at, evidence: { quality: 'none' } });
+  const invalidatedEvent = (itemId: string, unitId: string, at: string, reviewEventId?: string) => ev('ReviewItemInvalidated', [unitId], { reason: 'analysis-invalidated', cardId: itemId, ...(reviewEventId ? { reviewEventId } : {}) }, { cardId: itemId, at, evidence: { quality: 'none' } });
 
   it('is a valid contract event of the shape GoReview\'s runner writes, and it is not evidence about the learner', async () => {
     const w = await makeWorld('memory');
@@ -287,23 +296,32 @@ describe('§17 ReviewItemInvalidated: what it does and what it does not', () => 
     const covered = await candidateOf(w, LEM);
     expect(covered.reasons.map((r) => r.rule)).toContain('existingCoverage');
     await append(w, invalidatedEvent(itemId, LEM, iso(BASE_MS + 11 * DAY)));
-    const afterInv = await candidateOf(w, LEM);
-    expect(afterInv.reasons.map((r) => r.rule)).not.toContain('existingCoverage');
-    expect(afterInv.score).toBeGreaterThan(covered.score);
-    note('C2', '§17', 'engine candidates after CardAdded → ReviewItemInvalidated', 'existingCoverage (-0.3) present while the card stands, absent after the invalidation', `score ${covered.score} → ${afterInv.score}`);
+    // 690028d4 (GoReview 3): an invalidation no longer hands the unit back as a fresh candidate. It BLOCKS the card's dimension until the facts are
+    // repaired (engine.ts `blockedDimensions`; candidates.ts "a new objective cannot bypass a learner or content control"), so a second card is not
+    // proposed on the analysis that was just withdrawn. The card still stops counting as covered, and the unit is withheld whether or not covered units are listed.
+    for (const includeCovered of [true, false]) {
+      const list = await w.engine.candidates(LEARNER, ENROL, { now: NOW, includeCovered });
+      expect(list.find((c) => c.unitId === LEM), `includeCovered ${includeCovered}`).toBeUndefined();
+    }
+    note('C2', '§17', 'engine candidates after CardAdded → ReviewItemInvalidated', 'existingCoverage (-0.3) present while the card stands; after the invalidation the unit is withheld (blocked until the facts are repaired)', `score ${covered.score} → not a candidate`);
   });
 
   it('DEFECT D1 (fixed): GoReview\'s deck fold withdraws an item when its key was reported wrong (ReviewItemInvalidated)', () => {
     const sched = createFsrsScheduler();
     const itemId = itemIdFor(LEM, 'written-recognition');
     const added = buildCardAdded({ learnerId: LEARNER, enrolmentId: ENROL, languageId: 'sq', at: iso(BASE_MS), deviceId: 'dev-A', unitId: LEM, unitKind: 'lexeme', dimension: 'written-recognition', family: 'written-recognition', addedBy: 'intake' });
-    const inv = invalidatedEvent(itemId, LEM, iso(BASE_MS + DAY));
-    const fold = foldDeck([added, inv], sched, { now: iso(BASE_MS + 2 * DAY) });
+    // 690028d4 (verified facts provenance): the invalidation names the challenged review (`reviewEventId`), whose answer key carries a facts fingerprint, and the
+    // review was withdrawn by a challenged correction. An invalidation without that chain is held with "predates verified facts provenance; contact the pack
+    // maintainer" (test/goreview/scheduler/verified-repair-v2.test.ts covers that legacy case); the runner now writes the full chain, which is built here.
+    const review = ev('CardReviewed', [LEM], { cardKind: 'recognition', grade: 'again', rating: 1, correct: false, hinted: false, answerShownBefore: false, assessmentFingerprint: `sha256:${'a'.repeat(64)}` }, { cardId: itemId, at: iso(BASE_MS + DAY / 2) });
+    const withdrawal = ev('CardReviewed', [LEM], { ...review.payload, rating: null, challenged: true }, { cardId: itemId, at: iso(BASE_MS + DAY / 2 + MIN), correctionOf: review.id, evidence: { quality: 'none' } });
+    const inv = invalidatedEvent(itemId, LEM, iso(BASE_MS + DAY), review.id);
+    const fold = foldDeck([added, review, withdrawal, inv], sched, { now: iso(BASE_MS + 2 * DAY) });
     const item = fold.items.find((i) => i.itemId === itemId)!;
     note('D1', '§17', 'deck fold after ReviewItemInvalidated { analysis-invalidated, cardId }', 'item is no longer active (withdrawn) or at least reported in `ignored`', `status=${item.status}; ignored=${JSON.stringify(fold.ignored)}; unscored=${JSON.stringify(fold.unscored)}; suspendedReason=${item.suspendedReason}`);
     expect(item.suspendedReason).toBe('analysis-invalidated');
     // the item is out of the plan too: nothing is built on the invalidated analysis
-    expect(foldDeck([added, inv], sched, { now: iso(BASE_MS + 2 * DAY) }).ignored).toEqual([]);
+    expect(foldDeck([added, review, withdrawal, inv], sched, { now: iso(BASE_MS + 2 * DAY) }).ignored).toEqual([]);
     expect(item.status).not.toBe('active');
   });
 });

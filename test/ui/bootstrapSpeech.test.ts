@@ -8,6 +8,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { createMemoryStore } from '../../src/core';
 import { bootstrap } from '../../src/app/bootstrap';
 import { resetPrefsForTests } from '../../src/ui/prefs';
+import { createIndexedMemoryStore } from '../../src/sim/store'; // a real-corpus bootstrap on the plain store's scans no longer finishes in time (63836cdd, 2026-10-06: the real-bootstrap UI suites moved to the indexed store, same semantics)
 
 beforeEach(() => { resetPrefsForTests(); localStorage.clear(); });
 afterEach(() => { resetPrefsForTests(); localStorage.clear(); });
@@ -87,11 +88,11 @@ describe('bootstrap: the app\'s own speech service', () => {
 
 describe('bootstrap: the importer\'s content-version history reaches the UI', () => {
   it('ingest.history is bound to contentHistory: one entry per version, oldest first', async () => {
-    const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', speechProxy: false });
+    const r = await bootstrap({ store: createIndexedMemoryStore(), courseId: 'honduras-es', speechProxy: false });
     const text = (await r.services.store.texts.all())[0];
     const history = r.services.ingest.history!(text);
     expect(history.length).toBeGreaterThanOrEqual(1);
     expect(history.at(-1)!.version).toBe(text.contentVersion);
     expect(history[0]).toEqual({ version: expect.any(Number), at: expect.any(String), summary: expect.any(String) });
-  });
+  }, 120_000); // a whole-corpus bootstrap: ~20 s here, so the 20 s default is not enough
 });

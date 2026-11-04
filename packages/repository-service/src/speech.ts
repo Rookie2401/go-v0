@@ -1,5 +1,5 @@
 /** Account-authenticated speech endpoints backed by the shared, pure Azure speech handler. */
-import { createRateLimiter, handleSpeechRequest, type SpeechEnv, type SpeechResponse } from '../../../server/speechHandler';
+import type { SpeechEnv, SpeechResponse } from '../../../server/speechHandler';
 import { isPermittedAccountSpeechText } from './speechMaterial';
 import type { SpeechService } from './deps';
 import { CORS, Refusal, SECURITY_HEADERS, isObj, respond, type Ctx, type Handler } from './http';
@@ -9,14 +9,15 @@ const DEFAULT_RATE_LIMIT = 30;
 const DEFAULT_DAILY_LIMIT = 100_000;
 const MAX_SPEECH_BODY_BYTES = 20 * 1024;
 
-const limiters = new WeakMap<SpeechService, Map<number, ReturnType<typeof createRateLimiter>>>();
+type SpeechEngine = NonNullable<SpeechService['engine']>;
+const limiters = new WeakMap<SpeechService, Map<number, ReturnType<SpeechEngine['createRateLimiter']>>>();
 
-function limiterFor(service: SpeechService): ReturnType<typeof createRateLimiter> {
+function limiterFor(service: SpeechService, engine: SpeechEngine): ReturnType<SpeechEngine['createRateLimiter']> {
   const limit = service.rateLimitPerMinute ?? DEFAULT_RATE_LIMIT;
   let byLimit = limiters.get(service);
   if (!byLimit) { byLimit = new Map(); limiters.set(service, byLimit); }
   let limiter = byLimit.get(limit);
-  if (!limiter) { limiter = createRateLimiter({ limit, now: () => Date.now() }); byLimit.set(limit, limiter); }
+  if (!limiter) { limiter = engine.createRateLimiter({ limit, now: () => Date.now() }); byLimit.set(limit, limiter); }
   return limiter;
 }
 
@@ -121,6 +122,12 @@ async function remoteSpeechConsent(ctx: Ctx): Promise<boolean> {
 
 async function dispatch(ctx: Ctx, path: string, query: Record<string, string | undefined> = {}, body?: Record<string, unknown>): Promise<Response> {
   const service = serviceFor(ctx);
+  const engine = service?.engine;
+  if (!engine) {
+    return path === `${PATH}/status`
+      ? respond(200, { configured: false, provider: 'azure-speech' })
+      : respond(503, { error: 'missing-credentials', message: 'Speech is not configured on this service.' });
+  }
   const internalAuth = ctx.deps.crypto.randomToken();
   const env = speechEnv(service, internalAuth);
   if (path !== `${PATH}/status` && !credentialsPresent(env)) {
@@ -129,7 +136,7 @@ async function dispatch(ctx: Ctx, path: string, query: Record<string, string | u
   const requestBody = body === undefined ? undefined : JSON.stringify(body);
   // Repository authentication and CORS have already been enforced by the outer service. Don't
   // forward a page Origin into the localhost-oriented standalone proxy's stricter same-origin check.
-  const result = await handleSpeechRequest({
+  const result = await engine.handleSpeechRequest({
     method: ctx.request.method,
     path,
     query,
@@ -141,7 +148,7 @@ async function dispatch(ctx: Ctx, path: string, query: Record<string, string | u
   }, env, {
     fetch: service?.fetch ?? fetch,
     now: () => Date.now(),
-    limiter: service ? limiterFor(service) : undefined,
+    limiter: limiterFor(service!, engine),
   });
   return toResponse(result);
 }

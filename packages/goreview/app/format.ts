@@ -74,10 +74,10 @@ export function withheldReason(result: ReviewResult, exercise: Exercise): string
   if (result.grading.outcome === 'unable-to-grade') return 'the answer could not be graded, so nothing about you was observed';
   if (result.response.challenged) return 'you challenged the answer key: kept in your history, not counted as evidence';
   if (extraReplays(result.response, exercise)) return 'you replayed the audio more often than allowed, so this was recorded as help and does not move your schedule';
-  if (!result.evidence) return 'the engine claimed no evidence for this answer';
+  if (!result.evidence) return 'this answer was not counted toward your progress';
   if (result.evidence.evidence?.quality === 'none') {
     if (isAudioExercise(exercise)) return exercise.prompt.audio?.validity.reason ?? 'this audio is practice only: it cannot be listening evidence';
-    return 'recorded with no evidence weight';
+    return 'saved, but it does not count toward your progress';
   }
   return undefined;
 }
@@ -87,15 +87,15 @@ export function forecastRecording(grading: Grading, response: Response, exercise
   if (response.audioFailed) return 'Not recorded: the audio could not be heard, so nothing is claimed about listening.';
   if (grading.outcome === 'invalid-question') return 'Not recorded: the question was not valid.';
   if (grading.outcome === 'unable-to-grade') return 'Not recorded: the answer could not be graded.';
-  if (response.challenged) return 'Will be kept in your history, not counted as evidence and not used to schedule the item.';
+  if (response.challenged) return 'Will be kept in your history. It will not count toward your progress or change when the word comes back.';
   if (response.retrievalAttempted === false || response.hinted || response.assistance.length || response.transcriptShownBefore) {
-    return 'Will be kept in your history without a recall rating or evidence weight because help was used or no retrieval attempt was confirmed.';
+    return 'Will be kept in your history, but will not count toward your progress, because help was used.';
   }
   if (extraReplays(response, exercise)) {
     return 'Will be recorded as help, not as recall: you replayed the audio more often than allowed, so it does not move your schedule.';
   }
   if (isAudioExercise(exercise) && !exercise.prompt.audio?.validity.eligibleForEvidence) {
-    return 'Will be recorded as listening practice with no evidence weight: synthetic or unreviewed speech cannot be listening evidence.';
+    return 'Will be saved as listening practice. It does not count toward your listening progress, because a computer voice was used.';
   }
   return 'Will be recorded when you continue.';
 }

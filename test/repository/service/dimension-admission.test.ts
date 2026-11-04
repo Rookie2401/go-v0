@@ -101,7 +101,13 @@ it('authenticated SQLite candidate feed reaches real intake and plans one missin
   const noBudget = planSession({ deck: planDeck, intake,
     preferences: prefs({ languageId: 'sq', practiceGoals: ['listening'], includeListening: true, maxNew: 0, dailyNewLimit: 0, cardsPerDeck: 10 }),
     audio: audioOk, scheduler: fakeScheduler, now: NOW, readingSignals: allEvents.data.events, learnerId, random: () => 0.5 });
-  expect(noBudget.items).toHaveLength(0);
+  // No new-card budget admits nothing NEW. Since 57dadbfc (2026-11-03) a finished deck is at once completed to the learner's deck size with early practice of
+  // cards that are not yet due, so the one existing (not due) deck card is offered as deck fill; fill is never new, never touches the new-card budget.
+  expect(noBudget.items.filter((item) => item.isNew)).toHaveLength(0);
+  expect(noBudget.items.map((item) => item.item.itemId)).toEqual([planDeck[0]!.itemId]);
+  expect(noBudget.items[0]).toMatchObject({ isNew: false, presentationReason: 'deck-fill' });
   expect(noBudget.newCount).toBe(0);
+  expect(noBudget.availableWork?.newQuestions).toBe(0);
+  expect(noBudget.skipped.find((entry) => entry.code === 'new-budget-exhausted')).toBeDefined();
   store.close();
 });

@@ -319,6 +319,6 @@ export async function renderAccountDetails(el: HTMLElement, ctx: AppContext, vie
     exportBlock(ctx),
     deleteBlock(ctx, view),
     eventsBlock(ctx, view),
-    h('p', { class: 'muted', id: 'legal-links' }, 'The ', h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' and the ', h('a', { href: '#/privacy', id: 'link-privacy-policy' }, 'Privacy Policy'), ' (drafts).'),
+    h('p', { class: 'muted', id: 'legal-links' }, h('a', { href: '#/help', id: 'link-help-settings' }, 'Help'), '. The ', h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' and the ', h('a', { href: '#/privacy', id: 'link-privacy-policy' }, 'Privacy Policy'), ' (drafts).'),
   ]);
 }

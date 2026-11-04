@@ -79,7 +79,8 @@ describe('Albanian: digraphs and ë / ç never split a word', () => {
 
   it('thotë (th) is read as a form of the verb them, from the rules', () => {
     const c = cardOf('Ai «thotë» një fjalë të bukur.', 'sq');
-    expect(c).toMatchObject({ lemma: 'them', pos: 'VERB', gloss: 'to say', provenance: 'rule' });
+    expect(c).toMatchObject({ lemma: 'them', pos: 'VERB', gloss: 'He, she, or it says', provenance: 'rule' });
+    // the card's gloss is the form's own English since 2cd065ae / d545c547 (was the citation 'to say'); the lemma and the rule route are unchanged
   });
 
   it('selecting only the digraph "sh" inside shkollë reads the whole word and says the selection was part of it', () => {

@@ -3,6 +3,7 @@ import 'fake-indexeddb/auto';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { INDEXES, StoreEventBus, buildFixtureText, ids, seedBasics } from '../../src/core';
 import type { AppStore, TextViewed } from '../../src/core';
+import { LANGUAGE_ROWS } from '../../src/core/config';
 import { createDexieStore, schemaFor } from '../../src/db/dexie';
 import type { DexieAppStore } from '../../src/db/dexie';
 
@@ -85,7 +86,9 @@ describe('Dexie store', () => {
     expect(creo).toHaveLength(2);
     expect((await store.rescues.where('textId', text.id))[0].english).toBe('I believe.');
     expect(await store.users.where('courseId', 'honduras-es')).toHaveLength(1);
-    expect(await store.languages.count()).toBe(7);
+    // seedBasics stores every configured language (7 at contract time; nb/nn e915c8ae, he/el c436e6bb, la since added)
+    expect(await store.languages.count()).toBe(LANGUAGE_ROWS.length);
+    expect(LANGUAGE_ROWS.length).toBeGreaterThanOrEqual(10);
   });
 
   it('persists across a reopen of the same database name', async () => {

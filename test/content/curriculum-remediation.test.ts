@@ -45,7 +45,6 @@ describe('installed curriculum-remediation source integrity', () => {
       expect(sha(source)).toBe(entry.source.sha256);
       expect(entry.review.coversSourceSha256).toBe(entry.source.sha256);
       expect(doc.source.sourceHash).toBe(entry.source.sha256);
-      expect(doc.source.attribution).toBe(entry.source.attribution);
       expect(doc.review?.contentSignature).toBe(contentSignatureOf(doc));
       expect(computePublished(doc).published).toBe(true);
       expect(doc.generated).toBe(false);
@@ -56,6 +55,10 @@ describe('installed curriculum-remediation source integrity', () => {
       expect(row.published).toBe(true);
       const combined = read(`data/sources/course-library/${work.lang}.json`).entries.find((e: any) => e.slug === entry.slug);
       expect(sha(fs.readFileSync(path.join('data/sources', combined.source.file)))).toBe(entry.source.sha256);
+      // the installed document carries the reviewed course manifest's attribution; that differs from the acquisition record only by one stray closing quotation mark removed in the 2026-10-06 library clean-up (afd3b4ae)
+      expect(doc.source.attribution).toBe(combined.source.attribution);
+      const acquired: string = entry.source.attribution;
+      expect(acquired === combined.source.attribution || [...acquired.matchAll(/“/g)].some((m) => acquired.slice(0, m.index) + acquired.slice(m.index! + 1) === combined.source.attribution), entry.slug).toBe(true);
       expect(combined.rights.canBundle).toBe(true);
       expect(combined.rights.canBundleAudio).toBe(false);
       expect(doc.review?.notes).toMatch(/no native|pending|Source-fidelity/i);

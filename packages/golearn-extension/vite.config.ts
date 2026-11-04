@@ -54,9 +54,11 @@ function copyStatic(): Plugin {
       const dist = path.join(here, 'dist');
       fs.mkdirSync(path.join(dist, 'action'), { recursive: true });
       fs.copyFileSync(path.join(here, 'manifest.json'), path.join(dist, 'manifest.json'));
-      // Optional device-only translation credentials: never a web-accessible asset or a source-controlled file.
+      // Optional device-only translation credentials: never a web-accessible asset or a source-controlled file, and only when this build asks for them, so
+      // that a build for the store cannot carry them by having been made on a machine that has them (GOLEARN_LOCAL_TRANSLATION=1, or setup-local-translation.ps1).
       const translationConfig = path.join(here, '..', '..', 'data', 'translation.local', 'extension-config.json');
-      if (fs.existsSync(translationConfig)) fs.copyFileSync(translationConfig, path.join(dist, 'translation.local.json'));
+      if (process.env.GOLEARN_LOCAL_TRANSLATION === '1' && fs.existsSync(translationConfig)) fs.copyFileSync(translationConfig, path.join(dist, 'translation.local.json'));
+      else fs.rmSync(path.join(dist, 'translation.local.json'), { force: true });
       fs.copyFileSync(path.join(here, 'action/popup.html'), path.join(dist, 'action/popup.html'));
       const notices = path.join(here, '..', '..', 'THIRD-PARTY-NOTICES.md');
       if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(dist, 'THIRD-PARTY-NOTICES.md'));

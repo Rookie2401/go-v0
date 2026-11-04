@@ -135,18 +135,30 @@ describe('writing correction (checkProduction): 20 sentences with ONE deliberate
 
 // ───────────────────────────── GoReview ─────────────────────────────
 describe('GoReview exercises over the real Albanian pack facts', () => {
-  it('builds exercises for 10 units and every key reads as right, except the two the audit judges wrong (a two-word "form" unit)', async () => {
-    const { built } = await buildReviewSample();
+  it('builds exercises for 10 units and every key reads as right; the forms whose meaning is not their own are refused, not answered with the lemma’s gloss', async () => {
+    const { built, refused } = await buildReviewSample();
     const units = new Set(built.map((b) => b.unit));
     expect(units.size).toBeGreaterThanOrEqual(10);
-    expect(built.length).toBeGreaterThanOrEqual(39);
-    // judged by reading: key correct unless listed here
-    const WRONG = new Set(['form:sq:quhem sam|written-recognition', 'form:sq:quhem sam|meaning-to-form']);
+    // d545c547 (2026-10-30, lexical and inflected meanings separated): an inflected form gets only a meaning of its own (the dictionary's form-of sense or an
+    // explicit inflected meaning), never the lemma's word-list gloss. The six keys the lemma gloss used to supply are now refused with "no gloss", which takes
+    // the sample from 39 to 33 exercises: written recognition of librin ("book"), fëmijët ("child"), lexojnë ("read"), çajin, and the two keys of the
+    // two-word "form" unit quhem sam that the audit judged wrong. A wrong key that is no longer written is the intended outcome.
+    expect(built.length).toBeGreaterThanOrEqual(33);
+    const NOW_REFUSED = ['form:sq:librin|written-recognition', 'form:sq:fëmijët|written-recognition', 'form:sq:lexojnë|written-recognition', 'form:sq:çajin|written-recognition', 'form:sq:quhem sam|written-recognition', 'form:sq:quhem sam|meaning-to-form'];
+    for (const k of NOW_REFUSED) {
+      const hit = refused.find((r) => `${r.unit}|${r.family}` === k);
+      expect(hit, k).toBeDefined();
+      expect(hit!.reason, k).toMatch(/no (concise )?gloss/);
+    }
+    // judged by reading: key correct unless listed here (the two wrong keys of the audit are no longer built at all)
+    const WRONG = new Set<string>();
     const NARROW = new Set(['phrase:sq:quhem__|phrase-comprehension']);
     const keyOf = (b: { unit: string; family: string }) => `${b.unit}|${b.family}`;
-    for (const k of [...WRONG, ...NARROW]) expect(built.map(keyOf), k).toContain(k);
+    expect(built.map(keyOf)).not.toContain('form:sq:quhem sam|written-recognition');
+    expect(built.map(keyOf)).not.toContain('form:sq:quhem sam|meaning-to-form');
+    for (const k of NARROW) expect(built.map(keyOf), k).toContain(k);
     const right = built.filter((b) => !WRONG.has(keyOf(b)) && !NARROW.has(keyOf(b)));
-    expect(right.length).toBeGreaterThanOrEqual(36);
+    expect(right.length).toBeGreaterThanOrEqual(32);   // every built exercise but the one narrow phrase key (36 of 39 before: 39 − 2 wrong − 1 narrow; now 33 − 1)
     // the keys that are right, spot-checked against the audit's own Albanian
     const key = (unit: string, family: string) => built.find((b) => b.unit === unit && b.family === family)?.accepted;
     expect(key('lemma:sq:libër:NOUN', 'written-recognition')).toEqual(['book']);
@@ -169,7 +181,7 @@ describe('GoReview exercises over the real Albanian pack facts', () => {
     expect(g.unavailable).toBe(true);
   });
 
-  it('grading probes (31 typed answers, expected outcomes written by the audit): agrees on at least 24; marks "children", "the book", "they read" incorrect for inflected forms', async () => {
+  it('grading probes (31 typed answers, expected outcomes written by the audit): agrees on at least 24; an inflected form is graded against its own meaning', async () => {
     const w = makeWorld({ selections: REVIEW_SELECTIONS });
     type Out = 'correct' | 'partial' | 'incorrect';
     const probes: Array<[string, ExerciseFamily, Array<[string, Out[]]>]> = [
@@ -182,9 +194,22 @@ describe('GoReview exercises over the real Albanian pack facts', () => {
       ['form:sq:libër', 'morphological-identification', [['indefinite (“a …”)', ['correct']], ['definite (“the …”)', ['incorrect']]]],
       ['phrase:sq:quhem__', 'phrase-comprehension', [['my name is', ['correct']], ['my name is Sam', ['correct']], ['to be called', ['correct']], ['I am called', ['correct']], ['hello', ['incorrect']]]],
     ];
+    // d545c547: an inflected form is asked only with a meaning of its own, so the three forms below have no exercise from the pack's lemma gloss any more.
+    // As test/goreview/exercises (audio, evidence) do, the form's English meaning is supplied explicitly (what a reviewed dictionary form-of sense would say);
+    // the probes then exercise the grading of an inflected-form key, which the old lemma-only key got wrong ("children", "the book", "they read").
+    const OWN_MEANING: Record<string, string> = { 'form:sq:fëmijët': 'children', 'form:sq:librin': 'the book', 'form:sq:lexojnë': 'they read' };
+    const factsOf = async (unit: string) => {
+      const loaded = await w.facts(unit);
+      const text = OWN_MEANING[unit];
+      return text ? { ...loaded, glosses: [text], wordAnalysis: { ...loaded.wordAnalysis!, inflectedMeaning: { text, source: 'reviewed-test-fixture' } } } : loaded;
+    };
+    for (const unit of Object.keys(OWN_MEANING)) {   // and without it they are refused, not answered with the lemma's gloss
+      const bare = (await BUILDERS['written-recognition'].build(target(unit, FAMILY_DIMENSION['written-recognition']), await w.facts(unit), ctxOf())) as { unavailable?: boolean };
+      expect(bare.unavailable, unit).toBe(true);
+    }
     let total = 0; let agree = 0; const disagree: string[] = [];
     for (const [unit, fam, answers] of probes) {
-      const ex = (await BUILDERS[fam].build(target(unit, FAMILY_DIMENSION[fam]), await w.facts(unit), ctxOf())) as any;
+      const ex = (await BUILDERS[fam].build(target(unit, FAMILY_DIMENSION[fam]), await factsOf(unit), ctxOf())) as any;
       expect(ex.unavailable, unit).toBeUndefined();
       for (const [a, ok] of answers) {
         const g = BUILDERS[fam].grade(ex, ex.responseMode === 'choice' ? { choice: a, hinted: false, assistance: [] } : { typed: a, hinted: false, assistance: [] }, {} as never);
@@ -198,11 +223,16 @@ describe('GoReview exercises over the real Albanian pack facts', () => {
     expect(disagree.length).toBeLessThanOrEqual(7);
   });
 
-  it('can ask about 150 of the 199 lemma and form units drawn from the unseen sentences — almost all of it written recognition; only 2 grammar questions', async () => {
+  it('can ask about 101 of the 199 lemma and form units drawn from the unseen sentences — almost all of it written recognition; only 2 grammar questions', async () => {
     const av = await reviewAvailability(res);
     expect(av.tested).toBeGreaterThanOrEqual(199);
-    expect(av.withAny).toBeGreaterThanOrEqual(150);
-    expect(av.perFamily['written-recognition']).toBeGreaterThanOrEqual(150);
+    // d545c547 (2026-10-30): an inflected form is asked only with a meaning of its own, not the lemma's gloss. 63 of the 121 form units have no dictionary form-of sense
+    // in this sample and are now refused ("no gloss in the word list or the dictionary"); every lemma unit is unaffected (59 of 78 build, 17 are conflicted, 2 fail their own
+    // check). That takes the units that can be asked from the old floor of 150 to 101 and written recognition from the old floor of 150 (91 built + the 63 now refused) to 91.
+    expect(av.withAny).toBeGreaterThanOrEqual(101);
+    expect(av.perFamily['written-recognition']).toBeGreaterThanOrEqual(91);
+    const noGloss = Object.entries(av.reasons).find(([k]) => k.startsWith('no gloss in the word list or the dictionary'));
+    expect(noGloss?.[1] ?? 0).toBeGreaterThanOrEqual(63);
     expect(av.perFamily['grammar-application'] ?? 0).toBeGreaterThanOrEqual(2);
   });
 

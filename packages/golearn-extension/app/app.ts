@@ -12,6 +12,7 @@ import * as diagnosticsScreen from './screens/diagnostics';
 import * as homeScreen from './screens/home';
 import * as languagesScreen from './screens/languages';
 import * as legalScreen from './screens/legal';
+import * as helpScreen from './screens/help';
 import * as privacyScreen from './screens/privacy';
 import * as readerScreen from './screens/reader';
 import * as resetScreen from './screens/reset';
@@ -57,7 +58,8 @@ export const SHARE: ScreenDef = { id: 'share', title: 'Look up shared text', gro
 export const VERIFY: ScreenDef = { id: 'verify', title: 'Confirm your email', group: 'status', render: verifyScreen.render };
 export const RESET: ScreenDef = { id: 'reset', title: 'Reset your password', group: 'status', render: resetScreen.render };
 export const TERMS: ScreenDef = { id: 'terms', title: 'Terms of use', group: 'status', render: legalScreen.render };
-const LINKED: readonly ScreenDef[] = [SHARE, VERIFY, RESET, TERMS];
+export const HELP: ScreenDef = { id: 'help', title: 'Help', group: 'status', render: helpScreen.render };
+const LINKED: readonly ScreenDef[] = [SHARE, VERIFY, RESET, TERMS, HELP];
 export const ROUTE_IDS = [HOME.id, ...SCREENS.map((s) => s.id), ...LINKED.map((l) => l.id)];
 const defOf = (id: string): ScreenDef | undefined => (id === HOME.id ? HOME : LINKED.find((l) => l.id === id) ?? SCREENS.find((x) => x.id === id));
 const canonical = (id: string): string => ALIASES[id] ?? id;

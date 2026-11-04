@@ -112,9 +112,9 @@ async function seed(kind: 'memory' | 'sqlite', count: number): Promise<{ store: 
   return { store, engine: createProjectionEngine({ store, now: clock }), events };
 }
 
-describe.each([['memory'], ['sqlite']] as const)('projection fold on the %s store (projection@6)', (kind) => {
+describe.each([['memory'], ['sqlite']] as const)('projection fold on the %s store (projection@7)', (kind) => {
   it.each([[1000, 7], [10000, 5]] as const)('PF-M2x: %i events, full rebuild + pure fold + one-event increment', async (count, runs) => {
-    expect(MODEL_VERSION).toBe('projection@6');
+    expect(MODEL_VERSION).toBe('projection@7');
     const { store, engine } = await seed(kind, count);
     const tag = `${kind} ${count >= 1000 ? `${count / 1000}k` : count}`;
     const idBase = kind === 'memory' ? 20 : 26;
@@ -140,11 +140,13 @@ describe.each([['memory'], ['sqlite']] as const)('projection fold on the %s stor
       await store.append(LEARNER, [e]);
       inc.push(await once(() => engine.project(LEARNER)));
     }
-    record(`PF-M${idBase + 4 + slot}`, `incremental project of 1 new event on a ${tag} log`, 'engine.project after one append (re-reads the log once: O(N), see engine.ts)', inc);
+    record(`PF-M${idBase + 4 + slot}`, `incremental project of 1 new event on a ${tag} log`, 'engine.project after one append (reads only the touched units through the unit index, b22a4e5e; falls back to the whole log when the index cannot prove completeness)', inc);
 
     const rows = await engine.knowledge(LEARNER);
     expect(rows.length).toBeGreaterThan(100);
     expect(stats0(rebuild)).toBeLessThan(count === 1000 ? 5000 : 30000);
+    // since b22a4e5e an increment does not re-read the log: on a long log it must cost well under half of a full rebuild (it was O(N), about the same as one)
+    if (count === 10000) expect(stats0(inc), `incremental ${stats0(inc).toFixed(1)} ms vs rebuild ${stats0(rebuild).toFixed(1)} ms`).toBeLessThan(stats0(rebuild) / 2);
     await store.close();
   }, 120_000);
 });
@@ -238,7 +240,7 @@ function walk(dir: string): Array<{ rel: string; bytes: number; gzip: number }> 
     for (const e of fs.readdirSync(d, { withFileTypes: true })) {
       const p = path.join(d, e.name);
       if (e.isDirectory()) go(p);
-      else { const buf = fs.readFileSync(p); out.push({ rel: path.relative(dir, p).replace(/\\/g, '/'), bytes: buf.length, gzip: zlib.gzipSync(buf).length }); }
+      else { const buf = fs.readFileSync(p); out.push({ rel: path.relative(dir, p).replace(/\\/g, '/'), bytes: buf.length, gzip: /(^|[\\/])(dict|lexicon)[\\/]/.test(p) ? buf.length : zlib.gzipSync(buf).length }); }
     }
   };
   go(dir);
@@ -263,7 +265,11 @@ describe('built artefacts (not built here: read as they stand)', () => {
       recordValue(`${id}:${f.rel}`, `  ${f.rel}`, 'file', f.bytes / 1024, 'KB', `gzip ${(f.gzip / 1024).toFixed(1)} KB`);
     }
     expect(total).toBeGreaterThan(0);
-    expect(total).toBeLessThan(200 * 1024 * 1024);
+    // Dictionaries are data a build carries on purpose (all six since 53abe689); everything else is what the budget is for.
+    const payload = files.filter((f) => /(^|[\\/])(dict|lexicon)[\\/]/.test(f.rel)).reduce((a, f) => a + f.bytes, 0);
+    recordValue(`${id}:dictionaries`, `${rel}: dictionaries`, 'sum of file sizes on disk', payload / 1024, 'KB', '');
+    expect(total - payload).toBeLessThan(200 * 1024 * 1024);
+    expect(total).toBeLessThan(1900 * 1024 * 1024); // the Chrome Web Store refuses a package over 2 GB
   });
 });
 

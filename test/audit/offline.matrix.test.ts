@@ -15,10 +15,33 @@ import {
   createAnalyzer, createDraftStore, createLocalDraftStore, createSyncingDraftStore, exportDraft, exportLearnerWriting, newVersion, type DraftRecord,
 } from '../../packages/gotell/src';
 import { createMemoryArea } from '../../packages/repository-sync/src';
+import { foldDeckItems, planSession, type SessionPlan } from '../../packages/goreview/src';
+import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import {
   PASSWORD, createNet, createPracticeDevice, createStack, lookup, serverEvents, signUp, type Learner, type Stack,
 } from './privacy.support';
-import { accountFor, createReviewRig, createWorkerRig, fileFetch } from './offline.support';
+import { accountFor, createReviewRig, createWorkerRig, fileFetch, NO_AUDIO, REVIEW_PREFS, SQ_UNITS, type ReviewRig } from './offline.support';
+
+/**
+ * GoReview 3 (690028d4, 3134cd5b): a deck card with no review yet is admitted automatically only for a word whose observed knowledge is beyond
+ * New (eligibility.ts "knowledge-beyond-new-required"), and the app passes the Repository's knowledge to the planner. The rig's `seedDeck` adds
+ * cards only and its `plan()` passes no knowledge, so it plans nothing. Here the learner has also met each word in reading (one SelectionLookedUp),
+ * and the plan carries the knowledge fetched while online, as the app's candidate cache does (so planning itself needs no connection).
+ */
+const knowledgeOf = new WeakMap<ReviewRig, UnitKnowledge[]>();
+async function seedDeck(a: Learner, rig: ReviewRig): Promise<void> {
+  const met = SQ_UNITS.map((unit, i) => lookup(a, { at: `2026-09-01T08:0${i}:00.000Z`, subject: { itemIds: [unit], sentenceKey: `ab1${i}` } }));
+  const put = await a.api.appendEvents(met);
+  if (!put.ok) throw new Error(`lookups ${put.status} ${put.error}`);
+  await rig.seedDeck(['written-recognition']);
+  const known = await a.api.knowledge(SQ_UNITS);
+  if (!known.ok) throw new Error(`knowledge ${known.status}`);
+  knowledgeOf.set(rig, known.data.knowledge);
+}
+async function planOf(s: Stack, a: Learner, rig: ReviewRig): Promise<SessionPlan> {
+  const deck = foldDeckItems(await serverEvents(s, a.learnerId), rig.scheduler, { languageId: 'sq', now: rig.now() });
+  return planSession({ deck, intake: [], knowledge: knowledgeOf.get(rig) ?? [], preferences: REVIEW_PREFS, audio: NO_AUDIO, scheduler: rig.scheduler, now: rig.now(), random: () => 0.5 });
+}
 
 const stacks: Stack[] = [];
 const make = (): Stack => { const s = createStack('sqlite'); stacks.push(s); return s; };
@@ -147,12 +170,13 @@ describe('the review session', () => {
     const net = createNet(s);
     const a = await signUp(s, 'ana@example.com', 'phone');
     const rig = await createReviewRig(s, net, a);
-    await rig.seedDeck(['written-recognition']);
-    const plan = await rig.plan();
+    await seedDeck(a, rig);
+    const plan = await planOf(s, a, rig);
     net.down = true;
     const runner = rig.runner(plan, { facts: 'offline' });
     let done = 0;
     while (await rig.answerRight(runner)) done++;
+    expect(plan.items.length).toBeGreaterThan(0);
     expect(done).toBe(plan.items.length);
     expect(await rig.device.queue.size()).toBe(done);
     net.down = false;
@@ -169,9 +193,9 @@ describe('the review session', () => {
     const r = await net.api(a.token).candidates(a.enrolmentId, 10).then(() => 'answered', () => 'unreachable');
     expect(r).toBe('unreachable');
     const rig = await (async () => { net.down = false; return createReviewRig(s, net, a); })();
-    await rig.seedDeck(['written-recognition']);
+    await seedDeck(a, rig);
     net.down = true;
-    const plan = await rig.plan();                                                   // the deck is folded from events and needs no candidates
+    const plan = await planOf(s, a, rig);                                                   // the deck is folded from events and needs no candidates
     expect(plan.items.length).toBeGreaterThan(0);
   });
 });

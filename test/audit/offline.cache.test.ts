@@ -115,7 +115,11 @@ describe('GoLearn worker: damage to the session or the service address', () => {
     await damage(w, async (local) => { await local.set({ 'golearn:service': { baseUrl: 'http://evil.example' } }); });
     const r = await w.rig.page({ type: 'golearn:sync-now' });
     expect(r.ok).toBe(false);
-    expect(w.net.calls.length).toBe(before);                                           // not a single request went to the damaged address
+    // not a single request went to the service or the damaged address. The one fetch allowed is the worker reading the extension's OWN shipped config (app/config.json, a file inside the
+    // extension: chrome.runtime.getURL), which it has done since 084bd472 (2026-10-27) to find the address that ships; it carries no token and no data, and here it answers 404.
+    const made = w.net.calls.slice(before);
+    expect(made.filter((c) => !(c.method === 'GET' && c.path === '/app/config.json')), 'a request other than the shipped-config read').toEqual([]);
+    expect(made.length).toBeLessThanOrEqual(1);
     const st = await w.rig.page({ type: 'golearn:status' });
     expect(st.sync.pending).toBe(2);
     expect(st.needsSignIn).toBe(true);                                                 // the damaged address looks, to the sync code, like a missing sign-in

@@ -35,11 +35,17 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       h('a', { href: session ? '#/settings' : '#/signin' }, session ? 'Account settings' : 'Sign in to keep your progress across devices (optional)')),
     list);
   const audio = disclosure('audio', 'Audio', false, ...audioGuide(ctx));
+  const review = ctx.inExtension
+    ? h('p', { id: 'to-review' }, h('a', { class: 'btn primary', id: 'open-review', href: '../review/index.html' }, 'Review your words'), ' ', h('span', { class: 'muted' }, 'GoReview brings back the words you met, before you forget them.'))
+    : null;
+  const help = h('p', { class: 'muted', id: 'to-help' }, h('a', { href: '#/help', id: 'link-help' }, 'Help'));
   append(el, [
     flash ? h('p', { class: 'notice', id: 'flash', role: 'status' }, flash) : null,
     checkEmail ? checkEmailNotice(ctx, checkEmail.email, checkEmail.sent) : null,
+    review,
     language,
     audio,
+    help,
     h('p', { class: 'footer-link' }, h('a', { href: '#/reader', id: 'reader-link', 'aria-label': 'How GoLearn reads pages (the reader, under Settings)' }, 'How GoLearn reads pages')),
   ]);
   const languages = await renderLanguageSection(list, ctx, view);

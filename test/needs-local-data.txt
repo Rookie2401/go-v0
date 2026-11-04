@@ -1,0 +1,43 @@
+# Test files that CI leaves out because they read something generated and untracked. They still run in `npm run gate` on a machine that has the data.
+# An entry here is a known hole in what CI checks: remove it as soon as the data can be built or fetched in CI (the readiness audit of 2026-11-03, R6).
+
+# public/dict: the generated dictionaries
+test/audit/linguistic.layers.test.ts
+test/audit/offline.apps.test.ts
+test/audit/offline.matrix.test.ts
+test/audit/perf.engine.test.ts
+test/audit/perf.service.test.ts
+test/certification/albanian-reference-e2e.test.ts
+test/certification/repository-vertical-slice.test.ts
+test/golearn-app/bindings.test.ts
+test/golearn-app/integration.test.ts
+test/golearn-e2e/albanian-reference.test.ts
+test/goreview/exercises/evidence.test.ts
+test/goreview/exercises/facts.test.ts
+test/goreview/exercises/families.test.ts
+test/goreview/exercises/validate.test.ts
+test/goreview-app/hebrew-event-only-recovery.test.ts
+test/goreview-app/hebrew-frequency-assets.test.ts
+test/goreview-app/hebrew-real-current-deck.test.ts
+test/goreview-app/hebrew-real-deck.test.ts
+test/goreview-app/hi-real-deck.test.ts
+test/goreview-app/language-lexical-recognition.test.ts
+test/goreview-app/language-recovery.test.ts
+test/language-packs/runtime.test.ts
+test/multilang/pack-es.test.ts
+test/reader-languages/experimental-packs.test.ts
+
+# public/library: the generated reading library
+test/bench/reading-bridge-review-assets.test.ts
+test/bench/recovered-literature-assets.test.ts
+test/bench/sq-library-assets.test.ts
+test/bench/th-literature-assets.test.ts
+test/content/curriculum-remediation.test.ts
+
+# builds that copy the generated data, or a build already on disk
+test/audit/rights.dist.test.ts
+test/biblia/standalone-build.test.ts
+test/goreview-app/extension-build.test.ts
+test/goreview-app/pwa.test.ts
+test/goreview-app/service-url.test.ts
+test/tools/scripture-canon.test.ts

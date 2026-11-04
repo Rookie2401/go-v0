@@ -69,12 +69,14 @@ export async function createRealDeps(fetcher?: typeof fetch): Promise<Deps> {
   // Inside the GoLearn extension (this page is served from chrome-extension://…/review/) GoReview works on the device with no account: the
   // on-device Repository is reached through the extension's worker. Anywhere else (the hosted copy) there is none, and an account is needed.
   const ext = getExtension();
+  const HOSTED_SETUP = 'https://rookie2401.github.io/go-v0/app/index.html#/languages';
   return {
     win: window, doc: document, fetch: doFetch, area: storageArea(mobile), config, mobile,
     ...(ext ? { local: async () => localRepoFor(ext) } : {}),
     links: {
-      ...(ext ? { setup: '../app/index.html#/languages', biblia: '../../biblia/index.html' } : config.extensionUrl ? { extension: config.extensionUrl } : {}),
+      ...(ext ? { setup: '../app/index.html#/languages', biblia: '../../biblia/index.html' } : { setup: HOSTED_SETUP, ...(config.extensionUrl ? { extension: config.extensionUrl } : {}) }),
       ...(config.bibliaUrl ? { biblia: config.bibliaUrl } : {}),
+      ...(config.supportEmail ? { support: config.supportEmail } : {}),
     },
     createApi: (baseUrl, token) => createRepositoryApi({ baseUrl, fetch: apiFetch, token }),
     engine,

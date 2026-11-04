@@ -159,7 +159,13 @@ describe.each(services.slice(0, 2))('GoReview: cards for 200 units and one answe
       const scheduler = createFsrsScheduler({ desiredRetention: 0.9 });
       const deck: DeckItem[] = foldDeckItems(all, scheduler, { languageId: 'sq', now: nowIso() });
       expect(deck.length).toBeGreaterThanOrEqual(created - 5);
-      const plan = planSession({ deck, intake: [], preferences: prefs, audio: { available: false, eligibleForEvidence: false, reason: 'none' }, scheduler, now: nowIso(), random: () => 0.5 });
+      // GoReview 3 (690028d4, 3134cd5b): a card with no review yet is admitted automatically only for a word with observed knowledge beyond New, and the app hands
+      // the planner the Repository's knowledge rows; the learner looked each unit up twice, so the rows say Seen with two encounters. And a batch is capped by the
+      // learner's deck size (a206c4dc: cardsPerDeck, default 10, up to 60), so the plan asks for the largest deck to have more than 30 items to answer.
+      const knowledge: UnitKnowledge[] = [];
+      for (let i = 0; i < units.length; i += 100) knowledge.push(...must<{ knowledge: UnitKnowledge[] }>(await who.api.knowledge(units.slice(i, i + 100))).knowledge);
+      expect(knowledge.length).toBeGreaterThanOrEqual(created - 5);
+      const plan = planSession({ deck, intake: [], knowledge, preferences: { ...prefs, cardsPerDeck: 60 }, audio: { available: false, eligibleForEvidence: false, reason: 'none' }, scheduler, now: nowIso(), random: () => 0.5 });
       expect(plan.items.length).toBeGreaterThan(30);
       const runner = createSessionRunner({
         plan, builders: registry, facts, scheduler, identity: { learnerId: who.learnerId, enrolmentId: who.enrolmentId, deviceId: who.deviceId },

@@ -985,8 +985,6 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
     else d.other += 1;
     byDim.set(key, d);
   }
-  const kinds = new Map<string, number>();
-  for (const r of recorded) kinds.set(r.evidence!.kind, (kinds.get(r.evidence!.kind) ?? 0) + 1);
   const view = await ctx.syncView();
   const overlapPresentations = (run.driver.state().presentations ?? []).filter(row => row.overlap);
   const overlapSection = overlapPresentations.length ? h('section', { class: 'card', id: 'session-overlap-history', 'aria-labelledby': 'session-overlap-heading' },
@@ -1000,26 +998,30 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
   append(root, [
     h('section', { id: 'summary', class: 'card summary' },
       h('h2', {}, run.finish === 'early' ? 'Session ended early' : 'Session complete'),
+      h('p', { id: 'sum-headline', class: 'summary-headline' }, answered ? `${correct} of ${answered} right.` : 'No answers this time.'),
+      left + run.skipped.length ? h('p', { id: 'sum-next' }, `${left + run.skipped.length} ${left + run.skipped.length === 1 ? 'card is' : 'cards are'} left for next time.`) : null,
+      view.status?.online === false && (view.status?.pending ?? 0) ? p('You are offline. Your answers are saved on this device and will be sent when you are back online.', 'muted') : null,
+      h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/review', id: 'back-to-review' }, 'Back to GoReview')),
+      h('details', { id: 'sum-details', class: 'advanced' }, h('summary', {}, 'Details'),
       h('dl', { class: 'facts' },
         h('dt', {}, 'Answered'), h('dd', { id: 'sum-answered' }, `${answered} answered; ${presentedCount} prompt(s) shown; ${initialPlanCount} initially planned; ${correct} correct`),
         h('dt', {}, 'Skipped'), h('dd', { id: 'sum-skipped' }, String(run.skipped.length)),
         h('dt', {}, 'Set aside'), h('dd', { id: 'sum-controls' }, ...(run.controls.length ? run.controls.flatMap((c, i) => [i ? ', ' : '', h('span', langProps(tag), unitLabel(c.unitId)), ` (${c.control})`]) : ['none'])),
-        h('dt', {}, 'Still due'), h('dd', { id: 'sum-left' }, `${left + run.skipped.length} item(s) were not answered; nothing was written for them, so they stay due.`)),
-      h('h3', {}, 'Results by dimension'),
+        h('dt', {}, 'Still due'), h('dd', { id: 'sum-left' }, `${left + run.skipped.length} not answered; they stay due.`)),
+      h('h3', {}, 'Results by kind of question'),
       answered ? h('table', { class: 'plain', id: 'sum-dimensions' },
-        h('thead', {}, h('tr', {}, h('th', {}, 'Dimension'), h('th', {}, 'Answered'), h('th', {}, 'Correct'), h('th', {}, 'Partly'), h('th', {}, 'Not quite'), h('th', {}, 'Not judged'))),
+        h('thead', {}, h('tr', {}, h('th', {}, 'Kind'), h('th', {}, 'Answered'), h('th', {}, 'Correct'), h('th', {}, 'Partly'), h('th', {}, 'Not quite'), h('th', {}, 'Not judged'))),
         h('tbody', {}, ...[...byDim].map(([k, d]) => h('tr', {}, h('th', { scope: 'row' }, k), h('td', {}, String(d.answered)), h('td', {}, String(d.correct)), h('td', {}, String(d.partial)), h('td', {}, String(d.incorrect)), h('td', {}, String(d.other)))))) : p('No answers.', 'muted'),
-      p('Dimensions are kept apart: a pass in one says nothing about another.', 'muted'),
+      p('Each kind of question is tracked on its own: getting a word right one way says nothing about another.', 'muted'),
       overlapSection,
-      h('h3', {}, 'What was recorded'),
+      h('h3', {}, 'What was saved'),
       h('p', { id: 'sum-recorded' }, recorded.length
-        ? `${recorded.length} event(s) were written to your record (${[...kinds].map(([k, n]) => `${n} ${k}`).join(', ')}); ${counting.length} count as evidence.${run.addedCount ? ` Up to ${run.addedCount} new item(s) joined your deck as they were answered.` : ''}`
-        : 'Nothing was written as evidence.'),
-      h('h3', {}, 'What was withheld, and why'),
-      run.withheld.length ? h('ul', { id: 'sum-withheld' }, ...run.withheld.map((w) => h('li', {}, h('span', langProps(tag), unitLabel(w.unitId)), ` (${w.family}): `, ...embedTarget(`${w.reason}.`, [unitLabel(w.unitId)], tag)))) : p('Nothing was withheld.', 'muted'),
+        ? `${recorded.length} ${recorded.length === 1 ? 'answer was' : 'answers were'} saved; ${counting.length} ${counting.length === 1 ? 'counts' : 'count'} toward your progress.${run.addedCount ? ` Up to ${run.addedCount} new ${run.addedCount === 1 ? 'word' : 'words'} joined your deck.` : ''}`
+        : 'Nothing was saved toward your progress.'),
+      h('h3', {}, 'What did not count, and why'),
+      run.withheld.length ? h('ul', { id: 'sum-withheld' }, ...run.withheld.map((w) => h('li', {}, h('span', langProps(tag), unitLabel(w.unitId)), ` (${w.family}): `, ...embedTarget(`${w.reason}.`, [unitLabel(w.unitId)], tag)))) : p('Everything counted.', 'muted'),
       unbuildable.length ? h('p', { class: 'muted', id: 'sum-unbuildable' }, 'Could not be asked: ', ...unbuildable.flatMap((u, i) => [i ? '; ' : '', h('span', langProps(tag), itemLabel(u.itemId)), ` (${u.reason})`]), '.') : null,
-      p(`${view.status?.pending ?? 0} event(s) wait to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'),
-      h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/review', id: 'back-to-review' }, 'Back to GoReview'))),
+      p(`${view.status?.pending ?? 0} ${(view.status?.pending ?? 0) === 1 ? 'answer waits' : 'answers wait'} to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'))),
     ...(actions ? [await nextDeckSection(ctx, run, actions, tag)] : []),
   ]);
   if (run.driver.undo) {

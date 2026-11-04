@@ -86,7 +86,7 @@ describe('(a) no entry reaches the retired course modules', () => {
       if (f.prefix.endsWith('/')) expect(fs.existsSync(path.join(ROOT, f.prefix)), f.prefix).toBe(true);
       else expect(exists(f.prefix), f.prefix).toBe(true);
     }
-    for (const d of RETIRED_DATA) expect(fs.existsSync(path.join(ROOT, d.prefix)), d.prefix).toBe(true);
+    for (const d of RETIRED_DATA.filter((x) => process.env.GO_CI_NO_LOCAL_DATA !== '1' || !x.prefix.startsWith('public/'))) expect(fs.existsSync(path.join(ROOT, d.prefix)), d.prefix).toBe(true);
     // every top-level directory of src/ is either forbidden or allow-listed; none is silently unclassified
     const tops = fs.readdirSync(path.join(ROOT, 'src'), { withFileTypes: true }).map((d) => (d.isDirectory() ? `src/${d.name}/` : `src/${d.name}`));
     const classified = (t: string): boolean =>
@@ -120,7 +120,8 @@ describe('(a) no entry reaches the retired course modules', () => {
     for (const e of ALL_ENTRIES) {
       const r = reach(e.file);
       expect(r.files.has('src/main.tsx'), e.id).toBe(false);
-      expect([...r.files].filter((f) => f === 'index.html' || f.startsWith('server/')), e.id).toEqual([]);
+      expect([...r.files].filter((f) => f === 'index.html'), e.id).toEqual([]);
+      if (e.id !== 'repository-service') expect([...r.runtime].filter((f) => f.startsWith('server/')), `${e.id}: server code in a bundle`).toEqual([]); // a type-only import compiles to nothing; the service alone serves speech
     }
   });
 });
@@ -150,11 +151,16 @@ describe('(b) the salvage allow-list covers every legacy module that is reached'
     });
 
     it('an app entry that reaches src/ reaches it only through language-packs, the extension parser, GoReview facts or the linguistics service', () => {
-      // the legacy tree is entered from five places in the packages and nowhere else
+      // the legacy tree is entered from six places in the packages and nowhere else
       const doors = new Set<string>();
       for (const f of r.files) for (const to of infoEdges(f)) if (to.startsWith('src/') && !f.startsWith('src/')) doors.add(packageOf(f));
-      const ALLOWED_DOORS = new Set(['golearn-extension', 'language-packs', 'goreview', 'repository-linguistics']);
+      const ALLOWED_DOORS = new Set(['golearn-extension', 'language-packs', 'goreview', 'goreview-app', 'repository-linguistics']);
       expect([...doors].filter((d) => !ALLOWED_DOORS.has(d))).toEqual([]);
+      // GoReview's own app has exactly one door, packFacts.ts (the Hebrew and Greek shard loaders, the form index and the he/el adapters that GoReview's pack facts need;
+      // added a270eebe 2026-11-01 and 6a9f3a08 2026-11-02). Every src/ module it reaches is on the allow-list above (the two tests before this one), so nothing new is admitted there.
+      const appDoors = new Set<string>();
+      for (const f of r.files) if (packageOf(f) === 'goreview-app') for (const to of infoEdges(f)) if (to.startsWith('src/')) appDoors.add(f);
+      expect([...appDoors], 'only packFacts.ts may open the legacy tree from the GoReview app').toEqual(appDoors.size ? ['packages/goreview/app/packFacts.ts'] : []);
     });
   });
 

@@ -1,0 +1,26 @@
+# The automatic check on every push to master and every pull request: the type check and the tests that need no generated data.
+# The generated dictionaries and builds are untracked, so the files in test/needs-local-data.txt run only in `npm run gate` on a machine that has them.
+name: CI
+on:
+  push:
+    branches: [master]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Type check
+        run: npx tsc -b
+      - name: Tests
+        run: npx vitest run
+        env:
+          GO_CI_NO_LOCAL_DATA: '1'

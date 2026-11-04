@@ -17,6 +17,8 @@ export interface AppConfig {
   speechProxyBase?: string;
   /** Biblia (the Hebrew Bible and the Greek New Testament on GoLearn) when it ships beside this app: a relative page ("./biblia/index.html") or https. */
   bibliaUrl?: string;
+  /** The address learners write to; the Help page shows it only when it is set. */
+  supportEmail?: string;
 }
 
 export type UrlCheck = { ok: true; url: string } | { ok: false; message: string };
@@ -59,6 +61,7 @@ export async function loadConfig(fetchFn: typeof fetch, url = './config.json'): 
     const j = JSON.parse(await r.text()) as Record<string, unknown>;
     if (!j || typeof j !== 'object') return {};
     const out: AppConfig = {};
+    if (typeof j.supportEmail === 'string' && /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(j.supportEmail)) out.supportEmail = j.supportEmail;
     if (typeof j.serviceUrl === 'string') { const c = validateServiceUrl(j.serviceUrl); if (c.ok) out.serviceUrl = c.url; }
     if (typeof j.assetBaseUrl === 'string' && j.assetBaseUrl) out.assetBaseUrl = j.assetBaseUrl;
     if (typeof j.speechProxyBase === 'string' && j.speechProxyBase) { const c = validateSpeechProxyBase(j.speechProxyBase); if (c.ok) out.speechProxyBase = c.url; }

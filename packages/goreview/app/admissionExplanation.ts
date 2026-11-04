@@ -59,17 +59,17 @@ export function explainAdmissions(model: ReviewModel, deck: Pick<CurrentDeck, 's
     return { code: 'knowledge-unresolved', text: `No new words yet: knowledge for ${n(count, 'word')} could not be loaded from the Repository, so ${count === 1 ? 'it is' : 'they are'} not treated as new. ${count === 1 ? 'It' : 'They'} will be considered once the service answers.` };
   }
   if (model.prefs.maxNew <= 0 || (model.prefs.dailyNewLimit ?? model.prefs.maxNew) <= 0) {
-    return { code: 'new-words-off', text: 'No new words: the new-words setting is 0. Raise "New items per session" in Settings to introduce vocabulary.' };
+    return { code: 'new-words-off', text: 'No new words: the new-words setting is 0. Raise "New words per session" in Settings to bring in new ones.' };
   }
   const budget = admissionBudget(model.events, { learnerId: model.identity.learnerId, languageId: model.identity.languageId, now: model.now, maxNew: model.prefs.maxNew, dailyNewLimit: model.prefs.dailyNewLimit ?? model.prefs.maxNew });
   if (budget.remaining <= 0) {
     const limit = model.prefs.dailyNewLimit ?? model.prefs.maxNew;
-    return { code: 'daily-allowance-used', text: `No more new words today: ${n(budget.used, 'word was', 'words were')} introduced since 00:00 UTC and the daily allowance is ${limit}. Due reviews continue; the allowance resets at 00:00 UTC.` };
+    return { code: 'daily-allowance-used', text: `No more new words today: ${n(budget.used, 'word was', 'words were')} introduced today and the daily allowance is ${limit}. Due reviews continue; the allowance resets at 00:00 UTC.` };
   }
   if (!model.outcomes.length) {
     return model.candidateSource === 'none'
-      ? { code: 'no-candidates', text: 'No new words: the Repository could not be reached for candidates, and this device holds no earlier list. Due reviews continue offline.' }
-      : { code: 'no-candidates', text: 'No new words proposed: read with GoLearn to meet vocabulary; words you look up or meet become candidates here.' };
+      ? { code: 'no-candidates', text: 'No new words right now: the service could not be reached, and this device has no earlier list. Due reviews still work offline.' }
+      : { code: 'no-candidates', text: 'No new words yet: read with GoLearn, and the words you look up or meet will come here.' };
   }
   const byDecision = new Map<string, number>();
   for (const o of model.outcomes) byDecision.set(o.decision, (byDecision.get(o.decision) ?? 0) + 1);
@@ -77,14 +77,14 @@ export function explainAdmissions(model: ReviewModel, deck: Pick<CurrentDeck, 's
   if (!testNow) {
     const parts: string[] = [];
     const facts = (byDecision.get('needs-validation') ?? 0) + (byDecision.get('too-uncertain') ?? 0);
-    if (facts) parts.push(`${n(facts, 'word has', 'words have')} no verified facts yet (nothing is asked from an unverified analysis)`);
+    if (facts) parts.push(`${n(facts, 'word has', 'words have')} no verified facts yet (GoReview only asks about what it has checked)`);
     const later = byDecision.get('test-later') ?? 0;
     if (later) parts.push(`${n(later, 'word waits', 'words wait')} for suitable audio or a better moment`);
     const covered = (byDecision.get('already-covered') ?? 0) + (byDecision.get('redundant') ?? 0);
     if (covered) parts.push(`${n(covered, 'word is', 'words are')} already in your deck or covered by it`);
     const low = byDecision.get('low-priority') ?? 0;
     if (low) parts.push(`${n(low, 'word is', 'words are')} low priority for now`);
-    return { code: 'candidates-not-testable', text: `No new words from the ${n(model.outcomes.length, 'candidate')}: ${parts.join('; ') || 'none passed intake'}.` };
+    return { code: 'candidates-not-testable', text: `No new words from the ${n(model.outcomes.length, 'word')} you met: ${parts.join('; ') || 'none is ready yet'}.` };
   }
   const codes = new Map<ExclusionCode | 'none', number>();
   for (const s of deck.plan.skipped) codes.set(s.code ?? 'none', (codes.get(s.code ?? 'none') ?? 0) + 1);
@@ -95,5 +95,5 @@ export function explainAdmissions(model: ReviewModel, deck: Pick<CurrentDeck, 's
   if (beyondNew) parts.push(`${n(beyondNew, 'word was', 'words were')} never met in a text (GoReview does not teach New words; GoLearn does)`);
   if (seen) parts.push(`${n(seen, 'word needs', 'words need')} a second encounter before practice`);
   if (audio) parts.push(`${n(audio, 'listening card has', 'listening cards have')} no usable audio`);
-  return { code: 'none-eligible', text: `No new words this batch: ${parts.join('; ') || `none of the ${n(testNow, 'proposed word')} passed the planner's checks`}.` };
+  return { code: 'none-eligible', text: `No new words this batch: ${parts.join('; ') || `none of the ${n(testNow, 'word')} is ready yet`}.` };
 }

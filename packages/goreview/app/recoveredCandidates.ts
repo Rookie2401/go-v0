@@ -4,7 +4,7 @@
  * read-only: pack facts are used as inputs to the Repository's existing ranking
  * function and never written back to the account catalogue.
  */
-import { rankCandidates } from '../../repository-engine/src';
+import { rankCandidates } from '../../repository-local/src/ranking';
 import type { Dimension, GoEvent, LinguisticUnit, ReviewCandidate, UnitKnowledge } from '../../repository-contract/src';
 import type { RepositoryApi, VocabularyItem } from '../../repository-service/src/api';
 import type { DeckItem, ReviewPreferences, UnitFacts } from '../src/types';

@@ -8,7 +8,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const zlib = require('node:zlib');
 const dir = process.argv[2];
-const COLS = 12, ROWS = 10, CELL = Number(process.env.CELL || 150), FRAMES = COLS * ROWS;
+const COLS = 19, ROWS = 19, // 361 frames, one degree each; 19 x 70 CSS px keeps the moving layer under 4096 device px on a 3x phone
+   CELL = Number(process.env.CELL || 150), FRAMES = COLS * ROWS;
 const AXIS_TILT = 32 * Math.PI / 180; // the axis leans clockwise, through the meridian's knobs
 const VIEW_LAT = 8 * Math.PI / 180;   // the logo's globe is seen from a little above its equator
 const ART_CENTRE_LON = -50;           // the geographic longitude the logo's art is centred on

@@ -11,6 +11,7 @@
  *     and points to the extension, whose copy of GoReview works on the device;
  *   - signed in already: who, and that another sign-in switches accounts.
  */
+import { recordTermsAcceptance } from './consent';
 import type { AppContext } from '../context';
 import { append, button, clear, field, h, p, setStatus, statusLine } from '../dom';
 import { mountDeletionBanner } from './accountSecurity';
@@ -35,7 +36,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     // the iPhone app: there is no extension on a phone, so the account is the only way in, and it is the one GoLearn uses
     append(el, [h('section', { class: 'card', id: 'review-first-launch', 'aria-labelledby': 'review-first-h' },
       h('h2', { id: 'review-first-h' }, 'Welcome to GoReview'),
-      p('GoReview shows what you read with GoLearn on the same account. Sign in with the account you use in GoLearn: your words, your decks and your reviews appear here, and what you look up while reading on your computer arrives within seconds while GoReview is open.'),
+      p('GoReview shows what you read with GoLearn on the same account. Sign in with the account you use in GoLearn, or create one below: your words, your decks and your reviews appear here, and what you look up while reading on your computer arrives within seconds while GoReview is open.'),
       p('Your reviews done here go back to the same account, so GoLearn sees them too. Nothing is shown until you sign in.', 'muted'))]);
   } else if (hosted) {
     // no wall: the page says what this copy is and where the copy that needs no account lives
@@ -44,7 +45,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       p('The hosted copy keeps your reviews and drafts on your account, so it needs one. The copy inside the GoLearn extension works on your own device with no account at all: it reads what you met while reading from the device, and keeps your reviews and drafts there.'),
       links.extension
         ? h('p', {}, h('a', { class: 'btn primary', id: 'open-extension-copy', href: links.extension }, 'Open GoReview in the extension'))
-        : p('To use it without an account, install the GoLearn extension and press “Practise” in its toolbar button; the extension’s own page opens.', 'muted'))]);
+        : p('To use it without an account, install the GoLearn extension and open GoReview from its setup page.', 'muted'))]);
   } else if (!session) {
     append(el, [
       h('section', { class: 'card', id: 'account-optional' },
@@ -68,14 +69,30 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const submit = h('button', { type: 'submit', id: 'signin-submit', class: 'btn primary' }, 'Sign in') as HTMLButtonElement;
   const next = h('p', { id: 'signin-next', hidden: true }, h('a', { class: 'btn primary', id: 'signin-continue', href: '#/review' }, 'Continue to GoReview'));
   const unverified = h('div', { id: 'unverified-notice' });
+  // Where there is no setup page to go to (the hosted copy, the iPhone app) the account is made here.
+  const name = h('input', { type: 'text', id: 'signin-name', name: 'name', autocomplete: 'name', maxlength: 100 }) as HTMLInputElement;
+  const nameField = field('Your name', name, 'Shown on your account in GoLearn and GoReview.');
+  nameField.hidden = true;
+  const terms = h('p', { class: 'muted', id: 'terms-note', hidden: true }, 'By creating an account you accept the ', h('a', { href: '#/terms' }, 'Terms'), ' and the ', h('a', { href: '#/privacy' }, 'Privacy Policy'), '.');
+  let creating = false;
+  const heading = h('h2', {}, 'Sign in');
+  const toggle = button('Create an account', () => {
+    creating = !creating;
+    heading.textContent = creating ? 'Create an account' : 'Sign in';
+    submit.textContent = creating ? 'Create the account' : 'Sign in';
+    toggle.textContent = creating ? 'I already have an account' : 'Create an account';
+    nameField.hidden = !creating;
+    terms.hidden = !creating;
+    password.setAttribute('autocomplete', creating ? 'new-password' : 'current-password');
+  }, { id: 'signin-create-toggle', class: 'btn' }) as HTMLButtonElement;
   const form = h('form', { id: 'signin-form', novalidate: true, class: 'card' },
-    h('h2', {}, 'Sign in'),
-    field('Email', email), field('Password', password),
-    h('div', { class: 'row' }, submit), status, unverified, next);
+    heading,
+    nameField, field('Email', email), field('Password', password), terms,
+    h('div', { class: 'row' }, submit, hosted && !session ? toggle : null), status, unverified, next);
   const banner = h('div', { id: 'deletion-slot' });
   el.append(banner, form, forgotBlock(ctx, email), h('p', { class: 'muted', id: 'email-links-note' }, 'Links in confirmation and password-reset emails open GoLearn setup. ',
     links.setup ? h('a', { href: links.setup, id: 'link-setup-email' }, 'Open GoLearn setup') : null),
-  h('p', { class: 'muted', id: 'legal-links' }, h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' · ', h('a', { href: '#/privacy', id: 'link-privacy-policy' }, 'Privacy Policy'), ' (drafts)'));
+  h('p', { class: 'muted', id: 'legal-links' }, h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' · ', h('a', { href: '#/privacy', id: 'link-privacy-policy' }, 'Privacy Policy'), ' (drafts) · ', h('a', { href: '#/help', id: 'link-help' }, 'Help')));
   const repaintBanner = mountDeletionBanner(banner, ctx, view);
 
   form.addEventListener('submit', (ev) => {
@@ -85,11 +102,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       const secret = password.value;
       if (!EMAIL.test(addr)) { setStatus(status, 'Enter a valid email address.', 'error'); return; }
       if (!secret) { setStatus(status, 'Enter your password.', 'error'); return; }
+      if (creating && secret.length < 10) { setStatus(status, 'Choose a password of at least 10 characters.', 'error'); return; }
+      if (creating && !name.value.trim()) { setStatus(status, 'Enter your name.', 'error'); return; }
       submit.disabled = true;
       clear(unverified);
-      setStatus(status, 'Signing in…', 'info');
+      setStatus(status, creating ? 'Creating the account…' : 'Signing in…', 'info');
       try {
-        const r = await ctx.signIn({ email: addr, password: secret });
+        const r = await ctx.signIn({ email: addr, password: secret, ...(creating ? { create: true, displayName: name.value.trim() } : {}) });
         if (!r.ok) {
           setStatus(status, r.message, 'error');
           if (r.code === 'email-unverified') {
@@ -105,7 +124,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
           }
           return;
         }
-        const who = r.switched ? `Switched to ${addr}.` : `Signed in as ${addr}.`;
+        if (creating) await recordTermsAcceptance(ctx);
+        const who = creating ? `Account created and signed in as ${addr}. Check your email to confirm the address.` : r.switched ? `Switched to ${addr}.` : `Signed in as ${addr}.`;
         // a deletion that is still scheduled is shown here, with its Cancel, before GoReview opens
         const { client } = await ctx.accountApi();
         const pending = await client.state();

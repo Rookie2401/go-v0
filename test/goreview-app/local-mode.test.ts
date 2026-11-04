@@ -286,7 +286,7 @@ describe('the hosted copy', () => {
   it('without a named page it says where the extension copy is opened from', async () => {
     const rig = await makeRig();
     expect(rig.root.querySelector('#open-extension-copy')).toBeNull();
-    expect(rig.q('#hosted-copy').textContent).toContain('“Practise”');
+    expect(rig.q('#hosted-copy').textContent).toContain('from its setup page');
   });
 
   it('still signs in and works as before once the learner has an account', async () => {

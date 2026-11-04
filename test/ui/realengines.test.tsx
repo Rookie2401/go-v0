@@ -8,6 +8,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 vi.setConfig({ testTimeout: 60_000, hookTimeout: 60_000 });
 import type { ComprehensionReported, Text } from '../../src/core';
 import { createIndexedMemoryStore } from '../../src/sim/store'; // indexed, same semantics: a real bootstrap per test on the plain store's scans timed out
+import { LANGUAGE_ROWS } from '../../src/core/config';
 import { bootstrap } from '../../src/app/bootstrap';
 import type { BootstrapResult } from '../../src/app/bootstrap';
 import { AppRoutes, Shell } from '../../src/ui/App';
@@ -119,7 +120,8 @@ describe('the UI over the real engines', () => {
     const page = await render('/settings');
     await click(button(byLabel(page, 'Advanced'), 'Advanced')); // the language-support table and the evidence audit are under Advanced
     const table = byLabel(page, 'Language support table');
-    expect(qa(table, 'tbody tr')).toHaveLength(7);
+    // one row per configured language (7 at first; nb/nn e915c8ae, he/el c436e6bb, la since added): a language without an adapter would be missing here
+    expect(qa(table, 'tbody tr')).toHaveLength(LANGUAGE_ROWS.length);
     expect(table.textContent).toContain('seed words only'); // the adapters say lemmatization is seed-only
     expect(byLabel(page, 'Language support').textContent).toMatch(/limitations/i);
     // the list of texts is the real catalogue, with real reasons for what is held back

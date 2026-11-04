@@ -10,8 +10,7 @@ import { classifyTokens } from './coverage';
 import { COMPETING_MARGIN, UNCERTAIN_BELOW, levelAtLeast, productionKindOf } from './policy';
 import type { Ctx } from './state';
 import { byAtThenId, effectiveEstimate, effectiveReadingLevel, emptyDimension } from './state';
-import { greekWordAnalysis } from '../adapters/greek/word-analysis';
-import { projectWordAnalysis } from '../core/word-analysis';
+import { wordAnalysisFor } from '../adapters/word-analysis';
 
 // Forgetting (policy.ts DECAY): the pure, read-time standing of an item at a moment. rank.ts calls it (via state.ts or from here).
 export { effectiveStanding, lastMetAt } from './state';
@@ -208,24 +207,12 @@ export async function tokenSupport(ctx: Ctx, userId: string, tokenId: string, le
     // (the gap is compared with a hair of tolerance: 0.6 - 0.4 is not exactly 0.2 in floating point, and a reading marked
     // down to 0.4 beside one at 0.6 does not compete)
     || (analysis.alternatives ?? []).some((alt) => analysis.confidence - alt.confidence < COMPETING_MARGIN - 1e-9 && (alt.lemmaId !== analysis.lemmaId || alt.pos !== analysis.pos));
-  if (token.lang === 'el' && analysis) {
-    const projected = greekWordAnalysis({ surface: token.surface, lemma: lemma?.lemma, pos: analysis.pos, lemmaGloss: lemma?.gloss,
-      morph: analysis.morph, source: analysis.sourceInfo?.label, confidence: analysis.confidence,
-      alternatives: (analysis.alternatives ?? []).map((a) => ({ lemma: a.lemmaId?.split(':').slice(2, -1).join(':'), pos: a.pos, morph: a.morph, confidence: a.confidence })),
-      sentence: own?.text, references: own?.verseRefs ?? [] });
-    support.wordAnalysis = analysis.gloss
-      ? projectWordAnalysis({ ...projected, contextualMeaning: { text: analysis.gloss, source: analysis.sourceInfo?.label ?? 'authored context', confidence: analysis.confidence } })
-      : projected;
-  } else {
-    support.wordAnalysis = projectWordAnalysis({ language: token.lang, surface: token.surface, lemma: lemma?.lemma ?? null, pos: analysis?.pos ?? lemma?.pos ?? null,
-      lexicalMeaning: lemma?.gloss ? { text: lemma.gloss, source: analysis?.sourceInfo?.label, confidence: analysis?.confidence } : null,
-      contextualMeaning: analysis?.gloss ? { text: analysis.gloss, source: analysis.sourceInfo?.label ?? 'authored context', confidence: analysis.confidence } : null,
-      grammaticalFeatures: Object.entries(analysis?.morph ?? {}).map(([key, value]) => ({ key, value, source: analysis?.sourceInfo?.label, confidence: analysis?.confidence })),
-      sentenceContext: own ? { text: own.text, confidence: 1 } : null,
-      references: (own?.verseRefs ?? []).map((r) => ({ label: r, uri: r })),
-      confidence: analysis?.confidence ?? null,
-      ambiguity: (analysis?.alternatives ?? []).map((a) => `${a.lemmaId ?? 'unknown'} (${a.pos ?? 'unclassified'}; ${Object.entries(a.morph).map(([k, v]) => `${k}=${v}`).join(', ') || 'no morphology'})`) });
-  }
+  // every language: the form's own English where the features and the citation support one, an authored gloss as the context meaning
+  support.wordAnalysis = wordAnalysisFor({ language: token.lang, surface: token.surface, lemma: lemma?.lemma, pos: analysis?.pos ?? lemma?.pos, lemmaGloss: lemma?.gloss,
+    morph: analysis?.morph, source: analysis?.sourceInfo?.label, confidence: analysis?.confidence,
+    alternatives: (analysis?.alternatives ?? []).map((a) => ({ lemma: a.lemmaId?.split(':').slice(2, -1).join(':'), pos: a.pos, morph: a.morph, confidence: a.confidence })),
+    sentence: own?.text, references: own?.verseRefs ?? [],
+    ...(analysis?.gloss ? { contextualMeaning: { text: analysis.gloss, source: analysis.sourceInfo?.label ?? 'authored context', confidence: analysis.confidence } } : {}) });
   const primaryMeaning = support.wordAnalysis.contextualMeaning?.text ?? support.wordAnalysis.inflectedMeaning?.text ?? support.wordAnalysis.lexicalMeaning?.text;
   if (primaryMeaning) support.gloss = primaryMeaning;
 

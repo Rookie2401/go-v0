@@ -66,6 +66,87 @@ function meaning(value: WordMeaning | null | undefined): WordMeaning | null {
   };
 }
 
+/** An analyzer's reading of one word, as the adapters hand it to `candidateWordAnalysis`. */
+export interface CandidateMeaningInput {
+  language: string; surface: string; lemma?: string; pos?: string;
+  /** The lemma's citation gloss, as the lexicon writes it. */
+  lemmaGloss?: string;
+  morph?: Readonly<Record<string, string>>; source?: string; confidence?: number;
+  alternatives?: Array<{ lemma?: string; pos?: string; morph: Readonly<Record<string, string>>; confidence?: number }>;
+  sentence?: string; sentenceConfidence?: number; sentenceSource?: string;
+  /** Reference ids (a verse: "GAL.5.14"); `labelReference` turns one into a label and a source. */
+  references?: string[];
+  contextualMeaning?: WordMeaning;
+}
+/** The English of the reading's form from its citation and features, or undefined when it cannot be written. */
+export type MeaningRealizer = (lemma: string | undefined, pos: string | undefined, morph: Readonly<Record<string, string>>, lemmaGloss: string | undefined) => string | undefined;
+export interface CandidateMeaningOptions {
+  realize: MeaningRealizer;
+  /** The lemma meaning to show (default: the citation as given). */
+  lexicalText?: (lemmaGloss: string) => string;
+  labelReference?: (ref: string) => WordAnalysisReference;
+}
+
+const VERBAL = (pos: string | undefined): boolean => !pos || pos === 'VERB' || pos === 'AUX';
+const LISTED = ['VerbForm', 'Mood', 'Tense', 'Voice', 'Person', 'Number'] as const;
+/**
+ * An analyzer writes two readings of one form as a list ("Tense=Perf,Pres" for Latin venit, "Person=1,3" for Spanish era):
+ * each is its own reading here, the first shown and the rest listed as other possible readings. At most twelve.
+ */
+export const hasListedFeatures = (morph: Readonly<Record<string, string>>): boolean => LISTED.some((key) => (morph[key] ?? '').includes(','));
+export function expandListedFeatures(morph: Readonly<Record<string, string>>): Array<Record<string, string>> {
+  let out: Array<Record<string, string>> = [{ ...morph }];
+  for (const key of LISTED) {
+    const value = morph[key];
+    if (!value || !value.includes(',')) continue;
+    const values = value.split(',').map((v) => v.trim()).filter(Boolean);
+    out = out.flatMap((m) => values.map((v) => ({ ...m, [key]: v }))).slice(0, 12);
+  }
+  return out;
+}
+const featureList = (m: Readonly<Record<string, string>>): string => Object.entries(m).map(([k, v]) => `${k}=${v}`).join(', ') || 'no morphology';
+/** Two readings with the same lemma, part of speech and features are one meaning (a finite form with or without VerbForm=Fin). */
+const signature = (lemma: string | undefined, pos: string | undefined, m: Readonly<Record<string, string>>): string =>
+  `${lemma ?? ''}|${pos ?? ''}|${Object.entries(m).filter(([k, v]) => !(k === 'VerbForm' && v === 'Fin')).sort(([a], [b]) => (a < b ? -1 : 1)).map(([k, v]) => `${k}:${v}`).join('|')}`;
+
+/**
+ * The word analysis of an analyzer's reading: the realized inflected meaning (verbs only; the adapter's realizer writes it),
+ * the lemma meaning, the features, and the other readings as ambiguity. An alternative that is the same lexeme realizes
+ * through the same realizer (so "I may love" stands beside "I love"); another lexeme is named with its features.
+ */
+export function candidateWordAnalysis(input: CandidateMeaningInput, opts: CandidateMeaningOptions): WordAnalysis {
+  const morph = input.morph ?? {};
+  const source = input.source;
+  const [primary, ...listed] = expandListedFeatures(morph);
+  const inflectedText = VERBAL(input.pos) ? opts.realize(input.lemma, input.pos, primary, input.lemmaGloss) : undefined;
+  const seen = new Set<string>([signature(input.lemma, input.pos, primary)]);
+  type Alternative = NonNullable<CandidateMeaningInput['alternatives']>[number];
+  const readings: Alternative[] = [...listed.map((m) => ({ morph: m })), ...(input.alternatives ?? []).flatMap((a) => expandListedFeatures(a.morph).map((m) => ({ ...a, morph: m })))];
+  const alternatives = readings.filter((a) => {
+    const key = signature(a.lemma ?? input.lemma, a.pos ?? input.pos, a.morph);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  }).map((a) => {
+    if ((a.lemma && a.lemma !== input.lemma) || (a.pos && a.pos !== input.pos)) return `${a.lemma ?? 'another lexeme'} (${a.pos ?? 'unclassified'}; ${featureList(a.morph)})`;
+    const meaning = VERBAL(a.pos ?? input.pos) ? opts.realize(input.lemma, a.pos ?? input.pos, a.morph, input.lemmaGloss) : undefined;
+    if (meaning && meaning === inflectedText) return '';
+    return meaning ?? `Alternative reading (${featureList(a.morph)})`;
+  }).filter(Boolean);
+  const ambiguity = alternatives.length ? [...new Set([...(inflectedText ? [inflectedText] : []), ...alternatives])] : [];
+  const labelReference = opts.labelReference ?? ((r: string): WordAnalysisReference => ({ label: r, uri: r }));
+  return projectWordAnalysis({
+    language: input.language, surface: input.surface, lemma: input.lemma ?? null, pos: input.pos ?? null,
+    lexicalMeaning: input.lemmaGloss ? { text: opts.lexicalText ? opts.lexicalText(input.lemmaGloss) : input.lemmaGloss, source, confidence: input.confidence } : null,
+    grammaticalFeatures: Object.entries(morph).map(([key, value]) => ({ key, value, ...(source ? { source } : {}), confidence: input.confidence, ...(ambiguity.length ? { ambiguity } : {}) })),
+    inflectedMeaning: inflectedText ? { text: inflectedText, ...(source ? { source } : {}), confidence: input.confidence, ...(ambiguity.length ? { ambiguity } : {}) } : null,
+    contextualMeaning: input.contextualMeaning ?? null,
+    sentenceContext: input.sentence ? { text: input.sentence, ...(input.sentenceSource ? { source: input.sentenceSource } : {}), confidence: input.sentenceConfidence ?? 1 } : null,
+    references: (input.references ?? []).map(labelReference),
+    confidence: input.confidence, ambiguity,
+  });
+}
+
 /**
  * Return a detached, stable display shape from explicit source evidence.
  * The function is a projection, not an analyzer or fallback policy.

@@ -40,7 +40,7 @@ describe('Koine Greek lexical and inflected meanings', () => {
     const a = greekWordAnalysis({ surface: 'ἀγαπᾷ', lemma: 'ἀγαπάω', pos: 'VERB', lemmaGloss: 'I love', morph: present3,
       alternatives: [{ morph: { ...present3, Mood: 'Sub' }, confidence: 0.7 }] });
     expect(a.inflectedMeaning?.text).toBe('He, she, or it loves');
-    expect(a.ambiguity.some((x) => x.includes('Tense=Pres') && x.includes('Mood=Sub'))).toBe(true);
+    expect(a.ambiguity).toEqual(['He, she, or it loves', 'He, she, or it may love']); // the subjunctive reading, realized beside it
   });
 
   it('renders the verse-specific shall separately from its literal future', () => {

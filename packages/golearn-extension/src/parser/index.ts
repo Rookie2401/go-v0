@@ -10,8 +10,7 @@ import { sqAdapter } from '../../../../src/adapters/sq';
 import type { AnalysisCandidate, AnalyzedToken, LanguageAdapter, PatternCandidate, PhraseCandidate, RawToken, SyntaxAnalysis } from '../../../../src/core';
 import { unitIds } from '../../../repository-contract/src';
 import { sentenceKeyOf, fnv1a64 } from '../text';
-import { greekWordAnalysis } from '../../../../src/adapters/greek/word-analysis';
-import { projectWordAnalysis } from '../../../../src/core/word-analysis';
+import { wordAnalysisFor } from '../../../../src/adapters/word-analysis';
 import type { Alternative, CardModel, SyntaxNote, CardProvenance, ConstructionNote, ContextReport, EvidenceLabel, FeatureItem, LabelledField, PhraseNote, SentenceWord, WordLine } from './cardModel';
 import { AnalyserNotLoaded, LANGUAGE_META, PARSER_LANGUAGES, clearAnalysers, getAnalyser, hasAnalyser, languageMeta, registerAnalyser, type LanguageMeta } from './registry';
 
@@ -188,17 +187,11 @@ export function parseSelection(input: ParseInput): CardModel {
     if (selStart > tokens[i].start || selEnd < tokens[i].end) notes.push(`The selection is part of the word "${tokens[i].surface}"; the reading is for the whole word.`);
     if (c) {
       lemma = c.lemma; pos = c.pos; gloss = c.unconfirmed ? undefined : c.gloss;
-      wordAnalysis = L.lang === 'el'
-        ? greekWordAnalysis({ surface: tokens[i].surface, lemma: c.lemma, pos: c.pos, lemmaGloss: c.unconfirmed ? undefined : c.gloss,
-            morph: c.morph, source: c.sourceId ? L.adapter.sources?.[c.sourceId]?.label : undefined, confidence: c.confidence,
-            alternatives: analyses[i].candidates.slice(1).map((x) => ({ lemma: x.lemma, pos: x.pos, morph: x.morph, confidence: x.confidence })), sentence: kind === 'sentence' ? text : undefined, references: ctx.references })
-        : projectWordAnalysis({ language: L.lang, surface: tokens[i].surface, lemma: c.lemma ?? null, pos: c.pos ?? null,
-            lexicalMeaning: !c.unconfirmed && c.gloss ? { text: c.gloss, source: c.sourceId ? L.adapter.sources?.[c.sourceId]?.label : undefined, confidence: c.confidence } : null,
-            grammaticalFeatures: Object.entries(c.morph).map(([key, value]) => ({ key, value, source: c.sourceId ? L.adapter.sources?.[c.sourceId]?.label : undefined, confidence: c.confidence })),
-            sentenceContext: kind === 'sentence' ? { text, confidence: context.confidence } : null,
-            references: ctx.references?.map((r) => ({ label: r, uri: r })) ?? [],
-            confidence: c.confidence,
-            ambiguity: analyses[i].candidates.slice(1).map((x) => `${x.lemma ?? 'unknown'} (${x.pos ?? 'unclassified'}; ${Object.entries(x.morph).map(([k, v]) => `${k}=${v}`).join(', ') || 'no morphology'})`) });
+      // every language: the form's own English where the features and the citation support one (a verb's person, tense, mood and voice), else the lemma meaning
+      wordAnalysis = wordAnalysisFor({ language: L.lang, surface: tokens[i].surface, lemma: c.lemma, pos: c.pos, lemmaGloss: c.unconfirmed ? undefined : c.gloss,
+        morph: c.morph, source: c.sourceId ? L.adapter.sources?.[c.sourceId]?.label : undefined, confidence: c.confidence,
+        alternatives: analyses[i].candidates.slice(1).map((x) => ({ lemma: x.lemma, pos: x.pos, morph: x.morph, confidence: x.confidence })),
+        sentence: kind === 'sentence' ? text : undefined, sentenceConfidence: context.confidence, references: ctx.references });
       const resolvedMeaning = wordAnalysis.contextualMeaning?.text ?? wordAnalysis.inflectedMeaning?.text ?? wordAnalysis.lexicalMeaning?.text;
       if (resolvedMeaning) gloss = resolvedMeaning;
       // a reading from an external source (the Open Scriptures morphology, MorphGNT, the Wiktionary tables): the card names it, not "course word list"

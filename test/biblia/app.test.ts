@@ -131,6 +131,17 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
       expect(sources.some((s) => /Open Scriptures Hebrew Bible morphology/.test(s))).toBe(true);
       expect(root.querySelector('.sources')!.textContent).not.toMatch(/No external source/);
     });
+    it('a verb card says the form\'s own English, not the citation: וַיֹּאמֶר is "And he said" (the owner, 2026-11-03)', async () => {
+      app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: fakeRecorder(), now: () => new Date() });
+      await app.go('#/read/Gen/1');
+      const word = [...document.querySelectorAll('.reader .prose button.word')].find((b) => consonantal(b.textContent ?? '') === 'ויאמר') as HTMLButtonElement;
+      expect(word).toBeDefined();
+      word.click();
+      await new Promise((r) => setTimeout(r, 20));
+      const root = app.cardRoot()!;
+      expect(root.querySelector('[data-row="meaning"]')!.textContent).toContain('And he said');
+      expect(root.querySelector('.kicker')!.textContent).not.toBe('Meaning · Lemma meaning');
+    });
   });
 
   it('a bad reference is refused with a way back', async () => {

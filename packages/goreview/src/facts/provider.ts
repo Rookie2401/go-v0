@@ -21,6 +21,7 @@ import type { GlossResult } from '../../../language-packs/src/runtime';
 import type { Tutorial } from '../../../language-packs/src/tutorial/types';
 import type { AnalysisCandidate, AnalyzedToken, PhraseCandidate, RawToken } from '../../../../src/core';
 import { projectWordAnalysis } from '../../../../src/core/word-analysis';
+import { answerVariants } from '../../../../src/core/english-verb';
 import { greekWordAnalysis } from '../../../../src/adapters/greek/word-analysis';
 import type { ExampleSentence, FactsProvider, UnitFacts } from '../types';
 import type { ExampleReading, FeatureDef, FormGroup, FormInfo, ReviewFacts } from './review-facts';
@@ -583,8 +584,9 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
           grammaticalFeatures: Object.entries(features).map(([key, value]) => ({ key, value })),
           inflectedMeaning: g.glosses[0] ? { text: g.glosses[0], source: 'dictionary', confidence: topAlone?.confidence } : undefined,
           references: g.attribution ? [{ label: g.attribution, source: 'dictionary' }] : [] });
+    // a Greek verb's answer is its realized form; "He, she, or it said" also accepts "he said", "she said", "it said" (the key's parts split at commas)
     const answerGlosses = lang === 'el' && wordAnalysis.inflectedMeaning?.text
-      ? [wordAnalysis.inflectedMeaning.text]
+      ? answerVariants(wordAnalysis.inflectedMeaning.text)
       : lang === 'he' && citationNounGloss && !g.glosses.length
         ? [lexCand!.gloss!]
         : g.glosses;

@@ -79,5 +79,8 @@ export function fnv1a64(s: string): string {
   return h.toString(16).padStart(16, '0');
 }
 
+/** What an event records of a web page: a hash of its host and path (contract `HASHED_PAGE_LOCATOR`). The same page matches across devices; the address is not in it. */
+export const pageKeyOf = (host: string, pathname: string): string => `h:${fnv1a64(`${host.toLowerCase()}${pathname}`)}`;
+
 /** The sentence identity used by the Repository: hash of the exact text, 12 hex digits (src/core/ids.ts sentenceKey). */
 export const sentenceKeyOf = (exactText: string): string => fnv1a64(exactText).slice(0, 12);

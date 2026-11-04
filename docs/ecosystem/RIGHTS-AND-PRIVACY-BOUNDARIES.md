@@ -35,7 +35,7 @@ lawyer or the rights holder before production distribution. Charter principles 1
 ## 3. Privacy boundaries of the new product
 
 1. **What the extension records by default**: the item ids looked up, the help layers shown, the time, a hash of the
-   context sentence, and a source reference (title/locator) — never the sentence text, never the page.
+   context sentence, and a source reference (a web page: a hash of its address; a local book: its title and position) — never the sentence text, never the page.
 2. **Snippets**: per-source opt-in ("keep short snippets of this book for my practice"), one sentence per encounter,
    stored as deletable rows (not immutable events), listed in the export so the learner sees exactly what is kept,
    removable per source. The retrieval cloze's current practice of writing `sentenceText` into events is to be

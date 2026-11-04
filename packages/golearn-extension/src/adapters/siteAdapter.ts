@@ -13,6 +13,7 @@
  * `context()` say why, with the entry's own words. The adapter never injects CSS or script into the page and never
  * overrides a site's copy protection.
  */
+import { pageKeyOf } from '../text';
 import { describePage } from './page';
 import type { AdapterLanguageEvidence } from '../contract/language';
 import type {
@@ -171,11 +172,10 @@ export class SiteAdapter extends WebGenericAdapter {
     try { url = new URL(this.pageUrl()); } catch { url = undefined; }
     if (this.site.scripture) {
       const ref = this.scriptureRef(url, restrictions);
-      // the page title of a Scripture page may quote the verse: it is never used here
-      return ref ?? { kind: 'web', locator: url?.pathname || undefined, restrictions };
+      if (ref) return ref;
     }
-    const title = (this.doc.title ?? '').trim().slice(0, 120);
-    const out: SourceReference = { kind: 'web', title: title || undefined, locator: url?.pathname || undefined, restrictions };
+    // the page's title and address are never recorded, only a hash of the address
+    const out: SourceReference = { kind: 'web', ...(url?.pathname ? { locator: pageKeyOf(url.host, url.pathname) } : {}), restrictions };
     return out;
   }
 

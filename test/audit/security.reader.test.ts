@@ -452,7 +452,7 @@ describe('what is stored and what is sent', () => {
     expect(JSON.stringify(sent)).not.toContain(token);
   });
 
-  it('page-controlled metadata that IS stored is bounded: the title is cut at 120 characters and the locator is the path only (no query, no fragment)', async () => {
+  it('page-controlled metadata is not stored: no title, and the address only as a hash (no path, query or fragment; a path can hold a token)', async () => {
     rig = createAuditRig();
     document.title = `<script>alert(1)</script>${INSTRUCTION}${'T'.repeat(500)}`;
     window.history.replaceState({}, '', '/reset/pw?token=SECRET-IN-QUERY#SECRET-IN-FRAGMENT');
@@ -465,11 +465,12 @@ describe('what is stored and what is sent', () => {
     const evs = await events(rig);
     const ref = evs.map((e) => e.subject.sourceRef).find(Boolean)!;
     expect(ref.kind).toBe('web');
-    expect((ref.title ?? '').length).toBeLessThanOrEqual(120);
+    expect(ref.title).toBeUndefined();
     const text = JSON.stringify(evs);
     expect(text).not.toContain('SECRET-IN-QUERY');
     expect(text).not.toContain('SECRET-IN-FRAGMENT');
-    expect(ref.locator).toBe('/reset/pw');
+    expect(ref.locator).toMatch(/^h:[0-9a-f]{16}$/);
+    expect(text).not.toContain('/reset/pw');
     window.history.replaceState({}, '', '/');
     document.title = '';
   });

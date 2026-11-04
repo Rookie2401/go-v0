@@ -55,7 +55,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     h('section', { class: 'card', 'aria-labelledby': 'priv-snip' },
       h('h2', { id: 'priv-snip' }, 'Keep snippets'),
       toggle('keep-snippets', 'Keep one sentence with each lookup, so I can see where I met a word', false, async () => false, true),
-      p('Off, and it cannot be switched on in this version. A lookup is recorded as a hash of its sentence, the page title and the page path, never the sentence itself; nothing in the extension can keep a sentence yet. When keeping a sentence becomes possible it will be a separate switch here, off until you turn it on.', 'muted')),
+      p('Off, and it cannot be switched on in this version. A lookup on a web page is recorded with a hash of its sentence and of the page address, never the sentence, the page title or the address; nothing in the extension can keep a sentence yet. When keeping a sentence becomes possible it will be a separate switch here, off until you turn it on.', 'muted')),
     h('section', { class: 'card', 'aria-labelledby': 'priv-speech' },
       h('h2', { id: 'priv-speech' }, 'Remote speech'),
       toggle('local-only-speech', 'Use only voices that run on this device', settings.localOnlySpeech !== false, async (v) => {

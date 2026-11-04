@@ -151,8 +151,8 @@ describe('source policy: restrictions are capped by the service, never granted b
   it('a reference that claims nothing is stored without restrictions (absent reads as unknown)', async () => {
     const h = realHarness();
     const who = await signUp(h, 'a@example.test');
-    const got = await stored(h, who, { kind: 'web', title: 'T' }, 'epub-local');
-    expect(got).toEqual({ kind: 'web', title: 'T' });
+    const got = await stored(h, who, { kind: 'ebook', title: 'T' }, 'epub-local');
+    expect(got).toEqual({ kind: 'ebook', title: 'T' });
   });
 
   it('a partial claim is completed with "unknown" before the cap, so a missing field is never raised to the policy', async () => {

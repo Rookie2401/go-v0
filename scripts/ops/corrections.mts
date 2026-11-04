@@ -18,7 +18,7 @@ import { createLinguisticService } from '../../packages/repository-linguistics/s
 import { createPgPool, openPostgresStore, openSqliteStore } from '../../packages/repository-store/src';
 
 const REPORTS = `SELECT learner_id, json FROM events WHERE kind = 'AnalysisCorrected'`;
-const parsed = <T>(json: unknown): T => (typeof json === 'string' ? JSON.parse(json) : json) as T;
+const parsed = <T,>(json: unknown): T => (typeof json === 'string' ? JSON.parse(json) : json) as T;
 
 /** Reads across learners, which no store port offers on purpose: this script is the only reader. */
 async function readRows(dataFile: string): Promise<{ reports: CorrectionReportRow[]; analyses: LearnerWrittenAnalysis[] }> {

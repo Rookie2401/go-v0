@@ -2,7 +2,7 @@
 
 > **DRAFT — for the owner's review and legal counsel; not in force.** Nothing below binds anyone until the owner has adopted a final text. Bracketed items [like this] are blanks the owner must fill in or decide.
 
-Drafted 2026-10-17. These terms apply to GoLearn (the browser extension and its setup app), GoReview and GoPractice, and the sync service they use if you create an account.
+Drafted 2026-10-17. These terms apply to GoLearn (the browser extension and its setup app), GoReview, and the sync service they use if you create an account.
 
 ## 1. Agreement
 
@@ -10,7 +10,7 @@ By creating an account, or by using the sync service, you accept these Terms and
 
 ## 2. What the service is
 
-GoLearn helps you read in another language: select a word on a page and it shows the dictionary form, a meaning, how it is built and how it is said. GoReview and GoPractice help you review what you met and practise writing. An account keeps your learning record in step across your devices. The service is an aid to learning, not a source of authoritative translation, advice or certification.
+GoLearn helps you read in another language: select a word on a page and it shows the dictionary form, a meaning, how it is built and how it is said. GoReview helps you review what you met and practise writing. An account keeps your learning record in step across your devices. The service is an aid to learning, not a source of authoritative translation, advice or certification.
 
 ## 3. Accounts
 

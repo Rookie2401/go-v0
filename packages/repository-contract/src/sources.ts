@@ -113,6 +113,9 @@ export interface MediaSourceRef extends RefBase {
 
 export type SourceRef = PlainSourceRef | ScriptureSourceRef | ShareSourceRef | MediaSourceRef;
 
+/** A web page is recorded by a hash of its address, never its title or the address itself (a path can hold a secret or a name, and a list of them is a browsing history). */
+export const HASHED_PAGE_LOCATOR = /^h:[0-9a-f]{16}$/;
+
 /** A readable title for a reference, when it has one (scripture and media have none; the service never invents one). */
 export const sourceTitle = (ref: SourceRef | undefined): string | undefined => ref?.title;
 

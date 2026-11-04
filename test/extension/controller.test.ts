@@ -48,7 +48,7 @@ describe('the lookup flow', () => {
     expect(validateEvent(rows[0])).toEqual([]);
     expect(rows[0].subject.itemIds).toEqual(['lemma:sq:shtëpi:NOUN']);
     expect(rows[0].subject.sentenceKey).toBe(ids.sentenceKey(SENTENCE));
-    expect(rows[0].subject.sourceRef).toMatchObject({ kind: 'web', locator: '/' });
+    expect(rows[0].subject.sourceRef).toMatchObject({ kind: 'web', locator: expect.stringMatching(/^h:[0-9a-f]{16}$/) });
     expect(JSON.stringify(rows[0])).not.toContain('lexoj');
 
     const metrics = await rig.metrics.list();

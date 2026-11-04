@@ -89,14 +89,14 @@ describe('BibleGateway-like passage', () => {
     expect(json).not.toMatch(/lamp|Nobody|small|Gateway|fixture/i);
   });
 
-  it('the page title (which quotes a verse) is never used; a page without a reference gets a path-only web reference', () => {
+  it('the page title (which quotes a verse) is never used; a page without a reference gets a hashed web reference', () => {
     const { p } = setup();
     expect(document.title).toMatch(/small lamp/);
     setUrl('https://www.biblegateway.com/passage/');
     selectTop(p, 'lamp');
     ok(adapter!.selection());
     const ref = adapter!.sourceRef();
-    expect(ref).toEqual({ kind: 'web', locator: '/passage/', restrictions: { ...registryEntry('biblegateway')!.restrictions } });
+    expect(ref).toEqual({ kind: 'web', locator: expect.stringMatching(/^h:[0-9a-f]{16}$/), restrictions: { ...registryEntry('biblegateway')!.restrictions } });
     expect(JSON.stringify(ref)).not.toMatch(/lamp/);
   });
 
@@ -435,7 +435,7 @@ describe('Tolino-like and Vivlio-like readers: text in a same-origin iframe, a t
     const c = ctxOf(adapter, s.range, { languageId: 'de', segmenter: (t) => deAdapter.segmentSentences(t) });
     expect(c.sentence).toBe('Die Straßenbahn kommt pünktlich.');
     expect(c.sentence!.slice(c.selStart, c.selEnd)).toBe('Straßenbahn');
-    expect(adapter.sourceRef()).toEqual({ kind: 'web', title: 'Lesen (fixture)', locator: '/library/index.html', restrictions: { ...registryEntry('tolino-webreader')!.restrictions } });
+    expect(adapter.sourceRef()).toEqual({ kind: 'web', locator: expect.stringMatching(/^h:[0-9a-f]{16}$/), restrictions: { ...registryEntry('tolino-webreader')!.restrictions } });
     expect(adapter.languageEvidence().documentLanguage).toEqual({ languageId: 'de', source: 'html-lang', confidence: 0.8 });
     expect(adapter.capabilities().contextConfidence).toBeLessThanOrEqual(0.8);
     // the toolbar overlay lives in the top document and is not text to look up
@@ -584,7 +584,7 @@ describe('Libroteka-like reader: an article whose chapter buttons replace the co
     expect(s.surface).toBe('shtëpinë');
     const c = ctxOf(adapter, s.range, { languageId: 'sq', segmenter: (t) => sqAdapter.segmentSentences(t) });
     expect(c.sentence).toBe('Unë po lexoj një libër të bukur në shtëpinë time.');
-    expect(adapter.sourceRef()).toEqual({ kind: 'web', title: 'Libri im (fixture)', locator: '/liber/fixture/0', restrictions: { ...registryEntry('libroteka')!.restrictions } });
+    expect(adapter.sourceRef()).toEqual({ kind: 'web', locator: expect.stringMatching(/^h:[0-9a-f]{16}$/), restrictions: { ...registryEntry('libroteka')!.restrictions } });
     expect(adapter.languageEvidence().documentLanguage).toMatchObject({ languageId: 'sq', source: 'html-lang' });
     selectTop(document.body, 'Mbrapa');
     expect(adapter.selection()).toMatchObject({ ok: false, reason: 'unsupported' });

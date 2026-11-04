@@ -59,7 +59,7 @@ describe('the registry picks the adapter and the lookup records which', () => {
     expect(rows).toHaveLength(1);
     expect(validateEvent(rows[0])).toEqual([]);
     expect(rows[0].payload.readerId).toBe('libroteka');
-    expect(rows[0].subject.sourceRef).toMatchObject({ kind: 'web', locator: '/liber/fixture/0' });
+    expect(rows[0].subject.sourceRef).toMatchObject({ kind: 'web', locator: expect.stringMatching(/^h:[0-9a-f]{16}$/) });
     const m = await r.metrics.list();
     expect(m[0]).toMatchObject({ readerId: 'libroteka', outcome: 'shown', languageId: 'sq', languageBasis: 'document-metadata', languageConfidence: 0.8 });
   });

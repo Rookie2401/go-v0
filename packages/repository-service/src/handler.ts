@@ -9,7 +9,7 @@
  * Team membership grants nothing; no route exists that reads another learner.
  */
 import {
-  CONTRACT_VERSION, EVENT_KINDS, KNOWLEDGE_LEVELS, MAX_CORRECTIONS, UNKNOWN_RESTRICTIONS, capRestrictions, MAX_FUTURE_SKEW_MS, MAX_SURFACE_CHARS, familyOf, provenanceOf, surfaceFromEncounterUnitId, validateCorrection, validateEvent, validationForPack,
+  CONTRACT_VERSION, EVENT_KINDS, HASHED_PAGE_LOCATOR, KNOWLEDGE_LEVELS, MAX_CORRECTIONS, UNKNOWN_RESTRICTIONS, capRestrictions, MAX_FUTURE_SKEW_MS, MAX_SURFACE_CHARS, familyOf, provenanceOf, surfaceFromEncounterUnitId, validateCorrection, validateEvent, validationForPack,
 } from '../../repository-contract/src';
 import type {
   SyncStatusReply, SyncWaitReply,
@@ -265,6 +265,11 @@ export function storedSourceRef(ref: Record<string, unknown>, policy: Readonly<S
     for (const k of known) if (ref[k] !== undefined) out[k] = ref[k];
   } else {
     for (const [k, v] of Object.entries(ref)) if (k !== 'restrictions') out[k] = v;
+  }
+  // A web page is never stored by its title or address, whatever an older client sends (see HASHED_PAGE_LOCATOR).
+  if (out.kind === 'web') {
+    delete out.title;
+    if (typeof out.locator !== 'string' || !HASHED_PAGE_LOCATOR.test(out.locator)) delete out.locator;
   }
   if (ref.restrictions !== undefined) out.restrictions = capRestrictions(ref.restrictions as RestrictionsInput, policy);
   return out;

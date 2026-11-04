@@ -15,7 +15,7 @@ import { call, hardening, member } from './hardening';
 const FORM = 'form:sq:librin';
 const GOOD = 'lemma:sq:libër:NOUN';
 const BAD = 'lemma:sq:vandal:NOUN';
-const provenance = { source: 'parser', ref: 'test', confidence: 0.9 };
+const provenance = { source: 'parser' as const, ref: 'test', confidence: 0.9 };
 
 async function world(apply?: boolean) {
   const h = await hardening((now) => createMemoryStore({ now }));

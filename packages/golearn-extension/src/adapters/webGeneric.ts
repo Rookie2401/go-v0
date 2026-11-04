@@ -16,6 +16,7 @@ import {
   type ContextOptions, type LayoutChange, type PageDescriptor, type PopupAnchor, type ReaderAdapter, type ReaderContext,
   type ReaderSelection, type SelectionFailure, type SelectionResult, type AnySourceReference, type TextDirection, type Rect,
 } from '../contract/readerAdapter';
+import { pageKeyOf } from '../text';
 import { collapseWhitespace, nfcOffset, safeCutAfter, safeCutBefore, snapToGraphemes, textDirection, wordCount, type Span } from '../text';
 import { DEFAULT_ENTRY, declinedHostsFromRegistry } from './registry';
 import { documentLanguageOf } from './languageMeta';
@@ -403,9 +404,8 @@ export class WebGenericAdapter implements ReaderAdapter {
   // ─────────────────────────────── source, anchor, layout ───────────────────────────────
 
   sourceRef(): AnySourceReference | undefined {
-    const title = (this.doc.title ?? '').trim().slice(0, 120);
     const loc = this.doc.defaultView?.location;
-    return { kind: 'web', title: title || undefined, locator: loc?.pathname || undefined, restrictions: { ...DEFAULT_ENTRY.restrictions } };
+    return { kind: 'web', ...(loc?.pathname ? { locator: pageKeyOf(loc.host ?? '', loc.pathname) } : {}), restrictions: { ...DEFAULT_ENTRY.restrictions } };
   }
 
   anchor(range: Range | undefined): PopupAnchor {

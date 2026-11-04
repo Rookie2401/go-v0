@@ -1,6 +1,6 @@
 /**
  * Encounter store. Rows are `GoEvent`s of the Repository contract, validated by `validateEvent` before they are
- * written; nothing else is written. A row identifies a context (a hash) and a source (page title and URL path); it never
+ * written; nothing else is written. A row identifies a context (a hash) and a source (for a web page, a hash of its address); it never
  * contains the sentence or the page. Prototype storage: one chrome.storage.local key per row.
  */
 import { CONTRACT_VERSION, validateEvent, type GoEvent, type KnowledgeLevel, type ValidationIssue } from '../../../repository-contract/src';
@@ -8,6 +8,7 @@ import type { CardModel } from '../parser/cardModel';
 import type { EventLanguage, LanguageResolution } from '../contract/language';
 import type { SourceReference, SourceRestrictions } from '../contract/readerAdapter';
 import { fnv1a64, wordCount } from '../text';
+import { HASHED_PAGE_LOCATOR } from '../../../repository-contract/src/sources';
 import type { StorageArea } from '../platform';
 
 export const EVENT_KEY_PREFIX = 'golearn:event:';
@@ -131,6 +132,10 @@ export function sourceRefOf(s: StoredSourceRef): NonNullable<GoEvent['subject'][
       kind: 'share', mechanism: s.mechanism, ...(s.sourceApp ? { sourceApp: s.sourceApp } : {}),
       ...(s.title ? { title: s.title.slice(0, 120) } : {}), ...(s.locator ? { locator: s.locator } : {}), ...restrictionsOf(s.restrictions),
     } as NonNullable<GoEvent['subject']['sourceRef']>;
+  }
+  // a web page travels as a hash of its address and nothing else, whichever adapter built the reference
+  if (s.kind === 'web') {
+    return { kind: 'web', ...(s.locator && HASHED_PAGE_LOCATOR.test(s.locator) ? { locator: s.locator } : {}), ...restrictionsOf(s.restrictions) } as NonNullable<GoEvent['subject']['sourceRef']>;
   }
   return {
     kind: s.kind, ...(s.title ? { title: s.title.slice(0, 120) } : {}), ...(s.locator ? { locator: s.locator } : {}), ...restrictionsOf(s.restrictions),

@@ -26,7 +26,7 @@ Checked by tests: the built scripts contain no network call, no `eval`, no URL; 
 | the selected word or phrase | only when ≤ 4 words, as `surface` in the event | `chrome.storage.local` (installed) / memory (harness) | yes: the action popup's delete, and uninstall |
 | the sentence | **no**; its hash (`sentenceKey`) only | event | with the event |
 | the page or any passage | **no** | — | — |
-| page title and URL path | yes (no host, query or fragment) | event `sourceRef` | with the event |
+| a web page's title and URL | **no**: a hash of host and path only (`HASHED_PAGE_LOCATOR`; the service drops anything else, 2026-11-03) | event `sourceRef` | with the event |
 | timings and heap sizes | yes | metrics rows | yes |
 | learner identity | local placeholder (`u-local`, enrolment placeholder, random device id) | storage | yes |
 

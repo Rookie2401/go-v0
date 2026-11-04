@@ -2,7 +2,9 @@ import { describe, expect, it } from 'vitest';
 import { validateEvent } from '../../packages/repository-contract/src';
 import { parseSelection } from '../../packages/golearn-extension/src/parser';
 import { MAX_STORED_SURFACE_WORDS, buildSelectionEvent, createMemoryEncounterStore, createMemoryStorageArea, createStorageEncounterStore, getDeviceId, DEVICE_KEY } from '../../packages/golearn-extension/src/store';
-import { fnv1a64, sentenceKeyOf } from '../../packages/golearn-extension/src/text';
+import { fnv1a64, pageKeyOf, sentenceKeyOf } from '../../packages/golearn-extension/src/text';
+
+const PAGE = pageKeyOf('example.org', '/chapter/1');
 import { ids, hash } from '../../src/core/ids';
 
 const SENTENCE = 'Unë po lexoj një libër të bukur në shtëpinë time.';
@@ -12,7 +14,7 @@ const card = (sel = 'shtëpinë', sentence = SENTENCE) => {
   return parseSelection({ surface: sel, context: { kind: 'sentence', confidence: 0.9, sentence, selStart: at, selEnd: at + sel.length } });
 };
 const event = (c = card(), over: Partial<Parameters<typeof buildSelectionEvent>[0]> = {}) =>
-  buildSelectionEvent({ card: c, source: { kind: 'web', title: 'A page', locator: '/chapter/1' }, readerId: 'web-generic', identity, version: '0.0.1', sessionId: 's1', now: new Date('2026-10-08T10:00:00.000Z'), ...over });
+  buildSelectionEvent({ card: c, source: { kind: 'web', locator: PAGE }, readerId: 'web-generic', identity, version: '0.0.1', sessionId: 's1', now: new Date('2026-10-08T10:00:00.000Z'), ...over });
 
 describe('hashes agree with the engine', () => {
   it('fnv1a64 and sentenceKeyOf are the engine\'s hash and sentenceKey', () => {
@@ -32,7 +34,7 @@ describe('the encounter event', () => {
     expect(e.languageId).toBe('sq');
     expect(e.subject.itemIds).toEqual(['lemma:sq:shtëpi:NOUN']);
     expect(e.subject.sentenceKey).toBe(ids.sentenceKey(SENTENCE));
-    expect(e.subject.sourceRef).toEqual({ kind: 'web', title: 'A page', locator: '/chapter/1' });
+    expect(e.subject.sourceRef).toEqual({ kind: 'web', locator: PAGE });
     expect(e.provenance).toMatchObject({ analyzerId: expect.stringMatching(/adapter-sq@/), packId: expect.stringMatching(/^pack:sq:/) });
     expect(e.provenance!.confidence).toBeGreaterThan(0);
     expect(e.payload).toMatchObject({ contextKind: 'sentence', mode: 'word-list-only', readerId: 'web-generic', surface: 'shtëpinë' });
@@ -74,9 +76,11 @@ describe('the encounter event', () => {
     expect(e.payload.unconfirmed).toBe(true);
   });
 
-  it('the source reference keeps the title short', () => {
-    const e = event(card(), { source: { kind: 'web', title: 'x'.repeat(500), locator: '/p' } });
-    expect(e.subject.sourceRef!.title!.length).toBe(120);
+  it('a book keeps its title, cut short; a web page never keeps a title or a readable address', () => {
+    const book = event(card(), { source: { kind: 'file', title: 'x'.repeat(500), locator: '/p' } });
+    expect(book.subject.sourceRef!.title!.length).toBe(120);
+    const web = event(card(), { source: { kind: 'web', title: 'My bank', locator: '/reset/secret' } });
+    expect(web.subject.sourceRef).toEqual({ kind: 'web' });
   });
 });
 

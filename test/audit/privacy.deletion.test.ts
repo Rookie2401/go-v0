@@ -334,9 +334,9 @@ describe.each(STORE_KINDS)('deletion instructions (tombstones) — %s store', (k
   it('P-02 (fixed): a source tombstone sent to the API removes every event naming that source', async () => {
     const s = make(kind);
     const a = await signUp(s, 'alpha@example.com', 'a-phone');
-    const ev = lookup(a, { subject: { itemIds: ['form:sq:shtëpinë'], sentenceKey: 'ab12', sourceRef: { kind: 'web', title: 'A private page', locator: '/private' } } });
+    const ev = lookup(a, { subject: { itemIds: ['form:sq:shtëpinë'], sentenceKey: 'ab12', sourceRef: { kind: 'file', title: 'A private book', locator: '/private' } } });
     expect((await a.api.appendEvents([ev])).ok).toBe(true);
-    expect((await a.api.putTombstone({ kind: 'source', sourceRef: { kind: 'web', title: 'A private page' } })).ok).toBe(true);
+    expect((await a.api.putTombstone({ kind: 'source', sourceRef: { kind: 'file', title: 'A private book' } })).ok).toBe(true);
     expect((await serverEvents(s, a.learnerId)).some((e) => e.id === ev.id)).toBe(false);
   });
 

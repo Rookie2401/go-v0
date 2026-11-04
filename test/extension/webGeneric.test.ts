@@ -311,15 +311,15 @@ describe('web-generic: frames', () => {
 });
 
 describe('web-generic: source reference, anchor and layout changes', () => {
-  it('the source reference holds the title and the URL path, never the text, query or fragment', () => {
+  it('the source reference holds a hash of the address, never the title, the address or the text', () => {
     document.title = 'A page about libra';
     history.replaceState({}, '', '/reader/chapter-1?token=secret#frag');
     setBody('<p id="p">Ai lexon një libër.</p>');
     selectText(document.getElementById('p')!, 'libër');
     sel(adapter);
     const ref = adapter.sourceRef();
-    expect(ref).toEqual({ kind: 'web', title: 'A page about libra', locator: '/reader/chapter-1', restrictions: { ...registryEntry('web-generic')!.restrictions } });
-    expect(JSON.stringify(ref)).not.toMatch(/secret|frag|lexon/);
+    expect(ref).toEqual({ kind: 'web', locator: expect.stringMatching(/^h:[0-9a-f]{16}$/), restrictions: { ...registryEntry('web-generic')!.restrictions } });
+    expect(JSON.stringify(ref)).not.toMatch(/secret|frag|lexon|reader|chapter|libra/);
     history.replaceState({}, '', '/');
   });
 

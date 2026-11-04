@@ -44,4 +44,4 @@ if (fs.existsSync('data/verified/scripture.json')) {
 }
 
 console.log(`corpus:check - ${run.documents} document(s), ${run.errors} validation error(s), ${run.warnings} warning(s); ${published} published, ${unpublished} unpublished; re-import unchanged: ${unchangedOnReimport ? 'yes' : 'no'}; ${verifiedVerses} verified verse(s) byte-identical; ${failures ? 'FAILED' : 'OK'}`);
-process.exit(failures ? 1 : 0);
+process.exitCode = failures ? 1 : 0; // not process.exit(): on Linux that cuts off a long report written to a pipe, the last line first

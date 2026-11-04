@@ -116,6 +116,10 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
       }
       return out;
     },
+    async listEventsOfUnits(learnerId, unitIds) {
+      const wanted = new Set(unitIds);
+      return (logs.get(learnerId) ?? []).filter((e) => (e.subject.itemIds ?? []).some((u) => wanted.has(u))).map(copy);
+    },
     async listEncounterSummaries(learnerId, languageId, unitIds, perUnitLimit) {
       const wanted = new Set(unitIds);
       const counts = new Map<string, number>();

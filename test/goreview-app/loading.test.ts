@@ -2,13 +2,13 @@
 /**
  * The loading mark (the owner, 2026-10-28: "the globe should rotate along its axis, not spin"; 2026-11-03: no artificial crescents, a complete
  * spinning globe): the meridian with the stand and the sphere's rim still as CSS masks in the ink; the land one whole turn rendered on a sphere, a
- * sheet of 120 frames shown by two stepped slides; a status with a label for assistive technology; the stylesheet keeps the turn going under
+ * sheet of 120 frames walked on one timer; a status with a label for assistive technology; the stylesheet keeps the turn going under
  * reduced motion (slower) and shows the mark after a moment, so a load that ends within a blink shows nothing.
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { loadingMark } from '../../packages/goreview/app/loading';
 
 const pkg = path.resolve(__dirname, '../../packages/goreview/app');
@@ -30,8 +30,10 @@ function alphaOf(file: string): { w: number; h: number; a: Uint8Array } {
   return { w, h, a };
 }
 
+afterEach(() => { vi.restoreAllMocks(); });
+
 describe('the loading mark', () => {
-  it('is a status with the label for assistive technology, and the globe in masked layers: frame and rim still, the land sheet on two sliding spans', () => {
+  it('is a status with the label for assistive technology, and the globe in masked layers: frame and rim still, the land sheet on one sliding span', () => {
     const el = loadingMark('Loading your deck…');
     expect(el.getAttribute('role')).toBe('status');
     expect(el.getAttribute('aria-live')).toBe('polite');
@@ -43,17 +45,15 @@ describe('the loading mark', () => {
     const frame = el.querySelector<HTMLElement>('.go-globe-frame');
     const rim = el.querySelector<HTMLElement>('.go-globe-rim');
     const sphere = el.querySelector<HTMLElement>('.go-globe-sphere');
-    const rows = sphere?.querySelector<HTMLElement>(':scope > .go-globe-disc > .go-globe-rows');
-    const turn = rows?.querySelector<HTMLElement>(':scope > .go-globe-turn');
+    const turn = sphere?.querySelector<HTMLElement>(':scope > .go-globe-disc > .go-globe-turn');
     const land = turn?.querySelector<HTMLElement>(':scope > .go-globe-land');
-    expect(frame && rim && sphere && rows && turn && land).toBeTruthy();
-    // the images are inline absolute URLs (so they resolve wherever the stylesheet lives), one layer each; the sliding spans carry
-    // no mask (WebKit does not repaint a transform animation on a masked element), their child does
+    expect(frame && rim && sphere && turn && land).toBeTruthy();
+    // the images are inline absolute URLs (so they resolve wherever the stylesheet lives), one layer each; the sliding span carries
+    // no mask (WebKit does not repaint a transform animation on a masked element), its child does
     expect(frame!.style.getPropertyValue('mask-image')).toMatch(url('go-globe-frame.png'));
     expect(rim!.style.getPropertyValue('mask-image')).toMatch(url('go-globe-rim.png'));
     expect(sphere!.getAttribute('style')).toBeNull();
-    expect(rows!.getAttribute('style')).toBeNull();
-    expect(turn!.getAttribute('style')).toBeNull();
+    expect(turn!.getAttribute('style')).toMatch(/^animation-delay: -\d+ms$/); // its place in the turn, and no mask
     expect(land!.style.getPropertyValue('mask-image')).toMatch(url('go-globe-turn.png'));
     expect(el.querySelector('img')).toBeNull();
   });
@@ -109,27 +109,45 @@ describe('the loading mark', () => {
     }
   });
 
-  it('plays the 120 frames in order, at normal speed and under reduced motion: the column loop is exactly one row step (2026-11-04: .5 s against a .6 s row step played them out of order)', () => {
-    const seconds = (v: string): number => Number(v.replace(/s$/, ''));
-    const rule = (re: RegExp): string => { const m = re.exec(css); expect(m, String(re)).toBeTruthy(); return m![1]!; };
-    const normal = { rows: seconds(rule(/go-turn-rows ([\d.]+s) steps\(10\)/)), cols: seconds(rule(/go-turn-cols ([\d.]+s) steps\(12\)/)) };
-    const reduced = { rows: seconds(rule(/\.go-globe-rows \{ animation-duration: ([\d.]+s); \}/)), cols: seconds(rule(/\.go-globe-turn \{ animation-duration: ([\d.]+s); \}/)) };
-    for (const { rows, cols } of [normal, reduced]) {
-      // what the two stepped slides show at a moment: the row and column each animation has reached
-      const frameAt = (t: number): number => Math.floor(((t / rows) % 1) * 10) * 12 + Math.floor(((t / cols) % 1) * 12);
-      const shown: number[] = [];
-      for (let k = 0; k < 240; k++) shown.push(frameAt((k + 0.5) * rows / 120)); // the middle of each frame, two whole turns
-      expect(shown).toEqual(Array.from({ length: 240 }, (_, k) => k % 120));
-    }
+  it('walks the 120 frames in order on ONE timer, whole pixels each (2026-11-04: two timers played them out of order, and could again if they slipped apart)', () => {
+    const block = /@keyframes go-turn \{([\s\S]*?)\n\}/.exec(css);
+    expect(block, 'the keyframes').toBeTruthy();
+    const stops = [...block![1]!.matchAll(/([\d.]+)% \{ transform: translate\((0|-\d+px), (0|-\d+px)\); \}/g)].map((m) => ({ at: Number(m[1]), x: -parseInt(m[2]!, 10) || 0, y: -parseInt(m[3]!, 10) || 0 }));
+    expect(stops).toHaveLength(121); // 120 frames and the closing 100%
+    stops.slice(0, 120).forEach((s, k) => {
+      expect(s.at, `stop ${k}`).toBeCloseTo(k / 120 * 100, 3);
+      expect(s.y / 70 * 12 + s.x / 70, `frame at stop ${k}`).toBe(k);
+    });
+    expect(stops[120]).toMatchObject({ at: 100, x: stops[119]!.x, y: stops[119]!.y }); // the last frame holds to the end; the loop then returns to the first
+    expect(css).not.toMatch(/go-turn-rows|go-turn-cols|go-globe-rows/);
+    const animated = [...css.matchAll(/\.go-globe-[a-z]+ \{[^}]*animation/g)].map((m) => m[0].split(' ')[0]);
+    expect(animated).toEqual(['.go-globe-turn', '.go-globe-turn']); // the turn and its slower duration under reduced motion, nothing else moves
   });
 
-  it('turns the land always (slower under reduced motion), on unmasked spans of their own, one whole sheet per loop in whole-pixel steps; appears after a moment when motion is welcome, at once under reduced motion', () => {
-    // the rows slide once in 6 s in 10 steps, the columns once in .6 s (one row step) in 12: 120 frames
-    expect(css).toMatch(/@keyframes go-turn-rows \{ to \{ transform: translateY\(-100%\); \} \}/);
-    expect(css).toMatch(/@keyframes go-turn-cols \{ to \{ transform: translateX\(-100%\); \} \}/);
-    expect(css).toMatch(/^\.go-globe-rows \{[^}]*height: 1000%;[^}]*animation: go-turn-rows 6s steps\(10\) infinite; will-change: transform; \}$/m);
-    expect(css).toMatch(/^\.go-globe-turn \{[^}]*width: 1200%;[^}]*animation: go-turn-cols \.6s steps\(12\) infinite; will-change: transform; \}$/m);
-    expect(css).toMatch(/^\.go-globe-disc \{[^}]*width: 70px; height: 70px;[^}]*overflow: hidden; \}$/m); // whole pixels: 70 is even and a step is 70
+  it('carries on across marks: the turn follows the clock instead of restarting, and a mark that replaces another shows at once', () => {
+    const now = vi.spyOn(performance, 'now');
+    const delay = (el: HTMLElement): number => Number(/-(\d+)ms/.exec(el.querySelector<HTMLElement>('.go-globe-turn')!.getAttribute('style')!)![1]);
+    now.mockReturnValue(100_000);
+    const first = loadingMark('Opening GoReview…');
+    expect(first.classList.contains('continues')).toBe(false); // a load that ends within a blink still shows nothing
+    expect(delay(first)).toBe(100_000 % 6000);
+    now.mockReturnValue(100_400);
+    const second = loadingMark('Loading your deck…');
+    expect(second.classList.contains('continues')).toBe(true);
+    expect(delay(second)).toBe(100_400 % 6000); // 400 ms further into the same turn, not back at frame 0
+    now.mockReturnValue(105_000);
+    expect(loadingMark('Loading your deck…').classList.contains('continues')).toBe(false); // a new load, later on, waits again
+    expect(css).toMatch(/\.go-loading\.continues \{ animation: none; opacity: 1; \}/);
+    // the clock's turn in the script is the stylesheet's, at both speeds
+    const script = fs.readFileSync(path.join(pkg, 'loading.ts'), 'utf8');
+    expect(script).toMatch(/TURN_MS = 6000, TURN_REDUCED_MS = 15000/);
+    expect(css).toMatch(/animation: go-turn 6s step-end infinite/);
+    expect(css).toMatch(/\.go-globe-turn \{ animation-duration: 15s; \}/);
+  });
+
+  it('turns the land always (slower under reduced motion), on an unmasked span of its own; appears after a moment when motion is welcome, at once under reduced motion', () => {
+    expect(css).toMatch(/^\.go-globe-turn \{[^}]*width: 1200%; height: 1000%;[^}]*animation: go-turn 6s step-end infinite; will-change: transform; \}$/m);
+    expect(css).toMatch(/^\.go-globe-disc \{[^}]*width: 70px; height: 70px;[^}]*overflow: hidden; \}$/m); // whole pixels: the span is 12 x 70 by 10 x 70
     expect(css).toMatch(/^\.go-globe-land \{[^}]*mask-size: 100% 100%;[^}]*mask-repeat: no-repeat; \}$/m);
     // the sphere: the land clipped to a circle, nothing animated on it, and no flat picture leaning or sliding any more
     expect(css).toMatch(/^\.go-globe-sphere \{ overflow: hidden; clip-path: circle\([\d.]+% at 50% 50%\); \}$/m);
@@ -137,13 +155,13 @@ describe('the loading mark', () => {
     expect(css).not.toMatch(/translateX\(-50%\)/);
     // the turn is not behind a media query: it is the loading indicator itself (the audit's one allowance, A-C04)
     expect(css).toMatch(/\.go-loading \{[^}]*opacity: 0; \}/);
-    expect(css).toMatch(/@media \(prefers-reduced-motion: no-preference\) \{ \.go-loading \{ animation: go-appear \.2s ease \.15s forwards; \} \}/);
-    expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\) \{ \.go-loading \{ opacity: 1; \} \.go-globe-rows \{ animation-duration: 15s; \} \.go-globe-turn \{ animation-duration: 1\.5s; \} \}/);
-    // the layers take the ink and are masks, not images; the mask is never on a sliding span; nothing spins
+    expect(css).toMatch(/@media \(prefers-reduced-motion: no-preference\) \{ \.go-loading \{ animation: go-appear \.2s ease \.15s forwards; \}/);
+    expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\) \{ \.go-loading \{ opacity: 1; \} \.go-globe-turn \{ animation-duration: 15s; \} \}/);
+    // the layers take the ink and are masks, not images; the mask is never on the sliding span; nothing spins
     expect(css).toMatch(/\.go-loading \{[^}]*color: var\(--brand\)/);
     expect(css).toMatch(/\.go-globe-frame, \.go-globe-rim \{ background: currentColor;[^}]*mask-size: contain/);
     expect(css).toMatch(/\.go-globe-land \{[^}]*background: currentColor/);
-    expect(css).not.toMatch(/\.go-globe-(turn|rows) \{[^}]*mask/);
+    expect(css).not.toMatch(/\.go-globe-turn \{[^}]*mask/);
     expect(css).not.toMatch(/go-spin|rotate\(360deg\)|go-globe-disc\.png/);
   });
 });

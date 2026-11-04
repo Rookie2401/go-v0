@@ -23,6 +23,19 @@ A backup next to the database dies with the disk. After writing, `backup.mts` se
 
 A failed upload or hook makes the command exit non-zero, so `systemctl status go-repository-backup` and `journalctl -u go-repository-backup` show it. With nothing configured the script prints a warning ("nothing was uploaded off this machine").
 
+## On Render
+
+The service backs itself up a minute after each start and then daily, into `/var/data/repository/backups` on its one disk. **Until the settings below are set, every copy dies with that disk.**
+
+1. Create a bucket with any S3-compatible provider (Cloudflare R2, Backblaze B2, AWS S3) and an access key that can write to it. Give the bucket its own retention, for example delete after 90 days.
+2. In the Render dashboard, service `go-repository`, Environment, set `BACKUP_S3_ENDPOINT`, `BACKUP_S3_BUCKET`, `BACKUP_S3_ACCESS_KEY`, `BACKUP_S3_SECRET_KEY` and `BACKUP_PASSPHRASE`. Keep the passphrase somewhere other than Render: a backup cannot be restored without it. These backups hold every learner's record, so do not leave them unencrypted.
+3. Save, let the service restart, wait two minutes, and open `/health`. It should say `"backup": "ok", "offsite": true, "encrypted": true`.
+4. Run the restore drill below against a downloaded copy. No restore has yet been done from a backup made on Render.
+
+`GET /health` reports `durability`: `backup` is `ok`, `failed` (with `backupError`: `disk-full`, `upload-failed` or `failed`), `overdue` (none for two days) or `none`; `disk` is `low` below 25 % free. Point an uptime monitor that can match text at it and alert unless it contains `"backup":"ok"`. Reports use a status file beside the backups, `.last-backup.json`, which holds no path, name or address.
+
+Render keeps **3 daily and 1 weekly** copies on the disk (`BACKUP_KEEP_DAILY`, `BACKUP_KEEP_WEEKLY`), not the 7 and 4 below, so that they leave room on a small disk. If there is no room for a snapshot, older copies go first; if that is not enough the backup refuses before writing anything and reports `disk-full`.
+
 ## Retention
 
 Local files in `--out` are pruned after each backup: the newest backup of each of the last **7 days** (UTC; today counts) and of each of the last **4 weeks** (Monday start), plus always the single newest. Override with `BACKUP_KEEP_DAILY` / `BACKUP_KEEP_WEEKLY` or `--keep-daily` / `--keep-weekly`. Only files named like backups are ever touched. The bucket has its own retention (lifecycle rule): the script never deletes remote objects.

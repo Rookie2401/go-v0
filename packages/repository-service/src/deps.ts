@@ -106,8 +106,10 @@ export interface ServiceInfo {
   storeKind: string;
   /** `Date.now()` at start. */
   startedAt: number;
-  /** The newest applied migration version, read when asked. */
+  /** The newest applied migration version, read when asked. It reads the database, so a failure here means the service cannot serve. */
   schemaVersion?: () => Promise<number | undefined>;
+  /** How the backups and the disk stand (`backupHealth.ts`). Absent: not reported. */
+  durability?: () => unknown;
 }
 
 /** Server-held Azure Speech configuration and speech policy. The browser never receives the Azure key. */

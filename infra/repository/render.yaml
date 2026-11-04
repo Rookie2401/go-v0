@@ -17,6 +17,17 @@ services:
         value: "true"
       - key: REPOSITORY_DATA_DIR
         value: /var/data/repository
+      # Off-site backups (docs/ops/BACKUP-RESTORE.md, "On Render"). Without them the only copies are on this one disk; /health says "offsite": false.
+      - key: BACKUP_S3_ENDPOINT
+        sync: false
+      - key: BACKUP_S3_BUCKET
+        sync: false
+      - key: BACKUP_S3_ACCESS_KEY
+        sync: false
+      - key: BACKUP_S3_SECRET_KEY
+        sync: false
+      - key: BACKUP_PASSPHRASE
+        sync: false
     disk:
       name: repository-data
       mountPath: /var/data

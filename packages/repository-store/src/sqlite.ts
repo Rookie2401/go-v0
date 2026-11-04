@@ -216,6 +216,16 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       const rows = db.prepare(`SELECT ${EVENT_COLS} FROM events e WHERE ${where.join(' AND ')} ORDER BY e.seq ${f.order === 'desc' ? 'DESC' : 'ASC'} LIMIT ?`).all(...params) as Row[];
       return rows.map(eventOfRow);
     },
+    async listEventsOfUnits(learnerId, unitIds) {
+      const bySeq = new Map<number, StoredEvent>();
+      for (const part of chunks([...new Set(unitIds)], 250)) {
+        if (!part.length) continue;
+        const rows = db.prepare(`SELECT DISTINCT ${EVENT_COLS} FROM event_units eu JOIN events e ON e.id = eu.event_id
+          WHERE eu.unit_id IN (${placeholders(part.length)}) AND e.learner_id = ?`).all(...part, learnerId) as Row[];
+        for (const row of rows) { const e = eventOfRow(row); bySeq.set(e.seq, e); }
+      }
+      return [...bySeq.values()].sort((a, b) => a.seq - b.seq);
+    },
     async listEncounterSummaries(learnerId, languageId, unitIds, perUnitLimit) {
       const out: EncounterEventSummary[] = [];
       for (const part of chunks([...new Set(unitIds)], 250)) {

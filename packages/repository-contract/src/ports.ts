@@ -38,6 +38,8 @@ export interface EventLog {
   get(learnerId: string, id: string): Promise<StoredEvent | undefined>;
   /** Highest seq for the learner (0 when empty). */
   head(learnerId: string): Promise<number>;
+  /** Every event of the learner naming one of these units in `subject.itemIds`, through the unit index, in seq order. Absent: the caller reads the whole log. */
+  listEventsOfUnits?(learnerId: string, unitIds: string[]): Promise<StoredEvent[]>;
   /** Bounded recent encounter/assistance metadata for a page of units; does not load full event histories. */
   listEncounterSummaries?(learnerId: string, languageId: string, unitIds: string[], perUnitLimit: number): Promise<EncounterEventSummary[]>;
   /** Exact encounter date bounds for a page of units, grouped from indexed event references. */

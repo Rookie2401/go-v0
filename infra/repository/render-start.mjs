@@ -161,8 +161,9 @@ function runRepositoryBackup({ dataDir, backupDir }) {
     resolve('scripts/ops/backup.mts'),
     '--data', dataDir,
     '--out', backupDir,
-    '--keep-daily', '7',
-    '--keep-weekly', '4',
+    // Eleven compressed copies leave little of a small disk for the learners' data. Off-site copies keep their own history in the bucket.
+    '--keep-daily', process.env.BACKUP_KEEP_DAILY || '3',
+    '--keep-weekly', process.env.BACKUP_KEEP_WEEKLY || '1',
   ], { stdio: 'ignore', env: process.env });
   let settled = false;
   let forceTimer;

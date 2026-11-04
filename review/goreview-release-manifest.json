@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "51edd12bcfce4032b065667d39f18a16ccb7416a",
-    "tree": "65712a604dd1bc86dd9af374dbcbef970d5616f9",
+    "commit": "4208c0b66414c672738d1098cb700dbaecaabf45",
+    "tree": "7962015b641a94776412ee474747957ad206c1cf",
     "dirty": false
   },
-  "sourceManifestSha256": "04082a2d83561af7146503292fd162d3c979257c6c49d2bf2a670702d737913d",
+  "sourceManifestSha256": "96efd42fef74d5f30e0bf96e70251e943b0799a459d52cb8f35892fffbede5f3",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -433,7 +433,7 @@
     },
     {
       "path": "packages/goreview/app/loading.ts",
-      "sha256": "ddff6aa65b7d44237bf8771aaf5a42ea18065529416ddb246e38ff9426ad83ca"
+      "sha256": "f56d2d960984f913bd38d6f09e97abdc2b0755f02f0472c39ed578e3b895bde3"
     },
     {
       "path": "packages/goreview/app/localBinding.ts",
@@ -657,7 +657,7 @@
     },
     {
       "path": "packages/goreview/app/styles.css",
-      "sha256": "981bb453b2d5cf4b646fa6c8c6396cc0fdc61e4ab7c78c5f519cdc58c8d3652b"
+      "sha256": "838baf950a221b12475ff255b2e2cac0dad911d3862bb9d64b754e33a6e9bdee"
     },
     {
       "path": "packages/goreview/app/tellEngine.ts",
@@ -1221,7 +1221,7 @@
     },
     {
       "path": "packages/repository-contract/src/ports.ts",
-      "sha256": "66c9658700ae63561fd6556a2f629af8d3c44c90c83a92069c6454819248a201"
+      "sha256": "9e89d52a6332d0b03f4c97c8e995162e867e759bfd831e41baadb8ff6042552f"
     },
     {
       "path": "packages/repository-contract/src/review-classification.ts",
@@ -1253,7 +1253,7 @@
     },
     {
       "path": "packages/repository-engine/src/engine.ts",
-      "sha256": "8e1afae5cf2e381ff853ab449e5465a8f5c0016f897959b5e98c1edc3273aa2c"
+      "sha256": "6b358d8d796dbe5038c656078bdc1136c39df284615b75a4fe5676cc400e1a37"
     },
     {
       "path": "packages/repository-engine/src/evidence.ts",
@@ -1292,6 +1292,10 @@
       "sha256": "d0c73f7158e07d4197fac4d594db4dbb5d84b301977ad37536db76921d62eb92"
     },
     {
+      "path": "packages/repository-service/src/backupHealth.ts",
+      "sha256": "456f0f728639ca3f8af46729fbf0b1ea78dd35f95406881158c384a34bf70749"
+    },
+    {
       "path": "packages/repository-service/src/compress.ts",
       "sha256": "94ee46940dc163fd6c2e0b719b11c41f78d579eb58bd323ec115f95f36b19653"
     },
@@ -1305,11 +1309,11 @@
     },
     {
       "path": "packages/repository-service/src/deps.ts",
-      "sha256": "1e7e3c412d9ea817627d1d36eacb042b66edb7e1c991483fd90fd07265e0e953"
+      "sha256": "0a8566c845c1af56a9fb29ef743c0933f086c91c59cd2ef4a2d579d8f08bd625"
     },
     {
       "path": "packages/repository-service/src/handler.ts",
-      "sha256": "13b87755eeeab4858cd8b246d950828003d43d7fc1c35cea343dfae72c2ceaff"
+      "sha256": "97165f149b5d56c9c67f1712bb7c2d20560497b75eb50468b32d3124ad2aacb6"
     },
     {
       "path": "packages/repository-service/src/http.ts",
@@ -1329,7 +1333,7 @@
     },
     {
       "path": "packages/repository-service/src/main.ts",
-      "sha256": "d372cc50ee327888cf77ae92420cf667f875a67fcc2443dc85528d9a7c4762aa"
+      "sha256": "7b2ba8e9b2e1c46817afc85849e1385a008596f560361e63456c3678005e5626"
     },
     {
       "path": "packages/repository-service/src/metrics.ts",
@@ -1389,7 +1393,7 @@
     },
     {
       "path": "packages/repository-store/src/memory.ts",
-      "sha256": "4df0d551e6780a3c3f003efdb35651e3a836fd7d694ae6425cf4a8a324f144f4"
+      "sha256": "4c35dd934543e8f8787c36d4a2223d6d580ef5377364c79b2baa43f072f0e6c4"
     },
     {
       "path": "packages/repository-store/src/migrate.ts",
@@ -1409,7 +1413,7 @@
     },
     {
       "path": "packages/repository-store/src/postgres.ts",
-      "sha256": "2316ed3ff0de189814497a617bb8c4e94084b2ceecae4e679cd9137603ed0a3a"
+      "sha256": "0dc957e8bacbda0bf14ae13cd3c749161bbbda974884c77287f820528defb315"
     },
     {
       "path": "packages/repository-store/src/rules.ts",
@@ -1417,7 +1421,7 @@
     },
     {
       "path": "packages/repository-store/src/sqlite.ts",
-      "sha256": "4967b3785fca3870fe8de2144a5747d63e0742e6d2608eb0029dd3569edf02f9"
+      "sha256": "4e29c71cccd48b46205c4f1c4920eefc68a9310e4669c5a423acde3b8a7a3328"
     },
     {
       "path": "packages/repository-sync/src/area.ts",
@@ -1449,7 +1453,7 @@
     },
     {
       "path": "packages/shared-brand/README.md",
-      "sha256": "c5efd318d7182a7ddeb310fc45faac552ff9d6c24a6c5da7e18a4f1fcc023054"
+      "sha256": "7ee41b61cb64c4f728974bba8376c945784c951869b6bb4de6254568bfc5e9da"
     },
     {
       "path": "packages/shared-brand/go-globe-frame.png",
@@ -1457,7 +1461,7 @@
     },
     {
       "path": "packages/shared-brand/go-globe-geometry.json",
-      "sha256": "0f02f626183046d4f18ae9489624d73d4a949b9f5b8cbec9fb81b12ebda85ac1"
+      "sha256": "e953b533abf0dcf68d381d791150a13d5596b00285969edeec5c102dfaa18db8"
     },
     {
       "path": "packages/shared-brand/go-globe-land.png",
@@ -1469,7 +1473,7 @@
     },
     {
       "path": "packages/shared-brand/go-globe-turn.png",
-      "sha256": "4c0d7b31ad6a4363fa48db7cb9ee180b7fc64d870093cc05c46e59663570460b"
+      "sha256": "130177e1fa042c5a2bf622fd74dc2b194d3ec90cada300cd118846c1e0076815"
     },
     {
       "path": "packages/shared-brand/go-icon-source.png",
@@ -4432,7 +4436,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "ae107da02cd4249b70e124b3a95589db5db682b3cbb00d1aead0a360a261d2e3",
+  "artifactManifestSha256": "fd26a6bc99650e4c50bfff5899d90fbc2d77f3f748eb62bc56337d2911c3fe2e",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4467,20 +4471,20 @@
       "sha256": "025a8f614b944f6f52614f18fa52c332ee7a14cee4fa27a558420aef37aec051"
     },
     {
-      "path": "assets/go-globe-turn-CQuTUSuw.png",
-      "sha256": "4c0d7b31ad6a4363fa48db7cb9ee180b7fc64d870093cc05c46e59663570460b"
+      "path": "assets/go-globe-turn-Dop5YaWE.png",
+      "sha256": "130177e1fa042c5a2bf622fd74dc2b194d3ec90cada300cd118846c1e0076815"
     },
     {
       "path": "assets/go-logo-D1Qp-DDg.png",
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-C_lngmqu.js",
-      "sha256": "c881d2814bb1f763ee9a562c5a37e159f439b1914eaf79d0d4a0692991397849"
+      "path": "assets/index-Cf_qLbBj.js",
+      "sha256": "4fb49a61f0d98c5a977aa85255c2b0da76503d94733e42796965b64340d546a9"
     },
     {
-      "path": "assets/style-BBqBONJ4.css",
-      "sha256": "b496ed6a4baf383a82adcceec32c85e91588c1e39cae0582e695105e183c8ee7"
+      "path": "assets/style-fnSaKf7I.css",
+      "sha256": "2c16a45af879f19d11aa7680e9e86b1c30e66ba915384c1194ccb77fddfc2c18"
     },
     {
       "path": "config.json",
@@ -4512,7 +4516,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "4fd4650f3730d55695cf1650055cccbcb48e308cc736b19aae495c74a698860c"
+      "sha256": "548632725005a69a4b8ef69258a25621f52b1fbbe8fe4b8de552638bc9fd9179"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5456,7 +5460,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "a7c44fce384e79ecb5d0d397a8373ea85a85cd33e51fe455ca3804461b497fc3"
+      "sha256": "107de9390633b117cddb3e03f6a477199b82e98bbd57e59fb6d57bcd22b71f78"
     }
   ]
 }

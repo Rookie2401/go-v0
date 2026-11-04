@@ -12,7 +12,7 @@
  */
 'use strict';
 
-var BUILD_ID = 'a0baeac228ae';
+var BUILD_ID = '0ac17fd541b2';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -23,10 +23,10 @@ var PRECACHE = [
   "./assets/fonts/eb-garamond-latin-600.woff2",
   "./assets/go-globe-frame-D8kaNpyf.png",
   "./assets/go-globe-rim-CzbKbQV5.png",
-  "./assets/go-globe-turn-CQuTUSuw.png",
+  "./assets/go-globe-turn-Dop5YaWE.png",
   "./assets/go-logo-D1Qp-DDg.png",
-  "./assets/index-C_lngmqu.js",
-  "./assets/style-BBqBONJ4.css",
+  "./assets/index-Cf_qLbBj.js",
+  "./assets/style-fnSaKf7I.css",
   "./config.json",
   "./icons/apple-touch-icon.png",
   "./icons/go-logo.png",

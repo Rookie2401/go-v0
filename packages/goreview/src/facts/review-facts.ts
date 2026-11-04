@@ -8,6 +8,7 @@
  */
 import type { AnalysisStatus, ProvenanceSource } from '../../../repository-contract/src';
 import type { UnitFacts } from '../types';
+import type { WordAnalysis } from '../../../../src/core/word-analysis';
 
 /** One inflected form the pack can vouch for, with the status of its best reading in the pack's own sentences. */
 export interface FormInfo {
@@ -35,6 +36,8 @@ export interface FormGroup { lemma: string; pos?: string; forms: FormInfo[] }
 export interface FeatureDef { label: string; values: Record<string, string>; /** The pack's plain-words explanation of the feature. */ explain?: string }
 
 export interface ReviewFacts extends UnitFacts {
+  /** Source-separated meanings; lemma glosses are never a form's answer key by fallback. */
+  wordAnalysis?: WordAnalysis;
   /** The unit was not in the Repository; it was derived from the pack alone (provenance ref says so). */
   derivedFromPack?: boolean;
   /** Where the unit's data came from (hand lexicon, rule, dictionary, …). `rule` = produced by the word-form rules. */

@@ -68,7 +68,7 @@ describe('a unit drawn only by repeated encounters: Repository -> intake -> plan
     expect(candidate.score).toBeCloseTo(0.3);
     expect(outcome.decision).toBe('test-now');
     expect(outcome.proposed).toEqual({ dimension: 'written-recognition', family: 'written-recognition' });
-    expect(outcome.reasons).toEqual(expect.arrayContaining([expect.stringContaining('score 0.30 is between 0.15 and 0.5'), expect.stringContaining('comparative rank 1 of 1')]));
+    expect(outcome.reasons).toEqual(expect.arrayContaining([expect.stringContaining('score 0.30 is between 0.15 and 0.5'), expect.stringContaining('candidate rank 1 of 1')]));
 
     // The planner admits it as a NEW card: empty deck, 3 new cards allowed, nothing else competing, no exclusion of any kind.
     const plan = planSession({ deck: [], intake: outcomes, preferences, audio: audioOk, scheduler: fakeScheduler, now: NOW, random: () => 0.5,

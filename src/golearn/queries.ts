@@ -10,6 +10,7 @@ import { classifyTokens } from './coverage';
 import { COMPETING_MARGIN, UNCERTAIN_BELOW, levelAtLeast, productionKindOf } from './policy';
 import type { Ctx } from './state';
 import { byAtThenId, effectiveEstimate, effectiveReadingLevel, emptyDimension } from './state';
+import { wordAnalysisFor } from '../adapters/word-analysis';
 
 // Forgetting (policy.ts DECAY): the pure, read-time standing of an item at a moment. rank.ts calls it (via state.ts or from here).
 export { effectiveStanding, lastMetAt } from './state';
@@ -206,7 +207,14 @@ export async function tokenSupport(ctx: Ctx, userId: string, tokenId: string, le
     // (the gap is compared with a hair of tolerance: 0.6 - 0.4 is not exactly 0.2 in floating point, and a reading marked
     // down to 0.4 beside one at 0.6 does not compete)
     || (analysis.alternatives ?? []).some((alt) => analysis.confidence - alt.confidence < COMPETING_MARGIN - 1e-9 && (alt.lemmaId !== analysis.lemmaId || alt.pos !== analysis.pos));
-  if (lemma?.gloss) support.gloss = lemma.gloss; // level 1: gloss only
+  // every language: the form's own English where the features and the citation support one, an authored gloss as the context meaning
+  support.wordAnalysis = wordAnalysisFor({ language: token.lang, surface: token.surface, lemma: lemma?.lemma, pos: analysis?.pos ?? lemma?.pos, lemmaGloss: lemma?.gloss,
+    morph: analysis?.morph, source: analysis?.sourceInfo?.label, confidence: analysis?.confidence,
+    alternatives: (analysis?.alternatives ?? []).map((a) => ({ lemma: a.lemmaId?.split(':').slice(2, -1).join(':'), pos: a.pos, morph: a.morph, confidence: a.confidence })),
+    sentence: own?.text, references: own?.verseRefs ?? [],
+    ...(analysis?.gloss ? { contextualMeaning: { text: analysis.gloss, source: analysis.sourceInfo?.label ?? 'authored context', confidence: analysis.confidence } } : {}) });
+  const primaryMeaning = support.wordAnalysis.contextualMeaning?.text ?? support.wordAnalysis.inflectedMeaning?.text ?? support.wordAnalysis.lexicalMeaning?.text;
+  if (primaryMeaning) support.gloss = primaryMeaning;
 
   if (level >= 2) {
     const occs = !ownLive ? [] : (await ctx.store.phraseOccurrences.where('sentenceId', token.sentenceId)).filter((o) => o.tokenIds.includes(tokenId));

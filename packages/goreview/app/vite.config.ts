@@ -4,7 +4,7 @@
  *   vite build -c packages/goreview/app/vite.config.ts
  *       -> packages/goreview/app/dist/   a static site with relative URLs (base './'), any host or sub-path:
  *          index.html, assets/*.js, styles.css, config.json, and dict/<lang>/ for the languages in GOREVIEW_DICT
- *          (default "sq,es,de,hi,th", the currently supported installable packs; set it empty to leave the dictionaries out). Review exercises read
+ *          (default "sq,es,de,hi,th,la", the packs declaring dictionaries; set it empty when using a shared dictionary tree). Review exercises read
  *          glosses from there, lazily, shard by shard.
  *   vite build -c packages/goreview/app/vite.config.ts --mode extension
  *       -> packages/golearn-extension/dist/review/   the same app as a page of the GoLearn extension (chrome-extension://<id>/review/index.html).
@@ -20,14 +20,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { gzipSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, type Plugin } from 'vite';
 import { createReleaseManifest, normalizeCompiledModuleId, verifyReleaseArtifact } from '../../../scripts/goreview-release.mjs';
+import { gzipHebrewFormFrequency } from './hebrewFrequencyAssets.ts';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '../../..');
 
-const dictLanguages = (): string[] => (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th').split(',').map((s) => s.trim()).filter(Boolean);
+const dictLanguages = (): string[] => (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th,la').split(',').map((s) => s.trim()).filter(Boolean);
 
 const fontsSource = path.join(repoRoot, 'packages', 'shared-fonts');
 
@@ -38,6 +40,70 @@ function copyFonts(fontsOut: string, licenceOut: string): void {
   for (const f of fs.readdirSync(fontsSource)) if (f.endsWith('.woff2')) fs.copyFileSync(path.join(fontsSource, f), path.join(fontsOut, f));
   const licence = path.join(fontsSource, 'EB-Garamond-OFL.txt');
   if (fs.existsSync(licence)) { fs.copyFileSync(licence, path.join(fontsOut, 'EB-Garamond-OFL.txt')); fs.copyFileSync(licence, licenceOut); }
+}
+
+/** Hebrew's Bible and modern tables are loaded by the runtime's sharded lexicon reader. */
+function copyHebrewLexicons(outDir: string): void {
+  for (const period of ['biblical', 'modern']) {
+    const source = path.join(repoRoot, 'public', 'lexicon', 'he', period);
+    const manifestPath = path.join(source, 'manifest.json');
+    if (!fs.existsSync(manifestPath)) throw new Error(`The Hebrew ${period} lexicon is missing its manifest; refusing an incomplete build.`);
+    let manifest: { shards?: Record<string, { file?: string }> };
+    try { manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8')); }
+    catch { throw new Error(`The Hebrew ${period} lexicon manifest is invalid JSON; refusing an incomplete build.`); }
+    if (!manifest.shards || typeof manifest.shards !== 'object' || !Object.keys(manifest.shards).length) throw new Error(`The Hebrew ${period} lexicon manifest has no shards; refusing an incomplete build.`);
+    const target = path.join(outDir, 'lexicon', 'he', period);
+    fs.mkdirSync(target, { recursive: true });
+    for (const shard of Object.values(manifest.shards)) {
+      const name = shard?.file;
+      if (typeof name !== 'string' || path.basename(name) !== name || !name.endsWith('.json.gz')) throw new Error(`The Hebrew ${period} lexicon manifest contains an invalid shard path; refusing an incomplete build.`);
+      const from = path.join(source, name);
+      if (!fs.existsSync(from) || !fs.statSync(from).isFile()) throw new Error(`The Hebrew ${period} lexicon shard ${name} is missing; refusing an incomplete build.`);
+      const bytes = fs.readFileSync(from);
+      if (bytes.length < 2 || bytes[0] !== 0x1f || bytes[1] !== 0x8b) throw new Error(`The Hebrew ${period} lexicon shard ${name} is not a valid gzip file; refusing an incomplete build.`);
+      fs.copyFileSync(from, path.join(target, name));
+    }
+    fs.copyFileSync(manifestPath, path.join(target, 'manifest.json'));
+  }
+  const indexPath = path.join(repoRoot, 'public', 'lexicon', 'he', 'biblical-index.json');
+  if (!fs.existsSync(indexPath) || !fs.statSync(indexPath).isFile()) throw new Error('The Hebrew biblical frequency source index is missing; refusing an incomplete build.');
+  let frequency: Buffer;
+  try { frequency = gzipHebrewFormFrequency(JSON.parse(fs.readFileSync(indexPath, 'utf8'))); }
+  catch (error) { throw new Error(`The Hebrew biblical frequency source index is invalid; refusing an incomplete build. ${error instanceof Error ? error.message : String(error)}`); }
+  const frequencyPath = path.join(outDir, 'lexicon', 'he', 'biblical', 'form-frequency.json.gz');
+  fs.writeFileSync(frequencyPath, frequency);
+}
+
+/** Greek's ancient and modern indexes are fetched from their provenance-bearing manifests, then loaded shard by shard. */
+function copyGreekLexicons(outDir: string): void {
+  for (const period of ['ancient', 'modern']) {
+    const source = path.join(repoRoot, 'public', 'lexicon', 'el', period);
+    const manifestPath = path.join(source, 'manifest.json');
+    if (!fs.existsSync(manifestPath)) throw new Error(`The Greek ${period} lexicon is missing its manifest; refusing an incomplete build.`);
+    let manifest: { shards?: Record<string, { file?: string }> };
+    try { manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8')); }
+    catch { throw new Error(`The Greek ${period} lexicon manifest is invalid JSON; refusing an incomplete build.`); }
+    if (!manifest.shards || typeof manifest.shards !== 'object' || !Object.keys(manifest.shards).length) throw new Error(`The Greek ${period} lexicon manifest has no shards; refusing an incomplete build.`);
+    const target = path.join(outDir, 'lexicon', 'el', period);
+    fs.mkdirSync(target, { recursive: true });
+    for (const shard of Object.values(manifest.shards)) {
+      const name = shard?.file;
+      if (typeof name !== 'string' || path.basename(name) !== name || !name.endsWith('.json.gz')) throw new Error(`The Greek ${period} lexicon manifest contains an invalid shard path; refusing an incomplete build.`);
+      const from = path.join(source, name);
+      if (!fs.existsSync(from) || !fs.statSync(from).isFile()) throw new Error(`The Greek ${period} lexicon shard ${name} is missing; refusing an incomplete build.`);
+      const bytes = fs.readFileSync(from);
+      if (bytes.length < 2 || bytes[0] !== 0x1f || bytes[1] !== 0x8b) throw new Error(`The Greek ${period} lexicon shard ${name} is not a valid gzip file; refusing an incomplete build.`);
+      fs.copyFileSync(from, path.join(target, name));
+    }
+    fs.copyFileSync(manifestPath, path.join(target, 'manifest.json'));
+  }
+  const indexPath = path.join(repoRoot, 'public', 'lexicon', 'el', 'koine-index.json');
+  if (!fs.existsSync(indexPath) || !fs.statSync(indexPath).isFile()) throw new Error('The MorphGNT Koine index is missing; refusing an incomplete build.');
+  const index = JSON.parse(fs.readFileSync(indexPath, 'utf8')) as { schema?: number; id?: string; period?: string; source?: { label?: string; licence?: string; url?: string } };
+  if (index.schema !== 1 || index.id !== 'morphgnt-sblgnt' || index.period !== 'el-koi' || !index.source?.label || !index.source?.licence || !index.source?.url) throw new Error('The MorphGNT Koine index is missing valid provenance; refusing an incomplete build.');
+  const target = path.join(outDir, 'lexicon', 'el', 'koine-index.json.gz');
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, gzipSync(fs.readFileSync(indexPath), { level: 9 }));
 }
 
 /** Development only: serve /fonts/<file>.woff2 from packages/shared-fonts. */
@@ -57,6 +123,51 @@ function devFonts(): Plugin {
   };
 }
 
+/** Development only: generate the licensed Hebrew frequency sidecar from its source index on request. */
+function devHebrewFrequency(): Plugin {
+  return {
+    name: 'hebrew-frequency-dev',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use('/lexicon/he/biblical/form-frequency.json.gz', (_req, res) => {
+        try {
+          const indexPath = path.join(repoRoot, 'public', 'lexicon', 'he', 'biblical-index.json');
+          const bytes = gzipHebrewFormFrequency(JSON.parse(fs.readFileSync(indexPath, 'utf8')));
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/gzip');
+          res.setHeader('Cache-Control', 'no-store');
+          res.end(bytes);
+        } catch (error) {
+          res.statusCode = 500;
+          res.end(`Unable to build Hebrew frequency asset: ${error instanceof Error ? error.message : String(error)}`);
+        }
+      });
+    },
+  };
+}
+
+/** Development only: serve the licensed Koine index in the same compressed form used by releases. */
+function devGreekKoine(): Plugin {
+  return {
+    name: 'greek-koine-dev',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use('/lexicon/el/koine-index.json.gz', (_req, res) => {
+        try {
+          const indexPath = path.join(repoRoot, 'public', 'lexicon', 'el', 'koine-index.json');
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/gzip');
+          res.setHeader('Cache-Control', 'no-store');
+          res.end(gzipSync(fs.readFileSync(indexPath), { level: 9 }));
+        } catch (error) {
+          res.statusCode = 500;
+          res.end(`Unable to prepare the Koine Greek index: ${error instanceof Error ? error.message : String(error)}`);
+        }
+      });
+    },
+  };
+}
+
 /** Files Vite does not process: config.json and the dictionaries. */
 function staticFiles(outDir: string, pwa = false): Plugin {
   return {
@@ -67,7 +178,7 @@ function staticFiles(outDir: string, pwa = false): Plugin {
       // GOREVIEW_SERVICE_URL (https, or http on localhost) replaces config.json's serviceUrl in the copy: the installable review
       // edition is built against the public Repository address (e.g. https://repo.golearn-global-languages.com), the source file
       // keeps the local development address. Anything else is refused so a typo cannot ship.
-      const config = JSON.parse(fs.readFileSync(path.join(here, 'config.json'), 'utf8')) as { serviceUrl: string };
+      const config = JSON.parse(fs.readFileSync(path.join(here, 'config.json'), 'utf8')) as { serviceUrl: string; assetBaseUrl?: string };
       const override = process.env.GOREVIEW_SERVICE_URL;
       if (override) {
         const u = new URL(override);
@@ -75,15 +186,26 @@ function staticFiles(outDir: string, pwa = false): Plugin {
         if (!(u.protocol === 'https:' || (u.protocol === 'http:' && local)) || u.search || u.hash || u.username) throw new Error(`GOREVIEW_SERVICE_URL must be an https URL (http only on localhost): ${override}`);
         config.serviceUrl = u.origin + u.pathname.replace(/\/$/, '');
       }
+      // Hosted editions can share the complete dictionary tree beside /review/;
+      // native/extension builds keep './' and bundle their selected dictionaries.
+      const assetBase = process.env.GOREVIEW_ASSET_BASE;
+      if (assetBase) {
+        const u = new URL(assetBase, 'https://asset-base.invalid/review/');
+        if (u.protocol !== 'https:' || u.username || u.password || u.search || u.hash || assetBase.startsWith('//')) throw new Error('GOREVIEW_ASSET_BASE must be a relative path or an https URL without credentials, query or fragment.');
+        config.assetBaseUrl = assetBase;
+      }
       fs.writeFileSync(path.join(outDir, 'config.json'), JSON.stringify(config, null, 2) + '\n');
       for (const lang of dictLanguages()) {
         const from = path.join(repoRoot, 'public', 'dict', lang);
         // the frequency sidecar was counted from the retired library and is quarantined (RIGHTS-AND-PRIVACY-BOUNDARIES §2): never shipped
-        if (fs.existsSync(from)) fs.cpSync(from, path.join(outDir, 'dict', lang), { recursive: true, filter: (src) => path.basename(src) !== 'frequency.json' });
+        if (!fs.existsSync(path.join(from, 'manifest.json'))) throw new Error(`The selected ${lang} dictionary is missing its manifest; refusing an incomplete build.`);
+        fs.cpSync(from, path.join(outDir, 'dict', lang), { recursive: true, filter: (src) => path.basename(src) !== 'frequency.json' });
         const shipped = path.join(outDir, 'dict', lang, 'manifest.json');
         // the shipped manifest must not promise the sidecar that was left out
         if (fs.existsSync(shipped)) fs.writeFileSync(shipped, JSON.stringify({ ...JSON.parse(fs.readFileSync(shipped, 'utf8')), hasFrequency: false }, null, 2));
       }
+      copyHebrewLexicons(outDir);
+      copyGreekLexicons(outDir);
       const notices = path.join(repoRoot, 'THIRD-PARTY-NOTICES.md');
       if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(outDir, 'THIRD-PARTY-NOTICES.md'));
       // the stylesheet is bundled into assets/, so its ./fonts/ URLs resolve to assets/fonts/
@@ -95,14 +217,14 @@ function staticFiles(outDir: string, pwa = false): Plugin {
 
 const pwaSource = path.join(here, 'public');
 
-/** Every file of the build except the dictionary shards, the worker itself and its source maps: what the worker precaches. */
+/** Every file of the build except the on-demand dictionary and lexicon shards, the worker itself and its source maps: what the worker precaches. */
 function shellFiles(outDir: string): string[] {
   const out: string[] = [];
   const walk = (dir: string): void => {
     for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
       const full = path.join(dir, e.name);
       const rel = path.relative(outDir, full).split(path.sep).join('/');
-      if (e.isDirectory()) { if (rel === 'dict') continue; walk(full); } else if (rel !== 'sw.js' && !rel.endsWith('.map')) out.push(rel);
+      if (e.isDirectory()) { if (rel === 'dict' || rel === 'lexicon') continue; walk(full); } else if (rel !== 'sw.js' && !rel.endsWith('.map')) out.push(rel);
     }
   };
   walk(outDir);
@@ -189,7 +311,7 @@ function reviewProvenance(outDir: string): Plugin {
 
 export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
-    return { root: here, base: './', publicDir: path.join(repoRoot, 'public'), plugins: [devFonts()], server: { port: 5198, strictPort: true, watch: { ignored: ['**/public/dict/**', '**/public/library/**', '**/data/**'] } } };
+    return { root: here, base: './', publicDir: path.join(repoRoot, 'public'), plugins: [devFonts(), devHebrewFrequency(), devGreekKoine()], server: { port: 5198, strictPort: true, watch: { ignored: ['**/public/dict/**', '**/public/library/**', '**/data/**'] } } };
   }
   if (mode !== 'production' && mode !== 'extension' && mode !== 'review') throw new Error('mode must be "extension" or "review" (or left out for the web build)');
   const extension = mode === 'extension';

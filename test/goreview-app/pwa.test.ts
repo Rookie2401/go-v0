@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import vm from 'node:vm';
+import { gunzipSync } from 'node:zlib';
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 
 const root = path.resolve(__dirname, '../..');
@@ -26,6 +27,68 @@ function build(mode: 'review' | 'extension' | 'web'): void {
 
 beforeAll(() => { build('review'); build('web'); build('extension'); }, 300_000);
 afterAll(() => { fs.rmSync(scratch, { recursive: true, force: true }); });
+
+describe('the bundled Hebrew and Greek lexicons', () => {
+  it('ships both manifests and every manifest-named gzip shard in each app build', () => {
+    for (const out of Object.values(outs)) for (const period of ['biblical', 'modern']) {
+      const source = path.join(root, 'public', 'lexicon', 'he', period);
+      const target = path.join(out, 'lexicon', 'he', period);
+      const manifest = JSON.parse(read(target, 'manifest.json')) as { shards: Record<string, { file: string }> };
+      const names = Object.values(manifest.shards).map((shard) => shard.file).sort();
+      expect(names.length).toBeGreaterThan(0);
+      const expected = ['manifest.json', ...names];
+      if (period === 'biblical') expected.push('form-frequency.json.gz');
+      expect(fs.readdirSync(target).sort()).toEqual(expected.sort());
+      for (const name of names) {
+        const bytes = fs.readFileSync(path.join(target, name));
+        expect(bytes.subarray(0, 2).toString('hex')).toBe('1f8b');
+        expect(bytes.equals(fs.readFileSync(path.join(source, name)))).toBe(true);
+      }
+    }
+    const sourceIndex = JSON.parse(read(root, 'public', 'lexicon', 'he', 'biblical-index.json')) as { source: Record<string, unknown> };
+    for (const out of Object.values(outs)) {
+      const frequency = path.join(out, 'lexicon', 'he', 'biblical', 'form-frequency.json.gz');
+      const parsed = JSON.parse(gunzipSync(fs.readFileSync(frequency)).toString('utf8')) as { id: string; indexId: string; source: { label: string }; forms: Record<string, { rank: number; count: number }> };
+      expect(parsed).toMatchObject({ schema: 1, id: 'oshb-tanakh-form-frequency', indexId: 'oshb-tanakh' });
+      expect(parsed.forms['אֶת']).toEqual({ rank: 1, count: 6715 });
+      expect(parsed.source).toEqual(sourceIndex.source);
+      expect(parsed.source.label).toContain('Open Scriptures Hebrew Bible');
+    }
+    const manifest = JSON.parse(read(outs.review, 'goreview-release-manifest.json')) as { staticSourceInputs: string[] };
+    expect(manifest.staticSourceInputs).toContain('public/lexicon/he/biblical-index.json');
+    expect(manifest.staticSourceInputs).not.toContain('public/lexicon/he/biblical/form-frequency.json.gz');
+    const greekSource = JSON.parse(read(root, 'public', 'lexicon', 'el', 'koine-index.json')) as { id: string; period: string; source: { label: string; licence: string; url: string } };
+    for (const out of Object.values(outs)) {
+      const compressed = fs.readFileSync(path.join(out, 'lexicon', 'el', 'koine-index.json.gz'));
+      const koine = JSON.parse(gunzipSync(compressed).toString('utf8')) as typeof greekSource;
+      expect(koine).toMatchObject({ id: 'morphgnt-sblgnt', period: 'el-koi', source: greekSource.source });
+      for (const period of ['ancient', 'modern']) {
+        const source = path.join(root, 'public', 'lexicon', 'el', period);
+        const target = path.join(out, 'lexicon', 'el', period);
+        const manifest = JSON.parse(read(target, 'manifest.json')) as { shards: Record<string, { file: string }> };
+        const names = Object.values(manifest.shards).map(shard => shard.file).sort();
+        expect(names.length).toBeGreaterThan(0);
+        expect(fs.readdirSync(target).sort()).toEqual(['manifest.json', ...names].sort());
+        const first = fs.readFileSync(path.join(target, names[0]!));
+        expect(first.subarray(0, 2).toString('hex')).toBe('1f8b');
+        expect(fs.statSync(path.join(source, names[0]!)).size).toBeGreaterThan(0);
+      }
+    }
+    expect(fs.existsSync(path.join(outs.review, 'lexicon', 'he', 'biblical', 'index.json'))).toBe(false);
+    const releaseManifest = JSON.parse(read(outs.review, 'goreview-release-manifest.json')) as { staticSourceInputs: string[] };
+    expect(releaseManifest.staticSourceInputs).toContain('public/lexicon/el/koine-index.json');
+    expect(releaseManifest.staticSourceInputs).toContain('public/lexicon/el/ancient/manifest.json');
+    expect(releaseManifest.staticSourceInputs).toContain('public/lexicon/el/modern/manifest.json');
+    for (const out of Object.values(outs)) {
+      const notices = read(out, 'THIRD-PARTY-NOTICES.md');
+      expect(notices).toContain('Ancient Greek forms and inflection tables');
+      expect(notices).toContain('Modern Greek forms and inflection tables');
+      expect(notices).toContain('Koine Greek form index');
+      expect(notices).toMatch(/SBL Greek New Testament text is CC BY 4\.0/u);
+      expect(notices).toMatch(/MorphGNT\s+morphological parsing and lemmatization are CC BY-SA 3\.0/u);
+    }
+  });
+});
 
 /** Width and height of a PNG from its IHDR chunk (and the signature check). */
 function pngSize(file: string): { w: number; h: number } {
@@ -188,6 +251,8 @@ describe('sw.js (as built)', () => {
     expect(list.some((p) => /^\.\/assets\/.+\.js$/.test(p))).toBe(true);
     expect(list.some((p) => /\.woff2$/.test(p))).toBe(true);
     expect(list.some((p) => p.startsWith('./dict/'))).toBe(false);
+    expect(list.some((p) => p.startsWith('./lexicon/'))).toBe(false);
+    expect(list).not.toContain('./lexicon/he/biblical/form-frequency.json.gz');
     expect(list).not.toContain('./sw.js');
   });
 
@@ -305,6 +370,33 @@ describe('sw.js (run in a sandbox)', () => {
     expect(names).toEqual(expect.arrayContaining(['goreview-dict-v1', 'something-else', ...s.SHELL()]));
   });
 
+  it('caches Hebrew and Greek lexicon assets for offline use and removes only obsolete lexicon versions on activation', async () => {
+    let offline = false;
+    const s = sandbox({ fetchImpl: async (r) => { if (offline) throw new TypeError('offline'); return new Response('gzip shard ' + r.url, { status: 200 }); } });
+    await s.fire('install', {});
+    const assets = ['./lexicon/he/biblical/א.json.gz', './lexicon/el/koine-index.json.gz', './lexicon/el/ancient/α.json.gz'];
+    for (const asset of assets) {
+      const online = (await s.fire('fetch', { request: s.request(asset) })) as Response;
+      expect(await online.text()).toContain('gzip shard');
+    }
+    await new Promise((r) => setTimeout(r, 5));
+    const current = (await s.caches.keys()).find((key) => key.startsWith('goreview-lexicon-'))!;
+    expect(current).toMatch(/^goreview-lexicon-[0-9a-f]{12}$/);
+    for (const asset of assets) expect([...s.store.get(current)!.keys()].some((key) => decodeURIComponent(key).includes(asset.slice(1))), asset).toBe(true);
+    expect([...s.store.get(s.SHELL()[0])!.keys()].some((key) => key.includes('/lexicon/'))).toBe(false);
+    await s.caches.open('goreview-lexicon-oldbuild');
+    await s.caches.open('goreview-dict-v1');
+    await s.fire('activate', {});
+    expect(await s.caches.keys()).not.toContain('goreview-lexicon-oldbuild');
+    expect(await s.caches.keys()).toContain(current);
+    offline = true;
+    for (const asset of assets) {
+      const cached = (await s.fire('fetch', { request: s.request(asset) })) as Response;
+      expect(await cached.text()).toContain('gzip shard');
+    }
+    expect(s.fetchFn).toHaveBeenCalledTimes(assets.length);
+  });
+
   it('NEVER caches or answers anything of the Repository service: another origin, the service paths under the scope, anything with a credential', async () => {
     const s = sandbox();
     await s.fire('install', {});
@@ -312,6 +404,7 @@ describe('sw.js (run in a sandbox)', () => {
     for (const url of ['https://repo.example.org/sync/pull', 'https://repo.example.org/vocabulary?languageId=sq', 'https://repo.example.org/me', 'https://repo.example.org/sessions']) expect(await s.handles(url), url).toBe(false);
     for (const p of ['sync/push', 'sync/pull', 'sync/wait', 'sync/status', 'vocabulary?languageId=sq', 'candidates?enrolmentId=e1', 'me', 'sessions', 'events?afterSeq=1', 'knowledge', 'enrolments']) expect(await s.handles(`./${p}`), p).toBe(false);
     expect(await s.handles('./assets/app.js', { headers: new Headers({ Authorization: 'Bearer secret' }) })).toBe(false);
+    expect(await s.handles('./lexicon/he/biblical/א.json.gz', { headers: new Headers({ Authorization: 'Bearer secret' }) })).toBe(false);
     expect(await s.handles('./index.html', { method: 'POST' })).toBe(false);
     expect(JSON.stringify([...s.store].map(([k, v]) => [k, [...v.keys()]]))).toBe(before);
     expect(s.fetchFn).not.toHaveBeenCalled();

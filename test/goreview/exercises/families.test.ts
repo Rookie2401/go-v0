@@ -42,14 +42,9 @@ describe('written-recognition', () => {
     expect(e.builtFrom.facts).toContain(`unit:${IDS.liber}`);
   });
 
-  it('a provisional rule-derived form is allowed for recognition, with the caveat, and its explanation says what the form is', async () => {
+  it('a provisional rule-derived form without a supported inflected meaning is withheld from meaning recognition', async () => {
     const w = makeWorld();
-    const e = await ok(w, 'written-recognition', IDS.librin);
-    expect(e.eligibility.eligible && e.eligibility.status).toBe('provisional');
-    expect(e.eligibility.eligible && e.eligibility.caveats.join(' ')).toContain('provisional');
-    expect(e.answerKey.explanation).toContain('definite masculine accusative singular');
-    expect(e.answerKey.explanation).toContain('has not been reviewed');
-    expect(e.answerKey.deeper).toContain('The -in/-n ending marks a definite masculine noun');
+    expect(await refused(w, 'written-recognition', IDS.librin)).toContain('no gloss');
   });
 
   it('refuses a conflicted form and a unit without a gloss', async () => {

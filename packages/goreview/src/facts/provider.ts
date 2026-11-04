@@ -20,7 +20,10 @@ import type { GrammarConstruction, PackManifest } from '../../../language-packs/
 import type { GlossResult } from '../../../language-packs/src/runtime';
 import type { Tutorial } from '../../../language-packs/src/tutorial/types';
 import type { AnalysisCandidate, AnalyzedToken, PhraseCandidate, RawToken } from '../../../../src/core';
-import type { ExampleSentence, FactsProvider } from '../types';
+import { projectWordAnalysis } from '../../../../src/core/word-analysis';
+import { answerVariants } from '../../../../src/core/english-verb';
+import { greekWordAnalysis } from '../../../../src/adapters/greek/word-analysis';
+import type { ExampleSentence, FactsProvider, UnitFacts } from '../types';
 import type { ExampleReading, FeatureDef, FormGroup, FormInfo, ReviewFacts } from './review-facts';
 
 // ───────────────────────────── dependencies ─────────────────────────────
@@ -36,9 +39,13 @@ export interface FactsAdapter {
   describeMorph?(morph: Record<string, string>, pos?: AnalysisCandidate['pos']): string;
   detectPhrases?(tokens: RawToken[], analyses: AnalyzedToken[]): PhraseCandidate[];
   pronunciation?(token: RawToken, analysis?: AnalyzedToken): { notes?: string[] };
+  readonly sources?: Readonly<Record<string, { label: string; licence?: string }>>;
 }
 
 export interface RepositoryUnit { unit: LinguisticUnit; relations: UnitRelation[]; analyses: FormAnalysis[] }
+export type AttestedFormLemma =
+  | { lemma: string; pos?: string; status?: undefined; reason?: undefined }
+  | { status: 'ambiguous'; reason: string; lemma?: never; pos?: never };
 
 /**
  * Which manifest construction a feature structure realises. The manifest names constructions in prose only
@@ -64,7 +71,9 @@ export const SQ_CONSTRUCTION_PATTERNS: ConstructionPattern[] = [
 export interface FactsProviderDeps {
   /** The Repository lookup (`RepositoryApi.unit` adapted, or a fake): undefined when the Repository does not know the unit. */
   unit(unitId: string): Promise<RepositoryUnit | undefined>;
-  pack: { manifest: PackManifest; runtime: { gloss(lemma: string, pos?: string): Promise<GlossResult | undefined> } };
+  pack: { manifest: PackManifest; runtime: { gloss(lemma: string, pos?: string, forms?: readonly string[]): Promise<GlossResult | undefined> }; attestedFormLemma?(form: string): Promise<AttestedFormLemma | undefined> };
+  /** Monotonic count of failed pack dictionary asset fetches; used to distinguish missing data from transient source faults. */
+  sourceFailureCount?(): number;
   adapter: FactsAdapter;
   /** The pack's orientation (its passage and example sentences). Default: the Albanian tutorial for `sq`, none otherwise. */
   tutorial?: Tutorial | null;
@@ -82,12 +91,14 @@ export interface FactsProviderDeps {
 }
 
 /** A `unit` dependency that can be told which units are about to be asked for, so they come in a few calls instead of one each (audit PF-02). */
-export type UnitLookup = FactsProviderDeps['unit'] & { prime?(unitIds: string[]): Promise<void> };
+export type UnitLookup = FactsProviderDeps['unit'] & { prime?(unitIds: string[]): Promise<void>; clearPrime?(): void };
 
 /** The ids per `POST /units/batch` call (the service's limit). */
 export const UNIT_BATCH_SIZE = 50;
 /** A primed answer is used within this long of being fetched (a unit the facts never asked for must not be read later, stale). */
 const PRIMED_TTL_MS = 30_000;
+/** Maximum independent `/units/batch` requests the facts provider overlaps during priming. */
+export const UNIT_PRIME_PARALLEL = 4;
 
 /**
  * Adapts the typed Repository client (`RepositoryApi.unit`) to the `unit` dependency. When the client also has `units` (several in one call),
@@ -111,16 +122,31 @@ export function repositoryLookup(api: {
   };
   const many = api.units;
   if (many) {
+    lookup.clearPrime = () => primed.clear();
     lookup.prime = async (unitIds) => {
+      // A prime call starts a new one-shot facts pass. Discard unused values
+      // from an earlier pass so another session cannot consume them as current.
+      primed.clear();
       const wanted = [...new Set(unitIds)];
-      for (let i = 0; i < wanted.length; i += UNIT_BATCH_SIZE) {
-        const chunk = wanted.slice(i, i + UNIT_BATCH_SIZE);
-        try {
-          const r = await many.call(api, chunk);
-          if (!r.ok) continue;
-          for (const id of chunk) primed.set(id, { at: Date.now(), unit: r.data.units[id] });   // an id the service does not know is answered as unknown, without a second call
-        } catch { /* the single-unit route answers instead */ }
+      const chunks: string[][] = [];
+      for (let i = 0; i < wanted.length; i += UNIT_BATCH_SIZE) chunks.push(wanted.slice(i, i + UNIT_BATCH_SIZE));
+      const fetched = new Map<string, RepositoryUnit | undefined>();
+      for (let i = 0; i < chunks.length; i += UNIT_PRIME_PARALLEL) {
+        const group = chunks.slice(i, i + UNIT_PRIME_PARALLEL);
+        const answers = await Promise.all(group.map(async (chunk) => {
+          try { const r = await many.call(api, chunk); return r.ok ? { chunk, units: r.data.units } : undefined; }
+          catch { return undefined; }
+        }));
+        answers.forEach((answer) => {
+          if (!answer) return; // the single-unit route answers when the batch failed
+          for (const id of answer.chunk) fetched.set(id, answer.units[id]); // missing IDs are answered as unknown without another call
+        });
       }
+      // The primed map is a one-operation snapshot. Start its short consume window
+      // only after every bounded batch wave finishes, so early waves cannot expire
+      // during a large but slow prime. The caller clears it in its operation finally.
+      const at = Date.now();
+      for (const [id, unit] of fetched) primed.set(id, { at, unit });
     };
   }
   return lookup;
@@ -185,7 +211,7 @@ interface Sent { text: string; source: ExampleSentence['source']; occs: Occ[]; p
 
 // ───────────────────────────── the provider ─────────────────────────────
 
-export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { prime(unitIds: string[]): Promise<void> } {
+export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { prime(unitIds: string[]): Promise<void>; clearPrime(): void; clearSentenceCache(): void } {
   const { adapter, pack } = deps;
   const manifest = pack.manifest;
   const lang = manifest.languageId;
@@ -334,13 +360,16 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     }
   }
 
-  async function glossesOf(lemma: string, pos: string | undefined, lexicon: string[]): Promise<{ glosses: string[]; lexiconCount: number; attribution?: string }> {
+  async function glossesOf(lemma: string, pos: string | undefined, lexicon: string[], forms?: readonly string[], inflectedOnly = false, features: Record<string, string> = {}): Promise<{ glosses: string[]; lexiconCount: number; attribution?: string; sourceFailed?: boolean }> {
     const glosses = [...new Set(lexicon.filter((g) => g && g.trim()))];
     const lexiconCount = glosses.length;
     let attribution: string | undefined;
+    let sourceFailed = false;
     try {
-      const d = await pack.runtime.gloss(lemma, pos);
-      if (d && d.senses.length) {
+      // A form unit may have dictionary senses of its own. Ask with that surface first,
+      // without falling through to the lemma: its gloss may describe a different person, tense, or mood.
+      const d = await pack.runtime.gloss(lemma, pos, forms);
+      if (d && d.senses.length && (!inflectedOnly || !d.via)) {
         const have = new Set(glosses.map((g) => g.normalize('NFC').toLowerCase()));
         let taken = 0;
         for (const sense of d.senses) {
@@ -348,6 +377,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
           // the runtime's `pos` is only a preference; a sense of another part of speech is another word (çaj "tea" is not çaj "to split")
           if (pos && sense.pos && !posCompatible(pos, sense.pos)) continue;
           const g = (sense.gloss ?? '').trim();
+          if (inflectedOnly && firstPersonVerbGlossMismatch(g, pos, forms, features)) continue;
           if (!g || have.has(g.normalize('NFC').toLowerCase())) continue;
           glosses.push(g);
           have.add(g.normalize('NFC').toLowerCase());
@@ -355,8 +385,22 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
         }
         if (taken > 0) attribution = d.attribution || manifest.lexical.dictionary?.attribution;
       }
-    } catch { /* an absent dictionary leaves the word-list gloss alone */ }
-    return { glosses, lexiconCount, ...(attribution ? { attribution } : {}) };
+    } catch { sourceFailed = true; /* an absent dictionary leaves the word-list gloss alone */ }
+    return { glosses, lexiconCount, ...(attribution ? { attribution } : {}), ...(sourceFailed ? { sourceFailed: true } : {}) };
+  }
+
+  /** Refuse a first-person answer for a form the adapter explicitly analysed as second/third person. */
+  function firstPersonVerbGlossMismatch(gloss: string, pos: string | undefined, forms: readonly string[] | undefined, features: Record<string, string> = {}): boolean {
+    if (!pos || !['VERB', 'AUX'].includes(pos) || !/^(?:I|we)\b/iu.test(gloss)) return false;
+    const label = forms?.[0];
+    if (!label) return false;
+    let reading: AnalysisCandidate | undefined;
+    try {
+      reading = adapter.analyze(adapter.tokenize(label)).flatMap((a) => a.candidates)
+        .find((c) => !c.unconfirmed && (!pos || c.pos === pos));
+    } catch { reading = undefined; }
+    const person = reading?.morph.Person ?? features.Person;
+    return person === '2' || person === '3';
   }
 
   function explanationsFor(features: Record<string, string>): Record<string, string> {
@@ -427,6 +471,9 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       unit, relations: rec?.relations ?? [], analyses: rec?.analyses ?? [], status: unit.status,
       lemma, ...(pos ? { pos } : {}),
       glosses: g.glosses, ...(g.attribution ? { glossAttribution: g.attribution } : {}),
+      wordAnalysis: projectWordAnalysis({ language: lang, surface: lemma, normalizedForm: adapter.normalize(lemma), lemma, pos,
+        lexicalMeaning: read.cand?.gloss ? { text: read.cand.gloss, source: read.cand.sourceId, confidence: read.cand.confidence } : undefined,
+        grammaticalFeatures: [] }),
       constructionIds, featureExplanations: {},
       siblingForms: forms.map((f) => ({ surface: f.surface, features: f.features })),
       exampleSentences: examples, pronunciationNotes: pronunciationOf(read.token, read.analysis),
@@ -439,6 +486,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
 
   // ───────── form ─────────
   async function formFacts(unitId: string, rec: RepositoryUnit | undefined): Promise<ReviewFacts | undefined> {
+    const sourceFailuresBefore = deps.sourceFailureCount?.() ?? 0;
     const formNorm = unitId.slice(`form:${lang}:`.length);
     if (!formNorm) return undefined;
     const label = rec?.unit.label || formNorm;
@@ -464,13 +512,16 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       }
     }
     let alone: AnalyzedToken | undefined;
-    try { alone = adapter.analyze(adapter.tokenize(label)).find((a) => a.token.isWord); } catch { alone = undefined; }
+    try { alone = adapter.analyze(adapter.tokenize(label), deps.varietyId ? { varietyId: deps.varietyId } : undefined).find((a) => a.token.isWord); } catch { alone = undefined; }
+    let attestedGermanLink: AttestedFormLemma | undefined;
+    let germanFormsSourceFailed = false;
+    if (lang === 'de') { try { attestedGermanLink = await pack.attestedFormLemma?.(formNorm); } catch { germanFormsSourceFailed = true; } }
     if (!lemma) {
       const o = sentences().flatMap((s) => s.occs).find((x) => x.normalized === formNorm && x.top?.lemma);
       const c = o?.top ?? alone?.candidates[0];
       if (c?.lemma) { lemma = c.lemma; lemmaPos = c.pos; }
     }
-    if (!rec && !lemma && !alone?.candidates.length) return undefined;
+    if (!rec && !lemma && !alone?.candidates.length && !attestedGermanLink) return undefined;
 
     const pos = rec?.unit.pos ?? lemmaPos;
     const occFilter = (o: Occ): boolean => o.normalized === formNorm && (!lemma || lemmaMatches(o, lemma, lemmaPos));
@@ -488,6 +539,16 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     const read = lemma ? readLemma(lemma, lemmaPos) : { all: [] as AnalysisCandidate[] };
     const lexCand = read.cand;
     const lexGloss: string[] = lexCand && !lexCand.unconfirmed && lexCand.gloss ? [lexCand.gloss] : [];
+    // Narrow exception for a Biblical Hebrew citation-form noun: when the
+    // source says this surface IS the singular absolute lexeme, its headword
+    // meaning is the meaning of this exact form. Keep it separate from the
+    // inflected-meaning field, which remains reserved for attested form senses.
+    const citationNounGloss = lang === 'he' && pos === 'NOUN' && !!lemma && !!lexCand?.gloss
+      && !lexCand.unconfirmed && lexCand.origin === 'dictionary' && lexCand.sourceId === 'oshb-tanakh'
+      && !topAlone?.unconfirmed && topAlone?.origin === 'dictionary' && topAlone.sourceId === 'oshb-tanakh'
+      && adapter.normalize(label) === adapter.normalize(lemma)
+      && features?.Number === 'Sing' && features?.State === 'Abs' && !features?.Definite
+      && !topAlone.parts?.some(part => part.kind !== 'stem');
     if (!lexGloss.length) {
       const c = sentences().flatMap((s) => s.occs).find((x) => x.normalized === formNorm && x.top?.gloss && !x.top.unconfirmed)?.top;
       if (c?.gloss) lexGloss.push(c.gloss);
@@ -498,34 +559,109 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     // a gloss from the surface. This keeps recognition useful while the normal eligibility gate still
     // treats the underlying analysis as provisional.
     let g: Awaited<ReturnType<typeof glossesOf>> = lemma
-      ? await glossesOf(lemma, lemmaPos ?? pos, lexGloss)
-      : { glosses: lexGloss, lexiconCount: lexGloss.length };
+      ? await glossesOf(lemma, lemmaPos ?? pos, [], [label], true, features)
+      : { glosses: [], lexiconCount: 0 };
+    let surfaceSourceFailed = false;
     if (!lemma && !g.glosses.length) {
       try {
         const surfaceGloss = await pack.runtime.gloss(label, pos);
-        if (surfaceGloss?.senses.length) {
-          g = { glosses: [...new Set(surfaceGloss.senses.map((s) => s.gloss).filter((s) => !!s))], lexiconCount: 0, attribution: surfaceGloss.attribution };
+        if (surfaceGloss?.senses.length && !surfaceGloss.via) {
+          g = { glosses: [...new Set(surfaceGloss.senses.map((s) => s.gloss).filter((gloss) => !!gloss && !firstPersonVerbGlossMismatch(gloss, pos, [label], features)))], lexiconCount: 0, attribution: surfaceGloss.attribution };
         }
-      } catch { /* an absent dictionary leaves this surface-only fact without an answer */ }
+      } catch { surfaceSourceFailed = true; /* an absent dictionary leaves this surface-only fact without an answer */ }
     }
     const siblings = lemma ? formsOfLemma(lemma, lemmaPos).filter((f) => f.surface !== formNorm) : [];
     const constructionId = pos && Object.keys(features).length ? unitIds.morph(lang, pos, unitIds.featureKey(features)) : undefined;
     const matched = matchConstruction(pos, features, lemma);
     const own: FormInfo[] = lemma ? formsOfLemma(lemma, lemmaPos) : [];
     const morphDescription = describe(features, pos);
+    const wordAnalysis = lang === 'el'
+      ? greekWordAnalysis({ surface: label, lemma, pos, lemmaGloss: lexCand?.gloss, morph: features,
+          source: topAlone?.sourceId ?? unit.provenance.ref, confidence: topAlone?.confidence,
+          alternatives: (alone?.candidates.slice(1) ?? []).map((c) => ({ morph: c.morph, confidence: c.confidence })) })
+      : projectWordAnalysis({ language: lang, surface: label, normalizedForm: formNorm, ...(lemma ? { lemma } : {}), ...(pos ? { pos } : {}),
+          lexicalMeaning: lexCand?.gloss ? { text: lexCand.gloss, source: lexCand.sourceId, confidence: lexCand.confidence } : undefined,
+          grammaticalFeatures: Object.entries(features).map(([key, value]) => ({ key, value })),
+          inflectedMeaning: g.glosses[0] ? { text: g.glosses[0], source: 'dictionary', confidence: topAlone?.confidence } : undefined,
+          references: g.attribution ? [{ label: g.attribution, source: 'dictionary' }] : [] });
+    // a Greek verb's answer is its realized form; "He, she, or it said" also accepts "he said", "she said", "it said" (the key's parts split at commas)
+    const answerGlosses = lang === 'el' && wordAnalysis.inflectedMeaning?.text
+      ? answerVariants(wordAnalysis.inflectedMeaning.text)
+      : lang === 'he' && citationNounGloss && !g.glosses.length
+        ? [lexCand!.gloss!]
+        : g.glosses;
+    let lexicalRecognition: UnitFacts['lexicalRecognition'];
+    const greekBaseGloss = topAlone?.gloss;
+    const greekIdentities = new Set((alone?.candidates ?? []).map(c => `${adapter.normalize(c.lemma ?? '')}|${c.pos ?? ''}`));
+    if (!answerGlosses.length && !['invalidated', 'conflicted', 'requires-review'].includes(status) && lang === 'el' && lemma && greekBaseGloss
+      && topAlone?.origin === 'dictionary' && !topAlone.unconfirmed
+      && ['morphgnt-sblgnt', 'kaikki-grc-tables', 'kaikki-el-tables'].includes(topAlone.sourceId ?? '')
+      && alone?.candidates.length && greekIdentities.size === 1
+      && greekIdentities.has(`${adapter.normalize(lemma)}|${topAlone.pos ?? ''}`)
+      && alone.candidates.every(c => c.origin === 'dictionary' && !c.unconfirmed && c.sourceId === topAlone.sourceId
+        && (!deps.varietyId || !c.varieties?.length || c.varieties.includes(deps.varietyId)))
+      && topAlone.lemma && adapter.normalize(topAlone.lemma) === adapter.normalize(lemma)
+      && topAlone.pos === pos) {
+      const source = adapter.sources?.[topAlone.sourceId!];
+      lexicalRecognition = { status: 'verified', lemma, pos: topAlone.pos, glosses: [greekBaseGloss], source: topAlone.sourceId,
+        attribution: source ? `${source.label}${source.licence ? ` — ${source.licence}` : ''}` : topAlone.sourceId,
+        evidence: 'attested-form-reading' };
+    }
+    let germanGlossSourceFailed = false;
+    if (!answerGlosses.length && !['invalidated', 'conflicted', 'requires-review'].includes(status) && lang === 'de') {
+      try {
+        const link = attestedGermanLink;
+        if (link?.status === 'ambiguous') lexicalRecognition = { status: 'withheld', reason: link.reason ?? 'The dictionary records several different lemma readings for this form.' };
+        else if (link) {
+          const dictionary = await pack.runtime.gloss(link.lemma, link.pos);
+          const glosses = [...new Set((dictionary?.senses ?? []).filter(s => !link.pos || s.pos === link.pos).map(s => s.gloss.trim()).filter(Boolean))];
+          if (glosses.length && dictionary?.attribution) lexicalRecognition = { status: 'verified', lemma: link.lemma, pos: link.pos ?? pos,
+            glosses, source: manifest.lexical.dictionary?.id ?? 'Wiktionary via kaikki.org', attribution: dictionary.attribution,
+            evidence: 'attested-form-reading' };
+        }
+      } catch { germanGlossSourceFailed = true; /* a missing/offline dictionary withholds the base-meaning exercise */ }
+    }
+    if (!answerGlosses.length && lang === 'el' && !lexicalRecognition) {
+      const identities = new Set((alone?.candidates ?? []).map(c => `${adapter.normalize(c.lemma ?? '')}|${c.pos ?? ''}`));
+      const reason = identities.size > 1 ? 'The attested readings do not identify one Greek lemma and part of speech.'
+        : topAlone?.origin !== 'dictionary' ? 'The form is supported only by a rule reading, not an attested form source.'
+          : !greekBaseGloss || lexCand?.unconfirmed ? 'The attested lemma has no confirmed base-meaning gloss.'
+            : 'The form-to-lemma evidence did not pass the single-lexeme source checks.';
+      lexicalRecognition = { status: 'withheld', reason };
+    }
+    const lexicalRelation = lexicalRecognition?.status === 'verified' && lexicalRecognition.lemma && lexicalRecognition.pos
+      && !['invalidated', 'conflicted', 'requires-review'].includes(status)
+      && !(rec?.relations ?? []).some(relation => relation.fromId === unitId && relation.relation === 'form-of')
+      ? [{ fromId: unitId, relation: 'form-of' as const, toId: unitIds.lexeme(lang, lexicalRecognition.lemma, lexicalRecognition.pos),
+          confidence: 0.9,
+          provenance: { source: 'dictionary' as const, ref: lexicalRecognition.source ?? 'attested-form-reading', confidence: 0.9 },
+          // This status is for the explicit lexical form→lemma link only; the form's own `status` remains unchanged.
+          status: 'high-confidence' as const }]
+      : [];
+
+    // An empty result after a failed required source read is transient, not
+    // evidence that this form is permanently unsupported. Keep usable exact
+    // word-list meanings and authoritative ambiguity refusals intact.
+    if (!answerGlosses.length && !lexicalRecognition && (g.sourceFailed || surfaceSourceFailed || germanFormsSourceFailed || germanGlossSourceFailed
+      || (deps.sourceFailureCount?.() ?? sourceFailuresBefore) > sourceFailuresBefore))
+      throw new Error('A required dictionary or form-index source could not be read.');
 
     return {
-      unit, relations: rec?.relations ?? [], analyses: rec?.analyses ?? [], status,
+      unit, relations: [...(rec?.relations ?? []), ...lexicalRelation], analyses: rec?.analyses ?? [], status,
       ...(lemma ? { lemma } : {}), ...(pos ? { pos } : {}),
       ...(Object.keys(features).length ? { features } : {}),
-      glosses: g.glosses, ...(g.attribution ? { glossAttribution: g.attribution } : {}),
+      glosses: answerGlosses,
+      ...(lexicalRecognition ? { lexicalRecognition } : {}),
+      ...(lang === 'el' && wordAnalysis.inflectedMeaning?.text ? {} : g.attribution ? { glossAttribution: g.attribution }
+        : citationNounGloss && answerGlosses.length ? { glossAttribution: 'Open Scriptures Hebrew Bible (OSHB)' } : {}),
+      wordAnalysis,
       constructionIds: constructionId ? [constructionId] : [],
       ...(matched ? { constructionLabel: matched.label, constructionExplanation: `${matched.label}. ${matched.explain}` } : {}),
       featureExplanations: explanationsFor(features),
       siblingForms: siblings.map((f) => ({ surface: f.surface, features: f.features })),
       exampleSentences: examples, pronunciationNotes: pronunciationOf(alone?.token, alone),
       ...(rec ? {} : { derivedFromPack: true }),
-      source: unit.provenance.source, lemmaInWordList: inWordList(lexCand), lexiconGlossCount: g.lexiconCount,
+      source: unit.provenance.source, lemmaInWordList: inWordList(lexCand), lexiconGlossCount: g.lexiconCount + (answerGlosses.length && !g.lexiconCount && citationNounGloss ? 1 : 0),
       ...(morphDescription ? { morphDescription } : {}),
       featureDefs, exampleReadings: readings,
       formGroups: lemma ? [{ lemma, ...(lemmaPos ?? pos ? { pos: lemmaPos ?? pos } : {}), forms: own }] : [],
@@ -617,6 +753,8 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
   return {
     /** Asks the Repository for these units in a few calls; the `factsFor` calls that follow use that answer. A no-op when the lookup cannot batch. */
     async prime(unitIds) { try { await (deps.unit as UnitLookup).prime?.(unitIds); } catch { /* factsFor asks one by one */ } },
+    clearPrime() { (deps.unit as UnitLookup).clearPrime?.(); },
+    clearSentenceCache() { sentencesCache = undefined; },
     async factsFor(unitId, languageId) {
       try {
         if (languageId !== lang || typeof unitId !== 'string') return undefined;

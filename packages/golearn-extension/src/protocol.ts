@@ -30,6 +30,8 @@ export interface PrivacySettings {
 }
 
 export const DEFAULT_SETTINGS: PrivacySettings = { keepSnippets: false, remoteSpeechConsent: false, externalProcessingConsent: false, localOnlySpeech: true };
+/** Learner who last explicitly granted remote speech; prevents a persisted device switch crossing accounts. */
+export const REMOTE_SPEECH_CONSENT_OWNER_KEY = 'golearn:speech-consent-owner';
 
 export interface SyncView {
   pending: number;
@@ -207,8 +209,13 @@ export function stringRecord(v: unknown, maxEntries = 24, maxLen = 80): Record<s
 
 // ───────────────────────────── GoLearn Active ─────────────────────────────
 
-/** The learner's two switches for GoLearn Active (golearn:active). Off by default; Speak on click defaults to on once Active is on. */
-export interface ActiveSettings { active: boolean; speakOnClick: boolean }
+/**
+ * The learner's two switches for GoLearn Active (golearn:active). Off by default; Speak on click defaults to on once Active is on.
+ * `offBy: 'browser'` (with `offAt`) records that the BROWSER switched Active off, by withdrawing GoLearn's site access (its extension
+ * menu set to "on click", an update or a reload of the extension; Brave does this), not the learner. The popup says so, and Active comes
+ * back by itself when the browser gives the access back (2026-10-31). The learner's own switch clears it.
+ */
+export interface ActiveSettings { active: boolean; speakOnClick: boolean; offBy?: 'browser'; offAt?: string }
 export const DEFAULT_ACTIVE: ActiveSettings = { active: false, speakOnClick: true };
 /** The optional host permission Active needs (manifest `optional_host_permissions`); nothing is granted until the learner says yes to the browser's prompt. */
 export const ACTIVE_ORIGINS: readonly string[] = ['https://*/*', 'http://*/*'];

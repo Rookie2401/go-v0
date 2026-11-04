@@ -242,10 +242,11 @@ characters, no author), and a learner who put personal words there cannot have i
 (`high-confidence`, `verified`) replaces it. `recordUnitCorrection(unitId, correction, flag)` on the store appends a correction and, when
 `flag` is set, moves a `provisional` unit to `requires-review`; a correction by a `reviewer` may also move `high-confidence` and `verified`;
 `conflicted` and `invalidated` are never changed. It is the one way a status goes down (a normal `putUnits` never lowers one).
-`POST /units/:id/corrections` (a learner only) calls it: **one learner cannot lower a high-confidence or verified unit for everyone**, so
-for those the correction is kept and the status stays. For a form given a `lexemeId` or `features` the linguistics port's `correct()` also
-writes the superseding analysis (the same path as `POST /corrections`) and the unit is not flagged. The cap is 50 corrections per unit
-(then 409).
+On the shared service a learner's correction does not reach it: **one learner changes nothing for anyone else**. The report is an
+`AnalysisCorrected` event in that learner's log, and a reviewer decides (`scripts/ops/corrections.mts`). Only a Repository with one learner
+(`applyLearnerCorrections`) calls it from `POST /units/:id/corrections`: a high-confidence or verified unit keeps its status and the correction,
+and a form given a `lexemeId` or `features` also gets the superseding analysis (the same path as `POST /corrections`) and is not flagged. The cap
+is 50 corrections per unit (then 409).
 
 ### 7.6 Clock skew
 

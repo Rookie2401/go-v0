@@ -5,43 +5,97 @@
  */
 import type { GoEvent, ReviewCandidate, UnitKnowledge, SchedulerProfile } from '../../repository-contract/src';
 import { effectiveReviewEvents } from '../../repository-contract/src';
+import type { VocabularyItem } from '../../repository-service/src/api';
 import { reviewEligibility } from '../src/planner/eligibility';
 import { admissionBudget } from '../src/planner/budget';
 import type { AudioAvailability, DeckItem, IntakeOutcome, ReviewPreferences, SessionPlan, SessionState } from '../src/types';
 import type { AppContext } from './context';
 import { candidatesKey, type CandidateChoice } from './state';
-import type { ActiveRun, Identity, SessionDriver } from './ports';
+import type { ActiveRun, ExerciseReadiness, Identity, SessionDriver } from './ports';
 import { activeSchedulerProfile, schedulerProfileSelection } from './profiles';
 import { isClassUnit } from './classEssentials';
-import { readSnapshot, restoreMissing, writeSnapshot } from './snapshot';
+import { readSnapshot, RECOVERY_SCOPE_VERSION, restoreMissing, writeSnapshot, type ReviewSnapshot } from './snapshot';
+import { KNOWABILITY_PRIORITY_POLICY_VERSION } from '../src/planner/priority-policy';
+import { orderIntakeByPriority } from '../src/intake/intake';
 
 /** Preparing admission is read-only with respect to progress. CardAdded belongs to
  * the first evidence-bearing answer, not to a dashboard visit or candidate refresh.
  */
 async function prepareAdmissions(ctx: AppContext, model: ReviewModel): Promise<ReviewModel> {
   const limit = Math.max(0, model.prefs.maxNew);
-  if (!limit) return model;
-  const { api } = await ctx.api();
-  const candidates = model.outcomes.filter(o => model.choices[o.unitId] !== 'later' && o.proposed
+  const eligible = (limit > 0 ? model.outcomes : []).filter(o => model.choices[o.unitId] !== 'later' && o.proposed
     && ['test-now', 'test-later', 'low-priority'].includes(o.decision)
-    && !model.deck.some(i => i.unitId === o.unitId && (i.status === 'suspended' || i.status === 'dismissed' || i.dimension === o.proposed?.dimension)))
-    .sort((a,b) => b.candidate.score - a.candidate.score || a.unitId.localeCompare(b.unitId));
-  const ready = new Set<string>(), unavailable = new Set<string>();
+    && !model.deck.some(i => i.unitId === o.unitId && (i.invalidatedAt || i.schedulingIssue || i.history.some(h => h.conflict)
+      || i.status === 'suspended' || i.status === 'dismissed' || i.dimension === o.proposed?.dimension)));
+  const rankedInputs = eligible.map(o => ({ ...o, explicitlySelected: model.saved.has(o.unitId) }));
+  const candidates = orderIntakeByPriority(rankedInputs, { prioritizeSaved: model.prefs.prioritizeSaved,
+    readingSignals: model.events, languageId: model.identity.languageId, now: model.now }).map(entry => entry.outcome);
+  let api: Awaited<ReturnType<AppContext['api']>>['api'] | undefined;
+  let readinessIncomplete = false;
+  if (candidates.length) {
+    try { api = (await ctx.api()).api; }
+    catch { readinessIncomplete = true; }
+  }
+  const ready = new Set<string>(), unavailable = new Map<string, string>();
   for (const outcome of candidates) {
     if (ready.size >= limit) break;
     const proposed = outcome.proposed!;
     if (proposed.family.startsWith('audio-') && (!model.prefs.includeListening || !model.audio.available)) continue; // a computer voice is practice: allowed
     try {
-      if (ctx.engine.exerciseAvailable && await ctx.engine.exerciseAvailable({ unitId: outcome.unitId, unitKind: outcome.candidate.kind,
-        languageId: model.identity.languageId, dimension: proposed.dimension, family: proposed.family, api, now: model.now })) ready.add(outcome.unitId);
-      else unavailable.add(outcome.unitId);
-    } catch { unavailable.add(outcome.unitId); }
+      const request = { unitId: outcome.unitId, unitKind: outcome.candidate.kind, languageId: model.identity.languageId,
+        ...(model.prefs.varietyId ? { varietyId: model.prefs.varietyId } : {}), dimension: proposed.dimension, family: proposed.family, api: api!, now: model.now };
+      const readiness: ExerciseReadiness = api && ctx.engine.exerciseReadiness ? await ctx.engine.exerciseReadiness(request)
+        : { available: !!api && !!ctx.engine.exerciseAvailable && await ctx.engine.exerciseAvailable(request) };
+      if (readiness.available) ready.add(outcome.unitId);
+      else {
+        if (readiness.retryable !== false) readinessIncomplete = true;
+        unavailable.set(outcome.unitId, readiness.reason ?? 'No usable exercise could be built for this word yet.');
+      }
+    } catch (error) {
+      readinessIncomplete = true;
+      unavailable.set(outcome.unitId, error instanceof Error ? error.message : 'The exercise could not be checked.');
+    }
   }
-  const outcomes = model.outcomes.map(o => ready.has(o.unitId) ? { ...o, decision: 'test-now' as const }
+  const notShortlisted = new Set(candidates.filter(o => !ready.has(o.unitId) && !unavailable.has(o.unitId)).map(o => o.unitId));
+  const blocked = new Map<string, { decision: IntakeOutcome['decision']; reason: string }>();
+  for (const outcome of model.outcomes) {
+    if (!outcome.proposed) continue;
+    const item = model.deck.find(i => i.unitId === outcome.unitId && (i.dimension === outcome.proposed!.dimension
+      || i.invalidatedAt || i.schedulingIssue || i.history.some(h => h.conflict)));
+    if (!item) continue;
+    const invalid = !!item.invalidatedAt || !!item.schedulingIssue || item.history.some(h => h.conflict);
+    blocked.set(outcome.unitId, { decision: invalid ? 'needs-validation' : 'already-covered', reason: invalid
+      ? 'Current review history is invalidated or conflicted; verified repair is required before a new exercise.'
+      : 'This exercise is already represented in the current deck.' });
+  }
+  const outcomes = model.outcomes.map(o => blocked.has(o.unitId) ? { ...o, decision: blocked.get(o.unitId)!.decision, proposed: undefined,
+    reasons: [blocked.get(o.unitId)!.reason, ...o.reasons] }
+    : ready.has(o.unitId) ? { ...o, decision: 'test-now' as const }
     : unavailable.has(o.unitId) ? { ...o, decision: 'needs-validation' as const, proposed: undefined,
-      reasons: ['No usable exercise could be built for this word yet; it remains in My words.', ...o.reasons] } : o);
-  return { ...model, outcomes, candidateNote: [model.candidateNote, unavailable.size
+      reasons: [`${unavailable.get(o.unitId)} It remains in My vocab.`, ...o.reasons] }
+      : o.decision === 'test-now' && notShortlisted.has(o.unitId) ? { ...o, decision: 'test-later' as const,
+        reasons: ["Not included in this session's practice group; it remains available for a later session.", ...o.reasons] } : o);
+  const prepared = { ...model, outcomes, candidateReadinessIncomplete: readinessIncomplete || model.candidateReadinessIncomplete,
+    candidateSnapshotEligible: !!model.candidateSnapshotEligible && !readinessIncomplete,
+    candidateNote: [model.candidateNote, unavailable.size
     ? unavailable.size + ' word' + (unavailable.size === 1 ? '' : 's') + ' waiting for a usable exercise.' : undefined].filter(Boolean).join(' ') || undefined };
+  if (prepared.candidateSnapshotEligible && prepared.candidates) {
+    const objectives = [
+      ...(prepared.prefs.practiceGoals?.includes('retrieval') ? ['productiveRetrieval'] : []),
+      ...(prepared.prefs.practiceGoals?.includes('application') ? ['grammaticalUnderstanding', 'contextualProduction'] : []),
+      ...(prepared.prefs.includeListening && prepared.prefs.practiceGoals?.includes('listening') ? ['listeningRecognition'] : []),
+      ...(prepared.prefs.practiceGoals?.includes('recognition') ? ['readingRecognition'] : []),
+    ];
+    const { learnerId, languageId, enrolmentId, varietyId } = prepared.identity;
+    const fetchedAt = prepared.knowledgeStatus.fetchedAt;
+    const cacheKey = `${candidatesKey(learnerId, enrolmentId)}:${objectives.join(',')}`;
+    const cache: CandidateCache = { version: 1, fetchedAt, priorityPolicyVersion: KNOWABILITY_PRIORITY_POLICY_VERSION, recoveryScopeVersion: RECOVERY_SCOPE_VERSION, enrolmentId, ...(varietyId ? { varietyId } : {}), objectives, candidates: prepared.candidates, knowledge: prepared.knowledge };
+    await ctx.deps.area.set({ [cacheKey]: cache }).catch(() => undefined);
+    await writeSnapshot(ctx, learnerId, languageId, { model: { savedAt: fetchedAt, contextVersion: 2, priorityPolicyVersion: KNOWABILITY_PRIORITY_POLICY_VERSION, recoveryScopeVersion: RECOVERY_SCOPE_VERSION, enrolmentId,
+      ...(varietyId ? { varietyId } : {}), objectives, outcomes, knowledge: prepared.knowledge, candidates: prepared.candidates,
+      markEventIds: marksOf(prepared.events).markEventIds } });
+  }
+  return prepared;
 }
 
 export const NO_AUDIO: AudioAvailability = { available: false, eligibleForEvidence: false, reason: 'no audio is available in this browser' };
@@ -92,7 +146,14 @@ export interface ReviewModel {
   choices: Record<string, CandidateChoice>;
   saved: Set<string>;
   candidateSource: 'live' | 'cached' | 'none';
+  candidates?: ReviewCandidate[];
+  /** Internal completion gate: only a complete recovery may replace either durable candidate snapshot. */
+  candidateSnapshotEligible?: boolean;
+  /** Exercise readiness was transiently uncheckable; preserve the last good snapshot and retry soon. */
+  candidateReadinessIncomplete?: boolean;
   candidateNote?: string;
+  /** A vocabulary catalogue recovery attempt was incomplete; the home must retry on its next visit. */
+  candidateRecoveryIncomplete?: boolean;
   /** How complete the knowledge behind `knowledge` is: a unit in `missing` has NO row because its batch failed, which is not the same as New. */
   knowledgeStatus: KnowledgeStatus;
   /** Candidates held out of AUTOMATIC new admission because their knowledge could not be loaded (never treated as New). */
@@ -103,18 +164,19 @@ export interface ReviewModel {
 }
 
 /** The last explicit mark per unit (ItemMarked), so a later 'ignore' or 'known' cancels an earlier 'saved'. */
-export function marksOf(events: readonly GoEvent[]): { saved: Set<string>; ignored: Set<string> } {
-  const last = new Map<string, string>();
+export function marksOf(events: readonly GoEvent[]): { saved: Set<string>; ignored: Set<string>; known: Set<string>; markEventIds: Record<string, string> } {
+  const last = new Map<string, { mark: string; eventId: string }>();
   const sorted = events.filter((e) => e.kind === 'ItemMarked').sort((a, b) => Date.parse(a.at)-Date.parse(b.at) || a.id.localeCompare(b.id));
   for (const e of sorted) {
     const mark = (e.payload as { mark?: string }).mark;
     if (!mark) continue;
-    for (const id of e.subject.itemIds ?? []) last.set(id, mark);
+    for (const id of e.subject.itemIds ?? []) last.set(id, { mark, eventId: e.id });
   }
   const saved = new Set<string>();
   const ignored = new Set<string>();
-  for (const [id, m] of last) { if (m === 'saved') saved.add(id); if (m === 'ignore') ignored.add(id); }
-  return { saved, ignored };
+  const known = new Set<string>();
+  for (const [id, value] of last) { if (value.mark === 'saved') saved.add(id); if (value.mark === 'ignore') ignored.add(id); if (value.mark === 'known' || value.mark === 'automatic') known.add(id); }
+  return { saved, ignored, known, markEventIds: Object.fromEntries([...last].map(([id, value]) => [id, value.eventId])) };
 }
 
 export function countDeck(deck: DeckItem[], model: { scheduler: { isDue(s: DeckItem['schedule'], now: string): boolean }; now: string }): DeckCounts {
@@ -138,7 +200,7 @@ export const KNOWLEDGE_BATCH = 200;
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
 const utc = (iso: string): string => iso.slice(0, 16).replace('T', ' ') + ' UTC';
 
-interface CandidateCache { fetchedAt: string; candidates: ReviewCandidate[]; knowledge: UnitKnowledge[] }
+interface CandidateCache { version?: 1; fetchedAt: string; priorityPolicyVersion?: string; recoveryScopeVersion?: string; enrolmentId?: string; varietyId?: string; objectives?: string[]; candidates: ReviewCandidate[]; knowledge: UnitKnowledge[] }
 
 export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | undefined> {
   const identity = await ctx.identity();
@@ -155,7 +217,7 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   const deck = wholeDeck.filter((i) => !isClassUnit(i.unitId));
   const classDeck = wholeDeck.filter((i) => isClassUnit(i.unitId));
   const counts = countDeck(deck, { scheduler, now });
-  const { saved, ignored } = marksOf(events);
+  const { saved, ignored, known, markEventIds } = marksOf(events);
 
   const audioDeps = await ctx.audio();
   let audio: AudioAvailability = NO_AUDIO;
@@ -166,6 +228,11 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   let knowledge: UnitKnowledge[] = [];
   let candidateSource: ReviewModel['candidateSource'] = 'none';
   let candidateNote: string | undefined;
+  let candidateApi: Awaited<ReturnType<AppContext['api']>>['api'] | undefined;
+  let cachedPreparedModel: NonNullable<ReviewSnapshot['model']> | undefined;
+  let recoveryIncomplete = false;
+  const recoveryNotes: string[] = [];
+  let requestedUnitIds: string[] = [];
   let knowledgeStatus: KnowledgeStatus = { source: 'unavailable', requested: 0, resolved: 0, missing: [], fetchedAt: now };
   /** Units whose knowledge batch failed and that no earlier copy covers. */
   const missing = new Set<string>();
@@ -178,21 +245,31 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     ...(prefs.includeListening && prefs.practiceGoals?.includes('listening') ? ['listeningRecognition' as const] : []),
     ...(prefs.practiceGoals?.includes('recognition') ? ['readingRecognition' as const] : []),
   ];
+  const snapshotMatches = (snapshot: ReviewSnapshot['model']): snapshot is NonNullable<ReviewSnapshot['model']> & { candidates: ReviewCandidate[] } => !!snapshot
+    && snapshot.contextVersion === 2 && snapshot.priorityPolicyVersion === KNOWABILITY_PRIORITY_POLICY_VERSION
+    && snapshot.recoveryScopeVersion === RECOVERY_SCOPE_VERSION && snapshot.enrolmentId === identity.enrolmentId
+    && snapshot.varietyId === identity.varietyId && snapshot.objectives?.join(',') === objectives.join(',') && Array.isArray(snapshot.candidates);
   const cacheKey = `${candidatesKey(identity.learnerId, identity.enrolmentId)}:${objectives.join(',')}`;
   try {
     const { api } = await ctx.api();
+    candidateApi = api;
     if ((await ctx.mode()) === 'none') throw new Error('not signed in');
+    const fetchedCandidates: ReviewCandidate[] = [];
     let cursor: string | undefined;
     const cursors = new Set<string>();
     do {
       const c = await api.candidates(identity.enrolmentId, 200, cursor, objectives);
       if (!c.ok) throw new Error(c.message || `the service answered ${c.status}`);
-      candidates.push(...c.data.candidates.filter((x) => !isClassUnit(x.unitId)));
+      fetchedCandidates.push(...c.data.candidates.filter((x) => !isClassUnit(x.unitId)));
       cursor = c.data.nextCursor;
       if (cursor && cursors.has(cursor)) throw new Error('The candidate service repeated a page cursor.');
       if (cursor) cursors.add(cursor);
     } while (cursor);
+    // A page sequence is one logical read. A later failure must never leak the
+    // prefix as though it were a complete candidate universe.
+    candidates = fetchedCandidates;
     const unitIds = [...new Set([...candidates.map((x) => x.unitId), ...deck.map((x) => x.unitId)])];
+    requestedUnitIds = unitIds;
     // the knowledge batches are independent of one another: ask for them together (four at a time) instead of one after another.
     // A batch that fails (an HTTP error, a timeout, a thrown network error) is recorded, never silently dropped and never fatal.
     const batches: string[][] = [];
@@ -216,12 +293,11 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     if (!failedIds.size) {
       knowledgeComplete = true;
       knowledgeStatus = { source: 'live', requested: unitIds.length, resolved: unitIds.length, missing: [], fetchedAt: now };
-      await deps.area.set({ [cacheKey]: { fetchedAt: now, candidates, knowledge } satisfies CandidateCache });
     } else {
       // Some batches failed: keep what arrived, fill the gap from the last complete snapshot where it covers a unit, and
       // report the rest. The candidate cache and the snapshot (the last complete copies) are NOT overwritten by a partial load.
       const snapModel = (await readSnapshot(ctx, identity.learnerId, identity.languageId))?.model;
-      const earlier = new Map((snapModel?.knowledge ?? []).map((k) => [k.unitId, k]));
+      const earlier = new Map((snapshotMatches(snapModel) ? snapModel.knowledge : []).map((k) => [k.unitId, k]));
       let filled = 0;
       for (const id of failedIds) {
         if (rows.has(id)) continue;
@@ -241,7 +317,14 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     }
   } catch (e) {
     const cached = (await deps.area.get(cacheKey))[cacheKey] as CandidateCache | undefined;
-    if (cached && Array.isArray(cached.candidates)) {
+    const snapModel = (await readSnapshot(ctx, identity.learnerId, identity.languageId))?.model;
+    if (snapshotMatches(snapModel) && snapModel) {
+      candidates = snapModel.candidates; knowledge = snapModel.knowledge; candidateSource = 'cached';
+      cachedPreparedModel = snapModel;
+      knowledgeStatus = { source: 'cached', requested: knowledge.length, resolved: knowledge.length, missing: [], fetchedAt: snapModel.savedAt };
+      candidateNote = `The service could not be reached (${e instanceof Error ? e.message : 'unknown error'}); these candidates are from ${snapModel.savedAt.slice(0, 16).replace('T', ' ')} UTC.`;
+    } else if (cached?.version === 1 && cached.priorityPolicyVersion === KNOWABILITY_PRIORITY_POLICY_VERSION && cached.recoveryScopeVersion === RECOVERY_SCOPE_VERSION && cached.enrolmentId === identity.enrolmentId && cached.varietyId === identity.varietyId
+      && cached.objectives?.join(',') === objectives.join(',') && Array.isArray(cached.candidates)) {
       candidates = cached.candidates; knowledge = cached.knowledge ?? []; candidateSource = 'cached';
       // the cache is written only after a complete live load, so its knowledge stands for every unit it listed
       const cachedUnits = new Set([...candidates.map((x) => x.unitId), ...deck.map((x) => x.unitId)]);
@@ -252,33 +335,147 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     }
   }
 
-  const proposed = candidates.filter((c) => !ignored.has(c.unitId));
+  // Event-derived words can be absent from the linguistic catalogue and therefore
+  // from its capped candidate response. Ask the generic recovery port to inspect the
+  // raw vocabulary for any language whose installed engine has a pack provider.
+  if (candidateSource === 'live' && candidateApi && ctx.engine.recoverCandidates
+    && ctx.engine.canRecoverCandidates?.(identity.languageId, candidateApi) === true) {
+    const unresolvedVocabulary: VocabularyItem[] = [];
+    const cursors = new Set<string>();
+    let after: string | undefined;
+    let vocabularyComplete = false;
+    try {
+      while (true) {
+        const page = await candidateApi.vocabulary({ languageId: identity.languageId, sort: 'recent', limit: 100, ...(after ? { after } : {}) });
+        if (!page.ok) throw new Error(page.message || `the service answered ${page.status}`);
+        unresolvedVocabulary.push(...page.data.items.filter((item) => item.knowledge.languageId === identity.languageId && !item.unit));
+        after = page.data.nextCursor;
+        if (!after) { vocabularyComplete = true; break; }
+        if (cursors.has(after)) throw new Error('the vocabulary service repeated a page cursor');
+        cursors.add(after);
+      }
+    } catch (e) {
+      recoveryIncomplete = true;
+      recoveryNotes.push(`Some ${identity.languageId} vocabulary rows could not be checked for local review (${e instanceof Error ? e.message : 'unknown error'}); the service's candidates remain available.`);
+    }
+
+    // The raw vocabulary endpoint carries the original UnitKnowledge rows even when
+    // its optional catalogue unit is absent. The full knowledge read is authoritative
+    // where present; vocabulary rows fill any gaps without crossing language scopes.
+    let fullKnowledge: UnitKnowledge[] = [];
+    let fullKnowledgeRead = false;
+    try {
+      const result = await candidateApi.knowledge();
+      if (!result.ok) throw new Error(result.message || `the service answered ${result.status}`);
+      fullKnowledge = result.data.knowledge.filter((row) => row.languageId === identity.languageId && typeof row.unitId === 'string');
+      fullKnowledgeRead = true;
+    } catch (e) {
+      recoveryIncomplete = true;
+      recoveryNotes.push(`${identity.languageId} learning history could not be fully refreshed (${e instanceof Error ? e.message : 'unknown error'}); local candidates are based only on rows that loaded.`);
+    }
+    const byKnowledge = new Map(knowledge.filter((row) => row.languageId === identity.languageId && typeof row.unitId === 'string').map((row) => [row.unitId, row]));
+    for (const row of fullKnowledge) byKnowledge.set(row.unitId, row);
+    for (const item of unresolvedVocabulary) if (!byKnowledge.has(item.knowledge.unitId)) byKnowledge.set(item.knowledge.unitId, item.knowledge);
+    knowledge = [...byKnowledge.values()];
+    const unresolvedIds = new Set(unresolvedVocabulary.map((item) => item.knowledge.unitId));
+    for (const unitId of missing) if (byKnowledge.has(unitId)) missing.delete(unitId);
+    const missingAfterFullRead = [...missing].filter((unitId) => !byKnowledge.has(unitId));
+    const knowledgeSource: KnowledgeStatus['source'] = vocabularyComplete && fullKnowledgeRead && missingAfterFullRead.length === 0
+      ? 'live' : !knowledge.length && requestedUnitIds.length > 0 ? 'unavailable' : 'partial';
+    if (fullKnowledgeRead && missingAfterFullRead.length === 0) knowledgeComplete = true;
+    knowledgeStatus = {
+      ...knowledgeStatus,
+      source: knowledgeSource,
+      requested: Math.max(knowledgeStatus.requested, unresolvedIds.size, knowledge.length),
+      resolved: Math.max(knowledgeStatus.resolved, knowledge.length),
+      fetchedAt: now,
+      missing: missingAfterFullRead,
+    };
+    if (fullKnowledgeRead && missingAfterFullRead.length === 0) {
+      knowledgeNote = undefined;
+      knowledgeStatus.note = undefined;
+    }
+    if (vocabularyComplete && fullKnowledgeRead) {
+      try {
+        const recovery = await ctx.engine.recoverCandidates({
+          api: candidateApi, enrolmentId: identity.enrolmentId, languageId: identity.languageId,
+          ...(identity.varietyId ? { varietyId: identity.varietyId } : {}), prefs, events, deck, knowledge,
+          unresolvedVocabulary, existingCandidates: candidates, now,
+        });
+        if (!recovery.complete) {
+          recoveryIncomplete = true;
+          if (recovery.note) recoveryNotes.push(recovery.note);
+        }
+        const recovered = recovery.candidates;
+        if (recovered.length) {
+          const recoveredById = new Map(recovered.map((candidate) => [candidate.unitId, candidate]));
+          candidates = candidates.map((candidate) => recoveredById.get(candidate.unitId) ?? candidate);
+          const knownIds = new Set(candidates.map((candidate) => candidate.unitId));
+          candidates.push(...recovered.filter((candidate) => !knownIds.has(candidate.unitId)));
+        }
+      } catch (e) {
+        recoveryIncomplete = true;
+        recoveryNotes.push(`Local ${identity.languageId} review candidates could not be checked (${e instanceof Error ? e.message : 'unknown error'}); the service's candidates remain available.`);
+      }
+    } else recoveryIncomplete = true;
+  }
+
+  // A completed candidate page is not enough to publish a partial recovery. If
+  // vocabulary scanning, full knowledge, or pack recovery was incomplete, prefer
+  // the last compatible prepared universe as a whole and keep the partial status.
+  if (candidateSource === 'live' && recoveryIncomplete) {
+    const previous = (await readSnapshot(ctx, identity.learnerId, identity.languageId))?.model;
+    if (snapshotMatches(previous)) {
+      cachedPreparedModel = previous;
+      candidates = previous.candidates;
+      knowledge = previous.knowledge;
+      candidateSource = 'cached';
+      knowledgeStatus = { source: 'partial', requested: Math.max(knowledgeStatus.requested, knowledge.length), resolved: knowledge.length,
+        missing: [], fetchedAt: previous.savedAt, note: 'The latest vocabulary refresh was incomplete; the last complete word data is shown.' };
+      candidateNote = `The latest vocabulary refresh was incomplete; using saved word data from ${previous.savedAt.slice(0, 16).replace('T', ' ')} UTC.`;
+    }
+  }
+  if (candidateSource === 'cached' && recoveryIncomplete && cachedPreparedModel) {
+    for (let i = 0; i < recoveryNotes.length; i++) {
+      recoveryNotes[i] = recoveryNotes[i]!
+        .replace(/the service's candidates remain available\./g, 'the last complete saved word data is shown.')
+        .replace(/local candidates are based only on rows that loaded\./g, 'the last complete saved word data is shown.');
+    }
+  }
+
   let outcomes: IntakeOutcome[] = [];
   let intakeFailed = false;
-  if (proposed.length) {
+  if (candidateSource === 'cached' && cachedPreparedModel) outcomes = cachedPreparedModel.outcomes;
+  else if (candidates.some((c) => !ignored.has(c.unitId))) {
+    const proposed = candidates.filter((c) => !ignored.has(c.unitId));
     try { outcomes = await engine.intake({ api: (await ctx.api()).api, candidates: proposed, knowledge, deck, saved, prefs, audio, now, events }); }
     catch (e) { intakeFailed = true; candidateNote = `Intake failed (${e instanceof Error ? e.message : 'unknown error'}).`; }
   }
   // Offline the service cannot answer for intake: the outcomes of the last successful load stand in (minus what the deck has taken since).
+  const choices = await state.getChoices(identity.learnerId);
   if (candidateSource === 'live' && !intakeFailed) {
-    // only a fully resolved live load replaces the last complete snapshot
-    if (knowledgeComplete) await writeSnapshot(ctx, identity.learnerId, identity.languageId, { model: { savedAt: now, outcomes, knowledge } });
-  } else if (!outcomes.length || intakeFailed) {
+    // The prepared model is persisted after admission readiness is established below.
+  } else if (candidateSource === 'cached' || !outcomes.length || intakeFailed) {
     const snap = (await readSnapshot(ctx, identity.learnerId, identity.languageId))?.model;
-    if (snap) {
+    if (cachedPreparedModel || snapshotMatches(snap)) {
+      const preparedModel = cachedPreparedModel ?? snap!;
       const held = new Set(deck.filter((i) => i.status !== 'dismissed').map((i) => `${i.unitId}|${i.dimension}`));
       const goals = prefs.practiceGoals;
+      const changedKnownMarks = new Set([...known].filter(unitId => !!markEventIds[unitId] && markEventIds[unitId] !== preparedModel.markEventIds?.[unitId]));
       const stillSelected = (family: string): boolean => !goals || (
         family === 'meaning-to-form' ? goals.includes('retrieval') :
         family === 'morphological-identification' || family === 'grammar-application' || family === 'sentence-completion' ? goals.includes('application') :
         family === 'audio-to-meaning' || family === 'audio-transcription' ? goals.includes('listening') && prefs.includeListening :
         ['written-recognition', 'phrase-comprehension'].includes(family) ? goals.includes('recognition') : true
       );
-      outcomes = snap.outcomes.filter((o) => !ignored.has(o.unitId)
+      outcomes = preparedModel.outcomes.map(o => ({ ...o, explicitlySelected: saved.has(o.unitId) })).filter((o) => !ignored.has(o.unitId)
+        && (!changedKnownMarks.has(o.unitId) || o.explicitlySelected) && choices[o.unitId] !== 'later'
+        && !(o.proposed && deck.some(i => i.unitId === o.unitId && (i.invalidatedAt || i.schedulingIssue || i.history.some(h => h.conflict)
+          || i.status === 'suspended' || i.status === 'dismissed' || i.dimension === o.proposed!.dimension)))
         && !(o.proposed && held.has(`${o.unitId}|${o.proposed.dimension}`))
         && (!o.proposed || o.explicitlySelected || stillSelected(o.proposed.family)));
-      if (!knowledge.length) { knowledge = snap.knowledge; knowledgeStatus = { source: 'cached', requested: snap.knowledge.length, resolved: snap.knowledge.length, missing: [], fetchedAt: snap.savedAt }; }
-      candidateNote = `The service could not be reached; the proposals are from this device's copy of ${snap.savedAt.slice(0, 16).replace('T', ' ')} UTC.`;
+      if (!knowledge.length) { knowledge = preparedModel.knowledge; knowledgeStatus = { source: 'cached', requested: preparedModel.knowledge.length, resolved: preparedModel.knowledge.length, missing: [], fetchedAt: preparedModel.savedAt }; }
+      candidateNote ??= `The service could not be reached; the proposals are from this device's copy of ${preparedModel.savedAt.slice(0, 16).replace('T', ' ')} UTC.`;
     }
   }
   // A unit whose knowledge could not be loaded is not New: it is held out of automatic admission, with a stable code and an
@@ -296,9 +493,11 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     knowledgeStatus.note = knowledgeNote;
   }
   if (knowledgeNote) candidateNote = [candidateNote, knowledgeNote].filter(Boolean).join(' ');
-  const choices = await state.getChoices(identity.learnerId);
+  if (recoveryNotes.length) candidateNote = [candidateNote, ...recoveryNotes].filter(Boolean).join(' ');
   const base: ReviewModel = {
-    identity, prefs, events, deck, classDeck, counts, audio, outcomes, knowledge, schedulerProfile, schedulerIssue: profileSelection.error, dismissed: [...ignored], choices, saved, candidateSource, knowledgeStatus, withheld,
+    identity, prefs, events, deck, classDeck, counts, audio, outcomes, knowledge, candidates, candidateSnapshotEligible: candidateSource === 'live' && knowledgeComplete && !recoveryIncomplete && !intakeFailed,
+    schedulerProfile, schedulerIssue: profileSelection.error, dismissed: [...ignored], choices, saved, candidateSource, knowledgeStatus, withheld,
+    ...(recoveryIncomplete ? { candidateRecoveryIncomplete: true } : {}),
     ...(candidateNote ? { candidateNote } : {}), now, algorithm: scheduler.algorithm, parametersVersion: scheduler.parametersVersion,
   };
   return prepareAdmissions(ctx, base);

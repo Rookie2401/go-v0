@@ -16,7 +16,7 @@ describe('tokenSupport returns only what the level needs', () => {
     expect(l0.token.surface).toBe('creo');
     expect(l0.gloss).toBeUndefined();
     const l1 = await h.golearn.tokenSupport(U, CREO, 1);
-    expect(l1.gloss).toBe('believe');
+    expect(l1.gloss).toBe('I believe'); // the form's own English: creo is the first person (the owner, 2026-11-03)
     expect(l1.analysis).toBeUndefined();
     expect(l1.lemma).toBeUndefined();
     expect(l1.morphologyLine).toBeUndefined();

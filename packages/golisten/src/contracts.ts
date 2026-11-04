@@ -36,7 +36,7 @@ export interface PronunciationRequest {
   signal?: AbortSignal;
 }
 
-export type Availability = 'available' | 'needs-consent' | 'needs-key' | 'unavailable';
+export type Availability = 'available' | 'needs-consent' | 'needs-key' | 'needs-sign-in' | 'unavailable';
 export type QualityVerification = 'unverified' | 'machine-checked' | 'native-reviewed';
 
 export interface VoiceDescriptor {

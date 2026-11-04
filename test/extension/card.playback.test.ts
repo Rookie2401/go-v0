@@ -82,16 +82,11 @@ describe('GoLearn uses GoListen playback completion and recovery', () => {
     expect(ui.root()!.textContent).toContain('It is not listening evidence');
   });
 
-  it('Stop is available during preparation and prevents speech from starting', async () => {
-    say().click();
-    const stop = [...ui.root()!.querySelectorAll<HTMLButtonElement>('button')].find((button) => button.textContent === 'Stop pronunciation')!;
-    expect(stop.disabled).toBe(false);
-    stop.click();
-    await flush();
-    expect(hearings).toHaveLength(0);
-    expect(events).toHaveLength(0);
-    expect(say().disabled).toBe(false);
-    expect(ui.root()!.textContent).toContain('Pronunciation stopped.');
+  it('carries no playback row: no Stop button and no speed control, the speaker beside the word alone (the owner, 2026-11-03)', async () => {
+    expect([...ui.root()!.querySelectorAll<HTMLButtonElement>('button')].some((button) => button.textContent === 'Stop pronunciation')).toBe(false);
+    expect(ui.root()!.querySelector('select[aria-label="Pronunciation speed"]')).toBeNull();
+    expect(ui.root()!.querySelector('[role="group"][aria-label="Playback"]')).toBeNull();
+    expect(ui.root()!.textContent).not.toMatch(/Speed/);
   });
   it('dismissal cancels pronunciation before its preparation finishes', async () => {
     say().click();
@@ -147,13 +142,8 @@ describe('GoLearn uses GoListen playback completion and recovery', () => {
     hearings[0].onend?.(); expect(events).toHaveLength(1);
     expect(JSON.stringify(events)).not.toContain('Unë lexoj librin.');
   });
-  it('changes the next playback speed and discards late completion after Stop', async () => {
-    const speed = ui.root()!.querySelector<HTMLSelectElement>('select[aria-label="Pronunciation speed"]')!;
-    speed.value = '0.5'; speed.dispatchEvent(new Event('change'));
+  it('plays at the device\'s own rate (no speed control on the card)', async () => {
     say().click(); await flush();
-    expect(hearings[0].rate).toBe(0.5);
-    [...ui.root()!.querySelectorAll<HTMLButtonElement>('button')].find((button) => button.textContent === 'Stop pronunciation')!.click();
-    hearings[0].onend?.();
-    expect(events).toHaveLength(0);
+    expect(hearings[0].rate).toBe(1);
   });
 });

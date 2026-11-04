@@ -702,7 +702,7 @@ export class LookupController {
     return { status: 'message', reason: 'language-undetermined', message, language: { ...p.language, languageChoice }, languageChoice };
   }
 
-  /** "This analysis is wrong": the correction event first (durable, works offline), then the proposal to the shared word list through the background. */
+  /** "This analysis is wrong": the correction event first (durable, works offline), then the report to the Repository through the background. A reviewer decides; the shared word list does not change. */
   private async correct(my: number, card: CardModel, languageId: string, ictx: InteractionContext | undefined, c: CorrectionInput, record: (build: (x: InteractionContext) => GoEvent) => Promise<boolean>): Promise<void> {
     const ui = this.d.ui;
     if (!ictx || !card.formId) return;

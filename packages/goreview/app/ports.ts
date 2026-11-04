@@ -5,7 +5,7 @@
  */
 import type { AppendOutcome, Enrolment, GoEvent, ReviewCandidate, UnitKnowledge, SchedulerProfile } from '../../repository-contract/src';
 import type { AssessmentSource, PlaybackHandle, PronunciationRequest, PronunciationResult } from '../../golisten/src/contracts';
-import type { RepositoryApi } from '../../repository-service/src/api';
+import type { RepositoryApi, VocabularyItem } from '../../repository-service/src/api';
 import type {
   AudioAvailability, DeckItem, Exercise, Grading, IntakeOutcome, PlannedItem, Response, ReviewIntent, ReviewPreferences, ReviewResult, Scheduler, SessionPlan, SessionState, UnitFacts,
 } from '../src/types';
@@ -46,6 +46,29 @@ export interface IntakeRequest {
   prefs: ReviewPreferences;
   audio: AudioAvailability;
   now: string;
+}
+
+/** Read-only recovery input for event-derived Hebrew words absent from the Repository catalogue. */
+export interface RecoveryRequest {
+  api: RepositoryApi;
+  enrolmentId: string;
+  languageId: string;
+  varietyId?: string;
+  prefs: ReviewPreferences;
+  events: GoEvent[];
+  deck: DeckItem[];
+  /** All projected knowledge rows for this language, not just the service's capped candidate page. */
+  knowledge: UnitKnowledge[];
+  /** Raw unresolved vocabulary rows preserve form/lemma IDs; display-merged vocabulary is not suitable here. */
+  unresolvedVocabulary: VocabularyItem[];
+  existingCandidates: ReviewCandidate[];
+  now: string;
+}
+export interface RecoveryResult {
+  candidates: ReviewCandidate[];
+  /** False when any part of the catalogue/facts read failed and results must not replace a complete snapshot. */
+  complete: boolean;
+  note?: string;
 }
 
 /** The exercise the session is showing now. */
@@ -122,16 +145,26 @@ export interface PlanRequest {
   recentHelp?: Set<string>;
   knowledge?: UnitKnowledge[];
   readingSignals?: GoEvent[];
+  /** Deck fill: the cards an automatic plan may use as early practice to reach the deck size, in the order to try them (default: the deck, soonest due first). */
+  fillPool?: readonly DeckItem[];
 }
 
 export interface ReviewEngine {
+  /** Recover review candidates for genuinely absent installable-language catalogue rows using pack facts and normal ranking. */
+  recoverCandidates?(request: RecoveryRequest): Promise<RecoveryResult>;
+  /** True only when an installed pack can provide facts for event-only catalogue recovery. */
+  canRecoverCandidates?(languageId: string, api: RepositoryApi): boolean;
   /** Rebuild current study/repair material with the configured facts and exercise builder. Release prepared audio afterwards. */
   repairMaterial?(request:{item:DeckItem;api:RepositoryApi;now:string;assessment?:AssessmentSource}):Promise<{facts:UnitFacts;exercise:Exercise;release:()=>void}|{unavailable:string}>;
   factsFor?(unitId: string, languageId: string, api: RepositoryApi): Promise<UnitFacts | undefined>;
   /** Whether the proposed family has verified facts and can produce a valid exercise. */
-  exerciseAvailable?(request: { unitId: string; unitKind: string; languageId: string; dimension: import('../src/types').AssessmentDimension; family: import('../src/types').ExerciseFamily; api: RepositoryApi; now: string }): Promise<boolean>;
+  exerciseAvailable?(request: ExerciseReadinessRequest): Promise<boolean>;
+  /** Honest per-word exercise preflight; useful when a card is blocked by missing or ambiguous source evidence. */
+  exerciseReadiness?(request: ExerciseReadinessRequest): Promise<ExerciseReadiness>;
   /** Reads the Repository units that the next `exerciseAvailable` calls will ask about, fifty at a time, so they do not go one request each. */
-  primeFacts?(languageId: string, api: RepositoryApi, unitIds: string[]): Promise<void>;
+  primeFacts?(languageId: string, api: RepositoryApi, unitIds: string[], varietyId?: string): Promise<void>;
+  /** Discard unused one-shot Repository unit rows after an explicit facts/build pass. */
+  clearPrimedFacts?(languageId: string, api: RepositoryApi): void;
   scheduler(prefs: ReviewPreferences, profile?: SchedulerProfile): Scheduler;
   /** The deck of one language as a fold over the learner's events (a snooze that has ended by `now` is over). */
   foldDeck(events: GoEvent[], languageId: string, prefs: ReviewPreferences, now: string): DeckItem[];
@@ -151,6 +184,13 @@ export interface ReviewEngine {
   /** The research measures of one unit (descriptions of the record, not conclusions). */
   measures(events: GoEvent[], unitId: string): Measure[];
 }
+
+export interface ExerciseReadinessRequest {
+  unitId: string; unitKind: string; languageId: string; varietyId?: string;
+  dimension: import('../src/types').AssessmentDimension; family: import('../src/types').ExerciseFamily;
+  api: RepositoryApi; now: string;
+}
+export interface ExerciseReadiness { available: boolean; reason?: string; retryable?: boolean }
 
 // ───────────────────────────── audio ─────────────────────────────
 
@@ -182,7 +222,7 @@ export interface Deps {
    * null = no audio at all. A function receives the learner's remote-speech consent as a getter and returns the audio
    * (the real app builds it from GoListen); tests pass a ready-made fake.
    */
-  audio: AudioDeps | null | ((consent: () => boolean) => AudioDeps | null);
+  audio: AudioDeps | null | ((consent: () => boolean, accountToken?: () => Promise<string | undefined>) => AudioDeps | null);
   now(): Date;
   newId(): string;
   random(): number;

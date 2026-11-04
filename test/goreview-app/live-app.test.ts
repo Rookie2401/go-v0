@@ -8,7 +8,9 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { GoEvent, UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
 import { saveDeck } from '../../packages/goreview/app/deckModel';
-import { cardAdded, defaultService, destroyRigs, dueCard, ids, key, makeRig, startWith, type, until, type FakeService, type Rig } from './helpers';
+import { createLive } from '../../packages/goreview/app/live';
+import { createRealDeps } from '../../packages/goreview/app/main';
+import { cardAdded, defaultService, destroyRigs, dueCard, ids, key, makeRig, startWith, type, until, type FakeService, type Rig, readyCards } from './helpers';
 
 afterEach(() => { destroyRigs(); vi.useRealTimers(); });
 const A = ids('L1', 'sq');
@@ -50,17 +52,45 @@ async function ready(rig: Rig, svc: ReturnType<typeof liveService>): Promise<voi
 const dataEvents = (rig: Rig): { count: () => number } => { let n = 0; rig.app.ctx.onData(() => { n += 1; }); return { count: () => n }; };
 
 describe('live updates in the app', () => {
+  it('keeps createRealDeps live long-polls open for 30 seconds instead of timing them out at eight', async () => {
+    vi.useFakeTimers();
+    const waitSignals: AbortSignal[] = [];
+    const fetcher: typeof fetch = async (input, init) => {
+      const url = new URL(typeof input === 'string' ? input : input instanceof URL ? input.href : input.url, location.href);
+      if (url.pathname.endsWith('/config.json')) return new Response(JSON.stringify({ serviceUrl: 'https://repo.example' }), { headers: { 'content-type': 'application/json' } });
+      if (url.pathname === '/sync/status') return new Response(JSON.stringify({ cursor: '0' }), { headers: { 'content-type': 'application/json' } });
+      if (url.pathname === '/sync/wait') return new Promise<Response>((_resolve, reject) => {
+        const signal = init?.signal!; waitSignals.push(signal);
+        signal.addEventListener('abort', () => reject(signal.reason), { once: true });
+      });
+      return new Response('{}', { status: 200, headers: { 'content-type': 'application/json' } });
+    };
+    const deps = await createRealDeps(fetcher);
+    const liveUpdates = createLive({ win: window, doc: document, fetch: deps.fetch,
+      auth: async () => ({ baseUrl: 'https://repo.example', token: 'test-session' }),
+      pull: async () => ({ appended: 0, cursor: 0 }), onChanged: () => undefined,
+      waitTimeoutMs: 25_000, minRoundMs: 0, pollMs: 60_000 });
+    liveUpdates.kick();
+    for (let i = 0; i < 30 && waitSignals.length === 0; i++) await Promise.resolve();
+    expect(waitSignals).toHaveLength(1);
+    await vi.advanceTimersByTimeAsync(8_001);
+    expect(waitSignals[0]?.aborted).toBe(false);
+    await vi.advanceTimersByTimeAsync(21_999);
+    expect(waitSignals[0]?.aborted).toBe(true);
+    liveUpdates.destroy();
+  });
+
   it('starts holding a wait once signed in, and repaints the home when GoLearn pushes a card', async () => {
     const service = defaultService();
     const svc = liveService(service);
     const rig = await makeRig({ service, fetch: svc.fetchFn, live, signedIn: true });
     await ready(rig, svc);
     expect(svc.calls).toContain('GET /sync/status');
-    expect(rig.q('#deck-count').getAttribute('data-cards')).toBe('0');
+    expect(String(readyCards(rig))).toBe('0');
     for (const e of dueCard(A, 'zog', 'meaning-to-form')) service.inject('L1', e);   // GoLearn on the desktop
     svc.push();
-    await until(() => rig.q('#deck-count').getAttribute('data-cards') === '1', 'the home to show the new card');
-    expect(rig.q('#deck-count').textContent).toBe('1 card ready');
+    await until(() => String(readyCards(rig)) === '1', 'the home to show the new card');
+    expect(readyCards(rig)).toBe(1);
     // and it is waiting again, from the new cursor
     await until(() => svc.held.length > 0, 'the next wait');
   });
@@ -109,7 +139,7 @@ describe('live updates in the app', () => {
     const own = cardAdded(A, 'zog', 'meaning-to-form', '2026-10-08T09:00:00.000Z');
     await d.log.append(d.learnerId, [own]);
     await rig.app.ctx.syncNow({ force: true });
-    await until(() => rig.q('#deck-count').getAttribute('data-cards') !== null, 'the home');
+    await until(() => String(readyCards(rig)) !== null, 'the home');
     await new Promise((r) => setTimeout(r, 40));
     const seen = dataEvents(rig);
     const home = rig.q('#current-deck');

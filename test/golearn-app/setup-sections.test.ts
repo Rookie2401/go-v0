@@ -38,19 +38,23 @@ describe('the main setup page: Language and Audio', () => {
     expect(details(rig, 'audio').open).toBe(false);
   });
 
-  it('the Audio guide tells the three ways as they are: device voices with the install steps and the strict tags, Azure through a speech backend set under Privacy, ElevenLabs not available yet', async () => {
+  it('the Audio guide leads with account speech, explains custom backend setup second, and covers device voices and ElevenLabs', async () => {
     const rig = await makeRig({ extension: true });
     const guide = rig.q('#audio-guide');
     const text = guide.textContent ?? '';
     const headings = [...guide.querySelectorAll('h3')].map((x) => x.textContent);
-    expect(headings).toEqual(['1. Voices on this device (free, nothing leaves the device)', '2. Azure voices, through a speech backend of your own', '3. ElevenLabs']);
+    expect(headings).toEqual(['1. Voices on this device (free, nothing leaves the device)', '2. Remote voices through your account', '3. Optional: your own speech backend', '4. ElevenLabs']);
     // device voices: the four platforms and the exact-match rule, the tags from voiceTags.ts
     for (const os of ['Windows 11', 'macOS', 'Android', 'iPhone and iPad']) expect(text).toContain(os);
     expect(text).toMatch(/matches exactly/);
     expect(guide.querySelector('table')!.textContent).toContain('sq-AL, sq');
     expect(guide.querySelector('table')!.textContent).toContain('la, la-VA, it-IT, it');
-    // Azure: the backend holds the key, the fields are under Privacy, the two switches, the repository's own backend
-    expect(text).toContain('never holds the Azure key');
+    // Account speech is managed, explicit, and protected by exact-origin access and the two privacy switches.
+    expect(text).toContain('The service manages the Azure connection');
+    expect(text).toContain('Allow account speech access');
+    expect(text).toContain('exact Repository service origin');
+    // Optional self-operated backend setup remains available; no Azure key belongs in GoLearn.
+    expect(text).toContain('never the Azure key');
     expect(text).toContain('npm run speech:serve');
     expect(text).toContain('/api/speech');
     expect(text).toContain('Use only voices that run on this device');

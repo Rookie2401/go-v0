@@ -71,7 +71,7 @@ describe('remote speech with consent', () => {
     expect(call.init?.method).toBe('POST');
     expect(call.init?.credentials).toBe('same-origin');
     expect(Object.keys(call.init?.headers ?? {})).toEqual(['content-type']); // no key, no token: the proxy holds the key
-    expect(JSON.parse(call.init!.body!)).toEqual({ text: TEXT, voice: 'sq-AL-AnilaNeural', locale: 'sq-AL', kind: 'sentence', sourcePermission: 'allowed' });
+    expect(JSON.parse(call.init!.body!)).toEqual({ languageId: 'sq', text: TEXT, voice: 'sq-AL-AnilaNeural', locale: 'sq-AL', format: 'riff-24khz-16bit-mono-pcm', kind: 'sentence', sourcePermission: 'allowed' });
 
     expect(r.voice).toMatchObject({
       voiceId: 'azure-speech:sq-AL-AnilaNeural', provider: 'remote', execution: 'remote', synthetic: true, languageId: 'sq', varietyId: 'sq-AL',

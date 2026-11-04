@@ -46,7 +46,8 @@ describe('buildSelectionReport', () => {
     const by = Object.fromEntries(report.rows.map(r => [r.unitId, r]));
     expect(by[U.zog]).toMatchObject({ kind: 'deck', status: 'selected', code: 'selected', cardId: expect.stringContaining(U.zog) });
     expect(by[U.mace]).toMatchObject({ kind: 'deck', status: 'selected', code: 'selected' });
-    expect(by[U.qen]).toMatchObject({ kind: 'deck', status: 'excluded', code: 'scheduled-not-due' });
+    // deck fill (2026-11-03): the not-due card completes the deck as early practice, so it is selected with the stable code 'deck-fill'
+    expect(by[U.qen]).toMatchObject({ kind: 'deck', status: 'selected', code: 'deck-fill', queue: 'due' });
     expect(by[U.det]).toMatchObject({ kind: 'deck', status: 'excluded', code: 'snoozed' });
     expect(by[U.cls]).toMatchObject({ kind: 'class', status: 'excluded', code: 'scheduled-not-due' });
     expect(by[U.shtepi]).toMatchObject({ kind: 'candidate', status: 'selected', code: 'selected', intakeDecision: 'test-now' });
@@ -56,13 +57,45 @@ describe('buildSelectionReport', () => {
     expect(by[U.qen]!.due).toBe(FUTURE);
   });
 
+  it("reports a deck-fill item with the stable code 'deck-fill' and its queue, and every due item still as 'selected'", () => {
+    const { model, plan } = fixture();
+    const fill = plan.items.filter(p => p.presentationReason === 'deck-fill');
+    expect(fill.map(p => p.item.unitId)).toEqual([U.qen]);
+    const rows = buildSelectionReport(model, plan).rows;
+    expect(rows.filter(r => r.code === 'deck-fill').map(r => [r.unitId, r.status, r.queue])).toEqual([[U.qen, 'selected', 'due']]);
+    for (const unit of [U.zog, U.mace, U.shtepi]) expect(rows.find(r => r.unitId === unit)!.code, unit).toBe('selected');
+    expect(rows.filter(r => r.cardId === fill[0]!.item.itemId)).toHaveLength(1); // still exactly one row per card
+    expect(selectionReportJson(buildSelectionReport(model, plan))).toContain('"code": "deck-fill"');
+  });
+
   it('counts add up', () => {
     const { model, plan } = fixture();
     const { counts, rows } = buildSelectionReport(model, plan);
-    expect(counts).toEqual({ vocabularyUnits: 7, knowledgeRows: 1, candidates: 2, deckCards: 4, classCards: 1, selected: 3, skipped: plan.skipped.length, withheld: 0 });
+    expect(counts).toEqual({ vocabularyUnits: 7, knowledgeRows: 1, candidates: 2, deckCards: 4, classCards: 1, selected: 4, skipped: plan.skipped.length, withheld: 0 });
     expect(counts.selected).toBe(rows.filter(r => r.status === 'selected').length);
     expect(counts.deckCards + counts.classCards + counts.candidates).toBe(rows.length);
     expect(counts.selected).toBe(plan.items.length);
+  });
+
+  it('reports Current learning plus fresh items separately from due Review Deck items in the combined plan', () => {
+    const { model } = fixture();
+    const learning = deckItem({ unitId: 'form:sq:learning', schedule: scheduleState({ phase: 'learning', due: NOW }) });
+    const expanded = { ...model, deck: [...model.deck, learning] };
+    const plan = planSession({ deck: expanded.deck, intake: expanded.outcomes, preferences: prefs(), audio: audioOk,
+      scheduler: fakeScheduler, now: NOW, random: () => 0.5, knowledge: expanded.knowledge });
+    const report = buildSelectionReport(expanded, plan);
+    expect(plan.items.find(p => p.item.unitId === learning.unitId)?.queue).toBe('learning');
+    // deck fill (2026-11-03): the one not-due spaced review completes the deck as early practice, so it counts among the Review Deck items and once as fill
+    expect(report.planning).toMatchObject({ currentDeckItemsInPlan: 2, reviewDeckItemsInPlan: 3, remediationItemsInPlan: 0, fillItemsInPlan: 1 });
+  });
+
+  it('reports only verified candidate form-to-base-word merges as word-family coverage', () => {
+    const { model, plan } = fixture();
+    const merged = { unitId: 'form:sq:known-form', decision: 'redundant' as const,
+      reasons: ['merged into canonical lexeme lemma:sq:known:NOUN through one reliable lexical form-of relation; one encounter creates one reading-recognition objective'],
+      candidate: candidate({ unitId: 'form:sq:known-form' }) };
+    const report = buildSelectionReport({ ...model, outcomes: [...model.outcomes, merged] } as unknown as ReviewModel, plan);
+    expect(report.coverage).toMatchObject({ candidateFormsMergedToVerifiedBaseWord: 1, verifiedBaseWordsInCandidateMerge: 1 });
   });
 
   it('derives codes for cards the plan neither selected nor recorded, and marks an unplanned test-now outcome outranked', () => {
@@ -124,7 +157,7 @@ describe('#/developer: Why these cards', () => {
     expect(rig.q('#why-h').textContent).toBe('Why these cards');
     expect(rig.q('#why-build').textContent).toBe('Build selection report');
     expect(rig.q('#why-copy').textContent).toBe('Copy diagnostic JSON');
-    expect(rig.q('#why-these-cards').textContent).toContain('unit ids and scheduling numbers only');
+    expect(rig.q('#why-these-cards').textContent).toContain('unit ids (which can contain word forms)');
     expect(rig.root.querySelector('#why-rows')).toBeNull(); // built on demand, not on page load
     rig.q('#why-build').click();
     await until(() => !!rig.root.querySelector('#why-counts'), 'the report');

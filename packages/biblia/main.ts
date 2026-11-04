@@ -11,9 +11,12 @@ import { createSyncStatus } from './src/syncStatus';
 import { createMobileRuntime } from '../goreview/app/mobile';
 import { loadConfig } from '../goreview/app/config';
 import { createRepositoryApi } from '../repository-service/src/api';
+import { withRequestTimeout } from '../repository-service/src/requestTimeout';
+import { createBibliaPronouncer, type BibliaSpeechAccount } from './src/audio';
+import type { SpeechLike } from '../golisten/src/ports';
 
 /** Inside the GoReview iPhone app (a native Capacitor platform): the app's Repository address (its config.json, one folder up) and its signed-in session, from Keychain. */
-async function inApp(): Promise<{ api: ReturnType<typeof createRepositoryApi>; learnerId: string; deviceId: string } | undefined> {
+async function inApp(): Promise<{ api: ReturnType<typeof createRepositoryApi>; learnerId: string; deviceId: string; speechAccount: () => Promise<BibliaSpeechAccount & { learnerId: string } | undefined> } | undefined> {
   const mobile = createMobileRuntime(window);
   if (!mobile.native) return undefined;
   try {
@@ -22,7 +25,8 @@ async function inApp(): Promise<{ api: ReturnType<typeof createRepositoryApi>; l
     if (!serviceUrl) return undefined;
     const session = await mobile.getSession(serviceUrl);
     if (!session) return undefined;
-    return { api: createRepositoryApi({ baseUrl: serviceUrl, fetch: globalThis.fetch.bind(globalThis), token: session.token }), learnerId: session.learnerId, deviceId: `iphone:${mobile.platform}` };
+    return { api: createRepositoryApi({ baseUrl: serviceUrl, fetch: globalThis.fetch.bind(globalThis), token: session.token }), learnerId: session.learnerId, deviceId: `iphone:${mobile.platform}`,
+      speechAccount: async () => { const latest = await mobile.getSession(serviceUrl); return latest ? { serviceUrl, token: latest.token, learnerId: latest.learnerId } : undefined; } };
   } catch { return undefined; }
 }
 
@@ -59,6 +63,10 @@ const started = (async () => {
   // The standalone marker wins wherever the GoReview app's session is not present: the hosted web edition, and (2026-10-24) Biblia's own
   // native shell (packages/biblia-ios), which bundles the standalone edition and signs in on its own.
   const own = !app && !extensionSend() && isStandalone() ? await standalone() : undefined;
+  const speechAccount = app?.speechAccount ?? (own?.account ? async () => {
+    const session = own.account!.session();
+    return session ? { serviceUrl: own.account!.serviceUrl, token: session.token, learnerId: session.learnerId } : undefined;
+  } : undefined);
   const recorder = own ? own.recorder : app ? makeRecorder(undefined, app) : mobile.native
     ? { ...makeRecorder(undefined), reason: 'Sign in to GoReview (the app this page belongs to) to record what you read; until then Biblia is a reader only.' }
     : makeRecorder();
@@ -68,6 +76,13 @@ const started = (async () => {
     win: window, doc: document,
     source: fetchJsonWith((input, init) => globalThis.fetch(input, init), './'),
     recorder,
+    ...(speechAccount ? { speechAccount, createPronouncer: (consent: () => boolean, consentOwner: () => string | undefined) => createBibliaPronouncer({
+      speech: (window as unknown as { speechSynthesis?: SpeechLike }).speechSynthesis ?? null,
+      account: speechAccount,
+      consent,
+      consentOwner,
+      fetch: withRequestTimeout(globalThis.fetch.bind(globalThis), 30_000),
+    }) } : {}),
     ...(own?.account ? { account: own.account } : {}),
     ...(syncStatus ? { syncStatus: syncStatus.element } : {}),
     // the way back to GoReview exists only when this page is bundled INSIDE the GoReview app (not in Biblia's own shell, which has the marker)

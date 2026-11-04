@@ -10,6 +10,7 @@
 import { CONTRACT_VERSION, type GoEvent } from '../../repository-contract/src';
 import type { AppContext } from './context';
 import type { Settings } from './state';
+import { REMOTE_SPEECH_CONSENT_OWNER_KEY } from '../src/protocol';
 
 export const REMOTE_SPEECH_SCOPE = 'remote-speech';
 
@@ -44,9 +45,12 @@ export async function setRemoteSpeechConsent(ctx: AppContext, on: boolean, langu
   if (on) {
     const r = await ctx.record(event);
     if (r === 'failed') return { ok: false, message: 'Your consent could not be recorded, so remote speech stays off.', settings: current };
+    try { await ctx.deps.area.set({ [REMOTE_SPEECH_CONSENT_OWNER_KEY]: id.learnerId }); }
+    catch { return { ok: false, message: 'Your consent owner could not be saved, so remote speech stays off.', settings: current }; }
     return { ok: true, settings: await ctx.setSettings({ remoteSpeechConsent: true }), recorded: true };
   }
   const settings = await ctx.setSettings({ remoteSpeechConsent: false });
+  await ctx.deps.area.remove(REMOTE_SPEECH_CONSENT_OWNER_KEY).catch(() => undefined);
   const r = await ctx.record(event);
   return { ok: true, settings, recorded: r !== 'failed' };
 }

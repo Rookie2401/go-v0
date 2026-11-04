@@ -9,14 +9,14 @@
  * screens/privacy.ts (the fields) and docs/golisten/AZURE-SETUP.md (the backend); keep them in step.
  */
 import type { AppContext } from '../context';
-import { h, p } from '../dom';
+import { button, h, p, setStatus, statusLine } from '../dom';
 import { languageNameOf } from '../../src/protocol';
 import { DEVICE_TAGS, hasDeviceVoice } from '../../src/content/voiceTags';
 
 /** The languages that can have a voice at all, in the catalogue's order, each with the tags a device voice must carry. */
 const VOICE_LANGUAGES: ReadonlyArray<{ id: string; note?: string }> = [
-  { id: 'nb' }, { id: 'nn' }, { id: 'de' }, { id: 'sq', note: 'few devices ship one; Azure has Albanian voices' }, { id: 'hi' }, { id: 'th' }, { id: 'es' }, { id: 'he' }, { id: 'el' },
-  { id: 'la', note: 'no device and no provider has a Latin voice; an Italian voice stands in for the Church reading, and GoLearn says so' },
+  { id: 'nb', note: 'Azure offers Bokmål; it is never used for Nynorsk' }, { id: 'nn', note: 'no Azure Nynorsk voice; only an exact Nynorsk device voice is accepted' }, { id: 'de' }, { id: 'sq', note: 'few devices ship one; Azure has Albanian voices' }, { id: 'hi' }, { id: 'th' }, { id: 'es' }, { id: 'he' }, { id: 'el' },
+  { id: 'la', note: 'Azure Italian is only an Ecclesiastical Latin stand-in; it is not Classical Latin' },
 ];
 
 /** What this browser can speak right now, by the same strict rule the word card uses (an English voice is never "close enough"). */
@@ -43,6 +43,24 @@ export function audioGuide(ctx: AppContext): HTMLElement[] {
   const strong = (t: string): HTMLElement => h('strong', {}, t);
   const code = (t: string): HTMLElement => h('code', {}, t);
   const privacy = (text: string): HTMLElement => h('a', { href: '#/privacy' }, text);
+  let repositoryOrigin: string | undefined;
+  const permissionStatus = statusLine();
+  const permissionButton = button('Allow account speech access', async () => {
+    if (!repositoryOrigin) { setStatus(permissionStatus, 'The Repository service address is not ready.', 'error'); return; }
+    const permissions = ctx.deps.chrome?.permissions;
+    if (!permissions?.request) { setStatus(permissionStatus, 'This browser does not support optional site access.', 'error'); return; }
+    try {
+      const granted = await permissions.request({ origins: [repositoryOrigin] });
+      setStatus(permissionStatus, granted ? 'Repository speech access was granted for this exact service origin.' : 'Repository speech access was not granted.', granted ? 'ok' : 'error');
+    } catch { setStatus(permissionStatus, 'Repository speech access could not be requested.', 'error'); }
+  }, { id: 'allow-account-speech' });
+  if (ctx.inExtension) {
+    permissionButton.disabled = true;
+    void ctx.serviceUrl().then((url) => {
+      try { repositoryOrigin = `${new URL(url).origin}/*`; permissionButton.disabled = false; }
+      catch { setStatus(permissionStatus, 'The configured Repository service URL is invalid.', 'error'); }
+    }).catch(() => setStatus(permissionStatus, 'The configured Repository service URL could not be loaded.', 'error'));
+  }
   return [
     h('div', { class: 'audio-guide', id: 'audio-guide' },
       p('Select a word on a page you are reading (with GoLearn Active on) and its card opens; the speaker button on the card says the word. Where the voice comes from is up to you, and nothing is sent anywhere unless you switch that on.'),
@@ -59,17 +77,30 @@ export function audioGuide(ctx: AppContext): HTMLElement[] {
       p('The voice tags GoLearn accepts, language by language:', 'muted'),
       h('table', {}, h('tbody', {}, ...VOICE_LANGUAGES.map((l) => h('tr', {}, h('th', { scope: 'row' }, languageNameOf(l.id)), h('td', {}, (DEVICE_TAGS[l.id] ?? []).join(', ') + (l.note ? ` — ${l.note}` : '')))))),
 
-      h('h3', {}, '2. Azure voices, through a speech backend of your own'),
-      p('Azure Neural voices (Microsoft) cover every GoLearn language that has a voice, Albanian included. GoLearn never talks to Azure itself and never holds the Azure key: a small speech backend that you run does, and GoLearn asks it for the word, phrase or sentence you pressed the speaker for. Set it up in this order:'),
+      h('h3', {}, '2. Remote voices through your account'),
+      p('If you are signed in, GoLearn can use speech from your Repository account. The service manages the Azure connection; you do not need to create an Azure resource or provide a speech key. Remote speech starts off and sends no text until you enable it.'),
+      ctx.inExtension ? h('section', { class: 'card', id: 'account-speech-access' },
+        h('h4', {}, 'Allow account speech access'),
+        p('This grants the extension access to the exact Repository service origin. It does not send text by itself.'),
+        permissionButton, permissionStatus) : p('Account speech access must be granted in the GoLearn extension.', 'muted'),
+      h('ol', {},
+        li(strong('Allow the service. '), 'In the extension setup page, press “Allow account speech access” and allow the exact service address.'),
+        li(strong('Choose remote speech. '), 'Open ', privacy('Privacy'), ' and switch off “Use only voices that run on this device”; switch on “Allow a remote speech provider to say words for me”. This records your explicit consent and is off until you enable it.'),
+        li(strong('Listen. '), 'The service supports words and exact approved pack examples. Arbitrary passages are refused. Only text you ask to hear is sent, and only after consent and source checks.')),
+      p('Azure Neural voices are registered for languages including Albanian and Bokmål. No Azure Nynorsk voice is substituted; Latin uses an explicitly labelled Italian stand-in only for the Ecclesiastical reading. Actual availability depends on the signed-in service and its voice configuration.', 'muted'),
+
+      h('h3', {}, '3. Optional: your own speech backend'),
+      h('p', {}, 'Advanced users can configure a separate compatible speech backend in ', privacy('Privacy → Speech backend'), '. GoLearn stores its backend token in extension storage, never the Azure key. This route requires a backend you operate and remains separate from Repository account speech.'),
       h('ol', {},
         li(strong('An Azure Speech resource. '), 'In the Azure portal create an “Azure AI Speech” resource (kind SpeechServices) on the free F0 tier in a region of your choice, then open Keys and Endpoint. Keep the key off screenshots and out of any GoLearn setting.'),
         li(strong('The backend. '), 'This repository ships it: run ', code('npm run speech:serve'), ' with ', code('AZURE_SPEECH_KEY'), ', ', code('AZURE_SPEECH_REGION'), ', a token you generate yourself of at least 32 letters and digits as ', code('GO_SPEECH_AUTH_TOKEN'), ', and ', code('GO_SPEECH_ALLOWED_EXTENSION_ORIGINS=chrome-extension://<the extension’s id>'), ' in ', code('.env.local'), '. It listens at ', code('http://127.0.0.1:8791/api/speech'), ' on this computer; on a server put it behind HTTPS. The full guide is docs/golisten/AZURE-SETUP.md.'),
         li(strong('Tell GoLearn where it is. '), 'Open ', privacy('Privacy → Speech backend'), ' (in the extension’s setup page): the endpoint (ending in /api/speech), the backend access token you generated (never the Azure key), and, if you want pages of a site you own spoken, that site’s origin with the rights box ticked. Press Save speech backend and allow the address when the browser asks.'),
         li(strong('Allow remote speech. '), 'On the same ', privacy('Privacy'), ' page switch off “Use only voices that run on this device” and switch on “Allow a remote speech provider to say words for me”. The switch records your consent; it is off until then.'),
         li(strong('Listen. '), 'The speaker on a word’s card now uses Azure on the pages whose origin you declared (or that GoLearn’s reader list already approves), and GoReview’s practice uses it too. Only the text you ask to hear is sent; the pages you read never are.')),
+      p('For the custom route, the speech endpoint and backend access token are configured on the Privacy page. Do not paste an Azure key into GoLearn.', 'muted'),
       p('Azure speech is synthetic: good for hearing a word, never proof that you understood it.', 'muted'),
 
-      h('h3', {}, '3. ElevenLabs'),
+      h('h3', {}, '4. ElevenLabs'),
       p('Not available yet. GoLearn only ever speaks through a backend of your own, never to a voice provider directly, and the backend this repository ships speaks Azure only. A backend that answered the same three calls (status, voices, synthesize) with ElevenLabs voices would plug in at steps 3 to 5 above unchanged; until one is written, the choices are the voices on this device and Azure.'),
       ctx.inExtension ? null : p('The speech backend is set in the extension’s own setup page (the GoLearn button in the browser toolbar → GoLearn → Privacy), not in this hosted page.', 'muted')),
   ];

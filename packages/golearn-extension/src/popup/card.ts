@@ -358,14 +358,13 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   let view: CardView = initialView('');
   let actions: CardActions = {};
   let parts: {
-    rows: HTMLElement; pronNote: HTMLElement; say: HTMLButtonElement; stopAudio?: HTMLButtonElement; audioSpeed?: HTMLSelectElement;
+    rows: HTMLElement; pronNote: HTMLElement; say: HTMLButtonElement;
     sources: HTMLElement; sourcesBtn: HTMLButtonElement; deeper: HTMLElement; deeperBtn: HTMLButtonElement; sentenceBox: HTMLElement; sentenceBtn: HTMLButtonElement;
     variantsBox?: HTMLElement; variantsBtn?: HTMLButtonElement; encounters: HTMLElement; levelName: HTMLElement;
     layers: Record<LayerName, HTMLElement>; fix: HTMLFormElement; report: HTMLButtonElement; rateBtns: Record<SelfMark, HTMLButtonElement>;
   } | undefined;
   // `autoPlay`: the render token of a card that should speak once as soon as its voice is known to be available (GoLearn Active's "Speak on click")
   let pron: { available: boolean; note: string; playing: boolean; plays: number; off?: () => void; offPlayback?: () => void; state?: 'idle' | 'playing' | 'paused' | 'ended' | 'error'; pending?: { voice: 'synthetic' | 'recorded'; voiceId?: string }; failed?: boolean; autoPlay?: number } = { available: false, note: '', playing: false, plays: 0 };
-  let playbackRate = 1;
   // the ANALYSIS dropdown of the Form section: open or not (kept when the panel is re-filled by a late arrival), and whether its first opening was reported
   let analysisOpen = false;
   let analysisReported = false;
@@ -476,7 +475,11 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   /** The meaning under the word: the lexicon gloss at once, else the dictionary's, else "looking up…" while it is on its way. */
   function meaningText(m: CardModel, v: CardView): { text: string; attr?: string; muted: boolean; from?: string } {
     const dict = v.gloss;
-    if (m.gloss) return { text: m.gloss, muted: false, from: m.glossSource ?? 'Course word list' };
+    const wordMeaning = m.wordAnalysis?.contextualMeaning?.text ?? m.wordAnalysis?.inflectedMeaning?.text ?? m.wordAnalysis?.lexicalMeaning?.text;
+    if (m.gloss) {
+      const onlyLemmaGloss = !m.wordAnalysis?.contextualMeaning && !m.wordAnalysis?.inflectedMeaning;
+      return { text: m.gloss, muted: false, from: onlyLemmaGloss && wordMeaning ? 'Lemma meaning' : m.wordAnalysis?.contextualMeaning?.source ?? m.wordAnalysis?.inflectedMeaning?.source ?? m.wordAnalysis?.lexicalMeaning?.source ?? m.glossSource ?? 'Lemma meaning' };
+    }
     // a dictionary-only meaning carries its attribution beside it (CC BY-SA: the notice goes wherever the entry is shown)
     if (dict.state === 'ready' && dict.senses.length) return { text: dict.senses.slice(0, 3).join('; '), ...(dict.attribution ? { attr: dict.attribution } : {}), muted: false, from: 'Wiktionary' };
     if (dict.state === 'loading') return { text: 'looking up…', muted: true };
@@ -503,19 +506,15 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (wordRom) rows.push(h('div', { class: 'translit wordTranslit', role: 'note', 'aria-label': 'transliteration', title: wordRomSource, 'data-row': 'transliteration' }, wordRom));
     rows.push(gloss);
     if (from) rows.push(h('div', { class: 'kicker' }, `Meaning · ${from}`));
+    const lexicalMeaning = m.wordAnalysis?.lexicalMeaning;
     const same = !m.lemma || m.lemma.normalize('NFC').toLowerCase() === m.surface.normalize('NFC').trim().toLowerCase();
     if (!same && m.lemma && m.tokenCount === 1) {
       const lemmaRom = m.lemmaTransliteration ?? dictRom;
       const lemmaRomSource = m.lemmaTransliteration ? 'Romanization by the analyser\'s rules' : 'Wiktionary romanization';
-      rows.push(h('div', { class: 'lemmaLine' }, h('span', { class: 'lv', lang: m.languageId }, m.lemma, m.pos ? h('span', { class: 'pos' }, m.pos) : null), lemmaRom ? h('span', { class: 'translit', role: 'note', 'aria-label': 'lemma transliteration', title: lemmaRomSource }, lemmaRom) : null, h('span', { class: 'kicker' }, m.unconfirmed ? 'lemma (guess)' : 'lemma')));
+      rows.push(h('div', { class: 'lemmaLine' }, h('span', { class: 'lv', lang: m.languageId }, m.lemma, m.pos ? h('span', { class: 'pos' }, m.pos) : null), lexicalMeaning ? h('span', { class: 'lemmaMeaning', 'data-row': 'lemma-gloss' }, `— ${lexicalMeaning.text}`) : null, lemmaRom ? h('span', { class: 'translit', role: 'note', 'aria-label': 'lemma transliteration', title: lemmaRomSource }, lemmaRom) : null, h('span', { class: 'kicker' }, m.unconfirmed ? 'lemma (guess)' : 'lemma')));
     }
-    if (m.unconfirmed && m.tokenCount === 1) rows.push(h('div', { class: 'card__text' }, 'The lemma is a guess from the ending; the word list does not hold this word.'));
+    if (m.unconfirmed && m.tokenCount === 1) rows.push(h('div', { class: 'card__text', 'data-row': 'lemma-note' }, 'The lemma is inferred from the ending.'));
     // a language with period varieties: which period this text was read in, and why (the analyser's own basis)
-    if (m.period) rows.push(h('div', { class: 'periodLine', 'data-row': 'period', title: m.period.basis }, `Read as ${m.period.label} — ${m.period.basis}`));
-    if (m.words.length > 1) {
-      const ul = h('ul', {}, ...m.words.map((w) => h('li', {}, h('span', { lang: m.languageId }, w.surface), ': ', w.lemma ? h('span', { lang: m.languageId }, w.lemma) : 'unknown', `${w.gloss ? ` – ${w.gloss}` : ''} (${w.confidence.toFixed(2)})`)));
-      rows.push(h('div', { class: 'more-inline' }, ul));
-    }
     parts.rows.replaceChildren(...rows);
   }
 
@@ -561,8 +560,6 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     // availability, preparation, active playback, completion, and failures alike.
     parts.pronNote.textContent = pron.note;
     parts.pronNote.className = 'note pron';
-    if (parts.stopAudio) parts.stopAudio.disabled = !pron.playing && pron.state !== 'playing' && pron.state !== 'paused';
-    if (parts.audioSpeed) parts.audioSpeed.disabled = !pron.available;
   }
 
   function completedPronunciation(): void {
@@ -905,6 +902,13 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   }
 
   function fillMeaning(panel: HTMLElement, m: CardModel, v: CardView): void {
+    if (m.wordAnalysis?.lexicalMeaning) panel.append(row('lemma-gloss-detail', 'lemma meaning', m.wordAnalysis.lexicalMeaning.text, 'analysis'));
+    if (m.wordAnalysis?.inflectedMeaning) panel.append(row('inflected-meaning', 'literal meaning', m.wordAnalysis.inflectedMeaning.text, 'analysis'));
+    if (m.wordAnalysis?.contextualMeaning) {
+      panel.append(row('contextual-meaning', 'context meaning', m.wordAnalysis.contextualMeaning.text, 'analysis'));
+      if (m.wordAnalysis.references.length) panel.append(h('div', { class: 'note', 'data-row': 'meaning-references' }, `References: ${m.wordAnalysis.references.map((r) => r.label).join(', ')}.`));
+    }
+    if (m.wordAnalysis?.ambiguity.length) panel.append(h('div', { class: 'note', 'data-row': 'word-ambiguity' }, `Other possible readings: ${m.wordAnalysis.ambiguity.join('; ')}.`));
     if (m.gloss) panel.append(h('div', { class: 'row' }, h('span', { class: 'v' }, h('strong', {}, 'Word list: '), m.gloss), tag(m.labels.gloss)));
     // the dictionary's own senses (the immediate card shows the word list's meaning when it has one), with the attribution CC BY-SA asks for
     if (m.gloss && v.gloss.state === 'ready' && v.gloss.senses.length) panel.append(row('dictionary', 'dictionary', `${v.gloss.senses.slice(0, 4).join('; ')}${v.gloss.attribution ? ` (${v.gloss.attribution})` : ''}`, 'analysis', true));
@@ -1132,36 +1136,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const wordLine = h('div', { class: 'wordline' }, word, say);
     // Keep playback status visible while the learner waits, listens, or recovers from an error.
     const pronNote = h('div', { class: 'note pron', role: 'status', 'aria-live': 'polite' }, pron.note);
-    const audioControls = h('div', { class: 'actions', role: 'group', 'aria-label': 'Playback' });
-    let stopAudio: HTMLButtonElement | undefined;
-    let audioSpeed: HTMLSelectElement | undefined;
-    if (pronouncer.onPlaybackState && pronouncer.stop) {
-      stopAudio = h('button', { type: 'button' }, 'Stop pronunciation') as HTMLButtonElement;
-      stopAudio.disabled = true;
-      stopAudio.addEventListener('click', () => {
-        pronunciationRequest++;
-        pron.pending = undefined;
-        pron.playing = false;
-        pron.autoPlay = undefined;
-        pronouncer.stop?.();
-        pron.note = 'Pronunciation stopped.';
-        renderPron();
-      });
-      audioControls.append(stopAudio);
-    }
-    if (pronouncer.setRate) {
-      audioSpeed = h('select', { 'aria-label': 'Pronunciation speed' }) as HTMLSelectElement;
-      for (const rate of [0.5, 0.75, 1, 1.25, 1.5]) audioSpeed.append(h('option', { value: String(rate) }, `${rate}×`));
-      audioSpeed.value = String(playbackRate);
-      audioSpeed.disabled = true;
-      audioSpeed.addEventListener('change', () => {
-        playbackRate = Number(audioSpeed!.value);
-        pronouncer.setRate?.(playbackRate);
-        pron.note = 'Pronunciation speed changed; device voices use it on the next playback.';
-        renderPron();
-      });
-      audioControls.append(h('label', {}, 'Speed ', audioSpeed));
-    }
+    // No playback row (the owner, 2026-11-03): the "Stop pronunciation" button and the "Speed" stepper are gone from the card; the speaker
+    // beside the word is the one control, and a word plays at the device's own rate.
 
     // "view sources", a subscript under the meaning: the list of pages the information came from
     const sourcesBtn = h('button', { type: 'button', class: 'sourcesBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-sources' }, 'view sources') as HTMLButtonElement;
@@ -1224,8 +1200,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
     statusEl = h('div', { class: 'status', role: 'status', 'aria-live': 'polite' }, '');
     feedbackEl = h('div', { class: 'feedback', role: 'status', 'aria-live': 'polite' }, '');
-    parts = { rows, pronNote, say, stopAudio, audioSpeed, sources, sourcesBtn, deeper, deeperBtn, sentenceBox, sentenceBtn, variantsBox, variantsBtn, encounters, levelName, layers, fix, report, rateBtns };
-    const wrapper = h('div', {}, top, wordLine, rows, audioControls, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, fix, feedbackEl, statusEl);
+    parts = { rows, pronNote, say, sources, sourcesBtn, deeper, deeperBtn, sentenceBox, sentenceBtn, variantsBox, variantsBtn, encounters, levelName, layers, fix, report, rateBtns };
+    const wrapper = h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, fix, feedbackEl, statusEl);
     mountCard(wrapper, `GoLearn: ${m.surface}`);
     renderAll();
     pron.off = pronouncer.onChange?.(() => { checkPronunciation(renderToken); });

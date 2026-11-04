@@ -198,9 +198,19 @@ describe('the sound statements are true of GoListen today (a change there must c
     expect(TUTORIALS.de.steps.find((x) => x.id === 'sound-and-audio')!.body).toMatch(/one short demonstration clip, which is not a pronunciation resource/);
   });
 
-  it.each(['nb', 'nn'])('%s: a matching device voice is practice only, as the honesty step says', (lang) => {
-    const a = audioOf(lang);
+  it('Bokmål: names device and consent-gated remote voices without claiming recordings', () => {
+    const a = audioOf('nb');
+    expect(a).toMatchObject({ recordings: 0, deviceVoiceTemplate: true });
+    expect(a.remoteVoices.length).toBeGreaterThan(0);
+    const body = TUTORIALS.nb.steps.find((x) => x.id === 'honesty-experimental')!.body;
+    expect(body).toMatch(/matching Bokmål voice.*synthetic practice only/);
+    expect(body).toMatch(/explicit remote-speech consent.*remote Bokmål voice/);
+    expect(body).toMatch(/Nynorsk has no registered remote voice/);
+  });
+
+  it('Nynorsk: only claims a matching device voice', () => {
+    const a = audioOf('nn');
     expect(a).toMatchObject({ recordings: 0, deviceVoiceTemplate: true, remoteVoices: [] });
-    expect(TUTORIALS[lang].steps.find((x) => x.id === 'honesty-experimental')!.body).toMatch(/matching .* voice, GoLearn can play a word as synthetic practice only/);
+    expect(TUTORIALS.nn.steps.find((x) => x.id === 'honesty-experimental')!.body).toMatch(/matching .* voice, GoLearn can play a word as synthetic practice only/);
   });
 });

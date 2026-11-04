@@ -81,6 +81,17 @@ export interface UnitFacts {
   features?: Record<string, string>;
   /** Glosses, lexicon first then dictionary senses; empty when none. */
   glosses: string[];
+  /** Explicit base-meaning recognition for a confirmed inflected-form → lexeme link; never an inflected/contextual translation. */
+  lexicalRecognition?: {
+    status: 'verified' | 'withheld';
+    lemma?: string;
+    pos?: string;
+    glosses?: string[];
+    source?: string;
+    attribution?: string;
+    evidence?: 'attested-form-reading';
+    reason?: string;
+  };
   /** Attribution line to show whenever a dictionary gloss is shown. */
   glossAttribution?: string;
   /** Morphological constructions the form realizes (Repository ids). */
@@ -382,7 +393,7 @@ export interface PlannedItem { item: DeckItem; family: ExerciseFamily; why: stri
 export type ExclusionCode = 'scheduled-not-due' | 'learning-not-due' | 'new-budget-exhausted' | 'daily-allowance-exhausted' | 'workload-admission-cap'
   | 'over-time-budget' | 'beyond-micro-deck' | 'knowledge-beyond-new-required' | 'seen-evidence-insufficient' | 'automatic-suppressed'
   | 'listening-audio-unavailable' | 'snoozed' | 'suspended' | 'dismissed' | 'invalidated' | 'repair-required' | 'learner-control'
-  | 'invalid-request' | 'facts-unavailable' | 'knowledge-unresolved' | 'same-unit-in-batch' | 'selected' | 'outranked' | 'other';
+  | 'invalid-request' | 'facts-unavailable' | 'knowledge-unresolved' | 'same-unit-in-batch' | 'selected' | 'deck-fill' | 'outranked' | 'other';
 
 export interface SessionBatch { targetQuestions: number; workloadLimit: number; estimatedSeconds: number; reasons: string[] }
 

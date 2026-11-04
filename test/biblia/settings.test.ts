@@ -73,8 +73,10 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Settings in GoReview\'s d
     await a.go('#/settings');
     expect(a.route).toBe('settings');
     expect(text(q('.screen > h1'))).toBe('Settings');
-    expect([...document.querySelectorAll('.screen > section.card > h2')].map((h) => text(h))).toEqual(['Reading', 'Account', 'Service', 'Offline', 'Sources & licences']);
-    expect([...document.querySelectorAll('.screen > section.card')].map((s) => s.id)).toEqual(['settings-reading', 'settings-account', 'settings-service', 'settings-offline', 'settings-sources']);
+    expect([...document.querySelectorAll('.screen > section.card > h2')].map((h) => text(h))).toEqual(['Reading', 'Speech', 'Account', 'Service', 'Offline', 'Sources & licences']);
+    expect([...document.querySelectorAll('.screen > section.card')].map((s) => s.id)).toEqual(['settings-reading', 'settings-speech', 'settings-account', 'settings-service', 'settings-offline', 'settings-sources']);
+    expect(q<HTMLInputElement>('#settings-remote-speech').disabled).toBe(true);
+    expect(q<HTMLInputElement>('#settings-remote-speech').checked).toBe(false);
     // the bar: back to the library, the wordmark, the settings icon marked as the current page
     expect(q('.topbar a.iconbtn[aria-label="Library"]').getAttribute('href')).toBe('#/');
     expect(q('.topbar a.iconbtn[aria-label="Settings"]').getAttribute('aria-current')).toBe('page');

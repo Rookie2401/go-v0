@@ -51,9 +51,18 @@ function plan(target: Parameters<typeof precheck>[1], facts: UnitFacts, ctx: Bui
   const occurrence = occurrences(facts)[0];
   const context = occurrence ? contextOf(occurrence) : undefined;
   const contextualTarget = context?.surface ?? shown;
-  const reference = referenceGloss(facts);
-  const accepted = acceptedMeanings(facts);
-  if (!reference || accepted.length === 0) return refuse('no gloss in the word list or the dictionary, so there is nothing to check a meaning against');
+  const exactReference = referenceGloss(facts);
+  const exactAccepted = acceptedMeanings(facts);
+  const lexical = facts.unit.kind === 'form' && !exactReference && exactAccepted.length === 0 && facts.lexicalRecognition?.status === 'verified'
+    && facts.lexicalRecognition.evidence === 'attested-form-reading' && facts.lexicalRecognition.lemma
+    && facts.lexicalRecognition.glosses?.length ? facts.lexicalRecognition : undefined;
+  const lexicalFacts = lexical ? { ...facts, glosses: lexical.glosses!, glossAttribution: lexical.attribution, lexiconGlossCount: lexical.glosses!.length } : undefined;
+  const lexicalAccepted = lexicalFacts ? acceptedMeanings(lexicalFacts) : [];
+  const reference = exactReference ?? exactAccepted[0] ?? (lexicalFacts ? referenceGloss(lexicalFacts) ?? lexicalAccepted[0] : undefined);
+  const accepted = exactAccepted.length ? exactAccepted : lexicalAccepted;
+  if (!reference || accepted.length === 0) return refuse(facts.lexicalRecognition?.status === 'withheld'
+    ? facts.lexicalRecognition.reason ?? 'the source did not establish one safe base meaning for this form'
+    : 'no gloss in the word list or the dictionary, so there is nothing to check an answer against');
 
   const random = rnd(ctx);
   const distractors = glossDistractors(ctx.pool, facts, accepted, random, 3);
@@ -61,13 +70,16 @@ function plan(target: Parameters<typeof precheck>[1], facts: UnitFacts, ctx: Bui
 
   const descr = isForm && f.morphDescription && facts.lemma ? ` It is the ${f.morphDescription} of ${quote(facts.lemma)}.` : '';
   const caveat = facts.status === 'provisional' ? ' (This reading comes from the pack’s word-form rules and has not been reviewed.)' : '';
-  const explanation = `${quote(shown)} means ${quote(reference)}.${descr}${attributionLine(facts, [reference])}${caveat}`;
+  const explanation = lexical
+    ? `${quote(shown)} is an attested form of ${quote(lexical.lemma!)}. This asks for the base meaning ${quote(reference)}; its inflected or contextual meaning was not assessed.${facts.status === 'provisional' ? ' The form analysis is provisional.' : ''} Source: ${lexical.attribution ?? lexical.source ?? 'the pack dictionary'}.`
+    : `${quote(shown)} means ${quote(reference)}.${descr}${attributionLine(facts, [reference])}${caveat}`;
 
   const alternatives = (f.alternativeReadings ?? []).flatMap((r) => r.glosses.map((g) => ({ answer: g, sense: `${r.lemma}${r.pos ? ` (${r.pos})` : ''}` })))
     .filter((a) => !accepted.some((x) => normalizeAnswer(x, 'loose') === normalizeAnswer(a.answer, 'loose')));
 
   const variant = choice ? 'choice' : 'typed';
-  const tags = [`unit:${facts.unit.unitId}`, glossSplit(facts).lexicon.length ? 'gloss:word-list' : 'gloss:dictionary', ...(attributionLine(facts, [reference]) ? ['gloss:dictionary'] : [])];
+  const tags = [`unit:${facts.unit.unitId}`, ...(lexical ? ['meaning:lexical-base', `source:${lexical.source ?? 'attested-form-reading'}`]
+    : [glossSplit(facts).lexicon.length ? 'gloss:word-list' : 'gloss:dictionary', ...(attributionLine(facts, [reference]) ? ['gloss:dictionary'] : [])])];
   return {
     ok: true,
     exercise: assemble({
@@ -75,24 +87,24 @@ function plan(target: Parameters<typeof precheck>[1], facts: UnitFacts, ctx: Bui
       family: 'written-recognition',
       target: { ...target },
       prompt: {
-      instruction: context
-        ? `What does ${quote(contextualTarget)} mean in this sentence?`
-        : `What does ${quote(shown)} mean?`,
-      stimulusText: context?.sentence ?? shown,
+      instruction: lexical ? `What is the base meaning of this word form? ${quote(shown)}`
+        : context ? `What does ${quote(contextualTarget)} mean in this sentence?`
+          : `What does ${quote(shown)} mean?`,
+      stimulusText: lexical ? shown : context?.sentence ?? shown,
         ...(choice ? { options: shuffle([reference, ...distractors], random) } : {}),
       },
       answerKey: choice
         ? { accepted: [reference], normalization: 'exact', explanation, ...(facts.constructionExplanation ? { deeper: facts.constructionExplanation } : {}) }
         : {
-          accepted, normalization: 'loose', explanation, openEnded: true, articles: ['to', 'a', 'an', 'the'],
+          accepted, normalization: 'loose', explanation, openEnded: true, articles: lexical ? [] : ['to', 'a', 'an', 'the'],
           ...(alternatives.length ? { alternatives } : {}),
           ...(facts.constructionExplanation ? { deeper: facts.constructionExplanation } : {}),
         },
       hiddenBeforeAnswer: [],
       responseMode: choice ? 'choice' : 'typed-or-self',
       eligibility,
-      builtFrom: { facts: [...new Set(tags)], ...(occurrence ? { sentenceSource: occurrence.example.source } : {}) },
-      ...(occurrence ? { context } : {}),
+      builtFrom: { facts: [...new Set(tags)], ...(!lexical && occurrence ? { sentenceSource: occurrence.example.source } : {}) },
+      ...(!lexical && occurrence ? { context } : {}),
       variant,
     }),
   };

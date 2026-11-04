@@ -437,6 +437,9 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
   const engine = createReviewEngine({
     builders: opts.builders ?? FAKE_BUILDERS, evidenceFor: fakeEvidenceFor, ratingFor, factsFor: () => fakeFacts, now, random: () => 0.5,
   });
+  // The shared fake facts are exercise fixtures, not an installed pack provider.
+  // Recovery tests opt in explicitly so unrelated sync/home tests don't scan the full vocabulary.
+  engine.canRecoverCandidates = () => false;
   const local: FakeLocalRepo | undefined = !opts.local ? undefined
     : typeof opts.local === 'object' && 'uploads' in opts.local ? opts.local
       : fakeLocalRepo(service, typeof opts.local === 'object' ? opts.local : {});
@@ -559,6 +562,11 @@ export async function startWith(rig: Rig, events: GoEvent[], prefs: Partial<Revi
   await reopen(rig);
   rig.q('#start-session').click();
   await until(() => !!rig.root.querySelector('#session .exercise'), 'the first exercise');
+}
+
+/** The cards the home's two decks hold, Current Deck plus Review Deck (the owner, 2026-10-31: they replaced the single "N cards ready"). */
+export function readyCards(rig: Rig): number {
+  return Number(rig.q('#start-session').getAttribute('data-cards')) + Number(rig.q('#start-review').getAttribute('data-cards'));
 }
 
 /** A card reviewed long ago, so that it is due. */

@@ -65,6 +65,7 @@ export type FetchLike = (url: string, init?: {
   headers?: Record<string, string>;
   body?: string;
   credentials?: 'same-origin' | 'omit' | 'include';
+  redirect?: 'error';
   cache?: 'no-store';
   signal?: AbortSignal;
 }) => Promise<FetchResponseLike>;

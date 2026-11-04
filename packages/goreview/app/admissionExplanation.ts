@@ -4,7 +4,7 @@
  * decisions, and the plan's exclusion codes. It explains; it never changes what is admitted. Counts of units only, no words.
  */
 import { admissionBudget } from '../src/planner/budget';
-import type { ExclusionCode, SessionPlan } from '../src/types';
+import type { ExclusionCode, IntakeOutcome, SessionPlan } from '../src/types';
 import type { CurrentDeck } from './deckModel';
 import type { ReviewModel } from './workspace';
 
@@ -12,6 +12,39 @@ export interface AdmissionExplanation {
   /** Stable code of the leading reason. */
   code: 'new-words-available' | 'knowledge-unresolved' | 'daily-allowance-used' | 'new-words-off' | 'no-candidates' | 'candidates-not-testable' | 'eligible-waiting' | 'none-eligible';
   text: string;
+}
+
+/** Plain next-step guidance only when intake and the exercise builder say this card is ready. */
+export function nextSkillGuidance(outcome: IntakeOutcome): string | undefined {
+  if (outcome.decision !== 'test-now' || !outcome.proposed) return undefined;
+  const family = outcome.proposed.family;
+  const level = outcome.knowledge?.level;
+  const analysisSupportsProduction = outcome.candidate.eligibility.eligible
+    && (outcome.candidate.eligibility.status === 'verified' || outcome.candidate.eligibility.status === 'high-confidence');
+  if (family === 'meaning-to-form') {
+    if (['recognized', 'familiar', 'known', 'automatic'].includes(level ?? '')) {
+      return 'Independent recognition across spaced reviews supports the next step: recalling the word from its meaning.';
+    }
+    return 'Recall comes after independent recognition over time and a reliable answer key.';
+  }
+  if (family === 'sentence-completion') {
+    return ['familiar', 'known', 'automatic'].includes(level ?? '') && analysisSupportsProduction
+      ? 'Your spaced recognition and supported example allow practice using the word in a sentence.'
+      : 'Recognition comes first; sentence practice needs stronger spaced evidence and reliable word facts.';
+  }
+  if (family === 'grammar-application' || family === 'morphological-identification') {
+    return ['familiar', 'known', 'automatic'].includes(level ?? '') && analysisSupportsProduction
+      ? 'Your spaced recognition and reviewed word analysis allow a grammar question.'
+      : 'Recognition comes first; grammar practice needs stronger spaced evidence and reviewed word analysis.';
+  }
+  if (family === 'phrase-comprehension') return 'This supported phrase lets you practice the word’s meaning in context.';
+  if (family === 'written-recognition') return 'This question practices recognition; recall is offered when spaced, independent results and word facts support it.';
+  if (family === 'audio-to-meaning' || family === 'audio-transcription') {
+    return outcome.reasons.some(reason => /practice only|synthetic speech/i.test(reason))
+      ? 'Audio is available for practice; synthetic speech does not count as listening evidence.'
+      : 'Suitable audio supports listening practice for this word.';
+  }
+  return undefined;
 }
 
 const n = (count: number, one: string, many = one + 's'): string => `${count} ${count === 1 ? one : many}`;

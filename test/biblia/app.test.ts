@@ -45,6 +45,26 @@ beforeEach(() => { restore = stubLayout(); setBody('<div id="app"></div>'); wind
 afterEach(() => { app?.destroy(); app = undefined; restore(); });
 
 describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported texts', () => {
+  it('keeps account speech off until explicit consent is recorded, then records withdrawal immediately', async () => {
+    const rec = fakeRecorder();
+    app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: rec,
+      speechAccount: async () => ({ serviceUrl: 'https://repo.example', token: 'session', learnerId: 'L1' }), now: () => new Date('2026-10-18T12:00:00Z') });
+    await app.go('#/settings');
+    const toggle = document.querySelector<HTMLInputElement>('#settings-remote-speech')!;
+    expect(toggle.disabled).toBe(false);
+    expect(toggle.checked).toBe(false);
+    toggle.checked = true;
+    toggle.dispatchEvent(new Event('change'));
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(rec.events.at(-1)).toMatchObject({ kind: 'ConsentGiven', payload: { consent: 'remote-speech', scope: 'remote-speech' } });
+    expect(toggle.checked).toBe(true);
+    toggle.checked = false;
+    toggle.dispatchEvent(new Event('change'));
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(rec.events.at(-1)).toMatchObject({ kind: 'ConsentWithdrawn', payload: { consent: 'remote-speech', scope: 'remote-speech' } });
+    expect(toggle.checked).toBe(false);
+  });
+
   it('shows the library as Biblia organises it, with the notices that are true of this build', async () => {
     const rec = fakeRecorder();
     app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: rec, now: () => new Date('2026-10-18T12:00:00Z') });
@@ -92,7 +112,7 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
       word.click();
       await new Promise((r) => setTimeout(r, 20));
       const root = app.cardRoot()!;
-      expect(root.querySelector('[data-row="period"]')!.textContent).toMatch(/^Read as Biblical Aramaic/);
+      expect(root.querySelector('#panel-variants')!.textContent).toMatch(/This text is read as Biblical Aramaic/);
       (root.querySelector('.variantsBtn') as HTMLButtonElement).click();
       const rows = [...root.querySelectorAll('table.variants tr')].map((tr) => [tr.classList.contains('current'), tr.querySelector('th')!.textContent]);
       expect(rows[0]).toEqual([true, 'Biblical Aramaic (this text)']);
@@ -105,11 +125,22 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
       word.click();
       await new Promise((r) => setTimeout(r, 20));
       const root = app.cardRoot()!;
-      expect(root.querySelector('.kicker')!.textContent).toBe('Meaning · Open Scriptures Hebrew Bible morphology');
+      expect(root.querySelector('.kicker')!.textContent).toBe('Meaning · Lemma meaning');
       (root.querySelector('.sourcesBtn') as HTMLButtonElement).click();
       const sources = [...root.querySelectorAll('.sources li')].map((li) => li.textContent ?? '');
       expect(sources.some((s) => /Open Scriptures Hebrew Bible morphology/.test(s))).toBe(true);
       expect(root.querySelector('.sources')!.textContent).not.toMatch(/No external source/);
+    });
+    it('a verb card says the form\'s own English, not the citation: וַיֹּאמֶר is "And he said" (the owner, 2026-11-03)', async () => {
+      app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: fakeRecorder(), now: () => new Date() });
+      await app.go('#/read/Gen/1');
+      const word = [...document.querySelectorAll('.reader .prose button.word')].find((b) => consonantal(b.textContent ?? '') === 'ויאמר') as HTMLButtonElement;
+      expect(word).toBeDefined();
+      word.click();
+      await new Promise((r) => setTimeout(r, 20));
+      const root = app.cardRoot()!;
+      expect(root.querySelector('[data-row="meaning"]')!.textContent).toContain('And he said');
+      expect(root.querySelector('.kicker')!.textContent).not.toBe('Meaning · Lemma meaning');
     });
   });
 
@@ -131,7 +162,7 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
       expect(word.classList.contains('sel')).toBe(true);
       const card = app.cardRoot();
       expect(card?.textContent).toMatch(/Variants/);
-      expect(card?.textContent).toMatch(/Read as Biblical Hebrew/);
+      expect(card?.querySelector('#panel-variants')!.textContent).toMatch(/This text is read as Biblical Hebrew/);
       expect(rec.enrolments).toEqual(['he|he-bib']);
       expect(rec.events.map((e) => e.kind)).toEqual(['SelectionLookedUp', 'EncounterRecorded']); // the tap, and the verse's other words as read
       const ev = rec.events[0];

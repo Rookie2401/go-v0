@@ -183,7 +183,7 @@ export function createGoListenPronouncer(opts: GoListenPronouncerOptions): Prono
       try {
         const reply = await opts.speechBridge({ op, requestId, languageId: lang, readerId: context?.readerId,
           varietyId: context?.varietyId, text: typeof payload.text === 'string' ? payload.text : undefined,
-          kind: context?.kind ?? 'word', voice: typeof payload.voice === 'string' ? payload.voice : undefined,
+          kind: context?.kind ?? 'word', processingPermission: opts.processingPermission?.(), voice: typeof payload.voice === 'string' ? payload.voice : undefined,
           locale: typeof payload.locale === 'string' ? payload.locale : undefined });
         const r = reply ?? { ok: false, status: 503 };
         return { ok: r.ok, status: r.status,

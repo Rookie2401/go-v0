@@ -163,7 +163,7 @@ function walkFiles(root, directory) {
 
 /** Source fingerprint captured before local preflight commands run, including expected copied static inputs. */
 export function captureReleaseSourceFingerprint(projectRoot = ROOT) {
-  const languages = (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th').split(',').map(value => value.trim()).filter(Boolean);
+  const languages = (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th,la').split(',').map(value => value.trim()).filter(Boolean);
   const staticInputs = [
     ...languages.flatMap(language => walkFiles(projectRoot, `public/dict/${language}`).filter(file => path.basename(file) !== 'frequency.json')),
     ...walkFiles(projectRoot, 'public/lexicon'),
@@ -249,6 +249,13 @@ function staticSourceInputs(artifactList) {
     const bibleData = file.match(/^biblia\/(data|lexicon)\/(.+)$/);
     if (bibleData?.[1] === 'data') inputs.push(`packages/biblia/public/data/${bibleData[2]}`);
     if (bibleData?.[1] === 'lexicon') inputs.push(`public/lexicon/${bibleData[2]}`);
+    const hebrewLexicon = file.match(/^lexicon\/he\/(biblical|modern)\/(.+)$/);
+    if (hebrewLexicon && file !== 'lexicon/he/biblical/form-frequency.json.gz') inputs.push(`public/lexicon/he/${hebrewLexicon[1]}/${hebrewLexicon[2]}`);
+    const greekLexicon = file.match(/^lexicon\/el\/(ancient|modern)\/(.+)$/);
+    if (greekLexicon) inputs.push(`public/lexicon/el/${greekLexicon[1]}/${greekLexicon[2]}`);
+    if (file === 'lexicon/el/koine-index.json.gz') inputs.push('public/lexicon/el/koine-index.json');
+    // Generated from this licensed public index during the app build; the generated file itself is not a public source input.
+    if (file === 'lexicon/he/biblical/form-frequency.json.gz') inputs.push('public/lexicon/he/biblical-index.json');
   }
   return [...new Set(inputs)].sort();
 }

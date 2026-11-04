@@ -390,9 +390,11 @@ describe('provenance of rows registered by a lookup (P-12)', () => {
   });
 });
 
-describe('POST /units/:id/corrections', () => {
+// On the shared service a correction changes nothing shared: shared-word-list.test.ts. These are a Repository with one learner.
+describe('POST /units/:id/corrections with applyLearnerCorrections', () => {
   const setup = async (status: LinguisticUnit['status'] = 'provisional') => {
     const h = realHarness();
+    h.deps.applyLearnerCorrections = true;
     await h.realStore.putPack(PACK({ level: 'experimental' }));
     const who = await signUp(h, 'a@example.test');
     await who.api.appendEvents([lookupOf(who, 'librin')]);
@@ -502,6 +504,7 @@ describe('POST /units/:id/corrections', () => {
 describe('export and deletion', () => {
   it('GET /export carries the provenance of the units the learner\'s events refer to', async () => {
     const h = realHarness();
+    h.deps.applyLearnerCorrections = true; // a corrected row, which a Repository with one learner has and the service kept from before 2026-11-03
     await h.realStore.putPack(PACK({ level: 'experimental' }));
     const who = await signUp(h, 'a@example.test');
     await who.api.appendEvents([lookupOf(who, 'librin')]);
@@ -519,6 +522,7 @@ describe('export and deletion', () => {
   it('DELETE /me erases the learner and leaves the shared rows, which hold nothing of the learner', async () => {
     const h = realHarness();
     await h.realStore.putPack(PACK({ level: 'experimental' }));
+    h.deps.applyLearnerCorrections = true; // as above
     const who = await signUp(h, 'gone@example.test');
     await who.api.appendEvents([lookupOf(who, 'librin')]);
     await who.api.correctUnit(FORM, { reason: 'check this' });

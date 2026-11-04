@@ -237,6 +237,7 @@ export const SALVAGE_ALLOW_LIST: ReadonlyArray<{ prefix: string; status: 'salvag
   { prefix: 'src/adapters/hebrew/', status: 'salvaged', why: 'Hebrew lexicon, morphology and rules' },
   { prefix: 'src/adapters/el.ts', status: 'salvaged', why: 'Greek analyser' },
   { prefix: 'src/adapters/greek/', status: 'salvaged', why: 'Greek lexicon, morphology and rules' },
+  { prefix: 'src/adapters/word-analysis.ts', status: 'salvaged', why: 'the word analysis of a reading in any language (the English of a verb form, from its citation and features)' },
   { prefix: 'src/core/', status: 'salvaged', why: 'adapter contract, token/analysis types, item ids (pure)' },
   { prefix: 'src/dict/', status: 'salvaged', why: 'dictionary format, sharded loader, mapper (browser-safe, licence-labelled)' },
 ];

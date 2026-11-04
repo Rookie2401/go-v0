@@ -4,16 +4,18 @@
  * it is reached from Settings. Everything the learner sees about a proposal carries its reason; nothing is added to the deck
  * without it being shown.
  */
-import type { IntakeOutcome } from '../../src/types';
+import type { IntakeOutcome, SessionPlan } from '../../src/types';
 import type { AppContext } from '../context';
 import { append, button, clear, embedTarget, h, langProps, p, setStatus, statusLine, type Child } from '../dom';
 import { itemMarked } from '../events';
+import { nextSkillGuidance } from '../admissionExplanation';
 import { DIMENSION_LABEL, FAMILY_LABEL, languageName, unitLabel } from '../format';
-import { beginSession, endSavedSession, loadReviewModel, observedReviewSeconds, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
+import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import { freshModel } from '../freshness';
 import { deckSizeControl } from './cardsper';
 import { prefsForm } from './prefs';
 import { addToDeck, planCurrentDeck } from '../deckModel';
+import { itemIdFor } from '../../src/scheduler/deck';
 import type { View } from './view';
 
 export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
@@ -44,7 +46,8 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     }
     const tag = model.identity.varietyId ?? model.identity.languageId;
     root.setAttribute('lang', 'en');
-    append(root, [summary(model), startBlock(model), await recoveryBlock(), controlsBlock(model), candidatesBlock(model, tag), deckBlock(model, tag), status]);
+    const planned = await planCurrentDeck(ctx, model);
+    append(root, [summary(model, planned.plan), startBlock(model), await recoveryBlock(), controlsBlock(model), candidatesBlock(model, tag, planned.plan), deckBlock(model, tag), status]);
   }
 
   async function recoveryBlock(): Promise<HTMLElement | null> {
@@ -72,11 +75,10 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
   }
 
   // ── due-review summary
-  function summary(m: ReviewModel): HTMLElement {
+  function summary(m: ReviewModel, plan: SessionPlan): HTMLElement {
     const c = m.counts;
     const candidates = m.outcomes.filter((o) => o.decision === 'test-now' || o.decision === 'test-later');
     const listening = !m.audio.available ? `not available: ${m.audio.reason}` : m.audio.eligibleForEvidence ? 'available (counts as listening evidence)' : 'available as practice only: synthetic speech never counts as listening evidence';
-    const plan = ctx.engine.plan({ deck: m.deck, intake: m.outcomes.filter((o) => m.choices[o.unitId] !== 'later'), prefs: m.prefs, audio: m.audio, now: m.now, knowledge: m.knowledge, readingSignals: m.events, schedulerProfile: m.schedulerProfile, observedReviewSeconds: observedReviewSeconds(m.events) });
     const levels = new Map(m.knowledge.map((entry) => [entry.unitId, entry.level]));
     for (const outcome of m.outcomes) if (outcome.knowledge && !levels.has(outcome.unitId)) levels.set(outcome.unitId, outcome.knowledge.level);
     const stageCounts = new Map<string, number>();
@@ -132,7 +134,7 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
   /** The unit's label as target-language text, for a sentence in the interface language. */
   const quote = (unitId: string, tag: string): HTMLElement => h('span', langProps(tag), unitLabel(unitId));
 
-  function candidateRow(m: ReviewModel, o: IntakeOutcome, tag: string): HTMLElement {
+  function candidateRow(m: ReviewModel, o: IntakeOutcome, tag: string, plan: SessionPlan): HTMLElement {
     const label = unitLabel(o.unitId);
     const words = [label];
     const later = m.choices[o.unitId] === 'later';
@@ -158,6 +160,16 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     const rules = o.candidate.reasons.length
       ? h('ul', { class: 'reasons' }, ...o.candidate.reasons.map((r) => h('li', {}, ...embedTarget(`${r.rule} (weight ${r.weight.toFixed(2)})${r.detail ? `: ${r.detail}` : ''}`, words, tag))))
       : null;
+    const cardId = o.proposed ? itemIdFor(o.unitId, o.proposed.dimension) : undefined;
+    const queued = cardId ? plan.items.find(item => item.item.itemId === cardId) : undefined;
+    const deferred = cardId ? plan.skipped.find(item => item.itemId === cardId) : undefined;
+    const disposition = queued
+      ? `This session plan: included as ${queueLabel(queued.queue)}.`
+      : deferred
+        ? `This session plan: not included — ${deferredLabel(deferred.code, deferred.why)}.`
+        : o.proposed && (o.decision === 'test-now' || o.decision === 'test-later')
+          ? 'This candidate is available for practice, but is not in this session plan.' : undefined;
+    const nextSkill = nextSkillGuidance(o);
     return h('li', { class: 'candidate', 'data-unit': o.unitId, 'data-decision': o.decision, ...(later ? { 'data-choice': 'later' } : {}) },
       h('div', { class: 'row' },
         h('strong', langProps(tag), label),
@@ -165,22 +177,24 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
         o.proposed ? h('span', { class: 'muted' }, FAMILY_LABEL[o.proposed.family]) : null,
         later ? h('span', { class: 'tag' }, 'kept for later') : null),
       h('p', { class: 'reason' }, ...embedTarget(o.reasons[0] ?? '', words, tag)),
+      disposition ? p(disposition, 'muted') : null,
+      nextSkill ? p(nextSkill, 'muted') : null,
       h('details', { class: 'why' }, h('summary', {}, 'Why'), h('p', {}, ...embedTarget(ctx.engine.explainIntake(o), words, tag)), reasons, rules ? h('p', { class: 'muted' }, 'What the Repository saw:') : null, rules),
       actions);
   }
 
-  function candidatesBlock(m: ReviewModel, tag: string): HTMLElement {
-    const sec = h('section', { class: 'card', id: 'candidates', 'aria-labelledby': 'cand-h' }, h('h2', { id: 'cand-h' }, 'Comparative priorities among words you met'));
-    sec.append(p('GoReview builds your deck automatically from the highest-priority eligible words, using the same knowledge, retention and reading evidence. Lower comparative priority means other encountered words come first.'));
+  function candidatesBlock(m: ReviewModel, tag: string, plan: SessionPlan): HTMLElement {
+    const sec = h('section', { class: 'card', id: 'candidates', 'aria-labelledby': 'cand-h' }, h('h2', { id: 'cand-h' }, 'Practice candidates'));
+    sec.append(p('These words may be useful to practice. Candidate rank compares them, then the session plan checks available word facts, your practice goals, time and new-word allowance. A high rank does not promise a place. Scheduled review cards are shown separately.'));
     sec.append(h('p', { id: 'vocabulary-recording-note' }, 'Recorded words and practice cards are separate. ', h('a', { href: '#/vocabulary' }, 'View your recorded words'), '. Words may need more reliable analysis or an answer key before they can become practice cards.'));
     if (m.candidateNote) sec.append(p(m.candidateNote, m.candidateSource === 'none' ? 'error' : 'muted'));
     if (!m.outcomes.length) { sec.append(p(m.candidateSource === 'none' ? 'No candidates are available.' : 'The Repository has no new candidates for you right now.', 'muted')); return sec; }
     const group = (title: string, items: IntakeOutcome[], open: boolean): void => {
       if (!items.length) return;
-      sec.append(h('details', { class: 'group', ...(open ? { open: true } : {}) }, h('summary', {}, `${title} (${items.length})`), h('ul', { class: 'candidates' }, ...items.map((o) => candidateRow(m, o, tag)))));
+      sec.append(h('details', { class: 'group', ...(open ? { open: true } : {}) }, h('summary', {}, `${title} (${items.length})`), h('ul', { class: 'candidates' }, ...items.map((o) => candidateRow(m, o, tag, plan)))));
     };
-    group('Worth testing', m.outcomes.filter((o) => o.decision === 'test-now' || o.decision === 'test-later'), true);
-    group('Lower comparative priority', m.outcomes.filter((o) => o.decision === 'low-priority' && o.proposed), false);
+    group('Practice candidates', m.outcomes.filter((o) => o.decision === 'test-now' || o.decision === 'test-later'), true);
+    group('Lower candidate rank', m.outcomes.filter((o) => o.decision === 'low-priority' && o.proposed), false);
     group('Not proposed', m.outcomes.filter((o) => o.decision !== 'test-now' && o.decision !== 'test-later' && !(o.decision === 'low-priority' && o.proposed)), false);
     if (m.dismissed.length) sec.append(p(`${m.dismissed.length} unit(s) you dismissed are not proposed.`, 'muted'));
     return sec;
@@ -246,7 +260,33 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
 }
 
 const DECISION_LABEL: Record<IntakeOutcome['decision'], string> = {
-  'test-now': 'test now', 'test-later': 'test later', 'already-covered': 'already covered', redundant: 'not needed',
-  'too-uncertain': 'too uncertain', 'needs-validation': 'needs validation', 'low-priority': 'low comparative priority',
+  'test-now': 'practice candidate', 'test-later': 'practice later', 'already-covered': 'already covered', redundant: 'not needed',
+  'too-uncertain': 'not ready yet', 'needs-validation': 'needs better word facts', 'low-priority': 'lower candidate rank',
 };
 const decisionLabel = (d: IntakeOutcome['decision']): string => DECISION_LABEL[d];
+
+function queueLabel(queue: SessionPlan['items'][number]['queue']): string {
+  switch (queue) {
+    case 'new': return 'new-word practice';
+    case 'learning': return 'learning return';
+    case 'due': return 'scheduled review';
+    case 'remediation': return 'repair practice';
+    default: return 'practice';
+  }
+}
+
+function deferredLabel(code: SessionPlan['skipped'][number]['code'], detail: string): string {
+  switch (code) {
+    case 'beyond-micro-deck': return 'this session is full, so it waits for a later session';
+    case 'new-budget-exhausted':
+    case 'daily-allowance-exhausted': return 'your new-word allowance is used';
+    case 'over-time-budget': return 'it does not fit the session time you set';
+    case 'same-unit-in-batch': return 'another question for this word is already in this session';
+    case 'facts-unavailable': return 'a reliable question could not be built yet';
+    case 'knowledge-beyond-new-required': return 'GoReview waits until you have met this word while reading';
+    case 'seen-evidence-insufficient': return 'another reading encounter is needed before practice';
+    case 'listening-audio-unavailable': return 'suitable audio is not available';
+    case 'learner-control': return 'you kept it for later';
+    default: return detail;
+  }
+}

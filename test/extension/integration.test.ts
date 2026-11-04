@@ -108,7 +108,7 @@ describe('page -> bridge -> background -> service', () => {
     expect((await rig.page({ type: MSG.status })).sync.pending).toBe(0);
   });
 
-  it('a correction goes to the shared word list through the background, and the event goes through the queue', async () => {
+  it('a correction is reported through the background without touching the shared word list, and the event goes through the queue', async () => {
     const who = await rig.signUp();
     await rig.connect();
     const { ui, controller: c } = pageController();
@@ -121,7 +121,7 @@ describe('page -> bridge -> background -> service', () => {
     (form.querySelector('#alt-typed') as HTMLInputElement).checked = true;
     form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
     await flush(50);
-    expect(rig.h.linguistics.correctCalls.map((x) => x.formId)).toEqual(['form:sq:bukur']);
+    expect(rig.h.linguistics.correctCalls).toEqual([]);
     await rig.fireTimers();
     const corrections = (await rig.h.store.list({ learnerId: who.learnerId, kinds: ['AnalysisCorrected'] }));
     // the service's own record of the correction, and the extension's queued event that names the lookup it corrects

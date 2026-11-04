@@ -1,7 +1,7 @@
 /** The home's one-line answer to "why 0 eligible new admissions" (2026-10-29). */
 import { describe, expect, it } from 'vitest';
 import type { GoEvent } from '../../packages/repository-contract/src';
-import { explainAdmissions } from '../../packages/goreview/app/admissionExplanation';
+import { explainAdmissions, nextSkillGuidance } from '../../packages/goreview/app/admissionExplanation';
 import type { ReviewModel } from '../../packages/goreview/app/workspace';
 import type { IntakeOutcome } from '../../packages/goreview/src/types';
 import { candidate as candidateOf, ids } from './helpers';
@@ -65,5 +65,29 @@ describe('why no new words', () => {
     expect(refused.code).toBe('none-eligible');
     expect(refused.text).toContain('1 word was never met in a text');
     expect(refused.text).toContain('1 word needs a second encounter');
+  });
+});
+
+describe('next skill guidance', () => {
+  it('explains spaced recall only for a ready production proposal', () => {
+    const ready = { ...outcome('lemma:sq:ready:NOUN', 'test-now'),
+      proposed: { dimension: 'meaning-to-target-retrieval' as const, family: 'meaning-to-form' as const },
+      knowledge: { ...({} as NonNullable<IntakeOutcome['knowledge']>), level: 'familiar' as const },
+      candidate: candidateOf('ready', 0.8, { unitId: 'lemma:sq:ready:NOUN', eligibility: { eligible: true, status: 'verified', caveats: [] } }) };
+    expect(nextSkillGuidance(ready)).toContain('recalling the word from its meaning');
+  });
+
+  it('keeps Seen, provisional and blocked outcomes at recognition or withholds next-skill claims', () => {
+    const seen = { ...outcome('lemma:sq:seen:NOUN', 'test-now'),
+      proposed: { dimension: 'meaning-to-target-retrieval' as const, family: 'meaning-to-form' as const },
+      knowledge: { ...({} as NonNullable<IntakeOutcome['knowledge']>), level: 'seen' as const },
+      candidate: candidateOf('seen', 0.8, { unitId: 'lemma:sq:seen:NOUN', eligibility: { eligible: true, status: 'verified', caveats: [] } }) };
+    const provisional = { ...seen, proposed: { dimension: 'productive-recall' as const, family: 'sentence-completion' as const },
+      knowledge: { ...seen.knowledge, level: 'familiar' as const },
+      candidate: { ...seen.candidate, eligibility: { eligible: false as const, status: 'provisional' as const, reason: 'unreviewed' } } };
+    const blocked = { ...seen, decision: 'needs-validation' as const };
+    expect(nextSkillGuidance(seen)).toContain('Recall comes after independent recognition');
+    expect(nextSkillGuidance(provisional)).toContain('Recognition comes first');
+    expect(nextSkillGuidance(blocked)).toBeUndefined();
   });
 });

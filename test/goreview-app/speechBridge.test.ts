@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { createPracticeSpeechFetch, isTrustedPracticeUrl } from '../../packages/goreview/app/speechBridge';
+import { createAccountSpeechFetch, createPracticeSpeechFetch, isTrustedPracticeUrl } from '../../packages/goreview/app/speechBridge';
 import { createAudioDeps } from '../../packages/goreview/app/audio';
 import { spanishRegistry } from '../../packages/golisten/src';
 import { fakeAudio, fakeObjectUrls } from '../golisten/pronounce-fakes';
@@ -45,5 +45,32 @@ describe('GoReview authenticated speech bridge', () => {
     const audio = createAudioDeps({ consent: () => true, extensionRuntime: runtime, extensionUrl: 'chrome-extension://abc/review/index.html', registries: [spanishRegistry()], audio: fakeAudio(), objectUrl: fakeObjectUrls() });
     const result = await audio.pronounce!({ languageId: 'es', text: 'hola', kind: 'word', processingPermission: 'allowed' });
     expect(result.ok).toBe(true);
+  });
+  it('attaches the current account token only to the exact authenticated Repository speech route', async () => {
+    const token = 'account-session-token';
+    const sent: Array<{ url: string; init?: unknown }> = [];
+    const fetcher = async (url: string, init?: { method?: string; headers?: Record<string, string> }) => {
+      sent.push({ url, init });
+      return { ok: true, status: 200, headers: { get: () => 'application/json' }, json: async () => ({ configured: true }), blob: async () => new Blob() };
+    };
+    const fetch = createAccountSpeechFetch(fetcher, 'https://repo.example/api/speech', async () => token, () => true);
+    const ok = await fetch('https://repo.example/api/speech/status');
+    expect(ok.ok).toBe(true);
+    expect(sent).toHaveLength(1);
+    expect(sent[0]?.url).toBe('https://repo.example/api/speech/status');
+    expect(sent[0]?.init).toMatchObject({ method: 'GET', headers: { Authorization: `Bearer ${token}` }, credentials: 'omit', cache: 'no-store' });
+    await fetch('https://attacker.example/api/speech/status');
+    await fetch('https://repo.example/api/speech/status?redirect=1');
+    const phrase = await fetch('https://repo.example/api/speech/synthesize', { method: 'POST', body: JSON.stringify({ languageId: 'es', kind: 'phrase', text: 'hola mundo', voice: 'es-HN-KarlaNeural', locale: 'es-HN', sourcePermission: 'allowed' }) });
+    expect(phrase.status).toBe(200); // the authenticated service makes the exact approved-material decision
+    expect(sent).toHaveLength(2);
+    expect(JSON.parse(String((sent[1]?.init as { body?: string })?.body))).toMatchObject({ languageId: 'es', kind: 'phrase', text: 'hola mundo' });
+    const word = await fetch('https://repo.example/api/speech/synthesize', { method: 'POST', body: JSON.stringify({ languageId: 'es', kind: 'word', text: 'hola', voice: 'es-HN-KarlaNeural', locale: 'es-HN', sourcePermission: 'allowed' }) });
+    expect(word.status).toBe(200);
+    expect(sent).toHaveLength(3);
+    expect(JSON.parse(String((sent[2]?.init as { body?: string })?.body)).languageId).toBe('es');
+    const markup = await fetch('https://repo.example/api/speech/synthesize', { method: 'POST', body: JSON.stringify({ languageId: 'es', kind: 'sentence', text: '<speak>hola</speak>', sourcePermission: 'allowed' }) });
+    expect(markup.status).toBe(422);
+    expect(sent).toHaveLength(3);
   });
 });

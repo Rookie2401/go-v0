@@ -5,9 +5,11 @@ import type { ExerciseFamily } from '../../../packages/goreview/src/types';
 import type { GoEvent } from '../../../packages/repository-contract/src';
 
 describe('adaptive micro-deck target', () => {
-  it('defaults near ten and never exceeds a caller-supplied maximum, including small limits', () => {
+  it('starts at the deck size (ten when none is given) and never exceeds it, including small limits (the owner, 2026-10-31)', () => {
     expect(chooseMicrodeckTarget().targetQuestions).toBe(10);
-    expect(chooseMicrodeckTarget({ configuredMaximum: 60 }).targetQuestions).toBe(10);
+    expect(chooseMicrodeckTarget({ configuredMaximum: 20 }).targetQuestions).toBe(20);
+    expect(chooseMicrodeckTarget({ configuredMaximum: 60 }).targetQuestions).toBe(60);
+    expect(chooseMicrodeckTarget({ configuredMaximum: 20 }).reasons[0]).toBe('The batch starts at your deck size, 20.');
     expect(chooseMicrodeckTarget({ configuredMaximum: 5 }).targetQuestions).toBe(5);
     expect(chooseMicrodeckTarget({ configuredMaximum: 2 }).targetQuestions).toBe(2);
     expect(chooseMicrodeckTarget({ configuredMaximum: 0 }).targetQuestions).toBe(0);
@@ -29,15 +31,16 @@ describe('adaptive micro-deck target', () => {
     const observations = Array.from({ length: 8 }, (_, i) => ({ family:(i % 2 ? 'meaning-to-form' : 'written-recognition') as ExerciseFamily,
       observedSeconds:50, expectedSeconds:25, correct:i < 2, repeatedFailure:i >= 3 }));
     expect(chooseMicrodeckTarget({ observations, cognitiveCost:0.9 }).targetQuestions).toBe(8);
+    expect(chooseMicrodeckTarget({ observations, cognitiveCost:0.9, configuredMaximum:20 }).targetQuestions).toBe(18); // two below the deck size
   });
 
-  it('modestly grows only after sustained fast responses across multiple modalities', () => {
+  it('grows only from a start below the deck size (an explicit policy start), after sustained fast responses across modalities; never past the deck size', () => {
     const observations = Array.from({ length: 12 }, (_, i) => ({ family:(i % 2 ? 'meaning-to-form' : 'written-recognition') as ExerciseFamily,
       observedSeconds:10, expectedSeconds:25, correct:true }));
-    expect(chooseMicrodeckTarget({ observations, configuredMaximum:20 }).targetQuestions).toBe(12);
-    expect(chooseMicrodeckTarget({ observations, configuredMaximum:11 }).targetQuestions).toBe(11);
-    // the configured maximum is the ceiling: above 20 the batch may still grow, and a policy target above 20 is honoured up to it (2026-10-29)
-    expect(chooseMicrodeckTarget({ observations, configuredMaximum:30 }).targetQuestions).toBe(12);
+    expect(chooseMicrodeckTarget({ observations, configuredMaximum:20 }).targetQuestions).toBe(20); // starts at the deck size; nothing to grow into
+    expect(chooseMicrodeckTarget({ observations, configuredMaximum:20, policy:{ defaultTarget:10 } }).targetQuestions).toBe(12);
+    expect(chooseMicrodeckTarget({ observations, configuredMaximum:11, policy:{ defaultTarget:10 } }).targetQuestions).toBe(11);
+    expect(chooseMicrodeckTarget({ observations, configuredMaximum:30 }).targetQuestions).toBe(30);
     expect(chooseMicrodeckTarget({ observations, configuredMaximum:30, policy:{ adaptive:false, defaultTarget:25 } }).targetQuestions).toBe(25);
     expect(chooseMicrodeckTarget({ observations, configuredMaximum:30, policy:{ adaptive:false, defaultTarget:70 } }).targetQuestions).toBe(30);
     expect(chooseMicrodeckTarget({ observations, configuredMaximum:20, policy:{ adaptive:false, defaultTarget:9 } }).targetQuestions).toBe(9);

@@ -109,6 +109,15 @@ function selectionSection(ctx: AppContext, view: View): HTMLElement {
       ['Vocabulary units', String(c.vocabularyUnits)], ['Knowledge rows', String(c.knowledgeRows)], ['Candidates', String(c.candidates)],
       ['Deck cards', String(c.deckCards)], ['Class cards', String(c.classCards)], ['Selected', String(c.selected)],
       ['Skipped by the planner', String(c.skipped)], ['Withheld', String(c.withheld)],
+      ['Candidates source', report.freshness.candidates], ['Knowledge source', report.freshness.knowledge.source],
+      ['Knowledge data time', report.freshness.knowledge.fetchedAt ?? '–'],
+      ['Daily new allowance left', String(report.planning.dailyNewAllowanceRemaining)],
+      ['Current Deck items in this combined plan', String(report.planning.currentDeckItemsInPlan)], ['Review Deck items in this combined plan', String(report.planning.reviewDeckItemsInPlan)],
+      ['Remediation items in this plan', String(report.planning.remediationItemsInPlan)],
+      ['Candidate forms sharing a verified base word', String(report.coverage.candidateFormsMergedToVerifiedBaseWord)],
+      ['Distinct verified base words represented', String(report.coverage.verifiedBaseWordsInCandidateMerge)],
+      ['Skills with candidate proposals', report.coverage.proposedSkills.join(', ') || '–'],
+      ['Plan target / available', `${report.planning.targetQuestions} / ${report.planning.availableQuestions}`],
       ['Scheduler', report.policy.algorithm + ' ' + report.policy.parametersVersion], ['Priority policy', report.policy.priorityPolicyVersion],
     ];
     const shown = report.rows.slice(0, ROW_LIMIT);
@@ -116,9 +125,10 @@ function selectionSection(ctx: AppContext, view: View): HTMLElement {
       h('dl', { class: 'facts', id: 'why-counts' }, ...facts.flatMap(([k, v]) => [h('dt', {}, k), h('dd', {}, v)])),
       h('table', { class: 'why-table', id: 'why-rows' },
         h('caption', {}, 'One row per deck card, class card and candidate'),
-        h('thead', {}, h('tr', {}, ...['Unit', 'Kind', 'Status', 'Code', 'Due', 'Phase'].map(t => h('th', { scope: 'col' }, t)))),
+        h('thead', {}, h('tr', {}, ...['Unit', 'Kind', 'Intake rank', 'Skill', 'Status', 'Code', 'Due', 'Phase'].map(t => h('th', { scope: 'col' }, t)))),
         h('tbody', {}, ...shown.map(r => h('tr', { 'data-code': r.code, 'data-status': r.status },
-          h('td', {}, r.unitId), h('td', {}, r.kind), h('td', {}, r.status), h('td', {}, r.code), h('td', {}, r.due ?? '–'), h('td', {}, r.phase ?? '–'))))),
+          h('td', {}, r.unitId), h('td', {}, r.kind), h('td', {}, r.intakeRank ? `${r.intakeRank.position} of ${r.intakeRank.of} · ${r.intakeRank.comparisonScore?.toFixed(2) ?? '–'}` : '–'),
+          h('td', {}, r.family ?? '–'), h('td', {}, r.status), h('td', {}, r.code), h('td', {}, r.due ?? '–'), h('td', {}, r.phase ?? '–'))))),
       report.rows.length > shown.length ? p('Showing the first ' + shown.length + ' of ' + report.rows.length + ' rows; the copied JSON has all of them.', 'muted') : null,
     ]);
   }
@@ -142,7 +152,7 @@ function selectionSection(ctx: AppContext, view: View): HTMLElement {
       button('Build selection report', () => { void build(); }, { id: 'why-build', class: 'btn' }),
       button('Copy diagnostic JSON', () => { void copy(); }, { id: 'why-copy', class: 'btn' })),
     status, result,
-    p('The export holds unit ids and scheduling numbers only: no words, sentences, glosses, credentials or e-mail address.', 'muted'),
+    p('The export includes unit ids (which can contain word forms), scheduling numbers and source freshness. It does not include passage text, glosses, credentials or your e-mail address.', 'muted'),
   ]);
   return box;
 }

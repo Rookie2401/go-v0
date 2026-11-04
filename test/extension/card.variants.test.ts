@@ -85,9 +85,11 @@ describe('the Variants pill', () => {
     expect(current).toEqual(['Modern Hebrew (this text)']);
   });
 
-  it('the top rows say which period the text was read in', () => {
+  it('the deeper variants panel says which period the text was read in', () => {
     ui.show(model(true), anchor);
-    expect(ui.root()!.querySelector('[data-row="period"]')!.textContent).toBe('Read as Biblical Hebrew — the text carries cantillation marks: a Masoretic text');
+    expect(ui.root()!.querySelector('[data-row="period"]')).toBeNull();
+    (ui.root()!.querySelector('.variantsBtn') as HTMLButtonElement).click();
+    expect(ui.root()!.querySelector('#panel-variants')!.textContent).toContain('This text is read as Biblical Hebrew: the text carries cantillation marks');
   });
   it('a model without variants (every other language) has no Variants pill and no period line', () => {
     ui.show(model(false), anchor);

@@ -5,7 +5,7 @@ import { createMemoryArea } from '../../packages/repository-sync/src';
 import { createMobileRuntime, createNativeKeyValueArea, nativeLearnerPrefix, type GoReviewNativeBridge } from '../../packages/goreview/app/mobile';
 import { createScopedArea, createStateStore, KEYS, learnerPrefix, type Session } from '../../packages/goreview/app/state';
 import type { MobileRuntime } from '../../packages/goreview/app/mobile';
-import { candidate, knowledgeRow, unitOf, cardAdded, defaultService, destroyRigs, ids, makeRig, type, until } from './helpers';
+import { candidate, knowledgeRow, unitOf, cardAdded, defaultService, destroyRigs, ids, makeRig, type, until, readyCards } from './helpers';
 
 const session: Session = { token: 'secret-token', learnerId: 'learner-A', email: 'a@example.org', expiresAt: '2027-01-01T00:00:00.000Z', serviceUrl: 'https://repo.example.org' };
 
@@ -143,7 +143,7 @@ describe('GoReview native runtime', () => {
     rig.q<HTMLFormElement>('#signin-form').dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
 
     await until(() => !!mobile.secret() && rig.app.current() === 'review' && !!rig.root.querySelector('#review-home'), 'the authenticated home render');
-    await until(() => rig.root.querySelector('#deck-count')?.textContent === '1 card ready', 'the first synced candidate card');
+    await until(() => !!rig.root.querySelector('#start-session') && readyCards(rig) === 1, 'the first synced candidate card');
     expect(rig.root.querySelector('#language-name')?.textContent).toContain('Albanian');
     expect(rig.root.querySelector('#entry-tell')).not.toBeNull();
     expect(rig.root.querySelector('#sync-indicator')?.textContent).toMatch(/Online|Syncing/);

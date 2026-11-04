@@ -7,6 +7,7 @@ import type {
   LearnerItemState, Lemma, PersonalizedCoverage, Phrase, PhraseOccurrence, ProductionKind, Sentence, Token, TokenAnalysis,
 } from '../model';
 import type { DomainEvent } from '../events';
+import type { WordAnalysis } from '../word-analysis';
 import type { TextFeatures, TextProfile } from './library';
 
 /** Layered support for one token — the reader asks for one level at a time. */
@@ -14,6 +15,8 @@ export interface TokenSupport {
   token: Token;
   /** Level 1: concise gloss (from lemma gloss or analysis gloss). */
   gloss?: string;
+  /** Source-separated lexical, inflected, and sentence-context meanings. */
+  wordAnalysis?: WordAnalysis;
   /** Level 3: resolved analysis (human override > lexicon > machine). */
   analysis?: TokenAnalysis;
   lemma?: Lemma;

@@ -7,11 +7,17 @@ import { createGoListen, defaultRegistries, isAssessmentQualified, type GoListen
 import type { AudioAvailability } from '../src/types';
 import type { AudioDeps } from './ports';
 import { createPracticeSpeechFetch, type PracticeExtensionRuntime } from './speechBridge';
+import { createAccountSpeechFetch } from './speechBridge';
 
-export function createAudioDeps(opts: { consent: () => boolean; extensionRuntime?: PracticeExtensionRuntime; extensionUrl?: string } & Partial<Omit<GoListenOptions, 'registries' | 'consent'>> & { registries?: GoListenOptions['registries'] }): AudioDeps {
+export function createAudioDeps(opts: { consent: () => boolean; accountToken?: () => Promise<string | undefined>; extensionRuntime?: PracticeExtensionRuntime; extensionUrl?: string } & Partial<Omit<GoListenOptions, 'registries' | 'consent'>> & { registries?: GoListenOptions['registries'] }): AudioDeps {
+  const fetcher = opts.extensionRuntime
+    ? createPracticeSpeechFetch(opts.extensionRuntime, opts.extensionUrl)
+    : opts.speechProxyBase
+      ? createAccountSpeechFetch(opts.fetch ?? globalThis.fetch.bind(globalThis), opts.speechProxyBase, opts.accountToken ?? (async () => undefined), opts.consent)
+      : opts.fetch;
   const listen = createGoListen({
     ...opts,
-    ...(opts.extensionRuntime ? { fetch: createPracticeSpeechFetch(opts.extensionRuntime, opts.extensionUrl) } : {}),
+    ...(fetcher ? { fetch: fetcher } : {}),
     registries: opts.registries ?? defaultRegistries(),
     consent: () => ({ remoteSpeech: opts.consent() }),
   });
@@ -23,12 +29,17 @@ export function createAudioDeps(opts: { consent: () => boolean; extensionRuntime
     async availability(languageId): Promise<AudioAvailability> {
       const a = await listen.availability(languageId);
       const voices = await listen.voices(languageId);
+      const voiceStates = await Promise.all(voices.map((v) => v.availability()));
       // only a voice that can say any word counts: a recording of one fixed phrase (GoListen's German demonstration asset)
       // made German "available" on a device with no German voice, and every German card then failed to speak (2026-10-28)
       const speaking: typeof voices = [];
-      for (const v of voices) if (v.supports.includes('word') && (await v.availability()) === 'available') speaking.push(v);
+      for (const [i, v] of voices.entries()) if (v.supports.includes('word') && voiceStates[i] === 'available') speaking.push(v);
       if (!speaking.length) {
-        return { available: false, eligibleForEvidence: false, reason: (a.canPronounce ? undefined : a.gaps[0]) ?? `no voice can speak ${languageId} on this device right now` };
+        const reason = voiceStates.includes('needs-sign-in') ? 'Sign in on this device to use the remote speech voice.'
+          : voiceStates.includes('needs-key') ? 'The speech service has no Azure voice key configured.'
+            : voiceStates.includes('needs-consent') ? 'No local voice is available; allow remote speech in Privacy settings to use the remote voice.'
+              : a.gaps.find((gap) => /no .* voice|no .* recordings/i.test(gap)) ?? `no voice can speak ${languageId} on this device right now`;
+        return { available: false, eligibleForEvidence: false, reason };
       }
       const evidence = speaking.some(isAssessmentQualified);
       return evidence

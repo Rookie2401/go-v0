@@ -19,14 +19,20 @@ import type { Failure, PrepareOutcome, Req } from './types';
 
 export const REMOTE_MAX_CHARS = 5000; // MAX_TEXT_CHARS in server/speechHandler.ts
 const STATUS_TTL_MS = 60_000;
+/** Remote health probes must never hold a text-first deck load open while a route is dead. */
+export const REMOTE_AVAILABILITY_TIMEOUT_MS = 4_000;
 
 const NEEDS_CONSENT = 'Remote speech is off. Playing this voice would send the text to a speech service.';
 
 function mapStatus(status: number, code: string | undefined): Failure {
-  if (status === 401 || code === 'missing-credentials') return fail('provider-error', 'The speech service has no working key on the server (missing-credentials).');
+  if (code === 'unauthorized' || code === 'account-required' || status === 401 && code !== 'missing-credentials') return fail('provider-error', 'Sign in to use the remote speech service.');
+  if (code === 'missing-credentials') return fail('provider-error', 'The speech service needs its Azure key before a voice can be used.');
+  if (code === 'remote-speech-consent-required') return fail('no-consent', 'The Repository has no current remote-speech consent for this account. Turn remote speech off and on again after syncing.');
+  if (code === 'source-not-authorized') return fail('no-consent', 'This reader has not permitted sending its text to a speech service.');
   if (status === 429) return fail('provider-error', 'The speech service is rate limiting requests; try again in a moment.');
-  if (status === 403) return fail('provider-error', 'The speech proxy refused the request (it accepts same-origin requests only).');
+  if (status === 403) return fail('provider-error', 'The speech service refused this request. Check the account consent and source permissions.');
   if (status === 413) return fail('provider-error', 'The text is too long for the speech service.');
+  if (status === 422 && code === 'invalid-input') return fail('unsupported-kind', 'The Repository allows words and exact approved examples only; arbitrary speech text is not sent to its provider.');
   return fail('provider-error', `The speech service answered HTTP ${status}${code ? ` (${code})` : ''}.`);
 }
 
@@ -69,7 +75,7 @@ export async function prepareRemote(req: Req, registry: VoiceRegistry, env: GoLi
     if (req.signal?.aborted) return fail('offline', 'Pronunciation was cancelled.');
     res = await send(`${env.proxyBase}/synthesize`, {
       method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'same-origin', cache: 'no-store',
-      body: JSON.stringify({ text: req.text, voice: providerVoice, locale, kind: req.kind, sourcePermission: 'allowed' }), signal: req.signal,
+      body: JSON.stringify({ languageId: req.languageId, text: req.text, voice: providerVoice, locale, format: 'riff-24khz-16bit-mono-pcm', kind: req.kind, sourcePermission: 'allowed' }), signal: req.signal,
     });
   } catch {
     return fail('offline', 'The speech service could not be reached. Check the connection.');
@@ -95,8 +101,8 @@ export async function prepareRemote(req: Req, registry: VoiceRegistry, env: GoLi
 
 const normalizeLocale = (locale: string): string => locale.trim().replace(/_/g, '-').toLowerCase();
 
-type StatusAnswer = { ok: true; configured: boolean } | { ok: false };
-type VoicesAnswer = { ok: true; ids: string[] } | { ok: false; needsKey?: true };
+type StatusAnswer = { ok: true; configured: boolean } | { ok: false; status?: number; code?: string };
+type VoicesAnswer = { ok: true; ids: string[] } | { ok: false; needsKey?: true; needsSignIn?: true };
 
 /** One lookup per key, shared by concurrent callers and kept briefly (a failed lookup is kept too, so a dead proxy is not hammered). */
 function cached<T>(env: GoListenEnv, key: string, load: () => Promise<T>): Promise<T> {
@@ -105,6 +111,18 @@ function cached<T>(env: GoListenEnv, key: string, load: () => Promise<T>): Promi
   const p = load();
   env.cache.set(key, { at: env.now(), value: p });
   return p;
+}
+
+async function fetchProbe<T>(load: (signal: AbortSignal) => Promise<T>): Promise<T | undefined> {
+  const controller = new AbortController();
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<undefined>((resolve) => {
+    timer = setTimeout(() => { controller.abort(); resolve(undefined); }, REMOTE_AVAILABILITY_TIMEOUT_MS);
+  });
+  try {
+    return await Promise.race([load(controller.signal), timeout]);
+  } catch { return undefined; }
+  finally { if (timer) clearTimeout(timer); }
 }
 
 /**
@@ -119,27 +137,36 @@ export async function remoteAvailability(entry: VoiceEntry, env: GoListenEnv): P
   const get = env.fetch;
   if (!get) return 'unavailable';
   const base = env.proxyBase;
-  const init = { credentials: 'same-origin', cache: 'no-store' } as const;
+  const init = { credentials: 'omit', cache: 'no-store' } as const;
   const status = await cached<StatusAnswer>(env, `status:${base}`, async () => {
-    try {
-      const st = await get(`${base}/status`, init);
-      if (!st.ok) return { ok: false };
+    const answer = await fetchProbe(async (signal): Promise<StatusAnswer> => {
+      const st = await get(`${base}/status`, { ...init, signal });
+      if (!st.ok) return { ok: false as const, status: st.status, code: await errorCode(st) };
       const j = await st.json() as { configured?: unknown };
-      return typeof j?.configured === 'boolean' ? { ok: true, configured: j.configured } : { ok: false };
-    } catch { return { ok: false }; }
+      return typeof j?.configured === 'boolean' ? { ok: true as const, configured: j.configured } : { ok: false as const };
+    });
+    return answer ?? { ok: false as const };
   });
-  if (!status.ok) return 'unavailable';
+  if (!status.ok) return status.status === 401 && status.code !== 'missing-credentials' ? 'needs-sign-in' : status.code === 'missing-credentials' ? 'needs-key' : status.code === 'remote-speech-consent-required' ? 'needs-consent' : 'unavailable';
   if (!status.configured) return 'needs-key';
   const lang = entry.source.locale.split('-')[0];
   const voices = await cached<VoicesAnswer>(env, `voices:${base}:${lang}`, async () => {
-    try {
-      const vs = await get(`${base}/voices?lang=${encodeURIComponent(lang)}`, init);
-      if (vs.status === 401) return { ok: false, needsKey: true };
-      if (!vs.ok) return { ok: false };
+    const answer = await fetchProbe(async (signal): Promise<VoicesAnswer> => {
+      const vs = await get(`${base}/voices?lang=${encodeURIComponent(lang)}`, { ...init, signal });
+      if (vs.status === 401) {
+        const code = await errorCode(vs);
+        return { ok: false as const, ...(code === 'missing-credentials' ? { needsKey: true as const } : { needsSignIn: true as const }) };
+      }
+      if (vs.status === 503) {
+        const code = await errorCode(vs);
+        return { ok: false as const, ...(code === 'missing-credentials' ? { needsKey: true as const } : {}) };
+      }
+      if (!vs.ok) return { ok: false as const };
       const list = (await vs.json() as { voices?: Array<{ id?: unknown }> }).voices;
-      return Array.isArray(list) ? { ok: true, ids: list.map((v) => v.id).filter((i): i is string => typeof i === 'string') } : { ok: false };
-    } catch { return { ok: false }; }
+      return Array.isArray(list) ? { ok: true as const, ids: list.map((v) => v.id).filter((i): i is string => typeof i === 'string') } : { ok: false as const };
+    });
+    return answer ?? { ok: false as const };
   });
-  if (!voices.ok) return voices.needsKey ? 'needs-key' : 'unavailable';
+  if (!voices.ok) return voices.needsSignIn ? 'needs-sign-in' : voices.needsKey ? 'needs-key' : 'unavailable';
   return voices.ids.includes(entry.source.providerVoice) ? 'available' : 'unavailable';
 }

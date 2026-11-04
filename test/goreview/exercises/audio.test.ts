@@ -13,7 +13,10 @@ const identity = { learnerId: 'L1', enrolmentId: 'E1', deviceId: 'D1', itemId: '
 
 async function build(family: ExerciseFamily, id: string, mode: AudioMode | 'none') {
   const w = makeWorld();
-  const f = await w.facts(id);
+  const loaded = await w.facts(id);
+  // The exercise fixture explicitly supplies the Albanian accusative's English meaning;
+  // the production provider does not treat a dictionary headword reached via form-of as this evidence.
+  const f = id === IDS.librin ? { ...loaded, glosses: ['book'], wordAnalysis: { ...loaded.wordAnalysis!, inflectedMeaning: { text: 'book', source: 'reviewed-test-fixture' } } } : loaded;
   const audio = mode === 'none' ? undefined : fakeAudio(mode);
   const r = await BUILDERS[family].build(target(id, FAMILY_DIMENSION[family]), f, ctxOf({ audio }));
   return { r, audio, can: BUILDERS[family].canBuild(target(id, FAMILY_DIMENSION[family]), f, ctxOf({ audio })) };

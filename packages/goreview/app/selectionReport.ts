@@ -3,13 +3,14 @@
  *
  * It joins the Review model (deck, Class Essentials deck, intake outcomes, knowledge) with the plan the home built
  * (`planCurrentDeck(...).plan`) and gives EVERY deck card, every class card and every intake outcome exactly one row with a
- * stable machine-readable `code` (the engine's `ExclusionCode`). It writes nothing and changes no ordering or count.
+ * stable machine-readable `code` (the engine's `ExclusionCode`; a deck-fill item, early practice that completes the deck, is `deck-fill`). It writes nothing and changes no ordering or count.
  *
- * Privacy. Rows carry unit ids and scheduling numbers only. The word itself (`label`) appears ONLY when the caller asks for
- * it (`includeLabels`). Never a sentence, a gloss, a credential or the learner's email; detail text is built from codes,
- * dates and engine reason strings, and any occurrence of the word inside a reason is masked unless labels are requested.
+ * Privacy. Rows carry unit ids, queue/rank metadata and scheduling numbers. Unit ids can contain word forms. The resolved
+ * label (`label`) appears ONLY when the caller asks for it (`includeLabels`). Never a sentence, a gloss, a credential or the
+ * learner's email; detail text is built from codes, dates and engine reason strings, and masks matching labels by default.
  */
 import { KNOWABILITY_PRIORITY_POLICY_VERSION } from '../src/planner/priority-policy';
+import { admissionBudget } from '../src/planner/budget';
 import { createFsrsScheduler } from '../src/scheduler/fsrs';
 import { schedulerForReviewProfile } from '../src/scheduler/replay-profile';
 import { itemIdFor } from '../src/scheduler/deck';
@@ -35,6 +36,8 @@ export interface SelectionRow {
   reps?: number;
   queue?: string;
   intakeDecision?: string;
+  /** Comparative position among candidates that passed intake, not a promise of final inclusion. */
+  intakeRank?: { position: number; of: number; comparisonScore?: number; candidateScore?: number; readingRelevance?: number };
   /** Present only when `includeLabels` was requested. */
   label?: string;
 }
@@ -44,6 +47,31 @@ export interface SelectionReport {
   languageId: string;
   policy: { algorithm: string; parametersVersion: string; priorityPolicyVersion: string };
   counts: { vocabularyUnits: number; knowledgeRows: number; candidates: number; deckCards: number; classCards: number; selected: number; skipped: number; withheld: number };
+  planning: {
+    currentDeckItemsInPlan: number;
+    reviewDeckItemsInPlan: number;
+    remediationItemsInPlan: number;
+    /** Deck fill (2026-11-03): early reviews that top the deck up to its size; they are counted above by their queue as well. */
+    fillItemsInPlan: number;
+    selectedNew: number;
+    targetQuestions: number;
+    availableQuestions: number;
+    availableNewQuestions: number;
+    cardsPerDeck: number;
+    maxNewPerSession: number;
+    dailyNewAllowanceRemaining: number;
+    workloadLimitSeconds: number;
+    selectedEstimatedSeconds: number;
+  };
+  freshness: {
+    candidates: ReviewModel['candidateSource'];
+    knowledge: { source: string; fetchedAt?: string; requested?: number; resolved?: number; missing?: number };
+  };
+  coverage: {
+    candidateFormsMergedToVerifiedBaseWord: number;
+    verifiedBaseWordsInCandidateMerge: number;
+    proposedSkills: string[];
+  };
   knowledge?: unknown;
   rows: SelectionRow[];
 }
@@ -53,6 +81,8 @@ interface OptionalModelFields { knowledgeStatus?: unknown; withheld?: unknown }
 
 const effective = (item: DeckItem) => item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict);
 const LEARNING = new Set(['learning', 'relearning']);
+/** A planned item's code: deck-fill early practice (2026-11-03) is reported as 'deck-fill', every other planned item as 'selected'. */
+const selectedCode = (p: PlannedItem): ExclusionCode => (p.presentationReason === 'deck-fill' ? 'deck-fill' : 'selected');
 const round = (n: number, digits = 4): number => Math.round(n * 10 ** digits) / 10 ** digits;
 
 function resolveScheduler(model: ReviewModel): Scheduler {
@@ -109,7 +139,7 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
     const planned = plannedById.get(item.itemId);
     const finish = (status: SelectionRow['status'], code: ExclusionCode, detail: string, queue?: string): SelectionRow =>
       ({ ...base, status, code, detail: scrub(detail, item.unitId), ...numbers, ...(queue ? { queue } : {}), ...labelProps(item.unitId) } as SelectionRow);
-    if (planned) return finish('selected', 'selected', planned.why.join('; '), planned.queue);
+    if (planned) return finish('selected', selectedCode(planned), planned.why.join('; '), planned.queue);
     const skip = skippedById.get(item.itemId);
     if (skip) return finish('excluded', skip.code ?? 'other', skip.why);
     // Not in the plan and not recorded as skipped (class cards, a held-out saved-deck unit, a scheduler issue): derive it.
@@ -141,13 +171,15 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
     const cardId = o.proposed ? itemIdFor(o.unitId, o.proposed.dimension) : undefined;
     const base = { unitId: o.unitId, ...(cardId ? { cardId } : {}), ...(o.proposed ? { dimension: o.proposed.dimension, family: o.proposed.family } : {}), kind: 'candidate' as const };
     const level = o.knowledge?.level ?? levelOf.get(o.unitId);
-    const tail = { ...(level ? { level } : {}), intakeDecision: o.decision, ...labelProps(o.unitId) };
+    const rankText = o.reasons.join(' ').match(/candidate rank (\d+) of (\d+) \(comparison ([\d.]+); base score ([\d.]+); reading usefulness ([\d.]+)/i);
+    const intakeRank = rankText ? { position: Number(rankText[1]), of: Number(rankText[2]), comparisonScore: Number(rankText[3]), candidateScore: Number(rankText[4]), readingRelevance: Number(rankText[5]) } : undefined;
+    const tail = { ...(level ? { level } : {}), intakeDecision: o.decision, ...(intakeRank ? { intakeRank } : {}), ...labelProps(o.unitId) };
     const finish = (status: SelectionRow['status'], code: ExclusionCode, detail: string, queue?: string): SelectionRow =>
       ({ ...base, status, code, detail: scrub(detail, o.unitId), ...(queue ? { queue } : {}), ...tail });
     const planned = cardId ? plannedById.get(cardId) : undefined;
     // A proposed card that already exists in the deck is accounted for by its deck row; this row records the overlap and never double-counts.
     if (cardId && deckIds.has(cardId) && (planned || o.decision === 'test-now')) return finish('excluded', 'other', 'proposed card already in the deck; see its deck row');
-    if (planned) return finish('selected', 'selected', planned.why.join('; '), planned.queue);
+    if (planned) return finish('selected', selectedCode(planned), planned.why.join('; '), planned.queue);
     if (model.dismissed.includes(o.unitId)) return finish('excluded', 'dismissed', 'vocabulary dismissed by the learner');
     if (o.decision === 'test-now') {
       if (model.choices[o.unitId] === 'later') return finish('excluded', 'learner-control', 'postponed by the learner');
@@ -159,7 +191,7 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
       const facts = /fact|validat|exercise/i.test(o.reasons.join(' '));
       return finish('excluded', facts ? 'facts-unavailable' : 'other', o.decision);
     }
-    return finish('excluded', 'other', o.decision);
+    return finish('excluded', 'other', o.reasons.length ? o.reasons.join('; ') : o.decision);
   };
 
   for (const o of model.outcomes) rows.push(outcomeRow(o));
@@ -168,7 +200,7 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
   for (const p of plan.items) {
     if (covered.has(p.item.itemId)) continue;
     rows.push({ unitId: p.item.unitId, cardId: p.item.itemId, dimension: p.item.dimension, family: p.family, kind: 'candidate', status: 'selected',
-      code: 'selected', detail: scrub(p.why.join('; '), p.item.unitId), phase: p.item.schedule.phase, due: p.item.schedule.due,
+      code: selectedCode(p), detail: scrub(p.why.join('; '), p.item.unitId), phase: p.item.schedule.phase, due: p.item.schedule.due,
       ...(p.queue ? { queue: p.queue } : {}), ...labelProps(p.item.unitId) });
   }
 
@@ -176,6 +208,15 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
   for (const o of model.outcomes) units.add(o.unitId);
   for (const k of model.knowledge) units.add(k.unitId);
   const withheld = optional.withheld;
+  const dailyBudget = admissionBudget(model.events, { learnerId: model.identity.learnerId, languageId: model.identity.languageId,
+    now: model.now, maxNew: model.prefs.maxNew, dailyNewLimit: model.prefs.dailyNewLimit ?? model.prefs.maxNew });
+  const knowledgeStatus = optional.knowledgeStatus as { source?: unknown; fetchedAt?: unknown; requested?: unknown; resolved?: unknown; missing?: unknown } | undefined;
+  const canonicalMergeTargets = new Set<string>();
+  let candidateFormsMergedToVerifiedBaseWord = 0;
+  for (const outcome of model.outcomes) {
+    const target = outcome.reasons.map(reason => reason.match(/merged into canonical lexeme ([^ ]+) through one reliable lexical form-of relation/i)?.[1]).find(Boolean);
+    if (target) { canonicalMergeTargets.add(target); candidateFormsMergedToVerifiedBaseWord++; }
+  }
   return {
     generatedAt: model.now,
     languageId: model.identity.languageId,
@@ -185,6 +226,36 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
       deckCards: model.deck.length, classCards: classDeck.length,
       selected: rows.filter(r => r.status === 'selected').length, skipped: plan.skipped.length,
       withheld: Array.isArray(withheld) ? withheld.length : typeof withheld === 'number' ? withheld : 0,
+    },
+    planning: {
+      currentDeckItemsInPlan: plan.items.filter(p => p.queue === 'new' || p.queue === 'learning').length,
+      reviewDeckItemsInPlan: plan.items.filter(p => p.queue === 'due').length,
+      remediationItemsInPlan: plan.items.filter(p => p.queue === 'remediation').length,
+      fillItemsInPlan: plan.items.filter(p => p.presentationReason === 'deck-fill').length,
+      selectedNew: plan.newCount,
+      targetQuestions: plan.batch?.targetQuestions ?? plan.questionLimit ?? plan.items.length,
+      availableQuestions: plan.availableWork?.questions ?? plan.items.length,
+      availableNewQuestions: plan.availableWork?.newQuestions ?? plan.newCount,
+      cardsPerDeck: model.prefs.cardsPerDeck ?? 10,
+      maxNewPerSession: model.prefs.maxNew,
+      dailyNewAllowanceRemaining: dailyBudget.remaining,
+      workloadLimitSeconds: plan.batch?.workloadLimit ?? 0,
+      selectedEstimatedSeconds: plan.items.reduce((sum, p) => sum + p.estimatedSeconds, 0),
+    },
+    freshness: {
+      candidates: model.candidateSource,
+      knowledge: {
+        source: typeof knowledgeStatus?.source === 'string' ? knowledgeStatus.source : 'unknown',
+        ...(typeof knowledgeStatus?.fetchedAt === 'string' ? { fetchedAt: knowledgeStatus.fetchedAt } : {}),
+        ...(typeof knowledgeStatus?.requested === 'number' ? { requested: knowledgeStatus.requested } : {}),
+        ...(typeof knowledgeStatus?.resolved === 'number' ? { resolved: knowledgeStatus.resolved } : {}),
+        ...(Array.isArray(knowledgeStatus?.missing) ? { missing: knowledgeStatus.missing.length } : {}),
+      },
+    },
+    coverage: {
+      candidateFormsMergedToVerifiedBaseWord,
+      verifiedBaseWordsInCandidateMerge: canonicalMergeTargets.size,
+      proposedSkills: [...new Set(model.outcomes.flatMap(o => o.proposed ? [o.proposed.family] : []))].sort(),
     },
     ...(optional.knowledgeStatus !== undefined ? { knowledge: optional.knowledgeStatus } : {}),
     rows,

@@ -6,6 +6,7 @@
  *   inference - a learner-state estimate. The prototype has no learner state, so no field carries this label yet.
  */
 import type { VariantSet } from '../../../../src/core';
+import type { WordAnalysis } from '../../../../src/core/word-analysis';
 
 export type EvidenceLabel = 'fact' | 'analysis' | 'inference';
 export type CardProvenance = 'lexicon' | 'rule' | 'none';
@@ -103,6 +104,8 @@ export interface CardModel {
   /** Plain-words morphology line ("accusative singular, definite"). */
   morphology?: string;
   gloss?: string;
+  /** Separate lexical, inflected, and context-specific meanings with their evidence. */
+  wordAnalysis?: WordAnalysis;
   /** The analyzer's own confidence for the reading shown (0 when there is none). */
   confidence: number;
   provenance: CardProvenance;

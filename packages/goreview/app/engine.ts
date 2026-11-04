@@ -14,8 +14,9 @@ import {
 } from '../src';
 import type { BuilderRegistry, FactsProvider, GradingPort, IntakeOutcome, Exercise } from '../src';
 import type { RepositoryApi } from '../../repository-service/src/api';
-import type { ItemControl, ReviewEngine } from './ports';
+import type { ExerciseReadiness, ExerciseReadinessRequest, ItemControl, RecoveryRequest, ReviewEngine } from './ports';
 import { classFacts, isClassUnit } from './classEssentials';
+import { recoverCandidates } from './recoveredCandidates';
 
 export interface EngineOptions {
   builders: BuilderRegistry;
@@ -43,6 +44,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   // provider only for the exact API client (the context keeps that client stable per service/token).
   const providers = new WeakMap<RepositoryApi, Map<string, FactsProvider>>();
   const warmFacts = new WeakMap<RepositoryApi, Map<string, { at: number; facts: Awaited<ReturnType<FactsProvider['factsFor']>> }>>();
+  const stagedFacts = new WeakMap<RepositoryApi, Map<string, { at: number; facts: Awaited<ReturnType<FactsProvider['factsFor']>> }>>();
   /** Class Essentials phrases are answered from the deck's own table; every other unit goes to the pack, as before. */
   const withClass = (base: FactsProvider): FactsProvider => ({ ...base, factsFor: async (unitId, languageId, varietyId) => (isClassUnit(unitId) ? classFacts(unitId, languageId) : base.factsFor(unitId, languageId, varietyId)) });
   const factsOf = (languageId: string, api: RepositoryApi): FactsProvider => withClass(packFactsOf(languageId, api));
@@ -59,15 +61,73 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     return byLanguage.get(languageId)!;
   };
   const configuredFactsOf = (languageId: string, api: RepositoryApi): FactsProvider | undefined => opts.factsFor?.(languageId, api);
-  const takeWarmFacts = (api: RepositoryApi, languageId: string, unitId: string): Awaited<ReturnType<FactsProvider['factsFor']>> | undefined => {
-    const cache = warmFacts.get(api);
-    const key = `${languageId}\u0000${unitId}`;
+  const factsKey = (languageId: string, unitId: string, varietyId?: string): string => `${languageId}\u0000${varietyId ?? ''}\u0000${unitId}`;
+  const takeWarmFacts = (api: RepositoryApi, languageId: string, unitId: string, varietyId?: string): Awaited<ReturnType<FactsProvider['factsFor']>> | undefined => {
+    // Admission may use Object.create(api) as its provider scope; intake's
+    // one-shot built facts still belong to the underlying API identity.
+    const parent = Object.getPrototypeOf(api) as RepositoryApi | null;
+    const cache = warmFacts.get(api) ?? (parent && typeof parent.units === 'function' && typeof parent.unit === 'function' ? warmFacts.get(parent) : undefined);
+    const key = factsKey(languageId, unitId, varietyId);
     const entry = cache?.get(key);
     cache?.delete(key); // successful intake facts are consumed exactly once by deck admission
     return entry && Date.now() - entry.at < WARM_FACTS_TTL_MS ? entry.facts ?? undefined : undefined;
   };
+  const takeStagedFacts = (api: RepositoryApi, languageId: string, unitId: string, varietyId?: string): Awaited<ReturnType<FactsProvider['factsFor']>> | undefined => {
+    const cache = stagedFacts.get(api);
+    const key = factsKey(languageId, unitId, varietyId);
+    const entry = cache?.get(key);
+    cache?.delete(key);
+    return entry && Date.now() - entry.at < WARM_FACTS_TTL_MS ? entry.facts ?? undefined : undefined;
+  };
+  const exerciseReadiness = async (request: ExerciseReadinessRequest): Promise<ExerciseReadiness> => {
+    try {
+      const facts = takeWarmFacts(request.api, request.languageId, request.unitId, request.varietyId)
+        ?? await factsOf(request.languageId, request.api).factsFor(request.unitId, request.languageId, request.varietyId);
+      if (!facts) return { available: false, reason: 'Verified facts for this word are unavailable.', retryable: true };
+      if (facts.unit.unitId !== request.unitId || facts.unit.languageId !== request.languageId)
+        return { available: false, reason: 'The current facts belong to another word or language.', retryable: true };
+      if (facts.status === 'invalidated' || facts.status === 'conflicted' || facts.status === 'requires-review')
+        return { available: false, reason: 'The source reading is invalidated, conflicted, or awaiting review.', retryable: false };
+      const builder = resolveBuilder(opts.builders, request.family);
+      if (!builder) return { available: false, reason: `No builder is available for ${request.family}.`, retryable: false };
+      const target = { unitId: request.unitId, unitKind: request.unitKind, languageId: request.languageId, dimension: request.dimension, ...(request.varietyId ? { varietyId: request.varietyId } : {}) };
+      const context = { now: request.now, random: () => 0 };
+      const canBuild = builder.canBuild(target, facts, context);
+      const built = await builder.build(target, facts, context);
+      if ('unavailable' in built) return { available: false, reason: built.reason, retryable: false };
+      if (!canBuild) return { available: false, reason: 'The exercise builder rejected the current source facts.', retryable: false };
+      const validation = validateExercise(built);
+      if (!built.eligibility.eligible || !built.validation.ok || !validation.ok)
+        return { available: false, reason: 'The source material did not pass exercise validation.', retryable: false };
+      return { available: true };
+    } catch (error) {
+      return { available: false, reason: error instanceof Error ? error.message : 'The source facts could not be checked.', retryable: true };
+    }
+  };
 
   return {
+    canRecoverCandidates: (languageId, api) => configuredFactsOf(languageId, api) !== undefined,
+    async recoverCandidates(request: RecoveryRequest) {
+      const base = configuredFactsOf(request.languageId, request.api);
+      if (!base) return { candidates: [], complete: false, note: `The ${request.languageId} pack facts are unavailable.` };
+      const captured = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
+      const capturing: FactsProvider & { prime?(ids: string[], varietyId?: string): Promise<void>; clearPrime?(): void } = {
+        async factsFor(unitId, languageId, varietyId) {
+          const value = await base.factsFor(unitId, languageId, varietyId);
+          if (value) captured.set(factsKey(languageId, unitId, varietyId), value);
+          return value;
+        },
+        prime: (ids, varietyId) => (base as FactsProvider & { prime?(unitIds: string[], varietyId?: string): Promise<void> }).prime?.(ids, varietyId) ?? Promise.resolve(),
+        clearPrime: () => (base as FactsProvider & { clearPrime?(): void }).clearPrime?.(),
+      };
+      const recovered = await recoverCandidates({ ...request, facts: capturing });
+      if (captured.size) {
+        let cache = stagedFacts.get(request.api);
+        if (!cache) { cache = new Map(); stagedFacts.set(request.api, cache); }
+        for (const [key, facts] of captured) cache.set(key, { at: Date.now(), facts });
+      }
+      return recovered;
+    },
     async repairMaterial(request) {
       const prepared=new Set<NonNullable<Exercise['prompt']['audio']>>();
       let handedOff=false,released=false;
@@ -103,47 +163,47 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     },
     factsFor: (unitId, languageId, api) => factsOf(languageId, api).factsFor(unitId, languageId),
     // the pack's provider batches unit reads (prime); a provider without it answers one by one, as before
-    primeFacts: (languageId, api, unitIds) => (factsOf(languageId, api) as FactsProvider & { prime?(ids: string[]): Promise<void> }).prime?.(unitIds) ?? Promise.resolve(),
-    async exerciseAvailable(request) {
-      const facts = takeWarmFacts(request.api, request.languageId, request.unitId) ?? await factsOf(request.languageId, request.api).factsFor(request.unitId, request.languageId);
-      const builder = resolveBuilder(opts.builders, request.family);
-      if (!facts || !builder) return false;
-      const target = { unitId: request.unitId, unitKind: request.unitKind, languageId: request.languageId, dimension: request.dimension };
-      const context = { now: request.now, random: () => 0 };
-      if (!builder.canBuild(target, facts, context)) return false;
-      const built = await builder.build(target, facts, context);
-      return !('unavailable' in built) && built.validation.ok && built.eligibility.eligible;
-    },
+    primeFacts: (languageId, api, unitIds, varietyId) => (factsOf(languageId, api) as FactsProvider & { prime?(ids: string[], varietyId?: string): Promise<void> }).prime?.(unitIds, varietyId) ?? Promise.resolve(),
+    clearPrimedFacts: (languageId, api) => (factsOf(languageId, api) as FactsProvider & { clearPrime?(): void }).clearPrime?.(),
+    exerciseReadiness,
+    exerciseAvailable: async request => (await exerciseReadiness(request)).available,
     scheduler: (prefs, profile) => scheduler(prefs.desiredRetention, profile),
     // New grades carry their own exact profile. Unversioned legacy grades use
     // the supported 90% default, never a newly activated personal profile.
     foldDeck: (events, languageId, _prefs, at) => foldDeckItems(events, scheduler(0.9), { languageId, now: at }),
 
     async intake(req) {
+      // Intake starts a new facts snapshot. Unused one-shot values from the last
+      // dashboard/session must not be consumed as if they belonged to this pass.
+      warmFacts.get(req.api)?.clear();
       const facts = configuredFactsOf(req.prefs.languageId, req.api);
       if (facts) {
-        const cache = warmFacts.get(req.api);
-        for (const id of new Set([...req.candidates.map((c) => c.unitId), ...req.deck.map((item) => item.unitId)])) {
-          cache?.delete(`${req.prefs.languageId}\u0000${id}`);
-        }
         const captured = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
-        const capturing: FactsProvider = { ...facts, async factsFor(unitId, languageId, varietyId) {
-          const value = await facts.factsFor(unitId, languageId, varietyId);
+        const capturing: FactsProvider & { clearPrime?(): void; prime?(ids: string[], varietyId?: string): Promise<void> } = { ...facts, async factsFor(unitId, languageId, varietyId) {
+          const value = takeStagedFacts(req.api, languageId, unitId, varietyId) ?? await facts.factsFor(unitId, languageId, varietyId);
           if (value) captured.set(unitId, value); // never retain missing/failed facts
           return value;
-        } };
+        }, clearPrime: () => (facts as FactsProvider & { clearPrime?(): void }).clearPrime?.() };
         const out = await gatherCandidates({
           api: { candidates: async () => req.candidates, knowledge: async () => req.knowledge },
-          facts: Object.assign(capturing, { prime: (ids: string[]) => (facts as FactsProvider & { prime?(ids: string[]): Promise<void> }).prime?.(ids) ?? Promise.resolve() }),
+          facts: Object.assign(capturing, {
+            prime: (ids: string[], varietyId?: string) => (facts as FactsProvider & { prime?(ids: string[], varietyId?: string): Promise<void> }).prime?.(ids, varietyId) ?? Promise.resolve(),
+            clearPrime: () => (facts as FactsProvider & { clearPrime?(): void }).clearPrime?.(),
+          }),
           audio: async () => req.audio, deck: req.deck, saved: req.saved, preferences: req.prefs, now: req.now, enrolmentId: '', limit: req.candidates.length || 1,
           readingSignals: req.events, secondaryPractice: req.secondaryPractice, intent: req.intent,
         });
         if (captured.size) {
           let cache = warmFacts.get(req.api);
           if (!cache) { cache = new Map(); warmFacts.set(req.api, cache); }
-          for (const [key, entry] of cache) if (Date.now() - entry.at >= WARM_FACTS_TTL_MS) cache.delete(key);
-          for (const [id, value] of captured) cache.set(`${req.prefs.languageId}\u0000${id}`, { at: Date.now(), facts: value });
-          while (cache.size > 256) cache.delete(cache.keys().next().value!);
+          const rankedIds = out.filter(o => o.proposed).sort((a,b) => b.candidate.score - a.candidate.score || a.unitId.localeCompare(b.unitId)).map(o => o.unitId);
+          const stored = new Set<string>();
+          for (const id of [...rankedIds, ...captured.keys()]) {
+            if (stored.has(id) || !captured.has(id)) continue;
+            stored.add(id);
+            cache.set(factsKey(req.prefs.languageId, id, req.prefs.varietyId), { at: Date.now(), facts: captured.get(id)! });
+            if (cache.size >= 256) break; // keep the highest-ranked build candidates for prepareAdmissions
+          }
         }
         return out;
       }
@@ -174,6 +234,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
       ...(req.recentHelp ? { recentHelp: req.recentHelp } : {}), random,
       knowledge: req.knowledge, readingSignals: req.readingSignals,
       observedReviewSeconds: req.observedReviewSeconds, intent: req.intent, learnerId: req.learnerId, remediationItemIds:req.remediationItemIds,
+      ...(req.fillPool ? { fillPool: req.fillPool } : {}),
     }),
 
     startSession(start) {

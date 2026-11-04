@@ -10,6 +10,7 @@ import { admissionBudget } from '../src/planner/budget';
 import { chooseMicrodeckTarget, microdeckMaximum } from '../src/planner/microdeck';
 import { estimateSeconds, microdeckObservations } from '../src/planner/planner';
 import { remediationBacklog, type RemediationCandidate } from '../src/planner/remediation';
+import { rankComparativePriority } from '../src/intake/intake';
 import type { AppContext } from './context';
 import { unitLabel } from './format';
 import { recordSavedDeckChange, sharedSavedDecks } from './savedDeckSync';
@@ -60,12 +61,35 @@ const budgetFor = (model: ReviewModel) => admissionBudget(model.events, {
   learnerId: model.identity.learnerId, languageId: model.identity.languageId, now: model.now,
   maxNew: model.prefs.maxNew, dailyNewLimit: model.prefs.dailyNewLimit ?? model.prefs.maxNew,
 });
-function scheduledPlan(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string>): SessionPlan {
-  return ctx.engine.plan({ deck: model.deck.filter(i => !isClassUnit(i.unitId)
+/**
+ * The home's two decks (the owner, 2026-10-31): the Review Deck is the spaced reviews (a card answered before, in the review phase); the
+ * Current Deck is what is still being drilled (new admissions, cards never answered, learning and relearning returns). 'all' is both, as
+ * one plan: the session's next panel, the details page and the developer tools read it.
+ */
+export type DeckPart = 'all' | 'current' | 'review';
+const isSpacedReview = (item: DeckItem): boolean => effective(item).length > 0 && item.schedule.phase === 'review';
+/**
+ * Deck fill (the owner, 2026-11-03): the cards the planner may use as early practice when the due work falls short of the deck size.
+ * Review Deck: spaced reviews not yet due. Current Deck: learning returns not yet due first, then spaced reviews not yet due (it borrows
+ * the soonest spaced reviews when its own run out). Whole deck: every card not yet due. Soonest due first within each group.
+ * Class units and set-aside units are never fill; catalog words that are not deck cards are never fill.
+ */
+function fillPoolFor(model: ReviewModel, holdOut: ReadonlySet<string>, part: DeckPart): DeckItem[] {
+  const nowMs = Date.parse(model.now), dueAt = (i: DeckItem): number => Date.parse(i.schedule.due);
+  const notDue = model.deck.filter(i => !isClassUnit(i.unitId) && !holdOut.has(i.unitId) && effective(i).length > 0 && dueAt(i) > nowMs);
+  const soonest = (a: DeckItem, b: DeckItem): number => dueAt(a) - dueAt(b) || a.itemId.localeCompare(b.itemId);
+  const learning = (i: DeckItem): boolean => i.schedule.phase === 'learning' || i.schedule.phase === 'relearning';
+  if (part === 'review') return notDue.filter(isSpacedReview).sort(soonest);
+  if (part === 'current') return [...notDue.filter(learning).sort(soonest), ...notDue.filter(isSpacedReview).sort(soonest)];
+  return [...notDue].sort(soonest);
+}
+function scheduledPlan(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string>, part: DeckPart = 'all'): SessionPlan {
+  return ctx.engine.plan({ fillPool: fillPoolFor(model, holdOut, part), deck: model.deck.filter(i => !isClassUnit(i.unitId)
+      && (part === 'all' || (part === 'review') === isSpacedReview(i))
       // A saved collection may hold a unit out of fresh admission, but it cannot
       // erase an existing scheduled obligation from the primary automatic plan.
       && (!holdOut.has(i.unitId) || Date.parse(i.schedule.due) <= Date.parse(model.now))),
-    intake: model.outcomes.filter(o => model.choices[o.unitId] !== 'later' && !holdOut.has(o.unitId)),
+    intake: part === 'review' ? [] : model.outcomes.filter(o => model.choices[o.unitId] !== 'later' && !holdOut.has(o.unitId)),
     prefs: model.prefs, audio: model.audio, now: model.now, knowledge: model.knowledge, readingSignals: model.events,
     schedulerProfile: model.schedulerProfile, observedReviewSeconds: observedReviewSeconds(model.events), intent: { kind: 'automatic' } });
 }
@@ -84,14 +108,18 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
     [...model.deck, ...(model.classDeck ?? [])].find((i) => i.unitId === w.unitId && i.dimension === w.dimension && i.status !== 'dismissed' && i.status !== 'suspended');
   const direct = new Map<string, PlannedItem>();
   const fresh: IntakeOutcome[] = [];
+  const preSkipped: SessionPlan['skipped'] = [];
   const order: string[] = [];
-  const api = (await ctx.api()).api;
+  const baseApi = (await ctx.api()).api;
+  // Give this admission pass its own provider/cache identity. Other screen gloss lookups may run concurrently through the base provider.
+  const api = Object.create(baseApi) as typeof baseApi;
   // Prime the facts cache in one request for the likely candidates; factsFor remains
   // the fallback when a batch read is unavailable.
   if (ctx.engine.primeFacts && !opts.unchecked) {
     const probe = [...new Set(wanted.filter((w) => !holds(w) && !(isAudio(w.family) && !listeningOk)).slice(0, (size + 4) * 3).map((w) => w.unitId))];
-    if (probe.length) { try { await ctx.engine.primeFacts(model.identity.languageId, api, probe); } catch { /* factsFor still answers one by one */ } }
+    if (probe.length) { try { await ctx.engine.primeFacts(model.identity.languageId, api, probe, model.identity.varietyId); } catch { /* factsFor still answers one by one */ } }
   }
+  try {
   let remainingNew = Math.min(model.prefs.maxNew, budgetFor(model).remaining);
   for (const w of wanted) {
     if (order.length >= requestedLimit) break;
@@ -106,7 +134,11 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
     } else {
       // No unchecked fallback: an unbuildable or invalid exercise is never demand.
       if (!ctx.engine.exerciseAvailable || !(await ctx.engine.exerciseAvailable({ unitId: w.unitId, unitKind: w.unitKind,
-        languageId: model.identity.languageId, dimension: w.dimension, family: w.family, api, now: model.now }).catch(() => false))) continue;
+        languageId: model.identity.languageId, ...(model.prefs.varietyId ? { varietyId: model.prefs.varietyId } : {}), dimension: w.dimension, family: w.family, api, now: model.now }).catch(() => false))) {
+        preSkipped.push({ itemId: itemIdFor(w.unitId, w.dimension), code: 'facts-unavailable',
+          why: 'Current facts or an exercise template are unavailable; this card stays saved and no review is recorded.' });
+        continue;
+      }
       const base: IntakeOutcome = w.outcome ?? { unitId: w.unitId, decision: 'test-now', reasons: ['Explicit vocabulary practice.'],
         candidate: { unitId: w.unitId, kind: w.unitKind, score: .5, reasons: [], targetDimension: 'readingRecognition',
           eligibility: { eligible: true, status: 'high-confidence', caveats: [] }, cost: .2 } };
@@ -121,7 +153,7 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
   const built = new Map(skeleton.items.map(p => [p.item.unitId + '|' + p.item.dimension,
     { ...p, schedulingCardExists: false, origin: opts.origin ?? 'explicit', intent }]));
   const timeLimit = model.prefs.sessionMinutes === 0 ? Infinity : Math.max(0,model.prefs.sessionMinutes * 60);
-  const selected: PlannedItem[] = [], skipped = [...skeleton.skipped]; let usedSeconds=0;
+  const selected: PlannedItem[] = [], skipped = [...skeleton.skipped, ...preSkipped]; let usedSeconds=0;
   for (const key of order) {
     const planned = direct.get(key) ?? built.get(key);
     if (!planned) continue;
@@ -138,16 +170,21 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
     dueCount: items.filter(p => effective(p.item).length && Date.parse(p.item.schedule.due) <= Date.parse(model.now)).length,
     newCount: items.filter(p => p.isNew).length, listeningCount: items.filter(p => isAudio(p.family)).length,
     grammarCount: items.filter(p => GRAMMAR.has(p.family)).length };
+  } finally {
+    ctx.engine.clearPrimedFacts?.(model.identity.languageId, api);
+  }
 }
 export const VOCAB_NOTE = 'Optional vocabulary practice uses actual review times and does not create a due obligation just to fill a batch.';
-export async function loadVocabSafe(ctx: AppContext, languageId: string): Promise<VocabRow[]> {
-  try { return (await loadVocab(ctx, languageId)).rows; } catch { return []; }
+export async function loadVocabSafe(ctx: AppContext, languageId: string): Promise<VocabLoadResult | undefined> {
+  try { return await loadVocab(ctx, languageId); } catch { return undefined; }
 }
 /** Only justified scheduler/intake work is offered. Catalog membership never fills a batch. */
-export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string> = new Set(), vocab?: readonly VocabRow[]): Promise<CurrentDeck> {
-  const planned = scheduledPlan(ctx, model, holdOut);
+export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string> = new Set(), vocab?: readonly VocabRow[], part: DeckPart = 'all'): Promise<CurrentDeck> {
+  const planned = scheduledPlan(ctx, model, holdOut, part);
   const items = (model.schedulerIssue ? [] : planned.items).map(p => ({ ...p, schedulingCardExists: !!knownItem(model, p.item),
-    origin: knownItem(model, p.item) ? 'scheduled' as const : 'intake' as const, intent: { kind: 'automatic' as const } }));
+    origin: knownItem(model, p.item) ? 'scheduled' as const : 'intake' as const,
+    // deck fill stays explicit early practice (a success keeps the schedule); every other item is automatic work
+    intent: p.presentationReason === 'deck-fill' && p.intent ? p.intent : { kind: 'automatic' as const } }));
   const { ordinary: remediation, class: classRemediation } = effectiveRemediation(model);
   const plan: SessionPlan = { ...planned, items, initialQuestionCount:items.length,
     availableWork: model.schedulerIssue ? { questions:0,newQuestions:0 } : planned.availableWork ?? { questions:items.length,newQuestions:items.filter(p=>p.isNew).length },
@@ -181,6 +218,19 @@ export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdO
     newCount: items.filter(p => p.isNew).length });
   return { plan, entries: items.map(entryOf), filled: false, summary, remediation,
     hasVocabulary: !!(items.length || model.outcomes.length || model.deck.length || model.knowledge.length || vocab?.length) };
+}
+
+/**
+ * Begin new deck (the owner, 2026-10-31): the Current Deck planned without the set-aside units. Intake selects only the top `maxNew`
+ * encountered words for immediate practice and leaves the rest at comparatively lower priority, so the ranking runs again over what
+ * remains: the next-ranked words take the set-aside words' place.
+ */
+export function planFreshDeck(ctx: AppContext, model: ReviewModel, setAside: ReadonlySet<string>): Promise<CurrentDeck> {
+  const key = (o: IntakeOutcome): string => `${o.unitId}|${o.proposed?.dimension ?? ''}`;
+  const rest = model.outcomes.filter((o) => !setAside.has(o.unitId));
+  const ranked = new Map(rankComparativePriority(rest, { limit: model.prefs.maxNew, prioritizeSaved: model.prefs.prioritizeSaved,
+    readingSignals: model.events, languageId: model.identity.languageId, now: model.now }).map((o) => [key(o), o] as const));
+  return planCurrentDeck(ctx, { ...model, outcomes: rest.map((o) => ranked.get(key(o)) ?? o) }, setAside, undefined, 'current');
 }
 
 /** Due-only Class Essentials practice. Unreviewed seeded cards are never admitted as new work here. */
@@ -344,6 +394,14 @@ export function restoreClassEssentials(ctx: AppContext, learnerId: string, langu
 export async function holdOutOf(ctx: AppContext, learnerId: string, languageId: string): Promise<Set<string>> {
   return new Set((await readStore(ctx, learnerId, languageId)).holdOut);
 }
+/** Replaces the held-out units (Begin new deck holds the current deck's new words out so a fresh set is drawn; the session's start releases them). */
+export function setHoldOut(ctx: AppContext, learnerId: string, languageId: string, unitIds: Iterable<string>): Promise<void> {
+  return serial(async () => {
+    const store = await readStore(ctx, learnerId, languageId);
+    store.holdOut = [...new Set(unitIds)];
+    await writeStore(ctx, learnerId, languageId, store);
+  });
+}
 
 /** Moves the deck to the saved list; its units are held out of the next deck so a fresh one is planned. */
 export function saveDeck(ctx: AppContext, id: { learnerId: string; languageId: string; varietyId?: string }, entries: readonly DeckEntry[]): Promise<SavedDeck | undefined> {
@@ -452,34 +510,51 @@ export function sortVocab<T extends VocabRow>(rows: readonly T[], sort: VocabSor
     : (a, b) => rankOf(a.level) - rankOf(b.level) || a.encounters - b.encounters || text(a.label, b.label) || text(a.unitId, b.unitId));
 }
 
-const MAX_VOCAB_PAGES = 60;
 const UNITS_PER_BATCH = 50;
+
+export interface VocabLoadResult {
+  rows: VocabRow[];
+  /** The merged rows loaded so far; this is a lower bound when `complete` is false. */
+  total: number;
+  complete: boolean;
+  incompleteReason?: 'cursor-loop' | 'snapshot-cap';
+  /** Set when the Repository could not answer and the rows are the device's snapshot: when it was taken (ISO). */
+  stale?: string;
+}
 
 /**
  * Every word the learner has met in the language: the Repository's vocabulary records (its knowledge rows), with each form's lemma
  * looked up, folded to one entry per word. Without the lemma lookup (it fails, or the Repository cannot answer) forms that are spelled
  * like their lemma still fold, and the rest stay their own entries.
  */
-export async function loadVocab(ctx: AppContext, languageId: string): Promise<{ rows: VocabRow[]; total: number; /** Set when the Repository could not answer and the rows are the device's snapshot: when it was taken (ISO). */ stale?: string }> {
+export async function loadVocab(ctx: AppContext, languageId: string): Promise<VocabLoadResult> {
   try {
     const fresh = await loadVocabLive(ctx, languageId);
     const who = await ctx.identity().catch(() => undefined);
-    if (who && who.languageId === languageId) await writeSnapshot(ctx, who.learnerId, languageId, { vocab: { savedAt: ctx.deps.now().toISOString(), rows: fresh.rows.slice(0, MAX_SNAPSHOT_WORDS) } });
+    // A partial page sequence is useful to show in this view, but must not replace
+    // the last complete offline copy.
+    if (fresh.complete && who && who.languageId === languageId) await writeSnapshot(ctx, who.learnerId, languageId, { vocab: { savedAt: ctx.deps.now().toISOString(), rows: fresh.rows.slice(0, MAX_SNAPSHOT_WORDS) } });
     return fresh;
   } catch (e) {
     // offline (or the service is down): the words this device last saw, said to be so
     const who = await ctx.identity().catch(() => undefined);
     const snap = who ? await readSnapshot(ctx, who.learnerId, languageId) : undefined;
-    if (snap?.vocab && who?.languageId === languageId) return { rows: snap.vocab.rows as VocabRow[], total: snap.vocab.rows.length, stale: snap.vocab.savedAt };
+    if (snap?.vocab && who?.languageId === languageId) {
+      const rows = snap.vocab.rows as VocabRow[];
+      return { rows, total: rows.length, complete: rows.length < MAX_SNAPSHOT_WORDS, ...(rows.length >= MAX_SNAPSHOT_WORDS ? { incompleteReason: 'snapshot-cap' as const } : {}), stale: snap.vocab.savedAt };
+    }
     throw e;
   }
 }
 
-async function loadVocabLive(ctx: AppContext, languageId: string): Promise<{ rows: VocabRow[]; total: number }> {
+async function loadVocabLive(ctx: AppContext, languageId: string): Promise<VocabLoadResult> {
   const { api } = await ctx.api();
   const records: VocabRecord[] = [];
   let after: string | undefined;
-  for (let page = 0; page < MAX_VOCAB_PAGES; page++) {
+  const cursors = new Set<string>();
+  let complete = false;
+  let incompleteReason: VocabLoadResult['incompleteReason'];
+  while (true) {
     const r = await api.vocabulary({ languageId, sort: 'recent', limit: 100, ...(after ? { after } : {}) });
     if (!r.ok) throw new Error(r.message || `The Repository answered ${r.status}.`);
     for (const item of r.data.items) {
@@ -492,7 +567,9 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<{ row
       });
     }
     after = r.data.nextCursor;
-    if (!after) break;
+    if (!after) { complete = true; break; }
+    if (cursors.has(after)) { incompleteReason = 'cursor-loop'; after = undefined; break; }
+    cursors.add(after);
   }
   const forms = records.filter((r) => r.kind === 'form');
   const present = new Set(records.map((r) => r.unitId));
@@ -510,7 +587,7 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<{ row
     });
   }
   const rows = mergeVocab(records);
-  return { rows, total: rows.length };
+  return { rows, total: rows.length, complete, ...(incompleteReason ? { incompleteReason } : {}) };
 }
 
 /** How many words the learner has met: the merged entries of My vocab. */

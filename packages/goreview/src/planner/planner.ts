@@ -29,6 +29,7 @@ import { cardReasonFor } from '../intake/intake';
 import { scoreReviewPriority, type KnowabilityPolicy } from './priority-policy';
 import { chooseMicrodeckTarget, microdeckMaximum, type MicrodeckObservation, type MicrodeckPolicyOptions } from './microdeck';
 import { workloadAwareAdmission, type WorkloadAdmissionPolicy } from './admission-policy';
+import { indexReadingRelevance, readingRelevanceFromIndex } from './reading-relevance';
 
 const GRAMMAR_FAMILY_SET: ReadonlySet<ExerciseFamily> = new Set<ExerciseFamily>(['morphological-identification', 'grammar-application']);
 const AUDIO_FAMILY_SET: ReadonlySet<ExerciseFamily> = new Set<ExerciseFamily>(['audio-to-meaning', 'audio-transcription']);
@@ -133,6 +134,8 @@ export interface PlanInput {
   microdeckPolicy?: MicrodeckPolicyOptions;
   admissionPolicy?: Partial<WorkloadAdmissionPolicy>;
   dueOrdering?: DueOrderingPolicy;
+  /** Deck fill (2026-11-03): the cards an automatic plan may use as early practice to reach the deck size, in the order to try them. Absent: derived from `deck`, soonest due first. */
+  fillPool?: readonly DeckItem[];
 }
 /** Recent failures in the effective history; a listening-practice answer (computer voice) is schedule bookkeeping, never a failure signal. */
 export const recentAgains = (item: DeckItem): number => item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict && !h.listeningPractice).slice(-WEAK_WINDOW).filter(h => h.rating === 1).length;
@@ -159,6 +162,7 @@ export function planSession(input: PlanInput): SessionPlan {
   const learnerIds = [...new Set(events.map(e => e.learnerId))];
   const learnerId = input.learnerId ?? (learnerIds.length === 1 ? learnerIds[0] : '');
   const eligibilityContext = createReviewEligibilityContext(deck, events, now);
+  const readingRelevance = indexReadingRelevance(events, preferences.languageId, now, knowledge);
   const budget = admissionBudget(events, { learnerId, languageId: preferences.languageId, now, maxNew: preferences.maxNew, dailyNewLimit: preferences.dailyNewLimit ?? preferences.maxNew });
   const admission = workloadAdmissionLimit({ deck, intake, now, preferences, scheduler, events, learnerId, dailyRemaining: budget.remaining, policy:input.admissionPolicy, context:eligibilityContext });
   const automaticNewLimit = admission.limit;
@@ -171,7 +175,7 @@ export function planSession(input: PlanInput): SessionPlan {
   const backlog = [...eligibilityContext.remediationByCard.values()];
   const remediationById = new Map(backlog.map(candidate => [candidate.itemId, candidate]));
   const skipped: SessionPlan['skipped'] = [], pool: QueueCandidate[] = [];
-  const make = (item: DeckItem, why: string[], exists: boolean, requested = intent, queueOverride?: NonNullable<PlannedItem['queue']>): void => {
+  const make = (item: DeckItem, why: string[], exists: boolean, requested = intent, queueOverride?: NonNullable<PlannedItem['queue']>, fill = false): void => {
     const hist = item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict), fresh = !hist.length;
     const decision = reviewEligibility({ item: exists ? item : undefined, itemId:item.itemId, unitId: item.unitId, knowledge: knowledge.get(item.unitId), events,
       now, intent: requested, remainingNew: automaticNewLimit, context:eligibilityContext });
@@ -181,18 +185,21 @@ export function planSession(input: PlanInput): SessionPlan {
     }
     if (isAudioFamily(item.family) && !audio.eligibleForEvidence) why = [...why, 'listening practice only: cannot count as listening evidence or a memory update'];
     const due = !fresh && scheduler.isDue(item.schedule, now);
-    const queue: NonNullable<PlannedItem['queue']> = queueOverride ?? (fresh ? 'new' : due && ['learning','relearning'].includes(item.schedule.phase) ? 'learning' : 'due');
+    const queue: NonNullable<PlannedItem['queue']> = queueOverride ?? (fill ? (['learning','relearning'].includes(item.schedule.phase) ? 'learning' : 'due')
+      : fresh ? 'new' : due && ['learning','relearning'].includes(item.schedule.phase) ? 'learning' : 'due');
     const measured = input.observedReviewSeconds?.[item.itemId];
     const seconds = measured && Number.isFinite(measured) && measured > 0 && measured <= 900 ? measured : estimateSeconds(item.family,item.schedule.phase);
     const r = fresh ? 0 : scheduler.retrievability(item.schedule, now), k = knowledge.get(item.unitId), stage = k?.level ?? (fresh ? 'seen' : 'known');
     const candidate = intake.find(o => o.unitId === item.unitId)?.candidate;
+    const reading = readingRelevanceFromIndex(readingRelevance, item.unitId);
     const score = scoreReviewPriority({ level: stage, retrievability: r, due, overdueDays: due ? Math.max(0,(nowMs-Date.parse(item.schedule.due))/86_400_000) : 0,
       recentFailures: recentAgains(item), encounters: k?.encounters, evidenceQuality: k ? 1-k.uncertainty : .5,
+      readingRelevance: reading.readingRelevance, recentExposure: reading.recentExposure,
       seenEligible: true, automaticFailure: eligibilityContext.automaticFailureUnits.has(item.unitId), explicitRequest: requested.kind === 'explicit' }, input.priorityPolicy)
       * benefitOf(fresh ? 1 : Math.max(.01,1-r), candidate?.score ?? .5, seconds, candidate?.cost ?? 0);
-    const overlap = !fresh && (queue === 'learning' || queue === 'due') ? 'scheduled' as const
+    const overlap = fill ? 'explicit' as const : !fresh && (queue === 'learning' || queue === 'due') ? 'scheduled' as const
       : queue === 'remediation' ? 'remediation' as const : !fresh && requested.kind === 'explicit' ? 'explicit' as const : undefined;
-    const presentationReason = queue === 'learning' ? 'due-learning-return' : queue === 'remediation' ? 'remediation-reassessment'
+    const presentationReason = fill ? 'deck-fill' : queue === 'learning' ? 'due-learning-return' : queue === 'remediation' ? 'remediation-reassessment'
       : !fresh && requested.kind === 'explicit' ? 'explicit-repeat' : queue === 'due' ? 'scheduled-review' : undefined;
     pool.push({ planned: { item, family: item.family, why, estimatedSeconds: seconds, isNew: fresh, intent: requested,
       schedulingCardExists: exists, ...(fresh && k ? {admissionKnowledge:k} : {}), origin: exists ? 'scheduled' : 'intake', queue,
@@ -258,6 +265,39 @@ export function planSession(input: PlanInput): SessionPlan {
     unitsInBatch.add(planned.item.unitId);
     if(planned.isNew && planned.intent?.kind!=='explicit')newCount++;
   }
+  // Deck fill (the owner, 2026-11-03): a finished deck is at once replaced by another of the size the learner set. When the due work, the
+  // remediation and the budgeted new admissions fall short of it, the deck is completed with early practice of cards that are not yet due,
+  // soonest due first. Fill is explicit early practice (a success keeps the schedule, a miss reschedules); it never creates a due obligation,
+  // never counts as new, never touches the new-card budgets, and never passes the time limit. Explicit plans are never filled.
+  let filled = 0;
+  if (intent.kind === 'automatic' && items.length < target.targetQuestions) {
+    const early = { kind: 'explicit' as const, reason: 'early-review' as const, requestedAt: now };
+    const inDeck = new Set(items.map(p => p.item.itemId));
+    const retrievabilityOf = (item: DeckItem): number => scheduler.retrievability(item.schedule, now);
+    const candidates = input.fillPool ? [...input.fillPool]
+      : deck.filter(item => !!item.history.length).sort((a,b) => Date.parse(a.schedule.due)-Date.parse(b.schedule.due) || retrievabilityOf(a)-retrievabilityOf(b) || a.itemId.localeCompare(b.itemId));
+    for (const item of candidates) {
+      if (items.length >= target.targetQuestions) break;
+      if (inDeck.has(item.itemId) || item.status !== 'active' || item.invalidatedAt || item.suspendedReason) continue;
+      if (!item.history.some(h => !h.retracted && !h.scheduleExcluded && !h.conflict) || scheduler.isDue(item.schedule, now)) continue;
+      if (knowledge.get(item.unitId)?.level === 'automatic') continue; // an Automatic word is left alone
+      const poolBefore = pool.length, skippedBefore = skipped.length;
+      make(item, ['early practice that fills the deck to its size; a success keeps the schedule, a miss reschedules'], true, early, undefined, true);
+      if (pool.length === poolBefore) { skipped.length = skippedBefore; continue; } // refused by the shared eligibility: never fill; the earlier entry stays
+      const candidate = pool.pop()!.planned;
+      const earlier = skipped.findIndex(s => s.itemId === item.itemId && (s.code === 'scheduled-not-due' || s.code === 'learning-not-due'));
+      if (used + candidate.estimatedSeconds > timeLimit) {
+        const entry = { itemId: item.itemId, why: 'over budget (early practice would pass the time limit; nothing was written)', code: 'over-time-budget' as const };
+        if (earlier >= 0) skipped[earlier] = entry; else skipped.push(entry);
+        continue;
+      }
+      if (earlier >= 0) skipped.splice(earlier, 1);
+      used += candidate.estimatedSeconds;
+      inDeck.add(item.itemId);
+      items.push(candidate);
+      filled++;
+    }
+  }
   const workloadLimit = Number.isFinite(timeLimit) ? timeLimit : 0;
   const estimatedSeconds = items.reduce((sum,item)=>sum+item.estimatedSeconds,0);
   const configuredMaximum = microdeckMaximum(preferences.cardsPerDeck);
@@ -266,7 +306,7 @@ export function planSession(input: PlanInput): SessionPlan {
   return { planId:'plan:'+now+':'+Math.floor(random()*36**6).toString(36).padStart(6,'0'),createdAt:now,languageId:preferences.languageId,
     budgetMinutes:preferences.sessionMinutes,items,skipped,intent,remediation:backlog,
     questionLimit, batch: { targetQuestions: target.targetQuestions, workloadLimit, estimatedSeconds,
-      reasons: [...target.reasons, admission.reason] }, initialQuestionCount: items.length,
+      reasons: [...target.reasons, admission.reason, ...(filled ? [`Filled to the deck size with ${filled} early review${filled === 1 ? '' : 's'} (soonest due first).`] : [])] }, initialQuestionCount: items.length,
     availableWork: { questions: availableQuestions, newQuestions: availableNewCount },
     dueCount:items.filter(p=>!p.isNew&&scheduler.isDue(p.item.schedule,now)).length,newCount:items.filter(p=>p.isNew).length,
     listeningCount:items.filter(p=>isAudioFamily(p.family)).length,grammarCount:items.filter(p=>isGrammarFamily(p.family)).length };

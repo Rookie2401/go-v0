@@ -175,6 +175,7 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
     linguistics: forward(() => state.linguistics),
     crypto: deviceCrypto,
     now,
+    applyLearnerCorrections: true, // this word list has one reader, the learner who corrects it
   };
   // The service's own typed client, wired straight to its handler (what `createInProcessApi` does) under an address that is not a web address: the handler
   // reads only the path, and nothing here can reach a network.

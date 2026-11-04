@@ -16,7 +16,8 @@
  * "Sklave" is asked as "sklave"). Rows keep the dictionary's order, so the first row is the dictionary's first reading.
  *
  * Runtime: createFormsSource(lang, { fetch?, base? }).lookupForms(["bisherigen"]) -> Map { "bisherigen" => [{ lemma: "bisherig", pos: "ADJ" }] }.
- * A language with no forms index (no manifest) answers an empty Map; a source never throws.
+ * A language with no forms index (no manifest) answers an empty Map. By default transient failures are also returned as empty;
+ * callers that must distinguish them from a real missing form may opt into `throwOnError`.
  */
 import type { DictionaryEntry, LanguageCode, PartOfSpeech } from '../core';
 import type { FullForm } from './full-format';
@@ -262,6 +263,8 @@ export interface FormsSourceOptions {
   fetch?: typeof fetch;
   /** The dictionary location; the index is `<base>/<lang>/forms/...`. Default '/dict' (the app passes `${BASE_URL}dict`, as for the dictionary). */
   base?: string;
+  /** Propagate transient manifest/shard read failures to callers that need to distinguish them from a genuine missing form. */
+  throwOnError?: boolean;
 }
 
 export function createFormsSource(lang: LanguageCode, opts: FormsSourceOptions = {}): FormsSource {
@@ -274,16 +277,24 @@ export function createFormsSource(lang: LanguageCode, opts: FormsSourceOptions =
     if (!res.ok) throw new Error(`forms index request failed: ${res.status}`);
     return res.text();
   };
-  const parseJson = (t: string | undefined): unknown => { if (t === undefined) return undefined; try { return JSON.parse(t) as unknown; } catch { return undefined; } };
+  const parseJson = (t: string | undefined): unknown => {
+    if (t === undefined) return undefined;
+    try { return JSON.parse(t) as unknown; }
+    catch (error) { if (opts.throwOnError) throw new Error('forms index returned invalid JSON', { cause: error }); return undefined; }
+  };
 
   let manifest: Promise<FormsManifest | undefined> | undefined;
   const loadManifest = (): Promise<FormsManifest | undefined> => {
     if (!manifest) {
-      const p = Promise.resolve().then(() => read(FORMS_MANIFEST)).then((t) => parseFormsManifest(parseJson(t), lang));
+      const p = Promise.resolve().then(() => read(FORMS_MANIFEST)).then((t) => {
+        const parsed = parseFormsManifest(parseJson(t), lang);
+        if (opts.throwOnError && t !== undefined && !parsed) throw new Error('forms index returned an invalid manifest');
+        return parsed;
+      });
       manifest = p;
       p.catch(() => { if (manifest === p) manifest = undefined; }); // a failed request is retried on the next ask; a missing manifest is remembered
     }
-    return manifest.catch(() => undefined);
+    return manifest.catch((error) => { if (opts.throwOnError) throw error; return undefined; });
   };
 
   // Map order is recency order: the first key is the least recently used.
@@ -292,7 +303,11 @@ export function createFormsSource(lang: LanguageCode, opts: FormsSourceOptions =
     const had = cache.get(name);
     if (had) { cache.delete(name); cache.set(name, had); return had; }
     while (cache.size >= FORMS_CACHE_SHARDS) cache.delete(cache.keys().next().value as string);
-    const p = Promise.resolve().then(() => read(name)).then((t) => parseFormsShard(parseJson(t)));
+    const p = Promise.resolve().then(() => read(name)).then((t) => {
+      const raw = parseJson(t);
+      if (opts.throwOnError && (t === undefined || !isObj(raw))) throw new Error('forms index shard is missing or invalid');
+      return parseFormsShard(raw);
+    });
     cache.set(name, p);
     p.catch(() => { if (cache.get(name) === p) cache.delete(name); });
     return p;
@@ -321,7 +336,11 @@ export function createFormsSource(lang: LanguageCode, opts: FormsSourceOptions =
             const rows = shard.get(f);
             if (rows) out.set(f, rows.map(([lemma, pos]) => ({ lemma, ...(pos ? { pos: pos as PartOfSpeech } : {}) })));
           }
-        } catch { /* a shard that cannot be read leaves its forms unanswered; it is retried on the next ask */ }
+        } catch (error) {
+          // Other consumers treat an unreadable shard like an absent form. GoReview
+          // opts into strict mode so transient failures cannot become durable refusals.
+          if (opts.throwOnError) throw error;
+        }
       }));
       return out;
     },

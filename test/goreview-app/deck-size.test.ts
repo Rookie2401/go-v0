@@ -3,13 +3,15 @@ import { readFileSync } from 'node:fs';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
-import { destroyRigs, dueCard, ids, makeRig, reopen, seed, type, until, type Rig } from './helpers';
+import { planCurrentDeck, holdOutOf } from '../../packages/goreview/app/deckModel';
+import { loadReviewModel } from '../../packages/goreview/app/workspace';
+import { cardAdded, destroyRigs, dueCard, ids, makeRig, reopen, seed, type, until, type Rig, readyCards, reviewed } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
 const click = (el: Element): void => (el as HTMLElement).click();
 const dueMany = (n: number) => Array.from({ length: n }, (_, i) => `w${i}`).flatMap((l) => dueCard(A, l, 'meaning-to-form'));
-const cards = (rig: Rig): number => Number(rig.q('#deck-count').getAttribute('data-cards'));
+const cards = (rig: Rig): number => Number(String(readyCards(rig)));
 
 function word(label: string, level: UnitKnowledge['level'], encounters: number, at: string): VocabularyItem {
   const unitId = `lemma:sq:${label}:NOUN`;
@@ -52,7 +54,8 @@ describe('cards per deck', () => {
     type(rig.q<HTMLInputElement>('#pref-size'), '15');
     await until(async () => (await prefs()) === 15, 'fifteen');
     await rig.go('review');
-    await until(() => cards(rig) === 10, 'the adaptive microdeck target remains near ten under the configured fifteen-card maximum');
+    // the batch starts at the deck size (the owner, 2026-10-31): fifteen asked, fourteen due, so all fourteen
+    await until(() => cards(rig) === 14, 'every due card under the fifteen-card deck size');
     await rig.go('settings');
     type(rig.q<HTMLInputElement>('#pref-size'), '1');
     await until(async () => (await prefs()) === 5, 'the lower clamp');
@@ -68,9 +71,62 @@ describe('cards per deck', () => {
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 20 });
     await reopen(rig);
     expect(cards(rig)).toBe(0);
-    expect(rig.q('#deck-count').textContent).toBe('No eligible reviews right now');
+    expect(readyCards(rig)).toBe(0);
     expect(rig.q<HTMLButtonElement>('#start-session').disabled).toBe(true);
     expect(rig.q('#vocab-count').textContent).toBe('4 words');
+  });
+
+  it('fills a short deck to the size the learner set: one due card, no admissible new word and nine spaced reviews not yet due make a full Current Deck (the owner, 2026-11-03)', async () => {
+    const rig = await makeRig({ signedIn: true });
+    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + (i % 7)}T10:00:00.000Z`)];
+    await seed(rig, [...dueCard(A, 'w0', 'meaning-to-form'), ...Array.from({ length: 9 }, (_, i) => i).flatMap(spaced)]);
+    await rig.app.ctx.state.updatePrefs('L1', 'sq', { maxNew: 0 });
+    await reopen(rig);
+    expect(rig.q('#start-session').getAttribute('data-cards')).toBe('10'); // one due card and nine early reviews, never "1 card ready"
+    expect(rig.q<HTMLButtonElement>('#start-session').disabled).toBe(false);
+    await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 6 });
+    await reopen(rig);
+    expect(rig.q('#start-session').getAttribute('data-cards')).toBe('6'); // whatever the learner set
+    click(rig.q('#start-session'));
+    await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the session');
+    const items = rig.app.ctx.run.active!.plan.items;
+    expect(items).toHaveLength(6);
+    expect(items.filter((p) => p.presentationReason === 'deck-fill')).toHaveLength(5);
+    expect(items.filter((p) => p.presentationReason === 'deck-fill').every((p) => p.intent?.kind === 'explicit')).toBe(true);
+  });
+
+  it('one due review plus nine fill: the obligations summary says 1 due review while the deck says 10 cards, and the kicker never says "due" (the owner, 2026-11-03)', async () => {
+    const rig = await makeRig({ signedIn: true });
+    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + (i % 7)}T10:00:00.000Z`)];
+    // w0: answered Again, then Easy a day later, so it is an established review that has come due; nine more reviews are not due
+    await seed(rig, [...dueCard(A, 'w0', 'meaning-to-form'), reviewed(A, 'w0', 'meaning-to-form', 4, '2026-09-02T10:00:00.000Z'), ...Array.from({ length: 9 }, (_, i) => i).flatMap(spaced)]);
+    await rig.app.ctx.state.updatePrefs('L1', 'sq', { maxNew: 0 });
+    await reopen(rig);
+    expect(rig.q('#start-review').getAttribute('data-cards')).toBe('10');
+    expect(rig.q('#start-review-count').textContent).toBe('10 cards');
+    const model = (await loadReviewModel(rig.app.ctx))!;
+    const deck = await planCurrentDeck(rig.app.ctx, model, await holdOutOf(rig.app.ctx, 'L1', 'sq'), undefined, 'review');
+    expect(deck.entries).toHaveLength(10);
+    expect(deck.plan.items.filter((p) => p.presentationReason === 'deck-fill')).toHaveLength(9);
+    expect(deck.summary.dueReviews).toBe(1); // obligations: one due review, however many early reviews top the deck up
+    expect(deck.summary.dueLearning).toBe(0);
+    expect(deck.plan.dueCount).toBe(1);
+    expect(deck.plan.newCount).toBe(0);
+    expect(deck.summary.newAvailable).toBe(0);
+  });
+
+  it('a pool smaller than the deck size is the whole pool: the Current Deck says it holds all of the learner cards', async () => {
+    const rig = await makeRig({ signedIn: true });
+    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + i}T10:00:00.000Z`)];
+    await seed(rig, [0, 1, 2, 3, 4, 5].flatMap(spaced));
+    await rig.app.ctx.state.updatePrefs('L1', 'sq', { maxNew: 0, cardsPerDeck: 10 });
+    await reopen(rig);
+    expect(rig.q('#start-session').getAttribute('data-cards')).toBe('6');
+    expect(rig.q('#start-session-count').textContent).toBe('all 6 of your cards');
+    expect(rig.q('#start-review-count').textContent).toBe('6 cards');
+    await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 5 });
+    await reopen(rig);
+    expect(rig.q('#start-session-count').textContent).toBe('5 cards'); // a full deck: nothing to say about the rest of the pool
   });
 
   it('the saved deck keeps its own size', async () => {

@@ -36,12 +36,14 @@ export interface GatherDeps {
 }
 
 export const DEFAULT_CANDIDATE_LIMIT = 40;
+/** Facts are independent by unit, but keep pressure on a slow Repository bounded. */
+export const FACTS_LOOKUP_PARALLEL = 8;
 
 const toRecord = (k: Record<string, UnitKnowledge> | UnitKnowledge[]): Record<string, UnitKnowledge> =>
   Array.isArray(k) ? Object.fromEntries(k.map((r) => [r.unitId, r])) : k;
 
 /** A facts provider that can fetch the Repository's units for many candidates at once (`createFactsProvider` does, over a client with `units`). */
-export type PrimableFacts = FactsProvider & { prime?(unitIds: string[]): Promise<void> };
+export type PrimableFacts = FactsProvider & { prime?(unitIds: string[], varietyId?: string): Promise<void>; clearPrime?(): void };
 
 export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[]> {
   const { preferences, deck, saved, now } = deps;
@@ -69,26 +71,30 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
   });
   const testable = passes.filter((p) => p.first.proposed &&
     (p.first.decision === 'test-now' || p.first.decision === 'test-later' || p.first.decision === 'low-priority')).map((p) => p.candidate.unitId);
-  // One batched read of those units (chunks of 50) instead of one request each; a provider that cannot batch just answers one by one.
-  try { await (deps.facts as PrimableFacts).prime?.([...new Set(testable)]); } catch { /* factsFor still works one by one */ }
-
-  const factsByUnit = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
-  const factErrors = new Map<string, string>();
-  for (const id of new Set(testable)) {
-    try { factsByUnit.set(id, await deps.facts.factsFor(id, preferences.languageId, preferences.varietyId)); }
-    catch (e) { factErrors.set(id, e instanceof Error ? e.message : String(e)); }
-  }
-
   // A previous app version may already have created a recognition card for the inflected form.
   // Read its verified relation too, so a later canonical-lemma candidate does not create a second
   // default reading objective. Dismissed cards do not count as coverage; suspended and snoozed
   // cards remain learner-owned targets and keep their status/history intact.
   const existingFormRecognition = !deps.secondaryPractice ? deck.filter((item) =>
     item.unitKind === 'form' && item.dimension === 'written-recognition' && item.status !== 'dismissed') : [];
-  for (const item of existingFormRecognition) {
-    if (factsByUnit.has(item.unitId) || factErrors.has(item.unitId)) continue;
-    try { factsByUnit.set(item.unitId, await deps.facts.factsFor(item.unitId, preferences.languageId, preferences.varietyId)); }
-    catch (e) { factErrors.set(item.unitId, e instanceof Error ? e.message : String(e)); }
+  const factsWanted = [...new Set([...testable, ...existingFormRecognition.map((item) => item.unitId)])];
+  // Batch priming is bounded-concurrent in the Repository provider. Fetching derived facts is
+  // bounded too, so a large input consumes one-shot primed answers before their freshness window.
+  const factsByUnit = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
+  const factErrors = new Map<string, string>();
+  try {
+    try { await (deps.facts as PrimableFacts).prime?.(factsWanted, preferences.varietyId); } catch { /* factsFor still works one by one */ }
+    for (let i = 0; i < factsWanted.length; i += FACTS_LOOKUP_PARALLEL) {
+      const group = factsWanted.slice(i, i + FACTS_LOOKUP_PARALLEL);
+      await Promise.all(group.map(async (id) => {
+        try {
+          const facts = await deps.facts.factsFor(id, preferences.languageId, preferences.varietyId);
+          if (facts) factsByUnit.set(id, facts);
+        } catch (e) { factErrors.set(id, e instanceof Error ? e.message : String(e)); }
+      }));
+    }
+  } finally {
+    (deps.facts as PrimableFacts).clearPrime?.();
   }
 
   // One token's inflected form and its canonical lemma are the same default reading objective.
@@ -171,6 +177,7 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
     }
   }
   const outcomeKey = (outcome: IntakeOutcome): string => `${outcome.unitId}|${outcome.proposed?.dimension ?? ''}`;
-  const ranked = new Map(rankComparativePriority(out, { limit: preferences.maxNew, prioritizeSaved: preferences.prioritizeSaved }).map((outcome) => [outcomeKey(outcome), outcome] as const));
+  const ranked = new Map(rankComparativePriority(out, { limit: preferences.maxNew, prioritizeSaved: preferences.prioritizeSaved,
+    readingSignals: deps.readingSignals, languageId: preferences.languageId, now }).map((outcome) => [outcomeKey(outcome), outcome] as const));
   return out.map((outcome) => ranked.get(outcomeKey(outcome)) ?? outcome);
 }

@@ -54,6 +54,33 @@ function payloadFiles(root) {
   return files.sort().map((file) => ({ path: file, sha256: sha256(fs.readFileSync(path.join(root, file))) }));
 }
 
+/** Verify Capacitor copied the prepared payload byte-for-byte, then bind its empty Cordova compatibility shims. */
+export function finalizeCapacitorPayload(sourceDir, nativeDir, options = {}) {
+  const sourceManifest = verifyNativePayloadManifest(sourceDir, { requireRelease: options.requireRelease });
+  const sourceFiles = sourceManifest.payloadFiles;
+  const nativeFiles = payloadFiles(nativeDir);
+  const nativeByPath = new Map(nativeFiles.map((file) => [file.path, file]));
+  const sourceByPath = new Map(sourceFiles.map((file) => [file.path, file]));
+  const missingOrChanged = sourceFiles.filter((file) => nativeByPath.get(file.path)?.sha256 !== file.sha256);
+  const unexpected = nativeFiles.filter((file) => !sourceByPath.has(file.path));
+  const generatedShims = ['cordova.js', 'cordova_plugins.js'];
+  const validShims = unexpected.length === generatedShims.length
+    && generatedShims.every((name) => unexpected.some((file) => file.path === name && file.sha256 === sha256(Buffer.alloc(0))));
+  if (missingOrChanged.length || !validShims) {
+    throw new Error('Capacitor sync changed the prepared web payload or added unexpected files; native payload was not finalized.');
+  }
+  const transformations = [
+    ...(sourceManifest.transformations ?? []),
+    'Capacitor sync adds empty cordova.js and cordova_plugins.js compatibility shims; both are included in the native payload hashes.',
+  ];
+  const manifest = createNativePayloadManifest(nativeDir, {
+    mode: sourceManifest.buildMode,
+    transformations,
+  });
+  verifyNativePayloadManifest(nativeDir, { requireRelease: options.requireRelease });
+  return manifest;
+}
+
 function parentProof(root, manifestName = PARENT_SOURCE_MANIFEST) {
   const manifestPath = path.join(root, manifestName);
   const bytes = fs.readFileSync(manifestPath);

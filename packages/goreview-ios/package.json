@@ -5,8 +5,8 @@
   "description": "Capacitor iOS shell for the bundled GoReview edition",
   "scripts": {
     "prepare:web": "node scripts/prepare-web.mjs --developer",
-    "sync:ios": "node scripts/prepare-web.mjs --developer && cap sync ios && node scripts/verify-native-payload.mjs ios/App/App/public",
-    "release:sync": "node scripts/prepare-web.mjs --release && cap sync ios && node scripts/verify-native-payload.mjs ios/App/App/public --release",
+    "sync:ios": "node scripts/prepare-web.mjs --developer && cap sync ios && node scripts/finalize-capacitor-payload.mjs web ios/App/App/public && node scripts/verify-native-payload.mjs ios/App/App/public",
+    "release:sync": "node scripts/prepare-web.mjs --release && cap sync ios && node scripts/finalize-capacitor-payload.mjs web ios/App/App/public --release && node scripts/verify-native-payload.mjs ios/App/App/public --release",
     "release:stage": "node scripts/build-eas-project.mjs",
     "open:ios": "cap open ios",
     "release:preflight": "node scripts/release-preflight.mjs --release",

@@ -8,7 +8,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { loadReviewModel } from '../../packages/goreview/app/workspace';
 import { scheduleMovedSince } from '../../packages/goreview/app/screens/review';
 import type { DeckItem } from '../../packages/goreview/src/types';
-import { cardAdded, destroyRigs, ids, makeRig, reviewed, seed, until } from './helpers';
+import { cardAdded, destroyRigs, ids, makeRig, reviewed, seed, until, readyCards } from './helpers';
 
 afterEach(() => { destroyRigs(); });
 const A = ids('L1', 'sq');
@@ -24,13 +24,13 @@ describe('the home after a learning return comes due', () => {
     const due = Date.parse(model!.deck[0]!.schedule.due);
     expect(due).toBeGreaterThan(t0);
     await rig.go('review');
-    await until(() => !!rig.root.querySelector('#deck-count'), 'the home');
-    expect(Number(rig.q('#deck-count').getAttribute('data-cards'))).toBe(0);
+    await until(() => !!rig.root.querySelector('#start-session'), 'the home');
+    expect(Number(String(readyCards(rig)))).toBe(0);
     // the return falls due; nothing else changes (same events, same preferences), so the memo would still hold
     rig.clock.set(new Date(due + 1000).toISOString());
     await rig.go('settings');
     await rig.go('review');
-    await until(() => Number(rig.q('#deck-count').getAttribute('data-cards')) > 0, 'the return on the home');
+    await until(() => Number(String(readyCards(rig))) > 0, 'the return on the home');
     rig.q('#start-session').click();
     await until(() => !!rig.root.querySelector('#session .exercise'), 'the session starts with the returned card');
     expect(rig.q('.exercise').getAttribute('data-item')).toContain('zog');

@@ -12,6 +12,32 @@ import { pipeline } from 'node:stream/promises';
 import { createGunzip, createGzip } from 'node:zlib';
 
 export type Log = (line: string) => void;
+
+// ───────────────────────────── learners' reports on the word list ─────────────────────────────
+
+export interface CorrectionReportRow { learnerId: string; event: { at: string; payload: { formId?: unknown; correctedLexemeId?: unknown; correctedFeatures?: unknown; reason?: unknown } } }
+export interface CorrectionProposal { formId: string; proposed: string; learners: number; lastAt: string; reasons: string[] }
+export interface LearnerWrittenAnalysis { formId: string; analysisId: string }
+
+/** One line per form and proposal, most-reported first. Learners are counted, once each however many copies of a report they have, and never named. */
+export function summariseCorrectionReports(rows: readonly CorrectionReportRow[]): CorrectionProposal[] {
+  const groups = new Map<string, { formId: string; proposed: string; learners: Set<string>; lastAt: string; reasons: Set<string> }>();
+  for (const { learnerId, event } of rows) {
+    const p = event.payload;
+    if (typeof p.formId !== 'string') continue;
+    const features = p.correctedFeatures && typeof p.correctedFeatures === 'object' ? Object.entries(p.correctedFeatures).map(([k, v]) => `${k}=${String(v)}`).sort().join(',') : '';
+    const proposed = [typeof p.correctedLexemeId === 'string' ? p.correctedLexemeId : '', features].filter(Boolean).join(' ') || '(no proposal, a reason only)';
+    const key = `${p.formId}\u0000${proposed}`;
+    const g = groups.get(key) ?? { formId: p.formId, proposed, learners: new Set<string>(), lastAt: event.at, reasons: new Set<string>() };
+    g.learners.add(learnerId);
+    if (event.at > g.lastAt) g.lastAt = event.at;
+    if (typeof p.reason === 'string' && p.reason) g.reasons.add(p.reason);
+    groups.set(key, g);
+  }
+  return [...groups.values()]
+    .map((g) => ({ formId: g.formId, proposed: g.proposed, learners: g.learners.size, lastAt: g.lastAt, reasons: [...g.reasons] }))
+    .sort((a, b) => b.learners - a.learners || (a.lastAt < b.lastAt ? 1 : a.lastAt > b.lastAt ? -1 : 0));
+}
 export const SQLITE_FILE = 'repository.sqlite';
 export const READY_SENTINEL = '.migration-ready';
 

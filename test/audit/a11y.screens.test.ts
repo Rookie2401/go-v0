@@ -11,7 +11,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { afterAll, afterEach, describe, expect, it } from 'vitest';
 import { accessibleName, auditDom, flushAfterAll, row, tabSequence, type Finding } from './a11y.support';
-import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, key, knowledgeRow, makeRig, reopen, reopenDetails, seed, startWith, type as typeIn, unitOf, until } from '../goreview-app/helpers';
+import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, key, knowledgeRow, makeRig, reopen, reopenDetails, seed, startWith, type as typeIn, unitOf, until, readyCards } from '../goreview-app/helpers';
 import { DEFAULT_PREFERENCES } from '../../packages/goreview/app/state';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { FakeAccountService } from '../golearn-app/accountFake';
@@ -276,7 +276,7 @@ describe('audio-only interactions, character-key shortcuts and the session clock
     await only.app.ctx.state.setPrefs('L1', { ...DEFAULT_PREFERENCES('sq'), includeListening: true });
     await reopen(only);
     expect(only.q<HTMLButtonElement>('#start-session').disabled).toBe(true);
-    expect(only.q('#deck-count').textContent).toBe('No eligible reviews right now');
+    expect(readyCards(only)).toBe(0);
     audit(only.root, 'practice/review-home (listening card due, no voice)');
     row('A-S06', 'audio', 'audio-only question: alternatives and honest notices', 'pass', 'group "Audio question"; Play/Replay (Space) and "I could not hear it" are buttons; choices are written; with no voice the audio card is never asked in writing (it stays due, Begin is off when it is all that is due, the home says "No eligible reviews right now") and the details say "not available: …"; "Include listening practice" can be switched off');
     destroyRigs();

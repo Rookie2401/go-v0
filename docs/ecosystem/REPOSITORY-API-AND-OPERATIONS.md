@@ -35,7 +35,7 @@ per request `METHOD /path status ms` and never a body, query string or token.
 | account identity | `POST /accounts`, `POST /sessions`, `DELETE /sessions/current`, `GET /me`, `DELETE /me` (requires `confirmEmail`; erases every row of the learner and revokes all sessions) |
 | team / language enrolment | `GET /enrolments`, `POST /enrolments` (teamId requires membership; appends `EnrolmentChanged`), `POST /enrolments/:id/end` (sets `endedAt`, appends `EnrolmentChanged {change:'ended'}`; idempotent; history is kept) |
 | language-pack metadata | `GET /packs?languageId=` |
-| unit correction (v3) | `POST /units/:id/corrections` (a learner's challenge to a unit: appended to its `provenance.corrections`; a `provisional` unit becomes `requires-review`; for a form with a `lexemeId` or `features` the linguistics port's `correct()` also supersedes the analysis; section 7.3) |
+| unit correction (v3) | `POST /units/:id/corrections` (a learner's report on a unit: an `AnalysisCorrected` event in their own log, nothing shared changes; section 7.3) |
 | linguistic knowledge lookup | `GET /units/:id` (unit, relations, analyses, and `provenance` with the v3 defaults filled in), `POST /units/batch` (`{ ids }`, 1 to 50: `{ units: { <id>: { unit, relations, analyses } }, missing: [ids] }`, the same view as the single route, for GoReview's intake), `POST /lookup` (surface + optional sentence → units, relations, analysis; the sentence is analysed and not stored) |
 | learning-event ingestion | `POST /events` (1–500 per batch; a batch with any invalid event is rejected whole with per-index issues; retries are idempotent on `id` and `dedupeKey`; projection runs after the append) |
 | learner-state queries | `GET /knowledge?unitIds=`, `GET /preferences?languageId=`, `GET /events?afterSeq=&kinds=&unitId=&since=&limit=` |
@@ -43,7 +43,7 @@ per request `METHOD /path status ms` and never a body, query string or token.
 | review result submission | `POST /reviews` (review and listening families only) |
 | writing evidence submission | `POST /writing` (a `ProductionRecorded` observation plus, optionally, the private document; atomic) |
 | private documents | `GET /documents` (metadata), `GET/PUT/DELETE /documents/:id` (optimistic `expectedRevision`; 409 with `current`) |
-| corrections | `POST /corrections` (learner correction of an analysis → new analysis, old invalidated, `AnalysisCorrected` event) |
+| corrections | `POST /corrections` (a learner's report on an analysis: an `AnalysisCorrected` event in their own log; the shared word list does not change, a reviewer decides with `scripts/ops/corrections.mts`. On a Repository with one learner, `applyLearnerCorrections`, also a new analysis with the old one invalidated) |
 | synchronization | `POST /sync/push`, `POST /sync/pull` |
 | export | `GET /export` → `go-repository-export@1` (events, enrolments, knowledge, preferences, documents with bodies, tombstones, and since v3 `unitProvenance`: the provenance of the units the learner's events refer to; never a hash or token). The file has the store export's shape (top-level `learnerId`, `events`, `enrolments`, `documents`, `preferences`, `tombstones`) plus `account`, `contractVersion` and full `devices` objects, so `importLearner` (repository-store) restores it as downloaded; knowledge is derived and rebuilt by the engine |
 | deletion | `POST /tombstones` (`event`, `source` and `range` scopes are recorded and then applied physically, the projection is refolded, the answer says `applied: { events, knowledge }`; `learner` scope is only recorded), `DELETE /me` (erasure) |
@@ -137,7 +137,15 @@ it.** Stamping is best effort and happens once per row.
 ### 7.3 Corrections to a unit
 
 `POST /units/:id/corrections` `{ reason, from?, to?, lexemeId?, features?, sentenceKey? }` (a learner session; `reason` 1 to 300
-characters) answers `{ unit, provenance, statusChanged, result? }`:
+characters) answers `{ unit, provenance, statusChanged, outcome?, result? }`.
+
+**The word list is shared by every account, so a learner's correction changes nothing shared.** On the service the route appends one
+`AnalysisCorrected` event to the learner's own log against their enrolment in the unit's language (422 `no-enrolment` if none), where it is
+exported and deleted with their account, and answers the unit as it was with `statusChanged: false`. `POST /corrections` does the same. A reviewer
+reads the reports and decides: `scripts/ops/corrections.mts list`, then `apply` (a reviewer's correction through the linguistic service). The audit of
+2026-11-03 found that one account could replace any word's analysis for everyone; a deployment cannot reopen that by leaving a setting out.
+
+Only a Repository with one learner (`applyLearnerCorrections`, the device-local one) applies a learner's correction:
 
 - the correction is appended to the unit's `provenance.corrections` as `{ at, by: 'learner', from?, to?, reason }`, with no learner id;
 - a form unit given a `lexemeId` or `features` is passed to the linguistics port's `correct()` (superseding analysis, the old one
@@ -147,8 +155,7 @@ characters) answers `{ unit, provenance, statusChanged, result? }`:
 - 404 `no-such-unit`, 422 for a missing or too long `reason`, 403 `learner-only` for `"by": "reviewer"` (a reviewer's verdict is the
   operator's, through the store's `recordUnitCorrection`), 403 for another learner's id, 409 `corrections-full` at 50 per unit.
 
-This route is the unit-level challenge. The learner's own evidence trail (an `AnalysisCorrected` event against an enrolment) stays
-`POST /corrections`.
+This route is the unit-level challenge; `POST /corrections` names a form and requires a lemma or features.
 
 ### 7.4 Export and deletion
 

@@ -105,6 +105,10 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   const settings = createSettings(local);
   const speech = createSpeechService({ area: local, settings: settings.get, fetch: doFetch,
     extensionId: chrome.runtime.id,
+    account: async () => {
+      const authenticated = await session.authenticated();
+        return authenticated ? { baseUrl: authenticated.service.baseUrl, token: authenticated.session.token, learnerId: authenticated.session.learnerId } : undefined;
+    },
     hasPermission: async (origin) => await chrome.permissions?.contains({ origins: [origin] }) === true,
   });
   const packs = bg.packs ?? defaultPacks;
@@ -156,7 +160,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       : undefined,
   });
   // GoLearn Active: the switches, the host-permission check and the dynamic content script (the popup asks the browser for the permission)
-  const active = createActiveService({ chrome, area: local, contentFile: CONTENT_FILE });
+  const active = createActiveService({ chrome, area: local, contentFile: CONTENT_FILE, now });
   // the device's own Repository: GoLearn works with no account, and the account only keeps the history across devices
   const localRepo = createLocalRepoService({ area: local, deviceId, session, packs, now });
   const profile = createProfileService({ area: cache, session, settings: settings.get, now, local: localRepo.forProfile });

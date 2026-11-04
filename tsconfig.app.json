@@ -19,5 +19,5 @@
     "resolveJsonModule": true
   },
   "include": ["src", "test", "scripts", "packages"],
-  "exclude": ["packages/biblia-ios/capacitor.config.ts", "packages/goreview-ios/capacitor.config.ts"]
+  "exclude": ["packages/biblia-ios/capacitor.config.ts", "packages/goreview-ios/capacitor.config.ts", "scripts/latin-dump-romance-closed.ts"]
 }

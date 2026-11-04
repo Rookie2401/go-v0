@@ -85,7 +85,8 @@ describe('buildSelectionReport', () => {
       scheduler: fakeScheduler, now: NOW, random: () => 0.5, knowledge: expanded.knowledge });
     const report = buildSelectionReport(expanded, plan);
     expect(plan.items.find(p => p.item.unitId === learning.unitId)?.queue).toBe('learning');
-    expect(report.planning).toMatchObject({ currentDeckItemsInPlan: 2, reviewDeckItemsInPlan: 2, remediationItemsInPlan: 0 });
+    // deck fill (2026-11-03): the one not-due spaced review completes the deck as early practice, so it counts among the Review Deck items and once as fill
+    expect(report.planning).toMatchObject({ currentDeckItemsInPlan: 2, reviewDeckItemsInPlan: 3, remediationItemsInPlan: 0, fillItemsInPlan: 1 });
   });
 
   it('reports only verified candidate form-to-base-word merges as word-family coverage', () => {

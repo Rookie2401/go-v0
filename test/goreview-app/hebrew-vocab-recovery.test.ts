@@ -201,8 +201,12 @@ describe('workspace Hebrew recovery', () => {
     const model = await loadReviewModel(rig.app.ctx);
     const current = await planCurrentDeck(rig.app.ctx, model!, new Set(), undefined, 'current');
     const review = await planCurrentDeck(rig.app.ctx, model!, new Set(), undefined, 'review');
-    expect(current.entries).toHaveLength(0);
-    expect(review.entries).toHaveLength(1);
+    // no new admission: the Current Deck holds only deck fill (the not-due card introduced today, borrowed as early practice; 2026-11-03)
+    expect(current.plan.items.filter(p => p.presentationReason !== 'deck-fill')).toHaveLength(0);
+    expect(current.plan.items.every(p => p.presentationReason === 'deck-fill' && !p.isNew)).toBe(true);
+    // the Review Deck keeps its one due review as an obligation; the not-due card introduced today completes it as deck fill
+    expect(review.plan.items.filter(p => p.presentationReason !== 'deck-fill').map(p => p.item.unitId)).toHaveLength(1);
+    expect(review.plan.items.filter(p => p.presentationReason === 'deck-fill')).toHaveLength(1);
     expect(explainAdmissions(model!, current)?.code).toBe('daily-allowance-used');
   });
 

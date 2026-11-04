@@ -51,6 +51,8 @@ export interface SelectionReport {
     currentDeckItemsInPlan: number;
     reviewDeckItemsInPlan: number;
     remediationItemsInPlan: number;
+    /** Deck fill (2026-11-03): early reviews that top the deck up to its size; they are counted above by their queue as well. */
+    fillItemsInPlan: number;
     selectedNew: number;
     targetQuestions: number;
     availableQuestions: number;
@@ -229,6 +231,7 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
       currentDeckItemsInPlan: plan.items.filter(p => p.queue === 'new' || p.queue === 'learning').length,
       reviewDeckItemsInPlan: plan.items.filter(p => p.queue === 'due').length,
       remediationItemsInPlan: plan.items.filter(p => p.queue === 'remediation').length,
+      fillItemsInPlan: plan.items.filter(p => p.presentationReason === 'deck-fill').length,
       selectedNew: plan.newCount,
       targetQuestions: plan.batch?.targetQuestions ?? plan.questionLimit ?? plan.items.length,
       availableQuestions: plan.availableWork?.questions ?? plan.items.length,

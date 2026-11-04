@@ -386,8 +386,16 @@ const route = (method: string, path: string, auth: boolean, run: Handler): void 
 route('GET', '/health', false, async (ctx) => {
   const info = ctx.deps.info;
   let schemaVersion: number | undefined;
-  if (info?.schemaVersion) { try { schemaVersion = await info.schemaVersion(); } catch { /* reported as absent */ } }
+  if (info?.schemaVersion) {
+    try { schemaVersion = await info.schemaVersion(); } catch {
+      // A health check that passes with the database gone keeps a dead instance in service.
+      return respond(503, { ok: false, service: 'repository', error: 'database-unavailable' });
+    }
+  }
+  let durability: unknown;
+  try { durability = info?.durability?.(); } catch { durability = undefined; }
   return respond(200, {
+    ...(durability ? { durability } : {}),
     ok: true, service: 'repository', version: SERVICE_VERSION, contractVersion: CONTRACT_VERSION,
     ...(info ? { store: info.storeKind, ...(schemaVersion !== undefined ? { migrations: schemaVersion } : {}), uptimeSec: Math.max(0, Math.floor((Date.now() - info.startedAt) / 1000)) } : {}),
   });

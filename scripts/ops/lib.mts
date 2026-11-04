@@ -4,6 +4,7 @@
  * the SQLite snapshot, the pg_dump/psql plumbing, and a dependency-free S3 (SigV4) upload. Everything here is a plain function so the tests can drive it.
  */
 import { createCipheriv, createDecipheriv, createHash, createHmac, randomBytes, scryptSync } from 'node:crypto';
+import { statfsSync } from 'node:fs';
 import { createReadStream, createWriteStream, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync, openSync, readSync, closeSync, copyFileSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { spawn, spawnSync } from 'node:child_process';
@@ -310,6 +311,38 @@ export interface BackupOptions {
 }
 export interface BackupResult { file: string; kind: BackupKind; bytes: number; sha256: string; encrypted: boolean; pruned: string[]; uploaded: string[]; schemaVersion?: number }
 
+/**
+ * A snapshot is a full copy of the database before it is compressed. Without room for it the backup would fail part-way, and on a small disk could take
+ * the service's own writes with it, so older local backups go first and, if that is not enough, this refuses before writing anything.
+ */
+function ensureRoomForSnapshot(outDir: string, dbPath: string, now: Date, log: Log): void {
+  if (!existsSync(dbPath)) return; // the snapshot says so itself
+  const needed = statSync(dbPath).size * 1.2;
+  const free = (): number => { const s = statfsSync(outDir); return Number(s.bavail) * Number(s.bsize); };
+  if (free() >= needed) return;
+  pruneBackups(outDir, now, 1, 0, log);
+  if (free() >= needed) return;
+  throw Object.assign(new Error('not enough free disk for a snapshot of the database'), { code: 'ENOSPC' });
+}
+
+/** The newest outcome, beside the backups: `/health` reads it, so a failure is visible without opening the logs. Holds no path, name or address. */
+export const BACKUP_STATUS_FILE = '.last-backup.json';
+export interface BackupStatus { at: string; ok: boolean; lastOkAt?: string; offsite: boolean; encrypted: boolean; bytes?: number; error?: 'disk-full' | 'upload-failed' | 'failed' }
+
+export function readBackupStatus(outDir: string): BackupStatus | undefined {
+  try { return JSON.parse(readFileSync(join(outDir, BACKUP_STATUS_FILE), 'utf8')) as BackupStatus; } catch { return undefined; }
+}
+export function classifyBackupError(e: unknown): NonNullable<BackupStatus['error']> {
+  const x = e as { code?: unknown; stage?: unknown } | undefined;
+  return x?.code === 'ENOSPC' ? 'disk-full' : x?.stage === 'upload' ? 'upload-failed' : 'failed';
+}
+export function writeBackupStatus(outDir: string, status: BackupStatus): void {
+  mkdirSync(outDir, { recursive: true, mode: 0o700 });
+  const tmp = join(outDir, `${BACKUP_STATUS_FILE}.tmp`);
+  writeFileSync(tmp, JSON.stringify(status), { mode: 0o600 });
+  renameSync(tmp, join(outDir, BACKUP_STATUS_FILE));
+}
+
 export async function runBackup(o: BackupOptions): Promise<BackupResult> {
   const log = o.log ?? ((): void => undefined);
   const now = o.now ?? new Date();
@@ -325,6 +358,7 @@ export async function runBackup(o: BackupOptions): Promise<BackupResult> {
     if (kind === 'sqlite') {
       const dbPath = join(resolve(o.dataDir ?? 'data/repository'), SQLITE_FILE);
       const snap = join(work, 'snapshot.sqlite');
+      ensureRoomForSnapshot(o.outDir, dbPath, now, log);
       const check = snapshotSqlite(dbPath, snap);
       schemaVersion = check.schemaVersion;
       log(`snapshot taken and checked: ${check.tables} tables, schema version ${check.schemaVersion}`);
@@ -347,8 +381,13 @@ export async function runBackup(o: BackupOptions): Promise<BackupResult> {
   log(`wrote ${name} (${bytes} bytes, sha256 ${sha.slice(0, 12)}…)`);
 
   const uploaded: string[] = [];
-  if (o.s3) { uploaded.push(await s3Put(o.s3, final, now, o.fetch)); await s3Put(o.s3, `${final}.sha256`, now, o.fetch); log(`uploaded to s3://${uploaded[0]}`); }
-  if (o.uploadCmd) { runUploadHook(o.uploadCmd, final); uploaded.push(`hook:${name}`); log('upload hook finished'); }
+  try {
+    if (o.s3) { uploaded.push(await s3Put(o.s3, final, now, o.fetch)); await s3Put(o.s3, `${final}.sha256`, now, o.fetch); log(`uploaded to s3://${uploaded[0]}`); }
+    if (o.uploadCmd) { runUploadHook(o.uploadCmd, final); uploaded.push(`hook:${name}`); log('upload hook finished'); }
+  } catch (e) {
+    if (e && typeof e === 'object') (e as { stage?: string }).stage = 'upload';
+    throw e;
+  }
 
   const pruned = pruneBackups(o.outDir, now, o.keepDaily, o.keepWeekly, log);
   return { file: final, kind, bytes, sha256: sha, encrypted: o.passphrase !== undefined, pruned, uploaded, ...(schemaVersion !== undefined ? { schemaVersion } : {}) };

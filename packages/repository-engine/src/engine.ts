@@ -144,10 +144,10 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
 
   /**
    * Incremental step. The new events say which units are touched; each touched unit is then recomputed from ALL of its
-   * events (so `contexts`, `difficulty` and `basis.events` stay exact and the result equals a rebuild). Cost: one scan
-   * of the learner's log per call that has new events (O(N)) plus a fold of the touched units only. This is the price
-   * of correctness under alias re-targeting, where a unit's events may sit under several ids; a store-side unit index
-   * and a reverse alias lookup would remove the scan.
+   * events (so `contexts`, `difficulty` and `basis.events` stay exact and the result equals a rebuild). Those events are read
+   * through the store's unit index and a reverse alias lookup (`eventsReaching`), so a call costs what the touched units cost,
+   * not the length of the learner's log (the audit of 2026-11-03 measured 4 s a batch at 100,000 events). Anything the index
+   * cannot prove complete falls back to reading the whole log, which gives the same rows, only slower.
    * A `certain` alias added after rows exist is detected (rows still keyed by an id that now resolves elsewhere) and answered
    * with a rebuild, so live == rebuild (see `rekeyIfAliased`). Not detected (call `rebuild()`): a new tombstone affecting
    * events older than the cursor.
@@ -169,18 +169,52 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
       return { folded: fresh.length, cursor: rebuilt.seq };
     }
     const seq = fresh.reduce((m, e) => Math.max(m, e.seq), cursor.seq);
-    const events = await readEvents(learnerId);
-    const { observations, resolve, tombstones } = await liveObservations(learnerId, events);
-    const touched = new Set<string>();
-    for (const e of dedupeEvents(fresh)) {
-      if (isTombstoned(e, tombstones)) continue;
-      for (const o of observationsOf(e)) touched.add(resolve(o.unitId));
-    }
+    const tombstones = await store.listTombstones(learnerId);
+    const named = dedupeEvents(fresh).filter((e) => !isTombstoned(e, tombstones)).flatMap((e) => observationsOf(e).map((o) => o.unitId));
+    const resolveNamed = await resolverFor(named);
+    const touched = new Set(named.map(resolveNamed));
+    const events = await eventsReaching(learnerId, touched) ?? await readEvents(learnerId);
+    const { observations } = await liveObservations(learnerId, events);
     const rows = await attachStatus([...foldObservations(observations.filter((o) => touched.has(o.unitId)), modelVersion).values()].sort(byUnitId));
     const previousRows = await store.getKnowledge(learnerId, [...touched]);
     await store.putKnowledge(carryLegacyAutomatic(rows, previousRows, observations, now(), false));
     await store.putProjectionCursor(learnerId, { seq, modelVersion });
     return { folded: fresh.length, cursor: seq };
+  }
+
+  /**
+   * The events a fold of `touched` needs: those naming a touched unit or an id with a certain alias into one, and, because review evidence is decided per
+   * card, those naming any other item of a review among them. `undefined` when that cannot be shown complete (no index on this store, a chain of aliases or
+   * items longer than expected, or a review whose predecessor is not there): the caller then reads the whole log.
+   */
+  async function eventsReaching(learnerId: string, touched: ReadonlySet<string>): Promise<StoredEvent[] | undefined> {
+    if (!store.listEventsOfUnits || !store.aliasesTo) return undefined;
+    const ids = new Set(touched);
+    let frontier = [...ids];
+    for (let round = 0; frontier.length; round++) {
+      if (round === 6) return undefined;
+      const into = await store.aliasesTo(frontier);
+      frontier = [...new Set(into.filter((a) => a.mapping === 'certain').map((a) => a.oldId))].filter((i) => !ids.has(i));
+      frontier.forEach((i) => ids.add(i));
+    }
+    const found = new Map<string, StoredEvent>();
+    let want = [...ids];
+    for (let round = 0; want.length; round++) {
+      if (round === 6) return undefined;
+      const page = await store.listEventsOfUnits(learnerId, want);
+      const more = new Set<string>();
+      for (const e of page) {
+        found.set(e.id, e);
+        if (e.subject?.cardId) for (const item of e.subject.itemIds ?? []) if (!ids.has(item)) more.add(item);
+      }
+      more.forEach((i) => ids.add(i));
+      want = [...more];
+    }
+    for (const e of found.values()) {
+      const previous = (e.payload as { expectedPreviousReviewId?: unknown } | undefined)?.expectedPreviousReviewId;
+      if (typeof previous === 'string' && previous && !found.has(previous)) return undefined;
+    }
+    return [...found.values()].sort((a, b) => a.seq - b.seq);
   }
 
   /**

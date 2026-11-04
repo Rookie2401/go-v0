@@ -12,23 +12,31 @@
  *   BACKUP_KEEP_DAILY / BACKUP_KEEP_WEEKLY   local retention (defaults 7 and 4)
  * Exit status is non-zero if the backup or an upload failed, so a systemd timer / cron mail reports it.
  */
-import { parseArgs, runBackup, s3FromEnv, wholeNumber } from './lib.mts';
+import { classifyBackupError, parseArgs, readBackupStatus, runBackup, s3FromEnv, wholeNumber, writeBackupStatus } from './lib.mts';
 
 async function main(): Promise<void> {
   const { values } = parseArgs(process.argv.slice(2), { flags: [], values: ['data', 'out', 'keep-daily', 'keep-weekly'] });
   const env = process.env;
   const data = values.data ?? env.REPOSITORY_DATA_DIR ?? 'data/repository';
+  const outDir = values.out ?? env.BACKUP_DIR ?? 'backups';
+  const started = new Date().toISOString();
+  const offsite = !!(env.BACKUP_S3_ENDPOINT || env.BACKUP_UPLOAD_CMD);
   const result = await runBackup({
     dataDir: data,
     ...(env.DATABASE_URL ? { databaseUrl: env.DATABASE_URL } : {}),
-    outDir: values.out ?? env.BACKUP_DIR ?? 'backups',
+    outDir,
     keepDaily: wholeNumber(values['keep-daily'] ?? env.BACKUP_KEEP_DAILY, 'keep-daily', 7),
     keepWeekly: wholeNumber(values['keep-weekly'] ?? env.BACKUP_KEEP_WEEKLY, 'keep-weekly', 4),
     ...(env.BACKUP_PASSPHRASE ? { passphrase: env.BACKUP_PASSPHRASE } : {}),
     ...(s3FromEnv(env) ? { s3: s3FromEnv(env)! } : {}),
     ...(env.BACKUP_UPLOAD_CMD ? { uploadCmd: env.BACKUP_UPLOAD_CMD } : {}),
     log: (line) => console.log(`backup: ${line}`),
+  }).catch((e: unknown) => {
+    const lastOkAt = readBackupStatus(outDir)?.lastOkAt;
+    try { writeBackupStatus(outDir, { at: started, ok: false, ...(lastOkAt ? { lastOkAt } : {}), offsite, encrypted: !!env.BACKUP_PASSPHRASE, error: classifyBackupError(e) }); } catch { /* the disk may be the reason */ }
+    throw e;
   });
+  writeBackupStatus(outDir, { at: started, ok: true, lastOkAt: started, offsite: result.uploaded.length > 0, encrypted: result.encrypted, bytes: result.bytes });
   console.log(`backup: done ${result.file} ${result.bytes} bytes${result.encrypted ? ' (encrypted)' : ''}; uploaded to ${result.uploaded.length} place(s), pruned ${result.pruned.length}`);
   if (!result.uploaded.length) console.log('backup: warning: nothing was uploaded off this machine (set BACKUP_S3_* or BACKUP_UPLOAD_CMD)');
 }

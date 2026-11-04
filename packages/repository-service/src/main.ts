@@ -138,6 +138,7 @@ async function wire(dataDir: string, cfg: ServiceConfig): Promise<{ deps: Servic
   mkdirSync(dataDir, { recursive: true });
   const now = (): string => new Date().toISOString();
   const startedAt = Date.now();
+  const { backupHealth } = await import('./backupHealth');
   const { createProjectionEngine } = await import('../../repository-engine/src');
   const { createLinguisticService } = await import('../../repository-linguistics/src');
   const { policyFor } = await import('./sourcePolicy');
@@ -153,7 +154,7 @@ async function wire(dataDir: string, cfg: ServiceConfig): Promise<{ deps: Servic
     ...(cfg.limits ? { limiter: createRateLimiter(cfg.limits) } : {}),
     clientIp: (request) => resolveClientIp(peers.get(request), request.headers, cfg.trustProxy),
     metrics: { registry, ...(cfg.metricsToken ? { token: cfg.metricsToken } : {}), collect: collector(store, notifier, startedAt, kind) },
-    info: { storeKind: kind, startedAt, schemaVersion: async () => (await store.stats?.())?.schemaVersion },
+    info: { storeKind: kind, startedAt, schemaVersion: async () => (await store.stats?.())?.schemaVersion, ...(kind === 'sqlite' ? { durability: () => backupHealth(dataDir) } : {}) },
     mailer,
     speech: {
       // Azure credentials remain server-side. They are deliberately not logged or copied into any client response.

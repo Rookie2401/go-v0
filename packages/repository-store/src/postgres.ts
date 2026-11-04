@@ -199,6 +199,16 @@ export async function openPostgresStore(pool: PgPool, opts: PostgresOptions = {}
       const rows = await all(`SELECT ${EVENT_COLS} FROM events e WHERE ${where.join(' AND ')} ORDER BY e.seq ${f.order === 'desc' ? 'DESC' : 'ASC'} LIMIT ?`, ...params);
       return rows.map(eventOfRow);
     },
+    async listEventsOfUnits(learnerId, unitIds) {
+      const bySeq = new Map<number, StoredEvent>();
+      for (const part of chunks([...new Set(unitIds)], 1000)) {
+        if (!part.length) continue;
+        const rows = await all(`SELECT DISTINCT ${EVENT_COLS} FROM event_units eu JOIN events e ON e.id = eu.event_id
+          WHERE eu.unit_id = ANY(?::text[]) AND e.learner_id = ?`, part, learnerId);
+        for (const row of rows) { const e = eventOfRow(row); bySeq.set(e.seq, e); }
+      }
+      return [...bySeq.values()].sort((a, b) => a.seq - b.seq);
+    },
     async listEncounterSummaries(learnerId, languageId, unitIds, perUnitLimit) {
       const out: EncounterEventSummary[] = [];
       for (const part of chunks([...new Set(unitIds)], 1000)) {

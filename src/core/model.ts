@@ -49,6 +49,8 @@ export interface Course {
   preferredLocales: string[]; // e.g. ["es-HN", "es-419", "es-MX"]
   /** Preferred Bible version id for this course (a Text with kind 'scripture'). */
   bibleVersionId?: string;
+  /** Genres used as primary reading input; absent preserves the normal story/dialogue/prose path. */
+  primaryReadingKinds?: TextKind[];
   /** Which variety of the language the learner aims to USE, and which he should only recognise (see core/variety.ts). */
   variety?: VarietyPolicy;
 }

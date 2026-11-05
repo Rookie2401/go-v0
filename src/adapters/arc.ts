@@ -53,8 +53,10 @@ export function arcCandidates(token: RawToken): AnalysisCandidate[] {
       notes: { source: 'oshb', code: row.morph, lemmaId: row.lemmaId.split('/').pop()!, references: [row.reference],
         sourceWordIds: [row.sourceWordId], scope: 'attested source reading; not a productive paradigm',
         ...(inferred ? { pointing: 'inferred from the consonantal spelling; alternatives retained' } : {}) },
-      parts: oshbParts(token.surface, parsed, row.seg, row.lemma, parsed.pos).map(p => ({
-        ...p, kind: p.role === 'stem' ? 'stem' as const : p.start === 0 && parsed.prefixes.length ? 'prefix' as const : 'suffix' as const,
+      parts: oshbParts(token.surface, parsed, row.seg, row.lemma, parsed.pos).map((p, index) => ({
+        ...p, kind: p.role === 'stem' ? 'stem' as const : index < parsed.prefixes.length ? 'prefix' as const : 'suffix' as const,
+        ...(row.morph.slice(1).split('/')[index] === 'Td' && index > parsed.mainIndex
+          ? { role: 'determined (emphatic) state ending', pos: 'DET' as const, morph: { Definite: 'Def' } } : {}),
       })),
     };
     const identity = JSON.stringify([c.lemma, c.pos, c.morph, row.lemmaId, row.seg]);

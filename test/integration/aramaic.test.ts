@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { StoreEventBus, createMemoryStore } from '../../src/core';
 import { createAdapterRegistry } from '../../src/adapters';
 import { createCourseCatalog } from '../../src/course';
+import { createLibrary } from '../../src/library';
+import { loadCoursePath } from '../../src/course/pathAvailability';
 import { createGoLearn } from '../../src/golearn';
 import { ingestAll, loadBundledCorpus, validateBatch } from '../../src/ingest';
 import { PACKS, installPack, verifyInstalled } from '../../packages/language-packs/src';
@@ -20,7 +22,7 @@ describe('Aramaic vertical slice through the existing ecosystem', () => {
     expect(installed.ok, JSON.stringify(installed)).toBe(true);
     expect(await verifyInstalled(PACKS.arc, storage)).toMatchObject({ installed: true, current: true, validationFailures: 0 });
     const registry = createAdapterRegistry();
-    const docs = loadBundledCorpus().filter(d => d.lang === 'arc');
+    const docs = loadBundledCorpus().filter(d => d.lang === 'arc').sort((a, b) => (a.work?.chapter?.index ?? 0) - (b.work?.chapter?.index ?? 0));
     expect(docs).toHaveLength(2);
     expect(validateBatch(docs, { registry }).documents.flatMap(d => d.issues).filter(i => i.severity === 'error')).toEqual([]);
     const store = createMemoryStore();
@@ -29,10 +31,17 @@ describe('Aramaic vertical slice through the existing ecosystem', () => {
     const catalog = createCourseCatalog({ store });
     await catalog.install('aramaic-arc');
     expect(await catalog.works('aramaic-arc')).toHaveLength(2);
+    const library = createLibrary({ store, adapters: registry, fetch: noNetwork });
+    await library.indexStore();
+    const path = await loadCoursePath(catalog, library, 'aramaic-arc');
+    expect(path[0].available).toBe(true);
+    expect(path[0].publishedWorks).toBe(2);
     const clock = () => '2026-11-05T10:00:00.000Z';
     const bus = new StoreEventBus(store, clock);
     const golearn = createGoLearn({ store, bus, adapters: registry, clock });
     golearn.attach();
+    const firstSuggestions = await golearn.recommend('arc-student', { lang: 'arc' });
+    expect(firstSuggestions.some(r => texts.some(t => t.id === r.textId))).toBe(true);
     const sentences = await store.sentences.where('textId', texts[0].id);
     for (const s of sentences) await bus.emit({
       type: 'SentenceViewed', userId: 'arc-student', lang: 'arc', surface: 'scripture', session: 'read-1',
@@ -45,6 +54,8 @@ describe('Aramaic vertical slice through the existing ecosystem', () => {
     expect((await golearn.queryItem('arc-student', { lang: 'he', surface: 'מַלְכָּא֙' })).encounterCount).toBe(0);
     const reloaded = createGoLearn({ store, bus, adapters: registry, clock });
     expect((await reloaded.queryItem('arc-student', { lang: 'arc', surface: 'מַלְכָּא֙' })).encounterCount).toBe(before.encounterCount);
+    expect((await reloaded.readingProgress('arc-student', texts[0].id)).sentencesSeen).toBeGreaterThan(0);
+    expect((await reloaded.recommend('arc-student', { lang: 'arc' })).some(r => r.textId === texts[1].id)).toBe(true);
     const coverage = await reloaded.coverage('arc-student', texts[1].id);
     expect(coverage.wordTokens).toBeGreaterThan(0);
     expect(coverage.knownLexicalCoverage).toBe(0); // exposure is not comprehension

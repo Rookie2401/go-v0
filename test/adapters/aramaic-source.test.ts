@@ -22,6 +22,18 @@ describe('Aramaic source transcription verification (not held-out linguistic acc
     }
     expect(ARAMAIC_SEED).toHaveLength(26);
   });
+  it('keeps lexical headwords tied to the selected Strong source entries', () => {
+    const lexicon = fs.readFileSync('data/sources/aramaic/strong-excerpts.xml', 'utf8');
+    const entries = new Map([...lexicon.matchAll(/<entry id="H(\\d+)">([\\s\\S]*?)<\\/entry>/g)].map(m => [
+      m[1], m[2].match(/<w [^>]+>([^<]+)<\\/w>/)?.[1],
+    ]));
+    for (const row of ARAMAIC_SEED) {
+      const id = row.lemmaId.split('/').pop()!;
+      if (id === 'l') continue; // source preposition code, not a Strong entry
+      expect(entries.get(id)).toBe(row.lemma);
+      expect(row.gloss).not.toBe('');
+    }
+  });
   it('the declared source tokens are all recognized, with ambiguity measured separately', () => {
     const docs = loadBundledCorpus().filter(d => d.lang === 'arc');
     const sentences = docs.flatMap(d => d.sections.flatMap(s => s.paragraphs.flatMap(p => 'sentences' in p ? p.sentences : [])));

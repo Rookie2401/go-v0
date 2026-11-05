@@ -12,7 +12,7 @@ Base: master 30106b4dedb7d70872e6a5861f286e9636e933ac. Scope: normal GoLearn, no
 - Vocabulary: unchanged AppStore, encounter/event projection and six-state Repository model. No second learner database, evidence policy or scheduling engine.
 - Review: ordinary pack facts supply lexical base-meaning recognition when a source-attested form has one unambiguous lemma. Morphology flows through existing source feature facts. The shared FSRS fold, due dates, exclusion rules and event history remain authoritative.
 - Corpus: schemaVersion 2 documents under data/corpus/arc are discovered by the existing importer. The course catalog supplies the two real works, not shelves falsely claiming future books.
-- Recommendations: normal GoLearn coverage/recommendation contracts apply. Encounter coverage is not comprehension; no reading proficiency claim is made.
+- Recommendations: normal GoLearn coverage/recommendation contracts apply. A reusable Course.primaryReadingKinds setting lets a historical-language course use Scripture as primary reading input; other courses keep their existing genres. Course path availability follows that same setting. Encounter coverage is not comprehension; no reading proficiency claim is made.
 
 ## Evidence and ambiguity
 The source decoder reads only A-coded annotations. The exact known passage can rank its source's reading, retaining alternatives. Outside that alignment all attested readings remain. Unpointed matching lowers confidence. Unknown words and unsupported dialects stay unresolved; roots and productive paradigms are deliberately absent.

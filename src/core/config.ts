@@ -20,7 +20,7 @@ export const LANGUAGE_ROWS: Language[] = [
 ];
 
 export const COURSES: Course[] = [
-  { id: 'aramaic-arc', lang: 'arc', country: 'Aramaic', title: 'Biblical Aramaic', preferredLocales: [], variety: { target: 'arc-bib', within: [] } },
+  { id: 'aramaic-arc', lang: 'arc', country: 'Aramaic', title: 'Biblical Aramaic', primaryReadingKinds: ['scripture'], preferredLocales: [], variety: { target: 'arc-bib', within: [] } },
   {
     id: 'honduras-es', lang: 'es', country: 'Honduras', title: 'Honduras → Spanish', preferredLocales: ['es-HN', 'es-419', 'es-MX', 'es-US', 'es-ES'],
     // Active target: modern Honduran / Central American Spanish within general Latin American Spanish. Voseo is part of

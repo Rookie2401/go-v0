@@ -24,3 +24,22 @@ jobs:
         run: npx vitest run
         env:
           GO_CI_NO_LOCAL_DATA: '1'
+
+  aramaic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Aramaic vertical slice tests
+        run: npx vitest run test/adapters/aramaic.test.ts test/adapters/aramaic-source.test.ts test/language-packs/aramaic.test.ts test/integration/aramaic.test.ts
+        env:
+          GO_CI_NO_LOCAL_DATA: '1'
+      - name: Aramaic source and repetition report
+        run: npx vite-node --config scripts/vite.config.ts scripts/arc-report.mts
+      - name: Build language analyser chunks
+        run: npx vite build -c packages/golearn-extension/vite.config.ts --mode analysers

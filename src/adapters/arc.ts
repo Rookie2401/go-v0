@@ -109,7 +109,7 @@ export const arcAdapter: LanguageAdapter = {
     });
   },
   detectPhrases: () => [], detectPatterns: () => [], checkProduction: () => [],
-  pronunciation: () => ({ notes: ['No independently validated pronunciation is supplied for this historical variety.'] }),
+  pronunciation: () => ({ notes: [] }), // Absence is stated in support limitations; it is not a pronunciation feature.
   speechNormalize: text => speechNormalizeGeneric(text, { tool: 'speech-arc@1', numberToWords: () => null, abbreviations: [] }),
   display: { wordSeparator: ' ', showBoundariesOnHighlight: false,
     fontFamily: '"SBL Hebrew", "Ezra SIL", "Noto Serif Hebrew", serif', lineHeight: 2 },

@@ -50,7 +50,7 @@ describe('Aramaic vertical slice through the existing ecosystem', () => {
     await golearn.settled();
     const before = await golearn.queryItem('arc-student', { lang: 'arc', surface: 'מַלְכָּא֙' });
     expect(before.encounterCount).toBeGreaterThan(0);
-    expect(before.reading.level).toBe('seen');
+    expect(before.reading.level).toBe('encountered'); // GoLearn's raw exposure state; Repository presents the shared Seen state.
     expect((await golearn.queryItem('arc-student', { lang: 'he', surface: 'מַלְכָּא֙' })).encounterCount).toBe(0);
     const reloaded = createGoLearn({ store, bus, adapters: registry, clock });
     expect((await reloaded.queryItem('arc-student', { lang: 'arc', surface: 'מַלְכָּא֙' })).encounterCount).toBe(before.encounterCount);

@@ -32,7 +32,7 @@ describe('Aramaic vertical slice through the existing ecosystem', () => {
     await catalog.install('aramaic-arc');
     expect(await catalog.works('aramaic-arc')).toHaveLength(2);
     const library = createLibrary({ store, adapters: registry, fetch: noNetwork });
-    await library.indexStore();
+    await library.indexStore('arc');
     const path = await loadCoursePath(catalog, library, 'aramaic-arc');
     expect(path[0].available).toBe(true);
     expect(path[0].publishedWorks).toBe(2);

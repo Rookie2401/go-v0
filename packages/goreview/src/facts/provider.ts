@@ -593,9 +593,9 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     let lexicalRecognition: UnitFacts['lexicalRecognition'];
     const greekBaseGloss = topAlone?.gloss;
     const greekIdentities = new Set((alone?.candidates ?? []).map(c => `${adapter.normalize(c.lemma ?? '')}|${c.pos ?? ''}`));
-    if (!answerGlosses.length && !['invalidated', 'conflicted', 'requires-review'].includes(status) && lang === 'el' && lemma && greekBaseGloss
+    if (!answerGlosses.length && !['invalidated', 'conflicted', 'requires-review'].includes(status) && (lang === 'el' || lang === 'arc') && lemma && greekBaseGloss
       && topAlone?.origin === 'dictionary' && !topAlone.unconfirmed
-      && ['morphgnt-sblgnt', 'kaikki-grc-tables', 'kaikki-el-tables'].includes(topAlone.sourceId ?? '')
+      && ['morphgnt-sblgnt', 'kaikki-grc-tables', 'kaikki-el-tables', 'oshb-aramaic'].includes(topAlone.sourceId ?? '')
       && alone?.candidates.length && greekIdentities.size === 1
       && greekIdentities.has(`${adapter.normalize(lemma)}|${topAlone.pos ?? ''}`)
       && alone.candidates.every(c => c.origin === 'dictionary' && !c.unconfirmed && c.sourceId === topAlone.sourceId

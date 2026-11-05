@@ -22,6 +22,7 @@ export interface LanguageMeta {
 }
 
 export const LANGUAGE_META: Readonly<Record<string, LanguageMeta>> = {
+  arc: { lang: 'arc', name: 'Biblical Aramaic', pageTag: /^arc(-|$)/, experimental: 'The Aramaic pack is experimental: only its declared Biblical Aramaic excerpt forms have source-backed analyses. Other dialects and unlisted forms are unresolved.' },
   sq: { lang: 'sq', name: 'Albanian', pageTag: /^(sq|als|aln)(-|$)/ },
   es: { lang: 'es', name: 'Spanish', pageTag: /^es(-|$)/ },
   de: { lang: 'de', name: 'German', pageTag: /^de(-|$)/, experimental: 'The German pack is experimental: lemmatisation is seed-only (a machine-drafted word list), morphology is limited, and nothing has been reviewed by a native speaker.' },

@@ -8,6 +8,7 @@
  * other language gets a single provisional `form` unit. Script-specific adapters such as Hindi are allowed to read
  * their own script; the Latin-letter guard only protects the Latin-only adapters below.
  */
+import { arcAdapter } from '../../../src/adapters/arc';
 import { esAdapter } from '../../../src/adapters/es';
 import { hiAdapter } from '../../../src/adapters/hi';
 import { sqAdapter } from '../../../src/adapters/sq';
@@ -84,6 +85,13 @@ function spanishPack(): LanguagePackInfo {
 
 /** The adapter registry, keyed by languageId. A language added here is resolved with the same code as Albanian. */
 const LANGUAGES: Readonly<Record<string, LanguageEntry>> = {
+  arc: { adapter: arcAdapter, name: 'Biblical Aramaic', varietyId: 'arc-bib', pack: () => ({
+    packId: 'pack:arc', languageId: 'arc', version: arcAdapter.version, analyzerId: `adapter-arc@${arcAdapter.version}`,
+    reviewStatus: 'machine-drafted', level: 'experimental', validation: 'experimental',
+    coverage: { notes: [...arcAdapter.support.limitations] },
+    licences: [{ resource: 'OSHB Biblical Aramaic excerpt morphology and Open Scriptures Strong lexical transcription', licence: 'CC BY 4.0; WLC text public domain. Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb' }],
+  }) },
+
   sq: { adapter: sqAdapter, name: 'Albanian', varietyId: SQ_VARIETY, pack: albanianPack },
   es: { adapter: esAdapter, name: 'Spanish', varietyId: ES_VARIETY, pack: spanishPack },
   hi: { adapter: hiAdapter, name: 'Hindi', varietyId: 'hi-standard', pack: hindiPack },
@@ -236,7 +244,7 @@ export function resolveSelection(input: ResolveInput): Resolution {
     const surface = (input.surface ?? '').normalize('NFC').trim();
     const entry = entryFor(input.languageId);
     if (!entry) return genericResolution(input, `No analyzer for language "${input.languageId}" in the Repository: only the form is recorded.`);
-    if (!hasLatinLetter(surface) && input.languageId !== 'hi') return genericResolution(input, `This selection has no Latin letters: the ${entry.name} word list does not apply to it.`);
+    if (entry.adapter.script === 'Latn' && !hasLatinLetter(surface)) return genericResolution(input, `This selection has no Latin letters: the ${entry.name} word list does not apply to it.`);
     return resolveWith(input, surface, entry);
   } catch (e) {
     return genericResolution(input, `The analyzer failed (${e instanceof Error ? e.message : String(e)}); only the form is recorded.`);
@@ -378,7 +386,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
       provenance: withValidation({ source: 'parser', ref: `adapter-${lang}@${adapter.version}`, confidence: 0 }, 'incomplete'), status: 'provisional',
     }
     : stamp('form', formId, formLabel, formIdx, {
-      scriptId: 'Latn',
+      scriptId: adapter.script,
       ...(chosenAdapter?.pos ? { pos: chosenAdapter.pos } : {}),
       ...(chosenCand?.features && Object.keys(chosenCand.features).length ? { features: chosenCand.features } : {}),
       // the fields that belong to the form whatever the sentence (only the ones something states)
@@ -392,7 +400,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
       // lexeme
       if (cand.lexemeId && c.lemma) {
         const best = bestFor((x) => x.lexemeId === cand.lexemeId)!;
-        units.add(stamp('lexeme', cand.lexemeId, c.lemma, best, { scriptId: 'Latn', ...(c.pos ? { pos: c.pos } : {}) }));
+        units.add(stamp('lexeme', cand.lexemeId, c.lemma, best, { scriptId: adapter.script, ...(c.pos ? { pos: c.pos } : {}) }));
         rels.add({ fromId: formId, relation: 'form-of', toId: cand.lexemeId, confidence: cand.confidence, provenance: cand.provenance, status: statuses[i] });
         // sense
         if (cand.senseId && c.gloss) {
@@ -448,7 +456,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
       const pp: AnalysisCandidate = { confidence: 0.8, provenance: withValidation({ source: 'hand-lexicon', ref: `adapter-${lang}@${adapter.version}`, confidence: 0.8 }, packLevel) };
       const st = statusFor(pp, [pp]);
       units.add({
-        unitId: uid, kind: 'pronunciation-pattern', languageId: lang, varietyId: varietyId, scriptId: 'Latn', label: note, packId, packVersion,
+        unitId: uid, kind: 'pronunciation-pattern', languageId: lang, varietyId: varietyId, scriptId: adapter.script, label: note, packId, packVersion,
         provenance: pp.provenance, status: st, createdAt: input.now,
       });
       rels.add({ fromId: formId, relation: 'pronounced-as', toId: uid, confidence: pp.confidence, provenance: pp.provenance, status: st, varietyId: varietyId });

@@ -6,6 +6,7 @@
 import type { Course, Language } from './model';
 
 export const LANGUAGE_ROWS: Language[] = [
+  { id: 'arc', name: 'Aramaic (Biblical)', endonym: 'אֲרָמִית', script: 'Hebr', direction: 'rtl', whitespaceDelimited: true },
   { id: 'es', name: 'Spanish', endonym: 'Español', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
   { id: 'sq', name: 'Albanian', endonym: 'Shqip', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
   { id: 'th', name: 'Thai', endonym: 'ไทย', script: 'Thai', direction: 'ltr', whitespaceDelimited: false },
@@ -19,6 +20,7 @@ export const LANGUAGE_ROWS: Language[] = [
 ];
 
 export const COURSES: Course[] = [
+  { id: 'aramaic-arc', lang: 'arc', country: 'Aramaic', title: 'Biblical Aramaic', preferredLocales: [], variety: { target: 'arc-bib', within: [] } },
   {
     id: 'honduras-es', lang: 'es', country: 'Honduras', title: 'Honduras → Spanish', preferredLocales: ['es-HN', 'es-419', 'es-MX', 'es-US', 'es-ES'],
     // Active target: modern Honduran / Central American Spanish within general Latin American Spanish. Voseo is part of

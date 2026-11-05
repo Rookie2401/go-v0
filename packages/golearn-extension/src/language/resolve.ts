@@ -86,9 +86,10 @@ export const PACK_VARIETIES: Readonly<Record<string, readonly string[]>> = {
   // the packs' analysed varieties: the PERIODS a learner may target, and (Hebrew) Biblical Aramaic read beside it; the others are recognised on cards, not chosen
   he: ['he-mod', 'he-bib', 'arc-bib'],
   el: ['el-mod', 'el-koi', 'el-att', 'el-hom'],
+  arc: ['arc-bib'],
 };
 /** The script each pack's language is written in; a tag that states another script (hi-Latn) names something no pack analyses. */
-const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', el: 'grek' };
+const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', arc: 'hebr', el: 'grek' };
 
 const PRIMARY: Readonly<Record<string, string>> = {
   sq: 'sq', sqi: 'sq', als: 'sq', aln: 'sq',
@@ -99,6 +100,7 @@ const PRIMARY: Readonly<Record<string, string>> = {
   nb: 'nb', nob: 'nb',
   nn: 'nn', nno: 'nn',
   la: 'la', lat: 'la',
+  arc: 'arc',
   // Biblical Hebrew (hbo) and Ancient Greek (grc) are periods of the same packs, not other languages
   he: 'he', heb: 'he', iw: 'he', hbo: 'he',
   el: 'el', ell: 'el', gre: 'el', grc: 'el',
@@ -159,6 +161,9 @@ export function mapLanguageTag(tag: string): TagMapping {
   } else if (languageId === 'de' && region) {
     const v = `de-${region.toUpperCase()}`;
     if (PACK_VARIETIES.de.includes(v)) varietyId = v;
+  } else if (primary === 'arc') {
+    if (rest.some((p) => ['targum', 'targumic', 'onkelos', 'syriac', 'imperial', 'qumran'].includes(p))) return { kind: 'no-pack', reason: 'Only the Biblical Aramaic slice is implemented; the declared variety has no validated pack' };
+    varietyId = 'arc-bib'; notes.push('The Aramaic pack currently analyses Biblical Aramaic only');
   } else if (primary === 'hbo') {
     varietyId = 'he-bib'; notes.push('hbo is Biblical Hebrew: a period of the Hebrew pack, read in its Biblical period');
   } else if (primary === 'grc') {
@@ -233,11 +238,21 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
     }
     return { confidence: 0, reasons: [`the sample is in Devanagari script, but the Hindi word list recognises only ${w.hits} of ${w.words} words: it may be Marathi, Nepali, Sanskrit, or Hindi outside the word list`] };
   }
-  // Hebrew script is shared with Aramaic and Yiddish; Greek script with nothing a pack reads. Which PERIOD of the pack applies is the
+  // Hebrew script is shared by Hebrew, Aramaic and Yiddish. Greek script has one pack here. Which PERIOD of a pack applies is the
   // analyser's per-sentence decision (cantillation, pointing, polytonic marks), not the resolver's: it names the language only.
   if (share(sh.hebrew) >= MIN_SCRIPT_SHARE) {
-    if (!installed.has('he')) return { confidence: 0, reasons: ['the sample is in Hebrew script, but the Hebrew pack is not installed'] };
-    return { languageId: 'he', confidence: 0.85, reasons: ['the sample is in Hebrew script, which no other pack uses (the script is shared with Aramaic and Yiddish; the analyser decides the period sentence by sentence, Biblical Aramaic included)'] };
+    // Script alone cannot distinguish Hebrew, Aramaic and Yiddish. Compare the two implemented
+    // square-script packs when available, using the same minimum evidence and margin as Latin.
+    const candidates = ['he', 'arc'].filter((id) => installed.has(id)).flatMap((id) => {
+      const adapter = adapterOf(id);
+      return adapter ? [{ id, ...wordListShare(adapter, sample) }] : [];
+    }).sort((a, b) => b.share - a.share);
+    const top = candidates[0];
+    const runner = candidates[1];
+    if (top && top.hits >= MIN_HITS && top.share >= MIN_TOP_SHARE && top.share - (runner?.share ?? 0) >= MIN_MARGIN) {
+      return { languageId: top.id, confidence: Math.min(0.85, 0.5 + top.share / 3), reasons: [`the shared Hebrew script is inconclusive; the ${top.id} word list recognises ${top.hits} of ${top.words} words and clears the comparison margin`] };
+    }
+    return { confidence: 0, reasons: ['Hebrew script is shared by Hebrew, Aramaic and Yiddish; the available word lists do not distinguish this sample. Declare the language or choose it explicitly.'] };
   }
   if (share(sh.greek) >= MIN_SCRIPT_SHARE) {
     if (!installed.has('el')) return { confidence: 0, reasons: ['the sample is in Greek script, but the Greek pack is not installed'] };

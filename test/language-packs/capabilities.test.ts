@@ -14,13 +14,14 @@ import { heAdapter } from '../../src/adapters/he';
 import { laAdapter } from '../../src/adapters/la';
 import { nbAdapter } from '../../src/adapters/nb';
 import { nnAdapter } from '../../src/adapters/nn';
+import { arcAdapter } from '../../src/adapters/arc';
 import { sqAdapter } from '../../src/adapters/sq';
 import { thAdapter } from '../../src/adapters/th';
 import type { LanguageAdapter } from '../../src/core';
 import { PACKS, allPackCapabilities, levelOf, packCapabilities } from '../../packages/language-packs/src';
 import type { SupportLevel } from '../../src/core';
 
-const ADAPTERS: Record<string, LanguageAdapter> = { sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter };
+const ADAPTERS: Record<string, LanguageAdapter> = { arc: arcAdapter, sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter };
 const q = (l: SupportLevel): string => (l === 'dependable' ? 'dependable' : l === 'limited' ? 'limited' : 'none');
 
 describe('every pack’s report matches its manifest and its adapter', () => {

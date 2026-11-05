@@ -3,6 +3,7 @@
  * carries Albanian itself; Spanish, German, Hindi, Thai and Norwegian (nb, nn) are separate chunks in the real extension, so a test that parses
  * in one of them (or resolves a language by word lists) calls this first. Synchronous: the adapters are imported statically here.
  */
+import { arcAdapter } from '../../src/adapters/arc';
 import { deAdapter } from '../../src/adapters/de';
 import { esAdapter } from '../../src/adapters/es';
 import { elAdapter } from '../../src/adapters/el';
@@ -19,6 +20,7 @@ import { languageMeta, registerAnalyser } from '../../packages/golearn-extension
 
 export function registerAllAnalysers(): void {
   registerAnalyser('sq', sqAdapter);
+  registerAnalyser('arc', arcAdapter);
   registerAnalyser('es', esAdapter);
   registerAnalyser('de', deAdapter);
   registerAnalyser('hi', hiAdapter);

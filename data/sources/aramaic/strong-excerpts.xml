@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Source: Open Scriptures HebrewLexicon/HebrewStrong.xml blob6ea1abdaf8c095a634097014dea43428ea5f358f.
+CC BY 4.0 transcription; Strong's text public domain. Credit the Open Scriptures Hebrew Bible Project. -->
+<lexicon>
+<entry id="H4430">
+		<w pos="n-m" pron="meh'-lek" xlit="melek" xml:lang="arc">מֶלֶךְ</w>
+		<source>(Aramaic) corresponding to <w src="H4428">4428</w>;</source>
+		<meaning>a <def>king</def></meaning>
+		<usage>king, royal.</usage>
+	</entry>
+<entry id="H5957">
+		<w pos="n-m" pron="aw-lam'" xlit="ʻâlam" xml:lang="arc">עָלַם</w>
+		<source>(Aramaic) corresponding to <w src="H5769">5769</w>;</source>
+		<meaning><def>remote time</def>, i.e. the <def>future</def> or <def>past</def> indefinitely; often adverb, <def>forever</def></meaning>
+		<usage>for (n-)ever (lasting), old.</usage>
+	</entry>
+<entry id="H2418">
+		<w pos="v" pron="khah-yaw'" xlit="chăyâʼ" xml:lang="arc">חֲיָא</w>
+		<source>(Aramaic) or <w pron="khah-yaw'" xlit="chăyâh">חֲיָה</w>; (Aramaic), corresponding to <w src="H2421">2421</w>;</source>
+		<meaning>to <def>live</def></meaning>
+		<usage>live, keep alive.</usage>
+	</entry>
+<entry id="H560">
+		<w pos="v" pron="am-ar'" xlit="ʼămar" xml:lang="arc">אֲמַר</w>
+		<source>(Aramaic) corresponding to <w src="H559">559</w></source>
+		<usage>command, declare, say, speak, tell.</usage>
+	</entry>
+<entry id="H2493">
+		<w pos="n-m" pron="khay'-lem" xlit="chêlem" xml:lang="arc">חֵלֶם</w>
+		<source>(Aramaic) from a root corresponding to <w src="H2492">2492</w>;</source>
+		<meaning>a <def>dream</def></meaning>
+		<usage>dream.</usage>
+	</entry>
+<entry id="H5649">
+		<w pos="n-m" pron="ab-bad'" xlit="ʻăbad" xml:lang="arc">עֲבַד</w>
+		<source>(Aramaic) from <w src="H5648">5648</w>;</source>
+		<meaning>a <def>servant</def></meaning>
+		<usage>servant.</usage>
+	</entry>
+<entry id="H6591">
+		<w pos="n-m" pron="pesh-ar'" xlit="pᵉshar" xml:lang="arc">פְּשַׁר</w>
+		<source>(Aramaic) from <w src="H6590">6590</w>;</source>
+		<meaning>an <def>interpretation</def></meaning>
+		<usage>interpretation.</usage>
+	</entry>
+<entry id="H2324">
+		<w pos="v" pron="khav-aw'" xlit="chăvâʼ" xml:lang="arc">חֲוָא</w>
+		<source>(Aramaic) corresponding to <w src="H2331">2331</w>;</source>
+		<meaning>to <def>show</def></meaning>
+		<usage>shew.</usage>
+	</entry>
+<entry id="H6032">
+		<w pos="v" pron="an-aw'" xlit="ʻănâh" xml:lang="arc">עֲנָה</w>
+		<source>(Aramaic) corresponding to <w src="H6030">6030</w></source>
+		<usage>answer, speak.</usage>
+	</entry>
+<entry id="H1841">
+		<w pos="n-pr-m" pron="daw-nee-yale'" xlit="Dânîyêʼl" xml:lang="x-pn">דָּנִיֵּאל</w>
+		<source>(Aramaic) corresponding to <w src="H1840">1840</w>;</source>
+		<meaning><def>Danijel</def>, the Hebrew prophet</meaning>
+		<usage>Daniel.</usage>
+	</entry>
+<entry id="H1934">
+		<w pos="v" pron="hav-aw'" xlit="hâvâʼ" xml:lang="arc">הָוָא</w>
+		<source>(Aramaic) or <w pron="havaw'" xlit="hâvâh">הָוָה</w>; (Aramaic), corresponding to <w src="H1933">1933</w>;</source>
+		<meaning>to <def>exist</def>; used in a great variety of applications (especially in connection with other words)</meaning>
+		<usage>be, become,   behold,   came (to pass),   cease,   cleave,   consider,   do,   give,   have,   judge,   keep,   labour,   mingle (self),   put,   see,   seek,   set,   slay,   take heed, tremble,   walk,   would.</usage>
+	</entry>
+<entry id="H8036">
+		<w pos="n-m" pron="shoom" xlit="shum" xml:lang="arc">שֻׁם</w>
+		<source>(Aramaic) corresponding to <w src="H8034">8034</w></source>
+		<usage>name.</usage>
+	</entry>
+<entry id="H1768">
+		<w pos="prt" pron="dee" xlit="dîy" xml:lang="arc">דִּי</w>
+		<source>(Aramaic) apparently for <w src="H1668">1668</w>;</source>
+		<meaning><def>that</def>, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition <def>of</def></meaning>
+		<usage>× as, but, for(-asmuch  ),   now, of, seeing, than, that, therefore, until,   what (-soever), when, which, whom, whose.</usage>
+	</entry>
+<entry id="H426">
+		<w pos="n-m" pron="el-aw'" xlit="ʼĕlâhh" xml:lang="x-pn">אֱלָהּ</w>
+		<source>(Aramaic) corresponding to <w src="H433">433</w>;</source>
+		<meaning><def>God</def></meaning>
+		<usage>God, god.</usage>
+	</entry>
+<entry id="H1289">
+		<w pos="v" pron="ber-ak'" xlit="bᵉrak" xml:lang="arc">בְּרַךְ</w>
+		<source>(Aramaic) corresponding to <w src="H1288">1288</w></source>
+		<usage>bless, kneel.</usage>
+	</entry>
+<entry id="H4481">
+		<w pos="prep" pron="min" xlit="min" xml:lang="arc">מִן</w>
+		<source>(Aramaic) corresponding to <w src="H4480">4480</w></source>
+		<usage>according, after,   because,   before, by, for, from, × him, × more than, (out) of, part, since, × these, to, upon,   when.</usage>
+	</entry>
+<entry id="H5705">
+		<w pos="prt" pron="ad" xlit="ʻad" xml:lang="arc">עַד</w>
+		<source>(Aramaic) corresponding to <w src="H5704">5704</w></source>
+		<usage>× and, at, for, (hither-) to, on till, (un-) to, until, within.</usage>
+	</entry>
+<entry id="H2452">
+		<w pos="n-f" pron="khok-maw'" xlit="chokmâh" xml:lang="arc">חׇכְמָה</w>
+		<source>(Aramaic) corresponding to <w src="H2451">2451</w>;</source>
+		<meaning><def>wisdom</def></meaning>
+		<usage>wisdom.</usage>
+	</entry>
+<entry id="H1370">
+		<w pos="n-f" pron="gheb-oo-raw'" xlit="gᵉbûwrâh" xml:lang="arc">גְּבוּרָה</w>
+		<source>(Aramaic) corresponding to <w src="H1369">1369</w>;</source>
+		<meaning><def>power</def></meaning>
+		<usage>might.</usage>
+	</entry>
+<entry id="H1932">
+		<w pos="p" pron="hoo" xlit="hûwʼ" xml:lang="arc">הוּא</w>
+		<source>(Aramaic) or (feminine) <w pron="he" xlit="hîyʼ">הִיא</w>; (Aramaic), corresponding to <w src="H1931">1931</w></source>
+		<usage>× are, it, this.</usage>
+	</entry>
+</lexicon>

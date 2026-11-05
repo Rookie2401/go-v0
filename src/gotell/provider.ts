@@ -45,9 +45,11 @@ const MAX_FILLER_TOKENS = 6;
 const nfc = (s: string) => s.normalize('NFC').toLowerCase();
 const setOf = (xs: string[]) => new Set(xs.map(nfc));
 const NEG_SETS: Record<LanguageCode, Set<string>> = {
+  arc: new Set(),
   es: setOf(NEGATORS.es), sq: setOf(NEGATORS.sq), th: setOf(NEGATORS.th), hi: setOf(NEGATORS.hi), de: setOf(NEGATORS.de), nb: setOf(NEGATORS.nb), nn: setOf(NEGATORS.nn), he: setOf(NEGATORS.he), el: setOf(NEGATORS.el), la: setOf(NEGATORS.la),
 };
 const SUBJ_SETS: Record<LanguageCode, Set<string>> = {
+  arc: new Set(),
   es: setOf(SUBJECT_PRONOUNS.es), sq: setOf(SUBJECT_PRONOUNS.sq), th: setOf(SUBJECT_PRONOUNS.th), hi: setOf(SUBJECT_PRONOUNS.hi), de: setOf(SUBJECT_PRONOUNS.de), nb: setOf(SUBJECT_PRONOUNS.nb), nn: setOf(SUBJECT_PRONOUNS.nn), he: setOf(SUBJECT_PRONOUNS.he), el: setOf(SUBJECT_PRONOUNS.el), la: setOf(SUBJECT_PRONOUNS.la),
 };
 

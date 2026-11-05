@@ -1,0 +1,25 @@
+{
+  "by": "Codex OSHB source-extraction comparison",
+  "checkedAt": "2026-11-05",
+  "source": "data/sources/aramaic/oshb-daniel-excerpts.xml",
+  "note": "Biblical Aramaic source segments only. DAN.2.4 is 2:4b, excluding the Hebrew introduction; qere reading selected. Not a complete Bible.",
+  "translations": [
+    {
+      "lang": "arc",
+      "translationId": "arcWLC",
+      "edition": "OSHB WLC, qere reading path",
+      "checkedAt": "2026-11-05",
+      "verses": {
+        "DAN.2.4": {
+          "text": "מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י אֱמַ֥ר חֶלְמָ֛א לְעַבְדָ֖ךְ וּפִשְׁרָ֥א נְחַוֵּֽא׃",
+          "scope": "Aramaic 2:4b only"
+        },
+        "DAN.2.20": {
+          "text": "עָנֵ֤ה דָֽנִיֵּאל֙ וְאָמַ֔ר לֶהֱוֵ֨א שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙ מְבָרַ֔ךְ מִן־עָלְמָ֖א וְעַ֣ד־עָלְמָ֑א דִּ֧י חָכְמְתָ֛א וּגְבוּרְתָ֖א דִּ֥י לֵֽהּ־הִֽיא׃",
+          "scope": "complete verse"
+        }
+      },
+      "mismatches": []
+    }
+  ]
+}

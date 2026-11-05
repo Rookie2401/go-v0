@@ -24,3 +24,28 @@ jobs:
         run: npx vitest run
         env:
           GO_CI_NO_LOCAL_DATA: '1'
+
+  aramaic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Aramaic vertical slice tests
+        run: npx vitest run test/adapters/aramaic.test.ts test/adapters/aramaic-source.test.ts test/language-packs/aramaic.test.ts test/integration/aramaic.test.ts
+        env:
+          GO_CI_NO_LOCAL_DATA: '1'
+      - name: Language registration and reader regressions
+        run: npx vitest run test/adapters/offsets.test.ts test/adapters/verification.test.ts test/audit/conformance.imports.test.ts test/core/readsLangs.test.ts test/course/bibleAccess.test.ts test/extension/analysers.loading.test.ts test/extension/status.chosen.test.ts test/gotell/units.test.ts test/ingest/cli.test.ts test/ingest/corpus.test.ts test/ingest/origins.test.ts test/ingest/spans.test.ts test/language-packs/capabilities.test.ts test/multilang/extension.test.ts test/reader-languages/reader-support.test.ts test/ui/onboarding.test.tsx
+        env:
+          GO_CI_NO_LOCAL_DATA: '1'
+      - name: Aramaic corpus redistribution rights gate
+        run: npx vite-node --config scripts/vite.config.ts scripts/rights-gate.mts --lang arc
+      - name: Aramaic source and repetition report
+        run: npx vite-node --config scripts/vite.config.ts scripts/arc-report.mts
+      - name: Build language analyser chunks
+        run: npx vite build -c packages/golearn-extension/vite.config.ts --mode analysers

@@ -25,12 +25,21 @@ export interface ServiceConfig {
   assetBase?: string;
 }
 
+export interface EnrolmentRef { enrolmentId: string; languageId: string }
+
+/** How long a list of the account's enrolments is trusted before a sync round reads it again. */
+export const ENROLMENTS_TTL_MS = 60 * 60_000;
+
 export interface SessionRecord {
   token: string;
   learnerId: string;
   /** The enrolment events are recorded against; absent until the learner has enrolled in a language. */
   enrolmentId?: string;
   languageId?: string;
+  /** Every open enrolment of the account, so a learner's own mark can be filed under its word's language whichever one is selected (see the recorder). Absent on a session from before 2026-11-05 until the next `refreshEnrolments`. */
+  enrolments?: EnrolmentRef[];
+  /** When `enrolments` was last read from the service (epoch ms). */
+  enrolmentsAt?: number;
   expiresAt: string;
   email: string;
   /** The learner's display name as GET /me reported it (at sign-in, and again whenever the enrolments are re-read); absent when the account has none. The popup greets by it (2026-10-28). */
@@ -101,6 +110,17 @@ export function validateAssetBase(raw: unknown, extensionId?: string): { ok: tru
     if (t === own || t.startsWith(own + '/')) return { ok: true, url: t.replace(/[?#].*$/, '').replace(/\/+$/, '') };
   }
   return validateBaseUrl(raw);
+}
+
+/** The account's open enrolments, the most recent first for each language. */
+export function enrolmentRefs(enrolments: Enrolment[]): EnrolmentRef[] {
+  return enrolments.filter((e) => !e.endedAt).sort((a, b) => b.startedAt.localeCompare(a.startedAt)).map((e) => ({ enrolmentId: e.enrolmentId, languageId: e.languageId }));
+}
+
+/** The session's enrolment in a language: the selected one when it is that language, else the newest open one known. */
+export function enrolmentIn(s: Pick<SessionRecord, 'enrolmentId' | 'languageId' | 'enrolments'>, languageId: string): string | undefined {
+  if (s.enrolmentId && s.languageId === languageId) return s.enrolmentId;
+  return s.enrolments?.find((e) => e.languageId === languageId)?.enrolmentId;
 }
 
 /** The enrolment events are recorded against: an open one, preferring a language with a pack, then the most recent. */
@@ -184,11 +204,12 @@ export function createSessionManager(opts: SessionManagerOptions) {
     // enrolment: best effort; a learner who has not enrolled yet is connected without one
     let enrolment: Enrolment | undefined;
     let displayName: string | undefined;
+    let known: Pick<SessionRecord, 'enrolments' | 'enrolmentsAt'> = {};
     try {
       const me = await api.me();
-      if (me.ok) { enrolment = pickEnrolment((me.data as MeResponse).enrolments, packAvailable); displayName = nameOf(me.data as MeResponse); }
+      if (me.ok) { enrolment = pickEnrolment((me.data as MeResponse).enrolments, packAvailable); displayName = nameOf(me.data as MeResponse); known = { enrolments: enrolmentRefs((me.data as MeResponse).enrolments), enrolmentsAt: now() }; }
     } catch { /* connected without an enrolment */ }
-    const record: SessionRecord = { token, learnerId, expiresAt, email, ...(displayName ? { displayName } : {}), ...(enrolment ? { enrolmentId: enrolment.enrolmentId, languageId: enrolment.languageId } : {}) };
+    const record: SessionRecord = { token, learnerId, expiresAt, email, ...known, ...(displayName ? { displayName } : {}), ...(enrolment ? { enrolmentId: enrolment.enrolmentId, languageId: enrolment.languageId } : {}) };
     const prev = (await readService()) ?? { baseUrl };
     await area.set({ [SESSION_KEY]: record, [SERVICE_KEY]: { ...prev, baseUrl } satisfies ServiceConfig });
     await opts.onConnect?.(record);
@@ -258,10 +279,10 @@ export function createSessionManager(opts: SessionManagerOptions) {
     return { api: apiFor(svc.baseUrl, s.token), session: s, service: svc };
   }
 
-  async function updateEnrolment(enrolment: Enrolment | undefined): Promise<SessionResult> {
+  async function updateEnrolment(enrolment: Enrolment | undefined, all?: EnrolmentRef[]): Promise<SessionResult> {
     const s = await readSession();
     if (!s) return fail('not-connected', 'Sign in first.');
-    const next: SessionRecord = { ...s };
+    const next: SessionRecord = { ...s, ...(all ? { enrolments: all, enrolmentsAt: now() } : {}) };
     if (enrolment) { next.enrolmentId = enrolment.enrolmentId; next.languageId = enrolment.languageId; } else { delete next.enrolmentId; delete next.languageId; }
     await area.set({ [SESSION_KEY]: next });
     await opts.onEnrolmentChange?.(next);
@@ -277,7 +298,25 @@ export function createSessionManager(opts: SessionManagerOptions) {
     if (!me.ok) return fromApi(me);
     await rememberName(nameOf(me.data));
     const keep = me.data.enrolments.find((e) => e.enrolmentId === a.session.enrolmentId && !e.endedAt);
-    return updateEnrolment(keep ?? pickEnrolment(me.data.enrolments, packAvailable));
+    return updateEnrolment(keep ?? pickEnrolment(me.data.enrolments, packAvailable), enrolmentRefs(me.data.enrolments));
+  }
+
+  /**
+   * The account's open enrolments as the service now says, kept on the session without changing the one selected. Read when the list is absent or
+   * older than `ENROLMENTS_TTL_MS`; undefined when nothing was read (not due, signed out, or the service did not answer: a later round tries again).
+   */
+  async function refreshEnrolments(): Promise<SessionRecord | undefined> {
+    const a = await authenticated();
+    if (!a) return undefined;
+    if (a.session.enrolments && typeof a.session.enrolmentsAt === 'number' && now() - a.session.enrolmentsAt < ENROLMENTS_TTL_MS) return undefined;
+    let r: ApiResult<{ enrolments: Enrolment[] }>;
+    try { r = await a.api.listEnrolments(); } catch { return undefined; }
+    if (!r.ok) return undefined;
+    const s = await readSession(); // the learner may have signed out, or moved to another enrolment, while the service answered
+    if (!s || s.learnerId !== a.session.learnerId) return undefined;
+    const next: SessionRecord = { ...s, enrolments: enrolmentRefs(r.data.enrolments), enrolmentsAt: now() };
+    await area.set({ [SESSION_KEY]: next });
+    return next;
   }
 
   async function enrol(input: EnrolInput): Promise<SessionResult> {
@@ -286,7 +325,9 @@ export function createSessionManager(opts: SessionManagerOptions) {
     let r: ApiResult<{ enrolment: Enrolment }>;
     try { r = await a.api.enrol(input); } catch { return fail('unreachable', 'GoLearn could not reach the service.'); }
     if (!r.ok) return fromApi(r);
-    return updateEnrolment(r.data.enrolment);
+    const s = await readSession();
+    const others = (s?.enrolments ?? []).filter((e) => e.enrolmentId !== r.data.enrolment.enrolmentId);
+    return updateEnrolment(r.data.enrolment, [...enrolmentRefs([r.data.enrolment]), ...others]);
   }
 
   async function selectEnrolment(enrolmentId: string): Promise<SessionResult> {
@@ -297,10 +338,10 @@ export function createSessionManager(opts: SessionManagerOptions) {
     if (!r.ok) return fromApi(r);
     const found = r.data.enrolments.find((e) => e.enrolmentId === enrolmentId && !e.endedAt);
     if (!found) return fail('no-such-enrolment', 'That enrolment is not open.');
-    return updateEnrolment(found);
+    return updateEnrolment(found, enrolmentRefs(r.data.enrolments));
   }
 
-  return { status, getService: readService, setService, current: readSession, authenticated, connect, createAccount, disconnect, retryRevocation, refresh, enrol, selectEnrolment, isExpired };
+  return { status, getService: readService, setService, current: readSession, authenticated, connect, createAccount, disconnect, retryRevocation, refresh, refreshEnrolments, enrol, selectEnrolment, isExpired };
 }
 
 export type SessionManager = ReturnType<typeof createSessionManager>;

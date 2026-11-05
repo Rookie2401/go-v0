@@ -139,11 +139,13 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       await holder.profile?.clear();
       await holder.recorder?.setAsideForeign(s.learnerId);
       if (s.enrolmentId && s.languageId) await holder.recorder?.reattributeQueued(s.learnerId, s.enrolmentId, s.languageId);
+      await holder.recorder?.fileWaitingMarks(s);
       await holder.sync?.onSignedIn();
       await holder.local?.afterSignIn(); // the device's history goes up once, then the account's comes down (failures are recorded, never thrown)
     },
     onEnrolmentChange: async (s) => {
       if (s.enrolmentId && s.languageId) await holder.recorder?.reattributeQueued(s.learnerId, s.enrolmentId, s.languageId);
+      await holder.recorder?.fileWaitingMarks(s);
       holder.sync?.schedule();
       await holder.local?.afterEnrolment(); // events that waited for an enrolment in their language can go now
     },
@@ -164,7 +166,12 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   // the device's own Repository: GoLearn works with no account, and the account only keeps the history across devices
   const localRepo = createLocalRepoService({ area: local, deviceId, session, packs, now });
   const profile = createProfileService({ area: cache, session, settings: settings.get, now, local: localRepo.forProfile });
-  const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, onSynced: async () => { await profile.refreshAfterSync(); } });
+  const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, onSynced: async () => {
+    await profile.refreshAfterSync();
+    // the account's enrolments are read again now and then (a language chosen on another device; a session from before they were kept): marks waiting for one go up
+    const s = await session.refreshEnrolments();
+    if (s && await holder.recorder?.fileWaitingMarks(s)) holder.sync?.schedule();
+  } });
   const recorder = createRecorder({ area: local, queue: sync.queue, session, deviceId, version, now: Date.now, onQueued: () => sync.schedule(), onRecorded: (e, attributed) => localRepo.record(e, attributed) });
   holder.recorder = recorder; holder.sync = sync; holder.profile = profile; holder.local = localRepo;
 

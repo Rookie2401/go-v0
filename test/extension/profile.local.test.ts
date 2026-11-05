@@ -93,14 +93,30 @@ describe('no account', () => {
 });
 
 describe('with an account', () => {
-  it('the account answers and the device is not asked', async () => {
+  it('the account answers and its row stands: the device is asked only for a newer mark of the learner\'s own, and has none here', async () => {
     const local = device([row(A, 9)]);
     const { svc } = make({ connected: true, server: [row(A, 2)], local });
     const r = await svc.knowledgeFor([A], 'sq');
     expect(r).toMatchObject({ ok: true, connected: true });
     expect(r.source).toBeUndefined();
     expect(r.rows[A].dimensions.exposure?.observations).toBe(2);
-    expect(local.asked).toEqual([]);
+    expect(r.rows[A].selfMark).toBeUndefined();
+  });
+
+  it('a mark on the device, newer than the account\'s, is read over it; every other part of the row stays the account\'s', async () => {
+    const mine = { ...row(A, 9), level: 'known', selfMark: { mark: 'known', at: '2026-10-09T12:00:00.000Z' } } as UnitKnowledge;
+    const theirs = { ...row(A, 2), level: 'familiar', selfMark: { mark: 'familiar', at: '2026-10-09T11:00:00.000Z' } } as UnitKnowledge;
+    const r = await make({ connected: true, server: [theirs], local: device([mine]) }).svc.knowledgeFor([A], 'sq');
+    expect(r.rows[A]).toMatchObject({ level: 'known', selfMark: { mark: 'known' } });
+    expect(r.rows[A].dimensions.exposure?.observations).toBe(2);
+    expect(r.source).toBeUndefined();
+  });
+
+  it('a mark on the account, newer than the device\'s, stands', async () => {
+    const mine = { ...row(A, 9), level: 'known', selfMark: { mark: 'known', at: '2026-10-09T11:00:00.000Z' } } as UnitKnowledge;
+    const theirs = { ...row(A, 2), level: 'familiar', selfMark: { mark: 'familiar', at: '2026-10-09T12:00:00.000Z' } } as UnitKnowledge;
+    const r = await make({ connected: true, server: [theirs], local: device([mine]) }).svc.knowledgeFor([A], 'sq');
+    expect(r.rows[A]).toMatchObject({ level: 'familiar', selfMark: { mark: 'familiar' } });
   });
 
   it('offline: the cached rows win, and the device fills the units the cache does not hold', async () => {
@@ -113,7 +129,6 @@ describe('with an account', () => {
     expect(r).toMatchObject({ ok: true, connected: true, stale: true, error: 'offline', source: 'device' });
     expect(r.rows[A].dimensions.exposure?.observations).toBe(2); // the account's row, stale, not the device's
     expect(r.rows[B].dimensions.exposure?.observations).toBe(4); // never cached: the device's
-    expect(local.asked).toEqual([[B]]);
   });
 
   it('a refused sign-in (401) is reported as such, with the device\'s rows', async () => {

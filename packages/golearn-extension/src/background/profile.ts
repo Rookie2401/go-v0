@@ -139,6 +139,25 @@ export function createProfileService(opts: ProfileServiceOptions) {
   }
 
   /**
+   * The learner's own newest mark, wherever it is. A press is on the device at once; the account has it only after the next sync round, and not at all in a
+   * language it has no enrolment in. So the card reads the device's mark over an older one (or none) from the account; a newer mark from another device stands.
+   */
+  async function withOwnMarks(ids: string[], reply: ProfileReply): Promise<ProfileReply> {
+    let mine: Record<string, KnowledgeView> | undefined;
+    try { mine = ids.length ? await deviceRows(ids) : undefined; } catch { mine = undefined; }
+    if (!mine) return reply;
+    const rows = { ...(reply.rows ?? {}) };
+    for (const id of ids) {
+      const own = mine[id];
+      if (!own?.selfMark) continue;
+      const theirs = rows[id];
+      if (theirs?.selfMark && Date.parse(theirs.selfMark.at) >= Date.parse(own.selfMark.at)) continue;
+      rows[id] = theirs ? { ...theirs, selfMark: own.selfMark, ...(own.level ? { level: own.level } : {}) } : own;
+    }
+    return { ...reply, rows };
+  }
+
+  /**
    * `how.deviceOnly` (GoLearn Active's scan): the words on the learner's screen, asked by the learner's own switch. They are not trimmed
    * like a long selection (the scan is exactly a reading of the page, by design) and they are answered from the device's own Repository
    * only: the service is never asked, so no word of the page leaves the device. The account's history is in the device Repository too
@@ -159,6 +178,11 @@ export function createProfileService(opts: ProfileServiceOptions) {
       const rows = await deviceRows(ids);
       return rows ? { ok: true, connected: false, source: 'device', rows, ...base } : { ok: true, connected: false, rows: {}, ...base };
     }
+    return withOwnMarks(ids, await accountKnowledge(ids, base));
+  }
+
+  /** Signed in: the cache, then the service for what the cache does not hold, then this device when the service cannot answer. */
+  async function accountKnowledge(ids: string[], base: { depth: ExplanationDepth; depthOrigin: ProfileReply['depthOrigin'] }): Promise<ProfileReply> {
     const keys = ids.map((i) => KNOWLEDGE_PREFIX + i);
     const cache = keys.length ? await area.get(keys) : {};
     const out: Record<string, KnowledgeView> = {};

@@ -16,6 +16,10 @@ export const ARAMAIC_SHELVES: Stage[] = [{
   assistance: DEFAULT_ASSISTANCE,
 }];
 const RIGHTS: WorkRights = {
+  state: 'verified-public-domain',
+  verifiedBy: 'Codex (automated primary distributor statement check; not human legal review)', verifiedAt: '2026-11-05',
+  basis: 'The OSHB distributor README states that the WLC base text remains public domain. OSHB lemma/morphology and Open Scriptures lexical transcription are separately CC BY 4.0, with their required attribution retained.',
+  jurisdictions: ['US'], statusByJurisdiction: { US: 'public-domain' },
   copyrightStatus: 'public-domain', permission: 'not-needed', canBundle: true, userImportOnly: false, audiobook: 'unknown',
   // Verification here records the primary distributor statement; no human rights review is claimed.
   verified: false, canModify: true, canStoreOffline: true, canBundleAudio: false,

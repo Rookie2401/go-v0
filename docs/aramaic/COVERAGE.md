@@ -39,3 +39,5 @@ There are 21 distinct source lemma identifiers and 22 lemma/POS identities (the 
 The existing transition analyser rates the jump high: 83% of destination lemma tokens are absent from the previous passage, and length rises 2.25 times. Clause/construction difficulty remains unmeasured. These results identify the need for bridges and broader recurrence rather than claiming this is a complete acquisition course.
 
 Reproduce: `npx vite-node --config scripts/vite.config.ts scripts/arc-report.mts`.
+
+A subsequent focused run on 9929265f283821b0992e7c6e656cca5fb795a9bb passed 20 Aramaic tests and all 371 targeted registration, import, offset, capability, architecture and reader regressions. It also built the browser analyser chunks. The full 16,000-plus-test job remains a separate gate.

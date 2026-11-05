@@ -41,3 +41,5 @@ The existing transition analyser rates the jump high: 83% of destination lemma t
 Reproduce: `npx vite-node --config scripts/vite.config.ts scripts/arc-report.mts`.
 
 A subsequent focused run on 9929265f283821b0992e7c6e656cca5fb795a9bb passed 20 Aramaic tests and all 371 targeted registration, import, offset, capability, architecture and reader regressions. It also built the browser analyser chunks. The full 16,000-plus-test job remains a separate gate.
+
+Aramaic redistribution check: both excerpts were accepted for bundling with the source-backed rights records. The unscoped legacy rights report still reports the existing missing Hebrew tanakh-mam and Greek sblgnt catalogue records; see INTEGRATION.md.

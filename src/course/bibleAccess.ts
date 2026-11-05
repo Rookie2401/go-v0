@@ -22,6 +22,14 @@ export interface BibleAccessRecord {
  * copy is handled by the existing on-device importer.
  */
 export const BIBLE_ACCESS: Readonly<Record<LanguageCode, BibleAccessRecord>> = {
+  arc: {
+    lang: 'arc', translation: 'Biblical Aramaic, WLC excerpts', edition: 'OSHB WLC qere path', status: 'bundled',
+    sourceUrl: 'https://github.com/openscriptures/morphhb/blob/master/wlc/Dan.xml',
+    method: 'Daniel 2:4b and 2:20 only; source A-coded words with morphology boundaries joined.',
+    importMethod: 'Read the two bundled excerpts; additional Biblical Aramaic is not yet bundled.',
+    rights: 'WLC text public domain; OSHB lemma and morphology CC BY 4.0, attribution retained.',
+  },
+
   de: {
     lang: 'de', translation: 'Lutherbibel 1912', edition: 'deu1912', status: 'bundled',
     sourceUrl: 'https://ebible.org/deu1912/',

@@ -332,13 +332,14 @@ export interface WordPart {
   role?: string;
   /**
    * What kind of part this is, for code that reasons about parts (the plain words stay in `role`):
+   *   'suffix' a source-segmented ending (including a pronominal or emphatic ending).
    *   'component' a word inside a compound (Leben in Lebensversicherung); 'head' the last component, which decides
    *   gender and meaning class (Versicherung); 'link' a connecting element that belongs to no component (the -s-);
    *   'contracted' a word written together with another (im = in + dem); 'clitic' an attached pronoun;
    *   'prefix' a separable prefix written on the verb (auf in aufstehen, aufgestanden); 'marker' an inserted marker
    *   (zu in anzufangen, ge in aufgestanden); 'stem' the rest of a word whose prefix or marker is named.
    */
-  kind?: 'component' | 'head' | 'link' | 'contracted' | 'clitic' | 'prefix' | 'marker' | 'stem';
+  kind?: 'component' | 'head' | 'link' | 'contracted' | 'clitic' | 'prefix' | 'marker' | 'stem' | 'suffix';
 }
 
 /**

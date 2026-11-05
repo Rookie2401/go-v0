@@ -10,10 +10,10 @@ import { LEVEL_LABEL, PACKS, TEAMS, installablePacks, languagesOf, levelOf, pack
 import type { TeamId } from '../../packages/language-packs/src';
 
 describe('PACKS and packFor', () => {
-  it('lists ten packs (Latin, Hebrew and Greek were added 2026-10-17); Albanian and Spanish are installable, German, Hindi, Thai, Latin and both Norwegian packs experimental (installable)', () => {
-    expect(Object.keys(PACKS).sort()).toEqual(['de', 'el', 'es', 'he', 'hi', 'la', 'nb', 'nn', 'sq', 'th']);
-    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es', 'pack:de', 'pack:hi', 'pack:th', 'pack:nb', 'pack:nn', 'pack:la', 'pack:he', 'pack:el']);
-    const level = { sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'experimental', nn: 'experimental', la: 'experimental', he: 'experimental', el: 'experimental' } as const;
+  it('lists eleven packs (Latin, Hebrew and Greek were added 2026-10-17); Albanian and Spanish are installable, German, Hindi, Thai, Latin and both Norwegian packs experimental (installable)', () => {
+    expect(Object.keys(PACKS).sort()).toEqual(['arc', 'de', 'el', 'es', 'he', 'hi', 'la', 'nb', 'nn', 'sq', 'th']);
+    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es', 'pack:de', 'pack:hi', 'pack:th', 'pack:nb', 'pack:nn', 'pack:la', 'pack:he', 'pack:el', 'pack:arc']);
+    const level = { sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'experimental', nn: 'experimental', la: 'experimental', he: 'experimental', el: 'experimental', arc: 'experimental' } as const;
     for (const [lang, m] of Object.entries(PACKS)) {
       expect(m.languageId).toBe(lang);
       expect(m.packId).toBe(`pack:${lang}`);

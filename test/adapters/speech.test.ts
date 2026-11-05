@@ -4,6 +4,7 @@ import { loadBundledCorpus } from '../../src/ingest';
 import { adapter } from './helpers';
 
 const WITH_MARKERS: Record<string, string> = {
+  arc: 'מַלְכָּא [16] לְעָלְמִין ¹⁶ חֱיִי׃',
   es: 'Porque [16] de tal manera ¹⁶ amó Dios al mundo.',
   sq: 'Sepse [16] Perëndia ¹⁶ e deshi botën.',
   th: 'เพราะว่า [16] พระเจ้า ¹⁶ ทรงรักโลก',
@@ -43,12 +44,17 @@ describe('speechNormalize (all languages)', () => {
     });
 
     it(`${lang}: a bare digit is spoken as a word (3 is not left as a digit)`, () => {
+      if (lang === 'arc') {
+        expect(ad.speechNormalize('3').speechText).toBe('3'); // no validated numeral pronunciation; retain it explicitly
+        expect(ad.speechNormalize('3').transformations.map(t => t.description).join(' ')).toMatch(/left unexpanded/);
+        return;
+      }
       expect(ad.speechNormalize('3').speechText).not.toMatch(/\d/);
       expect(ad.speechNormalize('3').speechText.length).toBeGreaterThan(0);
     });
 
     it(`${lang}: never transliterates: script of the words is unchanged`, () => {
-      const script = { es: /^[\p{Script=Latin}\s.,:;!?¿¡'«»"“”()…-]+$/u, sq: /^[\p{Script=Latin}\s.,:;!?'«»—-]+$/u, de: /^[\p{Script=Latin}\s.,:;!?'„“‚‘»«()…–—-]+$/u, th: /^[\p{Script=Thai}\s]+$/u, nb: /^[\p{Script=Latin}\s.,:;!?'«»"“”()…–—-]+$/u, nn: /^[\p{Script=Latin}\s.,:;!?'«»"“”()…–—-]+$/u, hi: /^[\p{Script=Devanagari}\s।,.?!:;'"“”‘’()…–—-]+$/u, he: /^[\p{Script=Hebrew}\s.,:;!?'"“”()…–—-]+$/u, el: /^[\p{Script=Greek}\s.,:;!?;·'’«»"“”()…–—-]+$/u, la: /^[\p{Script=Latin}\s.,:;!?'«»“”„"()\[\]…–—-]+$/u }[lang];
+      const script = { arc: /^[\\p{Script=Hebrew}\\s.,:;!?'\"“”()…–—-]+$/u, es: /^[\p{Script=Latin}\s.,:;!?¿¡'«»"“”()…-]+$/u, sq: /^[\p{Script=Latin}\s.,:;!?'«»—-]+$/u, de: /^[\p{Script=Latin}\s.,:;!?'„“‚‘»«()…–—-]+$/u, th: /^[\p{Script=Thai}\s]+$/u, nb: /^[\p{Script=Latin}\s.,:;!?'«»"“”()…–—-]+$/u, nn: /^[\p{Script=Latin}\s.,:;!?'«»"“”()…–—-]+$/u, hi: /^[\p{Script=Devanagari}\s।,.?!:;'"“”‘’()…–—-]+$/u, he: /^[\p{Script=Hebrew}\s.,:;!?'"“”()…–—-]+$/u, el: /^[\p{Script=Greek}\s.,:;!?;·'’«»"“”()…–—-]+$/u, la: /^[\p{Script=Latin}\s.,:;!?'«»“”„"()\[\]…–—-]+$/u }[lang];
       for (const doc of loadBundledCorpus().filter((d) => d.lang === lang && d.contentType !== 'scripture')) {
         for (const sec of doc.sections) for (const par of sec.paragraphs) {
           if (!('sentences' in par)) continue;

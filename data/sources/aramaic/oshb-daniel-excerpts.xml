@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Exact source verse elements from OSHB wlc/Dan.xml. WLC text public domain; annotations CC BY 4.0.
+Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb -->
+<excerpts>
+<verse osisID="Dan.2.4">
+          <w lemma="c/1696" morph="HC/Vpw3mp" id="27BnR">וַֽ/יְדַבְּר֧וּ</w>
+          <w lemma="d/3778" n="1.0.0" morph="HTd/Ngmpa" id="27PUg">הַ/כַּשְׂדִּ֛ים</w>
+          <w lemma="l/4428" n="1.0" morph="HRd/Ncmsa" id="27pUN">לַ/מֶּ֖לֶךְ</w>
+          <w lemma="762" n="1" morph="HNgfsa" id="27gc8">אֲרָמִ֑ית</w>
+          <w lemma="4430" n="0.1.0" morph="ANcmsd/Td" id="27Lsp">מַלְכָּ/א֙</w>
+          <w lemma="l/5957" morph="AR/Ncmpa" id="27SAE">לְ/עָלְמִ֣ין</w>
+          <w lemma="2418" n="0.1" morph="AVqv2ms" id="273gY">חֱיִ֔י</w>
+          <w lemma="560" morph="AVqv2ms" id="27RuM">אֱמַ֥ר</w>
+          <w lemma="2493" n="0.0.0" morph="ANcmsd/Td" id="27WFU">חֶלְמָ֛/א</w>
+          <w type="x-ketiv" lemma="l/5649" morph="AR/Ncmpc/Sp2ms" id="27BJv">ל/עבדי/ך</w><note type="variant"><catchWord>ל/עבדי/ך</catchWord><rdg type="x-qere"><w lemma="l/5649" n="0.0" morph="AR/Ncmsc/Sp2ms" id="27ExP">לְ/עַבְדָ֖/ךְ</w></rdg></note>
+          <w lemma="c/6591" morph="AC/Ncmsd/Td" id="27ypu">וּ/פִשְׁרָ֥/א</w>
+          <w lemma="2324" n="0" morph="AVpi1cp" id="27mP3">נְחַוֵּֽא</w><seg type="x-sof-pasuq">׃</seg>
+        </verse>
+<verse osisID="Dan.2.20">
+          <w lemma="6032" morph="AVqrmsa" id="27eK3">עָנֵ֤ה</w>
+          <w lemma="1841" n="1.2.0" morph="ANp" id="27c63">דָֽנִיֵּאל֙</w>
+          <w lemma="c/560" n="1.2" morph="AC/Vqrmsa" id="27TuL">וְ/אָמַ֔ר</w>
+          <w lemma="1934" morph="AVqi3ms" id="27emQ">לֶהֱוֵ֨א</w>
+          <w lemma="8036" morph="ANcmsc/Sp3ms" id="27uf4">שְׁמֵ֤/הּ</w>
+          <w lemma="1768" morph="ATr" id="27jQv">דִּֽי</w><seg type="x-maqqef">־</seg><w lemma="426" n="1.1.0" morph="ANcmsd/Td" id="27ME1">אֱלָהָ/א֙</w>
+          <w lemma="1289" n="1.1" morph="AVpsmsa" id="27ht4">מְבָרַ֔ךְ</w>
+          <w lemma="4481" morph="AR" id="273Yo">מִן</w><seg type="x-maqqef">־</seg><w lemma="5957" n="1.0" morph="ANcmsd/Td" id="27pYb">עָלְמָ֖/א</w>
+          <w lemma="c/5705" morph="AC/R" id="27g5u">וְ/עַ֣ד</w><seg type="x-maqqef">־</seg><w lemma="5957" n="1" morph="ANcmsd/Td" id="27w6U">עָלְמָ֑/א</w>
+          <w lemma="1768" morph="AC" id="27ifL">דִּ֧י</w>
+          <w lemma="2452" n="0.0.0" morph="ANcfsd/Td" id="27LZU">חָכְמְתָ֛/א</w>
+          <w lemma="c/1370" n="0.0" morph="AC/Ncfsd/Td" id="27yHT">וּ/גְבוּרְתָ֖/א</w>
+          <w lemma="1768" morph="ATr" id="279Dq">דִּ֥י</w>
+          <w lemma="l" morph="AR/Sp3ms" id="277Vg">לֵֽ/הּ</w><seg type="x-maqqef">־</seg><w lemma="1932" n="0" morph="ATa" id="273LR">הִֽיא</w><seg type="x-sof-pasuq">׃</seg>
+        </verse>
+</excerpts>

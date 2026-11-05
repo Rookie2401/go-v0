@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "4208c0b66414c672738d1098cb700dbaecaabf45",
-    "tree": "7962015b641a94776412ee474747957ad206c1cf",
+    "commit": "ada5c8693a3da1562ba216cd725ccdb5ba3e2817",
+    "tree": "0084074ecc2af2a5e401d9e387e9eecf261dba71",
     "dirty": false
   },
-  "sourceManifestSha256": "96efd42fef74d5f30e0bf96e70251e943b0799a459d52cb8f35892fffbede5f3",
+  "sourceManifestSha256": "2227d94d262d22e1cbb4679fdeb125a0b5fffbcbc9898f8e803d81f6fca9da98",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -153,7 +153,7 @@
     },
     {
       "path": "packages/biblia/src/levels.ts",
-      "sha256": "581d5420475064dff6f89b6187b82e2e5e185ea6a9d7b967ad26b1759f81f9f6"
+      "sha256": "ce55f6156af31a4468077e5477ffb8910dd3590cd3cc6a56342c7b1fb33d1536"
     },
     {
       "path": "packages/biblia/src/queue.ts",
@@ -365,11 +365,11 @@
     },
     {
       "path": "packages/goreview/app/admissionExplanation.ts",
-      "sha256": "e566cf2e2968ba7e5c6218996175b5d21810c99700e618a856ea8922c27d9d86"
+      "sha256": "52f1f516f59ee7e7670e680476c07f44f095db19658559efac6ef71467a868e5"
     },
     {
       "path": "packages/goreview/app/app.ts",
-      "sha256": "7d6af9f0d30a11c3518dd5bbc51e1bdb3b467341d14c65fec208f3bbad9c36b4"
+      "sha256": "e0bd02c5f3454722276afedf5be8b37f302a77ac60e3f5b3b64c10eb6c53623d"
     },
     {
       "path": "packages/goreview/app/audio.ts",
@@ -385,15 +385,15 @@
     },
     {
       "path": "packages/goreview/app/config.ts",
-      "sha256": "6dd10f24e9345d790cffcce2e8747b7751b78c07ed009b0af57d7ce8568af8fa"
+      "sha256": "b4406da722d4a0eca3bd1b27faa39420f043f0769987c5bf1e3beacbd87daeb4"
     },
     {
       "path": "packages/goreview/app/context.ts",
-      "sha256": "80c9fe5b61ecf015f624cd4245939d39b2d918406d67c2001f622d51be754c67"
+      "sha256": "c47327ef2ce979fe87151190952524970a59515963988f98e9a961fe4798ee3c"
     },
     {
       "path": "packages/goreview/app/deckModel.ts",
-      "sha256": "fc5924630e0c30d9a98472d5c58627c6e12e33b60f7395537e8903f1a1d36f14"
+      "sha256": "7b172668b364517048ba8045dae1c8130a3ed4ca73b98b5ad8605857b840b122"
     },
     {
       "path": "packages/goreview/app/dom.ts",
@@ -409,7 +409,7 @@
     },
     {
       "path": "packages/goreview/app/format.ts",
-      "sha256": "7f82da0edd86dc2e9bd51172255be5356a57f4f1cf34d4bea8d11f966d1f2d98"
+      "sha256": "ea777e5c22ae1a92e4c9a2f477183000c0a5b1fe99f074659b129acf5ae1fa2b"
     },
     {
       "path": "packages/goreview/app/freshness.ts",
@@ -445,7 +445,7 @@
     },
     {
       "path": "packages/goreview/app/main.ts",
-      "sha256": "f6c431cfc363f2a33e75fc650e3b0d18000db19e193c01fd797ea5a559bddfb7"
+      "sha256": "eee30d26e63f58aa2a689a2d9b6492530e996c67890c52f705d80c81cd0db875"
     },
     {
       "path": "packages/goreview/app/mobile.ts",
@@ -457,7 +457,7 @@
     },
     {
       "path": "packages/goreview/app/ports.ts",
-      "sha256": "54e0a5af1abcbf9dcc8ec08c790f990acc19d5b4643856540a389ffe24504509"
+      "sha256": "5adf8d74834128e4576560aae8f373a9b23abd3fa3ffccc37796586aa4ee656d"
     },
     {
       "path": "packages/goreview/app/profiles.ts",
@@ -497,7 +497,7 @@
     },
     {
       "path": "packages/goreview/app/recoveredCandidates.ts",
-      "sha256": "899fea55d3748363c8a6901219c56990dea18047661bd9acf805d346c17996b2"
+      "sha256": "e6d21814af1474d306c1f562ddde893f63fe0b452dbcb2a5b51a7830cae3f3d8"
     },
     {
       "path": "packages/goreview/app/savedDeckSync.ts",
@@ -509,7 +509,7 @@
     },
     {
       "path": "packages/goreview/app/screens/accountSecurity.ts",
-      "sha256": "fac12f9a01a175498bef32e9f56f295578e38f8822dc68686453b20f8cca2e9d"
+      "sha256": "7d8758420a5774abf1661f6fbb8161f3287e68d07e1f30b60b43a0fb57df282e"
     },
     {
       "path": "packages/goreview/app/screens/cardsper.ts",
@@ -517,7 +517,7 @@
     },
     {
       "path": "packages/goreview/app/screens/consent.ts",
-      "sha256": "322ff40d3683f47d65470326cf043808babbb699dba6fdbae6da27810257696e"
+      "sha256": "a2048240d0b7405d20a1fd951f07639964ec6be70ddf31104b9f2db3c73fd961"
     },
     {
       "path": "packages/goreview/app/screens/decks.ts",
@@ -526,6 +526,10 @@
     {
       "path": "packages/goreview/app/screens/developer.ts",
       "sha256": "a1374cabdca0d01f8ee24a792fd609fb395136493208a65c0bd90e6902e79407"
+    },
+    {
+      "path": "packages/goreview/app/screens/help.ts",
+      "sha256": "94988fd97000be92c7fdd55449c2ea46c125afa814657f7c1f4e918138b6d0c8"
     },
     {
       "path": "packages/goreview/app/screens/history.ts",
@@ -545,7 +549,7 @@
     },
     {
       "path": "packages/goreview/app/screens/prefs.ts",
-      "sha256": "dcfbbeb9a75eef327de8e361bb5ed979ae37e73df50e7a9a3ed357e84613c6a6"
+      "sha256": "e2f966f7cb9522dc76426a3925b049fe2a81a88db9616b6b57c28faf696eedae"
     },
     {
       "path": "packages/goreview/app/screens/remediation.ts",
@@ -553,7 +557,7 @@
     },
     {
       "path": "packages/goreview/app/screens/review.ts",
-      "sha256": "756b2e743813dd4c54a987f27babf703a9acc65e5e7fe3523cd6b1f963b6dcb6"
+      "sha256": "ad243a2716b6ca2d41c29576f88798b825c445d154dda774d0f4b091b81f2a69"
     },
     {
       "path": "packages/goreview/app/screens/reviewDetails.ts",
@@ -561,7 +565,7 @@
     },
     {
       "path": "packages/goreview/app/screens/session.ts",
-      "sha256": "22aa5ff8516c5cf687a86d709d2a1ba3b7d7f6217abcd8534592a44347bd4c45"
+      "sha256": "43064158ab1b0f78e6275d3274f8fc5cabce34ee97c7066a7cb1427a3e65e21b"
     },
     {
       "path": "packages/goreview/app/screens/settings.ts",
@@ -569,7 +573,7 @@
     },
     {
       "path": "packages/goreview/app/screens/signin.ts",
-      "sha256": "14b26fdeb935c1703e4b06243ba6ec099d04df74bac879329771ad50ae542cc2"
+      "sha256": "8cc14353561e26bb5cc528c49f8e49c5107516a052dfdf2cd5a059d933c1f384"
     },
     {
       "path": "packages/goreview/app/screens/tell.ts",
@@ -657,7 +661,7 @@
     },
     {
       "path": "packages/goreview/app/styles.css",
-      "sha256": "838baf950a221b12475ff255b2e2cac0dad911d3862bb9d64b754e33a6e9bdee"
+      "sha256": "2e53129ad7c24d6775756b802bb90efe6b8a854a11ba4445101eb93cb0660a72"
     },
     {
       "path": "packages/goreview/app/tellEngine.ts",
@@ -1209,7 +1213,7 @@
     },
     {
       "path": "packages/repository-contract/src/knowledge-levels.ts",
-      "sha256": "cf7eefa5bc4e34e084aad313908803cff9a615344025e7ee537e0b7a594feec1"
+      "sha256": "13645a84c1441be4d16add88ced4aea48909878c7ff854213d209554e0fd434f"
     },
     {
       "path": "packages/repository-contract/src/learner.ts",
@@ -1284,6 +1288,10 @@
       "sha256": "f675031c8b73423d54964ee9dc39d6fe05b085491db6f67c785e5082bea1c35b"
     },
     {
+      "path": "packages/repository-local/src/ranking.ts",
+      "sha256": "21cb4741d4c4bfc6a5f8baf3025fa859aae8710b7e71eaf432e9c840b2afe043"
+    },
+    {
       "path": "packages/repository-service/src/accounts.ts",
       "sha256": "14e8694760f5cfa6625ea57ced68605f11bb9e1fd821f03e6bc20d732d488a40"
     },
@@ -1309,7 +1317,7 @@
     },
     {
       "path": "packages/repository-service/src/deps.ts",
-      "sha256": "0a8566c845c1af56a9fb29ef743c0933f086c91c59cd2ef4a2d579d8f08bd625"
+      "sha256": "7a2cb13fc6f5da342714802d019a779173ddcaee22494ceeba06a5e14edeb99d"
     },
     {
       "path": "packages/repository-service/src/handler.ts",
@@ -1333,7 +1341,7 @@
     },
     {
       "path": "packages/repository-service/src/main.ts",
-      "sha256": "7b2ba8e9b2e1c46817afc85849e1385a008596f560361e63456c3678005e5626"
+      "sha256": "0326b09232694cd686ff8d82ba8f148633fc79c7293adbf00fadbef1cea94525"
     },
     {
       "path": "packages/repository-service/src/metrics.ts",
@@ -1365,7 +1373,7 @@
     },
     {
       "path": "packages/repository-service/src/speech.ts",
-      "sha256": "df146ab4f6827cdd66e687dd9c63e6cf9f2008e1a143696f061e516bd6308577"
+      "sha256": "dbf10e8079137d0ecd64d6ff0bec0c4f347c2d33961ee33e342d79bc5a063d56"
     },
     {
       "path": "packages/repository-service/src/speechMaterial.ts",
@@ -2446,10 +2454,6 @@
     {
       "path": "scripts/vite.config.ts",
       "sha256": "f5d91242eb68ae9305754d83e5a1035fc1cece0d2d6e81743723e3f002aac354"
-    },
-    {
-      "path": "server/speechHandler.ts",
-      "sha256": "5cca4529645a64ac93cb8d3382824ebf225e23c29e0942f836149171158d873f"
     },
     {
       "path": "src/adapters/albanian/analyze.ts",
@@ -3923,6 +3927,7 @@
     "packages/goreview/app/screens/consent.ts",
     "packages/goreview/app/screens/decks.ts",
     "packages/goreview/app/screens/developer.ts",
+    "packages/goreview/app/screens/help.ts",
     "packages/goreview/app/screens/history.ts",
     "packages/goreview/app/screens/legal.ts",
     "packages/goreview/app/screens/licences.ts",
@@ -4091,6 +4096,7 @@
     "packages/repository-engine/src/preferences.ts",
     "packages/repository-engine/src/projection.ts",
     "packages/repository-local/src/proxy.ts",
+    "packages/repository-local/src/ranking.ts",
     "packages/repository-service/src/accounts.ts",
     "packages/repository-service/src/api.ts",
     "packages/repository-service/src/deps.ts",
@@ -4109,7 +4115,6 @@
     "packages/repository-sync/src/index.ts",
     "packages/repository-sync/src/queue.ts",
     "packages/repository-sync/src/transport.ts",
-    "server/speechHandler.ts",
     "src/adapters/albanian/analyze.ts",
     "src/adapters/albanian/clitics.ts",
     "src/adapters/albanian/constructions.ts",
@@ -4436,7 +4441,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "fd26a6bc99650e4c50bfff5899d90fbc2d77f3f748eb62bc56337d2911c3fe2e",
+  "artifactManifestSha256": "833ac28c17e53628da62360708863df02a5566b34767542a726c5ed131d06c7a",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4479,12 +4484,12 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-Cf_qLbBj.js",
-      "sha256": "4fb49a61f0d98c5a977aa85255c2b0da76503d94733e42796965b64340d546a9"
+      "path": "assets/index-MwT2utPN.js",
+      "sha256": "d1ea42cd9257753d1e837dd2bfa244be93986bdc25e363c4cf5f61e87147e493"
     },
     {
-      "path": "assets/style-fnSaKf7I.css",
-      "sha256": "2c16a45af879f19d11aa7680e9e86b1c30e66ba915384c1194ccb77fddfc2c18"
+      "path": "assets/style-Dsvk-PQK.css",
+      "sha256": "b9fd0bd37f9f22adf707e9d12c86bb24b5fae947839a32261cf8e23f3c991455"
     },
     {
       "path": "config.json",
@@ -4516,7 +4521,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "548632725005a69a4b8ef69258a25621f52b1fbbe8fe4b8de552638bc9fd9179"
+      "sha256": "696c3dd2dd942cdd2cfb45d2f8b94452f8a05221a83ac7c2edb7c1bc05b2199c"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5460,7 +5465,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "107de9390633b117cddb3e03f6a477199b82e98bbd57e59fb6d57bcd22b71f78"
+      "sha256": "af0c61a9f9f6b4bd02ee7315022b54e5877d3f8f6822a8ae0460724edac8c27f"
     }
   ]
 }

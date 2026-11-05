@@ -238,7 +238,7 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
     }
     return { confidence: 0, reasons: [`the sample is in Devanagari script, but the Hindi word list recognises only ${w.hits} of ${w.words} words: it may be Marathi, Nepali, Sanskrit, or Hindi outside the word list`] };
   }
-  // Hebrew script is shared with Aramaic and Yiddish; Greek script with nothing a pack reads. Which PERIOD of the pack applies is the
+  // Hebrew script is shared by Hebrew, Aramaic and Yiddish. Greek script has one pack here. Which PERIOD of a pack applies is the
   // analyser's per-sentence decision (cantillation, pointing, polytonic marks), not the resolver's: it names the language only.
   if (share(sh.hebrew) >= MIN_SCRIPT_SHARE) {
     // Script alone cannot distinguish Hebrew, Aramaic and Yiddish. Compare the two implemented

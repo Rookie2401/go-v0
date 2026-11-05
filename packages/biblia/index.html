@@ -11,7 +11,8 @@
 </head>
 <body>
 <noscript><p style="padding:1rem">Biblia needs JavaScript.</p></noscript>
-<div id="app"></div>
+<!-- the loading mark of src/loading.ts (bookMark), here so that it paints before any script runs; test/biblia/loading.test.ts keeps the two the same -->
+<div id="app"><div class="bk-loading" role="status" aria-live="polite"><span class="bk" aria-hidden="true"><span class="bk-board"></span><span class="bk-page bk-page-left"></span><span class="bk-page bk-page-right"></span><span class="bk-leaf"></span><span class="bk-leaf"></span><span class="bk-leaf"></span><span class="bk-spine"></span></span><span class="bk-label">Opening Biblia…</span></div></div>
 <script type="module" src="./main.ts"></script>
 </body>
 </html>

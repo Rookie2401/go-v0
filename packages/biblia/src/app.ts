@@ -24,6 +24,7 @@ import { Texts, greekVerseText, installFullIndexes, verseIsAramaic, type AnyBook
 import { APP_VERSION, READER_ID, type Identity, type Recorder } from './repo';
 import { renderAccountScreen, renderLegalScreen, type AccountService } from './account';
 import { createLevels, unitIdsOfSite, type LevelSite } from './levels';
+import { bookMark } from './loading';
 import type { GoEvent } from '../../repository-contract/src';
 import { CONTRACT_VERSION } from '../../repository-contract/src';
 import type { Pronouncer } from '../../golearn-extension/src/popup/view';
@@ -69,6 +70,9 @@ const ICONS = {
 type IconName = keyof typeof ICONS;
 
 type Child = Node | string | null | undefined | false;
+
+/** A chapter that arrives within this long replaces the page directly; a slower one shows the loading mark meanwhile (loading.ts). */
+export const LOADING_AFTER_MS = 180;
 
 export interface BibliaApp {
   go(hash: string): Promise<void>;
@@ -691,7 +695,12 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     try { if (card.isOpen()) card.dismiss('escape'); } catch { /* no card */ }
     clearSelection();
     let view: HTMLElement;
-    if (id === 'read' && m?.[2]) { route = `read/${m[2]}/${m[3] ?? '1'}`; view = await renderReader(decodeURIComponent(m[2]), Number(m[3] ?? '1')); }
+    if (id === 'read' && m?.[2]) {
+      route = `read/${m[2]}/${m[3] ?? '1'}`;
+      // a book not read yet this session has to be fetched: past a moment's wait the open book turns its pages where the chapter will be
+      const waiting = win.setTimeout(() => { root.replaceChildren(h('div', {}, plainBar('Biblia'), bookMark(doc, 'Loading the text…'))); }, LOADING_AFTER_MS);
+      try { view = await renderReader(decodeURIComponent(m[2]), Number(m[3] ?? '1')); } finally { win.clearTimeout(waiting); }
+    }
     else if (id === 'settings') { route = 'settings'; view = renderSettings(); }
     else if (id === 'sources') { route = 'sources'; view = renderSources(); }
     else if (id === 'account' && account) { route = 'account'; view = renderAccountScreen({ doc, account, topbar: plainBar('Biblia', 'account'), done: () => { void api.go('#/'); } }); }

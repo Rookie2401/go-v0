@@ -77,7 +77,7 @@ export const arcAdapter: LanguageAdapter = {
     tokenization: 'dependable', sentenceSegmentation: 'limited', lemmatization: 'seed-only', morphology: 'limited',
     phraseDetection: 'none', productionChecks: 'none',
     limitations: [
-      'Only the source forms in Daniel 2:4b (qere) and 2:20 are included; unknown forms remain unresolved.',
+      'Seed-only: only the source forms in Daniel 2:4b (qere) and 2:20 are included; unknown forms remain unresolved.',
       'OSHB supplies morphology; Open Scriptures Strong supplies lexical headwords and base meanings. No independent scholarly review is claimed.',
       'Unpointed forms keep every matching pointed source analysis at reduced confidence. Sentence syntax is not parsed.',
       'Roots, productive paradigms, cognates, Targumic Aramaic, Imperial Aramaic and Syriac are not implemented.',

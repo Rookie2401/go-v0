@@ -22,7 +22,7 @@ describe('readerSupport', () => {
 
   it('the parser can read exactly the packs that are wired: all ten, Norwegian Bokmål, Nynorsk and (since 2026-10-17) Latin, Hebrew and Greek included', () => {
     for (const s of readerSupportList()) expect(s.parseable, s.languageId).toBe(PARSER_LANGUAGES.includes(s.languageId));
-    expect(readerSupportList().map((s) => s.parseable)).toEqual([true, true, true, true, true, true, true, true, true, true]);
+    expect(readerSupportList().map((s) => s.parseable)).toEqual([true, true, true, true, true, true, true, true, true, true, true]);
     for (const l of ['nb', 'nn']) {
       const s = readerSupport(l)!;
       expect(s.lines.join('\n'), l).not.toMatch(/cannot read selections/);

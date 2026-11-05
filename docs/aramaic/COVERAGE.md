@@ -24,3 +24,18 @@ These two passages provide only a demonstration: עָלַם recurs in different 
 7. Add lexical cognate relationships without transferring learner mastery, correction-persistence UI, and optional pointed/interlinear displays after validation.
 
 No Ecclesia dependency was added. No new SRS or learner store was created.
+
+## Executed first-slice measurements
+
+GitHub Actions focused job on commit 8440ccd45e63e9496ed58e8474dd92c6f9fbfbb8 passed all 19 focused tests, the source/repetition report and the browser analyser build. The full regression check is reported separately.
+
+| Passage | Source words | Resolved | Unresolved | Tokens retaining alternatives | New lemma/POS identities |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Daniel 2:4b | 8 | 8 | 0 | 0 | 8 |
+| Daniel 2:20 | 18 | 18 | 0 | 3 | 14 |
+
+There are 21 distinct source lemma identifiers and 22 lemma/POS identities (the connective has different source roles). Source-fixture agreement was 26/26, with no source-code disagreement; this is not held-out accuracy. Nineteen lemma/POS identities occur only once in this tiny sequence.
+
+The existing transition analyser rates the jump high: 83% of destination lemma tokens are absent from the previous passage, and length rises 2.25 times. Clause/construction difficulty remains unmeasured. These results identify the need for bridges and broader recurrence rather than claiming this is a complete acquisition course.
+
+Reproduce: `npx vite-node --config scripts/vite.config.ts scripts/arc-report.mts`.

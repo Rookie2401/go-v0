@@ -11,7 +11,7 @@
     "title": "Biblical Aramaic"
   },
   "source": {
-    "id": "oshb-wlc-daniel",
+    "id": "src:arc:daniel-2-20",
     "title": "Westminster Leningrad Codex via Open Scriptures Hebrew Bible",
     "url": "https://github.com/openscriptures/morphhb/blob/master/wlc/Dan.xml",
     "edition": "OSHB WLC, qere reading path",
@@ -75,5 +75,8 @@
       ]
     }
   ],
-  "variety": "arc-bib"
+  "variety": "arc-bib",
+  "streams": [
+    "scripture"
+  ]
 }

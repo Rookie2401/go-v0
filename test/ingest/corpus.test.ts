@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { type LanguageCode } from '../../src/core';
 import { computePublished, loadBundledCorpus, type CorpusDocument } from '../../src/ingest';
 import { createMemoryStore } from '../../src/core';
+import { ARAMAIC_WORKS } from '../../src/course/aramaic';
 import { ALBANIAN_WORKS } from '../../src/course/albanian';
 import { GERMAN_WORKS } from '../../src/course/german';
 import { HINDI_WORKS } from '../../src/course/hindi';
@@ -11,7 +12,7 @@ import { THAI_WORKS } from '../../src/course/thai';
 import { SPANISH_WORKS } from '../../src/course/spanish';
 
 // The works of every course that bundles texts of its own: a course adds its list here.
-const COURSE_WORKS = [...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS, ...ALBANIAN_WORKS, ...THAI_WORKS, ...LATIN_WORKS];
+const COURSE_WORKS = [...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS, ...ALBANIAN_WORKS, ...THAI_WORKS, ...LATIN_WORKS, ...ARAMAIC_WORKS];
 import { importDocuments, validateBatch } from '../../src/ingest';
 import { clock, registry } from './helpers';
 import { PERIOD_LANGS, SEED_BY_LANG, isSeed, loadCourseCorpus } from './seed';

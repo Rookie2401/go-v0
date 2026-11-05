@@ -9,6 +9,16 @@ const DAN_2_4 = "מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י אֱמַ
 
 export const ARC_TUTORIAL_STEPS_OWN: TutorialStep[] = [
   {
+    id: 'alphabet-complete', kind: 'alphabet', title: 'Learn the twenty-two consonant letters', estimatedMinutes: 4,
+    body: 'Read this list from its letter names, then find familiar shapes in the short source examples: א aleph; ב beth; ג gimel; ד daleth; ה he; ו waw; ז zayin; ח heth; ט teth; י yod; כ kaph; ל lamedh; מ mem; נ nun; ס samekh; ע ayin; פ pe; צ tsadhe; ק qoph; ר resh; ש shin or sin (the point distinguishes them); ת taw. Five letters have final shapes: כ becomes ך, מ becomes ם, נ becomes ן, פ becomes ף, צ becomes ץ. The names help identify letters; they are not a recording of historical pronunciation. In a pointed edition, small marks carry vowels and other reading distinctions. An unpointed text leaves those marks unwritten; do not invent the missing vowels.',
+    examples: [
+      { surface: 'מַלְכָּא֙', gloss: 'king', note: 'Identify מ, ל, כ and א in the source word; the final א belongs to its determined-state ending.' },
+      { surface: 'חֱיִ֔י', gloss: 'live!', note: 'Identify ח and the two written י letters; this is the source imperative, not a general spelling rule.' },
+      { surface: 'אֱמַ֥ר', gloss: 'say!', note: 'Identify א, מ and ר, then select the complete word in the practice passage.' },
+    ],
+  },
+
+  {
     id: 'script-aram',
     kind: 'alphabet',
     title: 'The Aramaic text on the page',

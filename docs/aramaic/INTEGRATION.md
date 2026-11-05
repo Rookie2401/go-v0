@@ -22,4 +22,4 @@ The source text is preserved on the selected qere reading path, with morphology 
 ## Validation
 See test/adapters/aramaic.test.ts, test/language-packs/aramaic.test.ts and test/integration/aramaic.test.ts. Checks cover source features, ambiguities, offsets, dialect rejection, browser loading, Repository script/language identity, pack install, import, shared persistence/coverage, real review facts, exercise generation and FSRS Easy/replay.
 
-A local execution environment was unavailable during authoring. GitHub CI is the execution gate. Its actual result must be recorded before declaring this tested end to end; the presence of tests is not a passing result.
+A local execution environment was unavailable during authoring. GitHub CI is the execution gate. The focused job on 8440ccd45e63e9496ed58e8474dd92c6f9fbfbb8 passed all 19 tests, the source report and the analyser build. This verifies the programmatic slice; real-device visual and independent scholarly validation remain open. The full regression result is tracked independently.

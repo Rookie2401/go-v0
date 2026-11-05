@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { ARAMAIC_SEED } from '../../src/adapters/aramaic/seed';
 import { arcAdapter } from '../../src/adapters/arc';
+import { checkVerifiedScripture } from '../../scripts/verified-scripture';
 import { loadBundledCorpus } from '../../src/ingest';
 
 describe('Aramaic source transcription verification (not held-out linguistic accuracy)', () => {
@@ -33,6 +34,16 @@ describe('Aramaic source transcription verification (not held-out linguistic acc
       expect(entries.get(id)).toBe(row.lemma);
       expect(row.gloss).not.toBe('');
     }
+  });
+  it('compares Scripture with its own named source record and rejects edited wording', () => {
+    const record = JSON.parse(fs.readFileSync('data/verified/arc.scripture.json', 'utf8'));
+    const docs = loadBundledCorpus().filter(d => d.lang === 'arc');
+    expect(checkVerifiedScripture(docs, record.translations)).toEqual({ errors: [], sentences: 2 });
+    const edited = structuredClone(docs[0]);
+    const paragraph = edited.sections[0].paragraphs[0];
+    if (!('sentences' in paragraph)) throw new Error('Expected source sentences');
+    paragraph.sentences[0].text += ' מַלְכָּא';
+    expect(checkVerifiedScripture([edited], record.translations).errors).toHaveLength(1);
   });
   it('the declared source tokens are all recognized, with ambiguity measured separately', () => {
     const docs = loadBundledCorpus().filter(d => d.lang === 'arc');

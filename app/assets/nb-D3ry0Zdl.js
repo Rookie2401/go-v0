@@ -1,1 +1,0 @@
-import{t as e}from"./engine-3LnhGp_w.js";var t=e(`nb`);export{t as adapter};

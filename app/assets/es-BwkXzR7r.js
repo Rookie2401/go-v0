@@ -1,1 +1,0 @@
-import{t as e}from"./es-CDWKL-bk.js";export{e as adapter};

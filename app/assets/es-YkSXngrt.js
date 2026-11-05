@@ -1,0 +1,1 @@
+import{t as e}from"./es-B1xiVi17.js";export{e as adapter};

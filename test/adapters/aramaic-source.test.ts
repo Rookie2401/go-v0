@@ -24,8 +24,8 @@ describe('Aramaic source transcription verification (not held-out linguistic acc
   });
   it('keeps lexical headwords tied to the selected Strong source entries', () => {
     const lexicon = fs.readFileSync('data/sources/aramaic/strong-excerpts.xml', 'utf8');
-    const entries = new Map([...lexicon.matchAll(/<entry id="H(\\d+)">([\\s\\S]*?)<\\/entry>/g)].map(m => [
-      m[1], m[2].match(/<w [^>]+>([^<]+)<\\/w>/)?.[1],
+    const entries = new Map([...lexicon.matchAll(/<entry id="H(\d+)">([\s\S]*?)<\/entry>/g)].map(m => [
+      m[1], m[2].match(/<w [^>]+>([^<]+)<\/w>/)?.[1],
     ]));
     for (const row of ARAMAIC_SEED) {
       const id = row.lemmaId.split('/').pop()!;

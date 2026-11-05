@@ -30,7 +30,9 @@ const dim = (over: Partial<DimView>): DimView => ({ score: 0, confidence: 0, obs
 const row = (unitId: string, dims: KnowledgeView['dimensions']): KnowledgeView => ({ unitId, dimensions: dims });
 /** What the learner model says about this page: one word per level, the rest never met. */
 const ROWS: Record<string, KnowledgeView> = {
-  'form:sq:libër': row('form:sq:libër', { exposure: dim({ observations: 1 }) }),
+  // looked up once: Seen. 'time' was only met in passing (a bare encounter, as every word on a scanned page gets): shown New (2026-11-05)
+  'form:sq:libër': row('form:sq:libër', { exposure: dim({ observations: 2, negative: 1 }) }),
+  'form:sq:time': row('form:sq:time', { exposure: dim({ observations: 3 }) }),
   'form:sq:bukur': row('form:sq:bukur', { assistedRecognition: dim({ observations: 2, score: 0.4 }) }),
   'lemma:sq:shtëpi:NOUN': row('lemma:sq:shtëpi:NOUN', { exposure: dim({ observations: 4 }), readingRecognition: dim({ observations: 3, score: 0.8, confidence: 0.6 }) }),
   'form:sq:unë': row('form:sq:unë', { productiveRetrieval: dim({ observations: 2, score: 0.7 }) }),
@@ -163,6 +165,26 @@ describe('the scan', () => {
     expect(asked[0].length).toBeLessThanOrEqual(60);
     expect(await rig.store.list()).toEqual([]);
     expect(typeof s.scanMs).toBe('number');
+  });
+
+  it('words recorded as met in passing stay New on the page while the word the learner clicks is Seen at once (2026-11-05)', async () => {
+    visibleRects();
+    const events: GoEvent[] = [];
+    const a = make({ buildEncounter: (ids) => encounter(ids, events.length), recordEncounter: async (e) => { events.push(e); return { ok: true }; } });
+    await a.start({ speak: false });
+    await flush(850);
+    expect(events.length).toBeGreaterThan(4); // the exposures ARE recorded ...
+    const names = () => [...registry.entries()].map(([k, h]) => [k, [...(h as FakeHighlight).ranges].map((r) => r.toString())] as const);
+    const level = (word: string) => names().find(([, ws]) => ws.includes(word))?.[0];
+    expect(level('time')).toBe('golearn-new'); // ... but 'time' (rows: bare encounters only) still reads New
+    expect(level('lexoj')).toBe('golearn-new');
+    const t = document.getElementById('p')!.firstChild as Text;
+    caretAt(t, SENTENCE.indexOf('lexoj') + 2);
+    click(document.getElementById('p')!);
+    for (let i = 0; i < 40 && level('lexoj') !== 'golearn-seen'; i++) await flush(50); // the lookup is recorded and the page is read again a moment later, whatever the model still says
+    expect(level('lexoj')).toBe('golearn-seen');
+    expect(level('po')).toBe('golearn-new'); // the other words of the sentence stay New
+    expect(level('time')).toBe('golearn-new');
   });
 
   it('asks only about new ids on a rescan, and a page change is followed', async () => {

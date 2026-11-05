@@ -90,6 +90,8 @@ export class ActiveMode {
   private entry: ReaderRegistryEntry | undefined;
   private readonly highlighters = new Map<Document, Highlighter>();
   private readonly rows = new Map<string, KnowledgeView | null>();
+  /** Unit ids looked up on this page (a clicked word): shown at least Seen at once, before the model has folded the lookup. */
+  private readonly looked = new Set<string>();
   private readonly tokensByDoc = new WeakMap<Document, ScanToken[]>();
   private listeners: Array<() => void> = [];
   private observers: MutationObserver[] = [];
@@ -134,6 +136,10 @@ export class ActiveMode {
     // clicks are one scan). The device holds the event before this is called, so the new answer includes it.
     this.offRecord = this.d.controller.onRecorded((e) => {
       if (e.kind !== 'ItemMarked' && e.kind !== 'SelectionLookedUp') return;
+      // a clicked word is Seen at once, whatever the answer says until the model has folded the lookup (met only in passing is shown as New)
+      // (a mark made afterwards supersedes it: a New mark is released only by a LATER meeting)
+      if (e.kind === 'ItemMarked') for (const id of e.subject?.itemIds ?? []) this.looked.delete(id);
+      if (e.kind === 'SelectionLookedUp') for (const id of e.subject?.itemIds ?? []) { this.looked.delete(id); this.looked.add(id); if (this.looked.size > 500) this.looked.delete(this.looked.values().next().value as string); }
       this.epoch++;
       for (const id of e.subject?.itemIds ?? []) this.rows.delete(id);
       if (e.kind === 'ItemMarked') { clearTimeout(this.debounce); void this.rescan(); }
@@ -191,6 +197,7 @@ export class ActiveMode {
     for (const h of this.highlighters.values()) h.dispose();
     this.highlighters.clear();
     this.rows.clear();
+    this.looked.clear();
     this.encountered.clear();
     this.refetch.clear();
     this.confirmed.clear(); this.confirmOff = false; this.confirmReason = undefined; this.confirmRetryAt = 0;
@@ -277,7 +284,7 @@ export class ActiveMode {
         // not underlined as "new", not recorded as met (2026-10-25: a Hebrew-and-English page read as German underlined every word)
         if (!t.known) { skipped++; continue; }
         if (!modelKnown) continue;
-        const level = levelOfRows(t.ids.map((id) => this.rows.get(id) ?? undefined));
+        const level = levelOfRows(t.ids.map((id) => this.rows.get(id) ?? undefined), t.ids.some((id) => this.looked.has(id)));
         let range: Range;
         try { range = root.createRange(); range.setStart(t.node, t.start); range.setEnd(t.node, t.end); } catch { continue; }
         (byLevel.get(level) ?? byLevel.set(level, []).get(level)!).push(range);

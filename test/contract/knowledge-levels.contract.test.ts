@@ -2,7 +2,7 @@
 /** Contract: the six knowledge levels, the marks an ItemMarked may carry (levels + legacy words + bookmarks), and the unchanged vocabulary. */
 import { describe, expect, it } from 'vitest';
 import {
-  CONTRACT_VERSION, ITEM_MARKS, KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_RANK, KNOWLEDGE_LEVEL_WORDS, LEGACY_MARK_LEVEL, isKnowledgeLevel, levelOfMark, validateEvent, validatePayload,
+  CONTRACT_VERSION, ITEM_MARKS, KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_RANK, KNOWLEDGE_LEVEL_WORDS, LEGACY_MARK_LEVEL, isKnowledgeLevel, levelOfMark, metOnlyInPassing, displayLevelOf, validateEvent, validatePayload,
 } from '../../packages/repository-contract/src';
 import type { GoEvent } from '../../packages/repository-contract/src';
 
@@ -43,5 +43,26 @@ describe('legacy marks keep their meaning', () => {
     expect(levelOfMark('productive')).toBe('known');
     expect(LEGACY_MARK_LEVEL.known).toBe('recognized'); // what "I recognise it" meant when the card had three choices
     for (const l of KNOWLEDGE_LEVELS) expect(levelOfMark(l)).toBe(l);
+  });
+});
+
+describe('met only in passing (owner, 2026-11-05)', () => {
+  const bare = { level: 'seen', dimensions: { exposure: { observations: 1, negative: 0 } } };
+  it('a bare encounter (or playback) is passing-only and is shown as New', () => {
+    expect(metOnlyInPassing(bare)).toBe(true);
+    expect(displayLevelOf(bare)).toBe('new');
+    expect(displayLevelOf({ level: 'seen', dimensions: {} })).toBe('new');
+  });
+  it('a lookup or an assistance request (exposure.negative), any other observation, or a mark ends it', () => {
+    expect(displayLevelOf({ level: 'seen', dimensions: { exposure: { observations: 2, negative: 1 } } })).toBe('seen');
+    expect(displayLevelOf({ level: 'seen', dimensions: { exposure: { observations: 1 }, assistedRecognition: { observations: 1 } } })).toBe('seen');
+    expect(displayLevelOf({ ...bare, selfMark: { mark: 'seen', at: 'x' } })).toBe('seen');
+  });
+  it('other levels, rows without a level, and no row are untouched', () => {
+    expect(displayLevelOf({ level: 'recognized', dimensions: { exposure: { observations: 1 } } })).toBe('recognized');
+    expect(displayLevelOf({ level: 'new' })).toBe('new');
+    expect(displayLevelOf(undefined)).toBe('new');
+    expect(displayLevelOf(bare, 'known')).toBe('known');
+    expect(metOnlyInPassing(null)).toBe(false);
   });
 });

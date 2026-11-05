@@ -16,6 +16,9 @@ import { heAdapter } from '../../src/adapters/he';
 import { registerAllAnalysers } from '../support/analysers';
 
 const row = (unitId: string, over: Partial<UnitKnowledge> = {}): UnitKnowledge => ({ learnerId: 'L1', unitId, languageId: 'el', level: 'new', encounters: 0, ...over } as UnitKnowledge);
+/** The dimensions of a word that was looked up (exposure.negative > 0), and of one only met in passing (a bare encounter): the display rule of 2026-11-05. */
+const LOOKED = { exposure: { observations: 2, negative: 1 } } as unknown as UnitKnowledge['dimensions'];
+const PASSING = { exposure: { observations: 3, negative: 0 } } as unknown as UnitKnowledge['dimensions'];
 const mark = (level: KnowledgeLevel, at = '2026-10-22T12:00:00.000Z'): { mark: KnowledgeLevel; at: string } => ({ mark: level, at });
 
 describe('levelOfRows', () => {
@@ -38,13 +41,24 @@ describe('levelOfRows', () => {
     expect(levelOfRows([stale])).toBe('known');
     expect(levelOfRows([stale, row('lemma:el:y:NOUN', { level: 'automatic' })])).toBe('known');
     // a mark of New is released by a later meeting: the engine's level of that row decides (never below Seen once met)
-    const met = row('form:el:z', { level: 'seen', selfMark: mark('new', '2026-10-22T10:00:00.000Z') });
+    const met = row('form:el:z', { level: 'seen', dimensions: LOOKED, selfMark: mark('new', '2026-10-22T10:00:00.000Z') });
     expect(levelOfRows([met])).toBe('seen');
+    // ... unless that row was only met in passing since the mark (2026-11-05): still New
+    expect(levelOfRows([{ ...met, dimensions: PASSING }])).toBe('new');
+  });
+  it('met only in passing is shown New: bare encounters, however many; a lookup, another observation or the own Seen mark makes it Seen (2026-11-05)', () => {
+    expect(levelOfRows([row('form:el:p', { level: 'seen', encounters: 5, dimensions: PASSING })])).toBe('new');
+    expect(levelOfRows([row('form:el:p', { level: 'seen', dimensions: LOOKED })])).toBe('seen');
+    expect(levelOfRows([row('form:el:p', { level: 'seen', dimensions: { exposure: { observations: 1, negative: 0 }, listeningRecognition: { observations: 1 } } as unknown as UnitKnowledge['dimensions'] })])).toBe('seen');
+    expect(levelOfRows([row('form:el:p', { level: 'seen', dimensions: PASSING, selfMark: mark('seen') })])).toBe('seen');
+    // a word is Seen as soon as any of its rows is (form row passing-only, lemma row looked up); a higher level is untouched
+    expect(levelOfRows([row('form:el:p', { level: 'seen', dimensions: PASSING }), row('lemma:el:p:NOUN', { level: 'seen', dimensions: LOOKED })])).toBe('seen');
+    expect(levelOfRows([row('form:el:p', { level: 'recognized', dimensions: PASSING })])).toBe('recognized');
   });
   it('a stored mark in an older word is read through levelOfMark; a row without a level is Seen if it was ever met', () => {
     const legacy = { ...row('form:el:x'), level: undefined, selfMark: { mark: 'productive', at: '2026-10-22T10:00:00.000Z' } } as unknown as UnitKnowledge;
     expect(levelOfRows([legacy])).toBe('known');
-    const old = { ...row('form:el:y'), level: undefined, encounters: 2 } as unknown as UnitKnowledge;
+    const old = { ...row('form:el:y'), level: undefined, encounters: 2, dimensions: LOOKED } as unknown as UnitKnowledge;
     expect(levelOfRows([old])).toBe('seen');
   });
 });
@@ -176,7 +190,7 @@ describe('the levels controller', () => {
     const ids = (w: string): string[] => unitIdsOfSite(sites.find((s) => s.surface === w)!);
     const [logosForm, logosLemma] = ids('λόγος');
     const rows: Record<string, Partial<UnitKnowledge>> = {
-      [logosForm]: { level: 'seen', encounters: 1 },
+      [logosForm]: { level: 'seen', encounters: 1, dimensions: LOOKED },
       ...(logosLemma ? { [logosLemma]: { level: 'familiar', encounters: 4 } } : {}),
       [ids('ἀρχῇ')[0]]: { level: 'recognized' },
       [ids('θεόν')[0]]: { level: 'known', selfMark: mark('known') },
@@ -207,7 +221,7 @@ describe('the levels controller', () => {
 
   it('caches rows per chapter: coming back to a chapter paints it before the service has answered', async () => {
     const a = sitesOf();
-    const rows = { [unitIdsOfSite(a[1])[0]]: { level: 'seen' as const } };
+    const rows = { [unitIdsOfSite(a[1])[0]]: { level: 'seen' as const, dimensions: LOOKED } };
     const api = fakeKnowledge(rows);
     const { levels } = make(api);
     await levels.setChapter('read/John/1', a);
@@ -230,7 +244,7 @@ describe('the levels controller', () => {
   it('repaints at once after the learner own mark, until the service row carries it', async () => {
     const sites = sitesOf();
     const [form] = unitIdsOfSite(sites[0]);
-    const api = fakeKnowledge({ [form]: { level: 'seen' } });
+    const api = fakeKnowledge({ [form]: { level: 'seen', dimensions: LOOKED } });
     const { levels } = make(api);
     await levels.setChapter('read/John/1', sites);
     expect(sites[0].el.getAttribute(LEVEL_ATTR)).toBe('seen');

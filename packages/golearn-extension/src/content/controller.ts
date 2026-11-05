@@ -863,7 +863,10 @@ export function profileViewFrom(card: CardModel, reply: ProfileReply | undefined
   // the learner's own latest mark, over the word's rows (lemma and form)
   const mark = selfMarkOfRows(wordRows);
   // the word's level (the learner's mark, else the engine's, else the rows read with the page's thresholds) and how often it was met before: the card's rating row and its footer
-  return { state: 'ready', met, recognition, weak, level: levelOfRows(wordRows), encounters: encountersOfRows(wordRows), ...(reply.stale ? { stale: true } : {}), ...(mark ? { selfMark: levelOfMark(mark.mark) } : {}) };
+  // A mark of New that a later meeting released (the engine's level of the marked row is above New) is not "pressed" on the card. The shown level can read
+  // New for a word met only in passing (the display rule), which must not make the New circle look pressed again: the engine's level decides this, as it did.
+  const releasedMark = !!mark && levelOfMark(mark.mark) === 'new' && wordRows.some((r) => r?.selfMark?.at === mark.at && !!r.level && r.level !== 'new');
+  return { state: 'ready', met, recognition, weak, level: levelOfRows(wordRows), encounters: encountersOfRows(wordRows), ...(reply.stale ? { stale: true } : {}), ...(mark && !releasedMark ? { selfMark: levelOfMark(mark.mark) } : {}) };
 }
 
 /** The worker's reason for refusing a write, in a short phrase for the card (never blind: the learner and the log both see why). */

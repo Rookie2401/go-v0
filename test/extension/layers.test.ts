@@ -289,6 +289,24 @@ describe('GRAMMAR puts a construction the learner finds hard first', () => {
     expect(newer).toMatchObject({ level: 'automatic', selfMark: 'automatic' });
   });
 
+  it('a word met only in passing is shown New, and which circle is pressed does not change with that (2026-11-05)', () => {
+    const card = parseSelection({ surface: 'libër', context: { kind: 'none', confidence: 0 } });
+    const id = card.itemIds[0];
+    const at = '2026-10-10T10:00:00.000Z';
+    // bare encounters only, no mark: shown New (the engine's level is Seen)
+    expect(profileViewFrom(card, profileReply({ [id]: { ...row(id, { exposure: { observations: 3, negative: 0 } }), level: 'seen' as const } }))).toMatchObject({ level: 'new' });
+    // a lookup: Seen
+    expect(profileViewFrom(card, profileReply({ [id]: { ...row(id, { exposure: { observations: 3, negative: 1 } }), level: 'seen' as const } }))).toMatchObject({ level: 'seen' });
+    // marked New, then merely met again: the engine's level is Seen (the mark was released), so no circle is pressed - exactly as before the display rule
+    const released = profileViewFrom(card, profileReply({ [id]: { ...row(id, { exposure: { observations: 3, negative: 0 } }), level: 'seen' as const, selfMark: { mark: 'new' as const, at } } }));
+    expect(released.level).toBe('new');
+    expect(released.selfMark).toBeUndefined();
+    // marked New and nothing met since (engine level New): the New circle stays pressed
+    expect(profileViewFrom(card, profileReply({ [id]: { ...row(id, {}), level: 'new' as const, selfMark: { mark: 'new' as const, at } } }))).toMatchObject({ level: 'new', selfMark: 'new' });
+    // marked Seen: Seen, pressed
+    expect(profileViewFrom(card, profileReply({ [id]: { ...row(id, { exposure: { observations: 3 } }), level: 'seen' as const, selfMark: { mark: 'seen' as const, at } } }))).toMatchObject({ level: 'seen', selfMark: 'seen' });
+  });
+
   it('reading recognition is not claimed when there is no observation of it', () => {
     const card = parseSelection({ surface: 'libër', context: { kind: 'none', confidence: 0 } });
     const v = profileViewFrom(card, profileReply({ [card.itemIds[0]]: row(card.itemIds[0], { exposure: { observations: 2 } }) }));

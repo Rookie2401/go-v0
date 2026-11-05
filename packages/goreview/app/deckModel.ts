@@ -3,7 +3,7 @@ import { itemIdFor } from '../src/scheduler/deck';
  * GoReview batches contain justified eligible work. Batch size is a maximum, never
  * a demand to fill. Saved/selected practice carries a typed explicit intent.
  */
-import { KNOWLEDGE_LEVELS, type KnowledgeLevel } from '../../repository-contract/src';
+import { KNOWLEDGE_LEVELS, displayLevelOf, type KnowledgeLevel } from '../../repository-contract/src';
 import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeOutcome, PlannedItem, ReviewIntent, SessionPlan } from '../src/types';
 import { reviewEligibility } from '../src/planner/eligibility';
 import { admissionBudget } from '../src/planner/budget';
@@ -446,6 +446,7 @@ export type VocabSort = 'least' | 'recent';
 export interface VocabRow {
   unitId: string;
   label: string;
+  /** The level SHOWN (and sorted by) in My vocab: the Repository's level, except New for a word met only in passing (`displayLevelOf`, owner 2026-11-05). Nothing that plans or decides reads it. */
   level: KnowledgeLevel;
   encounters: number;
   /** When the word was last tapped or met (ISO). */
@@ -562,7 +563,7 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<Vocab
       if (isClassUnit(k.unitId)) continue; // the Class Essentials cards are not vocabulary the learner met
       const last = k.lastSeenAt ?? item.lastEncounter;
       records.push({
-        unitId: k.unitId, label: item.unit?.label || unitLabel(k.unitId), level: k.level, encounters: k.encounters, ...(last ? { lastSeenAt: last } : {}),
+        unitId: k.unitId, label: item.unit?.label || unitLabel(k.unitId), level: displayLevelOf(k), encounters: k.encounters, ...(last ? { lastSeenAt: last } : {}),
         kind: item.unit?.kind ?? k.unitId.split(':', 1)[0], forms: item.surfaceForms ?? [],
       });
     }

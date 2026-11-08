@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "ada5c8693a3da1562ba216cd725ccdb5ba3e2817",
-    "tree": "0084074ecc2af2a5e401d9e387e9eecf261dba71",
+    "commit": "7da1dd48ba156eb10e92fe87ba3ecc50cc51d481",
+    "tree": "c7b43401c914740b422e1d46737183f82728d0c0",
     "dirty": false
   },
-  "sourceManifestSha256": "2227d94d262d22e1cbb4679fdeb125a0b5fffbcbc9898f8e803d81f6fca9da98",
+  "sourceManifestSha256": "0649641d49cfbb1ee6ce9ba45f16a002dcf37cd52a908dcf4f2f233e6ce8e865",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -41,7 +41,7 @@
     },
     {
       "path": "packages/biblia/index.html",
-      "sha256": "9b231e940a367d3644e97414b2a7baba0eb571769f28aee1f17cb2edcfe845d5"
+      "sha256": "a21cf77d901e0bb2bf49fa4bc080a9e4d46e94a3eab2ab4cd2c1701ca9cda4f0"
     },
     {
       "path": "packages/biblia/public/fonts/EB-Garamond-OFL.txt",
@@ -137,7 +137,7 @@
     },
     {
       "path": "packages/biblia/src/app.ts",
-      "sha256": "ebec0e61c6efcadcbc74ef891c208d0a8e7260b5c8ebbabb0285b2ee54b00511"
+      "sha256": "aa8db4de542c0ce7b2b41e40dcbed81faec1e6ad3498f7a7493242c270fa09b4"
     },
     {
       "path": "packages/biblia/src/audio.ts",
@@ -154,6 +154,10 @@
     {
       "path": "packages/biblia/src/levels.ts",
       "sha256": "ce55f6156af31a4468077e5477ffb8910dd3590cd3cc6a56342c7b1fb33d1536"
+    },
+    {
+      "path": "packages/biblia/src/loading.ts",
+      "sha256": "3a75ebb06d0e7952e24ccc201bf1380e5cbdb91a2c95b9c6a723283a6b6e3762"
     },
     {
       "path": "packages/biblia/src/queue.ts",
@@ -421,7 +425,7 @@
     },
     {
       "path": "packages/goreview/app/index.html",
-      "sha256": "ad94dc6760705f24ac4e409d757cfb626b695a0cb90e3aa8860d479a9b234700"
+      "sha256": "d2f6fe41be773f18f8e516198192bfdf2a1bee2809e9bb20ad43ed7f87651c68"
     },
     {
       "path": "packages/goreview/app/legal.ts",
@@ -485,7 +489,7 @@
     },
     {
       "path": "packages/goreview/app/public/manifest.webmanifest",
-      "sha256": "96854337abab518cb1b7a85e89991536974037798ff2fa3c0d2131677ce8a5ea"
+      "sha256": "2dce6dc0a61f7f96c6f862fdf1da50c9d85fbf0c2e1dda26187b5ecf735c470a"
     },
     {
       "path": "packages/goreview/app/public/register.js",
@@ -661,7 +665,7 @@
     },
     {
       "path": "packages/goreview/app/styles.css",
-      "sha256": "2e53129ad7c24d6775756b802bb90efe6b8a854a11ba4445101eb93cb0660a72"
+      "sha256": "03504c5f007356f43d4fad63c136eafc3ab482058b4963284f3fe05de0aadbce"
     },
     {
       "path": "packages/goreview/app/tellEngine.ts",
@@ -4441,7 +4445,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "833ac28c17e53628da62360708863df02a5566b34767542a726c5ed131d06c7a",
+  "artifactManifestSha256": "e455f26ccff2ad9e68a666c5dd4f534e00573fc569000b8f736a16a04216a5be",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4488,8 +4492,8 @@
       "sha256": "d1ea42cd9257753d1e837dd2bfa244be93986bdc25e363c4cf5f61e87147e493"
     },
     {
-      "path": "assets/style-Dsvk-PQK.css",
-      "sha256": "b9fd0bd37f9f22adf707e9d12c86bb24b5fae947839a32261cf8e23f3c991455"
+      "path": "assets/style-CUrWhiv9.css",
+      "sha256": "2fe3c611886bfccfb9319eedd43e5a2a9ba9683bf0b6fdac34b85258eed97b76"
     },
     {
       "path": "config.json",
@@ -4521,7 +4525,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "696c3dd2dd942cdd2cfb45d2f8b94452f8a05221a83ac7c2edb7c1bc05b2199c"
+      "sha256": "44f5fcf491ee9935811c086c5bbfcc7f189d722e54c5d428161102713f8d548f"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5461,11 +5465,11 @@
     },
     {
       "path": "manifest.webmanifest",
-      "sha256": "96854337abab518cb1b7a85e89991536974037798ff2fa3c0d2131677ce8a5ea"
+      "sha256": "2dce6dc0a61f7f96c6f862fdf1da50c9d85fbf0c2e1dda26187b5ecf735c470a"
     },
     {
       "path": "sw.js",
-      "sha256": "af0c61a9f9f6b4bd02ee7315022b54e5877d3f8f6822a8ae0460724edac8c27f"
+      "sha256": "fe4287217b831084ab0591109457eca9f2be5fc2226d1fd2a410d94d4ed45e44"
     }
   ]
 }

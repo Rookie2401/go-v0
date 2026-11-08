@@ -1,7 +1,5 @@
 /* GoReview: one stylesheet, light and dark, no external resources. No gamification: no streaks, points or badges.
-   Look and feel: Ecclesia's reader (the owner, 2026-11-08: "the same treatment" as Euclid's Elements): parchment, ink, one gold accent,
-   hairline rules, square corners, small tracked sans labels over Garamond headings. Ecclesia's own muted (#827968) and gold (#9d7640)
-   are below 4.5:1 on its parchment, so text uses darker cuts of them (--ink-soft, --accent) and the true gold stays for decoration.
+   Look and feel: the Western Canon reader (classical, quiet, scholarly). Warm paper, ink, one restrained brown accent,
    EB Garamond (SIL OFL 1.1, packages/shared-fonts, copied to fonts/ beside this stylesheet; see THIRD-PARTY-NOTICES.md).
    The older token names (--bg --panel --muted --line --divider ...) stay as aliases: screens and tests use them. */
 
@@ -16,17 +14,16 @@
   font-size: 100%;
   --serif: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', 'Cardo', Georgia, 'Times New Roman', serif;
   --mono: ui-monospace, Consolas, 'Cascadia Mono', monospace;
-  --sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
 
-  /* paper and ink (Ecclesia's reader values) */
-  --paper: #f1e8d7; --paper-raised: #f6efe2; --ink: #292823; --ink-soft: #665e50;
-  --ink-faint: #665e50;      /* text-safe: 5.3:1 on paper (Ecclesia's #827968 is decoration only here) */
-  --ink-whisper: #827968;    /* decoration only, never text */
-  --rule: #dacfbd; --rule-strong: #c6b9a2; --accent: #7a5a2c; --accent-soft: #9d7640; --accent-ink: #f6efe2; --brand: var(--ink);
-  --selection: rgba(157, 118, 64, .18);
-  --shadow-raised: 0 1px 2px rgba(41, 40, 35, .05), 0 10px 28px rgba(41, 40, 35, .08);
-  --control-line: #857761;   /* form-control and button borders: 3.6:1 on paper */
-  --ok: #2e6a3c; --bad: #9b2c1f; --warn-bg: #ecdcb6;
+  /* paper and ink (Western Canon values) */
+  --paper: #f7f2e8; --paper-raised: #fdfaf3; --ink: #2b2620; --ink-soft: #5c5346;
+  --ink-faint: #6b6052;      /* text-safe: 5.5:1 on paper (the reader's own #8a7f6d is decoration only) */
+  --ink-whisper: #8a7f6d;    /* decoration only, never text */
+  --rule: #e0d6c2; --rule-strong: #cdbfa3; --accent: #6b4f2a; --accent-soft: #8a6b40; --accent-ink: #fdfaf3; --brand: var(--ink);
+  --selection: rgba(107, 79, 42, .16);
+  --shadow-raised: 0 1px 2px rgba(43, 38, 32, .06), 0 6px 20px rgba(43, 38, 32, .07);
+  --control-line: #8a7d68;   /* form-control and button borders: 3.6:1 on paper */
+  --ok: #2e6a3c; --bad: #9b2c1f; --warn-bg: #f5e9c4;
 
   /* the names the screens and tests already use */
   --bg: var(--paper); --panel: var(--paper-raised); --muted: var(--ink-soft); --line: var(--control-line); --divider: var(--rule);
@@ -34,12 +31,12 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #211e1a; --paper-raised: #2a2621; --ink: #e5dac7; --ink-soft: #aaa08e; --ink-faint: #a39883; --ink-whisper: #7d7059;
-    --rule: #3a342c; --rule-strong: #4a4237; --accent: #c9a56a; --accent-soft: #b8935a; --accent-ink: #211e1a; --brand: var(--ink);
-    --selection: rgba(201, 165, 106, .2);
+    --paper: #16130f; --paper-raised: #1e1a15; --ink: #d9cfbe; --ink-soft: #a89c86; --ink-faint: #a09478; --ink-whisper: #7d7059;
+    --rule: #322b22; --rule-strong: #453c2f; --accent: #c8a06a; --accent-soft: #b98f57; --accent-ink: #16130f; --brand: var(--ink);
+    --selection: rgba(200, 160, 106, .2);
     --shadow-raised: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 20px rgba(0, 0, 0, .35);
-    --control-line: #8a7c64;
-    --ok: #8fcf9a; --bad: #f0a090; --warn-bg: #332b1c;
+    --control-line: #80735c;
+    --ok: #8fcf9a; --bad: #f0a090; --warn-bg: #2d2717;
   }
 }
 * { box-sizing: border-box; }
@@ -53,7 +50,7 @@ body {
 ::selection { background: var(--selection); }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: .18em; }
-code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divider) 55%, transparent); padding: 0 .3em; border-radius: 2px; overflow-wrap: anywhere; }
+code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divider) 55%, transparent); padding: 0 .3em; border-radius: 4px; overflow-wrap: anywhere; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 [hidden] { display: none !important; }
@@ -86,22 +83,23 @@ select.language-kicker:hover { color: var(--ink); }
 .screen { width: 100%; padding: 1.75rem clamp(1rem, 4vw, 3rem) 4rem; max-width: 52rem; margin: 0 auto; overflow-wrap: anywhere; }
 .screen:focus { outline: none; }
 h1 {
-  font-size: clamp(2.1rem, 5vw, 2.7rem); font-weight: 400; line-height: 1.1; letter-spacing: -.01em; text-align: center;
-  margin: .9rem 0 2.25rem; color: var(--ink);
+  font-size: clamp(1.5rem, 4.5vw, 2.1rem); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; text-align: center;
+  margin: .5rem 0 2.25rem; color: var(--ink);
 }
-h2 { font-size: .72rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 .6rem; }
+h1::after { content: ""; display: block; width: 3rem; height: 1px; background: var(--rule-strong); margin: 1.1rem auto 0; }
+h2 { font-size: .85rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 .6rem; }
 h3 { font-size: 1.1rem; font-weight: 600; margin: 1.1rem 0 .3rem; }
 #outcome, .feedback h2, .exercise h2 { font-size: 1.2rem; letter-spacing: .03em; text-transform: none; color: var(--ink); }
 p { margin: .55rem 0; max-width: 42rem; overflow-wrap: anywhere; }
 .muted { color: var(--muted); }
 .error { color: var(--bad); }
 .ok { color: var(--ok); }
-.notice { background: var(--warn-bg); border: 1px solid var(--divider); border-inline-start: 3px solid var(--accent-soft); border-radius: 2px; padding: .5rem .85rem; }
+.notice { background: var(--warn-bg); border: 1px solid var(--divider); border-inline-start: 3px solid var(--accent-soft); border-radius: 6px; padding: .5rem .85rem; }
 .strong { font-weight: 600; }
 hr { border: 0; border-top: 1px solid var(--rule); margin: 1.4rem 0; }
 
 /* raised panels: emphasised blocks only */
-.card { background: var(--panel); border: 1px solid var(--divider); border-radius: 2px; padding: 1.1rem 1.3rem; margin: 1.25rem 0; }
+.card { background: var(--panel); border: 1px solid var(--divider); border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.25rem 0; }
 .card > :first-child { margin-top: 0; }
 .row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; margin: .65rem 0; }
 .row > *, .entry-actions > *, .session-bar > *, .vocab-line > * { min-width: 0; }
@@ -110,10 +108,10 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 1.4rem 0; }
 .field .cap { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
 .field .help, .toggle .help { color: var(--muted); font-size: .92rem; font-style: italic; }
 input[type="text"], input[type="url"], input[type="email"], input[type="password"], input[type="number"], select, textarea {
-  font: inherit; color: inherit; background: var(--panel); border: 1px solid var(--line); border-radius: 2px; padding: .45rem .7rem; width: 100%; min-width: 0;
+  font: inherit; color: inherit; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: .45rem .7rem; width: 100%; min-width: 0;
 }
 input[type="search"], input[type="date"] {
-  font: inherit; color: inherit; background: var(--panel); border: 1px solid var(--line); border-radius: 2px; padding: .45rem .7rem; width: 100%; min-width: 0;
+  font: inherit; color: inherit; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: .45rem .7rem; width: 100%; min-width: 0;
 }
 input::placeholder, textarea::placeholder { color: var(--ink-faint); opacity: 1; }
 .field input[type="number"] { max-width: 9rem; font-variant-numeric: tabular-nums; }
@@ -124,7 +122,7 @@ textarea { min-height: 6rem; resize: vertical; }
 /* buttons: quiet text on a rule; primary is accent-filled */
 button, .btn {
   font: inherit; font-size: 1rem; cursor: pointer; text-decoration: none; display: inline-block;
-  padding: .4rem .95rem; border-radius: 2px; border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+  padding: .4rem .95rem; border-radius: 6px; border: 1px solid var(--line); background: var(--panel); color: var(--ink);
 }
 button:hover:not(:disabled), .btn:hover { border-color: var(--accent-soft); text-decoration: none; background: color-mix(in srgb, var(--ink) 3.5%, var(--panel)); }
 button:disabled { opacity: .5; cursor: not-allowed; }
@@ -185,11 +183,11 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 .session-bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem 1rem; margin: 0 0 .8rem; }
 .bar-kicker { font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
 .bar-actions { margin-left: auto; display: flex; gap: 1.2rem; }
-.exercise { background: var(--panel); border: 1px solid var(--divider); border-radius: 2px; box-shadow: var(--shadow-raised); padding: 1.2rem 1.4rem; margin: 1.25rem 0; }
+.exercise { background: var(--panel); border: 1px solid var(--divider); border-radius: 8px; box-shadow: var(--shadow-raised); padding: 1.2rem 1.4rem; margin: 1.25rem 0; }
 .choices { display: grid; gap: .5rem; max-width: 34rem; }
 .choice { text-align: start; padding: .6rem .95rem; }
 .grades { gap: .5rem; }
-.feedback { background: var(--panel); border: 1px solid var(--divider); border-inline-start: 4px solid var(--rule-strong); border-radius: 2px; padding: .8rem 1.2rem; margin: 1.25rem 0; }
+.feedback { background: var(--panel); border: 1px solid var(--divider); border-inline-start: 4px solid var(--rule-strong); border-radius: 8px; padding: .8rem 1.2rem; margin: 1.25rem 0; }
 .feedback[data-outcome="correct"] { border-inline-start-color: var(--ok); }
 .feedback[data-outcome="incorrect"] { border-inline-start-color: var(--bad); }
 .item-tools { margin: 1rem 0; }
@@ -222,7 +220,7 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 .home { max-width: 30rem; margin: 0 auto; }
 .entry { padding: 1.35rem .6rem 1.45rem; border-bottom: 1px solid var(--rule); }
 .entry-tell { padding-top: .6rem; padding-bottom: 2.1rem; margin-bottom: .6rem; border-bottom: 1px solid var(--rule-strong); }
-.entry-link { display: block; color: var(--ink); text-decoration: none; margin: -.35rem -.6rem; padding: .35rem .6rem; border-radius: 2px; }
+.entry-link { display: block; color: var(--ink); text-decoration: none; margin: -.35rem -.6rem; padding: .35rem .6rem; border-radius: 6px; }
 .entry-link:hover { text-decoration: none; background: color-mix(in srgb, var(--ink) 3.5%, transparent); }
 .entry-title { display: block; margin: 0; font-size: clamp(1.9rem, 6vw, 2.5rem); line-height: 1.15; font-weight: 400; letter-spacing: .005em; text-transform: none; color: var(--ink); }
 .entry-kicker { display: block; margin: .45rem 0 0; font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); max-width: none; }
@@ -283,7 +281,7 @@ ul.vocablist, ul.decklist { list-style: none; padding: 0; margin: .4rem 0 0; bor
 /* a saved deck is one card: the whole of it is the button that starts the practice; Remove sits at its top right (the owner, 2026-10-28) */
 .deckrow { position: relative; padding: .85rem .5rem; }
 .deckrow:hover { background: color-mix(in srgb, var(--divider) 35%, transparent); }
-.deckrow-open { display: block; width: 100%; min-height: 0; padding: 0 5.5rem 0 0; text-align: left; font: inherit; color: inherit; background: none; border: 0; border-radius: 2px; cursor: pointer; }
+.deckrow-open { display: block; width: 100%; min-height: 0; padding: 0 5.5rem 0 0; text-align: left; font: inherit; color: inherit; background: none; border: 0; border-radius: 4px; cursor: pointer; }
 .deckrow-open:hover:not(:disabled) { background: none; border-color: transparent; }
 .deckrow-remove { position: absolute; top: .85rem; right: .5rem; }
 .deckrow-line { font-size: 1.15rem; }
@@ -431,7 +429,7 @@ img, svg, video, canvas { max-width: 100%; }
   .language-picker, #language-name { max-width: 100%; }
   .account { margin-left: auto; flex: 0 0 auto; }
   .screen { padding: 1rem max(16px, env(safe-area-inset-right, 0px)) calc(2rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
-  h1 { font-size: 1.9rem; margin: .4rem 0 1.4rem; }
+  h1 { font-size: 1.4rem; margin: .25rem 0 1.4rem; }
   h1::after { margin-top: .8rem; }
   .page-title { font-size: 1.7rem; margin: .25rem 0 .9rem; }
   .home { max-width: none; }
@@ -562,9 +560,3 @@ img, svg, video, canvas { max-width: 100%; }
 
 /* the session summary leads with the result */
 .summary-headline { font-size: 1.5rem; font-weight: 600; margin: 0.25rem 0 0.5rem; }
-
-/* Ecclesia's labels: the small tracked capitals are set in the sans (Inter where installed, else the system face), the rest stays Garamond */
-h2, .language-kicker, .field .cap, .tag, .facts dt, table.plain th, .bar-kicker, .entry-kicker, .toggle-link, .vocab-history, .vocab-indeck,
-.vocab-level, details.advanced > summary, .account-facts dt, .splash-word { font-family: var(--sans); font-weight: 500; }
-button, .btn { font-family: var(--sans); font-size: .9rem; letter-spacing: .02em; }
-button.grade, .grade-word { font-family: inherit; }

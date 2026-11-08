@@ -36,7 +36,7 @@ describe('the phone layout', () => {
 
   it('scales the type for a handheld: title 1.4rem, entry titles 1.7rem, kickers 0.7rem, body 1rem', () => {
     expect(phone).toMatch(/body \{ font-size: 1rem/);
-    expect(phone).toMatch(/h1 \{ font-size: 1\.9rem/);
+    expect(phone).toMatch(/h1 \{ font-size: 1\.4rem/);
     expect(phone).toMatch(/\.entry-title \{ font-size: 1\.7rem/);
     expect(phone).toMatch(/\.entry-kicker \{ font-size: \.7rem/);
   });

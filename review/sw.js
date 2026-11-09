@@ -4,7 +4,7 @@
  *   shell        precached at install under "goreview-shell-<build id>": index, hashed assets, fonts, manifest, icons, config.json.
  *                Served cache-first (the cached index and its hashed assets are one consistent version); a new build installs
  *                beside it and WAITS: the page offers "Update ready - reload" and only then sends SKIP_WAITING.
- *   config.json  network-first, the cached copy only when the network fails.
+ *   config.json  the kept copy at once, refreshed from the network for the next start (the network only when nothing is kept).
  *   dict/        the dictionary shards are NOT precached (hundreds of MB): cached on demand in "goreview-dict-v1", capped.
  *   lexicon/     Hebrew and Greek indexes are NOT precached: shards and the Koine index are cached on demand in a build-versioned cache, capped.
  *   everything else  untouched: the Repository service (any origin, /sync, /vocabulary, /candidates, /me, /sessions ...) is NEVER
@@ -12,7 +12,7 @@
  */
 'use strict';
 
-var BUILD_ID = '27d65103fa21';
+var BUILD_ID = 'a318abf1ffe3';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -25,8 +25,8 @@ var PRECACHE = [
   "./assets/go-globe-rim-CzbKbQV5.png",
   "./assets/go-globe-turn-Dop5YaWE.png",
   "./assets/go-logo-D1Qp-DDg.png",
-  "./assets/index-Bs-cGg3e.js",
-  "./assets/style-Dsvk-PQK.css",
+  "./assets/index-DnTCWWi5.js",
+  "./assets/style-Rhr2goAx.css",
   "./config.json",
   "./icons/apple-touch-icon.png",
   "./icons/go-logo.png",
@@ -93,15 +93,23 @@ function navigationFallback() {
   return cachedShell('./index.html').then(function (r) { return r || cachedShell(scopePath + 'index.html'); });
 }
 
-function networkFirstConfig(request) {
-  return fetch(request).then(function (response) {
+// The kept copy answers at once and the network refreshes it for the next start (2026-11-09): the app waits for config.json before it
+// shows anything, and a phone on a weak signal waited seconds for it on every launch. Only without a kept copy does the network answer.
+function configFromCache(event, request) {
+  var refresh = fetch(request).then(function (response) {
     if (response && response.ok) {
       var copy = response.clone();
-      caches.open(SHELL_CACHE).then(function (cache) { return cache.put(request, copy); });
+      return caches.open(SHELL_CACHE).then(function (cache) { return cache.put(request, copy); }).then(function () { return response; });
     }
     return response;
-  }).catch(function () {
-    return cachedShell(request).then(function (r) { return r || Response.error(); });
+  });
+  return cachedShell(request).then(function (kept) {
+    if (kept) {
+      var quiet = refresh.catch(function () { return undefined; });
+      if (event.waitUntil) event.waitUntil(quiet);
+      return kept;
+    }
+    return refresh.catch(function () { return Response.error(); });
   });
 }
 
@@ -140,7 +148,7 @@ self.addEventListener('fetch', function (event) {
     event.respondWith(navigationFallback().then(function (r) { return r || fetch(request); }));
     return;
   }
-  if (rel === 'config.json') { event.respondWith(networkFirstConfig(request)); return; }
+  if (rel === 'config.json') { event.respondWith(configFromCache(event, request)); return; }
   if (rel.indexOf('dict/') === 0) { event.respondWith(dictOnDemand(request)); return; }
   if (rel.indexOf('lexicon/') === 0) { event.respondWith(dictOnDemand(request, LEXICON_CACHE)); return; }
   event.respondWith(cachedShell(request).then(function (r) { return r || fetch(request); }));

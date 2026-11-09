@@ -19,8 +19,11 @@ export function choosePractice({candidate,knowledge,preferences,events,deck,now,
   const nowMs = Date.parse(now);
   const excludedIds = new Set(deck.filter(item => item.unitId === candidate.unitId)
     .flatMap(item => item.history.filter(h => h.retracted || h.scheduleExcluded || h.conflict).map(h => h.eventId).filter((id): id is string => !!id)));
-  const candidateEvents = evidenceByUnit?.get(candidate.unitId)
-    ?? indexPracticeEvidence(selectReviewEvidenceEvents(events).events).get(candidate.unitId) ?? [];
+  // A given index is complete: a unit absent from it has no practice evidence. (2026-11-08: `index.get(id) ?? recompute` re-selected the whole
+  // history for every candidate never reviewed, which is most of them; 750 candidates over 1,500 events held the page for 35 s.)
+  const candidateEvents = (evidenceByUnit
+    ? evidenceByUnit.get(candidate.unitId)
+    : indexPracticeEvidence(selectReviewEvidenceEvents(events).events).get(candidate.unitId)) ?? [];
   const rows = candidateEvents.filter(e => e.languageId === preferences.languageId
     && !excludedIds.has(e.id)
     && ['CardReviewed','AssessmentAnswered','ListeningAssessed'].includes(e.kind)

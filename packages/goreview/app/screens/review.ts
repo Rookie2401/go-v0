@@ -65,6 +65,9 @@ async function homeLocal(ctx: AppContext): Promise<HomeLocal | undefined> {
   return { id: `${learnerId}|${enrolmentId}`, key, holdOut, saved, resumable, snapshot };
 }
 
+/** What a deck panel shows: its entries and counts. Two plans with the same look draw the same panel. */
+const deckLook = (d: CurrentDeck): string => JSON.stringify([d.filled, d.hasVocabulary, d.entries.map((e) => `${e.itemId}|${e.dimension}|${e.family}|${e.label}`), d.summary, d.remediation.length]);
+
 /** A card (a short learning return, most often) has come due since the model was folded: a plan from that model would miss it, and Begin could say nothing is due (2026-10-29). */
 export function scheduleMovedSince(m: Pick<ReviewModel, 'now' | 'deck' | 'classDeck'>, nowMs: number): boolean {
   const then = Date.parse(m.now);
@@ -84,6 +87,11 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   const root = h('div', { id: 'review-home', class: 'home' });
   el.append(root);
   const status = statusLine();
+  /** What the drawn home shows, so the live model that follows a provisional one redraws only when it differs. */
+  let drawnLook = '';
+  /** The newest live model painted: a button drawn from a provisional model it did not need to redraw acts on this one. */
+  let latest: ReviewModel | undefined;
+  const latestOf = (m: ReviewModel): ReviewModel => latest && latest !== m && m.provisional && latest.identity.enrolmentId === m.identity.enrolmentId ? latest : m;
   /** How many events the painted model was folded from; a sync that brings more repaints the home. */
   let paintedEvents = -1;
   let nextDueTimer: number | undefined;
@@ -119,9 +127,21 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       return;
     }
     // the first paint shows the loading mark; a repaint over a painted home keeps it until the new one is ready
-    if (!root.childElementCount) root.append(loadingMark('Loading your deck…'));
+    if (!root.childElementCount) {
+      root.append(loadingMark('Loading your deck…'));
+      // this device's last complete prepared deck first, asking the service nothing (2026-11-08: signed in, every visit to the home waited 20-70 s
+      // for the live rebuild); the live model below replaces it, and is drawn only where it differs
+      const saved = await loadReviewModel(ctx, { savedOnly: true }).catch(() => undefined);
+      if (!view.alive()) return;
+      if (saved) await paintModel(saved, now);
+    }
     const model = await loadReviewModel(ctx);
     if (!view.alive()) return;
+    await paintModel(model, now);
+  }
+
+  /** Draws the home for `model`; a provisional one (this device's saved deck) is not remembered, and the live one that follows it is drawn only where it differs. */
+  async function paintModel(model: ReviewModel | undefined, now: number): Promise<void> {
     paintedEvents = model?.events.length ?? -1;
     if (!model) {
       clear(root);
@@ -156,7 +176,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const words = vocab.length || model.knowledge.length;
     const vocabCompleteness: VocabCompleteness = vocab.length >= MAX_SNAPSHOT_WORDS ? 'partial' : 'loading';
     if (!view.alive()) return;
-    draw(model, deck, review, resumable[0]?.sessionId, saved.length, words, selected.length, vocabCompleteness);
+    const look = JSON.stringify([homeId, deckLook(deck), deckLook(review), resumable[0]?.sessionId ?? '', saved.length, selected.length, model.candidateSource === 'cached' && !model.provisional ? model.knowledgeStatus.fetchedAt : '',
+      model.candidateReadinessIncomplete ?? false, model.knowledgeStatus.source === 'partial' || !!model.candidateRecoveryIncomplete]);
+    if (look !== drawnLook || !root.querySelector('[data-entry]')) draw(model, deck, review, resumable[0]?.sessionId, saved.length, words, selected.length, vocabCompleteness);
+    drawnLook = look;
+    if (!model.provisional) latest = model;
+    if (model.provisional) return; // the live model follows: it is the one remembered, and it starts the vocabulary count
     // Start the separate paged inventory only after the useful deck is on screen; its pages can contend with Repository deck requests.
     const live = loadVocabSafe(ctx, id.languageId);
     // the key as the stores stand now, after the paint (a restored deck or preference is part of it)
@@ -216,6 +241,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
 
   function candidateFreshness(model: ReviewModel): HTMLElement | null {
     const status = model.knowledgeStatus;
+    if (model.provisional) return null; // the live model is being asked for; it says how fresh it is
     if (model.candidateSource === 'cached') {
       const readiness = model.candidateReadinessIncomplete ? ' Some exercises could not be checked yet.' : '';
       return h('p', { class: 'muted', id: 'candidate-freshness', 'data-source': status.source }, `Using saved word data from ${when(status.fetchedAt)}.${readiness}`);
@@ -228,7 +254,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   }
 
   async function begin(m: ReviewModel, part: DeckPart): Promise<void> {
-    const current = await freshModel(ctx, m);
+    const current = await freshModel(ctx, latestOf(m));
     const { learnerId, languageId } = current.identity;
     const planned = await planCurrentDeck(ctx, current, await holdOutOf(ctx, learnerId, languageId), undefined, part);
     const r = await beginSession(ctx, current, { plan: planned.plan });
@@ -244,7 +270,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
    * the new session starts. With no other new word ready, nothing is ended or set aside and the Current Deck stays as it is.
    */
   async function beginNewDeck(m: ReviewModel, resumeId: string | undefined): Promise<void> {
-    const current = await freshModel(ctx, m);
+    const current = await freshModel(ctx, latestOf(m));
     const { learnerId, languageId } = current.identity;
     const held = await holdOutOf(ctx, learnerId, languageId);
     const before = await planCurrentDeck(ctx, current, held, undefined, 'current');
@@ -306,7 +332,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     if (deck.summary.remediation) extras.append(h('a', { class: 'linklike', id: 'open-remediation', href: '#/review/remediation' }, `${plural(deck.summary.remediation, 'missed word', 'missed words')} to study`));
     if (selectedCount) extras.append(button(`Practice selected words (${selectedCount})`, () => {
       void (async () => {
-        const fresh = await freshModel(ctx, m);
+        const fresh = await freshModel(ctx, latestOf(m));
         const plan = await planSelectedPractice(ctx, fresh);
         if (!plan.items.length) { setStatus(status, 'Selected words are controlled or no usable exercise is available.', 'info'); return; }
         const result = await beginSession(ctx, fresh, { plan });
@@ -317,7 +343,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     }, { id: 'start-selected-practice', class: 'linklike' }));
     if (drilling) extras.append(button('Save this deck', () => {
       void (async () => {
-        const fresh = await freshModel(ctx, m);
+        const fresh = await freshModel(ctx, latestOf(m));
         const holdOut = await holdOutOf(ctx, fresh.identity.learnerId, fresh.identity.languageId);
         const now = await planCurrentDeck(ctx, fresh, holdOut, undefined, 'current');
         const saved = await saveDeck(ctx, fresh.identity, now.entries);

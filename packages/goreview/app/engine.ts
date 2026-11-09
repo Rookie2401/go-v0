@@ -17,6 +17,8 @@ import type { RepositoryApi } from '../../repository-service/src/api';
 import type { ExerciseReadiness, ExerciseReadinessRequest, ItemControl, RecoveryRequest, ReviewEngine } from './ports';
 import { classFacts, isClassUnit } from './classEssentials';
 import { recoverCandidates } from './recoveredCandidates';
+import { createReviewEligibilityContext } from '../src/planner/eligibility';
+import { indexPracticeEvidence } from '../src/planner/learning-policy';
 
 export interface EngineOptions {
   builders: BuilderRegistry;
@@ -209,9 +211,13 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
       }
       // without pack facts the decision rests on the Repository's candidate alone; the session still refuses what cannot be built
       const byUnit = new Map(req.knowledge.map((k) => [k.unitId, k] as const));
+      // the history is read once for every candidate, as gatherCandidates does (each decision otherwise re-selects the whole history)
+      const eligibilityContext = createReviewEligibilityContext(req.deck, req.events ?? [], req.now);
+      const practiceEvidenceByUnit = indexPracticeEvidence(eligibilityContext.selectedReviewEvidence.events);
       return req.candidates.map((candidate): IntakeOutcome => decideIntake({
         candidate, knowledge: byUnit.get(candidate.unitId), existing: req.deck, audio: req.audio, saved: req.saved, preferences: req.prefs, now: req.now,
         readingSignals: req.events, secondaryPractice: req.secondaryPractice, intent: req.intent,
+        automaticFailureUnits: eligibilityContext.automaticFailureUnits, practiceEvidenceByUnit, eligibilityContext,
       }));
     },
     explainIntake,

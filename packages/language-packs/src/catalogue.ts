@@ -220,7 +220,10 @@ export function buildCatalogue(options: CatalogueOptions = {}): CatalogueEntry[]
 }
 
 /** The seven languages of interest, in the order a picker shows them. */
-export const LANGUAGE_CATALOGUE: readonly CatalogueEntry[] = Object.freeze(buildCatalogue());
+const frozenCatalogue = (): readonly CatalogueEntry[] => Object.freeze(buildCatalogue());
+// pure (2026-11-08): building it analyses sample sentences in every language (about a second on a phone), and an app that never reads the
+// catalogue (GoReview) paid for it at every start because a top-level call cannot be dropped by the bundler unless marked so
+export const LANGUAGE_CATALOGUE: readonly CatalogueEntry[] = /* @__PURE__ */ frozenCatalogue();
 
 /** The entry of a language or of any of its packs (`nn` finds Norwegian); undefined for a language outside the seven. */
 export function catalogueEntry(languageId: string, catalogue: readonly CatalogueEntry[] = LANGUAGE_CATALOGUE): CatalogueEntry | undefined {

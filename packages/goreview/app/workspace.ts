@@ -32,13 +32,16 @@ async function prepareAdmissions(ctx: AppContext, model: ReviewModel): Promise<R
     readingSignals: model.events, languageId: model.identity.languageId, now: model.now }).map(entry => entry.outcome);
   let api: Awaited<ReturnType<AppContext['api']>>['api'] | undefined;
   let readinessIncomplete = false;
-  if (candidates.length) {
+  if (candidates.length && !model.provisional) {
     try { api = (await ctx.api()).api; }
     catch { readinessIncomplete = true; }
   }
   const ready = new Set<string>(), unavailable = new Map<string, string>();
   for (const outcome of candidates) {
     if (ready.size >= limit) break;
+    // a provisional model is this device's saved deck, whose exercises were checked when it was saved: no service round trip per word (the live
+    // model that follows checks again)
+    if (model.provisional) { if (outcome.decision === 'test-now') ready.add(outcome.unitId); continue; }
     const proposed = outcome.proposed!;
     if (proposed.family.startsWith('audio-') && (!model.prefs.includeListening || !model.audio.available)) continue; // a computer voice is practice: allowed
     try {
@@ -154,6 +157,9 @@ export interface ReviewModel {
   candidateNote?: string;
   /** A vocabulary catalogue recovery attempt was incomplete; the home must retry on its next visit. */
   candidateRecoveryIncomplete?: boolean;
+  /** Built from this device's last complete prepared deck without asking the service (`loadReviewModel(ctx, { savedOnly: true })`): the home paints it
+   * at once and replaces it when the live load arrives. Never written back as a snapshot. */
+  provisional?: boolean;
   /** How complete the knowledge behind `knowledge` is: a unit in `missing` has NO row because its batch failed, which is not the same as New. */
   knowledgeStatus: KnowledgeStatus;
   /** Candidates held out of AUTOMATIC new admission because their knowledge could not be loaded (never treated as New). */
@@ -202,7 +208,12 @@ const utc = (iso: string): string => iso.slice(0, 16).replace('T', ' ') + ' UTC'
 
 interface CandidateCache { version?: 1; fetchedAt: string; priorityPolicyVersion?: string; recoveryScopeVersion?: string; enrolmentId?: string; varietyId?: string; objectives?: string[]; candidates: ReviewCandidate[]; knowledge: UnitKnowledge[] }
 
-export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | undefined> {
+/**
+ * The home's model. `savedOnly` (2026-11-08: signed in, the home took 20-70 s to open because every visit rebuilt the deck from the service, page by
+ * page) builds it from this device's last complete prepared deck and asks the service nothing; it is undefined when there is no such copy. The home
+ * paints that at once and then asks for the live one.
+ */
+export async function loadReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } = {}): Promise<ReviewModel | undefined> {
   const identity = await ctx.identity();
   if (!identity) return undefined;
   const { deps, state, engine } = ctx;
@@ -250,7 +261,13 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     && snapshot.recoveryScopeVersion === RECOVERY_SCOPE_VERSION && snapshot.enrolmentId === identity.enrolmentId
     && snapshot.varietyId === identity.varietyId && snapshot.objectives?.join(',') === objectives.join(',') && Array.isArray(snapshot.candidates);
   const cacheKey = `${candidatesKey(identity.learnerId, identity.enrolmentId)}:${objectives.join(',')}`;
-  try {
+  if (opts.savedOnly) {
+    const snapModel = (await readSnapshot(ctx, identity.learnerId, identity.languageId).catch(() => undefined))?.model;
+    if (!snapshotMatches(snapModel) || !snapModel) return undefined;
+    candidates = snapModel.candidates; knowledge = snapModel.knowledge; candidateSource = 'cached';
+    cachedPreparedModel = snapModel;
+    knowledgeStatus = { source: 'cached', requested: knowledge.length, resolved: knowledge.length, missing: [], fetchedAt: snapModel.savedAt };
+  } else try {
     const { api } = await ctx.api();
     candidateApi = api;
     if ((await ctx.mode()) === 'none') throw new Error('not signed in');
@@ -346,7 +363,9 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     let vocabularyComplete = false;
     try {
       while (true) {
-        const page = await candidateApi.vocabulary({ languageId: identity.languageId, sort: 'recent', limit: 100, ...(after ? { after } : {}) });
+        // unsorted (2026-11-08): this scan reads every row and its order is never used, and a sorted page makes the service read and sort the whole
+        // vocabulary again for each page of 100 (a large vocabulary paid for that once per page, on every visit to the home)
+        const page = await candidateApi.vocabulary({ languageId: identity.languageId, limit: 100, ...(after ? { after } : {}) });
         if (!page.ok) throw new Error(page.message || `the service answered ${page.status}`);
         unresolvedVocabulary.push(...page.data.items.filter((item) => item.knowledge.languageId === identity.languageId && !item.unit));
         after = page.data.nextCursor;
@@ -498,7 +517,8 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     identity, prefs, events, deck, classDeck, counts, audio, outcomes, knowledge, candidates, candidateSnapshotEligible: candidateSource === 'live' && knowledgeComplete && !recoveryIncomplete && !intakeFailed,
     schedulerProfile, schedulerIssue: profileSelection.error, dismissed: [...ignored], choices, saved, candidateSource, knowledgeStatus, withheld,
     ...(recoveryIncomplete ? { candidateRecoveryIncomplete: true } : {}),
-    ...(candidateNote ? { candidateNote } : {}), now, algorithm: scheduler.algorithm, parametersVersion: scheduler.parametersVersion,
+    ...(candidateNote && !opts.savedOnly ? { candidateNote } : {}), now, algorithm: scheduler.algorithm, parametersVersion: scheduler.parametersVersion,
+    ...(opts.savedOnly ? { provisional: true } : {}),
   };
   return prepareAdmissions(ctx, base);
 }

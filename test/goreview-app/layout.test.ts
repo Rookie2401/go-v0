@@ -34,11 +34,10 @@ describe('the phone layout', () => {
     expect(css).not.toMatch(/\.topbar[^}]*env\(safe-area-inset-top/); // no rule adds the raw inset any more
   });
 
-  it('scales the type for a handheld: title 1.4rem, entry titles 1.7rem, kickers 0.7rem, body 1rem', () => {
+  it('scales the type for a handheld: title 1.4rem, choice-row titles 1.35rem, body 1rem', () => {
     expect(phone).toMatch(/body \{ font-size: 1rem/);
     expect(phone).toMatch(/h1 \{ font-size: 1\.4rem/);
-    expect(phone).toMatch(/\.entry-title \{ font-size: 1\.7rem/);
-    expect(phone).toMatch(/\.entry-kicker \{ font-size: \.7rem/);
+    expect(phone).toMatch(/\.ec-row-title \{ font-size: 1\.35rem/);
   });
 
   it('keeps the header one line (44 px of targets plus the room above), the card full width with 16px padding, and the four grades on one line', () => {

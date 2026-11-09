@@ -1,5 +1,5 @@
 /**
- * #/review — the GoReview home (the owner, 2026-10-31):
+ * #/review — the GoReview home (the owner, 2026-10-31; restyled in Ecclesia's shape 2026-11-09: the gold mark over one title, then one list of choice rows):
  *
  *   GoTell          its own hierarchy (above a rule): the writing workspace, #/tell
  *   GoReview        Current Deck   what the system has you drilling: new words, cards never answered, learning and relearning returns
@@ -19,6 +19,7 @@ import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
 import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planCurrentDeck, planFreshDeck, planSelectedPractice, selectedPracticeUnits, releaseHoldOut, saveDeck, setHoldOut, type CurrentDeck, type DeckPart, type SavedDeck, type VocabRow } from '../deckModel';
 import { explainAdmissions } from '../admissionExplanation';
 import { freshModel, planCouldHaveChanged } from '../freshness';
+import { icon, type IconName } from '../icons';
 import { loadingMark } from '../loading';
 import { MAX_SNAPSHOT_WORDS, readSnapshot, restoreMissing, type ReviewSnapshot } from '../snapshot';
 import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
@@ -30,6 +31,8 @@ import * as sessionScreen from './session';
 import * as remediationScreen from './remediation';
 import type { View } from './view';
 
+/** The Go mark (the G and the globe) as the silhouette the home paints in gold above its title. */
+const markUrl = new URL('../../../shared-brand/go-logo.png', import.meta.url).href;
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
 const when = (at: string): string => new Date(at).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
 
@@ -106,12 +109,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     nextDueTimer = ctx.deps.win.setTimeout(() => { nextDueTimer = undefined; if (view.alive()) void paint(true); }, delay) as unknown as number;
   }
 
-  /** Draws GoTell, GoReview (Current Deck, Review Deck, Saved decks) and My vocab. */
+  /** Draws the home in Ecclesia's shape: the gold mark and the one title, then one list of choices (Current Deck, Review Deck, Saved decks, My vocab, GoTell, Biblia). */
   function draw(model: ReviewModel, deck: CurrentDeck, review: CurrentDeck, resumeId: string | undefined, savedCount: number, words: number,
     selectedCount: number, vocabCompleteness: VocabCompleteness = 'complete'): void {
     clear(root);
     root.setAttribute('lang', 'en');
-    append(root, [tellEntry(), goReviewEntry(model, deck, review, resumeId, selectedCount, savedCount), vocabEntry(Math.max(words, 0), vocabCompleteness), ...(ctx.deps.links?.biblia ? [bibliaEntry(ctx.deps.links.biblia)] : []), status]);
+    append(root, [homeHead(), goReviewEntry(model, deck, review, resumeId, selectedCount, savedCount), vocabEntry(Math.max(words, 0), vocabCompleteness), tellEntry(), ...(ctx.deps.links?.biblia ? [bibliaEntry(ctx.deps.links.biblia)] : []), status]);
   }
 
   async function paint(force = false): Promise<void> {
@@ -203,18 +206,29 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     });
   }
 
-  /** GoTell: of its own hierarchy, not pedagogically related to what follows; set apart above a rule. */
+  /** The head of the home: the Go mark in gold, small and centred, above the one title. */
+  function homeHead(): HTMLElement {
+    return h('header', { class: 'ec-home-head' },
+      h('span', { class: 'ec-mark', 'aria-hidden': 'true', style: `--ec-mark-mask: url("${markUrl}")` }),
+      h('h2', { class: 'ec-title' }, 'GoReview'));
+  }
+
+  /** The body of a choice row: a line icon, the serif title over a small sans caption (the chevron is drawn by the stylesheet). */
+  function rowBody(name: IconName, title: string, caption: HTMLElement | string): Element[] {
+    return [icon(ctx.deps.doc, name), h('span', { class: 'ec-row-text' }, h('span', { class: 'ec-row-title' }, title),
+      typeof caption === 'string' ? h('span', { class: 'ec-row-caption' }, caption) : caption)];
+  }
+
+  /** GoTell: the writing workspace, #/tell. */
   function tellEntry(): HTMLElement {
     return h('section', { class: 'entry entry-tell', 'data-entry': 'tell' },
-      h('a', { class: 'entry-link', href: '#/tell', id: 'entry-tell' },
-        h('span', { class: 'entry-title' }, 'GoTell'), h('span', { class: 'entry-kicker' }, 'Write and be corrected')));
+      h('a', { class: 'ec-row entry-link', href: '#/tell', id: 'entry-tell' }, ...rowBody('tell', 'GoTell', 'Write and be corrected')));
   }
 
   /** Biblia, when it ships beside this app (the iPhone edition, the extension): the Hebrew Bible and the Greek New Testament read with GoLearn, recorded into this account. */
   function bibliaEntry(href: string): HTMLElement {
     return h('section', { class: 'entry', 'data-entry': 'biblia' },
-      h('a', { class: 'entry-link', href, id: 'entry-biblia' },
-        h('span', { class: 'entry-title' }, 'Biblia'), h('span', { class: 'entry-kicker' }, 'The Hebrew Bible and the Greek New Testament, read with GoLearn')));
+      h('a', { class: 'ec-row entry-link', href, id: 'entry-biblia' }, ...rowBody('book', 'Biblia', 'The Hebrew Bible and the Greek New Testament, read with GoLearn')));
   }
   function setVocabCount(kicker: HTMLElement, count: number, completeness: VocabCompleteness): void {
     const base = plural(count, 'word', 'words');
@@ -232,11 +246,10 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   }
 
   function vocabEntry(count: number, completeness: VocabCompleteness = 'complete'): HTMLElement {
-    const kicker = h('span', { class: 'entry-kicker', id: 'vocab-count' }, plural(count, 'word', 'words'));
+    const kicker = h('span', { class: 'ec-row-caption', id: 'vocab-count' }, plural(count, 'word', 'words'));
     setVocabCount(kicker, count, completeness);
     return h('section', { class: 'entry', 'data-entry': 'vocab' },
-      h('a', { class: 'entry-link', href: '#/review/vocab', id: 'entry-vocab' },
-        h('span', { class: 'entry-title' }, 'My vocab'), kicker));
+      h('a', { class: 'ec-row entry-link', href: '#/review/vocab', id: 'entry-vocab' }, ...rowBody('vocab', 'My vocab', kicker)));
   }
 
   function candidateFreshness(model: ReviewModel): HTMLElement | null {
@@ -297,9 +310,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   }
 
   /** One of the two deck buttons: the deck's name over its count, the whole button a press that starts it (greyed out when empty). */
-  function deckButton(id: string, title: string, kicker: string, count: number, onPress: () => Promise<void>): HTMLButtonElement {
-    const b = h('button', { type: 'button', class: 'deck-button', id, 'data-cards': String(count), ...(count ? {} : { disabled: true }) },
-      h('span', { class: 'deck-button-title' }, title), h('span', { class: 'deck-button-kicker', id: `${id}-count` }, kicker)) as HTMLButtonElement;
+  function deckButton(id: string, name: IconName, title: string, kicker: string, count: number, onPress: () => Promise<void>): HTMLButtonElement {
+    const b = h('button', { type: 'button', class: 'ec-row deck-button', id, 'data-cards': String(count), ...(count ? {} : { disabled: true }) },
+      ...rowBody(name, title, h('span', { class: 'ec-row-caption', id: `${id}-count` }, kicker))) as HTMLButtonElement;
     b.addEventListener('click', () => {
       b.disabled = true;
       void onPress().catch((error) => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) b.disabled = false; });
@@ -320,12 +333,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       : deck.summary.nextReturnAt ? `Nothing to drill now · next return ${when(deck.summary.nextReturnAt)}` : 'Nothing to drill right now';
     const reviewKicker = reviewing ? plural(reviewing, 'card', 'cards')
       : review.summary.nextReviewAt ? `Nothing due · next review ${when(review.summary.nextReviewAt)}` : 'Nothing due';
-    const current = deckButton('start-session', 'Current Deck', currentKicker, drilling, () => begin(m, 'current'));
+    const current = deckButton('start-session', 'deck', 'Current Deck', currentKicker, drilling, () => begin(m, 'current'));
     const newDeck = button('Begin new deck', () => {
       newDeck.disabled = true;
       void beginNewDeck(m, resumeId).catch((error) => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) newDeck.disabled = false; });
-    }, { class: 'btn friendly deck-new', id: 'start-new', 'data-action': 'begin-new-deck' });
-    const reviewButton = deckButton('start-review', 'Review Deck', reviewKicker, reviewing, () => begin(m, 'review'));
+    }, { class: 'deck-new', id: 'start-new', 'data-action': 'begin-new-deck' });
+    const reviewButton = deckButton('start-review', 'review', 'Review Deck', reviewKicker, reviewing, () => begin(m, 'review'));
 
     // under the Current Deck: the missed words to study, words picked by hand, and saving the deck for later
     const extras = h('div', { class: 'deck-extras' });
@@ -354,17 +367,16 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const whyNoNew = drilling ? undefined : explainAdmissions(m, deck);
 
     return h('section', { class: 'entry entry-goreview', 'data-entry': 'deck', id: 'current-deck' },
-      h('h2', { class: 'entry-title' }, 'GoReview'),
       m.schedulerIssue ? p(m.schedulerIssue, 'notice') : null,
       candidateFreshness(m),
       resumeId ? h('p', { class: 'deck-resume' }, h('span', { class: 'muted' }, 'A deck is in progress.'), ' ',
         button('Resume', () => { void resume(resumeId); }, { class: 'btn primary', id: 'resume-session', 'data-action': 'resume-session' })) : null,
-      h('div', { class: 'deck-row', 'data-deck': 'current' }, current, newDeck),
-      extras.childElementCount ? extras : null,
-      whyNoNew ? h('p', { id: 'why-no-new', class: 'muted deck-why', 'data-code': whyNoNew.code }, whyNoNew.text) : null,
+      h('div', { class: 'deck-row', 'data-deck': 'current' }, current,
+        h('div', { class: 'ec-sub' }, newDeck, extras.childElementCount ? extras : null,
+          whyNoNew ? h('p', { id: 'why-no-new', class: 'muted deck-why', 'data-code': whyNoNew.code }, whyNoNew.text) : null)),
       h('div', { class: 'deck-row', 'data-deck': 'review' }, reviewButton),
-      h('a', { class: 'deck-saved entry-link', href: '#/review/decks', id: 'entry-previous' },
-        h('span', { class: 'deck-button-title' }, 'Saved decks'), h('span', { class: 'deck-button-kicker', id: 'previous-count' }, savedCount ? `${savedCount} saved` : 'None saved yet')));
+      h('a', { class: 'ec-row entry-link deck-saved', href: '#/review/decks', id: 'entry-previous' },
+        ...rowBody('saved', 'Saved decks', h('span', { class: 'ec-row-caption', id: 'previous-count' }, savedCount ? `${savedCount} saved` : 'None saved yet'))));
   }
 
   await paint();

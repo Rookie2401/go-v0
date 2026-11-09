@@ -167,10 +167,10 @@ details > summary:hover { color: var(--ink); }
 
 /* target-language text: the same serif, slightly larger; the Noto faces cover scripts EB Garamond does not; bidirectional text isolated */
 .target-text { unicode-bidi: plaintext; font-family: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Noto Sans Devanagari', 'Noto Sans Thai', 'Noto Naskh Arabic', 'Noto Sans', Georgia, serif; font-size: 1.06em; }
-.stimulus { font-size: 1.7rem; line-height: 1.5; margin: .6rem 0; }
+.stimulus { font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.25; margin: .6rem 0; }
 .flashcard { min-height: 20rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
 .flashcard .stimulus { font-size: clamp(2.5rem, 7vw, 4rem); margin: 1.5rem 0; overflow-wrap: anywhere; }
-.flashcard-label { color: var(--muted); font-size: .95rem; }
+.flashcard-label { color: var(--ec-gold-ink); }
 .flashcard .response { width: 100%; }
 .flashcard .grades { justify-content: center; flex-wrap: wrap; }
 .flashcard[data-side="back"] .stimulus { font-size: 1.7rem; margin: .5rem 0; }
@@ -181,13 +181,24 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 
 /* session */
 .session-bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem 1rem; margin: 0 0 .8rem; }
-.bar-kicker { font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+.bar-kicker { font-family: var(--ec-sans); font-size: .72rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--ec-ink-soft); font-variant-numeric: tabular-nums; }
 .bar-actions { margin-left: auto; display: flex; gap: 1.2rem; }
-.exercise { background: var(--panel); border: 1px solid var(--divider); border-radius: 8px; box-shadow: var(--shadow-raised); padding: 1.2rem 1.4rem; margin: 1.25rem 0; }
+.exercise { background: var(--ec-paper-raised); color: var(--ec-ink); border: 1px solid var(--ec-rule); border-radius: 3px; box-shadow: none; padding: 1.6rem; margin: 1.25rem 0; }
+/* the card's own type: the instruction an Ecclesia eyebrow, the meaning an italic Garamond, the field and the buttons squared to 3px */
+.instruction, .flashcard-label { margin: 0 0 .9rem; font-family: var(--ec-sans); font-size: .72rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--ec-gold-ink); }
+.exercise .meaning { font-style: italic; font-size: 1.15rem; color: var(--ec-ink-soft); }
+.exercise .reference { font-family: var(--serif); }
+.exercise input[type="text"], .exercise textarea, .exercise select { background: var(--ec-paper); border-color: var(--ec-field-line); border-radius: 3px; }
+.exercise .btn, .feedback .btn { border-radius: 3px; font-family: var(--ec-sans); font-size: .8rem; font-weight: 600; letter-spacing: .03em; background: transparent; color: var(--ec-gold-ink); border-color: var(--ec-gold-ink); }
+.exercise .btn:hover:not(:disabled), .feedback .btn:hover:not(:disabled) { background: var(--ec-paper); }
+.exercise .btn.primary, .feedback .btn.primary, .exercise .btn.primary:hover:not(:disabled), .feedback .btn.primary:hover:not(:disabled) { background: var(--ec-gold-fill); color: var(--ec-gold-on-fill); border-color: var(--ec-gold-fill); opacity: 1; }
+.exercise .choice.btn { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; letter-spacing: 0; color: var(--ec-ink); border-color: var(--ec-field-line); }
+.exercise .linklike, .feedback .linklike { color: var(--ec-gold-ink); }
+.session-bar .linklike { font-family: var(--ec-sans); font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ec-gold-ink); }
 .choices { display: grid; gap: .5rem; max-width: 34rem; }
 .choice { text-align: start; padding: .6rem .95rem; }
 .grades { gap: .5rem; }
-.feedback { background: var(--panel); border: 1px solid var(--divider); border-inline-start: 4px solid var(--rule-strong); border-radius: 8px; padding: .8rem 1.2rem; margin: 1.25rem 0; }
+.feedback { background: var(--ec-paper-raised); color: var(--ec-ink); border: 1px solid var(--ec-rule); border-inline-start: 3px solid var(--ec-gold); border-radius: 3px; padding: 1.3rem 1.6rem; margin: 1.25rem 0; }
 .feedback[data-outcome="correct"] { border-inline-start-color: var(--ok); }
 .feedback[data-outcome="incorrect"] { border-inline-start-color: var(--bad); }
 .item-tools { margin: 1rem 0; }
@@ -216,39 +227,66 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
   .screen > h1, .screen > .body { animation: screen-in .22s ease-out both; }
 }
 
-/* ── the GoReview home: four entries, a large serif title over an uppercase kicker, hairline rules, no boxes ── */
-.home { max-width: 30rem; margin: 0 auto; }
-.entry { padding: 1.35rem .6rem 1.45rem; border-bottom: 1px solid var(--rule); }
-.entry-tell { padding-top: .6rem; padding-bottom: 2.1rem; margin-bottom: .6rem; border-bottom: 1px solid var(--rule-strong); }
-.entry-link { display: block; color: var(--ink); text-decoration: none; margin: -.35rem -.6rem; padding: .35rem .6rem; border-radius: 6px; }
-.entry-link:hover { text-decoration: none; background: color-mix(in srgb, var(--ink) 3.5%, transparent); }
-.entry-title { display: block; margin: 0; font-size: clamp(1.9rem, 6vw, 2.5rem); line-height: 1.15; font-weight: 400; letter-spacing: .005em; text-transform: none; color: var(--ink); }
-.entry-kicker { display: block; margin: .45rem 0 0; font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); max-width: none; }
-.entry-link:hover .entry-title { color: var(--accent); }
+/* ── Ecclesia's values, scoped (the owner, 2026-11-09: "redesign GoReview ... just the homescreen and the card display, to be more in line with Ecclesia").
+      New custom properties on the home and on the card alone; the page's own tokens (:root), the top bar and every other screen are untouched.
+      --ec-ink-soft and --ec-gold-ink are the text-safe cuts of Ecclesia's caption grey and gold (4.5:1 and more on --ec-paper); --ec-gold is for
+      marks, rules, chevrons and the grade rings (3:1). The type stays GoReview's own EB Garamond; the sans is the system's. ── */
+.home, .exercise, .feedback, .session-bar {
+  --ec-paper: #f1e8d7; --ec-paper-raised: #f6eddf; --ec-ink: #292823; --ec-ink-soft: #665e50; --ec-rule: #cfc2aa;
+  --ec-gold: #a47d48; --ec-gold-ink: #7a5a2c; --ec-gold-fill: #d5b477; --ec-gold-on-fill: #231a12; --ec-hover-line: #a9824b; --ec-field-line: #857757;
+  --ec-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  .home, .exercise, .feedback, .session-bar {
+    --ec-paper: #211e1a; --ec-paper-raised: #2a2621; --ec-ink: #e5dac7; --ec-ink-soft: #aaa08e; --ec-rule: #3a342c;
+    --ec-gold: #c9a56a; --ec-gold-ink: #c9a56a; --ec-gold-fill: #c9a56a; --ec-gold-on-fill: #231a12; --ec-hover-line: #c9a56a; --ec-field-line: #8a7d68;
+  }
+}
+
+/* ── the GoReview home, in Ecclesia's shape: the gold mark over one large title, then one list of choices under a hairline ──
+      It keeps the page's own paper (a band of a second paper under the language title read as a box, 2026-11-09); Ecclesia's ink, rules
+      and gold do the rest. */
+.home { color: var(--ec-ink); padding: 1.2rem 0 2.5rem; }
+.home > * { max-width: 30rem; margin-inline: auto; }
+.ec-home-head { display: grid; justify-items: center; gap: 1rem; padding: .2rem 0 1.9rem; border-bottom: 1px solid var(--ec-rule); }
+.ec-mark { display: block; width: 52px; height: 26px; background: var(--ec-gold); -webkit-mask: var(--ec-mark-mask) center / contain no-repeat; mask: var(--ec-mark-mask) center / contain no-repeat; }
+.ec-title { margin: 0; font-size: clamp(2.6rem, 8vw, 3.6rem); font-weight: 400; line-height: .98; letter-spacing: -.02em; text-align: center; text-transform: none; color: var(--ec-ink); }
+/* a choice: icon | serif title over a small sans caption | gold chevron; a hairline below it */
+.ec-row {
+  position: relative; display: grid; grid-template-columns: 25px minmax(0, 1fr) 20px; align-items: center; column-gap: 14px; width: 100%; min-height: 78px; margin: 0; padding: 13px 17px;
+  border: 0; border-bottom: 1px solid var(--ec-rule); border-radius: 0; background: transparent; color: var(--ec-ink); font: inherit; text-align: start; text-decoration: none; cursor: pointer;
+}
+.ec-row::after { content: ""; justify-self: end; width: .5rem; height: .5rem; margin-right: 5px; border-top: 1.5px solid var(--ec-gold); border-right: 1.5px solid var(--ec-gold); transform: rotate(45deg); }
+.ec-row .ec-icon { color: var(--ec-gold-ink); justify-self: center; }
+.ec-row-text { display: grid; gap: .22rem; min-width: 0; }
+.ec-row-title { font-size: 1.4rem; font-weight: 400; line-height: 1.15; letter-spacing: .005em; color: var(--ec-ink); }
+.ec-row-caption { font-family: var(--ec-sans); font-size: .72rem; line-height: 1.4; color: var(--ec-ink-soft); overflow-wrap: anywhere; }
+.home .ec-row:hover:not(:disabled) { border-bottom-color: var(--ec-hover-line); background: var(--ec-paper-raised); text-decoration: none; transform: translateX(2px); }
+.home .ec-row:focus-visible { outline: 2px solid var(--ec-gold-ink); outline-offset: 3px; border-radius: 0; }
+.home .ec-row:disabled { cursor: default; opacity: 1; background: transparent; }
+.home .ec-row:disabled::after { content: none; }
+.home .ec-row:disabled .ec-row-title { color: var(--ec-ink-soft); }
+.home .ec-row:disabled .ec-icon { color: var(--ec-ink-soft); }
+/* under the Current Deck: quiet sans text links (Begin new deck, the missed words, practice, save) and the one line that says why there is nothing new */
+.ec-sub { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem 1.2rem; padding: .35rem 17px .5rem calc(17px + 25px + 14px); border-bottom: 1px solid var(--ec-rule); }
+.deck-extras { display: contents; }
+.home .deck-new, .home .ec-sub .linklike {
+  display: inline-block; margin: 0; padding: .3rem 0; border: 0; border-radius: 0; background: none; font: 600 .76rem/1.4 var(--ec-sans); letter-spacing: .04em; vertical-align: baseline;
+  color: var(--ec-gold-ink); text-decoration: underline; text-underline-offset: .25em; text-decoration-color: var(--ec-rule); cursor: pointer;
+}
+.home .deck-new:hover:not(:disabled), .home .ec-sub .linklike:hover:not(:disabled) { background: none; border-color: transparent; color: var(--ec-ink); text-decoration-color: var(--ec-gold); }
+.home .deck-new:disabled { opacity: .55; cursor: default; }
+.home .deck-why { flex: 1 1 100%; margin: .1rem 0 .2rem; max-width: none; font-family: var(--ec-sans); font-size: .72rem; line-height: 1.45; color: var(--ec-ink-soft); }
+.home .deck-resume, .home .notice { margin: .7rem 17px; font-family: var(--ec-sans); font-size: .78rem; }
+.home .deck-resume { display: flex; align-items: center; justify-content: space-between; gap: .8rem; }
+.home .btn { border-radius: 3px; font-family: var(--ec-sans); font-size: .76rem; font-weight: 600; letter-spacing: .04em; background: transparent; color: var(--ec-gold-ink); border-color: var(--ec-gold-ink); }
+.home .btn.primary, .home .btn.primary:hover:not(:disabled) { background: var(--ec-gold-fill); color: var(--ec-gold-on-fill); border-color: var(--ec-gold-fill); opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .ec-row { transition: border-color .15s, background-color .15s, transform .15s; }
+  .exercise .grade-dot { transition: background-color .15s, color .15s; }
+}
 .entry-actions { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; align-items: center; margin: 1.15rem 0 0; }
 .entry-actions .btn.primary { border-radius: 999px; padding: .4rem 1.7rem; letter-spacing: .04em; }
-/* GoReview decks: quiet, full-width typographic rows with hairline separators. */
-.entry-goreview .entry-title { margin-bottom: 1rem; }
-.deck-row { display: block; margin: 0; border-bottom: 1px solid var(--rule); }
-.deck-row[data-deck="current"] { border-bottom-color: var(--rule-strong); }
-.deck-button { position: relative; width: 100%; min-height: 4.5rem; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: .22rem; padding: .75rem 2rem .75rem .15rem;
-  text-align: left; font: inherit; color: var(--ink); background: transparent; border: 0; border-radius: 0; box-shadow: none; cursor: pointer; }
-.deck-button::after, .deck-saved::after { content: ""; position: absolute; inset-inline-end: .55rem; top: 50%; width: .48rem; height: .48rem; border-top: 1px solid var(--accent-soft); border-right: 1px solid var(--accent-soft); transform: translateY(-50%) rotate(45deg); }
-.deck-button:hover:not(:disabled) { background: color-mix(in srgb, var(--ink) 3.5%, transparent); }
-.deck-button:disabled { cursor: default; background: transparent; opacity: 1; }
-.deck-button:disabled::after { content: none; }
-.deck-button-title { font-size: 1.55rem; line-height: 1.15; letter-spacing: .005em; }
-.deck-row[data-deck="current"] .deck-button-title { color: var(--accent); }
-.deck-button:disabled .deck-button-title { color: var(--ink-soft); }
-.deck-button-kicker { max-width: 100%; font-size: .8rem; line-height: 1.4; color: var(--ink-soft); overflow-wrap: anywhere; }
-.entry-goreview .deck-new { display: block; min-height: 44px; margin: .15rem 0 .25rem; padding: .35rem .15rem; white-space: normal; font: inherit; font-size: .98rem; letter-spacing: 0; color: var(--accent); text-decoration: underline; text-underline-offset: .2em; text-decoration-color: var(--rule-strong); border: 0; border-radius: 0; background: transparent; }
-.entry-goreview .deck-new:hover:not(:disabled) { color: var(--ink); background: transparent; border-color: transparent; text-decoration-color: var(--accent); }
-.deck-resume { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin: 0 0 .4rem; }
-.deck-extras { display: flex; flex-wrap: wrap; gap: .3rem 1.3rem; margin: .55rem .2rem 0; }
-.deck-why { margin: .55rem .2rem 0; font-size: .9rem; }
-.entry-goreview .deck-saved { position: relative; display: flex; flex-direction: column; justify-content: center; gap: .22rem; min-height: 4.5rem; margin: 0; padding: .7rem 2rem .7rem .15rem; border: 0; border-radius: 0; }
-.entry-goreview .deck-saved:hover { background: color-mix(in srgb, var(--ink) 3.5%, transparent); text-decoration: none; }
-.entry-goreview .deck-saved .deck-button-title { font-size: 1.3rem; }
 .deckrow-due { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.1rem; margin: .65rem 0 0; }
 .linklike { font: inherit; font-size: .95rem; background: none; border: 0; padding: .1rem 0; color: var(--ink-soft); text-decoration: underline; text-underline-offset: .2em; text-decoration-color: var(--rule-strong); cursor: pointer; border-radius: 2px; }
 .linklike:hover:not(:disabled) { background: none; color: var(--accent); text-decoration-color: var(--accent); }
@@ -307,14 +345,15 @@ ul.plainlinks li { padding: .3rem 0; }
 .icon-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .grades { display: flex; flex-wrap: nowrap; justify-content: center; align-items: center; gap: .4rem clamp(.4rem, 2.5vw, 1.4rem); margin: .8rem 0 .2rem; }
 button.grade { display: inline-flex; align-items: center; gap: .45rem; min-width: 0; padding: .2rem .35rem; border: 0; background: none; color: var(--ink); font-size: 1rem; cursor: pointer; border-radius: 999px; }
-button.grade:hover:not(:disabled) { background: color-mix(in srgb, var(--accent) 10%, transparent); border-color: transparent; }
+button.grade:hover:not(:disabled) { background: transparent; border-color: transparent; }
+button.grade:hover:not(:disabled) .grade-dot, button.grade:focus-visible .grade-dot, button.grade:active .grade-dot { background: var(--ec-gold); color: var(--ec-gold-on-fill); }
 button.grade:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.grade-dot { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--accent); color: var(--paper); font-weight: 600; font-size: .95rem; font-variant-numeric: tabular-nums; }
-.grade-word { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.grade-dot { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: transparent; border: 1px solid var(--ec-gold); color: var(--ec-gold-ink); font-family: var(--ec-sans); font-weight: 600; font-size: .85rem; font-variant-numeric: tabular-nums; }
+.grade-word { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--ec-sans); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ec-ink-soft); }
 .grade-help { margin: .3rem 0 0; text-align: center; max-width: none; }
 @media (max-width: 420px) {
   button.grade { gap: .25rem; padding: .15rem .1rem; font-size: .88rem; }
-  .grade-dot { width: 1.6rem; height: 1.6rem; }
+  .grade-dot { width: 1.75rem; height: 1.75rem; }
   .grades { flex-wrap: wrap; }
   .topbar { column-gap: .65rem; }
   .sync { overflow-wrap: anywhere; }
@@ -432,17 +471,8 @@ img, svg, video, canvas { max-width: 100%; }
   h1 { font-size: 1.4rem; margin: .25rem 0 1.4rem; }
   h1::after { margin-top: .8rem; }
   .page-title { font-size: 1.7rem; margin: .25rem 0 .9rem; }
-  .home { max-width: none; }
-  .entry { padding: 1.1rem 0 1.2rem; }
-  .entry-tell { padding-top: .25rem; padding-bottom: 1.6rem; }
-  .entry-link { margin: -.35rem 0; padding: .35rem 0; }
-  .entry-title { font-size: 1.7rem; }
-  .entry-kicker { font-size: .7rem; letter-spacing: .14em; }
-  .entry-actions { gap: .25rem 1.2rem; }
-  .deck-button { min-height: 4.5rem; padding: .7rem 1.8rem .7rem .1rem; }
-  .deck-button-title { font-size: 1.35rem; }
-  .deck-button-kicker { font-size: .82rem; letter-spacing: 0; }
-  .deck-new { padding: .35rem .1rem; font-size: .98rem; }
+  .home { --ec-pad: max(16px, env(safe-area-inset-left, 0px)); --ec-tail: calc(2rem + env(safe-area-inset-bottom, 0px)); padding-top: 1.6rem; }
+  .ec-row-title { font-size: 1.35rem; }
   .card, .exercise, .feedback { padding: 16px; }
   .exercise, .feedback { margin: 1rem 0; }
   .session-bar { gap: .1rem .75rem; }
@@ -456,7 +486,7 @@ img, svg, video, canvas { max-width: 100%; }
   /* the four self-grades stay on one line: four equal columns, the word shrinks, and below 360px the number alone remains */
   .grades { flex-wrap: nowrap; justify-content: space-between; gap: 0; }
   button.grade { flex: 1 1 0; min-width: 0; justify-content: center; gap: .3rem; padding: 0 .1rem; }
-  .grade-word { font-size: .85rem; }
+  .grade-word { font-size: .68rem; letter-spacing: .08em; }
   .deckrow-open { padding-right: 4.75rem; }
   .deckrow-line { font-size: 1.05rem; }
   .deckrow-title { font-size: 1.45rem; }

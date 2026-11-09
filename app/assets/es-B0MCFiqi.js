@@ -1,0 +1,1 @@
+import{t as e}from"./es-DU0_7lol.js";export{e as adapter};

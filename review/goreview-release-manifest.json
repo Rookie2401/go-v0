@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "356e002ace00135e35f46eb30e5029dc679f4600",
-    "tree": "8961919138a308395e226b97f2513b14f45d2b72",
+    "commit": "6123a2ffa66110c48957f7031df14e47fae5edc3",
+    "tree": "f423ff308a25ec196b6ab72cf6979f693a6b1ce0",
     "dirty": false
   },
-  "sourceManifestSha256": "25a537cb7332e0463cd0a160addc8495818ae155f8946eaf2d09cdf7f9b447ae",
+  "sourceManifestSha256": "3ead38c7a780454ff51c43836409f371cc6fa8045810e899b781ebc4eb274117",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -405,7 +405,7 @@
     },
     {
       "path": "packages/goreview/app/engine.ts",
-      "sha256": "d22ce334362f45eaac4c11ba4bcb58dcfd0425d3f06ec8551357940b17ae4c1e"
+      "sha256": "d4b99bffcaf0fdafa68b6c72411d6cef86e31f8590d4bdba8dc71b240faa5df9"
     },
     {
       "path": "packages/goreview/app/events.ts",
@@ -501,7 +501,7 @@
     },
     {
       "path": "packages/goreview/app/recoveredCandidates.ts",
-      "sha256": "e6d21814af1474d306c1f562ddde893f63fe0b452dbcb2a5b51a7830cae3f3d8"
+      "sha256": "c5f4c645b7ed024af30faf819cbcb9f8fbc874735c22bb22f93220352fe9f836"
     },
     {
       "path": "packages/goreview/app/savedDeckSync.ts",
@@ -561,7 +561,7 @@
     },
     {
       "path": "packages/goreview/app/screens/review.ts",
-      "sha256": "ad243a2716b6ca2d41c29576f88798b825c445d154dda774d0f4b091b81f2a69"
+      "sha256": "8e4696178b6590791540c69f02d74547185478efded0b29c6381cc831b6a24ec"
     },
     {
       "path": "packages/goreview/app/screens/reviewDetails.ts",
@@ -681,7 +681,7 @@
     },
     {
       "path": "packages/goreview/app/workspace.ts",
-      "sha256": "d9854cf6e948462ab7834d9772d03647cae391ab07eb9be5296d7b74462b65e5"
+      "sha256": "489f63831be941a041b1c976d419101ac11fae2b9a222363de9d31492b51ba20"
     },
     {
       "path": "packages/goreview/src/exercises/README.md",
@@ -829,7 +829,7 @@
     },
     {
       "path": "packages/goreview/src/planner/learning-policy.ts",
-      "sha256": "dbc283006fb6539b649de3412067c5bbe93ee8af380940da5acb3817977197da"
+      "sha256": "ae7862af447f0b6f334af023c88531a007560bafd7abd1fa3272fa78603e5d8f"
     },
     {
       "path": "packages/goreview/src/planner/microdeck.ts",
@@ -1093,7 +1093,7 @@
     },
     {
       "path": "packages/language-packs/src/catalogue.ts",
-      "sha256": "34c49e8cbd2da3d606ca6003779fe2b0e494342b15fdd1c3f50405933d788260"
+      "sha256": "41b98e52e90e16d894c04a2d1f39d281cb5a779bb65d75839570f9b4aef371f3"
     },
     {
       "path": "packages/language-packs/src/index.ts",
@@ -4445,7 +4445,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "833ac28c17e53628da62360708863df02a5566b34767542a726c5ed131d06c7a",
+  "artifactManifestSha256": "a551b48f3897a5a28b6cbe44478ce67fb63cf0b150b486cd1850816c88a24390",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4488,8 +4488,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-MwT2utPN.js",
-      "sha256": "d1ea42cd9257753d1e837dd2bfa244be93986bdc25e363c4cf5f61e87147e493"
+      "path": "assets/index-Bs-cGg3e.js",
+      "sha256": "7de9ae14cf14b9b144065e7c49b659b9c373887c60cdab534a02556e64a14f03"
     },
     {
       "path": "assets/style-Dsvk-PQK.css",
@@ -4525,7 +4525,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "696c3dd2dd942cdd2cfb45d2f8b94452f8a05221a83ac7c2edb7c1bc05b2199c"
+      "sha256": "e5003dde136f4a25ee744cc2865856be7e8173013ec6c182e3f9d80f2250f267"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5469,7 +5469,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "af0c61a9f9f6b4bd02ee7315022b54e5877d3f8f6822a8ae0460724edac8c27f"
+      "sha256": "0a4b55582533875923581d219999c2b7073b7d5d868b0bf9cb908928355ae5e4"
     }
   ]
 }

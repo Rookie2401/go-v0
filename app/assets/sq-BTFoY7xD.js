@@ -1,1 +1,0 @@
-import{i as e}from"./index-B_J7a7UC.js";export{e as adapter};

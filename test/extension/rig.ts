@@ -56,6 +56,8 @@ export interface Rig {
   log: FetchLog[];
   glossCalls: string[];
   offline: { value: boolean };
+  /** While true the service never answers (a request that hangs: a slow network, a service waking up); the dictionary still does. */
+  hanging: { value: boolean };
   /** Messages as the setup page / popup would send them. */
   page(message: Record<string, unknown>): Promise<any>;
   /** Messages as a content script in tab 7 would send them. */
@@ -78,6 +80,7 @@ export function createRig(opts: { defaultServiceUrl?: string } = {}): Rig {
   const log: FetchLog[] = [];
   const glossCalls: string[] = [];
   const offline = { value: false };
+  const hanging = { value: false };
   const clock = { now: Date.now() };
   const timers: Rig['timers'] = [];
   const svcFetch = serviceFetch(h, log, { offline: () => offline.value });
@@ -87,12 +90,13 @@ export function createRig(opts: { defaultServiceUrl?: string } = {}): Rig {
     // the extension's own app/config.json (read for the source links) is a file of the extension, not a request to the service
     if (u.endsWith('/app/config.json')) return new Response('', { status: 404 });
     if (u.includes('/dict/')) { if (offline.value) throw new TypeError('Failed to fetch'); log.push({ method: 'GET', path: new URL(u).pathname, status: 200 }); return shard(); }
+    if (hanging.value) return new Promise<Response>(() => undefined);
     return svcFetch(input, init);
   }) as typeof fetch;
   const bg = createBackground(fake, { fetch: fetchImpl, packs: fakePacks(glossCalls), now: () => clock.now, ...(opts.defaultServiceUrl ? { defaultServiceUrl: opts.defaultServiceUrl } : {}), timers: { set: (fn, ms) => { const t = { ms, cleared: false, fired: false, fire() { if (!t.cleared && !t.fired) { t.fired = true; fn(); } } }; timers.push(t); return t; }, clear: (h) => { (h as { cleared: boolean }).cleared = true; } } });
   bg.register();
   const rig: Rig = {
-    fake, h, bg, log, glossCalls, offline, clock, timers,
+    fake, h, bg, log, glossCalls, offline, hanging, clock, timers,
     async fireTimers() { for (const t of [...timers]) t.fire(); await new Promise((r) => setTimeout(r, 30)); },
     page: (m) => fake.dispatch(m, { id: 'test-ext-id', url: 'chrome-extension://test-ext-id/app/index.html' }),
     content: (m) => fake.dispatch(m, { id: 'test-ext-id', tab: { id: 7 }, url: 'https://example.test/page' }),

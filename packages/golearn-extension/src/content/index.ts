@@ -37,11 +37,27 @@ const segmenterOf = (languageId: string): ((t: string) => Array<{ start: number;
   return a ? (t) => a.segmentSentences(t) : undefined;
 };
 
-interface InstalledMarker { controller: LookupController; active: ActiveMode; /** harness build only: the card, so a loopback harness page can read it */ card?: CardUI }
+interface InstalledMarker {
+  controller: LookupController; active: ActiveMode;
+  /** false once the extension that installed it was reloaded or updated: its messages to the background then go nowhere */
+  alive?: () => boolean;
+  /** harness build only: the card, so a loopback harness page can read it */ card?: CardUI;
+}
+
+/** Whether the extension context a content script runs in still exists (an orphaned script's `runtime.id` is gone, or reading it throws). */
+const contextAlive = (chromeApi: ContentChromeApi): boolean => { try { return !!chromeApi.runtime.id; } catch { return false; } };
 
 export async function install(chromeApi: ContentChromeApi | undefined = getContentChrome(), doc: Document = document): Promise<LookupController | undefined> {
   const w = globalThis as unknown as Record<string, InstalledMarker | undefined>;
-  if (w[GLOBAL_KEY]) return w[GLOBAL_KEY]!.controller; // injected twice (a second gesture, or a gesture on a page Active already runs on): reuse, do not stack listeners
+  const existing = w[GLOBAL_KEY];
+  if (existing && (!existing.alive || existing.alive())) return existing.controller; // injected twice (a second gesture, or a gesture on a page Active already runs on): reuse, do not stack listeners
+  if (existing) {
+    // the GoLearn that installed it was reloaded or updated (2026-11-08: "nothing happens" — a lookup went to the old, orphaned copy,
+    // whose messages reach no background): take it down and install afresh
+    try { existing.active.stop(); } catch { /* already gone */ }
+    try { existing.controller.dispose(); } catch { /* already gone */ }
+    delete w[GLOBAL_KEY];
+  }
   const bridge = chromeApi ? createBridge(chromeApi) : undefined;
   // events carry a placeholder identity; the background replaces it with the session's (or a local pseudonym)
   const identity: Identity = { ...PENDING_IDENTITY };
@@ -105,7 +121,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
     }),
   });
   // the harness build (loopback pages, never shipped) also exposes the card, so a harness page can read what the card says
-  w[GLOBAL_KEY] = { controller, active, ...(typeof __GOLEARN_HARNESS__ !== 'undefined' && __GOLEARN_HARNESS__ ? { card: ui } : {}) };
+  w[GLOBAL_KEY] = { controller, active, ...(chromeApi ? { alive: () => contextAlive(chromeApi) } : {}), ...(typeof __GOLEARN_HARNESS__ !== 'undefined' && __GOLEARN_HARNESS__ ? { card: ui } : {}) };
 
   chromeApi?.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // only this extension's own background may drive the content script

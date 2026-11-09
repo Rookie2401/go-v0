@@ -341,7 +341,21 @@ export function createSessionManager(opts: SessionManagerOptions) {
     return updateEnrolment(found, enrolmentRefs(r.data.enrolments));
   }
 
-  return { status, getService: readService, setService, current: readSession, authenticated, connect, createAccount, disconnect, retryRevocation, refresh, refreshEnrolments, enrol, selectEnrolment, isExpired };
+  /**
+   * The account's open enrolment in `languageId`, made the selected one from the list kept on the session: no request, so a language switch never
+   * waits on the service (2026-11-08: signed in, a slow or unreachable service held the popup on "Switching to …" for up to 40 s). Undefined when the
+   * kept list has none in that language; the caller then asks the service in the background (`selectEnrolment`).
+   */
+  async function selectKnownLanguage(languageId: string): Promise<SessionResult | undefined> {
+    const s = await readSession();
+    if (!s || isExpired(s)) return undefined;
+    if (s.languageId === languageId && s.enrolmentId) return { ok: true, status: await status() };
+    const ref = (s.enrolments ?? []).find((e) => e.languageId === languageId);
+    if (!ref) return undefined;
+    return updateEnrolment({ enrolmentId: ref.enrolmentId, languageId: ref.languageId } as Enrolment);
+  }
+
+  return { status, getService: readService, setService, current: readSession, authenticated, connect, createAccount, disconnect, retryRevocation, refresh, refreshEnrolments, enrol, selectEnrolment, selectKnownLanguage, isExpired };
 }
 
 export type SessionManager = ReturnType<typeof createSessionManager>;

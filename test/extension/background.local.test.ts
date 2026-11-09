@@ -226,6 +226,8 @@ describe('signing in', () => {
     // the learner enrols the account in German (the setup page): the waiting event goes without another request from the page
     const enrolled = await rig.page({ type: MSG.enrol, languageId: 'de', packId: 'pack:de', packVersion: '1', goals: [{ kind: 'reading' }] });
     expect(enrolled).toMatchObject({ ok: true });
+    // the upload follows the enrolment in the background (2026-11-08: a language switch no longer waits on it)
+    for (let i = 0; i < 100 && (await local(rig, { op: 'status' })).pendingUpload !== 0; i++) await new Promise((r) => setTimeout(r, 10));
     expect((await local(rig, { op: 'status' })).pendingUpload).toBe(0);
     expect((await rig.h.store.list({ learnerId: who.learnerId, kinds: ['SelectionLookedUp'] })).map((e) => e.id)).toEqual([de.id]);
   });

@@ -428,12 +428,23 @@ describe('sw.js (run in a sandbox)', () => {
     expect(s.fetchFn).not.toHaveBeenCalled();
   });
 
-  it('reads config.json from the network first, keeps that copy, and falls back to it when the network fails', async () => {
+  it('answers config.json from the kept copy at once, refreshes that copy from the network for the next start, and keeps it when the network fails', async () => {
     let down = false;
-    const s = sandbox({ fetchImpl: async () => { if (down) throw new TypeError('offline'); return new Response('{"serviceUrl":"https://new.example"}', { status: 200 }); } });
+    let served = '{"serviceUrl":"https://old.example"}';
+    let slow: Promise<void> | undefined;
+    const s = sandbox({ fetchImpl: async () => { if (down) throw new TypeError('offline'); if (slow) await slow; return new Response(served, { status: 200 }); } });
     await s.fire('install', {});
-    const online = (await s.fire('fetch', { request: s.request('./config.json') })) as Response;
-    expect(await online.text()).toBe('{"serviceUrl":"https://new.example"}');
+    // the network is slow and has a newer file: the kept copy answers without waiting for it
+    served = '{"serviceUrl":"https://new.example"}';
+    let release!: () => void;
+    slow = new Promise((r) => { release = r; });
+    const first = (await s.fire('fetch', { request: s.request('./config.json') })) as Response;
+    expect(await first.text()).toBe('cached:https://app.test/goreview/config.json'); // the copy kept at install
+    release(); slow = undefined;
+    await new Promise((r) => setTimeout(r, 5));
+    // the refresh was kept: the next start reads the newer file, and so does a start with no network
+    const second = (await s.fire('fetch', { request: s.request('./config.json') })) as Response;
+    expect(await second.text()).toBe('{"serviceUrl":"https://new.example"}');
     await new Promise((r) => setTimeout(r, 5));
     down = true;
     const offline = (await s.fire('fetch', { request: s.request('./config.json') })) as Response;

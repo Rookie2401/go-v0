@@ -208,9 +208,10 @@ describe('the scan', () => {
     const s = await make({ confirmForms: async (forms) => { requested.push(forms); return { ok: true, forms: Object.fromEntries(forms.map((f) => [f, null])) }; } }).start({ speak: false });
     expect(s.marked).toEqual(base.marked);
     expect(s.skipped).toBe(base.skipped);
-    expect(s).toMatchObject({ confirmed: 0, unconfirmed: 1 });
-    expect(requested).toHaveLength(1);
-    expect(requested[0]).toEqual([shalom]); // Beni is in the course word list (not asked); the Hebrew word is asked and not found
+    // since 2026-11-09 a word in another script is not read as Albanian at all, so it is not asked of the Albanian dictionary either
+    // (Hebrew is not one of this learner's languages here); Beni is in the course word list: nothing is left to ask
+    expect(s).toMatchObject({ confirmed: 0, unconfirmed: 0 });
+    expect(requested).toHaveLength(0);
     expect([...registry.values()].flatMap((h) => [...(h as FakeHighlight).ranges].map((r) => r.toString()))).not.toContain(shalom);
   });
 

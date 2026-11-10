@@ -145,7 +145,8 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     const marked = MARKED_LEVELS.reduce((n, k) => n + (s.marked[k] ?? 0), 0);
     const known = (ACTIVE_LEVELS.filter((l) => !MARKED_LEVELS.includes(l))).reduce((n, k) => n + (s.marked[k] ?? 0), 0);
     const parts = MARKED_LEVELS.filter((l) => s.marked[l]).map((l) => `${LEVEL_LEGEND[l].title.toLowerCase()} ${s.marked[l]}`).join(', ');
-    const lang = s.languageId ? languageNameOf(s.languageId) : 'language unknown';
+    // every language of the learner's found on the page, the one with the most words first (2026-11-09)
+    const lang = s.languages?.length ? s.languages.map((l) => languageNameOf(l)).join(', ') : s.languageId ? languageNameOf(s.languageId) : 'none of your languages';
     pageLine.textContent = `This page (${lang}): ${s.scanned} words; ${marked} underlined${parts ? ` (${parts})` : ''}; ${known} known.`;
   }
   activeToggle.addEventListener('change', async () => {

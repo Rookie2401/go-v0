@@ -173,6 +173,13 @@ export class LookupController {
    * page's declaration, detection against the installed packs, never a guess) from a short sample of its visible text. The sample
    * is evidence for the resolver only; it is not kept and not sent. A language this build cannot analyse is reported as undetermined.
    */
+  /** GoLearn Active: the languages this page may be read in: the learner's chosen (installed) languages that this build can analyse. */
+  async pageLanguages(): Promise<string[]> {
+    const status: PublicStatus | undefined = this.d.services ? await this.d.services.status().catch(() => undefined) : undefined;
+    const analysers = this.d.analysers ?? ['sq'];
+    return status?.installedLanguages ? analysers.filter((l) => status.installedLanguages!.includes(l) || l === status.languageId) : analysers;
+  }
+
   async resolvePageLanguage(sample: string): Promise<LanguageResolution> {
     const adapter = this.pickAdapter();
     if (adapter.id === 'unsupported') return { basis: 'undetermined', confidence: 0, reasons: ['the reader is not supported'] };

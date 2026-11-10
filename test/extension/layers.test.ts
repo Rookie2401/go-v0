@@ -708,12 +708,48 @@ describe('Report (the correction flow)', () => {
     expect(root(r).querySelector('.feedback')!.textContent).toBe('Saved on this device.');
   });
 
-  it('is off for a selection of several words', async () => {
+  it('is not on the card of a selection of several words (an information display only, 2026-11-09)', async () => {
     const r = makeRig({ services: fakeServices() });
     selectText(document.getElementById('p')!, 'një libër');
     const out = await r.controller.lookup({ trigger: 'command' });
     expect(out.status).toBe('shown');
-    expect((root(r).querySelector('.reportBtn') as HTMLButtonElement).disabled).toBe(true);
+    expect(root(r).querySelector('.reportBtn')).toBeNull();
+  });
+});
+
+describe('several words selected: an information display only (the owner, 2026-11-09)', () => {
+  it('shows the words and their audio, and nothing that says or records how well they are known: no meter, no encounters, no events, no model question', async () => {
+    const played: string[] = [];
+    const services = fakeServices();
+    const r = makeRig({ services, pronouncer: okPronouncer(played) });
+    selectText(document.getElementById('p')!, 'një libër');
+    const out = await r.controller.lookup({ trigger: 'command' });
+    expect(out).toMatchObject({ status: 'shown', recorded: 'not-recorded' });
+    await flush(20);
+    const card = root(r);
+    expect(card.textContent).toContain('një libër');
+    expect(card.querySelector('[data-info-only="true"]')).not.toBeNull();
+    expect(card.querySelector('.rate')).toBeNull();
+    expect(card.querySelectorAll('.rateBtn')).toHaveLength(0);
+    expect(card.querySelector('[data-info-only="true"]')!.textContent).not.toMatch(/How well do you know it|encounters|Encounter recorded|Encounter already recorded/i);
+    // the audio stays, and playing it records nothing either
+    const say = card.querySelector('.say') as HTMLButtonElement;
+    expect(say).not.toBeNull();
+    say.click();
+    await flush(20);
+    expect(played.length).toBeGreaterThan(0);
+    expect(await r.store.list()).toEqual([]);
+    expect(services.calls.profile ?? 0).toBe(0);
+  });
+
+  it('a single word keeps its meter, its encounters and its recording', async () => {
+    const r = makeRig({ services: fakeServices() });
+    selectText(document.getElementById('p')!, 'libër');
+    const out = await r.controller.lookup({ trigger: 'command' });
+    expect(out).toMatchObject({ status: 'shown', recorded: 'recorded' });
+    await flush(20);
+    expect(root(r).querySelectorAll('.rateBtn')).toHaveLength(6);
+    expect((await r.store.list()).length).toBeGreaterThan(0);
   });
 });
 

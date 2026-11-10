@@ -347,6 +347,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   let card: HTMLElement | undefined;
   let statusEl: HTMLElement | undefined;
   let feedbackEl: HTMLElement | undefined;
+  /** The card shows several words: an information display only (no meter, no encounters, no Report, no recording line). */
+  let infoOnly = false;
   let open = false;
   let prevFocus: Element | null = null;
   let movedFocus = false;
@@ -1196,12 +1198,17 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       report.setAttribute('aria-expanded', String(openNow));
       if (lastAnchor) place(lastAnchor);
     });
-    const pills = h('div', { class: 'pills' }, deeperBtn, sentenceBtn, variantsBtn ?? null, report);
+    // several words (the owner, 2026-11-09): an information display only, the text, the audio and the information; no level meter, no encounters,
+    // no Report, so nothing on the card can say or record how well the learner knows a phrase
+    infoOnly = m.tokenCount > 1;
+    const pills = h('div', { class: 'pills' }, deeperBtn, sentenceBtn, variantsBtn ?? null, infoOnly ? null : report);
 
     statusEl = h('div', { class: 'status', role: 'status', 'aria-live': 'polite' }, '');
     feedbackEl = h('div', { class: 'feedback', role: 'status', 'aria-live': 'polite' }, '');
     parts = { rows, pronNote, say, sources, sourcesBtn, deeper, deeperBtn, sentenceBox, sentenceBtn, variantsBox, variantsBtn, encounters, levelName, layers, fix, report, rateBtns };
-    const wrapper = h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, fix, feedbackEl, statusEl);
+    const wrapper = infoOnly
+      ? h('div', { 'data-info-only': 'true' }, top, wordLine, rows, h('div', {}, sourcesBtn), sources, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, feedbackEl)
+      : h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, fix, feedbackEl, statusEl);
     mountCard(wrapper, `GoLearn: ${m.surface}`);
     renderAll();
     pron.off = pronouncer.onChange?.(() => { checkPronunciation(renderToken); });
@@ -1272,7 +1279,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   }
 
   function setRecorded(status: RecordStatus): void {
-    if (!statusEl) return;
+    if (!statusEl || infoOnly) return;
     statusEl.textContent = status === 'recorded' ? 'Encounter recorded.' : status === 'duplicate' ? 'Encounter already recorded this session.' : status === 'failed' ? 'Encounter not recorded.' : '';
   }
 

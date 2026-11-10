@@ -130,7 +130,7 @@ export interface LookupRequest {
 }
 
 export type LookupOutcome =
-  | { status: 'shown'; card: LookupCard; recorded: 'recorded' | 'duplicate' | 'failed'; settled: Promise<void> }
+  | { status: 'shown'; card: LookupCard; recorded: 'recorded' | 'duplicate' | 'failed' | 'not-recorded'; settled: Promise<void> }
   | { status: 'message'; reason: string; message: string; language?: LanguageInfo; languageChoice?: Array<{ languageId: string; name: string }> }
   | { status: 'silent'; reason: string }
   | { status: 'superseded' };
@@ -344,6 +344,10 @@ export class LookupController {
       // the dictionary is asked for EVERY single-word selection (2026-10-10): a word the small word list does not know is exactly the
       // word a learner looks up, and the dictionary follows an inflected form to its headword itself; the guessed lemma is a hint, not a gate
       const askGloss = !!services && card.tokenCount === 1 && !!card.surface.trim();
+      // several words selected (the owner, 2026-11-09): an information display only. The text, the audio and the information are shown; nothing
+      // records the selection or anything done on its card, and the learner model is not asked about it, so nothing can tell how well the learner
+      // knows a phrase. A single word is unchanged.
+      const infoOnly = card.tokenCount > 1;
       const view: Partial<CardView> = {
         languageName,
         gloss: askGloss ? { state: 'loading', senses: [] } : { state: 'idle', senses: [] },
@@ -361,7 +365,7 @@ export class LookupController {
       const ictxReady: { resolve?: () => void; promise: Promise<void> } = { promise: Promise.resolve() };
       ictxReady.promise = new Promise<void>((r) => { ictxReady.resolve = r; });
       const record = async (build: (c: InteractionContext) => GoEvent): Promise<boolean> => {
-        if (this.disposed) return false;
+        if (this.disposed || infoOnly) return false;
         if (!holder.ictx) {
           let timer: ReturnType<typeof setTimeout> | undefined;
           await Promise.race([ictxReady.promise, new Promise<void>((r) => { timer = setTimeout(r, 3000); })]);
@@ -504,7 +508,7 @@ export class LookupController {
         return { sources: gathered };
       };
       if (services) {
-        pending.push(
+        if (!infoOnly) pending.push(
           services.profile({ unitIds: card.unitIds, languageId }).then((reply) => {
             if (!live()) return;
             const profile = profileViewFrom(card, reply);
@@ -573,6 +577,13 @@ export class LookupController {
         card, source, readerId: adapter.id, identity: this.d.identity, version: this.d.version, sessionId: this.d.sessionId,
         now: this.now(), direction: sel.direction, language,
       };
+      if (infoOnly) {
+        // nothing is written for a phrase: no lookup, no analysis shown, no encounter line on the card
+        await frame;
+        metricRef.base = { readerId: adapter.id, contextKind: card.context.kind, tokenCount: card.tokenCount, contextChars: card.context.sentenceChars ?? card.surface.length, outcome: 'shown', ...(analyserLoadMs !== undefined ? { analyserLoadMs } : {}), ...langMetric };
+        metricRef.row = await this.pushMetric(timer, metricRef.base, (row) => { metricRef.row = row; });
+        return { status: 'shown', card, recorded: 'not-recorded', settled };
+      }
       const event = buildSelectionEvent(base);
       holder.ictx = { ...base, selectionEventId: event.id };
       ictxReady.resolve?.();

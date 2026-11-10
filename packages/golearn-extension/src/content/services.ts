@@ -41,6 +41,10 @@ export interface Bridge extends ContentServices { events: EventSink; metrics: Me
 
 const isReply = (v: unknown): v is { ok: boolean } => !!v && typeof v === 'object' && typeof (v as { ok?: unknown }).ok === 'boolean';
 
+/** How long a recording may take before the card says it was not recorded, and how long the status may take while the worker wakes. */
+export const RECORD_TIMEOUT_MS = 20_000;
+export const WAKE_TIMEOUT_MS = 10_000;
+
 export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
   async function call<T>(type: string, payload: Record<string, unknown> = {}, timeout = timeoutMs): Promise<T | undefined> {
     let timer: ReturnType<typeof setTimeout> | undefined;
@@ -57,7 +61,9 @@ export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
     }
   }
   return {
-    status: () => call<PublicStatus>(MSG.status),
+    // the status and a recording may wait while the worker wakes and opens the device history (seconds with a large one, 2026-11-09): a recording
+    // that times out is reported as not recorded although the worker goes on to store it, so these two wait longer than a card's question
+    status: () => call<PublicStatus>(MSG.status, {}, WAKE_TIMEOUT_MS),
     profile: (req) => call<ProfileReply>(MSG.profile, { ...req }),
     gloss: (req) => call<GlossReply>(MSG.gloss, { ...req }),
     explain: (req) => call<ExplainReply>(MSG.explain, { ...req }),
@@ -73,7 +79,7 @@ export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
     translateSentence: (req) => call<LocalSentenceTranslationReply>(MSG.translateSentence, { ...req }, 125_000),
     events: {
       async append(event): Promise<WriteResult> {
-        const r = await call<RecordReply>(MSG.record, { event });
+        const r = await call<RecordReply>(MSG.record, { event }, RECORD_TIMEOUT_MS);
         if (!r) return { ok: false, error: 'the background did not answer' };
         return r.ok ? { ok: true, id: event.id, duplicate: r.duplicate === true } : { ok: false, error: r.error ?? 'refused' };
       },

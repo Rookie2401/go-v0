@@ -26,6 +26,13 @@ export const LOCAL_PREFIX = 'golearn:repo:';
 export const ACTIVE_KEY = 'golearn:local-active';
 /** The outcome of the last upload, shown on the sync screen. */
 export const UPLOAD_STATUS_KEY = 'golearn:local-upload';
+/**
+ * A small copy of the device's open enrolments (2026-11-09), kept whenever they are read: the worker answers which language the learner reads in
+ * from it while the device Repository is still opening (opening reads the whole history: 10 s and more after the worker slept, with a large one,
+ * and every lookup waited for it to know its language).
+ */
+export const ENROLMENTS_KEY = 'golearn:local-enrolments';
+interface EnrolmentSummary { enrolmentId: string; languageId: string; startedAt: string; explicit: boolean }
 const FORMAT = 'golearn-local-export@1';
 
 export interface LocalRepoServiceOptions {
@@ -50,6 +57,9 @@ const bySetup = (a: Enrolment, b: Enrolment): number => a.startedAt.localeCompar
 export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   const lock = createLock();
   let opening: Promise<LocalRepository | undefined> | undefined;
+  /** The repository once it has opened (until then the enrolment summary answers). */
+  let opened: LocalRepository | undefined;
+  let summaryWritten = '';
   let signInWork: Promise<unknown> = Promise.resolve();
   const enrolmentOf = new Map<string, string>();
 
@@ -66,7 +76,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
     if (!opening) {
       const p = start();
       opening = p;
-      void p.then((r) => { if (!r && opening === p) opening = undefined; });
+      void p.then((r) => { if (r && opening === p) opened = r; if (!r && opening === p) opening = undefined; });
     }
     return opening;
   }
@@ -75,7 +85,23 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
 
   async function openEnrolments(repo: LocalRepository): Promise<Enrolment[]> {
     const r = await repo.api.listEnrolments();
-    return r.ok ? r.data.enrolments.filter((e) => !e.endedAt) : [];
+    const open = r.ok ? r.data.enrolments.filter((e) => !e.endedAt) : [];
+    if (r.ok) {
+      const summary: EnrolmentSummary[] = open.map((e) => ({ enrolmentId: e.enrolmentId, languageId: e.languageId, startedAt: e.startedAt, explicit: isExplicit(e) }));
+      const json = JSON.stringify(summary);
+      if (json !== summaryWritten) { summaryWritten = json; try { await opts.area.set({ [ENROLMENTS_KEY]: summary }); } catch { /* a convenience */ } }
+    }
+    return open;
+  }
+
+  /** The kept enrolment summary, while the repository has not opened yet in this worker; undefined once it has, or when there is none. */
+  async function summaryWhileOpening(): Promise<EnrolmentSummary[] | undefined> {
+    if (opened) return undefined;
+    let kept: unknown;
+    try { kept = (await opts.area.get(ENROLMENTS_KEY))[ENROLMENTS_KEY]; } catch { kept = undefined; }
+    if (!Array.isArray(kept)) return undefined;
+    void open(); // it opens meanwhile, for the questions that need it
+    return kept.filter((e): e is EnrolmentSummary => !!e && typeof e.enrolmentId === 'string' && typeof e.languageId === 'string' && typeof e.startedAt === 'string');
   }
 
   async function activeId(enrolments: Enrolment[]): Promise<string | undefined> {
@@ -106,6 +132,13 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   }
 
   async function activeLanguage(): Promise<string | undefined> {
+    const kept = await summaryWhileOpening();
+    if (kept) {
+      const explicit = kept.filter((e) => e.explicit).sort((a, b) => a.startedAt.localeCompare(b.startedAt));
+      if (!explicit.length) return undefined;
+      const chosen = (await opts.area.get(ACTIVE_KEY))[ACTIVE_KEY];
+      return (explicit.find((e) => e.enrolmentId === chosen) ?? explicit.at(-1)!).languageId;
+    }
     const repo = await open();
     if (!repo) return undefined;
     try {
@@ -117,6 +150,8 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
 
   /** Every language the learner has chosen on this device (open enrolments), in setup order; empty when none. */
   async function chosenLanguages(): Promise<string[]> {
+    const kept = await summaryWhileOpening();
+    if (kept) return [...new Set(kept.map((e) => e.languageId))];
     const repo = await open();
     if (!repo) return [];
     try { return [...new Set((await openEnrolments(repo)).map((e) => e.languageId))]; } catch { return []; }
@@ -209,7 +244,8 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   async function clear(): Promise<void> {
     const repo = await open();
     enrolmentOf.clear();
-    try { await opts.area.remove([ACTIVE_KEY, UPLOAD_STATUS_KEY]); } catch { /* absent */ }
+    summaryWritten = '';
+    try { await opts.area.remove([ACTIVE_KEY, UPLOAD_STATUS_KEY, ENROLMENTS_KEY]); } catch { /* absent */ }
     if (repo) await repo.clear();
   }
 
@@ -284,7 +320,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
           return { ok: true, format: FORMAT, exportedAt: new Date(opts.now()).toISOString(), events: await repo.exportEvents(), enrolments };
         }
         case 'enrolments': { const e = await openEnrolments(repo); const a = await activeId(e); return { ok: true, enrolments: e.sort(bySetup).map((x) => view(x, a)) }; }
-        case 'enrol': return await enrol(repo, r as Extract<LocalRepoRequest, { op: 'enrol' }>);
+        case 'enrol': { const out = await enrol(repo, r as Extract<LocalRepoRequest, { op: 'enrol' }>); await openEnrolments(repo); return out; }
         case 'select': {
           const e = (await openEnrolments(repo)).find((x) => x.enrolmentId === r.enrolmentId);
           if (!e || !isExplicit(e)) return bad('That enrolment is not open.');
@@ -294,6 +330,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
         case 'end': {
           const ended = await repo.api.endEnrolment(String(r.enrolmentId ?? ''));
           enrolmentOf.clear();
+          await openEnrolments(repo);
           return ended.ok ? { ok: true } : bad(ended.message || ended.error);
         }
         case 'upload': return { ...(await lock.run(() => uploadAndPull())) };
@@ -304,6 +341,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
           if (!LOCAL_API_METHODS.includes(method)) return bad('That call is not available on this device.');
           const args = Array.isArray(r.args) ? r.args : [];
           const result = await (repo.api as unknown as Record<string, (...a: unknown[]) => Promise<unknown>>)[method](...args);
+          if (/nrol/.test(method)) await openEnrolments(repo);
           return { ok: true, result };
         }
         default: return bad('unknown operation');

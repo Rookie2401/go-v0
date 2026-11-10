@@ -259,13 +259,15 @@ export interface LoadReport { events: number; skippedEvents: number; renumbered:
 export const SKIPPED = 'skipped:';
 
 /**
- * Reads every row under the prefix with ONE `get(null)` and puts the records into `inner` (not through the persisting
+ * Reads every row under the prefix with ONE read (`getPrefix`, or `get(null)` filtered) and puts the records into `inner` (not through the persisting
  * wrapper: they are already on disk). Events are re-appended one at a time in `seq` order with the store's clock set to each
  * event's own `recordedAt`, so a reopened store holds the same envelope. Returns what it did.
  */
 export async function loadInto(inner: ConcreteStore, io: PersistIO, learnerId: string, stamp: { current: string | undefined }): Promise<LoadReport> {
   const k = io.keys;
-  const all = await io.area.get(null);
+  // only this repository's rows where the area can list keys alone (2026-11-09: reading every row of the extension's storage, dictionary
+  // pages included, made every worker wake slow); otherwise every row, filtered below, as before
+  const all = io.area.getPrefix ? await io.area.getPrefix(io.prefix) : await io.area.get(null);
   const rows = Object.entries(all).filter(([key]) => key.startsWith(io.prefix));
   const report: LoadReport = { events: 0, skippedEvents: 0, renumbered: false };
 

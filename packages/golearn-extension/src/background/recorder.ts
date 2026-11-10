@@ -29,6 +29,8 @@ const MAX_EVENT_JSON = 6_000;
 const MARK_KIND = 'ItemMarked';
 
 export const localLearnerId = (deviceId: string): string => `local:${deviceId}`;
+/** How long recording waits for the device's Repository copy before it answers (the copy carries on by itself). */
+export const LOCAL_COPY_WAIT_MS = 1500;
 export const localEnrolmentId = (languageId: string): string => `local-enrolment:${languageId}`;
 export const isLocalLearner = (id: string): boolean => id.startsWith('local:');
 
@@ -94,7 +96,12 @@ export function createRecorder(opts: RecorderOptions) {
     if (written.duplicate) return { ok: true, duplicate: true, attributed };
     const queued = await opts.queue.enqueue(event);
     if (!queued.ok && queued.reason === 'invalid') return { ok: false, error: 'invalid-for-queue' };
-    try { await opts.onRecorded?.(event, attributed); } catch { /* the local copy is best effort: the log and the queue already hold the event */ }
+    // The device's Repository copy follows the log and the queue, which already hold the event (durable, synced from there). It is waited for
+    // a moment only (2026-11-09: after the worker slept, opening that copy rebuilds every word's knowledge from the whole history, 10 s and more
+    // with a large one; the card's request gave up at 4 s and said "Encounter not recorded" for an event that was recorded). It carries on
+    // by itself, in order, behind the copy's own lock.
+    const copied = Promise.resolve().then(() => opts.onRecorded?.(event, attributed)).catch(() => undefined);
+    await Promise.race([copied, new Promise<void>((resolve) => setTimeout(resolve, LOCAL_COPY_WAIT_MS))]);
     if (attributed === 'account') opts.onQueued?.();
     return { ok: true, attributed };
   }

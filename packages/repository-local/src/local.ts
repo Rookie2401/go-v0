@@ -30,6 +30,8 @@ import type { AdapterLike } from './linguistics';
 import { FORMAT, keysFor, loadInto, persistingStore, removeRows, writeRows } from './persist';
 import type { LoadReport, LocalMeta, PersistIO, PersistStats } from './persist';
 import { allEvents, markersOf, markOwned, pendingFor, pull, upload } from './transfer';
+import { cowArea, deleteBothDatabases, migrationKey, readState, runMigration, writeState } from './migrate';
+import type { MigrationInject, Probe } from './migrate';
 import type { TransferContext } from './transfer';
 
 export interface LocalIdentity { learnerId: string; deviceId: string }
@@ -59,6 +61,13 @@ export interface OpenLocalOptions {
    * object stores at version 1). Nothing is loaded or folded at open. Without it, nothing changes.
    */
   idb?: { indexedDB: IDBFactory; name: string; keyRange?: typeof IDBKeyRange };
+  /**
+   * With `idb`: move a device that holds its history as rows in `area` into IndexedDB once, verified (./migrate, docs/ecosystem/LOADING-ARCHITECTURE-2026-11-10.md Stage 2).
+   * `attempt` numbers the release's try: a migration that failed is not retried with the same number. The old rows are never modified; the one write
+   * to `area` is the state row `<keyPrefix>migration`. Without `migrate`, `idb` opens straight in IndexedDB mode; without `idb` nothing changes.
+   * `inject` is a test seam.
+   */
+  migrate?: { attempt: number; inject?: MigrationInject };
   /** ISO clock (the service stamps `recordedAt` and checks event times with it). Default: the system clock. */
   now?: () => string;
   /** Analysers by language id, read at call time (a later-loaded analyser is used). Albanian and Spanish are resolved by the service's own resolver. */
@@ -88,9 +97,17 @@ export interface LocalInspection {
   loaded: LoadReport;
   /** Characters of the rows this repository keeps in the area (keys and JSON); a lower bound of the bytes. */
   storedChars: number;
+  /** Where the history lives: the present path's rows, IndexedDB, or (a switched device whose IndexedDB would not open) the frozen old rows under a memory-only write layer. */
+  storage: StorageInfo;
+}
+
+export interface StorageInfo {
+  mode: 'rows' | 'indexeddb' | 'rows-frozen';
+  migration?: { state: 'switched' | 'failed'; at: string; attempt: number; events?: number; reason?: string; ms?: number; importMs?: number; verifyMs?: number; verified?: Record<string, number> };
 }
 
 const inspectors = new WeakMap<LocalRepository, () => Promise<LocalInspection>>();
+const probes = new WeakMap<LocalRepository, () => Probe>();
 const owners = new WeakMap<LocalRepository, (ids: string[], remoteLearnerId: string) => Promise<void>>();
 
 /**
@@ -133,7 +150,98 @@ function forward<T extends object>(get: () => T): T {
   });
 }
 
+/** How one open was decided (see `openMigrating`). */
+interface Core {
+  /** What the repository is built over now. */
+  mode: 'rows' | 'indexeddb';
+  /** The area of the present path (the real one, or a copy-on-write view of it). */
+  area: KeyValueArea;
+  /** A switched device (its old rows are frozen): `clear()` removes them too. */
+  switched: boolean;
+  frozen: boolean;
+  attempt: number;
+  migration?: StorageInfo['migration'];
+}
+
 export async function openLocalRepository(opts: OpenLocalOptions): Promise<LocalRepository> {
+  if (opts.idb && opts.migrate) return openMigrating(opts, opts.migrate);
+  return openCore(opts, { mode: opts.idb ? 'indexeddb' : 'rows', area: opts.area, switched: false, frozen: false, attempt: 0 });
+}
+
+/**
+ * The migration's state machine (./migrate). The only thing read from the old area before a decision is the state row and the identity row, by key.
+ *   switched          -> IndexedDB; if it will not open, the present path over a copy-on-write view of the frozen rows (writes stay in memory: `rows-frozen`)
+ *   no state, no meta -> a fresh device: IndexedDB, and the state row says switched (if IndexedDB will not open: the present path, nothing recorded)
+ *   failed, same attempt -> the present path on the real area, no retry; another attempt number migrates again
+ *   no state, meta    -> migrate; success gives the IndexedDB repository, failure the present path on the real area
+ */
+async function openMigrating(opts: OpenLocalOptions, mig: NonNullable<OpenLocalOptions['migrate']>): Promise<LocalRepository> {
+  const prefix = opts.keyPrefix ?? DEFAULT_PREFIX;
+  const keys = keysFor(prefix);
+  const now = opts.now ?? ((): string => new Date().toISOString());
+  const old = opts.area;
+  const idb = opts.idb!;
+  const rows = (area: KeyValueArea, over: Partial<Core> = {}): Promise<LocalRepository> => openCore(opts, { mode: 'rows', area, switched: false, frozen: false, attempt: mig.attempt, ...over });
+  const durable = (over: Partial<Core> = {}): Promise<LocalRepository> => openCore(opts, { mode: 'indexeddb', area: old, switched: true, frozen: false, attempt: mig.attempt, ...over });
+
+  const state = await readState(old, prefix); // the first read: the state row, by key
+
+  if (state?.state === 'switched') {
+    if (state.clearing) await wipeOldRows(opts, prefix, state.attempt, false); // a `clear()` that did not finish: finish it, then start fresh
+    const events = state.clearing ? 0 : state.events;
+    const info = { state: 'switched' as const, at: state.at, attempt: state.attempt, ...(events !== undefined ? { events } : {}) };
+    try { return await durable({ migration: info, attempt: state.attempt }); } catch { /* IndexedDB will not open: the frozen rows answer, writes stay in memory */ }
+    return rows(cowArea(old), { switched: true, frozen: true, attempt: state.attempt, migration: info });
+  }
+  const hasMeta = state === undefined && (await old.get(keys.meta))[keys.meta] !== undefined;
+  if (!state && !hasMeta) {
+    let repo: LocalRepository;
+    try { repo = await durable(); } catch { return rows(old); }
+    const at = now();
+    try { await writeState(old, prefix, { state: 'switched', at, attempt: mig.attempt, events: 0 }); } catch { /* the next open is a fresh device again: the same */ }
+    setMigration(repo, { state: 'switched', at, attempt: mig.attempt, events: 0 });
+    return repo;
+  }
+  if (state?.state === 'failed' && state.attempt === mig.attempt) {
+    return rows(old, { migration: { state: 'failed', at: state.at, attempt: state.attempt, ...(state.reason ? { reason: state.reason } : {}) } });
+  }
+
+  const probeOf = async (repo: LocalRepository): Promise<Probe> => { const f = probes.get(repo); if (!f) throw new Error('not a local repository'); return f(); };
+  const { idb: _i, migrate: _m, ...plain } = opts;
+  void _i; void _m;
+  const result = await runMigration({
+    oldArea: old, prefix, idb, now, attempt: mig.attempt, ...(mig.inject ? { inject: mig.inject } : {}),
+    openPresent: async (area) => probeOf(await openCore({ ...plain, area }, { mode: 'rows', area, switched: false, frozen: false, attempt: mig.attempt })),
+    openIdb: async () => probeOf(await openCore({ ...plain, area: old, idb }, { mode: 'indexeddb', area: old, switched: true, frozen: false, attempt: mig.attempt })),
+  });
+  if (result.ok) {
+    const repo = repoOfProbe.get(result.probe)!;
+    setMigration(repo, { state: 'switched', at: now(), attempt: mig.attempt, events: result.events, ms: result.ms, importMs: result.importMs, verifyMs: result.verifyMs, verified: result.verified });
+    return repo;
+  }
+  return rows(old, { migration: { state: 'failed', at: now(), attempt: mig.attempt, reason: result.reason, ms: result.ms } });
+}
+
+const migrationSetters = new WeakMap<LocalRepository, (m: StorageInfo['migration']) => void>();
+const repoOfProbe = new WeakMap<Probe, LocalRepository>();
+function setMigration(repo: LocalRepository, m: StorageInfo['migration']): void { migrationSetters.get(repo)?.(m); }
+
+/**
+ * What `clear()` means once a device has switched, and the finish of one that was interrupted. The learner asked for the device's data to be deleted, so the
+ * old rows go too (as the present path's `clear()` removes its rows), then both databases. The order is crash-safe: the state row first says `clearing`; the
+ * next open finishes the job. The state row is rewritten last (`switched`, no events), so a fresh identity starts in IndexedDB mode and nothing is resurrected.
+ */
+async function wipeOldRows(opts: OpenLocalOptions, prefix: string, attempt: number, tolerateNoIdb: boolean): Promise<void> {
+  const old = opts.area;
+  const now = opts.now ?? ((): string => new Date().toISOString());
+  await writeState(old, prefix, { state: 'switched', at: now(), attempt, events: 0, clearing: true });
+  try { await deleteBothDatabases(opts.idb!.indexedDB, opts.idb!.name); } catch (e) { if (!tolerateNoIdb) throw e; } // a frozen device's IndexedDB would not open: there may be nothing to delete
+  const mine = (await old.list(prefix)).filter((k) => k !== migrationKey(prefix));
+  if (mine.length) await old.remove(mine);
+  await writeState(old, prefix, { state: 'switched', at: now(), attempt, events: 0 });
+}
+
+async function openCore(opts: OpenLocalOptions, core: Core): Promise<LocalRepository> {
   const prefix = opts.keyPrefix ?? DEFAULT_PREFIX;
   const keys = keysFor(prefix);
   const now = opts.now ?? ((): string => new Date().toISOString());
@@ -144,9 +252,9 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
 
   async function build(keepDeviceId: string | undefined): Promise<State> {
     const stats: PersistStats = { writes: 0, failures: 0, pendingWrites: 0 };
-    if (opts.idb) return buildIdb(keepDeviceId, stats);
-    const io: PersistIO = { area: opts.area, prefix, keys, stats, pendingWrites: {} };
-    const stored = (await opts.area.get(keys.meta))[keys.meta] as Partial<LocalMeta> | undefined;
+    if (core.mode === 'indexeddb') return buildIdb(keepDeviceId, stats);
+    const io: PersistIO = { area: core.area, prefix, keys, stats, pendingWrites: {} };
+    const stored = (await core.area.get(keys.meta))[keys.meta] as Partial<LocalMeta> | undefined;
     const valid = !!stored && stored.format === FORMAT && typeof stored.learnerId === 'string' && typeof stored.deviceId === 'string' && typeof stored.accountId === 'string' && typeof stored.createdAt === 'string';
     const wantDevice = opts.deviceId ?? keepDeviceId;
     const meta: LocalMeta = valid
@@ -185,7 +293,8 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
     const o = opts.idb!;
     const kr = o.keyRange ? { keyRange: o.keyRange } : {};
     const kv = await createIndexedDbArea({ indexedDB: o.indexedDB, name: `${o.name}-kv`, ...kr });
-    const durable = await openIndexedDbStore({ indexedDB: o.indexedDB, name: o.name, ...kr, now });
+    let durable: ConcreteStore;
+    try { durable = await openIndexedDbStore({ indexedDB: o.indexedDB, name: o.name, ...kr, now }); } catch (e) { kv.close(); throw e; }
     const io: PersistIO = { area: kv, prefix, keys, stats, pendingWrites: {} };
     const stored = (await kv.get(keys.meta))[keys.meta] as Partial<LocalMeta> | undefined;
     const valid = !!stored && stored.format === FORMAT && typeof stored.learnerId === 'string' && typeof stored.deviceId === 'string' && typeof stored.accountId === 'string' && typeof stored.createdAt === 'string';
@@ -266,6 +375,20 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
     pullFrom: (remote) => lock.run(() => pull(context(), remote, randomId)),
     rebuild: () => lock.run(async () => { await state.engine.rebuild(state.meta.learnerId); }),
     clear: () => lock.run(async () => {
+      if (core.switched) {
+        // a switched device: the old rows are removed too (see wipeOldRows), then a fresh identity starts in IndexedDB mode
+        const keep = state.meta.deviceId;
+        state.idb?.area.close();
+        await state.store.close();
+        await wipeOldRows(opts, prefix, core.attempt, core.frozen);
+        core.area = opts.area;
+        core.frozen = false;
+        core.mode = 'indexeddb';
+        core.migration = { state: 'switched', at: now(), attempt: core.attempt, events: 0 };
+        try { state = await build(keep); } catch { core.mode = 'rows'; core.switched = false; core.migration = undefined; state = await build(keep); }
+        api.token = state.token;
+        return;
+      }
       if (state.idb) {
         // every learner table, the shared linguistic tables and the small rows go with the two databases (what the present path does row by row)
         const keep = state.meta.deviceId;
@@ -277,7 +400,7 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
         api.token = state.token;
         return;
       }
-      const mine = await opts.area.list(prefix);
+      const mine = await core.area.list(prefix);
       mine.push(...Object.keys(state.io.pendingWrites));
       if (state.io.pendingMeta) mine.push(state.io.keys.meta);
       await removeRows(state.io, mine);
@@ -292,6 +415,17 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
     },
   };
 
+  probes.set(repo, () => {
+    const p: Probe = {
+      store: state.store, learnerId: state.meta.learnerId, area: state.io.area,
+      async inspect() { const i = await inspectLocal(repo); return { events: i.events, pendingUpload: i.pendingUpload, uploaded: i.uploaded, fromRemote: i.fromRemote }; },
+      rebuild: () => repo.rebuild(),
+      close: () => repo.close(),
+    };
+    repoOfProbe.set(p, repo);
+    return p;
+  });
+  migrationSetters.set(repo, (m) => { core.migration = m; });
   owners.set(repo, (ids, remoteLearnerId) => markOwned(context(), ids, remoteLearnerId));
   inspectors.set(repo, async () => {
     const c = context();
@@ -309,6 +443,7 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
     return {
       learnerId: state.meta.learnerId, deviceId: state.meta.deviceId, events: events.length,
       pendingUpload: (await pendingFor(c)).length, uploaded, fromRemote, persistence: state.idb ? { writes: 0, failures: 0, pendingWrites: 0 } : { ...state.io.stats }, waiting: lastWaiting, loaded: state.loaded, storedChars,
+      storage: { mode: core.mode === 'indexeddb' ? 'indexeddb' : core.frozen ? 'rows-frozen' : 'rows', ...(core.migration ? { migration: { ...core.migration } } : {}) },
     };
   });
   return repo;

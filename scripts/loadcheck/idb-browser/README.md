@@ -8,3 +8,5 @@ Serve: `node scripts/local/static-server.cjs scripts/loadcheck/idb-browser/dist 
 Open: `http://localhost:<port>/index.html?n=3000` (optional `&batch=500`).
 
 The databases `loadcheck` and `loadcheck-kv` are deleted at the start of each run.
+
+`?mode=migrate&n=3000` builds N events as old rows in one in-memory area on the present path, then times the one-time switch to IndexedDB (`loadcheck-mig`, `loadcheck-mig-kv`) on that same area; the result holds `oldRows`, `buildOldRowsMs`, `migrateOpenMs`, `storage`, `eventsAfter`, `knowledge60Ms` and `secondOpenMs`.

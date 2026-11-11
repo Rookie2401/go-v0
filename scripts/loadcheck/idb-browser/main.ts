@@ -1,6 +1,6 @@
 // Browser timing of the device Repository over a REAL IndexedDB (the in-memory test double is not a measure of this).
 // Served by: node scripts/local/static-server.cjs scripts/loadcheck/idb-browser/dist <port>, then open index.html?n=3000&batch=500.
-import { openLocalRepository } from '../../../packages/repository-local/src';
+import { openLocalRepository, inspectLocal } from '../../../packages/repository-local/src';
 import { createMemoryArea } from '../../../packages/repository-sync/src';
 import { parseSelection } from '../../../packages/golearn-extension/src/parser/index';
 import { buildSelectionEvent, PENDING_IDENTITY } from '../../../packages/golearn-extension/src/store/index';
@@ -140,7 +140,106 @@ async function main(): Promise<void> {
   document.title = 'done';
 }
 
-main().catch((error: unknown) => {
+// mode=migrate: the present path builds the rows in one memory area, then a switch to IndexedDB is timed on that same area.
+async function migrateMain(): Promise<void> {
+  const MIG_DB = 'loadcheck-mig';
+  const MIG_PREFIX = 'golearn:repo:';
+  progress('loading words…');
+  const res = await fetch('./words.json');
+  if (!res.ok) throw new Error(`words.json HTTP ${res.status}`);
+  const words = (await res.json()) as string[];
+  const ids60 = words.slice(0, 60).map((w) => `lemma:sq:${w}`);
+
+  progress('deleting old databases…');
+  await deleteDb(MIG_DB);
+  await deleteDb(`${MIG_DB}-kv`);
+
+  const area = createMemoryArea();
+  const presentOpts = () => ({ area, keyPrefix: MIG_PREFIX, deviceId: DEVICE });
+
+  // step 2: build the old rows on the present path (no idb)
+  progress('building old rows 0/' + N);
+  const buildStart = performance.now();
+  const repo = await openLocalRepository(presentOpts());
+  const id = await repo.identity();
+  const en = await repo.api.enrol({ learnerId: id.learnerId, languageId: 'sq', packId: 'pack:sq', packVersion: '1', goals: [{ kind: 'reading' }] } as never);
+  if (!en.ok) throw new Error('enrol');
+  const enrolmentId = en.data.enrolment.enrolmentId;
+  const identity = { ...PENDING_IDENTITY, learnerId: id.learnerId, enrolmentId, deviceId: DEVICE } as never;
+
+  const makeEvent = (i: number) => {
+    const word = words[i % words.length];
+    const sentence = `Sot ne lexojmë ${word} bashkë në shtëpi.`;
+    const at = sentence.indexOf(word);
+    const card = parseSelection({ surface: word, context: { kind: 'sentence', confidence: 0.9, sentence, selStart: at, selEnd: at + word.length } });
+    return buildSelectionEvent({ card, readerId: 'web-generic', identity, version: '0.1.0', sessionId: `s${Math.floor(i / 40)}`, now: new Date(DAY0 + i * 4 * 60_000) });
+  };
+  for (let i = 0; i < N; i += BATCH) {
+    const end = Math.min(i + BATCH, N);
+    const batch = [];
+    for (let j = i; j < end; j++) batch.push(makeEvent(j));
+    const r = await repo.api.appendEvents(batch as never);
+    if (!r.ok) throw new Error('append ' + r.status);
+    progress(`building old rows ${end}/${N}`);
+  }
+  const buildOldRowsMs = round(performance.now() - buildStart);
+  await repo.close();
+
+  const oldRows = (await area.list(MIG_PREFIX)).length;
+
+  // step 4: the migration itself, on the same area
+  progress('migrating…');
+  const t = performance.now();
+  const migrated = await openLocalRepository({
+    area,
+    keyPrefix: MIG_PREFIX,
+    deviceId: DEVICE,
+    idb: { indexedDB: window.indexedDB, name: MIG_DB },
+    migrate: { attempt: 1 },
+  });
+  const migrateOpenMs = round(performance.now() - t);
+
+  // step 5: what happened
+  const info = await inspectLocal(migrated);
+
+  // step 6: reads on the migrated repository, then a second open with the same options
+  progress('knowledge…');
+  const tk = performance.now();
+  const kr = await migrated.api.knowledge(ids60);
+  const knowledge60Ms = round(performance.now() - tk);
+  if (!kr.ok) throw new Error('knowledge ' + kr.status);
+  await migrated.close();
+
+  progress('second open…');
+  const ts = performance.now();
+  const again = await openLocalRepository({
+    area,
+    keyPrefix: MIG_PREFIX,
+    deviceId: DEVICE,
+    idb: { indexedDB: window.indexedDB, name: MIG_DB },
+    migrate: { attempt: 1 },
+  });
+  const secondOpenMs = round(performance.now() - ts);
+  await again.close();
+
+  const result = {
+    mode: 'migrate',
+    events: N,
+    oldRows,
+    buildOldRowsMs,
+    migrateOpenMs,
+    storage: info.storage,
+    eventsAfter: info.events,
+    knowledge60Ms,
+    secondOpenMs,
+    userAgent: navigator.userAgent,
+  };
+  out.textContent = JSON.stringify(result, null, 1);
+  document.title = 'done';
+}
+
+const run = params.get('mode') === 'migrate' ? migrateMain : main;
+run().catch((error: unknown) => {
   const e = error as Error;
   out.textContent = 'ERROR: ' + String(error) + '\n' + (e?.stack ?? '');
   document.title = 'error';

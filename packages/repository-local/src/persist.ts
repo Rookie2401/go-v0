@@ -130,7 +130,7 @@ async function reconcile(io: PersistIO, store: ConcreteStore, learnerId: string)
  */
 export interface EventRow { v: 1; event: StoredEvent }
 const eventRow = (event: StoredEvent): EventRow => ({ v: 1, event });
-const eventOf = (row: unknown): StoredEvent | undefined => {
+export const eventOf = (row: unknown): StoredEvent | undefined => {
   const e = (row as Partial<EventRow> | undefined)?.event;
   return e && typeof e === 'object' && typeof (e as StoredEvent).id === 'string' ? e : undefined;
 };
@@ -251,7 +251,7 @@ export function persistingStore(inner: ConcreteStore, io: PersistIO): ConcreteSt
 
 // ───────────────────────────── loading ─────────────────────────────
 
-const by = <T>(rows: Array<[string, unknown]>, prefix: string): T[] => rows.filter(([key]) => key.startsWith(prefix)).map(([, v]) => v as T);
+export const by = <T>(rows: Array<[string, unknown]>, prefix: string): T[] => rows.filter(([key]) => key.startsWith(prefix)).map(([, v]) => v as T);
 
 export interface LoadReport { events: number; skippedEvents: number; renumbered: boolean }
 

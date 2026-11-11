@@ -198,7 +198,8 @@ async function localEnrolment(c: TransferContext, languageId: string, remoteEnro
   return made.enrolmentId;
 }
 
-export async function pull(c: TransferContext, remote: RepositoryApi, newId: () => string): Promise<{ added: number }> {
+/** `pageSize` is the number of events asked for per request (the default is PAGE; a test asks for small pages). */
+export async function pull(c: TransferContext, remote: RepositoryApi, newId: () => string, opts: { pageSize?: number } = {}): Promise<{ added: number }> {
   const me = await remote.me().catch(() => undefined);
   const remoteLearner = me?.ok ? me.data.learner?.learnerId : undefined;
   if (!me || !me.ok || !remoteLearner) return { added: 0 };
@@ -211,7 +212,7 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
 
   for (let page = 0; page < 10_000; page++) {
     let r;
-    try { r = await remote.listEvents({ afterSeq, limit: PAGE }); } catch { r = undefined; }
+    try { r = await remote.listEvents({ afterSeq, limit: opts.pageSize ?? PAGE }); } catch { r = undefined; }
     if (!r || !r.ok) break;
     const events = [...r.data.events].sort((a, b) => a.seq - b.seq);
     if (!events.length) break;
@@ -246,7 +247,7 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
     afterSeq = events[events.length - 1].seq;
     rows[c.io.keys.pull] = { learnerId: remoteLearner, afterSeq } satisfies PullCursor;
     await writeRows(c.io, rows);
-    if (events.length < PAGE || afterSeq >= r.data.head) break;
+    if (events.length < (opts.pageSize ?? PAGE) || afterSeq >= r.data.head) break;
   }
   // Projection runs ONCE, after the last page (a page touches most of the learner's units, and projecting re-reads their events). The cursor and the markers above are written
   // per page, so a pull stopped after any page resumes from there; until it is projected, every read folds the events newer than the projection cursor, so knowledge is correct.

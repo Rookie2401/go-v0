@@ -45,7 +45,7 @@ export interface LocalRepository {
   /** Sends every local event not yet uploaded to a signed-in remote API, idempotently (ids/dedupeKeys); remembers what was sent. */
   uploadTo(remote: RepositoryApi, opts?: { onProgress?: (sent: number, total: number) => void }): Promise<{ sent: number; duplicates: number; failed: number }>;
   /** Pulls the remote history for the same learner (after sign-in) so the device sees what other devices recorded; idempotent. */
-  pullFrom(remote: RepositoryApi): Promise<{ added: number }>;
+  pullFrom(remote: RepositoryApi, opts?: { pageSize?: number }): Promise<{ added: number }>;
   rebuild(): Promise<void>;
   /** The learner's "clear local data". */
   clear(): Promise<void>;
@@ -397,7 +397,7 @@ async function openCore(opts: OpenLocalOptions, core: Core): Promise<LocalReposi
       lastWaiting = waiting;
       return result;
     }),
-    pullFrom: (remote) => lock.run(() => pull(context(), remote, randomId)),
+    pullFrom: (remote, o) => lock.run(() => pull(context(), remote, randomId, o ?? {})),
     rebuild: () => lock.run(async () => { await state.engine.rebuild(state.meta.learnerId); }),
     clear: () => lock.run(async () => {
       if (core.switched) {

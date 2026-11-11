@@ -35,37 +35,38 @@ const rows = async (repo: Awaited<ReturnType<typeof device>>) => {
 
 describe('pullFrom', () => {
   it('appends a page in one transaction and projects knowledge for every pulled event', async () => {
-    const { c, acct } = await seeded(2500);
+    // 250 events in pages of 100: three pages, as 2,500 in pages of 1,000 would be, in a fraction of the time (the full suite runs many files at once)
+    const { c, acct } = await seeded(250);
     const repo = await device(c, 'dev-B');
     let transactions = 0;
     const original = IDBDatabase.prototype.transaction;
     vi.spyOn(IDBDatabase.prototype, 'transaction').mockImplementation(function (this: IDBDatabase, ...a: Parameters<typeof original>) { if (a[1] === 'readwrite') transactions++; return original.apply(this, a); });
-    const r = await repo.pullFrom(acct.api);
-    expect(r.added).toBe(2500);
-    // before the change: at least one read-write transaction per pulled event (2,500 and more). Now a few per page, plus the projection's.
-    expect(transactions).toBeLessThan(400);
+    const r = await repo.pullFrom(acct.api, { pageSize: 100 });
+    expect(r.added).toBe(250);
+    // before the change: at least one read-write transaction per pulled event (250 and more). Now a few per page, plus the projection's.
+    expect(transactions).toBeLessThan(200);
     const k = await repo.api.knowledge();
     expect(k.ok && k.data.knowledge.length).toBeGreaterThan(WORDS.length); // lemmas and forms
     const total = (await repo.exportEvents()).filter((e) => e.kind === 'SelectionLookedUp').length;
-    expect(total).toBe(2500);
+    expect(total).toBe(250);
   });
 
   it('a pull that stops after page 2 leaves knowledge equal to a completed pull of those two pages', async () => {
-    const { c, acct } = await seeded(2500);
+    const { c, acct } = await seeded(250);
     const stopped = await device(c, 'dev-B');
     const reference = await device(c, 'dev-C');
-    // the reference device's account holds only the first two pages (2,000 events) and its pull completes
+    // the reference device's account holds only the first two pages (200 events) and its pull completes
     const firstTwo: RepositoryApi = { ...acct.api, listEvents: async (q) => {
       const r = await acct.api.listEvents(q);
-      return r.ok ? { ...r, data: { ...r.data, events: r.data.events.filter((e) => e.seq <= 2000), head: Math.min(r.data.head, 2000) } } : r;
+      return r.ok ? { ...r, data: { ...r.data, events: r.data.events.filter((e) => e.seq <= 200), head: Math.min(r.data.head, 200) } } : r;
     } } as RepositoryApi;
     // the interrupted device: the third request never answers (the tab was closed), so no projection ran after the pages it did append
     let calls = 0;
     const hanging: RepositoryApi = { ...acct.api, listEvents: (q: Parameters<RepositoryApi['listEvents']>[0]) => (++calls >= 3 ? new Promise(() => {}) : acct.api.listEvents(q)) } as RepositoryApi;
-    void stopped.pullFrom(hanging);
+    void stopped.pullFrom(hanging, { pageSize: 100 });
     for (let i = 0; i < 200 && calls < 3; i++) await new Promise((r) => setTimeout(r, 10));
     expect(calls).toBe(3);
-    await reference.pullFrom(firstTwo);
+    await reference.pullFrom(firstTwo, { pageSize: 100 });
     const after = await rows(stopped);
     const ref = await rows(reference);
     expect(after).toBe(ref);

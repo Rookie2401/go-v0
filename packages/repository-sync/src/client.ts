@@ -329,7 +329,7 @@ export function createSyncClient(opts: SyncClientOptions): SyncClient {
       let docsSince = docs ? await getDocsSince() : undefined;
       let newestDoc = docsSince;
       for (let page = 0; page < 10_000; page++) {
-        const req: SyncPullRequest = { deviceId, afterSeq: res.cursor, limit: pullLimit, ...(page === 0 && docsSince ? { documentsSince: docsSince } : {}) };
+        const req: SyncPullRequest = { deviceId, afterSeq: res.cursor, limit: pullLimit, ...(page === 0 && docsSince ? { documentsSince: docsSince } : {}), ...(page > 0 ? { documents: false } : {}) };
         const resp = await transport.pull(req);
         noteServer({ serverTime: resp.serverTime, head: resp.head });
         const events = [...resp.events].sort((a, b) => a.seq - b.seq);

@@ -206,6 +206,8 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
   let afterSeq = stored && stored.learnerId === remoteLearner && Number.isInteger(stored.afterSeq) && stored.afterSeq >= 0 ? stored.afterSeq : 0;
   let added = 0;
   const appended: GoEvent[] = [];
+  const registered = new Set<string>(); // events that would register the same surfaces as one already registered in this pull are not registered again
+  const enrolmentOf = new Map<string, string>(); // the local enrolment events of a language go under, found once per pull
 
   for (let page = 0; page < 10_000; page++) {
     let r;
@@ -214,6 +216,7 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
     const events = [...r.data.events].sort((a, b) => a.seq - b.seq);
     if (!events.length) break;
     const rows: Record<string, unknown> = {};
+    const fresh: Array<{ local: GoEvent; remoteId: string }> = [];
     for (const e of events) {
       if (!isUploadable(e)) continue;
       const have = await c.store.get(c.learnerId, e.id);
@@ -223,18 +226,30 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
         if (!m) rows[c.io.keys.uploaded + e.id] = { to: remoteLearner, at: c.now() } satisfies UploadMarker;
         continue;
       }
-      const enrolmentId = await localEnrolment(c, e.languageId, me.data.enrolments ?? [], newId);
+      let enrolmentId = enrolmentOf.get(e.languageId);
+      if (enrolmentId === undefined) { enrolmentId = await localEnrolment(c, e.languageId, me.data.enrolments ?? [], newId); enrolmentOf.set(e.languageId, enrolmentId); }
       const { seq: _seq, recordedAt: _rec, ...rest } = e;
       void _seq; void _rec;
-      const local: GoEvent = { ...rest, learnerId: c.learnerId, enrolmentId };
-      const [o] = await c.store.append(c.learnerId, [local]);
-      if (o?.stored) { added += 1; appended.push(local); rows[c.io.keys.uploaded + e.id] = { from: remoteLearner, at: c.now() } satisfies UploadMarker; }
+      fresh.push({ local: { ...rest, learnerId: c.learnerId, enrolmentId }, remoteId: e.id });
+    }
+    // one append for the page, not one per event: each append is a store transaction (and, over IndexedDB, a request per rule it checks)
+    if (fresh.length) {
+      const outcomes = await c.store.append(c.learnerId, fresh.map((f) => f.local));
+      const stored: GoEvent[] = [];
+      fresh.forEach((f, i) => {
+        if (outcomes[i]?.stored) { added += 1; appended.push(f.local); stored.push(f.local); rows[c.io.keys.uploaded + f.remoteId] = { from: remoteLearner, at: c.now() } satisfies UploadMarker; }
+      });
+      // surfaces are registered per page: a pull stopped here resumes after these events and would never register them
+      const unseen = stored.filter((e) => { const k = `${e.kind} ${e.languageId} ${(e.subject?.itemIds ?? []).join('')} ${String((e.payload as { surface?: unknown } | undefined)?.surface ?? '')}`; if (registered.has(k)) return false; registered.add(k); return true; });
+      if (unseen.length) await c.register(unseen);
     }
     afterSeq = events[events.length - 1].seq;
     rows[c.io.keys.pull] = { learnerId: remoteLearner, afterSeq } satisfies PullCursor;
     await writeRows(c.io, rows);
     if (events.length < PAGE || afterSeq >= r.data.head) break;
   }
-  if (appended.length) { await c.register(appended); await c.project(); }
+  // Projection runs ONCE, after the last page (a page touches most of the learner's units, and projecting re-reads their events). The cursor and the markers above are written
+  // per page, so a pull stopped after any page resumes from there; until it is projected, every read folds the events newer than the projection cursor, so knowledge is correct.
+  if (appended.length) await c.project();
   return { added };
 }

@@ -220,7 +220,7 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       const bySeq = new Map<number, StoredEvent>();
       for (const part of chunks([...new Set(unitIds)], 250)) {
         if (!part.length) continue;
-        const rows = db.prepare(`SELECT DISTINCT ${EVENT_COLS} FROM event_units eu JOIN events e ON e.id = eu.event_id
+        const rows = db.prepare(`SELECT DISTINCT ${EVENT_COLS} FROM event_units eu CROSS JOIN events e ON e.id = eu.event_id
           WHERE eu.unit_id IN (${placeholders(part.length)}) AND e.learner_id = ?`).all(...part, learnerId) as Row[];
         for (const row of rows) { const e = eventOfRow(row); bySeq.set(e.seq, e); }
       }
@@ -420,7 +420,13 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
             a.oldId, a.newId, a.packVersion, text(a),
           );
         }
+        // the stamp moves in the same transaction as the rows: a reader never sees new rows under the old stamp
+        run(`INSERT INTO service_state (key, value) VALUES ('__aliasStamp', '1') ON CONFLICT (key) DO UPDATE SET value = CAST(CAST(value AS INTEGER) + 1 AS TEXT)`);
       });
+    },
+    async aliasStamp() {
+      const r = get("SELECT value FROM service_state WHERE key = '__aliasStamp'");
+      return r ? (r.value as string) : '0';
     },
     async getPack(packId, version) {
       if (version !== undefined) {

@@ -17,6 +17,7 @@
  * | VERIFY_URL, RESET_URL | override the two link templates (`{token}` is replaced) | derived from APP_PUBLIC_URL |
  * | SERVICE_NAME | the product name in the emails | "Go" |
  * | PURGE_ON_BOOT | `0` to skip the maintenance pass at start | on |
+ * | RENDER_GIT_COMMIT, GIT_COMMIT | the deployed commit (the host sets the first); only its first 12 characters, and only when hexadecimal, appear in `GET /health` as `commit` | omitted |
  * | PURGE_INTERVAL_MINUTES | how often the maintenance pass runs while up; `0` = never | 60 |
  */
 import { limitsFromEnv } from './ratelimit';
@@ -39,6 +40,8 @@ export interface ServiceConfig {
   serviceName?: string;
   purgeOnBoot: boolean;
   purgeIntervalMinutes: number;
+  /** First 12 characters of the deployed commit id (RENDER_GIT_COMMIT, else GIT_COMMIT) when it is hexadecimal; else absent. */
+  commit?: string;
 }
 
 type Env = Record<string, string | undefined>;
@@ -81,6 +84,15 @@ function appUrl(env: Env): string | undefined {
   return v.split('#')[0]!;
 }
 
+/** The first 12 characters of the first of RENDER_GIT_COMMIT / GIT_COMMIT that is a hexadecimal commit id (7 to 64 digits). Nothing else of the environment is read. */
+function commitOf(env: Env): string | undefined {
+  for (const key of ['RENDER_GIT_COMMIT', 'GIT_COMMIT']) {
+    const v = env[key]?.trim();
+    if (v && /^[0-9a-f]{7,64}$/i.test(v)) return v.slice(0, 12).toLowerCase();
+  }
+  return undefined;
+}
+
 export function serviceConfigFromEnv(env: Env): ServiceConfig {
   const app = appUrl(env);
   const logFormat = (env.LOG_FORMAT ?? 'text').toLowerCase();
@@ -103,5 +115,6 @@ export function serviceConfigFromEnv(env: Env): ServiceConfig {
     ...(env.SERVICE_NAME ? { serviceName: env.SERVICE_NAME.slice(0, 60) } : {}),
     purgeOnBoot: flag(env, 'PURGE_ON_BOOT', true),
     purgeIntervalMinutes: whole(env, 'PURGE_INTERVAL_MINUTES', 60, 0),
+    ...(commitOf(env) ? { commit: commitOf(env)! } : {}),
   };
 }

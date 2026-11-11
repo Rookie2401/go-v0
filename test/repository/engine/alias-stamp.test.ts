@@ -5,7 +5,7 @@ import { IDBFactory, IDBKeyRange } from 'fake-indexeddb';
 import { describe, expect, it } from 'vitest';
 import type { UnitAlias } from '../../../packages/repository-contract/src';
 import { createProjectionEngine } from '../../../packages/repository-engine/src';
-import { createMemoryStore, openIndexedDbStore } from '../../../packages/repository-store/src';
+import { createMemoryStore, openIndexedDbStore, openSqliteStore } from '../../../packages/repository-store/src';
 import type { ConcreteStore } from '../../../packages/repository-store/src/rules';
 import { L, NOW, card, resetIds } from './helpers';
 
@@ -22,6 +22,7 @@ function spied(store: ConcreteStore): { store: ConcreteStore; counts: Counts } {
 
 const stores: Array<[string, () => Promise<ConcreteStore>]> = [
   ['memory', async () => createMemoryStore() as ConcreteStore],
+  ['sqlite', async () => openSqliteStore(':memory:', { now: () => NOW }) as unknown as ConcreteStore],
   ['indexeddb', async () => (await openIndexedDbStore({ keyRange: IDBKeyRange, indexedDB: new IDBFactory(), name: 'stamp' })) as ConcreteStore],
 ];
 
@@ -52,5 +53,24 @@ describe.each(stores)('alias stamp memo (%s store)', (_name, open) => {
     const after = await engine.knowledge(L);
     expect(after.map((r) => r.unitId)).toEqual(['form:sq:new']);
     expect(after[0].basis.events).toBe(2);
+  });
+});
+
+describe('SQLite alias stamp', () => {
+  it('changes with every putAliases and survives a re-open', async () => {
+    const dir = (await import('node:fs')).mkdtempSync((await import('node:path')).join((await import('node:os')).tmpdir(), 'alias-stamp-'));
+    const file = (await import('node:path')).join(dir, 'a.sqlite');
+    const a = openSqliteStore(file, { now: () => NOW });
+    const s0 = await a.aliasStamp!();
+    await a.putAliases([alias()]);
+    const s1 = await a.aliasStamp!();
+    await a.putAliases([{ ...alias(), reason: 'again' }]);
+    const s2 = await a.aliasStamp!();
+    expect(new Set([s0, s1, s2]).size).toBe(3);
+    await a.close();
+    const b = openSqliteStore(file, { now: () => NOW });
+    expect(await b.aliasStamp!()).toBe(s2);
+    await b.close();
+    (await import('node:fs')).rmSync(dir, { recursive: true, force: true });
   });
 });

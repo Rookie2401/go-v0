@@ -397,7 +397,7 @@ route('GET', '/health', false, async (ctx) => {
   return respond(200, {
     ...(durability ? { durability } : {}),
     ok: true, service: 'repository', version: SERVICE_VERSION, contractVersion: CONTRACT_VERSION,
-    ...(info ? { store: info.storeKind, ...(schemaVersion !== undefined ? { migrations: schemaVersion } : {}), uptimeSec: Math.max(0, Math.floor((Date.now() - info.startedAt) / 1000)) } : {}),
+    ...(info ? { store: info.storeKind, ...(info.commit ? { commit: info.commit } : {}), ...(schemaVersion !== undefined ? { migrations: schemaVersion } : {}), uptimeSec: Math.max(0, Math.floor((Date.now() - info.startedAt) / 1000)) } : {}),
   });
 });
 

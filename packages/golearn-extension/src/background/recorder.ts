@@ -13,7 +13,7 @@
  */
 import { MAX_FUTURE_SKEW_MS, validateEvent, type GoEvent, type ValidationIssue } from '../../../repository-contract/src';
 import { QUEUE_PREFIX, getByPrefix, readableRow, type LocalQueue, type QueueRow } from '../../../repository-sync/src';
-import { EVENT_KEY_PREFIX, createStorageEncounterStore } from '../store';
+import { EVENT_KEY_PREFIX, createStorageEncounterStore, readPrefix } from '../store';
 import type { StorageArea } from '../platform';
 import type { RecordReply } from '../protocol';
 import { enrolmentIn, type SessionManager, type SessionRecord } from './session';
@@ -116,9 +116,7 @@ export function createRecorder(opts: RecorderOptions) {
       await opts.queue.area.set({ [key]: { ...row, event: { ...row.event, learnerId, enrolmentId } } satisfies QueueRow });
       changed++;
     }
-    const all = await opts.area.get(null);
-    for (const [key, v] of Object.entries(all)) {
-      if (!key.startsWith(EVENT_KEY_PREFIX)) continue;
+    for (const [key, v] of await readPrefix(opts.area, EVENT_KEY_PREFIX)) {
       const ev = v as GoEvent;
       if (!isLocalLearner(ev.learnerId) || ev.languageId !== languageId || (onlyKind && ev.kind !== onlyKind)) continue;
       await opts.area.set({ [key]: { ...ev, learnerId, enrolmentId } });

@@ -6,7 +6,9 @@
 import type { GoEvent, ReviewCandidate, UnitKnowledge, SchedulerProfile } from '../../repository-contract/src';
 import { effectiveReviewEvents } from '../../repository-contract/src';
 import type { VocabularyItem } from '../../repository-service/src/api';
-import { reviewEligibility } from '../src/planner/eligibility';
+import { createReviewEligibilityContext, reviewEligibility, type ReviewEligibilityContext } from '../src/planner/eligibility';
+import { remediationBacklog } from '../src/planner/remediation';
+import { eventHead } from './engine';
 import { admissionBudget } from '../src/planner/budget';
 import type { AudioAvailability, DeckItem, IntakeOutcome, ReviewPreferences, SessionPlan, SessionState } from '../src/types';
 import type { AppContext } from './context';
@@ -730,11 +732,13 @@ function presentationGuard(ctx: AppContext, model: Pick<ReviewModel, 'identity' 
   const revisions = new Map<string,string>();
   const knowledgeKinds = new Set(['EncounterRecorded','SelectionLookedUp','AnalysisShown','AssistanceRequested','ItemMarked','CardReviewed','AssessmentAnswered','ListeningAssessed']);
   const revision = (events: GoEvent[], unitId: string) => events.filter(e => knowledgeKinds.has(e.kind) && e.subject.itemIds?.includes(unitId)).map(e => e.id).sort().join('|');
+  // One set of evidence indexes per event head (the log's signature): a decision per card used to sort and re-read the whole log. Only the latest head is kept.
+  let shared: { head: string; base: ReviewEligibilityContext } | undefined;
   return async (planned: import('../src/types').PlannedItem, at: string): Promise<{ eligible: boolean; reason?: string }> => {
     const [events, prefs] = await Promise.all([ctx.events(model.identity.languageId), ctx.state.getPrefs(model.identity.learnerId, model.identity.languageId)]);
     const profile = schedulerProfileSelection(events);
     if (profile.error) return { eligible:false, reason:profile.error };
-    const whole = ctx.engine.foldDeck(events, model.identity.languageId, prefs, at);
+    const whole = (ctx.engine.foldDeckShared ?? ctx.engine.foldDeck)(events, model.identity.languageId, prefs, at);
     const item = whole.find(i => i.itemId === planned.item.itemId), unitId = planned.item.unitId, intent = planned.intent ?? { kind:'automatic' as const };
     const hasHistory = item?.history.some(h => !h.retracted && !h.scheduleExcluded && !h.conflict);
     if (!hasHistory && intent.kind === 'automatic') {
@@ -755,7 +759,11 @@ function presentationGuard(ctx: AppContext, model: Pick<ReviewModel, 'identity' 
     if (knowledge && ['new','seen','recognized','familiar','known','automatic'].includes(String(mark)))
       knowledge = { ...knowledge, level:mark as UnitKnowledge['level'] };
     const budget = admissionBudget(events, { learnerId:model.identity.learnerId,languageId:model.identity.languageId,now:at,maxNew:prefs.maxNew,dailyNewLimit:prefs.dailyNewLimit??prefs.maxNew });
-    return reviewEligibility({item,itemId:planned.item.itemId,unitId,knowledge,events,now:at,intent,remainingNew:Math.min(prefs.maxNew,budget.remaining)});
+    const head = eventHead(events);
+    // the indexes are the log's; the repair status is taken for this one card at `at`, as a context built at `at` would give it (deckModel's contextAt)
+    if (shared?.head !== head) shared = { head, base: createReviewEligibilityContext([], events, at) };
+    const context: ReviewEligibilityContext = { ...shared.base, remediationByCard: new Map(remediationBacklog(item ? [item] : [], events, at, shared.base.remediationEvidence).map(row => [row.itemId, row])) };
+    return reviewEligibility({item,itemId:planned.item.itemId,unitId,knowledge,events,now:at,intent,remainingNew:Math.min(prefs.maxNew,budget.remaining),context});
   };
 }
 

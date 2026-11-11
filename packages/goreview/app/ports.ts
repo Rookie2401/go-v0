@@ -168,6 +168,11 @@ export interface ReviewEngine {
   scheduler(prefs: ReviewPreferences, profile?: SchedulerProfile): Scheduler;
   /** The deck of one language as a fold over the learner's events (a snooze that has ended by `now` is over). */
   foldDeck(events: GoEvent[], languageId: string, prefs: ReviewPreferences, now: string): DeckItem[];
+  /**
+   * `foldDeck`, shared: one fold of the log per event head (the log's length and first, middle and last event ids), for a reader that asks again and again
+   * while the log stays the same (the session's guard). The same items; they are shared, so read them, never change them.
+   */
+  foldDeckShared?(events: GoEvent[], languageId: string, prefs: ReviewPreferences, now: string): DeckItem[];
   /** Intake decisions for the Repository's candidates, each with its reasons. */
   intake(req: IntakeRequest): Promise<IntakeOutcome[]>;
   /** The readable line for an outcome (headline, proposed skill, reasons). */

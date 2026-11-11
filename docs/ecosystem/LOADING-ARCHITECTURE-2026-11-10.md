@@ -127,6 +127,22 @@ projection alone would therefore not fix cold starts**; the store itself must st
   the old path and says so in the developer diagnostics.
 - GoReview's per-screen and per-answer folds get one shared view per event head. Measured first.
 
+Measured in a real browser (`scripts/loadcheck/idb-browser/`, Chromium 156, the device Repository over real IndexedDB, 750
+distinct words):
+
+| Events stored | Re-open | First knowledge of 60 words after open | The same, warm | Recording one event |
+|---|---|---|---|---|
+| 3,000 | 0.8 ms | 14 ms | 1.5 ms | 5.9 ms (max 9.7) |
+| 12,000 | 1.0 ms | 17 ms | 2.0 ms | 6.6 ms (max 18.6) |
+
+The present path's cold open at 12,000 events is 3.4 s in the extension. These do not grow with history: rule 2 holds.
+Getting there needed one engine fix (0edf83ef): the stale-alias scan read every knowledge row on every read and projection
+(790 requests per recorded event at 750 known words); it now runs only after the alias table changed.
+
+Not fixed yet, and visible in the same run: a BULK append projects after every batch, and a batch of 500 events touches most
+of the learner's units, so each batch re-reads most of the log (12,000 events seeded in 94 s). The first sync on a new device
+goes through that path (`repository-local/src/transfer.ts` pull). The migration does not: it imports and rebuilds once.
+
 The recorder's log and the upload queue stay where they are in this stage (they are the durable outbox); folding the three
 copies of history into one is a later simplification.
 

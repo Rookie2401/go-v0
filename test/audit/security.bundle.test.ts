@@ -73,7 +73,9 @@ describe.skipIf(!have)('the built extension', () => {
     expect(code).not.toMatch(DYNAMIC_CODE);
     expect(code).not.toMatch(PAGE_CHANNELS);
     expect(code).not.toMatch(/chrome\.(tabs|scripting|cookies|downloads|history|webRequest|management|identity)/);
-    expect(code).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i); // no address to call
+    // no address to call. The one URL in the bundle is the SVG namespace identifier of the card's own speaker icon
+    // (popup/card.ts speakerIcon, commit 342e296c; createElementNS): an XML namespace name, never fetched, so it is removed before the check.
+    expect(code.replaceAll('http://www.w3.org/2000/svg', '')).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i);
     expect(code).not.toMatch(/console\.(log|info|debug|warn|error|trace)/); // nothing is logged, so nothing sensitive can be
   });
 

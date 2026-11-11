@@ -35,6 +35,11 @@ export interface IndexedDbStoreOptions {
 
 export const INDEXEDDB_SCHEMA_VERSION = 1;
 
+/** Up to this many alias rows the lookups read the whole table once instead of one index read per id. */
+const SMALL_ALIAS_TABLE = 500;
+/** The serviceState key holding the alias write counter. */
+const ALIAS_STAMP_KEY = '__aliasStamp';
+
 type Idx = [name: string, keyPath: string | string[], unique?: boolean];
 interface StoreDef { keyPath: string | string[] | null; indexes?: Idx[] }
 
@@ -449,18 +454,42 @@ export async function openIndexedDbStore(opts: IndexedDbStoreOptions): Promise<C
     },
     async aliasesFor(ids) {
       return ro(['aliases'], async (tx) => {
-        const lists = await Promise.all(unique(ids).map((id) => req(tx.objectStore('aliases').index('old').getAll(id))));
+        const st = tx.objectStore('aliases');
+        const n = (await req(st.count())) as number;
+        if (n === 0) return [] as UnitAlias[];
+        if (n <= SMALL_ALIAS_TABLE) {
+          const want = new Set(ids);
+          const all = (await req(st.getAll())) as UnitAlias[];
+          return all.filter((a) => want.has(a.oldId)).sort(byKey((a) => [a.oldId, a.newId, a.packVersion]));
+        }
+        const lists = await Promise.all(unique(ids).map((id) => req(st.index('old').getAll(id))));
         return (lists.flat() as UnitAlias[]).sort(byKey((a) => [a.oldId, a.newId, a.packVersion]));
       });
     },
     async aliasesTo(ids) {
       return ro(['aliases'], async (tx) => {
-        const lists = await Promise.all(unique(ids).map((id) => req(tx.objectStore('aliases').index('new').getAll(id))));
+        const st = tx.objectStore('aliases');
+        const n = (await req(st.count())) as number;
+        if (n === 0) return [] as UnitAlias[];
+        if (n <= SMALL_ALIAS_TABLE) {
+          const want = new Set(ids);
+          const all = (await req(st.getAll())) as UnitAlias[];
+          return all.filter((a) => want.has(a.newId)).sort(byKey((a) => [a.newId, a.oldId, a.packVersion]));
+        }
+        const lists = await Promise.all(unique(ids).map((id) => req(st.index('new').getAll(id))));
         return (lists.flat() as UnitAlias[]).sort(byKey((a) => [a.newId, a.oldId, a.packVersion]));
       });
     },
+    async aliasStamp() {
+      return ro(['serviceState'], async (tx) => String((await req(tx.objectStore('serviceState').get(ALIAS_STAMP_KEY))) ?? '0'));
+    },
     async putAliases(rows) {
-      return rw(['aliases'], async (tx) => { for (const a of rows) await req(tx.objectStore('aliases').put(a)); });
+      return rw(['aliases', 'serviceState'], async (tx) => {
+        for (const a of rows) await req(tx.objectStore('aliases').put(a));
+        const ss = tx.objectStore('serviceState');
+        const cur = Number((await req(ss.get(ALIAS_STAMP_KEY))) ?? 0);
+        await req(ss.put(String(cur + 1), ALIAS_STAMP_KEY));
+      });
     },
     async getPack(packId, version) {
       return ro(['packs'], async (tx) => {

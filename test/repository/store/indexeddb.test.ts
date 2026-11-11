@@ -248,3 +248,32 @@ describe('parity with the memory store (same inputs, deep-equal outputs)', () =>
     for (const lang of ['sq', 'de', 'xx']) expect(await idb.getEncounteredKnowledgeStats!(L1, lang)).toEqual(await mem.getEncounteredKnowledgeStats!(L1, lang));
   });
 });
+
+describe('indexeddb alias lookups and stamp', () => {
+  const mk = (n: number) => Array.from({ length: n }, (_, i) => ({ oldId: `old:${i % 40}`, newId: `new:${i % 7}`, packVersion: String(i), reason: 'r', confidence: 0.9, createdAt: '2026-10-02T00:00:00.000Z', mapping: 'certain' as const }));
+  const both = async () => ({ mem: createMemoryStore(), idb: await openIndexedDbStore({ keyRange: IDBKeyRange, indexedDB: new IDBFactory(), name: 'alias-parity' }) });
+
+  it.each([0, 5, 500, 501, 700])('aliasesFor and aliasesTo equal the memory store for a table of %i rows', async (n) => {
+    const { mem, idb } = await both();
+    for (const s of [mem, idb]) await s.putAliases(mk(n));
+    for (const ids of [[], ['old:1'], ['old:3', 'old:3', 'old:39', 'nope'], Array.from({ length: 40 }, (_, i) => `old:${i}`)]) expect(await idb.aliasesFor(ids)).toEqual(await mem.aliasesFor(ids));
+    for (const ids of [[], ['new:2'], ['new:0', 'new:6', 'new:6', 'nope']]) expect(await idb.aliasesTo!(ids)).toEqual(await mem.aliasesTo!(ids));
+  });
+
+  it('the stamp changes on every alias write and survives a re-open', async () => {
+    const idbf = new IDBFactory();
+    const open1 = () => openIndexedDbStore({ keyRange: IDBKeyRange, indexedDB: idbf, name: 'alias-stamp' });
+    const mem = createMemoryStore();
+    const a = await open1();
+    const seen = [await a.aliasStamp!()];
+    for (let i = 0; i < 3; i++) { await a.putAliases(mk(1)); seen.push(await a.aliasStamp!()); }
+    expect(new Set(seen).size).toBe(4);
+    const m = [await mem.aliasStamp!()]; await mem.putAliases(mk(1)); m.push(await mem.aliasStamp!());
+    expect(m[0]).not.toBe(m[1]);
+    const last = seen[seen.length - 1];
+    const b = await open1();
+    expect(await b.aliasStamp!()).toBe(last);
+    await b.putAliases(mk(1));
+    expect(await b.aliasStamp!()).not.toBe(last);
+  });
+});

@@ -225,7 +225,20 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
    * ids) is rebuilt at most once per distinct state and cannot loop.
    */
   const rekeyed = new Map<string, Set<string>>();
+  /**
+   * The scan is skipped when the store offers `aliasStamp` and the stamp equals the one read before this learner's last scan (which found
+   * nothing, or finished a rebuild): a stale row can only appear when an alias row is written, and rows the projection writes are keyed by
+   * resolved ids. The stamp is read BEFORE scanning, so an alias written during the scan is seen next time. A store without `aliasStamp` scans every time.
+   */
+  const scannedAt = new Map<string, string>();
   async function rekeyIfAliased(learnerId: string): Promise<{ read: number; seq: number } | undefined> {
+    const stamp = store.aliasStamp ? await store.aliasStamp() : undefined;
+    if (stamp !== undefined && scannedAt.get(learnerId) === stamp) return undefined;
+    const result = await scanForStale(learnerId);
+    if (stamp !== undefined) scannedAt.set(learnerId, stamp);
+    return result;
+  }
+  async function scanForStale(learnerId: string): Promise<{ read: number; seq: number } | undefined> {
     const rows = await store.getKnowledge(learnerId);
     if (!rows.length) return undefined;
     const resolve = await resolverFor(rows.map((r) => r.unitId));

@@ -22,7 +22,7 @@ import { freshModel, planCouldHaveChanged } from '../freshness';
 import { icon, type IconName } from '../icons';
 import { loadingMark } from '../loading';
 import { MAX_SNAPSHOT_WORDS, readSnapshot, restoreMissing, type ReviewSnapshot } from '../snapshot';
-import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
+import { beginSession, currentReviewModel, endSavedSession, forgetReviewModels, recoverableSessions, resumeSession, reviewModelRevision, type ReviewModel } from '../workspace';
 import * as decksScreen from './decks';
 import { renderHistory, renderTransfer } from './history';
 import * as myVocab from './myvocab';
@@ -50,7 +50,7 @@ const painted = new WeakMap<AppContext, Map<string, PaintedHome>>();
 /** How long a painted home is reused unchanged before the Repository is asked again anyway. */
 export const HOME_MEMO_MS = 10 * 60_000;
 /** Forgets the painted homes of one app instance: for a test that swaps the Repository under the app (in use, a change there reaches the device as events, which change the key). */
-export const forgetPaintedHome = (ctx: AppContext): void => { painted.delete(ctx); };
+export const forgetPaintedHome = (ctx: AppContext): void => { painted.delete(ctx); forgetReviewModels(ctx); };
 
 /** The local reads the home depends on, and the key over them. */
 interface HomeLocal { id: string; key: string; holdOut: Set<string>; saved: SavedDeck[]; resumable: Awaited<ReturnType<typeof recoverableSessions>>; snapshot: ReviewSnapshot | undefined }
@@ -97,6 +97,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   const latestOf = (m: ReviewModel): ReviewModel => latest && latest !== m && m.provisional && latest.identity.enrolmentId === m.identity.enrolmentId ? latest : m;
   /** How many events the painted model was folded from; a sync that brings more repaints the home. */
   let paintedEvents = -1;
+  /** How many refreshes that changed the model had landed when the home was last drawn; one that lands later repaints it. */
+  let paintedRevision = -1;
   let nextDueTimer: number | undefined;
 
   function armNextDueRefresh(model: ReviewModel): void {
@@ -106,7 +108,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       .map(item => Date.parse(item.schedule.due)).filter(due => Number.isFinite(due) && due > now).sort((a, b) => a - b)[0];
     if (nextDue === undefined) { nextDueTimer = undefined; return; }
     const delay = Math.min(2_147_000_000, Math.max(25, nextDue - now + 25));
-    nextDueTimer = ctx.deps.win.setTimeout(() => { nextDueTimer = undefined; if (view.alive()) void paint(true); }, delay) as unknown as number;
+    nextDueTimer = ctx.deps.win.setTimeout(() => { nextDueTimer = undefined; if (view.alive()) void requestRepaint(true, false); }, delay) as unknown as number;
   }
 
   /** Draws the home in Ecclesia's shape: the gold mark and the one title, then one list of choices (Current Deck, Review Deck, Saved decks, My vocab, GoTell, Biblia). */
@@ -117,28 +119,30 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     append(root, [homeHead(), goReviewEntry(model, deck, review, resumeId, selectedCount, savedCount), vocabEntry(Math.max(words, 0), vocabCompleteness), tellEntry(), ...(ctx.deps.links?.biblia ? [bibliaEntry(ctx.deps.links.biblia)] : []), status]);
   }
 
-  async function paint(force = false): Promise<void> {
+  /** `quiet`: a repaint that only shows a refresh that just landed must not start another refresh. */
+  async function paint(force = false, quiet = false): Promise<void> {
     const local = await homeLocal(ctx).catch(() => undefined);
     const now = ctx.deps.now().getTime();
     const memo = local ? painted.get(ctx)?.get(local.id) : undefined;
     const memoTtl = memo && (memo.model.candidateSource === 'cached' || memo.model.knowledgeStatus.source === 'partial' || memo.model.candidateRecoveryIncomplete || memo.model.candidateReadinessIncomplete)
       ? 30_000 : HOME_MEMO_MS;
-    if (!force && memo && local && memo.key === local.key && now - memo.at < memoTtl && !scheduleMovedSince(memo.model, now) && !planCouldHaveChanged(memo.model, now)) {
+    // an incomplete recovery or readiness check is never reused: the next visit asks again (ReviewModel.candidateRecoveryIncomplete)
+    const incomplete = !!memo && (!!memo.model.candidateRecoveryIncomplete || !!memo.model.candidateReadinessIncomplete);
+    if (!force && memo && !incomplete && local && memo.key === local.key && now - memo.at < memoTtl && !scheduleMovedSince(memo.model, now) && !planCouldHaveChanged(memo.model, now)) {
       if (!view.alive()) return;
       paintedEvents = memo.model.events.length;
       draw(memo.model, memo.deck, memo.review, memo.resumeId, memo.saved, memo.words, memo.selectedCount, memo.vocabCompleteness);
       return;
     }
     // the first paint shows the loading mark; a repaint over a painted home keeps it until the new one is ready
-    if (!root.childElementCount) {
-      root.append(loadingMark('Loading your deck…'));
-      // this device's last complete prepared deck first, asking the service nothing (2026-11-08: signed in, every visit to the home waited 20-70 s
-      // for the live rebuild); the live model below replaces it, and is drawn only where it differs
-      const saved = await loadReviewModel(ctx, { savedOnly: true }).catch(() => undefined);
-      if (!view.alive()) return;
-      if (saved) await paintModel(saved, now);
-    }
-    const model = await loadReviewModel(ctx);
+    if (!root.childElementCount) root.append(loadingMark('Loading your deck…'));
+    // this device's own copy at once (the last live model of this log, else the last complete prepared deck and the local log), asking the service
+    // nothing (2026-11-10: the home no longer waits for the network when it holds a copy). The refresh runs in the background; when it lands with
+    // something different the home is told (ctx.onData) and repaints through requestRepaint, drawing only where it differs. With no copy on this
+    // device (a first run) this waits for the live load, at most REFRESH_DEADLINE_MS.
+    const idn = await ctx.identity().catch(() => undefined);
+    paintedRevision = idn ? reviewModelRevision(ctx, idn) : -1;
+    const model = await currentReviewModel(ctx, quiet ? { noRefresh: true } : {});
     if (!view.alive()) return;
     await paintModel(model, now);
   }
@@ -148,14 +152,17 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     paintedEvents = model?.events.length ?? -1;
     if (!model) {
       clear(root);
-      const [enrolments, mode] = await Promise.all([ctx.enrolments(), ctx.mode()]);
+      const [enrolments, mode, known] = await Promise.all([ctx.enrolments(), ctx.mode(), ctx.identity().catch(() => undefined)]);
       const setup = ctx.deps.links?.setup;
+      // a learner exists but nothing could be built within the deadline: the live load goes on and the home repaints when it lands
+      if (known) { append(root, [h('div', { class: 'notice', id: 'deck-not-loaded' }, p('Your deck could not be loaded yet. It appears here when the service answers.'),
+        button('Check again', () => { void requestRepaint(true, false); }, { id: 'recheck' })), status]); return; }
       append(root, [enrolments.length ? p('Choose a language above.') : h('div', { class: 'notice', id: 'no-enrolment' },
         p(mode === 'device'
           ? 'You have no language yet. GoReview reviews what you met while reading, so choose your language in GoLearn setup first; it appears here at once, and no account is needed.'
           : 'You have no language yet. GoReview reviews what you met while reading, so choose a language in GoLearn setup, on the same account. It appears here after the next sync.'),
         setup ? h('p', {}, h('a', { class: 'btn', id: 'link-setup', href: setup }, 'Choose your language')) : null,
-        button('Check again', () => { void (async () => { await ctx.refreshProfile(); await paint(); })(); }, { id: 'recheck' }))]);
+        button('Check again', () => { void (async () => { await ctx.refreshProfile(); await requestRepaint(true, false); })(); }, { id: 'recheck' }))]);
       return;
     }
     const id = model.identity;
@@ -361,7 +368,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
         const now = await planCurrentDeck(ctx, fresh, holdOut, undefined, 'current');
         const saved = await saveDeck(ctx, fresh.identity, now.entries);
         setStatus(status, saved ? 'Deck saved. It waits in Saved decks; a fresh Current Deck is drawn.' : 'There is no deck to save yet.', saved ? 'ok' : 'info');
-        await paint();
+        await requestRepaint(true, false);
       })();
     }, { class: 'linklike', id: 'save-deck' }));
     const whyNoNew = drilling ? undefined : explainAdmissions(m, deck);
@@ -379,30 +386,46 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
         ...rowBody('saved', 'Saved decks', h('span', { class: 'ec-row-caption', id: 'previous-count' }, savedCount ? `${savedCount} saved` : 'None saved yet'))));
   }
 
-  await paint();
-
+  // Every repaint goes through this one guarded function, registered before the first paint: one runs at a time, a request that arrives meanwhile
+  // is folded into one more run. A conditional request (a sync, a live update, a refresh that landed) repaints only when the log has a different number
+  // of events or a refresh changed the model, and waits while a field has focus; an unconditional one (a press, Check again, the next-due timer) always does.
+  let repainting: Promise<void> | undefined;
+  let pending: { force: boolean; conditional: boolean; quiet: boolean } | undefined;
+  function requestRepaint(force: boolean, conditional: boolean, first = false): Promise<void> {
+    pending = pending ? { force: pending.force || force, conditional: pending.conditional && conditional, quiet: false } : { force, conditional, quiet: false };
+    if (repainting) return repainting;
+    const loop = (async (): Promise<void> => {
+      try {
+        while (pending) {
+          const req = pending; pending = undefined;
+          if (!view.alive()) return;
+          let forced = req.force;
+          let quiet = false;
+          if (req.conditional) {
+            try {
+              const id = await ctx.identity();
+              if (!id) continue;
+              const count = (await ctx.events(id.languageId)).length;
+              const active = ctx.deps.doc.activeElement;
+              const typing = !!active && root.contains(active) && /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName);
+              const refreshed = reviewModelRevision(ctx, id) !== paintedRevision;
+              if (typing || (count === paintedEvents && !refreshed)) continue;
+              forced = forced || refreshed; // a model that changed is drawn even when the painted home's memo still holds
+              quiet = refreshed && count === paintedEvents && !req.force; // nothing but a landed refresh to show: it does not start the next one
+            } catch { continue; }
+          }
+          try { await paint(forced, quiet); } catch (error) { if (first) throw error; /* a later repaint: the home stays as painted */ }
+        }
+      } finally { repainting = undefined; }
+    })();
+    repainting = loop;
+    return loop;
+  }
   // E-04: the first pull of this device may finish after the home was painted; a card another device added must not stay invisible
-  // until the next visit. Repaint when a sync leaves the local log with a different number of events (unless the learner is acting).
-  let repainting = false;
-  let again = false;
-  const repaintIfChanged = async (): Promise<void> => {
-    if (repainting) { again = true; return; }
-    repainting = true;
-    try {
-      do {
-        again = false;
-        if (!view.alive()) return;
-        const id = await ctx.identity();
-        if (!id) return;
-        const count = (await ctx.events(id.languageId)).length;
-        const active = ctx.deps.doc.activeElement;
-        const typing = !!active && root.contains(active) && /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName);
-        if (count !== paintedEvents && !typing) await paint();
-      } while (again);
-    } catch { /* the home stays as painted */ } finally { repainting = false; }
-  };
-  void ctx.whenSynced().then(repaintIfChanged);
-  view.onDispose(ctx.onSync(() => { void repaintIfChanged(); }));
-  // a live update: the same guarded repaint (it waits while a field has focus)
-  view.onDispose(ctx.onData(() => { void repaintIfChanged(); }));
+  // until the next visit. A live update (or a refresh of the model) repaints the same way.
+  view.onDispose(ctx.onSync(() => { void requestRepaint(false, true); }));
+  view.onDispose(ctx.onData(() => { void requestRepaint(false, true); }));
+  void ctx.whenSynced().then(() => { void requestRepaint(false, true); });
+
+  await requestRepaint(false, false, true);
 }

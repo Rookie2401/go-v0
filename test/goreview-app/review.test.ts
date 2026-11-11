@@ -100,8 +100,11 @@ describe('the candidate list', () => {
   it('falls back to the last list the service sent when it cannot be reached', async () => {
     const rig = await fixtureRig();
     rig.service.allDown = true;
+    // a refresh is not started again within a minute (REFRESH_MIN_INTERVAL_MS) unless the log changed or the last one failed
+    rig.clock.set(new Date(rig.clock.now.getTime() + 2 * 60_000).toISOString());
     await reopenDetails(rig);
-    expect(rig.q('#candidates').textContent).toContain('these candidates are from');
+    // the page opens from this device's copy and the note arrives with the refresh that failed (2026-11-10)
+    await until(() => !!rig.root.querySelector('#candidates')?.textContent?.includes('these candidates are from'), 'the note that the service could not be reached');
     expect(rig.root.querySelector(`[data-unit="${unitOf('det')}"]`)).not.toBeNull();
   });
 });

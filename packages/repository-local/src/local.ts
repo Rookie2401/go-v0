@@ -14,6 +14,9 @@ import { MAX_SURFACE_CHARS, surfaceFromEncounterUnitId } from '../../repository-
 import type { Account, GoEvent, Learner } from '../../repository-contract/src';
 import { createProjectionEngine } from '../../repository-engine/src';
 import { createMemoryStore } from '../../repository-store/src/memory';
+import { openIndexedDbStore } from '../../repository-store/src/indexeddb';
+import { createIndexedDbArea } from '../../repository-sync/src/idb-area';
+import { splitStore } from './split-store';
 import type { ConcreteStore } from '../../repository-store/src/rules';
 import { createRepositoryApi } from '../../repository-service/src/api';
 import type { RepositoryApi } from '../../repository-service/src/api';
@@ -48,7 +51,14 @@ export interface LocalRepository {
 }
 
 export interface OpenLocalOptions {
+  /** The key-value area of the present path. In IndexedDB mode (`idb`) it is not read or written. */
   area: KeyValueArea;
+  /**
+   * Opens the repository over IndexedDB instead (see ./split-store): the learner's and the linguistic layer's rows live in the IndexedDB store `name`, the
+   * small rows (meta, upload markers, the pull cursor) in a second database `<name>-kv` (one database cannot hold both: each opener creates only its own
+   * object stores at version 1). Nothing is loaded or folded at open. Without it, nothing changes.
+   */
+  idb?: { indexedDB: IDBFactory; name: string; keyRange?: typeof IDBKeyRange };
   /** ISO clock (the service stamps `recordedAt` and checks event times with it). Default: the system clock. */
   now?: () => string;
   /** Analysers by language id, read at call time (a later-loaded analyser is used). Albanian and Spanish are resolved by the service's own resolver. */
@@ -108,6 +118,8 @@ interface State {
   linguistics: ReturnType<typeof createLocalLinguistics>;
   loaded: LoadReport;
   token: string;
+  /** IndexedDB mode: what `clear()` and `close()` must release. */
+  idb?: { area: KeyValueArea & { close(): void }; durable: ConcreteStore };
 }
 
 /** A stable object that forwards every property to whatever `get()` currently returns (so `clear()` can swap the state under an `api` the host already holds). */
@@ -132,6 +144,7 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
 
   async function build(keepDeviceId: string | undefined): Promise<State> {
     const stats: PersistStats = { writes: 0, failures: 0, pendingWrites: 0 };
+    if (opts.idb) return buildIdb(keepDeviceId, stats);
     const io: PersistIO = { area: opts.area, prefix, keys, stats, pendingWrites: {} };
     const stored = (await opts.area.get(keys.meta))[keys.meta] as Partial<LocalMeta> | undefined;
     const valid = !!stored && stored.format === FORMAT && typeof stored.learnerId === 'string' && typeof stored.deviceId === 'string' && typeof stored.accountId === 'string' && typeof stored.createdAt === 'string';
@@ -166,6 +179,44 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
     await inner.putSession({ sessionId: randomId(), accountId: meta.accountId, learnerId: meta.learnerId, deviceId: meta.deviceId, createdAt: at, expiresAt, tokenHash: sha256Hex(token) });
     return { meta, io, store, engine, linguistics, loaded, token };
   }
+
+  /** The IndexedDB path: no persisting wrapper, no load, no rebuild. The only read at open is the meta row, by key. */
+  async function buildIdb(keepDeviceId: string | undefined, stats: PersistStats): Promise<State> {
+    const o = opts.idb!;
+    const kr = o.keyRange ? { keyRange: o.keyRange } : {};
+    const kv = await createIndexedDbArea({ indexedDB: o.indexedDB, name: `${o.name}-kv`, ...kr });
+    const durable = await openIndexedDbStore({ indexedDB: o.indexedDB, name: o.name, ...kr, now });
+    const io: PersistIO = { area: kv, prefix, keys, stats, pendingWrites: {} };
+    const stored = (await kv.get(keys.meta))[keys.meta] as Partial<LocalMeta> | undefined;
+    const valid = !!stored && stored.format === FORMAT && typeof stored.learnerId === 'string' && typeof stored.deviceId === 'string' && typeof stored.accountId === 'string' && typeof stored.createdAt === 'string';
+    const wantDevice = opts.deviceId ?? keepDeviceId;
+    const meta: LocalMeta = valid
+      ? { ...(stored as LocalMeta), ...(wantDevice ? { deviceId: wantDevice } : {}) }
+      : { format: FORMAT, learnerId: randomId(), accountId: randomId(), deviceId: wantDevice ?? `local-${randomId().slice(0, 12)}`, createdAt: now() };
+    // unlike the present path the identity row is written at once (the store's own writes bypass any wrapper that could carry it along)
+    if (!valid || meta.deviceId !== stored?.deviceId) await kv.set({ [keys.meta]: meta });
+
+    const volatile = createMemoryStore({ now });
+    const store = splitStore(durable, volatile);
+    await store.putLearner({ learnerId: meta.learnerId, createdAt: meta.createdAt });
+    await store.putAccount({ accountId: meta.accountId, learnerId: meta.learnerId, email: LOCAL_EMAIL, createdAt: meta.createdAt, passwordHash: '!', localOnly: true } as Account & { passwordHash: string });
+    await store.putDevice({ deviceId: meta.deviceId, learnerId: meta.learnerId, platform: 'local', registeredAt: meta.createdAt });
+
+    const linguistics = createLocalLinguistics(store, { now, ...(opts.adapters ? { adapters: opts.adapters } : {}) });
+    const engine = createProjectionEngine({ store, now });
+
+    const token = randomToken();
+    const at = now();
+    const expiresAt = new Date(Date.parse(at) + SESSION_YEARS * 365 * 24 * 3600 * 1000).toISOString();
+    await store.putSession({ sessionId: randomId(), accountId: meta.accountId, learnerId: meta.learnerId, deviceId: meta.deviceId, createdAt: at, expiresAt, tokenHash: sha256Hex(token) });
+    return { meta, io, store, engine, linguistics, loaded: { events: 0, skippedEvents: 0, renumbered: false }, token, idb: { area: kv, durable } };
+  }
+
+  const deleteDb = (name: string): Promise<void> => new Promise((resolve, reject) => {
+    const q = opts.idb!.indexedDB.deleteDatabase(name);
+    q.onsuccess = () => resolve();
+    q.onerror = () => reject(q.error ?? new Error('could not delete the IndexedDB database'));
+  });
 
   state = await build(undefined);
 
@@ -215,6 +266,17 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
     pullFrom: (remote) => lock.run(() => pull(context(), remote, randomId)),
     rebuild: () => lock.run(async () => { await state.engine.rebuild(state.meta.learnerId); }),
     clear: () => lock.run(async () => {
+      if (state.idb) {
+        // every learner table, the shared linguistic tables and the small rows go with the two databases (what the present path does row by row)
+        const keep = state.meta.deviceId;
+        state.idb.area.close();
+        await state.idb.durable.close();
+        await deleteDb(opts.idb!.name);
+        await deleteDb(`${opts.idb!.name}-kv`);
+        state = await build(keep);
+        api.token = state.token;
+        return;
+      }
       const mine = await opts.area.list(prefix);
       mine.push(...Object.keys(state.io.pendingWrites));
       if (state.io.pendingMeta) mine.push(state.io.keys.meta);
@@ -226,6 +288,7 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
       if (closed) return;
       closed = true;
       await state.store.close();
+      state.idb?.area.close();
     },
   };
 
@@ -238,12 +301,14 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
     let uploaded = 0;
     let fromRemote = 0;
     for (const m of markers.values()) { if (m.from !== undefined) fromRemote += 1; else uploaded += 1; }
-    const all = await opts.area.get(await opts.area.list(prefix));
+    // IndexedDB mode: only the key-value rows (meta, upload markers, pull cursor) are measured; the store's own rows are not read back for a count.
+    const kvArea = state.io.area;
+    const all = await kvArea.get(await kvArea.list(prefix));
     let storedChars = 0;
     for (const [k, v] of Object.entries(all)) { try { storedChars += k.length + JSON.stringify(v).length; } catch { /* an unserialisable row counts nothing */ } }
     return {
       learnerId: state.meta.learnerId, deviceId: state.meta.deviceId, events: events.length,
-      pendingUpload: (await pendingFor(c)).length, uploaded, fromRemote, persistence: { ...state.io.stats }, waiting: lastWaiting, loaded: state.loaded, storedChars,
+      pendingUpload: (await pendingFor(c)).length, uploaded, fromRemote, persistence: state.idb ? { writes: 0, failures: 0, pendingWrites: 0 } : { ...state.io.stats }, waiting: lastWaiting, loaded: state.loaded, storedChars,
     };
   });
   return repo;

@@ -39,7 +39,9 @@ describe.skipIf(!have)('the built extension', () => {
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
     // 2026-10-20: 1,050 -> 1,100 KB for the speech proxy client, the GoListen device registry and the encounter recorder
     // (background.js measured 1,078 KB when that work was committed).
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1100 * KB);
+    // 2026-11-10: 1,100 -> 1,180 KB for the device Repository's IndexedDB store, its one-time verified migration and the split store
+    // (background.js measured 1,131 KB; in exchange the worker's cold open of a 12,000-event history goes from 3.4 s to about 1 ms).
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1180 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.

@@ -342,7 +342,10 @@ export interface LocalRepoStatus {
   enrolments: LocalEnrolmentView[];
   /** The active language: the selected open enrolment of an explicit choice; absent until the learner has chosen one. */
   languageId?: string;
-  /** Characters of the rows kept in `chrome.storage.local` (a lower bound of the bytes; the browser allows about 10 MB for the whole extension). */
+  /**
+   * Characters of the device Repository's key-value rows (a lower bound of their bytes). While the history is kept as rows in `chrome.storage.local` that is the
+   * whole history; once it has moved into IndexedDB (2026-11-10) it is only the small rows (identity, upload markers, pull cursor), not the history.
+   */
   storedChars: number;
   /** Writes the browser refused (storage full): the data is kept for this session only. */
   writeFailures: number;

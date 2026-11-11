@@ -31,7 +31,7 @@ import { FORMAT, keysFor, loadInto, persistingStore, removeRows, writeRows } fro
 import type { LoadReport, LocalMeta, PersistIO, PersistStats } from './persist';
 import { allEvents, markersOf, markOwned, pendingFor, pull, upload } from './transfer';
 import { cowArea, deleteBothDatabases, migrationKey, readState, runMigration, writeState } from './migrate';
-import type { MigrationInject, Probe } from './migrate';
+import type { MigrationInject, MigrationState, Probe } from './migrate';
 import type { TransferContext } from './transfer';
 
 export interface LocalIdentity { learnerId: string; deviceId: string }
@@ -103,7 +103,7 @@ export interface LocalInspection {
 
 export interface StorageInfo {
   mode: 'rows' | 'indexeddb' | 'rows-frozen';
-  migration?: { state: 'switched' | 'failed'; at: string; attempt: number; events?: number; reason?: string; ms?: number; importMs?: number; verifyMs?: number; verified?: Record<string, number> };
+  migration?: { state: 'switched' | 'failed'; at: string; attempt: number; events?: number; recovered?: boolean; reason?: string; ms?: number; importMs?: number; verifyMs?: number; verified?: Record<string, number> };
 }
 
 const inspectors = new WeakMap<LocalRepository, () => Promise<LocalInspection>>();
@@ -184,13 +184,39 @@ async function openMigrating(opts: OpenLocalOptions, mig: NonNullable<OpenLocalO
   const rows = (area: KeyValueArea, over: Partial<Core> = {}): Promise<LocalRepository> => openCore(opts, { mode: 'rows', area, switched: false, frozen: false, attempt: mig.attempt, ...over });
   const durable = (over: Partial<Core> = {}): Promise<LocalRepository> => openCore(opts, { mode: 'indexeddb', area: old, switched: true, frozen: false, attempt: mig.attempt, ...over });
 
+  const probeOf = async (repo: LocalRepository): Promise<Probe> => { const f = probes.get(repo); if (!f) throw new Error('not a local repository'); return f(); };
+  const { idb: _i, migrate: _m, ...plain } = opts;
+  void _i; void _m;
+  const migrate = (): ReturnType<typeof runMigration> => runMigration({
+    oldArea: old, prefix, idb, now, attempt: mig.attempt, ...(mig.inject ? { inject: mig.inject } : {}),
+    openPresent: async (area) => probeOf(await openCore({ ...plain, area }, { mode: 'rows', area, switched: false, frozen: false, attempt: mig.attempt })),
+    openIdb: async () => probeOf(await openCore({ ...plain, area: old, idb }, { mode: 'indexeddb', area: old, switched: true, frozen: false, attempt: mig.attempt })),
+  });
+
   const state = await readState(old, prefix); // the first read: the state row, by key
 
   if (state?.state === 'switched') {
     if (state.clearing) await wipeOldRows(opts, prefix, state.attempt, false); // a `clear()` that did not finish: finish it, then start fresh
     const events = state.clearing ? 0 : state.events;
-    const info = { state: 'switched' as const, at: state.at, attempt: state.attempt, ...(events !== undefined ? { events } : {}) };
-    try { return await durable({ migration: info, attempt: state.attempt }); } catch { /* IndexedDB will not open: the frozen rows answer, writes stay in memory */ }
+    const wasRecovered = !state.clearing && (state as { recovered?: boolean }).recovered === true;
+    const info = { state: 'switched' as const, at: state.at, attempt: state.attempt, ...(events !== undefined ? { events } : {}), ...(wasRecovered ? { recovered: true } : {}) };
+    try {
+      // The browser may have discarded the IndexedDB data while the state still says `switched` with a history: the key-value database then holds no
+      // identity row. If the frozen rows still hold one, the history is brought back from them (the same migration, the same attempt) instead of
+      // starting an empty identity; if they hold none either, the fresh store is used as it is.
+      if ((events ?? 0) > 0 && (await idbLostItsData(idb, keys.meta)) && (await old.get(keys.meta))[keys.meta] !== undefined) {
+        const result = await migrate();
+        if (result.ok) {
+          const repo = repoOfProbe.get(result.probe)!;
+          const at = now();
+          try { await writeState(old, prefix, { state: 'switched', at, attempt: state.attempt, events: result.events, verified: result.verified, recovered: true } as MigrationState); } catch { /* the state stays as runMigration wrote it */ }
+          setMigration(repo, { state: 'switched', at, attempt: state.attempt, events: result.events, recovered: true, ms: result.ms, importMs: result.importMs, verifyMs: result.verifyMs, verified: result.verified });
+          return repo;
+        }
+        return await rows(old, { migration: { state: 'failed', at: now(), attempt: mig.attempt, reason: `recovery: ${result.reason}`, ms: result.ms } });
+      }
+      return await durable({ migration: info, attempt: state.attempt });
+    } catch { /* IndexedDB will not open: the frozen rows answer, writes stay in memory */ }
     return rows(cowArea(old), { switched: true, frozen: true, attempt: state.attempt, migration: info });
   }
   const hasMeta = state === undefined && (await old.get(keys.meta))[keys.meta] !== undefined;
@@ -206,20 +232,19 @@ async function openMigrating(opts: OpenLocalOptions, mig: NonNullable<OpenLocalO
     return rows(old, { migration: { state: 'failed', at: state.at, attempt: state.attempt, ...(state.reason ? { reason: state.reason } : {}) } });
   }
 
-  const probeOf = async (repo: LocalRepository): Promise<Probe> => { const f = probes.get(repo); if (!f) throw new Error('not a local repository'); return f(); };
-  const { idb: _i, migrate: _m, ...plain } = opts;
-  void _i; void _m;
-  const result = await runMigration({
-    oldArea: old, prefix, idb, now, attempt: mig.attempt, ...(mig.inject ? { inject: mig.inject } : {}),
-    openPresent: async (area) => probeOf(await openCore({ ...plain, area }, { mode: 'rows', area, switched: false, frozen: false, attempt: mig.attempt })),
-    openIdb: async () => probeOf(await openCore({ ...plain, area: old, idb }, { mode: 'indexeddb', area: old, switched: true, frozen: false, attempt: mig.attempt })),
-  });
+  const result = await migrate();
   if (result.ok) {
     const repo = repoOfProbe.get(result.probe)!;
     setMigration(repo, { state: 'switched', at: now(), attempt: mig.attempt, events: result.events, ms: result.ms, importMs: result.importMs, verifyMs: result.verifyMs, verified: result.verified });
     return repo;
   }
   return rows(old, { migration: { state: 'failed', at: now(), attempt: mig.attempt, reason: result.reason, ms: result.ms } });
+}
+
+/** True when the small-rows database holds no identity row (never written, or discarded by the browser). Opening it creates it empty, as opening the repository would. */
+async function idbLostItsData(idb: NonNullable<OpenLocalOptions['idb']>, metaKey: string): Promise<boolean> {
+  const kv = await createIndexedDbArea({ indexedDB: idb.indexedDB, name: `${idb.name}-kv`, ...(idb.keyRange ? { keyRange: idb.keyRange } : {}) });
+  try { return (await kv.get(metaKey))[metaKey] === undefined; } finally { kv.close(); }
 }
 
 const migrationSetters = new WeakMap<LocalRepository, (m: StorageInfo['migration']) => void>();

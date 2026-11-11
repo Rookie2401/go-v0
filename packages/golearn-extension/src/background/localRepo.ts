@@ -1,7 +1,9 @@
 /**
  * The device-local Repository inside the background worker: GoLearn without an account.
  *
- * ONE instance per extension, here (`openLocalRepository` over `chrome.storage.local`, rows under `golearn:repo:`). Extension pages reach it
+ * ONE instance per extension, here: `openLocalRepository` over IndexedDB (databases `golearn-repository` and `golearn-repository-kv`) when the worker has it, after a
+ * one-time verified move of the older rows; else over `chrome.storage.local` (rows under `golearn:repo:`, which also stay, frozen, after the move and hold the
+ * migration's state row). Extension pages reach it
  * with `MSG.localRepo` (see `LocalRepoRequest` in ../protocol.ts); a content script never does. Nothing here leaves the device: the only road out is
  * `uploadTo(api)` with the signed-in session's client, run once after a successful sign-in (and on request), followed by a pull.
  *
@@ -12,7 +14,7 @@
  *  - Nothing here may break recording: any failure is swallowed and the event stays in the worker's own log and queue.
  */
 import type { Enrolment, GoEvent, LearningGoal } from '../../../repository-contract/src';
-import { inspectLocal, markEventsOwned, openLocalRepository, type LocalRepository } from '../../../repository-local/src';
+import { inspectLocal, markEventsOwned, openLocalRepository, type LocalRepository, type OpenLocalOptions, type StorageInfo } from '../../../repository-local/src';
 import { adaptStorageArea, createLock } from '../../../repository-sync/src';
 import type { LanguageAdapter } from '../../../../src/core';
 import type { StorageArea } from '../platform';
@@ -35,12 +37,28 @@ export const ENROLMENTS_KEY = 'golearn:local-enrolments';
 interface EnrolmentSummary { enrolmentId: string; languageId: string; startedAt: string; explicit: boolean }
 const FORMAT = 'golearn-local-export@1';
 
+/**
+ * The release's migration number (Stage 2, docs/ecosystem/LOADING-ARCHITECTURE-2026-11-10.md). A device whose one-time move into IndexedDB failed does not try
+ * again with the same number: raise it to make those devices try again.
+ */
+export const LOCAL_MIGRATION_ATTEMPT = 1;
+/** The two IndexedDB databases are `golearn-repository` and `golearn-repository-kv`. */
+export const LOCAL_IDB_NAME = 'golearn-repository';
+/** The browser stops a Manifest V3 worker after about 30 s without an extension event (IndexedDB work does not count): ping the extension API this often while the open runs. */
+export const KEEP_ALIVE_MS = 20_000;
+
 export interface LocalRepoServiceOptions {
   area: StorageArea;
   deviceId: () => Promise<string>;
   session: SessionManager;
   packs: PackProvider;
   now: () => number;
+  /** The worker's IndexedDB (the repository opens over it, and moves the old rows into it once). Absent: the rows in `area`, as before. */
+  idb?: { indexedDB: IDBFactory; keyRange?: typeof IDBKeyRange };
+  /** Called every 20 s while the repository is opening (a migration can take many seconds), so the browser does not stop the worker. */
+  keepAlive?: () => void;
+  /** Test seam: passed to the migration as `migrate.inject`. */
+  migrationInject?: NonNullable<OpenLocalOptions['migrate']>['inject'];
 }
 
 interface UploadStatus { at: number; sent: number; duplicates: number; failed: number; waiting?: number; pulled: number; error?: string }
@@ -67,9 +85,19 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   const adapters = new Proxy({}, { get: (_t, k) => (typeof k === 'string' ? getAnalyser(k) : undefined) }) as Record<string, LanguageAdapter | undefined>;
 
   async function start(): Promise<LocalRepository | undefined> {
+    // the migration of a large history takes seconds, and the browser stops a worker that sees no extension event for about 30 s
+    const ping = opts.keepAlive;
+    const timer = ping ? globalThis.setInterval(() => { try { ping(); } catch { /* a convenience */ } }, KEEP_ALIVE_MS) : undefined;
     try {
-      return await openLocalRepository({ area: adaptStorageArea(opts.area), keyPrefix: LOCAL_PREFIX, adapters, deviceId: await opts.deviceId() });
-    } catch { return undefined; }
+      const idb = opts.idb;
+      return await openLocalRepository({
+        area: adaptStorageArea(opts.area), keyPrefix: LOCAL_PREFIX, adapters, deviceId: await opts.deviceId(),
+        ...(idb ? {
+          idb: { indexedDB: idb.indexedDB, name: LOCAL_IDB_NAME, ...(idb.keyRange ? { keyRange: idb.keyRange } : {}) },
+          migrate: { attempt: LOCAL_MIGRATION_ATTEMPT, ...(opts.migrationInject ? { inject: opts.migrationInject } : {}) },
+        } : {}),
+      });
+    } catch { return undefined; } finally { if (timer !== undefined) globalThis.clearInterval(timer); }
   }
   /** The repository, opened once; a failed open is tried again on the next call. */
   function open(): Promise<LocalRepository | undefined> {
@@ -246,12 +274,21 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
     enrolmentOf.clear();
     summaryWritten = '';
     try { await opts.area.remove([ACTIVE_KEY, UPLOAD_STATUS_KEY, ENROLMENTS_KEY]); } catch { /* absent */ }
-    if (repo) await repo.clear();
+    if (repo) { await repo.clear(); return; }
+    // The repository would not open (so it cannot clear itself): take the learner's data away by hand, both databases first, then the frozen rows. With no
+    // state row left, the next open is a fresh device in IndexedDB. Without IndexedDB nothing was ever stored anywhere but the rows.
+    if (opts.idb) {
+      for (const name of [LOCAL_IDB_NAME, `${LOCAL_IDB_NAME}-kv`]) {
+        await new Promise<void>((resolve) => { const q = opts.idb!.indexedDB.deleteDatabase(name); q.onsuccess = () => resolve(); q.onerror = () => resolve(); q.onblocked = () => resolve(); });
+      }
+    }
+    const mine = await opts.area.get(null).then((all) => Object.keys(all).filter((k) => k.startsWith(LOCAL_PREFIX))).catch(() => [] as string[]);
+    if (mine.length) await opts.area.remove(mine);
   }
 
   // ───────────── the page-facing operations ─────────────
 
-  async function status(): Promise<LocalRepoStatus> {
+  async function status(): Promise<LocalRepoStatus & { storage?: StorageInfo }> {
     const repo = await open();
     if (!repo) {
       return { ok: true, available: false, events: 0, pendingUpload: 0, uploaded: 0, fromAccount: 0, enrolments: [], storedChars: 0, writeFailures: 0 };
@@ -264,6 +301,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
       enrolments: enrolments.sort(bySetup).map((e) => view(e, active)), ...(languageId ? { languageId } : {}),
       storedChars: info.storedChars, writeFailures: info.persistence.failures, ...(info.persistence.lastError ? { lastWriteError: info.persistence.lastError } : {}),
       ...(last ? { lastUpload: last } : {}),
+      storage: info.storage, // developer diagnostics: where the history lives, and how the move into IndexedDB went
     };
   }
 

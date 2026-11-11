@@ -146,6 +146,25 @@ goes through that path (`repository-local/src/transfer.ts` pull). The migration 
 The recorder's log and the upload queue stay where they are in this stage (they are the durable outbox); folding the three
 copies of history into one is a later simplification.
 
+### Stage 2 as wired (extension)
+
+- **First start after the update.** The worker opens the device Repository over IndexedDB (`golearn-repository`, `golearn-repository-kv`) and, once, moves
+  the `golearn:repo:` rows in and verifies the copy before switching (about 12.5 s at 12,000 events, measured). A device with no history starts fresh in
+  IndexedDB. While the open runs the worker touches an extension API every 20 s so the browser does not stop it. Every start after that reads only the state
+  row `golearn:repo:migration` (about 1 ms). Without IndexedDB in the worker nothing changes.
+- **What the learner notices.** One wait of some seconds, on the first start, with a large history; lookups meanwhile are answered from the recorder's own
+  log and the kept enrolment summary, as in Stage 1. Nothing is lost if the browser stops the worker: the move is restarted from the untouched rows.
+- **How to see it.** The setup page's local-repository status carries `storage`: `mode` (`indexeddb`, `rows`, or `rows-frozen` when IndexedDB would not open)
+  and `migration` (`state` switched or failed, `attempt`, `events`, `ms`, `reason` on a failure, `recovered: true` after a recovery).
+- **How to retry.** A failed move is not tried again with the same number: raise `LOCAL_MIGRATION_ATTEMPT` (`background/localRepo.ts`) in a release and
+  the devices that failed try once more.
+- **Recovery.** If the browser discards the IndexedDB data of a switched device, the next open finds no identity row there, sees the frozen rows, and moves
+  them in again (same attempt number); the history up to the switch comes back, anything recorded after the switch is gone with the discarded data.
+- **Delete this device's data** clears the Repository itself: both databases are deleted, the frozen rows are removed, the state row is rewritten (switched,
+  no events) and a fresh identity starts in IndexedDB. Signing out keeps the local data, as before.
+- **The old rows stay**, frozen and unmodified, until a later release removes them. Only the worker opens them; the setup page, GoReview and Biblia reach the
+  Repository through the worker.
+
 **Stage 3: the service's read paths.** Candidates computed incrementally (or cached durably per learner and head);
 preferences stored with a cursor; `rekeyIfAliased` off the read path; the sorted vocabulary listing served from an index;
 a server-side request deadline; sync's first pull in parallel or as one compressed snapshot. Needs a Render deploy.

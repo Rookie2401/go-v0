@@ -6,7 +6,7 @@ import { CONTRACT_VERSION, type GoEvent, type UnitKnowledge } from '../../packag
 import { parseSelection } from '../../packages/golearn-extension/src/parser';
 import { PENDING_IDENTITY, buildSelectionEvent } from '../../packages/golearn-extension/src/store';
 import type { PackProvider } from '../../packages/golearn-extension/src/background/gloss';
-import { createBackground } from '../../packages/golearn-extension/src/background/core';
+import { createBackground, type BackgroundOptions } from '../../packages/golearn-extension/src/background/core';
 import { albanianManifest } from '../../packages/language-packs/src';
 import { handle } from '../../packages/repository-service/src/handler';
 import { createChromeFake, type ChromeFake } from './chromeFake';
@@ -73,7 +73,7 @@ export interface Rig {
 /** The shard the fake dictionary serves (one file, no content that matters). */
 const shard = (): Response => new Response('{}', { status: 200, headers: { 'content-type': 'application/json' } });
 
-export function createRig(opts: { defaultServiceUrl?: string } = {}): Rig {
+export function createRig(opts: { defaultServiceUrl?: string; localRepo?: BackgroundOptions['localRepo'] } = {}): Rig {
   const h = createHarness();
   h.clock.set(new Date().toISOString()); // the service and the worker agree on the time, whatever day the tests run
   const fake = createChromeFake();
@@ -93,7 +93,7 @@ export function createRig(opts: { defaultServiceUrl?: string } = {}): Rig {
     if (hanging.value) return new Promise<Response>(() => undefined);
     return svcFetch(input, init);
   }) as typeof fetch;
-  const bg = createBackground(fake, { fetch: fetchImpl, packs: fakePacks(glossCalls), now: () => clock.now, ...(opts.defaultServiceUrl ? { defaultServiceUrl: opts.defaultServiceUrl } : {}), timers: { set: (fn, ms) => { const t = { ms, cleared: false, fired: false, fire() { if (!t.cleared && !t.fired) { t.fired = true; fn(); } } }; timers.push(t); return t; }, clear: (h) => { (h as { cleared: boolean }).cleared = true; } } });
+  const bg = createBackground(fake, { fetch: fetchImpl, packs: fakePacks(glossCalls), now: () => clock.now, ...(opts.defaultServiceUrl ? { defaultServiceUrl: opts.defaultServiceUrl } : {}), ...(opts.localRepo ? { localRepo: opts.localRepo } : {}), timers: { set: (fn, ms) => { const t = { ms, cleared: false, fired: false, fire() { if (!t.cleared && !t.fired) { t.fired = true; fn(); } } }; timers.push(t); return t; }, clear: (h) => { (h as { cleared: boolean }).cleared = true; } } });
   bg.register();
   const rig: Rig = {
     fake, h, bg, log, glossCalls, offline, hanging, clock, timers,

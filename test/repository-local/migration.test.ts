@@ -433,6 +433,49 @@ describe('migration: after the switch', () => {
     await again.close();
   });
 
+  it('(r-a) switched, then both databases are discarded by the browser: the next open brings the history back from the frozen rows and says recovered; the old rows stay untouched', async () => {
+    const area = spyArea(areaOf(old.rows));
+    const idb = new IDBFactory();
+    await (await migrating(area, idb)).close();
+    const reference = await answers(await present(old.rows), old.who);
+    const frozenBefore = canonical(Object.fromEntries(Object.entries(area.dump()).filter(([k]) => k !== STATE)));
+    // the browser drops both databases behind its back
+    for (const n of [NAME, `${NAME}-kv`]) await new Promise<void>((res, rej) => { const q = idb.deleteDatabase(n); q.onsuccess = () => res(); q.onerror = () => rej(q.error); });
+    const repo = await migrating(area, idb);
+    expect((await inspectLocal(repo)).storage).toMatchObject({ mode: 'indexeddb', migration: { state: 'switched', attempt: 1, recovered: true, events: reference.events.length } });
+    expect(await answers(repo, old.who)).toEqual(reference);
+    expect(area.dump()[STATE]).toMatchObject({ state: 'switched', attempt: 1, recovered: true, events: reference.events.length });
+    expect(canonical(Object.fromEntries(Object.entries(area.dump()).filter(([k]) => k !== STATE)))).toBe(frozenBefore);
+    expect(area.removes).toEqual([]);
+    await repo.close();
+    // and the open after that is the ordinary one: it still says recovered, reads only the state row
+    const again = spyArea(areaOf(area.dump()));
+    const third = await migrating(again, idb);
+    expect(again.reads).toEqual([STATE]);
+    expect((await inspectLocal(third)).storage.migration).toMatchObject({ state: 'switched', recovered: true });
+    expect(await third.exportEvents()).toEqual(reference.events);
+    await third.close();
+  });
+
+  it('(r-b) switched with 0 events and empty databases: a fresh identity, no migration', async () => {
+    const area = spyArea(newArea());
+    const idb = new IDBFactory();
+    const first = await migrating(area, idb);
+    const id = await first.identity();
+    await first.close();
+    for (const n of [NAME, `${NAME}-kv`]) await new Promise<void>((res, rej) => { const q = idb.deleteDatabase(n); q.onsuccess = () => res(); q.onerror = () => rej(q.error); });
+    const again = await migrating(area, idb);
+    const info = (await inspectLocal(again)).storage;
+    expect(info.mode).toBe('indexeddb');
+    expect(info.migration).toMatchObject({ state: 'switched', events: 0 });
+    expect(info.migration!.recovered).toBeUndefined();
+    expect(info.migration!.ms).toBeUndefined();
+    expect((await again.identity()).learnerId).not.toBe(id.learnerId);
+    expect(Object.keys(area.dump())).toEqual([STATE]);
+    expect(await again.exportEvents()).toEqual([]);
+    await again.close();
+  });
+
   it('a clear() that died half way (state says clearing) is finished by the next open', async () => {
     const area = spyArea(areaOf(old.rows));
     const idb = new IDBFactory();

@@ -22,7 +22,7 @@ import { createGlossService, defaultPacks, type PackProvider } from './gloss';
 import { createFormsService } from './forms';
 import { levelOf } from '../../../language-packs/src/manifest';
 import { PACKS } from '../../../language-packs/src/registry';
-import { createLocalRepoService } from './localRepo';
+import { createLocalRepoService, type LocalRepoServiceOptions } from './localRepo';
 import { createProfileService } from './profile';
 import { createRecorder } from './recorder';
 import { createSessionManager } from './session';
@@ -49,6 +49,8 @@ export interface BackgroundOptions {
   timers?: { set(fn: () => void, ms: number): unknown; clear(handle: unknown): void };
   /** The service address the extension ships with; read from app/config.json when absent (tests pass one). */
   defaultServiceUrl?: string;
+  /** Tests only: replaces the device Repository's IndexedDB, keep-alive and migration fault (see LocalRepoServiceOptions). */
+  localRepo?: Partial<Pick<LocalRepoServiceOptions, 'idb' | 'keepAlive' | 'migrationInject'>>;
 }
 
 type SenderKind = 'page' | 'content' | 'foreign';
@@ -167,7 +169,15 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   // GoLearn Active: the switches, the host-permission check and the dynamic content script (the popup asks the browser for the permission)
   const active = createActiveService({ chrome, area: local, contentFile: CONTENT_FILE, now });
   // the device's own Repository: GoLearn works with no account, and the account only keeps the history across devices
-  const localRepo = createLocalRepoService({ area: local, deviceId, session, packs, now });
+  // With IndexedDB in the worker the Repository opens over it (one verified move of the old rows, then no reading at open); without, the rows as before.
+  // While it opens, the extension API is touched every 20 s: the browser stops a worker with no extension event for about 30 s, IndexedDB work does not count.
+  const idbFactory = (globalThis as { indexedDB?: IDBFactory }).indexedDB;
+  const localRepo = createLocalRepoService({
+    area: local, deviceId, session, packs, now,
+    ...(idbFactory ? { idb: { indexedDB: idbFactory, ...(typeof IDBKeyRange !== 'undefined' ? { keyRange: IDBKeyRange } : {}) } } : {}),
+    keepAlive: () => { void (chrome.runtime as { getPlatformInfo?: () => unknown }).getPlatformInfo?.(); },
+    ...bg.localRepo, // tests only: another IndexedDB, a keep-alive probe, a fault for the migration
+  });
   const profile = createProfileService({ area: cache, session, settings: settings.get, now, local: localRepo.forProfile });
   const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, onSynced: async () => {
     await profile.refreshAfterSync();

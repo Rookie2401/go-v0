@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "50acf5a6650cb83ec4e180e3e3df1ac8fd74e446",
-    "tree": "d28be8b38ac82a12b59aefe6ff8a088de1451fe6",
+    "commit": "1b82e03a0f2d58b54cf373fcc0116481ef9e4e8a",
+    "tree": "8bc3e4975ce5dcf12303a6d5a3eff6509ce584d6",
     "dirty": false
   },
-  "sourceManifestSha256": "755771898529833c7d722a8250964a81a91db8ca358244675322af84d9a86fa4",
+  "sourceManifestSha256": "c7f7a604259dbb19a86a4d2282941ed588573dc5166826b3fa85fa9abc7e5e05",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -405,7 +405,7 @@
     },
     {
       "path": "packages/goreview/app/engine.ts",
-      "sha256": "d4b99bffcaf0fdafa68b6c72411d6cef86e31f8590d4bdba8dc71b240faa5df9"
+      "sha256": "e529a81b4d11741c94a0548133c032e9d1f0ef4ca6f7b9904d8caef809544c4d"
     },
     {
       "path": "packages/goreview/app/events.ts",
@@ -465,7 +465,7 @@
     },
     {
       "path": "packages/goreview/app/ports.ts",
-      "sha256": "5adf8d74834128e4576560aae8f373a9b23abd3fa3ffccc37796586aa4ee656d"
+      "sha256": "6e6b5aee5183f209d66e85c79db1f3ea00b468824aab2506819e7def2bbf732e"
     },
     {
       "path": "packages/goreview/app/profiles.ts",
@@ -685,7 +685,7 @@
     },
     {
       "path": "packages/goreview/app/workspace.ts",
-      "sha256": "a362c8f418361f17b77acfac9f7234ea601cda6bdc66658c20781a808f690e31"
+      "sha256": "8556ddfce3a342d924aa1a7b6339802abf0fa060336a9274fca306fecb0076b4"
     },
     {
       "path": "packages/goreview/src/exercises/README.md",
@@ -889,7 +889,7 @@
     },
     {
       "path": "packages/goreview/src/session/runner.ts",
-      "sha256": "bad3b359b7de3cbe5cbebfbfe4be6025c7adf1e43b43d18b24568009f37445f2"
+      "sha256": "ae4f1a9cad3a6b9b9c2a3bc53af059d0ef58a15e20e173d10a4fd0a1690e1f3a"
     },
     {
       "path": "packages/goreview/src/transfer/index.ts",
@@ -1233,7 +1233,7 @@
     },
     {
       "path": "packages/repository-contract/src/ports.ts",
-      "sha256": "9e89d52a6332d0b03f4c97c8e995162e867e759bfd831e41baadb8ff6042552f"
+      "sha256": "dc713670ad8f422ea96230d1bf9bf07c0b4d00c1c3eb3921d4e4683fddea2f54"
     },
     {
       "path": "packages/repository-contract/src/review-classification.ts",
@@ -1265,7 +1265,7 @@
     },
     {
       "path": "packages/repository-engine/src/engine.ts",
-      "sha256": "6b358d8d796dbe5038c656078bdc1136c39df284615b75a4fe5676cc400e1a37"
+      "sha256": "1b26722e67f3d29f1018e9839823a5b92adae287519934f881a998b92bf3b0cc"
     },
     {
       "path": "packages/repository-engine/src/evidence.ts",
@@ -1405,11 +1405,15 @@
     },
     {
       "path": "packages/repository-store/src/index.ts",
-      "sha256": "60f94527d20f54e7d2a390423e6d37b87ee2d16fa6937717b63cf7afdcdb7726"
+      "sha256": "bb11c84f5bf059a213a93bebe0af52accb67a2b1b6c4fdd4c03c573a0f6f2b1d"
+    },
+    {
+      "path": "packages/repository-store/src/indexeddb.ts",
+      "sha256": "0763cdf680014dcacea8d5be370960ada29ed7634e446a7f0ab65c548ae39472"
     },
     {
       "path": "packages/repository-store/src/memory.ts",
-      "sha256": "4c35dd934543e8f8787c36d4a2223d6d580ef5377364c79b2baa43f072f0e6c4"
+      "sha256": "28ac165df7dc84cc75e5772419cc2ca4266f9521ae149a02028f2c1110fc97a9"
     },
     {
       "path": "packages/repository-store/src/migrate.ts",
@@ -1452,12 +1456,16 @@
       "sha256": "fa50162b31893fb9cb35b7d61db80703388c8c99cab6133cb7a653431b637e24"
     },
     {
+      "path": "packages/repository-sync/src/idb-area.ts",
+      "sha256": "790e4e95f8507f1971346cdf30e085ff2acad847d04a903ec20caf4a017fd17d"
+    },
+    {
       "path": "packages/repository-sync/src/ids.ts",
       "sha256": "5f0bf08e7b6f5e1591f562de807676b2b8b81c862fb9ae424f93db037bc39922"
     },
     {
       "path": "packages/repository-sync/src/index.ts",
-      "sha256": "6fc6fcb068db8968628c0c10d286eb6b6e8755280e409685b516acf5f1727a92"
+      "sha256": "521bdd3fea30f1828d7d6cd952cf03afa10e733850fdee85c17f0285e168933d"
     },
     {
       "path": "packages/repository-sync/src/queue.ts",
@@ -4450,7 +4458,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "572d8e0be595cb496104299999a3fb09a3af84e6b71efdca58a51af9efe1a2a5",
+  "artifactManifestSha256": "9e2b9f380e871a8628b20a5dfb41d58e0c5b777e5b1f287813fa1859ca21420d",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4493,8 +4501,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-D584sL-I.js",
-      "sha256": "a19a929629c7816f3b9ea9ebba180b875a3eb631b59d718d87daf20eb9773683"
+      "path": "assets/index-Db_0jxup.js",
+      "sha256": "c90789d6ed14a1bd269119c513f18b1c52eefc1b947694f80298f3c8908a6030"
     },
     {
       "path": "assets/style-Rhr2goAx.css",
@@ -4530,7 +4538,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "7ab4da88d179a2aec83c2195fc3ef2590e8d1ecb294eb61d352974911809a7c3"
+      "sha256": "d208ccc37ba35e8e3c5a8ab60ecab08670c92ef272dc7450ad4f776cb2a4cc69"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5474,7 +5482,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "15c4c4d1bd468b4a1f6ddfa7aa49667d3869414e1db9c861c88f5aaa8af22a69"
+      "sha256": "625c23d457c9a61ae7b7e9a18d68630747c2732e51bee5bf9122eaf6c5d5a73e"
     }
   ]
 }

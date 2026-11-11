@@ -48,6 +48,8 @@
   .status-line:empty { display: none; }
   .status-line.warn { color: var(--bad); }
   .muted { color: var(--ink-soft); font-size: 0.875rem; }
+  .build { margin: 4px 0 0; font-size: 0.75rem; }
+  .build:empty { display: none; }
   hr { border: 0; border-top: 1px solid var(--rule); margin: 10px 0; }
   /* the legend, one line, as Biblia's reader shows it: a sample word in each mark, then the names; known words carry no mark */
   .legend { margin: 6px 0 2px; font-size: 0.875rem; color: var(--ink-faint); }
@@ -81,6 +83,9 @@
     <select id="language-select" class="grow" aria-describedby="language"><option value="">Checking…</option></select>
   </div>
   <div class="status-line muted" id="language" role="status" aria-live="polite"></div>
+
+  <hr>
+  <p class="build muted" id="build"></p>
 </main>
 <script src="popup.js"></script>
 </body>

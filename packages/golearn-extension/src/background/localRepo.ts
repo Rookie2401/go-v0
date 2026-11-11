@@ -389,7 +389,10 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
     }
   }
 
-  return { open, record, forProfile, activeLanguage, chosenLanguages, afterSignIn, afterEnrolment, uploadAndPull, clear, handle, status };
+  /** True while the repository is opening or migrating (read-only; used by the worker's self-update to not reload mid-open). */
+  const busy = (): boolean => !!opening && !opened;
+
+  return { open, record, forProfile, activeLanguage, chosenLanguages, afterSignIn, afterEnrolment, uploadAndPull, clear, handle, status, busy };
 }
 
 export type LocalRepoService = ReturnType<typeof createLocalRepoService>;

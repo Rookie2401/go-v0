@@ -53,6 +53,8 @@ export interface ChromeApi {
     /** The address of a file the extension packages (its `app/` folder, `app/config.json`). */
     getURL?(path: string): string;
     openOptionsPage?(): Promise<void>;
+    /** Restarts the extension from its folder (an unpacked build that was rebuilt; see src/background/selfUpdate.ts). */
+    reload?(): void;
   };
   tabs?: {
     query(q: { active?: boolean; currentWindow?: boolean }): Promise<TabInfo[]>;

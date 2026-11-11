@@ -77,6 +77,17 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     await refresh();
   });
 
+  /** The foot line: the build the worker runs, and for 10 minutes after a self-reload that it updated itself (plain text, no control). */
+  function renderBuild(s: PageStatus | undefined): void {
+    const el = doc.getElementById('build');
+    if (!el) return;
+    const at = (iso: string | undefined): string => { const t = iso ? Date.parse(iso) : NaN; return Number.isFinite(t) ? new Date(t).toLocaleString() : ''; };
+    if (!s?.build?.id) { el.textContent = ''; return; }
+    el.textContent = s.updatedAt && at(s.updatedAt)
+      ? `Updated to build ${s.build.id} at ${at(s.updatedAt)}`
+      : `Build ${s.build.id}${at(s.build.builtAt) ? ` · ${at(s.build.builtAt)}` : ''}`;
+  }
+
   /** The greeting and, only when something needs the learner, one line under the brand. */
   function renderStatus(s: PageStatus | undefined): void {
     const welcome = $('welcome');
@@ -178,7 +189,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
    */
   async function refresh(): Promise<void> {
     const switchShown = activeCall('get').then(async (a) => { showActive(a); await showPage(!!a?.settings.active); });
-    const statusShown = status().then(renderStatus);
+    const statusShown = status().then((s) => { renderStatus(s); renderBuild(s); });
     await Promise.all([switchShown, statusShown]);
   }
 

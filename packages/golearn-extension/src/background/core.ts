@@ -26,9 +26,10 @@ import { createLocalRepoService, type LocalRepoServiceOptions } from './localRep
 import { createProfileService } from './profile';
 import { createRecorder } from './recorder';
 import { createSessionManager } from './session';
+import { createSelfUpdate, type BuildInfo } from './selfUpdate';
 import { createSettings } from './settings';
 import { restrictStorageToTrustedContexts } from './storageAccess';
-import { createSyncService } from './sync';
+import { SYNC_ALARM, createSyncService } from './sync';
 import { createLocalTranslationService } from './translation';
 import { createSpeechService } from './speech';
 import { QUARANTINE_PREFIX, QUEUE_PREFIX, REJECTED_PREFIX } from '../../../repository-sync/src';
@@ -51,6 +52,8 @@ export interface BackgroundOptions {
   defaultServiceUrl?: string;
   /** Tests only: replaces the device Repository's IndexedDB, keep-alive and migration fault (see LocalRepoServiceOptions). */
   localRepo?: Partial<Pick<LocalRepoServiceOptions, 'idb' | 'keepAlive' | 'migrationInject'>>;
+  /** Tests only: the build this worker claims to be (default: what the build compiled in; none when run from source, and then there is no self-update). */
+  build?: BuildInfo;
 }
 
 type SenderKind = 'page' | 'content' | 'foreign';
@@ -188,6 +191,10 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   const recorder = createRecorder({ area: local, queue: sync.queue, session, deviceId, version, now: Date.now, onQueued: () => sync.schedule(), onRecorded: (e, attributed) => localRepo.record(e, attributed) });
   holder.recorder = recorder; holder.sync = sync; holder.profile = profile; holder.local = localRepo;
 
+  // a worker of an unpacked extension whose folder was rebuilt reloads itself (selfUpdate.ts); never while the Repository opens or a record is in flight
+  let recording = 0;
+  const selfUpdate = createSelfUpdate({ chrome, fetch: doFetch, now, build: bg.build, busy: () => recording > 0 || localRepo.busy() });
+
   // ───────────── per-tab state, injection ─────────────
   async function readState(tabId: number): Promise<TabState> {
     try {
@@ -280,6 +287,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     // chosen language is recognised from its own word list and no other pack's chunk is loaded to compare; with none chosen, every pack
     const all = Object.keys(PACKS).filter((l) => { const m = packs.manifest(l); return !!m && levelOf(m) !== 'planned'; });
     const chosen = [...new Set([onDevice, s.languageId, ...(await localRepo.chosenLanguages())].filter((l): l is string => !!l && all.includes(l)))];
+    const updated = await selfUpdate.note();
     return {
       ok: true,
       connected: s.connected,
@@ -288,6 +296,8 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       languageName: languageNameOf(languageId),
       packAvailable: gloss.packAvailable(languageId),
       installedLanguages: chosen.length ? chosen : all,
+      ...(selfUpdate.build ? { build: { id: selfUpdate.build.id, builtAt: selfUpdate.build.builtAt } } : {}),
+      ...(updated ?? {}),
     };
   }
 
@@ -466,7 +476,9 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
         return typeof m.tabId === 'number'
           ? setEnabled(m.tabId, !!m.enabled).catch(() => ({ enabled: false, error: 'GoLearn could not change this tab.' }) satisfies TabState)
           : { enabled: false };
-      case MSG.status: return kind === 'page' ? pageStatus() : publicStatus();
+      case MSG.status:
+        if (kind === 'page') { void selfUpdate.check(); return pageStatus(); } // the popup opening is one of the moments a newer build of the folder is looked for (never a content script's request)
+        return publicStatus();
       case MSG.settings: {
         const req = (m ?? {}) as { op?: string; patch?: unknown };
         if (req.op === 'set') return kind === 'page' ? settings.set(req.patch) : ({ ok: false, settings: DEFAULT_SETTINGS, error: 'forbidden' } satisfies SettingsReply);
@@ -474,8 +486,11 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       }
       case MSG.record: {
         // an exception (a full or failing store) is a reason the card can show, not a bare 'internal'
-        const reply = await recorder.record(m.event, kind).catch((e: unknown): RecordReply => ({ ok: false, error: `failed: ${e instanceof Error ? e.message : String(e)}` }));
-        return reply satisfies RecordReply;
+        recording++;
+        try {
+          const reply = await recorder.record(m.event, kind).catch((e: unknown): RecordReply => ({ ok: false, error: `failed: ${e instanceof Error ? e.message : String(e)}` }));
+          return reply satisfies RecordReply;
+        } finally { recording--; }
       }
       case MSG.profile: {
         const languageId = typeof m.languageId === 'string' ? m.languageId : 'sq';
@@ -551,6 +566,8 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     // message that needs it (status, profile, record, keep-warm, active) instead.
     void active.restore(); // keep Active's registration in step with the permission the learner may have withdrawn meanwhile
     active.watchPermission();
+    chrome.alarms?.onAlarm.addListener((a) => { if (a.name === SYNC_ALARM) void selfUpdate.check(); }); // the one-minute alarm
+    void selfUpdate.check(); // at worker start, with every listener registered
 
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       const m = message as Record<string, unknown> | undefined;

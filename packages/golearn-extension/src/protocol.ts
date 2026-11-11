@@ -58,6 +58,11 @@ export interface PublicStatus {
    * every pack the worker has (installable or experimental, never a planned one) when none is chosen. The resolver compares a sample only against these.
    */
   installedLanguages?: string[];
+  /** The build the worker is running (absent when run from source): the popup's foot line. */
+  build?: { id: string; builtAt: string };
+  /** Set for 10 minutes after the worker reloaded itself to a newer build of its folder (src/background/selfUpdate.ts): when, and the id it was running before. */
+  updatedAt?: string;
+  updatedFrom?: string;
 }
 
 /** What an extension page (popup, setup page) may know in addition. Still no token and no learner id. */

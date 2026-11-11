@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "1b82e03a0f2d58b54cf373fcc0116481ef9e4e8a",
-    "tree": "8bc3e4975ce5dcf12303a6d5a3eff6509ce584d6",
+    "commit": "faabbabbd5c7816ba7d76b8ac2ee59091df3c5d9",
+    "tree": "2b8e7ce9ecb6c377290ca07230ffb57cdc1184d3",
     "dirty": false
   },
-  "sourceManifestSha256": "c7f7a604259dbb19a86a4d2282941ed588573dc5166826b3fa85fa9abc7e5e05",
+  "sourceManifestSha256": "9930005e283313a5c655636644753b24e1f94058d238fa2bc24179f55d258be8",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -1265,7 +1265,7 @@
     },
     {
       "path": "packages/repository-engine/src/engine.ts",
-      "sha256": "1b26722e67f3d29f1018e9839823a5b92adae287519934f881a998b92bf3b0cc"
+      "sha256": "7690e752050f951b2d2a07b2edecf67fba23471b14a7d124fb69f05725239cb2"
     },
     {
       "path": "packages/repository-engine/src/evidence.ts",
@@ -1305,7 +1305,7 @@
     },
     {
       "path": "packages/repository-service/src/api.ts",
-      "sha256": "d0c73f7158e07d4197fac4d594db4dbb5d84b301977ad37536db76921d62eb92"
+      "sha256": "70d203d605e86d434942ccaf15791b810bbcb177f747179d6a4d1e66fb2d8543"
     },
     {
       "path": "packages/repository-service/src/backupHealth.ts",
@@ -1317,7 +1317,7 @@
     },
     {
       "path": "packages/repository-service/src/config.ts",
-      "sha256": "634454f11e2a3cf191b343a3151513a0f053df2e611a67d59ed84ee31879aef2"
+      "sha256": "4c12a24b819e801eb36b98a3567e4ca060d3f4479e9123777876fe88167d75eb"
     },
     {
       "path": "packages/repository-service/src/crypto-node.ts",
@@ -1325,11 +1325,11 @@
     },
     {
       "path": "packages/repository-service/src/deps.ts",
-      "sha256": "7a2cb13fc6f5da342714802d019a779173ddcaee22494ceeba06a5e14edeb99d"
+      "sha256": "5c92877d1153c9ebe3cad090e38740fa929d49ab7581b355f6067777fc70ee7b"
     },
     {
       "path": "packages/repository-service/src/handler.ts",
-      "sha256": "97165f149b5d56c9c67f1712bb7c2d20560497b75eb50468b32d3124ad2aacb6"
+      "sha256": "34ac2f82dd8599dfb6e8440ddc4b1755e88ae641d408dd295aba08011efca198"
     },
     {
       "path": "packages/repository-service/src/http.ts",
@@ -1349,7 +1349,7 @@
     },
     {
       "path": "packages/repository-service/src/main.ts",
-      "sha256": "0326b09232694cd686ff8d82ba8f148633fc79c7293adbf00fadbef1cea94525"
+      "sha256": "911182fbebdbdb07f5cabc1948a02e19735a4b50eb2438ffa95567f287c9d8be"
     },
     {
       "path": "packages/repository-service/src/metrics.ts",
@@ -1433,7 +1433,7 @@
     },
     {
       "path": "packages/repository-store/src/postgres.ts",
-      "sha256": "0dc957e8bacbda0bf14ae13cd3c749161bbbda974884c77287f820528defb315"
+      "sha256": "9296069cb9dab88e1739ea87e83dbd99846bdeed6c49937b761cc6acd6c6398c"
     },
     {
       "path": "packages/repository-store/src/rules.ts",
@@ -1441,7 +1441,7 @@
     },
     {
       "path": "packages/repository-store/src/sqlite.ts",
-      "sha256": "4e29c71cccd48b46205c4f1c4920eefc68a9310e4669c5a423acde3b8a7a3328"
+      "sha256": "daf068b5a7e8784c025459d84f20b6413ee488a8011570d602ba5277be782e40"
     },
     {
       "path": "packages/repository-sync/src/area.ts",
@@ -1449,7 +1449,7 @@
     },
     {
       "path": "packages/repository-sync/src/client.ts",
-      "sha256": "0c07feee4bc5b2256d702490b0a2a384bafa17151ba72541a5e8a798b0c970bd"
+      "sha256": "4c7f4619bfe700b49d442cbb53bc64d32a24e7d2ef3fd779580ca716cd15b3d7"
     },
     {
       "path": "packages/repository-sync/src/documents.ts",
@@ -4458,7 +4458,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "9e2b9f380e871a8628b20a5dfb41d58e0c5b777e5b1f287813fa1859ca21420d",
+  "artifactManifestSha256": "23deeaed4c914efd951fd8be803540eaf54ccfc6492185ad98f1638d8f4ae514",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4501,8 +4501,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-Db_0jxup.js",
-      "sha256": "c90789d6ed14a1bd269119c513f18b1c52eefc1b947694f80298f3c8908a6030"
+      "path": "assets/index-BO2hZKtx.js",
+      "sha256": "adadd0dbf0944acfc74f1ffca5b49a51cd632068e353574911613b3c0fbf1d7b"
     },
     {
       "path": "assets/style-Rhr2goAx.css",
@@ -4538,7 +4538,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "d208ccc37ba35e8e3c5a8ab60ecab08670c92ef272dc7450ad4f776cb2a4cc69"
+      "sha256": "f0f2e3be65b992dc291f9e2746a66c6280bac303561a0ee7f22b6b3569d871b9"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5482,7 +5482,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "625c23d457c9a61ae7b7e9a18d68630747c2732e51bee5bf9122eaf6c5d5a73e"
+      "sha256": "2a91b5acfdc6cedc62f401a281b325dc39844520bce54cb9a3f2a9c336f76af4"
     }
   ]
 }

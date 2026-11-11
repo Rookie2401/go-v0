@@ -70,6 +70,9 @@ export class FakeServer implements Transport {
   lostAckNext = 0;
   pushCalls = 0;
   pullCalls = 0;
+  /** Every pull request received, and how many documents each response carried. */
+  pullRequests: SyncPullRequest[] = [];
+  docsPerPull: number[] = [];
   pushedBatchSizes: number[] = [];
   constructor(public clock: Clock) {}
 
@@ -105,10 +108,12 @@ export class FakeServer implements Transport {
 
   async pull(req: SyncPullRequest): Promise<SyncPullResponse> {
     this.pullCalls += 1;
+    this.pullRequests.push(structuredClone(req));
     if (this.failNext > 0) { this.failNext -= 1; throw new Error('network down'); }
     const events = [...this.events.values()].filter((e) => e.seq > req.afterSeq).sort((a, b) => a.seq - b.seq).slice(0, req.limit ?? 500);
     const since = req.documentsSince;
-    const documents = [...this.docs.values()].filter((d) => !since || d.updatedAt >= since).map((d) => structuredClone(d));
+    const documents = req.documents === false ? [] : [...this.docs.values()].filter((d) => !since || d.updatedAt >= since).map((d) => structuredClone(d));
+    this.docsPerPull.push(documents.length);
     return { events: structuredClone(events), documents, head: this.seq, serverTime: new Date(this.serverNow()).toISOString() };
   }
 }

@@ -15,8 +15,14 @@
  * level the engine reports for any of its rows; a word with no row is New. After the learner's own mark the word is repainted at once from
  * the mark (`mark`), until the service's row carries it. The chapter is asked for in batches (rows cached per chapter), and refreshed on focus,
  * when the tab becomes visible, after the events the service acknowledged, and every 60 s while visible.
+ *
+ * What is SHOWN: a word met only in passing is New (owner, 2026-11-05). Opening a verse records one encounter for each of its words, which the
+ * Repository counts (GoReview draws on them) and lifts to Seen; but the learner tapped one word. A row with no mark, Seen, no lookup or
+ * assistance (`exposure.negative` 0) and no observation on any other dimension is shown New (`displayLevelOf`, repository-contract). The word
+ * the learner taps is Seen at once through `met`. Known limit: dimensions are cumulative, so a word looked up before a New mark and merely met
+ * again reads Seen.
  */
-import { KNOWLEDGE_LEVEL_RANK, isKnowledgeLevel, levelOfMark, type KnowledgeLevel } from '../../repository-contract/src/knowledge-levels';
+import { KNOWLEDGE_LEVEL_RANK, displayLevelOf, isKnowledgeLevel, levelOfMark, type KnowledgeLevel } from '../../repository-contract/src/knowledge-levels';
 import type { UnitKnowledge } from '../../repository-contract/src';
 import type { RepositoryApi } from '../../repository-service/src/api';
 import { LEMMA_MIN_CONFIDENCE } from '../../golearn-extension/src/parser';
@@ -100,8 +106,8 @@ export function unitIdsOfSite(site: LevelSite, cache: Map<string, VerseReading> 
 /** The level a row reports; an older engine that sent none is read from whether the unit was ever met. */
 function levelOfRow(r: UnitKnowledge | undefined | null): KnowledgeLevel | undefined {
   if (!r) return undefined;
-  if (isKnowledgeLevel(r.level)) return r.level;
-  return (typeof r.encounters === 'number' && r.encounters > 0) || r.lastSeenAt || r.firstSeenAt ? 'seen' : 'new';
+  if (isKnowledgeLevel(r.level)) return displayLevelOf(r, r.level);
+  return displayLevelOf(r, (typeof r.encounters === 'number' && r.encounters > 0) || r.lastSeenAt || r.firstSeenAt ? 'seen' : 'new');
 }
 
 /** The newest of the learner's own marks among a word's rows. */
@@ -126,7 +132,8 @@ export function levelOfRows(rows: Array<UnitKnowledge | undefined | null>): Know
     let engine: KnowledgeLevel | undefined;
     for (const r of rows) {
       if (!r || r.selfMark?.at !== mark.at) continue;
-      const l = isKnowledgeLevel(r.level) ? r.level : undefined; // an older engine that sent none: the mark stands as it reads
+      // an older engine that sent none: the mark stands as it reads; a row met only in passing since the mark is still New (the mark itself is ignored for that test)
+      const l = isKnowledgeLevel(r.level) ? displayLevelOf({ ...r, selfMark: undefined }, r.level) : undefined;
       if (l && (!engine || KNOWLEDGE_LEVEL_RANK[l] > KNOWLEDGE_LEVEL_RANK[engine])) engine = l;
     }
     return engine ?? mark.level;

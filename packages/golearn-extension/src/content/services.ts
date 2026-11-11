@@ -35,14 +35,33 @@ export interface ContentServices {
   confirmForms?(req: ConfirmFormsRequest): Promise<ConfirmFormsReply | undefined>;
   /** Calls the background's local model bridge only after an explicit sentence-translation action. */
   translateSentence?(req: LocalSentenceTranslationRequest): Promise<LocalSentenceTranslationReply | undefined>;
+  /** Keep-warm: any message resets the browser's idle timer for the worker. False = the send threw (the extension was reloaded: this script is orphaned). Optional for fakes. */
+  keepWarm?(): Promise<boolean>;
 }
 
 export interface Bridge extends ContentServices { events: EventSink; metrics: MetricSink }
 
 const isReply = (v: unknown): v is { ok: boolean } => !!v && typeof v === 'object' && typeof (v as { ok?: unknown }).ok === 'boolean';
 
+/** How long a recording may take before the card says it was not recorded, and how long the status may take while the worker wakes. */
+export const RECORD_TIMEOUT_MS = 20_000;
+export const WAKE_TIMEOUT_MS = 10_000;
+
+/**
+ * READ requests that find the worker still waking (a timeout or a thrown send) are asked again after these waits, each attempt with its own
+ * timeout: at most 3 attempts, so a read is bounded by 3 x its timeout + 1.6 s (default 13.6 s). Writes are never retried here.
+ */
+export const READ_RETRY_WAITS_MS = [400, 1200] as const;
+
 export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
-  async function call<T>(type: string, payload: Record<string, unknown> = {}, timeout = timeoutMs): Promise<T | undefined> {
+  async function call<T>(type: string, payload: Record<string, unknown> = {}, timeout = timeoutMs, retry = false): Promise<T | undefined> {
+    for (let i = 0; ; i++) {
+      const r = await once<T>(type, payload, timeout);
+      if (r !== undefined || !retry || i >= READ_RETRY_WAITS_MS.length) return r;
+      await new Promise<void>((resolve) => setTimeout(resolve, READ_RETRY_WAITS_MS[i]));
+    }
+  }
+  async function once<T>(type: string, payload: Record<string, unknown>, timeout: number): Promise<T | undefined> {
     let timer: ReturnType<typeof setTimeout> | undefined;
     try {
       const reply = await Promise.race([
@@ -57,23 +76,26 @@ export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
     }
   }
   return {
-    status: () => call<PublicStatus>(MSG.status),
-    profile: (req) => call<ProfileReply>(MSG.profile, { ...req }),
-    gloss: (req) => call<GlossReply>(MSG.gloss, { ...req }),
-    explain: (req) => call<ExplainReply>(MSG.explain, { ...req }),
+    // the status and a recording may wait while the worker wakes and opens the device history (seconds with a large one, 2026-11-09): a recording
+    // that times out is reported as not recorded although the worker goes on to store it, so these two wait longer than a card's question
+    status: () => call<PublicStatus>(MSG.status, {}, WAKE_TIMEOUT_MS),
+    profile: (req) => call<ProfileReply>(MSG.profile, { ...req }, timeoutMs, true),
+    gloss: (req) => call<GlossReply>(MSG.gloss, { ...req }, timeoutMs, true),
+    explain: (req) => call<ExplainReply>(MSG.explain, { ...req }, timeoutMs, true),
     correct: (req) => call<CorrectReply>(MSG.correct, { ...req }),
-    pronounceInfo: (languageId) => call<PronounceInfoReply>(MSG.pronounceInfo, { languageId }),
+    pronounceInfo: (languageId) => call<PronounceInfoReply>(MSG.pronounceInfo, { languageId }, timeoutMs, true),
     speech: (req) => call<SpeechReply>(MSG.speech, { ...req }, 30_000),
-    active: () => call<ActiveReply>(MSG.active, { op: 'get' }),
-    entry: (req) => call<EntryReply>(MSG.entry, { ...req }),
-    activeProfile: (req) => call<ProfileReply>(MSG.activeProfile, { ...req }),
+    active: () => call<ActiveReply>(MSG.active, { op: 'get' }, timeoutMs, true),
+    keepWarm: async () => { try { await api.runtime.sendMessage({ type: MSG.keepWarm }); return true; } catch { return false; } },
+    entry: (req) => call<EntryReply>(MSG.entry, { ...req }, timeoutMs, true),
+    activeProfile: (req) => call<ProfileReply>(MSG.activeProfile, { ...req }, timeoutMs, true),
     // the first question of a page may make the worker locate the dictionary and fetch several shards: more time than a profile row
     confirmForms: (req) => call<ConfirmFormsReply>(MSG.confirmForms, { ...req }, 20_000),
     // The worker allows a cold local model up to 60 seconds; include time for its private config read and message round-trip.
     translateSentence: (req) => call<LocalSentenceTranslationReply>(MSG.translateSentence, { ...req }, 125_000),
     events: {
       async append(event): Promise<WriteResult> {
-        const r = await call<RecordReply>(MSG.record, { event });
+        const r = await call<RecordReply>(MSG.record, { event }, RECORD_TIMEOUT_MS);
         if (!r) return { ok: false, error: 'the background did not answer' };
         return r.ok ? { ok: true, id: event.id, duplicate: r.duplicate === true } : { ok: false, error: r.error ?? 'refused' };
       },

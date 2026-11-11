@@ -10,7 +10,7 @@ import { append, button, clear, embedTarget, h, langProps, p, setStatus, statusL
 import { itemMarked } from '../events';
 import { nextSkillGuidance } from '../admissionExplanation';
 import { DIMENSION_LABEL, FAMILY_LABEL, languageName, unitLabel } from '../format';
-import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
+import { beginSession, currentReviewModel, endSavedSession, recoverableSessions, resumeSession, reviewModelRevision, type ReviewModel } from '../workspace';
 import { freshModel } from '../freshness';
 import { deckSizeControl } from './cardsper';
 import { prefsForm } from './prefs';
@@ -26,12 +26,20 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
   let saving: Promise<unknown>[] = [];
   /** How many events the painted model was folded from; a sync that brings more repaints the home. */
   let paintedEvents = -1;
+  /** How many model-changing refreshes had landed when this was last drawn. */
+  let paintedRevision = -1;
 
-  async function paint(): Promise<void> {
-    const model = await loadReviewModel(ctx);
+  async function paint(quiet = false): Promise<void> {
+    // this device's own copy at once; the live refresh runs in the background and repaints this page when it lands (ctx.onData below)
+    const idn = await ctx.identity().catch(() => undefined);
+    paintedRevision = idn ? reviewModelRevision(ctx, idn) : -1;
+    const model = await currentReviewModel(ctx, quiet ? { noRefresh: true } : {});
     if (!view.alive()) return;
     paintedEvents = model?.events.length ?? -1;
     saving = [];
+    // everything the page shows is built before the old page is replaced, so a repaint never shows an empty page in between
+    const built = model ? { planned: await planCurrentDeck(ctx, model), recovery: await recoveryBlock() } : undefined;
+    if (!view.alive()) return;
     clear(root);
     if (!model) {
       const [enrolments, mode] = await Promise.all([ctx.enrolments(), ctx.mode()]);
@@ -46,8 +54,8 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     }
     const tag = model.identity.varietyId ?? model.identity.languageId;
     root.setAttribute('lang', 'en');
-    const planned = await planCurrentDeck(ctx, model);
-    append(root, [summary(model, planned.plan), startBlock(model), await recoveryBlock(), controlsBlock(model), candidatesBlock(model, tag, planned.plan), deckBlock(model, tag), status]);
+    const planned = built!.planned;
+    append(root, [summary(model, planned.plan), startBlock(model), built!.recovery, controlsBlock(model), candidatesBlock(model, tag, planned.plan), deckBlock(model, tag), status]);
   }
 
   async function recoveryBlock(): Promise<HTMLElement | null> {
@@ -250,7 +258,8 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
         const count = (await ctx.events(id.languageId)).length;
         const active = ctx.deps.doc.activeElement;
         const typing = !!active && root.contains(active) && /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName);
-        if (count !== paintedEvents && !typing) await paint();
+        const refreshed = reviewModelRevision(ctx, id) !== paintedRevision;
+        if ((count !== paintedEvents || refreshed) && !typing) await paint(count === paintedEvents && refreshed);
       } while (again);
     } catch { /* the home stays as painted */ } finally { repainting = false; }
   };

@@ -12,7 +12,7 @@
 import type { DeckItem } from '../src/types';
 import type { AppContext } from './context';
 import { effectiveRemediation } from './deckModel';
-import { loadReviewModel, type ReviewModel } from './workspace';
+import { currentReviewModel, PRESS_WAIT_MS, type ReviewModel } from './workspace';
 
 /** A model older than this is loaded again even when no pending instant is known (the plan also depends on things the model only samples). */
 export const MODEL_MAX_AGE_MS = 5 * 60_000;
@@ -75,12 +75,14 @@ export async function modelIsFresh(ctx: AppContext, model: ReviewModel, nowIso: 
 }
 
 /**
- * The model to plan with: the one given when it is still fresh, otherwise the model loaded again (the one given when loading fails or
- * there is no learner). Never throws.
+ * The model to plan with: the one given when it is still fresh, otherwise the model rebuilt from this device (its last complete snapshot and the
+ * current local log; a press never waits for the network, 2026-11-10), after waiting at most PRESS_WAIT_MS for a refresh that is already running
+ * (its live model is used if it arrives). The one given when nothing local can be built or there is no learner. A plan from a model that turns out
+ * stale is safe: the session's presentation guard checks each card again. Never throws.
  */
 export async function freshModel(ctx: AppContext, model: ReviewModel): Promise<ReviewModel> {
   try {
     if (await modelIsFresh(ctx, model, ctx.deps.now().toISOString())) return model;
-    return (await loadReviewModel(ctx)) ?? model;
+    return (await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS, fallback: model })) ?? model;
   } catch { return model; }
 }

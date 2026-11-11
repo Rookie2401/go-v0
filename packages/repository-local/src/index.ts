@@ -4,7 +4,7 @@
  * signs in. See ../../docs/ecosystem/REPOSITORY-LOCAL.md.
  */
 export { openLocalRepository, inspectLocal, markEventsOwned, DEFAULT_PREFIX, LOCAL_EMAIL } from './local';
-export type { LocalRepository, LocalIdentity, OpenLocalOptions, LocalInspection } from './local';
+export type { LocalRepository, LocalIdentity, OpenLocalOptions, LocalInspection, StorageInfo } from './local';
 export { resolveWithAdapter } from './linguistics';
 export type { AdapterLike } from './linguistics';
 export { sha256Hex } from './crypto';

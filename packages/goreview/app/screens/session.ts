@@ -24,7 +24,7 @@ import {
 } from '../format';
 import type { ActiveRun, ItemControl, Presented } from '../ports';
 import type { ReviewExercise } from '../../src/exercises/shared';
-import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession } from '../workspace';
+import { beginSession, currentReviewModel, endSavedSession, PRESS_WAIT_MS, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import { fillItemHistory } from './history';
 import { entriesOf, planFromEntries, planRemediation, planCurrentDeck, effectiveRemediation, VOCAB_NOTE } from '../deckModel';
 import { DEFAULT_UI, getUiPrefs, type UiPrefs } from './uiprefs';
@@ -121,7 +121,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 async function repaintSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, view: View, actions?: NextActions): Promise<void> {
   if (!view.alive() || !root.querySelector('#summary') || root.querySelector('#session-undo button:disabled')) return;
   clear(root);
-  await renderSummary(root, ctx, run, actions);
+  // quiet: a data event redraws the summary from this device's copy and never asks for a live load (the first draw already did, and a refresh that lands has its own notice)
+  await renderSummary(root, ctx, run, actions, { quiet: true });
 }
 
 /** What the summary can start next; absent when the screen cannot be taken over (a summary drawn alone). */
@@ -904,17 +905,32 @@ export function parseCorrection(text: string): { lexemeId: string } | { features
  * heading and enabled whenever N > 0. The "Next scheduled session" line is truthful about what the N cards are: due reviews, due learning
  * returns, new admissions, and the early reviews (deck-fill) that top the deck up; the four add up to N.
  */
-async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, _tag: string): Promise<HTMLElement> {
+/** How long the summary waits for a model before it draws the Next section as a placeholder and fills it in when the model arrives (only with nothing on this device). */
+const NEXT_MODEL_WAIT_MS = 1_000;
+
+async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, tag: string, opts: { quiet?: boolean } = {}): Promise<HTMLElement> {
+  // the model is this device's copy (immediate); a live refresh that lands redraws the summary through ctx.onData
+  const modelPromise = currentReviewModel(ctx, opts.quiet ? { noRefresh: true } : {});
+  let timer: number | undefined;
+  const late = new Promise<'late'>((resolve) => { timer = ctx.deps.win.setTimeout(() => resolve('late'), NEXT_MODEL_WAIT_MS) as unknown as number; });
+  const first = await Promise.race([modelPromise, late]).finally(() => { if (timer !== undefined) ctx.deps.win.clearTimeout(timer); });
+  if (first !== 'late') return buildNextSection(ctx, run, actions, tag, first);
+  const holder = h('section', { id: 'summary-next', class: 'card', 'aria-labelledby': 'summary-next-heading' }, h('h2', { id: 'summary-next-heading' }, 'Next'), p('Loading what comes next…', 'muted'));
+  void modelPromise.then(async (model) => { const built = await buildNextSection(ctx, run, actions, tag, model); if (holder.isConnected) holder.replaceWith(built); }).catch(() => undefined);
+  return holder;
+}
+
+async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextActions, _tag: string, model: ReviewModel | undefined): Promise<HTMLElement> {
   const planned = run.plan.initialQuestionCount ?? run.plan.items.length;
   const status = statusLine();
-  const model = await loadReviewModel(ctx);
   const scheduled = model ? await planCurrentDeck(ctx, model) : undefined;
   const remediation = model ? effectiveRemediation(model).all : [];
   const cards = (n: number): string => `${n} card${n === 1 ? '' : 's'}`;
-  const begin = async (make: (model: NonNullable<Awaited<ReturnType<typeof loadReviewModel>>>) => Promise<SessionPlan | undefined>, buttons: HTMLButtonElement[]): Promise<void> => {
+  const begin = async (make: (model: ReviewModel) => Promise<SessionPlan | undefined>, buttons: HTMLButtonElement[]): Promise<void> => {
     for (const b of buttons) b.disabled = true;
     try {
-      const model = await loadReviewModel(ctx);
+      // a press never waits for the network: this device's copy, or the live model if a refresh in progress lands within PRESS_WAIT_MS
+      const model = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
       if (!model) { setStatus(status, 'Choose a language first.', 'error'); return; }
       const plan = await make(model);
       if (!plan || !plan.items.length) { setStatus(status, 'None of these cards can be asked right now.', 'info'); return; }
@@ -961,7 +977,7 @@ async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextAct
     extra, status);
 }
 
-export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, actions?: NextActions): Promise<void> {
+export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, actions?: NextActions, opts: { quiet?: boolean } = {}): Promise<void> {
   const tag = run.ctx.varietyId ?? run.ctx.languageId;
   const results = run.results;
   const sessionState = run.driver.state();
@@ -1022,7 +1038,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
       run.withheld.length ? h('ul', { id: 'sum-withheld' }, ...run.withheld.map((w) => h('li', {}, h('span', langProps(tag), unitLabel(w.unitId)), ` (${w.family}): `, ...embedTarget(`${w.reason}.`, [unitLabel(w.unitId)], tag)))) : p('Everything counted.', 'muted'),
       unbuildable.length ? h('p', { class: 'muted', id: 'sum-unbuildable' }, 'Could not be asked: ', ...unbuildable.flatMap((u, i) => [i ? '; ' : '', h('span', langProps(tag), itemLabel(u.itemId)), ` (${u.reason})`]), '.') : null,
       p(`${view.status?.pending ?? 0} ${(view.status?.pending ?? 0) === 1 ? 'answer waits' : 'answers wait'} to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'))),
-    ...(actions ? [await nextDeckSection(ctx, run, actions, tag)] : []),
+    ...(actions ? [await nextDeckSection(ctx, run, actions, tag, opts)] : []),
   ]);
   if (run.driver.undo) {
     const undoable = results.filter((result) => result.evidence && !result.correctedAt && !result.response.challenged);

@@ -11,6 +11,7 @@ import { createPackRuntime, type PackRuntime } from '../../../language-packs/src
 import { packFor } from '../../../language-packs/src/registry';
 import type { PackManifest } from '../../../language-packs/src/manifest';
 import type { StorageArea } from '../platform';
+import { readPrefix } from '../store';
 import {
   cleanText, isLanguageId, languageNameOf, type ConstructionExplanation, type EntryReply, type EntryRequest, type ExplainReply, type ExplainRequest, type FeatureExplanation, type GlossReply, type GlossRequest, type SourceLink, stringRecord,
 } from '../protocol';
@@ -266,10 +267,8 @@ export function createGlossService(opts: GlossServiceOptions) {
 
   async function stampAttribution(languageId: string, attribution: string): Promise<void> {
     try {
-      const all = await opts.area.get(null);
       const patch: Record<string, unknown> = {};
-      for (const [k, v] of Object.entries(all)) {
-        if (!k.startsWith(SHARD_PREFIX) || !k.includes(`/${languageId}/`)) continue;
+      for (const [k, v] of await readPrefix(opts.area, SHARD_PREFIX, (key) => key.includes(`/${languageId}/`))) {
         const row = v as ShardRow;
         if (row && row.attribution !== attribution) patch[k] = { ...row, attribution };
       }

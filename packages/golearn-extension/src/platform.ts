@@ -53,6 +53,8 @@ export interface ChromeApi {
     /** The address of a file the extension packages (its `app/` folder, `app/config.json`). */
     getURL?(path: string): string;
     openOptionsPage?(): Promise<void>;
+    /** Restarts the extension from its folder (an unpacked build that was rebuilt; see src/background/selfUpdate.ts). */
+    reload?(): void;
   };
   tabs?: {
     query(q: { active?: boolean; currentWindow?: boolean }): Promise<TabInfo[]>;
@@ -134,6 +136,8 @@ export const MSG = {
   lookup: 'golearn:lookup',
   ping: 'golearn:ping',
   // content -> background (also answered for extension pages where noted in background/router.ts)
+  /** A page keeps the worker awake while it is read: answered at once; starts the device Repository's open. */
+  keepWarm: 'golearn:keep-warm',
   record: 'golearn:record',
   profile: 'golearn:profile',
   gloss: 'golearn:gloss',

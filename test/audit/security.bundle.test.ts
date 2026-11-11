@@ -15,6 +15,10 @@ const read = (f: string): string => fs.readFileSync(path.join(dist, f), 'utf8');
 
 const NETWORK = /\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts|navigator\.connection|\.connect\(\s*['"`]?(?:http|ws)/;
 const WEB_STORAGE = /\blocalStorage\b|\bsessionStorage\b|\bindexedDB\b|document\.cookie|\bcaches\.(open|match)|openDatabase/;
+// The background worker alone may use IndexedDB: since 2026-11-10 (278ed67f, f19034ab) the device Repository is kept there, in the extension's own
+// origin (databases golearn-repository and golearn-repository-kv; docs/ecosystem/LOADING-ARCHITECTURE-2026-11-10.md). Every other web storage stays
+// forbidden to it, and the content script and the popup may still use none at all.
+const WORKER_STORAGE = /\blocalStorage\b|\bsessionStorage\b|document\.cookie|\bcaches\.(open|match)|openDatabase/;
 const EXT_STORAGE = /chrome\.storage|browser\.storage|\.storage\.(local|session|sync|managed)\b/;
 const DYNAMIC_CODE = /\beval\s*\(|new Function\s*\(|setTimeout\s*\(\s*['"`]|setInterval\s*\(\s*['"`]|document\.write|\.innerHTML\s*=|\.outerHTML\s*=|insertAdjacentHTML|createContextualFragment|setHTMLUnsafe|srcdoc/;
 const CREDENTIAL = /Authorization|Bearer|\bapiKey\b|\.password\b|`golearn:session`|"golearn:session"|'golearn:session'|createSession|syncPush|syncPull|deleteSession|\/sessions\b|\/sync\//;
@@ -73,7 +77,9 @@ describe.skipIf(!have)('the built extension', () => {
     expect(code).not.toMatch(DYNAMIC_CODE);
     expect(code).not.toMatch(PAGE_CHANNELS);
     expect(code).not.toMatch(/chrome\.(tabs|scripting|cookies|downloads|history|webRequest|management|identity)/);
-    expect(code).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i); // no address to call
+    // no address to call. The one URL in the bundle is the SVG namespace identifier of the card's own speaker icon
+    // (popup/card.ts speakerIcon, commit 342e296c; createElementNS): an XML namespace name, never fetched, so it is removed before the check.
+    expect(code.replaceAll('http://www.w3.org/2000/svg', '')).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i);
     expect(code).not.toMatch(/console\.(log|info|debug|warn|error|trace)/); // nothing is logged, so nothing sensitive can be
   });
 
@@ -91,7 +97,7 @@ describe.skipIf(!have)('the built extension', () => {
     expect(code).toMatch(/\bfetch\s*\(/);
     expect(code).not.toMatch(/XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts/);
     expect(code).not.toMatch(DYNAMIC_CODE);
-    expect(code).not.toMatch(WEB_STORAGE);
+    expect(code).not.toMatch(WORKER_STORAGE);
     expect(code).not.toMatch(/console\./);
     expect(code).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i);
     expect(code).toMatch(/not-your-data/); // the service's handler runs in the worker for the device-local Repository (no network; see REPOSITORY-LOCAL.md); the other scripts have the stub

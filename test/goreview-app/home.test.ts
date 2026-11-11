@@ -20,19 +20,20 @@ describe('the GoReview home', () => {
     const rig = await makeRig({ signedIn: true, links: { biblia: './biblia/index.html' } });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form')]);
     await reopen(rig);
-    expect(rig.qa('#review-home > section').map((s) => s.getAttribute('data-entry'))).toEqual(['tell', 'deck', 'vocab', 'biblia']);
+    expect(rig.qa('#review-home > section').map((s) => s.getAttribute('data-entry'))).toEqual(['deck', 'vocab', 'tell', 'biblia']); // Ecclesia's list: Current Deck, Review Deck, Saved decks, My vocab, GoTell, Biblia
     expect(rig.q<HTMLAnchorElement>('#entry-biblia').getAttribute('href')).toBe('./biblia/index.html');
-    expect(rig.q('#entry-biblia .entry-kicker').textContent).toMatch(/Hebrew Bible and the Greek New Testament/);
+    expect(rig.q('#entry-biblia .ec-row-caption').textContent).toMatch(/Hebrew Bible and the Greek New Testament/);
   });
 
   it('shows GoTell, GoReview (Current Deck with Begin new deck, Review Deck, Saved decks) and My vocab, and nothing else (the owner, 2026-10-31)', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
-    expect(rig.qa('#review-home > section').map((s) => s.getAttribute('data-entry'))).toEqual(['tell', 'deck', 'vocab']);
-    expect(rig.qa('#review-home .entry-title').map((t) => t.textContent)).toEqual(['GoTell', 'GoReview', 'My vocab']);
-    expect(rig.qa('#current-deck .deck-button-title').map((t) => t.textContent)).toEqual(['Current Deck', 'Review Deck', 'Saved decks']);
-    expect(rig.q('#entry-tell .entry-kicker').textContent).toBe('Write and be corrected');
+    expect(rig.qa('#review-home > section').map((s) => s.getAttribute('data-entry'))).toEqual(['deck', 'vocab', 'tell']);
+    expect(rig.q('#review-home .ec-title').textContent).toBe('GoReview'); // the one title
+    expect(rig.qa('#review-home .ec-row-title').map((t) => t.textContent)).toEqual(['Current Deck', 'Review Deck', 'Saved decks', 'My vocab', 'GoTell']); // one list of choices, in this order
+    expect(rig.qa('#review-home svg').every((s) => s.getAttribute('aria-hidden') === 'true')).toBe(true); // the line icons are decoration
+    expect(rig.q('#entry-tell .ec-row-caption').textContent).toBe('Write and be corrected');
     // two cards answered Again are still being drilled: the Current Deck holds them, the Review Deck has nothing due
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('2');
     expect(rig.q('#start-session-count').textContent).toBe('all 2 of your cards'); // the two are the whole eligible pool: deck fill (2026-11-03) says so instead of a bare count

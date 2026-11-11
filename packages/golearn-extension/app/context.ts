@@ -259,14 +259,16 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       const standard = pack?.varieties.find((v) => v.varietyId === e.varietyId)?.writtenStandard ?? (e.languageId === 'nb' || e.languageId === 'nn' ? e.languageId : undefined);
       const choice: ActiveChoice = { enrolmentId: e.enrolmentId, languageId: e.languageId, ...(e.varietyId ? { varietyId: e.varietyId } : {}), ...(e.packId ? { packId: e.packId } : pack ? { packId: pack.packId } : {}), ...(standard ? { standard } : {}) };
       await state.setChoice(choice);
-      if (await state.getSession()) {
-        const input = inputOf(choice, pack);
-        if (input) await enrolOnAccount(input);
-      }
-      // the worker records against the active enrolment of the on-device Repository
+      // the worker records against the active enrolment of the on-device Repository; the device switches first and at once
+      // (2026-11-08: signed in, a slow service held "Use for reading" for as long as the account took to answer)
       const local = await openLocal();
       if (local?.select) await tell(Promise.resolve(local.select(e.enrolmentId)));
       hooks.changed();
+      if (await state.getSession()) {
+        const input = inputOf(choice, pack);
+        // the account follows in the background; GoLearn reads in the device's choice whatever the account answers
+        if (input) void enrolOnAccount(input).then(() => hooks.changed(), () => undefined);
+      }
     },
     async removeEnrolment(e) {
       const local = await openLocal();

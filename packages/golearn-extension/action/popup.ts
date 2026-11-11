@@ -77,6 +77,17 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     await refresh();
   });
 
+  /** The foot line: the build the worker runs, and for 10 minutes after a self-reload that it updated itself (plain text, no control). */
+  function renderBuild(s: PageStatus | undefined): void {
+    const el = doc.getElementById('build');
+    if (!el) return;
+    const at = (iso: string | undefined): string => { const t = iso ? Date.parse(iso) : NaN; return Number.isFinite(t) ? new Date(t).toLocaleString() : ''; };
+    if (!s?.build?.id) { el.textContent = ''; return; }
+    el.textContent = s.updatedAt && at(s.updatedAt)
+      ? `Updated to build ${s.build.id} at ${at(s.updatedAt)}`
+      : `Build ${s.build.id}${at(s.build.builtAt) ? ` · ${at(s.build.builtAt)}` : ''}`;
+  }
+
   /** The greeting and, only when something needs the learner, one line under the brand. */
   function renderStatus(s: PageStatus | undefined): void {
     const welcome = $('welcome');
@@ -145,7 +156,8 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     const marked = MARKED_LEVELS.reduce((n, k) => n + (s.marked[k] ?? 0), 0);
     const known = (ACTIVE_LEVELS.filter((l) => !MARKED_LEVELS.includes(l))).reduce((n, k) => n + (s.marked[k] ?? 0), 0);
     const parts = MARKED_LEVELS.filter((l) => s.marked[l]).map((l) => `${LEVEL_LEGEND[l].title.toLowerCase()} ${s.marked[l]}`).join(', ');
-    const lang = s.languageId ? languageNameOf(s.languageId) : 'language unknown';
+    // every language of the learner's found on the page, the one with the most words first (2026-11-09)
+    const lang = s.languages?.length ? s.languages.map((l) => languageNameOf(l)).join(', ') : s.languageId ? languageNameOf(s.languageId) : 'none of your languages';
     pageLine.textContent = `This page (${lang}): ${s.scanned} words; ${marked} underlined${parts ? ` (${parts})` : ''}; ${known} known.`;
   }
   activeToggle.addEventListener('change', async () => {
@@ -177,7 +189,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
    */
   async function refresh(): Promise<void> {
     const switchShown = activeCall('get').then(async (a) => { showActive(a); await showPage(!!a?.settings.active); });
-    const statusShown = status().then(renderStatus);
+    const statusShown = status().then((s) => { renderStatus(s); renderBuild(s); });
     await Promise.all([switchShown, statusShown]);
   }
 

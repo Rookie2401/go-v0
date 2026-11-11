@@ -3,9 +3,9 @@ import { itemIdFor } from '../src/scheduler/deck';
  * GoReview batches contain justified eligible work. Batch size is a maximum, never
  * a demand to fill. Saved/selected practice carries a typed explicit intent.
  */
-import { KNOWLEDGE_LEVELS, type KnowledgeLevel } from '../../repository-contract/src';
+import { KNOWLEDGE_LEVELS, displayLevelOf, type KnowledgeLevel } from '../../repository-contract/src';
 import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeOutcome, PlannedItem, ReviewIntent, SessionPlan } from '../src/types';
-import { reviewEligibility } from '../src/planner/eligibility';
+import { createReviewEligibilityContext, reviewEligibility, type ReviewEligibilityContext } from '../src/planner/eligibility';
 import { admissionBudget } from '../src/planner/budget';
 import { chooseMicrodeckTarget, microdeckMaximum } from '../src/planner/microdeck';
 import { estimateSeconds, microdeckObservations } from '../src/planner/planner';
@@ -52,10 +52,29 @@ const entryOf = (p: PlannedItem): DeckEntry => ({ itemId: p.item.itemId, unitId:
 const effective = (item: DeckItem) => item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict);
 const knownItem = (model: ReviewModel, w: Pick<Wanted, 'unitId' | 'dimension'>) =>
   [...model.deck, ...(model.classDeck ?? [])].find(i => i.unitId === w.unitId && i.dimension === w.dimension);
+/**
+ * The evidence indexes every eligibility check of one model shares (2026-11-09). Without them each card's check sorted and re-selected the
+ * learner's whole history: with a few hundred reviewed cards the home took 15 s of a phone's processor. Kept per model and rebuilt when its
+ * deck, events or time change.
+ */
+const contexts = new WeakMap<ReviewModel, { deck: unknown; classDeck: unknown; events: unknown; now: string; context: ReviewEligibilityContext }>();
+function contextOf(model: ReviewModel): ReviewEligibilityContext {
+  const kept = contexts.get(model);
+  if (kept && kept.deck === model.deck && kept.classDeck === model.classDeck && kept.events === model.events && kept.now === model.now) return kept.context;
+  const context = createReviewEligibilityContext([...model.deck, ...(model.classDeck ?? [])], model.events, model.now);
+  contexts.set(model, { deck: model.deck, classDeck: model.classDeck, events: model.events, now: model.now, context });
+  return context;
+}
+/** The shared indexes with one card's repair status taken at another time, as a context built at that time would give it. */
+function contextAt(model: ReviewModel, item: DeckItem, at: string): ReviewEligibilityContext {
+  const base = contextOf(model);
+  if (at === model.now) return base;
+  return { ...base, remediationByCard: new Map(remediationBacklog([item], model.events, at, base.remediationEvidence).map((row) => [row.itemId, row])) };
+}
 function eligibility(model: ReviewModel, w: Wanted, intent: ReviewIntent, remainingNew: number) {
   return reviewEligibility({ item: knownItem(model, w), itemId:itemIdFor(w.unitId,w.dimension), unitId: w.unitId, knowledge: model.knowledge.find(k => k.unitId === w.unitId),
     events: model.events, now: model.now, intent, remainingNew,
-    factsInvalidated: ['needs-validation', 'too-uncertain'].includes(w.outcome?.decision ?? '') });
+    factsInvalidated: ['needs-validation', 'too-uncertain'].includes(w.outcome?.decision ?? ''), context: contextOf(model) });
 }
 const budgetFor = (model: ReviewModel) => admissionBudget(model.events, {
   learnerId: model.identity.learnerId, languageId: model.identity.languageId, now: model.now,
@@ -206,7 +225,7 @@ export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdO
     } else if (!due && item.status === 'active' && !item.invalidatedAt && !item.suspendedReason) {
       const dueAt = Date.parse(item.schedule.due);
       const canBecomeDue = Number.isFinite(dueAt) && reviewEligibility({ item, itemId:item.itemId, unitId:item.unitId, knowledge:model.knowledge.find(k=>k.unitId===item.unitId),
-        events:model.events, now:item.schedule.due, intent:{ kind:'explicit', reason:'early-review', requestedAt:model.now }, remainingNew:0 }).eligible;
+        events:model.events, now:item.schedule.due, intent:{ kind:'explicit', reason:'early-review', requestedAt:model.now }, remainingNew:0, context: contextAt(model, item, item.schedule.due) }).eligible;
       if (canBecomeDue && (item.schedule.phase==='learning' || item.schedule.phase==='relearning')
         && (!summary.nextReturnAt || dueAt < Date.parse(summary.nextReturnAt))) summary.nextReturnAt = item.schedule.due;
       else if (canBecomeDue && item.schedule.phase==='review'
@@ -446,6 +465,7 @@ export type VocabSort = 'least' | 'recent';
 export interface VocabRow {
   unitId: string;
   label: string;
+  /** The level SHOWN (and sorted by) in My vocab: the Repository's level, except New for a word met only in passing (`displayLevelOf`, owner 2026-11-05). Nothing that plans or decides reads it. */
   level: KnowledgeLevel;
   encounters: number;
   /** When the word was last tapped or met (ISO). */
@@ -562,7 +582,7 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<Vocab
       if (isClassUnit(k.unitId)) continue; // the Class Essentials cards are not vocabulary the learner met
       const last = k.lastSeenAt ?? item.lastEncounter;
       records.push({
-        unitId: k.unitId, label: item.unit?.label || unitLabel(k.unitId), level: k.level, encounters: k.encounters, ...(last ? { lastSeenAt: last } : {}),
+        unitId: k.unitId, label: item.unit?.label || unitLabel(k.unitId), level: displayLevelOf(k), encounters: k.encounters, ...(last ? { lastSeenAt: last } : {}),
         kind: item.unit?.kind ?? k.unitId.split(':', 1)[0], forms: item.surfaceForms ?? [],
       });
     }

@@ -59,7 +59,7 @@ describe('sqlite store: schema and migrations', () => {
     const raw1 = new DatabaseSync(path);
     const versions1 = raw1.prepare('SELECT version, name FROM schema_version').all();
     raw1.close();
-    expect(versions1).toEqual([{ version: 1, name: '001-initial.sql' }, { version: 2, name: '002-provenance.sql' }, { version: 3, name: '003-vocabulary-page-index.sql' }, { version: 4, name: '004-account-security.sql' }]);
+    expect(versions1).toEqual([{ version: 1, name: '001-initial.sql' }, { version: 2, name: '002-provenance.sql' }, { version: 3, name: '003-vocabulary-page-index.sql' }, { version: 4, name: '004-account-security.sql' }, { version: 5, name: '005-vocabulary-by-unit.sql' }]);
 
     const b = openSqliteStore(path);
     expect((await b.list({ learnerId: L1 })).map((e) => [e.id, e.seq])).toEqual([['e1', 1], ['e2', 2]]);
@@ -71,13 +71,13 @@ describe('sqlite store: schema and migrations', () => {
     await b.close();
 
     const raw2 = new DatabaseSync(path);
-    expect(raw2.prepare('SELECT COUNT(*) AS n FROM schema_version').get()).toEqual({ n: 4 });
+    expect(raw2.prepare('SELECT COUNT(*) AS n FROM schema_version').get()).toEqual({ n: 5 });
     raw2.close();
   });
 
   it('the migration runner reports what it applied and is idempotent', () => {
     const db = new DatabaseSync(':memory:');
-    expect(applyMigrations(db)).toEqual(['001-initial.sql', '002-provenance.sql', '003-vocabulary-page-index.sql', '004-account-security.sql']);
+    expect(applyMigrations(db)).toEqual(['001-initial.sql', '002-provenance.sql', '003-vocabulary-page-index.sql', '004-account-security.sql', '005-vocabulary-by-unit.sql']);
     expect(applyMigrations(db)).toEqual([]);
     db.close();
   });
@@ -189,7 +189,7 @@ describe('sqlite store: schema and migrations', () => {
     const raw = new DatabaseSync(path);
     expect(raw.prepare('SELECT version FROM schema_version ORDER BY version').all()).toEqual([{ version: 1 }, { version: 2 }, { version: 9 }]);
     raw.close();
-    // the shipped code (001 to 004) must not open a database that has 009
+    // the shipped code (001 to 005) must not open a database that has 009
     expect(() => openSqliteStore(path)).toThrow(/newer than the code/);
   });
 
@@ -205,7 +205,7 @@ describe('sqlite store: schema and migrations', () => {
   });
 
   it('reads migrations in order and ignores other files', () => {
-    expect(readMigrations().map((m) => m.name)).toEqual(['001-initial.sql', '002-provenance.sql', '003-vocabulary-page-index.sql', '004-account-security.sql']);
+    expect(readMigrations().map((m) => m.name)).toEqual(['001-initial.sql', '002-provenance.sql', '003-vocabulary-page-index.sql', '004-account-security.sql', '005-vocabulary-by-unit.sql']);
   });
 
   it('opens file databases in WAL mode with foreign keys on', async () => {

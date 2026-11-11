@@ -214,7 +214,7 @@ PASS = secure behaviour confirmed; DEFECT = see table; FINDING = accepted/by-des
 * Backups, replicas and logs outside the repository: P-11 is about the database file only; whatever a host's backups keep is out of reach.
 * scrypt (a fast deterministic hash stands in; the security audit covers scrypt).
 * The remote AI provider and the Azure speech service do not exist in the product; a spy and a rejecting `fetch` stand in. Whether a future provider retains text is unknowable here.
-* IndexedDB / Dexie: used only by the legacy `src/` app, by none of the Go packages.
+* IndexedDB / Dexie: used only by the legacy `src/` app, by none of the Go packages (true when this audit ran; since 2026-11-10 the extension worker keeps the device Repository in IndexedDB on the device: export, "delete this device's data" and sign-out are covered for it by `test/loading/golearn.store.test.ts` and `test/repository-local/migration.test.ts`).
 * The wording of the privacy statements shown to the learner (GoTell's `privacyStatement()` text) was read, not asserted, apart from the claims it makes that are tested above (export, delete, forget this device, team is a label).
 * Legal sufficiency of any of this (retention periods, erasure deadlines): not assessed.
 

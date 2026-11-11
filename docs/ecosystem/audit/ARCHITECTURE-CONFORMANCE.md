@@ -48,7 +48,8 @@ GoLearn  (one application, one package: packages/golearn-extension)
                   (no sync, no service, no packs runtime: it only sends messages to the background)
   popup       ──► golearn-extension (9) · repository-contract (5)         (no legacy src/, no GoListen)
   setup app   ──► golearn-extension (34) · language-packs (16) · repository-service api client (3) · repository-contract (5) · src/ (103)
-                  · since 2026-10-09 (no account needed): repository-local, which brings repository-store, -engine and -linguistics with it;
+                  · since 2026-10-09 (no account needed): repository-local, which brings repository-store, -engine and -linguistics with it
+                    (of the store: memory.ts, rules.ts, deletion.ts and, since f19034ab, the browser-only indexeddb.ts; never sqlite.ts);
                     inside the extension the app only connects to the worker's device-local Repository (connectLocalRepository), and the
                     hosted copy opens one of its own through a lazy chunk the options build leaves out
 

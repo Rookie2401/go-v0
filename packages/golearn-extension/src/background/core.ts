@@ -22,13 +22,14 @@ import { createGlossService, defaultPacks, type PackProvider } from './gloss';
 import { createFormsService } from './forms';
 import { levelOf } from '../../../language-packs/src/manifest';
 import { PACKS } from '../../../language-packs/src/registry';
-import { createLocalRepoService } from './localRepo';
+import { createLocalRepoService, type LocalRepoServiceOptions } from './localRepo';
 import { createProfileService } from './profile';
 import { createRecorder } from './recorder';
 import { createSessionManager } from './session';
+import { createSelfUpdate, type BuildInfo } from './selfUpdate';
 import { createSettings } from './settings';
 import { restrictStorageToTrustedContexts } from './storageAccess';
-import { createSyncService } from './sync';
+import { SYNC_ALARM, createSyncService } from './sync';
 import { createLocalTranslationService } from './translation';
 import { createSpeechService } from './speech';
 import { QUARANTINE_PREFIX, QUEUE_PREFIX, REJECTED_PREFIX } from '../../../repository-sync/src';
@@ -49,6 +50,10 @@ export interface BackgroundOptions {
   timers?: { set(fn: () => void, ms: number): unknown; clear(handle: unknown): void };
   /** The service address the extension ships with; read from app/config.json when absent (tests pass one). */
   defaultServiceUrl?: string;
+  /** Tests only: replaces the device Repository's IndexedDB, keep-alive and migration fault (see LocalRepoServiceOptions). */
+  localRepo?: Partial<Pick<LocalRepoServiceOptions, 'idb' | 'keepAlive' | 'migrationInject'>>;
+  /** Tests only: the build this worker claims to be (default: what the build compiled in; none when run from source, and then there is no self-update). */
+  build?: BuildInfo;
 }
 
 type SenderKind = 'page' | 'content' | 'foreign';
@@ -60,6 +65,7 @@ const PAGE_ONLY: ReadonlySet<string> = new Set<string>([
 ]);
 const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.record, MSG.profile, MSG.gloss, MSG.entry, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
+  MSG.keepWarm,
   MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
   MSG.activeProfile, // the scan's learner-model question: device rows only, and only while Active is on (below)
   MSG.confirmForms, // the scan's dictionary question: public dictionary data only, forms in, lemmas out
@@ -139,13 +145,17 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       await holder.profile?.clear();
       await holder.recorder?.setAsideForeign(s.learnerId);
       if (s.enrolmentId && s.languageId) await holder.recorder?.reattributeQueued(s.learnerId, s.enrolmentId, s.languageId);
+      await holder.recorder?.fileWaitingMarks(s);
       await holder.sync?.onSignedIn();
       await holder.local?.afterSignIn(); // the device's history goes up once, then the account's comes down (failures are recorded, never thrown)
     },
     onEnrolmentChange: async (s) => {
       if (s.enrolmentId && s.languageId) await holder.recorder?.reattributeQueued(s.learnerId, s.enrolmentId, s.languageId);
+      await holder.recorder?.fileWaitingMarks(s);
       holder.sync?.schedule();
-      await holder.local?.afterEnrolment(); // events that waited for an enrolment in their language can go now
+      // events that waited for an enrolment in their language can go now. Not waited for (2026-11-08): it uploads and pulls, and a language
+      // switch selects an enrolment, so a slow or hanging service held the popup on "Switching to …" for two request timeouts (30 s)
+      void holder.local?.afterEnrolment();
     },
     onDisconnect: async () => { await holder.profile?.clear(); },
   });
@@ -162,11 +172,28 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   // GoLearn Active: the switches, the host-permission check and the dynamic content script (the popup asks the browser for the permission)
   const active = createActiveService({ chrome, area: local, contentFile: CONTENT_FILE, now });
   // the device's own Repository: GoLearn works with no account, and the account only keeps the history across devices
-  const localRepo = createLocalRepoService({ area: local, deviceId, session, packs, now });
+  // With IndexedDB in the worker the Repository opens over it (one verified move of the old rows, then no reading at open); without, the rows as before.
+  // While it opens, the extension API is touched every 20 s: the browser stops a worker with no extension event for about 30 s, IndexedDB work does not count.
+  const idbFactory = (globalThis as { indexedDB?: IDBFactory }).indexedDB;
+  const localRepo = createLocalRepoService({
+    area: local, deviceId, session, packs, now,
+    ...(idbFactory ? { idb: { indexedDB: idbFactory, ...(typeof IDBKeyRange !== 'undefined' ? { keyRange: IDBKeyRange } : {}) } } : {}),
+    keepAlive: () => { void (chrome.runtime as { getPlatformInfo?: () => unknown }).getPlatformInfo?.(); },
+    ...bg.localRepo, // tests only: another IndexedDB, a keep-alive probe, a fault for the migration
+  });
   const profile = createProfileService({ area: cache, session, settings: settings.get, now, local: localRepo.forProfile });
-  const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, onSynced: async () => { await profile.refreshAfterSync(); } });
+  const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, onSynced: async () => {
+    await profile.refreshAfterSync();
+    // the account's enrolments are read again now and then (a language chosen on another device; a session from before they were kept): marks waiting for one go up
+    const s = await session.refreshEnrolments();
+    if (s && await holder.recorder?.fileWaitingMarks(s)) holder.sync?.schedule();
+  } });
   const recorder = createRecorder({ area: local, queue: sync.queue, session, deviceId, version, now: Date.now, onQueued: () => sync.schedule(), onRecorded: (e, attributed) => localRepo.record(e, attributed) });
   holder.recorder = recorder; holder.sync = sync; holder.profile = profile; holder.local = localRepo;
+
+  // a worker of an unpacked extension whose folder was rebuilt reloads itself (selfUpdate.ts); never while the Repository opens or a record is in flight
+  let recording = 0;
+  const selfUpdate = createSelfUpdate({ chrome, fetch: doFetch, now, build: bg.build, busy: () => recording > 0 || localRepo.busy() });
 
   // ───────────── per-tab state, injection ─────────────
   async function readState(tabId: number): Promise<TabState> {
@@ -251,13 +278,16 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   // ───────────── status ─────────────
   async function publicStatus(): Promise<PublicStatus> {
     // cheap: a lookup asks for this, so it must not scan the queue
-    const [s, needsSignIn] = await Promise.all([session.status(), sync.needsSignIn()]);
-    // the language of the account's enrolment; with none, the one the learner chose on this device; with none, Albanian (the reference language)
-    const languageId = s.languageId ?? (await localRepo.activeLanguage()) ?? 'sq';
-    // the languages the reader resolves against: the ones the learner chose (account enrolment, device enrolments), so a page in the
+    const [s, needsSignIn, onDevice] = await Promise.all([session.status(), sync.needsSignIn(), localRepo.activeLanguage()]);
+    // the language the learner chose on THIS device (the popup's switch, the setup page's Use for reading); with none, the account's enrolment;
+    // with none, Albanian (the reference language). The device's choice comes first (2026-11-08): the account's enrolment follows it in the
+    // background, and while the service is slow or unreachable the account's old language must not undo a switch the learner just made.
+    const languageId = onDevice ?? s.languageId ?? 'sq';
+    // the languages the reader resolves against: the ones the learner chose (device enrolments, account enrolment), so a page in the
     // chosen language is recognised from its own word list and no other pack's chunk is loaded to compare; with none chosen, every pack
     const all = Object.keys(PACKS).filter((l) => { const m = packs.manifest(l); return !!m && levelOf(m) !== 'planned'; });
-    const chosen = [...new Set([s.languageId, ...(await localRepo.chosenLanguages())].filter((l): l is string => !!l && all.includes(l)))];
+    const chosen = [...new Set([onDevice, s.languageId, ...(await localRepo.chosenLanguages())].filter((l): l is string => !!l && all.includes(l)))];
+    const updated = await selfUpdate.note();
     return {
       ok: true,
       connected: s.connected,
@@ -266,19 +296,24 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       languageName: languageNameOf(languageId),
       packAvailable: gloss.packAvailable(languageId),
       installedLanguages: chosen.length ? chosen : all,
+      ...(selfUpdate.build ? { build: { id: selfUpdate.build.id, builtAt: selfUpdate.build.builtAt } } : {}),
+      ...(updated ?? {}),
     };
   }
 
   /**
    * The popup's language switch (2026-10-25): make `languageId`, one of the chosen languages, the one GoLearn reads in. On the device the
    * open enrolment in that language becomes the active one (the worker records against it); signed in, the account's open enrolment in
-   * it is selected too (the status then names it). Pages that are Active start again, so they resolve and scan in the new language.
+   * it is selected too. Pages that are Active start again, so they resolve and scan in the new language.
    * A language with no enrolment anywhere is refused: it is chosen in the setup page, where the pack is downloaded.
+   *
+   * Nothing here waits on the service (2026-11-08: signed in, a slow or unreachable service held the popup on "Switching to …" for up to
+   * 40 s, and the switch was then undone by the account's old language): the device switches at once, the account's enrolment is taken from
+   * the list kept on the session, and only when that list has none in this language is the service asked, in the background.
    */
   async function useLanguage(languageId: string): Promise<{ ok: boolean; languageId?: string; languageName?: string; where?: 'device' | 'account' | 'both'; message?: string }> {
     if (!isLanguageId(languageId)) return { ok: false, message: 'Not a language.' };
     let onDevice = false;
-    let onAccount = false;
     const list = await localRepo.handle({ op: 'enrolments' }) as { ok: boolean; enrolments?: Array<{ enrolmentId: string; languageId: string; endedAt?: string; explicit: boolean }> };
     const have = list.ok ? (list.enrolments ?? []).find((e) => e.languageId === languageId && !e.endedAt && e.explicit) : undefined;
     if (have) {
@@ -294,39 +329,56 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
         onDevice = r.ok;
       }
     }
-    const a = await session.authenticated();
-    if (a) {
-      let r: Awaited<ReturnType<typeof a.api.listEnrolments>> | undefined;
-      try { r = await a.api.listEnrolments(); } catch { r = undefined; }
-      const remote = r?.ok ? r.data.enrolments.filter((e) => e.languageId === languageId && !e.endedAt).sort((x, y) => y.startedAt.localeCompare(x.startedAt))[0] : undefined;
-      if (remote) onAccount = (await session.selectEnrolment(remote.enrolmentId)).ok;
-    }
+    let onAccount = (await session.selectKnownLanguage(languageId))?.ok === true;
+    if (!onAccount && !onDevice) onAccount = await selectOnAccount(languageId); // nothing on this device: only the account can serve, so it is waited for
+    else if (!onAccount) void selectOnAccount(languageId).catch(() => false);
     if (!onDevice && !onAccount) return { ok: false, message: `${languageNameOf(languageId)} is not one of your chosen languages here. Download it in GoLearn setup first.` };
     await active.restart();
     return { ok: true, languageId, languageName: languageNameOf(languageId), where: onDevice && onAccount ? 'both' : onDevice ? 'device' : 'account' };
   }
 
   /**
+   * The account's newest open enrolment in `languageId`, asked of the service and selected: the slow path of a switch, for a language the kept
+   * list does not have (chosen on another device since it was read). Skipped when the learner has meanwhile switched this device to another language.
+   */
+  async function selectOnAccount(languageId: string): Promise<boolean> {
+    const a = await session.authenticated();
+    if (!a) return false;
+    let r: Awaited<ReturnType<typeof a.api.listEnrolments>> | undefined;
+    try { r = await a.api.listEnrolments(); } catch { return false; }
+    const remote = r?.ok ? r.data.enrolments.filter((e) => e.languageId === languageId && !e.endedAt).sort((x, y) => y.startedAt.localeCompare(x.startedAt))[0] : undefined;
+    if (!remote) return false;
+    const onDevice = await localRepo.activeLanguage();
+    if (onDevice && onDevice !== languageId) return false;
+    return (await session.selectEnrolment(remote.enrolmentId)).ok;
+  }
+
+  /**
    * The languages of the account's open enrolments: read from the service when signed in and it answers within a moment, and kept in
    * storage so that the next time it does not answer (the owner's network filters a name, the address is stale) the popup still lists
-   * them (2026-10-27). `fresh` is false only when neither the service nor the stored copy gave a list. The popup never waits on the network.
+   * them (2026-10-27). `fresh` is false only when neither the service nor the stored copy gave a list.
+   * A stored copy is answered at once and the service is asked again in the background (2026-11-08: every popup opening waited up to 2.5 s
+   * on a slow service, and once more after each switch); only with no copy yet does the answer wait, up to 2.5 s.
    */
   const ACCOUNT_LANGUAGES_KEY = 'golearn:account-languages';
   async function accountLanguages(): Promise<{ languages: string[]; fresh: boolean }> {
     const a = await session.authenticated();
     if (!a) return { languages: [], fresh: true };
-    const quiet = new Promise<string[] | undefined>((resolve) => setTimeout(() => resolve(undefined), 2500));
-    const ask = a.api.listEnrolments().then((r) => (r.ok ? [...new Set(r.data.enrolments.filter((e) => !e.endedAt).map((e) => e.languageId))] : undefined), () => undefined);
-    const live = await Promise.race([ask, quiet]);
-    if (live) {
-      try { await local.set({ [ACCOUNT_LANGUAGES_KEY]: { learnerId: a.session.learnerId, languages: live } }); } catch { /* the list still serves this call */ }
-      return { languages: live, fresh: true };
-    }
+    let kept: string[] | undefined;
     try {
-      const kept = (await local.get(ACCOUNT_LANGUAGES_KEY))[ACCOUNT_LANGUAGES_KEY] as { learnerId?: string; languages?: unknown } | undefined;
-      if (kept && kept.learnerId === a.session.learnerId && Array.isArray(kept.languages)) return { languages: kept.languages.filter((l): l is string => typeof l === 'string'), fresh: true };
+      const k = (await local.get(ACCOUNT_LANGUAGES_KEY))[ACCOUNT_LANGUAGES_KEY] as { learnerId?: string; languages?: unknown } | undefined;
+      if (k && k.learnerId === a.session.learnerId && Array.isArray(k.languages)) kept = k.languages.filter((l): l is string => typeof l === 'string');
     } catch { /* no copy */ }
-    return { languages: [], fresh: false };
+    const ask = a.api.listEnrolments().then(async (r) => {
+      if (!r.ok) return undefined;
+      const live = [...new Set(r.data.enrolments.filter((e) => !e.endedAt).map((e) => e.languageId))];
+      try { await local.set({ [ACCOUNT_LANGUAGES_KEY]: { learnerId: a.session.learnerId, languages: live } }); } catch { /* the list still serves this call */ }
+      return live;
+    }, () => undefined);
+    if (kept) return { languages: kept, fresh: true };
+    const quiet = new Promise<string[] | undefined>((resolve) => setTimeout(() => resolve(undefined), 2500));
+    const live = await Promise.race([ask, quiet]);
+    return live ? { languages: live, fresh: true } : { languages: [], fresh: false };
   }
 
   /** A session from before the name was kept (2026-10-28): the enrolments are re-read once per worker life, which stores the name for the next status. */
@@ -424,7 +476,9 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
         return typeof m.tabId === 'number'
           ? setEnabled(m.tabId, !!m.enabled).catch(() => ({ enabled: false, error: 'GoLearn could not change this tab.' }) satisfies TabState)
           : { enabled: false };
-      case MSG.status: return kind === 'page' ? pageStatus() : publicStatus();
+      case MSG.status:
+        if (kind === 'page') { void selfUpdate.check(); return pageStatus(); } // the popup opening is one of the moments a newer build of the folder is looked for (never a content script's request)
+        return publicStatus();
       case MSG.settings: {
         const req = (m ?? {}) as { op?: string; patch?: unknown };
         if (req.op === 'set') return kind === 'page' ? settings.set(req.patch) : ({ ok: false, settings: DEFAULT_SETTINGS, error: 'forbidden' } satisfies SettingsReply);
@@ -432,8 +486,11 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       }
       case MSG.record: {
         // an exception (a full or failing store) is a reason the card can show, not a bare 'internal'
-        const reply = await recorder.record(m.event, kind).catch((e: unknown): RecordReply => ({ ok: false, error: `failed: ${e instanceof Error ? e.message : String(e)}` }));
-        return reply satisfies RecordReply;
+        recording++;
+        try {
+          const reply = await recorder.record(m.event, kind).catch((e: unknown): RecordReply => ({ ok: false, error: `failed: ${e instanceof Error ? e.message : String(e)}` }));
+          return reply satisfies RecordReply;
+        } finally { recording--; }
       }
       case MSG.profile: {
         const languageId = typeof m.languageId === 'string' ? m.languageId : 'sq';
@@ -450,7 +507,8 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       case MSG.speech: return speech.handle(m, `${sender?.tab?.id ?? 'page'}:${sender?.frameId ?? 0}`, sender?.url);
       case MSG.correct: return correct(m);
       case MSG.metrics: return storeMetric(m);
-      case MSG.active: return active.handle(m, kind);
+      case MSG.keepWarm: void localRepo.open(); return { ok: true }; // a page is being read: start the open (once), answer at once; the reply resets the browser's idle timer
+      case MSG.active: if (kind === 'content') void localRepo.open(); return active.handle(m, kind); // a page load pre-warms the device Repository
       case MSG.activeProfile: {
         // the words on the learner's screen, by the learner's own switch: never trimmed like a long selection, never sent to the service
         const s = await active.get();
@@ -504,9 +562,12 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     chrome.tabs?.onUpdated?.addListener((tabId, change) => { if (change.status === 'loading') void writeState(tabId, { enabled: false }); });
 
     sync.registerAlarm(chrome);
-    void localRepo.open(); // open the device-local Repository now, so the first lookup does not wait for it
+    // the device-local Repository is NOT opened here (2026-11-10): every worker wake (the one-minute sync alarm too) refolded the whole history. It opens on the first
+    // message that needs it (status, profile, record, keep-warm, active) instead.
     void active.restore(); // keep Active's registration in step with the permission the learner may have withdrawn meanwhile
     active.watchPermission();
+    chrome.alarms?.onAlarm.addListener((a) => { if (a.name === SYNC_ALARM) void selfUpdate.check(); }); // the one-minute alarm
+    void selfUpdate.check(); // at worker start, with every listener registered
 
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       const m = message as Record<string, unknown> | undefined;

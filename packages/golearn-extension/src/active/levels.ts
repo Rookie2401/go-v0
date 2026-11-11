@@ -9,8 +9,15 @@
  * learner's own mark on a word (the newest mark among the word's rows, read through `levelOfMark`, so the three marks stored
  * before the six levels keep their meaning) decides the level outright, until they mark it again. Nothing here decides a
  * status in the Repository: the levels are a reading of the projection, the same rows the card's rating row shows.
+ *
+ * What is SHOWN differs from what the Repository stores in one case (owner, 2026-11-05): a word met only in passing. The page records a bare
+ * encounter for every recognised word on screen, and the Repository lifts any observed unit to Seen; but the learner clicked one word, not
+ * all of them. A row with no mark, engine level Seen, no lookup or assistance request (`exposure.negative` 0) and no observation on any
+ * dimension other than exposure is therefore shown as New (`metOnlyInPassing`, repository-contract). The Repository's level, and what
+ * GoReview plans from, are not changed. Known limit: a row's dimensions are cumulative, so a word looked up BEFORE a New mark and then
+ * merely met again reads Seen.
  */
-import { KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_RANK, KNOWLEDGE_LEVEL_WORDS, levelOfMark, type KnowledgeLevel, type LevelMark } from '../../../repository-contract/src/knowledge-levels';
+import { KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_RANK, KNOWLEDGE_LEVEL_WORDS, displayLevelOf, levelOfMark, type KnowledgeLevel, type LevelMark } from '../../../repository-contract/src/knowledge-levels';
 import type { KnowledgeView } from '../protocol';
 
 export type ActiveLevel = KnowledgeLevel;
@@ -21,7 +28,8 @@ export const ACTIVE_LEVELS: readonly ActiveLevel[] = KNOWLEDGE_LEVELS;
 /**
  * The thresholds, over a row's dimensions (a dimension's `score` is the estimate in 0..1, `observations` how many events moved it):
  *   new         no observation at all
- *   seen        an exposure (or a lookup) or any other observation, nothing that shows it was understood
+ *   seen        an exposure (or a lookup) or any other observation, nothing that shows it was understood. SHOWN as new when the word was
+ *               met only in passing: no lookup, no assistance, no observation but exposure (see the header)
  *   recognized  assisted recognition observed at least once, or reading recognition observed (once, or below the familiar bar)
  *   familiar    reading recognition ≥ 0.6 over ≥ 2 observations
  *   known       reading recognition ≥ 0.8 over ≥ 4 observations
@@ -49,6 +57,11 @@ export const levelOfSelfMark = (mark: LevelMark): ActiveLevel => levelOfMark(mar
 /** The level one row's evidence supports (or the level the engine sent), or undefined when there is no row. A row with nothing observed is `new`; the learner's own mark is not read here. */
 export function levelOfRow(row: KnowledgeView | undefined): ActiveLevel | undefined {
   if (!row) return undefined;
+  return displayLevelOf(row, engineLevelOfRow(row));
+}
+
+/** The level the engine sent, else the page's reading of the dimensions: what the Repository holds, before the display rule. */
+function engineLevelOfRow(row: KnowledgeView): ActiveLevel {
   if (row.level && (KNOWLEDGE_LEVELS as readonly string[]).includes(row.level)) return row.level;
   const d = row.dimensions;
   const obs = (k: keyof typeof d): number => d[k]?.observations ?? 0;
@@ -77,9 +90,12 @@ export function selfMarkOfRows(rows: Array<KnowledgeView | undefined>): { mark: 
  * mark other than New decides outright, whatever level the engine stored on the row: a row folded before that rule (a service not
  * yet redeployed, an on-device Repository not yet refolded) carries a Known word read back down to Seen by a later lookup, and it
  * must not repaint the page or the card that way. A mark of New says "not met" and is released by any later meeting, so there the
- * engine's level of the row that carries it stands (never below Seen once met).
+ * engine's level of the row that carries it stands (never below Seen once met), shown as New when that row was met only in passing.
+ *
+ * `looked`: the learner clicked this word on this page (a lookup event the device holds): it is at least Seen even when the rows, read before
+ * the lookup was folded (an account that has not seen it yet), still say New.
  */
-export function levelOfRows(rows: Array<KnowledgeView | undefined>): ActiveLevel {
+export function levelOfRows(rows: Array<KnowledgeView | undefined>, looked = false): ActiveLevel {
   const mark = selfMarkOfRows(rows);
   if (mark) {
     const marked = levelOfMark(mark.mark);
@@ -88,14 +104,18 @@ export function levelOfRows(rows: Array<KnowledgeView | undefined>): ActiveLevel
     let engine: ActiveLevel | undefined;
     for (const r of rows) {
       if (!r || r.selfMark?.at !== mark.at || !r.level || !(KNOWLEDGE_LEVELS as readonly string[]).includes(r.level)) continue;
-      if (!engine || KNOWLEDGE_LEVEL_RANK[r.level] > KNOWLEDGE_LEVEL_RANK[engine]) engine = r.level;
+      // met only in passing since the mark (the row's dimensions are cumulative; the mark itself is ignored for this test): still New
+      const shown = displayLevelOf({ ...r, selfMark: undefined }, r.level);
+      if (!engine || KNOWLEDGE_LEVEL_RANK[shown] > KNOWLEDGE_LEVEL_RANK[engine]) engine = shown;
     }
+    if (looked && (!engine || engine === 'new')) return 'seen';
     if (engine) return engine;
     // no engine level: the same rule on the row's own dates. A mark of "new" says not met; anything observed after it (a click that looked the word up) makes it seen.
-    if (marked === 'new' && rows.some((r) => !!r?.lastSeenAt && Date.parse(r.lastSeenAt) > Date.parse(mark.at))) return 'seen';
+    if (looked) return 'seen';
+    if (marked === 'new' && rows.some((r) => !!r?.lastSeenAt && Date.parse(r.lastSeenAt) > Date.parse(mark.at) && displayLevelOf({ ...r, selfMark: undefined }, engineLevelOfRow(r)) !== 'new')) return 'seen';
     return marked;
   }
-  let best: ActiveLevel = 'new';
+  let best: ActiveLevel = looked ? 'seen' : 'new';
   for (const r of rows) {
     const l = levelOfRow(r);
     if (l && KNOWLEDGE_LEVEL_RANK[l] > KNOWLEDGE_LEVEL_RANK[best]) best = l;

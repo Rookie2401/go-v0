@@ -154,7 +154,7 @@ async function wire(dataDir: string, cfg: ServiceConfig): Promise<{ deps: Servic
     ...(cfg.limits ? { limiter: createRateLimiter(cfg.limits) } : {}),
     clientIp: (request) => resolveClientIp(peers.get(request), request.headers, cfg.trustProxy),
     metrics: { registry, ...(cfg.metricsToken ? { token: cfg.metricsToken } : {}), collect: collector(store, notifier, startedAt, kind) },
-    info: { storeKind: kind, startedAt, schemaVersion: async () => (await store.stats?.())?.schemaVersion, ...(kind === 'sqlite' ? { durability: () => backupHealth(dataDir) } : {}) },
+    info: { storeKind: kind, startedAt, ...(cfg.commit ? { commit: cfg.commit } : {}), schemaVersion: async () => (await store.stats?.())?.schemaVersion, ...(kind === 'sqlite' ? { durability: () => backupHealth(dataDir) } : {}) },
     mailer,
     speech: {
       engine: await import('../../../server/speechHandler'),

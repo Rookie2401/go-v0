@@ -5,10 +5,11 @@ import type { Exercise, UnitFacts } from '../../src/types';
 import type { AppContext } from '../context';
 import { append, button, clear, embedTarget, h, p, setStatus, statusLine } from '../dom';
 import { unitLabel } from '../format';
-import { beginSession, loadReviewModel, type ReviewModel } from '../workspace';
+import { beginSession, currentReviewModel, PRESS_WAIT_MS, reviewModelRevision, type ReviewModel } from '../workspace';
 import type { DeckItem } from '../../src/types';
 import { effectiveRemediation, planRemediation } from '../deckModel';
 import { isClassUnit } from '../classEssentials';
+import type { Identity } from '../ports';
 import type { View } from './view';
 
 const when = (at: string): string => new Date(at).toLocaleString();
@@ -34,8 +35,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   el.append(h('p', {}, h('a', { href: '#/review' }, '← GoReview')), root);
   const status = statusLine();
 
-  async function paint(): Promise<void> {
-    const model = await loadReviewModel(ctx);
+  /** The learner and the refresh count the page was drawn at: a model-changing refresh that lands later repaints it. */
+  let painted: { id: Identity; revision: number } | undefined;
+
+  async function paint(quiet = false): Promise<void> {
+    const idn = await ctx.identity().catch(() => undefined);
+    painted = idn ? { id: idn, revision: reviewModelRevision(ctx, idn) } : undefined;
+    const model = await currentReviewModel(ctx, quiet ? { noRefresh: true } : {}); // this device's copy; the refresh repaints through ctx.onData below
     if (!view.alive()) return;
     clear(root);
     if (!model) { append(root, [h('h2', { id: 'remediation-h' }, 'Remediation'), p('Choose a language to continue.')]); return; }
@@ -59,7 +65,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       status]);
   }
 
-  async function candidateRow(ctx: AppContext, model: NonNullable<Awaited<ReturnType<typeof loadReviewModel>>>, c: RemediationCandidate, tag: string): Promise<HTMLElement> {
+  async function candidateRow(ctx: AppContext, model: ReviewModel, c: RemediationCandidate, tag: string): Promise<HTMLElement> {
     const item = [...model.deck, ...(model.classDeck ?? [])].find(i => i.itemId === c.itemId)!;
     let facts: UnitFacts | undefined;
     let exercise: Exercise | undefined;
@@ -97,7 +103,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     } else section.append(p(factsError || 'Verified study material is not available for this item right now.', 'muted'));
     if (c.needsStudy && !c.studiedAt) {
       const study = button('Mark studied', () => void act(async () => {
-        const current = await loadReviewModel(ctx);
+        const current = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
         if (!current) throw new Error('Choose a language first.');
         const fresh = effectiveRemediation(current).all.find(row => row.itemId === c.itemId);
         const currentItem = [...current.deck, ...(current.classDeck ?? [])].find(row => row.itemId === c.itemId);
@@ -121,7 +127,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     } else {
       section.append(p(`Studied ${when(c.studiedAt ?? model.now)} · delayed reassessment ready.`, 'muted'));
       section.append(button('Begin delayed reassessment', () => void act(async () => {
-        const current = await loadReviewModel(ctx);
+        const current = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
         if (!current) throw new Error('Choose a language first.');
         const plan = await planRemediation(ctx, current, effectiveRemediation(current).all.filter(x => x.itemId === c.itemId));
         if (!plan.items.length) throw new Error('This item is no longer eligible for reassessment.');
@@ -138,7 +144,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       p('The old answer key remains withheld. This repair can proceed only when current validated facts differ from the facts behind the invalidated answer key and a valid exercise can be rebuilt.', 'muted'));
     const invalidation = model.events.find(e => e.id === item.invalidatedBy && e.kind === 'ReviewItemInvalidated');
     const repair = button('Check facts and repair', () => void act(async () => {
-      const current = await loadReviewModel(ctx);
+      const current = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
       if (!current) throw new Error('Choose a language first.');
       const currentItem = [...current.deck, ...(current.classDeck ?? [])].find(x => x.itemId === item.itemId);
       const currentInvalidation = currentItem?.invalidatedBy ? current.events.find(e => e.id === currentItem.invalidatedBy && e.kind === 'ReviewItemInvalidated') : undefined;
@@ -172,5 +178,14 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     catch (e) { setStatus(status, e instanceof Error ? e.message : String(e), 'error'); }
   }
 
+  let repainting = false;
+  let again = false;
+  const repaintIfRefreshed = async (): Promise<void> => {
+    if (!painted || reviewModelRevision(ctx, painted.id) === painted.revision) return;
+    if (repainting) { again = true; return; }
+    repainting = true;
+    try { do { again = false; if (!view.alive()) return; await paint(true); } while (again); } catch { /* the page stays as painted */ } finally { repainting = false; }
+  };
+  view.onDispose(ctx.onData(() => { void repaintIfRefreshed(); }));
   await paint();
 }

@@ -8,7 +8,7 @@ import { createMemoryArea } from '../../repository-sync/src';
 import { createApp } from './app';
 import { createAudioDeps } from './audio';
 import { getExtension, localRepoFor } from './localBinding';
-import { loadConfig } from './config';
+import { resolveConfig } from './config';
 import { createReviewEngine } from './engine';
 import { packFactsFor } from './packFacts';
 import type { Deps } from './ports';
@@ -42,6 +42,10 @@ const uuid = (): string => (typeof crypto !== 'undefined' && 'randomUUID' in cry
   : `${Date.now().toString(36)}-${Math.floor(Math.random() * 36 ** 8).toString(36)}`);
 
 class NativeStorageUnavailableError extends Error {}
+class ConfigUnavailableError extends Error {}
+
+/** A built app (the hosted review and web builds, the extension) must know its service address; only the development server may fall back to the default. */
+const isProductionBuild = (): boolean => { const mode = (import.meta as unknown as { env?: { MODE?: string } }).env?.MODE; return mode === 'review' || mode === 'extension' || mode === 'production'; };
 
 /** Bound waits for repository requests on a phone with a stale tunnel or no route. Asset fetches keep using `doFetch`. */
 export function withApiRequestTimeout(fetcher: typeof fetch, timeoutMs = 8_000): typeof fetch {
@@ -61,14 +65,20 @@ export async function createRealDeps(fetcher?: typeof fetch): Promise<Deps> {
   };
   const apiFetch = doFetch;
   const speechFetch = withRequestTimeout(rawFetch, 30_000);
-  const config = await loadConfig(doFetch);
+  const ext = getExtension();
+  let keptConfig: Storage | undefined;
+  try { keptConfig = window.localStorage; } catch { keptConfig = undefined; }
+  // config.json, else the last good copy of it kept on this device; never silently the development address in a built app (2026-11-10)
+  const resolved = await resolveConfig(doFetch, keptConfig);
+  // the extension works on the device with no service address at all (an account is optional there)
+  if (resolved.source === 'none' && isProductionBuild() && !ext) throw new ConfigUnavailableError();
+  const config = resolved.config;
   const engine = createReviewEngine({
     builders: registry, evidenceFor, ratingFor,
     factsFor: packFactsFor({ fetch: doFetch, baseUrl: config.assetBaseUrl ?? './', lexiconBaseUrl: './' }),
   });
   // Inside the GoLearn extension (this page is served from chrome-extension://…/review/) GoReview works on the device with no account: the
   // on-device Repository is reached through the extension's worker. Anywhere else (the hosted copy) there is none, and an account is needed.
-  const ext = getExtension();
   const HOSTED_SETUP = 'https://rookie2401.github.io/go-v0/app/index.html#/languages';
   return {
     win: window, doc: document, fetch: doFetch, area: storageArea(mobile), config, mobile,
@@ -106,6 +116,23 @@ function showNativeStorageError(root: HTMLElement): void {
   root.replaceChildren(section);
 }
 
+function showConfigError(root: HTMLElement): void {
+  const section = document.createElement('section');
+  section.className = 'card error';
+  section.setAttribute('role', 'alert');
+  const title = document.createElement('h1');
+  title.textContent = 'GoReview couldn’t load its settings';
+  const message = document.createElement('p');
+  message.textContent = 'Check your connection, then try again. Your saved data has not been replaced.';
+  const retry = document.createElement('button');
+  retry.type = 'button';
+  retry.className = 'btn primary';
+  retry.textContent = 'Try again';
+  retry.addEventListener('click', () => { void main(); });
+  section.append(title, message, retry);
+  root.replaceChildren(section);
+}
+
 async function main(): Promise<void> {
   const root = document.getElementById('app');
   if (!root) return;
@@ -113,6 +140,7 @@ async function main(): Promise<void> {
     createApp(root, await createRealDeps());
   } catch (error) {
     if (error instanceof NativeStorageUnavailableError) showNativeStorageError(root);
+    else if (error instanceof ConfigUnavailableError) showConfigError(root);
     else {
       const message = document.createElement('p');
       message.className = 'error';

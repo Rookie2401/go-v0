@@ -14,9 +14,21 @@ import {
 } from '../src';
 import type { BuilderRegistry, FactsProvider, GradingPort, IntakeOutcome, Exercise } from '../src';
 import type { RepositoryApi } from '../../repository-service/src/api';
+import type { DeckItem } from '../src/types';
 import type { ExerciseReadiness, ExerciseReadinessRequest, ItemControl, RecoveryRequest, ReviewEngine } from './ports';
 import { classFacts, isClassUnit } from './classEssentials';
 import { recoverCandidates } from './recoveredCandidates';
+import { createReviewEligibilityContext } from '../src/planner/eligibility';
+import { indexPracticeEvidence } from '../src/planner/learning-policy';
+
+/**
+ * What a fold of the learner's log is valid for: the log's length, its first, middle and last event ids (the signature the freshness checks use).
+ * An event appended or removed changes it; nothing else about the log can change under the same signature.
+ */
+export const eventHead = (events: readonly GoEvent[]): string =>
+  `${events.length}|${events[0]?.id ?? ''}|${events[events.length >> 1]?.id ?? ''}|${events.at(-1)?.id ?? ''}`;
+/** A snooze ends at or before the instant the deck is read at; this instant is before any snooze could have ended, so the fold keeps every snooze. */
+const NO_SNOOZE_ENDED = '0001-01-01T00:00:00.000Z';
 
 export interface EngineOptions {
   builders: BuilderRegistry;
@@ -40,6 +52,46 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     if ('error' in resolved) throw new Error(resolved.error);
     return resolved.scheduler;
   };
+  /**
+   * One fold of the log per event head (2026-11-10: a session folded the whole log about ten times per answered card). The fold depends on `now`
+   * only through one rule (a snooze whose end is at or before `now` is over: deck.ts, last pass), so it is made once with every snooze kept and
+   * that rule is applied to each reading; the items are the same as `foldDeckItems(events, scheduler(retention), opts)`. Holds the latest head
+   * only (a different head clears it), so it never grows, and never serves a fold of an older log. The items are shared: read, never mutate.
+   */
+  const shared = { head: '', folds: new Map<string, DeckItem[]>(), learners: new Map<string, Set<string>>() };
+  function sharedFold(events: readonly GoEvent[], retention: number, opts: { languageId?: string; learnerId?: string; now: string }): DeckItem[] {
+    const atMs = Date.parse(opts.now);
+    // what the fold itself refuses or cannot share (a bad instant, no language) is left to the fold
+    if (Number.isNaN(atMs) || opts.languageId === undefined) return foldDeckItems(events, scheduler(retention), opts);
+    const head = eventHead(events);
+    if (shared.head !== head) { shared.head = head; shared.folds.clear(); shared.learners.clear(); }
+    const language = opts.languageId;
+    let learners = shared.learners.get(language);
+    if (!learners) {
+      learners = new Set();
+      for (const e of events) if (e.languageId === language && !Number.isNaN(Date.parse(e.at))) learners.add(e.learnerId);
+      shared.learners.set(language, learners);
+    }
+    // a learner filter that removes nothing is the same fold as none; a log of several learners without one is the fold's own error
+    const scope = opts.learnerId === undefined ? (learners.size > 1 ? undefined : '*')
+      : (learners.size === 0 || (learners.size === 1 && learners.has(opts.learnerId))) ? '*' : opts.learnerId;
+    if (scope === undefined) return foldDeckItems(events, scheduler(retention), opts);
+    const key = `${retention}|${language}|${scope}`;
+    let items = shared.folds.get(key);
+    if (!items) {
+      items = foldDeckItems(events, scheduler(retention), { languageId: language, ...(scope === '*' ? {} : { learnerId: scope }), now: NO_SNOOZE_ENDED });
+      shared.folds.set(key, items);
+    }
+    let out = items;
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (item.status !== 'snoozed' || item.snoozedUntil === undefined || !(Date.parse(item.snoozedUntil) <= atMs)) continue;
+      if (out === items) out = [...items];
+      const { snoozedUntil: _ended, ...rest } = item;
+      out[i] = { ...rest, status: 'active' };
+    }
+    return out;
+  }
   // Pack analyzers are language scoped, while their repository lookup is API scoped. Reuse the
   // provider only for the exact API client (the context keeps that client stable per service/token).
   const providers = new WeakMap<RepositoryApi, Map<string, FactsProvider>>();
@@ -171,6 +223,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     // New grades carry their own exact profile. Unversioned legacy grades use
     // the supported 90% default, never a newly activated personal profile.
     foldDeck: (events, languageId, _prefs, at) => foldDeckItems(events, scheduler(0.9), { languageId, now: at }),
+    foldDeckShared: (events, languageId, _prefs, at) => sharedFold(events, 0.9, { languageId, now: at }),
 
     async intake(req) {
       // Intake starts a new facts snapshot. Unused one-shot values from the last
@@ -209,9 +262,13 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
       }
       // without pack facts the decision rests on the Repository's candidate alone; the session still refuses what cannot be built
       const byUnit = new Map(req.knowledge.map((k) => [k.unitId, k] as const));
+      // the history is read once for every candidate, as gatherCandidates does (each decision otherwise re-selects the whole history)
+      const eligibilityContext = createReviewEligibilityContext(req.deck, req.events ?? [], req.now);
+      const practiceEvidenceByUnit = indexPracticeEvidence(eligibilityContext.selectedReviewEvidence.events);
       return req.candidates.map((candidate): IntakeOutcome => decideIntake({
         candidate, knowledge: byUnit.get(candidate.unitId), existing: req.deck, audio: req.audio, saved: req.saved, preferences: req.prefs, now: req.now,
         readingSignals: req.events, secondaryPractice: req.secondaryPractice, intent: req.intent,
+        automaticFailureUnits: eligibilityContext.automaticFailureUnits, practiceEvidenceByUnit, eligibilityContext,
       }));
     },
     explainIntake,
@@ -246,6 +303,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
         schedulerForItem: () => scheduler(start.prefs.desiredRetention, start.schedulerProfile),
         identity: { learnerId: start.ctx.learnerId, enrolmentId: start.ctx.enrolmentId, deviceId: start.ctx.deviceId },
         record: start.record, persist: start.persist, now, random, committedEvents: start.committedEvents, canPresent: start.canPresent,
+        fold: (events, _scheduler, foldOpts) => sharedFold(events, start.prefs.desiredRetention, foldOpts),
       });
       return {
         plan: start.plan,

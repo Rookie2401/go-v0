@@ -349,17 +349,35 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     } catch { return []; }
   }
 
+  /** One profile refresh at a time: the awaited one (no cached profile yet) and the background one (a stale cached profile) share it. */
+  let profileFlight: Promise<'fresh' | 'cached' | 'none'> | undefined;
+  const sharedProfileRefresh = (): Promise<'fresh' | 'cached' | 'none'> => {
+    if (profileFlight) return profileFlight;
+    const run: Promise<'fresh' | 'cached' | 'none'> = refreshProfile().finally(() => { if (profileFlight === run) profileFlight = undefined; });
+    profileFlight = run;
+    return run;
+  };
+
   async function enrolments(): Promise<Enrolment[]> {
     const session = await state.getSession();
     if (!session) { const l = await openLocal(); return l ? localEnrolments(l) : []; }
     let profile = await state.getProfile();
-    if (!profile || profile.learnerId !== session.learnerId) { await refreshProfile(); profile = await state.getProfile(); }
+    if (!profile || profile.learnerId !== session.learnerId) { await sharedProfileRefresh(); profile = await state.getProfile(); }
     else {
-      // a cached profile is trusted for ten minutes, and not at all after a live update; offline, the cache stands (one retry in half a minute)
+      // a cached profile is USED at once (2026-11-10: GET /me stood in front of every screen). When it is stale (ten minutes) or dirty (a live
+      // update) it is refreshed in the background, at most every half minute, and the screens are told if the enrolments changed. Awaited only
+      // when there is no profile at all.
       const age = deps.now().getTime() - Date.parse(profile.fetchedAt);
       const stale = profileDirty || !(age >= 0 && age < PROFILE_TTL_MS);
       const at = deps.now().getTime();
-      if (stale && at - lastProfileTry >= 30_000) { lastProfileTry = at; await refreshProfile(); profile = (await state.getProfile()) ?? profile; }
+      if (stale && at - lastProfileTry >= 30_000) {
+        lastProfileTry = at;
+        const before = JSON.stringify(profile.enrolments);
+        void sharedProfileRefresh().then(async () => {
+          const after = await state.getProfile();
+          if (after && JSON.stringify(after.enrolments) !== before) { changed(); notifyData(); }
+        }).catch(() => undefined);
+      }
     }
     if (!profile || profile.learnerId !== session.learnerId) return [];
     return profile.enrolments.filter((e) => !e.endedAt).sort((a, b) => b.startedAt.localeCompare(a.startedAt));

@@ -134,6 +134,8 @@ export const MSG = {
   lookup: 'golearn:lookup',
   ping: 'golearn:ping',
   // content -> background (also answered for extension pages where noted in background/router.ts)
+  /** A page keeps the worker awake while it is read: answered at once; starts the device Repository's open. */
+  keepWarm: 'golearn:keep-warm',
   record: 'golearn:record',
   profile: 'golearn:profile',
   gloss: 'golearn:gloss',

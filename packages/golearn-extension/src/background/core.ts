@@ -60,6 +60,7 @@ const PAGE_ONLY: ReadonlySet<string> = new Set<string>([
 ]);
 const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.record, MSG.profile, MSG.gloss, MSG.entry, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
+  MSG.keepWarm,
   MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
   MSG.activeProfile, // the scan's learner-model question: device rows only, and only while Active is on (below)
   MSG.confirmForms, // the scan's dictionary question: public dictionary data only, forms in, lemmas out
@@ -481,7 +482,8 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       case MSG.speech: return speech.handle(m, `${sender?.tab?.id ?? 'page'}:${sender?.frameId ?? 0}`, sender?.url);
       case MSG.correct: return correct(m);
       case MSG.metrics: return storeMetric(m);
-      case MSG.active: return active.handle(m, kind);
+      case MSG.keepWarm: void localRepo.open(); return { ok: true }; // a page is being read: start the open (once), answer at once; the reply resets the browser's idle timer
+      case MSG.active: if (kind === 'content') void localRepo.open(); return active.handle(m, kind); // a page load pre-warms the device Repository
       case MSG.activeProfile: {
         // the words on the learner's screen, by the learner's own switch: never trimmed like a long selection, never sent to the service
         const s = await active.get();
@@ -535,7 +537,8 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     chrome.tabs?.onUpdated?.addListener((tabId, change) => { if (change.status === 'loading') void writeState(tabId, { enabled: false }); });
 
     sync.registerAlarm(chrome);
-    void localRepo.open(); // open the device-local Repository now, so the first lookup does not wait for it
+    // the device-local Repository is NOT opened here (2026-11-10): every worker wake (the one-minute sync alarm too) refolded the whole history. It opens on the first
+    // message that needs it (status, profile, record, keep-warm, active) instead.
     void active.restore(); // keep Active's registration in step with the permission the learner may have withdrawn meanwhile
     active.watchPermission();
 

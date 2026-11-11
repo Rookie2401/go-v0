@@ -85,6 +85,9 @@ interface PendingEncounter { groups: string[][]; languageId: string; readerId: s
 const langOf = (t: ScanToken): string => t.ids[0]?.split(':')[1] ?? '';
 /** After a question the dictionary could not answer (unreachable), the next one waits this long. */
 const CONFIRM_RETRY_MS = 15_000;
+/** A learner-model batch that failed after the bridge's own retries is asked again by a timer (the worker is still opening), at most this many times per scan generation (a start, or a new viewport). */
+export const PROFILE_RETRY_MS = 3_000;
+const PROFILE_RETRY_MAX = 5;
 const CONFIRM_OFFLINE = 'The dictionary could not be reached, so only the course word list underlines words.';
 const CONTROL_SEL = 'a[href], button, input, textarea, select, label, summary, [role="button"], [role="link"], [role="menuitem"], [contenteditable]:not([contenteditable="false"])';
 
@@ -129,6 +132,9 @@ export class ActiveMode {
   /** The dictionary could not be reached: shown as the tab's reason until a question gets through; asked again after `confirmRetryAt` (per language). */
   private confirmReason: string | undefined;
   private readonly confirmRetryAt = new Map<string, number>();
+  private profileRetry: ReturnType<typeof setTimeout> | undefined;
+  private profileRetries = 0;
+  private consultFailed = false;
 
   constructor(private readonly d: ActiveDeps) {}
 
@@ -143,6 +149,7 @@ export class ActiveMode {
     this.speak = opts.speak;
     if (this.on) return this.state;
     this.on = true;
+    this.profileRetries = 0;
     this.reason = undefined;
     // one switch: with Active on, a selection the learner makes is looked up too (the per-tab switch folded into Active, 2026-10-09)
     this.d.controller.enable();
@@ -188,6 +195,9 @@ export class ActiveMode {
     return this.state;
   }
 
+  /** Whether Active is on in this page (cheap: `state` builds a highlighter). */
+  get isOn(): boolean { return this.on; }
+
   setSpeak(speak: boolean): void { this.speak = speak; }
 
   stop(): void {
@@ -196,6 +206,7 @@ export class ActiveMode {
     this.d.controller.disable();
     this.offRecord?.(); this.offRecord = undefined;
     clearTimeout(this.debounce);
+    clearTimeout(this.profileRetry); this.profileRetry = undefined;
     clearTimeout(this.encounterTimer);
     this.encounterTimer = undefined;
     this.pendingEncounters.clear();
@@ -306,6 +317,7 @@ export class ActiveMode {
     for (const id of this.refetch) this.rows.delete(id); // answers that were asked for before an event of this page was recorded
     this.refetch.clear();
     const t1 = clock.now();
+    this.consultFailed = false;
     for (const [lang, tokens] of byLang) {
       const want = new Set<string>();
       for (const t of tokens) if (t.known) for (const id of t.ids) if (!this.rows.has(id)) want.add(id);
@@ -313,6 +325,11 @@ export class ActiveMode {
       if (!this.on) return;
     }
     const profileMs = clock.now() - t1;
+    // a batch the worker did not answer (it was still opening, even after the bridge's retries) is not dropped: asked again soon, without waiting for a scroll
+    if (this.consultFailed && this.profileRetries < PROFILE_RETRY_MAX && !this.profileRetry) {
+      this.profileRetries++;
+      this.profileRetry = setTimeout(() => { this.profileRetry = undefined; if (this.on && this.d.doc.visibilityState !== 'hidden') void this.rescan(); }, PROFILE_RETRY_MS);
+    }
     // the languages found, most read words first; the first is the page's main language
     const knownBy = [...byLang].map(([lang, tokens]) => [lang, tokens.filter((t) => t.known).length] as const).filter(([, n]) => n > 0).sort((a, b) => b[1] - a[1]);
     this.languages = knownBy.map(([lang]) => lang);
@@ -427,8 +444,8 @@ export class ActiveMode {
       let reply: ProfileReply | undefined;
       try { reply = await ask(batch, languageId); } catch { reply = undefined; }
       if (!this.on) return;
-      if (!reply || !reply.ok) continue;
-      if (reply.error && !Object.keys(reply.rows ?? {}).length) continue; // the model was not consulted: no evidence of "never met"
+      if (!reply || !reply.ok) { this.consultFailed = true; continue; }
+      if (reply.error && !Object.keys(reply.rows ?? {}).length) { if (reply.error !== 'inactive') this.consultFailed = true; continue; } // the model was not consulted: no evidence of "never met"
       for (const id of batch) this.rows.set(id, reply.rows?.[id] ?? null);
       // an event was recorded while this question was out: the answer may not hold it, so these words are asked again next scan
       if (epoch !== this.epoch) for (const id of batch) this.refetch.add(id);
@@ -438,6 +455,7 @@ export class ActiveMode {
   private attachWatchers(): void {
     const view = this.d.doc.defaultView;
     const later = () => {
+      this.profileRetries = 0; // a new viewport is a new scan generation
       clearTimeout(this.encounterTimer); this.encounterTimer = undefined; this.pendingEncounters.clear();
       clearTimeout(this.debounce); this.debounce = setTimeout(() => { void this.rescan(); }, this.d.debounceMs ?? 150);
     };

@@ -23,6 +23,7 @@ import { PENDING_IDENTITY, buildEncounterEvent, createMemoryEncounterStore, type
 import { ActiveMode } from './active';
 import { LookupController } from './controller';
 import { createBridge } from './services';
+import { createKeepWarm } from './warm';
 import { createGoListenPronouncer } from './voice';
 import { createBrowserTranslationProvider, createTranslationEngine } from '../translation/provider';
 import { createLocalTranslationProvider } from '../translation/localProvider';
@@ -38,7 +39,7 @@ const segmenterOf = (languageId: string): ((t: string) => Array<{ start: number;
 };
 
 interface InstalledMarker {
-  controller: LookupController; active: ActiveMode;
+  controller: LookupController; active: ActiveMode; warm?: { dispose(): void };
   /** false once the extension that installed it was reloaded or updated: its messages to the background then go nowhere */
   alive?: () => boolean;
   /** harness build only: the card, so a loopback harness page can read it */ card?: CardUI;
@@ -54,7 +55,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   if (existing) {
     // the GoLearn that installed it was reloaded or updated (2026-11-08: "nothing happens" — a lookup went to the old, orphaned copy,
     // whose messages reach no background): take it down and install afresh
-    try { existing.active.stop(); } catch { /* already gone */ }
+    try { existing.active.stop(); existing.warm?.dispose(); } catch { /* already gone */ }
     try { existing.controller.dispose(); } catch { /* already gone */ }
     delete w[GLOBAL_KEY];
   }
@@ -120,8 +121,12 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
       sessionId: activeSessionId, now: new Date(),
     }),
   });
+  // keep the worker warm while this page is read (content/warm.ts); with no extension context there is nothing to keep
+  const warm = bridge?.keepWarm ? createKeepWarm({ doc, ping: bridge.keepWarm, activeOn: () => active.isOn, alive: chromeApi ? () => contextAlive(chromeApi) : undefined }) : undefined;
+  controller.onRecorded((e) => { if (e.kind === 'SelectionLookedUp') warm?.noteLookup(); });
+
   // the harness build (loopback pages, never shipped) also exposes the card, so a harness page can read what the card says
-  w[GLOBAL_KEY] = { controller, active, ...(chromeApi ? { alive: () => contextAlive(chromeApi) } : {}), ...(typeof __GOLEARN_HARNESS__ !== 'undefined' && __GOLEARN_HARNESS__ ? { card: ui } : {}) };
+  w[GLOBAL_KEY] = { controller, active, ...(warm ? { warm } : {}), ...(chromeApi ? { alive: () => contextAlive(chromeApi) } : {}), ...(typeof __GOLEARN_HARNESS__ !== 'undefined' && __GOLEARN_HARNESS__ ? { card: ui } : {}) };
 
   chromeApi?.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // only this extension's own background may drive the content script
@@ -143,16 +148,17 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
         const speak = (m as ActivateMessage).speak !== false;
         active.setSpeak(speak);
         void active.start({ speak }).then((s) => sendResponse({ ok: true, ...s }), () => sendResponse({ ok: false }));
+        warm?.refresh(); // Active is on from the first line of start(): the page keeps the worker warm and pings at once
         return true;
       }
-      case MSG.deactivate: active.stop(); sendResponse({ ok: true }); return;
+      case MSG.deactivate: active.stop(); warm?.refresh(); sendResponse({ ok: true }); return;
       default: return;
     }
   });
 
   // registered to run on page load (Active on): ask whether to start; injected on a gesture with Active off: the answer is no
   if (bridge?.active) {
-    void bridge.active().then((r) => { if (r?.ok && r.settings.active) return active.start({ speak: r.settings.speakOnClick }); return undefined; }).catch(() => undefined);
+    void bridge.active().then((r) => { if (r?.ok && r.settings.active) { const started = active.start({ speak: r.settings.speakOnClick }); warm?.refresh(); return started; } return undefined; }).catch(() => undefined);
   }
   return controller;
 }

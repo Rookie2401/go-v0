@@ -83,3 +83,65 @@ describe('the storage port', () => {
     expect(fullReads).toBe(1);
   });
 });
+
+describe('the worker opens the device Repository when something needs it, not on every wake (2026-11-10)', () => {
+  /** A worker over an empty storage whose reads of the device Repository's rows are counted (the whole-storage read and any read naming a repo key). */
+  function counted() {
+    const rig = createRig();
+    const area = rig.fake.local as unknown as { get(k: string | string[] | null): Promise<Record<string, unknown>> };
+    const get = area.get.bind(area);
+    const reads = { count: 0 };
+    area.get = async (keys) => {
+      if (keys === null || (Array.isArray(keys) && keys.some((k) => k.startsWith(LOCAL_PREFIX)))) reads.count++;
+      return get(keys);
+    };
+    return { rig, reads };
+  }
+  const settle = (ms = 80) => new Promise((r) => setTimeout(r, ms));
+
+  it('a worker start reads none of the Repository\'s rows; the sync alarm waking it signed out (nothing queued) reads none either', async () => {
+    const { rig, reads } = counted();
+    await settle();
+    expect(reads.count).toBe(0); // before: register() opened it at once
+    rig.fake.alarmEvent.fire({ name: 'golearn-sync' } as never);
+    await settle();
+    expect(reads.count).toBe(0);
+  });
+
+  it.each([
+    ['a keep-warm ping', { type: MSG.keepWarm }],
+    ['the page\'s status question', { type: MSG.status }],
+    ['the page\'s Active question', { type: MSG.active, op: 'get' }],
+    ['the learner-model question', { type: MSG.profile, unitIds: ['form:sq:libër'], languageId: 'sq' }],
+  ])('%s starts the open', async (_name, message) => {
+    const { rig, reads } = counted();
+    await settle();
+    const reply = await rig.content(message);
+    expect(reply).toBeDefined();
+    await settle();
+    expect(reads.count).toBeGreaterThan(0);
+  });
+
+  it('the keep-warm ping is answered at once, even while the Repository is still opening (a slow read)', async () => {
+    const { rig } = counted();
+    const area = rig.fake.local as unknown as { get(k: string | string[] | null): Promise<Record<string, unknown>> };
+    const get = area.get.bind(area);
+    area.get = async (keys) => { if (keys === null) await new Promise((r) => setTimeout(r, 3000)); return get(keys); };
+    const t0 = Date.now();
+    expect(await rig.content({ type: MSG.keepWarm })).toEqual({ ok: true });
+    expect(Date.now() - t0).toBeLessThan(500);
+  });
+
+  it('the first recording after a wake still starts the open, so the event is filed', async () => {
+    const first = createRig();
+    await first.page({ type: MSG.localRepo, op: 'enrol', languageId: 'sq' });
+    const { rig, fullReads } = await wokenOver(first);
+    await settle();
+    expect(fullReads.count).toBe(0); // the woken worker has not read the history yet
+    const event = pendingEvent('libër');
+    expect(await rig.content({ type: MSG.record, event })).toMatchObject({ ok: true });
+    await new Promise((res) => setTimeout(res, SLOW_MS + 1500));
+    const exported = await rig.page({ type: MSG.localRepo, op: 'export' });
+    expect(exported.events.map((e: { id: string }) => e.id)).toContain(event.id);
+  }, 40_000);
+});

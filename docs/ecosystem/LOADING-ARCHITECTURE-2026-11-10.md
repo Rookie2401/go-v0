@@ -216,8 +216,15 @@ Not built, with the reason:
 - **GoReview still reads its whole log about eight times per answer** (`context.ts` `events`), about 100 ms per answer at
   12,000 events in Node, and the review model's refresh folds the whole log once when it runs. Measured, left.
 - **The history comes down twice at a first sign-in** (`GET /events` for the device, `POST /sync/pull` for the client).
-- **Not seen in a real browser:** the self-update's assumption that an unpacked extension's fetch of `build.json` reads the
-  file on disk; a first sync's seconds since 58150c18.
+- **Not seen in a real browser:** a first sync's seconds since 58150c18; the signed-in GoReview screens with the on-demand
+  language files (their caching was checked signed-out on the live site: `goreview-lang-<build>` and, for the first time,
+  `goreview-dict-v1` with `/go-v0/dict/...` entries).
+
+Seen in the owner's browser, 2026-11-12 (read from the worker's own `golearn:self-update` row and the browser's record of
+the extension, by another session): the unpacked extension reloaded itself twice, 95 s and 126 s after `build.json` was
+written last in the mirrored folder (faabbabbd5c7 -> b59be400dc86 at 01:53:30Z, b59be400dc86 -> 2cf4bfdbcf38 at 02:12:30Z),
+with no Reload pressed: an unpacked extension's fetch of `build.json` does read the file on disk, and the two-sighting rule
+holds the reload back as designed.
 
 ## 6. How to check
 

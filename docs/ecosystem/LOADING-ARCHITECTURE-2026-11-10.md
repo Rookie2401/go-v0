@@ -143,6 +143,15 @@ Not fixed yet, and visible in the same run: a BULK append projects after every b
 of the learner's units, so each batch re-reads most of the log (12,000 events seeded in 94 s). The first sync on a new device
 goes through that path (`repository-local/src/transfer.ts` pull). The migration does not: it imports and rebuilds once.
 
+Corrected 2026-11-11: that note was wrong about the first sync. The pull appends one page at a time and projects ONCE at the
+end (it did so before this work; 58150c18 made each page one append). Traced and counted with
+`scripts/loadcheck/golearn-history/probe-firstsync.ts`: 16.8 IndexedDB requests per event at 1,000 events and 10.3 at 3,000,
+one projection at either size, so a first sync is linear in the history. The 107 s seen in a browser on 2026-11-09 predates
+those changes and has not been re-measured in a browser. What was missing was staying power, added in dc815ed9: the worker is
+held awake for the length of a sync round and of the upload-and-pull, and a pull that was cut off resumes on the next
+successful sync round from its per-page cursor (`golearn:local-pull-open`). Still true: the history comes down twice over the
+network at first sign-in (`GET /events` for the device, `POST /sync/pull` for the client's cursor).
+
 The recorder's log and the upload queue stay where they are in this stage (they are the durable outbox); folding the three
 copies of history into one is a later simplification.
 
@@ -172,6 +181,43 @@ a server-side request deadline; sync's first pull in parallel or as one compress
 **Stage 4: delivery.** Language adapters loaded per language instead of all at module load; dictionaries packaged per
 language at install so "installed" means usable offline; one language/pack-ready record; the unpacked extension reloads
 itself when its folder holds a newer build; a build stamp visible in each app; CI green and required.
+
+### Stages 3 and 4 as built (2026-11-11), and what is left
+
+Built, each with a test under `test/loading/` or the suite named:
+
+| What | Where | Before -> after |
+|---|---|---|
+| Service read paths (stage 3) | 367e2a78, 06a2abde, 58150c18; live on Render since 2026-11-11 | at 12,000 events: vocabulary walk 26.5 s -> 0.6 s, sorted page 6.3 s -> 74 ms, 200-event push 1,036 -> 141 ms, candidates 119 -> 21 ms |
+| GoReview start script carries no language | 4c4838c0 (`leanBuiltins.ts`) | start script 4.10 MB -> 1.01 MB; start graph 221 -> 40 ms |
+| Build stamp and self-update of the unpacked extension | 73871178 (below) | a stale folder no longer runs for days |
+| First sync stays awake and resumes | dc815ed9 | an interrupted first pull continued only at the next sign-in |
+| The dictionary's location is local-first | 0691a016 (`gloss.ts`) | the first meaning after every worker restart waited on up to three network probes of up to 15 s; now none when the device holds the dictionary, and 4 s per probe otherwise |
+| One answered card folds one card | d6771d1c (`engine.ts`) | 12,006 events through the fold per answer at 12,000 events -> 6 |
+| The hosted GoReview keeps its dictionary and its languages | d1c5dda0 (`sw.js`, `register.js`) | no dictionary shard was ever kept on the hosted site (it is read from outside the worker's scope); a language could be lost by an update or a first visit |
+| A deleted account leaves the service's memory | 5dde62de | its cached lists stayed until other keys pushed them out |
+
+Two premises of this document were wrong and are corrected above: persisting the projection would not have fixed cold starts
+(section 5, stage 2), and the first sync was never quadratic (the note under the real-browser table).
+
+Not built, with the reason:
+
+- **"Installed" still does not mean "usable offline" for a dictionary.** `installPack` fetches the dictionary's manifest and
+  ONE shard and runs the validation cases; meanings are then fetched as the learner reads (and kept). A whole-language
+  download is a storage decision: the meanings alone are 6 MB (Albanian), 41 MB (German), 58 MB (Spanish) compressed, more
+  once inflated into extension storage, and several times that with the full entries. Proposed as an explicit "Download for
+  offline use" per language; the owner decides.
+- **One language/pack-ready record.** The trace found not seven stores answering one question but several stores answering
+  different ones; only two say "pack installed" (`golearn:pack:installed:<id>` and `golearn:app`.packs), and only the setup
+  page reads them. Lookups never consult either. A single persisted record replacing them needs a migration across four
+  writers and two apps; a derived `packReady()` is the smaller step and belongs with the offline download above.
+- **GoReview intake fetches facts for every candidate** (226 lookups at a first sign-in). A bounded fetch is built and
+  measured (a8269763) but not passed by the app, because it changes the counts the details screen shows: the owner decides.
+- **GoReview still reads its whole log about eight times per answer** (`context.ts` `events`), about 100 ms per answer at
+  12,000 events in Node, and the review model's refresh folds the whole log once when it runs. Measured, left.
+- **The history comes down twice at a first sign-in** (`GET /events` for the device, `POST /sync/pull` for the client).
+- **Not seen in a real browser:** the self-update's assumption that an unpacked extension's fetch of `build.json` reads the
+  file on disk; a first sync's seconds since 58150c18.
 
 ## 6. How to check
 

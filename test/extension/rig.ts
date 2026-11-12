@@ -73,9 +73,9 @@ export interface Rig {
 /** The shard the fake dictionary serves (one file, no content that matters). */
 const shard = (): Response => new Response('{}', { status: 200, headers: { 'content-type': 'application/json' } });
 
-export function createRig(opts: { defaultServiceUrl?: string; localRepo?: BackgroundOptions['localRepo'] } = {}): Rig {
-  const h = createHarness();
-  h.clock.set(new Date().toISOString()); // the service and the worker agree on the time, whatever day the tests run
+export function createRig(opts: { defaultServiceUrl?: string; localRepo?: BackgroundOptions['localRepo']; harness?: Harness } = {}): Rig {
+  const h = opts.harness ?? createHarness(); // a restarted worker is given the first one's service
+  if (!opts.harness) h.clock.set(new Date().toISOString()); // the service and the worker agree on the time, whatever day the tests run
   const fake = createChromeFake();
   const log: FetchLog[] = [];
   const glossCalls: string[] = [];

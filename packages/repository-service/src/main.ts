@@ -18,7 +18,7 @@ import { nodeCrypto } from './crypto-node';
 import type { EmailSender, ServiceDeps } from './deps';
 import type { Sample } from './metrics';
 import { createMetricsRegistry } from './metrics';
-import { handle } from './handler';
+import { forgetLearnerCaches, handle } from './handler';
 import { createChangeNotifier } from './notifier';
 import type { ChangeNotifier } from './notifier';
 import { adaptLinguistics } from './linguistics-adapter';
@@ -172,7 +172,7 @@ async function wire(dataDir: string, cfg: ServiceConfig): Promise<{ deps: Servic
   };
   const maintain = async (): Promise<void> => {
     try {
-      const r = await runMaintenance(store, { now, log: (line) => console.log(line) });
+      const r = await runMaintenance(store, { now, log: (line) => console.log(line), onErased: (learnerId) => forgetLearnerCaches(store, learnerId) });
       if (r.purged + r.sessionsPruned + r.tokensPruned + r.securityEventsPruned > 0) console.log(`maintenance: purged=${r.purged} sessions=${r.sessionsPruned} tokens=${r.tokensPruned} securityEvents=${r.securityEventsPruned}`);
     } catch (e) {
       console.error(`maintenance failed: ${(e as { code?: string }).code ?? (e as Error).name}`);

@@ -150,6 +150,8 @@ export interface PlanRequest {
 }
 
 export interface ReviewEngine {
+  /** The learner's language is known: start fetching what it needs (its analyser chunk) in the background. Never throws; a failure is met again when the language is first used. */
+  warmLanguage?(languageId: string): void;
   /** Recover review candidates for genuinely absent installable-language catalogue rows using pack facts and normal ranking. */
   recoverCandidates?(request: RecoveryRequest): Promise<RecoveryResult>;
   /** True only when an installed pack can provide facts for event-only catalogue recovery. */

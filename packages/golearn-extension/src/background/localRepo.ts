@@ -14,7 +14,7 @@
  *  - Nothing here may break recording: any failure is swallowed and the event stays in the worker's own log and queue.
  */
 import type { Enrolment, GoEvent, LearningGoal } from '../../../repository-contract/src';
-import { inspectLocal, markEventsOwned, openLocalRepository, type LocalRepository, type OpenLocalOptions, type StorageInfo } from '../../../repository-local/src';
+import { inspectLocal, markEventsOwned, openLocalRepository, uploadWaiting, type LocalRepository, type OpenLocalOptions, type StorageInfo } from '../../../repository-local/src';
 import { adaptStorageArea, createLock } from '../../../repository-sync/src';
 import type { LanguageAdapter } from '../../../../src/core';
 import type { StorageArea } from '../platform';
@@ -46,6 +46,32 @@ export const LOCAL_MIGRATION_ATTEMPT = 1;
 export const LOCAL_IDB_NAME = 'golearn-repository';
 /** The browser stops a Manifest V3 worker after about 30 s without an extension event (IndexedDB work does not count): ping the extension API this often while the open runs. */
 export const KEEP_ALIVE_MS = 20_000;
+/**
+ * Set while the first pull of an account's history has not reached its head (a sign-in's upload-and-pull started and did not finish: the browser stopped the worker, the
+ * network dropped). The next successful sync round of a worker that finds it runs the upload-and-pull again, which resumes from the pull cursor kept per page.
+ */
+export const PULL_OPEN_KEY = 'golearn:local-pull-open';
+
+/**
+ * One 20 s extension-API touch shared by everything that runs long in the worker (the Repository's open, the upload-and-pull, a sync round): `hold()` starts it
+ * (if it is not running) and returns the release; it stops when the last holder has released.
+ */
+export function createWorkerHold(ping: (() => void) | undefined): () => () => void {
+  let holders = 0;
+  let timer: ReturnType<typeof setInterval> | undefined;
+  return () => {
+    if (!ping) return () => undefined;
+    holders += 1;
+    if (timer === undefined) timer = globalThis.setInterval(() => { try { ping(); } catch { /* a convenience */ } }, KEEP_ALIVE_MS);
+    let released = false;
+    return () => {
+      if (released) return;
+      released = true;
+      holders -= 1;
+      if (holders <= 0 && timer !== undefined) { globalThis.clearInterval(timer); timer = undefined; holders = 0; }
+    };
+  };
+}
 
 export interface LocalRepoServiceOptions {
   area: StorageArea;
@@ -57,6 +83,8 @@ export interface LocalRepoServiceOptions {
   idb?: { indexedDB: IDBFactory; keyRange?: typeof IDBKeyRange };
   /** Called every 20 s while the repository is opening (a migration can take many seconds), so the browser does not stop the worker. */
   keepAlive?: () => void;
+  /** The worker's shared hold (see `createWorkerHold`); without it the service makes its own from `keepAlive`. */
+  hold?: () => () => void;
   /** Test seam: passed to the migration as `migrate.inject`. */
   migrationInject?: NonNullable<OpenLocalOptions['migrate']>['inject'];
 }
@@ -74,6 +102,10 @@ const bySetup = (a: Enrolment, b: Enrolment): number => a.startedAt.localeCompar
 
 export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   const lock = createLock();
+  const hold = opts.hold ?? createWorkerHold(opts.keepAlive);
+  /** Events may be waiting for upload: unknown until counted once (a whole-log read), then kept (true after a local record, false after a clean upload). */
+  let pendingHint: boolean | undefined;
+  let transferring = 0;
   let opening: Promise<LocalRepository | undefined> | undefined;
   /** The repository once it has opened (until then the enrolment summary answers). */
   let opened: LocalRepository | undefined;
@@ -86,8 +118,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
 
   async function start(): Promise<LocalRepository | undefined> {
     // the migration of a large history takes seconds, and the browser stops a worker that sees no extension event for about 30 s
-    const ping = opts.keepAlive;
-    const timer = ping ? globalThis.setInterval(() => { try { ping(); } catch { /* a convenience */ } }, KEEP_ALIVE_MS) : undefined;
+    const release = hold();
     try {
       const idb = opts.idb;
       return await openLocalRepository({
@@ -97,7 +128,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
           migrate: { attempt: LOCAL_MIGRATION_ATTEMPT, ...(opts.migrationInject ? { inject: opts.migrationInject } : {}) },
         } : {}),
       });
-    } catch { return undefined; } finally { if (timer !== undefined) globalThis.clearInterval(timer); }
+    } catch { return undefined; } finally { release(); }
   }
   /** The repository, opened once; a failed open is tried again on the next call. */
   function open(): Promise<LocalRepository | undefined> {
@@ -198,6 +229,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
         if (!enrolmentId) return false;
         const r = await repo.api.appendEvents([{ ...event, learnerId: id.learnerId, enrolmentId, producer: { ...event.producer, deviceId: id.deviceId } }]);
         if (!r.ok) return false;
+        if (attributed === 'local') pendingHint = true;
         if (attributed === 'account') await markEventsOwned(repo, [event.id], event.learnerId);
         return true;
       } catch { return false; }
@@ -234,14 +266,21 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
 
   /** Uploads the local history to the signed-in account, then pulls the account's. Never throws. */
   async function uploadAndPull(): Promise<{ ok: boolean; upload?: { sent: number; duplicates: number; failed: number; waiting: number }; pulled?: number; skipped?: 'unavailable' | 'not-connected' | 'busy'; error?: string }> {
+    const release = hold(); // a long first pull must not outlast the browser's idle limit (a reading page's keep-warm may not be open)
+    transferring += 1;
     try {
       const repo = await open();
       if (!repo) return { ok: false, skipped: 'unavailable' };
       const a = await opts.session.authenticated();
       if (!a) return { ok: false, skipped: 'not-connected' };
+      // marked before anything is sent: a worker stopped from here on finds it on its next sync round and runs this again (the pull resumes from its cursor)
+      try { await opts.area.set({ [PULL_OPEN_KEY]: true }); } catch { /* a convenience: the learner's next upload resumes as well */ }
       const raw = await repo.uploadTo(a.api);
-      const upload = { sent: raw.sent, duplicates: raw.duplicates, failed: raw.failed, waiting: (await inspectLocal(repo)).waiting };
-      const { added } = await repo.pullFrom(a.api);
+      const upload = { sent: raw.sent, duplicates: raw.duplicates, failed: raw.failed, waiting: uploadWaiting(repo) };
+      pendingHint = upload.failed > 0 || upload.waiting > 0;
+      let complete = false;
+      const { added } = await repo.pullFrom(a.api, { onEnd: (c) => { complete = c; } });
+      if (complete) { try { await opts.area.remove(PULL_OPEN_KEY); } catch { /* the next round finds it and does one cheap pull */ } }
       const status: UploadStatus = { at: opts.now(), ...upload, pulled: added, ...(upload.failed ? { error: `${upload.failed} event${upload.failed === 1 ? '' : 's'} could not be sent; they will be tried again` } : {}) };
       try { await opts.area.set({ [UPLOAD_STATUS_KEY]: status }); } catch { /* a convenience */ }
       return { ok: upload.failed === 0, upload, pulled: added };
@@ -249,7 +288,20 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
       const error = e instanceof Error ? e.message : String(e);
       try { await opts.area.set({ [UPLOAD_STATUS_KEY]: { at: opts.now(), sent: 0, duplicates: 0, failed: 0, pulled: 0, error } satisfies UploadStatus }); } catch { /* a convenience */ }
       return { ok: false, error };
-    }
+    } finally { transferring -= 1; release(); }
+  }
+
+  /**
+   * Called after a successful sync round: when an upload-and-pull was begun and did not reach the account's head (see PULL_OPEN_KEY), runs it again; it continues from the
+   * pull cursor, so only the events after it are asked for. One cheap read of a small row when nothing is open. Never throws.
+   */
+  async function resumePull(): Promise<void> {
+    try {
+      if (transferring > 0) return; // one is running (the sign-in's): it finishes the job
+      if (!(await opts.area.get(PULL_OPEN_KEY))[PULL_OPEN_KEY]) return;
+      signInWork = signInWork.then(() => uploadAndPull(), () => uploadAndPull());
+      await signInWork;
+    } catch { /* the next round tries again */ }
   }
 
   /** After a successful sign-in: the history goes up once, then the account's comes down. Resolves when both are done; never rejects. */
@@ -262,7 +314,10 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   async function afterEnrolment(): Promise<void> {
     try {
       const repo = await open();
-      if (!repo || (await inspectLocal(repo)).pendingUpload === 0) return;
+      if (!repo) return;
+      // counted once (a whole-log read), then kept: a language switch on a large history no longer reads it all to learn that nothing is waiting
+      if (pendingHint === undefined) pendingHint = (await inspectLocal(repo)).pendingUpload > 0;
+      if (!pendingHint) return;
       await uploadAndPull();
     } catch { /* the next sign-in or upload tries again */ }
   }
@@ -273,7 +328,8 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
     const repo = await open();
     enrolmentOf.clear();
     summaryWritten = '';
-    try { await opts.area.remove([ACTIVE_KEY, UPLOAD_STATUS_KEY, ENROLMENTS_KEY]); } catch { /* absent */ }
+    pendingHint = undefined;
+    try { await opts.area.remove([ACTIVE_KEY, UPLOAD_STATUS_KEY, ENROLMENTS_KEY, PULL_OPEN_KEY]); } catch { /* absent */ }
     if (repo) { await repo.clear(); return; }
     // The repository would not open (so it cannot clear itself): take the learner's data away by hand, both databases first, then the frozen rows. With no
     // state row left, the next open is a fresh device in IndexedDB. Without IndexedDB nothing was ever stored anywhere but the rows.
@@ -378,6 +434,8 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
           const method = String(r.method ?? '');
           if (!LOCAL_API_METHODS.includes(method)) return bad('That call is not available on this device.');
           const args = Array.isArray(r.args) ? r.args : [];
+          if (/^(append|submit)/.test(method)) pendingHint = true; // an extension page wrote events here: they may wait for an upload
+          if (method === 'clear') pendingHint = undefined;
           const result = await (repo.api as unknown as Record<string, (...a: unknown[]) => Promise<unknown>>)[method](...args);
           if (/nrol/.test(method)) await openEnrolments(repo);
           return { ok: true, result };
@@ -392,7 +450,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   /** True while the repository is opening or migrating (read-only; used by the worker's self-update to not reload mid-open). */
   const busy = (): boolean => !!opening && !opened;
 
-  return { open, record, forProfile, activeLanguage, chosenLanguages, afterSignIn, afterEnrolment, uploadAndPull, clear, handle, status, busy };
+  return { open, record, forProfile, activeLanguage, chosenLanguages, afterSignIn, afterEnrolment, resumePull, uploadAndPull, clear, handle, status, busy };
 }
 
 export type LocalRepoService = ReturnType<typeof createLocalRepoService>;

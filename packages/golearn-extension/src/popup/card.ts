@@ -111,8 +111,13 @@ export function computePosition(anchor: PopupAnchor, size: { width: number; heig
 }
 
 const CSS = `
-:host { all: initial; }
+/* The card reads left to right on every page, a right-to-left one too (the owner, 2026-11-11): \`all: initial\` leaves \`direction\` alone, so without
+   this the card took the page's dir=rtl and mirrored its labels, its rows and its punctuation. Text in the word's own language keeps its order through
+   [lang] below; the headword is set dir=rtl for a right-to-left language, so its letters run right to left inside a left-aligned line. */
+:host { all: initial; direction: ltr; unicode-bidi: isolate; }
 * { box-sizing: border-box; }
+.card [lang] { unicode-bidi: isolate; }
+.card .word[dir="rtl"] { text-align: left; }
 /* The lookup card, in the look of Biblia's word card (the dark Western Canon theme): paper, hairline rules, tracked small kickers, gold accent.
    Tokens are Biblia's (src/index.css): paper #16130f, raised #1e1a15, ink #d9cfbe, ink-soft #a89c86, ink-faint #7d7059 (borders and decoration only: it is
    below 4.5:1 on paper, so no text uses it), rule #322b22, rule-strong #453c2f, accent #c8a06a, accent-soft #b98f57. No font file is shipped: the stack
@@ -121,7 +126,7 @@ const CSS = `
   position: fixed; width: min(23em, calc(100vw - ${MARGIN * 2}px)); max-height: min(72vh, 540px); overflow: auto;
   font: 1.05em/1.5 'EB Garamond', Georgia, 'Times New Roman', serif; color: #d9cfbe; background: #16130f;
   -webkit-font-smoothing: antialiased; font-feature-settings: 'kern' 1, 'liga' 1, 'locl' 0;
-  border: 1px solid #453c2f; border-radius: 10px; box-shadow: 0 1px 2px rgba(0,0,0,.35), 0 12px 32px rgba(0,0,0,.55); padding: 0.7em 1em 0.9em; text-align: start;
+  border: 1px solid #453c2f; border-radius: 10px; box-shadow: 0 1px 2px rgba(0,0,0,.35), 0 12px 32px rgba(0,0,0,.55); padding: 0.7em 1em 0.9em; direction: ltr; text-align: left;
   scrollbar-color: #453c2f #16130f; color-scheme: dark;
 }
 .card:focus { outline: none; }
@@ -390,7 +395,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     host?.remove();
     host = doc.createElement('div');
     host.setAttribute(GOLEARN_HOST_ATTR, '');
-    host.style.cssText = 'all: initial; position: fixed; top: 0; left: 0; width: 0; height: 0; overflow: visible; z-index: 2147483647;';
+    host.setAttribute('dir', 'ltr'); // the card reads left to right whatever the page's direction (see the style sheet's first rule)
+    host.style.cssText = 'all: initial; direction: ltr; position: fixed; top: 0; left: 0; width: 0; height: 0; overflow: visible; z-index: 2147483647;';
     root = host.attachShadow({ mode: 'closed' });
     // constructed stylesheets are not subject to the page's style-src CSP; <style> is the fallback
     let adopted = false;
@@ -410,7 +416,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   function mountCard(inner: HTMLElement, label: string): HTMLElement {
     ensureHost();
     card?.remove();
-    card = h('div', { class: 'card', role: 'dialog', 'aria-label': label, tabindex: '-1', 'data-placement': 'below' }, inner);
+    card = h('div', { class: 'card', dir: 'ltr', role: 'dialog', 'aria-label': label, tabindex: '-1', 'data-placement': 'below' }, inner);
     card.style.top = '-9999px';
     card.style.left = '0px';
     root!.append(card);

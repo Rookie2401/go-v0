@@ -1,0 +1,30 @@
+{
+ "digest": "e503a1396794cd6d1eab2185dcfbbdb8fb74d90a936169b760e71309070c45d1",
+ "shape": {
+  "main.accountTokens": 0,
+  "main.accounts": 0,
+  "main.aliases": 0,
+  "main.analyses": 400,
+  "main.cursors": 1,
+  "main.devices": 0,
+  "main.documents": 0,
+  "main.enrolments": 2,
+  "main.eventUnits": 1186,
+  "main.events": 600,
+  "main.heads": 1,
+  "main.knowledge": 800,
+  "main.learners": 0,
+  "main.members": 0,
+  "main.packs": 0,
+  "main.preferences": 0,
+  "main.relations": 300,
+  "main.securityEvents": 0,
+  "main.serviceState": 0,
+  "main.sessions": 0,
+  "main.teams": 0,
+  "main.tombstones": 0,
+  "main.units": 401,
+  "kv.kv": 602,
+  "storage.keys": 4
+ }
+}

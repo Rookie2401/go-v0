@@ -15,6 +15,7 @@ import { freshModel } from '../freshness';
 import { deckSizeControl } from './cardsper';
 import { prefsForm } from './prefs';
 import { addToDeck, planCurrentDeck } from '../deckModel';
+import { isNotExamined } from '../../src/intake/intake';
 import { itemIdFor } from '../../src/scheduler/deck';
 import type { View } from './view';
 
@@ -181,7 +182,7 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     return h('li', { class: 'candidate', 'data-unit': o.unitId, 'data-decision': o.decision, ...(later ? { 'data-choice': 'later' } : {}) },
       h('div', { class: 'row' },
         h('strong', langProps(tag), label),
-        h('span', { class: 'tag' }, decisionLabel(o.decision)),
+        h('span', { class: 'tag' }, decisionLabel(o.decision, o)),
         o.proposed ? h('span', { class: 'muted' }, FAMILY_LABEL[o.proposed.family]) : null,
         later ? h('span', { class: 'tag' }, 'kept for later') : null),
       h('p', { class: 'reason' }, ...embedTarget(o.reasons[0] ?? '', words, tag)),
@@ -202,7 +203,9 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
       sec.append(h('details', { class: 'group', ...(open ? { open: true } : {}) }, h('summary', {}, `${title} (${items.length})`), h('ul', { class: 'candidates' }, ...items.map((o) => candidateRow(m, o, tag, plan)))));
     };
     group('Practice candidates', m.outcomes.filter((o) => o.decision === 'test-now' || o.decision === 'test-later'), true);
-    group('Lower candidate rank', m.outcomes.filter((o) => o.decision === 'low-priority' && o.proposed), false);
+    group('Lower candidate rank', m.outcomes.filter((o) => o.decision === 'low-priority' && o.proposed && !isNotExamined(o)), false);
+    const unchecked = m.outcomes.filter(isNotExamined);
+    group('Not yet checked', unchecked, false);
     group('Not proposed', m.outcomes.filter((o) => o.decision !== 'test-now' && o.decision !== 'test-later' && !(o.decision === 'low-priority' && o.proposed)), false);
     if (m.dismissed.length) sec.append(p(`${m.dismissed.length} unit(s) you dismissed are not proposed.`, 'muted'));
     return sec;
@@ -272,7 +275,7 @@ const DECISION_LABEL: Record<IntakeOutcome['decision'], string> = {
   'test-now': 'practice candidate', 'test-later': 'practice later', 'already-covered': 'already covered', redundant: 'not needed',
   'too-uncertain': 'not ready yet', 'needs-validation': 'needs better word facts', 'low-priority': 'lower candidate rank',
 };
-const decisionLabel = (d: IntakeOutcome['decision']): string => DECISION_LABEL[d];
+const decisionLabel = (d: IntakeOutcome['decision'], o?: IntakeOutcome): string => (o && isNotExamined(o) ? 'not yet checked' : DECISION_LABEL[d]);
 
 function queueLabel(queue: SessionPlan['items'][number]['queue']): string {
   switch (queue) {

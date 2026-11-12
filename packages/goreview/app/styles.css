@@ -235,7 +235,8 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 }
 
 /* The review home uses the colors of stone, leather and brass. The photograph is bundled with the app. */
-body:has(#screen:is([data-route="review"], [data-route="review/session"])) {
+body:has(#screen[data-route="review/session"]),
+body:has(#screen[data-route="review"]) {
   color-scheme: dark;
   --paper: #211a15;
   --paper-raised: #30251c;

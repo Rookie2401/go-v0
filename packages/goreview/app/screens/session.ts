@@ -491,7 +491,7 @@ class Controller {
     if (pp.audio) card.append(this.audioBlock(pp.audio.replaysAllowed));
     if (!flashcard) card.append(this.responseArea(pr));
     append(this.root, [this.header(pr, true), pr.index === 0 && pr.planned.why.includes(VOCAB_NOTE) ? h('p', { class: 'muted', id: 'vocab-note' }, VOCAB_NOTE) : null, card,
-      flashcard ? h('div', { id: 'self-grade', class: 'self-grade flashcard-grades', hidden: true }) : null,
+      flashcard ? h('div', { class: 'flashcard-grades' }, h('div', { id: 'self-grade', class: 'self-grade', hidden: true })) : null,
       h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, concealed)]);
     this.focusFirst();
   }
@@ -582,15 +582,8 @@ class Controller {
         append(choice, [h('span', { class: 'grade-dot', 'aria-hidden': 'true' }, String(i + 1)), h('span', { class: 'grade-word' }, word)]);
         return choice;
       })),
-      h('p', { class: 'grade-help' }, button('I needed help', () => void this.submit(this.base({ hinted: true, assistance: ['learner-requested-help'], retrievalAttempted: false, selfGrade: 'again' }), true), { id: 'grade-assisted', class: 'linklike' })),
+      flashcard ? null : h('p', { class: 'grade-help' }, button('I needed help', () => void this.submit(this.base({ hinted: true, assistance: ['learner-requested-help'], retrievalAttempted: false, selfGrade: 'again' }), true), { id: 'grade-assisted', class: 'linklike' })),
     ]);
-    if (flashcard) {
-      const context = (exercise as ReviewExercise).context;
-      const stimulus = exercise.hiddenBeforeAnswer.includes('stimulusText') ? undefined : exercise.prompt.stimulusText;
-      area.append(h('details', {}, h('summary', {}, 'More detail'),
-        context?.surface && stimulus && stimulus !== context.surface ? h('p', langProps(this.tag), stimulus) : null,
-        h('p', {}, exercise.answerKey.explanation)));
-    }
     if (!flashcard) try { area.querySelector<HTMLElement>('.grade')?.focus({ preventScroll: true }); } catch { /* */ }
   }
 

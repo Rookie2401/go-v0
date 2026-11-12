@@ -84,6 +84,7 @@ describe('traditional word flashcards', () => {
     rig.q('#stimulus').click();
     expect(rig.q('.flashcard').getAttribute('data-side')).toBe('back');
     expect(rig.q('#revealed-answer').textContent).toBe('house');
+    expect(rig.root.querySelector('#grade-assisted, #self-grade details')).toBeNull();
     expect(document.activeElement).toBe(rig.q('.flashcard-back'));
     expect(await queued(rig)).toEqual([]);
     rig.q('[data-grade="good"]').click();

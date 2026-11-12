@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = 'efbba7a8270a';
+var BUILD_ID = 'e36e1af29b58';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -33,9 +33,9 @@ var PRECACHE = [
   "./assets/go-globe-rim-CzbKbQV5.png",
   "./assets/go-globe-turn-Dop5YaWE.png",
   "./assets/go-logo-D1Qp-DDg.png",
-  "./assets/index-DR6WIaMJ.js",
+  "./assets/index-C0eW1Pdn.js",
   "./assets/paradigm-Dh_GLBM4.js",
-  "./assets/style-Rhr2goAx.css",
+  "./assets/style-DTr8uwwi.css",
   "./assets/syntax-CGmPxLTF.js",
   "./config.json",
   "./icons/apple-touch-icon.png",
@@ -50,37 +50,37 @@ var PRECACHE = [
 var ASSET_BASE = '../';
 var LANG_CHUNKS = {
   "de": [
-    "./assets/lang-de-BvEWomFT.js"
+    "./assets/lang-de-CSm6oKWF.js"
   ],
   "el": [
-    "./assets/lang-el-D1Q_XQFS.js"
+    "./assets/lang-el-CsQ1hsMp.js"
   ],
   "es": [
-    "./assets/lang-es-HRgzLHcS.js"
+    "./assets/lang-es-NX9qOkr8.js"
   ],
   "he": [
-    "./assets/lang-he-2E6-kOzd.js"
+    "./assets/lang-he-Cb0xdKg8.js"
   ],
   "hi": [
-    "./assets/lang-hi-CboSZ9Dr.js"
+    "./assets/lang-hi-CjvSJq_5.js"
   ],
   "la": [
-    "./assets/lang-la-Cio9_RjO.js"
+    "./assets/lang-la-ChyYcn5n.js"
   ],
   "nb": [
-    "./assets/lang-nb-CqhZA1iI.js"
+    "./assets/lang-nb-CaCkB9fK.js"
   ],
   "nn": [
-    "./assets/lang-nn-C153FPmS.js"
+    "./assets/lang-nn-BXK7pmvk.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-tWQpOOdv.js"
+    "./assets/lang-norwegian-By6wlBp7.js"
   ],
   "sq": [
-    "./assets/lang-sq-DR2hIhFa.js"
+    "./assets/lang-sq-Be9LnRYG.js"
   ],
   "th": [
-    "./assets/lang-th-DE2sDKKg.js"
+    "./assets/lang-th-DwFvWw7l.js"
   ]
 };
 

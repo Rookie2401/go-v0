@@ -20,11 +20,14 @@
  */
 'use strict';
 
-var BUILD_ID = '03bb143419d1';
+var BUILD_ID = '34aa837679e5';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
   "./THIRD-PARTY-NOTICES.md",
+  "./assets/athens-CGnxwDV8.webp",
+  "./assets/bangkok-r3GWRAT9.webp",
+  "./assets/berat-CFdUV1uK.webp",
   "./assets/fonts/EB-Garamond-OFL.txt",
   "./assets/fonts/eb-garamond-latin-400-italic.woff2",
   "./assets/fonts/eb-garamond-latin-400.woff2",
@@ -33,10 +36,16 @@ var PRECACHE = [
   "./assets/go-globe-rim-CzbKbQV5.png",
   "./assets/go-globe-turn-Dop5YaWE.png",
   "./assets/go-logo-D1Qp-DDg.png",
-  "./assets/index-C0eW1Pdn.js",
+  "./assets/index-DhQHhSR3.js",
+  "./assets/jerusalem-YWyJNBCG.webp",
+  "./assets/oslo-CP39LCLT.webp",
   "./assets/paradigm-Dh_GLBM4.js",
-  "./assets/style-7oZgsvOG.css",
+  "./assets/roman-forum-BwyPrRQO.webp",
+  "./assets/rothenburg-vv8nBX67.webp",
+  "./assets/style-Djlif2p8.css",
   "./assets/syntax-CGmPxLTF.js",
+  "./assets/valle-de-angeles-BxOTzEvC.webp",
+  "./assets/varanasi-D-p-TlCF.webp",
   "./config.json",
   "./icons/apple-touch-icon.png",
   "./icons/go-logo.png",
@@ -50,37 +59,37 @@ var PRECACHE = [
 var ASSET_BASE = '../';
 var LANG_CHUNKS = {
   "de": [
-    "./assets/lang-de-CSm6oKWF.js"
+    "./assets/lang-de-BnVGp7YB.js"
   ],
   "el": [
-    "./assets/lang-el-CsQ1hsMp.js"
+    "./assets/lang-el-864_a0nU.js"
   ],
   "es": [
-    "./assets/lang-es-NX9qOkr8.js"
+    "./assets/lang-es-C-PNiRLu.js"
   ],
   "he": [
-    "./assets/lang-he-Cb0xdKg8.js"
+    "./assets/lang-he-C11w7ir3.js"
   ],
   "hi": [
-    "./assets/lang-hi-CjvSJq_5.js"
+    "./assets/lang-hi-D927Gvu-.js"
   ],
   "la": [
-    "./assets/lang-la-ChyYcn5n.js"
+    "./assets/lang-la-4wuLoowZ.js"
   ],
   "nb": [
-    "./assets/lang-nb-CaCkB9fK.js"
+    "./assets/lang-nb-IUjtP6rI.js"
   ],
   "nn": [
-    "./assets/lang-nn-BXK7pmvk.js"
+    "./assets/lang-nn-BuTHXGE9.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-By6wlBp7.js"
+    "./assets/lang-norwegian-BxSG1B0a.js"
   ],
   "sq": [
-    "./assets/lang-sq-Be9LnRYG.js"
+    "./assets/lang-sq-mmOJYfsy.js"
   ],
   "th": [
-    "./assets/lang-th-DwFvWw7l.js"
+    "./assets/lang-th-4zxbJyHr.js"
   ]
 };
 

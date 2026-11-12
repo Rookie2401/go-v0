@@ -24,17 +24,19 @@ describe('the GoReview home', () => {
     expect(rig.q('#entry-biblia').closest('.deck-tiles')).toBeNull();
   });
 
-  it('shows three deck tiles with New inside Current Deck and a separate My Vocab link', async () => {
+  it('shows three deck tiles with New deck inside Current Deck and a separate My Vocabulary link', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
-    expect(rig.q('#review-home .ec-title').textContent).toBe('GoReview');
+    expect(rig.q('main h1.home-title').textContent).toBe('GoReview');
     expect(rig.qa('#review-home .deck-tiles > .deck-tile').map((tile) => tile.dataset.deck)).toEqual(['current', 'review', 'saved']);
-    expect(rig.qa('#review-home .deck-face').map((face) => face.firstChild?.textContent)).toEqual(['Current Deck', 'Review Deck', 'Saved']);
-    expect(rig.q('#start-new').textContent).toBe('New');
-    expect(rig.q('#entry-vocab').textContent).toBe('My Vocab');
+    expect(rig.qa('#review-home .deck-title').map((title) => title.textContent)).toEqual(['Start', 'Review Deck', 'Saved']);
+    expect(rig.q('#start-session .deck-kicker').textContent).toBe('Current Deck');
+    expect(rig.q('#start-new').textContent).toBe('New deck');
+    expect(rig.q('#entry-vocab').textContent).toBe('My Vocabulary');
     expect(rig.q('#entry-vocab').closest('.deck-tiles')).toBeNull();
-    expect(rig.root.querySelector('#entry-tell, #review-home svg')).toBeNull();
+    expect(rig.root.querySelector('#entry-tell, .home-photo-credit')).toBeNull();
+    expect(rig.qa('#review-home svg').every((node) => node.getAttribute('aria-hidden') === 'true')).toBe(true);
     expect(rig.qa('#start-session-count, #start-review-count, #previous-count, #vocab-count').every(node => node.classList.contains('sr'))).toBe(true);
     // two cards answered Again are still being drilled: the Current Deck holds them, the Review Deck has nothing due
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('2');
@@ -54,6 +56,17 @@ describe('the GoReview home', () => {
     expect(rig.q('#review-home').textContent).not.toMatch(/scheduler|fsrs|Why/);
     // the header: the language and the Settings cog
     expect(rig.q('header #settings-link').getAttribute('aria-label')).toBe('Settings');
+  });
+
+  it('shows and credits the Jerusalem photo on the Hebrew home only', async () => {
+    const service = defaultService();
+    service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [{ languageId: 'he', varietyId: 'he-bib' }]);
+    const rig = await makeRig({ signedIn: true, service });
+    expect(rig.q('main').getAttribute('data-home-photo')).toBe('jerusalem');
+    expect(rig.q('.home-photo-credit').textContent).toContain('Photo by Zairon');
+    await rig.go('review/decks');
+    expect(rig.q('main').hasAttribute('data-home-photo')).toBe(false);
+    expect(rig.root.querySelector('.home-photo-credit')).toBeNull();
   });
 
   it('returns to GoReview from an old GoTell deep link', async () => {

@@ -1,5 +1,5 @@
 /** The line icons of the home's choice rows: plain inline SVG, no text, hidden from assistive technology (the row's own title and caption name it). */
-export type IconName = 'deck' | 'review' | 'saved' | 'vocab' | 'tell' | 'book';
+export type IconName = 'deck' | 'review' | 'saved' | 'vocab' | 'tell' | 'book' | 'books' | 'arrow';
 
 const PATHS: Record<IconName, string[]> = {
   deck: ['M7 8.5h12a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 19 19.5H7A1.5 1.5 0 0 1 5.5 18v-8A1.5 1.5 0 0 1 7 8.5z', 'M8.5 5.5h9.5a1.5 1.5 0 0 1 1.5 1.5'],
@@ -8,6 +8,8 @@ const PATHS: Record<IconName, string[]> = {
   vocab: ['M9 7h10', 'M9 12h10', 'M9 17h10', 'M5 7h.01', 'M5 12h.01', 'M5 17h.01'],
   tell: ['M5 19l1.2-4.2L16.5 4.5a1.6 1.6 0 0 1 2.3 0l.7.7a1.6 1.6 0 0 1 0 2.3L9.2 17.8 5 19z', 'M14.5 6.5l3 3'],
   book: ['M12 6.5C10.2 5.2 7.6 4.8 4.5 5v13c3.1-.2 5.7.2 7.5 1.5 1.8-1.3 4.4-1.7 7.5-1.5V5c-3.1-.2-5.7.2-7.5 1.5z', 'M12 6.5v13'],
+  books: ['M20 5.5 9 8.5l-4-1a2.3 2.3 0 0 1 0-4.5L16 .8l4 1.1L9 4.6a2 2 0 0 0 0 3.9', 'M6 7.8l-2 .5a2.7 2.7 0 0 0 0 5.2l5 1.3 11-3M9 14.8a2.7 2.7 0 0 1 0-5.2l11-3', 'M6 14l-2 .5a2.7 2.7 0 0 0 0 5.2L9 21l11-3M9 21a2.7 2.7 0 0 1 0-5.2l11-3'],
+  arrow: ['M4 12h15', 'm13 6 6 6-6 6'],
 };
 
 export function icon(doc: Document, name: IconName): Element {

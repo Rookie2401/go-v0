@@ -70,6 +70,14 @@ Build tooling (Vite, esbuild, TypeScript, Vitest, jsdom and their dependencies) 
   setup builds, `app/fonts/` in the extension). Used unmodified, as web fonts, for GoPractice, the GoLearn setup page and the action popup;
   the lookup card names it first in its serif stack but cannot load it. The fonts are not sold by themselves.
 
+## Photography
+
+- **Jerusalem Tempelberg 1.JPG** by Zairon, via Wikimedia Commons
+  (https://commons.wikimedia.org/wiki/File:Jerusalem_Tempelberg_1.JPG), licensed under
+  Creative Commons Attribution-ShareAlike 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).
+  The GoReview Hebrew home uses a resized WebP copy (`packages/goreview/app/photos/jerusalem.webp`)
+  under the same license. The interface crops the photograph to the available viewport and overlays a gradient for legibility.
+
 ## Audio
 
 - No third-party audio is shipped. The German demonstration clip referenced by GoListen's registry

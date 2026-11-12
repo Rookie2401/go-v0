@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import type { ExerciseBuilder } from '../../packages/goreview/src';
-import { destroyRigs, dueCard, FAKE_BUILDERS, ids, key, makeRig, reopen, reviewed, seed, startWith, until, type Rig } from './helpers';
+import { defaultService, destroyRigs, dueCard, FAKE_BUILDERS, ids, key, makeRig, reopen, reviewed, seed, startWith, until, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 const REPO = path.resolve(__dirname, '../..');
@@ -59,6 +59,7 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
   it('writes the home with decks, the empty home, and the card before the answer, at the grade step and in feedback', async () => {
     fs.mkdirSync(path.join(dir!, 'fonts'), { recursive: true });
     fs.copyFileSync(path.join(REPO, 'packages/goreview/app/styles.css'), path.join(dir!, 'styles.css'));
+    fs.cpSync(path.join(REPO, 'packages/goreview/app/photos'), path.join(dir!, 'photos'), { recursive: true });
     for (const f of fs.readdirSync(path.join(REPO, 'packages/shared-fonts')).filter((n) => n.endsWith('.woff2'))) fs.copyFileSync(path.join(REPO, 'packages/shared-fonts', f), path.join(dir!, 'fonts', f));
     fs.copyFileSync(path.join(REPO, 'packages/shared-brand/go-logo.png'), path.join(dir!, 'go-logo.png'));
 
@@ -85,6 +86,19 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
     await seed(rig, words.slice(0, 10).flatMap((w) => dueCard(A, `${w}x`, 'written-recognition')));
     await reopen(rig);
     write('home-decks.html', rig);
+    destroyRigs();
+
+    const service = defaultService();
+    service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [
+      { languageId: 'sq', varietyId: 'sq-AL' }, { languageId: 'he', varietyId: 'he-bib' },
+    ]);
+    const hebrew = await makeRig({ signedIn: true, service, builders: BUILDERS });
+    const H = { ...ids('L1', 'he'), enrolmentId: 'L1-e2' };
+    await seed(hebrew, [...dueCard(H, 'בית', 'written-recognition'),
+      ...dueCard(H, 'יום', 'written-recognition'), reviewed(H, 'יום', 'written-recognition', 4, '2026-09-02T10:00:00.000Z')]);
+    await reopen(hebrew);
+    expect(hebrew.q('main').getAttribute('data-home-photo')).toBe('jerusalem');
+    write('home-hebrew.html', hebrew);
     destroyRigs();
 
     // (3) the card before the answer

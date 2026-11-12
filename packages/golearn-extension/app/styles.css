@@ -94,6 +94,7 @@ h3 { font-size: 1.1rem; font-weight: 600; margin: 1.1rem 0 .3rem; }
 h4 { font-size: .82rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); margin: .9rem 0 .2rem; }
 p { margin: .55rem 0; max-width: 40rem; }
 .lede { font-size: 1.3rem; line-height: 1.45; margin: 0 0 var(--gap-2); }
+.lede + h2 { margin-top: var(--gap-4); }
 .muted { color: var(--muted); }
 .error { color: var(--bad); }
 .ok { color: var(--ok); }
@@ -245,7 +246,7 @@ details.fold > summary > h3 + *, details.fold > section.sub > :first-child { mar
 .dl-state.error { color: var(--bad); font-weight: 600; }
 /* the Download control of a language that asks a question first (a written standard, a period): a button that opens its panel in the row */
 details.download { margin: 0; justify-self: end; text-align: end; }
-details.download > summary { display: inline-block; padding: .4rem .95rem; border-radius: var(--radius); border: 1px solid var(--line); color: var(--ink); }
+details.download > summary { display: inline-block; font-size: 1rem; padding: .4rem .95rem; border-radius: var(--radius); border: 1px solid var(--line); color: var(--ink); }
 details.download > summary::before { content: none; }
 details.download > summary::after { content: ' ▾'; color: var(--ink-faint); }
 details.download[open] > summary::after { content: ' ▴'; }

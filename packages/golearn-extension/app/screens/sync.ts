@@ -101,7 +101,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       else if (v?.ok === false) setStatus(out, v.error ?? v.message ?? 'The sync did not complete; the extension will try again.', 'error');
       else setStatus(out, v?.message ?? 'Synchronised.', 'ok');
       await paint();
-    }, { id: 'sync-now', class: 'btn primary' })));
+    }, { id: 'sync-now', class: session ? 'btn primary' : 'btn' }))); // with no account there is nothing to send: the button is the quiet kind
   }
   await paint();
 }

@@ -72,7 +72,8 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
     const expired = Date.parse(s.expiresAt) <= ctx.deps.now().getTime();
     const out = statusLine();
     append(sessionBox, [
-      h('p', { id: 'signed-in-as' }, `Signed in as ${s.email}`),
+      // the line above already names the account; this one stays for assistive technology (it names the state in other words)
+      h('p', { id: 'signed-in-as', class: 'sr' }, `Signed in as ${s.email}`),
       nameLine(),
       expired ? p(withForm ? 'Your sign-in has expired. Sign in again below.' : 'Your sign-in has expired. Sign in again.', 'error') : null,
       // what a person helping you may ask for; nothing a learner needs day to day

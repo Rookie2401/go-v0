@@ -319,7 +319,22 @@ describe('an account is optional and only keeps progress across devices', () => 
     expect(rig.q('#signin')).toBeTruthy();
     expect(rig.q('#screen h1').textContent).toBe('Sign in');
     expect(rig.q('.topbar .brand').textContent).toBe('GoLearn');
-    expect(rig.q('.signin .hero-brand').textContent).toBe('GoLearn');
+    // one heading, the page's own: the brand is in the top bar and is not said again on the page (2026-11-11)
+    expect(rig.root.querySelector('.signin .hero-brand')).toBeNull();
+    expect(rig.root.querySelectorAll('#screen h1')).toHaveLength(1);
+    // Sign in | Create an account: two words, the one in force marked; the select behind them carries the value and is not shown
+    expect(rig.q<HTMLSelectElement>('#acct-mode').hidden).toBe(true);
+    expect([...rig.root.querySelectorAll('#acct-mode-tabs button')].map((b) => [b.textContent, b.getAttribute('aria-pressed')])).toEqual([['Sign in', 'true'], ['Create an account', 'false']]);
+    expect(rig.q('#acct-submit').textContent).toBe('Continue');
+    rig.q<HTMLButtonElement>('#acct-mode-create').click();
+    expect(rig.q<HTMLSelectElement>('#acct-mode').value).toBe('create');
+    expect(rig.q('#acct-mode-create').getAttribute('aria-pressed')).toBe('true');
+    expect(rig.q('#acct-name-field').hidden).toBe(false);
+    rig.q<HTMLButtonElement>('#acct-mode-signin').click();
+    expect(rig.q('#acct-name-field').hidden).toBe(true);
+    // “Continue to GoLearn” is for after a sign-in with a deletion pending: hidden until then, and hidden means not shown
+    expect(rig.q('#signin-proceed').hidden).toBe(true);
+    expect(readFileSync('packages/golearn-extension/app/styles.css', 'utf8')).toMatch(/\[hidden\] \{ display: none !important; \}/);
     expect(rig.text()).toContain('select a word on a web page');
     for (const id of ['#acct-form', '#acct-email', '#acct-password', '#acct-mode', '#acct-submit']) expect(rig.root.querySelector(id), id).not.toBeNull();
     expect(rig.root.querySelector('#service-address')).toBeNull(); // no way to change the service address (2026-10-28)
@@ -335,8 +350,8 @@ describe('an account is optional and only keeps progress across devices', () => 
     expect(rig.q('#account-state').hidden).toBe(true); // a clean page: nothing is said about the account until someone signs in
     // nothing on this page is the language list
     expect(rig.root.querySelector('#language-cards')).toBeNull();
-    await rig.go('home');
-    expect(rig.q('#progress-mode').textContent).toContain('On this device only');
+    await rig.go('languages');
+    expect(rig.q('#account-line').textContent).toContain('On this device only');
     expect(rig.createApiCalls).toHaveLength(0); // nothing was sent anywhere
   });
 
@@ -449,8 +464,8 @@ describe('an account is optional and only keeps progress across devices', () => 
     expect(rig.local.cleared).toBe(0);
     expect(await rig.app.ctx.activeLanguage()).toMatchObject({ languageId: 'sq' });
     expect(rig.local.enrolments).toHaveLength(1);
-    await rig.go('home');
-    expect(rig.q('#progress-mode').textContent).toContain('On this device only');
+    await rig.go('languages');
+    expect(rig.q('#account-line').textContent).toContain('On this device only');
   });
 
   it('“Clear local data” is explicit: the first click only arms it, leaving it disarms it, the second clears the on-device Repository', async () => {

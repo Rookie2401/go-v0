@@ -74,7 +74,7 @@ export function createOfflineBlock(ctx: AppContext, view: View, pack: PackView, 
     bar.hidden = true;
     const name = pack.name;
     const btn = (text: string, action: string, onClick: () => void, label: string, primary = false): HTMLButtonElement =>
-      button(text, onClick, { class: primary ? 'btn small primary' : 'small', 'data-action': action, 'aria-label': label });
+      button(text, onClick, { class: 'btn small', 'data-action': action, 'data-emphasis': primary ? 'main' : 'other', 'aria-label': label }); // quiet: a row has no filled button (docs/golearn/DESIGN-SYSTEM.md)
     if (s.state === 'queued' || s.state === 'running') {
       bar.hidden = false;
       bar.value = s.total > 0 ? Math.min(1, s.done / s.total) : 0;

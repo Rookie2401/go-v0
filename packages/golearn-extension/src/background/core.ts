@@ -22,7 +22,7 @@ import { createGlossService, defaultPacks, type PackProvider } from './gloss';
 import { createFormsService } from './forms';
 import { levelOf } from '../../../language-packs/src/manifest';
 import { PACKS } from '../../../language-packs/src/registry';
-import { createLocalRepoService, type LocalRepoServiceOptions } from './localRepo';
+import { createLocalRepoService, createWorkerHold, type LocalRepoServiceOptions } from './localRepo';
 import { createProfileService } from './profile';
 import { createRecorder } from './recorder';
 import { createSessionManager } from './session';
@@ -175,14 +175,19 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   // With IndexedDB in the worker the Repository opens over it (one verified move of the old rows, then no reading at open); without, the rows as before.
   // While it opens, the extension API is touched every 20 s: the browser stops a worker with no extension event for about 30 s, IndexedDB work does not count.
   const idbFactory = (globalThis as { indexedDB?: IDBFactory }).indexedDB;
+  // The same touch is held while a sync round or the upload-and-pull runs (a first sync of a large history outlasts the idle limit with no reading page open): one timer for all three.
+  const ping = bg.localRepo?.keepAlive ?? (() => { void (chrome.runtime as { getPlatformInfo?: () => unknown }).getPlatformInfo?.(); });
+  const hold = createWorkerHold(ping);
   const localRepo = createLocalRepoService({
     area: local, deviceId, session, packs, now,
     ...(idbFactory ? { idb: { indexedDB: idbFactory, ...(typeof IDBKeyRange !== 'undefined' ? { keyRange: IDBKeyRange } : {}) } } : {}),
-    keepAlive: () => { void (chrome.runtime as { getPlatformInfo?: () => unknown }).getPlatformInfo?.(); },
+    keepAlive: ping,
     ...bg.localRepo, // tests only: another IndexedDB, a keep-alive probe, a fault for the migration
+    hold,
   });
   const profile = createProfileService({ area: cache, session, settings: settings.get, now, local: localRepo.forProfile });
-  const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, onSynced: async () => {
+  const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, hold, onSynced: async () => {
+    void localRepo.resumePull(); // an account pull that was begun and cut off (the worker was stopped, the network dropped) continues from its cursor
     await profile.refreshAfterSync();
     // the account's enrolments are read again now and then (a language chosen on another device; a session from before they were kept): marks waiting for one go up
     const s = await session.refreshEnrolments();

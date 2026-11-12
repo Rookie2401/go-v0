@@ -45,7 +45,7 @@ export interface LocalRepository {
   /** Sends every local event not yet uploaded to a signed-in remote API, idempotently (ids/dedupeKeys); remembers what was sent. */
   uploadTo(remote: RepositoryApi, opts?: { onProgress?: (sent: number, total: number) => void }): Promise<{ sent: number; duplicates: number; failed: number }>;
   /** Pulls the remote history for the same learner (after sign-in) so the device sees what other devices recorded; idempotent. */
-  pullFrom(remote: RepositoryApi, opts?: { pageSize?: number }): Promise<{ added: number }>;
+  pullFrom(remote: RepositoryApi, opts?: { pageSize?: number; onEnd?: (complete: boolean) => void }): Promise<{ added: number }>;
   rebuild(): Promise<void>;
   /** The learner's "clear local data". */
   clear(): Promise<void>;
@@ -109,6 +109,14 @@ export interface StorageInfo {
 const inspectors = new WeakMap<LocalRepository, () => Promise<LocalInspection>>();
 const probes = new WeakMap<LocalRepository, () => Probe>();
 const owners = new WeakMap<LocalRepository, (ids: string[], remoteLearnerId: string) => Promise<void>>();
+const waitingOf = new WeakMap<LocalRepository, () => number>();
+
+/** How many events the last `uploadTo` held back (the account has no enrolment in their language): a number kept, not a read of the whole log (what `inspectLocal().waiting` also answers). */
+export function uploadWaiting(repo: LocalRepository): number {
+  const f = waitingOf.get(repo);
+  if (!f) throw new Error('not a local repository');
+  return f();
+}
 
 /**
  * Tells the repository that these events already belong to the account `remoteLearnerId` (the host's own sync sent them): `uploadTo` will not send
@@ -452,6 +460,7 @@ async function openCore(opts: OpenLocalOptions, core: Core): Promise<LocalReposi
   });
   migrationSetters.set(repo, (m) => { core.migration = m; });
   owners.set(repo, (ids, remoteLearnerId) => markOwned(context(), ids, remoteLearnerId));
+  waitingOf.set(repo, () => lastWaiting);
   inspectors.set(repo, async () => {
     const c = context();
     const events = await allEvents(state.store, state.meta.learnerId);

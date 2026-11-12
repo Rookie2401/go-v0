@@ -199,13 +199,14 @@ async function localEnrolment(c: TransferContext, languageId: string, remoteEnro
 }
 
 /** `pageSize` is the number of events asked for per request (the default is PAGE; a test asks for small pages). */
-export async function pull(c: TransferContext, remote: RepositoryApi, newId: () => string, opts: { pageSize?: number } = {}): Promise<{ added: number }> {
+export async function pull(c: TransferContext, remote: RepositoryApi, newId: () => string, opts: { pageSize?: number; onEnd?: (complete: boolean) => void } = {}): Promise<{ added: number }> {
   const me = await remote.me().catch(() => undefined);
   const remoteLearner = me?.ok ? me.data.learner?.learnerId : undefined;
   if (!me || !me.ok || !remoteLearner) return { added: 0 };
   const stored = (await area(c).get(c.io.keys.pull))[c.io.keys.pull] as PullCursor | undefined;
   let afterSeq = stored && stored.learnerId === remoteLearner && Number.isInteger(stored.afterSeq) && stored.afterSeq >= 0 ? stored.afterSeq : 0;
   let added = 0;
+  let complete = false; // true when the loop reached the account's head (not when a request failed): the host asks, to know whether a pull must be resumed
   const appended: GoEvent[] = [];
   const registered = new Set<string>(); // events that would register the same surfaces as one already registered in this pull are not registered again
   const enrolmentOf = new Map<string, string>(); // the local enrolment events of a language go under, found once per pull
@@ -215,7 +216,7 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
     try { r = await remote.listEvents({ afterSeq, limit: opts.pageSize ?? PAGE }); } catch { r = undefined; }
     if (!r || !r.ok) break;
     const events = [...r.data.events].sort((a, b) => a.seq - b.seq);
-    if (!events.length) break;
+    if (!events.length) { complete = true; break; }
     const rows: Record<string, unknown> = {};
     const fresh: Array<{ local: GoEvent; remoteId: string }> = [];
     for (const e of events) {
@@ -247,10 +248,11 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
     afterSeq = events[events.length - 1].seq;
     rows[c.io.keys.pull] = { learnerId: remoteLearner, afterSeq } satisfies PullCursor;
     await writeRows(c.io, rows);
-    if (events.length < (opts.pageSize ?? PAGE) || afterSeq >= r.data.head) break;
+    if (events.length < (opts.pageSize ?? PAGE) || afterSeq >= r.data.head) { complete = true; break; }
   }
   // Projection runs ONCE, after the last page (a page touches most of the learner's units, and projecting re-reads their events). The cursor and the markers above are written
   // per page, so a pull stopped after any page resumes from there; until it is projected, every read folds the events newer than the projection cursor, so knowledge is correct.
   if (appended.length) await c.project();
+  try { opts.onEnd?.(complete); } catch { /* a listener must not break a pull */ }
   return { added };
 }

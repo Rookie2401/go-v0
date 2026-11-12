@@ -256,6 +256,25 @@ describe('sw.js (as built)', () => {
     expect(list).not.toContain('./sw.js');
   });
 
+  it('is stamped with where the dictionary is read from and with each language\'s analyser files, none of them precached', () => {
+    const code = sw();
+    expect(code).not.toContain('__ASSET_BASE__');
+    expect(code).not.toContain('__LANG_CHUNKS__');
+    expect(code).toMatch(/var ASSET_BASE = '\.\/';/); // this build bundles (no GOREVIEW_ASSET_BASE); the hosted edition is stamped '../'
+    const chunks = JSON.parse(/var LANG_CHUNKS = (\{[\s\S]*?\});/.exec(code)![1]) as Record<string, string[]>;
+    // every language, and any chunk two languages share (Bokmål and Nynorsk share one, named "norwegian"): a kept file is carried over by the name it has
+    expect(Object.keys(chunks)).toEqual(expect.arrayContaining(['de', 'el', 'es', 'he', 'hi', 'la', 'nb', 'nn', 'sq', 'th']));
+    const list = JSON.parse(/var PRECACHE = (\[[\s\S]*?\]);/.exec(code)![1]) as string[];
+    for (const [lang, files] of Object.entries(chunks)) {
+      expect(files.length, lang).toBeGreaterThan(0);
+      for (const f of files) {
+        expect(f.startsWith('./assets/lang-' + lang + '-') && f.endsWith('.js'), f).toBe(true);
+        expect(fs.existsSync(path.join(outs.review, f)), f).toBe(true);
+        expect(list, f).not.toContain(f);
+      }
+    }
+  });
+
   it('cleans up the caches of earlier builds, and does not skip waiting by itself (only on the page’s message)', () => {
     const code = sw();
     expect(code).toMatch(/k\.indexOf\(SHELL_PREFIX\) === 0 && k !== SHELL_CACHE/);
@@ -270,9 +289,12 @@ describe('sw.js (as built)', () => {
     const re = /var SERVICE_PATH = (\/.*\/);/.exec(code)![1];
     for (const word of ['sync', 'vocabulary', 'candidates', 'me', 'sessions', 'events']) expect(re).toContain(word);
     expect(code).toContain("request.headers.get('Authorization')");
-    // the only writes to a cache are the install precache, the config.json copy and a capped dictionary shard
+    // the only writes to a cache are the install precache, the config.json copy, a capped dictionary shard, and (at install) this build's
+    // analyser files of the languages the build before it had kept
     const puts = [...code.matchAll(/\.put\(/g)].length;
     expect(puts).toBe(2);
+    expect([...code.matchAll(/cache\.add\(/g)].length).toBe(1);
+    expect([...code.matchAll(/\.addAll\(/g)].length).toBe(1);
   });
 
   it('the build id is a hash of the shell files, so it changes whenever one does', () => {
@@ -289,7 +311,7 @@ describe('sw.js (as built)', () => {
 
 type Listener = (event: unknown) => void;
 
-function sandbox(opts: { scope?: string; origin?: string; precache?: string[]; fetchImpl?: (req: { url: string }) => Promise<Response> } = {}) {
+function sandbox(opts: { scope?: string; origin?: string; precache?: string[]; assetBase?: string; langChunks?: Record<string, string[]>; before?: Record<string, string[]>; fetchImpl?: (req: { url: string }) => Promise<Response> } = {}) {
   const origin = opts.origin ?? 'https://app.test';
   const scope = opts.scope ?? `${origin}/goreview/`;
   const store = new Map<string, Map<string, Response>>();
@@ -301,6 +323,7 @@ function sandbox(opts: { scope?: string; origin?: string; precache?: string[]; f
       async match(r: unknown, o?: { ignoreSearch?: boolean }) { const k = keyOf(r, o?.ignoreSearch); for (const [key, v] of m) if (keyOf(key, o?.ignoreSearch) === k) return v.clone(); return undefined; },
       async put(r: unknown, res: Response) { m.set(keyOf(r), res); },
       async addAll(rs: unknown[]) { for (const r of rs) m.set(keyOf(r), new Response('cached:' + keyOf(r))); },
+      async add(r: unknown) { const res = await fetchFn(r as { url: string }); if (!res.ok) throw new TypeError('bad response'); m.set(keyOf(r), res); },
       async keys() { return [...m.keys()]; },
       async delete(k: unknown) { return m.delete(typeof k === 'string' ? k : keyOf(k)); },
     };
@@ -318,7 +341,11 @@ function sandbox(opts: { scope?: string; origin?: string; precache?: string[]; f
     addEventListener: (t: string, f: Listener) => { listeners[t] = f; },
     skipWaiting: vi.fn(), clients: { claim: vi.fn(async () => undefined) },
   };
-  const code = fs.readFileSync(path.join(outs.review, 'sw.js'), 'utf8').replace(/var PRECACHE = \[[\s\S]*?\];/, `var PRECACHE = ${JSON.stringify(opts.precache ?? ['./', './index.html', './assets/app.js', './config.json'])};`);
+  // what an earlier build left on the device (cache name -> the addresses it holds)
+  for (const [name, urls] of Object.entries(opts.before ?? {})) { const m = new Map<string, Response>(); for (const u of urls) m.set(new URL(u, scope).href, new Response('old:' + u)); store.set(name, m); }
+  let code = fs.readFileSync(path.join(outs.review, 'sw.js'), 'utf8').replace(/var PRECACHE = \[[\s\S]*?\];/, `var PRECACHE = ${JSON.stringify(opts.precache ?? ['./', './index.html', './assets/app.js', './config.json'])};`);
+  if (opts.assetBase !== undefined) code = code.replace(/var ASSET_BASE = '[^']*';/, `var ASSET_BASE = '${opts.assetBase}';`);
+  if (opts.langChunks) code = code.replace(/var LANG_CHUNKS = \{[\s\S]*?\};/, `var LANG_CHUNKS = ${JSON.stringify(opts.langChunks)};`);
   // in a worker a relative Request URL resolves against the worker's own address; node has no such base, so the scope stands in
   class ScopedRequest { url: string; constructor(u: string, public init?: unknown) { this.url = new URL(u, scope).href; } }
   vm.runInNewContext(code, { self, caches, fetch: fetchFn, Request: ScopedRequest, Response, Headers, URL, Promise, Number, Math, JSON });
@@ -395,6 +422,60 @@ describe('sw.js (run in a sandbox)', () => {
       expect(await cached.text()).toContain('gzip shard');
     }
     expect(s.fetchFn).toHaveBeenCalledTimes(assets.length);
+  });
+
+  it('the hosted edition: dictionary files read from beside the app (outside the scope) are kept and answer with no network; nothing else out there is touched', async () => {
+    let offline = false;
+    const s = sandbox({ scope: 'https://app.test/site/review/', assetBase: '../', fetchImpl: async (r) => { if (offline) throw new TypeError('offline'); return new Response('shard ' + r.url, { status: 200 }); } });
+    await s.fire('install', {});
+    const url = 'https://app.test/site/dict/sq/s-ab.json';
+    expect(await ((await s.fire('fetch', { request: s.request(url) })) as Response).text()).toBe('shard ' + url);
+    await new Promise((r) => setTimeout(r, 5));
+    expect([...s.store.get('goreview-dict-v1')!.keys()]).toEqual([url]);
+    offline = true;
+    expect(await ((await s.fire('fetch', { request: s.request(url) })) as Response).text()).toBe('shard ' + url);
+    // not the dictionary: another app of the site, the folder itself, a look-alike name, a service path, anything with a credential
+    for (const other of ['https://app.test/site/app/index.html', 'https://app.test/site/', 'https://app.test/site/dictionary/x.json', 'https://app.test/site/sync/pull', 'https://app.test/dict/sq/s-ab.json']) expect(await s.handles(other), other).toBe(false);
+    expect(await s.handles(url, { headers: new Headers({ Authorization: 'Bearer x' }) })).toBe(false);
+    expect(await s.handles(url, { method: 'POST' })).toBe(false);
+    expect(await s.handles('https://elsewhere.test/site/dict/sq/s-ab.json')).toBe(false);
+  });
+
+  it('a bundled edition (the dictionary inside the scope) touches no dict/ folder outside it; an asset base on another origin is none of its business', async () => {
+    const inside = sandbox({ scope: 'https://app.test/site/review/', assetBase: './' });
+    expect(await inside.handles('https://app.test/site/dict/sq/s-ab.json')).toBe(false);
+    expect(await inside.handles('https://app.test/site/review/dict/sq/s-ab.json')).toBe(true);
+    const elsewhere = sandbox({ scope: 'https://app.test/site/review/', assetBase: 'https://cdn.test/files/' });
+    expect(await elsewhere.handles('https://cdn.test/files/dict/sq/s-ab.json')).toBe(false);
+    expect(await elsewhere.handles('https://app.test/files/dict/sq/s-ab.json')).toBe(false);
+  });
+
+  it('a new build fetches, while it installs, its own analyser files of the languages the build before it had kept, and of no other', async () => {
+    const chunks = { sq: ['./assets/lang-sq-NEW1.js'], de: ['./assets/lang-de-NEW2.js', './assets/lang-de-NEW3.js'], es: ['./assets/lang-es-NEW4.js'] };
+    const s = sandbox({ langChunks: chunks, before: { 'goreview-lang-oldbuild': ['./assets/lang-sq-OLD.js', './assets/lang-de-OLD.js'], 'goreview-dict-v1': ['./dict/es/s-a.json'] } });
+    await s.fire('install', {});
+    const current = (await s.caches.keys()).find((k) => k.startsWith('goreview-lang-') && k !== 'goreview-lang-oldbuild')!;
+    expect(current).toMatch(/^goreview-lang-[0-9a-f]{12}$/);
+    expect([...s.store.get(current)!.keys()].sort()).toEqual(['https://app.test/goreview/assets/lang-de-NEW2.js', 'https://app.test/goreview/assets/lang-de-NEW3.js', 'https://app.test/goreview/assets/lang-sq-NEW1.js']);
+    // applied later with no connection: the old cache goes, the languages still open
+    await s.fire('activate', {});
+    expect(await s.caches.keys()).not.toContain('goreview-lang-oldbuild');
+    s.fetchFn.mockClear();
+    const got = (await s.fire('fetch', { request: s.request('./assets/lang-sq-NEW1.js') })) as Response;
+    expect(await got.text()).toBe('net:https://app.test/goreview/assets/lang-sq-NEW1.js'); // the copy fetched at install
+    expect(s.fetchFn).not.toHaveBeenCalled();
+  });
+
+  it('an analyser file that cannot be fetched at install does not fail the install; a first install fetches none', async () => {
+    const failing = sandbox({ langChunks: { sq: ['./assets/lang-sq-NEW1.js'], de: ['./assets/lang-de-NEW2.js'] }, before: { 'goreview-lang-oldbuild': ['./assets/lang-sq-OLD.js', './assets/lang-de-OLD.js'] }, fetchImpl: async (r) => { if (r.url.includes('lang-de')) throw new TypeError('offline'); return new Response('net:' + r.url, { status: 200 }); } });
+    await failing.fire('install', {});
+    expect(failing.SHELL()).toHaveLength(1);
+    const current = (await failing.caches.keys()).find((k) => k.startsWith('goreview-lang-') && k !== 'goreview-lang-oldbuild')!;
+    expect([...failing.store.get(current)!.keys()]).toEqual(['https://app.test/goreview/assets/lang-sq-NEW1.js']);
+    const first = sandbox({ langChunks: { sq: ['./assets/lang-sq-NEW1.js'] } });
+    await first.fire('install', {});
+    expect(first.fetchFn).not.toHaveBeenCalled();
+    expect((await first.caches.keys()).some((k) => k.startsWith('goreview-lang-'))).toBe(false);
   });
 
   it('NEVER caches or answers anything of the Repository service: another origin, the service paths under the scope, anything with a credential', async () => {

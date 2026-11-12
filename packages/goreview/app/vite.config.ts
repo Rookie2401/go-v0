@@ -265,9 +265,21 @@ function writePwa(outDir: string): void {
   for (const f of files) { hash.update(f); hash.update(fs.readFileSync(path.join(outDir, f))); }
   const buildId = hash.digest('hex').slice(0, 12);
   const list = ['./', ...files.map((f) => './' + f)];
+  // each language's analyser chunks by language (assets/lang-<id>-<hash>.js): a new build fetches, at install, the ones the build before it had kept
+  const langChunks: Record<string, string[]> = {};
+  const assetsDir = path.join(outDir, 'assets');
+  for (const name of fs.existsSync(assetsDir) ? fs.readdirSync(assetsDir).sort() : []) {
+    const m = /^lang-([a-z]+)-[^/]+\.js$/.exec(name);
+    if (m) (langChunks[m[1]!] ??= []).push(`./assets/${name}`);
+  }
+  // where the dictionary is read from (config.json, written just before): the worker keeps its dict/ files also when that folder is outside its scope
+  const assetBase = (JSON.parse(fs.readFileSync(path.join(outDir, 'config.json'), 'utf8')) as { assetBaseUrl?: string }).assetBaseUrl ?? './';
+  if (/['\\\n]/.test(assetBase)) throw new Error('The asset base cannot be written into the service worker.');
   const worker = fs.readFileSync(path.join(pwaSource, 'sw.js'), 'utf8')
-    .replace('__BUILD_ID__', buildId)
-    .replace('__PRECACHE__', JSON.stringify(list, null, 2));
+    .replace("'__BUILD_ID__'", `'${buildId}'`)
+    .replace('__PRECACHE__;', JSON.stringify(list, null, 2) + ';')
+    .replace("'__ASSET_BASE__'", `'${assetBase}'`)
+    .replace('__LANG_CHUNKS__;', JSON.stringify(langChunks, null, 2) + ';');
   fs.writeFileSync(path.join(outDir, 'sw.js'), worker);
 }
 

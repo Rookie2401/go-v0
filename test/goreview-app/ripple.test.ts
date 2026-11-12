@@ -133,10 +133,11 @@ describe('the stylesheet', () => {
     expect(css).toMatch(/\.deck-tile\[data-lit\]::before, \.deck-tile:has\(:focus-visible\)::before \{ transform: translate\(-50%, -50%\) scale\(1\); \}/);
   });
 
-  it('moves only when motion is welcome, and keeps a line around the tile in forced colours', () => {
-    const outside = css.replace(/@media \(prefers-reduced-motion: no-preference\) \{(?:[^{}]|\{[^{}]*\})*\}/g, '');
-    expect(outside).not.toMatch(/\.deck-tile[^{]*\{[^}]*transition/);
-    expect(css).toMatch(/\.deck-tile\[data-lit\]::before, \.deck-tile:has\(:focus-visible\)::before \{ transition: transform \.62s/);
+  it('spreads whatever the motion preference (the owner, 2026-11-12: it did not spread on a PC with animations off), and keeps a line around the tile in forced colours', () => {
+    const gated = [...css.matchAll(/@media \(prefers-reduced-motion: [a-z-]+\) \{(?:[^{}]|\{[^{}]*\})*\}/g)].map((m) => m[0]).join('\n');
+    expect(gated).not.toMatch(/\.deck-tile/);
+    expect(css).toMatch(/\n\.deck-tile::before \{ transition: transform \.42s/);
+    expect(css).toMatch(/\n\.deck-tile\[data-lit\]::before, \.deck-tile:has\(:focus-visible\)::before \{ transition: transform \.62s/);
     expect(css).toMatch(/@media \(forced-colors: active\) \{[^@]*\.deck-tile \{ border: 1px solid CanvasText; \}/);
   });
 

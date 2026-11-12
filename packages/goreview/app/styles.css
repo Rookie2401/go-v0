@@ -348,6 +348,11 @@ html[data-edition="review"] body:has(#screen[data-route="review"])::before { bac
   pointer-events: none;
 }
 .deck-tile[data-lit]::before, .deck-tile:has(:focus-visible)::before { transform: translate(-50%, -50%) scale(1); }
+/* The spread is this control's answer to the pointer, asked for as such, so it plays whatever the motion preference (the owner, 2026-11-12;
+   the second allowance of audit A-C04): it is a change of colour inside one tile, and no text or control moves. Out to the far corner a
+   little slower than it draws back. */
+.deck-tile::before { transition: transform .42s cubic-bezier(.4, 0, .6, 1); }
+.deck-tile[data-lit]::before, .deck-tile:has(:focus-visible)::before { transition: transform .62s cubic-bezier(.22, .61, .36, 1); }
 .home .deck-face {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -456,9 +461,6 @@ html[data-edition="review"] body:has(#screen[data-route="review"])::before { bac
 }
 @media (prefers-reduced-motion: no-preference) {
   .exercise .grade-dot { transition: background-color .15s, color .15s; }
-  /* out to the far corner a little slower than it draws back */
-  .deck-tile::before { transition: transform .42s cubic-bezier(.4, 0, .6, 1); }
-  .deck-tile[data-lit]::before, .deck-tile:has(:focus-visible)::before { transition: transform .62s cubic-bezier(.22, .61, .36, 1); }
 }
 .entry-actions { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; align-items: center; margin: 1.15rem 0 0; }
 .entry-actions .btn.primary { border-radius: 999px; padding: .4rem 1.7rem; letter-spacing: .04em; }

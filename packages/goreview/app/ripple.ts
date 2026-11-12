@@ -8,8 +8,8 @@
  *   data-lit                 present while the pointer is on the tile (a mouse over it, a finger or pen down on it)
  *
  * When the pointer leaves, the wash draws back to the point where it left. A tap is shorter than the wash, so a lit tile stays lit for at least
- * MIN_LIT_MS. A tile with nothing to press (its deck is empty, its button disabled) does not light. With reduced motion the stylesheet shows the
- * lighter colour at once; with the keyboard it lights the focused tile from its centre, and nothing here is needed for either.
+ * MIN_LIT_MS. A tile with nothing to press (its deck is empty, its button disabled) does not light. From the keyboard the stylesheet lights the
+ * focused tile from its centre, and nothing here is needed for that. The spread plays whatever the motion preference (the owner's decision).
  */
 
 /** The share of the circle's radius that is the solid lighter colour; the rest is the soft leading edge. The same number as in styles.css. */

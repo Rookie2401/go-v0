@@ -124,6 +124,26 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
     key('Enter');
     await until(() => !!grade.root.querySelector('.grades'), 'the grades');
     write('card-grade.html', grade);
+    destroyRigs();
+
+    const service = defaultService();
+    service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [{ languageId: 'he', varietyId: 'he-bib' }]);
+    const flashcard = await makeRig({ signedIn: true, service, builders: BUILDERS.map((builder) =>
+      builder.family === 'written-recognition' ? { ...builder, async build(...args) {
+        const exercise = await builder.build(...args);
+        return 'unavailable' in exercise ? exercise : {
+          ...exercise, responseMode: 'typed-or-self',
+          answerKey: { ...exercise.answerKey, accepted: ['to cry out'] },
+        };
+      } } : builder),
+    });
+    await startWith(flashcard, dueCard(ids('L1', 'he'), 'זָעַק', 'written-recognition'));
+    expect(flashcard.q('#flip-card').textContent).toContain('זָעַק');
+    expect(flashcard.q('main').dataset.homePhoto).toBe('jerusalem');
+    write('flashcard-front.html', flashcard);
+    flashcard.q('#flip-card').click();
+    expect(flashcard.q('.flashcard-back #revealed-answer').textContent).toBeTruthy();
+    write('flashcard-back.html', flashcard);
     expect(fs.readdirSync(dir!).sort()).toEqual(expect.arrayContaining(['card-feedback.html', 'card-grade.html', 'card-prompt.html', 'home-decks.html', 'home-empty.html', 'styles.css', 'fonts']));
   }, 60_000);
 });

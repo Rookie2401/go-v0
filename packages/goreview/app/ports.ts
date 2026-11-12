@@ -117,6 +117,7 @@ export interface ActiveRun {
   /** How many CardAdded events the start wrote. */
   addedCount: number;
   startedAt: number;
+  resumed?: boolean;
   endedAt?: number;
   /** Results already committed to the queue, in order. */
   results: ReviewResult[];

@@ -168,15 +168,6 @@ details > summary:hover { color: var(--ink); }
 /* target-language text: the same serif, slightly larger; the Noto faces cover scripts EB Garamond does not; bidirectional text isolated */
 .target-text { unicode-bidi: plaintext; font-family: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Noto Sans Devanagari', 'Noto Sans Thai', 'Noto Naskh Arabic', 'Noto Sans', Georgia, serif; font-size: 1.06em; }
 .stimulus { font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.25; margin: .6rem 0; }
-.flashcard { min-height: 20rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-.flashcard .stimulus { font-size: clamp(2.5rem, 7vw, 4rem); margin: 1.5rem 0; overflow-wrap: anywhere; }
-.flashcard-label { color: var(--ec-gold-ink); }
-.flashcard .response { width: 100%; }
-.flashcard .grades { justify-content: center; flex-wrap: wrap; }
-.flashcard[data-side="back"] .stimulus { font-size: 1.7rem; margin: .5rem 0; }
-.flashcard .reference { font-size: 1.8rem; }
-.flashcard #type-answer { display: block; margin: .8rem auto; }
-.flashcard [hidden] { display: none !important; }
 input.target-text, textarea.target-text { font-size: 1.15rem; }
 
 /* session */
@@ -185,7 +176,7 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 .bar-actions { margin-left: auto; display: flex; gap: 1.2rem; }
 .exercise { background: var(--ec-paper-raised); color: var(--ec-ink); border: 1px solid var(--ec-rule); border-radius: 3px; box-shadow: none; padding: 1.6rem; margin: 1.25rem 0; }
 /* the card's own type: the instruction an Ecclesia eyebrow, the meaning an italic Garamond, the field and the buttons squared to 3px */
-.instruction, .flashcard-label { margin: 0 0 .9rem; font-family: var(--ec-sans); font-size: .72rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--ec-gold-ink); }
+.instruction { margin: 0 0 .9rem; font-family: var(--ec-sans); font-size: .72rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--ec-gold-ink); }
 .exercise .meaning { font-style: italic; font-size: 1.15rem; color: var(--ec-ink-soft); }
 .exercise .reference { font-family: var(--serif); }
 .exercise input[type="text"], .exercise textarea, .exercise select { background: var(--ec-paper); border-color: var(--ec-field-line); border-radius: 3px; }
@@ -244,7 +235,7 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 }
 
 /* The review home uses the colors of stone, leather and brass. The photograph is bundled with the app. */
-body:has(#screen[data-route="review"]) {
+body:has(#screen:is([data-route="review"], [data-route="review/session"])) {
   color-scheme: dark;
   --paper: #211a15;
   --paper-raised: #30251c;
@@ -268,9 +259,9 @@ body:has(#screen[data-route="review"]) {
   --focus: var(--accent);
   background: var(--paper);
 }
-body:has(#screen[data-route="review"]) .topbar { background: #211a15; border-bottom-color: var(--rule); }
-html[data-edition="review"] body:has(#screen[data-route="review"])::before { background: var(--paper); }
-.screen[data-route="review"] {
+body:has(#screen:is([data-route="review"], [data-route="review/session"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
+html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"]))::before { background: var(--paper); }
+.screen:is([data-route="review"], [data-route="review/session"]) {
   --home-gutter: clamp(1.125rem, 5vw, 2rem);
   max-width: none;
   padding: 0 0 calc(1.25rem + env(safe-area-inset-bottom, 0px));
@@ -657,8 +648,6 @@ img, svg, video, canvas { max-width: 100%; }
   .field, .deck-size { max-width: none; }
   .choices { max-width: none; }
   .stimulus { font-size: 1.5rem; }
-  .flashcard { min-height: 16rem; }
-  .flashcard .stimulus { font-size: clamp(2.2rem, 11vw, 3rem); }
   /* the four self-grades stay on one line: four equal columns, the word shrinks, and below 360px the number alone remains */
   .grades { flex-wrap: nowrap; justify-content: space-between; gap: 0; }
   button.grade { flex: 1 1 0; min-width: 0; justify-content: center; gap: .3rem; padding: 0 .1rem; }
@@ -773,3 +762,123 @@ img, svg, video, canvas { max-width: 100%; }
 
 /* the session summary leads with the result */
 .summary-headline { font-size: 1.5rem; font-weight: 600; margin: 0.25rem 0 0.5rem; }
+
+/* The session uses the same photographs and palette as the home, with a shallower banner. */
+.screen[data-route="review/session"] .home-hero {
+  display: grid;
+  place-items: center;
+  min-height: clamp(6rem, 24vw, 10rem);
+  padding: .85rem var(--home-gutter) 1rem;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.screen[data-route="review/session"] .home-title {
+  font-size: clamp(2.25rem, 8vw, 4rem);
+  margin: 0;
+}
+.screen[data-route="review/session"][data-home-photo] .home-hero {
+  background-image: linear-gradient(180deg, #211a15dc, #211a158c 58%, #211a1540), var(--home-photo-image);
+}
+.screen[data-route="review/session"] > .body {
+  max-width: 48rem;
+  margin-inline: auto;
+  padding: .55rem max(var(--home-gutter), env(safe-area-inset-right, 0px)) 0
+    max(var(--home-gutter), env(safe-area-inset-left, 0px));
+}
+.session {
+  --ec-paper: var(--paper);
+  --ec-paper-raised: var(--panel);
+  --ec-ink: var(--ink);
+  --ec-ink-soft: var(--ink-soft);
+  --ec-rule: var(--rule-strong);
+  --ec-gold: var(--accent);
+  --ec-gold-ink: var(--accent);
+  --ec-gold-fill: var(--accent);
+  --ec-gold-on-fill: var(--paper);
+  --ec-field-line: var(--control-line);
+}
+.session :is(.session-bar, .exercise, .feedback) {
+  --ec-paper: inherit;
+  --ec-paper-raised: inherit;
+  --ec-ink: inherit;
+  --ec-ink-soft: inherit;
+  --ec-rule: inherit;
+  --ec-gold: inherit;
+  --ec-gold-ink: inherit;
+  --ec-gold-fill: inherit;
+  --ec-gold-on-fill: inherit;
+  --ec-field-line: inherit;
+}
+.session-bar { gap: .15rem clamp(.45rem, 2vw, .85rem); align-items: center; }
+.session-heading { font-size: clamp(1.12rem, 4.1vw, 1.5rem); font-weight: 600; }
+#session-progress {
+  border-inline-start: 1px solid var(--rule-strong);
+  padding-inline-start: clamp(.45rem, 2vw, .85rem);
+  color: var(--ink-soft);
+  font: italic clamp(.95rem, 3.6vw, 1.2rem)/1.1 var(--serif);
+  letter-spacing: normal;
+  text-transform: none;
+}
+.session-bar .bar-actions { gap: clamp(.55rem, 3vw, 1.4rem); }
+.session-bar .linklike {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--accent);
+  font: clamp(1rem, 3.7vw, 1.2rem)/1 var(--serif);
+  letter-spacing: normal;
+  text-transform: none;
+}
+.session .exercise, .session .feedback { border-radius: .8rem; }
+.session .flashcard {
+  display: grid;
+  padding: 0;
+  margin: .6rem 0 0;
+  border-color: var(--accent-soft);
+  background: linear-gradient(135deg, #38291e, #2a2018);
+}
+.session .flashcard-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  min-height: clamp(10.5rem, 42vw, 18rem);
+  min-width: 0;
+  padding: 2.45rem 1.35rem;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: var(--ink);
+  text-align: center;
+}
+.session button.flashcard-face:hover { background: #ffffff06; }
+.session button.flashcard-face:focus-visible { outline-offset: -4px; }
+.flashcard-face .stimulus {
+  margin: 0;
+  font-size: clamp(2.65rem, 10vw, 4.4rem);
+  overflow-wrap: anywhere;
+}
+.flashcard-back .stimulus { font-size: clamp(1.65rem, 6vw, 2.35rem); color: var(--ink-soft); }
+.flashcard-back .reference { margin: 0; font-size: clamp(1.75rem, 6.5vw, 2.65rem); line-height: 1.15; }
+.flashcard .pronunciation { top: .55rem; right: .65rem; }
+.flashcard .icon-btn { width: 2.75rem; height: 2.75rem; }
+.flashcard .icon-btn svg { width: 1.45rem; height: 1.45rem; }
+.flashcard-grades { text-align: center; }
+.flashcard-grades > details { margin: .5rem 0; }
+#session-status:empty { display: none; }
+.session .item-tools {
+  margin: 1rem .2rem 0;
+  border-block: 1px solid var(--rule-strong);
+}
+.session .item-tools > summary { padding: .45rem .25rem; font-size: 1.2rem; font-style: italic; }
+.screen[data-route="review/session"] .home-photo-credit { margin: .8rem auto 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .flashcard-back { animation: flashcard-reveal .22s ease-out; }
+  @keyframes flashcard-reveal {
+    from { transform: perspective(38rem) rotateY(-60deg); opacity: .35; }
+    to { transform: perspective(38rem) rotateY(0); opacity: 1; }
+  }
+}
+@media (forced-colors: active) {
+  .screen[data-route="review/session"][data-home-photo] .home-hero, .session .flashcard { background: none; }
+}

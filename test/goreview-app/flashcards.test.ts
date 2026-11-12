@@ -31,6 +31,7 @@ describe('traditional word flashcards', () => {
     expect(await queued(rig)).toEqual([]);
     expect(rig.q('#pronunciation-status').textContent).toBe(''); // a normal playback leaves no note under the speaker; only a failure does
     expect(rig.q('#pronounce').getAttribute('aria-label')).toBe('Hear word');
+    expect(rig.q('.flashcard').dataset.side).toBe('front');
     key('Enter');
     rig.q('[data-grade="good"]').click();
     await until(() => !!rig.root.querySelector('#summary'), 'summary');
@@ -77,11 +78,13 @@ describe('traditional word flashcards', () => {
     expect(rig.q('.flashcard').getAttribute('data-side')).toBe('front');
     expect(rig.root.querySelector('#answer-input')).toBeNull();
     expect(rig.root.querySelector('#retrieval-attempted')).toBeNull();
+    expect(rig.root.querySelector('#reveal, #type-answer, .grade')).toBeNull();
     expect(rig.root.querySelector('#revealed-answer')).toBeNull();
     expect(await queued(rig)).toEqual([]);
-    key('Enter');
+    rig.q('#stimulus').click();
     expect(rig.q('.flashcard').getAttribute('data-side')).toBe('back');
     expect(rig.q('#revealed-answer').textContent).toBe('house');
+    expect(document.activeElement).toBe(rig.q('.flashcard-back'));
     expect(await queued(rig)).toEqual([]);
     rig.q('[data-grade="good"]').click();
     await until(() => rig.q('#session-progress').textContent === '2 of 2', 'next flashcard');
@@ -92,12 +95,10 @@ describe('traditional word flashcards', () => {
     expect(rig.root.querySelector('#revealed-answer')).toBeNull();
   });
 
-  it('offers optional typing and records nothing for an abandoned revealed card', async () => {
+  it('records nothing for an abandoned revealed card', async () => {
     const rig = await makeRig({ signedIn: true, builders });
     await startWith(rig, dueCard(A, 'shtepi', 'written-recognition'));
-    rig.q('#type-answer').click();
-    expect(rig.root.querySelector('#answer-input')).not.toBeNull();
-    rig.q('#reveal').click();
+    rig.q('#flip-card').click();
     rig.q('#finish-early').click();
     await until(() => !!rig.root.querySelector('#summary'), 'finished session');
     expect(await queued(rig)).toEqual([]);

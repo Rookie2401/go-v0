@@ -205,7 +205,7 @@ describe('Class Essentials: in Saved decks', () => {
     expect(rig.q('#stimulus').getAttribute('lang')).toBe('sq-AL');
     expect(rig.root.querySelector('#revealed-answer')).toBeNull();           // the meaning is concealed
     expect(rig.root.querySelector('#pronounce')).not.toBeNull();             // Hear word is there (audio is available in the rig)
-    click(rig.q('#reveal'));
+    click(rig.q('#flip-card'));
     expect(rig.q('#revealed-answer').textContent).toBe('Hello');
     click(rig.q('[data-grade="good"]'));
     await until(async () => (await queued(rig)).some((e) => e.kind === 'CardReviewed'), 'the review event');

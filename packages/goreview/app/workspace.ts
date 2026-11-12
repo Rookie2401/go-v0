@@ -791,7 +791,7 @@ export async function resumeSession(ctx: AppContext, sessionId: string): Promise
   if (!driver.recover || !(await driver.recover(sessionId))) return { ok: false, message: 'The saved session could not be restored.' };
   const state = driver.state();
   return { ok: true, run: { driver, plan: state.plan, ctx: ectx, addedCount: 0,
-    startedAt: Date.parse(state.startedAt), results: [...state.results],
+    startedAt: Date.parse(state.startedAt), resumed: true, results: [...state.results],
     skipped: driver.skips().map((s) => s.itemId), withheld: [], controls: [] } };
 }
 

@@ -304,9 +304,10 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const body = h('div', { class: 'body' });
     const review = def.id === 'review' && mode !== 'none';
     const home = review && subs.length === 0;
-    const hero = home
+    const session = review && subs[0] === 'session';
+    const hero = home || session
       ? h('div', { class: 'home-hero' },
-          h('div', { class: 'home-language', id: 'home-language' }),
+          home ? h('div', { class: 'home-language', id: 'home-language' }) : null,
           h('h1', { class: 'home-title' }, def.title))
       : undefined;
     main.append(hero ?? h('h1', { class: review ? 'sr' : undefined }, def.title), body);
@@ -323,7 +324,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     }
     if (my !== seq) return;
     if (idn) main.setAttribute('data-language', idn.varietyId ?? idn.languageId); else main.removeAttribute('data-language');
-    const photo = hero && idn ? homePhoto(idn.languageId) : undefined;
+    const photoLanguage = (session ? ctx.run.active?.ctx.languageId : undefined) ?? idn?.languageId;
+    const photo = hero && photoLanguage ? homePhoto(photoLanguage) : undefined;
     if (hero && photo) {
       main.dataset.homePhoto = photo.id;
       hero.style.setProperty('--home-photo-image', `url("${photo.image}")`);

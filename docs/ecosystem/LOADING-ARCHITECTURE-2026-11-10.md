@@ -217,8 +217,11 @@ Not built, with the reason:
   different ones; only two say "pack installed" (`golearn:pack:installed:<id>` and `golearn:app`.packs), and only the setup
   page reads them. Lookups never consult either. A single persisted record replacing them needs a migration across four
   writers and two apps; a derived `packReady()` is the smaller step and belongs with the offline download above.
-- **GoReview intake fetches facts for every candidate** (226 lookups at a first sign-in). A bounded fetch is built and
-  measured (a8269763) but not passed by the app, because it changes the counts the details screen shows: the owner decides.
+- **2026-11-11, built and ON: GoReview intake no longer fetches facts for every candidate** (226 lookups at a first sign-in
+  became 28). The bounded fetch (a8269763) is passed by the app since 1d7d25cb, on the owner's decision; words below the
+  budget are shown as their own category, "Not yet checked", and are no longer counted as low priority or uncertain. Left:
+  each existing form card still costs one lookup, and the hosted GoReview has no whole-language download (its worker keeps
+  what it fetched, at most 400 files).
 - **GoReview still reads its whole log about eight times per answer** (`context.ts` `events`), about 100 ms per answer at
   12,000 events in Node, and the review model's refresh folds the whole log once when it runs. Measured, left.
 - **The history comes down twice at a first sign-in** (`GET /events` for the device, `POST /sync/pull` for the client).

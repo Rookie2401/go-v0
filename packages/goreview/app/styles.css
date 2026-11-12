@@ -765,6 +765,11 @@ img, svg, video, canvas { max-width: 100%; }
 .summary-headline { font-size: 1.5rem; font-weight: 600; margin: 0.25rem 0 0.5rem; }
 
 /* The session uses the same photographs and palette as the home, with a shallower banner. */
+.shell:has(> .screen[data-route="review/session"]), .screen[data-route="review/session"] {
+  display: flex;
+  flex-direction: column;
+}
+.screen[data-route="review/session"] { flex: 1; }
 .screen[data-route="review/session"] .home-hero {
   display: grid;
   place-items: center;
@@ -780,10 +785,21 @@ img, svg, video, canvas { max-width: 100%; }
   background-image: linear-gradient(180deg, #211a15dc, #211a158c 58%, #211a1540), var(--home-photo-image);
 }
 .screen[data-route="review/session"] > .body {
+  width: 100%;
   max-width: 48rem;
   margin-inline: auto;
   padding: .55rem max(var(--home-gutter), env(safe-area-inset-right, 0px)) 0
     max(var(--home-gutter), env(safe-area-inset-left, 0px));
+}
+.screen[data-route="review/session"] > .body:has(.flashcard) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.session:has(> .flashcard) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 .session {
   --ec-paper: var(--paper);
@@ -833,7 +849,7 @@ img, svg, video, canvas { max-width: 100%; }
 .session .flashcard {
   display: grid;
   padding: 0;
-  margin: .6rem 0 0;
+  margin: auto 0 0;
   border-color: var(--accent-soft);
   background: linear-gradient(135deg, #38291e, #2a2018);
 }
@@ -864,15 +880,15 @@ img, svg, video, canvas { max-width: 100%; }
 .flashcard .pronunciation { top: .55rem; right: .65rem; }
 .flashcard .icon-btn { width: 2.75rem; height: 2.75rem; }
 .flashcard .icon-btn svg { width: 1.45rem; height: 1.45rem; }
-.flashcard-grades { text-align: center; }
-.flashcard-grades > details { margin: .5rem 0; }
+.flashcard-grades { min-height: 3.75rem; }
 #session-status:empty { display: none; }
 .session .item-tools {
   margin: 1rem .2rem 0;
   border-block: 1px solid var(--rule-strong);
 }
 .session .item-tools > summary { padding: .45rem .25rem; font-size: 1.2rem; font-style: italic; }
-.screen[data-route="review/session"] .home-photo-credit { margin: .8rem auto 0; }
+.session:has(> .flashcard) > .item-tools { margin-bottom: auto; }
+.screen[data-route="review/session"] .home-photo-credit { margin: auto auto 0; padding-top: .8rem; }
 @media (prefers-reduced-motion: no-preference) {
   .flashcard-back { animation: flashcard-reveal .22s ease-out; }
   @keyframes flashcard-reveal {

@@ -1,0 +1,1 @@
+import{t as e}from"./hi-Uk24Syum.js";export{e as adapter};

@@ -1,1 +1,0 @@
-import{i as e}from"./index-RylDKVs6.js";export{e as adapter};

@@ -243,19 +243,127 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
   }
 }
 
-/* GoReview home */
-.home { color: var(--ec-ink); padding: .75rem 0 2.5rem; }
-.home > * { max-width: 30rem; margin-inline: auto; }
-.home .ec-title { margin: 0 auto 1.5rem; font-size: clamp(2.6rem, 8vw, 3.6rem); font-weight: 400; line-height: 1; letter-spacing: -.02em; text-align: center; text-transform: none; color: var(--ec-ink); }
-.deck-tiles { display: grid; gap: .875rem; width: min(100%, clamp(13rem, 72vw, 22rem)); margin-inline: auto; }
-.deck-tile { display: grid; min-width: 0; border: 1px solid var(--ec-field-line); border-radius: 5px; }
-.home .deck-face { display: grid; place-items: center; width: 100%; min-height: 6.5rem; margin: 0; padding: .75rem; border: 0; border-radius: 4px; background: transparent; color: var(--ec-ink); font: inherit; font-size: clamp(1.65rem, 5vw, 2rem); line-height: 1.1; text-align: center; text-decoration: none; }
-.home .deck-face:hover:not(:disabled) { background: var(--ec-paper-raised); color: var(--ec-ink); text-decoration: none; }
+/* GoReview home: Ecclesia's parchment, warm ink, and restrained brass. */
+body:has(#screen[data-route="review"]) {
+  --review-ground: #f4ecde;
+  --review-glow: #fffaf0;
+  --review-surface: #f9f2e5;
+  --review-cover: #fcf6e9;
+  --review-edge: #cfc0a9;
+  --review-cover-edge: #b59b74;
+  --review-hairline: #a78350;
+  --review-shadow: #49311b13;
+  background: radial-gradient(ellipse 36rem 28rem at 50% 0, var(--review-glow), transparent), var(--review-ground);
+}
+@media (prefers-color-scheme: dark) {
+  body:has(#screen[data-route="review"]) {
+    --review-ground: #181411;
+    --review-glow: #30251d;
+    --review-surface: #24201b;
+    --review-cover: #31271e;
+    --review-edge: #4b4033;
+    --review-cover-edge: #745c3e;
+    --review-hairline: #a78350;
+    --review-shadow: #08060338;
+  }
+}
+body:has(#screen[data-route="review"]) .topbar {
+  background: var(--review-ground);
+  border-bottom-color: color-mix(in srgb, var(--review-edge) 50%, transparent);
+}
+.home { color: var(--ec-ink); padding: .35rem 0 2.5rem; }
+.home > * { max-width: 28rem; margin-inline: auto; }
+.home .ec-title {
+  margin: 0 auto clamp(1.7rem, 6vw, 2.35rem);
+  color: var(--ec-ink);
+  font-size: clamp(3rem, 11vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.045em;
+  text-align: center;
+  text-transform: none;
+}
+.home .ec-title::after {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 1px;
+  margin: .95rem auto 0;
+  background: var(--review-hairline);
+}
+.deck-tiles {
+  --deck-inset: clamp(1.15rem, 6vw, 1.85rem);
+  display: grid;
+  gap: .8rem;
+  width: min(100%, 24.5rem);
+  margin-inline: auto;
+}
+.deck-tile {
+  display: grid;
+  min-width: 0;
+  border: 1px solid var(--review-edge);
+  border-radius: .625rem;
+  background: var(--review-surface);
+  box-shadow: 0 3px 10px var(--review-shadow);
+}
+.deck-tile[data-deck="current"] {
+  border-color: var(--review-cover-edge);
+  background: linear-gradient(120deg, var(--review-cover), var(--review-surface));
+}
+.home .deck-face {
+  display: grid;
+  align-items: center;
+  justify-items: start;
+  width: 100%;
+  min-height: 5.75rem;
+  margin: 0;
+  padding: .85rem var(--deck-inset);
+  border: 0;
+  border-radius: .55rem;
+  background: transparent;
+  color: var(--ec-ink);
+  font: inherit;
+  font-size: clamp(1.85rem, 7vw, 2.15rem);
+  line-height: 1.1;
+  letter-spacing: -.018em;
+  text-align: start;
+  text-decoration: none;
+}
+.home .deck-face:hover:not(:disabled) { background: color-mix(in srgb, var(--ec-gold) 7%, transparent); color: var(--ec-ink); }
 .home .deck-face:disabled { opacity: 1; color: var(--ec-ink-soft); cursor: default; }
-.home .deck-new { justify-self: start; min-width: 2.75rem; min-height: 2.75rem; margin: 0 .35rem .2rem; padding: .35rem .75rem; border: 0; background: none; color: var(--ec-gold-ink); font: 600 .85rem/1.3 var(--ec-sans); }
-.home .deck-new:hover:not(:disabled) { background: var(--ec-paper-raised); text-decoration: underline; }
+.home .deck-new {
+  justify-self: start;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  margin: 0 0 .45rem;
+  margin-inline-start: calc(var(--deck-inset) - .55rem);
+  padding: .25rem .55rem;
+  border: 0;
+  background: transparent;
+  color: var(--ec-gold-ink);
+  font: 600 .8rem/1.3 var(--ec-sans);
+  letter-spacing: .035em;
+  text-decoration: underline;
+  text-decoration-color: var(--review-hairline);
+  text-underline-offset: .25em;
+}
+.home .deck-new:hover:not(:disabled) { background: color-mix(in srgb, var(--ec-gold) 7%, transparent); }
 .home .deck-face:focus-visible, .home .deck-new:focus-visible, .home .home-link:focus-visible { outline: 2px solid var(--ec-gold-ink); outline-offset: -3px; }
-.home .home-link { display: flex; align-items: center; justify-content: center; width: fit-content; min-height: 2.75rem; margin: .45rem auto 0; padding: .25rem .75rem; color: var(--ec-gold-ink); font-size: 1.35rem; }
+.home .home-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 2.75rem;
+  margin: 1rem auto 0;
+  padding: .25rem .75rem;
+  color: var(--ec-gold-ink);
+  font-size: 1.3rem;
+  text-decoration: underline;
+  text-decoration-color: var(--review-hairline);
+  text-underline-offset: .25em;
+}
+.home .home-link:hover { text-decoration-color: currentColor; }
 .home .notice, .home #candidate-freshness { margin: .65rem 0; font-family: var(--ec-sans); font-size: .78rem; }
 @media (prefers-reduced-motion: no-preference) {
   .exercise .grade-dot { transition: background-color .15s, color .15s; }
@@ -504,11 +612,12 @@ img, svg, video, canvas { max-width: 100%; }
 .splash-word { font-size: 2rem; line-height: 1; letter-spacing: .22em; margin-left: .22em; text-transform: uppercase; font-weight: 400; }
 @media (prefers-reduced-motion: no-preference) { #goreview-splash { transition: opacity .55s ease; } } /* the fade only when motion is welcome (audit A-C04) */
 /* The language selector sits above the GoReview title. */
-.home-language { text-align: center; margin: 0 0 .25rem; }
+.home-language { text-align: center; margin: 0 0 .4rem; }
+.home-language .language-kicker { font: 600 .66rem/1.5 var(--ec-sans, system-ui); letter-spacing: .21em; color: var(--ink-soft); }
 .home-language .language-picker { max-width: 100%; }
-.home-language select.language-kicker { padding: .1rem 1.6rem .1rem .4rem; text-align: center; text-align-last: center; }
+.home-language select.language-kicker { min-height: 2.75rem; padding: .1rem 1.3rem .1rem .4rem; text-align: center; text-align-last: center; }
 .home-language select.language-kicker:hover { color: var(--accent); }
-.home-language .language-caret { font-size: 1.1rem; right: .25rem; color: var(--ink-soft); }
+.home-language .language-caret { font-size: .75rem; right: .25rem; color: var(--ink-soft); }
 /* the mark in the ink of the body text (--brand: cream on the dark theme, dark brown on paper), the same ink the launch screen uses */
 .go-brand { display: inline-flex; align-items: center; gap: 0; flex-shrink: 0; color: var(--brand); font-size: .95rem; letter-spacing: .01em; text-decoration: none; }
 .go-brand-mark { display: block; width: calc(var(--mark-h) * 2); height: var(--mark-h); background: currentColor; -webkit-mask: var(--go-brand-mask) center / contain no-repeat; mask: var(--go-brand-mask) center / contain no-repeat; }

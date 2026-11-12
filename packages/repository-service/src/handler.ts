@@ -543,6 +543,7 @@ route('DELETE', '/me', true, async (ctx) => {
   const at = ctx.now();
   await store.revokeSession(ctx.session.sessionId, at);
   await store.eraseLearner(learnerId); // events, projections, documents, sessions, devices, enrolments
+  forgetLearnerCaches(store, learnerId); // and what this process still held of them in memory
   // The port has no account deletion: if the account row survived the erase, it is disabled and its email released.
   const left = await store.getAccount(ctx.session.accountId);
   if (left) await store.putAccount({ ...accountView(left), learnerId, email: `deleted+${left.accountId}@invalid`, disabledAt: at, passwordHash: '!' });
@@ -1010,8 +1011,9 @@ route('GET', '/vocabulary', true, async (ctx) => {
     }
     all.sort(compare);
     ordered = all;
+    dropExpired(caches, nowMs);
     if (caches.size >= 32) caches.delete(caches.keys().next().value as string);
-    caches.set(filterSig, { head, at: nowMs, ordered });
+    caches.set(filterSig, { learnerId, head, at: nowMs, ordered });
   }
   // Locate the boundary by its deterministic unit id. The other key fields are
   // carried for an opaque, self-describing cursor, but retention can decay on a
@@ -1042,7 +1044,31 @@ route('GET', '/vocabulary', true, async (ctx) => {
  * The sorted vocabulary order, shared by the pages of one walk (see the sorted branch of GET /vocabulary). One entry per learner, language, sort and filter set,
  * valid only while the learner's event head and the catalog are unchanged and for CANDIDATE_CACHE_MS; at most 32 entries, the oldest dropped first.
  */
-const orderCaches = new WeakMap<object, Map<string, { head: number; at: number; ordered: VocabMatch[] }>>();
+const orderCaches = new WeakMap<object, Map<string, { learnerId: string; head: number; at: number; ordered: VocabMatch[] }>>();
+
+/** An entry past its window is never served again; it is also not kept: every insert drops the expired ones, so a learner's list does not sit in memory behind a quiet key. */
+function dropExpired(cache: Map<string, { at: number }>, nowMs: number): void {
+  for (const [key, entry] of cache) if (!(nowMs - entry.at >= 0 && nowMs - entry.at < CANDIDATE_CACHE_MS)) cache.delete(key);
+}
+
+/**
+ * Deleting an account deletes what this process holds of it in memory too (the two per-learner caches below and above): called where a learner is erased
+ * (DELETE /me here; the scheduled purge through `MaintenanceOptions.onErased`). The entries could not be served to anyone (they are keyed by learner and
+ * the sessions are gone); this is so that "deleted" is true of the process as well as of the database.
+ */
+export function forgetLearnerCaches(store: object, learnerId: string): void {
+  for (const caches of [orderCaches.get(store), candidateCaches.get(store)]) {
+    if (!caches) continue;
+    for (const [key, entry] of caches) if (entry.learnerId === learnerId) caches.delete(key);
+  }
+}
+
+/** How many entries the two per-learner caches hold for a learner (tests only). */
+export function learnerCacheEntries(store: object, learnerId: string): number {
+  let n = 0;
+  for (const caches of [orderCaches.get(store), candidateCaches.get(store)]) for (const entry of caches?.values() ?? []) if (entry.learnerId === learnerId) n += 1;
+  return n;
+}
 
 /**
  * The learner's whole ranked candidate list, shared by the pages of one load. Paging used to rank the complete set again for every page (a learner with
@@ -1050,7 +1076,7 @@ const orderCaches = new WeakMap<object, Map<string, { head: number; at: number; 
  * event log has not moved, so a push (a new lookup, a review) always ranks afresh.
  */
 export const CANDIDATE_CACHE_MS = 20_000;
-const candidateCaches = new WeakMap<object, Map<string, { head: number; at: number; ranked: Awaited<ReturnType<ServiceDeps['engine']['candidates']>> }>>();
+const candidateCaches = new WeakMap<object, Map<string, { learnerId: string; head: number; at: number; ranked: Awaited<ReturnType<ServiceDeps['engine']['candidates']>> }>>();
 async function rankedCandidates(ctx: Ctx, enrolmentId: string, objectiveDimensions: import('../../repository-contract/src').Dimension[] = []) {
   const { store, engine } = ctx.deps;
   const learnerId = ctx.session.learnerId;
@@ -1062,8 +1088,9 @@ async function rankedCandidates(ctx: Ctx, enrolmentId: string, objectiveDimensio
   const hit = cache.get(key);
   if (hit && hit.head === head && nowMs - hit.at >= 0 && nowMs - hit.at < CANDIDATE_CACHE_MS) return hit.ranked;
   const ranked = await engine.candidates(learnerId, enrolmentId, { limit: Number.MAX_SAFE_INTEGER, now: ctx.now(), objectiveDimensions });
+  dropExpired(cache, nowMs);
   if (cache.size >= 64) cache.delete(cache.keys().next().value as string);
-  cache.set(key, { head, at: nowMs, ranked });
+  cache.set(key, { learnerId, head, at: nowMs, ranked });
   return ranked;
 }
 

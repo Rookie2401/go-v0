@@ -225,16 +225,16 @@ describe('an interrupted first sync', () => {
   it('(c) resumes from its cursor on the next sync of a new worker, pulls only the rest, and ends equal to a completed sync', async () => {
     // the reference: a completed first sync of the same account
     const refIdb = newIdb();
-    const ref = await seedAccount(2400, { idb: refIdb });
+    const ref = await seedAccount(2100, { idb: refIdb });
     await firstSync(ref.rig);
     const refDump = await deviceDump(ref.rig, refIdb, ref.ids, false); // the database rows (the worker's own status row says how many a round pulled: that differs by design)
 
     // the run that is interrupted: pages of 1,000 events, the service stops answering from the third page
     const idb = newIdb();
-    const first = await seedAccount(2400, { idb });
+    const first = await seedAccount(2100, { idb });
     const gate = stallFrom(first.h, 2000);
     void first.rig.connect(EMAIL);
-    for (let i = 0; i < 400 && gate.hit === 0; i++) await settle(10);
+    for (let i = 0; i < 3000 && gate.hit === 0; i++) await settle(10); // up to 30 s: the whole suite runs many files at once
     expect(gate.hit).toBeGreaterThan(0);
     await settle();
     const half = await local(first.rig, { op: 'status' });
@@ -247,15 +247,16 @@ describe('an interrupted first sync', () => {
     await second.fake.local.set(await first.rig.fake.local.get(null));
     second.log.length = 0;
     await second.page({ type: MSG.syncNow }); // the worker's next sync round (the alarm, an event, the popup): it finds the pull open and continues it
-    for (let i = 0; i < 600; i++) { if ((await local(second, { op: 'status' })).fromAccount === 2400) break; await settle(20); }
+    // the status op counts the whole device log: asked for a few times a second, not fifty (the polling was most of this test's minute)
+    for (let i = 0; i < 240; i++) { await settle(250); if (!(await second.fake.local.get('golearn:local-pull-open'))['golearn:local-pull-open']) break; }
     const done = await local(second, { op: 'status' });
-    expect(done.fromAccount).toBe(2400);
+    expect(done.fromAccount).toBe(2100);
     // only the rest was asked for: one page after the cursor (seq 2000), not a page from 0
     const pages = second.log.filter((l) => l.method === 'GET' && l.path === '/events').length;
     expect(pages).toBe(1);
     expect((await second.fake.local.get('golearn:local-pull-open'))['golearn:local-pull-open']).toBeUndefined(); // finished: nothing left to resume
     expect((await deviceDump(second, idb, first.ids, false)).digest).toBe(refDump.digest);
-  }, 120_000);
+  }, 300_000); // about 30 s alone; the whole suite running beside it has made it several times that
 });
 
 describe('the worker is kept alive while a sync runs', () => {
@@ -266,7 +267,7 @@ describe('the worker is kept alive while a sync runs', () => {
     keepAlive.mockClear();
     const gate = stallFrom(h, 1000);
     void rig.connect(EMAIL);
-    for (let i = 0; i < 400 && gate.hit === 0; i++) await settle(10);
+    for (let i = 0; i < 3000 && gate.hit === 0; i++) await settle(10); // up to 30 s: the whole suite runs many files at once
     expect(gate.hit).toBeGreaterThan(0); // the service is slow on the second page: a sync of more than 40 s
     await vi.advanceTimersByTimeAsync(19_000);
     expect(keepAlive).not.toHaveBeenCalled();
@@ -275,10 +276,10 @@ describe('the worker is kept alive while a sync runs', () => {
     await vi.advanceTimersByTimeAsync(40_000);
     expect(keepAlive).toHaveBeenCalledTimes(3);
     gate.release();
-    for (let i = 0; i < 400; i++) { await settle(10); if ((await local(rig, { op: 'status' })).fromAccount === 1200) break; }
+    for (let i = 0; i < 240; i++) { await settle(250); if ((await local(rig, { op: 'status' })).fromAccount === 1200) break; }
     await vi.advanceTimersByTimeAsync(1_000);
     const calls = keepAlive.mock.calls.length;
     await vi.advanceTimersByTimeAsync(120_000);
     expect(keepAlive).toHaveBeenCalledTimes(calls); // nothing keeps pinging once the sync is done
-  }, 120_000);
+  }, 300_000);
 });

@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GoLearn</title>
 <style>
-  /* The action popup, in the look of the Western Canon reader. EB Garamond is the one the setup page ships (../app/fonts/, SIL OFL 1.1):
-     where that folder is absent the serif stack below takes over. No focus rule is declared on purpose: the browser's own ring is kept. */
+  /* The action popup. One design language with the setup page (app/styles.css; docs/golearn/DESIGN-SYSTEM.md): the same paper, ink and
+     one accent, EB Garamond (../app/fonts/, SIL OFL 1.1; where that folder is absent the serif stack takes over), hairlines instead of
+     boxes, small-capital labels, one line of help per control. The token values below are the setup page's and a test keeps them equal.
+     No focus rule is declared on purpose: the browser's own ring is kept. */
   @font-face { font-family: 'EB Garamond'; src: url('../app/fonts/eb-garamond-latin-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
   @font-face { font-family: 'EB Garamond'; src: url('../app/fonts/eb-garamond-latin-400-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
   @font-face { font-family: 'EB Garamond'; src: url('../app/fonts/eb-garamond-latin-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
@@ -25,40 +27,63 @@
   @media (prefers-color-scheme: dark) { .err, .status-line.warn { color: #ff9a9a; } }
   * { box-sizing: border-box; }
   body { margin: 0; width: 21.25rem; max-width: 100%; background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 0.9375rem; line-height: 1.45; -webkit-font-smoothing: antialiased; font-feature-settings: 'kern' 1, 'liga' 1, 'locl' 0; }
-  main { padding: 12px 14px 14px; }
-  /* the greeting, then the brand as the one way to the setup page (the owner, 2026-10-28): "Welcome, <name>" over GOLEARN → */
-  .welcome { margin: 0 0 .35rem; font-size: 1.15rem; color: var(--ink); }
-  .setup-link { display: inline-flex; align-items: center; gap: .5rem; margin: 0 0 .2rem; padding: .15rem .3rem .15rem 0; border: 0; border-radius: 6px; background: none; color: var(--ink); font: inherit; cursor: pointer; }
+  main { padding: 0.9rem 1rem 0.75rem; }
+  /* the visually hidden text: a state the control beside it already shows (On, the language in the select) stays for assistive technology */
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* the head: the greeting, then the brand as the one way to the setup page (the owner, 2026-10-28): "Welcome, <name>" over GOLEARN → */
+  .welcome { margin: 0 0 .3rem; font-size: 1.2rem; line-height: 1.25; color: var(--ink); }
+  .setup-link { display: inline-flex; align-items: center; gap: .5rem; margin: 0; padding: .15rem .3rem .15rem 0; border: 0; border-radius: 2px; background: none; color: var(--ink); font: inherit; cursor: pointer; }
   .setup-link:hover { color: var(--accent); }
   /* the Go mark (the G and the globe, packages/shared-brand/go-logo.png, copied into ../icons by scripts/sync-go-brand.ps1) as a silhouette filled with
      the ink colour, the way the GoReview and setup-page headers draw it: dark on paper, the cream of the dark theme; no tile, no border */
-  .go-brand-mark { display: block; width: 72px; height: 36px; background: currentColor; -webkit-mask: var(--go-brand-mask) center / contain no-repeat; mask: var(--go-brand-mask) center / contain no-repeat; }
-  .go-brand-word { font-size: 0.82rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
-  .go-brand-arrow { font-size: 1.1rem; line-height: 1; }
-  .row { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
-  .row label { flex: 1; }
-  .row .grow { flex: 1; }
-  select, button { font: inherit; font-size: 0.9rem; }
-  select { padding: 3px 6px; border: 1px solid var(--control-line); border-radius: 6px; background: var(--paper-raised); color: var(--ink); }
-  button:disabled, select:disabled { opacity: .5; cursor: not-allowed; }
-  input[type="checkbox"] { accent-color: var(--accent); width: 1.1rem; height: 1.1rem; }
-  .err { color: var(--bad); margin: 6px 0; min-height: 1.2em; }
+  .go-brand-mark { display: block; width: 60px; height: 30px; background: currentColor; -webkit-mask: var(--go-brand-mask) center / contain no-repeat; mask: var(--go-brand-mask) center / contain no-repeat; }
+  .go-brand-word { font-size: 0.8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+  .go-brand-arrow { font-size: 1.05rem; line-height: 1; }
+
+  /* a part of the popup: a hairline above, room around; no boxes */
+  .part { margin-top: .75rem; padding-top: .75rem; border-top: 1px solid var(--rule); }
+  .cap { font-size: 0.75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
+
+  /* the one switch: its name and one line about it at the left, the switch at the right */
+  .switch-row { display: flex; align-items: flex-start; gap: .9rem; }
+  .switch-row label { flex: 1; cursor: pointer; }
+  .switch-name { display: block; font-size: 1.05rem; font-weight: 600; }
+  .switch-about { display: block; margin-top: .1rem; color: var(--ink-soft); font-size: 0.875rem; line-height: 1.35; }
+  input[type="checkbox"] { flex: none; appearance: none; -webkit-appearance: none; position: relative; width: 2.5rem; height: 1.4rem; margin: .15rem 0 0; border: 1px solid var(--control-line); border-radius: 999px; background: var(--paper-raised); cursor: pointer; }
+  input[type="checkbox"]::after { content: ''; position: absolute; top: 50%; left: .15rem; width: 1rem; height: 1rem; margin-top: -.5rem; border-radius: 50%; background: var(--control-line); }
+  input[type="checkbox"]:checked { background: var(--accent); border-color: var(--accent); }
+  input[type="checkbox"]:checked::after { left: auto; right: .15rem; background: var(--paper-raised); }
+  input[type="checkbox"]:disabled, select:disabled, button:disabled { opacity: .5; cursor: not-allowed; }
+
+  .row { display: flex; align-items: center; gap: .75rem; }
+  .row label { flex: none; }
+  .row .grow { flex: 1; min-width: 0; }
+  select, button { font: inherit; font-size: 0.95rem; }
+  select { padding: .25rem .45rem; border: 1px solid var(--control-line); border-radius: 2px; background: var(--paper-raised); color: var(--ink); }
+
+  /* what needs saying, said once: a status line is empty (and takes no room) when all is well */
+  .err { color: var(--bad); margin: .4rem 0 0; }
   .err:empty { display: none; }
-  .status-line { margin: 4px 0; }
+  .status-line { margin: .4rem 0 0; font-size: 0.9rem; line-height: 1.4; color: var(--ink-soft); }
   .status-line:empty { display: none; }
   .status-line.warn { color: var(--bad); }
   .muted { color: var(--ink-soft); font-size: 0.875rem; }
-  .build { margin: 4px 0 0; font-size: 0.75rem; }
-  .build:empty { display: none; }
-  hr { border: 0; border-top: 1px solid var(--rule); margin: 10px 0; }
+  #connection { margin-top: .3rem; }
   /* the legend, one line, as Biblia's reader shows it: a sample word in each mark, then the names; known words carry no mark */
-  .legend { margin: 6px 0 2px; font-size: 0.875rem; color: var(--ink-faint); }
-  .legend .sw { color: var(--ink); padding: 0 0.15em; border-radius: 3px; text-underline-offset: 0.2em; }
+  .legend { margin: .55rem 0 0; font-size: 0.85rem; line-height: 1.5; color: var(--ink-faint); }
+  .legend .sw { color: var(--ink); padding: 0 0.15em; border-radius: 2px; text-underline-offset: 0.2em; }
   .legend .sw-new { background-color: rgba(173, 216, 230, 0.45); }
   .legend .sw-seen { text-decoration: underline solid; text-decoration-thickness: 2px; text-decoration-color: color-mix(in srgb, currentColor 80%, transparent); }
   .legend .sw-recognized { text-decoration: underline solid; text-decoration-thickness: 1.25px; text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); }
   .legend .sw-familiar { text-decoration: underline solid; text-decoration-thickness: 0.75px; text-decoration-color: color-mix(in srgb, currentColor 30%, transparent); }
-  @media (prefers-reduced-motion: no-preference) { .setup-link { transition: color .15s; } }
+  /* the foot: which build is running, for when help is asked for; the quietest line of the popup */
+  .build { margin: .75rem 0 0; font-size: 0.72rem; letter-spacing: .02em; text-align: end; color: var(--ink-faint); }
+  .build:empty { display: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .setup-link { transition: color .15s; }
+    input[type="checkbox"], input[type="checkbox"]::after { transition: background-color .15s, border-color .15s; }
+  }
 </style>
 </head>
 <body>
@@ -67,25 +92,26 @@
   <button type="button" class="setup-link" id="open-setup" aria-label="Open GoLearn setup"><span class="go-brand-mark" aria-hidden="true" style="--go-brand-mask: url('../icons/go-logo.png')"></span><span class="go-brand-word">GoLearn</span><span class="go-brand-arrow" aria-hidden="true">→</span></button>
   <div class="status-line" id="connection" role="status" aria-live="polite"></div>
 
-  <hr>
-  <div class="row">
-    <label for="active"><strong>GoLearn Active</strong>: underline the words on the pages you read, and open a word's card when you select it</label>
-    <input type="checkbox" id="active" disabled>
-  </div>
-  <div class="status-line" id="active-status" role="status" aria-live="polite">Checking…</div>
-  <div class="status-line" id="active-page" role="status" aria-live="polite"></div>
-  <p class="legend" id="active-legend"></p>
-  <div class="err" id="error" role="status" aria-live="polite"></div>
+  <section class="part" aria-labelledby="active-name">
+    <div class="switch-row">
+      <label for="active"><span class="switch-name" id="active-name">GoLearn Active</span><span class="switch-about">Marks the words you are learning on the pages you read. Click a word to open its card.</span></label>
+      <input type="checkbox" role="switch" id="active" disabled>
+    </div>
+    <div class="status-line" id="active-status" role="status" aria-live="polite">Checking…</div>
+    <div class="status-line" id="active-page" role="status" aria-live="polite"></div>
+    <p class="legend" id="active-legend"></p>
+    <div class="err" id="error" role="status" aria-live="polite"></div>
+  </section>
 
-  <hr>
-  <div class="row">
-    <label for="language-select">Language</label>
-    <select id="language-select" class="grow" aria-describedby="language"><option value="">Checking…</option></select>
-  </div>
-  <div class="status-line muted" id="language" role="status" aria-live="polite"></div>
+  <section class="part" aria-label="Reading language">
+    <div class="row">
+      <label for="language-select" class="cap">Language</label>
+      <select id="language-select" class="grow" aria-describedby="language"><option value="">Checking…</option></select>
+    </div>
+    <div class="status-line" id="language" role="status" aria-live="polite"></div>
+  </section>
 
-  <hr>
-  <p class="build muted" id="build"></p>
+  <p class="build" id="build"></p>
 </main>
 <script src="popup.js"></script>
 </body>

@@ -330,7 +330,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       void beginNewDeck(m, resumeId).catch((error) => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) newDeck.disabled = false; });
     }, { class: 'deck-new', id: 'start-new', 'data-action': 'begin-new-deck', 'aria-label': 'Begin new deck' });
     const reviewButton = deckButton('start-review', 'Review Deck', reviewKicker, reviewing,
-      h('span', { class: 'deck-row' }, icon(ctx.deps.doc, 'books'), deckLabel('Review Deck', reviewing ? 'Study cards' : 'No cards ready')),
+      h('span', { class: 'deck-row' }, icon(ctx.deps.doc, 'review'), deckLabel('Review Deck', reviewing ? 'Study cards' : 'No cards ready')),
       () => begin(m, 'review'));
 
     return h('section', { 'data-entry': 'deck', id: 'current-deck', 'aria-label': 'Decks' },

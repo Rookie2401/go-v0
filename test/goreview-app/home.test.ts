@@ -1,9 +1,11 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { PACKS } from '../../packages/language-packs/src/registry';
 import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
 import { decksKey, sortVocab, type SavedDeck } from '../../packages/goreview/app/deckModel';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
+import { homePhoto } from '../../packages/goreview/app/homePhotos';
 import { UI_KEY } from '../../packages/goreview/app/screens/uiprefs';
 import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, reopenDetails, seed, until, unitOf, type Rig, readyCards } from './helpers';
 
@@ -35,7 +37,7 @@ describe('the GoReview home', () => {
     expect(rig.q('#start-new').textContent).toBe('New deck');
     expect(rig.q('#entry-vocab').textContent).toBe('My Vocabulary');
     expect(rig.q('#entry-vocab').closest('.deck-tiles')).toBeNull();
-    expect(rig.root.querySelector('#entry-tell, .home-photo-credit')).toBeNull();
+    expect(rig.root.querySelector('#entry-tell')).toBeNull();
     expect(rig.qa('#review-home svg').every((node) => node.getAttribute('aria-hidden') === 'true')).toBe(true);
     expect(rig.qa('#start-session-count, #start-review-count, #previous-count, #vocab-count').every(node => node.classList.contains('sr'))).toBe(true);
     // two cards answered Again are still being drilled: the Current Deck holds them, the Review Deck has nothing due
@@ -58,12 +60,29 @@ describe('the GoReview home', () => {
     expect(rig.q('header #settings-link').getAttribute('aria-label')).toBe('Settings');
   });
 
-  it('shows and credits the Jerusalem photo on the Hebrew home only', async () => {
+  it('has a bundled, credited photograph for every language pack', () => {
+    for (const language of Object.keys(PACKS)) {
+      const photo = homePhoto(language);
+      expect(photo?.image, language).toMatch(/\.webp$/);
+      expect(photo?.source, language).toMatch(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
+      expect(photo?.licenseUrl, language).toMatch(/^https:\/\/creativecommons\.org\//);
+    }
+    expect(homePhoto('unknown')).toBeUndefined();
+  });
+
+  it('switches the home photograph and credit with the language and clears them on the Saved page', async () => {
     const service = defaultService();
-    service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [{ languageId: 'he', varietyId: 'he-bib' }]);
+    service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [
+      { languageId: 'sq', varietyId: 'sq-AL' }, { languageId: 'he', varietyId: 'he-bib' },
+    ]);
     const rig = await makeRig({ signedIn: true, service });
     expect(rig.q('main').getAttribute('data-home-photo')).toBe('jerusalem');
     expect(rig.q('.home-photo-credit').textContent).toContain('Photo by Zairon');
+    const select = rig.q<HTMLSelectElement>('#language-select');
+    select.value = 'L1-e1';
+    select.dispatchEvent(new Event('change'));
+    await until(() => rig.q('main').dataset.homePhoto === homePhoto('sq')?.id, 'the Albanian photograph');
+    expect(rig.q('.home-photo-credit').textContent).toContain(homePhoto('sq')?.author);
     await rig.go('review/decks');
     expect(rig.q('main').hasAttribute('data-home-photo')).toBe(false);
     expect(rig.root.querySelector('.home-photo-credit')).toBeNull();

@@ -9,6 +9,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import type { ExerciseBuilder } from '../../packages/goreview/src';
+import { PACKS } from '../../packages/language-packs/src/registry';
+import { homePhoto } from '../../packages/goreview/app/homePhotos';
 import { defaultService, destroyRigs, dueCard, FAKE_BUILDERS, ids, key, makeRig, reopen, reviewed, seed, startWith, until, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
@@ -45,7 +47,9 @@ describe('the scoped Ecclesia tokens (home and card)', () => {
 // ───────────── the snapshots ─────────────
 
 const page = (rig: Rig): string => {
-  const inner = rig.root.innerHTML.replace(/url\(&quot;[^)]*go-logo\.png&quot;\)/g, 'url(&quot;go-logo.png&quot;)').replace(/url\("[^)]*go-logo\.png"\)/g, 'url("go-logo.png")');
+  const inner = rig.root.innerHTML.replace(/url\(&quot;[^)]*go-logo\.png&quot;\)/g, 'url(&quot;go-logo.png&quot;)')
+    .replace(/url\("[^)]*go-logo\.png"\)/g, 'url("go-logo.png")')
+    .replace(/url\(&quot;[^)]*\/photos\/([^/"]+\.webp)&quot;\)/g, 'url(&quot;photos/$1&quot;)');
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>GoReview</title><link rel="stylesheet" href="styles.css"></head><body>${inner}</body></html>\n`;
 };
 const write = (name: string, rig: Rig): void => { fs.writeFileSync(path.join(dir!, name), page(rig)); };
@@ -88,18 +92,18 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
     write('home-decks.html', rig);
     destroyRigs();
 
-    const service = defaultService();
-    service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [
-      { languageId: 'sq', varietyId: 'sq-AL' }, { languageId: 'he', varietyId: 'he-bib' },
-    ]);
-    const hebrew = await makeRig({ signedIn: true, service, builders: BUILDERS });
-    const H = { ...ids('L1', 'he'), enrolmentId: 'L1-e2' };
-    await seed(hebrew, [...dueCard(H, 'בית', 'written-recognition'),
-      ...dueCard(H, 'יום', 'written-recognition'), reviewed(H, 'יום', 'written-recognition', 4, '2026-09-02T10:00:00.000Z')]);
-    await reopen(hebrew);
-    expect(hebrew.q('main').getAttribute('data-home-photo')).toBe('jerusalem');
-    write('home-hebrew.html', hebrew);
-    destroyRigs();
+    for (const languageId of Object.keys(PACKS).filter((id) => id !== 'sq')) {
+      const service = defaultService();
+      service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [{ languageId: 'sq' }, { languageId }]);
+      const language = await makeRig({ signedIn: true, service, builders: BUILDERS });
+      const identity = { ...ids('L1', languageId), enrolmentId: 'L1-e2' };
+      await seed(language, [...dueCard(identity, 'one', 'written-recognition'), ...dueCard(identity, 'two', 'written-recognition'),
+        reviewed(identity, 'two', 'written-recognition', 4, '2026-09-02T10:00:00.000Z')]);
+      await reopen(language);
+      expect(language.q('main').getAttribute('data-home-photo')).toBe(homePhoto(languageId)?.id);
+      write(`home-${languageId}.html`, language);
+      destroyRigs();
+    }
 
     // (3) the card before the answer
     const card = await makeRig({ signedIn: true, builders: BUILDERS });

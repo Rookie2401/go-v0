@@ -32,6 +32,7 @@ import type { View } from './screens/view';
 import { shortDate } from './dom';
 import { dismissSplash } from './splash';
 import { loadingMark } from './loading';
+import { homePhoto } from './homePhotos';
 
 export interface RouteDef {
   id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'developer' | 'signin' | 'privacy' | 'terms' | 'help';
@@ -303,11 +304,12 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const body = h('div', { class: 'body' });
     const review = def.id === 'review' && mode !== 'none';
     const home = review && subs.length === 0;
-    main.append(home
+    const hero = home
       ? h('div', { class: 'home-hero' },
           h('div', { class: 'home-language', id: 'home-language' }),
           h('h1', { class: 'home-title' }, def.title))
-      : h('h1', { class: review ? 'sr' : undefined }, def.title), body);
+      : undefined;
+    main.append(hero ?? h('h1', { class: review ? 'sr' : undefined }, def.title), body);
     placeLanguage();
     body.append(loadingMark('Loading your saved account data…'));
     let idn: Awaited<ReturnType<AppContext['identity']>>;
@@ -321,11 +323,15 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     }
     if (my !== seq) return;
     if (idn) main.setAttribute('data-language', idn.varietyId ?? idn.languageId); else main.removeAttribute('data-language');
-    if (home && idn?.languageId === 'he') {
-      main.dataset.homePhoto = 'jerusalem';
+    const photo = hero && idn ? homePhoto(idn.languageId) : undefined;
+    if (hero && photo) {
+      main.dataset.homePhoto = photo.id;
+      hero.style.setProperty('--home-photo-image', `url("${photo.image}")`);
+      hero.style.setProperty('--home-photo-mobile-position', photo.mobilePosition);
+      hero.style.setProperty('--home-photo-desktop-position', photo.desktopPosition);
       main.append(h('p', { class: 'home-photo-credit' },
-        'Jerusalem · ', h('a', { href: 'https://commons.wikimedia.org/wiki/File:Jerusalem_Tempelberg_1.JPG' }, 'Photo by Zairon'),
-        ' · ', h('a', { href: 'https://creativecommons.org/licenses/by-sa/4.0/' }, 'CC BY-SA 4.0')));
+        `${photo.place} · `, h('a', { href: photo.source }, `Photo by ${photo.author}`),
+        ' · ', h('a', { href: photo.licenseUrl }, photo.license)));
     }
     clear(body);
     const view: View = { alive: () => my === seq && !destroyed, onDispose: (fn) => { disposers.push(fn); } };

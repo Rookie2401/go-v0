@@ -279,11 +279,11 @@ html[data-edition="review"] body:has(#screen[data-route="review"])::before { bac
   padding: clamp(1.5rem, 6vw, 2.65rem) var(--home-gutter) 2rem;
   text-align: center;
 }
-[data-home-photo="jerusalem"] .home-hero {
+[data-home-photo] .home-hero {
   min-height: clamp(13.25rem, 52vw, 20rem);
   background:
     linear-gradient(180deg, #211a15e5 0%, #211a15aa 29%, #35251918 66%, #211a15 100%),
-    url('./photos/jerusalem.webp') 0 24% / cover no-repeat;
+    var(--home-photo-image) var(--home-photo-mobile-position) / cover no-repeat;
 }
 .home .deck-tiles {
   --deck-inset: clamp(.95rem, 4vw, 1.55rem);
@@ -416,12 +416,12 @@ html[data-edition="review"] body:has(#screen[data-route="review"])::before { bac
 }
 .home-photo-credit a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
 @media (min-width: 720px) {
-  [data-home-photo="jerusalem"] .home-hero { min-height: 17.5rem; background-position: center, center 21%; }
+  [data-home-photo] .home-hero { min-height: 17.5rem; background-position: center, var(--home-photo-desktop-position); }
   .home .deck-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .deck-tile[data-deck="current"] { grid-column: 1 / -1; }
 }
 @media (forced-colors: active) {
-  [data-home-photo="jerusalem"] .home-hero { background: none; }
+  [data-home-photo] .home-hero { background: none; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .exercise .grade-dot { transition: background-color .15s, color .15s; }

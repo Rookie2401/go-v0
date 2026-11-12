@@ -134,8 +134,9 @@ describe('cards per deck', () => {
     await seed(rig, dueMany(12));
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 5 });
     await reopen(rig);
+    await rig.go('review/decks');
     click(rig.q('#save-deck'));
-    await until(() => rig.q('#previous-count').textContent === '2 saved', 'the saved deck');
+    await until(() => rig.qa('.deckrow').length === 2, 'the saved deck');
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 20 });
     await rig.go('review/decks');
     expect(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) .deckrow-line').textContent).toMatch(/ · 5 cards · /);

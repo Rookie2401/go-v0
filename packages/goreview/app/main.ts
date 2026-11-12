@@ -97,6 +97,7 @@ export async function createRealDeps(fetcher?: typeof fetch): Promise<Deps> {
       ...(ext ? { extensionRuntime: ext.runtime, extensionUrl: `${location.protocol}//${location.host}${location.pathname}` } : {}),
     }),
     ...(document.querySelector('meta[name="goreview-edition"][content="review"]') ? { edition: 'review' as const } : {}),
+    enableGoTell: import.meta.env.DEV && import.meta.env.VITE_GOREVIEW_GOTELL === 'true',
     now: () => new Date(), newId: uuid, random: Math.random, appVersion: APP_VERSION, autoSync: true,
   };
 }

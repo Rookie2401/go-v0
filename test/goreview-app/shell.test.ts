@@ -12,7 +12,8 @@ describe('the hash router', () => {
     expect(parseHash('#/review')).toEqual({ id: 'review', params: [], path: 'review' });
     expect(parseHash('#/review/session')).toEqual({ id: 'review', params: ['session'], path: 'review/session' });
     expect(parseHash('#/review/history/card%3Ax')).toMatchObject({ id: 'review', params: ['history', 'card%3Ax'] });
-    expect(parseHash('#/tell')?.id).toBe('tell');
+    expect(parseHash('#/tell')?.id).toBe('review');
+    expect(parseHash('#/tell/write/draft', true)).toMatchObject({ id: 'tell', params: ['write', 'draft'] });
     expect(parseHash('#/settings')?.id).toBe('settings');
     expect(parseHash('#/nowhere')).toBeUndefined();
     expect(parseHash('')).toBeUndefined();
@@ -46,8 +47,8 @@ describe('the hash router', () => {
     expect(rig.q('header .go-brand').getAttribute('href')).toBe('#/review');
     const headerOf = (): string => rig.q('header').innerHTML;
     const homeHeader = headerOf();
-    await rig.go('tell');
-    expect(rig.q('main h1').textContent).toBe('GoTell');
+    await rig.go('review/decks');
+    expect(rig.q('#decks-title').textContent).toBe('Saved decks');
     expect(rig.root.querySelector('#back-home, .crumb')).toBeNull();
     expect(rig.root.querySelector('header .language, header #language-name, header #language-select')).toBeNull();
     expect(headerOf()).toBe(homeHeader); // the top bar does not change between screens

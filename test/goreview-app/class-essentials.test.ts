@@ -131,8 +131,9 @@ describe('Class Essentials: in Saved decks', () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
+    await rig.go('review/decks');
     click(rig.q('#save-deck'));
-    await until(() => rig.q('#previous-count').textContent === '2 saved', 'the saved deck');
+    await until(() => rig.qa('.deckrow').length === 2, 'the saved deck');
     const mine = (await stored(rig)).find((d) => !d.builtin)!;
     await rig.go('review/decks');
     await until(() => rig.qa('.deckrow').length === 2, 'both decks');
@@ -162,8 +163,10 @@ describe('Class Essentials: in Saved decks', () => {
     await rig.app.ctx.state.setPrefs('L1', { ...(await rig.app.ctx.state.getPrefs('L1', 'sq')), cardsPerDeck: 5 });
     await reopen(rig);
     expect(rig.root.querySelector('#review-home #class-essentials-due')).toBeNull(); // not on the home: under its card in Saved decks (the owner, 2026-10-31)
+    await rig.go('review/decks');
     click(rig.q('#save-deck'));
-    await until(() => rig.q('#previous-count').textContent === '2 saved', 'ordinary due card saved');
+    await until(() => rig.qa('.deckrow').length === 2, 'ordinary due card saved');
+    await reopen(rig);
     expect(String(readyCards(rig))).toBe('1'); // saving does not hide due work from the current automatic plan
     await rig.go('review/decks');
     await until(() => !!rig.root.querySelector('#class-essentials-due-count'), 'the Class Essentials due line');

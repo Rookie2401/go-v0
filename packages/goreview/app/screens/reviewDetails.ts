@@ -14,7 +14,7 @@ import { beginSession, currentReviewModel, endSavedSession, recoverableSessions,
 import { freshModel } from '../freshness';
 import { deckSizeControl } from './cardsper';
 import { prefsForm } from './prefs';
-import { addToDeck, planCurrentDeck } from '../deckModel';
+import { addToDeck, planCurrentDeck, planSelectedPractice, releaseHoldOut, selectedPracticeUnits } from '../deckModel';
 import { isNotExamined } from '../../src/intake/intake';
 import { itemIdFor } from '../../src/scheduler/deck';
 import type { View } from './view';
@@ -39,7 +39,9 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     paintedEvents = model?.events.length ?? -1;
     saving = [];
     // everything the page shows is built before the old page is replaced, so a repaint never shows an empty page in between
-    const built = model ? { planned: await planCurrentDeck(ctx, model), recovery: await recoveryBlock() } : undefined;
+    const built = model ? await Promise.all([
+      planCurrentDeck(ctx, model), recoveryBlock(), selectedPracticeUnits(ctx, model.identity.learnerId, model.identity.languageId),
+    ]) : undefined;
     if (!view.alive()) return;
     clear(root);
     if (!model) {
@@ -55,8 +57,10 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     }
     const tag = model.identity.varietyId ?? model.identity.languageId;
     root.setAttribute('lang', 'en');
-    const planned = built!.planned;
-    append(root, [summary(model, planned.plan), startBlock(model), built!.recovery, controlsBlock(model), candidatesBlock(model, tag, planned.plan), deckBlock(model, tag), status]);
+    const [planned, recovery, selected] = built!;
+    append(root, [summary(model, planned.plan), startBlock(model), recovery,
+      optionalPractice(model, planned.summary.remediation, selected.length),
+      controlsBlock(model), candidatesBlock(model, tag, planned.plan), deckBlock(model, tag), status]);
   }
 
   async function recoveryBlock(): Promise<HTMLElement | null> {
@@ -126,6 +130,29 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     note.textContent = `${m.prefs.cardsPerDeck ?? 10} cards per deck, at most ${m.prefs.maxNew} new item(s) from the schedule. Review results are recorded only when you answer.`;
     const size = deckSizeControl(ctx, m.identity.learnerId, m.identity.languageId, m.prefs.cardsPerDeck, () => { void paint(); }, 'details');
     return h('section', { class: 'card' }, h('div', { class: 'row' }, start, h('a', { class: 'btn', href: '#/review/transfer', id: 'link-transfer' }, 'Transfer measures')), h('p', {}, 'Cards per deck'), size, note);
+  }
+
+  function optionalPractice(model: ReviewModel, missed: number, selected: number): HTMLElement | null {
+    if (!missed && !selected) return null;
+    const start = button(`Practice selected words (${selected})`, () => {
+      start.disabled = true;
+      void (async () => {
+        const fresh = await freshModel(ctx, model);
+        const plan = await planSelectedPractice(ctx, fresh);
+        if (!plan.items.length) { setStatus(status, 'Selected words are controlled or no usable exercise is available.', 'info'); return; }
+        const result = await beginSession(ctx, fresh, { plan });
+        if (!result.ok) { setStatus(status, result.message, 'info'); return; }
+        await releaseHoldOut(ctx, fresh.identity.learnerId, fresh.identity.languageId);
+        ctx.run.active = result.run;
+        ctx.go('review/session');
+      })().catch(error => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) start.disabled = false; });
+    }, { id: 'start-selected-practice', class: 'btn' });
+    return h('section', { class: 'card', 'aria-labelledby': 'optional-practice-heading' },
+      h('h2', { id: 'optional-practice-heading' }, 'Optional practice'),
+      h('div', { class: 'row' },
+        missed ? h('a', { class: 'linklike', id: 'open-remediation', href: '#/review/remediation' },
+          `${missed} missed ${missed === 1 ? 'word' : 'words'} to study`) : null,
+        selected ? start : null));
   }
 
   function controlsBlock(m: ReviewModel): HTMLElement {

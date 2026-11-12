@@ -416,6 +416,7 @@ export interface RigOptions {
   live?: Deps['live'];
   /** The GoReview (iPhone) edition. */
   edition?: Deps['edition'];
+  enableGoTell?: boolean;
   /** Put the launch screen (#goreview-splash, the review build's) in the page before the app starts. */
   splash?: boolean;
 }
@@ -469,6 +470,7 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
     ...(opts.links ? { links: opts.links } : {}),
     ...(opts.live ? { live: opts.live } : {}),
     ...(opts.edition ? { edition: opts.edition } : {}),
+    ...(opts.enableGoTell ? { enableGoTell: true } : {}),
     ...(opts.mobile ? { mobile: opts.mobile } : {}),
     win: window, doc: document, fetch: opts.fetch ?? ((() => { throw new Error('no network in tests'); }) as unknown as typeof fetch), area, config: opts.config ?? { serviceUrl: 'https://repository.example.org' },
     createApi: (_url, token) => service.api(token),

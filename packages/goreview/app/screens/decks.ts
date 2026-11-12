@@ -7,7 +7,7 @@
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { classEssentialsRemoved, effectiveRemediation, listSavedDecks, planClassEssentialsDue, planFromSaved, removeSavedDeck, restoreClassEssentials, type SavedDeck } from '../deckModel';
+import { classEssentialsRemoved, effectiveRemediation, holdOutOf, listSavedDecks, planClassEssentialsDue, planCurrentDeck, planFromSaved, removeSavedDeck, restoreClassEssentials, saveDeck, type SavedDeck } from '../deckModel';
 import { classLanguageOf } from '../classEssentials';
 import { languageName } from '../format';
 import { beginSession, currentReviewModel, PRESS_WAIT_MS } from '../workspace';
@@ -24,6 +24,19 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   append(el, [h('h2', { class: 'page-title', id: 'decks-title', tabindex: '-1' }, 'Saved decks'), list, restoreBox, status]);
   if (!id) { list.replaceWith(p('Choose a language to see its saved decks.', 'muted')); return; }
   el.insertBefore(p('Saved decks are separate optional practice. Each card opens that practice; Remove stays at its top right.', 'muted'), list);
+  const saveCurrent = button('Save Current Deck', () => {
+    saveCurrent.disabled = true;
+    void (async () => {
+      const model = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
+      if (!model) { setStatus(status, 'Your Current Deck could not be loaded.', 'error'); return; }
+      const holdOut = await holdOutOf(ctx, id.learnerId, id.languageId);
+      const deck = await planCurrentDeck(ctx, model, holdOut, undefined, 'current');
+      const saved = await saveDeck(ctx, model.identity, deck.entries);
+      setStatus(status, saved ? 'Current Deck saved.' : 'There is no deck to save yet.', saved ? 'ok' : 'info');
+      if (saved) await paint();
+    })().catch(error => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) saveCurrent.disabled = false; });
+  }, { class: 'btn', id: 'save-deck' });
+  el.append(saveCurrent);
   el.append(button('Sync saved decks', () => {
     void (async () => {
       try {
@@ -61,7 +74,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     if (!view.alive()) return;
     clear(list); clear(restoreBox);
     if (removed) restoreBox.append(button('Restore Class Essentials', () => { void (async () => { await restoreClassEssentials(ctx, id!.learnerId, id!.languageId); setStatus(status, 'Class Essentials is back.', 'ok'); await paint(); })(); }, { class: 'linklike', id: 'restore-class-essentials' }));
-    if (!decks.length) { list.append(h('li', { class: 'muted', id: 'decks-empty' }, 'Nothing saved yet. Save a deck from the home and it waits here.')); return; }
+    if (!decks.length) { list.append(h('li', { class: 'muted', id: 'decks-empty' }, 'Nothing saved yet.')); return; }
     for (const d of decks) {
       const when = d.name ?? new Date(d.savedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
       const language = languageName(d.languageId);

@@ -64,7 +64,7 @@ async function coldStart(prev: Rig, opts: { hang?: boolean } = {}): Promise<Rig>
 const splashGone = (): boolean => { const el = document.getElementById('goreview-splash'); return !el || el.classList.contains('out'); };
 /** The home is first-painted: the launch screen is dismissed and the deck rows are in the page. */
 const firstPaint = (rig: Rig): boolean => splashGone() && !!rig.root.querySelector('#start-session') && !!rig.root.querySelector('#start-review')
-  && !!rig.root.querySelector('#current-deck .deck-row');
+  && !!rig.root.querySelector('#current-deck .deck-tile');
 
 /** Plays a started session to its summary with typed answers. */
 async function playOut(rig: Rig): Promise<void> {
@@ -84,7 +84,7 @@ describe('GoReview with this device\'s copy and a service that never answers', (
   it('(a) a cold start paints the home with its decks, resolves, and dismisses the splash, with no request answered', async () => {
     const { rig: first } = await seedAccount();
     const rig = await coldStart(first); // makeRig awaits app.ready(): it resolves although nothing is answered
-    await until(() => firstPaint(rig), 'the first paint: splash dismissed and the deck rows in the page', 600);
+    await until(() => firstPaint(rig), 'the first paint: splash dismissed and the deck tiles in the page', 600);
     expect(cards(rig, 'start-session')).toBeGreaterThan(0);
     expect(cards(rig, 'start-review')).toBeGreaterThan(0);
     expect(rig.q('#current-deck').textContent).toContain('Current Deck');

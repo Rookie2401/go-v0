@@ -156,4 +156,6 @@ export interface Deps {
   speech?: SpeechLike | null;
   /** Wait between asynchronous ticks (tests pass an immediate promise). */
   nextFrame?: () => Promise<void>;
+  /** How often the language rows ask the worker about a running offline download (ms; default 1000). */
+  offlinePollMs?: number;
 }

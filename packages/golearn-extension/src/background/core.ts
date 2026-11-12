@@ -10,7 +10,7 @@
  *    of the sending document) may do everything; a content script may only record, read the profile, ask for a gloss,
  *    an explanation, voice availability, send a correction or its metrics, and read the redacted status.
  */
-import { MSG, type ChromeApi, type LookupMessage, type LookupTrigger, type MessageSender, type TabState } from '../platform';
+import { MSG, type ChromeApi, type LookupMessage, type LookupTrigger, type MessageSender, type StorageArea, type TabState } from '../platform';
 import {
   DEFAULT_SETTINGS, SETTINGS_UNAVAILABLE, cleanText, isLanguageId, isUnitId, languageNameOf, stringRecord,
   type CorrectReply, type CorrectRequest, type GlossReply, type PageStatus, type PronounceInfoReply, type PublicStatus, type RecordReply, type SettingsReply,
@@ -18,7 +18,9 @@ import {
 import { METRIC_KEY_PREFIX, } from '../metrics';
 import { EVENT_KEY_PREFIX, getDeviceId } from '../store';
 import { createActiveService } from './active';
-import { createGlossService, defaultPacks, type PackProvider } from './gloss';
+import { createGlossService, defaultPacks, SHARD_PREFIX, type PackProvider } from './gloss';
+import { createDictionaryStore } from './dictionaryStore';
+import { DOWNLOAD_KEY_PREFIX, createDictionaryDownload } from './dictionaryDownload';
 import { createFormsService } from './forms';
 import { levelOf } from '../../../language-packs/src/manifest';
 import { PACKS } from '../../../language-packs/src/registry';
@@ -38,6 +40,14 @@ export const CONTEXT_MENU_ID = 'golearn-lookup';
 export const COMMAND_ID = 'lookup-selection';
 export const CONTENT_FILE = 'content.js';
 const stateKey = (tabId: number): string => `golearn:tab:${tabId}`;
+/** The setup page's pack records (language-packs `installedKey` under the extension's `golearn:` prefix, see app/bindings.ts). */
+const PACK_RECORD_PREFIX = 'golearn:pack:installed:';
+
+/** Every key of an area: listed by name where the browser can (chrome.storage.getKeys), else read whole. */
+async function listKeys(area: StorageArea): Promise<string[]> {
+  const lister = (area as StorageArea & { getKeys?: () => Promise<string[]> }).getKeys;
+  return typeof lister === 'function' ? lister.call(area) : Object.keys(await area.get(null));
+}
 
 export interface ActivateResult { ok: boolean; message?: string }
 
@@ -54,13 +64,15 @@ export interface BackgroundOptions {
   localRepo?: Partial<Pick<LocalRepoServiceOptions, 'idb' | 'keepAlive' | 'migrationInject'>>;
   /** Tests only: the build this worker claims to be (default: what the build compiled in; none when run from source, and then there is no self-update). */
   build?: BuildInfo;
+  /** Tests only: the dictionary downloads' IndexedDB (default: the worker's own), waits between attempts, and concurrency. */
+  dictionary?: { idb?: IDBFactory; sleep?: (ms: number) => Promise<void>; concurrency?: number };
 }
 
 type SenderKind = 'page' | 'content' | 'foreign';
 
 const PAGE_ONLY: ReadonlySet<string> = new Set<string>([
   MSG.getState, MSG.setEnabled, MSG.serviceConfig, MSG.connect, MSG.createAccount, MSG.disconnect, MSG.syncNow,
-  MSG.enrol, MSG.refreshSession, MSG.selectEnrolment, MSG.useLanguage, MSG.clearLocal, MSG.localRepo,
+  MSG.enrol, MSG.refreshSession, MSG.selectEnrolment, MSG.useLanguage, MSG.clearLocal, MSG.localRepo, MSG.dictionaryDownload,
   MSG.speechConfig,
 ]);
 const CONTENT_OK: ReadonlySet<string> = new Set<string>([
@@ -159,7 +171,9 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     },
     onDisconnect: async () => { await holder.profile?.clear(); },
   });
-  const gloss = createGlossService({ area: local, session, fetch: doFetch, packs, now, getURL: (path) => chrome.runtime.getURL?.(path) });
+  // the files a learner chose to keep for offline use live in the worker's own IndexedDB (never chrome.storage); opened lazily, read only after a chrome.storage miss
+  const dictionaryStore = createDictionaryStore(bg.dictionary?.idb ?? (globalThis as { indexedDB?: IDBFactory }).indexedDB);
+  const gloss = createGlossService({ area: local, session, fetch: doFetch, packs, now, getURL: (path) => chrome.runtime.getURL?.(path), ...(dictionaryStore.available ? { offline: dictionaryStore } : {}) });
   const forms = createFormsService({ gloss });
   const translation = createLocalTranslationService({
     fetch: doFetch,
@@ -184,6 +198,12 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     keepAlive: ping,
     ...bg.localRepo, // tests only: another IndexedDB, a keep-alive probe, a fault for the migration
     hold,
+  });
+  const dictionary = createDictionaryDownload({
+    area: local, gloss, fetch: doFetch, store: dictionaryStore, hold, now,
+    dictionaryRel: (l) => packs.manifest(l)?.lexical?.dictionary?.baseUrl?.replace(/^\/+|\/+$/g, '') || undefined,
+    languages: () => Object.keys(PACKS).filter((l) => !!packs.manifest(l)?.lexical?.dictionary),
+    ...(bg.dictionary?.sleep ? { sleep: bg.dictionary.sleep } : {}), ...(bg.dictionary?.concurrency ? { concurrency: bg.dictionary.concurrency } : {}),
   });
   const profile = createProfileService({ area: cache, session, settings: settings.get, now, local: localRepo.forProfile });
   const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, hold, onSynced: async () => {
@@ -453,12 +473,16 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
 
   async function clearLocal(): Promise<{ ok: true; events: number; metrics: number; queued: number }> {
     await localRepo.clear().catch(() => undefined); // the device-local Repository too: nothing of the learner's history stays on the device
-    const all = await local.get(null);
-    const keys = Object.keys(all);
+    // device data means the dictionary copies too (2026-11-11): stop any download, delete the offline database, then every cached shard,
+    // the pack records and the download rows. Only the key names are listed (where the browser can), so a large storage is never read into memory.
+    await dictionary.destroy().catch(() => undefined);
+    gloss.reset();
+    const keys = await listKeys(local);
     const events = keys.filter((k) => k.startsWith(EVENT_KEY_PREFIX));
     const metrics = keys.filter((k) => k.startsWith(METRIC_KEY_PREFIX));
     const queued = keys.filter((k) => k.startsWith(QUEUE_PREFIX) || k.startsWith(REJECTED_PREFIX) || k.startsWith(QUARANTINE_PREFIX));
-    const drop = [...events, ...metrics, ...queued];
+    const dictionaryRows = keys.filter((k) => k.startsWith(SHARD_PREFIX) || k.startsWith(PACK_RECORD_PREFIX) || k.startsWith(DOWNLOAD_KEY_PREFIX));
+    const drop = [...events, ...metrics, ...queued, ...dictionaryRows];
     if (drop.length) await local.remove(drop);
     await profile.clear();
     return { ok: true, events: events.length, metrics: metrics.length, queued: queued.length };
@@ -542,6 +566,16 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
         return session.enrol({ languageId: String(m.languageId ?? ''), packId: String(m.packId ?? ''), packVersion: String(m.packVersion ?? ''), goals, ...(typeof m.varietyId === 'string' ? { varietyId: m.varietyId } : {}), ...(typeof m.scriptId === 'string' ? { scriptId: m.scriptId } : {}), ...(typeof m.teamId === 'string' && m.teamId ? { teamId: m.teamId } : {}) });
       }
       case MSG.clearLocal: return clearLocal();
+      case MSG.dictionaryDownload: {
+        const languageId = typeof m.languageId === 'string' && isLanguageId(m.languageId) ? m.languageId : undefined;
+        if (!languageId) return { ok: false, error: 'bad-request' };
+        const op = m.op;
+        if (op === 'start') return { ok: true, status: await dictionary.start(languageId) };
+        if (op === 'cancel') return { ok: true, status: await dictionary.cancel(languageId) };
+        if (op === 'remove') return { ok: true, status: await dictionary.remove(languageId) };
+        if (op === 'status') return { ok: true, status: await dictionary.status(languageId, m.check === true) };
+        return { ok: false, error: 'bad-request' };
+      }
       case MSG.localRepo: return localRepo.handle(m);
       default: return { ok: false, error: 'unknown-message' };
     }
@@ -571,7 +605,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     // message that needs it (status, profile, record, keep-warm, active) instead.
     void active.restore(); // keep Active's registration in step with the permission the learner may have withdrawn meanwhile
     active.watchPermission();
-    chrome.alarms?.onAlarm.addListener((a) => { if (a.name === SYNC_ALARM) void selfUpdate.check(); }); // the one-minute alarm
+    chrome.alarms?.onAlarm.addListener((a) => { if (a.name === SYNC_ALARM) { void selfUpdate.check(); void dictionary.resume(); } }); // the one-minute alarm; a dictionary download the worker was stopped in carries on
     void selfUpdate.check(); // at worker start, with every listener registered
 
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -588,7 +622,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     });
   }
 
-  return { register, setEnabled, lookupNow, readState, inject, session, sync, recorder, profile, gloss, settings, local: localRepo, active, translation, status: pageStatus, handle };
+  return { register, setEnabled, lookupNow, readState, inject, session, sync, recorder, profile, gloss, dictionary, settings, local: localRepo, active, translation, status: pageStatus, handle };
 }
 
 /** A short, plain reason for a failed injection. The browser's wording is not shown raw. */

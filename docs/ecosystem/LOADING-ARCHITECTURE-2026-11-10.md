@@ -202,7 +202,13 @@ Two premises of this document were wrong and are corrected above: persisting the
 
 Not built, with the reason:
 
-- **"Installed" still does not mean "usable offline" for a dictionary.** `installPack` fetches the dictionary's manifest and
+- **2026-11-11, built: the explicit "Download for offline use" below.** The owner decided it, per language, in the setup page
+  (GoLearn extension only): the worker fetches the meaning files and the forms index into its own IndexedDB database
+  `golearn-dictionary` (as fetched, not in chrome.storage), reads from it only after a chrome.storage miss, and Delete this
+  device's data now removes it, the cached `pack:shard:*` rows and the pack install records. "Installed" (the badge) still means
+  only what it meant; `docs/ecosystem/GOLEARN-INSTALL-AND-TROUBLESHOOTING.md` has the learner-facing text. The full entries
+  (`full/`) and the reverse index are not part of it.
+- **"Installed" still does not mean "usable offline" for a dictionary** (without that download). `installPack` fetches the dictionary's manifest and
   ONE shard and runs the validation cases; meanings are then fetched as the learner reads (and kept). A whole-language
   download is a storage decision: the meanings alone are 6 MB (Albanian), 41 MB (German), 58 MB (Spanish) compressed, more
   once inflated into extension storage, and several times that with the full entries. Proposed as an explicit "Download for

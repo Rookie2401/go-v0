@@ -16,6 +16,7 @@ import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, shortDate, statusLine } from '../dom';
 import { installAndRecord, renderChecks, sourceLabel, verifyAndRecord, type InstallResult } from '../packInstall';
 import type { LanguageView, PackView } from '../ports';
+import { createOfflineBlock, hasDictionary } from './offline';
 import type { View } from './view';
 
 const STANDARD_MESSAGE = 'Norwegian has two written standards, Bokmål (nb) and Nynorsk (nn). Choose the one you will read; GoLearn never guesses.';
@@ -63,6 +64,8 @@ interface RowRefs {
   menu: HTMLDetailsElement;
   /** Where the downloaded state, Use for reading and Remove sit. */
   mine: HTMLElement;
+  /** The offline-download blocks of the row's packs (extension only), by pack language. */
+  offline: HTMLElement;
   more: HTMLElement;
   progress: HTMLProgressElement;
   status: HTMLElement;
@@ -88,6 +91,7 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
   const selectedPack = (c: RowRefs): PackView | undefined => ctx.deps.packs.packFor(optionOf(c)?.languageId ?? c.lang.choice?.options[0]?.languageId ?? c.lang.languageId);
 
   const rowsOf: RowRefs[] = [];
+  const offlineBlocks = new Map<string, ReturnType<typeof createOfflineBlock>>();
   let busy = 0;
   /** The enrolments on this device as of the last refresh (so the button can say Download or Use). */
   let enrolledNow: EnrolRow[] = [];
@@ -262,6 +266,17 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
           }, { class: 'small', 'data-action': 'verify', 'aria-label': `Re-verify ${have.pk.name}` }),
           button('Reinstall', () => { void install(c, have.pk, '', true); }, { class: 'small', 'data-action': 'install', 'aria-label': `Reinstall ${have.pk.name}` }));
       }
+      // "Download for offline use": for each pack of the row that is chosen here (or still has its install record) and has a dictionary; extension only
+      if (ctx.inExtension) {
+        const wanted = rowPacks.filter((pk) => pk.status === 'installable' && hasDictionary(pk) && (enrolled.some((e) => e.languageId === pk.languageId) || !!progress.packs[pk.packId]));
+        for (const pk of wanted) {
+          let block = offlineBlocks.get(pk.languageId);
+          if (!block) { block = createOfflineBlock(ctx, view, pk); offlineBlocks.set(pk.languageId, block); }
+          if (!c.offline.contains(block.el)) c.offline.append(block.el);
+          void block.poll();
+        }
+        for (const [id, block] of offlineBlocks) if (c.offline.contains(block.el) && !wanted.some((pk) => pk.languageId === id)) block.el.remove();
+      }
       describe(c);
     }
 
@@ -289,6 +304,7 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
     const installed = h('p', { class: 'installed muted', id: `installed-${l.languageId}` });
     const more = h('span', { class: 'more' });
     const mine = h('ul', { class: 'mine-list' });
+    const offline = h('div', { class: 'offline-list' });
     let variety: HTMLSelectElement | undefined;
     let varietyField: HTMLElement | null = null;
     const opt = (value: string, text: string): HTMLOptionElement => h('option', { value }, text) as HTMLOptionElement;
@@ -310,13 +326,13 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
         h('h3', { id: `lang-h-${l.languageId}`, class: 'lang-name' }, l.name, l.nativeName && l.nativeName !== l.name ? h('span', { class: 'native', lang: l.languageId }, ` ${l.nativeName}`) : null),
         h('p', { class: 'muted lang-level' }, `${l.scriptId} script · ${l.level}${l.choice ? (l.choice.kind === 'standard' ? ' · you choose the written standard' : ' · regional preference offered') : ''}`)),
       h('div', { class: 'lang-actions' }, mine, menu),
-      h('div', { class: 'lang-feedback' }, progress, status, results),
+      h('div', { class: 'lang-feedback' }, progress, status, results, offline),
       h('details', { class: 'about' }, h('summary', {}, 'Details'),
         info,
         h('h4', {}, 'What works'), works, h('h4', {}, 'What does not'), not,
         h('p', { class: 'audio' }, h('strong', {}, 'Audio: '), l.audio),
         installed, h('div', { class: 'row' }, more)));
-    const c: RowRefs = { lang: l, row, variety, info, note, choose, menu, mine, more, progress, status, results, installed, installing: false };
+    const c: RowRefs = { lang: l, row, variety, info, note, choose, menu, mine, offline, more, progress, status, results, installed, installing: false };
     rowsOf.push(c);
     variety?.addEventListener('change', () => { describe(c); });
     cardsBox.append(row);

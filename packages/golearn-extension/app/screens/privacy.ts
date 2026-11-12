@@ -140,7 +140,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       if (!armed) {
         armed = true;
         clearBtn.textContent = 'Click again to clear';
-        setStatus(clearOut, 'This removes the lookups, the waiting queue and the on-device record kept on this device. An account, if you have one, is not touched. Move on to cancel.', 'info');
+        setStatus(clearOut, 'This removes the lookups, the waiting queue, the on-device record and the dictionaries kept on this device (the meanings saved as you read and any offline downloads). An account, if you have one, is not touched. Move on to cancel.', 'info');
         return;
       }
       armed = false;

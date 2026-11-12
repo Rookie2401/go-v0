@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = '34aa837679e5';
+var BUILD_ID = '060d31015217';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -36,13 +36,13 @@ var PRECACHE = [
   "./assets/go-globe-rim-CzbKbQV5.png",
   "./assets/go-globe-turn-Dop5YaWE.png",
   "./assets/go-logo-D1Qp-DDg.png",
-  "./assets/index-DhQHhSR3.js",
+  "./assets/index-BjEWaSG_.js",
   "./assets/jerusalem-YWyJNBCG.webp",
   "./assets/oslo-CP39LCLT.webp",
   "./assets/paradigm-Dh_GLBM4.js",
   "./assets/roman-forum-BwyPrRQO.webp",
   "./assets/rothenburg-vv8nBX67.webp",
-  "./assets/style-Djlif2p8.css",
+  "./assets/style-D5kaZ9WP.css",
   "./assets/syntax-CGmPxLTF.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",
@@ -59,37 +59,37 @@ var PRECACHE = [
 var ASSET_BASE = '../';
 var LANG_CHUNKS = {
   "de": [
-    "./assets/lang-de-BnVGp7YB.js"
+    "./assets/lang-de-BFV_91rt.js"
   ],
   "el": [
-    "./assets/lang-el-864_a0nU.js"
+    "./assets/lang-el-Dg_J9uqX.js"
   ],
   "es": [
-    "./assets/lang-es-C-PNiRLu.js"
+    "./assets/lang-es-6XhqKNfH.js"
   ],
   "he": [
-    "./assets/lang-he-C11w7ir3.js"
+    "./assets/lang-he-BUOIROZ7.js"
   ],
   "hi": [
-    "./assets/lang-hi-D927Gvu-.js"
+    "./assets/lang-hi-BaBRG9zq.js"
   ],
   "la": [
-    "./assets/lang-la-4wuLoowZ.js"
+    "./assets/lang-la-5zAsHlkT.js"
   ],
   "nb": [
-    "./assets/lang-nb-IUjtP6rI.js"
+    "./assets/lang-nb-ipcn8wHC.js"
   ],
   "nn": [
-    "./assets/lang-nn-BuTHXGE9.js"
+    "./assets/lang-nn-By6JADKQ.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-BxSG1B0a.js"
+    "./assets/lang-norwegian-Dw2zKOqW.js"
   ],
   "sq": [
-    "./assets/lang-sq-mmOJYfsy.js"
+    "./assets/lang-sq-CtCrpqNX.js"
   ],
   "th": [
-    "./assets/lang-th-4zxbJyHr.js"
+    "./assets/lang-th-D1GyIpsR.js"
   ]
 };
 

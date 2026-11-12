@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "efe8ff65c5773a4b2cc265c2b63a67bc5b668768",
-    "tree": "db5d2157b8740b5ac20a7bfb6efada0183e9a0ca",
+    "commit": "672d9997464563af28fea3914d1e699d77f808d8",
+    "tree": "535e8c449b8bb4d14b1af74325623594e1966d39",
     "dirty": false
   },
-  "sourceManifestSha256": "c94ecce13efdee58751a08f159c5a4a4928f35ce0a7c8e86b924d7e664090bce",
+  "sourceManifestSha256": "08ce806f46500b3843a22b4f23742bd2a5845283769c0067e4c72d6c1a61e506",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -673,7 +673,7 @@
     },
     {
       "path": "packages/goreview/app/styles.css",
-      "sha256": "db55c71d595daca42be060190beaf070b9599c811dd72dfcacb79f6e2330e78b"
+      "sha256": "ba1e033bd0b54dd96b93f921c05f5687a0dbf8a09ba3879a7c51122e32c41425"
     },
     {
       "path": "packages/goreview/app/tellEngine.ts",
@@ -4462,7 +4462,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "c2ca4e76ac824d66d2810ac9e8d68825824eb0d8eb688dbfa2281e86e012ceec",
+  "artifactManifestSha256": "31a76a2dd1b86a1033baf80cfabcaf76be6526162e83cdd15438165ff93fa4c0",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4557,8 +4557,8 @@
       "sha256": "7d1dcb7308b07735c0781a3cdf0b8140af9f31a952127120c4fbcf6adc2a4c19"
     },
     {
-      "path": "assets/style-DTr8uwwi.css",
-      "sha256": "fbbe96c6ae8d478f7a44af5111884fe16a1e9427dfb7ad6527717f70e5394fce"
+      "path": "assets/style-7oZgsvOG.css",
+      "sha256": "d86686f4b3d5be727b6deca204e0913abdf00873e697f8da1f1cf13f30b99a98"
     },
     {
       "path": "assets/syntax-CGmPxLTF.js",
@@ -4594,7 +4594,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "cc90586db334a77ec535f745ec4b74017946f61f63153f81ff97c9bea9dd3c91"
+      "sha256": "cbdb029883cb30133af59f74ee6d052d5b53765e7d61fad5e7a187af8b4de530"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5538,7 +5538,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "19012da2bb857a15217081f5e98b473897ebd3bc5d97b6cac30c5dc3f1daf304"
+      "sha256": "255d6a67c8a5cac38ad8f627d5f8b1847aef46cb94b3f450a5cfddeaec5973f7"
     }
   ]
 }

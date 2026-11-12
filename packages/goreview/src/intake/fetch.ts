@@ -5,7 +5,7 @@
  */
 import type { GoEvent, ReviewCandidate, UnitKnowledge } from '../../../repository-contract/src';
 import type { AudioAvailability, DeckItem, FactsProvider, IntakeOutcome, ReviewPreferences } from '../types';
-import { decideIntake, rankComparativePriority } from './intake';
+import { decideIntake, orderIntakeByPriority, rankComparativePriority } from './intake';
 import { createReviewEligibilityContext } from '../planner/eligibility';
 import { indexPracticeEvidence } from '../planner/learning-policy';
 
@@ -33,9 +33,22 @@ export interface GatherDeps {
   readingSignals?: GoEvent[];
   secondaryPractice?: boolean;
   intent?: import('../types').ReviewIntent;
+  /**
+   * OFF unless set (undefined: every candidate the first pass would test gets its pack facts, as always). When set, facts are fetched
+   * in the order the deck will prefer the candidates (the first-pass order of `rankComparativePriority`), in windows, and the fetch
+   * stops as soon as this many candidates have passed the with-facts intake. The candidates after that point keep their fact-free
+   * outcome with a "facts not checked yet" reason and rank below every examined one: the cards the deck takes are the same as with
+   * the full fetch, but the diagnostics of the lower-ranked words (needs-validation, too-uncertain, merged, "rank i of N") are not.
+   * Use `factsBudgetFor(maxNew)`.
+   */
+  factsBudget?: number;
 }
 
 export const DEFAULT_CANDIDATE_LIMIT = 40;
+/** The new-card budget plus a margin (as many again, at least ten) for candidates the session plan or the exercise build still turns away. */
+export const factsBudgetFor = (maxNew: number): number => { const n = Math.max(0, Math.floor(maxNew)); return n + Math.max(10, n); };
+/** Written on an outcome whose pack facts were not fetched because the budget was already filled by higher-ranked candidates. */
+export const FACTS_NOT_EXAMINED = 'pack facts were not checked for this word yet: higher-ranked words already fill the new-card budget';
 /** Facts are independent by unit, but keep pressure on a slow Repository bounded. */
 export const FACTS_LOOKUP_PARALLEL = 8;
 
@@ -77,25 +90,28 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
   // cards remain learner-owned targets and keep their status/history intact.
   const existingFormRecognition = !deps.secondaryPractice ? deck.filter((item) =>
     item.unitKind === 'form' && item.dimension === 'written-recognition' && item.status !== 'dismissed') : [];
-  const factsWanted = [...new Set([...testable, ...existingFormRecognition.map((item) => item.unitId)])];
+  const testableSet = new Set(testable);
+  const existingFormIds = existingFormRecognition.map((item) => item.unitId);
   // Batch priming is bounded-concurrent in the Repository provider. Fetching derived facts is
   // bounded too, so a large input consumes one-shot primed answers before their freshness window.
   const factsByUnit = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
   const factErrors = new Map<string, string>();
-  try {
-    try { await (deps.facts as PrimableFacts).prime?.(factsWanted, preferences.varietyId); } catch { /* factsFor still works one by one */ }
-    for (let i = 0; i < factsWanted.length; i += FACTS_LOOKUP_PARALLEL) {
-      const group = factsWanted.slice(i, i + FACTS_LOOKUP_PARALLEL);
-      await Promise.all(group.map(async (id) => {
-        try {
-          const facts = await deps.facts.factsFor(id, preferences.languageId, preferences.varietyId);
-          if (facts) factsByUnit.set(id, facts);
-        } catch (e) { factErrors.set(id, e instanceof Error ? e.message : String(e)); }
-      }));
+  const fetchFacts = async (ids: string[]): Promise<void> => {
+    try {
+      try { await (deps.facts as PrimableFacts).prime?.(ids, preferences.varietyId); } catch { /* factsFor still works one by one */ }
+      for (let i = 0; i < ids.length; i += FACTS_LOOKUP_PARALLEL) {
+        const group = ids.slice(i, i + FACTS_LOOKUP_PARALLEL);
+        await Promise.all(group.map(async (id) => {
+          try {
+            const facts = await deps.facts.factsFor(id, preferences.languageId, preferences.varietyId);
+            if (facts) factsByUnit.set(id, facts);
+          } catch (e) { factErrors.set(id, e instanceof Error ? e.message : String(e)); }
+        }));
+      }
+    } finally {
+      (deps.facts as PrimableFacts).clearPrime?.();
     }
-  } finally {
-    (deps.facts as PrimableFacts).clearPrime?.();
-  }
+  };
 
   // One token's inflected form and its canonical lemma are the same default reading objective.
   // Merge only a single verified form-of edge into a present canonical lexeme objective; ambiguity,
@@ -103,7 +119,9 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
   const candidateById = new Map(candidates.map((candidate) => [candidate.unitId, candidate] as const));
   const mergedForms = new Map<string, string>();
   const coveredCanonicalLexemes = new Map<string, string>();
-  if (!deps.secondaryPractice) {
+  const examined = new Set<string>();
+  const computeCovered = (): void => {
+    if (deps.secondaryPractice) return;
     for (const item of existingFormRecognition) {
       const links = (factsByUnit.get(item.unitId)?.relations ?? []).filter((relation) =>
         relation.fromId === item.unitId && relation.relation === 'form-of' && reliableFormLink(relation) && relation.toId.startsWith('lemma:'));
@@ -121,9 +139,12 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
         coveredCanonicalLexemes.set(lexemeId, item.unitId);
       }
     }
-
+  };
+  /** The merge decision of each form candidate in `ids` (its own facts only: it does not depend on any other candidate's). */
+  const mergeWindow = (ids: ReadonlySet<string>): void => {
+    if (deps.secondaryPractice) return;
     for (const { candidate } of passes) {
-      if (candidate.kind !== 'form' || candidate.targetDimension !== 'readingRecognition' || !testable.includes(candidate.unitId)) continue;
+      if (candidate.kind !== 'form' || candidate.targetDimension !== 'readingRecognition' || !ids.has(candidate.unitId)) continue;
       const links = (factsByUnit.get(candidate.unitId)?.relations ?? []).filter((relation) =>
         relation.fromId === candidate.unitId && relation.relation === 'form-of' && reliableFormLink(relation) && relation.toId.startsWith('lemma:'));
       const targets = [...new Set(links.map((relation) => relation.toId))];
@@ -144,21 +165,20 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
         mergedForms.set(candidate.unitId, lexemeId);
       }
     }
-  }
+  };
 
-  const out: IntakeOutcome[] = [];
-  for (const { candidate, base, first } of passes) {
+  /** One candidate's outcome once its facts (if any were wanted) are in. */
+  const outcomeOf = ({ candidate, base, first }: (typeof passes)[number]): IntakeOutcome => {
     const coveredByForm = coveredCanonicalLexemes.get(candidate.unitId);
     if (coveredByForm) {
-      out.push({ ...first, decision: 'already-covered', proposed: undefined, reasons: [`canonical lexeme is already represented by existing form recognition ${coveredByForm}; its card status and history are preserved`, ...first.reasons] });
-      continue;
+      return { ...first, decision: 'already-covered', proposed: undefined, reasons: [`canonical lexeme is already represented by existing form recognition ${coveredByForm}; its card status and history are preserved`, ...first.reasons] };
     }
     const canonicalLexemeId = mergedForms.get(candidate.unitId);
     if (canonicalLexemeId) {
-      out.push({ ...first, decision: 'redundant', proposed: undefined, reasons: [`merged into canonical lexeme ${canonicalLexemeId} through one reliable lexical form-of relation; one encounter creates one reading-recognition objective`, ...first.reasons] });
-      continue;
+      return { ...first, decision: 'redundant', proposed: undefined, reasons: [`merged into canonical lexeme ${canonicalLexemeId} through one reliable lexical form-of relation; one encounter creates one reading-recognition objective`, ...first.reasons] };
     }
-    if (first.decision !== 'test-now' && first.decision !== 'test-later' && first.decision !== 'low-priority') { out.push(first); continue; }
+    if (first.decision !== 'test-now' && first.decision !== 'test-later' && first.decision !== 'low-priority') return first;
+    if (deps.factsBudget !== undefined && first.proposed && testableSet.has(candidate.unitId) && !examined.has(candidate.unitId)) return { ...first, reasons: [...first.reasons, FACTS_NOT_EXAMINED] };
     try {
       if (factErrors.has(candidate.unitId)) throw new Error(factErrors.get(candidate.unitId));
       const facts = factsByUnit.get(candidate.unitId);
@@ -167,15 +187,45 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
         // the missing facts are noted after it. Relabelling it "no verified facts" hid the real cause (2026-10-29: a failed knowledge
         // batch, a New word and a word without facts all read the same).
         const noFacts = 'the pack has no verified facts for this unit, so no exercise can be built';
-        if (first.decision === 'low-priority') { out.push({ ...first, reasons: [...first.reasons, noFacts] }); continue; }
-        out.push({ ...first, decision: 'needs-validation', reasons: [noFacts, ...first.reasons] });
-        continue;
+        if (first.decision === 'low-priority') return { ...first, reasons: [...first.reasons, noFacts] };
+        return { ...first, decision: 'needs-validation', reasons: [noFacts, ...first.reasons] };
       }
-      out.push(decideIntake({ ...base, facts }));
+      return decideIntake({ ...base, facts });
     } catch (e) {
-      out.push({ ...first, decision: 'needs-validation', reasons: [`pack facts could not be read (${e instanceof Error ? e.message : String(e)})`, ...first.reasons] });
+      return { ...first, decision: 'needs-validation', reasons: [`pack facts could not be read (${e instanceof Error ? e.message : String(e)})`, ...first.reasons] };
+    }
+  };
+
+  if (deps.factsBudget === undefined) {
+    // every testable candidate, in one pass, in the order the candidates came
+    const wanted = [...new Set([...testable, ...existingFormIds])];
+    await fetchFacts(wanted);
+    for (const id of testable) examined.add(id);
+    computeCovered();
+    mergeWindow(examined);
+  } else {
+    // the candidates in the order the deck will prefer them (the same ordering the ranking below uses), in windows, until the budget has passed
+    const firstById = new Map(passes.map((p) => [p.candidate.unitId, p.first] as const));
+    const order = [...new Set(orderIntakeByPriority(testable.flatMap((id) => firstById.get(id) ?? []), { prioritizeSaved: preferences.prioritizeSaved,
+      readingSignals: deps.readingSignals, languageId: preferences.languageId, now }).map((c) => c.outcome.unitId))];
+    const budget = Math.max(0, Math.floor(deps.factsBudget));
+    const passed = new Set<string>();
+    const byId = new Map(passes.map((p) => [p.candidate.unitId, p] as const));
+    let next = 0, started = false;
+    while (!started || (passed.size < budget && next < order.length)) {
+      const size = started ? Math.max(FACTS_LOOKUP_PARALLEL, budget - passed.size) : budget;
+      const win = order.slice(next, next + size);
+      next += win.length;
+      await fetchFacts([...new Set([...win, ...(started ? [] : existingFormIds)])]);
+      for (const id of win) examined.add(id);
+      if (!started) computeCovered();
+      started = true;
+      mergeWindow(new Set(win));
+      for (const id of win) { const o = outcomeOf(byId.get(id)!); if (o.proposed && ['test-now', 'test-later', 'low-priority'].includes(o.decision)) passed.add(id); }
     }
   }
+
+  const out: IntakeOutcome[] = passes.map(outcomeOf);
   const outcomeKey = (outcome: IntakeOutcome): string => `${outcome.unitId}|${outcome.proposed?.dimension ?? ''}`;
   const ranked = new Map(rankComparativePriority(out, { limit: preferences.maxNew, prioritizeSaved: preferences.prioritizeSaved,
     readingSignals: deps.readingSignals, languageId: preferences.languageId, now }).map((outcome) => [outcomeKey(outcome), outcome] as const));

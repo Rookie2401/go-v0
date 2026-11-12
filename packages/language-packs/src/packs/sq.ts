@@ -5,27 +5,22 @@
  * Everything linguistic in it is machine-drafted and has not been checked by a native speaker; the manifest says so in
  * `rights` and the tutorial says so on every step that teaches Albanian.
  */
-import { sqAdapter } from '../../../../src/adapters/sq';
 import { CONTRACT_VERSION } from '../../../repository-contract/src';
 import { KAIKKI_ATTRIBUTION, type PackManifest, type ValidationCase } from '../manifest';
 import { SQ_TUTORIAL } from '../tutorial/sq';
 
 export const SQ_PACK_ID = 'pack:sq';
 
-/** What the adapter itself says it can do (a capability whose support level is 'none' is left out). */
-function capabilities(): string[] {
-  const s = sqAdapter.support;
-  const caps: string[] = [];
-  if (s.tokenization !== 'none') caps.push('tokenization');
-  if (s.sentenceSegmentation !== 'none') caps.push('sentence-segmentation');
-  if (s.lemmatization !== 'none') caps.push('lemma');
-  if (s.morphology !== 'none') caps.push('morphology');
-  if (s.phraseDetection !== 'none') caps.push('phrases');
-  caps.push('constructions'); // detectPatterns
-  caps.push('pronunciation-notes'); // pronunciation(): one line per letter an English reader does not sound as written
-  if (s.productionChecks !== 'none') caps.push('production-checks');
-  return caps;
-}
+/**
+ * Adapter version and what the adapter says it can do (a capability whose support level is 'none' is left out). Written here as
+ * constants, not read from the adapter, so that listing the packs does not link the Albanian adapter into an application bundle
+ * (GoReview loads each language's adapter on demand); test/language-packs/manifest.test.ts compares both with src/adapters/sq.ts
+ * and fails on drift.
+ */
+export const SQ_VERSION = '9';
+export const SQ_CAPABILITIES: readonly string[] = [
+  'tokenization', 'sentence-segmentation', 'lemma', 'morphology', 'phrases', 'constructions', 'pronunciation-notes', 'production-checks',
+];
 
 /**
  * Real selections the pack must read as stated. Each expectation is what the adapter really says (adapter-sq@9), not what a
@@ -52,7 +47,7 @@ export const SQ_VALIDATION: ValidationCase[] = [
 ];
 
 export function albanianManifest(): PackManifest {
-  const version = String(sqAdapter.version);
+  const version = SQ_VERSION;
   return {
     packId: SQ_PACK_ID,
     languageId: 'sq',
@@ -80,7 +75,7 @@ export function albanianManifest(): PackManifest {
         frequency: true,
       },
     },
-    analyzer: { id: `adapter-sq@${version}`, version, capabilities: capabilities() },
+    analyzer: { id: `adapter-sq@${version}`, version, capabilities: [...SQ_CAPABILITIES] },
     segmentation: {
       method: 'adapter',
       notes: 'Intl.Segmenter for Albanian underneath; ë and ç stay inside a word and an apostrophe form (t’i, s’jam) is one token.',

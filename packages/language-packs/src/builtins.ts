@@ -32,3 +32,14 @@ const BUILT_IN: Readonly<Record<string, LanguageAdapter>> = Object.freeze({ sq: 
 export function builtInAdapter(languageId: string): LanguageAdapter | undefined {
   return Object.prototype.hasOwnProperty.call(BUILT_IN, languageId) ? BUILT_IN[languageId] : undefined;
 }
+
+/**
+ * The same analyser, asynchronously. Here every adapter is linked in, so it resolves at once. GoReview's own builds swap this module for
+ * packages/goreview/app/leanBuiltins.ts, which fetches each language's adapter as a separate chunk the first time it is asked for; code that
+ * must not use an analyser before it is loaded awaits this first (and `builtInAdapter` then answers synchronously, as before).
+ */
+export function loadBuiltInAdapter(languageId: string): Promise<LanguageAdapter | undefined> {
+  return Promise.resolve(builtInAdapter(languageId));
+}
+
+export { AdapterLoadError } from './adapterLoadError';

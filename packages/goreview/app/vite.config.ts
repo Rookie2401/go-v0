@@ -14,6 +14,8 @@
  *   vite build -c packages/goreview/app/vite.config.ts --mode review
  *       -> packages/goreview/app/dist-review/   GoReview, the installable iPhone edition: the same static site plus a web manifest, icons, iOS meta tags,
  *          a service worker (sw.js, stamped with a build id and the precache list) and its registration, inlined into index.html. Starts at #/review.
+ *   The review and web builds load each language's analyser as its own chunk (assets/lang-<id>-<hash>.js, see leanBuiltins.ts) on first use; the
+ *   service worker does not precache them but keeps the ones that were used. The extension build keeps every analyser in the main script.
  *   GOREVIEW_OUT=<folder> puts any of the three builds in that folder instead; GOREVIEW_DICT=sq,hi limits the dictionaries shipped.
  *   vite -c packages/goreview/app/vite.config.ts   serves the app for development with the repository's public/.
  */
@@ -104,6 +106,24 @@ function copyGreekLexicons(outDir: string): void {
   const target = path.join(outDir, 'lexicon', 'el', 'koine-index.json.gz');
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, gzipSync(fs.readFileSync(indexPath), { level: 9 }));
+}
+
+/**
+ * The web and review builds swap packages/language-packs/src/builtins.ts (every adapter linked in) for ./leanBuiltins.ts (each adapter its own
+ * chunk, loaded on first use), the way the extension's builds swap it for theirs. Any import that resolves to that module is swapped.
+ */
+function leanBuiltins(): Plugin {
+  const full = path.join(repoRoot, 'packages', 'language-packs', 'src', 'builtins.ts');
+  const lean = path.join(here, 'leanBuiltins.ts');
+  return {
+    name: 'goreview-lean-builtins',
+    enforce: 'pre',
+    resolveId(source, importer) {
+      if (!importer || !source.startsWith('.')) return null;
+      const target = path.resolve(path.dirname(importer.split('?')[0]), source);
+      return target === full || target === full.replace(/\.ts$/, '') ? lean : null;
+    },
+  };
 }
 
 /** Development only: serve /fonts/<file>.woff2 from packages/shared-fonts. */
@@ -217,14 +237,17 @@ function staticFiles(outDir: string, pwa = false): Plugin {
 
 const pwaSource = path.join(here, 'public');
 
-/** Every file of the build except the on-demand dictionary and lexicon shards, the worker itself and its source maps: what the worker precaches. */
+/** A language's analyser chunk (leanBuiltins.ts): fetched when the language is first used and kept by the worker, never precached. */
+const LANG_CHUNK = /^assets\/lang-[a-z]+-[^/]+\.js$/;
+
+/** Every file of the build except the on-demand dictionary and lexicon shards and language chunks, the worker itself and its source maps: what the worker precaches. */
 function shellFiles(outDir: string): string[] {
   const out: string[] = [];
   const walk = (dir: string): void => {
     for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
       const full = path.join(dir, e.name);
       const rel = path.relative(outDir, full).split(path.sep).join('/');
-      if (e.isDirectory()) { if (rel === 'dict' || rel === 'lexicon') continue; walk(full); } else if (rel !== 'sw.js' && !rel.endsWith('.map')) out.push(rel);
+      if (e.isDirectory()) { if (rel === 'dict' || rel === 'lexicon') continue; walk(full); } else if (rel !== 'sw.js' && !rel.endsWith('.map') && !LANG_CHUNK.test(rel)) out.push(rel);
     }
   };
   walk(outDir);
@@ -309,6 +332,21 @@ function reviewProvenance(outDir: string): Plugin {
   };
 }
 
+/**
+ * A language's analyser chunk is named lang-<language>-<hash>.js: a dynamic entry that is src/adapters/<id>.ts, or a chunk made only of
+ * modules under src/adapters/<dir>/ (what two adapters share, Norwegian's engine for nb and nn), so the service worker can tell it from
+ * the shell's own files (never precached, kept once used). Everything else keeps Vite's default name.
+ */
+function languageChunkName(chunk: { isDynamicEntry?: boolean; facadeModuleId?: string | null; moduleIds?: string[] }): string {
+  const slash = (id: string): string => id.replace(/\\/g, '/');
+  const entry = chunk.isDynamicEntry && chunk.facadeModuleId ? /\/src\/adapters\/([a-z]{2})\.ts$/.exec(slash(chunk.facadeModuleId))?.[1] : undefined;
+  if (entry) return `assets/lang-${entry}-[hash].js`;
+  const ids = (chunk.moduleIds ?? []).map(slash);
+  const dirs = new Set(ids.map((id) => /\/src\/adapters\/([a-z]+)\//.exec(id)?.[1]).filter((d): d is string => !!d && d !== 'shared'));
+  if (dirs.size === 1 && ids.length && ids.every((id) => /\/src\/(adapters|core)\//.test(id))) return `assets/lang-${[...dirs][0]}-[hash].js`;
+  return 'assets/[name]-[hash].js';
+}
+
 export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
     return { root: here, base: './', publicDir: path.join(repoRoot, 'public'), plugins: [devFonts(), devHebrewFrequency(), devGreekKoine()], server: { port: 5198, strictPort: true, watch: { ignored: ['**/public/dict/**', '**/public/library/**', '**/data/**'] } } };
@@ -325,7 +363,11 @@ export default defineConfig(({ command, mode }) => {
     publicDir: false,
     logLevel: 'warn',
     define: { 'process.env.NODE_ENV': '"production"' },
-    plugins: [staticFiles(outDir, review), ...(review ? [reviewHtml(), reviewProvenance(outDir)] : [])],
-    build: { outDir, emptyOutDir: true, copyPublicDir: false, sourcemap: false, minify: true, target: extension ? 'chrome110' : 'es2022', cssCodeSplit: false, chunkSizeWarningLimit: 2500 },
+    plugins: [...(extension ? [] : [leanBuiltins()]), staticFiles(outDir, review), ...(review ? [reviewHtml(), reviewProvenance(outDir)] : [])],
+    build: {
+      outDir, emptyOutDir: true, copyPublicDir: false, sourcemap: false, minify: true, target: extension ? 'chrome110' : 'es2022', cssCodeSplit: false, chunkSizeWarningLimit: 2500,
+      // a language's analyser (leanBuiltins.ts) is named by its language, so the service worker can tell it from the shell's own files
+      rollupOptions: { output: { chunkFileNames: languageChunkName } },
+    },
   };
 });

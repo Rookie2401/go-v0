@@ -6,6 +6,9 @@
  *                beside it and WAITS: the page offers "Update ready - reload" and only then sends SKIP_WAITING.
  *   config.json  the kept copy at once, refreshed from the network for the next start (the network only when nothing is kept).
  *   dict/        the dictionary shards are NOT precached (hundreds of MB): cached on demand in "goreview-dict-v1", capped.
+ *   assets/lang-*.js   one language's analyser (leanBuiltins.ts): NOT precached, fetched when the language is first used and then kept in a
+ *                build-versioned cache, so a language that was used opens offline; one that was never used and has no connection fails to load
+ *                (the app says so and offers to try again). The small shared chunk the language chunks import IS precached.
  *   lexicon/     Hebrew and Greek indexes are NOT precached: shards and the Koine index are cached on demand in a build-versioned cache, capped.
  *   everything else  untouched: the Repository service (any origin, /sync, /vocabulary, /candidates, /me, /sessions ...) is NEVER
  *                cached, and a request that carries an Authorization header is never answered from a cache.
@@ -20,6 +23,8 @@ var SHELL_CACHE = SHELL_PREFIX + BUILD_ID;
 var DICT_CACHE = 'goreview-dict-v1';
 var LEXICON_PREFIX = 'goreview-lexicon-';
 var LEXICON_CACHE = LEXICON_PREFIX + BUILD_ID;
+var LANG_PREFIX = 'goreview-lang-';
+var LANG_CACHE = LANG_PREFIX + BUILD_ID;
 var DICT_MAX_ENTRIES = 400;
 var DICT_MAX_BYTES = 3 * 1024 * 1024; // one shard larger than this is served but not kept
 
@@ -52,7 +57,7 @@ self.addEventListener('activate', function (event) {
   event.waitUntil(
     caches.keys().then(function (keys) {
       return Promise.all(keys.filter(function (k) {
-        return (k.indexOf(SHELL_PREFIX) === 0 && k !== SHELL_CACHE) || (k.indexOf(LEXICON_PREFIX) === 0 && k !== LEXICON_CACHE);
+        return (k.indexOf(SHELL_PREFIX) === 0 && k !== SHELL_CACHE) || (k.indexOf(LEXICON_PREFIX) === 0 && k !== LEXICON_CACHE) || (k.indexOf(LANG_PREFIX) === 0 && k !== LANG_CACHE);
       }).map(function (k) { return caches.delete(k); }));
     }).then(function () { return self.clients.claim(); })
   );
@@ -128,5 +133,6 @@ self.addEventListener('fetch', function (event) {
   if (rel === 'config.json') { event.respondWith(configFromCache(event, request)); return; }
   if (rel.indexOf('dict/') === 0) { event.respondWith(dictOnDemand(request)); return; }
   if (rel.indexOf('lexicon/') === 0) { event.respondWith(dictOnDemand(request, LEXICON_CACHE)); return; }
+  if (/^assets\/lang-[a-z]+-[^/]+\.js$/.test(rel)) { event.respondWith(dictOnDemand(request, LANG_CACHE)); return; }
   event.respondWith(cachedShell(request).then(function (r) { return r || fetch(request); }));
 });

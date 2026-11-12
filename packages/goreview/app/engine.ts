@@ -36,6 +36,8 @@ export interface EngineOptions {
   ratingFor: GradingPort['ratingFor'];
   /** The pack facts for a language, or undefined when the pack cannot supply them (the exercise is then not built). */
   factsFor?(languageId: string, api: RepositoryApi): FactsProvider | undefined;
+  /** Starts fetching a language's analyser in the background (the review build loads each language's analyser as its own chunk). */
+  warmLanguage?(languageId: string): void;
   now?: () => string;
   random?: () => number;
 }
@@ -158,6 +160,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   };
 
   return {
+    warmLanguage: (languageId) => { try { opts.warmLanguage?.(languageId); } catch { /* met again when the language is first used */ } },
     canRecoverCandidates: (languageId, api) => configuredFactsOf(languageId, api) !== undefined,
     async recoverCandidates(request: RecoveryRequest) {
       const base = configuredFactsOf(request.languageId, request.api);

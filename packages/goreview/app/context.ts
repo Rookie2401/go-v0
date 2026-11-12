@@ -479,6 +479,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     try {
       const value = await request;
       if (revision === identityRevision && identityMemoAllowed && value !== undefined) identityMemo = { expiresAt: deps.now().getTime() + 2_000, value };
+      if (value) deps.engine.warmLanguage?.(value.languageId); // the language is known from the device now: its analyser chunk can load while the screen is built
       return value;
     } finally {
       if (identityFlight === request) identityFlight = undefined;

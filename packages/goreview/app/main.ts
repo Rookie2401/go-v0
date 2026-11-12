@@ -6,6 +6,7 @@ import { evidenceFor, ratingFor, registry } from '../src';
 import { createRepositoryApi } from '../../repository-service/src/api';
 import { createMemoryArea } from '../../repository-sync/src';
 import { createApp } from './app';
+import { loadBuiltInAdapter } from '../../language-packs/src/builtins';
 import { createAudioDeps } from './audio';
 import { getExtension, localRepoFor } from './localBinding';
 import { resolveConfig } from './config';
@@ -75,6 +76,7 @@ export async function createRealDeps(fetcher?: typeof fetch): Promise<Deps> {
   const config = resolved.config;
   const engine = createReviewEngine({
     builders: registry, evidenceFor, ratingFor,
+    warmLanguage: (languageId) => { loadBuiltInAdapter(languageId).catch(() => { /* met again, and reported, when the language is first used */ }); },
     factsFor: packFactsFor({ fetch: doFetch, baseUrl: config.assetBaseUrl ?? './', lexiconBaseUrl: './' }),
   });
   // Inside the GoLearn extension (this page is served from chrome-extension://…/review/) GoReview works on the device with no account: the

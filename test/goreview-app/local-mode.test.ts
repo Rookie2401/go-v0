@@ -44,7 +44,7 @@ describe('on the device, with no account', () => {
   });
 
   it('does not redirect a deep link to the sign-in page, and shows no team, leader or mission team on any screen', async () => {
-    const rig = await makeRig({ local: true });
+    const rig = await makeRig({ local: true, enableGoTell: true });
     await rig.go('settings');
     expect(rig.app.current()).toBe('settings');
     window.location.hash = '#/tell';
@@ -57,7 +57,7 @@ describe('on the device, with no account', () => {
   });
 
   it('shows no team even for an account whose enrolment carries one, and labels the language only', async () => {
-    const rig = await makeRig({ signedIn: true }); // the default account’s enrolment is stored with teamId 'albania'
+    const rig = await makeRig({ signedIn: true, enableGoTell: true }); // the default account’s enrolment is stored with teamId 'albania'
     expect(rig.service.enrolments.get('L1')![0].teamId).toBe('albania');
     expect(rig.q('#language-name').textContent).toBe('Albanian'); // one language: plain text, no select
     expect(rig.root.querySelector('#language-select')).toBeNull();
@@ -127,7 +127,7 @@ describe('on the device, with no account', () => {
 
   it('GoTell saves a draft on the device: the local api’s documents hold it, with no account', async () => {
     const service = defaultService();
-    const rig = await makeRig({ service, local: true });
+    const rig = await makeRig({ service, local: true, enableGoTell: true });
     await rig.go('tell');
     await until(() => !!rig.root.querySelector('#tell-new-draft'), 'the GoTell home');
     expect(rig.q('#tell-connection').textContent).toContain('On this device only');

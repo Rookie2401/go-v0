@@ -5,7 +5,7 @@ import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packag
 import { decksKey, sortVocab, type SavedDeck } from '../../packages/goreview/app/deckModel';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { UI_KEY } from '../../packages/goreview/app/screens/uiprefs';
-import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, seed, until, unitOf, type Rig, readyCards } from './helpers';
+import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, reopenDetails, seed, until, unitOf, type Rig, readyCards } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -16,24 +16,26 @@ const savedDecks = async (rig: Rig): Promise<SavedDeck[]> => {
 };
 
 describe('the GoReview home', () => {
-  it('shows a fifth entry, Biblia, when the app ships Biblia beside it (the iPhone edition, the extension), linking to it', async () => {
+  it('shows a plain Biblia link, when the app ships Biblia beside it (the iPhone edition, the extension), linking to it', async () => {
     const rig = await makeRig({ signedIn: true, links: { biblia: './biblia/index.html' } });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form')]);
     await reopen(rig);
-    expect(rig.qa('#review-home > section').map((s) => s.getAttribute('data-entry'))).toEqual(['deck', 'vocab', 'tell', 'biblia']); // Ecclesia's list: Current Deck, Review Deck, Saved decks, My vocab, GoTell, Biblia
     expect(rig.q<HTMLAnchorElement>('#entry-biblia').getAttribute('href')).toBe('./biblia/index.html');
-    expect(rig.q('#entry-biblia .ec-row-caption').textContent).toMatch(/Hebrew Bible and the Greek New Testament/);
+    expect(rig.q('#entry-biblia').closest('.deck-tiles')).toBeNull();
   });
 
-  it('shows GoTell, GoReview (Current Deck with Begin new deck, Review Deck, Saved decks) and My vocab, and nothing else (the owner, 2026-10-31)', async () => {
+  it('shows three deck tiles with New inside Current Deck and a separate My Vocab link', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
-    expect(rig.qa('#review-home > section').map((s) => s.getAttribute('data-entry'))).toEqual(['deck', 'vocab', 'tell']);
-    expect(rig.q('#review-home .ec-title').textContent).toBe('GoReview'); // the one title
-    expect(rig.qa('#review-home .ec-row-title').map((t) => t.textContent)).toEqual(['Current Deck', 'Review Deck', 'Saved decks', 'My vocab', 'GoTell']); // one list of choices, in this order
-    expect(rig.qa('#review-home svg').every((s) => s.getAttribute('aria-hidden') === 'true')).toBe(true); // the line icons are decoration
-    expect(rig.q('#entry-tell .ec-row-caption').textContent).toBe('Write and be corrected');
+    expect(rig.q('#review-home .ec-title').textContent).toBe('GoReview');
+    expect(rig.qa('#review-home .deck-tiles > .deck-tile').map((tile) => tile.dataset.deck)).toEqual(['current', 'review', 'saved']);
+    expect(rig.qa('#review-home .deck-face').map((face) => face.firstChild?.textContent)).toEqual(['Current Deck', 'Review Deck', 'Saved']);
+    expect(rig.q('#start-new').textContent).toBe('New');
+    expect(rig.q('#entry-vocab').textContent).toBe('My Vocab');
+    expect(rig.q('#entry-vocab').closest('.deck-tiles')).toBeNull();
+    expect(rig.root.querySelector('#entry-tell, #review-home svg')).toBeNull();
+    expect(rig.qa('#start-session-count, #start-review-count, #previous-count, #vocab-count').every(node => node.classList.contains('sr'))).toBe(true);
     // two cards answered Again are still being drilled: the Current Deck holds them, the Review Deck has nothing due
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('2');
     expect(rig.q('#start-session-count').textContent).toBe('all 2 of your cards'); // the two are the whole eligible pool: deck fill (2026-11-03) says so instead of a bare count
@@ -43,7 +45,7 @@ describe('the GoReview home', () => {
     expect(rig.q('#previous-count').textContent).toBe('1 saved'); // Class Essentials, the built-in deck, is already there
     expect(rig.root.querySelector('#review-home #class-essentials-due')).toBeNull(); // Class Essentials lives in Saved decks
     expect(rig.q('#vocab-count').textContent).toMatch(/^\d+ words?$/);
-    expect(rig.qa('#review-home button').map((b) => b.id)).toEqual(['start-session', 'start-new', 'save-deck', 'start-review']); // no deck-size line (Settings keeps the stepper, 2026-10-28)
+    expect(rig.qa('#review-home button').map((b) => b.id)).toEqual(['start-session', 'start-new', 'start-review']); // no deck-size line (Settings keeps the stepper, 2026-10-28)
     expect(rig.q('#review-home').textContent).not.toMatch(/deck size|due reviews ·|question\(s\) in this batch/);
     // none of what the home used to show
     for (const gone of ['.card', '#due-summary', '.time-presets', '#session-controls', '#candidates', '#deck-list', 'table', 'dl', 'details', '#link-transfer']) {
@@ -54,11 +56,13 @@ describe('the GoReview home', () => {
     expect(rig.q('header #settings-link').getAttribute('aria-label')).toBe('Settings');
   });
 
-  it('GoTell is a link to #/tell and opens the GoTell workspace', async () => {
+  it('returns to GoReview from an old GoTell deep link', async () => {
     const rig = await makeRig({ signedIn: true });
-    expect(rig.q<HTMLAnchorElement>('#entry-tell').getAttribute('href')).toBe('#/tell');
-    click(rig.q('#entry-tell'));
-    await until(() => rig.app.current() === 'tell', 'GoTell');
+    await rig.go('settings');
+    window.location.hash = '#/tell/write/old-draft';
+    await until(() => rig.app.current() === 'review', 'the review home');
+    expect(window.location.hash).toBe('#/review');
+    expect(rig.root.querySelector('#writer-text')).toBeNull();
   });
 
   it('a zero admission limit does not fabricate an ordinary session from candidates', async () => {
@@ -84,16 +88,17 @@ describe('the GoReview home', () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
+    click(rig.q('#entry-previous'));
+    await until(() => rig.app.current() === 'review/decks' && !!rig.root.querySelector('#save-deck'), 'the saved page');
     click(rig.q('#save-deck'));
-    await until(() => rig.q('#previous-count').textContent === '2 saved', 'the saved count');
+    await until(() => rig.qa('.deckrow').length === 2, 'the saved deck');
     const [deck] = await savedDecks(rig);
     expect(deck.items.map((i) => i.unitId).sort()).toEqual([unitOf('mace'), unitOf('zog')]);
     expect(deck.languageId).toBe('sq');
-    expect(Number(String(readyCards(rig)))).toBeGreaterThan(0); // an actual due obligation remains scheduled after being saved
     expect((await rig.area.get(decksKey('L1', 'sq')))[decksKey('L1', 'sq')]).toMatchObject({ v: 1 });
-
-    click(rig.q('#entry-previous'));
-    await until(() => rig.app.current() === 'review/decks' && rig.qa('.deckrow').length === 2, 'the list');
+    await reopen(rig);
+    expect(Number(String(readyCards(rig)))).toBeGreaterThan(0); // an actual due obligation remains scheduled after being saved
+    await rig.go('review/decks');
     expect(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) .deckrow-line').textContent).toMatch(/ · 2 cards · Albanian$/);
     // the card is the button: it holds the deck's line and names itself for a screen reader; no separate "Practise again" button, Remove beside it
     const card = rig.q<HTMLButtonElement>('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="practise-again"]');
@@ -296,6 +301,7 @@ describe('My vocab: add a word to the current deck', () => {
     // optional vocabulary practice does not displace the five due cards
     await reopen(rig);
     expect(Number(String(readyCards(rig)))).toBe(before);
+    await reopenDetails(rig);
     click(rig.q('#start-selected-practice'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the optional practice session');
     expect(rig.app.ctx.run.active!.plan.items[0].item.unitId).toBe('lemma:sq:mace:NOUN');

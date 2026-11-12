@@ -79,8 +79,9 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
     await rig.app.ctx.state.setPrefs(id!.learnerId, { languageId: 'sq', sessionMinutes: 0, maxNew: 5, cardsPerDeck: 10, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true, practiceGoals: ['recognition'] });
     await reopen(rig);
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('10');
+    await rig.go('review/decks');
     rig.q('#save-deck').click();
-    await until(() => rig.q('#previous-count').textContent === '2 saved', 'two saved decks');
+    await until(() => rig.qa('.deckrow').length === 2, 'two saved decks');
     await seed(rig, words.slice(0, 10).flatMap((w) => dueCard(A, `${w}x`, 'written-recognition')));
     await reopen(rig);
     write('home-decks.html', rig);

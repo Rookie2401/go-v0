@@ -50,7 +50,7 @@ export async function render(el: HTMLElement, ctx: AppContext, _view: View): Pro
   // everything the GoReview home no longer shows is kept here, one tap away
   const moreBox = h('section', { class: 'card', id: 'settings-more', 'aria-labelledby': 'more-h' }, h('h2', { id: 'more-h' }, 'More from GoReview'),
     h('ul', { class: 'plainlinks' },
-      h('li', {}, h('a', { href: '#/review/details', id: 'link-details' }, 'Review details'), h('span', { class: 'muted' }, ' · the proposals with their reasons, the deck and its controls, the counts')),
+      h('li', {}, h('a', { href: '#/review/details', id: 'link-details' }, 'Review details'), h('span', { class: 'muted' }, ' · missed words, selected practice, and deck controls')),
       h('li', {}, h('a', { href: '#/review/transfer', id: 'link-transfer' }, 'Transfer measures'), h('span', { class: 'muted' }, ' · research measures, not conclusions')),
       h('li', {}, h('a', { href: '#/vocabulary', id: 'link-vocabulary' }, 'Vocabulary details'), h('span', { class: 'muted' }, ' · search, filters and the unit records'))));
   const prefsBox = h('section', { class: 'card', id: 'settings-prefs', 'aria-labelledby': 'prefs-h' }, h('h2', { id: 'prefs-h' }, 'Review preferences'));

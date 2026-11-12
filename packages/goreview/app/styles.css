@@ -243,46 +243,21 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
   }
 }
 
-/* ── the GoReview home, in Ecclesia's shape: the gold mark over one large title, then one list of choices under a hairline ──
-      It keeps the page's own paper (a band of a second paper under the language title read as a box, 2026-11-09); Ecclesia's ink, rules
-      and gold do the rest. */
-.home { color: var(--ec-ink); padding: 1.2rem 0 2.5rem; }
+/* GoReview home */
+.home { color: var(--ec-ink); padding: .75rem 0 2.5rem; }
 .home > * { max-width: 30rem; margin-inline: auto; }
-.ec-home-head { display: grid; justify-items: center; gap: 1rem; padding: .2rem 0 1.9rem; border-bottom: 1px solid var(--ec-rule); }
-.ec-mark { display: block; width: 52px; height: 26px; background: var(--ec-gold); -webkit-mask: var(--ec-mark-mask) center / contain no-repeat; mask: var(--ec-mark-mask) center / contain no-repeat; }
-.ec-title { margin: 0; font-size: clamp(2.6rem, 8vw, 3.6rem); font-weight: 400; line-height: .98; letter-spacing: -.02em; text-align: center; text-transform: none; color: var(--ec-ink); }
-/* a choice: icon | serif title over a small sans caption | gold chevron; a hairline below it */
-.ec-row {
-  position: relative; display: grid; grid-template-columns: 25px minmax(0, 1fr) 20px; align-items: center; column-gap: 14px; width: 100%; min-height: 78px; margin: 0; padding: 13px 17px;
-  border: 0; border-bottom: 1px solid var(--ec-rule); border-radius: 0; background: transparent; color: var(--ec-ink); font: inherit; text-align: start; text-decoration: none; cursor: pointer;
-}
-.ec-row::after { content: ""; justify-self: end; width: .5rem; height: .5rem; margin-right: 5px; border-top: 1.5px solid var(--ec-gold); border-right: 1.5px solid var(--ec-gold); transform: rotate(45deg); }
-.ec-row .ec-icon { color: var(--ec-gold-ink); justify-self: center; }
-.ec-row-text { display: grid; gap: .22rem; min-width: 0; }
-.ec-row-title { font-size: 1.4rem; font-weight: 400; line-height: 1.15; letter-spacing: .005em; color: var(--ec-ink); }
-.ec-row-caption { font-family: var(--ec-sans); font-size: .72rem; line-height: 1.4; color: var(--ec-ink-soft); overflow-wrap: anywhere; }
-.home .ec-row:hover:not(:disabled) { border-bottom-color: var(--ec-hover-line); background: var(--ec-paper-raised); text-decoration: none; transform: translateX(2px); }
-.home .ec-row:focus-visible { outline: 2px solid var(--ec-gold-ink); outline-offset: 3px; border-radius: 0; }
-.home .ec-row:disabled { cursor: default; opacity: 1; background: transparent; }
-.home .ec-row:disabled::after { content: none; }
-.home .ec-row:disabled .ec-row-title { color: var(--ec-ink-soft); }
-.home .ec-row:disabled .ec-icon { color: var(--ec-ink-soft); }
-/* under the Current Deck: quiet sans text links (Begin new deck, the missed words, practice, save) and the one line that says why there is nothing new */
-.ec-sub { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem 1.2rem; padding: .35rem 17px .5rem calc(17px + 25px + 14px); border-bottom: 1px solid var(--ec-rule); }
-.deck-extras { display: contents; }
-.home .deck-new, .home .ec-sub .linklike {
-  display: inline-block; margin: 0; padding: .3rem 0; border: 0; border-radius: 0; background: none; font: 600 .76rem/1.4 var(--ec-sans); letter-spacing: .04em; vertical-align: baseline;
-  color: var(--ec-gold-ink); text-decoration: underline; text-underline-offset: .25em; text-decoration-color: var(--ec-rule); cursor: pointer;
-}
-.home .deck-new:hover:not(:disabled), .home .ec-sub .linklike:hover:not(:disabled) { background: none; border-color: transparent; color: var(--ec-ink); text-decoration-color: var(--ec-gold); }
-.home .deck-new:disabled { opacity: .55; cursor: default; }
-.home .deck-why { flex: 1 1 100%; margin: .1rem 0 .2rem; max-width: none; font-family: var(--ec-sans); font-size: .72rem; line-height: 1.45; color: var(--ec-ink-soft); }
-.home .deck-resume, .home .notice { margin: .7rem 17px; font-family: var(--ec-sans); font-size: .78rem; }
-.home .deck-resume { display: flex; align-items: center; justify-content: space-between; gap: .8rem; }
-.home .btn { border-radius: 3px; font-family: var(--ec-sans); font-size: .76rem; font-weight: 600; letter-spacing: .04em; background: transparent; color: var(--ec-gold-ink); border-color: var(--ec-gold-ink); }
-.home .btn.primary, .home .btn.primary:hover:not(:disabled) { background: var(--ec-gold-fill); color: var(--ec-gold-on-fill); border-color: var(--ec-gold-fill); opacity: 1; }
+.home .ec-title { margin: 0 auto 1.5rem; font-size: clamp(2.6rem, 8vw, 3.6rem); font-weight: 400; line-height: 1; letter-spacing: -.02em; text-align: center; text-transform: none; color: var(--ec-ink); }
+.deck-tiles { display: grid; gap: .875rem; width: min(100%, clamp(13rem, 72vw, 22rem)); margin-inline: auto; }
+.deck-tile { display: grid; min-width: 0; border: 1px solid var(--ec-field-line); border-radius: 5px; }
+.home .deck-face { display: grid; place-items: center; width: 100%; min-height: 6.5rem; margin: 0; padding: .75rem; border: 0; border-radius: 4px; background: transparent; color: var(--ec-ink); font: inherit; font-size: clamp(1.65rem, 5vw, 2rem); line-height: 1.1; text-align: center; text-decoration: none; }
+.home .deck-face:hover:not(:disabled) { background: var(--ec-paper-raised); color: var(--ec-ink); text-decoration: none; }
+.home .deck-face:disabled { opacity: 1; color: var(--ec-ink-soft); cursor: default; }
+.home .deck-new { justify-self: start; min-width: 2.75rem; min-height: 2.75rem; margin: 0 .35rem .2rem; padding: .35rem .75rem; border: 0; background: none; color: var(--ec-gold-ink); font: 600 .85rem/1.3 var(--ec-sans); }
+.home .deck-new:hover:not(:disabled) { background: var(--ec-paper-raised); text-decoration: underline; }
+.home .deck-face:focus-visible, .home .deck-new:focus-visible, .home .home-link:focus-visible { outline: 2px solid var(--ec-gold-ink); outline-offset: -3px; }
+.home .home-link { display: flex; align-items: center; justify-content: center; width: fit-content; min-height: 2.75rem; margin: .45rem auto 0; padding: .25rem .75rem; color: var(--ec-gold-ink); font-size: 1.35rem; }
+.home .notice, .home #candidate-freshness { margin: .65rem 0; font-family: var(--ec-sans); font-size: .78rem; }
 @media (prefers-reduced-motion: no-preference) {
-  .ec-row { transition: border-color .15s, background-color .15s, transform .15s; }
   .exercise .grade-dot { transition: background-color .15s, color .15s; }
 }
 .entry-actions { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; align-items: center; margin: 1.15rem 0 0; }
@@ -471,8 +446,6 @@ img, svg, video, canvas { max-width: 100%; }
   h1 { font-size: 1.4rem; margin: .25rem 0 1.4rem; }
   h1::after { margin-top: .8rem; }
   .page-title { font-size: 1.7rem; margin: .25rem 0 .9rem; }
-  .home { --ec-pad: max(16px, env(safe-area-inset-left, 0px)); --ec-tail: calc(2rem + env(safe-area-inset-bottom, 0px)); padding-top: 1.6rem; }
-  .ec-row-title { font-size: 1.35rem; }
   .card, .exercise, .feedback { padding: 16px; }
   .exercise, .feedback { margin: 1rem 0; }
   .session-bar { gap: .1rem .75rem; }
@@ -530,10 +503,8 @@ img, svg, video, canvas { max-width: 100%; }
 .splash-mark { display: block; width: 176px; height: 88px; background: currentColor; -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: contain; mask-position: center; mask-repeat: no-repeat; } /* the mask image itself is an inline style on the element (index.html), so its relative URL resolves against the page */
 .splash-word { font-size: 2rem; line-height: 1; letter-spacing: .22em; margin-left: .22em; text-transform: uppercase; font-weight: 400; }
 @media (prefers-reduced-motion: no-preference) { #goreview-splash { transition: opacity .55s ease; } } /* the fade only when motion is welcome (audit A-C04) */
-/* the home: the language dropdown stands where the page title was, in the title's size, over the same short centred rule */
-.home-language { text-align: center; margin: .5rem 0 1.5rem; }
-.home-language::after { content: ""; display: block; width: 3rem; height: 1px; margin: 1.1rem auto 0; background: var(--rule-strong); }
-.home-language .language-kicker { font-size: clamp(1.5rem, 4.5vw, 2.1rem); line-height: 1.2; font-weight: 600; letter-spacing: .14em; color: var(--ink); }
+/* The language selector sits above the GoReview title. */
+.home-language { text-align: center; margin: 0 0 .25rem; }
 .home-language .language-picker { max-width: 100%; }
 .home-language select.language-kicker { padding: .1rem 1.6rem .1rem .4rem; text-align: center; text-align-last: center; }
 .home-language select.language-kicker:hover { color: var(--accent); }

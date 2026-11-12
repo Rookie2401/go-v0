@@ -90,10 +90,9 @@ describe('GoReview screens', () => {
     await until(() => /Added .* to optional selected practice/.test(rig.root.querySelector('#review-details > .status')?.textContent ?? ''), `the status message (now: ${rig.root.querySelector('#review-details > .status')?.textContent})`);
     audit(rig.root, 'practice/review-details (after Test now)');
 
-    // the home offers the selected words as a separate, optional practice beside Begin
-    await reopen(rig);
-    expect(rig.root.querySelector('#start-selected-practice'), 'the home offers the selected words').toBeTruthy();
-    audit(rig.root, 'practice/review-home (selected practice)');
+    await reopenDetails(rig);
+    expect(rig.root.querySelector('#start-selected-practice'), 'Review Details offers the selected words').toBeTruthy();
+    audit(rig.root, 'practice/review-details (selected practice)');
 
     // My vocab: a word added by hand from the list (its status quotes the word). The fake Repository has no vocabulary list, so a page of it is supplied.
     const realApi = rig.app.ctx.api;
@@ -179,14 +178,9 @@ describe('GoReview screens', () => {
     await rig.go('review/transfer');
     audit(rig.root, 'practice/transfer');
     await reopen(rig);
-    // Save deck moves the deck to the saved decks; the list is audited too
-    if (rig.root.querySelector('#save-deck')) {
-      click(rig.q('#save-deck'));
-      await until(() => /Deck saved/.test(rig.root.querySelector('#review-home > .status')?.textContent ?? ''), 'the deck to be saved');
-      audit(rig.root, 'practice/review-home (after Save deck)');
-    }
     await rig.go('review/decks');
-    audit(rig.root, 'practice/previous-decks');
+    audit(rig.root, 'practice/saved-decks');
+
     await reopenDetails(rig);
     const hist = rig.root.querySelector<HTMLAnchorElement>('a[href^="#/review/history"]');
     if (hist) { await rig.go(hist.getAttribute('href')!.replace(/^#\//, '')); audit(rig.root, 'practice/history'); }

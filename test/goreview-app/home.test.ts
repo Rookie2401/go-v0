@@ -1,9 +1,11 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { PACKS } from '../../packages/language-packs/src/registry';
 import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
 import { decksKey, sortVocab, type SavedDeck } from '../../packages/goreview/app/deckModel';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
+import { homePhoto } from '../../packages/goreview/app/homePhotos';
 import { UI_KEY } from '../../packages/goreview/app/screens/uiprefs';
 import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, reopenDetails, seed, until, unitOf, type Rig, readyCards } from './helpers';
 
@@ -24,17 +26,19 @@ describe('the GoReview home', () => {
     expect(rig.q('#entry-biblia').closest('.deck-tiles')).toBeNull();
   });
 
-  it('shows three deck tiles with New inside Current Deck and a separate My Vocab link', async () => {
+  it('shows three deck tiles with New deck inside Current Deck and a separate My Vocabulary link', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
-    expect(rig.q('#review-home .ec-title').textContent).toBe('GoReview');
+    expect(rig.q('main h1.home-title').textContent).toBe('GoReview');
     expect(rig.qa('#review-home .deck-tiles > .deck-tile').map((tile) => tile.dataset.deck)).toEqual(['current', 'review', 'saved']);
-    expect(rig.qa('#review-home .deck-face').map((face) => face.firstChild?.textContent)).toEqual(['Current Deck', 'Review Deck', 'Saved']);
-    expect(rig.q('#start-new').textContent).toBe('New');
-    expect(rig.q('#entry-vocab').textContent).toBe('My Vocab');
+    expect(rig.qa('#review-home .deck-title').map((title) => title.textContent)).toEqual(['Start', 'Review Deck', 'Saved']);
+    expect(rig.q('#start-session .deck-kicker').textContent).toBe('Current Deck');
+    expect(rig.q('#start-new').textContent).toBe('New deck');
+    expect(rig.q('#entry-vocab').textContent).toBe('My Vocabulary');
     expect(rig.q('#entry-vocab').closest('.deck-tiles')).toBeNull();
-    expect(rig.root.querySelector('#entry-tell, #review-home svg')).toBeNull();
+    expect(rig.root.querySelector('#entry-tell')).toBeNull();
+    expect(rig.qa('#review-home svg').every((node) => node.getAttribute('aria-hidden') === 'true')).toBe(true);
     expect(rig.qa('#start-session-count, #start-review-count, #previous-count, #vocab-count').every(node => node.classList.contains('sr'))).toBe(true);
     // two cards answered Again are still being drilled: the Current Deck holds them, the Review Deck has nothing due
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('2');
@@ -54,6 +58,34 @@ describe('the GoReview home', () => {
     expect(rig.q('#review-home').textContent).not.toMatch(/scheduler|fsrs|Why/);
     // the header: the language and the Settings cog
     expect(rig.q('header #settings-link').getAttribute('aria-label')).toBe('Settings');
+  });
+
+  it('has a bundled, credited photograph for every language pack', () => {
+    for (const language of Object.keys(PACKS)) {
+      const photo = homePhoto(language);
+      expect(photo?.image, language).toMatch(/\.webp$/);
+      expect(photo?.source, language).toMatch(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
+      expect(photo?.licenseUrl, language).toMatch(/^https:\/\/creativecommons\.org\//);
+    }
+    expect(homePhoto('unknown')).toBeUndefined();
+  });
+
+  it('switches the home photograph and credit with the language and clears them on the Saved page', async () => {
+    const service = defaultService();
+    service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [
+      { languageId: 'sq', varietyId: 'sq-AL' }, { languageId: 'he', varietyId: 'he-bib' },
+    ]);
+    const rig = await makeRig({ signedIn: true, service });
+    expect(rig.q('main').getAttribute('data-home-photo')).toBe('jerusalem');
+    expect(rig.q('.home-photo-credit').textContent).toContain('Photo by Zairon');
+    const select = rig.q<HTMLSelectElement>('#language-select');
+    select.value = 'L1-e1';
+    select.dispatchEvent(new Event('change'));
+    await until(() => rig.q('main').dataset.homePhoto === homePhoto('sq')?.id, 'the Albanian photograph');
+    expect(rig.q('.home-photo-credit').textContent).toContain(homePhoto('sq')?.author);
+    await rig.go('review/decks');
+    expect(rig.q('main').hasAttribute('data-home-photo')).toBe(false);
+    expect(rig.root.querySelector('.home-photo-credit')).toBeNull();
   });
 
   it('returns to GoReview from an old GoTell deep link', async () => {

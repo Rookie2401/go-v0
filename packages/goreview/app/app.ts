@@ -32,6 +32,7 @@ import type { View } from './screens/view';
 import { shortDate } from './dom';
 import { dismissSplash } from './splash';
 import { loadingMark } from './loading';
+import { homePhoto } from './homePhotos';
 
 export interface RouteDef {
   id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'developer' | 'signin' | 'privacy' | 'terms' | 'help';
@@ -274,6 +275,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     disposers = [];
     clear(main);
     main.setAttribute('data-route', [id, ...params].join('/'));
+    delete main.dataset.homePhoto;
     append(main, [loadingMark('Opening GoReview…')]);
     const recovery = (message: string, retry: () => void): HTMLElement => {
       const button = h('button', { type: 'button', class: 'btn primary' }, 'Try again') as HTMLButtonElement;
@@ -300,11 +302,14 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     clear(main);
     main.setAttribute('data-route', route);
     const body = h('div', { class: 'body' });
-    // the home has no visible title: the wordmark is in the top bar and the language dropdown takes the title's place (the h1 stays for assistive technology)
-    // every review screen keeps its 'GoReview' h1 for assistive technology only (the wordmark is in the top bar); the home alone shows the dropdown in the title's place
     const review = def.id === 'review' && mode !== 'none';
     const home = review && subs.length === 0;
-    main.append(...(review ? [h('h1', { class: 'sr' }, def.title)] : [h('h1', {}, def.title)]), ...(home ? [h('div', { class: 'home-language', id: 'home-language' })] : []), body);
+    const hero = home
+      ? h('div', { class: 'home-hero' },
+          h('div', { class: 'home-language', id: 'home-language' }),
+          h('h1', { class: 'home-title' }, def.title))
+      : undefined;
+    main.append(hero ?? h('h1', { class: review ? 'sr' : undefined }, def.title), body);
     placeLanguage();
     body.append(loadingMark('Loading your saved account data…'));
     let idn: Awaited<ReturnType<AppContext['identity']>>;
@@ -318,6 +323,16 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     }
     if (my !== seq) return;
     if (idn) main.setAttribute('data-language', idn.varietyId ?? idn.languageId); else main.removeAttribute('data-language');
+    const photo = hero && idn ? homePhoto(idn.languageId) : undefined;
+    if (hero && photo) {
+      main.dataset.homePhoto = photo.id;
+      hero.style.setProperty('--home-photo-image', `url("${photo.image}")`);
+      hero.style.setProperty('--home-photo-mobile-position', photo.mobilePosition);
+      hero.style.setProperty('--home-photo-desktop-position', photo.desktopPosition);
+      main.append(h('p', { class: 'home-photo-credit' },
+        `${photo.place} · `, h('a', { href: photo.source }, `Photo by ${photo.author}`),
+        ' · ', h('a', { href: photo.licenseUrl }, photo.license)));
+    }
     clear(body);
     const view: View = { alive: () => my === seq && !destroyed, onDispose: (fn) => { disposers.push(fn); } };
     try { await def.render(body, ctx, view, subs); } catch (e) {

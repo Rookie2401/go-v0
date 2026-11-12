@@ -8,6 +8,7 @@ import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planCurrentDeck, 
 import { explainAdmissions } from '../admissionExplanation';
 import { freshModel, planCouldHaveChanged } from '../freshness';
 import { loadingMark } from '../loading';
+import { icon } from '../icons';
 import { MAX_SNAPSHOT_WORDS, readSnapshot, restoreMissing, type ReviewSnapshot } from '../snapshot';
 import { beginSession, currentReviewModel, endSavedSession, forgetReviewModels, recoverableSessions, resumeSession, reviewModelRevision, type ReviewModel } from '../workspace';
 import * as decksScreen from './decks';
@@ -101,7 +102,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     clear(root);
     root.setAttribute('lang', 'en');
     append(root, [
-      h('h2', { class: 'ec-title' }, 'GoReview'),
       goReviewEntry(model, deck, review, resumeId, savedCount),
       vocabEntry(Math.max(words, 0), vocabCompleteness),
       ctx.deps.links?.biblia ? h('a', { class: 'home-link', href: ctx.deps.links.biblia, id: 'entry-biblia' }, 'Biblia') : null,
@@ -221,7 +221,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const kicker = h('span', { class: 'sr', id: 'vocab-count' }, plural(count, 'word', 'words'));
     setVocabCount(kicker, count, completeness);
     return h('section', { class: 'entry', 'data-entry': 'vocab' },
-      h('a', { class: 'home-link', href: '#/review/vocab', id: 'entry-vocab', 'aria-describedby': 'vocab-count' }, 'My Vocab'), kicker);
+      h('a', { class: 'home-link', href: '#/review/vocab', id: 'entry-vocab', 'aria-describedby': 'vocab-count' }, 'My Vocabulary'), kicker);
   }
 
   function candidateFreshness(model: ReviewModel): HTMLElement | null {
@@ -285,17 +285,22 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     ctx.go('review/session');
   }
 
-  function deckButton(id: string, title: string, description: string, count: number, onPress: () => Promise<void>, canResume = false): HTMLButtonElement {
+  function deckButton(id: string, label: string, description: string, count: number, content: HTMLElement, onPress: () => Promise<void>, canResume = false): HTMLButtonElement {
     const detailId = `${id}-count`;
     const b = h('button', { type: 'button', class: 'deck-face', id, 'data-cards': String(count),
-      'aria-label': title, 'aria-describedby': detailId, disabled: !count && !canResume,
+      'aria-label': label, 'aria-describedby': detailId, disabled: !count && !canResume,
       'data-action': canResume ? 'resume-session' : undefined },
-      title, h('span', { id: detailId, class: 'sr' }, description)) as HTMLButtonElement;
+      content, icon(ctx.deps.doc, 'arrow'), h('span', { id: detailId, class: 'sr' }, description)) as HTMLButtonElement;
     b.addEventListener('click', () => {
       b.disabled = true;
       void onPress().catch((error) => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) b.disabled = false; });
     });
     return b;
+  }
+
+  function deckLabel(title: string, caption: string): HTMLElement {
+    return h('span', { class: 'deck-label' },
+      h('span', { class: 'deck-title' }, title), h('span', { class: 'deck-caption' }, caption));
   }
 
   function goReviewEntry(m: ReviewModel, deck: CurrentDeck, review: CurrentDeck, resumeId: string | undefined, savedCount: number): HTMLElement {
@@ -312,14 +317,21 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const reviewKicker = reviewing ? plural(reviewing, 'card', 'cards')
       : review.summary.nextReviewAt ? `Nothing due · next review ${when(review.summary.nextReviewAt)}` : 'Nothing due';
     const whyNoNew = drilling || resumeId ? undefined : explainAdmissions(m, deck);
-    const current = deckButton('start-session', 'Current Deck',
+    const currentAction = resumeId ? 'Resume' : drilling ? 'Start' : 'No cards ready';
+    const current = deckButton('start-session', `${currentAction} · Current Deck`,
       resumeId ? `Resume your session in progress. ${currentKicker}` : [currentKicker, whyNoNew?.text].filter(Boolean).join('. '),
-      drilling, () => resumeId ? resume(resumeId) : begin(m, 'current'), !!resumeId);
-    const newDeck = button('New', () => {
+      drilling, h('span', { class: 'deck-label' },
+        h('span', { class: 'deck-kicker' }, 'Current Deck'),
+        h('span', { class: 'deck-title' }, currentAction),
+        h('span', { class: 'deck-caption' }, 'Your active vocabulary collection')),
+      () => resumeId ? resume(resumeId) : begin(m, 'current'), !!resumeId);
+    const newDeck = button('New deck', () => {
       newDeck.disabled = true;
       void beginNewDeck(m, resumeId).catch((error) => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) newDeck.disabled = false; });
     }, { class: 'deck-new', id: 'start-new', 'data-action': 'begin-new-deck', 'aria-label': 'Begin new deck' });
-    const reviewButton = deckButton('start-review', 'Review Deck', reviewKicker, reviewing, () => begin(m, 'review'));
+    const reviewButton = deckButton('start-review', 'Review Deck', reviewKicker, reviewing,
+      h('span', { class: 'deck-row' }, icon(ctx.deps.doc, 'review'), deckLabel('Review Deck', reviewing ? 'Study cards' : 'No cards ready')),
+      () => begin(m, 'review'));
 
     return h('section', { 'data-entry': 'deck', id: 'current-deck', 'aria-label': 'Decks' },
       m.schedulerIssue ? p(m.schedulerIssue, 'notice') : null,
@@ -328,7 +340,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
         h('div', { class: 'deck-tile', 'data-deck': 'current' }, current, newDeck),
         h('div', { class: 'deck-tile', 'data-deck': 'review' }, reviewButton),
         h('div', { class: 'deck-tile', 'data-deck': 'saved' },
-          h('a', { class: 'deck-face', href: '#/review/decks', id: 'entry-previous', 'aria-describedby': 'previous-count' }, 'Saved'),
+          h('a', { class: 'deck-face', href: '#/review/decks', id: 'entry-previous', 'aria-label': 'Saved', 'aria-describedby': 'previous-count' },
+            h('span', { class: 'deck-row' }, icon(ctx.deps.doc, 'saved'), deckLabel('Saved', 'Your collections')), icon(ctx.deps.doc, 'arrow')),
           h('span', { id: 'previous-count', class: 'sr' }, savedCount ? `${savedCount} saved` : 'None saved yet'))));
   }
 

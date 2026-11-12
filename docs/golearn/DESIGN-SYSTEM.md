@@ -85,5 +85,9 @@ its own forms.
   rows) belongs on Diagnostics, in a title, or in "Technical details".
 - Do not add a second filled button to a region. Do not add an explanation to a control that is understood without it.
 - Keep ids and `data-action` names: the tests and the two apps' messages use them. Restyle freely.
+- Nothing a learner needs lives in a `title`: a tooltip is hover-only, so a finger, the keyboard and many screen readers never get it.
+  What is secondary opens on a press (the popup's "Word counts" under the page line).
+- Anything pressed is at least 24 by 24 CSS px: a summary, a link that stands alone on its line (the way back, the foot links), the
+  popup's switch. A link inside a sentence is exempt; a checkbox is pressed through its label.
 - Every text size in rem/em; `:focus-visible` is never removed; motion only under `prefers-reduced-motion: no-preference`.
 - Check a change in a real extension page, light and dark, at 390px and at desktop width, before calling it done.

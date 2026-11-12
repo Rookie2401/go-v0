@@ -50,7 +50,7 @@
   .switch-row label { flex: 1; cursor: pointer; }
   .switch-name { display: block; font-size: 1.05rem; font-weight: 600; }
   .switch-about { display: block; margin-top: .1rem; color: var(--ink-soft); font-size: 0.875rem; line-height: 1.35; }
-  input[type="checkbox"] { flex: none; appearance: none; -webkit-appearance: none; position: relative; width: 2.5rem; height: 1.4rem; margin: .15rem 0 0; border: 1px solid var(--control-line); border-radius: 999px; background: var(--paper-raised); cursor: pointer; }
+  input[type="checkbox"] { flex: none; appearance: none; -webkit-appearance: none; position: relative; width: 2.75rem; height: 1.5rem; margin: .1rem 0 0; border: 1px solid var(--control-line); border-radius: 999px; background: var(--paper-raised); cursor: pointer; }
   input[type="checkbox"]::after { content: ''; position: absolute; top: 50%; left: .15rem; width: 1rem; height: 1rem; margin-top: -.5rem; border-radius: 50%; background: var(--control-line); }
   input[type="checkbox"]:checked { background: var(--accent); border-color: var(--accent); }
   input[type="checkbox"]:checked::after { left: auto; right: .15rem; background: var(--paper-raised); }
@@ -69,6 +69,14 @@
   .status-line:empty { display: none; }
   .status-line.warn { color: var(--bad); }
   .muted { color: var(--ink-soft); font-size: 0.875rem; }
+  /* the counts behind the page line: closed until asked for, opened by a press or the keyboard (never a tooltip) */
+  .counts { margin: .15rem 0 0; font-size: 0.85rem; color: var(--ink-soft); }
+  .counts > summary { display: inline-block; min-height: 1.5rem; line-height: 1.5rem; cursor: pointer; color: var(--ink-faint); list-style: none; }
+  .counts > summary::-webkit-details-marker { display: none; }
+  .counts > summary::before { content: '▸ '; font-size: .85em; }
+  .counts[open] > summary::before { content: '▾ '; }
+  .counts > summary:hover { color: var(--ink); }
+  .counts > p { margin: .1rem 0 0; line-height: 1.4; }
   #connection { margin-top: .3rem; }
   /* the legend, one line, as Biblia's reader shows it: a sample word in each mark, then the names; known words carry no mark */
   .legend { margin: .55rem 0 0; font-size: 0.85rem; line-height: 1.5; color: var(--ink-faint); }
@@ -99,6 +107,7 @@
     </div>
     <div class="status-line" id="active-status" role="status" aria-live="polite">Checking…</div>
     <div class="status-line" id="active-page" role="status" aria-live="polite"></div>
+    <details class="counts" id="active-detail" hidden><summary>Word counts</summary><p id="active-counts"></p></details>
     <p class="legend" id="active-legend"></p>
     <div class="err" id="error" role="status" aria-live="polite"></div>
   </section>

@@ -159,6 +159,7 @@ describe('the router and the shell', () => {
     expect(rig.q<HTMLAnchorElement>('#account-line a').getAttribute('href')).toBe('#/signin');
     expect(rig.q<HTMLAnchorElement>('#open-review').getAttribute('href')).toBe('../review/index.html');
     expect(rig.q('#to-review').hidden).toBe(false);
+    expect(rig.q<HTMLAnchorElement>('#my-vocabulary').getAttribute('href')).toBe('../review/index.html#/vocabulary'); // GoReview's list of the learner's words
     expect(rig.q('#open-review').classList.contains('primary')).toBe(false); // a way out to another app is not this page's main action
     // the downloaded language stands under Your languages, the rest under Add a language
     expect(rig.q('#my-languages h2').textContent).toBe('Your languages');

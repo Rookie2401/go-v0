@@ -70,15 +70,19 @@ describe('GoLearn Active in the popup', () => {
     expect($<HTMLInputElement>('active').checked).toBe(true);
     expect($('active-status').textContent).toBe('On.');
     // the words that carry a mark (new, seen, recognized, familiar) are the underlined ones; known and automatic carry none and are counted as known
-    // one plain line; the counts per level are kept in its title, not in the learner's face (2026-11-11)
+    // one plain line; the counts per level wait under it, closed, and open on a press or the keyboard: never a tooltip (2026-11-11)
     expect($('active-page').textContent).toBe('This page (Albanian): 19 words marked.');
-    expect($('active-page').title).toBe('230 words read: seen 16, recognized 3; 12 known.');
+    expect($('active-page').hasAttribute('title')).toBe(false);
+    expect($('active-detail').hidden).toBe(false);
+    expect($<HTMLDetailsElement>('active-detail').open).toBe(false);
+    expect($('active-detail').querySelector('summary')!.textContent).toBe('Word counts');
+    expect($('active-counts').textContent).toBe('230 words read: seen 16, recognized 3; 12 known.');
     // plain On is the switch's own to show: the words stay for a screen reader
     expect($('active-status').classList.contains('sr')).toBe(true);
     pageState = { ...pageState, marked: { new: 5, seen: 16, recognized: 3, familiar: 2, known: 4, automatic: 8 } };
     await popup.refresh();
     expect($('active-page').textContent).toBe('This page (Albanian): 26 words marked.');
-    expect($('active-page').title).toBe('230 words read: new 5, seen 16, recognized 3, familiar 2; 12 known.');
+    expect($('active-counts').textContent).toBe('230 words read: new 5, seen 16, recognized 3, familiar 2; 12 known.');
   });
 
   it('a page where Active read nothing shows the reason; a page without the script says to reload it', async () => {

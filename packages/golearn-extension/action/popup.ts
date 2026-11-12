@@ -9,7 +9,7 @@
  *
  * Presentation (2026-11-11, docs/golearn/DESIGN-SYSTEM.md): a line that only repeats what the control beside it shows ("On.", "Off.", the
  * language already in the select) is kept for assistive technology and hidden from sight (.sr); the line about the page says how many
- * words are marked and keeps the counts per level in its title. Anything that needs the learner is shown, in the warning colour.
+ * words are marked and keeps the counts per level behind "Word counts", which opens on a press. Anything that needs the learner is shown, in the warning colour.
  */
 import { ACTIVE_LEVELS, LEVEL_LEGEND, type ActiveLevel } from '../src/active/levels';
 import { MSG, getChrome, type ChromeApi } from '../src/platform';
@@ -120,6 +120,8 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
   const activeToggle = $<HTMLInputElement>('active');
   const activeStatus = $('active-status');
   const pageLine = $('active-page');
+  const pageDetail = $('active-detail');
+  const pageCounts = $('active-counts');
   const legend = $('active-legend');
   legend.replaceChildren('How well you know each word: ');
   MARKED_LEVELS.forEach((level, i) => {
@@ -152,23 +154,30 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
       activeStatus.classList.add('warn');
     } else { activeStatus.textContent = 'Off.'; activeStatus.classList.add('sr'); }
   }
-  /** One line about the page in front: how many of its words carry a mark (the counts per level are its title); or why nothing was read. */
+  /** One line about the page in front: how many of its words carry a mark (the counts per level open under it, on request); or why nothing was read. */
   async function showPage(on: boolean): Promise<void> {
-    pageLine.removeAttribute('title');
-    if (!on || tabId === undefined) { pageLine.textContent = ''; return; }
+    const say = await pageText(on);
+    pageLine.textContent = say.line;
+    pageCounts.textContent = say.counts ?? '';
+    pageDetail.hidden = !say.counts;
+  }
+  async function pageText(on: boolean): Promise<{ line: string; counts?: string }> {
+    if (!on || tabId === undefined) return { line: '' };
     let ping: PingReply | undefined;
     try { ping = (await chrome.tabs?.sendMessage(tabId, { type: MSG.ping })) as PingReply | undefined; } catch { ping = undefined; }
-    if (!ping || !ping.ok) { pageLine.textContent = 'This page: GoLearn is not running here yet. Reload the page. Browser settings pages and extension stores cannot be read.'; return; }
+    if (!ping || !ping.ok) return { line: 'This page: GoLearn is not running here yet. Reload the page. Browser settings pages and extension stores cannot be read.' };
     const s = ping.activeState;
-    if (!ping.active || !s) { pageLine.textContent = 'This page: GoLearn is here but Active has not started on it. Reload the page.'; return; }
-    if (s.reason) { pageLine.textContent = `This page: ${s.reason}`; return; }
+    if (!ping.active || !s) return { line: 'This page: GoLearn is here but Active has not started on it. Reload the page.' };
+    if (s.reason) return { line: `This page: ${s.reason}` };
     const marked = MARKED_LEVELS.reduce((n, k) => n + (s.marked[k] ?? 0), 0);
     const known = (ACTIVE_LEVELS.filter((l) => !MARKED_LEVELS.includes(l))).reduce((n, k) => n + (s.marked[k] ?? 0), 0);
     const parts = MARKED_LEVELS.filter((l) => s.marked[l]).map((l) => `${LEVEL_LEGEND[l].title.toLowerCase()} ${s.marked[l]}`).join(', ');
     // every language of the learner's found on the page, the one with the most words first (2026-11-09)
     const lang = s.languages?.length ? s.languages.map((l) => languageNameOf(l)).join(', ') : s.languageId ? languageNameOf(s.languageId) : 'none of your languages';
-    pageLine.textContent = marked ? `This page (${lang}): ${marked} ${marked === 1 ? 'word' : 'words'} marked.` : `This page (${lang}): no words to mark.`;
-    pageLine.title = `${s.scanned} words read${parts ? `: ${parts}` : ''}; ${known} known.`;
+    return {
+      line: marked ? `This page (${lang}): ${marked} ${marked === 1 ? 'word' : 'words'} marked.` : `This page (${lang}): no words to mark.`,
+      counts: `${s.scanned} words read${parts ? `: ${parts}` : ''}; ${known} known.`,
+    };
   }
   activeToggle.addEventListener('change', async () => {
     activeToggle.disabled = true;

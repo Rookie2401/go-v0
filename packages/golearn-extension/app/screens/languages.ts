@@ -1,8 +1,8 @@
 /**
  * Languages: the home of the application, where every first run ends up (redesigned 2026-11-11, docs/golearn/DESIGN-SYSTEM.md).
  * The top of the page says where the learner stands, once: the language they read in and what to do with it (or, on a first run, what
- * to do first), whether their progress is on this device only or synced to their account, and the one way out to another app, GoReview
- * (“Review your words”, in the extension). Then the languages themselves: YOUR LANGUAGES and ADD A LANGUAGE (screens/language.ts).
+ * to do first), whether their progress is on this device only or synced to their account, and the way out to another app, GoReview
+ * (“Review your words” and, beside it, the quiet “My words” for its vocabulary list; in the extension). Then the languages themselves: YOUR LANGUAGES and ADD A LANGUAGE (screens/language.ts).
  * Nothing waits behind a closed section: the page's purpose is on the page. The guide to hearing the words is its own page under
  * Settings (Audio). The foot holds two quiet links: Help, and “How GoLearn reads pages”.
  */
@@ -25,7 +25,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const list = h('div', { id: 'language-list' });
   // GoReview is its own app: one plain way to it, once there is a language to have words in (the extension only: the hosted page has no words of its own)
   const review = ctx.inExtension
-    ? h('p', { class: 'home-actions', id: 'to-review', hidden: true }, h('a', { class: 'btn', id: 'open-review', href: REVIEW_HREF }, 'Review your words'))
+    ? h('p', { class: 'home-actions', id: 'to-review', hidden: true },
+      h('a', { class: 'btn', id: 'open-review', href: REVIEW_HREF }, 'Review your words'),
+      h('a', { class: 'quiet-link', id: 'my-vocabulary', href: `${REVIEW_HREF}#/vocabulary` }, 'My words'))
     : null;
   const status = h('section', { class: 'home-status', id: 'languages', 'aria-label': 'Where you stand' },
     next,

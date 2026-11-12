@@ -172,7 +172,7 @@ table.examples th { font-weight: 600; font-size: 1.15rem; white-space: nowrap; }
 .enrolments li, .status-list li { padding: .6rem 0; border-bottom: 1px solid var(--divider); }
 .status-list li .btn.small { margin-inline-start: .4rem; }
 /* a closed part of a page: its summary reads as a quiet link with a mark that turns */
-summary { cursor: pointer; color: var(--ink-soft); }
+summary { cursor: pointer; color: var(--ink-soft); min-height: 1.5rem; padding-block: .2rem; }
 summary:hover { color: var(--ink); }
 details > summary { list-style: none; }
 details > summary::-webkit-details-marker { display: none; }
@@ -199,6 +199,8 @@ details.fold > summary > h3 + *, details.fold > section.sub > :first-child { mar
 .nav-list a::after, .settings-links a::after { content: '›'; grid-column: 2; grid-row: 1 / span 2; color: var(--ink-faint); font-size: 1.4rem; line-height: 1; }
 .foot-links { margin-top: var(--gap-4); font-size: 1rem; color: var(--ink-faint); }
 .foot-links a { color: var(--ink-soft); }
+/* a link that stands alone on its line (not one inside a sentence) is at least 24 px high to press */
+.crumb a, .foot-links a, .home-actions .quiet-link, #settings-signin, p > #link-terms:only-child, #help-privacy, #help-terms { display: inline-block; min-width: 1.5rem; padding-block: .3rem; }
 
 .howto li { margin: .5rem 0; }
 .demo { border-inline-start: 3px solid var(--accent-soft); padding: .25rem 1.1rem; margin: 1.25rem 0; }
@@ -214,7 +216,7 @@ details.fold > summary > h3 + *, details.fold > section.sub > :first-child { mar
 .home-status { margin: 0 0 var(--gap-4); }
 .home-status .lede strong { font-weight: 600; }
 .account-line { margin: .15rem 0 0; font-size: 1rem; }
-.home-actions { margin: var(--gap-3) 0 0; }
+.home-actions { margin: var(--gap-3) 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap-2) var(--gap-4); }
 .status-note { font-weight: 600; margin: .4rem 0 1rem; }
 .status-note[data-state="synced"]::before { content: '✓ '; color: var(--ok); }
 .lang-group { margin: var(--gap-5) 0 0; }

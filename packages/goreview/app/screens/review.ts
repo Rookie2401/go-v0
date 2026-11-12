@@ -9,6 +9,7 @@ import { explainAdmissions } from '../admissionExplanation';
 import { freshModel, planCouldHaveChanged } from '../freshness';
 import { loadingMark } from '../loading';
 import { icon } from '../icons';
+import { attachRipple } from '../ripple';
 import { MAX_SNAPSHOT_WORDS, readSnapshot, restoreMissing, type ReviewSnapshot } from '../snapshot';
 import { beginSession, currentReviewModel, endSavedSession, forgetReviewModels, recoverableSessions, resumeSession, reviewModelRevision, type ReviewModel } from '../workspace';
 import * as decksScreen from './decks';
@@ -333,16 +334,20 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       h('span', { class: 'deck-row' }, icon(ctx.deps.doc, 'review'), deckLabel('Review Deck', reviewing ? 'Study cards' : 'No cards ready')),
       () => begin(m, 'review'));
 
+    // the tiles have no outline: each answers the pointer with a wash of lighter colour from the point of contact (ripple.ts; the owner, 2026-11-12)
+    const tiles = [
+      h('div', { class: 'deck-tile', 'data-deck': 'current' }, current, newDeck),
+      h('div', { class: 'deck-tile', 'data-deck': 'review' }, reviewButton),
+      h('div', { class: 'deck-tile', 'data-deck': 'saved' },
+        h('a', { class: 'deck-face', href: '#/review/decks', id: 'entry-previous', 'aria-label': 'Saved', 'aria-describedby': 'previous-count' },
+          h('span', { class: 'deck-row' }, icon(ctx.deps.doc, 'saved'), deckLabel('Saved', 'Your collections')), icon(ctx.deps.doc, 'arrow')),
+        h('span', { id: 'previous-count', class: 'sr' }, savedCount ? `${savedCount} saved` : 'None saved yet')),
+    ];
+    for (const tile of tiles) attachRipple(tile);
     return h('section', { 'data-entry': 'deck', id: 'current-deck', 'aria-label': 'Decks' },
       m.schedulerIssue ? p(m.schedulerIssue, 'notice') : null,
       candidateFreshness(m),
-      h('div', { class: 'deck-tiles' },
-        h('div', { class: 'deck-tile', 'data-deck': 'current' }, current, newDeck),
-        h('div', { class: 'deck-tile', 'data-deck': 'review' }, reviewButton),
-        h('div', { class: 'deck-tile', 'data-deck': 'saved' },
-          h('a', { class: 'deck-face', href: '#/review/decks', id: 'entry-previous', 'aria-label': 'Saved', 'aria-describedby': 'previous-count' },
-            h('span', { class: 'deck-row' }, icon(ctx.deps.doc, 'saved'), deckLabel('Saved', 'Your collections')), icon(ctx.deps.doc, 'arrow')),
-          h('span', { id: 'previous-count', class: 'sr' }, savedCount ? `${savedCount} saved` : 'None saved yet'))));
+      h('div', { class: 'deck-tiles' }, ...tiles));
   }
 
   // Every repaint goes through this one guarded function, registered before the first paint: one runs at a time, a request that arrives meanwhile

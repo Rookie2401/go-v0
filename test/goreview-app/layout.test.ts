@@ -34,11 +34,12 @@ describe('the phone layout', () => {
     expect(css).not.toMatch(/\.topbar[^}]*env\(safe-area-inset-top/); // no rule adds the raw inset any more
   });
 
-  it('scales the type for a handheld and stacks the outlined deck tiles', () => {
+  it('scales the type for a handheld and stacks the deck tiles (fields of colour, no outline: the owner, 2026-11-12)', () => {
     expect(phone).toMatch(/body \{ font-size: 1rem/);
     expect(phone).toMatch(/h1 \{ font-size: 1\.4rem/);
     expect(css).toMatch(/\.deck-tiles \{[^}]*display: grid;[^}]*gap:/);
-    expect(css).toMatch(/\.deck-tile \{[^}]*border: 1px solid/);
+    expect(css).toMatch(/\n\.deck-tile \{[^}]*border-radius: \.8rem;[^}]*background: var\(--tile\);/);
+    expect(css).not.toMatch(/\n\.deck-tile(\[[^\]]*\])? \{[^}]*border(-color)?:/);
     expect(css).toMatch(/\.deck-new \{[^}]*justify-self: start;[^}]*min-height: 2\.75rem/);
   });
 

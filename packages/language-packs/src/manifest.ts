@@ -14,9 +14,10 @@ export type ReviewStatus = 'machine-drafted' | 'partly-reviewed' | 'reviewed';
 /**
  * How far a pack is built, in the words the setup page shows.
  *   installable   an analyser, a dictionary, validation cases and an orientation exist (Albanian; Spanish at a minimal level)
- *   experimental  wired and installable, but only at a deliberately minimal level: seed-only lemmatisation, an unreviewed
- *                 word list, validation cases and a minimal orientation; shown as "experimental, seed-only
- *                 lemmatisation, unreviewed" (German, Hindi, Thai, Norwegian Bokmål and Nynorsk)
+ *   experimental  wired and installable, but only at a deliberately minimal level: an unreviewed word list, validation cases and
+ *                 a minimal orientation; shown as "experimental, unreviewed". How good its lemmas are is NOT part of the level
+ *                 (2026-11-13): some experimental packs have a full dictionary, form indexes or a measured accuracy behind
+ *                 them, and the capability report (capabilities.ts) says which, per language
  *   planned       described honestly and never installable (no pack is planned only any more; the level stays for a language added later)
  * `status` keeps its two values ('installable' | 'planned'): an experimental pack has status 'installable' (the installer
  * and the parser accept it) and `level: 'experimental'`. A manifest without `level` has the level its status implies.
@@ -115,7 +116,7 @@ export function levelOf(m: Pick<PackManifest, 'status' | 'level'>): PackLevel {
  * How far the pack's analysis has been validated, in the Repository's words (`PackInstalled.payload.validation`), from its level and
  * its review status alone; nothing is claimed beyond what the manifest says a person has checked.
  *   planned                               unsupported   (nothing can be analysed)
- *   experimental                          experimental  (seed-only lemmatisation, an unreviewed word list)
+ *   experimental                          experimental  (an unreviewed word list; lemma quality is the capability report's to state)
  *   installable, machine-drafted          unreviewed    (wired and tested against its own cases; no person has reviewed it)
  *   installable, partly reviewed          incomplete    (a person reviewed part of it)
  *   installable, reviewed                 production-validated
@@ -134,7 +135,7 @@ export function validationOf(m: Pick<PackManifest, 'status' | 'level'> & { right
 /** The learner-facing label of a level; an experimental pack is never shown as plainly installable. */
 export const LEVEL_LABEL: Readonly<Record<PackLevel, string>> = Object.freeze({
   installable: 'installable',
-  experimental: 'experimental, seed-only lemmatisation, unreviewed',
+  experimental: 'experimental, unreviewed',
   planned: 'planned, not installable',
 });
 

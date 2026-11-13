@@ -38,7 +38,7 @@ describe.each(Object.keys(CASES))('the experimental %s pack', (lang) => {
     expect(m().status).toBe('installable');
     expect(m().level).toBe('experimental');
     expect(levelOf(m())).toBe('experimental');
-    expect(LEVEL_LABEL[levelOf(m())]).toBe('experimental, seed-only lemmatisation, unreviewed');
+    expect(LEVEL_LABEL[levelOf(m())]).toBe('experimental, unreviewed');
     expect(installablePacks().map((p) => p.packId)).toContain(`pack:${lang}`);
   });
 
@@ -158,7 +158,7 @@ describe.each(Object.keys(NORWEGIAN))('the experimental %s pack (no dictionary)'
     expect(validateManifest(m())).toEqual([]);
     expect(m().status).toBe('installable');
     expect(m().level).toBe('experimental');
-    expect(LEVEL_LABEL[levelOf(m())]).toBe('experimental, seed-only lemmatisation, unreviewed');
+    expect(LEVEL_LABEL[levelOf(m())]).toBe('experimental, unreviewed');
     expect(installablePacks().map((p) => p.packId)).toContain(`pack:${lang}`);
     expect(m().varieties.every((v) => v.writtenStandard === lang)).toBe(true);
     expect(m().varieties[0].label).toContain(standard);

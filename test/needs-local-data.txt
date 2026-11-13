@@ -25,6 +25,7 @@ test/goreview-app/item-parsing-real.test.ts
 test/goreview-app/language-lexical-recognition.test.ts
 test/goreview-app/language-recovery.test.ts
 test/language-packs/runtime.test.ts
+test/loading/goreview.facts.test.ts
 test/multilang/pack-es.test.ts
 test/reader-languages/experimental-packs.test.ts
 

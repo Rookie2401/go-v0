@@ -55,6 +55,7 @@ const RECOGNITION_DIMENSIONS: readonly Dimension[] = ['readingRecognition', 'lis
 export const isRecognitionFamily = (f: ExerciseFamily): boolean => RECOGNITION_DIMENSIONS.includes(REPOSITORY_DIMENSION[FAMILY_DIMENSION[f]]);
 
 export const PROVISIONAL_EXCEPTION = 'exception:provisional-rule-lemma-only';
+export const CONFLICTED_LEXICAL_EXCEPTION = 'exception:conflicted-lexical-base-meaning-only';
 
 // ───────────────────────────── eligibility ─────────────────────────────
 
@@ -75,7 +76,13 @@ export function eligibilityOf(family: ExerciseFamily, facts: UnitFacts): ReviewE
     if (best.candidates.length > 1 && best.chosen === undefined) caveats.push(`ambiguous: ${best.candidates.length} readings, none chosen`);
   }
   if (status === 'invalidated') return { eligible: false, status, reason: 'analysis invalidated' };
-  if (status === 'conflicted') return { eligible: false, status, reason: 'analysis conflicted: sources disagree' };
+  if (status === 'requires-review' && !RECOGNITION_DIMENSIONS.includes(dimension))
+    return { eligible: false, status, reason: 'source morphology requires specialist review; no grammar or production question can be set' };
+  if (status === 'conflicted') {
+    // A verified one-lemma base meaning can support a recognition card even when its inflection is disputed.
+    if (family === 'written-recognition' && facts.lexicalRecognition?.status === 'verified') return { eligible: true, status, caveats: ['morphology is conflicted; only the independently attested base meaning is assessed', ...caveats] };
+    return { eligible: false, status, reason: 'analysis conflicted: sources disagree' };
+  }
   if (status === 'provisional') {
     if (!RECOGNITION_DIMENSIONS.includes(dimension)) {
       const what = GRAMMAR_FAMILIES.includes(family) ? 'grammar' : 'production';

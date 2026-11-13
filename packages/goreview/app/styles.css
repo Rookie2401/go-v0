@@ -298,7 +298,7 @@ html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-rou
     linear-gradient(180deg, #211a15e5 0%, #211a15aa 29%, #35251918 66%, #211a15 100%),
     var(--home-photo-image) var(--home-photo-mobile-position) / cover no-repeat;
 }
-.home .deck-tiles {
+.deck-tiles {
   --deck-inset: clamp(.95rem, 4vw, 1.55rem);
   display: grid;
   gap: .8rem;
@@ -366,7 +366,7 @@ html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-rou
    little slower than it draws back. */
 .deck-tile::before { transition: transform .42s cubic-bezier(.4, 0, .6, 1); }
 .deck-tile[data-lit]::before, .deck-tile:has(:focus-visible)::before { transition: transform .62s cubic-bezier(.22, .61, .36, 1); }
-.home .deck-face {
+.deck-tile > .deck-face {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
@@ -406,10 +406,10 @@ html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-rou
 }
 .deck-face .ec-icon { color: var(--accent); }
 .deck-row > .ec-icon { width: 1.8rem; height: 1.8rem; }
-.home .deck-face:disabled { opacity: 1; color: var(--ink-soft); cursor: default; }
-.home .deck-face:disabled > .ec-icon { visibility: hidden; }
+.deck-tile > .deck-face:disabled { opacity: 1; color: var(--ink-soft); cursor: default; }
+.deck-tile > .deck-face:disabled > .ec-icon { visibility: hidden; }
 /* the tile's wash is the hover; the face itself stays clear over it */
-.home .deck-face:hover:not(:disabled) { color: var(--ink); background: transparent; }
+.deck-tile > .deck-face:hover:not(:disabled) { color: var(--ink); background: transparent; }
 .home .deck-new:hover:not(:disabled) {
   color: var(--ink);
   background: color-mix(in srgb, var(--accent) 8%, transparent);
@@ -429,7 +429,7 @@ html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-rou
   text-underline-offset: .23em;
   -webkit-tap-highlight-color: transparent;
 }
-.home .deck-face:focus-visible, .home .deck-new:focus-visible, .home .home-link:focus-visible {
+.deck-tile > .deck-face:focus-visible, .home .deck-new:focus-visible, .home .home-link:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: -3px;
 }
@@ -463,7 +463,7 @@ html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-rou
 .home-photo-credit a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
 @media (min-width: 720px) {
   [data-home-photo] .home-hero { min-height: 17.5rem; background-position: center, var(--home-photo-desktop-position); }
-  .home .deck-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .deck-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .deck-tile[data-deck="current"] { grid-column: 1 / -1; }
 }
 @media (forced-colors: active) {
@@ -785,6 +785,35 @@ img, svg, video, canvas { max-width: 100%; }
 /* the session summary leads with the result */
 .summary-headline { font-size: 1.5rem; font-weight: 600; margin: 0.25rem 0 0.5rem; }
 
+/* Finished-session summary: a quiet score panel followed by three large, touch-friendly choices. */
+.screen[data-route="review/session"] > .body:has(#summary) { max-width: 47rem; padding-top: clamp(1.15rem, 4vw, 2.1rem); }
+.session #summary { display: grid; gap: 1rem; padding: 0; border: 0; background: transparent; text-align: center; }
+.session .summary-score {
+  display: grid; place-content: center; gap: .6rem; min-height: clamp(6rem, 23vw, 7.1rem);
+  padding: 1.5rem 1rem; border-radius: .8rem; background: #2a211a;
+}
+.session .summary-eyebrow { margin: 0; color: var(--accent); font: 600 .76rem/1.3 system-ui, sans-serif; letter-spacing: .2em; text-transform: uppercase; }
+.session .summary-headline { margin: 0; color: var(--ink); font: clamp(2.35rem, 8vw, 3.45rem)/1.1 var(--serif); font-weight: 500; }
+.summary-next.deck-tiles { gap: clamp(.9rem, 3vw, 1.2rem); margin-inline: 0; }
+.summary-next .deck-face { gap: .85rem; padding-block: clamp(1rem, 3.5vw, 1.4rem); }
+.summary-next .deck-label { gap: .4rem; }
+.summary-next .deck-title { font-size: clamp(1.4rem, 5.7vw, 1.85rem); line-height: 1.1; }
+.summary-next #continue-due-work .deck-title { font-size: clamp(1.9rem, 7.4vw, 2.7rem); }
+.summary-next .deck-caption { line-height: 1.3; }
+.summary-next > :not(.deck-tile) { grid-column: 1 / -1; }
+.summary-schedule { display: grid; justify-items: center; gap: .15rem; margin: .4rem 0; text-align: center; }
+.summary-schedule p { display: flex; align-items: center; justify-content: center; gap: .5rem; margin: 0; font: italic 1.05rem/1.5 var(--serif); }
+.summary-schedule .ec-icon { width: 1.1rem; height: 1.1rem; color: var(--accent); flex: none; }
+.summary-secondary { margin-top: .4rem; border-top: 1px solid var(--rule-strong); padding-top: .7rem; }
+.summary-secondary > summary { text-align: center; }
+.summary-secondary[open] { text-align: left; }
+.session #sum-details { text-align: left; }
+.session #sum-details > summary { text-align: center; }
+.summary-next .status:empty { display: none; min-height: 0; }
+@media (min-width: 48rem) { .session .summary-score { min-height: 9rem; } }
+.screen[data-route="review/session"]:has(#summary) .home-title { font-family: var(--serif); font-weight: 500; letter-spacing: 0; }
+.screen[data-route="review/session"]:has(#summary) .home-title::after { width: 2.6rem; height: 2px; margin-top: .55rem; background: var(--accent); }
+
 /* The session uses the same photographs and palette as the home, with a shallower banner. */
 .shell:has(> .screen[data-route="review/session"]), .screen[data-route="review/session"] {
   display: flex;
@@ -908,7 +937,22 @@ img, svg, video, canvas { max-width: 100%; }
   border-block: 1px solid var(--rule-strong);
 }
 .session .item-tools > summary { padding: .45rem .25rem; font-size: 1.2rem; font-style: italic; }
-.session:has(> .flashcard) > .item-tools { margin-bottom: auto; }
+.session:has(> .flashcard) > .item-tools {
+  position: relative;
+  margin-bottom: auto;
+}
+.session:has(> .flashcard) > .item-tools > .item-tools-panel {
+  position: absolute;
+  z-index: 2;
+  inset-inline: 0;
+  top: 100%;
+  max-block-size: min(20rem, 45dvh);
+  overflow: auto;
+  padding: .75rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: .55rem;
+  background: var(--panel);
+}
 .screen[data-route="review/session"] .home-photo-credit { margin: auto auto 0; padding-top: .8rem; }
 @media (prefers-reduced-motion: no-preference) {
   .flashcard-back { animation: flashcard-reveal .22s ease-out; }

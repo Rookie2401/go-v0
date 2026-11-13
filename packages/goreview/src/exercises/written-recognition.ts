@@ -10,7 +10,7 @@ import { reviewFacts } from '../facts/review-facts';
 import { normalizeAnswer } from '../grading/normalize';
 import { defineBuilder } from './builders';
 import {
-  acceptedMeanings, assemble, attributionLine, contextOf, eligibilityOf, exerciseIdOf, glossSplit, occurrences, precheck, quote, referenceGloss, refuse, rnd, shuffle,
+  acceptedMeanings, assemble, attributionLine, CONFLICTED_LEXICAL_EXCEPTION, contextOf, eligibilityOf, exerciseIdOf, glossSplit, occurrences, precheck, quote, referenceGloss, refuse, rnd, shuffle,
 } from './shared';
 import type { Planned } from './shared';
 import type { BuildContext, UnitFacts } from '../types';
@@ -78,7 +78,8 @@ function plan(target: Parameters<typeof precheck>[1], facts: UnitFacts, ctx: Bui
     .filter((a) => !accepted.some((x) => normalizeAnswer(x, 'loose') === normalizeAnswer(a.answer, 'loose')));
 
   const variant = choice ? 'choice' : 'typed';
-  const tags = [`unit:${facts.unit.unitId}`, ...(lexical ? ['meaning:lexical-base', `source:${lexical.source ?? 'attested-form-reading'}`]
+  const tags = [`unit:${facts.unit.unitId}`, ...(lexical ? ['meaning:lexical-base', `source:${lexical.source ?? 'attested-form-reading'}`,
+    ...(facts.status === 'conflicted' ? [CONFLICTED_LEXICAL_EXCEPTION] : [])]
     : [glossSplit(facts).lexicon.length ? 'gloss:word-list' : 'gloss:dictionary', ...(attributionLine(facts, [reference]) ? ['gloss:dictionary'] : [])])];
   return {
     ok: true,

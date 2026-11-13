@@ -44,6 +44,7 @@
  *   - front matter / prefaces and texts tagged `superseded-by-ladder` are never offered.
  */
 import type { LanguageAdapter, LanguageCode, LearnerItemState, PersonalizedCoverage, Recommendation, RecommendationReason, Text, TextProfile } from '../core';
+import { courseForLang } from '../core';
 import { heldOutIds } from './heldout';
 import { isFrontMatterText, isSuperseded, isStage0Text, learnerSnapshot, rankWholeLibrary, storePager } from './candidates';
 import type { LearnerSnapshot, WholeLibraryDeps } from './candidates';
@@ -149,7 +150,9 @@ export async function recommend(
   // never offered as reading: a draft the ladder absorbed (`superseded-by-ladder`), and a work's front matter / preface
   const notOffered = new Set(texts.filter((t) => isSuperseded(t) || isStage0Text(t) || isFrontMatterText(t)).map((t) => t.id));
   for (const id of await heldOutIds(ctx, userId, ctx.clock())) notOffered.add(id); // held out for an unseen-text check (heldout.ts)
-  const inputAll = texts.filter((t) => INPUT_KINDS.has(t.kind) && !notOffered.has(t.id));
+  const readingKinds = courseForLang(lang)?.primaryReadingKinds;
+  const inputKinds = readingKinds ? new Set<Text['kind']>(readingKinds) : INPUT_KINDS;
+  const inputAll = texts.filter((t) => inputKinds.has(t.kind) && !notOffered.has(t.id));
   const input = inputAll.filter(visible);
   const withheld = inputAll.filter((t) => !visible(t));
   const scripturePublished = texts.some((t) => t.kind === 'scripture' && t.published);

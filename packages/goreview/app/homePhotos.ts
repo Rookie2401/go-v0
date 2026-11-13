@@ -26,6 +26,17 @@ const oslo: HomePhoto = {
   desktopPosition: 'center 54%',
 };
 
+const jerusalem: HomePhoto = {
+  id: 'jerusalem',
+  image: new URL('./photos/jerusalem.webp', import.meta.url).href,
+  place: 'Jerusalem',
+  author: 'Zairon',
+  source: 'https://commons.wikimedia.org/wiki/File:Jerusalem_Tempelberg_1.JPG',
+  ...ccBySa4,
+  mobilePosition: '0 24%',
+  desktopPosition: 'center 21%',
+};
+
 const photos: Readonly<Record<string, HomePhoto>> = {
   sq: {
     id: 'berat',
@@ -90,16 +101,9 @@ const photos: Readonly<Record<string, HomePhoto>> = {
     mobilePosition: 'center 43%',
     desktopPosition: 'center 40%',
   },
-  he: {
-    id: 'jerusalem',
-    image: new URL('./photos/jerusalem.webp', import.meta.url).href,
-    place: 'Jerusalem',
-    author: 'Zairon',
-    source: 'https://commons.wikimedia.org/wiki/File:Jerusalem_Tempelberg_1.JPG',
-    ...ccBySa4,
-    mobilePosition: '0 24%',
-    desktopPosition: 'center 21%',
-  },
+  he: jerusalem,
+  // Biblical Aramaic (Ezra's letters concern the Temple in Jerusalem): the same credited photograph until one of its own is chosen.
+  arc: jerusalem,
   el: {
     id: 'athens',
     image: new URL('./photos/athens.webp', import.meta.url).href,

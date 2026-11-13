@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { type LanguageCode } from '../../src/core';
 import { computePublished, loadBundledCorpus, type CorpusDocument } from '../../src/ingest';
 import { createMemoryStore } from '../../src/core';
+import { ARAMAIC_WORKS } from '../../src/course/aramaic';
 import { ALBANIAN_WORKS } from '../../src/course/albanian';
 import { GERMAN_WORKS } from '../../src/course/german';
 import { HINDI_WORKS } from '../../src/course/hindi';
@@ -11,7 +12,7 @@ import { THAI_WORKS } from '../../src/course/thai';
 import { SPANISH_WORKS } from '../../src/course/spanish';
 
 // The works of every course that bundles texts of its own: a course adds its list here.
-const COURSE_WORKS = [...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS, ...ALBANIAN_WORKS, ...THAI_WORKS, ...LATIN_WORKS];
+const COURSE_WORKS = [...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS, ...ALBANIAN_WORKS, ...THAI_WORKS, ...LATIN_WORKS, ...ARAMAIC_WORKS];
 import { importDocuments, validateBatch } from '../../src/ingest';
 import { clock, registry } from './helpers';
 import { PERIOD_LANGS, SEED_BY_LANG, isSeed, loadCourseCorpus } from './seed';
@@ -278,5 +279,7 @@ describe('the bundled course texts (everything that is not a seed text)', () => 
     const total = first.documents.reduce((n, x) => ({ words: n.words + x.analysisCoverage.words, analysed: n.analysed + x.analysisCoverage.analysed }), { words: 0, analysed: 0 });
     const lowest = [...first.documents].sort((a, b) => a.analysisCoverage.coverage - b.analysisCoverage.coverage).slice(0, 3);
     console.info(`course texts: ${course.length} documents, ${total.words} words, analysis coverage ${total.words ? ((100 * total.analysed) / total.words).toFixed(1) : 'n/a'}% (${total.analysed}/${total.words}); lowest: ${lowest.map((x) => `${x.id} ${(x.analysisCoverage.coverage * 100).toFixed(1)}%`).join(', ')}`);
-  });
+  // This deliberately imports the entire expanded 411-document, 40,545-word corpus twice.
+  // Individual-language and interactive tests retain the normal 20-second limit.
+  }, 60_000);
 });

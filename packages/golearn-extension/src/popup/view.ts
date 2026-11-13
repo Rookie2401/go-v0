@@ -22,8 +22,10 @@ export const LAYER_ORDER: readonly LayerName[] = ['morphology', 'phrase-syntax',
 
 /** Level 2 of the card: what the dictionary's full record and the analyser's generation give, with field states; arrives after the card, never blocks it. */
 export interface EnrichmentView {
-  /** idle: not asked (no dictionary service); loading: asked; ready: answered (fields may still be unknown); unavailable: could not be asked, with why. */
+  /** idle: not asked (this host has no dictionary service, or several words are selected); loading: asked; ready: answered (fields may still be unknown); unavailable: could not be asked, with why. */
   state: 'idle' | 'loading' | 'ready' | 'unavailable';
+  /** A host with no dictionary, whose forms and structure come from its analyser alone (Biblia): said where a dictionary's senses or origin would be. */
+  noDictionary?: string;
   paradigm?: Paradigm;
   /** Feature keys (`featureKey`) of the cells the selected form occupies, as the adapter projects the reading; the card marks them. */
   selected?: string[];

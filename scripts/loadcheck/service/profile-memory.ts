@@ -20,6 +20,8 @@ import { buildSelectionEvent, PENDING_IDENTITY } from '../../../packages/golearn
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const nums = process.argv.slice(2).filter((a) => /^[0-9]+$/.test(a)).map(Number);
+// `light` (2026-11-13): the scan as GoReview asks it now, the light listing of the rows with no catalogue unit; without it, the full unsorted walk it used to be
+const LIGHT = process.argv.includes('light');
 const N = nums[0] ?? 20000, WORDS = nums[1] ?? 3500;
 const gc = (globalThis as { gc?: () => void }).gc;
 const MB = (b: number): number => Math.round(b / 1048576);
@@ -81,7 +83,7 @@ async function homeScan(run: number): Promise<{ pages: number; peakRss: number; 
   let after: string | undefined, pages = 0, rows = 0, peakRss = 0, peakHeap = 0;
   const sample = (): void => { const m = process.memoryUsage(); peakRss = Math.max(peakRss, m.rss); peakHeap = Math.max(peakHeap, m.heapUsed); };
   while (true) {
-    const page = await client.vocabulary({ languageId: 'sq', limit: 100, ...(after ? { after } : {}) });
+    const page = await client.vocabulary({ languageId: 'sq', limit: 100, ...(LIGHT ? { detail: 'light' as const, catalogued: false } : {}), ...(after ? { after } : {}) });
     if (!page.ok) throw new Error(`vocabulary ${page.status}`);
     pages++; rows += page.data.items.length; sample();
     after = page.data.nextCursor;
@@ -93,6 +95,39 @@ async function homeScan(run: number): Promise<{ pages: number; peakRss: number; 
   if (!c.ok) throw new Error(`candidates ${c.status}`);
   mem(`after home scan ${run} (${pages} pages, ${rows} rows, ${k.data.knowledge.length} knowledge)`);
   return { pages, rows, peakRss: MB(peakRss), peakHeap: MB(peakHeap) };
+}
+// `phases` (2026-11-13): each part of the scan on its own, collected before it, so the parts can be told apart: what a part ADDS at its peak
+// (sampled after every request; node:sqlite is synchronous, so nothing can be sampled inside one).
+if (process.argv.includes('phases')) {
+  const phase = async (label: string, run: (sample: () => void) => Promise<string>): Promise<void> => {
+    if (gc) { gc(); gc(); }
+    const b = process.memoryUsage();
+    let heap = b.heapUsed, rss = b.rss, ext = b.external;
+    const sample = (): void => { const m = process.memoryUsage(); heap = Math.max(heap, m.heapUsed); rss = Math.max(rss, m.rss); ext = Math.max(ext, m.external); };
+    const what = await run(sample);
+    console.log(`${label.padEnd(34)} heap +${String(MB(heap - b.heapUsed)).padStart(3)} MB   external +${String(MB(ext - b.external)).padStart(3)} MB   rss +${String(MB(rss - b.rss)).padStart(3)} MB   (${what})`);
+  };
+  const walkOf = (light: boolean) => async (sample: () => void): Promise<string> => {
+    const client = fresh();
+    let after: string | undefined, pages = 0, rows = 0, bytes = 0;
+    while (true) {
+      const page = await client.vocabulary({ languageId: 'sq', limit: 100, ...(light ? { detail: 'light' as const, catalogued: false } : {}), ...(after ? { after } : {}) });
+      if (!page.ok) throw new Error(`vocabulary ${page.status}`);
+      pages++; rows += page.data.items.length; bytes += JSON.stringify(page.data).length; sample();
+      after = page.data.nextCursor;
+      if (!after) break;
+    }
+    return `${pages} pages, ${rows} rows, ${Math.round(bytes / 1024)} KB of JSON`;
+  };
+  for (let round = 1; round <= 2; round++) {
+    console.log(`--- round ${round}`);
+    await phase('full unsorted walk', walkOf(false));
+    await phase('light walk, uncatalogued only', walkOf(true));
+    await phase('knowledge, all of it', async (sample) => { const k = await fresh().knowledge(); sample(); if (!k.ok) throw new Error('knowledge'); return `${k.data.knowledge.length} rows, ${Math.round(JSON.stringify(k.data).length / 1024)} KB of JSON`; });
+    await phase('candidates, first page of 200', async (sample) => { const c = await fresh().candidates(enrolmentId, 200); sample(); if (!c.ok) throw new Error('candidates'); return `${c.data.candidates.length} candidates, ${Math.round(JSON.stringify(c.data).length / 1024)} KB of JSON`; });
+  }
+  try { fs.rmSync(tmpDir, { recursive: true, force: true }); } catch { /* Windows keeps the SQLite file open until exit */ }
+  process.exit(0);
 }
 const scans = [];
 for (let run = 1; run <= 3; run++) scans.push(await homeScan(run));

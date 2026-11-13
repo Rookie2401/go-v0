@@ -13,7 +13,7 @@ import type { LanguageCode } from '../core';
 export type GuessableLanguage = LanguageCode | 'da' | 'en' | 'pt' | 'fr' | 'it' | 'zh' | 'ru' | 'ar' | 'he' | 'el' | 'ko' | 'ja';
 
 export const LANGUAGE_NAMES: Record<GuessableLanguage, string> = {
-  es: 'Spanish', de: 'German', sq: 'Albanian', th: 'Thai', hi: 'Hindi', nb: 'Norwegian (Bokmål)', nn: 'Norwegian (Nynorsk)', da: 'Danish',
+  arc: 'Biblical Aramaic', es: 'Spanish', de: 'German', sq: 'Albanian', th: 'Thai', hi: 'Hindi', nb: 'Norwegian (Bokmål)', nn: 'Norwegian (Nynorsk)', da: 'Danish',
   en: 'English', pt: 'Portuguese', fr: 'French', it: 'Italian', zh: 'Chinese', ru: 'Russian', ar: 'Arabic', he: 'Hebrew', el: 'Greek', la: 'Latin', ko: 'Korean', ja: 'Japanese',
 };
 

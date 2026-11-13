@@ -26,7 +26,9 @@ const sizesIn = (dir: string, rel = ''): Array<{ file: string; bytes: number }> 
   fs.readdirSync(path.join(dir, rel), { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? sizesIn(dir, path.posix.join(rel, e.name)) : [{ file: path.posix.join(rel, e.name), bytes: fs.statSync(path.join(dir, rel, e.name)).size }]));
 
 describe.skipIf(!have)('the built extension', () => {
-  it('keeps bounded bundles with Hindi available for on-device Repository analysis', () => {
+  it('keeps bounded bundles with Hindi available for on-device Repository analysis (Biblical Aramaic stays in its analyser chunk)', () => {
+    // The worker links src/background/arcStub.ts, not the Aramaic corpus seed (vite.config.ts leanAramaic): it would add about 200 KB.
+    expect(fs.readFileSync(path.join(dist, 'background.js'), 'utf8')).not.toContain('מַלְכָּא');
     const sizes = new Map(sizesIn(dist).filter((f) => /\.js$/.test(f.file)).map((f) => [f.file, f.bytes]));
     const table = [...sizes].map(([f, b]) => `  ${f.padEnd(34)} ${(b / KB).toFixed(1).padStart(8)} KB`).join('\n');
     // eslint-disable-next-line no-console
@@ -102,7 +104,8 @@ describe.skipIf(!have)('the built extension', () => {
       expect(code, f).not.toMatch(/\beval\s*\(|new Function\s*\(/);
       // no address the code could call: the service is configured by the learner. The SVG namespace is an identifier, never fetched
       // (the card's drawn speaker, 2026-10-25), so it is taken out before the check
-      expect(code.replaceAll('http://www.w3.org/2000/svg', ''), f).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i);
+      // The SVG namespace and required OSHB data credit identify resources, not a network destination.
+      expect(code.replaceAll('http://www.w3.org/2000/svg', '').replaceAll('https://github.com/openscriptures/morphhb', ''), f).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i);
     }
   });
 

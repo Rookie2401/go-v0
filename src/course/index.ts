@@ -15,3 +15,5 @@ export { COURSE_DOORS } from './doors';
 export type { CourseDoor } from './doors';
 export { createCourseCatalog, mergeWork, stageMetaId } from './catalog';
 export type { CourseCatalogDeps } from './catalog';
+
+export { ARAMAIC_COURSE_ID, ARAMAIC_SHELVES, ARAMAIC_STREAMS, ARAMAIC_WORKS } from './aramaic';

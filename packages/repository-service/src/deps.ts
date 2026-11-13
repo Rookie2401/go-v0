@@ -113,6 +113,8 @@ export interface ServiceInfo {
   schemaVersion?: () => Promise<number | undefined>;
   /** How the backups and the disk stand (`backupHealth.ts`). Absent: not reported. */
   durability?: () => unknown;
+  /** What the process holds in memory, in whole megabytes (resident, V8 heap in use, buffers outside the heap). Absent: not reported. */
+  memory?: () => { rssMb: number; heapUsedMb: number; externalMb: number };
 }
 
 /** Server-held Azure Speech configuration and speech policy. The browser never receives the Azure key. */

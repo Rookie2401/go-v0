@@ -29,8 +29,8 @@ describe('Team onboarding', () => {
     expect(qa(mounted.container, '.onboarding__team')).toHaveLength(0);
     await click(button(mounted.container, 'Select your team'));
     expect(mounted.container.textContent).toContain('Which team are you on?');
-    expect(qa(mounted.container, '.onboarding__country').map((o) => o.textContent)).toEqual(['Honduras', 'Albania', 'Thailand', 'India', 'Germany', 'Norway', 'Israel', 'Greece', 'Rome']); // Norway e915c8ae; Israel/Greece c436e6bb (Hebrew, Greek); Rome (Latin) c436e6bb
-    expect(qa(mounted.container, '.onboarding__lang').map((o) => o.textContent)).toEqual(['Spanish', 'Albanian', 'Thai', 'Hindi', 'German', 'Norwegian (Bokmål)', 'Hebrew', 'Greek', 'Latin']);
+    expect(qa(mounted.container, '.onboarding__country').map((o) => o.textContent)).toEqual(['Honduras', 'Albania', 'Thailand', 'India', 'Germany', 'Norway', 'Israel', 'Greece', 'Rome', 'Aramaic']); // Norway e915c8ae; Israel/Greece c436e6bb (Hebrew, Greek); Rome (Latin) c436e6bb
+    expect(qa(mounted.container, '.onboarding__lang').map((o) => o.textContent)).toEqual(['Spanish', 'Albanian', 'Thai', 'Hindi', 'German', 'Norwegian (Bokmål)', 'Hebrew', 'Greek', 'Latin', 'Aramaic (Biblical)']);
     expect(q(mounted.container, 'nav')).toBeNull(); // not Home yet
     // Back returns to the first screen
     await click(button(mounted.container, 'Back'));

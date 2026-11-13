@@ -14,6 +14,10 @@ Open (no token), used by Caddy, uptime monitors and the hosting gate. Never hold
 monitor (UptimeRobot, Better Stack, Healthchecks) at `https://go-v0.onrender.com/health` (the default address of every system since 2026-10-27; `https://repo.golearn-global-languages.com/health` is the same service through its DNS-only canonical name) and alert on a non-200 or on `ok` missing.
 While a hosted deployment is waiting for a restored database the gate answers `{ "ok": true, "service": "migration-pending" }` instead: treat that as down.
 
+Since 2026-11-13 the answer also carries `"memory": { "rssMb": 124, "heapUsedMb": 41, "externalMb": 3 }`: what the process holds, in whole megabytes
+(resident, V8 heap in use, buffers outside the heap). On 2026-11-12 the 512 MB instance ran out of memory ten times and nothing outside the metrics token
+showed how close it ran. Compiled and at rest the service holds about 125 MB; alert well before the instance's limit (say 400 MB on a 512 MB instance).
+
 ## `GET /metrics` (Prometheus text format 0.0.4)
 
 Guarded, and 404 to anyone who is not allowed (the route does not announce itself):

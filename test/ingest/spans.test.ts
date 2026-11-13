@@ -9,7 +9,7 @@ const bundled = loadBundledCorpus();
 const sentencesOf = (d: CorpusDocument) => d.sections.flatMap((s) => s.paragraphs.flatMap((p) => ('sentences' in p ? p.sentences : [])));
 
 /** The bundled text the span checks run on: the seed story, or for Latin (course texts only, no seed trio) the first Ritchie fable. */
-const SAMPLE = (lang: string): string => (lang === 'la' ? 'ladder-ritchie-perseus' : 'story-01');
+const SAMPLE = (lang: string): string => (lang === 'arc' ? 'daniel-2-4b' : lang === 'la' ? 'ladder-ritchie-perseus' : 'story-01');
 
 describe('span and grapheme integrity — all five languages', () => {
   for (const lang of LANGUAGES) {
@@ -26,7 +26,7 @@ describe('span and grapheme integrity — all five languages', () => {
         }
         for (const sp of adapter.segmentSentences(s.text)) { expect(b.has(sp.start)).toBe(true); expect(b.has(sp.end)).toBe(true); }
       }
-      expect(checked).toBeGreaterThan(150);
+      expect(checked).toBeGreaterThan(lang === 'arc' ? 25 : 150); // full two-excerpt slice, not an invented seed trio
     });
 
     it(`${lang}: author spans on every word of a bundled sentence validate, import and are stored at the exact offsets`, async () => {

@@ -25,6 +25,7 @@ const LOADERS: Readonly<Record<string, () => Promise<LanguageAdapter>>> = Object
   la: () => import('../../../src/adapters/la').then((m) => m.laAdapter),
   he: () => import('../../../src/adapters/he').then((m) => m.heAdapter),
   el: () => import('../../../src/adapters/el').then((m) => m.elAdapter),
+  arc: () => import('../../../src/adapters/arc').then((m) => m.arcAdapter),
 });
 
 const loaded = new Map<string, LanguageAdapter>();

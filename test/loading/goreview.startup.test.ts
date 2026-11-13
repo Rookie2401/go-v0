@@ -21,7 +21,7 @@ import { describe, expect, it, vi } from 'vitest';
 vi.mock('../../packages/language-packs/src/builtins', () => import('../../packages/goreview/app/leanBuiltins'));
 
 const GOLDEN = path.resolve(process.cwd(), 'test/loading/goreview.startup.golden.json');
-const LANGS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el'] as const;
+const LANGS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc'] as const;
 
 type Golden = Record<string, Array<{ text: string; summary: string; sha256: string }>>;
 

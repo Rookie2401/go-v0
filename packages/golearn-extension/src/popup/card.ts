@@ -694,6 +694,22 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
    * Form: the lemma and part of speech, the essential morphology line, and under it the quiet toggle "analysis" (a disclosure, closed by default).
    * It opens GRAMMAR (the constructions the form realizes) and then one dropdown per feature. No table, no evidence chips.
    */
+  /** How the form is built, where the adapter can read it: the root, the pieces of the word, and what the stem, conjugation and agreement contribute. Inside "analysis", so the compact card stays compact. */
+  function fillFormAnalysis(panel: HTMLElement, m: CardModel): void {
+    const f = m.wordAnalysis?.formAnalysis;
+    if (!f) return;
+    const box = h('div', { class: 'more', 'data-row': 'form-analysis' }, h('h4', {}, 'How this form is built'));
+    if (f.root) box.append(h('div', { class: 'row', 'data-row': 'form-root' }, h('span', { class: 'k' }, 'root'), h('span', { class: 'v' }, h('span', { lang: m.languageId }, f.root), f.rootMeaning ? `: ${f.rootMeaning}` : '')));
+    if (f.components.length) {
+      const line = h('div', { class: 'segs', role: 'group', 'data-row': 'form-components', 'aria-label': `Parts of the word: ${f.components.map((c) => `${c.text}: ${c.role}`).join('; ')}` });
+      for (const c of f.components) line.append(h('span', { class: 'seg', title: c.role }, h('span', { lang: m.languageId }, c.text), h('span', { class: 'role', 'aria-hidden': 'true' }, c.role)));
+      box.append(line);
+    }
+    for (const l of f.lines) box.append(h('div', { class: 'row', 'data-row': `form-${l.key}` }, h('span', { class: 'k' }, l.label.toLowerCase()), h('span', { class: 'v' }, l.text)));
+    if (f.limitation) box.append(h('div', { class: 'note', 'data-row': 'form-limitation' }, f.limitation));
+    panel.append(box);
+  }
+
   function fillForm(panel: HTMLElement, m: CardModel, v: CardView): void {
     const lines: HTMLElement[] = [];
     if (m.lemma) lines.push(plainRow('lemma', m.unconfirmed ? 'lemma (guess)' : 'lemma', m.pos ? `${m.lemma} (${m.pos})` : m.lemma, m.languageId));
@@ -705,6 +721,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const btn = h('button', { type: 'button', class: 'analysisBtn', 'aria-expanded': String(analysisOpen), 'aria-controls': 'panel-analysis' }, 'analysis') as HTMLButtonElement;
     const box = h('div', { class: 'analysis', id: 'panel-analysis' });
     if (!analysisOpen) box.setAttribute('hidden', '');
+    fillFormAnalysis(box, m);
     const grammar = h('div', { class: 'more layer l4', 'data-layer': 'grammar' }, h('span', { class: 'label' }, 'Grammar'));
     fillGrammar(grammar, m, v);
     box.append(grammar);
@@ -819,7 +836,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   const enrichNote = (panel: HTMLElement, v: CardView): boolean => {
     const e = v.enrichment;
     if (e.state === 'ready') return true;
-    panel.append(h('div', { class: 'note' }, e.state === 'loading' ? 'Looking this up in the dictionary…' : e.state === 'unavailable' ? (e.message ?? 'The dictionary could not be asked.') : 'No dictionary service is connected, so there is nothing deeper to show.'));
+    panel.append(h('div', { class: 'note' }, e.state === 'loading' ? 'Looking this up in the dictionary…' : e.state === 'unavailable' ? (e.message ?? 'The dictionary could not be asked.') : 'No full dictionary entry is available here. The meanings above come from the analyser\'s own sources.'));
     return false;
   };
 
@@ -848,7 +865,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     }
     const counts = { verified: 0, supported: 0, generated: 0, conflicted: 0 } as Record<string, number>;
     for (const c of p.cells) counts[c.status]++;
-    const parts = (Object.keys(counts) as Array<keyof typeof counts>).filter((k) => counts[k]).map((k) => `${counts[k]} ${STATUS_LABEL[k]}`);
+    const parts = (Object.keys(counts) as Array<keyof typeof counts>).filter((k) => counts[k]).map((k) => `${counts[k]} ${k === 'generated' && p.attested ? 'attested in the sources' : STATUS_LABEL[k]}`);
     panel.append(h('div', { class: 'note' }, `${p.cells.length} form${p.cells.length === 1 ? '' : 's'}${p.template ? ` · ${p.template}` : ''}: ${parts.join('; ')}.`));
     const selected = new Set<ParadigmCell>();
     if (v.enrichment.selected?.length) {
@@ -922,6 +939,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (m.gloss && v.gloss.state === 'ready' && v.gloss.senses.length) panel.append(row('dictionary', 'dictionary', `${v.gloss.senses.slice(0, 4).join('; ')}${v.gloss.attribution ? ` (${v.gloss.attribution})` : ''}`, 'analysis', true));
     if (!enrichNote(panel, v)) return;
     const e = v.enrichment;
+    if (e.noDictionary) { panel.append(h('div', { class: 'note', 'data-row': 'no-dictionary' }, e.noDictionary)); return; }
     if (!e.senses?.length) { panel.append(h('div', { class: 'note' }, e.message ? `The dictionary did not provide senses for this lemma: ${e.message}` : 'The dictionary has no entry for this lemma.')); }
     else {
       const ol = h('ol', { class: 'senses' });
@@ -945,6 +963,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
   function fillOrigin(panel: HTMLElement, m: CardModel, v: CardView): void {
     if (!enrichNote(panel, v)) return;
+    if (v.enrichment.noDictionary) { panel.append(h('div', { class: 'note', 'data-row': 'no-dictionary' }, v.enrichment.noDictionary)); return; }
     const o = v.enrichment.etymology;
     if (!o || o.status === 'unknown') {
       panel.append(h('div', { class: 'note' }, v.enrichment.message

@@ -394,8 +394,12 @@ route('GET', '/health', false, async (ctx) => {
   }
   let durability: unknown;
   try { durability = info?.durability?.(); } catch { durability = undefined; }
+  // what the process holds, where the host can say (2026-11-13: the 512 MB instance ran out of memory and nothing outside the metrics token showed how close it ran)
+  let memory: unknown;
+  try { memory = info?.memory?.(); } catch { memory = undefined; }
   return respond(200, {
     ...(durability ? { durability } : {}),
+    ...(memory ? { memory } : {}),
     ok: true, service: 'repository', version: SERVICE_VERSION, contractVersion: CONTRACT_VERSION,
     ...(info ? { store: info.storeKind, ...(info.commit ? { commit: info.commit } : {}), ...(schemaVersion !== undefined ? { migrations: schemaVersion } : {}), uptimeSec: Math.max(0, Math.floor((Date.now() - info.startedAt) / 1000)) } : {}),
   });
@@ -828,6 +832,20 @@ route('GET', '/vocabulary', true, async (ctx) => {
   if (reviewStatus && !['none', 'active', 'suspended'].includes(reviewStatus)) throw new Refusal(422, 'invalid-query', '"reviewStatus" must be none, active, or suspended.');
   const sourceRef = ctx.query.get('sourceRef') ?? undefined;
   if (sourceRef !== undefined && (!sourceRef.length || sourceRef.length > 2048)) throw new Refusal(422, 'invalid-query', '"sourceRef" must be a non-empty reference value of at most 2048 characters.');
+  // The light listing (2026-11-13), for a caller that walks the whole vocabulary and reads only the knowledge rows (GoReview's recovery scan): no
+  // surface forms, sources, dates or review status are worked out, so a row costs its knowledge row and its catalogue unit and nothing of the event
+  // log. A full unsorted page reads up to 25 events for each of its 100 rows; 35 such pages took the 512 MB instance about 100 MB.
+  // `catalogued=false` keeps only the rows with no catalogue unit, `true` only those with one. Both are refused together with what the full pass decides.
+  const detailParam = ctx.query.get('detail') ?? undefined;
+  if (detailParam !== undefined && detailParam !== 'light' && detailParam !== 'full') throw new Refusal(422, 'invalid-query', '"detail" must be light or full.');
+  const light = detailParam === 'light';
+  const cataloguedParam = ctx.query.get('catalogued');
+  if (cataloguedParam !== null && cataloguedParam !== 'true' && cataloguedParam !== 'false') throw new Refusal(422, 'invalid-query', '"catalogued" must be true or false.');
+  const catalogued = cataloguedParam === null ? undefined : cataloguedParam === 'true';
+  if (catalogued !== undefined && !light) throw new Refusal(422, 'invalid-query', '"catalogued" needs detail=light.');
+  if (light && (sorted || search || requiresAssistance !== undefined || reviewStatus || sourceRef !== undefined || Object.keys(dates).length > 0)) {
+    throw new Refusal(422, 'invalid-query', 'detail=light lists in unit order and takes only languageId, level, minEncounters, unresolved, catalogued, limit and after.');
+  }
   const { store, engine } = ctx.deps;
   const learnerId = ctx.session.learnerId;
   await engine.knowledge(learnerId, []); // ensure the projection and alias re-keying are current
@@ -934,6 +952,36 @@ route('GET', '/vocabulary', true, async (ctx) => {
     : (await store.getKnowledge(learnerId)).filter((r) => r.languageId === languageId && r.unitId > cursor).slice(0, size);
   const encounteredOf = (rows: Knowledge[]): Knowledge[] => rows.filter((r) => r.encounters > 0 && (!level || r.level === level));
 
+  if (light) {
+    // Unit order and the unsorted listing's cursors (a unit id). Each store page is filtered and let go before the next is read, so the walk holds
+    // one page of rows however long the vocabulary is; with `catalogued=false` a whole vocabulary usually answers in one small response.
+    const matches: Match[] = [];
+    let cursor = after ?? '';
+    let hasMore = false;
+    const pageSize = 500;
+    walk: for (;;) {
+      const rows = await storePage(cursor, pageSize);
+      if (!rows.length) break;
+      const wanted = encounteredOf(rows).filter((k) => k.encounters >= minEncounters);
+      const unitsById = new Map((wanted.length ? await store.getUnits(wanted.map((k) => k.unitId)) : []).map((u) => [u.unitId, u]));
+      const wantedIds = new Set(wanted.map((k) => k.unitId));
+      for (const knowledge of rows) {
+        cursor = knowledge.unitId;
+        if (!wantedIds.has(knowledge.unitId)) continue;
+        const unit = unitsById.get(knowledge.unitId);
+        if (catalogued !== undefined && !!unit !== catalogued) continue;
+        if (unresolved !== undefined) {
+          const status = knowledge.analysisStatus ?? unit?.status;
+          if ((status !== 'verified' && status !== 'high-confidence') !== unresolved) continue;
+        }
+        matches.push({ knowledge, ...(unit ? { unit } : {}), surfaceForms: unit ? [unit.label] : [], sources: [] });
+        if (matches.length >= limit) { hasMore = true; break walk; }
+      }
+      if (rows.length < pageSize) break;
+    }
+    return respond(200, { items: matches, catalog, detail: 'light', ...(hasMore ? { nextCursor: cursor } : {}) });
+  }
+
   if (!sorted) {
     // The omitted-sort path stays indexed unitId pagination, for existing clients and cursors: every returned row gets the full treatment, page by page.
     const matches: Match[] = [];
@@ -1013,7 +1061,9 @@ route('GET', '/vocabulary', true, async (ctx) => {
     ordered = all;
     dropExpired(caches, nowMs);
     if (caches.size >= 32) caches.delete(caches.keys().next().value as string);
-    caches.set(filterSig, { learnerId, head, at: nowMs, ordered });
+    const entry = { learnerId, head, at: nowMs, ordered };
+    caches.set(filterSig, entry);
+    forgetAfterWindow(caches, filterSig, entry);
   }
   // Locate the boundary by its deterministic unit id. The other key fields are
   // carried for an opaque, self-describing cursor, but retention can decay on a
@@ -1049,6 +1099,16 @@ const orderCaches = new WeakMap<object, Map<string, { learnerId: string; head: n
 /** An entry past its window is never served again; it is also not kept: every insert drops the expired ones, so a learner's list does not sit in memory behind a quiet key. */
 function dropExpired(cache: Map<string, { at: number }>, nowMs: number): void {
   for (const [key, entry] of cache) if (!(nowMs - entry.at >= 0 && nowMs - entry.at < CANDIDATE_CACHE_MS)) cache.delete(key);
+}
+
+/**
+ * An entry is useless once its window has passed, and until 2026-11-13 it stayed until the next insert dropped it: a learner's whole ranked list and
+ * ordered vocabulary sat in memory after their last request. Each entry now leaves on its own when the window ends (unless a newer one took its key).
+ * The timer never keeps the process alive.
+ */
+function forgetAfterWindow<E>(cache: Map<string, E>, key: string, entry: E): void {
+  const timer = setTimeout(() => { if (cache.get(key) === entry) cache.delete(key); }, CANDIDATE_CACHE_MS + 1000);
+  (timer as { unref?: () => void }).unref?.();
 }
 
 /**
@@ -1090,7 +1150,9 @@ async function rankedCandidates(ctx: Ctx, enrolmentId: string, objectiveDimensio
   const ranked = await engine.candidates(learnerId, enrolmentId, { limit: Number.MAX_SAFE_INTEGER, now: ctx.now(), objectiveDimensions });
   dropExpired(cache, nowMs);
   if (cache.size >= 64) cache.delete(cache.keys().next().value as string);
-  cache.set(key, { learnerId, head, at: nowMs, ranked });
+  const entry = { learnerId, head, at: nowMs, ranked };
+  cache.set(key, entry);
+  forgetAfterWindow(cache, key, entry);
   return ranked;
 }
 

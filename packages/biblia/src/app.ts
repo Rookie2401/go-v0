@@ -8,7 +8,9 @@
  * `EncounterRecorded` (surface 'biblia-reading') for the unit ids of the verse's other words, so the Repository learns what was read without a tap.
  */
 import { createCardUI, type CardUI } from '../../golearn-extension/src/popup/card';
-import type { CardView } from '../../golearn-extension/src/popup/view';
+import type { CardView, EnrichmentView } from '../../golearn-extension/src/popup/view';
+import { buildParadigm, selectedCellKeys, structureOf } from '../../golearn-extension/src/content/enrich';
+import type { LanguageAdapter, PartOfSpeech } from '../../../src/core';
 import type { CardModel } from '../../golearn-extension/src/parser';
 import { parseSelection } from '../../golearn-extension/src/parser';
 import { hasAnalyser, languageMeta, registerAnalyser } from '../../golearn-extension/src/parser/registry';
@@ -381,6 +383,20 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     return buildEncounterEvent({ languageId: ref.lang, itemIds: [...ids], readerId: READER_ID, identity: base.identity, version: base.version, sessionId: base.sessionId, now: base.now, language: base.language, surface: 'biblia-reading', tokenCount: sites.length, contextKind: 'sentence' });
   }
 
+  /**
+   * The deeper sections of the card from the analyser alone: Biblia has no dictionary service, but its form indexes can list the lemma's attested forms and
+   * the word's parts. Where a dictionary's senses and origin would go, the card says that none is carried here and where the meanings do come from.
+   */
+  function localEnrichment(adapter: LanguageAdapter, lang: string, model: CardModel): EnrichmentView {
+    const hint = { features: Object.fromEntries(model.features.map((f) => [f.key, f.value])), surface: model.surface };
+    const paradigm = model.lemma && model.pos ? buildParadigm(adapter, lang, model.lemma, model.pos as PartOfSpeech, undefined, hint) : undefined;
+    return {
+      state: 'ready', paradigm, selected: selectedCellKeys(adapter, paradigm, hint.features, model.surface),
+      structure: structureOf(undefined, adapter, model.lemma ?? model.surface.trim(), model.pos, model.surface, hint.features, { languageId: lang }),
+      noDictionary: 'Biblia does not carry full dictionary entries, so no further senses or word history are listed here. The meanings above come from the lexicon data of the analyser, named under "view sources".',
+    };
+  }
+
   async function lookup(ref: WordRef, button: HTMLElement): Promise<void> {
     if (!hasAnalyser(ref.lang)) { showNotice(`The GoLearn parser does not list ${LANGUAGE_NAME[ref.lang]} on this build; nothing can be looked up.`); return; }
     clearSelection();
@@ -426,6 +442,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         ...(profileNow() ?? {}),
         // "view sources": the analyser's own sources for this language (the Open Scriptures morphology, MorphGNT, the Wiktionary tables, the rules)
         sources: Object.values((ref.lang === 'he' ? heAdapter : elAdapter).sources ?? {}).map((s) => ({ label: s.label, ...(s.licence ? { licence: s.licence } : {}) })),
+        enrichment: localEnrichment(ref.lang === 'he' ? heAdapter : elAdapter, ref.lang, model),
       },
       actions: {
         onLayer: (layer) => { if (ictx) void deps.recorder.record([buildAssistanceEvent({ ...ictx, now: deps.now() }, layer as ExpandedLayer)]).then((r2) => { if (!r2.ok) showNotice(`Could not record this: ${r2.message ?? 'unknown reason'}.`); }); },

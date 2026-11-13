@@ -258,7 +258,10 @@ async function recoveryScan(ctx: AppContext, api: Awaited<ReturnType<AppContext[
       while (true) {
         // unsorted (2026-11-08): this scan reads every row and its order is never used, and a sorted page makes the service read and sort the whole
         // vocabulary again for each page of 100 (a large vocabulary paid for that once per page, on every visit to the home)
-        const page = await api.vocabulary({ languageId: identity.languageId, limit: 100, ...(after ? { after } : {}) });
+        // light, and only the rows with no catalogue unit (2026-11-13): the scan reads nothing else of a row, and a full page made the service read up to
+        // 25 events for each of its 100 rows (35 such pages cost it about 100 MB). A service older than that ignores both and answers in full, so the
+        // filter below stays
+        const page = await api.vocabulary({ languageId: identity.languageId, limit: 100, detail: 'light', catalogued: false, ...(after ? { after } : {}) });
         if (!page.ok) throw new Error(page.message || `the service answered ${page.status}`);
         if (total < 0) {
           total = typeof page.data.catalog?.total === 'number' ? page.data.catalog.total : -1;

@@ -80,6 +80,7 @@ const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.keepWarm,
   MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
   MSG.activeProfile, // the scan's learner-model question: device rows only, and only while Active is on (below)
+  MSG.readingProfile, // explicit page analysis, device-only: no raw forms leave the browser
   MSG.confirmForms, // the scan's dictionary question: public dictionary data only, forms in, lemmas out
   MSG.translateSentence,
   MSG.speech,
@@ -538,6 +539,17 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       case MSG.metrics: return storeMetric(m);
       case MSG.keepWarm: void localRepo.open(); return { ok: true }; // a page is being read: start the open (once), answer at once; the reply resets the browser's idle timer
       case MSG.active: if (kind === 'content') void localRepo.open(); return active.handle(m, kind); // a page load pre-warms the device Repository
+      case MSG.readingProfile: {
+        // A popup-initiated Reading Analysis request uses the local Repository. The ordinary profile
+        // endpoint strips form IDs from long lists to avoid reconstructing page text remotely.
+        // This read-only device path never uploads text, never requires GoLearn Active, and is bounded.
+        if (kind !== 'content') return { ok: false, error: 'unavailable' };
+        const languageId = typeof m.languageId === 'string' ? m.languageId : '';
+        if (!isLanguageId(languageId)) return { ok: false, error: 'invalid-language' };
+        const ids = Array.isArray(m.unitIds) ? m.unitIds.filter(isUnitId).slice(0, 60) : [];
+        if (!ids.length) return { ok: false, error: 'invalid-units' };
+        return profile.knowledgeFor(ids, languageId, { deviceOnly: true });
+      }
       case MSG.activeProfile: {
         // the words on the learner's screen, by the learner's own switch: never trimmed like a long selection, never sent to the service
         const s = await active.get();

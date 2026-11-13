@@ -1,7 +1,7 @@
-import { createScanner, type ScanToken } from '../active/scan';
+import { applyConfirmations, createScanner, formsToConfirm, type ScanToken, type Confirmations } from '../active/scan';
 import { levelOfRows } from '../active/levels';
 import { wordInScript } from '../active/pageLanguages';
-import { isUnitId, type KnowledgeView } from '../protocol';
+import { isUnitId, MAX_CONFIRM_FORMS, type KnowledgeView } from '../protocol';
 import type { createBridge } from '../content/services';
 import { aggregateCoverage } from './coverage';
 import type { ReadingAnalysisReply } from './protocol';
@@ -11,7 +11,8 @@ type Bridge = ReturnType<typeof createBridge>;
 const MAIN = 'main, article, [role="main"], [data-reader-content], [data-chapter]';
 const MAX_CHARS = 100_000;
 const MAX_TOKENS = 12_000;
-const PROFILE_BATCH = 100;
+// The background profile service accepts no more than 60 IDs per request.
+const PROFILE_BATCH = 60;
 
 export async function analyzePage(
   doc: Document,
@@ -60,6 +61,39 @@ export async function analyzePage(
     if (truncated || tokens.length >= MAX_TOKENS) { truncated = true; break; }
   }
   if (!tokens.length) return { ok: false, code: 'no-text' };
+
+  // Reuse the existing forms-index confirmation step from GoLearn Active. Without it,
+  // many ordinary inflections are marked unresolved even when the dictionary recognizes
+  // them. Preserve ambiguity: a dictionary fallback must not override conflicting parses.
+  if (bridge.confirmForms) {
+    const eligible = tokens.filter((token) => !token.ambiguous);
+    const outstanding = formsToConfirm(eligible, languageId, new Map());
+    const answers = new Map<string, string | null>();
+    const prefix = `form:${languageId}:`;
+    for (let i = 0; i < outstanding.length; i += MAX_CONFIRM_FORMS) {
+      signal.throwIfAborted();
+      const ids = outstanding.slice(i, i + MAX_CONFIRM_FORMS);
+      let reply;
+      try {
+        reply = await bridge.confirmForms({ languageId, forms: ids.map((id) => id.slice(prefix.length)) });
+      } catch { reply = undefined; }
+      signal.throwIfAborted();
+      if (!reply?.ok || !reply.forms || typeof reply.forms !== 'object') break;
+      for (const id of ids) {
+        const form = id.slice(prefix.length);
+        if (!Object.prototype.hasOwnProperty.call(reply.forms, form)) continue;
+        const row = reply.forms[form];
+        const lemma = Array.isArray(row) && typeof row[0] === 'string' && row[0] ? row[0] : undefined;
+        const pos = Array.isArray(row) && typeof row[1] === 'string' && /^[A-Za-z]{1,8}$/.test(row[1]) ? row[1] : undefined;
+        const lemmaId = lemma ? `lemma:${languageId}:${lemma}${pos ? ':' + pos : ''}` : undefined;
+        if (lemmaId && isUnitId(lemmaId)) answers.set(id, lemmaId);
+        else if (!reply.reason) answers.set(id, null);
+      }
+      if (reply.reason) break;
+    }
+    applyConfirmations(eligible, answers as Confirmations);
+  }
+  signal.throwIfAborted();
   const candidates = tokens.map((token) => token.known && token.ids.every(isUnitId) ? token.ids[1] : undefined);
   const ids = [...new Set(tokens.flatMap((token, index) => candidates[index] ? token.ids : []))];
   const rows = new Map<string, KnowledgeView>();
@@ -67,8 +101,13 @@ export async function analyzePage(
   for (let i = 0; i < ids.length; i += PROFILE_BATCH) {
     signal.throwIfAborted();
     const unitIds = ids.slice(i, i + PROFILE_BATCH);
-    const reply = await bridge.profile({ languageId, unitIds });
-    if (!reply?.ok || !reply.rows) return { ok: false, code: 'unavailable' };
+    // The ordinary profile endpoint treats >4 word IDs as a long selection and strips
+    // form IDs, silently corrupting coverage. The device-only path preserves both
+    // form and lemma evidence without uploading page vocabulary to the service.
+    const reply = await bridge.readingProfile?.({ languageId, unitIds });
+    if (!reply?.ok || !reply.rows || reply.source !== 'device' || reply.error) {
+      return { ok: false, code: 'unavailable' };
+    }
     cached ||= !!reply.stale || (reply.connected && reply.source === 'device');
     for (const id of unitIds) if (reply.rows[id]) rows.set(id, reply.rows[id]);
   }

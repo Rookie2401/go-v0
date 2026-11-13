@@ -20,6 +20,8 @@ export interface MetricSink { append(row: MetricsRow): Promise<void> }
 export interface ContentServices {
   status(): Promise<PublicStatus | undefined>;
   profile(req: ProfileRequest): Promise<ProfileReply | undefined>;
+  /** On-demand analysis reads local vocabulary only. It is separate from remote profile (which trims long selections). */
+  readingProfile?(req: ProfileRequest): Promise<ProfileReply | undefined>;
   gloss(req: GlossRequest): Promise<GlossReply | undefined>;
   explain(req: ExplainRequest): Promise<ExplainReply | undefined>;
   correct(req: CorrectRequest): Promise<CorrectReply | undefined>;
@@ -80,6 +82,7 @@ export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
     // that times out is reported as not recorded although the worker goes on to store it, so these two wait longer than a card's question
     status: () => call<PublicStatus>(MSG.status, {}, WAKE_TIMEOUT_MS),
     profile: (req) => call<ProfileReply>(MSG.profile, { ...req }, timeoutMs, true),
+    readingProfile: (req) => call<ProfileReply>(MSG.readingProfile, { ...req }, timeoutMs, true),
     gloss: (req) => call<GlossReply>(MSG.gloss, { ...req }, timeoutMs, true),
     explain: (req) => call<ExplainReply>(MSG.explain, { ...req }, timeoutMs, true),
     correct: (req) => call<CorrectReply>(MSG.correct, { ...req }),

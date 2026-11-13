@@ -30,6 +30,8 @@ export interface ScanToken {
    * then set and the lemma id added after tokenising (`applyConfirmations`), never by the analyser (2026-10-27).
    */
   confirmed?: boolean;
+  /** Analysis-only: credible competing lemma/POS readings cannot safely be credited from a dictionary fallback. */
+  ambiguous?: boolean;
 }
 
 /** What the dictionary said about a normalised form id (`form:<lang>:<normalised>`): the lemma id to credit it with, or `null` = the dictionary does not have it. */
@@ -183,7 +185,7 @@ export function createScanner(opts: ScannerOptions): Scanner {
         && (candidate.lemma !== best?.lemma || candidate.pos !== best?.pos));
       const known = !ambiguous && !!best?.lemma && !best.unconfirmed && best.confidence >= LEMMA_MIN_CONFIDENCE;
       if (known) ids.push(`lemma:${languageId}:${best!.lemma}${best!.pos ? ':' + best!.pos : ''}`);
-      out.push({ node, start, end, surface: t.surface, ids, known });
+      out.push({ node, start, end, surface: t.surface, ids, known, ...(ambiguous ? { ambiguous: true } : {}) });
     });
     (cache.get(node) ?? cache.set(node, new Map()).get(node)!).set(languageId, { data: raw, tokens: out });
     return out;

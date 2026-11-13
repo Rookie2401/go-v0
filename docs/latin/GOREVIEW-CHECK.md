@@ -41,3 +41,21 @@ desktop app's browser pane against the real local Repository service, not a fake
    (lookups still work because the analyser registry is the repo's).
 4. **Service worker on http://127.0.0.1** logs "An unknown error occurred when fetching the script" in the pane (a known pane
    limitation, not Latin); the live HTTPS site registers it.
+
+## Re-check of finding 1 (2026-11-13, master 24bdc6b3)
+
+After 2cd8872d (curated Vulgate-first leads for the 520 commonest lemmas), the card was built the way GoReview builds it: the real Latin
+pack's facts provider, then the written-recognition exercise (`test/course/latin-goreview-gloss.test.ts`).
+
+| Word | First meaning in the facts | What the card accepts / says | Verdict |
+|---|---|---|---|
+| *gratia* | grace | accepts "grace"; "“gratia” means “grace”" | fixed |
+| *pax* | peace | accepts "peace" | right |
+| *peccatum* | sin | accepts "sin" | right |
+| *credo* | to believe, to trust in, to give credence to | accepts only "to lend, to loan"; says "“credo” means “to confide in, have confidence in”" | **wrong on the card** |
+
+The facts are right; the card is not. The shared builder (`packages/goreview/src/exercises/shared.ts`, `acceptedMeanings` and
+`referenceGloss`) keeps only dictionary senses of at most four words (six for the explanation), judged on the WHOLE sense before it is
+split into its parts. *credo*'s right senses are long, so the one short sense left is "to lend, to loan". This is not Latin's code: it
+affects any word whose dictionary senses are long, in every language. The fix is to judge the parts ("to believe", "to trust in") rather
+than the whole sense. The test pins it with `it.fails`, so it turns red (to be flipped) the day the builder is fixed.

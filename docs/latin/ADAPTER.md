@@ -167,3 +167,25 @@ Principia's Neo-Latin. Tests: the Latin suites (228) and the typecheck are green
 Shared files touched, each additively (phase 1): `src/adapters/index.ts` (la import, export and row; `BY_LANG` restored to the strict `Record<LanguageCode, LanguageAdapter>`, the Partial comment and the `.filter` removed), `packages/golearn-extension/src/analysers/loaders.ts` (one `IMPORTS` row),
 `packages/golearn-extension/src/parser/registry.ts` (one `LANGUAGE_META` row), `packages/golearn-extension/vite.config.ts` (`'la'` in `ANALYSER_IDS` and in the comment), `test/audit/conformance.support.ts` (two allow-list rows), `test/audit/conformance.imports.test.ts` (`'la'` in `ANALYSER_ENTRIES`),
 `test/extension/analysers.loading.test.ts` and `test/reader-languages/experimental-packs.test.ts` (`'la'` in the expected parser-language list). Phase 2 touched no shared file besides regenerating `docs/latin/EVAL.md`, `data/review/latin-eval/report.json` and `misses.json` with the full lexicon, as instructed.
+
+## Production checks (GoTell), 2026-11-13
+
+`checkProduction` runs `src/adapters/latin/production.ts`: a first set of five machine-drafted rules, no Latinist has checked them
+(`support.productionChecks: 'limited'`). Each fires only on its own unambiguous shape, reads every reading of the words it needs, and
+says nothing when a fact is missing; an empty result means nothing was found, never that the Latin is right.
+
+1. A detached enclitic, *populus que* → *populusque* (spelling, with the joined form as the suggestion).
+2. *a* / *e* before a vowel or *h*, *a amico* → *ab amico*, *e urbe* → *ex urbe* (spelling, with the suggestion); a consonantal *i*
+   (*Ierusalem*, *iam*) counts as a consonant.
+3. A preposition before a case it never takes, *ad urbe*, *sine aquam* (case). Only *ad, apud, erga, inter, ob, per, trans* and
+   *a/ab/abs, de, e/ex, prae, pro, sine*; never *cum* (in prose mostly the conjunction), never the prepositions that are often adverbs
+   (*post, ante, contra, prope …*), and never when the next word can be a genitive (a genitive often stands before the governed noun).
+4. *ego* / *tu* beginning a clause directly before a finite verb of another person or number, *ego amat* (agreement); *nos* and *vos*
+   are not checked (they are as often objects).
+5. A first- or second-person form of *possum, volo, nolo, malo, debeo, soleo, incipio* directly before a finite verb of the same person
+   and number, *possum venio* → an infinitive is needed (syntax).
+
+**The false-alarm gate.** `test/course/latin-production.test.ts` runs the five rules over every sentence of `data/corpus/la` (the
+Clementine Vulgate chapters, Ritchie's *Fabulae Faciles*, Caesar's *Gallic War* 1): any flag on native prose is a false alarm, and the
+test holds the count at zero. The first draft raised 54 there (mostly *cum* as conjunction, genitives before the governed noun,
+*post* as an adverb, *nos/vos* as objects, and clause-final *vellet / vult*); each rule was narrowed until none remained.

@@ -27,8 +27,8 @@ describe('action popup page', () => {
     expect(document.querySelectorAll('input[type="checkbox"]')).toHaveLength(1);
     expect($('active')).toBeTruthy();
     for (const id of ['enabled', 'speak', 'active-revoke', 'count', 'export-events', 'export-metrics', 'delete-all', 'delete-note', 'output']) expect(document.getElementById(id), id).toBeNull();
-    // 2026-10-28 (the owner): the brand is the one button; Practise and Sync now are gone, and so is every explanation
-    expect([...document.querySelectorAll('button')].map((b) => b.id)).toEqual(['open-setup']);
+    // 2026-10-28 (the owner): the brand and Reading Analysis are the only buttons
+    expect([...document.querySelectorAll('button')].map((b) => b.id)).toEqual(['open-setup', 'analyze-page']);
     expect(html).not.toMatch(/export and deletion|Practise|Sync now/);
   });
 

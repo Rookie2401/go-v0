@@ -16,7 +16,7 @@ const body = /<body>([\s\S]*)<\/body>/.exec(html)![1].replace(/<script[\s\S]*?<\
 afterEach(() => { document.body.innerHTML = ''; });
 
 describe('the popup', () => {
-  it('has no Practise button and opens no tab of its own; the brand (GOLEARN →) is the one button, and it opens the setup page', async () => {
+  it('has no Practise button and opens no tab of its own; the brand (GOLEARN →) is the setup button, and it opens the setup page', async () => {
     document.body.innerHTML = body;
     const fake = createChromeFake();
     const opened: string[] = [];
@@ -25,7 +25,7 @@ describe('the popup', () => {
     expect(document.getElementById('practise')).toBeNull();
     expect(document.body.textContent).not.toMatch(/Practise|no account needed/);
     const buttons = [...document.querySelectorAll('button')];
-    expect(buttons.map((b) => b.id)).toEqual(['open-setup']);
+    expect(buttons.map((b) => b.id)).toEqual(['open-setup', 'analyze-page']);
     expect(buttons[0].getAttribute('aria-label')).toBe('Open GoLearn setup');
     expect(buttons[0].querySelector('.go-brand-mark')).not.toBeNull();
     expect(buttons[0].textContent).toBe('GoLearn→');

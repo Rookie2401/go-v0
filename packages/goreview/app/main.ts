@@ -2,6 +2,7 @@
  * Entry point: builds the real environment for `createApp` (the origin's localStorage, fetch, GoListen, GoReview's builders)
  * and starts the application. Tests build their own `Deps` and call `createApp` directly.
  */
+import { SIGN_IN_TIMEOUT_MS } from './signin';
 import { evidenceFor, ratingFor, registry } from '../src';
 import { createRepositoryApi } from '../../repository-service/src/api';
 import { createMemoryArea } from '../../repository-sync/src';
@@ -61,7 +62,10 @@ export async function createRealDeps(fetcher?: typeof fetch): Promise<Deps> {
     const value = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
     let path = value;
     try { path = new URL(value, location.href).pathname; } catch { /* relative-path matcher below */ }
-    const timeout = path.endsWith('/sync/wait') ? 30_000 : /\/sync\/wait(?:\?|$)/.test(value) ? 30_000 : 8_000;
+    // signing in or creating an account may meet a service that is waking up or redeploying: it gets 45 s, not 8 (the owner, 2026-11-12)
+    const method = (init.method ?? (typeof input === 'object' && 'method' in input ? input.method : 'GET')).toUpperCase();
+    const signIn = method === 'POST' && /\/(sessions|accounts)$/.test(path);
+    const timeout = signIn ? SIGN_IN_TIMEOUT_MS : path.endsWith('/sync/wait') ? 30_000 : /\/sync\/wait(?:\?|$)/.test(value) ? 30_000 : 8_000;
     return withApiRequestTimeout(rawFetch, timeout)(input, init);
   };
   const apiFetch = doFetch;
@@ -74,10 +78,11 @@ export async function createRealDeps(fetcher?: typeof fetch): Promise<Deps> {
   // the extension works on the device with no service address at all (an account is optional there)
   if (resolved.source === 'none' && isProductionBuild() && !ext) throw new ConfigUnavailableError();
   const config = resolved.config;
+  const packFacts = packFactsFor({ fetch: doFetch, baseUrl: config.assetBaseUrl ?? './', lexiconBaseUrl: './' });
   const engine = createReviewEngine({
     builders: registry, evidenceFor, ratingFor,
     warmLanguage: (languageId) => { loadBuiltInAdapter(languageId).catch(() => { /* met again, and reported, when the language is first used */ }); },
-    factsFor: packFactsFor({ fetch: doFetch, baseUrl: config.assetBaseUrl ?? './', lexiconBaseUrl: './' }),
+    factsFor: packFacts,
   });
   // Inside the GoLearn extension (this page is served from chrome-extension://…/review/) GoReview works on the device with no account: the
   // on-device Repository is reached through the extension's worker. Anywhere else (the hosted copy) there is none, and an account is needed.
@@ -92,11 +97,13 @@ export async function createRealDeps(fetcher?: typeof fetch): Promise<Deps> {
     },
     createApi: (baseUrl, token) => createRepositoryApi({ baseUrl, fetch: apiFetch, token }),
     engine,
+    paradigm: packFacts.paradigm,
     audio: (consent, accountToken) => createAudioDeps({ consent, fetch: speechFetch,
       ...(!ext ? { speechProxyBase: `${resolveServiceUrl(config).replace(/\/+$/, '')}/api/speech`, ...(accountToken ? { accountToken } : {}) } : {}),
       ...(ext ? { extensionRuntime: ext.runtime, extensionUrl: `${location.protocol}//${location.host}${location.pathname}` } : {}),
     }),
     ...(document.querySelector('meta[name="goreview-edition"][content="review"]') ? { edition: 'review' as const } : {}),
+    enableGoTell: import.meta.env.DEV && import.meta.env.VITE_GOREVIEW_GOTELL === 'true',
     now: () => new Date(), newId: uuid, random: Math.random, appVersion: APP_VERSION, autoSync: true,
   };
 }

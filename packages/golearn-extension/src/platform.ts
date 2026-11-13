@@ -163,6 +163,8 @@ export const MSG = {
   /** The popup's language switch (2026-10-25): make one of the chosen languages the one GoLearn reads in, on the device and on the account; pages that are Active start again in it. */
   useLanguage: 'golearn:use-language',
   clearLocal: 'golearn:clear-local',
+  /** "Download for offline use" (2026-11-11): keep a language's dictionary on the device. `op`: start | status | cancel | remove. Extension pages only. */
+  dictionaryDownload: 'golearn:dictionary-download',
   /** The device-local Repository (no account needed): see `LocalRepoRequest` in protocol.ts. Extension pages only. */
   localRepo: 'golearn:local-repo',
   /** GoLearn Active (read the page before the learner): the popup sets it, a content script may read it. See `ActiveRequest` in protocol.ts. */

@@ -17,6 +17,7 @@ import {
 } from '../protocol';
 import type { SessionManager } from './session';
 import { bytesToText } from '../../../../src/dict/gzip';
+import type { DictionaryStore } from './dictionaryStore';
 
 export const SHARD_PREFIX = 'pack:shard:';
 const MAX_SHARD_CHARS = 3_000_000;
@@ -53,7 +54,7 @@ export const LOCATE_PROBE_MS = 4000;
  * then sees plain JSON on both the first and the later reads. The cache key is the file name without `.json`/`.json.gz`
  * (the `?v=` stays, so a new revision never serves the old shard).
  */
-export function createShardFetch(area: StorageArea, base: string, doFetch: typeof fetch, now: () => number = Date.now): ShardFetch {
+export function createShardFetch(area: StorageArea, base: string, doFetch: typeof fetch, now: () => number = Date.now, offline?: Pick<DictionaryStore, 'read'>): ShardFetch {
   const root = base.replace(/\/+$/, '') + '/';
   const load = async (input: RequestInfo | URL, useCache: boolean, init?: { timeoutMs?: number }): Promise<Response> => {
     const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
@@ -63,6 +64,11 @@ export function createShardFetch(area: StorageArea, base: string, doFetch: typeo
     if (useCache) {
       const hit = (await area.get(key))[key] as ShardRow | undefined;
       if (hit && typeof hit.text === 'string') return new Response(hit.text, { status: 200, headers: { 'content-type': 'application/json' } });
+      // the learner's "Download for offline use" copy (IndexedDB), asked only after this miss; what it holds is never copied into chrome.storage
+      if (offline) {
+        const kept = await offline.read(id);
+        if (kept) { try { return new Response(await bytesToText(kept), { status: 200, headers: { 'content-type': 'application/json' } }); } catch { /* unreadable copy: the network answers */ } }
+      }
     }
     let res: Response;
     try { res = await (init ? doFetch(url, init as RequestInit) : doFetch(url)); } catch (e) { shardFetch.failures += 1; throw e; }
@@ -130,6 +136,8 @@ export interface GlossServiceOptions {
   now?: () => number;
   /** `chrome.runtime.getURL`: the extension's own files (its `app/` folder and `app/config.json`). Absent outside an extension. */
   getURL?: (path: string) => string | undefined;
+  /** The files kept for offline use (see dictionaryStore.ts); read only after a chrome.storage miss. Absent: as before. */
+  offline?: Pick<DictionaryStore, 'read'>;
 }
 
 interface Located { base?: string; source?: DictionarySource; reason?: 'no-asset-base' | 'offline'; message?: string }
@@ -144,7 +152,7 @@ export function createGlossService(opts: GlossServiceOptions) {
 
   const shardFetchFor = (base: string): ShardFetch => {
     let f = shardFetches.get(`base@${base}`);
-    if (!f) { f = createShardFetch(opts.area, base, opts.fetch, opts.now); shardFetches.set(`base@${base}`, f); }
+    if (!f) { f = createShardFetch(opts.area, base, opts.fetch, opts.now, opts.offline); shardFetches.set(`base@${base}`, f); }
     return f;
   };
 
@@ -415,7 +423,10 @@ export function createGlossService(opts: GlossServiceOptions) {
     }
   }
 
-  return { glossFor, entryFor, explainFor, packAvailable, dictionaryAt };
+  /** Forget everything this worker holds in memory about locations and parsed dictionaries (after the learner deleted the device's data). */
+  function reset(): void { runtimes.clear(); shardFetches.clear(); located.clear(); revalidated.clear(); }
+
+  return { glossFor, entryFor, explainFor, packAvailable, dictionaryAt, reset };
 }
 
 export type GlossService = ReturnType<typeof createGlossService>;

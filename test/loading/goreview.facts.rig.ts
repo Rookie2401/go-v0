@@ -10,6 +10,8 @@ import { gatherCandidates } from '../../packages/goreview/src/intake/fetch';
 import { createFactsProvider, type RepositoryUnit } from '../../packages/goreview/src/facts/provider';
 import type { DeckItem, FactsProvider, IntakeOutcome, ReviewPreferences } from '../../packages/goreview/src/types';
 import { albanianManifest, createPackRuntime } from '../../packages/language-packs/src';
+import { createReviewEngine } from '../../packages/goreview/app/engine';
+import { evidenceFor, ratingFor, registry } from '../../packages/goreview/src';
 import { sqAdapter } from '../../src/adapters/sq';
 import { BASE, diskFetch } from '../language-packs/helpers';
 import { candidate, deckItem, knowledge, NOW, prefs, scheduleState } from '../goreview/intake/fixtures';
@@ -58,6 +60,7 @@ export interface Counts {
 }
 
 export interface Rig {
+  runApp(candidates: ReviewCandidate[], over?: Partial<ReviewPreferences>, deck?: DeckItem[], failIds?: ReadonlySet<string>): Promise<{ out: IntakeOutcome[]; counts: Counts }>;
   run(candidates: ReviewCandidate[], over?: Partial<ReviewPreferences>, deck?: DeckItem[], extra?: Record<string, unknown>): Promise<{ out: IntakeOutcome[]; counts: Counts }>;
 }
 
@@ -75,32 +78,50 @@ function repositoryRow(unitId: string): RepositoryUnit | undefined {
     status: r < 0.13 ? 'conflicted' : 'verified', createdAt: NOW } };
 }
 
-/** A fresh world per run: a fresh runtime (empty shard cache) and fresh counters. */
+/** A fresh world per run: a fresh runtime (empty shard cache) and fresh counters. `failIds`: units whose facts lookup throws (a dictionary that could not be read). */
+function world(failIds: ReadonlySet<string> = new Set()) {
+  const fetch = diskFetch();
+  const manifest = albanianManifest();
+  const runtime = createPackRuntime(manifest, { fetch, baseUrl: BASE });
+  let gloss = 0, factsFor = 0, prime = 0;
+  const provider = createFactsProvider({
+    unit: async (unitId) => repositoryRow(unitId),
+    pack: { manifest, runtime: { gloss: async (...a: Parameters<typeof runtime.gloss>) => { gloss++; return runtime.gloss(...a); } } },
+    adapter: sqAdapter, now: () => NOW,
+  });
+  const facts: FactsProvider & { prime(ids: string[]): Promise<void>; clearPrime(): void } = {
+    factsFor: async (...a) => { factsFor++; if (failIds.has(a[0])) throw new Error('dictionary shard could not be read'); return provider.factsFor(...a); },
+    prime: async (ids) => { prime++; await provider.prime(ids); },
+    clearPrime: () => provider.clearPrime(),
+  };
+  const counts = (n: number): Counts => {
+    const shardCalls = fetch.calls.filter((u) => /\/dict\/sq\/s-[0-9a-f]+\.json$/u.test(u));
+    return { candidates: n, factsFor, prime, gloss, fetches: fetch.calls.length, shardFetches: shardCalls.length, distinctShards: new Set(shardCalls).size };
+  };
+  return { facts, counts };
+}
+const audioOk = { available: true, eligibleForEvidence: true, reason: 'test' };
+
 export function makeRig(): Rig {
   return {
     async run(candidates, over = {}, deck = [], extra = {}) {
-      const fetch = diskFetch();
-      const manifest = albanianManifest();
-      const runtime = createPackRuntime(manifest, { fetch, baseUrl: BASE });
-      let gloss = 0, factsFor = 0, prime = 0;
-      const provider = createFactsProvider({
-        unit: async (unitId) => repositoryRow(unitId),
-        pack: { manifest, runtime: { gloss: async (...a: Parameters<typeof runtime.gloss>) => { gloss++; return runtime.gloss(...a); } } },
-        adapter: sqAdapter, now: () => NOW,
-      });
-      const facts: FactsProvider & { prime(ids: string[]): Promise<void>; clearPrime(): void } = {
-        factsFor: async (...a) => { factsFor++; return provider.factsFor(...a); },
-        prime: async (ids) => { prime++; await provider.prime(ids); },
-        clearPrime: () => provider.clearPrime(),
-      };
+      const w = world((extra.failIds as Set<string> | undefined) ?? new Set());
       const knowledgeRows = Object.fromEntries(candidates.map((c) => [c.unitId, knowledge(c.unitId)]));
+      const { failIds: _f, ...deps } = extra;
       const out = await gatherCandidates({
         api: { candidates: async () => candidates, knowledge: async () => knowledgeRows },
-        facts, audio: async () => ({ available: true, eligibleForEvidence: true, reason: 'test' }), deck, saved: new Set(),
-        preferences: prefs({ maxNew: 10, ...over }), now: NOW, enrolmentId: '', limit: candidates.length || 1, ...extra,
+        facts: w.facts, audio: async () => audioOk, deck, saved: new Set(),
+        preferences: prefs({ maxNew: 10, ...over }), now: NOW, enrolmentId: '', limit: candidates.length || 1, ...deps,
       });
-      const shardCalls = fetch.calls.filter((u) => /\/dict\/sq\/s-[0-9a-f]+\.json$/u.test(u));
-      return { out, counts: { candidates: candidates.length, factsFor, prime, gloss, fetches: fetch.calls.length, shardFetches: shardCalls.length, distinctShards: new Set(shardCalls).size } };
+      return { out, counts: w.counts(candidates.length) };
+    },
+    /** The app's own call: `createReviewEngine(...).intake`, which is what the review workspace uses (no budget is passed from here). */
+    async runApp(candidates, over = {}, deck = [], failIds = new Set()) {
+      const w = world(failIds);
+      const engine = createReviewEngine({ builders: registry, evidenceFor, ratingFor, now: () => NOW, random: () => 0.5, factsFor: () => w.facts });
+      const out = await engine.intake({ api: {} as never, candidates, knowledge: candidates.map((c) => knowledge(c.unitId)), deck, saved: new Set(),
+        prefs: prefs({ maxNew: 10, ...over }), audio: audioOk, now: NOW });
+      return { out, counts: w.counts(candidates.length) };
     },
   };
 }

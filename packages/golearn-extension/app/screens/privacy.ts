@@ -1,5 +1,7 @@
 /**
- * 8. Privacy: snippets, remote speech, external processing, explanation depth, export, deletion. Every switch starts
+ * Privacy and data (a page under Settings; laid out again 2026-11-11, docs/golearn/DESIGN-SYSTEM.md). In the order a learner needs it:
+ * how much the card explains; speech (the two switches a learner can use); what stays off in this version, said once; your data (export,
+ * clear this device, delete the account); and, waiting closed, a speech backend of your own and the Privacy Policy. Every switch starts
  * off and says what it would do and what this build actually wires. The switches live in `golearn:settings`, the same
  * record the extension’s background worker reads (it is asked to write them when it answers; this page writes them
  * itself otherwise).
@@ -28,6 +30,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const pack = active?.languageId ? ctx.deps.packs.packFor(active.languageId) : ctx.deps.packs.packs().find((x) => x.status === 'installable');
   const provider = pack?.remoteVoiceProvider ?? 'no provider is named';
   const saved = statusLine();
+  let backendFold: HTMLElement | undefined;
 
   /** `onChange` returns the value now in force (so a refused switch snaps back) and may say why in a message. */
   const toggle = (id: string, label: string, checked: boolean, onChange: (v: boolean) => Promise<boolean | { value: boolean; message?: string }>, disabled = false): HTMLElement => {
@@ -51,13 +54,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   });
 
   append(el, [
-    p('Remote processing starts off, and speech starts in local-only mode. GoLearn keeps what you looked up as hashes and short word lists, never the pages you read.'),
-    h('section', { class: 'card', 'aria-labelledby': 'priv-snip' },
-      h('h2', { id: 'priv-snip' }, 'Keep snippets'),
-      toggle('keep-snippets', 'Keep one sentence with each lookup, so I can see where I met a word', false, async () => false, true),
-      p('Off, and it cannot be switched on in this version. A lookup on a web page is recorded with a hash of its sentence and of the page address, never the sentence, the page title or the address; nothing in the extension can keep a sentence yet. When keeping a sentence becomes possible it will be a separate switch here, off until you turn it on.', 'muted')),
+    p('GoLearn keeps the words you looked up, never the pages you read. Nothing is sent to a speech or AI service unless you switch it on here.', 'lede'),
+    h('section', { class: 'card', 'aria-labelledby': 'priv-depth' },
+      h('h2', { id: 'priv-depth' }, 'How much the card explains'),
+      h('label', { class: 'field' }, h('span', { class: 'cap' }, 'Explanation'), depth)),
     h('section', { class: 'card', 'aria-labelledby': 'priv-speech' },
-      h('h2', { id: 'priv-speech' }, 'Remote speech'),
+      h('h2', { id: 'priv-speech' }, 'Speech'),
       toggle('local-only-speech', 'Use only voices that run on this device', settings.localOnlySpeech !== false, async (v) => {
         const next = await ctx.setSettings({ localOnlySpeech: v });
         return next.localOnlySpeech !== false;
@@ -68,14 +70,14 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         return r.ok ? r.settings.remoteSpeechConsent : { value: r.settings.remoteSpeechConsent, message: r.message };
       }),
       p('Azure Neural speech receives only the word, phrase or sentence you explicitly ask to hear, through your authenticated speech backend. Source permissions must allow this. Local-only mode also blocks browser voices that use a cloud service. Synthetic pronunciation is practice and exposure; it never proves mastery.', 'muted')),
-    h('section', { class: 'card', 'aria-labelledby': 'priv-ext' },
-      h('h2', { id: 'priv-ext' }, 'External processing'),
+    saved,
+    // two things GoLearn does not do, shown as the switches they would be: off, and not yet a learner's to turn on
+    h('section', { class: 'card', 'aria-labelledby': 'priv-off' },
+      h('h2', { id: 'priv-off' }, 'Off in this version'),
+      toggle('keep-snippets', 'Keep one sentence with each lookup, so I can see where I met a word', false, async () => false, true),
+      p('Off, and it cannot be switched on in this version. A lookup on a web page is recorded with a hash of its sentence and of the page address, never the sentence, the page title or the address; nothing in the extension can keep a sentence yet. When keeping a sentence becomes possible it will be a separate switch here, off until you turn it on.', 'muted'),
       toggle('external-processing', 'Allow my passages to be analysed by an outside AI service', settings.externalProcessingConsent, async () => settings.externalProcessingConsent, true),
       p('Off, and it cannot be switched on here: nothing in GoLearn sends text to an outside AI provider, and nothing will without a separate, informed switch.', 'muted')),
-    h('section', { class: 'card', 'aria-labelledby': 'priv-depth' },
-      h('h2', { id: 'priv-depth' }, 'How much explanation'),
-      h('label', { class: 'field' }, h('span', { class: 'cap' }, 'Override the automatic choice'), depth)),
-    saved,
   ]);
 
   if (ctx.deps.chrome) {
@@ -85,8 +87,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const source = h('input', { type: 'url', id: 'speech-source-origin', placeholder: 'https://my-owned-content.example', autocomplete: 'off' }) as HTMLInputElement;
     const rights = h('input', { type: 'checkbox', id: 'speech-source-rights' }) as HTMLInputElement;
     const setupOut = statusLine();
-    append(el, [h('section', { class: 'card', 'aria-labelledby': 'speech-backend' },
-      h('h2', { id: 'speech-backend' }, 'Speech backend'),
+    backendFold = h('details', { class: 'fold', id: 'speech-backend-fold' }, h('summary', {}, h('h3', { id: 'speech-backend' }, 'Your own speech backend (advanced)')));
+    backendFold.append(h('div', { class: 'fold-body' },
       p('Azure keys stay on the backend. Enter a separate backend access token here; GoLearn keeps it in trusted extension storage and never exposes it to a web page.'),
       h('label', { class: 'field' }, h('span', {}, 'Speech endpoint'), endpoint),
       h('label', { class: 'field' }, h('span', {}, 'Backend access token'), access),
@@ -105,7 +107,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
           setStatus(setupOut, r?.ok ? 'Speech backend saved. Remote speech also needs consent and local-only mode switched off.' : r?.message ?? 'Speech setup failed.', r?.ok ? 'ok' : 'error');
         } catch { access.value = ''; setStatus(setupOut, 'Speech setup failed. Check the endpoint and backend access token.', 'error'); }
       }, { id: 'save-speech-backend' }),
-      setupOut)]);
+      setupOut));
   }
 
   // ── export
@@ -124,7 +126,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
           ctx.deps.download(dataFilename(ctx.deps.now()), new Blob([r.data], { type: 'application/json' }));
           setStatus(exportOut, `Export ready: ${dataFilename(ctx.deps.now())}.`, 'ok');
         } catch { setStatus(exportOut, 'The service could not be reached.', 'error'); }
-      }, { id: 'export-data', class: 'btn primary' }),
+      }, { id: 'export-data', class: 'btn' }),
       button('Export this device’s rows', async () => {
         const text = await createStorageEncounterStore(ctx.deps.area).exportRows();
         ctx.deps.download(`golearn-device-rows-${ctx.deps.now().toISOString().slice(0, 10)}.json`, new Blob([text], { type: 'application/json' }));
@@ -140,7 +142,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       if (!armed) {
         armed = true;
         clearBtn.textContent = 'Click again to clear';
-        setStatus(clearOut, 'This removes the lookups, the waiting queue and the on-device record kept on this device. An account, if you have one, is not touched. Move on to cancel.', 'info');
+        setStatus(clearOut, 'This removes the lookups, the waiting queue, the on-device record and the dictionaries kept on this device (the meanings saved as you read and any offline downloads). An account, if you have one, is not touched. Move on to cancel.', 'info');
         return;
       }
       armed = false;
@@ -162,8 +164,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   // ── the policy and the terms
   append(el, [
-    p('The text below is a draft that has not been adopted yet. Creating an account also asks you to accept the Terms of use.', 'muted'),
-    h('p', {}, h('a', { href: '#/terms', id: 'link-terms' }, 'Read the Terms of use')),
-    policySection(),
+    h('section', { class: 'card', id: 'priv-more', 'aria-label': 'More' },
+      backendFold ?? null,
+      h('details', { class: 'fold', id: 'policy-fold' }, h('summary', {}, h('h3', {}, 'Privacy Policy')),
+        h('div', { class: 'fold-body' },
+          p('The text below is a draft that has not been adopted yet. Creating an account also asks you to accept the Terms of use.', 'muted'),
+          h('p', {}, h('a', { href: '#/terms', id: 'link-terms' }, 'Read the Terms of use')),
+          policySection()))),
   ]);
 }

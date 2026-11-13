@@ -2,7 +2,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { GoEvent, ReviewCandidate, UnitKnowledge } from '../../packages/repository-contract/src';
 import type { VocabularyItem } from '../../packages/repository-service/src/api';
-import { loadReviewModel } from '../../packages/goreview/app/workspace';
+import { forgetRecoveryScans, loadReviewModel } from '../../packages/goreview/app/workspace';
 import { planCurrentDeck } from '../../packages/goreview/app/deckModel';
 import { explainAdmissions } from '../../packages/goreview/app/admissionExplanation';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
@@ -98,13 +98,12 @@ describe('workspace Hebrew recovery', () => {
 
     const snapKey = `gopractice:snapshot:L1:he`;
     const completeBefore = (await rig.area.get(snapKey))[snapKey] as { model?: { savedAt: string; candidates: ReviewCandidate[] } };
-    let vocabPage = 0;
+    forgetRecoveryScans(rig.app.ctx); // the next build walks again (as it would ten minutes later), now against a service that fails part-way
     Object.assign(api, {
       async candidates() { return ok({ candidates: [unknownCandidate] }); },
-      async vocabulary() {
-        vocabPage += 1;
-        return vocabPage === 1 ? ok({ items: [vocabRow(targetId)], nextCursor: 'recovery-page-2' })
-          : { ok: false as const, status: 503, error: 'offline', message: 'offline', body: {} };
+      async vocabulary({ after }: { after?: string }) {
+        return after ? { ok: false as const, status: 503, error: 'offline', message: 'offline', body: {} }
+          : ok({ items: [vocabRow(targetId)], nextCursor: 'recovery-page-2' });
       },
     });
     const partialRecovery = await loadReviewModel(rig.app.ctx);
@@ -115,7 +114,6 @@ describe('workspace Hebrew recovery', () => {
     expect(partialRecovery?.outcomes.find(outcome => outcome.unitId === targetId)?.decision).toBe('test-now');
     expect(completeAfter.model?.savedAt).toBe(completeBefore.model?.savedAt);
     expect(completeAfter.model?.candidates).toHaveLength(completeBefore.model!.candidates.length);
-    forgetPaintedHome(rig.app.ctx);
     await rig.go('settings');
     await rig.go('review');
     expect(rig.root.querySelector('#candidate-freshness')?.textContent).toContain('Using saved word data from');

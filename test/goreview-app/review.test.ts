@@ -70,7 +70,7 @@ describe('the candidate list', () => {
     expect(row('zog').getAttribute('data-decision')).toBe('already-covered');
     expect(row('zog').querySelector('.reason')!.textContent).toContain('already in the deck');
     const why = row('hene').querySelector('details.why')!;
-    expect(why.textContent).toContain('Lower candidate rank');
+    expect(why.textContent).toContain('Not yet checked');
   });
 
   it('"Test now" selects optional recognition practice without creating scheduling history', async () => {

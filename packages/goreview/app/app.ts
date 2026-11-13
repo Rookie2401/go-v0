@@ -1,18 +1,17 @@
 /**
- * The GoReview shell: the one active language, the three workspaces (GoReview | GoTell | Settings), the sync
+ * The GoReview shell: the one active language, GoReview and its settings, the sync
  * indicator and the hash router. The shell holds no review or writing logic: GoReview and GoTell are separate packages
  * rendered into the same main area. No streaks, no points, no badges.
  *
  * An account is optional where the app runs inside the GoLearn extension: it then works on the device (the on-device Repository) and offers
  * the account any time (#/signin). The hosted copy has no such repository and shows #/signin first, explaining that.
  *
- * The header is quiet: the active language (with its variety) and the Settings cog. Review, GoTell and the rest are reached from the
- * GoReview home, which shows four things only; the sync state is spoken for assistive technology and shown only when it needs attention.
+ * The header is quiet: the active language (with its variety) and the Settings cog. Decks and vocabulary are reached from the GoReview home; the sync state is spoken for assistive technology and shown only when it needs attention.
  *
  * Live updates (./live.ts) keep the data current while the app is visible, and the "Update ready — reload" link appears when the GoReview build's
  * service worker has a newer version waiting.
  *
- * Routes:  #/review[/session | /history/<item> | /transfer | /decks | /vocab | /details]   #/tell   #/vocabulary   #/settings   #/signin
+ * Routes:  #/review[/session | /history/<item> | /transfer | /decks | /vocab | /details]   #/vocabulary   #/settings   #/signin
  *           #/privacy and #/terms (the legal drafts; open without an account)
  */
 import { append, clear, h, p } from './dom';
@@ -33,6 +32,7 @@ import type { View } from './screens/view';
 import { shortDate } from './dom';
 import { dismissSplash } from './splash';
 import { loadingMark } from './loading';
+import { homePhoto } from './homePhotos';
 
 export interface RouteDef {
   id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'developer' | 'signin' | 'privacy' | 'terms' | 'help';
@@ -83,11 +83,12 @@ function personIcon(doc: Document): Element {
 export interface ParsedRoute { id: RouteDef['id']; params: string[]; path: string }
 
 /** `#/review/history/card%3Ax` → { id: 'review', params: ['history', 'card%3Ax'] }; undefined for an unknown route. */
-export function parseHash(hash: string): ParsedRoute | undefined {
+export function parseHash(hash: string, enableGoTell = false): ParsedRoute | undefined {
   const m = /^#\/?([a-z-]*)(?:\/(.*))?$/.exec(hash);
   if (!m) return undefined;
   const def = ROUTES.find((r) => r.id === m[1]);
   if (!def) return undefined;
+  if (def.id === 'tell' && !enableGoTell) return { id: 'review', params: [], path: 'review' };
   const params = m[2] ? m[2].split('/').filter(Boolean) : [];
   return { id: def.id, params, path: [def.id, ...params].join('/') };
 }
@@ -274,6 +275,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     disposers = [];
     clear(main);
     main.setAttribute('data-route', [id, ...params].join('/'));
+    delete main.dataset.homePhoto;
     append(main, [loadingMark('Opening GoReview…')]);
     const recovery = (message: string, retry: () => void): HTMLElement => {
       const button = h('button', { type: 'button', class: 'btn primary' }, 'Try again') as HTMLButtonElement;
@@ -300,11 +302,15 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     clear(main);
     main.setAttribute('data-route', route);
     const body = h('div', { class: 'body' });
-    // the home has no visible title: the wordmark is in the top bar and the language dropdown takes the title's place (the h1 stays for assistive technology)
-    // every review screen keeps its 'GoReview' h1 for assistive technology only (the wordmark is in the top bar); the home alone shows the dropdown in the title's place
     const review = def.id === 'review' && mode !== 'none';
     const home = review && subs.length === 0;
-    main.append(...(review ? [h('h1', { class: 'sr' }, def.title)] : [h('h1', {}, def.title)]), ...(home ? [h('div', { class: 'home-language', id: 'home-language' })] : []), body);
+    const session = review && subs[0] === 'session';
+    const hero = home || session
+      ? h('div', { class: 'home-hero' },
+          home ? h('div', { class: 'home-language', id: 'home-language' }) : null,
+          h('h1', { class: 'home-title' }, def.title))
+      : undefined;
+    main.append(hero ?? h('h1', { class: review ? 'sr' : undefined }, def.title), body);
     placeLanguage();
     body.append(loadingMark('Loading your saved account data…'));
     let idn: Awaited<ReturnType<AppContext['identity']>>;
@@ -318,6 +324,17 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     }
     if (my !== seq) return;
     if (idn) main.setAttribute('data-language', idn.varietyId ?? idn.languageId); else main.removeAttribute('data-language');
+    const photoLanguage = (session ? ctx.run.active?.ctx.languageId : undefined) ?? idn?.languageId;
+    const photo = hero && photoLanguage ? homePhoto(photoLanguage) : undefined;
+    if (hero && photo) {
+      main.dataset.homePhoto = photo.id;
+      hero.style.setProperty('--home-photo-image', `url("${photo.image}")`);
+      hero.style.setProperty('--home-photo-mobile-position', photo.mobilePosition);
+      hero.style.setProperty('--home-photo-desktop-position', photo.desktopPosition);
+      main.append(h('p', { class: 'home-photo-credit' },
+        `${photo.place} · `, h('a', { href: photo.source }, `Photo by ${photo.author}`),
+        ' · ', h('a', { href: photo.licenseUrl }, photo.license)));
+    }
     clear(body);
     const view: View = { alive: () => my === seq && !destroyed, onDispose: (fn) => { disposers.push(fn); } };
     try { await def.render(body, ctx, view, subs); } catch (e) {
@@ -332,7 +349,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   }
 
   async function go(next: string): Promise<void> {
-    const parsed = parseHash(`#/${next.replace(/^#?\/?/, '')}`);
+    const parsed = parseHash(`#/${next.replace(/^#?\/?/, '')}`, deps.enableGoTell);
     const target = parsed ?? { id: 'review' as const, params: [], path: 'review' };
     const wanted = `#/${target.path}`;
     if (win.location.hash !== wanted) win.location.hash = wanted;
@@ -342,16 +359,18 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   }
 
   const onHash = (): void => {
-    const r = parseHash(win.location.hash);
-    if (r && r.path !== route) renderDone = show(r.id, r.params);
+    const r = parseHash(win.location.hash, deps.enableGoTell);
+    if (!r) return;
+    if (win.location.hash !== `#/${r.path}`) win.history.replaceState(win.history.state, '', `#/${r.path}`);
+    if (r.path !== route) renderDone = show(r.id, r.params);
   };
   win.addEventListener('hashchange', onHash);
 
   renderDone = (async () => {
-    const initial = parseHash(win.location.hash);
+    const initial = parseHash(win.location.hash, deps.enableGoTell);
     const open = (await ctx.mode()) !== 'none';
     const first = initial ?? { id: (open ? 'review' : 'signin') as RouteDef['id'], params: [], path: open ? 'review' : 'signin' };
-    if (win.location.hash !== `#/${first.path}` && !initial) win.location.hash = `#/${first.path}`;
+    if (win.location.hash !== `#/${first.path}`) win.history.replaceState(win.history.state, '', `#/${first.path}`);
     // the launch screen (review build) fades once the first screen is there, whatever that screen is
     try { await show(first.id, first.params); } finally { dismissSplash(deps.doc, win); }
   })();

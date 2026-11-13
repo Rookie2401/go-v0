@@ -9,6 +9,7 @@
  * screens/privacy.ts (the fields) and docs/golisten/AZURE-SETUP.md (the backend); keep them in step.
  */
 import type { AppContext } from '../context';
+import type { View } from './view';
 import { button, h, p, setStatus, statusLine } from '../dom';
 import { languageNameOf } from '../../src/protocol';
 import { DEVICE_TAGS, hasDeviceVoice } from '../../src/content/voiceTags';
@@ -84,7 +85,7 @@ export function audioGuide(ctx: AppContext): HTMLElement[] {
         p('This grants the extension access to the exact Repository service origin. It does not send text by itself.'),
         permissionButton, permissionStatus) : p('Account speech access must be granted in the GoLearn extension.', 'muted'),
       h('ol', {},
-        li(strong('Allow the service. '), 'In the extension setup page, press “Allow account speech access” and allow the exact service address.'),
+        li(strong('Allow the service. '), 'In the extension setup page, press “Allow account speech access” and allow it when the browser asks.'),
         li(strong('Choose remote speech. '), 'Open ', privacy('Privacy settings'), ' and switch off “Use only voices that run on this device”; switch on “Allow a remote speech provider to say words for me”. This records your explicit consent and is off until you enable it.'),
         li(strong('Listen. '), 'The service supports words and exact approved pack examples. Arbitrary passages are refused. Only text you ask to hear is sent, and only after consent and source checks.')),
       p('Azure Neural voices are registered for languages including Albanian and Bokmål. No Azure Nynorsk voice is substituted; Latin uses an explicitly labelled Italian stand-in only for the Ecclesiastical reading. Actual availability depends on the signed-in service and its voice configuration.', 'muted'),
@@ -104,4 +105,31 @@ export function audioGuide(ctx: AppContext): HTMLElement[] {
       p('Not available yet. GoLearn only ever speaks through a backend of your own, never to a voice provider directly, and the backend this repository ships speaks Azure only. A backend that answered the same three calls (status, voices, synthesize) with ElevenLabs voices would plug in at steps 3 to 5 above unchanged; until one is written, the choices are the voices on this device and Azure.'),
       ctx.inExtension ? null : p('The speech backend is set in the extension’s own setup page (the GoLearn button in the browser toolbar → GoLearn → Privacy), not in this hosted page.', 'muted')),
   ];
+}
+
+/**
+ * Audio, a page under Settings (2026-11-11; it was a closed section of the Languages page, where two screens of setup notes sat under the
+ * language list). What this device can speak now is said first; then each way of hearing a word is a part that opens: the first (the
+ * voices on this device, which is all most learners need) open, the rest closed until wanted.
+ */
+export function render(el: HTMLElement, ctx: AppContext, _view: View): void {
+  const guide = audioGuide(ctx)[0];
+  let body: HTMLElement | undefined;
+  let parts = 0;
+  const out: Node[] = [];
+  for (const child of [...guide.childNodes]) {
+    if (child instanceof HTMLElement && child.tagName === 'H3') {
+      // on this page a part's heading comes straight under the page's own: the second level, not the third
+      const fold = h('details', { class: 'fold' }, h('summary', {}, h('h2', {}, child.textContent ?? ''))) as HTMLDetailsElement;
+      body = h('div', { class: 'fold-body' });
+      fold.append(body);
+      fold.open = parts++ === 0;
+      out.push(fold);
+    } else if (body) body.append(child);
+    else out.push(child);
+  }
+  guide.replaceChildren(...out);
+  // and a heading inside a part follows its part: the third level
+  for (const h4 of [...guide.querySelectorAll('h4')]) h4.replaceWith(h('h3', {}, h4.textContent ?? ''));
+  el.append(guide);
 }

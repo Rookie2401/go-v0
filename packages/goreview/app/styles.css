@@ -168,15 +168,6 @@ details > summary:hover { color: var(--ink); }
 /* target-language text: the same serif, slightly larger; the Noto faces cover scripts EB Garamond does not; bidirectional text isolated */
 .target-text { unicode-bidi: plaintext; font-family: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Noto Sans Devanagari', 'Noto Sans Thai', 'Noto Naskh Arabic', 'Noto Sans', Georgia, serif; font-size: 1.06em; }
 .stimulus { font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.25; margin: .6rem 0; }
-.flashcard { min-height: 20rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-.flashcard .stimulus { font-size: clamp(2.5rem, 7vw, 4rem); margin: 1.5rem 0; overflow-wrap: anywhere; }
-.flashcard-label { color: var(--ec-gold-ink); }
-.flashcard .response { width: 100%; }
-.flashcard .grades { justify-content: center; flex-wrap: wrap; }
-.flashcard[data-side="back"] .stimulus { font-size: 1.7rem; margin: .5rem 0; }
-.flashcard .reference { font-size: 1.8rem; }
-.flashcard #type-answer { display: block; margin: .8rem auto; }
-.flashcard [hidden] { display: none !important; }
 input.target-text, textarea.target-text { font-size: 1.15rem; }
 
 /* session */
@@ -185,7 +176,7 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 .bar-actions { margin-left: auto; display: flex; gap: 1.2rem; }
 .exercise { background: var(--ec-paper-raised); color: var(--ec-ink); border: 1px solid var(--ec-rule); border-radius: 3px; box-shadow: none; padding: 1.6rem; margin: 1.25rem 0; }
 /* the card's own type: the instruction an Ecclesia eyebrow, the meaning an italic Garamond, the field and the buttons squared to 3px */
-.instruction, .flashcard-label { margin: 0 0 .9rem; font-family: var(--ec-sans); font-size: .72rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--ec-gold-ink); }
+.instruction { margin: 0 0 .9rem; font-family: var(--ec-sans); font-size: .72rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--ec-gold-ink); }
 .exercise .meaning { font-style: italic; font-size: 1.15rem; color: var(--ec-ink-soft); }
 .exercise .reference { font-family: var(--serif); }
 .exercise input[type="text"], .exercise textarea, .exercise select { background: var(--ec-paper); border-color: var(--ec-field-line); border-radius: 3px; }
@@ -203,6 +194,27 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 .feedback[data-outcome="incorrect"] { border-inline-start-color: var(--bad); }
 .item-tools { margin: 1rem 0; }
 .item-history { margin-top: .6rem; }
+/* "This item": the parsing (a name and its value on each row) and the table of forms, as GoLearn's word card shows it */
+.item-parsing { margin: .8rem 0 1rem; }
+.item-parsing h3 { margin: 1rem 0 .35rem; font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+.item-parsing h4 { margin: .8rem 0 .25rem; font-size: 1rem; font-weight: 600; }
+.item-parsing p { margin: .35rem 0; }
+.parsing-facts { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 1rem; row-gap: .15rem; }
+.parsing-row { display: contents; }
+.parsing-facts dt { color: var(--muted); }
+.parsing-facts dd { margin: 0; overflow-wrap: anywhere; }
+.item-forms .table-scroll { overflow-x: auto; margin: .1rem 0 .9rem; }
+table.paradigm { border-collapse: collapse; font-size: 1.05rem; }
+table.paradigm th { font-weight: 400; text-align: start; color: var(--muted); padding: .2rem .9rem .2rem 0; }
+table.paradigm td { padding: .2rem .9rem .2rem 0; border-bottom: 1px solid var(--divider); }
+table.paradigm thead th, table.paradigm thead td { border-bottom: 1px solid var(--divider); font-size: .9rem; }
+table.paradigm td.none { color: var(--muted); }
+table.paradigm td.generated { font-style: italic; }
+table.paradigm td.conflicted { color: var(--bad); }
+table.paradigm td.sel > span:first-child, .forms-list li.sel > span:first-child { font-weight: 600; text-decoration: underline; text-underline-offset: .2em; }
+.item-forms .pmark { margin-inline-start: .3em; font-size: .8em; color: var(--muted); }
+.item-forms .rom, .item-forms .pnote { font-size: .85em; color: var(--muted); }
+.forms-list ul { margin: .2rem 0 .6rem 1.2rem; padding: 0; }
 
 #vocabulary-catalog { grid-template-columns: repeat(3, minmax(0, 1fr) auto); column-gap: .75rem; }
 @media (max-width: 760px) {
@@ -243,46 +255,224 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
   }
 }
 
-/* ── the GoReview home, in Ecclesia's shape: the gold mark over one large title, then one list of choices under a hairline ──
-      It keeps the page's own paper (a band of a second paper under the language title read as a box, 2026-11-09); Ecclesia's ink, rules
-      and gold do the rest. */
-.home { color: var(--ec-ink); padding: 1.2rem 0 2.5rem; }
-.home > * { max-width: 30rem; margin-inline: auto; }
-.ec-home-head { display: grid; justify-items: center; gap: 1rem; padding: .2rem 0 1.9rem; border-bottom: 1px solid var(--ec-rule); }
-.ec-mark { display: block; width: 52px; height: 26px; background: var(--ec-gold); -webkit-mask: var(--ec-mark-mask) center / contain no-repeat; mask: var(--ec-mark-mask) center / contain no-repeat; }
-.ec-title { margin: 0; font-size: clamp(2.6rem, 8vw, 3.6rem); font-weight: 400; line-height: .98; letter-spacing: -.02em; text-align: center; text-transform: none; color: var(--ec-ink); }
-/* a choice: icon | serif title over a small sans caption | gold chevron; a hairline below it */
-.ec-row {
-  position: relative; display: grid; grid-template-columns: 25px minmax(0, 1fr) 20px; align-items: center; column-gap: 14px; width: 100%; min-height: 78px; margin: 0; padding: 13px 17px;
-  border: 0; border-bottom: 1px solid var(--ec-rule); border-radius: 0; background: transparent; color: var(--ec-ink); font: inherit; text-align: start; text-decoration: none; cursor: pointer;
+/* The review home uses the colors of stone, leather and brass. The photograph is bundled with the app. */
+body:has(#screen[data-route="review/session"]),
+body:has(#screen[data-route="review"]) {
+  color-scheme: dark;
+  --paper: #211a15;
+  --paper-raised: #30251c;
+  --ink: #f3e6d2;
+  --ink-soft: #d1bda5;
+  --ink-faint: #baa58d;
+  --rule: #534233;
+  --rule-strong: #7f6246;
+  --accent: #e0b780;
+  --accent-soft: #cda06a;
+  --accent-ink: #211a15;
+  --control-line: #a28260;
+  --bad: #ffb5a5;
+  --warn-bg: #39291c;
+  --brand: var(--ink);
+  --bg: var(--paper);
+  --panel: var(--paper-raised);
+  --muted: var(--ink-soft);
+  --line: var(--control-line);
+  --divider: var(--rule);
+  --focus: var(--accent);
+  background: var(--paper);
 }
-.ec-row::after { content: ""; justify-self: end; width: .5rem; height: .5rem; margin-right: 5px; border-top: 1.5px solid var(--ec-gold); border-right: 1.5px solid var(--ec-gold); transform: rotate(45deg); }
-.ec-row .ec-icon { color: var(--ec-gold-ink); justify-self: center; }
-.ec-row-text { display: grid; gap: .22rem; min-width: 0; }
-.ec-row-title { font-size: 1.4rem; font-weight: 400; line-height: 1.15; letter-spacing: .005em; color: var(--ec-ink); }
-.ec-row-caption { font-family: var(--ec-sans); font-size: .72rem; line-height: 1.4; color: var(--ec-ink-soft); overflow-wrap: anywhere; }
-.home .ec-row:hover:not(:disabled) { border-bottom-color: var(--ec-hover-line); background: var(--ec-paper-raised); text-decoration: none; transform: translateX(2px); }
-.home .ec-row:focus-visible { outline: 2px solid var(--ec-gold-ink); outline-offset: 3px; border-radius: 0; }
-.home .ec-row:disabled { cursor: default; opacity: 1; background: transparent; }
-.home .ec-row:disabled::after { content: none; }
-.home .ec-row:disabled .ec-row-title { color: var(--ec-ink-soft); }
-.home .ec-row:disabled .ec-icon { color: var(--ec-ink-soft); }
-/* under the Current Deck: quiet sans text links (Begin new deck, the missed words, practice, save) and the one line that says why there is nothing new */
-.ec-sub { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem 1.2rem; padding: .35rem 17px .5rem calc(17px + 25px + 14px); border-bottom: 1px solid var(--ec-rule); }
-.deck-extras { display: contents; }
-.home .deck-new, .home .ec-sub .linklike {
-  display: inline-block; margin: 0; padding: .3rem 0; border: 0; border-radius: 0; background: none; font: 600 .76rem/1.4 var(--ec-sans); letter-spacing: .04em; vertical-align: baseline;
-  color: var(--ec-gold-ink); text-decoration: underline; text-underline-offset: .25em; text-decoration-color: var(--ec-rule); cursor: pointer;
+body:has(#screen:is([data-route="review"], [data-route="review/session"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
+html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"]))::before { background: var(--paper); }
+.screen:is([data-route="review"], [data-route="review/session"]) {
+  --home-gutter: clamp(1.125rem, 5vw, 2rem);
+  max-width: none;
+  padding: 0 0 calc(1.25rem + env(safe-area-inset-bottom, 0px));
 }
-.home .deck-new:hover:not(:disabled), .home .ec-sub .linklike:hover:not(:disabled) { background: none; border-color: transparent; color: var(--ec-ink); text-decoration-color: var(--ec-gold); }
-.home .deck-new:disabled { opacity: .55; cursor: default; }
-.home .deck-why { flex: 1 1 100%; margin: .1rem 0 .2rem; max-width: none; font-family: var(--ec-sans); font-size: .72rem; line-height: 1.45; color: var(--ec-ink-soft); }
-.home .deck-resume, .home .notice { margin: .7rem 17px; font-family: var(--ec-sans); font-size: .78rem; }
-.home .deck-resume { display: flex; align-items: center; justify-content: space-between; gap: .8rem; }
-.home .btn { border-radius: 3px; font-family: var(--ec-sans); font-size: .76rem; font-weight: 600; letter-spacing: .04em; background: transparent; color: var(--ec-gold-ink); border-color: var(--ec-gold-ink); }
-.home .btn.primary, .home .btn.primary:hover:not(:disabled) { background: var(--ec-gold-fill); color: var(--ec-gold-on-fill); border-color: var(--ec-gold-fill); opacity: 1; }
+.home-hero {
+  padding: clamp(1.5rem, 6vw, 2.65rem) var(--home-gutter) 2rem;
+  text-align: center;
+}
+[data-home-photo] .home-hero {
+  min-height: clamp(13.25rem, 52vw, 20rem);
+  background:
+    linear-gradient(180deg, #211a15e5 0%, #211a15aa 29%, #35251918 66%, #211a15 100%),
+    var(--home-photo-image) var(--home-photo-mobile-position) / cover no-repeat;
+}
+.home .deck-tiles {
+  --deck-inset: clamp(.95rem, 4vw, 1.55rem);
+  display: grid;
+  gap: .8rem;
+  margin-inline: auto;
+}
+[data-home-photo] .home { margin-top: -1.25rem; }
+.home {
+  position: relative;
+  max-width: 47rem;
+  margin-inline: auto;
+  padding: 0 max(var(--home-gutter), env(safe-area-inset-right, 0px)) 1.4rem
+    max(var(--home-gutter), env(safe-area-inset-left, 0px));
+  color: var(--ink);
+}
+.home-title {
+  margin: .28rem auto 0;
+  font-size: clamp(3.25rem, 12vw, 5rem);
+  font-weight: 400;
+  line-height: .96;
+  letter-spacing: -.042em;
+  text-transform: none;
+}
+.home-title::after {
+  width: 2.2rem;
+  margin-top: .75rem;
+  background: var(--accent-soft);
+}
+/* A tile has no outline (the owner, 2026-11-12): it is a field of colour, and it answers the pointer by turning lighter. The lighter colour is
+   the ::before, a circle that grows from the point of contact to the tile's farthest corner, with a soft crest on its leading edge, like a
+   ripple; ripple.ts sets where it starts (--ripple-x, --ripple-y), how far it reaches (--ripple-r) and data-lit. Its solid part is 62% of the
+   radius (RIPPLE_SOLID there). From the keyboard the focused tile lights from its centre. */
+.deck-tile {
+  --tile: #2a211a;
+  --tile-lit: #3e3126;
+  --tile-crest: #4d3d2f;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  min-width: 0;
+  border-radius: .8rem;
+  background: var(--tile);
+}
+.deck-tile[data-deck="current"] {
+  --tile: #382a20;
+  --tile-lit: #4b3a2c;
+  --tile-crest: #5b4735;
+}
+.deck-tile::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: var(--ripple-x, 50%);
+  top: var(--ripple-y, 50%);
+  width: calc(2 * var(--ripple-r, 110%));
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle closest-side, var(--tile-lit) 62%, var(--tile-crest) 69%, transparent 92%);
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+}
+.deck-tile[data-lit]::before, .deck-tile:has(:focus-visible)::before { transform: translate(-50%, -50%) scale(1); }
+/* The spread is this control's answer to the pointer, asked for as such, so it plays whatever the motion preference (the owner, 2026-11-12;
+   the second allowance of audit A-C04): it is a change of colour inside one tile, and no text or control moves. Out to the far corner a
+   little slower than it draws back. */
+.deck-tile::before { transition: transform .42s cubic-bezier(.4, 0, .6, 1); }
+.deck-tile[data-lit]::before, .deck-tile:has(:focus-visible)::before { transition: transform .62s cubic-bezier(.22, .61, .36, 1); }
+.home .deck-face {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .6rem;
+  width: 100%;
+  min-height: 5rem;
+  margin: 0;
+  padding: .7rem var(--deck-inset);
+  border: 0;
+  border-radius: .7rem;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.home #start-session {
+  min-height: 5rem;
+  padding-top: 1.05rem;
+  padding-bottom: .35rem;
+}
+.deck-label { display: grid; gap: .2rem; }
+.deck-kicker { margin-bottom: .2rem; color: var(--ink-soft); font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; }
+.deck-title { font-size: clamp(1.65rem, 6vw, 2rem); line-height: 1; letter-spacing: -.018em; }
+#start-session .deck-title { font-size: clamp(2.35rem, 9vw, 3.4rem); }
+.deck-caption { color: var(--ink-soft); font-style: italic; font-size: 1.04rem; line-height: 1.2; }
+.deck-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(.7rem, 3vw, 1rem);
+}
+.deck-row .deck-label {
+  padding-inline-start: clamp(.7rem, 3vw, 1rem);
+  border-inline-start: 1px solid var(--rule-strong);
+}
+.deck-face .ec-icon { color: var(--accent); }
+.deck-row > .ec-icon { width: 1.8rem; height: 1.8rem; }
+.home .deck-face:disabled { opacity: 1; color: var(--ink-soft); cursor: default; }
+.home .deck-face:disabled > .ec-icon { visibility: hidden; }
+/* the tile's wash is the hover; the face itself stays clear over it */
+.home .deck-face:hover:not(:disabled) { color: var(--ink); background: transparent; }
+.home .deck-new:hover:not(:disabled) {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+.home .deck-new {
+  justify-self: start;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  margin: 0 0 .25rem;
+  margin-inline-start: calc(var(--deck-inset) - .5rem);
+  padding: .15rem .5rem;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font: 600 .9rem/1.3 var(--serif);
+  text-decoration: underline;
+  text-underline-offset: .23em;
+  -webkit-tap-highlight-color: transparent;
+}
+.home .deck-face:focus-visible, .home .deck-new:focus-visible, .home .home-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -3px;
+}
+.home .home-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 2.75rem;
+  margin: 1rem auto 0;
+  padding: .25rem .75rem;
+  color: var(--accent);
+  font-size: 1.3rem;
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: .25em;
+}
+.home .home-link:hover { text-decoration-color: currentColor; }
+.home .notice, .home #candidate-freshness {
+  margin: 0 0 .65rem;
+  font-family: var(--ec-sans);
+  font-size: .82rem;
+}
+.home-photo-credit {
+  margin: .4rem auto 0;
+  padding: 0 var(--home-gutter);
+  color: var(--ink-faint);
+  text-align: center;
+  font-size: .83rem;
+}
+.home-photo-credit a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
+@media (min-width: 720px) {
+  [data-home-photo] .home-hero { min-height: 17.5rem; background-position: center, var(--home-photo-desktop-position); }
+  .home .deck-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .deck-tile[data-deck="current"] { grid-column: 1 / -1; }
+}
+@media (forced-colors: active) {
+  [data-home-photo] .home-hero { background: none; }
+  /* forced colours drop the fills, so there the tile keeps a line to be seen by */
+  .deck-tile { border: 1px solid CanvasText; }
+  .deck-tile::before { display: none; }
+}
 @media (prefers-reduced-motion: no-preference) {
-  .ec-row { transition: border-color .15s, background-color .15s, transform .15s; }
   .exercise .grade-dot { transition: background-color .15s, color .15s; }
 }
 .entry-actions { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; align-items: center; margin: 1.15rem 0 0; }
@@ -291,6 +481,7 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 .linklike { font: inherit; font-size: .95rem; background: none; border: 0; padding: .1rem 0; color: var(--ink-soft); text-decoration: underline; text-underline-offset: .2em; text-decoration-color: var(--rule-strong); cursor: pointer; border-radius: 2px; }
 .linklike:hover:not(:disabled) { background: none; color: var(--accent); text-decoration-color: var(--accent); }
 .home .status { text-align: center; min-height: 1.4em; margin-top: 1.4rem; font-style: italic; color: var(--ink-soft); }
+.home .status:empty { display: none; }
 .home .status[data-kind="error"] { color: var(--bad); font-style: normal; }
 
 /* sub-screens of the home: a large title, quiet toggles, hairline lines */
@@ -471,8 +662,6 @@ img, svg, video, canvas { max-width: 100%; }
   h1 { font-size: 1.4rem; margin: .25rem 0 1.4rem; }
   h1::after { margin-top: .8rem; }
   .page-title { font-size: 1.7rem; margin: .25rem 0 .9rem; }
-  .home { --ec-pad: max(16px, env(safe-area-inset-left, 0px)); --ec-tail: calc(2rem + env(safe-area-inset-bottom, 0px)); padding-top: 1.6rem; }
-  .ec-row-title { font-size: 1.35rem; }
   .card, .exercise, .feedback { padding: 16px; }
   .exercise, .feedback { margin: 1rem 0; }
   .session-bar { gap: .1rem .75rem; }
@@ -481,8 +670,6 @@ img, svg, video, canvas { max-width: 100%; }
   .field, .deck-size { max-width: none; }
   .choices { max-width: none; }
   .stimulus { font-size: 1.5rem; }
-  .flashcard { min-height: 16rem; }
-  .flashcard .stimulus { font-size: clamp(2.2rem, 11vw, 3rem); }
   /* the four self-grades stay on one line: four equal columns, the word shrinks, and below 360px the number alone remains */
   .grades { flex-wrap: nowrap; justify-content: space-between; gap: 0; }
   button.grade { flex: 1 1 0; min-width: 0; justify-content: center; gap: .3rem; padding: 0 .1rem; }
@@ -530,14 +717,21 @@ img, svg, video, canvas { max-width: 100%; }
 .splash-mark { display: block; width: 176px; height: 88px; background: currentColor; -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: contain; mask-position: center; mask-repeat: no-repeat; } /* the mask image itself is an inline style on the element (index.html), so its relative URL resolves against the page */
 .splash-word { font-size: 2rem; line-height: 1; letter-spacing: .22em; margin-left: .22em; text-transform: uppercase; font-weight: 400; }
 @media (prefers-reduced-motion: no-preference) { #goreview-splash { transition: opacity .55s ease; } } /* the fade only when motion is welcome (audit A-C04) */
-/* the home: the language dropdown stands where the page title was, in the title's size, over the same short centred rule */
-.home-language { text-align: center; margin: .5rem 0 1.5rem; }
-.home-language::after { content: ""; display: block; width: 3rem; height: 1px; margin: 1.1rem auto 0; background: var(--rule-strong); }
-.home-language .language-kicker { font-size: clamp(1.5rem, 4.5vw, 2.1rem); line-height: 1.2; font-weight: 600; letter-spacing: .14em; color: var(--ink); }
+/* Keep the single native language picker centered over the title. */
+.home-language { display: flex; justify-content: center; align-items: center; gap: clamp(.55rem, 3vw, 1.05rem); }
+.home-language:has(.language > *)::before, .home-language:has(.language > *)::after {
+  content: "";
+  width: clamp(1rem, 9vw, 3rem);
+  height: 1px;
+  background: var(--accent-soft);
+}
+.home-language .language { flex: 0 1 auto; min-width: 0; }
+.home-language .language-kicker { font: 600 .83rem/1.5 var(--serif); letter-spacing: .18em; color: var(--ink); }
 .home-language .language-picker { max-width: 100%; }
-.home-language select.language-kicker { padding: .1rem 1.6rem .1rem .4rem; text-align: center; text-align-last: center; }
+.home-language select.language-kicker { max-width: 100%; min-height: 2.75rem; padding: .1rem 1.3rem .1rem .4rem; text-align: center; text-align-last: center; }
 .home-language select.language-kicker:hover { color: var(--accent); }
-.home-language .language-caret { font-size: 1.1rem; right: .25rem; color: var(--ink-soft); }
+.home-language select option { background: var(--paper); color: var(--ink); }
+.home-language .language-caret { font-size: .75rem; right: .25rem; color: var(--accent); }
 /* the mark in the ink of the body text (--brand: cream on the dark theme, dark brown on paper), the same ink the launch screen uses */
 .go-brand { display: inline-flex; align-items: center; gap: 0; flex-shrink: 0; color: var(--brand); font-size: .95rem; letter-spacing: .01em; text-decoration: none; }
 .go-brand-mark { display: block; width: calc(var(--mark-h) * 2); height: var(--mark-h); background: currentColor; -webkit-mask: var(--go-brand-mask) center / contain no-repeat; mask: var(--go-brand-mask) center / contain no-repeat; }
@@ -590,3 +784,139 @@ img, svg, video, canvas { max-width: 100%; }
 
 /* the session summary leads with the result */
 .summary-headline { font-size: 1.5rem; font-weight: 600; margin: 0.25rem 0 0.5rem; }
+
+/* The session uses the same photographs and palette as the home, with a shallower banner. */
+.shell:has(> .screen[data-route="review/session"]), .screen[data-route="review/session"] {
+  display: flex;
+  flex-direction: column;
+}
+.screen[data-route="review/session"] { flex: 1; }
+.screen[data-route="review/session"] .home-hero {
+  display: grid;
+  place-items: center;
+  min-height: clamp(6rem, 24vw, 10rem);
+  padding: .85rem var(--home-gutter) 1rem;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.screen[data-route="review/session"] .home-title {
+  font-size: clamp(2.25rem, 8vw, 4rem);
+  margin: 0;
+}
+.screen[data-route="review/session"][data-home-photo] .home-hero {
+  background-image: linear-gradient(180deg, #211a15dc, #211a158c 58%, #211a1540), var(--home-photo-image);
+}
+.screen[data-route="review/session"] > .body {
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
+  padding: .55rem max(var(--home-gutter), env(safe-area-inset-right, 0px)) 0
+    max(var(--home-gutter), env(safe-area-inset-left, 0px));
+}
+.screen[data-route="review/session"] > .body:has(.flashcard) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.session:has(> .flashcard) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.session {
+  --ec-paper: var(--paper);
+  --ec-paper-raised: var(--panel);
+  --ec-ink: var(--ink);
+  --ec-ink-soft: var(--ink-soft);
+  --ec-rule: var(--rule-strong);
+  --ec-gold: var(--accent);
+  --ec-gold-ink: var(--accent);
+  --ec-gold-fill: var(--accent);
+  --ec-gold-on-fill: var(--paper);
+  --ec-field-line: var(--control-line);
+}
+.session :is(.session-bar, .exercise, .feedback) {
+  --ec-paper: inherit;
+  --ec-paper-raised: inherit;
+  --ec-ink: inherit;
+  --ec-ink-soft: inherit;
+  --ec-rule: inherit;
+  --ec-gold: inherit;
+  --ec-gold-ink: inherit;
+  --ec-gold-fill: inherit;
+  --ec-gold-on-fill: inherit;
+  --ec-field-line: inherit;
+}
+.session-bar { gap: .15rem clamp(.45rem, 2vw, .85rem); align-items: center; }
+.session-heading { font-size: clamp(1.12rem, 4.1vw, 1.5rem); font-weight: 600; }
+#session-progress {
+  border-inline-start: 1px solid var(--rule-strong);
+  padding-inline-start: clamp(.45rem, 2vw, .85rem);
+  color: var(--ink-soft);
+  font: italic clamp(.95rem, 3.6vw, 1.2rem)/1.1 var(--serif);
+  letter-spacing: normal;
+  text-transform: none;
+}
+.session-bar .bar-actions { gap: clamp(.55rem, 3vw, 1.4rem); }
+.session-bar .linklike {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--accent);
+  font: clamp(1rem, 3.7vw, 1.2rem)/1 var(--serif);
+  letter-spacing: normal;
+  text-transform: none;
+}
+.session .exercise, .session .feedback { border-radius: .8rem; }
+.session .flashcard {
+  display: grid;
+  padding: 0;
+  margin: auto 0 0;
+  border-color: var(--accent-soft);
+  background: linear-gradient(135deg, #38291e, #2a2018);
+}
+.session .flashcard-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  min-height: clamp(10.5rem, 42vw, 18rem);
+  min-width: 0;
+  padding: 2.45rem 1.35rem;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: var(--ink);
+  text-align: center;
+}
+.session button.flashcard-face:hover { background: #ffffff06; }
+.session button.flashcard-face:focus-visible { outline-offset: -4px; }
+.flashcard-face .stimulus {
+  margin: 0;
+  font-size: clamp(2.65rem, 10vw, 4.4rem);
+  overflow-wrap: anywhere;
+}
+.flashcard-back .stimulus { font-size: clamp(1.65rem, 6vw, 2.35rem); color: var(--ink-soft); }
+.flashcard-back .reference { margin: 0; font-size: clamp(1.75rem, 6.5vw, 2.65rem); line-height: 1.15; }
+.flashcard .pronunciation { top: .55rem; right: .65rem; }
+.flashcard .icon-btn { width: 2.75rem; height: 2.75rem; }
+.flashcard .icon-btn svg { width: 1.45rem; height: 1.45rem; }
+.flashcard-grades { min-height: 3.75rem; }
+#session-status:empty { display: none; }
+.session .item-tools {
+  margin: 1rem .2rem 0;
+  border-block: 1px solid var(--rule-strong);
+}
+.session .item-tools > summary { padding: .45rem .25rem; font-size: 1.2rem; font-style: italic; }
+.session:has(> .flashcard) > .item-tools { margin-bottom: auto; }
+.screen[data-route="review/session"] .home-photo-credit { margin: auto auto 0; padding-top: .8rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .flashcard-back { animation: flashcard-reveal .22s ease-out; }
+  @keyframes flashcard-reveal {
+    from { transform: perspective(38rem) rotateY(-60deg); opacity: .35; }
+    to { transform: perspective(38rem) rotateY(0); opacity: 1; }
+  }
+}
+@media (forced-colors: active) {
+  .screen[data-route="review/session"][data-home-photo] .home-hero, .session .flashcard { background: none; }
+}

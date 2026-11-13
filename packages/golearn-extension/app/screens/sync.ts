@@ -57,8 +57,18 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const reply: { answered: boolean; status?: SyncStatus } = ctx.inExtension ? await readStatus(ctx) : { answered: false };
     if (!view.alive()) return;
     clear(box);
-    box.append(h('h2', { id: 'sync-h' }, 'Synchronisation'));
     const online = ctx.deps.win.navigator.onLine;
+    // the state in one sentence first; the figures follow for whoever wants them
+    const st = reply.status;
+    const lead = !ctx.inExtension ? ''
+      : !session ? 'Your progress is on this device only. Nothing is sent anywhere.'
+        : st?.needsSignIn ? 'Your account asks you to sign in again before anything more is sent.'
+          : !reply.answered || !st ? 'GoLearn could not read its sync status just now.'
+            : st.lastError ? 'GoLearn cannot reach your account right now. It keeps trying by itself and nothing is lost.'
+              : st.pending ? `${st.pending} ${st.pending === 1 ? 'item is' : 'items are'} waiting to be sent to your account.`
+                : 'Everything on this device has been sent to your account.';
+    if (lead) box.append(h('p', { class: 'lede', id: 'sync-lead' }, lead));
+    box.append(h('h2', { id: 'sync-h' }, 'Details'));
     if (!ctx.inExtension) {
       append(box, [
         p('Synchronisation runs inside the extension. This page is running as a website, so there is nothing here to synchronise.'),
@@ -91,7 +101,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       else if (v?.ok === false) setStatus(out, v.error ?? v.message ?? 'The sync did not complete; the extension will try again.', 'error');
       else setStatus(out, v?.message ?? 'Synchronised.', 'ok');
       await paint();
-    }, { id: 'sync-now', class: 'btn primary' })));
+    }, { id: 'sync-now', class: session ? 'btn primary' : 'btn' }))); // with no account there is nothing to send: the button is the quiet kind
   }
   await paint();
 }

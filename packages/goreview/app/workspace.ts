@@ -215,6 +215,86 @@ interface CandidateCache { version?: 1; fetchedAt: string; priorityPolicyVersion
  * page) builds it from this device's last complete prepared deck and asks the service nothing; it is undefined when there is no such copy. The home
  * paints that at once and then asks for the live one.
  */
+/** Between two walks of the vocabulary, at least this long: a home re-entered or refreshed meanwhile reuses the last complete walk. */
+export const RECOVERY_SCAN_MIN_INTERVAL_MS = 10 * 60_000;
+/** After this long a walk is repeated even if the vocabulary did not grow. */
+export const RECOVERY_SCAN_MAX_AGE_MS = 2 * 60 * 60_000;
+interface RecoveryScanResult { unresolvedVocabulary: VocabularyItem[]; vocabularyComplete: boolean; fullKnowledge: UnitKnowledge[]; fullKnowledgeRead: boolean; notes: string[]; reused: boolean }
+interface RecoveryScanEntry { done?: { at: number; total: number; unresolvedVocabulary: VocabularyItem[]; fullKnowledge: UnitKnowledge[] }; running?: Promise<RecoveryScanResult> }
+/** Per app (as refreshEntries), per learner and language: the last COMPLETE walk, and the walk under way. Module-level, so a route change keeps it. */
+const recoveryScans = new WeakMap<AppContext, Map<string, RecoveryScanEntry>>();
+/** Tests (and a sign-out) forget the walks. */
+export const forgetRecoveryScans = (ctx: AppContext): void => { recoveryScans.delete(ctx); };
+
+/**
+ * The raw reads the candidate recovery needs: every vocabulary row without a catalogue unit (a walk of the unsorted listing, 100 a page) and the
+ * learner's whole knowledge. Costly for the service (about 100 MB of allocation for 3,500 words), so (2026-11-12):
+ *   - one walk at a time per learner and language, however often the home is built (a second build waits for the first walk);
+ *   - within RECOVERY_SCAN_MIN_INTERVAL_MS of a complete walk, nothing is asked: the last walk is reused;
+ *   - after that, one page is asked; if the vocabulary's size (catalog.total) is what the last walk saw, and that walk is younger than
+ *     RECOVERY_SCAN_MAX_AGE_MS, it is reused; otherwise the walk continues from that page;
+ *   - only a complete walk (every page and the whole knowledge read) is kept, so a failure (a restarting service) never pins a partial result.
+ */
+async function recoveryScan(ctx: AppContext, api: Awaited<ReturnType<AppContext['api']>>['api'], identity: Identity): Promise<RecoveryScanResult> {
+  let byApp = recoveryScans.get(ctx);
+  if (!byApp) { byApp = new Map(); recoveryScans.set(ctx, byApp); }
+  const key = `${identity.learnerId}|${identity.languageId}`;
+  let entry = byApp.get(key);
+  if (!entry) { entry = {}; byApp.set(key, entry); }
+  if (entry.running) return entry.running;
+  const held = entry;
+  const run = (async (): Promise<RecoveryScanResult> => {
+    const at = ctx.deps.now().getTime();
+    const done = held.done;
+    const reuse = (): RecoveryScanResult => ({ unresolvedVocabulary: done!.unresolvedVocabulary, vocabularyComplete: true, fullKnowledge: done!.fullKnowledge, fullKnowledgeRead: true, notes: [], reused: true });
+    if (done && at - done.at < RECOVERY_SCAN_MIN_INTERVAL_MS) return reuse();
+    const notes: string[] = [];
+    const unresolvedVocabulary: VocabularyItem[] = [];
+    const cursors = new Set<string>();
+    let after: string | undefined;
+    let vocabularyComplete = false;
+    let total = -1;
+    try {
+      while (true) {
+        // unsorted (2026-11-08): this scan reads every row and its order is never used, and a sorted page makes the service read and sort the whole
+        // vocabulary again for each page of 100 (a large vocabulary paid for that once per page, on every visit to the home)
+        const page = await api.vocabulary({ languageId: identity.languageId, limit: 100, ...(after ? { after } : {}) });
+        if (!page.ok) throw new Error(page.message || `the service answered ${page.status}`);
+        if (total < 0) {
+          total = typeof page.data.catalog?.total === 'number' ? page.data.catalog.total : -1;
+          // the vocabulary has not grown since the last complete walk, and that walk is recent enough: the first page was the only cost
+          if (done && total >= 0 && total === done.total && at - done.at < RECOVERY_SCAN_MAX_AGE_MS) return reuse();
+        }
+        unresolvedVocabulary.push(...page.data.items.filter((item) => item.knowledge.languageId === identity.languageId && !item.unit));
+        after = page.data.nextCursor;
+        if (!after) { vocabularyComplete = true; break; }
+        if (cursors.has(after)) throw new Error('the vocabulary service repeated a page cursor');
+        cursors.add(after);
+      }
+    } catch (e) {
+      notes.push(`Some ${identity.languageId} vocabulary rows could not be checked for local review (${e instanceof Error ? e.message : 'unknown error'}); the service's candidates remain available.`);
+    }
+
+    // The raw vocabulary endpoint carries the original UnitKnowledge rows even when
+    // its optional catalogue unit is absent. The full knowledge read is authoritative
+    // where present; vocabulary rows fill any gaps without crossing language scopes.
+    let fullKnowledge: UnitKnowledge[] = [];
+    let fullKnowledgeRead = false;
+    try {
+      const result = await api.knowledge();
+      if (!result.ok) throw new Error(result.message || `the service answered ${result.status}`);
+      fullKnowledge = result.data.knowledge.filter((row) => row.languageId === identity.languageId && typeof row.unitId === 'string');
+      fullKnowledgeRead = true;
+    } catch (e) {
+      notes.push(`${identity.languageId} learning history could not be fully refreshed (${e instanceof Error ? e.message : 'unknown error'}); local candidates are based only on rows that loaded.`);
+    }
+    if (vocabularyComplete && fullKnowledgeRead && total >= 0) held.done = { at, total, unresolvedVocabulary, fullKnowledge };
+    return { unresolvedVocabulary, vocabularyComplete, fullKnowledge, fullKnowledgeRead, notes, reused: false };
+  })();
+  held.running = run;
+  try { return await run; } finally { held.running = undefined; }
+}
+
 async function buildReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } = {}): Promise<ReviewModel | undefined> {
   const identity = await ctx.identity();
   if (!identity) return undefined;
@@ -359,43 +439,15 @@ async function buildReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } =
   // raw vocabulary for any language whose installed engine has a pack provider.
   if (candidateSource === 'live' && candidateApi && ctx.engine.recoverCandidates
     && ctx.engine.canRecoverCandidates?.(identity.languageId, candidateApi) === true) {
-    const unresolvedVocabulary: VocabularyItem[] = [];
-    const cursors = new Set<string>();
-    let after: string | undefined;
-    let vocabularyComplete = false;
-    try {
-      while (true) {
-        // unsorted (2026-11-08): this scan reads every row and its order is never used, and a sorted page makes the service read and sort the whole
-        // vocabulary again for each page of 100 (a large vocabulary paid for that once per page, on every visit to the home)
-        const page = await candidateApi.vocabulary({ languageId: identity.languageId, limit: 100, ...(after ? { after } : {}) });
-        if (!page.ok) throw new Error(page.message || `the service answered ${page.status}`);
-        unresolvedVocabulary.push(...page.data.items.filter((item) => item.knowledge.languageId === identity.languageId && !item.unit));
-        after = page.data.nextCursor;
-        if (!after) { vocabularyComplete = true; break; }
-        if (cursors.has(after)) throw new Error('the vocabulary service repeated a page cursor');
-        cursors.add(after);
-      }
-    } catch (e) {
-      recoveryIncomplete = true;
-      recoveryNotes.push(`Some ${identity.languageId} vocabulary rows could not be checked for local review (${e instanceof Error ? e.message : 'unknown error'}); the service's candidates remain available.`);
-    }
-
-    // The raw vocabulary endpoint carries the original UnitKnowledge rows even when
-    // its optional catalogue unit is absent. The full knowledge read is authoritative
-    // where present; vocabulary rows fill any gaps without crossing language scopes.
-    let fullKnowledge: UnitKnowledge[] = [];
-    let fullKnowledgeRead = false;
-    try {
-      const result = await candidateApi.knowledge();
-      if (!result.ok) throw new Error(result.message || `the service answered ${result.status}`);
-      fullKnowledge = result.data.knowledge.filter((row) => row.languageId === identity.languageId && typeof row.unitId === 'string');
-      fullKnowledgeRead = true;
-    } catch (e) {
-      recoveryIncomplete = true;
-      recoveryNotes.push(`${identity.languageId} learning history could not be fully refreshed (${e instanceof Error ? e.message : 'unknown error'}); local candidates are based only on rows that loaded.`);
-    }
+    // one walk of the vocabulary and one read of the whole knowledge, reused while the vocabulary has not grown (recoveryScan below): an open home
+    // re-ran both on every live update and after every service restart, and each run took the service about 100 MB (2026-11-12: Render's 512 MB
+    // instance ran out of memory after each walk, restarted, and was walked again)
+    const scan = await recoveryScan(ctx, candidateApi, identity);
+    const { unresolvedVocabulary, vocabularyComplete, fullKnowledge, fullKnowledgeRead } = scan;
+    if (scan.notes.length) { recoveryIncomplete = true; recoveryNotes.push(...scan.notes); }
     const byKnowledge = new Map(knowledge.filter((row) => row.languageId === identity.languageId && typeof row.unitId === 'string').map((row) => [row.unitId, row]));
-    for (const row of fullKnowledge) byKnowledge.set(row.unitId, row);
+    // a reused read is older than the rows this build just fetched: it only fills gaps, it never overrides them
+    for (const row of fullKnowledge) if (!scan.reused || !byKnowledge.has(row.unitId)) byKnowledge.set(row.unitId, row);
     for (const item of unresolvedVocabulary) if (!byKnowledge.has(item.knowledge.unitId)) byKnowledge.set(item.knowledge.unitId, item.knowledge);
     knowledge = [...byKnowledge.values()];
     const unresolvedIds = new Set(unresolvedVocabulary.map((item) => item.knowledge.unitId));
@@ -791,7 +843,7 @@ export async function resumeSession(ctx: AppContext, sessionId: string): Promise
   if (!driver.recover || !(await driver.recover(sessionId))) return { ok: false, message: 'The saved session could not be restored.' };
   const state = driver.state();
   return { ok: true, run: { driver, plan: state.plan, ctx: ectx, addedCount: 0,
-    startedAt: Date.parse(state.startedAt), results: [...state.results],
+    startedAt: Date.parse(state.startedAt), resumed: true, results: [...state.results],
     skipped: driver.skips().map((s) => s.itemId), withheld: [], controls: [] } };
 }
 

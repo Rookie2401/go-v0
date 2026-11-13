@@ -13,7 +13,8 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { planSession } from '../../packages/goreview/src';
 import { fakeScheduler, NOW, prefs } from '../goreview/intake/fixtures';
-import { FACTS_NOT_EXAMINED, factsBudgetFor } from '../../packages/goreview/src/intake/fetch';
+import { factsBudgetFor } from '../../packages/goreview/src/intake/fetch';
+import { FACTS_NOT_EXAMINED } from '../../packages/goreview/src/intake/intake';
 import { makeCandidates, makeDeckForms, makeRig, project } from './goreview.facts.rig';
 
 const GOLDEN = path.resolve(process.cwd(), 'test/loading/goreview.facts.golden.json');
@@ -112,5 +113,58 @@ describe('intake facts: what the fetch costs', () => {
     const a = await makeRig().run(cands, { maxNew: 10 }, makeDeckForms(0, cands), { factsBudget: budget });
     const b = await makeRig().run(cands, { maxNew: 10 }, makeDeckForms(100, cands), { factsBudget: budget });
     expect(b.counts.factsFor - a.counts.factsFor).toBe(100);
+  }, 60000);
+});
+
+describe('intake facts: the APP path (createReviewEngine(...).intake, the call the review workspace makes) is bounded', () => {
+  const golden = (): Golden => JSON.parse(fs.readFileSync(GOLDEN, 'utf8')) as Golden;
+  const top = (out: Array<{ unitId: string; decision: string }>): string[] => out.filter((o) => o.decision === 'test-now').map((o) => o.unitId);
+
+  it('chooses the same words as the unbudgeted golden, with a few dozen lookups instead of one per candidate', async () => {
+    for (const c of CASES) {
+      const cands = makeCandidates(c.n);
+      const deck = makeDeckForms(c.deck, cands);
+      const { out, counts } = await makeRig().runApp(cands, { maxNew: c.maxNew }, deck);
+      expect(top(out), c.name).toEqual(top(golden()[c.name]!.outcomes));
+      const budget = factsBudgetFor(c.maxNew);
+      expect(counts.factsFor, c.name).toBeLessThanOrEqual(budget + 16 + c.deck);
+      expect(counts.factsFor - c.deck, c.name).toBeLessThan(counts.candidates / 3); // the existing deck's form cards still cost one lookup each
+      const plan = planSession({ deck, intake: out, preferences: prefs({ maxNew: c.maxNew }), audio: { available: true, eligibleForEvidence: true, reason: 'test' },
+        scheduler: fakeScheduler, now: NOW, random: () => 0.5 });
+      expect(plan.items.filter((i) => i.isNew).map((i) => i.item.itemId), `${c.name}: selection`).toEqual(golden()[c.name]!.selection);
+    }
+  }, 120000);
+
+  it('does not grow when the candidate count doubles', async () => {
+    const a = await makeRig().runApp(makeCandidates(250), { maxNew: 10 });
+    const b = await makeRig().runApp(makeCandidates(500), { maxNew: 10 });
+    expect(Math.abs(b.counts.factsFor - a.counts.factsFor)).toBeLessThanOrEqual(8);
+    expect(b.counts.factsFor).toBeLessThan(60);
+  }, 60000);
+
+  it('with no new cards (maxNew 0) no facts are fetched at all, not even for the deck', async () => {
+    const cands = makeCandidates(250);
+    const { out, counts } = await makeRig().runApp(cands, { maxNew: 0 }, makeDeckForms(100, cands));
+    expect(counts.factsFor).toBe(0);
+    expect(counts.gloss).toBe(0);
+    expect(out.filter((o) => o.decision === 'test-now')).toEqual([]);
+    expect(out.filter((o) => o.reasons.includes(FACTS_NOT_EXAMINED)).length).toBeGreaterThan(100);
+  }, 60000);
+
+  it('a lookup that fails inside the examined window is handled as before (not ready, with the error) and the window moves on: the same words are chosen as when everything is fetched', async () => {
+    const cands = makeCandidates(250);
+    const g = golden()['cands250-deck0-maxNew10']!;
+    const failIds = new Set(top(g.outcomes).slice(0, 6));
+    const full = await makeRig().run(cands, { maxNew: 10 }, [], { failIds });
+    const app = await makeRig().runApp(cands, { maxNew: 10 }, [], failIds);
+    expect(top(app.out)).toEqual(top(full.out));
+    expect(top(app.out)).toHaveLength(10);
+    for (const id of failIds) {
+      const o = app.out.find((x) => x.unitId === id)!;
+      expect(o.decision).toBe('needs-validation');
+      expect(o.reasons[0]).toMatch(/^pack facts could not be read \(dictionary shard could not be read\)/);
+      expect(o.reasons).not.toContain(FACTS_NOT_EXAMINED);
+    }
+    expect(app.counts.factsFor).toBeLessThan(60);
   }, 60000);
 });

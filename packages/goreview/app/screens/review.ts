@@ -1,26 +1,15 @@
 /**
- * #/review — the GoReview home (the owner, 2026-10-31; restyled in Ecclesia's shape 2026-11-09: the gold mark over one title, then one list of choice rows):
- *
- *   GoTell          its own hierarchy (above a rule): the writing workspace, #/tell
- *   GoReview        Current Deck   what the system has you drilling: new words, cards never answered, learning and relearning returns
- *                                  (and the missed words to study, under it). A press starts it; Begin new deck beside it draws a fresh
- *                                  set of new words (the words already answered keep their schedule).
- *                   Review Deck    the spaced reviews that are due. A press starts it.
- *                   Saved decks    "N saved" → #/review/decks (Class Essentials lives there)
- *   My vocab        "N words" → #/review/vocab
- *
- * A deck's size is set in Settings alone (the owner, 2026-10-28).
- * Everything the home used to show (intake proposals with their reasons, the dimension counts, the session controls, the deck
- * with its per-item controls) lives on #/review/details, reached from Settings. Sub-routes:
- * #/review/session, #/review/history/<item>, #/review/transfer, #/review/decks, #/review/vocab, #/review/details.
+ * #/review — the GoReview home: Current Deck (with New), Review Deck, Saved, and My vocab.
+ * Settings opens Review Details for additional practice and the deck controls.
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planCurrentDeck, planFreshDeck, planSelectedPractice, selectedPracticeUnits, releaseHoldOut, saveDeck, setHoldOut, type CurrentDeck, type DeckPart, type SavedDeck, type VocabRow } from '../deckModel';
+import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planCurrentDeck, planFreshDeck, releaseHoldOut, setHoldOut, type CurrentDeck, type DeckPart, type SavedDeck, type VocabRow } from '../deckModel';
 import { explainAdmissions } from '../admissionExplanation';
 import { freshModel, planCouldHaveChanged } from '../freshness';
-import { icon, type IconName } from '../icons';
 import { loadingMark } from '../loading';
+import { icon } from '../icons';
+import { attachRipple } from '../ripple';
 import { MAX_SNAPSHOT_WORDS, readSnapshot, restoreMissing, type ReviewSnapshot } from '../snapshot';
 import { beginSession, currentReviewModel, endSavedSession, forgetReviewModels, recoverableSessions, resumeSession, reviewModelRevision, type ReviewModel } from '../workspace';
 import * as decksScreen from './decks';
@@ -31,8 +20,6 @@ import * as sessionScreen from './session';
 import * as remediationScreen from './remediation';
 import type { View } from './view';
 
-/** The Go mark (the G and the globe) as the silhouette the home paints in gold above its title. */
-const markUrl = new URL('../../../shared-brand/go-logo.png', import.meta.url).href;
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
 const when = (at: string): string => new Date(at).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
 
@@ -45,7 +32,7 @@ const when = (at: string): string => new Date(at).toLocaleString(undefined, { we
  * move with the events, so they are not asked for again while the key holds; after HOME_MEMO_MS they are asked for anyway.
  */
 type VocabCompleteness = 'complete' | 'partial' | 'loading' | 'unavailable' | 'stale';
-interface PaintedHome { key: string; at: number; model: ReviewModel; deck: CurrentDeck; review: CurrentDeck; selectedCount: number; resumeId: string | undefined; saved: number; words: number; vocabCompleteness: VocabCompleteness }
+interface PaintedHome { key: string; at: number; model: ReviewModel; deck: CurrentDeck; review: CurrentDeck; resumeId: string | undefined; saved: number; words: number; vocabCompleteness: VocabCompleteness }
 const painted = new WeakMap<AppContext, Map<string, PaintedHome>>();
 /** How long a painted home is reused unchanged before the Repository is asked again anyway. */
 export const HOME_MEMO_MS = 10 * 60_000;
@@ -111,12 +98,16 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     nextDueTimer = ctx.deps.win.setTimeout(() => { nextDueTimer = undefined; if (view.alive()) void requestRepaint(true, false); }, delay) as unknown as number;
   }
 
-  /** Draws the home in Ecclesia's shape: the gold mark and the one title, then one list of choices (Current Deck, Review Deck, Saved decks, My vocab, GoTell, Biblia). */
   function draw(model: ReviewModel, deck: CurrentDeck, review: CurrentDeck, resumeId: string | undefined, savedCount: number, words: number,
-    selectedCount: number, vocabCompleteness: VocabCompleteness = 'complete'): void {
+    vocabCompleteness: VocabCompleteness = 'complete'): void {
     clear(root);
     root.setAttribute('lang', 'en');
-    append(root, [homeHead(), goReviewEntry(model, deck, review, resumeId, selectedCount, savedCount), vocabEntry(Math.max(words, 0), vocabCompleteness), tellEntry(), ...(ctx.deps.links?.biblia ? [bibliaEntry(ctx.deps.links.biblia)] : []), status]);
+    append(root, [
+      goReviewEntry(model, deck, review, resumeId, savedCount),
+      vocabEntry(Math.max(words, 0), vocabCompleteness),
+      ctx.deps.links?.biblia ? h('a', { class: 'home-link', href: ctx.deps.links.biblia, id: 'entry-biblia' }, 'Biblia') : null,
+      status,
+    ]);
   }
 
   /** `quiet`: a repaint that only shows a refresh that just landed must not start another refresh. */
@@ -131,7 +122,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     if (!force && memo && !incomplete && local && memo.key === local.key && now - memo.at < memoTtl && !scheduleMovedSince(memo.model, now) && !planCouldHaveChanged(memo.model, now)) {
       if (!view.alive()) return;
       paintedEvents = memo.model.events.length;
-      draw(memo.model, memo.deck, memo.review, memo.resumeId, memo.saved, memo.words, memo.selectedCount, memo.vocabCompleteness);
+      draw(memo.model, memo.deck, memo.review, memo.resumeId, memo.saved, memo.words, memo.vocabCompleteness);
       return;
     }
     // the first paint shows the loading mark; a repaint over a painted home keeps it until the new one is ready
@@ -181,14 +172,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const vocab = snapRows;
     const deck = await planCurrentDeck(ctx, model, holdOut, vocab, 'current');
     const review = await planCurrentDeck(ctx, model, holdOut, vocab, 'review');
-    const selected = await selectedPracticeUnits(ctx, id.learnerId, id.languageId);
     armNextDueRefresh(model);
     const words = vocab.length || model.knowledge.length;
     const vocabCompleteness: VocabCompleteness = vocab.length >= MAX_SNAPSHOT_WORDS ? 'partial' : 'loading';
     if (!view.alive()) return;
-    const look = JSON.stringify([homeId, deckLook(deck), deckLook(review), resumable[0]?.sessionId ?? '', saved.length, selected.length, model.candidateSource === 'cached' && !model.provisional ? model.knowledgeStatus.fetchedAt : '',
+    const look = JSON.stringify([homeId, deckLook(deck), deckLook(review), resumable[0]?.sessionId ?? '', saved.length, model.schedulerIssue ?? '', model.candidateSource === 'cached' && !model.provisional ? model.knowledgeStatus.fetchedAt : '',
       model.candidateReadinessIncomplete ?? false, model.knowledgeStatus.source === 'partial' || !!model.candidateRecoveryIncomplete]);
-    if (look !== drawnLook || !root.querySelector('[data-entry]')) draw(model, deck, review, resumable[0]?.sessionId, saved.length, words, selected.length, vocabCompleteness);
+    if (look !== drawnLook || !root.querySelector('[data-entry]')) draw(model, deck, review, resumable[0]?.sessionId, saved.length, words, vocabCompleteness);
     drawnLook = look;
     if (!model.provisional) latest = model;
     if (model.provisional) return; // the live model follows: it is the one remembered, and it starts the vocabulary count
@@ -199,7 +189,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const same = after && after.id === homeId ? after : undefined;
     if (same) {
       const map = painted.get(ctx) ?? new Map<string, PaintedHome>();
-      map.set(same.id, { key: same.key, at: now, model, deck, review, selectedCount: selected.length, resumeId: resumable[0]?.sessionId, saved: saved.length, words, vocabCompleteness });
+      map.set(same.id, { key: same.key, at: now, model, deck, review, resumeId: resumable[0]?.sessionId, saved: saved.length, words, vocabCompleteness });
       painted.set(ctx, map);
     }
     void live.then((result) => {
@@ -213,30 +203,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     });
   }
 
-  /** The head of the home: the Go mark in gold, small and centred, above the one title. */
-  function homeHead(): HTMLElement {
-    return h('header', { class: 'ec-home-head' },
-      h('span', { class: 'ec-mark', 'aria-hidden': 'true', style: `--ec-mark-mask: url("${markUrl}")` }),
-      h('h2', { class: 'ec-title' }, 'GoReview'));
-  }
-
-  /** The body of a choice row: a line icon, the serif title over a small sans caption (the chevron is drawn by the stylesheet). */
-  function rowBody(name: IconName, title: string, caption: HTMLElement | string): Element[] {
-    return [icon(ctx.deps.doc, name), h('span', { class: 'ec-row-text' }, h('span', { class: 'ec-row-title' }, title),
-      typeof caption === 'string' ? h('span', { class: 'ec-row-caption' }, caption) : caption)];
-  }
-
-  /** GoTell: the writing workspace, #/tell. */
-  function tellEntry(): HTMLElement {
-    return h('section', { class: 'entry entry-tell', 'data-entry': 'tell' },
-      h('a', { class: 'ec-row entry-link', href: '#/tell', id: 'entry-tell' }, ...rowBody('tell', 'GoTell', 'Write and be corrected')));
-  }
-
-  /** Biblia, when it ships beside this app (the iPhone edition, the extension): the Hebrew Bible and the Greek New Testament read with GoLearn, recorded into this account. */
-  function bibliaEntry(href: string): HTMLElement {
-    return h('section', { class: 'entry', 'data-entry': 'biblia' },
-      h('a', { class: 'ec-row entry-link', href, id: 'entry-biblia' }, ...rowBody('book', 'Biblia', 'The Hebrew Bible and the Greek New Testament, read with GoLearn')));
-  }
   function setVocabCount(kicker: HTMLElement, count: number, completeness: VocabCompleteness): void {
     const base = plural(count, 'word', 'words');
     const label = completeness === 'partial' ? `${count.toLocaleString()}+ words` : base;
@@ -253,10 +219,10 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   }
 
   function vocabEntry(count: number, completeness: VocabCompleteness = 'complete'): HTMLElement {
-    const kicker = h('span', { class: 'ec-row-caption', id: 'vocab-count' }, plural(count, 'word', 'words'));
+    const kicker = h('span', { class: 'sr', id: 'vocab-count' }, plural(count, 'word', 'words'));
     setVocabCount(kicker, count, completeness);
     return h('section', { class: 'entry', 'data-entry': 'vocab' },
-      h('a', { class: 'ec-row entry-link', href: '#/review/vocab', id: 'entry-vocab' }, ...rowBody('vocab', 'My vocab', kicker)));
+      h('a', { class: 'home-link', href: '#/review/vocab', id: 'entry-vocab', 'aria-describedby': 'vocab-count' }, 'My Vocabulary'), kicker);
   }
 
   function candidateFreshness(model: ReviewModel): HTMLElement | null {
@@ -311,15 +277,21 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
 
   async function resume(sessionId: string): Promise<void> {
     const resumed = await resumeSession(ctx, sessionId);
-    if (!resumed.ok) { setStatus(status, resumed.message, 'error'); return; }
+    if (!resumed.ok) {
+      setStatus(status, resumed.message, 'error');
+      await requestRepaint(true, false);
+      return;
+    }
     ctx.run.active = resumed.run;
     ctx.go('review/session');
   }
 
-  /** One of the two deck buttons: the deck's name over its count, the whole button a press that starts it (greyed out when empty). */
-  function deckButton(id: string, name: IconName, title: string, kicker: string, count: number, onPress: () => Promise<void>): HTMLButtonElement {
-    const b = h('button', { type: 'button', class: 'ec-row deck-button', id, 'data-cards': String(count), ...(count ? {} : { disabled: true }) },
-      ...rowBody(name, title, h('span', { class: 'ec-row-caption', id: `${id}-count` }, kicker))) as HTMLButtonElement;
+  function deckButton(id: string, label: string, description: string, count: number, content: HTMLElement, onPress: () => Promise<void>, canResume = false): HTMLButtonElement {
+    const detailId = `${id}-count`;
+    const b = h('button', { type: 'button', class: 'deck-face', id, 'data-cards': String(count),
+      'aria-label': label, 'aria-describedby': detailId, disabled: !count && !canResume,
+      'data-action': canResume ? 'resume-session' : undefined },
+      content, icon(ctx.deps.doc, 'arrow'), h('span', { id: detailId, class: 'sr' }, description)) as HTMLButtonElement;
     b.addEventListener('click', () => {
       b.disabled = true;
       void onPress().catch((error) => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) b.disabled = false; });
@@ -327,7 +299,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     return b;
   }
 
-  function goReviewEntry(m: ReviewModel, deck: CurrentDeck, review: CurrentDeck, resumeId: string | undefined, selectedCount: number, savedCount: number): HTMLElement {
+  function deckLabel(title: string, caption: string): HTMLElement {
+    return h('span', { class: 'deck-label' },
+      h('span', { class: 'deck-title' }, title), h('span', { class: 'deck-caption' }, caption));
+  }
+
+  function goReviewEntry(m: ReviewModel, deck: CurrentDeck, review: CurrentDeck, resumeId: string | undefined, savedCount: number): HTMLElement {
     const drilling = deck.entries.length;
     const reviewing = review.entries.length;
     // Deck fill (the owner, 2026-11-03): a deck is always the size the learner set, topped up with early reviews, so the kickers read the
@@ -340,50 +317,37 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       : deck.summary.nextReturnAt ? `Nothing to drill now · next return ${when(deck.summary.nextReturnAt)}` : 'Nothing to drill right now';
     const reviewKicker = reviewing ? plural(reviewing, 'card', 'cards')
       : review.summary.nextReviewAt ? `Nothing due · next review ${when(review.summary.nextReviewAt)}` : 'Nothing due';
-    const current = deckButton('start-session', 'deck', 'Current Deck', currentKicker, drilling, () => begin(m, 'current'));
-    const newDeck = button('Begin new deck', () => {
+    const whyNoNew = drilling || resumeId ? undefined : explainAdmissions(m, deck);
+    const currentAction = resumeId ? 'Resume' : drilling ? 'Start' : 'No cards ready';
+    const current = deckButton('start-session', `${currentAction} · Current Deck`,
+      resumeId ? `Resume your session in progress. ${currentKicker}` : [currentKicker, whyNoNew?.text].filter(Boolean).join('. '),
+      drilling, h('span', { class: 'deck-label' },
+        h('span', { class: 'deck-kicker' }, 'Current Deck'),
+        h('span', { class: 'deck-title' }, currentAction),
+        h('span', { class: 'deck-caption' }, 'Your active vocabulary collection')),
+      () => resumeId ? resume(resumeId) : begin(m, 'current'), !!resumeId);
+    const newDeck = button('New deck', () => {
       newDeck.disabled = true;
       void beginNewDeck(m, resumeId).catch((error) => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) newDeck.disabled = false; });
-    }, { class: 'deck-new', id: 'start-new', 'data-action': 'begin-new-deck' });
-    const reviewButton = deckButton('start-review', 'review', 'Review Deck', reviewKicker, reviewing, () => begin(m, 'review'));
+    }, { class: 'deck-new', id: 'start-new', 'data-action': 'begin-new-deck', 'aria-label': 'Begin new deck' });
+    const reviewButton = deckButton('start-review', 'Review Deck', reviewKicker, reviewing,
+      h('span', { class: 'deck-row' }, icon(ctx.deps.doc, 'review'), deckLabel('Review Deck', reviewing ? 'Study cards' : 'No cards ready')),
+      () => begin(m, 'review'));
 
-    // under the Current Deck: the missed words to study, words picked by hand, and saving the deck for later
-    const extras = h('div', { class: 'deck-extras' });
-    if (deck.summary.remediation) extras.append(h('a', { class: 'linklike', id: 'open-remediation', href: '#/review/remediation' }, `${plural(deck.summary.remediation, 'missed word', 'missed words')} to study`));
-    if (selectedCount) extras.append(button(`Practice selected words (${selectedCount})`, () => {
-      void (async () => {
-        const fresh = await freshModel(ctx, latestOf(m));
-        const plan = await planSelectedPractice(ctx, fresh);
-        if (!plan.items.length) { setStatus(status, 'Selected words are controlled or no usable exercise is available.', 'info'); return; }
-        const result = await beginSession(ctx, fresh, { plan });
-        if (!result.ok) { setStatus(status, result.message, 'info'); return; }
-        await releaseHoldOut(ctx, fresh.identity.learnerId, fresh.identity.languageId);
-        ctx.run.active = result.run; ctx.go('review/session');
-      })().catch(error => setStatus(status, String(error), 'error'));
-    }, { id: 'start-selected-practice', class: 'linklike' }));
-    if (drilling) extras.append(button('Save this deck', () => {
-      void (async () => {
-        const fresh = await freshModel(ctx, latestOf(m));
-        const holdOut = await holdOutOf(ctx, fresh.identity.learnerId, fresh.identity.languageId);
-        const now = await planCurrentDeck(ctx, fresh, holdOut, undefined, 'current');
-        const saved = await saveDeck(ctx, fresh.identity, now.entries);
-        setStatus(status, saved ? 'Deck saved. It waits in Saved decks; a fresh Current Deck is drawn.' : 'There is no deck to save yet.', saved ? 'ok' : 'info');
-        await requestRepaint(true, false);
-      })();
-    }, { class: 'linklike', id: 'save-deck' }));
-    const whyNoNew = drilling ? undefined : explainAdmissions(m, deck);
-
-    return h('section', { class: 'entry entry-goreview', 'data-entry': 'deck', id: 'current-deck' },
+    // the tiles have no outline: each answers the pointer with a wash of lighter colour from the point of contact (ripple.ts; the owner, 2026-11-12)
+    const tiles = [
+      h('div', { class: 'deck-tile', 'data-deck': 'current' }, current, newDeck),
+      h('div', { class: 'deck-tile', 'data-deck': 'review' }, reviewButton),
+      h('div', { class: 'deck-tile', 'data-deck': 'saved' },
+        h('a', { class: 'deck-face', href: '#/review/decks', id: 'entry-previous', 'aria-label': 'Saved', 'aria-describedby': 'previous-count' },
+          h('span', { class: 'deck-row' }, icon(ctx.deps.doc, 'saved'), deckLabel('Saved', 'Your collections')), icon(ctx.deps.doc, 'arrow')),
+        h('span', { id: 'previous-count', class: 'sr' }, savedCount ? `${savedCount} saved` : 'None saved yet')),
+    ];
+    for (const tile of tiles) attachRipple(tile);
+    return h('section', { 'data-entry': 'deck', id: 'current-deck', 'aria-label': 'Decks' },
       m.schedulerIssue ? p(m.schedulerIssue, 'notice') : null,
       candidateFreshness(m),
-      resumeId ? h('p', { class: 'deck-resume' }, h('span', { class: 'muted' }, 'A deck is in progress.'), ' ',
-        button('Resume', () => { void resume(resumeId); }, { class: 'btn primary', id: 'resume-session', 'data-action': 'resume-session' })) : null,
-      h('div', { class: 'deck-row', 'data-deck': 'current' }, current,
-        h('div', { class: 'ec-sub' }, newDeck, extras.childElementCount ? extras : null,
-          whyNoNew ? h('p', { id: 'why-no-new', class: 'muted deck-why', 'data-code': whyNoNew.code }, whyNoNew.text) : null)),
-      h('div', { class: 'deck-row', 'data-deck': 'review' }, reviewButton),
-      h('a', { class: 'ec-row entry-link deck-saved', href: '#/review/decks', id: 'entry-previous' },
-        ...rowBody('saved', 'Saved decks', h('span', { class: 'ec-row-caption', id: 'previous-count' }, savedCount ? `${savedCount} saved` : 'None saved yet'))));
+      h('div', { class: 'deck-tiles' }, ...tiles));
   }
 
   // Every repaint goes through this one guarded function, registered before the first paint: one runs at a time, a request that arrives meanwhile

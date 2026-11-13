@@ -147,7 +147,8 @@ describe('reading assistance (GoLearn) with the pack on the device', () => {
     net.down = true;
     const r = await rig.connect(a.email);
     expect(r).toMatchObject({ ok: false, error: 'unreachable' });
-    expect(r.message).toMatch(/could not reach the service/i);
+    expect(r.message).toMatch(/could not reach its service/i);
+    expect(r.message).not.toMatch(/https?:|address/i); // no address and no hint that it could be changed (the owner, 2026-11-12)
     expect(await rig.storageText()).not.toContain('golearn:session');
     expect(await rig.storageText()).not.toContain('correct horse');
   });

@@ -5,7 +5,7 @@
  */
 import type { GoEvent, ReviewCandidate, UnitKnowledge } from '../../../repository-contract/src';
 import type { AudioAvailability, DeckItem, FactsProvider, IntakeOutcome, ReviewPreferences } from '../types';
-import { decideIntake, orderIntakeByPriority, rankComparativePriority } from './intake';
+import { decideIntake, FACTS_NOT_EXAMINED, orderIntakeByPriority, rankComparativePriority } from './intake';
 import { createReviewEligibilityContext } from '../planner/eligibility';
 import { indexPracticeEvidence } from '../planner/learning-policy';
 
@@ -45,10 +45,8 @@ export interface GatherDeps {
 }
 
 export const DEFAULT_CANDIDATE_LIMIT = 40;
-/** The new-card budget plus a margin (as many again, at least ten) for candidates the session plan or the exercise build still turns away. */
-export const factsBudgetFor = (maxNew: number): number => { const n = Math.max(0, Math.floor(maxNew)); return n + Math.max(10, n); };
-/** Written on an outcome whose pack facts were not fetched because the budget was already filled by higher-ranked candidates. */
-export const FACTS_NOT_EXAMINED = 'pack facts were not checked for this word yet: higher-ranked words already fill the new-card budget';
+/** The new-card budget plus a margin (as many again, at least ten) for candidates the session plan or the exercise build still turns away; no new cards (0) means no facts are fetched at all. */
+export const factsBudgetFor = (maxNew: number): number => { const n = Math.max(0, Math.floor(maxNew)); return n === 0 ? 0 : n + Math.max(10, n); };
 /** Facts are independent by unit, but keep pressure on a slow Repository bounded. */
 export const FACTS_LOOKUP_PARALLEL = 8;
 
@@ -212,7 +210,7 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
     const passed = new Set<string>();
     const byId = new Map(passes.map((p) => [p.candidate.unitId, p] as const));
     let next = 0, started = false;
-    while (!started || (passed.size < budget && next < order.length)) {
+    while (budget > 0 && (!started || passed.size < budget && next < order.length)) {
       const size = started ? Math.max(FACTS_LOOKUP_PARALLEL, budget - passed.size) : budget;
       const win = order.slice(next, next + size);
       next += win.length;

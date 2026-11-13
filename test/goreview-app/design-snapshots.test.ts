@@ -9,7 +9,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import type { ExerciseBuilder } from '../../packages/goreview/src';
-import { destroyRigs, dueCard, FAKE_BUILDERS, ids, key, makeRig, reopen, reviewed, seed, startWith, until, type Rig } from './helpers';
+import { PACKS } from '../../packages/language-packs/src/registry';
+import { homePhoto } from '../../packages/goreview/app/homePhotos';
+import { defaultService, destroyRigs, dueCard, FAKE_BUILDERS, ids, key, makeRig, reopen, reviewed, seed, startWith, until, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 const REPO = path.resolve(__dirname, '../..');
@@ -45,7 +47,9 @@ describe('the scoped Ecclesia tokens (home and card)', () => {
 // ───────────── the snapshots ─────────────
 
 const page = (rig: Rig): string => {
-  const inner = rig.root.innerHTML.replace(/url\(&quot;[^)]*go-logo\.png&quot;\)/g, 'url(&quot;go-logo.png&quot;)').replace(/url\("[^)]*go-logo\.png"\)/g, 'url("go-logo.png")');
+  const inner = rig.root.innerHTML.replace(/url\(&quot;[^)]*go-logo\.png&quot;\)/g, 'url(&quot;go-logo.png&quot;)')
+    .replace(/url\("[^)]*go-logo\.png"\)/g, 'url("go-logo.png")')
+    .replace(/url\(&quot;[^)]*\/photos\/([^/"]+\.webp)&quot;\)/g, 'url(&quot;photos/$1&quot;)');
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>GoReview</title><link rel="stylesheet" href="styles.css"></head><body>${inner}</body></html>\n`;
 };
 const write = (name: string, rig: Rig): void => { fs.writeFileSync(path.join(dir!, name), page(rig)); };
@@ -59,6 +63,7 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
   it('writes the home with decks, the empty home, and the card before the answer, at the grade step and in feedback', async () => {
     fs.mkdirSync(path.join(dir!, 'fonts'), { recursive: true });
     fs.copyFileSync(path.join(REPO, 'packages/goreview/app/styles.css'), path.join(dir!, 'styles.css'));
+    fs.cpSync(path.join(REPO, 'packages/goreview/app/photos'), path.join(dir!, 'photos'), { recursive: true });
     for (const f of fs.readdirSync(path.join(REPO, 'packages/shared-fonts')).filter((n) => n.endsWith('.woff2'))) fs.copyFileSync(path.join(REPO, 'packages/shared-fonts', f), path.join(dir!, 'fonts', f));
     fs.copyFileSync(path.join(REPO, 'packages/shared-brand/go-logo.png'), path.join(dir!, 'go-logo.png'));
 
@@ -79,12 +84,26 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
     await rig.app.ctx.state.setPrefs(id!.learnerId, { languageId: 'sq', sessionMinutes: 0, maxNew: 5, cardsPerDeck: 10, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true, practiceGoals: ['recognition'] });
     await reopen(rig);
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('10');
+    await rig.go('review/decks');
     rig.q('#save-deck').click();
-    await until(() => rig.q('#previous-count').textContent === '2 saved', 'two saved decks');
+    await until(() => rig.qa('.deckrow').length === 2, 'two saved decks');
     await seed(rig, words.slice(0, 10).flatMap((w) => dueCard(A, `${w}x`, 'written-recognition')));
     await reopen(rig);
     write('home-decks.html', rig);
     destroyRigs();
+
+    for (const languageId of Object.keys(PACKS).filter((id) => id !== 'sq')) {
+      const service = defaultService();
+      service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [{ languageId: 'sq' }, { languageId }]);
+      const language = await makeRig({ signedIn: true, service, builders: BUILDERS });
+      const identity = { ...ids('L1', languageId), enrolmentId: 'L1-e2' };
+      await seed(language, [...dueCard(identity, 'one', 'written-recognition'), ...dueCard(identity, 'two', 'written-recognition'),
+        reviewed(identity, 'two', 'written-recognition', 4, '2026-09-02T10:00:00.000Z')]);
+      await reopen(language);
+      expect(language.q('main').getAttribute('data-home-photo')).toBe(homePhoto(languageId)?.id);
+      write(`home-${languageId}.html`, language);
+      destroyRigs();
+    }
 
     // (3) the card before the answer
     const card = await makeRig({ signedIn: true, builders: BUILDERS });
@@ -105,6 +124,26 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
     key('Enter');
     await until(() => !!grade.root.querySelector('.grades'), 'the grades');
     write('card-grade.html', grade);
+    destroyRigs();
+
+    const service = defaultService();
+    service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [{ languageId: 'he', varietyId: 'he-bib' }]);
+    const flashcard = await makeRig({ signedIn: true, service, builders: BUILDERS.map((builder) =>
+      builder.family === 'written-recognition' ? { ...builder, async build(...args) {
+        const exercise = await builder.build(...args);
+        return 'unavailable' in exercise ? exercise : {
+          ...exercise, responseMode: 'typed-or-self',
+          answerKey: { ...exercise.answerKey, accepted: ['to cry out'] },
+        };
+      } } : builder),
+    });
+    await startWith(flashcard, dueCard(ids('L1', 'he'), 'זָעַק', 'written-recognition'));
+    expect(flashcard.q('#flip-card').textContent).toContain('זָעַק');
+    expect(flashcard.q('main').dataset.homePhoto).toBe('jerusalem');
+    write('flashcard-front.html', flashcard);
+    flashcard.q('#flip-card').click();
+    expect(flashcard.q('.flashcard-back #revealed-answer').textContent).toBeTruthy();
+    write('flashcard-back.html', flashcard);
     expect(fs.readdirSync(dir!).sort()).toEqual(expect.arrayContaining(['card-feedback.html', 'card-grade.html', 'card-prompt.html', 'home-decks.html', 'home-empty.html', 'styles.css', 'fonts']));
   }, 60_000);
 });

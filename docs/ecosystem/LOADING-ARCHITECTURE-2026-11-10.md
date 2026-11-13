@@ -202,7 +202,13 @@ Two premises of this document were wrong and are corrected above: persisting the
 
 Not built, with the reason:
 
-- **"Installed" still does not mean "usable offline" for a dictionary.** `installPack` fetches the dictionary's manifest and
+- **2026-11-11, built: the explicit "Download for offline use" below.** The owner decided it, per language, in the setup page
+  (GoLearn extension only): the worker fetches the meaning files and the forms index into its own IndexedDB database
+  `golearn-dictionary` (as fetched, not in chrome.storage), reads from it only after a chrome.storage miss, and Delete this
+  device's data now removes it, the cached `pack:shard:*` rows and the pack install records. "Installed" (the badge) still means
+  only what it meant; `docs/ecosystem/GOLEARN-INSTALL-AND-TROUBLESHOOTING.md` has the learner-facing text. The full entries
+  (`full/`) and the reverse index are not part of it.
+- **"Installed" still does not mean "usable offline" for a dictionary** (without that download). `installPack` fetches the dictionary's manifest and
   ONE shard and runs the validation cases; meanings are then fetched as the learner reads (and kept). A whole-language
   download is a storage decision: the meanings alone are 6 MB (Albanian), 41 MB (German), 58 MB (Spanish) compressed, more
   once inflated into extension storage, and several times that with the full entries. Proposed as an explicit "Download for
@@ -211,13 +217,23 @@ Not built, with the reason:
   different ones; only two say "pack installed" (`golearn:pack:installed:<id>` and `golearn:app`.packs), and only the setup
   page reads them. Lookups never consult either. A single persisted record replacing them needs a migration across four
   writers and two apps; a derived `packReady()` is the smaller step and belongs with the offline download above.
-- **GoReview intake fetches facts for every candidate** (226 lookups at a first sign-in). A bounded fetch is built and
-  measured (a8269763) but not passed by the app, because it changes the counts the details screen shows: the owner decides.
+- **2026-11-11, built and ON: GoReview intake no longer fetches facts for every candidate** (226 lookups at a first sign-in
+  became 28). The bounded fetch (a8269763) is passed by the app since 1d7d25cb, on the owner's decision; words below the
+  budget are shown as their own category, "Not yet checked", and are no longer counted as low priority or uncertain. Left:
+  each existing form card still costs one lookup, and the hosted GoReview has no whole-language download (its worker keeps
+  what it fetched, at most 400 files).
 - **GoReview still reads its whole log about eight times per answer** (`context.ts` `events`), about 100 ms per answer at
   12,000 events in Node, and the review model's refresh folds the whole log once when it runs. Measured, left.
 - **The history comes down twice at a first sign-in** (`GET /events` for the device, `POST /sync/pull` for the client).
-- **Not seen in a real browser:** the self-update's assumption that an unpacked extension's fetch of `build.json` reads the
-  file on disk; a first sync's seconds since 58150c18.
+- **Not seen in a real browser:** a first sync's seconds since 58150c18; the signed-in GoReview screens with the on-demand
+  language files (their caching was checked signed-out on the live site: `goreview-lang-<build>` and, for the first time,
+  `goreview-dict-v1` with `/go-v0/dict/...` entries).
+
+Seen in the owner's browser, 2026-11-12 (read from the worker's own `golearn:self-update` row and the browser's record of
+the extension, by another session): the unpacked extension reloaded itself twice, 95 s and 126 s after `build.json` was
+written last in the mirrored folder (faabbabbd5c7 -> b59be400dc86 at 01:53:30Z, b59be400dc86 -> 2cf4bfdbcf38 at 02:12:30Z),
+with no Reload pressed: an unpacked extension's fetch of `build.json` does read the file on disk, and the two-sighting rule
+holds the reload back as designed.
 
 ## 6. How to check
 

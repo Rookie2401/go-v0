@@ -14,7 +14,8 @@ import { beginSession, currentReviewModel, endSavedSession, recoverableSessions,
 import { freshModel } from '../freshness';
 import { deckSizeControl } from './cardsper';
 import { prefsForm } from './prefs';
-import { addToDeck, planCurrentDeck } from '../deckModel';
+import { addToDeck, planCurrentDeck, planSelectedPractice, releaseHoldOut, selectedPracticeUnits } from '../deckModel';
+import { isNotExamined } from '../../src/intake/intake';
 import { itemIdFor } from '../../src/scheduler/deck';
 import type { View } from './view';
 
@@ -38,7 +39,9 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     paintedEvents = model?.events.length ?? -1;
     saving = [];
     // everything the page shows is built before the old page is replaced, so a repaint never shows an empty page in between
-    const built = model ? { planned: await planCurrentDeck(ctx, model), recovery: await recoveryBlock() } : undefined;
+    const built = model ? await Promise.all([
+      planCurrentDeck(ctx, model), recoveryBlock(), selectedPracticeUnits(ctx, model.identity.learnerId, model.identity.languageId),
+    ]) : undefined;
     if (!view.alive()) return;
     clear(root);
     if (!model) {
@@ -54,8 +57,10 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     }
     const tag = model.identity.varietyId ?? model.identity.languageId;
     root.setAttribute('lang', 'en');
-    const planned = built!.planned;
-    append(root, [summary(model, planned.plan), startBlock(model), built!.recovery, controlsBlock(model), candidatesBlock(model, tag, planned.plan), deckBlock(model, tag), status]);
+    const [planned, recovery, selected] = built!;
+    append(root, [summary(model, planned.plan), startBlock(model), recovery,
+      optionalPractice(model, planned.summary.remediation, selected.length),
+      controlsBlock(model), candidatesBlock(model, tag, planned.plan), deckBlock(model, tag), status]);
   }
 
   async function recoveryBlock(): Promise<HTMLElement | null> {
@@ -127,6 +132,29 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     return h('section', { class: 'card' }, h('div', { class: 'row' }, start, h('a', { class: 'btn', href: '#/review/transfer', id: 'link-transfer' }, 'Transfer measures')), h('p', {}, 'Cards per deck'), size, note);
   }
 
+  function optionalPractice(model: ReviewModel, missed: number, selected: number): HTMLElement | null {
+    if (!missed && !selected) return null;
+    const start = button(`Practice selected words (${selected})`, () => {
+      start.disabled = true;
+      void (async () => {
+        const fresh = await freshModel(ctx, model);
+        const plan = await planSelectedPractice(ctx, fresh);
+        if (!plan.items.length) { setStatus(status, 'Selected words are controlled or no usable exercise is available.', 'info'); return; }
+        const result = await beginSession(ctx, fresh, { plan });
+        if (!result.ok) { setStatus(status, result.message, 'info'); return; }
+        await releaseHoldOut(ctx, fresh.identity.learnerId, fresh.identity.languageId);
+        ctx.run.active = result.run;
+        ctx.go('review/session');
+      })().catch(error => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) start.disabled = false; });
+    }, { id: 'start-selected-practice', class: 'btn' });
+    return h('section', { class: 'card', 'aria-labelledby': 'optional-practice-heading' },
+      h('h2', { id: 'optional-practice-heading' }, 'Optional practice'),
+      h('div', { class: 'row' },
+        missed ? h('a', { class: 'linklike', id: 'open-remediation', href: '#/review/remediation' },
+          `${missed} missed ${missed === 1 ? 'word' : 'words'} to study`) : null,
+        selected ? start : null));
+  }
+
   function controlsBlock(m: ReviewModel): HTMLElement {
     const d = h('details', { class: 'card', id: 'session-controls' }, h('summary', {}, 'Session controls'),
       prefsForm(ctx, m.identity.learnerId, m.prefs, () => { setStatus(status, 'Preferences saved.', 'ok'); }, (p) => { saving.push(p); }, { deckSize: false }));
@@ -181,7 +209,7 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     return h('li', { class: 'candidate', 'data-unit': o.unitId, 'data-decision': o.decision, ...(later ? { 'data-choice': 'later' } : {}) },
       h('div', { class: 'row' },
         h('strong', langProps(tag), label),
-        h('span', { class: 'tag' }, decisionLabel(o.decision)),
+        h('span', { class: 'tag' }, decisionLabel(o.decision, o)),
         o.proposed ? h('span', { class: 'muted' }, FAMILY_LABEL[o.proposed.family]) : null,
         later ? h('span', { class: 'tag' }, 'kept for later') : null),
       h('p', { class: 'reason' }, ...embedTarget(o.reasons[0] ?? '', words, tag)),
@@ -202,7 +230,9 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
       sec.append(h('details', { class: 'group', ...(open ? { open: true } : {}) }, h('summary', {}, `${title} (${items.length})`), h('ul', { class: 'candidates' }, ...items.map((o) => candidateRow(m, o, tag, plan)))));
     };
     group('Practice candidates', m.outcomes.filter((o) => o.decision === 'test-now' || o.decision === 'test-later'), true);
-    group('Lower candidate rank', m.outcomes.filter((o) => o.decision === 'low-priority' && o.proposed), false);
+    group('Lower candidate rank', m.outcomes.filter((o) => o.decision === 'low-priority' && o.proposed && !isNotExamined(o)), false);
+    const unchecked = m.outcomes.filter(isNotExamined);
+    group('Not yet checked', unchecked, false);
     group('Not proposed', m.outcomes.filter((o) => o.decision !== 'test-now' && o.decision !== 'test-later' && !(o.decision === 'low-priority' && o.proposed)), false);
     if (m.dismissed.length) sec.append(p(`${m.dismissed.length} unit(s) you dismissed are not proposed.`, 'muted'));
     return sec;
@@ -272,7 +302,7 @@ const DECISION_LABEL: Record<IntakeOutcome['decision'], string> = {
   'test-now': 'practice candidate', 'test-later': 'practice later', 'already-covered': 'already covered', redundant: 'not needed',
   'too-uncertain': 'not ready yet', 'needs-validation': 'needs better word facts', 'low-priority': 'lower candidate rank',
 };
-const decisionLabel = (d: IntakeOutcome['decision']): string => DECISION_LABEL[d];
+const decisionLabel = (d: IntakeOutcome['decision'], o?: IntakeOutcome): string => (o && isNotExamined(o) ? 'not yet checked' : DECISION_LABEL[d]);
 
 function queueLabel(queue: SessionPlan['items'][number]['queue']): string {
   switch (queue) {

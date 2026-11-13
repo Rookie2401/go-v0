@@ -15,6 +15,7 @@ import type { AppConfig } from './config';
 import type { KeyValueArea, Transport } from '../../repository-sync/src';
 import type { LocalRepo } from './localRepo';
 import type { MobileRuntime } from './mobile';
+import type { ItemParadigm, ItemParadigmRequest } from './packFacts';
 
 // ───────────────────────────── the GoReview engine port ─────────────────────────────
 
@@ -117,6 +118,7 @@ export interface ActiveRun {
   /** How many CardAdded events the start wrote. */
   addedCount: number;
   startedAt: number;
+  resumed?: boolean;
   endedAt?: number;
   /** Results already committed to the queue, in order. */
   results: ReviewResult[];
@@ -225,6 +227,8 @@ export interface Deps {
   /** The two calls of the sync client; default: the typed API client, throwing on any failure. */
   createTransport?(api: RepositoryApi): Transport;
   engine: ReviewEngine;
+  /** The form table of a card's word, as GoLearn's word card builds it (packFacts.ts). Absent: "This item" shows the parsing without a table. */
+  paradigm?(request: ItemParadigmRequest): Promise<ItemParadigm | undefined>;
   /**
    * null = no audio at all. A function receives the learner's remote-speech consent as a getter and returns the audio
    * (the real app builds it from GoListen); tests pass a ready-made fake.
@@ -245,6 +249,8 @@ export interface Deps {
   links?: { setup?: string; extension?: string; /** The address on the Help page. */ support?: string; /** Biblia, when it ships beside this app (the iPhone edition, the extension) */ biblia?: string };
   /** 'review' in the GoReview (iPhone) build: its own title, its first-launch message, and the update link. Absent elsewhere. */
   edition?: 'review';
+  /** Explicit opt-in for GoTell development and tests. */
+  enableGoTell?: boolean;
   /** Live updates (./live.ts) run in the real app (autoSync); false turns them off. Tests that exercise them pass their own timers. */
   live?: false | { timers?: { set(fn: () => void, ms: number): unknown; clear(h: unknown): void }; pollMs?: number; waitTimeoutMs?: number; minRoundMs?: number; backoff?: { baseMs: number; maxMs: number } };
   /** Run the sync client's own timer (the real app) or only on demand (tests). */

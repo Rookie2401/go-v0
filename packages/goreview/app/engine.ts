@@ -10,7 +10,7 @@ import { schedulerForReviewProfile } from '../src/scheduler/replay-profile';
 import type { GoEvent, SchedulerProfile } from '../../repository-contract/src';
 import {
   applyControls, buildCardAdded, createFsrsScheduler, createSessionRunner, decideIntake, explainIntake, explainItem, foldDeckItems,
-  gatherCandidates, measuresFor, planSession, reviewHistory, resolveBuilder,
+  factsBudgetFor, gatherCandidates, measuresFor, planSession, reviewHistory, resolveBuilder,
 } from '../src';
 import type { BuilderRegistry, FactsProvider, GradingPort, IntakeOutcome, Exercise } from '../src';
 import type { RepositoryApi } from '../../repository-service/src/api';
@@ -327,6 +327,9 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
             clearPrime: () => (facts as FactsProvider & { clearPrime?(): void }).clearPrime?.(),
           }),
           audio: async () => req.audio, deck: req.deck, saved: req.saved, preferences: req.prefs, now: req.now, enrolmentId: '', limit: req.candidates.length || 1,
+          // The automatic deck needs facts only for the words that can fill its new cards (2026-11-11: a first sign-in fetched them for all 226
+          // candidates). Words the learner asked for by name (an explicit intent, secondary practice) are all examined, whatever the budget.
+          ...(req.intent?.kind === 'explicit' || req.secondaryPractice ? {} : { factsBudget: factsBudgetFor(req.prefs.maxNew) }),
           readingSignals: req.events, secondaryPractice: req.secondaryPractice, intent: req.intent,
         });
         if (captured.size) {

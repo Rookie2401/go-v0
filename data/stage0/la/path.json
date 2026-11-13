@@ -1,0 +1,130 @@
+{
+  "lang": "la",
+  "version": 1,
+  "steps": [
+    {
+      "id": "s01",
+      "kind": "scene",
+      "ref": "la-s01"
+    },
+    {
+      "id": "s02",
+      "kind": "scene",
+      "ref": "la-s02"
+    },
+    {
+      "id": "snd1",
+      "kind": "sounds",
+      "ref": "la-snd1"
+    },
+    {
+      "id": "s03",
+      "kind": "scene",
+      "ref": "la-s03"
+    },
+    {
+      "id": "s04",
+      "kind": "scene",
+      "ref": "la-s04"
+    },
+    {
+      "id": "snd2",
+      "kind": "sounds",
+      "ref": "la-snd2"
+    },
+    {
+      "id": "s05",
+      "kind": "scene",
+      "ref": "la-s05"
+    },
+    {
+      "id": "s06",
+      "kind": "scene",
+      "ref": "la-s06"
+    },
+    {
+      "id": "r1",
+      "kind": "review",
+      "ref": "la-s03",
+      "channel": "listen-first"
+    },
+    {
+      "id": "s07",
+      "kind": "scene",
+      "ref": "la-s07"
+    },
+    {
+      "id": "s08",
+      "kind": "scene",
+      "ref": "la-s08"
+    },
+    {
+      "id": "snd3",
+      "kind": "sounds",
+      "ref": "la-snd3"
+    },
+    {
+      "id": "s09",
+      "kind": "scene",
+      "ref": "la-s09"
+    },
+    {
+      "id": "s10",
+      "kind": "scene",
+      "ref": "la-s10"
+    },
+    {
+      "id": "r2",
+      "kind": "review",
+      "ref": "la-s07",
+      "channel": "listen-first"
+    },
+    {
+      "id": "s11",
+      "kind": "scene",
+      "ref": "la-s11"
+    },
+    {
+      "id": "s12",
+      "kind": "scene",
+      "ref": "la-s12"
+    },
+    {
+      "id": "snd4",
+      "kind": "sounds",
+      "ref": "la-snd4"
+    },
+    {
+      "id": "s13",
+      "kind": "scene",
+      "ref": "la-s13"
+    },
+    {
+      "id": "s14",
+      "kind": "scene",
+      "ref": "la-s14"
+    },
+    {
+      "id": "s15",
+      "kind": "scene",
+      "ref": "la-s15"
+    },
+    {
+      "id": "r3",
+      "kind": "review",
+      "ref": "la-s05",
+      "channel": "listen-only"
+    },
+    {
+      "id": "r4",
+      "kind": "review",
+      "ref": "la-s10",
+      "channel": "listen-only"
+    },
+    {
+      "id": "exit",
+      "kind": "exit"
+    }
+  ],
+  "next": []
+}

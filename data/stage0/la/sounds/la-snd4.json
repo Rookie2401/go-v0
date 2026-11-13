@@ -1,0 +1,105 @@
+{
+  "id": "la-snd4",
+  "lang": "la",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "I as y, and held double letters"
+  },
+  "features": [
+    "la:i-consonant",
+    "la:double"
+  ],
+  "words": [
+    {
+      "text": "iam",
+      "en": "now",
+      "picture": "⏰",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "Iesus",
+      "en": "Jesus",
+      "picture": "✝️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ianua",
+      "en": "door",
+      "picture": "🚪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "terra",
+      "en": "earth",
+      "picture": "🌍",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "At the start of a word, i before another vowel is said like \"y\" in \"yes\": iam is yahm, ianua is YAH-noo-ah. The letter j, where it is written, is the same sound. A double letter, as in terra, is held a little longer.",
+    "more": "Iesus, with this same sound, is YEH-soos. The double r in terra is rolled and held: TER-rah, not TEH-rah."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "iam",
+      "prompt": "How is \"iam\" said?",
+      "options": [
+        "yahm (i is y)",
+        "eye-am"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "Iesus",
+      "prompt": "How is \"Iesus\" said?",
+      "options": [
+        "YEH-soos (Y as in \"yes\")",
+        "JEE-zus"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "ianua",
+      "prompt": "How is \"ianua\" said?",
+      "options": [
+        "YAH-noo-ah",
+        "EYE-an-you-ah"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "terra",
+      "prompt": "How is \"terra\" said?",
+      "options": [
+        "TER-rah (the r is held)",
+        "TEH-rah (one short r)"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  }
+}

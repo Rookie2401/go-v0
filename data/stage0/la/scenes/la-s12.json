@@ -1,0 +1,286 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "ad ecclesiam",
+      "text": "To say you are going TO a place, use ad and an ending in -m: ad ecclesiam. Compare being IN a place: in foro, in schola.",
+      "explains": [
+        "la.ad-accusative"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "culture",
+      "title": "dies Dominica",
+      "text": "Dies Dominica means \"the Lord's day\": Sunday, the day of church.",
+      "explains": [
+        "la.dies-dominica"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Ad ecclesiam imus.\"",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "Ad ecclesiam imus"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say: Today is Sunday.",
+      "basedOn": [
+        "l1"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Hodie dies Dominica est"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "substitute",
+      "prompt": "Say that you are going to church.",
+      "basedOn": [
+        "l5"
+      ],
+      "frame": "Ad ___ eo.",
+      "accept": [
+        {
+          "text": "Ad ecclesiam eo"
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "kind": "answer",
+      "prompt": "Someone asks \"Ubi est ecclesia?\" It is not far. Answer in Latin.",
+      "basedOn": [
+        "l4"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Ecclesia non longe est"
+        },
+        {
+          "text": "Non longe est"
+        }
+      ]
+    }
+  ],
+  "id": "la-s12",
+  "title": {
+    "en": "Sunday",
+    "target": "Dies Dominica"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta",
+      "nico"
+    ],
+    "places": [
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Hodie dies Dominica est.",
+      "en": "Today is Sunday.",
+      "speaker": "marta",
+      "picture": "☀️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Ad ecclesiam imus.",
+      "en": "We are going to church.",
+      "speaker": "marta",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Ubi est ecclesia?",
+      "en": "Where is the church?",
+      "speaker": "sam",
+      "picture": "⛪❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ecclesia non longe est.",
+      "en": "The church is not far.",
+      "speaker": "marta",
+      "picture": "🚶",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Et ego ad ecclesiam eo.",
+      "en": "And I am going to church too.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Ecce ecclesia!",
+      "en": "Look, the church!",
+      "speaker": "nico",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "hodie",
+      "dies",
+      "Dominica",
+      "ad",
+      "ecclesia",
+      "longe",
+      "eo"
+    ],
+    "constructions": [
+      "la.ad-accusative",
+      "la.time-hodie",
+      "la.dies-dominica",
+      "la.verb-1pl-mus"
+    ]
+  },
+  "represents": [
+    "la.ad-accusative",
+    "la.time-hodie",
+    "la.dies-dominica",
+    "la.verb-1pl-mus",
+    "la.question-ubi",
+    "la.negation-non"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What day is it?"
+      },
+      "options": [
+        {
+          "en": "Sunday"
+        },
+        {
+          "en": "Monday"
+        },
+        {
+          "en": "Friday"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where are they going?"
+      },
+      "options": [
+        {
+          "en": "To church"
+        },
+        {
+          "en": "To school"
+        },
+        {
+          "en": "To the market"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is the church far?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l6"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who says \"Ecce ecclesia!\"?"
+      },
+      "options": [
+        {
+          "en": "Marcus"
+        },
+        {
+          "en": "Martha"
+        },
+        {
+          "en": "Samuel"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

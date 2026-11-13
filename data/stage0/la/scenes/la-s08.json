@@ -1,0 +1,283 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "Gratias tibi ago",
+      "text": "Gratias tibi ago is the usual way to say thank you. Word for word it is \"thanks to you I give\". Learn it whole.",
+      "explains": [
+        "la.thanks"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Panem volo.\"",
+      "basedOn": [
+        "l4"
+      ],
+      "accept": [
+        {
+          "text": "Panem volo"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say that you want water.",
+      "basedOn": [
+        "l4",
+        "la.volo"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Aquam volo"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "recall",
+      "prompt": "Thank Martha.",
+      "basedOn": [
+        "l6",
+        "la.thanks"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Gratias tibi ago, Martha"
+        },
+        {
+          "text": "Gratias tibi ago"
+        }
+      ]
+    }
+  ],
+  "id": "la-s08",
+  "title": {
+    "en": "I want bread",
+    "target": "Panem volo"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Salve, Samuel. Quomodo vales?",
+      "en": "Hello, Samuel. How are you?",
+      "speaker": "marta",
+      "picture": "👵🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Bene valeo, Martha.",
+      "en": "I am well, Martha.",
+      "speaker": "sam",
+      "picture": "😀",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Quid vis?",
+      "en": "What do you want?",
+      "speaker": "marta",
+      "picture": "👵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Panem volo.",
+      "en": "I want bread.",
+      "speaker": "sam",
+      "picture": "🍞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Ecce panis.",
+      "en": "Here is the bread.",
+      "speaker": "marta",
+      "picture": "🍞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Gratias tibi ago, Martha.",
+      "en": "Thank you, Martha.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Vale, Samuel.",
+      "en": "Goodbye, Samuel.",
+      "speaker": "marta",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l8",
+      "text": "Vale.",
+      "en": "Goodbye.",
+      "speaker": "sam",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "volo",
+      "panis",
+      "ecce",
+      "gratia",
+      "ago",
+      "tu"
+    ],
+    "constructions": [
+      "la.volo",
+      "la.thanks"
+    ]
+  },
+  "represents": [
+    "la.volo",
+    "la.thanks",
+    "la.accusative-object",
+    "la.greeting",
+    "la.question-quid"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Samuel want?"
+      },
+      "options": [
+        {
+          "en": "Bread"
+        },
+        {
+          "en": "Water"
+        },
+        {
+          "en": "Wine"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Samuel say when he gets it?"
+      },
+      "options": [
+        {
+          "en": "Thank you"
+        },
+        {
+          "en": "Goodbye"
+        },
+        {
+          "en": "Hello"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l7",
+        "l8"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How does the meeting end?"
+      },
+      "options": [
+        {
+          "en": "They say goodbye"
+        },
+        {
+          "en": "They say hello"
+        },
+        {
+          "en": "They buy wine"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l4"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Samuel wants water."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 1
+    }
+  ]
+}

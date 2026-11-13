@@ -1,0 +1,251 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "ille, illa",
+      "text": "Latin nouns are masculine or feminine. Ille means \"that\" for a man or boy, illa for a woman. In the same way \"who?\" is quis for a man, quae for a woman.",
+      "explains": [
+        "la.demonstrative"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Martha avia est.\"",
+      "basedOn": [
+        "l4"
+      ],
+      "accept": [
+        {
+          "text": "Martha avia est"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "choose",
+      "prompt": "You point at a woman. Which question do you ask?",
+      "basedOn": [
+        "l3",
+        "la.demonstrative"
+      ],
+      "options": [
+        "Quis est ille?",
+        "Quae est illa?"
+      ],
+      "accept": [
+        {
+          "text": "Quae est illa"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "substitute",
+      "prompt": "Marcus is a boy. Write it.",
+      "basedOn": [
+        "l2"
+      ],
+      "frame": "Marcus ___ est.",
+      "accept": [
+        {
+          "text": "Marcus puer est"
+        }
+      ]
+    }
+  ],
+  "id": "la-s03",
+  "title": {
+    "en": "Marcus and Martha",
+    "target": "Marcus et Martha"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "marta",
+      "nico"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Quis est ille?",
+      "en": "Who is that (boy)?",
+      "speaker": "sam",
+      "picture": "👦❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Ille est Marcus. Marcus puer est.",
+      "en": "That is Marcus. Marcus is a boy.",
+      "speaker": "ana",
+      "picture": "👦",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Quae est illa?",
+      "en": "Who is that (woman)?",
+      "speaker": "sam",
+      "picture": "👵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Illa est Martha. Martha avia est.",
+      "en": "That is Martha. Martha is a grandmother.",
+      "speaker": "ana",
+      "picture": "👵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Salve, Samuel.",
+      "en": "Hello, Samuel.",
+      "speaker": "marta",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Salve.",
+      "en": "Hello.",
+      "speaker": "nico",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "puer",
+      "quae",
+      "illa",
+      "avia"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "la.sum-3sg",
+    "la.question-quis",
+    "la.demonstrative",
+    "la.greeting"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who is Marcus?"
+      },
+      "options": [
+        {
+          "en": "A boy"
+        },
+        {
+          "en": "A grandmother"
+        },
+        {
+          "en": "A teacher"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who is Martha?"
+      },
+      "options": [
+        {
+          "en": "A grandmother"
+        },
+        {
+          "en": "A boy"
+        },
+        {
+          "en": "A nurse"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "In line 3 Samuel asks about..."
+      },
+      "options": [
+        {
+          "en": "a woman"
+        },
+        {
+          "en": "a man"
+        },
+        {
+          "en": "a boy"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l2"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Marcus is a boy."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

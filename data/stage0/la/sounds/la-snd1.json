@@ -1,0 +1,115 @@
+{
+  "id": "la-snd1",
+  "lang": "la",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "Every vowel, a silent h, and held double letters"
+  },
+  "features": [
+    "la:vowels",
+    "la:v",
+    "la:h",
+    "la:double"
+  ],
+  "words": [
+    {
+      "text": "avia",
+      "en": "grandmother",
+      "picture": "👵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "hic",
+      "en": "here",
+      "picture": "📍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "Anna",
+      "en": "Anna",
+      "picture": "👩‍⚕️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "vale",
+      "en": "goodbye",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ille",
+      "en": "that (man)",
+      "picture": "👨",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Latin is said as it is written, and every letter is said: the final e too, so vale is VAH-leh. The letter h is silent: hic sounds like \"eek\". The letter v is as in English, and a double letter, as in Anna, is held a little longer.",
+    "more": "The five vowels are pure, as in Italian: a as in \"father\", e as in \"bed\", i as in \"machine\", o as in \"for\", u as in \"rule\". A word of two syllables, like AN-na, VAH-leh and IL-leh, is stressed on the first syllable."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "avia",
+      "prompt": "How is \"avia\" said?",
+      "options": [
+        "AH-vee-ah (v as in \"van\")",
+        "AH-wee-ah"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "hic",
+      "prompt": "How is \"hic\" said?",
+      "options": [
+        "eek (the h is silent)",
+        "heek (with an English h)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "Anna",
+      "prompt": "How is \"Anna\" said?",
+      "options": [
+        "AN-nah (the n is held)",
+        "AN-uh (one short n)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "vale",
+      "prompt": "How is \"vale\" said?",
+      "options": [
+        "VAH-leh (the last e is said)",
+        "VAYL (the last e is silent)"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  }
+}

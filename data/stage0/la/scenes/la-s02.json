@@ -1,0 +1,220 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "sum, es, est",
+      "text": "The verb \"to be\" changes its ending: sum (I am), es (you are), est (he, she, it is). Latin has no word for \"a\" or \"the\".",
+      "explains": [
+        "la.sum-3sg"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Lucius est magister.\"",
+      "basedOn": [
+        "l3"
+      ],
+      "accept": [
+        {
+          "text": "Lucius est magister"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Say who that is.",
+      "basedOn": [
+        "l2"
+      ],
+      "frame": "Ille est ___.",
+      "accept": [
+        {
+          "text": "Ille est Lucius"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "answer",
+      "prompt": "Someone asks \"Quis est ille?\" Answer in Latin: it is Lucius.",
+      "basedOn": [
+        "l1",
+        "l2"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Ille est Lucius"
+        },
+        {
+          "text": "Lucius est"
+        }
+      ]
+    }
+  ],
+  "id": "la-s02",
+  "title": {
+    "en": "Who is that?",
+    "target": "Quis est ille?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Quis est ille?",
+      "en": "Who is that (man)?",
+      "speaker": "sam",
+      "picture": "👨‍🏫❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Ille est Lucius.",
+      "en": "That is Lucius.",
+      "speaker": "ana",
+      "picture": "👨‍🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Lucius est magister.",
+      "en": "Lucius is a teacher.",
+      "speaker": "ana",
+      "picture": "🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Salve, Samuel. Lucius sum.",
+      "en": "Hello, Samuel. I am Lucius.",
+      "speaker": "luis",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Salve.",
+      "en": "Hello.",
+      "speaker": "sam",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "est",
+      "ille",
+      "magister"
+    ],
+    "constructions": [
+      "la.sum-3sg",
+      "la.demonstrative"
+    ]
+  },
+  "represents": [
+    "la.greeting",
+    "la.sum-3sg",
+    "la.question-quis",
+    "la.demonstrative"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who is that man?"
+      },
+      "options": [
+        {
+          "en": "Lucius"
+        },
+        {
+          "en": "Samuel"
+        },
+        {
+          "en": "Marcus"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is Lucius?"
+      },
+      "options": [
+        {
+          "en": "A teacher"
+        },
+        {
+          "en": "A nurse"
+        },
+        {
+          "en": "A baker"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l3"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Anna says Lucius is a teacher."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "me iuvat",
+      "text": "Pronouns have a form for the thing acted on: ego (I) becomes me (me). Samuel me iuvat means \"Samuel helps me\". The ending -t shows Samuel is the one helping.",
+      "explains": [
+        "la.accusative-pronoun"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Clavis in mensa est.\"",
+      "basedOn": [
+        "l1"
+      ],
+      "accept": [
+        {
+          "text": "Clavis in mensa est"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Someone asks \"Ubi est clavis?\" It is on the table. Answer in Latin.",
+      "basedOn": [
+        "l1"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Clavis in mensa est"
+        },
+        {
+          "text": "In mensa est"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "describe",
+      "prompt": "Say that Samuel is a good friend.",
+      "basedOn": [
+        "l4"
+      ],
+      "accept": [
+        {
+          "text": "Samuel amicus bonus est"
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "kind": "recall",
+      "prompt": "Thank Samuel for the key.",
+      "basedOn": [
+        "l2",
+        "la.thanks"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Gratias tibi ago, Samuel"
+        },
+        {
+          "text": "Gratias tibi ago"
+        }
+      ]
+    }
+  ],
+  "id": "la-s11",
+  "title": {
+    "en": "Here is the key!",
+    "target": "Ecce clavis!"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "nico",
+      "marta",
+      "luis"
+    ],
+    "things": [
+      "key"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ecce! Clavis in mensa est.",
+      "en": "Look! The key is on the table.",
+      "speaker": "sam",
+      "picture": "🔑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Gratias tibi ago, Samuel! Clavem habeo.",
+      "en": "Thank you, Samuel! I have the key.",
+      "speaker": "nico",
+      "picture": "🙏🔑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Samuel me iuvat.",
+      "en": "Samuel helps me.",
+      "speaker": "nico",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Samuel amicus bonus est.",
+      "en": "Samuel is a good friend.",
+      "speaker": "marta",
+      "picture": "😊",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Bene est.",
+      "en": "That is good.",
+      "speaker": "luis",
+      "picture": "👍",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "mensa",
+      "iuvo",
+      "iuvat",
+      "amicus",
+      "bonus"
+    ],
+    "constructions": [
+      "la.accusative-pronoun"
+    ]
+  },
+  "represents": [
+    "la.accusative-pronoun",
+    "la.thanks",
+    "la.adjective-agreement",
+    "la.in-ablative",
+    "la.accusative-object"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where is the key?"
+      },
+      "options": [
+        {
+          "en": "On the table"
+        },
+        {
+          "en": "At school"
+        },
+        {
+          "en": "In the bag"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l1"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who finds the key?"
+      },
+      "options": [
+        {
+          "en": "Samuel"
+        },
+        {
+          "en": "Marcus"
+        },
+        {
+          "en": "Lucius"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Martha say about Samuel?"
+      },
+      "options": [
+        {
+          "en": "He is a good friend"
+        },
+        {
+          "en": "He is tired"
+        },
+        {
+          "en": "He is a teacher"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l3"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Marcus says Samuel helps him."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

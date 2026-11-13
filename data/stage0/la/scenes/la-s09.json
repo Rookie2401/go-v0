@@ -1,0 +1,250 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "non",
+      "text": "Put non just before the verb to say \"not\": vinum non volo, I do not want wine.",
+      "explains": [
+        "la.negation-non"
+      ],
+      "afterScenes": 2
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Hoc est lac.\"",
+      "basedOn": [
+        "l4"
+      ],
+      "accept": [
+        {
+          "text": "Hoc est lac"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "complete",
+      "prompt": "Say you do not want wine.",
+      "basedOn": [
+        "l5"
+      ],
+      "frame": "Vinum ___ volo.",
+      "accept": [
+        {
+          "text": "Vinum non volo"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "recall",
+      "prompt": "You point at the wine. Say: This is wine.",
+      "basedOn": [
+        "l2"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Hoc est vinum"
+        }
+      ]
+    }
+  ],
+  "id": "la-s09",
+  "title": {
+    "en": "What is this?",
+    "target": "Quid est hoc?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "kitchen"
+    ],
+    "things": [
+      "water"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Quid est hoc?",
+      "en": "What is this?",
+      "speaker": "sam",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Hoc est vinum.",
+      "en": "This is wine.",
+      "speaker": "marta",
+      "picture": "🍷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Et hoc?",
+      "en": "And this?",
+      "speaker": "sam",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Hoc est lac.",
+      "en": "This is milk.",
+      "speaker": "marta",
+      "picture": "🥛",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Vinum non volo. Lac volo.",
+      "en": "I do not want wine. I want milk.",
+      "speaker": "sam",
+      "picture": "🥛",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Bene. Lac tibi do.",
+      "en": "Good. I give you milk.",
+      "speaker": "marta",
+      "picture": "🥛🙂",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "hoc",
+      "vinum",
+      "do"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "la.question-quid",
+    "la.demonstrative",
+    "la.negation-non",
+    "la.volo"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Samuel ask?"
+      },
+      "options": [
+        {
+          "en": "What is this?"
+        },
+        {
+          "en": "Who is this?"
+        },
+        {
+          "en": "Where is this?"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Samuel not want?"
+      },
+      "options": [
+        {
+          "en": "Wine"
+        },
+        {
+          "en": "Milk"
+        },
+        {
+          "en": "Bread"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Martha give him?"
+      },
+      "options": [
+        {
+          "en": "Milk"
+        },
+        {
+          "en": "Wine"
+        },
+        {
+          "en": "Water"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l2"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Martha says this is wine."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

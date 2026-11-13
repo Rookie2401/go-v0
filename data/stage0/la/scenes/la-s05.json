@@ -1,0 +1,262 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "in foro, in schola",
+      "text": "To say where someone is, use in and a changed ending: forum becomes foro, schola stays schola, valetudinarium becomes valetudinario. For now, learn each place as it comes.",
+      "explains": [
+        "la.in-ablative"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Martha in foro est.\"",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "Martha in foro est"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "complete",
+      "prompt": "Marcus is at school.",
+      "basedOn": [
+        "l4"
+      ],
+      "frame": "Marcus in ___ est.",
+      "accept": [
+        {
+          "text": "Marcus in schola est"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "answer",
+      "prompt": "Someone asks \"Ubi est Anna?\" Answer in Latin.",
+      "basedOn": [
+        "l6"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Anna in valetudinario est"
+        },
+        {
+          "text": "In valetudinario est"
+        }
+      ]
+    }
+  ],
+  "id": "la-s05",
+  "title": {
+    "en": "Where is everyone?",
+    "target": "Ubi est?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "luis"
+    ],
+    "places": [
+      "market",
+      "school",
+      "clinic"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ubi est Martha?",
+      "en": "Where is Martha?",
+      "speaker": "sam",
+      "picture": "👵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Martha in foro est.",
+      "en": "Martha is in the market.",
+      "speaker": "luis",
+      "picture": "🧺",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Ubi est Marcus?",
+      "en": "Where is Marcus?",
+      "speaker": "sam",
+      "picture": "👦❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Marcus in schola est.",
+      "en": "Marcus is at school.",
+      "speaker": "luis",
+      "picture": "🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Et Anna?",
+      "en": "And Anna?",
+      "speaker": "sam",
+      "picture": "👩‍⚕️❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Anna in valetudinario est.",
+      "en": "Anna is at the clinic.",
+      "speaker": "luis",
+      "picture": "🏥",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ubi",
+      "in",
+      "forum",
+      "foro",
+      "schola",
+      "valetudinarium",
+      "valetudinario"
+    ],
+    "constructions": [
+      "la.question-ubi",
+      "la.in-ablative"
+    ]
+  },
+  "represents": [
+    "la.question-ubi",
+    "la.in-ablative",
+    "la.sum-3sg",
+    "la.et"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where is Martha?"
+      },
+      "options": [
+        {
+          "en": "At the market"
+        },
+        {
+          "en": "At school"
+        },
+        {
+          "en": "At the clinic"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where is Marcus?"
+      },
+      "options": [
+        {
+          "en": "At school"
+        },
+        {
+          "en": "At the market"
+        },
+        {
+          "en": "At church"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where is Anna?"
+      },
+      "options": [
+        {
+          "en": "At the clinic",
+          "picture": "🏥"
+        },
+        {
+          "en": "At school",
+          "picture": "🏫"
+        },
+        {
+          "en": "At the market",
+          "picture": "🧺"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Samuel ask in line 1?"
+      },
+      "options": [
+        {
+          "en": "Where is Martha?"
+        },
+        {
+          "en": "Who is Martha?"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "volo + bibere",
+      "text": "Volo can be followed by a verb in its basic form: lac bibere volo is \"I want to drink milk\". The basic form (bibere) does not change.",
+      "explains": [
+        "la.volo-infinitive"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Hodie pluit.\"",
+      "basedOn": [
+        "l1"
+      ],
+      "accept": [
+        {
+          "text": "Hodie pluit"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say that you are at home.",
+      "basedOn": [
+        "l2",
+        "la.in-ablative"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "In domo sum"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "substitute",
+      "prompt": "Say that you want to drink water.",
+      "basedOn": [
+        "l3"
+      ],
+      "frame": "___ bibere volo.",
+      "accept": [
+        {
+          "text": "Aquam bibere volo"
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "kind": "answer",
+      "prompt": "Someone asks \"Ubi est Anna?\" It is raining. Answer in Latin.",
+      "basedOn": [
+        "l2"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Anna in domo est"
+        },
+        {
+          "text": "In domo est"
+        }
+      ]
+    }
+  ],
+  "id": "la-s14",
+  "title": {
+    "en": "It is raining",
+    "target": "Pluit"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis",
+      "nico"
+    ],
+    "places": [
+      "home"
+    ],
+    "things": [
+      "rain"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Hodie pluit.",
+      "en": "It is raining today.",
+      "speaker": "luis",
+      "picture": "🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Ad forum non eo. In domo sum.",
+      "en": "I am not going to the market. I am at home.",
+      "speaker": "ana",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Ego quoque in domo sum. Lac bibere volo.",
+      "en": "I am at home too. I want to drink milk.",
+      "speaker": "nico",
+      "picture": "🥛",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ecce lac in mensa.",
+      "en": "Here is milk on the table.",
+      "speaker": "ana",
+      "picture": "🥛",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Gratias tibi ago, Anna. Bene est.",
+      "en": "Thank you, Anna. That is good.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Hodie in domo sumus.",
+      "en": "Today we are at home.",
+      "speaker": "luis",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "pluit",
+      "domus",
+      "bibo",
+      "forum"
+    ],
+    "constructions": [
+      "la.weather-pluit",
+      "la.volo-infinitive"
+    ]
+  },
+  "represents": [
+    "la.weather-pluit",
+    "la.volo-infinitive",
+    "la.in-ablative",
+    "la.ad-accusative",
+    "la.negation-non",
+    "la.time-hodie",
+    "la.thanks"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is the weather?"
+      },
+      "options": [
+        {
+          "en": "Rain"
+        },
+        {
+          "en": "Sun"
+        },
+        {
+          "en": "Snow"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where does Anna stay?"
+      },
+      "options": [
+        {
+          "en": "At home"
+        },
+        {
+          "en": "At the market"
+        },
+        {
+          "en": "At school"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Marcus want to do?"
+      },
+      "options": [
+        {
+          "en": "Drink milk"
+        },
+        {
+          "en": "Buy bread"
+        },
+        {
+          "en": "Go to church"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l2"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Anna goes to the market."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 1
+    }
+  ]
+}

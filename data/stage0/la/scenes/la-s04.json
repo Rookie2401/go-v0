@@ -1,0 +1,236 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "sumus, sunt",
+      "text": "With two or more people the verb changes too: sumus (we are), sunt (they are). To greet more than one person, say Salvete.",
+      "explains": [
+        "la.sum-3pl",
+        "la.sum-1pl",
+        "la.greeting-pl"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "meus, mea",
+      "text": "Words like \"my\" change with the word they go with: frater meus (masculine), soror mea (feminine).",
+      "explains": [
+        "la.possessive"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Lucius frater meus est.\"",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "Lucius frater meus est"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Lucius says Anna is his sister. Write it.",
+      "basedOn": [
+        "l3"
+      ],
+      "frame": "Anna soror ___ est.",
+      "accept": [
+        {
+          "text": "Anna soror mea est"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "choose",
+      "prompt": "You greet two people. What do you say?",
+      "basedOn": [
+        "l1",
+        "la.greeting-pl"
+      ],
+      "options": [
+        "Salve!",
+        "Salvete!"
+      ],
+      "accept": [
+        {
+          "text": "Salvete"
+        }
+      ]
+    }
+  ],
+  "id": "la-s04",
+  "title": {
+    "en": "Hello, both of you",
+    "target": "Salvete"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Salvete!",
+      "en": "Hello, you two!",
+      "speaker": "sam",
+      "picture": "👋👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Salve, Samuel. Lucius frater meus est.",
+      "en": "Hello, Samuel. Lucius is my brother.",
+      "speaker": "ana",
+      "picture": "👨‍🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Anna soror mea est.",
+      "en": "Anna is my sister.",
+      "speaker": "luis",
+      "picture": "👩‍⚕️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Anna et Lucius frater et soror sunt.",
+      "en": "Anna and Lucius are brother and sister.",
+      "speaker": "sam",
+      "picture": "👫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Frater et soror sumus.",
+      "en": "We are brother and sister.",
+      "speaker": "ana",
+      "picture": "👫",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "salvete",
+      "frater",
+      "soror",
+      "meus",
+      "et"
+    ],
+    "constructions": [
+      "la.greeting-pl",
+      "la.sum-3pl",
+      "la.sum-1pl",
+      "la.possessive",
+      "la.et"
+    ]
+  },
+  "represents": [
+    "la.greeting-pl",
+    "la.sum-3pl",
+    "la.sum-1pl",
+    "la.possessive",
+    "la.et"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How are Anna and Lucius related?"
+      },
+      "options": [
+        {
+          "en": "Brother and sister"
+        },
+        {
+          "en": "Friends"
+        },
+        {
+          "en": "Teacher and nurse"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Samuel says \"Salvete\". How many people is he greeting?"
+      },
+      "options": [
+        {
+          "en": "Two or more"
+        },
+        {
+          "en": "One"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l2"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Anna says Lucius is her brother."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

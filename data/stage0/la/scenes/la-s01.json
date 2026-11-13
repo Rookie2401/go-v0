@@ -1,0 +1,231 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "sum",
+      "text": "Latin does not need a separate word for \"I\". The verb ending already says it: sum means \"I am\". The verb often comes last: Samuel sum.",
+      "explains": [
+        "la.sum-1sg",
+        "la.nominative-subject"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write what Samuel says: \"Samuel sum.\"",
+      "basedOn": [
+        "l3"
+      ],
+      "accept": [
+        {
+          "text": "Samuel sum"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Now give your own name.",
+      "basedOn": [
+        "l3",
+        "la.sum-1sg"
+      ],
+      "frame": "___ sum.",
+      "personal": "your name",
+      "speak": true,
+      "accept": [
+        {
+          "text": "{x} sum"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "answer",
+      "prompt": "Anna asks \"Quis es?\" Answer in Latin with your name.",
+      "basedOn": [
+        "l2",
+        "la.sum-1sg"
+      ],
+      "personal": "your name",
+      "speak": true,
+      "accept": [
+        {
+          "text": "{x} sum"
+        }
+      ]
+    }
+  ],
+  "id": "la-s01",
+  "title": {
+    "en": "Hello, I am Samuel",
+    "target": "Salve"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Salve.",
+      "en": "Hello.",
+      "speaker": "ana",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Quis es?",
+      "en": "Who are you?",
+      "speaker": "ana",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Samuel sum.",
+      "en": "I am Samuel.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Anna sum.",
+      "en": "I am Anna.",
+      "speaker": "ana",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Salve, Anna.",
+      "en": "Hello, Anna.",
+      "speaker": "sam",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Salve, Samuel.",
+      "en": "Hello, Samuel.",
+      "speaker": "ana",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "salve",
+      "quis",
+      "es",
+      "sum"
+    ],
+    "constructions": [
+      "la.greeting",
+      "la.sum-1sg",
+      "la.question-quis"
+    ]
+  },
+  "represents": [
+    "la.greeting",
+    "la.sum-1sg",
+    "la.sum-2sg",
+    "la.question-quis",
+    "la.nominative-subject"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Anna ask?"
+      },
+      "options": [
+        {
+          "en": "Who are you?"
+        },
+        {
+          "en": "Where are you?"
+        },
+        {
+          "en": "How are you?"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is the man's name?"
+      },
+      "options": [
+        {
+          "en": "Samuel"
+        },
+        {
+          "en": "Anna"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Anna says her name is Anna."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

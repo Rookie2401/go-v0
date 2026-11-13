@@ -1,0 +1,260 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "habeo, habes, habet",
+      "text": "The verb ending shows who: -o is \"I\" (habeo), -s is \"you\" (habes), -t is \"he\" or \"she\" (habet).",
+      "explains": [
+        "la.verb-1sg-o",
+        "la.verb-2sg-s",
+        "la.verb-3sg-t"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "aquam",
+      "text": "The thing that is had takes an ending of its own, often -m: aqua becomes aquam. Some words, like lac, do not change. Learn each as it comes.",
+      "explains": [
+        "la.accusative-object"
+      ],
+      "afterScenes": 2
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Aquam habeo.\"",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "Aquam habeo"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Lucius has milk. Write it.",
+      "basedOn": [
+        "l5"
+      ],
+      "frame": "Lucius ___ habet.",
+      "accept": [
+        {
+          "text": "Lucius lac habet"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "answer",
+      "prompt": "Someone asks \"Quid habet Lucius?\" Answer in Latin.",
+      "basedOn": [
+        "l3",
+        "l4"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Lucius lac habet"
+        },
+        {
+          "text": "Lac habet"
+        }
+      ]
+    }
+  ],
+  "id": "la-s07",
+  "title": {
+    "en": "What do you have?",
+    "target": "Quid habes?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "things": [
+      "water"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Quid habes, Anna?",
+      "en": "What do you have, Anna?",
+      "speaker": "sam",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Aquam habeo.",
+      "en": "I have water.",
+      "speaker": "ana",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Et Lucius? Quid habet?",
+      "en": "And Lucius? What does he have?",
+      "speaker": "sam",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Lac habeo.",
+      "en": "I have milk.",
+      "speaker": "luis",
+      "picture": "🥛",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Lucius lac habet. Ego aquam habeo.",
+      "en": "Lucius has milk. I have water.",
+      "speaker": "ana",
+      "picture": "🥛💧",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "quid",
+      "habeo",
+      "aqua",
+      "lac",
+      "ego"
+    ],
+    "constructions": [
+      "la.question-quid",
+      "la.habeo",
+      "la.verb-1sg-o",
+      "la.accusative-object"
+    ]
+  },
+  "represents": [
+    "la.question-quid",
+    "la.habeo",
+    "la.verb-1sg-o",
+    "la.verb-2sg-s",
+    "la.verb-3sg-t",
+    "la.accusative-object"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Anna have?"
+      },
+      "options": [
+        {
+          "en": "Water"
+        },
+        {
+          "en": "Milk"
+        },
+        {
+          "en": "Bread"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Lucius have?"
+      },
+      "options": [
+        {
+          "en": "Milk"
+        },
+        {
+          "en": "Water"
+        },
+        {
+          "en": "Wine"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who has water?"
+      },
+      "options": [
+        {
+          "en": "Anna"
+        },
+        {
+          "en": "Lucius"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l5"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Lucius has water."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 1
+    }
+  ]
+}

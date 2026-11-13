@@ -13,7 +13,7 @@
  */
 import type { AdapterSupport, AnalysisSourceInfo, LanguageAdapter, PronunciationSupport, VariantSet } from '../core';
 import { speechNormalizeGeneric } from './shared';
-import { EL_ANALYZER, EL_SOURCE_IDS, EL_VERSION, elAnalyze, elCandidates, orderElSentence } from './greek/analyze';
+import { EL_ANALYZER, EL_SOURCE_IDS, EL_VERSION, elAnalyze, elTokenCandidates, orderElSentence } from './greek/analyze';
 import { describeElMorph } from './greek/describe';
 import { KOINE_CORE } from './greek/generated/koine-core';
 import { installGreekIndex, installedGreekIndexes, lookupGreekForm } from './greek/index-store';
@@ -50,7 +50,8 @@ const SUPPORT: AdapterSupport = {
     'There is no parser. The sentence decides only the PERIOD it is read in (polytonic marks → ancient; the words’ readings say which stage; a tie → the declared or targeted variety, else Koine for a text of New Testament words, else Attic; monotonic → Modern). A form with several readings in one period keeps them all; none is presented as certain.',
     'Pronunciation is written in three stated conventions (Modern; a reconstructed Koine after Buth and Horrocks; the Erasmian classroom convention), none claimed as how anyone spoke. There is no voice for ancient Greek: a Modern Greek voice, labelled as such, is the only playback.',
     'Production checks are four rules (final sigma, polytonic spelling in a Modern draft, Modern spelling in an ancient draft, a form of another period); they say nothing about anything else.',
-    'The Perseus Ancient Greek Dependency Treebank is downloaded as the agreement source for the Attic and Homeric readings but not yet consulted (docs/PLAN14.md P2).',
+    'The Perseus Ancient Greek Dependency Treebank has been used to audit the Attic and Homeric readings (docs/greek/TREEBANK-AUDIT.md) but is not a second source inside them: they stay single-source (docs/PLAN14.md P2).',
+    'Modern Greek prose has two closed, hand-written lists beside the indexes: σε + the article written as one word (στο, στον, στη(ν), στου, στης, στους, στις, στα, στων: read as the preposition σε with the article as a part of the word) and common abbreviations (π.χ., κ.λπ., π.Χ., αι. …: read as the words they stand for). A form outside the lists is not read as either. Measured once on 294 hand-read words (docs/greek/MODERN-AUDIT.md).',
   ],
 };
 
@@ -77,7 +78,7 @@ export const elAdapter: LanguageAdapter = {
   analyze: (tokens, opts) => elAnalyze(tokens, opts),
   refine: (tokens, analyzed, analyzers, given) => {
     const own = (i: number): boolean => analyzed[i].analyzer === EL_ANALYZER && analyzers.has(EL_ANALYZER) && !given?.has(i);
-    const base = tokens.map((t, i) => (!t.isWord ? [] : own(i) ? elCandidates(t) : analyzed[i].candidates));
+    const base = tokens.map((t, i) => (!t.isWord ? [] : own(i) ? elTokenCandidates(tokens, i) : analyzed[i].candidates));
     const ordered = orderElSentence(tokens, base);
     return tokens.map((t, i) => (!t.isWord || given?.has(i) || !analyzers.has(analyzed[i].analyzer) ? analyzed[i] : { ...analyzed[i], candidates: ordered[i] }));
   },

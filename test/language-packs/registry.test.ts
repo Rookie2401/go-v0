@@ -26,7 +26,7 @@ describe('PACKS and packFor', () => {
     for (const lang of ['de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el']) {
       const m = PACKS[lang];
       expect(m.level, lang).toBe('experimental');
-      expect(LEVEL_LABEL[levelOf(m)]).toBe('experimental, seed-only lemmatisation, unreviewed');
+      expect(LEVEL_LABEL[levelOf(m)]).toBe('experimental, unreviewed');
       expect(m.rights.reviewStatus, lang).toBe('machine-drafted');
       expect(m.rights.provenance[0], lang).toMatch(/^Experimental, installable at a deliberately minimal level and not production-ready/);
       expect(m.rights.provenance.join(' '), lang).toMatch(/Thin:/);

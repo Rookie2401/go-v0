@@ -62,7 +62,19 @@ describe('Biblical Aramaic source fixtures', () => {
     const cleanKing = read('מַלְכָּא֙')[0].candidates.find(c => c.notes?.reviewStatus === undefined);
     expect(cleanKing).toBeDefined();
     expect(statusOf(cleanKing!, read('מַלְכָּא֙')[0].candidates)).not.toBe('requires-review');
-    expect(readSelection(arcAdapter, 'דְנָה֙').status).toBe('requires-review');
+    // Out of context the clean singular reading leads; Ezra 5:9's questioned plural stays listed, flagged and below it.
+    const bareDenah = readSelection(arcAdapter, 'דְנָה֙');
+    expect(bareDenah.top?.morph).toMatchObject({ Number: 'Sing' });
+    expect(bareDenah.status).not.toBe('requires-review');
+    const questionedDenah = bareDenah.candidates.find(c => (c.notes?.sourceWordIds as string[]).includes('15TZB'));
+    expect(questionedDenah?.notes?.reviewStatus).toBe('requires-review');
+    expect(statusOf(questionedDenah!, bareDenah.candidates)).toBe('requires-review');
+    expect(questionedDenah!.confidence).toBeLessThan(bareDenah.top!.confidence);
+    // Ezra 7:18 עֲלָ֨ךְ: the source links it to the Hebrew entry 5921 a; kept as the source has it, flagged for review.
+    const alakh = arcCandidates({ surface: 'עֲלָ֨ךְ', normalized: 'עֲלָ֨ךְ', start: 0, end: 6, isWord: true } as Parameters<typeof arcCandidates>[0])
+      .find(c => (c.notes?.sourceWordIds as string[]).includes('15cH4'));
+    expect(alakh?.notes).toMatchObject({ lemmaId: '5921 a', reviewStatus: 'requires-review' });
+    expect(String(alakh?.notes?.reviewReason)).toMatch(/Hebrew dictionary entry/);
   });
 
   it('looks up an unattested citation headword from corpus evidence without fabricating a form analysis', () => {

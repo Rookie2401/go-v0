@@ -11,12 +11,15 @@ type LooseRecord = Record<string, any>;
 const SOURCE = 'data/sources/aramaic/oshb-aramaic-snapshot.xml';
 const LEXICON = 'data/sources/aramaic/strong-aramaic-entries.xml';
 const LEXICAL_INDEX = 'data/sources/aramaic/lexical-index-aramaic-entries.xml';
+// Plain Lexical Index definitions for bare Strong numbers whose Strong's entry has only a King James usage list (or nothing).
+const DEFINITIONS = 'data/sources/aramaic/lexical-index-aramaic-definitions.xml';
 const BOOK_NAMES: Record<string, string> = { Dan: 'Daniel', Ezra: 'Ezra', Jer: 'Jeremiah', Gen: 'Genesis' };
 const BOOK_CODES: Record<string, string> = { Dan: 'DAN', Ezra: 'EZR', Jer: 'JER', Gen: 'GEN' };
 const PREFIXES: Record<string, { lemma: string; gloss: string }> = {
   l: { lemma: 'לְ', gloss: 'to, for' }, b: { lemma: 'בְּ', gloss: 'in, with, by' },
 };
 const read = (file: string): string => fs.readFileSync(file, 'utf8');
+const glossText = (s: string): string => s.replace(/\s+/g, ' ').trim();
 const xmlText = (s: string): string => s.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'");
 const attrs = (s: string): Record<string, string> => Object.fromEntries([...s.matchAll(/([\w-]+)="([^"]*)"/g)].map(m => [m[1], m[2]]));
 const tokenLetters = (s: string): number => (s.match(/[א-ת]/g) ?? []).length;
@@ -26,14 +29,14 @@ const canonicalRef = (osisId: string): string => {
   if (!code) throw new Error(`Unexpected OSIS book in snapshot: ${osisId}`);
   return `${code}.${chapter}.${verse}`;
 };
-function parseLexicon(xml: string): Map<string, { lemma: string; gloss: string }> {
-  const result = new Map<string, { lemma: string; gloss: string }>();
+function parseLexicon(xml: string): Map<string, { lemma: string; gloss: string; usageOnly: boolean }> {
+  const result = new Map<string, { lemma: string; gloss: string; usageOnly: boolean }>();
   for (const match of xml.matchAll(/<entry id="H(\d+)">([\s\S]*?)<\/entry>/g)) {
     const body = match[2];
     const headword = body.match(/<w\b[^>]*>([\s\S]*?)<\/w>/);
     const meaning = body.match(/<meaning>([\s\S]*?)<\/meaning>/);
     const usage = body.match(/<usage>([\s\S]*?)<\/usage>/);
-    result.set(match[1], { lemma: headword ? xmlText(headword[1]) : '', gloss: meaning ? xmlText(meaning[1]) : usage ? xmlText(usage[1]) : '' });
+    result.set(match[1], { lemma: headword ? xmlText(headword[1]) : '', gloss: glossText(meaning ? xmlText(meaning[1]) : usage ? xmlText(usage[1]) : ''), usageOnly: !meaning });
   }
   return result;
 }
@@ -46,7 +49,7 @@ function parseLexicalIndex(xml: string): Map<string, { lemma: string; gloss: str
     const glosses = [...body.matchAll(/<def>([\s\S]*?)<\/def>/g)].map(match => xmlText(match[1])).filter(Boolean);
     const id = wrapper.sourceLemmaId;
     if (!wrapper.strong || !id || !headword) throw new Error(`Invalid selected LexicalIndex entry ${wrapper.lexicalIndexId}`);
-    result.set(id, { lemma: xmlText(headword[1]), gloss: glosses.join('; ') });
+    result.set(id, { lemma: xmlText(headword[1]), gloss: glossText(glosses.join('; ')) });
   }
   return result;
 }
@@ -67,7 +70,7 @@ function qereReadingWords(body: string): Array<{ attrs: Record<string, string>; 
   }
   return words;
 }
-function buildVerses(sourceXml: string, lexical: Map<string, { lemma: string; gloss: string }>, lexicalIndex: Map<string, { lemma: string; gloss: string }>): Verse[] {
+function buildVerses(sourceXml: string, lexical: Map<string, { lemma: string; gloss: string; usageOnly: boolean }>, lexicalIndex: Map<string, { lemma: string; gloss: string }>, definitions: Map<string, { lemma: string; gloss: string }>): Verse[] {
   const verses: Verse[] = [];
   const seenIds = new Set<string>();
   for (const match of sourceXml.matchAll(/<verse\s+osisID="([^"]+)"[^>]*>([\s\S]*?)<\/verse>/g)) {
@@ -78,7 +81,10 @@ function buildVerses(sourceXml: string, lexical: Map<string, { lemma: string; gl
     const words: Reading[] = selected.map(({ attrs: wordAttrs, raw }) => {
       const lemmaId = wordAttrs.lemma;
       const finalId = lemmaId.split('/').at(-1) ?? lemmaId;
-      const sourceLexeme = lexicalIndex.get(finalId) ?? (/^\d+$/.test(finalId) ? lexical.get(finalId) : undefined);
+      const strongEntry = /^\d+$/.test(finalId) ? lexical.get(finalId) : undefined;
+      // A Strong's entry with only a usage list (or no text) takes the Lexical Index's plain definition; its headword stays Strong's.
+      const definition = strongEntry && (strongEntry.usageOnly || !strongEntry.gloss) ? definitions.get(finalId) : undefined;
+      const sourceLexeme = lexicalIndex.get(finalId) ?? (strongEntry ? { lemma: strongEntry.lemma || definition?.lemma || '', gloss: definition?.gloss || strongEntry.gloss } : undefined);
       const prefix = PREFIXES[finalId];
       const sourceWordId = wordAttrs.id;
       if (!sourceWordId || seenIds.has(sourceWordId)) throw new Error(`Missing or duplicate OSHB word ID: ${sourceWordId}`);
@@ -128,7 +134,8 @@ function documentFor(template: LooseRecord, verse: Verse, slug: string, index: n
 function main(): void {
   const lexical = parseLexicon(read(LEXICON));
   const lexicalIndex = parseLexicalIndex(read(LEXICAL_INDEX));
-  const verses = buildVerses(read(SOURCE), lexical, lexicalIndex);
+  const definitions = parseLexicalIndex(read(DEFINITIONS));
+  const verses = buildVerses(read(SOURCE), lexical, lexicalIndex, definitions);
   const readings = verses.flatMap(verse => verse.words);
   const oldVerses = new Set(['Dan.2.4', 'Dan.2.20']);
   const template = JSON.parse(read('data/corpus/arc/daniel-2-20.json')) as LooseRecord;
@@ -163,7 +170,7 @@ function main(): void {
   }));
   const rowTuples = readings.map(row => [row.surface, lemmaIndex.get(row.lemmaId), morphIndex.get(row.morph), referenceIndex.get(row.reference), segmentationIndex.get(row.seg), row.sourceWordId]);
   const passageTuples = verses.map(verse => [verse.book, verse.chapter, verse.verse]);
-  const seed = `/**\n * Generated from bundled OSHB WLC snapshots: A-coded words only; Daniel 2:4 uses the qere path.\n * WLC base text is public domain; OSHB annotations, Strong transcription and Lexical Index are CC BY 4.0.\n * Exact augmented Strong identifiers use their selected Lexical Index entries; no numeric-prefix fallback is used.\n * Prefix headwords/glosses use the stable OSHB linguistic prefix lookup; unlexicalized entries stay unavailable.\n * See docs/aramaic/SOURCES.md.\n */\nexport interface AramaicReading {\n  surface: string; lemma: string; lemmaId: string; morph: string; reference: string;\n  gloss: string; glossStatus: 'external' | 'unavailable'; seg: string; sourceWordId: string;\n}\ntype ReadingTuple = readonly [surface: string, chain: number, morph: number, reference: number, segmentation: number, sourceWordId: string];\nconst LEXICAL_BY_TERMINAL_ID = ${JSON.stringify(terminalLexicon, null, 2)} as const;\nconst LEMMA_CHAINS: readonly string[] = ${JSON.stringify(lemmaChains)};\nconst MORPHOLOGIES: readonly string[] = ${JSON.stringify(morphologyCodes)};\nconst REFERENCES: readonly string[] = ${JSON.stringify(referenceNames)};\nconst SEGMENTATIONS: readonly string[] = ${JSON.stringify(segmentations)};\nconst ROWS: readonly ReadingTuple[] = [\n${rowTuples.map(tuple => `  ${JSON.stringify(tuple)},`).join('\n')}\n];\nexport const ARAMAIC_SEED: readonly AramaicReading[] = ROWS.map(([surface, chainIndex, morphIndex, referenceIndex, segmentationIndex, sourceWordId]) => {\n  const lemmaId = LEMMA_CHAINS[chainIndex];\n  const terminalId = lemmaId.split('/').at(-1) ?? lemmaId;\n  const [lemma, gloss, glossStatus] = LEXICAL_BY_TERMINAL_ID[terminalId] ?? ['', '', 'unavailable'];\n  return { surface, lemma, lemmaId, morph: MORPHOLOGIES[morphIndex], reference: REFERENCES[referenceIndex], gloss, glossStatus, seg: SEGMENTATIONS[segmentationIndex], sourceWordId };\n});\n`;
+  const seed = `/**\n * Generated from bundled OSHB WLC snapshots: A-coded words only; Daniel 2:4 uses the qere path.\n * WLC base text is public domain; OSHB annotations, Strong transcription and Lexical Index are CC BY 4.0.\n * Exact augmented Strong identifiers use their selected Lexical Index entries; no numeric-prefix fallback is used.\n * A Strong entry with only a King James usage list takes the Lexical Index's plain definition (lexical-index-aramaic-definitions.xml).\n * Prefix headwords/glosses use the stable OSHB linguistic prefix lookup; unlexicalized entries stay unavailable.\n * See docs/aramaic/SOURCES.md.\n */\nexport interface AramaicReading {\n  surface: string; lemma: string; lemmaId: string; morph: string; reference: string;\n  gloss: string; glossStatus: 'external' | 'unavailable'; seg: string; sourceWordId: string;\n}\ntype ReadingTuple = readonly [surface: string, chain: number, morph: number, reference: number, segmentation: number, sourceWordId: string];\nconst LEXICAL_BY_TERMINAL_ID = ${JSON.stringify(terminalLexicon, null, 2)} as const;\nconst LEMMA_CHAINS: readonly string[] = ${JSON.stringify(lemmaChains)};\nconst MORPHOLOGIES: readonly string[] = ${JSON.stringify(morphologyCodes)};\nconst REFERENCES: readonly string[] = ${JSON.stringify(referenceNames)};\nconst SEGMENTATIONS: readonly string[] = ${JSON.stringify(segmentations)};\nconst ROWS: readonly ReadingTuple[] = [\n${rowTuples.map(tuple => `  ${JSON.stringify(tuple)},`).join('\n')}\n];\nexport const ARAMAIC_SEED: readonly AramaicReading[] = ROWS.map(([surface, chainIndex, morphIndex, referenceIndex, segmentationIndex, sourceWordId]) => {\n  const lemmaId = LEMMA_CHAINS[chainIndex];\n  const terminalId = lemmaId.split('/').at(-1) ?? lemmaId;\n  const [lemma, gloss, glossStatus] = LEXICAL_BY_TERMINAL_ID[terminalId] ?? ['', '', 'unavailable'];\n  return { surface, lemma, lemmaId, morph: MORPHOLOGIES[morphIndex], reference: REFERENCES[referenceIndex], gloss, glossStatus, seg: SEGMENTATIONS[segmentationIndex], sourceWordId };\n});\n`;
   const typedSeed = seed.replace('const LEXICAL_BY_TERMINAL_ID =', "const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 'external' | 'unavailable']>> =");
   outputs.set('src/adapters/aramaic/seed.ts', typedSeed);
   const sourceBookMeta: Record<string, { code: string; title: string; slug: string }> = {
@@ -195,7 +202,8 @@ function main(): void {
   const report = {
     verses: verses.length, words: readings.length, sourceWordIds: sourceIds.size,
     sourceLemmaIds: new Set(readings.map(row => row.lemmaId)).size,
-    strongEntries: lexical.size, lexicalIndexEntries: lexicalIndex.size,
+    strongEntries: lexical.size, lexicalIndexEntries: lexicalIndex.size, lexicalIndexDefinitions: definitions.size,
+    glossesFromDefinitions: new Set(readings.filter(row => { const id = row.lemmaId.split('/').at(-1) ?? ''; const e = lexical.get(id); return !!e && (e.usageOnly || !e.gloss) && definitions.has(id); }).map(row => row.lemmaId.split('/').at(-1))).size,
     glossAvailable: readings.length - readings.filter(row => row.glossStatus === 'unavailable').length,
     glossUnavailable: readings.filter(row => row.glossStatus === 'unavailable').length,
     unavailableByLemmaId: Object.fromEntries([...unavailable].sort(([a], [b]) => a.localeCompare(b))),

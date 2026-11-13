@@ -10,19 +10,9 @@ import { decodeOshb, oshbParts } from './hebrew/oshb';
 import { describeHeMorph } from './hebrew/describe';
 import { ARAMAIC_SEED } from './aramaic/seed';
 import type { AramaicReading } from './aramaic/seed';
+import { ARC_ANALYZER, ARC_SOURCE_ID, ARC_SOURCES, ARC_SUPPORT, ARC_VARIETIES, ARC_VERSION } from './aramaic/meta';
 
-export const ARC_VERSION = '2';
-export const ARC_ANALYZER = 'adapter-arc@2';
-export const ARC_SOURCE_ID = 'oshb-aramaic';
-export const ARC_VARIETIES = {
-  'arc-bib': { code: 'arc-bib', label: 'Biblical Aramaic', kind: 'period' as const,
-    note: 'Corpus-backed Biblical Aramaic readings from the OSHB source. Other dialects are not analysed.' },
-};
-/** Metadata, not an assertion that every family member is supported. */
-export const ARAMAIC_FAMILY = {
-  name: 'Aramaic', supported: ['arc-bib'],
-  future: ['Targum Onkelos', 'Targum Jonathan', 'Imperial Aramaic', 'Qumran Aramaic', 'Classical Syriac (syc, Syrc)'],
-} as const;
+export { ARAMAIC_FAMILY, ARC_ANALYZER, ARC_SOURCE_ID, ARC_VARIETIES, ARC_VERSION } from './aramaic/meta';
 
 const byForm = new Map<string, AramaicReading[]>();
 const bySkeleton = new Map<string, AramaicReading[]>();
@@ -42,6 +32,18 @@ export const ARAMAIC_QUESTIONED_SOURCE_IDS = new Set([
   '27h69', // Dan 5:27
   '27tvs', // Dan 5:18
 ]);
+/**
+ * Occurrences the source links to a HEBREW dictionary entry (OSHB lemma 5921 a, Hebrew עַל "above"; Dan 7:19's 3605 is
+ * already among the audit flags). Kept as the source has it, flagged, never re-pointed at the Aramaic entry.
+ */
+export const ARAMAIC_HEBREW_LEXEME_IDS = new Set(['15cH4' /* Ezra 7:18 */, '27SNT' /* Dan 7:19 */]);
+const HEBREW_LEXEME = 'The source links this Aramaic word to a Hebrew dictionary entry; its meaning needs specialist review.';
+/** Why an occurrence needs specialist review, or undefined when nothing flags it. */
+export function aramaicReviewReason(sourceWordId: string): string | undefined {
+  if (ARAMAIC_QUESTIONED_SOURCE_IDS.has(sourceWordId)) return 'Source audit flagged this occurrence; source annotation is preserved without correction.';
+  if (ARAMAIC_HEBREW_LEXEME_IDS.has(sourceWordId)) return HEBREW_LEXEME;
+  return undefined;
+}
 for (const row of ARAMAIC_SEED) {
   if (!row.morph.startsWith('A')) throw new Error('Non-Aramaic source reading in Aramaic seed');
   const key = heNormalize(row.surface);
@@ -131,7 +133,7 @@ function buildArcCandidates(token: RawToken): AnalysisCandidate[] {
       confidence: inferred ? 0.6 : 0.92, varieties: ['arc-bib'], origin: 'dictionary', sourceId: ARC_SOURCE_ID,
       notes: { source: 'oshb', code: row.morph, sourceCodes: [row.morph], lemmaId: row.lemmaId.split('/').pop()!, references: [row.reference],
         sourceWordIds: [row.sourceWordId], scope: 'attested source reading; not a productive paradigm',
-        ...(ARAMAIC_QUESTIONED_SOURCE_IDS.has(row.sourceWordId) ? { reviewStatus: 'requires-review', reviewReason: 'Source audit flagged this occurrence; source annotation is preserved without correction.' } : {}),
+        ...(aramaicReviewReason(row.sourceWordId) ? { reviewStatus: 'requires-review', reviewReason: aramaicReviewReason(row.sourceWordId) } : {}),
         ...(inferred ? { pointing: 'inferred from the consonantal spelling; alternatives retained' } : {}) },
       parts: oshbParts(token.surface, parsed, row.seg, row.lemma, parsed.pos).map((p, index) => ({
         ...p, kind: p.role === 'stem' ? 'stem' as const : index < parsed.prefixes.length ? 'prefix' as const : 'suffix' as const,
@@ -147,17 +149,23 @@ function buildArcCandidates(token: RawToken): AnalysisCandidate[] {
       old.notes!.references = [...new Set([...(old.notes!.references as string[]), row.reference])];
       old.notes!.sourceWordIds = [...new Set([...(old.notes!.sourceWordIds as string[]), row.sourceWordId])];
       const sourceWordIds = old.notes!.sourceWordIds as string[];
-      if (sourceWordIds.every(id => ARAMAIC_QUESTIONED_SOURCE_IDS.has(id))) {
+      if (sourceWordIds.every(id => aramaicReviewReason(id))) {
         old.notes!.reviewStatus = 'requires-review';
-        old.notes!.reviewReason = 'Source audit flagged this occurrence; source annotation is preserved without correction.';
+        old.notes!.reviewReason = aramaicReviewReason(sourceWordIds[0])!;
       } else {
         delete old.notes!.reviewStatus;
         delete old.notes!.reviewReason;
       }
     }
   }
-  return [...out.values()];
+  // Out of context a reading attested only by audit-questioned occurrences stays listed and flagged, but never outranks
+  // a clean reading of the same form (Ezra 5:9 דְנָה tagged plural beside three singular occurrences). In its own verse
+  // `analyze` still puts it first at 0.98, flagged.
+  const candidates = [...out.values()];
+  for (const c of candidates) if (c.notes?.reviewStatus === 'requires-review') c.confidence = Math.min(c.confidence, QUESTIONED_CONFIDENCE);
+  return candidates.sort((a, b) => b.confidence - a.confidence);
 }
+const QUESTIONED_CONFIDENCE = 0.5;
 
 function cloneCandidate(candidate: AnalysisCandidate): AnalysisCandidate {
   return {
@@ -189,25 +197,8 @@ export function arcCandidates(token: RawToken): AnalysisCandidate[] {
 export const arcAdapter: LanguageAdapter = {
   lang: 'arc', name: 'Biblical Aramaic', script: 'Hebr', version: ARC_VERSION,
   varieties: ARC_VARIETIES,
-  support: {
-    tokenization: 'dependable', sentenceSegmentation: 'limited', lemmatization: 'seed-only', morphology: 'limited',
-    phraseDetection: 'none', productionChecks: 'none',
-    limitations: [
-      'The analyser recognizes only attested forms in the bundled corpus; it does not generate or guess unattested forms. Unknown forms remain unresolved.',
-      'OSHB supplies morphology; Open Scriptures Strong supplies lexical headwords and base meanings. No independent scholarly review is claimed.',
-      'Selected-word glosses remain attached to attested readings. arcLexiconLookup can look up indexed headwords or forms, but does not generate a candidate for an unattested citation form; the pack runtime does not expose a separate dictionary service.',
-      'Unpointed forms keep every matching pointed source analysis at reduced confidence. Sentence syntax is not parsed.',
-      'Roots, productive paradigms, cognates, Targumic Aramaic, Imperial Aramaic and Syriac are not implemented.',
-      'Base meanings are lexical help, not verified inflected translations. No historical pronunciation recording or voice is supplied.',
-    ],
-  },
-  sources: {
-    [ARC_SOURCE_ID]: {
-      id: ARC_SOURCE_ID, label: 'OSHB Biblical Aramaic morphology; Open Scriptures Strong lexical transcription',
-      origin: 'dictionary', reviewStatus: 'external', licence: 'CC BY 4.0. Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb',
-      version: 'OSHB Aramaic annotations, corpus snapshot 2026-11-05',
-    },
-  },
+  support: ARC_SUPPORT,
+  sources: ARC_SOURCES,
   segmentSentences: heSegmentSentences, tokenize: heTokenize, normalize: heNormalize, searchNormalize: heSearchNormalize,
   analyze(tokens, opts) {
     const words = tokens.filter(t => t.isWord);
@@ -221,9 +212,9 @@ export const arcAdapter: LanguageAdapter = {
       if (row) candidates = candidates.map(c => {
         const matchesContextRow = (c.notes?.sourceWordIds as string[] | undefined)?.includes(row.sourceWordId) ?? false;
         const notes: NonNullable<AnalysisCandidate['notes']> = { ...c.notes, context: 'Exact annotated source passage; alternatives are retained.' };
-        if (matchesContextRow && ARAMAIC_QUESTIONED_SOURCE_IDS.has(row.sourceWordId)) {
+        if (matchesContextRow && aramaicReviewReason(row.sourceWordId)) {
           notes.reviewStatus = 'requires-review';
-          notes.reviewReason = 'Source audit flagged this occurrence; source annotation is preserved without correction.';
+          notes.reviewReason = aramaicReviewReason(row.sourceWordId)!;
         }
         return { ...c, confidence: matchesContextRow ? 0.98 : 0.65, notes };
       }).sort((a, b) => b.confidence - a.confidence);

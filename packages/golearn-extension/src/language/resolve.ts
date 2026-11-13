@@ -241,18 +241,19 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
   // Hebrew script is shared by Hebrew, Aramaic and Yiddish. Greek script has one pack here. Which PERIOD of a pack applies is the
   // analyser's per-sentence decision (cantillation, pointing, polytonic marks), not the resolver's: it names the language only.
   if (share(sh.hebrew) >= MIN_SCRIPT_SHARE) {
-    // Script alone cannot distinguish Hebrew, Aramaic and Yiddish. Compare the two implemented
-    // square-script packs when available, using the same minimum evidence and margin as Latin.
-    const candidates = ['he', 'arc'].filter((id) => installed.has(id)).flatMap((id) => {
-      const adapter = adapterOf(id);
-      return adapter ? [{ id, ...wordListShare(adapter, sample) }] : [];
-    }).sort((a, b) => b.share - a.share);
-    const top = candidates[0];
-    const runner = candidates[1];
-    if (top && top.hits >= MIN_HITS && top.share >= MIN_TOP_SHARE && top.share - (runner?.share ?? 0) >= MIN_MARGIN) {
-      return { languageId: top.id, confidence: Math.min(0.85, 0.5 + top.share / 3), reasons: [`the shared Hebrew script is inconclusive; the ${top.id} word list recognises ${top.hits} of ${top.words} words and clears the comparison margin`] };
+    // Hebrew is the default for the script (its pack also reads Biblical Aramaic as a period). The Biblical Aramaic pack
+    // takes the sample only when its attested word list clearly beats Hebrew's, with Latin's evidence and margin.
+    const arcAdapter = installed.has('arc') ? adapterOf('arc') : undefined;
+    if (arcAdapter) {
+      const arc = wordListShare(arcAdapter, sample);
+      const heAdapter = installed.has('he') ? adapterOf('he') : undefined;
+      const he = heAdapter ? wordListShare(heAdapter, sample) : { hits: 0, words: arc.words, share: 0 };
+      if (arc.hits >= MIN_HITS && arc.share >= MIN_TOP_SHARE && arc.share - he.share >= MIN_MARGIN) {
+        return { languageId: 'arc', confidence: r2(Math.min(0.85, 0.5 + arc.share / 3)), reasons: [`the sample is in Hebrew script and the Biblical Aramaic word list recognises ${arc.hits} of ${arc.words} words, clearly more than the Hebrew word list (${he.hits})`] };
+      }
     }
-    return { confidence: 0, reasons: ['Hebrew script is shared by Hebrew, Aramaic and Yiddish; the available word lists do not distinguish this sample. Declare the language or choose it explicitly.'] };
+    if (!installed.has('he')) return { confidence: 0, reasons: ['the sample is in Hebrew script, but the Hebrew pack is not installed'] };
+    return { languageId: 'he', confidence: 0.85, reasons: ['the sample is in Hebrew script, which no other pack uses (the script is shared with Aramaic and Yiddish; the analyser decides the period sentence by sentence, Biblical Aramaic included)'] };
   }
   if (share(sh.greek) >= MIN_SCRIPT_SHARE) {
     if (!installed.has('el')) return { confidence: 0, reasons: ['the sample is in Greek script, but the Greek pack is not installed'] };

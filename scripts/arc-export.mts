@@ -21,7 +21,7 @@ const counts = Object.fromEntries(['DAN', 'EZR', 'JER', 'GEN'].map((book) => [bo
 if (rows.length !== 4828 || JSON.stringify(counts) !== JSON.stringify({ DAN: 3599, EZR: 1212, JER: 15, GEN: 2 })) throw new Error(`unexpected source scope: ${rows.length} rows ${JSON.stringify(counts)}`);
 if (new Set(rows.map((row) => row.reference)).size !== 269 || rows.some((row) => bookOf(row.reference) === 'UNKNOWN')) throw new Error('references do not cover the verified 269-verse Aramaic scope');
 const body = JSON.stringify(rows);
-const sourceFiles = ['scripts/arc-export.mts', 'src/adapters/aramaic/seed.ts', 'data/sources/aramaic/oshb-aramaic-snapshot.xml', 'data/sources/aramaic/strong-aramaic-entries.xml', 'data/sources/aramaic/lexical-index-aramaic-entries.xml'];
+const sourceFiles = ['scripts/arc-export.mts', 'src/adapters/aramaic/seed.ts', 'data/sources/aramaic/oshb-aramaic-snapshot.xml', 'data/sources/aramaic/strong-aramaic-entries.xml', 'data/sources/aramaic/lexical-index-aramaic-entries.xml', 'data/sources/aramaic/lexical-index-aramaic-definitions.xml'];
 const sourceChecksums = Object.fromEntries(await Promise.all(sourceFiles.map(async (file) => [file, createHash('sha256').update(await readFile(file)).digest('hex')])));
 const adapterManifestPath = process.argv[3];
 if (!adapterManifestPath) throw new Error('pass the built adapter-manifest.json as the second argument');

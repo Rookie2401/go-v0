@@ -24,9 +24,9 @@ export interface BibleAccessRecord {
 export const BIBLE_ACCESS: Readonly<Record<LanguageCode, BibleAccessRecord>> = {
   arc: {
     lang: 'arc', translation: 'Biblical Aramaic, WLC excerpts', edition: 'OSHB WLC qere path', status: 'bundled',
-    sourceUrl: 'https://github.com/openscriptures/morphhb/blob/master/wlc/Dan.xml',
-    method: 'Daniel 2:4b and 2:20 only; source A-coded words with morphology boundaries joined.',
-    importMethod: 'Read the two bundled excerpts; additional Biblical Aramaic is not yet bundled.',
+    sourceUrl: 'https://github.com/openscriptures/morphhb',
+    method: 'The whole Biblical Aramaic text (269 verses): Daniel 2:4b–7:28, Ezra 4:8–6:18 and 7:12–26, Jeremiah 10:11 and the two Aramaic words of Genesis 31:47; the source\'s A-coded words on the qere path, with morphology boundaries joined.',
+    importMethod: 'Read the bundled verses; the Hebrew parts of mixed verses are left out.',
     rights: 'WLC text public domain; OSHB lemma and morphology CC BY 4.0, attribution retained.',
   },
 

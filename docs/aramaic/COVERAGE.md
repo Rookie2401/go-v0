@@ -14,7 +14,7 @@ This milestone supplies the complete declared Biblical Aramaic source corpus to 
 
 Each verse is a bundled document. The original Daniel 2:4b and 2:20 document IDs are preserved. Hebrew portions of mixed verses are excluded. Ketiv readings are retained in the source snapshot but not duplicated in the selected qere text. The corpus has 714 terminal source lemma identifiers (1,108 full prefix/lemma chains) and 744 lemma/POS identities. Numeric lexical entries are kept separately from language-specific learning identities.
 
-The offline build uses 694 selected Open Scriptures Strong entries and exact augmented identifiers from selected Lexical Index entries. An augmented identifier is never reduced to its numeric prefix: for example, Aramaic 6211 b names herbage, whereas Hebrew 6211 a names a moth. A gloss is available for 4,802 occurrences; 26 occurrences of H3390 with different prefixes have a source headword but no definition in this source. They remain explicitly unavailable. Prefix-only entries use the established OSHB prefix lookup, with that provenance distinguished in SOURCES.md.
+The offline build uses 694 selected Open Scriptures Strong entries and exact augmented identifiers from selected Lexical Index entries. An augmented identifier is never reduced to its numeric prefix: for example, Aramaic 6211 b names herbage, whereas Hebrew 6211 a names a moth. Every one of the 4,828 occurrences has a gloss. Where Strong gives a meaning, that is the gloss; where it gives only a King James usage list (200 entries, such as מִן) or nothing (H3390, Jerusalem), the gloss is the Lexical Index definition for that Strong number (see SOURCES.md). Prefix-only entries use the established OSHB prefix lookup, with that provenance distinguished in SOURCES.md.
 
 ## Morphology and uncertainty
 
@@ -22,7 +22,7 @@ All 4,828 selected annotations are retrievable and ranked first in their exact s
 
 The adapter indexes pointed forms, consonantal spellings, headwords and source references. It retains alternative readings; unpointed input lowers confidence. The lexical API returns attested forms, frequencies and references without inventing citation-form morphology. Attached particles, nominal states, verbal features and pronominal suffixes come from source codes and boundaries. All 35 source paseq signs are preserved alongside maqqef and sof pasuq. Unknown words and unsupported dialects remain unresolved.
 
-Eleven existing Ecclesia source-audit exclusions are carried through as requires-review warnings. The raw annotations remain visible for adjudication; they are not silently rewritten. A warning is not evidence that every other annotation has been independently checked.
+Eleven existing Ecclesia source-audit exclusions are carried through as requires-review warnings, and the two occurrences the source links to a Hebrew dictionary entry (Ezra 7:18, Dan 7:19) are flagged the same way. Out of context a flagged reading is listed below any clean reading of the same form; in its own verse it is chosen and flagged. The raw annotations remain visible for adjudication; they are not silently rewritten. A warning is not evidence that every other annotation has been independently checked.
 
 No productive analyser for unseen forms, source-verified general root inventory, historical audio, contextual translation corpus, Targumic module or Classical Syriac module is claimed. Dictionary glosses describe headwords, not verified translations of each occurrence.
 

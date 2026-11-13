@@ -26,7 +26,9 @@ const sizesIn = (dir: string, rel = ''): Array<{ file: string; bytes: number }> 
   fs.readdirSync(path.join(dir, rel), { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? sizesIn(dir, path.posix.join(rel, e.name)) : [{ file: path.posix.join(rel, e.name), bytes: fs.statSync(path.join(dir, rel, e.name)).size }]));
 
 describe.skipIf(!have)('the built extension', () => {
-  it('keeps bounded bundles with Hindi and Biblical Aramaic available for on-device Repository analysis', () => {
+  it('keeps bounded bundles with Hindi available for on-device Repository analysis (Biblical Aramaic stays in its analyser chunk)', () => {
+    // The worker links src/background/arcStub.ts, not the Aramaic corpus seed (vite.config.ts leanAramaic): it would add about 200 KB.
+    expect(fs.readFileSync(path.join(dist, 'background.js'), 'utf8')).not.toContain('מַלְכָּא');
     const sizes = new Map(sizesIn(dist).filter((f) => /\.js$/.test(f.file)).map((f) => [f.file, f.bytes]));
     const table = [...sizes].map(([f, b]) => `  ${f.padEnd(34)} ${(b / KB).toFixed(1).padStart(8)} KB`).join('\n');
     // eslint-disable-next-line no-console

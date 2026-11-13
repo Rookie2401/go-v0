@@ -2,6 +2,7 @@
  * Generated from bundled OSHB WLC snapshots: A-coded words only; Daniel 2:4 uses the qere path.
  * WLC base text is public domain; OSHB annotations, Strong transcription and Lexical Index are CC BY 4.0.
  * Exact augmented Strong identifiers use their selected Lexical Index entries; no numeric-prefix fallback is used.
+ * A Strong entry with only a King James usage list takes the Lexical Index's plain definition (lexical-index-aramaic-definitions.xml).
  * Prefix headwords/glosses use the stable OSHB linguistic prefix lookup; unlexicalized entries stay unavailable.
  * See docs/aramaic/SOURCES.md.
  */
@@ -13,22 +14,22 @@ type ReadingTuple = readonly [surface: string, chain: number, morph: number, ref
 const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 'external' | 'unavailable']>> = {
   "2": [
     "אַב",
-    "father.",
+    "father",
     "external"
   ],
   "4": [
     "אֵב",
-    "fruit.",
+    "fruit",
     "external"
   ],
   "7": [
     "אֲבַד",
-    "destroy, perish.",
+    "perish",
     "external"
   ],
   "69": [
     "אֶבֶן",
-    "stone.",
+    "stone",
     "external"
   ],
   "104": [
@@ -43,7 +44,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "144": [
     "אֲדָר",
-    "Adar.",
+    "Adar",
     "external"
   ],
   "147": [
@@ -83,7 +84,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "252": [
     "אַח",
-    "brother.",
+    "brother",
     "external"
   ],
   "263": [
@@ -128,7 +129,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "324": [
     "אֲחַשְׁדַּרְפַּן",
-    "prince.",
+    "satraps",
     "external"
   ],
   "363": [
@@ -143,17 +144,17 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "399": [
     "אֲכַל",
-    "  accuse, devour, eat.",
+    "eat",
     "external"
   ],
   "409": [
     "אַל",
-    "not.",
+    "do not",
     "external"
   ],
   "412": [
     "אֵל",
-    "these.",
+    "these",
     "external"
   ],
   "426": [
@@ -163,7 +164,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "429": [
     "אֵלֶּה",
-    "these.",
+    "these",
     "external"
   ],
   "431": [
@@ -183,27 +184,27 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "506": [
     "אֲלַף",
-    "thousand.",
+    "1,000",
     "external"
   ],
   "521": [
     "אַמָּה",
-    "cubit.",
+    "cubit",
     "external"
   ],
   "524": [
     "אֻמָּה",
-    "nation.",
+    "nation",
     "external"
   ],
   "540": [
     "אֲמַן",
-    "believe, faithful, sure.",
+    "trust",
     "external"
   ],
   "560": [
     "אֲמַר",
-    "command, declare, say, speak, tell.",
+    "say",
     "external"
   ],
   "563": [
@@ -248,7 +249,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "613": [
     "אֱסוּר",
-    "band, imprisonment.",
+    "band",
     "external"
   ],
   "620": [
@@ -273,7 +274,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "638": [
     "אַף",
-    "also.",
+    "also",
     "external"
   ],
   "670": [
@@ -288,17 +289,17 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "677": [
     "אֶצְבַּע",
-    "finger, toe.",
+    "finger",
     "external"
   ],
   "703": [
     "אַרְבַּע",
-    "four.",
+    "four",
     "external"
   ],
   "711": [
     "אַרְגְּוָן",
-    "purple.",
+    "purple",
     "external"
   ],
   "718": [
@@ -313,7 +314,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "744": [
     "אַרְיֵה",
-    "lion.",
+    "lion",
     "external"
   ],
   "749": [
@@ -353,7 +354,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "785": [
     "אֵשׁ",
-    "flame.",
+    "fire",
     "external"
   ],
   "787": [
@@ -363,7 +364,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "826": [
     "אַשָּׁף",
-    "astrologer.",
+    "conjurer",
     "external"
   ],
   "846": [
@@ -383,7 +384,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "858": [
     "אָתָה",
-    "(be-) come, bring.",
+    "come",
     "external"
   ],
   "861": [
@@ -403,12 +404,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "888": [
     "בְּאֵשׁ",
-    "displease.",
+    "be evil",
     "external"
   ],
   "895": [
     "בַּבֶל",
-    "Babylon.",
+    "Babylon",
     "external"
   ],
   "896": [
@@ -443,12 +444,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "997": [
     "בֵּין",
-    "among, between.",
+    "between",
     "external"
   ],
   "999": [
     "בִּינָה",
-    "knowledge.",
+    "understanding",
     "external"
   ],
   "1001": [
@@ -458,7 +459,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1005": [
     "בַּיִת",
-    "house.",
+    "house",
     "external"
   ],
   "1079": [
@@ -478,17 +479,17 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1096": [
     "בֵּלְטְשַׁאצַּר",
-    "Belteshazzar.",
+    "Belteshazzar",
     "external"
   ],
   "1113": [
     "בֵּלְשַׁאצַּר",
-    "Belshazzar.",
+    "Belshazzar",
     "external"
   ],
   "1123": [
     "בֵּן",
-    "child, son, young.",
+    "son",
     "external"
   ],
   "1124": [
@@ -498,7 +499,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1147": [
     "בִּנְיָן",
-    "building.",
+    "a building",
     "external"
   ],
   "1149": [
@@ -518,17 +519,17 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1169": [
     "בְּעֵל",
-    "  chancellor.",
+    "owner",
     "external"
   ],
   "1236": [
     "בִּקְעָא",
-    "plain.",
+    "plain",
     "external"
   ],
   "1240": [
     "בְּקַר",
-    "inquire, make search.",
+    "inquire",
     "external"
   ],
   "1247": [
@@ -543,12 +544,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1289": [
     "בְּרַךְ",
-    "bless, kneel.",
+    "kneel",
     "external"
   ],
   "1291": [
     "בֶּרֶךְ",
-    "knee.",
+    "knee",
     "external"
   ],
   "1297": [
@@ -558,17 +559,17 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1321": [
     "בְּשַׁר",
-    "flesh.",
+    "flesh",
     "external"
   ],
   "1325": [
     "בַּת",
-    "bath.",
+    "bath",
     "external"
   ],
   "1355": [
     "גַּב",
-    "back.",
+    "back",
     "external"
   ],
   "1358": [
@@ -583,7 +584,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1400": [
     "גְּבַר",
-    "certain, man.",
+    "man",
     "external"
   ],
   "1401": [
@@ -608,12 +609,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1467": [
     "גֵּוָה",
-    "pride.",
+    "pride",
     "external"
   ],
   "1490": [
     "גִּזְבָּר",
-    "treasurer.",
+    "treasurer",
     "external"
   ],
   "1505": [
@@ -643,12 +644,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1541": [
     "גְּלָה",
-    "bring over, carry away, reveal.",
+    "reveal",
     "external"
   ],
   "1547": [
     "גָּלוּת",
-    "captivity.",
+    "exile",
     "external"
   ],
   "1560": [
@@ -658,7 +659,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1585": [
     "גְּמַר",
-    "perfect.",
+    "complete",
     "external"
   ],
   "1596": [
@@ -688,7 +689,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1678": [
     "דֹּב",
-    "bear.",
+    "bear",
     "external"
   ],
   "1684": [
@@ -708,7 +709,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1701": [
     "דִּבְרָה",
-    "intent, sake.",
+    "cause",
     "external"
   ],
   "1722": [
@@ -758,12 +759,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1780": [
     "דִּין",
-    "judgement.",
+    "judgment",
     "external"
   ],
   "1782": [
     "דַּיָּן",
-    "judge.",
+    "judge",
     "external"
   ],
   "1784": [
@@ -788,7 +789,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1815": [
     "דְּלַק",
-    "burn.",
+    "burn",
     "external"
   ],
   "1821": [
@@ -818,7 +819,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1868": [
     "דָּֽרְיָוֵשׁ",
-    "Darius.",
+    "Darius",
     "external"
   ],
   "1872": [
@@ -828,12 +829,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1882": [
     "דָּת",
-    "decree, law.",
+    "decree",
     "external"
   ],
   "1883": [
     "דֶּתֶא",
-    "tender grass.",
+    "grass",
     "external"
   ],
   "1884": [
@@ -863,7 +864,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1932": [
     "הוּא",
-    "× are, it, this.",
+    "he",
     "external"
   ],
   "1934": [
@@ -878,7 +879,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "1965": [
     "הֵיכַל",
-    "palace, temple.",
+    "palace",
     "external"
   ],
   "1981": [
@@ -923,7 +924,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "2110": [
     "זוּן",
-    "feed.",
+    "feed",
     "external"
   ],
   "2112": [
@@ -948,7 +949,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "2166": [
     "זְמָן",
-    "season, time.",
+    "time",
     "external"
   ],
   "2170": [
@@ -968,7 +969,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "2192": [
     "זְעֵיר",
-    "little.",
+    "little",
     "external"
   ],
   "2200": [
@@ -983,7 +984,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "2217": [
     "זְרֻבָּבֶל",
-    "Zerubbabel.",
+    "Zerubbabel",
     "external"
   ],
   "2234": [
@@ -1023,7 +1024,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "2305": [
     "חֶדְוָה",
-    "joy.",
+    "joy",
     "external"
   ],
   "2306": [
@@ -1178,7 +1179,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "2749": [
     "חַרְטֹם",
-    "magician.",
+    "magician",
     "external"
   ],
   "2761": [
@@ -1248,7 +1249,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "2920": [
     "טַל",
-    "dew.",
+    "dew",
     "external"
   ],
   "2927": [
@@ -1298,7 +1299,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3028": [
     "יַד",
-    "hand, power.",
+    "hand",
     "external"
   ],
   "3029": [
@@ -1308,12 +1309,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3046": [
     "יְדַע",
-    "certify, know, make known, teach.",
+    "know",
     "external"
   ],
   "3052": [
     "יְהַב",
-    "deliver, give, lay,   prolong, pay, yield.",
+    "give",
     "external"
   ],
   "3061": [
@@ -1333,27 +1334,27 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3191": [
     "יְטַב",
-    "seem good.",
+    "be pleasing",
     "external"
   ],
   "3202": [
     "יְכֵל",
-    "be able, can, couldest, prevail.",
+    "be able",
     "external"
   ],
   "3221": [
     "יָם",
-    "sea.",
+    "sea",
     "external"
   ],
   "3255": [
     "יְסַף",
-    "add.",
+    "add",
     "external"
   ],
   "3319": [
     "יְצָא",
-    "finish.",
+    "bring out",
     "external"
   ],
   "3321": [
@@ -1368,7 +1369,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3345": [
     "יְקַד",
-    "burning.",
+    "burn",
     "external"
   ],
   "3346": [
@@ -1378,18 +1379,18 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3358": [
     "יַקִּיר",
-    "noble, rare.",
+    "honourable",
     "external"
   ],
   "3367": [
     "יְקָר",
-    "glory, honour.",
+    "honour",
     "external"
   ],
   "3390": [
     "יְרוּשָׁלֵם",
-    "",
-    "unavailable"
+    "Jerusalem",
+    "external"
   ],
   "3393": [
     "יְרַח",
@@ -1403,12 +1404,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3443": [
     "יֵשׁוּעַ",
-    "Jeshua.",
+    "Jeshua",
     "external"
   ],
   "3479": [
     "יִשְׂרָאֵל",
-    "Israel.",
+    "Israel",
     "external"
   ],
   "3487": [
@@ -1433,7 +1434,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3542": [
     "כָּה",
-    "hitherto.",
+    "here",
     "external"
   ],
   "3546": [
@@ -1443,7 +1444,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3549": [
     "כָּהֵן",
-    "priest.",
+    "priest",
     "external"
   ],
   "3551": [
@@ -1453,7 +1454,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3567": [
     "כּוֹרֶשׁ",
-    "Cyrus.",
+    "Cyrus",
     "external"
   ],
   "3604": [
@@ -1468,7 +1469,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3606": [
     "כֹּל",
-    "all, any,   (forasmuch) as,   be-(for this) cause, every,   no (manner, -ne),   there (where) -fore,   though, what (where, who) -soever, (the) whole.",
+    "the whole",
     "external"
   ],
   "3652": [
@@ -1488,17 +1489,17 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3675": [
     "כְּנָת",
-    "companion.",
+    "associate",
     "external"
   ],
   "3679": [
     "כַּסְדַּי",
-    "Chaldean.",
+    "Chaldean",
     "external"
   ],
   "3702": [
     "כְּסַף",
-    "money, silver.",
+    "silver",
     "external"
   ],
   "3705": [
@@ -1548,42 +1549,42 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3790": [
     "כְּתַב",
-    "write(-ten).",
+    "write",
     "external"
   ],
   "3792": [
     "כְּתָב",
-    "prescribing, writing(-ten).",
+    "writing",
     "external"
   ],
   "3797": [
     "כְּתַל",
-    "wall.",
+    "wall",
     "external"
   ],
   "3809": [
     "לָא",
-    "or even, neither, no(-ne, -r), (can-) not, as nothing, without.",
+    "not",
     "external"
   ],
   "3821": [
     "לֵב",
-    "heart.",
+    "heart",
     "external"
   ],
   "3825": [
     "לְבַב",
-    "heart.",
+    "heart",
     "external"
   ],
   "3831": [
     "לְבוּשׁ",
-    "garment.",
+    "garment",
     "external"
   ],
   "3848": [
     "לְבַשׁ",
-    "clothe.",
+    "be clothed",
     "external"
   ],
   "3861": [
@@ -1593,7 +1594,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3879": [
     "לֵוִי",
-    "Levite.",
+    "Levite",
     "external"
   ],
   "3890": [
@@ -1603,7 +1604,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3900": [
     "לְחֶם",
-    "feast.",
+    "feast",
     "external"
   ],
   "3904": [
@@ -1613,7 +1614,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3916": [
     "לֵילְיָא",
-    "night.",
+    "night",
     "external"
   ],
   "3961": [
@@ -1633,12 +1634,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "3977": [
     "מֹאזֵן",
-    "balances.",
+    "scale",
     "external"
   ],
   "3983": [
     "מֵאמַר",
-    "appointment, word.",
+    "word",
     "external"
   ],
   "3984": [
@@ -1648,7 +1649,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "4040": [
     "מְגִלָּה",
-    "roll.",
+    "roll",
     "external"
   ],
   "4049": [
@@ -1668,22 +1669,22 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "4076": [
     "מָדַי",
-    "Mede(-s).",
+    "Mede(-s)",
     "external"
   ],
   "4077": [
     "מָדַי",
-    "Median.",
+    "Mede",
     "external"
   ],
   "4083": [
     "מְדִינָה",
-    "province.",
+    "district",
     "external"
   ],
   "4101": [
     "מָה",
-    "how great (mighty), that which, what(-soever), why.",
+    "what?",
     "external"
   ],
   "4193": [
@@ -1693,7 +1694,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "4203": [
     "מָזוֹן",
-    "meat.",
+    "food",
     "external"
   ],
   "4223": [
@@ -1778,7 +1779,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "4481": [
     "מִן",
-    "according, after,   because,   before, by, for, from, × him, × more than, (out) of, part, since, × these, to, upon,   when.",
+    "from",
     "external"
   ],
   "4483": [
@@ -1843,7 +1844,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "4873": [
     "מֹשֶׁה",
-    "Moses.",
+    "Moses",
     "external"
   ],
   "4887": [
@@ -1873,12 +1874,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "4978": [
     "מַתְּנָא",
-    "gift.",
+    "gift",
     "external"
   ],
   "5013": [
     "נְבָא",
-    "prophesy.",
+    "see",
     "external"
   ],
   "5017": [
@@ -1888,7 +1889,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5020": [
     "נְבוּכַדְנֶצַּר",
-    "Nebuchadnezzar.",
+    "Nebuchadnezzar",
     "external"
   ],
   "5023": [
@@ -1993,17 +1994,17 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5232": [
     "נְכַס",
-    "goods.",
+    "riches",
     "external"
   ],
   "5245": [
     "נְמַר",
-    "leopard.",
+    "leopard",
     "external"
   ],
   "5256": [
     "נְסַח",
-    "pull down.",
+    "pull away",
     "external"
   ],
   "5260": [
@@ -2018,12 +2019,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5267": [
     "נְסַק",
-    "take up.",
+    "come up",
     "external"
   ],
   "5308": [
     "נְפַל",
-    "fall (down), have occasion.",
+    "fall",
     "external"
   ],
   "5312": [
@@ -2063,12 +2064,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5376": [
     "נְשָׂא",
-    "carry away, make insurrection, take.",
+    "lift",
     "external"
   ],
   "5389": [
     "נָשִׁין",
-    "women.",
+    "wives",
     "external"
   ],
   "5396": [
@@ -2083,12 +2084,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5407": [
     "נִשְׁתְּוָן",
-    "letter.",
+    "letter",
     "external"
   ],
   "5412": [
     "נְתִין",
-    "Nethinims.",
+    "Nᵉthinîn",
     "external"
   ],
   "5415": [
@@ -2098,7 +2099,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5426": [
     "נְתַר",
-    "shake off.",
+    "strip off",
     "external"
   ],
   "5443": [
@@ -2118,17 +2119,17 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5457": [
     "סְגִד",
-    "worship.",
+    "do homage",
     "external"
   ],
   "5460": [
     "סְגַן",
-    "governor.",
+    "prefect",
     "external"
   ],
   "5463": [
     "סְגַר",
-    "shut up.",
+    "shut",
     "external"
   ],
   "5481": [
@@ -2143,7 +2144,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5491": [
     "סוֹף",
-    "end.",
+    "end",
     "external"
   ],
   "5559": [
@@ -2198,17 +2199,17 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5675": [
     "עֲבַר",
-    "beyond, this side.",
+    "region across",
     "external"
   ],
   "5705": [
     "עַד",
-    "× and, at, for, (hither-) to, on till, (un-) to, until, within.",
+    "even to",
     "external"
   ],
   "5709": [
     "עֲדָא",
-    "alter, depart, pass (away), remove, take (away).",
+    "pass on",
     "external"
   ],
   "5714": [
@@ -2223,7 +2224,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5751": [
     "עוֹד",
-    "while.",
+    "still",
     "external"
   ],
   "5758": [
@@ -2233,7 +2234,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5776": [
     "עוֹף",
-    "fowl.",
+    "fowl",
     "external"
   ],
   "5784": [
@@ -2243,7 +2244,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5796": [
     "עֵז",
-    "goat.",
+    "she",
     "external"
   ],
   "5824": [
@@ -2278,7 +2279,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5922": [
     "עַל",
-    "about, against, concerning, for, (there-) fore, from, in, × more, of, (there-, up-) on, (in-) to,   why with.",
+    "upon",
     "external"
   ],
   "5924": [
@@ -2333,12 +2334,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "5972": [
     "עַם",
-    "people.",
+    "people",
     "external"
   ],
   "5974": [
     "עִם",
-    "by, from, like, to(-ward), with.",
+    "with",
     "external"
   ],
   "5994": [
@@ -2353,22 +2354,22 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "6032": [
     "עֲנָה",
-    "answer, speak.",
+    "answer",
     "external"
   ],
   "6033": [
     "עֲנָה",
-    "poor.",
+    "poor",
     "external"
   ],
   "6050": [
     "עֲנַן",
-    "cloud.",
+    "cloud",
     "external"
   ],
   "6056": [
     "עֲנַף",
-    "bough, branch.",
+    "bough",
     "external"
   ],
   "6065": [
@@ -2388,7 +2389,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "6132": [
     "עֲקַר",
-    "pluck up by the roots.",
+    "be rooted up",
     "external"
   ],
   "6136": [
@@ -2398,7 +2399,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "6146": [
     "עָר",
-    "enemy.",
+    "foe",
     "external"
   ],
   "6151": [
@@ -2423,7 +2424,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "6243": [
     "עֶשְׂרִין",
-    "twenty.",
+    "twenty",
     "external"
   ],
   "6246": [
@@ -2443,7 +2444,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "6347": [
     "פֶּחָה",
-    "captain, governor.",
+    "governor",
     "external"
   ],
   "6353": [
@@ -2458,7 +2459,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "6386": [
     "פְּלַג",
-    "divided.",
+    "divide",
     "external"
   ],
   "6387": [
@@ -2468,7 +2469,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "6392": [
     "פְּלֻגָּה",
-    "division.",
+    "division",
     "external"
   ],
   "6399": [
@@ -2503,12 +2504,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "6540": [
     "פָּרַס",
-    "Persia, Persians.",
+    "Persia",
     "external"
   ],
   "6543": [
     "פַּרְסִי",
-    "Persian.",
+    "Persian",
     "external"
   ],
   "6562": [
@@ -2523,7 +2524,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "6573": [
     "פַּרְשֶׁגֶן",
-    "copy.",
+    "copy",
     "external"
   ],
   "6590": [
@@ -2583,7 +2584,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "6676": [
     "צַוַּאר",
-    "neck.",
+    "neck",
     "external"
   ],
   "6739": [
@@ -2623,7 +2624,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "6922": [
     "קַדִּישׁ",
-    "holy (One), saint.",
+    "holy",
     "external"
   ],
   "6925": [
@@ -2643,7 +2644,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "6966": [
     "קוּם",
-    "appoint, establish, make, raise up self, (a-) rise (up), (make to) stand, set (up).",
+    "arise",
     "external"
   ],
   "6992": [
@@ -2678,7 +2679,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7032": [
     "קָל",
-    "sound, voice.",
+    "voice",
     "external"
   ],
   "7066": [
@@ -2698,32 +2699,32 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7113": [
     "קְצַץ",
-    "cut off.",
+    "cut off",
     "external"
   ],
   "7118": [
     "קְצָת",
-    "end, partly.",
+    "end",
     "external"
   ],
   "7123": [
     "קְרָא",
-    "call, cry, read.",
+    "call",
     "external"
   ],
   "7127": [
     "קְרֵב",
-    "approach, come (near, nigh), draw near.",
+    "approach",
     "external"
   ],
   "7129": [
     "קְרָב",
-    "war.",
+    "war",
     "external"
   ],
   "7149": [
     "קִרְיָא",
-    "city.",
+    "city",
     "external"
   ],
   "7162": [
@@ -2748,12 +2749,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7229": [
     "רַב",
-    "captain, chief, great, lord, master, stout.",
+    "great",
     "external"
   ],
   "7236": [
     "רְבָה",
-    "make a great man, grow.",
+    "grow great",
     "external"
   ],
   "7238": [
@@ -2763,12 +2764,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7240": [
     "רִבּוֹ",
-    "× ten thousand times ten thousand.",
+    "myriad",
     "external"
   ],
   "7244": [
     "רְבִיעַי",
-    "fourth.",
+    "fourth",
     "external"
   ],
   "7260": [
@@ -2783,7 +2784,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7265": [
     "רְגַז",
-    "provoke unto wrath.",
+    "enrage",
     "external"
   ],
   "7266": [
@@ -2793,7 +2794,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7271": [
     "רְגַל",
-    "foot.",
+    "foot",
     "external"
   ],
   "7284": [
@@ -2808,12 +2809,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7308": [
     "רוּחַ",
-    "mind, spirit, wind.",
+    "wind",
     "external"
   ],
   "7313": [
     "רוּם",
-    "extol, lift up (self), set up.",
+    "rise",
     "external"
   ],
   "7314": [
@@ -2828,7 +2829,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7352": [
     "רַחִיק",
-    "far.",
+    "far",
     "external"
   ],
   "7359": [
@@ -2843,7 +2844,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7382": [
     "רֵיחַ",
-    "smell.",
+    "smell",
     "external"
   ],
   "7412": [
@@ -2868,22 +2869,22 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7490": [
     "רְעַע",
-    "break, bruise.",
+    "crush",
     "external"
   ],
   "7512": [
     "רְפַס",
-    "stamp.",
+    "tread",
     "external"
   ],
   "7560": [
     "רְשַׁם",
-    "sign, write.",
+    "inscribe",
     "external"
   ],
   "7593": [
     "שְׁאֵל",
-    "ask, demand, require.",
+    "ask",
     "external"
   ],
   "7595": [
@@ -2893,12 +2894,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7598": [
     "שְׁאַלְתִּיאֵל",
-    "Shealtiel.",
+    "Shealtiel",
     "external"
   ],
   "7606": [
     "שְׁאָר",
-    "× whatsoever more, residue, rest.",
+    "rest",
     "external"
   ],
   "7624": [
@@ -2913,12 +2914,12 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7631": [
     "שְׂבִיב",
-    "flame.",
+    "flame",
     "external"
   ],
   "7655": [
     "שִׁבְעָה",
-    "seven (times).",
+    "seven",
     "external"
   ],
   "7662": [
@@ -2953,17 +2954,17 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7715": [
     "שַׁדְרַךְ",
-    "Shadrach.",
+    "Shadrach",
     "external"
   ],
   "7761": [
     "שׂוּם",
-    "  command, give, lay, make,   name,   regard, set.",
+    "set",
     "external"
   ],
   "7792": [
     "שׁוּר",
-    "wall.",
+    "wall",
     "external"
   ],
   "7801": [
@@ -2978,7 +2979,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7844": [
     "שְׁחַת",
-    "corrupt, fault.",
+    "corrupt",
     "external"
   ],
   "7859": [
@@ -2988,7 +2989,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7868": [
     "שִׂיב",
-    "elder.",
+    "be hoary",
     "external"
   ],
   "7912": [
@@ -2998,7 +2999,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7920": [
     "שְׂכַל",
-    "consider.",
+    "consider",
     "external"
   ],
   "7924": [
@@ -3008,7 +3009,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7932": [
     "שְׁכַן",
-    "cause to dwell, have habitation.",
+    "dwell",
     "external"
   ],
   "7954": [
@@ -3028,17 +3029,17 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "7972": [
     "שְׁלַח",
-    "put, send.",
+    "send",
     "external"
   ],
   "7981": [
     "שְׁלֵט",
-    "have the mastery, have power, bear rule, be (make) ruler.",
+    "have power",
     "external"
   ],
   "7984": [
     "שִׁלְטוֹן",
-    "ruler.",
+    "ruler",
     "external"
   ],
   "7985": [
@@ -3063,27 +3064,27 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "8036": [
     "שֻׁם",
-    "name.",
+    "name",
     "external"
   ],
   "8046": [
     "שְׁמַד",
-    "consume.",
+    "destroy",
     "external"
   ],
   "8065": [
     "שָׁמַיִן",
-    "heaven.",
+    "heavens",
     "external"
   ],
   "8075": [
     "שְׁמַם",
-    "be astonied.",
+    "be appalled",
     "external"
   ],
   "8086": [
     "שְׁמַע",
-    "hear, obey.",
+    "hear",
     "external"
   ],
   "8115": [
@@ -3113,22 +3114,22 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "8131": [
     "שְׂנֵא",
-    "hate.",
+    "hate",
     "external"
   ],
   "8133": [
     "שְׁנָא",
-    "alter, change, (be) diverse.",
+    "change",
     "external"
   ],
   "8139": [
     "שְׁנָה",
-    "sleep.",
+    "sleep",
     "external"
   ],
   "8140": [
     "שְׁנָה",
-    "year.",
+    "year",
     "external"
   ],
   "8160": [
@@ -3153,7 +3154,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "8214": [
     "שְׁפַל",
-    "abase, humble, put down, subdue.",
+    "be low",
     "external"
   ],
   "8215": [
@@ -3183,7 +3184,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "8330": [
     "שֹׁרֶשׁ",
-    "root.",
+    "root",
     "external"
   ],
   "8332": [
@@ -3193,17 +3194,17 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "8340": [
     "שֵׁשְׁבַּצַּר",
-    "Sheshbazzar.",
+    "Sheshbazzar",
     "external"
   ],
   "8353": [
     "שֵׁת",
-    "six(-th).",
+    "six",
     "external"
   ],
   "8355": [
     "שְׁתָה",
-    "drink.",
+    "drink",
     "external"
   ],
   "8361": [
@@ -3248,7 +3249,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "8479": [
     "תַּחַת",
-    "under.",
+    "under",
     "external"
   ],
   "8517": [
@@ -3298,7 +3299,7 @@ const LEXICAL_BY_TERMINAL_ID: Readonly<Record<string, readonly [string, string, 
   ],
   "8624": [
     "תַּקִּיף",
-    "mighty, strong.",
+    "strong",
     "external"
   ],
   "8627": [

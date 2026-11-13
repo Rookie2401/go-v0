@@ -11,7 +11,7 @@ describe('Aramaic export contract', () => {
     const bookOf = (reference: string) => /^(?:Dan(?:iel)?)/i.test(reference) ? 'DAN' : /^(?:Ezr(?:a)?)/i.test(reference) ? 'EZR' : /^(?:Jer(?:emiah)?)/i.test(reference) ? 'JER' : /^(?:Gen(?:esis)?)/i.test(reference) ? 'GEN' : 'UNKNOWN';
     expect(new Set(rows.map((row) => bookOf(row.reference))).size).toBe(4);
     expect(Object.fromEntries(['DAN', 'EZR', 'JER', 'GEN'].map((book) => [book, rows.filter((row) => bookOf(row.reference) === book).length]))).toEqual({ DAN: 3599, EZR: 1212, JER: 15, GEN: 2 });
-    expect(new Set(rows.map((row) => row.glossStatus))).toEqual(new Set(['external', 'unavailable']));
+    expect(new Set(rows.map((row) => row.glossStatus))).toEqual(new Set(['external']));
     expect(rows.every((row) => !!row.gloss || row.glossStatus === 'unavailable')).toBe(true);
     expect(rows.every((row) => /^A/.test(row.morph))).toBe(true);
     expect(rows.every((row) => row.seg.split('/').map(Number).reduce((a, b) => a + b, 0) === [...row.surface].filter((char) => /[\u05D0-\u05EA]/u.test(char)).length)).toBe(true);

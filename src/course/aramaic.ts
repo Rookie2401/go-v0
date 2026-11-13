@@ -21,12 +21,13 @@ const RIGHTS: WorkRights = {
   copyrightStatus: 'public-domain', permission: 'not-needed', canBundle: true, userImportOnly: false, audiobook: 'unknown',
   // Verification here records the primary distributor statement; no human rights review is claimed.
   verified: false, canModify: true, canStoreOffline: true, canBundleAudio: false,
-  sourceRepository: 'https://github.com/openscriptures/morphhb', licence: 'WLC text public domain; OSHB morphology CC BY 4.0',
+  sourceRepository: 'https://github.com/openscriptures/morphhb', licence: 'WLC text public domain; OSHB morphology CC BY 4.0; Open Scriptures HebrewLexicon (Strong transcription, Lexical Index) CC BY 4.0',
   attributionRequired: true, shareAlike: false, redistribution: true, commercialUse: true,
   attributionText: 'Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb',
-  modifications: 'Only A-coded source words, morpheme slash boundaries joined; Daniel 2:4 follows the qere path.',
+  modifications: 'Only A-coded source words, morpheme slash boundaries joined; Daniel 2:4 follows the qere path. Glosses: Strong meaning, else the Lexical Index definition; whitespace normalised.',
   retrievedAt: '2026-11-05', proofreading: 'Source-extraction comparison; not independent linguistic proofreading.',
-  evidenceRecords: [{ kind: 'publisher-statement', url: 'https://github.com/openscriptures/morphhb', checkedAt: '2026-11-05', by: 'Codex (automated source check)', note: 'README: WLC text public domain; lemma and morphology CC BY 4.0.' }],
+  evidenceRecords: [{ kind: 'publisher-statement', url: 'https://github.com/openscriptures/morphhb', checkedAt: '2026-11-05', by: 'Codex (automated source check)', note: 'README: WLC text public domain; lemma and morphology CC BY 4.0.' },
+    { kind: 'publisher-statement', url: 'https://github.com/openscriptures/HebrewLexicon', checkedAt: '2026-11-12', by: 'Claude (automated source check)', note: 'README: the files are released under CC BY 4.0; the Strong and BDB texts remain public domain. No share-alike term.' }],
 };
 export const ARAMAIC_WORKS: Work[] = ARAMAIC_PASSAGES.map((passage, index) => ({
   id: ids.work(ARAMAIC_COURSE_ID, passage.slug), courseId: ARAMAIC_COURSE_ID, lang: 'arc', stageId: ARAMAIC_SHELVES[0].id,

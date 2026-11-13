@@ -25,7 +25,7 @@ describe('Aramaic source transcription verification (not held-out linguistic acc
     expect(new Set(ARAMAIC_SEED.map(row => row.sourceWordId)).size).toBe(4828);
     expect(ARAMAIC_SEED.every(row => row.morph.startsWith('A'))).toBe(true);
   });
-  it('uses exact augmented LexicalIndex entries and leaves missing Strong glosses unavailable', () => {
+  it('uses exact augmented LexicalIndex entries, and the Lexical Index definition where Strong gives only a usage list', () => {
     const lexicon = fs.readFileSync('data/sources/aramaic/strong-aramaic-entries.xml', 'utf8');
     const entries = new Map([...lexicon.matchAll(/<entry id="H(\d+)">([\s\S]*?)<\/entry>/g)].map(m => [
       m[1], m[2].match(/<w [^>]+>([^<]+)<\/w>/)?.[1],
@@ -57,8 +57,11 @@ describe('Aramaic source transcription verification (not held-out linguistic acc
     const herb = ARAMAIC_SEED.find(row => row.sourceWordId === '27WPN')!;
     expect(herb).toMatchObject({ lemmaId: 'b/6211 b', lemma: 'עֲשַׂב', gloss: 'herbage', glossStatus: 'external' });
     const exactMissing = ARAMAIC_SEED.filter(row => row.glossStatus === 'unavailable');
-    expect(exactMissing).toHaveLength(26);
-    expect(exactMissing.every(row => row.lemmaId.split('/').at(-1)?.match(/^3390(?:$|$)/))).toBe(true);
+    expect(exactMissing).toHaveLength(0);
+    // H3390 (Aramaic Jerusalem) has no text in Strong's; the Lexical Index gives it. מִן is 'from', not the KJV usage list.
+    expect(ARAMAIC_SEED.filter(row => row.lemmaId.split('/').at(-1) === '3390').every(row => row.gloss === 'Jerusalem')).toBe(true);
+    expect(ARAMAIC_SEED.find(row => row.lemmaId.split('/').at(-1) === '4481')?.gloss).toBe('from');
+    expect(ARAMAIC_SEED.some(row => /×|\s{2}|^\s|\s$/.test(row.gloss))).toBe(false);
   });
   it('compares Scripture with its own named source record and rejects edited wording', () => {
     const record = JSON.parse(fs.readFileSync('data/verified/arc.scripture.json', 'utf8'));

@@ -76,10 +76,11 @@ describe('Aramaic vertical slice through the existing ecosystem', () => {
     expect(questioned?.features).toBeUndefined();
     expect(questioned?.pos).toBeUndefined();
     const mixed = await provider.factsFor('form:arc:דְנָה֙', 'arc', 'arc-bib');
-    expect(mixed?.status).toBe('conflicted');
-    expect(mixed?.features).toBeDefined(); // retained source alternatives, but not eligible for a grammar exercise
+    // the clean singular reading leads; Ezra 5:9's audit-questioned plural is kept below it as a flagged alternative
+    expect(mixed?.status).toBe('high-confidence');
+    expect(mixed?.features).toMatchObject({ Number: 'Sing' });
     const morphology = await morphologicalIdentification.build({ unitId: mixed!.unit.unitId, unitKind: 'form', languageId: 'arc', varietyId: 'arc-bib', dimension: 'morphological-analysis' }, mixed!, { now: T0, random: () => 0 });
-    expect('unavailable' in morphology ? morphology.reason : undefined).toMatch(/analysis conflicted/i);
+    expect('unavailable' in morphology ? morphology.reason : undefined).toMatch(/no pack sentence holds this form/i); // no longer refused as conflicted
     const storedUnitId = 'form:arc:דְנָה֙';
     const storedApi = { async unit() { return { ok: true, data: {
       unit: { unitId: storedUnitId, kind: 'form', languageId: 'arc', label: 'דְנָה֙', packId: 'pack:arc', packVersion: '2',
@@ -99,11 +100,11 @@ describe('Aramaic vertical slice through the existing ecosystem', () => {
     expect('unavailable' in exercise ? exercise.reason : undefined).toBeUndefined();
     const kingUnitId = 'form:arc:מַלְכָּא֙';
     const kingFacts = await provider.factsFor(kingUnitId, 'arc', 'arc-bib');
-    expect(kingFacts).toMatchObject({ status: 'conflicted', lexicalRecognition: { status: 'verified', lemma: 'מֶלֶךְ' } });
+    expect(kingFacts).toMatchObject({ status: 'high-confidence', lexicalRecognition: { status: 'verified', lemma: 'מֶלֶךְ' } });
     const kingRecognition = await writtenRecognition.build({ unitId: kingUnitId, unitKind: 'form', languageId: 'arc', varietyId: 'arc-bib', dimension: 'written-recognition' }, kingFacts!, { now: T0, random: () => 0 });
     expect('unavailable' in kingRecognition ? kingRecognition.reason : undefined).toBeUndefined();
     const kingMorphology = await morphologicalIdentification.build({ unitId: kingUnitId, unitKind: 'form', languageId: 'arc', varietyId: 'arc-bib', dimension: 'morphological-analysis' }, kingFacts!, { now: T0, random: () => 0 });
-    expect('unavailable' in kingMorphology ? kingMorphology.reason : undefined).toMatch(/analysis conflicted/i);
+    expect('unavailable' in kingMorphology ? kingMorphology.reason : '').not.toMatch(/conflicted/i); // 133 clean determined readings outrank Dan 4:21's questioned one
     const add = buildCardAdded({ learnerId: 'learner-1', enrolmentId: 'enrol-grc', languageId: 'arc', at: T0, deviceId: 'a',
       unitId, unitKind: 'form', dimension: 'written-recognition', family: 'written-recognition', addedBy: 'learner' });
     const cardId = itemIdFor(unitId, 'written-recognition');

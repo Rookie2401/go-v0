@@ -109,8 +109,11 @@ product.
   Creative Commons Attribution 4.0 (https://creativecommons.org/licenses/by/4.0/); Strong's original dictionary text
   is public domain. Lexical source: https://github.com/openscriptures/HebrewLexicon .
   Changes: selected the 4,828 A-coded qere-path words in 269 Biblical Aramaic verses; joined morpheme separators,
-  retained source word IDs and annotations, indexed attested forms and headwords, and flagged 11 questioned annotations.
-  Source definitions remain unavailable for 26 occurrences whose selected lexical entry has no gloss.
+  retained source word IDs and annotations, indexed attested forms and headwords, and flagged 11 questioned annotations
+  plus the occurrences the source links to a Hebrew dictionary entry. Where a Strong entry gives only a King James usage
+  list (or no text), the gloss is the Lexical Index's definition for that Strong number (200 entries,
+  `data/sources/aramaic/lexical-index-aramaic-definitions.xml`); gloss whitespace is normalised.
+  HebrewLexicon licence checked 2026-11-12 on https://github.com/openscriptures/HebrewLexicon (CC BY 4.0, not share-alike).
   These adaptations do not establish independently reviewed grammatical accuracy. See `docs/aramaic/SOURCES.md`.
 
 - **Latin corpus** (`data/corpus/la`; `docs/latin/CORPUS.md`) - Clementine Vulgate (1592), public domain, USFX text from seven1m/open-bibles

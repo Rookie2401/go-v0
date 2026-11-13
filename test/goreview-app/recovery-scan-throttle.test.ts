@@ -5,7 +5,7 @@
  * after each walk, again and again. Now: one walk at a time; nothing asked within ten minutes of a complete walk; then one page, and the last walk is
  * reused while the vocabulary has not grown (for at most two hours); only complete walks are kept.
  */
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import type { ReviewCandidate, UnitKnowledge } from '../../packages/repository-contract/src';
 import type { VocabularyItem } from '../../packages/repository-service/src/api';
 import { RECOVERY_SCAN_MAX_AGE_MS, RECOVERY_SCAN_MIN_INTERVAL_MS, loadReviewModel } from '../../packages/goreview/app/workspace';

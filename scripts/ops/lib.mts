@@ -502,3 +502,19 @@ export async function runRestore(o: RestoreOptions): Promise<RestoreResult> {
     rmSync(work, { recursive: true, force: true });
   }
 }
+
+/** Web lookups stored before 2026-11-03 that still name a page in readable form (scripts/ops/scrub-web-sources.mts). */
+const SQLITE_WEB_READABLE = `json_extract(json, '$.subject.sourceRef.kind') = 'web' AND (json_extract(json, '$.subject.sourceRef.title') IS NOT NULL
+  OR (json_extract(json, '$.subject.sourceRef.locator') IS NOT NULL AND json_extract(json, '$.subject.sourceRef.locator') NOT LIKE 'h:%'))`;
+export const PG_WEB_READABLE = `json #>> '{subject,sourceRef,kind}' = 'web' AND (json #>> '{subject,sourceRef,title}' IS NOT NULL
+  OR (json #>> '{subject,sourceRef,locator}' IS NOT NULL AND json #>> '{subject,sourceRef,locator}' NOT LIKE 'h:%'))`;
+
+/** Counts those events in a SQLite store and, with `apply`, removes the title and readable locator in one statement. */
+export function scrubSqlite(file: string, apply: boolean): number {
+  const db = new DatabaseSync(file);
+  try {
+    const { n } = db.prepare(`SELECT COUNT(*) AS n FROM events WHERE ${SQLITE_WEB_READABLE}`).get() as { n: number };
+    if (apply && n) db.exec(`UPDATE events SET json = json_remove(json, '$.subject.sourceRef.title', '$.subject.sourceRef.locator') WHERE ${SQLITE_WEB_READABLE}`);
+    return n;
+  } finally { db.close(); }
+}

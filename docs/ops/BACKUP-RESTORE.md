@@ -34,6 +34,13 @@ The service backs itself up a minute after each start and then daily, into `/var
 
 `GET /health` reports `durability`: `backup` is `ok`, `failed` (with `backupError`: `disk-full`, `upload-failed` or `failed`), `overdue` (none for two days) or `none`; `disk` is `low` below 25 % free. Point an uptime monitor that can match text at it and alert unless it contains `"backup":"ok"`. Reports use a status file beside the backups, `.last-backup.json`, which holds no path, name or address.
 
+**Memory.** The instance has 512 MB. `render-start.mjs` compiles the service into one file (`infra/repository/bundle.mjs`) at each start and runs it with plain Node: about 125 MB at rest. Under vite-node it held about 360 MB at rest and ran out of memory several times a day (2026-11-12); `REPOSITORY_RUNNER=vite-node` still chooses that way, and it is also the fallback if compiling fails (the log says so). In the Render Shell, run the ops scripts the same way, never with `npx vite-node`, which adds about 300 MB beside the running service and ran it out of memory:
+
+```sh
+node scripts/ops/run.mjs corrections list --data /var/data/repository
+node scripts/ops/run.mjs scrub-web-sources --data /var/data/repository [--apply]
+```
+
 Render keeps **3 daily and 1 weekly** copies on the disk (`BACKUP_KEEP_DAILY`, `BACKUP_KEEP_WEEKLY`), not the 7 and 4 below, so that they leave room on a small disk. If there is no room for a snapshot, older copies go first; if that is not enough the backup refuses before writing anything and reports `disk-full`.
 
 ## Retention

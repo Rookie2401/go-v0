@@ -6,7 +6,7 @@ import { mapLanguageTag } from '../language/resolve';
 import { isUnitId, MAX_CONFIRM_FORMS, type KnowledgeView } from '../protocol';
 import type { createBridge } from '../content/services';
 import { aggregateCoverage } from './coverage';
-import { needsTextVariety, scopedVarietyUnitId, validTextVariety } from './varieties';
+import { declaredTextVariety, needsTextVariety, scopedVarietyUnitId, validTextVariety } from './varieties';
 import type { ReadingAnalysisReply } from './protocol';
 
 type Bridge = ReturnType<typeof createBridge>;
@@ -18,13 +18,15 @@ const MAX_TOKENS = 12_000;
 const PROFILE_BATCH = 60;
 
 /** Ignore explicitly foreign-language reading blocks; never assume the page-wide html lang is correct. */
-function hasConflictingTextLanguage(node: Text, languageId: string): boolean {
+function hasConflictingTextLanguage(node: Text, languageId: string, varietyId?: string): boolean {
   const root = node.ownerDocument.documentElement;
   for (let el = node.parentElement; el && el !== root; el = el.parentElement) {
     const declared = el.getAttribute('lang') ?? el.getAttribute('xml:lang');
     if (!declared?.trim()) continue;
     const mapped = mapLanguageTag(declared);
-    return mapped.kind !== 'pack' || mapped.languageId !== languageId;
+    if (mapped.kind !== 'pack' || mapped.languageId !== languageId) return true;
+    const explicitPeriod = declaredTextVariety(languageId, declared);
+    return !!explicitPeriod && !!varietyId && explicitPeriod !== varietyId;
   }
   return false;
 }
@@ -51,7 +53,7 @@ export async function analyzePage(
     ignore: ['aside', 'form', '[inert]', 'details:not([open])'],
   });
   const nodes = scanner.textNodes(doc).filter((node) => {
-    if (hasConflictingTextLanguage(node, languageId)) return false;
+    if (hasConflictingTextLanguage(node, languageId, varietyId)) return false;
     const parent = node.parentElement;
     if (!parent || !doc.defaultView) return false;
     const style = doc.defaultView.getComputedStyle(parent);

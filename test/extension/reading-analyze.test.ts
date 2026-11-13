@@ -165,3 +165,14 @@ it('does not exclude a target-language block on an English-framed website', asyn
   if (result.ok) expect(result.coverage.totalOccurrences).toBe(2);
   document.documentElement.removeAttribute('lang');
 });
+
+it('keeps explicitly Biblical Hebrew separate from Modern Hebrew blocks', async () => {
+  document.body.innerHTML = `
+    <main><p lang="hbo">אֱלֹהִ֑ים אֱלֹהִ֑ים</p><p lang="he">דבר דבר</p></main>`;
+  const { loadAnalyser } = await import('../../packages/golearn-extension/src/analysers/loaders');
+  await loadAnalyser('he');
+  const { bridge } = bridgeWithRows({});
+  const result = await analyzePage(document, 'he', bridge, getAnalyser, new AbortController().signal, 'he-mod');
+  expect(result.ok).toBe(true);
+  if (result.ok) expect(result.coverage.totalOccurrences).toBe(2);
+});

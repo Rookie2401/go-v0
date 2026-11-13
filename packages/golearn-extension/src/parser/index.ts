@@ -189,7 +189,7 @@ export function parseSelection(input: ParseInput): CardModel {
       lemma = c.lemma; pos = c.pos; gloss = c.unconfirmed ? undefined : c.gloss;
       // every language: the form's own English where the features and the citation support one (a verb's person, tense, mood and voice), else the lemma meaning
       wordAnalysis = wordAnalysisFor({ language: L.lang, surface: tokens[i].surface, lemma: c.lemma, pos: c.pos, lemmaGloss: c.unconfirmed ? undefined : c.gloss,
-        morph: c.morph, source: c.sourceId ? L.adapter.sources?.[c.sourceId]?.label : undefined, confidence: c.confidence,
+        morph: c.morph, source: c.sourceId ? L.adapter.sources?.[c.sourceId]?.label : undefined, confidence: c.confidence, parts: c.parts,
         alternatives: analyses[i].candidates.slice(1).map((x) => ({ lemma: x.lemma, pos: x.pos, morph: x.morph, confidence: x.confidence })),
         sentence: kind === 'sentence' ? text : undefined, sentenceConfidence: context.confidence, references: ctx.references });
       const resolvedMeaning = wordAnalysis.contextualMeaning?.text ?? wordAnalysis.inflectedMeaning?.text ?? wordAnalysis.lexicalMeaning?.text;
@@ -207,7 +207,10 @@ export function parseSelection(input: ParseInput): CardModel {
       syntax = syntaxNoteFor(L, tokens, analyses, i);
       if (!role && syntax?.label) role = syntax.label;
       if (c.unit && c.unit.pieces.length > 1) syntaxNotes.push(`Part of the unit “${c.unit.display}” (${c.unit.role}).`);
-      for (const part of c.parts ?? []) syntaxNotes.push(`${part.text}: ${[part.lemma && part.lemma !== part.text ? `from ${part.lemma}` : '', part.role ?? part.pos ?? ''].filter(Boolean).join(', ') || 'part of the word'}`);
+      // a verb the adapter can read further is listed by its own components (וְ, the verbal base, the ending); otherwise by the source's parts
+      const components = wordAnalysis.formAnalysis?.components;
+      if (components?.length) for (const part of components) syntaxNotes.push(`${part.text}: ${part.role}`);
+      else for (const part of c.parts ?? []) syntaxNotes.push(`${part.text}: ${[part.lemma && part.lemma !== part.text ? `from ${part.lemma}` : '', part.role ?? part.pos ?? ''].filter(Boolean).join(', ') || 'part of the word'}`);
       for (const f of formConstructions(L, c)) if (!constructions.some((x) => x.id === f.id)) constructions.push(f);
       for (const key of ['rule', 'context'] as const) { const v = c.notes?.[key]; if (typeof v === 'string' && v) basis.push(v); }
       if (c.unconfirmed) notes.push('Not in the word list: the lemma is a guess from the ending and no meaning is given.');

@@ -95,13 +95,13 @@ export function buildParadigm(adapter: LanguageAdapter | undefined, languageId: 
     return { languageId, lemma, pos, kind: 'none', cells: [], notes: generated.notes, sources: [{ id: `${adapter!.lang}@${adapter!.version}`, label: `${adapter!.name} analyser` }], status: 'none', constructions: generated.constructions };
   }
   const sources: Paradigm['sources'] = [];
-  if (generated && adapter) sources.push({ id: `adapter-${adapter.lang}@${adapter.version}`, label: `${adapter.name} analyser (rules and its irregular tables)` });
+  if (generated && adapter) sources.push({ id: `adapter-${adapter.lang}@${adapter.version}`, label: generated.attested ? `${adapter.name} analyser (forms attested in its sources)` : `${adapter.name} analyser (rules and its irregular tables)` });
   if (table.length) sources.push({ id: 'wiktionary', label: `${WIKTIONARY.label}${record?.tpl?.length ? `, table ${record.tpl.join(', ')}` : ''}`, licence: WIKTIONARY.licence });
   const kind = generated?.kind ?? (pos === 'VERB' ? 'verb-conjugation' : pos === 'ADJ' ? 'adjective-declension' : pos === 'NOUN' || pos === 'PROPN' ? 'noun-declension' : pos === 'PRON' ? 'pronoun-paradigm' : 'none');
   const notes = [...(generated?.notes ?? [])];
   if (!generated && table.length) notes.push('The analyser has no rules for this word; every form here is the dictionary\'s table, unverified by the rules.');
-  if (generated && !table.length) notes.push('The dictionary has no table for this word; every form here comes from the analyser\'s rules and is unverified by a second source.');
-  return mergeParadigm({ languageId, lemma, pos, kind, layout: generated?.layout, template: generated?.template ?? record?.tpl?.[0], notes, sources, constructions: generated?.constructions }, generated?.cells ?? [], aligned);
+  if (generated && !generated.attested && !table.length) notes.push('The dictionary has no table for this word; every form here comes from the analyser\'s rules and is unverified by a second source.');
+  return mergeParadigm({ languageId, lemma, pos, kind, layout: generated?.layout, template: generated?.template ?? record?.tpl?.[0], notes, sources, constructions: generated?.constructions, ...(generated?.attested ? { attested: true } : {}) }, generated?.cells ?? [], aligned);
 }
 
 /**

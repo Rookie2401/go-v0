@@ -144,6 +144,26 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
       expect(root.querySelector('[data-row="meaning"]')!.textContent).toContain('And he said');
       expect(root.querySelector('.kicker')!.textContent).not.toBe('Meaning · Lemma meaning');
     });
+    it('Isaiah 1:2: וְרוֹמַמְתִּי is "And I brought up", with its root, its pieces and why, and the card no longer says a dictionary service is missing (the owner, 2026-11-05)', async () => {
+      app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: fakeRecorder(), now: () => new Date() });
+      await app.go('#/read/Isa/1');
+      const word = [...document.querySelectorAll('.reader .prose button.word')].find((b) => consonantal(b.textContent ?? '') === 'ורוממתי') as HTMLButtonElement;
+      expect(word).toBeDefined();
+      word.click();
+      await new Promise((r) => setTimeout(r, 20));
+      const root = app.cardRoot()!;
+      expect(root.querySelector('[data-row="meaning"]')!.textContent).toContain('And I brought up');
+      expect(root.textContent).not.toMatch(/exalteded/);
+      // the compact card stays compact: the form analysis waits behind "analysis"
+      expect((root.querySelector('#panel-analysis') as HTMLElement).hasAttribute('hidden')).toBe(true);
+      expect(root.querySelector('[data-row="form-components"]')!.getAttribute('aria-label')).toBe('Parts of the word: וְ: and; רוֹמַמְ: Polel verbal base; תִּי: perfect first person common singular ending');
+      expect(root.querySelector('[data-row="form-root"]')!.textContent).toContain('רום');
+      expect(root.querySelector('[data-row="form-stem"]')!.textContent).toContain('hollow root');
+      expect(root.querySelector('[data-row="form-context"]')!.textContent).toContain('children');
+      expect(root.textContent).not.toMatch(/No dictionary service/);
+      expect(root.textContent).toContain('attested in the sources'); // the forms of the lemma are the Tanakh's, not the rules'
+      expect(root.textContent).toContain('Biblia does not carry full dictionary entries');
+    });
   });
 
   describe.skipIf(!languageMeta('he'))('levels: met only in passing (2026-11-05)', () => {

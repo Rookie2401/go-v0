@@ -177,6 +177,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
         if (!reply?.ok) {
           const errors: Record<string, string> = {
             'no-text': 'No readable text was found on this page.',
+            'page-changed': 'The text changed while being analyzed. Analyze this page again.',
             'unsupported-page': 'This reader does not permit Reading Analysis.',
             'variety-required': 'Choose a text variety to avoid mixing vocabulary from different periods.',
             'unsupported-language': 'This language cannot be classified reliably yet.',

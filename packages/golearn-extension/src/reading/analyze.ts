@@ -47,9 +47,13 @@ export async function analyzePage(
   const usePrimary = primary.some((node) => node.data.trim().length >= 30)
     || primary.reduce((length, node) => length + node.data.trim().length, 0) >= 60;
   const tokens: ScanToken[] = [];
+  // Snapshot each candidate reading node, including nodes we may never reach due to
+  // the scan budget. A client-side reader can replace a chapter at the same URL.
+  const sourceNodes = usePrimary ? primary : nodes;
+  const snapshot = sourceNodes.map((node) => ({ node, data: node.data }));
   let characters = 0;
   let truncated = false;
-  for (const [index, node] of (usePrimary ? primary : nodes).entries()) {
+  for (const [index, node] of sourceNodes.entries()) {
     if (index % 32 === 0) {
       await new Promise<void>((resolve) => setTimeout(resolve, 0));
       signal.throwIfAborted();
@@ -132,6 +136,11 @@ export async function analyzePage(
     for (const id of unitIds) if (reply.rows[id]) rows.set(id, reply.rows[id]);
   }
   signal.throwIfAborted();
+  // A route transition can update the content without updating the URL. Reject
+  // stale results rather than showing one chapter's coverage for another.
+  if (snapshot.some(({ node, data }) => !node.isConnected || node.data !== data)) {
+    return { ok: false, code: 'page-changed' };
+  }
   const coverage = aggregateCoverage(tokens.map((token, index) => {
     const lemma = candidates[index];
     const formId = token.ids[0];

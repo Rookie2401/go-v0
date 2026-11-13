@@ -129,3 +129,17 @@ it('refuses restricted readers before extracting or consulting vocabulary data',
   expect(result).toEqual({ ok: false, code: 'unsupported-page' });
   expect(calls).toEqual([]);
 });
+
+it('rejects stale coverage when a reader replaces its chapter without changing its URL', async () => {
+  const bridge = {
+    readingProfile: async () => {
+      document.querySelector('article p')!.textContent = 'libër lexoj';
+      return {
+        ok: true, source: 'device', connected: false, rows: {},
+        depth: 'brief', depthOrigin: 'default',
+      } satisfies ProfileReply;
+    },
+  } as unknown as Parameters<typeof analyzePage>[2];
+  const result = await analyzePage(document, 'sq', bridge, getAnalyser, new AbortController().signal);
+  expect(result).toEqual({ ok: false, code: 'page-changed' });
+});

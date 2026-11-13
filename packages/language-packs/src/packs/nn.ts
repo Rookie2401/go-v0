@@ -35,6 +35,7 @@ export function nynorskManifest(): PackManifest {
       { varietyId: 'nn', label: 'Nynorsk (the written standard of this pack)', writtenStandard: 'nn', analysed: true },
       { varietyId: 'nn-landsmal', label: 'Landsmål (older form of Nynorsk)', writtenStandard: 'nn', analysed: true },
     ],
+    dictionary: { entries: 61827, frequency: false, id: 'kaikki-nn@2026-10-30' },
     adapterSummary: 'seed-only lemmatization and limited rule-based morphology for Nynorsk (a machine-drafted word list smaller than the Bokmål one); concept families relate eg (Nynorsk) to jeg (Bokmål) without crediting one for the other.',
     capabilities: ['tokenization', 'sentence-segmentation', 'lemma', 'morphology', 'phrases', 'constructions'],
     features: [
@@ -57,7 +58,7 @@ export function nynorskManifest(): PackManifest {
       'there is no parser, so what the neighbouring words do not decide stays a list of readings, and some verbs are listed with both an -a and an -e infinitive;',
       'a compound is split only into words the list knows, and the split reading stays unconfirmed with no meaning;',
       'a particle verb is put together only when its particle is within four words after it;',
-      'there is no dictionary for Norwegian in the repository, so meanings come from the word list only;',
+      'the dictionary is Wiktionary’s Norwegian Nynorsk entries as kaikki.org extracts them (the Norwegian Nynorsk extract only, so no Bokmål entry is ever its source), machine-extracted and unreviewed, and a word Wiktionary lacks has no dictionary meaning;',
       'the grammar tables explain only Gender, Definite and Tense, though the analyser also writes Number, Mood, VerbForm, Degree and Person.',
     ],
     extraProvenance: [

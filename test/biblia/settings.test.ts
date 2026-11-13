@@ -116,9 +116,17 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Settings in GoReview\'s d
     expect(storage.getItem('biblia:lineHeight')).toBe('2.1');
     expect(root.style.getPropertyValue('--reading-line-height')).toBe('2.1');
 
-    q<HTMLInputElement>('#set-verse-numbers').click();
-    expect(storage.getItem('biblia:verseNumbers')).toBe('off');
-    expect(root.getAttribute('data-verse-numbers')).toBe('off');
+    expect(pill('Verse numbers', 'native').getAttribute('aria-pressed')).toBe('true');
+    pill('Verse numbers', 'decimal').click();
+    expect(storage.getItem('biblia:verseNumbers')).toBe('decimal');
+    expect(root.getAttribute('data-verse-numbers')).toBe('decimal');
+    expect(pill('Verse numbers', 'decimal').textContent).toBe('1, 2, 3');
+    expect(pill('Verse numbers', 'decimal').getAttribute('aria-pressed')).toBe('true');
+    pill('Verse numbers', 'hidden').click();
+    expect(storage.getItem('biblia:verseNumbers')).toBe('hidden');
+    expect(root.getAttribute('data-verse-numbers')).toBe('hidden');
+    expect(pill('Verse numbers', 'hidden').textContent).toBe('None');
+    expect(pill('Verse numbers', 'hidden').getAttribute('aria-pressed')).toBe('true');
     q<HTMLInputElement>('#set-level-marks').click();
     expect(storage.getItem('biblia:levelMarks')).toBe('off');
     expect(root.getAttribute('data-level-marks')).toBe('off');
@@ -138,21 +146,40 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Settings in GoReview\'s d
   });
 
   it('starts from the kept preferences, refuses values out of range, and Reset settings puts the defaults back', async () => {
-    const storage = memoryStorage({ 'biblia:theme': 'dark', 'biblia:hebrewSize': '30', 'biblia:greekSize': '999', 'biblia:verseNumbers': 'off', 'biblia:hebrewDisplay': 'niqqud' });
+    const storage = memoryStorage({ 'biblia:theme': 'dark', 'biblia:hebrewSize': '30', 'biblia:greekSize': '999', 'biblia:verseNumbers': 'hidden', 'biblia:hebrewDisplay': 'niqqud' });
     const a = await open({ storage });
     expect(root.getAttribute('data-theme')).toBe('dark');
     expect(root.style.getPropertyValue('--reading-font-size')).toBe('30px');
     expect(root.style.getPropertyValue('--greek-font-size')).toBe(`${READING_DEFAULTS.greekSize}px`); // 999 is not a size
-    expect(root.getAttribute('data-verse-numbers')).toBe('off');
+    expect(root.getAttribute('data-verse-numbers')).toBe('hidden');
+    await a.go('#/read/Gen/1');
+    expect(document.querySelector('.verse[data-v="1"] .vn')?.textContent).toBe('');
+    expect(document.querySelectorAll('.verse[data-v="1"] button.word').length).toBeGreaterThan(0);
+    expect(document.querySelector('.verse[data-v="1"]')?.getAttribute('data-v')).toBe('1');
     await a.go('#/settings');
     expect(pill('Hebrew text', 'niqqud').getAttribute('aria-pressed')).toBe('true');
     q<HTMLButtonElement>('#settings-reset').click();
     await vi.waitFor(() => expect(pill('Theme', 'auto').getAttribute('aria-pressed')).toBe('true'));
     expect([...storage.data.keys()].filter((k) => k.startsWith('biblia:') && k !== 'biblia:last')).toEqual([]);
     expect(root.hasAttribute('data-theme')).toBe(false);
-    expect(root.getAttribute('data-verse-numbers')).toBe('on');
+    expect(root.getAttribute('data-verse-numbers')).toBe('native');
     expect(root.style.getPropertyValue('--reading-font-size')).toBe(`${READING_DEFAULTS.hebrewSize}px`);
     expect(pill('Hebrew text', 'full').getAttribute('aria-pressed')).toBe('true');
+    await a.go('#/read/John/1');
+    expect(document.querySelector('.verse[data-v="1"] .vn')?.textContent).toBe('αʹ');
+  });
+
+  it('migrates the former on/off values to native/hidden', async () => {
+    const storage = memoryStorage({ 'biblia:verseNumbers': 'off' });
+    const a = await open({ storage });
+    expect(root.getAttribute('data-verse-numbers')).toBe('hidden');
+    await a.go('#/settings');
+    expect(pill('Verse numbers', 'hidden').getAttribute('aria-pressed')).toBe('true');
+
+    app?.destroy(); app = undefined;
+    const nativeStorage = memoryStorage({ 'biblia:verseNumbers': 'on' });
+    await open({ storage: nativeStorage });
+    expect(root.getAttribute('data-verse-numbers')).toBe('native');
   });
 
   it('says what the device keeps: the installed edition keeps what is read; another copy does not install itself', async () => {

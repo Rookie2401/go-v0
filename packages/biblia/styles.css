@@ -196,7 +196,7 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 .reader .verse { display: inline; }
 .reader .vn { font-family: var(--serif); font-size: 0.6em; color: var(--accent); vertical-align: super; line-height: 0; margin: 0 0.25em; letter-spacing: 0.02em; user-select: none; direction: ltr; unicode-bidi: isolate; }
 .reader .prose[lang='he'] .vn { font-family: var(--heb); font-size: 0.62em; }
-html[data-verse-numbers='off'] .reader .vn { display: none; }
+html[data-verse-numbers='hidden'] .reader .vn { display: none; }
 .reader .para-break { display: block; height: 0.7em; }
 .reader .mark { color: var(--ink-faint); font-family: var(--serif); font-size: 0.6em; }
 .reader .poetry .verse { display: block; margin: 0.2em 0; }

@@ -1,0 +1,1 @@
+import{t as e}from"./engine-DabbummY.js";var t=e(`nn`);export{t as adapter};

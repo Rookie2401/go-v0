@@ -1,1 +1,0 @@
-import{n as e}from"./index-Dn-Egl7Y.js";export{e as adapter};

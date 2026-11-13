@@ -35,8 +35,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - name: Aramaic vertical slice tests
-        run: npx vitest run test/adapters/aramaic.test.ts test/adapters/aramaic-source.test.ts test/language-packs/aramaic.test.ts test/integration/aramaic.test.ts
+      - name: Biblical Aramaic corpus, engine and export tests
+        run: npx vitest run test/adapters/aramaic.test.ts test/adapters/aramaic-source.test.ts test/language-packs/aramaic.test.ts test/integration/aramaic.test.ts test/integration/aramaic-export.test.ts
         env:
           GO_CI_NO_LOCAL_DATA: '1'
       - name: Language registration and reader regressions
@@ -46,6 +46,6 @@ jobs:
       - name: Aramaic corpus redistribution rights gate
         run: npx vite-node --config scripts/vite.config.ts scripts/rights-gate.mts --lang arc
       - name: Aramaic source and repetition report
-        run: npx vite-node --config scripts/vite.config.ts scripts/arc-report.mts
+        run: npm run arc:report -- --summary
       - name: Build language analyser chunks
         run: npx vite build -c packages/golearn-extension/vite.config.ts --mode analysers

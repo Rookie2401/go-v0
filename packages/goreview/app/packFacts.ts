@@ -7,6 +7,7 @@
 import { createFactsProvider, repositoryLookup } from '../src';
 import type { AttestedFormLemma } from '../src/facts/provider';
 import type { FactsProvider } from '../src';
+import type { ReviewFacts } from '../src/facts/review-facts';
 import { createPackRuntime, packFor } from '../../language-packs/src';
 import type { RepositoryApi } from '../../repository-service/src/api';
 import { createHebrewShardLoader } from '../../../src/adapters/hebrew/shards';
@@ -229,6 +230,26 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
           } catch { return undefined; }
         }
         const facts = await forVariety(varietyId).factsFor(unitId, requestedLanguage, varietyId);
+        if (facts && languageId === 'arc' && requestedLanguage === 'arc') {
+          const token = adapter.tokenize(facts.unit.label).find(t => t.isWord);
+          const analyses = token && adapter.analyze([token], { varietyId: varietyId ?? 'arc-bib' });
+          const candidates = analyses?.flatMap(a => a.candidates) ?? [];
+          const questioned = candidates.length > 0 && candidates.every(c => c.notes?.reviewStatus === 'requires-review');
+          if (questioned) {
+            const review = facts as ReviewFacts;
+            const { features: _features, pos: _pos, ...unitWithoutMorph } = facts.unit;
+            return {
+              ...facts,
+              unit: { ...unitWithoutMorph, status: 'requires-review' },
+              status: 'requires-review',
+              relations: facts.relations.filter(r => r.relation !== 'form-of'),
+              pos: undefined, features: undefined, constructionIds: [], constructionLabel: undefined, constructionExplanation: undefined,
+              featureExplanations: {}, siblingForms: [], morphDescription: undefined, featureDefs: undefined,
+              wordAnalysis: review.wordAnalysis ? { ...review.wordAnalysis, grammaticalFeatures: [] } : undefined,
+              lexicalRecognition: { status: 'withheld', reason: 'The source audit flagged this occurrence; its morphology needs specialist review.' },
+            };
+          }
+        }
         if (!facts || languageId !== 'he' || requestedLanguage !== 'he' || !unitId.startsWith('form:he:')
           || !facts.unit.provenance.ref?.startsWith('goreview-facts:pack-derived@') || facts.unit.frequency) return facts;
         try {

@@ -44,7 +44,8 @@ describe.skipIf(!has('dist/app/app.js'))('the options-page build (dist/app)', ()
     expect(code).not.toContain('adapter-de@');
     // 2026-10-24: 650 -> 760 KB, the same ceiling test/extension/bundle.test.ts keeps for app/app.js; the setup app grew with the
     // Hebrew, Greek and Latin packs' tutorials and catalogue rows (measured 708 KB on the day)
-    expect(code.length).toBeLessThan(760 * 1024);
+    // 2026-11-05: complete Biblical Aramaic registration, source metadata and validation; measured 791 KB.
+    expect(code.length).toBeLessThan(800 * 1024);
   });
 
   it('carries the dictionary the installer fetches, and nothing of a planned language', () => {

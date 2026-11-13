@@ -21,12 +21,12 @@ import os from 'node:os';
 import path from 'node:path';
 import readline from 'node:readline';
 import type { DictionaryEntry, DictionaryInfo, LanguageCode } from '../core';
-import { createAdapterRegistry } from '../adapters';
 import {
   chooseBuckets, createLabelSetRegistry, createLineIngestor, dropsFormPronunciations, entryJson, estimateBytes, makeManifest, manifestText,
   mergeEntries, mergeKey, newBuildStats, settleEntries, shardShape, shardText, tallyEntry, tallyShard, withAliases, type BuildStats,
 } from './build';
 import { latinNormalize } from './latin-normalize';
+import { loadAdapterNormalizer } from './adapter-normalize-node';
 import { SHARD_FILE, bucketOf, shardName, type DictionaryManifest } from './format';
 
 export const SPILL_PARTITIONS = 256;
@@ -98,8 +98,7 @@ function createSpill(dir: string) {
 }
 
 export async function buildDictionaryFile(opts: BuildFileOptions): Promise<BuildFileResult> {
-  const adapter = opts.normalize || opts.lang === ('la' as LanguageCode) ? undefined : createAdapterRegistry().get(opts.lang);
-  const normalize = opts.normalize ?? (opts.lang === ('la' as LanguageCode) ? latinNormalize : (s: string) => adapter!.normalize(s));
+  const normalize = opts.normalize ?? (opts.lang === ('la' as LanguageCode) ? latinNormalize : await loadAdapterNormalizer(opts.lang));
   const stats = newBuildStats();
   const labelSets = createLabelSetRegistry();
   const drop = dropsFormPronunciations({ lang: opts.lang, dropFormPronunciations: opts.dropFormPronunciations });

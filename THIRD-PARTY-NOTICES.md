@@ -84,6 +84,17 @@ product.
 
 ## Corpus texts
 
+- **Biblical Aramaic text and linguistic data** (`data/corpus/arc`, `src/adapters/aramaic`):
+  Westminster Leningrad Codex base text, public domain, distributed by the Open Scriptures Hebrew Bible Project.
+  Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb .
+  OSHB lemma/morphology annotations and the Open Scriptures HebrewLexicon Strong transcription and Lexical Index are
+  Creative Commons Attribution 4.0 (https://creativecommons.org/licenses/by/4.0/); Strong's original dictionary text
+  is public domain. Lexical source: https://github.com/openscriptures/HebrewLexicon .
+  Changes: selected the 4,828 A-coded qere-path words in 269 Biblical Aramaic verses; joined morpheme separators,
+  retained source word IDs and annotations, indexed attested forms and headwords, and flagged 11 questioned annotations.
+  Source definitions remain unavailable for 26 occurrences whose selected lexical entry has no gloss.
+  These adaptations do not establish independently reviewed grammatical accuracy. See `docs/aramaic/SOURCES.md`.
+
 - **Latin corpus** (`data/corpus/la`; `docs/latin/CORPUS.md`) - Clementine Vulgate (1592), public domain, USFX text from seven1m/open-bibles
   (https://github.com/seven1m/open-bibles); Francis Ritchie, *Fabulae Faciles* (1903), and Caesar, *De bello Gallico* I.1-7, public-domain texts
   taken from Latin Wikisource (Vicifons, https://la.wikisource.org), whose transcription and macron edition are offered under Creative Commons

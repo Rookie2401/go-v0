@@ -66,8 +66,8 @@ export const ARC_TUTORIAL: Tutorial = orientation({
   },
   cardFeatureNote: 'For this pack, the card shows only the Biblical Aramaic source readings it knows: the lemma, part of speech, and source-supported features such as noun state, number, gender, person, verb form, or stem.',
   thin: [
-    'The compiled word list is small and covers only selected Biblical forms.',
-    'A source-tagged Aramaic form is not proof that every possible Aramaic reading is known.',
+    'The word list follows Aramaic annotations in the OSHB source; omitted forms and analyses remain unknown.',
+    'A source-tagged Aramaic form does not establish every possible reading or support productive parsing.',
     'There are no recordings or registered voices for Biblical Aramaic in this pack.',
   ],
   languageSteps: ARC_TUTORIAL_STEPS_OWN,

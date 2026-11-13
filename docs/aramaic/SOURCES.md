@@ -1,20 +1,20 @@
-# Source inventory
+# Biblical Aramaic source inventory
 
-Checked 5 November 2026. Sources are evaluated separately; ancient authorship is not a licence for a modern transcription.
+Checked 5 November 2026. Modern transcriptions and annotations remain subject to their own licences even when the underlying ancient work is public domain.
 
 | Dataset / edition | Author / editor | Variety and coverage | Licence | Required attribution | Commercial use | Import readiness |
 | --- | --- | --- | --- | --- | --- | --- |
-| WLC via OSHB, wlc/Dan.xml | Westminster Leningrad Codex; Open Scriptures distribution | Biblical Aramaic, selected qere path of Daniel 2:4b and 2:20 | WLC base text public domain, per distributor README | Source identified on each document | Permitted by the stated public-domain status | Two excerpts bundled; no independent scholarly proofreading |
-| OSHB word annotations | Open Scriptures Hebrew Bible Project | Only A-coded morphology for the two excerpts | CC BY 4.0 | Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb | Yes, subject to attribution | Bundled as source-coded seed; source word IDs and boundaries retained |
-| HebrewStrong.xml transcription | James Strong; Open Scriptures Hebrew Bible Project transcription | Lexical headwords/base meanings reached by the selected Aramaic source IDs | Transcription CC BY 4.0; Strong dictionary text public domain | Credit the Open Scriptures Hebrew Bible Project | Yes, subject to attribution | Selected entries used, not the entire Hebrew lexicon |
-| Remaining OSHB Aramaic | Same distributor | Daniel, Ezra, Jeremiah 10:11, the two-word name in Genesis 31:47 | Same stated source licences | Same attribution | Same licence terms | Not imported in this milestone; extraction and validation remain |
-| Comprehensive Aramaic Lexicon | Hebrew Union College CAL Project | Multiple separately identified dialects | No redistribution/commercial licence established here | To be established | Not established | Research link only; no database scraped or bundled |
-| Targum Onkelos / Jonathan editions | Edition-specific | Targumic dialects, identified separately | Not established for an exact digital edition | To be established | Not established | Not imported |
-| Peshitta and classical Syriac editions | Edition-specific | Classical Syriac (syc), Syriac script (Syrc) | Not established for an exact digital edition | To be established | Not established | Not imported, no claim of Syriac support |
+| WLC via Open Scriptures Hebrew Bible, `wlc/{Dan,Ezra,Jer,Gen}.xml` | Westminster Leningrad Codex; Open Scriptures distribution | Requested A-coded Aramaic scope: Daniel 2:4b–7:28, Ezra 4:8–6:18 and 7:12–26, Jeremiah 10:11, Genesis 31:47 | WLC base text public domain; OSHB lemma/morphology CC BY 4.0 | Credit the Open Scriptures Hebrew Bible Project | Permitted under the stated source terms | 269 complete verse elements bundled in `data/sources/aramaic/oshb-aramaic-snapshot.xml`; source notes preserve qere/ketiv apparatus |
+| OSHB word annotations | Open Scriptures Hebrew Bible Project | A-coded morphology for 4,828 selected source word occurrences | CC BY 4.0 | Credit the Open Scriptures Hebrew Bible Project | Yes, with attribution | Deterministic seed retains source word IDs, morphology, order and segment boundaries |
+| OSHB HebrewStrong transcription | Open Scriptures Hebrew Bible Project; Strong dictionary by James Strong | 694 numeric entries reached by selected Aramaic lemmas | Transcription CC BY 4.0; Strong dictionary text public domain | Credit the Open Scriptures Hebrew Bible Project | Yes, with attribution | Selected complete entries bundled in `data/sources/aramaic/strong-aramaic-entries.xml`; rows with no source meaning remain unglossed |
+| OSHB Lexical Index | Open Scriptures Hebrew Bible Project | 48 exact augmented entries selected by source lemma ID, including `6211 b`, `5921 a`, and `3734 b` | CC BY 4.0; Strong and BDB source texts remain public domain | Credit the Open Scriptures Hebrew Bible Project | Yes, with attribution | Exact `strong+aug` entries bundled in `data/sources/aramaic/lexical-index-aramaic-entries.xml`; the builder does not strip augmentation letters |
+| Comprehensive Aramaic Lexicon | Hebrew Union College CAL Project | Multiple separately identified dialects | No redistribution/commercial licence established here | To be established | Not established | No CAL database content imported |
+| Targum Onkelos / Jonathan editions | Edition-specific | Targumic dialects | Not established for an exact digital edition | To be established | Not established | Not imported |
+| Peshitta and classical Syriac editions | Edition-specific | Classical Syriac (syc), Syriac script (Syrc) | Not established for an exact digital edition | To be established | Not established | Not imported; no Syriac support claim |
 
 Primary distributor statements:
-- https://github.com/openscriptures/morphhb/blob/master/README.md
-- https://github.com/openscriptures/morphhb/blob/master/LICENSE.md
-- https://github.com/openscriptures/HebrewLexicon/blob/master/readme.md
+- OSHB source and annotation terms: https://github.com/openscriptures/morphhb/blob/master/README.md and https://github.com/openscriptures/morphhb/blob/master/LICENSE.md
+- HebrewStrong contents and licence: https://github.com/openscriptures/HebrewLexicon/blob/master/readme.md and https://github.com/openscriptures/HebrewLexicon/blob/master/HebrewStrong.xml
+- Lexical Index contents and licence: https://github.com/openscriptures/HebrewLexicon/blob/master/readme.md and https://github.com/openscriptures/HebrewLexicon/blob/master/LexicalIndex.xml
 
-Source lexical blob: 6ea1abdaf8c095a634097014dea43428ea5f358f. The source letter order is retained in corpus text; normalization is a lookup operation. No restricted CAL text, Sefaria translation, or commercial grammar is bundled.
+The bundled Strong excerpt is derived from the primary distributor file and has SHA-256 `9482ed4a6eb426bef87f5f20ff8b9458ed9aa253817c9ece052980ee8d6e2c76`. The selected Lexical Index excerpt has SHA-256 `2531550c5ba8a17bc3a73312ea836440eb9684bf29a853d6fdc99ee5c841f5d7`. It contains only exact source-index entries needed for augmented lemma IDs; for example `6211 b` maps to `עֲשַׂב` (“herbage”), not unaugmented Strong H6211 (“moth”). Strong H3390 is present as a headword, but its source entry contains no meaning or usage; its 26 corpus occurrences are explicitly left without a gloss. OSHB prefix lookup glosses are not represented as Strong entries. No roots or dialect paradigms are inferred.

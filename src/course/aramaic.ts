@@ -1,18 +1,16 @@
-/**
- * Initial Biblical Aramaic shelf. Only the two declared excerpts are bundled.
- * Aramaic is its own learner account; future dialects are not treated as this variety.
- */
+/** Source-backed Biblical Aramaic shelf inventory; no designed learning sequence is implied. */
 import type { Stage, Stream, Work, WorkRights } from '../core';
 import { DEFAULT_ASSISTANCE, ids } from '../core';
+import { ARAMAIC_PASSAGES } from '../adapters/aramaic/resources';
 export const ARAMAIC_COURSE_ID = 'aramaic-arc';
 export const ARAMAIC_STREAMS: Stream[] = [{
   id: ids.stream(ARAMAIC_COURSE_ID, 'scripture'), courseId: ARAMAIC_COURSE_ID, lang: 'arc', key: 'scripture',
-  label: 'Biblical Aramaic', description: 'Source-backed first readings from Daniel; the remainder of Daniel and Ezra is not bundled.',
+  label: 'Biblical Aramaic', description: 'Source-backed Biblical Aramaic readings from Daniel, Ezra, Jeremiah and Genesis.',
   kind: 'scripture', order: 0, available: true,
 }];
 export const ARAMAIC_SHELVES: Stage[] = [{
   id: ids.stage(ARAMAIC_COURSE_ID, 's0'), courseId: ARAMAIC_COURSE_ID, lang: 'arc', index: 0, key: 's0',
-  label: 'First authentic readings', kind: 'shelf', purpose: ['Read square script with source-backed word help.', 'Compare repeated words and their inflections in two short passages.'],
+  label: 'Source readings', kind: 'shelf', purpose: ['Read bundled Biblical Aramaic source passages with source-backed word help.'],
   assistance: DEFAULT_ASSISTANCE,
 }];
 const RIGHTS: WorkRights = {
@@ -30,12 +28,11 @@ const RIGHTS: WorkRights = {
   retrievedAt: '2026-11-05', proofreading: 'Source-extraction comparison; not independent linguistic proofreading.',
   evidenceRecords: [{ kind: 'publisher-statement', url: 'https://github.com/openscriptures/morphhb', checkedAt: '2026-11-05', by: 'Codex (automated source check)', note: 'README: WLC text public domain; lemma and morphology CC BY 4.0.' }],
 };
-export const ARAMAIC_WORKS: Work[] = [
-  { slug: 'daniel-2-4b', title: 'Daniel 2:4b — the reply to the king', purpose: ['Read the address to the king, two imperatives, the dream and its interpretation.'] },
-  { slug: 'daniel-2-20', title: 'Daniel 2:20 — Daniel speaks', purpose: ['Read participles, construct and emphatic states, and the repeated word for time.'] },
-].map((w, index) => ({
-  id: ids.work(ARAMAIC_COURSE_ID, w.slug), courseId: ARAMAIC_COURSE_ID, lang: 'arc', stageId: ARAMAIC_SHELVES[0].id,
-  order: index, title: w.title, purpose: w.purpose, role: 'scripture', streams: ['scripture'], variety: 'arc-bib',
-  rights: { ...RIGHTS }, bibliographyVerified: false, optional: true, ingestion: 'bundled', genericLevel: 'easy',
-  edition: 'OSHB WLC, qere reading path', sourceUrl: 'https://github.com/openscriptures/morphhb/blob/master/wlc/Dan.xml',
+export const ARAMAIC_WORKS: Work[] = ARAMAIC_PASSAGES.map((passage, index) => ({
+  id: ids.work(ARAMAIC_COURSE_ID, passage.slug), courseId: ARAMAIC_COURSE_ID, lang: 'arc', stageId: ARAMAIC_SHELVES[0].id,
+  order: index, title: passage.title, purpose: [`Read ${passage.reference} with source-backed word help.`], role: 'scripture', streams: ['scripture'], variety: 'arc-bib',
+  rights: { ...RIGHTS }, bibliographyVerified: false, optional: true, ingestion: 'bundled',
+  edition: 'OSHB WLC, qere reading path', sourceUrl: `https://github.com/openscriptures/morphhb/blob/master/wlc/${
+    passage.slug.startsWith('daniel-') ? 'Dan' : passage.slug.startsWith('ezra-') ? 'Ezra' : passage.slug.startsWith('jeremiah-') ? 'Jer' : 'Gen'
+  }.xml`,
 }));

@@ -12,6 +12,10 @@ const base = path.resolve(__dirname, '../../packages/golearn-extension');
 const dist = path.join(base, 'dist');
 const have = fs.existsSync(path.join(dist, 'content.js')) && fs.existsSync(path.join(dist, 'background.js')) && fs.existsSync(path.join(dist, 'action/popup.js'));
 const read = (f: string): string => fs.readFileSync(path.join(dist, f), 'utf8');
+// These literals identify an SVG namespace and the required OSHB data credit; neither is a service endpoint.
+const withoutIdentifiers = (code: string): string => code
+  .replaceAll('http://www.w3.org/2000/svg', '')
+  .replaceAll('https://github.com/openscriptures/morphhb', '');
 
 const NETWORK = /\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts|navigator\.connection|\.connect\(\s*['"`]?(?:http|ws)/;
 const WEB_STORAGE = /\blocalStorage\b|\bsessionStorage\b|\bindexedDB\b|document\.cookie|\bcaches\.(open|match)|openDatabase/;
@@ -73,7 +77,7 @@ describe.skipIf(!have)('the built extension', () => {
     expect(code).not.toMatch(DYNAMIC_CODE);
     expect(code).not.toMatch(PAGE_CHANNELS);
     expect(code).not.toMatch(/chrome\.(tabs|scripting|cookies|downloads|history|webRequest|management|identity)/);
-    expect(code).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i); // no address to call
+    expect(withoutIdentifiers(code)).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i); // no service address
     expect(code).not.toMatch(/console\.(log|info|debug|warn|error|trace)/); // nothing is logged, so nothing sensitive can be
   });
 
@@ -86,14 +90,14 @@ describe.skipIf(!have)('the built extension', () => {
     expect(code).not.toMatch(/console\./);
   });
 
-  it('the background worker is the only bundle with a network call, uses no XHR/beacon/socket, no dynamic code, logs nothing, and names no address', () => {
+  it('the background worker is the only bundle with a network call, uses no XHR/beacon/socket, no dynamic code, logs nothing, and names no service address', () => {
     const code = read('background.js');
     expect(code).toMatch(/\bfetch\s*\(/);
     expect(code).not.toMatch(/XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts/);
     expect(code).not.toMatch(DYNAMIC_CODE);
     expect(code).not.toMatch(WEB_STORAGE);
     expect(code).not.toMatch(/console\./);
-    expect(code).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i);
+    expect(withoutIdentifiers(code)).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i);
     expect(code).toMatch(/not-your-data/); // the service's handler runs in the worker for the device-local Repository (no network; see REPOSITORY-LOCAL.md); the other scripts have the stub
     for (const f of ['content.js', 'action/popup.js']) expect(read(f), f).not.toMatch(/not-your-data|invalid-json|too-many-attempts/);
   });

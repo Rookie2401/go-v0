@@ -2,8 +2,8 @@ import { experimentalManifest } from './experimental';
 import { ARC_TUTORIAL } from '../tutorial/arc';
 import type { PackManifest, ValidationCase } from '../manifest';
 
-/** Experimental Biblical Aramaic only. Adapter version 1. */
-export const ARC_VERSION = '1';
+/** Experimental Biblical Aramaic only. Adapter version 2. */
+export const ARC_VERSION = '2';
 
 const DAN_2_4B = "מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י אֱמַ֥ר חֶלְמָ֛א לְעַבְדָ֖ךְ וּפִשְׁרָ֥א נְחַוֵּֽא׃";
 const DAN_2_20 = "עָנֵ֤ה דָֽנִיֵּאל֙ וְאָמַ֔ר לֶהֱוֵ֨א שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙ מְבָרַ֔ךְ מִן־עָלְמָ֖א וְעַ֣ד־עָלְמָ֑א דִּ֧י חָכְמְתָ֛א וּגְבוּרְתָ֖א דִּ֥י לֵֽהּ־הִֽיא׃";
@@ -28,8 +28,8 @@ export function aramaicManifest(): PackManifest {
   const manifest = experimentalManifest({
     languageId: 'arc', version: ARC_VERSION, varietyId: 'arc-bib', scriptId: 'Hebr',
     name: 'Aramaic', nativeName: 'אֲרָמִית', direction: 'rtl',
-    varieties: [{ varietyId: 'arc-bib', label: 'Biblical Aramaic', analysed: true, note: 'Only the declared source slice: Daniel 2:4b and 2:20; kept separate from Hebrew.' }],
-    adapterSummary: 'A deliberately small, experimental Biblical Aramaic analyser with readings restricted to Biblical Aramaic source forms; it does not label Hebrew readings as Aramaic.',
+    varieties: [{ varietyId: 'arc-bib', label: 'Biblical Aramaic', analysed: true, note: 'OSHB-attested Biblical Aramaic source readings; kept separate from Hebrew.' }],
+    adapterSummary: 'An experimental Biblical Aramaic analyser over OSHB-attested forms; it does not generate unattested forms or label Hebrew readings as Aramaic.',
     capabilities: ['tokenization', 'sentence-segmentation', 'lemma', 'morphology'],
     features: [
       { key: 'Binyan', label: 'Stem', values: { Peal: 'Peal (basic)', Pael: 'Pael (intensive or factitive)', Afel: 'Aphel (causative)', Hafel: 'Haphel (causative)', Itpeel: 'Ithpeel (reflexive or passive)', Itpaal: 'Ithpaal (reflexive or passive)', Hitpeel: 'Hithpeel (reflexive)' }, explain: 'Aramaic verbs use stem patterns. These names label patterns of the root; their force depends on the verb and context.' },
@@ -48,8 +48,9 @@ export function aramaicManifest(): PackManifest {
     segmentation: { method: 'adapter', notes: 'Right-to-left Hebrew-script tokens; vowel and accent marks stay attached to their written word. Aramaic and Hebrew passages are not treated as the same language.' },
     validation: ARC_VALIDATION,
     thin: [
-      'The compiled vocabulary and morphology cover only a small, selected part of Biblical Aramaic.',
+      'Coverage follows the Aramaic annotations in the OSHB source corpus; the source may omit forms or dialect distinctions.',
       'Readings follow source morphology and have not been checked by a Biblical Aramaic specialist or a native speaker.',
+      'Source glosses are lexical aids, not reviewed translations. The adapter exposes arcLexiconLookup for source-backed headwords and attested forms; it does not create morphology for an unattested headword.',
       'This is a word analyser, not a parser or translation system; it does not identify subjects, objects, or a complete clause meaning.',
       'There are no recordings or registered voices for this pack.',
     ],

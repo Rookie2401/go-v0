@@ -1,45 +1,37 @@
-# Scope and coverage
+# Biblical Aramaic resource coverage
 
-The declared corpus is two passages, Daniel 2:4b (qere path) and Daniel 2:20: 26 source word occurrences and 21 distinct source lemma identifiers. It is not the complete Biblical Aramaic corpus.
+This milestone supplies the complete declared Biblical Aramaic source corpus to ordinary GoLearn and transfers its evidence into Ecclesia. It supplies linguistic resources for Claude's course design; it is not a claim that every historical Aramaic dialect or an independent-reading curriculum is finished.
 
-The compiled seed is derived from these same occurrences. Matching them measures source-fixture agreement, not generalization to unseen prose. No independent held-out morphological accuracy has been established. A test passing all source fixtures would not prove complete grammatical support.
+## Measured corpus
 
-A Biblical Aramaic milestone remains incomplete until the remaining Biblical passages are acquired, their text and morphology validated, and unseen/source-disagreement fixtures independently assessed.
+| Source scope (qere reading path) | Verses | Word occurrences |
+| --- | ---: | ---: |
+| Daniel 2:4b–7:28 | 200 | 3,599 |
+| Ezra 4:8–6:18 and 7:12–26 | 67 | 1,212 |
+| Jeremiah 10:11 | 1 | 15 |
+| The two-word Aramaic name in Genesis 31:47 | 1 | 2 |
+| Total | 269 | 4,828 |
 
-## Morphology
-The slice contains nouns (masculine/feminine, singular/plural, construct/absolute/determined), source-supported affixes and pronominal suffixes, Peal imperatives/participles/prefix forms, and Pael prefix/passive-participial forms. It does not exercise every combination. The shared decoder knows further source codes; that is not validated Aramaic paradigm support.
+Each verse is a bundled document. The original Daniel 2:4b and 2:20 document IDs are preserved. Hebrew portions of mixed verses are excluded. Ketiv readings are retained in the source snapshot but not duplicated in the selected qere text. The corpus has 714 terminal source lemma identifiers (1,108 full prefix/lemma chains) and 744 lemma/POS identities. Numeric lexical entries are kept separately from language-specific learning identities.
 
-דִּי has both relative-particle and conjunction readings. Outside exact-source context these remain ambiguous. An unpointed query has inferred vocalization and lower confidence. Unknown words receive no fabricated analysis.
+The offline build uses 694 selected Open Scriptures Strong entries and exact augmented identifiers from selected Lexical Index entries. An augmented identifier is never reduced to its numeric prefix: for example, Aramaic 6211 b names herbage, whereas Hebrew 6211 a names a moth. A gloss is available for 4,802 occurrences; 26 occurrences of H3390 with different prefixes have a source headword but no definition in this source. They remain explicitly unavailable. Prefix-only entries use the established OSHB prefix lookup, with that provenance distinguished in SOURCES.md.
 
-## Vocabulary repetition and readiness
-These two passages provide only a demonstration: עָלַם recurs in different number/state forms, and אֲמַר recurs as imperative and participle. This does not constitute a curriculum from zero to independent reading. The normal GoLearn reader tracks encounters and calculates learner-aware coverage. Lexical coverage is not comprehension.
+## Morphology and uncertainty
 
-## Remaining work
-1. Independently assess the first slice, including the browser and native app interfaces on real devices.
-2. Expand Biblical Aramaic source coverage to Daniel 2:4b–7:28, Ezra 4:8–6:18 and 7:12–26, Jeremiah 10:11, and the two-word Aramaic name in Genesis 31:47.
-3. Add a real script/pronunciation pathway, labelled and reviewed instructional bridges, deliberate recurrence measurements and a substantially longer reading ladder. The current orientation is a short introduction.
-4. Add verified roots, paradigms, weak verb coverage and held-out annotations before claiming those features.
-5. Add Targumic modules only with dialect-specific lexical/morphological data, fixtures and exact-edition licensing.
-6. Add syc/Syrc as a distinct Classical Syriac module, with its own script pathway and tests.
-7. Add lexical cognate relationships without transferring learner mastery, correction-persistence UI, and optional pointed/interlinear displays after validation.
+All 4,828 selected annotations are retrievable and ranked first in their exact source-verse context. The report separately counts ambiguous forms, supported stems/conjugations/states, unresolved readings, and 11 questioned source annotations. Agreement with the input corpus is not independent linguistic accuracy; no held-out specialist accuracy score has been established.
 
-No Ecclesia dependency was added. No new SRS or learner store was created.
+The adapter indexes pointed forms, consonantal spellings, headwords and source references. It retains alternative readings; unpointed input lowers confidence. The lexical API returns attested forms, frequencies and references without inventing citation-form morphology. Attached particles, nominal states, verbal features and pronominal suffixes come from source codes and boundaries. All 35 source paseq signs are preserved alongside maqqef and sof pasuq. Unknown words and unsupported dialects remain unresolved.
 
-## Executed first-slice measurements
+Eleven existing Ecclesia source-audit exclusions are carried through as requires-review warnings. The raw annotations remain visible for adjudication; they are not silently rewritten. A warning is not evidence that every other annotation has been independently checked.
 
-GitHub Actions focused job on commit 8440ccd45e63e9496ed58e8474dd92c6f9fbfbb8 passed all 19 focused tests, the source/repetition report and the browser analyser build. The full regression check is reported separately.
+No productive analyser for unseen forms, source-verified general root inventory, historical audio, contextual translation corpus, Targumic module or Classical Syriac module is claimed. Dictionary glosses describe headwords, not verified translations of each occurrence.
 
-| Passage | Source words | Resolved | Unresolved | Tokens retaining alternatives | New lemma/POS identities |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Daniel 2:4b | 8 | 8 | 0 | 0 | 8 |
-| Daniel 2:20 | 18 | 18 | 0 | 3 | 14 |
+## Reproduce
 
-There are 21 distinct source lemma identifiers and 22 lemma/POS identities (the connective has different source roles). Source-fixture agreement was 26/26, with no source-code disagreement; this is not held-out accuracy. Nineteen lemma/POS identities occur only once in this tiny sequence.
+- `npm run arc:build -- --check`: rebuild comparison against bundled source snapshots, without writing.
+- `npm run arc:report -- --summary`: complete source inclusion, ranking, unresolved readings and questioned annotations.
+- `npm run arc:report`: also lists attested constructions and vocabulary recurrence. Its filename order is a corpus audit, not a teaching sequence.
+- `npx vitest run test/adapters/aramaic.test.ts test/adapters/aramaic-source.test.ts test/language-packs/aramaic.test.ts test/integration/aramaic.test.ts test/integration/aramaic-export.test.ts`.
+- `npm run arc:export -- <output.json>`: deterministic source-evidence bundle for Ecclesia.
 
-The existing transition analyser rates the jump high: 83% of destination lemma tokens are absent from the previous passage, and length rises 2.25 times. Clause/construction difficulty remains unmeasured. These results identify the need for bridges and broader recurrence rather than claiming this is a complete acquisition course.
-
-Reproduce: `npx vite-node --config scripts/vite.config.ts scripts/arc-report.mts`.
-
-A subsequent focused run on 9929265f283821b0992e7c6e656cca5fb795a9bb passed 20 Aramaic tests and all 371 targeted registration, import, offset, capability, architecture and reader regressions. It also built the browser analyser chunks. The full 16,000-plus-test job remains a separate gate.
-
-Aramaic redistribution check: both excerpts were accepted for bundling with the source-backed rights records. The unscoped legacy rights report still reports the existing missing Hebrew tanakh-mam and Greek sblgnt catalogue records; see INTEGRATION.md.
+Course ordering, script instruction, reviewed bridge passages and deliberate vocabulary repetition remain Claude's authoring work. The source-backed shelf exposes authentic material; it does not label 269 authentic verses as beginner lessons.

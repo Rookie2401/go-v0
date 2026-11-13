@@ -279,5 +279,7 @@ describe('the bundled course texts (everything that is not a seed text)', () => 
     const total = first.documents.reduce((n, x) => ({ words: n.words + x.analysisCoverage.words, analysed: n.analysed + x.analysisCoverage.analysed }), { words: 0, analysed: 0 });
     const lowest = [...first.documents].sort((a, b) => a.analysisCoverage.coverage - b.analysisCoverage.coverage).slice(0, 3);
     console.info(`course texts: ${course.length} documents, ${total.words} words, analysis coverage ${total.words ? ((100 * total.analysed) / total.words).toFixed(1) : 'n/a'}% (${total.analysed}/${total.words}); lowest: ${lowest.map((x) => `${x.id} ${(x.analysisCoverage.coverage * 100).toFixed(1)}%`).join(', ')}`);
-  });
+  // This deliberately imports the entire expanded 411-document, 40,545-word corpus twice.
+  // Individual-language and interactive tests retain the normal 20-second limit.
+  }, 60_000);
 });

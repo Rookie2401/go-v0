@@ -101,7 +101,8 @@ export function decodeOshbSegment(seg: string, aramaic: boolean): OshbSegment {
       switch (r[0]) {
         case 'd': return { pos: 'DET', morph: { Definite: 'Def' } };
         case 'o': return { pos: 'PART', morph: { PartType: 'Obj' }, role: 'object marker' };
-        case 'n': case 'm': return { pos: 'PART', morph: { Polarity: 'Neg' } };
+        case 'n': return { pos: 'PART', morph: { Polarity: 'Neg' } };
+        case 'm': return { pos: 'PART', morph: { PartType: 'Dem' } };
         case 'i': return { pos: 'PART', morph: { PartType: 'Int' } };
         case 'j': return { pos: 'INTJ', morph: {} };
         case 'a': return { pos: 'PART', morph: { PartType: 'Aff' } };

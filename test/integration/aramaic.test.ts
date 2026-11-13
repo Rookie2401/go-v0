@@ -11,6 +11,7 @@ import { memoryStorage } from '../language-packs/helpers';
 import { packFactsFor } from '../../packages/goreview/app/packFacts';
 import type { RepositoryApi } from '../../packages/repository-service/src/api';
 import { writtenRecognition } from '../../packages/goreview/src/exercises/written-recognition';
+import { morphologicalIdentification } from '../../packages/goreview/src/exercises/morphological-identification';
 import { buildCardAdded, createFsrsScheduler, foldDeck, itemIdFor } from '../../packages/goreview/src/scheduler';
 import { reviewed, T0 } from '../goreview/scheduler/helpers';
 
@@ -23,19 +24,19 @@ describe('Aramaic vertical slice through the existing ecosystem', () => {
     expect(await verifyInstalled(PACKS.arc, storage)).toMatchObject({ installed: true, current: true, validationFailures: 0 });
     const registry = createAdapterRegistry();
     const docs = loadBundledCorpus().filter(d => d.lang === 'arc').sort((a, b) => (a.work?.chapter?.index ?? 0) - (b.work?.chapter?.index ?? 0));
-    expect(docs).toHaveLength(2);
+    expect(docs.length).toBeGreaterThan(250);
     expect(validateBatch(docs, { registry }).documents.flatMap(d => d.issues).filter(i => i.severity === 'error')).toEqual([]);
     const store = createMemoryStore();
     const texts = await ingestAll(store, registry, docs);
     expect(texts.every(t => t.published)).toBe(true);
     const catalog = createCourseCatalog({ store });
     await catalog.install('aramaic-arc');
-    expect(await catalog.works('aramaic-arc')).toHaveLength(2);
+    expect(await catalog.works('aramaic-arc')).toHaveLength(docs.length);
     const library = createLibrary({ store, adapters: registry, fetch: noNetwork });
     await library.indexStore('arc');
     const path = await loadCoursePath(catalog, library, 'aramaic-arc');
     expect(path[0].available).toBe(true);
-    expect(path[0].publishedWorks).toBe(2);
+    expect(path[0].publishedWorks).toBe(docs.length);
     const clock = () => '2026-11-05T10:00:00.000Z';
     const bus = new StoreEventBus(store, clock);
     const golearn = createGoLearn({ store, bus, adapters: registry, clock });
@@ -55,7 +56,7 @@ describe('Aramaic vertical slice through the existing ecosystem', () => {
     const reloaded = createGoLearn({ store, bus, adapters: registry, clock });
     expect((await reloaded.queryItem('arc-student', { lang: 'arc', surface: 'מַלְכָּא֙' })).encounterCount).toBe(before.encounterCount);
     expect((await reloaded.readingProgress('arc-student', texts[0].id)).sentencesSeen).toBeGreaterThan(0);
-    expect((await reloaded.recommend('arc-student', { lang: 'arc' })).some(r => r.textId === texts[1].id)).toBe(true);
+    expect((await reloaded.recommend('arc-student', { lang: 'arc' })).some(r => r.textId !== texts[0].id)).toBe(true);
     const coverage = await reloaded.coverage('arc-student', texts[1].id);
     expect(coverage.wordTokens).toBeGreaterThan(0);
     expect(coverage.knownLexicalCoverage).toBe(0); // exposure is not comprehension
@@ -66,12 +67,43 @@ describe('Aramaic vertical slice through the existing ecosystem', () => {
     const api = { async unit() { return { ok: false, status: 404, error: 'not-found', message: 'missing', body: {} }; } } as unknown as RepositoryApi;
     const provider = packFactsFor({ fetch: noNetwork, baseUrl: 'https://test.local/' })('arc', api)!;
     expect(provider).toBeDefined();
-    const unitId = 'form:arc:מַלְכָּא';
+    const unitId = 'form:arc:דָֽנִיֵּאל֙';
     const facts = await provider.factsFor(unitId, 'arc', 'arc-bib');
     expect(facts).toBeDefined();
-    expect(facts?.lexicalRecognition).toMatchObject({ status: 'verified', lemma: 'מֶלֶךְ' });
+    expect(facts?.lexicalRecognition).toMatchObject({ status: 'verified', lemma: 'דָּנִיֵּאל' });
+    const questioned = await provider.factsFor('form:arc:תְּקִ֥ילְתָּה', 'arc', 'arc-bib');
+    expect(questioned).toMatchObject({ status: 'requires-review', unit: { status: 'requires-review' }, lexicalRecognition: { status: 'withheld' }, constructionIds: [], featureExplanations: {} });
+    expect(questioned?.features).toBeUndefined();
+    expect(questioned?.pos).toBeUndefined();
+    const mixed = await provider.factsFor('form:arc:דְנָה֙', 'arc', 'arc-bib');
+    expect(mixed?.status).toBe('conflicted');
+    expect(mixed?.features).toBeDefined(); // retained source alternatives, but not eligible for a grammar exercise
+    const morphology = await morphologicalIdentification.build({ unitId: mixed!.unit.unitId, unitKind: 'form', languageId: 'arc', varietyId: 'arc-bib', dimension: 'morphological-analysis' }, mixed!, { now: T0, random: () => 0 });
+    expect('unavailable' in morphology ? morphology.reason : undefined).toMatch(/analysis conflicted/i);
+    const storedUnitId = 'form:arc:דְנָה֙';
+    const storedApi = { async unit() { return { ok: true, data: {
+      unit: { unitId: storedUnitId, kind: 'form', languageId: 'arc', label: 'דְנָה֙', packId: 'pack:arc', packVersion: '2',
+        provenance: { source: 'dictionary', ref: 'oshb-aramaic', confidence: 0.98 }, status: 'requires-review', createdAt: T0,
+        pos: 'PRON', features: { Number: 'Plur' } },
+      relations: [], analyses: [{ analysisId: 'persisted-arc-flag', formId: storedUnitId, languageId: 'arc', candidates: [
+        { lexemeId: 'lemma:arc:דֵּן:PRON', features: { Number: 'Plur' }, constructionIds: ['morph:arc:PRON:Number=Plur'],
+          confidence: 0.98, reviewStatus: 'requires-review', provenance: { source: 'dictionary', ref: 'oshb-aramaic', confidence: 0.98 } },
+      ], chosen: 0, status: 'requires-review', analyzerId: 'adapter-arc@2', packId: 'pack:arc', packVersion: '2', createdAt: T0 }],
+    } }; } };
+    const persistedProvider = packFactsFor({ fetch: noNetwork, baseUrl: 'https://test.local/' })('arc', storedApi as unknown as RepositoryApi)!;
+    const persisted = await persistedProvider.factsFor(storedUnitId, 'arc', 'arc-bib');
+    expect(persisted).toMatchObject({ status: 'requires-review', unit: { status: 'requires-review' } });
+    const persistedMorphology = await morphologicalIdentification.build({ unitId: storedUnitId, unitKind: 'form', languageId: 'arc', varietyId: 'arc-bib', dimension: 'morphological-analysis' }, persisted!, { now: T0, random: () => 0 });
+    expect('unavailable' in persistedMorphology ? persistedMorphology.reason : undefined).toMatch(/requires specialist review/i);
     const exercise = await writtenRecognition.build({ unitId, unitKind: 'form', languageId: 'arc', varietyId: 'arc-bib', dimension: 'written-recognition' }, facts!, { now: T0, random: () => 0 });
     expect('unavailable' in exercise ? exercise.reason : undefined).toBeUndefined();
+    const kingUnitId = 'form:arc:מַלְכָּא֙';
+    const kingFacts = await provider.factsFor(kingUnitId, 'arc', 'arc-bib');
+    expect(kingFacts).toMatchObject({ status: 'conflicted', lexicalRecognition: { status: 'verified', lemma: 'מֶלֶךְ' } });
+    const kingRecognition = await writtenRecognition.build({ unitId: kingUnitId, unitKind: 'form', languageId: 'arc', varietyId: 'arc-bib', dimension: 'written-recognition' }, kingFacts!, { now: T0, random: () => 0 });
+    expect('unavailable' in kingRecognition ? kingRecognition.reason : undefined).toBeUndefined();
+    const kingMorphology = await morphologicalIdentification.build({ unitId: kingUnitId, unitKind: 'form', languageId: 'arc', varietyId: 'arc-bib', dimension: 'morphological-analysis' }, kingFacts!, { now: T0, random: () => 0 });
+    expect('unavailable' in kingMorphology ? kingMorphology.reason : undefined).toMatch(/analysis conflicted/i);
     const add = buildCardAdded({ learnerId: 'learner-1', enrolmentId: 'enrol-grc', languageId: 'arc', at: T0, deviceId: 'a',
       unitId, unitKind: 'form', dimension: 'written-recognition', family: 'written-recognition', addedBy: 'learner' });
     const cardId = itemIdFor(unitId, 'written-recognition');

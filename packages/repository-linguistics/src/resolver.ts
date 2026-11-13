@@ -123,6 +123,8 @@ const sameReading = (a: AnalysisCandidate, b: AnalysisCandidate): boolean =>
  */
 export function statusFor(candidate: AnalysisCandidate, all: AnalysisCandidate[], opts: StatusOptions = {}): AnalysisStatus {
   if (opts.reviewedByPerson || candidate.provenance.source === 'reviewer') return 'verified';
+  if (candidate.reviewStatus === 'requires-review') return 'requires-review';
+  if (candidate.reviewStatus === 'requires-review') return 'requires-review';
   const others = all.filter((c) => c !== candidate);
   const top = Math.max(candidate.confidence, ...others.map((c) => c.confidence));
   if (candidate.confidence >= top - CLOSE && others.some((c) => c.confidence >= top - CLOSE && !sameReading(c, candidate))) return 'conflicted';
@@ -302,6 +304,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
       return {
         ...(lexemeId ? { lexemeId } : {}),
         features,
+        ...(c.notes?.reviewStatus === 'requires-review' ? { reviewStatus: 'requires-review' as const } : {}),
         ...(c.role ? { role: c.role } : {}),
         confidence: clamp01(c.confidence),
         // validation: a person's review wins; a guess from an ending is unreviewed whatever the pack; otherwise the pack's own level

@@ -19,6 +19,7 @@ import { LATIN_COURSE_ID, LATIN_SHELVES, LATIN_STREAMS, LATIN_WORKS } from './la
 import { NORWEGIAN_COURSE_ID, NORWEGIAN_LADDER_SHELF, NORWEGIAN_SHELVES, NORWEGIAN_STREAMS, NORWEGIAN_WORKS } from './norwegian';
 import { SPANISH_COURSE_ID, SPANISH_LADDER_SHELF, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS } from './spanish';
 import { THAI_COURSE_ID, THAI_STAGES, THAI_STREAMS, THAI_WORKS } from './thai';
+import { ARAMAIC_COURSE_ID, ARAMAIC_SHELVES, ARAMAIC_STREAMS, ARAMAIC_WORKS } from './aramaic';
 import { getStageContract } from './curriculumPolicy';
 
 export interface CourseCatalogDeps {
@@ -34,6 +35,7 @@ export const stageMetaId = (userId: string, courseId: string) => `stage:${userId
 
 /** The ladders this build ships: course id → stages and works. A course without an entry has no ladder. */
 const LADDERS: Record<string, { stages: Stage[]; works: Work[]; outside?: AssistanceProfile }> = {
+  [ARAMAIC_COURSE_ID]: { stages: ARAMAIC_SHELVES, works: ARAMAIC_WORKS },
   [THAI_COURSE_ID]: { stages: THAI_STAGES, works: THAI_WORKS },
   // Spanish: the stages are SHELVES (a browsing orientation of a large library, never a gate)
   [SPANISH_COURSE_ID]: { stages: SPANISH_SHELVES, works: SPANISH_WORKS },
@@ -65,6 +67,7 @@ const LADDER_UNIT_TEXT = /^text:([a-z]{2,3}):\1-(a1-1|a1-2|a2-1|a2-2|b1-bridge|b
 
 /** The content streams of the courses that have them. */
 const STREAMS: Record<string, Stream[]> = {
+  [ARAMAIC_COURSE_ID]: ARAMAIC_STREAMS,
   [THAI_COURSE_ID]: THAI_STREAMS,
   [SPANISH_COURSE_ID]: SPANISH_STREAMS,
   [GERMAN_COURSE_ID]: GERMAN_STREAMS,

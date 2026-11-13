@@ -11,7 +11,7 @@ import type { ValidationCase } from './manifest';
 export const CLOSE = 0.15;
 export const HIGH_CONFIDENCE = 0.85;
 
-export type ReadingStatus = 'high-confidence' | 'conflicted' | 'provisional';
+export type ReadingStatus = 'high-confidence' | 'conflicted' | 'provisional' | 'requires-review';
 
 export interface SelectionReading {
   /** The top reading, or undefined when the analyser gives none. */
@@ -29,6 +29,8 @@ const sameReading = (a: AnalysisCandidate, b: AnalysisCandidate): boolean =>
 
 /** conflicted / high-confidence / provisional, exactly as the Repository decides it for an unreviewed source. */
 export function statusOf(candidate: AnalysisCandidate, all: AnalysisCandidate[]): ReadingStatus {
+  // Source-audit flags belong to this reading only; clean alternatives remain independently usable.
+  if (candidate.notes?.reviewStatus === 'requires-review') return 'requires-review';
   const others = all.filter((c) => c !== candidate);
   const top = Math.max(candidate.confidence, ...others.map((c) => c.confidence));
   if (candidate.confidence >= top - CLOSE && others.some((c) => c.confidence >= top - CLOSE && !sameReading(c, candidate))) return 'conflicted';

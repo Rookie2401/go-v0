@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 2,
+  "id": "daniel-5-9",
+  "lang": "arc",
+  "locale": "arc-Hebr",
+  "title": "Daniel 5:9",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "biblical-aramaic",
+    "kind": "scripture",
+    "title": "Biblical Aramaic"
+  },
+  "source": {
+    "id": "src:arc:daniel-5-9",
+    "title": "Westminster Leningrad Codex via Open Scriptures Hebrew Bible",
+    "url": "https://github.com/openscriptures/morphhb/blob/master/wlc/Dan.xml",
+    "edition": "OSHB WLC, qere reading path",
+    "attribution": "Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb",
+    "provenance": "Selected A-coded words extracted from bundled OSHB wlc/Dan.xml snapshot, preserving source order, qere path, word boundaries and verse marks. No independent scholarly proofreading.",
+    "rights": "public-domain",
+    "licenseNote": "WLC base text public domain; OSHB lemma/morphology CC BY 4.0; lexical transcription CC BY 4.0.",
+    "authorship": "public-domain",
+    "modifications": "Reading-path extraction; morpheme separators removed; source word order and marks preserved."
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "Codex source-extraction check (automated, not a scholarly language review)",
+    "reviewedAt": "2026-11-05",
+    "level": "linguistic-check",
+    "notes": "Wording compared to A-coded OSHB source tokens, excluding ketiv in favor of qere. Linguistic analysis comes from OSHB; no claim of independent expert review."
+  },
+  "topics": [
+    "aramaic",
+    "biblical-aramaic",
+    "reading"
+  ],
+  "editorialTags": [],
+  "prepTargets": [],
+  "generated": false,
+  "scripture": {
+    "translationId": "arcWLC",
+    "translationName": "Biblical Aramaic, WLC",
+    "edition": "OSHB WLC, qere reading path",
+    "book": "DAN",
+    "chapter": 5,
+    "verification": {
+      "against": "OSHB wlc/Dan.xml (A-coded tokens; ketiv excluded, qere selected)",
+      "url": "https://github.com/openscriptures/morphhb/blob/master/wlc/Dan.xml",
+      "checkedAt": "2026-11-05",
+      "method": "byte-comparison",
+      "by": "Codex extraction compared to source word and seg values"
+    }
+  },
+  "work": {
+    "slug": "daniel-5-9",
+    "courseId": "aramaic-arc",
+    "chapter": {
+      "index": 122
+    }
+  },
+  "sections": [
+    {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "daniel-5-9",
+              "text": "אֱ֠דַיִן מַלְכָּ֤א בֵלְשַׁאצַּר֙ שַׂגִּ֣יא מִתְבָּהַ֔ל וְזִיוֺ֖הִי שָׁנַ֣יִן עֲל֑וֹהִי וְרַבְרְבָנ֖וֹהִי מִֽשְׁתַּבְּשִֽׁין׃",
+              "verseRefs": [
+                "DAN.5.9"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variety": "arc-bib",
+  "streams": [
+    "scripture"
+  ]
+}

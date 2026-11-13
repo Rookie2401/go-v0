@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Plain definitions for Biblical Aramaic Strong numbers whose Strong's entry gives only a King James usage list (or nothing).
+     Selected exact entries from the Aramaic part of Open Scriptures HebrewLexicon/LexicalIndex.xml (copy held in the Biblia app's data, SHA-256 8f7a605c58899d2f44430149c143c00903976e1e91232476677972a69e5bc85f),
+     taken only where exactly one Aramaic Lexical Index entry carries that Strong number. Source content is CC BY 4.0; credit Open Scriptures Hebrew Bible Project. -->
+<selectedLexicalIndex>
+<sourceEntry lexicalIndexId="nyw" sourceLemmaId="2" sourceLanguage="arc" strong="2"><entry id="nyw">
+			<w xlit="ʾab">אַב</w> <pos>N</pos> <def>father</def>
+			<xref bdb="xa.ac.ab" strong="2" twot="2553"/>
+			<etym type="sub">nyy</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="nyv" sourceLemmaId="4" sourceLanguage="arc" strong="4"><entry id="nyv">
+			<w xlit="ʾēb">אֵב</w> <pos>N</pos> <def>fruit</def>
+			<xref bdb="xa.aa.ac" strong="4" twot="2554"/>
+			<etym root="אבב" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="nyx" sourceLemmaId="7" sourceLanguage="arc" strong="7"><entry id="nyx">
+			<w xlit="ʾăbad">אֲבַד</w> <pos>V</pos> <def>perish</def>
+			<xref bdb="xa.ab.aa" strong="7" twot="2555"/>
+			<etym root="אבד" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="nyz" sourceLemmaId="69" sourceLanguage="arc" strong="69"><entry id="nyz">
+			<w xlit="ʾeben">אֶ֫בֶן</w> <pos>N</pos> <def>stone</def>
+			<xref bdb="xa.ac.ac" strong="69" twot="2556"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="nzc" sourceLemmaId="144" sourceLanguage="arc" strong="144"><entry id="nzc">
+			<w xlit="ʾădār">אֲדָר</w> <pos>Np</pos> <def>Adar</def>
+			<xref bdb="xa.ac.af" strong="144" twot="2559"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="nzn" sourceLemmaId="252" sourceLanguage="arc" strong="252"><entry id="nzn">
+			<w xlit="ʾaḥ">אַח</w> <pos>N</pos> <def>brother</def>
+			<xref bdb="xa.aj.ab" strong="252" twot="2566"/>
+			<etym type="sub">nzp</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="nzy" sourceLemmaId="324" sourceLanguage="arc" strong="324"><entry id="nzy">
+			<w xlit="ʾăḥašdarpĕnîn">אֲחַשְׁדַּרְפְּנִין</w> <pos>N</pos> <def>satraps</def>
+			<xref bdb="xa.ak.af" strong="324" twot="2569"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oac" sourceLemmaId="399" sourceLanguage="arc" strong="399"><entry id="oac">
+			<w xlit="ʾăkal">אֲכַל</w> <pos>V</pos> <def>eat</def>
+			<xref bdb="xa.al.aa" strong="399" twot="2573"/>
+			<etym root="אכל" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oae" sourceLemmaId="409" sourceLanguage="arc" strong="409"><entry id="oae">
+			<w xlit="ʾal">אַל</w> <pos>D</pos> <def>do not</def>
+			<xref bdb="xa.am.aa" strong="409" twot="2574"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oad" sourceLemmaId="412" sourceLanguage="arc" strong="412"><entry id="oad">
+			<w xlit="ʾēl">אֵל</w> <pos>Pd</pos> <def>these</def>
+			<xref bdb="xa.an.aa" strong="412" twot="2575"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oag" sourceLemmaId="429" sourceLanguage="arc" strong="429"><entry id="oag">
+			<w xlit="ʾēlleh">אֵלֶּה</w> <pos>Pd</pos> <def>these</def>
+			<xref bdb="xa.ao.aa" strong="429" twot="2577"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oak" sourceLemmaId="506" sourceLanguage="arc" strong="506"><entry id="oak">
+			<w xlit="ʾălap">אֲלַ֑ף</w> <pos>N</pos> <def>1,000</def>
+			<xref bdb="xa.ar.ab" strong="506" twot="2581"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oal" sourceLemmaId="521" sourceLanguage="arc" strong="521"><entry id="oal">
+			<w xlit="ʾammâ">אַמָּה</w> <pos>N</pos> <def>cubit</def>
+			<xref bdb="xa.ar.ac" strong="521" twot="2582"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oam" sourceLemmaId="524" sourceLanguage="arc" strong="524"><entry id="oam">
+			<w xlit="ʾummâ">אֻמָּה</w> <pos>N</pos> <def>nation</def>
+			<xref bdb="xa.ar.ad" strong="524" twot="2583"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oan" sourceLemmaId="540" sourceLanguage="arc" strong="540"><entry id="oan">
+			<w xlit="ʾăman">אֲמַן</w> <pos>V</pos> <def>trust</def>
+			<xref bdb="xa.as.aa" strong="540" twot="2584"/>
+			<etym root="אמן" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oao" sourceLemmaId="560" sourceLanguage="arc" strong="560"><entry id="oao">
+			<w xlit="ʾămar">אֲמַר</w> <pos>V</pos> <def>say</def>
+			<xref bdb="xa.at.aa" strong="560" twot="2585"/>
+			<etym root="אמר" type="main">oap, onx</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="obc" sourceLemmaId="613" sourceLanguage="arc" strong="613"><entry id="obc">
+			<w xlit="ʾĕsûr">אֱסוּר</w> <pos>N</pos> <def>band</def>
+			<xref bdb="xa.bd.ab" strong="613" twot="2595a"/>
+			<etym type="sub">obg</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="obi" sourceLemmaId="638" sourceLanguage="arc" strong="638"><entry id="obi">
+			<w xlit="ʾap">אַף</w> <pos>C</pos> <def>also</def>
+			<xref bdb="xa.be.aa" strong="638" twot="2597"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="obn" sourceLemmaId="677" sourceLanguage="arc" strong="677"><entry id="obn">
+			<w xlit="ʾeṣbaʿ">אֶצְבַּע</w> <pos>N</pos> <def>finger</def>
+			<xref bdb="xr.ac.ab" strong="677" twot="2602"/>
+			<etym type="sub">ovx</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="obo" sourceLemmaId="703" sourceLanguage="arc" strong="703"><entry id="obo">
+			<w xlit="ʾarbaʿ">אַרְבַּע</w> <pos>N</pos> <def>four</def>
+			<xref bdb="xt.ad.ab" strong="703" twot="2986a"/>
+			<etym type="sub">oxt</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="obp" sourceLemmaId="711" sourceLanguage="arc" strong="711"><entry id="obp">
+			<w xlit="ʾargĕwān">אַרְגְּוָן</w> <pos>N</pos> <def>purple</def>
+			<xref bdb="xa.be.ah" strong="711" twot="2603"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="obt" sourceLemmaId="744" sourceLanguage="arc" strong="744"><entry id="obt">
+			<w xlit="ʾaryēh">אַרְיֵה</w> <pos>N</pos> <def>lion</def>
+			<xref bdb="xa.bf.ab" strong="744" twot="2606"/>
+			<etym type="sub">obq</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ocg" sourceLemmaId="785" sourceLanguage="arc" strong="785"><entry id="ocg">
+			<w xlit="ʾeššāʾ">אֶשָּׁא</w> <pos>N</pos> <def>fire</def>
+			<xref bdb="xa.bi.aj" strong="785" twot="2614"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="och" sourceLemmaId="826" sourceLanguage="arc" strong="826"><entry id="och">
+			<w xlit="ʾāšap">אָשַׁף</w> <pos>N</pos> <def>conjurer</def>
+			<xref bdb="xa.bi.al" strong="826" twot="2615"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ocl" sourceLemmaId="858" sourceLanguage="arc" strong="858"><entry id="ocl">
+			<w xlit="ʾătâ">אֲתָה</w> <pos>V</pos> <def>come</def>
+			<xref bdb="xa.bj.aa" strong="858" twot="2618"/>
+			<etym root="אתה" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ocq" sourceLemmaId="888" sourceLanguage="arc" strong="888"><entry id="ocq">
+			<w xlit="bĕʾēš">בְּאֵשׁ</w> <pos>V</pos> <def>be evil</def>
+			<xref bdb="xb.ab.aa" strong="888" twot="2622"/>
+			<etym root="באשׁ" type="main">ocp</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ocr" sourceLemmaId="895" sourceLanguage="arc" strong="895"><entry id="ocr">
+			<w xlit="bābel">בָּבֶל</w> <pos>Np</pos> <def>Babylon</def>
+			<xref bdb="xb.ab.ad" strong="895" twot="197"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ocy" sourceLemmaId="997" sourceLanguage="arc" strong="997"><entry id="ocy">
+			<w xlit="bên">בֵּין</w> <pos>R</pos> <def>between</def>
+			<xref bdb="xb.af.ab" strong="997" twot="2626"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ocz" sourceLemmaId="999" sourceLanguage="arc" strong="999"><entry id="ocz">
+			<w xlit="bînâ">בִּינָה</w> <pos>N</pos> <def>understanding</def>
+			<xref bdb="xb.af.ac" strong="999" twot="2627"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="odc" sourceLemmaId="1005" sourceLanguage="arc" strong="1005"><entry id="odc">
+			<w xlit="bayit">בַּ֫יִת</w> <pos>N</pos> <def>house</def>
+			<xref bdb="xb.ag.aa" strong="1005" twot="2629a"/>
+			<etym root="בית" type="main">odb</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="odg" sourceLemmaId="1096" sourceLanguage="arc" strong="1096"><entry id="odg">
+			<w xlit="bēlĕṭšaʾṣṣar">בֵּלְטְשַׁאצַּר</w> <pos>Np</pos> <def>Belteshazzar</def>
+			<xref bdb="xb.ah.ac" strong="1096"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="odh" sourceLemmaId="1113" sourceLanguage="arc" strong="1113"><entry id="odh">
+			<w xlit="bēlĕšaʾṣṣar">בֵּלְשַׁאצַּר</w> <pos>Np</pos> <def>Belshazzar</def>
+			<xref bdb="xb.ah.ad" strong="1113"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="odi" sourceLemmaId="1123" sourceLanguage="arc" strong="1123"><entry id="odi">
+			<w xlit="bēn">בֵּן</w> <pos>N</pos> <def>son</def>
+			<xref bdb="xb.al.ab" strong="1123" twot="2639"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="odk" sourceLemmaId="1147" sourceLanguage="arc" strong="1147"><entry id="odk">
+			<w xlit="binyān">בִּנְיָן</w> <pos>N</pos> <def>a building</def>
+			<xref bdb="xb.ai.ab" strong="1147" twot="2633a"/>
+			<etym type="sub">odj</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="odo" sourceLemmaId="1169" sourceLanguage="arc" strong="1169"><entry id="odo">
+			<w xlit="bĕʿēl">בְּעֵל</w> <pos>N</pos> <def>owner</def>
+			<xref bdb="xb.ak.ac" strong="1169" twot="2636"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="odp" sourceLemmaId="1236" sourceLanguage="arc" strong="1236"><entry id="odp">
+			<w xlit="biqʿāʾ">בִּקְעָא</w> <pos>N</pos> <def>plain</def>
+			<xref bdb="xb.ak.ad" strong="1236" twot="2637"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="odq" sourceLemmaId="1240" sourceLanguage="arc" strong="1240"><entry id="odq">
+			<w xlit="bĕqar">בְּקַר</w> <pos>V</pos> <def>inquire</def>
+			<xref bdb="xb.al.aa" strong="1240" twot="2638"/>
+			<etym root="בקר" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="odu" sourceLemmaId="1289" sourceLanguage="arc" strong="1289"><entry id="odu">
+			<w xlit="bĕrak">בְּרַךְ</w> <pos>V</pos> <def>kneel</def>
+			<xref bdb="xb.am.aa" strong="1289" twot="2641"/>
+			<etym root="ברך" type="main">odt</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="odt" sourceLemmaId="1291" sourceLanguage="arc" strong="1291"><entry id="odt">
+			<w xlit="bĕrak">בְּרַךְ</w> <pos>N</pos> <def>knee</def>
+			<xref bdb="xb.am.ab" strong="1291" twot="2641a"/>
+			<etym type="sub">odu</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="odx" sourceLemmaId="1321" sourceLanguage="arc" strong="1321"><entry id="odx">
+			<w xlit="bĕšar">בְּשַׁר</w> <pos>N</pos> <def>flesh</def>
+			<xref bdb="xb.ao.ac" strong="1321" twot="2643"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ody" sourceLemmaId="1325" sourceLanguage="arc" strong="1325"><entry id="ody">
+			<w xlit="bat">בַּת</w> <pos>N</pos> <def>bath</def>
+			<xref bdb="xb.ao.ad" strong="1325" twot="2644"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oea" sourceLemmaId="1355" sourceLanguage="arc" strong="1355"><entry id="oea">
+			<w xlit="gab">גַּב</w> <pos>N</pos> <def>back</def>
+			<xref bdb="xc.aa.ac" strong="1355" twot="2645"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oed" sourceLemmaId="1400" sourceLanguage="arc" strong="1400"><entry id="oed">
+			<w xlit="gĕbar">גְּבַר</w> <pos>N</pos> <def>man</def>
+			<xref bdb="xc.ab.ab" strong="1400" twot="2647a"/>
+			<etym type="sub">oef</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oej" sourceLemmaId="1467" sourceLanguage="arc" strong="1467"><entry id="oej">
+			<w xlit="gēwâ">גֵּוָה</w> <pos>N</pos> <def>pride</def>
+			<xref bdb="xc.aa.ab" strong="1467" twot="2651"/>
+			<etym type="sub">odz</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oek" sourceLemmaId="1490" sourceLanguage="arc" strong="1490"><entry id="oek">
+			<w xlit="gizbār">גִּזְבָּר</w> <pos>N</pos> <def>treasurer</def>
+			<xref bdb="xc.ac.ad" strong="1490" twot="2653"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oeq" sourceLemmaId="1541" sourceLanguage="arc" strong="1541"><entry id="oeq">
+			<w xlit="gĕlāʾ">גְּלָא</w> <pos>V</pos> <def>reveal</def>
+			<xref bdb="xc.af.aa" strong="1541" twot="2656"/>
+			<etym type="main">oes</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oes" sourceLemmaId="1547" sourceLanguage="arc" strong="1547"><entry id="oes">
+			<w xlit="gālû">גָּלוּ</w> <pos>N</pos> <def>exile</def>
+			<xref bdb="xc.af.ab" strong="1547" twot="2656a"/>
+			<etym type="sub">oeq</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oev" sourceLemmaId="1585" sourceLanguage="arc" strong="1585"><entry id="oev">
+			<w xlit="gĕmar">גְּמַר</w> <pos>V</pos> <def>complete</def>
+			<xref bdb="xc.ah.aa" strong="1585" twot="2658"/>
+			<etym root="גמר" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ofb" sourceLemmaId="1678" sourceLanguage="arc" strong="1678"><entry id="ofb">
+			<w xlit="dōb">דֹּב</w> <pos>N</pos> <def>bear</def>
+			<xref bdb="xd.aa.ab" strong="1678" twot="2664"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="off" sourceLemmaId="1701" sourceLanguage="arc" strong="1701"><entry id="off">
+			<w xlit="dibrâ">דִּבְרָה</w> <pos>N</pos> <def>cause</def>
+			<xref bdb="xd.ac.ab" strong="1701" twot="2667"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ofq" sourceLemmaId="1780" sourceLanguage="arc" strong="1780"><entry id="ofq">
+			<w xlit="dîn">דִּין</w> <pos>N</pos> <def>judgment</def>
+			<xref bdb="xd.ah.ab" strong="1780" twot="2674?"/>
+			<etym type="sub">ofp</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ofr" sourceLemmaId="1782" sourceLanguage="arc" strong="1782"><entry id="ofr">
+			<w xlit="dayyān">דַּיָּן</w> <pos>N</pos> <def>judge</def>
+			<xref bdb="xd.ah.ac" strong="1782" twot="2674a"/>
+			<etym type="sub">ofp</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ofz" sourceLemmaId="1815" sourceLanguage="arc" strong="1815"><entry id="ofz">
+			<w xlit="dĕlaq">דְּלַק</w> <pos>V</pos> <def>burn</def>
+			<xref bdb="xd.ak.aa" strong="1815" twot="2678"/>
+			<etym root="דלק" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ogf" sourceLemmaId="1868" sourceLanguage="arc" strong="1868"><entry id="ogf">
+			<w xlit="dārĕyāweš">דָּֽרְיָ֫וֶשׁ</w> <pos>Np</pos> <def>Darius</def>
+			<xref bdb="xd.an.ac" strong="1868"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ogi" sourceLemmaId="1882" sourceLanguage="arc" strong="1882"><entry id="ogi">
+			<w xlit="dāt">דָּת</w> <pos>N</pos> <def>decree</def>
+			<xref bdb="xd.ao.ad" strong="1882" twot="2683"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ogj" sourceLemmaId="1883" sourceLanguage="arc" strong="1883"><entry id="ogj">
+			<w xlit="deteʾ">דֶּ֫תֶא</w> <pos>N</pos> <def>grass</def>
+			<xref bdb="xd.ao.ae" strong="1883" twot="2684"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ogt" sourceLemmaId="1932" sourceLanguage="arc" strong="1932"><entry id="ogt">
+			<w xlit="hûʾ">הוּא</w> <pos>Pp</pos> <def>he</def>
+			<xref bdb="xe.af.aa" strong="1932" twot="2693"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ogv" sourceLemmaId="1965" sourceLanguage="arc" strong="1965"><entry id="ogv">
+			<w xlit="hêkal">הֵיכַל</w> <pos>N</pos> <def>palace</def>
+			<xref bdb="xe.af.ab" strong="1965" twot="2694"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ohh" sourceLemmaId="2110" sourceLanguage="arc" strong="2110"><entry id="ohh">
+			<w xlit="zûn">זוּן</w> <pos>V</pos> <def>feed</def>
+			<xref bdb="xg.ad.aa" strong="2110" twot="2705"/>
+			<etym root="זון" type="main">ooj</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ohm" sourceLemmaId="2166" sourceLanguage="arc" strong="2166"><entry id="ohm">
+			<w xlit="zĕman">זְמַן</w> <pos>N</pos> <def>time</def>
+			<xref bdb="xg.af.aa" strong="2166" twot="2709a"/>
+			<etym type="main">ohn</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ohs" sourceLemmaId="2192" sourceLanguage="arc" strong="2192"><entry id="ohs">
+			<w xlit="zĕʿêr">זְעֵיר</w> <pos>A</pos> <def>little</def>
+			<xref bdb="xg.ah.ab" strong="2192" twot="2713"/>
+			<etym type="sub">ohu</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ohw" sourceLemmaId="2217" sourceLanguage="arc" strong="2217"><entry id="ohw">
+			<w xlit="zĕrubbābel">זְרֻבָּבֶ֫ל</w> <pos>Np</pos> <def>Zerubbabel</def>
+			<xref bdb="xg.ai.ab" strong="2217"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oig" sourceLemmaId="2305" sourceLanguage="arc" strong="2305"><entry id="oig">
+			<w xlit="ḥedwâ">חֶדְוָה</w> <pos>N</pos> <def>joy</def>
+			<xref bdb="xh.ab.ae" strong="2305" twot="2719"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ojr" sourceLemmaId="2749" sourceLanguage="arc" strong="2749"><entry id="ojr">
+			<w xlit="ḥarṭōm">חַרְטֹם</w> <pos>N</pos> <def>magician</def>
+			<xref bdb="xh.an.ab" strong="2749" twot="2742"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oki" sourceLemmaId="2920" sourceLanguage="arc" strong="2920"><entry id="oki">
+			<w xlit="ṭal">טַל</w> <pos>N</pos> <def>dew</def>
+			<xref bdb="xi.aa.ag" strong="2920" twot="2755"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="okt" sourceLemmaId="3028" sourceLanguage="arc" strong="3028"><entry id="okt">
+			<w xlit="yad">יַד</w> <pos>N</pos> <def>hand</def>
+			<xref bdb="xj.aa.ad" strong="3028" twot="2763"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="okv" sourceLemmaId="3046" sourceLanguage="arc" strong="3046"><entry id="okv">
+			<w xlit="yĕdaʿ">יְדַע</w> <pos>V</pos> <def>know</def>
+			<xref bdb="xj.ac.aa" strong="3046" twot="2765"/>
+			<etym root="ידע" type="main">opg</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="okw" sourceLemmaId="3052" sourceLanguage="arc" strong="3052"><entry id="okw">
+			<w xlit="yĕhab">יְהַב</w> <pos>V</pos> <def>give</def>
+			<xref bdb="xj.ad.aa" strong="3052" twot="2766"/>
+			<etym root="יהב" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="olc" sourceLemmaId="3191" sourceLanguage="arc" strong="3191"><entry id="olc">
+			<w xlit="yĕṭab">יְטַב</w> <pos>V</pos> <def>be pleasing</def>
+			<xref bdb="xj.af.aa" strong="3191" twot="2768"/>
+			<etym root="יטב" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="old" sourceLemmaId="3202" sourceLanguage="arc" strong="3202"><entry id="old">
+			<w xlit="yĕkil">יְכִל</w> <pos>V</pos> <def>be able</def>
+			<xref bdb="xj.ag.aa" strong="3202" twot="2769"/>
+			<etym root="יכל" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ole" sourceLemmaId="3221" sourceLanguage="arc" strong="3221"><entry id="ole">
+			<w xlit="yam">יַם</w> <pos>N</pos> <def>sea</def>
+			<xref bdb="xj.ag.ab" strong="3221" twot="2770"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="olf" sourceLemmaId="3255" sourceLanguage="arc" strong="3255"><entry id="olf">
+			<w xlit="yĕsap">יְסַף</w> <pos>V</pos> <def>add</def>
+			<xref bdb="xj.ah.aa" strong="3255" twot="2771"/>
+			<etym root="יסף" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ozx" sourceLemmaId="3319" sourceLanguage="arc" strong="3319"><entry id="ozx">
+			<w xlit="šêṣî">שֵׁיצִי</w> <pos>V</pos> <def>bring out</def>
+			<xref bdb="xv.am.aa" strong="3319" twot="3028"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="olk" sourceLemmaId="3345" sourceLanguage="arc" strong="3345"><entry id="olk">
+			<w xlit="yĕqad">יְקַד</w> <pos>V</pos> <def>burn</def>
+			<xref bdb="xj.ak.aa" strong="3345" twot="2774"/>
+			<etym root="יקד" type="main">oll</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="olm" sourceLemmaId="3358" sourceLanguage="arc" strong="3358"><entry id="olm">
+			<w xlit="yaqqîr">יַקִּיר</w> <pos>A</pos> <def>honourable</def>
+			<xref bdb="xj.ak.ad" strong="3358" twot="2775a"/>
+			<etym type="sub">oln</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oln" sourceLemmaId="3367" sourceLanguage="arc" strong="3367"><entry id="oln">
+			<w xlit="yĕqār">יְקָר</w> <pos>N</pos> <def>honour</def>
+			<xref bdb="xj.ak.ac" strong="3367" twot="2775a"/>
+			<etym root="יקר" type="main">olm</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="olp" sourceLemmaId="3390" sourceLanguage="arc" strong="3390"><entry id="olp">
+			<w xlit="yĕrûšĕlēm">יְרוּשְׁלֵם</w> <pos>Np</pos> <def>Jerusalem</def>
+			<xref bdb="xj.ak.ae" strong="3390"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ols" sourceLemmaId="3443" sourceLanguage="arc" strong="3443"><entry id="ols">
+			<w xlit="yēšûaʿ">יֵשׁוּעַ</w> <pos>Np</pos> <def>Jeshua</def>
+			<xref bdb="xj.ak.ai" strong="3443"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="olu" sourceLemmaId="3479" sourceLanguage="arc" strong="3479"><entry id="olu">
+			<w xlit="yiśrāʾēl">יִשְׂרָאֵל</w> <pos>Np</pos> <def>Israel</def>
+			<xref bdb="xj.ak.ah" strong="3479"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oma" sourceLemmaId="3542" sourceLanguage="arc" strong="3542"><entry id="oma">
+			<w xlit="kâ">כָּה</w> <pos>D</pos> <def>here</def>
+			<xref bdb="xk.ab.aa" strong="3542" twot="2784"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="omc" sourceLemmaId="3549" sourceLanguage="arc" strong="3549"><entry id="omc">
+			<w xlit="kāhēn">כָּהֵן</w> <pos>N</pos> <def>priest</def>
+			<xref bdb="xk.ac.ab" strong="3549" twot="2786"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="omf" sourceLemmaId="3567" sourceLanguage="arc" strong="3567"><entry id="omf">
+			<w xlit="kôreš">כּ֫וֹרֶשׁ</w> <pos>Np</pos> <def>Cyrus</def>
+			<xref bdb="xk.ac.ae" strong="3567"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="omh" sourceLemmaId="3606" sourceLanguage="arc" strong="3606"><entry id="omh">
+			<w xlit="kōl">כֹּל</w> <pos>N</pos> <def>the whole</def>
+			<xref bdb="xk.ad.ab" strong="3606" twot="2789"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="omm" sourceLemmaId="3675" sourceLanguage="arc" strong="3675"><entry id="omm">
+			<w xlit="kĕnāt">כְּנָת</w> <pos>N</pos> <def>associate</def>
+			<xref bdb="xk.ae.ab" strong="3675" twot="2793"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ona" sourceLemmaId="3679" sourceLanguage="arc" strong="3679"><entry id="ona">
+			<w xlit="kaśdāy">כַּשְׂדָּ֑י</w> <pos>Ng</pos> <def>Chaldean</def>
+			<xref bdb="xk.ai.ac" strong="3679"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="omo" sourceLemmaId="3702" sourceLanguage="arc" strong="3702"><entry id="omo">
+			<w xlit="kĕsap">כְּסַף</w> <pos>N</pos> <def>silver</def>
+			<xref bdb="xk.af.ad" strong="3702" twot="2794"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="onb" sourceLemmaId="3790" sourceLanguage="arc" strong="3790"><entry id="onb">
+			<w xlit="kĕtab">כְּתַב</w> <pos>V</pos> <def>write</def>
+			<xref bdb="xk.aj.aa" strong="3790" twot="2805"/>
+			<etym root="כתב" type="main">onc</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="onc" sourceLemmaId="3792" sourceLanguage="arc" strong="3792"><entry id="onc">
+			<w xlit="kĕtāb">כְּתָב</w> <pos>N</pos> <def>writing</def>
+			<xref bdb="xk.aj.ab" strong="3792" twot="2805a"/>
+			<etym type="sub">onb</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ond" sourceLemmaId="3797" sourceLanguage="arc" strong="3797"><entry id="ond">
+			<w xlit="kĕtal">כְּתַל</w> <pos>N</pos> <def>wall</def>
+			<xref bdb="xk.aj.ac" strong="3797" twot="2806"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="onf" sourceLemmaId="3809" sourceLanguage="arc" strong="3809"><entry id="onf">
+			<w xlit="lāʾ">לָא</w> <pos>D</pos> <def>not</def>
+			<xref bdb="xl.ab.aa" strong="3809" twot="2808"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="onh" sourceLemmaId="3821" sourceLanguage="arc" strong="3821"><entry id="onh">
+			<w xlit="lēb">לֵב</w> <pos>N</pos> <def>heart</def>
+			<xref bdb="xl.ad.ab" strong="3821" twot="2809a"/>
+			<etym type="sub">oni</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oni" sourceLemmaId="3825" sourceLanguage="arc" strong="3825"><entry id="oni">
+			<w xlit="lĕbab">לְבַב</w> <pos>N</pos> <def>heart</def>
+			<xref bdb="xl.ad.aa" strong="3825" twot="2809b"/>
+			<etym root="לבב" type="main">onh</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="onk" sourceLemmaId="3831" sourceLanguage="arc" strong="3831"><entry id="onk">
+			<w xlit="lĕbûš">לְבוּשׁ</w> <pos>N</pos> <def>garment</def>
+			<xref bdb="xl.ae.ab" strong="3831" twot="2810a"/>
+			<etym type="sub">onl</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="onl" sourceLemmaId="3848" sourceLanguage="arc" strong="3848"><entry id="onl">
+			<w xlit="lĕbēš">לְבֵשׁ</w> <pos>V</pos> <def>be clothed</def>
+			<xref bdb="xl.ae.aa" strong="3848" twot="2810"/>
+			<etym root="לבשׁ" type="main">onk</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ono" sourceLemmaId="3879" sourceLanguage="arc" strong="3879"><entry id="ono">
+			<w xlit="lēwāy">לֵוָי</w> <pos>Ng</pos> <def>Levite</def>
+			<xref bdb="xl.ag.ab" strong="3879"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="onq" sourceLemmaId="3900" sourceLanguage="arc" strong="3900"><entry id="onq">
+			<w xlit="lĕḥēm">לְחֵם</w> <pos>N</pos> <def>feast</def>
+			<xref bdb="xl.ag.ad" strong="3900" twot="2814"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ons" sourceLemmaId="3916" sourceLanguage="arc" strong="3916"><entry id="ons">
+			<w xlit="lêlāʾ">לֵילָא</w> <pos>N</pos> <def>night</def>
+			<xref bdb="xl.ag.af" strong="3916" twot="2816"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="onw" sourceLemmaId="3977" sourceLanguage="arc" strong="3977"><entry id="onw">
+			<w xlit="mōʾzēnĕyāʾ">מֹאזֵנְיָא</w> <pos>N</pos> <def>scale</def>
+			<xref bdb="xa.ah.ab" strong="3977" twot="2819"/>
+			<etym type="sub">nzm</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="onx" sourceLemmaId="3983" sourceLanguage="arc" strong="3983"><entry id="onx">
+			<w xlit="mēʾmar">מֵאמַר</w> <pos>N</pos> <def>word</def>
+			<xref bdb="xa.at.ab" strong="3983" twot="2585a"/>
+			<etym type="sub">oao</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="onz" sourceLemmaId="4040" sourceLanguage="arc" strong="4040"><entry id="onz">
+			<w xlit="mĕgillâ">מְגִלָּה</w> <pos>N</pos> <def>roll</def>
+			<xref bdb="xc.ag.ad" strong="4040" twot="2657c"/>
+			<etym type="sub">oeu</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ooe" sourceLemmaId="4076" sourceLanguage="arc" strong="4076"><entry id="ooe">
+			<w xlit="māday">מָדַי</w> <pos>Np</pos> <def>Mede(-s)</def>
+			<xref bdb="xm.aa.ak" strong="4076"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oob" sourceLemmaId="4077" sourceLanguage="arc" strong="4077"><entry id="oob">
+			<w xlit="mādāʾâ">מָדָאָה</w> <pos>Ng</pos> <def>Mede</def>
+			<xref bdb="xm.aa.al" strong="4077"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oof" sourceLemmaId="4083" sourceLanguage="arc" strong="4083"><entry id="oof">
+			<w xlit="mĕdînâ">מְדִינָה</w> <pos>N</pos> <def>district</def>
+			<xref bdb="xd.ah.ad" strong="4083" twot="2674c"/>
+			<etym type="sub">ofp</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ooh" sourceLemmaId="4101" sourceLanguage="arc" strong="4101"><entry id="ooh">
+			<w xlit="mâ">מָה</w> <pos>Pi</pos> <def>what?</def>
+			<xref bdb="xm.ab.aa" strong="4101" twot="2822"/>
+			<etym type="sub">onu</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ooj" sourceLemmaId="4203" sourceLanguage="arc" strong="4203"><entry id="ooj">
+			<w xlit="māzôn">מָזוֹן</w> <pos>N</pos> <def>food</def>
+			<xref bdb="xg.ad.ab" strong="4203" twot="2705a"/>
+			<etym type="sub">ohh</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="opc" sourceLemmaId="4481" sourceLanguage="arc" strong="4481"><entry id="opc">
+			<w xlit="min">מִן</w> <pos>R</pos> <def>from</def>
+			<xref bdb="xm.ak.aa" strong="4481" twot="2833"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ops" sourceLemmaId="4873" sourceLanguage="arc" strong="4873"><entry id="ops">
+			<w xlit="mōšeh">מֹשֶׁה</w> <pos>Np</pos> <def>Moses</def>
+			<xref bdb="xm.am.ab" strong="4873"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="opy" sourceLemmaId="4978" sourceLanguage="arc" strong="4978"><entry id="opy">
+			<w xlit="mattĕnāʾ">מַתְּנָא</w> <pos>N</pos> <def>gift</def>
+			<xref bdb="xn.ar.ab" strong="4978" twot="2880a"/>
+			<etym type="sub">ort</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="opz" sourceLemmaId="5013" sourceLanguage="arc" strong="5013"><entry id="opz">
+			<w xlit="nbʾ">נבא</w> <pos>V</pos> <def>see</def>
+			<xref bdb="xn.aa.aa" strong="5013" twot="2843"/>
+			<etym root="נבא" type="main">oqa, oqd</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oqb" sourceLemmaId="5020" sourceLanguage="arc" strong="5020"><entry id="oqb">
+			<w xlit="nĕbûkadneṣṣar">נְבוּכַדְנֶצַּר</w> <pos>Np</pos> <def>Nebuchadnezzar</def>
+			<xref bdb="xn.aa.ad" strong="5020"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oqz" sourceLemmaId="5232" sourceLanguage="arc" strong="5232"><entry id="oqz">
+			<w xlit="nĕkas">נְכַס</w> <pos>N</pos> <def>riches</def>
+			<xref bdb="xn.ai.ac" strong="5232" twot="2863"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ora" sourceLemmaId="5245" sourceLanguage="arc" strong="5245"><entry id="ora">
+			<w xlit="nĕmar">נְמַר</w> <pos>N</pos> <def>leopard</def>
+			<xref bdb="xn.ai.ad" strong="5245" twot="2864"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="orb" sourceLemmaId="5256" sourceLanguage="arc" strong="5256"><entry id="orb">
+			<w xlit="nĕsaḥ">נְסַח</w> <pos>V</pos> <def>pull away</def>
+			<xref bdb="xn.aj.aa" strong="5256" twot="2865"/>
+			<etym root="נסח" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ore" sourceLemmaId="5267" sourceLanguage="arc" strong="5267"><entry id="ore">
+			<w xlit="nĕsaq">נְסַק</w> <pos>V</pos> <def>come up</def>
+			<xref bdb="xo.ae.aa" strong="5267" twot="2889"/>
+			<etym type="main">osd</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="orf" sourceLemmaId="5308" sourceLanguage="arc" strong="5308"><entry id="orf">
+			<w xlit="nĕpal">נְפַל</w> <pos>V</pos> <def>fall</def>
+			<xref bdb="xn.al.aa" strong="5308" twot="2867"/>
+			<etym root="נפל" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="orn" sourceLemmaId="5376" sourceLanguage="arc" strong="5376"><entry id="orn">
+			<w xlit="nĕśāʾ">נְשָׂא</w> <pos>V</pos> <def>lift</def>
+			<xref bdb="xn.aq.aa" strong="5376" twot="2874"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oro" sourceLemmaId="5389" sourceLanguage="arc" strong="5389"><entry id="oro">
+			<w xlit="nĕšîn">נְשִׁין</w> <pos>N</pos> <def>wives</def>
+			<xref bdb="xa.ba.ab" strong="5389" twot="2875"/>
+			<etym type="sub">oay</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="orr" sourceLemmaId="5407" sourceLanguage="arc" strong="5407"><entry id="orr">
+			<w xlit="ništĕwān">נִשְׁתְּוָן</w> <pos>N</pos> <def>letter</def>
+			<xref bdb="xn.aq.ae" strong="5407" twot="2878"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ors" sourceLemmaId="5412" sourceLanguage="arc" strong="5412"><entry id="ors">
+			<w xlit="nĕtîn">נְתִין</w> <pos>N</pos> <def>Nᵉthinîn</def>
+			<xref bdb="xn.aq.af" strong="5412" twot="2879"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oru" sourceLemmaId="5426" sourceLanguage="arc" strong="5426"><entry id="oru">
+			<w xlit="nĕtar">נְתַר</w> <pos>V</pos> <def>strip off</def>
+			<xref bdb="xn.ar.ac" strong="5426" twot="2881"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="orx" sourceLemmaId="5457" sourceLanguage="arc" strong="5457"><entry id="orx">
+			<w xlit="sĕgid">סְגִ֑ד</w> <pos>V</pos> <def>do homage</def>
+			<xref bdb="xo.ac.ab" strong="5457" twot="2884"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ory" sourceLemmaId="5460" sourceLanguage="arc" strong="5460"><entry id="ory">
+			<w xlit="sĕgan">סְגַן</w> <pos>N</pos> <def>prefect</def>
+			<xref bdb="xo.ac.ac" strong="5460" twot="2885"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="orz" sourceLemmaId="5463" sourceLanguage="arc" strong="5463"><entry id="orz">
+			<w xlit="sĕgar">סְגַר</w> <pos>V</pos> <def>shut</def>
+			<xref bdb="xo.ac.ad" strong="5463" twot="2886"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="osb" sourceLemmaId="5491" sourceLanguage="arc" strong="5491"><entry id="osb">
+			<w xlit="sôp">סוֹף</w> <pos>N</pos> <def>end</def>
+			<xref bdb="xo.ad.ab" strong="5491" twot="2888a"/>
+			<etym type="sub">osc</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="osq" sourceLemmaId="5675" sourceLanguage="arc" strong="5675"><entry id="osq">
+			<w xlit="ʿăbar">עֲבַר</w> <pos>N</pos> <def>region across</def>
+			<xref bdb="xp.aa.af" strong="5675" twot="2897"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="osr" sourceLemmaId="5705" sourceLanguage="arc" strong="5705"><entry id="osr">
+			<w xlit="ʿad">עַד</w> <pos>R</pos> <def>even to</def>
+			<xref bdb="xp.ac.aa" strong="5705" twot="2899"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oss" sourceLemmaId="5709" sourceLanguage="arc" strong="5709"><entry id="oss">
+			<w xlit="ʿădâ">עֲדָה</w> <pos>V</pos> <def>pass on</def>
+			<xref bdb="xp.ab.aa" strong="5709" twot="2898"/>
+			<etym root="עדה" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="osu" sourceLemmaId="5751" sourceLanguage="arc" strong="5751"><entry id="osu">
+			<w xlit="ʿôd">עוֹד</w> <pos>D</pos> <def>still</def>
+			<xref bdb="xp.ad.aa" strong="5751" twot="2901"/>
+			<etym root="עוד" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="osw" sourceLemmaId="5776" sourceLanguage="arc" strong="5776"><entry id="osw">
+			<w xlit="ʿôp">עוֹף</w> <pos>N</pos> <def>fowl</def>
+			<xref bdb="xp.ad.ac" strong="5776" twot="2903"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="osy" sourceLemmaId="5796" sourceLanguage="arc" strong="5796"><entry id="osy">
+			<w xlit="ʿēz">עֵז</w> <pos>N</pos> <def>she</def>
+			<xref bdb="xp.ak.ab" strong="5796" twot="2920a"/>
+			<etym type="sub">oty</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="otg" sourceLemmaId="5922" sourceLanguage="arc" strong="5922"><entry id="otg">
+			<w xlit="ʿal">עַל</w> <pos>R</pos> <def>upon</def>
+			<xref bdb="xp.af.aa" strong="5922" twot="2908"/>
+			<etym type="main">oth, oti</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ott" sourceLemmaId="5972" sourceLanguage="arc" strong="5972"><entry id="ott">
+			<w xlit="ʿam">עַם</w> <pos>N</pos> <def>people</def>
+			<xref bdb="xp.ag.ag" strong="5972" twot="2914"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ots" sourceLemmaId="5974" sourceLanguage="arc" strong="5974"><entry id="ots">
+			<w xlit="ʿim">עִם</w> <pos>R</pos> <def>with</def>
+			<xref bdb="xp.ah.aa" strong="5974" twot="2915"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="otw" sourceLemmaId="6032" sourceLanguage="arc" strong="6032"><entry id="otw">
+			<w xlit="ʿănâ">עֲנָה</w> <pos>V</pos> <def>answer</def>
+			<xref bdb="xp.ai.aa" strong="6032" twot="2918"/>
+			<etym root="ענה" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="otz" sourceLemmaId="6033" sourceLanguage="arc" strong="6033"><entry id="otz">
+			<w xlit="ʿănāy">עֲנָי</w> <pos>A</pos> <def>poor</def>
+			<xref bdb="xp.aj.ab" strong="6033" twot="2919a"/>
+			<etym type="sub">otx</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oua" sourceLemmaId="6050" sourceLanguage="arc" strong="6050"><entry id="oua">
+			<w xlit="ʿănān">עֲנָן</w> <pos>N</pos> <def>cloud</def>
+			<xref bdb="xp.ak.ac" strong="6050" twot="2921"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oub" sourceLemmaId="6056" sourceLanguage="arc" strong="6056"><entry id="oub">
+			<w xlit="ʿănap">עֲנַף</w> <pos>N</pos> <def>bough</def>
+			<xref bdb="xp.ak.ad" strong="6056" twot="2922"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oug" sourceLemmaId="6132" sourceLanguage="arc" strong="6132"><entry id="oug">
+			<w xlit="ʿăqar">עֲקַר</w> <pos>V</pos> <def>be rooted up</def>
+			<xref bdb="xp.an.ab" strong="6132" twot="2926"/>
+			<etym type="sub">ouh</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ouj" sourceLemmaId="6146" sourceLanguage="arc" strong="6146"><entry id="ouj">
+			<w xlit="ʿār">עָר</w> <pos>N</pos> <def>foe</def>
+			<xref bdb="xp.ap.ab" strong="6146" twot="2930a"/>
+			<etym type="sub">oun</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ouq" sourceLemmaId="6243" sourceLanguage="arc" strong="6243"><entry id="ouq">
+			<w xlit="ʿeśrîn">עֶשְׂרִין</w> <pos>N</pos> <def>twenty</def>
+			<xref bdb="xp.aq.ab" strong="6243" twot="2932a"/>
+			<etym type="sub">oup</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ouu" sourceLemmaId="6347" sourceLanguage="arc" strong="6347"><entry id="ouu">
+			<w xlit="peḥâ">פֶּחָה</w> <pos>N</pos> <def>governor</def>
+			<xref bdb="xq.aa.aa" strong="6347" twot="2936"/>
+			<etym root="פחה" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oux" sourceLemmaId="6386" sourceLanguage="arc" strong="6386"><entry id="oux">
+			<w xlit="pĕlag">פְּלַג</w> <pos>V</pos> <def>divide</def>
+			<xref bdb="xq.ab.aa" strong="6386" twot="2939"/>
+			<etym root="פלג" type="main">ouy, ouz</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ouz" sourceLemmaId="6392" sourceLanguage="arc" strong="6392"><entry id="ouz">
+			<w xlit="pĕluggâ">פְּלֻגָּה</w> <pos>N</pos> <def>division</def>
+			<xref bdb="xq.ab.ac" strong="6392" twot="2939b"/>
+			<etym type="sub">oux</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ovj" sourceLemmaId="6540" sourceLanguage="arc" strong="6540"><entry id="ovj">
+			<w xlit="pāras">פָּרַס</w> <pos>Np</pos> <def>Persia</def>
+			<xref bdb="xq.ae.ac" strong="6540"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ovk" sourceLemmaId="6543" sourceLanguage="arc" strong="6543"><entry id="ovk">
+			<w xlit="pārĕsāʾâ">פָּרְסָאָה</w> <pos>Ag</pos> <def>Persian</def>
+			<xref bdb="xq.ae.ad" strong="6543"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ovn" sourceLemmaId="6573" sourceLanguage="arc" strong="6573"><entry id="ovn">
+			<w xlit="paršegen">פַּרְשֶׁ֫גֶן</w> <pos>N</pos> <def>copy</def>
+			<xref bdb="xq.ag.ab" strong="6573" twot="2948"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="owb" sourceLemmaId="6676" sourceLanguage="arc" strong="6676"><entry id="owb">
+			<w xlit="ṣawwaʾr">צַוַּאר</w> <pos>N</pos> <def>neck</def>
+			<xref bdb="xr.ac.af" strong="6676" twot="2958"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="owk" sourceLemmaId="6922" sourceLanguage="arc" strong="6922"><entry id="owk">
+			<w xlit="qaddîš">קַדִּישׁ</w> <pos>A</pos> <def>holy</def>
+			<xref bdb="xs.ab.ab" strong="6922" twot="2967"/>
+			<etym type="sub">owo</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="owq" sourceLemmaId="6966" sourceLanguage="arc" strong="6966"><entry id="owq">
+			<w xlit="qûm">קוּם</w> <pos>V</pos> <def>arise</def>
+			<xref bdb="xs.ad.aa" strong="6966" twot="2968"/>
+			<etym root="קום" type="main">owv, oww</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="owx" sourceLemmaId="7032" sourceLanguage="arc" strong="7032"><entry id="owx">
+			<w xlit="qāl">קָל</w> <pos>N</pos> <def>voice</def>
+			<xref bdb="xs.ac.ab" strong="7032" twot="2973"/>
+			<etym type="sub">owp</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oxb" sourceLemmaId="7113" sourceLanguage="arc" strong="7113"><entry id="oxb">
+			<w xlit="qĕṣaṣ">קְצַץ</w> <pos>V</pos> <def>cut off</def>
+			<xref bdb="xs.ah.aa" strong="7113"/>
+			<etym root="קצא" type="main">oxc</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oxc" sourceLemmaId="7118" sourceLanguage="arc" strong="7118"><entry id="oxc">
+			<w xlit="qĕṣāt">קְצָת</w> <pos>N</pos> <def>end</def>
+			<xref bdb="xs.ah.ab" strong="7118" twot="2976"/>
+			<etym type="sub">oxb</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oxd" sourceLemmaId="7123" sourceLanguage="arc" strong="7123"><entry id="oxd">
+			<w xlit="qĕrāʾ">קְרָא</w> <pos>V</pos> <def>call</def>
+			<xref bdb="xs.aj.aa" strong="7123" twot="2977"/>
+			<etym root="קרא" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oxe" sourceLemmaId="7127" sourceLanguage="arc" strong="7127"><entry id="oxe">
+			<w xlit="qĕrēb">קְרֵב</w> <pos>V</pos> <def>approach</def>
+			<xref bdb="xs.ak.aa" strong="7127" twot="2978"/>
+			<etym root="קרב" type="main">oxf</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oxf" sourceLemmaId="7129" sourceLanguage="arc" strong="7129"><entry id="oxf">
+			<w xlit="qĕrāb">קְרָב</w> <pos>N</pos> <def>war</def>
+			<xref bdb="xs.ak.ab" strong="7129" twot="2978a"/>
+			<etym type="sub">oxe</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oxg" sourceLemmaId="7149" sourceLanguage="arc" strong="7149"><entry id="oxg">
+			<w xlit="qiryâ">קִרְיָה</w> <pos>N</pos> <def>city</def>
+			<xref bdb="xs.ak.ac" strong="7149" twot="2979"/>
+			<etym root="קרה" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oxn" sourceLemmaId="7229" sourceLanguage="arc" strong="7229"><entry id="oxn">
+			<w xlit="rab">רַב</w> <pos>A</pos> <def>great</def>
+			<xref bdb="xt.ab.ab" strong="7229" twot="2984a"/>
+			<etym type="sub">oxo</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oxp" sourceLemmaId="7236" sourceLanguage="arc" strong="7236"><entry id="oxp">
+			<w xlit="rĕbâ">רְבָה</w> <pos>V</pos> <def>grow great</def>
+			<xref bdb="xt.ac.aa" strong="7236" twot="2985"/>
+			<etym root="רבה" type="main">oxq</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oxr" sourceLemmaId="7240" sourceLanguage="arc" strong="7240"><entry id="oxr">
+			<w xlit="ribbô">רִבּוֹ</w> <pos>N</pos> <def>myriad</def>
+			<xref bdb="xt.ab.ac" strong="7240" twot="2984b"/>
+			<etym type="sub">oxo</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oxs" sourceLemmaId="7244" sourceLanguage="arc" strong="7244"><entry id="oxs">
+			<w xlit="rĕbîʿî">רְבִיעִי</w> <pos>A</pos> <def>fourth</def>
+			<xref bdb="xt.ad.ac" strong="7244" twot="2986b"/>
+			<etym type="sub">oxt</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oxw" sourceLemmaId="7265" sourceLanguage="arc" strong="7265"><entry id="oxw">
+			<w xlit="rĕgaz">רְגַז</w> <pos>V</pos> <def>enrage</def>
+			<xref bdb="xt.ae.aa" strong="7265" twot="2987"/>
+			<etym root="רגז" type="main">oxx</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oxy" sourceLemmaId="7271" sourceLanguage="arc" strong="7271"><entry id="oxy">
+			<w xlit="rĕgal">רְגַל</w> <pos>N</pos> <def>foot</def>
+			<xref bdb="xt.ae.ac" strong="7271" twot="2988"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oyb" sourceLemmaId="7308" sourceLanguage="arc" strong="7308"><entry id="oyb">
+			<w xlit="rûaḥ">רוּחַ</w> <pos>N</pos> <def>wind</def>
+			<xref bdb="xt.ag.ab" strong="7308" twot="2991a"/>
+			<etym type="sub">oyc</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oyd" sourceLemmaId="7313" sourceLanguage="arc" strong="7313"><entry id="oyd">
+			<w xlit="rûm">רוּם</w> <pos>V</pos> <def>rise</def>
+			<xref bdb="xt.ah.aa" strong="7313" twot="2992"/>
+			<etym root="רום" type="main">oye</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oyh" sourceLemmaId="7352" sourceLanguage="arc" strong="7352"><entry id="oyh">
+			<w xlit="rĕḥîq">רְחִיק</w> <pos>A</pos> <def>far</def>
+			<xref bdb="xt.aj.ab" strong="7352" twot="2994"/>
+			<etym type="sub">oyk</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oyl" sourceLemmaId="7382" sourceLanguage="arc" strong="7382"><entry id="oyl">
+			<w xlit="rêaḥ">רֵיחַ</w> <pos>N</pos> <def>smell</def>
+			<xref bdb="xt.ag.ac" strong="7382" twot="2991b"/>
+			<etym type="sub">oyc</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oyr" sourceLemmaId="7490" sourceLanguage="arc" strong="7490"><entry id="oyr">
+			<w xlit="rĕʿaʿ">רְעַע</w> <pos>V</pos> <def>crush</def>
+			<xref bdb="xt.am.aa" strong="7490" twot="3000"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oys" sourceLemmaId="7512" sourceLanguage="arc" strong="7512"><entry id="oys">
+			<w xlit="rĕpas">רְפַס</w> <pos>V</pos> <def>tread</def>
+			<xref bdb="xt.an.aa" strong="7512" twot="3001"/>
+			<etym root="רפס" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oyt" sourceLemmaId="7560" sourceLanguage="arc" strong="7560"><entry id="oyt">
+			<w xlit="rĕšam">רְשַׁם</w> <pos>V</pos> <def>inscribe</def>
+			<xref bdb="xt.ao.aa" strong="7560" twot="3002"/>
+			<etym root="רשׁם" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oyu" sourceLemmaId="7593" sourceLanguage="arc" strong="7593"><entry id="oyu">
+			<w xlit="šĕʾēl">שְׁאֵל</w> <pos>V</pos> <def>ask</def>
+			<xref bdb="xv.aa.aa" strong="7593" twot="3012"/>
+			<etym root="שׁאל" type="main">oyv</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oyw" sourceLemmaId="7598" sourceLanguage="arc" strong="7598"><entry id="oyw">
+			<w xlit="šĕʾaltîʾēl">שְׁאַלְתִּיאֵל</w> <pos>Np</pos> <def>Shealtiel</def>
+			<xref bdb="xv.aa.ac" strong="7598"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="oyx" sourceLemmaId="7606" sourceLanguage="arc" strong="7606"><entry id="oyx">
+			<w xlit="šĕʾār">שְׁאָר</w> <pos>N</pos> <def>rest</def>
+			<xref bdb="xv.aa.ad" strong="7606" twot="3013"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ozb" sourceLemmaId="7631" sourceLanguage="arc" strong="7631"><entry id="ozb">
+			<w xlit="śĕbîb">שְׂבִיב</w> <pos>N</pos> <def>flame</def>
+			<xref bdb="xv.ab.ab" strong="7631" twot="3016"/>
+			<etym type="sub">oyy</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ozd" sourceLemmaId="7655" sourceLanguage="arc" strong="7655"><entry id="ozd">
+			<w xlit="šibʿâ">שִׁבְעָה</w> <pos>N</pos> <def>seven</def>
+			<xref bdb="xv.ad.aa" strong="7655" twot="3017"/>
+			<etym root="שׁבע" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ozk" sourceLemmaId="7715" sourceLanguage="arc" strong="7715"><entry id="ozk">
+			<w xlit="šadrak">שַׁדְרַךְ</w> <pos>Np</pos> <def>Shadrach</def>
+			<xref bdb="xv.ag.ac" strong="7715"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ozp" sourceLemmaId="7761" sourceLanguage="arc" strong="7761"><entry id="ozp">
+			<w xlit="śûm">שׂוּם</w> <pos>V</pos> <def>set</def>
+			<xref bdb="xu.ac.aa" strong="7761" twot="3006"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ozr" sourceLemmaId="7792" sourceLanguage="arc" strong="7792"><entry id="ozr">
+			<w xlit="šûr">שׁוּר</w> <pos>N</pos> <def>wall</def>
+			<xref bdb="xv.ak.ac" strong="7792" twot="3025"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ozt" sourceLemmaId="7844" sourceLanguage="arc" strong="7844"><entry id="ozt">
+			<w xlit="šĕḥat">שְׁחַת</w> <pos>V</pos> <def>corrupt</def>
+			<xref bdb="xv.al.aa" strong="7844" twot="3026"/>
+			<etym root="שׁחת" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="ozv" sourceLemmaId="7868" sourceLanguage="arc" strong="7868"><entry id="ozv">
+			<w xlit="śîb">שִׂיב</w> <pos>V</pos> <def>be hoary</def>
+			<xref bdb="xu.ad.aa" strong="7868" twot="3008"/>
+			<etym root="שׂיב" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="paa" sourceLemmaId="7920" sourceLanguage="arc" strong="7920"><entry id="paa">
+			<w xlit="śĕkal">שְׂכַל</w> <pos>V</pos> <def>consider</def>
+			<xref bdb="xu.ae.aa" strong="7920" twot="3009"/>
+			<etym root="שׂכל" type="main">pac</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pad" sourceLemmaId="7932" sourceLanguage="arc" strong="7932"><entry id="pad">
+			<w xlit="šĕkēn">שְׁכֵן</w> <pos>V</pos> <def>dwell</def>
+			<xref bdb="xv.ap.aa" strong="7932" twot="3031"/>
+			<etym root="שׁכן" type="main">opv</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="paj" sourceLemmaId="7972" sourceLanguage="arc" strong="7972"><entry id="paj">
+			<w xlit="šĕlaḥ">שְׁלַח</w> <pos>V</pos> <def>send</def>
+			<xref bdb="xv.ar.aa" strong="7972" twot="3033"/>
+			<etym root="שׁלח" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pak" sourceLemmaId="7981" sourceLanguage="arc" strong="7981"><entry id="pak">
+			<w xlit="šĕlēṭ">שְׁלֵט</w> <pos>V</pos> <def>have power</def>
+			<xref bdb="xv.as.aa" strong="7981" twot="3034"/>
+			<etym root="שׁלט" type="main">pal, pam, pan</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pal" sourceLemmaId="7984" sourceLanguage="arc" strong="7984"><entry id="pal">
+			<w xlit="šilṭôn">שִׁלְטוֹן</w> <pos>N</pos> <def>ruler</def>
+			<xref bdb="xv.as.ab" strong="7984" twot="3034c"/>
+			<etym type="sub">pak</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="paq" sourceLemmaId="8036" sourceLanguage="arc" strong="8036"><entry id="paq">
+			<w xlit="šum">שֻׁם</w> <pos>N</pos> <def>name</def>
+			<xref bdb="xv.at.ac" strong="8036" twot="3036"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="par" sourceLemmaId="8046" sourceLanguage="arc" strong="8046"><entry id="par">
+			<w xlit="šĕmad">שְׁמַד</w> <pos>V</pos> <def>destroy</def>
+			<xref bdb="xv.au.aa" strong="8046" twot="3037"/>
+			<etym root="שׁמד" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pas" sourceLemmaId="8065" sourceLanguage="arc" strong="8065"><entry id="pas">
+			<w xlit="šāmayin">שָׁמַ֫יִן</w> <pos>N</pos> <def>heavens</def>
+			<xref bdb="xv.au.ab" strong="8065" twot="3038"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pat" sourceLemmaId="8075" sourceLanguage="arc" strong="8075"><entry id="pat">
+			<w xlit="šĕmam">שְׁמַם</w> <pos>V</pos> <def>be appalled</def>
+			<xref bdb="xv.av.aa" strong="8075" twot="3039"/>
+			<etym root="שׁמם" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pau" sourceLemmaId="8086" sourceLanguage="arc" strong="8086"><entry id="pau">
+			<w xlit="šĕmaʿ">שְׁמַע</w> <pos>V</pos> <def>hear</def>
+			<xref bdb="xv.aw.aa" strong="8086" twot="3040"/>
+			<etym root="שׁמע" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pbc" sourceLemmaId="8131" sourceLanguage="arc" strong="8131"><entry id="pbc">
+			<w xlit="śĕnāʾ">שְׂנָא</w> <pos>V</pos> <def>hate</def>
+			<xref bdb="xu.af.aa" strong="8131" twot="3010"/>
+			<etym root="שׂנא" type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pbb" sourceLemmaId="8133" sourceLanguage="arc" strong="8133"><entry id="pbb">
+			<w xlit="šĕnāʾ">שְׁנָא</w> <pos>V</pos> <def>change</def>
+			<xref bdb="xv.az.aa" strong="8133"/>
+			<etym type="main"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pbe" sourceLemmaId="8139" sourceLanguage="arc" strong="8139"><entry id="pbe">
+			<w xlit="šĕnâ">שְׁנָה</w> <pos>N</pos> <def>sleep</def>
+			<xref bdb="xj.al.ab" strong="8139" twot="2778a"/>
+			<etym type="sub">olt</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pbd" sourceLemmaId="8140" sourceLanguage="arc" strong="8140"><entry id="pbd">
+			<w xlit="šĕnâ">שְׁנָה</w> <pos>N</pos> <def>year</def>
+			<xref bdb="xv.az.ab" strong="8140"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pbk" sourceLemmaId="8214" sourceLanguage="arc" strong="8214"><entry id="pbk">
+			<w xlit="šĕpēl">שְׁפֵל</w> <pos>V</pos> <def>be low</def>
+			<xref bdb="xv.bc.aa" strong="8214"/>
+			<etym root="שׁפל" type="main">pbl</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pbr" sourceLemmaId="8330" sourceLanguage="arc" strong="8330"><entry id="pbr">
+			<w xlit="šōreš">שֹׁ֫רֶשׁ</w> <pos>N</pos> <def>root</def>
+			<xref bdb="xv.bg.aa" strong="8330" twot="3050a"/>
+			<etym root="שׁרשׁ" type="main">pbt</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pbu" sourceLemmaId="8340" sourceLanguage="arc" strong="8340"><entry id="pbu">
+			<w xlit="šēšĕbaṣṣar">שֵׁשְׁבַּצַּר</w> <pos>Np</pos> <def>Sheshbazzar</def>
+			<xref bdb="xv.bg.ac" strong="8340"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pbv" sourceLemmaId="8353" sourceLanguage="arc" strong="8353"><entry id="pbv">
+			<w xlit="šēt">שֵׁת</w> <pos>A</pos> <def>six</def>
+			<xref bdb="xv.ah.ab" strong="8353" twot="3022a"/>
+			<etym type="sub">ozl</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pbw" sourceLemmaId="8355" sourceLanguage="arc" strong="8355"><entry id="pbw">
+			<w xlit="šĕtâ">שְׁתָה</w> <pos>V</pos> <def>drink</def>
+			<xref bdb="xv.bh.aa" strong="8355" twot="3051"/>
+			<etym root="שׁתה" type="main">opx</etym>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pcf" sourceLemmaId="8479" sourceLanguage="arc" strong="8479"><entry id="pcf">
+			<w xlit="taḥat">תַּחַת</w> <pos>R</pos> <def>under</def>
+			<xref bdb="xw.ac.ac" strong="8479" twot="3056"/>
+			<etym type="single"/>
+		</entry></sourceEntry>
+<sourceEntry lexicalIndexId="pcs" sourceLemmaId="8624" sourceLanguage="arc" strong="8624"><entry id="pcs">
+			<w xlit="taqqîp">תַּקִּיף</w> <pos>A</pos> <def>strong</def>
+			<xref bdb="xw.ai.ad" strong="8624" twot="3065c"/>
+			<etym type="sub">pcw</etym>
+		</entry></sourceEntry>
+</selectedLexicalIndex>

@@ -76,7 +76,7 @@ function writeBuildJson(): Plugin {
 }
 
 /** The analysers: one entry per language (`src/analysers/<id>.ts` exports the adapter as `adapter`). */
-const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el'] as const;
+const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc'] as const;
 
 /** Copy the static files once, in the first (content) build. */
 function copyStatic(): Plugin {
@@ -179,6 +179,19 @@ export function leanSpanish(): Plugin {
   };
 }
 
+/** The same for Biblical Aramaic: its corpus seed stays in dist/analysers/arc.js, and the worker gets `src/background/arcStub.ts`. */
+export function leanAramaic(): Plugin {
+  const stub = path.join(here, 'src/background/arcStub.ts');
+  return {
+    name: 'golearn-lean-aramaic',
+    enforce: 'pre',
+    resolveId(source, importer) {
+      if (importer && /repository-linguistics[\\/]src[\\/]resolver\.ts$/.test(importer) && /[\\/]src[\\/]adapters[\\/]arc$/.test(source)) return stub;
+      return null;
+    },
+  };
+}
+
 /** The worker only resolves lexical readings; omit page-only Albanian generation, syntax and production tables. */
 export function leanAlbanian(): Plugin {
   const stub = path.join(here, 'src/background/sqStub.ts');
@@ -225,7 +238,7 @@ export default defineConfig(({ mode }) => {
     logLevel: 'warn',
     // only the harness build has the fixture hook (src/adapters/page.ts); everywhere else the flag is the literal false and the branch is removed
     define: { 'process.env.NODE_ENV': '"production"', __GOLEARN_HARNESS__: mode === 'content-harness' ? 'true' : 'false', ...stampDefine },
-    plugins: [stubServiceHandler(mode), leanBuiltins(), ...(mode === 'background' ? [leanSpanish(), leanAlbanian(), writeBuildJson()] : []), ...(mode === 'content' ? [cleanDistKeepingApp(), copyStatic()] : [])],
+    plugins: [stubServiceHandler(mode), leanBuiltins(), ...(mode === 'background' ? [leanSpanish(), leanAramaic(), leanAlbanian(), writeBuildJson()] : []), ...(mode === 'content' ? [cleanDistKeepingApp(), copyStatic()] : [])],
     build: {
       outDir: path.join(here, 'dist'),
       emptyOutDir: false,

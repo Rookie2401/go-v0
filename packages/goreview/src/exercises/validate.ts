@@ -13,7 +13,7 @@ import { normalizeAnswer } from '../grading/normalize';
 import { FAMILY_DIMENSION } from '../types';
 import type { Exercise, ExerciseFamily, ExampleSentence } from '../types';
 import {
-  AUDIO_FAMILIES, GAP, GRAMMAR_FAMILIES, MEANING_FAMILIES, PRODUCTIVE_FAMILIES, PROVISIONAL_EXCEPTION, RECOGNITION_FAMILIES, withGap,
+  AUDIO_FAMILIES, CONFLICTED_LEXICAL_EXCEPTION, GAP, GRAMMAR_FAMILIES, MEANING_FAMILIES, PRODUCTIVE_FAMILIES, PROVISIONAL_EXCEPTION, RECOGNITION_FAMILIES, withGap,
 } from './shared';
 import type { ReviewExercise } from './shared';
 
@@ -87,7 +87,12 @@ export function validateExercise(exercise: Exercise): { ok: boolean; issues: str
   const el = e.eligibility;
   if (!el || el.eligible !== true) bad('the exercise was built for an ineligible target');
   else {
-    if (el.status === 'invalidated' || el.status === 'conflicted') bad(`an exercise cannot rest on a ${el.status} analysis`);
+    if (el.status === 'invalidated') bad('an exercise cannot rest on an invalidated analysis');
+    if (el.status === 'conflicted') {
+      const lexicalOnly = e.family === 'written-recognition' && e.builtFrom?.facts?.includes(CONFLICTED_LEXICAL_EXCEPTION)
+        && e.builtFrom.facts.includes('meaning:lexical-base') && !e.answerKey.features;
+      if (!lexicalOnly) bad('an exercise cannot rest on a conflicted analysis');
+    }
     if (el.status === 'provisional') {
       if (RECOGNITION_FAMILIES.includes(e.family)) {
         if (el.caveats.length === 0) bad('a provisional analysis needs its caveat on a recognition exercise');

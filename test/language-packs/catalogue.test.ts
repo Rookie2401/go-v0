@@ -12,13 +12,13 @@ import {
 
 describe('LANGUAGE_CATALOGUE: exactly nine languages, in order (Latin, Hebrew and Greek were added 2026-10-17)', () => {
   it('Norwegian, German, Albanian, Hindi, Thai, Spanish, Latin, Hebrew, Greek', () => {
-    expect(LANGUAGE_CATALOGUE).toHaveLength(9);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.languageId)).toEqual(['nb', 'de', 'sq', 'hi', 'th', 'es', 'la', 'he', 'el']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.name)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin', 'Hebrew', 'Greek']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.nativeName)).toEqual(['norsk', 'Deutsch', 'shqip', 'हिन्दी', 'ไทย', 'español', 'Latina', 'עברית', 'Ελληνικά']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptId)).toEqual(['Latn', 'Latn', 'Latn', 'Deva', 'Thai', 'Latn', 'Latn', 'Hebr', 'Grek']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptName)).toEqual(['Latin', 'Latin', 'Latin', 'Devanagari', 'Thai script', 'Latin', 'Latin', 'Hebrew script', 'Greek alphabet']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.packIds)).toEqual([['pack:nb', 'pack:nn'], ['pack:de'], ['pack:sq'], ['pack:hi'], ['pack:th'], ['pack:es'], ['pack:la'], ['pack:he'], ['pack:el']]);
+    expect(LANGUAGE_CATALOGUE).toHaveLength(10);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.languageId)).toEqual(['nb', 'de', 'sq', 'hi', 'th', 'es', 'la', 'he', 'el', 'arc']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.name)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin', 'Hebrew', 'Greek', 'Aramaic']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.nativeName)).toEqual(['norsk', 'Deutsch', 'shqip', 'हिन्दी', 'ไทย', 'español', 'Latina', 'עברית', 'Ελληνικά', 'אֲרָמִית']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptId)).toEqual(['Latn', 'Latn', 'Latn', 'Deva', 'Thai', 'Latn', 'Latn', 'Hebr', 'Grek', 'Hebr']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptName)).toEqual(['Latin', 'Latin', 'Latin', 'Devanagari', 'Thai script', 'Latin', 'Latin', 'Hebrew script', 'Greek alphabet', 'Hebrew script']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.packIds)).toEqual([['pack:nb', 'pack:nn'], ['pack:de'], ['pack:sq'], ['pack:hi'], ['pack:th'], ['pack:es'], ['pack:la'], ['pack:he'], ['pack:el'], ['pack:arc']]);
   });
 
   it('is frozen and has no team in it: a language is chosen freely, never by team', () => {
@@ -138,7 +138,7 @@ describe('audio, whatWorks and whatDoesNot', () => {
 
   it('where the analyser is not loaded (a lazy build) the entry says so instead of claiming anything', () => {
     const lazy = buildCatalogue({ adapterOf: () => undefined });
-    expect(lazy).toHaveLength(9);
+    expect(lazy).toHaveLength(10);
     for (const e of lazy) {
       expect(e.whatWorks, e.languageId).toBe('The analyser is not loaded in this build, so no card capability is claimed here until it is.');
       expect(e.whatDoesNot, e.languageId).toMatch(/^Nothing is lemmatised or analysed until the analyser is loaded/);

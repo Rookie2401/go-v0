@@ -31,6 +31,22 @@ import { entriesOf, planFromEntries, planRemediation, planCurrentDeck, effective
 import { DEFAULT_UI, getUiPrefs, type UiPrefs } from './uiprefs';
 import { unlockSpeech } from '../speechUnlock';
 import type { View } from './view';
+import { icon } from '../icons';
+
+function summaryLineIcon(doc: Document, pathData: string): Element {
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = doc.createElementNS(ns, 'svg');
+  for (const [k, v] of Object.entries({ viewBox: '0 0 24 24', width: '22', height: '22', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true', focusable: 'false', class: 'ec-icon' })) svg.setAttribute(k, v);
+  const path = doc.createElementNS(ns, 'path'); path.setAttribute('d', pathData); svg.append(path);
+  return svg;
+}
+
+function summaryHomeAction(doc: Document): HTMLElement {
+  return h('a', { class: 'summary-action', id: 'back-to-review', href: '#/review', 'aria-label': 'Back to GoReview. Return to the GoReview home' },
+    h('span', { class: 'summary-action-icon', 'aria-hidden': 'true' }, summaryLineIcon(doc, 'M19 12H5m6 6-6-6 6-6')),
+    h('span', { class: 'summary-action-copy' }, h('span', { class: 'summary-action-title' }, 'Back to GoReview'), h('span', { class: 'summary-action-description' }, 'Return to the GoReview home')),
+    h('span', { class: 'summary-action-arrow', 'aria-hidden': 'true' }, icon(doc, 'arrow')));
+}
 
 const GRADES = ['again', 'hard', 'good', 'easy'] as const;
 /** The families whose question is the meaning: the parsing (which holds no meaning) may be read before the answer. */
@@ -925,39 +941,47 @@ export function parseCorrection(text: string): { lexemeId: string } | { features
  * heading and enabled whenever N > 0. The "Next scheduled session" line is truthful about what the N cards are: due reviews, due learning
  * returns, new admissions, and the early reviews (deck-fill) that top the deck up; the four add up to N.
  */
-/** How long the summary waits for a model before it draws the Next section as a placeholder and fills it in when the model arrives (only with nothing on this device). */
+/** How long rendering waits for the local model before leaving the remaining options to load in the background. */
 const NEXT_MODEL_WAIT_MS = 1_000;
 
-async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, tag: string, opts: { quiet?: boolean } = {}): Promise<HTMLElement> {
+async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, home: HTMLElement, opts: { quiet?: boolean } = {}): Promise<void> {
   // the model is this device's copy (immediate); a live refresh that lands redraws the summary through ctx.onData
   const modelPromise = currentReviewModel(ctx, opts.quiet ? { noRefresh: true } : {});
   let timer: number | undefined;
   const late = new Promise<'late'>((resolve) => { timer = ctx.deps.win.setTimeout(() => resolve('late'), NEXT_MODEL_WAIT_MS) as unknown as number; });
+  const update = async (model: ReviewModel | undefined): Promise<void> => {
+    const { continueWork, study, schedule, secondary, status } = await buildNextSection(ctx, run, actions, model);
+    if (!home.isConnected) return;
+    home.before(continueWork, study);
+    home.after(...(schedule ? [schedule, secondary, status] : [secondary, status]));
+  };
   const first = await Promise.race([modelPromise, late]).finally(() => { if (timer !== undefined) ctx.deps.win.clearTimeout(timer); });
-  if (first !== 'late') return buildNextSection(ctx, run, actions, tag, first);
-  const holder = h('section', { id: 'summary-next', class: 'card', 'aria-labelledby': 'summary-next-heading' }, h('h2', { id: 'summary-next-heading' }, 'Next'), p('Loading what comes next…', 'muted'));
-  void modelPromise.then(async (model) => { const built = await buildNextSection(ctx, run, actions, tag, model); if (holder.isConnected) holder.replaceWith(built); }).catch(() => undefined);
-  return holder;
+  if (first !== 'late') { await update(first); return; }
+  void modelPromise.then(update).catch(() => {
+    if (home.isConnected) home.after(h('p', { class: 'muted summary-load-error' }, 'Next deck options could not be loaded. You can still return to GoReview.'));
+  });
 }
 
-async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextActions, _tag: string, model: ReviewModel | undefined): Promise<HTMLElement> {
+async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextActions, model: ReviewModel | undefined) {
   const planned = run.plan.initialQuestionCount ?? run.plan.items.length;
   const status = statusLine();
   const scheduled = model ? await planCurrentDeck(ctx, model) : undefined;
   const remediation = model ? effectiveRemediation(model).all : [];
   const cards = (n: number): string => `${n} card${n === 1 ? '' : 's'}`;
+  const revealStatus = (): void => { const disclosure = status.closest('details'); if (disclosure) disclosure.open = true; };
   const begin = async (make: (model: ReviewModel) => Promise<SessionPlan | undefined>, buttons: HTMLButtonElement[]): Promise<void> => {
     for (const b of buttons) b.disabled = true;
     try {
       // a press never waits for the network: this device's copy, or the live model if a refresh in progress lands within PRESS_WAIT_MS
       const model = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
-      if (!model) { setStatus(status, 'Choose a language first.', 'error'); return; }
+      if (!model) { revealStatus(); setStatus(status, 'Choose a language first.', 'error'); return; }
       const plan = await make(model);
-      if (!plan || !plan.items.length) { setStatus(status, 'None of these cards can be asked right now.', 'info'); return; }
+      if (!plan || !plan.items.length) { revealStatus(); setStatus(status, 'None of these cards can be asked right now.', 'info'); return; }
       const r = await beginSession(ctx, model, { plan });
-      if (!r.ok) { setStatus(status, r.message, 'info'); return; }
+      if (!r.ok) { revealStatus(); setStatus(status, r.message, 'info'); return; }
       await actions.restart(r.run);
     } catch (e) {
+      revealStatus();
       setStatus(status, `The next deck could not be started: ${e instanceof Error ? e.message : String(e)}`, 'error');
     } finally { for (const b of buttons) b.disabled = false; }
   };
@@ -975,26 +999,40 @@ async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextAc
   const early = nextItems.filter(p => p.presentationReason === 'deck-fill').length;
   const fromQueue = (queue: 'due' | 'learning'): number => nextItems.filter(p => p.presentationReason !== 'deck-fill' && !p.isNew && p.queue === queue).length;
   const admissions = nextItems.filter(p => p.isNew && p.presentationReason !== 'deck-fill').length;
-  const continueWork = nextCount > 0 ? button(`Begin next deck (${cards(nextCount)})`, (event) => {
+  const continueWork = button('', (event) => {
+    if (!nextCount) return;
     void begin(async (model) => (await planCurrentDeck(ctx, model)).plan, [event.currentTarget as HTMLButtonElement]);
-  }, { id: 'continue-due-work', class: 'btn primary' }) : undefined;
+  }, { id: 'continue-due-work', class: 'summary-action summary-action-primary', ...(nextCount ? {} : { disabled: true }) });
+  const decorateAction = (control: HTMLButtonElement | undefined, art: Element, title: string, description: string): void => {
+    if (!control) return;
+    control.setAttribute('aria-label', `${title}. ${description}`);
+    control.append(h('span', { class: 'summary-action-icon', 'aria-hidden': 'true' }, art),
+      h('span', { class: 'summary-action-copy' }, h('span', { class: 'summary-action-title' }, title), h('span', { class: 'summary-action-description' }, description)),
+      h('span', { class: 'summary-action-arrow', 'aria-hidden': 'true' }, icon(ctx.deps.doc, 'arrow')));
+  };
+  decorateAction(continueWork, icon(ctx.deps.doc, 'review'), 'Next Deck', nextCount ? `Begin next deck (${cards(nextCount)})` : 'No cards are ready for a next deck');
   const setupLink = ctx.deps.links?.setup ?? ctx.deps.links?.extension;
   const goLearn = setupLink ? h('a', { class: 'btn', id: 'continue-golearn', href: setupLink }, 'Continue reading in GoLearn') : null;
   const remediationNote = h('p', { class: 'muted', id: 'next-remediation-note' },
     `Remediation is optional and separate from due work: ${remediation.filter(c => !c.studiedAt).length} need study, ${remediation.filter(c => !!c.studiedAt && !c.ready).length} await their delayed return, and ${remediation.filter(c => c.ready).length} are ready for reassessment.`);
   const extra = h('details', { id: 'optional-extra-practice', class: 'card' }, h('summary', {}, 'Optional extra practice'),
     h('p', { class: 'muted', id: 'optional-repeat-note' }, 'Repeat the same session items, capped by your current deck size and session time settings. Other saved-deck members remain available in their collection; this does not represent a new due session.'), repeat);
-  return h('section', { id: 'summary-next', class: 'card', 'aria-labelledby': 'summary-next-heading' },
-    h('h2', { id: 'summary-next-heading' }, 'Next'),
-    continueWork ?? null,
+  const study = button('', () => ctx.go('review/remediation'), { class: 'summary-action', id: 'open-remediation' });
+  const needsStudy = remediation.filter(c => !c.studiedAt).length;
+  decorateAction(study, icon(ctx.deps.doc, 'book'), 'Study Remediation', needsStudy
+    ? `Review items that need study · ${needsStudy} item${needsStudy === 1 ? '' : 's'}`
+    : 'Review items that need study · none right now');
+  const primarySchedule = nextAt && (!nextReviewAt || Date.parse(nextAt) < Date.parse(nextReviewAt))
+    ? { label: 'Next learning return', at: nextAt }
+    : nextReviewAt ? { label: 'Next review', at: nextReviewAt } : undefined;
+  const schedule = primarySchedule ? h('div', { class: 'summary-schedule', 'aria-label': 'Upcoming review schedule' },
+    h('p', { class: 'muted' }, summaryLineIcon(ctx.deps.doc, 'M4 6.5h16v14H4z M8 3.5v6 M16 3.5v6 M4 10.5h16'), h('span', {}, `${primarySchedule.label} · `, h('time', { datetime: new Date(primarySchedule.at).toISOString() }, new Date(primarySchedule.at).toLocaleString())))) : null;
+  const secondary = h('details', { class: 'summary-secondary' }, h('summary', {}, 'More session options and schedule'),
     h('p', { class: 'muted', id: 'next-deck-line' }, `Next scheduled session: ${cards(nextCount)} in the next deck · ${fromQueue('due')} due reviews · ${fromQueue('learning')} due learning returns · ${admissions} new admissions · ${early} early reviews.`),
-    nextAt ? p(`Next short-term learning return: ${new Date(nextAt).toLocaleString()}. GoReview keeps it scheduled; you do not need to wait here.`, 'muted') : null,
-    nextReviewAt ? p(`Next scheduled review: ${new Date(nextReviewAt).toLocaleString()}.`, 'muted') : null,
-    remediationNote,
-    fresh,
-    h('div', { class: 'row' }, button(remediation.some(c => !c.studiedAt) ? 'Study remediation' : 'Open remediation', () => ctx.go('review/remediation'), { class: 'btn', id: 'open-remediation' })),
-    h('h3', {}, 'Continue GoLearn'), goLearn ?? p('Continue your next reading in GoLearn; GoReview keeps your due work here.', 'muted'),
-    extra, status);
+    nextAt && nextAt !== primarySchedule?.at ? p(`Next learning return: ${new Date(nextAt).toLocaleString()}.`, 'muted') : null,
+    nextReviewAt && nextReviewAt !== primarySchedule?.at ? p(`Next review: ${new Date(nextReviewAt).toLocaleString()}.`, 'muted') : null,
+    remediationNote, fresh, h('h3', {}, 'Continue GoLearn'), goLearn ?? p('Continue your next reading in GoLearn; GoReview keeps your due work here.', 'muted'), extra);
+  return { continueWork, study, schedule, secondary, status };
 }
 
 export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, actions?: NextActions, opts: { quiet?: boolean } = {}): Promise<void> {
@@ -1031,14 +1069,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
       return h('li', { 'data-overlap': row.overlap }, item ? h('span', langProps(tag), unitLabel(item.unitId)) : 'Question', ` · ${presentationReasonLabel(row.presentationReason, row.overlap!)}`);
     }))) : null;
 
-  append(root, [
-    h('section', { id: 'summary', class: 'card summary' },
-      h('h2', {}, run.finish === 'early' ? 'Session ended early' : 'Session complete'),
-      h('p', { id: 'sum-headline', class: 'summary-headline' }, answered ? `${correct} of ${answered} right.` : 'No answers this time.'),
-      left + run.skipped.length ? h('p', { id: 'sum-next' }, `${left + run.skipped.length} ${left + run.skipped.length === 1 ? 'card is' : 'cards are'} left for next time.`) : null,
-      view.status?.online === false && (view.status?.pending ?? 0) ? p('You are offline. Your answers are saved on this device and will be sent when you are back online.', 'muted') : null,
-      h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/review', id: 'back-to-review' }, 'Back to GoReview')),
-      h('details', { id: 'sum-details', class: 'advanced' }, h('summary', {}, 'Details'),
+  const details = h('details', { id: 'sum-details', class: 'advanced' }, h('summary', {}, 'Details'),
       h('dl', { class: 'facts' },
         h('dt', {}, 'Answered'), h('dd', { id: 'sum-answered' }, `${answered} answered; ${presentedCount} prompt(s) shown; ${initialPlanCount} initially planned; ${correct} correct`),
         h('dt', {}, 'Skipped'), h('dd', { id: 'sum-skipped' }, String(run.skipped.length)),
@@ -1057,9 +1088,26 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
       h('h3', {}, 'What did not count, and why'),
       run.withheld.length ? h('ul', { id: 'sum-withheld' }, ...run.withheld.map((w) => h('li', {}, h('span', langProps(tag), unitLabel(w.unitId)), ` (${w.family}): `, ...embedTarget(`${w.reason}.`, [unitLabel(w.unitId)], tag)))) : p('Everything counted.', 'muted'),
       unbuildable.length ? h('p', { class: 'muted', id: 'sum-unbuildable' }, 'Could not be asked: ', ...unbuildable.flatMap((u, i) => [i ? '; ' : '', h('span', langProps(tag), itemLabel(u.itemId)), ` (${u.reason})`]), '.') : null,
-      p(`${view.status?.pending ?? 0} ${(view.status?.pending ?? 0) === 1 ? 'answer waits' : 'answers wait'} to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'))),
-    ...(actions ? [await nextDeckSection(ctx, run, actions, tag, opts)] : []),
-  ]);
+      p(`${view.status?.pending ?? 0} ${(view.status?.pending ?? 0) === 1 ? 'answer waits' : 'answers wait'} to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'));
+  const home = summaryHomeAction(ctx.deps.doc);
+  const next = h('section', { id: 'summary-next', class: 'summary-next', 'aria-labelledby': 'summary-next-heading' },
+    h('h2', { id: 'summary-next-heading', class: 'sr' }, 'Next steps'), home,
+    left + run.skipped.length ? h('p', { id: 'sum-next' }, `${left + run.skipped.length} ${left + run.skipped.length === 1 ? 'card is' : 'cards are'} left for next time.`) : null,
+    view.status?.online === false && (view.status?.pending ?? 0) ? h('p', { id: 'sum-offline', class: 'muted' }, 'You are offline. Your answers are saved on this device and will be sent when you are back online.') : null,
+    details);
+  const summary = h('section', { id: 'summary', class: 'summary', 'aria-labelledby': 'sum-label' },
+    h('div', { class: 'summary-score' },
+      h('h2', { id: 'sum-label', class: 'summary-eyebrow' }, run.finish === 'early' ? 'Session ended early' : 'Session complete'),
+      h('p', { id: 'sum-headline', class: 'summary-headline' }, answered ? `${correct} of ${answered} right.` : 'No answers this time.')),
+    next);
+  append(root, [summary]);
+  if (actions) {
+    try {
+      await nextDeckSection(ctx, run, actions, home, opts);
+    } catch {
+      next.append(h('p', { class: 'muted summary-load-error' }, 'Next deck options could not be loaded. You can still return to GoReview.'));
+    }
+  }
   if (run.driver.undo) {
     const undoable = results.filter((result) => result.evidence && !result.correctedAt && !result.response.challenged);
     if (undoable.length) {
@@ -1080,10 +1128,10 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
               if (index >= 0) run.results[index] = updated;
               run.withheld.push({ itemId: updated.itemId, unitId: updated.target.unitId, family: FAMILY_LABEL[updated.family], reason: 'grade reversed after submission' });
               clear(root);
-              await renderSummary(root, ctx, run);
+              await renderSummary(root, ctx, run, actions, opts);
             }).catch((error) => { setStatus(status, `This grade could not be corrected: ${error instanceof Error ? error.message : 'try again'}`, 'error'); if (control) control.disabled = false; });
           }, { class: 'btn small', 'aria-label': `Undo this grade for ${unitLabel(result.target.unitId)} (${DIMENSION_LABEL[result.target.dimension]}, review ${index + 1})` }))));
-      root.append(section);
+      details.append(section);
     }
   }
 }

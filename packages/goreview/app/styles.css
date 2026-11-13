@@ -785,6 +785,53 @@ img, svg, video, canvas { max-width: 100%; }
 /* the session summary leads with the result */
 .summary-headline { font-size: 1.5rem; font-weight: 600; margin: 0.25rem 0 0.5rem; }
 
+/* Finished-session summary: a quiet score panel followed by three large, touch-friendly choices. */
+.screen[data-route="review/session"] > .body:has(#summary) { max-width: 38rem; padding-top: clamp(1.15rem, 4vw, 2.1rem); }
+.session #summary { display: grid; gap: .65rem; padding: 0; border: 0; background: transparent; text-align: center; }
+.session .summary-score {
+  display: grid; place-content: center; gap: .4rem; min-height: clamp(6rem, 23vw, 7.1rem);
+  padding: 1.35rem 1rem; border: 1px solid color-mix(in srgb, var(--accent) 48%, var(--rule-strong)); border-radius: 1.25rem;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--panel) 96%, var(--accent)), color-mix(in srgb, var(--panel) 88%, var(--accent)));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.session .summary-eyebrow { margin: 0; color: var(--accent); font: 600 .76rem/1.3 system-ui, sans-serif; letter-spacing: .2em; text-transform: uppercase; }
+.session .summary-headline { margin: 0; color: var(--ink); font: clamp(2.35rem, 8vw, 3.45rem)/1.1 var(--serif); font-weight: 500; }
+.summary-next { display: grid; gap: .65rem; margin-top: 0; }
+.summary-action {
+  display: grid; grid-template-columns: 2.4rem minmax(0, 1fr) 1.25rem; align-items: center; gap: .85rem;
+  width: 100%; min-height: 5.25rem; padding: .8rem 1rem; border: 1px solid var(--rule-strong); border-radius: .9rem;
+  background: var(--panel); color: var(--ink); text-align: left; text-decoration: none; cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease, transform .15s ease;
+}
+.summary-action:hover { border-color: var(--accent); background: color-mix(in srgb, var(--panel) 90%, var(--accent)); }
+.summary-action:active { transform: translateY(1px); }
+.summary-action:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.summary-action-icon { display: grid; place-items: center; width: 2.6rem; height: 2.1rem; padding-inline-end: .55rem; border-inline-end: 1px solid var(--accent); color: var(--accent); }
+.summary-action-icon .ec-icon { width: 1.35rem; height: 1.35rem; }
+.summary-action-copy { display: grid; gap: .18rem; min-width: 0; }
+.summary-action-title { font: 500 clamp(1.15rem, 4vw, 1.4rem)/1.2 var(--serif); }
+.summary-action-description { color: var(--ink-soft); font: italic 1rem/1.35 var(--serif); }
+.summary-action-arrow { color: var(--accent); text-align: right; }
+.summary-action-arrow .ec-icon { width: 1.2rem; height: 1.2rem; }
+.summary-action-primary { border-color: color-mix(in srgb, var(--accent) 62%, var(--rule-strong)); }
+.summary-schedule { display: grid; justify-items: center; gap: .15rem; margin: .25rem 0 .3rem; text-align: center; }
+.summary-schedule p { display: flex; align-items: center; justify-content: center; gap: .5rem; margin: 0; font: italic 1.05rem/1.5 var(--serif); }
+.summary-schedule .ec-icon { width: 1.1rem; height: 1.1rem; color: var(--accent); flex: none; }
+.summary-secondary { margin-top: .4rem; border-top: 1px solid var(--rule-strong); padding-top: .7rem; }
+.summary-secondary > summary { text-align: center; }
+.summary-secondary[open] { text-align: left; }
+.session #sum-details { text-align: left; }
+.session #sum-details > summary { text-align: center; }
+.summary-next .status:empty { display: none; min-height: 0; }
+@media (min-width: 48rem) { .session .summary-score { min-height: 9rem; } }
+@media (max-width: 25rem) {
+  .summary-action { min-height: 4.8rem; grid-template-columns: 2.1rem minmax(0, 1fr) 1rem; gap: .6rem; padding-inline: .75rem; }
+  .summary-action-description { font-size: .82rem; }
+}
+@media (prefers-reduced-motion: reduce) { .summary-action { transition: none; } }
+.screen[data-route="review/session"]:has(#summary) .home-title { font-family: var(--serif); font-weight: 500; letter-spacing: 0; }
+.screen[data-route="review/session"]:has(#summary) .home-title::after { width: 2.6rem; height: 2px; margin-top: .55rem; background: var(--accent); }
+
 /* The session uses the same photographs and palette as the home, with a shallower banner. */
 .shell:has(> .screen[data-route="review/session"]), .screen[data-route="review/session"] {
   display: flex;

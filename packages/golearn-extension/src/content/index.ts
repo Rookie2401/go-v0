@@ -20,6 +20,8 @@ import { MSG, getContentChrome, type ContentChromeApi, type LookupMessage } from
 import { createCardUI, type CardUI } from '../popup/card';
 import type { ActivateMessage } from '../protocol';
 import { PENDING_IDENTITY, buildEncounterEvent, createMemoryEncounterStore, type Identity } from '../store';
+import { analyzePage } from '../reading/analyze';
+import { READING_ANALYSIS, type ReadingAnalysisRequest, type ReadingAnalysisReply } from '../reading/protocol';
 import { ActiveMode } from './active';
 import { LookupController } from './controller';
 import { createBridge } from './services';
@@ -128,11 +130,36 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   // the harness build (loopback pages, never shipped) also exposes the card, so a harness page can read what the card says
   w[GLOBAL_KEY] = { controller, active, ...(warm ? { warm } : {}), ...(chromeApi ? { alive: () => contextAlive(chromeApi) } : {}), ...(typeof __GOLEARN_HARNESS__ !== 'undefined' && __GOLEARN_HARNESS__ ? { card: ui } : {}) };
 
+  const analyses = new Map<string, AbortController>();
+  doc.defaultView?.addEventListener('pagehide', () => {
+    for (const job of analyses.values()) job.abort();
+  });
   chromeApi?.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // only this extension's own background may drive the content script
     if (sender?.id !== undefined && chromeApi.runtime.id !== undefined && sender.id !== chromeApi.runtime.id) return;
     const m = message as { type?: string } | undefined;
     switch (m?.type) {
+      case READING_ANALYSIS: {
+        const request = m as ReadingAnalysisRequest;
+        if (typeof request.requestId !== 'string') return;
+        if (request.cancel) { analyses.get(request.requestId)?.abort(); return; }
+        if (analyses.has(request.requestId)) return;
+        const job = new AbortController();
+        analyses.set(request.requestId, job);
+        const run = async (): Promise<ReadingAnalysisReply> => {
+          if (!bridge) return { ok: false, code: 'unavailable' };
+          const languageId = request.languageId || (await bridge.status())?.languageId;
+          if (!languageId || !PARSER_LANGUAGES.some((id) => id === languageId)
+            || languageId === 'he' || languageId === 'el') return { ok: false, code: 'unsupported-language' };
+          job.signal.throwIfAborted();
+          await loadAnalyser(languageId);
+          job.signal.throwIfAborted();
+          return analyzePage(doc, languageId, bridge, getAnalyser, job.signal);
+        };
+        void run().then(sendResponse, () => sendResponse({ ok: false, code: job.signal.aborted ? 'canceled' : 'error' }))
+          .finally(() => analyses.delete(request.requestId));
+        return true;
+      }
       case MSG.enable: controller.enable(); sendResponse({ ok: true, enabled: true }); return;
       case MSG.disable: controller.disable(); sendResponse({ ok: true, enabled: false }); return;
       case MSG.ping: { const s = active.state; sendResponse({ ok: true, enabled: controller.isEnabled, active: s.on, ...(s.on ? { activeState: s } : {}) }); return; }

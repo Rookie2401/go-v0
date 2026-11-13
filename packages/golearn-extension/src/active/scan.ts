@@ -88,6 +88,7 @@ export interface ScannerOptions {
   ignore?: string[];
   /** 'visible' scans only text within the viewport plus one screen of margin; 'all' scans the whole document (tests, measurement). */
   viewport?: 'visible' | 'all';
+  requireUnambiguousLemma?: boolean;
 }
 
 export interface Scanner {
@@ -177,7 +178,10 @@ export function createScanner(opts: ScannerOptions): Scanner {
       if (end <= start) return;
       const ids = [`form:${languageId}:${adapter.normalize(t.surface)}`];
       const best = analysed[i]?.candidates?.reduce((m, c) => (c.confidence > m.confidence ? c : m), analysed[i].candidates[0]);
-      const known = !!best?.lemma && !best.unconfirmed && best.confidence >= LEMMA_MIN_CONFIDENCE;
+      const ambiguous = opts.requireUnambiguousLemma && analysed[i]?.candidates?.some((candidate) =>
+        !candidate.unconfirmed && candidate.confidence >= LEMMA_MIN_CONFIDENCE
+        && (candidate.lemma !== best?.lemma || candidate.pos !== best?.pos));
+      const known = !ambiguous && !!best?.lemma && !best.unconfirmed && best.confidence >= LEMMA_MIN_CONFIDENCE;
       if (known) ids.push(`lemma:${languageId}:${best!.lemma}${best!.pos ? ':' + best!.pos : ''}`);
       out.push({ node, start, end, surface: t.surface, ids, known });
     });

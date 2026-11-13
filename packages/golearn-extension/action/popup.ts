@@ -14,6 +14,7 @@
 import { ACTIVE_LEVELS, LEVEL_LEGEND, type ActiveLevel } from '../src/active/levels';
 import { MSG, getChrome, type ChromeApi } from '../src/platform';
 import { ACTIVE_ORIGINS, languageNameOf, type ActiveReply, type ActiveSettings, type PageStatus } from '../src/protocol';
+import { READING_ANALYSIS, type ReadingAnalysisReply } from '../src/reading/protocol';
 import type { ActiveState } from '../src/content/active';
 
 export interface PopupHandle { refresh(): Promise<void> }
@@ -83,6 +84,113 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     }
     await refresh();
   });
+
+  const analysisButton = doc.getElementById('analyze-page') as HTMLButtonElement | null;
+  const analysisOutput = doc.getElementById('reading-result');
+  let analysisRequest: string | undefined;
+  function invalidateAnalysis(): void {
+    if (analysisRequest && tabId !== undefined) {
+      void chrome.tabs?.sendMessage(tabId, { type: READING_ANALYSIS, requestId: analysisRequest, cancel: true }, { frameId: 0 }).catch(() => {});
+    }
+    analysisRequest = undefined;
+    if (analysisButton) analysisButton.textContent = 'Analyze this page';
+    analysisOutput?.replaceChildren();
+  }
+  langSelect.addEventListener('change', invalidateAnalysis);
+  if (analysisButton && analysisOutput) {
+    const setResult = (message: string) => { analysisOutput.textContent = message; };
+    const appendLine = (message: string, strong = false) => {
+      const line = doc.createElement('p');
+      const label = strong ? doc.createElement('strong') : line;
+      label.textContent = message;
+      if (strong) line.append(label);
+      analysisOutput.append(line);
+    };
+    analysisButton.addEventListener('click', async () => {
+      if (analysisRequest) {
+        invalidateAnalysis();
+        setResult('Analysis canceled.');
+        return;
+      }
+      const requestId = crypto.randomUUID();
+      analysisRequest = requestId;
+      analysisButton.textContent = 'Cancel analysis';
+      setResult('Analyzing this page…');
+      const message = { type: READING_ANALYSIS, requestId, languageId: langSelect.value || undefined };
+      const send = (id: number, payload: unknown) => chrome.tabs?.sendMessage(id, payload, { frameId: 0 });
+      try {
+        const tab = (await chrome.tabs?.query({ active: true, currentWindow: true }))?.[0];
+        if (analysisRequest !== requestId) return;
+        if (tab?.id === undefined || !tab.url || !/^https?:\/\//i.test(tab.url)) {
+          setResult('Reading Analysis is unavailable on this page.');
+          return;
+        }
+        const id = tab.id;
+        tabId = id;
+        let ready = false;
+        try { ready = (await send(id, { type: MSG.ping }) as PingReply | undefined)?.ok === true; } catch { /* One-shot access below. */ }
+        if (analysisRequest !== requestId) return;
+        if (!ready) {
+          try {
+            if (!chrome.scripting) throw new Error('Scripting unavailable');
+            await chrome.scripting.executeScript({ target: { tabId: id }, files: ['content.js'] });
+          } catch {
+            if (analysisRequest === requestId) setResult('GoLearn could not access the text on this page.');
+            return;
+          }
+        }
+        if (analysisRequest !== requestId) return;
+        const reply = await send(id, message) as ReadingAnalysisReply | undefined;
+        if (analysisRequest !== requestId) return;
+        const currentTab = (await chrome.tabs?.query({ active: true, currentWindow: true }))?.[0];
+        if (analysisRequest !== requestId) return;
+        if (currentTab?.id !== id || currentTab.url !== tab.url) {
+          setResult('The page changed. Analyze it again.');
+          return;
+        }
+        if (!reply?.ok) {
+          const errors: Record<string, string> = {
+            'no-text': 'No readable text was found on this page.',
+            'unsupported-language': 'This language is not supported for Reading Analysis.',
+            unavailable: 'Your vocabulary could not be loaded. Try again.',
+            canceled: 'Analysis canceled.',
+          };
+          setResult(errors[reply?.code ?? ''] ?? 'GoLearn could not analyze this page. Try again.');
+          return;
+        }
+        const result = reply.coverage;
+        if (result.familiarCoverage === null || result.confidentCoverage === null) {
+          setResult('No eligible words were found for this language.');
+          return;
+        }
+        analysisOutput.replaceChildren();
+        appendLine(`${Math.round(result.familiarCoverage)}% familiar`, true);
+        appendLine(`${Math.round(result.confidentCoverage)}% confidently known`);
+        const meter = doc.createElement('div');
+        meter.className = 'reading-meter';
+        meter.setAttribute('aria-hidden', 'true');
+        for (const share of [result.confidentCoverage, result.familiarCoverage - result.confidentCoverage]) {
+          const segment = doc.createElement('span');
+          segment.style.width = `${share}%`;
+          meter.append(segment);
+        }
+        analysisOutput.append(meter);
+        const scope = result.sourceScope === 'primary' ? 'main content' : 'page text';
+        appendLine(`${result.totalOccurrences.toLocaleString()} words analyzed · ${scope} · ${languageNameOf(result.languageId)}`);
+        if (reply.truncated) appendLine('This result covers part of the page.');
+        if (result.occurrences.unresolved) appendLine(`${result.occurrences.unresolved.toLocaleString()} words could not be resolved.`);
+        if (result.freshness === 'cached' || result.freshness === 'stale') appendLine('Using your last saved vocabulary state.');
+      } catch {
+        if (analysisRequest === requestId) setResult('GoLearn could not analyze this page. Try again.');
+      } finally {
+        if (analysisRequest === requestId) {
+          analysisRequest = undefined;
+          analysisButton.textContent = 'Analyze again';
+        }
+      }
+    });
+    doc.defaultView?.addEventListener('pagehide', invalidateAnalysis);
+  }
 
   /** The foot line: the build the worker runs, and for 10 minutes after a self-reload that it updated itself (plain text, no control). */
   function renderBuild(s: PageStatus | undefined): void {

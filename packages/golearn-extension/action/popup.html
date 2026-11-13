@@ -77,6 +77,8 @@
   .counts[open] > summary::before { content: '▾ '; }
   .counts > summary:hover { color: var(--ink); }
   .counts > p { margin: .1rem 0 0; line-height: 1.4; }
+  #reading-variety:not([hidden]) { display: grid; gap: .25rem; margin: .4rem 0; }
+  #reading-variety select { width: 100%; }
   #analyze-page { display: block; margin: .3rem 0; padding: .25rem .55rem; border: 1px solid var(--control-line); border-radius: 2px; color: var(--ink); background: var(--paper-raised); cursor: pointer; }
   #reading-result p { margin: .2rem 0; }
   .reading-meter { display: flex; height: .3rem; overflow: hidden; border-radius: .15rem; background: var(--rule); margin: .35rem 0; }
@@ -127,6 +129,10 @@
 
   <details class="part counts" id="reading-analysis">
     <summary>Reading Analysis</summary>
+    <div id="reading-variety" hidden>
+      <label for="reading-variety-select">Text variety</label>
+      <select id="reading-variety-select" aria-label="Text variety"><option value="">Choose text variety…</option></select>
+    </div>
     <button type="button" id="analyze-page">Analyze this page</button>
     <div id="reading-result" role="status" aria-live="polite"></div>
   </details>

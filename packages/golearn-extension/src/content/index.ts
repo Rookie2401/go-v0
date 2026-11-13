@@ -22,6 +22,7 @@ import type { ActivateMessage } from '../protocol';
 import { PENDING_IDENTITY, buildEncounterEvent, createMemoryEncounterStore, type Identity } from '../store';
 import { analyzePage } from '../reading/analyze';
 import { READING_ANALYSIS, type ReadingAnalysisRequest, type ReadingAnalysisReply } from '../reading/protocol';
+import { declaredTextVariety, needsTextVariety, validTextVariety } from '../reading/varieties';
 import { ActiveMode } from './active';
 import { LookupController } from './controller';
 import { createBridge } from './services';
@@ -149,12 +150,15 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
         const run = async (): Promise<ReadingAnalysisReply> => {
           if (!bridge) return { ok: false, code: 'unavailable' };
           const languageId = request.languageId || (await bridge.status())?.languageId;
-          if (!languageId || !PARSER_LANGUAGES.some((id) => id === languageId)
-            || languageId === 'he' || languageId === 'el') return { ok: false, code: 'unsupported-language' };
+          if (!languageId || !PARSER_LANGUAGES.includes(languageId)) return { ok: false, code: 'unsupported-language' };
+          const varietyId = request.varietyId || declaredTextVariety(languageId, doc.documentElement?.lang);
+          if (needsTextVariety(languageId) && !validTextVariety(languageId, varietyId)) {
+            return { ok: false, code: 'variety-required' };
+          }
           job.signal.throwIfAborted();
           await loadAnalyser(languageId);
           job.signal.throwIfAborted();
-          return analyzePage(doc, languageId, bridge, getAnalyser, job.signal);
+          return analyzePage(doc, languageId, bridge, getAnalyser, job.signal, varietyId);
         };
         void run().then(sendResponse, () => sendResponse({ ok: false, code: job.signal.aborted ? 'canceled' : 'error' }))
           .finally(() => analyses.delete(request.requestId));

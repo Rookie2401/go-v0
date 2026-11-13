@@ -15,6 +15,7 @@ import { ACTIVE_LEVELS, LEVEL_LEGEND, type ActiveLevel } from '../src/active/lev
 import { MSG, getChrome, type ChromeApi } from '../src/platform';
 import { ACTIVE_ORIGINS, languageNameOf, type ActiveReply, type ActiveSettings, type PageStatus } from '../src/protocol';
 import { READING_ANALYSIS, type ReadingAnalysisReply } from '../src/reading/protocol';
+import { TEXT_VARIETIES } from '../src/reading/varieties';
 import type { ActiveState } from '../src/content/active';
 
 export interface PopupHandle { refresh(): Promise<void> }
@@ -87,6 +88,28 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
 
   const analysisButton = doc.getElementById('analyze-page') as HTMLButtonElement | null;
   const analysisOutput = doc.getElementById('reading-result');
+  const varietyBox = doc.getElementById('reading-variety');
+  const varietySelect = doc.getElementById('reading-variety-select') as HTMLSelectElement | null;
+  function renderTextVarieties(): void {
+    if (!varietyBox || !varietySelect) return;
+    const list = TEXT_VARIETIES[langSelect.value] ?? [];
+    varietyBox.hidden = list.length === 0;
+    const prev = varietySelect.value;
+    varietySelect.replaceChildren();
+    const empty = doc.createElement('option');
+    empty.value = '';
+    empty.textContent = 'Choose text variety…';
+    varietySelect.append(empty);
+    for (const v of list) {
+      const option = doc.createElement('option');
+      option.value = v.id;
+      option.textContent = v.label;
+      varietySelect.append(option);
+    }
+    varietySelect.value = list.some((v) => v.id === prev) ? prev : '';
+  }
+  langSelect.addEventListener('change', renderTextVarieties);
+  renderTextVarieties();
   let analysisRequest: string | undefined;
   function invalidateAnalysis(): void {
     if (analysisRequest && tabId !== undefined) {
@@ -97,6 +120,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     analysisOutput?.replaceChildren();
   }
   langSelect.addEventListener('change', invalidateAnalysis);
+  varietySelect?.addEventListener('change', invalidateAnalysis);
   if (analysisButton && analysisOutput) {
     const setResult = (message: string) => { analysisOutput.textContent = message; };
     const appendLine = (message: string, strong = false) => {
@@ -116,7 +140,8 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
       analysisRequest = requestId;
       analysisButton.textContent = 'Cancel analysis';
       setResult('Analyzing this page…');
-      const message = { type: READING_ANALYSIS, requestId, languageId: langSelect.value || undefined };
+      const message = { type: READING_ANALYSIS, requestId, languageId: langSelect.value || undefined,
+        ...(varietySelect?.value && !varietyBox?.hidden ? { varietyId: varietySelect.value } : {}) };
       const send = (id: number, payload: unknown) => chrome.tabs?.sendMessage(id, payload, { frameId: 0 });
       try {
         const tab = (await chrome.tabs?.query({ active: true, currentWindow: true }))?.[0];
@@ -152,6 +177,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
           const errors: Record<string, string> = {
             'no-text': 'No readable text was found on this page.',
             'unsupported-page': 'This reader does not permit Reading Analysis.',
+            'variety-required': 'Choose a text variety to avoid mixing vocabulary from different periods.',
             'unsupported-language': 'This language cannot be classified reliably yet.',
             unavailable: 'Your vocabulary could not be loaded. Try again.',
             canceled: 'Analysis canceled.',
@@ -177,9 +203,11 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
         }
         analysisOutput.append(meter);
         const scope = result.sourceScope === 'primary' ? 'main content' : 'page text';
-        appendLine(`${result.totalOccurrences.toLocaleString()} words analyzed · ${scope} · ${languageNameOf(result.languageId)}`);
+        appendLine(`${result.totalOccurrences.toLocaleString()} words analyzed · ${scope} · ${languageNameOf(result.languageId)}${result.varietyId ? ' · ' + result.varietyId : ''}`);
         if (reply.truncated) appendLine('This result covers part of the page.');
         if (result.occurrences.unresolved) appendLine(`${result.occurrences.unresolved.toLocaleString()} words could not be resolved.`);
+        if (result.occurrences.legacyShared) appendLine(`${result.occurrences.legacyShared.toLocaleString()} words have older, language-wide records. Not credited until their variety can be verified.`);
+        if (result.varietyId) appendLine('Period-specific coverage: older shared records are not treated as known.');
         appendLine(result.freshness === 'cached' || result.freshness === 'stale'
           ? 'Using on-device vocabulary (it may not be fully synced).'
           : 'Using vocabulary stored on this device.');

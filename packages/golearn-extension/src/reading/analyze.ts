@@ -5,6 +5,7 @@ import { wordInScript } from '../active/pageLanguages';
 import { isUnitId, MAX_CONFIRM_FORMS, type KnowledgeView } from '../protocol';
 import type { createBridge } from '../content/services';
 import { aggregateCoverage } from './coverage';
+import { needsTextVariety, scopedVarietyUnitId, validTextVariety } from './varieties';
 import type { ReadingAnalysisReply } from './protocol';
 
 type Bridge = ReturnType<typeof createBridge>;
@@ -21,6 +22,7 @@ export async function analyzePage(
   bridge: Bridge,
   adapterOf: Parameters<typeof createScanner>[0]['adapterOf'],
   signal: AbortSignal,
+  varietyId?: string,
 ): Promise<ReadingAnalysisReply> {
   // The reader registry's refusal is authoritative even for a user-triggered scan.
   // A blocked/permission-required reader must never be probed via this feature.
@@ -29,12 +31,10 @@ export async function analyzePage(
     href: location.href, protocol: location.protocol, host: location.host, pathname: location.pathname,
   });
   if (reader && entryRefuses(reader)) return { ok: false, code: 'unsupported-page' };
-  if (!adapterOf(languageId) || languageId === 'he' || languageId === 'el') {
-    // These analyzers share language-level profile IDs between historical and modern varieties.
-    return { ok: false, code: 'unsupported-language' };
-  }
+  if (!adapterOf(languageId)) return { ok: false, code: 'unsupported-language' };
+  if (!validTextVariety(languageId, varietyId)) return { ok: false, code: 'variety-required' };
   const scanner = createScanner({
-    doc, adapterOf, viewport: 'all', requireUnambiguousLemma: true,
+    doc, adapterOf, viewport: 'all', requireUnambiguousLemma: true, varietyId,
     ignore: ['aside', 'form', '[inert]', 'details:not([open])'],
   });
   const nodes = scanner.textNodes(doc).filter((node) => {
@@ -103,7 +103,15 @@ export async function analyzePage(
   }
   signal.throwIfAborted();
   const candidates = tokens.map((token) => token.known && token.ids.every(isUnitId) ? token.ids[1] : undefined);
-  const ids = [...new Set(tokens.flatMap((token, index) => candidates[index] ? token.ids : []))];
+  const periodSpecific = needsTextVariety(languageId);
+  // Query both the existing shared IDs and the reserved period-specific IDs.
+  // Only the latter may prove confident knowledge in a historical/modern variety.
+  const ids = [...new Set(tokens.flatMap((token, index) => {
+    if (!candidates[index]) return [];
+    return periodSpecific && varietyId
+      ? [...token.ids, ...token.ids.map((id) => scopedVarietyUnitId(id, languageId, varietyId)).filter((id): id is string => !!id && isUnitId(id))]
+      : token.ids;
+  }))];
   const rows = new Map<string, KnowledgeView>();
   let cached = false;
   for (let i = 0; i < ids.length; i += PROFILE_BATCH) {
@@ -124,12 +132,27 @@ export async function analyzePage(
     const identity = candidates[index];
     if (!identity) return {};
     const matched = token.ids.map((id) => rows.get(id));
+    if (periodSpecific && varietyId) {
+      const scoped = token.ids.map((id) => scopedVarietyUnitId(id, languageId, varietyId)).map((id) => id && rows.get(id));
+      const verified = scoped.some(Boolean) ? levelOfRows(scoped.map((row) => row || undefined)) : undefined;
+      const verifiedForm = scoped[0] ? levelOfRows([scoped[0]]) : undefined;
+      if (verified !== undefined) {
+        const strict = (verified === 'known' || verified === 'automatic')
+          && verifiedForm !== 'known' && verifiedForm !== 'automatic'
+          ? 'familiar' : verified;
+        return { identity, state: strict };
+      }
+      // The historic Repository uses one ID across periods. Report such knowledge
+      // separately as unverified, never as confidently known or familiar by default.
+      // A Greek/Modern known mark is not proof of understanding its Homeric homograph.
+      return { identity, legacyShared: matched.some(Boolean) };
+    }
     const state = matched.some(Boolean) ? levelOfRows(matched) : undefined;
     const formState = levelOfRows([matched[0]]);
     // A known lemma supports familiarity, but confidence requires evidence for this form.
     const lemmaOnly = (state === 'known' || state === 'automatic')
       && formState !== 'known' && formState !== 'automatic';
     return { identity, state: lemmaOnly ? 'familiar' : state };
-  }), { languageId, sourceScope: usePrimary ? 'primary' : 'page', freshness: cached ? 'cached' : ids.length ? 'current' : 'unknown' });
+  }), { languageId, ...(varietyId ? { varietyId } : {}), sourceScope: usePrimary ? 'primary' : 'page', freshness: cached ? 'cached' : ids.length ? 'current' : 'unknown' });
   return { ok: true, coverage, truncated };
 }

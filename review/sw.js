@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = '2ae343f3f7bd';
+var BUILD_ID = '5cf1eda51545';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -42,7 +42,7 @@ var PRECACHE = [
   "./assets/roman-forum-BwyPrRQO.webp",
   "./assets/rothenburg-vv8nBX67.webp",
   "./assets/shared-f3Tn5VdE.js",
-  "./assets/style-CQOrbicl.css",
+  "./assets/style-DaPIAUHG.css",
   "./assets/syntax-CGmPxLTF.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",

@@ -210,3 +210,16 @@ describe('a language switch with Active on (2026-11-09)', () => {
     expect((await fake.dispatch({ type: MSG.status }, PAGE_SENDER) as { languageId: string }).languageId).toBe('es');
   });
 });
+
+describe('Reading Analysis device-only knowledge boundary', () => {
+  it('reads local vocabulary with Active disabled, but refuses extension-page and foreign callers', async () => {
+    const request = { type: MSG.readingProfile, languageId: 'sq', unitIds: ['form:sq:libër', 'lemma:sq:libër:NOUN'] };
+    const fromContent = await fake.dispatch(request, CONTENT_SENDER) as { ok: boolean; source?: string; rows?: object };
+    expect(fromContent.ok).toBe(true);
+    expect(fromContent.source).toBe('device');
+    expect(fromContent.rows).toBeDefined();
+    expect(await fake.dispatch(request, PAGE_SENDER)).toMatchObject({ ok: false, error: 'unavailable' });
+    expect(await fake.dispatch(request, { id: 'unrelated-ext', url: 'https://example.test/page' })).toMatchObject({ ok: false });
+    expect((await page({ op: 'get' })).settings.active).toBe(false);
+  });
+});

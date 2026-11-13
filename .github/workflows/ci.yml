@@ -1,6 +1,10 @@
 # The automatic check on every push to master and every pull request: the type check and the tests that need no generated data.
 # The generated dictionaries and builds are untracked, so the files in test/needs-local-data.txt run only in `npm run gate` on a machine that has them.
 name: CI
+# Only the newest update to a PR needs a full 17k-test suite.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 on:
   push:
     branches: [master]
@@ -49,3 +53,20 @@ jobs:
         run: npm run arc:report -- --summary
       - name: Build language analyser chunks
         run: npx vite build -c packages/golearn-extension/vite.config.ts --mode analysers
+
+  golearn-extension:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Build GoLearn extension
+        run: npm run ext:build
+      - name: Verify Reading Analysis and popup regressions
+        run: npx vitest run test/extension/reading-coverage.test.ts test/extension/reading-analyze.test.ts test/extension/reading-language-parity.test.ts test/extension/reading-variety-mark.test.ts test/extension/reading-variety-integration.test.ts test/extension/active.background.test.ts test/extension/actionPopup.test.ts test/golearn-app/popup.test.ts
+        env:
+          GO_CI_NO_LOCAL_DATA: '1'

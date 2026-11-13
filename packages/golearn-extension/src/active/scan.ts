@@ -30,6 +30,8 @@ export interface ScanToken {
    * then set and the lemma id added after tokenising (`applyConfirmations`), never by the analyser (2026-10-27).
    */
   confirmed?: boolean;
+  /** Analysis-only: credible competing lemma/POS readings cannot safely be credited from a dictionary fallback. */
+  ambiguous?: boolean;
 }
 
 /** What the dictionary said about a normalised form id (`form:<lang>:<normalised>`): the lemma id to credit it with, or `null` = the dictionary does not have it. */
@@ -88,6 +90,9 @@ export interface ScannerOptions {
   ignore?: string[];
   /** 'visible' scans only text within the viewport plus one screen of margin; 'all' scans the whole document (tests, measurement). */
   viewport?: 'visible' | 'all';
+  requireUnambiguousLemma?: boolean;
+  /** Reading Analysis can disambiguate the text period without changing the language pack. */
+  varietyId?: string;
 }
 
 export interface Scanner {
@@ -168,7 +173,7 @@ export function createScanner(opts: ScannerOptions): Scanner {
     let tokens: RawToken[] = [];
     try { tokens = adapter.tokenize(nfc); } catch { tokens = []; }
     let analysed: ReturnType<LanguageAdapter['analyze']> = [];
-    try { analysed = adapter.analyze(tokens); } catch { analysed = []; }
+    try { analysed = adapter.analyze(tokens, opts.varietyId ? { varietyId: opts.varietyId } : undefined); } catch { analysed = []; }
     const out: ScanToken[] = [];
     tokens.forEach((t, i) => {
       if (!t.isWord || !HAS_LETTER.test(t.surface)) return;
@@ -176,10 +181,18 @@ export function createScanner(opts: ScannerOptions): Scanner {
       const end = same ? t.end : rawOffset(raw, t.end);
       if (end <= start) return;
       const ids = [`form:${languageId}:${adapter.normalize(t.surface)}`];
-      const best = analysed[i]?.candidates?.reduce((m, c) => (c.confidence > m.confidence ? c : m), analysed[i].candidates[0]);
-      const known = !!best?.lemma && !best.unconfirmed && best.confidence >= LEMMA_MIN_CONFIDENCE;
+      // When a period is explicitly chosen, a candidate tagged exclusively for another
+      // period cannot establish knowledge of this word. Untagged candidates remain possible.
+      const possible = (analysed[i]?.candidates ?? []).filter((c) =>
+        !opts.varietyId || !c.varieties?.length || c.varieties.includes(opts.varietyId));
+      const best = possible.reduce<typeof possible[number] | undefined>(
+        (m, c) => !m || c.confidence > m.confidence ? c : m, undefined);
+      const ambiguous = opts.requireUnambiguousLemma && possible.some((candidate) =>
+        !candidate.unconfirmed && candidate.confidence >= LEMMA_MIN_CONFIDENCE
+        && (candidate.lemma !== best?.lemma || candidate.pos !== best?.pos));
+      const known = !ambiguous && !!best?.lemma && !best.unconfirmed && best.confidence >= LEMMA_MIN_CONFIDENCE;
       if (known) ids.push(`lemma:${languageId}:${best!.lemma}${best!.pos ? ':' + best!.pos : ''}`);
-      out.push({ node, start, end, surface: t.surface, ids, known });
+      out.push({ node, start, end, surface: t.surface, ids, known, ...(ambiguous ? { ambiguous: true } : {}) });
     });
     (cache.get(node) ?? cache.set(node, new Map()).get(node)!).set(languageId, { data: raw, tokens: out });
     return out;

@@ -171,6 +171,8 @@ export const MSG = {
   active: 'golearn:active',
   /** GoLearn Active's scan asks about the words on screen: answered from the device's own Repository only, and only while Active is on. */
   activeProfile: 'golearn:active-profile',
+  /** On-demand Reading Analysis: read-only device knowledge in bounded batches, never the remote long-selection profile. */
+  readingProfile: 'golearn:reading-profile',
   /** GoLearn Active's scan asks the dictionary's forms index which unconfirmed words it knows (2026-10-27): see `ConfirmFormsRequest` in protocol.ts. */
   confirmForms: 'golearn:confirm-forms',
   /** Explicit on-demand request for the local sentence translation service. */

@@ -14,6 +14,8 @@
 import { ACTIVE_LEVELS, LEVEL_LEGEND, type ActiveLevel } from '../src/active/levels';
 import { MSG, getChrome, type ChromeApi } from '../src/platform';
 import { ACTIVE_ORIGINS, languageNameOf, type ActiveReply, type ActiveSettings, type PageStatus } from '../src/protocol';
+import { READING_ANALYSIS, type ReadingAnalysisReply } from '../src/reading/protocol';
+import { TEXT_VARIETIES } from '../src/reading/varieties';
 import type { ActiveState } from '../src/content/active';
 
 export interface PopupHandle { refresh(): Promise<void> }
@@ -56,6 +58,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     }));
     langSelect.value = s.languageId;
     langSelect.disabled = list.length < 2;
+    renderTextVarieties();
     langLine.classList.remove('warn', 'sr');
     // one language only: say why, truthfully. With the account unreadable (its service cannot be reached, nothing kept from before) the
     // account's languages are simply not known here yet; that is not "others are added in GoLearn setup" (2026-10-27)
@@ -83,6 +86,144 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     }
     await refresh();
   });
+
+  const analysisButton = doc.getElementById('analyze-page') as HTMLButtonElement | null;
+  const analysisOutput = doc.getElementById('reading-result');
+  const varietyBox = doc.getElementById('reading-variety');
+  const varietySelect = doc.getElementById('reading-variety-select') as HTMLSelectElement | null;
+  function renderTextVarieties(): void {
+    if (!varietyBox || !varietySelect) return;
+    const list = TEXT_VARIETIES[langSelect.value] ?? [];
+    varietyBox.hidden = list.length === 0;
+    const prev = varietySelect.value;
+    varietySelect.replaceChildren();
+    const empty = doc.createElement('option');
+    empty.value = '';
+    empty.textContent = 'Choose text variety…';
+    varietySelect.append(empty);
+    for (const v of list) {
+      const option = doc.createElement('option');
+      option.value = v.id;
+      option.textContent = v.label;
+      varietySelect.append(option);
+    }
+    varietySelect.value = list.some((v) => v.id === prev) ? prev : '';
+  }
+  langSelect.addEventListener('change', renderTextVarieties);
+  renderTextVarieties();
+  let analysisRequest: string | undefined;
+  function invalidateAnalysis(): void {
+    if (analysisRequest && tabId !== undefined) {
+      void chrome.tabs?.sendMessage(tabId, { type: READING_ANALYSIS, requestId: analysisRequest, cancel: true }, { frameId: 0 }).catch(() => {});
+    }
+    analysisRequest = undefined;
+    if (analysisButton) analysisButton.textContent = 'Analyze this page';
+    analysisOutput?.replaceChildren();
+  }
+  langSelect.addEventListener('change', invalidateAnalysis);
+  varietySelect?.addEventListener('change', invalidateAnalysis);
+  if (analysisButton && analysisOutput) {
+    const setResult = (message: string) => { analysisOutput.textContent = message; };
+    const appendLine = (message: string, strong = false) => {
+      const line = doc.createElement('p');
+      const label = strong ? doc.createElement('strong') : line;
+      label.textContent = message;
+      if (strong) line.append(label);
+      analysisOutput.append(line);
+    };
+    analysisButton.addEventListener('click', async () => {
+      if (analysisRequest) {
+        invalidateAnalysis();
+        setResult('Analysis canceled.');
+        return;
+      }
+      const requestId = crypto.randomUUID();
+      analysisRequest = requestId;
+      analysisButton.textContent = 'Cancel analysis';
+      setResult('Analyzing this page…');
+      const message = { type: READING_ANALYSIS, requestId, languageId: langSelect.value || undefined,
+        ...(varietySelect?.value && !varietyBox?.hidden ? { varietyId: varietySelect.value } : {}) };
+      const send = (id: number, payload: unknown) => chrome.tabs?.sendMessage(id, payload, { frameId: 0 });
+      try {
+        const tab = (await chrome.tabs?.query({ active: true, currentWindow: true }))?.[0];
+        if (analysisRequest !== requestId) return;
+        if (tab?.id === undefined || !tab.url || !/^https?:\/\//i.test(tab.url)) {
+          setResult('Reading Analysis is unavailable on this page.');
+          return;
+        }
+        const id = tab.id;
+        tabId = id;
+        let ready = false;
+        try { ready = (await send(id, { type: MSG.ping }) as PingReply | undefined)?.ok === true; } catch { /* One-shot access below. */ }
+        if (analysisRequest !== requestId) return;
+        if (!ready) {
+          try {
+            if (!chrome.scripting) throw new Error('Scripting unavailable');
+            await chrome.scripting.executeScript({ target: { tabId: id }, files: ['content.js'] });
+          } catch {
+            if (analysisRequest === requestId) setResult('GoLearn could not access the text on this page.');
+            return;
+          }
+        }
+        if (analysisRequest !== requestId) return;
+        const reply = await send(id, message) as ReadingAnalysisReply | undefined;
+        if (analysisRequest !== requestId) return;
+        const currentTab = (await chrome.tabs?.query({ active: true, currentWindow: true }))?.[0];
+        if (analysisRequest !== requestId) return;
+        if (currentTab?.id !== id || currentTab.url !== tab.url) {
+          setResult('The page changed. Analyze it again.');
+          return;
+        }
+        if (!reply?.ok) {
+          const errors: Record<string, string> = {
+            'no-text': 'No readable text was found on this page.',
+            'page-changed': 'The text changed while being analyzed. Analyze this page again.',
+            'unsupported-page': 'This reader does not permit Reading Analysis.',
+            'variety-required': 'Choose a text variety to avoid mixing vocabulary from different periods.',
+            'unsupported-language': 'This language cannot be classified reliably yet.',
+            unavailable: 'Your vocabulary could not be loaded. Try again.',
+            canceled: 'Analysis canceled.',
+          };
+          setResult(errors[reply?.code ?? ''] ?? 'GoLearn could not analyze this page. Try again.');
+          return;
+        }
+        const result = reply.coverage;
+        if (result.familiarCoverage === null || result.confidentCoverage === null) {
+          setResult('No eligible words were found for this language.');
+          return;
+        }
+        analysisOutput.replaceChildren();
+        appendLine(`${Math.round(result.familiarCoverage)}% ${result.varietyId ? 'verified familiar' : 'familiar'}`, true);
+        appendLine(`${Math.round(result.confidentCoverage)}% ${result.varietyId ? 'verified confidently known' : 'confidently known'}`);
+        const meter = doc.createElement('div');
+        meter.className = 'reading-meter';
+        meter.setAttribute('aria-hidden', 'true');
+        for (const share of [result.confidentCoverage, result.familiarCoverage - result.confidentCoverage]) {
+          const segment = doc.createElement('span');
+          segment.style.width = `${share}%`;
+          meter.append(segment);
+        }
+        analysisOutput.append(meter);
+        const scope = result.sourceScope === 'primary' ? 'main content' : 'page text';
+        appendLine(`${result.totalOccurrences.toLocaleString()} words analyzed · ${scope} · ${languageNameOf(result.languageId)}${result.varietyId ? ' · ' + result.varietyId : ''}`);
+        if (reply.truncated) appendLine('This result covers part of the page.');
+        if (result.occurrences.unresolved) appendLine(`${result.occurrences.unresolved.toLocaleString()} words could not be resolved.`);
+        if (result.occurrences.legacyShared) appendLine(`${result.occurrences.legacyShared.toLocaleString()} words have older, language-wide records. Not credited until their variety can be verified.`);
+        if (result.varietyId) appendLine('Period-specific coverage: older shared records are not treated as known.');
+        appendLine(result.freshness === 'cached' || result.freshness === 'stale'
+          ? 'Using on-device vocabulary (it may not be fully synced).'
+          : 'Using vocabulary stored on this device.');
+      } catch {
+        if (analysisRequest === requestId) setResult('GoLearn could not analyze this page. Try again.');
+      } finally {
+        if (analysisRequest === requestId) {
+          analysisRequest = undefined;
+          analysisButton.textContent = 'Analyze again';
+        }
+      }
+    });
+    doc.defaultView?.addEventListener('pagehide', invalidateAnalysis);
+  }
 
   /** The foot line: the build the worker runs, and for 10 minutes after a self-reload that it updated itself (plain text, no control). */
   function renderBuild(s: PageStatus | undefined): void {

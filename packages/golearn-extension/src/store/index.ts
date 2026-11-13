@@ -10,6 +10,8 @@ import type { SourceReference, SourceRestrictions } from '../contract/readerAdap
 import { fnv1a64, wordCount } from '../text';
 import { HASHED_PAGE_LOCATOR } from '../../../repository-contract/src/sources';
 import type { StorageArea } from '../platform';
+import { scopedVarietyUnitId, validTextVariety, needsTextVariety } from '../reading/varieties';
+import { isUnitId } from '../protocol';
 
 export const EVENT_KEY_PREFIX = 'golearn:event:';
 export const DEVICE_KEY = 'golearn:deviceId';
@@ -352,7 +354,30 @@ export function buildPronunciationEvent(b: InteractionContext, p: { voice: 'synt
  * There is no "Review this" mark any more: review is a natural progression of the knowledge level, decided in the Repository.
  */
 export function buildMarkEvent(b: InteractionContext, mark: KnowledgeLevel): GoEvent {
-  return followUp(b, 'ItemMarked', { mark }, `mark:${b.sessionId}:${mark}:${itemKey(b.card)}:${b.now.getTime().toString(36)}`);
+  const event = followUp(b, 'ItemMarked', { mark }, `mark:${b.sessionId}:${mark}:${itemKey(b.card)}:${b.now.getTime().toString(36)}`);
+  const variety = b.language?.varietyId;
+  const languageId = b.card.languageId;
+  // Do not infer a Biblical/Modern or Classical/Modern vocabulary state from
+  // an older language-wide mark. New explicit single-word marks can carry BOTH
+  // identities without rewriting the existing card or Repository rows.
+  // The source must be an explicit choice or a reliable page/book declaration.
+  const verified = b.language && (
+    b.language.basis === 'override' ||
+    (b.language.confidence >= 0.6 &&
+      (b.language.basis === 'document-metadata' || b.language.basis === 'book-metadata'))
+  );
+  if (!verified || !variety || !needsTextVariety(languageId) || !validTextVariety(languageId, variety)
+      || b.card.tokenCount !== 1) return event;
+  const candidates = [
+    ...b.card.itemIds,
+    ...(b.card.formId ? [b.card.formId] : []),
+  ].filter((id) => isUnitId(id) && (id.startsWith(`form:${languageId}:`) || id.startsWith(`lemma:${languageId}:`)));
+  const scoped = candidates.map((id) => scopedVarietyUnitId(id, languageId, variety)).filter((id): id is string => !!id && isUnitId(id));
+  if (!scoped.length) return event;
+  return {
+    ...event,
+    subject: { ...event.subject, itemIds: [...new Set([...(event.subject.itemIds ?? []), ...scoped])] },
+  };
 }
 
 /** "This analysis is wrong": the correction references the selection event it corrects. The lemma id is a proposal. */

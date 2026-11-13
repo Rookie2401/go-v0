@@ -10,7 +10,7 @@ beforeAll(async () => { await loadLatinLexicon(); }, 120_000);
 
 const unread = (sentence: string): string[] => {
   const tokens = laAdapter.tokenize(sentence);
-  const an = laAdapter.analyze(tokens, sentence);
+  const an = laAdapter.analyze(tokens);
   return tokens.flatMap((t, i) => {
     if (!t.isWord) return [];
     const top = an[i].candidates[0];
@@ -38,7 +38,7 @@ describe('the Latin orientation', () => {
     }
     for (const { text } of LA_PASSAGE.sentences) {
       const tokens = laAdapter.tokenize(text);
-      expect(laAdapter.checkProduction(tokens, laAdapter.analyze(tokens, text), text), text).toEqual([]);
+      expect(laAdapter.checkProduction(tokens, laAdapter.analyze(tokens), text), text).toEqual([]);
     }
   });
 });

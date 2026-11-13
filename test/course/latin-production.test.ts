@@ -11,7 +11,7 @@ beforeAll(async () => { await loadLatinLexicon(); }, 120_000);
 
 const check = (s: string) => {
   const tokens = laAdapter.tokenize(s);
-  return laAdapter.checkProduction(tokens, laAdapter.analyze(tokens, s), s);
+  return laAdapter.checkProduction(tokens, laAdapter.analyze(tokens), s);
 };
 const apply = (s: string, sug: { start: number; end: number; replacement: string }): string => s.slice(0, sug.start) + sug.replacement + s.slice(sug.end);
 

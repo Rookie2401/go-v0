@@ -63,6 +63,6 @@ jobs:
       - name: Build GoLearn extension
         run: npm run ext:build
       - name: Verify Reading Analysis and popup regressions
-        run: npx vitest run test/extension/reading-coverage.test.ts test/extension/reading-analyze.test.ts test/extension/active.background.test.ts test/extension/actionPopup.test.ts test/golearn-app/popup.test.ts
+        run: npx vitest run test/extension/reading-coverage.test.ts test/extension/reading-analyze.test.ts test/extension/reading-language-parity.test.ts test/extension/active.background.test.ts test/extension/actionPopup.test.ts test/golearn-app/popup.test.ts
         env:
           GO_CI_NO_LOCAL_DATA: '1'

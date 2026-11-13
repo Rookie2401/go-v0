@@ -19,6 +19,19 @@ const PREFS = { languageId: 'sq', sessionMinutes: 0, maxNew: 5, cardsPerDeck: 5,
 const TIMING = { ...reviewTiming };
 /** Real time a press may take: the bounded wait plus a margin for the work after it. */
 const MARGIN_MS = 1_800;
+/**
+ * Waits for a press to land by the clock, not by a count of event-loop turns: `until`'s 800 turns ran out on CI's Linux runner before a press that waits
+ * PRESS_WAIT_MS by design had finished (2026-11-13). The deadline is generous; what each test asserts is the measured time, against PRESS_WAIT_MS + MARGIN_MS.
+ */
+const PRESS_DEADLINE_MS = PRESS_WAIT_MS + MARGIN_MS + 5_000;
+async function landed(cond: () => boolean, what: string): Promise<void> {
+  const end = Date.now() + PRESS_DEADLINE_MS;
+  while (Date.now() < end) {
+    if (cond()) return;
+    await new Promise<void>((r) => setTimeout(r, 0));
+  }
+  throw new Error(`timed out waiting for ${what}`);
+}
 
 afterEach(() => { destroyRigs(); Object.assign(reviewTiming, TIMING); });
 
@@ -98,7 +111,7 @@ describe('GoReview with this device\'s copy and a service that never answers', (
     await until(() => firstPaint(rig), 'the first paint', 600);
     const at = Date.now();
     click(rig.q('#start-session'));
-    await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the first card', 800);
+    await landed(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the first card');
     expect(Date.now() - at).toBeLessThan(PRESS_WAIT_MS + MARGIN_MS);
     expect(answeredSinceHang(rig.service)).toBe(0);
   }, 20_000);
@@ -111,7 +124,7 @@ describe('GoReview with this device\'s copy and a service that never answers', (
     rig.clock.set(new Date(rig.clock.now.getTime() + 6 * 60_000).toISOString());
     const at = Date.now();
     click(rig.q('#start-new'));
-    await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), `the new deck: ${rig.q('#review-home .status')?.textContent}`, 800);
+    await landed(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the new deck');
     const took = Date.now() - at;
     expect(took).toBeGreaterThanOrEqual(PRESS_WAIT_MS - 200); // it did wait for the refresh that was running...
     expect(took).toBeLessThan(PRESS_WAIT_MS + MARGIN_MS);      // ...and no longer
@@ -125,7 +138,7 @@ describe('GoReview with this device\'s copy and a service that never answers', (
     const rig = await coldStart(first);
     await until(() => firstPaint(rig), 'the first paint', 600);
     click(rig.q('#start-session'));
-    await until(() => !!rig.root.querySelector('#session .exercise'), 'the first card', 800);
+    await landed(() => !!rig.root.querySelector('#session .exercise'), 'the first card');
     await playOut(rig);
     const at = Date.now();
     await until(() => !!rig.root.querySelector('#summary-next'), 'the Next section', 200);
@@ -134,7 +147,7 @@ describe('GoReview with this device\'s copy and a service that never answers', (
     const next = rig.q<HTMLButtonElement>('#continue-due-work');
     expect(next.disabled).toBe(false);
     click(next);
-    await until(() => !!rig.root.querySelector('#session .exercise'), 'the next deck\'s first card', 800);
+    await landed(() => !!rig.root.querySelector('#session .exercise'), 'the next deck\'s first card');
     expect(Date.now() - at).toBeLessThan(PRESS_WAIT_MS + MARGIN_MS);
     expect(answeredSinceHang(rig.service)).toBe(0);
   }, 30_000);

@@ -77,7 +77,12 @@ export async function analyzePage(
     const identity = candidates[index];
     if (!identity) return {};
     const matched = token.ids.map((id) => rows.get(id));
-    return { identity, state: matched.some(Boolean) ? levelOfRows(matched) : undefined };
+    const state = matched.some(Boolean) ? levelOfRows(matched) : undefined;
+    const formState = levelOfRows([matched[0]]);
+    // A known lemma supports familiarity, but confidence requires evidence for this form.
+    const lemmaOnly = (state === 'known' || state === 'automatic')
+      && formState !== 'known' && formState !== 'automatic';
+    return { identity, state: lemmaOnly ? 'familiar' : state };
   }), { languageId, sourceScope: usePrimary ? 'primary' : 'page', freshness: cached ? 'cached' : ids.length ? 'current' : 'unknown' });
   return { ok: true, coverage, truncated };
 }

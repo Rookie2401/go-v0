@@ -102,15 +102,19 @@ export async function analyzePage(
     applyConfirmations(eligible, answers as Confirmations);
   }
   signal.throwIfAborted();
-  const candidates = tokens.map((token) => token.known && token.ids.every(isUnitId) ? token.ids[1] : undefined);
+  // A user's explicit mark of an exact surface form is usable even when this
+  // experimental analyser cannot supply its lemma (e.g. an unfamiliar inflection).
+  // An unconfirmed spelling with no stored form state stays unresolved.
+  const candidates = tokens.map((token) =>
+    token.ids.every(isUnitId) && token.known ? token.ids[1] : undefined);
   const periodSpecific = needsTextVariety(languageId);
   // Query both the existing shared IDs and the reserved period-specific IDs.
   // Only the latter may prove confident knowledge in a historical/modern variety.
-  const ids = [...new Set(tokens.flatMap((token, index) => {
-    if (!candidates[index]) return [];
+  const ids = [...new Set(tokens.flatMap((token) => {
+    const eligibleIds = token.ids.filter(isUnitId);
     return periodSpecific && varietyId
-      ? [...token.ids, ...token.ids.map((id) => scopedVarietyUnitId(id, languageId, varietyId)).filter((id): id is string => !!id && isUnitId(id))]
-      : token.ids;
+      ? [...eligibleIds, ...eligibleIds.map((id) => scopedVarietyUnitId(id, languageId, varietyId)).filter((id): id is string => !!id && isUnitId(id))]
+      : eligibleIds;
   }))];
   const rows = new Map<string, KnowledgeView>();
   let cached = false;
@@ -129,7 +133,12 @@ export async function analyzePage(
   }
   signal.throwIfAborted();
   const coverage = aggregateCoverage(tokens.map((token, index) => {
-    const identity = candidates[index];
+    const lemma = candidates[index];
+    const formId = token.ids[0];
+    const formRow = formId ? rows.get(formId) : undefined;
+    const formScopedId = periodSpecific && varietyId && formId ? scopedVarietyUnitId(formId, languageId, varietyId) : undefined;
+    const scopedFormRow = formScopedId ? rows.get(formScopedId) : undefined;
+    const identity = lemma || ((formRow || scopedFormRow) ? formId : undefined);
     if (!identity) return {};
     const matched = token.ids.map((id) => rows.get(id));
     if (periodSpecific && varietyId) {

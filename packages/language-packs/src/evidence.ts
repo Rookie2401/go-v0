@@ -67,6 +67,7 @@ export interface PackEvidence {
 
 const GOLD_REPORT = 'docs/ecosystem/linguistics/GOLD-REPORT-2026-10-10.json';
 const LATIN_REPORT = 'data/review/latin-eval/report.json';
+const THAI_BENCHMARKS = 'docs/thai/BENCHMARKS.md';
 
 /** The form index of a pack's declared dictionary: form → lemma and part of speech, for the words the hand list does not hold. */
 const formsIndex = (lang: string, id: string): LemmaSource => ({
@@ -103,9 +104,18 @@ export const PACK_EVIDENCE: Readonly<Record<string, PackEvidence>> = Object.free
     lemmaSources: [formsIndex('hi', 'kaikki-hi@2026-09-28')],
     lemmaMeasurements: [aiGold('dev', 204, 215), aiGold('unseen', 71, 80)],
   },
+  // Thai does not inflect, so a dictionary headword is its own lemma: since 2026-11-13 the analyser itself reads the Thai-script
+  // headwords of the pack's dictionary (docs/thai/BENCHMARKS.md §5). Its two AI-labelled figures are the re-measurement of that day
+  // (the course-text set rose from 84.6 %; the held-out set did not move), not the gold report's, which measured the analyser before it.
   th: {
-    lemmaSources: [formsIndex('th', 'kaikki-th@2026-09-28')],
-    lemmaMeasurements: [aiGold('dev', 181, 214), aiGold('unseen', 73, 80)],
+    lemmaSources: [
+      { kind: 'analyser-lexicon', id: 'kaikki-th@2026-09-28', label: 'the headwords of the pack’s Wiktionary dictionary, which the analyser reads itself', size: { count: 17222, unit: 'entries' }, source: 'src/adapters/thai/dictionary-words-data.ts' },
+      formsIndex('th', 'kaikki-th@2026-09-28'),
+    ],
+    lemmaMeasurements: [
+      { ...aiGold('dev', 198, 214), id: 'gold-2026-11-13-dev', lemmaAccuracy: 92.5, measuredOn: '2026-11-13', source: THAI_BENCHMARKS },
+      { ...aiGold('unseen', 73, 80), id: 'gold-2026-11-13-unseen', lemmaAccuracy: 91.3, measuredOn: '2026-11-13', source: THAI_BENCHMARKS },
+    ],
   },
   // Norwegian has no dictionary in the repository: its lemmas really do come from the hand word list and the rules. The figures are
   // agreement with an AI annotator on a 21-sentence corpus and a small blind holdout; they measure, they do not add a source.

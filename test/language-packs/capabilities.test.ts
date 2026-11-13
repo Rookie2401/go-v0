@@ -17,6 +17,7 @@ import { nnAdapter } from '../../src/adapters/nn';
 import { arcAdapter } from '../../src/adapters/arc';
 import { ARC_SOURCE_ID } from '../../src/adapters/aramaic/meta';
 import { ARAMAIC_SEED } from '../../src/adapters/aramaic/seed';
+import { THAI_DICTIONARY_ID, THAI_DICTIONARY_WORDS } from '../../src/adapters/thai/dictionary-words-data';
 import { sqAdapter } from '../../src/adapters/sq';
 import { thAdapter } from '../../src/adapters/th';
 import type { LanguageAdapter } from '../../src/core';
@@ -218,7 +219,7 @@ describe('the evidence table states only what the committed reports state', () =
     expect(report.at.slice(0, 10)).toBe('2026-10-10');
     let rows = 0;
     for (const [lang, e] of Object.entries(PACK_EVIDENCE)) {
-      for (const m of e.lemmaMeasurements.filter((x) => x.goldKind === 'ai-labelled')) {
+      for (const m of e.lemmaMeasurements.filter((x) => x.goldKind === 'ai-labelled' && x.source === 'docs/ecosystem/linguistics/GOLD-REPORT-2026-10-10.json')) {
         const set = m.id.replace('gold-2026-10-10-', '');
         const r = report.results[lang][set];
         expect(m.items, `${lang} ${set}`).toBe(r.scored);
@@ -228,7 +229,31 @@ describe('the evidence table states only what the committed reports state', () =
         rows++;
       }
     }
-    expect(rows).toBe(14); // seven languages, the course-text set and the held-out set of each
+    expect(rows).toBe(12); // six languages, the course-text set and the held-out set of each (Thai was re-measured: the next test)
+  });
+
+  it('Thai: the analyser reads the dictionary’s own headwords, and its figures are the re-measurement that followed (docs/thai/BENCHMARKS.md §5)', () => {
+    const [lexicon, forms] = PACK_EVIDENCE.th.lemmaSources;
+    expect(lexicon).toMatchObject({ kind: 'analyser-lexicon', id: THAI_DICTIONARY_ID, source: 'src/adapters/thai/dictionary-words-data.ts' });
+    expect(lexicon.size).toEqual({ count: THAI_DICTIONARY_WORDS.split('\n').length, unit: 'entries' });
+    expect(lexicon.id).toBe(PACKS.th.lexical.dictionary!.id);
+    expect(forms.kind).toBe('dictionary-forms-index');
+    const doc = fs.readFileSync(path.resolve(__dirname, '../../docs/thai/BENCHMARKS.md'), 'utf8');
+    expect(doc).toMatch(/## 5 Dictionary headwords in the analyser \(2026-11-13\)/);
+    expect(doc).toContain('gold labels AI-judged, unreviewed');
+    // "| gold dev lemma / POS (n=214) | 84.6 % / 73.8 % | 92.5 % / 81.3 % |": the last column is the analyser as it is now
+    const after = (set: string): [number, number] => {
+      const m = new RegExp(`\\| gold ${set} lemma / POS \\(n=(\\d+)\\) \\| [^|]+\\| ([\\d.]+) % /`).exec(doc);
+      expect(m, set).not.toBeNull();
+      return [Number(m![1]), Number(m![2])];
+    };
+    const [dev, unseen] = PACK_EVIDENCE.th.lemmaMeasurements;
+    expect([dev.id, dev.items, dev.lemmaAccuracy, dev.heldOut]).toEqual(['gold-2026-11-13-dev', ...after('dev'), false]);
+    expect([unseen.id, unseen.items, unseen.lemmaAccuracy, unseen.heldOut]).toEqual(['gold-2026-11-13-unseen', ...after('unseen'), true]);
+    for (const m of [dev, unseen]) expect(m).toMatchObject({ goldKind: 'ai-labelled', measuredOn: '2026-11-13', source: 'docs/thai/BENCHMARKS.md' });
+    // an AI-labelled figure raises nothing: Thai is limited because of its sources
+    expect(packCapabilities('th')!.lemma.quality).toBe('limited');
+    expect(packCapabilities('th')!.lemma.note).toContain('from the headwords of the pack’s Wiktionary dictionary, which the analyser reads itself (17,222 entries) and the form index of the pack’s Wiktionary dictionary');
   });
 
   it('the Latin figures are the evaluation report’s own (data/review/latin-eval/report.json): PROIEL as stated, Perseus pooled over its twelve files', () => {

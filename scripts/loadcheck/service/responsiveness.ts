@@ -5,7 +5,7 @@
 //   before  an open home rebuilding after every live update as it did before: the recovery scan (every vocabulary page unsorted, the whole knowledge,
 //           the candidates) and the word count's walk (every page sorted by recency), back to back;
 //   after   the same open home with the throttles: inside ten minutes of a walk a rebuild asks only for the candidates, and the count comes from the
-//           list saved on the device; one "New deck" press in the middle walks afresh once.
+//           list saved on the device; one "New deck" press in the middle walks afresh once (the light listing of 8966783c).
 // It reports how long GoLearn waits for each lookup to be recorded, counted from the instant it meant to send it (p50, p95, max), how long the word card takes to build (on the device, no service),
 // and how long one home rebuild takes. Memory is profile-memory.ts's job: one process across three runs keeps what it grew, so it is not compared here.
 //   NODE_OPTIONS=--expose-gc npx vite-node scripts/loadcheck/service/responsiveness.ts <events> <words> <seconds per run>   (defaults 20000 3500 20; the 2026-11-12 figures used 30 s)
@@ -71,29 +71,37 @@ for (let i = 0; i < N; i += 200) {
 }
 console.log(`seeded in ${Math.round((Date.now() - t0) / 1000)} s\n`);
 
-/** Every page of the vocabulary listing, as the recovery scan (unsorted) or the word count (sorted by recency) walks it. */
-async function walk(sorted: boolean): Promise<number> {
+type Walk = 'scan-full' | 'scan-light' | 'count';
+/**
+ * Every page of the vocabulary listing: the recovery scan as it was (full unsorted pages), the scan as workspace.ts asks since 8966783c (light, only
+ * rows with no catalogue unit: one reply for this learner), or the home's word count (deckModel.ts's loadVocab: full pages sorted by recency).
+ */
+async function walk(how: Walk): Promise<number> {
   const client = api();
   let after: string | undefined, pages = 0;
+  const shape = how === 'count' ? { sort: 'recent' as const } : how === 'scan-light' ? { detail: 'light' as const, catalogued: false } : {};
   while (true) {
-    const page = await client.vocabulary({ languageId: 'sq', limit: 100, ...(sorted ? { sort: 'recent' as const } : {}), ...(after ? { after } : {}) });
+    const page = await client.vocabulary({ languageId: 'sq', limit: 100, ...shape, ...(after ? { after } : {}) });
     if (!page.ok) throw new Error(`vocabulary ${page.status}`);
     pages++;
     after = page.data.nextCursor;
     if (!after) return pages;
   }
 }
-/** One home rebuild. `full`: the recovery scan and the count walk (before the throttles); otherwise the candidates only. */
-async function homeBuild(full: boolean): Promise<void> {
+/**
+ * One home rebuild. 'before': the full recovery scan and the count walk, every time. 'press': the "New deck" press's fresh scan (light since
+ * 8966783c). 'reuse': inside ten minutes of a walk, with the count from the saved list: the candidates only.
+ */
+async function homeBuild(kind: 'before' | 'press' | 'reuse'): Promise<void> {
   const client = api();
-  if (full) {
-    await walk(false);
+  if (kind !== 'reuse') {
+    await walk(kind === 'before' ? 'scan-full' : 'scan-light');
     const k = await client.knowledge();
     if (!k.ok) throw new Error(`knowledge ${k.status}`);
   }
   const c = await client.candidates(enrolmentId, 200);
   if (!c.ok) throw new Error(`candidates ${c.status}`);
-  if (full) await walk(true);
+  if (kind === 'before') await walk('count');
 }
 
 const pct = (xs: number[], p: number): number => { const s = [...xs].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(p * s.length))]! : NaN; };
@@ -113,7 +121,7 @@ async function run(name: 'alone' | 'before' | 'after'): Promise<Run> {
       const press = name === 'after' && !pressed && Date.now() > until - SECONDS * 500;
       if (press) { pressed = true; pressFrom = Date.now(); }
       const s = performance.now();
-      await homeBuild(name === 'before' || press);
+      await homeBuild(name === 'before' ? 'before' : press ? 'press' : 'reuse');
       if (press) { pressTo = Date.now(); pressMs = performance.now() - s; } else builds.push(performance.now() - s);
       // a rebuild follows the next live update; GoLearn sends one every 100 ms, so the old home rebuilt back to back
       await sleep(name === 'before' ? 0 : 100);

@@ -6,6 +6,9 @@ import { mergeSources } from '../../src/gotell/sources';
 import { applyEdits, parse } from '../../src/gotell/text';
 import { FakeGoLearn, buildFixtureText, makeFakeAdapter } from './fakes';
 
+// Aramaic's first slice is explicitly reading-only; it has no GoTell lesson tables.
+const WRITING_LANGUAGES = LANGUAGES.filter(lang => lang !== 'arc');
+
 describe('concept tables', () => {
   it('match key terms by stem/form per language (Latin, Thai substring, Devanagari)', () => {
     expect(conceptsForToken('es', 'perdonó')).toContain('forgive');
@@ -25,12 +28,17 @@ describe('concept tables', () => {
 
   it('every language covers the ten key terms from the plan', () => {
     const plan = ['know', 'believe', 'trust', 'repent', 'regret', 'guilt', 'conviction', 'salvation', 'forgive', 'grace'] as const;
-    for (const lang of LANGUAGES as readonly LanguageCode[]) {
+    for (const lang of WRITING_LANGUAGES as readonly LanguageCode[]) {
       for (const c of plan) {
         expect(CONCEPTS[c].keyTerm).toBe(true);
         expect(lexemesFor(lang, c).length, `${lang}:${c}`).toBeGreaterThan(0);
       }
     }
+  });
+
+  it('does not pretend a reading-only Aramaic pack has production lessons', () => {
+    expect(lexemesFor('arc', 'know')).toEqual([]);
+    expect(CHRONOLOGY.arc).toEqual([]);
   });
 
   it('English intent words map to concepts in order of appearance, without substring false positives', () => {
@@ -97,7 +105,7 @@ describe('meaning checks', () => {
   });
 
   it('every language has chronology words and negators (Thai / Hindi as exact tokens)', () => {
-    for (const lang of LANGUAGES as readonly LanguageCode[]) {
+    for (const lang of WRITING_LANGUAGES as readonly LanguageCode[]) {
       expect(CHRONOLOGY[lang].length, lang).toBeGreaterThan(5);
     }
   });

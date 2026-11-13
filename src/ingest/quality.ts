@@ -154,7 +154,7 @@ const SCRIPTS: Array<[string, RegExp]> = [
   ['Hebrew', /\p{Script=Hebrew}/u], ['Thai', /\p{Script=Thai}/u], ['Devanagari', /\p{Script=Devanagari}/u], ['Han', /\p{Script=Han}/u],
   ['Hangul', /\p{Script=Hangul}/u], ['Kana', /[\p{Script=Hiragana}\p{Script=Katakana}]/u],
 ];
-const EXPECTED_SCRIPT: Record<LanguageCode, string> = { es: 'Latin', de: 'Latin', sq: 'Latin', th: 'Thai', hi: 'Devanagari', nb: 'Latin', nn: 'Latin', he: 'Hebrew', el: 'Greek', la: 'Latin' };
+const EXPECTED_SCRIPT: Record<LanguageCode, string> = { arc: 'Hebrew', es: 'Latin', de: 'Latin', sq: 'Latin', th: 'Thai', hi: 'Devanagari', nb: 'Latin', nn: 'Latin', he: 'Hebrew', el: 'Greek', la: 'Latin' };
 
 /**
  * Whether one paragraph looks like English rather than the language of the text: the paragraph rule of `inspectText`

@@ -1,48 +1,69 @@
 // @vitest-environment jsdom
 /**
- * The main setup page as two disclosures (the owner, 2026-10-28): LANGUAGE (the downloads) and AUDIO (the guide to hearing the words:
- * the voices on this device, Azure through a speech backend of one's own, and ElevenLabs as not available yet). Language opens by itself
- * while nothing is downloaded; once a language is downloaded both wait closed.
+ * The Languages page and the Audio page (redesigned 2026-11-11, docs/golearn/DESIGN-SYSTEM.md). From 2026-10-28 the main setup page was two
+ * closed disclosures, LANGUAGE and AUDIO: once a language was downloaded the page showed two closed headings and nothing of what the learner
+ * read in, and two screens of speech-backend notes sat under the language list. Now the Languages page is open (where the learner stands,
+ * then the languages) and the guide to hearing the words is its own page under Settings, its four parts each a section that opens.
  */
 import { describe, expect, it } from 'vitest';
-import { downloadLanguage, makeRig as baseRig, type RigOptions } from './helpers';
+import { downloadLanguage, makeRig as baseRig, until, type RigOptions } from './helpers';
 
 const makeRig = (o: RigOptions = {}) => baseRig({ startRoute: 'languages', ...o });
-const details = (rig: Awaited<ReturnType<typeof makeRig>>, id: string): HTMLDetailsElement => rig.q<HTMLDetailsElement>(`#${id}`);
 
-describe('the main setup page: Language and Audio', () => {
-  it('is two disclosures whose headings are their summaries; Language is open on a first run, Audio closed; the reader link stays at the foot', async () => {
+describe('the Languages page', () => {
+  it('has nothing behind a closed section: where the learner stands, then the languages, then two quiet links', async () => {
     const rig = await makeRig();
-    expect(rig.q('#screen h1').textContent).toBe('Choose your languages');
-    const language = details(rig, 'languages');
-    const audio = details(rig, 'audio');
-    expect(language.tagName).toBe('DETAILS');
-    expect(audio.tagName).toBe('DETAILS');
-    expect(language.querySelector(':scope > summary > h2')!.textContent).toBe('Language');
-    expect(audio.querySelector(':scope > summary > h2')!.textContent).toBe('Audio');
-    expect(language.open).toBe(true); // nothing downloaded yet: the downloads show by themselves
-    expect(audio.open).toBe(false);
-    expect(language.nextElementSibling).toBe(audio);
-    // the downloads live inside Language
-    expect(language.contains(rig.q('#language-cards'))).toBe(true);
-    expect(language.contains(rig.q('#account-line'))).toBe(true);
-    expect(rig.q<HTMLAnchorElement>('#reader-link').getAttribute('href')).toBe('#/reader');
+    expect(rig.q('#screen h1').textContent).toBe('Languages');
+    expect(rig.root.querySelector('details.disclosure, #audio, #audio-guide')).toBeNull();
+    const status = rig.q('#languages');
+    expect(status.tagName).toBe('SECTION');
+    expect(status.contains(rig.q('#next-steps'))).toBe(true);
+    expect(status.contains(rig.q('#account-line'))).toBe(true);
+    // the status comes before the list, the list before the foot
+    const body = [...rig.q('#screen .body').children].map((x) => x.id);
+    expect(body).toEqual(['languages', 'language-list', 'to-help']);
+    expect(rig.q('#language-list').contains(rig.q('#language-cards'))).toBe(true);
+    expect([...rig.root.querySelectorAll<HTMLAnchorElement>('#to-help a')].map((a) => [a.textContent, a.getAttribute('href')])).toEqual([['Help', '#/help'], ['How GoLearn reads pages', '#/reader']]);
   });
 
-  it('closes Language once a language is downloaded', async () => {
+  it('with a language downloaded it still shows everything: the language is named at the top and stands under Your languages', async () => {
     const rig = await makeRig({ extension: true });
     await downloadLanguage(rig, 'sq');
-    await rig.go('home');
+    await rig.go('settings');
     await rig.go('languages');
-    expect(details(rig, 'languages').open).toBe(false);
-    expect(details(rig, 'audio').open).toBe(false);
+    await until(() => rig.root.querySelector('#next-note'));
+    expect(rig.q('#next-note .lede').textContent).toContain('Albanian is ready');
+    expect(rig.q('#my-languages').hidden).toBe(false);
+    expect(rig.q('#language-cards').firstElementChild?.id).toBe('my-languages');
+    expect(rig.q('#my-languages').nextElementSibling?.getAttribute('data-language')).toBe('sq');
+    // ready is said by where the row stands; the words stay for a screen reader, and “Reading now” is in sight
+    expect(rig.q('[data-language="sq"] .dl-state').classList.contains('sr')).toBe(true);
+    expect(rig.q('[data-language="sq"] .mine .tag').textContent).toBe('Reading now');
+  });
+});
+
+describe('the Audio page, under Settings', () => {
+  it('is reached from Settings and leads back to it; what this device can speak is said first, then four parts that open, the first open', async () => {
+    const rig = await makeRig({ extension: true });
+    await rig.go('settings');
+    expect(rig.q<HTMLAnchorElement>('#reading-links li[data-route="audio"] a').getAttribute('href')).toBe('#/audio');
+    await rig.go('audio');
+    expect(rig.q('#screen h1').textContent).toBe('Audio');
+    expect(rig.q<HTMLAnchorElement>('.crumb a').getAttribute('href')).toBe('#/settings');
+    const guide = rig.q('#audio-guide');
+    const folds = [...guide.querySelectorAll<HTMLDetailsElement>(':scope > details.fold')];
+    expect(folds.map((d) => d.querySelector(':scope > summary > h2')!.textContent)).toEqual(['1. Voices on this device (free, nothing leaves the device)', '2. Remote voices through your account', '3. Optional: your own speech backend', '4. ElevenLabs']);
+    expect(folds.map((d) => d.open)).toEqual([true, false, false, false]);
+    // nothing of the guide is left outside a part except its opening lines
+    expect([...guide.children].filter((x) => x.tagName !== 'DETAILS').every((x) => x.tagName === 'P')).toBe(true);
   });
 
-  it('the Audio guide leads with account speech, explains custom backend setup second, and covers device voices and ElevenLabs', async () => {
+  it('the guide leads with device voices, then account speech, a backend of your own and ElevenLabs', async () => {
     const rig = await makeRig({ extension: true });
+    await rig.go('audio');
     const guide = rig.q('#audio-guide');
     const text = guide.textContent ?? '';
-    const headings = [...guide.querySelectorAll('h3')].map((x) => x.textContent);
+    const headings = [...guide.querySelectorAll('summary > h2')].map((x) => x.textContent);
     expect(headings).toEqual(['1. Voices on this device (free, nothing leaves the device)', '2. Remote voices through your account', '3. Optional: your own speech backend', '4. ElevenLabs']);
     // device voices: the four platforms and the exact-match rule, the tags from voiceTags.ts
     for (const os of ['Windows 11', 'macOS', 'Android', 'iPhone and iPad']) expect(text).toContain(os);
@@ -71,8 +92,10 @@ describe('the main setup page: Language and Audio', () => {
 
   it('the hosted (web) page says the speech backend is set in the extension\'s setup page', async () => {
     const rig = await makeRig();
+    await rig.go('audio');
     expect(rig.q('#audio-guide').textContent).toContain('set in the extension’s own setup page');
     const ext = await makeRig({ extension: true });
+    await ext.go('audio');
     expect(ext.q('#audio-guide').textContent).not.toContain('set in the extension’s own setup page');
   });
 });

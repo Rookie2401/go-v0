@@ -22,24 +22,30 @@ describe('Languages: download your languages', () => {
   it('shows the seven languages (Latin last, since 2026-10-17) from the catalogue in its order, each with what works, what does not, its level and its audio, and asks for no account', async () => {
     const rig = await makeRig();
     expect(rig.app.current()).toBe('languages');
-    expect(rig.q('#screen h1').textContent).toBe('Choose your languages');
-    expect(rig.q('#languages h2').textContent).toBe('Language'); // the heading of the Language disclosure (2026-10-28)
+    expect(rig.q('#screen h1').textContent).toBe('Languages');
+    // nothing waits behind a closed section: the rows are on the page, under one label while none is downloaded (2026-11-11)
+    expect(rig.root.querySelector('details.disclosure')).toBeNull();
+    expect(rig.q('#more-languages h2').textContent).toBe('Choose a language');
+    expect(rig.q('#my-languages').hidden).toBe(true);
     const cards = [...rig.root.querySelectorAll('#language-cards > .lang')];
     expect(cards.map((c) => c.getAttribute('data-language'))).toEqual(LANGUAGES_FAKE.map((l) => l.languageId));
     expect(cards.map((c) => c.querySelector('h3')!.firstChild!.textContent)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin']);
     const albanian = rig.q('[data-language="sq"]');
     expect(albanian.querySelector('.native')!.textContent).toContain('shqip');
-    expect(albanian.textContent).toContain('Latn script');
+    // the level of the pack, in the pack's own words; the script's code (Latn, Deva) is engineering and is not shown
     expect(albanian.textContent).toContain('reference pack, machine-drafted, unreviewed');
+    expect(rig.q('#language-cards').textContent).not.toMatch(/Latn|Deva|\bscript\b/);
+    expect(albanian.getAttribute('data-script')).toBe('Latn');
     expect(albanian.querySelector('.works')!.textContent).toContain('reference analyser');
     expect(albanian.querySelector('.does-not')!.textContent).toContain('No person has reviewed');
     expect(albanian.querySelector('.audio')!.textContent).toContain('Browser voices');
     expect(rig.q('[data-language="de"]').textContent).toContain('experimental, seed-only');
-    expect(rig.q('[data-language="hi"]').textContent).toContain('Deva script');
-    expect(rig.q('[data-language="th"]').textContent).toContain('Thai script');
-    expect(rig.q('[data-language="la"]').textContent).toContain('Latn script');
     expect(rig.q('[data-language="la"]').textContent).toContain('experimental, seed-only');
-    expect(rig.q('[data-language="la"] details.download > summary').textContent).toBe('Download language');
+    // a language with nothing to ask downloads on ONE press: its button is the control, named for the row it is in
+    const latin = rig.q<HTMLButtonElement>('[data-language="la"] [data-action="choose"]');
+    expect(rig.root.querySelector('[data-language="la"] details.download')).toBeNull();
+    expect([latin.textContent, latin.getAttribute('aria-label')]).toEqual(['Download', 'Download Latin']);
+    expect(latin.classList.contains('primary')).toBe(false); // nine filled buttons in a column was the old page
     // free choice: no account is needed and no team is asked for; there is no separate install step and no language form any more
     expect(rig.text()).not.toMatch(/sign in first/i);
     expect(rig.root.querySelector('#team')).toBeNull();
@@ -47,9 +53,11 @@ describe('Languages: download your languages', () => {
     expect(rig.root.querySelector('#enrol-form, #language, #pack-info')).toBeNull();
     expect(rig.text()).not.toMatch(/Install the pack|Orientation/);
     expect(rig.root.querySelectorAll('[data-action="choose"]')).toHaveLength(7);
-    // each is a compact row with a “Download language” menu at the right; what works and what does not sit under a collapsed Details
+    // each is a compact row with its Download at the right; one that asks a question first (a written standard, a regional preference)
+    // opens it in the row; what works and what does not sit under a collapsed Details
     expect(cards.every((c) => c.tagName === 'LI')).toBe(true);
-    expect(cards.map((c) => c.querySelector('details.download > summary')!.textContent)).toEqual(Array(7).fill('Download language'));
+    expect(cards.filter((c) => c.querySelector('details.download')).map((c) => c.getAttribute('data-language'))).toEqual(LANGUAGES_FAKE.filter((l) => l.choice).map((l) => l.languageId));
+    for (const c of cards.filter((x) => x.querySelector('details.download'))) expect(c.querySelector('details.download > summary')!.textContent).toBe('Download');
     expect(cards.every((c) => !(c.querySelector('details.about') as HTMLDetailsElement).open)).toBe(true);
     expect(albanian.querySelector('details.about > summary')!.textContent).toBe('Details');
     expect(albanian.querySelector('details.about')!.contains(albanian.querySelector('.works'))).toBe(true);
@@ -153,7 +161,7 @@ describe('Languages: download your languages', () => {
   it('downloading an installed language again does not install it twice; Re-verify and Reinstall are offered under Details', async () => {
     const rig = await makeRig();
     await downloadLanguage(rig, 'sq');
-    expect(cardOf(rig, 'sq').querySelector('[data-action="choose"]')!.textContent).toBe('Use Albanian');
+    expect(cardOf(rig, 'sq').querySelector('[data-action="choose"]')!.getAttribute('aria-label')).toBe('Use Albanian');
     const said = await downloadLanguage(rig, 'sq');
     expect(said).toContain('already installed and verified');
     expect(rig.packs.installs).toHaveLength(1);
@@ -304,7 +312,11 @@ describe('Languages: download your languages', () => {
     expect((await choiceOf(rig))!.enrolmentId).toBe(sqEnrolment.enrolmentId);
     expect(rig.q('[data-language="sq"] .mine .tag').textContent).toBe('Reading now');
     // the row offers the download again, and what was removed says so
-    expect(rig.q('[data-language="de"] details.download').hasAttribute('hidden')).toBe(false);
+    expect(rig.q('[data-language="de"] #download-de').hasAttribute('hidden')).toBe(false);
+    // and stands under Add a language again, after the label
+    const order = [...rig.q('#language-cards').children].map((li) => li.id || li.getAttribute('data-language'));
+    expect(order.indexOf('de')).toBeGreaterThan(order.indexOf('more-languages'));
+    expect(order.indexOf('sq')).toBeLessThan(order.indexOf('more-languages'));
     expect(cardStatus(rig, 'de')).toContain('German is removed from this device');
     rig.q('[data-language="sq"] .mine [data-action="remove"]').click();
     await until(() => rowsOf(rig, 'sq').length === 0);

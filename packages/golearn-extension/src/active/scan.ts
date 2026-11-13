@@ -112,7 +112,8 @@ export function createScanner(opts: ScannerOptions): Scanner {
     'nav', 'header', 'footer', '[role="navigation"]', '[role="banner"]', '[role="contentinfo"]', '[role="menu"]', '[role="menubar"]', '[role="toolbar"]', '[role="dialog"]', '[role="tooltip"]',
   ].join(', ');
   const containerSel = (opts.containers ?? []).join(', ');
-  const cache = new WeakMap<Text, { data: string; languageId: string; tokens: ScanToken[] }>();
+  // per node and per language: a page read in several languages tokenises a mixed-script node in each of them (2026-11-09)
+  const cache = new WeakMap<Text, Map<string, { data: string; tokens: ScanToken[] }>>();
 
   const skippedElement = (el: Element): boolean => {
     if (SKIPPED.has(el.tagName.toUpperCase())) return true;
@@ -156,8 +157,8 @@ export function createScanner(opts: ScannerOptions): Scanner {
   }
 
   function tokenise(node: Text, languageId: string): ScanToken[] {
-    const hit = cache.get(node);
-    if (hit && hit.languageId === languageId && hit.data === node.data) return hit.tokens;
+    const hit = cache.get(node)?.get(languageId);
+    if (hit && hit.data === node.data) return hit.tokens;
     const adapter = opts.adapterOf(languageId);
     if (!adapter) return [];
     const raw = node.data;
@@ -180,7 +181,7 @@ export function createScanner(opts: ScannerOptions): Scanner {
       if (known) ids.push(`lemma:${languageId}:${best!.lemma}${best!.pos ? ':' + best!.pos : ''}`);
       out.push({ node, start, end, surface: t.surface, ids, known });
     });
-    cache.set(node, { data: raw, languageId, tokens: out });
+    (cache.get(node) ?? cache.set(node, new Map()).get(node)!).set(languageId, { data: raw, tokens: out });
     return out;
   }
 

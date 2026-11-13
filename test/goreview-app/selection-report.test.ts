@@ -6,6 +6,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { buildSelectionReport, selectionReportJson } from '../../packages/goreview/app/selectionReport';
 import type { ReviewModel } from '../../packages/goreview/app/workspace';
+import { FACTS_NOT_EXAMINED } from '../../packages/goreview/src/intake/intake';
 import { planSession } from '../../packages/goreview/src/planner/planner';
 import type { DeckItem, IntakeOutcome } from '../../packages/goreview/src/types';
 import { audioOk, candidate, deckItem, dueItem, fakeScheduler, knowledge, NOW, prefs, scheduleState, testNow } from '../goreview/intake/fixtures';
@@ -38,6 +39,16 @@ function fixture(withPlan = true) {
 }
 
 describe('buildSelectionReport', () => {
+  it('files a word whose facts were not fetched under its own code and count, never under facts-unavailable or low priority', () => {
+    const { model, plan } = fixture();
+    const unchecked: IntakeOutcome = { unitId: 'lemma:sq:hene:NOUN', decision: 'low-priority', reasons: ['score 0.05', FACTS_NOT_EXAMINED, 'candidate rank 9 of 9 (comparison 0.04; base score 0.05; reading usefulness 0.00; lower candidate rank)'],
+      proposed: { dimension: 'written-recognition', family: 'written-recognition' }, candidate: candidate({ unitId: 'lemma:sq:hene:NOUN' }) };
+    const report = buildSelectionReport({ ...model, outcomes: [...model.outcomes, unchecked] }, plan);
+    expect(report.rows.find(r => r.unitId === unchecked.unitId)).toMatchObject({ status: 'excluded', code: 'facts-not-checked', detail: FACTS_NOT_EXAMINED, intakeDecision: 'low-priority' });
+    expect(report.rows.find(r => r.unitId === unchecked.unitId)!.intakeRank).toBeUndefined();
+    expect(report.counts.notYetChecked).toBe(1);
+  });
+
   it('gives every deck card, class card and intake outcome exactly one row with the expected code', () => {
     const { model, plan } = fixture();
     const report = buildSelectionReport(model, plan);
@@ -71,7 +82,7 @@ describe('buildSelectionReport', () => {
   it('counts add up', () => {
     const { model, plan } = fixture();
     const { counts, rows } = buildSelectionReport(model, plan);
-    expect(counts).toEqual({ vocabularyUnits: 7, knowledgeRows: 1, candidates: 2, deckCards: 4, classCards: 1, selected: 4, skipped: plan.skipped.length, withheld: 0 });
+    expect(counts).toEqual({ vocabularyUnits: 7, knowledgeRows: 1, candidates: 2, deckCards: 4, classCards: 1, selected: 4, skipped: plan.skipped.length, withheld: 0, notYetChecked: 0 });
     expect(counts.selected).toBe(rows.filter(r => r.status === 'selected').length);
     expect(counts.deckCards + counts.classCards + counts.candidates).toBe(rows.length);
     expect(counts.selected).toBe(plan.items.length);

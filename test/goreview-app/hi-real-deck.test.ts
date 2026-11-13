@@ -82,7 +82,7 @@ describe('real Hindi automatic deck', () => {
       await app.go('review/session');
       expect(root.querySelector('.flashcard[data-side="front"]')).not.toBeNull();
       expect(root.querySelector('#answer-input')).toBeNull();
-      (root.querySelector('#reveal') as HTMLButtonElement).click();
+      (root.querySelector('#flip-card') as HTMLButtonElement).click();
       expect(root.querySelector('.flashcard[data-side="back"]')).not.toBeNull();
       expect(root.querySelector('#revealed-answer')?.textContent).toBeTruthy();
       expect((await app.ctx.events('hi')).filter((event) => event.kind === 'CardReviewed')).toEqual([]);

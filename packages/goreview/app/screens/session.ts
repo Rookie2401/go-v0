@@ -24,14 +24,41 @@ import {
 } from '../format';
 import type { ActiveRun, ItemControl, Presented } from '../ports';
 import type { ReviewExercise } from '../../src/exercises/shared';
-import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession } from '../workspace';
+import { beginSession, currentReviewModel, endSavedSession, PRESS_WAIT_MS, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import { fillItemHistory } from './history';
+import { fillItemParsing } from './itemParsing';
 import { entriesOf, planFromEntries, planRemediation, planCurrentDeck, effectiveRemediation, VOCAB_NOTE } from '../deckModel';
 import { DEFAULT_UI, getUiPrefs, type UiPrefs } from './uiprefs';
 import { unlockSpeech } from '../speechUnlock';
 import type { View } from './view';
+import { icon } from '../icons';
+import { attachRipple } from '../ripple';
+
+function summaryLineIcon(doc: Document, pathData: string): Element {
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = doc.createElementNS(ns, 'svg');
+  for (const [k, v] of Object.entries({ viewBox: '0 0 24 24', width: '22', height: '22', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true', focusable: 'false', class: 'ec-icon' })) svg.setAttribute(k, v);
+  const path = doc.createElementNS(ns, 'path'); path.setAttribute('d', pathData); svg.append(path);
+  return svg;
+}
+
+function summaryActionTile(control: HTMLElement, art: Element, title: string, description: string, current = false): HTMLElement {
+  control.setAttribute('aria-label', `${title}. ${description}`);
+  const doc = control.ownerDocument;
+  control.append(
+    h('span', { class: 'deck-row' }, art,
+      h('span', { class: 'deck-label' },
+        h('span', { class: 'deck-title' }, title),
+        h('span', { class: 'deck-caption' }, description))),
+    icon(doc, 'arrow'));
+  const tile = h('div', { class: 'deck-tile', 'data-deck': current ? 'current' : undefined }, control);
+  attachRipple(tile);
+  return tile;
+}
 
 const GRADES = ['again', 'hard', 'good', 'easy'] as const;
+/** The families whose question is the meaning: the parsing (which holds no meaning) may be read before the answer. */
+const PARSING_BEFORE_ANSWER = new Set<string>(['written-recognition', 'phrase-comprehension']);
 const OVERLAP_LABEL: Record<NonNullable<Presented['planned']['overlap']>, string> = {
   scheduled: 'Scheduled return', remediation: 'Remediation reassessment', explicit: 'Optional extra practice',
 };
@@ -121,7 +148,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 async function repaintSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, view: View, actions?: NextActions): Promise<void> {
   if (!view.alive() || !root.querySelector('#summary') || root.querySelector('#session-undo button:disabled')) return;
   clear(root);
-  await renderSummary(root, ctx, run, actions);
+  // quiet: a data event redraws the summary from this device's copy and never asks for a live load (the first draw already did, and a refresh that lands has its own notice)
+  await renderSummary(root, ctx, run, actions, { quiet: true });
 }
 
 /** What the summary can start next; absent when the screen cannot be taken over (a summary drawn alone). */
@@ -150,8 +178,7 @@ class Controller {
    * hearing count so a failed attempt is never presented as listening evidence. */
   private audioPlaybackFailed = false;
   private revealed = false;
-  private typingCard = false;
-  private isFlashcard(): boolean { return this.presented?.exercise.family === 'written-recognition' && this.presented.exercise.responseMode === 'typed-or-self' && !this.typingCard; }
+  private isFlashcard(): boolean { return this.presented?.exercise.family === 'written-recognition' && this.presented.exercise.responseMode === 'typed-or-self'; }
   /** Other self-graded exercises use an explicit attempt check; flashcard ratings state whether the learner recalled it. */
   private retrievalAttempted = false;
   /** Time spent on this visible card, measured from presentation (never from session planning). */
@@ -229,7 +256,6 @@ class Controller {
     if (!this.presented) { await this.conclude('complete'); return; }
     this.given = undefined;
     this.revealed = false;
-    this.typingCard = false;
     this.retrievalAttempted = false;
     this.hearings = 0;
     this.completedHearings = 0;
@@ -403,7 +429,9 @@ class Controller {
         ev.preventDefault();
         const n = Number(ev.key) - 1;
         if ((mode === 'self-graded' || mode === 'typed-or-self') && this.revealed) await this.submit(this.base({ selfGrade: GRADES[n] }), true);
-        else if (mode === 'self-graded' || mode === 'typed-or-self') this.say('Show the answer first (Enter), then grade yourself with 1 to 4.', 'info');
+        else if (mode === 'self-graded' || mode === 'typed-or-self') this.say(this.isFlashcard()
+          ? 'Flip the card first, then grade yourself with 1 to 4.'
+          : 'Show the answer first (Enter), then grade yourself with 1 to 4.', 'info');
         else if (mode === 'choice') { const o = this.presented.exercise.prompt.options?.[n]; if (o !== undefined) await this.submit(this.base({ choice: o })); }
       } else if (ev.key === ' ' && this.presented.exercise.prompt.audio && !onControl) {
         ev.preventDefault();
@@ -452,9 +480,10 @@ class Controller {
   /** One quiet line: where the learner is, the kind of question, and two links. Nothing ticks and nothing is timed on screen. */
   private header(pr: Presented, withSkip: boolean): HTMLElement {
     return h('div', { class: 'session-bar', id: 'session-header', role: 'group', 'aria-label': 'Session' },
+      h('span', { class: 'session-heading' }, this.run.resumed ? 'Resume' : 'Review'),
       h('span', { class: 'bar-kicker', id: 'session-progress' }, `${pr.index + 1} of ${pr.total}`),
-      h('span', { class: 'bar-kicker bar-kind' }, FAMILY_LABEL[pr.exercise.family]),
-      pr.planned.overlap ? h('span', { class: 'bar-kicker session-overlap', 'data-overlap': pr.planned.overlap },
+      this.isFlashcard() ? null : h('span', { class: 'bar-kicker bar-kind' }, FAMILY_LABEL[pr.exercise.family]),
+      !this.isFlashcard() && pr.planned.overlap ? h('span', { class: 'bar-kicker session-overlap', 'data-overlap': pr.planned.overlap },
         `${OVERLAP_LABEL[pr.planned.overlap]}${PRESENTATION_REASON_LABEL[pr.planned.presentationReason ?? ''] ? ` · ${PRESENTATION_REASON_LABEL[pr.planned.presentationReason!]}` : ''}`) : null,
       h('span', { class: 'bar-actions' },
         withSkip ? button('Skip', () => void this.skip(), { id: 'skip', class: 'linklike', title: 'Skip (Esc)', 'aria-keyshortcuts': 'Escape' }) : null,
@@ -467,30 +496,35 @@ class Controller {
     clear(this.root);
     const concealed = exercise.hiddenBeforeAnswer.length > 0 || isAudioExercise(exercise);
     const card = h('article', { class: 'exercise', 'data-family': exercise.family, 'data-mode': exercise.responseMode, ...(concealed ? {} : { 'data-item': pr.planned.item.itemId }) });
-    if (this.isFlashcard()) {
+    const flashcard = this.isFlashcard();
+    const pp = exercise.prompt;
+    const wordContext = (exercise as ReviewExercise).context;
+    const stimulus = pp.stimulusText && !hidden.has('stimulusText') ? flashcard ? wordContext?.surface ?? pp.stimulusText : pp.stimulusText : undefined;
+    if (flashcard) {
       card.classList.add('flashcard');
       card.setAttribute('data-side', 'front');
       card.setAttribute('aria-label', 'Flashcard front');
-      card.append(h('p', { class: 'flashcard-label', id: 'flashcard-label' }, 'Recall the meaning'));
-    } else append(card, [h('p', { class: 'instruction strong', id: 'instruction' }, exercise.prompt.instruction)]);
-    const pp = exercise.prompt;
-    const wordContext = (exercise as ReviewExercise).context;
-    if (pp.stimulusText && !hidden.has('stimulusText')) {
-      card.append(h('p', { ...langProps(this.tag), id: 'stimulus', class: 'target-text stimulus' }, this.isFlashcard() && wordContext?.surface ? wordContext.surface : pp.stimulusText));
-      if (this.isFlashcard() && wordContext?.surface) card.append(h('p', { ...langProps(this.tag), class: 'flashcard-context' }, pp.stimulusText));
+      card.append(h('button', { type: 'button', id: 'flip-card', class: 'flashcard-face', onclick: () => this.reveal() },
+        stimulus ? h('span', { ...langProps(this.tag), id: 'stimulus', class: 'target-text stimulus' }, stimulus) : exercise.prompt.instruction,
+        h('span', { class: 'sr' }, ' · Flip card to reveal the answer')));
+    } else {
+      card.append(h('p', { class: 'instruction strong', id: 'instruction' }, pp.instruction));
+      if (stimulus) card.append(h('p', { ...langProps(this.tag), id: 'stimulus', class: 'target-text stimulus' }, stimulus));
+      if (pp.sentenceWithGap && !hidden.has('sentenceWithGap')) card.append(h('p', { ...langProps(this.tag), id: 'sentence-gap', class: 'target-text stimulus' }, pp.sentenceWithGap));
+      if (pp.meaning && !hidden.has('meaning')) card.append(h('p', { id: 'meaning', class: 'meaning' }, pp.meaning));
     }
-    if (pp.sentenceWithGap && !hidden.has('sentenceWithGap')) card.append(h('p', { ...langProps(this.tag), id: 'sentence-gap', class: 'target-text stimulus' }, pp.sentenceWithGap));
-    if (pp.meaning && !hidden.has('meaning')) card.append(h('p', { id: 'meaning', class: 'meaning' }, pp.meaning));
     const pronunciation = this.pronunciationBlock(pr);
     if (pronunciation) card.append(pronunciation);
     if (pp.audio) card.append(this.audioBlock(pp.audio.replaysAllowed));
-    card.append(this.responseArea(pr));
-    append(this.root, [this.header(pr, true), pr.index === 0 && pr.planned.why.includes(VOCAB_NOTE) ? h('p', { class: 'muted', id: 'vocab-note' }, VOCAB_NOTE) : null, card, h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, concealed)]);
+    if (!flashcard) card.append(this.responseArea(pr));
+    append(this.root, [this.header(pr, true), pr.index === 0 && pr.planned.why.includes(VOCAB_NOTE) ? h('p', { class: 'muted', id: 'vocab-note' }, VOCAB_NOTE) : null, card,
+      flashcard ? h('div', { class: 'flashcard-grades' }, h('div', { id: 'self-grade', class: 'self-grade', hidden: true })) : null,
+      h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, concealed, false)]);
     this.focusFirst();
   }
 
   private focusFirst(): void {
-    const target = this.root.querySelector<HTMLElement>('#answer-input, .choice, #reveal');
+    const target = this.root.querySelector<HTMLElement>('#answer-input, .choice, #reveal, #flip-card');
     try { target?.focus({ preventScroll: true }); } catch { /* focus is a convenience */ }
   }
 
@@ -500,12 +534,6 @@ class Controller {
     const mode = exercise.responseMode;
     const options = exercise.prompt.options ?? [];
     const target = answerInTarget(exercise.family);
-    if (this.isFlashcard()) {
-      area.append(button(this.ui.shortcuts ? 'Show answer (Space)' : 'Show answer', () => this.reveal(), { id: 'reveal', class: 'btn primary' }),
-        button('Type an answer', () => { this.typingCard = true; this.paintPrompt(pr); }, { id: 'type-answer', class: 'btn small' }),
-        h('div', { id: 'self-grade', class: 'self-grade', hidden: true }));
-      return area;
-    }
     if (mode === 'choice') {
       const optsInTarget = exercise.family === 'grammar-application' || exercise.family === 'sentence-completion';
       area.append(h('div', { class: 'choices', role: 'group', 'aria-label': 'Choices' }, ...options.map((o, i) =>
@@ -548,16 +576,18 @@ class Controller {
     this.revealed = true;
     const { exercise } = this.presented;
     const flashcard = this.isFlashcard();
+    const reference = h('p', { class: 'reference' }, h('span', { class: 'sr' }, 'Answer: '),
+      h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'revealed-answer' }, exercise.answerKey.accepted[0] ?? ''));
     if (flashcard) {
-      const card = this.root.querySelector<HTMLElement>('.flashcard');
-      card?.setAttribute('data-side', 'back');
-      card?.setAttribute('aria-label', 'Flashcard back');
-      const label = this.root.querySelector<HTMLElement>('#flashcard-label');
-      if (label) label.textContent = 'Meaning';
-      const typing = this.root.querySelector<HTMLElement>('#type-answer');
-      if (typing) typing.hidden = true;
-    }
-    if (exercise.responseMode === 'typed-or-self') {
+      const face = this.root.querySelector('#flip-card');
+      const word = face?.querySelector('#stimulus');
+      const back = h('div', { class: 'flashcard-face flashcard-back', tabindex: '-1' }, word, reference);
+      face?.replaceWith(back);
+      back.closest('.flashcard')?.setAttribute('data-side', 'back');
+      back.closest('.flashcard')?.setAttribute('aria-label', 'Flashcard back');
+      // Focus the revealed meaning so keyboard and screen-reader users encounter it before the rating controls.
+      back.focus({ preventScroll: true });
+    } else if (exercise.responseMode === 'typed-or-self') {
       const input = this.root.querySelector<HTMLInputElement>('#answer-input');
       if (input) { input.disabled = true; input.closest('.field')?.setAttribute('hidden', ''); }
       const check = this.root.querySelector<HTMLButtonElement>('#answer-check');
@@ -570,20 +600,18 @@ class Controller {
     const area = this.root.querySelector<HTMLElement>('#self-grade');
     if (!area) return;
     area.removeAttribute('hidden');
-    const ref = exercise.answerKey.accepted[0] ?? '';
     append(area, [
-      h('p', { class: 'reference' }, h('span', { class: 'sr' }, 'Answer: '), h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'revealed-answer' }, ref)),
-      h('p', { class: 'muted' }, 'How well did you know it?'),
+      flashcard ? null : reference,
+      flashcard ? null : h('p', { class: 'muted' }, 'How well did you know it?'),
       h('div', { class: 'grades', role: 'group', 'aria-label': 'How well did you know it?' }, ...GRADES.map((g, i) => {
         const word = RATING_LABEL[i + 1];
         const choice = button('', () => void this.submit(this.base({ selfGrade: g }), true), { class: 'grade', 'data-grade': g, 'aria-label': word, ...(this.ui.shortcuts ? { 'aria-keyshortcuts': String(i + 1) } : {}) });
         append(choice, [h('span', { class: 'grade-dot', 'aria-hidden': 'true' }, String(i + 1)), h('span', { class: 'grade-word' }, word)]);
         return choice;
       })),
-      h('p', { class: 'grade-help' }, button('I needed help', () => void this.submit(this.base({ hinted: true, assistance: ['learner-requested-help'], retrievalAttempted: false, selfGrade: 'again' }), true), { id: 'grade-assisted', class: 'linklike' })),
+      flashcard ? null : h('p', { class: 'grade-help' }, button('I needed help', () => void this.submit(this.base({ hinted: true, assistance: ['learner-requested-help'], retrievalAttempted: false, selfGrade: 'again' }), true), { id: 'grade-assisted', class: 'linklike' })),
     ]);
-    if (flashcard) area.append(h('details', {}, h('summary', {}, 'More detail'), h('p', {}, exercise.answerKey.explanation)));
-    try { area.querySelector<HTMLElement>('.grade')?.focus({ preventScroll: true }); } catch { /* */ }
+    if (!flashcard) try { area.querySelector<HTMLElement>('.grade')?.focus({ preventScroll: true }); } catch { /* */ }
   }
 
   // ───────────── audio ─────────────
@@ -787,7 +815,7 @@ class Controller {
     fb.append(h('div', { class: 'row' },
       button('Next (Enter)', () => void this.next(), { id: 'next', class: 'btn primary' }),
       button('Challenge this answer', () => this.challenge(), { id: 'challenge', class: 'btn' })), this.reportForm(pr));
-    append(this.root, [this.header(pr, false), fb, h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, false)]);
+    append(this.root, [this.header(pr, false), fb, h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, false, true)]);
     try { this.root.querySelector<HTMLElement>('#next')?.focus({ preventScroll: true }); } catch { /* */ }
   }
 
@@ -859,21 +887,38 @@ class Controller {
 
   // ───────────── per-item tools ─────────────
 
-  /** `concealed`: nothing that could name the item (its label, id, reasons) is rendered; used for audio items before the response. */
-  private itemTools(pr: Presented, concealed: boolean): HTMLElement {
+  /**
+   * `concealed`: nothing that could name the item (its label, id, reasons) is rendered; used for audio items before the response.
+   * The parsing and the table of forms (itemParsing.ts) are looked up when the section is opened. They hold no meaning, so a card that
+   * asks for the meaning has them before the answer; a card that asks for the form or its grammar has them after it.
+   */
+  private itemTools(pr: Presented, concealed: boolean, afterAnswer: boolean): HTMLElement {
     const until = (days: number): string => new Date(this.ctx.deps.now().getTime() + days * 24 * 3600_000).toISOString();
     const item = pr.planned.item;
     const histBox = h('div', { id: 'item-history', class: 'item-history' });
-    return h('details', { id: 'item-tools', class: 'item-tools' }, h('summary', {}, 'This item'),
-      concealed ? null : h('p', { class: 'muted' }, h('span', langProps(this.tag), unitLabel(item.unitId)), ` · ${DIMENSION_LABEL[item.dimension]}`),
-      !concealed && pr.planned.why.length ? h('ul', { class: 'reasons' }, ...pr.planned.why.map((w) => h('li', {}, ...embedTarget(w, this.targetWords(pr), this.tag)))) : null,
-      h('div', { class: 'row' },
-        button('Snooze a day', () => void this.control({ kind: 'snooze', until: until(1) }), { id: 'snooze-day', class: 'btn small' }),
-        button('Snooze a week', () => void this.control({ kind: 'snooze', until: until(7) }), { id: 'snooze-week', class: 'btn small' }),
-        button('Suspend', () => void this.control({ kind: 'suspend' }), { id: 'suspend', class: 'btn small' }),
-        button('Dismiss', () => void this.control({ kind: 'dismiss' }), { id: 'dismiss', class: 'btn small' }),
-        concealed ? null : button('Show history', () => { void fillItemHistory(this.ctx, histBox, item.itemId, this.tag); }, { id: 'show-history', class: 'btn small' })),
-      histBox);
+    const parsingNow = afterAnswer || PARSING_BEFORE_ANSWER.has(pr.exercise.family);
+    const parsingBox = concealed ? null : parsingNow
+      ? h('div', { id: 'item-parsing', class: 'item-parsing' })
+      : h('p', { id: 'item-parsing-later', class: 'muted' }, 'The parsing and the table of forms are shown after you answer.');
+    const tools = h('details', { id: 'item-tools', class: 'item-tools' }, h('summary', {}, 'This item'),
+      h('div', { class: 'item-tools-panel' },
+        this.isFlashcard() && pr.planned.overlap ? h('p', { class: 'muted' },
+          presentationReasonLabel(pr.planned.presentationReason, pr.planned.overlap)) : null,
+        concealed ? null : h('p', { class: 'muted' }, h('span', langProps(this.tag), unitLabel(item.unitId)), ` · ${DIMENSION_LABEL[item.dimension]}`),
+        !concealed && pr.planned.why.length ? h('ul', { class: 'reasons' }, ...pr.planned.why.map((w) => h('li', {}, ...embedTarget(w, this.targetWords(pr), this.tag)))) : null,
+        parsingBox,
+        h('div', { class: 'row' },
+          button('Snooze a day', () => void this.control({ kind: 'snooze', until: until(1) }), { id: 'snooze-day', class: 'btn small' }),
+          button('Snooze a week', () => void this.control({ kind: 'snooze', until: until(7) }), { id: 'snooze-week', class: 'btn small' }),
+          button('Suspend', () => void this.control({ kind: 'suspend' }), { id: 'suspend', class: 'btn small' }),
+          button('Dismiss', () => void this.control({ kind: 'dismiss' }), { id: 'dismiss', class: 'btn small' }),
+          concealed ? null : button('Show history', () => { void fillItemHistory(this.ctx, histBox, item.itemId, this.tag); }, { id: 'show-history', class: 'btn small' })),
+        histBox));
+    if (parsingBox && parsingNow) {
+      const request = { unitId: item.unitId, languageId: this.run.ctx.languageId, ...(this.run.ctx.varietyId ? { varietyId: this.run.ctx.varietyId } : {}), tag: this.tag, afterAnswer };
+      tools.addEventListener('toggle', () => { if ((tools as HTMLDetailsElement).open) void fillItemParsing(this.ctx, parsingBox, request); });
+    }
+    return tools;
   }
 
   /** Target-language words an interface sentence about this item may quote: its label, and the accepted answers when those are in the target language. */
@@ -904,24 +949,47 @@ export function parseCorrection(text: string): { lexemeId: string } | { features
  * heading and enabled whenever N > 0. The "Next scheduled session" line is truthful about what the N cards are: due reviews, due learning
  * returns, new admissions, and the early reviews (deck-fill) that top the deck up; the four add up to N.
  */
-async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, _tag: string): Promise<HTMLElement> {
+/** How long rendering waits for the local model before leaving the remaining options to load in the background. */
+const NEXT_MODEL_WAIT_MS = 1_000;
+
+async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, home: HTMLElement, opts: { quiet?: boolean } = {}): Promise<void> {
+  // the model is this device's copy (immediate); a live refresh that lands redraws the summary through ctx.onData
+  const modelPromise = currentReviewModel(ctx, opts.quiet ? { noRefresh: true } : {});
+  let timer: number | undefined;
+  const late = new Promise<'late'>((resolve) => { timer = ctx.deps.win.setTimeout(() => resolve('late'), NEXT_MODEL_WAIT_MS) as unknown as number; });
+  const update = async (model: ReviewModel | undefined): Promise<void> => {
+    const { nextTile, studyTile, schedule, secondary, status } = await buildNextSection(ctx, run, actions, model);
+    if (!home.isConnected) return;
+    home.before(nextTile, studyTile);
+    home.after(...(schedule ? [schedule, secondary, status] : [secondary, status]));
+  };
+  const first = await Promise.race([modelPromise, late]).finally(() => { if (timer !== undefined) ctx.deps.win.clearTimeout(timer); });
+  if (first !== 'late') { await update(first); return; }
+  void modelPromise.then(update).catch(() => {
+    if (home.isConnected) home.after(h('p', { class: 'muted summary-load-error' }, 'Next deck options could not be loaded. You can still return to GoReview.'));
+  });
+}
+
+async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextActions, model: ReviewModel | undefined) {
   const planned = run.plan.initialQuestionCount ?? run.plan.items.length;
   const status = statusLine();
-  const model = await loadReviewModel(ctx);
   const scheduled = model ? await planCurrentDeck(ctx, model) : undefined;
   const remediation = model ? effectiveRemediation(model).all : [];
   const cards = (n: number): string => `${n} card${n === 1 ? '' : 's'}`;
-  const begin = async (make: (model: NonNullable<Awaited<ReturnType<typeof loadReviewModel>>>) => Promise<SessionPlan | undefined>, buttons: HTMLButtonElement[]): Promise<void> => {
+  const revealStatus = (): void => { const disclosure = status.closest('details'); if (disclosure) disclosure.open = true; };
+  const begin = async (make: (model: ReviewModel) => Promise<SessionPlan | undefined>, buttons: HTMLButtonElement[]): Promise<void> => {
     for (const b of buttons) b.disabled = true;
     try {
-      const model = await loadReviewModel(ctx);
-      if (!model) { setStatus(status, 'Choose a language first.', 'error'); return; }
+      // a press never waits for the network: this device's copy, or the live model if a refresh in progress lands within PRESS_WAIT_MS
+      const model = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
+      if (!model) { revealStatus(); setStatus(status, 'Choose a language first.', 'error'); return; }
       const plan = await make(model);
-      if (!plan || !plan.items.length) { setStatus(status, 'None of these cards can be asked right now.', 'info'); return; }
+      if (!plan || !plan.items.length) { revealStatus(); setStatus(status, 'None of these cards can be asked right now.', 'info'); return; }
       const r = await beginSession(ctx, model, { plan });
-      if (!r.ok) { setStatus(status, r.message, 'info'); return; }
+      if (!r.ok) { revealStatus(); setStatus(status, r.message, 'info'); return; }
       await actions.restart(r.run);
     } catch (e) {
+      revealStatus();
       setStatus(status, `The next deck could not be started: ${e instanceof Error ? e.message : String(e)}`, 'error');
     } finally { for (const b of buttons) b.disabled = false; }
   };
@@ -939,29 +1007,37 @@ async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextAct
   const early = nextItems.filter(p => p.presentationReason === 'deck-fill').length;
   const fromQueue = (queue: 'due' | 'learning'): number => nextItems.filter(p => p.presentationReason !== 'deck-fill' && !p.isNew && p.queue === queue).length;
   const admissions = nextItems.filter(p => p.isNew && p.presentationReason !== 'deck-fill').length;
-  const continueWork = nextCount > 0 ? button(`Begin next deck (${cards(nextCount)})`, (event) => {
+  const continueWork = button('', (event) => {
+    if (!nextCount) return;
     void begin(async (model) => (await planCurrentDeck(ctx, model)).plan, [event.currentTarget as HTMLButtonElement]);
-  }, { id: 'continue-due-work', class: 'btn primary' }) : undefined;
+  }, { id: 'continue-due-work', class: 'deck-face', ...(nextCount ? {} : { disabled: true }) });
+  const nextTile = summaryActionTile(continueWork, icon(ctx.deps.doc, 'review'), 'Next Deck',
+    nextCount ? `Begin next deck (${cards(nextCount)})` : 'No cards are ready for a next deck', true);
   const setupLink = ctx.deps.links?.setup ?? ctx.deps.links?.extension;
   const goLearn = setupLink ? h('a', { class: 'btn', id: 'continue-golearn', href: setupLink }, 'Continue reading in GoLearn') : null;
   const remediationNote = h('p', { class: 'muted', id: 'next-remediation-note' },
     `Remediation is optional and separate from due work: ${remediation.filter(c => !c.studiedAt).length} need study, ${remediation.filter(c => !!c.studiedAt && !c.ready).length} await their delayed return, and ${remediation.filter(c => c.ready).length} are ready for reassessment.`);
   const extra = h('details', { id: 'optional-extra-practice', class: 'card' }, h('summary', {}, 'Optional extra practice'),
     h('p', { class: 'muted', id: 'optional-repeat-note' }, 'Repeat the same session items, capped by your current deck size and session time settings. Other saved-deck members remain available in their collection; this does not represent a new due session.'), repeat);
-  return h('section', { id: 'summary-next', class: 'card', 'aria-labelledby': 'summary-next-heading' },
-    h('h2', { id: 'summary-next-heading' }, 'Next'),
-    continueWork ?? null,
+  const study = button('', () => ctx.go('review/remediation'), { class: 'deck-face', id: 'open-remediation' });
+  const needsStudy = remediation.filter(c => !c.studiedAt).length;
+  const studyTile = summaryActionTile(study, icon(ctx.deps.doc, 'book'), 'Study Remediation', needsStudy
+    ? `Review items that need study · ${needsStudy} item${needsStudy === 1 ? '' : 's'}`
+    : 'Review items that need study · none right now');
+  const primarySchedule = nextAt && (!nextReviewAt || Date.parse(nextAt) < Date.parse(nextReviewAt))
+    ? { label: 'Next learning return', at: nextAt }
+    : nextReviewAt ? { label: 'Next review', at: nextReviewAt } : undefined;
+  const schedule = primarySchedule ? h('div', { class: 'summary-schedule', 'aria-label': 'Upcoming review schedule' },
+    h('p', { class: 'muted' }, summaryLineIcon(ctx.deps.doc, 'M4 6.5h16v14H4z M8 3.5v6 M16 3.5v6 M4 10.5h16'), h('span', {}, `${primarySchedule.label} · `, h('time', { datetime: new Date(primarySchedule.at).toISOString() }, new Date(primarySchedule.at).toLocaleString())))) : null;
+  const secondary = h('details', { class: 'summary-secondary' }, h('summary', {}, 'More session options and schedule'),
     h('p', { class: 'muted', id: 'next-deck-line' }, `Next scheduled session: ${cards(nextCount)} in the next deck · ${fromQueue('due')} due reviews · ${fromQueue('learning')} due learning returns · ${admissions} new admissions · ${early} early reviews.`),
-    nextAt ? p(`Next short-term learning return: ${new Date(nextAt).toLocaleString()}. GoReview keeps it scheduled; you do not need to wait here.`, 'muted') : null,
-    nextReviewAt ? p(`Next scheduled review: ${new Date(nextReviewAt).toLocaleString()}.`, 'muted') : null,
-    remediationNote,
-    fresh,
-    h('div', { class: 'row' }, button(remediation.some(c => !c.studiedAt) ? 'Study remediation' : 'Open remediation', () => ctx.go('review/remediation'), { class: 'btn', id: 'open-remediation' })),
-    h('h3', {}, 'Continue GoLearn'), goLearn ?? p('Continue your next reading in GoLearn; GoReview keeps your due work here.', 'muted'),
-    extra, status);
+    nextAt && nextAt !== primarySchedule?.at ? p(`Next learning return: ${new Date(nextAt).toLocaleString()}.`, 'muted') : null,
+    nextReviewAt && nextReviewAt !== primarySchedule?.at ? p(`Next review: ${new Date(nextReviewAt).toLocaleString()}.`, 'muted') : null,
+    remediationNote, fresh, h('h3', {}, 'Continue GoLearn'), goLearn ?? p('Continue your next reading in GoLearn; GoReview keeps your due work here.', 'muted'), extra);
+  return { nextTile, studyTile, schedule, secondary, status };
 }
 
-export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, actions?: NextActions): Promise<void> {
+export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, actions?: NextActions, opts: { quiet?: boolean } = {}): Promise<void> {
   const tag = run.ctx.varietyId ?? run.ctx.languageId;
   const results = run.results;
   const sessionState = run.driver.state();
@@ -995,14 +1071,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
       return h('li', { 'data-overlap': row.overlap }, item ? h('span', langProps(tag), unitLabel(item.unitId)) : 'Question', ` · ${presentationReasonLabel(row.presentationReason, row.overlap!)}`);
     }))) : null;
 
-  append(root, [
-    h('section', { id: 'summary', class: 'card summary' },
-      h('h2', {}, run.finish === 'early' ? 'Session ended early' : 'Session complete'),
-      h('p', { id: 'sum-headline', class: 'summary-headline' }, answered ? `${correct} of ${answered} right.` : 'No answers this time.'),
-      left + run.skipped.length ? h('p', { id: 'sum-next' }, `${left + run.skipped.length} ${left + run.skipped.length === 1 ? 'card is' : 'cards are'} left for next time.`) : null,
-      view.status?.online === false && (view.status?.pending ?? 0) ? p('You are offline. Your answers are saved on this device and will be sent when you are back online.', 'muted') : null,
-      h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/review', id: 'back-to-review' }, 'Back to GoReview')),
-      h('details', { id: 'sum-details', class: 'advanced' }, h('summary', {}, 'Details'),
+  const details = h('details', { id: 'sum-details', class: 'advanced' }, h('summary', {}, 'Details'),
       h('dl', { class: 'facts' },
         h('dt', {}, 'Answered'), h('dd', { id: 'sum-answered' }, `${answered} answered; ${presentedCount} prompt(s) shown; ${initialPlanCount} initially planned; ${correct} correct`),
         h('dt', {}, 'Skipped'), h('dd', { id: 'sum-skipped' }, String(run.skipped.length)),
@@ -1021,9 +1090,27 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
       h('h3', {}, 'What did not count, and why'),
       run.withheld.length ? h('ul', { id: 'sum-withheld' }, ...run.withheld.map((w) => h('li', {}, h('span', langProps(tag), unitLabel(w.unitId)), ` (${w.family}): `, ...embedTarget(`${w.reason}.`, [unitLabel(w.unitId)], tag)))) : p('Everything counted.', 'muted'),
       unbuildable.length ? h('p', { class: 'muted', id: 'sum-unbuildable' }, 'Could not be asked: ', ...unbuildable.flatMap((u, i) => [i ? '; ' : '', h('span', langProps(tag), itemLabel(u.itemId)), ` (${u.reason})`]), '.') : null,
-      p(`${view.status?.pending ?? 0} ${(view.status?.pending ?? 0) === 1 ? 'answer waits' : 'answers wait'} to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'))),
-    ...(actions ? [await nextDeckSection(ctx, run, actions, tag)] : []),
-  ]);
+      p(`${view.status?.pending ?? 0} ${(view.status?.pending ?? 0) === 1 ? 'answer waits' : 'answers wait'} to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'));
+  const home = summaryActionTile(h('a', { class: 'deck-face', id: 'back-to-review', href: '#/review' }),
+    summaryLineIcon(ctx.deps.doc, 'M19 12H5m6 6-6-6 6-6'), 'Back to GoReview', 'Return to the GoReview home');
+  const next = h('section', { id: 'summary-next', class: 'summary-next deck-tiles', 'aria-labelledby': 'summary-next-heading' },
+    h('h2', { id: 'summary-next-heading', class: 'sr' }, 'Next steps'), home,
+    left + run.skipped.length ? h('p', { id: 'sum-next' }, `${left + run.skipped.length} ${left + run.skipped.length === 1 ? 'card is' : 'cards are'} left for next time.`) : null,
+    view.status?.online === false && (view.status?.pending ?? 0) ? h('p', { id: 'sum-offline', class: 'muted' }, 'You are offline. Your answers are saved on this device and will be sent when you are back online.') : null,
+    details);
+  const summary = h('section', { id: 'summary', class: 'summary', 'aria-labelledby': 'sum-label' },
+    h('div', { class: 'summary-score' },
+      h('h2', { id: 'sum-label', class: 'summary-eyebrow' }, run.finish === 'early' ? 'Session ended early' : 'Session complete'),
+      h('p', { id: 'sum-headline', class: 'summary-headline' }, answered ? `${correct} of ${answered} right.` : 'No answers this time.')),
+    next);
+  append(root, [summary]);
+  if (actions) {
+    try {
+      await nextDeckSection(ctx, run, actions, home, opts);
+    } catch {
+      next.append(h('p', { class: 'muted summary-load-error' }, 'Next deck options could not be loaded. You can still return to GoReview.'));
+    }
+  }
   if (run.driver.undo) {
     const undoable = results.filter((result) => result.evidence && !result.correctedAt && !result.response.challenged);
     if (undoable.length) {
@@ -1044,10 +1131,10 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
               if (index >= 0) run.results[index] = updated;
               run.withheld.push({ itemId: updated.itemId, unitId: updated.target.unitId, family: FAMILY_LABEL[updated.family], reason: 'grade reversed after submission' });
               clear(root);
-              await renderSummary(root, ctx, run);
+              await renderSummary(root, ctx, run, actions, opts);
             }).catch((error) => { setStatus(status, `This grade could not be corrected: ${error instanceof Error ? error.message : 'try again'}`, 'error'); if (control) control.disabled = false; });
           }, { class: 'btn small', 'aria-label': `Undo this grade for ${unitLabel(result.target.unitId)} (${DIMENSION_LABEL[result.target.dimension]}, review ${index + 1})` }))));
-      root.append(section);
+      details.append(section);
     }
   }
 }

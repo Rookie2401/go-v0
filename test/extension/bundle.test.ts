@@ -26,21 +26,28 @@ const sizesIn = (dir: string, rel = ''): Array<{ file: string; bytes: number }> 
   fs.readdirSync(path.join(dir, rel), { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? sizesIn(dir, path.posix.join(rel, e.name)) : [{ file: path.posix.join(rel, e.name), bytes: fs.statSync(path.join(dir, rel, e.name)).size }]));
 
 describe.skipIf(!have)('the built extension', () => {
-  it('keeps bounded bundles with Hindi available for on-device Repository analysis', () => {
+  it('keeps bounded bundles with Hindi available for on-device Repository analysis (Biblical Aramaic stays in its analyser chunk)', () => {
+    // The worker links src/background/arcStub.ts, not the Aramaic corpus seed (vite.config.ts leanAramaic): it would add about 200 KB.
+    expect(fs.readFileSync(path.join(dist, 'background.js'), 'utf8')).not.toContain('מַלְכָּא');
     const sizes = new Map(sizesIn(dist).filter((f) => /\.js$/.test(f.file)).map((f) => [f.file, f.bytes]));
     const table = [...sizes].map(([f, b]) => `  ${f.padEnd(34)} ${(b / KB).toFixed(1).padStart(8)} KB`).join('\n');
     // eslint-disable-next-line no-console
     console.info(`[bundle] dist/ JavaScript, minified:\n${table}`);
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(520 * KB);
+    // 2026-11-08: 520 -> 560 KB; master's build already measured 528 KB (the card's word-analysis and verb work since the last fit),
+    // and the orphaned-script guard adds 0.2 KB. A ceiling, not a target.
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(560 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
     // 2026-10-20: 1,050 -> 1,100 KB for the speech proxy client, the GoListen device registry and the encounter recorder
     // (background.js measured 1,078 KB when that work was committed).
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1100 * KB);
+    // 2026-11-10: 1,100 -> 1,180 KB for the device Repository's IndexedDB store, its one-time verified migration and the split store
+    // (background.js measured 1,131 KB; in exchange the worker's cold open of a 12,000-event history goes from 3.4 s to about 1 ms).
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1180 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(760 * KB);
+    // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(800 * KB);
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 
@@ -97,7 +104,8 @@ describe.skipIf(!have)('the built extension', () => {
       expect(code, f).not.toMatch(/\beval\s*\(|new Function\s*\(/);
       // no address the code could call: the service is configured by the learner. The SVG namespace is an identifier, never fetched
       // (the card's drawn speaker, 2026-10-25), so it is taken out before the check
-      expect(code.replaceAll('http://www.w3.org/2000/svg', ''), f).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i);
+      // The SVG namespace and required OSHB data credit identify resources, not a network destination.
+      expect(code.replaceAll('http://www.w3.org/2000/svg', '').replaceAll('https://github.com/openscriptures/morphhb', ''), f).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i);
     }
   });
 

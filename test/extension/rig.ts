@@ -6,7 +6,7 @@ import { CONTRACT_VERSION, type GoEvent, type UnitKnowledge } from '../../packag
 import { parseSelection } from '../../packages/golearn-extension/src/parser';
 import { PENDING_IDENTITY, buildSelectionEvent } from '../../packages/golearn-extension/src/store';
 import type { PackProvider } from '../../packages/golearn-extension/src/background/gloss';
-import { createBackground } from '../../packages/golearn-extension/src/background/core';
+import { createBackground, type BackgroundOptions } from '../../packages/golearn-extension/src/background/core';
 import { albanianManifest } from '../../packages/language-packs/src';
 import { handle } from '../../packages/repository-service/src/handler';
 import { createChromeFake, type ChromeFake } from './chromeFake';
@@ -56,6 +56,8 @@ export interface Rig {
   log: FetchLog[];
   glossCalls: string[];
   offline: { value: boolean };
+  /** While true the service never answers (a request that hangs: a slow network, a service waking up); the dictionary still does. */
+  hanging: { value: boolean };
   /** Messages as the setup page / popup would send them. */
   page(message: Record<string, unknown>): Promise<any>;
   /** Messages as a content script in tab 7 would send them. */
@@ -71,13 +73,14 @@ export interface Rig {
 /** The shard the fake dictionary serves (one file, no content that matters). */
 const shard = (): Response => new Response('{}', { status: 200, headers: { 'content-type': 'application/json' } });
 
-export function createRig(opts: { defaultServiceUrl?: string } = {}): Rig {
-  const h = createHarness();
-  h.clock.set(new Date().toISOString()); // the service and the worker agree on the time, whatever day the tests run
+export function createRig(opts: { defaultServiceUrl?: string; localRepo?: BackgroundOptions['localRepo']; harness?: Harness } = {}): Rig {
+  const h = opts.harness ?? createHarness(); // a restarted worker is given the first one's service
+  if (!opts.harness) h.clock.set(new Date().toISOString()); // the service and the worker agree on the time, whatever day the tests run
   const fake = createChromeFake();
   const log: FetchLog[] = [];
   const glossCalls: string[] = [];
   const offline = { value: false };
+  const hanging = { value: false };
   const clock = { now: Date.now() };
   const timers: Rig['timers'] = [];
   const svcFetch = serviceFetch(h, log, { offline: () => offline.value });
@@ -87,12 +90,13 @@ export function createRig(opts: { defaultServiceUrl?: string } = {}): Rig {
     // the extension's own app/config.json (read for the source links) is a file of the extension, not a request to the service
     if (u.endsWith('/app/config.json')) return new Response('', { status: 404 });
     if (u.includes('/dict/')) { if (offline.value) throw new TypeError('Failed to fetch'); log.push({ method: 'GET', path: new URL(u).pathname, status: 200 }); return shard(); }
+    if (hanging.value) return new Promise<Response>(() => undefined);
     return svcFetch(input, init);
   }) as typeof fetch;
-  const bg = createBackground(fake, { fetch: fetchImpl, packs: fakePacks(glossCalls), now: () => clock.now, ...(opts.defaultServiceUrl ? { defaultServiceUrl: opts.defaultServiceUrl } : {}), timers: { set: (fn, ms) => { const t = { ms, cleared: false, fired: false, fire() { if (!t.cleared && !t.fired) { t.fired = true; fn(); } } }; timers.push(t); return t; }, clear: (h) => { (h as { cleared: boolean }).cleared = true; } } });
+  const bg = createBackground(fake, { fetch: fetchImpl, packs: fakePacks(glossCalls), now: () => clock.now, ...(opts.defaultServiceUrl ? { defaultServiceUrl: opts.defaultServiceUrl } : {}), ...(opts.localRepo ? { localRepo: opts.localRepo } : {}), timers: { set: (fn, ms) => { const t = { ms, cleared: false, fired: false, fire() { if (!t.cleared && !t.fired) { t.fired = true; fn(); } } }; timers.push(t); return t; }, clear: (h) => { (h as { cleared: boolean }).cleared = true; } } });
   bg.register();
   const rig: Rig = {
-    fake, h, bg, log, glossCalls, offline, clock, timers,
+    fake, h, bg, log, glossCalls, offline, hanging, clock, timers,
     async fireTimers() { for (const t of [...timers]) t.fire(); await new Promise((r) => setTimeout(r, 30)); },
     page: (m) => fake.dispatch(m, { id: 'test-ext-id', url: 'chrome-extension://test-ext-id/app/index.html' }),
     content: (m) => fake.dispatch(m, { id: 'test-ext-id', tab: { id: 7 }, url: 'https://example.test/page' }),

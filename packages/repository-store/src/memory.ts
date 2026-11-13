@@ -30,6 +30,7 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
   const relations = new Map<string, UnitRelation>();
   const analyses = new Map<string, FormAnalysis>();
   const aliases = new Map<string, UnitAlias>();
+  let aliasVersion = 0;
   const packs = new Map<string, LanguagePackInfo>();
   // layer C
   const knowledge = new Map<string, UnitKnowledge>();
@@ -259,7 +260,9 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
       const want = new Set(ids);
       return [...aliases.values()].filter((a) => want.has(a.newId)).sort(byKey((a) => [a.newId, a.oldId, a.packVersion])).map(copy);
     },
+    async aliasStamp() { return String(aliasVersion); },
     async putAliases(rows) {
+      aliasVersion++;
       for (const a of rows) aliases.set(`${a.oldId}|${a.newId}|${a.packVersion}`, copy(a));
     },
     async getPack(packId, version) {

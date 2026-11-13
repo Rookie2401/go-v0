@@ -21,6 +21,7 @@ test/goreview-app/hebrew-frequency-assets.test.ts
 test/goreview-app/hebrew-real-current-deck.test.ts
 test/goreview-app/hebrew-real-deck.test.ts
 test/goreview-app/hi-real-deck.test.ts
+test/goreview-app/item-parsing-real.test.ts
 test/goreview-app/language-lexical-recognition.test.ts
 test/goreview-app/language-recovery.test.ts
 test/language-packs/runtime.test.ts

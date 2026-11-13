@@ -28,7 +28,7 @@ export const ID: Identity = { learnerId: 'L1', enrolmentId: 'L1-e1', deviceId: '
 
 export async function makeTellRig(opts: { engine?: FakeEngineOptions; service?: FakeService } = {}): Promise<TellRig> {
   const service = opts.service ?? defaultService();
-  const rig = await makeRig({ service, signedIn: true });
+  const rig = await makeRig({ service, signedIn: true, enableGoTell: true });
   const engine = fakeEngine({ ...ID, deviceId: 'web-id1' }, opts.engine);
   const timers = manualTimers();
   const downloads: FileOut[] = [];

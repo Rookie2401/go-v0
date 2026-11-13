@@ -17,6 +17,7 @@ import { thAdapter } from '../../../src/adapters/th';
 import { nbAdapter } from '../../../src/adapters/nb';
 import { nnAdapter } from '../../../src/adapters/nn';
 import { laAdapter } from '../../../src/adapters/la';
+import { arcAdapter } from '../../../src/adapters/arc';
 import { heAdapter } from '../../../src/adapters/he';
 import { elAdapter } from '../../../src/adapters/el';
 import type { LanguageAdapter } from '../../../src/core';
@@ -26,9 +27,20 @@ import type { LanguageAdapter } from '../../../src/core';
  * packs (German, Hindi, Thai, Norwegian Bokmål and Nynorsk, Hebrew, Greek). A language outside this set falls back to the
  * tokenize-only analyser.
  */
-const BUILT_IN: Readonly<Record<string, LanguageAdapter>> = Object.freeze({ sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter });
+const BUILT_IN: Readonly<Record<string, LanguageAdapter>> = Object.freeze({ sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter, arc: arcAdapter });
 
 /** The analyser the runtime bundles for a language, if any. */
 export function builtInAdapter(languageId: string): LanguageAdapter | undefined {
   return Object.prototype.hasOwnProperty.call(BUILT_IN, languageId) ? BUILT_IN[languageId] : undefined;
 }
+
+/**
+ * The same analyser, asynchronously. Here every adapter is linked in, so it resolves at once. GoReview's own builds swap this module for
+ * packages/goreview/app/leanBuiltins.ts, which fetches each language's adapter as a separate chunk the first time it is asked for; code that
+ * must not use an analyser before it is loaded awaits this first (and `builtInAdapter` then answers synchronously, as before).
+ */
+export function loadBuiltInAdapter(languageId: string): Promise<LanguageAdapter | undefined> {
+  return Promise.resolve(builtInAdapter(languageId));
+}
+
+export { AdapterLoadError } from './adapterLoadError';

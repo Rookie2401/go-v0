@@ -131,7 +131,7 @@ describe('the share screen: a passage arriving through the web share target', ()
     window.history.replaceState(null, '', '/');
     const es = await makeRig({ startRoute: 'share' });
     await setLanguage(es, 'es');
-    await es.go('home');
+    await es.go('help');
     await es.go('share');
     expect(es.q('#share-language').textContent).toContain('Spanish');
     type(es.q<HTMLTextAreaElement>('#share-paste'), 'Yo leo un libro muy bonito en mi casa.');
@@ -146,7 +146,7 @@ describe('the share screen: a passage arriving through the web share target', ()
 
     const nb = await makeRig({ startRoute: 'share' });
     await setLanguage(nb, 'xx'); // a language with no analyser (Norwegian has one now)
-    await nb.go('home');
+    await nb.go('help');
     await nb.go('share');
     expect(nb.q('#share-paste-card').parentElement!.textContent).toContain('no analyser for xx');
     type(nb.q<HTMLTextAreaElement>('#share-paste'), 'hus');
@@ -224,13 +224,13 @@ describe('the share screen: pasted text', () => {
 });
 
 describe('the share screen in the extension and in the app', () => {
-  it('is reachable from the status page and is not part of the setup navigation', async () => {
-    const rig = await makeRig({ startRoute: 'home' });
-    expect(rig.root.querySelector('a[href="#/share"]')).not.toBeNull();
-    expect(rig.root.querySelector('.rail li[data-route="share"]')).toBeNull();
+  it('is reached from Settings (Reading) and leads back to it; it is not a place of the top bar', async () => {
+    const rig = await makeRig({ startRoute: 'settings' });
+    expect(rig.q<HTMLAnchorElement>('#reading-links li[data-route="share"] a').getAttribute('href')).toBe('#/share');
+    expect(rig.q('.topbar').querySelector('a[href="#/share"]')).toBeNull();
     await rig.go('share');
-    expect(document.title).toBe('GoLearn — Look up shared text');
-    expect(rig.root.querySelector('footer a[href="#/home"]')).not.toBeNull();
+    expect(document.title).toBe('GoLearn — Look up pasted text');
+    expect(rig.q<HTMLAnchorElement>('.crumb a').getAttribute('href')).toBe('#/settings');
   });
 
   it('inside the extension the event goes through the worker’s recording path as the extension’s own producer', async () => {
@@ -287,7 +287,7 @@ describe('the share screen: the language of a lookup is recorded as decided', ()
     window.history.replaceState(null, '', '/');
     const rig = await makeRig({ startRoute: 'share', packs: twoLanguages() });
     await setLanguage(rig, 'es');
-    await rig.go('home');
+    await rig.go('help');
     await rig.go('share');
     expect(rig.q<HTMLSelectElement>('#share-language-select').value).toBe('es');
     type(rig.q<HTMLTextAreaElement>('#share-paste'), 'casa');

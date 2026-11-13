@@ -144,3 +144,31 @@ describe('with an account', () => {
     expect(r.source).toBeUndefined();
   });
 });
+
+describe('GoLearn Active\'s question (device rows only) while signed in (2026-11-09)', () => {
+  it('does not wait on the service for the explanation depth: it answers from this device, and the depth read in the background serves later', async () => {
+    let answer: ((v: unknown) => void) | undefined;
+    let asked = 0;
+    const api = {
+      async knowledge() { throw new Error('the scan never asks the account for rows'); },
+      preferences: () => { asked++; return new Promise((resolve) => { answer = resolve; }); }, // a slow service: no answer until released
+    };
+    const session = {
+      status: async () => ({ connected: true, expired: false, hasEnrolment: true }),
+      authenticated: async () => ({ api, session: {}, service: {} }),
+    } as never;
+    const svc = createProfileService({ area: createMemoryStorageArea(), session, settings: async () => ({ ...DEFAULT_SETTINGS }), now: () => 1_000_000, local: device([row(A, 3)]) });
+    const scan = await Promise.race([svc.knowledgeFor([A], 'he', { deviceOnly: true }), new Promise((resolve) => setTimeout(() => resolve('waited'), 500))]);
+    expect(scan).toMatchObject({ ok: true, source: 'device', depth: 'brief', depthOrigin: 'default' });
+    expect(Object.keys((scan as { rows: object }).rows)).toEqual([A]);
+    // a second scan while the service is still silent: one request in flight, not one per scan
+    await svc.knowledgeFor([A], 'he', { deviceOnly: true });
+    expect(asked).toBe(1);
+    // the service answers: the next scan has the learner's preference without asking again
+    answer!({ ok: true, status: 200, data: { preferences: prefs('explanatory', 'inferred') } });
+    await new Promise((r) => setTimeout(r, 10));
+    const later = await svc.knowledgeFor([A], 'he', { deviceOnly: true });
+    expect(later).toMatchObject({ depth: 'explanatory', depthOrigin: 'inferred' });
+    expect(asked).toBe(1);
+  });
+});

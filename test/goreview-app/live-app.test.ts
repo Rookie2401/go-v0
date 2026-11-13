@@ -123,9 +123,12 @@ describe('live updates in the app', () => {
     expect(calls).toEqual([]);                       // nine minutes: still trusted
     rig.clock.set('2026-10-08T10:11:00.000Z');
     await rig.app.ctx.enrolments();
-    expect(calls).toEqual(['me']);                   // eleven: asked again
+    // eleven: asked again, in the background (2026-11-10: the stale profile is used at once, GET /me no longer stands in front of the screen)
+    await until(() => calls.length === 1, 'the background profile refresh');
+    expect(calls).toEqual(['me']);
     rig.app.ctx.invalidateProfile();
     await rig.app.ctx.enrolments();
+    await until(() => calls.length === 2, 'the background profile refresh');
     expect(calls).toEqual(['me', 'me']);             // a live update: asked again at once
   });
 

@@ -280,7 +280,7 @@ function partsOfTemplate(k: string, form: string, source: string): StructurePart
 const baseOf = (p: string): string => p.replace(/^\*/, '').replace(/^-+|-+$/g, '');
 const normText = (s: string | undefined): string => (s ?? '').normalize('NFC').toLowerCase();
 
-const PART_ROLE: Record<NonNullable<WordPart['kind']>, StructureRole> = { component: 'component', head: 'head', link: 'linking', contracted: 'component', clitic: 'clitic', prefix: 'prefix', marker: 'linking', stem: 'stem' };
+const PART_ROLE: Record<NonNullable<WordPart['kind']>, StructureRole> = { component: 'component', head: 'head', link: 'linking', contracted: 'component', clitic: 'clitic', prefix: 'prefix', marker: 'linking', stem: 'stem', suffix: 'suffix' };
 
 /** The analyser's reading of the word that matches the card's lemma, part of speech and features, with the structure it carries. */
 function analysedReading(adapter: LanguageAdapter, word: string, lemma: string, pos: string | undefined, features: Record<string, string>): AnalysisCandidate | undefined {

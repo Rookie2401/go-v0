@@ -70,6 +70,24 @@ Build tooling (Vite, esbuild, TypeScript, Vitest, jsdom and their dependencies) 
   setup builds, `app/fonts/` in the extension). Used unmodified, as web fonts, for GoPractice, the GoLearn setup page and the action popup;
   the lookup card names it first in its serif stack but cannot load it. The fonts are not sold by themselves.
 
+## Photography
+
+GoReview bundles the following Wikimedia Commons photographs as resized WebP files in
+`packages/goreview/app/photos/` under their listed licenses. The interface crops each image
+to the viewport and overlays a gradient for legibility.
+
+| File | Source | Photographer | License |
+| --- | --- | --- | --- |
+| `athens.webp` | [Acropolis of Athens at dusk](https://commons.wikimedia.org/wiki/File:Acropolis_of_Athens_at_dusk.jpg) | Stymphal | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| `bangkok.webp` | [Temple of the Emerald Buddha](https://commons.wikimedia.org/wiki/File:Temple_of_the_Emerald_Buddha.jpg) | Nawit science | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| `berat.webp` | [Berat – Mangalem houses](https://commons.wikimedia.org/wiki/File:Berat_-_Mangalem_4b_H%C3%A4user.jpg) | Wolfgang Sauber | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| `jerusalem.webp` | [Jerusalem Tempelberg 1](https://commons.wikimedia.org/wiki/File:Jerusalem_Tempelberg_1.JPG) | Zairon | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| `oslo.webp` | [Norway Folk Museum – Street scene](https://commons.wikimedia.org/wiki/File:Norway_Folk_Museum_-_Street_scene.jpg) | P. Hughes | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `roman-forum.webp` | [Forum Romanum Rome](https://commons.wikimedia.org/wiki/File:Forum_Romanum_Rome.jpg) | Joseolgon | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `rothenburg.webp` | [Rothenburg ob der Tauber, Germany](https://commons.wikimedia.org/wiki/File:Rothenburg_ob_der_Tauber,_Germany.jpg) | Roman Kraft | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `valle-de-angeles.webp` | [Valle de Angeles street](https://commons.wikimedia.org/wiki/File:Valle_de_Angeles_street.jpg) | Luis Alfredo Romero | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `varanasi.webp` | [Scindia Ghat in morning](https://commons.wikimedia.org/wiki/File:Scindia_Ghat_in_morning,_Varanasi,_Uttar_Pradesh,_India_(2012).jpg) | travelwayoflife | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) |
+
 ## Audio
 
 - No third-party audio is shipped. The German demonstration clip referenced by GoListen's registry
@@ -83,6 +101,20 @@ sentences are owner-authored and machine-drafted (not reviewed by a native speak
 product.
 
 ## Corpus texts
+
+- **Biblical Aramaic text and linguistic data** (`data/corpus/arc`, `src/adapters/aramaic`):
+  Westminster Leningrad Codex base text, public domain, distributed by the Open Scriptures Hebrew Bible Project.
+  Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb .
+  OSHB lemma/morphology annotations and the Open Scriptures HebrewLexicon Strong transcription and Lexical Index are
+  Creative Commons Attribution 4.0 (https://creativecommons.org/licenses/by/4.0/); Strong's original dictionary text
+  is public domain. Lexical source: https://github.com/openscriptures/HebrewLexicon .
+  Changes: selected the 4,828 A-coded qere-path words in 269 Biblical Aramaic verses; joined morpheme separators,
+  retained source word IDs and annotations, indexed attested forms and headwords, and flagged 11 questioned annotations
+  plus the occurrences the source links to a Hebrew dictionary entry. Where a Strong entry gives only a King James usage
+  list (or no text), the gloss is the Lexical Index's definition for that Strong number (200 entries,
+  `data/sources/aramaic/lexical-index-aramaic-definitions.xml`); gloss whitespace is normalised.
+  HebrewLexicon licence checked 2026-11-12 on https://github.com/openscriptures/HebrewLexicon (CC BY 4.0, not share-alike).
+  These adaptations do not establish independently reviewed grammatical accuracy. See `docs/aramaic/SOURCES.md`.
 
 - **Latin corpus** (`data/corpus/la`; `docs/latin/CORPUS.md`) - Clementine Vulgate (1592), public domain, USFX text from seven1m/open-bibles
   (https://github.com/seven1m/open-bibles); Francis Ritchie, *Fabulae Faciles* (1903), and Caesar, *De bello Gallico* I.1-7, public-domain texts

@@ -25,7 +25,12 @@ export interface MaintenanceResult {
   securityEventsPruned: number;
 }
 
-export interface MaintenanceOptions { now?: () => string; log?: (line: string) => void }
+export interface MaintenanceOptions {
+  now?: () => string;
+  log?: (line: string) => void;
+  /** Called after a learner was erased, so the host can drop what the process still holds of them in memory (handler.ts `forgetLearnerCaches`). */
+  onErased?: (learnerId: string) => void;
+}
 
 /** A stable, non-reversible reference to an account for the audit line (not enough to identify anyone without the account id itself). */
 export const subjectRefOf = (accountId: string): string => createHash('sha256').update(accountId).digest('hex').slice(0, 16);
@@ -45,6 +50,7 @@ export async function purgeDueAccounts(store: RepositoryStore, opts: Maintenance
       const account = await store.getAccount(listed.accountId);
       if (!account || account.deletionDueAt === undefined || !(Date.parse(account.deletionDueAt) <= Date.parse(now()))) continue;
       const counts = await store.eraseLearner(account.learnerId);
+      try { opts.onErased?.(account.learnerId); } catch { /* a convenience */ }
       await sec.appendSecurityEvent({
         eventId: crypto.randomUUID(), kind: 'deletion-purged', at: now(), subjectRef: subjectRefOf(account.accountId),
         detail: `events=${counts.events} documents=${counts.documents} knowledge=${counts.knowledge}`,

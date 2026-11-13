@@ -7,10 +7,10 @@
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { classEssentialsRemoved, effectiveRemediation, listSavedDecks, planClassEssentialsDue, planFromSaved, removeSavedDeck, restoreClassEssentials, type SavedDeck } from '../deckModel';
+import { classEssentialsRemoved, effectiveRemediation, holdOutOf, listSavedDecks, planClassEssentialsDue, planCurrentDeck, planFromSaved, removeSavedDeck, restoreClassEssentials, saveDeck, type SavedDeck } from '../deckModel';
 import { classLanguageOf } from '../classEssentials';
 import { languageName } from '../format';
-import { beginSession, loadReviewModel } from '../workspace';
+import { beginSession, currentReviewModel, PRESS_WAIT_MS } from '../workspace';
 import { recordSavedDeckChange } from '../savedDeckSync';
 import type { View } from './view';
 
@@ -24,6 +24,19 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   append(el, [h('h2', { class: 'page-title', id: 'decks-title', tabindex: '-1' }, 'Saved decks'), list, restoreBox, status]);
   if (!id) { list.replaceWith(p('Choose a language to see its saved decks.', 'muted')); return; }
   el.insertBefore(p('Saved decks are separate optional practice. Each card opens that practice; Remove stays at its top right.', 'muted'), list);
+  const saveCurrent = button('Save Current Deck', () => {
+    saveCurrent.disabled = true;
+    void (async () => {
+      const model = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
+      if (!model) { setStatus(status, 'Your Current Deck could not be loaded.', 'error'); return; }
+      const holdOut = await holdOutOf(ctx, id.learnerId, id.languageId);
+      const deck = await planCurrentDeck(ctx, model, holdOut, undefined, 'current');
+      const saved = await saveDeck(ctx, model.identity, deck.entries);
+      setStatus(status, saved ? 'Current Deck saved.' : 'There is no deck to save yet.', saved ? 'ok' : 'info');
+      if (saved) await paint();
+    })().catch(error => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) saveCurrent.disabled = false; });
+  }, { class: 'btn', id: 'save-deck' });
+  el.append(saveCurrent);
   el.append(button('Sync saved decks', () => {
     void (async () => {
       try {
@@ -34,7 +47,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   }, { class: 'btn', id: 'sync-saved-decks' }));
 
   async function practise(saved: SavedDeck): Promise<void> {
-    const model = await loadReviewModel(ctx);
+    const model = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
     if (!model) { setStatus(status, 'Choose a language first.', 'error'); return; }
     const plan = await planFromSaved(ctx, model, saved);
     if (!plan.items.length) {
@@ -54,14 +67,14 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     ctx.go('review/session');
   }
 
-  async function paint(): Promise<void> {
+  async function paint(quiet = false): Promise<void> {
     const decks = await listSavedDecks(ctx, id!.learnerId, id!.languageId, id!.varietyId);
     const removed = await classEssentialsRemoved(ctx, id!.learnerId, id!.languageId);
-    const classLine = decks.some((d) => d.builtin === 'class-essentials') ? await classDueLine().catch(() => null) : null;
+    const classLine = decks.some((d) => d.builtin === 'class-essentials') ? await classDueLine(quiet).catch(() => null) : null;
     if (!view.alive()) return;
     clear(list); clear(restoreBox);
     if (removed) restoreBox.append(button('Restore Class Essentials', () => { void (async () => { await restoreClassEssentials(ctx, id!.learnerId, id!.languageId); setStatus(status, 'Class Essentials is back.', 'ok'); await paint(); })(); }, { class: 'linklike', id: 'restore-class-essentials' }));
-    if (!decks.length) { list.append(h('li', { class: 'muted', id: 'decks-empty' }, 'Nothing saved yet. Save a deck from the home and it waits here.')); return; }
+    if (!decks.length) { list.append(h('li', { class: 'muted', id: 'decks-empty' }, 'Nothing saved yet.')); return; }
     for (const d of decks) {
       const when = d.name ?? new Date(d.savedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
       const language = languageName(d.languageId);
@@ -93,8 +106,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
    * Class Essentials' due reviews, under its card (the owner, 2026-10-31: Class Essentials belongs to Saved decks, not the home).
    * Due-only: unreviewed phrases stay in the deck and are never counted as due.
    */
-  async function classDueLine(): Promise<HTMLElement | null> {
-    const model = await loadReviewModel(ctx);
+  async function classDueLine(quiet = false): Promise<HTMLElement | null> {
+    const model = await currentReviewModel(ctx, quiet ? { noRefresh: true } : {}); // this device's copy; the refresh repaints this list through ctx.onData
     if (!model || !classLanguageOf(model.identity.languageId)) return null;
     const due = await planClassEssentialsDue(ctx, model);
     const missed = effectiveRemediation(model).class.length;
@@ -103,7 +116,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const start = button(`Review due (${due.items.length})`, () => {
       start.disabled = true;
       void (async () => {
-        const current = await loadReviewModel(ctx);
+        const current = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
         if (!current) return;
         const plan = await planClassEssentialsDue(ctx, current);
         if (!plan.items.length) { setStatus(status, 'No Class Essentials cards are due right now.', 'info'); return; }
@@ -120,5 +133,5 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   }
   await paint();
   // a live update (or a sync from another tab) may have changed what is saved: the list is read again, in place
-  view.onDispose(ctx.onData(() => { void paint(); }));
+  view.onDispose(ctx.onData(() => { void paint(true); })); // a landed refresh must not start the next one
 }

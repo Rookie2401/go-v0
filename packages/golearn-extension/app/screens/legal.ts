@@ -15,5 +15,6 @@ export function policySection(): HTMLElement {
 export function render(el: HTMLElement, _ctx: AppContext, _view: View): void {
   el.append(
     h('section', { class: 'card legal', id: 'terms-text', 'aria-label': 'Terms of Use (draft)' }, renderMarkdown(TERMS_MD_TEXT, 2)),
-    h('p', { class: 'muted' }, h('a', { href: '#/privacy', id: 'terms-privacy-link' }, 'Read the Privacy Policy'), ' · ', h('a', { href: '#/settings', id: 'terms-settings-link' }, 'Back to Settings')));
+    // the way back to Settings is above the heading, where every page under Settings has it (app.ts)
+    h('p', { class: 'foot-links' }, h('a', { href: '#/privacy', id: 'terms-privacy-link' }, 'Read the Privacy Policy')));
 }

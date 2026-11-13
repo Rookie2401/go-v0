@@ -391,7 +391,13 @@ export async function openPostgresStore(pool: PgPool, opts: PostgresOptions = {}
             a.oldId, a.newId, a.packVersion, text(a),
           );
         }
+        // the stamp moves in the same transaction as the rows (not run: no PostgreSQL here)
+        await run(`INSERT INTO service_state (key, value) VALUES ('__aliasStamp', '1') ON CONFLICT (key) DO UPDATE SET value = (CAST(service_state.value AS BIGINT) + 1)::text`);
       });
+    },
+    async aliasStamp() {
+      const r = await get("SELECT value FROM service_state WHERE key = '__aliasStamp'");
+      return r ? (r.value as string) : '0';
     },
     async getPack(packId, version) {
       if (version !== undefined) {

@@ -72,10 +72,13 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
     const expired = Date.parse(s.expiresAt) <= ctx.deps.now().getTime();
     const out = statusLine();
     append(sessionBox, [
-      h('p', { id: 'signed-in-as' }, `Signed in as ${s.email}`),
+      // the line above already names the account; this one stays for assistive technology (it names the state in other words)
+      h('p', { id: 'signed-in-as', class: 'sr' }, `Signed in as ${s.email}`),
       nameLine(),
-      h('p', { class: 'muted' }, `Learner ${s.learnerId} · session ${expired ? 'expired' : 'valid'} until ${shortDate(s.expiresAt)}`),
-      expired ? p('The session has expired. Sign in again below.', 'error') : null,
+      expired ? p(withForm ? 'Your sign-in has expired. Sign in again below.' : 'Your sign-in has expired. Sign in again.', 'error') : null,
+      // what a person helping you may ask for; nothing a learner needs day to day
+      h('details', { class: 'account-technical', id: 'account-technical' }, h('summary', {}, 'Technical details'),
+        h('p', { class: 'muted' }, `Learner ${s.learnerId} · session ${expired ? 'expired' : 'valid'} until ${shortDate(s.expiresAt)}`)),
       h('div', { class: 'row' }, button('Sign out of this device', async () => {
         await ctx.signOut();
         setStatus(out, 'Signed out. This device no longer holds a session or cached profile; everything you did here stays on this device.', 'ok');
@@ -158,11 +161,20 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
     terms.hidden = mode.value !== 'create';
     nameField.hidden = mode.value !== 'create';
   });
+  mode.hidden = true;
+  const tab = (value: 'signin' | 'create', text: string): HTMLButtonElement => {
+    const b = button(text, () => { mode.value = value; mode.dispatchEvent(new Event('change')); }, { id: `acct-mode-${value}`, 'aria-pressed': String(mode.value === value) });
+    return b;
+  };
+  const tabs = h('div', { class: 'seg', id: 'acct-mode-tabs', role: 'group', 'aria-label': 'Sign in or create an account' }, tab('signin', 'Sign in'), tab('create', 'Create an account'));
   const status = statusLine();
   const submit = h('button', { type: 'submit', id: 'acct-submit', class: 'btn primary' }, 'Continue') as HTMLButtonElement;
+  mode.addEventListener('change', () => {
+    for (const b of tabs.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b.id === `acct-mode-${mode.value}`));
+  });
   const unverified = h('div', { id: 'unverified-notice' });
   const form = h('form', { id: 'acct-form', novalidate: true },
-    field('What would you like to do?', mode), nameField, field('Email', email), field('Password', password), hint, terms, h('div', { class: 'row' }, submit), status, unverified);
+    tabs, mode, nameField, field('Email', email), field('Password', password), hint, terms, h('div', { class: 'row' }, submit), status, unverified);
   append(formBox, [form, forgotBlock(ctx, email)]);
 
   form.addEventListener('submit', (ev) => {

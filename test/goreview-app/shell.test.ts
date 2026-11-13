@@ -12,7 +12,8 @@ describe('the hash router', () => {
     expect(parseHash('#/review')).toEqual({ id: 'review', params: [], path: 'review' });
     expect(parseHash('#/review/session')).toEqual({ id: 'review', params: ['session'], path: 'review/session' });
     expect(parseHash('#/review/history/card%3Ax')).toMatchObject({ id: 'review', params: ['history', 'card%3Ax'] });
-    expect(parseHash('#/tell')?.id).toBe('tell');
+    expect(parseHash('#/tell')?.id).toBe('review');
+    expect(parseHash('#/tell/write/draft', true)).toMatchObject({ id: 'tell', params: ['write', 'draft'] });
     expect(parseHash('#/settings')?.id).toBe('settings');
     expect(parseHash('#/nowhere')).toBeUndefined();
     expect(parseHash('')).toBeUndefined();
@@ -46,8 +47,8 @@ describe('the hash router', () => {
     expect(rig.q('header .go-brand').getAttribute('href')).toBe('#/review');
     const headerOf = (): string => rig.q('header').innerHTML;
     const homeHeader = headerOf();
-    await rig.go('tell');
-    expect(rig.q('main h1').textContent).toBe('GoTell');
+    await rig.go('review/decks');
+    expect(rig.q('#decks-title').textContent).toBe('Saved decks');
     expect(rig.root.querySelector('#back-home, .crumb')).toBeNull();
     expect(rig.root.querySelector('header .language, header #language-name, header #language-select')).toBeNull();
     expect(headerOf()).toBe(homeHeader); // the top bar does not change between screens
@@ -121,15 +122,18 @@ describe('sign-in', () => {
     expect((await rig.area.get(KEYS.session))[KEYS.session]).toBeUndefined();
   });
 
-  it('reports an unreachable service without losing the form', async () => {
+  it('reports an unreachable service without losing the form, after one more try, and names no address (the owner, 2026-11-12)', async () => {
     const service = defaultService();
     service.allDown = true;
     const rig = await makeRig({ service });
     type(rig.q<HTMLInputElement>('#signin-email'), 'ana@example.org');
     type(rig.q<HTMLInputElement>('#signin-password'), 'x');
     rig.q('#signin-form').dispatchEvent(new Event('submit', { cancelable: true }));
-    await until(() => { const t = rig.q('#signin-form .status').textContent; return !!t && t !== 'Signing in…'; }, 'an error'); // the form says 'Signing in…' at once (2026-10-28: no service-address check before it)
-    expect(rig.q('#signin-form .status').textContent).toContain('Could not reach the service');
+    const status = (): string => rig.q('#signin-form .status').textContent ?? '';
+    // the first failure is tried once more two seconds later (a waking service): wait for the second answer in real time
+    for (let i = 0; i < 60 && (!status() || status() === 'Signing in…'); i++) await new Promise((r) => setTimeout(r, 100));
+    expect(rig.q('#signin-form .status').textContent).toBe('GoReview could not reach its service. Check your internet connection and try again.');
+    expect(rig.q('#signin-form .status').textContent).not.toMatch(/https?:|address/);
   });
 
   it('has no service-address field: the password goes to config.json\'s address and nowhere else, whatever an earlier GoReview stored (2026-10-28)', async () => {

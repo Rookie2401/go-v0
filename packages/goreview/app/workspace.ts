@@ -6,7 +6,9 @@
 import type { GoEvent, ReviewCandidate, UnitKnowledge, SchedulerProfile } from '../../repository-contract/src';
 import { effectiveReviewEvents } from '../../repository-contract/src';
 import type { VocabularyItem } from '../../repository-service/src/api';
-import { reviewEligibility } from '../src/planner/eligibility';
+import { createReviewEligibilityContext, reviewEligibility, type ReviewEligibilityContext } from '../src/planner/eligibility';
+import { remediationBacklog } from '../src/planner/remediation';
+import { eventHead } from './engine';
 import { admissionBudget } from '../src/planner/budget';
 import type { AudioAvailability, DeckItem, IntakeOutcome, ReviewPreferences, SessionPlan, SessionState } from '../src/types';
 import type { AppContext } from './context';
@@ -32,13 +34,16 @@ async function prepareAdmissions(ctx: AppContext, model: ReviewModel): Promise<R
     readingSignals: model.events, languageId: model.identity.languageId, now: model.now }).map(entry => entry.outcome);
   let api: Awaited<ReturnType<AppContext['api']>>['api'] | undefined;
   let readinessIncomplete = false;
-  if (candidates.length) {
+  if (candidates.length && !model.provisional) {
     try { api = (await ctx.api()).api; }
     catch { readinessIncomplete = true; }
   }
   const ready = new Set<string>(), unavailable = new Map<string, string>();
   for (const outcome of candidates) {
     if (ready.size >= limit) break;
+    // a provisional model is this device's saved deck, whose exercises were checked when it was saved: no service round trip per word (the live
+    // model that follows checks again)
+    if (model.provisional) { if (outcome.decision === 'test-now') ready.add(outcome.unitId); continue; }
     const proposed = outcome.proposed!;
     if (proposed.family.startsWith('audio-') && (!model.prefs.includeListening || !model.audio.available)) continue; // a computer voice is practice: allowed
     try {
@@ -154,6 +159,9 @@ export interface ReviewModel {
   candidateNote?: string;
   /** A vocabulary catalogue recovery attempt was incomplete; the home must retry on its next visit. */
   candidateRecoveryIncomplete?: boolean;
+  /** Built from this device's last complete prepared deck without asking the service (`loadReviewModel(ctx, { savedOnly: true })`): the home paints it
+   * at once and replaces it when the live load arrives. Never written back as a snapshot. */
+  provisional?: boolean;
   /** How complete the knowledge behind `knowledge` is: a unit in `missing` has NO row because its batch failed, which is not the same as New. */
   knowledgeStatus: KnowledgeStatus;
   /** Candidates held out of AUTOMATIC new admission because their knowledge could not be loaded (never treated as New). */
@@ -202,7 +210,92 @@ const utc = (iso: string): string => iso.slice(0, 16).replace('T', ' ') + ' UTC'
 
 interface CandidateCache { version?: 1; fetchedAt: string; priorityPolicyVersion?: string; recoveryScopeVersion?: string; enrolmentId?: string; varietyId?: string; objectives?: string[]; candidates: ReviewCandidate[]; knowledge: UnitKnowledge[] }
 
-export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | undefined> {
+/**
+ * The home's model. `savedOnly` (2026-11-08: signed in, the home took 20-70 s to open because every visit rebuilt the deck from the service, page by
+ * page) builds it from this device's last complete prepared deck and asks the service nothing; it is undefined when there is no such copy. The home
+ * paints that at once and then asks for the live one.
+ */
+/** Between two walks of the vocabulary, at least this long: a home re-entered or refreshed meanwhile reuses the last complete walk. */
+export const RECOVERY_SCAN_MIN_INTERVAL_MS = 10 * 60_000;
+/** After this long a walk is repeated even if the vocabulary did not grow. */
+export const RECOVERY_SCAN_MAX_AGE_MS = 2 * 60 * 60_000;
+interface RecoveryScanResult { unresolvedVocabulary: VocabularyItem[]; vocabularyComplete: boolean; fullKnowledge: UnitKnowledge[]; fullKnowledgeRead: boolean; notes: string[]; reused: boolean }
+interface RecoveryScanEntry { done?: { at: number; total: number; unresolvedVocabulary: VocabularyItem[]; fullKnowledge: UnitKnowledge[] }; running?: Promise<RecoveryScanResult> }
+/** Per app (as refreshEntries), per learner and language: the last COMPLETE walk, and the walk under way. Module-level, so a route change keeps it. */
+const recoveryScans = new WeakMap<AppContext, Map<string, RecoveryScanEntry>>();
+/** Tests (and a sign-out) forget the walks. */
+export const forgetRecoveryScans = (ctx: AppContext): void => { recoveryScans.delete(ctx); };
+
+/**
+ * The raw reads the candidate recovery needs: every vocabulary row without a catalogue unit (a walk of the unsorted listing, 100 a page) and the
+ * learner's whole knowledge. Costly for the service (about 100 MB of allocation for 3,500 words), so (2026-11-12):
+ *   - one walk at a time per learner and language, however often the home is built (a second build waits for the first walk);
+ *   - within RECOVERY_SCAN_MIN_INTERVAL_MS of a complete walk, nothing is asked: the last walk is reused;
+ *   - after that, one page is asked; if the vocabulary's size (catalog.total) is what the last walk saw, and that walk is younger than
+ *     RECOVERY_SCAN_MAX_AGE_MS, it is reused; otherwise the walk continues from that page;
+ *   - only a complete walk (every page and the whole knowledge read) is kept, so a failure (a restarting service) never pins a partial result.
+ */
+async function recoveryScan(ctx: AppContext, api: Awaited<ReturnType<AppContext['api']>>['api'], identity: Identity): Promise<RecoveryScanResult> {
+  let byApp = recoveryScans.get(ctx);
+  if (!byApp) { byApp = new Map(); recoveryScans.set(ctx, byApp); }
+  const key = `${identity.learnerId}|${identity.languageId}`;
+  let entry = byApp.get(key);
+  if (!entry) { entry = {}; byApp.set(key, entry); }
+  if (entry.running) return entry.running;
+  const held = entry;
+  const run = (async (): Promise<RecoveryScanResult> => {
+    const at = ctx.deps.now().getTime();
+    const done = held.done;
+    const reuse = (): RecoveryScanResult => ({ unresolvedVocabulary: done!.unresolvedVocabulary, vocabularyComplete: true, fullKnowledge: done!.fullKnowledge, fullKnowledgeRead: true, notes: [], reused: true });
+    if (done && at - done.at < RECOVERY_SCAN_MIN_INTERVAL_MS) return reuse();
+    const notes: string[] = [];
+    const unresolvedVocabulary: VocabularyItem[] = [];
+    const cursors = new Set<string>();
+    let after: string | undefined;
+    let vocabularyComplete = false;
+    let total = -1;
+    try {
+      while (true) {
+        // unsorted (2026-11-08): this scan reads every row and its order is never used, and a sorted page makes the service read and sort the whole
+        // vocabulary again for each page of 100 (a large vocabulary paid for that once per page, on every visit to the home)
+        const page = await api.vocabulary({ languageId: identity.languageId, limit: 100, ...(after ? { after } : {}) });
+        if (!page.ok) throw new Error(page.message || `the service answered ${page.status}`);
+        if (total < 0) {
+          total = typeof page.data.catalog?.total === 'number' ? page.data.catalog.total : -1;
+          // the vocabulary has not grown since the last complete walk, and that walk is recent enough: the first page was the only cost
+          if (done && total >= 0 && total === done.total && at - done.at < RECOVERY_SCAN_MAX_AGE_MS) return reuse();
+        }
+        unresolvedVocabulary.push(...page.data.items.filter((item) => item.knowledge.languageId === identity.languageId && !item.unit));
+        after = page.data.nextCursor;
+        if (!after) { vocabularyComplete = true; break; }
+        if (cursors.has(after)) throw new Error('the vocabulary service repeated a page cursor');
+        cursors.add(after);
+      }
+    } catch (e) {
+      notes.push(`Some ${identity.languageId} vocabulary rows could not be checked for local review (${e instanceof Error ? e.message : 'unknown error'}); the service's candidates remain available.`);
+    }
+
+    // The raw vocabulary endpoint carries the original UnitKnowledge rows even when
+    // its optional catalogue unit is absent. The full knowledge read is authoritative
+    // where present; vocabulary rows fill any gaps without crossing language scopes.
+    let fullKnowledge: UnitKnowledge[] = [];
+    let fullKnowledgeRead = false;
+    try {
+      const result = await api.knowledge();
+      if (!result.ok) throw new Error(result.message || `the service answered ${result.status}`);
+      fullKnowledge = result.data.knowledge.filter((row) => row.languageId === identity.languageId && typeof row.unitId === 'string');
+      fullKnowledgeRead = true;
+    } catch (e) {
+      notes.push(`${identity.languageId} learning history could not be fully refreshed (${e instanceof Error ? e.message : 'unknown error'}); local candidates are based only on rows that loaded.`);
+    }
+    if (vocabularyComplete && fullKnowledgeRead && total >= 0) held.done = { at, total, unresolvedVocabulary, fullKnowledge };
+    return { unresolvedVocabulary, vocabularyComplete, fullKnowledge, fullKnowledgeRead, notes, reused: false };
+  })();
+  held.running = run;
+  try { return await run; } finally { held.running = undefined; }
+}
+
+async function buildReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } = {}): Promise<ReviewModel | undefined> {
   const identity = await ctx.identity();
   if (!identity) return undefined;
   const { deps, state, engine } = ctx;
@@ -250,7 +343,13 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     && snapshot.recoveryScopeVersion === RECOVERY_SCOPE_VERSION && snapshot.enrolmentId === identity.enrolmentId
     && snapshot.varietyId === identity.varietyId && snapshot.objectives?.join(',') === objectives.join(',') && Array.isArray(snapshot.candidates);
   const cacheKey = `${candidatesKey(identity.learnerId, identity.enrolmentId)}:${objectives.join(',')}`;
-  try {
+  if (opts.savedOnly) {
+    const snapModel = (await readSnapshot(ctx, identity.learnerId, identity.languageId).catch(() => undefined))?.model;
+    if (!snapshotMatches(snapModel) || !snapModel) return undefined;
+    candidates = snapModel.candidates; knowledge = snapModel.knowledge; candidateSource = 'cached';
+    cachedPreparedModel = snapModel;
+    knowledgeStatus = { source: 'cached', requested: knowledge.length, resolved: knowledge.length, missing: [], fetchedAt: snapModel.savedAt };
+  } else try {
     const { api } = await ctx.api();
     candidateApi = api;
     if ((await ctx.mode()) === 'none') throw new Error('not signed in');
@@ -340,41 +439,15 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   // raw vocabulary for any language whose installed engine has a pack provider.
   if (candidateSource === 'live' && candidateApi && ctx.engine.recoverCandidates
     && ctx.engine.canRecoverCandidates?.(identity.languageId, candidateApi) === true) {
-    const unresolvedVocabulary: VocabularyItem[] = [];
-    const cursors = new Set<string>();
-    let after: string | undefined;
-    let vocabularyComplete = false;
-    try {
-      while (true) {
-        const page = await candidateApi.vocabulary({ languageId: identity.languageId, sort: 'recent', limit: 100, ...(after ? { after } : {}) });
-        if (!page.ok) throw new Error(page.message || `the service answered ${page.status}`);
-        unresolvedVocabulary.push(...page.data.items.filter((item) => item.knowledge.languageId === identity.languageId && !item.unit));
-        after = page.data.nextCursor;
-        if (!after) { vocabularyComplete = true; break; }
-        if (cursors.has(after)) throw new Error('the vocabulary service repeated a page cursor');
-        cursors.add(after);
-      }
-    } catch (e) {
-      recoveryIncomplete = true;
-      recoveryNotes.push(`Some ${identity.languageId} vocabulary rows could not be checked for local review (${e instanceof Error ? e.message : 'unknown error'}); the service's candidates remain available.`);
-    }
-
-    // The raw vocabulary endpoint carries the original UnitKnowledge rows even when
-    // its optional catalogue unit is absent. The full knowledge read is authoritative
-    // where present; vocabulary rows fill any gaps without crossing language scopes.
-    let fullKnowledge: UnitKnowledge[] = [];
-    let fullKnowledgeRead = false;
-    try {
-      const result = await candidateApi.knowledge();
-      if (!result.ok) throw new Error(result.message || `the service answered ${result.status}`);
-      fullKnowledge = result.data.knowledge.filter((row) => row.languageId === identity.languageId && typeof row.unitId === 'string');
-      fullKnowledgeRead = true;
-    } catch (e) {
-      recoveryIncomplete = true;
-      recoveryNotes.push(`${identity.languageId} learning history could not be fully refreshed (${e instanceof Error ? e.message : 'unknown error'}); local candidates are based only on rows that loaded.`);
-    }
+    // one walk of the vocabulary and one read of the whole knowledge, reused while the vocabulary has not grown (recoveryScan below): an open home
+    // re-ran both on every live update and after every service restart, and each run took the service about 100 MB (2026-11-12: Render's 512 MB
+    // instance ran out of memory after each walk, restarted, and was walked again)
+    const scan = await recoveryScan(ctx, candidateApi, identity);
+    const { unresolvedVocabulary, vocabularyComplete, fullKnowledge, fullKnowledgeRead } = scan;
+    if (scan.notes.length) { recoveryIncomplete = true; recoveryNotes.push(...scan.notes); }
     const byKnowledge = new Map(knowledge.filter((row) => row.languageId === identity.languageId && typeof row.unitId === 'string').map((row) => [row.unitId, row]));
-    for (const row of fullKnowledge) byKnowledge.set(row.unitId, row);
+    // a reused read is older than the rows this build just fetched: it only fills gaps, it never overrides them
+    for (const row of fullKnowledge) if (!scan.reused || !byKnowledge.has(row.unitId)) byKnowledge.set(row.unitId, row);
     for (const item of unresolvedVocabulary) if (!byKnowledge.has(item.knowledge.unitId)) byKnowledge.set(item.knowledge.unitId, item.knowledge);
     knowledge = [...byKnowledge.values()];
     const unresolvedIds = new Set(unresolvedVocabulary.map((item) => item.knowledge.unitId));
@@ -498,9 +571,173 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     identity, prefs, events, deck, classDeck, counts, audio, outcomes, knowledge, candidates, candidateSnapshotEligible: candidateSource === 'live' && knowledgeComplete && !recoveryIncomplete && !intakeFailed,
     schedulerProfile, schedulerIssue: profileSelection.error, dismissed: [...ignored], choices, saved, candidateSource, knowledgeStatus, withheld,
     ...(recoveryIncomplete ? { candidateRecoveryIncomplete: true } : {}),
-    ...(candidateNote ? { candidateNote } : {}), now, algorithm: scheduler.algorithm, parametersVersion: scheduler.parametersVersion,
+    ...(candidateNote && !opts.savedOnly ? { candidateNote } : {}), now, algorithm: scheduler.algorithm, parametersVersion: scheduler.parametersVersion,
+    ...(opts.savedOnly ? { provisional: true } : {}),
   };
   return prepareAdmissions(ctx, base);
+}
+
+// ───────────────────────────── the local-first accessor (2026-11-10) ─────────────────────────────
+//
+// The rule: no screen and no press awaits the network when this device holds a usable local copy. The service only refreshes that copy in the
+// background; when a refresh lands with something different, every open screen is told once (ctx.notifyData) and repaints. A press may wait for a
+// refresh that is already running for at most PRESS_WAIT_MS, then goes on with local data.
+
+/** The longest a press waits for a refresh that is already running. */
+export const PRESS_WAIT_MS = 1_500;
+/** The longest a caller waits for a refresh (the work itself may finish later and still writes its snapshot). */
+export const REFRESH_DEADLINE_MS = 45_000;
+/** A refresh is not started again sooner than this unless forced, the local log changed, or the last one failed. */
+export const REFRESH_MIN_INTERVAL_MS = 60_000;
+/** The live values; a test shortens them. */
+export const reviewTiming = { pressWaitMs: PRESS_WAIT_MS, refreshDeadlineMs: REFRESH_DEADLINE_MS, minIntervalMs: REFRESH_MIN_INTERVAL_MS };
+
+interface RefreshEntry {
+  flight?: { promise: Promise<ReviewModel | undefined>; events: string };
+  startedAt: number;
+  ok: boolean;
+  /** Event signature of the last completed refresh. */
+  events?: string;
+  /** The last completed live model (also an incomplete one: it carries the notes a screen shows). */
+  last?: ReviewModel;
+  /** The last model handed out was this device's saved copy: the refresh that completes next is announced even when nothing differs. */
+  servedProvisional: boolean;
+  servedSig?: string;
+  revision: number;
+}
+const refreshEntries = new WeakMap<AppContext, Map<string, RefreshEntry>>();
+const entryFor = (ctx: AppContext, id: Identity): RefreshEntry => {
+  const map = refreshEntries.get(ctx) ?? new Map<string, RefreshEntry>();
+  refreshEntries.set(ctx, map);
+  const key = `${id.learnerId}|${id.enrolmentId}|${id.varietyId ?? ''}`;
+  let entry = map.get(key);
+  if (!entry) { entry = { startedAt: -Infinity, ok: false, servedProvisional: false, revision: 0 }; map.set(key, entry); }
+  return entry;
+};
+/** Forgets what the accessor remembers for one app instance (a test that swaps the Repository under the app). */
+export const forgetReviewModels = (ctx: AppContext): void => { refreshEntries.delete(ctx); };
+/** Resolves once no refresh is running for the current learner (what it found has been announced to the open screens). */
+export async function refreshIdle(ctx: AppContext): Promise<void> {
+  const id = await ctx.identity();
+  if (id) await entryFor(ctx, id).flight?.promise.catch(() => undefined);
+}
+/** Counts the refreshes that changed what a screen would show; a screen compares it with the number it painted at. */
+export function reviewModelRevision(ctx: AppContext, id: Identity): number { return entryFor(ctx, id).revision; }
+
+/** What a model is folded from: the local log (its length and last event) and the saved preferences. */
+const eventsSig = async (ctx: AppContext, id: Identity): Promise<string> => {
+  const [e, prefs] = await Promise.all([ctx.events(id.languageId), ctx.state.getPrefs(id.learnerId, id.languageId)]);
+  return `${e.length}|${e.at(-1)?.id ?? ''}|${JSON.stringify(prefs)}`;
+};
+/** What a screen would show of a model; a provisional model counts as the live one it stands in for. */
+function modelSig(m: ReviewModel): string {
+  return JSON.stringify([m.events.length, m.events.at(-1)?.id ?? '', m.counts, m.provisional ? 'live' : m.candidateSource, m.provisional ? 'live' : m.knowledgeStatus.source,
+    m.candidateReadinessIncomplete ?? false, !!m.candidateRecoveryIncomplete, m.withheld.length, m.deck.length, m.classDeck?.length ?? 0,
+    m.outcomes.map((o) => `${o.unitId}|${o.decision}|${o.proposed?.family ?? ''}|${o.proposed?.dimension ?? ''}`)]);
+}
+const completeRefresh = (m: ReviewModel | undefined): boolean => !!m && !m.provisional && m.candidateSource === 'live' && m.knowledgeStatus.source === 'live'
+  && !m.candidateReadinessIncomplete && !m.candidateRecoveryIncomplete;
+
+/** `work`, or `fallback()` once `ms` have passed (the work itself is not stopped). */
+async function within<T>(ctx: AppContext, ms: number, work: Promise<T>, fallback: () => Promise<T> | T): Promise<T> {
+  let timer: number | undefined;
+  const late = new Promise<T>((resolve, reject) => {
+    timer = ctx.deps.win.setTimeout(() => { Promise.resolve().then(fallback).then(resolve, reject); }, ms) as unknown as number;
+  });
+  try { return await Promise.race([work, late]); } finally { if (timer !== undefined) ctx.deps.win.clearTimeout(timer); }
+}
+
+/**
+ * The live load, single-flight per learner and enrolment. Concurrent callers share one promise; it is not started again within
+ * REFRESH_MIN_INTERVAL_MS unless `force`, the local event log changed, or the last one failed or was incomplete. The caller waits at most
+ * REFRESH_DEADLINE_MS and then gets what the device holds (the work goes on and still writes its snapshot, and the open screens are told when it lands).
+ * Resolves to undefined when there is no learner, or nothing is held and the load failed.
+ */
+export async function refreshReviewModel(ctx: AppContext, opts: { force?: boolean } = {}): Promise<ReviewModel | undefined> {
+  const id = await ctx.identity();
+  if (!id) return undefined;
+  const entry = entryFor(ctx, id);
+  const fallback = async (): Promise<ReviewModel | undefined> => entry.last ?? await buildReviewModel(ctx, { savedOnly: true }).catch(() => undefined);
+  const run = async (): Promise<ReviewModel | undefined> => {
+    for (let round = 0; round < 3; round++) {
+      const sig = await eventsSig(ctx, id);
+      const now = ctx.deps.now().getTime();
+      if (entry.flight) {
+        // a load that started on an older log (or older preferences) does not answer for the log as it stands now: it is waited out, then replaced
+        if (entry.flight.events !== sig) { await entry.flight.promise.catch(() => undefined); continue; }
+        return entry.flight.promise;
+      }
+      const gap = entry.ok ? reviewTiming.minIntervalMs : 0; // a failed or incomplete refresh is tried again at the next ask (single-flight keeps it to one at a time)
+      const due = !!opts.force || !entry.last || entry.events !== sig || now - entry.startedAt >= gap;
+      if (!due) return entry.last;
+      entry.startedAt = now;
+      const promise: Promise<ReviewModel | undefined> = (async (): Promise<ReviewModel | undefined> => {
+        let model: ReviewModel | undefined;
+        try { model = await buildReviewModel(ctx); } catch { model = undefined; }
+        entry.ok = completeRefresh(model);
+        if (model) {
+          entry.last = model; entry.events = sig;
+          const shown = modelSig(model);
+          const changed = entry.servedProvisional || entry.servedSig !== shown;
+          entry.servedSig = shown; entry.servedProvisional = false;
+          if (changed) { entry.revision += 1; try { ctx.notifyData(); } catch { /* a screen's repaint must not break the refresh */ } }
+        }
+        return model;
+      })().finally(() => { if (entry.flight?.promise === promise) entry.flight = undefined; });
+      entry.flight = { promise, events: sig };
+      return promise;
+    }
+    return entry.flight?.promise ?? entry.last;
+  };
+  return within(ctx, reviewTiming.refreshDeadlineMs, run(), fallback);
+}
+
+/**
+ * The model to paint or plan from, without waiting for the network when this device holds one: the last live model of this same log (folded
+ * recently), else the model built from this device's last complete snapshot and the local log. The live refresh runs in the background (not
+ * awaited). With `waitMs` a refresh that is running is waited for up to that long, and its model is returned if it arrived. When the device holds
+ * nothing it waits for the refresh (at most REFRESH_DEADLINE_MS), unless `fallback` (a model the caller already has) is given.
+ */
+export async function currentReviewModel(ctx: AppContext, opts: { waitMs?: number; fallback?: ReviewModel; noRefresh?: boolean } = {}): Promise<ReviewModel | undefined> {
+  const id = await ctx.identity();
+  if (!id) return undefined;
+  const entry = entryFor(ctx, id);
+  let local: ReviewModel | undefined;
+  const last = entry.last;
+  if (last && !last.provisional) {
+    const sig = await eventsSig(ctx, id);
+    const now = ctx.deps.now().getTime(), then = Date.parse(last.now);
+    // the other local stores a model reads besides the log and the preferences: the learner's per-word choices (Later)
+    const choices = await ctx.state.getChoices(id.learnerId);
+    const moved = [...last.deck, ...(last.classDeck ?? [])].some((i) => i.status === 'active' && Date.parse(i.schedule.due) > then && Date.parse(i.schedule.due) <= now);
+    // a choice made since (Later) changes nothing the live load found: the same model with the choices as they stand now
+    if (entry.events === sig && now >= then && now - then <= 5 * 60_000 && !moved) local = JSON.stringify(choices) === JSON.stringify(last.choices) ? last : { ...last, choices };
+  }
+  local ??= await buildReviewModel(ctx, { savedOnly: true }).catch(() => undefined);
+  if (local) {
+    if (local.provisional) { entry.servedProvisional = true; entry.servedSig = modelSig(local); }
+    if (opts.noRefresh) return local;
+    const refresh = refreshReviewModel(ctx).catch(() => undefined);
+    if (opts.waitMs) {
+      const live = await within(ctx, opts.waitMs, refresh, () => undefined);
+      if (live && !live.provisional) return live;
+    }
+    return local;
+  }
+  const refresh = refreshReviewModel(ctx);
+  if (!opts.fallback) return refresh;
+  const given = opts.fallback;
+  return within(ctx, opts.waitMs ?? 0, refresh.then((m) => m ?? given), () => given);
+}
+
+/**
+ * The home's model as a full live load (or, with `savedOnly`, this device's last complete snapshot and no service call). A live load goes through the
+ * single-flight: two concurrent ones never run, and one that started before the log changed is waited out and replaced. For a screen, prefer
+ * `currentReviewModel`; this stays for a caller that needs the live answer itself (the developer page, the tests).
+ */
+export async function loadReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } = {}): Promise<ReviewModel | undefined> {
+  if (opts.savedOnly) return buildReviewModel(ctx, opts);
+  return refreshReviewModel(ctx, { force: true });
 }
 
 // ───────────────────────────── starting a session ─────────────────────────────
@@ -547,11 +784,13 @@ function presentationGuard(ctx: AppContext, model: Pick<ReviewModel, 'identity' 
   const revisions = new Map<string,string>();
   const knowledgeKinds = new Set(['EncounterRecorded','SelectionLookedUp','AnalysisShown','AssistanceRequested','ItemMarked','CardReviewed','AssessmentAnswered','ListeningAssessed']);
   const revision = (events: GoEvent[], unitId: string) => events.filter(e => knowledgeKinds.has(e.kind) && e.subject.itemIds?.includes(unitId)).map(e => e.id).sort().join('|');
+  // One set of evidence indexes per event head (the log's signature): a decision per card used to sort and re-read the whole log. Only the latest head is kept.
+  let shared: { head: string; base: ReviewEligibilityContext } | undefined;
   return async (planned: import('../src/types').PlannedItem, at: string): Promise<{ eligible: boolean; reason?: string }> => {
     const [events, prefs] = await Promise.all([ctx.events(model.identity.languageId), ctx.state.getPrefs(model.identity.learnerId, model.identity.languageId)]);
     const profile = schedulerProfileSelection(events);
     if (profile.error) return { eligible:false, reason:profile.error };
-    const whole = ctx.engine.foldDeck(events, model.identity.languageId, prefs, at);
+    const whole = (ctx.engine.foldDeckShared ?? ctx.engine.foldDeck)(events, model.identity.languageId, prefs, at);
     const item = whole.find(i => i.itemId === planned.item.itemId), unitId = planned.item.unitId, intent = planned.intent ?? { kind:'automatic' as const };
     const hasHistory = item?.history.some(h => !h.retracted && !h.scheduleExcluded && !h.conflict);
     if (!hasHistory && intent.kind === 'automatic') {
@@ -572,7 +811,11 @@ function presentationGuard(ctx: AppContext, model: Pick<ReviewModel, 'identity' 
     if (knowledge && ['new','seen','recognized','familiar','known','automatic'].includes(String(mark)))
       knowledge = { ...knowledge, level:mark as UnitKnowledge['level'] };
     const budget = admissionBudget(events, { learnerId:model.identity.learnerId,languageId:model.identity.languageId,now:at,maxNew:prefs.maxNew,dailyNewLimit:prefs.dailyNewLimit??prefs.maxNew });
-    return reviewEligibility({item,itemId:planned.item.itemId,unitId,knowledge,events,now:at,intent,remainingNew:Math.min(prefs.maxNew,budget.remaining)});
+    const head = eventHead(events);
+    // the indexes are the log's; the repair status is taken for this one card at `at`, as a context built at `at` would give it (deckModel's contextAt)
+    if (shared?.head !== head) shared = { head, base: createReviewEligibilityContext([], events, at) };
+    const context: ReviewEligibilityContext = { ...shared.base, remediationByCard: new Map(remediationBacklog(item ? [item] : [], events, at, shared.base.remediationEvidence).map(row => [row.itemId, row])) };
+    return reviewEligibility({item,itemId:planned.item.itemId,unitId,knowledge,events,now:at,intent,remainingNew:Math.min(prefs.maxNew,budget.remaining),context});
   };
 }
 
@@ -600,7 +843,7 @@ export async function resumeSession(ctx: AppContext, sessionId: string): Promise
   if (!driver.recover || !(await driver.recover(sessionId))) return { ok: false, message: 'The saved session could not be restored.' };
   const state = driver.state();
   return { ok: true, run: { driver, plan: state.plan, ctx: ectx, addedCount: 0,
-    startedAt: Date.parse(state.startedAt), results: [...state.results],
+    startedAt: Date.parse(state.startedAt), resumed: true, results: [...state.results],
     skipped: driver.skips().map((s) => s.itemId), withheld: [], controls: [] } };
 }
 

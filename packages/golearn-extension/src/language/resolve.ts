@@ -86,9 +86,10 @@ export const PACK_VARIETIES: Readonly<Record<string, readonly string[]>> = {
   // the packs' analysed varieties: the PERIODS a learner may target, and (Hebrew) Biblical Aramaic read beside it; the others are recognised on cards, not chosen
   he: ['he-mod', 'he-bib', 'arc-bib'],
   el: ['el-mod', 'el-koi', 'el-att', 'el-hom'],
+  arc: ['arc-bib'],
 };
 /** The script each pack's language is written in; a tag that states another script (hi-Latn) names something no pack analyses. */
-const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', el: 'grek' };
+const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', arc: 'hebr', el: 'grek' };
 
 const PRIMARY: Readonly<Record<string, string>> = {
   sq: 'sq', sqi: 'sq', als: 'sq', aln: 'sq',
@@ -99,6 +100,7 @@ const PRIMARY: Readonly<Record<string, string>> = {
   nb: 'nb', nob: 'nb',
   nn: 'nn', nno: 'nn',
   la: 'la', lat: 'la',
+  arc: 'arc',
   // Biblical Hebrew (hbo) and Ancient Greek (grc) are periods of the same packs, not other languages
   he: 'he', heb: 'he', iw: 'he', hbo: 'he',
   el: 'el', ell: 'el', gre: 'el', grc: 'el',
@@ -159,6 +161,9 @@ export function mapLanguageTag(tag: string): TagMapping {
   } else if (languageId === 'de' && region) {
     const v = `de-${region.toUpperCase()}`;
     if (PACK_VARIETIES.de.includes(v)) varietyId = v;
+  } else if (primary === 'arc') {
+    if (rest.some((p) => ['targum', 'targumic', 'onkelos', 'syriac', 'imperial', 'qumran'].includes(p))) return { kind: 'no-pack', reason: 'Only the Biblical Aramaic slice is implemented; the declared variety has no validated pack' };
+    varietyId = 'arc-bib'; notes.push('The Aramaic pack currently analyses Biblical Aramaic only');
   } else if (primary === 'hbo') {
     varietyId = 'he-bib'; notes.push('hbo is Biblical Hebrew: a period of the Hebrew pack, read in its Biblical period');
   } else if (primary === 'grc') {
@@ -233,9 +238,20 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
     }
     return { confidence: 0, reasons: [`the sample is in Devanagari script, but the Hindi word list recognises only ${w.hits} of ${w.words} words: it may be Marathi, Nepali, Sanskrit, or Hindi outside the word list`] };
   }
-  // Hebrew script is shared with Aramaic and Yiddish; Greek script with nothing a pack reads. Which PERIOD of the pack applies is the
+  // Hebrew script is shared by Hebrew, Aramaic and Yiddish. Greek script has one pack here. Which PERIOD of a pack applies is the
   // analyser's per-sentence decision (cantillation, pointing, polytonic marks), not the resolver's: it names the language only.
   if (share(sh.hebrew) >= MIN_SCRIPT_SHARE) {
+    // Hebrew is the default for the script (its pack also reads Biblical Aramaic as a period). The Biblical Aramaic pack
+    // takes the sample only when its attested word list clearly beats Hebrew's, with Latin's evidence and margin.
+    const arcAdapter = installed.has('arc') ? adapterOf('arc') : undefined;
+    if (arcAdapter) {
+      const arc = wordListShare(arcAdapter, sample);
+      const heAdapter = installed.has('he') ? adapterOf('he') : undefined;
+      const he = heAdapter ? wordListShare(heAdapter, sample) : { hits: 0, words: arc.words, share: 0 };
+      if (arc.hits >= MIN_HITS && arc.share >= MIN_TOP_SHARE && arc.share - he.share >= MIN_MARGIN) {
+        return { languageId: 'arc', confidence: r2(Math.min(0.85, 0.5 + arc.share / 3)), reasons: [`the sample is in Hebrew script and the Biblical Aramaic word list recognises ${arc.hits} of ${arc.words} words, clearly more than the Hebrew word list (${he.hits})`] };
+      }
+    }
     if (!installed.has('he')) return { confidence: 0, reasons: ['the sample is in Hebrew script, but the Hebrew pack is not installed'] };
     return { languageId: 'he', confidence: 0.85, reasons: ['the sample is in Hebrew script, which no other pack uses (the script is shared with Aramaic and Yiddish; the analyser decides the period sentence by sentence, Biblical Aramaic included)'] };
   }

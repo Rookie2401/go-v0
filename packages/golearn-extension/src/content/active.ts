@@ -19,6 +19,8 @@ import { chooseAdapter, describePage, entryRefuses, registryEntry, type ReaderRe
 import { createHighlighter, type Highlighter } from '../active/highlight';
 import { levelOfRows, type ActiveLevel } from '../active/levels';
 import { applyConfirmations, createScanner, formsToConfirm, type Confirmations, type ScanToken, type Scanner } from '../active/scan';
+import { LANGUAGE_SCRIPT, planPage, wordInScript, type LatinVerdict } from '../active/pageLanguages';
+import { languageNameOf } from '../protocol';
 import { GOLEARN_HOST_ATTR, type ReaderAdapter } from '../contract/readerAdapter';
 import { MAX_CONFIRM_FORMS, isUnitId, type ConfirmFormsReply, type KnowledgeView, type ProfileReply } from '../protocol';
 import type { GoEvent } from '../../../repository-contract/src';
@@ -54,7 +56,9 @@ export interface ActiveState {
   speak: boolean;
   /** The CSS Custom Highlight API exists here (underlines are possible). */
   supported: boolean;
+  /** The language with the most words read on the page (kept for older callers); `languages` lists every language found, most words first. */
   languageId?: string;
+  languages?: string[];
   /** Why nothing is scanned or marked, when that is so. */
   reason?: string;
   /** Word tokens found in the last scan, and how many are marked per level. */
@@ -75,9 +79,15 @@ export interface ActiveState {
   recordedWords?: number;
 }
 
-const SAMPLE_CHARS = 400;
+const SAMPLE_CHARS = 1200;
+interface PendingEncounter { groups: string[][]; languageId: string; readerId: string; tokens: ScanToken[] }
+/** The language a scanned token was read in (its form id says it: `form:<language>:<form>`). */
+const langOf = (t: ScanToken): string => t.ids[0]?.split(':')[1] ?? '';
 /** After a question the dictionary could not answer (unreachable), the next one waits this long. */
 const CONFIRM_RETRY_MS = 15_000;
+/** A learner-model batch that failed after the bridge's own retries is asked again by a timer (the worker is still opening), at most this many times per scan generation (a start, or a new viewport). */
+export const PROFILE_RETRY_MS = 3_000;
+const PROFILE_RETRY_MAX = 5;
 const CONFIRM_OFFLINE = 'The dictionary could not be reached, so only the course word list underlines words.';
 const CONTROL_SEL = 'a[href], button, input, textarea, select, label, summary, [role="button"], [role="link"], [role="menuitem"], [contenteditable]:not([contenteditable="false"])';
 
@@ -97,7 +107,15 @@ export class ActiveMode {
   private observers: MutationObserver[] = [];
   private debounce: ReturnType<typeof setTimeout> | undefined;
   private encounterTimer: ReturnType<typeof setTimeout> | undefined;
-  private pendingEncounter: { groups: string[][]; languageId: string; readerId: string; tokens: ScanToken[] } | undefined;
+  /** Words waiting for the dwell before they are recorded as met, per language (a page may hold several). */
+  private readonly pendingEncounters = new Map<string, PendingEncounter>();
+  /** The learner's languages this page may be read in, the page's Latin-script language when it rests on evidence, and what the last scan found. */
+  private installed: string[] = [];
+  private pageLatin: string | undefined;
+  private languages: string[] = [];
+  private ready = false;
+  private planCache = new WeakMap<Element, { text: string; verdict: LatinVerdict }>();
+  private nodeLanguages = new WeakMap<Text, string[]>();
   private scanning: Promise<void> | undefined;
   private rescanWanted = false;
   private last: Pick<ActiveState, 'scanned' | 'marked' | 'skipped' | 'confirmed' | 'unconfirmed' | 'scanMs' | 'profileMs'> = { scanned: 0, marked: noMarks() };
@@ -109,18 +127,21 @@ export class ActiveMode {
   private readonly refetch = new Set<string>();
   /** What the dictionary said about each form id asked on this tab: the lemma id, or null = not in the dictionary. Never asked twice. */
   private readonly confirmed = new Map<string, string | null>();
-  /** The dictionary can say nothing for this language on this tab (no pack, no forms index there): stop asking. */
-  private confirmOff = false;
-  /** The dictionary could not be reached: shown as the tab's reason until a question gets through; asked again after `confirmRetryAt`. */
+  /** Languages whose dictionary can say nothing on this tab (no pack, no forms index there): not asked again. */
+  private readonly confirmOff = new Set<string>();
+  /** The dictionary could not be reached: shown as the tab's reason until a question gets through; asked again after `confirmRetryAt` (per language). */
   private confirmReason: string | undefined;
-  private confirmRetryAt = 0;
+  private readonly confirmRetryAt = new Map<string, number>();
+  private profileRetry: ReturnType<typeof setTimeout> | undefined;
+  private profileRetries = 0;
+  private consultFailed = false;
 
   constructor(private readonly d: ActiveDeps) {}
 
   get state(): ActiveState {
     const top = this.highlighters.get(this.d.doc);
     const supported = top ? top.supported : createHighlighter(this.d.doc).supported;
-    return { on: this.on, speak: this.speak, supported, languageId: this.languageId, reason: this.reason, clicks: this.clicks, recordedWords: [...this.encountered].filter((id) => id.startsWith('form:')).length, ...this.last };
+    return { on: this.on, speak: this.speak, supported, languageId: this.languageId, ...(this.languages.length ? { languages: [...this.languages] } : {}), reason: this.reason, clicks: this.clicks, recordedWords: [...this.encountered].filter((id) => id.startsWith('form:')).length, ...this.last };
   }
 
   /** Switch Active on for this page (idempotent; a second call only updates `speak`). */
@@ -128,6 +149,7 @@ export class ActiveMode {
     this.speak = opts.speak;
     if (this.on) return this.state;
     this.on = true;
+    this.profileRetries = 0;
     this.reason = undefined;
     // one switch: with Active on, a selection the learner makes is looked up too (the per-tab switch folded into Active, 2026-10-09)
     this.d.controller.enable();
@@ -155,29 +177,26 @@ export class ActiveMode {
     this.entry = entry;
     this.scanner = createScanner({ doc: this.d.doc, adapterOf: this.d.adapterOf, containers: entry.site?.containers, ignore: entry.site?.ignore, viewport: this.d.viewport ?? 'visible' });
 
-    // the language of the page, decided the way a lookup decides it (override, book, page metadata, detection; never a guess)
-    const sample = this.sampleText();
-    const res = await this.d.controller.resolvePageLanguage(sample);
+    // every language of the learner's that the page holds is read (2026-11-09): which words are in which language is decided per word and
+    // per block (active/pageLanguages.ts). The page's own Latin-script language, when it rests on evidence (the page declares it, the learner
+    // chose it here, the text shows it; never the selected language alone), is what a block too short to tell is read in.
+    this.installed = await this.d.controller.pageLanguages();
     if (!this.on) return this.state;
-    if (!res.languageId) {
-      const why = res.reasons.slice(-2).join('; ');
-      this.reason = `GoLearn cannot tell which language this page is in, and will not guess. Choose a language in the setup page.${why ? ` Why: ${why}.` : ''}`;
-      this.attachClick(); // a click still looks up (the lookup says the same thing, with the choice)
-      return this.state;
+    const latinSample = this.latinSample();
+    if (latinSample && this.installed.some((l) => LANGUAGE_SCRIPT[l] === 'Latn')) {
+      const res = await this.d.controller.resolvePageLanguage(latinSample);
+      if (!this.on) return this.state;
+      if (res.languageId && res.basis !== 'team-default' && LANGUAGE_SCRIPT[res.languageId] === 'Latn') this.pageLatin = res.languageId;
     }
-    this.languageId = res.languageId;
-    if (!this.d.adapterOf(res.languageId) && this.d.loadAnalyser) { try { await this.d.loadAnalyser(res.languageId); } catch { /* said below */ } }
-    if (!this.on) return this.state;
-    if (!this.d.adapterOf(res.languageId)) {
-      this.reason = `The ${res.languageId} analyser is not loaded, so the page was not read.`;
-      this.attachClick();
-      return this.state;
-    }
+    this.ready = true;
     this.attachClick();
     this.attachWatchers();
     await this.rescan();
     return this.state;
   }
+
+  /** Whether Active is on in this page (cheap: `state` builds a highlighter). */
+  get isOn(): boolean { return this.on; }
 
   setSpeak(speak: boolean): void { this.speak = speak; }
 
@@ -187,9 +206,10 @@ export class ActiveMode {
     this.d.controller.disable();
     this.offRecord?.(); this.offRecord = undefined;
     clearTimeout(this.debounce);
+    clearTimeout(this.profileRetry); this.profileRetry = undefined;
     clearTimeout(this.encounterTimer);
     this.encounterTimer = undefined;
-    this.pendingEncounter = undefined;
+    this.pendingEncounters.clear();
     for (const off of this.listeners) off();
     this.listeners = [];
     for (const o of this.observers) o.disconnect();
@@ -200,15 +220,21 @@ export class ActiveMode {
     this.looked.clear();
     this.encountered.clear();
     this.refetch.clear();
-    this.confirmed.clear(); this.confirmOff = false; this.confirmReason = undefined; this.confirmRetryAt = 0;
+    this.confirmed.clear(); this.confirmOff.clear(); this.confirmReason = undefined; this.confirmRetryAt.clear();
     this.languageId = undefined;
+    this.languages = [];
+    this.installed = [];
+    this.pageLatin = undefined;
+    this.ready = false;
+    this.planCache = new WeakMap();
+    this.nodeLanguages = new WeakMap();
     this.scanner = undefined;
     this.last = { scanned: 0, marked: noMarks() };
   }
 
   /** Read the viewport again (scroll, resize, a page change). Runs one scan at a time; a request during a scan runs once after it. */
   rescan(): Promise<void> {
-    if (!this.on || !this.scanner || !this.languageId) return Promise.resolve();
+    if (!this.on || !this.scanner || !this.ready) return Promise.resolve();
     if (this.scanning) { this.rescanWanted = true; return this.scanning; }
     this.scanning = this.scanOnce().catch(() => undefined).then(async () => {
       this.scanning = undefined;
@@ -231,12 +257,15 @@ export class ActiveMode {
     return out;
   }
 
-  private sampleText(): string {
+  /** The page's Latin-script words, as the evidence for its Latin-script language (other scripts are decided by their script). */
+  private latinSample(): string {
     if (!this.scanner) return '';
     let s = '';
     for (const root of this.roots()) {
       for (const n of this.scanner.textNodes(root)) {
-        s += (s ? ' ' : '') + n.data.replace(/\s+/gu, ' ').trim();
+        const words = n.data.match(/[\p{Script=Latin}\p{M}'’-]+/gu);
+        if (!words) continue;
+        s += (s ? ' ' : '') + words.join(' ');
         if (s.length >= SAMPLE_CHARS) return s.slice(0, SAMPLE_CHARS);
       }
     }
@@ -245,12 +274,27 @@ export class ActiveMode {
 
   private async scanOnce(): Promise<void> {
     const scanner = this.scanner!;
-    const languageId = this.languageId!;
     const clock = this.d.perf ?? performance;
     const t0 = clock.now();
+    const rootsNodes = this.roots().map((root) => [root, scanner.textNodes(root)] as const);
+    const allNodes = rootsNodes.flatMap(([, nodes]) => nodes);
+    const planOpts = { installed: this.installed, adapterOf: (l: string) => this.d.adapterOf(l), pageLatin: this.pageLatin };
+    let plan = planPage(allNodes, planOpts, this.planCache);
+    if (plan.missing.size && this.d.loadAnalyser) {
+      // a language of the learner's appears on the page and its analyser is not loaded yet: load it, then decide again
+      await Promise.allSettled([...plan.missing].map((l) => this.d.loadAnalyser!(l)));
+      if (!this.on) return;
+      plan = planPage(allNodes, planOpts, this.planCache);
+    }
+    this.nodeLanguages = plan.nodeLanguages;
     const byDoc = new Map<Document, ScanToken[]>();
-    for (const root of this.roots()) {
-      const tokens = scanner.tokensIn(scanner.textNodes(root), languageId);
+    for (const [root, nodes] of rootsNodes) {
+      const here = new Set(nodes);
+      const tokens: ScanToken[] = [];
+      for (const [lang, langNodes] of plan.byLanguage) {
+        // a mixed-script node is read in each of its scripts' languages; each keeps only its own script's words
+        tokens.push(...scanner.tokensIn(langNodes.filter((n) => here.has(n)), lang).filter((t) => wordInScript(t.surface, lang)));
+      }
       byDoc.set(root, tokens);
       this.tokensByDoc.set(root, tokens);
     }
@@ -258,18 +302,38 @@ export class ActiveMode {
 
     // the words the analyser could not confirm are asked of the dictionary BEFORE the learner model is consulted, so a word it has is
     // treated exactly like an analysed one from here on (levels, highlights, encounters)
-    const counts = await this.confirm([...byDoc.values()].flat(), languageId, clock);
-    if (!this.on) return;
+    // each language's words go to that language's dictionary and learner model
+    const all = [...byDoc.values()].flat();
+    const byLang = new Map<string, ScanToken[]>();
+    for (const t of all) (byLang.get(langOf(t)) ?? byLang.set(langOf(t), []).get(langOf(t))!).push(t);
+    const counts = { confirmed: 0, unconfirmed: 0 };
+    for (const [lang, tokens] of byLang) {
+      const c = await this.confirm(tokens, lang, clock);
+      if (!this.on) return;
+      counts.confirmed += c.confirmed; counts.unconfirmed += c.unconfirmed;
+    }
 
     // the learner model, for the ids not asked about yet on this tab
-    const want = new Set<string>();
     for (const id of this.refetch) this.rows.delete(id); // answers that were asked for before an event of this page was recorded
     this.refetch.clear();
-    for (const tokens of byDoc.values()) for (const t of tokens) if (t.known) for (const id of t.ids) if (!this.rows.has(id)) want.add(id);
     const t1 = clock.now();
-    await this.consult([...want], languageId);
+    this.consultFailed = false;
+    for (const [lang, tokens] of byLang) {
+      const want = new Set<string>();
+      for (const t of tokens) if (t.known) for (const id of t.ids) if (!this.rows.has(id)) want.add(id);
+      await this.consult([...want], lang);
+      if (!this.on) return;
+    }
     const profileMs = clock.now() - t1;
-    if (!this.on) return;
+    // a batch the worker did not answer (it was still opening, even after the bridge's retries) is not dropped: asked again soon, without waiting for a scroll
+    if (this.consultFailed && this.profileRetries < PROFILE_RETRY_MAX && !this.profileRetry) {
+      this.profileRetries++;
+      this.profileRetry = setTimeout(() => { this.profileRetry = undefined; if (this.on && this.d.doc.visibilityState !== 'hidden') void this.rescan(); }, PROFILE_RETRY_MS);
+    }
+    // the languages found, most read words first; the first is the page's main language
+    const knownBy = [...byLang].map(([lang, tokens]) => [lang, tokens.filter((t) => t.known).length] as const).filter(([, n]) => n > 0).sort((a, b) => b[1] - a[1]);
+    this.languages = knownBy.map(([lang]) => lang);
+    this.languageId = this.languages[0];
 
     let scanned = 0;
     let skipped = 0;
@@ -298,24 +362,31 @@ export class ActiveMode {
         return [ids.join(','), ids] as const;
       }).filter(([, ids]) => ids.length))].map(([, ids]) => ids);
       if (groups.length) {
-        const tokens = [...byDoc.values()].flatMap((xs) => xs).filter((t) => t.known && t.ids.some((id) => groups.some((g) => g.includes(id))));
-        const old = this.pendingEncounter;
-        const oldKeys = new Set((old?.groups ?? []).map((g) => g.join(',')));
-        this.pendingEncounter = { groups: [...(old?.groups ?? []), ...groups.filter((g) => !oldKeys.has(g.join(',')))], languageId, readerId: this.entry?.readerId ?? 'active', tokens: [...(old?.tokens ?? []), ...tokens] };
+        // one encounter event per language (an event names its language)
+        for (const lang of new Set(groups.map((g) => g[0]?.split(':')[1] ?? ''))) {
+          const mine = groups.filter((g) => (g[0]?.split(':')[1] ?? '') === lang);
+          const tokens = all.filter((t) => t.known && langOf(t) === lang && t.ids.some((id) => mine.some((g) => g.includes(id))));
+          const old = this.pendingEncounters.get(lang);
+          const oldKeys = new Set((old?.groups ?? []).map((g) => g.join(',')));
+          this.pendingEncounters.set(lang, { groups: [...(old?.groups ?? []), ...mine.filter((g) => !oldKeys.has(g.join(',')))], languageId: lang, readerId: this.entry?.readerId ?? 'active', tokens: [...(old?.tokens ?? []), ...tokens] });
+        }
         clearTimeout(this.encounterTimer);
         this.encounterTimer = setTimeout(() => {
           this.encounterTimer = undefined;
-          const pending = this.pendingEncounter;
-          this.pendingEncounter = undefined;
-          if (!pending || !this.on || this.d.doc.visibilityState === 'hidden' || !pending.tokens.some((t) => this.tokenVisible(t))) return;
-          void this.persistEncounter(pending);
+          const pending = [...this.pendingEncounters.values()];
+          this.pendingEncounters.clear();
+          if (!this.on || this.d.doc.visibilityState === 'hidden') return;
+          for (const p of pending) if (p.tokens.some((t) => this.tokenVisible(t))) void this.persistEncounter(p);
         }, 800);
       }
     }
     this.last = { scanned, marked, skipped, confirmed: counts.confirmed, unconfirmed: counts.unconfirmed, scanMs: Math.round(scanMs * 100) / 100, profileMs: Math.round(profileMs * 100) / 100 };
     if (!this.d.profile) this.reason = 'The learner model is not reachable from this page, so nothing is underlined; clicking a word still looks it up.';
     else if (!this.highlighterFor(this.d.doc).supported) this.reason = 'This browser cannot draw the underlines (no CSS highlight API); clicking a word still looks it up.';
-    else this.reason = this.confirmReason;
+    else if (!this.languages.length && scanned === 0) {
+      const names = this.installed.map((l) => languageNameOf(l)).join(', ');
+      this.reason = `GoLearn found no words in your languages${names ? ` (${names})` : ''} on this page, so nothing is underlined.`;
+    } else this.reason = this.confirmReason;
   }
 
   /**
@@ -326,15 +397,15 @@ export class ActiveMode {
    */
   private async confirm(tokens: ScanToken[], languageId: string, clock: { now(): number }): Promise<{ confirmed: number; unconfirmed: number }> {
     const ask = this.d.confirmForms;
-    if (ask && !this.confirmOff && clock.now() >= this.confirmRetryAt) {
+    if (ask && !this.confirmOff.has(languageId) && clock.now() >= (this.confirmRetryAt.get(languageId) ?? 0)) {
       const prefix = `form:${languageId}:`;
       const want = formsToConfirm(tokens, languageId, this.confirmed);
       for (let i = 0; i < want.length; i += MAX_CONFIRM_FORMS) {
         const ids = want.slice(i, i + MAX_CONFIRM_FORMS);
         let reply: ConfirmFormsReply | undefined;
         try { reply = await ask(ids.map((id) => id.slice(prefix.length)), languageId); } catch { reply = undefined; }
-        if (!this.on || this.languageId !== languageId) return { confirmed: 0, unconfirmed: 0 };
-        if (!reply || !reply.ok || typeof reply.forms !== 'object' || !reply.forms) { this.confirmRetryAt = clock.now() + CONFIRM_RETRY_MS; break; }
+        if (!this.on) return { confirmed: 0, unconfirmed: 0 };
+        if (!reply || !reply.ok || typeof reply.forms !== 'object' || !reply.forms) { this.confirmRetryAt.set(languageId, clock.now() + CONFIRM_RETRY_MS); break; }
         for (const id of ids) {
           // a form missing from the reply was not answered (the worker's compound budget did not reach it): it is asked again on a later scan, not remembered as absent
           if (!Object.prototype.hasOwnProperty.call(reply.forms, id.slice(prefix.length))) continue;
@@ -346,8 +417,8 @@ export class ActiveMode {
           else if (!reply.reason) this.confirmed.set(id, null); // the index answered and does not have the word
         }
         if (reply.reason) {
-          if (reply.reason === 'no-pack' || reply.reason === 'no-index') this.confirmOff = true; // nothing to ask for this language here: today's behaviour, quietly
-          else { this.confirmReason = CONFIRM_OFFLINE; this.confirmRetryAt = clock.now() + CONFIRM_RETRY_MS; }
+          if (reply.reason === 'no-pack' || reply.reason === 'no-index') this.confirmOff.add(languageId); // nothing to ask for this language here: today's behaviour, quietly
+          else { this.confirmReason = CONFIRM_OFFLINE; this.confirmRetryAt.set(languageId, clock.now() + CONFIRM_RETRY_MS); }
           break;
         }
         this.confirmReason = undefined;
@@ -373,8 +444,8 @@ export class ActiveMode {
       let reply: ProfileReply | undefined;
       try { reply = await ask(batch, languageId); } catch { reply = undefined; }
       if (!this.on) return;
-      if (!reply || !reply.ok) continue;
-      if (reply.error && !Object.keys(reply.rows ?? {}).length) continue; // the model was not consulted: no evidence of "never met"
+      if (!reply || !reply.ok) { this.consultFailed = true; continue; }
+      if (reply.error && !Object.keys(reply.rows ?? {}).length) { if (reply.error !== 'inactive') this.consultFailed = true; continue; } // the model was not consulted: no evidence of "never met"
       for (const id of batch) this.rows.set(id, reply.rows?.[id] ?? null);
       // an event was recorded while this question was out: the answer may not hold it, so these words are asked again next scan
       if (epoch !== this.epoch) for (const id of batch) this.refetch.add(id);
@@ -384,7 +455,8 @@ export class ActiveMode {
   private attachWatchers(): void {
     const view = this.d.doc.defaultView;
     const later = () => {
-      clearTimeout(this.encounterTimer); this.encounterTimer = undefined; this.pendingEncounter = undefined;
+      this.profileRetries = 0; // a new viewport is a new scan generation
+      clearTimeout(this.encounterTimer); this.encounterTimer = undefined; this.pendingEncounters.clear();
       clearTimeout(this.debounce); this.debounce = setTimeout(() => { void this.rescan(); }, this.d.debounceMs ?? 150);
     };
     if (view) {
@@ -394,7 +466,7 @@ export class ActiveMode {
       this.listeners.push(() => view.removeEventListener('scroll', later, { capture: true }), () => view.removeEventListener('resize', later), () => view.removeEventListener('pageshow', later));
     }
     // a tab shown for the first time (or again) gets its viewport then: scan once it is visible
-    const onVisible = () => { if (this.d.doc.visibilityState !== 'hidden') later(); else { clearTimeout(this.encounterTimer); this.encounterTimer = undefined; this.pendingEncounter = undefined; } };
+    const onVisible = () => { if (this.d.doc.visibilityState !== 'hidden') later(); else { clearTimeout(this.encounterTimer); this.encounterTimer = undefined; this.pendingEncounters.clear(); } };
     this.d.doc.addEventListener('visibilitychange', onVisible);
     this.listeners.push(() => this.d.doc.removeEventListener('visibilitychange', onVisible));
     const MO = (view as unknown as { MutationObserver?: typeof MutationObserver } | null)?.MutationObserver ?? (globalThis as { MutationObserver?: typeof MutationObserver }).MutationObserver;
@@ -423,12 +495,12 @@ export class ActiveMode {
     } catch { return false; }
   }
 
-  private async persistEncounter(pending: { groups: string[][]; languageId: string; readerId: string; tokens: ScanToken[] }): Promise<void> {
+  private async persistEncounter(pending: PendingEncounter): Promise<void> {
     const record = this.d.recordEncounter;
     const build = this.d.buildEncounter;
     if (!record || !build) return;
     for (let i = 0; i < pending.groups.length; i++) {
-      if (!this.on || this.d.doc.visibilityState === 'hidden' || this.languageId !== pending.languageId) return;
+      if (!this.on || this.d.doc.visibilityState === 'hidden') return;
       const ids = pending.groups[i];
       if (!pending.tokens.some((t) => t.ids.some((id) => ids.includes(id)) && this.tokenVisible(t))) continue;
       let result: unknown;
@@ -438,14 +510,14 @@ export class ActiveMode {
     }
   }
 
-  private retryEncounter(pending: { groups: string[][]; languageId: string; readerId: string; tokens: ScanToken[] }, from: number): void {
-    if (!this.on || this.d.doc.visibilityState === 'hidden' || this.languageId !== pending.languageId) return;
-    this.pendingEncounter = { ...pending, groups: pending.groups.slice(from) };
+  private retryEncounter(pending: PendingEncounter, from: number): void {
+    if (!this.on || this.d.doc.visibilityState === 'hidden') return;
+    this.pendingEncounters.set(pending.languageId, { ...pending, groups: pending.groups.slice(from) });
     clearTimeout(this.encounterTimer);
     this.encounterTimer = setTimeout(() => {
       this.encounterTimer = undefined;
-      const next = this.pendingEncounter; this.pendingEncounter = undefined;
-      if (next && this.on && this.d.doc.visibilityState !== 'hidden' && this.languageId === next.languageId) void this.persistEncounter(next);
+      const next = [...this.pendingEncounters.values()]; this.pendingEncounters.clear();
+      if (this.on && this.d.doc.visibilityState !== 'hidden') for (const p of next) void this.persistEncounter(p);
     }, 1000);
   }
 
@@ -469,19 +541,25 @@ export class ActiveMode {
     if (sel && sel.rangeCount && !sel.isCollapsed) return; // a drag: the learner selected a phrase; the per-tab switch handles that
     const point = caretAt(root, e.clientX, e.clientY);
     if (!point || point.node.nodeType !== 3) return;
-    const languageId = this.languageId;
-    if (!languageId || !this.scanner) {
-      if (!languageId) { void this.d.controller.lookup({ trigger: 'click' }); } // the lookup says the language is undetermined, with the choice
+    if (!this.scanner || !this.ready) return;
+    // the word is looked up in the language it was read in on this page (a Hebrew word on an Albanian page is Hebrew)
+    let token: ScanToken | undefined;
+    let languageId: string | undefined;
+    for (const lang of this.nodeLanguages.get(point.node as Text) ?? []) {
+      const t = this.scanner.tokenAt(point.node as Text, point.offset, lang);
+      if (t && wordInScript(t.surface, lang)) { token = t; languageId = lang; break; }
+    }
+    if (!token || !languageId) {
+      // nothing on the page is in one of the learner's languages: the lookup says the language is undetermined, with the choice
+      if (!this.languages.length) void this.d.controller.lookup({ trigger: 'click' });
       return;
     }
-    const token = this.scanner.tokenAt(point.node as Text, point.offset, languageId);
-    if (!token) return;
     let range: Range;
     try { range = root.createRange(); range.setStart(token.node, token.start); range.setEnd(token.node, token.end); } catch { return; }
     try { sel?.removeAllRanges(); sel?.addRange(range); } catch { return; }
     this.clicks++;
     this.d.controller.cancelPendingLookup();
-    const out = await this.d.controller.lookup({ trigger: 'click' });
+    const out = await this.d.controller.lookup({ trigger: 'click', languageOverride: languageId });
     if (out.status === 'shown' && this.speak) this.d.ui.pronounce();
   }
 }

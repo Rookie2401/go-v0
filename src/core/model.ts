@@ -18,10 +18,10 @@
  * Koine, Medieval and Modern Greek) are period varieties of it (core/variety.ts, kind 'period'), not separate codes: an
  * item id is shared across the periods and the period travels on the reading and the enrolment (`varietyId`).
  */
-export type LanguageCode = 'es' | 'sq' | 'th' | 'hi' | 'de' | 'nb' | 'nn' | 'he' | 'el' | 'la';
+export type LanguageCode = 'es' | 'sq' | 'th' | 'hi' | 'de' | 'nb' | 'nn' | 'he' | 'el' | 'la' | 'arc';
 import type { CurriculumMetadata } from '../course/curriculumPolicy';
 import type { TextAssist } from './assist';
-export const LANGUAGES: readonly LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de', 'nb', 'nn', 'he', 'el', 'la'] as const;
+export const LANGUAGES: readonly LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de', 'nb', 'nn', 'he', 'el', 'la', 'arc'] as const;
 
 export type Script = 'Latn' | 'Deva' | 'Thai' | 'Hebr' | 'Grek';
 
@@ -49,6 +49,8 @@ export interface Course {
   preferredLocales: string[]; // e.g. ["es-HN", "es-419", "es-MX"]
   /** Preferred Bible version id for this course (a Text with kind 'scripture'). */
   bibleVersionId?: string;
+  /** Genres used as primary reading input; absent preserves the normal story/dialogue/prose path. */
+  primaryReadingKinds?: TextKind[];
   /** Which variety of the language the learner aims to USE, and which he should only recognise (see core/variety.ts). */
   variety?: VarietyPolicy;
 }
@@ -332,13 +334,14 @@ export interface WordPart {
   role?: string;
   /**
    * What kind of part this is, for code that reasons about parts (the plain words stay in `role`):
+   *   'suffix' a source-segmented ending (including a pronominal or emphatic ending).
    *   'component' a word inside a compound (Leben in Lebensversicherung); 'head' the last component, which decides
    *   gender and meaning class (Versicherung); 'link' a connecting element that belongs to no component (the -s-);
    *   'contracted' a word written together with another (im = in + dem); 'clitic' an attached pronoun;
    *   'prefix' a separable prefix written on the verb (auf in aufstehen, aufgestanden); 'marker' an inserted marker
    *   (zu in anzufangen, ge in aufgestanden); 'stem' the rest of a word whose prefix or marker is named.
    */
-  kind?: 'component' | 'head' | 'link' | 'contracted' | 'clitic' | 'prefix' | 'marker' | 'stem';
+  kind?: 'component' | 'head' | 'link' | 'contracted' | 'clitic' | 'prefix' | 'marker' | 'stem' | 'suffix';
 }
 
 /**

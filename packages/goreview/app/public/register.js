@@ -10,6 +10,21 @@
 
   var reloading = false;
   var applying = false;
+  // On a first visit the page starts before any worker controls it, so the language it loaded (assets/lang-<id>-<hash>.js) never passed
+  // through the worker and would be missing on the next start without a connection. Once a worker has taken the page, those files are asked
+  // for again (the browser's own cache answers), and the worker keeps them. A page controlled from its start needs none of this.
+  var startedUncontrolled = !navigator.serviceWorker.controller;
+
+  function keepLanguages() {
+    try {
+      if (!navigator.serviceWorker.controller || !window.performance || !performance.getEntriesByType) return;
+      var seen = performance.getEntriesByType('resource');
+      for (var i = 0; i < seen.length; i++) {
+        var name = seen[i].name;
+        if (/\/assets\/lang-[a-z]+-[^/?#]+\.js$/.test(name) && name.indexOf(location.origin + '/') === 0) fetch(name).catch(function () { /* next time */ });
+      }
+    } catch (e) { /* a convenience */ }
+  }
 
   window.__goreviewApplyUpdate = function () {
     var u = window.__goreviewUpdate;
@@ -42,6 +57,10 @@
   });
 
   navigator.serviceWorker.addEventListener('controllerchange', function () {
+    if (startedUncontrolled && !applying) {
+      keepLanguages();
+      setTimeout(keepLanguages, 15000); // a language still loading when the worker took the page
+    }
     if (!applying || reloading) return;
     reloading = true;
     location.reload();

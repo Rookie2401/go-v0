@@ -9,6 +9,7 @@
  * The service address must be https, or http on a loopback host (a local development service). When the extension ships one
  * (app/config.json, `shippedBaseUrl`) that is the address in use; what golearn:service holds is never used in its place (2026-10-28).
  */
+import { CANNOT_SIGN_IN, SIGN_IN_TIMEOUT_MS, signInOnce, UNREACHABLE_SIGN_IN } from '../signin';
 import { createRepositoryApi, type ApiResult, type MeResponse, type RepositoryApi } from '../../../repository-service/src/api';
 import type { Enrolment, LearningGoal } from '../../../repository-contract/src';
 import type { StorageArea } from '../platform';
@@ -177,6 +178,9 @@ export function createSessionManager(opts: SessionManagerOptions) {
   }
 
   const apiFor = (baseUrl: string, token?: string): RepositoryApi => createRepositoryApi({ baseUrl, fetch: opts.fetch, token });
+  /** Signing in or creating an account may meet a service that is waking up or redeploying: 45 s (the background's fetch honours timeoutMs), not the usual 15. */
+  const signInFetch: typeof fetch = (input, init) => opts.fetch(input, { ...(init ?? {}), timeoutMs: SIGN_IN_TIMEOUT_MS } as RequestInit);
+  const signInApi = (baseUrl: string): RepositoryApi => createRepositoryApi({ baseUrl, fetch: signInFetch });
 
   async function status(): Promise<SessionStatus> {
     const [svc, s, pending] = await Promise.all([readService(), readSession(), area.get(PENDING_REVOKE_KEY)]);
@@ -218,30 +222,31 @@ export function createSessionManager(opts: SessionManagerOptions) {
 
   async function connect(input: ConnectInput): Promise<SessionResult> {
     const base = validateBaseUrl(input.baseUrl);
-    if (!base.ok) return base;
+    // a learner never sets where GoLearn connects (the owner, 2026-11-12): an unusable built-in address is said without the address
+    if (!base.ok) return fail(base.error, CANNOT_SIGN_IN);
     const email = typeof input.email === 'string' ? input.email.trim() : '';
     if (!email || typeof input.password !== 'string' || !input.password) return fail('invalid-input', 'Enter your email and password.');
-    const api = apiFor(base.url);
+    const api = signInApi(base.url);
     let r: ApiResult<{ token: string; learnerId: string; expiresAt: string }>;
-    try { r = await api.createSession({ email, password: input.password, deviceId: input.deviceId, platform: 'chrome-extension' }); }
-    catch { return fail('unreachable', 'GoLearn could not reach the service. Check the address and your connection.'); }
+    try { r = await signInOnce(() => api.createSession({ email, password: input.password, deviceId: input.deviceId, platform: 'chrome-extension' })); }
+    catch { return fail('unreachable', UNREACHABLE_SIGN_IN); }
     if (!r.ok) return fromApi(r);
     return signedIn(base.url, api, r.data.token, r.data.learnerId, r.data.expiresAt, email.toLowerCase());
   }
 
   async function createAccount(input: CreateAccountInput): Promise<SessionResult> {
     const base = validateBaseUrl(input.baseUrl);
-    if (!base.ok) return base;
+    if (!base.ok) return fail(base.error, CANNOT_SIGN_IN);
     const email = typeof input.email === 'string' ? input.email.trim() : '';
     if (!email || typeof input.password !== 'string' || !input.password) return fail('invalid-input', 'Enter an email and a password.');
-    const api = apiFor(base.url);
+    const api = signInApi(base.url);
     let verificationSent: boolean | undefined;
     try {
       const made = await api.createAccount({ email, password: input.password, ...(input.displayName ? { displayName: input.displayName } : {}) });
       if (!made.ok) return fromApi(made);
       const said = (made.data as { verificationSent?: unknown } | null)?.verificationSent;
       if (typeof said === 'boolean') verificationSent = said;
-    } catch { return fail('unreachable', 'GoLearn could not reach the service. Check the address and your connection.'); }
+    } catch { return fail('unreachable', UNREACHABLE_SIGN_IN); }
     const signedIn = await connect(input);
     return signedIn.ok && verificationSent !== undefined ? { ...signedIn, verificationSent } : signedIn;
   }
@@ -341,7 +346,21 @@ export function createSessionManager(opts: SessionManagerOptions) {
     return updateEnrolment(found, enrolmentRefs(r.data.enrolments));
   }
 
-  return { status, getService: readService, setService, current: readSession, authenticated, connect, createAccount, disconnect, retryRevocation, refresh, refreshEnrolments, enrol, selectEnrolment, isExpired };
+  /**
+   * The account's open enrolment in `languageId`, made the selected one from the list kept on the session: no request, so a language switch never
+   * waits on the service (2026-11-08: signed in, a slow or unreachable service held the popup on "Switching to …" for up to 40 s). Undefined when the
+   * kept list has none in that language; the caller then asks the service in the background (`selectEnrolment`).
+   */
+  async function selectKnownLanguage(languageId: string): Promise<SessionResult | undefined> {
+    const s = await readSession();
+    if (!s || isExpired(s)) return undefined;
+    if (s.languageId === languageId && s.enrolmentId) return { ok: true, status: await status() };
+    const ref = (s.enrolments ?? []).find((e) => e.languageId === languageId);
+    if (!ref) return undefined;
+    return updateEnrolment({ enrolmentId: ref.enrolmentId, languageId: ref.languageId } as Enrolment);
+  }
+
+  return { status, getService: readService, setService, current: readSession, authenticated, connect, createAccount, disconnect, retryRevocation, refresh, refreshEnrolments, enrol, selectEnrolment, selectKnownLanguage, isExpired };
 }
 
 export type SessionManager = ReturnType<typeof createSessionManager>;

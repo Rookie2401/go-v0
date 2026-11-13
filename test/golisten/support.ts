@@ -83,6 +83,7 @@ const dot = (surface = '.') => ({ surface, isWord: false });
 
 /** Three short story sentences per language (explicit tokens; Thai has no spaces). */
 export const STORY: Record<LanguageCode, FixtureSentence[]> = {
+  arc: [{ tokens: ['מַלְכָּא', 'לְעָלְמִין', 'חֱיִי'].map(w).concat(dot('׃')) }],
   es: [
     { tokens: ['Yo', 'creo', 'en', 'Dios'].map(w).concat(dot()) },
     { tokens: ['Dios', 'me', 'perdonó'].map(w).concat(dot()) },
@@ -137,6 +138,7 @@ export const STORY: Record<LanguageCode, FixtureSentence[]> = {
 
 /** Scripture: verse numbers are metadata (verseRefs), never in the sentence text. */
 export const SCRIPTURE: Record<LanguageCode, FixtureSentence[]> = {
+  arc: [{ tokens: ['מַלְכָּא', 'לְעָלְמִין', 'חֱיִי'].map(w).concat(dot('׃')), verseRefs: ['DAN.2.4'] }],
   es: [
     { tokens: ['Porque', 'de', 'tal', 'manera', 'amó', 'Dios', 'al', 'mundo'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
     { tokens: ['Si', 'confesamos', 'nuestros', 'pecados'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },

@@ -865,7 +865,7 @@ class Controller {
     const until = (days: number): string => new Date(this.ctx.deps.now().getTime() + days * 24 * 3600_000).toISOString();
     const item = pr.planned.item;
     const histBox = h('div', { id: 'item-history', class: 'item-history' });
-    return h('details', { id: 'item-tools', class: 'item-tools' }, h('summary', {}, 'This item'),
+    return h('details', { id: 'item-tools', class: 'item-tools' }, h('summary', {}, 'This item'), h('div', { class: 'item-tools-panel' },
       this.isFlashcard() && pr.planned.overlap ? h('p', { class: 'muted' },
         presentationReasonLabel(pr.planned.presentationReason, pr.planned.overlap)) : null,
       concealed ? null : h('p', { class: 'muted' }, h('span', langProps(this.tag), unitLabel(item.unitId)), ` · ${DIMENSION_LABEL[item.dimension]}`),
@@ -876,7 +876,7 @@ class Controller {
         button('Suspend', () => void this.control({ kind: 'suspend' }), { id: 'suspend', class: 'btn small' }),
         button('Dismiss', () => void this.control({ kind: 'dismiss' }), { id: 'dismiss', class: 'btn small' }),
         concealed ? null : button('Show history', () => { void fillItemHistory(this.ctx, histBox, item.itemId, this.tag); }, { id: 'show-history', class: 'btn small' })),
-      histBox);
+      histBox));
   }
 
   /** Target-language words an interface sentence about this item may quote: its label, and the accepted answers when those are in the target language. */

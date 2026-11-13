@@ -877,18 +877,19 @@ class Controller {
       ? h('div', { id: 'item-parsing', class: 'item-parsing' })
       : h('p', { id: 'item-parsing-later', class: 'muted' }, 'The parsing and the table of forms are shown after you answer.');
     const tools = h('details', { id: 'item-tools', class: 'item-tools' }, h('summary', {}, 'This item'),
-      this.isFlashcard() && pr.planned.overlap ? h('p', { class: 'muted' },
-        presentationReasonLabel(pr.planned.presentationReason, pr.planned.overlap)) : null,
-      concealed ? null : h('p', { class: 'muted' }, h('span', langProps(this.tag), unitLabel(item.unitId)), ` · ${DIMENSION_LABEL[item.dimension]}`),
-      !concealed && pr.planned.why.length ? h('ul', { class: 'reasons' }, ...pr.planned.why.map((w) => h('li', {}, ...embedTarget(w, this.targetWords(pr), this.tag)))) : null,
-      parsingBox,
-      h('div', { class: 'row' },
-        button('Snooze a day', () => void this.control({ kind: 'snooze', until: until(1) }), { id: 'snooze-day', class: 'btn small' }),
-        button('Snooze a week', () => void this.control({ kind: 'snooze', until: until(7) }), { id: 'snooze-week', class: 'btn small' }),
-        button('Suspend', () => void this.control({ kind: 'suspend' }), { id: 'suspend', class: 'btn small' }),
-        button('Dismiss', () => void this.control({ kind: 'dismiss' }), { id: 'dismiss', class: 'btn small' }),
-        concealed ? null : button('Show history', () => { void fillItemHistory(this.ctx, histBox, item.itemId, this.tag); }, { id: 'show-history', class: 'btn small' })),
-      histBox);
+      h('div', { class: 'item-tools-panel' },
+        this.isFlashcard() && pr.planned.overlap ? h('p', { class: 'muted' },
+          presentationReasonLabel(pr.planned.presentationReason, pr.planned.overlap)) : null,
+        concealed ? null : h('p', { class: 'muted' }, h('span', langProps(this.tag), unitLabel(item.unitId)), ` · ${DIMENSION_LABEL[item.dimension]}`),
+        !concealed && pr.planned.why.length ? h('ul', { class: 'reasons' }, ...pr.planned.why.map((w) => h('li', {}, ...embedTarget(w, this.targetWords(pr), this.tag)))) : null,
+        parsingBox,
+        h('div', { class: 'row' },
+          button('Snooze a day', () => void this.control({ kind: 'snooze', until: until(1) }), { id: 'snooze-day', class: 'btn small' }),
+          button('Snooze a week', () => void this.control({ kind: 'snooze', until: until(7) }), { id: 'snooze-week', class: 'btn small' }),
+          button('Suspend', () => void this.control({ kind: 'suspend' }), { id: 'suspend', class: 'btn small' }),
+          button('Dismiss', () => void this.control({ kind: 'dismiss' }), { id: 'dismiss', class: 'btn small' }),
+          concealed ? null : button('Show history', () => { void fillItemHistory(this.ctx, histBox, item.itemId, this.tag); }, { id: 'show-history', class: 'btn small' })),
+        histBox));
     if (parsingBox && parsingNow) {
       const request = { unitId: item.unitId, languageId: this.run.ctx.languageId, ...(this.run.ctx.varietyId ? { varietyId: this.run.ctx.varietyId } : {}), tag: this.tag, afterAnswer };
       tools.addEventListener('toggle', () => { if ((tools as HTMLDetailsElement).open) void fillItemParsing(this.ctx, parsingBox, request); });

@@ -99,8 +99,10 @@ describe('Thai analysis: names and words of the Scripture', () => {
     expect(c.notes).toMatchObject({ repeated: 'ๆ' });
     expect(c.notes?.translit).toBeUndefined(); // the stem's romanization is not this word's
     expect(c.confidence).toBeLessThanOrEqual(0.6);
-    // a stem the list does not have: nothing is invented
-    expect(thAdapter.analyze(thAdapter.tokenize('นิ่งๆ'))[0].candidates).toEqual([]);
+    // a stem the course list does not have is cut from its ๆ by the tokenizer; the stem then takes the dictionary's reading
+    const toks = thAdapter.tokenize('นิ่งๆ');
+    expect(toks.map((t) => t.surface)).toEqual(['นิ่ง', 'ๆ']);
+    expect(thAdapter.analyze(toks)[0].candidates[0]).toMatchObject({ lemma: 'นิ่ง', origin: 'dictionary' });
   });
 });
 

@@ -2,7 +2,8 @@
 /**
  * German, Hindi, Thai and Norwegian (Bokmål and Nynorsk) go through the same manifest, installer, runtime and parser as Spanish did,
  * at an honest "experimental" level: installable, seed-only, unreviewed. These tests prove the wiring and keep the honesty notes.
- * Norwegian has no dictionary in the repository, so its block is the same wiring without the dictionary checks.
+ * Norwegian has a dictionary per written standard since 2026-11-13 (kaikki's Bokmål and Nynorsk extracts, kept apart); its block also checks that neither
+ * standard is credited for the other.
  */
 import { describe, expect, it } from 'vitest';
 import { deAdapter } from '../../src/adapters/de';
@@ -38,7 +39,7 @@ describe.each(Object.keys(CASES))('the experimental %s pack', (lang) => {
     expect(m().status).toBe('installable');
     expect(m().level).toBe('experimental');
     expect(levelOf(m())).toBe('experimental');
-    expect(LEVEL_LABEL[levelOf(m())]).toBe('experimental, seed-only lemmatisation, unreviewed');
+    expect(LEVEL_LABEL[levelOf(m())]).toBe('experimental, unreviewed');
     expect(installablePacks().map((p) => p.packId)).toContain(`pack:${lang}`);
   });
 
@@ -144,13 +145,14 @@ describe.each(Object.keys(CASES))('the experimental %s pack', (lang) => {
   });
 });
 
-const NORWEGIAN: Record<string, { adapter: LanguageAdapter; cases: ValidationCase[]; sentence: string }> = {
-  nb: { adapter: nbAdapter, cases: NB_VALIDATION, sentence: 'Jeg leser boken hver dag.' },
-  nn: { adapter: nnAdapter, cases: NN_VALIDATION, sentence: 'Eg les boka kvar dag.' },
+const NORWEGIAN: Record<string, { adapter: LanguageAdapter; cases: ValidationCase[]; sentence: string; dictId: string; entries: number; frequency: boolean; missedBefore: [string, RegExp] }> = {
+  // missedBefore: a word the language audit of 2026-11-13 found with no meaning on the card (Wikipedia, Brød / Brød and Vann / Vatn)
+  nb: { adapter: nbAdapter, cases: NB_VALIDATION, sentence: 'Jeg leser boken hver dag.', dictId: 'kaikki-nb@2026-10-30', entries: 79874, frequency: true, missedBefore: ['molekyl', /molecule/] },
+  nn: { adapter: nnAdapter, cases: NN_VALIDATION, sentence: 'Eg les boka kvar dag.', dictId: 'kaikki-nn@2026-10-30', entries: 61827, frequency: false, missedBefore: ['mjøl', /flour/] },
 };
 
-describe.each(Object.keys(NORWEGIAN))('the experimental %s pack (no dictionary)', (lang) => {
-  const { adapter, cases } = NORWEGIAN[lang];
+describe.each(Object.keys(NORWEGIAN))('the experimental %s pack (a dictionary of its own standard)', (lang) => {
+  const { adapter, cases, dictId, entries, frequency, missedBefore } = NORWEGIAN[lang];
   const m = () => packFor(lang)!;
   const standard = lang === 'nb' ? 'Bokmål' : 'Nynorsk';
 
@@ -158,19 +160,25 @@ describe.each(Object.keys(NORWEGIAN))('the experimental %s pack (no dictionary)'
     expect(validateManifest(m())).toEqual([]);
     expect(m().status).toBe('installable');
     expect(m().level).toBe('experimental');
-    expect(LEVEL_LABEL[levelOf(m())]).toBe('experimental, seed-only lemmatisation, unreviewed');
+    expect(LEVEL_LABEL[levelOf(m())]).toBe('experimental, unreviewed');
     expect(installablePacks().map((p) => p.packId)).toContain(`pack:${lang}`);
     expect(m().varieties.every((v) => v.writtenStandard === lang)).toBe(true);
     expect(m().varieties[0].label).toContain(standard);
   });
 
-  it('names the real adapter, its version and script, and declares no dictionary (none is built for Norwegian)', () => {
+  it('names the real adapter, its version and script; the dictionary is its own standard’s, the one on disk', async () => {
     expect(m().version).toBe(String(adapter.version));
     expect(m().analyzer.id).toBe(`adapter-${lang}@${adapter.version}`);
     expect(m().scriptId).toBe(adapter.script);
-    expect(m().lexical.dictionary).toBeUndefined();
-    expect(m().rights.licences.some((l) => /CC BY-SA/.test(l.licence))).toBe(false);
-    expect(m().rights.provenance.join('\n')).toMatch(/no dictionary for this language in the repository/);
+    const d = m().lexical.dictionary!;
+    expect(d).toMatchObject({ id: dictId, entries, baseUrl: `dict/${lang}/`, frequency });
+    const onDisk = JSON.parse(await (await diskFetch()(`${BASE}dict/${lang}/manifest.json`)).text());
+    expect(d).toMatchObject({ id: onDisk.id, entries: onDisk.entries });
+    expect(onDisk).toMatchObject({ lang, hasFrequency: frequency, attribution: KAIKKI_ATTRIBUTION });
+    // built from the extract of this standard only: kaikki's "Norwegian Bokmål" or "Norwegian Nynorsk", never the other, never the mixed "Norwegian" one
+    expect(onDisk.source.file).toBe(lang === 'nb' ? 'kaikki.org-dictionary-NorwegianBokmål.jsonl' : 'kaikki.org-dictionary-NorwegianNynorsk.jsonl');
+    expect(onDisk.source.url).toMatch(lang === 'nb' ? /Norwegian%20Bokm%C3%A5l/ : /Norwegian%20Nynorsk/);
+    expect(m().rights.licences.some((l) => /CC BY-SA 4\.0/.test(l.licence) && l.notice === KAIKKI_ATTRIBUTION)).toBe(true);
   });
 
   it('does not claim production readiness: machine-drafted everywhere, no recordings, the thin parts stated, a written standard that never credits the other', () => {
@@ -188,7 +196,7 @@ describe.each(Object.keys(NORWEGIAN))('the experimental %s pack (no dictionary)'
     const notes = createPackRuntime(m(), { fetch: diskFetch(), baseUrl: BASE }).coverageNotes().join('\n');
     expect(notes).toMatch(/lemmatization seed-only/);
     expect(notes).toMatch(/no native speaker has checked/);
-    expect(notes).toMatch(/No dictionary is declared for this pack/);
+    expect(notes).toContain(`Dictionary ${dictId}: ${entries.toLocaleString('en')} entries`);
     expect(notes).not.toMatch(/planned and cannot be installed/);
   });
 
@@ -241,21 +249,32 @@ describe.each(Object.keys(NORWEGIAN))('the experimental %s pack (no dictionary)'
     expect(a.adapter).toBe(adapter);
   });
 
-  it('installs without fetching anything: the dictionary checks are recorded as not declared, every case runs, the record is read back', async () => {
+  it('installs from the real dictionary files on disk: description, one real shard, every case; the record is read back', async () => {
     const storage = memoryStorage();
-    const f = diskFetch();
-    const r = await installPack(m(), { fetch: f, baseUrl: BASE, storage, now: () => '2026-10-09T08:00:00.000Z' });
+    const progress: string[] = [];
+    const r = await installPack(m(), { fetch: diskFetch(), baseUrl: BASE, storage, now: () => '2026-10-09T08:00:00.000Z', onProgress: (p) => progress.push(p.step) });
     if (!r.ok) throw new Error(`${r.reason}: ${r.detail}`);
-    expect(f.calls).toEqual([]);
     expect(r).toMatchObject({ ok: true, validationFailures: 0 });
-    expect(r.verified).toMatchObject({ dictionaryManifest: false, sampleShard: false, dictionary: 'none-declared' });
+    expect(r.verified.dictionaryManifest && r.verified.sampleShard).toBe(true);
     expect(r.verified.validation).toHaveLength(14);
+    expect(progress).toEqual(['check', 'dictionary-manifest', 'sample-shard', 'validation', 'record']);
     expect(await verifyInstalled(m(), storage)).toMatchObject({ installed: true, current: true, validationFailures: 0 });
   });
 
-  it('a gloss is honestly absent: the runtime has no dictionary to ask', async () => {
+  it('refuses the other standard’s dictionary: a Bokmål pack never installs over the Nynorsk files, nor the reverse', async () => {
+    const otherLang = lang === 'nb' ? 'nn' : 'nb';
+    const disk = diskFetch();
+    const other = (async (input: RequestInfo | URL) => {
+      const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
+      return disk(url.replace(`dict/${lang}/`, `dict/${otherLang}/`));
+    }) as typeof fetch;
+    expect(await installPack(m(), { fetch: other, baseUrl: BASE, storage: memoryStorage() })).toMatchObject({ ok: false, reason: 'dictionary-mismatch' });
+  });
+
+  it('a word the audit found with no meaning now has one, from this standard’s dictionary', async () => {
     const rt = createPackRuntime(m(), { fetch: diskFetch(), baseUrl: BASE });
-    expect(await rt.gloss(NORWEGIAN[lang].cases[0].expect.lemma!)).toBeUndefined();
+    const [word, meaning] = missedBefore;
+    expect(JSON.stringify(await rt.gloss(word))).toMatch(meaning);
   });
 });
 

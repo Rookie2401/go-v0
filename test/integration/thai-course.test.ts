@@ -256,7 +256,8 @@ describe('provenance: every analysis says where it came from', () => {
 
   it('a word only the dictionary knows is dictionary-derived, below certainty; its reading names its source', async () => {
     const adapter = app.adapters.get('th');
-    const text = 'ฉันเห็นกิ้งก่าบนต้นไม้';
+    // a word the analyser does not know at all (กิ้งก่า reads from the bundled dictionary headwords since 2026-11-13)
+    const text = 'ฉันเห็นอุตุนิยมวิทยาบนต้นไม้';
     const tokens = adapter.tokenize(text);
     const analysed = adapter.analyze(tokens);
     const unknown = tokens.filter((t, i) => t.isWord && analysed[i].candidates.length === 0);

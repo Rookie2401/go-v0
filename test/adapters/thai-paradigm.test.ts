@@ -144,10 +144,12 @@ describe('thSegmentations: the tokenizer\'s cut and the plausible alternatives',
       for (const a of r.alternatives) for (const w of a.words) expect(w.known, `${text}: ${w.text}`).toBe(true);
     }
   });
-  it('words carry the readings of analyze; a word the list lacks is marked unknown with no reading', () => {
+  it('words carry the readings of analyze; a word only the dictionary has carries the dictionary reading', () => {
     const r = thSegmentations('ตากลม');
     expect(r.chosen.words[0].readings[0]).toMatchObject({ lemma: 'ตา', pos: 'NOUN' });
-    expect(r.chosen.words[1]).toMatchObject({ text: 'กลม', known: false, readings: [] });
+    // known = the course list (or the caller's isWord); the reading itself now comes from the dictionary headwords
+    expect(r.chosen.words[1]).toMatchObject({ text: 'กลม', known: false });
+    expect(r.chosen.words[1].readings[0]).toMatchObject({ lemma: 'กลม' });
     const whole = r.alternatives.find((a) => cut(a) === 'ตากลม')!;
     expect(whole.words[0].readings[0]).toMatchObject({ lemma: 'ตากลม', pos: 'VERB' });
   });

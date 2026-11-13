@@ -84,9 +84,16 @@ describe('Thai adapter', () => {
     expect(th.support.phraseDetection).toBe('seed-only');
   });
 
-  it('unknown words give empty candidates', () => {
-    const r = run('th', 'ภูมิศาสตร์');
+  it('a word neither list has gives empty candidates', () => {
+    const r = run('th', 'อุตุนิยมวิทยา');
     r.analyses.filter((a) => a.token.isWord).forEach((a) => expect(a.candidates).toEqual([]));
+  });
+
+  it('a word only the dictionary has reads as its own lemma with the part of speech the dictionary gives, below a course-list word', () => {
+    const c = run('th', 'ภูมิศาสตร์').analyses[0].candidates;
+    expect(c[0]).toMatchObject({ lemma: 'ภูมิศาสตร์', pos: 'NOUN', origin: 'dictionary', sourceId: expect.stringMatching(/^adapter-th@.+:dictionary$/) });
+    expect(c[0].gloss).toBeUndefined();
+    expect(c[0].confidence).toBeLessThan(0.8);
   });
 
   it('detects the target phrases', () => {

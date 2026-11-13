@@ -34,7 +34,7 @@ describe('readerSupport', () => {
   it('the setup page’s words: installable, and experimental (German, Hindi, Thai, Norwegian)', () => {
     expect(readerSupport('sq')!.levelLabel).toBe('installable');
     expect(readerSupport('es')!.levelLabel).toBe('installable');
-    for (const l of ['de', 'hi', 'th', 'nb', 'nn', 'la']) expect(readerSupport(l)!.levelLabel, l).toBe('experimental, seed-only lemmatisation, unreviewed');
+    for (const l of ['de', 'hi', 'th', 'nb', 'nn', 'la']) expect(readerSupport(l)!.levelLabel, l).toBe('experimental, unreviewed');
   });
 
   it('what a card offers is what the report states, and never syntax roles', () => {
@@ -49,10 +49,13 @@ describe('readerSupport', () => {
     expect(readerSupport('sq')!.offers.productionChecks).toBe(true);
   });
 
-  it('the plain lines are honest: experimental, seed-only lemmas, limited word boundaries (Thai), no syntactic roles, no checking of writing', () => {
+  it('the plain lines are honest: experimental, a small word list only where lemmas really come from one (Norwegian), limited word boundaries (Thai), no syntactic roles, no checking of writing', () => {
     const th = readerSupport('th')!.lines.join('\n');
     expect(th).toMatch(/Experimental: nothing in this pack has been reviewed by a native speaker/);
-    expect(th).toMatch(/Lemmas come from a small word list/);
+    // Thai, German and Latin have a dictionary's form index behind their lemmas (the capability report, 2026-11-13); Norwegian has none
+    expect(th).not.toMatch(/Lemmas come from a small word list/);
+    for (const l of ['de', 'la', 'he']) expect(readerSupport(l)!.lines.join('\n'), l).not.toMatch(/Lemmas come from a small word list/);
+    for (const l of ['nb', 'nn']) expect(readerSupport(l)!.lines.join('\n'), l).toMatch(/Lemmas come from a small word list/);
     expect(th).toMatch(/Word boundaries are limited/);
     expect(th).toMatch(/No syntactic roles/);
     expect(th).toMatch(/Nothing you write is checked/);

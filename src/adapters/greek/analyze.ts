@@ -13,6 +13,8 @@
  * every word (none removed); every reading says which period the sentence was read in (`notes.period`, `notes.periodBasis`).
  */
 import type { AnalysisCandidate, AnalyzeOptions, AnalyzedToken, PartOfSpeech, RawToken } from '../../core';
+import { elAbbreviation } from './abbreviations';
+import { seContraction, seParts } from './contractions';
 import { type ElIndexHit, lookupGreekForm } from './index-store';
 import { decodeMorphGnt } from './morphgnt';
 import { elMorphFromTags } from './tags';
@@ -82,6 +84,7 @@ const ELISIONS: Readonly<Record<string, string>> = {
   'εἴτ': 'εἴτε', 'ὥστ': 'ὥστε', 'ὅτ': 'ὅτε', 'ποτ': 'ποτε', 'τότ': 'τότε', 'ἔνθ': 'ἔνθα', 'ἔπειτ': 'ἔπειτα', 'τοῦτ': 'τοῦτο', 'ταῦτ': 'ταῦτα', 'ἐπ': 'ἐπί', 'ἀπ': 'ἀπό',
   'ὑπ': 'ὑπό', 'κατ': 'κατά', 'μετ': 'μετά', 'παρ': 'παρά', 'δι': 'διά', 'ἀν': 'ἀνά', 'ἀντ': 'ἀντί', 'ἀμφ': 'ἀμφί', 'ἐν': 'ἐνί', 'αὐτ': 'αὐτά', 'πάντ': 'πάντα',
   'οὐκέτ': 'οὐκέτι', 'ἔτ': 'ἔτι', 'ἀλλ᾽': 'ἀλλά', 'ὑπ᾽': 'ὑπό', 'μ': 'με', 'σ': 'σε', 'ἔμ': 'ἔμε', 'τίν': 'τίνα', 'ἵν': 'ἵνα', 'ὅσ': 'ὅσα', 'πολλ': 'πολλά',
+  'γι': 'για', // Modern: γι' αυτό
 };
 
 /** Context-free readings of one token, best first. */
@@ -108,8 +111,9 @@ export function elCandidates(token: RawToken): AnalysisCandidate[] {
     });
     return out.sort((a, b) => b.confidence - a.confidence);
   }
+  const contracted = contractionCandidates(key);
   const all = lookupGreekForm(key);
-  if (!all.length) return ruleCandidates(token);
+  if (!all.length) return contracted.length ? contracted : ruleCandidates(token);
   // a table's citation-form row adds nothing when the same lemma has a real row for this form
   const withRows = new Set(all.filter((h) => h.index.codes === 'kaikki-tags' && h.row[1] !== 'citation-form').map((h) => h.row[0]));
   const hits = all.filter((h) => !(h.index.codes === 'kaikki-tags' && h.row[1] === 'citation-form' && withRows.has(h.row[0])));
@@ -124,10 +128,91 @@ export function elCandidates(token: RawToken): AnalysisCandidate[] {
     seen.add(k);
     out.push(c);
   }
-  return out;
+  const ordered = modernOrder(key, out);
+  return contracted.length ? [...contracted, ...ordered] : ordered;
+}
+
+/**
+ * Wiktionary hangs the whole table of the Modern personal pronouns on the entry τα, so every pronoun form (με, σε, μας, αυτό, αυτής …) arrives
+ * first as "a form of τα". That is the table's address, not the word's headword.
+ */
+const PRONOUN_TABLE_HEAD = 'τα|PRON';
+const FUNCTION_POS = new Set<string>(['ADP', 'CONJ', 'SCONJ', 'PART']);
+
+/**
+ * The order of the Modern readings of one written form, where the index's own order misleads (2026-11-13: the audit's 294 hand-read words had
+ * σε, με, μας, αυτό and αυτής read first as forms of τα):
+ *  - a reading that is only a row of the personal-pronoun table goes behind the readings with a headword of their own (αυτό is αυτός; μας is μας);
+ *  - when the form is itself a headword both as a preposition, conjunction or particle and as a pronoun (σε "in" and σε "you", με "with" and
+ *    με "me"), the preposition goes first: it is by far the commoner word, and with no parser the commoner reading is the one to show first.
+ * Nothing is removed, no confidence is changed, and readings of other periods keep their places among themselves.
+ */
+function modernOrder(key: string, out: AnalysisCandidate[]): AnalysisCandidate[] {
+  const isModern = (c: AnalysisCandidate): boolean => c.sourceId === EL_SOURCE_IDS.kaikkiEl;
+  if (!out.some(isModern)) return out;
+  const ownHeadword = (c: AnalysisCandidate): boolean => elKeyOf(c.lemma ?? '') === key;
+  // both a function word and a pronoun under this very spelling (σε, με): only then is there an order to settle between headwords
+  const both = out.some((c) => isModern(c) && ownHeadword(c) && FUNCTION_POS.has(c.pos ?? '')) && out.some((c) => isModern(c) && ownHeadword(c) && c.pos === 'PRON');
+  const rank = (c: AnalysisCandidate): number => {
+    if (!isModern(c)) return 0;
+    if (c.notes?.lemmaId === PRONOUN_TABLE_HEAD && !ownHeadword(c)) return 2;
+    if (both && ownHeadword(c) && FUNCTION_POS.has(c.pos ?? '')) return 0;
+    return 1;
+  };
+  const modern = out.filter(isModern).map((c, i) => ({ c, i })).sort((a, b) => rank(a.c) - rank(b.c) || a.i - b.i).map((x) => x.c);
+  let k = 0;
+  return out.map((c) => (isModern(c) ? modern[k++] : c));
 }
 
 const round = (n: number): number => Math.round(n * 100) / 100;
+
+/** The meaning shown for σε when no installed index gives its own. */
+const SE_GLOSS = 'in, at, to, on';
+
+/**
+ * Modern Greek σε + the article written as one word (contractions.ts): the preposition σε, with the article as a part of the word. The meaning of
+ * σε is the Modern index's own when it is installed. By rule, and said so; Modern only.
+ */
+function contractionCandidates(key: string): AnalysisCandidate[] {
+  const articles = seContraction(key);
+  if (!articles) return [];
+  const se = lookupGreekForm('σε').map((h) => fromHit(h, 1)).find((c) => c?.pos === 'ADP' && c.varieties?.includes('el-mod') && c.notes?.accents !== 'inferred');
+  return articles.map((a, k) => ({
+    lemma: 'σε', pos: 'ADP' as PartOfSpeech, morph: {}, gloss: `${se?.gloss ?? SE_GLOSS} + the`, parts: seParts(key, a), varieties: ['el-mod'],
+    confidence: k === 0 ? 0.9 : 0.6, origin: 'rule' as const, sourceId: EL_SOURCE_IDS.rules,
+    notes: { rule: `contraction: σε + ${a.article} (the preposition σε written as one word with the article)`, source: 'rule', contraction: `σε + ${a.article}`, ...(a.note ? { reading: a.note } : {}) },
+  }));
+}
+
+/**
+ * A Modern Greek abbreviation (abbreviations.ts): the reading names the words it stands for. By rule, from a closed list. `dotFollows` is whether
+ * a full stop comes straight after the token: some abbreviations are one only then (αι. century).
+ */
+function abbreviationCandidates(token: RawToken, dotFollows: boolean): AnalysisCandidate[] {
+  const a = elAbbreviation(token.surface, token.normalized, dotFollows);
+  if (!a) return [];
+  return [{
+    lemma: a.written, pos: a.pos as PartOfSpeech, morph: {}, gloss: `${a.gloss} (short for ${a.expansion})`, varieties: ['el-mod'], confidence: 0.85,
+    origin: 'rule', sourceId: EL_SOURCE_IDS.rules, notes: { rule: `abbreviation: ${a.written} = ${a.expansion}`, source: 'rule', abbreviation: a.expansion },
+  }];
+}
+
+/**
+ * The context-free readings of token `i`, with the two things only its neighbour can say: letters followed by a keraia the tokenizer split off
+ * (α ΄) are a numeral first, and a token followed by a full stop may be an abbreviation (αι. , δηλ.).
+ */
+export function elTokenCandidates(tokens: RawToken[], i: number): AnalysisCandidate[] {
+  const t = tokens[i];
+  if (!t.isWord) return [];
+  const next = tokens[i + 1];
+  const adjacent = !!next && !next.isWord && next.start === t.end;
+  if (adjacent && /^[ʹ΄´′']$/u.test(next.surface) && /^[α-ωϛϝϙϟϡ]{1,4}$/u.test(t.normalized)) {
+    const v = milesianValue(t.normalized);
+    if (v !== null) return [numeralCandidate(t.normalized, v, 'the keraia after the letters marks them as a number'), ...elCandidates(t)];
+  }
+  const abbreviation = abbreviationCandidates(t, adjacent && next.surface.startsWith('.'));
+  return abbreviation.length ? [...abbreviation, ...elCandidates(t)] : elCandidates(t);
+}
 const numeralCandidate = (letters: string, value: number, why: string): AnalysisCandidate => ({
   lemma: letters, pos: 'NUM', morph: { NumType: 'Card' }, gloss: String(value), confidence: 0.8, varieties: [...PERIODS],
   notes: { rule: `${why} (Milesian numeral: ${value})`, source: 'rule' }, origin: 'rule', sourceId: EL_SOURCE_IDS.rules,
@@ -174,18 +259,25 @@ export function resetElPeriodMemory(): void { lastPeriod = undefined; }
 
 export function sentencePeriod(tokens: RawToken[], base: AnalysisCandidate[][], opts?: AnalyzeOptions): { period: ElPeriod; basis: string } {
   const r = decidePeriod(tokens, base, opts);
-  if (tokens.some((t) => t.isWord && isPolytonic(t.surface)) || r.basis.startsWith('monotonic')) lastPeriod = r.period;
+  if (r.basis.startsWith('monotonic') || tokens.some((t) => t.isWord && isPolytonic(t.surface))) lastPeriod = r.period;
   return r;
 }
 
 function decidePeriod(tokens: RawToken[], base: AnalysisCandidate[][], opts?: AnalyzeOptions): { period: ElPeriod; basis: string } {
   const declared = opts?.varietyId && (PERIODS as readonly string[]).includes(opts.varietyId) ? (opts.varietyId as ElPeriod) : undefined;
   const words = tokens.filter((t) => t.isWord);
-  const polytonic = words.some((t) => isPolytonic(t.surface));
+  const polytonicWords = words.filter((t) => isPolytonic(t.surface)).length;
   // monotonic EVIDENCE: a word beginning with a vowel and carrying no breathing (polytonic spelling would write one). A word with
   // nothing but an acute (λόγος) is spelled the same in both systems and is evidence of neither.
   // (a word set in capitals carries no breathing in either system, and a single letter is a numeral or a label: neither is evidence)
-  const monotonic = !polytonic && words.some((t) => { const w = t.surface.normalize('NFC'); return w.length > 1 && w !== w.toUpperCase() && /^[αεηιουωάέήίόύώϊϋΐΰ]/iu.test(w) && !/[̓̔]/.test(t.surface.normalize('NFD')); });
+  const monotonicWords = words.filter((t) => { const w = t.surface.normalize('NFC'); return w.length > 1 && w !== w.toUpperCase() && /^[αεηιουωάέήίόύώϊϋΐΰ]/iu.test(w) && !isPolytonic(t.surface) && !/[̓̔]/.test(t.surface.normalize('NFD')); }).length;
+  // A Modern sentence may QUOTE an ancient word (Το ψωμί (αρχ. ἄρτος) είναι …; Το νερό (ὕδωρ στην αρχαία ελληνική γλώσσα) …): properly spelled
+  // polytonic text has no word that begins with a vowel and no breathing, so when such words outnumber the polytonic ones the sentence is
+  // monotonic and the polytonic words are its quotation (2026-11-13: one quoted word made the whole sentence Attic and pushed every Modern
+  // reading behind).
+  const quoted = polytonicWords > 0 && monotonicWords > polytonicWords;
+  const polytonic = polytonicWords > 0 && !quoted;
+  const monotonic = !polytonic && monotonicWords > 0;
   const votes: Record<string, number> = {};
   let voters = 0;
   let ntWords = 0; // words the New Testament attests
@@ -214,7 +306,7 @@ function decidePeriod(tokens: RawToken[], base: AnalysisCandidate[][], opts?: An
     if (!monotonic && declared && (votes[declared] ?? 0) > 0) return { period: declared, basis: `the spelling shows neither system (no breathing would be written); the declared variety (${label(declared)}) decides` };
     if (!monotonic && !declared && lastPeriod && (votes[lastPeriod] ?? 0) > 0) return { period: lastPeriod, basis: `the spelling shows neither system (no breathing would be written); read on as ${label(lastPeriod)}, the period of the sentence before` };
     // monotonic: Modern unless nothing is Modern and the words are ancient (an unaccented or simplified ancient text)
-    if ((votes['el-mod'] ?? 0) > 0 || !ranked.some(([v]) => ANCIENT.has(v))) return { period: 'el-mod', basis: monotonic ? 'monotonic spelling; read as Modern Greek' : 'no polytonic mark; read as Modern Greek' };
+    if ((votes['el-mod'] ?? 0) > 0 || !ranked.some(([v]) => ANCIENT.has(v))) return { period: 'el-mod', basis: quoted ? `monotonic spelling with ${polytonicWords} quoted polytonic word${polytonicWords === 1 ? '' : 's'}; read as Modern Greek` : monotonic ? 'monotonic spelling; read as Modern Greek' : 'no polytonic mark; read as Modern Greek' };
     if (declared && ANCIENT.has(declared)) return { period: declared, basis: 'no polytonic mark but no Modern reading either; the declared variety decides' };
     return { period: ranked[0][0] as ElPeriod, basis: `no polytonic mark but no Modern reading either; ${ranked[0][1]} of ${voters} recognised words have a ${label(ranked[0][0])} reading` };
   }
@@ -255,16 +347,7 @@ export function orderElSentence(tokens: RawToken[], base: AnalysisCandidate[][],
 }
 
 export function elAnalyze(tokens: RawToken[], opts?: AnalyzeOptions): AnalyzedToken[] {
-  const base = tokens.map((t, i) => {
-    if (!t.isWord) return [];
-    // letters followed by a keraia the tokenizer split off (α ΄): the numeral reading first, the word's own readings after it
-    const next = tokens[i + 1];
-    if (next && !next.isWord && next.start === t.end && /^[ʹ΄´′']$/u.test(next.surface) && /^[α-ωϛϝϙϟϡ]{1,4}$/u.test(t.normalized)) {
-      const v = milesianValue(t.normalized);
-      if (v !== null) return [numeralCandidate(t.normalized, v, 'the keraia after the letters marks them as a number'), ...elCandidates(t)];
-    }
-    return elCandidates(t);
-  });
+  const base = tokens.map((_, i) => elTokenCandidates(tokens, i));
   const ordered = orderElSentence(tokens, base, opts);
   return tokens.map((t, i) => ({ token: t, candidates: t.isWord ? ordered[i] : [], analyzer: EL_ANALYZER }));
 }

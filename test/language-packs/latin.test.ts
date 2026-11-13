@@ -21,7 +21,7 @@ describe('the Latin manifest', () => {
     expect(la).toMatchObject({ packId: 'pack:la', languageId: 'la', scriptId: 'Latn', status: 'installable', level: 'experimental', version: LA_VERSION });
     expect(validateManifest(la)).toEqual([]);
     expect(levelOf(la)).toBe('experimental');
-    expect(LEVEL_LABEL[levelOf(la)]).toBe('experimental, seed-only lemmatisation, unreviewed');
+    expect(LEVEL_LABEL[levelOf(la)]).toBe('experimental, unreviewed');
     expect(validationOf(la)).toBe('experimental');
     expect(installablePacks().map((p) => p.packId)).toContain('pack:la');
     expect(la.analyzer.id).toBe(`adapter-la@${LA_VERSION}`);

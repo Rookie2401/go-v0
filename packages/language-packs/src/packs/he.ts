@@ -50,7 +50,10 @@ export function hebrewManifest(): PackManifest {
       { varietyId: 'he-med', label: 'Medieval Hebrew', analysed: false, note: 'Recognised from dictionary labels only.' },
       { varietyId: 'arc-bib', label: 'Biblical Aramaic (a heritage language read beside Hebrew)', analysed: true, note: 'The Aramaic chapters of Daniel and Ezra, read with their own morphology and never credited to Hebrew.' },
     ],
-    adapterSummary: 'readings of every word of the Tanakh from the Open Scriptures morphology (the commonest words compiled in, the rest an installable asset), Modern Hebrew readings from the Wiktionary inflection tables (an installable asset), prefix peeling by rule, and a sentence layer that decides the PERIOD a text is read in (cantillation → Biblical; else the period most words belong to; a tie → the learner’s target; else Modern).',
+    adapterSummary: 'readings of every word of the Tanakh from the Open Scriptures morphology (the commonest words compiled in, the rest an installable asset), Modern Hebrew readings from the Wiktionary inflection tables and headword lines (an installable asset), prefix peeling by rule, a hand table of prepositions with pronoun suffixes, and a sentence layer that decides the PERIOD a text is read in (cantillation → Biblical; else the period most words belong to; a tie → the learner’s target; else Modern).',
+    // the Wiktionary Hebrew dictionary (2026-11-13): 41,288 entries, every entry also filed under its pointed spelling and the plural /
+    // construct forms of its headword line (src/dict/hebrew.ts), so a pointed lemma and a printed form both find it
+    dictionary: { entries: 41288, frequency: false, id: 'kaikki-he@2026-10-03' },
     capabilities: ['tokenization', 'sentence-segmentation', 'lemma', 'morphology'],
     features: [
       { key: 'Binyan', label: 'Stem (binyan)', values: { Qal: 'Qal (simple)', Nifal: 'Nifʿal (passive / reflexive)', Piel: 'Piʿel (intensive)', Pual: 'Puʿal (passive of Piʿel)', Hifil: 'Hifʿil (causative)', Hofal: 'Hofʿal (passive of Hifʿil)', Hitpael: 'Hitpaʿel (reflexive)' }, explain: 'A Hebrew verb is built on a root of (usually) three consonants poured into one of seven patterns, the binyanim. The pattern carries the voice and the kind of action: Qal is the simple active (כָּתַב “he wrote”), Nifʿal its passive or reflexive, Piʿel intensive or causative, Hifʿil causative, Hitpaʿel reflexive.' },
@@ -76,7 +79,8 @@ export function hebrewManifest(): PackManifest {
       'every reading is an external source’s (Open Scriptures for the Bible, Wiktionary for Modern Hebrew); nothing has been reviewed by a Hebrew scholar or a native speaker;',
       'an unpointed word is matched to pointed Biblical forms through its consonants and says its vowels were inferred; a Modern form the tables do not list has no reading;',
       'there is no parser: the sentence decides only the period it is read in, and a word with several readings in one period keeps them all;',
-      'there is no dictionary declared for Hebrew yet (the kaikki Hebrew dictionary is downloaded but not built as dictionary shards), so meanings come from the indexes’ own glosses (BDB / Strong’s for the Bible, Wiktionary’s first gloss for Modern words);',
+      'the card’s own gloss comes from the indexes (BDB / Strong’s for the Bible, Wiktionary’s first gloss for Modern words); the dictionary adds every Wiktionary sense beside it, but its senses are not ranked for the sentence;',
+      'prepositions with a pronoun suffix (שלהם, לי, אותו) are read from a hand-made, AI-drafted table, since Wiktionary lists none of them;',
       'the grammar tables explain Binyan, Conj, State, Number, Gender, Person and Definite; the analyser also writes PronType, PartType, Polarity, NumType, NounType and Poss.',
     ],
     extraProvenance: [

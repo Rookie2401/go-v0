@@ -143,3 +143,25 @@ it('rejects stale coverage when a reader replaces its chapter without changing i
   const result = await analyzePage(document, 'sq', bridge, getAnalyser, new AbortController().signal);
   expect(result).toEqual({ ok: false, code: 'page-changed' });
 });
+
+it('excludes an explicitly labeled translation from the selected-language denominator', async () => {
+  document.body.innerHTML = `
+    <main><p lang="sq">shtëpinë shtëpinë</p><p lang="en">A lovely house in the hills</p></main>`;
+  const { bridge } = bridgeWithRows({ [knownForm.unitId]: knownForm });
+  const result = await analyzePage(document, 'sq', bridge, getAnalyser, new AbortController().signal);
+  expect(result.ok).toBe(true);
+  if (result.ok) {
+    expect(result.coverage.totalOccurrences).toBe(2);
+    expect(result.coverage.confidentCoverage).toBe(100);
+  }
+});
+
+it('does not exclude a target-language block on an English-framed website', async () => {
+  document.documentElement.lang = 'en';
+  document.body.innerHTML = '<article><p lang="sq">shtëpinë shtëpinë</p></article>';
+  const { bridge } = bridgeWithRows({ [knownForm.unitId]: knownForm });
+  const result = await analyzePage(document, 'sq', bridge, getAnalyser, new AbortController().signal);
+  expect(result.ok).toBe(true);
+  if (result.ok) expect(result.coverage.totalOccurrences).toBe(2);
+  document.documentElement.removeAttribute('lang');
+});

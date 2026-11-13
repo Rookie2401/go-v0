@@ -193,8 +193,8 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
           return;
         }
         analysisOutput.replaceChildren();
-        appendLine(`${Math.round(result.familiarCoverage)}% familiar`, true);
-        appendLine(`${Math.round(result.confidentCoverage)}% confidently known`);
+        appendLine(`${Math.round(result.familiarCoverage)}% ${result.varietyId ? 'verified familiar' : 'familiar'}`, true);
+        appendLine(`${Math.round(result.confidentCoverage)}% ${result.varietyId ? 'verified confidently known' : 'confidently known'}`);
         const meter = doc.createElement('div');
         meter.className = 'reading-meter';
         meter.setAttribute('aria-hidden', 'true');

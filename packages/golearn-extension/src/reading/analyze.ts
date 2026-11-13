@@ -2,6 +2,7 @@ import { applyConfirmations, createScanner, formsToConfirm, type ScanToken, type
 import { levelOfRows } from '../active/levels';
 import { entryRefuses, matchEntry } from '../adapters/registry';
 import { wordInScript } from '../active/pageLanguages';
+import { mapLanguageTag } from '../language/resolve';
 import { isUnitId, MAX_CONFIRM_FORMS, type KnowledgeView } from '../protocol';
 import type { createBridge } from '../content/services';
 import { aggregateCoverage } from './coverage';
@@ -15,6 +16,18 @@ const MAX_CHARS = 100_000;
 const MAX_TOKENS = 12_000;
 // The background profile service accepts no more than 60 IDs per request.
 const PROFILE_BATCH = 60;
+
+/** Ignore explicitly foreign-language reading blocks; never assume the page-wide html lang is correct. */
+function hasConflictingTextLanguage(node: Text, languageId: string): boolean {
+  const root = node.ownerDocument.documentElement;
+  for (let el = node.parentElement; el && el !== root; el = el.parentElement) {
+    const declared = el.getAttribute('lang') ?? el.getAttribute('xml:lang');
+    if (!declared?.trim()) continue;
+    const mapped = mapLanguageTag(declared);
+    return mapped.kind !== 'pack' || mapped.languageId !== languageId;
+  }
+  return false;
+}
 
 export async function analyzePage(
   doc: Document,
@@ -38,6 +51,7 @@ export async function analyzePage(
     ignore: ['aside', 'form', '[inert]', 'details:not([open])'],
   });
   const nodes = scanner.textNodes(doc).filter((node) => {
+    if (hasConflictingTextLanguage(node, languageId)) return false;
     const parent = node.parentElement;
     if (!parent || !doc.defaultView) return false;
     const style = doc.defaultView.getComputedStyle(parent);

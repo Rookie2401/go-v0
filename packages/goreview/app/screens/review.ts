@@ -11,7 +11,7 @@ import { loadingMark } from '../loading';
 import { icon } from '../icons';
 import { attachRipple } from '../ripple';
 import { MAX_SNAPSHOT_WORDS, readSnapshot, restoreMissing, type ReviewSnapshot } from '../snapshot';
-import { beginSession, currentReviewModel, endSavedSession, forgetReviewModels, recoverableSessions, resumeSession, reviewModelRevision, type ReviewModel } from '../workspace';
+import { beginSession, currentReviewModel, endSavedSession, forgetReviewModels, liveModelWithNewWords, RECOVERY_SCAN_MIN_INTERVAL_MS, recoverableSessions, resumeSession, reviewModelRevision, type ReviewModel } from '../workspace';
 import * as decksScreen from './decks';
 import { renderHistory, renderTransfer } from './history';
 import * as myVocab from './myvocab';
@@ -183,7 +183,11 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     if (!model.provisional) latest = model;
     if (model.provisional) return; // the live model follows: it is the one remembered, and it starts the vocabulary count
     // Start the separate paged inventory only after the useful deck is on screen; its pages can contend with Repository deck requests.
-    const live = loadVocabSafe(ctx, id.languageId);
+    // It walks the whole vocabulary, sorted, for one number: a complete list this device saved under ten minutes ago gives that number instead
+    // (2026-11-12: the walk re-ran on every live update, beside the recovery scan, and the service ran out of memory). My Vocabulary still loads live.
+    const savedAt = snapshot?.vocab?.savedAt ? Date.parse(snapshot.vocab.savedAt) : NaN;
+    const recentList = snapRows.length > 0 && snapRows.length < MAX_SNAPSHOT_WORDS && Number.isFinite(savedAt) && now - savedAt >= 0 && now - savedAt < RECOVERY_SCAN_MIN_INTERVAL_MS;
+    const live = recentList ? Promise.resolve({ rows: snapRows, total: snapRows.length, complete: true }) : loadVocabSafe(ctx, id.languageId);
     // the key as the stores stand now, after the paint (a restored deck or preference is part of it)
     const after = await homeLocal(ctx).catch(() => undefined);
     const same = after && after.id === homeId ? after : undefined;
@@ -256,7 +260,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
    * the new session starts. With no other new word ready, nothing is ended or set aside and the Current Deck stays as it is.
    */
   async function beginNewDeck(m: ReviewModel, resumeId: string | undefined): Promise<void> {
-    const current = await freshModel(ctx, latestOf(m));
+    // the words met since the last vocabulary walk count (the owner, 2026-11-12): a live load with a fresh walk, waited for at most PRESS_WAIT_MS
+    // like any press; when it is later than that, this device's copy, and the load repaints the home when it lands
+    const current = (await liveModelWithNewWords(ctx)) ?? await freshModel(ctx, latestOf(m), { waitMs: 0 });
     const { learnerId, languageId } = current.identity;
     const held = await holdOutOf(ctx, learnerId, languageId);
     const before = await planCurrentDeck(ctx, current, held, undefined, 'current');

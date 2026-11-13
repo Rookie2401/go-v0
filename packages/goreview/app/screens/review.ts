@@ -4,7 +4,7 @@
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planCurrentDeck, planFreshDeck, releaseHoldOut, setHoldOut, type CurrentDeck, type DeckPart, type SavedDeck, type VocabRow } from '../deckModel';
+import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planCurrentDeck, planFreshDeck, releaseHoldOut, setHoldOut, type CurrentDeck, type DeckPart, type SavedDeck, type VocabLoadResult, type VocabRow } from '../deckModel';
 import { explainAdmissions } from '../admissionExplanation';
 import { freshModel, planCouldHaveChanged } from '../freshness';
 import { loadingMark } from '../loading';
@@ -187,7 +187,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     // (2026-11-12: the walk re-ran on every live update, beside the recovery scan, and the service ran out of memory). My Vocabulary still loads live.
     const savedAt = snapshot?.vocab?.savedAt ? Date.parse(snapshot.vocab.savedAt) : NaN;
     const recentList = snapRows.length > 0 && snapRows.length < MAX_SNAPSHOT_WORDS && Number.isFinite(savedAt) && now - savedAt >= 0 && now - savedAt < RECOVERY_SCAN_MIN_INTERVAL_MS;
-    const live = recentList ? Promise.resolve({ rows: snapRows, total: snapRows.length, complete: true }) : loadVocabSafe(ctx, id.languageId);
+    const live = recentList ? Promise.resolve<VocabLoadResult>({ rows: snapRows, total: snapRows.length, complete: true }) : loadVocabSafe(ctx, id.languageId);
     // the key as the stores stand now, after the paint (a restored deck or preference is part of it)
     const after = await homeLocal(ctx).catch(() => undefined);
     const same = after && after.id === homeId ? after : undefined;

@@ -4,6 +4,8 @@
  * Imports: the repository contract, src/adapters/* (the analysers), src/dict/* (the sharded dictionary reader) and
  * src/core types. Never an application package. See README.md.
  */
+export { PACK_EVIDENCE, evidenceFor } from './evidence';
+export type { GoldKind, LemmaMeasurement, LemmaSource, LemmaSourceKind, PackEvidence } from './evidence';
 export { validateManifest, toPackInfo, levelOf, validationOf, LEVEL_LABEL, KAIKKI_ATTRIBUTION, MIN_VALIDATION_CASES } from './manifest';
 export type {
   GrammarConstruction, GrammarFeature, PackLevel, PackManifest, PackVariety, ReviewStatus, ValidationCase,
@@ -33,7 +35,7 @@ export type {
   EntryResult, FormOfVia, GlossResult, GlossSense, InstallDeps, InstallFailure, InstallProgress, InstallResult, InstallVerified, InstalledRecord,
   PackAnalyzer, PackRuntime, PackRuntimeDeps, PackStorage, VerifyResult,
 } from './runtime';
-export { packCapabilities, allPackCapabilities, capabilitiesOf } from './capabilities';
+export { packCapabilities, allPackCapabilities, capabilitiesOf, deriveLemmaQuality, measuredSentence, measurementPhrase, DEPENDABLE_ACCURACY, DEPENDABLE_MIN_ITEMS } from './capabilities';
 export type { AudioCapability, AudioProvider, PackCapabilities, Quality, ScriptHandlingItem } from './capabilities';
 export { PACKS, TEAMS, packFor, installablePacks, teamList, languagesOf } from './registry';
 export type { Team, TeamId, TeamLanguage } from './registry';

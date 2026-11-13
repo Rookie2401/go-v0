@@ -6,6 +6,7 @@ import { heAdapter } from '../../src/adapters/he';
 import { CONTRACT_VERSION, type GoEvent } from '../../packages/repository-contract/src';
 import { createReviewEngine } from '../../packages/goreview/app/engine';
 import { packFactsFor } from '../../packages/goreview/app/packFacts';
+import { PACKS } from '../../packages/language-packs/src';
 import { evidenceFor, ratingFor, registry } from '../../packages/goreview/src';
 import { createApp } from '../../packages/goreview/app/app';
 import { planCurrentDeck } from '../../packages/goreview/app/deckModel';
@@ -73,8 +74,9 @@ describe('real Hebrew GoReview deck', () => {
         if (facts?.glosses.length) glossFacts.push(facts);
       }
       expect(glossFacts.length).toBeGreaterThan(0);
+      // the Hebrew pack declares its Wiktionary dictionary (2026-11-13): its manifest is read once beside the two lexicon manifests
       expect(requests.filter((r) => r.endsWith('/manifest.json')).sort()).toEqual([
-        '/lexicon/he/biblical/manifest.json', '/lexicon/he/modern/manifest.json',
+        ...(PACKS.he.lexical.dictionary ? ['/dict/he/manifest.json'] : []), '/lexicon/he/biblical/manifest.json', '/lexicon/he/modern/manifest.json',
       ]);
       expect(new Set(requests).size).toBe(requests.length); // concurrent facts share both manifests and overlapping shards
       const root = document.createElement('div'); document.body.append(root);

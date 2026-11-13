@@ -46,7 +46,7 @@ export interface ReaderSupport {
   languageId: string;
   /** The parser can read selections in this language (its analyser is wired in). */
   parseable: boolean;
-  /** The words the setup page shows: "installable", "experimental, seed-only lemmatisation, unreviewed", "planned, not installable". */
+  /** The words the setup page shows: "installable", "experimental, unreviewed", "planned, not installable". */
   levelLabel: string;
   report: PackCapabilities;
   /** What a card in this language can show, derived from the report (nothing the report does not state). */

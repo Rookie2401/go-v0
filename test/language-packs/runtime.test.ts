@@ -121,19 +121,22 @@ describe('installPack', () => {
     expect(storage.map.size).toBe(0);
   });
 
-  it('installs a pack that declares no dictionary (Norwegian): nothing is fetched, the dictionary checks are recorded as not declared, every validation case runs', async () => {
+  it('installs a pack that declares no dictionary: nothing is fetched, the dictionary checks are recorded as not declared, every validation case runs', async () => {
+    // a copy of each Norwegian pack without its dictionary (since 2026-11-13 both declare one; this keeps the no-dictionary path tested)
     for (const lang of ['nb', 'nn']) {
+      const pack = structuredClone(PACKS[lang]);
+      delete pack.lexical.dictionary;
       const storage = memoryStorage();
       const fetchSpy = diskFetch();
       const progress: string[] = [];
-      const r = await installPack(PACKS[lang], { fetch: fetchSpy, baseUrl: BASE, storage, now: () => '2026-10-09T08:00:00.000Z', onProgress: (p) => progress.push(p.step) });
+      const r = await installPack(pack, { fetch: fetchSpy, baseUrl: BASE, storage, now: () => '2026-10-09T08:00:00.000Z', onProgress: (p) => progress.push(p.step) });
       if (!r.ok) throw new Error(`${lang}: ${r.reason}: ${r.detail}`);
       expect(fetchSpy.calls, lang).toEqual([]);
       expect(r.verified, lang).toMatchObject({ dictionaryManifest: false, sampleShard: false, dictionary: 'none-declared' });
       expect(r.verified.validation, lang).toHaveLength(14);
       expect(r.validationFailures, lang).toBe(0);
       expect(progress, lang).toEqual(['check', 'dictionary-manifest', 'sample-shard', 'validation', 'record']);
-      expect(await verifyInstalled(PACKS[lang], storage), lang).toMatchObject({ installed: true, current: true, validationFailures: 0 });
+      expect(await verifyInstalled(pack, storage), lang).toMatchObject({ installed: true, current: true, validationFailures: 0 });
     }
   });
 

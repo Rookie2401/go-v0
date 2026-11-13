@@ -1,6 +1,6 @@
 # Greek (`el`) — status
 
-Updated 2026-10-18 by the Hebrew/Greek session. Plan: `docs/PLAN14.md`. Everything below is measured by the scripts and tests named; nothing
+Updated 2026-11-13 (Modern Greek prose: contractions, abbreviations, the first measurement; three stale lines corrected). First written 2026-10-18 by the Hebrew/Greek session. Plan: `docs/PLAN14.md`. Everything below is measured by the scripts and tests named; nothing
 has been reviewed by a classicist or a native speaker.
 
 ## What exists
@@ -14,8 +14,9 @@ has been reviewed by a classicist or a native speaker.
 | Ancient index | `npm run el:build-ancient` (scripts/el-build-kaikki.mts --lang grc) from kaikki Ancient Greek (2026-10-03): 67,371 entries, 10,191 with tables, 852,165 table rows, 7,608 dialectal alternative forms, 48,509 form-of entries → **638,137 form keys, ~922k readings, 27,189 lemmas**, 6,648 entries with a stated Modern Greek descendant; table headers name the dialect (Attic ×16,805, Epic ×2,500, Ionic ×900, Koine ×143, Byzantine ×54 …), 123.5 MB (`public/lexicon/el/ancient-index.json`, git-ignored). Details: `docs/greek/ANCIENT-INDEX.md` |
 | Modern index | `npm run el:build-modern` (--lang el) from kaikki Greek: 84,371 entries, 23,988 with tables, 438,186 table rows → **265,701 form keys, 523,185 readings, 33,174 lemmas**, 4,820 with a stated Ancient Greek ancestor, 58.0 MB (`public/lexicon/el/modern-index.json`). Details: `docs/greek/MODERN-INDEX.md` |
 | pack | `pack:el` experimental (`packages/language-packs/src/packs/el.ts`): 20 validation cases read with the core alone (incl. two that state the core's limits), 8 explained features, 3 constructions, tutorial `tutorial/el` (3 own steps) |
-| tests | `test/adapters/greek-periods.test.ts` (15; the full-index half runs only when the assets are built locally), `test/adapters/hebrew-greek-packs.test.ts` (6) |
-| agreement source | Perseus Ancient Greek Dependency Treebank 2.1 downloaded (`data/raw/perseus-treebank`, 34 texts: Homer, Hesiod, Herodotus, Thucydides, Sophocles, Aeschylus, Plato, Polybius, Plutarch …, CC BY-SA 3.0) — **not yet consulted** |
+| tests | `test/adapters/greek-periods.test.ts` (15; the full-index half runs only when the assets are built locally), `test/adapters/greek-modern.test.ts` (18: the Modern rules with the core alone; the 294 hand-read words and the reading order with the full indexes), `test/adapters/greek-meanings.test.ts`, `test/adapters/greek-shards.test.ts`, `test/adapters/hebrew-greek-packs.test.ts` (6) |
+| Modern prose | two closed hand-written lists: σε + the article written as one word (`greek/contractions.ts`, ten forms) and common abbreviations (`greek/abbreviations.ts`, 41); the sentence splitter keeps an abbreviation's full stop inside the sentence. Measured on 294 hand-read words (not by a native speaker): 98.3 % with a reading, first reading's lemma right for 94.6 %. `docs/greek/MODERN-AUDIT.md` |
+| agreement source | Perseus Ancient Greek Dependency Treebank 2.1 downloaded (`data/raw/perseus-treebank`, 34 texts: Homer, Hesiod, Herodotus, Thucydides, Sophocles, Aeschylus, Plato, Polybius, Plutarch …, CC BY-SA 3.0) — used since 2026-10-19 as the independent gold of the AUDIT below (`docs/greek/TREEBANK-AUDIT.md`); **not a second source inside the readings**, which stay single-source |
 
 ## How the period is decided (greek/analyze.ts `sentencePeriod`)
 
@@ -26,8 +27,9 @@ a Modern reading. Readings of the chosen period go first; none is removed; every
 
 ## Known limits (stated on the card and in the pack)
 
-- Only the Koine core is compiled in; Ancient and Modern readings need the installed assets. The Ancient asset is 123 MB of JSON and must be
-  sharded or compacted before any host ships it (PLAN14 P3 follow-up).
+- Only the Koine core is compiled in; Ancient and Modern readings need the installed assets. Both are sharded since 2026-10-21/22 (el/ancient 130
+  shards 12 MB, el/modern 53 shards 6.4 MB) and a host loads the shards of the words it is about to read; the whole Ancient asset as one file is
+  123 MB of JSON and is not shipped.
 - Without the Modern asset a Modern form may reach a Koine form through its bare letters (είναι → the infinitive εἶναι), honestly marked provisional.
 - The Attic/Homeric readings are single-source (Wiktionary tables) until the Perseus treebank agreement run exists.
 - Pronunciation is three written conventions; no voice exists for ancient Greek.

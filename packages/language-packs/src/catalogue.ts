@@ -15,7 +15,9 @@
  * names, script, level and validation come from the manifests; "a tutorial is available" from the tutorial registry and the
  * manifest's own tutorial reference; the audio line from the GoListen notes when a provider is given (else "no validated audio");
  * `whatWorks` and `whatDoesNot` from the capability report of each pack (capabilities.ts), so they cannot claim what the analyser
- * does not do.
+ * does not do. Nor may they deny what it does (2026-11-13): the lemma level in `whatWorks` is the report's derived one, the
+ * dictionary is named when the pack declares one, and `whatDoesNot` says "a small machine-drafted word list" only of a pack whose
+ * lemmas really come from one. Every other pack is told what has been measured instead, and against what.
  *
  * The report needs the analyser. In a build that links every adapter (servers, tests) the catalogue is complete at import; in an
  * extension build that loads analysers lazily, `LANGUAGE_CATALOGUE` is built from whatever is linked in at import, and a caller
@@ -24,7 +26,7 @@
  */
 import type { LanguageAdapter, SupportLevel } from '../../../src/core';
 import type { ValidationLevel } from '../../repository-contract/src';
-import { capabilitiesOf, type AudioCapability, type AudioProvider, type PackCapabilities } from './capabilities';
+import { capabilitiesOf, measurementPhrase, type AudioCapability, type AudioProvider, type PackCapabilities } from './capabilities';
 import { LEVEL_LABEL, levelOf, validationOf, type PackLevel, type PackManifest, type ReviewStatus } from './manifest';
 import { PACKS } from './registry';
 import { builtInAdapter } from './runtime';
@@ -139,7 +141,11 @@ function whatWorksOf(reports: readonly PackCapabilities[]): string {
   }
   const all = (f: (r: PackCapabilities) => boolean): boolean => reports.every(f);
   const things: string[] = [];
-  if (all((r) => r.lemma.supported)) things.push(`its lemma (${weakestSupport(reports.map((r) => r.lemma.quality))})`);
+  // a pack whose analyser reads its lemmas off form indexes says how many forms those hold (Hebrew, Greek, Aramaic)
+  const indexed = reports.flatMap((r) => r.lemma.sources).filter((s) => s.kind === 'attested-form-index' && s.size).reduce((sum, s) => sum + s.size!.count, 0);
+  if (all((r) => r.lemma.supported)) things.push(`its lemma (${weakestSupport(reports.map((r) => r.lemma.quality))})${indexed ? ` from ${indexed.toLocaleString('en')} indexed forms` : ''}`);
+  // the dictionary, when every pack of the entry declares one: the smallest is the one named
+  if (all((r) => r.dictionary.declared)) things.push(`its meaning from a Wiktionary dictionary of ${Math.min(...reports.map((r) => r.dictionary.entries!)).toLocaleString('en')} entries`);
   if (all((r) => r.morphology.supported)) things.push(`its grammar features (${weakestSupport(reports.map((r) => r.morphology.quality))})`);
   else if (reports.some((r) => r.morphology.supported)) things.push('grammar features in some packs');
   if (all((r) => r.phrases.supported)) things.push('fixed phrases');
@@ -151,11 +157,29 @@ function whatWorksOf(reports: readonly PackCapabilities[]): string {
     : `Selecting ${words} in a sentence splits the words and sentences, and nothing more is claimed.`;
 }
 
+const percent = (x: number): string => `${x.toFixed(1)}%`;
+
+/**
+ * What is known of the lemmas of packs that are NOT seed-only, as a limit: the measurements against human treebanks when there are
+ * any (a lemma is still wrong some of the time, and the figure says how often); else that the only figures are agreement with
+ * AI-written labels; else that nothing has been measured.
+ */
+function lemmaLimitOf(reports: readonly PackCapabilities[]): string {
+  const measured = reports.flatMap((r) => r.lemma.measured);
+  const human = measured.filter((m) => m.goldKind === 'human-treebank');
+  if (human.length) return `lemmas are not always right: the first reading had the right one ${list(human.map(measurementPhrase))}`;
+  const ai = measured.filter((m) => m.goldKind === 'ai-labelled');
+  if (ai.length) return `lemma accuracy is known only as agreement with AI-written labels that nobody has checked (${list(ai.map((m) => `${percent(m.lemmaAccuracy)} of ${m.items.toLocaleString('en')} words of ${m.corpus}`))})`;
+  return 'lemma accuracy has not been measured on running text';
+}
+
 /** One sentence: what it does not, from the same reports and the manifests' review status. */
 function whatDoesNotOf(reports: readonly PackCapabilities[]): string {
   const limits: string[] = [];
   if (reports.some((r) => r.analyzer === 'none')) limits.push('nothing is lemmatised or analysed until the analyser is loaded');
-  if (reports.some((r) => r.lemma.supported && r.lemma.quality === 'seed-only')) limits.push('lemmas come from a small machine-drafted word list, so other words get a marked guess or nothing');
+  const lemmatised = reports.filter((r) => r.lemma.supported);
+  if (lemmatised.some((r) => r.lemma.quality === 'seed-only')) limits.push('lemmas come from a small machine-drafted word list, so other words get a marked guess or nothing');
+  else if (lemmatised.length) limits.push(lemmaLimitOf(lemmatised));
   if (reports.some((r) => r.reviewStatus !== 'reviewed')) limits.push('no native speaker has reviewed the pack');
   if (reports.some((r) => r.tokenization.quality === 'limited')) limits.push('word boundaries are limited');
   limits.push('there are no subject or object labels');

@@ -9,12 +9,13 @@ import type { LanguageOptionView, LanguageView } from './ports';
 
 /**
  * The words the learner sees for how far a language is built. “reference pack, machine-drafted, unreviewed” is the installable
- * pack nobody has reviewed; “experimental, seed-only” is a pack with a small machine-drafted word list. Nothing is claimed beyond
- * the manifest's own level and review status.
+ * pack nobody has reviewed; “experimental, unreviewed” is a pack wired at a minimal level that nobody has reviewed. Nothing is
+ * claimed beyond the manifest's own level and review status: how good a pack's lemmas are is said by “what works” and “what does
+ * not”, from the capability report (some experimental packs have a full dictionary and a measured accuracy; 2026-11-13).
  */
 export function levelWords(level: PackLevel, validation: string): string {
   if (level === 'planned') return 'planned, not installable';
-  if (level === 'experimental') return 'experimental, seed-only';
+  if (level === 'experimental') return 'experimental, unreviewed';
   if (validation === 'production-validated') return 'reference pack, reviewed';
   if (validation === 'incomplete') return 'reference pack, partly reviewed';
   return 'reference pack, machine-drafted, unreviewed';

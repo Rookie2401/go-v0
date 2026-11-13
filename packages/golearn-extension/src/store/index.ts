@@ -376,7 +376,7 @@ export function buildMarkEvent(b: InteractionContext, mark: KnowledgeLevel): GoE
   if (!scoped.length) return event;
   return {
     ...event,
-    subject: { ...event.subject, itemIds: [...new Set([...event.subject.itemIds, ...scoped])] },
+    subject: { ...event.subject, itemIds: [...new Set([...(event.subject.itemIds ?? []), ...scoped])] },
   };
 }
 

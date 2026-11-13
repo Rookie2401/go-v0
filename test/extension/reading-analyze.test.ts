@@ -93,7 +93,12 @@ it('does not credit a lemma when an analysed word has competing confident parses
   let dictionaryCalls = 0, profileCalls = 0;
   const bridge = {
     confirmForms: async () => { dictionaryCalls++; return { ok: true, forms: { ambigua: ['one', 'NOUN'] } }; },
-    readingProfile: async () => { profileCalls++; throw new Error('Ambiguous tokens must not ask for a profile'); },
+    // An exact form may still have an explicit user mark even when its lemma is
+    // ambiguous. A read-only profile query is safe; no row means unresolved.
+    readingProfile: async () => {
+      profileCalls++;
+      return { ok: true, connected: false, source: 'device', rows: {}, depth: 'brief', depthOrigin: 'default' };
+    },
   } as unknown as Parameters<typeof analyzePage>[2];
   const fake: Parameters<typeof analyzePage>[3] = () => ({
     tokenize: (s: string) => [{ surface: s, start: 0, end: s.length, isWord: true }],
@@ -109,7 +114,7 @@ it('does not credit a lemma when an analysed word has competing confident parses
   expect(reply.coverage.occurrences.unresolved).toBe(1);
   expect(reply.coverage.confidentCoverage).toBe(0);
   expect(dictionaryCalls).toBe(0);
-  expect(profileCalls).toBe(0);
+  expect(profileCalls).toBe(1);
 });
 
 it('refuses restricted readers before extracting or consulting vocabulary data', async () => {

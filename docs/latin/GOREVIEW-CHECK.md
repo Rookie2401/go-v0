@@ -59,3 +59,6 @@ The facts are right; the card is not. The shared builder (`packages/goreview/src
 split into its parts. *credo*'s right senses are long, so the one short sense left is "to lend, to loan". This is not Latin's code: it
 affects any word whose dictionary senses are long, in every language. The fix is to judge the parts ("to believe", "to trust in") rather
 than the whole sense. The test pins it with `it.fails`, so it turns red (to be flipped) the day the builder is fixed.
+
+**Fixed (2026-11-13, master 7fa5efb4):** the shared builder now judges sense parts (79426158, `packages/goreview/src/exercises/shared.ts`);
+the *credo* card accepts "to believe" and explains it, and `test/course/latin-goreview-gloss.test.ts` asserts it as an ordinary test.

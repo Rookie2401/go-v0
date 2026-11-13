@@ -46,10 +46,9 @@ describe('Latin GoReview cards lead with the Vulgate sense (2cd8872d, checked 20
     expect(facts.glosses[0]).toMatch(/^(?:to )?believe\b/i);
   });
 
-  // KNOWN DEFECT (found 2026-11-13, not Latin's to fix): the shared builder (packages/goreview/src/exercises/shared.ts) accepts only dictionary
-  // senses of at most four words and explains with the first of at most six, judged on the WHOLE sense before it is split into parts. credo's
-  // senses are long, so the card accepts only "to lend, to loan" and says credo means "to confide in". This test flips when that is fixed.
-  it.fails('credo: the card accepts "to believe" (fails until the shared builder judges sense parts, not whole senses)', async () => {
+  // Was a known defect (found 2026-11-13): the shared builder judged whole dictionary senses by length before splitting them, so credo's
+  // card accepted only "to lend, to loan". Fixed in packages/goreview/src/exercises/shared.ts (79426158, on master 7fa5efb4).
+  it('credo: the card accepts "to believe" and says so', async () => {
     const { accepted, explanation } = await card('credo');
     expect(accepted).toContain('to believe');
     expect(explanation).toContain('means “to believe');

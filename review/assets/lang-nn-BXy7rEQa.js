@@ -1,1 +1,0 @@
-import{t as e}from"./lang-norwegian-CBJ7Af8c.js";var t=e(`nn`);export{t as nnAdapter};

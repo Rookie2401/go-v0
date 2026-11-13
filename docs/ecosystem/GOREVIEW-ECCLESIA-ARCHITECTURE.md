@@ -58,6 +58,46 @@ Card identity: `card:<assessment dimension>:<unitId>` — GoReview's `itemIdFor`
 
 Passage identity: `PassageRef { book (USFM), chapter, verse, verseEnd? }`; `passageKey` → `JHN.1.1-18`; `verseKey` → `v:JHN.1.1` used as `subject.sentenceKey` (a text-free context identifier; the contract's "hash of the sentence" is satisfied by a coordinate that never carries text); `scriptureRef` → the contract's typed `ScriptureSourceRef` (`provider 'other'`, `translationId` = the profile's edition id, `confidence 1`, the profile's licence restrictions).
 
+## 3a. Periods of Hebrew and Greek (`periods.ts`)
+
+Hebrew and Greek are each **one language read in several periods**. The layout follows the GoLearn adapters exactly (the ids are their Repository variety ids; a test holds the catalogue to `src/adapters/hebrew/varieties.ts` and `src/adapters/greek/varieties.ts`), and adds what a library needs to know about each.
+
+| Period id | Name (also called) | Era (a filing convention) | Normally written | What the GoLearn adapter has | Default trust | In a theological library |
+| --- | --- | --- | --- | --- | --- | --- |
+| `he-bib` | Biblical Hebrew (Classical) | c. 1000–200 BC | pointed, with cantillation | corpus: OSHB morphology over MAM | high-confidence | the Tanakh |
+| `he-mish` | Mishnaic (Rabbinic) Hebrew | c. AD 1–500 | unpointed (editions often pointed) | dictionary labels only | provisional | Mishnah, Tosefta, early midrashim, the Hebrew of the Talmuds |
+| `he-med` | Medieval Hebrew | c. 500–1800 | unpointed | dictionary labels only | provisional | Rashi and the commentators, Maimonides, piyyut, the translators |
+| `he-mod` | Modern Hebrew | 1880– | unpointed | Wiktionary tables | provisional | modern scholarship and translation |
+| `el-hom` | Homeric Greek (Epic) | c. 800–600 BC | polytonic | Wiktionary Epic tables | provisional | Homer, Hesiod |
+| `el-att` | Attic Greek (Classical) | c. 500–300 BC | polytonic | Wiktionary Ancient Greek tables | provisional | Plato, Aristotle, the tragedians, the orators |
+| `el-koi` | Koine Greek (Hellenistic, New Testament, "late", patristic) | c. 300 BC–AD 600 | polytonic | corpus: MorphGNT over SBLGNT | high-confidence | New Testament, Septuagint, Apostolic Fathers, Philo, Josephus, the Fathers to the sixth century |
+| `el-med` | Medieval Greek (Byzantine) | c. 600–1500 | polytonic | labels only | provisional | John of Damascus, Byzantine liturgy and hymnography, Palamas |
+| `el-mod` | Modern Greek | 1500– | monotonic | Wiktionary Modern Greek tables | provisional | modern scholarship and translation |
+| `arc-bib` | Biblical Aramaic | c. 500–150 BC | pointed, with cantillation | corpus: OSHB Aramaic | high-confidence | Daniel, Ezra (its own language, never a period of Hebrew) |
+
+Latin has no periods here: the Latin adapter declares none. Default periods: Biblical Hebrew, Koine Greek, Biblical Aramaic.
+
+**Three rules** decide everything else:
+
+1. **Identity is period-free.** `lemma:el:λόγος:NOUN` is one lexeme in Homer, Plato, John and a Byzantine homily; `lemma:he:…` likewise from Kings to Rashi. A card is one card whichever period the word was met in, and knowledge of the word **pools** across periods. Nothing pools between Hebrew and Aramaic: they are two languages.
+2. **The period belongs to the text.** Each event carries the period of the passage that was read, as `varietyId` (and in `payload.language`). The reader declares it by recording with `profileForPeriod(periodId)`; Ecclesia declares, it does not detect (the adapters' `sentencePeriod` detection stays in GoLearn). Evidence is therefore readable per period — `periodEvidence` ("met in Koine 14 times, in Attic twice") and `knowledgeStandings(events, scope, { varietyId })` — without ever having been split in storage.
+3. **Spelling is not identity.** Modern Greek is monotonic (άνθρωπος) where the older periods are polytonic (ἄνθρωπος); Modern, and most Rabbinic and Medieval, Hebrew is unpointed where the Bible is pointed. A lemma spelled two ways is two unit ids. `crossPeriodKey` (accents, breathings, points and case removed) **links** them without merging; the familiarity estimate credits the link only when the reader sets `crossPeriodCredit`, and then reports `creditedAcrossPeriods`. A reader that wants one unit across periods lemmatises every period to **one headword spelling** — the polytonic / pointed dictionary form the Biblical and Koine data already use.
+
+| Question | Mechanism |
+| --- | --- |
+| Which period is this text in? | The reader says: `profileForPeriod('el-att')`, `resolvePeriod('he', 'Classical Hebrew')`. Every event of that reading carries `varietyId`. |
+| Is this the word I met in another period? | Same lemma spelling and part of speech → the same unit, the same card. |
+| Same word, another spelling? | `crossPeriodKey` + `crossPeriodIndex`; opt-in credit in familiarity; never a merged id. |
+| Does it mean the same? | Not assumed. `EcclesiaLexeme.glossesByPeriod` (λόγος: Attic "account, reason"; Koine "word") and `periods` (where it is attested); the facts provider answers with the glosses of the period asked for — the learner's target period, which the planner passes as `varietyId`. |
+| What has the learner shown in this period? | `periodEvidence(events, scope)`; `knowledgeStandings(…, { varietyId })`. |
+| Which period is the learner studying? | The profile a session is composed with (`preferences.varietyId`). One enrolment per language and target period, as the Biblia reader does; texts of other periods read under it still carry their own `varietyId`. |
+| How far is the analysis trusted? | `EcclesiaPeriod.defaultStatus` → the profile's `analysis.status`; a token may state its own. `provisional` supports recognition questions only (the shared `eligibilityOf` rule), with a caveat shown. A reader with a reviewed analysis of its own says so through `profileForPeriod(id, { analysis })`. |
+| Where is a passage of Plato, the Mishnah, Rashi? | `WorkPassageRef { work, title?, chapter, verse, verseEnd? }`: the reader's stable id for the work and two whole numbers of its own citation scheme (1..100000). Keys `w:plato-republic.514.1`; the event's source reference is a plain one with that locator. Scripture keeps its typed reference. |
+
+Conventions that are choices, not facts, and may be revisited: Greek of the fourth to sixth centuries is filed under Koine (as the adapter files the label "late Greek"); the ancient dialects (Ionic, Doric, Aeolic) and Katharevousa are adapter varieties, not periods — a text in them is filed under the period it belongs to; later Aramaic (the Targums, the Talmud) and the periods of Latin (Classical, Late, Medieval) are not modelled; Modern Hebrew "full" spelling adds letters a pointed lemma lacks, which no key can link — only lemmatising to one headword does.
+
+Since this branch was cut, `master` gained a Biblical Aramaic language pack filed as `arc` / `arc-bib` — the same filing Ecclesia chose in §3; the Aramaic fixture uses that pack's feature keys (`Binyan`, `Conj`, `State`).
+
 ## 4. Reading encounters → events (`encounters.ts`)
 
 The brief's event names, adapted to the contract's kinds (nothing new was added to `EVENT_KINDS`):

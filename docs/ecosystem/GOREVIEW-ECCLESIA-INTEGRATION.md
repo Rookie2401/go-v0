@@ -30,6 +30,25 @@ profile.textId                                          // 'SBLGNT' — goes int
 
 Override only when you must (e.g. file Aramaic under the learner's Hebrew enrolment): `Ecclesia.withOverrides(Ecclesia.ARAMAIC, { repository: { languageId: 'he', varietyId: 'arc-bib', packId: 'pack:he', packVersion: '1' } })`.
 
+## 1a. Say which period a text is in
+
+Hebrew and Greek are each one language in several periods (architecture §3a). You declare the period of every text you show; nothing detects it for you.
+
+```ts
+Ecclesia.periodsOf('grc')                       // Homeric, Attic, Koine, Medieval, Modern — in order, with era, orthography, trust, examples
+Ecclesia.resolvePeriod('he', 'Classical Hebrew') // → the period he-bib (also "Rabbinic", "Byzantine", "Epic", ids…)
+const attic = Ecclesia.profileForPeriod('el-att');           // record and review Plato with this profile
+const rashi = Ecclesia.profileForPeriod('he-med', { textId: 'RASHI-BERLINER', analysis: { label: 'Ecclesia analysis', licence: '…', status: 'high-confidence', analyzerId: 'ecclesia-he' } });
+```
+
+- Use the period profile for **everything about that text**: recording, cards, facts. The events then carry `varietyId: 'el-att'`.
+- Unit ids do not change with the period: λόγος in Plato and in John is one unit and one card. Lemmatise every period to **one headword spelling** (polytonic Greek, pointed Hebrew) if you want them to be the same unit; where your Modern texts are monotonic / unpointed and you keep those spellings, the units are distinct and `crossPeriodKey` links them.
+- A passage of a work that is not a book of Scripture is `{ work: 'plato-republic', title: 'Republic', chapter: 514, verse: 1 }` — your stable work id and two whole numbers of your citation scheme; keep the display citation ("514a") yourself.
+- Per-period views: `Ecclesia.periodEvidence(events, scope)` (where each word was met, by period) and `Ecclesia.knowledgeStandings(events, scope, { varietyId: 'el-att' })` (standing from that period's texts only). The default standing pools the whole language.
+- Meanings that moved: give `glossesByPeriod` on a lexeme; exercises then ask the meaning of the period the learner studies.
+- Next passage across spellings: `passageFamiliarity({ …, policy: { crossPeriodCredit: true } })` counts a word known under another period's spelling and reports `creditedAcrossPeriods`; show that it did.
+- Periods the shared adapter does not analyse (Mishnaic and Medieval Hebrew, Medieval Greek) default to `provisional` trust: recognition questions only, with a caveat, until you state a reviewed analysis.
+
 ## 2. Name things (you rarely call these directly, but they define what you will see)
 
 ```ts

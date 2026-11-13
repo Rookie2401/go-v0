@@ -15,13 +15,17 @@
  *
  * Text never enters the event log: a reference identifies a passage, the reader shows the words from its own corpus.
  */
-import type { AnalysisStatus, GoEvent, KnowledgeLevel, LinguisticUnit, ScriptureSourceRef, SourceRestrictions } from '../../repository-contract/src';
+import type { AnalysisStatus, GoEvent, KnowledgeLevel, LinguisticUnit, SourceRef, SourceRestrictions } from '../../repository-contract/src';
 import type { AssessmentDimension, DeckItem, ExerciseFamily, ReviewPreferences, ScheduleState, SessionPlan, UnitFacts } from '../../goreview/src/types';
 
 // ───────────────────────────── languages ─────────────────────────────
 
 export const ECCLESIA_LANGUAGES = ['he', 'arc', 'grc', 'la'] as const;
-/** Ecclesia's own language codes (ISO 639): Biblical Hebrew, Biblical Aramaic, (Koine) Greek, Latin. */
+/**
+ * Ecclesia's own language codes: Hebrew, Biblical Aramaic, Greek, Latin. Hebrew and Greek are each ONE language read in several
+ * PERIODS (Biblical, Mishnaic, Medieval, Modern Hebrew; Homeric, Attic, Koine, Medieval, Modern Greek): see `EcclesiaPeriod`
+ * and ./periods. `grc` names Greek of every period here (the Repository files all of them under `el`).
+ */
 export type EcclesiaLanguageId = (typeof ECCLESIA_LANGUAGES)[number];
 
 /** Universal-Dependencies parts of speech, the vocabulary every unit id and every analysis uses. */
@@ -52,10 +56,50 @@ export interface EcclesiaLanguageProfile {
   review: Pick<ReviewPreferences, 'grammarShare' | 'cardsPerDeck' | 'sessionMinutes' | 'maxNew' | 'desiredRetention'>;
 }
 
+// ───────────────────────────── periods ─────────────────────────────
+
+/** What the GoLearn adapter itself holds for a period: an analysed corpus, dictionary tables, or only the labels a dictionary prints. */
+export type PeriodAnalysis = 'corpus' | 'tables' | 'labels-only';
+
+/**
+ * A historical stage of a language that a text is written in and a learner may target. The `id` is the Repository variety id
+ * the GoLearn adapters already use (`he-bib`, `el-att`…), so a period is never a second language: unit ids are period-free
+ * (`lemma:el:λόγος:NOUN` is one lexeme from Homer to today) and the period travels on each EVENT (`varietyId`) as the period
+ * of the text that was read, and on the lexicon's senses as where a meaning is attested.
+ */
+export interface EcclesiaPeriod {
+  id: string;
+  language: EcclesiaLanguageId;
+  label: string;
+  /** Other names a reader or a catalogue may use ("Classical Hebrew", "Byzantine Greek", "Rabbinic Hebrew"). */
+  aliases: string[];
+  /** Historical order within the language, 1 = earliest. */
+  order: number;
+  /** Approximate years (negative = BC; `to: null` = still written). A convention for ordering and labelling, not a claim about any text. */
+  era: { from: number; to: number | null };
+  /** How texts of the period are normally written, which decides what a FORM id looks like (./identity). */
+  orthography: 'pointed-cantillated' | 'pointed' | 'unpointed' | 'polytonic' | 'monotonic';
+  /** What the shared GoLearn adapter has for the period; the reader's own analysis may be better and says so per token. */
+  goLearnAnalysis: PeriodAnalysis;
+  /** The trust a token's analysis gets when the reader states none: corpus-backed periods `high-confidence`, the rest `provisional`. */
+  defaultStatus: AnalysisStatus;
+  /** Kinds of text a theological library holds in the period (examples only). */
+  exampleTexts: string[];
+  note: string;
+}
+
 // ───────────────────────────── passages and tokens ─────────────────────────────
 
-/** A passage by coordinates: a USFM book code, a chapter, a verse or a verse range. Never any text. */
-export interface PassageRef { book: string; chapter: number; verse: number; verseEnd?: number }
+interface PassageSpan { chapter: number; verse: number; verseEnd?: number }
+/** A Scripture passage by coordinates: a USFM book code, a chapter, a verse or a verse range. Never any text. */
+export interface ScripturePassageRef extends PassageSpan { book: string; work?: undefined }
+/**
+ * A passage of any other work (Plato, the Mishnah, Rashi, a Father): the reader's stable id for the work and two whole numbers
+ * of its own citation scheme (book and line, page and section, chapter and sentence: 1..100000 each). The display citation
+ * ("514a", "Berakhot 1:1") stays with the reader. Never any text.
+ */
+export interface WorkPassageRef extends PassageSpan { work: string; title?: string; book?: undefined }
+export type PassageRef = ScripturePassageRef | WorkPassageRef;
 
 /**
  * One word token as the reader's corpus analyses it. `surface` is the word as printed (a short string: the text guard refuses
@@ -142,7 +186,7 @@ export interface EncounterSink { record(events: GoEvent[]): Promise<void> }
 // ───────────────────────────── contextual cards ─────────────────────────────
 
 /** A card is one unit tested along one assessment dimension: `card:<dimension>:<unitId>` (GoReview's `itemIdFor`). The passage is where it was met. */
-export interface CardContext { ref: PassageRef; verse: number; tokenIndex: number; sentenceKey: string; sourceRef: ScriptureSourceRef }
+export interface CardContext { ref: PassageRef; verse: number; tokenIndex: number; sentenceKey: string; sourceRef: SourceRef }
 
 export interface ContextualCard {
   cardId: string;
@@ -200,6 +244,12 @@ export interface FamiliarityPolicy {
   targetHigh: number;
   /** Count a token as known when its FORM is known even if its lexeme is not (default true: the reader meets forms). */
   formsCount: boolean;
+  /**
+   * Count a token as known when the SAME WORD is known under another period's spelling (polytonic ἄνθρωπος for monotonic
+   * άνθρωπος, pointed for unpointed Hebrew): matched by `crossPeriodKey` and part of speech. Default false: a spelling link is
+   * not an identity, and a word's sense may have moved between periods. The result says how many tokens were credited this way.
+   */
+  crossPeriodCredit: boolean;
 }
 
 export const FAMILIARITY_HEURISTIC = 'ecclesia-familiarity@provisional-1';
@@ -231,6 +281,8 @@ export interface PassageFamiliarity {
   distanceFromBand: number;
   /** Share of tokens whose lexeme has ANY knowledge row: how much the estimate rests on. */
   reliability: number;
+  /** Tokens counted as known only through another period's spelling of the word (0 unless `policy.crossPeriodCredit`). */
+  creditedAcrossPeriods: number;
   /** Distinct lexemes not yet known, commonest first (by corpus rank, then by occurrences), so the reader can pre-teach them. */
   unknownLexemes: UnknownLexeme[];
   notes: string[];
@@ -261,6 +313,10 @@ export interface EcclesiaLexeme {
   lemma: string;
   pos: UdPos;
   glosses: string[];
+  /** Period ids the lexeme is attested in, when the dictionary says; absent = not stated (never "every period"). */
+  periods?: string[];
+  /** Glosses by period id where the meaning differs by period (λόγος: Attic "account, reason"; Koine "word"); `glosses` is the fallback. */
+  glossesByPeriod?: Record<string, string[]>;
   /** Shown whenever a gloss is shown (the dictionary's name, its licence). */
   attribution?: string;
   frequency?: LinguisticUnit['frequency'];
@@ -272,6 +328,8 @@ export interface EcclesiaForm {
   surface: string;
   lexemeId: string;
   features?: Record<string, string>;
+  /** Period ids the form is attested in (an Epic form, a Modern spelling), when known. */
+  periods?: string[];
   status?: AnalysisStatus;
 }
 

@@ -41,9 +41,15 @@ function unitRow(profile: EcclesiaLanguageProfile, base: Pick<LinguisticUnit, 'u
   };
 }
 
-export function lexemeFacts(profile: EcclesiaLanguageProfile, lexeme: EcclesiaLexeme): UnitFacts {
+/** The glosses of a lexeme for a period: the period's own where the dictionary gives them (a meaning that moved between periods), else the general ones. */
+export function glossesFor(lexeme: EcclesiaLexeme, varietyId: string | undefined): string[] {
+  const own = varietyId ? lexeme.glossesByPeriod?.[varietyId] : undefined;
+  return orderGlosses(own?.length ? own : lexeme.glosses);
+}
+
+export function lexemeFacts(profile: EcclesiaLanguageProfile, lexeme: EcclesiaLexeme, varietyId: string | undefined = profile.repository.varietyId): UnitFacts {
   const status = lexeme.status ?? profile.analysis.status;
-  const glosses = orderGlosses(lexeme.glosses);
+  const glosses = glossesFor(lexeme, varietyId);
   const facts: UnitFacts = {
     unit: unitRow(profile, { unitId: lexeme.lexemeId, kind: 'lexeme', label: lexeme.lemma, pos: lexeme.pos, ...(lexeme.frequency ? { frequency: lexeme.frequency } : {}) }, status),
     relations: [], analyses: [], status, lemma: lexeme.lemma, pos: lexeme.pos, glosses,
@@ -54,9 +60,9 @@ export function lexemeFacts(profile: EcclesiaLanguageProfile, lexeme: EcclesiaLe
   return Object.assign(facts, { lexiconGlossCount: glosses.filter((g) => wordCount(g) <= MAX_GLOSS_WORDS && !/[(\[]/u.test(g)).length });
 }
 
-export function formFacts(profile: EcclesiaLanguageProfile, form: EcclesiaForm, lexeme: EcclesiaLexeme | undefined): UnitFacts {
+export function formFacts(profile: EcclesiaLanguageProfile, form: EcclesiaForm, lexeme: EcclesiaLexeme | undefined, varietyId: string | undefined = profile.repository.varietyId): UnitFacts {
   const status = form.status ?? lexeme?.status ?? profile.analysis.status;
-  const glosses = lexeme ? orderGlosses(lexeme.glosses) : [];
+  const glosses = lexeme ? glossesFor(lexeme, varietyId) : [];
   const relation: UnitRelation[] = lexeme ? [{
     fromId: form.formId, relation: 'form-of', toId: lexeme.lexemeId, confidence: 1, status,
     provenance: { source: 'dictionary', ref: profile.analysis.analyzerId, confidence: 1 },
@@ -79,10 +85,12 @@ export interface EcclesiaFactsProvider extends FactsProvider {
 export function factsProviderFor(profile: EcclesiaLanguageProfile, lexicon: EcclesiaLexicon): EcclesiaFactsProvider {
   const languageId = profile.repository.languageId;
   return {
-    async factsFor(unitId, lang) {
+    async factsFor(unitId, lang, varietyId) {
       if (lang !== languageId) return undefined;
-      if (unitId.startsWith('lemma:')) { const l = lexicon.lexeme(unitId); return l ? lexemeFacts(profile, l) : undefined; }
-      if (unitId.startsWith('form:')) { const f = lexicon.form(unitId); return f ? formFacts(profile, f, lexicon.lexeme(f.lexemeId)) : undefined; }
+      // the period asked for (the learner's target, as the planner passes it) chooses the glosses; the profile's own otherwise
+      const period = varietyId ?? profile.repository.varietyId;
+      if (unitId.startsWith('lemma:')) { const l = lexicon.lexeme(unitId); return l ? lexemeFacts(profile, l, period) : undefined; }
+      if (unitId.startsWith('form:')) { const f = lexicon.form(unitId); return f ? formFacts(profile, f, lexicon.lexeme(f.lexemeId), period) : undefined; }
       return undefined;
     },
     pool(limit = 40) {

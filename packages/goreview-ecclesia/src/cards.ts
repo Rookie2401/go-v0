@@ -13,7 +13,7 @@ import { buildCardAdded } from '../../goreview/src/scheduler/deck';
 import { FAMILY_DIMENSION } from '../../goreview/src/types';
 import type { AssessmentDimension, ExerciseFamily } from '../../goreview/src/types';
 import type { CardContext, ContextualCard, EcclesiaLanguageProfile, EcclesiaToken, PassageRef, PassageTokens, ReaderIdentity } from './contract';
-import { cardIdFor, passageKey, scriptureRef, unitIdsOf, verseKey } from './identity';
+import { cardIdFor, parseWorkLocator, passageKey, sourceRefOf, unitIdsOf, verseKey } from './identity';
 
 export interface CardOptions {
   /** Test the lexeme (default: "what does λόγος mean?") or the printed form ("what does λόγον mean?"). */
@@ -24,7 +24,7 @@ export interface CardOptions {
 export const DEFAULT_CARD_FAMILY: ExerciseFamily = 'written-recognition';
 
 export function cardContext(profile: EcclesiaLanguageProfile, ref: PassageRef, verse: number, tokenIndex: number): CardContext {
-  return { ref, verse, tokenIndex, sentenceKey: verseKey(ref, verse), sourceRef: scriptureRef(profile, ref, verse) };
+  return { ref, verse, tokenIndex, sentenceKey: verseKey(ref, verse), sourceRef: sourceRefOf(profile, ref, verse) };
 }
 
 /** The card for a token met at a place. Deterministic: the id depends on the unit and the family's dimension only. */
@@ -57,20 +57,25 @@ export function cardAddedEvent(profile: EcclesiaLanguageProfile, card: Contextua
   });
 }
 
-export interface UnitOccurrence { book: string; chapter: number; verse: number; firstAt: string; lastAt: string; kinds: Record<string, number> }
+/** A place a unit was met: a verse of Scripture (`book`) or of another work (`work`). */
+export interface UnitOccurrence { book?: string; work?: string; chapter: number; verse: number; firstAt: string; lastAt: string; kinds: Record<string, number> }
 
-/** Every Scripture place the learner met a unit, from the reading events (any reader that writes typed Scripture references counts). */
+const stemOf = (p: { book?: string; work?: string }): string => p.book ?? `w:${p.work}`;
+
+/** Every place the learner met a unit, from the reading events: verses of Scripture (any reader that writes typed Scripture references counts) and passages of other works recorded through this package. */
 export function contextsOf(unitId: string, events: readonly GoEvent[]): UnitOccurrence[] {
   const out = new Map<string, UnitOccurrence>();
   for (const e of events) {
     const ref = e.subject?.sourceRef;
-    if (!ref || ref.kind !== 'scripture' || ref.verse === undefined || !e.subject?.itemIds?.includes(unitId)) continue;
-    const k = `${ref.book}.${ref.chapter}.${ref.verse}`;
-    const row = out.get(k) ?? { book: ref.book, chapter: ref.chapter, verse: ref.verse, firstAt: e.at, lastAt: e.at, kinds: {} };
+    if (!ref || !e.subject?.itemIds?.includes(unitId)) continue;
+    const place = ref.kind === 'scripture' ? (ref.verse === undefined ? undefined : { book: ref.book, chapter: ref.chapter, verse: ref.verse }) : parseWorkLocator(ref.locator);
+    if (!place) continue;
+    const k = `${stemOf(place)}.${place.chapter}.${place.verse}`;
+    const row: UnitOccurrence = out.get(k) ?? { ...place, firstAt: e.at, lastAt: e.at, kinds: {} };
     if (Date.parse(e.at) < Date.parse(row.firstAt)) row.firstAt = e.at;
     if (Date.parse(e.at) > Date.parse(row.lastAt)) row.lastAt = e.at;
     row.kinds[e.kind] = (row.kinds[e.kind] ?? 0) + 1;
     out.set(k, row);
   }
-  return [...out.values()].sort((a, b) => a.book.localeCompare(b.book) || a.chapter - b.chapter || a.verse - b.verse);
+  return [...out.values()].sort((a, b) => stemOf(a).localeCompare(stemOf(b)) || a.chapter - b.chapter || a.verse - b.verse);
 }

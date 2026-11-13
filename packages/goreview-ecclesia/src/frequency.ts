@@ -4,7 +4,7 @@
  * competition ranks over lexeme ids (equal counts share a rank; ties in order are broken by id, so a table is deterministic).
  */
 import type { CorpusFrequencyProvider, EcclesiaLanguageId, EcclesiaLanguageProfile, PassageTokens } from './contract';
-import { lexemeId } from './identity';
+import { lexemeId, passageLabel } from './identity';
 
 /** A provider from counts per lexeme id (`lemma:el:λόγος:NOUN` → 330). */
 export function frequencyTable(language: EcclesiaLanguageId, corpusId: string, counts: ReadonlyMap<string, number> | Record<string, number>): CorpusFrequencyProvider {
@@ -27,7 +27,7 @@ export function frequencyTable(language: EcclesiaLanguageId, corpusId: string, c
 export function frequencyFromPassages(profile: EcclesiaLanguageProfile, passages: readonly PassageTokens[], corpusId: string): CorpusFrequencyProvider {
   const counts = new Map<string, number>();
   for (const p of passages) {
-    if (p.language !== profile.id) throw new RangeError(`passage ${p.ref.book} ${p.ref.chapter} is ${p.language}, not ${profile.id}`);
+    if (p.language !== profile.id) throw new RangeError(`passage ${passageLabel(p.ref)} is ${p.language}, not ${profile.id}`);
     for (const v of p.verses) for (const t of v.tokens) { const id = lexemeId(profile, t.lemma, t.pos); counts.set(id, (counts.get(id) ?? 0) + 1); }
   }
   return frequencyTable(profile.id, corpusId, counts);

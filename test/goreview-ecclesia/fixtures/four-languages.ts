@@ -2,7 +2,8 @@
  * One short passage per language, tokenised as the Ecclesia reader would hand them over, with a small lexicon each.
  *   Hebrew   Genesis 1:1 — MAM text; lemmas, parts of speech and glosses from the Biblia build's OSHB-derived data and lexicon
  *            (Strong's numbers 7225, 1254a, 430, 853, 8064, 776; glosses BDB / curated, public domain).
- *   Aramaic  Daniel 2:4b — the first Aramaic words of Daniel (from מַלְכָּא); OSHB Aramaic codes; BDB glosses.
+ *   Aramaic  Daniel 2:4b — the first Aramaic words of Daniel (from מַלְכָּא); OSHB Aramaic codes; BDB glosses; feature keys as the
+ *            Biblical Aramaic language pack writes them (Binyan, Conj, State).
  *   Latin    John 1:1–5 (Vulgate) — lemmas and PROIEL-style morphology as the Vetus build bundles them; the last token of verse 5
  *            (comprehenderunt) has no analysis in that build and is supplied by hand as `provisional`.
  *   Greek    John 1:1 — the first verse of ./greek-john (decoded MorphGNT), so the four languages can be exercised alike.
@@ -50,12 +51,12 @@ export const HEBREW_FIXTURE = fixture(HEBREW,
 const DAN_2_4_ROWS: Row[] = [
   ['מַלְכָּא֙', 'מֶלֶךְ', 'NOUN', { Gender: 'Masc', Number: 'Sing', State: 'Det' }, ['king']],
   ['לְעָלְמִ֣ין', 'עָלַם', 'NOUN', { Gender: 'Masc', Number: 'Plur', State: 'Abs', Prefix: 'ל' }, ['perpetuity', 'antiquity', 'for ever']],
-  ['חֱיִ֔י', 'חֲיָא', 'VERB', { Stem: 'Peal', Mood: 'Imp', Person: '2', Gender: 'Masc', Number: 'Sing' }, ['live', 'let live']],
-  ['אֱמַ֥ר', 'אֲמַר', 'VERB', { Stem: 'Peal', Mood: 'Imp', Person: '2', Gender: 'Masc', Number: 'Sing' }, ['say', 'tell', 'command']],
+  ['חֱיִ֔י', 'חֲיָא', 'VERB', { Binyan: 'Peal', Conj: 'Imp', Person: '2', Gender: 'Masc', Number: 'Sing' }, ['live', 'let live']],
+  ['אֱמַ֥ר', 'אֲמַר', 'VERB', { Binyan: 'Peal', Conj: 'Imp', Person: '2', Gender: 'Masc', Number: 'Sing' }, ['say', 'tell', 'command']],
   ['חֶלְמָ֛א', 'חֵלֶם', 'NOUN', { Gender: 'Masc', Number: 'Sing', State: 'Det' }, ['dream']],
   ['לְעַבְדָ֖ךְ', 'עֲבַד', 'NOUN', { Gender: 'Masc', Number: 'Sing', State: 'Cons', Prefix: 'ל', Suffix: '2ms' }, ['servant', 'slave']],
   ['וּפִשְׁרָ֥א', 'פְּשַׁר', 'NOUN', { Gender: 'Masc', Number: 'Sing', State: 'Det', Prefix: 'ו' }, ['interpretation']],
-  ['נְחַוֵּֽא׃', 'חֲוָא', 'VERB', { Stem: 'Pael', Tense: 'Impf', Person: '1', Number: 'Plur' }, ['declare', 'show']],
+  ['נְחַוֵּֽא׃', 'חֲוָא', 'VERB', { Binyan: 'Pael', Conj: 'Impf', Person: '1', Number: 'Plur' }, ['declare', 'show']],
 ];
 export const ARAMAIC_FIXTURE = fixture(ARAMAIC,
   { language: 'arc', ref: { book: 'DAN', chapter: 2, verse: 4 }, verses: [{ verse: 4, tokens: tokens(DAN_2_4_ROWS) }] },

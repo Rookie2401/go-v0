@@ -5,6 +5,7 @@
  */
 export * from './contract';
 export * from './languages';
+export * from './periods';
 export * from './identity';
 export * from './encounters';
 export * from './cards';

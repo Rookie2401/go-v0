@@ -43,9 +43,14 @@ export function standingOf(row: UnitKnowledge, lookups = 0): UnitStanding {
   };
 }
 
-/** Every unit the learner has any evidence about, by unit id. A unit with no row is `new` (`standingOrNew`). */
-export function knowledgeStandings(events: readonly GoEvent[], scope: Scope): Map<string, UnitStanding> {
-  const scoped = scopedEvents(events, scope);
+/**
+ * Every unit the learner has any evidence about, by unit id. A unit with no row is `new` (`standingOrNew`).
+ * Unit ids are period-free, so by default this is the learner's standing in the LANGUAGE, every period pooled. With
+ * `varietyId` only the events of that period's texts are folded: what the learner has shown in Attic, say, and nothing else
+ * (a self-mark made while reading another period is then not counted either).
+ */
+export function knowledgeStandings(events: readonly GoEvent[], scope: Scope, opts: { varietyId?: string } = {}): Map<string, UnitStanding> {
+  const scoped = scopedEvents(events, scope).filter((e) => opts.varietyId === undefined || e.varietyId === opts.varietyId);
   const lookups = lookupCounts(scoped);
   return new Map(foldEvents(scoped, { modelVersion: PROJECTION_MODEL }).map((r) => [r.unitId, standingOf(r, lookups.get(r.unitId) ?? 0)]));
 }
@@ -95,3 +100,37 @@ export function passageStandings(profile: EcclesiaLanguageProfile, passage: Pass
 
 /** The dimensions, re-exported so a reader can list them without a second import. */
 export const KNOWLEDGE_DIMENSIONS = DIMENSIONS;
+
+// ───────────────────────────── evidence by period ─────────────────────────────
+
+export interface PeriodEvidence { encounters: number; lookups: number; help: number; understood: number; reviews: number; firstAt: string; lastAt: string }
+
+/** The key for events that state no period (Latin, or a reader that recorded without one). */
+export const UNSTATED_PERIOD = 'unstated';
+
+/**
+ * Where the evidence about each unit comes from, by the period of the text it was met in (the event's `varietyId`): how often a
+ * word was shown, looked up, helped, reported understood and reviewed in Homeric, Attic, Koine… texts. A reader shows it as
+ * "met in Koine 14 times, in Attic twice"; nothing is split in storage, this is a reading of the same events.
+ */
+export function periodEvidence(events: readonly GoEvent[], scope: Scope): Map<string, Record<string, PeriodEvidence>> {
+  const out = new Map<string, Record<string, PeriodEvidence>>();
+  const field = (kind: string): keyof Omit<PeriodEvidence, 'firstAt' | 'lastAt'> | undefined =>
+    kind === 'EncounterRecorded' ? 'encounters' : kind === 'SelectionLookedUp' ? 'lookups' : kind === 'AssistanceRequested' ? 'help'
+      : kind === 'UnderstoodMarked' ? 'understood' : kind === 'CardReviewed' || kind === 'AssessmentAnswered' ? 'reviews' : undefined;
+  for (const e of scopedEvents(events, scope)) {
+    const f = field(e.kind);
+    if (!f) continue;
+    const period = e.varietyId ?? UNSTATED_PERIOD;
+    for (const id of new Set(e.subject?.itemIds ?? [])) {
+      const byPeriod = out.get(id) ?? {};
+      const row = byPeriod[period] ?? { encounters: 0, lookups: 0, help: 0, understood: 0, reviews: 0, firstAt: e.at, lastAt: e.at };
+      row[f] += 1;
+      if (Date.parse(e.at) < Date.parse(row.firstAt)) row.firstAt = e.at;
+      if (Date.parse(e.at) > Date.parse(row.lastAt)) row.lastAt = e.at;
+      byPeriod[period] = row;
+      out.set(id, byPeriod);
+    }
+  }
+  return out;
+}

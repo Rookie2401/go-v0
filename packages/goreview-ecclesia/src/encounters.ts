@@ -14,6 +14,10 @@
  * Idempotency: `dedupeKey` = `ecclesia:<kind>:<encounterId>[:<verse>[:<chunk>]]` and the event id is derived from it and the
  * identity, so the same encounter always yields the same events and the event log keeps one copy. Text never travels: a
  * `surface` is a single word (the text guard allows four), a verse is its coordinates, a passage its reference.
+ *
+ * The PERIOD of the text travels on every event as `varietyId` (and in `payload.language`): record a passage of Plato with
+ * `profileForPeriod('el-att')`, a passage of Rashi with `profileForPeriod('he-med')`. A passage of a work that is not a book
+ * of Scripture is a `WorkPassageRef`; its source reference is a plain one whose locator is the passage key.
  */
 import { CONTRACT_VERSION, MAX_ITEM_IDS } from '../../repository-contract/src';
 import type { AssistancePayload, EncounterPayload, GoEvent, ItemMarkPayload, LanguageEvidence, LookupPayload, UnderstoodPayload } from '../../repository-contract/src';
@@ -22,7 +26,7 @@ import { fnv } from '../../goreview/src/exercises/shared';
 import type {
   EcclesiaLanguageProfile, EcclesiaToken, EncounterMapping, EncounterSink, PassageRef, PassageVerse, ReaderIdentity, ReadingEncounter, ReadingEncounterKind,
 } from './contract';
-import { assertPassageRef, inPassage, normalizeWord, scriptureRef, unitIdsOf, verseKey } from './identity';
+import { assertPassageRef, inPassage, normalizeWord, passageKey, sourceRefOf, unitIdsOf, verseKey } from './identity';
 
 export const ECCLESIA_READER_ID = 'ecclesia';
 export const ECCLESIA_PRODUCER_VERSION = 'goreview-ecclesia@1';
@@ -74,14 +78,14 @@ function envelope(ctx: EncounterContext, encounterKind: ReadingEncounterKind, ki
 }
 
 function subjectOf(profile: EcclesiaLanguageProfile, ref: PassageRef, verse: number, itemIds: string[]): GoEvent['subject'] {
-  return { itemIds, sentenceKey: verseKey(ref, verse), sourceRef: scriptureRef(profile, ref, verse) };
+  return { itemIds, sentenceKey: verseKey(ref, verse), sourceRef: sourceRefOf(profile, ref, verse) };
 }
 
 function assertEncounter(e: ReadingEncounter): void {
   if (!ENCOUNTER_ID.test(e.encounterId)) throw new RangeError(`encounterId must be 1..120 non-space characters: ${JSON.stringify(e.encounterId)}`);
   if (Number.isNaN(Date.parse(e.at))) throw new RangeError(`not an ISO instant: ${e.at}`);
   assertPassageRef(e.passage);
-  if ('verse' in e && !inPassage(e.passage, e.verse)) throw new RangeError(`verse ${e.verse} is outside ${e.passage.book} ${e.passage.chapter}:${e.passage.verse}${e.passage.verseEnd ? `-${e.passage.verseEnd}` : ''}`);
+  if ('verse' in e && !inPassage(e.passage, e.verse)) throw new RangeError(`verse ${e.verse} is outside ${passageKey(e.passage)}`);
 }
 
 /** Maps one encounter to its events (validated against the contract); pure and deterministic. */

@@ -7,7 +7,7 @@ import type { EcclesiaLanguageId, EcclesiaLanguageProfile } from './contract';
 
 const REVIEW_DEFAULTS = { grammarShare: 0.25, cardsPerDeck: 12, sessionMinutes: 10, maxNew: 4, desiredRetention: 0.9 } as const;
 /** Ancient-language reading: a token is counted known from `familiar` (recognised repeatedly) — `recognized` is one success with help. */
-const FAMILIARITY_DEFAULTS = { knownFrom: 'familiar', targetLow: 0.8, targetHigh: 0.9, formsCount: true } as const;
+const FAMILIARITY_DEFAULTS = { knownFrom: 'familiar', targetLow: 0.8, targetHigh: 0.9, formsCount: true, crossPeriodCredit: false } as const;
 const PUBLIC_DOMAIN = { textRetention: 'allowed', remoteProcessing: 'allowed', export: 'allowed', sharing: 'allowed', reviewExamples: 'allowed' } as const;
 const ATTRIBUTION_LICENCE = { textRetention: 'allowed', export: 'allowed', reviewExamples: 'allowed' } as const;
 

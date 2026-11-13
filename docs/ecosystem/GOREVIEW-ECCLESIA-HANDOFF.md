@@ -11,7 +11,7 @@ You are building the Ecclesia theological library's reader interface for Biblica
 | Package you integrate | `packages/goreview-ecclesia/src/` — import the barrel `index.ts` |
 | Tests that are your executable examples | `test/goreview-ecclesia/` |
 | Documents | `docs/ecosystem/GOREVIEW-ECCLESIA-ARCHITECTURE.md` (why), `GOREVIEW-ECCLESIA-INTEGRATION.md` (how, per screen), `GOREVIEW-ECCLESIA-REPORT.md` (what was built/tested/deferred), this file |
-| Run the tests | `npm install` at the repo root, then `npx vitest run test/goreview-ecclesia` (73 tests, ~1 s) and `npx tsc -p tsconfig.app.json --noEmit` |
+| Run the tests | `npm install` at the repo root, then `npx vitest run test/goreview-ecclesia` (93 tests, ~1 s) and `npx tsc -p tsconfig.app.json --noEmit` |
 
 Everything you need is TypeScript with relative imports; there is no build step for the package. Node 24 / Vitest 3.
 
@@ -30,6 +30,7 @@ The contract gives you nine things:
 7. `PassageFamiliarity` / `RankedPassage` + `passageFamiliarity` / `nextBestPassage` — the Next Best Passage estimate, **provisional** and labelled so.
 8. `CorpusFrequencyProvider` + `frequencyTable` / `frequencyFromPassages` — frequencies from your corpus; the package ships none.
 9. `ComposedSession` + `composeSession` / `createEcclesiaRunner` — a review session: reading → GoReview intake → planner → real runner.
+10. `EcclesiaPeriod` + `periodsOf` / `resolvePeriod` / `profileForPeriod` / `periodEvidence` / `crossPeriodKey` — the periods of Hebrew (Biblical/Classical, Mishnaic, Medieval, Modern) and Greek (Homeric, Attic, Koine, Medieval, Modern): ids are period-free, the period travels with each text, spellings are linked not merged. And `WorkPassageRef` for works that are not Scripture.
 
 You implement five inputs (integration guide §0): tokenised passages, a lexicon, a `ReaderIdentity` (one enrolment per language), an `EncounterSink` that persists before it resolves, and encounter ids + a clock.
 
@@ -52,6 +53,7 @@ You implement five inputs (integration guide §0): tokenised passages, a lexicon
 | Progress / word status | `src/profile.ts`; `test/goreview-ecclesia/session.test.ts` ("knowledge profile from reading") | Level ≠ schedule. `KNOWLEDGE_LEVEL_WORDS` has learner-facing wording. |
 | Review session | `src/session.ts`; the vertical slice | `composed.plan.items[].why`, `plan.skipped`, `composed.declined` explain every inclusion/exclusion — surface them. Listening is off. |
 | Next passage | `src/familiarity.ts`, `src/frequency.ts`; `test/goreview-ecclesia/familiarity.test.ts` | Show the number as an estimate with its reasons; early on lower `knownFrom` to `'recognized'` and say so. |
+| Periods (Classical / Mishnaic / Medieval / Modern Hebrew; Homeric / Attic / Koine / Medieval / Modern Greek) and non-Scripture works | `src/periods.ts`; architecture §3a; integration §1a; `test/goreview-ecclesia/periods.test.ts` | You declare each text's period with `profileForPeriod`; one lexeme = one unit in every period; monotonic / unpointed spellings are separate units linked by `crossPeriodKey`; periods without an analysed corpus default to `provisional`. |
 | Language choices | `src/languages.ts`; architecture §3 | Aramaic is its own Repository language `arc`; Greek is `el`/`el-koi` (pools with the Biblia reader). `withOverrides` if you must change filing. |
 
 **The shared engine you are standing on (read only when a question is not answered above):**
@@ -91,6 +93,8 @@ You implement five inputs (integration guide §0): tokenised passages, a lexicon
 | `morph:<lang>:<POS>:<k=v|…>` | `morph:el:NOUN:Case=Nom|Gender=Masc|Number=Sing` | a morphological construction |
 | `card:<dimension>:<unitId>` | `card:written-recognition:lemma:el:λόγος:NOUN` | a review card |
 | `JHN.1.1-18`, `v:JHN.1.1` | | passage key; per-verse context key (`subject.sentenceKey`) |
+| `w:<work>.<n>.<n>` | `w:plato-republic.514.1` | a passage of a work that is not Scripture (also its source-reference locator) |
+| period ids | `he-bib he-mish he-med he-mod` · `el-hom el-att el-koi el-med el-mod` · `arc-bib` | the period of a text = the event's `varietyId` |
 | `ecclesia:<kind>:<encounterId>[:<verse>]` | `ecclesia:word-selected:rs42:7` | an event's `dedupeKey` |
 | Levels | `new seen recognized familiar known automatic` | the six knowledge levels |
 

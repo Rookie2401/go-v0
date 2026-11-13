@@ -15,7 +15,7 @@ import { KNOWLEDGE_LEVEL_RANK } from '../../repository-contract/src';
 import type { KnowledgeLevel } from '../../repository-contract/src';
 import { FAMILIARITY_HEURISTIC } from './contract';
 import type { CorpusFrequencyProvider, EcclesiaLanguageProfile, FamiliarityPolicy, PassageFamiliarity, PassageTokens, RankedPassage, UnitStanding, UnknownLexeme } from './contract';
-import { lexemeId, formId, passageKey } from './identity';
+import { crossPeriodKey, formId, lexemeId, parseLexemeId, passageKey } from './identity';
 
 export interface FamiliarityInput {
   profile: EcclesiaLanguageProfile;
@@ -28,6 +28,22 @@ export interface FamiliarityInput {
 const atLeast = (level: KnowledgeLevel, floor: KnowledgeLevel): boolean => KNOWLEDGE_LEVEL_RANK[level] >= KNOWLEDGE_LEVEL_RANK[floor];
 const r6 = (x: number): number => Math.round(x * 1e6) / 1e6;
 
+/**
+ * The best-known lexeme under each spelling-blind key (part of speech + `crossPeriodKey` of the lemma): how a word known as
+ * polytonic ἄνθρωπος is found when a Modern text prints άνθρωπος. A link for the familiarity estimate only; units stay apart.
+ */
+export function crossPeriodIndex(profile: EcclesiaLanguageProfile, standings: ReadonlyMap<string, UnitStanding>): Map<string, UnitStanding> {
+  const out = new Map<string, UnitStanding>();
+  for (const s of standings.values()) {
+    const parsed = parseLexemeId(s.unitId, profile.repository.languageId);
+    if (!parsed) continue;
+    const key = `${parsed.pos}|${crossPeriodKey(profile.id, parsed.lemma)}`;
+    const prev = out.get(key);
+    if (!prev || KNOWLEDGE_LEVEL_RANK[s.level] > KNOWLEDGE_LEVEL_RANK[prev.level]) out.set(key, s);
+  }
+  return out;
+}
+
 export function passageFamiliarity(inp: FamiliarityInput): PassageFamiliarity {
   const { profile, passage, standings } = inp;
   if (passage.language !== profile.id) throw new RangeError(`passage is ${passage.language}, profile is ${profile.id}`);
@@ -36,7 +52,8 @@ export function passageFamiliarity(inp: FamiliarityInput): PassageFamiliarity {
   const notes = ['provisional heuristic: share of word tokens at or above the policy level; not calibrated against learners'];
   if (!inp.frequency || inp.frequency.total === 0) notes.push('no corpus-frequency provider: unknown lexemes are ordered by occurrences in the passage');
 
-  let tokens = 0, known = 0, evidenced = 0;
+  let tokens = 0, known = 0, evidenced = 0, credited = 0;
+  const linked = policy.crossPeriodCredit ? crossPeriodIndex(profile, standings) : undefined;
   const unknown = new Map<string, UnknownLexeme>();
   for (const v of passage.verses) for (const t of v.tokens) {
     tokens += 1;
@@ -47,6 +64,10 @@ export function passageFamiliarity(inp: FamiliarityInput): PassageFamiliarity {
     if (standings.has(lex) || standings.has(form)) evidenced += 1;
     const isKnown = atLeast(lexLevel, policy.knownFrom) || (policy.formsCount && atLeast(formLevel, policy.knownFrom));
     if (isKnown) { known += 1; continue; }
+    if (linked) {
+      const other = linked.get(`${t.pos}|${crossPeriodKey(profile.id, t.lemma)}`);
+      if (other && other.unitId !== lex && atLeast(other.level, policy.knownFrom)) { known += 1; credited += 1; continue; }
+    }
     const row = unknown.get(lex);
     if (row) row.occurrences += 1;
     else {
@@ -54,6 +75,7 @@ export function passageFamiliarity(inp: FamiliarityInput): PassageFamiliarity {
       unknown.set(lex, { lexemeId: lex, lemma: t.lemma, pos: t.pos, occurrences: 1, level: lexLevel, ...(rank !== undefined ? { frequencyRank: rank } : {}) });
     }
   }
+  if (credited) notes.push(`${credited} token${credited === 1 ? '' : 's'} counted as known through another period's spelling of the word (crossPeriodCredit): a spelling link, not an identity`);
   const familiarity = tokens ? r6(known / tokens) : 0;
   const inTargetBand = tokens > 0 && familiarity >= policy.targetLow && familiarity <= policy.targetHigh;
   const distanceFromBand = inTargetBand ? 0 : r6(familiarity < policy.targetLow ? policy.targetLow - familiarity : familiarity - policy.targetHigh);
@@ -62,7 +84,7 @@ export function passageFamiliarity(inp: FamiliarityInput): PassageFamiliarity {
     (a.frequencyRank ?? Infinity) - (b.frequencyRank ?? Infinity) || b.occurrences - a.occurrences || (a.lexemeId < b.lexemeId ? -1 : a.lexemeId > b.lexemeId ? 1 : 0));
   return {
     heuristic: FAMILIARITY_HEURISTIC, provisional: true, language: profile.id, ref: passage.ref, policy, tokens, knownTokens: known, familiarity, inTargetBand, distanceFromBand,
-    reliability: tokens ? r6(evidenced / tokens) : 0, unknownLexemes, notes,
+    reliability: tokens ? r6(evidenced / tokens) : 0, creditedAcrossPeriods: credited, unknownLexemes, notes,
   };
 }
 

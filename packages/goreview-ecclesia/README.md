@@ -6,6 +6,7 @@ GoReview specialised for the **Ecclesia theological library**: Biblical Hebrew (
 | --- | --- |
 | `contract.ts` | The public types Ecclesia codes against (languages, tokens, passages, reading encounters, cards, standings, familiarity, frequency, lexicon, sessions). |
 | `languages.ts` | The four profiles: Repository filing (`he`/`he-bib`, `arc`/`arc-bib`, `el`/`el-koi`, `la`), edition ids, sources and licences, per-language defaults. |
+| `periods.ts` | The periods of Hebrew (Biblical/Classical, Mishnaic, Medieval, Modern) and Greek (Homeric, Attic, Koine, Medieval, Modern): catalogue, `profileForPeriod`, name resolution. Ids are period-free; the period travels with each text. |
 | `identity.ts` | Stable unit ids (`lemma:el:λόγος:NOUN`, `form:el:λόγος`, `morph:el:NOUN:Case=Nom|…`), card ids, passage keys and typed Scripture references. |
 | `encounters.ts` | Reading encounters → Repository events, idempotent by `encounterId`; text never travels. |
 | `cards.ts` | Contextual cards: deterministic card identity plus the Scripture place the word was met. |

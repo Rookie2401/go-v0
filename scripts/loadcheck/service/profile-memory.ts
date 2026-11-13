@@ -20,6 +20,8 @@ import { buildSelectionEvent, PENDING_IDENTITY } from '../../../packages/golearn
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const nums = process.argv.slice(2).filter((a) => /^[0-9]+$/.test(a)).map(Number);
+// `light` (2026-11-13): the scan as GoReview asks it now, the light listing of the rows with no catalogue unit; without it, the full unsorted walk it used to be
+const LIGHT = process.argv.includes('light');
 const N = nums[0] ?? 20000, WORDS = nums[1] ?? 3500;
 const gc = (globalThis as { gc?: () => void }).gc;
 const MB = (b: number): number => Math.round(b / 1048576);
@@ -81,7 +83,7 @@ async function homeScan(run: number): Promise<{ pages: number; peakRss: number; 
   let after: string | undefined, pages = 0, rows = 0, peakRss = 0, peakHeap = 0;
   const sample = (): void => { const m = process.memoryUsage(); peakRss = Math.max(peakRss, m.rss); peakHeap = Math.max(peakHeap, m.heapUsed); };
   while (true) {
-    const page = await client.vocabulary({ languageId: 'sq', limit: 100, ...(after ? { after } : {}) });
+    const page = await client.vocabulary({ languageId: 'sq', limit: 100, ...(LIGHT ? { detail: 'light' as const, catalogued: false } : {}), ...(after ? { after } : {}) });
     if (!page.ok) throw new Error(`vocabulary ${page.status}`);
     pages++; rows += page.data.items.length; sample();
     after = page.data.nextCursor;

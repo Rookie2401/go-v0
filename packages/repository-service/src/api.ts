@@ -34,9 +34,17 @@ export interface VocabularyQuery {
   sort?: 'knowledge' | 'recent' | 'alphabetical';
   firstEncounterFrom?: string; firstEncounterTo?: string; lastEncounterFrom?: string; lastEncounterTo?: string;
   requiresAssistance?: boolean; unresolved?: boolean; reviewStatus?: 'none' | 'active' | 'suspended'; sourceRef?: string;
+  /**
+   * 'light': knowledge rows and their catalogue units only, in unit order; no surface forms, sources, dates or review status (the items carry
+   * `surfaceForms` of the unit's label alone and empty `sources`), and nothing of the event log is read. For a walk of the whole vocabulary.
+   * A service older than 2026-11-13 ignores it and answers in full, so the page's `detail` says which it was.
+   */
+  detail?: 'light' | 'full';
+  /** With detail 'light' only: false keeps the rows that have no catalogue unit, true those that have one. */
+  catalogued?: boolean;
 }
 export interface VocabularyItem { knowledge: UnitKnowledge; unit?: LinguisticUnit; surfaceForms: string[]; firstEncounter?: string; lastEncounter?: string; assistanceCount?: number; reviewStatus?: 'none' | 'active' | 'suspended'; sources: SourceRef[] }
-export interface VocabularyPage { items: VocabularyItem[]; nextCursor?: string; catalog: { total: number; counts: Record<KnowledgeLevel, number> } }
+export interface VocabularyPage { items: VocabularyItem[]; nextCursor?: string; catalog: { total: number; counts: Record<KnowledgeLevel, number> }; /** Present ('light') when the light listing answered. */ detail?: 'light' }
 export type DocumentMeta = Omit<PrivateDocument, 'body'>;
 /** A unit's provenance as the service reports it: the v3 defaults are filled in (a v2 row reads as origin "import", validation "unreviewed"). */
 export type ReportedProvenance = UnitProvenance & { origin: ProvenanceOrigin; validation: ValidationLevel };
@@ -154,6 +162,7 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
       firstEncounterFrom: q.firstEncounterFrom, firstEncounterTo: q.firstEncounterTo, lastEncounterFrom: q.lastEncounterFrom, lastEncounterTo: q.lastEncounterTo,
       requiresAssistance: q.requiresAssistance === undefined ? undefined : String(q.requiresAssistance),
       unresolved: q.unresolved === undefined ? undefined : String(q.unresolved), reviewStatus: q.reviewStatus, sourceRef: q.sourceRef,
+      detail: q.detail, catalogued: q.catalogued === undefined ? undefined : String(q.catalogued),
     }),
     candidates: (enrolmentId, limit, after, objectiveDimensions) => call('GET', '/candidates', undefined, { enrolmentId, limit, after, objectives: objectiveDimensions?.join(',') }),
     preferences: (languageId) => call('GET', '/preferences', undefined, { languageId }),

@@ -80,12 +80,14 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   const adapters = createAdapters(doc);
   const loadAnalyser = createAnalyserLoader(chromeApi);
   const lexicon = createLexiconPreparer(chromeApi);
+  let pageReadingVariety: { languageId: string; varietyId: string } | undefined;
   const controller = new LookupController({
     doc,
     adapters,
     // each language's own sentence cutter; a language without one (yet) is cut by the adapter's Intl.Segmenter default
     segmenterFor: segmenterOf,
     resolveLanguage,
+    textVarietyFor: (languageId) => pageReadingVariety?.languageId === languageId ? pageReadingVariety.varietyId : undefined,
     glossForms: (lemma, pos, languageId) => {
       const a = getAnalyser(languageId);
       if (!a || languageId === 'sq') return []; // the worker carries Albanian
@@ -134,6 +136,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   const analyses = new Map<string, AbortController>();
   doc.defaultView?.addEventListener('pagehide', () => {
     for (const job of analyses.values()) job.abort();
+    pageReadingVariety = undefined;
   });
   chromeApi?.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // only this extension's own background may drive the content script
@@ -154,6 +157,11 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
           const varietyId = request.varietyId || declaredTextVariety(languageId, doc.documentElement?.lang);
           if (needsTextVariety(languageId) && !validTextVariety(languageId, varietyId)) {
             return { ok: false, code: 'variety-required' };
+          }
+          if (varietyId && needsTextVariety(languageId)) {
+            // A matching word-card mark made after this explicit choice will
+            // record new period-scoped evidence alongside legacy language IDs.
+            pageReadingVariety = { languageId, varietyId };
           }
           job.signal.throwIfAborted();
           await loadAnalyser(languageId);

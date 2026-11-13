@@ -56,6 +56,8 @@ export interface ControllerDeps {
   translationEngine?: TranslationEngine;
   /** The languages this build can analyse. */
   analysers?: string[];
+  /** Explicit page-local period choice made by the learner in Reading Analysis. */
+  textVarietyFor?(languageId: string): string | undefined;
   /** The placeholder identity written into events; the background replaces it. */
   identity: Identity;
   /** Resolves when the identity is complete (device id loaded). */
@@ -294,7 +296,17 @@ export class LookupController {
       const installed = status?.installedLanguages ? analysers.filter((l) => status.installedLanguages!.includes(l) || l === status.languageId) : analysers;
       const resolution = await this.resolveLanguageOf(adapter, sel, status, installed, req.languageOverride);
       if (!live()) return { status: 'superseded' };
-      const language: LanguageInfo = { languageId: resolution.languageId, varietyId: resolution.varietyId, basis: resolution.basis, confidence: resolution.confidence, reasons: resolution.reasons, ...(resolution.source ? { source: resolution.source } : {}) };
+      // A text-variety choice is stronger than the resolver's period default;
+      // the language ID itself still comes from ordinary GoLearn resolution.
+      const pageVariety = resolution.languageId ? this.d.textVarietyFor?.(resolution.languageId) : undefined;
+      const language: LanguageInfo = {
+        languageId: resolution.languageId,
+        varietyId: pageVariety ?? resolution.varietyId,
+        basis: pageVariety ? 'override' : resolution.basis,
+        confidence: pageVariety ? 1 : resolution.confidence,
+        reasons: pageVariety ? [...resolution.reasons, 'text variety chosen by the reader in Reading Analysis'] : resolution.reasons,
+        ...(pageVariety ? { source: 'reading-analysis' } : resolution.source ? { source: resolution.source } : {}),
+      };
       if (resolution.basis === 'undetermined' || !resolution.languageId) {
         return await this.undetermined({ language, analysers: installed, adapter, timer, anchor: usedFallbackText ? fixed : safe(() => adapter.anchor(sel.range)) ?? fixed, my });
       }
@@ -342,6 +354,7 @@ export class LookupController {
       const parseCtx: ParseContext = {
         kind: ctx.kind, confidence: ctx.confidence, reason: ctx.reason, sentence: ctx.sentence, selStart: ctx.selStart, selEnd: ctx.selEnd,
         direction: sel.direction, pageLanguage: sel.pageLanguage,
+        ...(language.varietyId ? { varietyId: language.varietyId } : {}),
       };
       // the full indexes of a sharded language (Hebrew, Greek) for this sentence, before the parse; a failure leaves the compiled core
       if (this.d.prepareLexicon) { try { await this.d.prepareLexicon(languageId, parseCtx.sentence ?? sel.surface); } catch { /* the card says what is not loaded */ } if (!live()) return { status: 'superseded' }; }

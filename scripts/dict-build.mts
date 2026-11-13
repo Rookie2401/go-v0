@@ -53,7 +53,7 @@ try {
   console.log(`  input lines:      ${s.lines} (+ ${s.blank} blank)`);
   console.log(`  malformed lines:  ${s.malformed}`);
   console.log(`  skipped:          ${KAIKKI_SKIPS.map((k) => `${k} ${s.skipped[k]}`).join(', ')}${nonWord ? ` (non-word: ${nonWord})` : ''}`);
-  if (s.aliases) console.log(`  spelling variants: ${s.aliases} small form-of entries added (uerbum, ejus: the other printed spellings of a Latin headword)`);
+  if (s.aliases) console.log(`  spelling aliases: ${s.aliases} small form-of entries added (${opt.lang === 'he' ? 'the pointed spelling and the headword-line forms of a Hebrew entry: לֶחֶם, פירות' : 'uerbum, ejus: the other printed spellings of a Latin headword'})`);
   console.log(`  entries kept:     ${s.kept} lines -> ${s.entries} entries (${s.forms} forms) after merging same form + part of speech + etymology + pronunciations`);
   console.log(`  with respelling:  ${s.withRespelling}; ipa ${s.withIpa}; romanization ${s.withRomanization}; register ${s.withRegister}`);
   console.log(`  inflected forms:  ${s.withFormOf} entries are forms of a lemma (${s.formOfRelations} form-of relations, no gloss of their own)`);

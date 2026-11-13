@@ -124,7 +124,7 @@ describe('adapter versions', () => {
   });
 
   it('declare a built dictionary only where one exists', () => {
-    for (const lang of ['es', 'de', 'hi', 'th', 'nb', 'nn']) {
+    for (const lang of ['es', 'de', 'hi', 'th', 'nb', 'nn', 'he']) {
       const d = PACKS[lang].lexical.dictionary!;
       expect(d.attribution).toBe('Wiktionary, via kaikki.org — CC BY-SA 4.0');
       expect(d.baseUrl).toBe(`dict/${lang}/`);
@@ -132,6 +132,7 @@ describe('adapter versions', () => {
     // each Norwegian standard has its own dictionary, built from its own kaikki extract; neither names the other's
     expect(PACKS.nb.lexical.dictionary).toMatchObject({ id: 'kaikki-nb@2026-10-30', frequency: true });
     expect(PACKS.nn.lexical.dictionary).toMatchObject({ id: 'kaikki-nn@2026-10-30', frequency: false });
+    expect(PACKS.he.lexical.dictionary).toMatchObject({ id: 'kaikki-he@2026-10-03', entries: 41288, frequency: false });
   });
 
   it('Norwegian: two packs, each stating its written standard on every variety', () => {

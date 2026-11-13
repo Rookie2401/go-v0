@@ -219,12 +219,31 @@ interface CandidateCache { version?: 1; fetchedAt: string; priorityPolicyVersion
 export const RECOVERY_SCAN_MIN_INTERVAL_MS = 10 * 60_000;
 /** After this long a walk is repeated even if the vocabulary did not grow. */
 export const RECOVERY_SCAN_MAX_AGE_MS = 2 * 60 * 60_000;
+/**
+ * "New deck" asks for a fresh walk (the owner, 2026-11-12: the words just met should be among the new ones), unless the last complete walk is
+ * younger than this: pressing it again and again never walks the vocabulary more than once a minute.
+ */
+export const RECOVERY_SCAN_PRESS_MIN_MS = 60_000;
 interface RecoveryScanResult { unresolvedVocabulary: VocabularyItem[]; vocabularyComplete: boolean; fullKnowledge: UnitKnowledge[]; fullKnowledgeRead: boolean; notes: string[]; reused: boolean }
-interface RecoveryScanEntry { done?: { at: number; total: number; unresolvedVocabulary: VocabularyItem[]; fullKnowledge: UnitKnowledge[] }; running?: Promise<RecoveryScanResult> }
+interface RecoveryScanEntry {
+  done?: { at: number; total: number; unresolvedVocabulary: VocabularyItem[]; fullKnowledge: UnitKnowledge[] };
+  running?: Promise<RecoveryScanResult>;
+  /** A complete walk older than this instant is not reused (set by "New deck": expireRecoveryScan). */
+  freshAfter?: number;
+}
 /** Per app (as refreshEntries), per learner and language: the last COMPLETE walk, and the walk under way. Module-level, so a route change keeps it. */
 const recoveryScans = new WeakMap<AppContext, Map<string, RecoveryScanEntry>>();
 /** Tests (and a sign-out) forget the walks. */
 export const forgetRecoveryScans = (ctx: AppContext): void => { recoveryScans.delete(ctx); };
+/** The next walk for this learner and language is a full one, unless the last complete walk is younger than RECOVERY_SCAN_PRESS_MIN_MS. */
+function expireRecoveryScan(ctx: AppContext, identity: Identity): void {
+  let byApp = recoveryScans.get(ctx);
+  if (!byApp) { byApp = new Map(); recoveryScans.set(ctx, byApp); }
+  const key = `${identity.learnerId}|${identity.languageId}`;
+  const entry = byApp.get(key) ?? {};
+  entry.freshAfter = ctx.deps.now().getTime() - RECOVERY_SCAN_PRESS_MIN_MS;
+  byApp.set(key, entry);
+}
 
 /**
  * The raw reads the candidate recovery needs: every vocabulary row without a catalogue unit (a walk of the unsorted listing, 100 a page) and the
@@ -245,7 +264,8 @@ async function recoveryScan(ctx: AppContext, api: Awaited<ReturnType<AppContext[
   const held = entry;
   const run = (async (): Promise<RecoveryScanResult> => {
     const at = ctx.deps.now().getTime();
-    const done = held.done;
+    // a walk from before "New deck" was pressed is not reused (nor its size compared): the press asked for the words met since
+    const done = held.done && held.done.at >= (held.freshAfter ?? -Infinity) ? held.done : undefined;
     const reuse = (): RecoveryScanResult => ({ unresolvedVocabulary: done!.unresolvedVocabulary, vocabularyComplete: true, fullKnowledge: done!.fullKnowledge, fullKnowledgeRead: true, notes: [], reused: true });
     if (done && at - done.at < RECOVERY_SCAN_MIN_INTERVAL_MS) return reuse();
     const notes: string[] = [];
@@ -693,6 +713,25 @@ export async function refreshReviewModel(ctx: AppContext, opts: { force?: boolea
     return entry.flight?.promise ?? entry.last;
   };
   return within(ctx, reviewTiming.refreshDeadlineMs, run(), fallback);
+}
+
+/**
+ * "New deck" (the owner, 2026-11-12): a live load whose recovery scan walks the vocabulary afresh (unless a complete walk is under a minute old), so
+ * words met since the last walk can be among the new ones. Like every press it waits at most `waitMs` (PRESS_WAIT_MS): the live model when it
+ * lands in time, otherwise undefined and the caller plans from this device's copy; the load goes on and repaints the home when it lands.
+ * A load already under way (one that may reuse the old walk) is let finish first, then the fresh one starts.
+ */
+export async function liveModelWithNewWords(ctx: AppContext, waitMs: number = PRESS_WAIT_MS): Promise<ReviewModel | undefined> {
+  const id = await ctx.identity();
+  if (!id) return undefined;
+  expireRecoveryScan(ctx, id);
+  const entry = entryFor(ctx, id);
+  const load = (async (): Promise<ReviewModel | undefined> => {
+    if (entry.flight) await entry.flight.promise.catch(() => undefined);
+    return refreshReviewModel(ctx, { force: true });
+  })().catch(() => undefined);
+  const model = await within(ctx, waitMs, load, () => undefined);
+  return model && !model.provisional ? model : undefined;
 }
 
 /**

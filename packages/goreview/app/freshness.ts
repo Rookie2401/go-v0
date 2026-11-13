@@ -78,11 +78,11 @@ export async function modelIsFresh(ctx: AppContext, model: ReviewModel, nowIso: 
  * The model to plan with: the one given when it is still fresh, otherwise the model rebuilt from this device (its last complete snapshot and the
  * current local log; a press never waits for the network, 2026-11-10), after waiting at most PRESS_WAIT_MS for a refresh that is already running
  * (its live model is used if it arrives). The one given when nothing local can be built or there is no learner. A plan from a model that turns out
- * stale is safe: the session's presentation guard checks each card again. Never throws.
+ * stale is safe: the session's presentation guard checks each card again. Never throws. `waitMs: 0` when the press has already waited its time.
  */
-export async function freshModel(ctx: AppContext, model: ReviewModel): Promise<ReviewModel> {
+export async function freshModel(ctx: AppContext, model: ReviewModel, opts: { waitMs?: number } = {}): Promise<ReviewModel> {
   try {
     if (await modelIsFresh(ctx, model, ctx.deps.now().toISOString())) return model;
-    return (await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS, fallback: model })) ?? model;
+    return (await currentReviewModel(ctx, { waitMs: opts.waitMs ?? PRESS_WAIT_MS, fallback: model })) ?? model;
   } catch { return model; }
 }

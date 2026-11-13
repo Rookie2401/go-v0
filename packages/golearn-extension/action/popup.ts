@@ -58,6 +58,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     }));
     langSelect.value = s.languageId;
     langSelect.disabled = list.length < 2;
+    renderTextVarieties();
     langLine.classList.remove('warn', 'sr');
     // one language only: say why, truthfully. With the account unreadable (its service cannot be reached, nothing kept from before) the
     // account's languages are simply not known here yet; that is not "others are added in GoLearn setup" (2026-10-27)

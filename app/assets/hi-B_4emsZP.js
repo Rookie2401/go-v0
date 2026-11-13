@@ -1,0 +1,1 @@
+import{t as e}from"./hi-DWD50EIF.js";export{e as adapter};

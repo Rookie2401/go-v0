@@ -1,1 +1,0 @@
-import{t as e}from"./es-D8BkPtTC.js";export{e as adapter};

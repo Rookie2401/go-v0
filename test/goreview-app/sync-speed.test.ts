@@ -89,9 +89,12 @@ describe('the cached profile', () => {
     rig.clock.set('2026-10-08T10:01:00.000Z'); // a minute later: well inside the ten-minute lifetime
     const r = await rig.app.ctx.syncNow({ force: true });
     expect(r?.pull?.appended).toBe(1);
-    const list = await rig.app.ctx.enrolments();
+    // the cached profile is used at once and asked about in the background (2026-11-10): the read does not wait for the service
+    await rig.app.ctx.enrolments();
+    await until(() => (calls.counts.me ?? 0) === meBefore + 1, 'the background profile refresh');
+    await until(async () => (await rig.app.ctx.enrolments()).length === 2, 'the refreshed profile');
     expect(calls.counts.me ?? 0).toBe(meBefore + 1);
-    expect(list.map((e) => e.languageId).sort()).toEqual(['de', 'sq']);
+    expect((await rig.app.ctx.enrolments()).map((e) => e.languageId).sort()).toEqual(['de', 'sq']);
   });
 
   it('is kept by a pull that brought nothing new', async () => {

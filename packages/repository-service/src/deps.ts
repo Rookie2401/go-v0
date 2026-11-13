@@ -107,6 +107,8 @@ export interface ServiceInfo {
   storeKind: string;
   /** `Date.now()` at start. */
   startedAt: number;
+  /** The deployed commit (12 hexadecimal characters), read once at start through config.ts. Absent: not reported. */
+  commit?: string;
   /** The newest applied migration version, read when asked. It reads the database, so a failure here means the service cannot serve. */
   schemaVersion?: () => Promise<number | undefined>;
   /** How the backups and the disk stand (`backupHealth.ts`). Absent: not reported. */

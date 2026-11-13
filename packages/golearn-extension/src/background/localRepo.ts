@@ -1,7 +1,9 @@
 /**
  * The device-local Repository inside the background worker: GoLearn without an account.
  *
- * ONE instance per extension, here (`openLocalRepository` over `chrome.storage.local`, rows under `golearn:repo:`). Extension pages reach it
+ * ONE instance per extension, here: `openLocalRepository` over IndexedDB (databases `golearn-repository` and `golearn-repository-kv`) when the worker has it, after a
+ * one-time verified move of the older rows; else over `chrome.storage.local` (rows under `golearn:repo:`, which also stay, frozen, after the move and hold the
+ * migration's state row). Extension pages reach it
  * with `MSG.localRepo` (see `LocalRepoRequest` in ../protocol.ts); a content script never does. Nothing here leaves the device: the only road out is
  * `uploadTo(api)` with the signed-in session's client, run once after a successful sign-in (and on request), followed by a pull.
  *
@@ -12,7 +14,7 @@
  *  - Nothing here may break recording: any failure is swallowed and the event stays in the worker's own log and queue.
  */
 import type { Enrolment, GoEvent, LearningGoal } from '../../../repository-contract/src';
-import { inspectLocal, markEventsOwned, openLocalRepository, type LocalRepository } from '../../../repository-local/src';
+import { inspectLocal, markEventsOwned, openLocalRepository, uploadWaiting, type LocalRepository, type OpenLocalOptions, type StorageInfo } from '../../../repository-local/src';
 import { adaptStorageArea, createLock } from '../../../repository-sync/src';
 import type { LanguageAdapter } from '../../../../src/core';
 import type { StorageArea } from '../platform';
@@ -26,7 +28,50 @@ export const LOCAL_PREFIX = 'golearn:repo:';
 export const ACTIVE_KEY = 'golearn:local-active';
 /** The outcome of the last upload, shown on the sync screen. */
 export const UPLOAD_STATUS_KEY = 'golearn:local-upload';
+/**
+ * A small copy of the device's open enrolments (2026-11-09), kept whenever they are read: the worker answers which language the learner reads in
+ * from it while the device Repository is still opening (opening reads the whole history: 10 s and more after the worker slept, with a large one,
+ * and every lookup waited for it to know its language).
+ */
+export const ENROLMENTS_KEY = 'golearn:local-enrolments';
+interface EnrolmentSummary { enrolmentId: string; languageId: string; startedAt: string; explicit: boolean }
 const FORMAT = 'golearn-local-export@1';
+
+/**
+ * The release's migration number (Stage 2, docs/ecosystem/LOADING-ARCHITECTURE-2026-11-10.md). A device whose one-time move into IndexedDB failed does not try
+ * again with the same number: raise it to make those devices try again.
+ */
+export const LOCAL_MIGRATION_ATTEMPT = 1;
+/** The two IndexedDB databases are `golearn-repository` and `golearn-repository-kv`. */
+export const LOCAL_IDB_NAME = 'golearn-repository';
+/** The browser stops a Manifest V3 worker after about 30 s without an extension event (IndexedDB work does not count): ping the extension API this often while the open runs. */
+export const KEEP_ALIVE_MS = 20_000;
+/**
+ * Set while the first pull of an account's history has not reached its head (a sign-in's upload-and-pull started and did not finish: the browser stopped the worker, the
+ * network dropped). The next successful sync round of a worker that finds it runs the upload-and-pull again, which resumes from the pull cursor kept per page.
+ */
+export const PULL_OPEN_KEY = 'golearn:local-pull-open';
+
+/**
+ * One 20 s extension-API touch shared by everything that runs long in the worker (the Repository's open, the upload-and-pull, a sync round): `hold()` starts it
+ * (if it is not running) and returns the release; it stops when the last holder has released.
+ */
+export function createWorkerHold(ping: (() => void) | undefined): () => () => void {
+  let holders = 0;
+  let timer: ReturnType<typeof setInterval> | undefined;
+  return () => {
+    if (!ping) return () => undefined;
+    holders += 1;
+    if (timer === undefined) timer = globalThis.setInterval(() => { try { ping(); } catch { /* a convenience */ } }, KEEP_ALIVE_MS);
+    let released = false;
+    return () => {
+      if (released) return;
+      released = true;
+      holders -= 1;
+      if (holders <= 0 && timer !== undefined) { globalThis.clearInterval(timer); timer = undefined; holders = 0; }
+    };
+  };
+}
 
 export interface LocalRepoServiceOptions {
   area: StorageArea;
@@ -34,6 +79,14 @@ export interface LocalRepoServiceOptions {
   session: SessionManager;
   packs: PackProvider;
   now: () => number;
+  /** The worker's IndexedDB (the repository opens over it, and moves the old rows into it once). Absent: the rows in `area`, as before. */
+  idb?: { indexedDB: IDBFactory; keyRange?: typeof IDBKeyRange };
+  /** Called every 20 s while the repository is opening (a migration can take many seconds), so the browser does not stop the worker. */
+  keepAlive?: () => void;
+  /** The worker's shared hold (see `createWorkerHold`); without it the service makes its own from `keepAlive`. */
+  hold?: () => () => void;
+  /** Test seam: passed to the migration as `migrate.inject`. */
+  migrationInject?: NonNullable<OpenLocalOptions['migrate']>['inject'];
 }
 
 interface UploadStatus { at: number; sent: number; duplicates: number; failed: number; waiting?: number; pulled: number; error?: string }
@@ -49,7 +102,14 @@ const bySetup = (a: Enrolment, b: Enrolment): number => a.startedAt.localeCompar
 
 export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   const lock = createLock();
+  const hold = opts.hold ?? createWorkerHold(opts.keepAlive);
+  /** Events may be waiting for upload: unknown until counted once (a whole-log read), then kept (true after a local record, false after a clean upload). */
+  let pendingHint: boolean | undefined;
+  let transferring = 0;
   let opening: Promise<LocalRepository | undefined> | undefined;
+  /** The repository once it has opened (until then the enrolment summary answers). */
+  let opened: LocalRepository | undefined;
+  let summaryWritten = '';
   let signInWork: Promise<unknown> = Promise.resolve();
   const enrolmentOf = new Map<string, string>();
 
@@ -57,16 +117,25 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   const adapters = new Proxy({}, { get: (_t, k) => (typeof k === 'string' ? getAnalyser(k) : undefined) }) as Record<string, LanguageAdapter | undefined>;
 
   async function start(): Promise<LocalRepository | undefined> {
+    // the migration of a large history takes seconds, and the browser stops a worker that sees no extension event for about 30 s
+    const release = hold();
     try {
-      return await openLocalRepository({ area: adaptStorageArea(opts.area), keyPrefix: LOCAL_PREFIX, adapters, deviceId: await opts.deviceId() });
-    } catch { return undefined; }
+      const idb = opts.idb;
+      return await openLocalRepository({
+        area: adaptStorageArea(opts.area), keyPrefix: LOCAL_PREFIX, adapters, deviceId: await opts.deviceId(),
+        ...(idb ? {
+          idb: { indexedDB: idb.indexedDB, name: LOCAL_IDB_NAME, ...(idb.keyRange ? { keyRange: idb.keyRange } : {}) },
+          migrate: { attempt: LOCAL_MIGRATION_ATTEMPT, ...(opts.migrationInject ? { inject: opts.migrationInject } : {}) },
+        } : {}),
+      });
+    } catch { return undefined; } finally { release(); }
   }
   /** The repository, opened once; a failed open is tried again on the next call. */
   function open(): Promise<LocalRepository | undefined> {
     if (!opening) {
       const p = start();
       opening = p;
-      void p.then((r) => { if (!r && opening === p) opening = undefined; });
+      void p.then((r) => { if (r && opening === p) opened = r; if (!r && opening === p) opening = undefined; });
     }
     return opening;
   }
@@ -75,7 +144,23 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
 
   async function openEnrolments(repo: LocalRepository): Promise<Enrolment[]> {
     const r = await repo.api.listEnrolments();
-    return r.ok ? r.data.enrolments.filter((e) => !e.endedAt) : [];
+    const open = r.ok ? r.data.enrolments.filter((e) => !e.endedAt) : [];
+    if (r.ok) {
+      const summary: EnrolmentSummary[] = open.map((e) => ({ enrolmentId: e.enrolmentId, languageId: e.languageId, startedAt: e.startedAt, explicit: isExplicit(e) }));
+      const json = JSON.stringify(summary);
+      if (json !== summaryWritten) { summaryWritten = json; try { await opts.area.set({ [ENROLMENTS_KEY]: summary }); } catch { /* a convenience */ } }
+    }
+    return open;
+  }
+
+  /** The kept enrolment summary, while the repository has not opened yet in this worker; undefined once it has, or when there is none. */
+  async function summaryWhileOpening(): Promise<EnrolmentSummary[] | undefined> {
+    if (opened) return undefined;
+    let kept: unknown;
+    try { kept = (await opts.area.get(ENROLMENTS_KEY))[ENROLMENTS_KEY]; } catch { kept = undefined; }
+    if (!Array.isArray(kept)) return undefined;
+    void open(); // it opens meanwhile, for the questions that need it
+    return kept.filter((e): e is EnrolmentSummary => !!e && typeof e.enrolmentId === 'string' && typeof e.languageId === 'string' && typeof e.startedAt === 'string');
   }
 
   async function activeId(enrolments: Enrolment[]): Promise<string | undefined> {
@@ -106,6 +191,13 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   }
 
   async function activeLanguage(): Promise<string | undefined> {
+    const kept = await summaryWhileOpening();
+    if (kept) {
+      const explicit = kept.filter((e) => e.explicit).sort((a, b) => a.startedAt.localeCompare(b.startedAt));
+      if (!explicit.length) return undefined;
+      const chosen = (await opts.area.get(ACTIVE_KEY))[ACTIVE_KEY];
+      return (explicit.find((e) => e.enrolmentId === chosen) ?? explicit.at(-1)!).languageId;
+    }
     const repo = await open();
     if (!repo) return undefined;
     try {
@@ -117,6 +209,8 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
 
   /** Every language the learner has chosen on this device (open enrolments), in setup order; empty when none. */
   async function chosenLanguages(): Promise<string[]> {
+    const kept = await summaryWhileOpening();
+    if (kept) return [...new Set(kept.map((e) => e.languageId))];
     const repo = await open();
     if (!repo) return [];
     try { return [...new Set((await openEnrolments(repo)).map((e) => e.languageId))]; } catch { return []; }
@@ -135,6 +229,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
         if (!enrolmentId) return false;
         const r = await repo.api.appendEvents([{ ...event, learnerId: id.learnerId, enrolmentId, producer: { ...event.producer, deviceId: id.deviceId } }]);
         if (!r.ok) return false;
+        if (attributed === 'local') pendingHint = true;
         if (attributed === 'account') await markEventsOwned(repo, [event.id], event.learnerId);
         return true;
       } catch { return false; }
@@ -171,14 +266,21 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
 
   /** Uploads the local history to the signed-in account, then pulls the account's. Never throws. */
   async function uploadAndPull(): Promise<{ ok: boolean; upload?: { sent: number; duplicates: number; failed: number; waiting: number }; pulled?: number; skipped?: 'unavailable' | 'not-connected' | 'busy'; error?: string }> {
+    const release = hold(); // a long first pull must not outlast the browser's idle limit (a reading page's keep-warm may not be open)
+    transferring += 1;
     try {
       const repo = await open();
       if (!repo) return { ok: false, skipped: 'unavailable' };
       const a = await opts.session.authenticated();
       if (!a) return { ok: false, skipped: 'not-connected' };
+      // marked before anything is sent: a worker stopped from here on finds it on its next sync round and runs this again (the pull resumes from its cursor)
+      try { await opts.area.set({ [PULL_OPEN_KEY]: true }); } catch { /* a convenience: the learner's next upload resumes as well */ }
       const raw = await repo.uploadTo(a.api);
-      const upload = { sent: raw.sent, duplicates: raw.duplicates, failed: raw.failed, waiting: (await inspectLocal(repo)).waiting };
-      const { added } = await repo.pullFrom(a.api);
+      const upload = { sent: raw.sent, duplicates: raw.duplicates, failed: raw.failed, waiting: uploadWaiting(repo) };
+      pendingHint = upload.failed > 0 || upload.waiting > 0;
+      let complete = false;
+      const { added } = await repo.pullFrom(a.api, { onEnd: (c) => { complete = c; } });
+      if (complete) { try { await opts.area.remove(PULL_OPEN_KEY); } catch { /* the next round finds it and does one cheap pull */ } }
       const status: UploadStatus = { at: opts.now(), ...upload, pulled: added, ...(upload.failed ? { error: `${upload.failed} event${upload.failed === 1 ? '' : 's'} could not be sent; they will be tried again` } : {}) };
       try { await opts.area.set({ [UPLOAD_STATUS_KEY]: status }); } catch { /* a convenience */ }
       return { ok: upload.failed === 0, upload, pulled: added };
@@ -186,7 +288,20 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
       const error = e instanceof Error ? e.message : String(e);
       try { await opts.area.set({ [UPLOAD_STATUS_KEY]: { at: opts.now(), sent: 0, duplicates: 0, failed: 0, pulled: 0, error } satisfies UploadStatus }); } catch { /* a convenience */ }
       return { ok: false, error };
-    }
+    } finally { transferring -= 1; release(); }
+  }
+
+  /**
+   * Called after a successful sync round: when an upload-and-pull was begun and did not reach the account's head (see PULL_OPEN_KEY), runs it again; it continues from the
+   * pull cursor, so only the events after it are asked for. One cheap read of a small row when nothing is open. Never throws.
+   */
+  async function resumePull(): Promise<void> {
+    try {
+      if (transferring > 0) return; // one is running (the sign-in's): it finishes the job
+      if (!(await opts.area.get(PULL_OPEN_KEY))[PULL_OPEN_KEY]) return;
+      signInWork = signInWork.then(() => uploadAndPull(), () => uploadAndPull());
+      await signInWork;
+    } catch { /* the next round tries again */ }
   }
 
   /** After a successful sign-in: the history goes up once, then the account's comes down. Resolves when both are done; never rejects. */
@@ -199,7 +314,10 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   async function afterEnrolment(): Promise<void> {
     try {
       const repo = await open();
-      if (!repo || (await inspectLocal(repo)).pendingUpload === 0) return;
+      if (!repo) return;
+      // counted once (a whole-log read), then kept: a language switch on a large history no longer reads it all to learn that nothing is waiting
+      if (pendingHint === undefined) pendingHint = (await inspectLocal(repo)).pendingUpload > 0;
+      if (!pendingHint) return;
       await uploadAndPull();
     } catch { /* the next sign-in or upload tries again */ }
   }
@@ -209,13 +327,24 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   async function clear(): Promise<void> {
     const repo = await open();
     enrolmentOf.clear();
-    try { await opts.area.remove([ACTIVE_KEY, UPLOAD_STATUS_KEY]); } catch { /* absent */ }
-    if (repo) await repo.clear();
+    summaryWritten = '';
+    pendingHint = undefined;
+    try { await opts.area.remove([ACTIVE_KEY, UPLOAD_STATUS_KEY, ENROLMENTS_KEY, PULL_OPEN_KEY]); } catch { /* absent */ }
+    if (repo) { await repo.clear(); return; }
+    // The repository would not open (so it cannot clear itself): take the learner's data away by hand, both databases first, then the frozen rows. With no
+    // state row left, the next open is a fresh device in IndexedDB. Without IndexedDB nothing was ever stored anywhere but the rows.
+    if (opts.idb) {
+      for (const name of [LOCAL_IDB_NAME, `${LOCAL_IDB_NAME}-kv`]) {
+        await new Promise<void>((resolve) => { const q = opts.idb!.indexedDB.deleteDatabase(name); q.onsuccess = () => resolve(); q.onerror = () => resolve(); q.onblocked = () => resolve(); });
+      }
+    }
+    const mine = await opts.area.get(null).then((all) => Object.keys(all).filter((k) => k.startsWith(LOCAL_PREFIX))).catch(() => [] as string[]);
+    if (mine.length) await opts.area.remove(mine);
   }
 
   // ───────────── the page-facing operations ─────────────
 
-  async function status(): Promise<LocalRepoStatus> {
+  async function status(): Promise<LocalRepoStatus & { storage?: StorageInfo }> {
     const repo = await open();
     if (!repo) {
       return { ok: true, available: false, events: 0, pendingUpload: 0, uploaded: 0, fromAccount: 0, enrolments: [], storedChars: 0, writeFailures: 0 };
@@ -228,6 +357,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
       enrolments: enrolments.sort(bySetup).map((e) => view(e, active)), ...(languageId ? { languageId } : {}),
       storedChars: info.storedChars, writeFailures: info.persistence.failures, ...(info.persistence.lastError ? { lastWriteError: info.persistence.lastError } : {}),
       ...(last ? { lastUpload: last } : {}),
+      storage: info.storage, // developer diagnostics: where the history lives, and how the move into IndexedDB went
     };
   }
 
@@ -284,7 +414,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
           return { ok: true, format: FORMAT, exportedAt: new Date(opts.now()).toISOString(), events: await repo.exportEvents(), enrolments };
         }
         case 'enrolments': { const e = await openEnrolments(repo); const a = await activeId(e); return { ok: true, enrolments: e.sort(bySetup).map((x) => view(x, a)) }; }
-        case 'enrol': return await enrol(repo, r as Extract<LocalRepoRequest, { op: 'enrol' }>);
+        case 'enrol': { const out = await enrol(repo, r as Extract<LocalRepoRequest, { op: 'enrol' }>); await openEnrolments(repo); return out; }
         case 'select': {
           const e = (await openEnrolments(repo)).find((x) => x.enrolmentId === r.enrolmentId);
           if (!e || !isExplicit(e)) return bad('That enrolment is not open.');
@@ -294,6 +424,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
         case 'end': {
           const ended = await repo.api.endEnrolment(String(r.enrolmentId ?? ''));
           enrolmentOf.clear();
+          await openEnrolments(repo);
           return ended.ok ? { ok: true } : bad(ended.message || ended.error);
         }
         case 'upload': return { ...(await lock.run(() => uploadAndPull())) };
@@ -303,7 +434,10 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
           const method = String(r.method ?? '');
           if (!LOCAL_API_METHODS.includes(method)) return bad('That call is not available on this device.');
           const args = Array.isArray(r.args) ? r.args : [];
+          if (/^(append|submit)/.test(method)) pendingHint = true; // an extension page wrote events here: they may wait for an upload
+          if (method === 'clear') pendingHint = undefined;
           const result = await (repo.api as unknown as Record<string, (...a: unknown[]) => Promise<unknown>>)[method](...args);
+          if (/nrol/.test(method)) await openEnrolments(repo);
           return { ok: true, result };
         }
         default: return bad('unknown operation');
@@ -313,7 +447,10 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
     }
   }
 
-  return { open, record, forProfile, activeLanguage, chosenLanguages, afterSignIn, afterEnrolment, uploadAndPull, clear, handle, status };
+  /** True while the repository is opening or migrating (read-only; used by the worker's self-update to not reload mid-open). */
+  const busy = (): boolean => !!opening && !opened;
+
+  return { open, record, forProfile, activeLanguage, chosenLanguages, afterSignIn, afterEnrolment, resumePull, uploadAndPull, clear, handle, status, busy };
 }
 
 export type LocalRepoService = ReturnType<typeof createLocalRepoService>;

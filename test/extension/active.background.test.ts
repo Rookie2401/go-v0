@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { createBackground } from '../../packages/golearn-extension/src/background/core';
-import { ACTIVE_KEY, ACTIVE_SCRIPT_ID } from '../../packages/golearn-extension/src/background/active';
+import { ACTIVE_KEY, ACTIVE_SCRIPT_ID, RESTART_WAIT_MS } from '../../packages/golearn-extension/src/background/active';
 import { MSG } from '../../packages/golearn-extension/src/platform';
 import { ACTIVE_ORIGINS, type ActiveReply } from '../../packages/golearn-extension/src/protocol';
 import { createChromeFake, PAGE_SENDER, type ChromeFake } from './chromeFake';
@@ -186,5 +186,27 @@ describe('the switch at worker start, and the manifest', () => {
     expect(manifest.optional_host_permissions).toEqual([...ACTIVE_ORIGINS]);
     expect(manifest.host_permissions).toBeUndefined();
     expect(manifest.content_scripts).toBeUndefined();
+  });
+});
+
+describe('a language switch with Active on (2026-11-09)', () => {
+  it('answers while an open page is still scanning: the page is told to start again, and the switch does not wait for it to finish', async () => {
+    fake.grantOrigins(ACTIVE_ORIGINS);
+    await page({ op: 'set', patch: { active: true } });
+    await fake.dispatch({ type: MSG.localRepo, op: 'enrol', languageId: 'es', goals: [{ kind: 'reading' }] }, PAGE_SENDER);
+    await fake.dispatch({ type: MSG.localRepo, op: 'enrol', languageId: 'de', goals: [{ kind: 'reading' }] }, PAGE_SENDER);
+    // a page whose scan never finishes (its analyser still loading, a slow answer behind it): `activate` is never answered
+    fake.tabListeners.add((message, _sender, sendResponse) => {
+      if ((message as { type?: string }).type === MSG.activate) return true;
+      sendResponse({ ok: true });
+      return undefined;
+    });
+    fake.messagesToTabs.length = 0;
+    const t0 = Date.now();
+    const r = await fake.dispatch({ type: MSG.useLanguage, languageId: 'es' }, PAGE_SENDER) as { ok: boolean };
+    expect(r.ok).toBe(true);
+    expect(Date.now() - t0).toBeLessThan(RESTART_WAIT_MS + 1000);
+    expect(toTabs().map((m) => m.type)).toEqual([MSG.deactivate, MSG.activate]);
+    expect((await fake.dispatch({ type: MSG.status }, PAGE_SENDER) as { languageId: string }).languageId).toBe('es');
   });
 });

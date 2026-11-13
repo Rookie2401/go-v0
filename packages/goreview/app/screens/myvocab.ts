@@ -11,7 +11,8 @@ import type { AppContext } from '../context';
 import { append, button, clear, h, langProps, p, setStatus, statusLine } from '../dom';
 import { addedCardFor, addToDeck, loadVocab, planCurrentDeck, planSelectedPractice, selectedPracticeUnits, sortVocab, type VocabRow, type VocabSort } from '../deckModel';
 import { itemMarked } from '../events';
-import { loadReviewModel } from '../workspace';
+import { currentReviewModel, PRESS_WAIT_MS } from '../workspace';
+import { MAX_SNAPSHOT_WORDS, readSnapshot } from '../snapshot';
 import type { View } from './view';
 import { getUiPrefs, patchUiPrefs } from './uiprefs';
 
@@ -59,9 +60,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   }
 
   /** The current deck's units: the home's own plan, so what is said here is what Begin will ask. */
-  async function refreshDeck(): Promise<void> {
+  async function refreshDeck(quiet = false): Promise<void> {
     try {
-      const model = await loadReviewModel(ctx);
+      const model = await currentReviewModel(ctx, quiet ? { noRefresh: true } : {}); // this device's copy; a refresh that lands repaints through ctx.onData
       if (!model || !view.alive()) return;
       const selectionAtStart = selectionRevision;
       const deck = await planCurrentDeck(ctx, model, new Set(), rows);
@@ -83,7 +84,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       await addToDeck(ctx, identity, { unitId: r.unitId, unitKind: r.kind ?? 'lexeme', ...addedCardFor(r.unitId, r.kind) }); // a phrase is asked as phrase-comprehension, any other unit as written-recognition
       selectionRevision++;
       selectedUnits = new Set([...selectedUnits, r.unitId]);
-      const model = await loadReviewModel(ctx);
+      const model = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
       const selected = model ? await planSelectedPractice(ctx, model) : undefined;
       const deck = selected ? { entries: selected.items.map(p => ({ unitId: p.item.unitId })) } : undefined;
       if (!view.alive()) return;
@@ -189,26 +190,39 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       deckUnits = undefined; void refreshDeck();
     } catch { /* the list stays as painted */ } finally { busy = false; }
   }
-  view.onDispose(ctx.onData(() => { void refresh(); }));
+  view.onDispose(ctx.onData(() => { void refresh(); if (deckUnits) void refreshDeck(true); }));
 
   paintToggles();
-  setStatus(status, 'Loading your words…');
+  /** The service's list, in the background: it replaces the words this device holds only where it differs. */
+  async function applyLive(): Promise<void> {
+    try {
+      const loaded = await loadVocab(ctx, identity.languageId);
+      if (!view.alive()) return;
+      const next = loaded.rows.filter((r) => KNOWLEDGE_LEVELS.includes(r.level));
+      const note = loadNote(loaded);
+      setStatus(status, note, 'info');
+      busy = false;
+      if (!rows.length || signature(next) !== signature(rows)) { rows = next; paintList(); void refreshDeck(); }
+    } catch (e) {
+      busy = false;
+      if (!view.alive()) return;
+      if (rows.length) { setStatus(status, 'The service could not be reached: these are the words this device saved.', 'info'); return; }
+      setStatus(status, `Your words could not be loaded${e instanceof Error ? `: ${e.message}` : ''}.`, 'error');
+      more.append(button('Try again', () => { clear(el); void render(el, ctx, view); }, { class: 'linklike', id: 'vocab-retry' }));
+    }
+  }
   try {
     const events = await ctx.events(identity.languageId);
     const prefs = await ctx.state.getPrefs(identity.learnerId, identity.languageId);
     for (const item of ctx.engine.foldDeck(events, identity.languageId, prefs, ctx.deps.now().toISOString())) if (!itemOfUnit.has(item.unitId)) itemOfUnit.set(item.unitId, item.itemId);
-    const loaded = await loadVocab(ctx, identity.languageId);
-    if (!view.alive()) return;
-    rows = loaded.rows.filter((r) => KNOWLEDGE_LEVELS.includes(r.level));
-    const note = loadNote(loaded);
-    setStatus(status, note, 'info');
-    busy = false;
+  } catch { /* the words still load */ }
+  // the words this device saved paint at once (2026-11-10: the page waited for every page of the service's list); the service's list follows in the background
+  const saved = ((await readSnapshot(ctx, identity.learnerId, identity.languageId).catch(() => undefined))?.vocab?.rows ?? []) as VocabRow[];
+  if (saved.length) {
+    rows = saved.filter((r) => KNOWLEDGE_LEVELS.includes(r.level));
+    setStatus(status, saved.length >= MAX_SNAPSHOT_WORDS ? 'Showing the words saved on this device (a capped copy); checking for new ones…' : 'Showing the words saved on this device; checking for new ones…', 'info');
     paintList();
     void refreshDeck();
-  } catch (e) {
-    busy = false;
-    if (!view.alive()) return;
-    setStatus(status, `Your words could not be loaded${e instanceof Error ? `: ${e.message}` : ''}.`, 'error');
-    more.append(button('Try again', () => { clear(el); void render(el, ctx, view); }, { class: 'linklike', id: 'vocab-retry' }));
-  }
+  } else setStatus(status, 'Loading your words…');
+  void applyLive();
 }

@@ -289,6 +289,24 @@ describe('GRAMMAR puts a construction the learner finds hard first', () => {
     expect(newer).toMatchObject({ level: 'automatic', selfMark: 'automatic' });
   });
 
+  it('a word met only in passing is shown New, and which circle is pressed does not change with that (2026-11-05)', () => {
+    const card = parseSelection({ surface: 'libër', context: { kind: 'none', confidence: 0 } });
+    const id = card.itemIds[0];
+    const at = '2026-10-10T10:00:00.000Z';
+    // bare encounters only, no mark: shown New (the engine's level is Seen)
+    expect(profileViewFrom(card, profileReply({ [id]: { ...row(id, { exposure: { observations: 3, negative: 0 } }), level: 'seen' as const } }))).toMatchObject({ level: 'new' });
+    // a lookup: Seen
+    expect(profileViewFrom(card, profileReply({ [id]: { ...row(id, { exposure: { observations: 3, negative: 1 } }), level: 'seen' as const } }))).toMatchObject({ level: 'seen' });
+    // marked New, then merely met again: the engine's level is Seen (the mark was released), so no circle is pressed - exactly as before the display rule
+    const released = profileViewFrom(card, profileReply({ [id]: { ...row(id, { exposure: { observations: 3, negative: 0 } }), level: 'seen' as const, selfMark: { mark: 'new' as const, at } } }));
+    expect(released.level).toBe('new');
+    expect(released.selfMark).toBeUndefined();
+    // marked New and nothing met since (engine level New): the New circle stays pressed
+    expect(profileViewFrom(card, profileReply({ [id]: { ...row(id, {}), level: 'new' as const, selfMark: { mark: 'new' as const, at } } }))).toMatchObject({ level: 'new', selfMark: 'new' });
+    // marked Seen: Seen, pressed
+    expect(profileViewFrom(card, profileReply({ [id]: { ...row(id, { exposure: { observations: 3 } }), level: 'seen' as const, selfMark: { mark: 'seen' as const, at } } }))).toMatchObject({ level: 'seen', selfMark: 'seen' });
+  });
+
   it('reading recognition is not claimed when there is no observation of it', () => {
     const card = parseSelection({ surface: 'libër', context: { kind: 'none', confidence: 0 } });
     const v = profileViewFrom(card, profileReply({ [card.itemIds[0]]: row(card.itemIds[0], { exposure: { observations: 2 } }) }));
@@ -690,12 +708,48 @@ describe('Report (the correction flow)', () => {
     expect(root(r).querySelector('.feedback')!.textContent).toBe('Saved on this device.');
   });
 
-  it('is off for a selection of several words', async () => {
+  it('is not on the card of a selection of several words (an information display only, 2026-11-09)', async () => {
     const r = makeRig({ services: fakeServices() });
     selectText(document.getElementById('p')!, 'një libër');
     const out = await r.controller.lookup({ trigger: 'command' });
     expect(out.status).toBe('shown');
-    expect((root(r).querySelector('.reportBtn') as HTMLButtonElement).disabled).toBe(true);
+    expect(root(r).querySelector('.reportBtn')).toBeNull();
+  });
+});
+
+describe('several words selected: an information display only (the owner, 2026-11-09)', () => {
+  it('shows the words and their audio, and nothing that says or records how well they are known: no meter, no encounters, no events, no model question', async () => {
+    const played: string[] = [];
+    const services = fakeServices();
+    const r = makeRig({ services, pronouncer: okPronouncer(played) });
+    selectText(document.getElementById('p')!, 'një libër');
+    const out = await r.controller.lookup({ trigger: 'command' });
+    expect(out).toMatchObject({ status: 'shown', recorded: 'not-recorded' });
+    await flush(20);
+    const card = root(r);
+    expect(card.textContent).toContain('një libër');
+    expect(card.querySelector('[data-info-only="true"]')).not.toBeNull();
+    expect(card.querySelector('.rate')).toBeNull();
+    expect(card.querySelectorAll('.rateBtn')).toHaveLength(0);
+    expect(card.querySelector('[data-info-only="true"]')!.textContent).not.toMatch(/How well do you know it|encounters|Encounter recorded|Encounter already recorded/i);
+    // the audio stays, and playing it records nothing either
+    const say = card.querySelector('.say') as HTMLButtonElement;
+    expect(say).not.toBeNull();
+    say.click();
+    await flush(20);
+    expect(played.length).toBeGreaterThan(0);
+    expect(await r.store.list()).toEqual([]);
+    expect(services.calls.profile ?? 0).toBe(0);
+  });
+
+  it('a single word keeps its meter, its encounters and its recording', async () => {
+    const r = makeRig({ services: fakeServices() });
+    selectText(document.getElementById('p')!, 'libër');
+    const out = await r.controller.lookup({ trigger: 'command' });
+    expect(out).toMatchObject({ status: 'shown', recorded: 'recorded' });
+    await flush(20);
+    expect(root(r).querySelectorAll('.rateBtn')).toHaveLength(6);
+    expect((await r.store.list()).length).toBeGreaterThan(0);
   });
 });
 

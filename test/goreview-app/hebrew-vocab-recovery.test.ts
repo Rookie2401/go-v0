@@ -8,7 +8,7 @@ import { explainAdmissions } from '../../packages/goreview/app/admissionExplanat
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { CONTRACT_VERSION } from '../../packages/repository-contract/src';
 import { candidatesKey, snapshotKey } from '../../packages/goreview/app/state';
-import { FakeService, cardAdded, destroyRigs, ids, knowledgeRow, makeRig, reviewed, seed } from './helpers';
+import { FakeService, cardAdded, destroyRigs, ids, knowledgeRow, makeRig, reviewed, seed, until } from './helpers';
 
 afterEach(() => { destroyRigs(); });
 
@@ -98,13 +98,11 @@ describe('workspace Hebrew recovery', () => {
 
     const snapKey = `gopractice:snapshot:L1:he`;
     const completeBefore = (await rig.area.get(snapKey))[snapKey] as { model?: { savedAt: string; candidates: ReviewCandidate[] } };
-    let vocabPage = 0;
     Object.assign(api, {
       async candidates() { return ok({ candidates: [unknownCandidate] }); },
-      async vocabulary() {
-        vocabPage += 1;
-        return vocabPage === 1 ? ok({ items: [vocabRow(targetId)], nextCursor: 'recovery-page-2' })
-          : { ok: false as const, status: 503, error: 'offline', message: 'offline', body: {} };
+      async vocabulary({ after }: { after?: string }) {
+        return after ? { ok: false as const, status: 503, error: 'offline', message: 'offline', body: {} }
+          : ok({ items: [vocabRow(targetId)], nextCursor: 'recovery-page-2' });
       },
     });
     const partialRecovery = await loadReviewModel(rig.app.ctx);
@@ -115,7 +113,6 @@ describe('workspace Hebrew recovery', () => {
     expect(partialRecovery?.outcomes.find(outcome => outcome.unitId === targetId)?.decision).toBe('test-now');
     expect(completeAfter.model?.savedAt).toBe(completeBefore.model?.savedAt);
     expect(completeAfter.model?.candidates).toHaveLength(completeBefore.model!.candidates.length);
-    forgetPaintedHome(rig.app.ctx);
     await rig.go('settings');
     await rig.go('review');
     expect(rig.root.querySelector('#candidate-freshness')?.textContent).toContain('Using saved word data from');
@@ -334,6 +331,8 @@ describe('workspace Hebrew recovery', () => {
     await loadReviewModel(rig.app.ctx);
 
     const key = 'gopractice:snapshot:L1:he';
+    // the open home counts the words in the background once the model lands (2026-11-10: it no longer waits for it); let that write finish first
+    await until(async () => !!((await rig.area.get(key))[key] as { vocab?: unknown } | undefined)?.vocab, 'the vocabulary copy of the open home');
     const saved = (await rig.area.get(key))[key];
     const cacheKey = (await rig.area.list('gopractice:candidates:L1:L1-e1:'))[0]!;
     const cachedCandidates = (await rig.area.get(cacheKey))[cacheKey];

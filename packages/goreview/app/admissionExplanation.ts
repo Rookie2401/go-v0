@@ -4,6 +4,7 @@
  * decisions, and the plan's exclusion codes. It explains; it never changes what is admitted. Counts of units only, no words.
  */
 import { admissionBudget } from '../src/planner/budget';
+import { isNotExamined } from '../src/intake/intake';
 import type { ExclusionCode, IntakeOutcome, SessionPlan } from '../src/types';
 import type { CurrentDeck } from './deckModel';
 import type { ReviewModel } from './workspace';
@@ -82,8 +83,10 @@ export function explainAdmissions(model: ReviewModel, deck: Pick<CurrentDeck, 's
     if (later) parts.push(`${n(later, 'word waits', 'words wait')} for suitable audio or a better moment`);
     const covered = (byDecision.get('already-covered') ?? 0) + (byDecision.get('redundant') ?? 0);
     if (covered) parts.push(`${n(covered, 'word is', 'words are')} already in your deck or covered by it`);
-    const low = byDecision.get('low-priority') ?? 0;
-    if (low) parts.push(`${n(low, 'word is', 'words are')} low priority for now`);
+    const unchecked = model.outcomes.filter(isNotExamined).length;
+    if (unchecked) parts.push(`${n(unchecked, 'word is', 'words are')} not yet checked`);
+    const low = (byDecision.get('low-priority') ?? 0) - unchecked;
+    if (low > 0) parts.push(`${n(low, 'word is', 'words are')} low priority for now`);
     return { code: 'candidates-not-testable', text: `No new words from the ${n(model.outcomes.length, 'word')} you met: ${parts.join('; ') || 'none is ready yet'}.` };
   }
   const codes = new Map<ExclusionCode | 'none', number>();

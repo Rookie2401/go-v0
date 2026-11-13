@@ -20,6 +20,8 @@ import { ACTIVE_ORIGINS, DEFAULT_ACTIVE, type ActivateMessage, type ActiveReply,
 
 export const ACTIVE_KEY = 'golearn:active';
 export const ACTIVE_SCRIPT_ID = 'golearn-active';
+/** How long a language switch waits for the open pages to scan again before it answers (the pages carry on by themselves). */
+export const RESTART_WAIT_MS = 1500;
 
 export interface ActiveServiceOptions {
   chrome: ChromeApi;
@@ -202,7 +204,10 @@ export function createActiveService(o: ActiveServiceOptions) {
     const s = await get();
     if (!s.active) return;
     await broadcast({ type: MSG.deactivate });
-    await broadcast({ type: MSG.activate, speak: s.speakOnClick } satisfies ActivateMessage);
+    // a page answers `activate` only once it has scanned again (its words, its language's analyser, the learner's rows): the switch waits a
+    // moment for that, never longer (2026-11-09: the popup waited for every open tab, and stayed on "Switching to …" while one was slow)
+    const started = broadcast({ type: MSG.activate, speak: s.speakOnClick } satisfies ActivateMessage);
+    await Promise.race([started, new Promise<void>((resolve) => setTimeout(resolve, RESTART_WAIT_MS))]);
   }
 
   return { get, set, granted, registered, register, unregister, restore, watchPermission, handle, activateFrontTab, restart };

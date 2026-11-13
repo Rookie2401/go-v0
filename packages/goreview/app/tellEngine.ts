@@ -22,6 +22,7 @@ import { createRemoteConsent, deleteDraft, exportLearnerWriting, forgetDevice, p
 import type { DiffLine, DraftExportFormat, FileOut, PromptGuidance, TellEngine } from '../../gotell/src/workspace/port';
 import type { AssistanceLevel, AssistanceStep, DraftVersion, Identity as TellIdentity, SentenceVersion } from '../../gotell/src/types';
 import { createPackRuntime, packFor } from '../../language-packs/src';
+import { loadBuiltInAdapter } from '../../language-packs/src/builtins';
 import type { AppContext } from './context';
 import type { Identity } from './ports';
 
@@ -74,7 +75,10 @@ export async function createTellEngine(ctx: AppContext, id: Identity): Promise<T
   let analysisUnavailableReason: string | undefined;
   if (!manifest) analysisUnavailableReason = `There is no language pack for ${id.languageId}, so nothing can be checked yet. You can still write and save.`;
   else if (manifest.status !== 'installable') analysisUnavailableReason = `The ${manifest.identity.name} pack is not installable yet, so nothing can be checked. You can still write and save.`;
-  else {
+  else if (!(await loadBuiltInAdapter(id.languageId).then(() => true, () => false))) {
+    // the language's analyser chunk could not be fetched (no connection, none kept): writing and saving still work; opening the page again tries again
+    analysisUnavailableReason = `The ${manifest.identity.name} language tools could not be loaded, so nothing can be checked yet. Check your connection and open this page again; you can still write and save.`;
+  } else {
     const runtime = createPackRuntime(manifest, { fetch: ctx.deps.fetch, baseUrl: ctx.deps.config.assetBaseUrl ?? './' });
     analyzer = createAnalyzer({ languageId: id.languageId, ...(id.varietyId ? { varietyId: id.varietyId } : {}), runtime, manifest, now });
     if (!analyzer.hasChecker) { analysisUnavailableReason = `The ${manifest.identity.name} pack has no checker yet, so nothing can be checked. You can still write and save.`; analyzer = undefined; }

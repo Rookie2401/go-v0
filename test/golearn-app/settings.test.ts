@@ -19,7 +19,7 @@ describe('How GoLearn reads pages (the reader integration, an advanced screen)',
     expect(rig.q('#reader-link').textContent).toBe('How GoLearn reads pages');
     expect(rig.q('.topbar').querySelector('a[href="#/reader"]')).toBeNull();
     await rig.go('settings');
-    expect(rig.q('#advanced-links li[data-route="reader"] a').textContent).toBe('How GoLearn reads pages');
+    expect(rig.q('#advanced-links li[data-route="reader"] a .nav-title').textContent).toBe('How GoLearn reads pages');
     await rig.go('reader');
     expect(rig.q('#screen h1').textContent).toBe('How GoLearn reads pages');
     expect(rig.text()).not.toMatch(/orientation/i);
@@ -50,7 +50,9 @@ describe('How GoLearn reads pages (the reader integration, an advanced screen)',
     await rig.go('reader');
     expect(rig.q('#ext-version').textContent).toBe(`Installed, version ${rig.chrome!.runtime.getManifest!().version}.`);
     const text = rig.q('#reader-installed').textContent!;
-    expect(text).toContain('per tab');
+    // the one switch is GoLearn Active, in the popup; the old "GoLearn on for this tab" switch went on 2026-10-09 and the page no longer names it
+    expect(text).toContain('switch on GoLearn Active');
+    expect(text).not.toContain('per tab');
     expect(text).toContain('Alt+Shift+G');
     expect(text).toContain('right-click');
     expect(rig.root.querySelector('#reader-install')).toBeNull();
@@ -164,7 +166,7 @@ describe('Privacy', () => {
     choose(rig.q('#depth'), 'explanatory');
     await flush(30);
     expect(await settingsOf(rig)).toEqual({ keepSnippets: false, remoteSpeechConsent: true, localOnlySpeech: true, externalProcessingConsent: false, explanationDepth: 'explanatory' });
-    await rig.go('home');
+    await rig.go('help');
     await rig.go('privacy');
     expect(rig.q<HTMLInputElement>('#remote-speech').checked).toBe(true);
     expect(rig.q<HTMLSelectElement>('#depth').value).toBe('explanatory');
@@ -238,13 +240,13 @@ describe('Privacy', () => {
     });
   });
 
-  it('A-20 the repeated "Change" links on the home screen name what they change', async () => {
+  it('A-20 every link of the Settings lists has a name of its own (the Status page and its repeated "Change" links are gone, 2026-11-11)', async () => {
     const rig = await makeRig();
-    await rig.go('home');
-    const labels = [...rig.root.querySelectorAll('#status-list a')].map((a) => a.getAttribute('aria-label'));
-    expect(labels.length).toBe(2);
-    expect(new Set(labels).size).toBe(labels.length);
-    for (const l of labels) expect(l).toMatch(/^Change: /);
+    await rig.go('settings');
+    const names = [...rig.root.querySelectorAll('.settings-links a .nav-title')].map((a) => a.textContent);
+    expect(names).toEqual(['Audio', 'Privacy and data', 'Look up pasted text', 'Sync', 'How GoLearn reads pages', 'Diagnostics and updates']);
+    expect(new Set(names).size).toBe(names.length);
+    expect(rig.root.querySelector('#status-list')).toBeNull();
   });
 
   it('shows what the extension holds: a consent stored elsewhere is displayed as it is, never silently reset', async () => {
@@ -303,12 +305,14 @@ describe('Diagnostics and updates', () => {
   it('checks the service health and says what it answered, or that it could not be reached', async () => {
     const rig = await makeRig();
     await rig.go('diagnostics');
-    await until(() => /Service reachable/.test(rig.q('#health').textContent ?? ''));
+    await until(() => /The service answered/.test(rig.q('#health').textContent ?? ''));
+    expect(rig.q('#health').textContent).not.toMatch(/https?:/); // no address in what a learner reads (the owner, 2026-11-12)
     expect(rig.q('#health').textContent).toContain('go-repository, version 2');
     expect(rig.q('#report').textContent === '' ? (rig.q('#report') as HTMLTextAreaElement).value : '').toContain('service: go-repository answered ok, version 2');
     rig.service.down = true;
     rig.q('#health-again').click();
     await until(() => /could not be reached/.test(rig.q('#health').textContent ?? ''));
+    expect(rig.q('#health').textContent).not.toMatch(/https?:/);
     expect((rig.q('#report') as HTMLTextAreaElement).value).toContain('service: not reachable');
   });
 
@@ -337,7 +341,7 @@ describe('Diagnostics and updates', () => {
     const token = (await rig.app.ctx.state.getSession())!.token;
     await rig.area.set({ 'golearn:event:a': { id: 'a' }, 'golearn:event:b': { id: 'b' } });
     await rig.go('diagnostics');
-    await until(() => /Service reachable/.test(rig.q('#health').textContent ?? ''));
+    await until(() => /The service answered/.test(rig.q('#health').textContent ?? ''));
     const report = (rig.q('#report') as HTMLTextAreaElement).value;
     expect(report).toContain('local rows on this device: 2');
     expect(report).toContain(`repository contract: version ${CONTRACT_VERSION}`);

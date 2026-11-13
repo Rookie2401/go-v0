@@ -41,6 +41,7 @@ import { buildCardAdded, createFsrsScheduler, evidenceFor, foldDeckItems, planSe
 import { createApp as createPracticeApp, type AppHandle } from '../../packages/goreview/app/app';
 import { createAudioDeps } from '../../packages/goreview/app/audio';
 import { createReviewEngine } from '../../packages/goreview/app/engine';
+import { OUTCOME_LABEL } from '../../packages/goreview/app/format';
 import { packFactsFor } from '../../packages/goreview/app/packFacts';
 import type { Deps as PracticeDeps } from '../../packages/goreview/app/ports';
 import { decodeBody } from '../../packages/gotell/src/documents';
@@ -173,7 +174,7 @@ async function openPractice(fresh = false): Promise<AppHandle> {
   const deps: PracticeDeps = {
     win: window, doc: document, fetch: fileFetch, area: practiceArea, config: { serviceUrl: BASE, assetBaseUrl: 'http://assets.local/' },
     createApi: (baseUrl, token) => createRepositoryApi({ baseUrl, fetch: serviceFetch, token }),
-    engine: reviewEngine, audio: audioDeps, now: () => new Date(clockMs), newId: () => `cert-${++ids}`, random: () => 0.5, appVersion: 'cert', autoSync: false,
+    engine: reviewEngine, audio: audioDeps, now: () => new Date(clockMs), newId: () => `cert-${++ids}`, random: () => 0.5, appVersion: 'cert', autoSync: false, enableGoTell: true,
     timers: { set: () => 0, clear: () => undefined },
   };
   practice = createPracticeApp(practiceRoot, deps);
@@ -198,18 +199,31 @@ function shown(): Shown | undefined {
     choices: [...ex.querySelectorAll<HTMLElement>('.choice')].map((b) => b.getAttribute('data-choice') ?? ''), audio: !!ex.querySelector('#audio'),
   };
 }
-/** Answers the current item: typed when there is an input, else a choice; `pick` returns the text to give. */
-async function answer(pick: (s: Shown) => string): Promise<string> {
-  let s = shown(); if (!s) throw new Error('no exercise on screen');
-  // A written-recognition card is a flashcard first ("Show answer" / "Type an answer", 78c1d342); the learner who types an answer presses "Type an answer".
-  if (practiceRoot.querySelector('#type-answer')) { pq('#type-answer').click(); await flush(6); s = shown()!; }
+/** Answers through the exercise's own controls. Flashcard ratings commit and advance immediately. */
+async function answer(pick: (s: Shown) => string, grade: 'again' | 'good' = 'good'): Promise<string> {
+  const s = shown(); if (!s) throw new Error('no exercise on screen');
+  const flip = practiceRoot.querySelector<HTMLButtonElement>('#flip-card');
+  if (flip) {
+    const card = flip.closest('.flashcard');
+    const run = practice!.ctx.run.active!;
+    flip.click();
+    pq(`[data-grade="${grade}"]`).click();
+    await until(() => !card?.isConnected, 8000);
+    const result = run.results.at(-1);
+    if (!result) throw new Error('the flashcard grade was not recorded');
+    expect(result.response.selfGrade).toBe(grade);
+    return OUTCOME_LABEL[result.grading.outcome];
+  }
   const give = pick(s);
   if (s.hasInput) { const input = pq<HTMLInputElement>('#answer-input'); typeInto(input, give); keyOn('Enter', input); }
   else { const btn = pqa('.choice').find((b) => b.getAttribute('data-choice') === give) ?? pqa('.choice')[0]; if (!btn) throw new Error('no way to answer'); btn.click(); }
   await until(() => !!practiceRoot.querySelector('#feedback'), 8000);
   return pq('#outcome').textContent ?? '';
 }
-async function next(): Promise<void> { pq('#next').click(); await flush(10); await until(() => !!practiceRoot.querySelector('#session .exercise') || !!practiceRoot.querySelector('#summary'), 8000); }
+async function next(): Promise<void> {
+  const button = practiceRoot.querySelector<HTMLButtonElement>('#next');
+  if (!button) return;
+  button.click(); await flush(10); await until(() => !!practiceRoot.querySelector('#session .exercise') || !!practiceRoot.querySelector('#summary'), 8000); }
 async function startSession(): Promise<void> {
   await go('review', '#review-home > *');
   await until(() => !!practiceRoot.querySelector('#start-session'), 8000);
@@ -370,7 +384,7 @@ describe('§14 Review (steps 12–19): the real GoReview shell on the real Repos
     await until(() => !!practiceRoot.querySelector(`li.vocab-item[data-unit-id="${LEMMA}"] [data-action="add-to-deck"]`), 8000);
     pq(`li.vocab-item[data-unit-id="${LEMMA}"] [data-action="add-to-deck"]`).click();
     await until(() => !!practiceRoot.querySelector(`li.vocab-item[data-unit-id="${LEMMA}"] .vocab-selected`), 8000);
-    await go('review', '#start-selected-practice');
+    await go('review/details', '#start-selected-practice');
   }, 30_000);
 
   it('15–17. a written exercise is presented; an incorrect response lowers the relevant estimate only', async () => {
@@ -380,7 +394,7 @@ describe('§14 Review (steps 12–19): the real GoReview shell on the real Repos
     const s = shown();
     expect(s, practiceRoot.textContent ?? '').toBeDefined();
     expect(s!.family).not.toMatch(/^audio/);                                                // 15. written, not listening
-    const outcome = await answer((x) => (x.hasInput ? 'bread' : x.choices.find((c) => !/book/i.test(c)) ?? x.choices[0]));
+    const outcome = await answer((x) => (x.hasInput ? 'bread' : x.choices.find((c) => !/book/i.test(c)) ?? x.choices[0]), 'again');
     expect(outcome).toMatch(/Incorrect|Not quite|wrong/i);                                 // 16. recorded as incorrect
     writtenDim = s!.family === 'meaning-to-form' ? 'productiveRetrieval' : s!.family.startsWith('morph') || s!.family.startsWith('grammar') ? 'grammaticalUnderstanding' : 'readingRecognition';
     await next();

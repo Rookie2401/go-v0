@@ -24,7 +24,7 @@ import {
 } from '../format';
 import type { ActiveRun, ItemControl, Presented } from '../ports';
 import type { ReviewExercise } from '../../src/exercises/shared';
-import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession } from '../workspace';
+import { beginSession, currentReviewModel, endSavedSession, PRESS_WAIT_MS, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import { fillItemHistory } from './history';
 import { entriesOf, planFromEntries, planRemediation, planCurrentDeck, effectiveRemediation, VOCAB_NOTE } from '../deckModel';
 import { DEFAULT_UI, getUiPrefs, type UiPrefs } from './uiprefs';
@@ -121,7 +121,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 async function repaintSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, view: View, actions?: NextActions): Promise<void> {
   if (!view.alive() || !root.querySelector('#summary') || root.querySelector('#session-undo button:disabled')) return;
   clear(root);
-  await renderSummary(root, ctx, run, actions);
+  // quiet: a data event redraws the summary from this device's copy and never asks for a live load (the first draw already did, and a refresh that lands has its own notice)
+  await renderSummary(root, ctx, run, actions, { quiet: true });
 }
 
 /** What the summary can start next; absent when the screen cannot be taken over (a summary drawn alone). */
@@ -150,8 +151,7 @@ class Controller {
    * hearing count so a failed attempt is never presented as listening evidence. */
   private audioPlaybackFailed = false;
   private revealed = false;
-  private typingCard = false;
-  private isFlashcard(): boolean { return this.presented?.exercise.family === 'written-recognition' && this.presented.exercise.responseMode === 'typed-or-self' && !this.typingCard; }
+  private isFlashcard(): boolean { return this.presented?.exercise.family === 'written-recognition' && this.presented.exercise.responseMode === 'typed-or-self'; }
   /** Other self-graded exercises use an explicit attempt check; flashcard ratings state whether the learner recalled it. */
   private retrievalAttempted = false;
   /** Time spent on this visible card, measured from presentation (never from session planning). */
@@ -229,7 +229,6 @@ class Controller {
     if (!this.presented) { await this.conclude('complete'); return; }
     this.given = undefined;
     this.revealed = false;
-    this.typingCard = false;
     this.retrievalAttempted = false;
     this.hearings = 0;
     this.completedHearings = 0;
@@ -403,7 +402,9 @@ class Controller {
         ev.preventDefault();
         const n = Number(ev.key) - 1;
         if ((mode === 'self-graded' || mode === 'typed-or-self') && this.revealed) await this.submit(this.base({ selfGrade: GRADES[n] }), true);
-        else if (mode === 'self-graded' || mode === 'typed-or-self') this.say('Show the answer first (Enter), then grade yourself with 1 to 4.', 'info');
+        else if (mode === 'self-graded' || mode === 'typed-or-self') this.say(this.isFlashcard()
+          ? 'Flip the card first, then grade yourself with 1 to 4.'
+          : 'Show the answer first (Enter), then grade yourself with 1 to 4.', 'info');
         else if (mode === 'choice') { const o = this.presented.exercise.prompt.options?.[n]; if (o !== undefined) await this.submit(this.base({ choice: o })); }
       } else if (ev.key === ' ' && this.presented.exercise.prompt.audio && !onControl) {
         ev.preventDefault();
@@ -452,9 +453,10 @@ class Controller {
   /** One quiet line: where the learner is, the kind of question, and two links. Nothing ticks and nothing is timed on screen. */
   private header(pr: Presented, withSkip: boolean): HTMLElement {
     return h('div', { class: 'session-bar', id: 'session-header', role: 'group', 'aria-label': 'Session' },
+      h('span', { class: 'session-heading' }, this.run.resumed ? 'Resume' : 'Review'),
       h('span', { class: 'bar-kicker', id: 'session-progress' }, `${pr.index + 1} of ${pr.total}`),
-      h('span', { class: 'bar-kicker bar-kind' }, FAMILY_LABEL[pr.exercise.family]),
-      pr.planned.overlap ? h('span', { class: 'bar-kicker session-overlap', 'data-overlap': pr.planned.overlap },
+      this.isFlashcard() ? null : h('span', { class: 'bar-kicker bar-kind' }, FAMILY_LABEL[pr.exercise.family]),
+      !this.isFlashcard() && pr.planned.overlap ? h('span', { class: 'bar-kicker session-overlap', 'data-overlap': pr.planned.overlap },
         `${OVERLAP_LABEL[pr.planned.overlap]}${PRESENTATION_REASON_LABEL[pr.planned.presentationReason ?? ''] ? ` · ${PRESENTATION_REASON_LABEL[pr.planned.presentationReason!]}` : ''}`) : null,
       h('span', { class: 'bar-actions' },
         withSkip ? button('Skip', () => void this.skip(), { id: 'skip', class: 'linklike', title: 'Skip (Esc)', 'aria-keyshortcuts': 'Escape' }) : null,
@@ -467,30 +469,35 @@ class Controller {
     clear(this.root);
     const concealed = exercise.hiddenBeforeAnswer.length > 0 || isAudioExercise(exercise);
     const card = h('article', { class: 'exercise', 'data-family': exercise.family, 'data-mode': exercise.responseMode, ...(concealed ? {} : { 'data-item': pr.planned.item.itemId }) });
-    if (this.isFlashcard()) {
+    const flashcard = this.isFlashcard();
+    const pp = exercise.prompt;
+    const wordContext = (exercise as ReviewExercise).context;
+    const stimulus = pp.stimulusText && !hidden.has('stimulusText') ? flashcard ? wordContext?.surface ?? pp.stimulusText : pp.stimulusText : undefined;
+    if (flashcard) {
       card.classList.add('flashcard');
       card.setAttribute('data-side', 'front');
       card.setAttribute('aria-label', 'Flashcard front');
-      card.append(h('p', { class: 'flashcard-label', id: 'flashcard-label' }, 'Recall the meaning'));
-    } else append(card, [h('p', { class: 'instruction strong', id: 'instruction' }, exercise.prompt.instruction)]);
-    const pp = exercise.prompt;
-    const wordContext = (exercise as ReviewExercise).context;
-    if (pp.stimulusText && !hidden.has('stimulusText')) {
-      card.append(h('p', { ...langProps(this.tag), id: 'stimulus', class: 'target-text stimulus' }, this.isFlashcard() && wordContext?.surface ? wordContext.surface : pp.stimulusText));
-      if (this.isFlashcard() && wordContext?.surface) card.append(h('p', { ...langProps(this.tag), class: 'flashcard-context' }, pp.stimulusText));
+      card.append(h('button', { type: 'button', id: 'flip-card', class: 'flashcard-face', onclick: () => this.reveal() },
+        stimulus ? h('span', { ...langProps(this.tag), id: 'stimulus', class: 'target-text stimulus' }, stimulus) : exercise.prompt.instruction,
+        h('span', { class: 'sr' }, ' · Flip card to reveal the answer')));
+    } else {
+      card.append(h('p', { class: 'instruction strong', id: 'instruction' }, pp.instruction));
+      if (stimulus) card.append(h('p', { ...langProps(this.tag), id: 'stimulus', class: 'target-text stimulus' }, stimulus));
+      if (pp.sentenceWithGap && !hidden.has('sentenceWithGap')) card.append(h('p', { ...langProps(this.tag), id: 'sentence-gap', class: 'target-text stimulus' }, pp.sentenceWithGap));
+      if (pp.meaning && !hidden.has('meaning')) card.append(h('p', { id: 'meaning', class: 'meaning' }, pp.meaning));
     }
-    if (pp.sentenceWithGap && !hidden.has('sentenceWithGap')) card.append(h('p', { ...langProps(this.tag), id: 'sentence-gap', class: 'target-text stimulus' }, pp.sentenceWithGap));
-    if (pp.meaning && !hidden.has('meaning')) card.append(h('p', { id: 'meaning', class: 'meaning' }, pp.meaning));
     const pronunciation = this.pronunciationBlock(pr);
     if (pronunciation) card.append(pronunciation);
     if (pp.audio) card.append(this.audioBlock(pp.audio.replaysAllowed));
-    card.append(this.responseArea(pr));
-    append(this.root, [this.header(pr, true), pr.index === 0 && pr.planned.why.includes(VOCAB_NOTE) ? h('p', { class: 'muted', id: 'vocab-note' }, VOCAB_NOTE) : null, card, h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, concealed)]);
+    if (!flashcard) card.append(this.responseArea(pr));
+    append(this.root, [this.header(pr, true), pr.index === 0 && pr.planned.why.includes(VOCAB_NOTE) ? h('p', { class: 'muted', id: 'vocab-note' }, VOCAB_NOTE) : null, card,
+      flashcard ? h('div', { class: 'flashcard-grades' }, h('div', { id: 'self-grade', class: 'self-grade', hidden: true })) : null,
+      h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, concealed)]);
     this.focusFirst();
   }
 
   private focusFirst(): void {
-    const target = this.root.querySelector<HTMLElement>('#answer-input, .choice, #reveal');
+    const target = this.root.querySelector<HTMLElement>('#answer-input, .choice, #reveal, #flip-card');
     try { target?.focus({ preventScroll: true }); } catch { /* focus is a convenience */ }
   }
 
@@ -500,12 +507,6 @@ class Controller {
     const mode = exercise.responseMode;
     const options = exercise.prompt.options ?? [];
     const target = answerInTarget(exercise.family);
-    if (this.isFlashcard()) {
-      area.append(button(this.ui.shortcuts ? 'Show answer (Space)' : 'Show answer', () => this.reveal(), { id: 'reveal', class: 'btn primary' }),
-        button('Type an answer', () => { this.typingCard = true; this.paintPrompt(pr); }, { id: 'type-answer', class: 'btn small' }),
-        h('div', { id: 'self-grade', class: 'self-grade', hidden: true }));
-      return area;
-    }
     if (mode === 'choice') {
       const optsInTarget = exercise.family === 'grammar-application' || exercise.family === 'sentence-completion';
       area.append(h('div', { class: 'choices', role: 'group', 'aria-label': 'Choices' }, ...options.map((o, i) =>
@@ -548,16 +549,18 @@ class Controller {
     this.revealed = true;
     const { exercise } = this.presented;
     const flashcard = this.isFlashcard();
+    const reference = h('p', { class: 'reference' }, h('span', { class: 'sr' }, 'Answer: '),
+      h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'revealed-answer' }, exercise.answerKey.accepted[0] ?? ''));
     if (flashcard) {
-      const card = this.root.querySelector<HTMLElement>('.flashcard');
-      card?.setAttribute('data-side', 'back');
-      card?.setAttribute('aria-label', 'Flashcard back');
-      const label = this.root.querySelector<HTMLElement>('#flashcard-label');
-      if (label) label.textContent = 'Meaning';
-      const typing = this.root.querySelector<HTMLElement>('#type-answer');
-      if (typing) typing.hidden = true;
-    }
-    if (exercise.responseMode === 'typed-or-self') {
+      const face = this.root.querySelector('#flip-card');
+      const word = face?.querySelector('#stimulus');
+      const back = h('div', { class: 'flashcard-face flashcard-back', tabindex: '-1' }, word, reference);
+      face?.replaceWith(back);
+      back.closest('.flashcard')?.setAttribute('data-side', 'back');
+      back.closest('.flashcard')?.setAttribute('aria-label', 'Flashcard back');
+      // Focus the revealed meaning so keyboard and screen-reader users encounter it before the rating controls.
+      back.focus({ preventScroll: true });
+    } else if (exercise.responseMode === 'typed-or-self') {
       const input = this.root.querySelector<HTMLInputElement>('#answer-input');
       if (input) { input.disabled = true; input.closest('.field')?.setAttribute('hidden', ''); }
       const check = this.root.querySelector<HTMLButtonElement>('#answer-check');
@@ -570,20 +573,18 @@ class Controller {
     const area = this.root.querySelector<HTMLElement>('#self-grade');
     if (!area) return;
     area.removeAttribute('hidden');
-    const ref = exercise.answerKey.accepted[0] ?? '';
     append(area, [
-      h('p', { class: 'reference' }, h('span', { class: 'sr' }, 'Answer: '), h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'revealed-answer' }, ref)),
-      h('p', { class: 'muted' }, 'How well did you know it?'),
+      flashcard ? null : reference,
+      flashcard ? null : h('p', { class: 'muted' }, 'How well did you know it?'),
       h('div', { class: 'grades', role: 'group', 'aria-label': 'How well did you know it?' }, ...GRADES.map((g, i) => {
         const word = RATING_LABEL[i + 1];
         const choice = button('', () => void this.submit(this.base({ selfGrade: g }), true), { class: 'grade', 'data-grade': g, 'aria-label': word, ...(this.ui.shortcuts ? { 'aria-keyshortcuts': String(i + 1) } : {}) });
         append(choice, [h('span', { class: 'grade-dot', 'aria-hidden': 'true' }, String(i + 1)), h('span', { class: 'grade-word' }, word)]);
         return choice;
       })),
-      h('p', { class: 'grade-help' }, button('I needed help', () => void this.submit(this.base({ hinted: true, assistance: ['learner-requested-help'], retrievalAttempted: false, selfGrade: 'again' }), true), { id: 'grade-assisted', class: 'linklike' })),
+      flashcard ? null : h('p', { class: 'grade-help' }, button('I needed help', () => void this.submit(this.base({ hinted: true, assistance: ['learner-requested-help'], retrievalAttempted: false, selfGrade: 'again' }), true), { id: 'grade-assisted', class: 'linklike' })),
     ]);
-    if (flashcard) area.append(h('details', {}, h('summary', {}, 'More detail'), h('p', {}, exercise.answerKey.explanation)));
-    try { area.querySelector<HTMLElement>('.grade')?.focus({ preventScroll: true }); } catch { /* */ }
+    if (!flashcard) try { area.querySelector<HTMLElement>('.grade')?.focus({ preventScroll: true }); } catch { /* */ }
   }
 
   // ───────────── audio ─────────────
@@ -865,6 +866,8 @@ class Controller {
     const item = pr.planned.item;
     const histBox = h('div', { id: 'item-history', class: 'item-history' });
     return h('details', { id: 'item-tools', class: 'item-tools' }, h('summary', {}, 'This item'),
+      this.isFlashcard() && pr.planned.overlap ? h('p', { class: 'muted' },
+        presentationReasonLabel(pr.planned.presentationReason, pr.planned.overlap)) : null,
       concealed ? null : h('p', { class: 'muted' }, h('span', langProps(this.tag), unitLabel(item.unitId)), ` · ${DIMENSION_LABEL[item.dimension]}`),
       !concealed && pr.planned.why.length ? h('ul', { class: 'reasons' }, ...pr.planned.why.map((w) => h('li', {}, ...embedTarget(w, this.targetWords(pr), this.tag)))) : null,
       h('div', { class: 'row' },
@@ -904,17 +907,32 @@ export function parseCorrection(text: string): { lexemeId: string } | { features
  * heading and enabled whenever N > 0. The "Next scheduled session" line is truthful about what the N cards are: due reviews, due learning
  * returns, new admissions, and the early reviews (deck-fill) that top the deck up; the four add up to N.
  */
-async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, _tag: string): Promise<HTMLElement> {
+/** How long the summary waits for a model before it draws the Next section as a placeholder and fills it in when the model arrives (only with nothing on this device). */
+const NEXT_MODEL_WAIT_MS = 1_000;
+
+async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, tag: string, opts: { quiet?: boolean } = {}): Promise<HTMLElement> {
+  // the model is this device's copy (immediate); a live refresh that lands redraws the summary through ctx.onData
+  const modelPromise = currentReviewModel(ctx, opts.quiet ? { noRefresh: true } : {});
+  let timer: number | undefined;
+  const late = new Promise<'late'>((resolve) => { timer = ctx.deps.win.setTimeout(() => resolve('late'), NEXT_MODEL_WAIT_MS) as unknown as number; });
+  const first = await Promise.race([modelPromise, late]).finally(() => { if (timer !== undefined) ctx.deps.win.clearTimeout(timer); });
+  if (first !== 'late') return buildNextSection(ctx, run, actions, tag, first);
+  const holder = h('section', { id: 'summary-next', class: 'card', 'aria-labelledby': 'summary-next-heading' }, h('h2', { id: 'summary-next-heading' }, 'Next'), p('Loading what comes next…', 'muted'));
+  void modelPromise.then(async (model) => { const built = await buildNextSection(ctx, run, actions, tag, model); if (holder.isConnected) holder.replaceWith(built); }).catch(() => undefined);
+  return holder;
+}
+
+async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextActions, _tag: string, model: ReviewModel | undefined): Promise<HTMLElement> {
   const planned = run.plan.initialQuestionCount ?? run.plan.items.length;
   const status = statusLine();
-  const model = await loadReviewModel(ctx);
   const scheduled = model ? await planCurrentDeck(ctx, model) : undefined;
   const remediation = model ? effectiveRemediation(model).all : [];
   const cards = (n: number): string => `${n} card${n === 1 ? '' : 's'}`;
-  const begin = async (make: (model: NonNullable<Awaited<ReturnType<typeof loadReviewModel>>>) => Promise<SessionPlan | undefined>, buttons: HTMLButtonElement[]): Promise<void> => {
+  const begin = async (make: (model: ReviewModel) => Promise<SessionPlan | undefined>, buttons: HTMLButtonElement[]): Promise<void> => {
     for (const b of buttons) b.disabled = true;
     try {
-      const model = await loadReviewModel(ctx);
+      // a press never waits for the network: this device's copy, or the live model if a refresh in progress lands within PRESS_WAIT_MS
+      const model = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
       if (!model) { setStatus(status, 'Choose a language first.', 'error'); return; }
       const plan = await make(model);
       if (!plan || !plan.items.length) { setStatus(status, 'None of these cards can be asked right now.', 'info'); return; }
@@ -961,7 +979,7 @@ async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextAct
     extra, status);
 }
 
-export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, actions?: NextActions): Promise<void> {
+export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, actions?: NextActions, opts: { quiet?: boolean } = {}): Promise<void> {
   const tag = run.ctx.varietyId ?? run.ctx.languageId;
   const results = run.results;
   const sessionState = run.driver.state();
@@ -1022,7 +1040,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
       run.withheld.length ? h('ul', { id: 'sum-withheld' }, ...run.withheld.map((w) => h('li', {}, h('span', langProps(tag), unitLabel(w.unitId)), ` (${w.family}): `, ...embedTarget(`${w.reason}.`, [unitLabel(w.unitId)], tag)))) : p('Everything counted.', 'muted'),
       unbuildable.length ? h('p', { class: 'muted', id: 'sum-unbuildable' }, 'Could not be asked: ', ...unbuildable.flatMap((u, i) => [i ? '; ' : '', h('span', langProps(tag), itemLabel(u.itemId)), ` (${u.reason})`]), '.') : null,
       p(`${view.status?.pending ?? 0} ${(view.status?.pending ?? 0) === 1 ? 'answer waits' : 'answers wait'} to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'))),
-    ...(actions ? [await nextDeckSection(ctx, run, actions, tag)] : []),
+    ...(actions ? [await nextDeckSection(ctx, run, actions, tag, opts)] : []),
   ]);
   if (run.driver.undo) {
     const undoable = results.filter((result) => result.evidence && !result.correctedAt && !result.response.challenged);

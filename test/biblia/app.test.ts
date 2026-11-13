@@ -8,6 +8,8 @@
 import fs from 'node:fs';
 import { afterEach, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { createBibliaApp, type BibliaApp } from '../../packages/biblia/src/app';
+import { LEVEL_ATTR } from '../../packages/biblia/src/levels';
+import type { AccountService } from '../../packages/biblia/src/account';
 import type { DataSource } from '../../packages/biblia/src/data';
 import type { Recorder } from '../../packages/biblia/src/repo';
 import { languageMeta } from '../../packages/golearn-extension/src/parser/registry';
@@ -141,6 +143,37 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
       const root = app.cardRoot()!;
       expect(root.querySelector('[data-row="meaning"]')!.textContent).toContain('And he said');
       expect(root.querySelector('.kicker')!.textContent).not.toBe('Meaning · Lemma meaning');
+    });
+  });
+
+  describe.skipIf(!languageMeta('he'))('levels: met only in passing (2026-11-05)', () => {
+    beforeAll(() => { registerAllAnalysers(); });
+    it('a tap records the other words as met, but they keep reading New; only the tapped word reads Seen', async () => {
+      const rec = fakeRecorder();
+      // a signed-in service whose rows say Seen for every unit (what the Repository's rule makes of a bare encounter), with nothing but exposure behind it
+      const passing = (unitId: string) => ({ learnerId: 'L1', unitId, languageId: 'he', level: 'seen', encounters: 1, dimensions: { exposure: { observations: 1, negative: 0, positive: 0 } } });
+      const api = { knowledge: async (ids?: string[]) => ({ ok: true as const, status: 200, data: { knowledge: (ids ?? []).map(passing) } }) };
+      const account = {
+        serviceUrl: 'https://repo.example', state: () => ({ signedIn: true }), session: () => undefined, api: () => api, start: async () => undefined,
+        subscribe: () => () => undefined, onAppended: () => () => undefined, emitAppended: () => undefined, expire: () => undefined, signOut: async () => undefined,
+      } as unknown as AccountService;
+      app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: rec, account, now: () => new Date('2026-10-18T12:00:00Z') });
+      await app.go('#/read/Gen/1');
+      // wait for the page's levels to be painted, however busy the machine is (a fixed 30 ms failed once in a whole-suite run, 2026-11-11)
+      const waitFor = async (ok: () => boolean): Promise<void> => { for (let i = 0; i < 250 && !ok(); i++) await new Promise((r) => setTimeout(r, 20)); };
+      await waitFor(() => { const w = [...document.querySelectorAll<HTMLElement>('.reader .prose button.word')]; return w.length > 0 && w.every((b) => b.hasAttribute(LEVEL_ATTR)); });
+      const words = [...document.querySelectorAll<HTMLElement>('.reader .prose button.word')];
+      const first = words.find((b) => b.textContent === 'אֱלֹהִ֑ים')!;
+      const verse = first.closest('.verse')!;
+      const others = [...verse.querySelectorAll<HTMLElement>('button.word')].filter((b) => b !== first && b.textContent !== first.textContent);
+      expect(others.length).toBeGreaterThan(2);
+      expect(others.every((b) => b.getAttribute(LEVEL_ATTR) === 'new')).toBe(true); // rows say Seen (bare encounters), shown New
+      first.click();
+      await waitFor(() => first.getAttribute(LEVEL_ATTR) === 'seen' && rec.events.some((e) => e.kind === 'EncounterRecorded'));
+      await new Promise((r) => setTimeout(r, 40)); // and anything that would repaint the other words after the tap has run
+      expect(rec.events.some((e) => e.kind === 'EncounterRecorded')).toBe(true); // the exposures ARE recorded
+      expect(first.getAttribute(LEVEL_ATTR)).toBe('seen'); // the tapped word is Seen at once
+      expect(others.every((b) => b.getAttribute(LEVEL_ATTR) === 'new')).toBe(true); // the other words of the verse stay New
     });
   });
 

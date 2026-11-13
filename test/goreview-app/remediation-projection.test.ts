@@ -11,7 +11,7 @@ import { buildRemediationStudiedEvent } from '../../packages/goreview/src/planne
 import type { GoEvent } from '../../packages/repository-contract/src';
 import { effectiveRemediation, planCurrentDeck, planRemediation } from '../../packages/goreview/app/deckModel';
 import { loadReviewModel, type ReviewModel } from '../../packages/goreview/app/workspace';
-import { destroyRigs, dueCard, ids, key, makeRig, reopen, seed, shownLabel, startWith, type as typeInto, until, type Rig } from './helpers';
+import { destroyRigs, dueCard, ids, key, makeRig, reopenDetails, seed, shownLabel, startWith, type as typeInto, until, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -62,8 +62,8 @@ describe('effectiveRemediation: one projection over ordinary and Class Essential
     expect(current.summary.remediation).toBe(r.ordinary.length);
     expect(current.summary.classRemediation).toBe(r.class.length);
     expect(current.remediation.map(c => c.itemId)).toEqual(r.ordinary.map(c => c.itemId));
-    await reopen(rig);
-    expect(rig.q('#open-remediation').textContent).toBe('1 missed word to study'); // under the Current Deck
+    await reopenDetails(rig);
+    expect(rig.q('#open-remediation').textContent).toBe('1 missed word to study');
     await rig.go('review/decks'); // Class Essentials' missed phrases sit under its card in Saved decks
     await until(() => !!rig.root.querySelector('#open-class-remediation'), 'the class remediation link');
     expect(rig.q('#open-class-remediation').textContent).toBe('1 missed phrase to study');

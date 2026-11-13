@@ -27,11 +27,23 @@ export interface EncounterStore {
   clear(): Promise<number>;
 }
 
+/**
+ * The rows whose key starts with `prefix`, in the area's own order. Where the browser lists keys alone (chrome.storage getKeys, Chrome 130+) only those
+ * rows are read; the whole storage (history, queue, dictionary pages: about 15 MB at 12,000 events, and reads queue behind each other) is read only
+ * where the area cannot list its keys. `only` narrows the keys before any row is read.
+ */
+export async function readPrefix(area: StorageArea, prefix: string, only?: (key: string) => boolean): Promise<Array<[string, unknown]>> {
+  const wanted = (k: string): boolean => k.startsWith(prefix) && (!only || only(k));
+  const lister = (area as StorageArea & { getKeys?: () => Promise<string[]> }).getKeys;
+  if (typeof lister === 'function') {
+    const keys = (await lister.call(area)).filter(wanted);
+    return keys.length ? Object.entries(await area.get(keys)) : [];
+  }
+  return Object.entries(await area.get(null)).filter(([k]) => wanted(k));
+}
+
 export function createStorageEncounterStore(area: StorageArea): EncounterStore {
-  const rows = async (): Promise<Array<[string, GoEvent]>> => {
-    const all = await area.get(null);
-    return Object.entries(all).filter(([k]) => k.startsWith(EVENT_KEY_PREFIX)).map(([k, v]) => [k, v as GoEvent]);
-  };
+  const rows = async (): Promise<Array<[string, GoEvent]>> => (await readPrefix(area, EVENT_KEY_PREFIX)).map(([k, v]) => [k, v as GoEvent]);
   return {
     async append(event) {
       const issues = validateEvent(event);

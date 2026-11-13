@@ -117,6 +117,7 @@ export interface ActiveRun {
   /** How many CardAdded events the start wrote. */
   addedCount: number;
   startedAt: number;
+  resumed?: boolean;
   endedAt?: number;
   /** Results already committed to the queue, in order. */
   results: ReviewResult[];
@@ -150,6 +151,8 @@ export interface PlanRequest {
 }
 
 export interface ReviewEngine {
+  /** The learner's language is known: start fetching what it needs (its analyser chunk) in the background. Never throws; a failure is met again when the language is first used. */
+  warmLanguage?(languageId: string): void;
   /** Recover review candidates for genuinely absent installable-language catalogue rows using pack facts and normal ranking. */
   recoverCandidates?(request: RecoveryRequest): Promise<RecoveryResult>;
   /** True only when an installed pack can provide facts for event-only catalogue recovery. */
@@ -168,6 +171,11 @@ export interface ReviewEngine {
   scheduler(prefs: ReviewPreferences, profile?: SchedulerProfile): Scheduler;
   /** The deck of one language as a fold over the learner's events (a snooze that has ended by `now` is over). */
   foldDeck(events: GoEvent[], languageId: string, prefs: ReviewPreferences, now: string): DeckItem[];
+  /**
+   * `foldDeck`, shared: one fold of the log per event head (the log's length and first, middle and last event ids), for a reader that asks again and again
+   * while the log stays the same (the session's guard). The same items; they are shared, so read them, never change them.
+   */
+  foldDeckShared?(events: GoEvent[], languageId: string, prefs: ReviewPreferences, now: string): DeckItem[];
   /** Intake decisions for the Repository's candidates, each with its reasons. */
   intake(req: IntakeRequest): Promise<IntakeOutcome[]>;
   /** The readable line for an outcome (headline, proposed skill, reasons). */
@@ -238,6 +246,8 @@ export interface Deps {
   links?: { setup?: string; extension?: string; /** The address on the Help page. */ support?: string; /** Biblia, when it ships beside this app (the iPhone edition, the extension) */ biblia?: string };
   /** 'review' in the GoReview (iPhone) build: its own title, its first-launch message, and the update link. Absent elsewhere. */
   edition?: 'review';
+  /** Explicit opt-in for GoTell development and tests. */
+  enableGoTell?: boolean;
   /** Live updates (./live.ts) run in the real app (autoSync); false turns them off. Tests that exercise them pass their own timers. */
   live?: false | { timers?: { set(fn: () => void, ms: number): unknown; clear(h: unknown): void }; pollMs?: number; waitTimeoutMs?: number; minRoundMs?: number; backoff?: { baseMs: number; maxMs: number } };
   /** Run the sync client's own timer (the real app) or only on demand (tests). */

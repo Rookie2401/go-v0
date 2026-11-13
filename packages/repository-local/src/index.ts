@@ -3,8 +3,8 @@
  * and request handler, run in-process over a key-value area, plus the upload that moves the history to an account when the learner
  * signs in. See ../../docs/ecosystem/REPOSITORY-LOCAL.md.
  */
-export { openLocalRepository, inspectLocal, markEventsOwned, DEFAULT_PREFIX, LOCAL_EMAIL } from './local';
-export type { LocalRepository, LocalIdentity, OpenLocalOptions, LocalInspection } from './local';
+export { openLocalRepository, inspectLocal, uploadWaiting, markEventsOwned, DEFAULT_PREFIX, LOCAL_EMAIL } from './local';
+export type { LocalRepository, LocalIdentity, OpenLocalOptions, LocalInspection, StorageInfo } from './local';
 export { resolveWithAdapter } from './linguistics';
 export type { AdapterLike } from './linguistics';
 export { sha256Hex } from './crypto';

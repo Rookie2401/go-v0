@@ -16,8 +16,8 @@ import { createGreekShardLoader } from '../../../src/adapters/greek/shards';
 import { installGreekIndex, installedGreekIndexes, type GreekFormIndex } from '../../../src/adapters/greek/index-store';
 import type { GreekShardLoader } from '../../../src/adapters/greek/shards';
 import type { ShardSource } from '../../../src/adapters/shared/shards';
-import { heAdapter } from '../../../src/adapters/he';
-import { elAdapter } from '../../../src/adapters/el';
+import { builtInAdapter } from '../../language-packs/src/runtime';
+import { loadBuiltInAdapter } from '../../language-packs/src/builtins';
 import { readShardBytes } from '../../../src/adapters/shared/shards';
 import { createFormsSource } from '../../../src/dict/forms';
 
@@ -118,7 +118,7 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
   const ensureHebrewSentenceSet = (manifest: NonNullable<ReturnType<typeof packFor>>): Promise<void> => {
     let pending = hebrewSentencesReady.get(manifest.version);
     if (!pending) {
-      const keys = manifest.validation.flatMap((item) => heAdapter.tokenize(item.sentence ?? item.surface)
+      const keys = manifest.validation.flatMap((item) => builtInAdapter('he')!.tokenize(item.sentence ?? item.surface)
         .filter((t) => t.isWord).map((t) => t.normalized));
       pending = ensureHebrewKeys(keys);
       hebrewSentencesReady.set(manifest.version, pending);
@@ -127,11 +127,11 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
     return pending;
   };
   const hebrewUnitKeys = (unitId: string): string[] => {
-    if (unitId.startsWith('form:he:')) return heAdapter.tokenize(unitId.slice('form:he:'.length)).filter((t) => t.isWord).map((t) => t.normalized);
+    if (unitId.startsWith('form:he:')) return builtInAdapter('he')!.tokenize(unitId.slice('form:he:'.length)).filter((t) => t.isWord).map((t) => t.normalized);
     if (unitId.startsWith('lemma:he:')) {
       const body = unitId.slice('lemma:he:'.length);
       const split = body.lastIndexOf(':');
-      return heAdapter.tokenize(split < 0 ? body : body.slice(0, split)).filter((t) => t.isWord).map((t) => t.normalized);
+      return builtInAdapter('he')!.tokenize(split < 0 ? body : body.slice(0, split)).filter((t) => t.isWord).map((t) => t.normalized);
     }
     return [];
   };
@@ -144,17 +144,16 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
     return ensureGreekKeys(keys, period);
   };
   const greekUnitKeys = (unitId: string): string[] => {
-    if (unitId.startsWith('form:el:')) return elAdapter.tokenize(unitId.slice('form:el:'.length)).filter((t) => t.isWord).map((t) => t.normalized);
+    if (unitId.startsWith('form:el:')) return builtInAdapter('el')!.tokenize(unitId.slice('form:el:'.length)).filter((t) => t.isWord).map((t) => t.normalized);
     if (unitId.startsWith('lemma:el:')) {
       const body = unitId.slice('lemma:el:'.length);
       const split = body.lastIndexOf(':');
-      return elAdapter.tokenize(split < 0 ? body : body.slice(0, split)).filter((t) => t.isWord).map((t) => t.normalized);
+      return builtInAdapter('el')!.tokenize(split < 0 ? body : body.slice(0, split)).filter((t) => t.isWord).map((t) => t.normalized);
     }
     return [];
   };
-  return (languageId, api) => {
-    const manifest = packFor(languageId);
-    if (!manifest || manifest.status !== 'installable') return undefined;
+  type Provider = FactsProvider & { prime(unitIds: string[], varietyId?: string): Promise<void>; clearPrime(): void };
+  const providerFor = (languageId: string, api: RepositoryApi, manifest: NonNullable<ReturnType<typeof packFor>>): Provider | undefined => {
     let runtime = runtimes.get(languageId);
     if (!runtime) {
       const trackedFetch: typeof fetch = async (input, init) => {
@@ -266,6 +265,28 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
           } } };
         } catch { return undefined; }
       },
-    } as FactsProvider & { prime(unitIds: string[], varietyId?: string): Promise<void>; clearPrime(): void };
+    } as Provider;
+  };
+  return (languageId, api) => {
+    const manifest = packFor(languageId);
+    if (!manifest || manifest.status !== 'installable') return undefined;
+    // the analyser is already here (the full build links every one; the review build once the language has been used): as always
+    if (builtInAdapter(languageId)) return providerFor(languageId, api, manifest);
+    // not yet: the provider exists at once, the language's analyser chunk is fetched the first time it is used (once, kept); a failed
+    // fetch rejects with AdapterLoadError, which the exercise readiness and session build report as a retryable problem, and the next call tries again
+    let built: Provider | undefined;
+    let pending: Promise<Provider | undefined> | undefined;
+    const ready = (): Promise<Provider | undefined> => {
+      if (!pending) {
+        pending = loadBuiltInAdapter(languageId).then((adapter) => (adapter ? (built = providerFor(languageId, api, manifest)) : undefined));
+        pending.catch(() => { pending = undefined; });
+      }
+      return pending;
+    };
+    return {
+      prime: async (unitIds: string[], varietyId?: string) => { await (await ready())?.prime(unitIds, varietyId); },
+      clearPrime: () => built?.clearPrime(),
+      factsFor: async (unitId, requestedLanguage, varietyId) => (await ready())?.factsFor(unitId, requestedLanguage, varietyId),
+    } as Provider;
   };
 }

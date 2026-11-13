@@ -10,6 +10,8 @@ export interface KeyValueArea {
   remove(keys: string | string[]): Promise<void>;
   /** The keys that start with `prefix`, in ascending order. */
   list(prefix: string): Promise<string[]>;
+  /** Every row whose key starts with `prefix`, read without the area's other rows when the area can list its keys alone (optional). */
+  getPrefix?(prefix: string): Promise<Record<string, unknown>>;
 }
 
 /** The three methods chrome.storage.local (and the prototype's StorageArea) already have. */
@@ -17,15 +19,31 @@ export interface StorageAreaLike {
   get(keys: string | string[] | null): Promise<Record<string, unknown>>;
   set(items: Record<string, unknown>): Promise<void>;
   remove(keys: string | string[]): Promise<void>;
+  /** chrome.storage's key listing (Chrome 130+): the keys alone, without reading a value. */
+  getKeys?(): Promise<string[]>;
 }
 
-/** Binds a chrome.storage-style area; `list` reads every row and filters (fine for a queue measured in thousands). */
+/**
+ * Binds a chrome.storage-style area. `list` and `getPrefix` read the keys alone where the browser can (getKeys), then only the rows asked for
+ * (2026-11-09: every list read EVERY row of the extension's storage, dictionary pages and the whole device history included, which after the
+ * worker slept took 10 s and more with a large history); without it they read every row and filter, as before.
+ */
 export function adaptStorageArea(a: StorageAreaLike): KeyValueArea {
   return {
     get: (k) => a.get(k),
     set: (i) => a.set(i),
     remove: (k) => a.remove(k),
-    async list(prefix) { return Object.keys(await a.get(null)).filter((k) => k.startsWith(prefix)).sort(); },
+    async list(prefix) {
+      const keys = typeof a.getKeys === 'function' ? await a.getKeys() : Object.keys(await a.get(null));
+      return keys.filter((k) => k.startsWith(prefix)).sort();
+    },
+    async getPrefix(prefix) {
+      if (typeof a.getKeys === 'function') {
+        const keys = (await a.getKeys()).filter((k) => k.startsWith(prefix));
+        return keys.length ? a.get(keys) : {};
+      }
+      return Object.fromEntries(Object.entries(await a.get(null)).filter(([k]) => k.startsWith(prefix)));
+    },
   };
 }
 
@@ -42,6 +60,7 @@ export function createMemoryArea(): KeyValueArea & { dump(): Record<string, unkn
     async set(items) { for (const [k, v] of Object.entries(items)) m.set(k, structuredClone(v)); },
     async remove(keys) { for (const k of Array.isArray(keys) ? keys : [keys]) m.delete(k); },
     async list(prefix) { return [...m.keys()].filter((k) => k.startsWith(prefix)).sort(); },
+    async getPrefix(prefix) { return Object.fromEntries([...m].filter(([k]) => k.startsWith(prefix)).map(([k, v]) => [k, structuredClone(v)])); },
     dump: () => Object.fromEntries([...m].map(([k, v]) => [k, structuredClone(v)])),
   };
 }
@@ -53,6 +72,10 @@ export async function getOne<T>(area: KeyValueArea, key: string): Promise<T | un
 
 /** Reads every row whose key starts with `prefix`, in key order. */
 export async function getByPrefix<T>(area: KeyValueArea, prefix: string): Promise<Array<[string, T]>> {
+  if (area.getPrefix) {
+    const rows = await area.getPrefix(prefix);
+    return Object.keys(rows).filter((k) => k.startsWith(prefix) && rows[k] !== undefined).sort().map((k) => [k, rows[k] as T]);
+  }
   const keys = await area.list(prefix);
   if (!keys.length) return [];
   const rows = await area.get(keys);

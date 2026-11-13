@@ -220,7 +220,7 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       const bySeq = new Map<number, StoredEvent>();
       for (const part of chunks([...new Set(unitIds)], 250)) {
         if (!part.length) continue;
-        const rows = db.prepare(`SELECT DISTINCT ${EVENT_COLS} FROM event_units eu JOIN events e ON e.id = eu.event_id
+        const rows = db.prepare(`SELECT DISTINCT ${EVENT_COLS} FROM event_units eu CROSS JOIN events e ON e.id = eu.event_id
           WHERE eu.unit_id IN (${placeholders(part.length)}) AND e.learner_id = ?`).all(...part, learnerId) as Row[];
         for (const row of rows) { const e = eventOfRow(row); bySeq.set(e.seq, e); }
       }
@@ -233,10 +233,10 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
         const rows = db.prepare(`WITH recent AS (
           SELECT eu.unit_id AS unit_id, e.seq AS seq, e.recorded_at AS recorded_at, e.json AS json,
             ROW_NUMBER() OVER (PARTITION BY eu.unit_id ORDER BY e.seq DESC) AS rn
-          FROM events e JOIN event_units eu ON eu.event_id = e.id
-          WHERE e.learner_id = ? AND e.language_id = ? AND e.kind IN ('EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested')
-            AND eu.unit_id IN (${placeholders(part.length)})
-        ) SELECT unit_id, seq, recorded_at, json FROM recent WHERE rn <= ? ORDER BY unit_id, seq DESC`).all(learnerId, languageId, ...part, Math.max(1, Math.min(100, perUnitLimit))) as Row[];
+          FROM event_units eu CROSS JOIN events e ON e.id = eu.event_id
+          WHERE eu.unit_id IN (${placeholders(part.length)}) AND e.learner_id = ? AND e.language_id = ?
+            AND e.kind IN ('EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested')
+        ) SELECT unit_id, seq, recorded_at, json FROM recent WHERE rn <= ? ORDER BY unit_id, seq DESC`).all(...part, learnerId, languageId, Math.max(1, Math.min(100, perUnitLimit))) as Row[];
         for (const row of rows) out.push({ unitId: row.unit_id as string, event: eventOfRow(row) });
       }
       return out;
@@ -246,9 +246,9 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       for (const part of chunks([...new Set(unitIds)], 250)) {
         if (!part.length) continue;
         const rows = db.prepare(`SELECT eu.unit_id AS unit_id, MIN(e.at_ms) AS first_ms, MAX(e.at_ms) AS last_ms
-          FROM event_units eu JOIN events e ON e.id = eu.event_id
-          WHERE e.learner_id = ? AND e.language_id = ? AND e.kind IN ('EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested')
-            AND eu.unit_id IN (${placeholders(part.length)}) GROUP BY eu.unit_id`).all(learnerId, languageId, ...part) as Row[];
+          FROM event_units eu CROSS JOIN events e ON e.id = eu.event_id
+          WHERE eu.unit_id IN (${placeholders(part.length)}) AND e.learner_id = ? AND e.language_id = ?
+            AND e.kind IN ('EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested') GROUP BY eu.unit_id`).all(...part, learnerId, languageId) as Row[];
         for (const row of rows) found.set(row.unit_id as string, {
           unitId: row.unit_id as string,
           firstEncounter: new Date(Number(row.first_ms)).toISOString(), lastEncounter: new Date(Number(row.last_ms)).toISOString(),
@@ -263,10 +263,10 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
         const rows = db.prepare(`WITH latest AS (
           SELECT eu.unit_id AS unit_id, e.seq AS seq, e.recorded_at AS recorded_at, e.json AS json,
             ROW_NUMBER() OVER (PARTITION BY eu.unit_id, json_extract(e.json, '$.subject.cardId') ORDER BY e.at_ms DESC, e.id DESC) AS rn
-          FROM events e JOIN event_units eu ON eu.event_id = e.id
-          WHERE e.learner_id = ? AND e.language_id = ? AND e.kind IN ('CardAdded', 'CardRemoved', 'ReviewItemInvalidated')
-            AND json_extract(e.json, '$.subject.cardId') IS NOT NULL AND eu.unit_id IN (${placeholders(part.length)})
-        ) SELECT unit_id, seq, recorded_at, json FROM latest WHERE rn = 1 ORDER BY unit_id`).all(learnerId, languageId, ...part) as Row[];
+          FROM event_units eu CROSS JOIN events e ON e.id = eu.event_id
+          WHERE eu.unit_id IN (${placeholders(part.length)}) AND e.learner_id = ? AND e.language_id = ?
+            AND e.kind IN ('CardAdded', 'CardRemoved', 'ReviewItemInvalidated') AND json_extract(e.json, '$.subject.cardId') IS NOT NULL
+        ) SELECT unit_id, seq, recorded_at, json FROM latest WHERE rn = 1 ORDER BY unit_id`).all(...part, learnerId, languageId) as Row[];
         for (const row of rows) out.push({ unitId: row.unit_id as string, event: eventOfRow(row) });
       }
       return out;
@@ -276,9 +276,8 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       for (const part of chunks([...new Set(unitIds)], 250)) {
         if (!part.length) continue;
         const rows = db.prepare(`SELECT DISTINCT eu.unit_id AS unit_id
-          FROM events e JOIN event_units eu ON eu.event_id = e.id
-          WHERE e.learner_id = ? AND e.language_id = ? AND e.kind = 'AssistanceRequested'
-            AND eu.unit_id IN (${placeholders(part.length)})`).all(learnerId, languageId, ...part) as Row[];
+          FROM event_units eu CROSS JOIN events e ON e.id = eu.event_id
+          WHERE eu.unit_id IN (${placeholders(part.length)}) AND e.learner_id = ? AND e.language_id = ? AND e.kind = 'AssistanceRequested'`).all(...part, learnerId, languageId) as Row[];
         for (const row of rows) found.add(row.unit_id as string);
       }
       return [...found];
@@ -421,7 +420,13 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
             a.oldId, a.newId, a.packVersion, text(a),
           );
         }
+        // the stamp moves in the same transaction as the rows: a reader never sees new rows under the old stamp
+        run(`INSERT INTO service_state (key, value) VALUES ('__aliasStamp', '1') ON CONFLICT (key) DO UPDATE SET value = CAST(CAST(value AS INTEGER) + 1 AS TEXT)`);
       });
+    },
+    async aliasStamp() {
+      const r = get("SELECT value FROM service_state WHERE key = '__aliasStamp'");
+      return r ? (r.value as string) : '0';
     },
     async getPack(packId, version) {
       if (version !== undefined) {
@@ -455,7 +460,7 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
     async getKnowledgePage(learnerId, q) {
       const limit = Math.max(1, Math.min(500, Math.trunc(q.limit)));
       const rows = db.prepare(`SELECT k.json FROM knowledge k WHERE k.learner_id = ? AND k.language_id = ? AND k.unit_id > ?
-        AND (? IS NULL OR EXISTS (SELECT 1 FROM event_units eu JOIN events e ON e.id = eu.event_id
+        AND (? IS NULL OR EXISTS (SELECT 1 FROM event_units eu CROSS JOIN events e ON e.id = eu.event_id
           WHERE eu.unit_id = k.unit_id AND e.learner_id = k.learner_id AND e.language_id = k.language_id
             AND e.kind IN ('EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested')
             AND (json_extract(e.json, '$.subject.sourceRef.kind') = ? OR json_extract(e.json, '$.subject.sourceRef.title') = ? OR json_extract(e.json, '$.subject.sourceRef.locator') = ?

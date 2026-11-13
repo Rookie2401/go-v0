@@ -10,13 +10,25 @@ import { schedulerForReviewProfile } from '../src/scheduler/replay-profile';
 import type { GoEvent, SchedulerProfile } from '../../repository-contract/src';
 import {
   applyControls, buildCardAdded, createFsrsScheduler, createSessionRunner, decideIntake, explainIntake, explainItem, foldDeckItems,
-  gatherCandidates, measuresFor, planSession, reviewHistory, resolveBuilder,
+  factsBudgetFor, gatherCandidates, measuresFor, planSession, reviewHistory, resolveBuilder,
 } from '../src';
 import type { BuilderRegistry, FactsProvider, GradingPort, IntakeOutcome, Exercise } from '../src';
 import type { RepositoryApi } from '../../repository-service/src/api';
+import type { DeckItem } from '../src/types';
 import type { ExerciseReadiness, ExerciseReadinessRequest, ItemControl, RecoveryRequest, ReviewEngine } from './ports';
 import { classFacts, isClassUnit } from './classEssentials';
 import { recoverCandidates } from './recoveredCandidates';
+import { createReviewEligibilityContext } from '../src/planner/eligibility';
+import { indexPracticeEvidence } from '../src/planner/learning-policy';
+
+/**
+ * What a fold of the learner's log is valid for: the log's length, its first, middle and last event ids (the signature the freshness checks use).
+ * An event appended or removed changes it; nothing else about the log can change under the same signature.
+ */
+export const eventHead = (events: readonly GoEvent[]): string =>
+  `${events.length}|${events[0]?.id ?? ''}|${events[events.length >> 1]?.id ?? ''}|${events.at(-1)?.id ?? ''}`;
+/** A snooze ends at or before the instant the deck is read at; this instant is before any snooze could have ended, so the fold keeps every snooze. */
+const NO_SNOOZE_ENDED = '0001-01-01T00:00:00.000Z';
 
 export interface EngineOptions {
   builders: BuilderRegistry;
@@ -24,6 +36,8 @@ export interface EngineOptions {
   ratingFor: GradingPort['ratingFor'];
   /** The pack facts for a language, or undefined when the pack cannot supply them (the exercise is then not built). */
   factsFor?(languageId: string, api: RepositoryApi): FactsProvider | undefined;
+  /** Starts fetching a language's analyser in the background (the review build loads each language's analyser as its own chunk). */
+  warmLanguage?(languageId: string): void;
   now?: () => string;
   random?: () => number;
 }
@@ -40,6 +54,126 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     if ('error' in resolved) throw new Error(resolved.error);
     return resolved.scheduler;
   };
+  /**
+   * One fold of the log per event head (2026-11-10: a session folded the whole log about ten times per answered card). The fold depends on `now`
+   * only through one rule (a snooze whose end is at or before `now` is over: deck.ts, last pass), so it is made once with every snooze kept and
+   * that rule is applied to each reading; the items are the same as `foldDeckItems(events, scheduler(retention), opts)`. Holds the latest head
+   * only (a different head clears it), so it never grows, and never serves a fold of an older log. The items are shared: read, never mutate.
+   *
+   * The next head is usually the last one plus a few events at the end (an answer). The fold is per card (a card's item is a function of that
+   * card's own events: ordering, retractions, convergence and conflicts are all scoped by card id), so then only the cards those events name are
+   * folded again, from their own events, and every other item is the object the last head had. Anything the premise does not cover folds the
+   * whole log, as before: the log is not the last one plus a suffix (an older event arrived, one went, ids changed), an id repeats, a time cannot
+   * be read, an event brings a second learner, an event names an event of another card, or the key was not read at the last head.
+   */
+  const shared = { head: '', folds: new Map<string, DeckItem[]>() };
+  interface LangState {
+    head: string; ids: string[]; n: number; learners: Set<string>; byCard: Map<string, GoEvent[]>;
+    /** every event of the language by id, with the card it names ('' for none) */
+    cardById: Map<string, string>;
+    /** the events other events name by id (a correction's target, an invalidation's review, a review's predecessor, a repair's invalidation): named id -> the cards naming it */
+    refs: Map<string, Set<string>>;
+    /** a repeated id, an unreadable time, or an event naming another card's event was seen: only whole-log folds are exact for this log */
+    unsafe: boolean;
+    /** the log length of the previous state, when this one was reached by adding events at the end that change nothing but cards (else undefined) */
+    from: number | undefined; touched: Set<string>;
+  }
+  const langs = new Map<string, LangState>();
+  interface KeyState { lang: LangState; n: number; items: Map<string, DeckItem>; sorted: DeckItem[] }
+  const keyStates = new Map<string, KeyState>();
+  const cardOf = (e: GoEvent): string | undefined => { const id = e.subject?.cardId; return typeof id === 'string' && id.length > 0 ? id : undefined; };
+  const sortedItems = (m: Map<string, DeckItem>): DeckItem[] => [...m.values()].sort((a, b) => Date.parse(a.addedAt) - Date.parse(b.addedAt) || (a.itemId < b.itemId ? -1 : a.itemId > b.itemId ? 1 : 0));
+  const addLangEvent = (s: LangState, e: GoEvent, language: string, touched: Set<string> | undefined): void => {
+    if (e.languageId !== language) return;
+    if (Number.isNaN(Date.parse(e.at))) { s.unsafe = true; return; }
+    const card = cardOf(e);
+    if (s.cardById.has(e.id)) s.unsafe = true; else s.cardById.set(e.id, card ?? '');
+    if (!s.learners.has(e.learnerId)) { s.learners.add(e.learnerId); if (touched) s.from = undefined; }
+    // Where the fold reads across cards: an event names another event by id, and deck.ts looks that id up in the WHOLE log. An invalidation's
+    // `reviewEventId` is read whatever card it is of; a review's `expectedPreviousReviewId` is checked against every card's retractions; a
+    // correction and a facts repair name their targets the same way. Every app writes these within one card. When one names an event of
+    // ANOTHER card (malformed, but a log may hold it; found by the random sessions of test/loading/goreview.fold.random.test.ts), a card's item
+    // is no longer a function of that card's own events: whole-log folds only. The named event may also arrive after the one naming it.
+    const pointedAtBy = s.refs.get(e.id);
+    if (pointedAtBy && [...pointedAtBy].some(c => c !== (card ?? ''))) s.unsafe = true;
+    if (card !== undefined) {
+      const p = (e.payload ?? {}) as Record<string, unknown>;
+      for (const target of [e.correctionOf, p.reviewEventId, p.expectedPreviousReviewId, p.invalidationEventId]) {
+        if (typeof target !== 'string') continue;
+        const targetCard = s.cardById.get(target);
+        if (targetCard !== undefined && targetCard !== card) s.unsafe = true;
+        const cards = s.refs.get(target);
+        if (cards) cards.add(card); else s.refs.set(target, new Set([card]));
+      }
+    }
+    if (card === undefined) return;
+    const group = s.byCard.get(card);
+    if (group) group.push(e); else s.byCard.set(card, [e]);
+    touched?.add(card);
+  };
+  function langState(events: readonly GoEvent[], language: string, head: string): LangState {
+    const prev = langs.get(language);
+    if (prev?.head === head) return prev;
+    if (prev && !prev.unsafe && events.length >= prev.n) {
+      let same = true;
+      for (let i = 0; i < prev.n; i++) if (events[i]?.id !== prev.ids[i]) { same = false; break; }
+      if (same) {
+        const touched = new Set<string>();
+        prev.from = prev.n;
+        for (let i = prev.n; i < events.length; i++) { addLangEvent(prev, events[i], language, touched); prev.ids.push(events[i].id); }
+        prev.n = events.length; prev.head = head; prev.touched = touched;
+        if (prev.unsafe) prev.from = undefined;
+        return prev;
+      }
+    }
+    const s: LangState = { head, ids: events.map(e => e.id), n: events.length, learners: new Set(), byCard: new Map(), cardById: new Map(), refs: new Map(), unsafe: false, from: undefined, touched: new Set() };
+    for (const e of events) addLangEvent(s, e, language, undefined);
+    langs.set(language, s);
+    return s;
+  }
+  function sharedFold(events: readonly GoEvent[], retention: number, opts: { languageId?: string; learnerId?: string; now: string }): DeckItem[] {
+    const atMs = Date.parse(opts.now);
+    // what the fold itself refuses or cannot share (a bad instant, no language) is left to the fold
+    if (Number.isNaN(atMs) || opts.languageId === undefined) return foldDeckItems(events, scheduler(retention), opts);
+    const head = eventHead(events);
+    if (shared.head !== head) { shared.head = head; shared.folds.clear(); }
+    const language = opts.languageId;
+    const state = langState(events, language, head);
+    const learners = state.learners;
+    // a learner filter that removes nothing is the same fold as none; a log of several learners without one is the fold's own error
+    const scope = opts.learnerId === undefined ? (learners.size > 1 ? undefined : '*')
+      : (learners.size === 0 || (learners.size === 1 && learners.has(opts.learnerId))) ? '*' : opts.learnerId;
+    if (scope === undefined) return foldDeckItems(events, scheduler(retention), opts);
+    const key = `${retention}|${language}|${scope}`;
+    let items = shared.folds.get(key);
+    if (!items) {
+      const sched = scheduler(retention);
+      const last = keyStates.get(key);
+      if (scope === '*' && !state.unsafe && last && last.lang === state && state.from !== undefined && last.n === state.from) {
+        try {
+          const refolded = [...state.touched].map(card => [card, foldDeckItems(state.byCard.get(card) ?? [], sched, { languageId: language, now: NO_SNOOZE_ENDED })] as const);
+          for (const [card, folded] of refolded) if (folded.length) last.items.set(card, folded[0]); else last.items.delete(card);
+        } catch (error) { keyStates.delete(key); throw error; }
+        if (state.touched.size) last.sorted = sortedItems(last.items);
+        last.n = state.n;
+        items = last.sorted;
+      } else {
+        items = foldDeckItems(events, sched, { languageId: language, ...(scope === '*' ? {} : { learnerId: scope }), now: NO_SNOOZE_ENDED });
+        if (scope === '*' && !state.unsafe) keyStates.set(key, { lang: state, n: state.n, items: new Map(items.map(i => [i.itemId, i])), sorted: items });
+        else keyStates.delete(key);
+      }
+      shared.folds.set(key, items);
+    }
+    let out = items;
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (item.status !== 'snoozed' || item.snoozedUntil === undefined || !(Date.parse(item.snoozedUntil) <= atMs)) continue;
+      if (out === items) out = [...items];
+      const { snoozedUntil: _ended, ...rest } = item;
+      out[i] = { ...rest, status: 'active' };
+    }
+    return out;
+  }
   // Pack analyzers are language scoped, while their repository lookup is API scoped. Reuse the
   // provider only for the exact API client (the context keeps that client stable per service/token).
   const providers = new WeakMap<RepositoryApi, Map<string, FactsProvider>>();
@@ -106,6 +240,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   };
 
   return {
+    warmLanguage: (languageId) => { try { opts.warmLanguage?.(languageId); } catch { /* met again when the language is first used */ } },
     canRecoverCandidates: (languageId, api) => configuredFactsOf(languageId, api) !== undefined,
     async recoverCandidates(request: RecoveryRequest) {
       const base = configuredFactsOf(request.languageId, request.api);
@@ -171,6 +306,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     // New grades carry their own exact profile. Unversioned legacy grades use
     // the supported 90% default, never a newly activated personal profile.
     foldDeck: (events, languageId, _prefs, at) => foldDeckItems(events, scheduler(0.9), { languageId, now: at }),
+    foldDeckShared: (events, languageId, _prefs, at) => sharedFold(events, 0.9, { languageId, now: at }),
 
     async intake(req) {
       // Intake starts a new facts snapshot. Unused one-shot values from the last
@@ -191,6 +327,9 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
             clearPrime: () => (facts as FactsProvider & { clearPrime?(): void }).clearPrime?.(),
           }),
           audio: async () => req.audio, deck: req.deck, saved: req.saved, preferences: req.prefs, now: req.now, enrolmentId: '', limit: req.candidates.length || 1,
+          // The automatic deck needs facts only for the words that can fill its new cards (2026-11-11: a first sign-in fetched them for all 226
+          // candidates). Words the learner asked for by name (an explicit intent, secondary practice) are all examined, whatever the budget.
+          ...(req.intent?.kind === 'explicit' || req.secondaryPractice ? {} : { factsBudget: factsBudgetFor(req.prefs.maxNew) }),
           readingSignals: req.events, secondaryPractice: req.secondaryPractice, intent: req.intent,
         });
         if (captured.size) {
@@ -209,9 +348,13 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
       }
       // without pack facts the decision rests on the Repository's candidate alone; the session still refuses what cannot be built
       const byUnit = new Map(req.knowledge.map((k) => [k.unitId, k] as const));
+      // the history is read once for every candidate, as gatherCandidates does (each decision otherwise re-selects the whole history)
+      const eligibilityContext = createReviewEligibilityContext(req.deck, req.events ?? [], req.now);
+      const practiceEvidenceByUnit = indexPracticeEvidence(eligibilityContext.selectedReviewEvidence.events);
       return req.candidates.map((candidate): IntakeOutcome => decideIntake({
         candidate, knowledge: byUnit.get(candidate.unitId), existing: req.deck, audio: req.audio, saved: req.saved, preferences: req.prefs, now: req.now,
         readingSignals: req.events, secondaryPractice: req.secondaryPractice, intent: req.intent,
+        automaticFailureUnits: eligibilityContext.automaticFailureUnits, practiceEvidenceByUnit, eligibilityContext,
       }));
     },
     explainIntake,
@@ -246,6 +389,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
         schedulerForItem: () => scheduler(start.prefs.desiredRetention, start.schedulerProfile),
         identity: { learnerId: start.ctx.learnerId, enrolmentId: start.ctx.enrolmentId, deviceId: start.ctx.deviceId },
         record: start.record, persist: start.persist, now, random, committedEvents: start.committedEvents, canPresent: start.canPresent,
+        fold: (events, _scheduler, foldOpts) => sharedFold(events, start.prefs.desiredRetention, foldOpts),
       });
       return {
         plan: start.plan,

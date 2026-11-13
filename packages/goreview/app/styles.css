@@ -908,7 +908,22 @@ img, svg, video, canvas { max-width: 100%; }
   border-block: 1px solid var(--rule-strong);
 }
 .session .item-tools > summary { padding: .45rem .25rem; font-size: 1.2rem; font-style: italic; }
-.session:has(> .flashcard) > .item-tools { margin-bottom: auto; }
+.session:has(> .flashcard) > .item-tools {
+  position: relative;
+  margin-bottom: auto;
+}
+.session:has(> .flashcard) > .item-tools > .item-tools-panel {
+  position: absolute;
+  z-index: 2;
+  inset-inline: 0;
+  top: 100%;
+  max-block-size: min(20rem, 45dvh);
+  overflow: auto;
+  padding: .75rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: .55rem;
+  background: var(--panel);
+}
 .screen[data-route="review/session"] .home-photo-credit { margin: auto auto 0; padding-top: .8rem; }
 @media (prefers-reduced-motion: no-preference) {
   .flashcard-back { animation: flashcard-reveal .22s ease-out; }

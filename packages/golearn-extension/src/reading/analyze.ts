@@ -1,5 +1,6 @@
 import { applyConfirmations, createScanner, formsToConfirm, type ScanToken, type Confirmations } from '../active/scan';
 import { levelOfRows } from '../active/levels';
+import { entryRefuses, matchEntry } from '../adapters/registry';
 import { wordInScript } from '../active/pageLanguages';
 import { isUnitId, MAX_CONFIRM_FORMS, type KnowledgeView } from '../protocol';
 import type { createBridge } from '../content/services';
@@ -21,6 +22,13 @@ export async function analyzePage(
   adapterOf: Parameters<typeof createScanner>[0]['adapterOf'],
   signal: AbortSignal,
 ): Promise<ReadingAnalysisReply> {
+  // The reader registry's refusal is authoritative even for a user-triggered scan.
+  // A blocked/permission-required reader must never be probed via this feature.
+  const location = doc.location;
+  const reader = location && matchEntry({
+    href: location.href, protocol: location.protocol, host: location.host, pathname: location.pathname,
+  });
+  if (reader && entryRefuses(reader)) return { ok: false, code: 'unsupported-page' };
   if (!adapterOf(languageId) || languageId === 'he' || languageId === 'el') {
     // These analyzers share language-level profile IDs between historical and modern varieties.
     return { ok: false, code: 'unsupported-language' };

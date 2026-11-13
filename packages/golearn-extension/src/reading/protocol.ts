@@ -11,4 +11,4 @@ export interface ReadingAnalysisRequest {
 
 export type ReadingAnalysisReply =
   | { ok: true; coverage: CoverageResult; truncated?: boolean }
-  | { ok: false; code: 'no-text' | 'unsupported-language' | 'unavailable' | 'canceled' | 'error' };
+  | { ok: false; code: 'no-text' | 'unsupported-page' | 'unsupported-language' | 'unavailable' | 'canceled' | 'error' };

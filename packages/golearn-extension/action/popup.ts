@@ -151,7 +151,8 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
         if (!reply?.ok) {
           const errors: Record<string, string> = {
             'no-text': 'No readable text was found on this page.',
-            'unsupported-language': 'This language is not supported for Reading Analysis.',
+            'unsupported-page': 'This reader does not permit Reading Analysis.',
+            'unsupported-language': 'This language cannot be classified reliably yet.',
             unavailable: 'Your vocabulary could not be loaded. Try again.',
             canceled: 'Analysis canceled.',
           };
@@ -179,7 +180,9 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
         appendLine(`${result.totalOccurrences.toLocaleString()} words analyzed · ${scope} · ${languageNameOf(result.languageId)}`);
         if (reply.truncated) appendLine('This result covers part of the page.');
         if (result.occurrences.unresolved) appendLine(`${result.occurrences.unresolved.toLocaleString()} words could not be resolved.`);
-        if (result.freshness === 'cached' || result.freshness === 'stale') appendLine('Using your last saved vocabulary state.');
+        appendLine(result.freshness === 'cached' || result.freshness === 'stale'
+          ? 'Using on-device vocabulary (it may not be fully synced).'
+          : 'Using vocabulary stored on this device.');
       } catch {
         if (analysisRequest === requestId) setResult('GoLearn could not analyze this page. Try again.');
       } finally {

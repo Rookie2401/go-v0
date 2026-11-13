@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, expect, it } from 'vitest';
 import { analyzePage } from '../../packages/golearn-extension/src/reading/analyze';
+import { JSDOM } from 'jsdom';
 import { getAnalyser } from '../../packages/golearn-extension/src/parser';
 import type { KnowledgeView, ProfileReply } from '../../packages/golearn-extension/src/protocol';
 
@@ -110,4 +111,14 @@ it('does not credit a lemma when an analysed word has competing confident parses
   expect(reply.coverage.confidentCoverage).toBe(0);
   expect(dictionaryCalls).toBe(0);
   expect(profileCalls).toBe(0);
+});
+
+it('refuses restricted readers before extracting or consulting vocabulary data', async () => {
+  const restricted = new JSDOM('<article><p>shtëpinë shtëpinë</p></article>', {
+    url: 'https://read.amazon.com/kp/reader',
+  }).window.document;
+  const { bridge, calls } = bridgeWithRows({ [knownForm.unitId]: knownForm });
+  const result = await analyzePage(restricted, 'sq', bridge, getAnalyser, new AbortController().signal);
+  expect(result).toEqual({ ok: false, code: 'unsupported-page' });
+  expect(calls).toEqual([]);
 });

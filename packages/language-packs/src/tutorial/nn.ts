@@ -79,7 +79,7 @@ export const NN_TUTORIAL: Tutorial = orientation({
     'Lemmatisation is seed-only: the Nynorsk word list is machine-drafted and smaller than the Bokmål one, no native speaker has checked it, and a word outside it (even a common one such as kaffen) gets a marked guess or nothing.',
     'There is no parser, so what the neighbouring words do not settle stays a list of readings; some verb forms are listed twice (-a and -e infinitives) and are shown as they are.',
     'A compound is split only into words the list knows, and no meaning is given for it.',
-    'There is no dictionary for Norwegian in this build, so meanings come from the word list alone.',
+    'Meanings come from Wiktionary’s Nynorsk entries (CC BY-SA 4.0, via kaikki.org): machine-extracted, not checked by a native speaker, and never taken from Bokmål. A word Wiktionary lacks has no meaning on the card.',
     'There are no recordings. If your device has a matching Nynorsk voice, GoLearn can play a word as synthetic practice only; nothing will be read aloud in Bokmål in its place unless you choose that, and a card gives a rule-based East Norwegian respelling, not a norm.',
   ],
   languageSteps: NN_TUTORIAL_STEPS_OWN,

@@ -26,12 +26,15 @@ import type { ActiveRun, ItemControl, Presented } from '../ports';
 import type { ReviewExercise } from '../../src/exercises/shared';
 import { beginSession, currentReviewModel, endSavedSession, PRESS_WAIT_MS, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import { fillItemHistory } from './history';
+import { fillItemParsing } from './itemParsing';
 import { entriesOf, planFromEntries, planRemediation, planCurrentDeck, effectiveRemediation, VOCAB_NOTE } from '../deckModel';
 import { DEFAULT_UI, getUiPrefs, type UiPrefs } from './uiprefs';
 import { unlockSpeech } from '../speechUnlock';
 import type { View } from './view';
 
 const GRADES = ['again', 'hard', 'good', 'easy'] as const;
+/** The families whose question is the meaning: the parsing (which holds no meaning) may be read before the answer. */
+const PARSING_BEFORE_ANSWER = new Set<string>(['written-recognition', 'phrase-comprehension']);
 const OVERLAP_LABEL: Record<NonNullable<Presented['planned']['overlap']>, string> = {
   scheduled: 'Scheduled return', remediation: 'Remediation reassessment', explicit: 'Optional extra practice',
 };
@@ -492,7 +495,7 @@ class Controller {
     if (!flashcard) card.append(this.responseArea(pr));
     append(this.root, [this.header(pr, true), pr.index === 0 && pr.planned.why.includes(VOCAB_NOTE) ? h('p', { class: 'muted', id: 'vocab-note' }, VOCAB_NOTE) : null, card,
       flashcard ? h('div', { class: 'flashcard-grades' }, h('div', { id: 'self-grade', class: 'self-grade', hidden: true })) : null,
-      h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, concealed)]);
+      h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, concealed, false)]);
     this.focusFirst();
   }
 
@@ -788,7 +791,7 @@ class Controller {
     fb.append(h('div', { class: 'row' },
       button('Next (Enter)', () => void this.next(), { id: 'next', class: 'btn primary' }),
       button('Challenge this answer', () => this.challenge(), { id: 'challenge', class: 'btn' })), this.reportForm(pr));
-    append(this.root, [this.header(pr, false), fb, h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, false)]);
+    append(this.root, [this.header(pr, false), fb, h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, false, true)]);
     try { this.root.querySelector<HTMLElement>('#next')?.focus({ preventScroll: true }); } catch { /* */ }
   }
 
@@ -860,16 +863,25 @@ class Controller {
 
   // ───────────── per-item tools ─────────────
 
-  /** `concealed`: nothing that could name the item (its label, id, reasons) is rendered; used for audio items before the response. */
-  private itemTools(pr: Presented, concealed: boolean): HTMLElement {
+  /**
+   * `concealed`: nothing that could name the item (its label, id, reasons) is rendered; used for audio items before the response.
+   * The parsing and the table of forms (itemParsing.ts) are looked up when the section is opened. They hold no meaning, so a card that
+   * asks for the meaning has them before the answer; a card that asks for the form or its grammar has them after it.
+   */
+  private itemTools(pr: Presented, concealed: boolean, afterAnswer: boolean): HTMLElement {
     const until = (days: number): string => new Date(this.ctx.deps.now().getTime() + days * 24 * 3600_000).toISOString();
     const item = pr.planned.item;
     const histBox = h('div', { id: 'item-history', class: 'item-history' });
-    return h('details', { id: 'item-tools', class: 'item-tools' }, h('summary', {}, 'This item'),
+    const parsingNow = afterAnswer || PARSING_BEFORE_ANSWER.has(pr.exercise.family);
+    const parsingBox = concealed ? null : parsingNow
+      ? h('div', { id: 'item-parsing', class: 'item-parsing' })
+      : h('p', { id: 'item-parsing-later', class: 'muted' }, 'The parsing and the table of forms are shown after you answer.');
+    const tools = h('details', { id: 'item-tools', class: 'item-tools' }, h('summary', {}, 'This item'),
       this.isFlashcard() && pr.planned.overlap ? h('p', { class: 'muted' },
         presentationReasonLabel(pr.planned.presentationReason, pr.planned.overlap)) : null,
       concealed ? null : h('p', { class: 'muted' }, h('span', langProps(this.tag), unitLabel(item.unitId)), ` · ${DIMENSION_LABEL[item.dimension]}`),
       !concealed && pr.planned.why.length ? h('ul', { class: 'reasons' }, ...pr.planned.why.map((w) => h('li', {}, ...embedTarget(w, this.targetWords(pr), this.tag)))) : null,
+      parsingBox,
       h('div', { class: 'row' },
         button('Snooze a day', () => void this.control({ kind: 'snooze', until: until(1) }), { id: 'snooze-day', class: 'btn small' }),
         button('Snooze a week', () => void this.control({ kind: 'snooze', until: until(7) }), { id: 'snooze-week', class: 'btn small' }),
@@ -877,6 +889,11 @@ class Controller {
         button('Dismiss', () => void this.control({ kind: 'dismiss' }), { id: 'dismiss', class: 'btn small' }),
         concealed ? null : button('Show history', () => { void fillItemHistory(this.ctx, histBox, item.itemId, this.tag); }, { id: 'show-history', class: 'btn small' })),
       histBox);
+    if (parsingBox && parsingNow) {
+      const request = { unitId: item.unitId, languageId: this.run.ctx.languageId, ...(this.run.ctx.varietyId ? { varietyId: this.run.ctx.varietyId } : {}), tag: this.tag, afterAnswer };
+      tools.addEventListener('toggle', () => { if ((tools as HTMLDetailsElement).open) void fillItemParsing(this.ctx, parsingBox, request); });
+    }
+    return tools;
   }
 
   /** Target-language words an interface sentence about this item may quote: its label, and the accepted answers when those are in the target language. */

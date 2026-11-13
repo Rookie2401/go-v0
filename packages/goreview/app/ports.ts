@@ -15,6 +15,7 @@ import type { AppConfig } from './config';
 import type { KeyValueArea, Transport } from '../../repository-sync/src';
 import type { LocalRepo } from './localRepo';
 import type { MobileRuntime } from './mobile';
+import type { ItemParadigm, ItemParadigmRequest } from './packFacts';
 
 // ───────────────────────────── the GoReview engine port ─────────────────────────────
 
@@ -226,6 +227,8 @@ export interface Deps {
   /** The two calls of the sync client; default: the typed API client, throwing on any failure. */
   createTransport?(api: RepositoryApi): Transport;
   engine: ReviewEngine;
+  /** The form table of a card's word, as GoLearn's word card builds it (packFacts.ts). Absent: "This item" shows the parsing without a table. */
+  paradigm?(request: ItemParadigmRequest): Promise<ItemParadigm | undefined>;
   /**
    * null = no audio at all. A function receives the learner's remote-speech consent as a getter and returns the audio
    * (the real app builds it from GoListen); tests pass a ready-made fake.

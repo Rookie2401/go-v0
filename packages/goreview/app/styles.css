@@ -194,6 +194,27 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 .feedback[data-outcome="incorrect"] { border-inline-start-color: var(--bad); }
 .item-tools { margin: 1rem 0; }
 .item-history { margin-top: .6rem; }
+/* "This item": the parsing (a name and its value on each row) and the table of forms, as GoLearn's word card shows it */
+.item-parsing { margin: .8rem 0 1rem; }
+.item-parsing h3 { margin: 1rem 0 .35rem; font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+.item-parsing h4 { margin: .8rem 0 .25rem; font-size: 1rem; font-weight: 600; }
+.item-parsing p { margin: .35rem 0; }
+.parsing-facts { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 1rem; row-gap: .15rem; }
+.parsing-row { display: contents; }
+.parsing-facts dt { color: var(--muted); }
+.parsing-facts dd { margin: 0; overflow-wrap: anywhere; }
+.item-forms .table-scroll { overflow-x: auto; margin: .1rem 0 .9rem; }
+table.paradigm { border-collapse: collapse; font-size: 1.05rem; }
+table.paradigm th { font-weight: 400; text-align: start; color: var(--muted); padding: .2rem .9rem .2rem 0; }
+table.paradigm td { padding: .2rem .9rem .2rem 0; border-bottom: 1px solid var(--divider); }
+table.paradigm thead th, table.paradigm thead td { border-bottom: 1px solid var(--divider); font-size: .9rem; }
+table.paradigm td.none { color: var(--muted); }
+table.paradigm td.generated { font-style: italic; }
+table.paradigm td.conflicted { color: var(--bad); }
+table.paradigm td.sel > span:first-child, .forms-list li.sel > span:first-child { font-weight: 600; text-decoration: underline; text-underline-offset: .2em; }
+.item-forms .pmark { margin-inline-start: .3em; font-size: .8em; color: var(--muted); }
+.item-forms .rom, .item-forms .pnote { font-size: .85em; color: var(--muted); }
+.forms-list ul { margin: .2rem 0 .6rem 1.2rem; padding: 0; }
 
 #vocabulary-catalog { grid-template-columns: repeat(3, minmax(0, 1fr) auto); column-gap: .75rem; }
 @media (max-width: 760px) {

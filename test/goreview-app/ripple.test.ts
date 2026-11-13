@@ -2,7 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { attachRipple, MIN_LIT_MS, RIPPLE_SOLID } from '../../packages/goreview/app/ripple';
-import { destroyRigs, dueCard, ids, makeRig, reopen, seed } from './helpers';
+import { destroyRigs, dueCard, ids, key, makeRig, reopen, seed, startWith, type, until } from './helpers';
 
 /**
  * The home's deck tiles (the owner, 2026-11-12): no outline; a tile turns a lighter colour under the pointer, and the lighter colour spreads from
@@ -107,6 +107,27 @@ describe('the deck tiles on the home', () => {
     expect(rig.q<HTMLButtonElement>('#start-review').disabled).toBe(true);
     expect([lit('current'), lit('review'), lit('saved')]).toEqual([true, false, true]);
   });
+});
+
+it('lights all three completed-session actions with the deck tile ripple', async () => {
+  const rig = await makeRig({ signedIn: true });
+  await startWith(rig, dueCard(A, 'zog', 'meaning-to-form'));
+  const input = rig.q<HTMLInputElement>('#answer-input');
+  type(input, 'wrong');
+  key('Enter', input);
+  await until(() => !!rig.root.querySelector('#feedback'));
+  rig.q('#next').click();
+  await until(() => !!rig.root.querySelector('#continue-due-work'));
+
+  expect(rig.q<HTMLButtonElement>('#continue-due-work').disabled).toBe(false);
+  for (const id of ['continue-due-work', 'open-remediation', 'back-to-review']) {
+    const control = rig.q('#' + id);
+    const tile = control.parentElement!;
+    expect(control.classList.contains('deck-face')).toBe(true);
+    expect(tile.classList.contains('deck-tile')).toBe(true);
+    pointer(tile, 'pointerenter', 5, 5);
+    expect(tile.hasAttribute('data-lit')).toBe(true);
+  }
 });
 
 describe('the stylesheet', () => {

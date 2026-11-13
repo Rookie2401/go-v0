@@ -32,6 +32,7 @@ import { DEFAULT_UI, getUiPrefs, type UiPrefs } from './uiprefs';
 import { unlockSpeech } from '../speechUnlock';
 import type { View } from './view';
 import { icon } from '../icons';
+import { attachRipple } from '../ripple';
 
 function summaryLineIcon(doc: Document, pathData: string): Element {
   const ns = 'http://www.w3.org/2000/svg';
@@ -41,11 +42,18 @@ function summaryLineIcon(doc: Document, pathData: string): Element {
   return svg;
 }
 
-function summaryHomeAction(doc: Document): HTMLElement {
-  return h('a', { class: 'summary-action', id: 'back-to-review', href: '#/review', 'aria-label': 'Back to GoReview. Return to the GoReview home' },
-    h('span', { class: 'summary-action-icon', 'aria-hidden': 'true' }, summaryLineIcon(doc, 'M19 12H5m6 6-6-6 6-6')),
-    h('span', { class: 'summary-action-copy' }, h('span', { class: 'summary-action-title' }, 'Back to GoReview'), h('span', { class: 'summary-action-description' }, 'Return to the GoReview home')),
-    h('span', { class: 'summary-action-arrow', 'aria-hidden': 'true' }, icon(doc, 'arrow')));
+function summaryActionTile(control: HTMLElement, art: Element, title: string, description: string, current = false): HTMLElement {
+  control.setAttribute('aria-label', `${title}. ${description}`);
+  const doc = control.ownerDocument;
+  control.append(
+    h('span', { class: 'deck-row' }, art,
+      h('span', { class: 'deck-label' },
+        h('span', { class: 'deck-title' }, title),
+        h('span', { class: 'deck-caption' }, description))),
+    icon(doc, 'arrow'));
+  const tile = h('div', { class: 'deck-tile', 'data-deck': current ? 'current' : undefined }, control);
+  attachRipple(tile);
+  return tile;
 }
 
 const GRADES = ['again', 'hard', 'good', 'easy'] as const;
@@ -950,9 +958,9 @@ async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextAct
   let timer: number | undefined;
   const late = new Promise<'late'>((resolve) => { timer = ctx.deps.win.setTimeout(() => resolve('late'), NEXT_MODEL_WAIT_MS) as unknown as number; });
   const update = async (model: ReviewModel | undefined): Promise<void> => {
-    const { continueWork, study, schedule, secondary, status } = await buildNextSection(ctx, run, actions, model);
+    const { nextTile, studyTile, schedule, secondary, status } = await buildNextSection(ctx, run, actions, model);
     if (!home.isConnected) return;
-    home.before(continueWork, study);
+    home.before(nextTile, studyTile);
     home.after(...(schedule ? [schedule, secondary, status] : [secondary, status]));
   };
   const first = await Promise.race([modelPromise, late]).finally(() => { if (timer !== undefined) ctx.deps.win.clearTimeout(timer); });
@@ -1002,24 +1010,18 @@ async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextAc
   const continueWork = button('', (event) => {
     if (!nextCount) return;
     void begin(async (model) => (await planCurrentDeck(ctx, model)).plan, [event.currentTarget as HTMLButtonElement]);
-  }, { id: 'continue-due-work', class: 'summary-action summary-action-primary', ...(nextCount ? {} : { disabled: true }) });
-  const decorateAction = (control: HTMLButtonElement | undefined, art: Element, title: string, description: string): void => {
-    if (!control) return;
-    control.setAttribute('aria-label', `${title}. ${description}`);
-    control.append(h('span', { class: 'summary-action-icon', 'aria-hidden': 'true' }, art),
-      h('span', { class: 'summary-action-copy' }, h('span', { class: 'summary-action-title' }, title), h('span', { class: 'summary-action-description' }, description)),
-      h('span', { class: 'summary-action-arrow', 'aria-hidden': 'true' }, icon(ctx.deps.doc, 'arrow')));
-  };
-  decorateAction(continueWork, icon(ctx.deps.doc, 'review'), 'Next Deck', nextCount ? `Begin next deck (${cards(nextCount)})` : 'No cards are ready for a next deck');
+  }, { id: 'continue-due-work', class: 'deck-face', ...(nextCount ? {} : { disabled: true }) });
+  const nextTile = summaryActionTile(continueWork, icon(ctx.deps.doc, 'review'), 'Next Deck',
+    nextCount ? `Begin next deck (${cards(nextCount)})` : 'No cards are ready for a next deck', true);
   const setupLink = ctx.deps.links?.setup ?? ctx.deps.links?.extension;
   const goLearn = setupLink ? h('a', { class: 'btn', id: 'continue-golearn', href: setupLink }, 'Continue reading in GoLearn') : null;
   const remediationNote = h('p', { class: 'muted', id: 'next-remediation-note' },
     `Remediation is optional and separate from due work: ${remediation.filter(c => !c.studiedAt).length} need study, ${remediation.filter(c => !!c.studiedAt && !c.ready).length} await their delayed return, and ${remediation.filter(c => c.ready).length} are ready for reassessment.`);
   const extra = h('details', { id: 'optional-extra-practice', class: 'card' }, h('summary', {}, 'Optional extra practice'),
     h('p', { class: 'muted', id: 'optional-repeat-note' }, 'Repeat the same session items, capped by your current deck size and session time settings. Other saved-deck members remain available in their collection; this does not represent a new due session.'), repeat);
-  const study = button('', () => ctx.go('review/remediation'), { class: 'summary-action', id: 'open-remediation' });
+  const study = button('', () => ctx.go('review/remediation'), { class: 'deck-face', id: 'open-remediation' });
   const needsStudy = remediation.filter(c => !c.studiedAt).length;
-  decorateAction(study, icon(ctx.deps.doc, 'book'), 'Study Remediation', needsStudy
+  const studyTile = summaryActionTile(study, icon(ctx.deps.doc, 'book'), 'Study Remediation', needsStudy
     ? `Review items that need study · ${needsStudy} item${needsStudy === 1 ? '' : 's'}`
     : 'Review items that need study · none right now');
   const primarySchedule = nextAt && (!nextReviewAt || Date.parse(nextAt) < Date.parse(nextReviewAt))
@@ -1032,7 +1034,7 @@ async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextAc
     nextAt && nextAt !== primarySchedule?.at ? p(`Next learning return: ${new Date(nextAt).toLocaleString()}.`, 'muted') : null,
     nextReviewAt && nextReviewAt !== primarySchedule?.at ? p(`Next review: ${new Date(nextReviewAt).toLocaleString()}.`, 'muted') : null,
     remediationNote, fresh, h('h3', {}, 'Continue GoLearn'), goLearn ?? p('Continue your next reading in GoLearn; GoReview keeps your due work here.', 'muted'), extra);
-  return { continueWork, study, schedule, secondary, status };
+  return { nextTile, studyTile, schedule, secondary, status };
 }
 
 export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, actions?: NextActions, opts: { quiet?: boolean } = {}): Promise<void> {
@@ -1089,8 +1091,9 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
       run.withheld.length ? h('ul', { id: 'sum-withheld' }, ...run.withheld.map((w) => h('li', {}, h('span', langProps(tag), unitLabel(w.unitId)), ` (${w.family}): `, ...embedTarget(`${w.reason}.`, [unitLabel(w.unitId)], tag)))) : p('Everything counted.', 'muted'),
       unbuildable.length ? h('p', { class: 'muted', id: 'sum-unbuildable' }, 'Could not be asked: ', ...unbuildable.flatMap((u, i) => [i ? '; ' : '', h('span', langProps(tag), itemLabel(u.itemId)), ` (${u.reason})`]), '.') : null,
       p(`${view.status?.pending ?? 0} ${(view.status?.pending ?? 0) === 1 ? 'answer waits' : 'answers wait'} to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'));
-  const home = summaryHomeAction(ctx.deps.doc);
-  const next = h('section', { id: 'summary-next', class: 'summary-next', 'aria-labelledby': 'summary-next-heading' },
+  const home = summaryActionTile(h('a', { class: 'deck-face', id: 'back-to-review', href: '#/review' }),
+    summaryLineIcon(ctx.deps.doc, 'M19 12H5m6 6-6-6 6-6'), 'Back to GoReview', 'Return to the GoReview home');
+  const next = h('section', { id: 'summary-next', class: 'summary-next deck-tiles', 'aria-labelledby': 'summary-next-heading' },
     h('h2', { id: 'summary-next-heading', class: 'sr' }, 'Next steps'), home,
     left + run.skipped.length ? h('p', { id: 'sum-next' }, `${left + run.skipped.length} ${left + run.skipped.length === 1 ? 'card is' : 'cards are'} left for next time.`) : null,
     view.status?.online === false && (view.status?.pending ?? 0) ? h('p', { id: 'sum-offline', class: 'muted' }, 'You are offline. Your answers are saved on this device and will be sent when you are back online.') : null,

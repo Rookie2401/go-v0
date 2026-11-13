@@ -12,6 +12,7 @@
  * (localTransport), and the learner is the device's own anonymous one. Signing in uploads the device's history once and switches to
  * the account; signing out returns to the device without removing anything. The hosted copy has no such repository and needs an account.
  */
+import { CANNOT_SIGN_IN, signInOnce, UNREACHABLE_SIGN_IN } from './signin';
 import type { Enrolment, GoEvent, EventLog } from '../../repository-contract/src';
 import { validateEvent } from '../../repository-contract/src';
 import type { RepositoryApi, ApiResult } from '../../repository-service/src/api';
@@ -520,7 +521,8 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       if (deps.mobile?.native && !deps.mobile.bridgeAvailable) return { ok: false, message: 'Secure sign-in storage is unavailable in this GoReview build.' };
       const baseUrl = await serviceUrl();
       const check = validateServiceUrl(baseUrl);
-      if (!check.ok) return { ok: false, message: check.message };
+      // a learner never sets where GoReview connects (the owner, 2026-11-12): an unusable built-in address is the app's fault, said without the address
+      if (!check.ok) return { ok: false, message: CANNOT_SIGN_IN };
       const email = input.email.trim();
       const device = await deviceId();
       // inside the extension the worker is signed in to the same account first, so that its upload and pull (the device's history) use it
@@ -536,9 +538,9 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
           const made = await deps.createApi(check.url).createAccount({ email, password: input.password, ...(input.displayName ? { displayName: input.displayName } : {}) });
           if (!made.ok) return { ok: false, message: explainFailure(made, 'signin'), code: made.error };
         }
-        result = await deps.createApi(check.url).createSession({ email, password: input.password, deviceId: device, platform });
+        result = await signInOnce(() => deps.createApi(check.url).createSession({ email, password: input.password, deviceId: device, platform }));
       } catch {
-        return { ok: false, message: `Could not reach the service at ${check.url}. Check that it is running and that the address is right.` };
+        return { ok: false, message: UNREACHABLE_SIGN_IN };
       }
       if (!result.ok) return { ok: false, message: explainFailure(result, 'signin'), code: result.error };
       const previous = await state.getSession();

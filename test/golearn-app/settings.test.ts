@@ -305,12 +305,14 @@ describe('Diagnostics and updates', () => {
   it('checks the service health and says what it answered, or that it could not be reached', async () => {
     const rig = await makeRig();
     await rig.go('diagnostics');
-    await until(() => /Service reachable/.test(rig.q('#health').textContent ?? ''));
+    await until(() => /The service answered/.test(rig.q('#health').textContent ?? ''));
+    expect(rig.q('#health').textContent).not.toMatch(/https?:/); // no address in what a learner reads (the owner, 2026-11-12)
     expect(rig.q('#health').textContent).toContain('go-repository, version 2');
     expect(rig.q('#report').textContent === '' ? (rig.q('#report') as HTMLTextAreaElement).value : '').toContain('service: go-repository answered ok, version 2');
     rig.service.down = true;
     rig.q('#health-again').click();
     await until(() => /could not be reached/.test(rig.q('#health').textContent ?? ''));
+    expect(rig.q('#health').textContent).not.toMatch(/https?:/);
     expect((rig.q('#report') as HTMLTextAreaElement).value).toContain('service: not reachable');
   });
 
@@ -339,7 +341,7 @@ describe('Diagnostics and updates', () => {
     const token = (await rig.app.ctx.state.getSession())!.token;
     await rig.area.set({ 'golearn:event:a': { id: 'a' }, 'golearn:event:b': { id: 'b' } });
     await rig.go('diagnostics');
-    await until(() => /Service reachable/.test(rig.q('#health').textContent ?? ''));
+    await until(() => /The service answered/.test(rig.q('#health').textContent ?? ''));
     const report = (rig.q('#report') as HTMLTextAreaElement).value;
     expect(report).toContain('local rows on this device: 2');
     expect(report).toContain(`repository contract: version ${CONTRACT_VERSION}`);

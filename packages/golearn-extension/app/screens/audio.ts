@@ -85,7 +85,7 @@ export function audioGuide(ctx: AppContext): HTMLElement[] {
         p('This grants the extension access to the exact Repository service origin. It does not send text by itself.'),
         permissionButton, permissionStatus) : p('Account speech access must be granted in the GoLearn extension.', 'muted'),
       h('ol', {},
-        li(strong('Allow the service. '), 'In the extension setup page, press “Allow account speech access” and allow the exact service address.'),
+        li(strong('Allow the service. '), 'In the extension setup page, press “Allow account speech access” and allow it when the browser asks.'),
         li(strong('Choose remote speech. '), 'Open ', privacy('Privacy settings'), ' and switch off “Use only voices that run on this device”; switch on “Allow a remote speech provider to say words for me”. This records your explicit consent and is off until you enable it.'),
         li(strong('Listen. '), 'The service supports words and exact approved pack examples. Arbitrary passages are refused. Only text you ask to hear is sent, and only after consent and source checks.')),
       p('Azure Neural voices are registered for languages including Albanian and Bokmål. No Azure Nynorsk voice is substituted; Latin uses an explicitly labelled Italian stand-in only for the Ecclesiastical reading. Actual availability depends on the signed-in service and its voice configuration.', 'muted'),

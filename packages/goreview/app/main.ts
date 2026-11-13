@@ -2,6 +2,7 @@
  * Entry point: builds the real environment for `createApp` (the origin's localStorage, fetch, GoListen, GoReview's builders)
  * and starts the application. Tests build their own `Deps` and call `createApp` directly.
  */
+import { SIGN_IN_TIMEOUT_MS } from './signin';
 import { evidenceFor, ratingFor, registry } from '../src';
 import { createRepositoryApi } from '../../repository-service/src/api';
 import { createMemoryArea } from '../../repository-sync/src';
@@ -61,7 +62,10 @@ export async function createRealDeps(fetcher?: typeof fetch): Promise<Deps> {
     const value = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
     let path = value;
     try { path = new URL(value, location.href).pathname; } catch { /* relative-path matcher below */ }
-    const timeout = path.endsWith('/sync/wait') ? 30_000 : /\/sync\/wait(?:\?|$)/.test(value) ? 30_000 : 8_000;
+    // signing in or creating an account may meet a service that is waking up or redeploying: it gets 45 s, not 8 (the owner, 2026-11-12)
+    const method = (init.method ?? (typeof input === 'object' && 'method' in input ? input.method : 'GET')).toUpperCase();
+    const signIn = method === 'POST' && /\/(sessions|accounts)$/.test(path);
+    const timeout = signIn ? SIGN_IN_TIMEOUT_MS : path.endsWith('/sync/wait') ? 30_000 : /\/sync\/wait(?:\?|$)/.test(value) ? 30_000 : 8_000;
     return withApiRequestTimeout(rawFetch, timeout)(input, init);
   };
   const apiFetch = doFetch;

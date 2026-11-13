@@ -19,6 +19,7 @@
  * on-device Repository (`Deps.openLocal`, the local-repository lane); signing in adds a copy on the account and uploads the local
  * history once. Signing out returns to the device alone and removes nothing.
  */
+import { signInOnce, UNREACHABLE_SIGN_IN } from '../src/signin';
 import { validateEvent, type Enrolment, type GoEvent } from '../../repository-contract/src';
 import type { EnrolInput, RepositoryApi } from '../../repository-service/src/api';
 import { MSG } from '../src/platform';
@@ -98,7 +99,8 @@ export interface AppContext {
 }
 
 const ASK_TIMEOUT_MS = 4000;
-const SIGN_IN_TIMEOUT_MS = 30_000;
+/** The background may take 45 s for the account and 45 s (and one retry) for the session while the service wakes up: the page waits for it. */
+const SIGN_IN_TIMEOUT_MS = 120_000;
 /** Deleting the device's data includes the dictionary copies (tens of megabytes), so the worker is given longer than an ordinary ask. */
 const CLEAR_TIMEOUT_MS = 30_000;
 
@@ -134,7 +136,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
         sent = (made.data as { verificationSent?: unknown } | null)?.verificationSent;
       }
       const device = await getDeviceId(deps.area);
-      const made = await api.createSession({ email: input.email, password: input.password, deviceId: device, platform: inExtension ? 'chrome-extension' : 'web' });
+      const made = await signInOnce(() => api.createSession({ email: input.email, password: input.password, deviceId: device, platform: inExtension ? 'chrome-extension' : 'web' }));
       if (!made.ok) return { ok: false, message: explainFailure(made, 'signin'), code: made.error };
       // an enrolment already on the account is adopted as the active one (the newest that has not ended)
       const enrolments = await api.listEnrolments();
@@ -146,7 +148,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       });
       return { ok: true, email: input.email, ...(typeof sent === 'boolean' ? { verificationSent: sent } : {}) };
     } catch {
-      return { ok: false, message: `Could not reach the service at ${baseUrl}. Check that it is running and that the address is right.` };
+      return { ok: false, message: UNREACHABLE_SIGN_IN };
     }
   }
 

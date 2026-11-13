@@ -126,7 +126,7 @@ describe('audio, whatWorks and whatDoesNot', () => {
       if (r.every((x) => x.phrases.supported)) expect(e.whatWorks, e.languageId).toContain('fixed phrases');
       if (r.every((x) => x.constructions.supported)) expect(e.whatWorks, e.languageId).toContain('listed sentence patterns');
     }
-    expect(LANGUAGE_CATALOGUE.find((e) => e.languageId === 'he')!.whatWorks).toBe('Selecting a word in a sentence gives its lemma (limited) from 201,964 indexed forms and its grammar features (limited), each read with its neighbouring words.');
+    expect(LANGUAGE_CATALOGUE.find((e) => e.languageId === 'he')!.whatWorks).toBe('Selecting a word in a sentence gives its lemma (limited) from 210,016 indexed forms, its meaning from a Wiktionary dictionary of 41,288 entries and its grammar features (limited), each read with its neighbouring words.');
     expect(LANGUAGE_CATALOGUE.find((e) => e.languageId === 'de')!.whatWorks).toBe('Selecting a word in a sentence gives its lemma (limited), its meaning from a Wiktionary dictionary of 357,750 entries, its grammar features (limited), fixed phrases and listed sentence patterns, each read with its neighbouring words.');
     const th = LANGUAGE_CATALOGUE.find((e) => e.languageId === 'th')!;
     expect(th.whatWorks).toContain('word boundaries are limited');

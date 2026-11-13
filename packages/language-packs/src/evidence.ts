@@ -132,7 +132,7 @@ export const PACK_EVIDENCE: Readonly<Record<string, PackEvidence>> = Object.free
   he: {
     lemmaSources: [
       { kind: 'attested-form-index', id: 'oshb-tanakh', label: 'the forms of the Hebrew Bible with their Open Scriptures morphology', size: { count: 52687, unit: 'forms' }, source: 'public/lexicon/he/biblical/manifest.json' },
-      { kind: 'attested-form-index', id: 'kaikki-he-tables', label: 'Wiktionary’s Hebrew inflection tables', size: { count: 149277, unit: 'forms' }, source: 'public/lexicon/he/modern/manifest.json' },
+      { kind: 'attested-form-index', id: 'kaikki-he-tables', label: 'Wiktionary’s Hebrew inflection tables and headword lines', size: { count: 157329, unit: 'forms' }, source: 'public/lexicon/he/modern/manifest.json' },
     ],
     lemmaMeasurements: [],
   },

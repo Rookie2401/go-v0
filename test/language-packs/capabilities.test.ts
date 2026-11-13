@@ -108,7 +108,7 @@ describe('Norwegian (experimental): the report states what the adapter does and 
     expect(c.tokenization).toMatchObject({ quality: 'dependable', method: 'adapter' });
     expect(c.lemma).toMatchObject({ supported: true, quality: 'seed-only', analyserLevel: 'seed-only', sources: [] });
     expect(c.lemma.note).toMatch(/^Seed-only: lemmas come from a small machine-drafted word list/);
-    expect(c.dictionary.declared).toBe(false);
+    expect(c.dictionary).toMatchObject({ declared: true, id: PACKS[lang].lexical.dictionary!.id }); // each standard's own Wiktionary dictionary (2026-11-13); still no form index, so the lemma stays seed-only
     expect(c.morphology).toMatchObject({ supported: true, quality: 'limited', explained: ['Gender', 'Definite', 'Tense'] });
     expect(c.morphology.observed).toEqual(expect.arrayContaining(['Gender', 'Definite', 'Number', 'Tense']));
     expect(c.phrases).toMatchObject({ supported: true, quality: 'limited' });
@@ -165,7 +165,7 @@ describe('lemma quality is derived from the evidence, by one stated rule', () =>
     expect(la).toContain('from the analyser’s own Latin lexicon and the form index of the pack’s Wiktionary dictionary');
     expect(la).toContain('The first reading had the right lemma 95.6% on the Latin New Testament (Clementine Vulgate) against the PROIEL treebank (104,345 words) and 90.5% on twelve classical and late Latin authors against the Perseus treebank (65,595 words).');
     const he = packCapabilities('he')!.lemma.note;
-    expect(he).toContain('the forms of the Hebrew Bible with their Open Scriptures morphology (52,687 forms) and Wiktionary’s Hebrew inflection tables (149,277 forms)');
+    expect(he).toContain('the forms of the Hebrew Bible with their Open Scriptures morphology (52,687 forms) and Wiktionary’s Hebrew inflection tables and headword lines (157,329 forms)');
     expect(he).toContain('Lemma accuracy has not been measured on running text.');
     expect(measuredSentence([])).toBe('Lemma accuracy has not been measured on running text.');
     // Norwegian is measured (against AI labels) and is still seed-only: a figure is not a source
@@ -180,7 +180,7 @@ describe('lemma quality is derived from the evidence, by one stated rule', () =>
       for (const s of c.lemma.sources.filter((x) => x.kind === 'dictionary-forms-index')) expect(s.id, c.languageId).toBe(d?.id);
     }
     expect(packCapabilities('la')!.dictionary.note).toContain('kaikki-la@2026-10-17 (997,266 entries');
-    expect(packCapabilities('he')!.dictionary).toEqual({ declared: false, note: 'The pack declares no dictionary: meanings come from the pack’s own word list and, where the analyser reads a form index, from that index.' });
+    expect(packCapabilities('he')!.dictionary).toMatchObject({ declared: true, id: 'kaikki-he@2026-10-03', entries: 41288 });
     // a report is plain data and a caller cannot reach the evidence table through it
     const report = packCapabilities('la')!;
     report.lemma.measured[0].lemmaAccuracy = 0;

@@ -6,7 +6,8 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { afterAll, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { loadLatinLexicon } from '../../src/adapters/latin/lexicon-load';
 import { createAdapterRegistry } from '../../src/adapters';
 import type { CorpusDocument } from '../../src/ingest';
 import {
@@ -21,6 +22,8 @@ const adapter = createAdapterRegistry().get('es');
 
 describe('committed ladders (CI gate)', () => {
   const langs = ladderLanguages(root);
+  // Latin is measured with its full lexicon, as the app reads it once loaded (the analyser starts from a seed word list)
+  beforeAll(async () => { if (langs.includes('la')) await loadLatinLexicon(); }, 120_000);
   if (!langs.length) it('no data/ladder/*/ladder.json yet - nothing to gate', () => { expect(langs).toEqual([]); });
   for (const lang of langs) {
     it(`${lang}: no error-level finding`, () => {

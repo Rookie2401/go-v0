@@ -24,6 +24,8 @@ if (!lang || rest.length !== 1) {
   process.exit(2);
 }
 const l = lang as LanguageCode;
+// Latin is measured with its full lexicon, as the app reads it once loaded (docs/latin/ADAPTER.md)
+if (l === 'la') await (await import('../src/adapters/latin/lexicon-load')).loadLatinLexicon();
 const target = rest[0];
 
 if (!fs.existsSync(ladderFile(l, root))) { console.error(`no ladder for ${l} yet (data/ladder/${l}/ladder.json not found)`); process.exit(2); }

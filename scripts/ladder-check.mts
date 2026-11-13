@@ -15,6 +15,8 @@ const root = path.resolve('.');
 const args = process.argv.slice(2).filter((a) => a !== '--');
 const available = ladderLanguages(root);
 const requested = args.length ? (args as LanguageCode[]) : available;
+// Latin is measured with its full lexicon, as the app reads it once loaded: the analyser starts from a seed word list (docs/latin/ADAPTER.md)
+if (requested.includes('la' as LanguageCode)) await (await import('../src/adapters/latin/lexicon-load')).loadLatinLexicon();
 
 const pad = (s: string | number, n: number, right = false): string => (right ? String(s).padStart(n) : String(s).padEnd(n));
 const pct = (x: number): string => (x * 100).toFixed(1);

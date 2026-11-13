@@ -1,0 +1,29 @@
+=== la-a1-1-05 | letter | correspondence | A letter to my mother | Epistula Samuelis | letter,family,town,friends
+## Epistula
+Samuel in domo est. Samuel in mensa epistulam scribit. Mater longe est. || Samuel is in the house. Samuel writes a letter at the table. His mother is far away.
+
+## Samuel matri salutem dicit
+Mater cara, salve! || Dear mother, hello!
+Ego bene valeo. In urbe nova sum. Urbs bona est. || I am well. I am in a new town. The town is good.
+Domus mea parva est, sed bona est. In domo mensam habeo. Fenestram quoque habeo. || My house is small, but it is good. In the house I have a table. I have a window too.
+Hic amicos habeo. Anna amica mea est, et in valetudinario laborat. Lucius magister est, et in schola laborat. Martha panem et lac vendit. Marcus puer bonus est. || Here I have friends. Anna is my friend. She works at the clinic. Lucius is a teacher, and he works at school. Martha sells bread and milk. Marcus is a good boy.
+Quomodo vales, mater cara? Et pater, quomodo valet? Ubi est frater meus? Ubi est soror mea? || How are you, dear mother? And father, how is he? Where is my brother? Where is my sister?
+Cras ad ecclesiam eo, et gratias Deo ago. Hodie panem et lac habeo. Bene est. || Tomorrow I go to church, and I give thanks to God. Today I have bread and milk. It is well.
+Scribe mihi, mater! || Write to me, mother!
+Vale! Pax tibi, mater. Pax tibi, pater. || Goodbye! Peace to you, mother. Peace to you, father.
+Samuel tuus || Your Samuel
+
+## Epistula in foro
+Samuel in foro est. Martha Samuelem videt. || Samuel is in the market. Martha sees Samuel.
+
+[marta] Salve, Samuel! Quid est hoc? Estne epistula? || Hello, Samuel! What is this? Is it a letter?
+[sam] Epistula est. Matri meae scribo. Hodie scribo. || It is a letter. I am writing to my mother. Today I write.
+[marta] Bene! Urbs nova bona est, et hic amicos habes. || Good! The new town is good, and here you have friends.
+[sam] Amicos bonos habeo, et gratias Deo ago. || I have good friends, and I give thanks to God.
+[marta] Scribe, Samuel. Mater cara epistulam amat. Pater quoque bonus est. || Write, Samuel. Your dear mother loves a letter. Your father is good too.
+[sam] Bene! Gratias tibi ago, Martha. Panem et lac emo. || Good! Thank you, Martha. I buy bread and milk.
+[marta] Vale, Samuel! Pax tibi. Ecce panis, ecce lac. Panem et lac tibi do. || Goodbye, Samuel! Peace to you. Look, bread, look, milk. I give you bread and milk.
+[sam] Gratias tibi ago! Bene valeo, et fessus non sum. || Thank you! I am well, and I am not tired.
+[ana] Salvete! Quomodo valetis? Ubi est Lucius? || Hello! How are you? Where is Lucius?
+[marta] Bene valemus, Anna. Lucius in schola est. || We are well, Anna. Lucius is at school.
+[ana] Bene! Panem et lac emo. Gratias tibi ago, Martha. Vale, Samuel! || Good! I buy bread and milk. Thank you, Martha. Goodbye, Samuel!

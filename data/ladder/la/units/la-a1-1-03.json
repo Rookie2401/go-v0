@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 2,
+  "id": "la-a1-1-03",
+  "lang": "la",
+  "title": "At school",
+  "contentType": "narrative",
+  "corpus": {
+    "id": "ladder-la",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Latin (Church Latin)"
+  },
+  "source": {
+    "id": "src:la:la-a1-1-03",
+    "title": "At school (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Church Latin. Drafted by an AI model; not yet reviewed by a Latinist.",
+    "provenance": "Drafted by an AI model for the course ladder in simple Ecclesiastical (Church) Latin; not reviewed by a Latinist. It is controlled, deliberately repetitive Latin written for learners and may contain unidiomatic phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet reviewed by a Latinist.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a Latinist. House style: simple Church Latin, spelled without macrons, with u/v and i/j as in Stage 0 (v and i only); present tense, with a few perfects (venit, vidit, fuit, dixit) in the last units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "school",
+    "books",
+    "boys and girls",
+    "listening"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-latinist-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "la",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-11-13",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "luis": "Lucius",
+    "nico": "Marcus",
+    "puella": "Puella"
+  },
+  "sections": [
+    {
+      "title": "In schola",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lucius magister est. Hodie in schola est. Pueri et puellae in schola sunt. Marcus quoque in schola est.",
+              "english": "Lucius is a teacher. Today he is at school. The boys and girls are at school. Marcus is at school too."
+            },
+            {
+              "text": "Lucius dicit: Salvete, pueri!",
+              "english": "Lucius says: Hello, boys!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Quomodo valetis? Estisne fessi?",
+              "english": "How are you? Are you tired?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Non sumus fessi, magister. Bene valemus.",
+              "english": "We are not tired, teacher. We are well.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Bene! Nunc audite! Habetisne libros?",
+              "english": "Good! Now listen! Do you have books?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Libros habemus. Sed librum meum non habeo.",
+              "english": "We have books. But I do not have my book.",
+              "speaker": "nico"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lucius Marcum videt. Marcus librum non habet.",
+              "english": "Lucius sees Marcus. Marcus does not have a book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Quaere, Marce!",
+              "english": "Look, Marcus!",
+              "speaker": "luis"
+            },
+            {
+              "text": "Quaero in mensa. Non est in mensa! Quaero in schola. Non est in schola! Non invenio!",
+              "english": "I look on the table. It is not on the table! I look in the school. It is not in the school! I do not find it!",
+              "speaker": "nico"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Puella Marcum videt. Puella librum habet.",
+              "english": "A girl sees Marcus. The girl has the book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ecce, Marce! Hic est! Invenio!",
+              "english": "Look, Marcus! Here it is! I find it!",
+              "speaker": "puella"
+            },
+            {
+              "text": "Gratias tibi ago! Tu amica bona es.",
+              "english": "Thank you! You are a good friend.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Libenter tibi do.",
+              "english": "I give it to you gladly.",
+              "speaker": "puella"
+            },
+            {
+              "text": "Bene est. Nunc audite, omnes!",
+              "english": "It is well. Now listen, all!",
+              "speaker": "luis"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Omnes audiunt. Lucius dicit: Quid est hoc? Estne panis? Estne aqua?",
+              "english": "All listen. Lucius says: What is this? Is it bread? Is it water?"
+            },
+            {
+              "text": "Pueri dicunt: Aqua est! Marcus dicit: Panis est!",
+              "english": "The boys say: It is water! Marcus says: It is bread!"
+            },
+            {
+              "text": "Magister dicit: Bene! Nunc quaerite panem!",
+              "english": "The teacher says: Good! Now look for bread!"
+            },
+            {
+              "text": "Omnes quaerunt. Marcus panem et aquam invenit.",
+              "english": "All look. Marcus finds bread and water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Quid habes, Marce?",
+              "english": "What do you have, Marcus?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Aquam habeo, magister. Et panem habeo. Martha panem vendit. Panis bonus est.",
+              "english": "I have water, teacher. And I have bread. Martha sells bread. The bread is good.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Et tu? Quid habes?",
+              "english": "And you? What do you have?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Lac habeo, magister. Et vinum non habeo.",
+              "english": "I have milk, teacher. And I do not have wine.",
+              "speaker": "puella"
+            },
+            {
+              "text": "Bene! Gratias vobis ago, pueri. Hodie bene valetis.",
+              "english": "Good! Thank you, boys. Today you are well.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Cras in foro sum. Panem emo, et lac emo. Quis panem vendit?",
+              "english": "Tomorrow I am in the market. I buy bread, and I buy milk. Who sells bread?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Martha panem vendit, et lac vendit. Martha bona est.",
+              "english": "Martha sells bread, and she sells milk. Martha is good.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Bene! Cras Marthae gratias ago. Panem et lac emo.",
+              "english": "Good! Tomorrow I thank Martha. I buy bread and milk.",
+              "speaker": "luis"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ubi est Anna? Estne in schola?",
+              "english": "Where is Anna? Is she at school?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Anna in schola non est. In valetudinario est.",
+              "english": "Anna is not at school. She is at the clinic.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Anna soror mea est. Anna bona est, et ego Annam amo.",
+              "english": "Anna is my sister. Anna is good, and I love Anna.",
+              "speaker": "luis"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hodie in schola omnes bene valent. Lucius fessus non est. Marcus fessus non est.",
+              "english": "Today at school all are well. Lucius is not tired. Marcus is not tired."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

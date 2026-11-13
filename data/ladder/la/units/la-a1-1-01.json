@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 2,
+  "id": "la-a1-1-01",
+  "lang": "la",
+  "title": "In the market",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-la",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Latin (Church Latin)"
+  },
+  "source": {
+    "id": "src:la:la-a1-1-01",
+    "title": "In the market (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Church Latin. Drafted by an AI model; not yet reviewed by a Latinist.",
+    "provenance": "Drafted by an AI model for the course ladder in simple Ecclesiastical (Church) Latin; not reviewed by a Latinist. It is controlled, deliberately repetitive Latin written for learners and may contain unidiomatic phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet reviewed by a Latinist.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a Latinist. House style: simple Church Latin, spelled without macrons, with u/v and i/j as in Stage 0 (v and i only); present tense, with a few perfects (venit, vidit, fuit, dixit) in the last units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "market",
+    "greetings",
+    "bread",
+    "thanks"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-latinist-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "la",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-11-13",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Samuel",
+    "marta": "Martha",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "In foro",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hodie Samuel in foro est. Martha quoque in foro est.",
+              "english": "Today Samuel is in the market. Martha is in the market too."
+            },
+            {
+              "text": "Martha panem vendit. Martha lac vendit. Martha vinum quoque vendit.",
+              "english": "Martha sells bread. Martha sells milk. Martha sells wine too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve, Martha! Quomodo vales?",
+              "english": "Hello, Martha! How are you?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bene valeo. Et tu? Quomodo vales?",
+              "english": "I am well. And you? How are you?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Bene valeo, sed fessus sum.",
+              "english": "I am well, but I am tired.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ecce panis! Panis bonus est. Panemne vis?",
+              "english": "Look, bread! The bread is good. Do you want bread?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Panem volo. Quid est hoc? Estne vinum?",
+              "english": "I want bread. What is this? Is it wine?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Non est vinum. Lac est. Lac bonum est. Lacne vis?",
+              "english": "It is not wine. It is milk. The milk is good. Do you want milk?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Lac volo, sed vinum non volo.",
+              "english": "I want milk, but I do not want wine.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bene! Ecce panis, ecce lac. Panem et lac tibi do.",
+              "english": "Good! Look, bread, look, milk. I give you bread and milk.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Gratias tibi ago, Martha. Panem et lac emo. Quid do?",
+              "english": "Thank you, Martha. I am buying bread and milk. What do I give?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Hodie panem tibi do, sed cras panem emis. Panem tibi vendo.",
+              "english": "Today I give you bread, but tomorrow you buy bread. I sell you bread.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Bene! Cras panem emo, et lac emo.",
+              "english": "Good! Tomorrow I buy bread, and I buy milk.",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna quoque in foro est.",
+              "english": "Anna is in the market too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve, Martha! Salve, Samuel! Quomodo valetis?",
+              "english": "Hello, Martha! Hello, Samuel! How are you?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Bene valemus, Anna. Samuel panem emit. Ecce panis!",
+              "english": "We are well, Anna. Samuel is buying bread. Look, bread!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ego quoque panem volo. Panis bonus est.",
+              "english": "I want bread too. The bread is good.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Panem tibi do, Anna. Cras panem emis.",
+              "english": "I give you bread, Anna. Tomorrow you buy bread.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Gratias tibi ago, Martha. Et ubi est Marcus? Estne in schola?",
+              "english": "Thank you, Martha. And where is Marcus? Is he at school?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Marcus in schola est. Puer bonus est.",
+              "english": "Marcus is at school. He is a good boy.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Et Lucius? Magister quoque in schola est?",
+              "english": "And Lucius? Is the teacher at school too?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Lucius magister est. Hodie in schola est, et cras in schola est.",
+              "english": "Lucius is a teacher. Today he is at school, and tomorrow he is at school.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Bene! Vale, Martha! Vale, Samuel!",
+              "english": "Good! Goodbye, Martha! Goodbye, Samuel!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Pax tibi, Anna. Pax tibi, Samuel. Cras ad forum venitis!",
+              "english": "Peace to you, Anna. Peace to you, Samuel. Tomorrow you come to the market!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Cras ad forum eo. Panem et lac emo. Gratias tibi ago!",
+              "english": "Tomorrow I go to the market. I buy bread and milk. Thank you!",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hodie dies bonus est. Samuel panem et lac habet. Bene est.",
+              "english": "Today is a good day. Samuel has bread and milk. It is well."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -126,5 +126,11 @@
       "kind": "exit"
     }
   ],
-  "next": []
+  "next": [
+    {
+      "textId": "text:la:la-a1-1-01",
+      "title": "In foro — first ladder text",
+      "note": "The first controlled text of the Latin course (a draft awaiting a Latinist’s review)."
+    }
+  ]
 }

@@ -1,0 +1,32 @@
+=== la-a1-1-01 | dialogue | conversation | In the market | In foro | market,greetings,bread,thanks
+## In foro
+Hodie Samuel in foro est. Martha quoque in foro est. || Today Samuel is in the market. Martha is in the market too.
+Martha panem vendit. Martha lac vendit. Martha vinum quoque vendit. || Martha sells bread. Martha sells milk. Martha sells wine too.
+
+[sam] Salve, Martha! Quomodo vales? || Hello, Martha! How are you?
+[marta] Bene valeo. Et tu? Quomodo vales? || I am well. And you? How are you?
+[sam] Bene valeo, sed fessus sum. || I am well, but I am tired.
+[marta] Ecce panis! Panis bonus est. Panemne vis? || Look, bread! The bread is good. Do you want bread?
+[sam] Panem volo. Quid est hoc? Estne vinum? || I want bread. What is this? Is it wine?
+[marta] Non est vinum. Lac est. Lac bonum est. Lacne vis? || It is not wine. It is milk. The milk is good. Do you want milk?
+[sam] Lac volo, sed vinum non volo. || I want milk, but I do not want wine.
+[marta] Bene! Ecce panis, ecce lac. Panem et lac tibi do. || Good! Look, bread, look, milk. I give you bread and milk.
+[sam] Gratias tibi ago, Martha. Panem et lac emo. Quid do? || Thank you, Martha. I am buying bread and milk. What do I give?
+[marta] Hodie panem tibi do, sed cras panem emis. Panem tibi vendo. || Today I give you bread, but tomorrow you buy bread. I sell you bread.
+[sam] Bene! Cras panem emo, et lac emo. || Good! Tomorrow I buy bread, and I buy milk.
+
+Anna quoque in foro est. || Anna is in the market too.
+
+[ana] Salve, Martha! Salve, Samuel! Quomodo valetis? || Hello, Martha! Hello, Samuel! How are you?
+[marta] Bene valemus, Anna. Samuel panem emit. Ecce panis! || We are well, Anna. Samuel is buying bread. Look, bread!
+[ana] Ego quoque panem volo. Panis bonus est. || I want bread too. The bread is good.
+[marta] Panem tibi do, Anna. Cras panem emis. || I give you bread, Anna. Tomorrow you buy bread.
+[ana] Gratias tibi ago, Martha. Et ubi est Marcus? Estne in schola? || Thank you, Martha. And where is Marcus? Is he at school?
+[marta] Marcus in schola est. Puer bonus est. || Marcus is at school. He is a good boy.
+[ana] Et Lucius? Magister quoque in schola est? || And Lucius? Is the teacher at school too?
+[marta] Lucius magister est. Hodie in schola est, et cras in schola est. || Lucius is a teacher. Today he is at school, and tomorrow he is at school.
+[ana] Bene! Vale, Martha! Vale, Samuel! || Good! Goodbye, Martha! Goodbye, Samuel!
+[marta] Pax tibi, Anna. Pax tibi, Samuel. Cras ad forum venitis! || Peace to you, Anna. Peace to you, Samuel. Tomorrow you come to the market!
+[sam] Cras ad forum eo. Panem et lac emo. Gratias tibi ago! || Tomorrow I go to the market. I buy bread and milk. Thank you!
+
+Hodie dies bonus est. Samuel panem et lac habet. Bene est. || Today is a good day. Samuel has bread and milk. It is well.

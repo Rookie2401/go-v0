@@ -1,0 +1,103 @@
+{
+  "lang": "la",
+  "version": 1,
+  "after": "stage0",
+  "units": [
+    {
+      "id": "la-a1-1-01",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/la-a1-1-01.json",
+      "domain": "conversation",
+      "title": "In the market"
+    },
+    {
+      "id": "la-a1-1-02",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/la-a1-1-02.json",
+      "domain": "description",
+      "title": "Martha's house"
+    },
+    {
+      "id": "la-a1-1-03",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/la-a1-1-03.json",
+      "domain": "narrative",
+      "title": "At school"
+    },
+    {
+      "id": "la-a1-1-04",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/la-a1-1-04.json",
+      "domain": "practical communication",
+      "title": "At the clinic"
+    },
+    {
+      "id": "la-a1-1-05",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/la-a1-1-05.json",
+      "domain": "correspondence",
+      "title": "A letter to my mother"
+    },
+    {
+      "id": "la-a1-1-06",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/la-a1-1-06.json",
+      "domain": "explanation",
+      "title": "Sunday"
+    },
+    {
+      "id": "la-a1-1-07",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/la-a1-1-07.json",
+      "domain": "narrative",
+      "title": "The lost key"
+    },
+    {
+      "id": "la-a1-1-08",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/la-a1-1-08.json",
+      "domain": "description",
+      "title": "A walk"
+    },
+    {
+      "id": "la-a1-1-09",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/la-a1-1-09.json",
+      "domain": "conversation",
+      "title": "Supper"
+    },
+    {
+      "id": "la-a1-1-10",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/la-a1-1-10.json",
+      "domain": "conversation",
+      "title": "A visitor"
+    },
+    {
+      "id": "la-a1-1-11",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/la-a1-1-11.json",
+      "domain": "narrative",
+      "title": "An old neighbour"
+    },
+    {
+      "id": "la-a1-1-12",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/la-a1-1-12.json",
+      "domain": "narrative",
+      "title": "At the sea"
+    }
+  ]
+}

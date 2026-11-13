@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 2,
+  "id": "la-a1-1-06",
+  "lang": "la",
+  "title": "Sunday",
+  "contentType": "explanation",
+  "corpus": {
+    "id": "ladder-la",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Latin (Church Latin)"
+  },
+  "source": {
+    "id": "src:la:la-a1-1-06",
+    "title": "Sunday (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Church Latin. Drafted by an AI model; not yet reviewed by a Latinist.",
+    "provenance": "Drafted by an AI model for the course ladder in simple Ecclesiastical (Church) Latin; not reviewed by a Latinist. It is controlled, deliberately repetitive Latin written for learners and may contain unidiomatic phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet reviewed by a Latinist.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a Latinist. House style: simple Church Latin, spelled without macrons, with u/v and i/j as in Stage 0 (v and i only); present tense, with a few perfects (venit, vidit, fuit, dixit) in the last units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "Sunday",
+    "church",
+    "prayer",
+    "people"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-latinist-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "la",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-11-13",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Samuel",
+    "marta": "Martha",
+    "nico": "Marcus",
+    "luis": "Lucius",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Dies Dominica",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hodie dies Dominica est. Dies Dominica dies Dei est. Omnes ad ecclesiam eunt.",
+              "english": "Today is Sunday. Sunday is God's day. All go to church."
+            },
+            {
+              "text": "Martha ad ecclesiam it. Anna et Lucius ad ecclesiam eunt. Marcus et Samuel quoque ad ecclesiam eunt.",
+              "english": "Martha goes to church. Anna and Lucius go to church. Marcus and Samuel go to church too."
+            },
+            {
+              "text": "Ecclesia non longe est. Ecclesia magna est, et multi homines in ecclesia sunt.",
+              "english": "The church is not far. The church is big, and many people are in the church."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "In ecclesia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "In ecclesia homines Deum laudant. Homines Deum amant. Homines Deo gratias agunt.",
+              "english": "In church people praise God. People love God. People give thanks to God."
+            },
+            {
+              "text": "Homines audiunt, et orant, et cantant.",
+              "english": "People listen, and pray, and sing."
+            },
+            {
+              "text": "Sacerdos quoque in ecclesia est. Sacerdos Deum laudat. Sacerdos dicit: Pax vobis!",
+              "english": "The priest is in the church too. The priest praises God. The priest says: Peace to you!"
+            },
+            {
+              "text": "Omnes dicunt: Deo gratias!",
+              "english": "All say: Thanks be to God!"
+            },
+            {
+              "text": "Post ecclesiam Martha in foro est. Martha panem vendit.",
+              "english": "After church Martha is in the market. Martha sells bread."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Samuel et Martha",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Samuel ad ecclesiam venit. Marthae dicit: Salve!",
+              "english": "Samuel comes to the church. He says to Martha: Hello!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve, Martha! Hodie ad ecclesiam venio.",
+              "english": "Hello, Martha! Today I come to church.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bene! Hodie bonum est.",
+              "english": "Good! It is good today.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ubi est Anna? Estne in ecclesia?",
+              "english": "Where is Anna? Is she in church?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Anna ibi est! Et Lucius ibi est.",
+              "english": "Anna is there! And Lucius is there too.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Et Marcus? Ubi est puer?",
+              "english": "And Marcus? Where is the boy?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Marcus hic est. Ecce Marcus! Ibi cantat.",
+              "english": "Marcus is here. Look, Marcus! He is singing there.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ego Deum laudo! Libenter in ecclesia sum.",
+              "english": "I praise God! I am gladly in church.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Et ego Deum laudo. Gratias Deo ago.",
+              "english": "And I praise God. I give thanks to God.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Martha, tu quoque oras?",
+              "english": "Martha, do you pray too?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Oro, et Deo gratias ago. Libenter oro, libenter canto.",
+              "english": "I pray, and I give thanks to God. I gladly pray, I gladly sing.",
+              "speaker": "marta"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lucius et Anna in ecclesia sunt. Lucius Samuelem videt.",
+              "english": "Lucius and Anna are in the church. Lucius sees Samuel."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve, Samuel! Quomodo vales?",
+              "english": "Hello, Samuel! How are you?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Bene valeo, Luci. Et tu? Quomodo vales?",
+              "english": "I am well, Lucius. And you? How are you?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bene valeo, sed fessus sum. Anna quoque fessa est.",
+              "english": "I am well, but I am tired. Anna is tired too.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Hodie in valetudinario non laboro. Hic sum, et bene est.",
+              "english": "Today I do not work at the clinic. I am here, and it is well.",
+              "speaker": "ana"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sacerdos dicit: Pax vobis! Omnes dicunt: Deo gratias!",
+              "english": "The priest says: Peace to you! All say: Thanks be to God!"
+            },
+            {
+              "text": "Post ecclesiam Samuel in domo Marthae est. Panem edunt et lac bibunt.",
+              "english": "After church Samuel is in Martha's house. They eat bread and drink milk."
+            },
+            {
+              "text": "Martha Deum amat, et omnes homines Deum amant.",
+              "english": "Martha loves God, and all people love God."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

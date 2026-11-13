@@ -1,0 +1,36 @@
+=== la-a1-1-07 | narrative | narrative | The lost key | Clavis amissa | key,search,help,places
+## Clavis amissa
+Hodie Marcus clavem non habet. Clavis est clavis domus Marthae. || Today Marcus does not have the key. It is the key of Martha's house.
+Marcus fessus est. Domum venire vult, sed clavem non habet. || Marcus is tired. He wants to come home, but he does not have the key.
+
+[nico] Ubi est clavis mea? Clavem non habeo! || Where is my key? I do not have the key!
+Marcus clavem quaerit. In schola clavem quaerit. Clavis in schola non est. || Marcus looks for the key. He looks for the key at school. The key is not at school.
+Marcus in foro clavem quaerit. Clavis in foro non est. || Marcus looks for the key in the market. The key is not in the market.
+
+Samuel Marcum videt. Samuel puerum salutat. || Samuel sees Marcus. Samuel greets the boy.
+
+[sam] Salve, Marce! Quid quaeris? || Hello, Marcus! What are you looking for?
+[nico] Clavem quaero. Clavem non habeo. Fessus sum, et domum venire volo. || I am looking for the key. I do not have the key. I am tired, and I want to come home.
+[sam] Ego te iuvo! Ubi clavem quaeris? || I will help you! Where are you looking for the key?
+[nico] In schola quaero, et in foro quaero. Clavis ibi non est. || I look at school, and I look in the market. The key is not there.
+[sam] Estne in ecclesia? Quaerimus in ecclesia! || Is it in the church? Let us look in the church!
+
+Samuel et Marcus in ecclesia clavem quaerunt. Clavis ibi non est. || Samuel and Marcus look for the key in the church. The key is not there.
+
+[nico] Clavis hic non est. Non invenimus! || The key is not here. We do not find it!
+[sam] Ubi est Martha? Martha clavem habet? || Where is Martha? Does Martha have the key?
+[nico] Martha in domo est. Sed domus clavem non habet. Clavis mea est! || Martha is at home. But the house does not have the key. The key is mine!
+[sam] Veni! In domum Marthae venimus. || Come! We come to Martha's house.
+
+Martha in porta est. Marcum et Samuelem videt. || Martha is at the door. She sees Marcus and Samuel.
+
+[marta] Salvete! Quid hic facitis? Quid quaeritis? || Hello! What are you doing here? What are you looking for?
+[nico] Clavem quaerimus, avia. Clavem meam non habeo. || We are looking for the key, grandmother. I do not have my key.
+[marta] Ecce clavis! Clavis in mensa est, sub pane. Statim clavem video. || Look, the key! The key is on the table, under the bread. I see the key at once.
+[nico] Ibi est! Clavem tandem invenio! || It is there! At last I find the key!
+[sam] Bene est, Marce! Clavem habes. Tandem clavem invenis. || It is well, Marcus! You have the key. At last you find the key.
+[nico] Gratias tibi ago, Samuel. Gratias tibi ago, avia. Tu amicus bonus es. || Thank you, Samuel. Thank you, grandmother. You are a good friend.
+[marta] Statim panem edite! Panis sub mensa non est, sed in mensa est. || Eat bread at once! The bread is not under the table, but on the table.
+
+Marcus clavem in manu habet. Ibi panem edit, et lac bibit. Tandem fessus non est. || Marcus has the key in his hand. There he eats bread, and drinks milk. At last he is not tired.
+Samuel quoque panem edit. Bene est. Hodie Samuel Marcum iuvat, et Marcus Samuelem iuvat. || Samuel eats bread too. It is well. Today Samuel helps Marcus, and Marcus helps Samuel.

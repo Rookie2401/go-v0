@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 2,
+  "id": "la-a1-1-09",
+  "lang": "la",
+  "title": "Supper",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-la",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Latin (Church Latin)"
+  },
+  "source": {
+    "id": "src:la:la-a1-1-09",
+    "title": "Supper (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Church Latin. Drafted by an AI model; not yet reviewed by a Latinist.",
+    "provenance": "Drafted by an AI model for the course ladder in simple Ecclesiastical (Church) Latin; not reviewed by a Latinist. It is controlled, deliberately repetitive Latin written for learners and may contain unidiomatic phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet reviewed by a Latinist.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a Latinist. House style: simple Church Latin, spelled without macrons, with u/v and i/j as in Stage 0 (v and i only); present tense, with a few perfects (venit, vidit, fuit, dixit) in the last units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "meal",
+    "food",
+    "family",
+    "thanks"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-latinist-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "la",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-11-13",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "marta": "Martha",
+    "ana": "Anna",
+    "luis": "Lucius",
+    "nico": "Marcus",
+    "sam": "Samuel"
+  },
+  "sections": [
+    {
+      "title": "Cena",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hodie Martha cenam parat. Cena in domo Marthae est.",
+              "english": "Today Martha is preparing supper. The supper is in Martha's house."
+            },
+            {
+              "text": "Anna et Lucius in domo sunt. Samuel et Marcus quoque ibi sunt.",
+              "english": "Anna and Lucius are in the house. Samuel and Marcus are there too."
+            },
+            {
+              "text": "In mensa magna panis est, et lac, et vinum, et aqua. Ecce pomum et piscis!",
+              "english": "On the big table there is bread, and milk, and wine, and water. Look, fruit and fish!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salvete, amici! Sedete!",
+              "english": "Hello, friends! Sit down!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Salve, Martha! Gratias tibi ago. Cena bona est.",
+              "english": "Hello, Martha! Thank you. The supper is good.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Salve, Martha! Ecce, vinum tibi do.",
+              "english": "Hello, Martha! Look, I give you wine.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Gratias tibi ago, Luci! Vinum bonum est. Sedete in mensa!",
+              "english": "Thank you, Lucius! The wine is good. Sit at the table!",
+              "speaker": "marta"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Omnes in mensa sedent. Martha panem omnibus dat.",
+              "english": "All sit at the table. Martha gives bread to everyone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Quid vultis? Panem? Lac? Piscem?",
+              "english": "What do you want? Bread? Milk? Fish?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Piscem volo! Piscis bonus est.",
+              "english": "I want fish! Fish is good.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ego panem et pomum volo. Pomum bonum est.",
+              "english": "I want bread and fruit. Fruit is good.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ego vinum bibo, et panem edo.",
+              "english": "I drink wine, and I eat bread.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ego aquam bibo. Aqua mihi bona est.",
+              "english": "I drink water. Water is good for me.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Et lac? Lacne non vis, Samuel?",
+              "english": "And milk? Do you not want milk, Samuel?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Lac quoque volo! Libenter lac bibo. Pomum quoque volo.",
+              "english": "I want milk too! I gladly drink milk. I want fruit too.",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Omnes edunt et bibunt. Cena bona est. Omnes bene valent.",
+              "english": "All eat and drink. The supper is good. All are well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Avia, panis tuus semper bonus est.",
+              "english": "Grandmother, your bread is always good.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Gratias tibi ago, Marce. Panem semper libenter paro. Cenam quoque libenter paro.",
+              "english": "Thank you, Marcus. I always gladly make bread. I gladly make supper too.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Anna, quomodo vales? Fessane es?",
+              "english": "Anna, how are you? Are you tired?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Fessa sum, sed bene valeo. Hodie in valetudinario laboro.",
+              "english": "I am tired, but I am well. Today I work at the clinic.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Nunc non laboras. Nunc cena est!",
+              "english": "Now you are not working. Now it is supper!",
+              "speaker": "luis"
+            },
+            {
+              "text": "Bene! Cena bona est, et amici boni hic sunt.",
+              "english": "Good! The supper is good, and good friends are here.",
+              "speaker": "ana"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Post cenam Samuel dicit: Gratias vobis ago, amici.",
+              "english": "After supper Samuel says: Thank you, friends."
+            },
+            {
+              "text": "Martha dicit: Deo gratias! Pax vobis!",
+              "english": "Martha says: Thanks be to God! Peace to you!"
+            },
+            {
+              "text": "Omnes dicunt: Deo gratias!",
+              "english": "All say: Thanks be to God!"
+            },
+            {
+              "text": "Marcus fessus est. Marcus in domo dormit. Post cenam Marcus semper dormit!",
+              "english": "Marcus is tired. Marcus sleeps in the house. After supper Marcus always sleeps!"
+            },
+            {
+              "text": "Martha Marcum videt, et Martha bene valet. Hodie dies bonus est.",
+              "english": "Martha sees Marcus, and Martha is well. Today is a good day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Samuel epistulam habet. Epistula ex urbe longe venit.",
+              "english": "Samuel has a letter. The letter comes from a far town."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ecce epistula! Mater mea epistulam scribit. Mater cara est, et pater carus est.",
+              "english": "Look, a letter! My mother is writing a letter. Mother is dear, and father is dear.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Quid scribit mater tua? Estne bona epistula?",
+              "english": "What does your mother write? Is it a good letter?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Bona est. Mater dicit: Bene valeo, et pater bene valet. Ubi es, Samuel? Quomodo vales?",
+              "english": "It is good. Mother says: I am well, and father is well. Where are you, Samuel? How are you?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Mater tua bona est. Epistulam tuam libenter audio. Scribe matri tuae!",
+              "english": "Your mother is good. I gladly hear your letter. Write to your mother!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Cras matri scribo. Hodie dies bonus est, et cena bona est.",
+              "english": "Tomorrow I write to my mother. Today is a good day, and the supper is good.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

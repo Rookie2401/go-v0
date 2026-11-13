@@ -1,0 +1,39 @@
+=== la-a1-1-10 | dialogue | conversation | A visitor | Hospes | visitor,names,origin,welcome
+speakers: hospes=Paulus
+## Hospes
+Hodie hospes in urbe est. Hospes ex urbe Roma venit. || Today a guest is in the town. The guest comes from the city of Rome.
+Hospes ad domum Marthae it. Martha in porta est. || The guest goes to Martha's house. Martha is at the door.
+
+[hospes] Salve! Estne haec domus Marthae? || Hello! Is this Martha's house?
+[marta] Salve! Martha sum. Haec domus mea est. Quis es tu? || Hello! I am Martha. This is my house. Who are you?
+[hospes] Hospes sum. Nomen mihi Paulus est. Ex urbe Roma venio. || I am a guest. My name is Paul. I come from the city of Rome.
+[marta] Salve, Paule! Veni in domum! || Hello, Paul! Come into the house!
+[hospes] Gratias tibi ago, Martha. Urbs Roma longe est, et fessus sum. || Thank you, Martha. The city of Rome is far away, and I am tired.
+[marta] Sede, Paule! Aquam bibis? Lac bibis? || Sit, Paul! Do you drink water? Do you drink milk?
+[hospes] Aquam volo. Gratias tibi ago. || I want water. Thank you.
+[marta] Ecce aqua. Panem quoque habes. Panis bonus est. || Here is water. You have bread too. The bread is good.
+[hospes] Panem libenter edo. Tu bona es, Martha. || I gladly eat bread. You are good, Martha.
+
+Samuel et Marcus in domum veniunt. Hospitem vident. || Samuel and Marcus come into the house. They see the guest.
+
+[sam] Salve! Quis est ille, Martha? || Hello! Who is that, Martha?
+[marta] Ille hospes est. Nomen ei Paulus est. Ex urbe Roma venit. || He is a guest. His name is Paul. He comes from the city of Rome.
+[nico] Salve, hospes! Nomen mihi Marcus est. Puer sum. || Hello, guest! My name is Marcus. I am a boy.
+[hospes] Salve, Marce! Et quis est ille? || Hello, Marcus! And who is that?
+[sam] Samuel sum. Hic in urbe habito. || I am Samuel. I live here in the town.
+[hospes] Tu quoque hospes es? || Are you a guest too?
+[sam] Hospes sum, sed hic habito. Amicos bonos habeo. || I am a guest, but I live here. I have good friends.
+[hospes] Ubi est ecclesia? Cras ad ecclesiam eo, quia dies Dominica est. || Where is the church? Tomorrow I go to church, because it is Sunday.
+[marta] Ecclesia non longe est. Ibi Deum laudamus. Cras ad ecclesiam imus. || The church is not far. There we praise God. Tomorrow we go to church.
+[hospes] Libenter ad ecclesiam eo. Gratias tibi ago, Martha. || I gladly go to church. Thank you, Martha.
+
+Hospes in domo Marthae manet. Marcus quoque in domo manet. Martha panem et lac habet, et hospes bene edit. || The guest stays in Martha's house. Marcus stays in the house too. Martha has bread and milk, and the guest eats well.
+Post cenam hospes dicit: In urbe nova amicos bonos habeo. Deus bonus est. || After supper the guest says: In the new town I have good friends. God is good.
+Martha dicit: Deo gratias! Pax tibi, Paule. || Martha says: Thanks be to God! Peace to you, Paul.
+
+Hospes epistulam habet. Epistula ex urbe Roma est. Mater Samuelis epistulam scribit. || The guest has a letter. The letter is from the city of Rome. Samuel's mother writes a letter.
+
+[hospes] Samuel, ecce epistula! Mater tua epistulam scribit, et ego epistulam habeo. || Samuel, look, a letter! Your mother writes a letter, and I have the letter.
+[sam] Epistula! Gratias tibi ago, Paule. Mater mea bona est. Pater quoque epistulam amat. || A letter! Thank you, Paul. My mother is good. My father loves the letter too.
+[hospes] Mater tua dicit: Pax tibi, Samuel. Deus tecum est. || Your mother says: Peace to you, Samuel. God is with you.
+[sam] Deo gratias! Libenter epistulam audio. Hodie dies bonus est. || Thanks be to God! I gladly hear the letter. Today is a good day.

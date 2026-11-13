@@ -1,7 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, expect, it } from 'vitest';
 import { analyzePage } from '../../packages/golearn-extension/src/reading/analyze';
-import { JSDOM } from 'jsdom';
 import { getAnalyser } from '../../packages/golearn-extension/src/parser';
 import type { KnowledgeView, ProfileReply } from '../../packages/golearn-extension/src/protocol';
 
@@ -114,9 +113,12 @@ it('does not credit a lemma when an analysed word has competing confident parses
 });
 
 it('refuses restricted readers before extracting or consulting vocabulary data', async () => {
-  const restricted = new JSDOM('<article><p>shtëpinë shtëpinë</p></article>', {
-    url: 'https://read.amazon.com/kp/reader',
-  }).window.document;
+  // The registry rejects the reader before any DOM extraction, so an URL-bearing
+  // document stub tests the policy without depending on jsdom's optional typings.
+  const restricted = { location: {
+    href: 'https://read.amazon.com/kp/reader', protocol: 'https:',
+    host: 'read.amazon.com', pathname: '/kp/reader',
+  } } as unknown as Document;
   const { bridge, calls } = bridgeWithRows({ [knownForm.unitId]: knownForm });
   const result = await analyzePage(restricted, 'sq', bridge, getAnalyser, new AbortController().signal);
   expect(result).toEqual({ ok: false, code: 'unsupported-page' });

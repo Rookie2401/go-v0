@@ -1,0 +1,1 @@
+import{t as e}from"./es-6FOAoRDF.js";export{e as adapter};

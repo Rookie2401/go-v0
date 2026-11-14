@@ -11,6 +11,8 @@ import { afterEach, describe, expect, it } from 'vitest';
 import type { ExerciseBuilder } from '../../packages/goreview/src';
 import { PACKS } from '../../packages/language-packs/src/registry';
 import { homePhoto } from '../../packages/goreview/app/homePhotos';
+import { holdOutOf, planCurrentDeck, saveDeck } from '../../packages/goreview/app/deckModel';
+import { currentReviewModel, PRESS_WAIT_MS } from '../../packages/goreview/app/workspace';
 import { defaultService, destroyRigs, dueCard, FAKE_BUILDERS, ids, key, makeRig, reopen, reviewed, seed, startWith, until, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
@@ -54,6 +56,15 @@ const page = (rig: Rig): string => {
 };
 const write = (name: string, rig: Rig): void => { fs.writeFileSync(path.join(dir!, name), page(rig)); };
 
+/** Build the snapshot's saved-deck fixture directly; this control is no longer exposed. */
+const savePlannedFixtureDeck = async (rig: Rig): Promise<void> => {
+  const model = await currentReviewModel(rig.app.ctx, { waitMs: PRESS_WAIT_MS });
+  if (!model) throw new Error('Could not load current review model for snapshot');
+  const holdOut = await holdOutOf(rig.app.ctx, model.identity.learnerId, model.identity.languageId);
+  const deck = await planCurrentDeck(rig.app.ctx, model, holdOut, undefined, 'current');
+  if (!await saveDeck(rig.app.ctx, model.identity, deck.entries)) throw new Error('Snapshot had no cards to save');
+};
+
 /** The written-recognition and phrase cards carry a meaning too, so the card shows a stimulus and a meaning. */
 const BUILDERS: ExerciseBuilder[] = FAKE_BUILDERS.map((b) => (b.family === 'written-recognition' || b.family === 'phrase-comprehension'
   ? { ...b, build: async (...args: Parameters<ExerciseBuilder['build']>) => { const ex = await b.build(...args); if ('unavailable' in ex) return ex; return { ...ex, prompt: { ...ex.prompt, meaning: 'the place where one lives' } }; } }
@@ -85,7 +96,8 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
     await reopen(rig);
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('10');
     await rig.go('review/decks');
-    rig.q('#save-deck').click();
+    await savePlannedFixtureDeck(rig);
+    await rig.go('review/decks');
     await until(() => rig.qa('.deckrow').length === 2, 'two saved decks');
     await seed(rig, words.slice(0, 10).flatMap((w) => dueCard(A, `${w}x`, 'written-recognition')));
     await reopen(rig);

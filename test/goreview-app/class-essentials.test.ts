@@ -145,6 +145,7 @@ describe('Class Essentials: in Saved decks', () => {
     await reopen(rig);
     await rig.go('review/decks');
     await savePlannedFixtureDeck(rig);
+    await rig.go('review');
     await rig.go('review/decks');
     await until(() => rig.qa('.deckrow').length === 2, 'the saved deck');
     const mine = (await stored(rig)).find((d) => !d.builtin)!;
@@ -178,6 +179,7 @@ describe('Class Essentials: in Saved decks', () => {
     expect(rig.root.querySelector('#review-home #class-essentials-due')).toBeNull(); // not on the home: under its card in Saved decks (the owner, 2026-10-31)
     await rig.go('review/decks');
     await savePlannedFixtureDeck(rig);
+    await rig.go('review');
     await rig.go('review/decks');
     await until(() => rig.qa('.deckrow').length === 2, 'ordinary due card saved');
     await reopen(rig);

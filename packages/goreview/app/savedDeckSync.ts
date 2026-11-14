@@ -1,5 +1,5 @@
-/** Explicit saved-collection operations share the existing preference-event stream.
- * Legacy local collections are exported only through Sync saved decks.
+/** Saved-collection writes use the existing preference-event stream.
+ * Older local-only collections remain readable; the manual export control was retired.
  */
 import { CONTRACT_VERSION, validateEvent } from '../../repository-contract/src';
 import { ASSESSMENT_DIMENSIONS, EXERCISE_FAMILIES, FAMILY_DIMENSION } from '../src/types';

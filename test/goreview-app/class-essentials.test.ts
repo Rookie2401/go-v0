@@ -4,7 +4,8 @@ import { registry, resolveBuilder } from '../../packages/goreview/src';
 import { itemIdFor } from '../../packages/goreview/src/scheduler/deck';
 import type { GoEvent } from '../../packages/repository-contract/src';
 import { classCards, classDeckFor, classFacts, CLASS_ESSENTIALS_DESCRIPTION, CLASS_ESSENTIALS_NOTES_LA, CLASS_LANGUAGES, isClassUnit } from '../../packages/goreview/app/classEssentials';
-import { decksKey, listSavedDecks, type SavedDeck } from '../../packages/goreview/app/deckModel';
+import { decksKey, holdOutOf, listSavedDecks, planCurrentDeck, saveDeck, type SavedDeck } from '../../packages/goreview/app/deckModel';
+import { currentReviewModel, PRESS_WAIT_MS } from '../../packages/goreview/app/workspace';
 import { languageName } from '../../packages/goreview/app/format';
 import { defaultService, destroyRigs, dueCard, FakeService, ids, makeRig, queued, reopen, reviewed, seed, until, type Rig, readyCards } from './helpers';
 
@@ -14,6 +15,15 @@ const click = (el: Element): void => (el as HTMLElement).click();
 const stored = async (rig: Rig, lang = 'sq'): Promise<SavedDeck[]> => {
   const key = decksKey('L1', lang);
   return ((await rig.area.get(key))[key] as { decks?: SavedDeck[] } | undefined)?.decks ?? [];
+};
+
+/** Seed the same saved-deck data as the retired UI action, without depending on that action. */
+const savePlannedFixtureDeck = async (rig: Rig): Promise<void> => {
+  const model = await currentReviewModel(rig.app.ctx, { waitMs: PRESS_WAIT_MS });
+  if (!model) throw new Error('Could not load the current review model for the fixture');
+  const holdOut = await holdOutOf(rig.app.ctx, model.identity.learnerId, model.identity.languageId);
+  const deck = await planCurrentDeck(rig.app.ctx, model, holdOut, undefined, 'current');
+  if (!await saveDeck(rig.app.ctx, model.identity, deck.entries)) throw new Error('Fixture had no cards to save');
 };
 
 describe('Class Essentials: the cards', () => {
@@ -114,6 +124,8 @@ describe('Class Essentials: in Saved decks', () => {
     const first = await listSavedDecks(rig.app.ctx, 'L1', 'sq', 'sq-AL');
     const second = await listSavedDecks(rig.app.ctx, 'L1', 'sq', 'sq-AL');
     await rig.go('review/decks'); // its due line sits under its card in Saved decks (the owner, 2026-10-31)
+    expect(rig.root.querySelector('#save-deck')).toBeNull();
+    expect(rig.root.querySelector('#sync-saved-decks')).toBeNull();
     await until(() => !!rig.root.querySelector('#class-essentials-due-count'), 'the Class Essentials due line');
     expect(rig.q('#class-essentials-due-count').textContent).toBe('Nothing due');
     expect(rig.root.querySelector('#start-class-essentials-due')).toBeNull(); // the saved 28-card set does not become due work by being seeded
@@ -132,7 +144,9 @@ describe('Class Essentials: in Saved decks', () => {
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
     await rig.go('review/decks');
-    click(rig.q('#save-deck'));
+    await savePlannedFixtureDeck(rig);
+    await rig.go('review');
+    await rig.go('review/decks');
     await until(() => rig.qa('.deckrow').length === 2, 'the saved deck');
     const mine = (await stored(rig)).find((d) => !d.builtin)!;
     await rig.go('review/decks');
@@ -164,7 +178,9 @@ describe('Class Essentials: in Saved decks', () => {
     await reopen(rig);
     expect(rig.root.querySelector('#review-home #class-essentials-due')).toBeNull(); // not on the home: under its card in Saved decks (the owner, 2026-10-31)
     await rig.go('review/decks');
-    click(rig.q('#save-deck'));
+    await savePlannedFixtureDeck(rig);
+    await rig.go('review');
+    await rig.go('review/decks');
     await until(() => rig.qa('.deckrow').length === 2, 'ordinary due card saved');
     await reopen(rig);
     expect(String(readyCards(rig))).toBe('1'); // saving does not hide due work from the current automatic plan

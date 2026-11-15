@@ -489,7 +489,7 @@ export type VocabSort = 'least' | 'recent';
 export interface VocabRow {
   unitId: string;
   label: string;
-  /** The level SHOWN (and sorted by) in My vocab: the Repository's level, except New for a word met only in passing (`displayLevelOf`, owner 2026-11-05). Nothing that plans or decides reads it. */
+  /** The level SHOWN (and sorted by) in My vocab: the Repository's level, except New for a word met only in passing (`displayLevelOf`, owner 2026-11-05). Nothing that plans or decides reads it. An entry at New is not listed or counted (`isListedWord`, owner 2026-11-14). */
   level: KnowledgeLevel;
   encounters: number;
   /** When the word was last tapped or met (ISO). */
@@ -681,5 +681,20 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<Vocab
   return { rows, total: rows.length, complete, ...(incompleteReason ? { incompleteReason } : {}) };
 }
 
-/** How many words the learner has met: the merged entries of My vocab. */
-export const vocabCount = (rows: readonly VocabRow[]): number => rows.length;
+/**
+ * Which entries ARE the learner's vocabulary (the owner, 2026-11-14: "if the user met it in passing but did not actually pick the word,
+ * such that it is new, then the word should not be in the vocab list at all. Seen to automatic, never new").
+ *
+ * A word shown New is one the learner never picked: it was met in passing (a verse opened, a page scanned) and nothing else, or it was
+ * marked New again. The Repository still holds its row, the readers still paint it New on the page, and GoReview still draws on its
+ * encounters; it is only not LISTED as a word of theirs, and not counted as one. The rule is applied where the list is shown or counted,
+ * after forms have been folded into their lemmas (a New lemma row must still be there to receive a form the learner did pick).
+ */
+export const isListedWord = (row: Pick<VocabRow, 'level'>): boolean => row.level !== 'new';
+export const listedVocab = <T extends Pick<VocabRow, 'level'>>(rows: readonly T[]): T[] => rows.filter(isListedWord);
+
+/** How many words are the learner's: the listed entries of My vocab (Seen to Automatic). */
+export const vocabCount = (rows: readonly VocabRow[]): number => listedVocab(rows).length;
+
+/** The same count from knowledge rows alone, when the vocabulary list could not be read (no folding: a lower bound is not claimed, only "about"). */
+export const listedKnowledgeCount = (knowledge: ReadonlyArray<Parameters<typeof displayLevelOf>[0]>): number => knowledge.filter((k) => displayLevelOf(k) !== 'new').length;

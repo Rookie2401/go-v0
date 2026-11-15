@@ -10,7 +10,7 @@ import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packag
 import { saveDeck } from '../../packages/goreview/app/deckModel';
 import { createLive } from '../../packages/goreview/app/live';
 import { createRealDeps } from '../../packages/goreview/app/main';
-import { cardAdded, defaultService, destroyRigs, dueCard, ids, key, makeRig, startWith, type, until, type FakeService, type Rig, readyCards } from './helpers';
+import { cardAdded, defaultService, destroyRigs, dueCard, ids, key, makeRig, startWith, type, until, type FakeService, type Rig, readyCards, PICKED } from './helpers';
 
 afterEach(() => { destroyRigs(); vi.useRealTimers(); });
 const A = ids('L1', 'sq');
@@ -157,7 +157,7 @@ describe('live updates in the app', () => {
   describe('My vocab and Saved decks react too', () => {
     const word = (label: string): VocabularyItem => {
       const unitId = `lemma:sq:${label}:NOUN`;
-      const knowledge = { unitId, languageId: 'sq', level: 'seen', encounters: 2, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-07T00:00:00.000Z' } as UnitKnowledge;
+      const knowledge = { unitId, languageId: 'sq', level: 'seen', encounters: 2, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-07T00:00:00.000Z', dimensions: PICKED } as UnitKnowledge;
       return { knowledge, unit: { unitId, languageId: 'sq', label, kind: 'lexeme' } as VocabularyItem['unit'], surfaceForms: [label], lastEncounter: '2026-10-07T00:00:00.000Z', sources: [] };
     };
     const useVocabulary = (rig: Rig, items: VocabularyItem[]): void => {

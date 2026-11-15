@@ -11,7 +11,7 @@ import { decksKey } from '../../packages/goreview/app/deckModel';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { KNOWABILITY_PRIORITY_POLICY_VERSION } from '../../packages/goreview/src/planner/priority-policy';
 import { readSnapshot, RECOVERY_SCOPE_VERSION, writeSnapshot } from '../../packages/goreview/app/snapshot';
-import { candidate, knowledgeRow, cardAdded, defaultService, destroyRigs, dueCard, flush, ids, makeRig, queued, reopen, saveCurrentDeck, seed, until, unitOf, type Rig, readyCards } from './helpers';
+import { candidate, knowledgeRow, cardAdded, defaultService, destroyRigs, dueCard, flush, ids, makeRig, queued, reopen, saveCurrentDeck, seed, until, unitOf, type Rig, readyCards, PICKED } from './helpers';
 
 const A = ids('L1', 'sq');
 const click = (el: Element): void => (el as HTMLElement).click();
@@ -25,7 +25,7 @@ afterEach(() => { destroyRigs(); online = true; Object.defineProperty(window.nav
 
 const word = (label: string): VocabularyItem => {
   const unitId = unitOf(label);
-  const knowledge = { unitId, languageId: 'sq', level: 'seen', encounters: 2, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-07T00:00:00.000Z' } as UnitKnowledge;
+  const knowledge = { unitId, languageId: 'sq', level: 'seen', encounters: 2, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-07T00:00:00.000Z', dimensions: PICKED } as UnitKnowledge;
   return { knowledge, unit: { unitId, languageId: 'sq', label, kind: 'lexeme' } as VocabularyItem['unit'], surfaceForms: [label], lastEncounter: '2026-10-07T00:00:00.000Z', sources: [] };
 };
 /** The Repository's vocabulary list, answering until `net.down` is set (then it fails as a dead network does). */

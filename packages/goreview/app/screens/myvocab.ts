@@ -1,5 +1,5 @@
 /**
- * #/review/vocab — My vocab: every word the learner has met, once (a lemma and its forms are one entry), one quiet line each: the
+ * #/review/vocab — My vocab: every word the learner has PICKED, once (a lemma and its forms are one entry), one quiet line each: the
  * word, its meaning when the pack knows it, and its level in a word. Two orders, chosen with two quiet toggles and remembered
  * on this device: least known first (by level, then encounters) or most recently encountered (by when it was last tapped).
  * Tapping a word asks "Add <word> to the current deck?" under the row (Add / Not now); a word already in the deck says so. Add
@@ -11,12 +11,15 @@
  * stood here as a word of its own, New, beside a lemma they had marked Automatic. The pack facts this screen already fetches for a
  * visible word's meaning name the form's lemma: when that lemma has an entry, the form joins it (`foldFormRow`), and the word reads at
  * the level the readers show it at. What was learned is remembered for the session, so the list does not unfold again when it reloads.
+ *
+ * Seen to Automatic, never New (the owner, 2026-11-14). A word met only in passing, which the learner never picked, is not in the list
+ * at all (`isListedWord`). The rows are kept whole behind the list, so a form the learner did pick still joins a lemma they only passed.
  */
 import { KNOWLEDGE_LEVELS } from '../../../repository-contract/src';
 import type { AppContext } from '../context';
 import { append, button, clear, h, langProps, p, setStatus, statusLine } from '../dom';
 import { reviewFacts } from '../../src/facts/review-facts';
-import { addedCardFor, addToDeck, foldFormRow, loadVocab, planCurrentDeck, planSelectedPractice, selectedPracticeUnits, sortVocab, type FormLemma, type VocabRow, type VocabSort } from '../deckModel';
+import { addedCardFor, addToDeck, foldFormRow, listedVocab, loadVocab, planCurrentDeck, planSelectedPractice, selectedPracticeUnits, sortVocab, type FormLemma, type VocabRow, type VocabSort } from '../deckModel';
 import { itemMarked } from '../events';
 import { currentReviewModel, PRESS_WAIT_MS } from '../workspace';
 import { MAX_SNAPSHOT_WORDS, readSnapshot } from '../snapshot';
@@ -157,9 +160,10 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   function paintList(): void {
     clear(list); clear(more);
-    const ordered = sortVocab(rows, sort);
+    // the learner's words: Seen to Automatic. A word only met in passing is not listed (the rows behind the list keep it)
+    const ordered = sortVocab(listedVocab(rows), sort);
     const visible = ordered.slice(0, shown);
-    if (!ordered.length) { list.append(h('li', { class: 'muted', id: 'vocab-empty' }, 'Words you meet while reading with GoLearn appear here.')); return; }
+    if (!ordered.length) { list.append(h('li', { class: 'muted', id: 'vocab-empty' }, 'Words you pick while reading with GoLearn appear here: tap a word, or mark how well you know it.')); return; }
     append(list, visible.map(rowView));
     if (ordered.length > shown) more.append(button(`Show more`, () => { shown += PAGE; paintList(); }, { class: 'linklike', id: 'vocab-more' }));
     void fillGlosses(visible);

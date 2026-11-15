@@ -542,6 +542,12 @@ export function candidate(label: string, score: number, over: Partial<ReviewCand
   };
 }
 
+/**
+ * A word the learner PICKED: looked up once (a lookup adds to `exposure.negative`). My vocab lists the words the learner picked, Seen to
+ * Automatic; a row at Seen without this was only met in passing, reads New, and is not listed (the owner, 2026-11-14).
+ */
+export const PICKED = { exposure: { score: 0, confidence: 0, observations: 1, positive: 0, negative: 1, weight: 0, contexts: 0 } } as unknown as UnitKnowledge['dimensions'];
+
 const est = (over: Partial<DimensionEstimate> = {}): DimensionEstimate => ({ score: 0, confidence: 0, observations: 0, positive: 0, negative: 0, weight: 0, contexts: 0, ...over });
 export function knowledgeRow(learnerId: string, unitId: string, languageId: string, dims: Partial<Record<Dimension, Partial<DimensionEstimate>>>): UnitKnowledge {
   const dimensions = Object.fromEntries((['exposure', 'assistedRecognition', 'readingRecognition', 'listeningRecognition', 'productiveRetrieval', 'contextualProduction', 'grammaticalUnderstanding'] as Dimension[])

@@ -100,36 +100,46 @@ describe('foldFormRow: a form joins the entry of its lemma', () => {
 });
 
 describe('My vocab: a form the service does not relate to its lemma', () => {
+  // a word the learner picked is looked up once; a word of a verse they only opened is met in passing (and is not listed: the owner, 2026-11-14)
+  const picked = { exposure: { observations: 1, negative: 1, positive: 0 } } as unknown as UnitKnowledge['dimensions'];
   const house = entry('lemma:sq:shtepi:NOUN', 'shtepi', 'lexeme', { level: 'automatic', encounters: 5, selfMark: { mark: 'automatic', at: '2026-11-02T00:00:00.000Z' } as never }, ['shtepi', 'shtepise'], '2026-11-12T10:00:00.000Z');
-  const yourHouse = entry('form:sq:shtepine', 'shtepine', 'form');
-  const temple = entry('lemma:sq:tempull:NOUN', 'tempull', 'lexeme', {}, ['tempull'], '2026-11-13T09:00:00.000Z');
-  const yourTemple = entry('form:sq:tempullin', 'tempullin', 'form', {}, ['tempullin'], '2026-11-13T09:30:00.000Z');
-  const orphan = entry('form:sq:lumturi', 'lumturi', 'form', {}, ['lumturi'], '2026-11-13T08:00:00.000Z');
+  const yourHouse = entry('form:sq:shtepine', 'shtepine', 'form', { dimensions: picked });
+  const temple = entry('lemma:sq:tempull:NOUN', 'tempull', 'lexeme', {}, ['tempull'], '2026-11-13T09:00:00.000Z'); // only met in passing
+  const yourTemple = entry('form:sq:tempullin', 'tempullin', 'form', { dimensions: picked }, ['tempullin'], '2026-11-13T09:30:00.000Z');
+  const orphan = entry('form:sq:lumturi', 'lumturi', 'form', { dimensions: picked }, ['lumturi'], '2026-11-13T08:00:00.000Z');
+  const passingForm = entry('form:sq:oborret', 'oborret', 'form', {}, ['oborret'], '2026-11-13T07:00:00.000Z'); // only met in passing
 
   it('joins the lemma’s entry once the pack facts name the lemma: one word, at the lemma’s level, with the form listed as met', async () => {
     const rig = await makeRig({ signedIn: true });
-    const service = useRecords(rig, [house, yourHouse, temple, yourTemple, orphan]);
+    const service = useRecords(rig, [house, yourHouse, temple, yourTemple, orphan, passingForm]);
     const facts = useFacts(rig, {
       'form:sq:shtepine': { lemma: 'shtepi', pos: 'NOUN' },
       'form:sq:tempullin': { lemma: 'tempull', pos: 'NOUN' },
       'form:sq:lumturi': { lemma: 'lumturi', pos: 'NOUN' }, // its lemma was never recorded: it stays a word of its own
+      'form:sq:oborret': { lemma: 'oborr', pos: 'NOUN' },
     }, { 'lemma:sq:shtepi:NOUN': 'house' });
     await rig.go('review/vocab');
-    await until(() => rig.qa('.vocab-item').length === 3, 'the forms to join their lemmas');
+    await until(() => rig.qa('.vocab-item').length === 3 && !rig.root.querySelector('[data-unit-id^="form:sq:shtepine"], [data-unit-id^="form:sq:tempullin"]'), 'the forms to join their lemmas');
     expect(shownRows(rig).sort()).toEqual([
-      ['form:sq:lumturi', 'new', undefined],
+      ['form:sq:lumturi', 'seen', undefined],
+      // the picked form joined a lemma the learner marked Automatic: the word reads at the level the readers show it at
       ['lemma:sq:shtepi:NOUN', 'automatic', 'met as: shtepise, shtepine'],
-      ['lemma:sq:tempull:NOUN', 'new', 'met as: tempullin'],
+      // the picked form joined a lemma that was only met in passing (kept behind the list for this): the word is theirs, Seen, under its lemma
+      ['lemma:sq:tempull:NOUN', 'seen', 'met as: tempullin'],
     ]);
-    // the forms are gone as words of their own; the word reads at the level the readers show it at
-    expect(rig.root.querySelector('[data-unit-id="form:sq:shtepine"]')).toBeNull();
     expect(rig.q('[data-unit-id="lemma:sq:shtepi:NOUN"] .vocab-level').textContent).toBe('automatic');
     await until(() => rig.q('[data-unit-id="lemma:sq:shtepi:NOUN"] [data-gloss]').textContent === 'house', 'the lemma’s meaning');
-    // folding asks the service for nothing: no listing and no relations lookup follows it, and the facts are the ones the screen fetched anyway (once per entry)
+    // never New: the form only met in passing is not listed, and nothing was fetched for it
+    expect(rig.root.querySelector('[data-level="new"]')).toBeNull();
+    expect(rig.root.querySelector('[data-unit-id="form:sq:oborret"]')).toBeNull();
+    expect(facts.calls).not.toContain('form:sq:oborret');
+    // folding asks the service for nothing: no listing and no relations lookup follows it
     const asked = [service.vocabulary.mock.calls.length, service.units.mock.calls.length];
     await flush(30);
     expect([service.vocabulary.mock.calls.length, service.units.mock.calls.length]).toEqual(asked);
-    expect([...facts.calls].sort()).toEqual(['form:sq:lumturi', 'form:sq:shtepine', 'form:sq:tempullin', 'lemma:sq:shtepi:NOUN', 'lemma:sq:tempull:NOUN']);
+    // the facts are the ones the screen fetches for a listed word's meaning, once per entry
+    expect([...new Set(facts.calls)].sort()).toEqual(['form:sq:lumturi', 'form:sq:shtepine', 'form:sq:tempullin', 'lemma:sq:shtepi:NOUN', 'lemma:sq:tempull:NOUN']);
+    expect(facts.calls.filter((id) => id.startsWith('form:')).length).toBe(3);
   });
 
   it('stays folded when the list is read again, and when the screen is opened again in the same session', async () => {
@@ -149,12 +159,14 @@ describe('My vocab: a form the service does not relate to its lemma', () => {
 
   it('a form whose analysis names no lemma, and a list with no lemma for it, are left as they were', async () => {
     const rig = await makeRig({ signedIn: true });
-    useRecords(rig, [yourHouse, temple]);
-    useFacts(rig, { 'form:sq:shtepine': undefined });
+    const seenTemple = entry('lemma:sq:tempull:NOUN', 'tempull', 'lexeme', { dimensions: picked }, ['tempull'], '2026-11-13T09:00:00.000Z');
+    useRecords(rig, [yourHouse, seenTemple]);
+    const facts = useFacts(rig, { 'form:sq:shtepine': undefined });
     await rig.go('review/vocab');
     await until(() => rig.qa('.vocab-item').length === 2, 'the words');
-    await until(() => rig.qa('[data-gloss]').length === 2, 'the meanings to settle');
-    expect(shownRows(rig).sort()).toEqual([['form:sq:shtepine', 'new', undefined], ['lemma:sq:tempull:NOUN', 'new', undefined]]);
+    await until(() => new Set(facts.calls).size === 2, 'the facts of both');
+    await flush(10);
+    expect(shownRows(rig).sort()).toEqual([['form:sq:shtepine', 'seen', undefined], ['lemma:sq:tempull:NOUN', 'seen', undefined]]);
   });
 
   it('the question open under a form moves with it to the lemma', async () => {

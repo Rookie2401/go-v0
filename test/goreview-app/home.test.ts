@@ -7,7 +7,7 @@ import { decksKey, sortVocab, type SavedDeck } from '../../packages/goreview/app
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { homePhoto } from '../../packages/goreview/app/homePhotos';
 import { UI_KEY } from '../../packages/goreview/app/screens/uiprefs';
-import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, reopenDetails, saveCurrentDeck, seed, until, unitOf, type Rig, readyCards } from './helpers';
+import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, reopenDetails, saveCurrentDeck, seed, until, unitOf, type Rig, readyCards, PICKED } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -170,11 +170,12 @@ describe('the GoReview home', () => {
 
 function word(label: string, level: UnitKnowledge['level'], encounters: number, lastSeenAt: string): VocabularyItem {
   const unitId = `lemma:sq:${label}:NOUN`;
-  const knowledge = { unitId, languageId: 'sq', level, encounters, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt } as UnitKnowledge;
+  const knowledge = { unitId, languageId: 'sq', level, encounters, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt, dimensions: PICKED } as UnitKnowledge;
   return { knowledge, unit: { unitId, languageId: 'sq', label, kind: 'lexeme' } as VocabularyItem['unit'], surfaceForms: [label], lastEncounter: lastSeenAt, sources: [] };
 }
+// every word here is one the learner picked (My vocab lists Seen to Automatic, never New: the owner, 2026-11-14)
 const WORDS = [
-  word('mace', 'known', 9, '2026-10-01T00:00:00.000Z'), word('zog', 'new', 1, '2026-10-05T00:00:00.000Z'),
+  word('mace', 'known', 9, '2026-10-01T00:00:00.000Z'), word('zog', 'seen', 1, '2026-10-05T00:00:00.000Z'),
   word('qen', 'seen', 4, '2026-10-03T00:00:00.000Z'), word('shtepi', 'seen', 2, '2026-10-07T00:00:00.000Z'), word('diell', 'recognized', 3, '2026-10-02T00:00:00.000Z'),
 ];
 async function openVocab(rig: Rig): Promise<void> {
@@ -207,7 +208,7 @@ describe('My vocab', () => {
     const row = rig.q(`[data-unit-id="${unitOf('zog')}"]`);
     await until(() => row.querySelector('.vocab-gloss')!.textContent !== '', 'the meaning');
     expect(row.querySelector('.vocab-word')!.getAttribute('lang')).toBe('sq-AL');
-    expect(row.querySelector('.vocab-level')!.textContent).toBe('new');
+    expect(row.querySelector('.vocab-level')!.textContent).toBe('seen');
     expect(row.querySelector<HTMLAnchorElement>('a.vocab-history')!.getAttribute('href')).toBe(`#/review/history/${encodeURIComponent(unitOf('zog'))}`);
   });
 
@@ -219,7 +220,7 @@ describe('My vocab', () => {
 });
 
 function entry(unitId: string, label: string, level: UnitKnowledge['level'], encounters: number, lastSeenAt: string, forms: string[] = [label]): VocabularyItem {
-  const knowledge = { unitId, languageId: 'sq', level, encounters, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt } as UnitKnowledge;
+  const knowledge = { unitId, languageId: 'sq', level, encounters, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt, dimensions: PICKED } as UnitKnowledge;
   return { knowledge, unit: { unitId, languageId: 'sq', label, kind: unitId.startsWith('form:') ? 'form' : 'lexeme' } as VocabularyItem['unit'], surfaceForms: forms, lastEncounter: lastSeenAt, sources: [] };
 }
 /** The vocabulary the Repository lists, and which form belongs to which lemma (the `form-of` relations of the batch lookup). */
@@ -292,7 +293,7 @@ describe('My vocab: one line per word', () => {
 });
 
 describe('My vocab: add a word to the current deck', () => {
-  const WORDS2 = [entry('lemma:sq:zog:NOUN', 'zog', 'seen', 4, '2026-10-05T00:00:00.000Z'), entry('lemma:sq:mace:NOUN', 'mace', 'new', 1, '2026-10-06T00:00:00.000Z')];
+  const WORDS2 = [entry('lemma:sq:zog:NOUN', 'zog', 'seen', 4, '2026-10-05T00:00:00.000Z'), entry('lemma:sq:mace:NOUN', 'mace', 'seen', 1, '2026-10-06T00:00:00.000Z')];
 
   it('tapping a word asks, "Not now" closes the question, and History stays a small link on the row', async () => {
     const rig = await makeRig({ signedIn: true });

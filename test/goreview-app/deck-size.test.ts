@@ -5,7 +5,7 @@ import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
 import { planCurrentDeck, holdOutOf } from '../../packages/goreview/app/deckModel';
 import { loadReviewModel } from '../../packages/goreview/app/workspace';
-import { cardAdded, destroyRigs, dueCard, ids, makeRig, reopen, saveCurrentDeck, seed, type, until, type Rig, readyCards, reviewed } from './helpers';
+import { cardAdded, destroyRigs, dueCard, ids, makeRig, reopen, saveCurrentDeck, seed, type, until, type Rig, readyCards, reviewed, PICKED } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -15,7 +15,7 @@ const cards = (rig: Rig): number => Number(String(readyCards(rig)));
 
 function word(label: string, level: UnitKnowledge['level'], encounters: number, at: string): VocabularyItem {
   const unitId = `lemma:sq:${label}:NOUN`;
-  return { knowledge: { unitId, languageId: 'sq', level, encounters, firstSeenAt: at, lastSeenAt: at } as UnitKnowledge, unit: { unitId, languageId: 'sq', label, kind: 'lexeme' } as VocabularyItem['unit'], surfaceForms: [label], lastEncounter: at, sources: [] };
+  return { knowledge: { unitId, languageId: 'sq', level, encounters, firstSeenAt: at, lastSeenAt: at, dimensions: PICKED } as UnitKnowledge, unit: { unitId, languageId: 'sq', label, kind: 'lexeme' } as VocabularyItem['unit'], surfaceForms: [label], lastEncounter: at, sources: [] };
 }
 function useWords(rig: Rig, items: VocabularyItem[]): void {
   const page: VocabularyPage = { items, catalog: { total: items.length, counts: { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 } } };
@@ -73,7 +73,8 @@ describe('cards per deck', () => {
     expect(cards(rig)).toBe(0);
     expect(readyCards(rig)).toBe(0);
     expect(rig.q<HTMLButtonElement>('#start-session').disabled).toBe(true);
-    expect(rig.q('#vocab-count').textContent).toBe('4 words');
+    // two of the four are New: words never picked are not the learner's words, and are not counted (the owner, 2026-11-14)
+    expect(rig.q('#vocab-count').textContent).toBe('2 words');
   });
 
   it('fills a short deck to the size the learner set: one due card, no admissible new word and nine spaced reviews not yet due make a full Current Deck (the owner, 2026-11-03)', async () => {

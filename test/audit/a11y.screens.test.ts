@@ -15,7 +15,7 @@ import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, k
 import { DEFAULT_PREFERENCES } from '../../packages/goreview/app/state';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { FakeAccountService } from '../golearn-app/accountFake';
-import { destroyRigs } from '../goreview-app/helpers';
+import { destroyRigs, PICKED } from '../goreview-app/helpers';
 import { makeTellRig, resetTellRig, typeInto, type TellRig } from '../gotell-ui/rig';
 import { SCREENS } from '../../packages/golearn-extension/app/app';
 import { downloadLanguage as appChoose, destroyRigs as destroyAppRigs, failingInstall as appFailingInstall, makeRig as makeAppRig, signIn as appSignIn } from '../golearn-app/helpers';
@@ -99,7 +99,8 @@ describe('GoReview screens', () => {
     const entry = (label: string): { knowledge: unknown; unit: unknown; surfaceForms: string[]; lastEncounter: string; sources: unknown[] } => {
       const unitId = unitOf(label);
       return {
-        knowledge: { unitId, languageId: 'sq', level: 'new', encounters: 1, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-06T00:00:00.000Z' },
+        // a word the learner picked (looked up once): My vocab lists Seen to Automatic, never New (the owner, 2026-11-14)
+        knowledge: { unitId, languageId: 'sq', level: 'seen', encounters: 1, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-06T00:00:00.000Z', dimensions: PICKED },
         unit: { unitId, languageId: 'sq', label, kind: 'lexeme' }, surfaceForms: [label], lastEncounter: '2026-10-06T00:00:00.000Z', sources: [],
       };
     };

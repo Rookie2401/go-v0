@@ -4,7 +4,7 @@
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planCurrentDeck, planFreshDeck, releaseHoldOut, setHoldOut, type CurrentDeck, type DeckPart, type SavedDeck, type VocabLoadResult, type VocabRow } from '../deckModel';
+import { addedWords, holdOutOf, listedKnowledgeCount, loadVocabSafe, listSavedDecks, vocabCount, planCurrentDeck, planFreshDeck, releaseHoldOut, setHoldOut, type CurrentDeck, type DeckPart, type SavedDeck, type VocabLoadResult, type VocabRow } from '../deckModel';
 import { explainAdmissions } from '../admissionExplanation';
 import { freshModel, planCouldHaveChanged } from '../freshness';
 import { loadingMark } from '../loading';
@@ -173,7 +173,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const deck = await planCurrentDeck(ctx, model, holdOut, vocab, 'current');
     const review = await planCurrentDeck(ctx, model, holdOut, vocab, 'review');
     armNextDueRefresh(model);
-    const words = vocab.length || model.knowledge.length;
+    // the learner's words are the ones they picked: Seen to Automatic, never a word only met in passing (the owner, 2026-11-14)
+    const words = vocab.length ? vocabCount(vocab) : listedKnowledgeCount(model.knowledge);
     const vocabCompleteness: VocabCompleteness = vocab.length >= MAX_SNAPSHOT_WORDS ? 'partial' : 'loading';
     if (!view.alive()) return;
     const look = JSON.stringify([homeId, deckLook(deck), deckLook(review), resumable[0]?.sessionId ?? '', saved.length, model.schedulerIssue ?? '', model.candidateSource === 'cached' && !model.provisional ? model.knowledgeStatus.fetchedAt : '',
@@ -197,7 +198,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       painted.set(ctx, map);
     }
     void live.then((result) => {
-      const count = result ? result.rows.length : model.knowledge.length;
+      const count = result ? vocabCount(result.rows) : listedKnowledgeCount(model.knowledge);
       const completeness: VocabCompleteness = !result ? 'unavailable' : result.stale ? 'stale' : result.complete ? 'complete' : 'partial';
       const m = same ? painted.get(ctx)?.get(same.id) : undefined;
       if (m && m.model === model) { m.words = count; m.vocabCompleteness = completeness; }

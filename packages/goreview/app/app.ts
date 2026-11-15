@@ -121,6 +121,18 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     h('span', { class: 'go-brand-mark', 'aria-hidden': 'true', style: `--go-brand-mask: url("${logoUrl}")` }));
   // the top bar is the same on every screen: the Go mark, the sync line (visually hidden unless it errs), the account and Settings icons
   const header = h('header', { class: 'topbar' }, brandLink, syncEl, acctEl);
+  const cog = h('a', { href: '#/settings', id: 'settings-link', class: 'cog', 'aria-label': 'Settings', title: 'Settings' });
+  cog.append(cogIcon(deps.doc));
+  let settingsReturn = 'review';
+
+  function updateCog(): void {
+    const open = route === 'settings';
+    cog.setAttribute('href', open ? `#/${settingsReturn}` : '#/settings');
+    cog.setAttribute('aria-label', open ? 'Close settings' : 'Settings');
+    cog.title = open ? 'Close settings' : 'Settings';
+    if (open) cog.setAttribute('aria-current', 'page');
+    else cog.removeAttribute('aria-current');
+  }
   /**
    * The language switcher lives in ONE element and is shown on the home alone, where the page title used to be (the slot the home's
    * shell renders, #home-language). On every other screen it is off the page (the owner, 2026-10-28: the language is changed from the
@@ -240,8 +252,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
       // the account (the person) beside the Settings cog: the account page handles every state, signed in or not
       const who = h('a', { href: '#/account', id: 'header-account', class: 'cog', 'aria-label': 'Account', title: 'Account', ...(route === 'account' ? { 'aria-current': 'page' } : {}) });
       who.append(personIcon(deps.doc));
-      const cog = h('a', { href: '#/settings', id: 'settings-link', class: 'cog', 'aria-label': 'Settings', title: 'Settings', ...(route === 'settings' ? { 'aria-current': 'page' } : {}) });
-      cog.append(cogIcon(deps.doc));
+      updateCog();
       acctEl.append(who, cog);
     }
   }
@@ -271,6 +282,13 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
 
   async function show(id: RouteDef['id'], params: string[]): Promise<void> {
     const my = ++seq;
+    const nextRoute = [id, ...params].join('/');
+    if (id === 'settings' && route && route !== 'settings') settingsReturn = route;
+    if (route && route !== nextRoute && (id === 'settings' || route === 'settings')) {
+      main.dataset.settingsMotion = id === 'settings' ? 'enter' : 'leave';
+    } else {
+      delete main.dataset.settingsMotion;
+    }
     for (const d of disposers) { try { d(); } catch { /* a screen's cleanup must not stop the next screen */ } }
     disposers = [];
     clear(main);
@@ -298,6 +316,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     if (my !== seq) return;
     const def = ROUTES.find((r) => r.id === target)!;
     route = [def.id, ...subs].join('/');
+    updateCog();
     deps.doc.title = def.id === 'review' ? brand : `${brand} — ${def.title}`;
     clear(main);
     main.setAttribute('data-route', route);
@@ -310,7 +329,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
           home ? h('div', { class: 'home-language', id: 'home-language' }) : null,
           h('h1', { class: 'home-title' }, def.title))
       : undefined;
-    main.append(hero ?? h('h1', { class: review ? 'sr' : undefined }, def.title), body);
+    main.append(hero ?? h('h1', { class: review ? 'sr' : def.id === 'settings' ? 'settings-title' : undefined }, def.title), body);
     placeLanguage();
     body.append(loadingMark('Loading your saved account data…'));
     let idn: Awaited<ReturnType<AppContext['identity']>>;
@@ -358,11 +377,29 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     await renderDone;
   }
 
+  let activeSettingsTransition: ReturnType<Document['startViewTransition']> | undefined;
   const onHash = (): void => {
+    activeSettingsTransition?.skipTransition();
     const r = parseHash(win.location.hash, deps.enableGoTell);
     if (!r) return;
     if (win.location.hash !== `#/${r.path}`) win.history.replaceState(win.history.state, '', `#/${r.path}`);
-    if (r.path !== route) renderDone = show(r.id, r.params);
+    if (r.path === route) return;
+    const opening = r.id === 'settings';
+    if (route && (opening || route === 'settings') && deps.doc.startViewTransition &&
+        !win.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+      const page = deps.doc.documentElement;
+      page.dataset.settingsTransition = opening ? 'enter' : 'leave';
+      const transition = deps.doc.startViewTransition(() => show(r.id, r.params));
+      renderDone = transition.updateCallbackDone;
+      const cleanup = (): void => {
+        if (activeSettingsTransition === transition) {
+          delete page.dataset.settingsTransition;
+          activeSettingsTransition = undefined;
+        }
+      };
+      activeSettingsTransition = transition;
+      void transition.finished.then(cleanup, cleanup);
+    } else renderDone = show(r.id, r.params);
   };
   win.addEventListener('hashchange', onHash);
 

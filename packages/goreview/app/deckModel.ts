@@ -440,16 +440,22 @@ export function setHoldOut(ctx: AppContext, learnerId: string, languageId: strin
   });
 }
 
-/** Moves the deck to the saved list; its units are held out of the next deck so a fresh one is planned. */
-export function saveDeck(ctx: AppContext, id: { learnerId: string; languageId: string; varietyId?: string }, entries: readonly DeckEntry[]): Promise<SavedDeck | undefined> {
+/**
+ * Moves the deck to the saved list; its units are held out of the next deck so a fresh one is planned.
+ * `finished`: the deck is being saved at the end of its own session (the owner, 2026-11-14). It was asked already, so nothing is held out and
+ * the words added by hand are left alone: the next deck is planned and filled exactly as if the deck had not been saved.
+ */
+export function saveDeck(ctx: AppContext, id: { learnerId: string; languageId: string; varietyId?: string }, entries: readonly DeckEntry[], opts: { finished?: boolean } = {}): Promise<SavedDeck | undefined> {
   return serial(async () => {
     if (!entries.length) return undefined;
     const store = await readStore(ctx, id.learnerId, id.languageId);
     const saved: SavedDeck = { id: ctx.deps.newId(), savedAt: ctx.deps.now().toISOString(), languageId: id.languageId, ...(id.varietyId ? { varietyId: id.varietyId } : {}), items: entries.map((e) => ({ ...e })) };
     await recordSavedDeckChange(ctx, 'save', saved);
     store.decks = [saved, ...store.decks].slice(0, MAX_SAVED);
-    store.holdOut = [...new Set(entries.map((e) => e.unitId))];
-    store.added = [];
+    if (!opts.finished) {
+      store.holdOut = [...new Set(entries.map((e) => e.unitId))];
+      store.added = [];
+    }
     await writeStore(ctx, id.learnerId, id.languageId, store);
     return saved;
   });

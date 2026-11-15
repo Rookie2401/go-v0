@@ -27,7 +27,8 @@ import type { ReviewExercise } from '../../src/exercises/shared';
 import { beginSession, currentReviewModel, endSavedSession, PRESS_WAIT_MS, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import { fillItemHistory } from './history';
 import { fillItemParsing } from './itemParsing';
-import { entriesOf, planFromEntries, planRemediation, planCurrentDeck, effectiveRemediation, VOCAB_NOTE } from '../deckModel';
+import { entriesOf, planFromEntries, planRemediation, planCurrentDeck, effectiveRemediation, saveDeck, VOCAB_NOTE } from '../deckModel';
+import { isClassUnit } from '../classEssentials';
 import { DEFAULT_UI, getUiPrefs, type UiPrefs } from './uiprefs';
 import { unlockSpeech } from '../speechUnlock';
 import type { View } from './view';
@@ -53,6 +54,66 @@ function summaryActionTile(control: HTMLElement, art: Element, title: string, de
     icon(doc, 'arrow'));
   const tile = h('div', { class: 'deck-tile', 'data-deck': current ? 'current' : undefined }, control);
   attachRipple(tile);
+  return tile;
+}
+
+/**
+ * Save this deck, at the end of a Current Deck or Review Deck session (the owner, 2026-11-14: "When the user goes through either his current
+ * deck or review deck, add the option to save the deck at the end"). The deck is the session's own cards, as planned, and it goes to Saved
+ * Decks dated today. Offered for the ordinary decks only: a saved deck being practised again is saved already, the built-in decks (Class
+ * Essentials, Alphabet) are their own collections, and remediation and hand-picked practice are not decks.
+ */
+/**
+ * Where the save stands for a run. Kept beside the run and not on the tile: saving records an event, the event redraws the summary, and the
+ * tile that was pressed is gone by the time the save returns. Every tile is drawn from this, so a summary drawn again says the same and
+ * cannot save a second copy.
+ */
+type SaveState = { state: 'saving' } | { state: 'saved'; id: string } | { state: 'failed'; message: string };
+const saveStates = new WeakMap<ActiveRun, SaveState>();
+function isOrdinaryDeck(run: ActiveRun): boolean {
+  return run.plan.intent?.kind === 'automatic' && run.plan.items.length > 0 && !run.plan.items.every((p) => isClassUnit(p.item.unitId));
+}
+function saveDeckTile(ctx: AppContext, run: ActiveRun): HTMLElement | undefined {
+  if (!isOrdinaryDeck(run)) return undefined;
+  const entries = entriesOf(run.plan).filter((e) => !isClassUnit(e.unitId));
+  const count = `${entries.length} card${entries.length === 1 ? '' : 's'}`;
+  const at = saveStates.get(run);
+  const [heading, text] = at?.state === 'saved' ? ['Deck Saved', `${count} · find it in Saved Decks`]
+    : at?.state === 'saving' ? ['Save Deck', 'Saving…']
+      : at?.state === 'failed' ? ['Save Deck', `The deck could not be saved (${at.message}). Press to try again.`]
+        : ['Save Deck', `Keep these ${count} in Saved Decks`];
+  const control = h('button', { type: 'button', class: 'deck-face', id: 'save-session-deck', 'data-action': 'save-session-deck' }) as HTMLButtonElement;
+  const tile = summaryActionTile(control, icon(ctx.deps.doc, 'saved'), heading, text);
+  tile.id = 'save-deck-tile';
+  tile.setAttribute('data-save-state', at?.state ?? 'ready');
+  control.disabled = at?.state === 'saved' || at?.state === 'saving';
+  // said aloud when the save lands or fails: the words inside a button are not announced when they change
+  tile.append(h('span', { class: 'sr', role: 'status' }, at?.state === 'saved' ? `Deck saved: ${count}, in Saved Decks.` : at?.state === 'failed' ? 'The deck could not be saved.' : ''));
+  /** The tile now on the page (whichever summary drew it) gives way to one drawn from the new state. */
+  const redraw = (): void => {
+    const current = ctx.deps.doc.getElementById('save-deck-tile');
+    const fresh = current ? saveDeckTile(ctx, run) : undefined;
+    if (!current || !fresh) return;
+    const focused = current.contains(ctx.deps.doc.activeElement);
+    current.replaceWith(fresh);
+    const face = fresh.querySelector<HTMLButtonElement>('.deck-face');
+    if (focused && face && !face.disabled) face.focus();
+  };
+  control.addEventListener('click', () => {
+    const now = saveStates.get(run);
+    if (now?.state === 'saving' || now?.state === 'saved') return;
+    saveStates.set(run, { state: 'saving' });
+    redraw();
+    void (async () => {
+      const id = await ctx.identity();
+      if (!id) throw new Error('choose a language first');
+      const saved = await saveDeck(ctx, { learnerId: id.learnerId, languageId: id.languageId, ...(id.varietyId ? { varietyId: id.varietyId } : {}) }, entries, { finished: true });
+      if (!saved) throw new Error('there was nothing to save');
+      saveStates.set(run, { state: 'saved', id: saved.id });
+    })().catch((error) => {
+      saveStates.set(run, { state: 'failed', message: error instanceof Error ? error.message : 'try again' });
+    }).finally(redraw);
+  });
   return tile;
 }
 
@@ -960,7 +1021,9 @@ async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextAct
   const update = async (model: ReviewModel | undefined): Promise<void> => {
     const { nextTile, studyTile, schedule, secondary, status } = await buildNextSection(ctx, run, actions, model);
     if (!home.isConnected) return;
-    home.before(nextTile, studyTile);
+    const save = home.parentElement?.querySelector('#save-deck-tile');
+    (save ?? home).before(nextTile); // Next Deck first, then Save Deck (when it is offered), then the rest
+    home.before(studyTile);
     home.after(...(schedule ? [schedule, secondary, status] : [secondary, status]));
   };
   const first = await Promise.race([modelPromise, late]).finally(() => { if (timer !== undefined) ctx.deps.win.clearTimeout(timer); });
@@ -1094,7 +1157,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
   const home = summaryActionTile(h('a', { class: 'deck-face', id: 'back-to-review', href: '#/review' }),
     summaryLineIcon(ctx.deps.doc, 'M19 12H5m6 6-6-6 6-6'), 'Back to GoReview', 'Return to the GoReview home');
   const next = h('section', { id: 'summary-next', class: 'summary-next deck-tiles', 'aria-labelledby': 'summary-next-heading' },
-    h('h2', { id: 'summary-next-heading', class: 'sr' }, 'Next steps'), home,
+    h('h2', { id: 'summary-next-heading', class: 'sr' }, 'Next steps'), saveDeckTile(ctx, run) ?? null, home,
     left + run.skipped.length ? h('p', { id: 'sum-next' }, `${left + run.skipped.length} ${left + run.skipped.length === 1 ? 'card is' : 'cards are'} left for next time.`) : null,
     view.status?.online === false && (view.status?.pending ?? 0) ? h('p', { id: 'sum-offline', class: 'muted' }, 'You are offline. Your answers are saved on this device and will be sent when you are back online.') : null,
     details);

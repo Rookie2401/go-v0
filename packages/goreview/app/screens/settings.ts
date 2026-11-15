@@ -48,8 +48,6 @@ export async function render(el: HTMLElement, ctx: AppContext, _view: View): Pro
   const mode = await ctx.mode();
   const id = await ctx.identity();
   const page = h('div', { class: 'settings-page', id: 'settings-page' });
-  page.append(h('h1', { class: 'settings-title', id: 'settings-title' }, 'Settings'));
-
   const prefsBox = h('section', { class: 'card settings-panel', id: 'settings-prefs', 'aria-labelledby': 'prefs-h' },
     h('h2', { id: 'prefs-h' }, 'Review preferences'));
   const linksBox = h('nav', { class: 'settings-links', id: 'settings-more', 'aria-label': 'More from GoReview' },

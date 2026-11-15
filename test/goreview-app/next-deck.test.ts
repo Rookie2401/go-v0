@@ -38,7 +38,7 @@ describe('Repository-backed remediation', () => {
     await until(() => !!rig.root.querySelector('#remediation-backlog'), 'the persistent remediation backlog');
     const remediationRow = rig.q(`[data-item-id="${itemId}"]`);
     remediationRow.querySelector('details')!.open = true;
-    await until(() => rig.root.querySelector(`[data-item-id="${itemId}"]`)?.textContent?.includes('Meaning:'), 'study material');
+    await until(() => rig.root.querySelector(`[data-item-id="${itemId}"]`)?.textContent?.includes('Meaning:') === true, 'study material');
     expect(remediationRow.textContent).toContain('Productive recall difficulty');
     expect(remediationRow.textContent).toContain('These labels describe the recorded question type and result');
     expect(remediationRow.textContent).not.toMatch(/confusion|confused/i);

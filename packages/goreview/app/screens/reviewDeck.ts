@@ -127,7 +127,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     details.append(materialContent);
     let loaded = false;
     details.addEventListener('toggle', () => {
-      if (!details.open || loaded) return;
+      if (!details.hasAttribute('open') || loaded) return;
       loaded = true;
       materialContent.append(p('Loading study material…', 'muted'));
       void loadMaterial();

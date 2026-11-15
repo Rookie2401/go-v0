@@ -15,6 +15,7 @@
  * Without an account: on a device-only copy, the offer to keep progress across devices and "Clear local data"; on the hosted
  * copy, the way to sign in.
  */
+import { icon, type IconName } from '../icons';
 import type { AppContext } from '../context';
 import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } from '../dom';
 import { ACCOUNT_CHANGED, dataFilename, explainAccountFailure, GRACE_DAYS, mountDeletionBanner, saveFile, sessionsBlock } from './accountSecurity';
@@ -64,7 +65,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   // ── name: shown, and editable in place
   const nameText = h('span', { id: 'account-name' }, '…');
   const nameEdit = button('Edit', () => openNameEditor(), { class: 'btn friendly small', id: 'account-name-edit' });
-  const nameRow = h('dd', { class: 'account-name-row' }, nameText, ' ', nameEdit);
+  const nameRow = h('dd', { class: 'account-name-row account-profile-fact account-name-fact' }, nameText, ' ', nameEdit);
   let currentName = '';
   function showName(name: string | undefined): void {
     currentName = name ?? '';
@@ -111,7 +112,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   resend.hidden = true;
   const verifyNote = h('p', { class: 'muted help', id: 'verification-note', hidden: true });
   const verifyOut = statusLine();
-  const emailRow = h('dd', { id: 'acct-verification' }, emailLine, verifyNote, resend, verifyOut);
+  const emailRow = h('dd', { id: 'acct-verification', class: 'account-profile-fact account-email-fact' }, emailLine, verifyNote, resend, verifyOut);
 
   // ── the plain actions
   const signOut = button('Sign out', () => {
@@ -121,7 +122,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       // back to the device alone where there is one (nothing was removed); the hosted copy has nothing to show without an account
       ctx.go((await ctx.mode()) === 'device' ? 'review' : 'signin');
     })();
-  }, { id: 'sign-out', class: 'btn friendly' });
+  }, { id: 'sign-out', class: 'btn friendly account-action-tile account-action-signout' });
   const download = button('Download my data', () => {
     void (async () => {
       const { client, session: s } = await ctx.accountApi();
@@ -133,9 +134,17 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       saveFile(ctx, name, new Blob([r.data], { type: 'application/json' }));
       setStatus(status, `Your data is ready: ${name}.`, 'ok');
     })();
-  }, { id: 'export-data', class: 'btn friendly' });
-  const deleteOpen = button('Delete account', () => { void openDeletion(); }, { id: 'delete-open', class: 'btn friendly danger' });
-  const actions = h('div', { class: 'account-actions' }, signOut, download, deleteOpen);
+  }, { id: 'export-data', class: 'btn friendly account-action-tile account-action-export' });
+  const deleteOpen = button('Delete account', () => { void openDeletion(); }, { id: 'delete-open', class: 'btn friendly danger account-action-tile account-action-delete' });
+  const decorateAction = (action: HTMLButtonElement, glyph: IconName): void => {
+    const label = action.textContent;
+    action.replaceChildren(icon(ctx.deps.doc, glyph), h('span', { class: 'account-action-label' }, label),
+      icon(ctx.deps.doc, 'arrow'));
+  };
+  decorateAction(signOut, 'sign-out');
+  decorateAction(download, 'download');
+  decorateAction(deleteOpen, 'trash');
+  const actions = h('div', { class: 'account-actions', 'aria-label': 'Account actions' }, signOut, download, deleteOpen);
 
   // ── the guided deletion, shown only once asked for
   const deleteBody = h('div', { id: 'delete-body', hidden: true });
@@ -210,7 +219,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   append(card, [
     banner,
-    h('dl', { class: 'account-facts' }, h('dt', {}, 'Name'), nameRow, h('dt', {}, 'Email'), emailRow),
+    h('dl', { class: 'account-facts account-profile', 'aria-label': 'Account profile' }, h('div', { class: 'account-fact' }, h('dt', {}, icon(ctx.deps.doc, 'person'), 'Name'), nameRow),
+      h('div', { class: 'account-fact' }, h('dt', {}, icon(ctx.deps.doc, 'mail'), 'Email'), emailRow)),
     actions, status, deleteBody, devices,
   ]);
 

@@ -7,11 +7,12 @@
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { classEssentialsRemoved, effectiveRemediation, holdOutOf, listSavedDecks, planClassEssentialsDue, planCurrentDeck, planFromSaved, removeSavedDeck, restoreClassEssentials, saveDeck, type SavedDeck } from '../deckModel';
+import { classEssentialsRemoved, effectiveRemediation, listSavedDecks, planClassEssentialsDue, planFromSaved, removeSavedDeck, restoreClassEssentials, type SavedDeck } from '../deckModel';
 import { classLanguageOf } from '../classEssentials';
 import { languageName } from '../format';
 import { beginSession, currentReviewModel, PRESS_WAIT_MS } from '../workspace';
-import { recordSavedDeckChange } from '../savedDeckSync';
+import { icon } from '../icons';
+import { attachRipple } from '../ripple';
 import type { View } from './view';
 
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
@@ -21,30 +22,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const status = statusLine();
   const list = h('ul', { class: 'decklist', id: 'saved-decks' });
   const restoreBox = h('p', { class: 'restore-line' });
-  append(el, [h('h2', { class: 'page-title', id: 'decks-title', tabindex: '-1' }, 'Saved decks'), list, restoreBox, status]);
+  append(el, [h('h2', { class: 'saved-decks-title', id: 'decks-title', tabindex: '-1' }, 'Saved Decks'), list, restoreBox, status]);
   if (!id) { list.replaceWith(p('Choose a language to see its saved decks.', 'muted')); return; }
-  el.insertBefore(p('Saved decks are separate optional practice. Each card opens that practice; Remove stays at its top right.', 'muted'), list);
-  const saveCurrent = button('Save Current Deck', () => {
-    saveCurrent.disabled = true;
-    void (async () => {
-      const model = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
-      if (!model) { setStatus(status, 'Your Current Deck could not be loaded.', 'error'); return; }
-      const holdOut = await holdOutOf(ctx, id.learnerId, id.languageId);
-      const deck = await planCurrentDeck(ctx, model, holdOut, undefined, 'current');
-      const saved = await saveDeck(ctx, model.identity, deck.entries);
-      setStatus(status, saved ? 'Current Deck saved.' : 'There is no deck to save yet.', saved ? 'ok' : 'info');
-      if (saved) await paint();
-    })().catch(error => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) saveCurrent.disabled = false; });
-  }, { class: 'btn', id: 'save-deck' });
-  el.append(saveCurrent);
-  el.append(button('Sync saved decks', () => {
-    void (async () => {
-      try {
-        for (const deck of await listSavedDecks(ctx, id.learnerId, id.languageId, id.varietyId)) if (!deck.builtin) await recordSavedDeckChange(ctx, 'save', deck);
-        setStatus(status, 'Saved decks queued for synchronization.', 'ok');
-      } catch (e) { setStatus(status, e instanceof Error ? e.message : 'The decks could not be synchronized.', 'error'); }
-    })();
-  }, { class: 'btn', id: 'sync-saved-decks' }));
+  el.insertBefore(p('Optional practice decks for later review.', 'saved-decks-intro'), list);
 
   async function practise(saved: SavedDeck): Promise<void> {
     const model = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
@@ -84,21 +64,25 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
           setStatus(status, 'Deck removed.', 'ok');
           await paint();
         })();
-      }, { class: 'linklike deckrow-remove', 'data-action': 'remove-deck', 'aria-label': `Remove the deck of ${when}` });
+      }, { class: 'linklike', 'data-action': 'remove-deck', 'aria-label': `Remove the deck of ${when}` });
       const builtin = d.builtin === 'class-essentials';
       // the whole card is the button that starts the practice; its visible text is its name, with "press to practise" for a screen reader
-      const open = h('button', { type: 'button', class: 'deckrow-open', 'data-action': 'practise-again' },
-        h('span', { class: 'deckrow-body' },
-          builtin ? h('span', { class: 'deckrow-title' }, when) : null,
-          h('span', { class: 'deckrow-line' }, builtin ? `${plural(d.items.length, 'card', 'cards')} · ${language}` : `${when} · ${plural(d.items.length, 'card', 'cards')} · ${language}`),
+      const open = h('button', { type: 'button', class: 'deckrow-open deck-face', 'data-action': 'practise-again' },
+        h('span', { class: 'deck-label' },
+          h('span', { class: 'deck-kicker' }, 'Saved deck'),
+          h('span', { class: 'deck-title' }, when),
+          h('span', { class: 'deck-caption' }, `${plural(d.items.length, 'card', 'cards')} · ${language}`),
           !builtin && d.description ? h('span', { class: 'deckrow-note' }, d.description) : null,
           !builtin && d.notes ? h('span', { class: 'deckrow-note deckrow-fine' }, d.notes) : null),
-        h('span', { class: 'sr' }, ', press to practise')) as HTMLButtonElement;
+        icon(ctx.deps.doc, 'arrow'), h('span', { class: 'sr' }, ', press to practise')) as HTMLButtonElement;
       open.addEventListener('click', () => {
         open.disabled = true;
         void practise(d).finally(() => { if (view.alive()) open.disabled = false; });
       });
-      list.append(h('li', { class: builtin ? 'deckrow deckrow-builtin' : 'deckrow', 'data-deck-id': d.id }, open, remove, builtin ? classLine : null));
+      const tile = h('li', { class: 'deck-tile', 'data-deck-id': d.id }, open, builtin ? classLine : null,
+        h('div', { class: 'saved-deck-actions' }, remove));
+      attachRipple(tile);
+      list.append(tile);
     }
   }
 
@@ -125,8 +109,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         ctx.run.active = r.run; ctx.go('review/session');
       })().catch(error => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) start.disabled = false; });
     }, { id: 'start-class-essentials-due', class: 'btn', ...(due.items.length ? {} : { disabled: true }) });
-    return h('div', { class: 'deckrow-due', id: 'class-essentials-due' },
-      h('span', { class: 'muted', id: 'class-essentials-due-count' }, due.items.length ? plural(due.items.length, 'card due', 'cards due')
+    start.prepend(icon(ctx.deps.doc, 'review'));
+    return h('div', { class: 'saved-deck-actions', id: 'class-essentials-due' },
+      h('span', { class: due.items.length ? 'sr' : 'muted', id: 'class-essentials-due-count' }, due.items.length ? plural(due.items.length, 'card due', 'cards due')
         : nextReturn ? `Nothing due · next ${new Date(nextReturn.schedule.due).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' })}` : 'Nothing due'),
       due.items.length ? start : null,
       missed ? h('a', { class: 'linklike', id: 'open-class-remediation', href: '#/review/remediation' }, plural(missed, 'missed phrase to study', 'missed phrases to study')) : null);

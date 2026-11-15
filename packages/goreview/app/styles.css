@@ -256,8 +256,7 @@ table.paradigm td.sel > span:first-child, .forms-list li.sel > span:first-child 
 }
 
 /* The review home uses the colors of stone, leather and brass. The photograph is bundled with the app. */
-body:has(#screen[data-route="review/session"]),
-body:has(#screen[data-route="review"]) {
+body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"])) {
   color-scheme: dark;
   --paper: #211a15;
   --paper-raised: #30251c;
@@ -281,8 +280,8 @@ body:has(#screen[data-route="review"]) {
   --focus: var(--accent);
   background: var(--paper);
 }
-body:has(#screen:is([data-route="review"], [data-route="review/session"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
-html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"]))::before { background: var(--paper); }
+body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
+html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"]))::before { background: var(--paper); }
 .screen:is([data-route="review"], [data-route="review/session"]) {
   --home-gutter: clamp(1.125rem, 5vw, 2rem);
   max-width: none;
@@ -964,3 +963,60 @@ img, svg, video, canvas { max-width: 100%; }
 @media (forced-colors: active) {
   .screen[data-route="review/session"][data-home-photo] .home-hero, .session .flashcard { background: none; }
 }
+
+/* Settings and saved decks share the review palette and a compact title. */
+.screen[data-route="review/decks"] > h1.sr { display: none; }
+.settings-title, .saved-decks-title {
+  margin: .65rem 0 1.3rem;
+  color: var(--ink);
+  font: 400 clamp(2.55rem, 8vw, 4rem)/1 var(--serif);
+  letter-spacing: -.025em;
+  text-align: center;
+  text-transform: none;
+}
+.settings-title::after, .saved-decks-title::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin: .8rem auto 0;
+  background: var(--accent-soft);
+}
+.settings-page { display: grid; gap: .85rem; }
+.settings-page .card, .settings-links, .settings-page .settings-row {
+  border-color: var(--rule);
+  background: var(--panel);
+}
+.settings-page #settings-prefs { margin: 0; }
+.settings-pref-content .field + .field { border-top: 1px solid var(--rule); padding-top: .85rem; }
+.settings-page #settings-prefs .field { margin-block: .9rem; }
+.settings-page .developer-line { margin: 0; text-align: center; }
+.settings-links { border: 1px solid var(--rule); border-radius: .8rem; padding: .85rem 1rem; }
+.settings-row { min-height: 2.75rem; }
+.saved-decks-intro { margin: -.25rem 0 1.3rem; text-align: center; color: var(--ink-soft); font-style: italic; }
+[data-route="review/decks"] .deck-tile { --deck-inset: clamp(.95rem, 4vw, 1.5rem); }
+[data-route="review/decks"] .deck-tile > .deck-face { min-height: 6rem; padding-block: 1rem; }
+[data-route="review/decks"] .deck-title { font-size: clamp(1.85rem, 7vw, 2.85rem); }
+[data-route="review/decks"] .deck-tile .row { padding: 0 var(--deck-inset) .75rem; }
+[data-route="review/decks"] .deck-tile .row > :is(a, button) { min-height: 2.75rem; }
+
+#settings-link svg { transform: rotate(0); transform-origin: center; }
+#settings-link[aria-current="page"] svg { transform: rotate(90deg); }
+@media (prefers-reduced-motion: no-preference) {
+  #settings-link svg { transition: transform .32s cubic-bezier(.22, .7, .25, 1); }
+  .screen[data-settings-motion="enter"] { animation: settings-slide-in .32s cubic-bezier(.22, .7, .25, 1) both; }
+  .screen[data-settings-motion="leave"] { animation: settings-slide-back .32s cubic-bezier(.22, .7, .25, 1) both; }
+  html[data-settings-transition] #screen { view-transition-name: settings-screen; animation: none; }
+  html[data-settings-transition] #screen > :is(h1, .body) { animation: none; }
+  html[data-settings-transition]::view-transition-old(root) { display: none; }
+  html[data-settings-transition]::view-transition-new(root) { animation: none; }
+  ::view-transition-group(settings-screen) { animation-duration: .32s; pointer-events: none; }
+  html[data-settings-transition="enter"]::view-transition-old(settings-screen) { animation: settings-pull-left .32s ease-in both; }
+  html[data-settings-transition="enter"]::view-transition-new(settings-screen) { animation: settings-slide-in .32s cubic-bezier(.22, .7, .25, 1) both; }
+  html[data-settings-transition="leave"]::view-transition-old(settings-screen) { animation: settings-pull-right .32s ease-in both; }
+  html[data-settings-transition="leave"]::view-transition-new(settings-screen) { animation: settings-slide-back .32s cubic-bezier(.22, .7, .25, 1) both; }
+}
+@keyframes settings-slide-in { from { transform: translateX(100%); } }
+@keyframes settings-slide-back { from { transform: translateX(-100%); } }
+@keyframes settings-pull-left { to { transform: translateX(-100%); } }
+@keyframes settings-pull-right { to { transform: translateX(100%); } }

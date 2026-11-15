@@ -27,7 +27,7 @@ import type { AudioAvailability, DeckItem, IntakeOutcome, PlannedItem, ReviewInt
 import type { ComposedSession, EcclesiaLanguageProfile, PassageTokens, ReaderIdentity } from './contract';
 import { scopedEvents } from './encounters';
 import type { EcclesiaFactsProvider } from './facts';
-import { lexemeId } from './identity';
+import { isBuiltinDeckUnit, lexemeId } from './identity';
 import { knowledgeRows } from './profile';
 
 /** No voice is reviewed for Biblical Hebrew, Aramaic, Koine or Latin: listening is unavailable, and said so. */
@@ -150,7 +150,10 @@ export function composeSession(req: ComposeRequest): ComposedSession {
   const preferences = ecclesiaPreferences(profile, req.preferences);
   const scope = { learnerId: identity.learnerId, languageId: profile.repository.languageId };
   const events = scopedEvents(req.events, scope);
-  const deck = foldDeckItems(events, scheduler, { ...scope, now });
+  // GoReview's own built-in decks (Alphabet letters, class essentials) share the language's event log; they are not this layer's to ask
+  const wholeDeck = foldDeckItems(events, scheduler, { ...scope, now });
+  const deck = wholeDeck.filter((d) => !isBuiltinDeckUnit(d.unitId));
+  const outsideScope = wholeDeck.filter((d) => isBuiltinDeckUnit(d.unitId)).map((d) => d.itemId);
   const rows = knowledgeRows(events, scope);
   const rowById = new Map(rows.map((r) => [r.unitId, r]));
   const saved = savedUnits(events);
@@ -172,6 +175,7 @@ export function composeSession(req: ComposeRequest): ComposedSession {
     admitted: intake.filter((o) => o.decision === 'test-now' || o.decision === 'test-later').map((o) => o.unitId),
     declined: intake.filter((o) => o.decision !== 'test-now' && o.decision !== 'test-later').map((o) => ({ unitId: o.unitId, decision: o.decision, reasons: o.reasons })),
     fromReadingContext,
+    outsideScope,
   };
 }
 

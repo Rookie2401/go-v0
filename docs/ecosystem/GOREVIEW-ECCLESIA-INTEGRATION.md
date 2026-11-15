@@ -98,7 +98,7 @@ Ecclesia.passageStandings(profile, passage, standings)                 // level 
 Ecclesia.KNOWLEDGE_LEVEL_WORDS                                         // the learner-facing words for each level
 ```
 
-Show the level as the word's state and the schedule as the card's return; never derive one from the other. `events` is the learner's log for this language (fetch it from the Repository; `scopedEvents` filters a mixed log).
+Show the level as the word's state and the schedule as the card's return; never derive one from the other. For anything a learner reads, use `standing.shownLevel` (a word only met in passing is shown as New, as everywhere else in the ecosystem) and `Ecclesia.listedVocabulary(standings)` for "my words"; `standing.level` is the Repository's own and is what the estimates use. `unitClass` tells words from constructions and from the letters of GoReview's Alphabet deck, which share the language's log (`composed.outsideScope` lists the cards an Ecclesia session leaves to GoReview). `events` is the learner's log for this language (fetch it from the Repository; `scopedEvents` filters a mixed log).
 
 ## 5. Run a review session
 

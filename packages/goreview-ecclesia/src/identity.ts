@@ -173,3 +173,23 @@ export function parseWorkLocator(locator: string | undefined): { work: string; c
   const m = /^w:([a-z0-9][a-z0-9._-]{0,59})\.(\d+)\.(\d+)(?:-\d+)?$/u.exec(locator ?? '');
   return m ? { work: m[1]!, chapter: Number(m[2]), verse: Number(m[3]) } : undefined;
 }
+
+// ───────────────────────────── kinds of unit ─────────────────────────────
+
+/**
+ * What a unit id names. A learner's event log for Hebrew, Aramaic, Greek or Latin also holds units that are not words: the
+ * constructions a form realises (`morph:`, `syntax:`) and the letters of GoReview's built-in Alphabet deck
+ * (`class:<lang>-alphabet:<glyph>`), reviewed like any card. Vocabulary is `lemma:` and `form:` only.
+ */
+export function unitClassOf(unitId: string): import('./contract').UnitClass {
+  if (unitId.startsWith('lemma:')) return 'lexeme';
+  if (unitId.startsWith('form:')) return 'form';
+  if (unitId.startsWith('morph:') || unitId.startsWith('syntax:')) return 'construction';
+  if (/^class:[a-z]+-alphabet:/u.test(unitId)) return 'alphabet';
+  return 'other';
+}
+
+export const isVocabularyUnit = (unitId: string): boolean => unitId.startsWith('lemma:') || unitId.startsWith('form:');
+
+/** Units of GoReview's own built-in decks (`class:…`): the Alphabet letters and the class essentials. */
+export const isBuiltinDeckUnit = (unitId: string): boolean => unitId.startsWith('class:');

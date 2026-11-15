@@ -11,7 +11,7 @@ You are building the Ecclesia theological library's reader interface for Biblica
 | Package you integrate | `packages/goreview-ecclesia/src/` — import the barrel `index.ts` |
 | Tests that are your executable examples | `test/goreview-ecclesia/` |
 | Documents | `docs/ecosystem/GOREVIEW-ECCLESIA-ARCHITECTURE.md` (why), `GOREVIEW-ECCLESIA-INTEGRATION.md` (how, per screen), `GOREVIEW-ECCLESIA-REPORT.md` (what was built/tested/deferred), this file |
-| Run the tests | `npm install` at the repo root, then `npx vitest run test/goreview-ecclesia` (93 tests, ~1 s) and `npx tsc -p tsconfig.app.json --noEmit` |
+| Run the tests | `npm install` at the repo root, then `npx vitest run test/goreview-ecclesia` (99 tests, ~1 s) and `npx tsc -p tsconfig.app.json --noEmit` |
 
 Everything you need is TypeScript with relative imports; there is no build step for the package. Node 24 / Vitest 3.
 

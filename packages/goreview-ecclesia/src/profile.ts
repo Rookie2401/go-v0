@@ -6,7 +6,7 @@
  * A word can be `familiar` with no card at all (met and understood while reading), or have a due card while still `seen`
  * (a first review was failed). Readers show both; neither is derived from the other.
  */
-import { DIMENSIONS, KNOWLEDGE_LEVELS } from '../../repository-contract/src';
+import { DIMENSIONS, KNOWLEDGE_LEVELS, displayLevelOf } from '../../repository-contract/src';
 import type { GoEvent, KnowledgeLevel, UnitKnowledge } from '../../repository-contract/src';
 import { MODEL_VERSION } from '../../repository-engine/src/engine';
 import { foldEvents } from '../../repository-engine/src/projection';
@@ -15,7 +15,7 @@ import type { DeckFold } from '../../goreview/src/scheduler/deck';
 import type { Scheduler } from '../../goreview/src/types';
 import type { CardSchedule, EcclesiaLanguageProfile, PassageTokens, UnitOverview, UnitStanding } from './contract';
 import { scopedEvents } from './encounters';
-import { lexemeId } from './identity';
+import { isVocabularyUnit, lexemeId, unitClassOf } from './identity';
 
 export const PROJECTION_MODEL = MODEL_VERSION;
 
@@ -36,7 +36,7 @@ export function standingOf(row: UnitKnowledge, lookups = 0): UnitStanding {
   const rr = row.dimensions.readingRecognition;
   const ar = row.dimensions.assistedRecognition;
   return {
-    unitId: row.unitId, level: row.level, encounters: row.encounters, retention: row.retention.estimate,
+    unitId: row.unitId, level: row.level, shownLevel: displayLevelOf(row), unitClass: unitClassOf(row.unitId), encounters: row.encounters, retention: row.retention.estimate,
     readingRecognition: { score: rr.score, observations: rr.observations, positive: rr.positive, negative: rr.negative },
     assistedRecognition: { observations: ar.observations, positive: ar.positive, negative: ar.negative },
     lookups, ...(row.selfMark ? { selfMark: row.selfMark } : {}), ...(row.firstSeenAt ? { firstSeenAt: row.firstSeenAt } : {}), ...(row.lastSeenAt ? { lastSeenAt: row.lastSeenAt } : {}),
@@ -57,17 +57,29 @@ export function knowledgeStandings(events: readonly GoEvent[], scope: Scope, opt
 
 export const standingOrNew = (standings: ReadonlyMap<string, UnitStanding>, unitId: string): UnitStanding =>
   standings.get(unitId) ?? {
-    unitId, level: 'new', encounters: 0, retention: 0, readingRecognition: { score: 0.5, observations: 0, positive: 0, negative: 0 },
+    unitId, level: 'new', shownLevel: 'new', unitClass: unitClassOf(unitId), encounters: 0, retention: 0, readingRecognition: { score: 0.5, observations: 0, positive: 0, negative: 0 },
     assistedRecognition: { observations: 0, positive: 0, negative: 0 }, lookups: 0,
   };
 
 export const levelOf = (standings: ReadonlyMap<string, UnitStanding>, unitId: string): KnowledgeLevel => standings.get(unitId)?.level ?? 'new';
 
-/** How many units stand at each level (units with evidence only; the corpus's unmet words are not counted). */
-export function levelDistribution(standings: ReadonlyMap<string, UnitStanding>): Record<KnowledgeLevel, number> {
+/**
+ * How many WORDS stand at each level (lexemes and forms with evidence; constructions, Alphabet letters and the corpus's unmet
+ * words are not counted). `by: 'shown'` counts the level a learner is shown (a word only met in passing counts as New);
+ * the default counts the Repository's own level. `vocabularyOnly: false` counts every unit.
+ */
+export function levelDistribution(standings: ReadonlyMap<string, UnitStanding>, opts: { by?: 'level' | 'shown'; vocabularyOnly?: boolean } = {}): Record<KnowledgeLevel, number> {
   const out = Object.fromEntries(KNOWLEDGE_LEVELS.map((l) => [l, 0])) as Record<KnowledgeLevel, number>;
-  for (const s of standings.values()) out[s.level] += 1;
+  for (const s of standings.values()) {
+    if (opts.vocabularyOnly !== false && !isVocabularyUnit(s.unitId)) continue;
+    out[opts.by === 'shown' ? s.shownLevel : s.level] += 1;
+  }
   return out;
+}
+
+/** The learner's own words as a reader lists them: vocabulary whose SHOWN level is not New (GoReview's My vocab uses the same rule). */
+export function listedVocabulary(standings: ReadonlyMap<string, UnitStanding>): UnitStanding[] {
+  return [...standings.values()].filter((s) => isVocabularyUnit(s.unitId) && s.shownLevel !== 'new');
 }
 
 /** The deck (every card and its FSRS state) of a learner in a language at `now`: GoReview's own fold. */
@@ -77,7 +89,7 @@ export function deckOf(events: readonly GoEvent[], scheduler: Scheduler, scope: 
 
 export function cardSchedules(events: readonly GoEvent[], scheduler: Scheduler, scope: Scope & { now: string }): CardSchedule[] {
   return deckOf(events, scheduler, scope).items.map((item) => ({
-    cardId: item.itemId, unitId: item.unitId, status: item.status, due: item.schedule.due, isDue: item.status === 'active' && scheduler.isDue(item.schedule, scope.now),
+    cardId: item.itemId, unitId: item.unitId, unitClass: unitClassOf(item.unitId), status: item.status, due: item.schedule.due, isDue: item.status === 'active' && scheduler.isDue(item.schedule, scope.now),
     retrievability: scheduler.retrievability(item.schedule, scope.now), phase: item.schedule.phase, reps: item.schedule.reps, lapses: item.schedule.lapses,
     ...(item.schedule.lastReview ? { lastReview: item.schedule.lastReview } : {}),
   }));

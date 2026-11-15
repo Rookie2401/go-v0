@@ -132,6 +132,10 @@ Learner-added cards: `cardAddedEvent` uses GoReview's `buildCardAdded` with `rea
 - **FSRS schedule** — `cardSchedules(events, scheduler, scope)` folds GoReview's deck and returns `CardSchedule { cardId, status, due, isDue, retrievability, phase, reps, lapses, lastReview }` per card. A card can be due while its word is still `seen`.
 - `unitOverview(unitId, standings, schedules)` returns both. The vertical slice shows a missed review that returns in minutes while the word's level stays `recognized`.
 
+**Shown level.** `UnitStanding` carries both `level` (the Repository's) and `shownLevel` (what a learner is shown): the same, except that a word only met in passing — seen, never looked up, helped, marked or judged — is shown as New. This is the ecosystem's display rule (`displayLevelOf` in the contract, the owner's rule of 2026-11-05), so a word reads the same in Ecclesia, GoReview's My vocab, GoLearn and Biblia. Lists and counts a learner sees use the shown level (`listedVocabulary`, `levelDistribution(…, { by: 'shown' })`); intake, candidates and the familiarity estimate keep the Repository level.
+
+**One log, several kinds of unit.** A learner's event log for a language also holds units that are not words: the constructions a form realises (`morph:`, `syntax:`) and the cards of GoReview's own built-in decks — the Alphabet letters (`class:<lang>-alphabet:<glyph>`, in Hebrew, Aramaic, Greek and Latin alike) and the class essentials (`class:…`). `unitClassOf` names the kind; `UnitStanding.unitClass` and `CardSchedule.unitClass` carry it. Word counts and lists take vocabulary only (`lemma:`, `form:`). `composeSession` leaves built-in-deck cards out of an Ecclesia session and names them in `outsideScope`: they stay on their own schedule in GoReview, and the reader's lexicon has no facts for them.
+
 ## 7. Session composition (`session.ts`)
 
 `composeSession({ profile, identity, events, now, readingContext?, candidates?, intent?, preferences? })`:

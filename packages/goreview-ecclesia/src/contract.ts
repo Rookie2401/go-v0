@@ -202,9 +202,20 @@ export interface ContextualCard {
 // ───────────────────────────── knowledge profile (six levels) and schedule (FSRS) ─────────────────────────────
 
 /** What is known about one unit, on the six-level scale, from the Repository projection; never a schedule. */
+/** What kind of unit an id names: vocabulary (a lexeme or a printed form), a construction, a letter of GoReview's Alphabet deck, or anything else. */
+export type UnitClass = 'lexeme' | 'form' | 'construction' | 'alphabet' | 'other';
+
 export interface UnitStanding {
   unitId: string;
+  /** The Repository's level (what the evidence and the learner's own mark say). */
   level: KnowledgeLevel;
+  /**
+   * The level to SHOW the learner: the same, except that a word only met in passing (seen, never looked up, never helped,
+   * never marked, never judged) is shown as New — the ecosystem's display rule (`displayLevelOf`), so a word reads the same
+   * in Ecclesia, GoReview's My vocab, GoLearn and Biblia. Lists and counts a learner sees use this; estimates use `level`.
+   */
+  shownLevel: KnowledgeLevel;
+  unitClass: UnitClass;
   /** Distinct encounters (lookups, exposures, recognitions, help requests). */
   encounters: number;
   /** The projection's own retention estimate 0..1 (not FSRS retrievability). */
@@ -221,6 +232,8 @@ export interface UnitStanding {
 export interface CardSchedule {
   cardId: string;
   unitId: string;
+  /** Vocabulary, a construction, or a card of another GoReview deck in the same language (the Alphabet deck's letters). */
+  unitClass: UnitClass;
   status: DeckItem['status'];
   due: string;
   isDue: boolean;
@@ -354,6 +367,12 @@ export interface ComposedSession {
   declined: Array<{ unitId: string; decision: string; reasons: string[] }>;
   /** When a reading context was given: which planned items came from it. */
   fromReadingContext: string[];
+  /**
+   * Cards of the same language that are not this layer's to ask: GoReview's built-in decks (Alphabet letters, class
+   * essentials: `class:…` units). They stay on their own schedule in GoReview and are left out of an Ecclesia session,
+   * whose lexicon has no facts for them.
+   */
+  outsideScope: string[];
 }
 
 export type { UnitFacts };

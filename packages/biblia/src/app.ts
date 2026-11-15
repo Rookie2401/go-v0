@@ -52,6 +52,9 @@ const LANGUAGE_NAME: Record<BibliaLang, string> = { he: 'Hebrew', el: 'Greek' };
 /** Which levels of the library tree are open (a JSON list of ids), remembered on the device; the two testaments are open until the learner closes them. */
 export const HOME_OPEN_KEY = 'biblia:home-open';
 export type Theme = 'auto' | 'light' | 'dark';
+export type VerseNumberMode = 'native' | 'decimal' | 'hidden';
+const verseNumberText = (lang: BibliaLang, verse: number, mode: VerseNumberMode): string =>
+  mode === 'native' ? numeral(lang, verse) : mode === 'decimal' ? String(verse) : '';
 /** The reading type as the Biblia app shipped it: Hebrew 26 px, Greek 22 px, line height 1.85. */
 export const READING_DEFAULTS = { hebrewSize: 26, greekSize: 22, lineHeight: 1.85 } as const;
 /** Every preference the settings page keeps (`biblia:<name>`); "Reset settings" removes exactly these. */
@@ -125,14 +128,21 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   let hebrewSize = numPref('hebrewSize', READING_DEFAULTS.hebrewSize, 18, 44);
   let greekSize = numPref('greekSize', READING_DEFAULTS.greekSize, 16, 36);
   let lineHeight = numPref('lineHeight', READING_DEFAULTS.lineHeight, 1.4, 2.6);
-  let verseNumbers = pref<'on' | 'off'>('verseNumbers', 'on', ['on', 'off']) === 'on';
+  let verseNumberMode: VerseNumberMode = (() => {
+    try {
+      const stored = deps.storage?.getItem('biblia:verseNumbers');
+      const mode = stored === 'on' ? 'native' : stored === 'off' ? 'hidden' : stored;
+      if (mode === 'native' || mode === 'decimal' || mode === 'hidden') return mode;
+    } catch { /* storage blocked */ }
+    return 'native';
+  })();
   let levelMarks = pref<'on' | 'off'>('levelMarks', 'on', ['on', 'off']) === 'on';
   const docEl = doc.documentElement;
   /** The preferences as attributes and custom properties of the page, so the stylesheet does the rest and nothing needs re-rendering. */
   function applyPrefs(): void {
     try {
       if (theme === 'auto') docEl.removeAttribute('data-theme'); else docEl.setAttribute('data-theme', theme);
-      docEl.setAttribute('data-verse-numbers', verseNumbers ? 'on' : 'off');
+      docEl.setAttribute('data-verse-numbers', verseNumberMode);
       docEl.setAttribute('data-level-marks', levelMarks ? 'on' : 'off');
       docEl.style.setProperty('--reading-font-size', `${hebrewSize}px`);
       docEl.style.setProperty('--greek-font-size', `${greekSize}px`);
@@ -309,7 +319,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
 
   function renderHebrewVerse(info: BookInfo, ch: number, v: HeVerse, aramaic: boolean, sites: LevelSite[]): HTMLElement {
     const text = hebrewDisplay === 'full' ? v.t : hebrewDisplay === 'niqqud' ? v.t.replace(/[֑-ֽֿ֯׀ׅׄ]/g, '') : consonantal(v.t).replace(/־/g, ' ');
-    const el = h('span', { class: `verse${aramaic ? ' aramaic' : ''}`, 'data-v': String(v.n) }, h('span', { class: 'vn' }, numeral('he', v.n)));
+    const el = h('span', { class: `verse${aramaic ? ' aramaic' : ''}`, 'data-v': String(v.n) }, h('span', { class: 'vn' }, verseNumberText('he', v.n, verseNumberMode)));
     if (v.absent) { el.append(h('span', { class: 'mark' }, '(absent from this edition)')); return el; }
     const varietyId = aramaic ? 'arc-bib' : 'he-bib';
     // the source's reading of each word (Open Scriptures), by word order: the maqaf-split words of the text and the `w` column align one to one
@@ -335,7 +345,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
 
   function renderGreekVerse(info: BookInfo, ch: number, v: GrVerse, sites: LevelSite[]): HTMLElement {
     const text = greekVerseText(v);
-    const el = h('span', { class: 'verse', 'data-v': String(v.n) }, h('span', { class: 'vn' }, numeral('el', v.n)));
+    const el = h('span', { class: 'verse', 'data-v': String(v.n) }, h('span', { class: 'vn' }, verseNumberText('el', v.n, verseNumberMode)));
     // MorphGNT's reading of each word, by word order (its printed tokens with letters align one to one with the word tokens)
     const golds = v.w.filter((t) => /\p{L}/u.test(t[0]));
     const toks = elAdapter.tokenize(text);
@@ -590,12 +600,12 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       h('div', { class: 'settings-row settings-row--slider' }, slider('set-line-height', 'Line spacing', 1.4, 2.6, 0.05, lineHeight, (n) => n.toFixed(2), (n) => { lineHeight = n; setPref('lineHeight', String(n)); applyPrefs(); })),
       h('div', { class: 'settings-row' }, labelled('Hebrew text', pills<HebrewDisplay>('Hebrew text', (['full', 'niqqud', 'consonants'] as HebrewDisplay[]).map((d) => [d, d === 'full' ? 'Accents' : SHORT_DISPLAY[d][0].toUpperCase() + SHORT_DISPLAY[d].slice(1)] as const), hebrewDisplay, (d) => { hebrewDisplay = d; setPref('hebrewDisplay', d); })),
         para('This choice takes effect the next time you open a chapter.', 'muted hint')),
-      h('div', { class: 'settings-row' }, labelled('Verse numbers', pills<'on' | 'off'>('Verse numbers', [['on', 'Hebrew / Greek'], ['off', 'None']], verseNumbers ? 'on' : 'off', (v) => { verseNumbers = v === 'on'; setPref('verseNumbers', v); applyPrefs(); }))),
+      h('div', { class: 'settings-row' }, labelled('Verse numbers', pills<VerseNumberMode>('Verse numbers', [['native', 'Hebrew / Greek'], ['decimal', '1, 2, 3'], ['hidden', 'None']], verseNumberMode, (mode) => { verseNumberMode = mode; setPref('verseNumbers', mode); applyPrefs(); }))),
       h('div', { class: 'settings-reader-footer' }, toggle('set-level-marks', 'Mark words by familiarity', 'Available when signed in.', levelMarks, (on) => { levelMarks = on; setPref('levelMarks', on ? 'on' : 'off'); applyPrefs(); }), (() => {
         const reset = h('button', { type: 'button', class: 'btn', id: 'settings-reset' }, icon('reset'), 'Reset settings');
         reset.addEventListener('click', () => {
           for (const name of PREF_NAMES) { try { deps.storage?.removeItem(`biblia:${name}`); } catch { /* storage blocked */ } }
-          hebrewDisplay = 'full'; theme = 'auto'; hebrewSize = READING_DEFAULTS.hebrewSize; greekSize = READING_DEFAULTS.greekSize; lineHeight = READING_DEFAULTS.lineHeight; verseNumbers = true; levelMarks = true;
+          hebrewDisplay = 'full'; theme = 'auto'; hebrewSize = READING_DEFAULTS.hebrewSize; greekSize = READING_DEFAULTS.greekSize; lineHeight = READING_DEFAULTS.lineHeight; verseNumberMode = 'native'; levelMarks = true;
           applyPrefs();
           void render();
         });

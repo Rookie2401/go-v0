@@ -95,7 +95,7 @@ describe('the ripple on a deck tile', () => {
 });
 
 describe('the deck tiles on the home', () => {
-  it('light under the pointer when they can be pressed: the Current Deck and Saved do, an empty Review Deck does not', async () => {
+  it('light under the pointer when they can be pressed: the Current Deck, Review Deck with study work, and Saved all do', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
@@ -104,12 +104,12 @@ describe('the deck tiles on the home', () => {
       el.dispatchEvent(new MouseEvent('pointerenter', { clientX: 5, clientY: 5 }));
       return el.hasAttribute('data-lit');
     };
-    expect(rig.q<HTMLButtonElement>('#start-review').disabled).toBe(true);
-    expect([lit('current'), lit('review'), lit('saved')]).toEqual([true, false, true]);
+    expect(rig.q<HTMLButtonElement>('#start-review').disabled).toBe(false);
+    expect([lit('current'), lit('review'), lit('saved')]).toEqual([true, true, true]);
   });
 });
 
-it('lights all three completed-session actions with the deck tile ripple', async () => {
+it('lights the completed-session deck actions with the deck tile ripple', async () => {
   const rig = await makeRig({ signedIn: true });
   await startWith(rig, dueCard(A, 'zog', 'meaning-to-form'));
   const input = rig.q<HTMLInputElement>('#answer-input');
@@ -120,7 +120,7 @@ it('lights all three completed-session actions with the deck tile ripple', async
   await until(() => !!rig.root.querySelector('#continue-due-work'));
 
   expect(rig.q<HTMLButtonElement>('#continue-due-work').disabled).toBe(false);
-  for (const id of ['continue-due-work', 'open-remediation', 'back-to-review']) {
+  for (const id of ['continue-due-work', 'save-session-deck', 'back-to-review']) {
     const control = rig.q('#' + id);
     const tile = control.parentElement!;
     expect(control.classList.contains('deck-face')).toBe(true);

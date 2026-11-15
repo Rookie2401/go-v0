@@ -11,7 +11,7 @@
  * Live updates (./live.ts) keep the data current while the app is visible, and the "Update ready — reload" link appears when the GoReview build's
  * service worker has a newer version waiting.
  *
- * Routes:  #/review[/session | /history/<item> | /transfer | /decks | /vocab | /details]   #/vocabulary   #/settings   #/signin
+ * Routes:  #/review[/deck | /session | /history/<item> | /transfer | /decks | /vocab | /details]   #/vocabulary   #/settings   #/signin
  *           #/privacy and #/terms (the legal drafts; open without an account)
  */
 import { append, clear, h, p } from './dom';
@@ -90,6 +90,7 @@ export function parseHash(hash: string, enableGoTell = false): ParsedRoute | und
   if (!def) return undefined;
   if (def.id === 'tell' && !enableGoTell) return { id: 'review', params: [], path: 'review' };
   const params = m[2] ? m[2].split('/').filter(Boolean) : [];
+  if (def.id === 'review' && params[0] === 'remediation') return { id: 'review', params: ['deck'], path: 'review/deck' };
   return { id: def.id, params, path: [def.id, ...params].join('/') };
 }
 

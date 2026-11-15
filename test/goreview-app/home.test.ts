@@ -40,11 +40,11 @@ describe('the GoReview home', () => {
     expect(rig.root.querySelector('#entry-tell')).toBeNull();
     expect(rig.qa('#review-home svg').every((node) => node.getAttribute('aria-hidden') === 'true')).toBe(true);
     expect(rig.qa('#start-session-count, #start-review-count, #previous-count, #vocab-count').every(node => node.classList.contains('sr'))).toBe(true);
-    // two cards answered Again are still being drilled: the Current Deck holds them, the Review Deck has nothing due
+    // Current Deck holds the two learning returns, and Review Deck holds study material for the missed cards.
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('2');
     expect(rig.q('#start-session-count').textContent).toBe('all 2 of your cards'); // the two are the whole eligible pool: deck fill (2026-11-03) says so instead of a bare count
-    expect(rig.q<HTMLButtonElement>('#start-review').disabled).toBe(true);
-    expect(rig.q('#start-review-count').textContent).toMatch(/^Nothing due/);
+    expect(rig.q<HTMLButtonElement>('#start-review').disabled).toBe(false);
+    expect(rig.q('#start-review-count').textContent).toBe('Open Review Deck');
     expect(rig.q('#start-new').closest('[data-deck]')?.getAttribute('data-deck')).toBe('current'); // Begin new deck sits beside the Current Deck
     expect(rig.q('#previous-count').textContent).toBe('2 saved'); // the built-in decks, Class Essentials and the Alphabet, are already there
     expect(rig.root.querySelector('#review-home #class-essentials-due')).toBeNull(); // Class Essentials lives in Saved decks

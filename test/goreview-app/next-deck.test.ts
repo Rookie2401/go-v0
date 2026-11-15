@@ -33,11 +33,12 @@ describe('Repository-backed remediation', () => {
 
     expect(rig.q('#summary-next').textContent).toContain('Next scheduled session');
     expect(rig.q('#optional-repeat-note').textContent).toContain('does not represent a new due session');
-    expect(rig.q<HTMLButtonElement>('#begin-remediation').disabled).toBe(true);
-    rig.q('#open-remediation').click();
+    expect(rig.root.querySelector('#open-remediation, #begin-remediation')).toBeNull();
+    rig.q('#continue-due-work').click();
     await until(() => !!rig.root.querySelector('#remediation-backlog'), 'the persistent remediation backlog');
-    const remediationRow = rig.root.querySelector(`[data-item-id="${itemId}"]`)!;
-    expect(remediationRow.textContent).toContain('Meaning:');
+    const remediationRow = rig.q(`[data-item-id="${itemId}"]`);
+    remediationRow.querySelector('details')!.open = true;
+    await until(() => rig.root.querySelector(`[data-item-id="${itemId}"]`)?.textContent?.includes('Meaning:'), 'study material');
     expect(remediationRow.textContent).toContain('Productive recall difficulty');
     expect(remediationRow.textContent).toContain('These labels describe the recorded question type and result');
     expect(remediationRow.textContent).not.toMatch(/confusion|confused/i);
@@ -46,20 +47,25 @@ describe('Repository-backed remediation', () => {
     const before = await rig.app.ctx.events(A.languageId);
     const reviewCount = before.filter(e => ['CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'].includes(e.kind)).length;
     const scheduleBefore = (await (await import('../../packages/goreview/app/workspace')).loadReviewModel(rig.app.ctx))!.deck.find(x => x.itemId === itemId)!.schedule;
-    rig.q<HTMLButtonElement>('[data-action="mark-studied"]').click();
+    rig.q<HTMLButtonElement>(`[data-item-id="${itemId}"] [data-action="mark-studied"]`).click();
     await until(async () => (await rig.app.ctx.events(A.languageId)).some(e => e.kind === 'PreferenceChanged' && e.payload.key === 'goreview.remediation'), 'the Repository study marker');
     const afterStudy = await rig.app.ctx.events(A.languageId);
     expect(afterStudy.filter(e => ['CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'].includes(e.kind))).toHaveLength(reviewCount);
     expect((await (await import('../../packages/goreview/app/workspace')).loadReviewModel(rig.app.ctx))!.deck.find(x => x.itemId === itemId)!.schedule).toEqual(scheduleBefore);
     expect(afterStudy.some(e => e.kind === 'PreferenceChanged' && e.payload.key === 'goreview.remediation' && e.subject.cardId === itemId)).toBe(true);
-    expect(rig.root.textContent).toContain('Reassessment becomes available at');
+    await until(() => rig.root.textContent!.includes('Available for review at'), 'the study delay');
+    expect(rig.root.querySelector('#start-deck-review')).toBeNull();
 
-    rig.clock.set(new Date(rig.clock.now.getTime() + 11 * 60_000).toISOString());
+    rig.clock.set(new Date(rig.clock.now.getTime() + 10 * 60_000 - 1).toISOString());
     await rig.go('review');
-    await rig.go('review/remediation'); // reload the projection from Repository events
-    await until(() => !!rig.root.querySelector('[data-action="begin-reassessment"]'), 'delayed reassessment');
+    await rig.go('review/deck');
+    expect(rig.root.querySelector('#start-deck-review')).toBeNull();
+    rig.clock.set(new Date(rig.clock.now.getTime() + 1).toISOString());
+    await rig.go('review');
+    rig.q('#start-review').click(); // the home tile reloads the projection from Repository events
+    await until(() => !!rig.root.querySelector('#start-deck-review'), 'delayed reassessment');
     expect(rig.root.querySelectorAll('#remediation-backlog [data-item-id]')).toHaveLength(2); // unselected work carries across the batch and route reload
-    rig.q<HTMLButtonElement>('[data-action="begin-reassessment"]').click();
+    rig.q<HTMLButtonElement>('#start-deck-review').click();
     await until(() => !!rig.root.querySelector('#session .exercise'), 'the reassessment prompt');
     expect(rig.app.ctx.run.active?.plan.intent).toEqual(expect.objectContaining({ kind: 'explicit', reason: 'reassessment' }));
     expect(rig.app.ctx.run.active?.plan.items.map(p => p.item.itemId)).toContain(itemId);
@@ -70,18 +76,21 @@ describe('Repository-backed remediation', () => {
     const rig = await makeRig({ signedIn: true });
     await startWith(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form'), ...dueCard(A, 'qen', 'meaning-to-form')]);
     await playOut(rig, ['zog', 'mace', 'qen']);
-    rig.q('#open-remediation').click();
+    rig.q('#continue-due-work').click();
     await until(() => rig.root.querySelectorAll('#remediation-backlog [data-item-id]').length === 3, 'all unresolved items');
     const rows = rig.qa<HTMLElement>('#remediation-backlog [data-item-id]');
     const chosen = rows[0].dataset.itemId!;
-    rows[0].querySelector<HTMLButtonElement>('[data-action="mark-studied"]')!.click();
+    rows[0].querySelector('details')!.open = true;
+    const study = (): HTMLButtonElement => rig.q(`[data-item-id="${chosen}"] [data-action="mark-studied"]`);
+    await until(() => !study().disabled, 'study material');
+    study().click();
     await until(async () => (await rig.app.ctx.events(A.languageId)).some(e => e.kind === 'PreferenceChanged' && e.payload.key === 'goreview.remediation'), 'the study marker');
     rig.clock.set(new Date(rig.clock.now.getTime() + 11 * 60_000).toISOString());
     await rig.go('review');
-    await rig.go('review/remediation');
+    await rig.go('review/deck');
     await until(() => rig.root.querySelectorAll('#remediation-backlog [data-item-id]').length === 3, 'the complete backlog after reload');
-    expect(rig.root.querySelectorAll('#remediation-backlog [data-action="begin-reassessment"]')).toHaveLength(1);
-    rig.q<HTMLButtonElement>('[data-action="begin-reassessment"]').click();
+    expect(rig.q(`[data-item-id="${chosen}"]`).textContent).toContain('Ready to review.');
+    rig.q<HTMLButtonElement>('#start-deck-review').click();
     await until(() => !!rig.root.querySelector('#session .exercise'), 'the limited reassessment');
     expect(rig.app.ctx.run.active?.plan.items.map(p => p.item.itemId)).toEqual([chosen]);
   });
@@ -125,7 +134,7 @@ describe('Repository-backed remediation', () => {
         provenance: { source: 'reviewer', ref: 'repair-fixture', confidence: 1, validatedBy: 'test', validatedAt: at }, status: 'verified' },
         status: 'verified', glosses: ['a changed verified meaning'] };
     };
-    await rig.go('review/remediation');
+    await rig.go('review/deck');
     await until(() => !!rig.root.querySelector('#facts-repair-backlog'), 'the separate facts repair queue');
     expect(rig.root.querySelectorAll('#remediation-backlog [data-item-id]')).toHaveLength(0);
     const repair = rig.q<HTMLButtonElement>('[data-action="repair-invalidated"]');
@@ -139,8 +148,8 @@ describe('Repository-backed remediation', () => {
     expect((await rig.app.ctx.identity())).toMatchObject({ learnerId: review.learnerId, enrolmentId: review.enrolmentId, languageId: review.languageId });
     expect(fresh.deck[0].invalidatedAt).toBe(at);
     repair.click();
-    await until(() => !!rig.root.querySelector('#remediation .status')?.getAttribute('data-kind'), 'the repair result');
-    expect(rig.q('#remediation .status').textContent).toContain('Saved');
+    await until(() => !!rig.root.querySelector('#review-deck .status')?.getAttribute('data-kind'), 'the repair result');
+    expect(rig.q('#review-deck .status').textContent).toContain('Saved');
     expect((await rig.app.ctx.events(A.languageId)).some(e => e.kind === 'CardAdded' && e.payload.lifecycle === 'facts-repaired')).toBe(true);
     expect(factsCalls).toBeGreaterThan(1);
   });

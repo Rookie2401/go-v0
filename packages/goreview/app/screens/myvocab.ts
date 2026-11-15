@@ -5,11 +5,18 @@
  * Tapping a word asks "Add <word> to the current deck?" under the row (Add / Not now); a word already in the deck says so. Add
  * records the learner's explicit choice (ItemMarked saved) and puts the word at the head of the current deck. A small History link
  * keeps the word's history one tap away. The filtered, searchable list with the unit details is kept at #/vocabulary (Settings).
+ *
+ * A form and its lemma are one entry even where the Repository does not link them (2026-11-14). The service folds a form into its
+ * lemma only when its own resolver relates the two, and it relates fewer forms than the readers do, so a form the learner met in a verse
+ * stood here as a word of its own, New, beside a lemma they had marked Automatic. The pack facts this screen already fetches for a
+ * visible word's meaning name the form's lemma: when that lemma has an entry, the form joins it (`foldFormRow`), and the word reads at
+ * the level the readers show it at. What was learned is remembered for the session, so the list does not unfold again when it reloads.
  */
 import { KNOWLEDGE_LEVELS } from '../../../repository-contract/src';
 import type { AppContext } from '../context';
 import { append, button, clear, h, langProps, p, setStatus, statusLine } from '../dom';
-import { addedCardFor, addToDeck, loadVocab, planCurrentDeck, planSelectedPractice, selectedPracticeUnits, sortVocab, type VocabRow, type VocabSort } from '../deckModel';
+import { reviewFacts } from '../../src/facts/review-facts';
+import { addedCardFor, addToDeck, foldFormRow, loadVocab, planCurrentDeck, planSelectedPractice, selectedPracticeUnits, sortVocab, type FormLemma, type VocabRow, type VocabSort } from '../deckModel';
 import { itemMarked } from '../events';
 import { currentReviewModel, PRESS_WAIT_MS } from '../workspace';
 import { MAX_SNAPSHOT_WORDS, readSnapshot } from '../snapshot';
@@ -17,6 +24,8 @@ import type { View } from './view';
 import { getUiPrefs, patchUiPrefs } from './uiprefs';
 
 const PAGE = 80;
+/** The lemmas the pack's analysis gave each form, per storage area (one per running app), learner and language, for as long as the app is open: a reload folds at once. */
+const FORM_LEMMAS = new WeakMap<object, Map<string, Map<string, FormLemma[]>>>();
 const SORTS: Array<[VocabSort, string]> = [['least', 'Least known first'], ['recent', 'Recently encountered']];
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
@@ -46,6 +55,18 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   let busy = true;
 
   const inDeck = (r: VocabRow): boolean => !!deckUnits && (r.unitIds ?? [r.unitId]).some((u) => deckUnits!.has(u));
+
+  const linksKey = `${identity.learnerId}|${identity.languageId}`;
+  const learned = FORM_LEMMAS.get(ctx.deps.area) ?? new Map<string, Map<string, FormLemma[]>>();
+  FORM_LEMMAS.set(ctx.deps.area, learned);
+  const links = learned.get(linksKey) ?? new Map<string, FormLemma[]>();
+  learned.set(linksKey, links);
+  /** The list with every form whose lemma is already known folded into it. */
+  const withLinks = (list: VocabRow[]): VocabRow[] => {
+    let out: readonly VocabRow[] = list;
+    for (const [formId, lemmas] of links) out = foldFormRow(out, formId, lemmas, identity.languageId);
+    return out as VocabRow[];
+  };
 
   function paintToggles(): void {
     clear(toggles);
@@ -150,11 +171,28 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     if (!todo.length || !ctx.engine.factsFor) return;
     const { api } = await ctx.api();
     let next = 0;
+    let folded = 0;
     const worker = async (): Promise<void> => {
       while (next < todo.length && view.alive()) {
         const r = todo[next++];
         let text: string | null = null;
-        try { text = (await ctx.engine.factsFor!(r.unitId, identity.languageId, api))?.glosses?.[0] ?? null; } catch { text = null; }
+        try {
+          const facts = await ctx.engine.factsFor!(r.unitId, identity.languageId, api);
+          text = facts?.glosses?.[0] ?? null;
+          // a form shown as a word of its own: the same facts name its lemma, and the form joins that lemma's entry when there is one
+          if (facts && r.unitId.startsWith('form:')) {
+            const extras = reviewFacts(facts);
+            const lemmas: FormLemma[] = [
+              ...(extras.wordAnalysis?.lemma ? [{ lemma: extras.wordAnalysis.lemma, ...(extras.wordAnalysis.pos ? { pos: extras.wordAnalysis.pos } : {}) }] : []),
+              ...(extras.alternativeReadings ?? []).map((a) => ({ lemma: a.lemma, ...(a.pos ? { pos: a.pos } : {}) })),
+            ];
+            if (lemmas.length) {
+              links.set(r.unitId, lemmas);
+              const after = foldFormRow(rows, r.unitId, lemmas, identity.languageId) as VocabRow[];
+              if (after !== rows) { rows = after; folded++; }
+            }
+          }
+        } catch { text = null; }
         glossed.set(r.unitId, text);
         if (text && view.alive()) {
           const slot = [...list.querySelectorAll<HTMLElement>('[data-gloss]')].find((x) => x.getAttribute('data-gloss') === r.unitId);
@@ -163,6 +201,11 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       }
     };
     await Promise.all([worker(), worker(), worker(), worker()]);
+    // forms that joined their lemma: one repaint for the whole pass (the question open under a folded form moves to its lemma)
+    if (folded && view.alive()) {
+      if (asking && !rows.some((r) => r.unitId === asking)) asking = rows.find((r) => (r.unitIds ?? []).includes(asking!))?.unitId;
+      paintList();
+    }
   }
 
   const offlineNote = (at: string): string => `You are offline: these are the words this device saved on ${at.slice(0, 10)}. New ones appear when you are back online.`;
@@ -182,7 +225,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       const loaded = await loadVocab(ctx, identity.languageId);
       if (!view.alive() || loaded.stale) return;
       const note = loadNote(loaded);
-      const next = loaded.rows.filter((r) => KNOWLEDGE_LEVELS.includes(r.level));
+      const next = withLinks(loaded.rows.filter((r) => KNOWLEDGE_LEVELS.includes(r.level)));
       if (signature(next) === signature(rows)) { setStatus(status, note, note ? 'info' : 'ok'); return; }
       rows = next;
       setStatus(status, note, note ? 'info' : 'ok');
@@ -198,7 +241,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     try {
       const loaded = await loadVocab(ctx, identity.languageId);
       if (!view.alive()) return;
-      const next = loaded.rows.filter((r) => KNOWLEDGE_LEVELS.includes(r.level));
+      const next = withLinks(loaded.rows.filter((r) => KNOWLEDGE_LEVELS.includes(r.level)));
       const note = loadNote(loaded);
       setStatus(status, note, 'info');
       busy = false;
@@ -219,7 +262,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   // the words this device saved paint at once (2026-11-10: the page waited for every page of the service's list); the service's list follows in the background
   const saved = ((await readSnapshot(ctx, identity.learnerId, identity.languageId).catch(() => undefined))?.vocab?.rows ?? []) as VocabRow[];
   if (saved.length) {
-    rows = saved.filter((r) => KNOWLEDGE_LEVELS.includes(r.level));
+    rows = withLinks(saved.filter((r) => KNOWLEDGE_LEVELS.includes(r.level)));
     setStatus(status, saved.length >= MAX_SNAPSHOT_WORDS ? 'Showing the words saved on this device (a capped copy); checking for new ones…' : 'Showing the words saved on this device; checking for new ones…', 'info');
     paintList();
     void refreshDeck();

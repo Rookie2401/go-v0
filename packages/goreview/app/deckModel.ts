@@ -545,6 +545,53 @@ export function mergeVocab(records: readonly VocabRecord[]): VocabRow[] {
   return out;
 }
 
+/** A lemma a form may belong to, as an analysis names it: the dictionary word and, when known, its part of speech. */
+export interface FormLemma { lemma: string; pos?: string }
+
+/**
+ * Folds the entry of a FORM into the entry of its lemma, after the fact (2026-11-14).
+ *
+ * `mergeVocab` folds a form only when the Repository holds a form-of relation for it, and the service's resolver has none for many
+ * forms the readers recorded together with a lemma (Biblia records the form id AND the lemma id of every word of an opened verse; the
+ * service, with a smaller index, may link the form to nothing). Such a form then stood in My vocab as a word of its own, at its own
+ * level (New, having only been met in passing), beside a lemma the learner had marked Automatic: the readers show that same word at
+ * its lemma's level, because they read a word's level over its form row and its lemma row together (`levelOfRows`).
+ *
+ * `lemmas` are the lemmas the language pack's own analysis gives the form, best first. The form's entry joins the first of them that
+ * has an entry in the list; the result is what `mergeVocab` would have made had the relation been there: the lemma is the word
+ * shown, the level the higher of the two, the encounters the larger, the last-seen the later, and the form is listed in `metAs`.
+ * A form with no lemma in the list stays an entry of its own. Returns the SAME array when nothing changes.
+ */
+export function foldFormRow(rows: readonly VocabRow[], formUnitId: string, lemmas: readonly FormLemma[], languageId: string): readonly VocabRow[] {
+  const idsOf = (r: VocabRow): string[] => r.unitIds ?? [r.unitId];
+  const form = rows.find((r) => idsOf(r).includes(formUnitId));
+  // only an entry that is SHOWN as a form is folded: one already under a lemma, or a lemma itself, stays as it is
+  if (!form || !form.unitId.startsWith('form:')) return rows;
+  let into: VocabRow | undefined;
+  for (const l of lemmas) {
+    if (!l.lemma) continue;
+    const base = `lemma:${languageId}:${l.lemma}`;
+    const exact = l.pos ? `${base}:${l.pos}` : undefined;
+    // with a part of speech: that lemma, or the lemma recorded without one; without: the lemma under any part of speech
+    const is = (id: string): boolean => id === base || (exact ? id === exact : id.startsWith(`${base}:`));
+    into = rows.find((r) => r !== form && !r.unitId.startsWith('form:') && idsOf(r).some(is));
+    if (into) break;
+  }
+  if (!into) return rows;
+  const target = into;
+  const lastSeen = [target.lastSeenAt, form.lastSeenAt].filter((t): t is string => !!t).sort().at(-1);
+  const met = [...new Set([...(target.metAs ?? []), form.label, ...(form.metAs ?? [])].filter((f) => f && normWord(f) !== normWord(target.label)))].slice(0, 3);
+  const merged: VocabRow = {
+    ...target,
+    unitIds: [...new Set([...idsOf(target), ...idsOf(form)])],
+    level: rankOf(form.level) > rankOf(target.level) ? form.level : target.level,
+    encounters: Math.max(target.encounters, form.encounters),
+    ...(lastSeen ? { lastSeenAt: lastSeen } : {}),
+    ...(met.length ? { metAs: met } : {}),
+  };
+  return rows.filter((r) => r !== form).map((r) => (r === target ? merged : r));
+}
+
 /** Least known first (level, then fewest encounters), or the most recently encountered first. Ties fall back to the word, so the order is stable. */
 export function sortVocab<T extends VocabRow>(rows: readonly T[], sort: VocabSort): T[] {
   const text = (a: string, b: string): number => (a < b ? -1 : a > b ? 1 : 0);

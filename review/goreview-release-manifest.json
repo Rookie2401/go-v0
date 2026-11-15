@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "a8eb70bb81f437af05999a605890d9a7784ee76b",
-    "tree": "f99397d171fc24f1e84ec1f9e17768ef349ce9f2",
+    "commit": "19cd86afeaa9126cd5b0c5cd06c15aeae6656b50",
+    "tree": "05925a2dc5aabaea126c7905bf2e14aecc447029",
     "dirty": false
   },
-  "sourceManifestSha256": "b70750982a79d836a72249051ccf33641248fb3de17bd4813c92b6c25b901afa",
+  "sourceManifestSha256": "9e33d65e0149b66642325690bb2dfe4cea094e80cdf668a8ff059b132d5ed2de",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -385,7 +385,7 @@
     },
     {
       "path": "packages/goreview/app/app.ts",
-      "sha256": "f2c6fe1c4e6462ded721274b8b55c2dce2bf4b3de4eaafa2502c921ba2c264f8"
+      "sha256": "1ecd46518e0ecf896f74044230d94fd218065fb5cd479ef0db77864305aa56f9"
     },
     {
       "path": "packages/goreview/app/audio.ts",
@@ -409,7 +409,7 @@
     },
     {
       "path": "packages/goreview/app/deckModel.ts",
-      "sha256": "ae52be3afe4d28ad0a78d538e220e86d58d9fe459ec6a4452eb866ab94b3d51b"
+      "sha256": "d425aef26c8557705bb1a6fa76edcd70e5d20b33aad2e765ac31ce82e43aa0dd"
     },
     {
       "path": "packages/goreview/app/dom.ts",
@@ -589,7 +589,7 @@
     },
     {
       "path": "packages/goreview/app/screens/decks.ts",
-      "sha256": "31b909b09aca16f395e70ad70b233ce02e30baf6fa09f3d10f14a83918781f47"
+      "sha256": "c7e24af62b9c4079ed5c36e9841799e4dbf5f41e2c777292177954347476fe89"
     },
     {
       "path": "packages/goreview/app/screens/developer.ts",
@@ -624,20 +624,20 @@
       "sha256": "e2f966f7cb9522dc76426a3925b049fe2a81a88db9616b6b57c28faf696eedae"
     },
     {
-      "path": "packages/goreview/app/screens/remediation.ts",
-      "sha256": "effb28795c264bb8cc9afb130763d5211182db79500fa1312877c690950a4d6f"
+      "path": "packages/goreview/app/screens/review.ts",
+      "sha256": "0b3731047679829cfa0d438fb5cf61f57fdf832984a73b6ce980b8334679d140"
     },
     {
-      "path": "packages/goreview/app/screens/review.ts",
-      "sha256": "1a6a240f915369336a46dba9b56946d9364cd5a4dbcd6e9ee0869b82a3dd5f53"
+      "path": "packages/goreview/app/screens/reviewDeck.ts",
+      "sha256": "9064d5e01c19ea904d60a7cd088c749149f1b4322ebe0eedb65a411d11a1c00c"
     },
     {
       "path": "packages/goreview/app/screens/reviewDetails.ts",
-      "sha256": "1b3940afe7266ec237202d00c4abdc97fdf8aaa389618eaad7c2847ce1eb0a3c"
+      "sha256": "78cfee3ddc791472c637619965c3b2b264a26652509bc3bc5b5809836d3317c8"
     },
     {
       "path": "packages/goreview/app/screens/session.ts",
-      "sha256": "bbad0541d408902548cdf09710f08a77998a784c547c6de16d326c22e7df9318"
+      "sha256": "8ce66c2ac378d59c80dbcf05b09a2b590b041f8726ed4a1853e5564a5666dc63"
     },
     {
       "path": "packages/goreview/app/screens/settings.ts",
@@ -753,7 +753,7 @@
     },
     {
       "path": "packages/goreview/app/workspace.ts",
-      "sha256": "5f3195e9db599e35cd7b5cdfc200354fa9de9ddf2b621e1d3eb0f316522e73ee"
+      "sha256": "8e5ce29d987de4ea9016e3a696d38270d922743e38c050aeb2cf0c3d19361cf9"
     },
     {
       "path": "packages/goreview/src/exercises/README.md",
@@ -2353,7 +2353,7 @@
     },
     {
       "path": "public/lexicon/he/biblical-index.json",
-      "sha256": "89584317af26fdad3d720027c819c327367040f6c0b61b4dfb84b672ffe8890b"
+      "sha256": "5be3eea371dc343f090565d673dc3f421eafa3c73dfb72d134b810b0e4f86c6e"
     },
     {
       "path": "public/lexicon/he/biblical/manifest.json",
@@ -4077,8 +4077,8 @@
     "packages/goreview/app/screens/licences.ts",
     "packages/goreview/app/screens/myvocab.ts",
     "packages/goreview/app/screens/prefs.ts",
-    "packages/goreview/app/screens/remediation.ts",
     "packages/goreview/app/screens/review.ts",
+    "packages/goreview/app/screens/reviewDeck.ts",
     "packages/goreview/app/screens/reviewDetails.ts",
     "packages/goreview/app/screens/session.ts",
     "packages/goreview/app/screens/settings.ts",
@@ -4599,7 +4599,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "822684f99e84c15ff3a42d6b58db91d43b28d52d9927a9f4ab5a804ae1412856",
+  "artifactManifestSha256": "b6f6fdf625deb2ebbcdc10f2a299cce9fb1845cf68f52a4445b7aca7fb964bd7",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4654,60 +4654,60 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-Crr45rYg.js",
-      "sha256": "537d00e62ba1d61806aec5b4995db5c955c6a254a02c3eb8b54b76859c670f43"
+      "path": "assets/index-BB-bKboT.js",
+      "sha256": "876fa3a52883166bdf9dcff6edd6baeb6ead331abe1eb4310f98067b3617e0b3"
     },
     {
       "path": "assets/jerusalem-YWyJNBCG.webp",
       "sha256": "36c704fc57e2be69ac10118ef36f476414184c11e2613fa998fd54f6205bf02c"
     },
     {
-      "path": "assets/lang-aramaic-ZEtfnX3s.js",
-      "sha256": "caabe6d6ddb7b763b409bb1ea27572834b17bfd50ef9580edc82df654b567a35"
+      "path": "assets/lang-aramaic-Ce-m8UHV.js",
+      "sha256": "d67c12146c30b0f5a487525c3d6d2258aea37be90d40cab8fe7538508e77561e"
     },
     {
-      "path": "assets/lang-de-D9uIi7VF.js",
-      "sha256": "40e197b4d06e2509ef1e3d78c7696f7c0d09e9d7e9ee9645bd1c94c26599fb03"
+      "path": "assets/lang-de-mOt92NME.js",
+      "sha256": "a58db4e8c789649b7a3d038d6f2abb5193683c6085b0768ed082dd33bdf445a1"
     },
     {
-      "path": "assets/lang-el-B7F16YQx.js",
-      "sha256": "ef7c0e88c52fb908fc67c0bf04c1a4b4dcd6016ad46e5893eba7b0302405e69f"
+      "path": "assets/lang-el-B2IKi-Td.js",
+      "sha256": "dae9e750b8e0787b9fa705a169a8651e8c1f0d11f5eead1eb767b577d9a211b0"
     },
     {
-      "path": "assets/lang-es-BV6mvddQ.js",
-      "sha256": "9561d77be0b58ebd487ab3037fc26fd2327a889f1e97cc70ec47b5184df04a07"
+      "path": "assets/lang-es-Bf3N6eqr.js",
+      "sha256": "5307170aa7bf7414d65164a644c6ece19c9bca857aeac438460d94f74c830387"
     },
     {
-      "path": "assets/lang-he-DqWAahYj.js",
-      "sha256": "b52da27d48d89903680d2e77cff1d2f240dcf58840e679d936405f8256649517"
+      "path": "assets/lang-he-i5usMR0y.js",
+      "sha256": "05a825c38b0e6e7835710c8bf77a89dd350b88ab6770aab18fe3c32f39673f08"
     },
     {
-      "path": "assets/lang-hebrew-X3k98lY3.js",
-      "sha256": "c3360e7f61dfbd035c8905ffd4e2c791ffe14e06b4fbec0354b80d641aacea7f"
+      "path": "assets/lang-hebrew-C5fW1YKa.js",
+      "sha256": "ea2ae055a8f96d502eb171638418e8aad34ff9c2f86d8621cf4ac24609e63f9f"
     },
     {
-      "path": "assets/lang-hi-QWNMMZfi.js",
-      "sha256": "781e66ae55b68e6474ea30e66d9f4a092e87633b9ea40f7dcbc3bfb3bfa0e1f7"
+      "path": "assets/lang-hi-CQg_xnNB.js",
+      "sha256": "7d36c1405f7679376d3a618ebe93c4b7cad4e4920645e8caa4e0f2374af8ebcf"
     },
     {
-      "path": "assets/lang-la-DaeAPARZ.js",
-      "sha256": "ad2a3d91f59e04c9678123fcb64737583c77ca363aed6c226004df2d36080d95"
+      "path": "assets/lang-la-Cmwyp7xn.js",
+      "sha256": "b72d6ac60702279dd55b50c568788d5044e738f7e4d935ad7d363ab5d70878b2"
     },
     {
-      "path": "assets/lang-nb-D4TWUik7.js",
-      "sha256": "34331ab1742abf154f71ae20c2fab0b305798f79969de16f27f49c907926b4e6"
+      "path": "assets/lang-nb-BGmw2A_n.js",
+      "sha256": "539acf502bd6f2a8a0ef4434fdbdcd9a8fd8726fcc9532e3afd40558889698a8"
     },
     {
-      "path": "assets/lang-nn-E_AAqjm_.js",
-      "sha256": "1ff01d26ea6ab2a401491cdaeac93aec2d900002921bec605f62ff6c163c4746"
+      "path": "assets/lang-nn-DGhxUzT9.js",
+      "sha256": "28ace27883f959900d795ca37a5ccf0b5fc760e513b84306cb25d590322ddb88"
     },
     {
-      "path": "assets/lang-norwegian-AjV0FFjd.js",
-      "sha256": "1f74a040e48839ae97c669d7dd24e0dbafa6429814bfeb42e33a6a5a71bd7746"
+      "path": "assets/lang-norwegian-BtIvysFz.js",
+      "sha256": "109e4fe0cf7d56071dc5933ceb516025022a4c3f73902c8e5e144241a0210751"
     },
     {
-      "path": "assets/lang-sq-eDZ3ZbQd.js",
-      "sha256": "dbb3af409b61b03c1d59b976095a5a2c5a3a625b0bd196be0d3846aa6b225912"
+      "path": "assets/lang-sq-Dtwx0jmg.js",
+      "sha256": "863f4708b15f965aba7e52953b0a2e6cc08ccfceb54de4b0df520d4fba6f4dd1"
     },
     {
       "path": "assets/lang-th-NmWvP-CH.js",
@@ -4775,7 +4775,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "27dadabd3307c9a7fe345f04e4458f992c07e3c336df89e5dd3442fab2bc00ff"
+      "sha256": "9060b55ace0b51f0a582ea1788fb7f4bb842613a51c4b7547c5c64597f108d43"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5303,7 +5303,7 @@
     },
     {
       "path": "lexicon/el/koine-index.json.gz",
-      "sha256": "0d4ab25684395fd07a97ac96091a88a1f64f60e2ee6ad7a35ca5003358d36af9"
+      "sha256": "98dd97cb4e08d479bbbfb8e4e81638a281f31be88d39977123f605f157a8f239"
     },
     {
       "path": "lexicon/el/modern/_.json.gz",
@@ -5523,7 +5523,7 @@
     },
     {
       "path": "lexicon/he/biblical/form-frequency.json.gz",
-      "sha256": "567be7be4f519c8beeec068a5fb98a7ef8cc028575fb12cc9ae2ca6a9ffcd9e3"
+      "sha256": "f651bddcb52c66c64eb734c9861921a8a2aa5f66d04fc9754ed9513ba04388e3"
     },
     {
       "path": "lexicon/he/biblical/manifest.json",
@@ -5719,7 +5719,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "31ac444c9fbc7a0b7e6f4a59c5b1df8fc6ec92402be3f84321d98a28e2f426d2"
+      "sha256": "7c4957041db894a6f8e38dfd00d53dac2583328e56e6e345a786de575d0e0b45"
     }
   ]
 }

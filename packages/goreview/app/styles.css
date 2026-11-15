@@ -965,7 +965,6 @@ img, svg, video, canvas { max-width: 100%; }
 }
 
 /* Settings and saved decks share the review palette and a compact title. */
-.screen[data-route="review/decks"] > h1.sr { display: none; }
 .settings-title, .saved-decks-title {
   margin: .65rem 0 1.3rem;
   color: var(--ink);
@@ -997,8 +996,22 @@ img, svg, video, canvas { max-width: 100%; }
 [data-route="review/decks"] .deck-tile { --deck-inset: clamp(.95rem, 4vw, 1.5rem); }
 [data-route="review/decks"] .deck-tile > .deck-face { min-height: 6rem; padding-block: 1rem; }
 [data-route="review/decks"] .deck-title { font-size: clamp(1.85rem, 7vw, 2.85rem); }
-[data-route="review/decks"] .deck-tile .row { padding: 0 var(--deck-inset) .75rem; }
-[data-route="review/decks"] .deck-tile .row > :is(a, button) { min-height: 2.75rem; }
+[data-route="review/decks"] .decklist { display: grid; gap: .85rem; border: 0; }
+[data-route="review/decks"] .deck-tile { --tile: #382a20; --tile-lit: #4b3a2c; --tile-crest: #5b4735; }
+.saved-deck-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .25rem .9rem;
+  padding: 0 var(--deck-inset) .45rem;
+}
+.saved-deck-actions > :is(a, button) { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.75rem; }
+.saved-deck-actions .ec-icon { width: 1.2rem; height: 1.2rem; color: var(--accent); }
+.settings-links > .settings-row { display: flex; align-items: center; justify-content: space-between; gap: .65rem; }
+.settings-links > .settings-row + .settings-row { border-top: 1px solid var(--rule); }
+.settings-chevron { color: var(--accent); }
+.settings-footer { text-align: center; }
 
 #settings-link svg { transform: rotate(0); transform-origin: center; }
 #settings-link[aria-current="page"] svg { transform: rotate(90deg); }

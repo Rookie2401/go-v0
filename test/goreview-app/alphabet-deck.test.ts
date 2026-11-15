@@ -136,8 +136,8 @@ describe('Alphabet: in Saved decks', () => {
     await until(() => !!rig.root.querySelector('#alphabet-due-count'), 'the Alphabet due line');
     const row = rig.q('[data-deck-id="alphabet:sq"]');
     expect(row.getAttribute('data-builtin')).toBe('alphabet');
-    expect(row.querySelector('.deckrow-title')!.textContent).toBe('Alphabet');
-    expect(row.querySelector('.deckrow-line')!.textContent).toBe('36 cards · Albanian');
+    expect(row.querySelector('.deck-title')!.textContent).toBe('Alphabet');
+    expect(row.querySelector('.deck-caption')!.textContent).toBe('36 cards · Albanian');
     expect(row.textContent).not.toContain('native speaker'); // the note stays in the deck's record, not on this page
     expect(rig.q('#alphabet-due-count').textContent).toBe('Nothing due');
     expect(rig.root.querySelector('#start-alphabet-due')).toBeNull(); // the seeded letters do not become due work by being seeded
@@ -163,8 +163,8 @@ describe('Alphabet: in Saved decks', () => {
     const rig = await makeRig({ service, signedIn: true });
     await rig.go('review/decks');
     await until(() => !!rig.root.querySelector('[data-deck-id="alphabet:he"]'), 'the Hebrew alphabet');
-    expect(rig.qa('.deckrow').map((r) => r.getAttribute('data-deck-id'))).toEqual(['alphabet:he']);
-    expect(rig.q('[data-deck-id="alphabet:he"] .deckrow-line').textContent).toBe('27 cards · Hebrew');
+    expect(rig.qa('#saved-decks .deck-tile').map((r) => r.getAttribute('data-deck-id'))).toEqual(['alphabet:he']);
+    expect(rig.q('[data-deck-id="alphabet:he"] .deck-caption').textContent).toBe('27 cards · Hebrew');
     expect(rig.root.querySelector('#class-essentials-due')).toBeNull();
     await rig.go('review');
     expect(rig.q('#previous-count').textContent).toBe('1 saved');
@@ -221,18 +221,18 @@ describe('Alphabet: in Saved decks', () => {
   it('Remove takes it out and it stays out; "Restore Alphabet" brings it back once, and Class Essentials is untouched', async () => {
     const rig = await makeRig({ signedIn: true });
     await rig.go('review/decks');
-    await until(() => rig.qa('.deckrow').length === 2, 'both built-in decks');
+    await until(() => rig.qa('#saved-decks .deck-tile').length === 2, 'both built-in decks');
     expect(rig.root.querySelector('#restore-alphabet')).toBeNull();
     click(rig.q('[data-deck-id="alphabet:sq"] [data-action="remove-deck"]'));
     await until(() => !!rig.root.querySelector('#restore-alphabet'), 'the restore link');
     expect(rig.q('#restore-alphabet').textContent).toBe('Restore Alphabet');
-    expect(rig.qa('.deckrow').map((r) => r.getAttribute('data-deck-id'))).toEqual(['class-essentials:sq']);
+    expect(rig.qa('#saved-decks .deck-tile').map((r) => r.getAttribute('data-deck-id'))).toEqual(['class-essentials:sq']);
     expect(rig.root.querySelector('#restore-class-essentials')).toBeNull();
     await listSavedDecks(rig.app.ctx, 'L1', 'sq'); // another visit does not bring it back
     await rig.go('review'); await rig.go('review/decks');
     await until(() => !!rig.root.querySelector('#restore-alphabet'), 'still removed');
     click(rig.q('#restore-alphabet'));
-    await until(() => rig.qa('.deckrow').length === 2, 'the deck again');
+    await until(() => rig.qa('#saved-decks .deck-tile').length === 2, 'the deck again');
     expect(rig.root.querySelector('#restore-alphabet')).toBeNull();
     expect((await stored(rig)).filter((d) => d.builtin === 'alphabet')).toHaveLength(1);
   });

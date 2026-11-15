@@ -168,7 +168,8 @@ describe('the stylesheet', () => {
       return 0.2126 * r + 0.7152 * g + 0.0722 * b;
     };
     const ratio = (a: string, b: string): number => { const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x); return (hi + 0.05) / (lo + 0.05); };
-    const home = css.slice(css.indexOf('body:has(#screen[data-route="review"]) {'));
+    // the dark palette of the home (and, since 2026-11-14, of the session, Saved Decks and Settings): one block, whatever routes it names
+    const home = css.slice(css.search(/body:has\(#screen[^{]*\[data-route="review"\][^{]*\) \{/));
     const token = (name: string): string => home.match(new RegExp(`${name}: (#[0-9a-f]{6});`))![1];
     const fills = [...(rule('.deck-tile') + rule('.deck-tile[data-deck="current"]')).matchAll(/--tile(?:-lit|-crest)?: (#[0-9a-f]{6});/g)].map((m) => m[1]);
     expect(fills).toHaveLength(6);

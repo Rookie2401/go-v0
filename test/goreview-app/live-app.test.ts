@@ -211,11 +211,11 @@ describe('live updates in the app', () => {
       const rig = await makeRig({ service, fetch: svc.fetchFn, live, signedIn: true });
       await ready(rig, svc);
       await rig.go('review/decks');
-      await until(() => rig.qa('.deckrow').length === 2, 'the list holds only the built-in decks');
+      await until(() => rig.qa('#saved-decks .deck-tile').length === 2, 'the list holds only the built-in decks');
       await saveDeck(rig.app.ctx, { learnerId: 'L1', languageId: 'sq' }, [{ itemId: 'i1', unitId: 'lemma:sq:zog:NOUN', unitKind: 'lemma', label: 'zog', dimension: 'productive-recall', family: 'meaning-to-form' }]);
       service.inject('L1', cardAdded(A, 'zog', 'meaning-to-form', '2026-10-08T09:00:00.000Z'));
       svc.push();
-      await until(() => rig.qa('.deckrow').length === 3, 'the saved deck');
+      await until(() => rig.qa('#saved-decks .deck-tile').length === 3, 'the saved deck');
     });
   });
 

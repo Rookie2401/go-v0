@@ -5,7 +5,7 @@ import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
 import { planCurrentDeck, holdOutOf } from '../../packages/goreview/app/deckModel';
 import { loadReviewModel } from '../../packages/goreview/app/workspace';
-import { cardAdded, destroyRigs, dueCard, ids, makeRig, reopen, seed, type, until, type Rig, readyCards, reviewed } from './helpers';
+import { cardAdded, destroyRigs, dueCard, ids, makeRig, reopen, saveCurrentDeck, seed, type, until, type Rig, readyCards, reviewed } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -135,11 +135,11 @@ describe('cards per deck', () => {
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 5 });
     await reopen(rig);
     await rig.go('review/decks');
-    click(rig.q('#save-deck'));
-    await until(() => rig.qa('.deckrow').length === 3, 'the saved deck');
+    await saveCurrentDeck(rig);
+    await until(() => rig.qa('#saved-decks .deck-tile').length === 3, 'the saved deck');
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 20 });
     await rig.go('review/decks');
-    expect(rig.q('[data-deck-id]:not([data-builtin]) .deckrow-line').textContent).toMatch(/ · 5 cards · /);
+    expect(rig.q('[data-deck-id]:not([data-builtin]) .deck-caption').textContent).toMatch(/^5 cards · /);
     click(rig.q('[data-deck-id]:not([data-builtin]) [data-action="practise-again"]'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the session');
     expect(rig.app.ctx.run.active!.plan.items).toHaveLength(5);

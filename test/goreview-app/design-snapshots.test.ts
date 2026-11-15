@@ -11,7 +11,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import type { ExerciseBuilder } from '../../packages/goreview/src';
 import { PACKS } from '../../packages/language-packs/src/registry';
 import { homePhoto } from '../../packages/goreview/app/homePhotos';
-import { defaultService, destroyRigs, dueCard, FAKE_BUILDERS, ids, key, makeRig, reopen, reviewed, seed, startWith, until, type Rig } from './helpers';
+import { defaultService, destroyRigs, dueCard, FAKE_BUILDERS, ids, key, makeRig, reopen, reviewed, saveCurrentDeck, seed, startWith, until, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 const REPO = path.resolve(__dirname, '../..');
@@ -85,8 +85,8 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
     await reopen(rig);
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('10');
     await rig.go('review/decks');
-    rig.q('#save-deck').click();
-    await until(() => rig.qa('.deckrow').length === 3, 'three saved decks');
+    await saveCurrentDeck(rig);
+    await until(() => rig.qa('#saved-decks .deck-tile').length === 3, 'three saved decks');
     await seed(rig, words.slice(0, 10).flatMap((w) => dueCard(A, `${w}x`, 'written-recognition')));
     await reopen(rig);
     write('home-decks.html', rig);

@@ -7,7 +7,7 @@ import { decksKey, sortVocab, type SavedDeck } from '../../packages/goreview/app
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { homePhoto } from '../../packages/goreview/app/homePhotos';
 import { UI_KEY } from '../../packages/goreview/app/screens/uiprefs';
-import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, reopenDetails, seed, until, unitOf, type Rig, readyCards } from './helpers';
+import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, reopenDetails, saveCurrentDeck, seed, until, unitOf, type Rig, readyCards } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -121,9 +121,10 @@ describe('the GoReview home', () => {
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
     click(rig.q('#entry-previous'));
-    await until(() => rig.app.current() === 'review/decks' && !!rig.root.querySelector('#save-deck'), 'the saved page');
-    click(rig.q('#save-deck'));
-    await until(() => rig.qa('.deckrow').length === 3, 'the saved deck');
+    await until(() => rig.app.current() === 'review/decks' && !!rig.root.querySelector('#saved-decks'), 'the saved page');
+    expect(rig.root.querySelector('#save-deck')).toBeNull(); // the redesign of 2026-11-14 took Save Current Deck off this page
+    await saveCurrentDeck(rig);
+    await until(() => rig.qa('#saved-decks .deck-tile').length === 3, 'the saved deck');
     const [deck] = await savedDecks(rig);
     expect(deck.items.map((i) => i.unitId).sort()).toEqual([unitOf('mace'), unitOf('zog')]);
     expect(deck.languageId).toBe('sq');
@@ -131,22 +132,22 @@ describe('the GoReview home', () => {
     await reopen(rig);
     expect(Number(String(readyCards(rig)))).toBeGreaterThan(0); // an actual due obligation remains scheduled after being saved
     await rig.go('review/decks');
-    expect(rig.q('[data-deck-id]:not([data-builtin]) .deckrow-line').textContent).toMatch(/ · 2 cards · Albanian$/);
+    expect(rig.q('[data-deck-id]:not([data-builtin]) .deck-caption').textContent).toBe('2 cards · Albanian');
     // the card is the button: it holds the deck's line and names itself for a screen reader; no separate "Practise again" button, Remove beside it
     const card = rig.q<HTMLButtonElement>('[data-deck-id]:not([data-builtin]) [data-action="practise-again"]');
     expect(card.tagName).toBe('BUTTON');
     expect(card.classList.contains('deckrow-open')).toBe(true);
-    expect(card.querySelector('.deckrow-line')).not.toBeNull();
+    expect(card.querySelector('.deck-caption')).not.toBeNull();
     expect(card.textContent).toMatch(/2 cards · Albanian, press to practise$/);
-    expect(rig.root.querySelector('.deckrow .btn')).toBeNull();
-    expect(rig.q('[data-deck-id]:not([data-builtin]) [data-action="remove-deck"]').classList.contains('deckrow-remove')).toBe(true);
+    expect(rig.qa('#saved-decks .deck-tile:not([data-builtin]) .btn')).toHaveLength(0);
+    expect(rig.q('[data-deck-id]:not([data-builtin]) [data-action="remove-deck"]').closest('.saved-deck-actions')).not.toBeNull();
     click(card);
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the session');
     expect(rig.app.ctx.run.active!.plan.items.map((p) => p.item.unitId).sort()).toEqual([unitOf('mace'), unitOf('zog')]);
 
     await rig.go('review/decks');
     click(rig.q('[data-deck-id]:not([data-builtin]) [data-action="remove-deck"]'));
-    await until(() => rig.qa('.deckrow').length === 2, 'the removal');
+    await until(() => rig.qa('#saved-decks .deck-tile').length === 2, 'the removal');
     expect(await savedDecks(rig)).toEqual([]);
   });
 

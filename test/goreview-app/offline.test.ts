@@ -11,7 +11,7 @@ import { decksKey } from '../../packages/goreview/app/deckModel';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { KNOWABILITY_PRIORITY_POLICY_VERSION } from '../../packages/goreview/src/planner/priority-policy';
 import { readSnapshot, RECOVERY_SCOPE_VERSION, writeSnapshot } from '../../packages/goreview/app/snapshot';
-import { candidate, knowledgeRow, cardAdded, defaultService, destroyRigs, dueCard, flush, ids, makeRig, queued, reopen, seed, until, unitOf, type Rig, readyCards } from './helpers';
+import { candidate, knowledgeRow, cardAdded, defaultService, destroyRigs, dueCard, flush, ids, makeRig, queued, reopen, saveCurrentDeck, seed, until, unitOf, type Rig, readyCards } from './helpers';
 
 const A = ids('L1', 'sq');
 const click = (el: Element): void => (el as HTMLElement).click();
@@ -169,8 +169,8 @@ describe('offline: the home keeps its deck', () => {
     await reopen(rig);
     await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', sessionMinutes: 25, maxNew: 3, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });
     await rig.go('review/decks');
-    click(rig.q('#save-deck'));
-    await until(() => rig.qa('.deckrow').length === 3, 'the saved deck');
+    await saveCurrentDeck(rig);
+    await until(() => rig.qa('#saved-decks .deck-tile').length === 3, 'the saved deck');
     await rig.go('settings'); await rig.go('review');            // a load writes the snapshot with the deck and the prefs
     const snap = await readSnapshot(rig.app.ctx, 'L1', 'sq');
     expect(JSON.stringify(snap?.decks)).toContain('zog');
@@ -181,7 +181,7 @@ describe('offline: the home keeps its deck', () => {
     expect(rig.q('#previous-count').textContent).toBe('3 saved');
     expect((await rig.app.ctx.state.getPrefs('L1', 'sq')).sessionMinutes).toBe(25);
     await rig.go('review/decks');
-    await until(() => rig.qa('.deckrow').length === 3, 'the deck in the list');
+    await until(() => rig.qa('#saved-decks .deck-tile').length === 3, 'the deck in the list');
 
     // a record that is there is left alone
     await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', sessionMinutes: 12, maxNew: 3, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });

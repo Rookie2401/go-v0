@@ -20,7 +20,8 @@ import type { LocalRepo } from '../../packages/goreview/app/localRepo';
 import { createReviewEngine } from '../../packages/goreview/app/engine';
 import type { AudioDeps, Deps } from '../../packages/goreview/app/ports';
 import type { MobileRuntime } from '../../packages/goreview/app/mobile';
-import { refreshIdle } from '../../packages/goreview/app/workspace';
+import { PRESS_WAIT_MS, currentReviewModel, refreshIdle } from '../../packages/goreview/app/workspace';
+import { holdOutOf, planCurrentDeck, saveDeck } from '../../packages/goreview/app/deckModel';
 
 export const T0 = '2026-10-08T10:00:00.000Z';
 
@@ -562,6 +563,21 @@ export async function queued(rig: Rig): Promise<GoEvent[]> {
 }
 
 export const ids = (learnerId = 'L1', languageId = 'sq'): Ids => ({ learnerId, enrolmentId: `${learnerId}-e1`, languageId });
+
+/**
+ * Saves the learner's Current Deck to Saved decks, as the Saved decks page's own button did until the redesign of 2026-11-14 took the button
+ * off the page: the same model, plan and deck-model call. The page is then opened afresh so it lists the deck.
+ */
+export async function saveCurrentDeck(rig: Rig): Promise<void> {
+  const model = await currentReviewModel(rig.app.ctx, { waitMs: PRESS_WAIT_MS });
+  if (!model) throw new Error('no review model to save a deck from');
+  const holdOut = await holdOutOf(rig.app.ctx, model.identity.learnerId, model.identity.languageId);
+  const deck = await planCurrentDeck(rig.app.ctx, model, holdOut, undefined, 'current');
+  const saved = await saveDeck(rig.app.ctx, model.identity, deck.entries);
+  if (!saved) throw new Error('there was no deck to save');
+  await rig.go('review');
+  await rig.go('review/decks');
+}
 
 /** Re-renders the GoReview home (four entries) from the current local log. */
 export async function reopen(rig: Rig): Promise<void> {

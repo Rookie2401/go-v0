@@ -591,11 +591,20 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
         ? [lexCand!.gloss!]
         : g.glosses;
     let lexicalRecognition: UnitFacts['lexicalRecognition'];
-    const greekBaseGloss = topAlone?.gloss;
+    const arcSafeLexicalReading = lang === 'arc' && status === 'conflicted'
+      ? alone?.candidates.find(c => c.notes?.reviewStatus !== 'requires-review' && c.origin === 'dictionary'
+        && c.sourceId === 'oshb-aramaic' && c.lemma === lemma && c.pos === pos && !!c.gloss)
+      : undefined;
+    const lexicalSourceReading = arcSafeLexicalReading ?? topAlone;
+    const greekBaseGloss = lexicalSourceReading?.gloss;
     const greekIdentities = new Set((alone?.candidates ?? []).map(c => `${adapter.normalize(c.lemma ?? '')}|${c.pos ?? ''}`));
-    if (!answerGlosses.length && !['invalidated', 'conflicted', 'requires-review'].includes(status) && lang === 'el' && lemma && greekBaseGloss
+    const arcLexicalOnlyAllowed = !!arcSafeLexicalReading && greekIdentities.size === 1
+      && alone?.candidates.every(c => c.origin === 'dictionary' && !c.unconfirmed && c.sourceId === 'oshb-aramaic'
+        && adapter.normalize(c.lemma ?? '') === adapter.normalize(lemma ?? '') && c.pos === pos);
+    if (!answerGlosses.length && !['invalidated', 'requires-review'].includes(status)
+      && (status !== 'conflicted' || arcLexicalOnlyAllowed) && (lang === 'el' || lang === 'arc') && lemma && greekBaseGloss
       && topAlone?.origin === 'dictionary' && !topAlone.unconfirmed
-      && ['morphgnt-sblgnt', 'kaikki-grc-tables', 'kaikki-el-tables'].includes(topAlone.sourceId ?? '')
+      && ['morphgnt-sblgnt', 'kaikki-grc-tables', 'kaikki-el-tables', 'oshb-aramaic'].includes(topAlone.sourceId ?? '')
       && alone?.candidates.length && greekIdentities.size === 1
       && greekIdentities.has(`${adapter.normalize(lemma)}|${topAlone.pos ?? ''}`)
       && alone.candidates.every(c => c.origin === 'dictionary' && !c.unconfirmed && c.sourceId === topAlone.sourceId

@@ -61,6 +61,8 @@ export interface Paradigm {
   status: CellStatus | 'none';
   /** For a language that does not inflect: the constructions the card shows instead (ids the pack explains). */
   constructions?: string[];
+  /** The analyser's cells are forms a source attests, not forms its rules generate (the Hebrew index of the Tanakh). */
+  attested?: boolean;
 }
 
 /** What an adapter's `paradigm()` returns: its generated cells (no status yet) with the layout and notes; `mergeParadigm` adds the dictionary half. */
@@ -72,6 +74,8 @@ export interface GeneratedParadigm {
   notes: string[];
   /** For `kind: 'none'`: the construction ids the card shows instead. */
   constructions?: string[];
+  /** The cells are read off a source's attested forms; no rule produced them. */
+  attested?: boolean;
 }
 
 /** A stable key for a feature bundle: `Case=Acc|Definite=Def|Number=Sing` (sorted). */

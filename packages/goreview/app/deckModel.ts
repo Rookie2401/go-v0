@@ -3,9 +3,9 @@ import { itemIdFor } from '../src/scheduler/deck';
  * GoReview batches contain justified eligible work. Batch size is a maximum, never
  * a demand to fill. Saved/selected practice carries a typed explicit intent.
  */
-import { KNOWLEDGE_LEVELS, type KnowledgeLevel } from '../../repository-contract/src';
+import { KNOWLEDGE_LEVELS, displayLevelOf, type KnowledgeLevel } from '../../repository-contract/src';
 import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeOutcome, PlannedItem, ReviewIntent, SessionPlan } from '../src/types';
-import { reviewEligibility } from '../src/planner/eligibility';
+import { createReviewEligibilityContext, reviewEligibility, type ReviewEligibilityContext } from '../src/planner/eligibility';
 import { admissionBudget } from '../src/planner/budget';
 import { chooseMicrodeckTarget, microdeckMaximum } from '../src/planner/microdeck';
 import { estimateSeconds, microdeckObservations } from '../src/planner/planner';
@@ -14,7 +14,8 @@ import { rankComparativePriority } from '../src/intake/intake';
 import type { AppContext } from './context';
 import { unitLabel } from './format';
 import { recordSavedDeckChange, sharedSavedDecks } from './savedDeckSync';
-import { classDeckFor, classLanguageOf, isClassUnit } from './classEssentials';
+import { alphabetDeckFor } from './alphabetDeck';
+import { classDeckFor, isClassUnit } from './classEssentials';
 import { readSnapshot, writeSnapshot, MAX_SNAPSHOT_WORDS } from './snapshot';
 import { observedReviewSeconds, type ReviewModel } from './workspace';
 
@@ -52,10 +53,29 @@ const entryOf = (p: PlannedItem): DeckEntry => ({ itemId: p.item.itemId, unitId:
 const effective = (item: DeckItem) => item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict);
 const knownItem = (model: ReviewModel, w: Pick<Wanted, 'unitId' | 'dimension'>) =>
   [...model.deck, ...(model.classDeck ?? [])].find(i => i.unitId === w.unitId && i.dimension === w.dimension);
+/**
+ * The evidence indexes every eligibility check of one model shares (2026-11-09). Without them each card's check sorted and re-selected the
+ * learner's whole history: with a few hundred reviewed cards the home took 15 s of a phone's processor. Kept per model and rebuilt when its
+ * deck, events or time change.
+ */
+const contexts = new WeakMap<ReviewModel, { deck: unknown; classDeck: unknown; events: unknown; now: string; context: ReviewEligibilityContext }>();
+function contextOf(model: ReviewModel): ReviewEligibilityContext {
+  const kept = contexts.get(model);
+  if (kept && kept.deck === model.deck && kept.classDeck === model.classDeck && kept.events === model.events && kept.now === model.now) return kept.context;
+  const context = createReviewEligibilityContext([...model.deck, ...(model.classDeck ?? [])], model.events, model.now);
+  contexts.set(model, { deck: model.deck, classDeck: model.classDeck, events: model.events, now: model.now, context });
+  return context;
+}
+/** The shared indexes with one card's repair status taken at another time, as a context built at that time would give it. */
+function contextAt(model: ReviewModel, item: DeckItem, at: string): ReviewEligibilityContext {
+  const base = contextOf(model);
+  if (at === model.now) return base;
+  return { ...base, remediationByCard: new Map(remediationBacklog([item], model.events, at, base.remediationEvidence).map((row) => [row.itemId, row])) };
+}
 function eligibility(model: ReviewModel, w: Wanted, intent: ReviewIntent, remainingNew: number) {
   return reviewEligibility({ item: knownItem(model, w), itemId:itemIdFor(w.unitId,w.dimension), unitId: w.unitId, knowledge: model.knowledge.find(k => k.unitId === w.unitId),
     events: model.events, now: model.now, intent, remainingNew,
-    factsInvalidated: ['needs-validation', 'too-uncertain'].includes(w.outcome?.decision ?? '') });
+    factsInvalidated: ['needs-validation', 'too-uncertain'].includes(w.outcome?.decision ?? ''), context: contextOf(model) });
 }
 const budgetFor = (model: ReviewModel) => admissionBudget(model.events, {
   learnerId: model.identity.learnerId, languageId: model.identity.languageId, now: model.now,
@@ -206,7 +226,7 @@ export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdO
     } else if (!due && item.status === 'active' && !item.invalidatedAt && !item.suspendedReason) {
       const dueAt = Date.parse(item.schedule.due);
       const canBecomeDue = Number.isFinite(dueAt) && reviewEligibility({ item, itemId:item.itemId, unitId:item.unitId, knowledge:model.knowledge.find(k=>k.unitId===item.unitId),
-        events:model.events, now:item.schedule.due, intent:{ kind:'explicit', reason:'early-review', requestedAt:model.now }, remainingNew:0 }).eligible;
+        events:model.events, now:item.schedule.due, intent:{ kind:'explicit', reason:'early-review', requestedAt:model.now }, remainingNew:0, context: contextAt(model, item, item.schedule.due) }).eligible;
       if (canBecomeDue && (item.schedule.phase==='learning' || item.schedule.phase==='relearning')
         && (!summary.nextReturnAt || dueAt < Date.parse(summary.nextReturnAt))) summary.nextReturnAt = item.schedule.due;
       else if (canBecomeDue && item.schedule.phase==='review'
@@ -233,9 +253,12 @@ export function planFreshDeck(ctx: AppContext, model: ReviewModel, setAside: Rea
   return planCurrentDeck(ctx, { ...model, outcomes: rest.map((o) => ranked.get(key(o)) ?? o) }, setAside, undefined, 'current');
 }
 
-/** Due-only Class Essentials practice. Unreviewed seeded cards are never admitted as new work here. */
-export async function planClassEssentialsDue(ctx: AppContext, model: ReviewModel): Promise<SessionPlan> {
-  const deck = (model.classDeck ?? []).filter(item => effective(item).length > 0
+/**
+ * Due-only practice of a built-in deck (Class Essentials, Alphabet). Unreviewed seeded cards are never admitted as new work here. `units` names the
+ * deck's own cards: the two built-in decks share the class-card store, and each counts and asks only what is its own.
+ */
+export async function planClassEssentialsDue(ctx: AppContext, model: ReviewModel, units?: ReadonlySet<string>): Promise<SessionPlan> {
+  const deck = (model.classDeck ?? []).filter(item => (!units || units.has(item.unitId)) && effective(item).length > 0
     && item.status === 'active' && !item.invalidatedAt && !item.suspendedReason
     && Date.parse(item.schedule.due) <= Date.parse(model.now));
   const plan = ctx.engine.plan({ deck, intake: [], prefs: model.prefs, audio: model.audio, now: model.now,
@@ -310,12 +333,16 @@ export interface SavedDeck {
   languageId: string;
   varietyId?: string;
   items: DeckEntry[];
-  /** A built-in deck (Class Essentials) has a name, a description and notes of its own; a deck the learner saved has none. */
+  /** A built-in deck (Class Essentials, Alphabet) has a name, a description and notes of its own; a deck the learner saved has none. */
   name?: string;
   description?: string;
   notes?: string;
-  builtin?: 'class-essentials';
+  builtin?: BuiltinDeck;
 }
+
+/** The decks every language starts with: the class phrases (where the language has them) and the alphabet. */
+export type BuiltinDeck = 'class-essentials' | 'alphabet';
+const isBuiltin = (v: unknown): v is BuiltinDeck => v === 'class-essentials' || v === 'alphabet';
 
 type AddedWord = Pick<Wanted, 'unitId' | 'unitKind' | 'dimension' | 'family'>;
 interface DeckStore { v: 1; decks: SavedDeck[]; holdOut: string[]; added: AddedWord[]; /** Built-in decks the learner removed (they stay removed until restored). */ dismissed: string[] }
@@ -338,7 +365,7 @@ function cleanStore(raw: unknown): DeckStore {
     if (!d || !str(d.id) || !str(d.savedAt) || !str(d.languageId) || !Array.isArray(d.items)) continue;
     const items = d.items.map(cleanEntry).filter((x): x is DeckEntry => !!x);
     if (items.length) decks.push({ id: d.id, savedAt: d.savedAt, languageId: d.languageId, ...(str(d.varietyId) ? { varietyId: d.varietyId } : {}), items,
-      ...(str(d.name) ? { name: d.name } : {}), ...(str(d.description) ? { description: d.description } : {}), ...(str(d.notes) ? { notes: d.notes } : {}), ...(d.builtin === 'class-essentials' ? { builtin: d.builtin } : {}) });
+      ...(str(d.name) ? { name: d.name } : {}), ...(str(d.description) ? { description: d.description } : {}), ...(str(d.notes) ? { notes: d.notes } : {}), ...(isBuiltin(d.builtin) ? { builtin: d.builtin } : {}) });
   }
   const added = (Array.isArray(r.added) ? r.added : []).filter((w): w is AddedWord => !!w && str((w as AddedWord).unitId) && str((w as AddedWord).unitKind) && str((w as AddedWord).dimension) && str((w as AddedWord).family));
   return { v: 1, decks, holdOut: Array.isArray(r.holdOut) ? r.holdOut.filter(str) : [], added, dismissed: Array.isArray(r.dismissed) ? r.dismissed.filter(str) : [] };
@@ -360,37 +387,47 @@ const writeStore = (ctx: AppContext, learnerId: string, languageId: string, stor
 let chain: Promise<unknown> = Promise.resolve();
 const serial = <T>(fn: () => Promise<T>): Promise<T> => { const run = chain.then(fn, fn); chain = run.catch(() => undefined); return run; };
 
+/** The built-in decks a language has, as they are seeded: Class Essentials (seven languages) first, then the Alphabet (every language). */
+function builtinSeeds(languageId: string, varietyId: string | undefined, savedAt: string): SavedDeck[] {
+  return [classDeckFor(languageId, varietyId, savedAt), alphabetDeckFor(languageId, varietyId, savedAt)].filter((d): d is SavedDeck => !!d);
+}
+const builtinId = (languageId: string, kind: BuiltinDeck): string | undefined => builtinSeeds(languageId, undefined, '').find((d) => d.builtin === kind)?.id;
+
 /**
- * The saved decks of one language, newest first. Class Essentials is seeded here on the first visit, with the stable id `class-essentials:<lang>`:
- * a second call finds it and adds nothing, and a deck the learner removed stays removed until it is restored.
+ * The saved decks of one language, newest first. The built-in decks are seeded here on the first visit, with stable ids (`class-essentials:<lang>`,
+ * `alphabet:<lang>`): a second call finds them and adds nothing, and a deck the learner removed stays removed until it is restored. A learner who
+ * had Class Essentials before the Alphabet deck existed gets the Alphabet on the next visit.
  */
 export async function listSavedDecks(ctx: AppContext, learnerId: string, languageId: string, varietyId?: string): Promise<SavedDeck[]> {
   const first = await readStore(ctx, learnerId, languageId);
-  if (!classLanguageOf(languageId)) return sharedSavedDecks(ctx, learnerId, languageId, first.decks);
+  if (!builtinSeeds(languageId, varietyId, '').length) return sharedSavedDecks(ctx, learnerId, languageId, first.decks);
   return serial(async () => {
     const store = await readStore(ctx, learnerId, languageId);
-    const seed = classDeckFor(languageId, varietyId, ctx.deps.now().toISOString());
-    if (seed && !store.dismissed.includes(seed.id) && !store.decks.some((d) => d.id === seed.id)) {
-      store.decks = [seed, ...store.decks];
+    const missing = builtinSeeds(languageId, varietyId, ctx.deps.now().toISOString()).filter((seed) => !store.dismissed.includes(seed.id) && !store.decks.some((d) => d.id === seed.id));
+    if (missing.length) {
+      store.decks = [...missing, ...store.decks]; // the page orders by date; two decks seeded in the same instant are listed by id
       await writeStore(ctx, learnerId, languageId, store);
     }
     return sharedSavedDecks(ctx, learnerId, languageId, store.decks);
   });
 }
-/** Whether Class Essentials was removed, so Saved decks can offer to restore it. */
-export async function classEssentialsRemoved(ctx: AppContext, learnerId: string, languageId: string): Promise<boolean> {
-  const id = classDeckFor(languageId, undefined, '')?.id;
-  return !!id && (await readStore(ctx, learnerId, languageId)).dismissed.includes(id);
+/** The built-in decks the learner removed, so Saved decks can offer to restore each. */
+export async function removedBuiltins(ctx: AppContext, learnerId: string, languageId: string): Promise<BuiltinDeck[]> {
+  const dismissed = (await readStore(ctx, learnerId, languageId)).dismissed;
+  return builtinSeeds(languageId, undefined, '').filter((d) => dismissed.includes(d.id)).map((d) => d.builtin!);
 }
-export function restoreClassEssentials(ctx: AppContext, learnerId: string, languageId: string): Promise<void> {
+export function restoreBuiltin(ctx: AppContext, learnerId: string, languageId: string, kind: BuiltinDeck): Promise<void> {
   return serial(async () => {
     const store = await readStore(ctx, learnerId, languageId);
-    const id = classDeckFor(languageId, undefined, '')?.id;
+    const id = builtinId(languageId, kind);
     if (!id) return;
     store.dismissed = store.dismissed.filter((d) => d !== id);
     await writeStore(ctx, learnerId, languageId, store);
   });
 }
+/** Whether Class Essentials was removed, so Saved decks can offer to restore it. */
+export const classEssentialsRemoved = async (ctx: AppContext, learnerId: string, languageId: string): Promise<boolean> => (await removedBuiltins(ctx, learnerId, languageId)).includes('class-essentials');
+export const restoreClassEssentials = (ctx: AppContext, learnerId: string, languageId: string): Promise<void> => restoreBuiltin(ctx, learnerId, languageId, 'class-essentials');
 export async function holdOutOf(ctx: AppContext, learnerId: string, languageId: string): Promise<Set<string>> {
   return new Set((await readStore(ctx, learnerId, languageId)).holdOut);
 }
@@ -403,16 +440,22 @@ export function setHoldOut(ctx: AppContext, learnerId: string, languageId: strin
   });
 }
 
-/** Moves the deck to the saved list; its units are held out of the next deck so a fresh one is planned. */
-export function saveDeck(ctx: AppContext, id: { learnerId: string; languageId: string; varietyId?: string }, entries: readonly DeckEntry[]): Promise<SavedDeck | undefined> {
+/**
+ * Moves the deck to the saved list; its units are held out of the next deck so a fresh one is planned.
+ * `finished`: the deck is being saved at the end of its own session (the owner, 2026-11-14). It was asked already, so nothing is held out and
+ * the words added by hand are left alone: the next deck is planned and filled exactly as if the deck had not been saved.
+ */
+export function saveDeck(ctx: AppContext, id: { learnerId: string; languageId: string; varietyId?: string }, entries: readonly DeckEntry[], opts: { finished?: boolean } = {}): Promise<SavedDeck | undefined> {
   return serial(async () => {
     if (!entries.length) return undefined;
     const store = await readStore(ctx, id.learnerId, id.languageId);
     const saved: SavedDeck = { id: ctx.deps.newId(), savedAt: ctx.deps.now().toISOString(), languageId: id.languageId, ...(id.varietyId ? { varietyId: id.varietyId } : {}), items: entries.map((e) => ({ ...e })) };
     await recordSavedDeckChange(ctx, 'save', saved);
     store.decks = [saved, ...store.decks].slice(0, MAX_SAVED);
-    store.holdOut = [...new Set(entries.map((e) => e.unitId))];
-    store.added = [];
+    if (!opts.finished) {
+      store.holdOut = [...new Set(entries.map((e) => e.unitId))];
+      store.added = [];
+    }
     await writeStore(ctx, id.learnerId, id.languageId, store);
     return saved;
   });
@@ -446,6 +489,7 @@ export type VocabSort = 'least' | 'recent';
 export interface VocabRow {
   unitId: string;
   label: string;
+  /** The level SHOWN (and sorted by) in My vocab: the Repository's level, except New for a word met only in passing (`displayLevelOf`, owner 2026-11-05). Nothing that plans or decides reads it. An entry at New is not listed or counted (`isListedWord`, owner 2026-11-14). */
   level: KnowledgeLevel;
   encounters: number;
   /** When the word was last tapped or met (ISO). */
@@ -499,6 +543,53 @@ export function mergeVocab(records: readonly VocabRecord[]): VocabRow[] {
     });
   }
   return out;
+}
+
+/** A lemma a form may belong to, as an analysis names it: the dictionary word and, when known, its part of speech. */
+export interface FormLemma { lemma: string; pos?: string }
+
+/**
+ * Folds the entry of a FORM into the entry of its lemma, after the fact (2026-11-14).
+ *
+ * `mergeVocab` folds a form only when the Repository holds a form-of relation for it, and the service's resolver has none for many
+ * forms the readers recorded together with a lemma (Biblia records the form id AND the lemma id of every word of an opened verse; the
+ * service, with a smaller index, may link the form to nothing). Such a form then stood in My vocab as a word of its own, at its own
+ * level (New, having only been met in passing), beside a lemma the learner had marked Automatic: the readers show that same word at
+ * its lemma's level, because they read a word's level over its form row and its lemma row together (`levelOfRows`).
+ *
+ * `lemmas` are the lemmas the language pack's own analysis gives the form, best first. The form's entry joins the first of them that
+ * has an entry in the list; the result is what `mergeVocab` would have made had the relation been there: the lemma is the word
+ * shown, the level the higher of the two, the encounters the larger, the last-seen the later, and the form is listed in `metAs`.
+ * A form with no lemma in the list stays an entry of its own. Returns the SAME array when nothing changes.
+ */
+export function foldFormRow(rows: readonly VocabRow[], formUnitId: string, lemmas: readonly FormLemma[], languageId: string): readonly VocabRow[] {
+  const idsOf = (r: VocabRow): string[] => r.unitIds ?? [r.unitId];
+  const form = rows.find((r) => idsOf(r).includes(formUnitId));
+  // only an entry that is SHOWN as a form is folded: one already under a lemma, or a lemma itself, stays as it is
+  if (!form || !form.unitId.startsWith('form:')) return rows;
+  let into: VocabRow | undefined;
+  for (const l of lemmas) {
+    if (!l.lemma) continue;
+    const base = `lemma:${languageId}:${l.lemma}`;
+    const exact = l.pos ? `${base}:${l.pos}` : undefined;
+    // with a part of speech: that lemma, or the lemma recorded without one; without: the lemma under any part of speech
+    const is = (id: string): boolean => id === base || (exact ? id === exact : id.startsWith(`${base}:`));
+    into = rows.find((r) => r !== form && !r.unitId.startsWith('form:') && idsOf(r).some(is));
+    if (into) break;
+  }
+  if (!into) return rows;
+  const target = into;
+  const lastSeen = [target.lastSeenAt, form.lastSeenAt].filter((t): t is string => !!t).sort().at(-1);
+  const met = [...new Set([...(target.metAs ?? []), form.label, ...(form.metAs ?? [])].filter((f) => f && normWord(f) !== normWord(target.label)))].slice(0, 3);
+  const merged: VocabRow = {
+    ...target,
+    unitIds: [...new Set([...idsOf(target), ...idsOf(form)])],
+    level: rankOf(form.level) > rankOf(target.level) ? form.level : target.level,
+    encounters: Math.max(target.encounters, form.encounters),
+    ...(lastSeen ? { lastSeenAt: lastSeen } : {}),
+    ...(met.length ? { metAs: met } : {}),
+  };
+  return rows.filter((r) => r !== form).map((r) => (r === target ? merged : r));
 }
 
 /** Least known first (level, then fewest encounters), or the most recently encountered first. Ties fall back to the word, so the order is stable. */
@@ -562,7 +653,7 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<Vocab
       if (isClassUnit(k.unitId)) continue; // the Class Essentials cards are not vocabulary the learner met
       const last = k.lastSeenAt ?? item.lastEncounter;
       records.push({
-        unitId: k.unitId, label: item.unit?.label || unitLabel(k.unitId), level: k.level, encounters: k.encounters, ...(last ? { lastSeenAt: last } : {}),
+        unitId: k.unitId, label: item.unit?.label || unitLabel(k.unitId), level: displayLevelOf(k), encounters: k.encounters, ...(last ? { lastSeenAt: last } : {}),
         kind: item.unit?.kind ?? k.unitId.split(':', 1)[0], forms: item.surfaceForms ?? [],
       });
     }
@@ -590,5 +681,20 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<Vocab
   return { rows, total: rows.length, complete, ...(incompleteReason ? { incompleteReason } : {}) };
 }
 
-/** How many words the learner has met: the merged entries of My vocab. */
-export const vocabCount = (rows: readonly VocabRow[]): number => rows.length;
+/**
+ * Which entries ARE the learner's vocabulary (the owner, 2026-11-14: "if the user met it in passing but did not actually pick the word,
+ * such that it is new, then the word should not be in the vocab list at all. Seen to automatic, never new").
+ *
+ * A word shown New is one the learner never picked: it was met in passing (a verse opened, a page scanned) and nothing else, or it was
+ * marked New again. The Repository still holds its row, the readers still paint it New on the page, and GoReview still draws on its
+ * encounters; it is only not LISTED as a word of theirs, and not counted as one. The rule is applied where the list is shown or counted,
+ * after forms have been folded into their lemmas (a New lemma row must still be there to receive a form the learner did pick).
+ */
+export const isListedWord = (row: Pick<VocabRow, 'level'>): boolean => row.level !== 'new';
+export const listedVocab = <T extends Pick<VocabRow, 'level'>>(rows: readonly T[]): T[] => rows.filter(isListedWord);
+
+/** How many words are the learner's: the listed entries of My vocab (Seen to Automatic). */
+export const vocabCount = (rows: readonly VocabRow[]): number => listedVocab(rows).length;
+
+/** The same count from knowledge rows alone, when the vocabulary list could not be read (no folding: a lower bound is not claimed, only "about"). */
+export const listedKnowledgeCount = (knowledge: ReadonlyArray<Parameters<typeof displayLevelOf>[0]>): number => knowledge.filter((k) => displayLevelOf(k) !== 'new').length;

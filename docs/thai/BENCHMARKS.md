@@ -719,3 +719,38 @@ and line breaks inside a unit are written ␣ ↵ ␍ ⇥ ⍽ (see `src/bench/un
 - Still failing and left for real prose: single-space dialogue turns, a quotation cut from its reporting clause, no mark between
   sentences, list markers in the middle of a paragraph, hard line breaks, division of a long sentence. Failing and not yet decided: initials,
   a stop in quoted English, a chapter number with a stop.
+
+## 5 Dictionary headwords in the analyser (2026-11-13)
+
+**Why.** The language audit of 2026-11-12 found that only 67.6 % of 1,000 words of the Thai Wikipedia articles on bread and water got a
+reading. The missing words (ขนมปัง, ผสม, แป้ง, แข็ง, ผลิต, ของเหลว, ชนิด) were cut correctly; the analyser simply had no reading for any
+word outside its hand list of about 600 entries, and the card asked the 20,254-entry dictionary for a meaning only by the surface.
+
+**Change.** Thai does not inflect, so a dictionary headword is its own lemma. `scripts/thai-words-build.mts` writes the 17,222 Thai-script
+headwords of the installed dictionary (`kaikki-th@2026-09-28`, CC BY-SA 4.0) with their parts of speech into
+`src/adapters/thai/dictionary-words-data.ts`. A word the hand list lacks but the dictionary has reads as itself with those parts of speech
+(the dictionary's first first, 0.7 and below, origin `dictionary`, no gloss of its own); the hand list always wins. Where the dictionary
+gives several parts of speech, standard grammar picks: a classifier after a number, a verb after an auxiliary, the negator, ที่ / ซึ่ง or
+การ, an adjective straight after a noun. The prose tokenizer joins ICU's fragments of a word it lacks (an unknown piece shorter than three
+letters, joined when the whole is a known word: ส|วิ|ส → สวิส); a piece ICU keeps whole is never cut, and pieces that are all words keep
+ICU's split (the ladder's ชาน|ชาลา). The U+200B path (OTCV) is unchanged. No rule was taken from the gold sets.
+
+**Re-measured** (same worktree, before → after; gold labels AI-judged, unreviewed):
+
+| measure | before | after |
+|---|---|---|
+| Wikipedia probe, words with a reading (1,000) | 67.6 % | 97.3 % |
+| gold dev lemma / POS (n=214) | 84.6 % / 73.8 % | 92.5 % / 81.3 % |
+| gold hard lemma / POS (n=74) | 63.5 % / 52.7 % | 78.4 % / 67.6 % |
+| gold unseen lemma / POS (n=80) | 91.3 % / 66.3 % | 91.3 % / 72.5 % |
+| gold hard segmentation exact (n=10) | 50.0 % | 50.0 % |
+| gold word = one engine token, dev / hard | 91.1 % / 79.7 % | 91.1 % / 79.7 % |
+| Wiktionary examples (3,116), boundary F1 / exact | 90.27 % / 61.26 % | 90.56 % / 62.00 % |
+
+The grammar rules alone moved no gold number (measured separately). The Wiktionary-examples set takes its word breaks from the same
+Wiktionary data as the headword list, so it favours the change; a dictionary longest-match would score far higher on it for that reason,
+which is why compounds of two known words are NOT joined. **The segmentation gate is still not met**: nothing has been measured on book
+prose with a native-reviewed segmentation. The floors for th in `test/gold/floors.ts` were re-measured, not edited to pass.
+Bundle: `dist/analysers/th.js` 224,689 → 646,959 bytes (loaded only for Thai pages); the worker and content script do not carry it.
+Reproduce: `npx vite-node scripts/thai-words-build.mts --check`; `npx vite-node --config scripts/vite.config.ts scripts/gold-score.mts --langs th`;
+`npm run bench:words -- --gold data/benchmarks/th/generated/wiktionary-examples.gold.jsonl --systems adapter,icu`.

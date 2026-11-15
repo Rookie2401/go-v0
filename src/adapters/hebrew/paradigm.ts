@@ -98,8 +98,10 @@ export function heParadigm(lemma: string, pos: PartOfSpeech): GeneratedParadigm 
     : kind === 'pronoun-paradigm' || kind === 'determiner-paradigm'
       ? { columns: { key: 'Number', values: [['Sing', 'singular'], ['Plur', 'plural']] as Array<[string, string]> }, rows: { key: 'Person', values: [['1', '1st'], ['2', '2nd'], ['3', '3rd']] as Array<[string, string]> }, sections: ['PronType', 'Gender'] }
       : { columns: { key: 'Number', values: [['Sing', 'singular'], ['Dual', 'dual'], ['Plur', 'plural']] as Array<[string, string]> }, rows: { key: 'State', values: [['Abs', 'absolute'], ['Cons', 'construct'], ['Det', 'determined']] as Array<[string, string]> }, sections: ['Gender', 'Poss', 'Person'] };
+  // the stem names the table only when the table is of one stem: רום has Qal, Polel, Polal, Hifil, Hofal and Hitpolel forms
+  const stems = new Set([...cells.values()].map((c) => c.features.Binyan).filter(Boolean));
   return {
-    kind, cells: [...cells.values()], layout, ...(binyan ? { template: binyan } : {}),
+    kind, attested: true, cells: [...cells.values()], layout, ...(binyan && stems.size <= 1 ? { template: binyan } : {}),
     notes: [
       `Cells are the forms the sources hold for this word: ${sources.map((s) => (s.startsWith('oshb') ? 'attested in the Tanakh (Open Scriptures morphology)' : 'listed in the Wiktionary table')).join(' and ')}. A cell no source holds is absent — nothing is generated. Forms with attached prefixes (וְ בְּ לְ …) or pronominal suffixes are not listed as cells.`,
     ],

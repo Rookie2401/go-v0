@@ -20,6 +20,8 @@ import type { LocalRepo } from '../../packages/goreview/app/localRepo';
 import { createReviewEngine } from '../../packages/goreview/app/engine';
 import type { AudioDeps, Deps } from '../../packages/goreview/app/ports';
 import type { MobileRuntime } from '../../packages/goreview/app/mobile';
+import { PRESS_WAIT_MS, currentReviewModel, refreshIdle } from '../../packages/goreview/app/workspace';
+import { holdOutOf, planCurrentDeck, saveDeck } from '../../packages/goreview/app/deckModel';
 
 export const T0 = '2026-10-08T10:00:00.000Z';
 
@@ -49,6 +51,18 @@ export class FakeService {
   /** When true every call throws. */
   allDown = false;
   private n = 0;
+  /** Every request made to the api, answered or not (a hung one is listed and never answered until `release`). */
+  requests: string[] = [];
+  /** How many requests were answered. */
+  answered = 0;
+  private hung = false;
+  private waiting: Array<() => void> = [];
+
+  /** From now on no request is answered (a service that accepts the connection and never replies) until `release`. */
+  hang(): void { this.hung = true; }
+  /** Answers every hung request, and every later one. */
+  release(): void { this.hung = false; for (const go of this.waiting.splice(0)) go(); }
+  private gate(): Promise<void> { return this.hung ? new Promise<void>((resolve) => { this.waiting.push(resolve); }) : Promise.resolve(); }
 
   addAccount(email: string, password: string, learnerId: string, enrolments: Array<Partial<Enrolment> & { languageId: string }>): Account {
     const a = { email, password, learnerId };
@@ -177,7 +191,12 @@ export class FakeService {
       },
       async deleteDocument(docId: string) { net(false); const l = learner(); if (!l) return fail(401); self.docs.get(l)?.delete(docId); return { ok: true as const, status: 204, data: null }; },
     };
-    return api as unknown as RepositoryApi;
+    // every method passes through the gate: it records the request, waits while the service is hung, then counts the answer
+    return new Proxy(api, { get(target, prop) {
+      const value = Reflect.get(target, prop) as unknown;
+      if (typeof value !== 'function') return value;
+      return async (...args: unknown[]) => { self.requests.push(String(prop)); await self.gate(); self.answered += 1; return (value as (...a: unknown[]) => unknown).apply(target, args); };
+    } }) as unknown as RepositoryApi;
   }
 }
 
@@ -398,6 +417,9 @@ export interface RigOptions {
   live?: Deps['live'];
   /** The GoReview (iPhone) edition. */
   edition?: Deps['edition'];
+  enableGoTell?: boolean;
+  /** Put the launch screen (#goreview-splash, the review build's) in the page before the app starts. */
+  splash?: boolean;
 }
 
 export const rigs: Rig[] = [];
@@ -428,6 +450,7 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
   const root = document.createElement('div');
   root.id = 'app';
   document.body.append(root);
+  if (opts.splash) { const splash = document.createElement('div'); splash.id = 'goreview-splash'; splash.innerHTML = '<span class="splash-mark"></span>'; document.body.append(splash); }
   const service = opts.service ?? defaultService();
   const area = opts.area ?? createMemoryArea();
   const audio = opts.audio === undefined ? fakeAudio() : opts.audio;
@@ -448,6 +471,7 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
     ...(opts.links ? { links: opts.links } : {}),
     ...(opts.live ? { live: opts.live } : {}),
     ...(opts.edition ? { edition: opts.edition } : {}),
+    ...(opts.enableGoTell ? { enableGoTell: true } : {}),
     ...(opts.mobile ? { mobile: opts.mobile } : {}),
     win: window, doc: document, fetch: opts.fetch ?? ((() => { throw new Error('no network in tests'); }) as unknown as typeof fetch), area, config: opts.config ?? { serviceUrl: 'https://repository.example.org' },
     createApi: (_url, token) => service.api(token),
@@ -518,6 +542,12 @@ export function candidate(label: string, score: number, over: Partial<ReviewCand
   };
 }
 
+/**
+ * A word the learner PICKED: looked up once (a lookup adds to `exposure.negative`). My vocab lists the words the learner picked, Seen to
+ * Automatic; a row at Seen without this was only met in passing, reads New, and is not listed (the owner, 2026-11-14).
+ */
+export const PICKED = { exposure: { score: 0, confidence: 0, observations: 1, positive: 0, negative: 1, weight: 0, contexts: 0 } } as unknown as UnitKnowledge['dimensions'];
+
 const est = (over: Partial<DimensionEstimate> = {}): DimensionEstimate => ({ score: 0, confidence: 0, observations: 0, positive: 0, negative: 0, weight: 0, contexts: 0, ...over });
 export function knowledgeRow(learnerId: string, unitId: string, languageId: string, dims: Partial<Record<Dimension, Partial<DimensionEstimate>>>): UnitKnowledge {
   const dimensions = Object.fromEntries((['exposure', 'assistedRecognition', 'readingRecognition', 'listeningRecognition', 'productiveRetrieval', 'contextualProduction', 'grammaticalUnderstanding'] as Dimension[])
@@ -540,11 +570,34 @@ export async function queued(rig: Rig): Promise<GoEvent[]> {
 
 export const ids = (learnerId = 'L1', languageId = 'sq'): Ids => ({ learnerId, enrolmentId: `${learnerId}-e1`, languageId });
 
+/**
+ * Saves the learner's Current Deck to Saved decks, as the Saved decks page's own button did until the redesign of 2026-11-14 took the button
+ * off the page: the same model, plan and deck-model call. The page is then opened afresh so it lists the deck.
+ */
+export async function saveCurrentDeck(rig: Rig): Promise<void> {
+  const model = await currentReviewModel(rig.app.ctx, { waitMs: PRESS_WAIT_MS });
+  if (!model) throw new Error('no review model to save a deck from');
+  const holdOut = await holdOutOf(rig.app.ctx, model.identity.learnerId, model.identity.languageId);
+  const deck = await planCurrentDeck(rig.app.ctx, model, holdOut, undefined, 'current');
+  const saved = await saveDeck(rig.app.ctx, model.identity, deck.entries);
+  if (!saved) throw new Error('there was no deck to save');
+  await rig.go('review');
+  await rig.go('review/decks');
+}
+
 /** Re-renders the GoReview home (four entries) from the current local log. */
 export async function reopen(rig: Rig): Promise<void> {
   await rig.go('settings');
   await rig.go('review');
   await until(() => !!rig.root.querySelector('#current-deck'), 'the current deck');
+  await settleRefresh(rig);
+}
+
+/** The home and the details open from this device's copy (2026-11-10); this waits for the background refresh that follows to land and the screen to repaint from it. */
+export async function settleRefresh(rig: Rig): Promise<void> {
+  await flush(3);
+  await refreshIdle(rig.app.ctx);
+  await flush(4);
 }
 
 /** Re-renders the review details (the counts, the proposals with reasons, the deck controls, the session controls) from the current local log. */
@@ -552,6 +605,7 @@ export async function reopenDetails(rig: Rig): Promise<void> {
   await rig.go('settings');
   await rig.go('review/details');
   await until(() => !!rig.root.querySelector('#due-summary'), 'the due summary');
+  await settleRefresh(rig);
 }
 
 /** Seeds the log, optionally sets preferences, opens GoReview and starts a session; resolves at the first exercise. */

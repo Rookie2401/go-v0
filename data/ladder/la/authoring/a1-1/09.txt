@@ -1,0 +1,43 @@
+=== la-a1-1-09 | dialogue | conversation | Supper | Cena | meal,food,family,thanks
+## Cena
+Hodie Martha cenam parat. Cena in domo Marthae est. || Today Martha is preparing supper. The supper is in Martha's house.
+Anna et Lucius in domo sunt. Samuel et Marcus quoque ibi sunt. || Anna and Lucius are in the house. Samuel and Marcus are there too.
+In mensa magna panis est, et lac, et vinum, et aqua. Ecce pomum et piscis! || On the big table there is bread, and milk, and wine, and water. Look, fruit and fish!
+
+[marta] Salvete, amici! Sedete! || Hello, friends! Sit down!
+[ana] Salve, Martha! Gratias tibi ago. Cena bona est. || Hello, Martha! Thank you. The supper is good.
+[luis] Salve, Martha! Ecce, vinum tibi do. || Hello, Martha! Look, I give you wine.
+[marta] Gratias tibi ago, Luci! Vinum bonum est. Sedete in mensa! || Thank you, Lucius! The wine is good. Sit at the table!
+
+Omnes in mensa sedent. Martha panem omnibus dat. || All sit at the table. Martha gives bread to everyone.
+
+[marta] Quid vultis? Panem? Lac? Piscem? || What do you want? Bread? Milk? Fish?
+[nico] Piscem volo! Piscis bonus est. || I want fish! Fish is good.
+[ana] Ego panem et pomum volo. Pomum bonum est. || I want bread and fruit. Fruit is good.
+[luis] Ego vinum bibo, et panem edo. || I drink wine, and I eat bread.
+[sam] Ego aquam bibo. Aqua mihi bona est. || I drink water. Water is good for me.
+[marta] Et lac? Lacne non vis, Samuel? || And milk? Do you not want milk, Samuel?
+[sam] Lac quoque volo! Libenter lac bibo. Pomum quoque volo. || I want milk too! I gladly drink milk. I want fruit too.
+
+Omnes edunt et bibunt. Cena bona est. Omnes bene valent. || All eat and drink. The supper is good. All are well.
+
+[nico] Avia, panis tuus semper bonus est. || Grandmother, your bread is always good.
+[marta] Gratias tibi ago, Marce. Panem semper libenter paro. Cenam quoque libenter paro. || Thank you, Marcus. I always gladly make bread. I gladly make supper too.
+[luis] Anna, quomodo vales? Fessane es? || Anna, how are you? Are you tired?
+[ana] Fessa sum, sed bene valeo. Hodie in valetudinario laboro. || I am tired, but I am well. Today I work at the clinic.
+[luis] Nunc non laboras. Nunc cena est! || Now you are not working. Now it is supper!
+[ana] Bene! Cena bona est, et amici boni hic sunt. || Good! The supper is good, and good friends are here.
+
+Post cenam Samuel dicit: Gratias vobis ago, amici. || After supper Samuel says: Thank you, friends.
+Martha dicit: Deo gratias! Pax vobis! || Martha says: Thanks be to God! Peace to you!
+Omnes dicunt: Deo gratias! || All say: Thanks be to God!
+Marcus fessus est. Marcus in domo dormit. Post cenam Marcus semper dormit! || Marcus is tired. Marcus sleeps in the house. After supper Marcus always sleeps!
+Martha Marcum videt, et Martha bene valet. Hodie dies bonus est. || Martha sees Marcus, and Martha is well. Today is a good day.
+
+Samuel epistulam habet. Epistula ex urbe longe venit. || Samuel has a letter. The letter comes from a far town.
+
+[sam] Ecce epistula! Mater mea epistulam scribit. Mater cara est, et pater carus est. || Look, a letter! My mother is writing a letter. Mother is dear, and father is dear.
+[ana] Quid scribit mater tua? Estne bona epistula? || What does your mother write? Is it a good letter?
+[sam] Bona est. Mater dicit: Bene valeo, et pater bene valet. Ubi es, Samuel? Quomodo vales? || It is good. Mother says: I am well, and father is well. Where are you, Samuel? How are you?
+[marta] Mater tua bona est. Epistulam tuam libenter audio. Scribe matri tuae! || Your mother is good. I gladly hear your letter. Write to your mother!
+[sam] Cras matri scribo. Hodie dies bonus est, et cena bona est. || Tomorrow I write to my mother. Today is a good day, and the supper is good.

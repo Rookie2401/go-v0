@@ -1,0 +1,33 @@
+=== la-a1-1-12 | narrative | narrative | At the sea | Ad mare | sea,journey,island,ship
+## Ad mare
+Heri Anna et Lucius ad mare venerunt. Samuel et Marcus quoque venerunt. || Yesterday Anna and Lucius came to the sea. Samuel and Marcus came too.
+Mare non longe est. Postquam ad litus venerunt, mare viderunt. || The sea is not far. After they came to the shore, they saw the sea.
+
+[nico] Ecce mare! Ecce aqua magna! || Look, the sea! Look, the big water!
+[luis] Mare est. Ecce litus. Hic ambulamus. || It is the sea. Look, the shore. Here we walk.
+[sam] Quid est hoc in aqua? Estne insula? || What is this in the water? Is it an island?
+[ana] Insula est, et longe est. Ecce, navis ad insulam it! || It is an island, and it is far away. Look, a ship goes to the island!
+[nico] Navem video! Navis magna est. In nave multi homines sunt. || I see the ship! The ship is big. In the ship there are many people.
+[luis] Homines ad insulam eunt. Ibi habitant. || The people go to the island. They live there.
+
+Marcus in litore sedet. Aquam videt. Piscem in aqua videt. || Marcus sits on the shore. He sees the water. He sees a fish in the water.
+
+[nico] Ecce piscis! Piscem in aqua video! || Look, a fish! I see a fish in the water!
+[sam] Ubi est? Non video. || Where is it? I do not see it.
+[nico] Ibi est! Statim video. Sed nunc piscis in aqua non est. || It is there! I see it at once. But now the fish is not in the water.
+[ana] Piscis aquam amat. Ego aquam amo. || The fish loves the water. I love water.
+
+Anna panem et pomum in litore parat, et omnes edunt et bibunt. || Anna prepares bread and fruit on the shore, and all eat and drink.
+Lucius dixit: Heri in schola fui. Hodie in schola non sum. Hodie hic sum. Bene est! || Lucius said: Yesterday I was at school. Today I am not at school. Today I am here. It is well!
+Samuel dixit: Dies bonus est. Gratias Deo ago. || Samuel said: It is a good day. I give thanks to God.
+
+Post cenam ad urbem eunt. Marcus iterum aquam videt. || After the meal they go to the town. Marcus looks at the water again.
+
+[nico] Cras iterum ad mare venimus? || Do we come to the sea again tomorrow?
+[ana] Cras non venimus. Cras in valetudinario laboro. || Tomorrow we do not come. Tomorrow I work at the clinic.
+[luis] Cras in schola sum. Sed dies Dominica venimus. || Tomorrow I am at school. But on Sunday we come.
+[nico] Bene! Dies Dominica iterum venimus. || Good! On Sunday we come again.
+[sam] Gratias vobis ago, amici. Hodie dies bonus fuit. Pax vobis! || Thank you, friends. Today was a good day. Peace to you!
+
+Canis quoque ad litus venit. Marcus canem amat. Canis aquam amat, et in aqua ambulat. || The dog comes to the shore too. Marcus loves the dog. The dog loves water, and walks in the water.
+Anna et Samuel ad montem ambulant. Ex monte mare vident, et insulam vident. Avis in arbore cantat. || Anna and Samuel walk to the hill. From the hill they see the sea, and they see the island. A bird sings in the tree.

@@ -42,7 +42,8 @@ describe('connect', () => {
     const stored = await rig.fake.local.get(null);
     expect(stored[SERVICE_KEY]).toEqual({ baseUrl: SERVICE });
     const s = stored[SESSION_KEY] as Record<string, string>;
-    expect(Object.keys(s).sort()).toEqual(['displayName', 'email', 'enrolmentId', 'expiresAt', 'languageId', 'learnerId', 'token']);
+    expect(Object.keys(s).sort()).toEqual(['displayName', 'email', 'enrolmentId', 'enrolments', 'enrolmentsAt', 'expiresAt', 'languageId', 'learnerId', 'token']);
+    expect(s.enrolments).toEqual([{ enrolmentId: who.enrolmentId, languageId: 'sq' }]); // only ids and languages: what a mark needs to find its enrolment
     expect(s).toMatchObject({ learnerId: who.learnerId, enrolmentId: who.enrolmentId, languageId: 'sq', email: 'ana@example.com' });
     expect(s.token).toMatch(/^[A-Za-z0-9_-]{43}$/);
     expect(Date.parse(s.expiresAt)).toBeGreaterThan(Date.parse('2026-10-08T10:00:00.000Z'));

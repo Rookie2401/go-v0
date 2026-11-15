@@ -39,6 +39,7 @@ describe('message senders', () => {
       { type: MSG.disconnect }, { type: MSG.syncNow }, { type: MSG.enrol, languageId: 'sq', packId: 'pack:sq', packVersion: '1' },
       { type: MSG.refreshSession }, { type: MSG.selectEnrolment, enrolmentId: 'x' }, { type: MSG.serviceConfig, op: 'set', baseUrl: 'https://evil.example' },
       { type: MSG.clearLocal }, { type: MSG.setEnabled, tabId: 7, enabled: true }, { type: MSG.getState, tabId: 7 },
+      { type: MSG.dictionaryDownload, op: 'start', languageId: 'sq' }, { type: MSG.dictionaryDownload, op: 'status', languageId: 'sq' },
     ]) {
       expect(await rig.content(msg), msg.type).toEqual({ ok: false, error: 'forbidden' });
     }

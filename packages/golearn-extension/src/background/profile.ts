@@ -62,6 +62,8 @@ export function createProfileService(opts: ProfileServiceOptions) {
   const now = opts.now ?? Date.now;
   const ttl = opts.ttlMs ?? PROFILE_TTL_MS;
   const { area } = opts;
+  /** Languages whose preference is being read from the service in the background (one request each at a time). */
+  const refreshing = new Set<string>();
 
   async function remember(ids: string[], rows: Map<string, KnowledgeView | null>): Promise<void> {
     const at = now();
@@ -84,14 +86,28 @@ export function createProfileService(opts: ProfileServiceOptions) {
     return { ok: true, rows };
   }
 
-  /** The effective explanation depth: the learner's explicit override in settings, else the Repository's preference, else 'brief'. */
-  async function depthFor(languageId: string): Promise<{ depth: ExplanationDepth; origin: ProfileReply['depthOrigin']; stale?: boolean }> {
+  /**
+   * The effective explanation depth: the learner's explicit override in settings, else the Repository's preference, else 'brief'.
+   * `wait: false` (GoLearn Active's scan, 2026-11-09): answers from what is kept (settings, the cached preference even when old, this device's
+   * Repository, the default) and refreshes the cached preference from the service in the background. Signed in, the scan used to wait for the
+   * service here on every new language: with the service slow (Render waking) a page switched to Hebrew showed "0 underlined" for seconds,
+   * and the popup's language switch, which waits for the open pages to scan again, stayed on "Switching to Hebrew…".
+   */
+  async function depthFor(languageId: string, how: { wait?: boolean } = {}): Promise<{ depth: ExplanationDepth; origin: ProfileReply['depthOrigin']; stale?: boolean }> {
     const s = await opts.settings();
     if (s.explanationDepth && isDepth(s.explanationDepth)) return { depth: s.explanationDepth, origin: 'settings' };
     if (!isLanguageId(languageId)) return { depth: 'brief', origin: 'default' };
     const key = PREFS_PREFIX + languageId;
     const cached = (await area.get(key))[key] as CachedPrefs | undefined;
     if (cached && now() - cached.at < ttl && isDepth(cached.depth)) return { depth: cached.depth, origin: cached.origin };
+    if (how.wait === false) {
+      if (!refreshing.has(languageId)) {
+        refreshing.add(languageId);
+        void depthFor(languageId).catch(() => undefined).finally(() => refreshing.delete(languageId));
+      }
+      if (cached && isDepth(cached.depth)) return { depth: cached.depth, origin: cached.origin, stale: true };
+      return (await localDepth(languageId)) ?? { depth: 'brief', origin: 'default' };
+    }
     const a = await opts.session.authenticated();
     if (!a) {
       const mine = await localDepth(languageId);
@@ -139,6 +155,25 @@ export function createProfileService(opts: ProfileServiceOptions) {
   }
 
   /**
+   * The learner's own newest mark, wherever it is. A press is on the device at once; the account has it only after the next sync round, and not at all in a
+   * language it has no enrolment in. So the card reads the device's mark over an older one (or none) from the account; a newer mark from another device stands.
+   */
+  async function withOwnMarks(ids: string[], reply: ProfileReply): Promise<ProfileReply> {
+    let mine: Record<string, KnowledgeView> | undefined;
+    try { mine = ids.length ? await deviceRows(ids) : undefined; } catch { mine = undefined; }
+    if (!mine) return reply;
+    const rows = { ...(reply.rows ?? {}) };
+    for (const id of ids) {
+      const own = mine[id];
+      if (!own?.selfMark) continue;
+      const theirs = rows[id];
+      if (theirs?.selfMark && Date.parse(theirs.selfMark.at) >= Date.parse(own.selfMark.at)) continue;
+      rows[id] = theirs ? { ...theirs, selfMark: own.selfMark, ...(own.level ? { level: own.level } : {}) } : own;
+    }
+    return { ...reply, rows };
+  }
+
+  /**
    * `how.deviceOnly` (GoLearn Active's scan): the words on the learner's screen, asked by the learner's own switch. They are not trimmed
    * like a long selection (the scan is exactly a reading of the page, by design) and they are answered from the device's own Repository
    * only: the service is never asked, so no word of the page leaves the device. The account's history is in the device Repository too
@@ -149,7 +184,8 @@ export function createProfileService(opts: ProfileServiceOptions) {
     // A request that names more than four words comes from a long selection: it asks for lemma ids only, never the page's raw words (./wordids).
     const ids = (how.deviceOnly ? valid : limitWordIds(valid).ids).slice(0, MAX_IDS_PER_REQUEST);
     const st = await opts.session.status();
-    const d = await depthFor(languageId);
+    // the scan's question (device rows only) never waits on the service; a card's question still asks it for the learner's preference
+    const d = await depthFor(languageId, { wait: !how.deviceOnly });
     const base = { depth: d.depth, depthOrigin: d.origin } as const;
     if (how.deviceOnly) {
       const rows = await deviceRows(ids);
@@ -159,6 +195,11 @@ export function createProfileService(opts: ProfileServiceOptions) {
       const rows = await deviceRows(ids);
       return rows ? { ok: true, connected: false, source: 'device', rows, ...base } : { ok: true, connected: false, rows: {}, ...base };
     }
+    return withOwnMarks(ids, await accountKnowledge(ids, base));
+  }
+
+  /** Signed in: the cache, then the service for what the cache does not hold, then this device when the service cannot answer. */
+  async function accountKnowledge(ids: string[], base: { depth: ExplanationDepth; depthOrigin: ProfileReply['depthOrigin'] }): Promise<ProfileReply> {
     const keys = ids.map((i) => KNOWLEDGE_PREFIX + i);
     const cache = keys.length ? await area.get(keys) : {};
     const out: Record<string, KnowledgeView> = {};

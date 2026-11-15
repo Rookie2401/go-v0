@@ -107,10 +107,14 @@ export interface ServiceInfo {
   storeKind: string;
   /** `Date.now()` at start. */
   startedAt: number;
+  /** The deployed commit (12 hexadecimal characters), read once at start through config.ts. Absent: not reported. */
+  commit?: string;
   /** The newest applied migration version, read when asked. It reads the database, so a failure here means the service cannot serve. */
   schemaVersion?: () => Promise<number | undefined>;
   /** How the backups and the disk stand (`backupHealth.ts`). Absent: not reported. */
   durability?: () => unknown;
+  /** What the process holds in memory, in whole megabytes (resident, V8 heap in use, buffers outside the heap). Absent: not reported. */
+  memory?: () => { rssMb: number; heapUsedMb: number; externalMb: number };
 }
 
 /** Server-held Azure Speech configuration and speech policy. The browser never receives the Azure key. */

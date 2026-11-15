@@ -40,7 +40,7 @@ describe('sign-up', () => {
     expect(acct.last('POST', '/accounts/verify/resend')!.body).toEqual({ email: 'new@example.org' });
     expect(rig.q('#check-email .status').textContent).toMatch(/a new email is on its way/);
     // the notice is shown once
-    await rig.go('home');
+    await rig.go('help');
     await rig.go('languages');
     expect(rig.root.querySelector('#check-email')).toBeNull();
   });
@@ -273,14 +273,14 @@ describe('Settings → account', () => {
     expect(rig.q('#acct-verification .status').textContent).toMatch(/a new email is on its way/);
 
     acct.verified = true;
-    await rig.go('home');
+    await rig.go('help');
     await rig.go('settings');
     await until(() => rig.q('#verification-state').getAttribute('data-state'));
     expect(rig.q('#verification-state').getAttribute('data-state')).toBe('verified');
     expect(rig.q('#verification-resend').hidden).toBe(true);
 
     acct.reportVerified = false;
-    await rig.go('home');
+    await rig.go('help');
     await rig.go('settings');
     await until(() => rig.q('#verification-state').getAttribute('data-state'));
     expect(rig.q('#verification-state').getAttribute('data-state')).toBe('unknown');
@@ -330,7 +330,7 @@ describe('Settings → account', () => {
     await until(() => /store is busy/.test(rig.q('#acct-sessions .status').textContent ?? ''));
     expect(rig.root.querySelectorAll('#sessions li')).toHaveLength(3);
     acct.failNext.set('GET /me/sessions', { status: 500, body: { error: 'boom', message: 'Down for a moment.' } });
-    await rig.go('home');
+    await rig.go('help');
     await rig.go('settings');
     await until(() => /could not be listed/.test(rig.q('#sessions-list').textContent ?? ''));
   });

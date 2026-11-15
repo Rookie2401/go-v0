@@ -1,7 +1,7 @@
 /**
- * Sign in: the first page on a first run (no language chosen, nobody signed in) and always reachable from the cog under Settings.
- * The brand, one sentence, the account form (sign in or create, email, password) and a
- * plain “Continue without an account”. An account is optional: it only keeps progress across devices. After sign-in, account
+ * Sign in: the first page on a first run (no language chosen, nobody signed in) and always reachable from Settings.
+ * One sentence of what GoLearn is, the account form (Sign in | Create an account, email, password) and a
+ * plain “Continue without an account”. The page has one heading, its own (the brand is in the top bar). An account is optional: it only keeps progress across devices. After sign-in, account
  * creation or “Continue without an account” the application moves to the languages page. “Continue to GoLearn”, “Continue without an
  * account” and the foot's “Done — back to reading” are bars that span the whole screen with their words centred (the owner, 2026-10-28).
  */
@@ -18,7 +18,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const banner = h('div', { id: 'deletion-slot' });
   const proceed = h('p', { class: 'row', id: 'signin-proceed', hidden: true }, button('Continue to GoLearn', () => { ctx.go('languages'); }, { id: 'signin-continue', class: 'btn primary bar' }));
   box.append(
-    h('p', { class: 'hero-brand', 'aria-hidden': 'true' }, 'GoLearn'),
     p('GoLearn sits beside what you already read: select a word on a web page and it shows you the word’s dictionary form, what it means here, how it is built and how it is said.', 'lede'),
     banner, account, proceed,
   );

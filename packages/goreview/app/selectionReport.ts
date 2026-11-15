@@ -14,6 +14,7 @@ import { admissionBudget } from '../src/planner/budget';
 import { createFsrsScheduler } from '../src/scheduler/fsrs';
 import { schedulerForReviewProfile } from '../src/scheduler/replay-profile';
 import { itemIdFor } from '../src/scheduler/deck';
+import { FACTS_NOT_EXAMINED, isNotExamined } from '../src/intake/intake';
 import type { DeckItem, ExclusionCode, IntakeOutcome, PlannedItem, Scheduler, SessionPlan } from '../src/types';
 import { unitLabel } from './format';
 import type { ReviewModel } from './workspace';
@@ -46,7 +47,7 @@ export interface SelectionReport {
   generatedAt: string;
   languageId: string;
   policy: { algorithm: string; parametersVersion: string; priorityPolicyVersion: string };
-  counts: { vocabularyUnits: number; knowledgeRows: number; candidates: number; deckCards: number; classCards: number; selected: number; skipped: number; withheld: number };
+  counts: { vocabularyUnits: number; knowledgeRows: number; candidates: number; deckCards: number; classCards: number; selected: number; skipped: number; withheld: number; /** Words whose facts were never fetched because higher-ranked words fill the new cards: neither accepted nor refused. */ notYetChecked: number };
   planning: {
     currentDeckItemsInPlan: number;
     reviewDeckItemsInPlan: number;
@@ -172,7 +173,7 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
     const base = { unitId: o.unitId, ...(cardId ? { cardId } : {}), ...(o.proposed ? { dimension: o.proposed.dimension, family: o.proposed.family } : {}), kind: 'candidate' as const };
     const level = o.knowledge?.level ?? levelOf.get(o.unitId);
     const rankText = o.reasons.join(' ').match(/candidate rank (\d+) of (\d+) \(comparison ([\d.]+); base score ([\d.]+); reading usefulness ([\d.]+)/i);
-    const intakeRank = rankText ? { position: Number(rankText[1]), of: Number(rankText[2]), comparisonScore: Number(rankText[3]), candidateScore: Number(rankText[4]), readingRelevance: Number(rankText[5]) } : undefined;
+    const intakeRank = rankText && !isNotExamined(o) ? { position: Number(rankText[1]), of: Number(rankText[2]), comparisonScore: Number(rankText[3]), candidateScore: Number(rankText[4]), readingRelevance: Number(rankText[5]) } : undefined;
     const tail = { ...(level ? { level } : {}), intakeDecision: o.decision, ...(intakeRank ? { intakeRank } : {}), ...labelProps(o.unitId) };
     const finish = (status: SelectionRow['status'], code: ExclusionCode, detail: string, queue?: string): SelectionRow =>
       ({ ...base, status, code, detail: scrub(detail, o.unitId), ...(queue ? { queue } : {}), ...tail });
@@ -187,6 +188,7 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
       if (skip) return finish('excluded', skip.code ?? 'other', skip.why);
       return finish('excluded', 'outranked', 'eligible test-now candidate not placed in this deck');
     }
+    if (isNotExamined(o)) return finish('excluded', 'facts-not-checked', FACTS_NOT_EXAMINED);
     if (o.decision === 'needs-validation' || o.decision === 'too-uncertain') {
       const facts = /fact|validat|exercise/i.test(o.reasons.join(' '));
       return finish('excluded', facts ? 'facts-unavailable' : 'other', o.decision);
@@ -225,6 +227,7 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
       vocabularyUnits: units.size, knowledgeRows: model.knowledge.length, candidates: model.outcomes.length,
       deckCards: model.deck.length, classCards: classDeck.length,
       selected: rows.filter(r => r.status === 'selected').length, skipped: plan.skipped.length,
+      notYetChecked: model.outcomes.filter(isNotExamined).length,
       withheld: Array.isArray(withheld) ? withheld.length : typeof withheld === 'number' ? withheld : 0,
     },
     planning: {

@@ -10,7 +10,7 @@ import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packag
 import { saveDeck } from '../../packages/goreview/app/deckModel';
 import { createLive } from '../../packages/goreview/app/live';
 import { createRealDeps } from '../../packages/goreview/app/main';
-import { cardAdded, defaultService, destroyRigs, dueCard, ids, key, makeRig, startWith, type, until, type FakeService, type Rig, readyCards } from './helpers';
+import { cardAdded, defaultService, destroyRigs, dueCard, ids, key, makeRig, startWith, type, until, type FakeService, type Rig, readyCards, PICKED } from './helpers';
 
 afterEach(() => { destroyRigs(); vi.useRealTimers(); });
 const A = ids('L1', 'sq');
@@ -123,9 +123,12 @@ describe('live updates in the app', () => {
     expect(calls).toEqual([]);                       // nine minutes: still trusted
     rig.clock.set('2026-10-08T10:11:00.000Z');
     await rig.app.ctx.enrolments();
-    expect(calls).toEqual(['me']);                   // eleven: asked again
+    // eleven: asked again, in the background (2026-11-10: the stale profile is used at once, GET /me no longer stands in front of the screen)
+    await until(() => calls.length === 1, 'the background profile refresh');
+    expect(calls).toEqual(['me']);
     rig.app.ctx.invalidateProfile();
     await rig.app.ctx.enrolments();
+    await until(() => calls.length === 2, 'the background profile refresh');
     expect(calls).toEqual(['me', 'me']);             // a live update: asked again at once
   });
 
@@ -154,7 +157,7 @@ describe('live updates in the app', () => {
   describe('My vocab and Saved decks react too', () => {
     const word = (label: string): VocabularyItem => {
       const unitId = `lemma:sq:${label}:NOUN`;
-      const knowledge = { unitId, languageId: 'sq', level: 'seen', encounters: 2, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-07T00:00:00.000Z' } as UnitKnowledge;
+      const knowledge = { unitId, languageId: 'sq', level: 'seen', encounters: 2, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-07T00:00:00.000Z', dimensions: PICKED } as UnitKnowledge;
       return { knowledge, unit: { unitId, languageId: 'sq', label, kind: 'lexeme' } as VocabularyItem['unit'], surfaceForms: [label], lastEncounter: '2026-10-07T00:00:00.000Z', sources: [] };
     };
     const useVocabulary = (rig: Rig, items: VocabularyItem[]): void => {
@@ -208,11 +211,11 @@ describe('live updates in the app', () => {
       const rig = await makeRig({ service, fetch: svc.fetchFn, live, signedIn: true });
       await ready(rig, svc);
       await rig.go('review/decks');
-      await until(() => rig.qa('.deckrow').length === 1, 'the list holds only Class Essentials');
+      await until(() => rig.qa('#saved-decks .deck-tile').length === 2, 'the list holds only the built-in decks');
       await saveDeck(rig.app.ctx, { learnerId: 'L1', languageId: 'sq' }, [{ itemId: 'i1', unitId: 'lemma:sq:zog:NOUN', unitKind: 'lemma', label: 'zog', dimension: 'productive-recall', family: 'meaning-to-form' }]);
       service.inject('L1', cardAdded(A, 'zog', 'meaning-to-form', '2026-10-08T09:00:00.000Z'));
       svc.push();
-      await until(() => rig.qa('.deckrow').length === 2, 'the saved deck');
+      await until(() => rig.qa('#saved-decks .deck-tile').length === 3, 'the saved deck');
     });
   });
 

@@ -5,8 +5,7 @@
  * (the second import must change nothing), prints each document's publication status, and confirms that the
  * verified Scripture (data/verified/scripture.json) is byte-identical to the bundled text. Exit code 1 on any failure.
  */
-import fs from 'node:fs';
-import { checkVerifiedScripture, type VerifiedTranslation } from './verified-scripture';
+import { checkVerifiedScripture, loadVerifiedTranslations } from './verified-scripture';
 import { createMemoryStore } from '../src/core';
 import { importDocuments, type CorpusDocument } from '../src/ingest';
 import { collectJsonFiles, loadFiles, registry, validateAndPrint } from './corpus-cli.mts';
@@ -35,9 +34,8 @@ if (!run.errors) {
 
 // Verification records are translation-specific. Unverified samples remain unpublished.
 let verifiedVerses = 0;
-if (fs.existsSync('data/verified/scripture.json')) {
-  const verified = JSON.parse(fs.readFileSync('data/verified/scripture.json', 'utf8')) as { translations: VerifiedTranslation[] };
-  const checked = checkVerifiedScripture(loaded.map(l => l.doc).filter((d): d is CorpusDocument => !!d), verified.translations);
+{
+  const checked = checkVerifiedScripture(loaded.map(l => l.doc).filter((d): d is CorpusDocument => !!d), loadVerifiedTranslations());
   verifiedVerses = checked.sentences;
   failures += checked.errors.length;
   for (const error of checked.errors) console.log(`ERROR ${error}`);

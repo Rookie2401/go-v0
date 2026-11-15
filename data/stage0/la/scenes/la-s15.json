@@ -1,0 +1,291 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "-nt",
+      "text": "With two or more people doing something the verb ends in -nt: Martha et Marcus panem habent. They have bread.",
+      "explains": [
+        "la.verb-3pl-nt"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Panem emo.\"",
+      "basedOn": [
+        "l3"
+      ],
+      "accept": [
+        {
+          "text": "Panem emo"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say that Martha sells bread.",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "Martha panem vendit"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "answer",
+      "prompt": "Anna asks \"Ubi hodie es?\" You are in the market. Answer in Latin.",
+      "basedOn": [
+        "l1",
+        "l2"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "In foro sum"
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "kind": "retell",
+      "prompt": "Tell Anna: you are in the market and Martha sells bread.",
+      "basedOn": [
+        "l2"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "In foro sum. Martha panem vendit"
+        },
+        {
+          "text": "In foro sum et Martha panem vendit"
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "kind": "recall",
+      "prompt": "Thank Anna and say goodbye.",
+      "basedOn": [
+        "l6"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Gratias tibi ago, Anna. Vale"
+        },
+        {
+          "text": "Gratias tibi ago. Vale"
+        }
+      ]
+    }
+  ],
+  "id": "la-s15",
+  "title": {
+    "en": "My day",
+    "target": "Vale"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "marta",
+      "nico"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ubi hodie es, Samuel?",
+      "en": "Where are you today, Samuel?",
+      "speaker": "ana",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "In foro sum. Martha panem vendit.",
+      "en": "I am in the market. Martha sells bread.",
+      "speaker": "sam",
+      "picture": "🧺🍞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Panem emo. Lac quoque emo.",
+      "en": "I buy bread. I buy milk too.",
+      "speaker": "sam",
+      "picture": "🍞🥛",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Martha et Marcus panem habent.",
+      "en": "Martha and Marcus have bread.",
+      "speaker": "sam",
+      "picture": "👵👦🍞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Bene! Cras ad ecclesiam imus.",
+      "en": "Good! Tomorrow we go to church.",
+      "speaker": "ana",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Gratias tibi ago, Anna. Vale.",
+      "en": "Thank you, Anna. Goodbye.",
+      "speaker": "sam",
+      "picture": "🙏👋",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "vendo",
+      "emo",
+      "cras"
+    ],
+    "constructions": [
+      "la.verb-3pl-nt",
+      "la.buy-sell"
+    ]
+  },
+  "represents": [
+    "la.verb-3pl-nt",
+    "la.buy-sell",
+    "la.time-hodie",
+    "la.accusative-object",
+    "la.thanks",
+    "la.ad-accusative"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where is Samuel?"
+      },
+      "options": [
+        {
+          "en": "In the market"
+        },
+        {
+          "en": "At school"
+        },
+        {
+          "en": "At home"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Martha sell?"
+      },
+      "options": [
+        {
+          "en": "Bread"
+        },
+        {
+          "en": "Wine"
+        },
+        {
+          "en": "Keys"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who has bread?"
+      },
+      "options": [
+        {
+          "en": "Martha and Marcus"
+        },
+        {
+          "en": "Anna and Lucius"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What do they do tomorrow?"
+      },
+      "options": [
+        {
+          "en": "Go to church"
+        },
+        {
+          "en": "Go to school"
+        },
+        {
+          "en": "Stay at home"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

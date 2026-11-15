@@ -67,6 +67,8 @@ export interface LinguisticStore {
   /** Aliases whose canonical target is one of the requested ids (for learner-facing alternate-form search). */
   aliasesTo?(ids: string[]): Promise<UnitAlias[]>;
   putAliases(a: UnitAlias[]): Promise<void>;
+  /** A value that changes whenever any alias row is written or removed. Absent on a store that cannot say (the engine then scans for stale knowledge rows as before). */
+  aliasStamp?(): Promise<string>;
   /**
    * Contract v3. Appends `correction` to the unit's `provenance.corrections` (oldest first; the unit's other fields are untouched) and,
    * when `flag` is set, moves the unit to `requires-review` where the rule allows it: only from `provisional`, or from any live status when the

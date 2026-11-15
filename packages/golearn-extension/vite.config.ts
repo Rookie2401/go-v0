@@ -27,6 +27,7 @@
  * module imports it only for `createInProcessApi`) and gets an empty stub at build time. The worker also swaps the Spanish
  * adapter for `src/background/esStub.ts` (`leanSpanish`, below): it carries Albanian only.
  */
+import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -42,8 +43,40 @@ const ENTRIES = {
   'content-harness': { input: path.join(here, 'src/content/index.ts'), file: 'content.harness.js', name: 'GoLearnContentHarness' },
 } as const;
 
+/**
+ * The build stamp (the owner runs GoLearn as an unpacked extension: a rebuilt folder changes nothing until the browser reloads it, and nothing said which
+ * build was running). The id is the first 12 characters of the commit the build was made from, plus `-dirty` when the working tree differs from it;
+ * 'unknown' when git is not there. Exported so test/loading/golearn.update.test.ts can call it.
+ */
+export function computeBuildId(cwd: string = here): string {
+  try {
+    const head = execSync('git rev-parse HEAD', { cwd, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim().slice(0, 12);
+    if (!/^[0-9a-f]{12}$/.test(head)) return 'unknown';
+    let dirty = false;
+    try { dirty = execSync('git status --porcelain', { cwd, stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 64 * 1024 * 1024 }).toString().trim().length > 0; } catch { /* no status: say nothing about the tree */ }
+    return dirty ? `${head}-dirty` : head;
+  } catch { return 'unknown'; }
+}
+
+/** Read once per process: every mode of one `ext:build` that runs in this process agrees (separate processes agree on the commit; the time may differ by seconds). */
+const STAMP = { id: computeBuildId(), builtAt: new Date().toISOString() };
+const stampDefine = { __GOLEARN_BUILD_ID__: JSON.stringify(STAMP.id), __GOLEARN_BUILT_AT__: JSON.stringify(STAMP.builtAt) };
+
+/** The worker's build writes dist/build.json, so the file and background.js always carry the same stamp (the worker compares them; see src/background/selfUpdate.ts). */
+function writeBuildJson(): Plugin {
+  return {
+    name: 'golearn-build-json',
+    apply: 'build',
+    closeBundle() {
+      const dist = path.join(here, 'dist');
+      fs.mkdirSync(dist, { recursive: true });
+      fs.writeFileSync(path.join(dist, 'build.json'), `${JSON.stringify({ id: STAMP.id, builtAt: STAMP.builtAt })}\n`);
+    },
+  };
+}
+
 /** The analysers: one entry per language (`src/analysers/<id>.ts` exports the adapter as `adapter`). */
-const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el'] as const;
+const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc'] as const;
 
 /** Copy the static files once, in the first (content) build. */
 function copyStatic(): Plugin {
@@ -146,6 +179,19 @@ export function leanSpanish(): Plugin {
   };
 }
 
+/** The same for Biblical Aramaic: its corpus seed stays in dist/analysers/arc.js, and the worker gets `src/background/arcStub.ts`. */
+export function leanAramaic(): Plugin {
+  const stub = path.join(here, 'src/background/arcStub.ts');
+  return {
+    name: 'golearn-lean-aramaic',
+    enforce: 'pre',
+    resolveId(source, importer) {
+      if (importer && /repository-linguistics[\\/]src[\\/]resolver\.ts$/.test(importer) && /[\\/]src[\\/]adapters[\\/]arc$/.test(source)) return stub;
+      return null;
+    },
+  };
+}
+
 /** The worker only resolves lexical readings; omit page-only Albanian generation, syntax and production tables. */
 export function leanAlbanian(): Plugin {
   const stub = path.join(here, 'src/background/sqStub.ts');
@@ -191,8 +237,8 @@ export default defineConfig(({ mode }) => {
     publicDir: false,
     logLevel: 'warn',
     // only the harness build has the fixture hook (src/adapters/page.ts); everywhere else the flag is the literal false and the branch is removed
-    define: { 'process.env.NODE_ENV': '"production"', __GOLEARN_HARNESS__: mode === 'content-harness' ? 'true' : 'false' },
-    plugins: [stubServiceHandler(mode), leanBuiltins(), ...(mode === 'background' ? [leanSpanish(), leanAlbanian()] : []), ...(mode === 'content' ? [cleanDistKeepingApp(), copyStatic()] : [])],
+    define: { 'process.env.NODE_ENV': '"production"', __GOLEARN_HARNESS__: mode === 'content-harness' ? 'true' : 'false', ...stampDefine },
+    plugins: [stubServiceHandler(mode), leanBuiltins(), ...(mode === 'background' ? [leanSpanish(), leanAramaic(), leanAlbanian(), writeBuildJson()] : []), ...(mode === 'content' ? [cleanDistKeepingApp(), copyStatic()] : [])],
     build: {
       outDir: path.join(here, 'dist'),
       emptyOutDir: false,

@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 2,
+  "id": "la-a1-1-11",
+  "lang": "la",
+  "title": "An old neighbour",
+  "contentType": "narrative",
+  "corpus": {
+    "id": "ladder-la",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Latin (Church Latin)"
+  },
+  "source": {
+    "id": "src:la:la-a1-1-11",
+    "title": "An old neighbour (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Church Latin. Drafted by an AI model; not yet reviewed by a Latinist.",
+    "provenance": "Drafted by an AI model for the course ladder in simple Ecclesiastical (Church) Latin; not reviewed by a Latinist. It is controlled, deliberately repetitive Latin written for learners and may contain unidiomatic phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet reviewed by a Latinist.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a Latinist. House style: simple Church Latin, spelled without macrons, with u/v and i/j as in Stage 0 (v and i only); present tense, with a few perfects (venit, vidit, fuit, dixit) in the last units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "neighbour",
+    "help",
+    "water",
+    "yesterday"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-latinist-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "la",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-11-13",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nico": "Marcus",
+    "senex": "Petrus",
+    "sam": "Samuel",
+    "marta": "Martha",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Vicinus senex",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Martha vicinum senem habet. Vicinus bonus est. Senex in domo parva habitat. Nomen ei Petrus est.",
+              "english": "Martha has an old neighbour. The neighbour is good. The old man lives in a small house. His name is Peter."
+            },
+            {
+              "text": "Petrus fessus est, et aquam non habet. Heri quoque aquam non habuit.",
+              "english": "Peter is tired, and he does not have water. Yesterday too he did not have water."
+            },
+            {
+              "text": "Heri Marcus et Samuel ad domum senis venerunt. Senem in porta viderunt.",
+              "english": "Yesterday Marcus and Samuel came to the old man's house. They saw the old man at the door."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve, Petre! Quomodo vales?",
+              "english": "Hello, Peter! How are you?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Non bene valeo, Marce. Fessus sum, et aquam non habeo.",
+              "english": "I am not well, Marcus. I am tired, and I do not have water.",
+              "speaker": "senex"
+            },
+            {
+              "text": "Aquam non habes? Ubi est aqua?",
+              "english": "You do not have water? Where is the water?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Aqua longe est. Ego non ambulo.",
+              "english": "The water is far away. I do not walk.",
+              "speaker": "senex"
+            },
+            {
+              "text": "Nos te iuvamus! Aquam tibi damus.",
+              "english": "We help you! We give you water.",
+              "speaker": "nico"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marcus et Samuel ad aquam eunt. Aquam habent, et ad domum senis eunt. Tandem senex aquam habet.",
+              "english": "Marcus and Samuel go to the water. They have water, and they go to the old man's house. At last the old man has water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gratias vobis ago, pueri! Vos boni estis.",
+              "english": "Thank you, boys! You are good.",
+              "speaker": "senex"
+            },
+            {
+              "text": "Libenter te iuvamus, Petre. Nunc aquam habes.",
+              "english": "We gladly help you, Peter. Now you have water.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Heri in domo fui, et aquam non habui. Hodie vos hic estis. Deus vos amat.",
+              "english": "Yesterday I was at home, and I did not have water. Today you are here. God loves you.",
+              "speaker": "senex"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marcus dixit: Cras iterum venimus. Iterum aquam damus. Senex dixit: Gratias Deo ago.",
+              "english": "Marcus said: Tomorrow we come again. We give water again. The old man said: I give thanks to God."
+            },
+            {
+              "text": "Postea Marcus ad domum Marthae venit. Martha Marcum videt.",
+              "english": "Afterwards Marcus comes to Martha's house. Martha sees Marcus."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ubi fuisti, Marce?",
+              "english": "Where were you, Marcus?",
+              "speaker": "marta"
+            },
+            {
+              "text": "In domo Petri fui, avia. Aquam ei dedi.",
+              "english": "I was at Peter's house, grandmother. I gave him water.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Bene! Petrus vicinus bonus est. Tu quoque puer bonus es.",
+              "english": "Good! Peter is a good neighbour. You are a good boy too.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Samuel mecum fuit. Samuel quoque senem iuvit.",
+              "english": "Samuel was with me. Samuel helped the old man too.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Samuel amicus bonus est. Vos boni estis. Panem vobis do.",
+              "english": "Samuel is a good friend. You are good. I give you bread.",
+              "speaker": "marta"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Martha panem Marco dat. Postea Samuel venit. Martha dixit: Ecce panis! Panem edite.",
+              "english": "Martha gives bread to Marcus. Afterwards Samuel comes. Martha said: Here is bread! Eat the bread."
+            },
+            {
+              "text": "Marcus et Samuel panem edunt. Fessi sunt, sed bene valent. Multi homines boni in urbe sunt. Vicinus senex quoque bonus est.",
+              "english": "They are tired, but they are well. There are many good people in the town. The old neighbour is good too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Petrus canem habet. Canis bonus est. Canis in via ambulat, et senem amat.",
+              "english": "Peter has a dog. The dog is good. The dog walks on the road, and loves the old man."
+            },
+            {
+              "text": "Hodie Petrus dicit: Caput meum dolet. Anna nutrix est. Anna senem iuvat.",
+              "english": "Today Peter says: My head hurts. Anna is a nurse. Anna helps the old man."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna, caput meum dolet. Quid facio?",
+              "english": "Anna, my head hurts. What do I do?",
+              "speaker": "senex"
+            },
+            {
+              "text": "Aquam bibe, Petre! Aqua bona est. Hodie in domo manere bonum est.",
+              "english": "Drink water, Peter! Water is good. It is good to stay at home today.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Gratias tibi ago, Anna. Tu nutrix bona es. Marcus et Samuel quoque boni sunt.",
+              "english": "Thank you, Anna. You are a good nurse. Marcus and Samuel are good too.",
+              "speaker": "senex"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

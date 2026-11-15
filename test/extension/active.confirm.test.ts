@@ -80,7 +80,7 @@ describe('the analyser alone (what the dictionary adds to)', () => {
     expect(s.languageId).toBe('de');
     expect(marked()).not.toContain('Patrizier');
     expect(marked()).not.toContain('bisherigen');
-    expect(s.skipped).toBe(4); // bisherigen, Patrizier, xyzzy and the Hebrew word
+    expect(s.skipped).toBe(3); // bisherigen, Patrizier and xyzzy (the Hebrew word is not read as German at all since 2026-11-09: its script is not German's)
     expect(s.confirmed).toBe(0);
   });
 });
@@ -94,8 +94,8 @@ describe('confirming through the dictionary', () => {
     expect(marked()).not.toContain('xyzzy');
     expect(marked()).not.toContain(HEBREW);
     expect(s).toMatchObject({ confirmed: 2 });
-    expect(s.unconfirmed).toBe(2); // xyzzy and the Hebrew word were asked about and not found
-    // one request, every form once, the normalised form (the part after form:de:), the Hebrew word included (the dictionary decides)
+    expect(s.unconfirmed).toBe(1); // xyzzy was asked about and not found (the Hebrew word is not a German word to ask about, 2026-11-09)
+    // one request, every form once, the normalised form (the part after form:de:); the Hebrew word is not sent to the German dictionary
     expect(requests).toHaveLength(1);
     const forms = requests[0].forms;
     expect(new Set(forms).size).toBe(forms.length);

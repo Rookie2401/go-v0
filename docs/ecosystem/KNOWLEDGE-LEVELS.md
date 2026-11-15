@@ -166,3 +166,31 @@ is not itself delayed knowability. Automatic remains explicit or preserved legac
 A mark of New starts a fresh knowability window. The first later lookup still releases the visible status to Seen, even if older evidence had once
 qualified as Known; only observations after the mark can promote that visible status. The historical dimension scores and aggregates remain on the
 row. Other manual marks remain sticky until the learner changes them.
+
+## 11. Shown level: met only in passing (2026-11-05)
+
+The owner's report: "When the user clicks on a word to see the definition, it marks every word in that sentence as seen." Biblia records one
+`EncounterRecorded` for the other words of a verse on the first tap in it, and GoLearn Active records one for every recognised word visible on the
+page (and re-reads the page after a lookup). The Repository rightly keeps these exposures (GoReview draws a word after three encounters; its
+planner refuses a word at level New) and its level rule lifts any observed unit to at least Seen. **The Repository's level does not change.** What
+changes is what the readers and My vocab SHOW.
+
+A knowledge row was *met only in passing* when all hold: it has no `selfMark`; its engine level is `seen`; `dimensions.exposure.negative` is 0 or
+absent (a lookup or an assistance request adds to it; an encounter and audio playback do not); and every dimension other than `exposure` has
+`observations` 0 or absent. Such a row is shown as **New**; every other row is shown at its level. A word (its form row and its lemma row) is shown
+as Seen or higher as soon as any of its rows is not passing-only, as before (the highest row). The learner's own mark still decides outright; for a
+mark of New, the engine's level of the row carrying the mark is used, and a row that is passing-only by the dimension test (ignoring the mark) is
+shown New.
+
+Implemented once, in `repository-contract/src/knowledge-levels.ts` (`metOnlyInPassing`, `displayLevelOf`), and applied in three places:
+
+- GoLearn Active: `golearn-extension/src/active/levels.ts` (`levelOfRow`, `levelOfRows`), used by the page highlighter and the card. The word the
+  learner clicks is Seen at once: the page remembers the unit ids of lookups it has seen recorded (until a later mark) and the card's `present()`
+  lifts New to Seen after a lookup. The card's pressed circle follows the engine's level of a New mark, so it does not change with the display rule.
+- Biblia: `biblia/src/levels.ts`. The tapped word is Seen at once through `met`.
+- GoReview My vocab: `goreview/app/deckModel.ts` (`loadVocabLive` maps `level` through `displayLevelOf`), so the level text, `data-level` and the
+  "least known first" order agree. The planner, intake and deck model read no My vocab level. The catalogue (`screens/vocabulary.ts`) keeps the
+  service's own counts and level filter, i.e. the Repository's level.
+
+Known limit: a row's dimensions are cumulative, so a word looked up before a mark of New and then merely met again reads Seen (its
+`exposure.negative` is still above 0).

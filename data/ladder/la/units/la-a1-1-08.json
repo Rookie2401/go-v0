@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 2,
+  "id": "la-a1-1-08",
+  "lang": "la",
+  "title": "A walk",
+  "contentType": "description",
+  "corpus": {
+    "id": "ladder-la",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Latin (Church Latin)"
+  },
+  "source": {
+    "id": "src:la:la-a1-1-08",
+    "title": "A walk (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Church Latin. Drafted by an AI model; not yet reviewed by a Latinist.",
+    "provenance": "Drafted by an AI model for the course ladder in simple Ecclesiastical (Church) Latin; not reviewed by a Latinist. It is controlled, deliberately repetitive Latin written for learners and may contain unidiomatic phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet reviewed by a Latinist.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a Latinist. House style: simple Church Latin, spelled without macrons, with u/v and i/j as in Stage 0 (v and i only); present tense, with a few perfects (venit, vidit, fuit, dixit) in the last units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "walk",
+    "road",
+    "nature",
+    "town"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-latinist-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "description"
+  ],
+  "variety": "la",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-11-13",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Samuel",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Iter",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hodie dies bonus est. Anna et Samuel in via ambulant.",
+              "english": "Today is a good day. Anna and Samuel walk on the road."
+            },
+            {
+              "text": "Anna fessa non est. Hodie in valetudinario non laborat. Samuel quoque fessus non est.",
+              "english": "Anna is not tired. Today she does not work at the clinic. Samuel is not tired either."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Quo imus, Anna?",
+              "english": "Where are we going, Anna?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ad montem ambulamus. Mons non longe est.",
+              "english": "We walk to the hill. The hill is not far.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ecce via! Via magna est.",
+              "english": "Look, a road! The road is big.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bona est. Veni mecum!",
+              "english": "It is good. Come with me!",
+              "speaker": "ana"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Arbores magnae sunt. In arbore avis est. Avis cantat.",
+              "english": "There are big trees. In the tree there is a bird. The bird sings."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Audi! Avis cantat.",
+              "english": "Listen! The bird is singing.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Parva est, sed bene cantat. Arbor magna est.",
+              "english": "It is small, but it sings well. The tree is big.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Quid est hoc? Estne canis?",
+              "english": "What is this? Is it a dog?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Canis est. Ecce, in via est! Magnus est.",
+              "english": "It is a dog. Look, it is on the road! It is big.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ille nos videt. Timeo!",
+              "english": "It sees us. I am afraid!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Canis bonus est. Ecce, ad nos venit.",
+              "english": "The dog is good. Look, he comes to us.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Nunc non timeo. Bonus est.",
+              "english": "Now I am not afraid. He is good.",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Samuel canem timet. Canis ad Annam et Samuelem venit. Anna canem amat.",
+              "english": "Samuel is afraid of the dog. The dog comes to Anna and Samuel. Anna loves the dog."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nunc ad montem ambulamus. Ecce aqua!",
+              "english": "Now we walk to the hill. Look, water!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Estne aqua ibi? Aquam bibere volo.",
+              "english": "Is there water there? I want to drink water.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Aqua ibi est. Aqua bona est. Veni!",
+              "english": "There is water there. The water is good. Come!",
+              "speaker": "ana"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Tandem ad montem veniunt. Ibi aquam bibunt. Aqua bona est.",
+              "english": "At last they come to the hill. There they drink water. The water is good."
+            },
+            {
+              "text": "Ibi urbem vident. Urbs non magna est, sed bona est. Domus Marthae parva est. Ecclesia magna est.",
+              "english": "There they see the town. The town is not big, but it is good. Martha's house is small. The church is big."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ecce urbs! Omnia bona sunt.",
+              "english": "Look, the town! All things are good.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Hodie dies bonus est. Gratias Deo ago.",
+              "english": "Today is a good day. I give thanks to God.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Et ego gratias Deo ago. Et tibi gratias ago, Anna.",
+              "english": "And I give thanks to God. And I thank you, Anna.",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Tandem ad urbem eunt. Samuel fessus est, sed bene valet. Anna quoque bene valet.",
+              "english": "At last they go to the town. Samuel is tired, but he is well. Anna is well too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

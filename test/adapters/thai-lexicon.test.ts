@@ -238,7 +238,7 @@ describe('Thai lexicon: the bundled seed analyses are unchanged', () => {
   });
 
   it('unknown words are still left unanalysed', () => {
-    const r = run('th', 'ภูมิศาสตร์');
+    const r = run('th', 'อุตุนิยมวิทยา');
     expect(r.analyses[0].candidates).toEqual([]);
   });
 });
@@ -246,12 +246,14 @@ describe('Thai lexicon: the bundled seed analyses are unchanged', () => {
 describe('Thai adapter: sources and provenance', () => {
   const v = thAdapter.version;
 
-  it('names its five sources, all machine-drafted, with the rules as the only rule origin', () => {
+  it('names its six sources: five machine-drafted (the rules the only rule origin) and the external dictionary headwords', () => {
     const s = thAdapter.sources!;
     expect(Object.keys(s).sort()).toEqual(
-      ['hand', 'phrases', 'constructions', 'orth-exceptions', 'rules'].map((k) => `adapter-th@${v}:${k}`).sort(),
+      ['hand', 'phrases', 'constructions', 'orth-exceptions', 'rules', 'dictionary'].map((k) => `adapter-th@${v}:${k}`).sort(),
     );
+    expect(s[`adapter-th@${v}:dictionary`]).toMatchObject({ origin: 'dictionary', reviewStatus: 'external', licence: expect.stringContaining('CC BY-SA 4.0') });
     for (const [id, info] of Object.entries(s)) {
+      if (id.endsWith(':dictionary')) continue;
       expect(info.id).toBe(id);
       expect(info.reviewStatus, id).toBe('machine-drafted');
       expect(info.label.length, id).toBeGreaterThan(3);
@@ -273,6 +275,6 @@ describe('Thai adapter: sources and provenance', () => {
   });
 
   it('an unknown word has no candidate, so no invented origin', () => {
-    expect(run('th', 'ภูมิศาสตร์').analyses[0].candidates).toEqual([]);
+    expect(run('th', 'อุตุนิยมวิทยา').analyses[0].candidates).toEqual([]);
   });
 });

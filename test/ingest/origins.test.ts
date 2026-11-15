@@ -235,7 +235,7 @@ describe('the other languages retain analysis facts and persist source descripto
   it('the bundled es / de / sq / hi documents: only the explicit source snapshot extends the existing analysis record', async () => {
     // Thai, Hebrew and Greek are left out: their analysers carry an external source inside the adapter (the Thai dictionary; the Open Scriptures /
     // MorphGNT / Wiktionary form indexes of he and el), so their bundled readings legitimately have origin 'dictionary'. Latin has course texts only.
-    const EXTERNAL_INSIDE_ADAPTER = new Set(['th', 'he', 'el', 'la']);
+    const EXTERNAL_INSIDE_ADAPTER = new Set(['th', 'he', 'el', 'la', 'arc']);
     const docs = loadBundledCorpus().filter((d) => !EXTERNAL_INSIDE_ADAPTER.has(d.lang));
     expect((await Promise.resolve(docs)).length).toBeGreaterThan(0);
     const store = createMemoryStore();

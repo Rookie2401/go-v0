@@ -66,6 +66,7 @@ interface LangEntry {
 type LangTable = Partial<Record<ConceptId, LangEntry>>;
 
 const TABLES: Record<LanguageCode, LangTable> = {
+  arc: {}, // No Aramaic production curriculum is claimed.
   es: {
     young: { stems: ['joven', 'niñ', 'pequeñ', 'infanci'], lexemes: ['joven'] },
     family: { stems: ['famili', 'padres', 'madre', 'hermano'], lexemes: ['familia'] },
@@ -295,6 +296,7 @@ const TABLES: Record<LanguageCode, LangTable> = {
 
 /** Negation markers (per language). Used to keep negation outside a recombined phrase and flag it. */
 export const NEGATORS: Record<LanguageCode, string[]> = {
+  arc: [],
   es: ['no', 'nunca', 'jamás', 'jamas', 'ni'],
   sq: ['nuk', 's', 'mos', 'jo'],
   th: ['ไม่', 'ไม่ได้', 'มิ'],
@@ -315,6 +317,7 @@ export const NEGATORS: Record<LanguageCode, string[]> = {
  * segmented). TODO(review): starter set; every language needs a native-speaker pass.
  */
 export const CHRONOLOGY: Record<LanguageCode, string[]> = {
+  arc: [],
   es: ['cuando', 'antes', 'después', 'despues', 'luego', 'entonces', 'ahora', 'hoy', 'ayer', 'mañana', 'ya', 'todavía', 'todavia', 'aún', 'aun', 'siempre', 'nunca', 'jamás', 'jamas', 'primero', 'finalmente', 'mientras', 'desde', 'hasta', 'pronto', 'anoche'],
   sq: ['kur', 'para', 'pas', 'pastaj', 'tani', 'sot', 'dje', 'nesër', 'neser', 'tashmë', 'tashme', 'ende', 'gjithmonë', 'gjithmone', 'kurrë', 'kurre', 'fillimisht', 'derisa', 'atëherë', 'atehere'],
   th: ['เมื่อ', 'ตอน', 'ก่อน', 'หลัง', 'แล้ว', 'ตอนนี้', 'วันนี้', 'เมื่อวาน', 'พรุ่งนี้', 'เคย', 'ยัง', 'เสมอ', 'ตลอด', 'ในที่สุด', 'ขณะที่', 'จน', 'ตั้งแต่'],
@@ -331,6 +334,7 @@ export const CHRONOLOGY: Record<LanguageCode, string[]> = {
 
 /** Subject pronouns: a slot filler that extends backwards stops here (the subject is not part of a phrase slot). */
 export const SUBJECT_PRONOUNS: Record<LanguageCode, string[]> = {
+  arc: [],
   es: ['yo', 'tú', 'él', 'ella', 'nosotros', 'nosotras', 'usted', 'ustedes', 'ellos', 'ellas'],
   sq: ['unë', 'une', 'ti', 'ai', 'ajo', 'ne', 'ju', 'ata', 'ato'],
   th: ['ฉัน', 'ผม', 'ดิฉัน', 'เขา', 'เธอ', 'เรา', 'คุณ'],

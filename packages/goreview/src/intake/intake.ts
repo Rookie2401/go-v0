@@ -278,6 +278,7 @@ const HEADLINE: Record<IntakeDecision, string> = {
 
 /** One readable line for the UI: the headline, the proposed skill, and the reasons. */
 export function explainIntake(outcome: IntakeOutcome): string {
+  if (isNotExamined(outcome)) return `Not yet checked: ${outcome.reasons.join('; ')}.`;
   const skill = outcome.proposed ? ` as ${outcome.proposed.family}` : '';
   return `${HEADLINE[outcome.decision]}${skill}: ${outcome.reasons.join('; ')}.`;
 }
@@ -329,6 +330,11 @@ export function rankComparativePriority(outcomes: readonly IntakeOutcome[], opti
     };
   });
 }
+
+/** Written on an outcome whose pack facts were not fetched because the budget was already filled by higher-ranked candidates. */
+export const FACTS_NOT_EXAMINED = 'not checked yet: only the words that fill your new cards are checked';
+/** True for a word whose facts were not fetched (see `factsBudget`): it was neither accepted nor refused. */
+export const isNotExamined = (o: Pick<IntakeOutcome, 'reasons'>): boolean => o.reasons.includes(FACTS_NOT_EXAMINED);
 
 /** Alias used by callers that treat the intake result as a ranked candidate list. */
 export const rankIntakeOutcomes = rankComparativePriority;

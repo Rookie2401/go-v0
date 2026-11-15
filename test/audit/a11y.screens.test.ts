@@ -15,9 +15,9 @@ import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, k
 import { DEFAULT_PREFERENCES } from '../../packages/goreview/app/state';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { FakeAccountService } from '../golearn-app/accountFake';
-import { destroyRigs } from '../goreview-app/helpers';
+import { destroyRigs, PICKED } from '../goreview-app/helpers';
 import { makeTellRig, resetTellRig, typeInto, type TellRig } from '../gotell-ui/rig';
-import { HOME, SCREENS } from '../../packages/golearn-extension/app/app';
+import { SCREENS } from '../../packages/golearn-extension/app/app';
 import { downloadLanguage as appChoose, destroyRigs as destroyAppRigs, failingInstall as appFailingInstall, makeRig as makeAppRig, signIn as appSignIn } from '../golearn-app/helpers';
 import { initPopup } from '../../packages/golearn-extension/action/popup';
 import { createChromeFake } from '../extension/chromeFake';
@@ -90,17 +90,17 @@ describe('GoReview screens', () => {
     await until(() => /Added .* to optional selected practice/.test(rig.root.querySelector('#review-details > .status')?.textContent ?? ''), `the status message (now: ${rig.root.querySelector('#review-details > .status')?.textContent})`);
     audit(rig.root, 'practice/review-details (after Test now)');
 
-    // the home offers the selected words as a separate, optional practice beside Begin
-    await reopen(rig);
-    expect(rig.root.querySelector('#start-selected-practice'), 'the home offers the selected words').toBeTruthy();
-    audit(rig.root, 'practice/review-home (selected practice)');
+    await reopenDetails(rig);
+    expect(rig.root.querySelector('#start-selected-practice'), 'Review Details offers the selected words').toBeTruthy();
+    audit(rig.root, 'practice/review-details (selected practice)');
 
     // My vocab: a word added by hand from the list (its status quotes the word). The fake Repository has no vocabulary list, so a page of it is supplied.
     const realApi = rig.app.ctx.api;
     const entry = (label: string): { knowledge: unknown; unit: unknown; surfaceForms: string[]; lastEncounter: string; sources: unknown[] } => {
       const unitId = unitOf(label);
       return {
-        knowledge: { unitId, languageId: 'sq', level: 'new', encounters: 1, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-06T00:00:00.000Z' },
+        // a word the learner picked (looked up once): My vocab lists Seen to Automatic, never New (the owner, 2026-11-14)
+        knowledge: { unitId, languageId: 'sq', level: 'seen', encounters: 1, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-06T00:00:00.000Z', dimensions: PICKED },
         unit: { unitId, languageId: 'sq', label, kind: 'lexeme' }, surfaceForms: [label], lastEncounter: '2026-10-06T00:00:00.000Z', sources: [],
       };
     };
@@ -179,14 +179,9 @@ describe('GoReview screens', () => {
     await rig.go('review/transfer');
     audit(rig.root, 'practice/transfer');
     await reopen(rig);
-    // Save deck moves the deck to the saved decks; the list is audited too
-    if (rig.root.querySelector('#save-deck')) {
-      click(rig.q('#save-deck'));
-      await until(() => /Deck saved/.test(rig.root.querySelector('#review-home > .status')?.textContent ?? ''), 'the deck to be saved');
-      audit(rig.root, 'practice/review-home (after Save deck)');
-    }
     await rig.go('review/decks');
-    audit(rig.root, 'practice/previous-decks');
+    audit(rig.root, 'practice/saved-decks');
+
     await reopenDetails(rig);
     const hist = rig.root.querySelector<HTMLAnchorElement>('a[href^="#/review/history"]');
     if (hist) { await rig.go(hist.getAttribute('href')!.replace(/^#\//, '')); audit(rig.root, 'practice/history'); }
@@ -324,9 +319,9 @@ describe('audio-only interactions, character-key shortcuts and the session clock
 describe('GoLearn setup application', () => {
   it('A-S04 every screen, signed out and signed in', async () => {
     const rig = await makeAppRig({ extension: true });
-    for (const s of [HOME, ...SCREENS]) { await rig.go(s.id); audit(rig.root, `app/${s.id} (signed out)`); }
+    for (const s of SCREENS) { await rig.go(s.id); audit(rig.root, `app/${s.id} (signed out)`); }
     await appSignIn(rig);
-    for (const s of [HOME, ...SCREENS]) { await rig.go(s.id); audit(rig.root, `app/${s.id}`); }
+    for (const s of SCREENS) { await rig.go(s.id); audit(rig.root, `app/${s.id}`); }
     // the screens are the sign-in page, the languages page and Settings (SCREENS); the languages page in its states too:
     // a language ready, a pack that failed with its Retry button, a Download language menu open, every Details open
     await appChoose(rig, 'sq');
@@ -334,13 +329,14 @@ describe('GoLearn setup application', () => {
     rig.packs.nextInstall = appFailingInstall();
     await appChoose(rig, 'de');
     audit(rig.root, 'app/languages (pack failed, Retry)');
-    rig.q<HTMLDetailsElement>('#download-hi').open = true;
-    audit(rig.root, 'app/languages (Download language menu open)');
+    // a language that asks a question first (the fake catalogue's Norwegian: the written standard) opens its Download panel in the row
+    rig.q<HTMLDetailsElement>('details.download').open = true;
+    audit(rig.root, 'app/languages (Download question open)');
     for (const d of rig.root.querySelectorAll<HTMLDetailsElement>('#language-cards details')) d.open = true;
     audit(rig.root, 'app/languages (Details open)');
     expect(SCREENS.map((x) => x.id)).toEqual(expect.arrayContaining(['signin', 'languages', 'settings']));
     expect(SCREENS.map((x) => x.id)).not.toContain('welcome');
-    expect(audits.filter((a) => a.screen.startsWith('app/')).length).toBe(2 * (SCREENS.length + 1) + 4);
+    expect(audits.filter((a) => a.screen.startsWith('app/')).length).toBe(2 * SCREENS.length + 4); // the Status page is gone (2026-11-11)
   }, 60_000);
 });
 

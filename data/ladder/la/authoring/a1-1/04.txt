@@ -1,0 +1,39 @@
+=== la-a1-1-04 | dialogue | practical communication | At the clinic | In valetudinario | clinic,health,body,advice
+## In valetudinario
+Anna in valetudinario est. Anna nutrix est. Hodie multi in valetudinario sunt. || Anna is at the clinic. Anna is a nurse. Today many people are at the clinic.
+Martha quoque in valetudinario est. Martha non bene valet. || Martha is at the clinic too. Martha is not well.
+
+[ana] Salve, Martha! Quomodo vales? || Hello, Martha! How are you?
+[marta] Non bene valeo, Anna. Caput meum dolet. || I am not well, Anna. My head hurts.
+[ana] Ubi dolet? || Where does it hurt?
+[marta] Hic. Et fessa sum. || Here. And I am tired.
+[ana] Quid habes? Quid vis? || What do you have? What do you want?
+[marta] Lac bibo, et panem edo. Aquam non bibo. || I drink milk, and I eat bread. I do not drink water.
+[ana] Aquam bibe! Aqua bona est. || Drink water! Water is good.
+[marta] Libenter aquam bibo. Et nunc? || I gladly drink water. And now?
+[ana] Hodie in domo manere bonum est. || Today it is good to stay at home.
+[marta] In domo maneo. Gratias tibi ago, Anna. Tu nutrix bona es. || I stay at home. Thank you, Anna. You are a good nurse.
+[ana] Vale, Martha! Pax tibi. || Goodbye, Martha! Peace to you.
+
+Martha domum it. Anna in valetudinario est. || Martha goes home. Anna is at the clinic.
+
+Samuel quoque in valetudinario est. Samuel Annam videt. || Samuel is at the clinic too. Samuel sees Anna.
+
+[sam] Salve, Anna! Manus mea dolet. || Hello, Anna! My hand hurts.
+[ana] Ecce manus tua. Hic dolet? || Look, your hand. Does it hurt here?
+[sam] Ita, hic dolet! || Yes, it hurts here!
+[ana] Manum in aqua habe. Aqua bona est. || Keep your hand in the water. The water is good.
+[sam] Manum in aqua habeo. Nunc manus non dolet. || I keep my hand in the water. Now my hand does not hurt.
+[ana] Bene! Tu fessus es. Quid vis? Panem vis? || Good! You are tired. What do you want? Do you want bread?
+[sam] Panem volo, et aquam volo. Libenter edo, libenter bibo. || I want bread, and I want water. I gladly eat, I gladly drink.
+[ana] Bene! Hodie in domo manere bonum est, Samuel. Cras in valetudinario es, sed non fessus. || Good! Today it is good to stay at home, Samuel. Tomorrow you are at the clinic, but not tired.
+[sam] Gratias tibi ago, Anna. Tu amica bona es! || Thank you, Anna. You are a good friend!
+
+Anna in valetudinario laborat. Hodie Anna multum laborat. Lucius in schola laborat. Martha in domo non laborat. || Anna works at the clinic. Today Anna works a lot. Lucius works at school. Martha does not work at home.
+Anna fessa est, sed bene valet. Omnes iuvat, et omnes Annam amant. || Anna is tired, but she is well. She helps everyone, and everyone loves Anna.
+
+Lucius quoque in valetudinario est. Annam videt. || Lucius is at the clinic too. He sees Anna.
+[luis] Salve, Anna! Quomodo vales? Fessane es? || Hello, Anna! How are you? Are you tired?
+[ana] Bene valeo, sed fessa sum. Quid habes, frater? || I am well, but I am tired. What do you have, brother?
+[luis] Ecce panis et lac. Tibi do. Tu soror bona es. || Look, bread and milk. I give them to you. You are a good sister.
+[ana] Gratias tibi ago, Luci! Tu frater bonus es. Hodie multum laboro, sed bene est. || Thank you, Lucius! You are a good brother. Today I work a lot, but it is well.

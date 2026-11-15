@@ -11,11 +11,13 @@ import { createPackRuntime, type PackRuntime } from '../../../language-packs/src
 import { packFor } from '../../../language-packs/src/registry';
 import type { PackManifest } from '../../../language-packs/src/manifest';
 import type { StorageArea } from '../platform';
+import { readPrefix } from '../store';
 import {
   cleanText, isLanguageId, languageNameOf, type ConstructionExplanation, type EntryReply, type EntryRequest, type ExplainReply, type ExplainRequest, type FeatureExplanation, type GlossReply, type GlossRequest, type SourceLink, stringRecord,
 } from '../protocol';
 import type { SessionManager } from './session';
 import { bytesToText } from '../../../../src/dict/gzip';
+import type { DictionaryStore } from './dictionaryStore';
 
 export const SHARD_PREFIX = 'pack:shard:';
 const MAX_SHARD_CHARS = 3_000_000;
@@ -39,8 +41,11 @@ interface ShardRow { text: string; at: number; url: string; attribution?: string
 export type ShardFetch = typeof fetch & {
   failures: number;
   /** Fetch from the network even when the file is cached (and keep what comes back): how a location is checked before it is trusted. */
-  network(url: string): Promise<Response>;
+  network(url: string, init?: { timeoutMs?: number }): Promise<Response>;
 };
+
+/** How long one location probe (`dict/<lang>/manifest.json`) may wait before that location counts as unreachable. */
+export const LOCATE_PROBE_MS = 4000;
 
 /**
  * A `fetch` that reads a dictionary file from storage first, and stores what it fetches. Only URLs under `base` are served.
@@ -49,9 +54,9 @@ export type ShardFetch = typeof fetch & {
  * then sees plain JSON on both the first and the later reads. The cache key is the file name without `.json`/`.json.gz`
  * (the `?v=` stays, so a new revision never serves the old shard).
  */
-export function createShardFetch(area: StorageArea, base: string, doFetch: typeof fetch, now: () => number = Date.now): ShardFetch {
+export function createShardFetch(area: StorageArea, base: string, doFetch: typeof fetch, now: () => number = Date.now, offline?: Pick<DictionaryStore, 'read'>): ShardFetch {
   const root = base.replace(/\/+$/, '') + '/';
-  const load = async (input: RequestInfo | URL, useCache: boolean): Promise<Response> => {
+  const load = async (input: RequestInfo | URL, useCache: boolean, init?: { timeoutMs?: number }): Promise<Response> => {
     const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
     if (!url.startsWith(root)) throw new Error('refusing to fetch outside the dictionary location');
     const id = url.slice(root.length).replace(/\.json(\.gz)?(?=\?|$)/i, '');
@@ -59,16 +64,21 @@ export function createShardFetch(area: StorageArea, base: string, doFetch: typeo
     if (useCache) {
       const hit = (await area.get(key))[key] as ShardRow | undefined;
       if (hit && typeof hit.text === 'string') return new Response(hit.text, { status: 200, headers: { 'content-type': 'application/json' } });
+      // the learner's "Download for offline use" copy (IndexedDB), asked only after this miss; what it holds is never copied into chrome.storage
+      if (offline) {
+        const kept = await offline.read(id);
+        if (kept) { try { return new Response(await bytesToText(kept), { status: 200, headers: { 'content-type': 'application/json' } }); } catch { /* unreadable copy: the network answers */ } }
+      }
     }
     let res: Response;
-    try { res = await doFetch(url); } catch (e) { shardFetch.failures += 1; throw e; }
+    try { res = await (init ? doFetch(url, init as RequestInit) : doFetch(url)); } catch (e) { shardFetch.failures += 1; throw e; }
     if (!res.ok) { if (res.status >= 500) shardFetch.failures += 1; return res; }
     const text = await bytesToText(new Uint8Array(await res.arrayBuffer()));
     if (text.length <= MAX_SHARD_CHARS) { try { await area.set({ [key]: { text, at: now(), url } satisfies ShardRow }); } catch { /* storage full: the shard is used this once */ } }
     return new Response(text, { status: 200, headers: { 'content-type': 'application/json' } });
   };
   const shardFetch = ((input: RequestInfo | URL): Promise<Response> => load(input, true)) as ShardFetch;
-  shardFetch.network = (url) => load(url, false);
+  shardFetch.network = (url, init) => load(url, false, init);
   shardFetch.failures = 0;
   return shardFetch;
 }
@@ -126,6 +136,8 @@ export interface GlossServiceOptions {
   now?: () => number;
   /** `chrome.runtime.getURL`: the extension's own files (its `app/` folder and `app/config.json`). Absent outside an extension. */
   getURL?: (path: string) => string | undefined;
+  /** The files kept for offline use (see dictionaryStore.ts); read only after a chrome.storage miss. Absent: as before. */
+  offline?: Pick<DictionaryStore, 'read'>;
 }
 
 interface Located { base?: string; source?: DictionarySource; reason?: 'no-asset-base' | 'offline'; message?: string }
@@ -140,7 +152,7 @@ export function createGlossService(opts: GlossServiceOptions) {
 
   const shardFetchFor = (base: string): ShardFetch => {
     let f = shardFetches.get(`base@${base}`);
-    if (!f) { f = createShardFetch(opts.area, base, opts.fetch, opts.now); shardFetches.set(`base@${base}`, f); }
+    if (!f) { f = createShardFetch(opts.area, base, opts.fetch, opts.now, opts.offline); shardFetches.set(`base@${base}`, f); }
     return f;
   };
 
@@ -192,39 +204,87 @@ export function createGlossService(opts: GlossServiceOptions) {
     if (hosted) yield { source: 'hosted', base: hosted };
   }
 
-  /** Which location serves this language: the first whose `dict/<lang>/manifest.json` answers 200 (fetched through the caching shard fetch). */
-  async function locate(languageId: string, manifest: PackManifest): Promise<Located> {
-    const rel = manifest.lexical?.dictionary?.baseUrl?.replace(/^\/+|\/+$/g, '');
-    const tried: Array<{ source: DictionarySource; base: string }> = [];
-    let unreachable = false;
-    for await (const c of candidates()) {
-      tried.push(c);
-      if (!rel) return { base: c.base, source: c.source }; // a pack that declares no dictionary has nothing to check
-      try {
-        const res = await shardFetchFor(c.base).network(`${c.base.replace(/\/+$/, '')}/${rel}/manifest.json`);
-        if (res.ok) return { base: c.base, source: c.source };
-        if (res.status >= 500) unreachable = true;
-      } catch { unreachable = true; }
-    }
-    if (rel) {
-      // nothing answered right now: a dictionary read before is still on this device, and its row remembers where it came from
-      const key = `${SHARD_PREFIX}${rel}/manifest`;
-      try {
-        const row = (await opts.area.get(key))[key] as ShardRow | undefined;
-        const hit = row && typeof row.url === 'string' ? tried.find((c) => row.url.startsWith(c.base.replace(/\/+$/, '') + '/')) : undefined;
-        if (hit) return { base: hit.base, source: hit.source };
-      } catch { /* no memory of one */ }
-    }
-    if (!tried.length) return { reason: 'no-asset-base', message: 'No dictionary location is configured. Open GoLearn setup.' };
-    if (unreachable) return { reason: 'offline', message: 'The dictionary could not be reached.' };
-    return { reason: 'no-asset-base', message: `No dictionary location has ${languageId}. Open GoLearn setup.` };
+  /** One location's `dict/<lang>/manifest.json`, from the network (refreshing the stored row), within LOCATE_PROBE_MS. */
+  async function probe(c: { base: string }, rel: string): Promise<'ok' | 'missing' | 'unreachable'> {
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    try {
+      const req = shardFetchFor(c.base).network(`${c.base.replace(/\/+$/, '')}/${rel}/manifest.json`, { timeoutMs: LOCATE_PROBE_MS });
+      req.catch(() => undefined); // a probe that lost the race must not become an unhandled rejection
+      const deadline = new Promise<'unreachable'>((resolve) => { timer = setTimeout(() => resolve('unreachable'), LOCATE_PROBE_MS); });
+      const res = await Promise.race([req, deadline]);
+      if (res === 'unreachable') return 'unreachable';
+      if (res.ok) return 'ok';
+      return res.status >= 500 ? 'unreachable' : 'missing';
+    } catch { return 'unreachable'; } finally { if (timer !== undefined) clearTimeout(timer); }
   }
 
-  /** The location of a language's dictionary, searched once and kept for the worker's lifetime (a failed search is made again next time). */
+  const dictRel = (manifest: PackManifest): string | undefined => manifest.lexical?.dictionary?.baseUrl?.replace(/^\/+|\/+$/g, '');
+
+  /** The network search: the first location (in order) whose manifest answers 200 within LOCATE_PROBE_MS (a probe that times out counts as unreachable, like a thrown fetch). */
+  async function search(manifest: PackManifest): Promise<Located> {
+    const rel = dictRel(manifest);
+    let any = false;
+    let unreachable = false;
+    for await (const c of candidates()) {
+      any = true;
+      if (!rel) return { base: c.base, source: c.source }; // a pack that declares no dictionary has nothing to check
+      const r = await probe(c, rel);
+      if (r === 'ok') return { base: c.base, source: c.source };
+      if (r === 'unreachable') unreachable = true;
+    }
+    if (!any) return { reason: 'no-asset-base', message: 'No dictionary location is configured. Open GoLearn setup.' };
+    if (unreachable) return { reason: 'offline', message: 'The dictionary could not be reached.' };
+    return { reason: 'no-asset-base', message: `No dictionary location has ${manifest.languageId}. Open GoLearn setup.` };
+  }
+
+  const manifestRow = async (rel: string): Promise<ShardRow | undefined> => {
+    const key = `${SHARD_PREFIX}${rel}/manifest`;
+    try { const row = (await opts.area.get(key))[key] as ShardRow | undefined; return row && typeof row.url === 'string' ? row : undefined; } catch { return undefined; }
+  };
+
+  /** The location this device already used for the language: its stored manifest row remembers the address it came from, and counts only while that address is one of today's candidates. Local reads only. */
+  async function remembered(manifest: PackManifest): Promise<Located | undefined> {
+    const rel = dictRel(manifest);
+    if (!rel) return undefined;
+    const row = await manifestRow(rel);
+    if (!row) return undefined;
+    for await (const c of candidates()) {
+      if (row.url.startsWith(c.base.replace(/\/+$/, '') + '/')) return { base: c.base, source: c.source };
+    }
+    return undefined;
+  }
+
+  const revalidated = new Set<string>();
+  /**
+   * Once per worker life per language, never awaited by a lookup: the same network search as a cold start. If it settles on another
+   * location the remembered one is replaced; if the stored manifest row changed (a new dictionary revision) the language's runtimes are
+   * dropped so the next lookup reads the new row. A failure or a timeout changes nothing and says nothing.
+   */
+  function revalidate(languageId: string, manifest: PackManifest, mine: Promise<Located>, was: Located): void {
+    if (revalidated.has(languageId)) return;
+    revalidated.add(languageId);
+    void (async () => {
+      try {
+        const rel = dictRel(manifest);
+        const before = rel ? (await manifestRow(rel))?.text : undefined;
+        const found = await search(manifest);
+        if (!found.base || located.get(languageId) !== mine) return;
+        if (found.base !== was.base) { located.set(languageId, Promise.resolve(found)); return; }
+        const after = rel ? (await manifestRow(rel))?.text : undefined;
+        if (after !== before) for (const k of [...runtimes.keys()]) if (k.startsWith(`${languageId}@`)) runtimes.delete(k);
+      } catch { /* silent: the remembered location stays */ }
+    })();
+  }
+
+  /** The location of a language's dictionary: a remembered one at once (checked in the background), else searched; kept for the worker's lifetime (a failed search is made again next time). */
   function locatedFor(languageId: string, manifest: PackManifest): Promise<Located> {
     let loc = located.get(languageId);
     if (!loc) {
-      const mine = locate(languageId, manifest);
+      const mine: Promise<Located> = remembered(manifest).catch(() => undefined).then((r) => {
+        if (!r) { revalidated.add(languageId); return search(manifest); }
+        queueMicrotask(() => revalidate(languageId, manifest, mine, r));
+        return r;
+      });
       loc = mine;
       located.set(languageId, mine);
       const forget = (): void => { if (located.get(languageId) === mine) located.delete(languageId); };
@@ -266,10 +326,8 @@ export function createGlossService(opts: GlossServiceOptions) {
 
   async function stampAttribution(languageId: string, attribution: string): Promise<void> {
     try {
-      const all = await opts.area.get(null);
       const patch: Record<string, unknown> = {};
-      for (const [k, v] of Object.entries(all)) {
-        if (!k.startsWith(SHARD_PREFIX) || !k.includes(`/${languageId}/`)) continue;
+      for (const [k, v] of await readPrefix(opts.area, SHARD_PREFIX, (key) => key.includes(`/${languageId}/`))) {
         const row = v as ShardRow;
         if (row && row.attribution !== attribution) patch[k] = { ...row, attribution };
       }
@@ -365,7 +423,10 @@ export function createGlossService(opts: GlossServiceOptions) {
     }
   }
 
-  return { glossFor, entryFor, explainFor, packAvailable, dictionaryAt };
+  /** Forget everything this worker holds in memory about locations and parsed dictionaries (after the learner deleted the device's data). */
+  function reset(): void { runtimes.clear(); shardFetches.clear(); located.clear(); revalidated.clear(); }
+
+  return { glossFor, entryFor, explainFor, packAvailable, dictionaryAt, reset };
 }
 
 export type GlossService = ReturnType<typeof createGlossService>;

@@ -18,7 +18,8 @@ import { PACKS, TUTORIALS, readSelection, tutorialFor } from '../../packages/lan
 import type { Tutorial, TutorialStep } from '../../packages/language-packs/src';
 
 const ADAPTERS: Record<string, LanguageAdapter> = { de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter };
-const NEW = ['de', 'hi', 'th', 'nb', 'nn', 'la'];
+// la left the minimal shape on 2026-11-13 (sounds, three patterns and a passage, like es and sq): test/course/latin-tutorial.test.ts checks it
+const NEW = ['de', 'hi', 'th', 'nb', 'nn'];
 
 /** The words a reader of the card would meet: every word of a sentence, read by the analyser, none of them a guess. */
 const wordsOf = (a: LanguageAdapter, text: string) => a.analyze(a.tokenize(text)).filter((x) => x.token.isWord);
@@ -26,7 +27,7 @@ const wordsOf = (a: LanguageAdapter, text: string) => a.analyze(a.tokenize(text)
 describe('the tutorial registry', () => {
   it('has one tutorial for each of the eight languages, in the pack registry’s order, and none for another language or an inherited key', () => {
     expect(Object.keys(TUTORIALS)).toEqual(Object.keys(PACKS));
-    expect(Object.keys(TUTORIALS)).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el']);
+    expect(Object.keys(TUTORIALS)).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc']);
     for (const [id, t] of Object.entries(TUTORIALS)) {
       expect(tutorialFor(id), id).toBe(t);
       expect(t.languageId, id).toBe(id);

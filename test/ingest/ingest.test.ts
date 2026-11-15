@@ -184,7 +184,7 @@ describe('import of the bundled corpus', () => {
   });
 
   it('gives the same form in story and Bible the same formId, yet distinct tokens', async () => {
-    const sharedContent: Record<LanguageCode, string[]> = {
+    const sharedContent: Record<LanguageCode, string[]> = { arc: [],
       es: ['pecado', 'dios'], de: ['sünde', 'gott'], sq: ['mëkat', 'perëndia'], th: ['บาป', 'พระเจ้า'], hi: ['पाप', 'परमेश्वर'], nb: [], nn: [], he: [], el: [], la: [],
     };
     for (const lang of LANGUAGES) {
@@ -219,7 +219,7 @@ describe('import of the bundled corpus', () => {
   });
 
   it('covers the required concepts in each story', async () => {
-    const concepts: Record<LanguageCode, string[]> = {
+    const concepts: Record<LanguageCode, string[]> = { arc: [],
       es: ['pecado', 'perdonar', 'entender', 'corazón', 'creer'],
       de: ['Sünde', 'vergeben', 'verstehen', 'Herz', 'glauben'],
       sq: ['mëkat', 'fal', 'kuptoj', 'zemër', 'besoj'],
@@ -241,7 +241,7 @@ describe('import of the bundled corpus', () => {
   });
 
   it('marks the three target phrases in every story, and "believe in" also in every Bible text', async () => {
-    const P: Record<LanguageCode, { young: string[]; began: string[]; believe: string[] }> = {
+    const P: Record<LanguageCode, { young: string[]; began: string[]; believe: string[] }> = { arc: { young: [], began: [], believe: [] },
       es: { young: ['cuando', 'ser', 'joven'], began: ['empezar', 'a', 'entender'], believe: ['creer', 'en', '_'] },
       de: { young: ['als', '_', 'jung', 'sein'], began: ['anfangen', 'zu', 'verstehen'], believe: ['glauben', 'an', '_'] },
       sq: { young: ['kur', 'jam', 'i', 'ri'], began: ['filloj', 'të', 'kuptoj'], believe: ['besoj', 'te', '_'] },

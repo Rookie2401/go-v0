@@ -6,6 +6,10 @@
  * Nothing else: no Practise button, no sync line or button (the worker syncs by itself: after every event, every minute, when the
  * connection returns), no voices line, no explanations. Housekeeping (export, deletion, the speech backend) lives in the setup page.
  * Everything about the connection comes from the background as text: this page never holds a token.
+ *
+ * Presentation (2026-11-11, docs/golearn/DESIGN-SYSTEM.md): a line that only repeats what the control beside it shows ("On.", "Off.", the
+ * language already in the select) is kept for assistive technology and hidden from sight (.sr); the line about the page says how many
+ * words are marked and keeps the counts per level behind "Word counts", which opens on a press. Anything that needs the learner is shown, in the warning colour.
  */
 import { ACTIVE_LEVELS, LEVEL_LEGEND, type ActiveLevel } from '../src/active/levels';
 import { MSG, getChrome, type ChromeApi } from '../src/platform';
@@ -52,7 +56,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     }));
     langSelect.value = s.languageId;
     langSelect.disabled = list.length < 2;
-    langLine.classList.remove('warn');
+    langLine.classList.remove('warn', 'sr');
     // one language only: say why, truthfully. With the account unreadable (its service cannot be reached, nothing kept from before) the
     // account's languages are simply not known here yet; that is not "others are added in GoLearn setup" (2026-10-27)
     const accountUnread = s.connected && s.accountLanguagesFresh === false;
@@ -62,11 +66,14 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
         : `${s.languageName} is the only language downloaded here; others are added in GoLearn setup.${s.packAvailable ? '' : ' No pack yet.'}`
       : `${s.languageName}${s.packAvailable ? '' : ' (no pack yet)'}`;
     if (accountUnread) langLine.classList.add('warn');
+    // the select already names the language: the line is seen only when it has more to say (one language only, no pack yet, a warning)
+    if (list.length >= 2 && s.packAvailable) langLine.classList.add('sr');
   }
   langSelect.addEventListener('change', async () => {
     const languageId = langSelect.value;
     if (!languageId) return;
     langSelect.disabled = true;
+    langLine.classList.remove('sr');
     langLine.textContent = `Switching to ${languageNameOf(languageId)}…`;
     let r: { ok?: boolean; message?: string; where?: string } | undefined;
     try { r = (await chrome.runtime.sendMessage({ type: MSG.useLanguage, languageId })) as typeof r; } catch { r = undefined; }
@@ -76,6 +83,17 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     }
     await refresh();
   });
+
+  /** The foot line: the build the worker runs, and for 10 minutes after a self-reload that it updated itself (plain text, no control). */
+  function renderBuild(s: PageStatus | undefined): void {
+    const el = doc.getElementById('build');
+    if (!el) return;
+    const at = (iso: string | undefined): string => { const t = iso ? Date.parse(iso) : NaN; return Number.isFinite(t) ? new Date(t).toLocaleString() : ''; };
+    if (!s?.build?.id) { el.textContent = ''; return; }
+    el.textContent = s.updatedAt && at(s.updatedAt)
+      ? `Updated to build ${s.build.id} at ${at(s.updatedAt)}`
+      : `Build ${s.build.id}${at(s.build.builtAt) ? ` · ${at(s.build.builtAt)}` : ''}`;
+  }
 
   /** The greeting and, only when something needs the learner, one line under the brand. */
   function renderStatus(s: PageStatus | undefined): void {
@@ -102,6 +120,8 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
   const activeToggle = $<HTMLInputElement>('active');
   const activeStatus = $('active-status');
   const pageLine = $('active-page');
+  const pageDetail = $('active-detail');
+  const pageCounts = $('active-counts');
   const legend = $('active-legend');
   legend.replaceChildren('How well you know each word: ');
   MARKED_LEVELS.forEach((level, i) => {
@@ -119,34 +139,45 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     try { const r = await chrome.runtime.sendMessage({ type: MSG.active, op, ...(patch ? { patch } : {}) }); return isActiveReply(r) ? r : undefined; } catch { return undefined; }
   }
   function showActive(r: ActiveReply | undefined): void {
-    activeStatus.classList.remove('warn');
+    activeStatus.classList.remove('warn', 'sr');
     if (!r) { activeToggle.disabled = true; activeStatus.textContent = 'The background worker did not answer about Active.'; return; }
     activeToggle.disabled = false;
     activeToggle.checked = r.settings.active;
     if (!r.ok && r.message) { activeStatus.textContent = r.message; activeStatus.classList.add('warn'); return; }
-    if (r.settings.active && r.registered) activeStatus.textContent = 'On.';
+    // plain On and Off are the switch's own to show: the words stay for a screen reader only
+    if (r.settings.active && r.registered) { activeStatus.textContent = 'On.'; activeStatus.classList.add('sr'); }
     else if (r.settings.active) { activeStatus.textContent = 'On, but GoLearn is not ready to scan pages; switch it off and on again.'; activeStatus.classList.add('warn'); }
     else if (r.settings.offBy === 'browser') {
       // the browser withdrew GoLearn's site access (its extension menu, an update or a reload of the extension): say so, never a bare "Off"
       const when = r.settings.offAt && Number.isFinite(Date.parse(r.settings.offAt)) ? ` on ${new Date(r.settings.offAt).toLocaleString()}` : '';
       activeStatus.textContent = `Off: the browser withdrew GoLearn's access to web pages${when}, so Active stopped. It comes back by itself when the browser allows access again; or switch it on here.`;
       activeStatus.classList.add('warn');
-    } else activeStatus.textContent = 'Off.';
+    } else { activeStatus.textContent = 'Off.'; activeStatus.classList.add('sr'); }
   }
-  /** One line about the page in front: its words, how many carry a mark (per level), how many are known; or why nothing was read. */
+  /** One line about the page in front: how many of its words carry a mark (the counts per level open under it, on request); or why nothing was read. */
   async function showPage(on: boolean): Promise<void> {
-    if (!on || tabId === undefined) { pageLine.textContent = ''; return; }
+    const say = await pageText(on);
+    pageLine.textContent = say.line;
+    pageCounts.textContent = say.counts ?? '';
+    pageDetail.hidden = !say.counts;
+  }
+  async function pageText(on: boolean): Promise<{ line: string; counts?: string }> {
+    if (!on || tabId === undefined) return { line: '' };
     let ping: PingReply | undefined;
     try { ping = (await chrome.tabs?.sendMessage(tabId, { type: MSG.ping })) as PingReply | undefined; } catch { ping = undefined; }
-    if (!ping || !ping.ok) { pageLine.textContent = 'This page: GoLearn is not running here yet. Reload the page. Browser settings pages and extension stores cannot be read.'; return; }
+    if (!ping || !ping.ok) return { line: 'This page: GoLearn is not running here yet. Reload the page. Browser settings pages and extension stores cannot be read.' };
     const s = ping.activeState;
-    if (!ping.active || !s) { pageLine.textContent = 'This page: GoLearn is here but Active has not started on it. Reload the page.'; return; }
-    if (s.reason) { pageLine.textContent = `This page: ${s.reason}`; return; }
+    if (!ping.active || !s) return { line: 'This page: GoLearn is here but Active has not started on it. Reload the page.' };
+    if (s.reason) return { line: `This page: ${s.reason}` };
     const marked = MARKED_LEVELS.reduce((n, k) => n + (s.marked[k] ?? 0), 0);
     const known = (ACTIVE_LEVELS.filter((l) => !MARKED_LEVELS.includes(l))).reduce((n, k) => n + (s.marked[k] ?? 0), 0);
     const parts = MARKED_LEVELS.filter((l) => s.marked[l]).map((l) => `${LEVEL_LEGEND[l].title.toLowerCase()} ${s.marked[l]}`).join(', ');
-    const lang = s.languageId ? languageNameOf(s.languageId) : 'language unknown';
-    pageLine.textContent = `This page (${lang}): ${s.scanned} words; ${marked} underlined${parts ? ` (${parts})` : ''}; ${known} known.`;
+    // every language of the learner's found on the page, the one with the most words first (2026-11-09)
+    const lang = s.languages?.length ? s.languages.map((l) => languageNameOf(l)).join(', ') : s.languageId ? languageNameOf(s.languageId) : 'none of your languages';
+    return {
+      line: marked ? `This page (${lang}): ${marked} ${marked === 1 ? 'word' : 'words'} marked.` : `This page (${lang}): no words to mark.`,
+      counts: `${s.scanned} words read${parts ? `: ${parts}` : ''}; ${known} known.`,
+    };
   }
   activeToggle.addEventListener('change', async () => {
     activeToggle.disabled = true;
@@ -154,7 +185,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
       // the browser's own prompt, inside this click; a "no" keeps everything as it was
       let granted = false;
       try { granted = (await chrome.permissions?.request({ origins: [...ACTIVE_ORIGINS] })) === true; } catch { granted = false; }
-      if (!granted) { activeToggle.checked = false; activeToggle.disabled = false; activeStatus.textContent = 'Site access was not allowed, so Active stays off.'; activeStatus.classList.add('warn'); return; }
+      if (!granted) { activeToggle.checked = false; activeToggle.disabled = false; activeStatus.textContent = 'Site access was not allowed, so Active stays off.'; activeStatus.classList.remove('sr'); activeStatus.classList.add('warn'); return; }
       const r = await activeCall('set', { active: true });
       showActive(r);
       await showPage(!!r?.settings.active);
@@ -177,7 +208,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
    */
   async function refresh(): Promise<void> {
     const switchShown = activeCall('get').then(async (a) => { showActive(a); await showPage(!!a?.settings.active); });
-    const statusShown = status().then(renderStatus);
+    const statusShown = status().then((s) => { renderStatus(s); renderBuild(s); });
     await Promise.all([switchShown, statusShown]);
   }
 

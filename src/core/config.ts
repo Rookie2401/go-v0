@@ -16,6 +16,7 @@ export const LANGUAGE_ROWS: Language[] = [
   { id: 'he', name: 'Hebrew', endonym: 'עברית', script: 'Hebr', direction: 'rtl', whitespaceDelimited: true },
   { id: 'el', name: 'Greek', endonym: 'Ελληνικά', script: 'Grek', direction: 'ltr', whitespaceDelimited: true },
   { id: 'la', name: 'Latin', endonym: 'Latina', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
+  { id: 'arc', name: 'Aramaic (Biblical)', endonym: 'אֲרָמִית', script: 'Hebr', direction: 'rtl', whitespaceDelimited: true },
 ];
 
 export const COURSES: Course[] = [
@@ -70,6 +71,7 @@ export const COURSES: Course[] = [
     id: 'latin-la', lang: 'la', country: 'Rome', title: 'Latin', preferredLocales: ['la'],
     // No variety policy yet: Classical Latin is the working target; the Vulgate and later Latin are read as Latin of their period.
   },
+  { id: 'aramaic-arc', lang: 'arc', country: 'Aramaic', title: 'Biblical Aramaic', primaryReadingKinds: ['scripture'], preferredLocales: [], variety: { target: 'arc-bib', within: [] } },
 ];
 
 /** The course for a language: the course whose own language it is; for a companion language (Nynorsk) the course that reads it. */

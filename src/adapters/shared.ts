@@ -231,6 +231,9 @@ export function E(
 
 export interface LexHit { entry: LexEntry; form: LexForm; order: number }
 
+/** How many lexicons have been built in this process (a test of start-up work reads it; nothing else does). */
+export const lexiconStats = { constructed: 0 };
+
 export class Lexicon {
   readonly entries: LexEntry[];
   private readonly byForm = new Map<string, LexHit[]>();
@@ -238,6 +241,7 @@ export class Lexicon {
   private readonly lemmaOf = new Map<string, Set<string>>();
 
   constructor(entries: LexEntry[], normalizeFn: (s: string) => string) {
+    lexiconStats.constructed++;
     this.entries = entries;
     entries.forEach((entry, order) => {
       const list = this.byLemmaKey.get(entry.lemma) ?? [];

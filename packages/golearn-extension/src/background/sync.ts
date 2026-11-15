@@ -50,6 +50,8 @@ export interface SyncServiceOptions {
   /** Called after a successful sync round (the profile cache refresh). */
   onSynced?: () => Promise<void> | void;
   timers?: { set(fn: () => void, ms: number): unknown; clear(handle: unknown): void };
+  /** The worker's shared keep-alive hold (localRepo.ts `createWorkerHold`): held for the length of a round, so a long first pull is not cut off by the browser's 30 s idle limit. */
+  hold?: () => () => void;
 }
 
 /** The extension keeps no copy of other devices' events (knowledge comes from the Repository's projection); pulled events are counted and dropped. */
@@ -139,6 +141,11 @@ export function createSyncService(opts: SyncServiceOptions) {
 
   /** One round: push, then pull. Resolves with the outcome; never throws. */
   async function syncOnce(o: { force?: boolean } = {}): Promise<{ ok: boolean; skipped?: 'not-connected' | 'needs-sign-in' | 'offline' | 'backoff' }> {
+    const release = opts.hold?.();
+    try { return await syncRound(o); } finally { release?.(); }
+  }
+
+  async function syncRound(o: { force?: boolean }): Promise<{ ok: boolean; skipped?: 'not-connected' | 'needs-sign-in' | 'offline' | 'backoff' }> {
     try {
       // a sign-out that could not reach the service left a session alive there: end it as soon as a round can run (audit P-08)
       if (online) { try { await opts.session.retryRevocation(); } catch { /* the slot stays for the next round */ } }

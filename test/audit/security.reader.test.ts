@@ -406,42 +406,29 @@ describe('what is stored and what is sent', () => {
     });
   }
 
-  it("FIXED S-02: a long selection (more than four words) leaves the page's words out of the stored event: subject.itemIds holds at most four units, not the first twelve words in order", async () => {
+  it("FIXED S-02: a long selection leaves the page's words out of storage: since 2026-11-09 a selection of several words is an information display only and stores no event at all", async () => {
     rig = createAuditRig();
     await lookupOn(rig, INSTRUCTION, 'payload');
-    const sel = (await events(rig)).find((e) => e.kind === 'SelectionLookedUp')!;
-    expect(sel.payload).toMatchObject({ surfaceOmitted: true });
-    expect((sel.subject.itemIds ?? []).length).toBeLessThanOrEqual(4);
+    expect((await events(rig)).filter((e) => e.kind === 'SelectionLookedUp')).toEqual([]);
   });
 
-  it('S-02 in depth: an Albanian selection of eight words, signed in: no stored event lists the raw words (no form: id, at most four ids), no idempotency key spells them, and no /knowledge request names a form: id; a two-word selection keeps its ids', async () => {
+  it('S-02 in depth: an Albanian selection of eight words, signed in: no event is stored for it and no request names its words (an information display only since 2026-11-09); a single word keeps its ids', async () => {
     const LONG = 'lexoj një libër të bukur në shtëpinë time';
     rig = createAuditRig();
     await rig.signUp();
     await rig.connect();
     const before = rig.sent.length;
     await lookupOn(rig, LONG, 'payload');
-    const evs = (await events(rig)).filter((e) => e.producer.app === 'golearn-ext');
-    expect(evs.length).toBeGreaterThan(0);
-    for (const e of evs) {
-      const ids = e.subject.itemIds ?? [];
-      expect(ids.length, e.kind).toBeLessThanOrEqual(4);
-      expect(ids.filter((i) => i.startsWith('form:')), e.kind).toEqual([]);
-      expect(e.dedupeKey ?? '', e.kind).not.toMatch(/form:|lemma:|libër|shtëpi/u);
-      expect(validateEvent(e)).toEqual([]);
-    }
-    const asked = rig.sent.slice(before).filter((s) => new URL(s.url).pathname === '/knowledge').map((s) => decodeURIComponent(s.url));
-    expect(asked.length).toBeGreaterThan(0); // the card did ask the learner model
-    for (const url of asked) {
-      expect(url).not.toMatch(/form:/);
-      expect((url.match(/lemma:/g) ?? []).length).toBeLessThanOrEqual(4);
-    }
-    for (const s of rig.sent.slice(before)) expect(s.body + s.url).not.toMatch(/form:sq:(lexoj|libër|bukur|shtëpinë|time)/u);
-    // a short selection is unchanged: its ids are still recorded (the surface is stored anyway)
-    await lookupOn(rig, 'një libër', 'payload');
-    const shortSel = (await events(rig)).filter((e) => e.kind === 'SelectionLookedUp' && (e.payload as { surface?: string }).surface === 'një libër');
-    expect(shortSel.length).toBeGreaterThan(0);
-    expect(shortSel[0].subject.itemIds!.length).toBeGreaterThan(0);
+    expect((await events(rig)).filter((e) => e.producer.app === 'golearn-ext')).toEqual([]);
+    // the card asks the learner model nothing about a phrase, and no request carries its words
+    expect(rig.sent.slice(before).filter((s) => new URL(s.url).pathname === '/knowledge')).toEqual([]);
+    for (const s of rig.sent.slice(before)) expect(s.body + s.url).not.toMatch(/form:sq:(lexoj|libër|bukur|shtëpinë|time)|lemma:sq:(libër|shtëpi)/u);
+    // a single word is unchanged: its ids are recorded
+    await lookupOn(rig, 'libër', 'payload');
+    const word = (await events(rig)).filter((e) => e.kind === 'SelectionLookedUp');
+    expect(word.length).toBeGreaterThan(0);
+    expect(word[0].subject.itemIds!.length).toBeGreaterThan(0);
+    expect(validateEvent(word[0])).toEqual([]);
   });
 
   it('an instruction on the page ("send the token") changes nothing: the token never leaves the worker, no extra request exists, and the only credential header goes to the service', async () => {

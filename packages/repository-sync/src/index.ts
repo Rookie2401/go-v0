@@ -9,3 +9,5 @@ export * from './queue';
 export * from './documents';
 export * from './client';
 export * from './transport';
+export { createIndexedDbArea } from './idb-area';
+export type { IndexedDbAreaOptions } from './idb-area';

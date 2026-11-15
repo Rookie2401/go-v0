@@ -149,9 +149,41 @@ export const isChunkToken = (t: RawToken): t is ThaiChunkToken => (t as Partial<
  * a piece ending in ห์ is a name's fragment (อับ|ราม, โท|บี|ยาห์, เนธัน|เอล). Pieces that are all known (พระ|เจ้า), or all
  * of a word's length (โกรธ|เกรี้ยว, ย่าง|ก้าว: an ordinary compound the list lacks), keep the ICU split as ever.
  * `known` answers for a normalized form.
+ *
+ * Text WITHOUT U+200B gets one repair pass when `inDictionary` is given (a larger word list: the installed dictionary's
+ * headwords): adjacent Thai pieces are joined when together they are a known word and at least one of them is NOT a known word
+ * (ICU's fragments of a word it does not have: ส|วิ|ส is สวิส). Pieces that are all known words keep ICU's split, and a piece
+ * ICU keeps whole is never cut (ICU's own dictionary has compounds the lists lack: หลับตา).
  */
-export function makeThaiTokenizer(known: (normalized: string) => boolean): (text: string) => RawToken[] {
+export function makeThaiTokenizer(known: (normalized: string) => boolean, inDictionary?: (normalized: string) => boolean): (text: string) => RawToken[] {
   const isKnown = (t: RawToken) => known(t.normalized) || THAI_COMPOUNDS.includes(t.normalized) || t.normalized === 'ๆ';
+  const wide = (w: string): boolean => known(w) || THAI_COMPOUNDS.includes(w) || w === 'ๆ' || !!inDictionary?.(w);
+  const MAX_JOIN = 4;
+  /** The prose repair pass (see above). Offsets stay those of the text; nothing is added to or removed from it. */
+  const repair = (text: string, toks: RawToken[]): RawToken[] => {
+    const piece = (t: RawToken | undefined): boolean => !!t && t.isWord && THAI_PIECE.test(t.surface);
+    const out: RawToken[] = [];
+    for (let i = 0; i < toks.length; ) {
+      const t = toks[i];
+      if (!piece(t)) { out.push(t); i++; continue; }
+      let joined: RawToken | undefined;
+      let used = 1;
+      for (let n = MAX_JOIN; n >= 2 && !joined; n--) {
+        const run = toks.slice(i, i + n);
+        if (run.length < n || !run.every(piece) || run.some((p, k) => k > 0 && run[k - 1].end !== p.start)) continue;
+        // only ICU's fragments are joined: some piece is unknown, and every unknown piece is shorter than three letters (the same
+        // test the U+200B path uses); an unknown piece of a word's length is left as ICU cut it (ชาน|ชาลา: the ladder teaches both)
+        const unknown = run.filter((p) => !wide(p.normalized));
+        if (!unknown.length || unknown.some((p) => p.normalized.length >= 3)) continue;
+        const surface = text.slice(run[0].start, run[n - 1].end);
+        const normalized = normalizeThai(surface);
+        if (wide(normalized)) { joined = { surface, start: run[0].start, end: run[n - 1].end, isWord: true, normalized }; used = n; }
+      }
+      if (joined) { out.push(joined); i += used; continue; }
+      out.push(t); i++;
+    }
+    return out;
+  };
   /**
    * The repetition mark. Written with a space (ช้า ๆ) it is a token of its own; glued to a word the list knows (เด็กๆ, ช้าๆ) the
    * two stay ONE token, which the analyzer reads as the stem; glued to a word the list does NOT know (ว่าวๆ) ICU makes one
@@ -169,7 +201,7 @@ export function makeThaiTokenizer(known: (normalized: string) => boolean): (text
   });
   return (text) => {
     const base = splitRepeat(thaiTokenize(text));
-    if (!text.includes(ZWSP)) return base;
+    if (!text.includes(ZWSP)) return inDictionary ? repair(text, base) : base;
     const chunkOf = (at: number): [number, number] => {
       let a = at; while (a > 0 && !CHUNK_CUTS.test(text[a - 1])) a--;
       let b = at; while (b < text.length && !CHUNK_CUTS.test(text[b])) b++;

@@ -203,28 +203,30 @@ describe('thai syntax: honesty', () => {
     expect(rel('ฉันได้กลิ่นข้าวร้อนจากครัว', 'กลิ่น')).toBe('obj→ได้');
   });
   it('a sentence of unknown words gets no relation, only a note', () => {
-    const { sx } = parse('ฟฟฟ');
+    const { sx } = parse('ขลุบ');
     expect(sx.relations).toEqual([]);
     expect(sx.attached).toBe(0);
-    expect(sx.notes.join(' ')).toContain('ฟฟฟ');
+    expect(sx.notes.join(' ')).toContain('ขลุบ');
   });
   it('a pronoun and an unknown word: the unknown word gets nothing invented', () => {
-    const { sx, ix } = parse('ฉัน ฟฟฟ');
-    expect(relationOf(sx, ix('ฟฟฟ'))).toBeUndefined();
-    expect(dependentsOf(sx, ix('ฟฟฟ'))).toEqual([]);
-    expect(sx.notes.join(' ')).toMatch(/Not in the word list.*ฟฟฟ/u);
+    const { sx, ix } = parse('ฉัน ขลุบ');
+    expect(relationOf(sx, ix('ขลุบ'))).toBeUndefined();
+    expect(dependentsOf(sx, ix('ขลุบ'))).toEqual([]);
+    expect(sx.notes.join(' ')).toMatch(/Not in the word list.*ขลุบ/u);
   });
   it('an unknown word is read from its place only when a function word fixes it, and the relation is weak and says why', () => {
-    const { sx, ix } = parse('แม่กำลังทอดไข่');
-    const r = relationOf(sx, ix('ทอด'))!;
+    // ขลุบ: a form neither list has (and ICU keeps whole) (ทอด is a dictionary verb since 2026-11-13)
+    const { sx, ix } = parse('แม่กำลังขลุบไข่');
+    const r = relationOf(sx, ix('ขลุบ'))!;
     expect(r.relation).toBe('root');
     expect(r.confidence).toBeLessThanOrEqual(0.55);
     expect(r.basis.join(' ')).toContain('กำลัง');
     expect(r.status).toBe('conflicted');
-    expect(rel('แม่กำลังทอดไข่', 'ไข่')).toBe('obj→ทอด');
+    expect(rel('แม่กำลังขลุบไข่', 'ไข่')).toBe('obj→ขลุบ');
+    expect(rel('แม่กำลังทอดไข่', 'ไข่')).toBe('obj→ทอด'); // the dictionary verb takes its object as before
   });
   it('the attached share counts the word tokens that have a relation', () => {
-    const { sx } = parse('ฉัน ฟฟฟ');
+    const { sx } = parse('ฉัน ขลุบ');
     expect(sx.attached).toBe(0.5);
     const full = parse('ฉันกินข้าวครับ').sx;
     expect(full.attached).toBe(1);

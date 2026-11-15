@@ -8,7 +8,9 @@
  * `EncounterRecorded` (surface 'biblia-reading') for the unit ids of the verse's other words, so the Repository learns what was read without a tap.
  */
 import { createCardUI, type CardUI } from '../../golearn-extension/src/popup/card';
-import type { CardView } from '../../golearn-extension/src/popup/view';
+import type { CardView, EnrichmentView } from '../../golearn-extension/src/popup/view';
+import { buildParadigm, selectedCellKeys, structureOf } from '../../golearn-extension/src/content/enrich';
+import type { LanguageAdapter, PartOfSpeech } from '../../../src/core';
 import type { CardModel } from '../../golearn-extension/src/parser';
 import { parseSelection } from '../../golearn-extension/src/parser';
 import { hasAnalyser, languageMeta, registerAnalyser } from '../../golearn-extension/src/parser/registry';
@@ -24,6 +26,7 @@ import { Texts, greekVerseText, installFullIndexes, verseIsAramaic, type AnyBook
 import { APP_VERSION, READER_ID, type Identity, type Recorder } from './repo';
 import { renderAccountScreen, renderLegalScreen, type AccountService } from './account';
 import { createLevels, unitIdsOfSite, type LevelSite } from './levels';
+import { bookMark } from './loading';
 import type { GoEvent } from '../../repository-contract/src';
 import { CONTRACT_VERSION } from '../../repository-contract/src';
 import type { Pronouncer } from '../../golearn-extension/src/popup/view';
@@ -69,6 +72,9 @@ const ICONS = {
 type IconName = keyof typeof ICONS;
 
 type Child = Node | string | null | undefined | false;
+
+/** A chapter that arrives within this long replaces the page directly; a slower one shows the loading mark meanwhile (loading.ts). */
+export const LOADING_AFTER_MS = 180;
 
 export interface BibliaApp {
   go(hash: string): Promise<void>;
@@ -377,6 +383,20 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     return buildEncounterEvent({ languageId: ref.lang, itemIds: [...ids], readerId: READER_ID, identity: base.identity, version: base.version, sessionId: base.sessionId, now: base.now, language: base.language, surface: 'biblia-reading', tokenCount: sites.length, contextKind: 'sentence' });
   }
 
+  /**
+   * The deeper sections of the card from the analyser alone: Biblia has no dictionary service, but its form indexes can list the lemma's attested forms and
+   * the word's parts. Where a dictionary's senses and origin would go, the card says that none is carried here and where the meanings do come from.
+   */
+  function localEnrichment(adapter: LanguageAdapter, lang: string, model: CardModel): EnrichmentView {
+    const hint = { features: Object.fromEntries(model.features.map((f) => [f.key, f.value])), surface: model.surface };
+    const paradigm = model.lemma && model.pos ? buildParadigm(adapter, lang, model.lemma, model.pos as PartOfSpeech, undefined, hint) : undefined;
+    return {
+      state: 'ready', paradigm, selected: selectedCellKeys(adapter, paradigm, hint.features, model.surface),
+      structure: structureOf(undefined, adapter, model.lemma ?? model.surface.trim(), model.pos, model.surface, hint.features, { languageId: lang }),
+      noDictionary: 'Biblia does not carry full dictionary entries, so no further senses or word history are listed here. The meanings above come from the lexicon data of the analyser, named under "view sources".',
+    };
+  }
+
   async function lookup(ref: WordRef, button: HTMLElement): Promise<void> {
     if (!hasAnalyser(ref.lang)) { showNotice(`The GoLearn parser does not list ${LANGUAGE_NAME[ref.lang]} on this build; nothing can be looked up.`); return; }
     clearSelection();
@@ -422,6 +442,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         ...(profileNow() ?? {}),
         // "view sources": the analyser's own sources for this language (the Open Scriptures morphology, MorphGNT, the Wiktionary tables, the rules)
         sources: Object.values((ref.lang === 'he' ? heAdapter : elAdapter).sources ?? {}).map((s) => ({ label: s.label, ...(s.licence ? { licence: s.licence } : {}) })),
+        enrichment: localEnrichment(ref.lang === 'he' ? heAdapter : elAdapter, ref.lang, model),
       },
       actions: {
         onLayer: (layer) => { if (ictx) void deps.recorder.record([buildAssistanceEvent({ ...ictx, now: deps.now() }, layer as ExpandedLayer)]).then((r2) => { if (!r2.ok) showNotice(`Could not record this: ${r2.message ?? 'unknown reason'}.`); }); },
@@ -691,7 +712,12 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     try { if (card.isOpen()) card.dismiss('escape'); } catch { /* no card */ }
     clearSelection();
     let view: HTMLElement;
-    if (id === 'read' && m?.[2]) { route = `read/${m[2]}/${m[3] ?? '1'}`; view = await renderReader(decodeURIComponent(m[2]), Number(m[3] ?? '1')); }
+    if (id === 'read' && m?.[2]) {
+      route = `read/${m[2]}/${m[3] ?? '1'}`;
+      // a book not read yet this session has to be fetched: past a moment's wait the open book turns its pages where the chapter will be
+      const waiting = win.setTimeout(() => { root.replaceChildren(h('div', {}, plainBar('Biblia'), bookMark(doc, 'Loading the text…'))); }, LOADING_AFTER_MS);
+      try { view = await renderReader(decodeURIComponent(m[2]), Number(m[3] ?? '1')); } finally { win.clearTimeout(waiting); }
+    }
     else if (id === 'settings') { route = 'settings'; view = renderSettings(); }
     else if (id === 'sources') { route = 'sources'; view = renderSources(); }
     else if (id === 'account' && account) { route = 'account'; view = renderAccountScreen({ doc, account, topbar: plainBar('Biblia', 'account'), done: () => { void api.go('#/'); } }); }

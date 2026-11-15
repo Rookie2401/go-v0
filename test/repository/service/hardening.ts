@@ -30,7 +30,7 @@ export interface HardeningOptions {
   logFormat?: 'text' | 'json';
   /** The address each request comes from; default "10.0.0.1". A test may change `ip.current`. */
   ip?: string;
-  storeInfo?: { storeKind: string };
+  storeInfo?: { storeKind: string; commit?: string };
 }
 
 export function hardening(open: (now: () => string) => ConcreteStore | Promise<ConcreteStore>, opts: HardeningOptions = {}): Promise<Hardening & { ip: { current: string } }> {
@@ -48,7 +48,7 @@ export function hardening(open: (now: () => string) => ConcreteStore | Promise<C
       ...(limiter ? { limiter } : {}),
       ...(opts.logFormat ? { logFormat: opts.logFormat } : {}),
       ...(opts.withMetrics ? { metrics: { registry: createMetricsRegistry(), ...(opts.withMetrics.token ? { token: opts.withMetrics.token } : {}) } } : {}),
-      ...(opts.storeInfo ? { info: { storeKind: opts.storeInfo.storeKind, startedAt: Date.now() - 5000, schemaVersion: async () => (await store.stats?.())?.schemaVersion } } : {}),
+      ...(opts.storeInfo ? { info: { storeKind: opts.storeInfo.storeKind, ...(opts.storeInfo.commit ? { commit: opts.storeInfo.commit } : {}), startedAt: Date.now() - 5000, schemaVersion: async () => (await store.stats?.())?.schemaVersion } } : {}),
     };
     return { deps, store, clock, mailer, logs, ip, ...(limiter ? { limiter } : {}) };
   })();

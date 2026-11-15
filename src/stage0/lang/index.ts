@@ -44,6 +44,17 @@ const norwegianSpelling = (lang: 'nb' | 'nn'): Stage0SpellingFeature[] => [
 const NORWEGIAN_EXIT = { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } };
 
 export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
+  arc: {
+    lang: 'arc', name: 'Biblical Aramaic', voiceLangs: [],
+    script: { kind: 'hebrew', features: 'spelling', spelling: [
+      { id: 'arc:final-forms', label: 'ך ם ן ף ץ — final forms of כ מ נ פ צ', pattern: /[ךםןףץ]$/ },
+      { id: 'arc:points', label: 'Vowel points accompany consonants; cantillation is not an extra letter', pattern: /[\u05B0-\u05BC]/ },
+    ] },
+    bands: { earlyScenes: 4, earlyMaxNew: 5, laterMaxNew: 7, laterMinCoverage: 0.6, exitMinCoverage: 0.95 },
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
+    intro: 'Biblical Aramaic is read right to left in square script. The pack orientation introduces the first source words; a complete Stage 0 course and validated audio are not yet available.',
+  },
+
   es: {
     lang: 'es',
     name: 'Spanish',

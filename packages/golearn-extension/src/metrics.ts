@@ -4,7 +4,7 @@
  * estimated, defaulted or smoothed, and a summary of zero rows has null statistics rather than zeros.
  */
 import type { StorageArea } from './platform';
-import { createMemoryStorageArea } from './store';
+import { createMemoryStorageArea, readPrefix } from './store';
 
 export const METRIC_KEY_PREFIX = 'golearn:metric:';
 
@@ -79,7 +79,7 @@ export interface MetricsStore {
 
 export function createStorageMetricsStore(area: StorageArea): MetricsStore {
   const rows = async (): Promise<Array<[string, MetricsRow]>> =>
-    Object.entries(await area.get(null)).filter(([k]) => k.startsWith(METRIC_KEY_PREFIX)).map(([k, v]) => [k, v as MetricsRow]);
+    (await readPrefix(area, METRIC_KEY_PREFIX)).map(([k, v]) => [k, v as MetricsRow]); // only the metric rows, never the whole storage (2026-11-10)
   return {
     async append(row) { await area.set({ [METRIC_KEY_PREFIX + row.id]: row }); },
     async list() { return (await rows()).map(([, v]) => v).sort((a, b) => a.at.localeCompare(b.at)); },

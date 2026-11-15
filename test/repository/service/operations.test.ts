@@ -247,6 +247,30 @@ describe('GET /metrics and GET /health', () => {
   });
 });
 
+describe('health names the deployed commit', () => {
+  // the same path main.ts takes: environment -> serviceConfigFromEnv -> info.commit -> GET /health
+  const healthFor = async (env: Record<string, string | undefined>) => {
+    const commit = serviceConfigFromEnv(env).commit;
+    return (await call(await hardening(mem, { storeInfo: { storeKind: 'memory', ...(commit ? { commit } : {}) } }), 'GET', '/health')).body;
+  };
+  it('shows the first 12 characters of RENDER_GIT_COMMIT, else of GIT_COMMIT', async () => {
+    expect((await healthFor({ RENDER_GIT_COMMIT: '06a2abdef9ee408d735779a7c5e74acbfbe6c83c' })).commit).toBe('06a2abdef9ee');
+    expect((await healthFor({ GIT_COMMIT: '0EDF83EF1234567890' })).commit).toBe('0edf83ef1234');
+    expect((await healthFor({ RENDER_GIT_COMMIT: '06a2abdef9ee408d', GIT_COMMIT: 'ffffffffffff' })).commit).toBe('06a2abdef9ee');
+  });
+  it('omits it when neither variable is set', async () => {
+    const b = await healthFor({});
+    expect('commit' in b).toBe(false);
+    expect(Object.keys(b).sort()).toEqual(['contractVersion', 'ok', 'service', 'store', 'uptimeSec', 'version']);
+  });
+  it('omits it when the value is not hexadecimal (and falls back to the other variable), and reads no other variable', async () => {
+    expect('commit' in (await healthFor({ RENDER_GIT_COMMIT: 'not-a-commit-id!' }))).toBe(false);
+    expect((await healthFor({ RENDER_GIT_COMMIT: 'xyz', GIT_COMMIT: 'abcdef0123456789' })).commit).toBe('abcdef012345');
+    expect('commit' in (await healthFor({ RENDER_GIT_COMMIT: 'abc' }))).toBe(false); // too short to be a commit id
+    expect(JSON.stringify(await healthFor({ RENDER_GIT_COMMIT: 'abcdef0123456789', METRICS_TOKEN: 'secret-tok', DATABASE_URL: 'postgres://u:p@h/d' }))).not.toMatch(/secret-tok|postgres/);
+  });
+});
+
 describe('request logs', () => {
   it('in text, keeps the one-line format', async () => {
     const h = await hardening(mem);

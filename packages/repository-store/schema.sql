@@ -1,4 +1,4 @@
--- The Go Repository store schema as it stands after every migration (migrations/001 to 004). This file is documentation and a
+-- The Go Repository store schema as it stands after every migration (migrations/001 to 005). This file is documentation and a
 -- test oracle (test/repository/store/sqlite.test.ts compares it with a migrated database); the runner applies migrations/,
 -- never this file. When you add migrations/NNN-*.sql, update this file to match.
 
@@ -134,6 +134,7 @@ CREATE TABLE event_units (
   PRIMARY KEY (event_id, unit_id)
 ) STRICT;
 CREATE INDEX event_units_unit ON event_units (unit_id);
+CREATE INDEX event_units_unit_event ON event_units (unit_id, event_id);  -- migration 005: the vocabulary listing reads the log by unit
 
 -- Layer A: linguistic knowledge ------------------------------------------------------------------------------------
 CREATE TABLE units (
@@ -181,6 +182,7 @@ CREATE TABLE aliases (
   json         TEXT NOT NULL,
   PRIMARY KEY (old_id, new_id, pack_version)
 ) STRICT;
+CREATE INDEX aliases_new ON aliases (new_id);  -- migration 005
 
 CREATE TABLE packs (
   pack_id     TEXT NOT NULL,

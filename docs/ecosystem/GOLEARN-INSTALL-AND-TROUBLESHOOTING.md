@@ -65,6 +65,23 @@ No account, no team and no service are needed for any of these.
    nothing; clearing the device's data is its own deliberate step (Privacy → Clear local data). Signing in on another
    account replaces the session and clears the cached profile.
 
+### Using a language with no connection (2026-11-11)
+
+Choosing a language installs it ("Albanian is ready") but does NOT put its dictionary on the device: meanings load as you
+read, and the first time you meet a word needs a connection (words already met keep working offline). To have every word
+with no connection, open the setup page → Languages → the language's row → **Download for offline use**.
+
+- It keeps the dictionary's meanings and word forms on this device (not the full dictionary entries behind "more"). The
+  size is shown as it downloads ("n of N files · X MB"); for scale, the repository's dictionaries come to roughly 280 files (Albanian), 650 (German) and 1,200 (Spanish). You can **Cancel** (what was saved is kept and a new download carries on from there), and **Remove download** frees
+  the space.
+- The files are kept in the extension's own browser database (not extension storage). A download that was running when
+  the browser stopped the extension's background worker carries on by itself within about a minute, or when the setup page is
+  open.
+- If the device is full the download stops and says so; what was saved still works. If a newer dictionary is published the
+  row says "A newer dictionary is available" and offers **Update download**.
+- **Privacy → Clear local data** now also deletes the cached dictionary files, any offline download, and the record of which
+  languages were installed. After it, choose the language again to set it up.
+
 ## 3. Troubleshooting
 
 | symptom | cause | what to do |
@@ -78,7 +95,8 @@ No account, no team and no service are needed for any of these.
 | Sync shows pending rows and an error | the service is unreachable or offline | nothing to do; the worker retries with backoff and keeps every event; Sync → Sync now forces an attempt |
 | "Speech is not available in this browser." / "No local Albanian voice" | the browser has no `speechSynthesis` or no voice tagged `sq`/`sq-AL` | there is no Albanian recording and no bundled voice; an English voice is never substituted; a remote voice needs the owner's provider key and your consent (Privacy) |
 | "Not in the word list" / "the lemma is a guess from the ending" | the word is outside the pack's word list; the rules guessed | the card says so; use "This analysis is wrong" to propose a correction (it is a proposal, not a fact) |
-| Dictionary meanings never appear | none of the three places answers for that language (Diagnostics → Dictionary address lists each language and what it tried), e.g. you are offline and the language was never looked up before, or the dictionary address you set is wrong | check the line for that language under Diagnostics; clear or correct the dictionary address (the other two places then apply); words looked up once keep working offline |
+| Dictionary meanings never appear | none of the three places answers for that language (Diagnostics → Dictionary address lists each language and what it tried), e.g. you are offline and the language was never looked up before, or the dictionary address you set is wrong | check the line for that language under Diagnostics; clear or correct the dictionary address (the other two places then apply); words looked up once keep working offline; or use "Download for offline use" on the language's row while you are online |
+| "Download for offline use" stops with "not enough room on this device" or "the connection was lost" | the browser refused to store more, or the network dropped (three attempts per file are made) | free space, or reconnect, then **Try again**: it carries on from the files already saved |
 | Diagnostics says the service speaks an older contract | the service build is behind the extension | update the service; the extension keeps working for lookups and queues events |
 | The pack screen says "planned, not installable" | that pack has no analyser in this build | no action; every language of the six has an installable pack today (Albanian is the reference, the rest are experimental) |
 | GoPractice from a website says it "needs an account" | that is the hosted copy, which keeps its data on an account and has no on-device Repository | use the **Practise** button of the extension (its copy works on the device with no account), or sign in to the hosted copy |

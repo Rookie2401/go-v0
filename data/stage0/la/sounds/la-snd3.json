@@ -1,0 +1,119 @@
+{
+  "id": "la-snd3",
+  "lang": "la",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "gn, ti, qu and x"
+  },
+  "features": [
+    "la:gn",
+    "la:ti",
+    "la:qu",
+    "la:x"
+  ],
+  "words": [
+    {
+      "text": "magnus",
+      "en": "big",
+      "picture": "🐘",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "gratias",
+      "en": "thanks",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "aqua",
+      "en": "water",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "pax",
+      "en": "peace",
+      "picture": "🕊️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "The letters gn are said \"ny\", like \"canyon\": magnus is MAH-nyoos. Before a vowel ti is said \"tsi\": gratias is GRAH-tsee-ahs. The letters qu are said \"kw\": aqua is AH-kwah. The letter x is \"ks\": pax is pahks.",
+    "more": "The \"tsi\" for ti only happens before a vowel; in tibi, where ti is followed by b, it is just t and i: TEE-bee. Every vowel is still said clearly."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "magnus",
+      "prompt": "How is \"magnus\" said?",
+      "options": [
+        "MAH-nyoos (gn like \"ny\")",
+        "MAG-noos"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "gratias",
+      "prompt": "How is \"gratias\" said?",
+      "options": [
+        "GRAH-tsee-ahs",
+        "GRAY-shus"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "aqua",
+      "prompt": "How is \"aqua\" said?",
+      "options": [
+        "AH-kwah",
+        "AH-kah"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "pax",
+      "prompt": "How is \"pax\" said?",
+      "options": [
+        "pahks",
+        "pahz"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-word",
+      "word": "aqua",
+      "prompt": "Which written word means \"water\" and is said AH-kwah?",
+      "options": [
+        "aqua",
+        "acua",
+        "aqa"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  }
+}

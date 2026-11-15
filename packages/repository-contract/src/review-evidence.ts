@@ -37,8 +37,12 @@ export interface ReviewEvidenceSelection {
  */
 export function selectReviewEvidenceEvents(rawEvents: readonly GoEvent[]): ReviewEvidenceSelection {
   const variants = new Map<string, Map<string, GoEvent>>();
+  // only an id seen more than once can have conflicting variants: the canonical form (a sorted deep copy, serialized) is built for
+  // those alone, not for every event of the history (it was most of a home screen's work on a phone)
+  const seen = new Map<string, number>();
+  for (const event of rawEvents) seen.set(event.id, (seen.get(event.id) ?? 0) + 1);
   for (const event of rawEvents) {
-    const serialized = canonicalReviewEventKey(event);
+    const serialized = (seen.get(event.id) ?? 0) > 1 ? canonicalReviewEventKey(event) : '';
     const byShape = variants.get(event.id) ?? new Map<string, GoEvent>();
     byShape.set(serialized, event);
     variants.set(event.id, byShape);

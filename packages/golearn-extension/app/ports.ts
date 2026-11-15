@@ -23,7 +23,7 @@ export interface PackView {
   status: 'installable' | 'planned';
   /** How far the pack is built: an experimental pack is installable but seed-only and unreviewed, and is never shown as plainly installable. */
   level: 'installable' | 'experimental' | 'planned';
-  /** The words the learner sees for `level` ("installable", "experimental, seed-only lemmatisation, unreviewed", "planned, not installable"). */
+  /** The words the learner sees for `level` ("installable", "experimental, unreviewed", "planned, not installable"). */
   levelLabel: string;
   /** The analyser the pack names (`adapter-sq@8`) and its version; recorded with an install. */
   analyzerId: string;
@@ -70,7 +70,7 @@ export interface LanguageView {
   scriptId: string;
   choice?: LanguageChoiceView;
   packIds: string[];
-  /** The words the learner sees for how far the language is built (“reference pack, machine-drafted, unreviewed”, “experimental, seed-only”). */
+  /** The words the learner sees for how far the language is built (“reference pack, machine-drafted, unreviewed”, “experimental, unreviewed”). */
   level: string;
   validation: string;
   tutorialAvailable: boolean;
@@ -156,4 +156,6 @@ export interface Deps {
   speech?: SpeechLike | null;
   /** Wait between asynchronous ticks (tests pass an immediate promise). */
   nextFrame?: () => Promise<void>;
+  /** How often the language rows ask the worker about a running offline download (ms; default 1000). */
+  offlinePollMs?: number;
 }

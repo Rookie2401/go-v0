@@ -35,6 +35,7 @@ export function bokmalManifest(): PackManifest {
       { varietyId: 'nb', label: 'Bokmål (the written standard of this pack)', writtenStandard: 'nb', analysed: true },
       { varietyId: 'nb-riksmal', label: 'Riksmål (older form of Bokmål)', writtenStandard: 'nb', analysed: true },
     ],
+    dictionary: { entries: 79874, frequency: true, id: 'kaikki-nb@2026-10-30' },
     adapterSummary: 'seed-only lemmatization and limited rule-based morphology for Bokmål (a machine-drafted word list of nouns, verbs, adjectives and the closed classes); concept families relate jeg (Bokmål) to eg (Nynorsk) without crediting one for the other.',
     capabilities: ['tokenization', 'sentence-segmentation', 'lemma', 'morphology', 'phrases', 'constructions'],
     features: [
@@ -57,7 +58,7 @@ export function bokmalManifest(): PackManifest {
       'there is no parser, so what the neighbouring words do not decide stays a list of readings, and a feminine noun is shown as Fem,Masc because both Bokmål paradigms are valid;',
       'a compound is split only into words the list knows, and the split reading stays unconfirmed with no meaning;',
       'a particle verb is put together only when its particle is within four words after it, and after a modal the verb is sometimes still read as an imperative;',
-      'there is no dictionary for Norwegian in the repository, so meanings come from the word list only;',
+      'the dictionary is Wiktionary’s Norwegian Bokmål entries as kaikki.org extracts them (the Norwegian Bokmål extract only, so no Nynorsk entry is ever its source), machine-extracted and unreviewed, and a word Wiktionary lacks has no dictionary meaning;',
       'the grammar tables explain only Gender, Definite and Tense, though the analyser also writes Number, Mood, VerbForm, Degree and Person.',
     ],
     extraProvenance: [

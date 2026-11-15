@@ -1,0 +1,273 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "habesne?",
+      "text": "To ask a yes/no question you can add -ne to the first word: habes (you have) becomes habesne? (do you have?). The answer is \"yes\" or \"no\" with the verb: habeo / non habeo.",
+      "explains": [
+        "la.question-ne"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Ubi est clavis mea?\"",
+      "basedOn": [
+        "l1"
+      ],
+      "accept": [
+        {
+          "text": "Ubi est clavis mea"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "choose",
+      "prompt": "Say: I do not have the key.",
+      "basedOn": [
+        "l6"
+      ],
+      "options": [
+        "Clavem habeo.",
+        "Clavem non habeo."
+      ],
+      "accept": [
+        {
+          "text": "Clavem non habeo"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "complete",
+      "prompt": "Ask: Do you have the key?",
+      "basedOn": [
+        "l2",
+        "la.question-ne"
+      ],
+      "frame": "Habesne ___?",
+      "accept": [
+        {
+          "text": "Habesne clavem"
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "kind": "answer",
+      "prompt": "Martha asks \"Habesne clavem?\" You do not. Answer in Latin.",
+      "basedOn": [
+        "l2",
+        "l3"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Non habeo"
+        },
+        {
+          "text": "Clavem non habeo"
+        }
+      ]
+    }
+  ],
+  "id": "la-s10",
+  "title": {
+    "en": "Where is my key?",
+    "target": "Ubi est clavis?"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "marta",
+      "luis"
+    ],
+    "things": [
+      "key"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ubi est clavis mea?",
+      "en": "Where is my key?",
+      "speaker": "nico",
+      "picture": "🔑❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Habesne clavem?",
+      "en": "Do you have the key?",
+      "speaker": "marta",
+      "picture": "👵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Non habeo. Clavis hic non est.",
+      "en": "I do not have it. The key is not here.",
+      "speaker": "nico",
+      "picture": "😟",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ubi est? In schola est?",
+      "en": "Where is it? Is it at school?",
+      "speaker": "luis",
+      "picture": "🏫❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Non est in schola.",
+      "en": "It is not at school.",
+      "speaker": "nico",
+      "picture": "😟",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Clavem non habeo!",
+      "en": "I do not have the key!",
+      "speaker": "nico",
+      "picture": "😢",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "clavis",
+      "clavem"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "la.question-ne",
+    "la.habeo",
+    "la.question-ubi",
+    "la.negation-non",
+    "la.possessive",
+    "la.accusative-object",
+    "la.in-ablative"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is Marcus looking for?"
+      },
+      "options": [
+        {
+          "en": "His key"
+        },
+        {
+          "en": "His bag"
+        },
+        {
+          "en": "His book"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Marcus have the key?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where does Lucius think the key may be?"
+      },
+      "options": [
+        {
+          "en": "At school"
+        },
+        {
+          "en": "At the market"
+        },
+        {
+          "en": "At church"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Martha ask?"
+      },
+      "options": [
+        {
+          "en": "Do you have the key?"
+        },
+        {
+          "en": "Where is the key?"
+        },
+        {
+          "en": "Who has the key?"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

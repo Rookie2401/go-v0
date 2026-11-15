@@ -31,6 +31,7 @@ export interface AzureVoiceEntry { id: string; locale: string; gender: 'female' 
 
 /** Static voice table, preferred voice first within a locale. Extend at runtime via the `voices` option. */
 export const AZURE_VOICES: Record<LanguageCode, AzureVoiceEntry[]> = {
+  arc: [], // No validated Biblical Aramaic voice; never borrow Modern Hebrew silently.
   es: [
     { id: 'es-MX-DaliaNeural', locale: 'es-MX', gender: 'female' },
     { id: 'es-MX-JorgeNeural', locale: 'es-MX', gender: 'male' },

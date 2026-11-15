@@ -157,6 +157,8 @@ export interface AnalysisCandidate {
   /** Syntactic role in the sentence when the parser offered one (e.g. `obj`). */
   role?: string;
   confidence: number;
+  /** A source audit can mark this one reading for specialist review without discarding alternatives. */
+  reviewStatus?: 'requires-review';
   provenance: UnitProvenance;
 }
 

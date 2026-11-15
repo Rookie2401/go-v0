@@ -22,3 +22,5 @@ export { DEFAULT_LIST_LIMIT, MAX_LIST_LIMIT, normalizeEmail } from './rules';
 export type { ConcreteStore, EraseCounts, EventRemover, ProvenanceCount, StoreOptions, StoreStats } from './rules';
 export { copySqliteToPostgres, COPY_ORDER } from './copy-sqlite-to-postgres';
 export type { CopyOptions, CopyReport, TableCount } from './copy-sqlite-to-postgres';
+export { openIndexedDbStore } from './indexeddb';
+export type { IndexedDbStoreOptions } from './indexeddb';

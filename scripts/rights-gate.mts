@@ -11,6 +11,8 @@
  *              stays in the repository for development and tests, never in a production build
  *   REFUSED    a claim without its evidence, or content that can never be bundled: exit 1 (and the build stops)
  *
+ * --lang <code> checks one language and its catalogue; omitted, every language is checked as before.
+ *
  * --release (or the environment variable GO_RELEASE_JURISDICTIONS, which the build reads too) names the jurisdictions a
  * build is released in. Without it the report makes NO claim about where a build may be distributed; it then lists,
  * for every public-domain or licensed work that is bundled, which jurisdictions have a recorded basis.
@@ -34,14 +36,17 @@ const args = process.argv.slice(2);
 const json = args.includes('--json');
 const release = parseRelease(args.includes('--release') ? args[args.indexOf('--release') + 1] : process.env.GO_RELEASE_JURISDICTIONS);
 
-const works = catalogueWorks(course as Record<string, unknown>);
+const selectedLanguage = args.includes('--lang') ? args[args.indexOf('--lang') + 1] : undefined;
+if (args.includes('--lang') && (!selectedLanguage || !LANGUAGES.some(lang => lang === selectedLanguage))) throw new Error('--lang must name a registered language');
+const languages = LANGUAGES.filter(lang => !selectedLanguage || lang === selectedLanguage);
+const works = catalogueWorks(course as Record<string, unknown>).filter(work => languages.includes(work.lang));
 const bySlug = workBySlug(works);
 
 interface Row { lang: string; file: string; id: string; rights: string; slug?: string; decision: BundleDecision }
 const rows: Row[] = [];
 const problems: string[] = [];
 
-for (const lang of LANGUAGES) {
+for (const lang of languages) {
   const dir = path.join('data/corpus', lang);
   if (!fs.existsSync(dir)) continue;
   for (const name of fs.readdirSync(dir).filter((n) => n.endsWith('.json')).sort()) {
@@ -77,7 +82,7 @@ if (json) {
   console.log(release
     ? `rights:check - release jurisdictions: ${release.join(', ')} (a public-domain or licensed text needs a recorded basis for each)`
     : 'rights:check - no release jurisdictions given (--release or GO_RELEASE_JURISDICTIONS): this report makes no claim about where a build may be distributed');
-  for (const lang of LANGUAGES) {
+  for (const lang of languages) {
     const of = (list: Row[]) => list.filter((r) => r.lang === lang);
     if (of(rows).length === 0) continue;
     const kinds = new Map<string, number>();

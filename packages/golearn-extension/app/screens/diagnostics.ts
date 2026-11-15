@@ -83,7 +83,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       if (!view.alive()) return;
       if (r.ok) {
         healthLine = `service: ${r.data.service} answered ok, version ${r.data.version}`;
-        setStatus(health, `Service reachable at ${baseUrl}: ${r.data.service}, version ${r.data.version}.`, 'ok');
+        setStatus(health, `The service answered: ${r.data.service}, version ${r.data.version}.`, 'ok');
         // the service's own version number and the contract version it speaks are different things: compare like with like
         const spoken = r.data.contractVersion;
         serviceUpdate = spoken === undefined
@@ -99,7 +99,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     } catch {
       healthLine = 'service: not reachable';
       serviceUpdate = 'service version: unknown (not reachable)';
-      setStatus(health, `The service at ${baseUrl} could not be reached.`, 'error');
+      setStatus(health, 'The service could not be reached. Check your internet connection and try again.', 'error');
     }
     if (!view.alive()) return;
     paintUpdates();

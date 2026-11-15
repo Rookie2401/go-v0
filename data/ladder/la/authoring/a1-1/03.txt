@@ -1,0 +1,42 @@
+=== la-a1-1-03 | narrative | narrative | At school | In schola | school,books,boys and girls,listening
+speakers: puella=Puella
+## In schola
+Lucius magister est. Hodie in schola est. Pueri et puellae in schola sunt. Marcus quoque in schola est. || Lucius is a teacher. Today he is at school. The boys and girls are at school. Marcus is at school too.
+Lucius dicit: Salvete, pueri! || Lucius says: Hello, boys!
+
+[luis] Quomodo valetis? Estisne fessi? || How are you? Are you tired?
+[nico] Non sumus fessi, magister. Bene valemus. || We are not tired, teacher. We are well.
+[luis] Bene! Nunc audite! Habetisne libros? || Good! Now listen! Do you have books?
+[nico] Libros habemus. Sed librum meum non habeo. || We have books. But I do not have my book.
+
+Lucius Marcum videt. Marcus librum non habet. || Lucius sees Marcus. Marcus does not have a book.
+
+[luis] Quaere, Marce! || Look, Marcus!
+[nico] Quaero in mensa. Non est in mensa! Quaero in schola. Non est in schola! Non invenio! || I look on the table. It is not on the table! I look in the school. It is not in the school! I do not find it!
+
+Puella Marcum videt. Puella librum habet. || A girl sees Marcus. The girl has the book.
+
+[puella] Ecce, Marce! Hic est! Invenio! || Look, Marcus! Here it is! I find it!
+[nico] Gratias tibi ago! Tu amica bona es. || Thank you! You are a good friend.
+[puella] Libenter tibi do. || I give it to you gladly.
+[luis] Bene est. Nunc audite, omnes! || It is well. Now listen, all!
+
+Omnes audiunt. Lucius dicit: Quid est hoc? Estne panis? Estne aqua? || All listen. Lucius says: What is this? Is it bread? Is it water?
+Pueri dicunt: Aqua est! Marcus dicit: Panis est! || The boys say: It is water! Marcus says: It is bread!
+Magister dicit: Bene! Nunc quaerite panem! || The teacher says: Good! Now look for bread!
+Omnes quaerunt. Marcus panem et aquam invenit. || All look. Marcus finds bread and water.
+
+[luis] Quid habes, Marce? || What do you have, Marcus?
+[nico] Aquam habeo, magister. Et panem habeo. Martha panem vendit. Panis bonus est. || I have water, teacher. And I have bread. Martha sells bread. The bread is good.
+[luis] Et tu? Quid habes? || And you? What do you have?
+[puella] Lac habeo, magister. Et vinum non habeo. || I have milk, teacher. And I do not have wine.
+[luis] Bene! Gratias vobis ago, pueri. Hodie bene valetis. || Good! Thank you, boys. Today you are well.
+[luis] Cras in foro sum. Panem emo, et lac emo. Quis panem vendit? || Tomorrow I am in the market. I buy bread, and I buy milk. Who sells bread?
+[nico] Martha panem vendit, et lac vendit. Martha bona est. || Martha sells bread, and she sells milk. Martha is good.
+[luis] Bene! Cras Marthae gratias ago. Panem et lac emo. || Good! Tomorrow I thank Martha. I buy bread and milk.
+
+[luis] Ubi est Anna? Estne in schola? || Where is Anna? Is she at school?
+[nico] Anna in schola non est. In valetudinario est. || Anna is not at school. She is at the clinic.
+[luis] Anna soror mea est. Anna bona est, et ego Annam amo. || Anna is my sister. Anna is good, and I love Anna.
+
+Hodie in schola omnes bene valent. Lucius fessus non est. Marcus fessus non est. || Today at school all are well. Lucius is not tired. Marcus is not tired.

@@ -284,7 +284,7 @@ describe('Prompt 5 §21 — GoReview over the real Repository, pack, scheduler, 
       return u.includes('/dict/') ? fileFetch(input) : serviceFetch(input, init);
     }) as typeof fetch;
     const timers: Array<{ fire(): void }> = [];
-    const worker = createBackground(fake as unknown as ChromeApi, { fetch: workerFetch, timers: { set: (fn, ms) => { const t = { ms, fired: false, fire() { if (!t.fired) { t.fired = true; fn(); } } }; timers.push(t); return t; }, clear: () => {} } });
+    const worker = createBackground(fake as unknown as ChromeApi, { fetch: workerFetch, now: () => clockMs, /* the worker judges the session on the clock that issued it: the service runs on clockMs (2026-10-09), and on the real clock the token (issued + its lifetime) has expired since about 2026-11-08 */ timers: { set: (fn, ms) => { const t = { ms, fired: false, fire() { if (!t.fired) { t.fired = true; fn(); } } }; timers.push(t); return t; }, clear: () => {} } });
     worker.register();
     await page({ type: MSG.serviceConfig, baseUrl: BASE, assetBase: 'http://localhost/' });
     await page({ type: MSG.connect, baseUrl: BASE, email: 'ana@review.test', password: PASSWORD });

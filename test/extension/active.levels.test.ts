@@ -14,8 +14,8 @@ describe('levelOfRow', () => {
     expect(levelOfRow(row({ exposure: dim({ observations: 0 }) }))).toBe('new');
   });
 
-  it('exposure alone is "seen"; so is any other observation that shows nothing about reading (listening, grammar)', () => {
-    expect(levelOfRow(row({ exposure: dim({ observations: 1 }) }))).toBe('seen');
+  it('a lookup is "seen"; so is any other observation that shows nothing about reading (listening, grammar)', () => {
+    expect(levelOfRow(row({ exposure: dim({ observations: 1, negative: 1 }) }))).toBe('seen');
     expect(levelOfRow(row({ listeningRecognition: dim({ observations: 3, score: 0.9 }) }))).toBe('seen');
     expect(levelOfRow(row({ grammaticalUnderstanding: dim({ observations: 3, score: 0.9 }) }))).toBe('seen');
   });
@@ -78,19 +78,23 @@ describe('levelOfRows', () => {
     expect(levelOfRows([stale])).toBe('known');
     expect(levelOfRows([stale, { ...row({}), level: 'automatic' }])).toBe('known'); // nor does the other row's higher level override the mark
     // a mark of New is the one the engine may release (to Seen, by the meeting)
-    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1 }) }), level: 'seen', selfMark: { mark: 'new', at: '2026-10-10T10:00:00.000Z' } }])).toBe('seen');
+    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1, negative: 1 }) }), level: 'seen', selfMark: { mark: 'new', at: '2026-10-10T10:00:00.000Z' } }])).toBe('seen');
+    // ... but a mark of New and then only a bare encounter (met in passing) still reads New (2026-11-05)
+    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 2 }) }), level: 'seen', selfMark: { mark: 'new', at: '2026-10-10T10:00:00.000Z' } }])).toBe('new');
   });
 
   it('a mark of "new" is released by a later observation (the click that looks the word up): it reads as seen; a lookup dated before the mark does not', () => {
     const mark = { mark: 'new' as const, at: '2026-10-10T10:00:00.000Z' };
     // no engine level: the page applies the rule to the row's dates
-    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1 }) }), selfMark: mark, lastSeenAt: '2026-10-10T10:00:05.000Z' }])).toBe('seen');
-    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1 }) }), selfMark: mark, lastSeenAt: '2026-10-10T09:00:00.000Z' }])).toBe('new');
+    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1, negative: 1 }) }), selfMark: mark, lastSeenAt: '2026-10-10T10:00:05.000Z' }])).toBe('seen');
+    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1, negative: 1 }) }), selfMark: mark, lastSeenAt: '2026-10-10T09:00:00.000Z' }])).toBe('new');
+    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1 }) }), selfMark: mark, lastSeenAt: '2026-10-10T10:00:05.000Z' }])).toBe('new'); // met only in passing
     expect(levelOfRows([{ ...row({}), selfMark: mark, lastSeenAt: mark.at }])).toBe('new'); // the mark's own observation is not a meeting
     // another mark is not released by a lookup
     expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1 }) }), selfMark: { mark: 'familiar', at: mark.at }, lastSeenAt: '2026-10-10T10:00:05.000Z' }])).toBe('familiar');
     // the engine's own level, when the row carries it, is what the page shows (it has weighed the mark against what came after)
-    expect(levelOfRows([{ ...row({}), selfMark: mark, level: 'seen' }])).toBe('seen');
+    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1, negative: 1 }) }), selfMark: mark, level: 'seen' }])).toBe('seen');
+    expect(levelOfRows([{ ...row({}), selfMark: mark, level: 'seen' }])).toBe('new'); // the engine's Seen, with nothing but a bare encounter behind it
     expect(levelOfRows([{ ...row({}), selfMark: mark, level: 'familiar' }])).toBe('familiar');
     expect(levelOfRows([{ ...row({}), selfMark: mark, level: 'new' }])).toBe('new');
   });
@@ -120,5 +124,27 @@ describe('the legend', () => {
       expect(LEVEL_LEGEND[l].detail).toBe(KNOWLEDGE_LEVEL_WORDS[l].detail);
       expect(LEVEL_LEGEND[l].style).toBeTruthy();
     }
+  });
+});
+
+describe('met only in passing (owner, 2026-11-05)', () => {
+  const passing = (over: Partial<KnowledgeView> = {}): KnowledgeView => row({ exposure: dim({ observations: 3 }) }, { level: 'seen', ...over });
+  const looked = (): KnowledgeView => row({ exposure: dim({ observations: 4, negative: 1 }) }, { level: 'seen' });
+  it('a word with only bare encounters is shown New, whether the engine sent a level or the page works it out', () => {
+    expect(levelOfRow(passing())).toBe('new');
+    expect(levelOfRow(row({ exposure: dim({ observations: 3 }) }))).toBe('new');
+    expect(levelOfRows([passing(), row({ exposure: dim({ observations: 3 }) }, { level: 'seen' })])).toBe('new');
+  });
+  it('a lookup, assistance, a judged dimension or the own Seen mark makes it Seen or more; a word is as high as its highest row', () => {
+    expect(levelOfRow(looked())).toBe('seen');
+    expect(levelOfRows([passing(), looked()])).toBe('seen'); // form row passing-only, lemma row looked up
+    expect(levelOfRows([passing({ selfMark: { mark: 'seen', at: '2026-10-10T10:00:00.000Z' } })])).toBe('seen');
+    expect(levelOfRow(row({ listeningRecognition: dim({ observations: 1 }), exposure: dim({ observations: 1 }) }, { level: 'seen' }))).toBe('seen');
+  });
+  it('a word clicked on this page is at least Seen before any row has folded the lookup', () => {
+    expect(levelOfRows([passing()], true)).toBe('seen');
+    expect(levelOfRows([undefined], true)).toBe('seen');
+    expect(levelOfRows([{ ...passing(), selfMark: { mark: 'new', at: '2026-10-10T10:00:00.000Z' } }], true)).toBe('seen');
+    expect(levelOfRows([passing({ level: 'known' })], true)).toBe('known');
   });
 });

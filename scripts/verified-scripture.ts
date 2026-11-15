@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import type { CorpusDocument } from '../src/ingest';
 
 export interface VerifiedTranslation {
@@ -29,4 +31,17 @@ export function checkVerifiedScripture(documents: CorpusDocument[], translations
     }
   }
   return { errors, sentences };
+}
+
+/** The main record plus optional language-specific records. Each translation still needs
+ * exactly one record; checkVerifiedScripture rejects duplicates and wording mismatches.
+ */
+export function loadVerifiedTranslations(directory = 'data/verified'): VerifiedTranslation[] {
+  if (!fs.existsSync(directory)) return [];
+  return fs.readdirSync(directory).filter(file => file === 'scripture.json' || file.endsWith('.scripture.json')).sort()
+    .flatMap(file => {
+      const record = JSON.parse(fs.readFileSync(path.join(directory, file), 'utf8')) as { translations?: VerifiedTranslation[] };
+      if (!Array.isArray(record.translations)) throw new Error(`Invalid Scripture verification record: ${file}`);
+      return record.translations;
+    });
 }

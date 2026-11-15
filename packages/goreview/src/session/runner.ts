@@ -44,7 +44,7 @@ import type {
   BuildContext, DeckItem, Exercise, ExerciseBuilder, ExerciseFamily, FactsProvider, Grading, PlannedItem, Rating, Response,
   ReviewResult, ReviewTarget, Scheduler, SessionPlan, SessionState, UnitFacts,
 } from '../types';
-import { assertValidEvent, buildCardAdded, factsFingerprint, foldDeckItems, PRODUCER_APP } from '../scheduler/deck';
+import { assertValidEvent, buildCardAdded, factsFingerprint, foldDeckItems, PRODUCER_APP, type FoldOptions } from '../scheduler/deck';
 import { resultScoring, scoreListening } from '../listening/assessment';
 import type { ListeningScore } from '../listening/assessment';
 import { isAudioFamily } from '../planner/planner';
@@ -118,6 +118,11 @@ export interface RunnerDeps {
   /** Current committed event snapshot, used to reconcile a crash after record() but before session persistence. */
   committedEvents?: () => Promise<GoEvent[]> | GoEvent[];
   canPresent?: (planned: PlannedItem, at: string) => Promise<{ eligible: boolean; reason?: string }> | { eligible: boolean; reason?: string };
+  /**
+   * The fold the runner reads the deck with (default: `foldDeckItems` with `deps.scheduler`). A host that shares one fold of the log per event head
+   * across the guard and the runner passes it here; it must return what `foldDeckItems(events, deps.scheduler, opts)` would, and the runner only reads the items.
+   */
+  fold?: (events: readonly GoEvent[], scheduler: Scheduler, opts: FoldOptions) => DeckItem[];
 }
 
 export interface SkipRecord { index: number; itemId: string; reason: string; at: string; kind: 'learner' | 'build-failed' }
@@ -200,6 +205,7 @@ export async function listRecoverable(area: KeyValueArea): Promise<string[]> {
 
 export function createSessionRunner(deps: RunnerDeps): SessionRunner {
   const { builders, facts, audio, identity, record, persist, now, random } = deps;
+  const foldItems = deps.fold ?? foldDeckItems;
   const gradingPort = deps.grading ?? defaultGradingPort;
   const sessionId = deps.sessionId ?? `s:${deps.plan.planId.replace(/^plan:/u, '')}`;
   const key = (id: string) => SESSION_KEY_PREFIX + id;
@@ -240,7 +246,7 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
   // Standalone callers receive the same gate; hosts may supply a fresher knowledge/preferences lookup.
   const canPresent = deps.canPresent ?? (async (planned:PlannedItem, at:string) => {
     const events=await eventSnapshot();
-    const current=events.length ? foldDeckItems(events,deps.scheduler,{languageId:st.plan.languageId,learnerId:identity.learnerId,now:at}).find(i=>i.itemId===planned.item.itemId) : undefined;
+    const current=events.length ? foldItems(events,deps.scheduler,{languageId:st.plan.languageId,learnerId:identity.learnerId,now:at}).find(i=>i.itemId===planned.item.itemId) : undefined;
     const maxNew=deps.preferences?.maxNew ?? st.plan.newCount;
     // With no replica callback, an old reviewed item in the persisted plan is
     // already known to predate today; its current response is not a new admission.
@@ -294,7 +300,7 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     return true;
   }
   async function trackTimedReturn(itemId: string, at: string): Promise<void> {
-    const item = foldDeckItems(await eventSnapshot(), deps.scheduler, { languageId: st.plan.languageId, now: at }).find(i => i.itemId === itemId);
+    const item = foldItems(await eventSnapshot(), deps.scheduler, { languageId: st.plan.languageId, now: at }).find(i => i.itemId === itemId);
     st.pendingReturns = (st.pendingReturns ?? []).filter(p => p.itemId !== itemId);
     if (item?.status === 'active' && ['learning','relearning'].includes(item.schedule.phase)) {
       st.pendingReturns.push({ itemId, due: item.schedule.due });
@@ -304,7 +310,7 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
   async function appendDueReturns(): Promise<void> {
     if (!st.pendingReturns?.length) return;
     const at = now();
-    const folded = foldDeckItems(await eventSnapshot(), deps.scheduler, { languageId: st.plan.languageId, now: at });
+    const folded = foldItems(await eventSnapshot(), deps.scheduler, { languageId: st.plan.languageId, now: at });
     // Refresh every due instant before choosing an insertion order. A remote review can
     // change a return time between syncs, so the previously persisted order may be stale.
     st.pendingReturns = (st.pendingReturns ?? []).filter(p => {
@@ -523,7 +529,7 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
   async function liveItem(planned: PlannedItem, at: string): Promise<DeckItem> {
     const events = await eventSnapshot();
     if (!events.length) return planned.item;
-    return foldDeckItems(events, deps.scheduler, { languageId: st.plan.languageId, learnerId: identity.learnerId, now: at }).find((i) => i.itemId === planned.item.itemId) ?? planned.item;
+    return foldItems(events, deps.scheduler, { languageId: st.plan.languageId, learnerId: identity.learnerId, now: at }).find((i) => i.itemId === planned.item.itemId) ?? planned.item;
   }
 
   function normalise(ev: GoEvent, cur: CurrentExercise, rating: Rating | null, result: Pick<ReviewResult, 'exerciseId' | 'family' | 'grading' | 'response'>, index: number, quality?: 'none', live: DeckItem = cur.planned.item): GoEvent {

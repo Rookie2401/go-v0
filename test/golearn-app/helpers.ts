@@ -127,7 +127,7 @@ export const NB_FAKE: PackView = {
 export const NN_FAKE: PackView = { ...NB_FAKE, packId: 'pack:nn', languageId: 'nn', name: 'Norwegian (Nynorsk)', nativeName: 'Nynorsk', defaultVarietyId: 'nn', varieties: [{ varietyId: 'nn', label: 'Nynorsk', writtenStandard: 'nn', analysed: true }], manifest: { fake: 'nn' } };
 
 const experimental = (languageId: string, name: string, nativeName: string, scriptId = 'Latn'): PackView => ({
-  packId: `pack:${languageId}`, languageId, version: '2', name, nativeName, status: 'installable', level: 'experimental', levelLabel: 'experimental, seed-only lemmatisation, unreviewed',
+  packId: `pack:${languageId}`, languageId, version: '2', name, nativeName, status: 'installable', level: 'experimental', levelLabel: 'experimental, unreviewed',
   analyzerId: `adapter-${languageId}@2`, analyzerVersion: '2', validation: 'experimental', defaultVarietyId: languageId, scriptId,
   varieties: [{ varietyId: languageId, label: name, analysed: true }], licences: [], attribution: [], reviewStatus: 'machine-drafted', provenance: [], manifest: { fake: languageId },
 });
@@ -145,24 +145,24 @@ export const ES_OK_FAKE: PackView = {
 /** The seven languages as the catalogue lists them (Latin last): Norwegian first, with its written standard as a required choice; Spanish with an optional regional preference. */
 export const LANGUAGES_FAKE: LanguageView[] = [
   {
-    languageId: 'nb', name: 'Norwegian', nativeName: 'norsk', scriptId: 'Latn', packIds: ['pack:nb', 'pack:nn'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: false,
+    languageId: 'nb', name: 'Norwegian', nativeName: 'norsk', scriptId: 'Latn', packIds: ['pack:nb', 'pack:nn'], level: 'experimental, unreviewed', validation: 'experimental', tutorialAvailable: false,
     audio: 'Browser voices only.', whatWorks: ['Dictionary form and meaning for common words.'], whatDoesNot: ['Compounds are often not split.'],
     choice: { kind: 'standard', required: true, label: 'Which written standard will you read?', options: [
       { id: 'nb', label: 'Bokmål', languageId: 'nb', varietyId: 'nb' }, { id: 'nn', label: 'Nynorsk', languageId: 'nn', varietyId: 'nn' },
     ] },
   },
-  { languageId: 'de', name: 'German', nativeName: 'Deutsch', scriptId: 'Latn', packIds: ['pack:de'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: false, audio: 'Browser voices only.', whatWorks: ['Lemma and gloss.'], whatDoesNot: ['Separable verbs are not joined.'] },
+  { languageId: 'de', name: 'German', nativeName: 'Deutsch', scriptId: 'Latn', packIds: ['pack:de'], level: 'experimental, unreviewed', validation: 'experimental', tutorialAvailable: false, audio: 'Browser voices only.', whatWorks: ['Lemma and gloss.'], whatDoesNot: ['Separable verbs are not joined.'] },
   { languageId: 'sq', name: 'Albanian', nativeName: 'shqip', scriptId: 'Latn', packIds: ['pack:sq'], level: 'reference pack, machine-drafted, unreviewed', validation: 'unreviewed', tutorialAvailable: true, audio: 'Browser voices where the browser has one.', whatWorks: ['The reference analyser and dictionary.'], whatDoesNot: ['No person has reviewed the pack.'] },
-  { languageId: 'hi', name: 'Hindi', nativeName: 'हिन्दी', scriptId: 'Deva', packIds: ['pack:hi'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: false, audio: 'Browser voices only.', whatWorks: ['Lemma and gloss.'], whatDoesNot: ['Conjunct verbs are not analysed.'] },
-  { languageId: 'th', name: 'Thai', nativeName: 'ไทย', scriptId: 'Thai', packIds: ['pack:th'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: false, audio: 'Browser voices only.', whatWorks: ['Word segmentation by dictionary.'], whatDoesNot: ['Tone marks are not shown.'] },
+  { languageId: 'hi', name: 'Hindi', nativeName: 'हिन्दी', scriptId: 'Deva', packIds: ['pack:hi'], level: 'experimental, unreviewed', validation: 'experimental', tutorialAvailable: false, audio: 'Browser voices only.', whatWorks: ['Lemma and gloss.'], whatDoesNot: ['Conjunct verbs are not analysed.'] },
+  { languageId: 'th', name: 'Thai', nativeName: 'ไทย', scriptId: 'Thai', packIds: ['pack:th'], level: 'experimental, unreviewed', validation: 'experimental', tutorialAvailable: false, audio: 'Browser voices only.', whatWorks: ['Word segmentation by dictionary.'], whatDoesNot: ['Tone marks are not shown.'] },
   {
-    languageId: 'es', name: 'Spanish', nativeName: 'español', scriptId: 'Latn', packIds: ['pack:es'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: true, audio: 'Browser voices only.',
+    languageId: 'es', name: 'Spanish', nativeName: 'español', scriptId: 'Latn', packIds: ['pack:es'], level: 'experimental, unreviewed', validation: 'experimental', tutorialAvailable: true, audio: 'Browser voices only.',
     whatWorks: ['Lemma and gloss.'], whatDoesNot: ['Voseo is detected but not taught.'],
     choice: { kind: 'variety', required: false, label: 'Regional preference', options: [
       { id: 'es-standard', label: 'General', languageId: 'es', varietyId: 'es-419' }, { id: 'es-HN', label: 'Honduras (regional preference)', languageId: 'es', varietyId: 'es-HN' },
     ] },
   },
-  { languageId: 'la', name: 'Latin', nativeName: 'Latina', scriptId: 'Latn', packIds: ['pack:la'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: false, audio: 'no validated audio', whatWorks: ['Lemma and gloss.'], whatDoesNot: ['Many endings are written alike, so several readings are kept.'] },
+  { languageId: 'la', name: 'Latin', nativeName: 'Latina', scriptId: 'Latn', packIds: ['pack:la'], level: 'experimental, unreviewed', validation: 'experimental', tutorialAvailable: false, audio: 'no validated audio', whatWorks: ['Lemma and gloss.'], whatDoesNot: ['Many endings are written alike, so several readings are kept.'] },
 ];
 
 /** Practice sentence the real Albanian analyser reads (also used by test/extension). */

@@ -12,6 +12,7 @@ import type { FactsProvider } from '../src/types';
 import type { RecoveryResult } from './ports';
 
 const UNIT_BATCH = 50;
+const UNIT_PARALLEL = 4;
 const FACTS_PARALLEL = 8;
 
 const isRecoverableUnitId = (id: string, languageId: string): boolean =>
@@ -62,13 +63,17 @@ function objectiveDimensions(prefs: ReviewPreferences): Dimension[] {
 async function genuinelyMissing(api: RepositoryApi, ids: string[]): Promise<{ missing: Set<string>; complete: boolean }> {
   const missing = new Set<string>();
   let complete = true;
-  for (let i = 0; i < ids.length; i += UNIT_BATCH) {
-    const batch = ids.slice(i, i + UNIT_BATCH);
-    try {
-      const response = await api.units(batch);
-      if (!response.ok) { complete = false; continue; } // uncertainty must not authorize a recovered candidate
-      for (const id of response.data.missing) missing.add(id);
-    } catch { complete = false; }
+  const batches: string[][] = [];
+  for (let i = 0; i < ids.length; i += UNIT_BATCH) batches.push(ids.slice(i, i + UNIT_BATCH));
+  // four batches at a time (2026-11-08: one after another, a large vocabulary waited a round trip per batch on every visit to the home)
+  for (let i = 0; i < batches.length; i += UNIT_PARALLEL) {
+    await Promise.all(batches.slice(i, i + UNIT_PARALLEL).map(async (batch) => {
+      try {
+        const response = await api.units(batch);
+        if (!response.ok) { complete = false; return; } // uncertainty must not authorize a recovered candidate
+        for (const id of response.data.missing) missing.add(id);
+      } catch { complete = false; }
+    }));
   }
   return { missing, complete };
 }

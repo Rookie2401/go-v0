@@ -265,7 +265,7 @@ describe('the Word structure section of the card', () => {
   it('while the dictionary is being asked, or when it is not connected, the section says so', () => {
     ui.show(cardFor(), anchor);
     button().click();
-    expect(panel().textContent).toMatch(/no dictionary service/i);
+    expect(panel().textContent).toMatch(/no full dictionary entry/i);
     ui.update({ enrichment: { state: 'loading' } });
     expect(panel().textContent).toMatch(/Looking this up/);
   });

@@ -106,13 +106,16 @@ describe('focus indicators, motion and colour scheme', () => {
     // The one allowance (2026-10-28): the loading mark's globe turns outside the media query (.go-globe-turn, the strip of land sliding across
     // the sphere), because the turning IS the loading indicator (WCAG 2.3.3 excludes motion essential to the information conveyed); reduced
     // motion only slows it (animation-duration).
-    const essential = (selector: string): boolean => selector === '.go-globe-turn';
+    // The second (the owner, 2026-11-12): the wash of lighter colour on a deck tile of the GoReview home, spreading from the point of contact
+    // (.deck-tile::before). The owner asked for it as the tile's answer to the pointer and wants it on a device that asks for reduced motion
+    // too; it is a change of colour inside one tile, and no text or control moves.
+    const essential = (selector: string): boolean => selector === '.go-globe-turn' || (selector.startsWith('.deck-tile') && selector.includes('::before'));
     for (const s of SHEETS) {
       const motion = s.rules.filter((r) => 'transition' in r.decls || 'animation' in r.decls || r.decls['scroll-behavior'] === 'smooth');
       for (const r of motion) if (!essential(r.selector)) expect(r.media.join(' '), `${s.key} ${r.selector}`).toContain('prefers-reduced-motion: no-preference');
       const allowed = motion.filter((r) => essential(r.selector));
-      for (const r of allowed) expect(r.media.join(' '), `${s.key} ${r.selector} is the indicator and must not be gated off`).not.toContain('prefers-reduced-motion');
-      row(`A-C04:${s.key}`, 'css', `${s.label}: motion`, motion.length ? `${motion.length - allowed.length} transition rule(s), all inside prefers-reduced-motion: no-preference${allowed.length ? `; ${allowed.length} allowed outside it (the loading indicator's turn, slowed under reduced motion)` : ''}` : 'none');
+      for (const r of allowed) expect(r.media.join(' '), `${s.key} ${r.selector} is an allowance and must not be gated off`).not.toContain('prefers-reduced-motion');
+      row(`A-C04:${s.key}`, 'css', `${s.label}: motion`, motion.length ? `${motion.length - allowed.length} transition rule(s), all inside prefers-reduced-motion: no-preference${allowed.length ? `; ${allowed.length} allowed outside it (the loading indicator's turn, slowed under reduced motion; the deck tile's wash on the GoReview home, the owner's decision)` : ''}` : 'none');
     }
   });
 

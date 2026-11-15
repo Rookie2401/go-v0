@@ -363,4 +363,23 @@ describe.each(STORE_KINDS)('language switching in the GoLearn extension — %s s
     const filedUnderSpanish = ev?.enrolmentId === esId && ev?.languageId === 'sq';
     expect(filedUnderSpanish).toBe(false);
   });
+
+  // The owner, 2026-11-05: with one language selected, a mark on a word of another language stayed on the device, and the card and every other app kept the old level.
+  it('a mark on a word of another enrolled language goes under that language\'s enrolment, the engine folds it, and the card and the account both say so', async () => {
+    const { s, a, esId, rig } = await twoLanguages();
+    expect((await rig.page({ type: 'golearn:select-enrolment', enrolmentId: esId })).ok).toBe(true); // Spanish selected
+    const seen = pendingEvent('libër', 'Unë lexoj një libër.');                                       // an Albanian word
+    const unit = seen.subject.itemIds![0];
+    const mark = { ...seen, id: `${seen.id}-mark`, dedupeKey: `${seen.dedupeKey}-mark`, kind: 'ItemMarked', payload: { mark: 'known' } } as GoEvent;
+    expect(await rig.content({ type: 'golearn:record', event: mark })).toMatchObject({ ok: true, attributed: 'account' });
+    await rig.fireTimers();
+    await rig.page({ type: 'golearn:sync-now' });
+    const sent = (await serverEvents(s, a.learnerId)).find((e) => e.id === mark.id);
+    expect(sent).toMatchObject({ languageId: 'sq', enrolmentId: a.enrolmentId });
+    const k = await a.api.knowledge([unit]);
+    if (!k.ok) throw new Error('knowledge');
+    expect(k.data.knowledge[0]).toMatchObject({ level: 'known', selfMark: { mark: 'known' } });
+    const card = await rig.content({ type: 'golearn:profile', unitIds: [unit], languageId: 'sq' });
+    expect(card.rows[unit]).toMatchObject({ level: 'known', selfMark: { mark: 'known' } });
+  });
 });

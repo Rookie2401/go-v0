@@ -14,7 +14,7 @@
  */
 import type {
   AdapterSupport, AnalysisCandidate, AnalysisSourceInfo, AnalyzedToken, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport,
-  RawToken, SyllableAnalysis,
+  PartOfSpeech, RawToken, SyllableAnalysis,
 } from '../core';
 import { decodeFor } from '../core/adapters';
 import { E, Lexicon, hasPos, lexiconAnalyze, matchPhraseRules, speechNormalizeGeneric } from './shared';
@@ -34,6 +34,7 @@ import { createThaiSegmentations, type ThaiSegmentation } from './thai/segmentat
 import type { SegmentationCut } from '../core/paradigm';
 import { thFeaturesFromTableTags } from './thai/table-tags';
 import { segmentThaiProse } from './thai/prose';
+import { THAI_DICTIONARY_ID, dictionaryPartsOfSpeech, isDictionaryWord } from './thai/dictionary-words';
 import {
   SENTENCE_FINAL_PARTICLES, THAI_COMPOUNDS, isChunkToken, makeThaiTokenizer, normalizeThai, segmentThaiSentences,
 } from './thai/text';
@@ -52,6 +53,7 @@ export const TH_SOURCE_IDS = {
   constructions: `${ANALYZER}:constructions`,
   orthExceptions: `${ANALYZER}:orth-exceptions`,
   rules: `${ANALYZER}:rules`,
+  dictionary: `${ANALYZER}:dictionary`,
 } as const;
 
 const TH_SOURCES: Record<string, AnalysisSourceInfo> = {
@@ -60,6 +62,7 @@ const TH_SOURCES: Record<string, AnalysisSourceInfo> = {
   [TH_SOURCE_IDS.constructions]: { id: TH_SOURCE_IDS.constructions, label: 'Course grammar patterns', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
   [TH_SOURCE_IDS.orthExceptions]: { id: TH_SOURCE_IDS.orthExceptions, label: "Course list of irregular words", origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
   [TH_SOURCE_IDS.rules]: { id: TH_SOURCE_IDS.rules, label: 'Thai spelling rules', origin: 'rule', reviewStatus: 'machine-drafted', version: VERSION },
+  [TH_SOURCE_IDS.dictionary]: { id: TH_SOURCE_IDS.dictionary, label: 'Thai dictionary headwords and parts of speech (Wiktionary, via kaikki.org)', origin: 'dictionary', reviewStatus: 'external', licence: 'CC BY-SA 4.0 (Wiktionary contributors, via kaikki.org)', version: THAI_DICTIONARY_ID },
 };
 
 const normalize = normalizeThai;
@@ -190,7 +193,7 @@ export const thLexicon = new Lexicon([...ENTRIES, ...CORE_ENTRIES, ...FUNCTION_E
  * The adapter's tokenizer: ICU's segmentation of the text, except that a text which marks its words with U+200B (the Open
  * Thai Common Version) keeps a chunk whole when ICU would cut it into pieces the word list does not all know (names).
  */
-const tokenizeThai = makeThaiTokenizer((w) => thLexicon.has(w));
+const tokenizeThai = makeThaiTokenizer((w) => thLexicon.has(w), isDictionaryWord);
 
 /** Role / register / what-a-classifier-counts for lexicon entries, keyed lemma|pos (copied onto the candidates). */
 const ANNOTATIONS = mergeAnnotations(CORE_ANNOTATIONS, FUNCTION_ANNOTATIONS, CLASSIFIER_ANNOTATIONS, EVERYDAY_ANNOTATIONS, BIBLE_ANNOTATIONS, LADDER_ANNOTATIONS);
@@ -221,7 +224,34 @@ function contextual(i: number, tokens: RawToken[], base: AnalysisCandidate[][]):
   return [...contextualWord(i, tokens, own), { ...name, confidence: Math.min(name.confidence, 0.3) }];
 }
 
+/** Words after which a dictionary word with a verb reading is read as a verb: tense / aspect / modal auxiliaries, the negator,
+ * the relativizers and the nominalizer การ (การ + verb: "the doing of"). */
+const BEFORE_A_VERB = new Set(['จะ', 'กำลัง', 'ได้', 'เคย', 'ควร', 'ต้อง', 'อยาก', 'ไม่', 'ยัง', 'จึง', 'ก็', 'ที่', 'ซึ่ง', 'การ', 'ให้', 'จง', 'อย่า', 'คง', 'อาจ', 'เพิ่ง', 'มัก']);
+
+/**
+ * A word only the dictionary has, with more than one part of speech: the first is the dictionary's own order. Standard Thai
+ * grammar decides three cases: after a number it counts (CLF); after an auxiliary, the negator, a relativizer or การ it is a
+ * verb; straight after a noun, a word that can be an adjective modifies it (ADJ). Otherwise the dictionary's order stands.
+ */
+function contextualDictionaryWord(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): AnalysisCandidate[] | undefined {
+  const cands = base[i];
+  if (cands.length < 2 || !cands.every((c) => c.notes?.source === 'dictionary')) return undefined;
+  const has = (pos: string) => cands.some((c) => c.pos === pos);
+  const pick = (pos: string, conf: number): AnalysisCandidate[] => {
+    const idx = cands.findIndex((c) => c.pos === pos);
+    return [{ ...cands[idx], confidence: conf }, ...cands.filter((_, k) => k !== idx).map((c) => ({ ...c, confidence: Math.min(c.confidence, 0.45) }))];
+  };
+  const before = tokens[i - 1]?.normalized ?? '';
+  const prev = base[i - 1]?.[0];
+  if (has('CLF') && (prev?.pos === 'NUM' || DIGITS.test(tokens[i - 1]?.surface ?? ''))) return pick('CLF', 0.75);
+  if (has('VERB') && BEFORE_A_VERB.has(before)) return pick('VERB', 0.72);
+  if (has('ADJ') && (prev?.pos === 'NOUN' || prev?.pos === 'PROPN') && !BEFORE_A_VERB.has(before)) return pick('ADJ', 0.68);
+  return undefined;
+}
+
 function contextualWord(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): AnalysisCandidate[] {
+  const fromDictionary = contextualDictionaryWord(i, tokens, base);
+  if (fromDictionary) return fromDictionary;
   const cands = base[i];
   const w = tokens[i].normalized;
   // ตกลง is "to agree" (ตกลงกัน) and, after rain and the like or before มา / ไป, ตก + ลง "to fall down" (ฝนตกลงมา): ICU keeps it whole
@@ -268,8 +298,18 @@ function contextualWord(i: number, tokens: RawToken[], base: AnalysisCandidate[]
  *  - one whole U+200B-delimited chunk of a text that marks its words that the list does not know (a name, as a rule: อับราม,
  *    เบธเอล, โมเสส): a proper-name GUESS with no gloss. It is `unconfirmed`, so a dictionary that has the form decides the word
  *    and the guess stays only where it has not.
+ * Before either, a word the installed dictionary has as a headword: its parts of speech as readings (the dictionary's first
+ * first), lemma = the word (Thai does not inflect), no gloss (the card asks the dictionary), weaker than a course-list word.
  */
+function dictionaryReadings(normalized: string, notes: Record<string, string> = {}): AnalysisCandidate[] {
+  const parts = dictionaryPartsOfSpeech(normalized);
+  if (!parts?.length) return [];
+  return parts.map((pos, k) => ({ lemma: normalized, pos: pos as PartOfSpeech, morph: {}, confidence: k === 0 ? 0.7 : Math.max(0.4, 0.55 - 0.05 * (k - 1)), notes: { ...notes, source: 'dictionary' } }));
+}
+
 function unknownThai(t: RawToken, _i: number, _tokens: RawToken[], lex: Lexicon): AnalysisCandidate[] {
+  const fromDictionary = dictionaryReadings(t.normalized);
+  if (fromDictionary.length) return fromDictionary;
   if (t.normalized.length > 1 && t.normalized.endsWith('ๆ')) {
     const stem = t.normalized.slice(0, -1);
     const hits = lex.lookup(stem);
@@ -279,7 +319,7 @@ function unknownThai(t: RawToken, _i: number, _tokens: RawToken[], lex: Lexicon)
         return { ...c, confidence: Math.min(c.confidence, 0.6), notes: { ...notes, repeated: 'ๆ', source: 'rule' } };
       });
     }
-    return [];
+    return dictionaryReadings(stem, { repeated: 'ๆ' }).map((c) => ({ ...c, confidence: Math.min(c.confidence, 0.6) }));
   }
   if (isChunkToken(t)) {
     return [{ lemma: t.normalized, pos: 'PROPN', morph: {}, confidence: 0.35, notes: { source: 'rule', nameGuess: 'yes' }, unconfirmed: true }];
@@ -293,7 +333,10 @@ function annotate(a: AnalyzedToken): AnalyzedToken {
   const candidates = a.candidates.map((c) => {
     // a candidate from `unknownThai` is a reading by rule; every other one came from the hand lexicon
     const byRule = c.notes?.source === 'rule';
-    const next: AnalysisCandidate = { ...c, origin: byRule ? 'rule' : 'hand', sourceId: byRule ? TH_SOURCE_IDS.rules : TH_SOURCE_IDS.hand };
+    const byDictionary = c.notes?.source === 'dictionary';
+    const next: AnalysisCandidate = byDictionary
+      ? { ...c, origin: 'dictionary', sourceId: TH_SOURCE_IDS.dictionary }
+      : { ...c, origin: byRule ? 'rule' : 'hand', sourceId: byRule ? TH_SOURCE_IDS.rules : TH_SOURCE_IDS.hand };
     const ann = c.lemma && c.pos ? ANNOTATIONS.get(annotationKey(c.lemma, c.pos)) : undefined;
     if (!ann) return next;
     if (ann.role) next.role = ann.role;
@@ -325,7 +368,7 @@ export function thaiInitialClass(surface: string): 'mid' | 'high' | 'low' | unde
 const SUPPORT: AdapterSupport = {
   tokenization: 'limited', // ICU dictionary segmentation plus a short course compound list: an unlisted compound can split differently from a learner's expectation; not measured on real prose yet
   sentenceSegmentation: 'limited', // Thai has no full stop: breaks need a newline, two spaces, ฯ, a final particle plus a space, or terminal punctuation; spans of more than 28 words are divided at clause spaces by rule
-  lemmatization: 'seed-only', // a hand lexicon (about 600 entries: the bundled texts, common content words, function words, classifiers); machine-drafted, not native-reviewed; other words are left unanalysed (a dictionary can be installed)
+  lemmatization: 'seed-only', // a hand lexicon (about 600 entries; machine-drafted, not native-reviewed) first; since 2026-11-13 any other word that is a headword of the Thai dictionary (17,222 words, Wiktionary via kaikki.org) reads as itself with the dictionary's parts of speech; other words are left unanalysed
   morphology: 'seed-only', // Thai has no inflection; part of speech, classifiers, particles, roles and register tags are recorded for lexicon words only
   phraseDetection: 'seed-only', // listed phrase units only (about 60); nothing is discovered
   productionChecks: 'limited',
@@ -334,11 +377,11 @@ const SUPPORT: AdapterSupport = {
     'A line break inside a sentence (a book wrapped at a fixed width) always starts a new unit: Go cannot tell a wrapped line from a paragraph end. The same holds for a dialogue turn separated from the next only by a single space, two sentences with no mark between them, and the cut between a quotation and its reporting clause: these are not decided by rule yet.',
     'A full stop does not end a unit inside an abbreviation (พ.ศ. ดร. น. Dr. a.m.), a number or time (10.30), a list marker at the start of a unit (1.), or an ellipsis in the middle of a text; ฯ never ends a unit by itself. A short word of two or three letters followed by a full stop is read as a sentence end.',
     'Canonical text is never given spaces: segmentation reads the text as written and adds none.',
-    'Word segmentation uses the ICU dictionary plus a short list of course compounds; other compounds may come out as parts. It has not been measured on running prose.',
+    'Word segmentation uses the ICU dictionary plus a short list of course compounds; in text without U+200B, pieces ICU cuts from a word it lacks (an unknown piece shorter than three letters) are joined when together they are a dictionary or course-list word. Other compounds may come out as parts. It has not been measured on running prose.',
     'A text that marks its word boundaries with U+200B (the Open Thai Common Version) is read with the publisher word division where ICU would cut a name into fragments: a chunk the word list knows, or whose ICU pieces are not all known and include a fragment (under three letters, a final เอล, or an ending in ห์), stays one word. A name the list does not have is then a guess (proper noun, no gloss, low confidence) that a dictionary entry replaces; an ordinary word the dictionary lacks may be guessed a name too, and a name made of pieces that each look like a word may still come out in parts.',
     'Given names that are also everyday words (ต้น tree, มะลิ jasmine, บอล ball, แดง red, เล็ก small) are read as names only after a title or ชื่อ, joined to another name, or as the subject of a clause (names.ts); elsewhere they keep the everyday reading, so a name in an object position may be read as the word. A handful of loanwords, church words and names (ซิม, แชท, โอเค, เหรอ, ศิษยาภิบาล, มิชชันนารี, the tens …) are kept whole wherever they stand; หน้าที่ and ตากลม are cut or kept by their neighbours; ๆ glued to a word the list lacks is cut from it.',
     'Tone comes from the spelling rules (consonant class, vowel length, final, tone mark) and, when a dictionary is installed, from its pronunciation. A spelling the rules cannot settle is reported with low confidence and no tone, never a guess.',
-    'Lemmatization is seed-only: the built-in word list is a machine-drafted seed (about 600 entries: content words, function words and classifiers) that has not been checked by a native speaker, and words outside it show as not analysed.',
+    'Lemmatization is seed-only: the built-in word list is a machine-drafted seed (about 600 entries: content words, function words and classifiers) that has not been checked by a native speaker. A word outside it that the Thai dictionary has as a headword reads as itself with the parts of speech the dictionary gives (weaker than a course-list word, no gloss of its own; context picks a classifier after a number, a verb after an auxiliary or the negator, an adjective after a noun); other words show as not analysed.',
     'Constructions and phrase units are listed patterns, found only where the neighbouring words are in the word list; they are not a grammar check.',
     'Regional words (Isan, northern, southern), slang and royal vocabulary are tagged where known; only a handful of each is listed.',
     'Production checks: missing classifier after a number, polite-particle order — only for lexicon words.',

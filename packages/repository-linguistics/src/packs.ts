@@ -21,7 +21,7 @@ export const withValidation = (p: UnitProvenance, validation: ValidationLevel): 
  * mapping is the contract's own `validationForPack`: an installable pack reads as `production-validated` only when its manifest says so, and no pack's manifest
  * does today (the word lists are machine-drafted and no native speaker has checked them), so Albanian and Spanish read as `unreviewed`.
  */
-const PACK_LEVEL: Readonly<Record<string, 'installable' | 'experimental' | 'planned'>> = { sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'planned', nn: 'planned' };
+const PACK_LEVEL: Readonly<Record<string, 'installable' | 'experimental' | 'planned'>> = { arc: 'experimental', sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'planned', nn: 'planned' };
 export const packValidation = (languageId: string): ValidationLevel =>
   validationForPack(Object.prototype.hasOwnProperty.call(PACK_LEVEL, languageId) ? { level: PACK_LEVEL[languageId] } : undefined);
 /** A bare surface form recorded with no analysis: experimental and unsupported languages keep their level, every other reads `unreviewed`. */

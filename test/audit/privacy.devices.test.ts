@@ -196,6 +196,14 @@ describe.each(STORE_KINDS)('local data cleanup: the GoLearn extension — %s sto
     expect(Object.keys(await rig.fake.local.get(null)).sort()).toEqual(['golearn:deviceId', 'golearn:service', 'golearn:sync-status', 'sync:cursor']);
   });
 
+  it('clear-local also takes the cached dictionary files, the pack install records and the offline-download rows off the device (2026-11-11)', async () => {
+    const { rig } = await signedIn();
+    await rig.fake.local.set({ 'pack:shard:dict/sq/s-00': { text: '{}', at: 1, url: 'https://x/dict/sq/s-00.json' }, 'pack:shard:dict/sq/manifest': { text: '{}', at: 1, url: 'https://x/dict/sq/manifest.json' }, 'golearn:pack:installed:pack:sq': { version: '9' }, 'golearn:dictionary-download:sq': { state: 'complete', done: 1, total: 1, bytes: 1 } });
+    await rig.page({ type: 'golearn:clear-local' });
+    const t = await rig.storageText();
+    for (const gone of ['pack:shard:', 'golearn:pack:installed:', 'golearn:dictionary-download:']) expect(t, gone).not.toContain(gone);
+  });
+
   it('a second account signing in after a plain sign-out: the first learner\'s unsent events are set aside, never sent under the second account', async () => {
     const { s, net, a, rig } = await signedIn();
     net.down = true;

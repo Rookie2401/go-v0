@@ -59,9 +59,13 @@ function addNoun(n: DeNoun, course: boolean): void {
   push(nounsBy, key, n);
 }
 
+// verbs already added, by normalized lemma|prefix|reflexive: a keyed look-up, not a scan of every verb (the scan made this module's
+// load quadratic, ~2 s on a phone, and every GoReview start paid it whatever the language)
+const verbsByKey = new Map<string, DeVerb[]>();
+
 function addVerb(v: DeVerb, course: boolean): void {
   const key = norm(verbKey(v));
-  const same = verbs.filter((x) => norm(verbKey(x)) === key);
+  const same = verbsByKey.get(key) ?? [];
   if (course) {
     if (same.length) {
       if (!same.some((x) => verbFacts(x) === verbFacts(v))) duplicates.push(`verb ${v.prefix ? `${v.prefix}|${v.base}` : v.lemma}: course row differs from the main list`);
@@ -69,6 +73,7 @@ function addVerb(v: DeVerb, course: boolean): void {
     }
   } else if (same.some((x) => verbFacts(x) === verbFacts(v))) return;
   verbs.push(v);
+  push(verbsByKey, key, v);
   push(verbsBy, norm(v.lemma), v);
 }
 

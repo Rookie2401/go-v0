@@ -111,8 +111,13 @@ export function computePosition(anchor: PopupAnchor, size: { width: number; heig
 }
 
 const CSS = `
-:host { all: initial; }
+/* The card reads left to right on every page, a right-to-left one too (the owner, 2026-11-11): \`all: initial\` leaves \`direction\` alone, so without
+   this the card took the page's dir=rtl and mirrored its labels, its rows and its punctuation. Text in the word's own language keeps its order through
+   [lang] below; the headword is set dir=rtl for a right-to-left language, so its letters run right to left inside a left-aligned line. */
+:host { all: initial; direction: ltr; unicode-bidi: isolate; }
 * { box-sizing: border-box; }
+.card [lang] { unicode-bidi: isolate; }
+.card .word[dir="rtl"] { text-align: left; }
 /* The lookup card, in the look of Biblia's word card (the dark Western Canon theme): paper, hairline rules, tracked small kickers, gold accent.
    Tokens are Biblia's (src/index.css): paper #16130f, raised #1e1a15, ink #d9cfbe, ink-soft #a89c86, ink-faint #7d7059 (borders and decoration only: it is
    below 4.5:1 on paper, so no text uses it), rule #322b22, rule-strong #453c2f, accent #c8a06a, accent-soft #b98f57. No font file is shipped: the stack
@@ -121,7 +126,7 @@ const CSS = `
   position: fixed; width: min(23em, calc(100vw - ${MARGIN * 2}px)); max-height: min(72vh, 540px); overflow: auto;
   font: 1.05em/1.5 'EB Garamond', Georgia, 'Times New Roman', serif; color: #d9cfbe; background: #16130f;
   -webkit-font-smoothing: antialiased; font-feature-settings: 'kern' 1, 'liga' 1, 'locl' 0;
-  border: 1px solid #453c2f; border-radius: 10px; box-shadow: 0 1px 2px rgba(0,0,0,.35), 0 12px 32px rgba(0,0,0,.55); padding: 0.7em 1em 0.9em; text-align: start;
+  border: 1px solid #453c2f; border-radius: 10px; box-shadow: 0 1px 2px rgba(0,0,0,.35), 0 12px 32px rgba(0,0,0,.55); padding: 0.7em 1em 0.9em; direction: ltr; text-align: left;
   scrollbar-color: #453c2f #16130f; color-scheme: dark;
 }
 .card:focus { outline: none; }
@@ -347,6 +352,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   let card: HTMLElement | undefined;
   let statusEl: HTMLElement | undefined;
   let feedbackEl: HTMLElement | undefined;
+  /** The card shows several words: an information display only (no meter, no encounters, no Report, no recording line). */
+  let infoOnly = false;
   let open = false;
   let prevFocus: Element | null = null;
   let movedFocus = false;
@@ -388,7 +395,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     host?.remove();
     host = doc.createElement('div');
     host.setAttribute(GOLEARN_HOST_ATTR, '');
-    host.style.cssText = 'all: initial; position: fixed; top: 0; left: 0; width: 0; height: 0; overflow: visible; z-index: 2147483647;';
+    host.setAttribute('dir', 'ltr'); // the card reads left to right whatever the page's direction (see the style sheet's first rule)
+    host.style.cssText = 'all: initial; direction: ltr; position: fixed; top: 0; left: 0; width: 0; height: 0; overflow: visible; z-index: 2147483647;';
     root = host.attachShadow({ mode: 'closed' });
     // constructed stylesheets are not subject to the page's style-src CSP; <style> is the fallback
     let adopted = false;
@@ -408,7 +416,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   function mountCard(inner: HTMLElement, label: string): HTMLElement {
     ensureHost();
     card?.remove();
-    card = h('div', { class: 'card', role: 'dialog', 'aria-label': label, tabindex: '-1', 'data-placement': 'below' }, inner);
+    card = h('div', { class: 'card', dir: 'ltr', role: 'dialog', 'aria-label': label, tabindex: '-1', 'data-placement': 'below' }, inner);
     card.style.top = '-9999px';
     card.style.left = '0px';
     root!.append(card);
@@ -686,6 +694,22 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
    * Form: the lemma and part of speech, the essential morphology line, and under it the quiet toggle "analysis" (a disclosure, closed by default).
    * It opens GRAMMAR (the constructions the form realizes) and then one dropdown per feature. No table, no evidence chips.
    */
+  /** How the form is built, where the adapter can read it: the root, the pieces of the word, and what the stem, conjugation and agreement contribute. Inside "analysis", so the compact card stays compact. */
+  function fillFormAnalysis(panel: HTMLElement, m: CardModel): void {
+    const f = m.wordAnalysis?.formAnalysis;
+    if (!f) return;
+    const box = h('div', { class: 'more', 'data-row': 'form-analysis' }, h('h4', {}, 'How this form is built'));
+    if (f.root) box.append(h('div', { class: 'row', 'data-row': 'form-root' }, h('span', { class: 'k' }, 'root'), h('span', { class: 'v' }, h('span', { lang: m.languageId }, f.root), f.rootMeaning ? `: ${f.rootMeaning}` : '')));
+    if (f.components.length) {
+      const line = h('div', { class: 'segs', role: 'group', 'data-row': 'form-components', 'aria-label': `Parts of the word: ${f.components.map((c) => `${c.text}: ${c.role}`).join('; ')}` });
+      for (const c of f.components) line.append(h('span', { class: 'seg', title: c.role }, h('span', { lang: m.languageId }, c.text), h('span', { class: 'role', 'aria-hidden': 'true' }, c.role)));
+      box.append(line);
+    }
+    for (const l of f.lines) box.append(h('div', { class: 'row', 'data-row': `form-${l.key}` }, h('span', { class: 'k' }, l.label.toLowerCase()), h('span', { class: 'v' }, l.text)));
+    if (f.limitation) box.append(h('div', { class: 'note', 'data-row': 'form-limitation' }, f.limitation));
+    panel.append(box);
+  }
+
   function fillForm(panel: HTMLElement, m: CardModel, v: CardView): void {
     const lines: HTMLElement[] = [];
     if (m.lemma) lines.push(plainRow('lemma', m.unconfirmed ? 'lemma (guess)' : 'lemma', m.pos ? `${m.lemma} (${m.pos})` : m.lemma, m.languageId));
@@ -697,6 +721,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const btn = h('button', { type: 'button', class: 'analysisBtn', 'aria-expanded': String(analysisOpen), 'aria-controls': 'panel-analysis' }, 'analysis') as HTMLButtonElement;
     const box = h('div', { class: 'analysis', id: 'panel-analysis' });
     if (!analysisOpen) box.setAttribute('hidden', '');
+    fillFormAnalysis(box, m);
     const grammar = h('div', { class: 'more layer l4', 'data-layer': 'grammar' }, h('span', { class: 'label' }, 'Grammar'));
     fillGrammar(grammar, m, v);
     box.append(grammar);
@@ -811,7 +836,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   const enrichNote = (panel: HTMLElement, v: CardView): boolean => {
     const e = v.enrichment;
     if (e.state === 'ready') return true;
-    panel.append(h('div', { class: 'note' }, e.state === 'loading' ? 'Looking this up in the dictionary…' : e.state === 'unavailable' ? (e.message ?? 'The dictionary could not be asked.') : 'No dictionary service is connected, so there is nothing deeper to show.'));
+    panel.append(h('div', { class: 'note' }, e.state === 'loading' ? 'Looking this up in the dictionary…' : e.state === 'unavailable' ? (e.message ?? 'The dictionary could not be asked.') : 'No full dictionary entry is available here. The meanings above come from the analyser\'s own sources.'));
     return false;
   };
 
@@ -840,7 +865,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     }
     const counts = { verified: 0, supported: 0, generated: 0, conflicted: 0 } as Record<string, number>;
     for (const c of p.cells) counts[c.status]++;
-    const parts = (Object.keys(counts) as Array<keyof typeof counts>).filter((k) => counts[k]).map((k) => `${counts[k]} ${STATUS_LABEL[k]}`);
+    const parts = (Object.keys(counts) as Array<keyof typeof counts>).filter((k) => counts[k]).map((k) => `${counts[k]} ${k === 'generated' && p.attested ? 'attested in the sources' : STATUS_LABEL[k]}`);
     panel.append(h('div', { class: 'note' }, `${p.cells.length} form${p.cells.length === 1 ? '' : 's'}${p.template ? ` · ${p.template}` : ''}: ${parts.join('; ')}.`));
     const selected = new Set<ParadigmCell>();
     if (v.enrichment.selected?.length) {
@@ -914,6 +939,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (m.gloss && v.gloss.state === 'ready' && v.gloss.senses.length) panel.append(row('dictionary', 'dictionary', `${v.gloss.senses.slice(0, 4).join('; ')}${v.gloss.attribution ? ` (${v.gloss.attribution})` : ''}`, 'analysis', true));
     if (!enrichNote(panel, v)) return;
     const e = v.enrichment;
+    if (e.noDictionary) { panel.append(h('div', { class: 'note', 'data-row': 'no-dictionary' }, e.noDictionary)); return; }
     if (!e.senses?.length) { panel.append(h('div', { class: 'note' }, e.message ? `The dictionary did not provide senses for this lemma: ${e.message}` : 'The dictionary has no entry for this lemma.')); }
     else {
       const ol = h('ol', { class: 'senses' });
@@ -937,6 +963,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
   function fillOrigin(panel: HTMLElement, m: CardModel, v: CardView): void {
     if (!enrichNote(panel, v)) return;
+    if (v.enrichment.noDictionary) { panel.append(h('div', { class: 'note', 'data-row': 'no-dictionary' }, v.enrichment.noDictionary)); return; }
     const o = v.enrichment.etymology;
     if (!o || o.status === 'unknown') {
       panel.append(h('div', { class: 'note' }, v.enrichment.message
@@ -1196,12 +1223,17 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       report.setAttribute('aria-expanded', String(openNow));
       if (lastAnchor) place(lastAnchor);
     });
-    const pills = h('div', { class: 'pills' }, deeperBtn, sentenceBtn, variantsBtn ?? null, report);
+    // several words (the owner, 2026-11-09): an information display only, the text, the audio and the information; no level meter, no encounters,
+    // no Report, so nothing on the card can say or record how well the learner knows a phrase
+    infoOnly = m.tokenCount > 1;
+    const pills = h('div', { class: 'pills' }, deeperBtn, sentenceBtn, variantsBtn ?? null, infoOnly ? null : report);
 
     statusEl = h('div', { class: 'status', role: 'status', 'aria-live': 'polite' }, '');
     feedbackEl = h('div', { class: 'feedback', role: 'status', 'aria-live': 'polite' }, '');
     parts = { rows, pronNote, say, sources, sourcesBtn, deeper, deeperBtn, sentenceBox, sentenceBtn, variantsBox, variantsBtn, encounters, levelName, layers, fix, report, rateBtns };
-    const wrapper = h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, fix, feedbackEl, statusEl);
+    const wrapper = infoOnly
+      ? h('div', { 'data-info-only': 'true' }, top, wordLine, rows, h('div', {}, sourcesBtn), sources, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, feedbackEl)
+      : h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, fix, feedbackEl, statusEl);
     mountCard(wrapper, `GoLearn: ${m.surface}`);
     renderAll();
     pron.off = pronouncer.onChange?.(() => { checkPronunciation(renderToken); });
@@ -1272,7 +1304,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   }
 
   function setRecorded(status: RecordStatus): void {
-    if (!statusEl) return;
+    if (!statusEl || infoOnly) return;
     statusEl.textContent = status === 'recorded' ? 'Encounter recorded.' : status === 'duplicate' ? 'Encounter already recorded this session.' : status === 'failed' ? 'Encounter not recorded.' : '';
   }
 

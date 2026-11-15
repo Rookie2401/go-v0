@@ -145,7 +145,7 @@ describe('GoReview native runtime', () => {
     await until(() => !!mobile.secret() && rig.app.current() === 'review' && !!rig.root.querySelector('#review-home'), 'the authenticated home render');
     await until(() => !!rig.root.querySelector('#start-session') && readyCards(rig) === 1, 'the first synced candidate card');
     expect(rig.root.querySelector('#language-name')?.textContent).toContain('Albanian');
-    expect(rig.root.querySelector('#entry-tell')).not.toBeNull();
+    expect(rig.root.querySelector('#entry-tell')).toBeNull();
     expect(rig.root.querySelector('#sync-indicator')?.textContent).toMatch(/Online|Syncing/);
     expect(rig.root.textContent).not.toContain('This screen could not be shown');
   });

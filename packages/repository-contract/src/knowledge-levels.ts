@@ -36,3 +36,37 @@ export const LEGACY_MARK_LEVEL: Record<'learning' | 'known' | 'productive', Know
 export type LevelMark = KnowledgeLevel | keyof typeof LEGACY_MARK_LEVEL;
 
 export const levelOfMark = (mark: LevelMark): KnowledgeLevel => (isKnowledgeLevel(mark) ? mark : LEGACY_MARK_LEVEL[mark]);
+
+/**
+ * What a reader needs of a knowledge row to decide how to SHOW it (structural, so `UnitKnowledge` and the extension's compact
+ * `KnowledgeView` both fit without this file importing either).
+ */
+export interface DisplayableRow {
+  level?: string;
+  selfMark?: unknown;
+  dimensions?: Record<string, { observations?: number; negative?: number } | undefined>;
+}
+
+/**
+ * Met only in passing (owner, 2026-11-05: "when the user clicks on a word to see the definition, it marks every word in that sentence as
+ * seen"). A page or a verse records a bare encounter for every word on it, which the Repository rightly counts (GoReview draws a word after
+ * three encounters) and lifts to Seen; the readers must not paint that as "seen". A row was met only in passing when ALL hold:
+ *   - it has no `selfMark`;
+ *   - its level is 'seen' (the engine's; callers whose row carries none pass the level they worked out);
+ *   - `dimensions.exposure.negative` is 0 or absent (a lookup or an assistance request adds to it; an encounter and audio playback do not);
+ *   - every dimension other than `exposure` has `observations` 0 or absent.
+ * This is a DISPLAY rule only: the Repository's level is unchanged.
+ */
+export function metOnlyInPassing(row: DisplayableRow | null | undefined, level: string | undefined = row?.level): boolean {
+  if (!row || row.selfMark || level !== 'seen') return false;
+  const d = row.dimensions ?? {};
+  if ((d.exposure?.negative ?? 0) > 0) return false;
+  for (const [k, v] of Object.entries(d)) if (k !== 'exposure' && (v?.observations ?? 0) > 0) return false;
+  return true;
+}
+
+/** The level to SHOW for one row: its level, except 'new' for a row met only in passing (see `metOnlyInPassing`). */
+export function displayLevelOf(row: DisplayableRow | null | undefined, level: string | undefined = row?.level): KnowledgeLevel {
+  const l = isKnowledgeLevel(level) ? level : 'new';
+  return metOnlyInPassing(row, l) ? 'new' : l;
+}

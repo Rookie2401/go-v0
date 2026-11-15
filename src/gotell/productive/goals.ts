@@ -71,6 +71,7 @@ const HE_MASC = 'Masculine forms (a man speaking); a woman uses the feminine for
 
 /** TODO(review): every wording below needs a native-speaker pass. Shown as "model wording, not yet reviewed". */
 const MODELS: Record<LanguageCode, Record<string, string | { text: string; note: string }>> = {
+  arc: {},
   es: {
     'goal:t.family': 'Crecí con mi familia.',
     'goal:t.young-knew-jesus': 'Cuando era joven, conocía a Jesús.',

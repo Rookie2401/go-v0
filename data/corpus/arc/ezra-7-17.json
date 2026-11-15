@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 2,
+  "id": "ezra-7-17",
+  "lang": "arc",
+  "locale": "arc-Hebr",
+  "title": "Ezra 7:17",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "biblical-aramaic",
+    "kind": "scripture",
+    "title": "Biblical Aramaic"
+  },
+  "source": {
+    "id": "src:arc:ezra-7-17",
+    "title": "Westminster Leningrad Codex via Open Scriptures Hebrew Bible",
+    "url": "https://github.com/openscriptures/morphhb/blob/master/wlc/Ezra.xml",
+    "edition": "OSHB WLC, qere reading path",
+    "attribution": "Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb",
+    "provenance": "Selected A-coded words extracted from bundled OSHB wlc/Ezra.xml snapshot, preserving source order, qere path, word boundaries and verse marks. No independent scholarly proofreading.",
+    "rights": "public-domain",
+    "licenseNote": "WLC base text public domain; OSHB lemma/morphology CC BY 4.0; lexical transcription CC BY 4.0.",
+    "authorship": "public-domain",
+    "modifications": "Reading-path extraction; morpheme separators removed; source word order and marks preserved."
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "Codex source-extraction check (automated, not a scholarly language review)",
+    "reviewedAt": "2026-11-05",
+    "level": "linguistic-check",
+    "notes": "Wording compared to A-coded OSHB source tokens, excluding ketiv in favor of qere. Linguistic analysis comes from OSHB; no claim of independent expert review."
+  },
+  "topics": [
+    "aramaic",
+    "biblical-aramaic",
+    "reading"
+  ],
+  "editorialTags": [],
+  "prepTargets": [],
+  "generated": false,
+  "scripture": {
+    "translationId": "arcWLC",
+    "translationName": "Biblical Aramaic, WLC",
+    "edition": "OSHB WLC, qere reading path",
+    "book": "EZR",
+    "chapter": 7,
+    "verification": {
+      "against": "OSHB wlc/Ezra.xml (A-coded tokens; ketiv excluded, qere selected)",
+      "url": "https://github.com/openscriptures/morphhb/blob/master/wlc/Ezra.xml",
+      "checkedAt": "2026-11-05",
+      "method": "byte-comparison",
+      "by": "Codex extraction compared to source word and seg values"
+    }
+  },
+  "work": {
+    "slug": "ezra-7-17",
+    "courseId": "aramaic-arc",
+    "chapter": {
+      "index": 258
+    }
+  },
+  "sections": [
+    {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ezra-7-17",
+              "text": "כָּל־קֳבֵ֣ל דְּנָה֩ אָסְפַּ֨רְנָא תִקְנֵ֜א בְּכַסְפָּ֣א דְנָ֗ה תּוֹרִ֤ין׀ דִּכְרִין֙ אִמְּרִ֔ין וּמִנְחָתְה֖וֹן וְנִסְכֵּיה֑וֹן וּתְקָרֵ֣ב הִמּ֔וֹ עַֽל־מַדְבְּחָ֔ה דִּ֛י בֵּ֥ית אֱלָהֲכֹ֖ם דִּ֥י בִירוּשְׁלֶֽם׃",
+              "verseRefs": [
+                "EZR.7.17"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variety": "arc-bib",
+  "streams": [
+    "scripture"
+  ]
+}

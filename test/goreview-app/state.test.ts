@@ -42,6 +42,34 @@ describe('the local event log', () => {
     expect((await log.list({ learnerId: 'L2' })).length).toBe(0);
   });
 
+  it('reads each stored event once per page: later lists fetch only the rows added since, and see rows another log added or removed (2026-11-09)', async () => {
+    const backing = createMemoryArea();
+    const fetched: string[] = [];
+    const area: KeyValueArea = {
+      async get(keys) { if (Array.isArray(keys)) fetched.push(...keys.filter((k) => k.startsWith('log:ev:'))); return backing.get(keys); },
+      set: (items) => backing.set(items), remove: (keys) => backing.remove(keys), list: (prefix) => backing.list(prefix),
+    };
+    const log = createLocalEventLog(area);
+    await log.append('L1', Array.from({ length: 40 }, (_, i) => cardAdded(A, `w${i}`, 'meaning-to-form', '2026-10-01T10:00:00.000Z')));
+    expect((await log.list({ learnerId: 'L1' })).length).toBe(40);
+    expect(fetched.length).toBe(40);
+    fetched.length = 0;
+    expect((await log.list({ learnerId: 'L1', kinds: ['CardAdded'] })).length).toBe(40);
+    expect(fetched).toEqual([]);
+    // another tab's log over the same storage appends: only the new row is read
+    const other = createLocalEventLog(area);
+    await other.append('L1', [reviewed(A, 'w0', 'meaning-to-form', 3, '2026-10-02T10:00:00.000Z')]);
+    const after = await log.list({ learnerId: 'L1' });
+    expect(after.map((e) => e.kind).slice(-1)).toEqual(['CardReviewed']);
+    expect(fetched).toEqual(['log:ev:L1:0000000041']);
+    // the device's data is removed and the log rebuilt under the same keys: the new rows are read, not the remembered ones
+    await removeByPrefix(area, ['log:']);
+    await other.append('L1', [cardAdded(A, 'fresh', 'meaning-to-form', '2026-10-03T10:00:00.000Z')]);
+    const rebuilt = await log.list({ learnerId: 'L1' });
+    expect(rebuilt).toHaveLength(1);
+    expect(rebuilt[0].subject.itemIds?.[0]).toContain('fresh');
+  });
+
   it('commits a full pull page with bounded storage operations', async () => {
     const backing = createMemoryArea();
     const calls = { get: 0, set: 0 };
@@ -131,6 +159,23 @@ describe('storage areas', () => {
     const again = createIndexedDbKeyValueArea(factory, 'gopractice-move', { from: localStorage, prefixes: ['gopractice:', 'u:'] });
     expect(await again.get('gopractice:later')).toEqual({});
     expect(localStorage.getItem('gopractice:later')).toBe('1');
+  });
+
+  it('reads many keys at once with one range read, leaving out rows in the range that were not asked for, and still reads scattered keys (2026-11-09)', async () => {
+    const area = createIndexedDbKeyValueArea(new IDBFactory(), 'gopractice-range');
+    const rows: Record<string, unknown> = {};
+    for (let i = 0; i < 60; i++) rows[`u:L1:log:ev:${String(i).padStart(4, '0')}`] = { n: i };
+    rows['u:L1:log:head'] = 60;
+    rows['u:L1:a'] = 'first'; rows['u:L1:z'] = 'last';
+    await area.set(rows);
+    const wanted = Array.from({ length: 50 }, (_, i) => `u:L1:log:ev:${String(i + 5).padStart(4, '0')}`).filter((k) => !k.endsWith('0020'));
+    wanted.push('u:L1:log:ev:9999'); // absent
+    const got = await area.get(wanted);
+    expect(Object.keys(got).sort()).toEqual(wanted.filter((k) => !k.endsWith('9999')).sort());
+    expect(got['u:L1:log:ev:0007']).toEqual({ n: 7 });
+    // keys far apart (most of the range not asked for) read one by one, with the same answer
+    const scattered = ['u:L1:a', 'u:L1:z', ...Array.from({ length: 40 }, (_, i) => `u:L1:missing:${i}`)];
+    expect(await area.get(scattered)).toEqual({ 'u:L1:a': 'first', 'u:L1:z': 'last' });
   });
 
   it('falls back to localStorage when IndexedDB will not open', async () => {

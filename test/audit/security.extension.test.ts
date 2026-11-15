@@ -28,6 +28,7 @@ const PAGE_ONLY: Array<Record<string, unknown>> = [
   { type: MSG.disconnect }, { type: MSG.syncNow }, { type: MSG.refreshSession },
   { type: MSG.enrol, languageId: 'sq', packId: 'pack:sq', packVersion: '1', teamId: 'team-x' },
   { type: MSG.selectEnrolment, enrolmentId: 'x' }, { type: MSG.clearLocal },
+  { type: MSG.dictionaryDownload, op: 'start', languageId: 'sq' }, { type: MSG.dictionaryDownload, op: 'remove', languageId: 'sq' }, // 2026-11-11: offline downloads are the setup page's
   { type: MSG.setEnabled, tabId: 7, enabled: true }, { type: MSG.getState, tabId: 7 },
 ];
 

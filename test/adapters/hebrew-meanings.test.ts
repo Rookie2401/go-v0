@@ -33,14 +33,14 @@ describe('Hebrew verb English realization', () => {
   });
 
   it('writes the derived stems literally only where the citation is the Qal sense', () => {
-    expect(read('וַיָּבֵא אֹתוֹ', 'וַיָּבֵא').meaning).toBe('And he caused to come'); // Hifil of בוא "come"
+    expect(read('וַיָּבֵא אֹתוֹ', 'וַיָּבֵא').meaning).toBe('And he brought'); // Hifil of בוא "come": the stem's own English verb
     expect(read('הִגִּיד לְךָ', 'הִגִּיד').meaning).toBe('He declared'); // Strong's "be conspicuous, declare, tell": the Hifil's own sense
     expect(read('נִמְצָא', 'נִמְצָא').meaning).toBe('He was found'); // Nifal of a transitive root
     expect(read('נִשְׁבַּע יְהוָה', 'נִשְׁבַּע').meaning).toBe('He swore'); // a Nifal that is the verb itself
     expect(hebrewInflectedMeaning('קָדַשׁ', qal('Perf', '3', 'Masc', 'Sing', { Binyan: 'Hitpael' }), 'to be set apart, consecrate, sanctify')).toBe('He consecrated himself');
     expect(hebrewInflectedMeaning('קָדַשׁ', qal('Imp', '2', 'Masc', 'Plur', { Binyan: 'Hitpael' }), 'to be set apart, consecrate, sanctify')).toBe('Consecrate yourselves! (plural)');
     expect(hebrewInflectedMeaning('פָּלַל', qal('Perf', '3', 'Masc', 'Sing', { Binyan: 'Hitpael' }), 'to intervene, interpose, pray')).toBe('He intervened'); // not in the reflexive list: the citation
-    expect(hebrewInflectedMeaning('בּוֹא', qal('Perf', '3', 'Masc', 'Sing', { Binyan: 'Hofal' }), 'to come, go in, enter')).toBe('He was caused to come');
+    expect(hebrewInflectedMeaning('בּוֹא', qal('Perf', '3', 'Masc', 'Sing', { Binyan: 'Hofal' }), 'to come, go in, enter')).toBe('He was brought');
     expect(hebrewInflectedMeaning('דָבַר', qal('Perf', '3', 'Masc', 'Sing', { Binyan: 'Pual' }), 'to speak')).toBe('He was spoken');
     expect(hebrewInflectedMeaning('שָׁאַר', qal('Perf', '3', 'Masc', 'Plur', { Binyan: 'Nifal' }), 'to remain, be left')).toBe('They remained');
     expect(hebrewInflectedMeaning('אֹיֵב', qal('Perf', '3', 'Masc', 'Sing', { Binyan: 'Nifal' }), 'be hostile to, enemy')).toBe('He was hostile to'); // a stative citation is never made passive

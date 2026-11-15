@@ -33,10 +33,21 @@ export interface VerbShape {
   prefix?: string;
   /** A derived stem's literal nuance: "caused to …" (a Hebrew Hifil), "… oneself" (a Hitpael). */
   nuance?: 'causative' | 'reflexive';
+  /** An object pronoun attached to the form ("you", "him"): it stands after the verb and before the rest of the phrase, "brought you out". */
+  object?: string;
 }
 
 /** One sense of a citation: the English verb (`head`, its base form) and the rest of the phrase ("into being", "in love with"). */
-export interface VerbSense { head: string; tail: string; /** A sense the citation marks as the passive's meaning (Whitaker's "(PASS) seem"). */ passive?: boolean }
+export interface VerbSense {
+  head: string; tail: string;
+  /** A sense the citation marks as the passive's meaning (Whitaker's "(PASS) seem"). */
+  passive?: boolean;
+  /**
+   * A state written with its "be" left out: "be high, exalted" means "be high, be exalted", so the second sense is head "be", tail "exalted".
+   * Where the word is a verb's past participle, `base` and `baseTail` name that verb ("exalt"): the sense a stem that acts, rather than is, takes.
+   */
+  base?: string; baseTail?: string;
+}
 
 const STOP = new Set(['a', 'an', 'the', 'of', 'in', 'on', 'to', 'for', 'by', 'with', 'and', 'or', 'not', 'no', 'from', 'into', 'as', 'at', 'he', 'she',
   'it', 'they', 'we', 'you', 'i', 'is', 'are', 'was', 'were', 'who', 'which', 'that', 'this', 'something', 'someone', 'oneself', 'one', 'any', 'some',
@@ -44,6 +55,61 @@ const STOP = new Set(['a', 'an', 'the', 'of', 'in', 'on', 'to', 'for', 'by', 'wi
 const MODAL = new Set(['can', 'may', 'must', 'shall', 'will', 'could', 'would', 'should', 'might', 'ought']);
 /** First-person citation forms whose base is another word. */
 const FIRST_PERSON_BASE: Readonly<Record<string, string>> = { am: 'be' };
+
+// ───────────────────────────── what kind of word opens a sense ─────────────────────────────
+//
+// A lexicon's sense list is not a list of base verbs. Strong's "be high, exalted, rise" means "be high, be exalted, rise": the middle sense is a past
+// participle, and inflecting it as a base verb wrote "I exalteded" (2026-11-05). So the first word of a sense is classified before anything is added
+// to it, and a word that is not a base verb is never given an English ending. The lists were read off every verb citation of the Tanakh index;
+// test/adapters/hebrew-tanakh-sweep.test.ts walks all of them again.
+
+/** Past participles and their verbs. A word in -ed that is not listed is still recognised as a state; it just names no verb to act with. */
+const PARTICIPLE_BASE: Readonly<Record<string, string>> = {
+  afflicted: 'afflict', alienated: 'alienate', appalled: 'appall', appointed: 'appoint', assembled: 'assemble', blinded: 'blind', busied: 'busy', cleansed: 'cleanse',
+  consecrated: 'consecrate', cornered: 'corner', cowed: 'cow', destroyed: 'destroy', devastated: 'devastate', diminished: 'diminish', dishonoured: 'dishonour',
+  dismayed: 'dismay', dried: 'dry', dumbfounded: 'dumbfound', ended: 'end', established: 'establish', exalted: 'exalt', extinguished: 'extinguish', finished: 'finish',
+  hallowed: 'hallow', humbled: 'humble', humiliated: 'humiliate', joined: 'join', leavened: 'leaven', lifted: 'lift', made: 'make', prized: 'prize', raised: 'raise',
+  removed: 'remove', sanctified: 'sanctify', satisfied: 'satisfy', scaled: 'scale', scattered: 'scatter', scorched: 'scorch', shattered: 'shatter', squared: 'square',
+};
+/** Present participles a citation gives in place of the verb ("fearing"). Any other word in -ing is not inflected. */
+const PARTICIPLE_ING_BASE: Readonly<Record<string, string>> = {
+  becoming: 'become', dancing: 'dance', doing: 'do', dwelling: 'dwell', fearing: 'fear', growing: 'grow', looking: 'look', murmuring: 'murmur', refusing: 'refuse',
+  rejoicing: 'rejoice', searching: 'search', seeing: 'see', shaking: 'shake', shining: 'shine', storming: 'storm', whirling: 'whirl',
+};
+/** Base verbs whose spelling looks like a participle. */
+const BASE_IN_ED = new Set(['bed', 'bleed', 'breed', 'embed', 'exceed', 'feed', 'heed', 'need', 'proceed', 'seed', 'shed', 'shred', 'sled', 'speed', 'succeed', 'wed', 'weed']);
+const BASE_IN_ING = new Set(['bring', 'cling', 'fling', 'hamstring', 'ping', 'ring', 'sing', 'sling', 'spring', 'sting', 'string', 'swing', 'wing', 'wring']);
+/** Adjectives, adverbs, nouns and other words that open a sense and are not verbs. Never inflected; after "be" they are the state itself. */
+const NOT_A_VERB = new Set(['adversary', 'agile', 'alive', 'all', 'angry', 'anything', 'archers', 'ashamed', 'away', 'bad', 'barrenness', 'beautiful', 'bitter', 'blood', 'bread',
+  'by-word', 'circumspect', 'clad', 'cleft', 'completeness', 'conspicuous', 'counsellor', 'craftiness', 'crafty', 'crooked', 'cups', 'death', 'deceitful', 'delicate', 'delightful', 'deliverance',
+  'distinct', 'divination', 'drunk', 'dull-coloured', 'dull-hearted', 'dumb', 'enduring', 'enemy', 'exiles', 'extraordinary', 'eye', 'fair', 'far', 'foolish', 'food', 'foot', 'forsakenness',
+  'foundation', 'garment', 'glad', 'gloom', 'good', 'grass', 'grave', 'great', 'grievous', 'harshness', 'high', 'hollow', 'horses', 'impatient', 'inactive', 'indignant', 'insignificant', 'joshebbash-shebeth',
+  'keen', 'kind', 'knavish', 'knowledge', 'lamentation', 'large', 'leper', 'leprous', 'loathsome', 'lofty', 'lowly', 'many', 'mental', 'mighty', 'mole', 'much', 'multitude', 'musterings', 'muth-labben', 'my',
+  'near', 'needy', 'numerous', 'oath', 'official', 'oppression', 'people', 'pleasant', 'pleasing', 'poor', 'proper', 'prudent', 'pure', 'queen', 'quickly', 'rebellious', 'refractory', 'righteous', 'ruddy',
+  'scatterer', 'seer', 'severe', 'shl', 'sick', 'simple', 'sin-offering', 'slight', 'slippery', 'snow', 'spacious', 'speechless', 'speedily', 'stout', 'straight', 'straits', 'strange', 'strength', 'strong', 'stupid',
+  'suitable', 'swift', 'tale', 'thousand', 'time', 'token', 'trifling', 'uncleanness', 'undisturbed', 'way', 'weak', 'weighty', 'well', 'what', 'when', 'wide', "wife's", 'year', 'young', 'your', 'zealous',
+  'am', 'aside', 'became', 'bold', 'burdensome', 'commotion', 'contrite', 'dainty', 'favourable', 'fierce', 'fresh', 'godless', 'gross', 'has', 'hasty', 'his', 'hypocritical', 'incurable', 'judicious',
+  'prince', 'reckless', 'remains', 'scale-like', 'sheweth', 'shiny', 'silent', 'similar', 'soft', 'their', 'unwell', 'worthless',
+  'abundance', 'base', 'bitterness', 'desolation', 'digger', 'disperser', 'envelope', 'every', 'evil', 'expenses', 'extortion', 'exultation', 'foe', 'important', 'integrity', 'joyful', 'officer', 'path',
+  'perception', 'raiment', 'resting-place', 'state', 'usual', 'vision']);
+/** Words that are verbs on their own ("empty a jar") but, straight after "be", are the state: "be waste, desolate". */
+const STATE_AFTER_BE = new Set(['faint', 'pale', 'prostrate', 'sound', 'bare', 'blunt', 'bound', 'calm', 'clean', 'clear', 'complete', 'dark', 'desolate', 'dim', 'dirty', 'double', 'dry', 'dull', 'empty', 'even', 'fat', 'fine', 'firm', 'free', 'full',
+  'heavy', 'humble', 'lame', 'light', 'long', 'loose', 'low', 'narrow', 'open', 'perfect', 'quiet', 'right', 'separate', 'smooth', 'still', 'sweet', 'thick', 'thin', 'tight', 'waste', 'wet', 'wrong']);
+const VERBS_IN_LY = new Set(['apply', 'bully', 'comply', 'dally', 'fly', 'imply', 'multiply', 'ply', 'rally', 'rely', 'reply', 'sully', 'supply', 'tally']);
+const isAdverb = (w: string): boolean => /ly$/.test(w) && !VERBS_IN_LY.has(w);
+/** "broken" from "break": an irregular past participle with a spelling of its own, recovered from the table of irregular verbs. */
+function irregularParticipleBase(w: string): string | undefined {
+  for (const [base, [, pp]] of Object.entries(IRREGULAR)) if (pp === w && pp !== base && /(?:en|wn|ne)$/.test(pp)) return base;
+  return undefined;
+}
+const participleBase = (w: string): string | undefined => PARTICIPLE_BASE[w] ?? irregularParticipleBase(w);
+/** A word that reads as a past participle, whose ending must not be added to. */
+const looksParticipial = (w: string): boolean => (/ed$/.test(w) && !BASE_IN_ED.has(w)) || !!participleBase(w);
+const looksLikeIng = (w: string): boolean => /ing$/.test(w) && !BASE_IN_ING.has(w);
+/** True when the word may be given English verb endings. */
+export function isEnglishBaseVerb(w: string): boolean {
+  return /^[a-z][a-z-]*$/.test(w) && w.length >= 2 && !NOT_A_VERB.has(w) && !looksParticipial(w) && !looksLikeIng(w) && !isAdverb(w) && !STOP.has(w) && !MODAL.has(w);
+}
 
 /**
  * The senses of a verb's citation gloss. Three citation conventions are read: a Greek lexicon's first person ("I say, speak";
@@ -57,6 +123,10 @@ export function verbSensesOfCitation(gloss: string | undefined): VerbSense[] {
   if (!whole) return [];
   const firstPerson = /^I\s/.test(whole);
   const out: VerbSense[] = [];
+  /** The list has opened with "be" or "become": a following non-verb continues it ("be high, exalted"). */
+  let afterBe = false;
+  /** Bare "be" and "become" senses still waiting for their state ("be, become, much" is "be much, become much"). */
+  let bare: VerbSense[] = [];
   for (const group of whole.split(';')) {
     let g = group.trim();
     let passive = false;
@@ -66,13 +136,37 @@ export function verbSensesOfCitation(gloss: string | undefined): VerbSense[] {
       let s = piece.replace(/\([^)]*\)/g, ' ').replace(/\s+/g, ' ').trim();
       if (!s) continue;
       s = s.replace(/^to\s+/i, '').replace(/^I\s+/, '');
-      const words = s.split(' ');
+      let words = s.split(' ');
       let head = words[0].toLowerCase().replace(/[^a-z'-]/g, '');
       if (!head) continue;
+      // "utterly destroy": the adverb is not the verb
+      if (isAdverb(head) && words.length > 1) { words = words.slice(1); head = words[0].toLowerCase().replace(/[^a-z'-]/g, ''); }
       if (firstPerson && FIRST_PERSON_BASE[head]) head = FIRST_PERSON_BASE[head];
       if (!/^[a-z][a-z'-]*$/.test(head) || head.length < 2 || STOP.has(head) || MODAL.has(head)) continue;
       const tail = words.slice(1).join(' ').replace(/[.:]+$/, '').trim();
-      out.push({ head, tail, ...(passive ? { passive: true } : {}) });
+      const pass = passive ? { passive: true } : {};
+      if (head === 'be' || head === 'become') {
+        const sense: VerbSense = { head, tail, ...pass };
+        out.push(sense);
+        afterBe = true;
+        // "be, become king": the bare "be" shares the state that follows
+        if (tail) { for (const b of bare) b.tail = tail; bare = []; } else bare.push(sense);
+        continue;
+      }
+      const ing = PARTICIPLE_ING_BASE[head];
+      if (ing) { out.push({ head: ing, tail, ...pass }); bare = []; continue; }
+      if (NOT_A_VERB.has(head) || looksParticipial(head) || looksLikeIng(head) || (afterBe && STATE_AFTER_BE.has(head))) {
+        const state = [head, tail].filter(Boolean).join(' ');
+        if (bare.length) { for (const b of bare) b.tail = state; bare = []; continue; }
+        const base = participleBase(head);
+        // a state with no "be" before it stands only where it is a participle ("squared", "removed far off"); a bare noun or adjective is no verb's sense
+        if (!afterBe && !base && !looksParticipial(head)) continue;
+        out.push({ head: 'be', tail: state, ...pass, ...(base ? { base, baseTail: tail } : {}) });
+        continue;
+      }
+      if (!isEnglishBaseVerb(head)) continue;
+      bare = [];
+      out.push({ head, tail, ...pass });
     }
   }
   return out;
@@ -93,7 +187,7 @@ export function citationAsInfinitive(gloss: string | undefined): string | undefi
 const IRREGULAR: Readonly<Record<string, readonly [string, string]>> = {
   be: ['was', 'been'], abide: ['abode', 'abode'], arise: ['arose', 'arisen'], awake: ['awoke', 'awoken'], bear: ['bore', 'borne'], beat: ['beat', 'beaten'],
   become: ['became', 'become'], befall: ['befell', 'befallen'], beget: ['begot', 'begotten'], begin: ['began', 'begun'], behold: ['beheld', 'beheld'],
-  bend: ['bent', 'bent'], beseech: ['besought', 'besought'], bid: ['bade', 'bidden'], bind: ['bound', 'bound'], bite: ['bit', 'bitten'], bleed: ['bled', 'bled'],
+  bend: ['bent', 'bent'], hamstring: ['hamstrung', 'hamstrung'], beseech: ['besought', 'besought'], bid: ['bade', 'bidden'], bind: ['bound', 'bound'], bite: ['bit', 'bitten'], bleed: ['bled', 'bled'],
   blow: ['blew', 'blown'], break: ['broke', 'broken'], breed: ['bred', 'bred'], bring: ['brought', 'brought'], build: ['built', 'built'], burst: ['burst', 'burst'],
   buy: ['bought', 'bought'], cast: ['cast', 'cast'], catch: ['caught', 'caught'], choose: ['chose', 'chosen'], cling: ['clung', 'clung'], come: ['came', 'come'],
   cost: ['cost', 'cost'], creep: ['crept', 'crept'], cut: ['cut', 'cut'], deal: ['dealt', 'dealt'], dig: ['dug', 'dug'], do: ['did', 'done'], draw: ['drew', 'drawn'],
@@ -150,7 +244,7 @@ export function englishThirdSingular(base: string): string {
   return `${base}s`;
 }
 export function englishIng(base: string): string {
-  if (base === 'be' || base === 'see' || base === 'flee' || base === 'free') return `${base}ing`;
+  if (base === 'be' || base === 'see' || base === 'flee' || base === 'free' || base === 'singe' || base === 'dye' || base === 'tinge') return `${base}ing`;
   if (base.endsWith('ie')) return `${base.slice(0, -2)}ying`;
   if (base.endsWith('e') && !/[eoy]e$/.test(base)) return `${base.slice(0, -1)}ing`;
   if (doubles(base)) return `${base}${base[base.length - 1]}ing`;
@@ -194,6 +288,19 @@ const STATIVE = new Set(['have', 'know', 'seem', 'want', 'need', 'own', 'owe', '
  * non-finite form the adapter did not name). A copula ("be") keeps its own forms and never takes a passive.
  */
 export function realizeEnglishVerb(sense: VerbSense, shape: VerbShape): string | undefined {
+  if (sense.head !== 'be' && !isEnglishBaseVerb(sense.head)) return undefined; // never put an ending on a word that is not a base verb
+  const text = writeVerb(sense, shape);
+  return text !== undefined && isWellFormedEnglishVerb(text) ? text : undefined;
+}
+
+/** Real English that ends like a doubled ending: a verb in -ed, -ede or -ing, inflected once. */
+const LEGITIMATE_DOUBLE = /\b(?:bedded|bedding|embedded|embedding|exceeded|exceeding|feeding|bleeding|breeding|heeded|heeding|needed|needing|proceeded|proceeding|seeded|seeding|shedding|speeded|speeding|succeeded|succeeding|wedded|wedding|weeded|weeding|acceded|conceded|interceded|preceded|receded|seceded|impeded|stampeded|superseded|ceded|bringing|clinging|cringing|flinging|hamstringing|hinging|pinging|ringing|singing|slinging|springing|stinging|stringing|swinging|winging|wringing|tinging|singed|tinged|winged|hinged|ringed|binged|cringed|fringed|hinged|impinged|twinged|avenged)\b/gi;
+/** The last line of defence: English this module must never show, whatever a citation held ("exalteded", "finisheded", "enduringing"). */
+export function isWellFormedEnglishVerb(text: string): boolean {
+  return !/\b[a-z-]*(?:eded|inged|inging|eding)\b/i.test(text.replace(LEGITIMATE_DOUBLE, ''));
+}
+
+function writeVerb(sense: VerbSense, shape: VerbShape): string | undefined {
   let head = sense.head;
   let tail = sense.tail;
   if (shape.nuance === 'causative') { tail = ['to', head, tail].filter(Boolean).join(' '); head = 'cause'; }
@@ -205,12 +312,18 @@ export function realizeEnglishVerb(sense: VerbSense, shape: VerbShape): string |
   const ing = englishIng(head);
   const bePresent = firstSingular ? 'am' : third ? 'is' : 'are';
   const bePast = firstSingular || third ? 'was' : 'were';
-  const reflexive = shape.nuance === 'reflexive' ? reflexiveOf(shape) : '';
+  // a citation that names the reflexive itself ("supply oneself with provisions") takes the subject's pronoun, and no second one
+  const namesReflexive = /\boneself\b/.test(tail);
+  if (namesReflexive) tail = tail.replace(/\boneself\b/, reflexiveOf(shape));
+  const reflexive = shape.nuance === 'reflexive' && !namesReflexive ? reflexiveOf(shape) : '';
   /** The verb words, then the reflexive pronoun, then the sense's tail. */
-  const phrase = (...verb: string[]): string => [...verb, reflexive, tail].filter(Boolean).join(' ');
+  const phrase = (...verb: string[]): string => [...verb, reflexive, shape.object ?? '', tail].filter(Boolean).join(' ');
   const time = shape.time ?? 'present';
 
   if (!shape.finite) {
+    const nonFinite = (): string | undefined => {
+    // a state in a passive participle is the participle itself: "exalted", not "having been exalted"
+    if (copula && shape.passive && shape.nonFinite === 'participle' && tail) return tail;
     switch (shape.nonFinite) {
       case 'infinitive':
         if (time === 'perfect' || time === 'pluperfect') return passive ? phrase('to have been', pp) : phrase('to have', pp);
@@ -226,6 +339,9 @@ export function realizeEnglishVerb(sense: VerbSense, shape: VerbShape): string |
       case 'supine': return phrase('to', head);
       default: return undefined;
     }
+    };
+    const written = nonFinite();
+    return written === undefined ? undefined : `${shape.prefix ?? ''}${written}`;
   }
 
   const subject = subjectOf(shape);
@@ -234,7 +350,7 @@ export function realizeEnglishVerb(sense: VerbSense, shape: VerbShape): string |
   let clause: string;
   switch (mood) {
     case 'imperative':
-      if (shape.person === '2') return `${shape.prefix ?? ''}${capitalize(passive ? phrase('be', pp) : phrase(head))}!${shape.number === 'Plur' ? ' (plural)' : ''}`;
+      if (shape.person === '2') return `${capitalize(`${shape.prefix ?? ''}${passive ? phrase('be', pp) : phrase(head)}`)}!${shape.number === 'Plur' ? ' (plural)' : ''}`;
       clause = `let ${objectOf(shape)} ${passive ? phrase('be', pp) : phrase(head)}`;
       break;
     case 'cohortative':

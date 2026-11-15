@@ -1,0 +1,152 @@
+[
+ {
+  "step": "seeded history",
+  "items": 40,
+  "digest": "264022fe3e12b5f4f0a520c0d9e003f9d25414db61b0670587a8137b94378b64"
+ },
+ {
+  "step": "an answer",
+  "items": 40,
+  "digest": "9968f31c65b664408c4311df410a5ac1906f87cb6043bd1d70fdb459033f165c"
+ },
+ {
+  "step": "another answer",
+  "items": 40,
+  "digest": "d4689edf46b0a841393ff1929ced0e8d1b364c931ee29d8501544cb4d1b526d0"
+ },
+ {
+  "step": "a wrong answer (a lapse)",
+  "items": 40,
+  "digest": "e9b60a5b38e69c0018a4775af202ef4153bf789f490a887e8170d242c1992059"
+ },
+ {
+  "step": "the lapsed card answered right",
+  "items": 40,
+  "digest": "b372dc983e779b1792d26594a6a7bdd6e70b5c1a70fd0c795f77aee1ee51a518"
+ },
+ {
+  "step": "an easy answer",
+  "items": 40,
+  "digest": "a603f0488bffc5fb3ce614e90d8ac144e9ebb00dcae333fd56c9a5b3d6532f0a"
+ },
+ {
+  "step": "a hard answer",
+  "items": 40,
+  "digest": "6d755c76c595954f9fb00d1ad929fff598d114c21379e3784db181db17aca911"
+ },
+ {
+  "step": "a new card added",
+  "items": 41,
+  "digest": "a362b460cfff16c152af3ceec6816b79f833e5cadd0239a4f125645266afd25e"
+ },
+ {
+  "step": "the new card, review 1",
+  "items": 41,
+  "digest": "df8f0bb9715ae23cf869e3b49954da3d8bf0a47a98d0b2d118e9ea59abdad436"
+ },
+ {
+  "step": "the new card, review 2",
+  "items": 41,
+  "digest": "2657a7613092ae92ad0042a156663822f8a94b27486bcc8ece0af9bf9b060369"
+ },
+ {
+  "step": "the new card, review 3",
+  "items": 41,
+  "digest": "077bd055284f2ecb37f568c549010df3077749b102474aa073f4615266390fd0"
+ },
+ {
+  "step": "a snooze",
+  "items": 41,
+  "digest": "ee091832486fff4a1500dc1121511c9a0b294a1570867dbf01bb4773c183bb77"
+ },
+ {
+  "step": "the snooze read after it ended",
+  "items": 41,
+  "digest": "077bd055284f2ecb37f568c549010df3077749b102474aa073f4615266390fd0"
+ },
+ {
+  "step": "the snooze read before it ended again",
+  "items": 41,
+  "digest": "ee091832486fff4a1500dc1121511c9a0b294a1570867dbf01bb4773c183bb77"
+ },
+ {
+  "step": "a suspension",
+  "items": 41,
+  "digest": "529484315454bd663a8ff6fa984b090cade4f1ab1e06d8006e096fc7a0d33887"
+ },
+ {
+  "step": "a dismissal",
+  "items": 41,
+  "digest": "870c27ff01318a805affe21afb0960943e970c76560382fbd44c95147c87e123"
+ },
+ {
+  "step": "a resume (the card added again)",
+  "items": 41,
+  "digest": "b44af1cc133622d546a2d713644b80a328e01549af9a17dc3234652fc2a216ad"
+ },
+ {
+  "step": "the resumed card answered",
+  "items": 41,
+  "digest": "bbc58d37caf056402966731461ecbfd96e34cb146acd757d0f25593bc546c1f3"
+ },
+ {
+  "step": "a lookup (no card)",
+  "items": 41,
+  "digest": "bbc58d37caf056402966731461ecbfd96e34cb146acd757d0f25593bc546c1f3"
+ },
+ {
+  "step": "a lookup of another language",
+  "items": 41,
+  "digest": "bbc58d37caf056402966731461ecbfd96e34cb146acd757d0f25593bc546c1f3"
+ },
+ {
+  "step": "a card of another language",
+  "items": 41,
+  "digest": "bbc58d37caf056402966731461ecbfd96e34cb146acd757d0f25593bc546c1f3"
+ },
+ {
+  "step": "a review naming its predecessor (a lapse was last)",
+  "items": 41,
+  "digest": "03e326b9807716b0f0b265fe6843585167df8cb17a9b1d17fe7ddffef685e7fb"
+ },
+ {
+  "step": "a review naming a predecessor that is not there",
+  "items": 41,
+  "digest": "b9d5323f506385c9ee2bf56ad9d3f701eee1e7855b8557cf6906165e0eda0402"
+ },
+ {
+  "step": "a sync pulled older events into the middle",
+  "items": 41,
+  "digest": "a3a73484b02dd117543f9bf72c83db6f40bf42162884563c36bf5e90d98a7a3a"
+ },
+ {
+  "step": "an answer after the sync",
+  "items": 41,
+  "digest": "b018caab43a93dee960eb1dba242636cd10f41a2f896f24944391600f06ab8ce"
+ },
+ {
+  "step": "a duplicate delivery of an event already in the log",
+  "items": 41,
+  "digest": "b018caab43a93dee960eb1dba242636cd10f41a2f896f24944391600f06ab8ce"
+ },
+ {
+  "step": "an answer after the duplicate",
+  "items": 41,
+  "digest": "eecbd0a29d90894529902c09f4cd77954db8b323e8310e41cbcad2bd95375adb"
+ },
+ {
+  "step": "a review of a card that was never added",
+  "items": 41,
+  "digest": "eecbd0a29d90894529902c09f4cd77954db8b323e8310e41cbcad2bd95375adb"
+ },
+ {
+  "step": "two answers at once",
+  "items": 41,
+  "digest": "8472b18ffc95236bbd770eb9f9301d035179cb25362a81e88efd371b449486d3"
+ },
+ {
+  "step": "a listening answer",
+  "items": 41,
+  "digest": "7e5b5e78266daa61588d6a268f88d03e3c66330f733819f06c45ccb34fbed49b"
+ }
+]

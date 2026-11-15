@@ -5,6 +5,7 @@ import { adapter } from './helpers';
 import { SEED_BY_LANG } from '../ingest/seed';
 
 const SAMPLES: Record<string, string[]> = {
+  arc: ['מַלְכָּא֙ לְעָלְמִ֣ין חֱיִ֔י׃', 'שְׁמֵ֤הּ דִּֽי־אֱלָהָא֙', 'English 😀 לְעַבְדָ֖ךְ, מַלְכָּא֙'],
   es: ['¿Cómo estás? Muy bien, «gracias».', 'Entenderlo… y perdonarnos: 3 cosas (o 4).', 'Dios ama al mundo — sí.'],
   sq: ['Nuk e kuptoja zemrën time.', 'Çfarë? Një gjë: "mëkat".', 'Perëndia e fali mëkatin tim; tani besoj.'],
   th: ['พระเจ้าทรงรักโลก', 'ตอนที่ฉันยังเด็ก ฉันไม่เข้าใจหัวใจของฉัน', 'ฉันมีหนังสือ 2 เล่ม (ไม่ใช่ 3)'],
@@ -49,7 +50,7 @@ describe('token offsets round-trip (all five languages)', () => {
       const seed = docs.filter((d) => (SEED_BY_LANG[lang] ?? []).includes(d.id));
       // Latin has course texts only (Vulgate chapters, Ritchie, Caesar), no seed trio
       if (lang in SEED_BY_LANG) expect(seed, lang).toHaveLength(3);
-      expect(docs.length).toBeGreaterThanOrEqual(3);
+      expect(docs.length).toBeGreaterThanOrEqual(lang === 'arc' ? 2 : 3); // two source excerpts in the initial Aramaic slice
       let checked = 0;
       for (const doc of docs) for (const sec of doc.sections) for (const par of sec.paragraphs) {
         if (!('sentences' in par)) continue;
@@ -57,7 +58,7 @@ describe('token offsets round-trip (all five languages)', () => {
           for (const t of ad.tokenize(s.text)) { expect(s.text.slice(t.start, t.end)).toBe(t.surface); checked++; }
         }
       }
-      expect(checked).toBeGreaterThan(100);
+      expect(checked).toBeGreaterThan(lang === 'arc' ? 25 : 100);
     });
   }
 

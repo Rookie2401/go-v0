@@ -58,6 +58,11 @@ export interface PublicStatus {
    * every pack the worker has (installable or experimental, never a planned one) when none is chosen. The resolver compares a sample only against these.
    */
   installedLanguages?: string[];
+  /** The build the worker is running (absent when run from source): the popup's foot line. */
+  build?: { id: string; builtAt: string };
+  /** Set for 10 minutes after the worker reloaded itself to a newer build of its folder (src/background/selfUpdate.ts): when, and the id it was running before. */
+  updatedAt?: string;
+  updatedFrom?: string;
 }
 
 /** What an extension page (popup, setup page) may know in addition. Still no token and no learner id. */
@@ -337,7 +342,10 @@ export interface LocalRepoStatus {
   enrolments: LocalEnrolmentView[];
   /** The active language: the selected open enrolment of an explicit choice; absent until the learner has chosen one. */
   languageId?: string;
-  /** Characters of the rows kept in `chrome.storage.local` (a lower bound of the bytes; the browser allows about 10 MB for the whole extension). */
+  /**
+   * Characters of the device Repository's key-value rows (a lower bound of their bytes). While the history is kept as rows in `chrome.storage.local` that is the
+   * whole history; once it has moved into IndexedDB (2026-11-10) it is only the small rows (identity, upload markers, pull cursor), not the history.
+   */
   storedChars: number;
   /** Writes the browser refused (storage full): the data is kept for this session only. */
   writeFailures: number;

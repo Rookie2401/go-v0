@@ -95,13 +95,13 @@ export function buildParadigm(adapter: LanguageAdapter | undefined, languageId: 
     return { languageId, lemma, pos, kind: 'none', cells: [], notes: generated.notes, sources: [{ id: `${adapter!.lang}@${adapter!.version}`, label: `${adapter!.name} analyser` }], status: 'none', constructions: generated.constructions };
   }
   const sources: Paradigm['sources'] = [];
-  if (generated && adapter) sources.push({ id: `adapter-${adapter.lang}@${adapter.version}`, label: `${adapter.name} analyser (rules and its irregular tables)` });
+  if (generated && adapter) sources.push({ id: `adapter-${adapter.lang}@${adapter.version}`, label: generated.attested ? `${adapter.name} analyser (forms attested in its sources)` : `${adapter.name} analyser (rules and its irregular tables)` });
   if (table.length) sources.push({ id: 'wiktionary', label: `${WIKTIONARY.label}${record?.tpl?.length ? `, table ${record.tpl.join(', ')}` : ''}`, licence: WIKTIONARY.licence });
   const kind = generated?.kind ?? (pos === 'VERB' ? 'verb-conjugation' : pos === 'ADJ' ? 'adjective-declension' : pos === 'NOUN' || pos === 'PROPN' ? 'noun-declension' : pos === 'PRON' ? 'pronoun-paradigm' : 'none');
   const notes = [...(generated?.notes ?? [])];
   if (!generated && table.length) notes.push('The analyser has no rules for this word; every form here is the dictionary\'s table, unverified by the rules.');
-  if (generated && !table.length) notes.push('The dictionary has no table for this word; every form here comes from the analyser\'s rules and is unverified by a second source.');
-  return mergeParadigm({ languageId, lemma, pos, kind, layout: generated?.layout, template: generated?.template ?? record?.tpl?.[0], notes, sources, constructions: generated?.constructions }, generated?.cells ?? [], aligned);
+  if (generated && !generated.attested && !table.length) notes.push('The dictionary has no table for this word; every form here comes from the analyser\'s rules and is unverified by a second source.');
+  return mergeParadigm({ languageId, lemma, pos, kind, layout: generated?.layout, template: generated?.template ?? record?.tpl?.[0], notes, sources, constructions: generated?.constructions, ...(generated?.attested ? { attested: true } : {}) }, generated?.cells ?? [], aligned);
 }
 
 /**
@@ -280,7 +280,7 @@ function partsOfTemplate(k: string, form: string, source: string): StructurePart
 const baseOf = (p: string): string => p.replace(/^\*/, '').replace(/^-+|-+$/g, '');
 const normText = (s: string | undefined): string => (s ?? '').normalize('NFC').toLowerCase();
 
-const PART_ROLE: Record<NonNullable<WordPart['kind']>, StructureRole> = { component: 'component', head: 'head', link: 'linking', contracted: 'component', clitic: 'clitic', prefix: 'prefix', marker: 'linking', stem: 'stem' };
+const PART_ROLE: Record<NonNullable<WordPart['kind']>, StructureRole> = { component: 'component', head: 'head', link: 'linking', contracted: 'component', clitic: 'clitic', prefix: 'prefix', marker: 'linking', stem: 'stem', suffix: 'suffix' };
 
 /** The analyser's reading of the word that matches the card's lemma, part of speech and features, with the structure it carries. */
 function analysedReading(adapter: LanguageAdapter, word: string, lemma: string, pos: string | undefined, features: Record<string, string>): AnalysisCandidate | undefined {

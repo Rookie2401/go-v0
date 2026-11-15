@@ -125,8 +125,10 @@ metadata; neither holds page text.
 
 An account is optional: a learner can use GoLearn on one device with none, and an account only keeps progress across devices. The background worker holds
 a **device-local Repository** (`packages/repository-local`, full description in `REPOSITORY-LOCAL.md`): the server's own store rules, projection engine,
-linguistic layer and request handler, run in-process over `chrome.storage.local` (rows under `golearn:repo:`), with a session made on the device and no
-password. It is opened when the worker registers.
+linguistic layer and request handler, run in-process, with a session made on the device and no password. Since 2026-11-10 it is kept in IndexedDB
+(databases `golearn-repository` and `golearn-repository-kv`) where the worker has it, after a one-time verified move of the older rows; those rows (under
+`golearn:repo:` in `chrome.storage.local`) stay, frozen, with the move's state row, and remain the store where IndexedDB is absent. It is opened on the first
+message that needs it, not when the worker registers (see `LOADING-ARCHITECTURE-2026-11-10.md`).
 
 - **Recording.** Every event the recorder accepts goes to the local log and the sync queue as before, and is also appended to the local Repository (same id).
   A lookup in a language with no local enrolment gets an automatic one; the learner's own choice (`MSG.localRepo` `enrol`, from the setup page) is the

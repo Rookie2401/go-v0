@@ -34,10 +34,10 @@ export async function render(el: HTMLElement, ctx: AppContext, _view: View): Pro
         h('h2', {}, 'The extension is installed'),
         h('p', { id: 'ext-version' }, `Installed, version ${version}.`),
         listOf([
-          'GoLearn is switched on per tab: open the page you are reading, press the GoLearn button in the toolbar and turn “GoLearn on for this tab”.',
-          [`Or select a word and press `, h('kbd', {}, SHORTCUT), ' to look it up once.'],
+          'Press the GoLearn button in the toolbar and switch on GoLearn Active: the words you are learning are marked on the pages you read, and a click on a word opens its card.',
+          [`With Active off, select a word and press `, h('kbd', {}, SHORTCUT), ' to look it up once.'],
           'Or select a word and right-click: “Look up with GoLearn”.',
-          'Nothing is read until you do one of these, and it stops when you leave the page.',
+          'With Active off, nothing is read until you do one of these, and it stops when you leave the page.',
         ])),
       // Biblia (2026-10-23): its own installable app at the hosted address (config.json bibliaUrl); it was a page of the extension from
       // 2026-10-21 to 2026-10-23, which put 49 MB of Scripture text inside the extension (test/audit/rights.dist). Same account, same card.

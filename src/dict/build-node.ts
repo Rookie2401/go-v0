@@ -21,12 +21,13 @@ import os from 'node:os';
 import path from 'node:path';
 import readline from 'node:readline';
 import type { DictionaryEntry, DictionaryInfo, LanguageCode } from '../core';
-import { createAdapterRegistry } from '../adapters';
 import {
   chooseBuckets, createLabelSetRegistry, createLineIngestor, dropsFormPronunciations, entryJson, estimateBytes, makeManifest, manifestText,
   mergeEntries, mergeKey, newBuildStats, settleEntries, shardShape, shardText, tallyEntry, tallyShard, withAliases, type BuildStats,
 } from './build';
 import { latinNormalize } from './latin-normalize';
+import { hebrewAliases, hebrewSpellingEntry } from './hebrew';
+import { loadAdapterNormalizer } from './adapter-normalize-node';
 import { SHARD_FILE, bucketOf, shardName, type DictionaryManifest } from './format';
 
 export const SPILL_PARTITIONS = 256;
@@ -98,8 +99,7 @@ function createSpill(dir: string) {
 }
 
 export async function buildDictionaryFile(opts: BuildFileOptions): Promise<BuildFileResult> {
-  const adapter = opts.normalize || opts.lang === ('la' as LanguageCode) ? undefined : createAdapterRegistry().get(opts.lang);
-  const normalize = opts.normalize ?? (opts.lang === ('la' as LanguageCode) ? latinNormalize : (s: string) => adapter!.normalize(s));
+  const normalize = opts.normalize ?? (opts.lang === ('la' as LanguageCode) ? latinNormalize : await loadAdapterNormalizer(opts.lang));
   const stats = newBuildStats();
   const labelSets = createLabelSetRegistry();
   const drop = dropsFormPronunciations({ lang: opts.lang, dropFormPronunciations: opts.dropFormPronunciations });
@@ -115,9 +115,15 @@ export async function buildDictionaryFile(opts: BuildFileOptions): Promise<Build
     const rl = readline.createInterface({ input: fs.createReadStream(opts.input, { encoding: 'utf8' }), crlfDelay: Infinity });
     for await (const line of rl) {
       lines++;
-      const mapped = ingest(line);
+      let mapped = ingest(line);
       if (!mapped) continue;
-      for (const entry of withAliases(mapped, opts, stats)) { // a Latin headword also gets its other printed spellings
+      // a Hebrew spelling-only entry ("defective spelling of נקודה.") becomes a link to the entry it names (hebrew.ts)
+      const spelling = opts.lang === ('he' as LanguageCode) ? hebrewSpellingEntry(mapped, normalize) : undefined;
+      if (spelling) { mapped = spelling; for (const f of spelling.formOf ?? []) labelSets.note(f.tags); }
+      // a Latin headword also gets its other printed spellings; a Hebrew one its pointed spelling and headword-line forms (hebrew.ts)
+      const hebrew = opts.lang === ('he' as LanguageCode) ? hebrewAliases(line, mapped, normalize) : [];
+      if (hebrew.length) stats.aliases = (stats.aliases ?? 0) + hebrew.length;
+      for (const entry of [...withAliases(mapped, opts, stats), ...hebrew]) {
         for (const f of entry.formOf ?? []) if (entry !== mapped) labelSets.note(f.tags);
         estimate += estimateBytes(entry, entryJson(shardShape(entry, drop), labelSets.provisional));
         // The spill is this process's own temporary file: the mapped entry as it is, read back with JSON.parse.

@@ -3,6 +3,8 @@
  * Learners' reports on the shared word list, for the person who reviews them. A learner's correction never changes the shared rows: it is an
  * AnalysisCorrected event in that learner's own log, and it waits here.
  *
+ *   On Render (the Shell, beside the running service): node scripts/ops/run.mjs corrections … (the same arguments, no --); vite-node there runs the
+ *   instance out of memory. Elsewhere:
  *   npx vite-node --config scripts/vite.config.ts scripts/ops/corrections.mts -- list --data /var/lib/go-repository
  *   npx vite-node --config scripts/vite.config.ts scripts/ops/corrections.mts -- apply --data /var/lib/go-repository \
  *     --form form:sq:librin --lexeme lemma:sq:libër:NOUN --reviewer "A. Reviewer" [--features Case=Acc,Number=Sing] [--reason "..."]

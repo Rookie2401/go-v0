@@ -215,6 +215,8 @@ export const RETIRED_DATA: ReadonlyArray<{ prefix: string; why: string }> = [
  * = reachable but with a documented reservation (see LEGACY-SALVAGE.md).
  */
 export const SALVAGE_ALLOW_LIST: ReadonlyArray<{ prefix: string; status: 'salvaged' | 'flagged'; why: string }> = [
+  { prefix: 'src/adapters/arc.ts', status: 'salvaged', why: 'Pure Biblical Aramaic adapter; no learner state or retired course dependency' },
+  { prefix: 'src/adapters/aramaic/', status: 'salvaged', why: 'Source-backed Biblical Aramaic linguistic data only' },
   { prefix: 'src/adapters/sq.ts', status: 'salvaged', why: 'Albanian analyser (the vertical-slice language pack)' },
   { prefix: 'src/adapters/albanian/', status: 'salvaged', why: 'Albanian lexicon, morphology, constructions' },
   { prefix: 'src/adapters/es.ts', status: 'salvaged', why: 'Spanish analyser (installable at a minimal level)' },

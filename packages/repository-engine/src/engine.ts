@@ -7,7 +7,7 @@ import type {
   AssistancePreferences, EventLog, FormAnalysis, IdentityStore, LinguisticStore, LinguisticUnit, ProjectionEngine, ProjectionStore, ReviewCandidate,
   StoredEvent, SuitabilityEstimate, TombstoneStore, UnitKnowledge,
 } from '../../repository-contract/src';
-import { rankCandidates } from './candidates';
+import { CANDIDATE_RULES, rankCandidates } from './candidates';
 import type { CardState } from './candidates';
 import { observationsOf } from './evidence';
 import type { Observation } from './evidence';
@@ -56,6 +56,41 @@ export interface ProjectionEngineX extends ProjectionEngine {
 /** Judged dimensions whose negative observation counts as "struggled with it" for the construction rule. */
 const STRUGGLE_DIMENSIONS: ReadonlySet<string> = new Set(['readingRecognition', 'listeningRecognition', 'assistedRecognition', 'phraseComprehension']);
 
+/** A lookup, an assistance request or a failed recognition: what the construction rule's window reads (`candidates`). */
+export const isStruggleObservation = (o: Observation): boolean =>
+  o.dimension === 'exposure' ? o.counter === 'lookup' || o.counter === 'assistance' : o.outcome === 'negative' && STRUGGLE_DIMENSIONS.has(o.dimension);
+
+/** One read of the learner's log: only these kinds, optionally one language, optionally only events at or after `since` (the store's `at` bound). */
+interface EventSlice { kinds: readonly string[]; languageId?: string; since?: string }
+
+/**
+ * The event kinds that can produce a struggle observation (evidence.ts `draftsOf`): lookups, layers and assistance requests (exposure counters `lookup` /
+ * `assistance`, and a phrase or sentence request's negative assistedRecognition), a "new / seen / learning" mark, a hinted or failed written or listening
+ * review, a failed or hinted grammar answer, an assisted failed production. A test walks every event kind to keep this list complete.
+ */
+export const STRUGGLE_EVENT_KINDS = ['SelectionLookedUp', 'AnalysisShown', 'AssistanceRequested', 'ItemMarked', 'ProductionRecorded', 'CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'] as const;
+/** Review kinds: whether one counts depends on its card's whole history (chains, corrections, retractions), so these are read without a time bound. */
+const REVIEW_EVENT_KINDS = ['CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'] as const;
+const WINDOWED_STRUGGLE_KINDS = STRUGGLE_EVENT_KINDS.filter((k) => !(REVIEW_EVENT_KINDS as readonly string[]).includes(k));
+/** The deck lifecycle kinds the card state reads in full (the latest of them per card and dimension decides coverage). */
+const DECK_EVENT_KINDS = ['CardAdded', 'CardRemoved', 'ReviewItemInvalidated'] as const;
+/** What `derivePreferences` counts or reads whole, whatever their number: the learner's own preference events and requests. */
+const PREFERENCE_EVENT_KINDS = ['PreferenceChanged', 'AssistanceRequested', 'PronunciationPlayed'] as const;
+/** The remaining kinds it reads: the help events of a sentence (the audio-first rule) and the latest event that fed any preference (`updatedAt`). */
+const HELP_EVENT_KINDS = ['SelectionLookedUp', 'AnalysisShown'] as const;
+const HOUR_MS = 3_600_000;
+/** `updatedAt` looks for the newest help event in growing windows ending now (hours); only when none is found does it read them all. */
+const RECENCY_WINDOWS_HOURS = [1, 8, 64, 512, 4096] as const;
+const DAY_MS = 86_400_000;
+
+const isoOrUndefined = (ms: number): string | undefined => (Number.isFinite(ms) && Math.abs(ms) < 8.64e15 ? new Date(ms).toISOString() : undefined);
+
+/** A Map that remembers which keys were asked for (`rankCandidates` reads analyses only through `get`). */
+class AskedMap<V> extends Map<string, V> {
+  readonly asked = new Set<string>();
+  override get(key: string): V | undefined { this.asked.add(key); return super.get(key); }
+}
+
 const byUnitId = (a: { unitId: string }, b: { unitId: string }): number => (a.unitId < b.unitId ? -1 : a.unitId > b.unitId ? 1 : 0);
 
 /** Carry the old automatic label as explicit migration metadata, never as a synthetic learner mark or event. */
@@ -80,17 +115,31 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
   const modelVersion = deps.modelVersion ?? MODEL_VERSION;
   const now = deps.now ?? ((): string => new Date().toISOString());
 
-  async function readEvents(learnerId: string, afterSeq = 0): Promise<StoredEvent[]> {
+  /**
+   * The learner's events, optionally one slice of them (kinds, a language, an `at` lower bound), always in seq order. The slice is applied again here after the
+   * store has applied what it can, so a store that ignores part of a filter gives the same answer (a superset is harmless to every caller).
+   * How the slice is asked for matters on SQLite (EXPLAIN QUERY PLAN, no statistics): a `language_id` term makes the planner walk the language index, and
+   * `kind IN (a, b, c)` with no time bound makes it walk the learner's whole log in seq order, reading every row's kind; both cost the length of the log
+   * (50 ms for 20 matching rows among 12,000). So the language is never sent (it is a filter here), several kinds with no bound are read one kind at a time
+   * (each answered from the (learner, kind, seq) index) and merged back into seq order, and a time-bounded read of several kinds goes in one call (the
+   * (learner, at) index answers it).
+   */
+  async function readEvents(learnerId: string, afterSeq = 0, only?: EventSlice): Promise<StoredEvent[]> {
+    if (only && only.kinds.length > 1 && only.since === undefined) {
+      const parts: StoredEvent[] = [];
+      for (const kind of only.kinds) parts.push(...await readEvents(learnerId, afterSeq, { ...only, kinds: [kind] }));
+      return parts.sort((x, y) => x.seq - y.seq);
+    }
     const out: StoredEvent[] = [];
     let after = afterSeq;
     for (;;) {
-      const page = await store.list({ learnerId, afterSeq: after, limit: PAGE });
+      const page = await store.list({ learnerId, afterSeq: after, limit: PAGE, ...(only ? { kinds: [...only.kinds], ...(only.since !== undefined ? { since: only.since } : {}) } : {}) });
       if (!page.length) break;
       out.push(...page);
       after = page.reduce((m, e) => Math.max(m, e.seq), after);
       if (page.length < PAGE) break;
     }
-    return out.filter((e) => e.learnerId === learnerId);
+    return out.filter((e) => e.learnerId === learnerId && (!only || (only.kinds.includes(e.kind) && (only.languageId === undefined || e.languageId === only.languageId))));
   }
 
   /** Loads the `certain` aliases reachable from `ids` (following chains) into a resolver. */
@@ -225,7 +274,20 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
    * ids) is rebuilt at most once per distinct state and cannot loop.
    */
   const rekeyed = new Map<string, Set<string>>();
+  /**
+   * The scan is skipped when the store offers `aliasStamp` and the stamp equals the one read before this learner's last scan (which found
+   * nothing, or finished a rebuild): a stale row can only appear when an alias row is written, and rows the projection writes are keyed by
+   * resolved ids. The stamp is read BEFORE scanning, so an alias written during the scan is seen next time. A store without `aliasStamp` scans every time.
+   */
+  const scannedAt = new Map<string, string>();
   async function rekeyIfAliased(learnerId: string): Promise<{ read: number; seq: number } | undefined> {
+    const stamp = store.aliasStamp ? await store.aliasStamp() : undefined;
+    if (stamp !== undefined && scannedAt.get(learnerId) === stamp) return undefined;
+    const result = await scanForStale(learnerId);
+    if (stamp !== undefined) scannedAt.set(learnerId, stamp);
+    return result;
+  }
+  async function scanForStale(learnerId: string): Promise<{ read: number; seq: number } | undefined> {
     const rows = await store.getKnowledge(learnerId);
     if (!rows.length) return undefined;
     const resolve = await resolverFor(rows.map((r) => r.unitId));
@@ -252,10 +314,34 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
     return view(await store.getKnowledge(learnerId, [...new Set(unitIds.map(resolve))]));
   }
 
+  /**
+   * `derivePreferences` uses five kinds and nothing else. Three are read whole (PreferenceChanged, AssistanceRequested, PronunciationPlayed: a learner's own
+   * settings and requests). The other two (SelectionLookedUp, AnalysisShown) are the learner's most numerous events and feed only
+   *   (a) `updatedAt`, the newest `at` among all five: found by reading them in growing windows that end now until one holds a live event (every event at or
+   *       after the window's start is in that read, so the newest of them is there), and
+   *   (b) the audio-first rule, which looks at the FIRST help event of each sentence that has an audio event: with no live PronunciationPlayed it cannot count
+   *       anything, so nothing more is read; with one, an earlier help event of that sentence could be anywhere in the log (the port cannot filter by sentence), so
+   *       those two kinds are read whole, as before.
+   * Tombstones are applied to every read exactly as before; the answer is the one the whole log gives.
+   */
+  async function preferenceEvents(learnerId: string, languageId: string | undefined, tombstones: Awaited<ReturnType<TombstoneStore['listTombstones']>>): Promise<StoredEvent[]> {
+    const lang = languageId === undefined ? {} : { languageId };
+    const liveOnly = (events: StoredEvent[]): StoredEvent[] => events.filter((e) => !isTombstoned(e, tombstones));
+    const own = liveOnly(await readEvents(learnerId, 0, { kinds: PREFERENCE_EVENT_KINDS, ...lang }));
+    if (own.some((e) => e.kind === 'PronunciationPlayed')) return [...own, ...liveOnly(await readEvents(learnerId, 0, { kinds: HELP_EVENT_KINDS, ...lang }))];
+    const nowMs = Date.parse(now());
+    for (const hours of RECENCY_WINDOWS_HOURS) {
+      const since = isoOrUndefined(nowMs - hours * HOUR_MS);
+      if (since === undefined) break;
+      const recent = liveOnly(await readEvents(learnerId, 0, { kinds: HELP_EVENT_KINDS, ...lang, since }));
+      if (recent.length) return [...own, ...recent];
+    }
+    return [...own, ...liveOnly(await readEvents(learnerId, 0, { kinds: HELP_EVENT_KINDS, ...lang }))];
+  }
+
   async function preferences(learnerId: string, languageId?: string): Promise<AssistancePreferences> {
-    const events = await readEvents(learnerId);
     const tombstones = await store.listTombstones(learnerId);
-    const live = events.filter((e) => !isTombstoned(e, tombstones));
+    const live = await preferenceEvents(learnerId, languageId, tombstones);
     const prefs = derivePreferences(live, learnerId, languageId, now());
     const stored = await store.getPreferences(learnerId, languageId);
     if (!stored || JSON.stringify(stored) !== JSON.stringify(prefs)) await store.putPreferences(prefs);
@@ -267,9 +353,18 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
     const enrolment = (await store.listEnrolments(learnerId)).find((e) => e.enrolmentId === enrolmentId);
     if (!enrolment) return [];
     const rows = (await knowledge(learnerId)).filter((r) => r.languageId === enrolment.languageId);
-    const events = (await readEvents(learnerId)).filter((e) => e.languageId === enrolment.languageId);
     const tombstones = await store.listTombstones(learnerId);
-    const resolve = await resolverFor([...rows.map((r) => r.unitId), ...events.flatMap((e) => e.subject?.itemIds ?? [])]);
+    const language = { languageId: enrolment.languageId };
+    const atMs = Date.parse(at);
+    // Card state reads the deck lifecycle kinds in full (the latest of them per card and dimension decides coverage) and, of the reviews, only `lastReviewAt`
+    // for the priorReview rule: a review older than its window cannot raise that rule, so only reviews at or after `at - withinDays` are read.
+    const reviewSince = isoOrUndefined(atMs - CANDIDATE_RULES.priorReview.withinDays * DAY_MS);
+    const events = [
+      ...await readEvents(learnerId, 0, { kinds: DECK_EVENT_KINDS, ...language }),
+      ...await readEvents(learnerId, 0, { kinds: ['CardReviewed'], ...language, ...(reviewSince !== undefined ? { since: reviewSince } : {}) }),
+    ];
+    const cardUnitOf = (e: StoredEvent): string | undefined => !(e.subject?.itemIds ?? []).length && e.subject?.cardId?.startsWith('card:') ? e.subject.cardId.split(':').slice(2).join(':') : undefined;
+    const resolve = await resolverFor([...rows.map((r) => r.unitId), ...events.flatMap((e) => [...(e.subject?.itemIds ?? []), ...(cardUnitOf(e) ? [cardUnitOf(e)!] : [])])]);
 
     // Card state per unit and objective dimension: a written-recognition card does not
     // cover listening or production. Legacy lifecycle events without a dimension retain
@@ -329,40 +424,63 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
         ...(coveredDimensions.size ? { coveredDimensions } : {}), ...(blockedDimensions.size ? { blockedDimensions } : {}), ...(legacy?.blocked ? { blocked: true } : {}) });
     }
 
-    // When the learner struggled (lookup, assistance request, failed recognition) with each unit: the construction rule's window reads these.
-    const struggles = new Map<string, string[]>();
-    for (const o of observationsFromEvents(events, tombstones, resolve)) {
-      const struggle = o.dimension === 'exposure'
-        ? o.counter === 'lookup' || o.counter === 'assistance'
-        : o.outcome === 'negative' && STRUGGLE_DIMENSIONS.has(o.dimension);
-      if (struggle) (struggles.get(o.unitId) ?? struggles.set(o.unitId, []).get(o.unitId)!).push(o.at);
-    }
+    // The units of the rows, in one batch: `common` (frequency) and the form / construction kinds are read from them for every row.
+    const units = new Map<string, LinguisticUnit>((await store.getUnits(rows.map((r) => r.unitId))).map((u) => [u.unitId, u]));
 
-    // Constructions realised by forms the learner is in difficulty with (the evidence for grammaticalLeverage).
+    // Constructions realised by forms the learner is in difficulty with (the evidence for grammaticalLeverage). A `realizes` relation runs from a FORM to a
+    // construction (contract units.ts RELATION_KINDS), so the lookup is made for rows whose unit is a form, or whose unit is not in the store (then nothing is known).
     const realizedBy = new Map<string, string[]>();
     for (const r of rows) {
       if (!Object.entries(r.dimensions).some(([, e]) => e.negative > 0)) continue;
+      const kind = units.get(r.unitId)?.kind;
+      if (kind !== undefined && kind !== 'form') continue;
       for (const rel of await store.relationsOf(r.unitId, 'out')) {
         if (rel.relation !== 'realizes' || rel.status === 'invalidated' || rel.status === 'conflicted' || rel.status === 'requires-review') continue;
         (realizedBy.get(rel.toId) ?? realizedBy.set(rel.toId, []).get(rel.toId)!).push(r.unitId);
       }
     }
+    const missingUnits = [...realizedBy.keys()].filter((id) => !units.has(id));
+    if (missingUnits.length) for (const u of await store.getUnits(missingUnits)) units.set(u.unitId, u);
 
-    const wanted = [...new Set([...rows.map((r) => r.unitId), ...realizedBy.keys()])];
-    const units = new Map<string, LinguisticUnit>((await store.getUnits(wanted)).map((u) => [u.unitId, u]));
-    const analyses = new Map<string, FormAnalysis[]>();
-    for (const u of units.values()) if (u.kind === 'form') analyses.set(u.unitId, await store.analysesOfForm(u.unitId));
+    // When the learner struggled (lookup, assistance request, failed recognition) with each unit: the construction rule's window reads these. A construction is
+    // proposed only when `minFailedForms` DISTINCT forms of it are in difficulty, so with no construction that has that many candidate forms the struggles
+    // cannot change the ranking and none are read. Otherwise: the non-review struggle kinds from the window's start (a lookup older than the window is
+    // never `within` it), the review kinds whole (a review counts or not by its card's full chain of earlier reviews, corrections and retractions).
+    const struggles = new Map<string, string[]>();
+    const leverageMayApply = [...realizedBy.values()].some((forms) => new Set(forms).size >= CANDIDATE_RULES.grammaticalLeverage.minFailedForms);
+    if (leverageMayApply) {
+      const since = isoOrUndefined(atMs - CANDIDATE_RULES.grammaticalLeverage.windowDays * DAY_MS);
+      const struggleEvents = [
+        ...await readEvents(learnerId, 0, { kinds: REVIEW_EVENT_KINDS, ...language }),
+        ...await readEvents(learnerId, 0, { kinds: WINDOWED_STRUGGLE_KINDS, ...language, ...(since !== undefined ? { since } : {}) }),
+      ];
+      const struggleResolve = await resolverFor([...rows.map((r) => r.unitId), ...struggleEvents.flatMap((e) => e.subject?.itemIds ?? [])]);
+      for (const o of observationsFromEvents(struggleEvents, tombstones, struggleResolve)) {
+        if (isStruggleObservation(o)) (struggles.get(o.unitId) ?? struggles.set(o.unitId, []).get(o.unitId)!).push(o.at);
+      }
+    }
 
     // The pack's mission word list, if its facts expose one (`missionUnitIds`); none today, so the rule is skipped and says so in `opts.notes`.
     const pack = await store.getPack(enrolment.packId);
     const mission = (pack as { missionUnitIds?: unknown } | undefined)?.missionUnitIds;
     const missionUnits = Array.isArray(mission) ? new Set(mission.filter((m): m is string => typeof m === 'string')) : undefined;
 
-    return rankCandidates({
-      rows, units, analyses, realizedBy, cards, goals: enrolment.goals, now: at, limit: opts?.limit ?? 20, struggles,
-      ...(opts?.objectiveDimensions ? { objectiveDimensions: opts.objectiveDimensions } : {}),
-      ...(missionUnits ? { missionUnits } : {}), ...(opts?.includeCovered ? { includeCovered: true } : {}), ...(opts?.notes ? { notes: opts.notes } : {}),
-    });
+    // Analyses are asked for by `rankCandidates` only for the form units it draws or weighs for another objective. Rank with what is loaded, load what it asked
+    // for and was not given, and rank again until it asks for nothing new: the last pass was answered by the store for every analysis it used.
+    const analyses = new AskedMap<FormAnalysis[]>();
+    const loaded = new Set<string>();
+    for (;;) {
+      analyses.asked.clear();
+      const notes: string[] = [];
+      const ranked = rankCandidates({
+        rows, units, analyses, realizedBy, cards, goals: enrolment.goals, now: at, limit: opts?.limit ?? 20, struggles,
+        ...(opts?.objectiveDimensions ? { objectiveDimensions: opts.objectiveDimensions } : {}),
+        ...(missionUnits ? { missionUnits } : {}), ...(opts?.includeCovered ? { includeCovered: true } : {}), ...(opts?.notes ? { notes } : {}),
+      });
+      const missing = [...analyses.asked].filter((id) => !loaded.has(id) && units.get(id)?.kind === 'form');
+      if (!missing.length) { opts?.notes?.push(...notes); return ranked; }
+      for (const id of missing) { analyses.set(id, await store.analysesOfForm(id)); loaded.add(id); }
+    }
   }
 
   async function suitability(learnerId: string, languageId: string, sample: { unitIds: string[]; tokenCount: number; constructionIds?: string[] }): Promise<SuitabilityEstimate> {

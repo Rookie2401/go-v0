@@ -53,6 +53,8 @@ export interface ChromeApi {
     /** The address of a file the extension packages (its `app/` folder, `app/config.json`). */
     getURL?(path: string): string;
     openOptionsPage?(): Promise<void>;
+    /** Restarts the extension from its folder (an unpacked build that was rebuilt; see src/background/selfUpdate.ts). */
+    reload?(): void;
   };
   tabs?: {
     query(q: { active?: boolean; currentWindow?: boolean }): Promise<TabInfo[]>;
@@ -134,6 +136,8 @@ export const MSG = {
   lookup: 'golearn:lookup',
   ping: 'golearn:ping',
   // content -> background (also answered for extension pages where noted in background/router.ts)
+  /** A page keeps the worker awake while it is read: answered at once; starts the device Repository's open. */
+  keepWarm: 'golearn:keep-warm',
   record: 'golearn:record',
   profile: 'golearn:profile',
   gloss: 'golearn:gloss',
@@ -159,6 +163,8 @@ export const MSG = {
   /** The popup's language switch (2026-10-25): make one of the chosen languages the one GoLearn reads in, on the device and on the account; pages that are Active start again in it. */
   useLanguage: 'golearn:use-language',
   clearLocal: 'golearn:clear-local',
+  /** "Download for offline use" (2026-11-11): keep a language's dictionary on the device. `op`: start | status | cancel | remove. Extension pages only. */
+  dictionaryDownload: 'golearn:dictionary-download',
   /** The device-local Repository (no account needed): see `LocalRepoRequest` in protocol.ts. Extension pages only. */
   localRepo: 'golearn:local-repo',
   /** GoLearn Active (read the page before the learner): the popup sets it, a content script may read it. See `ActiveRequest` in protocol.ts. */

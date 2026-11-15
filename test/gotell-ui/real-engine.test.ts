@@ -14,7 +14,7 @@ const click = (el: Element | null | undefined): void => { if (!el) throw new Err
 async function realRig(): Promise<{ rig: Rig; downloads: Array<{ filename: string; content: string }> }> {
   const downloads: Array<{ filename: string; content: string }> = [];
   tellOverrides.download = (f) => { downloads.push(f); };
-  const rig = await makeRig({ service: defaultService(), signedIn: true });
+  const rig = await makeRig({ service: defaultService(), signedIn: true, enableGoTell: true });
   return { rig, downloads };
 }
 

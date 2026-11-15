@@ -1,0 +1,37 @@
+=== la-a1-1-02 | description | description | Martha's house | Domus Marthae | house,description,home,seeing
+## Domus Marthae
+Martha in domo parva habitat. Domus bona est. || Martha lives in a small house. The house is good.
+Hodie Samuel in domo Marthae est. Libenter in domo est. || Today Samuel is in Martha's house. He is gladly in the house.
+
+[sam] Salve, Martha! Domus tua bona est. || Hello, Martha! Your house is good.
+[marta] Salve, Samuel! Domus mea parva est, sed domum meam amo. || Hello, Samuel! My house is small, but I love my house.
+[sam] Ecce porta! Porta magna est. || Look, a door! The door is big.
+[marta] Porta magna est, sed fenestra parva est. Ecce fenestra! || The door is big, but the window is small. Look, the window!
+[sam] Fenestram video. Portam quoque video. || I see the window. I see the door too.
+[marta] Et quid in mensa vides? || And what do you see on the table?
+[sam] In mensa video panem et lac. || On the table I see bread and milk.
+[marta] Mensam amo. Panem et lac habeo. Multa in domo habeo. || I love the table. I have bread and milk. I have many things in the house.
+[sam] Multa habes! Libenter in domo tua sum. || You have many things! I am gladly in your house.
+[marta] Et tu, Samuel? Ubi habitas? || And you, Samuel? Where do you live?
+[sam] In domo parva habito. Domus mea magna non est. || I live in a small house. My house is not big.
+[marta] Domus tua et domus mea bonae sunt. Bene est! || Your house and my house are good. It is well!
+[sam] Libenter te video, Martha. Domum tuam amo. || I am glad to see you, Martha. I love your house.
+[marta] Gratias tibi ago, Samuel. Lac bibis? Lac bonum est. || Thank you, Samuel. Do you drink milk? The milk is good.
+[sam] Lac volo. Gratias tibi ago. Multa habes, et multa mihi das. || I want milk. Thank you. You have many things, and you give me many.
+
+Anna quoque in domo Marthae est. || Anna is in Martha's house too.
+
+[ana] Salve, Martha! Salve, Samuel! Quomodo valetis? || Hello, Martha! Hello, Samuel! How are you?
+[marta] Bene valemus, Anna. Et tu? Quomodo vales? || We are well, Anna. And you? How are you?
+[ana] Bene valeo, sed fessa sum. Ubi est frater meus? || I am well, but I am tired. Where is my brother?
+[marta] Lucius in schola est. Magister bonus est. || Lucius is at school. He is a good teacher.
+[ana] Et Marcus? Estne in schola? || And Marcus? Is he at school?
+[marta] Non est in schola. Hic est, in domo mea. Marcus clavem non habet. || He is not at school. He is here, in my house. Marcus does not have his key.
+[ana] Ubi est clavis? Estne in mensa? || Where is the key? Is it on the table?
+[marta] Non est in mensa. Marcus clavem non habet. || It is not on the table. Marcus does not have the key.
+
+Marcus quoque in domo est. Puer bonus est, sed clavem non habet. || Marcus is in the house too. He is a good boy, but he does not have the key.
+
+[nico] Salve, Anna! Ubi est clavis mea? Clavem non habeo. || Hello, Anna! Where is my key? I do not have the key.
+[marta] Clavis tua hic est, Marce. Ecce clavis! || Your key is here, Marcus. Look, the key!
+[nico] Gratias tibi ago! Clavem habeo. Et lac volo. || Thank you! I have the key. And I want milk.

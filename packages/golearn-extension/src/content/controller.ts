@@ -130,7 +130,7 @@ export interface LookupRequest {
 }
 
 export type LookupOutcome =
-  | { status: 'shown'; card: LookupCard; recorded: 'recorded' | 'duplicate' | 'failed'; settled: Promise<void> }
+  | { status: 'shown'; card: LookupCard; recorded: 'recorded' | 'duplicate' | 'failed' | 'not-recorded'; settled: Promise<void> }
   | { status: 'message'; reason: string; message: string; language?: LanguageInfo; languageChoice?: Array<{ languageId: string; name: string }> }
   | { status: 'silent'; reason: string }
   | { status: 'superseded' };
@@ -143,6 +143,8 @@ const MESSAGES = {
 export class LookupController {
   private seq = 0;
   private enabled = false;
+  /** The last status the worker answered in this page: a slow worker never makes the page change language (2026-11-10). */
+  private lastStatus: PublicStatus | undefined;
   private lookupsDone = 0;
   private currentRange: Range | undefined;
   private currentAdapter: ReaderAdapter | undefined;
@@ -173,10 +175,30 @@ export class LookupController {
    * page's declaration, detection against the installed packs, never a guess) from a short sample of its visible text. The sample
    * is evidence for the resolver only; it is not kept and not sent. A language this build cannot analyse is reported as undetermined.
    */
+  /** GoLearn Active: the languages this page may be read in: the learner's chosen (installed) languages that this build can analyse. */
+  /**
+   * The extension's status, never a silent change of language: a status that timed out answers with the last good one of this page; with none yet it is asked
+   * once more (the worker was waking). The content script holds no storage (bundle.test.ts), so the device's choice cannot be read from storage here.
+   */
+  private async statusOf(): Promise<PublicStatus | undefined> {
+    const s = this.d.services;
+    if (!s) return undefined;
+    let st = await s.status().catch(() => undefined);
+    if (!st && !this.lastStatus) st = await s.status().catch(() => undefined);
+    if (st) this.lastStatus = st;
+    return st ?? this.lastStatus;
+  }
+
+  async pageLanguages(): Promise<string[]> {
+    const status = await this.statusOf();
+    const analysers = this.d.analysers ?? ['sq'];
+    return status?.installedLanguages ? analysers.filter((l) => status.installedLanguages!.includes(l) || l === status.languageId) : analysers;
+  }
+
   async resolvePageLanguage(sample: string): Promise<LanguageResolution> {
     const adapter = this.pickAdapter();
     if (adapter.id === 'unsupported') return { basis: 'undetermined', confidence: 0, reasons: ['the reader is not supported'] };
-    const status: PublicStatus | undefined = this.d.services ? await this.d.services.status().catch(() => undefined) : undefined;
+    const status = await this.statusOf();
     const analysers = this.d.analysers ?? ['sq'];
     const installed = status?.installedLanguages ? analysers.filter((l) => status.installedLanguages!.includes(l) || l === status.languageId) : analysers;
     const surface = sample.normalize('NFC').replace(/\s+/gu, ' ').trim();
@@ -250,7 +272,7 @@ export class LookupController {
       }
 
       // the extension's state (language of the enrolment, whether a pack exists) is asked for while the selection is read
-      const statusP: Promise<PublicStatus | undefined> = this.d.services ? this.d.services.status().catch(() => undefined) : Promise.resolve(undefined);
+      const statusP: Promise<PublicStatus | undefined> = this.statusOf();
       let sel: ReaderSelection | SelectionFailure | undefined = await safeAsync(() => adapter.selection());
       if (!live()) return { status: 'superseded' };
       if (!sel) return say('selection-error', MESSAGES.generic);
@@ -337,6 +359,10 @@ export class LookupController {
       // the dictionary is asked for EVERY single-word selection (2026-10-10): a word the small word list does not know is exactly the
       // word a learner looks up, and the dictionary follows an inflected form to its headword itself; the guessed lemma is a hint, not a gate
       const askGloss = !!services && card.tokenCount === 1 && !!card.surface.trim();
+      // several words selected (the owner, 2026-11-09): an information display only. The text, the audio and the information are shown; nothing
+      // records the selection or anything done on its card, and the learner model is not asked about it, so nothing can tell how well the learner
+      // knows a phrase. A single word is unchanged.
+      const infoOnly = card.tokenCount > 1;
       const view: Partial<CardView> = {
         languageName,
         gloss: askGloss ? { state: 'loading', senses: [] } : { state: 'idle', senses: [] },
@@ -354,7 +380,7 @@ export class LookupController {
       const ictxReady: { resolve?: () => void; promise: Promise<void> } = { promise: Promise.resolve() };
       ictxReady.promise = new Promise<void>((r) => { ictxReady.resolve = r; });
       const record = async (build: (c: InteractionContext) => GoEvent): Promise<boolean> => {
-        if (this.disposed) return false;
+        if (this.disposed || infoOnly) return false;
         if (!holder.ictx) {
           let timer: ReturnType<typeof setTimeout> | undefined;
           await Promise.race([ictxReady.promise, new Promise<void>((r) => { timer = setTimeout(r, 3000); })]);
@@ -497,7 +523,7 @@ export class LookupController {
         return { sources: gathered };
       };
       if (services) {
-        pending.push(
+        if (!infoOnly) pending.push(
           services.profile({ unitIds: card.unitIds, languageId }).then((reply) => {
             if (!live()) return;
             const profile = profileViewFrom(card, reply);
@@ -566,6 +592,13 @@ export class LookupController {
         card, source, readerId: adapter.id, identity: this.d.identity, version: this.d.version, sessionId: this.d.sessionId,
         now: this.now(), direction: sel.direction, language,
       };
+      if (infoOnly) {
+        // nothing is written for a phrase: no lookup, no analysis shown, no encounter line on the card
+        await frame;
+        metricRef.base = { readerId: adapter.id, contextKind: card.context.kind, tokenCount: card.tokenCount, contextChars: card.context.sentenceChars ?? card.surface.length, outcome: 'shown', ...(analyserLoadMs !== undefined ? { analyserLoadMs } : {}), ...langMetric };
+        metricRef.row = await this.pushMetric(timer, metricRef.base, (row) => { metricRef.row = row; });
+        return { status: 'shown', card, recorded: 'not-recorded', settled };
+      }
       const event = buildSelectionEvent(base);
       holder.ictx = { ...base, selectionEventId: event.id };
       ictxReady.resolve?.();
@@ -674,6 +707,8 @@ export class LookupController {
       }
     }
     const result: LanguageResolution = out ?? { basis: 'undetermined', confidence: 0, reasons: ['the language resolver failed'] };
+    // no status answered (not now, not earlier on this page): the default is a guess, and says so (basis stays 'team-default', recorded with source 'unknown' and a low-confidence note)
+    if (!status && result.basis === 'team-default') result.reasons = [...result.reasons, 'the extension did not answer, so the default language was assumed'];
     // which declaration decided it, when one did: the evidence's own label (never page text)
     const source = result.source ?? (result.basis === 'book-metadata' ? evidence.bookLanguage?.source : result.basis === 'document-metadata' ? evidence.documentLanguage?.source : undefined);
     return source ? { ...result, source } : result;
@@ -863,7 +898,10 @@ export function profileViewFrom(card: CardModel, reply: ProfileReply | undefined
   // the learner's own latest mark, over the word's rows (lemma and form)
   const mark = selfMarkOfRows(wordRows);
   // the word's level (the learner's mark, else the engine's, else the rows read with the page's thresholds) and how often it was met before: the card's rating row and its footer
-  return { state: 'ready', met, recognition, weak, level: levelOfRows(wordRows), encounters: encountersOfRows(wordRows), ...(reply.stale ? { stale: true } : {}), ...(mark ? { selfMark: levelOfMark(mark.mark) } : {}) };
+  // A mark of New that a later meeting released (the engine's level of the marked row is above New) is not "pressed" on the card. The shown level can read
+  // New for a word met only in passing (the display rule), which must not make the New circle look pressed again: the engine's level decides this, as it did.
+  const releasedMark = !!mark && levelOfMark(mark.mark) === 'new' && wordRows.some((r) => r?.selfMark?.at === mark.at && !!r.level && r.level !== 'new');
+  return { state: 'ready', met, recognition, weak, level: levelOfRows(wordRows), encounters: encountersOfRows(wordRows), ...(reply.stale ? { stale: true } : {}), ...(mark && !releasedMark ? { selfMark: levelOfMark(mark.mark) } : {}) };
 }
 
 /** The worker's reason for refusing a write, in a short phrase for the card (never blind: the learner and the log both see why). */

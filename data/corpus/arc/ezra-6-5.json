@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 2,
+  "id": "ezra-6-5",
+  "lang": "arc",
+  "locale": "arc-Hebr",
+  "title": "Ezra 6:5",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "biblical-aramaic",
+    "kind": "scripture",
+    "title": "Biblical Aramaic"
+  },
+  "source": {
+    "id": "src:arc:ezra-6-5",
+    "title": "Westminster Leningrad Codex via Open Scriptures Hebrew Bible",
+    "url": "https://github.com/openscriptures/morphhb/blob/master/wlc/Ezra.xml",
+    "edition": "OSHB WLC, qere reading path",
+    "attribution": "Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb",
+    "provenance": "Selected A-coded words extracted from bundled OSHB wlc/Ezra.xml snapshot, preserving source order, qere path, word boundaries and verse marks. No independent scholarly proofreading.",
+    "rights": "public-domain",
+    "licenseNote": "WLC base text public domain; OSHB lemma/morphology CC BY 4.0; lexical transcription CC BY 4.0.",
+    "authorship": "public-domain",
+    "modifications": "Reading-path extraction; morpheme separators removed; source word order and marks preserved."
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "Codex source-extraction check (automated, not a scholarly language review)",
+    "reviewedAt": "2026-11-05",
+    "level": "linguistic-check",
+    "notes": "Wording compared to A-coded OSHB source tokens, excluding ketiv in favor of qere. Linguistic analysis comes from OSHB; no claim of independent expert review."
+  },
+  "topics": [
+    "aramaic",
+    "biblical-aramaic",
+    "reading"
+  ],
+  "editorialTags": [],
+  "prepTargets": [],
+  "generated": false,
+  "scripture": {
+    "translationId": "arcWLC",
+    "translationName": "Biblical Aramaic, WLC",
+    "edition": "OSHB WLC, qere reading path",
+    "book": "EZR",
+    "chapter": 6,
+    "verification": {
+      "against": "OSHB wlc/Ezra.xml (A-coded tokens; ketiv excluded, qere selected)",
+      "url": "https://github.com/openscriptures/morphhb/blob/master/wlc/Ezra.xml",
+      "checkedAt": "2026-11-05",
+      "method": "byte-comparison",
+      "by": "Codex extraction compared to source word and seg values"
+    }
+  },
+  "work": {
+    "slug": "ezra-6-5",
+    "courseId": "aramaic-arc",
+    "chapter": {
+      "index": 239
+    }
+  },
+  "sections": [
+    {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ezra-6-5",
+              "text": "וְ֠אַף מָאנֵ֣י בֵית־אֱלָהָא֮ דִּ֣י דַהֲבָ֣ה וְכַסְפָּא֒ דִּ֣י נְבֽוּכַדְנֶצַּ֗ר הַנְפֵּ֛ק מִן־הֵיכְלָ֥א דִי־בִירוּשְׁלֶ֖ם וְהֵיבֵ֣ל לְבָבֶ֑ל יַהֲתִיב֗וּן וִ֠יהָךְ לְהֵיכְלָ֤א דִי־בִירֽוּשְׁלֶם֙ לְאַתְרֵ֔הּ וְתַחֵ֖ת בְּבֵ֥ית אֱלָהָֽא׃",
+              "verseRefs": [
+                "EZR.6.5"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variety": "arc-bib",
+  "streams": [
+    "scripture"
+  ]
+}

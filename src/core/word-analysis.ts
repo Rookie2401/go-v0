@@ -47,7 +47,23 @@ export interface WordAnalysis {
   references: WordAnalysisReference[];
   confidence: number | null;
   ambiguity: string[];
+  /** How the form is built, where an adapter can read it: for the card's expanded analysis. Absent otherwise. */
+  formAnalysis?: WordFormAnalysis;
 }
+
+/** One piece of a written word and what it does. */
+export interface WordFormComponent { text: string; role: string }
+export interface WordFormAnalysis {
+  /** The lexical root as written (רום), and its meaning as the lexicon cites it. */
+  root?: string;
+  rootMeaning?: string;
+  components: WordFormComponent[];
+  lines: Array<{ key: string; label: string; text: string }>;
+  /** Said when the form's own English could not be written with confidence. */
+  limitation?: string;
+}
+/** A piece of the written word as an analyser cuts it (structurally `WordPart`). */
+export interface CandidateWordPart { text: string; role?: string; pos?: string; morph?: Readonly<Record<string, string>>; lemma?: string }
 
 /** Inputs are explicit evidence only; omitted fields project to empty/null states. */
 export type WordAnalysisInput = Partial<WordAnalysis>;
@@ -72,6 +88,8 @@ export interface CandidateMeaningInput {
   /** The lemma's citation gloss, as the lexicon writes it. */
   lemmaGloss?: string;
   morph?: Readonly<Record<string, string>>; source?: string; confidence?: number;
+  /** The word's parts as the analyser cut them (a conjunction, the stem, an object suffix), where it did. */
+  parts?: readonly CandidateWordPart[];
   alternatives?: Array<{ lemma?: string; pos?: string; morph: Readonly<Record<string, string>>; confidence?: number }>;
   sentence?: string; sentenceConfidence?: number; sentenceSource?: string;
   /** Reference ids (a verse: "GAL.5.14"); `labelReference` turns one into a label and a source. */

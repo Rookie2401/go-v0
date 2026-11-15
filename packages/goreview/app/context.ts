@@ -12,6 +12,7 @@
  * (localTransport), and the learner is the device's own anonymous one. Signing in uploads the device's history once and switches to
  * the account; signing out returns to the device without removing anything. The hosted copy has no such repository and needs an account.
  */
+import { CANNOT_SIGN_IN, signInOnce, UNREACHABLE_SIGN_IN } from './signin';
 import type { Enrolment, GoEvent, EventLog } from '../../repository-contract/src';
 import { validateEvent } from '../../repository-contract/src';
 import type { RepositoryApi, ApiResult } from '../../repository-service/src/api';
@@ -349,17 +350,35 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     } catch { return []; }
   }
 
+  /** One profile refresh at a time: the awaited one (no cached profile yet) and the background one (a stale cached profile) share it. */
+  let profileFlight: Promise<'fresh' | 'cached' | 'none'> | undefined;
+  const sharedProfileRefresh = (): Promise<'fresh' | 'cached' | 'none'> => {
+    if (profileFlight) return profileFlight;
+    const run: Promise<'fresh' | 'cached' | 'none'> = refreshProfile().finally(() => { if (profileFlight === run) profileFlight = undefined; });
+    profileFlight = run;
+    return run;
+  };
+
   async function enrolments(): Promise<Enrolment[]> {
     const session = await state.getSession();
     if (!session) { const l = await openLocal(); return l ? localEnrolments(l) : []; }
     let profile = await state.getProfile();
-    if (!profile || profile.learnerId !== session.learnerId) { await refreshProfile(); profile = await state.getProfile(); }
+    if (!profile || profile.learnerId !== session.learnerId) { await sharedProfileRefresh(); profile = await state.getProfile(); }
     else {
-      // a cached profile is trusted for ten minutes, and not at all after a live update; offline, the cache stands (one retry in half a minute)
+      // a cached profile is USED at once (2026-11-10: GET /me stood in front of every screen). When it is stale (ten minutes) or dirty (a live
+      // update) it is refreshed in the background, at most every half minute, and the screens are told if the enrolments changed. Awaited only
+      // when there is no profile at all.
       const age = deps.now().getTime() - Date.parse(profile.fetchedAt);
       const stale = profileDirty || !(age >= 0 && age < PROFILE_TTL_MS);
       const at = deps.now().getTime();
-      if (stale && at - lastProfileTry >= 30_000) { lastProfileTry = at; await refreshProfile(); profile = (await state.getProfile()) ?? profile; }
+      if (stale && at - lastProfileTry >= 30_000) {
+        lastProfileTry = at;
+        const before = JSON.stringify(profile.enrolments);
+        void sharedProfileRefresh().then(async () => {
+          const after = await state.getProfile();
+          if (after && JSON.stringify(after.enrolments) !== before) { changed(); notifyData(); }
+        }).catch(() => undefined);
+      }
     }
     if (!profile || profile.learnerId !== session.learnerId) return [];
     return profile.enrolments.filter((e) => !e.endedAt).sort((a, b) => b.startedAt.localeCompare(a.startedAt));
@@ -461,6 +480,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     try {
       const value = await request;
       if (revision === identityRevision && identityMemoAllowed && value !== undefined) identityMemo = { expiresAt: deps.now().getTime() + 2_000, value };
+      if (value) deps.engine.warmLanguage?.(value.languageId); // the language is known from the device now: its analyser chunk can load while the screen is built
       return value;
     } finally {
       if (identityFlight === request) identityFlight = undefined;
@@ -501,7 +521,8 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       if (deps.mobile?.native && !deps.mobile.bridgeAvailable) return { ok: false, message: 'Secure sign-in storage is unavailable in this GoReview build.' };
       const baseUrl = await serviceUrl();
       const check = validateServiceUrl(baseUrl);
-      if (!check.ok) return { ok: false, message: check.message };
+      // a learner never sets where GoReview connects (the owner, 2026-11-12): an unusable built-in address is the app's fault, said without the address
+      if (!check.ok) return { ok: false, message: CANNOT_SIGN_IN };
       const email = input.email.trim();
       const device = await deviceId();
       // inside the extension the worker is signed in to the same account first, so that its upload and pull (the device's history) use it
@@ -517,9 +538,9 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
           const made = await deps.createApi(check.url).createAccount({ email, password: input.password, ...(input.displayName ? { displayName: input.displayName } : {}) });
           if (!made.ok) return { ok: false, message: explainFailure(made, 'signin'), code: made.error };
         }
-        result = await deps.createApi(check.url).createSession({ email, password: input.password, deviceId: device, platform });
+        result = await signInOnce(() => deps.createApi(check.url).createSession({ email, password: input.password, deviceId: device, platform }));
       } catch {
-        return { ok: false, message: `Could not reach the service at ${check.url}. Check that it is running and that the address is right.` };
+        return { ok: false, message: UNREACHABLE_SIGN_IN };
       }
       if (!result.ok) return { ok: false, message: explainFailure(result, 'signin'), code: result.error };
       const previous = await state.getSession();

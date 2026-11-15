@@ -1,0 +1,276 @@
+{
+  "entries": [
+    {
+      "id": "la.greeting",
+      "kind": "pragmatics",
+      "label": "greeting and leaving (salve, vale)",
+      "prerequisites": []
+    },
+    {
+      "id": "la.greeting-pl",
+      "kind": "pragmatics",
+      "label": "greeting more than one person (salvete)",
+      "prerequisites": [
+        "la.greeting"
+      ]
+    },
+    {
+      "id": "la.how-are-you",
+      "kind": "pragmatics",
+      "label": "quomodo vales? / bene valeo",
+      "prerequisites": [
+        "la.greeting"
+      ]
+    },
+    {
+      "id": "la.thanks",
+      "kind": "pragmatics",
+      "label": "gratias tibi ago (thank you)",
+      "prerequisites": []
+    },
+    {
+      "id": "la.deo-gratias",
+      "kind": "pragmatics",
+      "label": "Deo gratias, pax tibi (church phrases)",
+      "prerequisites": [
+        "la.thanks"
+      ]
+    },
+    {
+      "id": "la.nominative-subject",
+      "kind": "grammar",
+      "label": "subject without an article; the verb often last",
+      "prerequisites": []
+    },
+    {
+      "id": "la.sum-1sg",
+      "kind": "grammar",
+      "label": "sum (I am)",
+      "prerequisites": []
+    },
+    {
+      "id": "la.sum-2sg",
+      "kind": "grammar",
+      "label": "es (you are)",
+      "prerequisites": [
+        "la.sum-1sg"
+      ]
+    },
+    {
+      "id": "la.sum-3sg",
+      "kind": "grammar",
+      "label": "est (he, she, it is)",
+      "prerequisites": [
+        "la.sum-1sg"
+      ]
+    },
+    {
+      "id": "la.sum-1pl",
+      "kind": "grammar",
+      "label": "sumus (we are)",
+      "prerequisites": [
+        "la.sum-3sg"
+      ]
+    },
+    {
+      "id": "la.sum-3pl",
+      "kind": "grammar",
+      "label": "sunt (they are)",
+      "prerequisites": [
+        "la.sum-3sg"
+      ]
+    },
+    {
+      "id": "la.question-quis",
+      "kind": "construction",
+      "label": "quis / quae? (who?)",
+      "prerequisites": []
+    },
+    {
+      "id": "la.question-quid",
+      "kind": "construction",
+      "label": "quid? (what?)",
+      "prerequisites": [
+        "la.question-quis"
+      ]
+    },
+    {
+      "id": "la.question-ubi",
+      "kind": "construction",
+      "label": "ubi est...? (where is...?)",
+      "prerequisites": [
+        "la.sum-3sg"
+      ]
+    },
+    {
+      "id": "la.question-ne",
+      "kind": "construction",
+      "label": "yes/no question with -ne (esne, habesne)",
+      "prerequisites": [
+        "la.sum-2sg"
+      ]
+    },
+    {
+      "id": "la.demonstrative",
+      "kind": "grammar",
+      "label": "ille / illa / hoc (that, this)",
+      "prerequisites": [
+        "la.sum-3sg"
+      ]
+    },
+    {
+      "id": "la.possessive",
+      "kind": "grammar",
+      "label": "meus / mea (my)",
+      "prerequisites": [
+        "la.sum-3sg"
+      ]
+    },
+    {
+      "id": "la.et",
+      "kind": "grammar",
+      "label": "et (and)",
+      "prerequisites": []
+    },
+    {
+      "id": "la.negation-non",
+      "kind": "grammar",
+      "label": "non before the verb",
+      "prerequisites": [
+        "la.sum-1sg"
+      ]
+    },
+    {
+      "id": "la.adjective-agreement",
+      "kind": "grammar",
+      "label": "adjective agrees: fessus / fessa, bonus",
+      "prerequisites": [
+        "la.sum-1sg"
+      ]
+    },
+    {
+      "id": "la.verb-1sg-o",
+      "kind": "grammar",
+      "label": "verb ending -o (I)",
+      "prerequisites": [
+        "la.sum-1sg"
+      ]
+    },
+    {
+      "id": "la.verb-2sg-s",
+      "kind": "grammar",
+      "label": "verb ending -s (you)",
+      "prerequisites": [
+        "la.verb-1sg-o"
+      ]
+    },
+    {
+      "id": "la.verb-3sg-t",
+      "kind": "grammar",
+      "label": "verb ending -t (he, she)",
+      "prerequisites": [
+        "la.verb-1sg-o"
+      ]
+    },
+    {
+      "id": "la.verb-1pl-mus",
+      "kind": "grammar",
+      "label": "verb ending -mus (we): imus",
+      "prerequisites": [
+        "la.verb-1sg-o"
+      ]
+    },
+    {
+      "id": "la.verb-3pl-nt",
+      "kind": "grammar",
+      "label": "verb ending -nt (they)",
+      "prerequisites": [
+        "la.verb-3sg-t",
+        "la.sum-3pl"
+      ]
+    },
+    {
+      "id": "la.accusative-object",
+      "kind": "grammar",
+      "label": "the thing acted on: panem, aquam, clavem",
+      "prerequisites": [
+        "la.verb-1sg-o"
+      ]
+    },
+    {
+      "id": "la.accusative-pronoun",
+      "kind": "grammar",
+      "label": "me (me) as the thing acted on",
+      "prerequisites": [
+        "la.accusative-object"
+      ]
+    },
+    {
+      "id": "la.habeo",
+      "kind": "construction",
+      "label": "habeo + thing (I have)",
+      "prerequisites": [
+        "la.accusative-object"
+      ]
+    },
+    {
+      "id": "la.volo",
+      "kind": "construction",
+      "label": "volo + thing (I want)",
+      "prerequisites": [
+        "la.accusative-object"
+      ]
+    },
+    {
+      "id": "la.volo-infinitive",
+      "kind": "construction",
+      "label": "volo + infinitive (bibere volo)",
+      "prerequisites": [
+        "la.volo"
+      ]
+    },
+    {
+      "id": "la.in-ablative",
+      "kind": "construction",
+      "label": "in + place where (in foro, in domo)",
+      "prerequisites": [
+        "la.question-ubi"
+      ]
+    },
+    {
+      "id": "la.ad-accusative",
+      "kind": "construction",
+      "label": "ad + place to which (ad ecclesiam)",
+      "prerequisites": [
+        "la.in-ablative",
+        "la.accusative-object"
+      ]
+    },
+    {
+      "id": "la.buy-sell",
+      "kind": "construction",
+      "label": "emo, vendo (buy, sell)",
+      "prerequisites": [
+        "la.accusative-object"
+      ]
+    },
+    {
+      "id": "la.time-hodie",
+      "kind": "grammar",
+      "label": "hodie, cras (today, tomorrow)",
+      "prerequisites": []
+    },
+    {
+      "id": "la.dies-dominica",
+      "kind": "pragmatics",
+      "label": "dies Dominica (Sunday)",
+      "prerequisites": []
+    },
+    {
+      "id": "la.weather-pluit",
+      "kind": "construction",
+      "label": "pluit (it rains)",
+      "prerequisites": []
+    }
+  ]
+}

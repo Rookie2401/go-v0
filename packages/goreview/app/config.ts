@@ -53,22 +53,60 @@ export function validateSpeechProxyBase(input: string): UrlCheck {
   return { ok: true, url: u.origin + u.pathname.replace(/\/+$/, '') };
 }
 
-/** config.json next to the app. A missing file, a non-JSON answer (a dev server may return index.html) or bad values give {}. */
-export async function loadConfig(fetchFn: typeof fetch, url = './config.json'): Promise<AppConfig> {
+/** The values of a parsed config.json that are valid; anything else is left out. */
+function sanitizeConfig(j: Record<string, unknown>): AppConfig {
+  const out: AppConfig = {};
+  if (typeof j.supportEmail === 'string' && /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(j.supportEmail)) out.supportEmail = j.supportEmail;
+  if (typeof j.serviceUrl === 'string') { const c = validateServiceUrl(j.serviceUrl); if (c.ok) out.serviceUrl = c.url; }
+  if (typeof j.assetBaseUrl === 'string' && j.assetBaseUrl) out.assetBaseUrl = j.assetBaseUrl;
+  if (typeof j.speechProxyBase === 'string' && j.speechProxyBase) { const c = validateSpeechProxyBase(j.speechProxyBase); if (c.ok) out.speechProxyBase = c.url; }
+  if (typeof j.extensionUrl === 'string' && /^(https:|chrome-extension:)/.test(j.extensionUrl)) out.extensionUrl = j.extensionUrl;
+  if (typeof j.bibliaUrl === 'string' && /^(\.\/[A-Za-z0-9_./-]+|https:\/\/[^\s]+)$/.test(j.bibliaUrl)) out.bibliaUrl = j.bibliaUrl;
+  return out;
+}
+
+/** config.json next to the app, and whether it was really read: a failed request, a non-JSON answer (a dev server may return index.html) or a non-object is `ok: false`. */
+export async function loadConfigResult(fetchFn: typeof fetch, url = './config.json'): Promise<{ config: AppConfig; ok: boolean }> {
   try {
     const r = await fetchFn(url, { cache: 'no-store' });
-    if (!r.ok) return {};
+    if (!r.ok) return { config: {}, ok: false };
     const j = JSON.parse(await r.text()) as Record<string, unknown>;
-    if (!j || typeof j !== 'object') return {};
-    const out: AppConfig = {};
-    if (typeof j.supportEmail === 'string' && /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(j.supportEmail)) out.supportEmail = j.supportEmail;
-    if (typeof j.serviceUrl === 'string') { const c = validateServiceUrl(j.serviceUrl); if (c.ok) out.serviceUrl = c.url; }
-    if (typeof j.assetBaseUrl === 'string' && j.assetBaseUrl) out.assetBaseUrl = j.assetBaseUrl;
-    if (typeof j.speechProxyBase === 'string' && j.speechProxyBase) { const c = validateSpeechProxyBase(j.speechProxyBase); if (c.ok) out.speechProxyBase = c.url; }
-    if (typeof j.extensionUrl === 'string' && /^(https:|chrome-extension:)/.test(j.extensionUrl)) out.extensionUrl = j.extensionUrl;
-    if (typeof j.bibliaUrl === 'string' && /^(\.\/[A-Za-z0-9_./-]+|https:\/\/[^\s]+)$/.test(j.bibliaUrl)) out.bibliaUrl = j.bibliaUrl;
-    return out;
-  } catch { return {}; }
+    if (!j || typeof j !== 'object') return { config: {}, ok: false };
+    return { config: sanitizeConfig(j), ok: true };
+  } catch { return { config: {}, ok: false }; }
+}
+
+/** config.json next to the app. A missing file, a non-JSON answer (a dev server may return index.html) or bad values give {}. */
+export async function loadConfig(fetchFn: typeof fetch, url = './config.json'): Promise<AppConfig> {
+  return (await loadConfigResult(fetchFn, url)).config;
+}
+
+/** Where the last config.json that was really read is kept (2026-11-10: a failed load must not turn into the development address). */
+export const CONFIG_KEY = 'goreview:config';
+/** How long a start waits for config.json when a saved copy stands ready (the fetch goes on and refreshes the saved copy). */
+export const CONFIG_WAIT_MS = 1_500;
+
+/**
+ * The configuration to start with: config.json when it is read, else the last good copy kept in `storage`, else (never read, nothing kept)
+ * `source: 'none'` and an empty config, which the caller must treat as a failure in a production build instead of using the development address.
+ * With a kept copy the start does not wait longer than `waitMs` for the file.
+ */
+export async function resolveConfig(fetchFn: typeof fetch, storage: Pick<Storage, 'getItem' | 'setItem'> | undefined, opts: { url?: string; waitMs?: number } = {}):
+  Promise<{ config: AppConfig; source: 'file' | 'saved' | 'none' }> {
+  const read = (): AppConfig | undefined => {
+    try { const raw = storage?.getItem(CONFIG_KEY); if (!raw) return undefined; const j = JSON.parse(raw) as unknown; return j && typeof j === 'object' ? sanitizeConfig(j as Record<string, unknown>) : undefined; }
+    catch { return undefined; }
+  };
+  const saved = read();
+  const loading = loadConfigResult(fetchFn, opts.url).then((r) => {
+    if (r.ok) { try { storage?.setItem(CONFIG_KEY, JSON.stringify(r.config)); } catch { /* the copy is a convenience */ } }
+    return r;
+  });
+  const first = saved
+    ? await Promise.race([loading, new Promise<undefined>((resolve) => { setTimeout(() => resolve(undefined), opts.waitMs ?? CONFIG_WAIT_MS); })])
+    : await loading;
+  if (first?.ok) return { config: first.config, source: 'file' };
+  return saved ? { config: saved, source: 'saved' } : { config: {}, source: 'none' };
 }
 
 /** config.json's address, else the development default. No learner override (2026-10-28: the client cannot change the service address). */

@@ -105,7 +105,7 @@ describe('the levels stay current while the tab is open', () => {
     await levels.setChapter('read/John/1', s);
     calls.length = 0;
     const ids = unitIdsOfSite(s[2]);
-    rows[ids[0]] = { level: 'seen', encounters: 1 };
+    rows[ids[0]] = { level: 'seen', encounters: 1, dimensions: { exposure: { observations: 1, negative: 1 } } } as never;
     await levels.refresh(ids);
     expect(calls.flat().sort()).toEqual([...ids].sort());
     expect(s[2].el.getAttribute(LEVEL_ATTR)).toBe('seen');
@@ -161,7 +161,7 @@ class FakeEngine {
         this.events.push(e);
         for (const id of e.subject?.itemIds ?? []) {
           const cur = this.rows.get(id) ?? {};
-          if (e.kind === 'SelectionLookedUp') this.rows.set(id, { ...cur, level: cur.level ?? 'seen', encounters: (cur.encounters ?? 0) + 1 });
+          if (e.kind === 'SelectionLookedUp') this.rows.set(id, { ...cur, level: cur.level ?? 'seen', encounters: (cur.encounters ?? 0) + 1, dimensions: { exposure: { observations: 1, negative: 1 } } as never });
           if (e.kind === 'ItemMarked') { const m = (e.payload as { mark: UnitKnowledge['level'] }).mark; this.rows.set(id, { ...cur, level: m, selfMark: { mark: m, at: e.at } }); }
         }
       }

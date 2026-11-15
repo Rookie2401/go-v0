@@ -393,7 +393,7 @@ export interface PlannedItem { item: DeckItem; family: ExerciseFamily; why: stri
 export type ExclusionCode = 'scheduled-not-due' | 'learning-not-due' | 'new-budget-exhausted' | 'daily-allowance-exhausted' | 'workload-admission-cap'
   | 'over-time-budget' | 'beyond-micro-deck' | 'knowledge-beyond-new-required' | 'seen-evidence-insufficient' | 'automatic-suppressed'
   | 'listening-audio-unavailable' | 'snoozed' | 'suspended' | 'dismissed' | 'invalidated' | 'repair-required' | 'learner-control'
-  | 'invalid-request' | 'facts-unavailable' | 'knowledge-unresolved' | 'same-unit-in-batch' | 'selected' | 'deck-fill' | 'outranked' | 'other';
+  | 'invalid-request' | 'facts-unavailable' | 'knowledge-unresolved' | 'same-unit-in-batch' | 'selected' | 'deck-fill' | 'outranked' | 'facts-not-checked' | 'other';
 
 export interface SessionBatch { targetQuestions: number; workloadLimit: number; estimatedSeconds: number; reasons: string[] }
 

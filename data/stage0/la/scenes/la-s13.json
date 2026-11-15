@@ -1,0 +1,269 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "culture",
+      "title": "Deo gratias",
+      "text": "Deo gratias, \"thanks be to God\", is a set phrase said in church. Deo is another ending of Deus. Pax tibi means \"peace to you\".",
+      "explains": [
+        "la.deo-gratias"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"In ecclesia sumus.\"",
+      "basedOn": [
+        "l1"
+      ],
+      "accept": [
+        {
+          "text": "In ecclesia sumus"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "complete",
+      "prompt": "Say that Anna is at the clinic.",
+      "basedOn": [
+        "l4"
+      ],
+      "frame": "Anna in ___ est.",
+      "accept": [
+        {
+          "text": "Anna in valetudinario est"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "recall",
+      "prompt": "Say: Thanks be to God.",
+      "basedOn": [
+        "l6",
+        "la.deo-gratias"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Deo gratias"
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "kind": "describe",
+      "prompt": "Say that Marcus is in church.",
+      "basedOn": [
+        "l1",
+        "la.in-ablative"
+      ],
+      "accept": [
+        {
+          "text": "Marcus in ecclesia est"
+        }
+      ]
+    }
+  ],
+  "id": "la-s13",
+  "title": {
+    "en": "In church",
+    "target": "In ecclesia"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta",
+      "nico",
+      "luis"
+    ],
+    "places": [
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "In ecclesia sumus.",
+      "en": "We are in church.",
+      "speaker": "marta",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Deus hic est.",
+      "en": "God is here.",
+      "speaker": "marta",
+      "picture": "✝️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Anna quoque in ecclesia est?",
+      "en": "Is Anna in church too?",
+      "speaker": "nico",
+      "picture": "👩‍⚕️❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Non est. In valetudinario est; fessa est.",
+      "en": "She is not. She is at the clinic; she is tired.",
+      "speaker": "luis",
+      "picture": "🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Pax tibi, Samuel.",
+      "en": "Peace to you, Samuel.",
+      "speaker": "marta",
+      "picture": "🕊️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Et tibi. Deo gratias.",
+      "en": "And to you. Thanks be to God.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "Deus",
+      "quoque",
+      "pax"
+    ],
+    "constructions": [
+      "la.deo-gratias"
+    ]
+  },
+  "represents": [
+    "la.deo-gratias",
+    "la.in-ablative",
+    "la.sum-1pl",
+    "la.sum-3sg",
+    "la.thanks",
+    "la.negation-non",
+    "la.adjective-agreement"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where are they?"
+      },
+      "options": [
+        {
+          "en": "In church"
+        },
+        {
+          "en": "At school"
+        },
+        {
+          "en": "At the market"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Anna is in church."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where is Anna?"
+      },
+      "options": [
+        {
+          "en": "At the clinic"
+        },
+        {
+          "en": "At school"
+        },
+        {
+          "en": "At home"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Samuel say at the end?"
+      },
+      "options": [
+        {
+          "en": "Thanks be to God"
+        },
+        {
+          "en": "Goodbye"
+        },
+        {
+          "en": "Hello"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

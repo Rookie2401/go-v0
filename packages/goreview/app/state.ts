@@ -93,7 +93,8 @@ export function createIndexedDbKeyValueArea(idb: IDBFactory, dbName: string, mig
     r.onerror = () => reject(r.error ?? new Error('IndexedDB would not open'));
     r.onblocked = () => reject(new Error('IndexedDB open blocked'));
   });
-  const upper = (prefix: string): IDBKeyRange => (prefix ? IDBKeyRange.bound(prefix, prefix + '￿', false, false) : IDBKeyRange.lowerBound(''));
+  const RANGE_READ_FROM = 32;
+  const upper = (prefix: string): IDBKeyRange =>(prefix ? IDBKeyRange.bound(prefix, prefix + '￿', false, false) : IDBKeyRange.lowerBound(''));
 
   /** The area over an open database. */
   const over = (db: IDBDatabase): KeyValueArea => ({
@@ -106,8 +107,25 @@ export function createIndexedDbKeyValueArea(idb: IDBFactory, dbName: string, mig
         ks.forEach((k, i) => { if (typeof k === 'string' && vs[i] !== undefined) out[k] = vs[i]; });
       } else {
         const list = Array.isArray(keys) ? keys : [keys];
-        const vs = await Promise.all(list.map((k) => req(store.get(k))));
-        list.forEach((k, i) => { if (vs[i] !== undefined) out[k] = vs[i]; });
+        // many keys (a learner's whole event log): one range read between the smallest and the largest key is far cheaper than a
+        // request per key (on a phone a thousand single reads took seconds). Only when the range holds few rows that were not asked for:
+        // the keys are counted first (cheap), so scattered keys (an append's id and dedupe look-ups) still go one by one.
+        let ranged = false;
+        if (list.length > RANGE_READ_FROM) {
+          let lo = list[0], hi = list[0];
+          for (const k of list) { if (k < lo) lo = k; if (k > hi) hi = k; }
+          const range = IDBKeyRange.bound(lo, hi);
+          if ((await req(store.count(range))) <= list.length * 1.25) {
+            const [ks, vs] = await Promise.all([req(store.getAllKeys(range)), req(store.getAll(range))]);
+            const wanted = new Set(list);
+            ks.forEach((k, i) => { if (typeof k === 'string' && wanted.has(k) && vs[i] !== undefined) out[k] = vs[i]; });
+            ranged = true;
+          }
+        }
+        if (!ranged) {
+          const vs = await Promise.all(list.map((k) => req(store.get(k))));
+          list.forEach((k, i) => { if (vs[i] !== undefined) out[k] = vs[i]; });
+        }
       }
       await done(tx);
       return out;
@@ -219,6 +237,24 @@ export function createLocalEventLog(area: KeyValueArea, opts: { now?: () => stri
   const dkKey = (l: string, dk: string): string => `log:dk:${l}:${dk}`;
   const headKey = (l: string): string => `log:head:${l}`;
   const readHead = async (l: string): Promise<number> => ((await area.get(headKey(l)))[headKey(l)] as number | undefined) ?? 0;
+  // The rows this page already read, per learner, by key. Every screen lists the whole log, and reading thousands of rows from the
+  // device's storage each time cost seconds on a phone. The key list is read every time (cheap), so rows another tab added or removed
+  // are seen: only keys not read before are fetched, and keys that are gone are dropped.
+  const rowsRead = new Map<string, Map<string, StoredEvent>>();
+  const readAll = async (learnerId: string): Promise<StoredEvent[]> => {
+    const keys = await area.list(`log:ev:${learnerId}:`);
+    let known = rowsRead.get(learnerId);
+    // a row gone (the device's data removed) means the log may be rebuilt under the same keys: everything is read again
+    if (!known || keys.length < known.size || (known.size && !known.has(keys[known.size - 1] ?? ''))) { known = new Map(); rowsRead.set(learnerId, known); }
+    const missing = keys.filter((k) => !known.has(k));
+    if (missing.length) {
+      const rows = await area.get(missing);
+      for (const k of missing) { const row = rows[k] as StoredEvent | undefined; if (row) known.set(k, row); }
+    }
+    const out: StoredEvent[] = [];
+    for (const k of keys) { const row = known.get(k); if (row) out.push(row); }
+    return out;
+  };
 
   return {
     append: (learnerId, events) => lock.run(async (): Promise<AppendOutcome[]> => {
@@ -272,9 +308,7 @@ export function createLocalEventLog(area: KeyValueArea, opts: { now?: () => stri
       return out;
     }),
     list: (filter: EventFilter) => lock.run(async () => {
-      const keys = await area.list(`log:ev:${filter.learnerId}:`);
-      const rows = keys.length ? await area.get(keys) : {};
-      let events = keys.map((k) => rows[k] as StoredEvent).filter(Boolean);
+      let events = await readAll(filter.learnerId);
       if (filter.afterSeq !== undefined) events = events.filter((e) => e.seq > (filter.afterSeq as number));
       if (filter.languageId) events = events.filter((e) => e.languageId === filter.languageId);
       if (filter.kinds?.length) events = events.filter((e) => (filter.kinds as string[]).includes(e.kind));

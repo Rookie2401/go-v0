@@ -39,7 +39,7 @@ function parse(word: string, sentence: string, languageId?: string): CardModel {
 
 describe('parseSelection chooses the adapter by languageId', () => {
   it('the registry lists Albanian, Spanish and the experimental German, Hindi, Thai, Norwegian (both standards), Latin, Hebrew and Greek, and the default is still Albanian', () => {
-    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el']);
+    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc']);
     expect(PARSER_LANGUAGE).toBe('sq');
     expect(PACK_ID).toBe(`pack:sq:${sqAdapter.version}`);
     expect(PACK_IDS).toMatchObject({ sq: `pack:sq:${sqAdapter.version}`, es: `pack:es:${esAdapter.version}`, de: `pack:de:${deAdapter.version}`, hi: `pack:hi:${hiAdapter.version}`, th: `pack:th:${thAdapter.version}`, nb: `pack:nb:${nbAdapter.version}`, nn: `pack:nn:${nnAdapter.version}` });

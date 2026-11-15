@@ -239,7 +239,7 @@ Every row is backed by a test; titles are in `offline.matrix.test.ts` unless ano
 * The network: only whole-request failures, a fixed status, and a lost response; no partial bodies, slow links, TLS/DNS failures, redirects, or captive portals that answer `200` with HTML (the typed client would report a non-JSON body as an error; not exercised).
 * Parallel connections: concurrency is Promise-level in one process (the "three identical uploads at once" test), not several sockets to a SQLite file.
 * The speech output itself and the remote speech/AI services (none exist in the product; fakes and spies only).
-* IndexedDB / Dexie: used only by the legacy `src/` app, by none of the Go packages. The localStorage stand-in follows `createWebKeyValueArea` (JSON text, `null` for unreadable rows).
+* IndexedDB / Dexie: used only by the legacy `src/` app, by none of the Go packages (true when this audit ran; since 2026-11-10 the extension worker keeps the device Repository in IndexedDB, covered by `test/repository-local` and `test/loading`: see `LOADING-ARCHITECTURE-2026-11-10.md`). The localStorage stand-in follows `createWebKeyValueArea` (JSON text, `null` for unreadable rows).
 * Cache corruption was run on the memory store only (the damage is on the device; the server side is store-independent and covered by the suites that run on both).
 * Exact FSRS numbers and the quality of the review items (other audits).
 * The default product backoff parameters of the extension (2 s base, 5 min cap, jitter 0.5) and GoPractice's (2 s base, 120 s cap, jitter 1) were read, not asserted numerically.

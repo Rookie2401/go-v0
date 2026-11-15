@@ -54,3 +54,23 @@ it('selects global review evidence once per candidate batch and refreshes it on 
   expect(second).toHaveLength(candidates.length);
   expect(selectionCalls.count).toBe(2);
 });
+
+it('still selects the evidence once when most candidates have never been reviewed (2026-11-08: each of them re-selected the whole history)', async () => {
+  const fresh = Array.from({ length: 60 }, (_, index) => candidate({
+    unitId: `form:sq:never-${index}`, kind: 'form', score: 0.7,
+    targetDimension: 'readingRecognition', eligibility: { eligible: true, status: 'verified', caveats: [] },
+  }));
+  selectionCalls.count = 0;
+  const out = await gatherCandidates({
+    api: {
+      candidates: async () => [...candidates, ...fresh],
+      knowledge: async (ids) => ids.map(id => ({ ...knowledge(id), level: 'familiar' as const })),
+    },
+    facts: { factsFor: async (id) => facts(id) },
+    audio: async () => ({ available: false, eligibleForEvidence: false, reason: 'not needed' }),
+    deck: [], saved: new Set(), preferences: prefs({ practiceGoals: ['recognition', 'retrieval'] }), now: '2026-10-28T12:00:00.000Z',
+    enrolmentId: 'E1', readingSignals: histories(3),
+  });
+  expect(out).toHaveLength(candidates.length + fresh.length);
+  expect(selectionCalls.count).toBe(1);
+});

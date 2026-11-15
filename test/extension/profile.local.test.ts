@@ -93,14 +93,30 @@ describe('no account', () => {
 });
 
 describe('with an account', () => {
-  it('the account answers and the device is not asked', async () => {
+  it('the account answers and its row stands: the device is asked only for a newer mark of the learner\'s own, and has none here', async () => {
     const local = device([row(A, 9)]);
     const { svc } = make({ connected: true, server: [row(A, 2)], local });
     const r = await svc.knowledgeFor([A], 'sq');
     expect(r).toMatchObject({ ok: true, connected: true });
     expect(r.source).toBeUndefined();
     expect(r.rows[A].dimensions.exposure?.observations).toBe(2);
-    expect(local.asked).toEqual([]);
+    expect(r.rows[A].selfMark).toBeUndefined();
+  });
+
+  it('a mark on the device, newer than the account\'s, is read over it; every other part of the row stays the account\'s', async () => {
+    const mine = { ...row(A, 9), level: 'known', selfMark: { mark: 'known', at: '2026-10-09T12:00:00.000Z' } } as UnitKnowledge;
+    const theirs = { ...row(A, 2), level: 'familiar', selfMark: { mark: 'familiar', at: '2026-10-09T11:00:00.000Z' } } as UnitKnowledge;
+    const r = await make({ connected: true, server: [theirs], local: device([mine]) }).svc.knowledgeFor([A], 'sq');
+    expect(r.rows[A]).toMatchObject({ level: 'known', selfMark: { mark: 'known' } });
+    expect(r.rows[A].dimensions.exposure?.observations).toBe(2);
+    expect(r.source).toBeUndefined();
+  });
+
+  it('a mark on the account, newer than the device\'s, stands', async () => {
+    const mine = { ...row(A, 9), level: 'known', selfMark: { mark: 'known', at: '2026-10-09T11:00:00.000Z' } } as UnitKnowledge;
+    const theirs = { ...row(A, 2), level: 'familiar', selfMark: { mark: 'familiar', at: '2026-10-09T12:00:00.000Z' } } as UnitKnowledge;
+    const r = await make({ connected: true, server: [theirs], local: device([mine]) }).svc.knowledgeFor([A], 'sq');
+    expect(r.rows[A]).toMatchObject({ level: 'familiar', selfMark: { mark: 'familiar' } });
   });
 
   it('offline: the cached rows win, and the device fills the units the cache does not hold', async () => {
@@ -113,7 +129,6 @@ describe('with an account', () => {
     expect(r).toMatchObject({ ok: true, connected: true, stale: true, error: 'offline', source: 'device' });
     expect(r.rows[A].dimensions.exposure?.observations).toBe(2); // the account's row, stale, not the device's
     expect(r.rows[B].dimensions.exposure?.observations).toBe(4); // never cached: the device's
-    expect(local.asked).toEqual([[B]]);
   });
 
   it('a refused sign-in (401) is reported as such, with the device\'s rows', async () => {
@@ -127,5 +142,33 @@ describe('with an account', () => {
     const r = await make({ connected: true, server: 'down' }).svc.knowledgeFor([A], 'sq');
     expect(r).toMatchObject({ connected: true, stale: true, error: 'offline', rows: {} });
     expect(r.source).toBeUndefined();
+  });
+});
+
+describe('GoLearn Active\'s question (device rows only) while signed in (2026-11-09)', () => {
+  it('does not wait on the service for the explanation depth: it answers from this device, and the depth read in the background serves later', async () => {
+    let answer: ((v: unknown) => void) | undefined;
+    let asked = 0;
+    const api = {
+      async knowledge() { throw new Error('the scan never asks the account for rows'); },
+      preferences: () => { asked++; return new Promise((resolve) => { answer = resolve; }); }, // a slow service: no answer until released
+    };
+    const session = {
+      status: async () => ({ connected: true, expired: false, hasEnrolment: true }),
+      authenticated: async () => ({ api, session: {}, service: {} }),
+    } as never;
+    const svc = createProfileService({ area: createMemoryStorageArea(), session, settings: async () => ({ ...DEFAULT_SETTINGS }), now: () => 1_000_000, local: device([row(A, 3)]) });
+    const scan = await Promise.race([svc.knowledgeFor([A], 'he', { deviceOnly: true }), new Promise((resolve) => setTimeout(() => resolve('waited'), 500))]);
+    expect(scan).toMatchObject({ ok: true, source: 'device', depth: 'brief', depthOrigin: 'default' });
+    expect(Object.keys((scan as { rows: object }).rows)).toEqual([A]);
+    // a second scan while the service is still silent: one request in flight, not one per scan
+    await svc.knowledgeFor([A], 'he', { deviceOnly: true });
+    expect(asked).toBe(1);
+    // the service answers: the next scan has the learner's preference without asking again
+    answer!({ ok: true, status: 200, data: { preferences: prefs('explanatory', 'inferred') } });
+    await new Promise((r) => setTimeout(r, 10));
+    const later = await svc.knowledgeFor([A], 'he', { deviceOnly: true });
+    expect(later).toMatchObject({ depth: 'explanatory', depthOrigin: 'inferred' });
+    expect(asked).toBe(1);
   });
 });

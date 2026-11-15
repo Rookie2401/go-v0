@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 2,
+  "id": "la-a1-1-07",
+  "lang": "la",
+  "title": "The lost key",
+  "contentType": "narrative",
+  "corpus": {
+    "id": "ladder-la",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Latin (Church Latin)"
+  },
+  "source": {
+    "id": "src:la:la-a1-1-07",
+    "title": "The lost key (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Church Latin. Drafted by an AI model; not yet reviewed by a Latinist.",
+    "provenance": "Drafted by an AI model for the course ladder in simple Ecclesiastical (Church) Latin; not reviewed by a Latinist. It is controlled, deliberately repetitive Latin written for learners and may contain unidiomatic phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet reviewed by a Latinist.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a Latinist. House style: simple Church Latin, spelled without macrons, with u/v and i/j as in Stage 0 (v and i only); present tense, with a few perfects (venit, vidit, fuit, dixit) in the last units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "key",
+    "search",
+    "help",
+    "places"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-latinist-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "la",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-11-13",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nico": "Marcus",
+    "sam": "Samuel",
+    "marta": "Martha"
+  },
+  "sections": [
+    {
+      "title": "Clavis amissa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hodie Marcus clavem non habet. Clavis est clavis domus Marthae.",
+              "english": "Today Marcus does not have the key. It is the key of Martha's house."
+            },
+            {
+              "text": "Marcus fessus est. Domum venire vult, sed clavem non habet.",
+              "english": "Marcus is tired. He wants to come home, but he does not have the key."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ubi est clavis mea? Clavem non habeo!",
+              "english": "Where is my key? I do not have the key!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Marcus clavem quaerit. In schola clavem quaerit. Clavis in schola non est.",
+              "english": "Marcus looks for the key. He looks for the key at school. The key is not at school."
+            },
+            {
+              "text": "Marcus in foro clavem quaerit. Clavis in foro non est.",
+              "english": "Marcus looks for the key in the market. The key is not in the market."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Samuel Marcum videt. Samuel puerum salutat.",
+              "english": "Samuel sees Marcus. Samuel greets the boy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve, Marce! Quid quaeris?",
+              "english": "Hello, Marcus! What are you looking for?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Clavem quaero. Clavem non habeo. Fessus sum, et domum venire volo.",
+              "english": "I am looking for the key. I do not have the key. I am tired, and I want to come home.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ego te iuvo! Ubi clavem quaeris?",
+              "english": "I will help you! Where are you looking for the key?",
+              "speaker": "sam"
+            },
+            {
+              "text": "In schola quaero, et in foro quaero. Clavis ibi non est.",
+              "english": "I look at school, and I look in the market. The key is not there.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Estne in ecclesia? Quaerimus in ecclesia!",
+              "english": "Is it in the church? Let us look in the church!",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Samuel et Marcus in ecclesia clavem quaerunt. Clavis ibi non est.",
+              "english": "Samuel and Marcus look for the key in the church. The key is not there."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Clavis hic non est. Non invenimus!",
+              "english": "The key is not here. We do not find it!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ubi est Martha? Martha clavem habet?",
+              "english": "Where is Martha? Does Martha have the key?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Martha in domo est. Sed domus clavem non habet. Clavis mea est!",
+              "english": "Martha is at home. But the house does not have the key. The key is mine!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Veni! In domum Marthae venimus.",
+              "english": "Come! We come to Martha's house.",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Martha in porta est. Marcum et Samuelem videt.",
+              "english": "Martha is at the door. She sees Marcus and Samuel."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salvete! Quid hic facitis? Quid quaeritis?",
+              "english": "Hello! What are you doing here? What are you looking for?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Clavem quaerimus, avia. Clavem meam non habeo.",
+              "english": "We are looking for the key, grandmother. I do not have my key.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ecce clavis! Clavis in mensa est, sub pane. Statim clavem video.",
+              "english": "Look, the key! The key is on the table, under the bread. I see the key at once.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ibi est! Clavem tandem invenio!",
+              "english": "It is there! At last I find the key!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Bene est, Marce! Clavem habes. Tandem clavem invenis.",
+              "english": "It is well, Marcus! You have the key. At last you find the key.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Gratias tibi ago, Samuel. Gratias tibi ago, avia. Tu amicus bonus es.",
+              "english": "Thank you, Samuel. Thank you, grandmother. You are a good friend.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Statim panem edite! Panis sub mensa non est, sed in mensa est.",
+              "english": "Eat bread at once! The bread is not under the table, but on the table.",
+              "speaker": "marta"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marcus clavem in manu habet. Ibi panem edit, et lac bibit. Tandem fessus non est.",
+              "english": "Marcus has the key in his hand. There he eats bread, and drinks milk. At last he is not tired."
+            },
+            {
+              "text": "Samuel quoque panem edit. Bene est. Hodie Samuel Marcum iuvat, et Marcus Samuelem iuvat.",
+              "english": "Samuel eats bread too. It is well. Today Samuel helps Marcus, and Marcus helps Samuel."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

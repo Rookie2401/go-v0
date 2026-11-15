@@ -204,17 +204,34 @@ async function waitForRepositoryHealth(port, childState) {
   }
 }
 
-function launchRepositoryService() {
+/**
+ * The command that runs the service. Normally the service compiled into one file (infra/repository/bundle.mjs) and run by plain Node: under vite-node it
+ * held about 360 MB before its first request, on a 512 MB instance, and ran out of memory several times a day (2026-11-12). If compiling fails, the
+ * service still starts the old way, and the log says so. REPOSITORY_RUNNER=vite-node chooses the old way on purpose.
+ */
+async function serviceCommand(serviceArgs) {
+  if (process.env.REPOSITORY_RUNNER !== 'vite-node') {
+    // in a child process, so that esbuild does not stay in this starter's memory for the life of the service
+    const compiled = await new Promise((done) => {
+      const child = spawn(process.execPath, [resolve('infra/repository/bundle.mjs')], { stdio: ['ignore', 'pipe', 'pipe'] });
+      let out = '';
+      let err = '';
+      child.stdout.on('data', (d) => { out += d; });
+      child.stderr.on('data', (d) => { err += d; });
+      child.once('error', (error) => done({ error: error.message }));
+      child.once('exit', (code) => done(code === 0 && out.trim() ? { file: out.trim().split('\n').pop() } : { error: err.trim().split('\n')[0] || `exit ${code}` }));
+    });
+    if (compiled.file) return [compiled.file, ...serviceArgs];
+    console.error(`repository startup: compiling the service failed, starting it under vite-node instead: ${compiled.error}`);
+  }
+  return [resolve('node_modules/vite-node/dist/cli.mjs'), '--config', 'server/goread/vite.config.ts', 'packages/repository-service/src/main.ts', ...serviceArgs];
+}
+
+async function launchRepositoryService() {
   const port = process.env.PORT ?? '10000';
   const data = process.env.REPOSITORY_DATA_DIR ?? '/var/data/repository';
   const backupIntervalMs = positiveIntervalFromEnv();
-  const cli = resolve('node_modules/vite-node/dist/cli.mjs');
-  const child = spawn(process.execPath, [
-    cli,
-    '--config', 'server/goread/vite.config.ts',
-    'packages/repository-service/src/main.ts',
-    '--port', port, '--host', '0.0.0.0', '--data', data,
-  ], { stdio: 'inherit' });
+  const child = spawn(process.execPath, await serviceCommand(['--port', port, '--host', '0.0.0.0', '--data', data]), { stdio: 'inherit' });
 
   const forwardSignal = (signal) => child.kill(signal);
   process.on('SIGTERM', forwardSignal);

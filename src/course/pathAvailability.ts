@@ -1,4 +1,5 @@
 import type { CatalogText, CourseCatalog, Library, Stage, Text, Work } from '../core';
+import { COURSES } from '../core';
 import { getStageContract } from './curriculumPolicy';
 
 export interface PathStage {
@@ -13,7 +14,8 @@ export interface PathStage {
 /** Uses actual accessible rows, never the existence of a catalogue recommendation. */
 export async function loadCoursePath(catalog: CourseCatalog, library: Library, courseId: string): Promise<PathStage[]> {
   const [stages, works] = await Promise.all([catalog.stages(courseId), catalog.works(courseId)]);
-  const eligibleWorks = new Map(works.filter(w => w.role !== 'scripture' && w.role !== 'audio').map(w => [w.id, w]));
+  const scriptureIsInput = COURSES.find(c => c.id === courseId)?.primaryReadingKinds?.includes('scripture') ?? false;
+  const eligibleWorks = new Map(works.filter(w => (scriptureIsInput || w.role !== 'scripture') && w.role !== 'audio').map(w => [w.id, w]));
   const candidates: CatalogText[] = [];
   let offset = 0;
   if (stages.length) while (true) {
@@ -26,7 +28,7 @@ export async function loadCoursePath(catalog: CourseCatalog, library: Library, c
     const stageWorks = [...eligibleWorks.values()].filter(w => w.stageId === stage.id);
     const stageWorkIds = new Set(stageWorks.map(w => w.id));
     // Canonical Work placement also recovers older accessible rows with no cached stageId.
-    const texts = candidates.filter(t => t.published && t.stream !== 'scripture' && !t.streams?.includes('scripture')
+    const texts = candidates.filter(t => t.published && (scriptureIsInput || (t.stream !== 'scripture' && !t.streams?.includes('scripture')))
       && t.location !== 'personal' && !!t.workId && stageWorkIds.has(t.workId));
     const resident = (await Promise.all(stageWorks.map(w => catalog.textsOf(w.id)))).flat();
     const heldTexts = resident.filter(t => !t.published && !t.readingAssessmentId && !t.listeningAssessmentId);

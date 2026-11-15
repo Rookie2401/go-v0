@@ -10,10 +10,10 @@ import { LEVEL_LABEL, PACKS, TEAMS, installablePacks, languagesOf, levelOf, pack
 import type { TeamId } from '../../packages/language-packs/src';
 
 describe('PACKS and packFor', () => {
-  it('lists ten packs (Latin, Hebrew and Greek were added 2026-10-17); Albanian and Spanish are installable, German, Hindi, Thai, Latin and both Norwegian packs experimental (installable)', () => {
-    expect(Object.keys(PACKS).sort()).toEqual(['de', 'el', 'es', 'he', 'hi', 'la', 'nb', 'nn', 'sq', 'th']);
-    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es', 'pack:de', 'pack:hi', 'pack:th', 'pack:nb', 'pack:nn', 'pack:la', 'pack:he', 'pack:el']);
-    const level = { sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'experimental', nn: 'experimental', la: 'experimental', he: 'experimental', el: 'experimental' } as const;
+  it('lists eleven packs (Latin, Hebrew and Greek were added 2026-10-17); Albanian and Spanish are installable, German, Hindi, Thai, Latin and both Norwegian packs experimental (installable)', () => {
+    expect(Object.keys(PACKS).sort()).toEqual(['arc', 'de', 'el', 'es', 'he', 'hi', 'la', 'nb', 'nn', 'sq', 'th']);
+    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es', 'pack:de', 'pack:hi', 'pack:th', 'pack:nb', 'pack:nn', 'pack:la', 'pack:he', 'pack:el', 'pack:arc']);
+    const level = { sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'experimental', nn: 'experimental', la: 'experimental', he: 'experimental', el: 'experimental', arc: 'experimental' } as const;
     for (const [lang, m] of Object.entries(PACKS)) {
       expect(m.languageId).toBe(lang);
       expect(m.packId).toBe(`pack:${lang}`);
@@ -26,7 +26,7 @@ describe('PACKS and packFor', () => {
     for (const lang of ['de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el']) {
       const m = PACKS[lang];
       expect(m.level, lang).toBe('experimental');
-      expect(LEVEL_LABEL[levelOf(m)]).toBe('experimental, seed-only lemmatisation, unreviewed');
+      expect(LEVEL_LABEL[levelOf(m)]).toBe('experimental, unreviewed');
       expect(m.rights.reviewStatus, lang).toBe('machine-drafted');
       expect(m.rights.provenance[0], lang).toMatch(/^Experimental, installable at a deliberately minimal level and not production-ready/);
       expect(m.rights.provenance.join(' '), lang).toMatch(/Thin:/);
@@ -57,17 +57,17 @@ describe('PACKS and packFor', () => {
   });
 });
 
-describe('experimental packs without a dictionary (Norwegian)', () => {
+describe('experimental packs without a dictionary', () => {
   it('an experimental pack may declare no dictionary; any other installable pack must, and a planned one may not be installable', () => {
     const bad = (m: unknown): string[] => validateManifest(m).map((i) => i.path);
-    for (const lang of ['nb', 'nn']) {
-      expect(PACKS[lang].lexical.dictionary, lang).toBeUndefined();
-      expect(bad(PACKS[lang]), lang).toEqual([]);
-    }
+    // no shipped pack is the example any more (Norwegian has its dictionaries since 2026-11-13): the rule is checked on a copy without one
+    const experimentalNoDict = structuredClone(PACKS.nb);
+    delete experimentalNoDict.lexical.dictionary;
+    expect(bad(experimentalNoDict)).toEqual([]);
     const noDict = structuredClone(PACKS.sq);
     delete noDict.lexical.dictionary;
     expect(bad(noDict)).toContain('lexical.dictionary');
-    const sneaky = structuredClone(PACKS.nb);
+    const sneaky = structuredClone(experimentalNoDict);
     delete sneaky.level;
     expect(bad(sneaky), 'an installable pack with no level is not experimental and needs its dictionary').toContain('lexical.dictionary');
   });
@@ -109,13 +109,14 @@ describe('adapter versions', () => {
     }
   });
 
-  it('the Norwegian packs say honestly what exists: 14 validation cases, a minimal orientation, no review, no recordings, no dictionary', () => {
+  it('the Norwegian packs say honestly what exists: 14 validation cases, a minimal orientation, no review, no recordings, a machine-extracted dictionary of their own standard', () => {
     for (const lang of ['nb', 'nn']) {
       const m = PACKS[lang];
       expect(m.validation, lang).toHaveLength(14);
       expect(m.rights.reviewStatus, lang).toBe('machine-drafted');
       expect(m.rights.provenance[0], lang).toMatch(/^Experimental, installable at a deliberately minimal level and not production-ready/);
-      expect(m.rights.provenance.join(' '), lang).toMatch(/no dictionary for this language in the repository: meanings come from the pack’s own word list only/);
+      expect(m.rights.provenance.join(' '), lang).toContain(`The dictionary (kaikki-${lang}, ${m.lexical.dictionary!.entries.toLocaleString('en')} entries, CC BY-SA 4.0, Wiktionary via kaikki.org)`);
+      expect(m.rights.provenance.join(' '), lang).toMatch(lang === 'nb' ? /Norwegian Bokmål extract only, so no Nynorsk entry/ : /Norwegian Nynorsk extract only, so no Bokmål entry/);
       expect(m.rights.provenance.join(' '), lang).toMatch(/Nothing in this pack has been reviewed by a native speaker/);
       expect(m.pronunciation.recordings, lang).toBe('none');
       expect(m.pronunciation.remoteVoice.requiresConsentAndKey, lang).toBe(true);
@@ -123,15 +124,15 @@ describe('adapter versions', () => {
   });
 
   it('declare a built dictionary only where one exists', () => {
-    for (const lang of ['es', 'de', 'hi', 'th']) {
+    for (const lang of ['es', 'de', 'hi', 'th', 'nb', 'nn', 'he']) {
       const d = PACKS[lang].lexical.dictionary!;
       expect(d.attribution).toBe('Wiktionary, via kaikki.org — CC BY-SA 4.0');
       expect(d.baseUrl).toBe(`dict/${lang}/`);
     }
-    expect(PACKS.nb.lexical.dictionary).toBeUndefined();
-    expect(PACKS.nn.lexical.dictionary).toBeUndefined();
-    expect(PACKS.nb.rights.provenance.join(' ')).toMatch(/no dictionary/i);
-    expect(PACKS.nn.rights.provenance.join(' ')).toMatch(/no dictionary/i);
+    // each Norwegian standard has its own dictionary, built from its own kaikki extract; neither names the other's
+    expect(PACKS.nb.lexical.dictionary).toMatchObject({ id: 'kaikki-nb@2026-10-30', frequency: true });
+    expect(PACKS.nn.lexical.dictionary).toMatchObject({ id: 'kaikki-nn@2026-10-30', frequency: false });
+    expect(PACKS.he.lexical.dictionary).toMatchObject({ id: 'kaikki-he@2026-10-03', entries: 41288, frequency: false });
   });
 
   it('Norwegian: two packs, each stating its written standard on every variety', () => {

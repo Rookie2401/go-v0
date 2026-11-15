@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 2,
+  "id": "daniel-2-41",
+  "lang": "arc",
+  "locale": "arc-Hebr",
+  "title": "Daniel 2:41",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "biblical-aramaic",
+    "kind": "scripture",
+    "title": "Biblical Aramaic"
+  },
+  "source": {
+    "id": "src:arc:daniel-2-41",
+    "title": "Westminster Leningrad Codex via Open Scriptures Hebrew Bible",
+    "url": "https://github.com/openscriptures/morphhb/blob/master/wlc/Dan.xml",
+    "edition": "OSHB WLC, qere reading path",
+    "attribution": "Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb",
+    "provenance": "Selected A-coded words extracted from bundled OSHB wlc/Dan.xml snapshot, preserving source order, qere path, word boundaries and verse marks. No independent scholarly proofreading.",
+    "rights": "public-domain",
+    "licenseNote": "WLC base text public domain; OSHB lemma/morphology CC BY 4.0; lexical transcription CC BY 4.0.",
+    "authorship": "public-domain",
+    "modifications": "Reading-path extraction; morpheme separators removed; source word order and marks preserved."
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "Codex source-extraction check (automated, not a scholarly language review)",
+    "reviewedAt": "2026-11-05",
+    "level": "linguistic-check",
+    "notes": "Wording compared to A-coded OSHB source tokens, excluding ketiv in favor of qere. Linguistic analysis comes from OSHB; no claim of independent expert review."
+  },
+  "topics": [
+    "aramaic",
+    "biblical-aramaic",
+    "reading"
+  ],
+  "editorialTags": [],
+  "prepTargets": [],
+  "generated": false,
+  "scripture": {
+    "translationId": "arcWLC",
+    "translationName": "Biblical Aramaic, WLC",
+    "edition": "OSHB WLC, qere reading path",
+    "book": "DAN",
+    "chapter": 2,
+    "verification": {
+      "against": "OSHB wlc/Dan.xml (A-coded tokens; ketiv excluded, qere selected)",
+      "url": "https://github.com/openscriptures/morphhb/blob/master/wlc/Dan.xml",
+      "checkedAt": "2026-11-05",
+      "method": "byte-comparison",
+      "by": "Codex extraction compared to source word and seg values"
+    }
+  },
+  "work": {
+    "slug": "daniel-2-41",
+    "courseId": "aramaic-arc",
+    "chapter": {
+      "index": 38
+    }
+  },
+  "sections": [
+    {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "daniel-2-41",
+              "text": "וְדִֽי־חֲזַ֜יְתָה רַגְלַיָּ֣א וְאֶצְבְּעָתָ֗א מִנְּהֵ֞ן חֲסַ֤ף דִּֽי־פֶחָר֙ וּמִנְּהֵ֣ין פַּרְזֶ֔ל מַלְכ֤וּ פְלִיגָה֙ תֶּהֱוֵ֔ה וּמִן־נִצְבְּתָ֥א דִ֥י פַרְזְלָ֖א לֶֽהֱוֵא־בַ֑הּ כָּל־קֳבֵל֙ דִּ֣י חֲזַ֔יְתָה פַּ֨רְזְלָ֔א מְעָרַ֖ב בַּחֲסַ֥ף טִינָֽא׃",
+              "verseRefs": [
+                "DAN.2.41"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variety": "arc-bib",
+  "streams": [
+    "scripture"
+  ]
+}

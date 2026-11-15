@@ -114,3 +114,7 @@ folders: no unexplained overlap (two examined overlaps, listed in the rights aud
   `repository-linguistics`, `controlled-reader` (prototype). Nothing else does.
 * Salvage by copy (code that left `src/` as new files): `packages/gotell/src/salvage`, 8 modules.
 * Salvage by sibling repository: `src/golearn` and `src/golisten` designs live on in 2GoLearn (not inspected by this audit).
+
+## Biblical Aramaic addition, 5 November 2026
+
+`src/adapters/arc.ts` and `src/adapters/aramaic/` are pure linguistic salvage: source-coded analysis and lexical data, with no learner state, course runtime or Ecclesia dependency. The import audit includes the separate Aramaic browser analyser entry.

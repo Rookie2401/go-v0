@@ -168,8 +168,9 @@ describe('shared packages never reach an application, the service, the store or 
     // of the service: the client, its dependency types, the handler and the handler's browser-safe helpers (accounts, http, metrics,
     // notifier, ratelimit, throttle: 2026-10-17), and nothing else (no Node bridge, no Node crypto, no mailer, no purge job, no source-policy file reader)
     expect([...reached].filter((f) => f.startsWith('packages/repository-service/')).sort()).toEqual(['accounts.ts', 'api.ts', 'deps.ts', 'handler.ts', 'http.ts', 'metrics.ts', 'notifier.ts', 'ratelimit.ts', 'speech.ts', 'speechMaterial.ts', 'throttle.ts'].map((f) => 'packages/repository-service/src/' + f));
-    // of the store: the memory implementation and its rules; never the SQLite one (node:sqlite) or the export module
-    expect([...reached].filter((f) => f.startsWith('packages/repository-store/')).sort()).toEqual(['packages/repository-store/src/deletion.ts', 'packages/repository-store/src/memory.ts', 'packages/repository-store/src/rules.ts']);
+    // of the store: the memory implementation, the IndexedDB one (browser-only; opened by the device Repository since f19034ab, stage 2 of the
+    // loading re-foundation, added by 278ed67f) and the rules; never the SQLite one (node:sqlite) or the export module
+    expect([...reached].filter((f) => f.startsWith('packages/repository-store/')).sort()).toEqual(['packages/repository-store/src/deletion.ts', 'packages/repository-store/src/indexeddb.ts', 'packages/repository-store/src/memory.ts', 'packages/repository-store/src/rules.ts']);
     // and no Node-only import anywhere in what it reaches
     for (const f of [...reached].filter((x) => x.startsWith('packages/'))) expect(readText(f), f).not.toMatch(/froms+['"]node:/);
   });

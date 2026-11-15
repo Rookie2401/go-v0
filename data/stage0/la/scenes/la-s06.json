@@ -1,0 +1,275 @@
+{
+  "lang": "la",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "fessus, fessa",
+      "text": "Describing words change with the person: fessus for a man, fessa for a woman. Anna says fessa sum; Samuel would say fessus sum. Go uses the form you chose for yourself.",
+      "explains": [
+        "la.adjective-agreement"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "usage",
+      "title": "-ne",
+      "text": "Add -ne to the first word to turn a statement into a yes/no question: es fessus (you are tired) becomes esne fessus? (are you tired?).",
+      "explains": [
+        "la.question-ne"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Bene valeo.\"",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "Bene valeo"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say that you are tired.",
+      "basedOn": [
+        "l2",
+        "la.adjective-agreement"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Fessus sum",
+          "speakerForm": "m"
+        },
+        {
+          "text": "Fessa sum",
+          "speakerForm": "f"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "substitute",
+      "prompt": "Say that you are not tired.",
+      "basedOn": [
+        "l4"
+      ],
+      "frame": "Non sum ___.",
+      "accept": [
+        {
+          "text": "Non sum fessus",
+          "speakerForm": "m"
+        },
+        {
+          "text": "Non sum fessa",
+          "speakerForm": "f"
+        }
+      ]
+    }
+  ],
+  "id": "la-s06",
+  "title": {
+    "en": "How are you?",
+    "target": "Quomodo vales?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Salve, Anna. Quomodo vales?",
+      "en": "Hello, Anna. How are you?",
+      "speaker": "luis",
+      "picture": "🙂❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Bene valeo, sed fessa sum.",
+      "en": "I am well, but I am tired.",
+      "speaker": "ana",
+      "picture": "😮‍💨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Samuel, esne fessus?",
+      "en": "Samuel, are you tired?",
+      "speaker": "luis",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Non sum fessus. Bene valeo.",
+      "en": "I am not tired. I am well.",
+      "speaker": "sam",
+      "picture": "😀",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Bene. Vale, Anna.",
+      "en": "Good. Goodbye, Anna.",
+      "speaker": "luis",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Vale.",
+      "en": "Goodbye.",
+      "speaker": "ana",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "quomodo",
+      "valeo",
+      "bene",
+      "sed",
+      "fessus",
+      "fessa",
+      "non"
+    ],
+    "constructions": [
+      "la.how-are-you",
+      "la.adjective-agreement",
+      "la.negation-non",
+      "la.question-ne"
+    ]
+  },
+  "represents": [
+    "la.how-are-you",
+    "la.adjective-agreement",
+    "la.negation-non",
+    "la.question-ne",
+    "la.sum-1sg",
+    "la.sum-2sg",
+    "la.greeting"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How is Anna?"
+      },
+      "options": [
+        {
+          "en": "Well, but tired"
+        },
+        {
+          "en": "Ill"
+        },
+        {
+          "en": "Angry"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is Samuel tired?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Lucius ask Samuel?"
+      },
+      "options": [
+        {
+          "en": "Are you tired?"
+        },
+        {
+          "en": "Who are you?"
+        },
+        {
+          "en": "Where are you?"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l2"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Anna is not tired."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -394,10 +394,14 @@ route('GET', '/health', false, async (ctx) => {
   }
   let durability: unknown;
   try { durability = info?.durability?.(); } catch { durability = undefined; }
+  // what the process holds, where the host can say (2026-11-13: the 512 MB instance ran out of memory and nothing outside the metrics token showed how close it ran)
+  let memory: unknown;
+  try { memory = info?.memory?.(); } catch { memory = undefined; }
   return respond(200, {
     ...(durability ? { durability } : {}),
+    ...(memory ? { memory } : {}),
     ok: true, service: 'repository', version: SERVICE_VERSION, contractVersion: CONTRACT_VERSION,
-    ...(info ? { store: info.storeKind, ...(schemaVersion !== undefined ? { migrations: schemaVersion } : {}), uptimeSec: Math.max(0, Math.floor((Date.now() - info.startedAt) / 1000)) } : {}),
+    ...(info ? { store: info.storeKind, ...(info.commit ? { commit: info.commit } : {}), ...(schemaVersion !== undefined ? { migrations: schemaVersion } : {}), uptimeSec: Math.max(0, Math.floor((Date.now() - info.startedAt) / 1000)) } : {}),
   });
 });
 
@@ -543,6 +547,7 @@ route('DELETE', '/me', true, async (ctx) => {
   const at = ctx.now();
   await store.revokeSession(ctx.session.sessionId, at);
   await store.eraseLearner(learnerId); // events, projections, documents, sessions, devices, enrolments
+  forgetLearnerCaches(store, learnerId); // and what this process still held of them in memory
   // The port has no account deletion: if the account row survived the erase, it is disabled and its email released.
   const left = await store.getAccount(ctx.session.accountId);
   if (left) await store.putAccount({ ...accountView(left), learnerId, email: `deleted+${left.accountId}@invalid`, disabledAt: at, passwordHash: '!' });
@@ -774,6 +779,9 @@ route('GET', '/knowledge', true, async (ctx) => {
   return respond(200, { knowledge: await ctx.deps.engine.knowledge(ctx.session.learnerId, unitIds) });
 });
 
+/** One row of the My Vocabulary listing, as the response carries it. */
+interface VocabMatch { knowledge: import('../../repository-contract/src').UnitKnowledge; unit?: LinguisticUnit; surfaceForms: string[]; lastEncounter?: string; firstEncounter?: string; reviewStatus?: 'none' | 'active' | 'suspended'; sources: SourceRef[] }
+
 route('GET', '/vocabulary', true, async (ctx) => {
   assertSelf(ctx, ctx.query.get('learnerId') ?? undefined);
   const languageId = ctx.query.get('languageId');
@@ -824,6 +832,20 @@ route('GET', '/vocabulary', true, async (ctx) => {
   if (reviewStatus && !['none', 'active', 'suspended'].includes(reviewStatus)) throw new Refusal(422, 'invalid-query', '"reviewStatus" must be none, active, or suspended.');
   const sourceRef = ctx.query.get('sourceRef') ?? undefined;
   if (sourceRef !== undefined && (!sourceRef.length || sourceRef.length > 2048)) throw new Refusal(422, 'invalid-query', '"sourceRef" must be a non-empty reference value of at most 2048 characters.');
+  // The light listing (2026-11-13), for a caller that walks the whole vocabulary and reads only the knowledge rows (GoReview's recovery scan): no
+  // surface forms, sources, dates or review status are worked out, so a row costs its knowledge row and its catalogue unit and nothing of the event
+  // log. A full unsorted page reads up to 25 events for each of its 100 rows; 35 such pages took the 512 MB instance about 100 MB.
+  // `catalogued=false` keeps only the rows with no catalogue unit, `true` only those with one. Both are refused together with what the full pass decides.
+  const detailParam = ctx.query.get('detail') ?? undefined;
+  if (detailParam !== undefined && detailParam !== 'light' && detailParam !== 'full') throw new Refusal(422, 'invalid-query', '"detail" must be light or full.');
+  const light = detailParam === 'light';
+  const cataloguedParam = ctx.query.get('catalogued');
+  if (cataloguedParam !== null && cataloguedParam !== 'true' && cataloguedParam !== 'false') throw new Refusal(422, 'invalid-query', '"catalogued" must be true or false.');
+  const catalogued = cataloguedParam === null ? undefined : cataloguedParam === 'true';
+  if (catalogued !== undefined && !light) throw new Refusal(422, 'invalid-query', '"catalogued" needs detail=light.');
+  if (light && (sorted || search || requiresAssistance !== undefined || reviewStatus || sourceRef !== undefined || Object.keys(dates).length > 0)) {
+    throw new Refusal(422, 'invalid-query', 'detail=light lists in unit order and takes only languageId, level, minEncounters, unresolved, catalogued, limit and after.');
+  }
   const { store, engine } = ctx.deps;
   const learnerId = ctx.session.learnerId;
   await engine.knowledge(learnerId, []); // ensure the projection and alias re-keying are current
@@ -834,130 +856,279 @@ route('GET', '/vocabulary', true, async (ctx) => {
     for (const r of rows) counts[r.level]++;
     catalog = { total: rows.length, counts };
   }
-  const matches: Array<{ knowledge: import('../../repository-contract/src').UnitKnowledge; unit?: LinguisticUnit; surfaceForms: string[]; lastEncounter?: string; firstEncounter?: string; reviewStatus?: 'none' | 'active' | 'suspended'; sources: SourceRef[] }> = [];
-  // Explicit sorting scans every bounded store page, then sorts the filtered rows globally. The
-  // old omitted-sort path below remains indexed unitId pagination for existing clients/cursors.
-  let cursor = sorted ? '' : (after ?? '');
-  let hasMore = false;
-  const pageSize = Math.max(100, limit);
-  while (sorted || matches.length < limit) {
-    const rows = store.getKnowledgePage
-      ? await store.getKnowledgePage(learnerId, { languageId, after: cursor || undefined, limit: pageSize, sourceRef })
-      : (await store.getKnowledge(learnerId)).filter((r) => r.languageId === languageId && r.unitId > cursor).slice(0, pageSize);
-    if (!rows.length) break;
-    const encountered = rows.filter((r) => r.encounters > 0 && (!level || r.level === level));
-    const units = await store.getUnits(encountered.map((r) => r.unitId));
-    const unitsById = new Map(units.map((u) => [u.unitId, u]));
+  type Match = VocabMatch;
+  type Knowledge = Match['knowledge'];
+  /** Which of the per-unit summaries a pass needs. The full pass (everything the response shows) is what a returned row always gets. */
+  type Parts = { forms: boolean; assistance: boolean; dates: boolean; review: boolean };
+  const FULL: Parts = { forms: true, assistance: true, dates: true, review: true };
+  type Aux = {
+    unitsById: Map<string, LinguisticUnit>; aliases: Awaited<ReturnType<typeof store.aliasesFor>>; aliasLabels: Map<string, string>;
+    summariesByUnit: Map<string, Array<{ unitId: string; event: StoredEvent }>>; assistanceIds: Set<string>;
+    datesByUnit: Map<string, { unitId: string; firstEncounter?: string; lastEncounter?: string }>;
+    reviewByUnit: Map<string, Array<{ unitId: string; event: StoredEvent }>>;
+  };
+  /** The per-unit lookups for a set of ENCOUNTERED knowledge rows, one batch of statements for the whole set (each is keyed by unit, never by learner scan). */
+  const loadAux = async (encountered: Knowledge[], parts: Parts): Promise<Aux> => {
     const pageIds = encountered.map((r) => r.unitId);
-    const aliases = [...await store.aliasesFor(pageIds), ...(store.aliasesTo ? await store.aliasesTo(pageIds) : [])];
-    const aliasUnits = await store.getUnits([...new Set(aliases.flatMap((a) => [a.oldId, a.newId]))]);
-    const aliasLabels = new Map(aliasUnits.map((u) => [u.unitId, u.label]));
-    let summaries: Array<{ unitId: string; event: StoredEvent }>;
-    if (store.listEncounterSummaries) summaries = await store.listEncounterSummaries(learnerId, languageId, pageIds, 25);
-    else {
-      summaries = [];
-      for (const unitId of pageIds) {
-        const events = await store.list({ learnerId, languageId, unitId, kinds: ['EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested'], limit: 25, order: 'desc' });
-        summaries.push(...events.map((event) => ({ unitId, event })));
-      }
+    const units = await store.getUnits(pageIds);
+    const unitsById = new Map(units.map((u) => [u.unitId, u]));
+    let aliases: Aux['aliases'] = [];
+    const aliasLabels = new Map<string, string>();
+    const summariesByUnit: Aux['summariesByUnit'] = new Map();
+    if (parts.forms) {
+      aliases = [...await store.aliasesFor(pageIds), ...(store.aliasesTo ? await store.aliasesTo(pageIds) : [])];
+      const aliasUnits = await store.getUnits([...new Set(aliases.flatMap((a) => [a.oldId, a.newId]))]);
+      for (const u of aliasUnits) aliasLabels.set(u.unitId, u.label);
     }
-    const summariesByUnit = new Map<string, typeof summaries>();
-    for (const summary of summaries) summariesByUnit.set(summary.unitId, [...(summariesByUnit.get(summary.unitId) ?? []), summary]);
-    const assistanceIds = new Set(store.listAssistanceRequestedUnitIds
-      ? await store.listAssistanceRequestedUnitIds(learnerId, languageId, pageIds)
-      : summaries.filter((summary) => summary.event.kind === 'AssistanceRequested').map((summary) => summary.unitId));
-    const dateRanges = store.getEncounterDateRanges ? await store.getEncounterDateRanges(learnerId, languageId, pageIds) : [];
+    let summaries: Array<{ unitId: string; event: StoredEvent }> = [];
+    if (parts.forms || (parts.assistance && !store.listAssistanceRequestedUnitIds)) {
+      if (store.listEncounterSummaries) summaries = await store.listEncounterSummaries(learnerId, languageId, pageIds, 25);
+      else {
+        for (const unitId of pageIds) {
+          const events = await store.list({ learnerId, languageId, unitId, kinds: ['EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested'], limit: 25, order: 'desc' });
+          summaries.push(...events.map((event) => ({ unitId, event })));
+        }
+      }
+      for (const summary of summaries) summariesByUnit.set(summary.unitId, [...(summariesByUnit.get(summary.unitId) ?? []), summary]);
+    }
+    const assistanceIds = new Set(parts.assistance
+      ? store.listAssistanceRequestedUnitIds
+        ? await store.listAssistanceRequestedUnitIds(learnerId, languageId, pageIds)
+        : summaries.filter((summary) => summary.event.kind === 'AssistanceRequested').map((summary) => summary.unitId)
+      : []);
+    const dateRanges = parts.dates && store.getEncounterDateRanges ? await store.getEncounterDateRanges(learnerId, languageId, pageIds) : [];
     const datesByUnit = new Map(dateRanges.map((x) => [x.unitId, x]));
-    const reviewSummaries = store.listReviewStatusSummaries ? await store.listReviewStatusSummaries(learnerId, languageId, pageIds) : [];
-    const reviewByUnit = new Map<string, typeof reviewSummaries>();
+    const reviewSummaries = parts.review && store.listReviewStatusSummaries ? await store.listReviewStatusSummaries(learnerId, languageId, pageIds) : [];
+    const reviewByUnit: Aux['reviewByUnit'] = new Map();
     for (const summary of reviewSummaries) reviewByUnit.set(summary.unitId, [...(reviewByUnit.get(summary.unitId) ?? []), summary]);
-    for (const knowledge of rows) {
-      cursor = knowledge.unitId;
-      if (knowledge.encounters <= 0 || (level && knowledge.level !== level)) continue;
-      const unit = unitsById.get(knowledge.unitId);
-      const relatedAliases = aliases.filter((a) => a.oldId === knowledge.unitId || a.newId === knowledge.unitId);
-      const surfaceForms = [...new Set([unit?.label, ...relatedAliases.flatMap((a) => [aliasLabels.get(a.oldId), aliasLabels.get(a.newId)])].filter((x): x is string => !!x))].slice(0, 20);
-      let lastEncounter: string | undefined;
-      const sources = new Map<string, SourceRef>();
-      for (const { event: e } of summariesByUnit.get(knowledge.unitId) ?? []) {
-        if (e.kind === 'EncounterRecorded' || e.kind === 'SelectionLookedUp' || e.kind === 'AssistanceRequested') {
-          if (!lastEncounter || Date.parse(e.at) > Date.parse(lastEncounter)) lastEncounter = e.at;
-        }
-        if (e.kind === 'EncounterRecorded' || e.kind === 'SelectionLookedUp') {
-          const surface = (e.payload as { surface?: unknown }).surface;
-          if (typeof surface === 'string' && !surfaceForms.includes(surface) && surfaceForms.length < 20) surfaceForms.push(surface);
-        }
-        if (e.subject.sourceRef && sources.size < 10) sources.set(JSON.stringify(e.subject.sourceRef), e.subject.sourceRef);
+    return { unitsById, aliases, aliasLabels, summariesByUnit, assistanceIds, datesByUnit, reviewByUnit };
+  };
+  /** One knowledge row to its listing entry, or undefined when a filter drops it. The filters are the route's, applied to whatever `parts` loaded. */
+  const build = (knowledge: Knowledge, aux: Aux): Match | undefined => {
+    if (knowledge.encounters <= 0 || (level && knowledge.level !== level)) return undefined;
+    const unit = aux.unitsById.get(knowledge.unitId);
+    const relatedAliases = aux.aliases.filter((a) => a.oldId === knowledge.unitId || a.newId === knowledge.unitId);
+    const surfaceForms = [...new Set([unit?.label, ...relatedAliases.flatMap((a) => [aux.aliasLabels.get(a.oldId), aux.aliasLabels.get(a.newId)])].filter((x): x is string => !!x))].slice(0, 20);
+    let lastEncounter: string | undefined;
+    const sources = new Map<string, SourceRef>();
+    for (const { event: e } of aux.summariesByUnit.get(knowledge.unitId) ?? []) {
+      if (e.kind === 'EncounterRecorded' || e.kind === 'SelectionLookedUp' || e.kind === 'AssistanceRequested') {
+        if (!lastEncounter || Date.parse(e.at) > Date.parse(lastEncounter)) lastEncounter = e.at;
       }
-      const range = datesByUnit.get(knowledge.unitId);
-      const firstEncounter = range?.firstEncounter;
-      const exactLastEncounter = range?.lastEncounter ?? lastEncounter;
-      const perCard = reviewByUnit.get(knowledge.unitId) ?? [];
-      const cardStates = perCard.map(({ event }) => {
-        if (event.kind === 'CardAdded') return 'active';
-        if (event.kind === 'ReviewItemInvalidated') return 'suspended';
-        const reason = (event.payload as Record<string, unknown>).reason;
-        return reason === 'suspended' ? 'suspended' : reason === 'dismissed' ? 'none' : 'active';
-      });
-      const currentReviewStatus: 'none' | 'active' | 'suspended' = cardStates.includes('active') ? 'active' : cardStates.includes('suspended') ? 'suspended' : 'none';
-      if (knowledge.encounters < minEncounters) continue;
-      if (dates.firstEncounterFrom && (!firstEncounter || Date.parse(firstEncounter) < Date.parse(dates.firstEncounterFrom))) continue;
-      if (dates.firstEncounterTo && (!firstEncounter || Date.parse(firstEncounter) > Date.parse(dates.firstEncounterTo))) continue;
-      if (dates.lastEncounterFrom && (!exactLastEncounter || Date.parse(exactLastEncounter) < Date.parse(dates.lastEncounterFrom))) continue;
-      if (dates.lastEncounterTo && (!exactLastEncounter || Date.parse(exactLastEncounter) > Date.parse(dates.lastEncounterTo))) continue;
-      const assisted = assistanceIds.has(knowledge.unitId);
-      if (requiresAssistance !== undefined && assisted !== requiresAssistance) continue;
-      const status = knowledge.analysisStatus ?? unit?.status;
-      const isUnresolved = status !== 'verified' && status !== 'high-confidence';
-      if (unresolved !== undefined && isUnresolved !== unresolved) continue;
-      if (reviewStatus && currentReviewStatus !== reviewStatus) continue;
-      const haystack = [unit?.label, ...surfaceForms].filter(Boolean).join('\n').normalize('NFC').toLowerCase();
-      if (search && !haystack.includes(search.normalize('NFC').toLowerCase())) continue;
-      matches.push({ knowledge, ...(unit ? { unit } : {}), surfaceForms, ...(firstEncounter ? { firstEncounter } : {}), ...(exactLastEncounter ? { lastEncounter: exactLastEncounter } : {}), reviewStatus: currentReviewStatus, sources: [...sources.values()] });
-      if (!sorted && matches.length >= limit) { hasMore = true; break; }
-    }
-    if (rows.length < pageSize) break;
-    hasMore = true;
-  }
-  if (sorted) {
-    const labelOf = (m: typeof matches[number]): string => m.unit?.label ?? m.surfaceForms[0] ?? '';
-    // Use code-point ordering instead of locale state so page boundaries are stable across hosts.
-    const cmpText = (a: string, b: string): number => a < b ? -1 : a > b ? 1 : 0;
-    const compare = (a: typeof matches[number], b: typeof matches[number]): number => {
-      if (sortParam === 'knowledge') {
-        return KNOWLEDGE_LEVELS.indexOf(a.knowledge.level) - KNOWLEDGE_LEVELS.indexOf(b.knowledge.level)
-          || a.knowledge.retention.estimate - b.knowledge.retention.estimate
-          || b.knowledge.uncertainty - a.knowledge.uncertainty
-          || cmpText(labelOf(a), labelOf(b)) || cmpText(a.knowledge.unitId, b.knowledge.unitId);
+      if (e.kind === 'EncounterRecorded' || e.kind === 'SelectionLookedUp') {
+        const surface = (e.payload as { surface?: unknown }).surface;
+        if (typeof surface === 'string' && !surfaceForms.includes(surface) && surfaceForms.length < 20) surfaceForms.push(surface);
       }
-      if (sortParam === 'recent') return (b.lastEncounter ? Date.parse(b.lastEncounter) : -Infinity) - (a.lastEncounter ? Date.parse(a.lastEncounter) : -Infinity)
-        || cmpText(a.knowledge.unitId, b.knowledge.unitId);
-      return cmpText(labelOf(a), labelOf(b)) || cmpText(a.knowledge.unitId, b.knowledge.unitId);
-    };
-    matches.sort(compare);
-    // Locate the boundary by its deterministic unit id. The other key fields are
-    // carried for an opaque, self-describing cursor, but retention can decay on a
-    // later request without changing the learner's record or invalidating paging.
-    const afterIndex = sortAfter ? matches.findIndex((m) => m.knowledge.unitId === sortAfter.unitId) : -1;
-    if (sortAfter && afterIndex < 0) throw new Refusal(422, 'invalid-query', 'The cursor no longer matches this vocabulary list. Refresh and try again.');
-    const start = afterIndex + 1;
-    const page = matches.slice(start, start + limit);
-    const more = start + page.length < matches.length;
-    const last = page[page.length - 1];
-    let nextCursor: string | undefined;
-    if (more && last) {
-      const label = labelOf(last);
-      const key: SortCursor = sortParam === 'knowledge'
-        ? { sort: 'knowledge', rank: KNOWLEDGE_LEVELS.indexOf(last.knowledge.level), retention: last.knowledge.retention.estimate, uncertainty: last.knowledge.uncertainty, label, unitId: last.knowledge.unitId }
-        : sortParam === 'recent'
-          ? { sort: 'recent', last: last.lastEncounter ?? '', unitId: last.knowledge.unitId }
-          : { sort: 'alphabetical', label, unitId: last.knowledge.unitId };
-      nextCursor = `v1.${encodeURIComponent(JSON.stringify(key))}`;
+      if (e.subject.sourceRef && sources.size < 10) sources.set(JSON.stringify(e.subject.sourceRef), e.subject.sourceRef);
     }
-    return respond(200, { items: page, catalog, ...(nextCursor ? { nextCursor } : {}) });
+    const range = aux.datesByUnit.get(knowledge.unitId);
+    const firstEncounter = range?.firstEncounter;
+    const exactLastEncounter = range?.lastEncounter ?? lastEncounter;
+    const perCard = aux.reviewByUnit.get(knowledge.unitId) ?? [];
+    const cardStates = perCard.map(({ event }) => {
+      if (event.kind === 'CardAdded') return 'active';
+      if (event.kind === 'ReviewItemInvalidated') return 'suspended';
+      const reason = (event.payload as Record<string, unknown>).reason;
+      return reason === 'suspended' ? 'suspended' : reason === 'dismissed' ? 'none' : 'active';
+    });
+    const currentReviewStatus: 'none' | 'active' | 'suspended' = cardStates.includes('active') ? 'active' : cardStates.includes('suspended') ? 'suspended' : 'none';
+    if (knowledge.encounters < minEncounters) return undefined;
+    if (dates.firstEncounterFrom && (!firstEncounter || Date.parse(firstEncounter) < Date.parse(dates.firstEncounterFrom))) return undefined;
+    if (dates.firstEncounterTo && (!firstEncounter || Date.parse(firstEncounter) > Date.parse(dates.firstEncounterTo))) return undefined;
+    if (dates.lastEncounterFrom && (!exactLastEncounter || Date.parse(exactLastEncounter) < Date.parse(dates.lastEncounterFrom))) return undefined;
+    if (dates.lastEncounterTo && (!exactLastEncounter || Date.parse(exactLastEncounter) > Date.parse(dates.lastEncounterTo))) return undefined;
+    const assisted = aux.assistanceIds.has(knowledge.unitId);
+    if (requiresAssistance !== undefined && assisted !== requiresAssistance) return undefined;
+    const status = knowledge.analysisStatus ?? unit?.status;
+    const isUnresolved = status !== 'verified' && status !== 'high-confidence';
+    if (unresolved !== undefined && isUnresolved !== unresolved) return undefined;
+    if (reviewStatus && currentReviewStatus !== reviewStatus) return undefined;
+    const haystack = [unit?.label, ...surfaceForms].filter(Boolean).join('\n').normalize('NFC').toLowerCase();
+    if (search && !haystack.includes(search.normalize('NFC').toLowerCase())) return undefined;
+    return { knowledge, ...(unit ? { unit } : {}), surfaceForms, ...(firstEncounter ? { firstEncounter } : {}), ...(exactLastEncounter ? { lastEncounter: exactLastEncounter } : {}), reviewStatus: currentReviewStatus, sources: [...sources.values()] };
+  };
+  const storePage = async (cursor: string, size: number): Promise<Knowledge[]> => store.getKnowledgePage
+    ? await store.getKnowledgePage(learnerId, { languageId, after: cursor || undefined, limit: size, sourceRef })
+    : (await store.getKnowledge(learnerId)).filter((r) => r.languageId === languageId && r.unitId > cursor).slice(0, size);
+  const encounteredOf = (rows: Knowledge[]): Knowledge[] => rows.filter((r) => r.encounters > 0 && (!level || r.level === level));
+
+  if (light) {
+    // Unit order and the unsorted listing's cursors (a unit id). Each store page is filtered and let go before the next is read, so the walk holds
+    // one page of rows however long the vocabulary is; with `catalogued=false` a whole vocabulary usually answers in one small response.
+    const matches: Match[] = [];
+    let cursor = after ?? '';
+    let hasMore = false;
+    const pageSize = 500;
+    walk: for (;;) {
+      const rows = await storePage(cursor, pageSize);
+      if (!rows.length) break;
+      const wanted = encounteredOf(rows).filter((k) => k.encounters >= minEncounters);
+      const unitsById = new Map((wanted.length ? await store.getUnits(wanted.map((k) => k.unitId)) : []).map((u) => [u.unitId, u]));
+      const wantedIds = new Set(wanted.map((k) => k.unitId));
+      for (const knowledge of rows) {
+        cursor = knowledge.unitId;
+        if (!wantedIds.has(knowledge.unitId)) continue;
+        const unit = unitsById.get(knowledge.unitId);
+        if (catalogued !== undefined && !!unit !== catalogued) continue;
+        if (unresolved !== undefined) {
+          const status = knowledge.analysisStatus ?? unit?.status;
+          if ((status !== 'verified' && status !== 'high-confidence') !== unresolved) continue;
+        }
+        matches.push({ knowledge, ...(unit ? { unit } : {}), surfaceForms: unit ? [unit.label] : [], sources: [] });
+        if (matches.length >= limit) { hasMore = true; break walk; }
+      }
+      if (rows.length < pageSize) break;
+    }
+    return respond(200, { items: matches, catalog, detail: 'light', ...(hasMore ? { nextCursor: cursor } : {}) });
   }
-  return respond(200, { items: matches, catalog, ...(hasMore ? { nextCursor: cursor } : {}) });
+
+  if (!sorted) {
+    // The omitted-sort path stays indexed unitId pagination, for existing clients and cursors: every returned row gets the full treatment, page by page.
+    const matches: Match[] = [];
+    let cursor = after ?? '';
+    let hasMore = false;
+    const pageSize = Math.max(100, limit);
+    while (matches.length < limit) {
+      const rows = await storePage(cursor, pageSize);
+      if (!rows.length) break;
+      const encountered = encounteredOf(rows);
+      const aux = await loadAux(encountered, FULL);
+      for (const knowledge of rows) {
+        cursor = knowledge.unitId;
+        const m = build(knowledge, aux);
+        if (!m) continue;
+        matches.push(m);
+        if (matches.length >= limit) { hasMore = true; break; }
+      }
+      if (rows.length < pageSize) break;
+      hasMore = true;
+    }
+    return respond(200, { items: matches, catalog, ...(hasMore ? { nextCursor: cursor } : {}) });
+  }
+
+  // Explicit sorting orders the learner's whole filtered vocabulary, and a page cursor is a position in that order. The order is worked out ONCE per
+  // (learner, language, filters, sort) and kept, keyed by the learner's head sequence, exactly as `rankedCandidates` keeps the candidate ranking: pages 2..n of a
+  // walk read it back, and any append (the head moves), a projection change (the catalog moves) or the time window ends it. Only the rows of the page returned
+  // are then enriched (surface forms, sources, dates, review status): a page costs what 100 rows cost, whatever the size of the event log.
+  const labelOf = (m: Match): string => m.unit?.label ?? m.surfaceForms[0] ?? '';
+  // Use code-point ordering instead of locale state so page boundaries are stable across hosts.
+  const cmpText = (a: string, b: string): number => a < b ? -1 : a > b ? 1 : 0;
+  const compare = (a: Match, b: Match): number => {
+    if (sortParam === 'knowledge') {
+      return KNOWLEDGE_LEVELS.indexOf(a.knowledge.level) - KNOWLEDGE_LEVELS.indexOf(b.knowledge.level)
+        || a.knowledge.retention.estimate - b.knowledge.retention.estimate
+        || b.knowledge.uncertainty - a.knowledge.uncertainty
+        || cmpText(labelOf(a), labelOf(b)) || cmpText(a.knowledge.unitId, b.knowledge.unitId);
+    }
+    if (sortParam === 'recent') return (b.lastEncounter ? Date.parse(b.lastEncounter) : -Infinity) - (a.lastEncounter ? Date.parse(a.lastEncounter) : -Infinity)
+      || cmpText(a.knowledge.unitId, b.knowledge.unitId);
+    return cmpText(labelOf(a), labelOf(b)) || cmpText(a.knowledge.unitId, b.knowledge.unitId);
+  };
+  const filterSig = JSON.stringify([learnerId, languageId, sortParam, level ?? null, search, minEncounters, dates, requiresAssistance ?? null, unresolved ?? null, reviewStatus ?? null, sourceRef ?? null, catalog]);
+  const nowMs = Date.parse(ctx.now());
+  const head = await store.head(learnerId);
+  let caches = orderCaches.get(store);
+  if (!caches) { caches = new Map(); orderCaches.set(store, caches); }
+  const hit = caches.get(filterSig);
+  let ordered: Match[];
+  if (hit && hit.head === head && nowMs - hit.at >= 0 && nowMs - hit.at < CANDIDATE_CACHE_MS) ordered = hit.ordered;
+  else {
+    // A light pass over every row: only what the filters and the sort key need. Rows the light pass cannot decide exactly (no unit row, so the label may
+    // come from an alias or an event surface; no recorded encounter date, so the last encounter may come from the event summaries; a search, which reads the
+    // surface forms) take the full pass, so the order is the one the old code produced.
+    const datesNeeded = sortParam === 'recent' || !!(dates.firstEncounterFrom || dates.firstEncounterTo || dates.lastEncounterFrom || dates.lastEncounterTo);
+    const lightParts: Parts = { forms: false, assistance: requiresAssistance !== undefined, dates: datesNeeded, review: !!reviewStatus };
+    const lightOk = !search && (!datesNeeded || !!store.getEncounterDateRanges) && (requiresAssistance === undefined || !!store.listAssistanceRequestedUnitIds);
+    const all: Match[] = [];
+    let cursor = '';
+    const pageSize = 500;
+    for (;;) {
+      const rows = await storePage(cursor, pageSize);
+      if (!rows.length) break;
+      const encountered = encounteredOf(rows);
+      const lightAux = lightOk ? await loadAux(encountered, lightParts) : undefined;
+      const needFull = lightAux ? encountered.filter((k) => !lightAux.unitsById.has(k.unitId) || (datesNeeded && !lightAux.datesByUnit.get(k.unitId)?.lastEncounter)) : encountered;
+      const fullAux = needFull.length ? await loadAux(needFull, FULL) : undefined;
+      const fullIds = new Set(needFull.map((k) => k.unitId));
+      for (const knowledge of rows) {
+        cursor = knowledge.unitId;
+        const m = fullIds.has(knowledge.unitId) ? build(knowledge, fullAux!) : lightAux ? build(knowledge, lightAux) : undefined;
+        if (m) all.push(m);
+      }
+      if (rows.length < pageSize) break;
+    }
+    all.sort(compare);
+    ordered = all;
+    dropExpired(caches, nowMs);
+    if (caches.size >= 32) caches.delete(caches.keys().next().value as string);
+    const entry = { learnerId, head, at: nowMs, ordered };
+    caches.set(filterSig, entry);
+    forgetAfterWindow(caches, filterSig, entry);
+  }
+  // Locate the boundary by its deterministic unit id. The other key fields are
+  // carried for an opaque, self-describing cursor, but retention can decay on a
+  // later request without changing the learner's record or invalidating paging.
+  const afterIndex = sortAfter ? ordered.findIndex((m) => m.knowledge.unitId === sortAfter.unitId) : -1;
+  if (sortAfter && afterIndex < 0) throw new Refusal(422, 'invalid-query', 'The cursor no longer matches this vocabulary list. Refresh and try again.');
+  const start = afterIndex + 1;
+  const slice = ordered.slice(start, start + limit);
+  const more = start + slice.length < ordered.length;
+  // The page itself gets the full treatment (surface forms, sources, exact dates, review status); entries that were already built in full are kept.
+  const sliceAux = slice.length ? await loadAux(slice.map((m) => m.knowledge), FULL) : undefined;
+  const page = slice.map((m) => build(m.knowledge, sliceAux!) ?? m);
+  const last = page[page.length - 1];
+  let nextCursor: string | undefined;
+  if (more && last) {
+    const label = labelOf(last);
+    const key: SortCursor = sortParam === 'knowledge'
+      ? { sort: 'knowledge', rank: KNOWLEDGE_LEVELS.indexOf(last.knowledge.level), retention: last.knowledge.retention.estimate, uncertainty: last.knowledge.uncertainty, label, unitId: last.knowledge.unitId }
+      : sortParam === 'recent'
+        ? { sort: 'recent', last: last.lastEncounter ?? '', unitId: last.knowledge.unitId }
+        : { sort: 'alphabetical', label, unitId: last.knowledge.unitId };
+    nextCursor = `v1.${encodeURIComponent(JSON.stringify(key))}`;
+  }
+  return respond(200, { items: page, catalog, ...(nextCursor ? { nextCursor } : {}) });
 });
+
+/**
+ * The sorted vocabulary order, shared by the pages of one walk (see the sorted branch of GET /vocabulary). One entry per learner, language, sort and filter set,
+ * valid only while the learner's event head and the catalog are unchanged and for CANDIDATE_CACHE_MS; at most 32 entries, the oldest dropped first.
+ */
+const orderCaches = new WeakMap<object, Map<string, { learnerId: string; head: number; at: number; ordered: VocabMatch[] }>>();
+
+/** An entry past its window is never served again; it is also not kept: every insert drops the expired ones, so a learner's list does not sit in memory behind a quiet key. */
+function dropExpired(cache: Map<string, { at: number }>, nowMs: number): void {
+  for (const [key, entry] of cache) if (!(nowMs - entry.at >= 0 && nowMs - entry.at < CANDIDATE_CACHE_MS)) cache.delete(key);
+}
+
+/**
+ * An entry is useless once its window has passed, and until 2026-11-13 it stayed until the next insert dropped it: a learner's whole ranked list and
+ * ordered vocabulary sat in memory after their last request. Each entry now leaves on its own when the window ends (unless a newer one took its key).
+ * The timer never keeps the process alive.
+ */
+function forgetAfterWindow<E>(cache: Map<string, E>, key: string, entry: E): void {
+  const timer = setTimeout(() => { if (cache.get(key) === entry) cache.delete(key); }, CANDIDATE_CACHE_MS + 1000);
+  (timer as { unref?: () => void }).unref?.();
+}
+
+/**
+ * Deleting an account deletes what this process holds of it in memory too (the two per-learner caches below and above): called where a learner is erased
+ * (DELETE /me here; the scheduled purge through `MaintenanceOptions.onErased`). The entries could not be served to anyone (they are keyed by learner and
+ * the sessions are gone); this is so that "deleted" is true of the process as well as of the database.
+ */
+export function forgetLearnerCaches(store: object, learnerId: string): void {
+  for (const caches of [orderCaches.get(store), candidateCaches.get(store)]) {
+    if (!caches) continue;
+    for (const [key, entry] of caches) if (entry.learnerId === learnerId) caches.delete(key);
+  }
+}
+
+/** How many entries the two per-learner caches hold for a learner (tests only). */
+export function learnerCacheEntries(store: object, learnerId: string): number {
+  let n = 0;
+  for (const caches of [orderCaches.get(store), candidateCaches.get(store)]) for (const entry of caches?.values() ?? []) if (entry.learnerId === learnerId) n += 1;
+  return n;
+}
 
 /**
  * The learner's whole ranked candidate list, shared by the pages of one load. Paging used to rank the complete set again for every page (a learner with
@@ -965,7 +1136,7 @@ route('GET', '/vocabulary', true, async (ctx) => {
  * event log has not moved, so a push (a new lookup, a review) always ranks afresh.
  */
 export const CANDIDATE_CACHE_MS = 20_000;
-const candidateCaches = new WeakMap<object, Map<string, { head: number; at: number; ranked: Awaited<ReturnType<ServiceDeps['engine']['candidates']>> }>>();
+const candidateCaches = new WeakMap<object, Map<string, { learnerId: string; head: number; at: number; ranked: Awaited<ReturnType<ServiceDeps['engine']['candidates']>> }>>();
 async function rankedCandidates(ctx: Ctx, enrolmentId: string, objectiveDimensions: import('../../repository-contract/src').Dimension[] = []) {
   const { store, engine } = ctx.deps;
   const learnerId = ctx.session.learnerId;
@@ -977,8 +1148,11 @@ async function rankedCandidates(ctx: Ctx, enrolmentId: string, objectiveDimensio
   const hit = cache.get(key);
   if (hit && hit.head === head && nowMs - hit.at >= 0 && nowMs - hit.at < CANDIDATE_CACHE_MS) return hit.ranked;
   const ranked = await engine.candidates(learnerId, enrolmentId, { limit: Number.MAX_SAFE_INTEGER, now: ctx.now(), objectiveDimensions });
+  dropExpired(cache, nowMs);
   if (cache.size >= 64) cache.delete(cache.keys().next().value as string);
-  cache.set(key, { head, at: nowMs, ranked });
+  const entry = { learnerId, head, at: nowMs, ranked };
+  cache.set(key, entry);
+  forgetAfterWindow(cache, key, entry);
   return ranked;
 }
 

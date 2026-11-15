@@ -6,13 +6,17 @@
  * With no session (or no enrolment yet) an event is attributed to a local pseudonymous learner `local:<deviceId>` and
  * stays on this device; `reattributeQueued` rewrites those events when the learner signs in or enrols, so nothing
  * recorded before the account existed is lost, and nothing is sent under a name that is not the learner's.
+ *
+ * A learner's own mark (ItemMarked) goes to the account under the enrolment of its word's language, whichever language is selected (2026-11-05): it is the
+ * learner's explicit word about a word, and held back on the device it left the card and every other app showing the old level. A mark in a language the
+ * account has no enrolment in stays on this device, and the rest of a page's events still wait for their language to be selected.
  */
 import { MAX_FUTURE_SKEW_MS, validateEvent, type GoEvent, type ValidationIssue } from '../../../repository-contract/src';
 import { QUEUE_PREFIX, getByPrefix, readableRow, type LocalQueue, type QueueRow } from '../../../repository-sync/src';
-import { EVENT_KEY_PREFIX, createStorageEncounterStore } from '../store';
+import { EVENT_KEY_PREFIX, createStorageEncounterStore, readPrefix } from '../store';
 import type { StorageArea } from '../platform';
 import type { RecordReply } from '../protocol';
-import type { SessionManager } from './session';
+import { enrolmentIn, type SessionManager, type SessionRecord } from './session';
 import { limitEventWords } from './wordids';
 
 /** The only event kinds a content script may ask the background to record. */
@@ -22,8 +26,11 @@ export const CONTENT_EVENT_KINDS: readonly string[] = ['SelectionLookedUp', 'Enc
 export const PAGE_EVENT_KINDS: readonly string[] = [...CONTENT_EVENT_KINDS, 'PackInstalled', 'PreferenceChanged', 'ConsentGiven', 'ConsentWithdrawn'];
 export const PLACEHOLDER = 'pending';
 const MAX_EVENT_JSON = 6_000;
+const MARK_KIND = 'ItemMarked';
 
 export const localLearnerId = (deviceId: string): string => `local:${deviceId}`;
+/** How long recording waits for the device's Repository copy before it answers (the copy carries on by itself). */
+export const LOCAL_COPY_WAIT_MS = 1500;
 export const localEnrolmentId = (languageId: string): string => `local-enrolment:${languageId}`;
 export const isLocalLearner = (id: string): boolean => id.startsWith('local:');
 
@@ -50,13 +57,15 @@ export function createRecorder(opts: RecorderOptions) {
     const [s, deviceId] = await Promise.all([opts.session.current(), opts.deviceId()]);
     // An event in a language other than the selected enrolment's is not filed under that enrolment (audit P-07): it stays on this device under the local
     // pseudonym and is re-attributed when the learner selects (or enrols in) its language, exactly like an event recorded before sign-in.
-    const account = !!s?.enrolmentId && (!s.languageId || s.languageId === event.languageId);
+    const selected = !!s?.enrolmentId && (!s.languageId || s.languageId === event.languageId);
+    const enrolmentId = selected ? s!.enrolmentId! : s && event.kind === MARK_KIND ? enrolmentIn(s, event.languageId) : undefined;
+    const account = !!enrolmentId;
     return {
       attributed: account ? 'account' : 'local',
       event: {
         ...event,
         learnerId: account ? s!.learnerId : localLearnerId(deviceId),
-        enrolmentId: account ? s!.enrolmentId! : localEnrolmentId(event.languageId),
+        enrolmentId: enrolmentId ?? localEnrolmentId(event.languageId),
         producer: { ...event.producer, app, version: opts.version, deviceId },
       },
     };
@@ -87,27 +96,43 @@ export function createRecorder(opts: RecorderOptions) {
     if (written.duplicate) return { ok: true, duplicate: true, attributed };
     const queued = await opts.queue.enqueue(event);
     if (!queued.ok && queued.reason === 'invalid') return { ok: false, error: 'invalid-for-queue' };
-    try { await opts.onRecorded?.(event, attributed); } catch { /* the local copy is best effort: the log and the queue already hold the event */ }
+    // The device's Repository copy follows the log and the queue, which already hold the event (durable, synced from there). It is waited for
+    // a moment only (2026-11-09: after the worker slept, opening that copy rebuilds every word's knowledge from the whole history, 10 s and more
+    // with a large one; the card's request gave up at 4 s and said "Encounter not recorded" for an event that was recorded). It carries on
+    // by itself, in order, behind the copy's own lock.
+    const copied = Promise.resolve().then(() => opts.onRecorded?.(event, attributed)).catch(() => undefined);
+    await Promise.race([copied, new Promise<void>((resolve) => setTimeout(resolve, LOCAL_COPY_WAIT_MS))]);
     if (attributed === 'account') opts.onQueued?.();
     return { ok: true, attributed };
   }
 
-  /** Rewrites local-pseudonym events (queue and local log) to the account's identity. Events of other languages stay local. */
-  async function reattributeQueued(learnerId: string, enrolmentId: string, languageId: string): Promise<number> {
+  /** Rewrites local-pseudonym events (queue and local log) to the account's identity. Events of other languages stay local; `onlyKind` narrows it to one kind of event. */
+  async function reattributeQueued(learnerId: string, enrolmentId: string, languageId: string, onlyKind?: string): Promise<number> {
     let changed = 0;
     const rows = await getByPrefix<QueueRow>(opts.queue.area, QUEUE_PREFIX);
     for (const [key, row] of rows) {
       if (!readableRow(row)) continue;                       // a damaged row is the queue's to set aside, never this loop's to trip over
-      if (!isLocalLearner(row.event.learnerId) || row.event.languageId !== languageId) continue;
+      if (!isLocalLearner(row.event.learnerId) || row.event.languageId !== languageId || (onlyKind && row.event.kind !== onlyKind)) continue;
       await opts.queue.area.set({ [key]: { ...row, event: { ...row.event, learnerId, enrolmentId } } satisfies QueueRow });
       changed++;
     }
-    const all = await opts.area.get(null);
-    for (const [key, v] of Object.entries(all)) {
-      if (!key.startsWith(EVENT_KEY_PREFIX)) continue;
+    for (const [key, v] of await readPrefix(opts.area, EVENT_KEY_PREFIX)) {
       const ev = v as GoEvent;
-      if (!isLocalLearner(ev.learnerId) || ev.languageId !== languageId) continue;
+      if (!isLocalLearner(ev.learnerId) || ev.languageId !== languageId || (onlyKind && ev.kind !== onlyKind)) continue;
       await opts.area.set({ [key]: { ...ev, learnerId, enrolmentId } });
+    }
+    return changed;
+  }
+
+  /** Marks still waiting on this device whose language now has an enrolment on the account go to it; returns how many. Costs one read of the queue when none is waiting. */
+  async function fileWaitingMarks(s: Pick<SessionRecord, 'learnerId' | 'enrolmentId' | 'languageId' | 'enrolments'>): Promise<number> {
+    const rows = await getByPrefix<QueueRow>(opts.queue.area, QUEUE_PREFIX);
+    const languages = new Set<string>();
+    for (const [, row] of rows) if (readableRow(row) && row.event.kind === MARK_KIND && isLocalLearner(row.event.learnerId)) languages.add(row.event.languageId);
+    let changed = 0;
+    for (const languageId of languages) {
+      const enrolmentId = enrolmentIn(s, languageId);
+      if (enrolmentId) changed += await reattributeQueued(s.learnerId, enrolmentId, languageId, MARK_KIND);
     }
     return changed;
   }
@@ -124,7 +149,7 @@ export function createRecorder(opts: RecorderOptions) {
     return n;
   }
 
-  return { record, attribute, reattributeQueued, setAsideForeign, log };
+  return { record, attribute, reattributeQueued, fileWaitingMarks, setAsideForeign, log };
 }
 
 export type Recorder = ReturnType<typeof createRecorder>;

@@ -1,0 +1,287 @@
+{
+  "id": "la-exit-a",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "Hodie dies Dominica non est.",
+        "en": "Today is not Sunday.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "Marcus in schola est et Lucius quoque in schola est.",
+        "en": "Marcus is at school and Lucius is at school too.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "Martha panem vendit, sed Marcus panem non habet.",
+        "en": "Martha sells bread, but Marcus does not have bread.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "Samuel aquam habet. Aquam bibit.",
+        "en": "Samuel has water. He drinks the water.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "Anna fessa est; in domo est.",
+        "en": "Anna is tired; she is at home.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does the first line say?"
+        },
+        "options": [
+          {
+            "en": "Today is not Sunday"
+          },
+          {
+            "en": "Today is Sunday"
+          },
+          {
+            "en": "Tomorrow is Sunday"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where are Marcus and Lucius?"
+        },
+        "options": [
+          {
+            "en": "At school"
+          },
+          {
+            "en": "At church"
+          },
+          {
+            "en": "At the market"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r3"
+        ],
+        "kind": "who",
+        "question": {
+          "en": "Who does NOT have bread?"
+        },
+        "options": [
+          {
+            "en": "Marcus"
+          },
+          {
+            "en": "Martha"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r4"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Samuel drink?"
+        },
+        "options": [
+          {
+            "en": "Water"
+          },
+          {
+            "en": "Milk"
+          },
+          {
+            "en": "Wine"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "lines": [
+          "r5"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How is Anna, and where is she?"
+        },
+        "options": [
+          {
+            "en": "Tired; at home"
+          },
+          {
+            "en": "Well; at school"
+          },
+          {
+            "en": "Tired; at the market"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "Martha in ecclesia est.",
+        "en": "Martha is in church.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "Samuel lac habet.",
+        "en": "Samuel has milk.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Martha?"
+        },
+        "options": [
+          {
+            "en": "In church"
+          },
+          {
+            "en": "At the market"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Samuel have?"
+        },
+        "options": [
+          {
+            "en": "Milk"
+          },
+          {
+            "en": "Water"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "Where are Marcus and Lucius? Answer in Latin.",
+      "basedOn": [
+        "r2"
+      ],
+      "accept": [
+        {
+          "text": "Marcus et Lucius in schola sunt"
+        },
+        {
+          "text": "In schola sunt"
+        },
+        {
+          "text": "Marcus in schola est"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Give your name and say you are well.",
+      "basedOn": [
+        "la.sum-1sg",
+        "la.how-are-you"
+      ],
+      "personal": "your name",
+      "accept": [
+        {
+          "text": "{x} sum. Bene valeo"
+        },
+        {
+          "text": "{x} sum et bene valeo"
+        }
+      ]
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Ask for water, then say thank you.",
+      "basedOn": [
+        "la.volo",
+        "la.thanks"
+      ],
+      "accept": [
+        {
+          "text": "Aquam volo. Gratias tibi ago"
+        },
+        {
+          "text": "Aquam volo"
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say your name and that you want water.",
+      "model": "Samuel sum. Aquam volo."
+    }
+  ]
+}

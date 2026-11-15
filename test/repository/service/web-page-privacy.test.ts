@@ -14,7 +14,7 @@ import { storedSourceRef } from '../../../packages/repository-service/src/handle
 import { openSqliteStore } from '../../../packages/repository-store/src';
 import { sourceRefOf } from '../../../packages/golearn-extension/src/store';
 import { pageKeyOf } from '../../../packages/golearn-extension/src/text';
-import { scrubSqlite } from '../../../scripts/ops/scrub-web-sources.mts';
+import { scrubSqlite } from '../../../scripts/ops/lib.mts';
 import { L1, ev } from '../store/fixtures';
 
 const HASH = pageKeyOf('example.org', '/reset/secret-token');

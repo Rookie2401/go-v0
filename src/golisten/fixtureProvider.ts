@@ -17,6 +17,7 @@ export const FIXTURE_ENGINE = 'fixture-tone-v1';
 export const FIXTURE_DISCLAIMER = 'Fixture audio: sine-tone bursts, not speech. Replace with a real provider before any learner listens.';
 
 const VOICES: Record<LanguageCode, Array<{ id: string; locale: string }>> = {
+  arc: [{ id: 'fixture-arc', locale: 'arc' }], // Explicit test fixture only, never pronunciation evidence.
   // es-HN is deliberately absent: the Honduras course asks for it, so the fallback to es-419 is recorded honestly.
   es: [{ id: 'fixture-es-419', locale: 'es-419' }, { id: 'fixture-es-mx', locale: 'es-MX' }],
   sq: [{ id: 'fixture-sq-al', locale: 'sq-AL' }],

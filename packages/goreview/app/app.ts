@@ -247,14 +247,15 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     }
     paintSync(await ctx.syncView(), mode);
     // the account is offered any time, never required
-    clear(acctEl);
     if (mode !== 'none') {
       // the account (the person) beside the Settings cog: the account page handles every state, signed in or not
       const who = h('a', { href: '#/account', id: 'header-account', class: 'cog', 'aria-label': 'Account', title: 'Account', ...(route === 'account' ? { 'aria-current': 'page' } : {}) });
       who.append(personIcon(deps.doc));
       updateCog();
-      acctEl.append(who, cog);
-    }
+      acctEl.querySelector('#header-account')?.remove();
+      acctEl.prepend(who);
+      if (cog.parentElement !== acctEl) acctEl.append(cog);
+    } else clear(acctEl);
   }
 
   async function safeRefreshHeader(): Promise<void> {
@@ -398,6 +399,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
         }
       };
       activeSettingsTransition = transition;
+      void transition.ready.catch(() => {});
       void transition.finished.then(cleanup, cleanup);
     } else renderDone = show(r.id, r.params);
   };
@@ -419,6 +421,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     ready: () => renderDone,
     destroy() {
       destroyed = true;
+      activeSettingsTransition?.skipTransition();
       win.removeEventListener('hashchange', onHash);
       win.removeEventListener('goreview:update-ready', onUpdateReady);
       win.removeEventListener('resume', onResume);

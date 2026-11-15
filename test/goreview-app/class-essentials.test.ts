@@ -110,7 +110,7 @@ describe('Class Essentials: the cards', () => {
 describe('Class Essentials: in Saved decks', () => {
   it('is there on the first visit with no GoLearn encounter, and seeding again never duplicates it', async () => {
     const rig = await makeRig({ signedIn: true });
-    expect(await stored(rig)).toHaveLength(1); // the first visit of the home already seeded it
+    expect(await stored(rig)).toHaveLength(2); // the first visit of the home already seeded it, and the Alphabet beside it
     const first = await listSavedDecks(rig.app.ctx, 'L1', 'sq', 'sq-AL');
     const second = await listSavedDecks(rig.app.ctx, 'L1', 'sq', 'sq-AL');
     await rig.go('review/decks'); // its due line sits under its card in Saved decks (the owner, 2026-10-31)
@@ -118,13 +118,14 @@ describe('Class Essentials: in Saved decks', () => {
     expect(rig.q('#class-essentials-due-count').textContent).toBe('Nothing due');
     expect(rig.root.querySelector('#start-class-essentials-due')).toBeNull(); // the saved 28-card set does not become due work by being seeded
     await rig.go('review');
-    expect(first.map((d) => d.id)).toEqual(['class-essentials:sq']);
-    expect(second).toHaveLength(1);
+    expect(first.map((d) => d.id).sort()).toEqual(['alphabet:sq', 'class-essentials:sq']);
+    expect(second).toHaveLength(2);
     const decks = await stored(rig);
-    expect(decks).toHaveLength(1);
-    expect(decks[0].items).toHaveLength(28);
-    expect(new Set(decks[0].items.map((i) => i.unitId)).size).toBe(28);
-    expect(rig.q('#previous-count').textContent).toBe('1 saved');
+    expect(decks).toHaveLength(2);
+    const own = decks.find((d) => d.builtin === 'class-essentials')!;
+    expect(own.items).toHaveLength(28);
+    expect(new Set(own.items.map((i) => i.unitId)).size).toBe(28);
+    expect(rig.q('#previous-count').textContent).toBe('2 saved');
   });
 
   it('lists it by name with its description and note, beside the decks the learner saved, which are untouched', async () => {
@@ -133,10 +134,10 @@ describe('Class Essentials: in Saved decks', () => {
     await reopen(rig);
     await rig.go('review/decks');
     click(rig.q('#save-deck'));
-    await until(() => rig.qa('.deckrow').length === 2, 'the saved deck');
+    await until(() => rig.qa('.deckrow').length === 3, 'the saved deck');
     const mine = (await stored(rig)).find((d) => !d.builtin)!;
     await rig.go('review/decks');
-    await until(() => rig.qa('.deckrow').length === 2, 'both decks');
+    await until(() => rig.qa('.deckrow').length === 3, 'the saved deck and the two built-in ones');
     expect(rig.q('h2#decks-title').textContent).toBe('Saved decks');
     const row = rig.q('[data-deck-id="class-essentials:sq"]');
     // the preloaded deck: its name as a bigger title, the count and language under it, no description or note (the owner, 2026-10-28)
@@ -165,7 +166,7 @@ describe('Class Essentials: in Saved decks', () => {
     expect(rig.root.querySelector('#review-home #class-essentials-due')).toBeNull(); // not on the home: under its card in Saved decks (the owner, 2026-10-31)
     await rig.go('review/decks');
     click(rig.q('#save-deck'));
-    await until(() => rig.qa('.deckrow').length === 2, 'ordinary due card saved');
+    await until(() => rig.qa('.deckrow').length === 3, 'ordinary due card saved');
     await reopen(rig);
     expect(String(readyCards(rig))).toBe('1'); // saving does not hide due work from the current automatic plan
     await rig.go('review/decks');
@@ -223,19 +224,20 @@ describe('Class Essentials: in Saved decks', () => {
   it('Remove takes it out and it stays out; a quiet "Restore Class Essentials" brings it back once, without a duplicate', async () => {
     const rig = await makeRig({ signedIn: true });
     await rig.go('review/decks');
-    await until(() => rig.qa('.deckrow').length === 1, 'the deck');
+    await until(() => rig.qa('.deckrow').length === 2, 'the deck');
     expect(rig.root.querySelector('#restore-class-essentials')).toBeNull();
     click(rig.q('[data-deck-id="class-essentials:sq"] [data-action="remove-deck"]'));
     await until(() => !!rig.root.querySelector('#restore-class-essentials'), 'the restore link');
-    expect(rig.qa('.deckrow')).toHaveLength(0);
+    expect(rig.qa('.deckrow').map((row) => row.getAttribute('data-deck-id'))).toEqual(['alphabet:sq']); // the Alphabet is another deck and stays
     await listSavedDecks(rig.app.ctx, 'L1', 'sq');                         // another visit does not bring it back
     await rig.go('review'); await rig.go('review/decks');
     await until(() => !!rig.root.querySelector('#restore-class-essentials'), 'still removed');
-    expect(rig.qa('.deckrow')).toHaveLength(0);
+    expect(rig.qa('.deckrow')).toHaveLength(1);
     click(rig.q('#restore-class-essentials'));
-    await until(() => rig.qa('.deckrow').length === 1, 'the deck again');
+    await until(() => rig.qa('.deckrow').length === 2, 'the deck again');
     expect(rig.root.querySelector('#restore-class-essentials')).toBeNull();
-    expect((await stored(rig)).filter((d) => d.builtin)).toHaveLength(1);
+    expect((await stored(rig)).filter((d) => d.builtin === 'class-essentials')).toHaveLength(1);
+    expect((await stored(rig)).filter((d) => d.builtin)).toHaveLength(2);
   });
 
   it('shows the active language\'s own set, and no deck for a language without one', async () => {
@@ -251,10 +253,10 @@ describe('Class Essentials: in Saved decks', () => {
     };
     await pick('L1-e2');
     await rig.go('settings'); await rig.go('review/decks');
-    await until(() => !!rig.root.querySelector('.deckrow'), 'the German deck');
-    expect(rig.q('.deckrow-title').textContent).toBe('Class Essentials');
-    expect(rig.q('.deckrow-line').textContent).toBe('28 cards · German');
-    expect((await stored(rig, 'de'))[0].items[0].label).toBe('Hallo');
+    await until(() => !!rig.root.querySelector('[data-deck-id="class-essentials:de"]'), 'the German deck');
+    expect(rig.q('[data-deck-id="class-essentials:de"] .deckrow-title').textContent).toBe('Class Essentials');
+    expect(rig.q('[data-deck-id="class-essentials:de"] .deckrow-line').textContent).toBe('28 cards · German');
+    expect((await stored(rig, 'de')).find((d) => d.builtin === 'class-essentials')!.items[0].label).toBe('Hallo');
     await pick('L1-e3');
     await rig.go('settings'); await rig.go('review/decks');
     await until(() => !!rig.root.querySelector('#decks-empty'), 'no deck for English');
@@ -280,9 +282,10 @@ describe('Class Essentials: in Saved decks', () => {
     await listSavedDecks(rig.app.ctx, 'L1', 'la', 'la-ecclesiastical');
     await rig.go('review'); await rig.go('review/decks');
     const decks = await stored(rig, 'la');
-    expect(decks).toHaveLength(1);
-    expect(decks[0].items).toHaveLength(28);
-    expect(new Set(decks[0].items.map((i) => i.unitId)).size).toBe(28);
-    expect(decks[0].items[0].label).toBe('Salve');
+    expect(decks).toHaveLength(2); // Class Essentials and the Alphabet, once each
+    const own = decks.find((d) => d.builtin === 'class-essentials')!;
+    expect(own.items).toHaveLength(28);
+    expect(new Set(own.items.map((i) => i.unitId)).size).toBe(28);
+    expect(own.items[0].label).toBe('Salve');
   });
 });

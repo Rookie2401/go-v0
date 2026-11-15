@@ -43,7 +43,7 @@ Settings → **Clear local data** is the explicit way to remove the device's dat
 |---|---|
 | `#/signin` | the optional account (extension copy: "Not now", upload count) or the explanation of the hosted copy; email + password to the address in `config.json` (no field for it since 2026-10-28) |
 | `#/review` | Current Deck (start or resume), New (draw a fresh deck), Review Deck, Saved, and My Vocab |
-| `#/review/decks` | Saved decks, Class Essentials where available, and Save Current Deck |
+| `#/review/decks` | Saved decks, the built-in Alphabet deck (every language) and Class Essentials (where available), and Save Current Deck |
 | `#/review/details` | Missed words, selected practice, due summary, intake proposals, and deck controls. Open from Settings → Review details |
 | `#/review/session` | one exercise at a time, feedback, challenge, analysis-error report, per-item tools, summary; at the end of a deck: Repeat this deck, or New deck from the weak words (half of the new deck is the weak words, weakest first, the rest what is due or new next; `deckModel.ts` weakEntries / planFollowUp) |
 | `#/review/history/<item>` | the item's review history (the scheduler numbers are labelled bookkeeping) |

@@ -14,7 +14,8 @@ import { rankComparativePriority } from '../src/intake/intake';
 import type { AppContext } from './context';
 import { unitLabel } from './format';
 import { recordSavedDeckChange, sharedSavedDecks } from './savedDeckSync';
-import { classDeckFor, classLanguageOf, isClassUnit } from './classEssentials';
+import { alphabetDeckFor } from './alphabetDeck';
+import { classDeckFor, isClassUnit } from './classEssentials';
 import { readSnapshot, writeSnapshot, MAX_SNAPSHOT_WORDS } from './snapshot';
 import { observedReviewSeconds, type ReviewModel } from './workspace';
 
@@ -252,9 +253,12 @@ export function planFreshDeck(ctx: AppContext, model: ReviewModel, setAside: Rea
   return planCurrentDeck(ctx, { ...model, outcomes: rest.map((o) => ranked.get(key(o)) ?? o) }, setAside, undefined, 'current');
 }
 
-/** Due-only Class Essentials practice. Unreviewed seeded cards are never admitted as new work here. */
-export async function planClassEssentialsDue(ctx: AppContext, model: ReviewModel): Promise<SessionPlan> {
-  const deck = (model.classDeck ?? []).filter(item => effective(item).length > 0
+/**
+ * Due-only practice of a built-in deck (Class Essentials, Alphabet). Unreviewed seeded cards are never admitted as new work here. `units` names the
+ * deck's own cards: the two built-in decks share the class-card store, and each counts and asks only what is its own.
+ */
+export async function planClassEssentialsDue(ctx: AppContext, model: ReviewModel, units?: ReadonlySet<string>): Promise<SessionPlan> {
+  const deck = (model.classDeck ?? []).filter(item => (!units || units.has(item.unitId)) && effective(item).length > 0
     && item.status === 'active' && !item.invalidatedAt && !item.suspendedReason
     && Date.parse(item.schedule.due) <= Date.parse(model.now));
   const plan = ctx.engine.plan({ deck, intake: [], prefs: model.prefs, audio: model.audio, now: model.now,
@@ -329,12 +333,16 @@ export interface SavedDeck {
   languageId: string;
   varietyId?: string;
   items: DeckEntry[];
-  /** A built-in deck (Class Essentials) has a name, a description and notes of its own; a deck the learner saved has none. */
+  /** A built-in deck (Class Essentials, Alphabet) has a name, a description and notes of its own; a deck the learner saved has none. */
   name?: string;
   description?: string;
   notes?: string;
-  builtin?: 'class-essentials';
+  builtin?: BuiltinDeck;
 }
+
+/** The decks every language starts with: the class phrases (where the language has them) and the alphabet. */
+export type BuiltinDeck = 'class-essentials' | 'alphabet';
+const isBuiltin = (v: unknown): v is BuiltinDeck => v === 'class-essentials' || v === 'alphabet';
 
 type AddedWord = Pick<Wanted, 'unitId' | 'unitKind' | 'dimension' | 'family'>;
 interface DeckStore { v: 1; decks: SavedDeck[]; holdOut: string[]; added: AddedWord[]; /** Built-in decks the learner removed (they stay removed until restored). */ dismissed: string[] }
@@ -357,7 +365,7 @@ function cleanStore(raw: unknown): DeckStore {
     if (!d || !str(d.id) || !str(d.savedAt) || !str(d.languageId) || !Array.isArray(d.items)) continue;
     const items = d.items.map(cleanEntry).filter((x): x is DeckEntry => !!x);
     if (items.length) decks.push({ id: d.id, savedAt: d.savedAt, languageId: d.languageId, ...(str(d.varietyId) ? { varietyId: d.varietyId } : {}), items,
-      ...(str(d.name) ? { name: d.name } : {}), ...(str(d.description) ? { description: d.description } : {}), ...(str(d.notes) ? { notes: d.notes } : {}), ...(d.builtin === 'class-essentials' ? { builtin: d.builtin } : {}) });
+      ...(str(d.name) ? { name: d.name } : {}), ...(str(d.description) ? { description: d.description } : {}), ...(str(d.notes) ? { notes: d.notes } : {}), ...(isBuiltin(d.builtin) ? { builtin: d.builtin } : {}) });
   }
   const added = (Array.isArray(r.added) ? r.added : []).filter((w): w is AddedWord => !!w && str((w as AddedWord).unitId) && str((w as AddedWord).unitKind) && str((w as AddedWord).dimension) && str((w as AddedWord).family));
   return { v: 1, decks, holdOut: Array.isArray(r.holdOut) ? r.holdOut.filter(str) : [], added, dismissed: Array.isArray(r.dismissed) ? r.dismissed.filter(str) : [] };
@@ -379,37 +387,47 @@ const writeStore = (ctx: AppContext, learnerId: string, languageId: string, stor
 let chain: Promise<unknown> = Promise.resolve();
 const serial = <T>(fn: () => Promise<T>): Promise<T> => { const run = chain.then(fn, fn); chain = run.catch(() => undefined); return run; };
 
+/** The built-in decks a language has, as they are seeded: Class Essentials (seven languages) first, then the Alphabet (every language). */
+function builtinSeeds(languageId: string, varietyId: string | undefined, savedAt: string): SavedDeck[] {
+  return [classDeckFor(languageId, varietyId, savedAt), alphabetDeckFor(languageId, varietyId, savedAt)].filter((d): d is SavedDeck => !!d);
+}
+const builtinId = (languageId: string, kind: BuiltinDeck): string | undefined => builtinSeeds(languageId, undefined, '').find((d) => d.builtin === kind)?.id;
+
 /**
- * The saved decks of one language, newest first. Class Essentials is seeded here on the first visit, with the stable id `class-essentials:<lang>`:
- * a second call finds it and adds nothing, and a deck the learner removed stays removed until it is restored.
+ * The saved decks of one language, newest first. The built-in decks are seeded here on the first visit, with stable ids (`class-essentials:<lang>`,
+ * `alphabet:<lang>`): a second call finds them and adds nothing, and a deck the learner removed stays removed until it is restored. A learner who
+ * had Class Essentials before the Alphabet deck existed gets the Alphabet on the next visit.
  */
 export async function listSavedDecks(ctx: AppContext, learnerId: string, languageId: string, varietyId?: string): Promise<SavedDeck[]> {
   const first = await readStore(ctx, learnerId, languageId);
-  if (!classLanguageOf(languageId)) return sharedSavedDecks(ctx, learnerId, languageId, first.decks);
+  if (!builtinSeeds(languageId, varietyId, '').length) return sharedSavedDecks(ctx, learnerId, languageId, first.decks);
   return serial(async () => {
     const store = await readStore(ctx, learnerId, languageId);
-    const seed = classDeckFor(languageId, varietyId, ctx.deps.now().toISOString());
-    if (seed && !store.dismissed.includes(seed.id) && !store.decks.some((d) => d.id === seed.id)) {
-      store.decks = [seed, ...store.decks];
+    const missing = builtinSeeds(languageId, varietyId, ctx.deps.now().toISOString()).filter((seed) => !store.dismissed.includes(seed.id) && !store.decks.some((d) => d.id === seed.id));
+    if (missing.length) {
+      store.decks = [...missing, ...store.decks]; // the page orders by date; two decks seeded in the same instant are listed by id
       await writeStore(ctx, learnerId, languageId, store);
     }
     return sharedSavedDecks(ctx, learnerId, languageId, store.decks);
   });
 }
-/** Whether Class Essentials was removed, so Saved decks can offer to restore it. */
-export async function classEssentialsRemoved(ctx: AppContext, learnerId: string, languageId: string): Promise<boolean> {
-  const id = classDeckFor(languageId, undefined, '')?.id;
-  return !!id && (await readStore(ctx, learnerId, languageId)).dismissed.includes(id);
+/** The built-in decks the learner removed, so Saved decks can offer to restore each. */
+export async function removedBuiltins(ctx: AppContext, learnerId: string, languageId: string): Promise<BuiltinDeck[]> {
+  const dismissed = (await readStore(ctx, learnerId, languageId)).dismissed;
+  return builtinSeeds(languageId, undefined, '').filter((d) => dismissed.includes(d.id)).map((d) => d.builtin!);
 }
-export function restoreClassEssentials(ctx: AppContext, learnerId: string, languageId: string): Promise<void> {
+export function restoreBuiltin(ctx: AppContext, learnerId: string, languageId: string, kind: BuiltinDeck): Promise<void> {
   return serial(async () => {
     const store = await readStore(ctx, learnerId, languageId);
-    const id = classDeckFor(languageId, undefined, '')?.id;
+    const id = builtinId(languageId, kind);
     if (!id) return;
     store.dismissed = store.dismissed.filter((d) => d !== id);
     await writeStore(ctx, learnerId, languageId, store);
   });
 }
+/** Whether Class Essentials was removed, so Saved decks can offer to restore it. */
+export const classEssentialsRemoved = async (ctx: AppContext, learnerId: string, languageId: string): Promise<boolean> => (await removedBuiltins(ctx, learnerId, languageId)).includes('class-essentials');
+export const restoreClassEssentials = (ctx: AppContext, learnerId: string, languageId: string): Promise<void> => restoreBuiltin(ctx, learnerId, languageId, 'class-essentials');
 export async function holdOutOf(ctx: AppContext, learnerId: string, languageId: string): Promise<Set<string>> {
   return new Set((await readStore(ctx, learnerId, languageId)).holdOut);
 }

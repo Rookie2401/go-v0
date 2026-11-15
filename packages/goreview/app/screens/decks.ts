@@ -1,14 +1,14 @@
 /**
- * #/review/decks — Saved decks: the decks the learner saved, newest first ("date · N cards · language"), and Class Essentials, the built-in deck
- * for the language: its name as a bigger, friendlier title over "N cards · language", with no description or note on this page (the owner,
- * 2026-10-28; the deck keeps both in its record). The card itself is the control: pressing it starts the practice (no "Practise again"
- * button, the owner, 2026-10-28), and Remove sits at the card's top right. A removed Class Essentials can be restored. Under the Class
- * Essentials card: its due reviews ("Review due (N)") and its missed phrases (moved here from the home, the owner, 2026-10-31).
+ * #/review/decks — Saved decks: the decks the learner saved, newest first ("date · N cards · language"), and the built-in decks of the language,
+ * Class Essentials (seven languages) and the Alphabet (every language; the owner, 2026-11-14): the name as a bigger, friendlier title over
+ * "N cards · language", with no description or note on this page (the owner, 2026-10-28; the deck keeps both in its record). The card itself
+ * is the control: pressing it starts the practice (no "Practise again" button, the owner, 2026-10-28), with Remove under it. A removed
+ * built-in deck can be restored. Under each built-in card: its own due reviews ("Review due (N)") and its own missed cards (moved here from
+ * the home, the owner, 2026-10-31).
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { classEssentialsRemoved, effectiveRemediation, listSavedDecks, planClassEssentialsDue, planFromSaved, removeSavedDeck, restoreClassEssentials, type SavedDeck } from '../deckModel';
-import { classLanguageOf } from '../classEssentials';
+import { effectiveRemediation, listSavedDecks, planClassEssentialsDue, planFromSaved, removeSavedDeck, removedBuiltins, restoreBuiltin, type BuiltinDeck, type SavedDeck } from '../deckModel';
 import { languageName } from '../format';
 import { beginSession, currentReviewModel, PRESS_WAIT_MS } from '../workspace';
 import { icon } from '../icons';
@@ -16,6 +16,12 @@ import { attachRipple } from '../ripple';
 import type { View } from './view';
 
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
+
+/** What a built-in deck is called on this page, the ids of its due line, and what one of its cards is. */
+const BUILTIN: Readonly<Record<BuiltinDeck, { name: string; slug: string; missedOne: string; missedMany: string }>> = {
+  'class-essentials': { name: 'Class Essentials', slug: 'class-essentials', missedOne: 'missed phrase to study', missedMany: 'missed phrases to study' },
+  alphabet: { name: 'Alphabet', slug: 'alphabet', missedOne: 'missed letter to study', missedMany: 'missed letters to study' },
+};
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const id = await ctx.identity();
@@ -49,11 +55,15 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   async function paint(quiet = false): Promise<void> {
     const decks = await listSavedDecks(ctx, id!.learnerId, id!.languageId, id!.varietyId);
-    const removed = await classEssentialsRemoved(ctx, id!.learnerId, id!.languageId);
-    const classLine = decks.some((d) => d.builtin === 'class-essentials') ? await classDueLine(quiet).catch(() => null) : null;
+    const removed = await removedBuiltins(ctx, id!.learnerId, id!.languageId);
+    const dueLines = new Map<string, HTMLElement | null>();
+    for (const d of decks) if (d.builtin) dueLines.set(d.id, await builtinDueLine(d, quiet).catch(() => null));
     if (!view.alive()) return;
     clear(list); clear(restoreBox);
-    if (removed) restoreBox.append(button('Restore Class Essentials', () => { void (async () => { await restoreClassEssentials(ctx, id!.learnerId, id!.languageId); setStatus(status, 'Class Essentials is back.', 'ok'); await paint(); })(); }, { class: 'linklike', id: 'restore-class-essentials' }));
+    for (const kind of removed) {
+      const { name, slug } = BUILTIN[kind];
+      restoreBox.append(button(`Restore ${name}`, () => { void (async () => { await restoreBuiltin(ctx, id!.learnerId, id!.languageId, kind); setStatus(status, `${name} is back.`, 'ok'); await paint(); })(); }, { class: 'linklike', id: `restore-${slug}` }), ' ');
+    }
     if (!decks.length) { list.append(h('li', { class: 'muted', id: 'decks-empty' }, 'Nothing saved yet.')); return; }
     for (const d of decks) {
       const when = d.name ?? new Date(d.savedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
@@ -65,7 +75,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
           await paint();
         })();
       }, { class: 'linklike', 'data-action': 'remove-deck', 'aria-label': `Remove the deck of ${when}` });
-      const builtin = d.builtin === 'class-essentials';
+      const builtin = !!d.builtin;
       // the whole card is the button that starts the practice; its visible text is its name, with "press to practise" for a screen reader
       const open = h('button', { type: 'button', class: 'deckrow-open deck-face', 'data-action': 'practise-again' },
         h('span', { class: 'deck-label' },
@@ -79,7 +89,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         open.disabled = true;
         void practise(d).finally(() => { if (view.alive()) open.disabled = false; });
       });
-      const tile = h('li', { class: 'deck-tile', 'data-deck-id': d.id }, open, builtin ? classLine : null,
+      const tile = h('li', { class: 'deck-tile', 'data-deck-id': d.id, ...(d.builtin ? { 'data-builtin': d.builtin } : {}) }, open, dueLines.get(d.id) ?? null,
         h('div', { class: 'saved-deck-actions' }, remove));
       attachRipple(tile);
       list.append(tile);
@@ -87,34 +97,37 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   }
 
   /**
-   * Class Essentials' due reviews, under its card (the owner, 2026-10-31: Class Essentials belongs to Saved decks, not the home).
-   * Due-only: unreviewed phrases stay in the deck and are never counted as due.
+   * A built-in deck's due reviews, under its card (the owner, 2026-10-31: Class Essentials belongs to Saved decks, not the home). Due-only:
+   * unreviewed cards stay in the deck and are never counted as due. Each built-in deck counts its own cards: the Alphabet's letters are not
+   * Class Essentials' phrases.
    */
-  async function classDueLine(quiet = false): Promise<HTMLElement | null> {
+  async function builtinDueLine(deck: SavedDeck, quiet = false): Promise<HTMLElement | null> {
     const model = await currentReviewModel(ctx, quiet ? { noRefresh: true } : {}); // this device's copy; the refresh repaints this list through ctx.onData
-    if (!model || !classLanguageOf(model.identity.languageId)) return null;
-    const due = await planClassEssentialsDue(ctx, model);
-    const missed = effectiveRemediation(model).class.length;
-    const nextReturn = (model.classDeck ?? []).filter(item => item.status === 'active' && !item.invalidatedAt && !item.suspendedReason
+    if (!model || !deck.builtin) return null;
+    const { name, slug, missedOne, missedMany } = BUILTIN[deck.builtin];
+    const units = new Set(deck.items.map((item) => item.unitId));
+    const due = await planClassEssentialsDue(ctx, model, units);
+    const missed = effectiveRemediation(model).class.filter((c) => units.has(c.unitId)).length;
+    const nextReturn = (model.classDeck ?? []).filter(item => units.has(item.unitId) && item.status === 'active' && !item.invalidatedAt && !item.suspendedReason
       && Date.parse(item.schedule.due) > Date.parse(model.now)).sort((a, b) => Date.parse(a.schedule.due) - Date.parse(b.schedule.due))[0];
     const start = button(`Review due (${due.items.length})`, () => {
       start.disabled = true;
       void (async () => {
         const current = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
         if (!current) return;
-        const plan = await planClassEssentialsDue(ctx, current);
-        if (!plan.items.length) { setStatus(status, 'No Class Essentials cards are due right now.', 'info'); return; }
+        const plan = await planClassEssentialsDue(ctx, current, units);
+        if (!plan.items.length) { setStatus(status, `No ${name} cards are due right now.`, 'info'); return; }
         const r = await beginSession(ctx, current, { plan });
         if (!r.ok) { setStatus(status, r.message, 'info'); return; }
         ctx.run.active = r.run; ctx.go('review/session');
       })().catch(error => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) start.disabled = false; });
-    }, { id: 'start-class-essentials-due', class: 'btn', ...(due.items.length ? {} : { disabled: true }) });
+    }, { id: `start-${slug}-due`, class: 'btn', ...(due.items.length ? {} : { disabled: true }) });
     start.prepend(icon(ctx.deps.doc, 'review'));
-    return h('div', { class: 'saved-deck-actions', id: 'class-essentials-due' },
-      h('span', { class: due.items.length ? 'sr' : 'muted', id: 'class-essentials-due-count' }, due.items.length ? plural(due.items.length, 'card due', 'cards due')
+    return h('div', { class: 'saved-deck-actions', id: `${slug}-due` },
+      h('span', { class: due.items.length ? 'sr' : 'muted', id: `${slug}-due-count` }, due.items.length ? plural(due.items.length, 'card due', 'cards due')
         : nextReturn ? `Nothing due · next ${new Date(nextReturn.schedule.due).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' })}` : 'Nothing due'),
       due.items.length ? start : null,
-      missed ? h('a', { class: 'linklike', id: 'open-class-remediation', href: '#/review/remediation' }, plural(missed, 'missed phrase to study', 'missed phrases to study')) : null);
+      missed ? h('a', { class: 'linklike', id: deck.builtin === 'class-essentials' ? 'open-class-remediation' : `open-${slug}-remediation`, href: '#/review/remediation' }, plural(missed, missedOne, missedMany)) : null);
   }
   await paint();
   // a live update (or a sync from another tab) may have changed what is saved: the list is read again, in place

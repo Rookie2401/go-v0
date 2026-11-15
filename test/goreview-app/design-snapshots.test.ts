@@ -86,7 +86,7 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('10');
     await rig.go('review/decks');
     rig.q('#save-deck').click();
-    await until(() => rig.qa('.deckrow').length === 2, 'two saved decks');
+    await until(() => rig.qa('.deckrow').length === 3, 'three saved decks');
     await seed(rig, words.slice(0, 10).flatMap((w) => dueCard(A, `${w}x`, 'written-recognition')));
     await reopen(rig);
     write('home-decks.html', rig);

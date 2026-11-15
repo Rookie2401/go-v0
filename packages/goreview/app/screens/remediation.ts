@@ -8,7 +8,12 @@ import { unitLabel } from '../format';
 import { beginSession, currentReviewModel, PRESS_WAIT_MS, reviewModelRevision, type ReviewModel } from '../workspace';
 import type { DeckItem } from '../../src/types';
 import { effectiveRemediation, planRemediation } from '../deckModel';
+import { isAlphabetUnit } from '../alphabetDeck';
 import { isClassUnit } from '../classEssentials';
+
+/** The built-in deck a class unit belongs to: the page names it and marks the row with it. */
+const builtinOf = (unitId: string): { name: string; source: string; what: string } => (isAlphabetUnit(unitId)
+  ? { name: 'Alphabet', source: 'alphabet', what: 'letter' } : { name: 'Class Essentials', source: 'class-essentials', what: 'phrase' });
 import type { Identity } from '../ports';
 import type { View } from './view';
 
@@ -55,9 +60,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         ...await Promise.all(repairItems.map(async item => {
           let facts: UnitFacts | undefined;
           try { const { api } = await ctx.api(); facts = await ctx.engine.factsFor?.(item.unitId, model.identity.languageId, api); } catch { /* repair stays unavailable */ }
-          return h('article', { class: 'remediation-item', 'data-item-id': item.itemId, 'data-source': isClassUnit(item.unitId) ? 'class-essentials' : 'vocabulary' }, h('h3', {}, unitLabel(item.unitId)),
+          return h('article', { class: 'remediation-item', 'data-item-id': item.itemId, 'data-source': isClassUnit(item.unitId) ? builtinOf(item.unitId).source : 'vocabulary' }, h('h3', {}, unitLabel(item.unitId)),
             p('Invalidated answer key · current facts must be verified, different, and support a valid rebuilt exercise.', 'muted'),
-            isClassUnit(item.unitId) ? p('Class Essentials uses provisional, owner-authored phrase facts. Those facts do not meet the verified-facts repair threshold, so this invalidated card remains blocked until independently verified facts are available.', 'muted') : null,
+            isClassUnit(item.unitId) ? p(`${builtinOf(item.unitId).name} uses provisional, owner-authored ${builtinOf(item.unitId).what} facts. Those facts do not meet the verified-facts repair threshold, so this invalidated card remains blocked until independently verified facts are available.`, 'muted') : null,
             facts?.status === 'verified' && facts.unit.status === 'verified' ? p('Verified current facts are available for repair review.') : p('Verified current facts are unavailable; this question remains blocked.', 'muted'),
             await repairControl(ctx, model, item));
         }))) : null,
@@ -81,8 +86,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     }
     catch (e) { factsError = e instanceof Error ? e.message : String(e); }
     const classSource = isClassUnit(item.unitId);
-    const section = h('li', { class: 'candidate remediation-item', 'data-item-id': c.itemId, 'data-source': classSource ? 'class-essentials' : 'vocabulary' },
-      h('p', { class: 'muted' }, classSource ? 'Class Essentials' : 'My vocabulary'),
+    const section = h('li', { class: 'candidate remediation-item', 'data-item-id': c.itemId, 'data-source': classSource ? builtinOf(item.unitId).source : 'vocabulary' },
+      h('p', { class: 'muted' }, classSource ? builtinOf(item.unitId).name : 'My vocabulary'),
       h('h3', { lang: tag }, unitLabel(item.unitId)),
       p(`${(c.reasons ?? ['failed-retrieval']).map(reason => REASON_LABEL[reason]).join(' · ')} · ${c.failures} recent Again response(s) · unresolved after ${when(c.failureEventId ? model.events.find(e => e.id === c.failureEventId)?.at ?? model.now : model.now)}`, 'muted'),
       p('These labels describe the recorded question type and result; they do not diagnose why an answer was difficult.', 'help'));

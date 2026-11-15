@@ -46,7 +46,7 @@ describe('the GoReview home', () => {
     expect(rig.q<HTMLButtonElement>('#start-review').disabled).toBe(true);
     expect(rig.q('#start-review-count').textContent).toMatch(/^Nothing due/);
     expect(rig.q('#start-new').closest('[data-deck]')?.getAttribute('data-deck')).toBe('current'); // Begin new deck sits beside the Current Deck
-    expect(rig.q('#previous-count').textContent).toBe('1 saved'); // Class Essentials, the built-in deck, is already there
+    expect(rig.q('#previous-count').textContent).toBe('2 saved'); // the built-in decks, Class Essentials and the Alphabet, are already there
     expect(rig.root.querySelector('#review-home #class-essentials-due')).toBeNull(); // Class Essentials lives in Saved decks
     expect(rig.q('#vocab-count').textContent).toMatch(/^\d+ words?$/);
     expect(rig.qa('#review-home button').map((b) => b.id)).toEqual(['start-session', 'start-new', 'start-review']); // no deck-size line (Settings keeps the stepper, 2026-10-28)
@@ -123,7 +123,7 @@ describe('the GoReview home', () => {
     click(rig.q('#entry-previous'));
     await until(() => rig.app.current() === 'review/decks' && !!rig.root.querySelector('#save-deck'), 'the saved page');
     click(rig.q('#save-deck'));
-    await until(() => rig.qa('.deckrow').length === 2, 'the saved deck');
+    await until(() => rig.qa('.deckrow').length === 3, 'the saved deck');
     const [deck] = await savedDecks(rig);
     expect(deck.items.map((i) => i.unitId).sort()).toEqual([unitOf('mace'), unitOf('zog')]);
     expect(deck.languageId).toBe('sq');
@@ -131,22 +131,22 @@ describe('the GoReview home', () => {
     await reopen(rig);
     expect(Number(String(readyCards(rig)))).toBeGreaterThan(0); // an actual due obligation remains scheduled after being saved
     await rig.go('review/decks');
-    expect(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) .deckrow-line').textContent).toMatch(/ · 2 cards · Albanian$/);
+    expect(rig.q('[data-deck-id]:not([data-builtin]) .deckrow-line').textContent).toMatch(/ · 2 cards · Albanian$/);
     // the card is the button: it holds the deck's line and names itself for a screen reader; no separate "Practise again" button, Remove beside it
-    const card = rig.q<HTMLButtonElement>('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="practise-again"]');
+    const card = rig.q<HTMLButtonElement>('[data-deck-id]:not([data-builtin]) [data-action="practise-again"]');
     expect(card.tagName).toBe('BUTTON');
     expect(card.classList.contains('deckrow-open')).toBe(true);
     expect(card.querySelector('.deckrow-line')).not.toBeNull();
     expect(card.textContent).toMatch(/2 cards · Albanian, press to practise$/);
     expect(rig.root.querySelector('.deckrow .btn')).toBeNull();
-    expect(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="remove-deck"]').classList.contains('deckrow-remove')).toBe(true);
+    expect(rig.q('[data-deck-id]:not([data-builtin]) [data-action="remove-deck"]').classList.contains('deckrow-remove')).toBe(true);
     click(card);
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the session');
     expect(rig.app.ctx.run.active!.plan.items.map((p) => p.item.unitId).sort()).toEqual([unitOf('mace'), unitOf('zog')]);
 
     await rig.go('review/decks');
-    click(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="remove-deck"]'));
-    await until(() => rig.qa('.deckrow').length === 1, 'the removal');
+    click(rig.q('[data-deck-id]:not([data-builtin]) [data-action="remove-deck"]'));
+    await until(() => rig.qa('.deckrow').length === 2, 'the removal');
     expect(await savedDecks(rig)).toEqual([]);
   });
 
@@ -155,7 +155,7 @@ describe('the GoReview home', () => {
     await rig.area.set({ [decksKey('L1', 'sq')]: { v: 7, decks: 'nonsense' } });
     await rig.go('review');
     await until(() => !!rig.root.querySelector('#previous-count'), 'the home');
-    expect(rig.q('#previous-count').textContent).toBe('1 saved'); // nothing of the learner's own, and only the built-in deck
+    expect(rig.q('#previous-count').textContent).toBe('2 saved'); // nothing of the learner's own, and only the two built-in decks
   });
 
   it('puts the details, the session controls and the transfer measures one tap away in Settings', async () => {

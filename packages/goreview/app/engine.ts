@@ -16,6 +16,7 @@ import type { BuilderRegistry, FactsProvider, GradingPort, IntakeOutcome, Exerci
 import type { RepositoryApi } from '../../repository-service/src/api';
 import type { DeckItem } from '../src/types';
 import type { ExerciseReadiness, ExerciseReadinessRequest, ItemControl, RecoveryRequest, ReviewEngine } from './ports';
+import { alphabetFacts } from './alphabetDeck';
 import { classFacts, isClassUnit } from './classEssentials';
 import { recoverCandidates } from './recoveredCandidates';
 import { createReviewEligibilityContext } from '../src/planner/eligibility';
@@ -179,8 +180,8 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   const providers = new WeakMap<RepositoryApi, Map<string, FactsProvider>>();
   const warmFacts = new WeakMap<RepositoryApi, Map<string, { at: number; facts: Awaited<ReturnType<FactsProvider['factsFor']>> }>>();
   const stagedFacts = new WeakMap<RepositoryApi, Map<string, { at: number; facts: Awaited<ReturnType<FactsProvider['factsFor']>> }>>();
-  /** Class Essentials phrases are answered from the deck's own table; every other unit goes to the pack, as before. */
-  const withClass = (base: FactsProvider): FactsProvider => ({ ...base, factsFor: async (unitId, languageId, varietyId) => (isClassUnit(unitId) ? classFacts(unitId, languageId) : base.factsFor(unitId, languageId, varietyId)) });
+  /** Class Essentials phrases and Alphabet letters are answered from their decks' own tables; every other unit goes to the pack, as before. */
+  const withClass = (base: FactsProvider): FactsProvider => ({ ...base, factsFor: async (unitId, languageId, varietyId) => (isClassUnit(unitId) ? classFacts(unitId, languageId) ?? alphabetFacts(unitId, languageId) : base.factsFor(unitId, languageId, varietyId)) });
   const factsOf = (languageId: string, api: RepositoryApi): FactsProvider => withClass(packFactsOf(languageId, api));
   const packFactsOf = (languageId: string, api: RepositoryApi): FactsProvider => {
     let byLanguage = providers.get(api);

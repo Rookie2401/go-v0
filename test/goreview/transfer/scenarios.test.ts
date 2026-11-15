@@ -156,7 +156,7 @@ describe('realistic A–H chronological scenarios (planner, runner, FSRS and Rep
     const first={...review('saved-review',reviewAt,{card,unit,previous:null}),learnerId:'L1',enrolmentId:'L1-e1'};
     await seed(rig,[add,first]);
     const builtins=await listSavedDecks(rig.app.ctx,'L1','sq');
-    if(builtins[0]?.builtin)await removeSavedDeck(rig.app.ctx,'L1','sq',builtins[0].id);
+    for(const deck of builtins)if(deck.builtin)await removeSavedDeck(rig.app.ctx,'L1','sq',deck.id);
     const entry:DeckEntry={itemId:card,unitId:unit,unitKind:'form',label:'saved collection item',dimension:'written-recognition',family:'written-recognition'};
     const saved=await saveDeck(rig.app.ctx,{learnerId:'L1',languageId:'sq'},[entry]);expect(saved).toBeDefined();
     expect((await listSavedDecks(rig.app.ctx,'L1','sq')).map(d=>d.id)).toEqual([saved!.id]);

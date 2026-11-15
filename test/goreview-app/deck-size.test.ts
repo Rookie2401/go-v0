@@ -136,11 +136,11 @@ describe('cards per deck', () => {
     await reopen(rig);
     await rig.go('review/decks');
     click(rig.q('#save-deck'));
-    await until(() => rig.qa('.deckrow').length === 2, 'the saved deck');
+    await until(() => rig.qa('.deckrow').length === 3, 'the saved deck');
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 20 });
     await rig.go('review/decks');
-    expect(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) .deckrow-line').textContent).toMatch(/ · 5 cards · /);
-    click(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="practise-again"]'));
+    expect(rig.q('[data-deck-id]:not([data-builtin]) .deckrow-line').textContent).toMatch(/ · 5 cards · /);
+    click(rig.q('[data-deck-id]:not([data-builtin]) [data-action="practise-again"]'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the session');
     expect(rig.app.ctx.run.active!.plan.items).toHaveLength(5);
   });

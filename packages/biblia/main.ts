@@ -70,13 +70,13 @@ const started = (async () => {
   const recorder = own ? own.recorder : app ? makeRecorder(undefined, app) : mobile.native
     ? { ...makeRecorder(undefined), reason: 'Sign in to GoReview (the app this page belongs to) to record what you read; until then Biblia is a reader only.' }
     : makeRecorder();
-  // the account edition's sync notice: shown by the Settings page (Account card), no longer a bar above every page (2026-10-27)
+  // Sync feedback lives with the standalone account.
   const syncStatus = own?.account ? createSyncStatus({ doc: document, account: own.account, recorder: own.recorder }) : undefined;
   const running = await createBibliaApp({
     win: window, doc: document,
     source: fetchJsonWith((input, init) => globalThis.fetch(input, init), './'),
     recorder,
-    ...(speechAccount ? { speechAccount, createPronouncer: (consent: () => boolean, consentOwner: () => string | undefined) => createBibliaPronouncer({
+    ...(speechAccount ? { createPronouncer: (consent: () => boolean, consentOwner: () => string | undefined) => createBibliaPronouncer({
       speech: (window as unknown as { speechSynthesis?: SpeechLike }).speechSynthesis ?? null,
       account: speechAccount,
       consent,

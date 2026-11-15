@@ -1,10 +1,5 @@
 // @vitest-environment jsdom
-/**
- * Biblia's Settings (#/settings) in GoReview's design — the title with its rule and the cards with a tracked-capitals kicker: READING, ACCOUNT,
- * SERVICE, OFFLINE, SOURCES & LICENCES. Each reading preference is kept under biblia:<name> and applied to the page at once; Reset removes them.
- * The account card shows who is signed in with Sign out, or the way to sign in; the service address is read-only. The fonts shipped with the app
- * are on disk with their licences.
- */
+/** Biblia's Settings (#/settings): reading controls, offline/source disclosures, and edition-aware footer links. */
 import fs from 'node:fs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { createAccountService, type AccountService } from '../../packages/biblia/src/account';
@@ -67,28 +62,27 @@ async function open(opts: { storage?: Storage; account?: AccountService; syncSta
 const pill = (group: string, value: string): HTMLButtonElement => q<HTMLButtonElement>(`.pills[aria-label="${group}"] button[data-value="${value}"]`);
 const setSlider = (id: string, value: number): void => { const el = q<HTMLInputElement>(`#${id}`); el.value = String(value); el.dispatchEvent(new Event('input', { bubbles: true })); };
 
-describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Settings in GoReview\'s design', () => {
-  it('is a centred column with the title and its rule, and one card per kicker', async () => {
+describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia settings', () => {
+  it('shows the reading card and disclosures without Speech, Account, or Service sections', async () => {
     const a = await open({ storage: memoryStorage() });
     await a.go('#/settings');
     expect(a.route).toBe('settings');
     expect(text(q('.screen > h1'))).toBe('Settings');
-    expect([...document.querySelectorAll('.screen > section.card > h2')].map((h) => text(h))).toEqual(['Reading', 'Speech', 'Account', 'Service', 'Offline', 'Sources & licences']);
-    expect([...document.querySelectorAll('.screen > section.card')].map((s) => s.id)).toEqual(['settings-reading', 'settings-speech', 'settings-account', 'settings-service', 'settings-offline', 'settings-sources']);
-    expect(q<HTMLInputElement>('#settings-remote-speech').disabled).toBe(true);
-    expect(q<HTMLInputElement>('#settings-remote-speech').checked).toBe(false);
+    expect([...document.querySelectorAll('.screen > section.card')].map((s) => s.id)).toEqual(['settings-reading']);
+    expect([...document.querySelectorAll('.settings-disclosure')].map((s) => s.id)).toEqual(['settings-offline', 'settings-sources']);
+    expect(document.querySelector('#settings-speech, #settings-account, #settings-service, #settings-remote-speech, #settings-svc-url')).toBeNull();
+    expect(q('#settings-reading').classList.contains('settings-reading')).toBe(true);
+    expect(q('#settings-reading .settings-reading__heading').textContent).toBe('Reading');
+    expect(q('#settings-offline summary .settings-disclosure__copy')).not.toBeNull();
     // the bar: back to the library, the wordmark, the settings icon marked as the current page
     expect(q('.topbar a.iconbtn[aria-label="Library"]').getAttribute('href')).toBe('#/');
     expect(q('.topbar a.iconbtn[aria-label="Settings"]').getAttribute('aria-current')).toBe('page');
-    // an edition without an account service says so, and shows no address
-    expect(text(q('#settings-account'))).toContain('no sign-in of its own');
-    expect(text(q('#settings-service'))).toContain('No Repository service');
-    expect(document.querySelector('#settings-svc-url')).toBeNull();
     // the attribution and the fonts, with the licences of the fonts
     expect(text(q('#settings-sources'))).toContain('Miqra according to the Masorah');
     expect(text(q('#settings-sources'))).toContain('SIL Open Font License');
     expect(q('#link-ofl-garamond').getAttribute('href')).toBe('./fonts/EB-Garamond-OFL.txt');
     expect(q('#link-ofl-frank').getAttribute('href')).toBe('./fonts/frank-ruhl-libre-OFL.txt');
+    expect([...document.querySelectorAll('.settings-links a')].map((x) => x.getAttribute('href'))).toEqual(['#/sources']);
   });
 
   it('keeps each reading preference under biblia:<name> and applies it to the page at once', async () => {
@@ -109,14 +103,14 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Settings in GoReview\'s d
     setSlider('set-hebrew-size', 32);
     expect(storage.getItem('biblia:hebrewSize')).toBe('32');
     expect(root.style.getPropertyValue('--reading-font-size')).toBe('32px');
-    expect(text(q('#set-hebrew-size').previousElementSibling)).toContain('32px');
+    expect(text(q('#set-hebrew-size').previousElementSibling)).toContain('32 px');
     setSlider('set-greek-size', 28);
     expect(root.style.getPropertyValue('--greek-font-size')).toBe('28px');
     setSlider('set-line-height', 2.1);
     expect(storage.getItem('biblia:lineHeight')).toBe('2.1');
     expect(root.style.getPropertyValue('--reading-line-height')).toBe('2.1');
 
-    q<HTMLInputElement>('#set-verse-numbers').click();
+    pill('Verse numbers', 'off').click();
     expect(storage.getItem('biblia:verseNumbers')).toBe('off');
     expect(root.getAttribute('data-verse-numbers')).toBe('off');
     q<HTMLInputElement>('#set-level-marks').click();
@@ -158,51 +152,48 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Settings in GoReview\'s d
   it('says what the device keeps: the installed edition keeps what is read; another copy does not install itself', async () => {
     const a = await open({ storage: memoryStorage() });
     await a.go('#/settings');
-    expect(text(q('#settings-offline'))).toContain('does not install itself for offline use');
+    expect(text(q('#settings-offline summary'))).toContain('Chapters open from the current connection.');
+    expect(text(q('#settings-offline'))).toContain('It is not installed for offline use.');
     const meta = document.createElement('meta');
     meta.name = 'biblia-edition'; meta.content = 'standalone';
     document.head.append(meta);
     await a.go('#/settings');
+    expect(text(q('#settings-offline summary'))).toContain('Previously opened chapters are available offline.');
     expect(text(q('#settings-offline'))).toContain('This installed edition keeps the app itself');
     expect(text(q('#settings-offline'))).toContain('your place');
   });
 
-  describe('with an account', () => {
+  describe('account integration', () => {
     const make = (): { account: AccountService; storage: ReturnType<typeof memoryStorage> } => {
       const storage = memoryStorage();
       return { storage, account: createAccountService({ serviceUrl: SERVICE, storage, fetch: fakeFetch }) };
     };
 
-    it('signed out: the service address (read-only) and a gold Sign in that leads to #/account, then the drafts', async () => {
+    it('keeps sign-in on the account route and omits account and service details from Settings', async () => {
       const { account, storage } = make();
       const a = await open({ storage, account });
       await a.go('#/settings');
-      expect(text(q('#settings-signed-out'))).toBe('Not signed in.');
-      const signIn = q<HTMLAnchorElement>('#settings-signin');
-      expect(signIn.getAttribute('href')).toBe('#/account');
-      expect(signIn.classList.contains('primary')).toBe(true);
-      const url = q<HTMLInputElement>('#settings-svc-url');
-      expect(url.value).toBe(SERVICE);
-      expect(url.readOnly).toBe(true);
-      expect([...document.querySelectorAll('#settings-account .legal-links a')].map((x) => [x.textContent, x.getAttribute('href')])).toEqual([['Terms', '#/terms'], ['Privacy Policy', '#/privacy']]);
-      // the bar carries the account icon beside the settings icon
+      expect(document.querySelector('#settings-account, #settings-service, #settings-svc-url')).toBeNull();
       expect([...document.querySelectorAll('.topbar .iconbtn')].map((x) => x.getAttribute('aria-label'))).toEqual(['Library', 'Account', 'Settings']);
+      expect([...document.querySelectorAll('.settings-links a')].map((x) => x.getAttribute('href'))).toEqual(['#/sources', '#/terms/settings', '#/privacy/settings']);
+      await a.go('#/terms/settings');
+      expect(a.route).toBe('terms');
+      expect(q('.legal .screen > p a').getAttribute('href')).toBe('#/settings');
+      await a.go('#/account');
+      expect(a.route).toBe('account');
+      expect(document.querySelector('.account')).not.toBeNull();
     });
 
-    it('signed in: who, and Sign out, which signs out and shows the way back in', async () => {
+    it('signs out from the account screen', async () => {
       const { account, storage } = make();
       expect(await account.signIn('ana@example.org', PASSWORD)).toEqual({ ok: true });
       const a = await open({ storage, account });
-      await a.go('#/settings');
-      expect(text(q('#settings-email'))).toBe('Signed in as ana@example.org');
-      expect(document.querySelector('#settings-signin')).toBeNull();
-      q<HTMLButtonElement>('#settings-signout').click();
+      await a.go('#/account');
+      q<HTMLButtonElement>('#account-signout').click();
       await vi.waitFor(() => expect(account.state().signedIn).toBe(false));
-      await vi.waitFor(() => expect(document.querySelector('#settings-signin')).not.toBeNull());
-      expect(document.querySelector('#settings-email')).toBeNull();
     });
 
-    it('signed in: the sync notice ("Uploads complete · Last sent at …", pending items) is a line of the Account card, not a bar above the page (2026-10-27)', async () => {
+    it('shows the sync notice on the account screen and nowhere on Settings or the library', async () => {
       const { account, storage } = make();
       expect(await account.signIn('ana@example.org', PASSWORD)).toEqual({ ok: true });
       const syncStatus = document.createElement('aside');
@@ -210,25 +201,22 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Settings in GoReview\'s d
       syncStatus.textContent = 'Uploads complete · Last sent at 9:41 AM.';
       const a = await open({ storage, account, syncStatus });
       await a.go('#/');
-      expect(document.querySelector('.sync-status')).toBeNull(); // the library page carries no notice
-      await a.go('#/settings');
-      const inCard = document.querySelector('#settings-account .sync-status');
-      expect(inCard).toBe(syncStatus);
-      expect(text(q('#settings-account'))).toContain('Uploads complete');
-      // the Settings page itself has one notice, inside the card, after who is signed in
-      expect(document.querySelectorAll('.sync-status').length).toBe(1);
-      expect(q('#settings-email').compareDocumentPosition(syncStatus) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-      await a.go('#/');
       expect(document.querySelector('.sync-status')).toBeNull();
+      await a.go('#/settings');
+      expect(document.querySelector('.sync-status')).toBeNull();
+      await a.go('#/account');
+      expect(document.querySelector('.account .sync-status')).toBe(syncStatus);
+      expect(text(syncStatus)).toContain('Uploads complete');
+      expect(document.querySelectorAll('.sync-status').length).toBe(1);
     });
 
-    it('signed out and not expired: the Account card shows no sync notice', async () => {
+    it('does not show a sync notice to a signed-out learner', async () => {
       const { account, storage } = make();
       const syncStatus = document.createElement('aside');
       syncStatus.className = 'sync-status';
       const a = await open({ storage, account, syncStatus });
-      await a.go('#/settings');
-      expect(document.querySelector('#settings-account .sync-status')).toBeNull();
+      await a.go('#/account');
+      expect(document.querySelector('.sync-status')).toBeNull();
     });
   });
 });

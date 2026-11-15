@@ -311,8 +311,151 @@ button.pill[aria-pressed='true'] { background: var(--accent); border-color: var(
   .field input[type='text'], .field input[type='url'], .field input[type='email'], .field input[type='password'] { font-size: 1rem; min-height: 2.75rem; } /* 16px or more: iOS does not zoom the page on focus */
 }
 
-/* The account edition's sync notice (src/syncStatus.ts) is a line of the Settings page's Account card: pending items with Sync now, or the
-   last successful send. Until 2026-10-27 it was a bar sticky above every page (and set --sync-h, which the top bars still read, now always 0). */
+/* Account and reading settings share Biblia's paper, ink, and brass in both themes. */
+:is(.account--signed-in, .settings) {
+  --folio-line: color-mix(in srgb, var(--rule-strong) 72%, var(--accent));
+  --folio-fill: color-mix(in srgb, var(--paper-raised) 94%, var(--accent));
+  --folio-surface: linear-gradient(125deg, var(--folio-fill), var(--paper-raised));
+  min-height: 100dvh;
+}
+:is(.account--signed-in, .settings) .screen { max-width: 38rem; }
+:is(.account--signed-in, .settings) .screen h1 {
+  font-size: clamp(1.85rem, 6vw, 2.5rem);
+  margin: 0.25rem 0 1.5rem;
+}
+:is(.account--signed-in, .settings) .screen h1::after {
+  width: 3.15rem;
+  height: 2px;
+  margin-top: 0.8rem;
+  background: var(--accent);
+}
+.account--signed-in .topbar__title, .settings .topbar__title { color: var(--ink); }
+
+.account-identity, .account-tile, .account-devices, .settings-reading, .settings-disclosure {
+  border: 1px solid var(--folio-line);
+  border-radius: 12px;
+  background: var(--folio-surface);
+}
+.account-identity { padding: 0.3rem clamp(0.8rem, 4vw, 1.4rem); }
+.account-identity dl, .account-identity dd { margin: 0; }
+.account-identity__row { position: relative; padding: 0.85rem 0 0.85rem clamp(3rem, 11vw, 4rem); }
+.account-identity__row + .account-identity__row { border-top: 1px solid var(--rule); }
+.account-identity dt { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.17em; text-transform: uppercase; color: var(--ink-soft); }
+.account-identity .account-symbol { position: absolute; inset-inline-start: 0; top: 0.9rem; }
+.account-identity dd { display: flex; flex-wrap: wrap; gap: 0.3rem 0.75rem; align-items: center; font-size: 1.2rem; min-height: 1.75rem; }
+.account-identity dd > .btn { margin-inline-start: auto; }
+.account-identity bdi { user-select: text; }
+.account-identity #account-name { min-width: 0; }
+.account-editor { width: 100%; }
+.account-editor .field { max-width: none; }
+.account-verification { padding: 0.7rem 0; border-top: 1px solid var(--rule); }
+.account-actions { display: grid; gap: 0.65rem; margin-top: 1.2rem; }
+.account-symbol, .settings-disclosure__icon {
+  display: grid;
+  place-items: center;
+  width: clamp(2.35rem, 8vw, 3.1rem);
+  min-height: 2.3rem;
+  border-inline-end: 1px solid var(--folio-line);
+  padding-inline-end: 0.55rem;
+  color: var(--accent);
+}
+.account--signed-in .screen svg, .settings .screen svg {
+  width: 1.55rem;
+  height: 1.55rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.account-tile, .settings-disclosure > summary {
+  width: 100%;
+  min-height: 4.15rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(0.55rem, 3vw, 1.1rem);
+  padding: 0.7rem clamp(0.8rem, 4vw, 1.4rem);
+  text-align: start;
+  line-height: 1.25;
+}
+.account-tile:hover:not(:disabled), .settings-disclosure > summary:hover {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border-color: var(--accent);
+}
+.account-tile:disabled { cursor: default; opacity: 0.72; }
+.account-tile__copy, .settings-disclosure__copy { display: grid; gap: 0.15rem; }
+.account-tile__copy > :last-child, .settings-disclosure__subtitle { color: var(--ink-soft); font-size: 0.98rem; font-style: italic; }
+.account-tile__title, .settings-disclosure__title { font-size: clamp(1.2rem, 4.6vw, 1.45rem); color: var(--ink); }
+.account-tile__arrow { display: flex; color: var(--accent); }
+.account-tile--danger :is(.account-symbol, .account-tile__title),
+.account--signed-in button.account-danger { color: var(--wine); }
+.account-actions > .card { margin: 0; }
+.account-pending { color: var(--wine); }
+.account-actions > .btn { justify-self: start; }
+.account-feedback:empty { margin: 0; min-height: 0; }
+.account-devices { margin-top: 1.25rem; }
+.account-devices summary {
+  cursor: pointer;
+  padding: 0.6rem clamp(0.8rem, 4vw, 1.4rem);
+  min-height: 2.75rem;
+  font-size: 1.18rem;
+}
+.account-devices summary::marker { color: var(--accent); }
+.account-devices .status { margin-inline: 1rem; }
+.account-devices__list { padding-inline: 2rem 1rem; margin: 0 0 0.75rem; }
+.account-devices__list li + li { margin-top: 0.5rem; }
+.account-devices__list li > span { display: block; color: var(--ink-soft); font-size: 0.95rem; }
+.account--signed-in .screen .sync-status { font-size: 0.95rem; margin-inline: 0.2rem; }
+.account--signed-in .legal-links, .settings-links { text-align: center; padding-top: 0.7rem; }
+
+.settings .screen h1 { letter-spacing: 0.01em; text-transform: none; }
+.settings-reading { margin: 0 0 0.9rem; padding: 0.9rem clamp(0.8rem, 4vw, 1.4rem) 0.35rem; }
+.settings-reading__intro { display: flex; align-items: center; gap: 0.75rem; padding-bottom: 0.4rem; color: var(--accent); }
+.screen .settings-reading__heading { margin: 0; color: var(--ink); font-size: 1.08rem; letter-spacing: 0.19em; }
+.settings-row { padding: 0.6rem 0; }
+.settings-row + .settings-row, .settings-row + .settings-reader-footer { border-top: 1px solid var(--folio-line); }
+.settings-row .field {
+  max-width: none;
+  grid-template-columns: minmax(5.3rem, 0.65fr) minmax(0, 1.35fr);
+  align-items: center;
+  column-gap: 0.8rem;
+  margin: 0;
+}
+.settings-row .field .cap {
+  font: 1.15rem/1.2 var(--serif);
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--ink);
+}
+.settings-row .pills { display: flex; flex-wrap: nowrap; gap: 0; width: 100%; border: 1px solid var(--folio-line); border-radius: 999px; }
+.settings-row .pill { flex: 1 1 auto; border: 0; padding: 0.25rem 0.45rem; min-width: 0; line-height: 1.1; }
+.settings-row .pill[aria-pressed='true'] { background: var(--accent); color: var(--accent-ink); }
+.settings-row .field--slider { position: relative; grid-template-columns: 1fr; gap: 0.12rem; }
+.settings-row .field--slider label { display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; }
+.settings-row .slider__value { color: var(--accent); white-space: nowrap; }
+.settings-row input[type='range'] { margin: 0; min-height: 1.5rem; cursor: pointer; }
+.settings-row .hint { font-style: italic; }
+.settings-reader-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.55rem 0.65rem; padding: 0.65rem 0 0.3rem; }
+.settings-reader-footer .toggle { margin: 0; min-height: 2.75rem; align-items: center; font-size: 1.05rem; line-height: 1.2; }
+.settings-reader-footer .toggle input { margin: 0 0.32rem 0 0.16rem; }
+.settings-reader-footer .help { display: block; margin-top: 0.12rem; }
+.settings-reader-footer .btn { gap: 0.4rem; padding-inline: 0.65rem; }
+.settings-reader-footer .btn svg { color: var(--accent); width: 1.18rem; height: 1.18rem; }
+.settings-disclosure { padding: 0; margin: 0.65rem 0; }
+.settings-disclosure > summary { color: var(--ink); list-style: none; border-radius: inherit; }
+.settings-disclosure > summary::-webkit-details-marker { display: none; }
+.settings-disclosure[open] > summary { margin-bottom: 0; }
+.settings-disclosure__arrow { color: var(--accent); display: flex; }
+.settings-disclosure[open] .settings-disclosure__arrow { transform: rotate(90deg); }
+.settings-disclosure__body { border-top: 1px solid var(--folio-line); padding: 0.35rem clamp(0.8rem, 4vw, 1.4rem) 0.7rem; }
+.settings-links { width: 100%; font-size: 1rem; }
+.settings-links a { display: inline-block; padding: 0.45rem 0.4rem; text-decoration: underline; text-underline-offset: 0.18em; }
+@media (max-width: 360px) {
+  .settings-row .field:not(.field--slider) { grid-template-columns: minmax(0, 1fr); row-gap: 0.3rem; }
+}
+
+/* Pending items and their retry control are shown on Account. */
 .sync-status { display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem; margin: 0.65rem 0; color: var(--ink-soft); }
 .sync-status[hidden] { display: none; }
 .sync-status .sync-status__action { font-size: 0.92rem; }

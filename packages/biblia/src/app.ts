@@ -28,7 +28,6 @@ import { renderAccountScreen, renderLegalScreen, type AccountService } from './a
 import { createLevels, unitIdsOfSite, type LevelSite } from './levels';
 import { bookMark } from './loading';
 import type { GoEvent } from '../../repository-contract/src';
-import { CONTRACT_VERSION } from '../../repository-contract/src';
 import type { Pronouncer } from '../../golearn-extension/src/popup/view';
 
 export interface BibliaDeps {
@@ -38,8 +37,6 @@ export interface BibliaDeps {
   recorder: Recorder;
   /** The standalone web edition's account (sign-in state, the screen at #/account); absent in the extension, in the iPhone app and in a plain reader. With it, the chapter on screen carries the learner's knowledge levels while signed in. */
   account?: AccountService;
-  /** Current authenticated session and service URL for account-backed speech; omitted in the extension/local-only editions. */
-  speechAccount?: () => Promise<{ serviceUrl: string; token: string; learnerId: string } | undefined>;
   createPronouncer?: (consent: () => boolean, consentOwner: () => string | undefined) => Pronouncer;
   /** With the account: the live sync notice (src/syncStatus.ts), shown in the Settings page's Account card and nowhere else (2026-10-27: it used to be a bar above every page). */
   syncStatus?: HTMLElement;
@@ -65,6 +62,10 @@ const SHORT_DISPLAY: Record<HebrewDisplay, string> = { full: 'with accents', niq
 const ICONS = {
   back: '<path d="M15 6l-6 6 6 6" />',
   chevronRight: '<path d="M9 6l6 6-6 6" />',
+  book: '<path d="M3 5.5c3.2-.9 6.2-.2 9 1.8v14c-2.8-2-5.8-2.7-9-1.8zM21 5.5c-3.2-.9-6.2-.2-9 1.8v14c2.8-2 5.8-2.7 9-1.8z" />',
+  layers: '<path d="m12 3 9 5-9 5-9-5 9-5zm-9 9 9 5 9-5M3 16l9 5 9-5" />',
+  licences: '<path d="M6 3h9l4 4v14H6zM15 3v5h4M9 12h7M9 16h7" />',
+  reset: '<path d="M3 12a9 9 0 1 0 2.6-6.4L3 8m0-5v5h5" />',
   settings: '<path d="M4 7h10M18 7h2M4 12h2M10 12h10M4 17h8M16 17h4" /><circle cx="16" cy="7" r="2" /><circle cx="8" cy="12" r="2" /><circle cx="14" cy="17" r="2" />',
   type: '<path d="M4 19l5-14 5 14M6.5 14h5M15 12l3-6 3 6M16 10h4" />',
   account: '<circle cx="12" cy="8.5" r="3.5" /><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" />',
@@ -140,10 +141,8 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   }
   applyPrefs();
 
-  let remoteSpeechConsent = false;
-  let remoteSpeechConsentOwner: string | undefined;
   const card: CardUI = createCardUI({ doc, speech: (win as unknown as { speechSynthesis?: SpeechSynthesis }).speechSynthesis ?? null,
-    ...(deps.createPronouncer ? { pronouncer: deps.createPronouncer(() => remoteSpeechConsent, () => remoteSpeechConsentOwner) } : {}), onDismiss: () => clearSelection() });
+    ...(deps.createPronouncer ? { pronouncer: deps.createPronouncer(() => false, () => undefined) } : {}), onDismiss: () => clearSelection() });
   let selectedButton: HTMLElement | undefined;
   let offCardLevel: (() => void) | undefined; // the open card follows its word's level on the page until it closes
   const clearSelection = (): void => { selectedButton?.classList.remove('sel'); selectedButton = undefined; offCardLevel?.(); offCardLevel = undefined; };
@@ -550,7 +549,6 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   /** A card: a section whose h2 is the kicker. */
   const kickerCard = (id: string, title: string, ...children: Child[]): HTMLElement => h('section', { class: 'card', id, 'aria-labelledby': `${id}-h` }, h('h2', { id: `${id}-h` }, title), ...children);
   const para = (text: string, cls?: string): HTMLElement => h('p', cls ? { class: cls } : {}, text);
-  const legalLinks = (): HTMLElement => h('p', { class: 'muted legal-links' }, h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' · ', h('a', { href: '#/privacy', id: 'link-privacy-policy' }, 'Privacy Policy'), ' (drafts)');
 
   /** A group of pill buttons, one pressed. */
   function pills<T extends string>(label: string, options: ReadonlyArray<readonly [T, string]>, current: T, onPick: (v: T) => void): HTMLElement {
@@ -565,10 +563,15 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   }
   const labelled = (caption: string, control: HTMLElement): HTMLElement => h('div', { class: 'field' }, h('span', { class: 'cap' }, caption), control);
   function slider(id: string, caption: string, min: number, max: number, step: number, value: number, format: (n: number) => string, onInput: (n: number) => void): HTMLElement {
-    const input = h('input', { type: 'range', id, min: String(min), max: String(max), step: String(step), value: String(value) }) as HTMLInputElement;
-    const out = h('span', { class: 'slider__value' }, format(value));
-    input.addEventListener('input', () => { const n = Number(input.value); out.textContent = format(n); onInput(n); });
-    return h('div', { class: 'field field--slider' }, h('label', { class: 'cap', for: id }, caption, ' · ', out), input);
+    const input = h('input', { type: 'range', id, min: String(min), max: String(max), step: String(step), value: String(value), 'aria-valuetext': format(value) }) as HTMLInputElement;
+    const out = h('span', { class: 'slider__value', 'aria-hidden': 'true' }, format(value));
+    input.addEventListener('input', () => {
+      const n = Number(input.value);
+      out.textContent = format(n);
+      input.setAttribute('aria-valuetext', format(n));
+      onInput(n);
+    });
+    return h('div', { class: 'field field--slider' }, h('label', { class: 'cap', for: id }, caption, out), input);
   }
   function toggle(id: string, text: string, help: string | undefined, checked: boolean, onChange: (on: boolean) => void): HTMLElement {
     const input = h('input', { type: 'checkbox', id }) as HTMLInputElement;
@@ -578,44 +581,18 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   }
 
   function renderSettings(): HTMLElement {
-    const remoteSpeech = h('input', { type: 'checkbox', id: 'settings-remote-speech' }) as HTMLInputElement;
-    remoteSpeech.checked = remoteSpeechConsent;
-    remoteSpeech.disabled = !deps.speechAccount;
-    remoteSpeech.addEventListener('change', () => {
-      const on = remoteSpeech.checked;
-      if (!on) { remoteSpeechConsent = false; remoteSpeechConsentOwner = undefined; }
-      void (async () => {
-        const account = await deps.speechAccount?.().catch(() => undefined);
-        if (!account) { remoteSpeechConsent = false; remoteSpeech.checked = false; return; }
-        const identity = await deps.recorder.identity('he', 'he-bib');
-        if (!identity) { remoteSpeechConsent = false; remoteSpeech.checked = false; return; }
-        const at = deps.now().toISOString();
-        const eventId = `speech-consent-${deps.now().getTime().toString(36)}-${Math.random().toString(36).slice(2, 9)}`;
-        const event: GoEvent = {
-          id: eventId, v: CONTRACT_VERSION, learnerId: identity.learnerId, enrolmentId: identity.enrolmentId, languageId: 'he', at,
-          producer: { app: 'golearn-app', version: APP_VERSION, deviceId: identity.deviceId, surface: 'settings' },
-          kind: on ? 'ConsentGiven' : 'ConsentWithdrawn', subject: {}, payload: { consent: 'remote-speech', scope: 'remote-speech' },
-          dedupeKey: `remote-speech:${on ? 'given' : 'withdrawn'}:${eventId}`,
-        };
-        const result = await deps.recorder.record([event]);
-        if (on && !result.ok) { remoteSpeechConsent = false; remoteSpeechConsentOwner = undefined; remoteSpeech.checked = false; return; }
-        remoteSpeechConsentOwner = on ? account.learnerId : undefined;
-        remoteSpeechConsent = on;
-        remoteSpeech.checked = on;
-        if (on && result.queued) await deps.recorder.flush?.();
-      })().catch(() => { if (on) { remoteSpeechConsent = false; remoteSpeechConsentOwner = undefined; remoteSpeech.checked = false; } });
-    });
-    const reading = kickerCard('settings-reading', 'Reading',
-      labelled('Theme', pills<Theme>('Theme', [['auto', 'auto'], ['light', 'light'], ['dark', 'dark']], theme, (v) => { theme = v; setPref('theme', v); applyPrefs(); })),
-      slider('set-hebrew-size', 'Hebrew size', 18, 44, 1, hebrewSize, (n) => `${n}px`, (n) => { hebrewSize = n; setPref('hebrewSize', String(n)); applyPrefs(); }),
-      slider('set-greek-size', 'Greek size', 16, 36, 1, greekSize, (n) => `${n}px`, (n) => { greekSize = n; setPref('greekSize', String(n)); applyPrefs(); }),
-      slider('set-line-height', 'Line spacing', 1.4, 2.6, 0.05, lineHeight, (n) => n.toFixed(2), (n) => { lineHeight = n; setPref('lineHeight', String(n)); applyPrefs(); }),
-      labelled('Hebrew text', pills<HebrewDisplay>('Hebrew text', (['full', 'niqqud', 'consonants'] as HebrewDisplay[]).map((d) => [d, SHORT_DISPLAY[d]] as const), hebrewDisplay, (d) => { hebrewDisplay = d; setPref('hebrewDisplay', d); })),
-      para('The Hebrew analyser always reads the full Masoretic text, whatever is displayed; the display only hides marks. The choice applies to the next chapter you open.', 'muted hint'),
-      toggle('set-verse-numbers', 'Verse numbers', undefined, verseNumbers, (on) => { verseNumbers = on; setPref('verseNumbers', on ? 'on' : 'off'); applyPrefs(); }),
-      toggle('set-level-marks', 'Mark the words by how well I know them', '(only while signed in)', levelMarks, (on) => { levelMarks = on; setPref('levelMarks', on ? 'on' : 'off'); applyPrefs(); }),
-      h('div', { class: 'row' }, (() => {
-        const reset = h('button', { type: 'button', class: 'btn', id: 'settings-reset' }, 'Reset settings');
+    const reading = h('section', { class: 'card settings-reading', id: 'settings-reading', 'aria-labelledby': 'settings-reading-heading' },
+      h('div', { class: 'settings-reading__intro' }, icon('book'),
+        h('h2', { class: 'settings-reading__heading', id: 'settings-reading-heading' }, 'Reading')),
+      h('div', { class: 'settings-row' }, labelled('Theme', pills<Theme>('Theme', [['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']], theme, (v) => { theme = v; setPref('theme', v); applyPrefs(); }))),
+      h('div', { class: 'settings-row settings-row--slider' }, slider('set-hebrew-size', 'Hebrew text size', 18, 44, 1, hebrewSize, (n) => `${n} px`, (n) => { hebrewSize = n; setPref('hebrewSize', String(n)); applyPrefs(); })),
+      h('div', { class: 'settings-row settings-row--slider' }, slider('set-greek-size', 'Greek text size', 16, 36, 1, greekSize, (n) => `${n} px`, (n) => { greekSize = n; setPref('greekSize', String(n)); applyPrefs(); })),
+      h('div', { class: 'settings-row settings-row--slider' }, slider('set-line-height', 'Line spacing', 1.4, 2.6, 0.05, lineHeight, (n) => n.toFixed(2), (n) => { lineHeight = n; setPref('lineHeight', String(n)); applyPrefs(); })),
+      h('div', { class: 'settings-row' }, labelled('Hebrew text', pills<HebrewDisplay>('Hebrew text', (['full', 'niqqud', 'consonants'] as HebrewDisplay[]).map((d) => [d, d === 'full' ? 'Accents' : SHORT_DISPLAY[d][0].toUpperCase() + SHORT_DISPLAY[d].slice(1)] as const), hebrewDisplay, (d) => { hebrewDisplay = d; setPref('hebrewDisplay', d); })),
+        para('This choice takes effect the next time you open a chapter.', 'muted hint')),
+      h('div', { class: 'settings-row' }, labelled('Verse numbers', pills<'on' | 'off'>('Verse numbers', [['on', 'Hebrew / Greek'], ['off', 'None']], verseNumbers ? 'on' : 'off', (v) => { verseNumbers = v === 'on'; setPref('verseNumbers', v); applyPrefs(); }))),
+      h('div', { class: 'settings-reader-footer' }, toggle('set-level-marks', 'Mark words by familiarity', 'Available when signed in.', levelMarks, (on) => { levelMarks = on; setPref('levelMarks', on ? 'on' : 'off'); applyPrefs(); }), (() => {
+        const reset = h('button', { type: 'button', class: 'btn', id: 'settings-reset' }, icon('reset'), 'Reset settings');
         reset.addEventListener('click', () => {
           for (const name of PREF_NAMES) { try { deps.storage?.removeItem(`biblia:${name}`); } catch { /* storage blocked */ } }
           hebrewDisplay = 'full'; theme = 'auto'; hebrewSize = READING_DEFAULTS.hebrewSize; greekSize = READING_DEFAULTS.greekSize; lineHeight = READING_DEFAULTS.lineHeight; verseNumbers = true; levelMarks = true;
@@ -625,66 +602,34 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         return reset;
       })()));
 
-    // the account: who, Sign out, or the way in
-    const accountCard = kickerCard('settings-account', 'Account');
-    if (!account) {
-      accountCard.append(para('This edition has no sign-in of its own.', 'muted'), para(recordingNotice(), 'muted'));
-    } else {
-      const st = account.state();
-      if (st.signedIn) {
-        const out = h('button', { type: 'button', class: 'btn', id: 'settings-signout' }, 'Sign out');
-        out.addEventListener('click', () => { void account.signOut(); });
-        const waiting = deps.recorder.pending?.() ?? 0;
-        accountCard.append(
-          h('p', { id: 'settings-email' }, `Signed in as ${st.email ?? 'your account'}`),
-          para(recordingNotice(), 'muted'),
-          // the live sync notice (pending items, Sync now, last sent) lives here; without it, the plain count
-          ...(deps.syncStatus ? [deps.syncStatus] : waiting ? [para(`${waiting} lookup${waiting === 1 ? '' : 's'} and mark${waiting === 1 ? '' : 's'} waiting on this device to be sent.`, 'muted')] : []),
-          h('div', { class: 'row' }, out, h('a', { class: 'btn', href: '#/account' }, 'Account')),
-          legalLinks());
-      } else {
-        accountCard.append(
-          h('p', { id: 'settings-signed-out', class: st.expired ? 'error' : 'muted' }, st.expired ? 'Your sign-in ended. Sign in again; what you did since is kept on this device and sent after.' : 'Not signed in.'),
-          para(recordingNotice(), 'muted'),
-          // an expired sign-in's notice names what waits on the device
-          ...(deps.syncStatus && st.expired ? [deps.syncStatus] : []),
-          h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/account', id: 'settings-signin' }, 'Sign in')),
-          legalLinks());
-      }
-    }
-
-    // the service the account lives on: read from config.json, never edited here
-    const serviceCard = kickerCard('settings-service', 'Service');
-    if (account) {
-      serviceCard.append(
-        h('label', { class: 'field' }, h('span', { class: 'cap' }, 'Go Repository service'),
-          h('input', { type: 'url', id: 'settings-svc-url', value: account.serviceUrl, readonly: '', spellcheck: 'false', autocomplete: 'off' }),
-          h('span', { class: 'help' }, 'Read from this copy’s config.json. Your email and password, and what you look up and mark, go to this service and nowhere else.')));
-    } else serviceCard.append(para('No Repository service is connected in this edition.', 'muted'));
-
-    // what the device keeps
     const installed = !!doc.querySelector('meta[name="biblia-edition"]');
     const waiting = deps.recorder.pending?.() ?? 0;
-    const offline = kickerCard('settings-offline', 'Offline',
-      para(installed
-        ? 'This installed edition keeps the app itself from your first visit, and each chapter, lexicon file and dictionary shard the first time you open it, so a chapter you have read once opens without a connection. A chapter you have never opened needs one.'
-        : 'This copy does not install itself for offline use: it opens each chapter from where it was loaded. The installable web edition keeps what you read on the device.'),
-      para(`Also kept on this device by this page: your place (the last chapter you read), which parts of the library are open, and these settings${account ? `, and the sign-in${waiting ? `, with ${waiting} lookup${waiting === 1 ? '' : 's'} and mark${waiting === 1 ? '' : 's'} not yet sent` : ''}` : ''}.`, 'muted'));
+    const offline = h('details', { class: 'card settings-disclosure', id: 'settings-offline' },
+      h('summary', {}, h('span', { class: 'settings-disclosure__icon' }, icon('layers')), h('span', { class: 'settings-disclosure__copy' },
+        h('span', { class: 'settings-disclosure__title' }, 'Offline reading'),
+        h('span', { class: 'settings-disclosure__subtitle' }, installed ? 'Previously opened chapters are available offline.' : 'Chapters open from the current connection.')), h('span', { class: 'settings-disclosure__arrow' }, icon('chevronRight'))),
+      h('div', { class: 'settings-disclosure__body' },
+        para(installed
+          ? 'This installed edition keeps the app itself after your first visit. Each chapter, lexicon file, and dictionary shard is available offline after you open it once. Chapters you have not opened yet need a connection.'
+          : 'This edition loads each chapter from the connection where it was opened. It is not installed for offline use.'),
+        para(`Also kept on this device by this page: your place (the last chapter you read), which parts of the library are open, and these settings${account ? `, and the sign-in${waiting ? `, with ${waiting} lookup${waiting === 1 ? '' : 's'} and mark${waiting === 1 ? '' : 's'} not yet sent` : ''}` : ''}.`, 'muted')));
 
-    const sources = kickerCard('settings-sources', 'Sources & licences',
-      sourcesNote(),
-      para('Type: EB Garamond (Latin and Greek) and Frank Ruhl Libre (Hebrew), under the SIL Open Font License 1.1, copied with their licences.', 'muted'),
-      h('p', { class: 'muted' },
-        h('a', { href: './fonts/EB-Garamond-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-garamond' }, 'EB Garamond licence'), ' · ',
-        h('a', { href: './fonts/frank-ruhl-libre-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-frank' }, 'Frank Ruhl Libre licence')));
+    const sources = h('details', { class: 'card settings-disclosure', id: 'settings-sources' },
+      h('summary', {}, h('span', { class: 'settings-disclosure__icon' }, icon('licences')), h('span', { class: 'settings-disclosure__copy' },
+        h('span', { class: 'settings-disclosure__title' }, 'Sources & Licences'),
+        h('span', { class: 'settings-disclosure__subtitle' }, 'Text editions, morphology, and typography.')), h('span', { class: 'settings-disclosure__arrow' }, icon('chevronRight'))),
+      h('div', { class: 'settings-disclosure__body' }, sourcesNote(),
+        para('Type: EB Garamond (Latin and Greek) and Frank Ruhl Libre (Hebrew), under the SIL Open Font License 1.1, copied with their licences.', 'muted'),
+        h('p', { class: 'muted' },
+          h('a', { href: './fonts/EB-Garamond-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-garamond' }, 'EB Garamond licence'), ' · ',
+          h('a', { href: './fonts/frank-ruhl-libre-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-frank' }, 'Frank Ruhl Libre licence'))));
 
-    const speech = kickerCard('settings-speech', 'Speech',
-      h('label', { class: 'toggle' }, remoteSpeech, h('span', {}, 'Allow remote speech for selected words')),
-      para(deps.speechAccount
-        ? 'When enabled, pressing a word’s speaker can send that one word to the Repository service and its configured speech provider. No passage or chapter is sent. This setting is off until you turn it on; local device voices still work.'
-        : 'Remote speech requires a signed-in Repository account in the GoReview or standalone Biblia edition. Local device voices work without an account.', 'muted'));
-
-    return h('div', { class: 'settings' }, plainBar('Biblia', 'settings'), h('div', { class: 'screen' }, h('h1', {}, 'Settings'), reading, speech, accountCard, serviceCard, offline, sources));
+    const footer = h('footer', { class: 'settings-legal-footer' },
+      h('nav', { class: 'settings-links', 'aria-label': 'Information and legal pages' },
+        h('a', { href: '#/sources' }, 'Sources & limits'),
+        ...(account ? [' · ', h('a', { href: '#/terms/settings' }, 'Terms'), ' · ', h('a', { href: '#/privacy/settings' }, 'Privacy')] : [])));
+    return h('div', { class: 'settings' }, plainBar('Biblia', 'settings'),
+      h('div', { class: 'screen' }, h('h1', {}, 'Settings'), reading, offline, sources, footer));
   }
   function renderSources(): HTMLElement {
     return h('div', {}, plainBar('Biblia'), h('div', { class: 'screen' }, h('h1', {}, 'Sources and limits'),
@@ -720,8 +665,12 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     }
     else if (id === 'settings') { route = 'settings'; view = renderSettings(); }
     else if (id === 'sources') { route = 'sources'; view = renderSources(); }
-    else if (id === 'account' && account) { route = 'account'; view = renderAccountScreen({ doc, account, topbar: plainBar('Biblia', 'account'), done: () => { void api.go('#/'); } }); }
-    else if ((id === 'privacy' || id === 'terms') && account) { route = id; view = renderLegalScreen({ doc, which: id, topbar: plainBar('Biblia', undefined, '#/account') }); }
+    else if (id === 'account' && account) { route = 'account'; view = renderAccountScreen({ doc, account, topbar: plainBar('Biblia', 'account'), done: () => { void api.go('#/'); }, syncStatus: deps.syncStatus }); }
+    else if ((id === 'privacy' || id === 'terms') && account) {
+      route = id;
+      const fromSettings = m?.[2] === 'settings';
+      view = renderLegalScreen({ doc, which: id, fromSettings, topbar: plainBar('Biblia', undefined, fromSettings ? '#/settings' : '#/account') });
+    }
     else { route = 'library'; view = renderLibrary(); }
     root.replaceChildren(view);
     try { win.scrollTo(0, 0); } catch { /* jsdom has no layout */ }

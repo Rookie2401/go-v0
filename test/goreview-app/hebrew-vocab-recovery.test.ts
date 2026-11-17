@@ -203,12 +203,14 @@ describe('workspace Hebrew recovery', () => {
     const model = await loadReviewModel(rig.app.ctx);
     const current = await planCurrentDeck(rig.app.ctx, model!, new Set(), undefined, 'current');
     const review = await planCurrentDeck(rig.app.ctx, model!, new Set(), undefined, 'review');
-    // no new admission: the Current Deck holds only deck fill (the not-due card introduced today, borrowed as early practice; 2026-11-03)
+    // no new admission: the Current Deck admits nothing new, and the card introduced today is not borrowed as early practice: it was
+    // answered Easy, and an Easy word waits for its due time (the owner, 2026-11-17)
     expect(current.plan.items.filter(p => p.presentationReason !== 'deck-fill')).toHaveLength(0);
     expect(current.plan.items.every(p => p.presentationReason === 'deck-fill' && !p.isNew)).toBe(true);
-    // the Review Deck keeps its one due review as an obligation; the not-due card introduced today completes it as deck fill
+    // the Review Deck keeps its one due review as an obligation, and nothing fills it: its only other card was answered Easy
     expect(review.plan.items.filter(p => p.presentationReason !== 'deck-fill').map(p => p.item.unitId)).toHaveLength(1);
-    expect(review.plan.items.filter(p => p.presentationReason === 'deck-fill')).toHaveLength(1);
+    expect(review.plan.items.filter(p => p.presentationReason === 'deck-fill')).toHaveLength(0);
+    expect([...current.plan.items, ...review.plan.items].some(p => p.item.unitId.endsWith('introduced-today'))).toBe(false);
     expect(explainAdmissions(model!, current)?.code).toBe('daily-allowance-used');
   });
 

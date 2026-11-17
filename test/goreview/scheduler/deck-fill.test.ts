@@ -93,7 +93,8 @@ describe('deck-fill plan through the real fold and planner', () => {
     const now = at(3 * DAY);
     const events: GoEvent[] = [
       added(unitOf('due'), T0), reviewed(idOf('due'), at(DAY), 3), // a Good first answer: a short learning step, due long before `now`
-      ...['n1', 'n2', 'n3'].flatMap((n) => [added(unitOf(n), T0), reviewed(idOf(n), at(3 * DAY - 2 * HOUR), 4)]), // Easy two hours ago: not due
+      // Good, then Good again an hour later: out of its learning step and not due. (Cards last answered Easy are never fill: below.)
+      ...['n1', 'n2', 'n3'].flatMap((n) => [added(unitOf(n), T0), reviewed(idOf(n), at(3 * DAY - 3 * HOUR), 3), reviewed(idOf(n), at(3 * DAY - 2 * HOUR), 3)]),
     ];
     const deck = foldDeckItems(events, sched, { languageId: 'grc', now });
     expect(deck.filter((i) => sched.isDue(i.schedule, now)).map((i) => i.unitId)).toEqual([unitOf('due')]);
@@ -114,5 +115,46 @@ describe('deck-fill plan through the real fold and planner', () => {
     const folded = foldDeck([...events, runnerEvent], sched, { languageId: 'grc', now: at(3 * DAY + MIN) }).items.find((i) => i.itemId === fill[0]!.item.itemId)!;
     expect(folded.history.at(-1)).toMatchObject({ eventId: runnerEvent.id, earlyPractice: true });
     expect(folded.schedule).toEqual(deck.find((i) => i.itemId === folded.itemId)!.schedule);
+  });
+});
+
+describe('an Easy word is not deck fill (the owner, 2026-11-17), unless it was once answered Again or Hard', () => {
+  // the owner: "if I say a word was easy, it appears far too often again ... one exception, if the word was previously marked difficult"
+  const now = at(3 * DAY);
+  const card = (name: string, ratings: (1 | 2 | 3 | 4)[]): GoEvent[] =>
+    [added(unitOf(name), T0), ...ratings.map((r, k) => reviewed(idOf(name), at(3 * DAY - (ratings.length + 1 - k) * HOUR), r))];
+  const planFor = (events: GoEvent[], cardsPerDeck = 10) => {
+    const deck = foldDeckItems(events, sched, { languageId: 'grc', now });
+    return { deck, plan: planSession({ deck, intake: [], preferences: prefs({ languageId: 'grc', cardsPerDeck, sessionMinutes: 0, maxNew: 0 }), audio: audioOk, scheduler: sched, now, readingSignals: events, learnerId: LEARNER, random: () => 0.1 }) };
+  };
+  const fillOf = (plan: ReturnType<typeof planSession>) => plan.items.filter((p) => p.presentationReason === 'deck-fill').map((p) => p.item.unitId).sort();
+
+  it('a card answered Easy waits for its due time; Good cards still fill the deck', () => {
+    const events = [...card('easy', [4]), ...card('good', [3, 3]), ...card('easy-again', [3, 4])];
+    const { deck, plan } = planFor(events);
+    expect(deck.filter((i) => sched.isDue(i.schedule, now))).toEqual([]); // none is due: everything in the plan would be fill
+    expect(fillOf(plan)).toEqual([unitOf('good')]);
+  });
+
+  it('the exception: a card once answered Again or Hard may still be practised early, even if its latest answer was Easy', () => {
+    const events = [...card('hard-then-easy', [2, 4]), ...card('again-good-easy', [1, 3, 4]), ...card('only-easy', [4])];
+    const { deck, plan } = planFor(events);
+    const notDue = deck.filter((i) => !sched.isDue(i.schedule, now)).map((i) => i.unitId).sort();
+    expect(notDue).toEqual([unitOf('again-good-easy'), unitOf('hard-then-easy'), unitOf('only-easy')]);
+    expect(fillOf(plan)).toEqual([unitOf('again-good-easy'), unitOf('hard-then-easy')]);
+  });
+
+  it('a card whose latest answer is Good again (after an Easy) fills as before', () => {
+    const { plan } = planFor(card('easy-then-good', [3, 4, 3]));
+    expect(fillOf(plan)).toEqual([unitOf('easy-then-good')]);
+  });
+
+  it('an Easy card that is due is reviewed as usual: the rule concerns early practice only', () => {
+    const later = at(30 * DAY); // an Easy answer on the first day, a month on: due
+    const events = [added(unitOf('due-easy'), T0), reviewed(idOf('due-easy'), at(DAY), 4)];
+    const deck = foldDeckItems(events, sched, { languageId: 'grc', now: later });
+    expect(sched.isDue(deck[0]!.schedule, later)).toBe(true);
+    const plan = planSession({ deck, intake: [], preferences: prefs({ languageId: 'grc', cardsPerDeck: 10, sessionMinutes: 0, maxNew: 0 }), audio: audioOk, scheduler: sched, now: later, readingSignals: events, learnerId: LEARNER, random: () => 0.1 });
+    expect(plan.items.map((p) => [p.item.unitId, p.presentationReason])).toEqual([[unitOf('due-easy'), 'scheduled-review']]);
   });
 });

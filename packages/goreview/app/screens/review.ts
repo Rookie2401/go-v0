@@ -6,6 +6,7 @@ import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
 import { addedWords, holdOutOf, listedKnowledgeCount, loadVocabSafe, listSavedDecks, vocabCount, planCurrentDeck, planFreshDeck, releaseHoldOut, setHoldOut, type CurrentDeck, type DeckPart, type SavedDeck, type VocabLoadResult, type VocabRow } from '../deckModel';
 import { explainAdmissions } from '../admissionExplanation';
+import { easyAndNeverDifficult } from '../../src/planner/planner';
 import { freshModel, planCouldHaveChanged } from '../freshness';
 import { loadingMark } from '../loading';
 import { icon } from '../icons';
@@ -318,7 +319,10 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     // deck's card count and never "due". When the whole eligible pool is smaller than the size (nothing new can be admitted, no due review
     // waits in the Review Deck, nothing was held back for time or batch room) the Current Deck says it holds all of the learner's cards.
     const heldBack = deck.plan.skipped.some(s => s.code === 'over-time-budget' || s.code === 'beyond-micro-deck' || s.code === 'same-unit-in-batch');
-    const poolExhausted = drilling > 0 && drilling < deck.summary.targetQuestions && deck.summary.newAvailable === 0 && deck.summary.dueReviews === 0 && !heldBack;
+    // a word answered Easy is not used to fill a deck and waits for its due time (2026-11-17): while one waits, the deck is not "all" the cards
+    const nowMs = Date.parse(m.now);
+    const easyWaiting = m.deck.some(i => i.status === 'active' && Date.parse(i.schedule.due) > nowMs && easyAndNeverDifficult(i));
+    const poolExhausted = drilling > 0 && drilling < deck.summary.targetQuestions && deck.summary.newAvailable === 0 && deck.summary.dueReviews === 0 && !heldBack && !easyWaiting;
     const currentKicker = poolExhausted ? (drilling === 1 ? '1 card · your only one' : `all ${drilling} of your cards`)
       : drilling ? plural(drilling, 'card', 'cards')
       : deck.summary.nextReturnAt ? `Nothing to drill now · next return ${when(deck.summary.nextReturnAt)}` : 'Nothing to drill right now';

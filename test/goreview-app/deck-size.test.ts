@@ -79,7 +79,7 @@ describe('cards per deck', () => {
 
   it('fills a short deck to the size the learner set: one due card, no admissible new word and nine spaced reviews not yet due make a full Current Deck (the owner, 2026-11-03)', async () => {
     const rig = await makeRig({ signedIn: true });
-    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + (i % 7)}T10:00:00.000Z`)];
+    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + (i % 7)}T10:00:00.000Z`), reviewed(A, `s${i}`, 'meaning-to-form', 3, `2026-10-0${1 + (i % 7)}T22:00:00.000Z`)] /* Easy, then Good: an established review whose latest answer is not Easy (an Easy-last card is never fill, 2026-11-17) */;
     await seed(rig, [...dueCard(A, 'w0', 'meaning-to-form'), ...Array.from({ length: 9 }, (_, i) => i).flatMap(spaced)]);
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { maxNew: 0 });
     await reopen(rig);
@@ -98,7 +98,7 @@ describe('cards per deck', () => {
 
   it('one due review plus nine fill: the obligations summary says 1 due review while the deck says 10 cards, and the kicker never says "due" (the owner, 2026-11-03)', async () => {
     const rig = await makeRig({ signedIn: true });
-    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + (i % 7)}T10:00:00.000Z`)];
+    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + (i % 7)}T10:00:00.000Z`), reviewed(A, `s${i}`, 'meaning-to-form', 3, `2026-10-0${1 + (i % 7)}T22:00:00.000Z`)] /* Easy, then Good: an established review whose latest answer is not Easy (an Easy-last card is never fill, 2026-11-17) */;
     // w0: answered Again, then Easy a day later, so it is an established review that has come due; nine more reviews are not due
     await seed(rig, [...dueCard(A, 'w0', 'meaning-to-form'), reviewed(A, 'w0', 'meaning-to-form', 4, '2026-09-02T10:00:00.000Z'), ...Array.from({ length: 9 }, (_, i) => i).flatMap(spaced)]);
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { maxNew: 0 });
@@ -118,7 +118,7 @@ describe('cards per deck', () => {
 
   it('a pool smaller than the deck size is the whole pool: the Current Deck says it holds all of the learner cards', async () => {
     const rig = await makeRig({ signedIn: true });
-    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + i}T10:00:00.000Z`)];
+    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + i}T10:00:00.000Z`), reviewed(A, `s${i}`, 'meaning-to-form', 3, `2026-10-0${1 + i}T22:00:00.000Z`)] /* Easy, then Good (2026-11-17) */;
     await seed(rig, [0, 1, 2, 3, 4, 5].flatMap(spaced));
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { maxNew: 0, cardsPerDeck: 10 });
     await reopen(rig);

@@ -37,12 +37,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     append(el, [h('section', { class: 'card', id: 'review-first-launch', 'aria-labelledby': 'review-first-h' },
       h('h2', { id: 'review-first-h' }, 'Welcome to GoReview'),
       p('GoReview shows what you read with GoLearn on the same account. Sign in with the account you use in GoLearn, or create one below: your words, your decks and your reviews appear here, and what you look up while reading on your computer arrives within seconds while GoReview is open.'),
+      p('New here? Create an account below, then choose your language: everything is set up in GoReview, and GoLearn is not needed to start.', 'muted'),
       p('Your reviews done here go back to the same account, so GoLearn sees them too. Nothing is shown until you sign in.', 'muted'))]);
   } else if (hosted) {
     // no wall: the page says what this copy is and where the copy that needs no account lives
     append(el, [h('section', { class: 'card', id: 'hosted-copy', 'aria-labelledby': 'hosted-h' },
       h('h2', { id: 'hosted-h' }, 'This is the hosted copy of GoReview'),
-      p('The hosted copy keeps your reviews and drafts on your account, so it needs one. The copy inside the GoLearn extension works on your own device with no account at all: it reads what you met while reading from the device, and keeps your reviews and drafts there.'),
+      p('The hosted copy keeps your reviews and drafts on your account, so it needs one. New here? Create an account below, then choose your language: everything is set up here. The copy inside the GoLearn extension works on your own device with no account at all: it reads what you met while reading from the device, and keeps your reviews and drafts there.'),
       links.extension
         ? h('p', {}, h('a', { class: 'btn primary', id: 'open-extension-copy', href: links.extension }, 'Open GoReview in the extension'))
         : p('To use it without an account, install the GoLearn extension and open GoReview from its setup page.', 'muted'))]);

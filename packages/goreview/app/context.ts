@@ -16,6 +16,7 @@ import { CANNOT_SIGN_IN, signInOnce, UNREACHABLE_SIGN_IN } from './signin';
 import type { Enrolment, GoEvent, EventLog } from '../../repository-contract/src';
 import { validateEvent } from '../../repository-contract/src';
 import type { RepositoryApi, ApiResult } from '../../repository-service/src/api';
+import { packFor } from '../../language-packs/src/registry';
 import {
   createLocalQueue, createSyncClient, pushIsolatingRefusals, type LocalQueue, type SyncClient, type SyncResult, type SyncStatus, type Transport,
 } from '../../repository-sync/src';
@@ -69,6 +70,12 @@ export interface AppContext {
   /** The signed-in learner and the one active language; undefined when signed out or without an enrolment. */
   identity(): Promise<Identity | undefined>;
   setLanguage(enrolmentId: string): Promise<boolean>;
+  /**
+   * Starts a language from GoReview itself (2026-11-17: a learner needs no GoLearn setup first): the enrolment on the account when signed in, else on
+   * this device's Repository (inside the extension, where GoLearn sees it too), and it becomes the active language. A language already chosen in the
+   * same variety is reused; another variety of the same language replaces the earlier one (its events stay under it), as GoLearn setup does.
+   */
+  chooseLanguage(input: { languageId: string; varietyId?: string }): Promise<{ ok: true; enrolmentId: string; where: 'account' | 'device' } | { ok: false; message: string }>;
   signIn(input: { email: string; password: string; /** Make the account first (the hosted copy and the iPhone app, which have no setup page to do it). */ create?: boolean; displayName?: string }): Promise<SignInResult>;
   signOut(opts?: { forget?: boolean }): Promise<{ pendingLeft: number }>;
   /** Deliberately removes this device's own data: the on-device Repository and the learner's local queue, log and preferences. Never a side effect of signing out. */
@@ -507,6 +514,40 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     },
     session: () => state.getSession(),
     enrolments, refreshProfile, identity,
+    async chooseLanguage({ languageId, varietyId }) {
+      const pack = packFor(languageId);
+      if (!pack) return { ok: false, message: 'GoReview has no pack for this language yet.' };
+      if (pack.status !== 'installable') return { ok: false, message: `${pack.identity.name} is planned, not ready yet, so it cannot be chosen.` };
+      const session = await state.getSession();
+      const local = session ? undefined : await openLocal();
+      if (!session && !local) return { ok: false, message: 'Sign in first: this copy of GoReview keeps your languages on your account.' };
+      const analysed = pack.varieties.filter((v) => v.analysed);
+      const variety = varietyId && analysed.some((v) => v.varietyId === varietyId) ? varietyId : pack.varietyId;
+      const input = { languageId: pack.languageId, varietyId: variety, scriptId: pack.scriptId, packId: pack.packId, packVersion: pack.version, goals: [{ kind: 'reading' as const }] };
+      const client = session ? (await api()).api : local!.api;
+      let enrolmentId: string;
+      try {
+        const have = await client.listEnrolments();
+        if (!have.ok) return { ok: false, message: have.message || `Your languages could not be read (${have.status}). Try again.` };
+        const open = have.data.enrolments.filter((e) => !e.endedAt && e.languageId === pack.languageId);
+        const same = open.find((e) => (e.varietyId ?? '') === variety);
+        if (same) enrolmentId = same.enrolmentId;
+        else {
+          for (const other of open) await client.endEnrolment(other.enrolmentId);
+          const made = await client.enrol(input);
+          if (!made.ok) return { ok: false, message: made.message || `The language could not be saved (${made.status}). Try again.` };
+          enrolmentId = made.data.enrolment.enrolmentId;
+        }
+      } catch (e) {
+        return { ok: false, message: `The language could not be saved: ${e instanceof Error ? e.message : String(e)}` };
+      }
+      if (session) await refreshProfile();
+      const learnerId = session ? session.learnerId : (await local!.identity()).learnerId;
+      await state.setActive(learnerId, enrolmentId);
+      changed();
+      notifyData();
+      return { ok: true, enrolmentId, where: session ? 'account' : 'device' };
+    },
     async setLanguage(enrolmentId) {
       const session = await state.getSession();
       const learnerId = session ? session.learnerId : (await (await openLocal())?.identity())?.learnerId;

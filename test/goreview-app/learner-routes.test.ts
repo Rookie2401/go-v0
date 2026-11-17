@@ -6,6 +6,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { FakeAccountService } from '../golearn-app/accountFake';
 import { destroyRigs, flush, makeRig, type, until } from './helpers';
+import { flushTermsAcceptance } from '../../packages/goreview/app/screens/consent';
 
 afterEach(() => { destroyRigs(); });
 
@@ -45,8 +46,22 @@ describe('creating an account in GoReview', () => {
     rig.q('#signin-form').dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
     await until(async () => !!(await rig.deps.area.get('gopractice:session'))['gopractice:session'], 'the session');
     expect(created).toEqual([expect.objectContaining({ email: 'new@example.org', displayName: 'Ana' })]);
-    await until(() => consents.length > 0, 'the acceptance of the terms is recorded');
-    expect(consents[0]).toMatchObject({ kind: 'ConsentGiven', payload: { scope: 'terms-and-privacy' } });
+    // A new account has no language yet, and the service stores an event only under one of the learner's enrolments (2026-11-17: the acceptance
+    // used to be sent at once with enrolmentId "account" and was refused). It waits on the device, with the time it was given...
+    await flush(10);
+    expect(consents).toEqual([]);
+    const pending = async () => (await rig.deps.area.get('gopractice:terms-pending'))['gopractice:terms-pending'] as { learnerId: string; at: string } | undefined;
+    const waiting = await pending();
+    expect(waiting).toMatchObject({ learnerId: 'learner-new' });
+    // ...and is recorded under the first language the learner chooses, from this device, then no longer kept
+    const chosen = await rig.app.ctx.chooseLanguage({ languageId: 'sq' });
+    if (!chosen.ok) throw new Error(chosen.message);
+    await flushTermsAcceptance(rig.app.ctx);
+    await rig.app.ctx.syncNow({ force: true });
+    const stored = rig.service.storedEvents('learner-new').filter((e) => e.kind === 'ConsentGiven');
+    expect(stored).toHaveLength(1);
+    expect(stored[0]).toMatchObject({ enrolmentId: chosen.enrolmentId, languageId: 'sq', at: waiting!.at, payload: { scope: 'terms-and-privacy' } });
+    expect(await pending()).toBeUndefined();
   });
 
   it('switches back to signing in', async () => {

@@ -145,16 +145,15 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     if (!model) {
       clear(root);
       const [enrolments, mode, known] = await Promise.all([ctx.enrolments(), ctx.mode(), ctx.identity().catch(() => undefined)]);
-      const setup = ctx.deps.links?.setup;
       // a learner exists but nothing could be built within the deadline: the live load goes on and the home repaints when it lands
       if (known) { append(root, [h('div', { class: 'notice', id: 'deck-not-loaded' }, p('Your deck could not be loaded yet. It appears here when the service answers.'),
         button('Check again', () => { void requestRepaint(true, false); }, { id: 'recheck' })), status]); return; }
-      append(root, [enrolments.length ? p('Choose a language above.') : h('div', { class: 'notice', id: 'no-enrolment' },
-        p(mode === 'device'
-          ? 'You have no language yet. GoReview reviews what you met while reading, so choose your language in GoLearn setup first; it appears here at once, and no account is needed.'
-          : 'You have no language yet. GoReview reviews what you met while reading, so choose a language in GoLearn setup, on the same account. It appears here after the next sync.'),
-        setup ? h('p', {}, h('a', { class: 'btn', id: 'link-setup', href: setup }, 'Choose your language')) : null,
-        button('Check again', () => { void (async () => { await ctx.refreshProfile(); await requestRepaint(true, false); })(); }, { id: 'recheck' }))]);
+      if (enrolments.length) { append(root, [p('Choose a language above.')]); return; }
+      // no language yet: it is chosen here, in GoReview (2026-11-17; before, the learner was sent to GoLearn setup first)
+      append(root, [h('div', { class: 'notice', id: 'no-enrolment' },
+        p('You have no language yet. Choose one to start.'),
+        h('p', {}, h('a', { class: 'btn primary', id: 'link-setup', href: '#/setup' }, 'Choose your language')))]);
+      if (mode !== 'none' && view.alive()) ctx.go('setup');
       return;
     }
     const id = model.identity;

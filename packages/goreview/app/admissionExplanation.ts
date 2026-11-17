@@ -70,7 +70,7 @@ export function explainAdmissions(model: ReviewModel, deck: Pick<CurrentDeck, 's
   if (!model.outcomes.length) {
     return model.candidateSource === 'none'
       ? { code: 'no-candidates', text: 'No new words right now: the service could not be reached, and this device has no earlier list. Due reviews still work offline.' }
-      : { code: 'no-candidates', text: 'No new words yet: read with GoLearn, and the words you look up or meet will come here.' };
+      : { code: 'no-candidates', text: 'No new words yet: read with GoLearn or Biblia, and the words you look up or meet will come here. You can also add words yourself under My Vocabulary.' };
   }
   const byDecision = new Map<string, number>();
   for (const o of model.outcomes) byDecision.set(o.decision, (byDecision.get(o.decision) ?? 0) + 1);

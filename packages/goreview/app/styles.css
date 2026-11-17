@@ -69,6 +69,19 @@ code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divide
 .language-picker { position: relative; display: inline-flex; align-items: center; }
 select.language-kicker { width: auto; appearance: none; -webkit-appearance: none; background: transparent; border: 0; border-radius: 2px; padding: .2rem 1rem .2rem 0; cursor: pointer; }
 select.language-kicker:hover { color: var(--ink); }
+/* "Add a language" beside the language (2026-11-17): a quiet plus, the size of a finger on a phone */
+.language-add { display: inline-flex; align-items: center; justify-content: center; min-width: 1.75rem; min-height: 1.75rem; margin-left: .35rem; color: var(--ink-faint); text-decoration: none; font-weight: 600; border-radius: 4px; }
+.language-add:hover, .language-add:focus-visible { color: var(--ink); }
+/* #/setup: the languages to choose from */
+.setup-list { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 1rem; }
+.setup-language { border-top: 1px solid var(--divider); padding-top: 1rem; }
+.setup-language h2 { margin: 0 0 .2rem; font-size: 1.15rem; }
+.setup-language h2 .muted { font-weight: 400; margin-left: .35rem; }
+.setup-language > p { margin: .35rem 0; }
+.setup-choice { border: 0; padding: 0; margin: .5rem 0; display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; align-items: center; }
+.setup-choice legend { padding: 0; margin-bottom: .35rem; font-weight: 600; width: 100%; }
+.setup-option { display: inline-flex; gap: .35rem; align-items: center; min-height: 2.75rem; }
+#setup-recheck { background: none; border: 0; padding: 0; color: inherit; text-decoration: underline; cursor: pointer; font: inherit; }
 .language-caret { position: absolute; right: 0; font-size: .7rem; color: var(--ink-faint); pointer-events: none; }
 .sync { margin: 0 0 0 auto; font-size: .9rem; font-style: italic; color: var(--ink-soft); max-width: 32rem; }
 .sync[data-kind="error"] { color: var(--bad); font-style: normal; }

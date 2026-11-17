@@ -111,6 +111,25 @@ export class FakeService {
         return ok({ learner: { learnerId: l, createdAt: T0, ...(a.displayName ? { displayName: a.displayName } : {}) }, account: { accountId: `acc-${l}`, email: a.email, createdAt: T0 }, enrolments: self.enrolments.get(l) ?? [], devices: [], consents: [] });
       },
       async listEnrolments() { net(false); const l = learner(); return l ? ok({ enrolments: self.enrolments.get(l) ?? [] }) : fail(401); },
+      // GoReview's own setup (#/setup, 2026-11-17) enrols and replaces another variety of the same language
+      async enrol(input: Pick<Enrolment, 'languageId' | 'packId' | 'packVersion' | 'goals'> & Partial<Enrolment>) {
+        net(false); const l = learner(); if (!l) return fail(401);
+        self.calls.push(`enrol:${input.languageId}:${input.varietyId ?? ''}`);
+        const list = self.enrolments.get(l) ?? [];
+        const enrolment: Enrolment = { ...input, enrolmentId: `${l}-e${list.length + 1}`, learnerId: l, startedAt: new Date().toISOString() } as Enrolment;
+        self.enrolments.set(l, [...list, enrolment]);
+        return ok({ enrolment });
+      },
+      async endEnrolment(enrolmentId: string) {
+        net(false); const l = learner(); if (!l) return fail(401);
+        self.calls.push(`endEnrolment:${enrolmentId}`);
+        const list = self.enrolments.get(l) ?? [];
+        const ended = list.find((e) => e.enrolmentId === enrolmentId);
+        if (!ended) return fail(404);
+        const enrolment = { ...ended, endedAt: new Date().toISOString() };
+        self.enrolments.set(l, list.map((e) => (e.enrolmentId === enrolmentId ? enrolment : e)));
+        return ok({ enrolment });
+      },
       async candidates(enrolmentId: string) {
         net(false); const l = learner(); if (!l) return fail(401);
         self.calls.push('candidates');

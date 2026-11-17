@@ -29,21 +29,56 @@ export function remoteSpeechConsentEvent(input: { identity: ConsentIdentity; app
   };
 }
 
-/** Creating an account records that the learner accepted the Terms and the Privacy Policy, as GoLearn setup does. Best effort: an account is not refused because the record failed. */
+/** Where an acceptance waits for the learner's first language (see recordTermsAcceptance). */
+export const TERMS_PENDING_KEY = 'gopractice:terms-pending';
+
+/**
+ * Creating an account records that the learner accepted the Terms and the Privacy Policy, as GoLearn setup does. Best effort: an account is not
+ * refused because the record failed.
+ *
+ * The service stores an event only under one of the learner's enrolments and from a device the session registered, and a new account has no
+ * language yet (until 2026-11-17 the event was sent with enrolmentId "account" and was refused, so nothing was recorded). The acceptance is
+ * therefore kept on this device, with the time it was given, and recorded by `flushTermsAcceptance` as soon as the learner has a language:
+ * straight after the first one is chosen in #/setup, or on the next visit when it was chosen elsewhere.
+ */
 export async function recordTermsAcceptance(ctx: AppContext): Promise<void> {
   try {
     const session = await ctx.state.getSession();
     if (!session) return;
+    await ctx.deps.area.set({ [TERMS_PENDING_KEY]: { learnerId: session.learnerId, at: ctx.deps.now().toISOString() } });
+    await flushTermsAcceptance(ctx);
+  } catch { /* the account stands either way */ }
+}
+
+/** One flush at a time per app: the header and the language list both ask after a language is chosen, and the acceptance is recorded once. */
+const flushing = new WeakMap<AppContext, Promise<void>>();
+
+/** Records a waiting acceptance once the learner has a language (through the app's own queue); keeps it waiting otherwise. Never throws. */
+export function flushTermsAcceptance(ctx: AppContext): Promise<void> {
+  const running = flushing.get(ctx);
+  if (running) return running;
+  const run = flushOnce(ctx).finally(() => { if (flushing.get(ctx) === run) flushing.delete(ctx); });
+  flushing.set(ctx, run);
+  return run;
+}
+
+async function flushOnce(ctx: AppContext): Promise<void> {
+  try {
+    const waiting = (await ctx.deps.area.get(TERMS_PENDING_KEY))[TERMS_PENDING_KEY] as { learnerId?: string; at?: string } | undefined;
+    if (!waiting?.learnerId || !waiting.at) return;
+    const id = await ctx.identity();
+    if (!id || id.learnerId !== waiting.learnerId) return;
     const eventId = `consent-${ctx.deps.newId()}`;
-    const { api } = await ctx.api();
-    await api.appendEvents([{
-      id: eventId, v: CONTRACT_VERSION, learnerId: session.learnerId, enrolmentId: 'account', languageId: 'und', at: ctx.deps.now().toISOString(),
-      producer: { app: 'gopractice-review', version: ctx.deps.appVersion, deviceId: 'signin', surface: 'signin' },
+    const r = await ctx.record([{
+      id: eventId, v: CONTRACT_VERSION, learnerId: id.learnerId, enrolmentId: id.enrolmentId, languageId: id.languageId, ...(id.varietyId ? { varietyId: id.varietyId } : {}),
+      at: waiting.at,
+      producer: { app: 'gopractice-review', version: ctx.deps.appVersion, deviceId: id.deviceId, surface: 'signin' },
       kind: 'ConsentGiven', subject: {},
       payload: { consent: 'terms-and-privacy', scope: 'terms-and-privacy', documents: ['terms', 'privacy-policy'], version: 'draft-2026-10-17' },
       dedupeKey: `terms-and-privacy:given:${eventId}`,
     }]);
-  } catch { /* the account stands either way */ }
+    if (!r.refused.length) await ctx.deps.area.remove(TERMS_PENDING_KEY);
+  } catch { /* it stays waiting and is tried again */ }
 }
 
 export type RemoteSpeechResult =

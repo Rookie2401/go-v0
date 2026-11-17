@@ -12,6 +12,7 @@
  * service worker has a newer version waiting.
  *
  * Routes:  #/review[/deck | /session | /history/<item> | /transfer | /decks | /vocab | /details]   #/vocabulary   #/settings   #/signin
+ *           #/setup (choose a language, in GoReview itself; the home opens it when there is none)
  *           #/privacy and #/terms (the legal drafts; open without an account)
  */
 import { append, clear, h, p } from './dom';
@@ -25,6 +26,8 @@ import * as settingsScreen from './screens/settings';
 import * as accountScreen from './screens/account';
 import * as developerScreen from './screens/developer';
 import * as signinScreen from './screens/signin';
+import * as setupScreen from './screens/setup';
+import { flushTermsAcceptance } from './screens/consent';
 import * as tellScreen from './screens/tell';
 import * as vocabularyScreen from './screens/vocabulary';
 import { createLive, type Live } from './live';
@@ -35,7 +38,7 @@ import { loadingMark } from './loading';
 import { homePhoto } from './homePhotos';
 
 export interface RouteDef {
-  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'developer' | 'signin' | 'privacy' | 'terms' | 'help';
+  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'developer' | 'signin' | 'setup' | 'privacy' | 'terms' | 'help';
   title: string;
   render(el: HTMLElement, ctx: AppContext, view: View, params: string[]): void | Promise<void>;
 }
@@ -48,6 +51,7 @@ export const ROUTES: readonly RouteDef[] = [
   { id: 'account', title: 'Account', render: accountScreen.render },
   { id: 'developer', title: 'Developer', render: developerScreen.render },
   { id: 'signin', title: 'Sign in', render: signinScreen.render },
+  { id: 'setup', title: 'Choose your language', render: setupScreen.render },
   { id: 'privacy', title: 'Privacy Policy', render: legalScreen.renderPrivacy },
   { id: 'terms', title: 'Terms of use', render: legalScreen.renderTerms },
   { id: 'help', title: 'Help', render: helpScreen.render },
@@ -227,6 +231,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const list = mode !== 'none' ? await ctx.enrolments() : [];
     const id = mode !== 'none' ? await ctx.identity() : undefined;
     if (destroyed) return;
+    // an account made here whose first language was chosen elsewhere (GoLearn): its acceptance of the Terms is recorded now (screens/consent.ts)
+    if (id) void flushTermsAcceptance(ctx);
     clear(langWrap);
     if (list.length) {
       // a quiet kicker: the language's name only; a select (same quiet style, a tiny arrow) only when there is more than one to choose from
@@ -245,6 +251,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
       } else {
         langWrap.append(h('span', { id: 'language-name', class: 'language-kicker', title: tip }, nameOf(current)));
       }
+      // another language is started here too, without GoLearn (2026-11-17)
+      langWrap.append(h('a', { href: '#/setup', id: 'add-language', class: 'language-add', 'aria-label': 'Add a language', title: 'Add a language' }, '+'));
     }
     paintSync(await ctx.syncView(), mode);
     // the account is offered any time, never required

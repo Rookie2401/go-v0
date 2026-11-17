@@ -30,7 +30,7 @@ export interface CurrentDeck {
   remediation: RemediationCandidate[];
 }
 /**
- * The ONE remediation projection every GoReview surface reads (home counts, the remediation screen, the next-deck panel, planning).
+ * The shared remediation projection for Review Deck, its entry points and planning.
  * It is computed once over ordinary cards and Class Essentials together; invalidated questions belong to facts repair, not here.
  * `ready` is a studied marker plus the elapsed delay; a study marker alone never resolves a failure (see planner/remediation.ts).
  */
@@ -43,6 +43,11 @@ export function effectiveRemediation(model: Pick<ReviewModel, 'deck' | 'classDec
   return { all, ordinary: all.filter(c => !isClassUnit(c.unitId)), class: all.filter(c => isClassUnit(c.unitId)),
     ready: all.filter(c => c.ready), needsStudy: all.filter(c => !c.studiedAt), waiting: all.filter(c => !!c.studiedAt && !c.ready) };
 }
+/** The Review Deck has study, delayed retrieval, or question repair to show. */
+export function hasReviewFollowUp(model: ReviewModel): boolean {
+  return effectiveRemediation(model).all.length > 0 || [...model.deck, ...(model.classDeck ?? [])].some(item => !!item.invalidatedAt);
+}
+
 export interface Wanted { unitId: string; unitKind: string; dimension: AssessmentDimension; family: ExerciseFamily; outcome?: IntakeOutcome }
 const rankOf = (level: KnowledgeLevel | undefined): number => (level ? Math.max(0, KNOWLEDGE_LEVELS.indexOf(level)) : 0);
 const isAudio = (family: ExerciseFamily): boolean => family === 'audio-to-meaning' || family === 'audio-transcription';
@@ -318,6 +323,17 @@ export async function planRemediation(ctx: AppContext, model: ReviewModel, candi
     intent: { kind: 'explicit', reason: 'reassessment', requestedAt: model.now }, origin: 'remediation',
   });
   return { ...plan, items: plan.items.map(item => ({ ...item, queue: 'remediation', overlap:'remediation', presentationReason:'remediation-reassessment' })) };
+}
+
+/** Due spaced reviews keep priority. Ready reassessments precede optional early practice. */
+export async function planReviewDeck(ctx: AppContext, model: ReviewModel): Promise<SessionPlan> {
+  const { learnerId, languageId } = model.identity;
+  const { plan } = await planCurrentDeck(ctx, model, await holdOutOf(ctx, learnerId, languageId), undefined, 'review');
+  if (model.schedulerIssue || plan.dueCount > 0) return plan;
+  const { ready } = effectiveRemediation(model);
+  if (!ready.length) return plan;
+  const reassessment = await planRemediation(ctx, model, ready);
+  return reassessment.items.length ? reassessment : plan;
 }
 
 // ───────────────────────────── after a session ─────────────────────────────

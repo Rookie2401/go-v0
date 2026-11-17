@@ -152,7 +152,7 @@ describe('GoReview with this device\'s copy and a service that never answers', (
     expect(answeredSinceHang(rig.service)).toBe(0);
   }, 30_000);
 
-  it('(d) Saved decks, My vocab and the remediation page open', async () => {
+  it('(d) Saved decks, My vocab and Review Deck open', async () => {
     const { rig: first } = await seedAccount();
     const rig = await coldStart(first);
     await until(() => firstPaint(rig), 'the first paint', 600);
@@ -161,8 +161,8 @@ describe('GoReview with this device\'s copy and a service that never answers', (
     await rig.go('review/vocab');
     expect(rig.root.querySelector('#vocab-title')).not.toBeNull();
     expect(rig.root.querySelector('#vocab-list')).not.toBeNull();
-    await rig.go('review/remediation');
-    expect(rig.root.querySelector('#remediation-h')).not.toBeNull();
+    await rig.go('review/deck');
+    expect(rig.root.querySelector('#review-deck-heading')).not.toBeNull();
     await rig.go('review/details');
     expect(rig.root.querySelector('#due-summary')).not.toBeNull();
     expect(answeredSinceHang(rig.service)).toBe(0);

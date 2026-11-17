@@ -173,7 +173,7 @@ describe('Class Essentials: in Saved decks', () => {
     await until(() => !!rig.root.querySelector('#class-essentials-due-count'), 'the Class Essentials due line');
     expect(rig.q('#class-essentials-due-count').textContent).toContain('cards due');
     expect(rig.qa('#class-essentials-due button')).toHaveLength(1);
-    expect(rig.root.querySelector('#open-class-remediation')?.textContent).toBe('5 missed phrases to study');
+    expect(rig.root.querySelector('#open-class-remediation')).toBeNull();
     expect((await stored(rig)).find((deck) => deck.id === 'class-essentials:sq')!.items).toHaveLength(28);
 
     click(rig.q('#start-class-essentials-due'));
@@ -186,7 +186,7 @@ describe('Class Essentials: in Saved decks', () => {
     expect(plan.items.some(item => item.item.unitId === classIds[5])).toBe(false); // due learning/relearning returns take precedence over established review
     expect(plan.questionLimit).toBe(5);
     expect((await stored(rig)).find((deck) => deck.id === 'class-essentials:sq')!.items).toHaveLength(28);
-    await rig.go('review/remediation');
+    await rig.go('review/deck');
     await until(() => !!rig.root.querySelector('[data-source="class-essentials"]'), 'Class Essentials remediation source');
   });
 

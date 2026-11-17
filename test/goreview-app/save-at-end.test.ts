@@ -41,7 +41,7 @@ describe('Save Deck at the end of a session', () => {
     const planned = rig.app.ctx.run.active!.plan.items.map((p) => p.item.itemId);
     await playOut(rig);
     await waitForNext(rig);
-    expect(tiles(rig)).toEqual(['continue-due-work', 'save-session-deck', 'open-remediation', 'back-to-review']); // Next Deck stays first
+    expect(tiles(rig)).toEqual(['continue-due-work', 'save-session-deck', 'back-to-review']); // Next Deck stays first
     const save = rig.q<HTMLButtonElement>('#save-session-deck');
     expect(save.querySelector('.deck-title')!.textContent).toBe('Save Deck');
     expect(save.querySelector('.deck-caption')!.textContent).toBe('Keep these 2 cards in Saved Decks');
@@ -57,7 +57,7 @@ describe('Save Deck at the end of a session', () => {
     expect(saved.querySelector('.deck-caption')!.textContent).toBe('2 cards · find it in Saved Decks');
     expect(rig.q('#save-deck-tile [role="status"]').textContent).toBe('Deck saved: 2 cards, in Saved Decks.');
     expect(rig.qa('#save-session-deck')).toHaveLength(1);
-    expect(tiles(rig)).toEqual(['continue-due-work', 'save-session-deck', 'open-remediation', 'back-to-review']);
+    expect(tiles(rig)).toEqual(['continue-due-work', 'save-session-deck', 'back-to-review']);
     const decks = await own(rig);
     expect(decks).toHaveLength(1);
     expect(decks[0].items.map((i) => i.itemId)).toEqual(planned);

@@ -9,6 +9,7 @@ import type { VocabularyItem } from '../../repository-service/src/api';
 import { createReviewEligibilityContext, reviewEligibility, type ReviewEligibilityContext } from '../src/planner/eligibility';
 import { remediationBacklog } from '../src/planner/remediation';
 import { eventHead } from './engine';
+import { planCouldHaveChanged } from './freshness';
 import { admissionBudget } from '../src/planner/budget';
 import type { AudioAvailability, DeckItem, IntakeOutcome, ReviewPreferences, SessionPlan, SessionState } from '../src/types';
 import type { AppContext } from './context';
@@ -772,9 +773,8 @@ export async function currentReviewModel(ctx: AppContext, opts: { waitMs?: numbe
     const now = ctx.deps.now().getTime(), then = Date.parse(last.now);
     // the other local stores a model reads besides the log and the preferences: the learner's per-word choices (Later)
     const choices = await ctx.state.getChoices(id.learnerId);
-    const moved = [...last.deck, ...(last.classDeck ?? [])].some((i) => i.status === 'active' && Date.parse(i.schedule.due) > then && Date.parse(i.schedule.due) <= now);
     // a choice made since (Later) changes nothing the live load found: the same model with the choices as they stand now
-    if (entry.events === sig && now >= then && now - then <= 5 * 60_000 && !moved) local = JSON.stringify(choices) === JSON.stringify(last.choices) ? last : { ...last, choices };
+    if (entry.events === sig && now >= then && now - then <= 5 * 60_000 && !planCouldHaveChanged(last, now)) local = JSON.stringify(choices) === JSON.stringify(last.choices) ? last : { ...last, choices };
   }
   local ??= await buildReviewModel(ctx, { savedOnly: true }).catch(() => undefined);
   if (local) {
@@ -783,7 +783,7 @@ export async function currentReviewModel(ctx: AppContext, opts: { waitMs?: numbe
     const refresh = refreshReviewModel(ctx).catch(() => undefined);
     if (opts.waitMs) {
       const live = await within(ctx, opts.waitMs, refresh, () => undefined);
-      if (live && !live.provisional) return live;
+      if (live && !live.provisional && !planCouldHaveChanged(live, ctx.deps.now().getTime())) return live;
     }
     return local;
   }

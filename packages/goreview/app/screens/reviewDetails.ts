@@ -59,7 +59,7 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     root.setAttribute('lang', 'en');
     const [planned, recovery, selected] = built!;
     append(root, [summary(model, planned.plan), startBlock(model), recovery,
-      optionalPractice(model, planned.summary.remediation, selected.length),
+      optionalPractice(model, selected.length),
       controlsBlock(model), candidatesBlock(model, tag, planned.plan), deckBlock(model, tag), status]);
   }
 
@@ -132,8 +132,8 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     return h('section', { class: 'card' }, h('div', { class: 'row' }, start, h('a', { class: 'btn', href: '#/review/transfer', id: 'link-transfer' }, 'Transfer measures')), h('p', {}, 'Cards per deck'), size, note);
   }
 
-  function optionalPractice(model: ReviewModel, missed: number, selected: number): HTMLElement | null {
-    if (!missed && !selected) return null;
+  function optionalPractice(model: ReviewModel, selected: number): HTMLElement | null {
+    if (!selected) return null;
     const start = button(`Practice selected words (${selected})`, () => {
       start.disabled = true;
       void (async () => {
@@ -149,10 +149,7 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     }, { id: 'start-selected-practice', class: 'btn' });
     return h('section', { class: 'card', 'aria-labelledby': 'optional-practice-heading' },
       h('h2', { id: 'optional-practice-heading' }, 'Optional practice'),
-      h('div', { class: 'row' },
-        missed ? h('a', { class: 'linklike', id: 'open-remediation', href: '#/review/remediation' },
-          `${missed} missed ${missed === 1 ? 'word' : 'words'} to study`) : null,
-        selected ? start : null));
+      h('div', { class: 'row' }, start));
   }
 
   function controlsBlock(m: ReviewModel): HTMLElement {

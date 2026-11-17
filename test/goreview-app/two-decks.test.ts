@@ -37,6 +37,8 @@ describe('the two decks on the GoReview home', () => {
     expect(rig.q('#start-review-count').textContent).toBe('1 card'); // the count of the deck, never "due" (a deck may hold deck-fill)
 
     click(rig.q('#start-review'));
+    await until(() => !!rig.root.querySelector('#start-deck-review'), 'Review Deck with study work');
+    click(rig.q('#start-deck-review'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the review session');
     const plan = rig.app.ctx.run.active!.plan;
     expect(plan.items.map((p) => p.item.unitId)).toHaveLength(1);

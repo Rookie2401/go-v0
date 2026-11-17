@@ -27,7 +27,7 @@ import type { ReviewExercise } from '../../src/exercises/shared';
 import { beginSession, currentReviewModel, endSavedSession, PRESS_WAIT_MS, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import { fillItemHistory } from './history';
 import { fillItemParsing } from './itemParsing';
-import { entriesOf, planFromEntries, planRemediation, planCurrentDeck, effectiveRemediation, saveDeck, VOCAB_NOTE } from '../deckModel';
+import { entriesOf, planFromEntries, planCurrentDeck, hasReviewFollowUp, saveDeck, VOCAB_NOTE } from '../deckModel';
 import { isClassUnit } from '../classEssentials';
 import { DEFAULT_UI, getUiPrefs, type UiPrefs } from './uiprefs';
 import { unlockSpeech } from '../speechUnlock';
@@ -121,11 +121,11 @@ const GRADES = ['again', 'hard', 'good', 'easy'] as const;
 /** The families whose question is the meaning: the parsing (which holds no meaning) may be read before the answer. */
 const PARSING_BEFORE_ANSWER = new Set<string>(['written-recognition', 'phrase-comprehension']);
 const OVERLAP_LABEL: Record<NonNullable<Presented['planned']['overlap']>, string> = {
-  scheduled: 'Scheduled return', remediation: 'Remediation reassessment', explicit: 'Optional extra practice',
+  scheduled: 'Scheduled return', remediation: 'Delayed reassessment', explicit: 'Optional extra practice',
 };
 const PRESENTATION_REASON_LABEL: Record<string, string> = {
   'due-learning-return': 'A timed learning return became due.',
-  'remediation-reassessment': 'You chose a delayed remediation reassessment.',
+  'remediation-reassessment': 'This item returned after you studied it.',
   'explicit-repeat': 'You chose to repeat this practice.',
 };
 const presentationReasonLabel = (reason: string | undefined, overlap: NonNullable<Presented['planned']['overlap']>): string =>
@@ -1019,11 +1019,10 @@ async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextAct
   let timer: number | undefined;
   const late = new Promise<'late'>((resolve) => { timer = ctx.deps.win.setTimeout(() => resolve('late'), NEXT_MODEL_WAIT_MS) as unknown as number; });
   const update = async (model: ReviewModel | undefined): Promise<void> => {
-    const { nextTile, studyTile, schedule, secondary, status } = await buildNextSection(ctx, run, actions, model);
+    const { nextTile, schedule, secondary, status } = await buildNextSection(ctx, run, actions, model);
     if (!home.isConnected) return;
     const save = home.parentElement?.querySelector('#save-deck-tile');
     (save ?? home).before(nextTile); // Next Deck first, then Save Deck (when it is offered), then the rest
-    home.before(studyTile);
     home.after(...(schedule ? [schedule, secondary, status] : [secondary, status]));
   };
   const first = await Promise.race([modelPromise, late]).finally(() => { if (timer !== undefined) ctx.deps.win.clearTimeout(timer); });
@@ -1037,7 +1036,6 @@ async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextAc
   const planned = run.plan.initialQuestionCount ?? run.plan.items.length;
   const status = statusLine();
   const scheduled = model ? await planCurrentDeck(ctx, model) : undefined;
-  const remediation = model ? effectiveRemediation(model).all : [];
   const cards = (n: number): string => `${n} card${n === 1 ? '' : 's'}`;
   const revealStatus = (): void => { const disclosure = status.closest('details'); if (disclosure) disclosure.open = true; };
   const begin = async (make: (model: ReviewModel) => Promise<SessionPlan | undefined>, buttons: HTMLButtonElement[]): Promise<void> => {
@@ -1047,7 +1045,8 @@ async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextAc
       const model = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
       if (!model) { revealStatus(); setStatus(status, 'Choose a language first.', 'error'); return; }
       const plan = await make(model);
-      if (!plan || !plan.items.length) { revealStatus(); setStatus(status, 'None of these cards can be asked right now.', 'info'); return; }
+      if (!plan) return;
+      if (!plan.items.length) { revealStatus(); setStatus(status, 'None of these cards can be asked right now.', 'info'); return; }
       const r = await beginSession(ctx, model, { plan });
       if (!r.ok) { revealStatus(); setStatus(status, r.message, 'info'); return; }
       await actions.restart(r.run);
@@ -1060,9 +1059,6 @@ async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextAc
     return planFromEntries(ctx, model, entriesOf(run.plan), run.plan.batch?.targetQuestions ?? run.plan.questionLimit ?? planned);
   }, [repeat]); },
     { class: 'btn', id: 'repeat-deck', 'aria-label': `Repeat this deck: the same ${cards(planned)} again` });
-  const fresh = button('Begin ready reassessment', () => { void begin(async (model) => planRemediation(ctx, model), [repeat, fresh]); },
-    { class: 'btn primary', id: 'begin-remediation' });
-  fresh.disabled = !remediation.some(c => c.ready);
   const nextAt = scheduled?.summary.nextReturnAt;
   const nextReviewAt = scheduled?.summary.nextReviewAt;
   const nextItems = scheduled?.plan.items ?? [];
@@ -1070,23 +1066,21 @@ async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextAc
   const early = nextItems.filter(p => p.presentationReason === 'deck-fill').length;
   const fromQueue = (queue: 'due' | 'learning'): number => nextItems.filter(p => p.presentationReason !== 'deck-fill' && !p.isNew && p.queue === queue).length;
   const admissions = nextItems.filter(p => p.isNew && p.presentationReason !== 'deck-fill').length;
+  const openReview = !!model && hasReviewFollowUp(model) && !scheduled?.plan.dueCount && !scheduled?.plan.newCount;
   const continueWork = button('', (event) => {
-    if (!nextCount) return;
-    void begin(async (model) => (await planCurrentDeck(ctx, model)).plan, [event.currentTarget as HTMLButtonElement]);
-  }, { id: 'continue-due-work', class: 'deck-face', ...(nextCount ? {} : { disabled: true }) });
-  const nextTile = summaryActionTile(continueWork, icon(ctx.deps.doc, 'review'), 'Next Deck',
-    nextCount ? `Begin next deck (${cards(nextCount)})` : 'No cards are ready for a next deck', true);
+    const control = event.currentTarget as HTMLButtonElement;
+    void begin(async (current) => {
+      const { plan } = await planCurrentDeck(ctx, current);
+      if (hasReviewFollowUp(current) && !plan.dueCount && !plan.newCount) { ctx.go('review/deck'); return undefined; }
+      return plan;
+    }, [control]);
+  }, { id: 'continue-due-work', class: 'deck-face', ...(!nextCount && !openReview ? { disabled: true } : {}) });
+  const nextTile = summaryActionTile(continueWork, icon(ctx.deps.doc, 'review'), openReview ? 'Review Deck' : 'Next Deck',
+    openReview ? 'Continue reviewing and studying' : nextCount ? `Begin next deck (${cards(nextCount)})` : 'No cards are ready for a next deck', true);
   const setupLink = ctx.deps.links?.setup ?? ctx.deps.links?.extension;
   const goLearn = setupLink ? h('a', { class: 'btn', id: 'continue-golearn', href: setupLink }, 'Continue reading in GoLearn') : null;
-  const remediationNote = h('p', { class: 'muted', id: 'next-remediation-note' },
-    `Remediation is optional and separate from due work: ${remediation.filter(c => !c.studiedAt).length} need study, ${remediation.filter(c => !!c.studiedAt && !c.ready).length} await their delayed return, and ${remediation.filter(c => c.ready).length} are ready for reassessment.`);
   const extra = h('details', { id: 'optional-extra-practice', class: 'card' }, h('summary', {}, 'Optional extra practice'),
     h('p', { class: 'muted', id: 'optional-repeat-note' }, 'Repeat the same session items, capped by your current deck size and session time settings. Other saved-deck members remain available in their collection; this does not represent a new due session.'), repeat);
-  const study = button('', () => ctx.go('review/remediation'), { class: 'deck-face', id: 'open-remediation' });
-  const needsStudy = remediation.filter(c => !c.studiedAt).length;
-  const studyTile = summaryActionTile(study, icon(ctx.deps.doc, 'book'), 'Study Remediation', needsStudy
-    ? `Review items that need study · ${needsStudy} item${needsStudy === 1 ? '' : 's'}`
-    : 'Review items that need study · none right now');
   const primarySchedule = nextAt && (!nextReviewAt || Date.parse(nextAt) < Date.parse(nextReviewAt))
     ? { label: 'Next learning return', at: nextAt }
     : nextReviewAt ? { label: 'Next review', at: nextReviewAt } : undefined;
@@ -1096,8 +1090,8 @@ async function buildNextSection(ctx: AppContext, run: ActiveRun, actions: NextAc
     h('p', { class: 'muted', id: 'next-deck-line' }, `Next scheduled session: ${cards(nextCount)} in the next deck · ${fromQueue('due')} due reviews · ${fromQueue('learning')} due learning returns · ${admissions} new admissions · ${early} early reviews.`),
     nextAt && nextAt !== primarySchedule?.at ? p(`Next learning return: ${new Date(nextAt).toLocaleString()}.`, 'muted') : null,
     nextReviewAt && nextReviewAt !== primarySchedule?.at ? p(`Next review: ${new Date(nextReviewAt).toLocaleString()}.`, 'muted') : null,
-    remediationNote, fresh, h('h3', {}, 'Continue GoLearn'), goLearn ?? p('Continue your next reading in GoLearn; GoReview keeps your due work here.', 'muted'), extra);
-  return { nextTile, studyTile, schedule, secondary, status };
+    h('h3', {}, 'Continue GoLearn'), goLearn ?? p('Continue your next reading in GoLearn; GoReview keeps your due work here.', 'muted'), extra);
+  return { nextTile, schedule, secondary, status };
 }
 
 export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, actions?: NextActions, opts: { quiet?: boolean } = {}): Promise<void> {
@@ -1128,7 +1122,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
   const overlapPresentations = (run.driver.state().presentations ?? []).filter(row => row.overlap);
   const overlapSection = overlapPresentations.length ? h('section', { class: 'card', id: 'session-overlap-history', 'aria-labelledby': 'session-overlap-heading' },
     h('h3', { id: 'session-overlap-heading' }, 'Why questions appeared again'),
-    p('GoReview records why each repeated presentation was scheduled, requested, or part of remediation.', 'muted'),
+    p('GoReview records why each question returned.', 'muted'),
     h('ul', {}, ...overlapPresentations.map(row => {
       const item = run.plan.items.find(planItem => planItem.item.itemId === row.itemId)?.item;
       return h('li', { 'data-overlap': row.overlap }, item ? h('span', langProps(tag), unitLabel(item.unitId)) : 'Question', ` · ${presentationReasonLabel(row.presentationReason, row.overlap!)}`);

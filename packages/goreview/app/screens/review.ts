@@ -4,10 +4,10 @@
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { addedWords, holdOutOf, listedKnowledgeCount, loadVocabSafe, listSavedDecks, vocabCount, planCurrentDeck, planFreshDeck, releaseHoldOut, setHoldOut, type CurrentDeck, type DeckPart, type SavedDeck, type VocabLoadResult, type VocabRow } from '../deckModel';
+import { addedWords, hasReviewFollowUp, holdOutOf, listedKnowledgeCount, loadVocabSafe, listSavedDecks, vocabCount, planCurrentDeck, planFreshDeck, releaseHoldOut, setHoldOut, type CurrentDeck, type DeckPart, type SavedDeck, type VocabLoadResult, type VocabRow } from '../deckModel';
 import { explainAdmissions } from '../admissionExplanation';
 import { easyAndNeverDifficult } from '../../src/planner/planner';
-import { freshModel, planCouldHaveChanged } from '../freshness';
+import { freshModel, nextChangeAt, planCouldHaveChanged } from '../freshness';
 import { loadingMark } from '../loading';
 import { icon } from '../icons';
 import { attachRipple } from '../ripple';
@@ -18,7 +18,7 @@ import { renderHistory, renderTransfer } from './history';
 import * as myVocab from './myvocab';
 import { renderDetails } from './reviewDetails';
 import * as sessionScreen from './session';
-import * as remediationScreen from './remediation';
+import * as reviewDeckScreen from './reviewDeck';
 import type { View } from './view';
 
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
@@ -68,7 +68,7 @@ export function scheduleMovedSince(m: Pick<ReviewModel, 'now' | 'deck' | 'classD
 export async function render(el: HTMLElement, ctx: AppContext, view: View, params: string[]): Promise<void> {
   const [sub, ...rest] = params;
   if (sub === 'session') return sessionScreen.render(el, ctx, view);
-  if (sub === 'remediation') return remediationScreen.render(el, ctx, view);
+  if (sub === 'deck') return reviewDeckScreen.render(el, ctx, view);
   if (sub === 'history') return renderHistory(el, ctx, view, rest);
   if (sub === 'transfer') return renderTransfer(el, ctx);
   if (sub === 'decks') return decksScreen.render(el, ctx, view);
@@ -91,10 +91,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
 
   function armNextDueRefresh(model: ReviewModel): void {
     if (nextDueTimer !== undefined) ctx.deps.win.clearTimeout(nextDueTimer);
-    const now = Date.parse(model.now);
-    const nextDue = [...model.deck, ...(model.classDeck ?? [])].filter(item => item.status === 'active' && !item.invalidatedAt && !item.suspendedReason)
-      .map(item => Date.parse(item.schedule.due)).filter(due => Number.isFinite(due) && due > now).sort((a, b) => a - b)[0];
-    if (nextDue === undefined) { nextDueTimer = undefined; return; }
+    const now = ctx.deps.now().getTime();
+    const nextDue = Date.parse(nextChangeAt(model) ?? '');
+    if (!Number.isFinite(nextDue)) { nextDueTimer = undefined; return; }
     const delay = Math.min(2_147_000_000, Math.max(25, nextDue - now + 25));
     nextDueTimer = ctx.deps.win.setTimeout(() => { nextDueTimer = undefined; if (view.alive()) void requestRepaint(true, false); }, delay) as unknown as number;
   }
@@ -123,6 +122,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     if (!force && memo && !incomplete && local && memo.key === local.key && now - memo.at < memoTtl && !scheduleMovedSince(memo.model, now) && !planCouldHaveChanged(memo.model, now)) {
       if (!view.alive()) return;
       paintedEvents = memo.model.events.length;
+      armNextDueRefresh(memo.model);
       draw(memo.model, memo.deck, memo.review, memo.resumeId, memo.saved, memo.words, memo.vocabCompleteness);
       return;
     }
@@ -178,7 +178,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const words = vocab.length ? vocabCount(vocab) : listedKnowledgeCount(model.knowledge);
     const vocabCompleteness: VocabCompleteness = vocab.length >= MAX_SNAPSHOT_WORDS ? 'partial' : 'loading';
     if (!view.alive()) return;
-    const look = JSON.stringify([homeId, deckLook(deck), deckLook(review), resumable[0]?.sessionId ?? '', saved.length, model.schedulerIssue ?? '', model.candidateSource === 'cached' && !model.provisional ? model.knowledgeStatus.fetchedAt : '',
+    const look = JSON.stringify([homeId, deckLook(deck), deckLook(review), resumable[0]?.sessionId ?? '', saved.length, hasReviewFollowUp(model), model.schedulerIssue ?? '', model.candidateSource === 'cached' && !model.provisional ? model.knowledgeStatus.fetchedAt : '',
       model.candidateReadinessIncomplete ?? false, model.knowledgeStatus.source === 'partial' || !!model.candidateRecoveryIncomplete]);
     if (look !== drawnLook || !root.querySelector('[data-entry]')) draw(model, deck, review, resumable[0]?.sessionId, saved.length, words, vocabCompleteness);
     drawnLook = look;
@@ -248,6 +248,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   async function begin(m: ReviewModel, part: DeckPart): Promise<void> {
     const current = await freshModel(ctx, latestOf(m));
     const { learnerId, languageId } = current.identity;
+    if (part === 'review' && hasReviewFollowUp(current)) { ctx.go('review/deck'); return; }
     const planned = await planCurrentDeck(ctx, current, await holdOutOf(ctx, learnerId, languageId), undefined, part);
     const r = await beginSession(ctx, current, { plan: planned.plan });
     if (!r.ok) { setStatus(status, r.message, 'info'); return; }
@@ -294,10 +295,10 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     ctx.go('review/session');
   }
 
-  function deckButton(id: string, label: string, description: string, count: number, content: HTMLElement, onPress: () => Promise<void>, canResume = false): HTMLButtonElement {
+  function deckButton(id: string, label: string, description: string, count: number, content: HTMLElement, onPress: () => Promise<void>, canResume = false, canOpen = canResume): HTMLButtonElement {
     const detailId = `${id}-count`;
     const b = h('button', { type: 'button', class: 'deck-face', id, 'data-cards': String(count),
-      'aria-label': label, 'aria-describedby': detailId, disabled: !count && !canResume,
+      'aria-label': label, 'aria-describedby': detailId, disabled: !count && !canOpen,
       'data-action': canResume ? 'resume-session' : undefined },
       content, icon(ctx.deps.doc, 'arrow'), h('span', { id: detailId, class: 'sr' }, description)) as HTMLButtonElement;
     b.addEventListener('click', () => {
@@ -315,6 +316,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   function goReviewEntry(m: ReviewModel, deck: CurrentDeck, review: CurrentDeck, resumeId: string | undefined, savedCount: number): HTMLElement {
     const drilling = deck.entries.length;
     const reviewing = review.entries.length;
+    const followUp = hasReviewFollowUp(m);
     // Deck fill (the owner, 2026-11-03): a deck is always the size the learner set, topped up with early reviews, so the kickers read the
     // deck's card count and never "due". When the whole eligible pool is smaller than the size (nothing new can be admitted, no due review
     // waits in the Review Deck, nothing was held back for time or batch room) the Current Deck says it holds all of the learner's cards.
@@ -326,7 +328,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const currentKicker = poolExhausted ? (drilling === 1 ? '1 card · your only one' : `all ${drilling} of your cards`)
       : drilling ? plural(drilling, 'card', 'cards')
       : deck.summary.nextReturnAt ? `Nothing to drill now · next return ${when(deck.summary.nextReturnAt)}` : 'Nothing to drill right now';
-    const reviewKicker = reviewing ? plural(reviewing, 'card', 'cards')
+    const reviewKicker = reviewing ? plural(reviewing, 'card', 'cards') : followUp ? 'Open Review Deck'
       : review.summary.nextReviewAt ? `Nothing due · next review ${when(review.summary.nextReviewAt)}` : 'Nothing due';
     const whyNoNew = drilling || resumeId ? undefined : explainAdmissions(m, deck);
     const currentAction = resumeId ? 'Resume' : drilling ? 'Start' : 'No cards ready';
@@ -342,8 +344,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       void beginNewDeck(m, resumeId).catch((error) => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) newDeck.disabled = false; });
     }, { class: 'deck-new', id: 'start-new', 'data-action': 'begin-new-deck', 'aria-label': 'Begin new deck' });
     const reviewButton = deckButton('start-review', 'Review Deck', reviewKicker, reviewing,
-      h('span', { class: 'deck-row' }, icon(ctx.deps.doc, 'review'), deckLabel('Review Deck', reviewing ? 'Study cards' : 'No cards ready')),
-      () => begin(m, 'review'));
+      h('span', { class: 'deck-row' }, icon(ctx.deps.doc, 'review'), deckLabel('Review Deck', reviewing || followUp ? 'Study cards' : 'No cards ready')),
+      () => begin(m, 'review'), false, followUp);
 
     // the tiles have no outline: each answers the pointer with a wash of lighter colour from the point of contact (ripple.ts; the owner, 2026-11-12)
     const tiles = [
@@ -398,6 +400,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   }
   // E-04: the first pull of this device may finish after the home was painted; a card another device added must not stay invisible
   // until the next visit. A live update (or a refresh of the model) repaints the same way.
+  view.onDispose(() => { if (nextDueTimer !== undefined) ctx.deps.win.clearTimeout(nextDueTimer); });
   view.onDispose(ctx.onSync(() => { void requestRepaint(false, true); }));
   view.onDispose(ctx.onData(() => { void requestRepaint(false, true); }));
   void ctx.whenSynced().then(() => { void requestRepaint(false, true); });

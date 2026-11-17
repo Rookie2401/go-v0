@@ -3,12 +3,11 @@
  * Class Essentials (seven languages) and the Alphabet (every language; the owner, 2026-11-14): the name as a bigger, friendlier title over
  * "N cards · language", with no description or note on this page (the owner, 2026-10-28; the deck keeps both in its record). The card itself
  * is the control: pressing it starts the practice (no "Practise again" button, the owner, 2026-10-28), with Remove under it. A removed
- * built-in deck can be restored. Under each built-in card: its own due reviews ("Review due (N)") and its own missed cards (moved here from
- * the home, the owner, 2026-10-31).
+ * built-in deck can be restored. Under each built-in card: its own due reviews ("Review due (N)").
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { effectiveRemediation, listSavedDecks, planClassEssentialsDue, planFromSaved, removeSavedDeck, removedBuiltins, restoreBuiltin, type BuiltinDeck, type SavedDeck } from '../deckModel';
+import { listSavedDecks, planClassEssentialsDue, planFromSaved, removeSavedDeck, removedBuiltins, restoreBuiltin, type BuiltinDeck, type SavedDeck } from '../deckModel';
 import { languageName } from '../format';
 import { beginSession, currentReviewModel, PRESS_WAIT_MS } from '../workspace';
 import { icon } from '../icons';
@@ -18,9 +17,9 @@ import type { View } from './view';
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
 
 /** What a built-in deck is called on this page, the ids of its due line, and what one of its cards is. */
-const BUILTIN: Readonly<Record<BuiltinDeck, { name: string; slug: string; missedOne: string; missedMany: string }>> = {
-  'class-essentials': { name: 'Class Essentials', slug: 'class-essentials', missedOne: 'missed phrase to study', missedMany: 'missed phrases to study' },
-  alphabet: { name: 'Alphabet', slug: 'alphabet', missedOne: 'missed letter to study', missedMany: 'missed letters to study' },
+const BUILTIN: Readonly<Record<BuiltinDeck, { name: string; slug: string }>> = {
+  'class-essentials': { name: 'Class Essentials', slug: 'class-essentials' },
+  alphabet: { name: 'Alphabet', slug: 'alphabet' },
 };
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
@@ -104,10 +103,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   async function builtinDueLine(deck: SavedDeck, quiet = false): Promise<HTMLElement | null> {
     const model = await currentReviewModel(ctx, quiet ? { noRefresh: true } : {}); // this device's copy; the refresh repaints this list through ctx.onData
     if (!model || !deck.builtin) return null;
-    const { name, slug, missedOne, missedMany } = BUILTIN[deck.builtin];
+    const { name, slug } = BUILTIN[deck.builtin];
     const units = new Set(deck.items.map((item) => item.unitId));
     const due = await planClassEssentialsDue(ctx, model, units);
-    const missed = effectiveRemediation(model).class.filter((c) => units.has(c.unitId)).length;
     const nextReturn = (model.classDeck ?? []).filter(item => units.has(item.unitId) && item.status === 'active' && !item.invalidatedAt && !item.suspendedReason
       && Date.parse(item.schedule.due) > Date.parse(model.now)).sort((a, b) => Date.parse(a.schedule.due) - Date.parse(b.schedule.due))[0];
     const start = button(`Review due (${due.items.length})`, () => {
@@ -126,8 +124,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     return h('div', { class: 'saved-deck-actions', id: `${slug}-due` },
       h('span', { class: due.items.length ? 'sr' : 'muted', id: `${slug}-due-count` }, due.items.length ? plural(due.items.length, 'card due', 'cards due')
         : nextReturn ? `Nothing due · next ${new Date(nextReturn.schedule.due).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' })}` : 'Nothing due'),
-      due.items.length ? start : null,
-      missed ? h('a', { class: 'linklike', id: deck.builtin === 'class-essentials' ? 'open-class-remediation' : `open-${slug}-remediation`, href: '#/review/remediation' }, plural(missed, missedOne, missedMany)) : null);
+      due.items.length ? start : null);
   }
   await paint();
   // a live update (or a sync from another tab) may have changed what is saved: the list is read again, in place

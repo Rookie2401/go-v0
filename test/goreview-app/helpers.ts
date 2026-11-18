@@ -521,6 +521,26 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
   return rig;
 }
 
+/** The enrolment the home says is being reviewed (its kicker, #language-name). The header has no dropdown since 2026-11-18. */
+export const shownEnrolment = (rig: Rig): string | undefined => rig.root.querySelector<HTMLElement>('#language-name')?.dataset.enrolment;
+
+/** The learner's languages as Account lists them, in order (the one being reviewed first): their enrolment ids and names. */
+export async function accountLanguages(rig: Rig): Promise<Array<{ enrolmentId: string; name: string; current: boolean }>> {
+  if (rig.app.current() === 'account') await rig.go('settings'); // a route already shown is not drawn again
+  await rig.go('account');
+  await until(() => !!rig.root.querySelector('#account-languages'), 'the languages on the Account page');
+  return rig.qa<HTMLElement>('#account-languages .account-language').map((t) => ({
+    enrolmentId: t.dataset.enrolment ?? '', name: t.querySelector('.deck-title')?.textContent ?? '', current: t.dataset.deck === 'current',
+  }));
+}
+
+/** Switches the language being reviewed the way a learner does it (2026-11-18): Account, a press on that language's tile; back on its home. */
+export async function switchLanguage(rig: Rig, enrolmentId: string): Promise<void> {
+  await accountLanguages(rig);
+  rig.q<HTMLButtonElement>(`#account-languages [data-enrolment="${enrolmentId}"] .deck-face`).click();
+  await until(() => rig.app.current() === 'review' && shownEnrolment(rig) === enrolmentId, `the home of ${enrolmentId}`, 400);
+}
+
 export function type(input: HTMLInputElement | HTMLTextAreaElement, value: string): void {
   input.value = value;
   input.dispatchEvent(new Event('input', { bubbles: true }));

@@ -7,7 +7,7 @@ import { decksKey, sortVocab, type SavedDeck } from '../../packages/goreview/app
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { homePhoto } from '../../packages/goreview/app/homePhotos';
 import { UI_KEY } from '../../packages/goreview/app/screens/uiprefs';
-import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, reopenDetails, saveCurrentDeck, seed, until, unitOf, type Rig, readyCards, PICKED } from './helpers';
+import { candidate, defaultService, switchLanguage, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, reopenDetails, saveCurrentDeck, seed, until, unitOf, type Rig, readyCards, PICKED } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -78,9 +78,7 @@ describe('the GoReview home', () => {
     const rig = await makeRig({ signedIn: true, service });
     expect(rig.q('main').getAttribute('data-home-photo')).toBe('jerusalem');
     expect(rig.q('.home-photo-credit').textContent).toContain('Photo by Zairon');
-    const select = rig.q<HTMLSelectElement>('#language-select');
-    select.value = 'L1-e1';
-    select.dispatchEvent(new Event('change'));
+    await switchLanguage(rig, 'L1-e1'); // on the Account page (2026-11-18)
     await until(() => rig.q('main').dataset.homePhoto === homePhoto('sq')?.id, 'the Albanian photograph');
     expect(rig.q('.home-photo-credit').textContent).toContain(homePhoto('sq')?.author);
     await rig.go('review/decks');

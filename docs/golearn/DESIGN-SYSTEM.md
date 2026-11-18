@@ -73,6 +73,12 @@ its own forms.
 - **List of places** (`.settings-links`): each row one link, a name (`.nav-title`) and one line of what is there (`.nav-about`), a `›`.
 - **Language row** (`.lang-row`): name and native name; one quiet line (the pack's level, in the pack's own words); ONE action at the
   right; Details closed under it. Script codes (Latn, Deva) are not shown.
+- **The Languages page is the exception to this system** (the owner, 2026-11-18: "redesign both of them in line with the design
+  philosophy of the homescreen of GoReview"): it wears GoReview's home look in any colour scheme (the stone, leather and brass tokens;
+  the title in the home's large serif with a kicker and a short gold rule; each group a kicker between rules; each language a warm tile
+  with no outline, the one read in lighter; Download the gold pill; Details and quiet row actions gold links). The rules are the last
+  block of `app/styles.css`, scoped to `.screen[data-route="languages"]`; the markup is unchanged. GoReview's own language list
+  (`#/setup`) and Account page use the same look (`packages/goreview/app/styles.css`).
 - **State in a word** (`.tag`): small capitals on a hairline ("Reading now").
 - **Notice** (`.notice`): a rule in the accent at the start of the line; `.notice.warn` adds the warning ground.
 - **Status line** (`.status`, popup `.status-line`): `role="status"`; takes no room when empty; the warning colour only for a warning.

@@ -540,13 +540,13 @@ html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-rou
   -webkit-tap-highlight-color: transparent;
 }
 .signin-about > summary::-webkit-details-marker { display: none; }
-.signin-about > summary::after { content: "▾"; color: var(--accent); font-size: 1rem; letter-spacing: 0; transition: transform .2s; }
+.signin-about > summary::after { content: "▾"; color: var(--accent); font-size: 1rem; letter-spacing: 0; }
 .signin-about[open] > summary::after { transform: rotate(180deg); }
 .signin-about > summary:hover { color: var(--ink); }
 .signin-about > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
 .signin-about > p { margin: 0 clamp(.95rem, 4vw, 1.55rem) .7rem; }
 .signin-about > p:last-child { margin-bottom: 1.1rem; }
-@media (prefers-reduced-motion: reduce) { .signin-about > summary::after { transition: none; } }
+@media (prefers-reduced-motion: no-preference) { .signin-about > summary::after { transition: transform .2s; } } /* the caret turns only when motion is welcome (audit A-C04) */
 @media (forced-colors: active) { .signin-about { border: 1px solid CanvasText; } }
 .signin-forgot { justify-self: center; width: 100%; text-align: center; }
 .signin-forgot > summary { list-style: none; margin-inline: auto; }
@@ -1271,3 +1271,33 @@ img, svg, video, canvas { max-width: 100%; }
 }
 .setup-choice[data-choice="variety"] select:focus { border-bottom-color: var(--accent); }
 .setup-choice select option { background: var(--paper); color: var(--ink); }
+/* the older account rules that still reach these elements (the centred column of pills, the deletion under a rule, the sessions card) give way
+   to the tiles (found by session dbdaefbd, 2026-11-18) */
+.account-page .account-actions { display: grid; flex-direction: initial; align-items: stretch; margin: 0; }
+.account-page #delete-body { margin: 0; padding: 0; border-top: 0; }
+.account-page #delete-body .field .cap { color: var(--ink-soft); font-weight: 400; letter-spacing: .18em; }
+.account-page #delete-body input[type="password"] {
+  width: 100%; min-height: 2.75rem; padding: .35rem 0; border: 0; border-bottom: 1px solid var(--control-line); border-radius: 0;
+  background: transparent; color: var(--ink); font: 1.2rem/1.3 var(--serif);
+}
+.account-page #delete-body input[type="password"]:focus { border-bottom-color: var(--bad); }
+.account-page #delete-body .row { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.4rem; margin-top: 1rem; }
+.account-page #delete-body .btn.danger, .account-page #delete-body #delete-cancel {
+  min-height: 2.75rem; padding: .45rem 1.9rem; border-radius: 999px; font: 600 1.02rem/1.3 var(--serif); letter-spacing: .04em;
+}
+.account-page #delete-body .btn.danger { border: 1px solid var(--bad); background: var(--bad); color: var(--paper); }
+.account-page #delete-body #delete-cancel { border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); }
+.account-page #delete-body .linklike {
+  min-height: 2.75rem; padding: .15rem .5rem; border: 0; background: transparent; color: var(--accent); font: 600 .95rem/1.3 var(--serif);
+  text-decoration: underline; text-underline-offset: .23em;
+}
+/* the devices, inside their dropdown: no card of their own, each a line, the actions gold links */
+.account-page #acct-sessions { margin: 0; padding: 0 var(--deck-inset) 1rem; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.account-page #acct-sessions > h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.account-page #acct-sessions ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
+.account-page #acct-sessions li { line-height: 1.45; }
+.account-page #acct-sessions .btn {
+  min-height: 2.75rem; padding: .15rem .5rem; margin-inline-start: -.5rem; border: 0; border-radius: 0; background: transparent; color: var(--accent);
+  font: 600 .95rem/1.3 var(--serif); text-decoration: underline; text-underline-offset: .23em;
+}
+.account-page #acct-sessions .btn:hover:not(:disabled) { color: var(--ink); background: color-mix(in srgb, var(--accent) 8%, transparent); }

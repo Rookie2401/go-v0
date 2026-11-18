@@ -61,7 +61,11 @@ describe('the GoReview home', () => {
   });
 
   it('has a bundled, credited photograph for every language pack', () => {
-    for (const language of Object.keys(PACKS)) {
+    // French has no photograph yet: the owner has not chosen one. The home draws no hero photograph and no credit for a language without one
+    // (app.ts: `photo` stays undefined), and the assertion below makes this exemption fail loudly as soon as a French photograph is added.
+    const NO_PHOTO_YET = ['fr'];
+    expect(homePhoto('fr')).toBeUndefined();
+    for (const language of Object.keys(PACKS).filter((l) => !NO_PHOTO_YET.includes(l))) {
       const photo = homePhoto(language);
       expect(photo?.image, language).toMatch(/\.webp$/);
       expect(photo?.source, language).toMatch(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);

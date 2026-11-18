@@ -6,8 +6,10 @@ import { mergeSources } from '../../src/gotell/sources';
 import { applyEdits, parse } from '../../src/gotell/text';
 import { FakeGoLearn, buildFixtureText, makeFakeAdapter } from './fakes';
 
-// Aramaic's first slice is explicitly reading-only; it has no GoTell lesson tables.
-const WRITING_LANGUAGES = LANGUAGES.filter(lang => lang !== 'arc');
+// Aramaic's first slice is explicitly reading-only; it has no GoTell lesson tables. French has none either yet (GoTell's concept
+// lexemes were not written for it; the French pack is for reading web pages): the test below asserts that, so the exemption cannot go stale.
+const NO_GOTELL_TABLES = ['arc', 'fr'];
+const WRITING_LANGUAGES = LANGUAGES.filter(lang => !NO_GOTELL_TABLES.includes(lang));
 
 describe('concept tables', () => {
   it('match key terms by stem/form per language (Latin, Thai substring, Devanagari)', () => {
@@ -38,6 +40,7 @@ describe('concept tables', () => {
 
   it('does not pretend a reading-only Aramaic pack has production lessons', () => {
     expect(lexemesFor('arc', 'know')).toEqual([]);
+    expect(lexemesFor('fr', 'know'), 'French has GoTell tables now: drop it from NO_GOTELL_TABLES').toEqual([]);
     expect(CHRONOLOGY.arc).toEqual([]);
   });
 

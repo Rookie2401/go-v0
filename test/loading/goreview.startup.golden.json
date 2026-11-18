@@ -930,5 +930,117 @@
    "summary": "Xyzqwk=?/?",
    "sha256": "557dc9891b0616905d70397e5127b5b06f9eae9ab9100a59e328d402a23e501a"
   }
+ ],
+ "fr": [
+  {
+   "text": "Elle lit un livre.",
+   "summary": "elle=elle/PRON lit=lire/VERB un=un/DET livre=livre/NOUN",
+   "sha256": "2ff88f6750a296f04d10fd68f2c21a6154ac71e2af52dc8d70b3a48b89a4da4b"
+  },
+  {
+   "text": "Elle lit un livre.",
+   "summary": "elle=elle/PRON lit=lire/VERB un=un/DET livre=livre/NOUN",
+   "sha256": "2ff88f6750a296f04d10fd68f2c21a6154ac71e2af52dc8d70b3a48b89a4da4b"
+  },
+  {
+   "text": "Il entra dans la maison.",
+   "summary": "il=il/PRON entra=entrer/VERB dans=dans/ADP la=le/DET maison=maison/NOUN",
+   "sha256": "c964661427d654c5ed5581ed5d12b14a894c1a6e57dfe5e3ead20987529aafe2"
+  },
+  {
+   "text": "Il entra dans la maison.",
+   "summary": "il=il/PRON entra=entrer/VERB dans=dans/ADP la=le/DET maison=maison/NOUN",
+   "sha256": "c964661427d654c5ed5581ed5d12b14a894c1a6e57dfe5e3ead20987529aafe2"
+  },
+  {
+   "text": "Il entra dans la maison.",
+   "summary": "il=il/PRON entra=entrer/VERB dans=dans/ADP la=le/DET maison=maison/NOUN",
+   "sha256": "c964661427d654c5ed5581ed5d12b14a894c1a6e57dfe5e3ead20987529aafe2"
+  },
+  {
+   "text": "Il entra dans la maison.",
+   "summary": "il=il/PRON entra=entrer/VERB dans=dans/ADP la=le/DET maison=maison/NOUN",
+   "sha256": "c964661427d654c5ed5581ed5d12b14a894c1a6e57dfe5e3ead20987529aafe2"
+  },
+  {
+   "text": "Nous faisons un gâteau.",
+   "summary": "nous=nous/PRON faisons=faire/VERB un=un/DET gâteau=gâteau/NOUN",
+   "sha256": "c9022aab95fbc1d3153f99b3d3b129409fa049881756327fe698332f15784061"
+  },
+  {
+   "text": "Les chevaux sont beaux.",
+   "summary": "les=le/DET chevaux=cheval/NOUN sont=être/AUX beaux=beau/ADJ",
+   "sha256": "750900342b6a5febbc96668fa68f3061235a55dc7fbbec271ec0761fd5a361d0"
+  },
+  {
+   "text": "Les chevaux sont beaux.",
+   "summary": "les=le/DET chevaux=cheval/NOUN sont=être/AUX beaux=beau/ADJ",
+   "sha256": "750900342b6a5febbc96668fa68f3061235a55dc7fbbec271ec0761fd5a361d0"
+  },
+  {
+   "text": "Les chevaux sont beaux.",
+   "summary": "les=le/DET chevaux=cheval/NOUN sont=être/AUX beaux=beau/ADJ",
+   "sha256": "750900342b6a5febbc96668fa68f3061235a55dc7fbbec271ec0761fd5a361d0"
+  },
+  {
+   "text": "Elle est arrivée hier.",
+   "summary": "elle=elle/PRON est=être/AUX arrivée=arriver/VERB hier=hier/ADV",
+   "sha256": "c75dbb89981ebc4b9391538e4f3fec4ea11f1536a1492fe51547bd403af8ab6f"
+  },
+  {
+   "text": "Elle est arrivée hier.",
+   "summary": "elle=elle/PRON est=être/AUX arrivée=arriver/VERB hier=hier/ADV",
+   "sha256": "c75dbb89981ebc4b9391538e4f3fec4ea11f1536a1492fe51547bd403af8ab6f"
+  },
+  {
+   "text": "Les lettres que j'ai écrites.",
+   "summary": "les=le/DET lettres=lettre/NOUN que=que/PRON j'=je/PRON ai=avoir/AUX écrites=écrire/VERB",
+   "sha256": "616757d245efe7c162aeab21e6b488f9e8da480714e5371416c530dadd52078f"
+  },
+  {
+   "text": "L'homme parle.",
+   "summary": "l'=le/DET homme=homme/NOUN parle=parler/VERB",
+   "sha256": "d7cc960ac9dfdf55258ed91637f62e894018a97cb1e367ee0e44fac242aff3b7"
+  },
+  {
+   "text": "L'homme parle.",
+   "summary": "l'=le/DET homme=homme/NOUN parle=parler/VERB",
+   "sha256": "d7cc960ac9dfdf55258ed91637f62e894018a97cb1e367ee0e44fac242aff3b7"
+  },
+  {
+   "text": "Elle va au marché.",
+   "summary": "elle=elle/PRON va=aller/VERB au=au/ADP marché=marché/NOUN",
+   "sha256": "1f4a592183ed3994e3cacdf82f022af4c68a518477a1f2c5e0f986fd86b5fd79"
+  },
+  {
+   "text": "Je le vois.",
+   "summary": "je=je/PRON le=le/PRON vois=voir/VERB",
+   "sha256": "d48acfce4dfc7e3546311af0781eb9cc43590ac6faf182679642e4344217c7a5"
+  },
+  {
+   "text": "Je ne sais pas.",
+   "summary": "je=je/PRON ne=ne/PART sais=savoir/VERB pas=pas/ADV",
+   "sha256": "a062c78b0a6331efe1f8aef7c51e076ba924c362d0118890fe4be823de373b59"
+  },
+  {
+   "text": "Il fut surpris.",
+   "summary": "il=il/PRON fut=être/AUX surpris=surprendre/VERB",
+   "sha256": "93e200296e33b652a3fa425c95381969d0b171dda511935afa9a449081091d47"
+  },
+  {
+   "text": "Il viendra peut-être demain.",
+   "summary": "il=il/PRON viendra=venir/VERB peut-être=peut-être/ADV demain=demain/ADV",
+   "sha256": "5f9db42bf763af471a706641736e541078e2c7dbbdf02ec5ea6ce55ba3458f6f"
+  },
+  {
+   "text": "Xyzqwk est ici.",
+   "summary": "xyzqwk=?/? est=être/AUX ici=ici/ADV",
+   "sha256": "0c5146dc8139f0620c18ad5ceb9c02ea0096c740ab97f4b65e721595aa70821b"
+  },
+  {
+   "text": "Xyzqwk",
+   "summary": "xyzqwk=?/?",
+   "sha256": "03de4ef8bf1136073af87faeb84281e23adcc46952014d010018f4ccdc590f4c"
+  }
  ]
 }

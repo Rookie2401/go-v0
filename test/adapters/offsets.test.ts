@@ -16,9 +16,13 @@ const SAMPLES: Record<string, string[]> = {
   la: ['In principio erat Verbum, et Verbum erat apud Deum.', 'Dixitque Deus : Fiat lux. Et facta est lux.', 'Quid est veritas? Ecce homo — «vidēte» (cap. 3).'],
   he: ['בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃', 'וַיֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר וַֽיְהִי־אֽוֹר׃', 'מה זה? אני לא יודע: 3 ספרים (או 4).'],
   el: ['Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν.', 'Τὸν δ᾽ ἀπαμειβόμενος προσέφη· οὐκ ἔσθ᾽ οὗτος ἀνήρ.', 'Τι κάνεις; Καλά, ευχαριστώ — 3 βιβλία (όχι 4)!'],
+  // French: elision with both apostrophes, a hyphenated clitic and a compound, guillemets with no-break spaces, an NFD accent (e + U+0301)
+  fr: ["L'homme est ici. Je n'ai pas d'argent.", 'L’homme dit : « Bonjour », puis Dis-le-moi, ma grand-mère (peut-être) !', 'Un café noir ? Nous avons deux enfants.'],
 };
 
-describe('token offsets round-trip (all five languages)', () => {
+const NO_BUNDLED_CORPUS = ['fr'];
+
+describe('token offsets round-trip (every language)', () => {
   for (const lang of LANGUAGES) {
     it(`${lang}: sample strings`, () => {
       const ad = adapter(lang);
@@ -46,6 +50,9 @@ describe('token offsets round-trip (all five languages)', () => {
     it(`${lang}: every bundled corpus sentence`, () => {
       const ad = adapter(lang);
       const docs = loadBundledCorpus().filter((d) => d.lang === lang);
+      // French bundles no course texts at all (its pack reads web pages; there is no data/corpus/fr), so there is no corpus sentence to check:
+      // the sample strings above are its offsets check. Asserting the corpus is empty makes this exemption fail loudly if one is ever bundled.
+      if (NO_BUNDLED_CORPUS.includes(lang)) { expect(docs, lang).toEqual([]); return; }
       // the three seed documents of each seed language are always there (Hebrew's scripture seed is bible-gen-1); further bundled texts are checked too
       const seed = docs.filter((d) => (SEED_BY_LANG[lang] ?? []).includes(d.id));
       // Latin has course texts only (Vulgate chapters, Ritchie, Caesar), no seed trio

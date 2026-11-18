@@ -9,6 +9,7 @@ import { describe, expect, it } from 'vitest';
 import { deAdapter } from '../../src/adapters/de';
 import { elAdapter } from '../../src/adapters/el';
 import { esAdapter } from '../../src/adapters/es';
+import { frAdapter } from '../../src/adapters/fr';
 import { hiAdapter } from '../../src/adapters/hi';
 import { heAdapter } from '../../src/adapters/he';
 import { laAdapter } from '../../src/adapters/la';
@@ -27,7 +28,7 @@ import {
 import type { LemmaMeasurement, PackEvidence } from '../../packages/language-packs/src';
 import type { SupportLevel } from '../../src/core';
 
-const ADAPTERS: Record<string, LanguageAdapter> = { arc: arcAdapter, sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter };
+const ADAPTERS: Record<string, LanguageAdapter> = { arc: arcAdapter, sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter, fr: frAdapter };
 const q = (l: SupportLevel): string => (l === 'dependable' ? 'dependable' : l === 'limited' ? 'limited' : 'none');
 
 describe('every pack’s report matches its manifest and its adapter', () => {
@@ -149,12 +150,15 @@ describe('lemma quality is derived from the evidence, by one stated rule', () =>
 
   it('each language gets the level its evidence gives it: Norwegian seed-only, every language with a dictionary or form index limited, none dependable', () => {
     const level = Object.fromEntries(allPackCapabilities().map((c) => [c.languageId, c.lemma.quality]));
-    expect(level).toEqual({ sq: 'limited', es: 'limited', de: 'limited', hi: 'limited', th: 'limited', nb: 'seed-only', nn: 'seed-only', la: 'limited', he: 'limited', el: 'limited', arc: 'limited' });
+    expect(level).toEqual({ sq: 'limited', es: 'limited', de: 'limited', hi: 'limited', th: 'limited', nb: 'seed-only', nn: 'seed-only', la: 'limited', he: 'limited', el: 'limited', arc: 'limited',
+      // TODO(french evidence): the lead adds PACK_EVIDENCE.fr with its report; this expectation changes then
+      fr: 'limited' });
     // Latin is measured at the bar on the Vulgate New Testament and below it on the classical authors: the rule asks for every corpus
     const la = packCapabilities('la')!.lemma;
     expect(la.measured.map((m) => [m.id, m.goldKind, m.lemmaAccuracy >= DEPENDABLE_ACCURACY])).toEqual([['proiel-nt', 'human-treebank', true], ['perseus-agldt', 'human-treebank', false]]);
-    // every analyser still states seed-only for its own word list, and the report keeps that beside the derived level
-    for (const c of allPackCapabilities()) expect(c.lemma.analyserLevel, c.languageId).toBe('seed-only');
+    // every analyser still states seed-only for its own word list, and the report keeps that beside the derived level;
+    // French states 'limited' itself (a hand list of about 3,400 lemmas plus a 78,650-lemma list taken from the dictionary), so its own statement is kept
+    for (const c of allPackCapabilities()) expect(c.lemma.analyserLevel, c.languageId).toBe(c.languageId === 'fr' ? 'limited' : 'seed-only');
   });
 
   it('the note says where a lemma comes from and what was measured against what, and calls AI-labelled agreement what it is', () => {

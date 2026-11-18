@@ -21,7 +21,7 @@ import { describe, expect, it, vi } from 'vitest';
 vi.mock('../../packages/language-packs/src/builtins', () => import('../../packages/goreview/app/leanBuiltins'));
 
 const GOLDEN = path.resolve(process.cwd(), 'test/loading/goreview.startup.golden.json');
-const LANGS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc'] as const;
+const LANGS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'fr'] as const;
 
 type Golden = Record<string, Array<{ text: string; summary: string; sha256: string }>>;
 
@@ -106,7 +106,7 @@ describe('GoReview start-up: nothing of a language is built until it is asked fo
     await lean.loadBuiltInAdapter('hi');
     expect(lean.loadedAdapterLanguages()).toEqual(['es', 'hi']);
     expect(lexiconStats.constructed).toBeGreaterThan(afterSpanish);
-    for (const other of ['th', 'nb', 'nn', 'he', 'el', 'de', 'la', 'sq']) expect(lean.loadedAdapterLanguages()).not.toContain(other);
+    for (const other of ['th', 'nb', 'nn', 'he', 'el', 'de', 'la', 'sq', 'fr']) expect(lean.loadedAdapterLanguages()).not.toContain(other);
   });
 });
 

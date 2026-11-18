@@ -1,0 +1,34 @@
+de | Wir sitzen am Fenster. | am
+de | Wir sitzen am Fenster. | Fenster
+de | Er wohnt im Haus seiner Eltern. | im
+de | Ich gehe zum Kino. | zum
+de | Gehen Sie bitte geradeaus! | Gehen
+de | Nehmen Sie Platz! | Nehmen
+de | Ich schreibe Herrn Müller einen Brief. | Herrn
+de | Das hat mir gut gefallen. | mir
+de | Sie hat ihm geholfen. | geholfen
+de | Ich habe mich sehr gefreut. | gefreut
+de | Das Mädchen, dessen Vater Arzt ist, heißt Anna. | dessen
+de | Ich weiß nicht, ob er kommt. | ob
+de | Je älter er wird, desto klüger wird er. | älter
+de | Er ist genauso groß wie ich. | wie
+de | Sie hat keine Kinder. | keine
+de | Ich habe heute keine Lust zu arbeiten. | zu
+de | Trotz des Regens gehen wir spazieren. | Trotz
+de | Wegen dem Regen bleiben wir hier. | dem
+de | Er fragt, wo der Bahnhof ist. | wo
+de | Das ist der Mann, mit dem ich gesprochen habe. | dem
+de | Morgen wird es regnen. | regnen
+de | Es wurde viel gelacht. | gelacht
+de | Er soll sehr reich sein. | soll
+de | Ich hätte das nicht tun sollen. | sollen
+de | Sie tut so, als ob sie schliefe. | schliefe
+de | Hättest du Lust, ins Kino zu gehen? | Hättest
+de | Dreihundert Leute kamen. | Dreihundert
+de | Er ist der zweite Sohn. | zweite
+de | Der Verletzte liegt im Krankenhaus. | Verletzte
+de | Ein Bekannter von mir wohnt dort. | Bekannter
+de | Die Kranken brauchen Hilfe. | Kranken
+de | Er hat sich das Bein gebrochen. | sich
+de | Ich wasche mir die Hände. | mir
+de | Guten Appetit! | Appetit

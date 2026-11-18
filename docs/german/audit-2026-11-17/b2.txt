@@ -1,0 +1,148 @@
+# adjective endings and comparison
+de | Er ist ein guter Mann. | guter
+de | Wir essen Fisch mit gutem Wein. | gutem
+de | Die alten Häuser sind schön. | alten
+de | Ich trinke kaltes Wasser. | kaltes
+de | Das Haus des alten Mannes ist groß. | alten
+de | Er ist größer als ich. | größer
+de | Das ist der beste Film. | beste
+de | Sie singt am besten. | besten
+de | Das ist ein teures Auto. | teures
+de | Die dunkle Nacht war kalt. | dunkle
+de | Das ist ein hohes Haus. | hohes
+de | Viele Leute kommen. | Viele
+de | Das ist viel besser. | viel
+de | Ich trinke gern Tee. | gern
+de | Ich trinke lieber Kaffee. | lieber
+de | Er läuft schnell. | schnell
+de | Sie ist die klügste Schülerin. | klügste
+de | Das ist mir zu teuer. | teuer
+de | Sie trägt ein rosa Kleid. | rosa
+de | Das Kind ist drei Jahre alt. | alt
+de | Mein älterer Bruder wohnt in Wien. | älterer
+de | Das geht mich nichts an. | nichts
+# nouns
+de | Die Häuser sind alt. | Häuser
+de | In den Häusern wohnen Leute. | Häusern
+de | Die Farbe des Hauses ist rot. | Hauses
+de | Wir besuchen zwei Museen. | Museen
+de | Viele Firmen suchen Leute. | Firmen
+de | Er hat ein Problem mit dem Herzen. | Herzen
+de | Ich kenne den Namen nicht. | Namen
+de | Ich schreibe Herrn Müller. | Herrn
+de | Die Studentinnen lernen viel. | Studentinnen
+de | Seine Kenntnisse sind gut. | Kenntnisse
+de | Die Autos sind teuer. | Autos
+de | Das ist das Buch des Studenten. | Studenten
+de | Die Eltern meiner Freundin kommen. | Eltern
+de | Ich habe zwei Brüder. | Brüder
+de | Die Mädchen spielen. | Mädchen
+de | Er trinkt ein Glas Wasser. | Glas
+de | Ich habe keine Lust. | Lust
+de | Er hat Angst vor Hunden. | Hunden
+de | Im Sommer fahren wir ans Meer. | Meer
+de | Das Mädchen liest ein Buch. | Mädchen
+de | Die Leute sind nett. | Leute
+de | Ich mag Äpfel und Bananen. | Äpfel
+# verb forms
+de | Du liest zu schnell. | liest
+de | Er hält den Hund. | hält
+de | Ihr habt recht. | habt
+de | Er wurde krank. | wurde
+de | Ich bin dort gewesen. | gewesen
+de | Er tat nichts. | tat
+de | Sie wusste es nicht. | wusste
+de | Er brachte Blumen. | brachte
+de | Ich habe an dich gedacht. | gedacht
+de | Gib mir das Buch! | Gib
+de | Nimm den Schirm mit! | Nimm
+de | Sei still! | Sei
+de | Lies den Text! | Lies
+de | Iss dein Gemüse! | Iss
+de | Geht nach Hause! | Geht
+de | Gehen Sie geradeaus! | Gehen
+de | Lasst uns gehen! | Lasst
+de | Er lässt sich die Haare schneiden. | lässt
+de | Ich habe das Buch gelesen. | gelesen
+de | Er ist nach Hause gegangen. | gegangen
+de | Sie hat studiert. | studiert
+de | Er hat das Auto verkauft. | verkauft
+de | Ich habe vergessen. | vergessen
+de | Wir haben gegessen. | gegessen
+de | Das Kind schläft. | schläft
+de | Er fuhr nach Berlin. | fuhr
+de | Sie sprach leise. | sprach
+de | Ich habe ihn gesehen. | gesehen
+de | Es regnete den ganzen Tag. | regnete
+de | Er sammelt Briefmarken. | sammelt
+de | Ich sammle Münzen. | sammle
+de | Sie öffnete die Tür. | öffnete
+de | Er rannte schnell. | rannte
+de | Ich kannte ihn gut. | kannte
+de | Wir saßen im Garten. | saßen
+de | Er lag im Bett. | lag
+de | Sie stand an der Tür. | stand
+de | Er trägt einen Hut. | trägt
+# compounds, derivation, unknown words
+de | Er hat eine Lebensversicherung. | Lebensversicherung
+de | Sie arbeitet im Krankenhaus. | Krankenhaus
+de | Die Kinder gehen in den Kindergarten. | Kindergarten
+de | Ich mache meine Hausaufgaben. | Hausaufgaben
+de | Das ist ein Geburtstagsgeschenk. | Geburtstagsgeschenk
+de | Die Arbeitslosigkeit steigt. | Arbeitslosigkeit
+de | Die Bundesregierung plant ein Gesetz. | Bundesregierung
+de | Wir warten an der Straßenbahnhaltestelle. | Straßenbahnhaltestelle
+de | Der Himmel ist hellblau. | hellblau
+de | Das ist lebensgefährlich. | lebensgefährlich
+de | Ihre Freundlichkeit überrascht mich. | Freundlichkeit
+de | Das ist eine gute Möglichkeit. | Möglichkeit
+de | Das ist unmöglich. | unmöglich
+de | Er ist arbeitslos. | arbeitslos
+de | Meine Lehrerin ist nett. | Lehrerin
+de | Die Verkäuferin hilft mir. | Verkäuferin
+de | Die Entwicklung geht weiter. | Entwicklung
+de | Die Regierung will die Steuern senken. | Steuern
+de | Die Regierung will die Steuern senken. | senken
+de | Der Bundeskanzler sprach im Bundestag. | Bundeskanzler
+de | Die Polizei nahm zwei Verdächtige fest. | Verdächtige
+de | Die Polizei nahm zwei Verdächtige fest. | nahm
+de | Das Wetter ist herrlich. | herrlich
+de | Er ist ziemlich müde. | ziemlich
+de | Wahrscheinlich kommt er später. | Wahrscheinlich
+de | Übrigens habe ich ihn gesehen. | Übrigens
+de | Ich bin damit einverstanden. | einverstanden
+de | Ich bin damit einverstanden. | damit
+de | Worüber sprecht ihr? | Worüber
+de | Wohin gehst du? | Wohin
+de | Er kommt trotzdem. | trotzdem
+de | Deshalb bleibe ich hier. | Deshalb
+de | Obwohl es regnet, gehen wir. | Obwohl
+de | Er kam, nachdem ich gegangen war. | nachdem
+de | Entweder du kommst, oder ich gehe. | Entweder
+de | Je mehr ich lerne, desto besser. | desto
+# numbers, abbreviations, tokens
+de | Sie ist einundzwanzig Jahre alt. | einundzwanzig
+de | Das kostet dreihundert Euro. | dreihundert
+de | Heute ist der zwanzigste Mai. | zwanzigste
+de | Er wohnt im dritten Stock. | dritten
+de | Es ist halb acht. | halb
+de | Wir warten anderthalb Stunden. | anderthalb
+de | Er kauft Obst, z. B. Äpfel. | z. B.
+de | Wir kaufen Brot, Milch usw. | usw.
+de | Dr. Müller kommt um 15 Uhr. | Dr.
+de | Ich nehme die U-Bahn. | U-Bahn
+de | Er schreibt eine E-Mail. | E-Mail
+de | Früher schrieb man, daß es so sei. | daß
+de | Er muß gehen. | muß
+de | Das Baby schläft im Kinderwagen. | Kinderwagen
+de | Berlin ist die Hauptstadt von Deutschland. | Berlin
+de | Angela fährt nach München. | München
+de | Die Schweizer sprechen Deutsch. | Schweizer
+de | Ich spreche Deutsch. | Deutsch
+de | Er kauft ein deutsches Auto. | deutsches
+de | Grüß Gott! | Grüß
+de | Tschüss, bis morgen! | Tschüss
+de | Entschuldigung, wo ist der Bahnhof? | Entschuldigung
+de | Na ja, das stimmt schon. | stimmt
+de | Das macht nichts. | macht
+de | Ich hätte gern ein Bier. | hätte

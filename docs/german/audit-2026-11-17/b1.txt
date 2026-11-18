@@ -1,0 +1,129 @@
+# case, gender, agreement
+de | Der Mann gibt der Frau das Buch. | der#2
+de | Der Mann gibt der Frau das Buch. | Frau
+de | Ich sehe den Mann. | den
+de | Wir spielen mit den Kindern. | Kindern
+de | Wir bleiben wegen des Wetters zu Hause. | Wetters
+de | Die Frau, der ich das Buch gab, ist nett. | der
+de | Ich helfe dem Kind. | Kind
+de | Das Buch, das ich lese, ist gut. | das
+de | Ich weiß, dass er kommt. | dass
+de | Das ist das Auto meines Vaters. | Vaters
+de | Die Kinder der Nachbarn spielen. | der
+de | Ich danke Ihnen. | Ihnen
+de | Er gibt es ihr. | ihr
+de | Ihr seid spät. | Ihr
+de | Das ist ihr Auto. | ihr
+de | Kommen Sie bitte herein! | Sie
+de | Sie kommt morgen. | Sie
+de | Sie kommen morgen. | Sie
+# separable verbs
+de | Ich stehe um sieben Uhr auf. | stehe
+de | Ich stehe um sieben Uhr auf. | auf
+de | Er ruft seine Mutter an. | ruft
+de | Wann fängt der Film an? | fängt
+de | Ich habe ihn gestern angerufen. | angerufen
+de | Ich habe keine Zeit, ihn anzurufen. | anzurufen
+de | Er kommt aus Berlin. | kommt
+de | Sie geht mit ihrem Hund aus dem Haus. | geht
+de | Ich gehe heute Abend aus. | gehe
+de | Er hört mit dem Rauchen auf. | hört
+de | Das Kind macht die Tür zu. | macht
+de | Er sieht müde aus. | sieht
+de | Sie sieht aus dem Fenster. | sieht
+de | Er zieht nach Berlin um. | zieht
+de | Der Zug kommt um acht Uhr an. | kommt
+de | Der Zug kommt um acht Uhr an. | um
+de | Er steigt in den Bus ein. | ein
+de | Ich weiß, dass er morgen ankommt. | ankommt
+de | Sie lernt ihn kennen. | lernt
+de | Wir gehen spazieren. | spazieren
+de | Er nimmt an dem Kurs teil. | nimmt
+de | Ich lade dich zum Essen ein. | lade
+de | Hör auf! | Hör
+de | Er denkt über das Problem nach. | denkt
+# participles as adjectives, nominalised adjectives
+de | Ich esse ein gekochtes Ei. | gekochtes
+de | Die geschlossene Tür ist grün. | geschlossene
+de | Ein spielendes Kind lacht. | spielendes
+de | Die Reisenden warten am Bahnhof. | Reisenden
+de | Der Angestellte arbeitet viel. | Angestellte
+de | Er ist ein Deutscher. | Deutscher
+de | Die Deutschen trinken gern Bier. | Deutschen
+de | Das ist das Beste. | Beste
+de | Alles Gute zum Geburtstag! | Gute
+de | Die Arbeitslosen suchen Arbeit. | Arbeitslosen
+de | Das Neue ist nicht immer besser. | Neue
+# subjunctive, passive, modal
+de | Wenn ich Zeit hätte, käme ich. | hätte
+de | Wenn ich Zeit hätte, käme ich. | käme
+de | Er sagte, er sei krank. | sei
+de | Das wäre schön. | wäre
+de | Könnten Sie mir helfen? | Könnten
+de | Ich würde gern kommen. | würde
+de | Er sagte, sie habe keine Zeit. | habe
+de | Das Haus wird gebaut. | wird
+de | Das Haus wird gebaut. | gebaut
+de | Das Haus wurde 1900 gebaut. | wurde
+de | Das Haus ist gebaut worden. | worden
+de | Die Tür ist geschlossen. | geschlossen
+de | Ich muss heute arbeiten. | arbeiten
+de | Er hat arbeiten müssen. | müssen
+de | Er wird morgen kommen. | wird
+de | Er wird Arzt. | wird
+de | Ich möchte einen Kaffee. | möchte
+de | Du sollst nicht stehlen. | sollst
+de | Man darf hier nicht rauchen. | darf
+de | Er ließ das Auto reparieren. | ließ
+# homographs
+de | Das ist sein Buch. | sein
+de | Er will Arzt sein. | sein
+de | Ich weiß es nicht. | weiß
+de | Das Hemd ist weiß. | weiß
+de | Das Essen ist gut. | Essen
+de | Wir essen um sieben. | essen
+de | Guten Morgen! | Morgen
+de | Ich komme morgen. | morgen
+de | Er ist weg. | weg
+de | Der Weg ist lang. | Weg
+de | Das ist mehr als genug. | als
+de | Als ich jung war, lebte ich in Köln. | Als
+de | Er arbeitet als Lehrer. | als
+de | Wenn es regnet, bleibe ich zu Hause. | Wenn
+de | Was machst du denn da? | denn
+de | Ich bleibe hier, denn ich bin müde. | denn
+de | Komm doch mit! | doch
+de | Das ist ja toll! | ja
+de | Das ist zu teuer. | zu
+de | Ich bin zu Hause. | zu
+de | Ich lerne, um zu arbeiten. | zu
+de | Die Tür ist zu. | zu
+de | Liebe Anna, wie geht es dir? | Liebe
+de | Die Liebe ist stark. | Liebe
+de | Laut Polizei gab es keinen Unfall. | Laut
+de | Die Musik ist laut. | laut
+de | Das hat mir gut gefallen. | gefallen
+de | Er ist auf der Treppe gefallen. | gefallen
+de | Das Buch gehört mir. | gehört
+de | Ich habe es gehört. | gehört
+de | Wir arbeiten viel. | arbeiten
+de | Arbeiten Sie hier? | Arbeiten
+de | Ich habe sieben Äpfel. | sieben
+de | Er ist erst zehn Jahre alt. | erst
+de | Bist du schon fertig? | schon
+de | Ich habe noch Hunger. | noch
+de | Er ist reich. | reich
+de | Am Morgen trinke ich Kaffee. | Am
+de | Er fährt am schnellsten. | am
+de | Sie hat ein Kind. | ein
+de | Ich habe einen Bruder und eine Schwester. | einen
+de | Es gibt viele Leute hier. | gibt
+de | Wie geht es dir? | geht
+de | Es tut mir leid. | leid
+de | Mir ist kalt. | Mir
+de | Ich freue mich auf den Urlaub. | freue
+de | Er interessiert sich für Musik. | interessiert
+de | Ich warte auf den Bus. | warte
+de | Sie denkt an ihn. | denkt
+de | Es kommt darauf an. | darauf
+de | Es geht um Geld. | um

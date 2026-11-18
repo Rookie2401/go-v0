@@ -9,6 +9,7 @@ import { describe, expect, it } from 'vitest';
 import { deAdapter } from '../../src/adapters/de';
 import { hiAdapter } from '../../src/adapters/hi';
 import { laAdapter } from '../../src/adapters/la';
+import { ruAdapter } from '../../src/adapters/ru';
 import { nbAdapter } from '../../src/adapters/nb';
 import { nnAdapter } from '../../src/adapters/nn';
 import { thAdapter } from '../../src/adapters/th';
@@ -17,17 +18,17 @@ import { audioOf } from '../../packages/golearn-extension/src/language/capabilit
 import { PACKS, TUTORIALS, readSelection, tutorialFor } from '../../packages/language-packs/src';
 import type { Tutorial, TutorialStep } from '../../packages/language-packs/src';
 
-const ADAPTERS: Record<string, LanguageAdapter> = { de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter };
+const ADAPTERS: Record<string, LanguageAdapter> = { de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, ru: ruAdapter };
 // la left the minimal shape on 2026-11-13 (sounds, three patterns and a passage, like es and sq): test/course/latin-tutorial.test.ts checks it
-const NEW = ['de', 'hi', 'th', 'nb', 'nn'];
+const NEW = ['de', 'hi', 'th', 'nb', 'nn', 'ru'];
 
 /** The words a reader of the card would meet: every word of a sentence, read by the analyser, none of them a guess. */
 const wordsOf = (a: LanguageAdapter, text: string) => a.analyze(a.tokenize(text)).filter((x) => x.token.isWord);
 
 describe('the tutorial registry', () => {
-  it('has one tutorial for each of the eight languages, in the pack registry’s order, and none for another language or an inherited key', () => {
+  it('has one tutorial for each of the twelve languages, in the pack registry’s order, and none for another language or an inherited key', () => {
     expect(Object.keys(TUTORIALS)).toEqual(Object.keys(PACKS));
-    expect(Object.keys(TUTORIALS)).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc']);
+    expect(Object.keys(TUTORIALS)).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru']);
     for (const [id, t] of Object.entries(TUTORIALS)) {
       expect(tutorialFor(id), id).toBe(t);
       expect(t.languageId, id).toBe(id);

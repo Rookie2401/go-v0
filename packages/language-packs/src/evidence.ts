@@ -68,6 +68,7 @@ export interface PackEvidence {
 const GOLD_REPORT = 'docs/ecosystem/linguistics/GOLD-REPORT-2026-10-10.json';
 const LATIN_REPORT = 'data/review/latin-eval/report.json';
 const THAI_BENCHMARKS = 'docs/thai/BENCHMARKS.md';
+const RUSSIAN_REPORT = 'docs/russian/eval.json';
 
 /** The form index of a pack's declared dictionary: form → lemma and part of speech, for the words the hand list does not hold. */
 const formsIndex = (lang: string, id: string): LemmaSource => ({
@@ -161,6 +162,20 @@ export const PACK_EVIDENCE: Readonly<Record<string, PackEvidence>> = Object.free
       { kind: 'attested-form-index', id: 'oshb-aramaic', label: 'the forms of the Aramaic portions of the Hebrew Bible with their Open Scriptures morphology', size: { count: 3151, unit: 'forms' }, source: 'src/adapters/aramaic/seed.ts' },
     ],
     lemmaMeasurements: [],
+  },
+  // every reading is a row of Wiktionary's Russian inflection tables or form-of pages (docs/russian/INDEX.md); the first reading was
+  // scored against three human-annotated treebanks the analyser took nothing from but lemma and form COUNTS of the GSD train split
+  // (docs/russian/EVAL.md; the figures are the report's strict ones: ё must match)
+  ru: {
+    lemmaSources: [
+      { kind: 'attested-form-index', id: 'kaikki-ru-tables', label: 'Wiktionary’s Russian inflection tables and form-of pages', size: { count: 923009, unit: 'forms' }, source: 'public/lexicon/ru/standard/manifest.json' },
+      formsIndex('ru', 'kaikki-ru@2026-10-30'),
+    ],
+    lemmaMeasurements: [
+      { id: 'ud-gsd-test', corpus: 'Russian Wikipedia, blog and news sentences', gold: 'the UD Russian-GSD treebank (test split)', goldKind: 'human-treebank', heldOut: true, items: 8578, lemmaAccuracy: 88.39, analyser: 'adapter-ru@1', measuredOn: '2026-11-18', source: RUSSIAN_REPORT },
+      { id: 'ud-taiga-test', corpus: 'Russian social media, poetry and fiction', gold: 'the UD Russian-Taiga treebank (test split)', goldKind: 'human-treebank', heldOut: true, items: 11302, lemmaAccuracy: 89.36, analyser: 'adapter-ru@1', measuredOn: '2026-11-18', source: RUSSIAN_REPORT },
+      { id: 'ud-pud', corpus: 'a thousand translated news and Wikipedia sentences', gold: 'the UD Russian-PUD treebank', goldKind: 'human-treebank', heldOut: true, items: 15714, lemmaAccuracy: 90.76, analyser: 'adapter-ru@1', measuredOn: '2026-11-18', source: RUSSIAN_REPORT },
+    ],
   },
 });
 

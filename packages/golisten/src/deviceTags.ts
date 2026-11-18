@@ -11,3 +11,4 @@ export const GREEK_DEVICE_TAGS = ['el-GR', 'el'] as const;
 // No device ships a Latin voice (checked 2026-10-17). An Italian voice is the REGISTERED stand-in for the Ecclesiastical (Church) reading of the
 // Vulgate texts the course bundles; the registry's gaps and the card say it is a stand-in. A genuine Latin voice (la, la-VA) is preferred when present.
 export const LATIN_DEVICE_TAGS = ['la', 'la-VA', 'it-IT', 'it'] as const;
+export const RUSSIAN_DEVICE_TAGS = ['ru-RU', 'ru'] as const;

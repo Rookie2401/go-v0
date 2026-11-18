@@ -45,6 +45,18 @@ Input `data/dictionaries/kaikki.org-dictionary-Russian.jsonl.gz` (read through `
 8. **Core**: every lemma of a closed class (PRON, DET, ADP, CONJ, PART, NUM) with count ≥ 1, then open-class lemmas by descending count, each with all its forms, until the serialized index reaches `--core-budget` (default 450,000 bytes). Emitted like `src/adapters/hebrew/generated/biblical-core.ts`: a header comment with the figures and sources, `export const RU_CORE: RussianFormIndex = {…}` on one line. `stats.tokenCoverage` = the share of GSD train word tokens whose key the core holds.
 9. **INDEX.md**: lemma entries by part of speech, keys, rows (table / page / two-hop), skipped kinds, pre-reform rows left out, ё keys, keys with more than one lemma, shard count and bytes (raw and gzip), core figures.
 
+### What the real data added to these rules (accepted 2026-11-17; the figures are in INDEX.md)
+
+- A row's `source` "inflection" names a table too (some adjectives and nouns have only that).
+- A lemma entry with no table (и, не, в, most adverbs) gets ONE headword row, code `canonical` (+ the canonical row's own tags): without it the word would have no reading at all.
+- Every personal-pronoun entry carries the whole pronoun matrix: only the cells that spell the entry's own headword are kept, the other forms come from their form-of pages.
+- Rows the source itself marks as errors (`error-unrecognized-form`) are dropped; `error-unknown-tag` is stripped.
+- A `dated` row is dropped when the same key and lemma also has a row that is not dated (the old-spelling table repeats every form whose modern spelling coincides).
+- The pre-reform, space and no-Cyrillic rules apply to form pages and to whole entries whose headword is in pre-1918 spelling.
+- Past plural has no gender in Russian: the gender tag the table's columns put on those cells is dropped, and the three rows are one.
+- An entry whose every sense is an alternative spelling of another word is not a lemma: its key is a row of the word it stands for, tagged `alternative`.
+- The compiled core leaves out the declined forms of participles and rows with a register label, to hold more lemmas in the same bytes.
+
 ## Packages and file ownership
 
 One writer per file. A package edits only its own files, tests only its own files (`npx vitest run <its files>`; never the whole suite while others work), never commits, never stashes, never switches branch, never touches anything under OneDrive. Type errors are checked by the coordinator's `npx tsc -b`; a package may check its own files with `npx tsc --noEmit --skipLibCheck -p tsconfig.app.json` only when told to. Anything another package provides is coded against this contract; mismatches are reported, not patched in someone else's file.

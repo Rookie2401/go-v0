@@ -7,7 +7,7 @@ import { applyEdits, parse } from '../../src/gotell/text';
 import { FakeGoLearn, buildFixtureText, makeFakeAdapter } from './fakes';
 
 // Aramaic's first slice is explicitly reading-only; it has no GoTell lesson tables.
-const WRITING_LANGUAGES = LANGUAGES.filter(lang => lang !== 'arc');
+const WRITING_LANGUAGES = LANGUAGES.filter(lang => lang !== 'arc' && lang !== 'ru'); // Biblical Aramaic and Russian have no concept tables
 
 describe('concept tables', () => {
   it('match key terms by stem/form per language (Latin, Thai substring, Devanagari)', () => {

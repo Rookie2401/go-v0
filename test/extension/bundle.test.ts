@@ -37,7 +37,11 @@ describe.skipIf(!have)('the built extension', () => {
     // and the orphaned-script guard adds 0.2 KB. A ceiling, not a target.
     // 2026-11-13: 560 -> 564 KB; the Greek sentence splitter now keeps an abbreviation's full stop inside the sentence (π.χ., δηλ.:
     // src/adapters/greek/abbreviations.ts, ~3 KB, merge dcffa49e), and the content script splits sentences; the build measured 560.3 KB.
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(564 * KB);
+    // 2026-11-18: 564 -> 572 KB for Russian: Cyrillic is shared by several languages, so the content script now tells Russian from Ukrainian,
+    // Belarusian, Bulgarian and Serbian text (language/cyrillic.ts, the Cyrillic branches of language/resolve.ts and active/pageLanguages.ts)
+    // and loads the Russian form index's shards before a lookup (russian/shards.ts with its text helpers). content.js measured 569.5 KB
+    // (563.7 KB on master 985c742b, built the same day).
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(572 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
@@ -48,18 +52,21 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-17: 1,180 -> 1,190 KB for language varieties (6aa02507): the device's own Repository runs the same projection as the service, so
     // the worker now carries the variety registry and rules (repository-contract/src/varieties.ts), the per-variety fold (projection@8), the
     // scoped candidates and the variety a reader's events record. background.js measured 1,181.2 KB (1,209,578 bytes; 1,200,438 before).
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1190 * KB);
+    // 2026-11-18: 1,190 -> 1,212 KB for the Russian pack: every pack's manifest and orientation tutorial is in the worker (it answers the card's
+    // "explain" from them), and Russian's has thirteen features and twenty-six sentence patterns with their explanations (14 KB), twenty-seven
+    // validation cases and the tutorial; plus the Russian voice registry. background.js measured 1,208.5 KB (1,181.2 KB on master 985c742b).
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1212 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.
     // 2026-11-13: 800 -> 840 KB; master's build of 24bdc6b3 already measured 820 KB (unnoticed: this test needs a local build), and the
     // packs' self-report (evidence.ts, merge 467d2b6c) adds 8 KB so the setup page can say what stands behind each language: 828 KB.
     if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(840 * KB);
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 
   it('each analyser chunk is an ES module that exports the adapter, and the manifest makes the chunks readable from the page', () => {
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) {
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru']) {
       const code = read(`analysers/${id}.js`);
       expect(code, id).toMatch(/\bexport\s*\{[^}]*\bas adapter\b[^}]*\}|\bexport\s*\{\s*adapter\b/);
       expect(code, id).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|StoredSourceRef|importScripts/);
@@ -69,7 +76,7 @@ describe.skipIf(!have)('the built extension', () => {
     // lexicon/* (2026-10-22): the sharded Hebrew and Greek form indexes the content script loads before a lookup
     expect(m.web_accessible_resources).toEqual([{ resources: ['analysers/*.js', 'lexicon/*'], matches: ['<all_urls>'] }]);
     // every shared chunk the analysers import sits in analysers/ too, so the one pattern covers it
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
   });
 
   it('keeps Hindi out of the content script and unrelated analysers out of both scripts', () => {
@@ -77,11 +84,14 @@ describe.skipIf(!have)('the built extension', () => {
       const code = read(f);
       expect(code, f).not.toContain('adapter-de@');
       expect(code, f).not.toContain('adapter-th@');
+      expect(code, f).not.toContain('adapter-ru@'); // nor the Russian analyser and its 760 KB core: a chunk of its own
+      expect(code, f).not.toContain('kaikki-ru-tables');
       expect(code, f).not.toContain('Reference realisation of East Norwegian speech'); // the Norwegian engine (its ids are built at run time, so a literal from its text is checked)
     }
     expect(read('content.js')).not.toContain('adapter-hi@');
     expect(read('background.js')).toContain('adapter-hi@');
     expect(read('analysers/de.js')).toContain('adapter-de@');
+    expect(read('analysers/ru.js')).toContain('adapter-ru@');
     // Bokmål and Nynorsk share one engine, so the chunk that holds it (imported by both nb.js and nn.js) is the only place its text appears
     const shared = fs.readdirSync(path.join(dist, 'analysers')).filter((n) => /^shared-.*\.js$/.test(n)).map((n) => read(`analysers/${n}`)).join('\n');
     expect(shared).toContain('Reference realisation of East Norwegian speech');

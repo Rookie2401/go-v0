@@ -36,7 +36,7 @@ export const FULL_SPILL_PARTITIONS = 256;
 
 /** The language name kaikki uses in its file names. */
 export const KAIKKI_LANGUAGE_NAMES: Readonly<Record<string, string>> = {
-  sq: 'Albanian', de: 'German', es: 'Spanish', hi: 'Hindi', th: 'Thai', nb: 'Norwegian Bokmål', en: 'English', grc: 'Ancient Greek', la: 'Latin',
+  sq: 'Albanian', de: 'German', es: 'Spanish', hi: 'Hindi', th: 'Thai', nb: 'Norwegian Bokmål', en: 'English', grc: 'Ancient Greek', la: 'Latin', ru: 'Russian',
 };
 
 export interface BuildFullOptions {

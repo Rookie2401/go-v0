@@ -112,6 +112,7 @@ export class ActiveMode {
   /** The learner's languages this page may be read in, the page's Latin-script language when it rests on evidence, and what the last scan found. */
   private installed: string[] = [];
   private pageLatin: string | undefined;
+  private pageCyrillic: string | undefined;
   private languages: string[] = [];
   private ready = false;
   private planCache = new WeakMap<Element, { text: string; verdict: LatinVerdict }>();
@@ -188,6 +189,16 @@ export class ActiveMode {
       if (!this.on) return this.state;
       if (res.languageId && res.basis !== 'team-default' && LANGUAGE_SCRIPT[res.languageId] === 'Latn') this.pageLatin = res.languageId;
     }
+    // Cyrillic is shared by several languages, so the page's Cyrillic text is Russian only on evidence too (it declares Russian, the
+    // learner chose Russian here, or its text shows it); a block the word list cannot settle is then read as the page is
+    if (this.installed.includes('ru')) {
+      const cyrillicSample = this.scriptSample(/[\p{Script=Cyrillic}́'’-]+/gu);
+      if (cyrillicSample) {
+        const res = await this.d.controller.resolvePageLanguage(cyrillicSample);
+        if (!this.on) return this.state;
+        if (res.languageId === 'ru' && res.basis !== 'team-default') this.pageCyrillic = 'ru';
+      }
+    }
     this.ready = true;
     this.attachClick();
     this.attachWatchers();
@@ -225,6 +236,7 @@ export class ActiveMode {
     this.languages = [];
     this.installed = [];
     this.pageLatin = undefined;
+    this.pageCyrillic = undefined;
     this.ready = false;
     this.planCache = new WeakMap();
     this.nodeLanguages = new WeakMap();
@@ -258,12 +270,15 @@ export class ActiveMode {
   }
 
   /** The page's Latin-script words, as the evidence for its Latin-script language (other scripts are decided by their script). */
-  private latinSample(): string {
+  private latinSample(): string { return this.scriptSample(/[\p{Script=Latin}\p{M}'’-]+/gu); }
+
+  /** The page's words that match `words` (one script's), up to SAMPLE_CHARS. */
+  private scriptSample(wordsOfScript: RegExp): string {
     if (!this.scanner) return '';
     let s = '';
     for (const root of this.roots()) {
       for (const n of this.scanner.textNodes(root)) {
-        const words = n.data.match(/[\p{Script=Latin}\p{M}'’-]+/gu);
+        const words = n.data.match(wordsOfScript);
         if (!words) continue;
         s += (s ? ' ' : '') + words.join(' ');
         if (s.length >= SAMPLE_CHARS) return s.slice(0, SAMPLE_CHARS);
@@ -278,7 +293,7 @@ export class ActiveMode {
     const t0 = clock.now();
     const rootsNodes = this.roots().map((root) => [root, scanner.textNodes(root)] as const);
     const allNodes = rootsNodes.flatMap(([, nodes]) => nodes);
-    const planOpts = { installed: this.installed, adapterOf: (l: string) => this.d.adapterOf(l), pageLatin: this.pageLatin };
+    const planOpts = { installed: this.installed, adapterOf: (l: string) => this.d.adapterOf(l), pageLatin: this.pageLatin, pageCyrillic: this.pageCyrillic };
     let plan = planPage(allNodes, planOpts, this.planCache);
     if (plan.missing.size && this.d.loadAnalyser) {
       // a language of the learner's appears on the page and its analyser is not loaded yet: load it, then decide again

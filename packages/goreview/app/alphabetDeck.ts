@@ -28,6 +28,7 @@ const NOTES: Readonly<Record<string, string>> = {
   el: 'Written for this deck and not yet reviewed by a native speaker or a Hellenist. The names are the Modern Greek ones; the Modern sound comes first, the classroom value for ancient Greek where it differs.',
   he: 'Written for this deck and not yet reviewed by a native speaker or a Hebraist. The names and sounds are those of Modern Hebrew; the five final shapes are cards of their own.',
   arc: 'Written for this deck and not yet reviewed by an Aramaist. The names identify the letters and the back gives the conventional transliteration; neither is a recording of how Aramaic was spoken.',
+  ru: 'Written for this deck and not yet reviewed by a native speaker. Each back gives the letter’s Russian name, an approximate sound for an English speaker, and what it is easily mistaken for; several letters that look Latin sound different (В, Н, Р, С, У, Х).',
 };
 
 const ALIASES: Readonly<Record<string, string>> = { no: 'nb', nob: 'nb', nno: 'nn', grc: 'el' };

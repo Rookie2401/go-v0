@@ -341,6 +341,7 @@ const SCRIPT_TEST: Record<string, { name: string; re: RegExp }> = {
   Thai: { name: 'Thai', re: /\p{Script=Thai}/u },
   Hebr: { name: 'Hebrew', re: /\p{Script=Hebrew}/u },
   Grek: { name: 'Greek', re: /\p{Script=Greek}/u },
+  Cyrl: { name: 'Cyrillic', re: /\p{Script=Cyrillic}/u },
 };
 const scriptName = (L: Lang): string => (SCRIPT_TEST[L.adapter.script] ?? SCRIPT_TEST.Latn).name;
 const hasScriptLetter = (L: Lang, s: string): boolean => (SCRIPT_TEST[L.adapter.script] ?? SCRIPT_TEST.Latn).re.test(s);

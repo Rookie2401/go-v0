@@ -16,6 +16,7 @@ const SAMPLES: Record<string, string[]> = {
   la: ['In principio erat Verbum, et Verbum erat apud Deum.', 'Dixitque Deus : Fiat lux. Et facta est lux.', 'Quid est veritas? Ecce homo — «vidēte» (cap. 3).'],
   he: ['בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃', 'וַיֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר וַֽיְהִי־אֽוֹר׃', 'מה זה? אני לא יודע: 3 ספרים (או 4).'],
   el: ['Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν.', 'Τὸν δ᾽ ἀπαμειβόμενος προσέφη· οὐκ ἔσθ᾽ οὗτος ἀνήρ.', 'Τι κάνεις; Καλά, ευχαριστώ — 3 βιβλία (όχι 4)!'],
+  ru: ['Она читает книгу.', 'Что это? Ничего: «ну да» (или нет).', 'Я знаю, что ты сказал — и понял всё.'],
 };
 
 describe('token offsets round-trip (all five languages)', () => {
@@ -44,6 +45,7 @@ describe('token offsets round-trip (all five languages)', () => {
     });
 
     it(`${lang}: every bundled corpus sentence`, () => {
+      if (lang === 'ru') return; // Russian has no bundled corpus yet: nothing to round-trip
       const ad = adapter(lang);
       const docs = loadBundledCorpus().filter((d) => d.lang === lang);
       // the three seed documents of each seed language are always there (Hebrew's scripture seed is bible-gen-1); further bundled texts are checked too

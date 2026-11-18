@@ -18,6 +18,7 @@ import type { RepositoryApi } from '../../repository-service/src/api';
 import { createHebrewShardLoader } from '../../../src/adapters/hebrew/shards';
 import type { HebrewShardLoader } from '../../../src/adapters/hebrew/shards';
 import { createGreekShardLoader } from '../../../src/adapters/greek/shards';
+import { createRussianShardLoader, type RussianShardLoader } from '../../../src/adapters/russian/shards';
 import { installGreekIndex, installedGreekIndexes, type GreekFormIndex } from '../../../src/adapters/greek/index-store';
 import { installedHebrewIndexes } from '../../../src/adapters/hebrew/index-store';
 import type { GreekShardLoader } from '../../../src/adapters/greek/shards';
@@ -89,6 +90,7 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
   const runtimeSourceFailures = new Map<string, number>();
   const hebrewLoaders = new Map<string, Promise<HebrewShardLoader>>();
   const greekLoaders = new Map<string, Promise<GreekShardLoader>>();
+  let russianLoader: Promise<RussianShardLoader> | undefined;
   let koineIndex: Promise<void> | undefined;
   let hebrewFrequency: Promise<HebrewFormFrequencyIndex> | undefined;
   const lexiconBase = opts.lexiconBaseUrl ?? opts.baseUrl;
@@ -196,6 +198,29 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
       ? 'ancient' : /[\u0313-\u0345]/u.test(body.normalize('NFD')) ? 'ancient' : 'modern';
     return ensureGreekKeys(keys, period);
   };
+  /** Russian: the sharded form index (lexicon/ru/standard), loaded for the words about to be read; true when a shard was newly installed. */
+  const ensureRussianKeys = async (keys: string[]): Promise<boolean> => {
+    if (!keys.length) return false;
+    let job = russianLoader;
+    if (!job) {
+      job = createRussianShardLoader(source, { base: 'lexicon/ru/standard', maxLoaded: 24 });
+      russianLoader = job;
+      job.catch(() => { if (russianLoader === job) russianLoader = undefined; });
+    }
+    const loader = await job;
+    let changed = false;
+    for (let i = 0; i < keys.length; i += 8) {
+      const result = await loader.ensure(keys.slice(i, i + 8));
+      if (result.failed.length) throw new Error(`lexicon/ru/standard: ${result.failed.map((x) => x[1]).join(', ')}`);
+      if (result.loaded.length) changed = true;
+    }
+    return changed;
+  };
+  const russianUnitKeys = (unitId: string): string[] => {
+    const body = unitId.startsWith('form:ru:') ? unitId.slice('form:ru:'.length)
+      : unitId.startsWith('lemma:ru:') ? unitId.slice('lemma:ru:'.length).replace(/:[A-Z]+$/u, '') : '';
+    return body ? builtInAdapter('ru')!.tokenize(body).filter((t) => t.isWord).map((t) => t.normalized) : [];
+  };
   const greekUnitKeys = (unitId: string): string[] => {
     if (unitId.startsWith('form:el:')) return builtInAdapter('el')!.tokenize(unitId.slice('form:el:'.length)).filter((t) => t.isWord).map((t) => t.normalized);
     if (unitId.startsWith('lemma:el:')) {
@@ -274,6 +299,9 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
         if (languageId === 'el') {
           if (await ensureGreekFor(unitIds, varietyId ?? manifest.varietyId)) clearGreekSentenceCaches();
         }
+        if (languageId === 'ru') {
+          if (await ensureRussianKeys(unitIds.flatMap(russianUnitKeys))) clearGreekSentenceCaches();
+        }
         // Start the Repository snapshot's consume window after remote pack assets load.
         await plain.prime(unitIds);
       },
@@ -290,6 +318,11 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
         if (languageId === 'el' && requestedLanguage === 'el') {
           try {
             if (await ensureGreekFor([unitId], varietyId ?? manifest.varietyId)) clearGreekSentenceCaches();
+          } catch { return undefined; }
+        }
+        if (languageId === 'ru' && requestedLanguage === 'ru') {
+          try {
+            if (await ensureRussianKeys(russianUnitKeys(unitId))) clearGreekSentenceCaches();
           } catch { return undefined; }
         }
         const facts = await forVariety(varietyId).factsFor(unitId, requestedLanguage, varietyId);

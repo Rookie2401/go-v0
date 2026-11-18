@@ -474,7 +474,7 @@ html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-rou
 }
 .home-photo-credit a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
 
-/* The sign-in page in the home's look (the owner, 2026-11-17): the hero (app.ts: a language home's photograph, "Welcome" between gold rules,
+/* The sign-in page in the home's look (the owner, 2026-11-17): the hero (app.ts: the Earth from Apollo 17, "Welcome" between gold rules,
    the GoReview title), then the home's column of warm tiles. A tile here holds words and a form, not a single control, so it does not ripple;
    its text sits at the tile's inset. Fields are a single line on the tile, the action is the gold pill, the other ways on are gold links. */
 .signin { display: grid; gap: .8rem; }

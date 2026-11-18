@@ -117,13 +117,22 @@ const photos: Readonly<Record<string, HomePhoto>> = {
 };
 
 /**
- * The sign-in page's photograph (the owner, 2026-11-17: the sign-in page in the home's look): no language is chosen there yet, so it is one
- * of the language homes' photographs, a different one from visit to visit. `random` in [0, 1) picks it (deterministic in tests).
+ * The sign-in page's photograph (the owner, 2026-11-17: "use an image of earth, not an image of any one particular place"): the whole Earth,
+ * NASA's Blue Marble from Apollo 17 (1972), public domain. No language is chosen on that page, so it is the planet, not a language's home.
+ * The crop shows the top of the globe under the title (desktop) and its upper half (phone).
  */
-export function welcomePhoto(random: () => number = Math.random): HomePhoto {
-  const all = [...new Map(Object.values(photos).map((p) => [p.id, p])).values()];
-  return all[Math.min(all.length - 1, Math.floor(Math.max(0, random()) * all.length))]!;
-}
+const earth: HomePhoto = {
+  id: 'earth',
+  image: new URL('./photos/earth.webp', import.meta.url).href,
+  place: 'The Earth from Apollo 17, 1972',
+  author: 'NASA',
+  source: 'https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg',
+  license: 'Public domain',
+  licenseUrl: 'https://www.nasa.gov/nasa-brand-center/images-and-media/',
+  mobilePosition: 'center 12%',
+  desktopPosition: 'center 6%',
+};
+export function welcomePhoto(): HomePhoto { return earth; }
 
 export function homePhoto(languageId: string): HomePhoto | undefined {
   const language = languageId.split('-')[0].toLowerCase();

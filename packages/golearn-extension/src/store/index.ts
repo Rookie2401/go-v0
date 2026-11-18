@@ -3,7 +3,7 @@
  * written; nothing else is written. A row identifies a context (a hash) and a source (for a web page, a hash of its address); it never
  * contains the sentence or the page. Prototype storage: one chrome.storage.local key per row.
  */
-import { CONTRACT_VERSION, validateEvent, type GoEvent, type KnowledgeLevel, type ValidationIssue } from '../../../repository-contract/src';
+import { CONTRACT_VERSION, canonicalVarietyId, hasLearningVarieties, validateEvent, type GoEvent, type KnowledgeLevel, type ValidationIssue, type VarietyStatement } from '../../../repository-contract/src';
 import type { CardModel } from '../parser/cardModel';
 import type { EventLanguage, LanguageResolution } from '../contract/language';
 import type { SourceReference, SourceRestrictions } from '../contract/readerAdapter';
@@ -179,6 +179,26 @@ export function languagePayload(info: LanguageEvidenceInfo | undefined, language
   };
 }
 
+/**
+ * `payload.variety` (2026-11-17): the variety an observation belongs to, for a language with learning varieties (Greek, Hebrew), and how that
+ * was settled. Recorded on EVERY event of a card (the lookup, a mark, a help request, a playback), so what a learner shows of a word is kept
+ * with the variety it was shown in. In order:
+ *   1. the learner's or the reader's own statement (`override`: Biblia reading the Hebrew Bible, the learner's choice for a selection): declared;
+ *   2. the period the analyser read the SENTENCE in, when it settled it on evidence in the sentence (`period.evidence === 'text'`): analysed;
+ *   3. what the book or the page declares (`hbo`, `grc`): declared.
+ * Otherwise nothing: an enrolment's variety, a detected language and an analyser's default are not statements about the text, and a record
+ * with no variety stays unclassified rather than being put in a modern or a historical one by assumption.
+ */
+export function encounterVariety(languageId: string, period: CardModel['period'] | undefined, language: LanguageEvidenceInfo | undefined): VarietyStatement | undefined {
+  if (!hasLearningVarieties(languageId)) return undefined;
+  const declared = language && (language.languageId ?? languageId) === languageId && ['override', 'book-metadata', 'document-metadata'].includes(language.basis)
+    ? canonicalVarietyId(languageId, language.varietyId) : undefined;
+  if (declared && language!.basis === 'override') return { varietyId: declared, basis: 'declared' };
+  const analysed = period?.evidence === 'text' ? canonicalVarietyId(languageId, period.varietyId) : undefined;
+  if (analysed) return { varietyId: analysed, basis: 'analysed' };
+  return declared ? { varietyId: declared, basis: 'declared' } : undefined;
+}
+
 export interface Identity { learnerId: string; enrolmentId: string; deviceId: string }
 export interface BuildContext {
   card: CardModel;
@@ -222,6 +242,8 @@ export function buildEncounterEvent(b: EncounterContext): GoEvent {
   const payload: Record<string, unknown> = { tokenCount: b.tokenCount ?? 1, contextKind: b.contextKind ?? 'none', readerId: b.readerId };
   const language = languagePayload(b.language, b.languageId);
   if (language) payload.language = language;
+  const variety = encounterVariety(b.languageId, undefined, b.language);
+  if (variety) payload.variety = variety;
   // the contract caps a dedupe key at 300 characters; a long list of ids (a whole verse) is keyed by a hash of the list instead of the list
   let dedupeKey = `enc:${b.sessionId}:${itemIds.join(',')}`;
   if (dedupeKey.length > 300) dedupeKey = `enc:${b.sessionId}:${itemIds.length}:${hashOf(itemIds.join(','))}`;
@@ -276,6 +298,8 @@ export function buildSelectionEvent(b: BuildContext): GoEvent {
   if (ctx.kind === 'fragment' && ctx.fragmentKey) payload.fragmentKey = ctx.fragmentKey;
   const language = languagePayload(b.language, card.languageId);
   if (language) payload.language = language;
+  const variety = encounterVariety(card.languageId, card.period, b.language);
+  if (variety) payload.variety = variety;
   const itemKey = card.itemIds.join(',');
   return {
     id: newEventId(b.now),
@@ -304,11 +328,13 @@ function followUp<K extends GoEvent['kind']>(b: InteractionContext, kind: K, pay
   const subject: GoEvent['subject'] = { itemIds: card.itemIds };
   if (ctx.kind === 'sentence' && ctx.sentenceKey) subject.sentenceKey = ctx.sentenceKey;
   if (b.source) subject.sourceRef = sourceRefOf(b.source);
+  // a follow-up belongs to the variety its card was read in, exactly as the lookup does
+  const variety = encounterVariety(card.languageId, card.period, b.language);
   return {
     id: newEventId(b.now), v: CONTRACT_VERSION,
     learnerId: b.identity.learnerId, enrolmentId: b.identity.enrolmentId, languageId: card.languageId, at: b.now.toISOString(),
     producer: { app: 'golearn-ext', version: b.version, deviceId: b.identity.deviceId, surface: 'reading-card' },
-    kind, subject, payload,
+    kind, subject, payload: variety ? { ...payload, variety } : payload,
     ...(dedupe ? { dedupeKey: dedupe } : {}),
     provenance: { packId: card.packId, analyzerId: card.analyzerId, confidence: card.confidence },
     ...extra,

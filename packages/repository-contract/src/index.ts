@@ -25,6 +25,7 @@ export * from './review-corrections';
 export * from './review-classification';
 export * from './review-evidence';
 export * from './ports';
+export * from './varieties';
 export type { ValidationIssue };
 
 export const CONTRACT_VERSION = 3 as const;

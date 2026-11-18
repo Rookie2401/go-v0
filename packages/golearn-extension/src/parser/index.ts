@@ -221,7 +221,8 @@ export function parseSelection(input: ParseInput): CardModel {
       // a language with period varieties: the period the analyser read the sentence in, and the word across the periods ("Variants")
       // a period variety, or a heritage language read beside the language (Biblical Aramaic inside a Hebrew text)
       if (typeof c.notes?.period === 'string' && ['period', 'heritage'].includes(L.adapter.varieties?.[c.notes.period]?.kind ?? '')) {
-        period = { varietyId: c.notes.period, label: varietyLabel(c.notes.period), basis: typeof c.notes.periodBasis === 'string' ? c.notes.periodBasis : '' };
+        period = { varietyId: c.notes.period, label: varietyLabel(c.notes.period), basis: typeof c.notes.periodBasis === 'string' ? c.notes.periodBasis : '',
+          ...(c.notes.periodEvidence === 'text' || c.notes.periodEvidence === 'declared' || c.notes.periodEvidence === 'default' ? { evidence: c.notes.periodEvidence } : {}) };
       }
       if (L.adapter.variants && c.lemma) {
         try {

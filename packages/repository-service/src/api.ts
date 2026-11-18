@@ -78,7 +78,8 @@ export interface RepositoryApi {
   /** `languageId` (2026-11-17) limits a whole read to one language; a service older than that ignores it and answers every language. */
   knowledge(unitIds?: string[], opts?: { languageId?: string }): Promise<ApiResult<{ knowledge: UnitKnowledge[] }>>;
   vocabulary(query: VocabularyQuery): Promise<ApiResult<VocabularyPage>>;
-  candidates(enrolmentId: string, limit?: number, after?: string, objectiveDimensions?: Dimension[]): Promise<ApiResult<{ candidates: ReviewCandidate[]; nextCursor?: string }>>;
+  /** `varietyIds` (a language with learning varieties): rank for these varieties only; a service older than 2026-11-17 ignores it and answers for the whole language. */
+  candidates(enrolmentId: string, limit?: number, after?: string, objectiveDimensions?: Dimension[], varietyIds?: string[]): Promise<ApiResult<{ candidates: ReviewCandidate[]; nextCursor?: string }>>;
   preferences(languageId?: string): Promise<ApiResult<{ preferences: AssistancePreferences }>>;
   submitReviews(events: GoEvent[]): Promise<ApiResult<EventsResponse>>;
   submitWriting(input: { observation: GoEvent; document?: { doc: PrivateDocument; expectedRevision: number } }): Promise<ApiResult<{ outcome: AppendOutcome; document?: DocumentMeta; projected: boolean }>>;
@@ -165,7 +166,7 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
       unresolved: q.unresolved === undefined ? undefined : String(q.unresolved), reviewStatus: q.reviewStatus, sourceRef: q.sourceRef,
       detail: q.detail, catalogued: q.catalogued === undefined ? undefined : String(q.catalogued),
     }),
-    candidates: (enrolmentId, limit, after, objectiveDimensions) => call('GET', '/candidates', undefined, { enrolmentId, limit, after, objectives: objectiveDimensions?.join(',') }),
+    candidates: (enrolmentId, limit, after, objectiveDimensions, varietyIds) => call('GET', '/candidates', undefined, { enrolmentId, limit, after, objectives: objectiveDimensions?.join(','), varieties: varietyIds?.length ? varietyIds.join(',') : undefined }),
     preferences: (languageId) => call('GET', '/preferences', undefined, { languageId }),
     submitReviews: (events) => call('POST', '/reviews', { events }),
     submitWriting: (input) => call('POST', '/writing', input),

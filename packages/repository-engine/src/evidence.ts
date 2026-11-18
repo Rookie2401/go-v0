@@ -24,7 +24,7 @@
  *      (`LANGUAGE_BASIS_FACTOR`), while one whose language is undetermined (nothing was parsed) produces no observation.
  */
 import { levelOfMark } from '../../repository-contract/src';
-import type { Dimension, GoEvent, KnowledgeLevel, LevelMark } from '../../repository-contract/src';
+import type { Dimension, GoEvent, KnowledgeLevel, LevelMark, VarietyBasis } from '../../repository-contract/src';
 import { LEVEL_THRESHOLDS } from './levels';
 
 export type ObservationOutcome = 'positive' | 'negative' | 'exposure';
@@ -54,6 +54,18 @@ export interface Observation {
   selfMark?: SelfMark;
   /** projection@7: this positive may contribute to delayed knowability if it is causally valid and independent. */
   knowabilityQualified?: boolean;
+  /**
+   * projection@8, a language with learning varieties only (set by `observationsFromEvents`, never by `observationsOf`): the variety the
+   * observation belongs to and how that was settled (contract ./varieties). Absent: the event states none.
+   */
+  variety?: { id: string; basis: VarietyBasis };
+  /**
+   * projection@8: the observation comes from a GoReview record written before varieties were recorded (a card with the old id shape, a mark).
+   * `stamp` is the enrolment's variety on the record's first event, `anchorAt` the instant the record began; `legacyVarietyOf` decides from them.
+   */
+  legacy?: { stamp?: string; anchorAt: string };
+  /** projection@8: an answer in review, or anything else (met, looked up, marked). */
+  origin?: 'reader' | 'review';
 }
 
 /** The level a self-mark means (`levelOfMark`): `learning` = new, `productive` = known, a level word is itself. */

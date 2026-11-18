@@ -84,3 +84,12 @@ export function varietyLine(
         : `${labels} — used elsewhere: worth recognising, not your default for speaking or writing.`;
   }
 }
+
+/**
+ * How an analyser settled the period a SENTENCE is read in (Hebrew, Greek), beside its plain-words `basis`:
+ *   text       evidence in the sentence itself: its marks (cantillation, polytonic or monotonic spelling, Homeric shapes) or enough of its words
+ *   declared   the caller's variety decided (the reader's declared period, or the learner's target), not the sentence
+ *   default    nothing decided: a fallback (too few words, a tie, the period of the sentence before)
+ * Only `text` is a statement about the text. A learner's records are assigned to a variety on `text`, or on a reader's own declaration, never on a default.
+ */
+export type PeriodEvidence = 'text' | 'declared' | 'default';

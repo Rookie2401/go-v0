@@ -193,7 +193,7 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     const rules = o.candidate.reasons.length
       ? h('ul', { class: 'reasons' }, ...o.candidate.reasons.map((r) => h('li', {}, ...embedTarget(`${r.rule} (weight ${r.weight.toFixed(2)})${r.detail ? `: ${r.detail}` : ''}`, words, tag))))
       : null;
-    const cardId = o.proposed ? itemIdFor(o.unitId, o.proposed.dimension) : undefined;
+    const cardId = o.proposed ? itemIdFor(o.unitId, o.proposed.dimension, o.candidate.varietyId) : undefined;
     const queued = cardId ? plan.items.find(item => item.item.itemId === cardId) : undefined;
     const deferred = cardId ? plan.skipped.find(item => item.itemId === cardId) : undefined;
     const disposition = queued

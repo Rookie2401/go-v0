@@ -84,6 +84,32 @@ export interface UnitKnowledge {
   legacyKnowability?: { level: 'automatic'; modelVersion: 'projection@4'; migratedAt: string; basis: 'legacy-production-inference' };
   /** Ids of the events folded into this row (count) and the last event id, so rebuilds can be compared. */
   basis: { events: number; lastEventId?: string };
+  /**
+   * projection@8, only for a language with learning varieties (./varieties: Greek, Hebrew). What the learner has shown of this unit in each
+   * variety that has CLASSIFIED evidence of it. `{ whole: true }` = every record of the unit belongs to that one variety, so the row itself is
+   * its knowledge. Otherwise a slice: the unit folded from that variety's records plus the records nothing classifies (so a mark made before
+   * varieties were recorded keeps its force and is assigned to none). Absent: nothing of the unit is classified, or the language has no
+   * learning varieties. Read it through `knowledgeInVariety`; the fields above stay the unit across all its varieties, as they were.
+   */
+  varieties?: Record<string, VarietyKnowledge | WholeVariety>;
+  /** projection@8: the unit folded from the records nothing classifies alone; present only beside `varieties` slices, when there are such records. */
+  unclassified?: VarietySlice;
+  /** projection@8: how many of the row's events came from a reader (met, looked up, marked while reading) and how many from review. */
+  sources?: { reader: number; review: number };
+}
+
+/** Every record of the unit belongs to this one variety: the row is its knowledge. `firstAt`: the first instant a record STATED the variety. */
+export interface WholeVariety { whole: true; firstAt?: string }
+
+/** The part of a row a variety has of its own. */
+export type VarietySlice = Pick<UnitKnowledge, 'dimensions' | 'retention' | 'uncertainty' | 'level' | 'encounters' | 'selfMark' | 'firstSeenAt' | 'lastSeenAt' | 'basis'>;
+
+export interface VarietyKnowledge extends VarietySlice {
+  /**
+   * The variety's classified records ALONE (no unclassified record counted): the level they support, how many events, how many of them
+   * from a reader and from review, and the first and last instants. `firstAt` is what `legacyVarietyOf` reads; `level` is what transfer reads.
+   */
+  own: { level: KnowledgeLevel; events: number; reader: number; review: number; firstAt?: string; lastAt?: string };
 }
 
 /** Explicit or inferred preferences about assistance (§9); never proficiency; inferred values stay overridable. */
@@ -124,6 +150,11 @@ export interface ReviewCandidate {
   explains?: string[];
   /** Approximate cost of reviewing it, 0..1 (longer or harder items cost more). */
   cost: number;
+  /**
+   * The variety whose learning task this candidate is, for a language with learning varieties (./varieties) and a request that named a
+   * scope. Absent: the language has none, the request named none, or nothing of the unit is classified (the card then keeps the old id shape).
+   */
+  varietyId?: string;
 }
 
 export type ReviewEligibility =

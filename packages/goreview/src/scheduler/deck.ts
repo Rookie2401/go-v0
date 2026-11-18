@@ -18,7 +18,7 @@
 import { schedulerForReviewProfile } from './replay-profile';
 import { classifyReviewConvergence } from './review-convergence';
 import type { EventKind, GoEvent } from '../../../repository-contract/src';
-import { isValidReviewClaim, retractedReviewIds, validateEvent } from '../../../repository-contract/src';
+import { canonicalVarietyId, cardIdFor, isValidReviewClaim, parseCardId, retractedReviewIds, validateEvent } from '../../../repository-contract/src';
 import { ASSESSMENT_DIMENSIONS, EXERCISE_FAMILIES, FAMILY_DIMENSION } from '../types';
 import { validateExercise } from '../exercises/validate';
 import type { AssessmentDimension, DeckItem, Exercise, ExerciseFamily, GradeOutcome, Rating, ReviewLogEntry, Scheduler, UnitFacts } from '../types';
@@ -31,8 +31,13 @@ const FINGERPRINT_RE = /^sha256:[a-f0-9]{64}$/u;
 export const REVIEW_EVENT_KINDS: readonly EventKind[] = ['CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'];
 const OUTCOMES: readonly GradeOutcome[] = ['correct', 'incorrect', 'partial', 'ambiguous', 'invalid-question', 'unable-to-grade'];
 
-/** The deck item id for a unit tested along one assessment dimension. */
-export const itemIdFor = (unitId: string, dimension: AssessmentDimension): string => `card:${dimension}:${unitId}`;
+/**
+ * The deck item id for a unit tested along one assessment dimension, in one variety when the language has learning varieties and the
+ * word's variety is settled (`card:<dimension>@<varietyId>:<unitId>`). Without a variety: the id every card had before 2026-11-17.
+ */
+export const itemIdFor = (unitId: string, dimension: AssessmentDimension, varietyId?: string): string => cardIdFor(unitId, dimension, varietyId);
+/** The variety a card id names, when the language knows it. */
+const namedVariety = (languageId: string, itemId: string): string | undefined => canonicalVarietyId(languageId, parseCardId(itemId)?.varietyId);
 
 // ───────────────────────────── the fold ─────────────────────────────
 
@@ -196,7 +201,8 @@ export function foldDeck(events: readonly GoEvent[], scheduler: Scheduler, opts:
           unitId: payload.unitId,
           unitKind: payload.unitKind,
           languageId: e.languageId,
-          ...(e.varietyId !== undefined ? { varietyId: e.varietyId } : {}),
+          // a card whose id names a variety belongs to it, whatever the envelope says
+          ...((namedVariety(e.languageId, itemId) ?? e.varietyId) !== undefined ? { varietyId: namedVariety(e.languageId, itemId) ?? e.varietyId } : {}),
           dimension: payload.dimension,
           family: payload.family,
           addedAt: e.at,
@@ -295,11 +301,12 @@ export function foldDeck(events: readonly GoEvent[], scheduler: Scheduler, opts:
       // projection repair; no historical event is rewritten or invented.
       if (!item && nonEmpty(itemId) && isSchedulableReview(e) && isDimension(payload.assessmentDimension)
         && isFamily(payload.family) && FAMILY_DIMENSION[payload.family] === payload.assessmentDimension && e.subject?.itemIds?.length === 1) {
-        const unitId = e.subject.itemIds[0], expected = itemIdFor(unitId, payload.assessmentDimension);
+        const named = namedVariety(e.languageId, itemId);
+        const unitId = e.subject.itemIds[0], expected = itemIdFor(unitId, payload.assessmentDimension, named);
         const prefix = unitId.split(':')[0], kind = prefix === 'lemma' ? 'lexeme' : prefix;
         const validUnitId = unitId.split(':').length >= 2 && unitId.split(':').every(part => part.length > 0);
         if (validUnitId && itemId === expected && ['lexeme','form','multiword','construction'].includes(kind)) {
-          item = { itemId, unitId, unitKind: kind, languageId: e.languageId, dimension: payload.assessmentDimension, family: payload.family,
+          item = { itemId, unitId, unitKind: kind, languageId: e.languageId, ...(named ? { varietyId: named } : {}), dimension: payload.assessmentDimension, family: payload.family,
             addedAt: e.at, addedBy: 'intake', reasons: ['Recovered a canonical legacy review without CardAdded.'],
             schedule: scheduler.newState(e.at), history: [], status: 'active' };
           items.set(itemId,item); ignore(e,'recovered missing canonical card creation from legacy review');

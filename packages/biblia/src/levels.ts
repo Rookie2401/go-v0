@@ -24,6 +24,7 @@
  */
 import { KNOWLEDGE_LEVEL_RANK, displayLevelOf, isKnowledgeLevel, levelOfMark, type KnowledgeLevel } from '../../repository-contract/src/knowledge-levels';
 import type { UnitKnowledge } from '../../repository-contract/src';
+import { knowledgeInVariety } from '../../repository-contract/src/varieties';
 import type { RepositoryApi } from '../../repository-service/src/api';
 import { LEMMA_MIN_CONFIDENCE } from '../../golearn-extension/src/parser';
 import { heAdapter } from '../../../src/adapters/he';
@@ -212,7 +213,9 @@ export function createLevels(o: LevelsOptions): Levels {
   /** undefined = nothing is known about this word yet (its rows were not fetched): it is left unpainted rather than shown as New. */
   function levelFor(c: Current, site: LevelSite): KnowledgeLevel | undefined {
     const ids = c.ids.get(site) ?? [];
-    const rows = ids.map((id) => c.rows.get(id));
+    // each row is read in the variety this word stands in (Biblical Hebrew, Koine Greek, Biblical Aramaic): what the learner has shown of the
+    // same spelling in another variety of the language is not knowledge of this word here (contract ./varieties, 2026-11-17)
+    const rows = ids.map((id) => { const row = c.rows.get(id); return row ? knowledgeInVariety(row, site.varietyId).knowledge : row; });
     const asked = ids.some((id) => c.rows.has(id));
     const computed = levelOfRows(rows);
     const server = newestMark(rows);

@@ -16,7 +16,7 @@
  *                                 local event log (log:ev:*, log:id:*, log:dk:*, log:head). Another account never reads it.
  */
 import type { Enrolment, EventLog, EventFilter, AppendOutcome, GoEvent, StoredEvent } from '../../repository-contract/src';
-import { validateEvent } from '../../repository-contract/src';
+import { normalizeScope, validateEvent } from '../../repository-contract/src';
 import { createLock, type KeyValueArea } from '../../repository-sync/src';
 import type { ReviewPreferences } from '../src/types';
 
@@ -365,6 +365,8 @@ export const clampPrefs = (p: Partial<ReviewPreferences> & { languageId: string 
   const set = p.newItemsSet === true;
   const maxNew = Math.round(set ? num(p.maxNew, 0, 50, Math.min(50, cardsPerDeck)) : Math.min(50, cardsPerDeck));
   const dailyNewLimit = Math.round(set ? num(p.dailyNewLimit, 0, 200, maxNew) : maxNew);
+  // a chosen review scope (a language with learning varieties): kept only when it names a variety the language knows
+  const scope = p.scope && typeof p.scope === 'object' ? normalizeScope({ languageId: p.languageId, varietyIds: Array.isArray(p.scope.varietyIds) ? p.scope.varietyIds : [], includeUnsettled: p.scope.includeUnsettled }) : undefined;
   return {
     languageId: p.languageId,
     sessionMinutes: p.sessionMinutes === 0 ? 0 : Math.round(num(p.sessionMinutes, 1, 120, d.sessionMinutes)),
@@ -381,6 +383,7 @@ export const clampPrefs = (p: Partial<ReviewPreferences> & { languageId: string 
     grammarShare: num(p.grammarShare, 0, 1, d.grammarShare),
     prioritizeSaved: p.prioritizeSaved !== false,
     cardsPerDeck,
+    ...(scope?.varietyIds.length ? { scope: { varietyIds: scope.varietyIds, ...(scope.includeUnsettled === false ? { includeUnsettled: false } : {}) } } : {}),
   };
 };
 

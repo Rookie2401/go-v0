@@ -25,6 +25,7 @@ import { admissionBudget } from './budget';
 import { selectReviewEvidenceEvents, type GoEvent, type UnitKnowledge } from '../../../repository-contract/src';
 import { FAMILY_DIMENSION } from '../types';
 import { itemIdFor } from '../scheduler/deck';
+import { transferPriority } from '../../../repository-contract/src';
 import { cardReasonFor } from '../intake/intake';
 import { scoreReviewPriority, type KnowabilityPolicy } from './priority-policy';
 import { chooseMicrodeckTarget, microdeckMaximum, type MicrodeckObservation, type MicrodeckPolicyOptions } from './microdeck';
@@ -136,6 +137,12 @@ export interface PlanInput {
   dueOrdering?: DueOrderingPolicy;
   /** Deck fill (2026-11-03): the cards an automatic plan may use as early practice to reach the deck size, in the order to try them. Absent: derived from `deck`, soonest due first. */
   fillPool?: readonly DeckItem[];
+  /**
+   * A language with learning varieties: per unit, what the learner knows of it in other varieties (`scopeReview().transfer`). It breaks ties in
+   * the order NEW cards are introduced (a word already known in a related variety first) and is stated on the planned item. It never changes
+   * which cards are eligible, a due card's place, a schedule or a level.
+   */
+  transfer?: Record<string, import('../../../repository-contract/src').TransferEvidence[]>;
 }
 /**
  * An Easy word comes back only when it is due (the owner, 2026-11-17: "if I say a word was easy, it appears far too often again"): true when
@@ -150,9 +157,9 @@ export const easyAndNeverDifficult = (item: DeckItem): boolean => {
 export const recentAgains = (item: DeckItem): number => item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict && !h.listeningPractice).slice(-WEAK_WINDOW).filter(h => h.rating === 1).length;
 export const benefitOf = (deficit: number, score: number, seconds: number, cost: number): number => deficit * score / Math.max(.1, seconds / 30 * (1 + cost));
 export type DueOrderingPolicy = 'strict-due' | 'bounded-remediation';
-interface QueueCandidate { planned: PlannedItem; tier: number; score: number; due: number }
+interface QueueCandidate { planned: PlannedItem; tier: number; score: number; due: number; /** 0, 1 or 2: `transferPriority` of a NEW card's cross-variety evidence. */ familiar?: number }
 export function orderQueueCandidates(pool: QueueCandidate[], policy: DueOrderingPolicy = 'strict-due'): QueueCandidate[] {
-  const sorted = [...pool].sort((a,b) => a.tier-b.tier || (a.tier <= 1 ? a.due-b.due : 0) || b.score-a.score || a.planned.item.itemId.localeCompare(b.planned.item.itemId));
+  const sorted = [...pool].sort((a,b) => a.tier-b.tier || (a.tier <= 1 ? a.due-b.due : 0) || b.score-a.score || (b.familiar ?? 0)-(a.familiar ?? 0) || a.planned.item.itemId.localeCompare(b.planned.item.itemId));
   if (policy !== 'bounded-remediation') return sorted;
   const learning = sorted.filter(x=>x.tier===0), due = sorted.filter(x=>x.tier===1), remediation = sorted.filter(x=>x.tier===2), fresh = sorted.filter(x=>x.tier>=3);
   const out = [...learning]; let remediationIndex=0;
@@ -210,7 +217,10 @@ export function planSession(input: PlanInput): SessionPlan {
       : queue === 'remediation' ? 'remediation' as const : !fresh && requested.kind === 'explicit' ? 'explicit' as const : undefined;
     const presentationReason = fill ? 'deck-fill' : queue === 'learning' ? 'due-learning-return' : queue === 'remediation' ? 'remediation-reassessment'
       : !fresh && requested.kind === 'explicit' ? 'explicit-repeat' : queue === 'due' ? 'scheduled-review' : undefined;
-    pool.push({ planned: { item, family: item.family, why, estimatedSeconds: seconds, isNew: fresh, intent: requested,
+    const known = fresh ? input.transfer?.[item.unitId] : undefined;
+    const familiar = known ? transferPriority(known) : 0;
+    if (known?.length && familiar > 0) why.push(`known in ${[...new Set(known.filter(t => t.strength !== 'weak').map(t => t.fromVarietyId))].join(', ')} (${known[0]!.level}): familiarity carried over, to be shown here before it counts`);
+    pool.push({ familiar, planned: { item, family: item.family, why, estimatedSeconds: seconds, isNew: fresh, intent: requested, ...(known?.length ? { transfer: known } : {}),
       schedulingCardExists: exists, ...(fresh && k ? {admissionKnowledge:k} : {}), origin: exists ? 'scheduled' : 'intake', queue,
       ...(overlap ? { overlap } : {}), ...(presentationReason ? { presentationReason } : {}) },
       tier: queue === 'learning' ? 0 : queue === 'due' ? 1 : queue === 'remediation' ? 2 : 3, score, due: Date.parse(item.schedule.due) });
@@ -240,13 +250,20 @@ export function planSession(input: PlanInput): SessionPlan {
   const deckIds = new Set(deck.map(i => i.itemId)), admitted = new Set<string>();
   for (const outcome of intake) {
     if (outcome.decision !== 'test-now' || !outcome.proposed) continue;
-    const id = itemIdFor(outcome.unitId,outcome.proposed.dimension);
+    // A proposal tagged with a variety (a language with learning varieties, a word with classified evidence there) makes that variety's card.
+    // An untagged one keeps the id every card had before varieties were recorded.
+    const variety = outcome.candidate.varietyId;
+    const id = itemIdFor(outcome.unitId,outcome.proposed.dimension,variety);
     if (deckIds.has(id) || admitted.has(id)) continue;
+    // an old card of this word and skill that is this variety's, or whose variety is not settled, already is this task
+    if (variety && deck.some(x => x.itemId === itemIdFor(outcome.unitId,outcome.proposed!.dimension) && x.status !== 'dismissed'
+      && (x.variety?.varietyId === undefined || x.variety.varietyId === variety))) continue;
     admitted.add(id);
     const requested = outcome.intent ?? (input.manuallySelectedUnitIds?.has(outcome.unitId)
       ? { kind:'explicit' as const, reason:'selected-vocabulary' as const, requestedAt:now } : intent);
     const item: DeckItem = { itemId:id, unitId:outcome.unitId, unitKind:outcome.candidate.kind, languageId:preferences.languageId,
-      ...(preferences.varietyId ? {varietyId:preferences.varietyId}:{}), dimension:outcome.proposed.dimension, family:outcome.proposed.family, addedAt:now,
+      ...((variety ?? preferences.varietyId) ? {varietyId:variety ?? preferences.varietyId}:{}), ...(variety ? {variety:{varietyId:variety,basis:'card' as const}}:{}),
+      dimension:outcome.proposed.dimension, family:outcome.proposed.family, addedAt:now,
       addedBy:requested.kind==='explicit'?'learner':'intake', reasons:[cardReasonFor(outcome.candidate,outcome.reasons[0]??'intake')],
       schedule:scheduler.newState(now), history:[],status:'active' };
     make(item,['new from intake',...outcome.reasons],false,requested);

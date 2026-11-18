@@ -269,12 +269,22 @@ export interface ReviewLogEntry { at: string; rating: Rating; outcome: GradeOutc
 
 export type ItemStatus = 'active' | 'snoozed' | 'suspended' | 'dismissed';
 
+/**
+ * The variety a deck item belongs to, for a language with learning varieties (scheduler/scope.ts `varietyOfItem`). `card`: the item's id
+ * names it. `legacy`: a card with the old id shape, assigned from its stamp and the word's evidence. `unsettled`: such a card that nothing
+ * assigns (no `varietyId`). `no-varieties`: the language has none.
+ */
+export interface ItemVariety { varietyId?: string; basis: 'card' | 'legacy' | 'unsettled' | 'no-varieties' }
+
 export interface DeckItem {
   itemId: string;
   unitId: string;
   unitKind: string;
   languageId: string;
+  /** The variety on the card's first event: the card's own variety when its id names one, else the enrolment's at the time (a stamp, not a classification). */
   varietyId?: string;
+  /** Set by `classifyDeck` / `scopeReview`, never by the fold: which variety the card belongs to and on what basis. */
+  variety?: ItemVariety;
   dimension: AssessmentDimension;
   /** Preferred family; the planner may choose another of the same dimension when audio is unavailable. */
   family: ExerciseFamily;
@@ -347,6 +357,11 @@ export interface ReviewPreferences {
   prioritizeSaved: boolean;
   /** How many cards a deck holds, 5 to 60 (GoReview sizes the current deck to it; absent in a record from before it existed). */
   cardsPerDeck?: number;
+  /**
+   * A language with learning varieties: the varieties the learner chose to review (contract ./varieties `ReviewScope`). Absent: none chosen, and
+   * the queue is ONE variety (the enrolment's; scheduler/scope.ts `resolveScope`). Several varieties are reviewed together only when named here.
+   */
+  scope?: { varietyIds: string[]; includeUnsettled?: boolean };
 }
 
 export interface IntakeInput {
@@ -387,7 +402,9 @@ export interface IntakeOutcome {
   intent?: ReviewIntent;
 }
 
-export interface PlannedItem { item: DeckItem; family: ExerciseFamily; why: string[]; estimatedSeconds: number; isNew: boolean; origin?: 'scheduled' | 'intake' | 'vocabulary' | 'saved-deck' | 'explicit' | 'remediation'; schedulingCardExists?: boolean; admissionKnowledge?: UnitKnowledge; intent?: ReviewIntent; queue?: 'learning' | 'due' | 'remediation' | 'new'; overlap?: 'scheduled' | 'remediation' | 'explicit'; presentationReason?: string }
+export interface PlannedItem { item: DeckItem; family: ExerciseFamily; why: string[]; estimatedSeconds: number; isNew: boolean;
+  /** A language with learning varieties: what the learner knows of this word in OTHER varieties (familiarity inferred, never mastery; contract ./varieties). Only when there is any. */
+  transfer?: import('../../repository-contract/src').TransferEvidence[]; origin?: 'scheduled' | 'intake' | 'vocabulary' | 'saved-deck' | 'explicit' | 'remediation'; schedulingCardExists?: boolean; admissionKnowledge?: UnitKnowledge; intent?: ReviewIntent; queue?: 'learning' | 'due' | 'remediation' | 'new'; overlap?: 'scheduled' | 'remediation' | 'explicit'; presentationReason?: string }
 
 /** Stable, machine-readable reason a card was or was not placed in a plan. Additive: `why` strings are unchanged. */
 export type ExclusionCode = 'scheduled-not-due' | 'learning-not-due' | 'new-budget-exhausted' | 'daily-allowance-exhausted' | 'workload-admission-cap'

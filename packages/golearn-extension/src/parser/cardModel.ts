@@ -152,7 +152,7 @@ export interface CardModel {
    * A language with PERIOD varieties (Hebrew, Greek): the period the sentence was read in, as the analyser decided it, with its
    * plain-words basis ("the text carries cantillation marks"). Absent for every other language.
    */
-  period?: { varietyId: string; label: string; basis: string };
+  period?: { varietyId: string; label: string; basis: string; /** How the analyser settled it (core/variety.ts PeriodEvidence); absent from an analyser that does not say. */ evidence?: 'text' | 'declared' | 'default' };
   /** The source the reading and its gloss come from, in plain words (the adapter's own source metadata), when it is not the course word list. */
   glossSource?: string;
   /** The word across the periods (the "Variants" pill), from the analyser's sources; absent for a language without period varieties or a multi-word selection. */

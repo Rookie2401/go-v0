@@ -30,7 +30,7 @@ export interface ReviewSnapshot {
   v: 2;
   savedAt: string;
   vocab?: { savedAt: string; rows: SnapshotVocabRow[] };
-  model?: { savedAt: string; contextVersion?: 2; priorityPolicyVersion?: string; recoveryScopeVersion?: string; enrolmentId?: string; varietyId?: string; objectives?: string[]; outcomes: IntakeOutcome[]; knowledge: UnitKnowledge[]; candidates?: import('../../repository-contract/src').ReviewCandidate[]; markEventIds?: Record<string, string> };
+  model?: { savedAt: string; contextVersion?: 2; priorityPolicyVersion?: string; recoveryScopeVersion?: string; enrolmentId?: string; varietyId?: string; /** The review scope the copy was prepared for (scopeSignature); absent in a copy from before 2026-11-17 and for a language without learning varieties. */ scope?: string; objectives?: string[]; outcomes: IntakeOutcome[]; knowledge: UnitKnowledge[]; candidates?: import('../../repository-contract/src').ReviewCandidate[]; markEventIds?: Record<string, string> };
   decks?: unknown;
   prefs?: ReviewPreferences;
 }
@@ -49,7 +49,7 @@ export async function readSnapshot(ctx: AppContext, learnerId: string, languageI
       const model = raw.model;
       if (model.contextVersion === 2 && model.priorityPolicyVersion === KNOWABILITY_PRIORITY_POLICY_VERSION && model.recoveryScopeVersion === RECOVERY_SCOPE_VERSION && typeof model.enrolmentId === 'string' && Array.isArray(model.objectives) && Array.isArray(model.candidates) && isObj(model.markEventIds)) {
         out.model = { savedAt: String(model.savedAt), contextVersion: 2, priorityPolicyVersion: KNOWABILITY_PRIORITY_POLICY_VERSION, recoveryScopeVersion: RECOVERY_SCOPE_VERSION, enrolmentId: String(model.enrolmentId),
-          ...(typeof model.varietyId === 'string' ? { varietyId: model.varietyId } : {}), objectives: model.objectives as string[],
+          ...(typeof model.varietyId === 'string' ? { varietyId: model.varietyId } : {}), ...(typeof model.scope === 'string' && model.scope ? { scope: model.scope } : {}), objectives: model.objectives as string[],
           outcomes: model.outcomes as IntakeOutcome[], knowledge: Array.isArray(model.knowledge) ? model.knowledge as UnitKnowledge[] : [],
           candidates: model.candidates as import('../../repository-contract/src').ReviewCandidate[], markEventIds: model.markEventIds as Record<string, string> };
       }

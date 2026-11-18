@@ -3,8 +3,9 @@
  * candidates (live, or the last list the service sent) and GoListen's availability. Rendering lives in the screens;
  * this file has no DOM, so a test can read the model directly.
  */
-import type { GoEvent, ReviewCandidate, UnitKnowledge, SchedulerProfile } from '../../repository-contract/src';
-import { effectiveReviewEvents } from '../../repository-contract/src';
+import type { GoEvent, LanguageVariety, ReviewCandidate, ReviewScope, TransferEvidence, UnitKnowledge, SchedulerProfile } from '../../repository-contract/src';
+import { effectiveReviewEvents, learningVarietiesOf } from '../../repository-contract/src';
+import { countByVariety, resolveScope, scopeReview, scopeSignature, type ScopeExclusion, type VarietyCount } from '../src/scheduler/scope';
 import type { VocabularyItem } from '../../repository-service/src/api';
 import { createReviewEligibilityContext, reviewEligibility, type ReviewEligibilityContext } from '../src/planner/eligibility';
 import { remediationBacklog } from '../src/planner/remediation';
@@ -21,6 +22,14 @@ import { readSnapshot, RECOVERY_SCOPE_VERSION, restoreMissing, writeSnapshot, ty
 import { KNOWABILITY_PRIORITY_POLICY_VERSION } from '../src/planner/priority-policy';
 import { orderIntakeByPriority } from '../src/intake/intake';
 
+/**
+ * A deck card stands for a proposal's task when it is a card of the same word and, for a proposal tagged with a variety (a language with
+ * learning varieties), a card of that variety or one whose variety is not settled. A card of the same word in ANOTHER variety is another
+ * task: it neither covers the proposal nor blocks it. For every other language this is "the same word", as before.
+ */
+const sameTask = (item: DeckItem, outcome: IntakeOutcome): boolean => item.unitId === outcome.unitId
+  && (!outcome.candidate.varietyId || item.variety?.varietyId === undefined || item.variety.varietyId === outcome.candidate.varietyId);
+
 /** Preparing admission is read-only with respect to progress. CardAdded belongs to
  * the first evidence-bearing answer, not to a dashboard visit or candidate refresh.
  */
@@ -28,7 +37,7 @@ async function prepareAdmissions(ctx: AppContext, model: ReviewModel): Promise<R
   const limit = Math.max(0, model.prefs.maxNew);
   const eligible = (limit > 0 ? model.outcomes : []).filter(o => model.choices[o.unitId] !== 'later' && o.proposed
     && ['test-now', 'test-later', 'low-priority'].includes(o.decision)
-    && !model.deck.some(i => i.unitId === o.unitId && (i.invalidatedAt || i.schedulingIssue || i.history.some(h => h.conflict)
+    && !model.deck.some(i => sameTask(i, o) && (i.invalidatedAt || i.schedulingIssue || i.history.some(h => h.conflict)
       || i.status === 'suspended' || i.status === 'dismissed' || i.dimension === o.proposed?.dimension)));
   const rankedInputs = eligible.map(o => ({ ...o, explicitlySelected: model.saved.has(o.unitId) }));
   const candidates = orderIntakeByPriority(rankedInputs, { prioritizeSaved: model.prefs.prioritizeSaved,
@@ -66,7 +75,7 @@ async function prepareAdmissions(ctx: AppContext, model: ReviewModel): Promise<R
   const blocked = new Map<string, { decision: IntakeOutcome['decision']; reason: string }>();
   for (const outcome of model.outcomes) {
     if (!outcome.proposed) continue;
-    const item = model.deck.find(i => i.unitId === outcome.unitId && (i.dimension === outcome.proposed!.dimension
+    const item = model.deck.find(i => sameTask(i, outcome) && (i.dimension === outcome.proposed!.dimension
       || i.invalidatedAt || i.schedulingIssue || i.history.some(h => h.conflict)));
     if (!item) continue;
     const invalid = !!item.invalidatedAt || !!item.schedulingIssue || item.history.some(h => h.conflict);
@@ -93,12 +102,13 @@ async function prepareAdmissions(ctx: AppContext, model: ReviewModel): Promise<R
       ...(prepared.prefs.practiceGoals?.includes('recognition') ? ['readingRecognition'] : []),
     ];
     const { learnerId, languageId, enrolmentId, varietyId } = prepared.identity;
+    const scopeSig = scopeSignature(prepared.varieties?.scope);
     const fetchedAt = prepared.knowledgeStatus.fetchedAt;
     const cacheKey = `${candidatesKey(learnerId, enrolmentId)}:${objectives.join(',')}`;
-    const cache: CandidateCache = { version: 1, fetchedAt, priorityPolicyVersion: KNOWABILITY_PRIORITY_POLICY_VERSION, recoveryScopeVersion: RECOVERY_SCOPE_VERSION, enrolmentId, ...(varietyId ? { varietyId } : {}), objectives, candidates: prepared.candidates, knowledge: prepared.knowledge };
+    const cache: CandidateCache = { version: 1, fetchedAt, priorityPolicyVersion: KNOWABILITY_PRIORITY_POLICY_VERSION, recoveryScopeVersion: RECOVERY_SCOPE_VERSION, enrolmentId, ...(varietyId ? { varietyId } : {}), ...(scopeSig ? { scope: scopeSig } : {}), objectives, candidates: prepared.candidates, knowledge: prepared.knowledge };
     await ctx.deps.area.set({ [cacheKey]: cache }).catch(() => undefined);
     await writeSnapshot(ctx, learnerId, languageId, { model: { savedAt: fetchedAt, contextVersion: 2, priorityPolicyVersion: KNOWABILITY_PRIORITY_POLICY_VERSION, recoveryScopeVersion: RECOVERY_SCOPE_VERSION, enrolmentId,
-      ...(varietyId ? { varietyId } : {}), objectives, outcomes, knowledge: prepared.knowledge, candidates: prepared.candidates,
+      ...(varietyId ? { varietyId } : {}), ...(scopeSig ? { scope: scopeSig } : {}), objectives, outcomes, knowledge: prepared.knowledge, candidates: prepared.candidates,
       markEventIds: marksOf(prepared.events).markEventIds } });
   }
   return prepared;
@@ -134,7 +144,27 @@ export interface KnowledgeStatus {
 
 export interface WithheldUnit { unitId: string; code: 'knowledge-unresolved'; detail: string }
 
+/**
+ * A language with learning varieties (Greek, Hebrew): the scope a model was built for, and what a screen needs to show it or offer another
+ * (docs/ecosystem/LANGUAGE-VARIETIES.md, "What a screen can ask"). Absent for every other language.
+ */
+export interface ReviewVarieties {
+  /** The varieties this model's deck, proposals and knowledge are of. */
+  scope: ReviewScope;
+  /** True when the learner chose the scope (`prefs.scope`); false when it is the one-variety default. */
+  chosen: boolean;
+  /** Every variety of the language, the ones a learner may choose marked `selectable`. */
+  available: readonly LanguageVariety[];
+  /** Cards by variety over the WHOLE deck, whatever the scope (the unsettled last, without a `varietyId`). */
+  counts: VarietyCount[];
+  /** Cards and proposals left out of this model because of the scope, and why. */
+  excluded: ScopeExclusion[];
+  /** Per unit in the model: what the learner knows of it in other varieties. Familiarity, never mastery. */
+  transfer: Record<string, TransferEvidence[]>;
+}
+
 export interface ReviewModel {
+  varieties?: ReviewVarieties;
   /** The Class Essentials cards in the deck fold: kept apart from `deck`, so the ordinary queue never meets them. */
   classDeck?: DeckItem[];
   identity: Identity;
@@ -209,7 +239,7 @@ export const KNOWLEDGE_BATCH = 200;
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
 const utc = (iso: string): string => iso.slice(0, 16).replace('T', ' ') + ' UTC';
 
-interface CandidateCache { version?: 1; fetchedAt: string; priorityPolicyVersion?: string; recoveryScopeVersion?: string; enrolmentId?: string; varietyId?: string; objectives?: string[]; candidates: ReviewCandidate[]; knowledge: UnitKnowledge[] }
+interface CandidateCache { version?: 1; fetchedAt: string; priorityPolicyVersion?: string; recoveryScopeVersion?: string; enrolmentId?: string; varietyId?: string; scope?: string; objectives?: string[]; candidates: ReviewCandidate[]; knowledge: UnitKnowledge[] }
 
 /**
  * The home's model. `savedOnly` (2026-11-08: signed in, the home took 20-70 s to open because every visit rebuilt the deck from the service, page by
@@ -333,9 +363,16 @@ async function buildReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } =
   const schedulerProfile = profileSelection.profile;
   const scheduler = engine.scheduler(prefs, schedulerProfile);
   const wholeDeck = engine.foldDeck(events, identity.languageId, prefs, now);
-  const deck = wholeDeck.filter((i) => !isClassUnit(i.unitId));
+  let deck = wholeDeck.filter((i) => !isClassUnit(i.unitId));
   const classDeck = wholeDeck.filter((i) => isClassUnit(i.unitId));
-  const counts = countDeck(deck, { scheduler, now });
+  let counts = countDeck(deck, { scheduler, now });
+  // Review scope (2026-11-17): for a language with learning varieties, ONE variety unless the learner named several (prefs.scope). Settled here,
+  // before anything is asked, from the learner's choice, the enrolment and the deck; the deck, the proposals and the knowledge this model
+  // carries are narrowed to it below, once the knowledge that classifies the old cards has been read. undefined for any other language.
+  const scope = resolveScope({ languageId: identity.languageId, ...(prefs.scope ? { chosen: prefs.scope } : {}), ...(identity.varietyId ? { enrolmentVarietyId: identity.varietyId } : {}), deck });
+  const scopeSig = scopeSignature(scope);
+  /** A saved copy belongs to this scope: its own signature, or (a copy from before scopes) no chosen scope. */
+  const sameScope = (saved: string | undefined): boolean => (saved === undefined ? !prefs.scope : saved === scopeSig);
   const { saved, ignored, known, markEventIds } = marksOf(events);
 
   const audioDeps = await ctx.audio();
@@ -367,7 +404,7 @@ async function buildReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } =
   const snapshotMatches = (snapshot: ReviewSnapshot['model']): snapshot is NonNullable<ReviewSnapshot['model']> & { candidates: ReviewCandidate[] } => !!snapshot
     && snapshot.contextVersion === 2 && snapshot.priorityPolicyVersion === KNOWABILITY_PRIORITY_POLICY_VERSION
     && snapshot.recoveryScopeVersion === RECOVERY_SCOPE_VERSION && snapshot.enrolmentId === identity.enrolmentId
-    && snapshot.varietyId === identity.varietyId && snapshot.objectives?.join(',') === objectives.join(',') && Array.isArray(snapshot.candidates);
+    && snapshot.varietyId === identity.varietyId && sameScope(snapshot.scope) && snapshot.objectives?.join(',') === objectives.join(',') && Array.isArray(snapshot.candidates);
   const cacheKey = `${candidatesKey(identity.learnerId, identity.enrolmentId)}:${objectives.join(',')}`;
   if (opts.savedOnly) {
     const snapModel = (await readSnapshot(ctx, identity.learnerId, identity.languageId).catch(() => undefined))?.model;
@@ -383,7 +420,8 @@ async function buildReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } =
     let cursor: string | undefined;
     const cursors = new Set<string>();
     do {
-      const c = await api.candidates(identity.enrolmentId, 200, cursor, objectives);
+      // the scope goes with the question, so the service ranks this variety's words against this variety's cards (an older service ignores it)
+      const c = await api.candidates(identity.enrolmentId, 200, cursor, objectives, scope?.varietyIds);
       if (!c.ok) throw new Error(c.message || `the service answered ${c.status}`);
       fetchedCandidates.push(...c.data.candidates.filter((x) => !isClassUnit(x.unitId)));
       cursor = c.data.nextCursor;
@@ -448,7 +486,7 @@ async function buildReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } =
       cachedPreparedModel = snapModel;
       knowledgeStatus = { source: 'cached', requested: knowledge.length, resolved: knowledge.length, missing: [], fetchedAt: snapModel.savedAt };
       candidateNote = `The service could not be reached (${e instanceof Error ? e.message : 'unknown error'}); these candidates are from ${snapModel.savedAt.slice(0, 16).replace('T', ' ')} UTC.`;
-    } else if (cached?.version === 1 && cached.priorityPolicyVersion === KNOWABILITY_PRIORITY_POLICY_VERSION && cached.recoveryScopeVersion === RECOVERY_SCOPE_VERSION && cached.enrolmentId === identity.enrolmentId && cached.varietyId === identity.varietyId
+    } else if (cached?.version === 1 && cached.priorityPolicyVersion === KNOWABILITY_PRIORITY_POLICY_VERSION && cached.recoveryScopeVersion === RECOVERY_SCOPE_VERSION && cached.enrolmentId === identity.enrolmentId && cached.varietyId === identity.varietyId && sameScope(cached.scope)
       && cached.objectives?.join(',') === objectives.join(',') && Array.isArray(cached.candidates)) {
       candidates = cached.candidates; knowledge = cached.knowledge ?? []; candidateSource = 'cached';
       // the cache is written only after a complete live load, so its knowledge stands for every unit it listed
@@ -563,12 +601,31 @@ async function buildReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } =
     }
   }
 
+  // ── the scope is applied HERE, to what intake and the planner are given (never to a deck already assembled) ──
+  // `deck` becomes the cards of the scope; `coverage` adds the cards whose variety is not settled (they cover their word in any scope);
+  // `candidates` the scope's words, each tagged with the variety whose task it is; `knowledge` every row read in that variety.
+  let coverage = deck;
+  let varieties: ReviewVarieties | undefined;
+  if (scope) {
+    const scoped = scopeReview({ languageId: identity.languageId, scope, deck, candidates, knowledge });
+    varieties = { scope, chosen: !!prefs.scope, available: learningVarietiesOf(identity.languageId),
+      counts: countByVariety({ languageId: identity.languageId, deck, knowledge, scheduler, now }), excluded: scoped.excluded, transfer: scoped.transfer };
+    deck = scoped.deck; coverage = scoped.coverage; candidates = scoped.candidates; knowledge = scoped.knowledge;
+    counts = countDeck(deck, { scheduler, now });
+  }
+  const scopedCandidates = scope ? new Map(candidates.map((c) => [c.unitId, c] as const)) : undefined;
+  /** Outcomes read from a saved copy: only the scope's words, each carrying the variety its word is proposed for now. */
+  const inScopeOutcomes = (saved: IntakeOutcome[]): IntakeOutcome[] => (!scopedCandidates ? saved : saved.flatMap((o) => {
+    const current = scopedCandidates.get(o.unitId);
+    return current ? [{ ...o, candidate: { ...o.candidate, varietyId: current.varietyId } }] : [];
+  }));
+
   let outcomes: IntakeOutcome[] = [];
   let intakeFailed = false;
-  if (candidateSource === 'cached' && cachedPreparedModel) outcomes = cachedPreparedModel.outcomes;
+  if (candidateSource === 'cached' && cachedPreparedModel) outcomes = inScopeOutcomes(cachedPreparedModel.outcomes);
   else if (candidates.some((c) => !ignored.has(c.unitId))) {
     const proposed = candidates.filter((c) => !ignored.has(c.unitId));
-    try { outcomes = await engine.intake({ api: (await ctx.api()).api, candidates: proposed, knowledge, deck, saved, prefs, audio, now, events }); }
+    try { outcomes = await engine.intake({ api: (await ctx.api()).api, candidates: proposed, knowledge, deck: coverage, saved, prefs, audio, now, events }); }
     catch (e) { intakeFailed = true; candidateNote = `Intake failed (${e instanceof Error ? e.message : 'unknown error'}).`; }
   }
   // Offline the service cannot answer for intake: the outcomes of the last successful load stand in (minus what the deck has taken since).
@@ -588,11 +645,11 @@ async function buildReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } =
         family === 'audio-to-meaning' || family === 'audio-transcription' ? goals.includes('listening') && prefs.includeListening :
         ['written-recognition', 'phrase-comprehension'].includes(family) ? goals.includes('recognition') : true
       );
-      outcomes = preparedModel.outcomes.map(o => ({ ...o, explicitlySelected: saved.has(o.unitId) })).filter((o) => !ignored.has(o.unitId)
+      outcomes = inScopeOutcomes(preparedModel.outcomes).map(o => ({ ...o, explicitlySelected: saved.has(o.unitId) })).filter((o) => !ignored.has(o.unitId)
         && (!changedKnownMarks.has(o.unitId) || o.explicitlySelected) && choices[o.unitId] !== 'later'
-        && !(o.proposed && deck.some(i => i.unitId === o.unitId && (i.invalidatedAt || i.schedulingIssue || i.history.some(h => h.conflict)
+        && !(o.proposed && coverage.some(i => sameTask(i, o) && (i.invalidatedAt || i.schedulingIssue || i.history.some(h => h.conflict)
           || i.status === 'suspended' || i.status === 'dismissed' || i.dimension === o.proposed!.dimension)))
-        && !(o.proposed && held.has(`${o.unitId}|${o.proposed.dimension}`))
+        && !(o.proposed && held.has(`${o.unitId}|${o.proposed.dimension}`) && coverage.some(i => i.status !== 'dismissed' && sameTask(i, o) && i.dimension === o.proposed!.dimension))
         && (!o.proposed || o.explicitlySelected || stillSelected(o.proposed.family)));
       if (!knowledge.length) { knowledge = preparedModel.knowledge; knowledgeStatus = { source: 'cached', requested: preparedModel.knowledge.length, resolved: preparedModel.knowledge.length, missing: [], fetchedAt: preparedModel.savedAt }; }
       candidateNote ??= `The service could not be reached; the proposals are from this device's copy of ${preparedModel.savedAt.slice(0, 16).replace('T', ' ')} UTC.`;
@@ -615,6 +672,7 @@ async function buildReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } =
   if (knowledgeNote) candidateNote = [candidateNote, knowledgeNote].filter(Boolean).join(' ');
   if (recoveryNotes.length) candidateNote = [candidateNote, ...recoveryNotes].filter(Boolean).join(' ');
   const base: ReviewModel = {
+    ...(varieties ? { varieties } : {}),
     identity, prefs, events, deck, classDeck, counts, audio, outcomes, knowledge, candidates, candidateSnapshotEligible: candidateSource === 'live' && knowledgeComplete && !recoveryIncomplete && !intakeFailed,
     schedulerProfile, schedulerIssue: profileSelection.error, dismissed: [...ignored], choices, saved, candidateSource, knowledgeStatus, withheld,
     ...(recoveryIncomplete ? { candidateRecoveryIncomplete: true } : {}),

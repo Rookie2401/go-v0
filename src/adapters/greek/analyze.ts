@@ -21,6 +21,7 @@ import { elMorphFromTags } from './tags';
 import { milesianValue } from './numbers';
 import { elKey as elKeyOf, isPolytonic } from './text';
 import { EL_VARIETIES, elVarietiesFromTags } from './varieties';
+import type { PeriodEvidence } from '../../core/variety';
 
 export const EL_VERSION = '1';
 export const EL_ANALYZER = `adapter-el@${EL_VERSION}`;
@@ -257,13 +258,13 @@ let lastPeriod: ElPeriod | undefined;
 /** Test hook: forget the period of the sentence read before. */
 export function resetElPeriodMemory(): void { lastPeriod = undefined; }
 
-export function sentencePeriod(tokens: RawToken[], base: AnalysisCandidate[][], opts?: AnalyzeOptions): { period: ElPeriod; basis: string } {
+export function sentencePeriod(tokens: RawToken[], base: AnalysisCandidate[][], opts?: AnalyzeOptions): { period: ElPeriod; basis: string; evidence: PeriodEvidence } {
   const r = decidePeriod(tokens, base, opts);
   if (r.basis.startsWith('monotonic') || tokens.some((t) => t.isWord && isPolytonic(t.surface))) lastPeriod = r.period;
   return r;
 }
 
-function decidePeriod(tokens: RawToken[], base: AnalysisCandidate[][], opts?: AnalyzeOptions): { period: ElPeriod; basis: string } {
+function decidePeriod(tokens: RawToken[], base: AnalysisCandidate[][], opts?: AnalyzeOptions): { period: ElPeriod; basis: string; evidence: PeriodEvidence } {
   const declared = opts?.varietyId && (PERIODS as readonly string[]).includes(opts.varietyId) ? (opts.varietyId as ElPeriod) : undefined;
   const words = tokens.filter((t) => t.isWord);
   const polytonicWords = words.filter((t) => isPolytonic(t.surface)).length;
@@ -299,16 +300,16 @@ function decidePeriod(tokens: RawToken[], base: AnalysisCandidate[][], opts?: An
   });
   const ranked = Object.entries(votes).filter(([v]) => polytonic ? ANCIENT.has(v) : true).sort((a, b) => b[1] - a[1]);
   if (!voters || !ranked.length) {
-    if (declared) return { period: declared, basis: 'no word was recognised; read in the declared variety' };
-    return polytonic ? { period: 'el-att', basis: 'no word was recognised; polytonic text is read as Attic by default' } : { period: 'el-mod', basis: 'no word was recognised; read as Modern Greek by default' };
+    if (declared) return { period: declared, basis: 'no word was recognised; read in the declared variety', evidence: 'declared' };
+    return polytonic ? { period: 'el-att', basis: 'no word was recognised; polytonic text is read as Attic by default', evidence: 'default' } : { period: 'el-mod', basis: 'no word was recognised; read as Modern Greek by default', evidence: 'default' };
   }
   if (!polytonic) {
-    if (!monotonic && declared && (votes[declared] ?? 0) > 0) return { period: declared, basis: `the spelling shows neither system (no breathing would be written); the declared variety (${label(declared)}) decides` };
-    if (!monotonic && !declared && lastPeriod && (votes[lastPeriod] ?? 0) > 0) return { period: lastPeriod, basis: `the spelling shows neither system (no breathing would be written); read on as ${label(lastPeriod)}, the period of the sentence before` };
+    if (!monotonic && declared && (votes[declared] ?? 0) > 0) return { period: declared, basis: `the spelling shows neither system (no breathing would be written); the declared variety (${label(declared)}) decides`, evidence: 'declared' };
+    if (!monotonic && !declared && lastPeriod && (votes[lastPeriod] ?? 0) > 0) return { period: lastPeriod, basis: `the spelling shows neither system (no breathing would be written); read on as ${label(lastPeriod)}, the period of the sentence before`, evidence: 'default' };
     // monotonic: Modern unless nothing is Modern and the words are ancient (an unaccented or simplified ancient text)
-    if ((votes['el-mod'] ?? 0) > 0 || !ranked.some(([v]) => ANCIENT.has(v))) return { period: 'el-mod', basis: quoted ? `monotonic spelling with ${polytonicWords} quoted polytonic word${polytonicWords === 1 ? '' : 's'}; read as Modern Greek` : monotonic ? 'monotonic spelling; read as Modern Greek' : 'no polytonic mark; read as Modern Greek' };
-    if (declared && ANCIENT.has(declared)) return { period: declared, basis: 'no polytonic mark but no Modern reading either; the declared variety decides' };
-    return { period: ranked[0][0] as ElPeriod, basis: `no polytonic mark but no Modern reading either; ${ranked[0][1]} of ${voters} recognised words have a ${label(ranked[0][0])} reading` };
+    if ((votes['el-mod'] ?? 0) > 0 || !ranked.some(([v]) => ANCIENT.has(v))) return { period: 'el-mod', basis: quoted ? `monotonic spelling with ${polytonicWords} quoted polytonic word${polytonicWords === 1 ? '' : 's'}; read as Modern Greek` : monotonic ? 'monotonic spelling; read as Modern Greek' : 'no polytonic mark; read as Modern Greek', evidence: monotonic || quoted ? 'text' : 'default' };
+    if (declared && ANCIENT.has(declared)) return { period: declared, basis: 'no polytonic mark but no Modern reading either; the declared variety decides', evidence: 'declared' };
+    return { period: ranked[0][0] as ElPeriod, basis: `no polytonic mark but no Modern reading either; ${ranked[0][1]} of ${voters} recognised words have a ${label(ranked[0][0])} reading`, evidence: 'default' };
   }
   // Ancient. An Attic reading is the DEFAULT of the Ancient tables, so it is evidence of "ancient", not of Attic; the stages are told apart
   // by what is distinctive: Epic-only readings and Homeric shapes for Homer; otherwise the declared variety; otherwise the New Testament's
@@ -318,11 +319,11 @@ function decidePeriod(tokens: RawToken[], base: AnalysisCandidate[][], opts?: An
   const wordCount = words.length;
   // two pieces of evidence, or one in a short sentence or in a Homeric run (the sentence before was Homeric), or one per eight words
   if (homScore >= 2 || (homScore >= 1 && (wordCount <= 6 || lastPeriod === 'el-hom')) || homScore >= 0.12 * wordCount) {
-    return { period: 'el-hom', basis: `${homOnly} word${homOnly === 1 ? '' : 's'} with an Epic-only reading and ${markers + (homScore > strong ? weak : 0)} Homeric shape${markers + (homScore > strong ? weak : 0) === 1 ? '' : 's'} (-οιο, -εσσι, -φι, κε(ν), ῥα, ἠδέ, μιν …) among ${wordCount} words` };
+    return { period: 'el-hom', basis: `${homOnly} word${homOnly === 1 ? '' : 's'} with an Epic-only reading and ${markers + (homScore > strong ? weak : 0)} Homeric shape${markers + (homScore > strong ? weak : 0) === 1 ? '' : 's'} (-οιο, -εσσι, -φι, κε(ν), ῥα, ἠδέ, μιν …) among ${wordCount} words`, evidence: 'text' };
   }
-  if (declared && ANCIENT.has(declared)) return { period: declared, basis: `ancient spelling without Homeric marks; the declared variety (${label(declared)}) decides between Attic and Koine, which the words alone do not` };
-  if (ntWords >= 0.9 * voters && attOnly <= 0.1 * voters) return { period: 'el-koi', basis: `${ntWords} of ${voters} recognised words are New Testament words and only ${attOnly} are not: read as Koine` };
-  return { period: 'el-att', basis: `ancient spelling without Homeric marks; ${attOnly} of ${voters} recognised words are outside the New Testament's vocabulary, so Attic (the stage the Ancient tables describe) rather than Koine` };
+  if (declared && ANCIENT.has(declared)) return { period: declared, basis: `ancient spelling without Homeric marks; the declared variety (${label(declared)}) decides between Attic and Koine, which the words alone do not`, evidence: 'declared' };
+  if (ntWords >= 0.9 * voters && attOnly <= 0.1 * voters) return { period: 'el-koi', basis: `${ntWords} of ${voters} recognised words are New Testament words and only ${attOnly} are not: read as Koine`, evidence: voters >= 5 ? 'text' : 'default' };
+  return { period: 'el-att', basis: `ancient spelling without Homeric marks; ${attOnly} of ${voters} recognised words are outside the New Testament's vocabulary, so Attic (the stage the Ancient tables describe) rather than Koine`, evidence: voters >= 8 && attOnly >= 2 ? 'text' : 'default' };
 }
 
 /**
@@ -335,14 +336,14 @@ const WEAK_HOMERIC_MARK = /^(?:ἄρα|ἄρ|ἄρ᾽|τοι)$/u;
 const HOMERIC_MARK = /(?:οιο|εσσι(?:ν)?|ῃσι(?:ν)?|οισι(?:ν)?|φι(?:ν)?)$|^(?:κε|κεν|κ᾽|ῥα|ῥ᾽|ἠδέ|ἠδ᾽|ἠμέν|ἀτάρ|αὐτάρ|μιν|σφι|σφιν|ἔην|ἦεν|ἔσσι|εἰμέν|ἔνθα|ἔπειτα|αὖτε|ἦμος)$/u;
 
 export function orderElSentence(tokens: RawToken[], base: AnalysisCandidate[][], opts?: AnalyzeOptions): AnalysisCandidate[][] {
-  const { period, basis } = sentencePeriod(tokens, base, opts);
+  const { period, basis, evidence } = sentencePeriod(tokens, base, opts);
   const fits = (c: AnalysisCandidate): boolean => (c.varieties ?? []).includes(period);
   return base.map((cands, i) => {
     if (!tokens[i].isWord) return cands;
     const first = cands.filter(fits);
     const rest = cands.filter((c) => !fits(c));
     const changed = first.length > 0 && rest.length > 0 && cands[0] && !fits(cands[0]);
-    return [...first, ...rest].map((c, k) => ({ ...c, notes: { ...c.notes, period, periodBasis: basis, ...(changed && k === 0 ? { context: `put first because the sentence is read as ${label(period)}` } : {}) } }));
+    return [...first, ...rest].map((c, k) => ({ ...c, notes: { ...c.notes, period, periodBasis: basis, periodEvidence: evidence, ...(changed && k === 0 ? { context: `put first because the sentence is read as ${label(period)}` } : {}) } }));
   });
 }
 

@@ -40,7 +40,7 @@
  * (an `exposure`/`assistedRecognition` target means "the learner has only met or been helped with it": the next honest
  * question is plain recognition.)
  */
-import { ANALYSIS_STATUSES, KNOWLEDGE_LEVEL_WORDS, VALIDATION_LEVELS, provenanceOf } from '../../../repository-contract/src';
+import { ANALYSIS_STATUSES, KNOWLEDGE_LEVEL_WORDS, VALIDATION_LEVELS, cardIdFor, provenanceOf } from '../../../repository-contract/src';
 import type { Dimension, KnowledgeLevel, ReviewCandidate, UnitKnowledge } from '../../../repository-contract/src';
 import { FAMILY_DIMENSION, REPOSITORY_DIMENSION } from '../types';
 import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeDecision, IntakeInput, IntakeOutcome } from '../types';
@@ -196,12 +196,15 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
     return makeDecision(candidate, 'needs-validation', ['every analysis of this unit has been invalidated; it is not asked until a reviewer supplies a verified one']);
   }
 
-  const existingTarget = existing.find(item => item.unitId === candidate.unitId && item.dimension === proposed.dimension);
-  const sharedGate = reviewEligibility({ item: existingTarget, itemId:'card:'+proposed.dimension+':'+candidate.unitId, unitId: candidate.unitId, knowledge, events: input.readingSignals ?? [], now: input.now, intent: input.intent, context: input.eligibilityContext });
+  // A proposal tagged with a variety is that variety's task: a card of the same word in ANOTHER variety is another task and does not cover it.
+  // A card whose variety is not settled (or a deck that was not classified) covers the word as it always did.
+  const sameTask = (item: DeckItem): boolean => !candidate.varietyId || item.variety?.varietyId === undefined || item.variety.varietyId === candidate.varietyId;
+  const existingTarget = existing.find(item => item.unitId === candidate.unitId && item.dimension === proposed.dimension && sameTask(item));
+  const sharedGate = reviewEligibility({ item: existingTarget, itemId: existingTarget?.itemId ?? cardIdFor(candidate.unitId, proposed.dimension, candidate.varietyId), unitId: candidate.unitId, knowledge, events: input.readingSignals ?? [], now: input.now, intent: input.intent, context: input.eligibilityContext });
   if (!sharedGate.eligible && existingTarget?.status !== 'dismissed') return makeDecision(candidate, existingTarget ? 'already-covered' : 'low-priority', [sharedGate.reason ?? 'not eligible for automatic practice']);
 
   // 3 ── same unit, same dimension already in the deck ───────────────────────────────────────────────────────────
-  const mine = existing.filter((i) => i.unitId === candidate.unitId && sameDimension(i, proposedRepositoryDimension));
+  const mine = existing.filter((i) => i.unitId === candidate.unitId && sameDimension(i, proposedRepositoryDimension) && sameTask(i));
   const live = mine.find((i) => i.status === 'active' || i.status === 'snoozed');
   if (live) return makeDecision(candidate, 'already-covered', [`already in the deck as ${live.family} (${live.status})`]);
   const suspended = mine.find((i) => i.status === 'suspended');

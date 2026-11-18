@@ -8,6 +8,7 @@ import { schedulerForReviewProfile } from '../src/scheduler/replay-profile';
  * families exist: `main.ts` hands over GoReview's registry and `evidenceFor`; a test hands over small fakes.
  */
 import type { GoEvent, SchedulerProfile } from '../../repository-contract/src';
+import { parseCardId } from '../../repository-contract/src';
 import {
   applyControls, buildCardAdded, createFsrsScheduler, createSessionRunner, decideIntake, explainIntake, explainItem, foldDeckItems,
   factsBudgetFor, gatherCandidates, measuresFor, planSession, reviewHistory, resolveBuilder,
@@ -360,8 +361,10 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     },
     explainIntake,
 
+    // a card whose id names a variety is created under that id and that variety; any other card as before (the enrolment's variety as a stamp)
     cardAdded: (ctx, item, addedBy) => buildCardAdded({
-      learnerId: ctx.learnerId, enrolmentId: ctx.enrolmentId, languageId: ctx.languageId, ...(ctx.varietyId ? { varietyId: ctx.varietyId } : {}),
+      learnerId: ctx.learnerId, enrolmentId: ctx.enrolmentId, languageId: ctx.languageId,
+      ...((parseCardId(item.itemId)?.varietyId ?? ctx.varietyId) ? { varietyId: parseCardId(item.itemId)?.varietyId ?? ctx.varietyId } : {}), ...(item.itemId ? { itemId: item.itemId } : {}),
       at: ctx.now, deviceId: ctx.deviceId, producerVersion: ctx.appVersion,
       unitId: item.unitId, unitKind: item.unitKind, dimension: item.dimension, family: item.family, addedBy, ...(item.reasons[0] ? { reason: item.reasons[0] } : {}),
     }),
@@ -378,7 +381,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
       ...(req.recentHelp ? { recentHelp: req.recentHelp } : {}), random,
       knowledge: req.knowledge, readingSignals: req.readingSignals,
       observedReviewSeconds: req.observedReviewSeconds, intent: req.intent, learnerId: req.learnerId, remediationItemIds:req.remediationItemIds,
-      ...(req.fillPool ? { fillPool: req.fillPool } : {}),
+      ...(req.fillPool ? { fillPool: req.fillPool } : {}), ...(req.transfer ? { transfer: req.transfer } : {}),
     }),
 
     startSession(start) {

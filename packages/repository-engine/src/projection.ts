@@ -8,9 +8,9 @@
  *
  * These estimates are hypotheses until calibrated against independent assessments.
  */
-import { DIMENSIONS } from '../../repository-contract/src';
+import { DIMENSIONS, hasLearningVarieties, isLegacyReviewRecord, learningVarietiesOf, legacyStampOf, legacyVarietyOf, statedVarietyOf } from '../../repository-contract/src';
 import { effectiveReviewEvents, isValidReviewClaim, selectReviewEvidenceEvents } from '../../repository-contract/src';
-import type { Dimension, DimensionEstimate, GoEvent, Tombstone, UnitKnowledge } from '../../repository-contract/src';
+import type { Dimension, DimensionEstimate, GoEvent, Tombstone, UnitKnowledge, VarietyKnowledge, VarietySlice } from '../../repository-contract/src';
 import { observationsOf } from './evidence';
 import type { Observation } from './evidence';
 import { LEVEL_THRESHOLDS, RECOGNITION_LEVEL_DIMENSIONS, levelOf } from './levels';
@@ -239,6 +239,7 @@ export function foldObservations(observations: Observation[], modelVersion: stri
   const sorted = [...observations].sort(compareObservations);
   const states = new Map<string, FoldState>();
   const rows = new Map<string, UnitKnowledge>();
+  const byUnit = new Map<string, Observation[]>();
   const seen = new Set<string>();
   for (const o of sorted) {
     const key = `${o.eventId}\u0000${o.unitId}\u0000${o.dimension}`;
@@ -247,20 +248,100 @@ export function foldObservations(observations: Observation[], modelVersion: stri
     let st = states.get(o.unitId);
     if (!st) states.set(o.unitId, (st = newFoldState()));
     rows.set(o.unitId, foldOne(rows.get(o.unitId), o, modelVersion, st));
+    if (hasLearningVarieties(o.languageId)) (byUnit.get(o.unitId) ?? byUnit.set(o.unitId, []).get(o.unitId)!).push(o);
   }
-  for (const [unitId, row] of rows) rows.set(unitId, finalizeRow(row, states.get(unitId)!));
+  for (const [unitId, row] of rows) {
+    const done = finalizeRow(row, states.get(unitId)!);
+    const own = byUnit.get(unitId);
+    rows.set(unitId, own ? withVarieties(done, own, modelVersion) : done);
+  }
   return rows;
+}
+
+// ───────────────────────────── projection@8: one unit, each of its varieties ─────────────────────────────
+
+/** One unit folded from a subset of its observations (already in canonical order, already de-duplicated). */
+function foldUnit(observations: Observation[], modelVersion: string): UnitKnowledge | undefined {
+  if (!observations.length) return undefined;
+  const state = newFoldState();
+  let row: UnitKnowledge | undefined;
+  for (const o of observations) row = foldOne(row, o, modelVersion, state);
+  return row ? finalizeRow(row, state) : undefined;
+}
+
+const sliceOf = (row: UnitKnowledge): VarietySlice => ({
+  dimensions: row.dimensions, retention: row.retention, uncertainty: row.uncertainty, level: row.level, encounters: row.encounters,
+  ...(row.selfMark ? { selfMark: row.selfMark } : {}), ...(row.firstSeenAt ? { firstSeenAt: row.firstSeenAt } : {}), ...(row.lastSeenAt ? { lastSeenAt: row.lastSeenAt } : {}), basis: row.basis,
+});
+
+const sourceCounts = (observations: Observation[]): { reader: number; review: number } => {
+  const reader = new Set<string>(), review = new Set<string>();
+  for (const o of observations) (o.origin === 'review' ? review : reader).add(o.eventId);
+  return { reader: reader.size, review: review.size };
+};
+
+/**
+ * The variety each observation of ONE unit belongs to (contract ./varieties), or undefined when nothing settles it.
+ *   - an observation that states its variety (the card's id, `payload.variety`, a declared language, its sentence's lookup) keeps it;
+ *   - a legacy GoReview record (a card with the old id shape and all its answers, a mark) is assigned by `legacyVarietyOf` from the varieties
+ *     the unit had STATED evidence in at or before the instant the record began, so later evidence never moves it;
+ *   - anything else is unclassified.
+ */
+export function varietiesOfObservations(languageId: string, observations: readonly Observation[]): Array<string | undefined> {
+  const firstStated = new Map<string, string>();
+  for (const o of observations) {
+    if (!o.variety) continue;
+    const cur = firstStated.get(o.variety.id);
+    if (cur === undefined || compareAt(o.at, cur) < 0) firstStated.set(o.variety.id, o.at);
+  }
+  return observations.map((o) => {
+    if (o.variety) return o.variety.id;
+    if (!o.legacy) return undefined;
+    const before = [...firstStated].filter(([, at]) => compareAt(at, o.legacy!.anchorAt) <= 0).map(([id]) => id);
+    return legacyVarietyOf(languageId, o.legacy.stamp, before);
+  });
+}
+
+/** Adds `varieties`, `unclassified` and `sources` to the row of a unit of a language with learning varieties. The row's own fields are untouched. */
+function withVarieties(row: UnitKnowledge, observations: Observation[], modelVersion: string): UnitKnowledge {
+  const assigned = varietiesOfObservations(row.languageId, observations);
+  const loose = observations.filter((_, i) => assigned[i] === undefined);
+  const ids = learningVarietiesOf(row.languageId).map((v) => v.id).filter((id) => assigned.includes(id));
+  const out: UnitKnowledge = { ...row, sources: sourceCounts(observations) };
+  if (!ids.length) return out; // nothing classified: the row stays as it was, assigned to no variety
+  const firstStated = (own: Observation[]): string | undefined => own.filter((o) => o.variety).map((o) => o.at).sort(compareAt)[0];
+  if (ids.length === 1 && !loose.length) { const first = firstStated(observations); return { ...out, varieties: { [ids[0]]: { whole: true, ...(first ? { firstAt: first } : {}) } } }; }
+  const varieties: Record<string, VarietyKnowledge> = {};
+  for (const id of ids) {
+    const own = observations.filter((_, i) => assigned[i] === id);
+    const ownRow = foldUnit(own, modelVersion)!;
+    const view = loose.length ? foldUnit(observations.filter((_, i) => assigned[i] === id || assigned[i] === undefined), modelVersion)! : ownRow;
+    const first = firstStated(own);
+    varieties[id] = {
+      ...sliceOf(view),
+      own: { level: ownRow.level, events: ownRow.basis.events, ...sourceCounts(own), ...(first ? { firstAt: first } : {}), ...(ownRow.lastSeenAt ? { lastAt: ownRow.lastSeenAt } : {}) },
+    };
+  }
+  const looseRow = foldUnit(loose, modelVersion);
+  return { ...out, varieties, ...(looseRow ? { unclassified: sliceOf(looseRow) } : {}) };
 }
 
 /** Applies the retention decay at `nowIso` (read-time view; stored rows hold the undecayed strength). */
 export function retentionAt(row: UnitKnowledge, nowIso: string): UnitKnowledge {
-  const b = row.retention.basedOn;
-  if (b === 'none') return row;
-  const last = row.dimensions[b].lastAt;
-  if (!last || Number.isNaN(Date.parse(last))) return row;
-  const days = Math.max(0, (Date.parse(nowIso) - Date.parse(last)) / DAY_MS);
-  if (Number.isNaN(days)) return row;
-  return { ...row, retention: { ...row.retention, estimate: r9(row.retention.estimate * Math.pow(2, -days / row.retention.halfLifeDays)) } };
+  const decayed = <T extends Pick<UnitKnowledge, 'retention' | 'dimensions'>>(x: T): T => {
+    const b = x.retention.basedOn;
+    if (b === 'none') return x;
+    const last = x.dimensions[b].lastAt;
+    if (!last || Number.isNaN(Date.parse(last))) return x;
+    const days = Math.max(0, (Date.parse(nowIso) - Date.parse(last)) / DAY_MS);
+    if (Number.isNaN(days)) return x;
+    return { ...x, retention: { ...x.retention, estimate: r9(x.retention.estimate * Math.pow(2, -days / x.retention.halfLifeDays)) } };
+  };
+  const out = decayed(row);
+  if (!row.varieties && !row.unclassified) return out;
+  // projection@8: each variety's slice decays from its own last observation
+  const varieties = row.varieties && Object.fromEntries(Object.entries(row.varieties).map(([id, slice]) => [id, 'whole' in slice ? slice : decayed(slice)]));
+  return { ...out, ...(varieties ? { varieties } : {}), ...(row.unclassified ? { unclassified: decayed(row.unclassified) } : {}) };
 }
 
 // ───────────────────────────── events -> observations ─────────────────────────────
@@ -329,14 +410,57 @@ export function observationsFromEvents(events: GoEvent[], tombstones: Tombstone[
   // correction-filtered stream. This keeps Repository evidence aligned with FSRS and the other evidence consumers.
   const live = effectiveReviewEvents(dedupeEvents(visible));
   const allowed = new Set(selectReviewEvidenceEvents(visible).events.map((e) => e.id));
+  const varietyOf = varietyReader(visible);
   for (const e of live) {
-    if (['CardReviewed','AssessmentAnswered','ListeningAssessed'].includes(e.kind)) {
+    const review = ['CardReviewed','AssessmentAnswered','ListeningAssessed'].includes(e.kind);
+    if (review) {
       if (!isValidReviewClaim(e)) continue;
       if (!allowed.has(e.id)) continue;
     }
-    for (const o of observationsOf(e)) out.push({ ...o, unitId: resolve(o.unitId) });
+    const tag = varietyOf(e, review);
+    for (const o of observationsOf(e)) out.push({ ...o, ...tag, unitId: resolve(o.unitId) });
   }
   return out;
+}
+
+/**
+ * projection@8: what each event says of its variety, for a language with learning varieties (nothing for any other language).
+ * Two things need the other events and are prepared once here:
+ *   - a follow-up event of a card (a mark, a help request, the layers shown) names the SENTENCE its lookup named; when every event of that
+ *     sentence that states a variety states the same one, the follow-up belongs to it (`context`);
+ *   - a legacy GoReview record begins at the first event of its card (the card's creation), which also carries its stamp.
+ */
+function varietyReader(events: readonly GoEvent[]): (e: GoEvent, review: boolean) => Pick<Observation, 'variety' | 'legacy' | 'origin'> {
+  const bySentence = new Map<string, Set<string>>();
+  const cardStart = new Map<string, GoEvent>();
+  const sentenceKeyOf = (e: GoEvent): string | undefined => (e.subject?.sentenceKey ? `${e.learnerId}\u0000${e.languageId}\u0000${e.subject.sentenceKey}` : undefined);
+  const cardKeyOf = (e: GoEvent): string | undefined => (e.subject?.cardId ? `${e.learnerId}\u0000${e.languageId}\u0000${e.subject.cardId}` : undefined);
+  for (const e of events) {
+    if (!hasLearningVarieties(e.languageId)) continue;
+    const stated = statedVarietyOf(e);
+    const sentence = sentenceKeyOf(e);
+    if (stated && sentence) (bySentence.get(sentence) ?? bySentence.set(sentence, new Set()).get(sentence)!).add(stated.varietyId);
+    const card = cardKeyOf(e);
+    if (card && isLegacyReviewRecord(e)) {
+      const cur = cardStart.get(card);
+      if (!cur || compareAt(e.at, cur.at) < 0 || (compareAt(e.at, cur.at) === 0 && e.id < cur.id)) cardStart.set(card, e);
+    }
+  }
+  return (e, review) => {
+    if (!hasLearningVarieties(e.languageId)) return {};
+    const origin = review ? 'review' as const : 'reader' as const;
+    const stated = statedVarietyOf(e);
+    if (stated) return { origin, variety: { id: stated.varietyId, basis: stated.basis } };
+    if (isLegacyReviewRecord(e)) {
+      const start = cardStart.get(cardKeyOf(e) ?? '') ?? e;
+      const stamp = legacyStampOf(start);
+      return { origin, legacy: { ...(stamp ? { stamp } : {}), anchorAt: start.at } };
+    }
+    const sentence = sentenceKeyOf(e);
+    const inSentence = sentence ? bySentence.get(sentence) : undefined;
+    if (inSentence?.size === 1) return { origin, variety: { id: [...inSentence][0], basis: 'context' } };
+    return { origin };
+  };
 }
 
 /** The whole pure pipeline: events -> rows (sorted by unit id). */

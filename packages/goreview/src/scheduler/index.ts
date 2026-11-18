@@ -6,3 +6,5 @@ export { checkInvariants, checkLibraryAgainstVectors, checkRepeatAgreesWithNext,
 export type { ReferenceStep, ReferenceVectors } from './verify';
 
 export { schedulerForReviewProfile } from './replay-profile';
+export { classifyDeck, countByVariety, introductionPriority, resolveScope, scopeReview, scopeSignature, studiedVarieties, taskVarietyOf, varietyOfItem } from './scope';
+export type { ScopedReview, ScopeExclusion, VarietyCount } from './scope';

@@ -24,6 +24,7 @@ import { gematriaValue } from './numbers';
 import { pronominalReadings } from './pronominal';
 import { consonantal, hasCantillation, isPointed, pointed } from './text';
 import { HE_VARIETIES } from './varieties';
+import type { PeriodEvidence } from '../../core/variety';
 
 export const HE_VERSION = '1';
 export const HE_ANALYZER = `adapter-he@${HE_VERSION}`;
@@ -235,7 +236,7 @@ export type HePeriod = 'he-bib' | 'he-mod' | 'he-mish' | 'he-med' | 'arc-bib';
  * readings belong to; a tie → the caller's variety; nothing to go on → the caller's variety or Modern. The basis is returned
  * with it so the card can say why.
  */
-export function sentencePeriod(tokens: RawToken[], base: AnalysisCandidate[][], opts?: AnalyzeOptions): { period: HePeriod; basis: string } {
+export function sentencePeriod(tokens: RawToken[], base: AnalysisCandidate[][], opts?: AnalyzeOptions): { period: HePeriod; basis: string; evidence: PeriodEvidence } {
   const masoretic = tokens.some((t) => t.isWord && hasCantillation(t.surface));
   const declared = opts?.varietyId && HE_VARIETIES[opts.varietyId] ? (opts.varietyId as HePeriod) : undefined;
   const votes: Record<string, number> = {};
@@ -258,23 +259,23 @@ export function sentencePeriod(tokens: RawToken[], base: AnalysisCandidate[][], 
   // Biblical Aramaic is its own language: a sentence is read as Aramaic only when more words have an Aramaic reading than a Hebrew one
   const bib = votes['he-bib'] ?? 0;
   const arc = votes['arc-bib'] ?? 0;
-  if (arc > bib && arc >= (votes['he-mod'] ?? 0)) return { period: 'arc-bib', basis: `${arc} of the ${voters} recognised words have a Biblical Aramaic reading and fewer a Hebrew one` };
-  if (masoretic) return { period: 'he-bib', basis: 'the text carries cantillation marks: a Masoretic text' };
+  if (arc > bib && arc >= (votes['he-mod'] ?? 0)) return { period: 'arc-bib', basis: `${arc} of the ${voters} recognised words have a Biblical Aramaic reading and fewer a Hebrew one`, evidence: voters >= 3 ? 'text' : 'default' };
+  if (masoretic) return { period: 'he-bib', basis: 'the text carries cantillation marks: a Masoretic text', evidence: 'text' };
   const ranked = Object.entries(votes).filter(([v]) => v !== 'arc-bib').sort((a, b) => b[1] - a[1]);
-  if (!ranked.length) return declared ? { period: declared, basis: 'no word was recognised; read in the declared variety' } : { period: 'he-mod', basis: 'no word was recognised; read as Modern Hebrew by default' };
+  if (!ranked.length) return declared ? { period: declared, basis: 'no word was recognised; read in the declared variety', evidence: 'declared' } : { period: 'he-mod', basis: 'no word was recognised; read as Modern Hebrew by default', evidence: 'default' };
   const [top, second] = ranked;
   const allPointed = tokens.filter((t) => t.isWord).every((t) => isPointed(t.surface));
   if (second && Math.abs(top[1] - second[1]) < 0.15 * top[1]) {
-    if (declared) return { period: declared, basis: `the words are read in more than one period alike; the declared variety (${PERIOD_LABEL(declared)}) decides` };
-    if (allPointed) return { period: 'he-bib', basis: 'the words are read in more than one period alike; the text is fully pointed, as a Biblical text is' };
-    return { period: 'he-mod', basis: 'the words are read in more than one period alike; unpointed text is read as Modern Hebrew' };
+    if (declared) return { period: declared, basis: `the words are read in more than one period alike; the declared variety (${PERIOD_LABEL(declared)}) decides`, evidence: 'declared' };
+    if (allPointed) return { period: 'he-bib', basis: 'the words are read in more than one period alike; the text is fully pointed, as a Biblical text is', evidence: 'default' };
+    return { period: 'he-mod', basis: 'the words are read in more than one period alike; unpointed text is read as Modern Hebrew', evidence: 'default' };
   }
-  return { period: top[0] as HePeriod, basis: `${Math.round((top[1] / ranked.reduce((s, r) => s + r[1], 0)) * 100)} % of the weight of the ${voters} recognised words' readings is in ${PERIOD_LABEL(top[0])} (an unpointed word's consonant-only match of a pointed period weighs half)` };
+  return { period: top[0] as HePeriod, basis: `${Math.round((top[1] / ranked.reduce((s, r) => s + r[1], 0)) * 100)} % of the weight of the ${voters} recognised words' readings is in ${PERIOD_LABEL(top[0])} (an unpointed word's consonant-only match of a pointed period weighs half)`, evidence: voters >= 3 ? 'text' : 'default' };
 }
 
 /** Readings of the sentence's period first on every word; every reading says which period the sentence was read in. */
 export function orderHeSentence(tokens: RawToken[], base: AnalysisCandidate[][], opts?: AnalyzeOptions): AnalysisCandidate[][] {
-  const { period, basis } = sentencePeriod(tokens, base, opts);
+  const { period, basis, evidence } = sentencePeriod(tokens, base, opts);
   const fits = (c: AnalysisCandidate): boolean => (c.varieties ?? []).includes(period);
   return base.map((cands, i) => {
     if (!tokens[i].isWord) return cands;
@@ -284,7 +285,7 @@ export function orderHeSentence(tokens: RawToken[], base: AnalysisCandidate[][],
     return [...first, ...rest].map((c, k) => ({
       ...c,
       notes: {
-        ...c.notes, period, periodBasis: basis,
+        ...c.notes, period, periodBasis: basis, periodEvidence: evidence,
         ...(changed && k === 0 ? { context: `put first because the sentence is read as ${PERIOD_LABEL(period)}` } : {}),
       },
     }));

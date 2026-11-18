@@ -7,6 +7,7 @@ import type {
   AssistancePreferences, EventLog, FormAnalysis, IdentityStore, LinguisticStore, LinguisticUnit, ProjectionEngine, ProjectionStore, ReviewCandidate,
   StoredEvent, SuitabilityEstimate, TombstoneStore, UnitKnowledge,
 } from '../../repository-contract/src';
+import { canonicalVarietyId, classifiedVarietiesOf, knowledgeInVariety, normalizeScope, parseCardId } from '../../repository-contract/src';
 import { CANDIDATE_RULES, rankCandidates } from './candidates';
 import type { CardState } from './candidates';
 import { observationsOf } from './evidence';
@@ -33,7 +34,7 @@ import { estimateSuitability } from './suitability';
  * (projection@3: `selfMark` and the `productive` mark credited to productiveRetrieval. projection@2: the eighth dimension,
  * phraseComprehension, and language-basis weighting of exposure.) A stored cursor at another version is rebuilt from the immutable events on the next read.
  */
-export const MODEL_VERSION = 'projection@7';
+export const MODEL_VERSION = 'projection@8';
 const PAGE = 500;
 
 export type EngineStore = EventLog & ProjectionStore & LinguisticStore & TombstoneStore & Pick<IdentityStore, 'listEnrolments'>;
@@ -46,6 +47,12 @@ export interface CandidateOptions {
   /** Receives notes about rules that could not run (for example a pack with no mission word list). */
   notes?: string[];
   objectiveDimensions?: import('../../repository-contract/src').Dimension[];
+  /**
+   * A language with learning varieties (contract ./varieties): rank for these varieties only. A word with classified evidence in none of them is
+   * not a candidate; each row is read in the variety it is proposed for; a card of ANOTHER variety covers nothing here (a card with the old id
+   * shape covers its word as before). Absent: every row and every card as they were, whatever their variety. Ignored for any other language.
+   */
+  varietyIds?: string[];
 }
 export interface ProjectionEngineX extends ProjectionEngine {
   candidates(learnerId: string, enrolmentId: string, opts?: CandidateOptions): Promise<ReviewCandidate[]>;
@@ -352,7 +359,17 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
     const at = opts?.now ?? now();
     const enrolment = (await store.listEnrolments(learnerId)).find((e) => e.enrolmentId === enrolmentId);
     if (!enrolment) return [];
-    const rows = (await knowledge(learnerId)).filter((r) => r.languageId === enrolment.languageId);
+    const scope = normalizeScope(opts?.varietyIds?.length ? { languageId: enrolment.languageId, varietyIds: opts.varietyIds } : undefined);
+    const tagged = new Map<string, string>();
+    const rows = (await knowledge(learnerId)).filter((r) => r.languageId === enrolment.languageId).flatMap((r) => {
+      if (!scope) return [r];
+      const known = classifiedVarietiesOf(r);
+      if (!known.length) return [r]; // nothing settles its variety: proposed without one, as before
+      const variety = scope.varietyIds.find((id) => known.includes(id));
+      if (!variety) return []; // met in other varieties only
+      tagged.set(r.unitId, variety);
+      return [knowledgeInVariety(r, variety).knowledge];
+    });
     const tombstones = await store.listTombstones(learnerId);
     const language = { languageId: enrolment.languageId };
     const atMs = Date.parse(at);
@@ -363,7 +380,9 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
       ...await readEvents(learnerId, 0, { kinds: DECK_EVENT_KINDS, ...language }),
       ...await readEvents(learnerId, 0, { kinds: ['CardReviewed'], ...language, ...(reviewSince !== undefined ? { since: reviewSince } : {}) }),
     ];
-    const cardUnitOf = (e: StoredEvent): string | undefined => !(e.subject?.itemIds ?? []).length && e.subject?.cardId?.startsWith('card:') ? e.subject.cardId.split(':').slice(2).join(':') : undefined;
+    const cardUnitOf = (e: StoredEvent): string | undefined => (!(e.subject?.itemIds ?? []).length ? parseCardId(e.subject?.cardId)?.unitId : undefined);
+    /** With a scope: a card whose id names a variety outside it is another learning task and covers nothing here. */
+    const cardOutsideScope = (e: StoredEvent): boolean => { const v = canonicalVarietyId(enrolment.languageId, parseCardId(e.subject?.cardId)?.varietyId); return !!scope && !!v && !scope.varietyIds.includes(v); };
     const resolve = await resolverFor([...rows.map((r) => r.unitId), ...events.flatMap((e) => [...(e.subject?.itemIds ?? []), ...(cardUnitOf(e) ? [cardUnitOf(e)!] : [])])]);
 
     // Card state per unit and objective dimension: a written-recognition card does not
@@ -382,16 +401,15 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
       phraseComprehension: 'phraseComprehension', assistedRecognition: 'assistedRecognition',
     } as Record<string, import('../../repository-contract/src').Dimension>)[String(value)];
     for (const e of dedupeEvents(events)) {
-      if (isTombstoned(e, tombstones)) continue;
+      if (isTombstoned(e, tombstones) || cardOutsideScope(e)) continue;
       const idsFromSubject = e.subject?.itemIds ?? [];
-      const cardUnit = !idsFromSubject.length && e.subject?.cardId?.startsWith('card:')
-        ? e.subject.cardId.split(':').slice(2).join(':') : undefined;
+      const cardUnit = cardUnitOf(e);
       const ids = [...new Set([...idsFromSubject, ...(cardUnit ? [cardUnit] : [])].map(resolve))];
       for (const id of ids) {
         const st = cards.get(id) ?? { covered: false };
         if (e.kind === 'CardReviewed' && (st.lastReviewAt === undefined || compareAt(e.at, st.lastReviewAt) > 0)) st.lastReviewAt = e.at;
         if (e.kind === 'CardAdded' || e.kind === 'CardRemoved' || e.kind === 'ReviewItemInvalidated') {
-          const cardDimension = objectiveDimension(e.payload.dimension) ?? objectiveDimension(e.subject.cardId?.slice('card:'.length).split(':', 1)[0]);
+          const cardDimension = objectiveDimension(e.payload.dimension) ?? objectiveDimension(parseCardId(e.subject.cardId)?.dimension);
           const dimension = cardDimension;
           const reason = String(e.payload.reason ?? '');
           const until = Date.parse(String(e.payload.until ?? ''));
@@ -478,7 +496,7 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
         ...(missionUnits ? { missionUnits } : {}), ...(opts?.includeCovered ? { includeCovered: true } : {}), ...(opts?.notes ? { notes } : {}),
       });
       const missing = [...analyses.asked].filter((id) => !loaded.has(id) && units.get(id)?.kind === 'form');
-      if (!missing.length) { opts?.notes?.push(...notes); return ranked; }
+      if (!missing.length) { opts?.notes?.push(...notes); return tagged.size ? ranked.map((c) => (tagged.has(c.unitId) ? { ...c, varietyId: tagged.get(c.unitId)! } : c)) : ranked; }
       for (const id of missing) { analyses.set(id, await store.analysesOfForm(id)); loaded.add(id); }
     }
   }

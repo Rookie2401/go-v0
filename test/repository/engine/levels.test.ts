@@ -377,14 +377,14 @@ describe('the projection (live and rebuilt) carries level and encounters', () =>
 
     const engine = createProjectionEngine({ store, now: () => NOW });
     const rows = await engine.knowledge(L);
-    expect(rows[0].modelVersion).toBe('projection@7');
+    expect(rows[0].modelVersion).toBe('projection@8');
     for (const dimension of DIMENSIONS) {
       const { independentPositiveEvents: _ip, delayedIndependentPositiveEvents: _dp, lastIndependentPositiveAt: _la, ...oldEstimate } = before[0].dimensions[dimension];
       const { independentPositiveEvents: _nip, delayedIndependentPositiveEvents: _ndp, lastIndependentPositiveAt: _nla, ...newEstimate } = rows[0].dimensions[dimension];
       expect(newEstimate).toEqual(oldEstimate); // prior numeric evidence remains unchanged
     }
     expect(rows[0]).toMatchObject({ level: 'familiar', encounters: 4, selfMark: { mark: 'new', at: T(9) } }); // new -> released by two reliable recognitions after it
-    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@7' });
+    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@8' });
     expect(JSON.stringify(await store.list({ learnerId: L, limit: 100 }))).toBe(eventsBefore); // nothing stored was rewritten
   });
 

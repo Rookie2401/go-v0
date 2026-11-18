@@ -43,6 +43,8 @@ export class FakeService {
   docs = new Map<string, Map<string, PrivateDocument>>();
   corrections: Array<Record<string, unknown>> = [];
   calls: string[] = [];
+  /** The varieties each candidates request named (undefined: none). This fake answers like a service from before varieties: it ignores them. */
+  candidateScopes: Array<string[] | undefined> = [];
   platforms: string[] = [];
   /** When true every sync call throws (a dead network). */
   netDown = false;
@@ -130,9 +132,10 @@ export class FakeService {
         self.enrolments.set(l, list.map((e) => (e.enrolmentId === enrolmentId ? enrolment : e)));
         return ok({ enrolment });
       },
-      async candidates(enrolmentId: string) {
+      async candidates(enrolmentId: string, _limit?: number, _after?: string, _objectives?: unknown, varietyIds?: string[]) {
         net(false); const l = learner(); if (!l) return fail(401);
         self.calls.push('candidates');
+        self.candidateScopes.push(varietyIds);
         return ok({ candidates: self.candidates.get(enrolmentId) ?? [] });
       },
       async knowledge(unitIds?: string[]) {

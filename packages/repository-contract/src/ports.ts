@@ -251,7 +251,7 @@ export interface ProjectionEngine {
   rebuild(learnerId: string): Promise<UnitKnowledge[]>;
   knowledge(learnerId: string, unitIds?: string[]): Promise<UnitKnowledge[]>;
   preferences(learnerId: string, languageId?: string): Promise<AssistancePreferences>;
-  candidates(learnerId: string, enrolmentId: string, opts?: { limit?: number; now?: string; objectiveDimensions?: Dimension[] }): Promise<ReviewCandidate[]>;
+  candidates(learnerId: string, enrolmentId: string, opts?: { limit?: number; now?: string; objectiveDimensions?: Dimension[]; varietyIds?: string[] }): Promise<ReviewCandidate[]>;
   suitability(learnerId: string, languageId: string, sample: { unitIds: string[]; tokenCount: number; constructionIds?: string[] }): Promise<SuitabilityEstimate>;
 }
 

@@ -149,6 +149,8 @@ export interface PlanRequest {
   readingSignals?: GoEvent[];
   /** Deck fill: the cards an automatic plan may use as early practice to reach the deck size, in the order to try them (default: the deck, soonest due first). */
   fillPool?: readonly DeckItem[];
+  /** A language with learning varieties: cross-variety familiarity per unit (the model's `varieties.transfer`); a tie-break for new cards only. */
+  transfer?: Record<string, import('../../repository-contract/src').TransferEvidence[]>;
 }
 
 export interface ReviewEngine {
@@ -182,7 +184,7 @@ export interface ReviewEngine {
   /** The readable line for an outcome (headline, proposed skill, reasons). */
   explainIntake(outcome: IntakeOutcome): string;
   /** The CardAdded event for an intake outcome the learner accepts, or for a planned item that is not in the deck yet. */
-  cardAdded(ctx: EventContext, item: Pick<DeckItem, 'unitId' | 'unitKind' | 'dimension' | 'family' | 'reasons'>, addedBy: 'intake' | 'learner'): GoEvent;
+  cardAdded(ctx: EventContext, item: Pick<DeckItem, 'unitId' | 'unitKind' | 'dimension' | 'family' | 'reasons'> & { /** The card's own id (it may name a variety); without it the id every card had before varieties. */ itemId?: string }, addedBy: 'intake' | 'learner'): GoEvent;
   /** The event that snoozes, suspends, dismisses or resumes an item; undefined when the control does not apply. */
   controlEvent(ctx: EventContext, item: DeckItem, control: ItemControl): GoEvent | undefined;
   plan(req: PlanRequest): SessionPlan;

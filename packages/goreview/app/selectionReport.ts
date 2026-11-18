@@ -169,7 +169,7 @@ export function buildSelectionReport(model: ReviewModel, plan: SessionPlan, opts
   for (const item of classDeck) rows.push(deckRow(item, 'class'));
 
   const outcomeRow = (o: IntakeOutcome): SelectionRow => {
-    const cardId = o.proposed ? itemIdFor(o.unitId, o.proposed.dimension) : undefined;
+    const cardId = o.proposed ? itemIdFor(o.unitId, o.proposed.dimension, o.candidate.varietyId) : undefined;
     const base = { unitId: o.unitId, ...(cardId ? { cardId } : {}), ...(o.proposed ? { dimension: o.proposed.dimension, family: o.proposed.family } : {}), kind: 'candidate' as const };
     const level = o.knowledge?.level ?? levelOf.get(o.unitId);
     const rankText = o.reasons.join(' ').match(/candidate rank (\d+) of (\d+) \(comparison ([\d.]+); base score ([\d.]+); reading usefulness ([\d.]+)/i);

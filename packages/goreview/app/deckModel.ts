@@ -1,9 +1,10 @@
 import { itemIdFor } from '../src/scheduler/deck';
+import { taskVarietyOf } from '../src/scheduler/scope';
 /**
  * GoReview batches contain justified eligible work. Batch size is a maximum, never
  * a demand to fill. Saved/selected practice carries a typed explicit intent.
  */
-import { KNOWLEDGE_LEVELS, displayLevelOf, type KnowledgeLevel } from '../../repository-contract/src';
+import { KNOWLEDGE_LEVELS, canonicalVarietyId, displayLevelOf, inScope, parseCardId, type KnowledgeLevel } from '../../repository-contract/src';
 import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeOutcome, PlannedItem, ReviewIntent, SessionPlan } from '../src/types';
 import { createReviewEligibilityContext, reviewEligibility, type ReviewEligibilityContext } from '../src/planner/eligibility';
 import { admissionBudget } from '../src/planner/budget';
@@ -48,7 +49,8 @@ export function hasReviewFollowUp(model: ReviewModel): boolean {
   return effectiveRemediation(model).all.length > 0 || [...model.deck, ...(model.classDeck ?? [])].some(item => !!item.invalidatedAt);
 }
 
-export interface Wanted { unitId: string; unitKind: string; dimension: AssessmentDimension; family: ExerciseFamily; outcome?: IntakeOutcome }
+export interface Wanted { unitId: string; unitKind: string; dimension: AssessmentDimension; family: ExerciseFamily; outcome?: IntakeOutcome;
+  /** The card a saved entry names: with two cards of one word and skill (two varieties in one scope) it is that card that is asked. */ itemId?: string }
 const rankOf = (level: KnowledgeLevel | undefined): number => (level ? Math.max(0, KNOWLEDGE_LEVELS.indexOf(level)) : 0);
 const isAudio = (family: ExerciseFamily): boolean => family === 'audio-to-meaning' || family === 'audio-transcription';
 const GRAMMAR: ReadonlySet<ExerciseFamily> = new Set(['morphological-identification', 'grammar-application']);
@@ -56,8 +58,13 @@ export const fillSize = (model: Pick<ReviewModel, 'prefs'>): number => microdeck
 const entryOf = (p: PlannedItem): DeckEntry => ({ itemId: p.item.itemId, unitId: p.item.unitId, unitKind: p.item.unitKind,
   label: unitLabel(p.item.unitId), dimension: p.item.dimension, family: p.family });
 const effective = (item: DeckItem) => item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict);
-const knownItem = (model: ReviewModel, w: Pick<Wanted, 'unitId' | 'dimension'>) =>
-  [...model.deck, ...(model.classDeck ?? [])].find(i => i.unitId === w.unitId && i.dimension === w.dimension);
+const knownItem = (model: ReviewModel, w: Pick<Wanted, 'unitId' | 'dimension' | 'itemId'>) => {
+  const all = [...model.deck, ...(model.classDeck ?? [])];
+  return (w.itemId ? all.find(i => i.itemId === w.itemId) : undefined) ?? all.find(i => i.unitId === w.unitId && i.dimension === w.dimension);
+};
+/** The variety a NEW card of this word would belong to in the model's scope (undefined: no scope, or nothing of the word is classified there). */
+const newCardVariety = (model: ReviewModel, w: Pick<Wanted, 'unitId' | 'outcome'>): string | undefined =>
+  w.outcome?.candidate.varietyId ?? taskVarietyOf(model.varieties?.scope, model.knowledge.find(k => k.unitId === w.unitId));
 /**
  * The evidence indexes every eligibility check of one model shares (2026-11-09). Without them each card's check sorted and re-selected the
  * learner's whole history: with a few hundred reviewed cards the home took 15 s of a phone's processor. Kept per model and rebuilt when its
@@ -78,7 +85,7 @@ function contextAt(model: ReviewModel, item: DeckItem, at: string): ReviewEligib
   return { ...base, remediationByCard: new Map(remediationBacklog([item], model.events, at, base.remediationEvidence).map((row) => [row.itemId, row])) };
 }
 function eligibility(model: ReviewModel, w: Wanted, intent: ReviewIntent, remainingNew: number) {
-  return reviewEligibility({ item: knownItem(model, w), itemId:itemIdFor(w.unitId,w.dimension), unitId: w.unitId, knowledge: model.knowledge.find(k => k.unitId === w.unitId),
+  return reviewEligibility({ item: knownItem(model, w), itemId: knownItem(model, w)?.itemId ?? itemIdFor(w.unitId,w.dimension,newCardVariety(model, w)), unitId: w.unitId, knowledge: model.knowledge.find(k => k.unitId === w.unitId),
     events: model.events, now: model.now, intent, remainingNew,
     factsInvalidated: ['needs-validation', 'too-uncertain'].includes(w.outcome?.decision ?? ''), context: contextOf(model) });
 }
@@ -116,7 +123,8 @@ function scheduledPlan(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet
       && (!holdOut.has(i.unitId) || Date.parse(i.schedule.due) <= Date.parse(model.now))),
     intake: part === 'review' ? [] : model.outcomes.filter(o => model.choices[o.unitId] !== 'later' && !holdOut.has(o.unitId)),
     prefs: model.prefs, audio: model.audio, now: model.now, knowledge: model.knowledge, readingSignals: model.events,
-    schedulerProfile: model.schedulerProfile, observedReviewSeconds: observedReviewSeconds(model.events), intent: { kind: 'automatic' } });
+    schedulerProfile: model.schedulerProfile, observedReviewSeconds: observedReviewSeconds(model.events), intent: { kind: 'automatic' },
+    ...(model.varieties ? { transfer: model.varieties.transfer } : {}) });
 }
 /** All callers, including explicit saved decks, use the same hard control gates. */
 export async function assemble(ctx: AppContext, model: ReviewModel, wanted: readonly Wanted[], size: number,
@@ -160,13 +168,14 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
       // No unchecked fallback: an unbuildable or invalid exercise is never demand.
       if (!ctx.engine.exerciseAvailable || !(await ctx.engine.exerciseAvailable({ unitId: w.unitId, unitKind: w.unitKind,
         languageId: model.identity.languageId, ...(model.prefs.varietyId ? { varietyId: model.prefs.varietyId } : {}), dimension: w.dimension, family: w.family, api, now: model.now }).catch(() => false))) {
-        preSkipped.push({ itemId: itemIdFor(w.unitId, w.dimension), code: 'facts-unavailable',
+        preSkipped.push({ itemId: itemIdFor(w.unitId, w.dimension, newCardVariety(model, w)), code: 'facts-unavailable',
           why: 'Current facts or an exercise template are unavailable; this card stays saved and no review is recorded.' });
         continue;
       }
+      const variety = newCardVariety(model, w);
       const base: IntakeOutcome = w.outcome ?? { unitId: w.unitId, decision: 'test-now', reasons: ['Explicit vocabulary practice.'],
         candidate: { unitId: w.unitId, kind: w.unitKind, score: .5, reasons: [], targetDimension: 'readingRecognition',
-          eligibility: { eligible: true, status: 'high-confidence', caveats: [] }, cost: .2 } };
+          eligibility: { eligible: true, status: 'high-confidence', caveats: [] }, cost: .2, ...(variety ? { varietyId: variety } : {}) } };
       fresh.push({ ...base, decision: 'test-now', proposed: { dimension: w.dimension, family: w.family }, explicitlySelected: explicit, intent });
       if (!explicit) remainingNew--;
     }
@@ -303,9 +312,17 @@ export function removeFromAdded(ctx: AppContext, id: { learnerId: string; langua
 
 /** Deck entries asked again, as a plan (cards the deck still holds as they stand; the rest as new), in the entries' order. */
 export function planFromEntries(ctx: AppContext, model: ReviewModel, entries: readonly DeckEntry[], size = Math.max(1, entries.length)): Promise<SessionPlan> {
-  const wanted: Wanted[] = entries.map((e) => {
+  // A saved entry names its card. Under a review scope (a language with learning varieties) an entry whose card belongs to a variety outside the
+  // scope is not asked: a saved deck never brings another variety's card into the queue (it is asked again when that variety is in scope).
+  const scope = model.varieties?.scope;
+  const outside = new Set((model.varieties?.excluded ?? []).flatMap((x) => (x.itemId ? [x.itemId] : [])));
+  const wanted: Wanted[] = entries.filter((e) => {
+    if (!scope) return true;
+    const named = canonicalVarietyId(scope.languageId, parseCardId(e.itemId)?.varietyId);
+    return named ? inScope(scope, named) : !outside.has(e.itemId);
+  }).map((e) => {
     const outcome = model.outcomes.find((o) => o.unitId === e.unitId && o.proposed?.dimension === e.dimension);
-    return { unitId: e.unitId, unitKind: e.unitKind, dimension: e.dimension, family: e.family, ...(outcome ? { outcome } : {}) };
+    return { unitId: e.unitId, unitKind: e.unitKind, dimension: e.dimension, family: e.family, itemId: e.itemId, ...(outcome ? { outcome } : {}) };
   });
   return assemble(ctx, model, wanted, size, { intent: { kind: 'explicit', reason: 'saved-deck', requestedAt: model.now }, origin: 'saved-deck' });
 }

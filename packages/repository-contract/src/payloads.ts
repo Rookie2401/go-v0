@@ -7,6 +7,7 @@ import type { ValidationIssue, ValidationLevel } from './units';
 import { VALIDATION_LEVELS } from './units';
 import { KNOWLEDGE_LEVELS } from './knowledge-levels';
 import type { LevelMark } from './knowledge-levels';
+import { validateVarietyStatement } from './varieties';
 
 export const MAX_SURFACE_CHARS = 120;
 export const MAX_SURFACE_WORDS = 4;
@@ -357,5 +358,5 @@ export function validatePayload(kind: string, payload: unknown): ValidationIssue
   const p = payload as Record<string, unknown>;
   const shape = (PAYLOAD_KINDS as Record<string, string>)[kind];
   if (!shape) return [{ path: 'kind', message: 'unknown event kind' }];
-  return uniqueByPath([...scanForText(p, 'payload'), ...CHECKS[shape](p)]);
+  return uniqueByPath([...scanForText(p, 'payload'), ...CHECKS[shape](p), ...validateVarietyStatement(p.variety)]);
 }

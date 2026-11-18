@@ -404,13 +404,13 @@ describe('pull from an account', () => {
     const events = [lookup(b, 'zog', c), lookup(b, 'zog', c), lookup(b, 'mace', c)];
     ok(await other.appendEvents(events));
     const r = await repo.pullFrom(acct.api);
-    expect(r).toEqual({ added: 3 });
+    expect(r).toMatchObject({ added: 3, complete: true }); // 2026-11-17: a pull also says whether it reached the account's head, and how far
     const mine = (await repo.exportEvents()).filter((e) => events.some((x) => x.id === e.id));
     expect(mine).toHaveLength(3);
     for (const e of mine) expect(e.learnerId).toBe((await repo.identity()).learnerId);
     const k = ok<{ knowledge: Array<{ unitId: string; dimensions: { exposure: { observations: number } } }> }>(await repo.api.knowledge(['lemma:sq:zog:NOUN']));
     expect(k.knowledge[0].dimensions.exposure.observations).toBe(2);
-    expect(await repo.pullFrom(acct.api)).toEqual({ added: 0 });
+    expect(await repo.pullFrom(acct.api)).toMatchObject({ added: 0, complete: true });
     expect(await repo.uploadTo(acct.api)).toEqual({ sent: 0, duplicates: 0, failed: 0 });
     expect((await inspectLocal(repo)).fromRemote).toBe(3);
   });
@@ -420,9 +420,9 @@ describe('pull from an account', () => {
     c.tick();
     await append(repo, lookup(who, 'shtëpi', c));
     await repo.uploadTo(acct.api);
-    expect(await repo.pullFrom(acct.api)).toEqual({ added: 0 });
+    expect(await repo.pullFrom(acct.api)).toMatchObject({ added: 0, complete: true });
     await area.remove(await area.list('local-repo:pull'));
-    expect(await repo.pullFrom(acct.api)).toEqual({ added: 0 });
+    expect(await repo.pullFrom(acct.api)).toMatchObject({ added: 0, complete: true });
     expect((await repo.exportEvents()).filter((e) => e.kind === 'SelectionLookedUp')).toHaveLength(1);
   });
 

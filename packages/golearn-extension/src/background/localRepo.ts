@@ -412,15 +412,17 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
 
   /**
    * Called after a successful sync round: when an upload-and-pull was begun and did not reach the account's head (see PULL_OPEN_KEY), runs it again; it continues from the
-   * pull cursor, so only the events after it are asked for. One cheap read of a small row when nothing is open. Never throws.
+   * pull cursor, so only the events after it are asked for. One cheap read of a small row when nothing is open. Never throws. True when a pull ran
+   * or is running (the caller then has no need to pull again).
    */
-  async function resumePull(): Promise<void> {
+  async function resumePull(): Promise<boolean> {
     try {
-      if (transferring > 0) return; // one is running (the sign-in's): it finishes the job
-      if (!(await opts.area.get(PULL_OPEN_KEY))[PULL_OPEN_KEY]) return;
+      if (transferring > 0) return true; // one is running (the sign-in's): it finishes the job
+      if (!(await opts.area.get(PULL_OPEN_KEY))[PULL_OPEN_KEY]) return false;
       signInWork = signInWork.then(() => uploadAndPull(), () => uploadAndPull());
       await signInWork;
-    } catch { /* the next round tries again */ }
+      return true;
+    } catch { return false; /* the next round tries again */ }
   }
 
   /** After a successful sign-in: the history goes up once, then the account's comes down. Resolves when both are done; never rejects. */

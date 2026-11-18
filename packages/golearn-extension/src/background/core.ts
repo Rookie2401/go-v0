@@ -211,10 +211,10 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   });
   const profile = createProfileService({ area: cache, session, settings: settings.get, now, local: localRepo.forProfile });
   const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, hold, onSynced: async (round) => {
-    void localRepo.resumePull(); // an account pull that was begun and cut off (the worker was stopped, the network dropped) continues from its cursor
-    // Another device of the learner's recorded something (a word marked in GoReview on a phone). The round's own pull only counts those events;
-    // the device's Repository, which the page underlines and Reading Analysis read, takes them in here (2026-11-17: until now it did so only at sign-in).
-    if (round.pulled > 0) void localRepo.catchUp();
+    // An account pull that was begun and cut off (the worker was stopped, the network dropped) continues from its cursor. Otherwise, when another
+    // device of the learner's recorded something (a word marked in GoReview on a phone): the round's own pull only counts those events; the device's
+    // Repository, which the page underlines and Reading Analysis read, takes them in here (2026-11-17: until now it did so only at sign-in).
+    void localRepo.resumePull().then((resumed) => { if (!resumed && round.pulled > 0) return localRepo.catchUp(); return undefined; }).catch(() => undefined);
     await profile.refreshAfterSync();
     // the account's enrolments are read again now and then (a language chosen on another device; a session from before they were kept): marks waiting for one go up
     const s = await session.refreshEnrolments();
@@ -622,7 +622,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       const type = m?.type;
       if (typeof type !== 'string' || !type.startsWith('golearn:')) return;
       // messages that GoLearn sends to a content script are not for the background
-      if (type === MSG.enable || type === MSG.disable || type === MSG.lookup || type === MSG.ping || type === MSG.activate || type === MSG.deactivate || type === MSG.readingAnalysis) return;
+      if (type === MSG.enable || type === MSG.disable || type === MSG.lookup || type === MSG.ping || type === MSG.activate || type === MSG.deactivate) return;
       const kind = classify(sender);
       const allowed = kind === 'page' ? (PAGE_ONLY.has(type) || CONTENT_OK.has(type)) : kind === 'content' ? CONTENT_OK.has(type) : false;
       if (!allowed) { sendResponse({ ok: false, error: 'forbidden' }); return; }

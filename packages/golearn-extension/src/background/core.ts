@@ -22,6 +22,7 @@ import { createGlossService, defaultPacks, SHARD_PREFIX, type PackProvider } fro
 import { createDictionaryStore } from './dictionaryStore';
 import { DOWNLOAD_KEY_PREFIX, createDictionaryDownload } from './dictionaryDownload';
 import { createFormsService } from './forms';
+import { createPageScriptStore } from './pageScript';
 import { levelOf } from '../../../language-packs/src/manifest';
 import { PACKS } from '../../../language-packs/src/registry';
 import { createLocalRepoService, createWorkerHold, type LocalRepoServiceOptions } from './localRepo';
@@ -77,6 +78,7 @@ const PAGE_ONLY: ReadonlySet<string> = new Set<string>([
   MSG.getState, MSG.setEnabled, MSG.serviceConfig, MSG.connect, MSG.createAccount, MSG.disconnect, MSG.syncNow,
   MSG.enrol, MSG.refreshSession, MSG.selectEnrolment, MSG.useLanguage, MSG.clearLocal, MSG.localRepo, MSG.dictionaryDownload,
   MSG.speechConfig,
+  MSG.pageScript, // Alphabet Sprint: GoReview reads one language's page-letter counts
 ]);
 const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.record, MSG.profile, MSG.gloss, MSG.entry, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
@@ -179,6 +181,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   const dictionaryStore = createDictionaryStore(bg.dictionary?.idb ?? (globalThis as { indexedDB?: IDBFactory }).indexedDB);
   const gloss = createGlossService({ area: local, session, fetch: doFetch, packs, now, getURL: (path) => chrome.runtime.getURL?.(path), ...(dictionaryStore.available ? { offline: dictionaryStore } : {}) });
   const forms = createFormsService({ gloss });
+  const pageScript = createPageScriptStore(local, now);
   const translation = createLocalTranslationService({
     fetch: doFetch,
     extensionId: chrome.runtime.id,
@@ -494,6 +497,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     const drop = [...events, ...metrics, ...queued, ...dictionaryRows];
     if (drop.length) await local.remove(drop);
     await profile.clear();
+    await pageScript.clear().catch(() => undefined);
     return { ok: true, events: events.length, metrics: metrics.length, queued: queued.length };
   }
 
@@ -539,6 +543,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       case MSG.gloss: return gloss.glossFor(m) satisfies Promise<GlossReply>;
       case MSG.entry: return gloss.entryFor(m);
       case MSG.confirmForms: return forms.confirm(m);
+      case MSG.pageScript: return pageScript.get(m.languageId); // extension pages only (PAGE_ONLY)
       case MSG.explain: return gloss.explainFor(m);
       case MSG.pronounceInfo: return pronounceInfo(m);
       case MSG.speechConfig: return kind === 'page' ? speech.configure(m) : { ok: false };
@@ -552,6 +557,8 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
         const s = await active.get();
         if (!s.active || !(await active.granted())) return { ok: false, error: 'inactive' };
         const languageId = typeof m.languageId === 'string' ? m.languageId : 'sq';
+        // Alphabet Sprint: the letters of the words asked about (from their form ids; nothing new leaves the page), counted on this device
+        void pageScript.addFromUnitIds(languageId, m.unitIds).catch(() => undefined);
         return profile.knowledgeFor(m.unitIds, languageId, { deviceOnly: true });
       }
       case MSG.readingKnowledge: return reading.handle(m, kind, sender?.tab?.id);

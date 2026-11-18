@@ -19,8 +19,13 @@ fixed and a longer list of gaps that should be said plainly.
 - The real weaknesses: the **guesser for unknown words invents words** (*dreihundert* is shown as a verb "dreihundern");
   the **polite form** is read as "they" (*Gehen Sie!* is "They go"); **compound numbers, abbreviations and compound
   adjectives are blank**; the form line is often **not narrowed** although the card's own sentence role has decided the
-  case; and the "All forms" table has **no second source** (no full dictionary record is built for German), so the wrong
-  forms of section 4 are displayed as they are.
+  case; and the "All forms" table, which merges the rules with Wiktionary's table, marks **half of every adjective
+  table as a conflict that does not exist** and shows the masculine table for *Freundin* (section 3.9).
+
+**Correction, 2026-11-18.** The first version of this report said that German has no full dictionary record and
+that "All forms" is the rules alone. That was wrong: German has full records (`public/dict/de/full`), and I had looked
+in the wrong folder. Section 3.9 is rewritten from a measurement over every word of the list. The Norwegian report's
+same statement is right (Norwegian has none).
 
 ## 2. How this was audited, and the numbers
 
@@ -142,12 +147,47 @@ German has no respelling, only letter notes, and some are attached to the wrong 
 f" though they contain no v, while *Vater* and *verstehen* get nothing. Nothing is said about final devoicing (Tag, Weg),
 -ig (König), eu / äu (heute, Häuser), long and short vowels (Stadt, Staat), or stress.
 
-### 3.9 Tables: no second source
+### 3.9 The "All forms" table: rules merged with Wiktionary's table
 
-No full dictionary record exists for German (`public/lexicon/` holds only `el`, `he`, `ru`), so "All forms" is the
-engine's output alone. I confirmed that the wrong forms of section 4 reach the table: *unterhalten* shows *ünterhielte,
-ünterhieltest, ünterhielten, ünterhieltet* in all six Konjunktiv II cells; *viel* shows *viler* with the note "The
-endings attach to vil- (not viel-): viler, vilen"; *Tee* shows the genitive *Teees*; *spannend* shows *spannendester*.
+German has full dictionary records, so the card merges the engine's cells with Wiktionary's table: a cell both agree
+on is "verified"; where they differ the dictionary's form takes the cell, the engine's form becomes an alternative, and
+the cell is marked as a conflict. I built that merged table for every noun, verb and adjective of the word list
+(`conflict.mts`, result in `conflicts.txt`):
+
+| | Lemmas merged | Cells | Verified | Marked as conflict | Rules only | Dictionary only |
+|---|---|---|---|---|---|---|
+| Verbs | 843 of 853 | 31,422 | 30,414 (96.8 %) | 317, in 48 verbs | 637 | 54 |
+| Nouns | 1,448 of 1,470 | 11,596 | 10,753 (92.7 %) | 291, in 111 nouns | 200 | 352 |
+| Adjectives | 333 of 358 | 47,847 | 17,249 (36.1 %) | **24,248, in 321 adjectives** | 5,870 | 480 |
+
+So for verbs and nouns the wrong forms of section 4 do not stand alone: the learner sees the dictionary's form on top
+and the engine's wrong form (*ünterhielte*, *verschiebte*, *Praktikan*) as an alternative beside it. That is better
+than I first reported, and still wrong: a non-word is offered as an alternative. Where the dictionary has no cell
+(*Teees*, the 637 + 200 rules-only cells) the engine's form stands alone.
+
+The merge itself has four faults, all visible on the card:
+
+1. **Half of every adjective table is a false conflict.** Wiktionary's weak and mixed rows carry the article
+   ("der göttliche", "ein kluger"); the engine's cells do not ("göttliche"). The two are compared as strings, so 321 of
+   333 adjectives show thousands of "conflicts", with "der göttliche" as the form and "göttliche" as the alternative.
+   Nothing is in conflict.
+2. **A valid second form is shown as a conflict, often with the rarer form on top.** About seventy nouns whose genitive
+   may be -s or -es show the -es form as the cell and the usual form as a conflicting alternative (*Monates* over
+   Monats, *Montages* over Montags, *Programmes*, *Systemes*, *Urlaubes*). The same for stünde / stände, begönne /
+   begänne, gewönne / gewänne, gesandt / gesendet, gewandt / gewendet, gewinkt / gewunken, gemelkt / gemolken, and the
+   Konjunktiv I of twenty-one verbs in -eln (handle / handele). Both forms are correct German in every one of these.
+3. **The wrong dictionary entry is merged in.** *Freundin*, *Kollegin* and *Studentin* are merged with the tables of
+   *Freund*, *Kollege* and *Student*: the lookup follows "female equivalent of" to the masculine word, so the table of
+   Freundin shows Freund, Freundes as its forms. Homonyms are confused: *Bank* (bank) gets the plural *Bänke* (benches)
+   over Banken, *Gehalt* (salary) gets *Gehalte* over Gehälter, *Elbe* (the river) gets *Elben*, *Heide* and *Email*
+   get the other word's table.
+4. **A fault in Wiktionary's table wins over a correct engine form.** *zurückfahren*: Konjunktiv II *fähre zurück*
+   over the correct führe zurück. *abstimmen*: past *stimme ab* over the correct stimmte ab. The nominalised adjectives
+   (Angestellte, Deutsche, Beamte and seventeen more) are misaligned between the two sides.
+
+Real engine faults that this comparison adds to section 4: the imperatives of *übernehmen*, *übersehen* and
+*übertreffen* are generated as *übernehm(e)*, *überseh(e)* / *übersiehe*, *übertreff(e)* (correct: übernimm,
+übersieh, übertriff); *auferstehen* gets the zu-infinitive *zu auferstehen* (aufzuerstehen).
 
 ## 4. Wrong forms in the word list
 
@@ -213,7 +253,10 @@ endings attach to vil- (not viel-): viler, vilen"; *Tee* shows the genitive *Tee
    end of a clause as "closed".
 7. Abbreviations and compound adjectives.
 8. Filter the dictionary line: no initialisms or vulgar senses first.
-9. Build full dictionary records for German so that the table has a second source.
+9. Fix the table merge (3.9): strip the article before comparing adjective cells; treat a second accepted form as a
+   variant, not a conflict, and keep the commoner one on top; never merge a feminine noun with the masculine entry or a
+   word with its homonym's table; then use the remaining conflicts (`conflicts.txt`) as the to-do list for the word
+   list.
 
 ## 7. Limits of this audit
 

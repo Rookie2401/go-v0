@@ -1,0 +1,165 @@
+# verbs again
+nb | Hun har kastet ballen. | kastet
+nb | Han kastet ballen. | kastet
+nb | Ballen ble kastet langt. | kastet
+nb | Huset ble bygd i 1900. | bygd
+nb | Vi skal reise i morgen. | reise
+nb | Hun reiser seg. | reiser
+nb | Hun kommer om en uke. | om
+nb | Han kommer til å angre. | til
+nb | Jeg holder på å lese. | holder
+nb | Hun fikk gjort mye. | gjort
+nb | Han er kommet hjem. | kommet
+nb | Leve kongen! | Leve
+# adverbs and small words
+nb | Han løp raskt. | raskt
+nb | Hun synger pent. | pent
+nb | Det er selvfølgelig sant. | selvfølgelig
+nb | Han er altså syk. | altså
+nb | Hun kom nemlig for sent. | nemlig
+nb | Gå vekk! | vekk
+nb | Vi går videre. | videre
+nb | Deretter spiste vi. | Deretter
+nb | Det er særlig viktig. | særlig
+nb | Vanligvis står jeg opp tidlig. | Vanligvis
+nb | Dessverre kan jeg ikke komme. | Dessverre
+nb | Heldigvis gikk det bra. | Heldigvis
+nb | Hva mener du egentlig? | egentlig
+nb | Han kom akkurat nå. | akkurat
+nb | Det er altfor dyrt. | altfor
+nb | Jeg er imot forslaget. | imot
+nb | Boka ligger oppå skapet. | oppå
+nb | Du kan jo prøve. | jo
+nb | Han er vel hjemme. | vel
+nb | Det er nok sant. | nok
+nb | Kom da! | da
+nb | Jeg har ikke tid. | tid
+nb | Han kommer snart tilbake. | tilbake
+nb | Det er ikke sant. | sant
+nb | Hun bor her ennå. | ennå
+nb | Jeg vet ikke hvorfor. | hvorfor
+nb | Enten kommer han, eller så blir han hjemme. | Enten
+nb | Jo mer du leser, desto bedre blir du. | desto
+nb | Han kom, selv om han var syk. | selv
+nb | Vi venter til han kommer. | til
+# reflexives, prepositional verbs, particle verbs
+nb | Jeg legger meg klokka ti. | legger
+nb | Hun gleder seg til jul. | gleder
+nb | Han føler seg dårlig. | føler
+nb | De giftet seg i fjor. | giftet
+nb | Vi må skynde oss. | skynde
+nb | Jeg venter på bussen. | venter
+nb | Det kommer an på været. | kommer
+nb | Hun ser på TV etter middag. | ser
+nb | Han kom med bussen. | kom
+nb | Jeg ser ut av vinduet. | ser
+nb | Han tok boka på bordet. | tok
+nb | Hun tok på seg jakken. | tok
+nb | Han slo av lyset. | slo
+nb | Jeg kjenner ham igjen. | kjenner
+nb | Pass på! | Pass
+nb | Han løp så fort han kunne. | fort
+nb | Han løp så fort. | fort
+nb | Jeg står opp klokka sju. | opp
+nb | Hun ser bra ut. | ut
+nb | Jeg liker meg her. | liker
+nb | Han bestemte seg for å reise. | bestemte
+nb | Vi gikk en tur i skogen. | gikk
+# adjectives
+nb | Huset er stort. | stort
+nb | Vi har et lite hus. | lite
+nb | Den lille gutten gråter. | lille
+nb | Små barn sover mye. | Små
+nb | Bilen er blå. | blå
+nb | Hun har blå øyne. | blå
+nb | Et friskt barn leker. | friskt
+nb | Eplet er søtt. | søtt
+nb | Huset er hvitt. | hvitt
+nb | Vi så morsomme filmer. | morsomme
+nb | Jeg leser lokale aviser. | lokale
+nb | Det nasjonale laget vant. | nasjonale
+nb | Hun er eldre enn meg. | eldre
+nb | Det var den beste dagen. | beste
+nb | Filmen ble kjedeligere. | kjedeligere
+nb | Det er mer interessant. | mer
+nb | Vinduet er åpent. | åpent
+nb | Glade barn leker. | Glade
+nb | De store bilene er dyre. | store
+nb | Maten var god. | god
+nb | Det var godt. | godt
+nb | Han er en voksen mann. | voksen
+nb | Hun er norsk. | norsk
+nb | Jeg snakker norsk. | norsk
+nb | Været er dårlig i dag. | dårlig
+nb | Han er flink til å synge. | flink
+nb | Det er en viktig sak. | viktig
+nb | Hun er veldig snill. | snill
+nb | Det er et vanskelig spørsmål. | vanskelig
+nb | Jeg er ferdig. | ferdig
+# pronouns, determiners
+nb | Jeg så henne. | henne
+nb | Hun ga ham boka. | ham
+nb | Det er dem. | dem
+nb | Hvilken bil er din? | Hvilken
+nb | Dette huset er gammelt. | Dette
+nb | Disse bøkene er nye. | Disse
+nb | Den boka er god. | Den
+nb | Jeg har ikke noe mat. | noe
+nb | Alt er bra. | Alt
+nb | Hva heter du? | heter
+nb | Hvem er det? | Hvem
+nb | Vi har mange venner. | mange
+nb | Hun har mye å gjøre. | mye
+nb | Hver dag går jeg på jobb. | Hver
+nb | Hele dagen regnet det. | Hele
+nb | Deres hus er stort. | Deres
+# genitive
+nb | Annes bil er ny. | Annes
+nb | Norges hovedstad er Oslo. | Norges
+nb | Guttens far kom. | Guttens
+nb | Barna gikk til sengs. | sengs
+nb | Jeg leste dagens avis. | dagens
+# numerals, abbreviations, tokens
+nb | Hun er tjueen år. | tjueen
+nb | Han er trettifem år gammel. | trettifem
+nb | Det var den ellevte dagen. | ellevte
+nb | Vi ventet i halvannen time. | halvannen
+nb | Det koster 250 kr. | kr
+nb | Vi kom pga. været. | pga.
+nb | Kom kl. 8. | kl.
+nb | Toget Oslo–Bergen går nå. | Bergen
+nb | Vi feirer 17. mai. | mai
+nb | Det koster femti kroner. | femti
+nb | Jeg har null penger. | null
+nb | Hun kom for første gang. | første
+# compounds and unknown words
+nb | Vi satt ved kjøkkenbordet. | kjøkkenbordet
+nb | Barnehagen åpner klokka sju. | Barnehagen
+nb | Arbeidsgiveren betaler. | Arbeidsgiveren
+nb | Kjolen er lyseblå. | lyseblå
+nb | Huset er kjempestort. | kjempestort
+nb | Det er livsfarlig. | livsfarlig
+nb | Vi samarbeider godt. | samarbeider
+nb | Jeg baker sjokoladekake. | sjokoladekake
+nb | Statsministeren talte. | Statsministeren
+nb | Vi så fotballkampen. | fotballkampen
+nb | Han er en luring. | luring
+nb | Hun strikker en genser. | strikker
+nb | Hun strikker en genser. | genser
+nb | Toget står på togstasjonen. | togstasjonen
+nb | Han går på ungdomsskolen. | ungdomsskolen
+nb | Vi trenger en ny regjering. | regjering
+nb | Jeg bor i Bergen. | Bergen
+nb | Kari kommer i morgen. | Kari
+nb | Mange nordmenn går på ski. | nordmenn
+nb | Stortinget vedtok loven. | Stortinget
+nb | Det er viktig for samfunnet. | samfunnet
+nb | Regjeringen la fram et forslag. | forslag
+nb | Ifølge politiet skjedde ulykken i natt. | Ifølge
+nb | Ifølge politiet skjedde ulykken i natt. | ulykken
+nb | Kommunen har ansvaret. | ansvaret
+nb | Utviklingen går raskt. | Utviklingen
+nb | Det er en mulighet. | mulighet
+nb | Hun fikk en melding. | melding
+nb | De fleste mener det. | fleste
+nb | Dette gjelder alle. | gjelder

@@ -1,0 +1,7 @@
+nb | Han kalte på hunden. | kalte
+nb | Klærne ligger på gulvet. | Klærne
+nb | De store bilene er dyre. | store
+nb | Jeg så henne. | henne
+nb | Vi går videre. | videre
+nb | Vi satt ved kjøkkenbordet. | kjøkkenbordet
+nn | Eg kjem i morgon. | kjem

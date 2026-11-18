@@ -1,0 +1,127 @@
+nn «kjem» in "Eg kjem i morgon." ⇒ kome / VERB / present tense / g:come / 0.8 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of koma
+nn «skriv» in "Ho skriv eit brev." ⇒ skrive / VERB / present tense or imperative / g:write / 0.9 / C:form:Mood=Imp,Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to write
+nn «les» in "Vi les boka." ⇒ lese / VERB / present tense or imperative / g:read / 0.9 / C:form:Mood=Imp,Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:e-infinitive form of lesa ; an inscription
+nn «søv» in "Han søv enno." ⇒ sove / VERB / present tense / g:sleep / 0.8 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to sleep
+nn «vore» in "Eg har vore der." ⇒ vere / AUX / perfect participle / g:having been / 0.8 / C:perfect-har,form:Tense=Past|VerbForm=Part / S:copula (“is / are / become”) linking “der” to its subject / D:alternative form of vera ; alternative form of vêra
+nn «vart» in "Det vart seint." ⇒ bli / AUX / past tense / g:become; be (passive auxiliary) / 0.9 / C:form:Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to stay, remain. ; to be
+nn «lesen» in "Boka vert lesen av mange." ⇒ — / — /  / g:— / 0 / D:to read ; to read aloud
+nn «skrive» in "Brevet er skrive." ⇒ skrive / VERB / infinitive or perfect participle / g:to write / 0.9 / C:form:Tense=Past|VerbForm=Inf,Part / S:the main word of the sentence / D:to write
+nn «komne» in "Dei er komne heim." ⇒ — / — /  / g:— / 0 / D:∅
+nn «komen» in "Han er komen heim." ⇒ — / — /  / g:— / 0 / D:∅
+nn «finst» in "Det finst ikkje mat." ⇒ finnast / VERB / present tense / g:exist; be found / 0.8 / C:form:Tense=Pres|VerbForm=Fin,Inf / S:the main word of the sentence / D:exist, be ; be found
+nn «synest» in "Eg synest det er bra." ⇒ synast / VERB / present tense / g:think; seem / 0.8 / C:form:Tense=Pres|VerbForm=Fin,Inf / S:the main word of the sentence / D:to seem ; to think (have an opinion)
+nn «møtest» in "Vi møtest i morgon." ⇒ — / — /  / g:— / 0 / D:to meet
+nn «heiter» in "Kva heiter du?" ⇒ heite / VERB / present tense / g:be called / 0.9 / C:wh-question,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of heita ; name, denomination
+nn «veit» in "Eg veit ikkje." ⇒ vite / VERB / present tense / g:know (a fact) / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of vita ; alternative form of vete (“beacon”)
+nn «seier» in "Ho seier det." ⇒ seie / VERB / present tense / g:say / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to say, tell
+nn «gjer» in "Han gjer det." ⇒ gjere / VERB / present tense or imperative / g:do; make / 0.9 / C:form:Mood=Imp,Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of gjera ; Geri, one of Odin’s two wolves
+nn «bur» in "Dei bur i Bergen." ⇒ bu / VERB / present tense / g:live; reside / 0.9 / C:form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to live (have permanent residence), stay ; to be, to dwell, to be in
+nn «tenkjer» in "Eg tenkjer på deg." ⇒ tenkje / VERB / present tense / g:think / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of tenkja
+nn «Tenk» in "Tenk på det!" ⇒ Tenk / PROPN /  / g:— / 0.4 UNCONF / S:the main word of the sentence / D:∅
+nn «Sit» in "Sit ned!" ⇒ sitje / VERB / present tense / g:sit / 0.9 / C:form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of sitja
+nn «spurde» in "Ho spurde meg." ⇒ spørje / VERB / past tense / g:ask / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:alternative form of spørja
+nn «kasta» in "Eg kasta ballen." ⇒ kaste / VERB / past tense or perfect participle / g:throw / 0.9 / C:form:Mood=Ind|Tense=Past|VerbForm=Fin,Inf,Part / S:the main word of the sentence / D:alternative form of kasta ; caste
+nn «kastar» in "Han kastar ballen." ⇒ kaste / VERB / present tense / g:throw / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of kasta ; caste
+nn «kaste» in "Eg likar å kaste ball." ⇒ kaste / VERB / infinitive / g:to throw / 0.9 / C:infinitive-marker-aa,form:VerbForm=Inf / S:open complement of “likar” (an infinitive, or a predicate without its own subject) / D:alternative form of kasta ; caste
+nn «kasta» in "Eg likar å kasta ball." ⇒ kaste / VERB / past tense or perfect participle / g:throw / 0.9 / C:form:Mood=Ind|Tense=Past|VerbForm=Fin,Inf,Part / S:open complement of “likar” (an infinitive, or a predicate without its own subject) / D:alternative form of kasta ; caste
+nn «køyrde» in "Dei køyrde heim." ⇒ køyre / VERB / past tense / g:drive / 0.8 / C:form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:alternative form of køyra
+nn «las» in "Eg las boka." ⇒ lese / VERB / past tense / g:read / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:e-infinitive form of lesa ; an inscription
+nn «åt» in "Vi åt middag." ⇒ ete / VERB / past tense / g:eat / 0.8 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:alternative form of eta
+nn «flaug» in "Fuglen flaug bort." ⇒ — / — /  / g:— / 0 / D:plane, aeroplane (UK), airplane (US), aircraft ; a very steep cliff
+nn «tek» in "Han tek bussen." ⇒ ta / VERB / present tense / g:take / 0.8 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to take (to grab with the hands) ; to catch (to capture)
+nn «gjekk» in "Ho gjekk heim." ⇒ gå / VERB / past tense / g:go; walk / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:walk, go. ; work (function), run, to be possible.
+nn «fekk» in "Dei fekk ei gåve." ⇒ få / VERB / past tense / g:get; receive; may / 0.9 / C:form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:bleach, blanch ; soak and dissolve; rot
+nn «lese» in "Eg har lese boka." ⇒ lese / VERB / infinitive or perfect participle / g:to read / 0.9 / C:perfect-har,form:Tense=Past|VerbForm=Inf,Part / S:the main word of the sentence / D:e-infinitive form of lesa ; an inscription
+nn «drukke» in "Han har drukke kaffi." ⇒ drikke / VERB / perfect participle / g:having drunk / 0.9 / C:perfect-har,form:Tense=Past|VerbForm=Part / S:the main word of the sentence / D:e-infinitive form of drikka ; drink (mass noun)
+nn «funne» in "Vi har funne nøkkelen." ⇒ finne / VERB / perfect participle / g:having found / 0.9 / C:perfect-har,form:Tense=Past|VerbForm=Part / S:the main word of the sentence / D:alternative form of finna ; a Finn (person from Finland)
+nn «vorte» in "Det har vorte kaldt." ⇒ bli / AUX / perfect participle / g:having become / 0.8 / C:perfect-har,form:Tense=Past|VerbForm=Part / S:copula (“is / are / become”) linking “kaldt” to its subject / D:to stay, remain. ; to be
+nn «trur» in "Eg trur på deg." ⇒ tru / VERB / present tense / g:believe / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / P:tru på … / S:the main word of the sentence / D:to think, believe ; imagine, suppose
+nn «høyrer» in "Eg høyrer deg." ⇒ høyre / VERB / present tense / g:hear / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:e-infinitive form of høyra
+nn «høyrde» in "Vi høyrde musikk." ⇒ høyre / VERB / past tense / g:hear / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:e-infinitive form of høyra
+nn «Ver» in "Ver snill!" ⇒ vere / AUX / imperative / g:be / 0.9 / C:form:Mood=Imp|VerbForm=Fin / S:copula (“is / are / become”) linking “snill” to its subject / D:alternative form of vera ; alternative form of vêra
+nn «gjer» in "Ikkje gjer det!" ⇒ gjere / VERB / present tense or imperative / g:do; make / 0.9 / C:form:Mood=Imp,Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of gjera ; Geri, one of Odin’s two wolves
+nn «arbeider» in "Han arbeider mykje." ⇒ — / — /  / g:— / 0 / D:e-infinitive form of arbeida
+nn «snakkar» in "Ho snakkar norsk." ⇒ snakke / VERB / present tense / g:speak; talk / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of snakka
+nn «reise» in "Eg skal reise i morgon." ⇒ reise / VERB / infinitive / g:to travel / 0.88 / also reise/NOUN / C:modal-bare-infinitive,form:VerbForm=Inf / S:the main word of the sentence / D:e-infinitive form of reisa ; journey
+nn «lesast» in "Boka skal lesast." ⇒ lese / VERB / present tense, passive (-s) / g:read / 0.9 / C:s-passive,form:Tense=Pres|VerbForm=Fin,Inf|Voice=Pass / S:the main word of the sentence / D:e-infinitive form of lesa ; an inscription
+nn «sel» in "Han sel bilar." ⇒ selje / VERB / present tense / g:sell / 0.8 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:e-infinitive form of selja ; a village and former municipality of Nord
+nn «fortel» in "Eg fortel ei soge." ⇒ fortelje / VERB / present tense / g:tell / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of fortelja
+nn «ligg» in "Ho ligg i senga." ⇒ liggje / VERB / present tense / g:lie; be located / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of liggja
+nn «legg» in "Han legg seg." ⇒ leggje / VERB / present tense / g:lay; put / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:e-infinitive form of leggja
+nn «set» in "Vi set oss ned." ⇒ setje seg ned / VERB / present tense / g:sit down / 0.85 / also setje/VERB / C:v2-main-clause,particle-verb,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to see ; to look
+nn «syng» in "Dei syng ein song." ⇒ syngje / VERB / present tense / g:sing / 0.9 / C:form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:e-infinitive form of syngja
+nn «forstår» in "Eg forstår ikkje." ⇒ forstå / VERB / present tense / g:understand / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to understand
+nn «sa» in "Han sa at han kjem." ⇒ seie / VERB / past tense / g:say / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to say, tell
+nn «såg» in "Eg såg dei i går." ⇒ sjå / VERB / past tense / g:see; look / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to see ; to look
+nn «gav» in "Han gav henne boka." ⇒ gje / VERB / past tense / g:give / 0.7 / also gi/VERB / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:alternative form of gjeva (“to give”)
+nn «glade» in "Dei er glade." ⇒ glad / ADJ /  / g:happy / 0.9 / C:form:Definite=Def,Ind|Degree=Pos|Number=Plur,Sing / S:the main word of the sentence / D:happy, glad
+nn «hjelpe» in "Vi vil gjerne hjelpe dykk." ⇒ hjelpe / VERB / infinitive / g:to help / 0.8 / C:modal-bare-infinitive,form:VerbForm=Inf / S:the main word of the sentence / D:alternative form of hjelpa
+nn «hugsar» in "Eg hugsar det." ⇒ hugse / VERB / present tense / g:remember / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of hugsa
+nn «byrja» in "Ho byrja å gråte." ⇒ byrje / VERB / past tense or perfect participle / g:begin / 0.8 / C:form:Mood=Ind|Tense=Past|VerbForm=Fin,Inf,Part / S:the main word of the sentence / D:alternative form of byrja ; alternative form of burda
+nn «døydde» in "Han døydde i fjor." ⇒ døy / VERB / past tense / g:die / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to die (stop living) ; cease to exist, come to an end. Often followed 
+nn «budd» in "Dei har budd her lenge." ⇒ bu / VERB / perfect participle / g:having lived / 0.9 / C:perfect-har,form:Tense=Past|VerbForm=Part / S:the main word of the sentence / D:to live (have permanent residence), stay ; to be, to dwell, to be in
+nn «Gutane» in "Gutane spelar fotball." ⇒ gut / NOUN / plural, definite / g:boy / 0.9 / C:v2-main-clause,form:Definite=Def|Number=Plur / S:subject of “spelar” / D:a boy (young male)
+nn «gutane» in "Eg ser gutane." ⇒ gut / NOUN / plural, definite / g:boy / 0.9 / C:form:Definite=Def|Number=Plur / S:direct object of “ser” / D:a boy (young male)
+nn «Setninga» in "Setninga er lang." ⇒ Setninga / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:subject of “lang” / D:a sentence (as above)
+nn «setningar» in "Han skriv lange setningar." ⇒ setning / NOUN / plural, indefinite / g:sentence / 0.9 / C:form:Definite=Ind|Number=Plur / S:direct object of “skriv” / D:a sentence (as above)
+nn «mi» in "Boka mi er ny." ⇒ min / DET / feminine, singular, 1 person, possessive / g:my / 0.9 / C:postposed-possessive,form:Gender=Fem|Number=Sing|Person=1|Poss=Yes / S:article or determiner of “Boka” / D:my, mine
+nn «soge» in "Eg las ei soge." ⇒ — / — /  / g:— / 0 / D:a story ; a saga
+nn «skulen» in "Dei bur i skulen." ⇒ skule / NOUN / masculine, singular, definite / g:school / 0.9 / C:form:Definite=Def|Gender=Masc|Number=Sing / S:adverbial phrase of “bur” (place, time, manner or a prepositional object) / D:school ; to scowl; stare at someone or something with a look of disple
+nn «Kyrkja» in "Kyrkja er gammal." ⇒ kyrkje / NOUN / feminine, singular, definite / g:church / 0.9 / C:v2-main-clause,form:Definite=Def|Gender=Fem|Number=Sing / S:subject of “gammal” / D:a church ; e-infinitive form of kyrkja
+nn «forteljing» in "Eg les ei forteljing." ⇒ — / — /  / g:— / 0 / D:∅
+nn «høve» in "Det er eit godt høve." ⇒ — / — /  / g:— / 0 / D:occasion ; chance, opportunity
+nn «regjering» in "Vi har ei ny regjering." ⇒ — / — /  / g:— / 0 / D:a government
+nn «Jentene» in "Jentene syng." ⇒ jente / NOUN / plural, definite / g:girl / 0.9 / C:v2-main-clause,form:Definite=Def|Number=Plur / S:subject of “syng” / D:alternative form of gjente
+nn «hovudet» in "Eg har vondt i hovudet." ⇒ hovud / NOUN / neuter, singular, definite / g:head / 0.9 / C:form:Definite=Def|Gender=Neut|Number=Sing / S:adverbial phrase of “har” (place, time, manner or a prepositional object) / D:head ; top, something that resembles a head
+nn «Auga» in "Auga hans er blå." ⇒ auge / NOUN / plural, definite / g:eye / 0.9 / C:postposed-possessive,v2-main-clause,form:Definite=Def|Number=Plur / S:subject of “blå” / D:alternative form of auga
+nn «Borna» in "Borna leikar ute." ⇒ barn / NOUN / plural, definite / g:child / 0.9 / C:form:Definite=Def|Number=Plur / S:the main word of the sentence / D:child
+nn «vanleg» in "Det er eit vanleg problem." ⇒ vanleg / ADJ / feminine or masculine, singular, indefinite / g:common; usual / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc|Number=Sing / S:adjective describing “problem” / D:common, normal
+nn «einsam» in "Ho er einsam." ⇒ — / — /  / g:— / 0 / D:lonely
+nn «reint» in "Vi drikk reint vatn." ⇒ — / — /  / g:— / 0 / D:clean ; pure
+nn «open» in "Døra er open." ⇒ open / ADJ / feminine or masculine, singular, indefinite / g:open / 0.8 / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc|Number=Sing / S:the main word of the sentence / D:open
+nn «ope» in "Eit ope vindauge." ⇒ open / ADJ / neuter, singular, indefinite / g:open / 0.8 / C:form:Definite=Ind|Degree=Pos|Gender=Neut|Number=Sing / S:adjective describing “vindauge” / D:open
+nn «Opne» in "Opne dører." ⇒ open / ADJ /  / g:open / 0.7 / also opne/VERB / C:form:Definite=Def,Ind|Degree=Pos|Number=Plur,Sing / S:adjective describing “dører” / D:open
+nn «større» in "Ho er større enn meg." ⇒ stor / ADJ / comparative / g:big / 0.9 / C:comparison,form:Degree=Cmp / S:the main word of the sentence / D:large, big, great
+nn «finare» in "Dette er finare." ⇒ fin / ADJ / comparative / g:fine; nice / 0.9 / C:comparison,form:Degree=Cmp / S:the main word of the sentence / D:fine ; pretty, handsome
+nn «finaste» in "Dei finaste blomane." ⇒ fin / ADJ / definite, superlative / g:fine; nice / 0.9 / C:comparison,form:Definite=Def|Degree=Sup / S:the main word of the sentence / D:fine ; pretty, handsome
+nn «eldste» in "Han er den eldste." ⇒ gammal / ADJ / definite, superlative / g:old / 0.9 / C:comparison,form:Definite=Def|Degree=Sup / S:the main word of the sentence / D:alternative form of gamal (“old”)
+nn «mykje» in "Det er mykje snø." ⇒ mykje / DET / neuter, singular / g:much, a lot of / 0.8 / also mykje/ADV / C:form:Gender=Neut|Number=Sing|PronType=Ind / S:article or determiner of “snø” / D:a lot, much ; a lot, much
+nn «Nokre» in "Nokre born leikar." ⇒ nokon / DET / plural / g:some, any / 0.9 / C:form:Number=Plur|PronType=Ind / S:article or determiner of “born” / D:someone ; some
+nn «Kven» in "Kven er det?" ⇒ kven / PRON /  / g:who / 0.9 / C:wh-question,form:PronType=Int / S:the main word of the sentence / D:who ; a Finn, a Finnish speaking person
+nn «Korleis» in "Korleis går det?" ⇒ korleis / ADV /  / g:how / 0.9 / C:wh-question,form:PronType=Int / S:adverb modifying “går” / D:how
+nn «Kvifor» in "Kvifor ikkje?" ⇒ kvifor / ADV /  / g:why / 0.9 / C:wh-question,form:PronType=Int / D:why
+nn «Kvar» in "Kvar bur du?" ⇒ kvar / ADV /  / g:where / 0.7 / also kvar/DET / C:wh-question,form:PronType=Int / S:adverb modifying “bur” / D:where ; each
+nn «kvar» in "Eg går kvar dag." ⇒ kvar / DET / feminine or masculine, singular / g:each, every / 0.8 / also kvar/ADV / C:form:Gender=Fem,Masc|Number=Sing|PronType=Tot / S:article or determiner of “dag” / D:each ; every
+nn «Me» in "Me går no." ⇒ vi / PRON / plural, 1 person / g:we; us / 0.9 / C:v2-main-clause,form:Case=Nom|Number=Plur|Person=1|PronType=Prs / S:subject of “går” / D:we ; eye dialect spelling of vil
+nn «Dokker» in "Dokker må kome." ⇒ Dokker / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:subject of “kome” / D:you (plural), used both as a subjective and objective case ; objective
+nn «att» in "Kom att!" ⇒ — / — /  / g:— / 0 / D:back ; left
+nn «Elles» in "Elles takk." ⇒ Elles / PROPN /  / g:— / 0.4 UNCONF / S:the main word of the sentence / D:else, otherwise
+nn «òg» in "Eg òg." ⇒ òg / ADV /  / g:also, too / 0.9 / S:adverb modifying “Eg” / D:too, also, as well
+nn «dømes» in "Han kom til dømes i går." ⇒ — / — /  / g:— / 0 / P:til dømes / D:∅
+nn «sjølvsagt» in "Det er sjølvsagt sant." ⇒ — / — /  / g:— / 0 / D:of course
+nn «Difor» in "Difor kom han." ⇒ difor / ADV /  / g:therefore / 0.9 / S:adverb modifying “kom” / D:therefore
+nn «kvarandre» in "Dei hjelper kvarandre." ⇒ — / — /  / g:— / 0 / D:each other
+nn «honom» in "Eg såg honom." ⇒ han / PRON / masculine, singular, 3 person / g:he; him / 0.9 / C:form:Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs / S:direct object of “såg” / D:he, him, it (third person singular, masculine)
+nn «ikkje» in "Eg veit at han ikkje kjem." ⇒ ikkje / ADV /  / g:not / 0.9 / C:subordinate-ikke-before-verb,form:Polarity=Neg / S:adverb modifying “kjem” / D:not ; don't
+nn «husa» in "Dei store husa er dyre." ⇒ hus / NOUN / plural, definite / g:house / 0.9 / C:double-definiteness,form:Definite=Def|Number=Plur / S:subject of “dyre” / D:a house ; a small container for an item, a liquid or a powder (e.g. su
+nn «hos» in "Eg bur hos dei." ⇒ — / — /  / g:— / 0 / D:at, by, with
+nn «heime» in "Han er ikkje heime." ⇒ heime / ADV /  / g:at home / 0.9 / S:the main word of the sentence / D:at home ; e-infinitive form of heima
+nn «noko» in "Eg har ikkje noko." ⇒ noko / PRON / neuter, singular / g:something, anything / 0.8 / also noko/DET / C:form:Gender=Neut|Number=Sing|PronType=Ind / S:direct object of “har” / D:something ; some
+nn «glede» in "Det er ei stor glede." ⇒ glede / NOUN / feminine, singular, indefinite / g:joy / 0.9 / C:form:Definite=Ind|Gender=Fem|Number=Sing / S:the main word of the sentence / D:happiness, joy, delight, gladness, pleasure
+nn «ventar» in "Vi ventar på bussen." ⇒ vente / VERB / present tense / g:wait / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:alternative form of venta ; that which is to come; only used in the ex
+nn «Veka» in "Veka har sju dagar." ⇒ veke / NOUN / feminine, singular, definite / g:week / 0.9 / C:v2-main-clause,form:Definite=Def|Gender=Fem|Number=Sing / S:subject of “har” / D:week
+nn «Tida» in "Tida går fort." ⇒ tid / NOUN / feminine, singular, definite / g:time / 0.9 / C:v2-main-clause,form:Definite=Def|Gender=Fem|Number=Sing / S:subject of “går” / D:time ; an age or era
+nn «namnet» in "Kva er namnet ditt?" ⇒ namn / NOUN / neuter, singular, definite / g:name / 0.9 / C:postposed-possessive,form:Definite=Def|Gender=Neut|Number=Sing / S:subject of “Kva” / D:name
+nn «lærar» in "Han er lærar." ⇒ lærar / NOUN / masculine, singular, indefinite / g:teacher / 0.9 / C:form:Definite=Ind|Gender=Masc|Number=Sing / S:the main word of the sentence / D:teacher (person who teaches)
+nn «norsk» in "Eg er norsk." ⇒ norsk / ADJ / feminine or masculine or neuter, singular, indefinite / g:Norwegian / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc,Neut|Number=Sing / S:the main word of the sentence / D:Norwegian (of or relating to Norway, Norwegians or the Norwegian langu
+nn «tolv» in "Ho har tolv bøker." ⇒ — / — /  / g:— / 0 / D:twelve ; a male given name from Old Norse
+nn «tretti» in "Det kostar tretti kroner." ⇒ — / — /  / g:— / 0 / D:thirty
+nn «syster» in "Eg har ein bror og ei syster." ⇒ syster / NOUN / feminine, singular, indefinite / g:sister / 0.8 / C:form:Definite=Ind|Gender=Fem|Number=Sing / S:coordinated with “bror” / D:sister (female with same parents) ; sister (a female member of a relig
+nn «spørsmål» in "Eg har eit spørsmål." ⇒ spørsmål / NOUN / neuter, indefinite / g:question / 0.9 / C:form:Definite=Ind|Gender=Neut|Number=Plur,Sing / S:direct object of “har” / D:a question
+nn «Noreg» in "Ho er frå Noreg." ⇒ Noreg / PROPN /  / g:Norway / 0.9 / S:the main word of the sentence / D:Norway (a country in Scandinavia in Northern Europe; capital and large
+nn «talar» in "Han talar sant." ⇒ — / — /  / g:— / 0 / D:a speaker or orator
+nn «vere» in "Eg vil vere med." ⇒ vere / AUX / infinitive / g:to be / 0.9 / C:modal-bare-infinitive,form:VerbForm=Inf / S:the main word of the sentence / D:alternative form of vera ; alternative form of vêra
+nn «mogleg» in "Det er mogleg." ⇒ — / — /  / g:— / 0 / D:alternative form of mogeleg
+nn «Kjærleiken» in "Kjærleiken er størst." ⇒ kjærleik / NOUN / masculine, singular, definite / g:love / 0.9 / C:v2-main-clause,form:Definite=Def|Gender=Masc|Number=Sing / S:subject of “størst” / D:love
+nn «Gud» in "Gud er god." ⇒ Gud / PROPN /  / g:God / 0.9 / C:v2-main-clause / S:subject of “god” / D:God ; god
+nn «Jesus» in "Jesus sa til dei." ⇒ Jesus / PROPN /  / g:Jesus / 0.9 / C:v2-main-clause / S:subject of “sa” / D:Jesus

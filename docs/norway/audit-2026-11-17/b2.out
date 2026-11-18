@@ -1,0 +1,157 @@
+nb «kastet» in "Hun har kastet ballen." ⇒ kaste / VERB / past tense or perfect participle / g:throw / 0.9 / C:form:Mood=Ind|Tense=Past|VerbForm=Fin,Part / S:the main word of the sentence / D:to throw ; to dart
+nb «kastet» in "Han kastet ballen." ⇒ kaste / VERB / past tense or perfect participle / g:throw / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin,Part / S:the main word of the sentence / D:to throw ; to dart
+nb «kastet» in "Ballen ble kastet langt." ⇒ kaste / VERB / past tense or perfect participle / g:throw / 0.9 / C:form:Mood=Ind|Tense=Past|VerbForm=Fin,Part / S:the main word of the sentence / D:to throw ; to dart
+nb «bygd» in "Huset ble bygd i 1900." ⇒ bygge / VERB / perfect participle / g:having built / 0.9 / C:bli-passive,form:Tense=Past|VerbForm=Part / S:the main word of the sentence / D:to build ; to inhabit, dwell, live (today only in the compound word in
+nb «reise» in "Vi skal reise i morgen." ⇒ reise / VERB / infinitive / g:to travel / 0.88 / also reise/NOUN / C:modal-bare-infinitive,form:VerbForm=Inf / S:the main word of the sentence / D:to travel ; to go (somewhere)
+nb «reiser» in "Hun reiser seg." ⇒ reise / VERB / present tense / g:travel / 0.88 / also reise/NOUN / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to travel ; to go (somewhere)
+nb «om» in "Hun kommer om en uke." ⇒ komme / VERB / present tense / g:come / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to come; to approach or move towards the speaker, another person, or a
+nb «til» in "Han kommer til å angre." ⇒ til / ADP /  / g:to; until / 0.9 / S:particle of the particle verb “kommer” / D:to (indicating range, direction or destination) ; at or on (indicating
+nb «holder» in "Jeg holder på å lese." ⇒ holde på / VERB / present tense / g:be busy; keep on / 0.85 / also holde/VERB / C:v2-main-clause,particle-verb,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:holder
+nb «gjort» in "Hun fikk gjort mye." ⇒ gjøre / VERB / perfect participle / g:having done / 0.9 / C:form:Tense=Past|VerbForm=Part / S:open complement of “fikk” (an infinitive, or a predicate without its own subject) / D:to do (something)
+nb «kommet» in "Han er kommet hjem." ⇒ komme / VERB / perfect participle / g:having come / 0.9 / C:form:Tense=Past|VerbForm=Part / S:the main word of the sentence / D:to come; to approach or move towards the speaker, another person, or a
+nb «Leve» in "Leve kongen!" ⇒ leve / VERB / infinitive / g:to live / 0.9 / C:form:VerbForm=Inf / S:the main word of the sentence / D:to live
+nb «raskt» in "Han løp raskt." ⇒ — / — /  / g:— / 0 / D:quickly
+nb «pent» in "Hun synger pent." ⇒ pent / ADV /  / g:nicely / 0.7 / also pen/ADJ / S:adverb modifying “synger” / D:nice ; neat
+nb «selvfølgelig» in "Det er selvfølgelig sant." ⇒ — / — /  / g:— / 0 / D:of course, naturally
+nb «altså» in "Han er altså syk." ⇒ — / — /  / g:— / 0 / D:therefore, thus, consequently, accordingly; used to indicate a logical
+nb «nemlig» in "Hun kom nemlig for sent." ⇒ — / — /  / g:— / 0 / D:namely
+nb «vekk» in "Gå vekk!" ⇒ — / — /  / g:— / 0 / D:away (fra / from) ; gone, lost
+nb «videre» in "Vi går videre." ⇒ gå videre / ADV /  / g:go on / 0.85 / C:particle-verb / S:particle of the particle verb “går” / D:further, furthermore ; further
+nb «Deretter» in "Deretter spiste vi." ⇒ Deretter / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:direct object of “spiste” / D:afterwards; after that; then; thereafter; subsequently ; accordingly
+nb «særlig» in "Det er særlig viktig." ⇒ — / — /  / g:— / 0 / D:special, particular ; especially
+nb «Vanligvis» in "Vanligvis står jeg opp tidlig." ⇒ Vanligvis / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:direct object of “står” / D:commonly, usually, typically ; ordinarily, normally
+nb «Dessverre» in "Dessverre kan jeg ikke komme." ⇒ dessverre / ADV /  / g:unfortunately / 0.9 / C:inversion-after-adverbial,v2-main-clause / S:adverb modifying “komme” / D:unfortunately, to regret ; sorry
+nb «Heldigvis» in "Heldigvis gikk det bra." ⇒ heldigvis / ADV /  / g:fortunately / 0.9 / S:adverb modifying “gikk” / D:fortunately, luckily
+nb «egentlig» in "Hva mener du egentlig?" ⇒ egentlig / ADV /  / g:actually, really / 0.9 / S:adverb modifying “mener” / D:actually ; actual
+nb «akkurat» in "Han kom akkurat nå." ⇒ akkurat / ADV /  / g:exactly / 0.9 / S:adverb modifying “kom” / D:right, exactly
+nb «altfor» in "Det er altfor dyrt." ⇒ — / — /  / g:— / 0 / D:too (submodifier) (more than enough) ; overly
+nb «imot» in "Jeg er imot forslaget." ⇒ — / — /  / g:— / 0 / D:against ; towards
+nb «oppå» in "Boka ligger oppå skapet." ⇒ — / — /  / g:— / 0 / D:on top ; on top of
+nb «jo» in "Du kan jo prøve." ⇒ jo / ADV /  / g:as you know; yes (to a negative) / 0.9 / S:adverb modifying “kan” / D:yes; in disagreement with the last speaker's negative statement. ; yes
+nb «vel» in "Han er vel hjemme." ⇒ vel / ADV /  / g:surely; well / 0.9 / S:adverb modifying “hjemme” / D:well
+nb «nok» in "Det er nok sant." ⇒ nok / ADV /  / g:probably; enough / 0.9 / S:adverb modifying “sant” / D:enough ; surely, probably
+nb «da» in "Kom da!" ⇒ da / ADV /  / g:then; well / 0.8 / also da/SCONJ / S:adverb modifying “Kom” / D:then ; when
+nb «tid» in "Jeg har ikke tid." ⇒ tid / NOUN / feminine or masculine, singular, indefinite / g:time / 0.9 / C:form:Definite=Ind|Gender=Fem,Masc|Number=Sing / S:direct object of “har” / D:time ; an age or era
+nb «tilbake» in "Han kommer snart tilbake." ⇒ komme tilbake / ADV /  / g:come back / 0.85 / also tilbake/ADV / C:particle-verb / S:particle of the particle verb “kommer” / D:back (to or in a previous condition or place)
+nb «sant» in "Det er ikke sant." ⇒ sann / ADJ / neuter, singular, indefinite / g:true / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Neut|Number=Sing / S:the main word of the sentence / D:true, real, genuine
+nb «ennå» in "Hun bor her ennå." ⇒ ennå / ADV /  / g:yet, still / 0.9 / S:adverb modifying “bor” / D:yet ; still
+nb «hvorfor» in "Jeg vet ikke hvorfor." ⇒ hvorfor / ADV /  / g:why / 0.9 / C:form:PronType=Int / D:wherefore, why
+nb «Enten» in "Enten kommer han, eller så blir han hjemme." ⇒ enten / CONJ /  / g:either / 0.9 / S:adverb modifying “kommer” / D:either (used in combination with eller; enten ... eller... / either ..
+nb «desto» in "Jo mer du leser, desto bedre blir du." ⇒ — / — /  / g:— / 0 / D:even, all the more ; the, more
+nb «selv» in "Han kom, selv om han var syk." ⇒ selv / PRON / reflexive / g:self / 0.9 / C:form:PronType=Prs|Reflex=Yes / P:selv om / S:direct object of “kom” / D:myself, yourself, himself, herself, itself ; ourselves, yourselves, th
+nb «til» in "Vi venter til han kommer." ⇒ til / ADP /  / g:to; until / 0.9 / S:particle of the particle verb “venter” / D:to (indicating range, direction or destination) ; at or on (indicating
+nb «legger» in "Jeg legger meg klokka ti." ⇒ legge / VERB / present tense / g:lay; put / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to lay, put, place
+nb «gleder» in "Hun gleder seg til jul." ⇒ glede / VERB / present tense / g:please (glede seg: look forward) / 0.88 / also glede/NOUN / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to make happy ; to enjoy
+nb «føler» in "Han føler seg dårlig." ⇒ føle / VERB / present tense / g:feel (føle seg: feel) / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to feel (use the sense of touch to be aware of something) ; to feel, s
+nb «giftet» in "De giftet seg i fjor." ⇒ gifte / VERB / past tense or perfect participle / g:marry (gifte seg) / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin,Part / S:the main word of the sentence / D:to marry or wed ; gifte bort sin datter - (of a father) to give one's 
+nb «skynde» in "Vi må skynde oss." ⇒ — / — /  / g:— / 0 / D:to hurry
+nb «venter» in "Jeg venter på bussen." ⇒ vente / VERB / present tense / g:wait / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to stay put, to wait, to delay ; to be ready
+nb «kommer» in "Det kommer an på været." ⇒ komme / VERB / present tense / g:come / 0.9 / C:form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to come; to approach or move towards the speaker, another person, or a
+nb «ser» in "Hun ser på TV etter middag." ⇒ se etter / VERB / present tense / g:look after / 0.6 / also se/VERB / C:v2-main-clause,particle-verb,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to see (perceive with the eyes).
+nb «kom» in "Han kom med bussen." ⇒ komme med / VERB / past tense or imperative / g:bring; come along / 0.85 / also komme/VERB / C:particle-verb,form:Mood=Imp,Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to come; to approach or move towards the speaker, another person, or a
+nb «ser» in "Jeg ser ut av vinduet." ⇒ se ut / VERB / present tense / g:look; appear / 0.85 / also se/VERB / C:v2-main-clause,particle-verb,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to see (perceive with the eyes).
+nb «tok» in "Han tok boka på bordet." ⇒ ta på / VERB / past tense / g:put on / 0.6 / also ta/VERB / C:v2-main-clause,particle-verb,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to take (grab with the hands) ; to have
+nb «tok» in "Hun tok på seg jakken." ⇒ ta på seg / VERB / past tense / g:put on (clothes) / 0.85 / also ta/VERB / C:v2-main-clause,particle-verb,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to take (grab with the hands) ; to have
+nb «slo» in "Han slo av lyset." ⇒ slå av / VERB / past tense / g:switch off / 0.85 / also slå/VERB / C:v2-main-clause,particle-verb,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to beat, punch, hit, strike ; to tack (to turn a vessel onto the other
+nb «kjenner» in "Jeg kjenner ham igjen." ⇒ kjenne / VERB / present tense / g:know (a person); feel / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to know (be acquainted or familiar with) ; to feel, sense
+nb «Pass» in "Pass på!" ⇒ passe / VERB / imperative / g:fit; look after / 0.9 / C:form:Mood=Imp|VerbForm=Fin / S:the main word of the sentence / D:to fit (be the right size and shape) ; to suit (someone)
+nb «fort» in "Han løp så fort han kunne." ⇒ fort / ADV /  / g:fast; quickly / 0.9 / P:så fort / S:adverb modifying “løp” / D:fast, quick (adverb), quickly ; a fort
+nb «fort» in "Han løp så fort." ⇒ fort / ADV /  / g:fast; quickly / 0.9 / P:så fort / S:adverb modifying “løp” / D:fast, quick (adverb), quickly ; a fort
+nb «opp» in "Jeg står opp klokka sju." ⇒ stå opp / ADV /  / g:get up / 0.85 / also opp/ADV / C:particle-verb / S:particle of the particle verb “står” / D:to wake up; to get up (out of bed)
+nb «ut» in "Hun ser bra ut." ⇒ se ut / ADV /  / g:look; appear / 0.7 / also ut/ADV / C:particle-verb / S:particle of the particle verb “ser” / D:out (direction) ; get out!
+nb «liker» in "Jeg liker meg her." ⇒ like / VERB / present tense / g:like / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to like ; as, equally
+nb «bestemte» in "Han bestemte seg for å reise." ⇒ bestemme / VERB / past tense / g:decide / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to decide ; to determine
+nb «gikk» in "Vi gikk en tur i skogen." ⇒ gå / VERB / past tense / g:go; walk / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:To walk, go. ; To work (function), run, to be possible.
+nb «stort» in "Huset er stort." ⇒ stor / ADJ / neuter, singular, indefinite / g:big / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Neut|Number=Sing / S:the main word of the sentence / D:large, big, great ; of high regard
+nb «lite» in "Vi har et lite hus." ⇒ liten / ADJ / neuter, singular, indefinite / g:small / 0.7 / also lite/ADV / C:form:Definite=Ind|Degree=Pos|Gender=Neut|Number=Sing / S:adjective describing “hus” / D:small, little (not large)
+nb «lille» in "Den lille gutten gråter." ⇒ liten / ADJ /  / g:small / 0.9 / C:double-definiteness,form:Definite=Def,Ind|Degree=Pos|Number=Plur,Sing / S:adjective describing “gutten” / D:small, little (not large)
+nb «Små» in "Små barn sover mye." ⇒ liten / ADJ /  / g:small / 0.9 / C:v2-main-clause,form:Definite=Def,Ind|Degree=Pos|Number=Plur,Sing / S:adjective describing “barn” / D:small, little (not large)
+nb «blå» in "Bilen er blå." ⇒ blå / ADJ / feminine or masculine, singular, indefinite / g:blue / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc|Number=Sing / S:the main word of the sentence / D:blue (colour)
+nb «blå» in "Hun har blå øyne." ⇒ blå / ADJ / feminine or masculine, singular, indefinite / g:blue / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc|Number=Sing / S:adjective describing “øyne” / D:blue (colour)
+nb «friskt» in "Et friskt barn leker." ⇒ — / — /  / g:— / 0 / D:fresh ; keen (e.g. a keen wind)
+nb «søtt» in "Eplet er søtt." ⇒ — / — /  / g:— / 0 / D:sweet (having a pleasant taste) ; cute (to look cute or adorable)
+nb «hvitt» in "Huset er hvitt." ⇒ hvit / ADJ / neuter, singular, indefinite / g:white / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Neut|Number=Sing / S:the main word of the sentence / D:white (color/colour)
+nb «morsomme» in "Vi så morsomme filmer." ⇒ — / — /  / g:— / 0 / D:funny ; amusing, entertaining
+nb «lokale» in "Jeg leser lokale aviser." ⇒ — / — /  / g:— / 0 / D:local
+nb «nasjonale» in "Det nasjonale laget vant." ⇒ — / — /  / g:— / 0 / D:national
+nb «eldre» in "Hun er eldre enn meg." ⇒ gammel / ADJ / comparative / g:old / 0.9 / C:comparison,form:Degree=Cmp / S:the main word of the sentence / D:old (of an object, concept, etc: having existed for a relatively long 
+nb «beste» in "Det var den beste dagen." ⇒ god / ADJ / definite, superlative / g:good / 0.7 / also bra/ADJ / C:double-definiteness,comparison,form:Definite=Def|Degree=Sup / S:adjective describing “dagen” / D:good
+nb «kjedeligere» in "Filmen ble kjedeligere." ⇒ — / — /  / g:— / 0 / D:boring, boresome, dull
+nb «mer» in "Det er mer interessant." ⇒ mer / DET / comparative / g:more / 0.8 / also mer/ADV / C:comparison,form:Degree=Cmp|PronType=Ind / S:article or determiner of “interessant” / D:more; used in forming the comparative form of long/foreign adjectives
+nb «åpent» in "Vinduet er åpent." ⇒ åpen / ADJ / neuter, singular, indefinite / g:open / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Neut|Number=Sing / S:the main word of the sentence / D:open ; free (unobstructed)
+nb «Glade» in "Glade barn leker." ⇒ glad / ADJ /  / g:happy / 0.9 / C:v2-main-clause,form:Definite=Def,Ind|Degree=Pos|Number=Plur,Sing / S:adjective describing “barn” / D:happy, glad
+nb «store» in "De store bilene er dyre." ⇒ stor / ADJ /  / g:big / 0.9 / C:double-definiteness,form:Definite=Def,Ind|Degree=Pos|Number=Plur,Sing / S:adjective describing “bilene” / D:large, big, great ; of high regard
+nb «god» in "Maten var god." ⇒ god / ADJ / feminine or masculine, singular, indefinite / g:good / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc|Number=Sing / S:the main word of the sentence / D:good
+nb «godt» in "Det var godt." ⇒ god / ADJ / neuter, singular, indefinite / g:good / 0.88 / also godt/ADV / C:form:Definite=Ind|Degree=Pos|Gender=Neut|Number=Sing / S:the main word of the sentence / D:good
+nb «voksen» in "Han er en voksen mann." ⇒ voks / NOUN / masculine, singular, definite / g:wax / 0.9 / C:form:Definite=Def|Gender=Masc|Number=Sing / S:the main word of the sentence / D:wax
+nb «norsk» in "Hun er norsk." ⇒ norsk / ADJ / feminine or masculine or neuter, singular, indefinite / g:Norwegian / 0.88 / also norsk/NOUN / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc,Neut|Number=Sing / S:the main word of the sentence / D:Norwegian (of or relating to Norway, Norwegians or the Norwegian langu
+nb «norsk» in "Jeg snakker norsk." ⇒ norsk / NOUN / neuter, singular, indefinite / g:Norwegian (the language) / 0.7 / also norsk/ADJ / C:form:Definite=Ind|Gender=Neut|Number=Sing / S:direct object of “snakker” / D:Norwegian (language) ; Norwegian (of or relating to Norway, Norwegians
+nb «dårlig» in "Været er dårlig i dag." ⇒ dårlig / ADJ / feminine or masculine or neuter, singular, indefinite / g:bad / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc,Neut|Number=Sing / S:the main word of the sentence / D:bad, unwell, poor, of poor quality ; badly, poorly
+nb «flink» in "Han er flink til å synge." ⇒ flink / ADJ / feminine or masculine, singular, indefinite / g:skilful; good (at) / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc|Number=Sing / S:the main word of the sentence / D:clever, proficient, competent, good (at)
+nb «viktig» in "Det er en viktig sak." ⇒ viktig / ADJ / feminine or masculine or neuter, singular, indefinite / g:important / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc,Neut|Number=Sing / S:adjective describing “sak” / D:important
+nb «snill» in "Hun er veldig snill." ⇒ snill / ADJ / feminine or masculine, singular, indefinite / g:kind; nice / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc|Number=Sing / S:the main word of the sentence / D:kind ; sweet (kind, pleasant)
+nb «vanskelig» in "Det er et vanskelig spørsmål." ⇒ vanskelig / ADJ / feminine or masculine or neuter, singular, indefinite / g:difficult / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc,Neut|Number=Sing / S:adjective describing “spørsmål” / D:difficult (hard, not easy) ; hard (difficult)
+nb «ferdig» in "Jeg er ferdig." ⇒ ferdig / ADJ / feminine or masculine or neuter, singular, indefinite / g:finished; ready / 0.9 / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc,Neut|Number=Sing / S:the main word of the sentence / D:finished ; ready
+nb «henne» in "Jeg så henne." ⇒ hun / PRON / feminine, singular, 3 person / g:she; her / 0.9 / C:form:Case=Acc|Gender=Fem|Number=Sing|Person=3|PronType=Prs / S:direct object of “Jeg” / D:she ; back board
+nb «ham» in "Hun ga ham boka." ⇒ han / PRON / masculine, singular, 3 person / g:he; him / 0.9 / C:form:Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs / S:indirect object (the receiver) of “ga” / D:he, him
+nb «dem» in "Det er dem." ⇒ de / PRON / plural, 3 person / g:they; them / 0.9 / C:form:Case=Acc|Number=Plur|Person=3|PronType=Prs / S:the main word of the sentence / D:they ; those
+nb «Hvilken» in "Hvilken bil er din?" ⇒ hvilken / DET / feminine or masculine, singular / g:which / 0.9 / C:wh-question,form:Gender=Fem,Masc|Number=Sing|PronType=Int / S:article or determiner of “bil” / D:which
+nb «Dette» in "Dette huset er gammelt." ⇒ denne / DET / neuter, singular / g:this, these / 0.88 / also dette/PRON / C:v2-main-clause,form:Gender=Neut|Number=Sing|PronType=Dem / S:article or determiner of “huset” / D:this; this one
+nb «Disse» in "Disse bøkene er nye." ⇒ denne / DET / plural / g:this, these / 0.88 / also disse/PRON / C:v2-main-clause,form:Number=Plur|PronType=Dem / S:article or determiner of “bøkene” / D:this; this one
+nb «Den» in "Den boka er god." ⇒ den / DET / feminine or masculine, singular / g:that, the (before an adjective) / 0.88 / also den/PRON / C:v2-main-clause,form:Gender=Fem,Masc|Number=Sing|PronType=Dem / S:article or determiner of “boka” / D:The; only used if there is an adjective in front of the noun. ; it; th
+nb «noe» in "Jeg har ikke noe mat." ⇒ noe / DET / neuter, singular / g:some, any (neuter) / 0.88 / also noe/PRON / C:form:Gender=Neut|Number=Sing|PronType=Ind / S:article or determiner of “mat” / D:something ; anything
+nb «Alt» in "Alt er bra." ⇒ alt / PRON / neuter, singular / g:everything / 0.8 / also all/DET / C:form:Gender=Neut|Number=Sing|PronType=Tot / S:subject of “bra” / D:everything, all, anything ; alto; contralto
+nb «heter» in "Hva heter du?" ⇒ hete / VERB / present tense / g:be called / 0.9 / C:wh-question,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:To be called; to have as a name ; to heat, warm
+nb «Hvem» in "Hvem er det?" ⇒ hvem / PRON /  / g:who / 0.9 / C:wh-question,form:PronType=Int / S:the main word of the sentence / D:who, whom ; which
+nb «mange» in "Vi har mange venner." ⇒ mange / DET / plural / g:many / 0.8 / also mange/ADJ,mange/PRON / C:form:Number=Plur|PronType=Ind / S:article or determiner of “venner” / D:many
+nb «mye» in "Hun har mye å gjøre." ⇒ mye / ADV /  / g:much, a lot / 0.8 / also mye/DET / S:adverb modifying “har” / D:Existing in large quantities: lots of, a lot (of), many, a great deal 
+nb «Hver» in "Hver dag går jeg på jobb." ⇒ hver / DET / feminine or masculine, singular / g:each, every / 0.9 / C:inversion-after-adverbial,v2-main-clause,form:Gender=Fem,Masc|Number=Sing|PronType=Tot / P:hver dag / S:article or determiner of “dag” / D:each ; every
+nb «Hele» in "Hele dagen regnet det." ⇒ hele / DET / definite / g:the whole / 0.7 / also hel/ADJ / C:v2-main-clause,form:Definite=Def / S:article or determiner of “dagen” / D:a whole ; to heal
+nb «Deres» in "Deres hus er stort." ⇒ deres / DET / possessive / g:their; your (pl) / 0.9 / C:v2-main-clause,form:Poss=Yes / S:article or determiner of “hus” / D:their; third-person plural possessive. ; their; third-person plural po
+nb «Annes» in "Annes bil er ny." ⇒ Anne / PROPN / genitive / g:Anne / 0.75 / C:v2-main-clause,form:Case=Gen / S:noun phrase modifying “bil” / D:a female given name from Latin
+nb «Norges» in "Norges hovedstad er Oslo." ⇒ Norge / PROPN / genitive / g:Norway / 0.75 / C:v2-main-clause,form:Case=Gen / S:noun phrase modifying “hovedstad” / D:Norway; a country in Scandinavia, Europe, with Oslo as its capital and
+nb «Guttens» in "Guttens far kom." ⇒ gutt / NOUN / masculine, singular, definite, genitive / g:boy / 0.75 / C:form:Case=Gen|Definite=Def|Gender=Masc|Number=Sing / S:noun phrase modifying “far” / D:a boy
+nb «sengs» in "Barna gikk til sengs." ⇒ seng / NOUN / feminine or masculine, singular, indefinite, genitive / g:bed / 0.75 / C:form:Case=Gen|Definite=Ind|Gender=Fem,Masc|Number=Sing / S:adverbial phrase of “gikk” (place, time, manner or a prepositional object) / D:a bed
+nb «dagens» in "Jeg leste dagens avis." ⇒ dag / NOUN / masculine, singular, definite, genitive / g:day / 0.75 / C:form:Case=Gen|Definite=Def|Gender=Masc|Number=Sing / S:noun phrase modifying “avis” / D:a day ; the period of time between sunrise and sunset, daytime
+nb «tjueen» in "Hun er tjueen år." ⇒ — / — /  / g:— / 0 / D:∅
+nb «trettifem» in "Han er trettifem år gammel." ⇒ — / — /  / g:— / 0 / D:∅
+nb «ellevte» in "Det var den ellevte dagen." ⇒ — / — /  / g:— / 0 / D:eleventh
+nb «halvannen» in "Vi ventet i halvannen time." ⇒ — / — /  / g:— / 0 / D:one and a half (masculine and feminine form)
+nb «kr» in "Det koster 250 kr." ⇒ — / — /  / g:— / 0 / D:abbreviation of krone (currency of Norway)
+nb «pga.» in "Vi kom pga. været." ⇒ — / — /  / g:— / 0 / D:abbreviation of på grunn av (“because of, due to”)
+nb «kl.» in "Kom kl. 8." ⇒ kl. / NOUN /  / g:o'clock (klokka) / 0.9 / S:subject of “Kom” / D:o'clock
+nb «Bergen» in "Toget Oslo–Bergen går nå." ⇒ Oslo–Bergen / PROPN /  / g:— / 0.5 UNCONF / S:direct object of “går” / D:Bergen (a port city, municipality, and former county of the county of 
+nb «mai» in "Vi feirer 17. mai." ⇒ mai / NOUN / masculine, singular, indefinite / g:May / 0.9 / C:form:Definite=Ind|Gender=Masc|Number=Sing / S:the main word of the sentence / D:May (fifth month of the Gregorian calendar)
+nb «femti» in "Det koster femti kroner." ⇒ femti / NUM /  / g:fifty / 0.9 / C:form:NumType=Card / S:number of “kroner” / D:fifty
+nb «null» in "Jeg har null penger." ⇒ — / — /  / g:— / 0 / D:no (determiner: not any) ; zero, nought, nil
+nb «første» in "Hun kom for første gang." ⇒ første / ADJ /  / g:first / 0.9 / C:form:NumType=Ord / S:adjective describing “gang” / D:first
+nb «kjøkkenbordet» in "Vi satt ved kjøkkenbordet." ⇒ kjøkkenbord / NOUN / neuter, singular, definite / g:— / 0.55 UNCONF / S:adverbial phrase of “satt” (place, time, manner or a prepositional object) / D:a kitchen table
+nb «Barnehagen» in "Barnehagen åpner klokka sju." ⇒ barnehage / NOUN / masculine, singular, definite / g:kindergarten / 0.9 / C:v2-main-clause,form:Definite=Def|Gender=Masc|Number=Sing / S:subject of “åpner” / D:kindergarten, nursery school
+nb «Arbeidsgiveren» in "Arbeidsgiveren betaler." ⇒ Arbeidsgiveren / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:subject of “betaler” / D:an employer
+nb «lyseblå» in "Kjolen er lyseblå." ⇒ — / — /  / g:— / 0 / D:light blue, pale blue (color/colour)
+nb «kjempestort» in "Huset er kjempestort." ⇒ — / — /  / g:— / 0 / D:gigantic, huge
+nb «livsfarlig» in "Det er livsfarlig." ⇒ — / — /  / g:— / 0 / D:dangerous, perilous, deadly
+nb «samarbeider» in "Vi samarbeider godt." ⇒ — / — /  / g:— / 0 / D:collaboration ; co-operation or cooperation
+nb «sjokoladekake» in "Jeg baker sjokoladekake." ⇒ sjokoladekake / NOUN / feminine or masculine, singular, indefinite / g:— / 0.55 UNCONF / S:direct object of “baker” / D:a chocolate cake
+nb «Statsministeren» in "Statsministeren talte." ⇒ Statsministeren / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:subject of “talte” / D:a prime minister
+nb «fotballkampen» in "Vi så fotballkampen." ⇒ fotballkamp / NOUN / masculine, singular, definite / g:— / 0.55 UNCONF / S:direct object of “så” / D:a football match
+nb «luring» in "Han er en luring." ⇒ — / — /  / g:— / 0 / D:∅
+nb «strikker» in "Hun strikker en genser." ⇒ strikke / VERB / present tense / g:knit / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to knit (something)
+nb «genser» in "Hun strikker en genser." ⇒ genser / NOUN / masculine, singular, indefinite / g:sweater / 0.9 / C:form:Definite=Ind|Gender=Masc|Number=Sing / S:direct object of “strikker” / D:a sweater
+nb «togstasjonen» in "Toget står på togstasjonen." ⇒ togstasjon / NOUN / masculine, singular, definite / g:— / 0.55 UNCONF / S:adverbial phrase of “står” (place, time, manner or a prepositional object) / D:a train or railway station
+nb «ungdomsskolen» in "Han går på ungdomsskolen." ⇒ ungdomsskole / NOUN / masculine, singular, definite / g:— / 0.55 UNCONF / S:adverbial phrase of “går” (place, time, manner or a prepositional object) / D:a school, or part of a school, for pupils aged 13 to 16-17, roughly eq
+nb «regjering» in "Vi trenger en ny regjering." ⇒ regjering / NOUN / feminine or masculine, singular, indefinite / g:government / 0.9 / C:form:Definite=Ind|Gender=Fem,Masc|Number=Sing / S:direct object of “trenger” / D:a government
+nb «Bergen» in "Jeg bor i Bergen." ⇒ Bergen / PROPN /  / g:Bergen / 0.9 / S:adverbial phrase of “bor” (place, time, manner or a prepositional object) / D:Bergen (a port city, municipality, and former county of the county of 
+nb «Kari» in "Kari kommer i morgen." ⇒ Kari / PROPN /  / g:Kari / 0.9 / C:v2-main-clause / S:subject of “kommer” / D:∅
+nb «nordmenn» in "Mange nordmenn går på ski." ⇒ nordmann / NOUN / plural, indefinite / g:Norwegian (person) / 0.9 / C:form:Definite=Ind|Number=Plur / S:subject of “går” / D:a Norwegian (person of Norwegian ancestry or inhabitant of Norway) ; a
+nb «Stortinget» in "Stortinget vedtok loven." ⇒ Stortinget / PROPN /  / g:— / 0.4 UNCONF / S:the main word of the sentence / D:the Storting (Norwegian parliament)
+nb «samfunnet» in "Det er viktig for samfunnet." ⇒ samfunn / NOUN / neuter, singular, definite / g:society / 0.9 / C:form:Definite=Def|Gender=Neut|Number=Sing / S:adverbial phrase of “viktig” (place, time, manner or a prepositional object) / D:society ; community
+nb «forslag» in "Regjeringen la fram et forslag." ⇒ forslag / NOUN / neuter, indefinite / g:suggestion / 0.9 / C:form:Definite=Ind|Gender=Neut|Number=Plur,Sing / S:direct object of “la” / D:a suggestion or proposal
+nb «Ifølge» in "Ifølge politiet skjedde ulykken i natt." ⇒ ifølge / ADP /  / g:according to / 0.9 / S:particle of the particle verb “skjedde” / D:according to
+nb «ulykken» in "Ifølge politiet skjedde ulykken i natt." ⇒ ulykke / NOUN / feminine or masculine, singular, definite / g:accident / 0.9 / C:form:Definite=Def|Gender=Fem,Masc|Number=Sing / S:subject of “skjedde” / D:accident ; misfortune
+nb «ansvaret» in "Kommunen har ansvaret." ⇒ ansvar / NOUN / neuter, singular, definite / g:responsibility / 0.9 / C:form:Definite=Def|Gender=Neut|Number=Sing / S:direct object of “har” / D:responsibility ; liability
+nb «Utviklingen» in "Utviklingen går raskt." ⇒ utvikling / NOUN / feminine or masculine, singular, definite / g:development / 0.9 / C:v2-main-clause,form:Definite=Def|Gender=Fem,Masc|Number=Sing / S:subject of “går” / D:evolution ; development
+nb «mulighet» in "Det er en mulighet." ⇒ mulighet / NOUN / feminine or masculine, singular, indefinite / g:possibility / 0.9 / C:form:Definite=Ind|Gender=Fem,Masc|Number=Sing / S:the main word of the sentence / D:an opportunity ; a possibility
+nb «melding» in "Hun fikk en melding." ⇒ melding / NOUN / feminine or masculine, singular, indefinite / g:message / 0.9 / C:form:Definite=Ind|Gender=Fem,Masc|Number=Sing / S:direct object of “fikk” / D:the act of reporting ; message, report
+nb «fleste» in "De fleste mener det." ⇒ mange / ADJ / definite, superlative / g:many / 0.9 / C:comparison,form:Definite=Def|Degree=Sup / S:subject of “mener” / D:many
+nb «gjelder» in "Dette gjelder alle." ⇒ gjelde / VERB / present tense / g:apply; concern / 0.9 / C:form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to apply (to), be applicable to ; to be valid

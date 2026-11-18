@@ -1,0 +1,122 @@
+# participles, passives, verb classes
+nb | De stengte butikkene åpner i morgen. | stengte
+nb | De inviterte gjestene kom sent. | inviterte
+nb | Den stjålne bilen ble funnet. | stjålne
+nb | Et syngende barn gikk forbi. | syngende
+nb | Hun kom løpende. | løpende
+nb | Filmen var spennende. | spennende
+nb | Boka leses av mange. | leses
+nb | Medisinen tas tre ganger daglig. | tas
+nb | Det sies at han er rik. | sies
+nb | Billetter fås i luka. | fås
+nb | Ordet bruktes ofte før. | bruktes
+nb | Det fantes ikke mat. | fantes
+nb | Vi møttes i Oslo. | møttes
+nb | Jeg syntes filmen var bra. | syntes
+nb | Det må gjøres nå. | gjøres
+nb | Døra ble åpnet av læreren. | åpnet
+nb | Han kalte på hunden. | kalte
+nb | Hun klarte det. | klarte
+nb | Han nevnte det ikke. | nevnte
+nb | Det hendte i går. | hendte
+nb | De leverte varene i dag. | leverte
+nb | Hun lagde middag. | lagde
+nb | Han pleide å komme tidlig. | pleide
+nb | Vi bygde et hus. | bygde
+nb | Jeg prøvde å ringe deg. | prøvde
+nb | Han levde lenge. | levde
+nb | Hun kledde på seg. | kledde
+nb | Han løftet kassen. | løftet
+nb | Spør ham! | Spør
+nb | Se der! | Se
+nb | Hun virker trøtt. | virker
+nb | Vi starter nå. | starter
+nb | Jeg orker ikke mer. | orker
+nb | Han eier huset. | eier
+nb | Jeg gidder ikke. | gidder
+nb | Det blåser ute. | blåser
+nb | Han kasta ballen. | kasta
+nb | Hun har snakka med ham. | snakka
+nb | Han blei sjuk. | blei
+nb | Hun har vært der. | vært
+nb | Brevet er skrevet. | skrevet
+nb | Han har skrevet et brev. | skrevet
+nb | Butikken er stengt. | stengt
+nb | De har stengt butikken. | stengt
+nb | Kom hit! | Kom
+nb | Vær stille! | Vær
+nb | Sitt ned! | Sitt
+nb | Ikke gjør det! | gjør
+# nouns
+nb | Vi elsker hjemmet vårt. | hjemmet
+nb | Rommet er stort. | Rommet
+nb | Programmet begynner klokka åtte. | Programmet
+nb | Vi besøkte museet. | museet
+nb | Byen har mange steder å se. | steder
+nb | Klærne ligger på gulvet. | Klærne
+nb | Det er ti kilometer til byen. | kilometer
+nb | Setninga er lang. | Setninga
+nb | Epla er røde. | Epla
+nb | Sykehuset er nytt. | Sykehuset
+nb | Jenta leste boka. | boka
+nb | Jenta leste boka. | Jenta
+nb | Han brakk beinet. | beinet
+nb | Vi gikk langs vegen. | vegen
+nb | Mjølka er sur. | Mjølka
+nb | Framtida er lys. | Framtida
+nb | Sykdommen er farlig. | Sykdommen
+nb | Søsknene mine bor i Bergen. | Søsknene
+nb | Ideen var god. | Ideen
+nb | Hun sitter på en kafé. | kafé
+# homographs
+nb | Han er voksen nå. | voksen
+nb | Jeg er sulten. | sulten
+nb | Katten ligger under bordet. | under
+nb | Hun lærer norsk. | lærer
+nb | Han drikker kaffe. | drikker
+nb | Pasienten dør snart. | dør
+nb | Han får en gave. | får
+nb | Jeg har lyst på is. | lyst
+nb | Boka er min. | min
+nb | Det var en gang en konge. | var
+nb | Om våren blir det varmt. | våren
+nb | Hun er like gammel som meg. | like
+nb | Jeg trenger minst to timer. | minst
+nb | Han bor fortsatt her. | fortsatt
+nb | Det er to år siden. | siden
+nb | Selv kongen kom. | Selv
+nb | Jeg kom i går. | går
+nb | Han har bare én bil. | én
+nb | Vi så filmen. | så
+nb | Så kom han. | Så
+nb | Det var så kaldt. | så
+nb | Jeg liker å lese. | å
+nb | Mannen som bor her, er lege. | som
+nb | Det regner. | Det
+nb | De er her. | De
+nb | De store husene er dyre. | De
+nb | Han tok bilen sin. | sin
+nb | Hans bil er rød. | Hans
+nb | Maten er god, men kald. | men
+nb | Hvis du vil, kan vi gå. | vil
+nb | Jeg vet ikke om han kommer. | om
+nb | Vi snakket om været. | om
+nb | Hun kommer om en uke. | om
+nb | Da jeg var liten, bodde vi der. | Da
+nb | Da gikk han. | Da
+nb | Når kommer du? | Når
+nb | Noen har tatt boka. | Noen
+nb | Ingen vet det. | Ingen
+nb | Begge kom. | Begge
+nb | Man vet aldri. | Man
+nb | Vi hjelper hverandre. | hverandre
+nb | Det er rett. | rett
+nb | Han har rett. | rett
+nb | Gå rett fram. | rett
+nb | Jeg har et kort. | kort
+nb | Filmen var kort. | kort
+nb | Åpne dører er farlige. | Åpne
+nb | Kan du åpne døra? | åpne
+nb | Hun vil leve lenge. | leve
+nb | Lyset er på. | på
+nb | Vi tar en tur. | tur

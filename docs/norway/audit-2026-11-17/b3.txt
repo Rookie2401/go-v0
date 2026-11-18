@@ -1,0 +1,129 @@
+# Nynorsk verbs
+nn | Eg kjem i morgon. | kjem
+nn | Ho skriv eit brev. | skriv
+nn | Vi les boka. | les
+nn | Han søv enno. | søv
+nn | Eg har vore der. | vore
+nn | Det vart seint. | vart
+nn | Boka vert lesen av mange. | lesen
+nn | Brevet er skrive. | skrive
+nn | Dei er komne heim. | komne
+nn | Han er komen heim. | komen
+nn | Det finst ikkje mat. | finst
+nn | Eg synest det er bra. | synest
+nn | Vi møtest i morgon. | møtest
+nn | Kva heiter du? | heiter
+nn | Eg veit ikkje. | veit
+nn | Ho seier det. | seier
+nn | Han gjer det. | gjer
+nn | Dei bur i Bergen. | bur
+nn | Eg tenkjer på deg. | tenkjer
+nn | Tenk på det! | Tenk
+nn | Sit ned! | Sit
+nn | Ho spurde meg. | spurde
+nn | Eg kasta ballen. | kasta
+nn | Han kastar ballen. | kastar
+nn | Eg likar å kaste ball. | kaste
+nn | Eg likar å kasta ball. | kasta
+nn | Dei køyrde heim. | køyrde
+nn | Eg las boka. | las
+nn | Vi åt middag. | åt
+nn | Fuglen flaug bort. | flaug
+nn | Han tek bussen. | tek
+nn | Ho gjekk heim. | gjekk
+nn | Dei fekk ei gåve. | fekk
+nn | Eg har lese boka. | lese
+nn | Han har drukke kaffi. | drukke
+nn | Vi har funne nøkkelen. | funne
+nn | Det har vorte kaldt. | vorte
+nn | Eg trur på deg. | trur
+nn | Eg høyrer deg. | høyrer
+nn | Vi høyrde musikk. | høyrde
+nn | Ver snill! | Ver
+nn | Ikkje gjer det! | gjer
+nn | Han arbeider mykje. | arbeider
+nn | Ho snakkar norsk. | snakkar
+nn | Eg skal reise i morgon. | reise
+nn | Boka skal lesast. | lesast
+nn | Han sel bilar. | sel
+nn | Eg fortel ei soge. | fortel
+nn | Ho ligg i senga. | ligg
+nn | Han legg seg. | legg
+nn | Vi set oss ned. | set
+nn | Dei syng ein song. | syng
+nn | Eg forstår ikkje. | forstår
+nn | Han sa at han kjem. | sa
+nn | Eg såg dei i går. | såg
+nn | Han gav henne boka. | gav
+nn | Dei er glade. | glade
+nn | Vi vil gjerne hjelpe dykk. | hjelpe
+nn | Eg hugsar det. | hugsar
+nn | Ho byrja å gråte. | byrja
+nn | Han døydde i fjor. | døydde
+nn | Dei har budd her lenge. | budd
+# Nynorsk nouns, adjectives, small words
+nn | Gutane spelar fotball. | Gutane
+nn | Eg ser gutane. | gutane
+nn | Setninga er lang. | Setninga
+nn | Han skriv lange setningar. | setningar
+nn | Boka mi er ny. | mi
+nn | Eg las ei soge. | soge
+nn | Dei bur i skulen. | skulen
+nn | Kyrkja er gammal. | Kyrkja
+nn | Eg les ei forteljing. | forteljing
+nn | Det er eit godt høve. | høve
+nn | Vi har ei ny regjering. | regjering
+nn | Jentene syng. | Jentene
+nn | Eg har vondt i hovudet. | hovudet
+nn | Auga hans er blå. | Auga
+nn | Borna leikar ute. | Borna
+nn | Det er eit vanleg problem. | vanleg
+nn | Ho er einsam. | einsam
+nn | Vi drikk reint vatn. | reint
+nn | Døra er open. | open
+nn | Eit ope vindauge. | ope
+nn | Opne dører. | Opne
+nn | Ho er større enn meg. | større
+nn | Dette er finare. | finare
+nn | Dei finaste blomane. | finaste
+nn | Han er den eldste. | eldste
+nn | Det er mykje snø. | mykje
+nn | Nokre born leikar. | Nokre
+nn | Kven er det? | Kven
+nn | Korleis går det? | Korleis
+nn | Kvifor ikkje? | Kvifor
+nn | Kvar bur du? | Kvar
+nn | Eg går kvar dag. | kvar
+nn | Me går no. | Me
+nn | Dokker må kome. | Dokker
+nn | Kom att! | att
+nn | Elles takk. | Elles
+nn | Eg òg. | òg
+nn | Han kom til dømes i går. | dømes
+nn | Det er sjølvsagt sant. | sjølvsagt
+nn | Difor kom han. | Difor
+nn | Dei hjelper kvarandre. | kvarandre
+nn | Eg såg honom. | honom
+nn | Eg veit at han ikkje kjem. | ikkje
+nn | Dei store husa er dyre. | husa
+nn | Eg bur hos dei. | hos
+nn | Han er ikkje heime. | heime
+nn | Eg har ikkje noko. | noko
+nn | Det er ei stor glede. | glede
+nn | Vi ventar på bussen. | ventar
+nn | Veka har sju dagar. | Veka
+nn | Tida går fort. | Tida
+nn | Kva er namnet ditt? | namnet
+nn | Han er lærar. | lærar
+nn | Eg er norsk. | norsk
+nn | Ho har tolv bøker. | tolv
+nn | Det kostar tretti kroner. | tretti
+nn | Eg har ein bror og ei syster. | syster
+nn | Eg har eit spørsmål. | spørsmål
+nn | Ho er frå Noreg. | Noreg
+nn | Han talar sant. | talar
+nn | Eg vil vere med. | vere
+nn | Det er mogleg. | mogleg
+nn | Kjærleiken er størst. | Kjærleiken
+nn | Gud er god. | Gud
+nn | Jesus sa til dei. | Jesus

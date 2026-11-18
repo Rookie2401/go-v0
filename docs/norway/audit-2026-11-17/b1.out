@@ -1,0 +1,119 @@
+nb «stengte» in "De stengte butikkene åpner i morgen." ⇒ stengt / ADJ /  / g:closed / 0.7 / also stenge/VERB / C:double-definiteness,form:Definite=Def,Ind|Degree=Pos|Number=Plur,Sing / S:adjective describing “butikkene” / D:to close ; to close up
+nb «inviterte» in "De inviterte gjestene kom sent." ⇒ invitere / VERB / past tense / g:invite / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to invite
+nb «stjålne» in "Den stjålne bilen ble funnet." ⇒ — / — /  / g:— / 0 / D:stolen ; stealthy
+nb «syngende» in "Et syngende barn gikk forbi." ⇒ — / — /  / g:— / 0 / D:to sing
+nb «løpende» in "Hun kom løpende." ⇒ — / — /  / g:— / 0 / D:to run (move quickly) ; to run, flow (of a liquid)
+nb «spennende» in "Filmen var spennende." ⇒ spennende / ADJ / feminine or masculine or neuter / g:exciting / 0.9 / C:form:Definite=Def,Ind|Degree=Pos|Gender=Fem,Masc,Neut|Number=Plur,Sing / S:the main word of the sentence / D:exciting, thrilling
+nb «leses» in "Boka leses av mange." ⇒ lese / VERB / present tense, passive (-s) / g:read / 0.9 / C:s-passive,form:Tense=Pres|VerbForm=Fin,Inf|Voice=Pass / S:the main word of the sentence / D:to read
+nb «tas» in "Medisinen tas tre ganger daglig." ⇒ — / — /  / g:— / 0 / D:to take (grab with the hands) ; to have
+nb «sies» in "Det sies at han er rik." ⇒ — / — /  / g:— / 0 / D:to say ; alternative form of side; only used in på si
+nb «fås» in "Billetter fås i luka." ⇒ — / — /  / g:— / 0 / D:few ; to get; to have; to obtain; to receive.
+nb «bruktes» in "Ordet bruktes ofte før." ⇒ — / — /  / g:— / 0 / D:∅
+nb «fantes» in "Det fantes ikke mat." ⇒ finnes / VERB / past tense / g:exist; be found / 0.9 / C:form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to be, exist, occur, be found
+nb «møttes» in "Vi møttes i Oslo." ⇒ møtes / VERB / past tense or perfect participle / g:meet (each other) / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin,Part / S:the main word of the sentence / D:to meet, converge
+nb «syntes» in "Jeg syntes filmen var bra." ⇒ synes / VERB / past tense / g:think; seem / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to appear, seem ; to think (be of the opinion that)
+nb «gjøres» in "Det må gjøres nå." ⇒ gjøre / VERB / present tense, passive (-s) / g:do; make / 0.9 / C:s-passive,form:Tense=Pres|VerbForm=Fin,Inf|Voice=Pass / S:the main word of the sentence / D:to do (something)
+nb «åpnet» in "Døra ble åpnet av læreren." ⇒ åpne / VERB / past tense or perfect participle / g:open / 0.9 / C:form:Mood=Ind|Tense=Past|VerbForm=Fin,Part / S:the main word of the sentence / D:to open (make something accessible)
+nb «kalte» in "Han kalte på hunden." ⇒ — / — /  / g:— / 0 / D:to call, name (give a name to) ; to call, shout
+nb «klarte» in "Hun klarte det." ⇒ — / — /  / g:— / 0 / D:to clear (most senses) ; to clarify
+nb «nevnte» in "Han nevnte det ikke." ⇒ — / — /  / g:— / 0 / D:to name (identify, define, specify) ; to mention
+nb «hendte» in "Det hendte i går." ⇒ — / — /  / g:— / 0 / D:to happen, occur
+nb «leverte» in "De leverte varene i dag." ⇒ — / — /  / g:— / 0 / D:to deliver ; to supply
+nb «lagde» in "Hun lagde middag." ⇒ — / — /  / g:— / 0 / D:to make (something) ; form removed with the spelling reform of 2005; s
+nb «pleide» in "Han pleide å komme tidlig." ⇒ — / — /  / g:— / 0 / D:care, (also) nursing ; to nurse, care for, look after, take care of (s
+nb «bygde» in "Vi bygde et hus." ⇒ bygge / VERB / past tense / g:build / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to build ; to inhabit, dwell, live (today only in the compound word in
+nb «prøvde» in "Jeg prøvde å ringe deg." ⇒ prøve / VERB / past tense / g:try / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to try ; to rehearse
+nb «levde» in "Han levde lenge." ⇒ leve / VERB / past tense / g:live / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to live
+nb «kledde» in "Hun kledde på seg." ⇒ — / — /  / g:— / 0 / D:to dress, clothe (somebody, oneself) ; to become, suit (someone)
+nb «løftet» in "Han løftet kassen." ⇒ løfte / NOUN / neuter, singular, definite / g:promise / 0.9 / C:form:Definite=Def|Gender=Neut|Number=Sing / S:indirect object (the receiver) of “Han” / D:a promise or vow ; to lift, raise
+nb «Spør» in "Spør ham!" ⇒ spørre / VERB / present tense / g:ask / 0.9 / C:form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to ask, inquire (om / about)
+nb «Se» in "Se der!" ⇒ se / VERB / infinitive / g:to see / 0.9 / C:form:VerbForm=Inf / S:the main word of the sentence / D:to see (perceive with the eyes).
+nb «virker» in "Hun virker trøtt." ⇒ — / — /  / g:— / 0 / D:business; work ; of or related to woodwork
+nb «starter» in "Vi starter nå." ⇒ — / — /  / g:— / 0 / D:a starter (person who gives a starting signal) ; a starter (starter mo
+nb «orker» in "Jeg orker ikke mer." ⇒ — / — /  / g:— / 0 / D:∅
+nb «eier» in "Han eier huset." ⇒ eier / NOUN / masculine, singular, indefinite / g:owner / 0.9 / C:form:Definite=Ind|Gender=Masc|Number=Sing / S:indirect object (the receiver) of “Han” / D:an owner
+nb «gidder» in "Jeg gidder ikke." ⇒ — / — /  / g:— / 0 / D:∅
+nb «blåser» in "Det blåser ute." ⇒ — / — /  / g:— / 0 / D:to blow
+nb «kasta» in "Han kasta ballen." ⇒ kaste / VERB / past tense or perfect participle / g:throw / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin,Part / S:the main word of the sentence / D:to throw ; to dart
+nb «snakka» in "Hun har snakka med ham." ⇒ snakke / VERB / past tense or perfect participle / g:speak; talk / 0.9 / C:form:Mood=Ind|Tense=Past|VerbForm=Fin,Part / S:the main word of the sentence / D:to speak ; to talk
+nb «blei» in "Han blei sjuk." ⇒ bli / VERB / past tense / g:become / 0.7 / also bli/AUX / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:stay, remain; continue to be or remain in a particular place or state 
+nb «vært» in "Hun har vært der." ⇒ være / AUX / perfect participle / g:having been / 0.9 / C:perfect-har,form:Tense=Past|VerbForm=Part / S:copula (“is / are / become”) linking “der” to its subject / D:to be; to have a particular identity, classification, quality or condi
+nb «skrevet» in "Brevet er skrevet." ⇒ skrevet / ADJ / feminine or masculine or neuter, singular, indefinite / g:written / 0.88 / also skrive/VERB / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc,Neut|Number=Sing / S:the main word of the sentence / D:written
+nb «skrevet» in "Han har skrevet et brev." ⇒ skrive / VERB / perfect participle / g:having written / 0.88 / also skrevet/ADJ / C:perfect-har,form:Tense=Past|VerbForm=Part / S:the main word of the sentence / D:to write
+nb «stengt» in "Butikken er stengt." ⇒ stengt / ADJ / feminine or masculine or neuter, singular, indefinite / g:closed / 0.88 / also stenge/VERB / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc,Neut|Number=Sing / S:the main word of the sentence / D:to close ; to close up
+nb «stengt» in "De har stengt butikken." ⇒ stenge / VERB / perfect participle / g:having closed / 0.88 / also stengt/ADJ / C:perfect-har,form:Tense=Past|VerbForm=Part / S:the main word of the sentence / D:to close ; to close up
+nb «Kom» in "Kom hit!" ⇒ komme / VERB / past tense or imperative / g:come / 0.9 / C:form:Mood=Imp,Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to come; to approach or move towards the speaker, another person, or a
+nb «Vær» in "Vær stille!" ⇒ være / AUX / imperative / g:be / 0.7 / also vær/NOUN / C:form:Mood=Imp|VerbForm=Fin / S:copula (“is / are / become”) linking “stille” to its subject / D:to be; to have a particular identity, classification, quality or condi
+nb «Sitt» in "Sitt ned!" ⇒ sitte / VERB / imperative / g:sit / 0.7 / also sin/DET / C:form:Mood=Imp|VerbForm=Fin / S:the main word of the sentence / D:to sit (of a person, be in a position in which the upper body is uprig
+nb «gjør» in "Ikke gjør det!" ⇒ gjøre / VERB / present tense or imperative / g:do; make / 0.9 / C:form:Mood=Imp,Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to do (something)
+nb «hjemmet» in "Vi elsker hjemmet vårt." ⇒ hjem / NOUN / neuter, singular, definite / g:home / 0.9 / C:postposed-possessive,form:Definite=Def|Gender=Neut|Number=Sing / S:direct object of “elsker” / D:a home ; Place of origin or belonging. Similar to German Heimat.
+nb «Rommet» in "Rommet er stort." ⇒ rom / NOUN / neuter, singular, definite / g:room / 0.9 / C:v2-main-clause,form:Definite=Def|Gender=Neut|Number=Sing / S:subject of “stort” / D:rum (alcoholic beverage) ; room (space, part of a building)
+nb «Programmet» in "Programmet begynner klokka åtte." ⇒ program / NOUN / neuter, singular, definite / g:programme / 0.9 / C:v2-main-clause,form:Definite=Def|Gender=Neut|Number=Sing / S:subject of “begynner” / D:a programme (UK) or program (US) ; program
+nb «museet» in "Vi besøkte museet." ⇒ — / — /  / g:— / 0 / D:a museum
+nb «steder» in "Byen har mange steder å se." ⇒ — / — /  / g:— / 0 / D:a place
+nb «Klærne» in "Klærne ligger på gulvet." ⇒ Klærne / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:subject of “ligger” / D:clothes (garments collectively)
+nb «kilometer» in "Det er ti kilometer til byen." ⇒ kilometer / NOUN / masculine, singular, indefinite / g:kilometre / 0.9 / C:form:Definite=Ind|Gender=Masc|Number=Sing / S:the main word of the sentence / D:a kilometre (SI unit of length)
+nb «Setninga» in "Setninga er lang." ⇒ Setninga / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:subject of “lang” / D:a sentence (grammatically complete series of words consisting of a sub
+nb «Epla» in "Epla er røde." ⇒ Epla / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:subject of “røde” / D:an apple (fruit)
+nb «Sykehuset» in "Sykehuset er nytt." ⇒ sykehus / NOUN / neuter, singular, definite / g:hospital / 0.9 / C:v2-main-clause,form:Definite=Def|Gender=Neut|Number=Sing / S:subject of “nytt” / D:a hospital (building)
+nb «boka» in "Jenta leste boka." ⇒ bok / NOUN / feminine, singular, definite / g:book / 0.9 / C:form:Definite=Def|Gender=Fem|Number=Sing / S:direct object of “leste” / D:book ; alternative form of bøk (“beech”)
+nb «Jenta» in "Jenta leste boka." ⇒ jente / NOUN / feminine, singular, definite / g:girl / 0.9 / C:v2-main-clause,form:Definite=Def|Gender=Fem|Number=Sing / S:subject of “leste” / D:girl; young woman ; hired girl, housemaid
+nb «beinet» in "Han brakk beinet." ⇒ — / — /  / g:— / 0 / D:a leg ; a bone
+nb «vegen» in "Vi gikk langs vegen." ⇒ — / — /  / g:— / 0 / D:alternative form of vei (“way”)
+nb «Mjølka» in "Mjølka er sur." ⇒ Mjølka / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:subject of “sur” / D:milk
+nb «Framtida» in "Framtida er lys." ⇒ Framtida / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:subject of “lys” / D:future
+nb «Sykdommen» in "Sykdommen er farlig." ⇒ Sykdommen / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:subject of “farlig” / D:illness, sickness, disease
+nb «Søsknene» in "Søsknene mine bor i Bergen." ⇒ Søsknene / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:subject of “bor” / D:a sibling
+nb «Ideen» in "Ideen var god." ⇒ Ideen / PROPN /  / g:— / 0.4 UNCONF / C:v2-main-clause / S:subject of “god” / D:idea, theory ; an idea, motive
+nb «kafé» in "Hun sitter på en kafé." ⇒ kafé / NOUN / masculine, singular, indefinite / g:café / 0.9 / C:form:Definite=Ind|Gender=Masc|Number=Sing / S:adverbial phrase of “sitter” (place, time, manner or a prepositional object) / D:a café or cafe
+nb «voksen» in "Han er voksen nå." ⇒ voks / NOUN / masculine, singular, definite / g:wax / 0.9 / C:form:Definite=Def|Gender=Masc|Number=Sing / S:the main word of the sentence / D:wax
+nb «sulten» in "Jeg er sulten." ⇒ sulten / ADJ / feminine or masculine, singular, indefinite / g:hungry / 0.88 / also sult/NOUN / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc|Number=Sing / S:the main word of the sentence / D:hungry
+nb «under» in "Katten ligger under bordet." ⇒ under / ADP /  / g:under, during / 0.7 / also under/NOUN / S:preposition introducing “bordet” / D:below; beneath ; during
+nb «lærer» in "Hun lærer norsk." ⇒ lære / VERB / present tense / g:learn; teach / 0.88 / also lærer/NOUN,lære/NOUN / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to teach ; to learn
+nb «drikker» in "Han drikker kaffe." ⇒ drikke / VERB / present tense / g:drink / 0.88 / also drikke/NOUN / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to drink ; drink (mass noun)
+nb «dør» in "Pasienten dør snart." ⇒ dø / VERB / present tense / g:die / 0.88 / also dør/NOUN / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to die ; to cease to exist
+nb «får» in "Han får en gave." ⇒ få / VERB / present tense / g:get; receive; may / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to get; to have; to obtain; to receive. ; to get done; to accomplish
+nb «lyst» in "Jeg har lyst på is." ⇒ lyse / VERB / perfect participle / g:having shone / 0.88 / also lys/ADJ / C:perfect-har,form:Tense=Past|VerbForm=Part / S:the main word of the sentence / D:to light
+nb «min» in "Boka er min." ⇒ min / DET / feminine or masculine, singular, 1 person, possessive / g:my / 0.9 / C:form:Gender=Fem,Masc|Number=Sing|Person=1|Poss=Yes / S:the main word of the sentence / D:my, mine
+nb «var» in "Det var en gang en konge." ⇒ være / AUX / past tense / g:be / 0.9 / C:form:Tense=Past|VerbForm=Fin / S:copula (“is / are / become”) linking “gang” to its subject / D:to be; to have a particular identity, classification, quality or condi
+nb «våren» in "Om våren blir det varmt." ⇒ vår / NOUN / masculine, singular, definite / g:spring / 0.9 / C:form:Definite=Def|Gender=Masc|Number=Sing / S:adverbial phrase of “varmt” (place, time, manner or a prepositional object) / D:spring (season) ; our (belonging to us)
+nb «like» in "Hun er like gammel som meg." ⇒ lik / ADJ /  / g:equal; like / 0.88 / also like/VERB / C:form:Definite=Def,Ind|Degree=Pos|Number=Plur,Sing / S:adjective describing “gammel” / D:similar, alike ; equal
+nb «minst» in "Jeg trenger minst to timer." ⇒ liten / ADJ / indefinite, superlative / g:small / 0.9 / C:comparison,form:Definite=Ind|Degree=Sup / S:adjective describing “timer” / D:small, little (not large)
+nb «fortsatt» in "Han bor fortsatt her." ⇒ fortsette / VERB / perfect participle / g:having continued / 0.9 / C:form:Tense=Past|VerbForm=Part / S:open complement of “bor” (an infinitive, or a predicate without its own subject) / D:to continue
+nb «siden» in "Det er to år siden." ⇒ side / NOUN / feminine or masculine, singular, definite / g:page; side / 0.7 / also siden/SCONJ,siden/ADP / C:form:Definite=Def|Gender=Fem,Masc|Number=Sing / D:a page (e.g. in a book) ; side
+nb «Selv» in "Selv kongen kom." ⇒ selv / PRON / reflexive / g:self / 0.9 / C:form:PronType=Prs|Reflex=Yes / S:subject of “kom” / D:myself, yourself, himself, herself, itself ; ourselves, yourselves, th
+nb «går» in "Jeg kom i går." ⇒ gå / VERB / present tense / g:go; walk / 0.9 / C:form:Mood=Ind|Tense=Pres|VerbForm=Fin / P:i går / S:open complement of “kom” (an infinitive, or a predicate without its own subject) / D:To walk, go. ; To work (function), run, to be possible.
+nb «én» in "Han har bare én bil." ⇒ — / — /  / g:— / 0 / D:a, an (indefinite article) ; one
+nb «så» in "Vi så filmen." ⇒ se / VERB / past tense / g:see; look / 0.88 / also så/ADV,så/CONJ / C:v2-main-clause,form:Mood=Ind|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to see (perceive with the eyes).
+nb «Så» in "Så kom han." ⇒ så / ADV /  / g:then; so, such / 0.8 / also så/CONJ,se/VERB / S:adverb modifying “kom” / D:so ; as
+nb «så» in "Det var så kaldt." ⇒ så / ADV /  / g:then; so, such / 0.8 / also så/CONJ,se/VERB / S:adverb modifying “kaldt” / D:so ; as
+nb «å» in "Jeg liker å lese." ⇒ å / PART /  / g:to (infinitive marker) / 0.9 / C:infinitive-marker-aa / S:word that opens the clause of “lese” / D:to; an infinitive marker placed before a verb in the infinitive ; The 
+nb «som» in "Mannen som bor her, er lege." ⇒ som / PRON /  / g:who, which, that (relative) / 0.7 / also som/SCONJ / C:form:PronType=Rel / S:word that opens the clause of “bor” / D:who, which ; as; similar to, in the same way that
+nb «Det» in "Det regner." ⇒ det / PRON / neuter, singular, 3 person / g:it; that; there (dummy subject) / 0.88 / also det/DET / C:form:Gender=Neut|Number=Sing|Person=3|PronType=Prs / S:subject of “regner” / D:it; third person singular, neuter gender. Nominative, accusative or da
+nb «De» in "De er her." ⇒ de / PRON / plural, 3 person / g:they; them / 0.88 / also de/DET / C:v2-main-clause,form:Case=Nom|Number=Plur|Person=3|PronType=Prs / S:subject of “her” / D:they ; those
+nb «De» in "De store husene er dyre." ⇒ de / DET / plural / g:those, the (before an adjective) / 0.88 / also de/PRON / C:double-definiteness,v2-main-clause,form:Number=Plur|PronType=Dem / S:article or determiner of “husene” / D:definite article, equivalent to "the", used before adjectives used wit
+nb «sin» in "Han tok bilen sin." ⇒ sin / DET / feminine or masculine, singular, 3 person, possessive, reflexive / g:his/her/its/their own (reflexive) / 0.9 / C:postposed-possessive,sin-reflexive,form:Gender=Fem,Masc|Number=Sing|Person=3|Poss=Yes|Reflex=Yes / S:article or determiner of “bilen” / D:her / his / its / their ; indicating possession; 's, of
+nb «Hans» in "Hans bil er rød." ⇒ Hans / PROPN /  / g:Hans / 0.7 / also hans/DET / C:v2-main-clause / S:subject of “rød” / D:a diminutive of the male given name Johannes, from German Hans, equiva
+nb «men» in "Maten er god, men kald." ⇒ men / CONJ /  / g:but / 0.8 / also mene/VERB / S:coordinating word (“and / but / or”) before “kald” / D:but, however, though introducing a clause that contrasts with the prec
+nb «vil» in "Hvis du vil, kan vi gå." ⇒ ville / AUX / present tense / g:will, want to / 0.9 / C:form:Tense=Pres|VerbForm=Fin / S:adverbial clause of “gå” / D:to want to, be willing to ; shall, will, should
+nb «om» in "Jeg vet ikke om han kommer." ⇒ om / SCONJ /  / g:whether; if / 0.88 / also om/ADP / S:word that opens the clause of “kommer” / D:around ; in (after a period of time)
+nb «om» in "Vi snakket om været." ⇒ om / ADP /  / g:about; around; in (a period) / 0.8 / also om/SCONJ / S:preposition introducing “været” / D:around ; in (after a period of time)
+nb «om» in "Hun kommer om en uke." ⇒ komme / VERB / present tense / g:come / 0.9 / C:v2-main-clause,form:Mood=Ind|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to come; to approach or move towards the speaker, another person, or a
+nb «Da» in "Da jeg var liten, bodde vi der." ⇒ da / SCONJ /  / g:when (a single past event) / 0.88 / also da/ADV / C:da-vs-naar / S:word that opens the clause of “liten” / D:then ; when
+nb «Da» in "Da gikk han." ⇒ da / ADV /  / g:then; well / 0.88 / also da/SCONJ / C:inversion-after-adverbial,v2-main-clause / S:adverb modifying “gikk” / D:then ; when
+nb «Når» in "Når kommer du?" ⇒ når / ADV /  / g:when (question) / 0.88 / also når/SCONJ,nå/VERB / C:wh-question,form:PronType=Int / S:adverb modifying “kommer” / D:when (at what time) ; when, whenever, every time (of regular occurrenc
+nb «Noen» in "Noen har tatt boka." ⇒ noen / PRON /  / g:someone, anyone / 0.8 / also noen/DET / C:form:PronType=Ind / S:subject of “tatt” / D:somebody, someone; anybody, anyone ; some, any
+nb «Ingen» in "Ingen vet det." ⇒ ingen / DET / feminine or masculine / g:no, none / 0.9 / C:form:Gender=Fem,Masc|Number=Plur,Sing|PronType=Neg / S:subject of “vet” / D:no; no one; nobody; nothing ; neither
+nb «Begge» in "Begge kom." ⇒ begge / DET / plural / g:both / 0.9 / C:form:Number=Plur|PronType=Tot / S:subject of “kom” / D:both
+nb «Man» in "Man vet aldri." ⇒ man / PRON / 3 person / g:one, you (generic) / 0.9 / C:form:Person=3|PronType=Ind,Prs / S:subject of “vet” / D:you ; one
+nb «hverandre» in "Vi hjelper hverandre." ⇒ hverandre / PRON /  / g:each other / 0.9 / C:form:PronType=Prs,Rcp / S:direct object of “hjelper” / D:each other, one another (reciprocal pronoun)
+nb «rett» in "Det er rett." ⇒ rett / ADJ / feminine or masculine or neuter, singular, indefinite / g:straight; right / 0.88 / also rett/ADV,rette/VERB / C:form:Definite=Ind|Degree=Pos|Gender=Fem,Masc,Neut|Number=Sing / S:the main word of the sentence / D:right ; straight
+nb «rett» in "Han har rett." ⇒ rett / ADV /  / g:straight; right (before a place) / 0.7 / also rett/ADJ,rette/VERB / S:adverb modifying “har” / D:right ; straight
+nb «rett» in "Gå rett fram." ⇒ rett / ADV /  / g:straight; right (before a place) / 0.7 / also rett/ADJ,rette/VERB / S:adverb modifying “Gå” / D:right ; straight
+nb «kort» in "Jeg har et kort." ⇒ — / — /  / g:— / 0 / D:short ; brief
+nb «kort» in "Filmen var kort." ⇒ — / — /  / g:— / 0 / D:short ; brief
+nb «Åpne» in "Åpne dører er farlige." ⇒ åpen / ADJ /  / g:open / 0.7 / also åpne/VERB / C:v2-main-clause,form:Definite=Def,Ind|Degree=Pos|Number=Plur,Sing / S:adjective describing “dører” / D:open ; free (unobstructed)
+nb «åpne» in "Kan du åpne døra?" ⇒ åpen / ADJ /  / g:open / 0.88 / also åpne/VERB / C:form:Definite=Def,Ind|Degree=Pos|Number=Plur,Sing / S:adjective describing “døra” / D:open ; free (unobstructed)
+nb «leve» in "Hun vil leve lenge." ⇒ leve / VERB / infinitive / g:to live / 0.9 / C:modal-bare-infinitive,form:VerbForm=Inf / S:the main word of the sentence / D:to live
+nb «på» in "Lyset er på." ⇒ på / ADV /  / g:on / 0.8 / also på/ADP / S:adverb modifying “er” / D:turned on; functioning ; on
+nb «tur» in "Vi tar en tur." ⇒ tur / NOUN / masculine, singular, indefinite / g:trip; walk / 0.9 / C:form:Definite=Ind|Gender=Masc|Number=Sing / S:direct object of “tar” / D:a walk ; a trip, journey

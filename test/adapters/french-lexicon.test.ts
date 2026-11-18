@@ -245,7 +245,7 @@ describe('French lexicon: the closed classes', () => {
     expect(hasReading('nous', 'nous', 'PRON', { Reflex: 'Yes' })).toBe(true);
     expect(hasReading('se', 'se', 'PRON', { Reflex: 'Yes', Person: '3' })).toBe(true);
     expect(hasReading('lui', 'lui', 'PRON', { Case: 'Dat' })).toBe(true);
-    expect(hasReading('leur', 'lui', 'PRON', { Case: 'Dat', Number: 'Plur' })).toBe(true);
+    expect(hasReading('leur', 'leur', 'PRON', { Case: 'Dat', Number: 'Plur' })).toBe(true);
     expect(hasReading('leur', 'leur', 'DET', { Poss: 'Yes' })).toBe(true);
     expect(hasReading('leur', 'leur', 'PRON', { Poss: 'Yes' })).toBe(true);
     expect(hasReading('cette', 'ce', 'DET', { PronType: 'Dem', Gender: 'Fem' })).toBe(true);

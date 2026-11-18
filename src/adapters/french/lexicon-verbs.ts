@@ -1210,4 +1210,7 @@ varier = to vary
 verrouiller = to lock
 vexer = to offend
 virer = to turn
+couver = to sit on (eggs), brood; to smoulder
+// a verb of old tales, met in one line every French child knows (la bobinette cherra): only the forms that are certain are listed
+choir = to fall (old) [literary] [être/avoir] | choir:inf VerbForm=Inf; cherra:3s Tense=Fut Mood=Ind VerbForm=Fin; chu:ptcp Tense=Past m sg; chut:3s past VerbForm=Fin
 `;

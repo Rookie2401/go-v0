@@ -1,0 +1,182 @@
+/**
+ * The learner-facing text of every French construction id (docs/french/PLAN.md, CONTEXT): a short label and ONE explanation,
+ * written for an English speaker, with one or two short French examples inside the text. One text per id, never per sentence:
+ * french/constructions.ts reports the id and the words that make the pattern, and takes its title and explanation from here.
+ *
+ * DATA ONLY: no imports, because the pack manifest imports this file as well.
+ * Machine-drafted and not checked by a native speaker.
+ */
+export const FRENCH_CONSTRUCTION_TEXTS: Readonly<Record<string, { label: string; explain: string }>> = {
+  'passe-compose': {
+    label: 'Passé composé (avoir / être + past participle)',
+    explain: 'The everyday past tense: the present of avoir or être followed by the past participle (j\'ai mangé, elle est partie). Most verbs take avoir; verbs of coming and going and every pronominal verb take être. It says what happened, and in speech it also does the work of the written passé simple.',
+  },
+  'plus-que-parfait': {
+    label: 'Plus-que-parfait (had done)',
+    explain: 'The imparfait of avoir or être followed by the past participle: something that had already happened before another past moment (nous avions fini, elle était partie). It is the English "had done".',
+  },
+  'futur-anterieur': {
+    label: 'Futur antérieur (will have done)',
+    explain: 'The future of avoir or être followed by the past participle: something that will be finished by a future moment (quand il aura fini, il partira). After quand, lorsque and dès que French uses it where English uses "has done".',
+  },
+  'conditionnel-passe': {
+    label: 'Conditionnel passé (would have done)',
+    explain: 'The conditional of avoir or être followed by the past participle: what would have happened (il aurait mangé, elle serait venue). It often goes with si and the plus-que-parfait: si j\'avais su, je serais venu.',
+  },
+  'subjonctif-passe': {
+    label: 'Past subjunctive',
+    explain: 'The present subjunctive of avoir or être followed by the past participle. It is used where the subjunctive is required and the action is already complete: il faut qu\'il ait fini, bien qu\'elle soit partie.',
+  },
+  'passe-anterieur': {
+    label: 'Passé antérieur (literary)',
+    explain: 'The passé simple of avoir or être followed by the past participle (quand il eut fini, il sortit). It belongs to written narrative, usually after quand, lorsque, dès que or après que, for an action completed just before another one in the passé simple.',
+  },
+  'passe-simple': {
+    label: 'Passé simple (the past of written narrative)',
+    explain: 'The past tense of written narrative, common in novels, tales and history books (il entra, ils finirent, elle fut). In speech the passé composé replaces it, but it is neither incorrect nor archaic: you will meet it on almost every page of a story. You mainly need to recognise it, usually in the third person.',
+  },
+  imparfait: {
+    label: 'Imparfait',
+    explain: 'The past tense of description, background and habit: how things were, what was going on, what used to happen (il faisait beau, nous jouions tous les jours). The endings are -ais, -ait, -ions, -iez, -aient.',
+  },
+  'futur-simple': {
+    label: 'Futur simple',
+    explain: 'The future tense, formed on the infinitive (or an irregular stem) with the endings -ai, -as, -a, -ons, -ez, -ont: je parlerai, il viendra, nous serons. It states what will happen.',
+  },
+  'futur-proche': {
+    label: 'Futur proche (aller + infinitive)',
+    explain: 'The present of aller followed by an infinitive says what is going to happen: je vais manger (I am going to eat). It is the everyday way of talking about the near future.',
+  },
+  'passe-recent': {
+    label: 'Passé récent (venir de + infinitive)',
+    explain: 'The present of venir followed by de and an infinitive says that something has just happened: il vient de partir (he has just left). It is not "comes from".',
+  },
+  'etre-en-train-de': {
+    label: 'Être en train de (in the middle of)',
+    explain: 'Être en train de followed by an infinitive stresses that an action is in progress: je suis en train de lire (I am reading right now). French has no separate continuous tense; the plain present usually does this work.',
+  },
+  'passive-voice': {
+    label: 'Passive voice (être + past participle)',
+    explain: 'Être followed by the past participle of a verb that takes an object makes the passive: the subject undergoes the action (la lettre est écrite par Paul; il fut reçu). The participle agrees with the subject, and the doer, if named, follows par.',
+  },
+  'pronominal-verb': {
+    label: 'Pronominal verb (with se)',
+    explain: 'A verb used with a reflexive pronoun of the same person as the subject: je me lève, elle s\'est levée. The pronoun can mean "oneself", "each other", or simply be part of the verb (se souvenir). In compound tenses these verbs always take être.',
+  },
+  'participle-agreement-etre': {
+    label: 'Participle agreement with être',
+    explain: 'With être the past participle agrees with the subject, like an adjective: elle est arrivée, ils sont partis, elles sont venues. Add -e for a feminine subject and -s for a plural one.',
+  },
+  'participle-agreement-preceding-object': {
+    label: 'Participle agreement with a preceding direct object',
+    explain: 'With avoir the past participle normally does not change, but when the direct object comes BEFORE avoir, as a pronoun (je les ai vues) or as the relative que (les lettres que j\'ai écrites), the participle takes the gender and number of that object. When the object follows, it does not change: j\'ai écrit des lettres.',
+  },
+  'participle-no-agreement': {
+    label: 'Participle without agreement',
+    explain: 'With avoir the past participle does not agree with the subject, so a feminine or plural subject still has the plain form when the object follows: elle a écrit des lettres. A pronominal verb whose pronoun is an indirect object (to each other) does not agree either: ils se sont parlé.',
+  },
+  negation: {
+    label: 'Negation (ne … pas)',
+    explain: 'French negation has two parts around the conjugated verb: ne (n\' before a vowel) and a second word, pas, jamais (never), plus (no longer), rien (nothing), personne (nobody), guère (hardly) or the literary point: je ne mange pas. With rien or personne as the subject the order turns round: personne ne vient.',
+  },
+  'negation-ne-que': {
+    label: 'Ne … que (only)',
+    explain: 'Ne … que is not a negation: it means "only", and que stands just before the thing it limits: je ne mange que du pain (I eat only bread). Nothing is denied; everything else is excluded.',
+  },
+  'negation-ne-dropped': {
+    label: 'Negation without ne (everyday speech)',
+    explain: 'Everyday spoken French usually drops ne and keeps only the second word: je sais pas, c\'est pas vrai. Careful writing keeps ne (je ne sais pas). The meaning is the same.',
+  },
+  'object-pronouns': {
+    label: 'Object pronoun before the verb',
+    explain: 'Object pronouns (me, te, le, la, les, lui, nous, vous, leur) stand before the conjugated verb, not after it as in English: je le vois (I see him), je lui parle (I speak to him). In a compound tense they stand before avoir or être: je l\'ai vu.',
+  },
+  'double-object-pronouns': {
+    label: 'Two object pronouns',
+    explain: 'When two object pronouns stand before the verb, their order is fixed: me, te, se, nous, vous come first, then le, la, les, then lui and leur, then y, then en. So: il me le donne (he gives it to me), je le lui donne (I give it to him), il y en a (there are some).',
+  },
+  'pronoun-y': {
+    label: 'The pronoun y',
+    explain: 'Y replaces a place or a phrase introduced by à: j\'y vais (I go there), j\'y pense (I think about it). It stands before the verb like the other object pronouns.',
+  },
+  'pronoun-en': {
+    label: 'The pronoun en',
+    explain: 'En replaces a phrase introduced by de, including a quantity: j\'en veux deux (I want two of them), il en parle (he talks about it). It stands before the verb, after every other object pronoun.',
+  },
+  'imperative-pronouns': {
+    label: 'Pronouns after a command',
+    explain: 'In a positive command the object pronouns follow the verb, joined to it by hyphens, and me and te become moi and toi: donne-le-moi, parle-lui, allons-y. In a negative command they go back before the verb: ne me le donne pas.',
+  },
+  'inversion-question': {
+    label: 'Question by inversion',
+    explain: 'In a written or formal question the subject pronoun moves after the verb, joined by a hyphen: viens-tu ? (are you coming?). When the verb ends in a vowel and the pronoun begins with one, a -t- is put between them for the sound: a-t-il fini ?',
+  },
+  'est-ce-que': {
+    label: 'Question with est-ce que',
+    explain: 'Est-ce que placed at the front turns a statement into a question without changing the word order: est-ce que tu viens ? (are you coming?). After a question word it works the same way: qu\'est-ce que tu fais ?',
+  },
+  'relative-qui': {
+    label: 'Relative pronoun qui',
+    explain: 'Qui (who, which, that) begins a relative clause and is its subject: the verb follows it directly. l\'homme qui parle (the man who is speaking), les enfants qui jouent. Qui is never shortened before a vowel.',
+  },
+  'relative-que': {
+    label: 'Relative pronoun que',
+    explain: 'Que (whom, which, that) begins a relative clause and is its direct object; the clause has its own subject: le livre que je lis (the book that I am reading). It becomes qu\' before a vowel, and English often leaves it out, French never does.',
+  },
+  'relative-dont': {
+    label: 'Relative pronoun dont',
+    explain: 'Dont replaces a phrase introduced by de: of which, of whom, whose. le livre dont je parle (the book I am talking about: parler de), la femme dont le fils est malade (the woman whose son is ill).',
+  },
+  'relative-ou': {
+    label: 'Relative où (where, when)',
+    explain: 'Où begins a relative clause about a place or a time: la ville où je vis (the city where I live), le jour où il est parti (the day when he left). For time, English uses "when" or nothing; French uses où.',
+  },
+  'relative-lequel': {
+    label: 'Relative lequel (after a preposition)',
+    explain: 'After a preposition a relative pronoun for a thing is a form of lequel, agreeing with its noun: la table sur laquelle il écrit, les amis avec lesquels je voyage. With à and de it contracts: auquel, auxquels, duquel, desquelles.',
+  },
+  'partitive-article': {
+    label: 'Partitive article (du, de la, des)',
+    explain: 'Du, de la, de l\' and des mean "some" for an amount that is not counted: il mange du pain, elle boit de l\'eau. French needs an article where English has none. After a negation it becomes plain de: je n\'ai pas de pain.',
+  },
+  'contraction-article': {
+    label: 'Contracted article (au, aux, du, des)',
+    explain: 'À and de merge with the articles le and les: à + le = au, à + les = aux, de + le = du, de + les = des (elle va au marché, il vient du marché). La and l\' never merge: à la, de l\'.',
+  },
+  elision: {
+    label: 'Elision (l\', j\', qu\' …)',
+    explain: 'Short words such as le, la, je, me, te, se, de, ne, que and si (before il) drop their vowel before a word beginning with a vowel or a silent h, and an apostrophe marks the place: l\'homme, j\'aime, qu\'il, s\'il. A word that begins with an aspirated h does not cause it: le héros.',
+  },
+  'il-y-a': {
+    label: 'Il y a (there is, there are)',
+    explain: 'Il y a means "there is" or "there are": il y a du pain. Its tense changes through avoir (il y avait, il y aura). Before a length of time it means "ago": il y a deux ans (two years ago).',
+  },
+  'subjunctive-after-que': {
+    label: 'Subjunctive after que',
+    explain: 'After expressions of necessity, will, emotion and doubt (il faut que, je veux que, je suis content que) and after some conjunctions (bien que, pour que, avant que), the verb of the que-clause is in the subjunctive: il faut que tu viennes. After verbs of saying and knowing the indicative stays: je sais que tu viens.',
+  },
+  'literary-subjunctive-imperfect': {
+    label: 'Imperfect subjunctive (literary)',
+    explain: 'Classic and formal written French uses an imperfect subjunctive after a verb in a past tense: il fallait qu\'il fût là, je voulais qu\'il parlât. Everyday French uses the present subjunctive instead (qu\'il soit là). You only need to recognise it; it is common in older novels.',
+  },
+  'adjective-position': {
+    label: 'Adjective position',
+    explain: 'Most French adjectives follow the noun, but a few change meaning with their position: un grand homme (a great man) / un homme grand (a tall man). Ancien, pauvre, propre, cher, seul, dernier and certain behave this way too (mon ancien professeur, my former teacher). This is a tendency of those adjectives, not a rule about all adjectives.',
+  },
+  gerondif: {
+    label: 'Gérondif (en + -ant)',
+    explain: 'En followed by the present participle says that two actions happen at the same time, or how something is done: il chante en marchant (he sings while walking), on apprend en lisant (one learns by reading). The subject of both actions is the same.',
+  },
+  comparative: {
+    label: 'Comparative (plus … que)',
+    explain: 'Plus (more), moins (less) or aussi (as) before an adjective or adverb compares two things, and que introduces the second one: elle est plus grande que lui, aussi vite que toi. Bon and bien have their own forms: meilleur, mieux.',
+  },
+  superlative: {
+    label: 'Superlative (le plus …)',
+    explain: 'Le, la or les followed by plus or moins and an adjective makes the superlative: la plus belle ville (the most beautiful city), le moins cher. "In" after a superlative is de: le plus grand du monde.',
+  },
+  'c-est': {
+    label: 'C\'est',
+    explain: 'C\'est (it is, this is, that is) introduces a noun, a name, a pronoun or a judgement: c\'est vrai, c\'est mon frère, c\'est lui. In the plural it is ce sont. It is also used to put one part of a sentence in focus: c\'est Paul qui a gagné.',
+  },
+};

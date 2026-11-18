@@ -79,7 +79,7 @@ ${paradigm('avoir', 'to have; also the auxiliary of the compound tenses of most 
   imper: ['aie', 'ayons', 'ayez'], presPart: 'ayant', pastPart: ['eu', 'eue', 'eus', 'eues'],
 })}
 # VERB
-${paradigm('aller', 'to go; also forms the near future (je vais partir)', {
+${paradigm('aller', 'to go; also forms the near future (je vais partir) [être]', {
   pres: ['vais', 'vas', 'va', 'allons', 'allez', 'vont'],
   impf: ['allais', 'allais', 'allait', 'allions', 'alliez', 'allaient'],
   past: ['allai', 'allas', 'alla', 'allâmes', 'allâtes', 'allèrent'],
@@ -222,7 +222,7 @@ me = me, to me | me:1s acc dat prs; m':1s acc dat prs; me:1s acc dat prs Reflex=
 te = you, to you (informal) | te:2s acc dat prs; t':2s acc dat prs; te:2s acc dat prs Reflex=Yes; t':2s acc dat prs Reflex=Yes
 se = himself, herself, itself, themselves, each other | se:Person=3 Case=Acc,Dat PronType=Prs Reflex=Yes; s':Person=3 Case=Acc,Dat PronType=Prs Reflex=Yes
 le = him, it, them (direct object) | le:3s m acc prs; la:3s f acc prs; l':3s acc prs; les:3p acc prs
-lui = to him, to her; him (after a preposition) | lui:3s dat prs; leur:3p dat prs; lui:3s m prs Stress=Yes
+lui = to him, to her; him (after a preposition) | lui:3s dat prs; lui:3s m prs Stress=Yes
 y = there, to it | y:prs
 en = of it, of them, some; from there | en:prs
 moi = me (stressed) | moi:1s prs Stress=Yes; moi:1s acc dat prs
@@ -251,7 +251,7 @@ tien = yours (informal) | tien:m sg poss Person=2 Number[psor]=Sing; tienne:f sg
 sien = his, hers, its | sien:m sg poss Person=3 Number[psor]=Sing; sienne:f sg poss Person=3 Number[psor]=Sing; siens:m pl poss Person=3 Number[psor]=Sing; siennes:f pl poss Person=3 Number[psor]=Sing
 nôtre = ours | nôtre:sg poss Person=1 Number[psor]=Plur; nôtres:pl poss Person=1 Number[psor]=Plur
 vôtre = yours (plural or polite) | vôtre:sg poss Person=2 Number[psor]=Plur; vôtres:pl poss Person=2 Number[psor]=Plur
-leur = theirs (le leur, la leur) | leur:sg poss Person=3 Number[psor]=Plur; leurs:pl poss Person=3 Number[psor]=Plur
+leur = to them (je leur parle); theirs (le leur, la leur) | leur:3p dat prs; leur:sg poss Person=3 Number[psor]=Plur; leurs:pl poss Person=3 Number[psor]=Plur
 qui = who, whom, which, that | qui:rel; qui:int
 que = whom, which, that; what | que:rel; qu':rel; que:int; qu':int
 quoi = what, which | quoi:int; quoi:rel

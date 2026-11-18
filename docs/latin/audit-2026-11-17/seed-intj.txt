@@ -1,0 +1,7 @@
+o [INTJ] romance		# oh!
+heu [INTJ] romance		# alas!
+eheu [INTJ] romance		# alas!
+vae [INTJ] romance		# woe!
+ecce [INTJ] romance		# behold, see, look
+age [INTJ] romance		# come on! well then!
+en [INTJ] whitaker		# behold! see! lo! here! hey! look at this!

@@ -1,0 +1,39 @@
+# Battery 12: sentences taken from the course's own Stage 0 scenes and ladder units (data/stage0/la, data/ladder/la/authoring/a1-1).
+la | Quis es? | Quis
+la | Salve, Martha! Quomodo vales? | Salve
+la | Salve, Martha! Quomodo vales? | Quomodo
+la | Cras ad forum eo. | eo
+la | Pueri et puellae in schola sunt. | puellae
+la | Pueri et puellae in schola sunt. | Pueri
+la | Domus tua et domus mea bonae sunt. | bonae
+la | Hodie Samuel in domo Marthae est. | Marthae
+la | Martha domum it. | it
+la | Martha domum it. | domum
+la | Omnes ad ecclesiam eunt. | Omnes
+la | Lucius dicit: Salvete, pueri! | Salvete
+la | Estisne fessi? | fessi
+la | Non sumus fessi, magister. | fessi
+la | Quaere, Marce! | Quaere
+la | Aquam bibe! | bibe
+la | Manum in aqua habe. | habe
+la | Scribe mihi, mater! | Scribe
+la | Gratias tibi ago, Luci! | Luci
+la | Multa habes, et multa mihi das. | Multa
+la | Hodie multi in valetudinario sunt. | multi
+la | Mater cara, salve! | salve
+la | Matri meae scribo. | meae
+la | Dies Dominica dies Dei est. | Dominica
+la | Homines Deo gratias agunt. | Deo
+la | Panemne vis? | Panemne
+la | Lac bibis? | Lac
+la | Bene! Cras ad ecclesiam imus. | imus
+la | Vale, Martha! | Vale
+la | Pax tibi, Anna. | Pax
+la | Ecce panis! | panis
+la | Caput meum dolet. | meum
+la | Anna nutrix est. | nutrix
+la | Samuel Annam videt. | Annam
+la | Martha Samuelem videt. | Samuelem
+la | Clavis tua hic est, Marce. | hic
+la | Tu amica bona es. | es
+la | Anna fessa est; in domo est. | fessa

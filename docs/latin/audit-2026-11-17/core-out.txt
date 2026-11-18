@@ -1,0 +1,33 @@
+SEED: 458 everyday words; 67 not held (15 %): seu neuter undecimus duodecimus vicesimus centesimus millesimus ter quater quinquies decies bini terni moneo fruor fungor potior hortor conor vereor reor fido paenitet pudet piget taedet miseret pluit ningit tonat hostis civis brevis levis facilis difficilis celer acer felix miser sacer ultimus sinister denique fere vix Roma Italia Graecia Gallia Caesar Cicero Vergilius Athenae Carthago episcopus presbyter diaconus baptisma diabolus sacramentum trinitas incarnatio eucharistia monachus abbas papa
+FULL: 3 not held (1 %): neuter quinquies decies
+held only as a form of another lemma: est→sum nos→ego vos→tu ea→is/eo bini→binus
+
+PRINCIPAL PARTS: 188 verbs checked, 17 differ:
+lavo: expected lavare, lavi, lautum; stored lavo, lavare, lavi, lotum ⇒ participle lautum NOT GENERATED
+veto: expected vetare, vetui, vetitum; stored veto, vetare, vetavi, vetatum ⇒ participle vetitum NOT GENERATED
+sono: expected sonare, sonui, sonitum; stored sono, sonare, sonavi, sonatum ⇒ perfect sonui only as a variant; participle sonitum NOT GENERATED
+spondeo: expected spondere, spopondi, sponsum; stored spondeo, spondere, spepondi, sponsum
+tendo: expected tendere, tetendi, tentum; stored tendo, tendere, tetendi, tensum ⇒ participle tentum NOT GENERATED
+pungo: expected pungere, pupugi, punctum; stored pungo, pungere, pepugi, punctum
+sero: expected serere, sevi, satum; stored sero, serere, serui, sertum ⇒ participle satum NOT GENERATED
+alo: expected alere, alui, altum; stored alo, alere, alui, alitum ⇒ participle altum NOT GENERATED
+salio: expected salire, salui, saltum; stored salio, salire, salivi, saltum
+eicio: expected eicere, eieci, eiectum; stored eicio, eicere, eici, eictum ⇒ participle eiectum NOT GENERATED
+comburo: expected comburere, combussi, combustum; stored comburo, comburere, combusi, combustum
+disperdo: expected disperdere, disperdidi, disperditum; stored disperdo, disperdere, disperdi, disperditum
+depono: expected deponere, deposui, depositum; stored depono, deponere, deposui, depostum ⇒ participle depositum NOT GENERATED
+adoleo: expected adolere, adolevi, adultum; stored adoleo, adolere, adolui, adolultum ⇒ perfect adolevi NOT GENERATED; participle adultum NOT GENERATED
+occurro: expected occurrere, occurri, occursum; stored occurro, occurrere, occucurri, occursum
+ostendo: expected ostendere, ostendi, ostentum; stored ostendo, ostendere, ostendi, ostensum ⇒ participle ostentum NOT GENERATED
+maiesto -: NO ROW (rows: none)
+
+NOUNS: 164 checked, 9 differ:
+castra, castrorum n: NO SUCH ROW (rows: castrae Fem)
+arma, armorum n: NO SUCH ROW (rows: armi Neut)
+liberi, liberorum m: NO SUCH ROW (rows: none)
+divitiae, divitiarum f: NO SUCH ROW (rows: divitiae Fem)
+tenebrae, tenebrarum f: NO SUCH ROW (rows: tenebrae Fem)
+insidiae, insidiarum f: NO SUCH ROW (rows: insidiae Fem)
+nuptiae, nuptiarum f: NO SUCH ROW (rows: nuptiae Fem)
+moenia, moenium n: NO SUCH ROW (rows: none)
+pascha, paschae: gender stored Fem, expected Neut

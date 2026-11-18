@@ -1,0 +1,30 @@
+tribus NOUN: record keys w,s,p,e,f,tpl,ipa,ety,rel; forms 13
+   tribubus[dative plural]
+audeo VERB: record keys w,s,p,f,tpl,ipa,ety,rel; forms 148
+   audēns[active participle present] | -[participle passive present] | ausūrus[active future participle] | audendus[future participle passive] | ausus[active participle perfect] | -[participle passive perfect] | -[active future participle perfect] | -[future participle passive perfect] | -[active participle perfect potential] | -[participle passive perfect potential]
+utor VERB: record keys w,s,p,f,tpl,ipa,ety,rel; forms 83
+   ūtēns[active participle present] | -[participle passive present] | ūsūrus[active future participle] | ūtendus[future participle passive] | ūtundus[future participle passive] | ūsus[active participle perfect] | -[participle passive perfect] | -[active future participle perfect] | -[future participle passive perfect] | -[active participle perfect potential] | -[participle passive perfect potential]
+pius ADJ: record keys w,s,p,f,tpl,ipa,ety,rel; forms 43
+   pie[masculine singular vocative] | piī[masculine plural vocative]
+pius ADJ: record keys w,s,p,f,tpl,ipa,ety,rel; forms 15
+   
+morior VERB: record keys w,s,p,f,tpl,ipa,ety,rel; forms 97
+   moritūrus[active future participle] | -[future participle passive] | -[active future participle perfect] | -[future participle passive perfect]
+fides NOUN: record keys w,s,p,e,f,tpl,ipa,ety,rel; forms 14
+   
+fides NOUN: record keys w,s,p,e,f,tpl,ipa,ety,rel; forms 15
+   fidēs[nominative plural] | fidium[genitive plural] | fidibus[dative plural] | fidēs[accusative plural] | fidīs[accusative plural] | fidibus[ablative plural] | fidēs[plural vocative]
+meus ADJ: record keys w,s,p,f,tpl,ipa,ety,rel; forms 43
+   mī[masculine singular vocative] | mee[masculine singular vocative] | mea[feminine singular vocative] | meum[neuter singular vocative] | meī[masculine plural vocative] | meae[feminine plural vocative] | mea[neuter plural vocative]
+vas NOUN: record keys w,s,p,e,f,tpl,ipa,ety,rel; forms 14
+   vāsis[genitive] | vāsis[genitive singular] | vāsōrum[genitive plural]
+vas NOUN: record keys w,s,p,e,f,tpl,ipa,ety,rel; forms 13
+   vadis[genitive] | vadis[genitive singular] | vadum[genitive plural]
+castra NOUN: record keys w,s,p,f,tpl,ipa,ety,rel; forms 7
+   castrōrum[genitive] | castrōrum[genitive plural]
+venter NOUN: record keys w,s,p,f,tpl,ipa,ety,rel; forms 14
+   ventrium[genitive plural]
+do VERB: record keys w,s,p,f,tpl,ipa,ety,rel; forms 162
+   dedī[active first-person indicative perfect singular] | dederō[active first-person future indicative perfect singular] | dederim[active first-person perfect singular subjunctive]
+vetus ADJ: record keys w,s,p,f,tpl,ipa,ety,rel; forms 23
+   vetustissimus[superlative] | veterrimus[superlative]

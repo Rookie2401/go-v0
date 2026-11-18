@@ -1,0 +1,39 @@
+et [CONJ] romance		# and; also, even; and
+atque [CONJ] romance	atque{} ac{}	# and, and moreover
+sed [CONJ] romance		# but
+at [CONJ] romance		# but
+autem [CONJ] romance		# but, moreover; and; however, moreover
+nam [CONJ] romance		# for
+enim [CONJ] romance		# for, indeed
+igitur [CONJ] romance		# therefore
+itaque [CONJ] romance		# and so, therefore
+ergo [CONJ] romance		# therefore, consequently
+vel [CONJ] romance		# or
+aut [CONJ] romance		# or
+tamen [CONJ] romance		# nevertheless, still
+ut [SCONJ] romance		# that, so that, as
+ne [SCONJ] romance		# that not, lest
+cum [SCONJ] romance		# when, since, although
+si [SCONJ] romance		# if
+nisi [SCONJ] romance		# if not, unless
+quod [SCONJ] romance		# because, the fact that
+quia [SCONJ] romance		# because
+quoniam [SCONJ] romance		# since, seeing that
+dum [SCONJ] romance		# while, until, as long as
+postquam [SCONJ] romance		# after
+ubi [SCONJ] romance		# when, where
+quamquam [SCONJ] romance		# although
+quamvis [SCONJ] romance		# although
+quin [SCONJ] romance		# that not, but that; without ...-ing
+quominus [SCONJ] romance		# that, from ...-ing
+utinam [SCONJ] romance		# would that! I wish that!
+priusquam [SCONJ] romance		# before
+antequam [SCONJ] romance		# before
+donec [SCONJ] whitaker		# while, as long as, until
+sive [CONJ] whitaker		# or if; whether ... or (sive ... sive); or; or if; or
+tamquam [CONJ] whitaker	tamquam{} tanquam{}	# as, just as; as if, as though; as it were, so to speak
+an [CONJ] whitaker		# or; whether (in questions); (utrum ... an) whether ... or; (
+verumtamen [CONJ] whitaker		# nevertheless, but yet, notwithstanding; but yet, nevertheles
+sin [CONJ] whitaker		# but if; if on the contrary
+etenim [CONJ] whitaker		# and indeed, because, since, as a matter of fact (independent
+siquidem [CONJ] whitaker		# accordingly; if indeed/in fact/it is possible, even supposin

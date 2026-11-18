@@ -1,0 +1,116 @@
+# Battery 5: enclitics and orthography. Sentences written by the auditor (some are famous tags quoted from memory).
+# enclitics
+la | Senatus populusque Romanus. | populusque
+la | Arma virumque cano. | virumque
+la | Terra marique. | marique
+la | Pater filiusque venerunt. | filiusque
+la | Dixitque Deus: Fiat lux. | Dixitque
+la | Vidistine fratrem meum? | Vidistine
+la | Estne domi? | Estne
+la | Tune es rex Iudaeorum? | Tune
+la | Nonne vides? | Nonne
+la | Plus minusve. | minusve
+la | Bis terve. | terve
+la | Mecumque venit. | Mecumque
+la | Deus hominesque. | hominesque
+la | Itaque abiit. | Itaque
+la | Neque venit neque scripsit. | Neque
+la | Tu quoque, Brute? | quoque
+la | Undique hostes veniunt. | Undique
+la | Denique venit. | Denique
+la | Usque ad finem. | Usque
+la | Quisque suum habet. | Quisque
+la | Uterque consul periit. | Uterque
+la | Utraque manu pugnat. | Utraque
+la | Atque ita factum est. | Atque
+la | Ubique terrarum. | Ubique
+la | Quaeque res suum tempus habet. | Quaeque
+la | Plerique abierunt. | Plerique
+la | Namque ita est. | Namque
+la | Absque dubio verum est. | Absque
+la | Cuiusque rei finis est. | Cuiusque
+la | Quoque die venit. | Quoque
+la | Pleraque animalia dormiunt. | Pleraque
+la | Simulque abiit. | Simulque
+la | Filioque procedit. | Filioque
+la | Quaene urbs? | Quaene
+la | Hominesne an dei? | Hominesne
+la | Omnesque gentes. | Omnesque
+la | Susque deque. | deque
+la | Iamque dies aderat. | Iamque
+la | Hicine est? | Hicine
+la | Egone hoc feci? | Egone
+la | Satin salvae? | Satin
+la | Viden ut stet? | Viden
+# u/v and i/j
+la | Uia longa est. | Uia
+la | Uenit ad uillam. | uillam
+la | Jam venit. | Jam
+la | Ejus pater venit. | Ejus
+la | Jesus dixit eis. | Jesus
+la | Iesus dixit eis. | Iesus
+la | Judicium Dei justum est. | Judicium
+la | Juxta crucem stabat. | Juxta
+la | Cujus regni non erit finis. | Cujus
+la | Major est caritas. | Major
+la | Vnus ex illis. | Vnus
+la | SENATVS POPVLVSQVE ROMANVS | POPVLVSQVE
+# ligatures and medieval / ecclesiastical spellings
+la | Cælum et terra transibunt. | Cælum
+la | Præcepit eis Dominus. | Præcepit
+la | Pœnitentiam agite. | Pœnitentiam
+la | In sæcula sæculorum. | sæcula
+la | Fecit Deus celum et terram. | celum
+la | Vita eterna. | eterna
+la | Sancte Marie. | Marie
+la | Ancilla que venit. | que
+la | Rosa pulchre puelle. | puelle
+la | Coelum et terra. | Coelum
+la | Panem nostrum quotidianum da nobis hodie. | quotidianum
+la | Panem nostrum cotidianum da nobis hodie. | cotidianum
+la | Charitas numquam excidit. | Charitas
+la | Caritas numquam excidit. | Caritas
+la | Nichil habeo. | Nichil
+la | Michi placet. | Michi
+la | Mihi placet. | Mihi
+la | Tocius orbis. | Tocius
+la | Gracia plena. | Gracia
+la | Dampnum magnum est. | Dampnum
+la | Ymnum cantemus. | Ymnum
+la | Karissime frater. | Karissime
+la | Set non venit. | Set
+la | Hiems venit. | Hiems
+la | Sepulchrum vacuum est. | Sepulchrum
+la | Lachrymae fluunt. | Lachrymae
+la | Litterae tuae. | Litterae
+la | Literae tuae. | Literae
+la | Solemnitas magna. | Solemnitas
+la | Quatuor evangelia. | Quatuor
+la | Genitrix Dei. | Genitrix
+la | Hierusalem civitas sancta. | Hierusalem
+la | Poenitentia vera. | Poenitentia
+la | Foemina bona. | Foemina
+la | Foelix culpa. | Foelix
+la | Autor libri. | Autor
+la | Inlustris vir. | Inlustris
+la | Adfuit amicus. | Adfuit
+la | Conlocavit eum. | Conlocavit
+# capitals, macrons, accents
+la | In Principio erat Verbum. | Principio
+la | ET VERBUM CARO FACTUM EST. | FACTUM
+la | Amāre est bonum. | Amāre
+la | Puella rosā coronatur. | rosā
+la | Rosā pulchrā. | pulchrā
+la | Rēx bonus populum regit. | Rēx
+la | Vēnit heri. | Vēnit
+la | Dóminus vobíscum. | Dóminus
+la | Dóminus vobíscum. | vobíscum
+la | In sǽcula sæculórum. | sǽcula
+la | Glória Patri et Fílio. | Fílio
+la | Kýrie eléison. | Kýrie
+la | Kyrie eleison. | eleison
+la | Deus, in adiutórium meum inténde. | adiutórium
+la | Aeneadum genetrix, hominum divomque voluptas. | divomque
+la | Quom venit. | Quom
+la | Optumus quisque. | Optumus
+la | Voltus eius. | Voltus

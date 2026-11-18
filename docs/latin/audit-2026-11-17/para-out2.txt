@@ -1,0 +1,178 @@
+
+== audeo VERB == verb-conjugation | audeo, audere, ausus sum (2nd conjugation, deponent)
+  [Fin Ind Act Pres] 1s=audeo 2s=audes 3s=audet 1p=audemus 2p=audetis 3p=audent
+  [Fin Ind Act Imp] 1s=audebam 2s=audebas 3s=audebat 1p=audebamus 2p=audebatis 3p=audebant
+  [Fin Ind Act Fut] 1s=audebo 2s=audebis 3s=audebit 1p=audebimus 2p=audebitis 3p=audebunt
+  [Fin Ind Act Perf] 1s=aus sum 2s=aus es 3s=aus est 1p=ai sumus 2p=ai estis 3p=ai sunt
+  [Fin Imp Act Pres] 2s=aude 2p=audete
+  [Fin Imp Act Fut] 2s=audeto 3s=audeto 2p=audetote 3p=audento
+  [Inf Act Pres] =audere
+  [Inf Pass Pres] =auderi =auderier~
+  [Inf Act Perf] =aum esse
+  [Inf Act Fut] =aurum esse
+  [Part Act Pres] sNom=audens sNom=audens sNom=audens
+  [Part Act Perf] sNom=aus sNom=aa sNom=aum
+  [Part Act Fut] sNom=aurus sNom=aura sNom=aurum
+  [Gdv Pass] sNom=audendus sNom=audenda sNom=audendum
+  [Ger] sGen=audendi sDat=audendo sAcc=audendum sAbl=audendo
+  [Sup] Acc=aum Abl=au
+  notes: Deponent (or semi-deponent) verb: passive forms with an active meaning. Its cells are marked Voice=Act, the meaning, although the forms look passive; the participles and the perfect system follow the same pattern. || Periphrastic forms of two words (amatus sum, amatum esse) are cells of the table, but the analysis reads each word separately: the participle (amatus) and sum. || Participles and the 
+
+== utor VERB == verb-conjugation | utor, uti, usus sum (3rd conjugation, deponent)
+  [Fin Ind Act Pres] 1s=utor 2s=uteris 2s=utere~ 3s=utitur 1p=utimur 2p=utimini 3p=utuntur
+  [Fin Ind Act Imp] 1s=utebar 2s=utebaris 3s=utebatur 1p=utebamur 2p=utebamini 3p=utebantur
+  [Fin Ind Act Fut] 1s=utar 2s=uteris 2s=utere~ 3s=utetur 1p=utemur 2p=utemini 3p=utentur
+  [Fin Imp Act Pres] 2s=utere 2p=utimini
+  [Fin Imp Act Fut] 2s=utitor 3s=utitor 3p=utuntor
+  [Inf Act Pres] =uti
+  [Part Act Pres] sNom=utens sNom=utens sNom=utens
+  [Gdv Pass] sNom=utendus sNom=utenda sNom=utendum sNom=utundus~ sNom=utunda~ sNom=utundum~
+  [Ger] sGen=utundi~ sDat=utundo~ sAcc=utundum~ sAbl=utundo~ sGen=utendi sDat=utendo sAcc=utendum sAbl=utendo
+  notes: Deponent (or semi-deponent) verb: passive forms with an active meaning. Its cells are marked Voice=Act, the meaning, although the forms look passive; the participles and the perfect system follow the same pattern. || Periphrastic forms of two words (amatus sum, amatum esse) are cells of the table, but the analysis reads each word separately: the participle (amatus) and sum. || Participles and the 
+
+== morior VERB == verb-conjugation | morior, mori, mortuus sum (3rd in -io conjugation, deponent)
+  [Fin Ind Act Pres] 1s=morior 2s=moreris 2s=morere~ 3s=moritur 1p=morimur 2p=morimini 3p=moriuntur
+  [Fin Ind Act Imp] 1s=moriebar 2s=moriebaris 3s=moriebatur 1p=moriebamur 2p=moriebamini 3p=moriebantur
+  [Fin Ind Act Fut] 1s=moriar 2s=morieris 2s=moriere~ 3s=morietur 1p=moriemur 2p=moriemini 3p=morientur
+  [Fin Ind Act Perf] 1s=mortuus sum 2s=mortuus es 3s=mortuus est 1p=mortui sumus 2p=mortui estis 3p=mortui sunt
+  [Fin Imp Act Pres] 2s=morere 2p=morimini
+  [Fin Imp Act Fut] 2s=moritor 3s=moritor 3p=moriuntor
+  [Inf Act Pres] =mori
+  [Inf Act Perf] =mortuum esse
+  [Inf Act Fut] =mortuurum esse
+  [Part Act Pres] sNom=moriens sNom=moriens sNom=moriens
+  [Part Act Perf] sNom=mortuus sNom=mortua sNom=mortuum
+  [Part Act Fut] sNom=mortuurus sNom=mortuura sNom=mortuurum
+  [Gdv Pass] sNom=moriendus sNom=morienda sNom=moriendum sNom=moriundus~ sNom=moriunda~ sNom=moriundum~
+  [Ger] sGen=moriundi~ sDat=moriundo~ sAcc=moriundum~ sAbl=moriundo~ sGen=moriendi sDat=moriendo sAcc=moriendum sAbl=moriendo
+  [Sup] Acc=mortuum Abl=mortuu
+  notes: Deponent (or semi-deponent) verb: passive forms with an active meaning. Its cells are marked Voice=Act, the meaning, although the forms look passive; the participles and the perfect system follow the same pattern. || Periphrastic forms of two words (amatus sum, amatum esse) are cells of the table, but the analysis reads each word separately: the participle (amatus) and sum. || Participles and the 
+
+== do VERB == verb-conjugation | do, dare, dedi, datum (1st conjugation)
+  [Fin Ind Act Pres] 1s=do 2s=das 3s=dat 1p=damus 2p=datis 3p=dant
+  [Fin Ind Act Imp] 1s=dabam 2s=dabas 3s=dabat 1p=dabamus 2p=dabatis 3p=dabant
+  [Fin Ind Act Fut] 1s=dabo 2s=dabis 3s=dabit 1p=dabimus 2p=dabitis 3p=dabunt
+  [Fin Ind Pass Pres] 1s=dor 2s=daris 2s=dare~ 3s=datur 1p=damur 2p=damini 3p=dantur
+  [Fin Ind Pass Imp] 1s=dabar 2s=dabaris 3s=dabatur 1p=dabamur 2p=dabamini 3p=dabantur
+  [Fin Ind Pass Fut] 1s=dabor 2s=daberis 2s=dabere~ 3s=dabitur 1p=dabimur 2p=dabimini 3p=dabuntur
+  [Fin Ind Act Perf] 1s=dedi 2s=dedisti 3s=dedit 1p=dedimus 2p=dedistis 3p=dederunt 1s=davi~ 2s=davisti~ 3s=davit~ 1p=davimus~ 2p=davistis~ 3p=daverunt~ 3p=dedere~
+  [Inf Act Perf] =davisse~ =dedisse
+  [Fin Ind Pass Perf] 1s=datus sum 2s=datus es 3s=datus est 1p=dati sumus 2p=dati estis 3p=dati sunt
+  [Fin Imp Act Pres] 2s=da 2p=date
+  [Fin Imp Act Fut] 2s=dato 3s=dato 2p=datote 3p=danto
+  [Inf Act Pres] =dare
+  [Inf Pass Pres] =dari =darier~
+  [Inf Pass Perf] =datum esse
+  [Inf Act Fut] =daturum esse
+  [Inf Pass Fut] =datum iri
+  [Part Act Pres] sNom=dans sNom=dans sNom=dans
+  [Part Pass Perf] sNom=datus sNom=data sNom=datum
+  [Part Act Fut] sNom=daturus sNom=datura sNom=daturum
+  [Gdv Pass] sNom=dandus sNom=danda sNom=dandum
+  [Ger] sGen=dandi sDat=dando sAcc=dandum sAbl=dando
+  [Sup] Acc=datum Abl=datu
+  notes: Periphrastic forms of two words (amatus sum, amatum esse) are cells of the table, but the analysis reads each word separately: the participle (amatus) and sum. || Participles and the gerundive are shown in the nominative singular only; they decline like adjectives (the present participle like a third-declension i-stem, the others like bonus, -a, -um). || Syncopated perfects (amasti, audisse, audie
+
+== fio VERB == verb-conjugation | 
+  [Fin Ind Act Pres] 1s=fio 2s=fis 3s=fit 1p=fimus 2p=fitis 3p=fiunt
+  [Fin Ind Act Imp] 1s=fiebam 2s=fiebas 3s=fiebat 1p=fiebamus 2p=fiebatis 3p=fiebant
+  [Fin Ind Act Fut] 1s=fiam 2s=fies 3s=fiet 1p=fiemus 2p=fietis 3p=fient
+  [Fin Sub Act Pres] 1s=fiam 2s=fias 3s=fiat 1p=fiamus 2p=fiatis 3p=fiant
+  [Fin Sub Act Imp] 1s=fierem 2s=fieres 3s=fieret 1p=fieremus 2p=fieretis 3p=fierent
+  [Inf Act Pres] =fieri
+  [Fin Imp Act Pres] 2s=fi
+  [Fin Ind Act Perf] 1s=factus sum 2s=factus es 3s=factus est 1p=facti sumus 2p=facti estis 3p=facti sunt
+  [Fin Ind Act Pqp] 1s=factus eram 2s=factus eras 3s=factus erat 1p=facti eramus 2p=facti eratis 3p=facti erant
+  [Fin Ind Act FutPerf] 1s=factus ero 2s=factus eris 3s=factus erit 1p=facti erimus 2p=facti eritis 3p=facti erunt
+  [Fin Sub Act Perf] 1s=factus sim 2s=factus sis 3s=factus sit 1p=facti simus 2p=facti sitis 3p=facti sint
+  [Fin Sub Act Pqp] 1s=factus essem 2s=factus esses 3s=factus esset 1p=facti essemus 2p=facti essetis 3p=facti essent
+  notes: Periphrastic forms of two words (amatus sum, amatum esse) are cells of the table, but the analysis reads each word separately: the participle (amatus) and sum. || Participles and the gerundive are shown in the nominative singular only; they decline like adjectives (the present participle like a third-declension i-stem, the others like bonus, -a, -um). || Syncopated perfects (amasti, audisse, audie
+
+== sum AUX == verb-conjugation | 
+  [Fin Ind Act Pres] 1s=sum 2s=es 3s=est 1p=sumus 2p=estis 3p=sunt
+  [Fin Ind Act Imp] 1s=eram 2s=eras 3s=erat 1p=eramus 2p=eratis 3p=erant
+  [Fin Ind Act Fut] 1s=ero 2s=eris 3s=erit 1p=erimus 2p=eritis 3p=erunt
+  [Fin Ind Act Perf] 1s=fui 2s=fuisti 3s=fuit 1p=fuimus 2p=fuistis 3p=fuerunt 3p=fuere~
+  [Fin Imp Act Pres] 2s=es 2p=este
+  [Fin Imp Act Fut] 2s=esto 3s=esto 2p=estote 3p=sunto
+  [Inf Act Pres] =esse
+  [Inf Act Perf] =fuisse
+  [Inf Act Fut] =futurus esse =fore
+  [Part Act Fut] sNom=futurus sNom=futura sNom=futurum
+  notes: Periphrastic forms of two words (amatus sum, amatum esse) are cells of the table, but the analysis reads each word separately: the participle (amatus) and sum. || Participles and the gerundive are shown in the nominative singular only; they decline like adjectives (the present participle like a third-declension i-stem, the others like bonus, -a, -um). || Syncopated perfects (amasti, audisse, audie
+
+== volo VERB == verb-conjugation | 
+  [Fin Ind Act Pres] 1s=volo 2s=vis 3s=vult 1p=volumus 2p=vultis 3p=volunt
+  [Fin Ind Act Imp] 1s=volebam 2s=volebas 3s=volebat 1p=volebamus 2p=volebatis 3p=volebant
+  [Fin Ind Act Fut] 1s=volam 2s=voles 3s=volet 1p=volemus 2p=voletis 3p=volent
+  [Inf Act Pres] =velle
+  [Fin Ind Act Perf] 1s=volui 2s=voluisti 3s=voluit 1p=voluimus 2p=voluistis 3p=voluerunt
+  [Inf Act Perf] =voluisse
+  [Part Act Pres] sNom=volens sNom=volens sNom=volens sNom=volens
+  notes: Periphrastic forms of two words (amatus sum, amatum esse) are cells of the table, but the analysis reads each word separately: the participle (amatus) and sum. || Participles and the gerundive are shown in the nominative singular only; they decline like adjectives (the present participle like a third-declension i-stem, the others like bonus, -a, -um). || Syncopated perfects (amasti, audisse, audie
+
+== eo VERB == verb-conjugation | 
+  [Fin Ind Act Pres] 1s=eo 2s=is 3s=it 1p=imus 2p=itis 3p=eunt
+  [Fin Ind Act Imp] 1s=ibam 2s=ibas 3s=ibat 1p=ibamus 2p=ibatis 3p=ibant
+  [Fin Ind Act Fut] 1s=ibo 2s=ibis 3s=ibit 1p=ibimus 2p=ibitis 3p=ibunt
+  [Fin Ind Act Perf] 1s=ii 2s=isti 3s=iit 1p=iimus 2p=istis 3p=ierunt 1s=ivi~ 2s=ivisti~ 3s=ivit~ 1p=ivimus~ 2p=ivistis~ 3p=iverunt~
+  [Fin Imp Act Pres] 2s=i 2p=ite
+  [Fin Imp Act Fut] 2s=ito 3p=eunto
+  [Inf Act Pres] =ire
+  [Inf Act Perf] =isse =ivisse~
+  [Inf Act Fut] =iturus esse
+  [Part Act Pres] sNom=iens sNom=iens sNom=iens
+  [Part Act Fut] sNom=iturus sNom=itura sNom=iturum
+  [Ger] Gen=eundi Dat=eundo Acc=eundum Abl=eundo
+  [Sup] Acc=itum Abl=itu
+  notes: Periphrastic forms of two words (amatus sum, amatum esse) are cells of the table, but the analysis reads each word separately: the participle (amatus) and sum. || Participles and the gerundive are shown in the nominative singular only; they decline like adjectives (the present participle like a third-declension i-stem, the others like bonus, -a, -um). || Syncopated perfects (amasti, audisse, audie
+
+== comburo VERB == verb-conjugation | comburo, comburere, combusi, combustum (3rd conjugation)
+  [Fin Ind Act Pres] 1s=comburo 2s=comburis 3s=comburit 1p=comburimus 2p=comburitis 3p=comburunt
+  [Fin Ind Act Imp] 1s=comburebam 2s=comburebas 3s=comburebat 1p=comburebamus 2p=comburebatis 3p=comburebant
+  [Fin Ind Act Fut] 1s=comburam 2s=combures 3s=comburet 1p=comburemus 2p=comburetis 3p=comburent
+  [Fin Ind Pass Pres] 1s=comburor 2s=combureris 2s=comburere~ 3s=comburitur 1p=comburimur 2p=comburimini 3p=comburuntur
+  [Fin Ind Pass Imp] 1s=comburebar 2s=comburebaris 3s=comburebatur 1p=comburebamur 2p=comburebamini 3p=comburebantur
+  [Fin Ind Pass Fut] 1s=comburar 2s=combureris 2s=comburere~ 3s=comburetur 1p=comburemur 2p=comburemini 3p=comburentur
+  [Fin Ind Act Perf] 1s=combusi 2s=combusisti 3s=combusit 1p=combusimus 2p=combusistis 3p=combuserunt 2s=combusti^ 2p=combustis^ 3p=combusere~ 1s=combussi 2s=combussisti 3s=combussit 1p=combussimus 2p=combussistis 3p=combusserunt 2s=combussti^ 2p=combusstis^ 3p=combussere~
+  [Fin Ind Pass Perf] 1s=combustus sum 2s=combustus es 3s=combustus est 1p=combusti sumus 2p=combusti estis 3p=combusti sunt
+  [Fin Imp Act Pres] 2s=combure 2p=comburite
+  [Fin Imp Act Fut] 2s=comburito 3s=comburito 2p=comburitote 3p=comburunto
+  [Inf Act Pres] =comburere
+  [Inf Pass Pres] =comburi =comburier~
+  [Inf Act Perf] =combusisse =combussisse
+  [Inf Pass Perf] =combustum esse
+  [Inf Act Fut] =combusturum esse
+  [Inf Pass Fut] =combustum iri
+  [Part Act Pres] sNom=comburens sNom=comburens sNom=comburens
+  [Part Pass Perf] sNom=combustus sNom=combusta sNom=combustum
+  [Part Act Fut] sNom=combusturus sNom=combustura sNom=combusturum
+  [Gdv Pass] sNom=comburendus sNom=comburenda sNom=comburendum sNom=comburundus~ sNom=comburunda~ sNom=comburundum~
+  [Ger] sGen=comburundi~ sDat=comburundo~ sAcc=comburundum~ sAbl=comburundo~ sGen=comburendi sDat=comburendo sAcc=comburendum sAbl=comburendo
+  [Sup] Acc=combustum Abl=combustu
+  notes: Periphrastic forms of two words (amatus sum, amatum esse) are cells of the table, but the analysis reads each word separately: the participle (amatus) and sum. || Participles and the gerundive are shown in the nominative singular only; they decline like adjectives (the present participle like a third-declension i-stem, the others like bonus, -a, -um). || Syncopated perfects (amasti, audisse, audie
+
+== hic PRON == pronoun-paradigm | this
+  [Sing] Nomm=hic Genm=huius Datm=huic Accm=hunc Ablm=hoc Nomf=haec Genf=huius Datf=huic Accf=hanc Ablf=hac Nomn=hoc Genn=huius Datn=huic Accn=hoc Abln=hoc Nomm=hicce~ Genm=huiusce~ Datm=huicce~ Accm=huncce~ Ablm=hocce~ Nomf=haecce~ Genf=huiusce~ Datf=huicce~ Accf=hancce~ Ablf=hacce~ Nomn=hocce~ Genn=huiusce~ Datn=huicce~ Accn=hocce~ Abln=hocce~
+  [Plur] Nomm=hi Nomm=hii~ Genm=horum Datm=his Accm=hos Ablm=his Nomf=hae Genf=harum Datf=his Accf=has Ablf=his Nomn=haec Genn=horum Datn=his Accn=haec Abln=his Datm=hisce~ Accm=hosce~ Ablm=hisce~ Datf=hisce~ Accf=hasce~ Ablf=hisce~ Nomn=haecce~ Datn=hisce~ Accn=haecce~ Abln=hisce~
+  notes: Taken from the Romance app's closed-class tables; a form the table does not hold has no cell.
+
+== qui PRON == pronoun-paradigm | who, which, that; which? what kind of?
+  [Sing] Nomm=qui Genm=cuius Datm=cui Accm=quem Ablm=quo Nomf=quae Genf=cuius Datf=cui Accf=quam Ablf=qua Nomn=quod Genn=cuius Datn=cui Accn=quod Abln=quo Ablm=quocum Ablf=quacum
+  [Plur] Nomm=qui Genm=quorum Datm=quibus Datm=quis~ Accm=quos Ablm=quibus Ablm=quis~ Nomf=quae Genf=quarum Datf=quibus Datf=quis~ Accf=quas Ablf=quibus Ablf=quis~ Nomn=quae Genn=quorum Datn=quibus Datn=quis~ Accn=quae Abln=quibus Abln=quis~ Abl=quibuscum
+  notes: Taken from the Romance app's closed-class tables; a form the table does not hold has no cell.
+
+== quis PRON == pronoun-paradigm | who? what?
+  [Sing] Nomm=quis Nomm=qui~ Genm=cuius Datm=cui Accm=quem Ablm=quo Nomf=quae Genf=cuius Datf=cui Accf=quam Ablf=qua Nomn=quid Nomn=quod~ Genn=cuius Datn=cui Accn=quid Accn=quod~ Abln=quo
+  [Plur] Nomm=qui Genm=quorum Datm=quibus Datm=quis~ Accm=quos Ablm=quibus Ablm=quis~ Nomf=quae Genf=quarum Datf=quibus Datf=quis~ Accf=quas Ablf=quibus Ablf=quis~ Nomn=quae Genn=quorum Datn=quibus Datn=quis~ Accn=quae Abln=quibus Abln=quis~
+  notes: Taken from the Romance app's closed-class tables; a form the table does not hold has no cell.
+
+== idem PRON == pronoun-paradigm | the same
+  [Sing] Nomm=idem Genm=eiusdem Datm=eidem Accm=eundem Ablm=eodem Nomf=eadem Genf=eiusdem Datf=eidem Accf=eandem Ablf=eadem Nomn=idem Genn=eiusdem Datn=eidem Accn=idem Abln=eodem
+  [Plur] Nomm=iidem Nomm=eidem~ Nomm=idem~ Genm=eorundem Datm=iisdem Datm=eisdem~ Datm=isdem~ Accm=eosdem Ablm=iisdem Ablm=eisdem~ Ablm=isdem~ Nomf=eaedem Genf=earundem Datf=iisdem Datf=eisdem~ Datf=isdem~ Accf=easdem Ablf=iisdem Ablf=eisdem~ Ablf=isdem~ Nomn=eadem Genn=eorundem Datn=iisdem Datn=eisdem~ Datn=isdem~ Accn=eadem Abln=iisdem Abln=eisdem~ Abln=isdem~
+  notes: Taken from the Romance app's closed-class tables; a form the table does not hold has no cell.
+
+== alius ADJ == adjective-declension |  (1st/2nd declension)
+  [Sing] Nomm=alius Genm=alterius Datm=alii Accm=alium Ablm=alio Vocm=ali Nomf=alia Genf=alterius Datf=alii Accf=aliam Ablf=alia Vocf=alia Nomn=aliud Genn=alterius Datn=alii Accn=alium Abln=alio Vocn=alium
+  [Plur] Nomm=alii Genm=aliorum Genm=alium~ Datm=aliis Accm=alios Ablm=aliis Vocm=alii Nomf=aliae Genf=aliarum Genf=alium~ Datf=aliis Accf=alias Ablf=aliis Vocf=aliae Nomn=alia Genn=aliorum Datn=aliis Accn=alia Abln=aliis Vocn=alia
+  notes: The positive degree has no Degree feature. The comparative is formed with -ior, the superlative with -issimus (-rimus after -er, -limus in facilis and a few more); the irregular comparisons (bonus, malus, magnus, parvus, multus) are listed by hand.

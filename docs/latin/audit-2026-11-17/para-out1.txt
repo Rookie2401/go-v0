@@ -1,0 +1,82 @@
+
+== dominus NOUN == noun-declension | dominus, domini (2nd declension)
+  [] Noms=dominus Gens=domini Dats=domino Accs=dominum Abls=domino Vocs=domine Nomp=domini Genp=dominorum Genp=dominum~ Datp=dominis Accp=dominos Ablp=dominis Vocp=domini
+  notes: Gender: masculine. The cells hold the bare noun.
+
+== cor NOUN == noun-declension | cor, cordis (3rd declension)
+  [] Noms=cor Gens=cordis Dats=cordi Accs=cor Abls=corde Vocs=cor Nomp=corda Genp=cordum Genp=cordium~ Datp=cordibus Accp=corda Ablp=cordibus Vocp=corda
+  notes: Gender: neuter. The cells hold the bare noun.
+
+== tribus NOUN == noun-declension | tribus, tribus (4th declension)
+  [] Noms=tribus Gens=tribus Dats=tribui Dats=tribu~ Accs=tribum Abls=tribu Vocs=tribus Nomp=tribus Genp=tribuum Datp=tribibus Datp=tribubus~ Accp=tribus Ablp=tribibus Ablp=tribubus~ Vocp=tribus
+  notes: Gender: feminine. The cells hold the bare noun.
+
+== fides NOUN == noun-declension | fides, fidei (5th declension)
+  [] Noms=fides Gens=fidei Dats=fidei Accs=fidem Abls=fide Vocs=fides Nomp=fides Genp=fiderum Datp=fidebus Accp=fides Ablp=fidebus Vocp=fides
+  notes: Gender: feminine. The cells hold the bare noun.
+
+== arma NOUN == noun-declension | arma, armi (2nd declension)
+  [] Nomp=arma Genp=armorum Genp=armum~ Datp=armis Accp=arma Ablp=armis Vocp=arma
+  notes: Gender: neuter. The cells hold the bare noun. || Used in the plural only.
+
+== tenebrae NOUN == noun-declension | tenebrae, tenebrae (1st declension)
+  [] Nomp=tenebrae Genp=tenebrarum Genp=tenebrum~ Datp=tenebris Accp=tenebras Ablp=tenebris Vocp=tenebrae
+  notes: Gender: feminine. The cells hold the bare noun. || Used in the plural only.
+
+== vas NOUN == noun-declension | vas, vasi (2nd declension)
+  [] Noms=vas Gens=vasi Dats=vaso Accs=vasum Abls=vaso Vocs=vas Nomp=vasi Genp=vasorum Genp=vasum~ Datp=vasis Accp=vasos Ablp=vasis Vocp=vasi
+  notes: Gender: masculine. The cells hold the bare noun.
+
+== liber NOUN == noun-declension | liber, liberi (2nd declension)
+  [] Noms=liber Gens=liberi Dats=libero Accs=liberum Abls=libero Vocs=liber Nomp=liberi Genp=liberorum Genp=liberum~ Datp=liberis Accp=liberos Ablp=liberis Vocp=liberi
+  notes: Gender: masculine. The cells hold the bare noun.
+
+== filius NOUN == noun-declension | filius, filii (2nd declension)
+  [] Noms=filius Gens=filii Gens=fili~ Dats=filio Accs=filium Abls=filio Vocs=fili Nomp=filii Genp=filiorum Genp=filium~ Datp=filiis Accp=filios Ablp=filiis Vocp=filii
+  notes: Gender: masculine. The cells hold the bare noun.
+
+== meus ADJ == adjective-declension |  (1st/2nd declension)
+  [Sing] Nomm=meus Genm=mei Datm=meo Accm=meum Ablm=meo Vocm=mee Nomf=mea Genf=meae Datf=meae Accf=meam Ablf=mea Vocf=mea Nomn=meum Genn=mei Datn=meo Accn=meum Abln=meo Vocn=meum
+  [Plur] Nomm=mei Genm=meorum Genm=meum~ Datm=meis Accm=meos Ablm=meis Vocm=mei Nomf=meae Genf=mearum Genf=meum~ Datf=meis Accf=meas Ablf=meis Vocf=meae Nomn=mea Genn=meorum Datn=meis Accn=mea Abln=meis Vocn=mea
+  notes: The positive degree has no Degree feature. The comparative is formed with -ior, the superlative with -issimus (-rimus after -er, -limus in facilis and a few more); the irregular comparisons (bonus, malus, magnus, parvus, multus) are listed by hand.
+
+== pius ADJ == adjective-declension | pius, pia, pium (1st/2nd declension)
+  [Sing] Nomm=pius Genm=pii Datm=pio Accm=pium Ablm=pio Vocm=pi Nomf=pia Genf=piae Datf=piae Accf=piam Ablf=pia Vocf=pia Nomn=pium Genn=pii Datn=pio Accn=pium Abln=pio Vocn=pium
+  [Plur] Nomm=pii Genm=piorum Genm=pium~ Datm=piis Accm=pios Ablm=piis Vocm=pii Nomf=piae Genf=piarum Genf=pium~ Datf=piis Accf=pias Ablf=piis Vocf=piae Nomn=pia Genn=piorum Datn=piis Accn=pia Abln=piis Vocn=pia
+  [Sup Sing] Nomm=piissimus Genm=piissimi Datm=piissimo Accm=piissimum Ablm=piissimo Vocm=piissime Nomf=piissima Genf=piissimae Datf=piissimae Accf=piissimam Ablf=piissima Vocf=piissima Nomn=piissimum Genn=piissimi Datn=piissimo Accn=piissimum Abln=piissimo Vocn=piissimum Nomm=piissimus Genm=piissimi Datm=piissimo Accm=piissimum Ablm=piissimo Vocm=piissime Nomf=piissima Genf=piissimae Datf=piissimae Accf=piissimam Ablf=piissima Vocf=piissima Nomn=piissimum Genn=piissimi Datn=piissimo Accn=piissimum Abln=piissimo Vocn=piissimum
+  [Sup Plur] Nomm=piissimi Genm=piissimorum Genm=piissimum~ Datm=piissimis Accm=piissimos Ablm=piissimis Vocm=piissimi Nomf=piissimae Genf=piissimarum Genf=piissimum~ Datf=piissimis Accf=piissimas Ablf=piissimis Vocf=piissimae Nomn=piissima Genn=piissimorum Datn=piissimis Accn=piissima Abln=piissimis Vocn=piissima Nomm=piissimi Genm=piissimorum Genm=piissimum~ Datm=piissimis Accm=piissimos Ablm=piissimis Vocm=piissimi Nomf=piissimae Genf=piissimarum Genf=piissimum~ Datf=piissimis Accf=piissimas Ablf=piissimis Vocf=piissimae Nomn=piissima Genn=piissimorum Datn=piissimis Accn=piissima Abln=piissimis Vocn=piissima
+  [Cmp Sing] Nomm=piior Genm=piioris Datm=piiori Accm=piiorem Ablm=piiore Ablm=piiori~ Vocm=piior Nomf=piior Genf=piioris Datf=piiori Accf=piiorem Ablf=piiore Ablf=piiori~ Vocf=piior Nomn=piius Genn=piioris Datn=piiori Accn=piius Abln=piiore Abln=piiori~ Vocn=piius
+  [Cmp Plur] Nomm=piiores Genm=piiorum Datm=piioribus Accm=piiores Accm=piioris~ Ablm=piioribus Vocm=piiores Nomf=piiores Genf=piiorum Datf=piioribus Accf=piiores Accf=piioris~ Ablf=piioribus Vocf=piiores Nomn=piiora Genn=piiorum Datn=piioribus Accn=piiora Abln=piioribus Vocn=piiora
+  notes: The positive degree has no Degree feature. The comparative is formed with -ior, the superlative with -issimus (-rimus after -er, -limus in facilis and a few more); the irregular comparisons (bonus, malus, magnus, parvus, multus) are listed by hand.
+
+== vetus ADJ == adjective-declension | vetus, veteris (3rd declension)
+  [Sing] Nomm=vetus Genm=veteris Datm=veteri Accm=veterem Ablm=vetere Ablm=veteri~ Vocm=vetus Nomf=vetus Genf=veteris Datf=veteri Accf=veterem Ablf=vetere Ablf=veteri~ Vocf=vetus Nomn=vetus Genn=veteris Datn=veteri Accn=vetus Abln=vetere Abln=veteri~ Vocn=vetus
+  [Plur] Nomm=veteres Genm=veterum Datm=veteribus Accm=veteres Accm=veteris~ Ablm=veteribus Vocm=veteres Nomf=veteres Genf=veterum Datf=veteribus Accf=veteres Accf=veteris~ Ablf=veteribus Vocf=veteres Nomn=vetera Genn=veterum Datn=veteribus Accn=vetera Abln=veteribus Vocn=vetera
+  [Cmp Sing] Nomm=veterior Genm=veterioris Datm=veteriori Accm=veteriorem Ablm=veteriore Ablm=veteriori~ Vocm=veterior Nomf=veterior Genf=veterioris Datf=veteriori Accf=veteriorem Ablf=veteriore Ablf=veteriori~ Vocf=veterior Nomn=veterius Genn=veterioris Datn=veteriori Accn=veterius Abln=veteriore Abln=veteriori~ Vocn=veterius
+  [Cmp Plur] Nomm=veteriores Genm=veteriorum Datm=veterioribus Accm=veteriores Accm=veterioris~ Ablm=veterioribus Vocm=veteriores Nomf=veteriores Genf=veteriorum Datf=veterioribus Accf=veteriores Accf=veterioris~ Ablf=veterioribus Vocf=veteriores Nomn=veteriora Genn=veteriorum Datn=veterioribus Accn=veteriora Abln=veterioribus Vocn=veteriora
+  [Sup Sing] Nomm=veterissimus Genm=veterissimi Datm=veterissimo Accm=veterissimum Ablm=veterissimo Vocm=veterissime Nomf=veterissima Genf=veterissimae Datf=veterissimae Accf=veterissimam Ablf=veterissima Vocf=veterissima Nomn=veterissimum Genn=veterissimi Datn=veterissimo Accn=veterissimum Abln=veterissimo Vocn=veterissimum
+  [Sup Plur] Nomm=veterissimi Genm=veterissimorum Genm=veterissimum~ Datm=veterissimis Accm=veterissimos Ablm=veterissimis Vocm=veterissimi Nomf=veterissimae Genf=veterissimarum Genf=veterissimum~ Datf=veterissimis Accf=veterissimas Ablf=veterissimis Vocf=veterissimae Nomn=veterissima Genn=veterissimorum Datn=veterissimis Accn=veterissima Abln=veterissimis Vocn=veterissima
+  notes: The positive degree has no Degree feature. The comparative is formed with -ior, the superlative with -issimus (-rimus after -er, -limus in facilis and a few more); the irregular comparisons (bonus, malus, magnus, parvus, multus) are listed by hand.
+
+== unus NUM == adjective-declension | one
+  [Sing] Nomm=unus Nomf=una Nomn=unum Gen=unius Dat=uni Accm=unum Accf=unam Ablm=uno Ablf=una
+  [Plur] Nomm=uni
+  notes: Taken from the Romance app's closed-class tables; a form the table does not hold has no cell.
+
+== duo NUM == adjective-declension | two
+  [Plur] Nomm=duo Nomf=duae Genm=duorum Genf=duarum Datm=duobus Datf=duabus Accm=duos Accm=duo Accf=duas Nomn=duo Ablm=duobus Ablf=duabus
+  notes: Taken from the Romance app's closed-class tables; a form the table does not hold has no cell.
+
+== tres NUM == adjective-declension | three
+  [Plur] Nom=tres Nomn=tria Gen=trium Dat=tribus Acc=tres Abl=tribus
+  notes: Taken from the Romance app's closed-class tables; a form the table does not hold has no cell.
+
+== ego PRON == pronoun-paradigm | I
+  [Sing] Nom1=ego Gen1=mei Dat1=mihi Acc1=me Abl1=me Abl1=mecum Dat1=mi
+  [Plur] Nom1=nos Gen1=nostri Dat1=nobis Acc1=nos Abl1=nobis Abl1=nobiscum Gen1=nostrum
+  notes: Taken from the Romance app's closed-class tables; a form the table does not hold has no cell.
+
+== is PRON == pronoun-paradigm | this, that; he, she, it
+  [Sing] Nomm=is Genm=eius Datm=ei Accm=eum Ablm=eo Nomf=ea Genf=eius Datf=ei Accf=eam Ablf=ea Nomn=id Genn=eius Datn=ei Accn=id Abln=eo
+  [Plur] Nomm=ii Nomm=ei~ Nomm=i~ Genm=eorum Datm=iis Datm=eis~ Datm=is~ Accm=eos Ablm=iis Ablm=eis~ Ablm=is~ Nomf=eae Genf=earum Datf=iis Datf=eis~ Datf=is~ Accf=eas Ablf=iis Ablf=eis~ Ablf=is~ Nomn=ea Genn=eorum Datn=iis Datn=eis~ Datn=is~ Accn=ea Abln=iis Abln=eis~ Abln=is~
+  notes: Taken from the Romance app's closed-class tables; a form the table does not hold has no cell.

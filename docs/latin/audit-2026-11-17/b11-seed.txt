@@ -1,0 +1,8 @@
+la | Sacerdos librum sacrum legit. | librum
+la | Hostis urbem cepit. | Hostis
+la | Roma aeterna est. | Roma
+la | Res facilis est. | facilis
+la | Caesar Galliam vicit. | Caesar
+la | Episcopus venit. | Episcopus
+la | Miser homo sum. | Miser
+la | Vita brevis est. | brevis

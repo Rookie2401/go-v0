@@ -1,0 +1,264 @@
+ibi [ADV] romance		# there
+tum [ADV] romance		# then, at that time
+tunc [ADV] romance		# then, at that time
+nunc [ADV] romance		# now
+iam [ADV] romance		# now, already, soon
+etiam [ADV] romance		# even, also, still
+quoque [ADV] romance		# also, too
+semper [ADV] romance		# always
+hodie [ADV] romance		# today
+cras [ADV] romance		# tomorrow
+ita [ADV] romance		# thus, so
+sic [ADV] romance		# thus, so
+valde [ADV] romance		# very, greatly
+multum [ADV] romance		# much
+hic [ADV] romance		# here
+illic [ADV] romance		# there
+inde [ADV] romance		# from there, thence
+unde [ADV] romance		# from where, whence
+heri [ADV] romance		# yesterday
+mox [ADV] romance		# soon
+saepe [ADV] romance		# often
+numquam [ADV] romance		# never
+tam [ADV] romance		# so, to such a degree
+adeo [ADV] romance		# to such a degree, so much
+sicut [ADV] whitaker	sicut{} sicuti{}	# as, just as, like; in same way; as if; as it certainly is
+neque [ADV] whitaker	neque{} nec{}	# nor, and not; not; and not, not, neither
+usque [ADV] whitaker		# as far as, up to, until (usque ad); all the way, continuousl
+quasi [ADV] whitaker		# as if, as though; about, nearly; like; as if, just as if, as
+cumque [ADV] whitaker		# -ever, -soever (ubicumque, quicumque); and when; at any time
+vero [ADV] whitaker		# but, however; indeed, truly, in fact; yes; in truth; certain
+numquid [ADV] whitaker		# surely not? (expects "no"); can it be that?; whether; is it 
+quomodo [ADV] whitaker		# how, in what way; as, just as
+porro [ADV] whitaker		# further, moreover; onward; at distance, further on, far off,
+quando [ADV] whitaker		# when; at what time; since, because
+adhuc [ADV] whitaker		# still, yet; until now, thus far; further; thus far, till now
+ultra [ADV] whitaker		# beyond, further; any more, any longer; on the other side
+quidem [ADV] whitaker		# indeed, certainly; at least; (ne ... quidem) not even
+quare [ADV] whitaker		# why?, wherefore?; for which reason, therefore; in what way? 
+simul [ADV] whitaker		# together, at the same time; at once; likewise; also; simulta
+mane [ADV] whitaker		# in the morning, early; (as noun) morning
+forte [ADV] whitaker		# perhaps, by chance; perchance (si forte, ne forte); as luck 
+magis [ADV] whitaker		# more, rather; more greatly; (magis ac magis) more and more; 
+propterea [ADV] whitaker		# therefore, for this reason; (propterea quod) because
+iterum [ADV] whitaker		# again, a second time; once more
+statim [ADV] whitaker		# at once, immediately, straightway
+amen [ADV] whitaker		# amen; truly, verily (amen dico vobis); (from Hebrew)
+idcirco [ADV] whitaker		# therefore, for that reason; on that account
+nimis [ADV] whitaker		# very, exceedingly, greatly; too much
+tantum [ADV] whitaker		# only; so much, so greatly; (tantum ... quantum) as much as; 
+rursus [ADV] whitaker		# again; back, backwards; on the other hand; turned back, back
+bene [ADV] whitaker		# well; rightly; (bene est) it is well; well, very, quite, rig
+similiter [ADV] whitaker		# likewise, in like manner; similarly
+ideo [ADV] whitaker		# therefore, for that reason, on that account
+longe [ADV] whitaker		# far, far off, afar; by far; at a distance; far (off), distan
+quam [ADV] whitaker		# than; how, how much; as (tam ... quam); as ... as possible (
+ample [ADV] whitaker		# abundantly, amply; more (amplius: further, any more, longer)
+prius [ADV] whitaker		# before, first, previously; sooner; (priusquam) before; earli
+invicem [ADV] whitaker		# one another, each other, mutually; in turn; by turns; recipr
+foris [ADV] whitaker		# outside, without; out of doors; abroad
+pariter [ADV] whitaker		# equally; together
+illuc [ADV] whitaker		# there, thither, to that place/point
+cito [ADV] whitaker		# quickly/fast/speedily, with speed; soon, before long
+quippe [ADV] whitaker		# of course; as you see; obviously; naturally
+desuper [ADV] whitaker		# from above, from overhead; up above
+cur [ADV] whitaker		# why, wherefore; for what reason/purpose?
+nequaquam [ADV] whitaker		# by no means
+huc [ADV] whitaker		# here, to this place; to this point
+postea [ADV] whitaker		# afterwards
+vere [ADV] whitaker		# really, truly, actually, indeed; rightly, correctly, exactly
+multo [ADV] whitaker		# much, by much, a great deal, very; most; by far
+foras [ADV] whitaker		# out of doors, abroad, forth, out
+parum [ADV] whitaker		# too/very little, not enough/so good, insufficient
+tertio [ADV] whitaker		# thirdly
+procul [ADV] whitaker		# away; at distance, far off
+primo [ADV] whitaker		# at first; in the first place; at the beginning
+frustra [ADV] whitaker		# in vain; for nothing, to no purpose
+subter [ADV] whitaker		# beneath (surface/covering); underneath, below
+usquequo [ADV] whitaker		# how long? (Douay); to what point/time/extent?
+primum [ADV] whitaker		# at first; in the first place
+vehementer [ADV] whitaker		# vehemently, vigorously; exceedingly, very much
+velut [ADV] whitaker	velut{} veluti{}	# just as, as if
+modo [ADV] whitaker		# only, merely; just now/recently, lately; presently
+diligenter [ADV] whitaker		# carefully; attentively; diligently; scrupulously
+solum [ADV] whitaker		# only/just/merely/barely/alone
+insuper [ADV] whitaker		# above, on top; in addition (to); over
+quemadmodum [ADV] whitaker		# in what way, how; as, just as; to the extent that
+obviam [ADV] whitaker		# in the way; against
+hinc [ADV] whitaker		# from here, from this source/cause; hence, henceforth
+confestim [ADV] whitaker		# immediately, suddenly; at once, without delay, forthwith
+quanto [ADV] whitaker		# (by) how much
+aliquando [ADV] whitaker		# sometime (or other), at any time, ever; finally
+intrinsecus [ADV] whitaker		# internally, on/in the inside; from within
+velociter [ADV] whitaker		# swiftly/rapidly, with speed of movement; quickly, in a short
+deorsum [ADV] whitaker		# down, downwards, beneath, below; (motion/direction/order)
+male [ADV] whitaker		# badly, ill, wrongly, wickedly, unfortunately
+forsitan [ADV] whitaker		# perhaps
+scilicet [ADV] whitaker		# one may know, certainly; of course
+utique [ADV] whitaker		# certainly, by all means; at any rate
+videlicet [ADV] whitaker		# one may see; clearly, evidently
+quotidie [ADV] whitaker		# daily, every day; day by day; usually, ordinarily, commonly
+undique [ADV] whitaker		# from every side/direction/place/part/source
+quamproxime [ADV] whitaker		# as nearly as may be
+seorsim [ADV] whitaker		# separately
+plusquam [ADV] whitaker		# more than
+quamcunque [ADV] whitaker		# however, in whatever way
+quamcumque [ADV] whitaker		# however, in whatever way
+semel [ADV] whitaker		# once, a single time
+bis [ADV] whitaker		# twice
+secundo [ADV] whitaker		# secondly, for the second time
+natu [ADV] whitaker		# by birth, in age
+sin [ADV] whitaker		# but if
+etenim [ADV] whitaker		# for indeed, for
+tamquam [ADV] whitaker	tamquam{} tanquam{}	# as, like, just as; as if, as it were
+verumtamen [ADV] whitaker		# nevertheless, yet, but; notwithstanding
+tandem [ADV] whitaker		# at last, finally
+omnino [ADV] whitaker		# altogether, entirely
+diu [ADV] whitaker		# for a long time
+olim [ADV] whitaker		# once, formerly
+deinde [ADV] whitaker		# then, next
+satis [ADV] whitaker		# enough, sufficiently
+interea [ADV] whitaker		# meanwhile
+paene [ADV] whitaker		# almost
+antea [ADV] whitaker		# before, formerly
+magnopere [ADV] rule	magnopere{} magis{Cmp} maxime{Sup}	# adverb of magnus: great
+universe [ADV] rule	universe{} universius{Cmp} universissime{Sup}	# adverb of universus: all
+sancte [ADV] rule	sancte{} sanctius{Cmp} sanctissime{Sup}	# adverb of sanctus: holy
+medie [ADV] rule	medie{} mediius{Cmp} mediissime{Sup}	# adverb of medius: middle
+cuncte [ADV] rule	cuncte{} cunctius{Cmp} cunctissime{Sup}	# adverb of cunctus: all
+iuste [ADV] rule	iuste{} iustius{Cmp} iustissime{Sup}	# adverb of iustus: righteous
+singule [ADV] rule	singule{} singulius{Cmp} singulissime{Sup}	# adverb of singulus: each
+fortiter [ADV] rule	fortiter{} fortius{Cmp} fortissime{Sup}	# adverb of fortis: strong
+aeterne [ADV] rule	aeterne{} aeternius{Cmp} aeternissime{Sup}	# adverb of aeternus: eternal
+impie [ADV] rule	impie{} impiius{Cmp} impiissime{Sup}	# adverb of impius: wicked
+seniter [ADV] rule	seniter{} senius{Cmp} senissime{Sup}	# adverb of senex: old
+pauperiter [ADV] rule	pauperiter{} pauperius{Cmp} pauperissime{Sup}	# adverb of pauper: poor
+sapienter [ADV] rule	sapienter{} sapientius{Cmp} sapientissime{Sup}	# adverb of sapiens: wise
+plene [ADV] rule	plene{} plenius{Cmp} plenissime{Sup}	# adverb of plenus: full
+relique [ADV] rule	relique{} reliquius{Cmp} reliquissime{Sup}	# adverb of reliquus: the rest of
+sempiterne [ADV] rule	sempiterne{} sempiternius{Cmp} sempiternissime{Sup}	# adverb of sempiternus: everlasting
+auree [ADV] rule	auree{} aureius{Cmp} aureissime{Sup}	# adverb of aureus: golden
+salve [ADV] rule	salve{} salvius{Cmp} salvissime{Sup}	# adverb of salvus: safe
+excelse [ADV] rule	excelse{} excelsius{Cmp} excelsissime{Sup}	# adverb of excelsus: high
+mortue [ADV] rule	mortue{} mortuius{Cmp} mortuissime{Sup}	# adverb of mortuus: dead
+stulte [ADV] rule	stulte{} stultius{Cmp} stultissime{Sup}	# adverb of stultus: foolish
+novissime [ADV] rule	novissime{} novissimius{Cmp} novissimissime{Sup}	# adverb of novissimus: last
+aliene [ADV] rule	aliene{} alienius{Cmp} alienissime{Sup}	# adverb of alienus: foreign
+primogenite [ADV] rule	primogenite{} primogenitius{Cmp} primogenitissime{Sup}	# adverb of primogenitus: first-born
+parvule [ADV] rule	parvule{} parvulius{Cmp} parvulissime{Sup}	# adverb of parvulus: very small
+inique [ADV] rule	inique{} iniquius{Cmp} iniquissime{Sup}	# adverb of iniquus: wicked
+nove [ADV] rule	nove{} novius{Cmp} novissime{Sup}	# adverb of novus: new
+potenter [ADV] rule	potenter{} potentius{Cmp} potentissime{Sup}	# adverb of potens: powerful
+alte [ADV] rule	alte{} altius{Cmp} altissime{Sup}	# adverb of altus: high
+pacifice [ADV] rule	pacifice{} pacificius{Cmp} pacificissime{Sup}	# adverb of pacificus: peaceable
+argentee [ADV] rule	argentee{} argenteius{Cmp} argenteissime{Sup}	# adverb of argenteus: of silver
+dextere [ADV] rule	dextere{} dexterius{Cmp} dexterrime{Sup}	# adverb of dexter: right
+beate [ADV] rule	beate{} beatius{Cmp} beatissime{Sup}	# adverb of beatus: blessed
+benedicte [ADV] rule	benedicte{} benedictius{Cmp} benedictissime{Sup}	# adverb of benedictus: blessed
+immunde [ADV] rule	immunde{} immundius{Cmp} immundissime{Sup}	# adverb of immundus: unclean
+granditer [ADV] rule	granditer{} grandius{Cmp} grandissime{Sup}	# adverb of grandis: great
+fideliter [ADV] rule	fideliter{} fidelius{Cmp} fidelissime{Sup}	# adverb of fidelis: faithful
+praesenter [ADV] rule	praesenter{} praesentius{Cmp} praesentissime{Sup}	# adverb of praesens: present
+mirabiliter [ADV] rule	mirabiliter{} mirabilius{Cmp} mirabilissime{Sup}	# adverb of mirabilis: wonderful
+digne [ADV] rule	digne{} dignius{Cmp} dignissime{Sup}	# adverb of dignus: appropriate/suitable
+abscondite [ADV] rule	abscondite{} absconditius{Cmp} absconditissime{Sup}	# adverb of absconditus: hidden
+iuveniter [ADV] rule	iuveniter{} iuvenius{Cmp} iuvenissime{Sup}	# adverb of iuvenis: youthful
+divititer [ADV] rule	divititer{} divitius{Cmp} divitissime{Sup}	# adverb of dives: rich/wealthy
+robuste [ADV] rule	robuste{} robustius{Cmp} robustissime{Sup}	# adverb of robustus: of oak
+orientaliter [ADV] rule	orientaliter{} orientalius{Cmp} orientalissime{Sup}	# adverb of orientalis: eastern
+omnipotenter [ADV] rule	omnipotenter{} omnipotentius{Cmp} omnipotentissime{Sup}	# adverb of omnipotens: all-powerful
+note [ADV] rule	note{} notius{Cmp} notissime{Sup}	# adverb of notus: well known
+pulchre [ADV] rule	pulchre{} pulchrius{Cmp} pulcherrime{Sup}	# adverb of pulcher: pretty
+caece [ADV] rule	caece{} caecius{Cmp} caecissime{Sup}	# adverb of caecus: blind
+pauce [ADV] rule	pauce{} paucius{Cmp} paucissime{Sup}	# adverb of paucus: little
+modice [ADV] rule	modice{} modicius{Cmp} modicissime{Sup}	# adverb of modicus: moderate
+suburbane [ADV] rule	suburbane{} suburbanius{Cmp} suburbanissime{Sup}	# adverb of suburbanus: situated close to the city
+recte [ADV] rule	recte{} rectius{Cmp} rectissime{Sup}	# adverb of rectus: right
+pretiose [ADV] rule	pretiose{} pretiosius{Cmp} pretiosissime{Sup}	# adverb of pretiosus: expensive
+innocenter [ADV] rule	innocenter{} innocentius{Cmp} innocentissime{Sup}	# adverb of innocens: harmless
+perpetue [ADV] rule	perpetue{} perpetuius{Cmp} perpetuissime{Sup}	# adverb of perpetuus: continuous
+vive [ADV] rule	vive{} vivius{Cmp} vivissime{Sup}	# adverb of vivus: alive
+dure [ADV] rule	dure{} durius{Cmp} durissime{Sup}	# adverb of durus: hard
+extere [ADV] rule	extere{} exterius{Cmp} exterrime{Sup}	# adverb of exter: outer/external
+humiliter [ADV] rule	humiliter{} humilius{Cmp} humillime{Sup}	# adverb of humilis: low
+superbe [ADV] rule	superbe{} superbius{Cmp} superbissime{Sup}	# adverb of superbus: arrogant
+immaculate [ADV] rule	immaculate{} immaculatius{Cmp} immaculatissime{Sup}	# adverb of immaculatus: immaculate/unstained/spotless/without
+infere [ADV] rule	infere{} inferius{Cmp} inferissime{Sup}	# adverb of inferus: below
+memoriter [ADV] rule	memoriter{} memorius{Cmp} memorissime{Sup}	# adverb of memor: remembering
+infirme [ADV] rule	infirme{} infirmius{Cmp} infirmissime{Sup}	# adverb of infirmus: fragile/frail/feeble
+captive [ADV] rule	captive{} captivius{Cmp} captivissime{Sup}	# adverb of captivus: caught
+campestriter [ADV] rule	campestriter{} campestrius{Cmp} campesterrime{Sup}	# adverb of campester: level
+certe [ADV] rule	certe{} certius{Cmp} certissime{Sup}	# adverb of certus: fixed
+adversarie [ADV] rule	adversarie{} adversariius{Cmp} adversariissime{Sup}	# adverb of adversarius: opposed (to)
+graviter [ADV] rule	graviter{} gravius{Cmp} gravissime{Sup}	# adverb of gravis: heavy
+prudenter [ADV] rule	prudenter{} prudentius{Cmp} prudentissime{Sup}	# adverb of prudens: aware
+vane [ADV] rule	vane{} vanius{Cmp} vanissime{Sup}	# adverb of vanus: empty
+necessarie [ADV] rule	necessarie{} necessariius{Cmp} necessariissime{Sup}	# adverb of necessarius: necessary/needed/essential/indispensa
+antique [ADV] rule	antique{} antiquius{Cmp} antiquissime{Sup}	# adverb of antiquus: old/ancient/aged
+suaviter [ADV] rule	suaviter{} suavius{Cmp} suavissime{Sup}	# adverb of suavis: agreeable
+annicule [ADV] rule	annicule{} anniculius{Cmp} anniculissime{Sup}	# adverb of anniculus: one year old
+iniuste [ADV] rule	iniuste{} iniustius{Cmp} iniustissime{Sup}	# adverb of iniustus: unjust
+dilecte [ADV] rule	dilecte{} dilectius{Cmp} dilectissime{Sup}	# adverb of dilectus: beloved
+nude [ADV] rule	nude{} nudius{Cmp} nudissime{Sup}	# adverb of nudus: nude
+insipienter [ADV] rule	insipienter{} insipientius{Cmp} insipientissime{Sup}	# adverb of insipiens: foolish
+false [ADV] rule	false{} falsius{Cmp} falsissime{Sup}	# adverb of falsus: wrong
+mascule [ADV] rule	mascule{} masculius{Cmp} masculissime{Sup}	# adverb of masculus: male/masculine
+aeree [ADV] rule	aeree{} aereius{Cmp} aereissime{Sup}	# adverb of aereus: made of/bound with/armored with/of the col
+sculptiliter [ADV] rule	sculptiliter{} sculptilius{Cmp} sculptilissime{Sup}	# adverb of sculptilis: engraved
+residue [ADV] rule	residue{} residuius{Cmp} residuissime{Sup}	# adverb of residuus: remaining (to be done)
+mendaciter [ADV] rule	mendaciter{} mendacius{Cmp} mendacissime{Sup}	# adverb of mendax: lying
+pure [ADV] rule	pure{} purius{Cmp} purissime{Sup}	# adverb of purus: pure
+veteriter [ADV] rule	veteriter{} veterius{Cmp} veterissime{Sup}	# adverb of vetus: old
+ferree [ADV] rule	ferree{} ferreius{Cmp} ferreissime{Sup}	# adverb of ferreus: iron
+varie [ADV] rule	varie{} variius{Cmp} variissime{Sup}	# adverb of varius: different
+perfecte [ADV] rule	perfecte{} perfectius{Cmp} perfectissime{Sup}	# adverb of perfectus: perfect
+supere [ADV] rule	supere{} superius{Cmp} superissime{Sup}	# adverb of superus: above
+dupliciter [ADV] rule	dupliciter{} duplicius{Cmp} duplicissime{Sup}	# adverb of duplex: twofold
+vacue [ADV] rule	vacue{} vacuius{Cmp} vacuissime{Sup}	# adverb of vacuus: empty
+pinguiter [ADV] rule	pinguiter{} pinguius{Cmp} pinguissime{Sup}	# adverb of pinguis: fat
+terribiliter [ADV] rule	terribiliter{} terribilius{Cmp} terribilissime{Sup}	# adverb of terribilis: frightful
+dimidie [ADV] rule	dimidie{} dimidiius{Cmp} dimidiissime{Sup}	# adverb of dimidius: half
+feste [ADV] rule	feste{} festius{Cmp} festissime{Sup}	# adverb of festus: festive
+vicine [ADV] rule	vicine{} vicinius{Cmp} vicinissime{Sup}	# adverb of vicinus: nearby
+nimie [ADV] rule	nimie{} nimiius{Cmp} nimiissime{Sup}	# adverb of nimius: excessive
+irrite [ADV] rule	irrite{} irritius{Cmp} irritissime{Sup}	# adverb of irritus: ineffective
+amare [ADV] rule	amare{} amarius{Cmp} amarissime{Sup}	# adverb of amarus: bitter
+aeque [ADV] rule	aeque{} aequius{Cmp} aequissime{Sup}	# adverb of aequus: level
+manifeste [ADV] rule	manifeste{} manifestius{Cmp} manifestissime{Sup}	# adverb of manifestus: detected
+speciose [ADV] rule	speciose{} speciosius{Cmp} speciosissime{Sup}	# adverb of speciosus: beautiful/handsome/good-looking
+prone [ADV] rule	prone{} pronius{Cmp} pronissime{Sup}	# adverb of pronus: leaning forward
+Chananee [ADV] rule	Chananee{} Chananeius{Cmp} Chananeissime{Sup}	# adverb of Chananeus: of/from Canaan/Palestine
+future [ADV] rule	future{} futurius{Cmp} futurissime{Sup}	# adverb of futurus: about to be
+mutue [ADV] rule	mutue{} mutuius{Cmp} mutuissime{Sup}	# adverb of mutuus: borrowed
+postere [ADV] rule	postere{} posterius{Cmp} posterissime{Sup}	# adverb of posterus: coming after
+sublimiter [ADV] rule	sublimiter{} sublimius{Cmp} sublimissime{Sup}	# adverb of sublimis: high
+cognate [ADV] rule	cognate{} cognatius{Cmp} cognatissime{Sup}	# adverb of cognatus: related
+firme [ADV] rule	firme{} firmius{Cmp} firmissime{Sup}	# adverb of firmus: firm/steady
+incircumcise [ADV] rule	incircumcise{} incircumcisius{Cmp} incircumcisissime{Sup}	# adverb of incircumcisus: uncircumcised
+ululate [ADV] rule	ululate{} ululatius{Cmp} ululatissime{Sup}	# adverb of ululatus: yell
+rubre [ADV] rule	rubre{} rubrius{Cmp} ruberrime{Sup}	# adverb of ruber: red
+diverse [ADV] rule	diverse{} diversius{Cmp} diversissime{Sup}	# adverb of diversus: opposite
+misericorditer [ADV] rule	misericorditer{} misericordius{Cmp} misericordissime{Sup}	# adverb of misericors: merciful
+fatue [ADV] rule	fatue{} fatuius{Cmp} fatuissime{Sup}	# adverb of fatuus: foolish
+contrarie [ADV] rule	contrarie{} contrariius{Cmp} contrariissime{Sup}	# adverb of contrarius: opposite
+proprie [ADV] rule	proprie{} propriius{Cmp} propriissime{Sup}	# adverb of proprius: own
+communiter [ADV] rule	communiter{} communius{Cmp} communissime{Sup}	# adverb of communis: common/joint/public
+nobiliter [ADV] rule	nobiliter{} nobilius{Cmp} nobilissime{Sup}	# adverb of nobilis: noble
+legitime [ADV] rule	legitime{} legitimius{Cmp} legitimissime{Sup}	# adverb of legitimus: lawful
+gloriose [ADV] rule	gloriose{} gloriosius{Cmp} gloriosissime{Sup}	# adverb of gloriosus: glorious
+sile [ADV] rule	sile{} silius{Cmp} silissime{Sup}	# adverb of silus: snub-nosed
+optimatiter [ADV] rule	optimatiter{} optimatius{Cmp} optimatissime{Sup}	# adverb of optimas: aristocratic
+albe [ADV] rule	albe{} albius{Cmp} albissime{Sup}	# adverb of albus: white
+sane [ADV] rule	sane{} sanius{Cmp} sanissime{Sup}	# adverb of sanus: sound
+egene [ADV] rule	egene{} egenius{Cmp} egenissime{Sup}	# adverb of egenus: in want of
+sollicite [ADV] rule	sollicite{} sollicitius{Cmp} sollicitissime{Sup}	# adverb of sollicitus: concerned
+masculine [ADV] rule	masculine{} masculinius{Cmp} masculinissime{Sup}	# adverb of masculinus: masculine
+marite [ADV] rule	marite{} maritius{Cmp} maritissime{Sup}	# adverb of maritus: nuptial
+cedrine [ADV] rule	cedrine{} cedrinius{Cmp} cedrinissime{Sup}	# adverb of cedrinus: of cedar/cedar-wood
+bellatoriter [ADV] rule	bellatoriter{} bellatorius{Cmp} bellatorissime{Sup}	# adverb of bellator: warlike
+inutiliter [ADV] rule	inutiliter{} inutilius{Cmp} inutilissime{Sup}	# adverb of inutilis: useless
+iter [ADV] rule	iter{} ius{Cmp} issime{Sup}	# adverb of huiusmodi: of this kind
+taliter [ADV] rule	taliter{} talius{Cmp} talissime{Sup}	# adverb of talis: such
+qualiter [ADV] rule	qualiter{} qualius{Cmp} qualissime{Sup}	# adverb of qualis: of what kind
+tante [ADV] rule	tante{} tantius{Cmp} tantissime{Sup}	# adverb of tantus: so great
+quante [ADV] rule	quante{} quantius{Cmp} quantissime{Sup}	# adverb of quantus: how great

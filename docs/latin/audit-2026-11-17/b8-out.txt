@@ -1,0 +1,288 @@
+la «Deum» in "Deum hominumque pater." ⇒ deus / NOUN / accusative singular masculine / g:God; a god; the God of Scripture / 0.81 / also deutor/VERB,deus/NOUN,dea/NOUN / C:deponent / S:the main word of the sentence / D:god, deity ; the ancient Roman “Dī Penātēs,” personal or fam
+    notes: 6 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Acc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc"}]
+la «Deus» in "Deus est caritas." ⇒ deus / NOUN / nominative or vocative singular masculine / g:God; a god; the God of Scripture / 0.95 / also deutor/VERB / S:subject of "est" / D:god, deity ; the ancient Roman “Dī Penātēs,” personal or fam
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Nom,Voc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc"}]
+la «XIV» in "Caput XIV legimus." ⇒ XIV / NUM /  / g:— / 0.85 / S:describes "Caput" / D:∅
+    notes: 
+    basis: 
+    feats: [{"key":"NumType","value":"Card"},{"key":"NumValue","value":"14"}]
+la «duce» in "Deo duce, vincemus." ⇒ dux / NOUN / ablative singular masculine / g:leader, chief, commander; leader, guide; commander, general; Duke (medieval, Bee) / 0.95 / also duco/VERB / D:leader, head ; commander, general, captain
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Abl"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc"}]
+la «Sartatecta» in "Sartatecta templi instauraverunt." ⇒ Sartatecta / PROPN /  / g:— / 0.4 UNCONF / !Not in the word list: the lemma is a guess from the ending a / D:∅
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given.
+    basis: 
+    feats: []
+la «liberos» in "Parentes liberos suos amant." ⇒ liber / NOUN / accusative plural masculine / g:book, scroll; children (pl.); (sg. VOC) child / 0.95 / also liber/ADJ / S:direct object of "amant" / D:book ; the inner bark of a tree
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Acc"},{"key":"Number","value":"Plur"},{"key":"Gender","value":"Masc"}]
+la «Liberi» in "Liberi parentes amant." ⇒ liber / ADJ / nominative or vocative plural masculine / g:free (man); unimpeded; void of / 0.95 / also liber/ADJ,liber/NOUN,liber/NOUN / S:describes "parentes" / D:free, independent, unrestricted, unchecked, unrestrained, li
+    notes: 4 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Nom,Voc"},{"key":"Number","value":"Plur"},{"key":"Gender","value":"Masc"}]
+la «Quis» in "Quis es tu?" ⇒ quis / PRON / ablative or dative plural feminine or masculine or neuter / g:who? what? / 0.63 / also quis/PRON,qui/PRON,queo/VERB / S:adverbial phrase (dative or ablative) / D:who? ; what?
+    notes: 3 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Abl,Dat"},{"key":"Number","value":"Plur"},{"key":"Gender","value":"Fem,Masc,Neut"},{"key":"PronType","value":"Int"}]
+la «Is» in "Is venit." ⇒ is / PRON / ablative or dative plural feminine or masculine or neuter / g:this, that; he, she, it / 0.73 / also is/PRON,eo/VERB / S:adverbial phrase (dative or ablative) / D:this or that man, woman or thing; he, she, it, they (previou
+    notes: 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Abl,Dat"},{"key":"Number","value":"Plur"},{"key":"Gender","value":"Fem,Masc,Neut"},{"key":"PronType","value":"Dem"}]
+la «diutius» in "Non possum diutius manere." ⇒ diutius / NOUN / nominative singular masculine / g:— / 0.22 UNCONF / S:subject of "possum" / !Not in the word list: the lemma is a guess from the ending a / D:long, a long while, a while, for long, for a long time ; con
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given.
+    basis: 
+    feats: [{"key":"Case","value":"Nom"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc"}]
+la «saepius» in "Venit saepius quam frater." ⇒ saepius / NOUN / nominative singular masculine / g:— / 0.22 UNCONF / S:subject of "Venit" / !Not in the word list: the lemma is a guess from the ending a / D:often, frequently ; again
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given.
+    basis: 
+    feats: [{"key":"Case","value":"Nom"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc"}]
+la «saepissime» in "Venit saepissime." ⇒ saepissime / X /  / g:— / 0.1 UNCONF / !Not in the word list: the lemma is a guess from the ending a / D:often, frequently ; again
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given.
+    basis: 
+    feats: []
+la «neuter» in "Vir neuter venit." ⇒ — / ADV /  / g:— / 0.3 UNCONF / S:adverb / !Not in the word list: the lemma is a guess from the ending a / D:neither, neither one ; neuter (gender)
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given.
+    basis: 
+    feats: []
+la «neutri» in "Rex neutri favet." ⇒ neutri / X /  / g:— / 0.1 UNCONF / !Not in the word list: the lemma is a guess from the ending a / D:neither, neither one ; neuter (gender)
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given.
+    basis: 
+    feats: []
+la «enim» in "Hoc est enim corpus meum." ⇒ enim / CONJ /  / g:for, indeed / 0.95 / S:coordinating word / D:truly, verily, really, indeed ; yes
+    notes: 
+    basis: 
+    feats: []
+la «id» in "Animalia, id est bestiae." ⇒ is / PRON / accusative or nominative singular neuter / g:this, that; he, she, it / 0.95 / also Id/PROPN / S:subject of "est" / D:this or that man, woman or thing; he, she, it, they (previou
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Acc,Nom"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Neut"},{"key":"PronType","value":"Dem"}]
+la «e» in "Ait enim: i. e. dixit." ⇒ enim / CONJ /  / g:for, indeed / 0.95 / D:truly, verily, really, indeed ; yes
+    notes: The selection is part of the word "enim"; the reading is for the whole word.
+    basis: 
+    feats: []
+la «sevit» in "Agricola semen sevit." ⇒ sero / VERB / third person singular, perfect indicative active / g:He, she, or it wreathed / 0.95 / S:the main word of the sentence / D:to sow, plant ; to beget, bring forth, produce
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Perf"},{"key":"Voice","value":"Act"},{"key":"Person","value":"3"},{"key":"Number","value":"Sing"}]
+la «meus» in "Deus meus et omnia." ⇒ meus / ADJ / nominative singular masculine / g:my, mine / 0.95 / S:describes "Deus" / D:my, mine
+    notes: 
+    basis: 
+    feats: [{"key":"Case","value":"Nom"},{"key":"Gender","value":"Masc"},{"key":"Number","value":"Sing"}]
+la «bone» in "O bone Iesu." ⇒ bonus / ADJ / vocative singular masculine / g:good; kind, useful; good, honest, brave, noble, kind, pleasant, right, useful / 0.9 / also bonus/NOUN,bone/ADV / S:describes "Iesu" / D:good, honest, brave, noble, kind, pleasant ; right
+    notes: 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Voc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc"}]
+la «ora» in "Sancta Maria, Mater Dei, ora pro nobis peccato" ⇒ os / NOUN / accusative or nominative or vocative plural neuter / g:mouth; face; speech, words; mouth, speech, expression; pronunciation / 0.91 / also oro/VERB,ora/NOUN / D:mouth ; (in general) head or face
+    notes: 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Acc,Nom,Voc"},{"key":"Number","value":"Plur"},{"key":"Gender","value":"Neut"}]
+la «peccatoribus» in "Sancta Maria, Mater Dei, ora pro nobis peccato" ⇒ peccator / NOUN / ablative or dative plural masculine / g:sinner; transgressor / 0.95 / D:sinner ; transgressor
+    notes: 
+    basis: 
+    feats: [{"key":"Case","value":"Abl,Dat"},{"key":"Number","value":"Plur"},{"key":"Gender","value":"Masc"}]
+la «audi» in "Te rogamus, audi nos." ⇒ audio / VERB / second person singular, present imperative active / g:Hear! / 0.95 / S:coordinated clause / D:to hear, listen to ; to attend, pay attention to
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Imp"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Person","value":"2"},{"key":"Number","value":"Sing"}]
+la «Kyrie» in "Kyrie, eleison." ⇒ Kyrie / PROPN / ablative or accusative or dative or genitive or nominative or vocative singular masculine / g:Oh Lord (Greek vocative) / 0.95 / S:the main word of the sentence / D:O Lord
+    notes: 
+    basis: 
+    feats: [{"key":"Case","value":"Abl,Acc,Dat,Gen,Nom,Voc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc"}]
+la «Christe» in "Christe, eleison." ⇒ Christus / PROPN / vocative singular masculine / g:Christ / 0.95 / S:the main word of the sentence / D:Christ (Jesus) ; an anointed one
+    notes: 
+    basis: 
+    feats: [{"key":"Case","value":"Voc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc"}]
+la «Spiritui» in "Gloria Patri, et Filio, et Spiritui Sancto." ⇒ spiritus / NOUN / dative singular masculine / g:spirit, the Spirit (of God); breath, wind; breath, breathing, air, soul, life / 0.95 / P:Spiritus Sanctus / D:air, breath, breathing ; light breeze
+    notes: 
+    basis: 
+    feats: [{"key":"Case","value":"Dat"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc"}]
+la «Sicut» in "Sicut erat in principio, et nunc, et semper." ⇒ sicut / ADV /  / g:as, just as, like; in same way; as if; as it certainly is / 0.94 / also sicut/SCONJ / S:word that introduces the clause / D:as, just as, like ; as, just as, like
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: []
+la «pace» in "Requiescant in pace." ⇒ pax / NOUN / ablative singular feminine / g:peace; harmony / 0.95 / S:adverbial phrase (place, time, manner, means) / D:peace ; rest, quiet, ease
+    notes: 
+    basis: case governed by the preposition in
+    feats: [{"key":"Case","value":"Abl"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Fem"}]
+la «veneremur» in "Tantum ergo Sacramentum veneremur cernui." ⇒ venero / VERB / first person plural, present subjunctive passive / g:We may be adored / 0.65 / also veneror/VERB / C:deponent / S:the main word of the sentence / D:alternative form of veneror
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Sub"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Pass"},{"key":"Person","value":"1"},{"key":"Number","value":"Plur"}]
+la «Pange» in "Pange, lingua, gloriosi corporis mysterium." ⇒ pango / VERB / second person singular, present imperative active / g:Fasten! / 0.95 / S:the main word of the sentence / D:to fasten, fix, set, especially drive, sink, force in ; to s
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Imp"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Person","value":"2"},{"key":"Number","value":"Sing"}]
+la «Veni» in "Veni, Creator Spiritus." ⇒ venio / VERB / first person singular, perfect indicative active / g:I came / 0.74 / also venio/VERB,veneo/VERB,venum/NOUN / S:the main word of the sentence / D:to come (to a place), come in, arrive, reach ; of metaphoric
+    notes: 3 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Perf"},{"key":"Voice","value":"Act"},{"key":"Person","value":"1"},{"key":"Number","value":"Sing"}]
+la «Regina» in "Salve, Regina, mater misericordiae." ⇒ regina / NOUN / ablative or nominative or vocative singular feminine / g:queen / 0.95 / D:queen ; princess
+    notes: 
+    basis: 
+    feats: [{"key":"Case","value":"Abl,Nom,Voc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Fem"}]
+la «exsules» in "Ad te clamamus, exsules filii Hevae." ⇒ exsul / NOUN / accusative or nominative or vocative plural feminine or masculine / g:exile (M/F), banished person / 0.9 / also exsulo/VERB / D:A person who is exiled, exile, wanderer.
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Acc,Nom,Voc"},{"key":"Number","value":"Plur"},{"key":"Gender","value":"Fem,Masc"}]
+la «Magnificat» in "Magnificat anima mea Dominum." ⇒ magnifico / VERB / third person singular, present indicative active / g:He, she, or it magnifies / 0.95 / S:the main word of the sentence / D:to prize, esteem highly ; to praise, glorify, or extol
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Person","value":"3"},{"key":"Number","value":"Sing"}]
+la «salutari» in "Et exsultavit spiritus meus in Deo salutari me" ⇒ salutaris / ADJ / ablative or dative singular feminine or masculine or neuter / g:healthful; useful; helpful; advantageous / 0.95 / also salutare/NOUN,saluto/VERB / S:describes "Deo" / D:healthy ; useful, helpful
+    notes: 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Abl,Dat"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Fem,Masc,Neut"}]
+la «ancillae» in "Quia respexit humilitatem ancillae suae." ⇒ ancilla / NOUN / dative or genitive singular feminine / g:maidservant, handmaid; slave girl; maid servant; (opprobrious of man) / 0.95 / also ancilla/NOUN / S:indirect object of "respexit" / D:maid, slave-girl ; handmaiden
+    notes: 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Dat,Gen"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Fem"}]
+la «brachio» in "Fecit potentiam in brachio suo." ⇒ brachium / NOUN / ablative singular neuter / g:arm; lower arm, forearm; claw / 0.95 / S:adverbial phrase (place, time, manner, means) / D:alternative form of bracchium (“arm”) ; The star σ Librae in
+    notes: 
+    basis: case governed by the preposition in
+    feats: [{"key":"Case","value":"Abl"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Neut"}]
+la «Esurientes» in "Esurientes implevit bonis." ⇒ esurio / VERB / present active participle, accusative or nominative or vocative plural feminine or masculine / g:being hungry / 0.77 / also esuriens/ADJ,esuriens/NOUN / S:predicate adjective / D:to be hungry, to hunger for something ; a person that is hun
+    notes: 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"VerbForm","value":"Part"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Case","value":"Acc,Nom,Voc"},{"key":"Number","value":"Plur"},{"key":"Gender","value":"Fem,Masc"}]
+la «puellam» in "Puer puellam videt." ⇒ puella / NOUN / accusative singular feminine / g:girl, (female) child/daughter; maiden; young woman/wife / 0.95 / S:direct object of "videt" / D:girl, lass, maiden (female child) ; sweetheart, mistress, be
+    notes: 
+    basis: 
+    feats: [{"key":"Case","value":"Acc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Fem"}]
+la «ambulant» in "Hodie ad ecclesiam ambulant." ⇒ ambulo / VERB / third person plural, present indicative active / g:They walk / 0.95 / S:the main word of the sentence / D:to traverse, travel ; to walk
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Person","value":"3"},{"key":"Number","value":"Plur"}]
+la «magna» in "Ecclesia est magna et pulchra." ⇒ magnus / ADJ / ablative or nominative or vocative singular feminine / g:great, large; important; large/great/big/vast/huge; much; powerful / 0.63 / also magnus/ADJ / S:describes "Ecclesia" / D:great, large, big; (of things) vast, extensive, spacious (of
+    notes: 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Abl,Nom,Voc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Fem"}]
+la «verba» in "Populus verba audit et Deum laudat." ⇒ verbum / NOUN / accusative or nominative or vocative plural neuter / g:word; the Word (Christ); saying, thing, matter; proverb / 0.95 / S:direct object of "audit" / D:word ; proverb, saying
+    notes: 
+    basis: 
+    feats: [{"key":"Case","value":"Acc,Nom,Voc"},{"key":"Number","value":"Plur"},{"key":"Gender","value":"Neut"}]
+la «laeti» in "Postea Marcus et Iulia domum laeti ambulant." ⇒ laetus / ADJ / genitive singular masculine or neuter / g:happy/cheerful/joyful/glad; favorable/propitious / 0.7 / also laetus/ADJ / D:happy, cheerful, glad ; fertile, luxuriant, lush, rich
+    notes: 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Gen"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc,Neut"}]
+la «domum» in "Postea Marcus et Iulia domum laeti ambulant." ⇒ domus / NOUN / accusative singular feminine / g:house; household, family; house, building; home, household / 0.94 / also domus/NOUN / S:direct object of "ambulant" / D:house, home (the building where a person lives) ; house, hom
+    notes: 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Acc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Fem"}]
+la «Iulia» in "Marcus et Iulia in parva domo habitant." ⇒ Iulia / PROPN / ablative or nominative or vocative singular feminine / g:— / 0.53 / also Iulius/ADJ,Iulius/ADJ / S:coordinated with "Marcus" / D:Julia, the feminine form of Iūlius, the family name (nomen g
+    notes: 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: a capitalised word inside a sentence: a name
+    feats: [{"key":"Case","value":"Abl,Nom,Voc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Fem"}]
+la «amo» in "Ego te amo." ⇒ amo / VERB / first person singular, present indicative active / g:I love / 0.95 / S:the main word of the sentence / D:to love ; to be fond of, like, admire
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Person","value":"1"},{"key":"Number","value":"Sing"}]
+la «homini» in "Homo homini lupus." ⇒ homo / NOUN / dative singular masculine / g:man, human being; person; man, human being, person, fellow / 0.95 / S:indirect object of "Homo" / D:human, person, man ; male human being, man
+    notes: 
+    basis: 
+    feats: [{"key":"Case","value":"Dat"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc"}]
+la «sana» in "Mens sana in corpore sano." ⇒ sanus / ADJ / ablative or nominative or vocative singular feminine / g:sound; healthy; sensible; sober; sane / 0.95 / also sanus/ADJ,sano/VERB / S:describes "Mens" / D:sound in body, healthy, whole, well ; sound in mind, sane, r
+    notes: 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Abl,Nom,Voc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Fem"}]
+la «populi» in "Vox populi, vox Dei." ⇒ populus / NOUN / nominative or vocative plural masculine / g:people, nation; crowd; people, nation, State; public/populace/multitude/crowd / 0.67 / also populus/NOUN,populus/NOUN,populus/NOUN / D:a people, nation ; a community of people
+    notes: 3 other form readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Nom,Voc"},{"key":"Number","value":"Plur"},{"key":"Gender","value":"Masc"}]
+la «vino» in "In vino veritas." ⇒ vinum / NOUN / ablative singular neuter / g:wine / 0.95 / S:the main word of the sentence / D:wine ; grapes
+    notes: 
+    basis: case governed by the preposition in
+    feats: [{"key":"Case","value":"Abl"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Neut"}]
+la «aspera» in "Per aspera ad astra." ⇒ asper / ADJ / accusative plural neuter / g:rude/unrefined; cruel/violent/savage/raging/drastic / 0.68 / also asperum/NOUN,asper/ADJ,aspero/VERB / S:describes "astra" / D:rough, uneven, coarse ; unrefined, rude
+    notes: 3 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: case governed by the preposition per
+    feats: [{"key":"Case","value":"Acc"},{"key":"Number","value":"Plur"},{"key":"Gender","value":"Neut"}]
+la «transit» in "Sic transit gloria mundi." ⇒ transeo / VERB / third person singular, present indicative active / g:He, she, or it goes across / 0.76 / S:the main word of the sentence / D:to traverse; cross, cross over; go across or over; pass, pas
+    notes: 
+    basis: 
+    feats: [{"key":"Mood","value":"Ind"},{"key":"Number","value":"Sing"},{"key":"Person","value":"3"},{"key":"Tense","value":"Pres"},{"key":"VerbForm","value":"Fin"},{"key":"Voice","value":"Act"}]
+la «fugit» in "Tempus fugit." ⇒ fugio / VERB / third person singular, perfect or present indicative active / g:He, she, or it fled / 0.95 / S:the main word of the sentence / D:to flee, fly, take flight, escape, depart, run, run away, re
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Perf,Pres"},{"key":"Voice","value":"Act"},{"key":"Person","value":"3"},{"key":"Number","value":"Sing"}]
+la «Festina» in "Festina lente." ⇒ festinus / ADJ / ablative or nominative or vocative singular feminine / g:swift/quick/rapid; fast moving (troops) / 0.84 / also festino/VERB,festinus/ADJ / D:swift, quick, rapid, hasty ; impatient
+    notes: 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Abl,Nom,Voc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Fem"}]
+la «Cave» in "Cave canem." ⇒ caveo / VERB / second person singular, present imperative active / g:Beware! / 0.94 / also cavus/NOUN,cavus/ADJ / S:the main word of the sentence / D:to take precautions, beware, take care; to guard against, at
+    notes: 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Imp"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Person","value":"2"},{"key":"Number","value":"Sing"}]
+la «Nosce» in "Nosce te ipsum." ⇒ nosco / VERB / second person singular, present imperative active / g:Learn! / 0.95 / S:the main word of the sentence / D:to become acquainted with something, learn about it, to be a
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Imp"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Person","value":"2"},{"key":"Number","value":"Sing"}]
+la «Vade» in "Vade retro, Satana." ⇒ vado / VERB / second person singular, present imperative active / g:Go! / 0.9 / also vas/NOUN / S:the main word of the sentence / D:to go, walk, rush ; to ford, wade through
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Imp"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Person","value":"2"},{"key":"Number","value":"Sing"}]
+la «lucet» in "Lux in tenebris lucet." ⇒ luceo / VERB / third person singular, present indicative active / g:He, she, or it shines / 0.95 / S:the main word of the sentence / D:to be light, clear; to shine, glitter ; to be light, clear; 
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Person","value":"3"},{"key":"Number","value":"Sing"}]
+la «veritas» in "Quid est veritas?" ⇒ veritas / NOUN / nominative or vocative singular feminine / g:truth; faithfulness, truthfulness; truth, fact, accuracy; honesty, truthfulness, frankness / 0.95 / also vereor/VERB,veritus/ADJ / S:predicate noun of sum / D:truth, truthfulness, verity ; the true or real nature, reali
+    notes: 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Nom,Voc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Fem"}]
+la «homo» in "Ecce homo." ⇒ homo / NOUN / nominative or vocative singular masculine / g:man, human being; person; man, human being, person, fellow / 0.95 / P:ecce homo / S:the main word of the sentence / D:human, person, man ; male human being, man
+    notes: 
+    basis: 
+    feats: [{"key":"Case","value":"Nom,Voc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc"}]
+la «Consummatum» in "Consummatum est." ⇒ consummo / VERB / perfect passive participle, accusative singular masculine or neuter / g:added / 0.48 / also consummo/VERB,consummatus/ADJ,consummatus/ADJ / C:perfect-passive / D:to sum up ; to make or amount to (a number)
+    notes: 6 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Acc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc,Neut"},{"key":"VerbForm","value":"Part"},{"key":"Tense","value":"Perf"},{"key":"Voice","value":"Pass"}]
+la «vinces» in "In hoc signo vinces." ⇒ vinco / VERB / second person singular, future indicative active / g:You will conquer / 0.95 / S:the main word of the sentence / D:to win ; to conquer, to defeat, to vanquish
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Fut"},{"key":"Voice","value":"Act"},{"key":"Person","value":"2"},{"key":"Number","value":"Sing"}]
+la «mori» in "Dulce et decorum est pro patria mori." ⇒ morior / VERB / present active infinitive; deponent verb (passive form, active meaning) / g:to die / 0.95 / also mos/NOUN,morum/NOUN,morus/NOUN / C:deponent / S:infinitive that completes the verb / D:to die, be slain, fall (in battle), perish ; to decay, withe
+    notes: 4 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"VerbForm","value":"Inf"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Deponent","value":"Yes"}]
+la «Dulce» in "Dulce et decorum est pro patria mori." ⇒ dulcis / ADJ / accusative or nominative or vocative singular neuter / g:pleasant, charming; sweet; kind, dear / 0.75 / also dulcis/ADJ,dulce/NOUN,dulce/ADV / S:describes "decorum" / D:sweet ; sweet-smelling, sweet-scented, fragrant
+    notes: 3 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Acc,Nom,Voc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Neut"}]
+la «tacuisses» in "Si tacuisses, philosophus mansisses." ⇒ taceo / VERB / second person singular, pluperfect subjunctive active / g:You might have been silent / 0.95 / S:adverbial clause (when, because, so that, if ...) / D:to be silent, say nothing, shut up, hold one’s tongue ; to b
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Sub"},{"key":"Tense","value":"Pqp"},{"key":"Voice","value":"Act"},{"key":"Person","value":"2"},{"key":"Number","value":"Sing"}]
+la «Ubi» in "Ubi caritas et amor, Deus ibi est." ⇒ ubi / SCONJ /  / g:when, where / 0.71 / also ubi/ADV,Ubius/PROPN / D:where? in what place?, in which place? ; where or in a place
+    notes: 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: []
+la «Sursum» in "Sursum corda." ⇒ sursum / ADV /  / g:up, on high / 0.95 / S:adverb / D:upwards ; above, high up
+    notes: 
+    basis: 
+    feats: []
+la «Habemus» in "Habemus ad Dominum." ⇒ habeo / VERB / first person plural, present indicative active / g:We have / 0.95 / S:the main word of the sentence / D:to have, hold ; to own, have (possessions)
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Person","value":"1"},{"key":"Number","value":"Plur"}]
+la «Dignum» in "Dignum et iustum est." ⇒ dignus / ADJ / accusative singular masculine or neuter / g:appropriate/suitable; worthy, deserving, meriting / 0.63 / also dignus/ADJ,dignus/ADJ,dignum/NOUN / D:appropriate, fitting, worthy, meet, deserving, fit, proper, 
+    notes: 4 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Acc"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc,Neut"}]
+la «Pleni» in "Pleni sunt caeli et terra gloria tua." ⇒ plenus / ADJ / genitive singular masculine or neuter / g:full, full of; filled; complete; full, plump; satisfied / 0.7 / also plenus/ADJ / S:describes "caeli" / D:full; filled; complete ; full of
+    notes: 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"Case","value":"Gen"},{"key":"Number","value":"Sing"},{"key":"Gender","value":"Masc,Neut"}]
+la «intres» in "Domine, non sum dignus ut intres sub tectum me" ⇒ intro / VERB / second person singular, present subjunctive active / g:You may enter / 0.95 / C:ut-purpose-result / D:to enter, go into, come in, get in, penetrate ; to assault, 
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Sub"},{"key":"Tense","value":"Pres"},{"key":"Voice","value":"Act"},{"key":"Person","value":"2"},{"key":"Number","value":"Sing"}]
+la «sanabitur» in "Sed tantum dic verbo, et sanabitur anima mea." ⇒ sano / VERB / third person singular, future indicative passive / g:He, she, or it will be cured / 0.95 / S:coordinated clause / D:to heal, cure ; to restore, repair, correct
+    notes: 
+    basis: 
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Fut"},{"key":"Voice","value":"Pass"},{"key":"Person","value":"3"},{"key":"Number","value":"Sing"}]

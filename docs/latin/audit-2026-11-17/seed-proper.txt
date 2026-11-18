@@ -1,0 +1,134 @@
+Israel,  [Masc d-] rule	SG Israel | Israel | Israel | Israel | Israel | Israel | -	PL - | - | - | - | -	# Israel (Jacob, and his people)
+David,  [Masc d-] rule	SG David | David/Davidis~ | David/Davidi~ | David/Davidem~ | David/Davide~ | David | -	PL - | - | - | - | -	# David
+Iesus, Iesus [Masc d4] whitaker	SG Iesus | Iesu | Iesu | Iesum | Iesu | Iesu | -	PL - | - | - | - | -	# Jesus
+Ierusalem,  [Masc d-] rule	SG Ierusalem | Ierusalem/Ierosolymae~ | Ierusalem | Ierusalem/Ierosolymam~ | Ierusalem/Ierosolymis~ | Ierusalem | -	PL - | - | - | - | -	# Jerusalem
+Moyses, Moysis [Masc d3] whitaker	SG Moyses | Moysi/Moysis~ | Moysi | Moysen/Moysem~ | Moyse | Moyses | -	PL - | - | - | - | -	# Moses
+Aegyptus, Aegypti [Fem d2] whitaker	SG Aegyptus | Aegypti | Aegypto | Aegyptum | Aegypto | Aegypte | -	PL Aegypti | Aegyptorum/Aegyptum~ | Aegyptis | Aegyptos | Aegyptis	# Egypt
+Iuda,  [Masc d-] rule	SG Iuda | Iuda | Iuda | Iuda | Iuda | Iuda | -	PL - | - | - | - | -	# Judah
+Christus, Christi [Masc d2] whitaker	SG Christus | Christi | Christo | Christum | Christo | Christe | -	PL Christi | Christorum/Christum~ | Christis | Christos | Christis	# Christ
+Iudas, Iudae [Masc d1] whitaker	SG Iudas | Iudae | Iudae | Iudan/Iudam~ | Iuda | Iuda | -	PL Iudae | Iudarum/Iudum~ | Iudis | Iudas | Iudis	# Judas, Judah
+Saul, Sauli [Masc d2] whitaker	SG Saul | Sauli | Saulo | Saulum | Saulo | Saul | -	PL Sauli | Saulorum/Saulum~ | Saulis | Saulos | Saulis	# Saul
+Iacob,  [Masc d-] rule	SG Iacob | Iacob/Iacobi~ | Iacob/Iacobo~ | Iacob/Iacobum~ | Iacob/Iacobo~ | Iacob | -	PL - | - | - | - | -	# Jacob
+Aaron,  [Masc d-] rule	SG Aaron | Aaron | Aaron | Aaron | Aaron | Aaron | -	PL - | - | - | - | -	# Aaron
+Babylon, Babylonis [Fem d3] whitaker	SG Babylon | Babylonis | Babyloni | Babylonem | Babylone | Babylon | -	PL Babylones | Babylonum/Babylonium~ | Babylonibus | Babylones | Babylonibus	# Babylon
+Salomon, Salomonis [Masc d3] whitaker	SG Salomon | Salomonis | Salomoni | Salomonem | Salomone | Salomon | -	PL Salomones | Salomonum/Salomonium~ | Salomonibus | Salomones | Salomonibus	# Solomon
+Pharao, Pharaonis [Masc d3] whitaker	SG Pharao | Pharaonis | Pharaoni | Pharaonem | Pharaone | Pharao | -	PL Pharaones | Pharaonum/Pharaonium~ | Pharaonibus | Pharaones | Pharaonibus	# Pharaoh
+Abraham,  [Masc d-] rule	SG Abraham | Abraham/Abrahae~ | Abraham/Abrahae~ | Abraham/Abraham~ | Abraham/Abraham~ | Abraham | -	PL - | - | - | - | -	# Abraham
+Ioseph,  [Masc d-] rule	SG Ioseph | Ioseph/Iosephi~ | Ioseph/Iosepho~ | Ioseph/Iosephum~ | Ioseph/Iosepho~ | Ioseph | -	PL - | - | - | - | -	# Joseph
+Iosue,  [Masc d-] rule	SG Iosue | Iosue | Iosue | Iosue | Iosue | Iosue | -	PL - | - | - | - | -	# 
+Levita, Levitae [Masc d1] whitaker	SG Levita | Levitae/Levitai~ | Levitae | Levitam | Levita | Levita | -	PL Levitae | Levitarum/Levitum~ | Levitis | Levitas | Levitis	# 
+Ephraim,  [Masc d-] rule	SG Ephraim | Ephraim | Ephraim | Ephraim | Ephraim | Ephraim | -	PL - | - | - | - | -	# 
+Sion,  [Masc d-] rule	SG Sion | Sion/Sionis~ | Sion/Sioni~ | Sion | Sion | Sion | -	PL - | - | - | - | -	# Zion
+Beniamin,  [Masc d-] rule	SG Beniamin | Beniamin | Beniamin | Beniamin | Beniamin | Beniamin | -	PL - | - | - | - | -	# Benjamin
+Moab,  [Masc d-] rule	SG Moab | Moab | Moab | Moab | Moab | Moab | -	PL - | - | - | - | -	# 
+Petrus, Petri [Masc d2] whitaker	SG Petrus | Petri | Petro | Petrum | Petro | Petre | -	PL Petri | Petrorum/Petrum~ | Petris | Petros | Petris	# Peter
+Paulus, Pauli [Masc d2] whitaker	SG Paulus | Pauli | Paulo | Paulum | Paulo | Paule | -	PL Pauli | Paulorum/Paulum~ | Paulis | Paulos | Paulis	# Paul
+Philisthiim,  [Masc d-] rule	SG Philisthiim | Philisthiim | Philisthiim | Philisthiim | Philisthiim | Philisthiim | -	PL - | - | - | - | -	# 
+Manasses, Manassae [Masc d1] whitaker	SG Manasses | Manassae/Manasses~ | Manassae | Manassen/Manassam~ | Manasse/Manassa~ | Manasse/Manassa~ | -	PL Manassae | Manassarum/Manassum~ | Manassis | Manassas | Manassis	# 
+Ioab,  [Masc d-] rule	SG Ioab | Ioab | Ioab | Ioab | Ioab | Ioab | -	PL - | - | - | - | -	# 
+Simon, Simonis [Masc d3] rule	SG Simon | Simonis | Simoni | Simonem | Simone | Simon | -	PL Simones | Simonum/Simonium~ | Simonibus | Simones | Simonibus	# Simon
+Assyrius, Assyrii [Masc d2] whitaker	SG Assyrius | Assyrii/Assyri~ | Assyrio | Assyrium | Assyrio | Assyri | -	PL Assyrii | Assyriorum/Assyrium~ | Assyriis | Assyrios | Assyriis	# 
+Samaria, Samariae [Fem d1] whitaker	SG Samaria | Samariae/Samariai~ | Samariae | Samariam | Samaria | Samaria | -	PL Samariae | Samariarum/Samarium~ | Samariis | Samarias | Samariis	# Samaria
+Galaad,  [Masc d-] rule	SG Galaad | Galaad | Galaad | Galaad | Galaad | Galaad | -	PL - | - | - | - | -	# 
+Ezechias, Ezechiae [Masc d1] rule	SG Ezechias | Ezechiae | Ezechiae | Ezechian/Ezechiam~ | Ezechia | Ezechia | -	PL Ezechiae | Ezechiarum/Ezechium~ | Ezechiis | Ezechias | Ezechiis	# 
+Ionathas, Ionathae [Masc d1] rule	SG Ionathas | Ionathae | Ionathae | Ionathan/Ionatham~ | Ionatha | Ionatha | -	PL Ionathae | Ionatharum/Ionathum~ | Ionathis | Ionathas | Ionathis	# 
+Iordanem,  [Masc d-] rule	SG Iordanem | Iordanem | Iordanem | Iordanem | Iordanem | Iordanem | -	PL - | - | - | - | -	# 
+Syria, Syriae [Fem d1] whitaker	SG Syria | Syriae/Syriai~ | Syriae | Syriam | Syria | Syria | -	PL Syriae | Syriarum/Syrium~ | Syriis | Syrias | Syriis	# 
+Isaac,  [Masc d-] rule	SG Isaac | Isaac/Isaaci~ | Isaac/Isaaco~ | Isaac/Isaacum~ | Isaac/Isaaco~ | Isaac | -	PL - | - | - | - | -	# Isaac
+Nabuchodonosor, Nabuchodonosoris [Masc d3] rule	SG Nabuchodonosor | Nabuchodonosoris | Nabuchodonosori | Nabuchodonosorem | Nabuchodonosore | Nabuchodonosor | -	PL Nabuchodonosores | Nabuchodonosorum/Nabuchodonosorium~ | Nabuchodonosoribus | Nabuchodonosores | Nabuchodonosoribus	# 
+Daniel, Danielis [Masc d3] whitaker	SG Daniel | Danielis | Danieli | Danielem | Daniele | Daniel | -	PL Danieles | Danielum/Danielium~ | Danielibus | Danieles | Danielibus	# Daniel
+Iudaea, Iudaeae [Fem d1] whitaker	SG Iudaea | Iudaeae/Iudaeai~ | Iudaeae | Iudaeam | Iudaea | Iudaea | -	PL Iudaeae | Iudaearum/Iudaeum~ | Iudaeis | Iudaeas | Iudaeis	# Judaea
+Aegyptius, Aegyptii [Masc d2] whitaker	SG Aegyptius | Aegyptii/Aegypti~ | Aegyptio | Aegyptium | Aegyptio | Aegypti | -	PL Aegyptii | Aegyptiorum/Aegyptium~ | Aegyptiis | Aegyptios | Aegyptiis	# 
+Samuel, Samuelis [Masc d3] rule	SG Samuel | Samuelis | Samueli | Samuelem | Samuele | Samuel | -	PL Samueles | Samuelum/Samuelium~ | Samuelibus | Samueles | Samuelibus	# Samuel
+Ammon,  [Masc d-] rule	SG Ammon | Ammon | Ammon | Ammon | Ammon | Ammon | -	PL - | - | - | - | -	# 
+Absalom,  [Masc d-] rule	SG Absalom | Absalom | Absalom | Absalom | Absalom | Absalom | -	PL - | - | - | - | -	# 
+Chanaan, Chanaanis [Masc d3] rule	SG Chanaan | Chanaanis | Chanaani | Chanaanem | Chanaane | Chanaan | -	PL Chanaanes | Chanaanum/Chanaanium~ | Chanaanibus | Chanaanes | Chanaanibus	# 
+Ieroboam,  [Masc d-] rule	SG Ieroboam | Ieroboam | Ieroboam | Ieroboam | Ieroboam | Ieroboam | -	PL - | - | - | - | -	# 
+Chaldaeus, Chaldaei [Masc d2] whitaker	SG Chaldaeus | Chaldaei | Chaldaeo | Chaldaeum | Chaldaeo | Chaldaee | -	PL Chaldaei | Chaldaeorum/Chaldaeum~ | Chaldaeis | Chaldaeos | Chaldaeis	# 
+Achab,  [Masc d-] rule	SG Achab | Achab | Achab | Achab | Achab | Achab | -	PL - | - | - | - | -	# 
+Iosaphat,  [Masc d-] rule	SG Iosaphat | Iosaphat | Iosaphat | Iosaphat | Iosaphat | Iosaphat | -	PL - | - | - | - | -	# 
+Esau,  [Masc d-] rule	SG Esau | Esau | Esau | Esau | Esau | Esau | -	PL - | - | - | - | -	# 
+Galilaea, Galilaeae [Fem d1] whitaker	SG Galilaea | Galilaeae/Galilaeai~ | Galilaeae | Galilaeam | Galilaea | Galilaea | -	PL Galilaeae | Galilaearum/Galilaeum~ | Galilaeis | Galilaeas | Galilaeis	# Galilee
+Maria, Mariae [Fem d1] whitaker	SG Maria | Mariae/Mariai~ | Mariae | Mariam | Maria | Maria | -	PL Mariae | Mariarum/Marium~ | Mariis | Marias | Mariis	# Mary
+Levi,  [Masc d-] rule	SG Levi | Levi | Levi | Levi | Levi | Levi | -	PL - | - | - | - | -	# Levi
+Ruben,  [Masc d-] rule	SG Ruben | Ruben | Ruben | Ruben | Ruben | Ruben | -	PL - | - | - | - | -	# Reuben
+Gad,  [Masc d-] rule	SG Gad | Gad | Gad | Gad | Gad | Gad | -	PL - | - | - | - | -	# 
+Hebron, Hebronis [Masc d3] rule	SG Hebron | Hebronis | Hebroni | Hebronem | Hebrone | Hebron | -	PL Hebrones | Hebronum/Hebronium~ | Hebronibus | Hebrones | Hebronibus	# 
+Iordanes,  [Masc d-] rule	SG Iordanes | Iordanes | Iordanes | Iordanes | Iordanes | Iordanes | -	PL - | - | - | - | -	# 
+Dan,  [Masc d-] rule	SG Dan | Dan | Dan | Dan | Dan | Dan | -	PL - | - | - | - | -	# 
+Bethel, Bethelis [Masc d3] rule	SG Bethel | Bethelis | Betheli | Bethelem | Bethele | Bethel | -	PL Betheles | Bethelum/Bethelium~ | Bethelibus | Betheles | Bethelibus	# 
+Ieremiam,  [Masc d-] rule	SG Ieremiam | Ieremiam | Ieremiam | Ieremiam | Ieremiam | Ieremiam | -	PL - | - | - | - | -	# 
+Baal, Baalis [Masc d3] rule	SG Baal | Baalis | Baali | Baalem | Baale | Baal | -	PL Baales | Baalum/Baalium~ | Baalibus | Baales | Baalibus	# 
+Damascus, Damasci [Masc d2] whitaker	SG Damascus | Damasci | Damasco | Damascum | Damasco | Damasce | -	PL Damasci | Damascorum/Damascum~ | Damascis | Damascos | Damascis	# 
+Ioas, Ioae [Masc d1] rule	SG Ioas | Ioae | Ioae | Ioan/Ioam~ | Ioa | Ioa | -	PL Ioae | Ioarum/Ioum~ | Iois | Ioas | Iois	# 
+Philisthinorum,  [Masc d-] rule	SG Philisthinorum | Philisthinorum | Philisthinorum | Philisthinorum | Philisthinorum | Philisthinorum | -	PL - | - | - | - | -	# 
+Iericho, Ierichonis [Masc d3] rule	SG Iericho | Ierichonis | Ierichoni | Ierichonem | Ierichone | Iericho | -	PL Ierichones | Ierichonum/Ierichonium~ | Ierichonibus | Ierichones | Ierichonibus	# 
+Ionathan, Ionathanis [Masc d3] rule	SG Ionathan | Ionathanis | Ionathani | Ionathanem | Ionathane | Ionathan | -	PL Ionathanes | Ionathanum/Ionathanium~ | Ionathanibus | Ionathanes | Ionathanibus	# 
+Abner, Abneris [Masc d3] rule	SG Abner | Abneris | Abneri | Abnerem | Abnere | Abner | -	PL Abneres | Abnerum/Abnerium~ | Abneribus | Abneres | Abneribus	# 
+Cherubim,  [Masc d-] rule	SG Cherubim | Cherubim | Cherubim | Cherubim | Cherubim | Cherubim | -	PL - | - | - | - | -	# 
+Iob,  [Masc d-] rule	SG Iob | Iob | Iob | Iob | Iob | Iob | -	PL - | - | - | - | -	# Job
+Ieremias, Ieremiae [Masc d1] rule	SG Ieremias | Ieremiae | Ieremiae | Ieremian/Ieremiam~ | Ieremia | Ieremia | -	PL Ieremiae | Ieremiarum/Ieremium~ | Ieremiis | Ieremias | Ieremiis	# Jeremiah
+Iosias, Iosiae [Masc d1] rule	SG Iosias | Iosiae | Iosiae | Iosian/Iosiam~ | Iosia | Iosia | -	PL Iosiae | Iosiarum/Iosium~ | Iosiis | Iosias | Iosiis	# 
+Basan, Basanis [Masc d3] rule	SG Basan | Basanis | Basani | Basanem | Basane | Basan | -	PL Basanes | Basanum/Basanium~ | Basanibus | Basanes | Basanibus	# 
+Iehu,  [Masc d-] rule	SG Iehu | Iehu | Iehu | Iehu | Iehu | Iehu | -	PL - | - | - | - | -	# 
+Pilatus, Pilati [Masc d2] whitaker	SG Pilatus | Pilati | Pilato | Pilatum | Pilato | Pilate | -	PL Pilati | Pilatorum/Pilatum~ | Pilatis | Pilatos | Pilatis	# Pilate
+Sadoc,  [Masc d-] rule	SG Sadoc | Sadoc | Sadoc | Sadoc | Sadoc | Sadoc | -	PL - | - | - | - | -	# 
+Abimelech,  [Masc d-] rule	SG Abimelech | Abimelech | Abimelech | Abimelech | Abimelech | Abimelech | -	PL - | - | - | - | -	# 
+Tobias, Tobiae [Masc d1] rule	SG Tobias | Tobiae | Tobiae | Tobian/Tobiam~ | Tobia | Tobia | -	PL Tobiae | Tobiarum/Tobium~ | Tobiis | Tobias | Tobiis	# Tobias
+Asa, Asae [Fem d1] rule	SG Asa | Asae/Asai~ | Asae | Asam | Asa | Asa | -	PL Asae | Asarum/Asum~ | Asis | Asas | Asis	# 
+Nephthali,  [Masc d-] rule	SG Nephthali | Nephthali | Nephthali | Nephthali | Nephthali | Nephthali | -	PL - | - | - | - | -	# 
+Ioram,  [Masc d-] rule	SG Ioram | Ioram | Ioram | Ioram | Ioram | Ioram | -	PL - | - | - | - | -	# 
+Tyros, Tyri [Fem d2] whitaker	SG Tyros | Tyri | Tyro | Tyrum | Tyro | Tyros | -	PL Tyri | Tyrorum/Tyrum~ | Tyris | Tyros | Tyris	# 
+Syrus, Syri [Masc d2] whitaker	SG Syrus | Syri | Syro | Syrum | Syro | Syre | -	PL Syri | Syrorum/Syrum~ | Syris | Syros | Syris	# 
+Demetrius, Demetrii [Masc d2] rule	SG Demetrius | Demetrii/Demetri~ | Demetrio | Demetrium | Demetrio | Demetri | -	PL Demetrii | Demetriorum/Demetrium~ | Demetriis | Demetrios | Demetriis	# 
+Madian, Madianis [Masc d3] rule	SG Madian | Madianis | Madiani | Madianem | Madiane | Madian | -	PL Madianes | Madianum/Madianium~ | Madianibus | Madianes | Madianibus	# 
+Gabaa, Gabaae [Fem d1] rule	SG Gabaa | Gabaae/Gabaai~ | Gabaae | Gabaam | Gabaa | Gabaa | -	PL Gabaae | Gabaarum/Gabaum~ | Gabais | Gabaas | Gabais	# 
+Philippus, Philippi [Masc d2] whitaker	SG Philippus | Philippi | Philippo | Philippum | Philippo | Philippe | -	PL Philippi | Philipporum/Philippum~ | Philippis | Philippos | Philippis	# 
+Semei,  [Masc d-] rule	SG Semei | Semei | Semei | Semei | Semei | Semei | -	PL - | - | - | - | -	# 
+Adam,  [Masc d-] rule	SG Adam | Adam/Adami~ | Adam | Adam/Adamum~ | Adam | Adam | -	PL - | - | - | - | -	# Adam
+Roboam,  [Masc d-] rule	SG Roboam | Roboam | Roboam | Roboam | Roboam | Roboam | -	PL - | - | - | - | -	# 
+Zabulon,  [Masc d-] rule	SG Zabulon | Zabulon | Zabulon | Zabulon | Zabulon | Zabulon | -	PL - | - | - | - | -	# 
+Asaph,  [Masc d-] rule	SG Asaph | Asaph | Asaph | Asaph | Asaph | Asaph | -	PL - | - | - | - | -	# 
+Ioakim,  [Masc d-] rule	SG Ioakim | Ioakim | Ioakim | Ioakim | Ioakim | Ioakim | -	PL - | - | - | - | -	# 
+Eleazar, Eleazaris [Masc d3] rule	SG Eleazar | Eleazaris | Eleazari | Eleazarem | Eleazare | Eleazar | -	PL Eleazares | Eleazarum/Eleazarium~ | Eleazaribus | Eleazares | Eleazaribus	# 
+Aman, Amanis [Masc d3] rule	SG Aman | Amanis | Amani | Amanem | Amane | Aman | -	PL Amanes | Amanum/Amanium~ | Amanibus | Amanes | Amanibus	# 
+Sodoma, Sodomae [Fem d1] rule	SG Sodoma | Sodomae/Sodomai~ | Sodomae | Sodomam | Sodoma | Sodoma | -	PL Sodomae | Sodomarum/Sodomum~ | Sodomis | Sodomas | Sodomis	# Sodom
+Noe,  [Masc d-] rule	SG Noe | Noe | Noe | Noe | Noe | Noe | -	PL - | - | - | - | -	# Noah
+Aser,  [Masc d-] rule	SG Aser | Aser | Aser | Aser | Aser | Aser | -	PL - | - | - | - | -	# 
+Nathan, Nathanis [Masc d3] rule	SG Nathan | Nathanis | Nathani | Nathanem | Nathane | Nathan | -	PL Nathanes | Nathanum/Nathanium~ | Nathanibus | Nathanes | Nathanibus	# 
+Herodes, Herodis [Masc d3] whitaker	SG Herodes | Herodis | Herodi | Herodem | Herode/Herodi~ | Herodes | -	PL Herodes | Herodium/Herodum~ | Herodibus | Herodes/Herodis~ | Herodibus	# Herod
+Balaam,  [Masc d-] rule	SG Balaam | Balaam | Balaam | Balaam | Balaam | Balaam | -	PL - | - | - | - | -	# 
+Caurus, Cauri [Masc d2] rule	SG Caurus | Cauri | Cauro | Caurum | Cauro | Caure | -	PL Cauri | Caurorum/Caurum~ | Cauris | Cauros | Cauris	# 
+Sichem,  [Masc d-] rule	SG Sichem | Sichem | Sichem | Sichem | Sichem | Sichem | -	PL - | - | - | - | -	# 
+Elias, Eliae [Masc d1] rule	SG Elias | Eliae | Eliae | Elian/Eliam~ | Elia | Elia | -	PL Eliae | Eliarum/Elium~ | Eliis | Elias | Eliis	# Elijah
+Symeon, Symeonis [Masc d3] rule	SG Symeon | Symeonis | Symeoni | Symeonem | Symeone | Symeon | -	PL Symeones | Symeonum/Symeonium~ | Symeonibus | Symeones | Symeonibus	# 
+Phase,  [Masc d-] rule	SG Phase | Phase | Phase | Phase | Phase | Phase | -	PL - | - | - | - | -	# 
+Caleb,  [Masc d-] rule	SG Caleb | Caleb | Caleb | Caleb | Caleb | Caleb | -	PL - | - | - | - | -	# 
+Persa, Persae [Masc d1] whitaker	SG Persa | Persae/Persai~ | Persae | Persam | Persa | Persa | -	PL Persae | Persarum/Persum~ | Persis | Persas | Persis	# 
+Saulus, Sauli [Masc d2] whitaker	SG Saulus | Sauli | Saulo | Saulum | Saulo | Saule | -	PL Sauli | Saulorum/Saulum~ | Saulis | Saulos | Saulis	# 
+Issachar,  [Masc d-] rule	SG Issachar | Issachar | Issachar | Issachar | Issachar | Issachar | -	PL - | - | - | - | -	# 
+Assur, Assuris [Masc d3] rule	SG Assur | Assuris | Assuri | Assurem | Assure | Assur | -	PL Assures | Assurum/Assurium~ | Assuribus | Assures | Assuribus	# 
+Bethlehem,  [Masc d-] rule	SG Bethlehem | Bethlehem | Bethlehem | Bethlehem | Bethlehem | Bethlehem | -	PL - | - | - | - | -	# 
+Caath,  [Masc d-] rule	SG Caath | Caath | Caath | Caath | Caath | Caath | -	PL - | - | - | - | -	# 
+Amalec,  [Masc d-] rule	SG Amalec | Amalec | Amalec | Amalec | Amalec | Amalec | -	PL - | - | - | - | -	# 
+Achaz,  [Masc d-] rule	SG Achaz | Achaz | Achaz | Achaz | Achaz | Achaz | -	PL - | - | - | - | -	# 
+Seir, Seiris [Masc d3] rule	SG Seir | Seiris | Seiri | Seirem | Seire | Seir | -	PL Seires | Seirum/Seirium~ | Seiribus | Seires | Seiribus	# 
+Hesebon, Hesebonis [Masc d3] rule	SG Hesebon | Hesebonis | Heseboni | Hesebonem | Hesebone | Hesebon | -	PL Hesebones | Hesebonum/Hesebonium~ | Hesebonibus | Hesebones | Hesebonibus	# 
+Ozias, Oziae [Masc d1] rule	SG Ozias | Oziae | Oziae | Ozian/Oziam~ | Ozia | Ozia | -	PL Oziae | Oziarum/Ozium~ | Oziis | Ozias | Oziis	# 
+Isai.,  [Masc d-] rule	SG Isai. | Isai. | Isai. | Isai. | Isai. | Isai. | -	PL - | - | - | - | -	# 
+Eliseus, Elisei [Masc d2] rule	SG Eliseus | Elisei | Eliseo | Eliseum | Eliseo | Elisee | -	PL Elisei | Eliseorum/Eliseum~ | Eliseis | Eliseos | Eliseis	# Elisha
+Timotheus, Timothei [Masc d2] rule	SG Timotheus | Timothei | Timotheo | Timotheum | Timotheo | Timothee | -	PL Timothei | Timotheorum/Timotheum~ | Timotheis | Timotheos | Timotheis	# 
+Merari,  [Masc d-] rule	SG Merari | Merari | Merari | Merari | Merari | Merari | -	PL - | - | - | - | -	# 
+Esther, Estheris [Masc d3] rule	SG Esther | Estheris | Estheri | Estherem | Esthere | Esther | -	PL Estheres | Estherum/Estherium~ | Estheribus | Estheres | Estheribus	# Esther
+Carmelus, Carmeli [Masc d2] whitaker	SG Carmelus | Carmeli | Carmelo | Carmelum | Carmelo | Carmele | -	PL Carmeli | Carmelorum/Carmelum~ | Carmelis | Carmelos | Carmelis	# 
+Libani,  [Masc d-] rule	SG Libani | Libani | Libani | Libani | Libani | Libani | -	PL - | - | - | - | -	# 
+Gabaon, Gabaonis [Masc d3] rule	SG Gabaon | Gabaonis | Gabaoni | Gabaonem | Gabaone | Gabaon | -	PL Gabaones | Gabaonum/Gabaonium~ | Gabaonibus | Gabaones | Gabaonibus	# 
+Geth,  [Masc d-] rule	SG Geth | Geth | Geth | Geth | Geth | Geth | -	PL - | - | - | - | -	# 
+Sidon, Sidonis [Masc d3] rule	SG Sidon | Sidonis | Sidoni | Sidonem | Sidone | Sidon | -	PL Sidones | Sidonum/Sidonium~ | Sidonibus | Sidones | Sidonibus	# 
+Sinai,  [Masc d-] rule	SG Sinai | Sinai | Sinai | Sinai | Sinai | Sinai | -	PL - | - | - | - | -	# 
+Abia, Abiae [Fem d1] rule	SG Abia | Abiae/Abiai~ | Abiae | Abiam | Abia | Abia | -	PL Abiae | Abiarum/Abium~ | Abiis | Abias | Abiis	# 
+Alexander, Alexandri [Masc d2] whitaker	SG Alexander | Alexandri | Alexandro | Alexandrum | Alexandro | Alexander | -	PL Alexandri | Alexandrorum/Alexandrum~ | Alexandris | Alexandros | Alexandris	# 
+Iohanan, Iohananis [Masc d3] rule	SG Iohanan | Iohananis | Iohanani | Iohananem | Iohanane | Iohanan | -	PL Iohananes | Iohananum/Iohananium~ | Iohananibus | Iohananes | Iohananibus	# 
+Mardochaeus, Mardochaei [Masc d2] rule	SG Mardochaeus | Mardochaei | Mardochaeo | Mardochaeum | Mardochaeo | Mardochaee | -	PL Mardochaei | Mardochaeorum/Mardochaeum~ | Mardochaeis | Mardochaeos | Mardochaeis	# 
+Antiochus, Antiochi [Masc d2] rule	SG Antiochus | Antiochi | Antiocho | Antiochum | Antiocho | Antioche | -	PL Antiochi | Antiochorum/Antiochum~ | Antiochis | Antiochos | Antiochis	# 
+Rachel,  [Masc d-] rule	SG Rachel | Rachel | Rachel | Rachel | Rachel | Rachel | -	PL - | - | - | - | -	# 

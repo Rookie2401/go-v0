@@ -1,0 +1,39 @@
+# Battery 10: confirmations of readings seen in the running text.
+la | Nunc autem manent fides, spes, caritas, tria haec. | fides
+la | Nunc autem manent fides, spes, caritas, tria haec. | spes
+la | Spes mea in Deo est. | Spes
+la | Fides tua magna est. | Fides
+la | Angelus Domini nuntiavit Mariae. | Domini
+la | Verbum Domini manet in aeternum. | Domini
+la | In domo Domini habitabo. | Domini
+la | Timor Domini initium sapientiae. | Domini
+la | Filius hominis venit. | hominis
+la | Filius Dei vivi. | Dei
+la | Regnum caelorum. | caelorum
+la | Epistula Petri. | Petri
+la | Domus patris mei. | patris
+la | Domus amici mei magna est. | amici
+la | Liber magistri novus est. | magistri
+la | Sanctum nomen eius. | Sanctum
+la | Nomen tuum sanctum est. | tuum
+la | Bonum vinum laetificat cor hominis. | Bonum
+la | Ne nos inducas in tentationem. | nos
+la | Libera nos a malo. | Libera
+la | Libera nos a malo. | nos
+la | Panem nostrum quotidianum da nobis hodie. | nostrum
+la | Dimitte nobis debita nostra. | debita
+la | Omnia per ipsum facta sunt. | facta
+la | Multa dixit. | Multa
+la | Haec omnia tibi dabo. | omnia
+la | Visne mecum venire? | Visne
+la | Ad scholam eo. | eo
+la | Soles occidere et redire possunt. | Soles
+la | Mater nos exspectat. | nos
+la | Hoc est corpus meum. | Hoc
+la | Hoc est corpus meum. | meum
+la | Sancta Maria. | Sancta
+la | Sancte Petre, ora pro nobis. | Sancte
+la | Puer, surge! | surge
+la | Tolle, lege. | lege
+la | Audi, Israel. | Audi
+la | Gallos ab Aquitanis Garumna flumen dividit. | Garumna

@@ -1,0 +1,106 @@
+Io [INTJ] whitaker		# Yo!
+a [INTJ] whitaker		# Ah!
+eia [INTJ] whitaker		# how now!, Ha, Good, see! (of joy)
+ha [INTJ] whitaker		# Ah!
+heia [INTJ] whitaker		# how now!, Ha, Good, see! (of joy)
+agedum [INTJ] whitaker		# come!, go to!, well!, all right!
+agite [INTJ] whitaker		# come!, go to!, well!, all right!
+ah [INTJ] whitaker		# exclamation expressing surprise/irony
+Alleluia [INTJ] whitaker		# Halleluia, cry of joy and praise to God
+apage [INTJ] whitaker		# be off!; nonsense!, get away with you!
+apsit [INTJ] whitaker		# "god forbid", "let it be far from the hearts of the...
+attat [INTJ] whitaker		# ah! oh! alas! (expression of sudden...
+attate [INTJ] whitaker		# ah! oh! alas! (expression of sudden...
+ave [INTJ] whitaker		# hail!, formal expression of greetings
+Halleluiah [INTJ] whitaker		# Halleluia, cry of joy and praise to God
+hem [INTJ] whitaker		# what's that? (surprise/concern)
+ilicet [INTJ] whitaker		# you may go/off with you; it's over
+va [INTJ] whitaker		# Ha!/oh!/ah!
+vah [INTJ] whitaker		# Ha!/oh!/ah!
+vaha [INTJ] whitaker		# Ha!/oh!/ah!
+chere [INTJ] whitaker		# welcome; hail (L+S)
+ecastor [INTJ] whitaker		# by Castor (interjection used by women)
+eccam [INTJ] whitaker		# Here she/it is!; Behold!, Observe!, Lo!
+eccere [INTJ] whitaker		# Here she/it is!; Behold!, Observe!, Lo!
+edepol [INTJ] whitaker		# by Pollux!
+ei [INTJ] whitaker		# Ah! Woe!, oh dear, alas; (of grief or fear)
+em [INTJ] whitaker		# there! (of wonder); here!
+eu [INTJ] whitaker		# well done! bravo!; splendid! (sometimes ironic)
+eugae [INTJ] whitaker		# oh, good! fine! well done! (delight/pleasure/surprise...
+euge [INTJ] whitaker		# oh, good! fine! well done! (delight/pleasure/surprise...
+euhoe [INTJ] whitaker		# cry of joy used by the votaries of Bacchus
+have [INTJ] whitaker		# hail!, formal expression of greetings
+hei [INTJ] whitaker		# Ah! Woe!, oh dear, alas
+hercle [INTJ] whitaker		# By Hercules!; assuredly, indeed
+hercule [INTJ] whitaker		# by Hercules!; assuredly, indeed
+heus [INTJ] whitaker		# hey!, ho!, ho there!, listen!
+hui [INTJ] whitaker		# whee!, wow!
+mecastor [INTJ] whitaker		# by Castor!; (oath used by women)
+mehercle [INTJ] whitaker		# By Hercules! assuredly, indeed
+mehercule [INTJ] whitaker		# by Hercules! assuredly, indeed
+mehercules [INTJ] whitaker		# by Hercules! assuredly, indeed
+oh [INTJ] whitaker		# oh! ah!
+ohe [INTJ] whitaker		# hey! hey there!
+oiei [INTJ] whitaker		# oh dear; (lamentation)
+Pol [INTJ] whitaker		# by Pollux; truly; really
+st [INTJ] whitaker		# hush! hist!
+aha [INTJ] whitaker		# exclamation expressing surprise/irony
+aisne [INTJ] whitaker		# indeed? really? is it possible? do you really mean it?...
+attatae [INTJ] whitaker		# ah! oh! alas! (expression of sudden...
+attattatae [INTJ] whitaker		# ah! oh! alas! (expression of sudden...
+babae [INTJ] whitaker		# wow!; exclamation of surprise or amazement
+chaere [INTJ] whitaker		# welcome; hail (L+S)
+eccas [INTJ] whitaker		# Here they (feminine) are!; Behold!, Observe!, Lo!
+eccillam [INTJ] whitaker		# There she/it is!; Behold!, Observe!, Lo!
+eccillum [INTJ] whitaker		# There he/it is!; Behold!, Observe!, Lo!
+ehem [INTJ] whitaker		# oho! well well!
+ehoi [INTJ] whitaker		# hurrah! (exclamation of happiness)
+eugepae [INTJ] whitaker		# well done!; (sometimes ironic)
+euoeeuhoe [INTJ] whitaker		# shout of the Bacchantes
+hahahae [INTJ] whitaker		# Ha ha!; (laughter, derision)
+hahahe [INTJ] whitaker		# Ha ha!; (laughter, derision)
+Hosanna [INTJ] whitaker		# Hosanna, "God save", a cry of praise (Hebrew)
+Hosianna [INTJ] whitaker		# Hosanna, "God save", a cry of praise (Hebrew)
+maranatha [INTJ] whitaker		# our Lord cometh; (Aramaic through Greek)
+oi [INTJ] whitaker		# oh! ah!
+Osanna [INTJ] whitaker		# Hosanna, "God save", a cry of praise (Hebrew)
+ridiculum [INTJ] whitaker		# the idea/question is absurd/ridiculous!
+aelinon [INTJ] whitaker		# exclamation of sorrow; "alas for Linus"
+ai [INTJ] whitaker		# alas; exclamation expressing grief
+atat [INTJ] whitaker		# ah! oh! alas! (expression of sudden...
+atatae [INTJ] whitaker		# ah! oh! alas! (expression of sudden...
+atatatae [INTJ] whitaker		# ah! oh! alas! (expression of sudden...
+atate [INTJ] whitaker		# ah! oh! alas! (expression of sudden...
+atattae [INTJ] whitaker		# ah! oh! alas! (expression of sudden...
+au [INTJ] whitaker		# oh! ow! oh dear! goodness gracious! (used by women to...
+be [INTJ] whitaker		# baa (sound made by sheep)
+bee [INTJ] whitaker		# baa; sound made by a sheep
+beia [INTJ] whitaker		# see!; (comic word as contemptuous echo of "heia")
+bombax [INTJ] whitaker		# Splendid! Marvelous!
+buttuti [INTJ] whitaker		# Buttuti!
+buttutti [INTJ] whitaker		# Buttuti!
+coco [INTJ] whitaker		# crow of cock; cock-a-doodle-doo
+cuccuru [INTJ] whitaker		# cock-a-doodle-doo!
+cucurru [INTJ] whitaker		# cock-a-doodle-doo!
+deurode [INTJ] whitaker		# come hither!; (deuro de); (applied to a catamite)
+ecca [INTJ] whitaker		# Here they (neuter) are!; Behold!, Observe!, Lo!
+eccillud [INTJ] whitaker		# There it is!; Behold!, Observe!, Lo!
+eccistam [INTJ] whitaker		# There she is!; Behold!, Observe!, Lo!
+eccum [INTJ] whitaker		# Here he/it is!; Behold!, Observe!, Lo!
+Eli [INTJ] whitaker		# My God
+Eloi [INTJ] whitaker		# My God; (Aramaic)
+hau [INTJ] whitaker		# oh! ow! oh dear! goodness gracious! (used by women to...
+Heli [INTJ] whitaker		# My God
+lema [INTJ] whitaker		# Eli Eli lama sabacthani/My God, my God why hast thou...
+lo [INTJ] whitaker		# Lo!; (magic word to cure bite of mad dog)
+phy [INTJ] whitaker		# pish! tush!; (expression of disgust)
+tat [INTJ] whitaker		# what! (Plautus)
+triumphe [INTJ] whitaker		# triumphant!
+eho [INTJ] whitaker		# ha? ho! holla! soho!
+euax [INTJ] whitaker		# 
+euoe [INTJ] whitaker		# 
+fu [INTJ] whitaker		# 
+fue [INTJ] whitaker		# 
+hehae [INTJ] whitaker		# 
+oho [INTJ] whitaker		# 
+proh [INTJ] whitaker		# 

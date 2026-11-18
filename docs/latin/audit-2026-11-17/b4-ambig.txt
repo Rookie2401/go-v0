@@ -1,0 +1,123 @@
+# Battery 4: ambiguous forms and how the card presents them. Sentences written by the auditor.
+la | Puellae rosas amant. | Puellae
+la | Rosam puellae dedit. | puellae
+la | Liber puellae pulcher est. | puellae
+la | Pueri in via ludunt. | Pueri
+la | Liber pueri magnus est. | pueri
+la | Servo pecuniam dedit. | Servo
+la | Cum servo venit. | servo
+la | Templum magnum aedificaverunt. | Templum
+la | Templum in monte stat. | Templum
+la | Dona deis dant. | deis
+la | A militibus captus est. | militibus
+la | Militibus praemia dedit. | Militibus
+la | Reges urbes regunt. | Reges
+la | Reges urbes regunt. | urbes
+la | Rege mortuo, filius regnavit. | Rege
+la | Manus lavat. | Manus
+la | Manus eius longa est. | Manus
+la | Fructus arboris dulcis est. | Fructus
+la | Vult amare et amari. | amare
+la | Amare a suis vult; tu amare ab omnibus. | amare#2
+la | Puer librum legit et ridet. | legit
+la | Heri librum legit. | legit
+la | Hodie venit, heri non venit. | venit
+la | Liber meus in mensa est. | Liber
+la | Homo liber non servit. | liber
+la | Liber pater vinum dedit. | Liber
+la | Malum est mentiri. | Malum
+la | Malum de arbore cecidit. | Malum
+la | Mala aurea in horto sunt. | Mala
+la | Malus puer matrem non audit. | Malus
+la | Malus navis fracta est. | Malus
+la | Populus Romanus vicit. | Populus
+la | Populus alta iuxta flumen stat. | Populus
+la | Ius civile didicit. | Ius
+la | Ius in olla coquitur. | Ius
+la | Latus fluvius urbem dividit. | Latus
+la | Lancea latus eius aperuit. | latus
+la | Vis magna venti erat. | Vis
+la | Cum amicis ambulat. | Cum
+la | Cum venisset, omnes tacuerunt. | Cum
+la | Cum Caesar in Galliam venit, Galli timuerunt. | Cum
+la | Venit ut videret. | ut
+la | Ut dixi, verum est. | Ut
+la | Ut vales? | Ut
+la | Gaudeo quod vales. | quod
+la | Bellum quod gessit longum fuit. | quod
+la | Scio quod Deus bonus est. | quod
+la | Quam pulchra es! | Quam
+la | Maior est quam frater. | quam
+la | Quam primum veni. | Quam
+la | Ne dixeris hoc. | Ne
+la | Timeo ne veniat. | ne
+la | Ne quidem unus venit. | Ne
+la | Venitne pater? | Venitne
+la | Nescio an venturus sit. | an
+la | Is eo die venit. | Is
+la | Eo venit ut nos videret. | Eo
+la | Quo vadis? | Quo
+la | Quo facto, abiit. | Quo
+la | Die quo natus est. | quo
+la | Qua via venisti? | Qua
+la | Hic habitat. | Hic
+la | Hic vir bonus est. | Hic
+la | Idem dixit. | Idem
+la | Idem sentimus. | Idem
+la | Modo venit. | Modo
+la | Hoc modo vivit. | modo
+la | Non modo pulchra sed etiam bona est. | modo
+la | Vero amico credo. | Vero
+la | Ego vero nescio. | vero
+la | Pater est bonus. | est
+la | Solum Deum adorabis. | Solum
+la | Non solum sed etiam. | solum
+la | In solo sacro stat. | solo
+la | Primum venit pater, deinde mater. | Primum
+la | Multum laborat. | Multum
+la | Tantum unum necessarium est. | Tantum
+la | Forte ibi erat. | Forte
+la | Vir forte animal vicit. | forte
+la | Mane surrexit. | Mane
+la | Mane nobiscum, Domine. | Mane
+la | Sine me abire. | Sine
+la | Sine causa venit. | Sine
+la | Pone me ut signaculum super cor tuum. | Pone
+la | Legi librum tuum. | Legi
+la | Legi parere debemus. | Legi
+la | Regis filius venit. | Regis
+la | Bene regis populum. | regis
+la | Ducis verba audivimus. | Ducis
+la | Quo me ducis? | ducis
+la | Amor patriae nos movet. | Amor
+la | A patre amor. | amor
+la | Canis in via currit. | Canis
+la | Carmen canis pulchrum. | canis
+la | Vita brevis, ars longa. | Vita
+la | Peccatum vita! | vita
+la | Novi hominem bonum. | Novi
+la | Novi libri in mensa sunt. | Novi
+la | Uti foro, non frui. | Uti
+la | Verum dicit. | Verum
+la | Verum hoc non satis est. | Verum
+la | Ante portas stat. | Ante
+la | Paucis ante diebus venit. | ante
+la | Post cenam ambulat. | Post
+la | Multis post annis rediit. | post
+la | Dicit se venturum. | se
+la | Suis oculis vidit. | Suis
+la | Fides sine operibus mortua est. | operibus
+la | Opera eius magna sunt. | Opera
+la | Magna opera hoc fecit. | opera
+la | Dominus dixit ad me. | dixit
+la | Amicus certus in re incerta cernitur. | re
+la | Parentes liberos amant. | liberos
+la | Servos liberos fecit. | liberos
+la | Mulier viro paret. | paret
+la | Parere legibus debemus. | Parere
+la | Mulier filium parere potest. | parere
+la | Occidit hostem. | Occidit
+la | Sol occidit. | occidit
+la | Animi causa. | causa
+la | Honoris causa. | causa
+la | Exempli gratia. | gratia

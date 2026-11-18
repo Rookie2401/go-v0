@@ -1,0 +1,33 @@
+ad [ADP] romance gov Acc		# to, toward, at, near
+ante [ADP] romance gov Acc		# before, in front of
+apud [ADP] romance gov Acc		# at the house of, among, in the presence of
+circum [ADP] romance gov Acc		# around
+contra [ADP] romance gov Acc		# against, opposite
+inter [ADP] romance gov Acc		# between, among, during
+ob [ADP] romance gov Acc		# on account of, in front of
+per [ADP] romance gov Acc		# through, by means of
+post [ADP] romance gov Acc		# after, behind
+prope [ADP] romance gov Acc		# near
+propter [ADP] romance gov Acc		# on account of, near
+trans [ADP] romance gov Acc		# across
+ab [ADP] romance gov Abl	ab{} a{} abs{}	# away from, by
+cum [ADP] romance gov Abl		# with
+de [ADP] romance gov Abl		# down from, concerning, about
+ex [ADP] romance gov Abl	ex{} e{}	# out of, from
+pro [ADP] romance gov Abl		# in front of, on behalf of, instead of
+sine [ADP] romance gov Abl		# without
+in [ADP] romance gov Acc,Abl		# into, onto / in, on
+sub [ADP] romance gov Acc,Abl		# under, up to / under, beneath
+super [ADP] whitaker gov Abl,Acc		# over (space), above, upon, in addition to
+coram [ADP] whitaker gov Abl		# in the presence of, before; (may precede or follow object)
+iuxta [ADP] whitaker gov Acc		# near, (very) close to, next to; hard by, adjoining
+secundum [ADP] whitaker gov Acc		# after; according to
+adversus [ADP] whitaker gov Acc		# facing, opposite, against, towards; contrary to
+absque [ADP] whitaker gov Abl		# without, apart from, away from; but for; except for
+supra [ADP] whitaker gov Acc		# above, beyond; over; more than; in charge of, in authority o
+circa [ADP] whitaker gov Acc		# around, on bounds of; about/near (space/time/numeral)
+prae [ADP] whitaker gov Abl		# before, in front; in view of, because of
+intra [ADP] whitaker gov Acc		# within, inside; during; under
+extra [ADP] whitaker gov Acc		# outside of, beyond, without, beside; except
+praeter [ADP] whitaker gov Acc		# besides, except, contrary to; beyond (rank), in front of, be
+secus [ADP] whitaker gov Acc		# by, beside, alongside; in accordance with

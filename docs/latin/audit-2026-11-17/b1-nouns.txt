@@ -1,0 +1,105 @@
+# Battery 1: declensions, irregular nouns, locatives. Sentences written by the auditor.
+# first declension
+la | Puella rosam amat. | rosam
+la | Cum filiis et filiabus suis venit. | filiabus
+la | Dis deabusque sacrificant. | deabusque
+la | Dis deabusque sacrificant. | Dis
+la | Poeta nautae fabulam narrat. | nautae
+la | Aeneas Anchisen patrem portavit. | Anchisen
+la | Aeneas Anchisen patrem portavit. | Aeneas
+la | Vitam Aeneae legimus. | Aeneae
+la | Musica Graeca epitomen habet. | epitomen
+la | Aquai fons erat. | Aquai
+# second declension
+la | Puer agrum patris arat. | agrum
+la | Puerum in agro vidi. | Puerum
+la | O fili, audi me! | fili
+la | Fili mi, audi verba mea. | mi
+la | Vergili, carmina tua amo. | Vergili
+la | Vir magni ingeni erat. | ingeni
+la | Vir magni ingenii erat. | ingenii
+la | Di immortales nos servent. | Di
+la | Deum hominumque pater. | Deum
+la | Dis placet. | Dis
+la | Viri fortes pugnant. | Viri
+la | Per loca deserta ambulat. | loca
+la | Marce, veni huc! | Marce
+la | Domine, exaudi orationem meam. | Domine
+la | Deus meus, Deus meus, quare me dereliquisti? | Deus
+la | Sacerdos librum sacrum legit. | librum
+la | Liberi in horto ludunt. | Liberi
+la | Vulgus Romanum clamat. | Vulgus
+la | Bella gerunt Romani. | Bella
+# third declension
+la | Cives urbem defendunt. | Cives
+la | Civium virtus urbem servavit. | Civium
+la | Nautae in mari navigant. | mari
+la | Animalia in silva vivunt. | Animalia
+la | Nocte urbem reliquit. | Nocte
+la | Magna vi oppidum cepit. | vi
+la | Vires militum deficiunt. | Vires
+la | Boum greges in agris sunt. | Boum
+la | Bobus aquam dat. | Bobus
+la | Templum Iovis in colle stat. | Iovis
+la | Iuppiter fulmen mittit. | Iuppiter
+la | Longo itinere fessi sunt. | itinere
+la | Senes consilium dant. | Senes
+la | Senis verba audivit. | Senis
+la | Verbum caro factum est. | caro
+la | Carnem non manducat. | Carnem
+la | Os aperuit et dixit. | Os
+la | Ossa mea conturbata sunt. | Ossa
+la | Os non comminuetis ex eo. | Os
+la | Cor mundum crea in me, Deus. | Cor
+la | Cogitationes cordium revelantur. | cordium
+la | Corpora militum iacent. | Corpora
+la | Tempore belli fugit. | Tempore
+la | Nomina regum scripsit. | regum
+la | Capita hostium vidit. | Capita
+la | Milites regis patrem necaverunt. | regis
+la | Vasa aurea in templo erant. | Vasa
+la | Vas electionis est mihi iste. | Vas
+la | In vasis fictilibus thesaurum habemus. | vasis
+la | Requiem aeternam dona eis, Domine. | Requiem
+la | Supellectilem domus vendidit. | Supellectilem
+la | Nemo te condemnavit? | Nemo
+la | Neminem vidi. | Neminem
+la | Nullius rei eget. | Nullius
+# fourth and fifth
+la | Manibus suis laborat. | Manibus
+la | Domi manet. | Domi
+la | Domum redit. | Domum
+la | Domo exiit. | Domo
+la | Domos suas vendiderunt. | Domos
+la | Cornua tauri timet. | Cornua
+la | Genibus flexis orat. | Genibus
+la | De tribubus Israel electi sunt. | tribubus
+la | Arcubus et sagittis pugnant. | Arcubus
+la | Res publica in periculo est. | Res
+la | Rem publicam defendit. | Rem
+la | Rerum natura mira est. | Rerum
+la | Dies irae, dies illa. | Dies
+la | Die tertia resurrexit. | Die
+la | Multos dies ibi mansit. | dies
+la | Fide salvus eris. | Fide
+la | Spem habemus. | Spem
+la | Spei nostrae fundamentum est. | Spei
+# locatives
+la | Romae habitat. | Romae
+la | Ruri vivit. | Ruri
+la | Humi iacet. | Humi
+la | Athenis multos annos vixit. | Athenis
+la | Domi militiaeque clarus fuit. | militiaeque
+la | Carthagine natus est. | Carthagine
+la | Romam venit. | Romam
+la | Roma profectus est. | Roma
+# plural-only and heteroclite
+la | Castra in colle posuit. | Castra
+la | In castris manent. | castris
+la | Arma virumque cano. | Arma
+la | Tenebrae factae sunt. | Tenebrae
+la | Moenia urbis alta sunt. | Moenia
+la | Divitias non amat. | Divitias
+la | Pascha nostrum immolatus est Christus. | Pascha
+la | Ante diem festum Paschae. | Paschae
+la | Sabbato non laborant. | Sabbato

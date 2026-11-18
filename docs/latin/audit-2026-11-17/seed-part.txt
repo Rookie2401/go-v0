@@ -1,0 +1,3 @@
+non [PART] romance		# not
+nonne [PART] romance		# question particle expecting the answer "yes"
+num [PART] romance		# question particle expecting the answer "no"

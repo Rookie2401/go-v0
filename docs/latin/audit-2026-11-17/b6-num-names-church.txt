@@ -1,0 +1,158 @@
+# Battery 6: numbers, abbreviations, names, Greek and Hebrew words, ecclesiastical senses. Sentences written by the auditor.
+# numerals
+la | Una hirundo non facit ver. | Una
+la | Unam petii a Domino. | Unam
+la | Unum est necessarium. | Unum
+la | Unis litteris totam rem scripsit. | Unis
+la | Duo homines ascenderunt in templum. | Duo
+la | Duae mulieres venerunt. | Duae
+la | Duobus dominis servire. | Duobus
+la | Duas tunicas habet. | Duas
+la | Tres sunt qui testimonium dant. | Tres
+la | Tria milia hominum. | Tria
+la | Trium puerorum canticum. | Trium
+la | Tribus diebus aedificabo illud. | Tribus
+la | Mille passus ambulavit. | Mille
+la | Duo milia passuum. | milia
+la | Quinque milibus hominum panem dedit. | milibus
+la | Undeviginti annos natus. | Undeviginti
+la | Duodeviginti milites. | Duodeviginti
+la | Viginti unus dies. | Viginti
+la | Centum oves habet. | Centum
+la | Ducenti milites venerunt. | Ducenti
+la | Trecentos viros elegit. | Trecentos
+la | Sescenti sexaginta sex. | Sescenti
+la | Primus venit, secundus abiit. | secundus
+la | Tertia die resurrexit. | Tertia
+la | Anno vicesimo primo. | vicesimo
+la | Hora nona clamavit. | nona
+la | Septimo die requievit. | Septimo
+la | Duodecimus apostolus. | Duodecimus
+la | Singuli singulos elegerunt. | Singuli
+la | Bini et bini ambulant. | Bini
+la | Ternos denarios dedit. | Ternos
+la | Semel in anno. | Semel
+la | Ter in die orat. | Ter
+la | Quater venit. | Quater
+la | Septies in die cadit iustus. | Septies
+la | Septuagies septies. | Septuagies
+la | Decies centena milia. | Decies
+la | Caput XIV legimus. | XIV
+la | Anno MCMXCIX natus est. | MCMXCIX
+la | Ludovicus XVI rex erat. | XVI
+la | Pars iiii incipit. | iiii
+la | Psalmus xxii. | xxii
+la | Anno Domini 1999. | 1999
+la | Leo X papa erat. | X
+la | Milites C venerunt. | C
+la | Dimidium facti qui coepit habet. | Dimidium
+la | Ambobus oculis videt. | Ambobus
+# abbreviations
+la | Libros, epistulas etc. scripsit. | etc
+la | Animalia, i.e. bestiae. | i
+la | Poetae, e.g. Vergilius. | e
+la | S.P.Q.R. | S
+la | M. Tullius Cicero consul fuit. | M
+la | C. Iulius Caesar Galliam vicit. | C
+la | Cn. Pompeius Magnus. | Cn
+la | Q. Horatius Flaccus poeta fuit. | Q
+la | L. Catilina coniurationem fecit. | L
+la | Ti. Gracchus tribunus plebis fuit. | Ti
+la | P. Vergilius Maro. | P
+la | Dñs vobiscum. | Dñs
+la | ℟. Et cum spiritu tuo. | ℟
+la | a.d. III Kal. Ian. | Kal
+la | Cicero cos. fuit. | cos
+la | Imp. Caesar Augustus. | Imp
+la | Vide cap. III. | cap
+la | A.D. MMXXVI | A
+la | St. Petrus | St
+la | Cf. supra. | Cf
+la | N.B. hoc verum est. | N
+la | Q.E.D. | Q
+# names
+la | Iesu Christi Domini nostri. | Iesu
+la | Vidit Iesum venientem. | Iesum
+la | Per Iesum Christum Dominum nostrum. | Christum
+la | Dixit Dominus ad Moysen. | Moysen
+la | In lege Moysi scriptum est. | Moysi
+la | Deus Abraham, Deus Isaac et Deus Iacob. | Abraham
+la | Filius David. | David
+la | In civitate David. | David
+la | Semini Abrahae. | Abrahae
+la | Ascendit Ierusalem. | Ierusalem
+la | Venit Hierosolymam. | Hierosolymam
+la | Ab Ierosolymis venerunt. | Ierosolymis
+la | Maria autem conservabat omnia verba haec. | Maria
+la | Ave Maria, gratia plena. | Maria
+la | Mariam Magdalenam vidit. | Mariam
+la | Petrus et Ioannes ascendebant in templum. | Ioannes
+la | Paulus apostolus Christi Iesu. | Paulus
+la | Simon Petre, amas me? | Petre
+la | In Bethlehem Iudae. | Bethlehem
+la | Pontius Pilatus. | Pilatus
+la | Sub Pontio Pilato passus. | Pilato
+la | Gallia est omnis divisa in partes tres. | Gallia
+la | Quousque tandem abutere, Catilina, patientia nostra? | Catilina
+la | Caesar Rubiconem transiit. | Rubiconem
+la | Ciceronis orationes legimus. | Ciceronis
+la | Troiae qui primus ab oris. | Troiae
+la | Timeo Danaos et dona ferentes. | Danaos
+la | Vivamus, mea Lesbia, atque amemus. | Lesbia
+la | Helvetii legatos mittunt. | Helvetii
+la | Belgae fortissimi sunt. | Belgae
+la | Aquitani a Gallis differunt. | Aquitani
+la | Lavinia venit litora. | Lavinia
+la | Iunonis ob iram. | Iunonis
+# Greek and Hebrew words, church vocabulary and senses
+la | Amen dico vobis. | Amen
+la | Alleluia, alleluia. | Alleluia
+la | Hosanna in excelsis. | Hosanna
+la | Sabbatum propter hominem factum est. | Sabbatum
+la | In ecclesia magna. | ecclesia
+la | Baptizo vos aqua. | Baptizo
+la | Baptizatus est Iesus. | Baptizatus
+la | Presbyteri ecclesiae. | Presbyteri
+la | Episcopum oportet irreprehensibilem esse. | Episcopum
+la | Angelus Domini nuntiavit Mariae. | Angelus
+la | Diabolus tamquam leo rugiens circuit. | Diabolus
+la | Praedicate evangelium omni creaturae. | evangelium
+la | Prophetae locuti sunt. | Prophetae
+la | Docebat in synagogis eorum. | synagogis
+la | Locutus est eis in parabolis. | parabolis
+la | Blasphemiam audistis. | Blasphemiam
+la | Gratia vobis et pax. | Gratia
+la | Fides tua te salvam fecit. | Fides
+la | Salus populi suprema lex. | Salus
+la | Virtus Altissimi obumbrabit tibi. | Virtus
+la | Spiritus Sanctus superveniet in te. | Spiritus
+la | In principio erat Verbum. | Verbum
+la | Vivit in saecula saeculorum. | saecula
+la | Sacramentum hoc magnum est. | Sacramentum
+la | Novum Testamentum. | Testamentum
+la | Lumen ad revelationem gentium. | gentium
+la | Dimitte nobis peccata nostra. | peccata
+la | Caro mea vere est cibus. | Caro
+la | Domus mea domus orationis vocabitur. | orationis
+la | Confiteor Deo omnipotenti. | Confiteor
+la | Praedicamus Christum crucifixum. | Praedicamus
+la | Benedicat vos omnipotens Deus. | Benedicat
+la | Benedictus qui venit in nomine Domini. | Benedictus
+la | Communicantes et memoriam venerantes. | Communicantes
+la | Salvator mundi. | Salvator
+la | Redemptor meus vivit. | Redemptor
+la | Paracletus Spiritus. | Paracletus
+la | Sanctificetur nomen tuum. | Sanctificetur
+la | Et incarnatus est de Spiritu Sancto. | incarnatus
+la | Credo in unum Deum. | Credo
+la | Eucharistia sancta. | Eucharistia
+la | Sanctus, Sanctus, Sanctus Dominus Deus Sabaoth. | Sabaoth
+la | Agnus Dei, qui tollis peccata mundi. | tollis
+la | Missa est. | Missa
+la | Introibo ad altare Dei. | Introibo
+la | Transubstantiatio. | Transubstantiatio
+la | Monachi in monasterio orant. | Monachi
+la | Abbas monasterii. | Abbas
+la | Papa Romanus. | Papa
+la | Dominus regit me. | Dominus
+la | Dominus servum vocavit. | Dominus

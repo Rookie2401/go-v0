@@ -1,0 +1,64 @@
+ac [CONJ] whitaker		# and, and also, and besides
+etiam [CONJ] whitaker		# and also, besides/furthermore, in addition/as well
+namque [CONJ] whitaker		# for and in fact, on the other hand
+nec [CONJ] whitaker		# nor, and..not; not..either, not even
+neque [CONJ] whitaker	neque{} nec{}	# nor
+seu [CONJ] whitaker		# or if; or
+uti [CONJ] whitaker		# in order that; that, so that
+ast [CONJ] whitaker		# but, on the other hand/contrary
+atqui [CONJ] whitaker		# but, yet, notwithstanding, however, rather, well/but now
+atquin [CONJ] whitaker		# but, yet, notwithstanding, however, rather, well/but now
+enimvero [CONJ] whitaker		# to be sure, certainly; well, upon by word
+etsi [SCONJ] whitaker		# although, though, even if; albeit
+necdum [CONJ] whitaker		# and/but not yet
+neu [CONJ] whitaker		# or not, and not; (for negative of IMP)
+prout [CONJ] whitaker		# as, just as; exactly as
+set [CONJ] whitaker		# but, but also; yet; however, but in fact/truth
+acsi [CONJ] whitaker		# as if; (ac si)
+adque [CONJ] whitaker		# and, as well as, as soon as; together with
+alii [CONJ] whitaker		# some ... others (alii ... alii)
+alius [CONJ] whitaker		# the_one ... the_other (alius ... alius)
+alter [CONJ] whitaker		# the_one ... the_other (alter ... alter)
+anne [CONJ] whitaker		# can it be that (introducing a question expecting a...
+annon [CONJ] whitaker		# can it be that (introducing a question expecting a...
+licet [CONJ] whitaker		# although, granted that; (with subjunctive)
+quum [CONJ] whitaker		# when, while, as, since, although
+utut [CONJ] whitaker		# however; in whatever way
+dummodo [SCONJ] whitaker		# provided (that) (+ subj)
+etiamsi [CONJ] whitaker		# even if, although
+etiamtum [CONJ] whitaker		# even then; yet
+modo [CONJ] whitaker		# but, if only; but only
+necne [CONJ] whitaker		# or not
+nedum [CONJ] whitaker		# still less; not to speak of; much more
+nempe [CONJ] whitaker		# truly, certainly, of course
+nequedum [CONJ] whitaker		# and/but not yet
+neve [CONJ] whitaker		# or not, and not; (for negative of IMP)
+ni [CONJ] whitaker		# if ... not; unless
+nonnisi [CONJ] whitaker		# not unless; not except; only (on specific terms)
+posteaquam [CONJ] whitaker		# after
+quam [CONJ] whitaker		# how, than
+quamobrem [CONJ] whitaker		# why, for what reason, on what account
+quando [SCONJ] whitaker		# when, since, because
+quandoquidem [CONJ] whitaker		# since, seeing that
+quanquam [CONJ] whitaker		# though, although; yet; nevertheless
+quasi [SCONJ] whitaker		# as if, just as if, as though
+quo [CONJ] whitaker		# whither, in what place, where
+quoad [CONJ] whitaker		# as long as, until
+quocirca [CONJ] whitaker		# on account of which; wherefore
+quodnisi [CONJ] whitaker		# but if not; and if not; (introduces conditional)
+quodsi [CONJ] whitaker		# but if; and if; (introduces conditional)
+sicut [SCONJ] whitaker	sicut{} sicuti{}	# as, just as; like; in same way
+tametsi [SCONJ] whitaker		# even if, although, though
+tanquam [CONJ] whitaker		# as, just as, just as if; as it were, so to speak
+tum [CONJ] whitaker		# moreover; (frequent in Cicero and before
+adqui [CONJ] whitaker		# but, yet, notwithstanding, however, rather, well/but now
+adquin [CONJ] whitaker		# but, yet, notwithstanding, however, rather, well/but now
+atenim [CONJ] whitaker		# but/yet in spite of what has been said
+audem [CONJ] whitaker		# but (postpositive), on the other hand/contrary
+bat [CONJ] whitaker		# but, while, however
+batenim [CONJ] whitaker		# but, yet, nevertheless, however
+que [CONJ] whitaker		# and
+cumquam [CONJ] whitaker		# ever
+cuncumque [CONJ] whitaker		# whenever
+sicumquam [CONJ] whitaker		# if ever
+utrumnam [CONJ] whitaker		# whether; (Vulgate 1 Samuel 10:22)

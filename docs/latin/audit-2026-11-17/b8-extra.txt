@@ -1,0 +1,73 @@
+# Battery 8: follow-up probes on things the first batteries raised. Sentences written by the auditor.
+la | Deum hominumque pater. | Deum
+la | Deus est caritas. | Deus
+la | Caput XIV legimus. | XIV
+la | Deo duce, vincemus. | duce
+la | Sartatecta templi instauraverunt. | Sartatecta
+la | Parentes liberos suos amant. | liberos
+la | Liberi parentes amant. | Liberi
+la | Quis es tu? | Quis
+la | Is venit. | Is
+la | Non possum diutius manere. | diutius
+la | Venit saepius quam frater. | saepius
+la | Venit saepissime. | saepissime
+la | Vir neuter venit. | neuter
+la | Rex neutri favet. | neutri
+la | Hoc est enim corpus meum. | enim
+la | Animalia, id est bestiae. | id
+la | Ait enim: i. e. dixit. | e
+la | Agricola semen sevit. | sevit
+la | Deus meus et omnia. | meus
+la | O bone Iesu. | bone
+la | Sancta Maria, Mater Dei, ora pro nobis peccatoribus. | ora
+la | Sancta Maria, Mater Dei, ora pro nobis peccatoribus. | peccatoribus
+la | Te rogamus, audi nos. | audi
+la | Kyrie, eleison. | Kyrie
+la | Christe, eleison. | Christe
+la | Gloria Patri, et Filio, et Spiritui Sancto. | Spiritui
+la | Sicut erat in principio, et nunc, et semper. | Sicut
+la | Requiescant in pace. | pace
+la | Tantum ergo Sacramentum veneremur cernui. | veneremur
+la | Pange, lingua, gloriosi corporis mysterium. | Pange
+la | Veni, Creator Spiritus. | Veni
+la | Salve, Regina, mater misericordiae. | Regina
+la | Ad te clamamus, exsules filii Hevae. | exsules
+la | Magnificat anima mea Dominum. | Magnificat
+la | Et exsultavit spiritus meus in Deo salutari meo. | salutari
+la | Quia respexit humilitatem ancillae suae. | ancillae
+la | Fecit potentiam in brachio suo. | brachio
+la | Esurientes implevit bonis. | Esurientes
+la | Puer puellam videt. | puellam
+la | Hodie ad ecclesiam ambulant. | ambulant
+la | Ecclesia est magna et pulchra. | magna
+la | Populus verba audit et Deum laudat. | verba
+la | Postea Marcus et Iulia domum laeti ambulant. | laeti
+la | Postea Marcus et Iulia domum laeti ambulant. | domum
+la | Marcus et Iulia in parva domo habitant. | Iulia
+la | Ego te amo. | amo
+la | Homo homini lupus. | homini
+la | Mens sana in corpore sano. | sana
+la | Vox populi, vox Dei. | populi
+la | In vino veritas. | vino
+la | Per aspera ad astra. | aspera
+la | Sic transit gloria mundi. | transit
+la | Tempus fugit. | fugit
+la | Festina lente. | Festina
+la | Cave canem. | Cave
+la | Nosce te ipsum. | Nosce
+la | Vade retro, Satana. | Vade
+la | Lux in tenebris lucet. | lucet
+la | Quid est veritas? | veritas
+la | Ecce homo. | homo
+la | Consummatum est. | Consummatum
+la | In hoc signo vinces. | vinces
+la | Dulce et decorum est pro patria mori. | mori
+la | Dulce et decorum est pro patria mori. | Dulce
+la | Si tacuisses, philosophus mansisses. | tacuisses
+la | Ubi caritas et amor, Deus ibi est. | Ubi
+la | Sursum corda. | Sursum
+la | Habemus ad Dominum. | Habemus
+la | Dignum et iustum est. | Dignum
+la | Pleni sunt caeli et terra gloria tua. | Pleni
+la | Domine, non sum dignus ut intres sub tectum meum. | intres
+la | Sed tantum dic verbo, et sanabitur anima mea. | sanabitur

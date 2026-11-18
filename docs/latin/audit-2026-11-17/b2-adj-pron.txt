@@ -1,0 +1,129 @@
+# Battery 2: adjectives, comparison, adverbs, pronouns. Sentences written by the auditor.
+la | Miles acer hostem vicit. | acer
+la | Acri proelio pugnaverunt. | Acri
+la | Omnia vincit amor. | Omnia
+la | Omnium civium salus. | Omnium
+la | Vir felix est. | felix
+la | Felicia tempora redeunt. | Felicia
+la | Vinum vetus bibit. | vetus
+la | Veterum poetarum libros legit. | Veterum
+la | Vetera carmina cantat. | Vetera
+la | Unius viri virtus. | Unius
+la | Soli Deo gloria. | Soli
+la | Totius orbis terrarum. | Totius
+la | Alii rident, alii flent. | Alii
+la | Aliud est dicere, aliud facere. | Aliud
+la | Alterius culpa non est. | Alterius
+la | Nulli nocet. | Nulli
+la | Uter vestrum venit? | Uter
+la | Neutrum verum est. | Neutrum
+la | Neuter consul Romae erat. | Neuter
+la | Utrique placet. | Utrique
+la | Hic liber melior est quam ille. | melior
+la | Melius est tacere. | Melius
+la | Optimus quisque hoc fecit. | Optimus
+la | Peior avis aetas. | Peior
+la | Pessima res est. | Pessima
+la | Maior pars militum periit. | Maior
+la | Maiora his videbis. | Maiora
+la | Maximus natu est. | Maximus
+la | Minor frater domi mansit. | Minor
+la | Minima de malis eligenda sunt. | Minima
+la | Plus vini bibit. | Plus
+la | Plures venerunt quam exspectavimus. | Plures
+la | Plurimi cives aderant. | Plurimi
+la | Pulcherrima puella est. | Pulcherrima
+la | Res facillima est. | facillima
+la | Simillimus patri est. | Simillimus
+la | Miserrimus omnium sum. | Miserrimus
+la | Fortiter pugnavit. | Fortiter
+la | Fortius pugnavit quam frater. | Fortius
+la | Fortissime omnium pugnavit. | Fortissime
+la | Celerius currit. | Celerius
+la | Bene dixisti. | Bene
+la | Male vivit. | Male
+la | Facile est hoc facere. | Facile
+la | Diutius manere non possum. | Diutius
+la | Saepissime Romam venit. | Saepissime
+la | Magis amat quam timet. | Magis
+la | Maxime omnium laudatur. | Maxime
+la | Pie Iesu Domine, dona eis requiem. | Pie
+la | Altissimus dedit vocem suam. | Altissimus
+la | Sanctissimum nomen eius. | Sanctissimum
+la | Magnificentior fuit quam frater. | Magnificentior
+la | Vir pauperrimus erat. | pauperrimus
+la | Veterrima urbs est. | Veterrima
+la | Iunior frater venit. | Iunior
+la | Extremum diem exspectat. | Extremum
+la | In infimo loco sedet. | infimo
+la | Summo in monte stat. | Summo
+# pronouns
+la | Ego sum via et veritas et vita. | Ego
+la | Tu es Petrus. | Tu
+la | Nos autem praedicamus Christum. | Nos
+la | Pax vobis. | vobis
+la | Vos estis sal terrae. | Vos
+la | Miserere mei, Deus. | mei
+la | Quis vestrum sine peccato est? | vestrum
+la | Memor nostri esto. | nostri
+la | Se ipsum amat. | Se
+la | Sibi nocet. | Sibi
+la | Inter se pugnant. | se
+la | Mecum venit. | Mecum
+la | Dominus tecum. | tecum
+la | Secum libros portat. | Secum
+la | Pax Domini sit semper vobiscum. | vobiscum
+la | Nobiscum Deus. | Nobiscum
+la | Amicus quocum ambulabam mortuus est. | quocum
+la | Quibuscum vivis? | Quibuscum
+la | Is vir bonus est. | Is
+la | Eius pater dives est. | Eius
+la | Ei librum dedi. | Ei
+la | Eorum domus magna est. | Eorum
+la | Eas vidi. | Eas
+la | Id non credo. | Id
+la | Huic viro pecuniam dedit. | Huic
+la | Huius rei causa. | Huius
+la | Haec dixit Dominus. | Haec
+la | Hi sunt qui venerunt. | Hi
+la | Hunc librum legi. | Hunc
+la | Illud verum est. | Illud
+la | Illius domus ardet. | Illius
+la | Illi dixerunt. | Illi
+la | Iste homo insanit. | Iste
+la | Ipse dixit. | Ipse
+la | Ipsius verba audivimus. | Ipsius
+la | Eadem verba dixit. | Eadem
+la | Eodem die venit. | Eodem
+la | Eiusdem generis sunt. | Eiusdem
+la | Vir qui venit amicus meus est. | qui
+la | Femina quam vidi pulchra est. | quam
+la | Puer cuius pater mortuus est flet. | cuius
+la | Vir cui librum dedi abiit. | cui
+la | Ii quibus credimus fideles sunt. | quibus
+la | Libri quorum auctor notus est. | quorum
+la | Verbum quod dixit verum est. | quod
+la | Quis venit? | Quis
+la | Quid facis? | Quid
+la | Cuius est hic liber? | Cuius
+la | Quem quaeritis? | Quem
+la | Aliquis venit. | Aliquis
+la | Aliquid novi audivi. | Aliquid
+la | Si quis venerit, dic mihi. | quis
+la | Homo quidam habuit duos filios. | quidam
+la | Quendam hominem vidi. | Quendam
+la | Quaedam mulier venit. | Quaedam
+la | Suum cuique. | cuique
+la | Optimus quisque moritur. | quisque
+la | Nec quisquam venit. | quisquam
+la | Quicumque vult venire, veniat. | Quicumque
+la | Quidquid id est, timeo Danaos. | Quidquid
+la | Quodcumque petieritis, fiet vobis. | Quodcumque
+la | Unusquisque in suo sensu abundet. | Unusquisque
+la | Ambo venerunt. | Ambo
+la | Nihil habeo. | Nihil
+la | Nil desperandum. | Nil
+la | Meus pater venit. | Meus
+la | Pater noster, qui es in caelis. | noster
+la | Suos amicos amat. | Suos
+la | Tua res agitur. | Tua

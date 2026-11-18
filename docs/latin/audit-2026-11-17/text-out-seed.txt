@@ -1,0 +1,15 @@
+
+== vulgate: 610 words; no reading 9 (1.5 %); unconfirmed name guess 1 (0.2 %); other unconfirmed guess 20 (3.3 %); confirmed reading 580 (95.1 %); of the confirmed: form line is a union ("X or Y") 181 (31.2 %), other readings listed 111 (19.1 %)
+no reading: inanis subsequetur debitoribus progenies inanes Quotquot facultates æmulatur inflatur
+name guess: Joannes
+other guess: pascuæ→pascua refectionis→refectio baculus→baculus impinguasti→impinguasti præclarus→praeclarus quotidianum→quotidianum tentationem→tentatio progenie→progenie unigeniti→unigeniti unigenitum→unigenitum cymbalum→cymbalum tinniens→tinniens prophetiam→prophetia mysteria→mysteria distribuero→distribuero benigna→benigna perperam→perpera ambitiosa→ambitiosa congaudet→congaudet excidit→excidit
+
+== classical: 299 words; no reading 4 (1.3 %); unconfirmed name guess 26 (8.7 %); other unconfirmed guess 38 (12.7 %); confirmed reading 231 (77.3 %); of the confirmed: form line is a union ("X or Y") 86 (37.2 %), other readings listed 68 (29.4 %)
+no reading: institutis mercatores continenter brevis
+name guess: Gallia Belgae Aquitani Celtae Galli Gallos Aquitanis Garumna Belgis Matrona Sequana Germanis Rhenum Catilina Palati Senatus Troiae Italiam Laviniaque Iunonis Latio Latinum Albanique Romae Lesbia
+other guess: incolunt→incolunt humanitate→humanitate commeant→commeant effeminandos→effeminandus important→important abutere→abutere eludet→eludet effrenata→effrenata iactabit→iactabit audacia→audacia nocturnum→nocturnum vigiliae→vigilia concursus→concursus munitissimus→munitissimus senatus→seno voltusque→voltusque constrictam→constricta coniurationem→coniuratio arbitraris→arbitraris consul→consul fato→fato profugus→profugus litora→litora iactatus→iacto saevae→saeva conderet→conderet moenia→moenia rumoresque→rumoresque severiorum→severius basia→basia dein→dein invidere→invidere basiorum→basius fortasse→fortasse excrucior→excrucior
+
+== own: 201 words; no reading 1 (0.5 %); unconfirmed name guess 5 (2.5 %); other unconfirmed guess 14 (7.0 %); confirmed reading 181 (90.0 %); of the confirmed: form line is a union ("X or Y") 44 (24.3 %), other readings listed 33 (18.2 %)
+no reading: rectores
+name guess: Mercator Graecia Roma Cena Marce
+other guess: forum→forum frigidus→frigidus foro→foro poma→poma nuper→nuper cenam→cena consedimus→consedimus fessus→fessus scholam→schola legatos→legatus hortatus→horto subveniant→subveniant basilica→basilica

@@ -1,0 +1,116 @@
+# Battery 7: grammar notes (constructions), fixed phrases, the role line. Sentences written by the auditor; a few are well-known tags quoted from memory.
+# Vulgate constructions
+la | Scio quia Deus bonus est. | quia
+la | Dixit quoniam ipse est Christus. | quoniam
+la | Credo quod Iesus est Filius Dei. | quod
+la | Dixit quia non novi hominem. | quia
+la | Dixit ad eum Iesus. | ad
+la | Dixit autem Dominus ad Abram. | ad
+la | Venit in testimonium. | in
+la | Et vidit et credidit. | Et
+la | Ecce ancilla Domini. | Ecce
+la | Coepit Iesus facere et docere. | Coepit
+la | Coepit Iesus facere et docere. | facere
+la | Et factum est, cum venisset, sanavit eum. | factum
+la | Respondens autem Iesus dixit. | Respondens
+la | Dixit ei: Sequere me. | Sequere
+la | Videns autem turbas ascendit in montem. | Videns
+la | Beati pauperes spiritu. | Beati
+la | Quis ex vobis arguet me de peccato? | ex
+la | Ait illi: Tu dicis. | illi
+la | Si diligitis me, mandata mea servate. | Si
+la | Nisi granum frumenti mortuum fuerit, ipsum solum manet. | Nisi
+la | Qui credit in me habet vitam aeternam. | Qui
+la | Amen amen dico vobis. | dico
+la | Per omnia saecula saeculorum. | saecula
+la | Deo gratias. | gratias
+la | Gloria in excelsis Deo. | excelsis
+la | Et cum spiritu tuo. | spiritu
+la | In nomine Patris et Filii et Spiritus Sancti. | nomine
+la | Miserere mei, Deus, secundum magnam misericordiam tuam. | secundum
+la | Non est qui faciat bonum. | faciat
+la | Benedictus Dominus Deus Israel, quia visitavit plebem suam. | quia
+la | Ne nos inducas in tentationem. | inducas
+la | Ne timeas, Maria. | timeas
+la | Nolite timere. | timere
+la | Oportet illum crescere, me autem minui. | crescere
+la | Vae vobis, scribae et Pharisaei! | Vae
+la | Utinam saperent et intellegerent! | Utinam
+# classical constructions
+la | His rebus cognitis, Caesar legatos misit. | cognitis
+la | Caesare duce, milites vicerunt. | duce
+la | Urbe capta, hostes fugerunt. | capta
+la | Sole oriente, profecti sunt. | oriente
+la | Cicerone consule, coniuratio facta est. | consule
+la | Me invito, hoc fecit. | invito
+la | Dicit Caesarem venisse. | venisse
+la | Putat se esse sapientem. | esse
+la | Scimus terram rotundam esse. | terram
+la | Negat se hoc fecisse. | Negat
+la | Caesar milites pontem facere iussit. | iussit
+la | Mihi eundum est. | eundum
+la | Pacem petendam esse dixit. | petendam
+la | Nunc est bibendum. | bibendum
+la | Legati pacis petendae causa venerunt. | petendae
+la | Cupidus urbis videndae erat. | videndae
+la | Cum haec dixisset, abiit. | dixisset
+la | Cum Caesar venit, omnes gaudent. | Cum
+la | Cum sis bonus, tamen erras. | sis
+la | Milites misit ut urbem caperent. | ut
+la | Tam fortis erat ut nemo eum vinceret. | ut
+la | Timebat ne hostes venirent. | ne
+la | Imperavit ne quis exiret. | ne
+la | Si hoc facias, erres. | facias
+la | Si hoc fecisses, erravisses. | fecisses
+la | Si venit, gaudeo. | Si
+la | Nemo est qui hoc nesciat. | nesciat
+la | Sunt qui dicant. | dicant
+la | Rogavit quis esset. | esset
+la | Nescio ubi sit. | sit
+la | Quaero num venerit. | num
+la | Dubito an verum sit. | an
+la | Non dubito quin venturus sit. | quin
+la | Dum spiro, spero. | Dum
+la | Postquam venit, dixit. | Postquam
+la | Priusquam gallus cantet, ter me negabis. | Priusquam
+la | Quamquam fessus erat, laborabat. | Quamquam
+la | Est mihi liber. | mihi
+la | Maior fratre est. | fratre
+la | Gladio hostem necavit. | Gladio
+la | Magna cum laude. | laude
+la | Tres dies mansit. | dies
+la | Multis annis post rediit. | annis
+la | Vir summa virtute. | virtute
+la | Homo magnae sapientiae. | sapientiae
+la | Amor Dei. | Dei
+la | Memor esto mei. | mei
+la | Utitur gladio. | gladio
+la | Parcit hostibus. | hostibus
+la | Persuasit mihi ut venirem. | Persuasit
+la | Docet pueros grammaticam. | grammaticam
+la | Opus est mihi auxilio. | Opus
+la | Quae cum ita sint, abeo. | Quae
+la | Veni, vidi, vici. | vici
+la | Alea iacta est. | iacta
+la | Cogito, ergo sum. | ergo
+la | Carpe diem. | Carpe
+la | Quod erat demonstrandum. | demonstrandum
+la | De gustibus non est disputandum. | disputandum
+la | Si vales, bene est; ego valeo. | valeo
+la | Res publica. | publica
+la | Senatus consultum. | consultum
+la | Quam ob rem venisti? | ob
+la | Pater familias. | familias
+la | Ius iurandum. | iurandum
+la | Orbis terrarum. | terrarum
+la | Tantum religio potuit suadere malorum. | malorum
+la | O tempora, o mores! | mores
+la | Odi profanum vulgus et arceo. | profanum
+la | Gaudeamus igitur, iuvenes dum sumus. | sumus
+la | Requiescat in pace. | Requiescat
+la | Habemus papam. | papam
+la | Urbi et orbi. | orbi
+la | Ad maiorem Dei gloriam. | maiorem
+la | Venite adoremus. | adoremus
+la | Te Deum laudamus. | Te
+la | Stabat Mater dolorosa iuxta crucem lacrimosa. | dolorosa

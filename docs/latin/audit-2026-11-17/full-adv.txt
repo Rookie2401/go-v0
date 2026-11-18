@@ -1,0 +1,2979 @@
+adhoc [ADV] whitaker		# thus far, till now, to this point
+alias [ADV] whitaker		# at/in another time/place; previously, subsequently
+alioqui [ADV] whitaker		# otherwise, in other/some respects
+alioquin [ADV] whitaker		# otherwise, in other/some respects
+aliter [ADV] whitaker		# otherwise, differently; in any other way
+amplius [ADV] whitaker	amplius{Cmp}	# greater number (than)
+contra [ADV] whitaker		# facing, face-to-face, in the eyes
+coque [ADV] whitaker		# likewise; no less; besides, as well, also/too
+cum [ADV] whitaker		# when, at the time/on each occasion/in the situation that
+denique [ADV] whitaker		# finally, in the end; and then
+ergo [ADV] whitaker		# therefore, so, then; well, then, now
+fere [ADV] whitaker		# almost; about, nearly; generally, in general
+haud [ADV] whitaker		# not, not at all, by no means
+interdum [ADV] whitaker		# sometimes, now and then
+interim [ADV] whitaker		# meanwhile, in the meantime; at the same time
+intro [ADV] whitaker		# within, in; to the inside, indoors
+itaque [ADV] whitaker		# and so, accordingly; thus, therefore, consequently
+item [ADV] whitaker		# likewise; besides, also, similarly
+maxime [ADV] whitaker	maxime{Sup}	# especially, chiefly; certainly
+maxume [ADV] whitaker	maxume{Sup}	# especially, chiefly; certainly
+minus [ADV] whitaker	minus{Cmp}	# less; not so well; not quite
+ne [ADV] whitaker		# not; (intro clause of purpose with subj verb)
+non [ADV] whitaker		# not, by no means, no
+post [ADV] whitaker		# behind, afterwards, after
+praeterea [ADV] whitaker		# besides, thereafter; in addition
+proinde [ADV] whitaker		# hence, so then
+protinus [ADV] whitaker		# straight on, forward; immediately
+quamvis [ADV] whitaker		# however much; although
+quatenus [ADV] whitaker		# how far/long?, to what point
+qui [ADV] whitaker		# how?; how so; in what way; by what/which means
+quin [ADV] whitaker		# why not, in fact
+quom [ADV] whitaker		# when, at the time/on each occasion/in the situation that
+quondam [ADV] whitaker		# formerly, once, at one time; some day, hereafter
+quotiens [ADV] whitaker		# how often; as often as
+remisse [ADV] whitaker	remisse{} remissius{Cmp} remississime{Sup}	# loosely; without vehemence/passion
+secus [ADV] whitaker		# otherwise; differently, in another way
+subito [ADV] whitaker		# suddenly, unexpectedly
+super [ADV] whitaker		# above, on top, over; upwards
+tamen [ADV] whitaker		# yet, nevertheless, still
+umquam [ADV] whitaker		# ever, at any time
+vix [ADV] whitaker		# hardly, scarcely, barely, only just
+abundanter [ADV] whitaker	abundanter{} abundantius{Cmp} abundantissime{Sup}	# abundantly; profusely, copiously
+abunde [ADV] whitaker		# abundantly; in profusion/abundance
+acerbe [ADV] whitaker	acerbe{} acerbius{Cmp} acerbissime{Sup}	# stridently, with harsh sound
+acriter [ADV] whitaker	acriter{} acrius{Cmp} acerrime{Sup}	# sharply, vigilantly, fiercely
+admodum [ADV] whitaker		# very, exceedingly, greatly, quite
+aegre [ADV] whitaker	aegre{} aegrius{Cmp} aegerrime{Sup}	# scarcely, with difficulty, painfully, hardly
+aequaliter [ADV] whitaker	aequaliter{} aequalitius{Cmp} aequalitissime{Sup}	# evenly, alike, uniformly
+alibi [ADV] whitaker		# elsewhere, in another place
+alio [ADV] whitaker		# elsewhere, another direction
+aliunde [ADV] whitaker		# from another person/place, from elsewhere/a different...
+ammodum [ADV] whitaker		# very, exceedingly, greatly, quite
+anguste [ADV] whitaker	anguste{} angustius{Cmp} angustissime{Sup}	# closely, in close quarters/narrow limits, cramped, crowded
+ante [ADV] whitaker		# before, previously, first, before this, earlier
+anteida [ADV] whitaker		# before, before this
+antidea [ADV] whitaker		# before, before this
+aperte [ADV] whitaker	aperte{} apertius{Cmp} apertissime{Sup}	# openly, publicly; manifestly
+apte [ADV] whitaker	apte{} aptius{Cmp} aptissime{Sup}	# closely, snugly, so to fit tightly/exactly
+arcte [ADV] whitaker	arcte{} arctius{Cmp} arctissime{Sup}	# closely/tightly (bound/filled/holding)
+arte [ADV] whitaker	arte{} artius{Cmp} artissime{Sup}	# closely/tightly (bound/filled/holding)
+aspere [ADV] whitaker	aspere{} asperius{Cmp} asperrime{Sup}	# roughly, harshly, severely, vehemently
+audaciter [ADV] whitaker	audaciter{} audacius{Cmp} audacissime{Sup}	# boldly, audaciously, confidently, proudly, fearlessly
+audacter [ADV] whitaker	audacter{} audacius{Cmp} audacissime{Sup}	# boldly, audaciously, confidently, proudly, fearlessly
+belle [ADV] whitaker	belle{} bellius{Cmp} bellissime{Sup}	# well, nicely
+brevi [ADV] whitaker		# in a short time; shortly, briefly
+breviter [ADV] whitaker	breviter{} brevitius{Cmp} brevitissime{Sup}	# shortly, briefly, in a nut shell
+callim [ADV] whitaker		# secretly, in secret, unknown to
+caste [ADV] whitaker	caste{} castius{Cmp} castissime{Sup}	# uprightly, w/integrity
+certatim [ADV] whitaker		# with rivalry, in competition
+certo [ADV] whitaker	certo{} certius{Cmp} certissime{Sup}	# certainly, definitely, really, for certain/a fact, truly
+ceu [ADV] whitaker		# as, in the same way/just as; for example, like
+circa [ADV] whitaker		# around, all around; round about
+clam [ADV] whitaker		# secretly, in secret, unknown to
+clare [ADV] whitaker	clare{} clarius{Cmp} clarissime{Sup}	# aloud; brightly, clearly; lucidly
+comminus [ADV] whitaker		# hand to hand (fight), in close combat/quarters
+commode [ADV] whitaker	commode{} commodius{Cmp} commodissime{Sup}	# conveniently/neatly/tidily; aptly/well
+constanter [ADV] whitaker	constanter{} constantius{Cmp} constantissime{Sup}	# firmly, immovably
+continuo [ADV] whitaker		# immediately, forthwith, at once, without delay/intermission
+coram [ADV] whitaker		# in person, face-to-face
+cotidie [ADV] whitaker		# daily, every day; day by day
+dehinc [ADV] whitaker		# hereafter, henceforth, from here/now on
+dein [ADV] whitaker		# then/next/afterward
+deinceps [ADV] whitaker		# in order/succession/turn
+demum [ADV] whitaker		# finally, at last; at length, in the end, eventually
+dudum [ADV] whitaker		# little while ago; formerly
+dumtaxat [ADV] whitaker		# to this extent, no more than
+eo [ADV] whitaker		# there, to/toward that place; in that direction
+equidem [ADV] whitaker		# truly, indeed; for my part
+exim [ADV] whitaker		# thence; after that, next in order, thereafter, then
+exin [ADV] whitaker		# thence; after that, next in order, thereafter, then
+exinde [ADV] whitaker		# thence; after that, next in order, thereafter, then
+facile [ADV] whitaker	facile{} facilius{Cmp} facillime{Sup}	# easily, readily, without difficulty
+ferme [ADV] whitaker		# nearly, almost, about; (with negatives) hardly ever
+fortasse [ADV] whitaker		# perhaps, possibly; it may be
+funditus [ADV] whitaker		# utterly/completely/without exception
+furtim [ADV] whitaker		# stealthily, secretly; imperceptibly
+hactenus [ADV] whitaker		# as far as this, to this place/point/time/extent, thus...
+illico [ADV] whitaker		# immediately; on the spot, in that very place
+immo [ADV] whitaker		# no indeed (contradiction)
+imprimis [ADV] whitaker		# in the first place, first, chiefly
+inprimis [ADV] whitaker		# in the first place, first, chiefly
+intus [ADV] whitaker		# within, on the inside, inside
+iamdudum [ADV] whitaker		# long ago/before/since; a long time ago
+iampridem [ADV] whitaker		# long ago/since; well before now/then
+leniter [ADV] whitaker	leniter{} lenius{Cmp} lenissime{Sup}	# gently/mildly/lightly/slightly
+molliter [ADV] whitaker	molliter{} mollius{Cmp} mollissime{Sup}	# calmly/quietly/softly/gently/smoothly/easily
+nequiquam [ADV] whitaker		# in vain
+ni [ADV] whitaker		# if ... not; unless
+nimirum [ADV] whitaker		# without doubt, evidently, forsooth
+noctu [ADV] whitaker		# by night, at night
+nondum [ADV] whitaker		# not yet
+nonne [ADV] whitaker		# not? (interog, expects the answer "Yes")
+num [ADV] whitaker		# if, whether
+nuper [ADV] whitaker	nuper{} nuperrime{Sup}	# recently, not long ago; in recent years/our own time
+nusquam [ADV] whitaker		# nowhere; on no occasion
+palam [ADV] whitaker		# openly, publicly; plainly
+partim [ADV] whitaker		# partly, for the most part; mostly
+paulisper [ADV] whitaker		# for (only) a short time/brief while
+paullo [ADV] whitaker		# by a little; by only a small amount
+paulo [ADV] whitaker		# by a little; by only a small amount
+penitus [ADV] whitaker		# inside; deep within; thoroughly
+postmodo [ADV] whitaker		# afterwards, presently, later
+potissimum [ADV] whitaker	potissimum{Sup}	# chiefly, principally, especially
+potissumum [ADV] whitaker	potissumum{Sup}	# chiefly, principally, especially
+prae [ADV] whitaker		# before, in front of; forward
+praesertim [ADV] whitaker		# especially; particularly
+praesto [ADV] whitaker		# ready, available, at hand, waiting, on the spot, at...
+profecto [ADV] whitaker		# surely, certainly
+prorsus [ADV] whitaker		# forwards, right onward
+qua [ADV] whitaker		# where; by which route
+quamdiu [ADV] whitaker		# for how long?; how long (ago)?
+quandiu [ADV] whitaker		# for how long?; how long (ago)?
+quapropter [ADV] whitaker		# wherefore, why, for what?
+quorsom [ADV] whitaker		# whither, in what direction
+quorsum [ADV] whitaker		# whither, in what direction
+quorsus [ADV] whitaker		# whither, in what direction
+quosum [ADV] whitaker		# whither, in what direction
+repente [ADV] whitaker		# suddenly, unexpectedly
+retro [ADV] whitaker		# backwards, back, to the rear
+rite [ADV] whitaker		# duly, according to religious usage, with due observance
+saltem [ADV] whitaker		# at least, anyhow, in all events
+segniter [ADV] whitaker	segniter{} segnitius{Cmp} segnitissime{Sup}	# half-heartedly; without spirit/energy, feebly
+sero [ADV] whitaker	sero{} serius{Cmp} serissime{Sup}	# late, at a late hour, tardily
+simpliciter [ADV] whitaker	simpliciter{} simplicius{Cmp} simplicissime{Sup}	# simply/just; w/out complexity
+solummodo [ADV] whitaker		# only/just/merely/barely/alone
+subtiliter [ADV] whitaker	subtiliter{} subtilius{Cmp} subtilissime{Sup}	# finely; delicately; acutely, exactly
+suptiliter [ADV] whitaker	suptiliter{} suptilius{Cmp} suptilissime{Sup}	# finely; delicately; acutely, exactly
+temere [ADV] whitaker		# rashly, blindly
+ubi [ADV] whitaker		# where; in what place; (time) when, whenever
+ubique [ADV] whitaker		# anywhere, everywhere (ubiquitous)
+ultro [ADV] whitaker		# besides, beyond; to/on the further/other side
+una [ADV] whitaker		# together, together with; at the same time
+usquam [ADV] whitaker		# anywhere, in any place; to any place
+utcumque [ADV] whitaker		# whatever, as far as
+utcunque [ADV] whitaker		# whatever, as far as
+utinam [ADV] whitaker		# if only, would that
+utquomque [ADV] whitaker		# whatever, as far as
+utrimque [ADV] whitaker		# on/from both sides/parts; at both ends
+utrum [ADV] whitaker		# whether; (introducing an indirect question)
+vel [ADV] whitaker		# even, actually; or even, in deed
+veluti [ADV] whitaker		# just as, as if
+abhinc [ADV] whitaker		# since, ago, in past; from this time, henceforth
+abiecte [ADV] whitaker	abiecte{} abiectius{Cmp} abiectissime{Sup}	# in spiritless manner; in humble circumstances, lowly
+absolute [ADV] whitaker	absolute{} absolutius{Cmp} absolutissime{Sup}	# completely, absolutely; perfectly
+abstinenter [ADV] whitaker		# abstinently, with self restraint (esp. financial dealings)
+absurde [ADV] whitaker		# as to be out of tune, discordantly
+abusque [ADV] whitaker		# all the way from; from/since the time of
+accommodate [ADV] whitaker	accommodate{} accommodatius{Cmp} accommodatissime{Sup}	# fittingly, in a suitable manner
+accurate [ADV] whitaker	accurate{} accuratius{Cmp} accuratissime{Sup}	# carefully, accurately, precisely, exactly
+acervatim [ADV] whitaker		# in heaps/piles; in large quantities/scale
+actutum [ADV] whitaker		# immediately, instantly; forthwith, without delay
+acute [ADV] whitaker	acute{} acutius{Cmp} acutissime{Sup}	# acutely, with intellectual penetration
+ad [ADV] whitaker		# about (with numerals)
+adaeque [ADV] whitaker		# equally, to same extent; so much
+adcommodate [ADV] whitaker	adcommodate{} adcommodatius{Cmp} adcommodatissime{Sup}	# fittingly, in a suitable manner
+adcurate [ADV] whitaker	adcurate{} adcuratius{Cmp} adcuratissime{Sup}	# carefully, accurately, precisely, exactly
+adfatim [ADV] whitaker		# sufficiently, amply, with complete satisfaction
+admiranter [ADV] whitaker		# admiringly, with admiration
+adparate [ADV] whitaker	adparate{} adparatius{Cmp} adparatissime{Sup}	# sumptuously
+adprime [ADV] whitaker	adprime{Sup}	# to the highest degree, to a high degree, extremely...
+adroganter [ADV] whitaker	adroganter{} adrogentius{Cmp} adrogentissime{Sup}	# insolently, arrogantly, haughtily
+adsidue [ADV] whitaker	adsidue{} assiduius{Cmp} adsiduissime{Sup}	# continually, constantly, regularly
+adstricte [ADV] whitaker	adstricte{} adstrictius{Cmp} adstrictissime{Sup}	# tightly (bound), firmly; strictly, by strict rules
+adtente [ADV] whitaker	adtente{} adtentius{Cmp} adtentissime{Sup}	# diligently, carefully, with concentration, with close...
+adumbratim [ADV] whitaker		# in shadowy form
+adusque [ADV] whitaker		# wholly, completely
+adversum [ADV] whitaker		# opposite, against, in opposite direction
+adversus [ADV] whitaker		# opposite, against, in opposite direction
+aequabiliter [ADV] whitaker	aequabiliter{} aequabilitius{Cmp} aequabilitissime{Sup}	# uniformly, equally
+aeternum [ADV] whitaker		# eternally, for ever, always; perpetually
+affatim [ADV] whitaker		# sufficiently, amply, with complete satisfaction
+alia [ADV] whitaker		# by another/different way/route
+alicubi [ADV] whitaker		# somewhere, anywhere; elsewhere
+alicunde [ADV] whitaker		# from some place/somewhere, from some source or other
+aliorsum [ADV] whitaker		# to another place/direction/person, elsewhere
+aliqua [ADV] whitaker		# somehow, in some way or another, by some means or other
+aliquamdiu [ADV] whitaker		# for some time, for a considerable time/distance...
+aliquandiu [ADV] whitaker		# for some time, for a considerable time/distance...
+aliquantisper [ADV] whitaker		# for some time, for a while
+aliquanto [ADV] whitaker		# somewhat, to/by some (considerable) extent/amount
+aliquantum [ADV] whitaker		# to some extent, in some degree, somewhat, slightly, a little
+aliquatenus [ADV] whitaker		# for a certain/restricted distance/time/degree/extent
+aliquid [ADV] whitaker		# to some degree/extent; somewhat
+aliquit [ADV] whitaker		# to some degree/extent; somewhat
+aliquo [ADV] whitaker		# to some place/person (or other)
+aliquotiens [ADV] whitaker		# number of times, several times
+aliquoties [ADV] whitaker		# number of times, several times
+aliubei [ADV] whitaker		# in (an)other place/places; in one place..in another
+aliusmodi [ADV] whitaker		# of another kind; in another way/different fashion
+alternis [ADV] whitaker		# alternately; one after the other in turn, by turns
+altum [ADV] whitaker		# deeply, deep; high, on high, from above
+amabiliter [ADV] whitaker	amabiliter{} amabilius{Cmp} amabilissime{Sup}	# lovingly; pleasantly; in a loving/friendly manner
+ambigue [ADV] whitaker		# ambiguously, equivocally
+ambitiose [ADV] whitaker	ambitiose{} ambitiosius{Cmp} ambitiosissime{Sup}	# ingratiatingly, earnestly
+amice [ADV] whitaker	amice{} amicius{Cmp} amicissime{Sup}	# in a friendly manner/spirit; with goodwill
+ammiranter [ADV] whitaker		# admiringly, with admiration
+ampliter [ADV] whitaker		# in liberal manner, generously, handsomely
+animose [ADV] whitaker	animose{} animosius{Cmp} animosissime{Sup}	# courageously, boldly, nobly, ardently, energetically
+antehac [ADV] whitaker		# before this time, up til now
+antiquitus [ADV] whitaker		# formerly, in former/ancient/olden times, from antiquity
+anxie [ADV] whitaker		# anxiously, meticulously, over-carefully
+apparate [ADV] whitaker	apparate{} apparatius{Cmp} apparatissime{Sup}	# sumptuously
+apprime [ADV] whitaker	apprime{Sup}	# to the highest degree, to a high degree, extremely...
+apsolute [ADV] whitaker	apsolute{} apsolutius{Cmp} apsolutissime{Sup}	# completely, absolutely; perfectly
+apstinenter [ADV] whitaker		# abstinently, with self restraint (esp. financial dealings)
+apsurde [ADV] whitaker		# as to be out of tune, discordantly
+ardenter [ADV] whitaker	ardenter{} ardentius{Cmp} ardentissime{Sup}	# with burning/parching effect
+argute [ADV] whitaker	argute{} argutius{Cmp} argutissime{Sup}	# shrewdly, cleverly, artfully
+arroganter [ADV] whitaker	arroganter{} arrogentius{Cmp} arrogentissime{Sup}	# insolently, arrogantly, haughtily
+articulatim [ADV] whitaker		# limb-by-limb, limb-from-limb
+artificiose [ADV] whitaker	artificiose{} artificiosius{Cmp} artificiosissime{Sup}	# skillfully; artistically
+assidue [ADV] whitaker	assidue{} assiduius{Cmp} assiduissime{Sup}	# continually, constantly, regularly
+astricte [ADV] whitaker	astricte{} astrictius{Cmp} astrictissime{Sup}	# tightly (bound), firmly; strictly, by strict rules
+astute [ADV] whitaker	astute{} astutius{Cmp} astutissime{Sup}	# cunningly, craftily, cleverly, astutely
+atrociter [ADV] whitaker	atrociter{} atrocius{Cmp} atrocissime{Sup}	# violently; bitterly, acrimoniously
+attamen [ADV] whitaker		# but yet, but however, nevertheless
+attente [ADV] whitaker	attente{} attentius{Cmp} attentissime{Sup}	# diligently, carefully, with concentration, with close...
+Attice [ADV] whitaker		# Attic, in Attic/Athenian manner
+audenter [ADV] whitaker	audenter{} audentius{Cmp} audentissime{Sup}	# boldly, fearlessly
+auspicato [ADV] whitaker		# after taking the auspices/auguries
+avare [ADV] whitaker	avare{} avarius{Cmp} avarissime{Sup}	# greedily, avariciously, rapaciously
+avide [ADV] whitaker	avide{} avidius{Cmp} avidissime{Sup}	# greedily, hungrily, avariciously
+barbare [ADV] whitaker		# in a foreign language
+benigne [ADV] whitaker	benigne{} benignius{Cmp} benignissime{Sup}	# kindly, benevolently, obligingly
+bifariam [ADV] whitaker		# in two parts/places/ways, on two sides
+bipartito [ADV] whitaker		# in two parts/divisions/ways/directions
+bipertito [ADV] whitaker		# in two parts/divisions/ways
+blande [ADV] whitaker	blande{} blandius{Cmp} blandissime{Sup}	# in coaxing/winning manner, charmingly, persuasively...
+caesim [ADV] whitaker		# by chopping/cutting; by hewing/slashing
+callide [ADV] whitaker	callide{} callidius{Cmp} callidissime{Sup}	# expertly, skillfully, cleverly
+care [ADV] whitaker	care{} carius{Cmp} carissime{Sup}	# dear, at high price; of high value
+carnaliter [ADV] whitaker		# carnally, sensually; not spiritually
+carptim [ADV] whitaker		# in separate/detached/disconnected parts/units
+casu [ADV] whitaker		# by chance/accident; accidentally
+casualiter [ADV] whitaker		# relating to/declined with cases
+catervatim [ADV] whitaker		# in troops/bands/large numbers
+caute [ADV] whitaker	caute{} cautius{Cmp} cautissime{Sup}	# cautiously; with security/precautions, without risk
+celeriter [ADV] whitaker	celeriter{} celerius{Cmp} celerrime{Sup}	# quickly/rapidly/speedily; hastily
+cetera [ADV] whitaker		# for the rest, otherwise; in other respects
+cetero [ADV] whitaker		# for the rest(new details/theme), otherwise
+ceteroquin [ADV] whitaker		# in other respects, otherwise
+ceterum [ADV] whitaker		# moreover; but yet; still, for the rest, but, besides
+circiter [ADV] whitaker		# nearly, not far from, almost, approximately, around, about
+circum [ADV] whitaker		# about, around; round about, near
+circumundique [ADV] whitaker		# round about on all sides; from everywhere around
+citra [ADV] whitaker		# on this/near side of, towards
+citro [ADV] whitaker		# to this side; on/by both sides/parties
+civiliter [ADV] whitaker	civiliter{} civilius{Cmp} civilissime{Sup}	# in civil sphere, between citizens
+clanculum [ADV] whitaker		# secretly, by stealth; sub rosa
+clementer [ADV] whitaker	clementer{} clementius{Cmp} clementissime{Sup}	# leniently, mercifully; mildly/softly
+comiter [ADV] whitaker		# courteously, affably, obligingly, graciously, kindly
+commodum [ADV] whitaker		# just, a very short time before
+comperte [ADV] whitaker	comperte{} compertius{Cmp} compertissime{Sup}	# on good authority, on reliable information/intelligence
+composite [ADV] whitaker	composite{} compositius{Cmp} compositissime{Sup}	# in orderly/skillful/well arranged/composed way
+concinne [ADV] whitaker	concinne{} concinnius{Cmp} concinnissime{Sup}	# neatly, prettily, daintily, beautifully
+concitate [ADV] whitaker	concitate{} concitatius{Cmp} concitatissime{Sup}	# rapidly/quickly/hurriedly
+concorditer [ADV] whitaker	concorditer{} concordius{Cmp} concordissime{Sup}	# harmoniously, amicably, in a concordant manner
+conctanter [ADV] whitaker	conctanter{} conctius{Cmp} conctissime{Sup}	# hesitantly, slowly, with delay/hesitation
+confidenter [ADV] whitaker	confidenter{} confidentius{Cmp} confidentissime{Sup}	# boldly, daringly, with assurance
+confuse [ADV] whitaker	confuse{} confusius{Cmp} confusissime{Sup}	# in a confused/disorderly/perplexed way, fumblingly
+coniuncte [ADV] whitaker	coniuncte{} coniunctius{Cmp} coniunctissime{Sup}	# jointly, at same time
+coniunctim [ADV] whitaker		# jointly, in common; together
+conposite [ADV] whitaker	conposite{} conpositius{Cmp} conpositissime{Sup}	# in orderly/skillful/well arranged/composed way
+conrupte [ADV] whitaker	conrupte{} conruptius{Cmp} conruptissime{Sup}	# incorrectly; perversely
+consequenter [ADV] whitaker		# consequently/as a result; appropriate/aptly
+consulto [ADV] whitaker		# purposely, deliberately, on purpose, by design
+contemptim [ADV] whitaker		# contemptuously, with contempt, scornfully
+contemtim [ADV] whitaker		# contemptuously, with contempt, scornfully
+continenter [ADV] whitaker		# unbroken/continuously/without pause, uninterruptedly
+contumaciter [ADV] whitaker	contumaciter{} contumacius{Cmp} contumacissime{Sup}	# stubbornly, obstinately; defiantly
+convenienter [ADV] whitaker		# suitably, consistently; comfortably
+copiose [ADV] whitaker	copiose{} copiosius{Cmp} copiosissime{Sup}	# eloquently/fully/at length
+corrupte [ADV] whitaker	corrupte{} corruptius{Cmp} corruptissime{Sup}	# incorrectly; perversely
+cottidie [ADV] whitaker		# daily, every day; day by day
+crasse [ADV] whitaker	crasse{} crassius{Cmp} crassissime{Sup}	# dimly/indistinctly, w/out detail
+crebo [ADV] whitaker	crebo{} crebrius{Cmp} creberrime{Sup}	# repeatedly, often, frequently, many times
+crudeliter [ADV] whitaker	crudeliter{} crudelius{Cmp} crudelissime{Sup}	# cruelly, savagely, relentlessly
+cuicuimodi [ADV] whitaker		# of what kind/sort/nature soever
+cuimodi [ADV] whitaker		# of what kind/sort/nature soever
+cuiuscuiusmodi [ADV] whitaker		# of what kind/sort/nature soever
+cuiusmodi [ADV] whitaker		# of what kind/sort/nature soever
+cummagis [ADV] whitaker		# more particularly
+cummaxime [ADV] whitaker		# at the/this/that very moment
+cumulate [ADV] whitaker	cumulate{} cumulatius{Cmp} cumulatissime{Sup}	# abundantly, copiously, liberally
+cunctanter [ADV] whitaker	cunctanter{} cunctius{Cmp} cunctissime{Sup}	# hesitantly, slowly, with delay/hesitation
+cupide [ADV] whitaker	cupide{} cupidius{Cmp} cupidissime{Sup}	# eagerly/zealously/passionately
+curiose [ADV] whitaker	curiose{} curiosius{Cmp} curiosissime{Sup}	# carefully/attentively, w/care
+decenter [ADV] whitaker	decenter{} decentius{Cmp} decentissime{Sup}	# appropriately/decently, with good taste
+decore [ADV] whitaker		# beautifully, in a pleasing manner
+definite [ADV] whitaker		# precisely, definitely, distinctly, clearly
+delicate [ADV] whitaker	delicate{} delicatius{Cmp} delicatissime{Sup}	# delicately/tenderly/gently; luxuriously
+demisse [ADV] whitaker	demisse{} demissius{Cmp} demississime{Sup}	# dejectedly, in a despondent manner
+dense [ADV] whitaker	dense{} densius{Cmp} densissime{Sup}	# closely, thickly, close together
+denuo [ADV] whitaker		# anew, over again, from a fresh beginning
+deorsus [ADV] whitaker		# down, downwards, beneath, below
+derepente [ADV] whitaker		# suddenly
+desursum [ADV] whitaker		# from above, from overhead; up above
+devote [ADV] whitaker	devote{} devotius{Cmp} devotissime{Sup}	# devotedly, faithfully; devoutly
+dextera [ADV] whitaker		# on the right; on the right-hand side (of)
+dextra [ADV] whitaker		# on the right; on the right-hand side (of)
+difficiliter [ADV] whitaker	difficiliter{} difficilius{Cmp} difficillime{Sup}	# with difficulty; reluctantly
+difficulter [ADV] whitaker		# with difficulty; reluctantly
+dulciter [ADV] whitaker	dulciter{} dulcius{Cmp} dulcissime{Sup}	# sweetly
+efficaciter [ADV] whitaker	efficaciter{} efficacius{Cmp} efficacissime{Sup}	# effectually; to good effect
+efficienter [ADV] whitaker		# effectively; so as to produce an effect
+egregie [ADV] whitaker		# excellently, admirably well
+elate [ADV] whitaker	elate{} elatius{Cmp} elatissime{Sup}	# haughtily, proudly; insolently
+eleganter [ADV] whitaker	eleganter{} elegantius{Cmp} elegantissime{Sup}	# elegantly, attractively
+enixe [ADV] whitaker	enixe{} enixius{Cmp} enixissime{Sup}	# earnestly, assiduously, with strenuous efforts
+evidenter [ADV] whitaker	evidenter{} evidentius{Cmp} evidentissime{Sup}	# clearly, obviously/manifestly/evidently
+extrinsecus [ADV] whitaker		# from without/outside; externally
+fataliter [ADV] whitaker		# by destiny; by decree of fate
+favorabiliter [ADV] whitaker	favorabiliter{} favorabilius{Cmp} favorabilissime{Sup}	# so as to win favor
+ferociter [ADV] whitaker	ferociter{} ferocius{Cmp} ferocissime{Sup}	# fiercely/ferociously/aggressively
+festinanter [ADV] whitaker	festinanter{} festinantius{Cmp} festinissime{Sup}	# promptly, speedily, quickly
+festinato [ADV] whitaker	festinato{} festinatius{Cmp} festinatissime{Sup}	# promptly, speedily, quickly
+festive [ADV] whitaker	festive{} festivius{Cmp} festivissime{Sup}	# festively, with feasting; delightfully, neatly
+foede [ADV] whitaker	foede{} foedius{Cmp} foedissime{Sup}	# foully, repulsively; horribly, hideously
+fortassis [ADV] whitaker		# perhaps, possibly; it may be
+fraudulenter [ADV] whitaker	fraudulenter{} fraudulentius{Cmp} fraudulentissime{Sup}	# fraudulently, deceitfully; dishonestly
+frugaliter [ADV] whitaker	frugaliter{} frugalius{Cmp} frugalissime{Sup}	# simply, frugally, economically
+gratanter [ADV] whitaker		# with joy; with rejoicing
+gratis [ADV] whitaker		# gratis, without payment, for nothing
+hau [ADV] whitaker		# not, not at all, by no means
+haudquaquam [ADV] whitaker		# by no means, in no way; not at all
+hauquaquam [ADV] whitaker		# by no means, in no way; not at all
+haut [ADV] whitaker		# not, not at all, by no means
+honorifice [ADV] whitaker	honorifice{} honorificentius{Cmp} honorificentissime{Sup}	# honorably; respectfully; with honor/respect
+hostiliter [ADV] whitaker		# in an unfriendly/hostile way, in the manner of an enemy
+huccine [ADV] whitaker		# so far; to this point
+hucusque [ADV] whitaker		# thus far, to this point, up to this time
+ilict [ADV] whitaker		# you may go, off with you (dismissal)
+impigre [ADV] whitaker		# actively, energetically,smartly
+imprudenter [ADV] whitaker	imprudenter{} imprudentius{Cmp} imprudentissime{Sup}	# rashly, unwisely; carelessly, unmindfully
+impune [ADV] whitaker	impune{} impunius{Cmp} impunissime{Sup}	# with impunity
+inaequaliter [ADV] whitaker		# unevenly, w/irregular outline/distribution
+incassum [ADV] whitaker		# in vain; uselessly; without aim/purpose/effect
+indigne [ADV] whitaker	indigne{} indignius{Cmp} indigissime{Sup}	# undeservedly; unjustly; unworthily
+infeliciter [ADV] whitaker	infeliciter{} infelicius{Cmp} infelicissime{Sup}	# unfortunately; without good luck
+inprudenter [ADV] whitaker	inprudenter{} inprudentius{Cmp} inprudentissime{Sup}	# rashly, unwisely; carelessly, unmindfully
+inpune [ADV] whitaker	inpune{} inpunius{Cmp} inpunissime{Sup}	# with impunity
+integre [ADV] whitaker	integre{} integrius{Cmp} integerrime{Sup}	# honestly, irreproachably
+itidem [ADV] whitaker		# in the same manner/way, just so
+iamiam [ADV] whitaker		# already; now
+iamiamque [ADV] whitaker		# just now, at this very moment
+iocunde [ADV] whitaker	iocunde{} iocundius{Cmp} iocundissime{Sup}	# pleasantly; delightfully
+iuctim [ADV] whitaker		# together, side-by-side; in succession, consecutively
+iucunde [ADV] whitaker	iucunde{} iucundius{Cmp} iucundissime{Sup}	# pleasantly; delightfully
+iugiter [ADV] whitaker		# continually, unendingly; in unbroken succession
+laete [ADV] whitaker	laete{} laetius{Cmp} laetissime{Sup}	# joyfully, gladly; luxuriantly/lushly/abundantly
+latenter [ADV] whitaker	latenter{} latentius{Cmp} latentissime{Sup}	# secretly, privately
+Latine [ADV] whitaker		# in Latin; correctly, in good Latin
+laute [ADV] whitaker	laute{} lautius{Cmp} lautissime{Sup}	# elegantly, sumptuously, fashionably, finely
+leviter [ADV] whitaker	leviter{} levius{Cmp} levissime{Sup}	# lightly/gently/softly/quietly/mildly/slightly
+libenter [ADV] whitaker	libenter{} libentius{Cmp} libentissime{Sup}	# willingly; gladly, with pleasure
+licenter [ADV] whitaker		# boldly/impudently; licentiously/loosely
+lubenter [ADV] whitaker	lubenter{} lubentius{Cmp} lubentissime{Sup}	# willingly; gladly, with pleasure
+magnifice [ADV] whitaker	magnifice{} magnificentius{Cmp} magnificentissime{Sup}	# splendidly, in fine/lordly manner/language
+magnufice [ADV] whitaker	magnufice{} magnuficentius{Cmp} magnuficentissime{Sup}	# splendidly, in fine/lordly manner/language
+manifesto [ADV] whitaker		# undeniably, red-handed, in the act
+manufesto [ADV] whitaker		# undeniably, red-handed, in the act
+mediocriter [ADV] whitaker	mediocriter{} mediocrius{Cmp} mediocrissime{Sup}	# to moderate/subdued extent/degree...
+minaciter [ADV] whitaker	minaciter{} minacius{Cmp} minacissime{Sup}	# menacingly; in a threatening manner
+minutatim [ADV] whitaker		# one bit at a time, bit by bit, little by little
+minute [ADV] whitaker	minute{} minutius{Cmp} minutissime{Sup}	# in small pieces; in miniature scale
+mobiliter [ADV] whitaker	mobiliter{} mobilius{Cmp} mobilissime{Sup}	# quickly, rapidly, actively
+naturaliter [ADV] whitaker		# naturally, normally; inherently, by nature
+necessario [ADV] whitaker		# unavoidably, without option
+neclegenter [ADV] whitaker	neclegenter{} neclegentius{Cmp} neclegentissime{Sup}	# heedlessly, neglectfully, carelessly
+neglegenter [ADV] whitaker	neglegenter{} neglegentius{Cmp} neglegentissime{Sup}	# heedlessly, neglectfully, carelessly
+negligenter [ADV] whitaker	negligenter{} negligentius{Cmp} negligentissime{Sup}	# heedlessly, neglectfully, carelessly
+nequando [ADV] whitaker		# lest, lest ever; never, not ever
+nunquid [ADV] whitaker		# is it possible, surely ... not
+oportune [ADV] whitaker	oportune{} oportunius{Cmp} oportunissime{Sup}	# suitably; advantageously
+opportune [ADV] whitaker	opportune{} opportunius{Cmp} opportunissime{Sup}	# suitably; advantageously
+optume [ADV] whitaker	optume{Sup}	# best; (SUPER of bene)
+pacienter [ADV] whitaker	pacienter{} pacientius{Cmp} pacientissime{Sup}	# patiently; with patience/toleration
+parumper [ADV] whitaker		# for a short/little while; for a moment
+patienter [ADV] whitaker	patienter{} patientius{Cmp} patientissime{Sup}	# patiently; with patience/toleration
+paulatim [ADV] whitaker		# little by little, by degrees, gradually
+paullisper [ADV] whitaker		# for (only) a short time/brief while
+paullulo [ADV] whitaker		# little/bit; to a small extent, somewhat
+paullulum [ADV] whitaker		# little; to small extent, somewhat
+paullum [ADV] whitaker		# little/bit; to a small extent, somewhat
+paululo [ADV] whitaker		# little/bit; to a small extent, somewhat
+paululum [ADV] whitaker		# little; to small extent, somewhat
+paulum [ADV] whitaker		# little/bit; to a small extent, somewhat
+pedetemptim [ADV] whitaker	pedetemptim{} pedetemptius{Cmp} pedetemptissime{Sup}	# step-by-step; feeling one's way
+pedetemtim [ADV] whitaker		# step-by-step; feeling one's way
+perseveranter [ADV] whitaker	perseveranter{} perseverantius{Cmp} perseverantissime{Sup}	# steadfastly, persistently; with continued action
+pertinaciter [ADV] whitaker		# tenaciously; obstinately, stubbornly, determinedly
+plurifariam [ADV] whitaker		# in many places, extensively; in many ways
+posthac [ADV] whitaker		# after this, in the future, hereafter, from now on
+primitus [ADV] whitaker		# at first; to begin with; for the first time
+principaliter [ADV] whitaker		# primarily/principally/in first place
+probabiliter [ADV] whitaker	probabiliter{} probabilius{Cmp} probabilissime{Sup}	# commendably, worthy of approval
+proin [ADV] whitaker		# hence, so then
+prolixe [ADV] whitaker	prolixe{} prolixius{Cmp} prolixissime{Sup}	# so as to extend a long way in space
+prosus [ADV] whitaker		# forwards, right on
+publicitus [ADV] whitaker		# at public expense
+quaad [ADV] whitaker		# how long?, to what point in time?
+quacumque [ADV] whitaker		# wherever; in whatever part/manner, however
+quacunque [ADV] whitaker		# wherever; in whatever part/manner, however
+quandocumque [ADV] whitaker		# whenever, at whatever time
+quandocunque [ADV] whitaker		# whenever, at whatever time
+quandoque [ADV] whitaker		# whenever, at whatever time
+quantumvis [ADV] whitaker		# to as great a degree as you like, as much/long as you like
+quantusvis [ADV] whitaker		# to as great a degree as you like, as much/long as you like
+quaqua [ADV] whitaker		# wherever; in every place/point at/through which
+quater [ADV] whitaker		# four times (number/degree); on four occasions
+quinimmo [ADV] whitaker		# indeed, in fact; but truly; but/and more/furthermore
+quoadusque [ADV] whitaker		# until that
+quocumque [ADV] whitaker		# wherever, to/in any place/quarter to which/whatever...
+quocunque [ADV] whitaker		# wherever, to/in any place/quarter to which/whatever...
+quoiquoimodi [ADV] whitaker		# of what kind/sort/nature soever
+quomodocumque [ADV] whitaker		# however, no matter what way; in whatever way
+quomodocunque [ADV] whitaker		# however, no matter what way; in whatever way
+quoquo [ADV] whitaker		# wherever, in whatever place/direction
+quoquomque [ADV] whitaker		# wherever, to/in any place/quarter to which/whatever...
+quotienscumque [ADV] whitaker		# whenever, every time that
+quotienscunque [ADV] whitaker		# whenever, every time that
+quotiescumque [ADV] whitaker		# whenever, every time that
+quotiescunque [ADV] whitaker		# whenever, every time that
+radicitus [ADV] whitaker		# by the roots, utterly, completely
+revera [ADV] whitaker		# in fact; in reality, actually
+saltim [ADV] whitaker		# at least, anyhow, in all events
+salubriter [ADV] whitaker	salubriter{} salubrius{Cmp} salubrissime{Sup}	# wholesomely, w/advantage to health
+sat [ADV] whitaker		# enough, adequately; sufficiently
+satius [ADV] whitaker	satius{Cmp}	# rather; preferably
+scienter [ADV] whitaker	scienter{} scientius{Cmp} scientissime{Sup}	# skillfully, expertly; consciously, knowingly
+seculariter [ADV] whitaker		# worldly, in a worldly fashion
+singillatim [ADV] whitaker		# one by one, singly, separately
+singulariter [ADV] whitaker		# separately/singly, one by one
+singulatim [ADV] whitaker		# one by one, singly, separately
+sobrie [ADV] whitaker		# soberly, temperately
+sollerter [ADV] whitaker	sollerter{} sollertius{Cmp} sollertissime{Sup}	# cleverly; skillfully; resourcefully
+specialiter [ADV] whitaker	specialiter{} specialius{Cmp} specialissime{Sup}	# specifically; individually; in particular
+subtum [ADV] whitaker		# below, underneath, in a lower position
+subtus [ADV] whitaker		# below, underneath, in a lower position
+supter [ADV] whitaker		# beneath (surface/covering); underneath, below
+tantisper [ADV] whitaker		# for such time (as); for so long (as)
+temperi [ADV] whitaker	temperi{} temperius{Cmp} temperissime{Sup}	# at right/better/best time, seasonably
+tempori [ADV] whitaker	tempori{} temporius{Cmp} temporissime{Sup}	# at right/better/best time, seasonably
+tenuiter [ADV] whitaker	tenuiter{} tenuitius{Cmp} tenuitissime{Sup}	# thinly/finely; delicately; subtly
+timide [ADV] whitaker	timide{} timidius{Cmp} timidissime{Sup}	# timidly, fearfully, apprehensively, nervously
+tolerabiter [ADV] whitaker	tolerabiter{} tolerabilius{Cmp} tolerabilissime{Sup}	# bearably, tolerably, patiently
+trepide [ADV] whitaker	trepide{} trepidius{Cmp} trepidissime{Sup}	# with trepidation/anxiety, in confusion/alarm/panic/fright
+uberte [ADV] whitaker		# abundantly; copiously
+undecumque [ADV] whitaker		# from/in whatever/every direction
+undiquesecus [ADV] whitaker		# from every side/direction/place/part/source
+utiliter [ADV] whitaker	utiliter{} utilius{Cmp} utilissime{Sup}	# usefully/profitably/to advantage
+utpote [ADV] whitaker		# as, in as much as; namely; inasmuch as
+utrimquesecus [ADV] whitaker		# on both sides
+utrinque [ADV] whitaker		# on/from both sides/parts; at both ends
+utrobique [ADV] whitaker		# in both places; on both parts/sides/cases/instances
+utroque [ADV] whitaker		# to both places; in both directions
+utrubique [ADV] whitaker		# in both places; on both parts/sides/cases/instances
+valenter [ADV] whitaker	valenter{} valentius{Cmp} valentissime{Sup}	# strongly/forcefully/powerfully/vigorously/sturdily
+venuste [ADV] whitaker	venuste{} venustius{Cmp} venustissime{Sup}	# charmingly, attractively, gracefully
+veraciter [ADV] whitaker		# truly; in truth, truthfully; really
+versum [ADV] whitaker		# toward, in the direction of; in specified direction
+versus [ADV] whitaker		# toward, in the direction of; in specified direction
+violenter [ADV] whitaker	violenter{} violentius{Cmp} violentissime{Sup}	# violently, w/unreasonable/destructive force
+viriliter [ADV] whitaker	viriliter{} virilius{Cmp} virilissime{Sup}	# with masculine/manly vigor
+vixdum [ADV] whitaker		# scarcely yet, only just
+vorsum [ADV] whitaker		# toward, in the direction of; in specified direction
+vorsus [ADV] whitaker		# toward, in the direction of; in specified direction
+adsiduo [ADV] whitaker		# continually, constantly, regularly
+advorsum [ADV] whitaker		# opposite, against, in opposite direction
+advorsus [ADV] whitaker		# opposite, against, in opposite direction
+aliovorsum [ADV] whitaker		# to another place/direction/person, elsewhere
+aliquam [ADV] whitaker		# largely, to a large extent, a lot of
+altrimsecus [ADV] whitaker		# on the other side
+altrinsecus [ADV] whitaker		# on the other side
+amanter [ADV] whitaker	amanter{} amantius{Cmp} amantissime{Sup}	# lovingly, affectionately; with love/affection
+amoene [ADV] whitaker	amoene{} amoenius{Cmp} amoenissime{Sup}	# in a pleasant/attractive manner, agreeably
+antidhac [ADV] whitaker		# before this time, up til now
+assiduo [ADV] whitaker		# continually, constantly, regularly
+auguste [ADV] whitaker	auguste{} augustius{Cmp} augustissime{Sup}	# reverently, solemnly; with dignity
+benevole [ADV] whitaker		# in a spirit of good will, in a friendly manner
+benivole [ADV] whitaker		# in a spirit of good will, in a friendly manner
+candide [ADV] whitaker		# in white clothes; brightly/clearly/spotlessly
+celere [ADV] whitaker		# quickly/rapidly/speedily; hastily
+centuriatim [ADV] whitaker		# by centuries
+ceteroqui [ADV] whitaker		# in other respects, otherwise
+circumcirca [ADV] whitaker		# round about, on all sides; round about the body
+circumspecte [ADV] whitaker	circumspecte{} circumspectius{Cmp} circumspectissime{Sup}	# warily/cautiously/circumspectly
+cominus [ADV] whitaker		# hand to hand (fight), in close combat/quarters
+compte [ADV] whitaker	compte{} comptius{Cmp} comptissime{Sup}	# neatly, elegantly, in a well arrange manner
+condigne [ADV] whitaker		# in an appropriate manner, fittingly, worthily
+consideranter [ADV] whitaker	consideranter{} considerantius{Cmp} considerantissime{Sup}	# carefully, with consideration
+considerate [ADV] whitaker	considerate{} consideratius{Cmp} consideratissime{Sup}	# carefully, cautiously, considerately
+consulte [ADV] whitaker	consulte{} consultius{Cmp} consultissime{Sup}	# prudently, with due deliberation
+contente [ADV] whitaker	contente{} contentius{Cmp} contentissime{Sup}	# with great exertion, vehemently, vigorously
+contumeliose [ADV] whitaker	contumeliose{} contumeliosius{Cmp} contumeliosissime{Sup}	# in an insulting manner; abusively, insolently (L+S)
+cotidiano [ADV] whitaker		# every day, daily
+cottidiano [ADV] whitaker		# every day, daily
+crebre [ADV] whitaker		# thickly, densely; frequently
+crebro [ADV] whitaker	crebro{} crebrius{Cmp} creberrime{Sup}	# frequently/repeatedly/often, one after another, time...
+criminose [ADV] whitaker	criminose{} criminosius{Cmp} criminissime{Sup}	# reproachfully, abusively, slanderously
+culte [ADV] whitaker	culte{} cultius{Cmp} cultissime{Sup}	# elegantly, smartly, stylishly
+cumprimis [ADV] whitaker		# chiefly, pre-eminently, in the highest degree
+curiatim [ADV] whitaker		# by curia (the 30 divisions of the Roman people)
+curriculo [ADV] whitaker		# on the double, at the run; quickly
+cursim [ADV] whitaker		# swiftly/rapidly
+dataim [ADV] whitaker		# by giving in turn/reciprocally/hand-to-hand/from one to...
+deforis [ADV] whitaker		# outside, from outside; out of doors
+deformiter [ADV] whitaker		# hideously; shamefully; unbecomingly
+deintus [ADV] whitaker		# from within
+dementer [ADV] whitaker	dementer{} dementius{Cmp} dementissime{Sup}	# madly, crazily; foolishly (L+S)
+derecto [ADV] whitaker		# straight, in straight line
+destricte [ADV] whitaker	destricte{} destrictius{Cmp} destrictissime{Sup}	# severely, strictly; unreservedly
+desubito [ADV] whitaker		# suddenly
+dextrorsum [ADV] whitaker		# towards the right; on/to the right-hand side
+dextrorsus [ADV] whitaker		# towards the right; on/to the right-hand side
+dextroversum [ADV] whitaker		# towards the right; on/to the right-hand side
+dextroversus [ADV] whitaker		# towards the right; on/to the right-hand side
+dextrovorsum [ADV] whitaker		# towards the right; on/to the right-hand side
+dextrovorsus [ADV] whitaker		# towards the right; on/to the right-hand side
+dietim [ADV] whitaker		# daily; day-by-day
+dilucide [ADV] whitaker	dilucide{} dilucidius{Cmp} dilucidissime{Sup}	# plainly, clearly, distinctly, evidently, lucidly
+directo [ADV] whitaker		# straight, in straight line
+diserte [ADV] whitaker		# eloquently; expressly; distinctly, clearly
+dissimulanter [ADV] whitaker		# dissemblingly
+dius [ADV] whitaker		# by day; (usu. used w/noctu)
+divinitus [ADV] whitaker		# from heaven, by a god, by divine influence/inspiration
+dolenter [ADV] whitaker	dolenter{} dolentius{Cmp} dolentissime{Sup}	# with sorrow; with pain, painfully (L+S)
+dolose [ADV] whitaker		# craftily, cunningly; deceitfully
+dubitanter [ADV] whitaker		# doubtingly; hesitatingly; with doubt/hesitation
+eadem [ADV] whitaker		# by the same route; at the same time
+ecflictim [ADV] whitaker		# passionately, desperately, to distraction
+ecquid [ADV] whitaker		# at all? (interog.)
+efflictim [ADV] whitaker		# passionately, desperately, to distraction
+effuse [ADV] whitaker	effuse{} effusius{Cmp} effusissime{Sup}	# over a wide area, extensively
+eminus [ADV] whitaker		# at/from a distance/long range/afar
+eodem [ADV] whitaker		# to the same place/purpose
+etiamnum [ADV] whitaker		# even now, still, yet
+etiamnunc [ADV] whitaker		# even now, still, yet
+excellenter [ADV] whitaker		# excellently
+exide [ADV] whitaker		# from then on
+expresse [ADV] whitaker	expresse{} expressius{Cmp} expressissime{Sup}	# expressly, for express purpose
+extemplo [ADV] whitaker		# immediately, forthwith
+extra [ADV] whitaker		# outside
+facunde [ADV] whitaker	facunde{} facundius{Cmp} facundissime{Sup}	# eloquently; fluently
+fallaciter [ADV] whitaker	fallaciter{} fallacius{Cmp} fallicissime{Sup}	# deceptively/deceitfully, with intent to deceive
+familiariter [ADV] whitaker		# on friendly terms
+feliciter [ADV] whitaker		# happily
+finaliter [ADV] whitaker		# finally; purposefully
+firmiter [ADV] whitaker		# really, strongly, firmly; steadfastly
+flebile [ADV] whitaker		# lamentably, dolefully, tearfully
+forinsecus [ADV] whitaker		# on the outside
+forsan [ADV] whitaker		# perhaps
+forsit [ADV] whitaker		# perhaps
+fortuito [ADV] whitaker		# accidentally, by chance, fortuitously
+fortuitu [ADV] whitaker		# accidentally, by chance, fortuitously
+fortunate [ADV] whitaker		# fortunately
+frequenter [ADV] whitaker		# often, frequently; in great numbers
+frustatim [ADV] whitaker		# into pieces
+fundius [ADV] whitaker		# from the very bottom; utterly, totally
+gelide [ADV] whitaker		# sluggishly, without enthusiasm
+generaliter [ADV] whitaker		# generally, in general
+generatim [ADV] whitaker		# by tribes/kinds; generally
+generose [ADV] whitaker	generose{} generosius{Cmp} generosissime{Sup}	# nobly; with dignity
+gradatim [ADV] whitaker		# step by step, by degrees
+grate [ADV] whitaker	grate{} gratius{Cmp} gratissime{Sup}	# with pleasure/delight; agreeably, pleasantly
+gratuito [ADV] whitaker		# gratis, without pay, for naught, gratuitously
+gravate [ADV] whitaker	gravate{} gravatius{Cmp} gravatissime{Sup}	# grudgingly; reluctantly, unwillingly
+gregatim [ADV] whitaker		# in flocks
+hac [ADV] whitaker		# here, by this side, this way
+here [ADV] whitaker		# yesterday
+hocusque [ADV] whitaker		# to this degree/pitch
+honeste [ADV] whitaker		# honorably; decently
+honorate [ADV] whitaker	honorate{} honoratius{Cmp} honoratissime{Sup}	# honorably, with honor; in honorable fashion
+hospitaliter [ADV] whitaker		# in a hospitable manner
+hue [ADV] whitaker		# hither, to the person speaking/indicated
+humaniter [ADV] whitaker		# reasonably, moderately; in manner becoming a man
+humanitus [ADV] whitaker		# kindly, reasonably; moderately
+humi [ADV] whitaker		# on/to the ground
+ibidem [ADV] whitaker		# in that very place; at that very instant
+ideirco [ADV] whitaker		# therefore, for that reason
+identidem [ADV] whitaker		# repeatedly; again and again, continually
+idonee [ADV] whitaker		# suitably; satisfactorily, in a satisfactory manner
+ilico [ADV] whitaker		# on the spot; immediately
+illac [ADV] whitaker		# that way
+illim [ADV] whitaker		# thence, from there; from that place/source/quarter
+illinc [ADV] whitaker		# there, in that place, on that side
+illo [ADV] whitaker		# there, thither, to that place/point
+illoc [ADV] whitaker		# there, thither, to that place/point/topic
+immensum [ADV] whitaker		# to an enormous extent/degree
+immerito [ADV] whitaker		# unjustly; without cause
+imo [ADV] whitaker		# no indeed (contradiction)
+impense [ADV] whitaker	impense{} impensius{Cmp} impensissime{Sup}	# without stint
+implicite [ADV] whitaker		# intricately
+impudenter [ADV] whitaker		# shamelessly, impudently
+impunite [ADV] whitaker		# with impunity; without punishment/restraint
+impure [ADV] whitaker	impure{} impurius{Cmp} impurissime{Sup}	# basely, shamefully, vilely, infamously
+inartificiale [ADV] whitaker		# inartificially; not by rule
+inclementer [ADV] whitaker		# harshly, severely
+incommode [ADV] whitaker		# disastrously, unfortunately
+incomposite [ADV] whitaker		# in a clumsy/disorganized manner
+inconstanter [ADV] whitaker	inconstanter{} inconstantius{Cmp} inconstantissime{Sup}	# irregularly, inconsistently, capriciously, irresolutely
+inconsulte [ADV] whitaker	inconsulte{} inconsultius{Cmp} inconsultissime{Sup}	# rashly, ill-advisedly, incautiously
+inculte [ADV] whitaker	inculte{} incultius{Cmp} incultissime{Sup}	# roughly, uncouthly, coarsely
+incuriose [ADV] whitaker	incuriose{} incuriosius{Cmp} incuriousissime{Sup}	# carelessly, negligently, indifferently
+indidem [ADV] whitaker		# from the same place, source or origin
+indies [ADV] whitaker		# from day to day; (= in dies)
+indignanter [ADV] whitaker		# indignantly
+indiscrete [ADV] whitaker		# indiscriminately, unwisely, indiscreetly
+indulgenter [ADV] whitaker	indulgenter{} indulgentius{Cmp} indulgentissime{Sup}	# indulgently; leniently; graciously
+infabre [ADV] whitaker		# without art, crudely, unskillfully, rudely
+inferne [ADV] whitaker		# underneath, below, on the lower side
+infeste [ADV] whitaker	infeste{} infestius{Cmp} infestissime{Sup}	# dangerously, savagely; in a hostile manner
+infra [ADV] whitaker		# below, on the under side, underneath
+ingeniose [ADV] whitaker	ingeniose{} ingeniosius{Cmp} ingeniosissime{Sup}	# cleverly, ingeniously
+ingrate [ADV] whitaker		# unpleasantly, without pleasure/delight/gratitude
+ingratiis [ADV] whitaker		# against wishes (of); unwillingly
+ingratis [ADV] whitaker		# against the wishes (of ); unwillingly
+inhoneste [ADV] whitaker		# shamefully; dishonorably
+inhumane [ADV] whitaker	inhumane{} inhumanius{Cmp} inhumanissime{Sup}	# rudely, discourteously; heartlessly, unfeelingly
+inibi [ADV] whitaker		# in that place/number/activity/connection/respect
+iniussu [ADV] whitaker		# without (the) orders (of ) (w/GEN)
+inmensum [ADV] whitaker		# to an enormous extent/degree
+inpudenter [ADV] whitaker		# shamelessly, impudently
+inridicule [ADV] whitaker		# without wit; unwittingly; unamusingly
+insane [ADV] whitaker	insane{} insanius{Cmp} insanissime{Sup}	# madly, insanely, wildly; extravagantly
+insaniter [ADV] whitaker		# madly, insanely, wildly; extravagantly
+insanum [ADV] whitaker		# immensely, enormously, exceedingly
+insolenter [ADV] whitaker	insolenter{} insolentius{Cmp} insolentissime{Sup}	# haughtily, arrogantly, insolently
+instanter [ADV] whitaker	instanter{} instantius{Cmp} instantissime{Sup}	# vehemently; violently; urgently, insistently
+intemperanter [ADV] whitaker	intemperanter{} intemperantius{Cmp} intemperantissime{Sup}	# without self-control/restraint
+intemperate [ADV] whitaker	intemperate{} intemperatius{Cmp} intemperatissime{Sup}	# immoderately, intemperately
+intente [ADV] whitaker	intente{} intentius{Cmp} intentissime{Sup}	# attentively, with concentrated attention, intently
+interdiu [ADV] whitaker		# in the daytime, by day
+intime [ADV] whitaker		# intimately, cordially, deeply, profoundly
+intra [ADV] whitaker	intra{} interius{Cmp} intime{Sup}	# within, inside, on the inside
+introrsum [ADV] whitaker		# to within, inwards internally
+introrsus [ADV] whitaker		# within, inside, to within, inwards, inwardly, internally
+invidiose [ADV] whitaker	invidiose{} invidiosius{Cmp} invidiosissime{Sup}	# so as to arouse hatred/odium/envy/hostility
+iracunde [ADV] whitaker	iracunde{} iracundius{Cmp} iracundissime{Sup}	# angrily, irately; irritably; passionately
+irridicule [ADV] whitaker		# without wit; unwittingly; unamusingly
+istac [ADV] whitaker		# there, that way; in that way, in such a way
+isti [ADV] whitaker		# there, in that place; where you are
+istic [ADV] whitaker		# there, over there, in that place
+istimodi [ADV] whitaker		# such, of that kind/type/manner
+istinc [ADV] whitaker		# from (over) there, thence; from where you are
+istiusmodi [ADV] whitaker		# such, of that kind/type/manner
+isto [ADV] whitaker		# thither, to you, to where you are
+istoc [ADV] whitaker		# thither, that way, yonder
+istuc [ADV] whitaker		# thither, to you, to where you are
+iactanter [ADV] whitaker		# arrogantly
+iocose [ADV] whitaker	iocose{} iocosius{Cmp} iocosissime{Sup}	# jokingly, jocosely
+iure [ADV] whitaker		# by right, rightly, with justice
+iuvenaliter [ADV] whitaker		# youthfully, like a youth
+iuxta [ADV] whitaker		# nearly
+iuxtim [ADV] whitaker		# nearby, in close proximity, close together, side-by-side
+laboriose [ADV] whitaker		# laboriously
+languide [ADV] whitaker	languide{} languidius{Cmp} languidissime{Sup}	# faintly, feebly; slowly, spiritlessly
+large [ADV] whitaker		# exceedingly
+largiter [ADV] whitaker		# in abundance, plentifully, liberally, much
+late [ADV] whitaker		# widely, far and wide
+laxe [ADV] whitaker	laxe{} laxius{Cmp} laxissime{Sup}	# loosely, amply; without restraint
+lente [ADV] whitaker		# slowly
+lepide [ADV] whitaker		# charmingly delightfully; wittily
+liberaliter [ADV] whitaker		# graciously, courteously; liberally
+libere [ADV] whitaker		# freely; frankly; shamelessly
+litterate [ADV] whitaker	litterate{} litteratius{Cmp} litteratissime{Sup}	# literally, to the letter; in plain language
+madide [ADV] whitaker		# so as to be dripping/sodden/drenched/thoroughly wet
+manipulatim [ADV] whitaker		# in handfuls; in companies
+mature [ADV] whitaker		# quickly; at the right time; in time
+medullitus [ADV] whitaker		# inwardly, from depths of heart/mind
+membratim [ADV] whitaker		# limb by limb
+merito [ADV] whitaker		# deservedly; rightly
+milies [ADV] whitaker		# thousand times; innumerable times
+militariter [ADV] whitaker		# according to military practice/discipline
+minutim [ADV] whitaker		# bit by bit; into small pieces
+miraculose [ADV] whitaker		# miraculously
+mire [ADV] whitaker		# uncommonly, marvelously; in an amazing manner
+misere [ADV] whitaker		# wretchedly, desperately
+modulate [ADV] whitaker	modulate{} modulatius{Cmp} modulatissime{Sup}	# melodiously, in a musical manner
+moleste [ADV] whitaker	moleste{} molestius{Cmp} molestissime{Sup}	# annoyingly
+mordicus [ADV] whitaker		# by biting, with the teeth; tenaciously
+multifariam [ADV] whitaker		# in many places
+naviter [ADV] whitaker		# diligently; wholly
+nec [ADV] whitaker		# nor; and not, not, neither, not even
+necnon [ADV] whitaker		# nor; and not, not, neither, not even
+necubi [ADV] whitaker		# lest anywhere/at any place; lest on any occasion
+necunde [ADV] whitaker		# lest from anywhere
+nequicquam [ADV] whitaker		# in vain
+nequis [ADV] whitaker		# lest any one
+nequiter [ADV] whitaker		# badly; wickedly
+neutro [ADV] whitaker		# to neither side
+nihilominus [ADV] whitaker		# never/none the less, notwithstanding, just the same
+nimio [ADV] whitaker		# by a very great degree, far
+nimium [ADV] whitaker		# too, too much
+nominatim [ADV] whitaker		# by name
+nomine [ADV] whitaker		# in name only, nominally (ABL S of nomen)
+nonnihil [ADV] whitaker		# in some measure
+nonnumquam [ADV] whitaker		# sometimes
+nonnunquam [ADV] whitaker		# sometimes
+nudiustertius [ADV] whitaker		# day before yesterday
+numero [ADV] whitaker		# quickly, rapidly; prematurely, too soon
+numerose [ADV] whitaker		# plentifully, in/with large numbers
+nunciam [ADV] whitaker		# here and now; now at last
+nunquam [ADV] whitaker		# at no time, never; not in any circumstances
+obscaene [ADV] whitaker	obscaene{} obscaenius{Cmp} obscaenissime{Sup}	# obscenely, so as to involve obscenity (of language)...
+obscene [ADV] whitaker	obscene{} obscenius{Cmp} obscenissime{Sup}	# obscenely, so as to involve obscenity (of language)...
+obsequenter [ADV] whitaker		# compliantly; obediently; with deference
+obstinate [ADV] whitaker		# resolutely, obstinately
+occulte [ADV] whitaker		# secretly
+odiose [ADV] whitaker		# distastefully, repugnantly
+omnimodo [ADV] whitaker		# always, in all circumstances
+oppido [ADV] whitaker		# exceedingly, utterly, altogether
+opscaene [ADV] whitaker	opscaene{} opscaenius{Cmp} opscaenissime{Sup}	# obscenely, so as to involve obscenity (of language)...
+opscene [ADV] whitaker	opscene{} opscenius{Cmp} opscenissime{Sup}	# obscenely, so as to involve obscenity (of language)...
+opulente [ADV] whitaker	opulente{} opulentius{Cmp} opulentissime{Sup}	# richly, sumptuously, opulently
+oratorie [ADV] whitaker		# oratorically; in the manner of an orator
+ordinate [ADV] whitaker	ordinate{} ordinatius{Cmp} ordinatissime{Sup}	# in order/regular formation
+ordinatim [ADV] whitaker		# in order/succession/sequence/good order
+ornate [ADV] whitaker		# richly, ornately
+parce [ADV] whitaker	parce{} parcius{Cmp} parcissime{Sup}	# sparingly, moderately
+partite [ADV] whitaker		# with proper division of subject into its parts
+passim [ADV] whitaker		# here and there; everywhere
+peraeque [ADV] whitaker		# equally
+perbene [ADV] whitaker		# very well
+peregre [ADV] whitaker		# to/from abroad
+perfacile [ADV] whitaker		# very easily; readily
+perinde [ADV] whitaker		# in the same way/just as, equally
+peropus [ADV] whitaker		# very necessary
+perperam [ADV] whitaker		# wrongly, incorrectly
+perpetuo [ADV] whitaker		# without interruption; constantly
+perquam [ADV] whitaker		# extremely
+persaepe [ADV] whitaker		# very often
+perspicue [ADV] whitaker		# clearly, evidently
+pertito [ADV] whitaker		# in X divisions (only with numerical prefix), in X...
+pessum [ADV] whitaker		# to the lowest part, to the bottom
+petulanter [ADV] whitaker		# rudely, insolently; petulantly
+physice [ADV] whitaker		# from the scientific/natural science point of view
+placide [ADV] whitaker	placide{} placidius{Cmp} placidissime{Sup}	# gently, calmly, gradually, peacefully, quietly
+plane [ADV] whitaker		# clearly, plainly, distinctly
+plas [ADV] whitaker		# more
+plerumque [ADV] whitaker		# generally, commonly; mostly, for the most part
+plicato [ADV] whitaker		# in an X-fold manner (only with numerical prefix), X...
+pliciter [ADV] whitaker		# in X ways (only with numerical prefix), in X...
+pluraliter [ADV] whitaker		# in the bulk; in the plural (Latham)
+pondo [ADV] whitaker		# in or by weight
+populariter [ADV] whitaker		# in everyday language
+posterius [ADV] whitaker	posterius{Cmp}	# later, at a later day; by and by
+postilla [ADV] whitaker		# afterwards, after that time
+postmodum [ADV] whitaker		# after a while, later, a little later
+postremo [ADV] whitaker		# at last, finally
+postremum [ADV] whitaker		# for the last time, last of all
+postridie [ADV] whitaker		# on the following day
+potius [ADV] whitaker		# rather, more, preferably
+pr [ADV] whitaker		# day before (pridie), abb. pr
+praeceps [ADV] whitaker		# headlong; into danger
+praecipue [ADV] whitaker		# especially; chiefly
+praeterquam [ADV] whitaker		# except, besides
+pridem [ADV] whitaker		# some time ago, previously
+pridie [ADV] whitaker		# day before
+pridile [ADV] whitaker		# day before
+privatim [ADV] whitaker		# in private; as a private citizen
+probe [ADV] whitaker		# properly, rightly
+procere [ADV] whitaker	procere{} procerius{Cmp} procerissime{Sup}	# far, to a great distance; extensively (COMP)
+prompte [ADV] whitaker	prompte{} promptius{Cmp} promptissime{Sup}	# so as to be ready at hand
+propalam [ADV] whitaker		# openly
+prope [ADV] whitaker	prope{} propius{Cmp} proxime{Sup}	# near, nearly; close by; almost
+propediem [ADV] whitaker		# before long, shortly
+propemodo [ADV] whitaker		# just about, pretty well
+propemodum [ADV] whitaker		# just about, pretty well
+properanter [ADV] whitaker	properanter{} properantius{Cmp} properantissime{Sup}	# hurriedly, hastily; in a hurried manner
+prorsum [ADV] whitaker		# forwards, right onward
+publice [ADV] whitaker		# publicly; at public expense
+publico [ADV] whitaker		# public, publicly (in publico)
+pudenter [ADV] whitaker	pudenter{} pudentius{Cmp} pudentissime{Sup}	# bashfully, modestly, shyly, chastely, honorably
+pueriliter [ADV] whitaker		# childishly, foolishly
+pulcre [ADV] whitaker		# aptly; finely; nicely
+punctim [ADV] whitaker		# with the point
+qualibet [ADV] whitaker		# where you will, anywhere, by any road you like
+qualubet [ADV] whitaker		# where you will, anywhere, by any road you like
+quamlibet [ADV] whitaker		# however, however much
+quantocius [ADV] whitaker		# the_sooner/quicker the_better
+quantopere [ADV] whitaker		# how greatly; in what degree
+quantum [ADV] whitaker		# so much as; how much; how far
+quantumcumque [ADV] whitaker		# as far as; to whatever degree
+quianam [ADV] whitaker		# why ever?
+quidnam [ADV] whitaker		# what? how?
+quidni [ADV] whitaker		# why not?
+quiete [ADV] whitaker	quiete{} quietius{Cmp} quietissime{Sup}	# quietly, peacefully, calmly, serenely
+quintum [ADV] whitaker		# for the fifth time
+quo [ADV] whitaker		# where, to what place; to what purpose
+quod [ADV] whitaker		# with respect to which
+quolibet [ADV] whitaker		# whithersoever you please
+quonam [ADV] whitaker		# to whatever place
+quopiam [ADV] whitaker		# somewhere
+quoquam [ADV] whitaker		# to any place, anywhere
+quoquomodo [ADV] whitaker		# in whatever way; however (quoquo modo)
+quoquoversum [ADV] whitaker		# in every direction; in every way
+quoquoversus [ADV] whitaker		# in every direction; in every way
+quotannis [ADV] whitaker		# every year, yearly
+quoties [ADV] whitaker		# how often; as often as
+quousque [ADV] whitaker		# until what time? till when? how long?
+rabiose [ADV] whitaker		# madly; in a frenzied manner
+raptim [ADV] whitaker		# hurriedly, suddenly
+rare [ADV] whitaker	rare{} rarius{Cmp} rarissime{Sup}	# sparsely, thinly; at wide intervals, loosely
+raro [ADV] whitaker		# seldom, rare
+recta [ADV] whitaker		# directly, straight
+religiose [ADV] whitaker		# carefully; reverently; conscientiously
+remote [ADV] whitaker		# far off; at a distance; remotely
+retrorsum [ADV] whitaker		# back, backwards; in reverse order
+retrorsus [ADV] whitaker		# back, backwards; in reverse order
+retroversus [ADV] whitaker		# back, backwards; in reverse order
+reverenter [ADV] whitaker	reverenter{} reverentius{Cmp} reverentissime{Sup}	# reverently, with religious awe
+ridicule [ADV] whitaker		# amusingly, w/humor
+rursum [ADV] whitaker		# turned back, backward
+rustice [ADV] whitaker	rustice{} rusticius{Cmp} rusticissime{Sup}	# in the manner of a rustic/countrified style
+Sabine [ADV] whitaker		# Sabine, in Sabine language
+saepenumero [ADV] whitaker		# repeatedly; on many occasions
+secius [ADV] whitaker		# otherwise, none the less
+secreto [ADV] whitaker		# separately; secretly, in private
+sedulo [ADV] whitaker		# carefully
+sensim [ADV] whitaker		# slowly, gradually, cautiously
+seorsum [ADV] whitaker		# separately, apart from the rest
+seorsus [ADV] whitaker		# separately, apart from the rest
+separatim [ADV] whitaker		# apart, separately
+septies [ADV] whitaker		# seven times
+sequius [ADV] whitaker		# otherwise; contrary to what is expected/desired
+serio [ADV] whitaker		# seriously, in earnest
+serius [ADV] whitaker		# later, too late
+setius [ADV] whitaker		# less, worse
+sicine [ADV] whitaker		# so? thus?
+sicubi [ADV] whitaker		# if anywhere, if at any place
+sicunde [ADV] whitaker		# if from any place or source
+sicuti [ADV] whitaker		# as, just as; like; in same way
+sigillatim [ADV] whitaker		# one by one, singly, separately
+significanter [ADV] whitaker	significanter{} significantius{Cmp} significantissime{Sup}	# significantly, meaningfully
+simulac [ADV] whitaker		# as soon as, the moment that
+simulatque [ADV] whitaker		# as soon as, the moment that
+sinisbrorsus [ADV] whitaker		# to the left
+sinisbrosus [ADV] whitaker		# to the left
+sinistrorsum [ADV] whitaker		# to the left
+sinistrorsus [ADV] whitaker		# to the left
+sinistrosum [ADV] whitaker		# to the left
+siquando [ADV] whitaker		# if when; at what time; if/when some day
+siremps [ADV] whitaker		# like, the same
+sirempse [ADV] whitaker		# like, the same
+socorditer [ADV] whitaker		# negligently
+sodes [ADV] whitaker		# if you do not mind, please; (si audes)
+solemniter [ADV] whitaker		# solemnly; with due ritual/ceremony
+sollemniter [ADV] whitaker		# solemnly; with due ritual/ceremony
+sordide [ADV] whitaker	sordide{} sordidius{Cmp} sordidissime{Sup}	# meanly, basely; vulgarly, unbecomingly, poorly
+spontanee [ADV] whitaker		# willingly, of one's own will
+sponte [ADV] whitaker		# of one's own will; voluntarily
+stolide [ADV] whitaker		# stupidly, obtusely; brutishly
+studiose [ADV] whitaker	studiose{} studiosius{Cmp} studiosissime{Sup}	# eagerly, zealously, studiously, ardently, earnestly...
+subinde [ADV] whitaker		# immediately after, thereupon
+sublime [ADV] whitaker		# high into the air, on high, up aloft
+summatim [ADV] whitaker		# summarily, briefly
+summe [ADV] whitaker		# in the highest degree; intensely
+superne [ADV] whitaker		# at or to a higher level, above
+suppliciter [ADV] whitaker		# suppliantly, in an attitude of humble entreaty
+supra [ADV] whitaker		# on top; more; above; before, formerly
+sursum [ADV] whitaker		# up, on high
+susque [ADV] whitaker		# up and
+susum [ADV] whitaker		# up, on high
+tamdiu [ADV] whitaker		# so long, for so long a time; so very long
+tantopere [ADV] whitaker		# so much, so hard
+tantummodo [ADV] whitaker		# only, merely
+tantundem [ADV] whitaker		# just as much
+ter [ADV] whitaker		# three times; on three occasions
+totaliter [ADV] whitaker		# altogether, totally, wholly, completely, entirely
+tractim [ADV] whitaker		# in a long-drawn-out manner
+tributim [ADV] whitaker		# by tribes
+trifariam [ADV] whitaker		# in three ways, into three parts
+tripertito [ADV] whitaker		# in three parts
+triste [ADV] whitaker		# sadly, sorrowfully; harshly, severely
+turmatim [ADV] whitaker		# by squadrons, by troops
+turpe [ADV] whitaker	turpe{} turpius{Cmp} turpissime{Sup}	# repulsively, disgracefully, shamelessly
+turpiter [ADV] whitaker		# repulsively, disgracefully, shamelessly
+tute [ADV] whitaker		# without risk/danger, safely, securely
+tuto [ADV] whitaker	tuto{} tutius{Cmp} tutissime{Sup}	# without risk/danger, safely, securely
+ubertim [ADV] whitaker		# abundantly; copiously (weeping)
+ubicumque [ADV] whitaker		# wherever, in whatever place
+ubinam [ADV] whitaker		# where in the world?
+ubiquaque [ADV] whitaker		# everywhere
+ubivis [ADV] whitaker		# anywhere you like, no matter where
+unice [ADV] whitaker		# to a singular degree; especially
+uniter [ADV] whitaker		# so as to form a singular entity
+universaliter [ADV] whitaker		# universally/generally/collectively, all together/as to...
+unquam [ADV] whitaker		# at any time, ever; at some time
+uspiam [ADV] whitaker		# anywhere, somewhere
+usquequaque [ADV] whitaker		# in every conceivable situation
+utputa [ADV] whitaker		# as for example; namely
+vage [ADV] whitaker		# so as to move in different directions over a wide area
+verniliter [ADV] whitaker		# obsequiously, fawningly
+verum [ADV] whitaker		# yes; in truth; certainly; truly, to be sure
+vesperi [ADV] whitaker		# in the evening
+vetuste [ADV] whitaker		# in accordance with primitive practice/long...
+vicatim [ADV] whitaker		# by (urban) districts, street by street
+vicies [ADV] whitaker		# twenty times
+vicissim [ADV] whitaker		# in turn, again
+vigilanter [ADV] whitaker	vigilanter{} vigilantius{Cmp} vigilantissime{Sup}	# vigilantly, alertly
+viritim [ADV] whitaker		# man by man; individually
+virtualiter [ADV] whitaker		# virtually
+virtuose [ADV] whitaker		# virtuously, manfully
+vitaliter [ADV] whitaker		# so as to endow with life
+volgo [ADV] whitaker		# generally, universally, everywhere
+volup [ADV] whitaker		# with pleasure; pleasurably
+volupe [ADV] whitaker		# with pleasure; pleasurably
+vulgo [ADV] whitaker		# generally, usually; universally
+zzz [ADV] whitaker	zzz{} deterius{Cmp} deterrime{Sup}	# worse, less; unfavorably; in less desirable manner
+abdicative [ADV] whitaker		# negatively
+abinde [ADV] whitaker		# from that source, thence
+abinvicem [ADV] whitaker		# mutually; (usually as two words)
+abscise [ADV] whitaker		# abruptly, brusquely, curtly
+absconse [ADV] whitaker		# secretly
+absone [ADV] whitaker		# harshly, discordantly
+abusive [ADV] whitaker		# loosely, catachresisly, by loose/improper use of...
+accomodate [ADV] whitaker	accomodate{} accomodatius{Cmp} accomodatissime{Sup}	# fittingly, in a suitable manner
+accumulate [ADV] whitaker	accumulate{} accumulatius{Cmp} accumulatissime{Sup}	# copiously, abundantly; superabuntly
+accusatorie [ADV] whitaker		# accusingly; in the manner of a prosecutor/accuser
+achariter [ADV] whitaker		# unpleasantly, disagreeably
+adaequate [ADV] whitaker		# equally, to same extent; likewise
+adamussim [ADV] whitaker		# exactly/precisely; accurately, with precision
+adcumulate [ADV] whitaker	adcumulate{} adcumulatius{Cmp} adcumulatissime{Sup}	# copiously, abundantly; superabundantly
+adfabiliter [ADV] whitaker	adfabiliter{} adfabilitius{Cmp} adfabilitissime{Sup}	# conversationally, in informal/friendly discourse
+adfabre [ADV] whitaker		# skillfully, ingeniously, artistically
+adfectato [ADV] whitaker		# studiously, zealously
+adfecte [ADV] whitaker		# deeply, with (strong) affection
+adfectiose [ADV] whitaker		# affectionately
+adfectuose [ADV] whitaker		# affectionately, kindly
+adfirmanter [ADV] whitaker		# certainly, assuredly, with assurance
+adfirmate [ADV] whitaker		# with definite affirmation/solemn assertion, positively...
+adfluente [ADV] whitaker	adfluente{} adfluentius{Cmp} adfluentissime{Sup}	# richly, copiously, abundantly, extravagantly, opulently
+adfluenter [ADV] whitaker	adfluenter{} adfluentius{Cmp} adfluentissime{Sup}	# abundantly, copiously; luxuriously, extravagantly
+adinvicem [ADV] whitaker		# in turn, by turns, on after the other, alternately
+admirabiliter [ADV] whitaker		# admirably, astonishingly, in a wonderful/wondrous manner
+adoperte [ADV] whitaker		# covertly, in a dark/mysterious manner
+adpetenter [ADV] whitaker		# greedily, avidly
+adprobe [ADV] whitaker		# excellently
+adquo [ADV] whitaker		# how far, as far as, as much as
+adseveranter [ADV] whitaker		# earnestly, emphatically
+adseverate [ADV] whitaker		# earnestly, emphatically
+adsimilanter [ADV] whitaker		# similarly, analogically
+adsimulanter [ADV] whitaker		# similarly, analogically
+adubi [ADV] whitaker		# and when, but when, when
+adulater [ADV] whitaker		# flatteringly, fawningly, ingratiatingly
+adulatorie [ADV] whitaker		# falteringly, fawningly, ingratiatingly
+adverbialiter [ADV] whitaker		# adverbially, in the manner of an adverb
+aequidistanter [ADV] whitaker		# equidistantly; in the same way
+aequiliter [ADV] whitaker		# equally, evenly, uniformly
+aequiter [ADV] whitaker		# in equal proportions, evenly, fairly
+aeternaliter [ADV] whitaker		# forever
+aeterno [ADV] whitaker		# for ever, always; perpetually
+affabiliter [ADV] whitaker	affabiliter{} affabilitius{Cmp} affabilitissime{Sup}	# conversationally, in informal/friendly discourse
+affabre [ADV] whitaker		# skillfully, ingeniously, artistically
+affectato [ADV] whitaker		# studiously, zealously
+affecte [ADV] whitaker		# deeply, with (strong) affection
+affectiose [ADV] whitaker		# affectionately
+affectuose [ADV] whitaker		# affectionately, kindly
+affirmanter [ADV] whitaker		# certainly, assuredly, with assurance
+affirmate [ADV] whitaker		# with definite affirmation/solemn assertion, positively...
+affluente [ADV] whitaker	affluente{} affluentius{Cmp} affluentissime{Sup}	# richly, copiously, abundantly, extravagantly, opulently
+affluenter [ADV] whitaker	affluenter{} affluentius{Cmp} affluentissime{Sup}	# abundantly, copiously; luxuriously, extravagantly
+agiliter [ADV] whitaker	agiliter{} agilitius{Cmp} agilitissime{Sup}	# nimbly, swiftly, with agility
+agminatim [ADV] whitaker		# in hosts/hordes/crowds; in troops/trains
+alacriter [ADV] whitaker		# eagerly, briskly
+aliorsus [ADV] whitaker		# to another place/direction/person, elsewhere
+aliovorsus [ADV] whitaker		# to another place/direction/person, elsewhere
+aliquantorsum [ADV] whitaker		# somewhat toward (place)
+aliquantulum [ADV] whitaker		# to a little/small amount/bit/extent
+aliqui [ADV] whitaker		# in some way/extent
+aliquomodo [ADV] whitaker		# in some manner, somehow
+aliquotfariam [ADV] whitaker		# in several places
+aliubi [ADV] whitaker		# elsewhere, in another place
+aliuta [ADV] whitaker		# in another way/manner, otherwise
+alteras [ADV] whitaker		# at another time; at one time ... at another
+alterius [ADV] whitaker		# of one another
+alterutrum [ADV] whitaker		# one to another
+altiuscule [ADV] whitaker		# at fairly high level, rather high
+amatorie [ADV] whitaker		# in a loving manner
+ambifariam [ADV] whitaker		# in a way placing opponent in dilemma/proving his...
+amiciter [ADV] whitaker		# in a friendly manner; kindly, amicably
+ammirabiliter [ADV] whitaker		# admirably, astonishingly, in a wonderful/wondrous manner
+ammodo [ADV] whitaker		# henceforth, from this time forward
+amodo [ADV] whitaker		# henceforth, from this time forward
+Anglice [ADV] whitaker		# in/into English
+angulatim [ADV] whitaker		# from corner to corner, in every nook and cranny
+aniliter [ADV] whitaker		# in the manner of an old woman
+antegerio [ADV] whitaker		# greatly, very
+antigerio [ADV] whitaker		# greatly, very; vigorously, strongly, energetically
+antiphone [ADV] whitaker		# antiphonally; (of verse sung in response by choir)
+appetenter [ADV] whitaker		# greedily, avidly
+approbe [ADV] whitaker		# excellently
+apscise [ADV] whitaker		# abruptly, brusquely, curtly
+apscondite [ADV] whitaker		# abstrusely; profoundly; secretly
+apsconse [ADV] whitaker		# secretly
+apsone [ADV] whitaker		# harshly, discordantly
+aquate [ADV] whitaker	aquate{} aquatius{Cmp} aquatissime{Sup}	# with water, by use of water
+arabice [ADV] whitaker		# in Arabic fashion
+arcano [ADV] whitaker	arcano{} arcanius{Cmp} arcanissime{Sup}	# secretly, in confidence
+arcuatim [ADV] whitaker		# in the form of a bow/arch
+aspernanter [ADV] whitaker	aspernanter{} aspernantius{Cmp} aspernantissime{Sup}	# with contempt, contemptuously
+asseveranter [ADV] whitaker		# earnestly, emphatically
+asseverate [ADV] whitaker		# earnestly, emphatically
+assimilanter [ADV] whitaker		# similarly, analogically
+assimulanter [ADV] whitaker		# similarly, analogically
+assulatim [ADV] whitaker		# into splinters
+atamussim [ADV] whitaker		# according to a ruler/level, exactly, accurately
+athletice [ADV] whitaker		# athletically, like an athlete
+augurato [ADV] whitaker		# after due taking of the auguries
+avariter [ADV] whitaker		# greedily, avariciously, rapaciously
+aventer [ADV] whitaker		# eagerly, earnestly, anxiously
+balbe [ADV] whitaker		# inarticulately; obscurely
+barbarice [ADV] whitaker		# barbarously, uncouthly, rudely
+barbaricum [ADV] whitaker		# barbarously, uncouthly, rudely
+basilice [ADV] whitaker		# royally, in a princely fashion/a magnificent manner
+bellule [ADV] whitaker		# prettily, nicely, finely
+blanditer [ADV] whitaker		# in coaxing/winning manner, charmingly, persuasively...
+brutaliter [ADV] whitaker		# brutally; brutishly; in manner of a beast
+caelitus [ADV] whitaker		# from heaven; heavenly; from Emperor (L+S)
+calide [ADV] whitaker		# in hot haste. in heat of the moment
+canonice [ADV] whitaker		# canonically, according to Church discipline
+capitulatim [ADV] whitaker		# by headings; summarily
+captiose [ADV] whitaker		# in a manner to score over a person/take him in/deceive him
+castellatim [ADV] whitaker		# at intervals (in manner of strongpoints), in separate...
+cate [ADV] whitaker		# well, sagaciously, wisely, intelligently
+catholice [ADV] whitaker		# universally
+cautim [ADV] whitaker		# cautiously, warily; prudently, with security
+cautione [ADV] whitaker		# cautiously, warily; prudently, with caution/security
+cauto [ADV] whitaker		# cautiously; with security/precautions, without risk
+celebriter [ADV] whitaker		# solemnly; ceremonially
+certim [ADV] whitaker		# surely, certainly, without doubt, really
+cessim [ADV] whitaker		# as to give way/lose ground; bending/turning in
+Christiane [ADV] whitaker		# Christian, in Christian manner
+circumcise [ADV] whitaker		# concisely; briefly
+circumscripte [ADV] whitaker		# concisely, succinctly; summarily
+citate [ADV] whitaker	citate{} citatius{Cmp} citatissime{Sup}	# hurriedly; speedily, quickly, rapidly
+clandestino [ADV] whitaker		# secretly, clandestinely
+claritus [ADV] whitaker		# clearly, distinctly
+coacte [ADV] whitaker	coacte{} coactius{Cmp} coactissime{Sup}	# briefly/concisely/shortly; exactly/accurately
+coelitus [ADV] whitaker		# from heaven; heavenly; from the Emperor (L+S)
+cogitate [ADV] whitaker		# carefully, with thought/reflection
+cognoscibiliter [ADV] whitaker		# recognizably; discernibly
+cohaerenter [ADV] whitaker	cohaerenter{} cohaerentius{Cmp} cohaerentissime{Sup}	# systematically; consistently, compatibly
+cohibiliter [ADV] whitaker	cohibiliter{} cohibilius{Cmp} cohibilissime{Sup}	# concisely; tersely
+collective [ADV] whitaker		# collectively
+colligate [ADV] whitaker		# connectedly, jointly
+collineate [ADV] whitaker		# skillfully, artistically; in a straight/direct line
+comice [ADV] whitaker		# in a style suited to comedy; in manner of comedy
+commodo [ADV] whitaker		# suitably; seasonably; just, this very minute (L+S)
+commodule [ADV] whitaker		# fairly suitably, aptly
+commodulum [ADV] whitaker		# fairly suitably, aptly
+comoedice [ADV] whitaker		# in a manner appropriate to comedy
+compendiose [ADV] whitaker	compendiose{} compendiosius{Cmp} compendiosissime{Sup}	# briefly, shortly, compendiously
+competenter [ADV] whitaker	competenter{} competentius{Cmp} competentissime{Sup}	# suitably, appositely; properly, becomingly
+compluriens [ADV] whitaker		# several/many times, a good number of times
+composito [ADV] whitaker		# by prearrangement; concertedly
+compresse [ADV] whitaker	compresse{} compressius{Cmp} compressissime{Sup}	# briefly, succinctly, in a compressed manner
+comte [ADV] whitaker	comte{} comtius{Cmp} comtissime{Sup}	# neatly, elegantly, in a well arrange manner
+concise [ADV] whitaker		# in detail; concisely, briefly (L+S)
+concludenter [ADV] whitaker		# consequently, by/in consequence
+condicionaliter [ADV] whitaker		# conditionally, in a conditional manner
+conditionaliter [ADV] whitaker		# conditionally, in a conditional manner
+conditione [ADV] whitaker		# conditionally
+confertim [ADV] whitaker		# in a compact body/bunch/formation
+congrue [ADV] whitaker		# suitably, aptly; agreeably, harmoniously
+congruenter [ADV] whitaker	congruenter{} congruentius{Cmp} congruentissime{Sup}	# agreeably; in a corresponding manner
+conligate [ADV] whitaker		# connectedly, jointly
+conlineate [ADV] whitaker		# in a straight/direct line; skillfully, artistically
+conpendiose [ADV] whitaker	conpendiose{} conpendiosius{Cmp} conpendiosissime{Sup}	# briefly, shortly, compendiously
+conpetenter [ADV] whitaker	conpetenter{} conpetentius{Cmp} conpetentissime{Sup}	# suitably, appositely; properly, becomingly
+conpluriens [ADV] whitaker		# several/many times, a good number of times
+conposito [ADV] whitaker		# by prearrangement; concertedly
+conpresse [ADV] whitaker	conpresse{} compressius{Cmp} compressissime{Sup}	# briefly, succinctly, in a compressed manner
+conquisite [ADV] whitaker		# carefully, painstakingly; with great pains (L+S)
+conrepte [ADV] whitaker	conrepte{} conreptius{Cmp} conreptissime{Sup}	# shortly; with a short vowel or syllable
+consignate [ADV] whitaker	consignate{} consignatius{Cmp} consignatissime{Sup}	# aptly; expressively
+constrictive [ADV] whitaker		# astringently
+contempte [ADV] whitaker	contempte{} contemptius{Cmp} contemptissime{Sup}	# with great/greater/greatest contempt
+contemte [ADV] whitaker	contemte{} contemtius{Cmp} contemtissime{Sup}	# with great/greater/greatest contempt
+contexte [ADV] whitaker		# in close combination; in a connected/coherent manner
+contextim [ADV] whitaker		# in a continuous/uninterrupted/connected manner
+continue [ADV] whitaker		# continuously; without interruption
+contorte [ADV] whitaker	contorte{} contortius{Cmp} contortissime{Sup}	# in an involved/contorted fashion
+conversibiliter [ADV] whitaker		# changeably
+conversom [ADV] whitaker		# conversely
+convertibiliter [ADV] whitaker		# changeably
+copulate [ADV] whitaker		# as compound word, connectedly
+cordate [ADV] whitaker		# sensibly, shrewdly; with intelligence
+corporaliter [ADV] whitaker		# in respect of material things
+correpte [ADV] whitaker	correpte{} correptius{Cmp} correptissime{Sup}	# shortly; with a short vowel or syllable
+cossim [ADV] whitaker		# squatting on the haunches in a crouching posture
+cotidio [ADV] whitaker		# daily, every day; day by day
+cottidio [ADV] whitaker		# daily, every day; day by day
+crastino [ADV] whitaker		# tomorrow
+crebriter [ADV] whitaker		# repeatedly; frequently
+credibiliter [ADV] whitaker		# credibly; plausibly; so as to be believed (OED)
+crudele [ADV] whitaker	crudele{} crudelius{Cmp} crudelissime{Sup}	# cruelly, harshly, severely, unmercifully, savagely, fiercely
+cruente [ADV] whitaker	cruente{} cruentius{Cmp} cruentissime{Sup}	# savagely, bloodthirstily; cruelly, severely (L+S)
+cubi [ADV] whitaker		# at any place; on any occasion
+cuiusdammodi [ADV] whitaker		# of some sort
+cumulatim [ADV] whitaker		# abundantly, in abundance, copiously, liberally
+cuneatim [ADV] whitaker		# in a closely packed/wedge formation
+cupienter [ADV] whitaker		# eagerly, avidly; earnestly (L+S)
+curate [ADV] whitaker	curate{} curatius{Cmp} curatissime{Sup}	# carefully, with care; diligently
+custodite [ADV] whitaker	custodite{} custoditius{Cmp} custoditissime{Sup}	# cautiously, guardedly; carefully (L+S)
+dapsile [ADV] whitaker	dapsile{} dapsilius{Cmp} dapsilissime{Sup}	# plentifully, copiously, abundantly
+decimum [ADV] whitaker		# for the tenth time
+decolorate [ADV] whitaker	decolorate{} decoloratius{Cmp} decoloratissime{Sup}	# degenerately
+decusatim [ADV] whitaker		# so as to make an X/produce shape of an X (for ten)
+decussatim [ADV] whitaker		# so as to make an X/produce shape of an X (for ten)
+definitive [ADV] whitaker		# definitively, plainly, distinctly
+defunctorie [ADV] whitaker		# perfunctorily, cursorily
+delectabiliter [ADV] whitaker	delectabiliter{} delectabilius{Cmp} delectabilissime{Sup}	# delightfully
+delonge [ADV] whitaker		# from afar; (de longe)
+deminutive [ADV] whitaker		# as diminutive (noun); (grammar)
+demus [ADV] whitaker		# at last, finally; at length, in the end, eventually
+derecte [ADV] whitaker	derecte{} derectius{Cmp} derectissime{Sup}	# in straight line
+desideranter [ADV] whitaker	desideranter{} desiderantius{Cmp} desiderantissime{Sup}	# longingly, with yearning
+desperate [ADV] whitaker		# desperately, hopelessly; tremendously, very
+dialectice [ADV] whitaker		# dialectically; logically
+difficile [ADV] whitaker		# with difficulty
+diffidenter [ADV] whitaker	diffidenter{} diffidentius{Cmp} diffidentissime{Sup}	# diffidently; without self-confidence (L+S)
+diffuse [ADV] whitaker	diffuse{} diffusius{Cmp} diffusissime{Sup}	# amply/liberally; expansively
+dignanter [ADV] whitaker		# courteously; with complaisance
+diiuncte [ADV] whitaker	diiuncte{} diiunctius{Cmp} diiunctissime{Sup}	# separately
+diluculo [ADV] whitaker		# at dawn/daybreak/first light
+diplomatice [ADV] whitaker		# diplomatically
+directe [ADV] whitaker	directe{} directius{Cmp} directissime{Sup}	# in straight line
+disiuncte [ADV] whitaker	disiuncte{} disiunctius{Cmp} disiunctissime{Sup}	# separately
+disiunctim [ADV] whitaker		# separately
+dispendiose [ADV] whitaker		# big-expensed
+disperse [ADV] whitaker		# sporadically; here and there
+dispersim [ADV] whitaker		# sporadically; here and there
+diutule [ADV] whitaker		# for a short while
+divise [ADV] whitaker		# separately, distinctly
+dogmatice [ADV] whitaker		# dogmatically; doctrinally
+ductim [ADV] whitaker		# by drawing; in a stream
+dulcidine [ADV] whitaker		# sweetly, pleasantly, charmingly
+duntaxat [ADV] whitaker		# to this extent, no more than
+eatenus [ADV] whitaker		# so far
+econtra [ADV] whitaker		# the_contrary; the_reverse
+effecte [ADV] whitaker	effecte{} effectius{Cmp} effectissime{Sup}	# consummately, in accomplished style
+effective [ADV] whitaker		# effectively; productively
+eiusmodi [ADV] whitaker		# of this sort; of such kind
+elimate [ADV] whitaker		# clearly, exactly
+eloquenter [ADV] whitaker	eloquenter{} eloquentius{Cmp} eloquentissime{Sup}	# eloquently
+eminenter [ADV] whitaker	eminenter{} eminentius{Cmp} eminentissime{Sup}	# highly; eminently; of higher/noble birth
+emphatice [ADV] whitaker		# emphatically; bombastically
+emuncte [ADV] whitaker		# subtly; finely
+enerviter [ADV] whitaker		# weakly, feebly; limply, languidly
+enormiter [ADV] whitaker		# irregularly; unsymmetrically
+episcopaliter [ADV] whitaker		# in episcopal fashion
+equipollenter [ADV] whitaker		# equivalently
+equivalenter [ADV] whitaker		# equivalently
+erronee [ADV] whitaker		# erroneously
+essentialiter [ADV] whitaker		# essentially
+estuanter [ADV] whitaker		# passionately
+exadversum [ADV] whitaker		# opposite
+exadversus [ADV] whitaker		# opposite
+exclusive [ADV] whitaker		# exclusively
+exiliter [ADV] whitaker		# feebly (Collins)
+exsultim [ADV] whitaker		# friskily
+exterius [ADV] whitaker		# outwardly; externally
+fabre [ADV] whitaker		# skillfully; ingeniously; in workmanlike manner
+fabriliter [ADV] whitaker		# skillfully; in workmanlike manner
+facinorose [ADV] whitaker		# viciously; scandalously; (from facinosus)
+falso [ADV] whitaker		# falsely; deceptively; spuriously
+feraliter [ADV] whitaker		# in savage manner
+festinatim [ADV] whitaker		# promptly, speedily, quickly
+festiviter [ADV] whitaker		# gaily, festively; wittily
+ficte [ADV] whitaker		# falsely
+fiducialiter [ADV] whitaker	fiducialiter{} fiducialius{Cmp} fiducialissime{Sup}	# confidently, with confidence
+figuraliter [ADV] whitaker		# figuratively
+flagranter [ADV] whitaker	flagranter{} flagrantius{Cmp} flagrantissime{Sup}	# ardently, passionately; vehemently, heatedly
+formaliter [ADV] whitaker		# formally; positively
+formidolose [ADV] whitaker	formidolose{} formidolosius{Cmp} formidolosissime{Sup}	# terribly, dreadfully; alarming
+formidulose [ADV] whitaker	formidulose{} formidulosius{Cmp} formidulosissime{Sup}	# terribly, dreadfully; alarming
+formonse [ADV] whitaker	formonse{} formonsius{Cmp} formonsissime{Sup}	# beautifully, in a beautiful manner
+formose [ADV] whitaker	formose{} formosius{Cmp} formosissime{Sup}	# beautifully, in a beautiful manner
+fraglanter [ADV] whitaker	fraglanter{} fraglantius{Cmp} fraglantissime{Sup}	# ardently, passionately; vehemently, heatedly
+frustillatim [ADV] whitaker		# bit by bit
+functionaliter [ADV] whitaker		# functionally
+futatim [ADV] whitaker		# abundantly
+gradualiter [ADV] whitaker		# by degrees
+gratulanter [ADV] whitaker		# with grateful/thankful heart/soul
+gravatim [ADV] whitaker		# grudgingly, reluctantly
+guttatim [ADV] whitaker		# drop-by-drop
+habitualiter [ADV] whitaker		# habitual
+harmonice [ADV] whitaker		# harmoniously
+hauddum [ADV] whitaker		# not yet; not at all as yet
+hermetice [ADV] whitaker		# hermetically; tightly
+honorabiliter [ADV] whitaker		# honorably
+horizontaliter [ADV] whitaker		# horizontally
+ichnographice [ADV] whitaker		# planned; with aid of plan
+idipsum [ADV] whitaker		# together; forthwith; completely
+ignoranter [ADV] whitaker		# ignorantly
+illiberaliter [ADV] whitaker		# stingily, meanly, ungenerously
+illustre [ADV] whitaker	illustre{} illustrius{Cmp} illustrissime{Sup}	# with clarity
+immisericorditer [ADV] whitaker		# unmercifully
+immobiliter [ADV] whitaker		# immovably, without movement
+immodeste [ADV] whitaker		# extravagantly
+impolite [ADV] whitaker		# roughly, crudely
+impraesentiarum [ADV] whitaker		# in present circumstances, for the present
+improspere [ADV] whitaker		# unfortunately
+inaequabiliter [ADV] whitaker		# unevenly; without regularity or uniformity
+incessanter [ADV] whitaker		# incessantly, unceasingly
+incidenter [ADV] whitaker		# incidentally
+incisim [ADV] whitaker		# in short clauses
+inciviliter [ADV] whitaker		# discourteously
+incommutabiliter [ADV] whitaker		# without change
+inconrupte [ADV] whitaker	inconrupte{} inconruptius{Cmp} inconruptissime{Sup}	# honestly, uprightly, without being influenced by bribes
+inconsequenter [ADV] whitaker		# inconsequentially; illogically
+incontanter [ADV] whitaker		# without hesitation/hesitating
+inconvenienter [ADV] whitaker		# unsuitably; ill-matchedly; inconveniently
+incorrupte [ADV] whitaker	incorrupte{} incorruptius{Cmp} incorruptissime{Sup}	# honestly, uprightly, without being influenced by bribes
+incrementabiliter [ADV] whitaker		# increasingly
+incunctanter [ADV] whitaker		# without hesitation
+indecenter [ADV] whitaker		# unbecomingly
+indefectibiliter [ADV] whitaker		# inexhaustibly; unfailingly
+independenter [ADV] whitaker		# independently
+indifferenter [ADV] whitaker		# indifferently
+indiligenter [ADV] whitaker	indiligenter{} indiligentius{Cmp} indiligentissime{Sup}	# carelessly, negligently; inattentively
+indiserte [ADV] whitaker		# not eloquently
+indivisibiliter [ADV] whitaker		# in indivisible condition
+indubitate [ADV] whitaker		# indisputably, beyond all doubt
+industrie [ADV] whitaker	industrie{} industrius{Cmp} industrissime{Sup}	# industriously; diligently; assiduously
+industriose [ADV] whitaker	industriose{} industriosius{Cmp} industriosissime{Sup}	# industriously; diligently; assiduously
+inerudite [ADV] whitaker		# ignorantly; crudely; without learning
+infallibiliter [ADV] whitaker		# infallibly; in an unfailing manner
+infantiliter [ADV] whitaker		# childishly
+infirmiter [ADV] whitaker		# weakly/feebly; without energy/support/power
+iniurose [ADV] whitaker		# wrongfully(Collins)
+inlecebrose [ADV] whitaker		# attractively, enticingly
+inlepide [ADV] whitaker		# inelegantly, rudely
+inliberaliter [ADV] whitaker		# stingily, meanly, ungenerously
+inlustre [ADV] whitaker	inlustre{} inlustrius{Cmp} inlustrissime{Sup}	# with clarity
+inobedienter [ADV] whitaker		# disobediently
+inoboedienter [ADV] whitaker		# disobediently
+inordinate [ADV] whitaker		# irregularly; at irregular intervals
+inornate [ADV] whitaker	inornate{} inornatius{Cmp} inornatissime{Sup}	# plainly; with lack of (stylistic) ornament
+inquantum [ADV] whitaker		# in as much (JFW - widespread medieval)
+inrationabiliter [ADV] whitaker		# irrationally, unreasoningly
+inreverenter [ADV] whitaker		# disrespectfully
+insedabiliter [ADV] whitaker		# incessantly
+insemel [ADV] whitaker		# at once
+inseparabiliter [ADV] whitaker		# inseparably; constant, always (Sax)
+insidiose [ADV] whitaker	insidiose{} insidiosius{Cmp} insidiosissime{Sup}	# treacherous/deceitful; stealthy/insidious
+insimul [ADV] whitaker		# together; in company; at the same time (L+S)
+insolabiliter [ADV] whitaker		# inconsolably
+insquequo [ADV] whitaker		# until
+intantum [ADV] whitaker		# in so much (JFW - widespread medieval)
+intellectualiter [ADV] whitaker		# intellectually, according to the intellect
+intentionaliter [ADV] whitaker		# intentionally
+interdie [ADV] whitaker		# in the daytime; by day
+interibi [ADV] whitaker		# meanwhile, in the meantime
+intoleranter [ADV] whitaker	intoleranter{} intolerantius{Cmp} intolerantissime{Sup}	# impatiently; insufferably, unbearably
+intuitive [ADV] whitaker		# intuitively
+inusitate [ADV] whitaker	inusitate{} inusitatius{Cmp} inusitatissime{Sup}	# in an unusual manner; strangely
+invincibiliter [ADV] whitaker		# invincibly
+inviolate [ADV] whitaker		# inviolately
+irate [ADV] whitaker	irate{} iratius{Cmp} iratissime{Sup}	# angrily; indignantly; furiously
+ironice [ADV] whitaker		# ironically
+irrationabiliter [ADV] whitaker		# irrationally, unreasoningly
+iunctim [ADV] whitaker		# both together; successively
+iusum [ADV] whitaker		# down, downwards
+loco [ADV] whitaker		# for, in the place of, instead of
+logicaliter [ADV] whitaker		# logically
+longanimiter [ADV] whitaker		# patiently, with forebearance/long-suffering
+longinque [ADV] whitaker	longinque{} longinquius{Cmp} longinquissime{Sup}	# far/long way (off), distant, at a distance
+longule [ADV] whitaker		# rather far, at a little distance
+magnificabiliter [ADV] whitaker		# splendidly, greatly, terrifically
+maiuscule [ADV] whitaker		# capitalized; with capital letter
+maledice [ADV] whitaker		# slanderously; abusively; scurrilously
+malitiose [ADV] whitaker		# wickedly, craftily, roguishly, knavishly
+matrimonialiter [ADV] whitaker		# matrimonially
+mediante [ADV] whitaker		# by means of
+mediate [ADV] whitaker		# by means of
+meliuscule [ADV] whitaker		# somewhat better, pretty well
+misericordaliter [ADV] whitaker		# mercifully
+mixtim [ADV] whitaker		# mixedly, in a mixed manner
+moraliter [ADV] whitaker		# morally
+multimodis [ADV] whitaker		# in many ways, variously
+multipliciter [ADV] whitaker		# in many different ways
+municipatim [ADV] whitaker		# by municipalities/municipia, by free towns
+munifice [ADV] whitaker		# liberally, generously, munificently
+nae [ADV] whitaker		# truly, indeed, verily, assuredly
+navanter [ADV] whitaker		# with zeal
+nefarie [ADV] whitaker		# wickedly, impiously; nefariously, abominably
+negative [ADV] whitaker		# negatively; in the negative (Souter)
+neutiquam [ADV] whitaker		# by no means, not at all; (ne utiquam)
+nominetenus [ADV] whitaker		# nominal; so-called
+notionaliter [ADV] whitaker		# conceptually
+noviter [ADV] whitaker		# recently, newly
+nudius [ADV] whitaker		# it is now the...day since
+nullatenus [ADV] whitaker		# not at all; in nowise, by no means
+nullibi [ADV] whitaker		# nowhere
+nulliter [ADV] whitaker		# not at all
+obedienter [ADV] whitaker	obedienter{} obedientius{Cmp} obedientissime{Sup}	# obediently, compliantly, without demur
+obiter [ADV] whitaker		# on the way, by the way, in passing
+obnixe [ADV] whitaker		# resolutely; strenuously
+obnixie [ADV] whitaker		# submissively, in a servile manner
+oboedienter [ADV] whitaker	oboedienter{} oboedientius{Cmp} oboedientissime{Sup}	# obediently, compliantly, without demur
+omnia [ADV] whitaker		# in all respects
+omnifariam [ADV] whitaker		# in every way; on every side; in all cases
+omnimodis [ADV] whitaker		# in every (possible) way
+opipare [ADV] whitaker		# splendidly, richly, sumptuously
+ordinabiliter [ADV] whitaker		# in good order; in orderly manner
+ordinatraliter [ADV] whitaker		# by computer
+orthogonaliter [ADV] whitaker		# orthogonally
+ostentui [ADV] whitaker		# for a show; merely for show
+ovanter [ADV] whitaker		# exultantly
+pagatim [ADV] whitaker		# in every village; in a village manner Nelson)
+palaestrice [ADV] whitaker		# gymnastically
+participialiter [ADV] whitaker		# participle-wise
+particulariter [ADV] whitaker		# particularly
+passive [ADV] whitaker		# freely, indiscriminately; randomly
+penetranter [ADV] whitaker		# deeply, penetratingly, searchingly
+perattente [ADV] whitaker		# very attentively
+perdite [ADV] whitaker		# desperately, in desperate/unrestrained way
+perdiu [ADV] whitaker		# for a long while
+perendie [ADV] whitaker		# day after tomorrow
+perfacete [ADV] whitaker		# very cleverly, very wisely, brilliantly
+perfunctorie [ADV] whitaker		# carelessly; perfunctorily
+perhonorifice [ADV] whitaker		# very honorably, very respectfully
+perhumaniter [ADV] whitaker		# very civilly
+perincommode [ADV] whitaker		# very inconveniently
+perlonge [ADV] whitaker		# very far; tediously
+permoleste [ADV] whitaker		# with much difficulty
+peroptato [ADV] whitaker		# just as one would wish
+perparum [ADV] whitaker		# very little
+perpendiculariter [ADV] whitaker		# perpendicularly
+perpetim [ADV] whitaker		# perpetually
+perpetualiter [ADV] whitaker		# perpetually
+perridicule [ADV] whitaker		# very laughably
+persalse [ADV] whitaker		# very witty
+perscienter [ADV] whitaker		# very discreetly
+perstudiose [ADV] whitaker		# very eagerly
+pervesperi [ADV] whitaker		# very late in the evening
+pleniter [ADV] whitaker		# abundantly/fully/clearly; richly/lavishly/generously
+posthaec [ADV] whitaker		# after this, in the future, hereafter, from now on
+posthanc [ADV] whitaker		# after this, in the future, hereafter, from now on
+posthinc [ADV] whitaker		# after this, in the future, hereafter, from now on
+posthoc [ADV] whitaker		# after this, in the future, hereafter, from now on
+potissime [ADV] whitaker	potissime{Sup}	# chiefly, principally, especially
+potissume [ADV] whitaker	potissume{Sup}	# chiefly, principally, especially
+praecidentius [ADV] whitaker	praecidentius{Cmp}	# cautiously
+praeproperanter [ADV] whitaker		# very hastily
+praescienter [ADV] whitaker		# with foreknowledge, presciently
+praesumptive [ADV] whitaker		# presumptuously
+prodigialiter [ADV] whitaker		# amazingly, wonderfully
+properantim [ADV] whitaker		# hurriedly, hastily
+propie [ADV] whitaker		# individually; according to species
+proporro [ADV] whitaker		# further, moreover, or altogether
+propritim [ADV] whitaker		# peculiarly, specially
+proquam [ADV] whitaker		# in proportion as, according as
+protinam [ADV] whitaker		# immediately, at once
+proverbialiter [ADV] whitaker		# proverbially
+purulente [ADV] whitaker		# purulently; festeringly
+quadamtenus [ADV] whitaker		# to a certain point/extent; in some measure
+quadantenus [ADV] whitaker		# to a certain point/extent; in some measure
+quadrifariam [ADV] whitaker		# in four parts
+qualislibet [ADV] whitaker		# of what sort you will
+qualitercumque [ADV] whitaker		# no matter how; in whatever manner
+qualitercunque [ADV] whitaker		# no matter how; in whatever manner
+quamprimum [ADV] whitaker		# to the highest degree possible
+quamtocius [ADV] whitaker		# as soon as possible; completely (?), all (Nelson)
+quamtotius [ADV] whitaker		# as soon as possible; completely (?), all (Nelson)
+quantuvis [ADV] whitaker		# as great as you please, however great
+quatinus [ADV] whitaker		# how far/long?, to what point
+quinymo [ADV] whitaker		# indeed, in fact; but truly; rather (Nelson)
+quippini [ADV] whitaker		# why not
+quodammodo [ADV] whitaker		# in a certain way, in a certain measure
+quomodonam [ADV] whitaker		# how then?
+quor [ADV] whitaker		# why, wherefore, for what reason? (impatience)
+quotiensquonque [ADV] whitaker		# whenever, every time that
+quotiesquonque [ADV] whitaker		# whenever, every time that
+quotlibet [ADV] whitaker		# as many as please; as many as one will
+quotusquisque [ADV] whitaker		# how few
+qur [ADV] whitaker		# why, wherefore, for what reason? (impatience)
+quur [ADV] whitaker		# why, wherefore, for what reason? (impatience)
+rarenter [ADV] whitaker		# uncommonly; seldom, rare; (poetic)
+rationabiliter [ADV] whitaker		# reasonably, in accordance with reason
+realiter [ADV] whitaker		# really
+reapse [ADV] whitaker		# in truth, really
+recenter [ADV] whitaker	recenter{} recentius{Cmp} recentissime{Sup}	# lately, newly, recently; freshly
+regulariter [ADV] whitaker		# by way of general rule; according to rule (L+S)
+retrospective [ADV] whitaker		# retrospectively
+saepicule [ADV] whitaker		# pretty often
+scandalose [ADV] whitaker		# scandalously
+seiunctim [ADV] whitaker		# separately
+sempiterno [ADV] whitaker		# eternally, perpetually, everlastingly, permanently
+sententiose [ADV] whitaker		# pithily
+septuplum [ADV] whitaker		# in a sevenfold way
+seriosius [ADV] whitaker		# in fuller detail
+sesque [ADV] whitaker		# one and a half times/more; more by half
+sesqui [ADV] whitaker		# one and a half times/more; more by half
+signanter [ADV] whitaker		# expressly; clearly, distinctly
+simitu [ADV] whitaker		# together
+singultim [ADV] whitaker		# one by one, singly, separately
+sofistice [ADV] whitaker		# sophistically; fallaciously (later)
+somniculose [ADV] whitaker		# sleepily, drowsily
+sophistice [ADV] whitaker		# sophistically; fallaciously (later)
+sophos [ADV] whitaker		# bravo! well done!
+sorbilo [ADV] whitaker		# by sipping, drop by drop
+spiritaliter [ADV] whitaker		# spiritually
+spiritualiter [ADV] whitaker		# spiritually
+strictim [ADV] whitaker		# so as to graze; superficially, slightly, summarily
+subabsurde [ADV] whitaker		# somewhat absurdly
+subadroganter [ADV] whitaker		# somewhat arrogantly
+subdio [ADV] whitaker		# in the open air; (sub dio)
+submoleste [ADV] whitaker		# with some difficulty/trouble
+subsequenter [ADV] whitaker		# subsequently; in succession; one after another
+substantialiter [ADV] whitaker		# substantially; essentially
+succontumeliose [ADV] whitaker		# somewhat insolently
+sufficienter [ADV] whitaker		# sufficiently, adequately
+summoleste [ADV] whitaker		# with some difficulty/trouble
+summopere [ADV] whitaker		# very much, exceedingly; (summo opere)
+tertium [ADV] whitaker		# for the third time
+toleranter [ADV] whitaker	toleranter{} tolerantius{Cmp} tolerantissime{Sup}	# tolerantly, patiently, with fortitude
+transeunter [ADV] whitaker		# in passing; cursorily
+transitorie [ADV] whitaker		# cursorily; in passing; by the way
+trepidanter [ADV] whitaker		# tremblingly, anxiously
+truculenter [ADV] whitaker		# wildly, savagely, fiercely, cruelly, roughly
+tyrannice [ADV] whitaker		# tyrannically
+ultimatim [ADV] whitaker		# extremely, to the last degree, utterly
+ultime [ADV] whitaker		# extremely, to the last degree, utterly
+ultimum [ADV] whitaker		# extremely, to the last degree, utterly
+unanimiter [ADV] whitaker		# unanimously; harmoniously; cordially
+unciatim [ADV] whitaker		# little by little; by twelfths
+unianimiter [ADV] whitaker		# unanimously; cordially; harmoniously
+uniformiter [ADV] whitaker		# uniformly; in one and the same manner
+utro [ADV] whitaker		# to which side (of two)?; in which direction?
+vacive [ADV] whitaker		# leisurely
+vegetabiliter [ADV] whitaker		# vigorously
+verbatim [ADV] whitaker		# literally, word to word
+veritate [ADV] whitaker		# in point of fact; actually
+veteratorie [ADV] whitaker		# adroitly; in a practiced manner
+vigenter [ADV] whitaker	vigenter{} vigentius{Cmp} vigentissime{Sup}	# vigorously, actively
+vituperabiliter [ADV] whitaker		# blamably
+voluntarie [ADV] whitaker		# willingly
+abante [ADV] whitaker		# in front (of); before
+abdite [ADV] whitaker		# secretly
+abhorride [ADV] whitaker		# roughly, improperly; in an unfit manner
+abominanter [ADV] whitaker		# abominably, detestably
+abrupte [ADV] whitaker		# abruptly, suddenly; precipitously, steeply
+abstruse [ADV] whitaker		# secretly; remotely; abstrusely
+acatholice [ADV] whitaker		# non-catholicly, in non-catholic manner
+accedenter [ADV] whitaker		# nearly
+accessorie [ADV] whitaker		# assessorily, in assessory/supplementary/adjunct manner
+accubo [ADV] whitaker		# in a prone/recumbent position
+acide [ADV] whitaker	acide{} acidius{Cmp} acidissime{Sup}	# unpleasantly
+aconiti [ADV] whitaker		# without labor, effortlessly
+active [ADV] whitaker		# actively; (gram. like active verb)
+actu [ADV] whitaker		# actually
+actualiter [ADV] whitaker		# actively
+actum [ADV] whitaker		# sharply, pointedly; acutely
+actuose [ADV] whitaker		# actively, busily, energetically
+acutale [ADV] whitaker		# somewhat sharply; pointedly
+acutule [ADV] whitaker		# somewhat sharply
+adcedenter [ADV] whitaker		# nearly
+adcubo [ADV] whitaker		# in a prone/recumbent position
+adducte [ADV] whitaker	adducte{} adductius{Cmp} adductissime{Sup}	# strictly, tightly; with close control
+adgeratim [ADV] whitaker		# in heaps/piles
+adgestim [ADV] whitaker		# in heaps, abundantly
+adhaese [ADV] whitaker		# stammeringly; in a tongued-tied manner
+adhucine [ADV] whitaker		# still? yet? (interog.) (adhuc ne)
+admoderate [ADV] whitaker		# comfortably; suitably
+adornate [ADV] whitaker		# elegantly, in a polished manner
+adposite [ADV] whitaker		# in a manner suited (to); suitably, appositely
+adsecue [ADV] whitaker		# attentively, closely
+adsentatorie [ADV] whitaker		# like a flatterer; fawningly, in a flattering manner
+adsimiliter [ADV] whitaker		# similarly, in much the same manner/fashion
+adsimuliter [ADV] whitaker		# similarly, in much the same manner/fashion
+adsultim [ADV] whitaker		# by leaps, by hops; by leaps and bounds
+adtenuate [ADV] whitaker		# plainly, barely
+adtonite [ADV] whitaker		# frantically; bewilderedly, confoundedly
+adverse [ADV] whitaker		# in a self contradictory manner, inconsistently
+advorse [ADV] whitaker		# in a self contradictory manner, inconsistently
+aemulanter [ADV] whitaker		# emulously; enviously, jealously
+aequanimiter [ADV] whitaker		# calmly; with equanimity
+aerifice [ADV] whitaker		# with art/skill of the bronze worker
+aestive [ADV] whitaker		# in summer fashion; lightly (dress)
+aestuose [ADV] whitaker	aestuose{} aestuosius{Cmp} aestuosissime{Sup}	# with fierce heat; fiery
+aggeratim [ADV] whitaker		# in heaps/piles
+aggestim [ADV] whitaker		# in heaps, abundantly
+albicantius [ADV] whitaker	albicantius{Cmp}	# somewhat in the way of white
+aliquantulo [ADV] whitaker		# to a little/small amount/bit/extent
+aliquodfariam [ADV] whitaker		# in several places
+aliquovorsum [ADV] whitaker		# in some direction/quarter
+allegorice [ADV] whitaker		# allegorically
+alterinsecus [ADV] whitaker		# on the other side
+alternatim [ADV] whitaker		# by turns, alternately
+alterne [ADV] whitaker		# by turns, alternately
+alterorsus [ADV] whitaker		# in the other direction; on the other side
+alterutraque [ADV] whitaker		# on both sides, in both cases
+alterutrique [ADV] whitaker		# on both sides, in both cases
+altrovorsum [ADV] whitaker		# on the other hand
+amariter [ADV] whitaker		# with bitterness, acidly, spitefully, bitterly
+amarum [ADV] whitaker		# with bitterness, acidly, spitefully, bitterly
+ambienter [ADV] whitaker		# eagerly, with zeal
+ambifarie [ADV] whitaker		# ambiguously; on two sides; in two ways
+ambufariam [ADV] whitaker		# in a way placing opponent in dilemma/proving his...
+amentius [ADV] whitaker	amentius{Cmp}	# more madly/wildly
+amicabiliter [ADV] whitaker		# in a friendly/amicable manner
+ammoderate [ADV] whitaker		# comfortably; suitably
+amoeniter [ADV] whitaker		# delightfully, in an agreeable manner
+amplifice [ADV] whitaker		# magnificently, splendidly
+ampliuscule [ADV] whitaker		# rather more (freely/deeply)
+angulariter [ADV] whitaker		# at an angle
+animaliter [ADV] whitaker		# like an animal
+anniversarie [ADV] whitaker		# annually
+antelucio [ADV] whitaker		# before the dawn/daybreak
+anteluclo [ADV] whitaker		# before the dawn/daybreak
+antiphonatim [ADV] whitaker		# antiphonally; (of verse sung in response by choir)
+apposite [ADV] whitaker		# in a manner suited (to); suitably, appositely
+apstruse [ADV] whitaker		# secretly; remotely; abstrusely
+arbitrario [ADV] whitaker		# thoughtfully
+argumentaliter [ADV] whitaker		# as proof; by way of proof
+aride [ADV] whitaker		# dryly, austerely, without embellishment
+articulate [ADV] whitaker		# distinctly
+artificialiter [ADV] whitaker		# with trained skill, scientifically
+artuatim [ADV] whitaker		# limb-by-limb; limb-from-limb
+asperiter [ADV] whitaker		# by rough materials/harsh sound
+aspriter [ADV] whitaker		# by rough materials/harsh sound
+assecue [ADV] whitaker		# attentively, closely
+assentatorie [ADV] whitaker		# like a flatterer; fawningly, in a flattering manner
+assimiliter [ADV] whitaker		# similarly, in much the same manner/fashion
+assimuliter [ADV] whitaker		# similarly, in much the same manner/fashion
+assulose [ADV] whitaker		# into splinters, splinter-wise
+assultim [ADV] whitaker		# by leaps, by hops; by leaps and bounds
+attemperate [ADV] whitaker		# opportunely, at a convenient moment
+attenuate [ADV] whitaker		# plainly, barely, simply
+attonite [ADV] whitaker		# frantically; bewilderedly, confoundedly
+atvero [ADV] whitaker		# however
+auspicaliter [ADV] whitaker		# after taking the auspices
+austere [ADV] whitaker	austere{} austerius{Cmp} austerissime{Sup}	# rigidly, austerely, severely
+authentice [ADV] whitaker		# authentically
+aversim [ADV] whitaker		# sidewise, sideways; avertedly
+aviditer [ADV] whitaker		# greedily; eagerly
+avite [ADV] whitaker		# from ancient times, of old
+Azotice [ADV] whitaker		# Azotian, in the language/manner of Azotus/Ahdod (Esdud)
+bacchatim [ADV] whitaker		# in the manner of Bacchantes, riotously, wildly
+benedice [ADV] whitaker		# with friendly words, kindly
+benefice [ADV] whitaker		# beneficently
+benigniter [ADV] whitaker		# kindly, in a friendly manner
+bimestre [ADV] whitaker		# bimestrially, every two months
+blandicule [ADV] whitaker		# charmingly
+blanditim [ADV] whitaker		# in a flattering/caressing manner
+blando [ADV] whitaker		# in coaxing/winning manner, charmingly, persuasively...
+blandum [ADV] whitaker		# in coaxing/winning manner, charmingly, persuasively...
+boustrophedon [ADV] whitaker		# right to left and back alternately, forwards and...
+bovatim [ADV] whitaker		# in manner of cattle/oxen/cows
+cacozelos [ADV] whitaker		# with stylistically affection
+caduciter [ADV] whitaker		# precipitately, headlong
+caesuratim [ADV] whitaker		# with pauses in short clauses
+calamitose [ADV] whitaker		# disastrously; unfortunately, miserably
+calenter [ADV] whitaker		# skillfully, cunningly
+calos [ADV] whitaker		# well; hurrah for !
+calumniose [ADV] whitaker		# by false pretenses
+canaliculatim [ADV] whitaker		# into/by channels
+canatim [ADV] whitaker		# in manner of a dog; like a dog
+cancellatim [ADV] whitaker		# in a lattice arrangement
+candidule [ADV] whitaker		# candidly, sincerely
+canore [ADV] whitaker		# melodiously; harmoniously; tunefully
+capaciter [ADV] whitaker		# rightfully to inherit
+capitaliter [ADV] whitaker		# with bitter/lethal hostility
+capreolatim [ADV] whitaker		# like twisted tendrils; in a winding/twisting manner
+cardinaliter [ADV] whitaker		# chiefly, principally; especially
+caro [ADV] whitaker		# dearly; dear, at a high price
+casce [ADV] whitaker		# in an archaic/out-of-date/old-fashion manner
+castigate [ADV] whitaker		# chastely; strictly; briefly (L+S)
+catomun [ADV] whitaker		# over shoulders (for flogging)
+causaliter [ADV] whitaker		# causally
+causarie [ADV] whitaker		# on account of sickness
+causate [ADV] whitaker	causate{} causatius{Cmp} causatissime{Sup}	# with good reason; with better reason
+cavernatim [ADV] whitaker		# through caverns
+cedenter [ADV] whitaker		# by yielding
+celate [ADV] whitaker		# secretly; privately
+celatim [ADV] whitaker		# secretly; privately
+celeberrime [ADV] whitaker	celeberrime{Sup}	# most/very frequently
+celeranter [ADV] whitaker		# quickly, rapidly, speedily; with speed
+celeratim [ADV] whitaker		# quickly, rapidly, speedily
+celeriuscule [ADV] whitaker		# rather rapidly; somewhat quickly
+celse [ADV] whitaker	celse{} celsius{Cmp} celsissime{Sup}	# high; higher, to a greater height
+centiplicato [ADV] whitaker		# at one hundred times the price
+centuplicato [ADV] whitaker		# at one hundred times the price
+centuriato [ADV] whitaker		# by centuries
+certative [ADV] whitaker		# combatively; in order to stir up strife
+charitative [ADV] whitaker		# charitably; in a charitable manner
+cindecoe [ADV] whitaker		# elegantly
+circulatim [ADV] whitaker		# in circles, in groups/companies
+circumflexe [ADV] whitaker		# with circumflex/prolonged sound
+circumquaque [ADV] whitaker		# on every side; all around
+circumscriptorie [ADV] whitaker		# by fraud/deceit
+circumsecus [ADV] whitaker		# round about, around, round; in parts/region around
+citatim [ADV] whitaker		# hurriedly, quickly; speedily, hastily
+cite [ADV] whitaker		# quickly; rapidly
+citerius [ADV] whitaker	citerius{Cmp}	# short of; to a lesser degree than
+clamose [ADV] whitaker		# in a loud voice with shouting
+clanculo [ADV] whitaker		# secretly; privately (L+S)
+coacervatim [ADV] whitaker		# in/by heaps
+coactim [ADV] whitaker		# briefly, concisely, shortly
+cochleatim [ADV] whitaker		# spirally; like a snail shell
+cocleatim [ADV] whitaker		# spirally
+cogitatim [ADV] whitaker		# carefully, with thought/reflection
+cognitionaliter [ADV] whitaker		# by judicial inquiry/investigation
+cognoscenter [ADV] whitaker		# with knowledge; distinctly
+collecte [ADV] whitaker		# summarily; briefly
+collectim [ADV] whitaker		# summarily; briefly
+collegialiter [ADV] whitaker		# collegially
+collusim [ADV] whitaker		# in collusion
+collusorie [ADV] whitaker		# in/by collusion; in a concerted manner (L+S)
+colorate [ADV] whitaker		# in a specious or plausible manner
+columbatim [ADV] whitaker		# in manner of doves, like doves, dovey
+columbulatim [ADV] whitaker		# in manner of (little) doves, like (little) doves, dovey
+com [ADV] whitaker		# together
+comesaliter [ADV] whitaker		# wantonly; jovially
+comessaliter [ADV] whitaker		# wantonly; jovially
+comissaliter [ADV] whitaker		# wantonly; jovially
+comitialiter [ADV] whitaker		# by/as a result of epilepsy; epileptically
+commistim [ADV] whitaker		# jointly, in a mixed manner
+commixtim [ADV] whitaker		# jointly, in a mixed manner
+commodate [ADV] whitaker	commodate{} commodatius{Cmp} commodatissime{Sup}	# fittingly; in a suitable manner
+commuate [ADV] whitaker		# in an altered/changed manner
+communicabiliter [ADV] whitaker		# in a way capable of being communicated
+communitus [ADV] whitaker		# jointly, as a group
+comparate [ADV] whitaker		# comparatively; in/by comparison (L+S)
+comparative [ADV] whitaker		# in a comparative sense
+compensato [ADV] whitaker		# with compensation/reward
+complusicule [ADV] whitaker		# fairly/pretty often, not infrequently
+concinniter [ADV] whitaker		# cleverly, ingeniously
+concito [ADV] whitaker		# rapidly
+concluse [ADV] whitaker		# in a rounded manner
+conclusive [ADV] whitaker		# conclusively; in form of a conclusion
+concorde [ADV] whitaker		# harmoniously; in harmony
+conditionate [ADV] whitaker		# conditionally
+conducenter [ADV] whitaker		# profitably, wisely; becomingly
+conective [ADV] whitaker		# connectively, conjunctively
+conexe [ADV] whitaker		# in connection; connectively
+conexo [ADV] whitaker		# in connection; connectively
+conferte [ADV] whitaker	conferte{} confertius{Cmp} confertissime{Sup}	# in a compact body/bunch/formation
+confirmate [ADV] whitaker		# confidently, with assurance; firmly (L+S)
+confirmative [ADV] whitaker		# confirmatively, corroboratively
+confragose [ADV] whitaker		# roughly, unevenly
+confusim [ADV] whitaker		# confusedly, in a disorderly manner/fashion
+congeste [ADV] whitaker		# briefly; summarily
+congestim [ADV] whitaker		# in heaps; heaped together (L+S)
+conglobatim [ADV] whitaker		# in heaps, in a mass
+congregatim [ADV] whitaker		# together; in crowds
+coniecturaliter [ADV] whitaker		# by way of conjecture, conjecturally
+coniugatiter [ADV] whitaker		# as married persons
+conlecte [ADV] whitaker		# summarily; briefly
+conlectim [ADV] whitaker		# summarily; briefly
+conlusim [ADV] whitaker		# in collusion(?)
+conlusorie [ADV] whitaker		# in/by collusion; in a concerted manner (L+S)
+conmunicabiliter [ADV] whitaker		# in a way capable of being communicated
+conmunitus [ADV] whitaker		# jointly, as a group
+connaturaliter [ADV] whitaker		# in a natural way
+connexe [ADV] whitaker		# in connection; connectively
+connexo [ADV] whitaker		# in connection; connectively
+connubialiter [ADV] whitaker		# in a conjugal manner, connubially
+conparate [ADV] whitaker		# comparatively; in/by comparison (L+S)
+conparative [ADV] whitaker		# in a comparative sense
+conplusicule [ADV] whitaker		# fairly/pretty often, not infrequently
+conquaterno [ADV] whitaker		# by fours (yoked oxen); in a team of four
+conruptive [ADV] whitaker		# corruptibly; perishably
+consecue [ADV] whitaker		# consequently; consecutively?
+conseque [ADV] whitaker		# consequently; consecutively?
+conserte [ADV] whitaker		# in a connected manner
+consimiliter [ADV] whitaker		# (very) similarly; in a like manner (L+S)
+consociatim [ADV] whitaker		# together, unitedly, jointly
+consolatorie [ADV] whitaker		# in a consolatory/comforting manner
+consonanter [ADV] whitaker	consonanter{} consonantius{Cmp} consonantissime{Sup}	# concordantly; in concord/agreement
+consone [ADV] whitaker		# in unison, (sounding) together
+conspirate [ADV] whitaker	conspirate{} conspiratius{Cmp} conspiratissime{Sup}	# unanimously, with one accord, all together
+constricte [ADV] whitaker		# closely
+consuete [ADV] whitaker		# in the usual/accustomed manner, as usual
+consuetudinarie [ADV] whitaker		# in the usual/accustomed manner, as usual
+consulariter [ADV] whitaker		# in a manner befitting/worthy of a consul
+contemnenter [ADV] whitaker		# in a contemptuous manner
+contemplabiliter [ADV] whitaker		# taking aim
+contentiose [ADV] whitaker	contentiose{} contentiosius{Cmp} contentiosissime{Sup}	# emphatically; persistently/obstinately
+contestato [ADV] whitaker		# in the presence of witnesses
+contigue [ADV] whitaker		# closely
+contingenter [ADV] whitaker		# contingently; conditionally; not of necessity (Def)
+continuanter [ADV] whitaker		# continuously, uninterruptedly
+continuate [ADV] whitaker		# continuously, uninterruptedly
+continuatim [ADV] whitaker		# continuously, uninterruptedly
+contractabiliter [ADV] whitaker		# caressingly; so as just to be felt
+contracte [ADV] whitaker	contracte{} contractius{Cmp} contractissime{Sup}	# sparingly, economically, on a restricted/contracted scale
+contraversim [ADV] whitaker		# in reverse (as in a mirror)
+contraversum [ADV] whitaker		# on the contrary, on the other hand
+contrectabiliter [ADV] whitaker		# caressingly; so as just to be felt
+controversus [ADV] whitaker		# in opposite directions
+copulatim [ADV] whitaker		# in union
+copulative [ADV] whitaker		# connectedly
+cordetenus [ADV] whitaker		# as far as the heart?; with wisdom?
+cordicitus [ADV] whitaker		# from the heart; deep in the heart
+corgo [ADV] whitaker		# surely, certainly
+corruptive [ADV] whitaker		# corruptibly; perishably
+corsum [ADV] whitaker		# in what direction
+corsus [ADV] whitaker		# in what direction
+cothurnate [ADV] whitaker	cothurnate{} cothurnatius{Cmp} cothurnatissime{Sup}	# loftily, tragically
+coxim [ADV] whitaker		# on hips; (at the hip?)
+crebra [ADV] whitaker		# repeatedly
+criminaliter [ADV] whitaker		# according to criminal procedure
+cruciabiliter [ADV] whitaker		# with torture; (excruciatingly?)
+cruenter [ADV] whitaker		# savagely, bloodthirstily; cruelly, severely (L+S)
+cubitissim [ADV] whitaker		# lying down?
+cuiuscemodi [ADV] whitaker		# of what kind/sort/nature soever
+cuiusmodicumque [ADV] whitaker		# of whatever kind/sort/nature
+cuiusquemodi [ADV] whitaker		# of whatever kind/sort/nature
+culpabiliter [ADV] whitaker	culpabiliter{} culpabilius{Cmp} culpabilissime{Sup}	# culpably; criminally
+cumprime [ADV] whitaker		# especially, particularly
+cunctim [ADV] whitaker		# collectively, taken all together
+cuniculatim [ADV] whitaker		# in channels
+cuspidatim [ADV] whitaker		# like a spear-point; to a point
+cynice [ADV] whitaker		# after the manner of the Cynics
+daedale [ADV] whitaker		# artistically, skillfully
+damnabiliter [ADV] whitaker		# culpably
+damnose [ADV] whitaker		# ruinously, so as to cause loss
+dapatice [ADV] whitaker		# splendidly, in fine/lordly manner/language
+dapsiliter [ADV] whitaker		# plentifully, copiously, abundantly
+debiliter [ADV] whitaker		# impotently; with weakness, feebly
+decemviraliter [ADV] whitaker		# in the manner of the decemviri
+decetero [ADV] whitaker		# henceforth
+declamatorie [ADV] whitaker		# in a rhetorical manner
+declarative [ADV] whitaker		# by way of explanation
+decliviter [ADV] whitaker	decliviter{} declivius{Cmp} declivissime{Sup}	# in a sloping manner
+decontra [ADV] whitaker		# facing; from a position opposite
+decoriter [ADV] whitaker		# gracefully, in a pleasing manner
+decuriatim [ADV] whitaker		# by decuria (club of ten)
+dedecorose [ADV] whitaker		# disgracefully; shamefully, dishonorably
+dedicative [ADV] whitaker		# affirmatively
+defensibiliter [ADV] whitaker		# defensibly
+definienter [ADV] whitaker		# distinctly
+defricate [ADV] whitaker		# sharply, keenly; (of speech)
+deinsuper [ADV] whitaker		# from above
+deiecte [ADV] whitaker	deiecte{} deiectius{Cmp} deiectissime{Sup}	# low
+demagis [ADV] whitaker		# furthermore, moreover; very much (L+S)
+demonstrative [ADV] whitaker		# demonstratively
+denixe [ADV] whitaker	denixe{} denixius{Cmp} denixissime{Sup}	# earnestly, assiduously, with strenuous efforts
+denominative [ADV] whitaker		# by derivation
+deorsom [ADV] whitaker		# down, downwards, beneath, below
+deosum [ADV] whitaker		# down, downwards, beneath, below
+depraesentiarum [ADV] whitaker		# here and now; now, at the present (L+S)
+depravate [ADV] whitaker		# perversely, wrongly
+depresse [ADV] whitaker	depresse{} depressius{Cmp} depressissime{Sup}	# deeply; deep/way down
+deque [ADV] whitaker		# downwards
+derecta [ADV] whitaker		# perpendicularly; straight down
+derectim [ADV] whitaker		# in a regular manner; directly, straightaway (L+S)
+descripte [ADV] whitaker		# exactly; in a clearly defined manner
+desersum [ADV] whitaker		# from above
+desicut [ADV] whitaker		# since
+desidiose [ADV] whitaker		# idly; indolently; slothfully
+desiduo [ADV] whitaker		# for a long time; a long time (L+S)
+designate [ADV] whitaker		# distinctly
+desperanter [ADV] whitaker		# despairingly; in a despairing manner
+despotice [ADV] whitaker		# despotically
+destinate [ADV] whitaker		# resolutely; obstinately
+destinato [ADV] whitaker		# according to a previously determined plan
+desuperne [ADV] whitaker		# from above, from overhead
+detestabiliter [ADV] whitaker		# abominably, detestably, execrably
+deversus [ADV] whitaker		# downward
+dextre [ADV] whitaker	dextre{} dextrius{Cmp} dextrime{Sup}	# skillfully; dexterously
+diapanton [ADV] whitaker		# pre-eminently; out of all the number
+diasyrtice [ADV] whitaker		# mockingly; disparagingly
+dicacule [ADV] whitaker		# banteringly; caustically; facetiously (L+S)
+differenter [ADV] whitaker	differenter{} differentius{Cmp} differentissime{Sup}	# differently
+digestim [ADV] whitaker		# in order
+digno [ADV] whitaker		# worthily; appropriately/suitably
+diiunctim [ADV] whitaker		# separately
+dilute [ADV] whitaker		# slightly; weakly; faintly
+directa [ADV] whitaker		# perpendicularly; straight down
+directim [ADV] whitaker		# in a regular manner; directly, straightaway (L+S)
+discorditer [ADV] whitaker		# disproportionally
+dissonanter [ADV] whitaker		# inharmoniously; inconsistently
+districte [ADV] whitaker		# strictly; severely
+districtim [ADV] whitaker		# strictly; severely
+divisim [ADV] whitaker		# separately, apart
+dociliter [ADV] whitaker		# attentively; docilely
+dorsum [ADV] whitaker		# down, downwards, beneath, below
+duis [ADV] whitaker		# twice, at 2 times/occasions
+duplo [ADV] whitaker		# doubly; in a double sense
+encaenium [ADV] whitaker		# by mistake
+enodate [ADV] whitaker	enodate{} enodatius{Cmp} enodatissime{Sup}	# clearly; plainly
+essurienter [ADV] whitaker		# hungrily, ravenously
+esurienter [ADV] whitaker		# hungrily, ravenously
+examussim [ADV] whitaker		# according to rule, exactly, quite
+exenium [ADV] whitaker		# by mistake
+exitabiliter [ADV] whitaker		# ruinously; perniciously
+explicite [ADV] whitaker		# clearly, without ambiguity
+expressim [ADV] whitaker		# explicitly; clearly; expressly
+extemporaliter [ADV] whitaker		# unpremeditatedly, extemporaneously
+extraiudicialiter [ADV] whitaker		# extrajudicially; outside court/law
+faciliter [ADV] whitaker		# easily
+facilumed [ADV] whitaker	facilumed{Sup}	# easily, readily, without difficulty
+facinarose [ADV] whitaker		# viciously; scandalously
+fictice [ADV] whitaker		# in fictitious/pretended manner
+fluenter [ADV] whitaker		# in a stream or flood
+formidilose [ADV] whitaker	formidilose{} formidilosius{Cmp} formidilosissime{Sup}	# terribly, dreadfully; alarming
+fornicatim [ADV] whitaker		# archwise, in an arched manner
+forsitam [ADV] whitaker		# perhaps; (= forsitan)
+fulgenter [ADV] whitaker	fulgenter{} fulgentius{Cmp} fulgentissime{Sup}	# resplendently; brilliantly; splendidly
+genuine [ADV] whitaker		# truly
+glorianter [ADV] whitaker		# boastingly; exultingly
+grammatice [ADV] whitaker		# with strict observance of grammatical rules, grammatically
+gratulatorie [ADV] whitaker		# congratulatory, in congratulatory manner
+gravanter [ADV] whitaker		# with difficulty
+Hebraice [ADV] whitaker		# Hebrew, in Hebrew, in Hebrew language
+Hispane [ADV] whitaker		# in Spanish manner
+historialiter [ADV] whitaker		# historically
+hyperbolice [ADV] whitaker		# excessively; hyperbolically; with exaggeration
+impassibiliter [ADV] whitaker		# without passion
+impoene [ADV] whitaker		# without punishment; safely; (= impune)
+improportionabilit [ADV] whitaker		# not proportionally, out of proportion
+improportionaliter [ADV] whitaker		# not proportionally, out of proportion
+imputribiliter [ADV] whitaker		# incorruptibly
+inceps [ADV] whitaker		# subsequently; thereafter
+incestuose [ADV] whitaker		# incestuously; lewdly
+incidentaliter [ADV] whitaker		# incidental
+incircum [ADV] whitaker		# round about; (L+S calls it PREP)
+incircumscripte [ADV] whitaker		# without limitation; infinitely
+incomparabiliter [ADV] whitaker		# incomparably
+inconfusibliter [ADV] whitaker		# without confusion/embarrassment
+incongrue [ADV] whitaker		# unsuitably; inconsistently
+inconruptibiliter [ADV] whitaker		# incorruptibly, imperishably
+incorruptibiliter [ADV] whitaker		# incorruptibly, imperishably
+incunctabiliter [ADV] whitaker		# without delay/hesitation; unhesitatingly
+indesinenter [ADV] whitaker		# incessantly, ceaselessly
+indigniter [ADV] whitaker	indigniter{} indiligentius{Cmp} indiligentissime{Sup}	# undeservedly; unjustly; unworthily
+indisciplinate [ADV] whitaker		# disorderly, in an undisciplined manner
+indiscretim [ADV] whitaker		# indiscriminately; without distinction
+indiscriminatim [ADV] whitaker		# indiscriminately; without distinction
+indissolubiliter [ADV] whitaker		# indestructibly; imperishably
+indubitanter [ADV] whitaker		# indubitably, indisputably, beyond all doubt
+inestimabiliter [ADV] whitaker		# inestimably; incalculably
+inexpugnabiliter [ADV] whitaker		# irrefutably
+infatigabiliter [ADV] whitaker		# indefatigably
+infrunite [ADV] whitaker		# senselessly; in profusion (Souter)
+infundabiliter [ADV] whitaker		# unwarrantably; unjustly, for no good reason
+inhaesitanter [ADV] whitaker		# unhesitatingly
+inhianter [ADV] whitaker		# greedily; eagerly; with open mouth
+inhonorate [ADV] whitaker		# dishonorably(?)
+inopinabiliter [ADV] whitaker		# unexpectedly
+inordinaliter [ADV] whitaker		# irregularly; at irregular intervals
+inordinatim [ADV] whitaker		# irregularly; at irregular intervals
+inpassibiliter [ADV] whitaker		# without passion
+inproportionabilit [ADV] whitaker		# not proportionally, out of proportion
+inproportionaliter [ADV] whitaker		# not proportionally, out of proportion
+inputribiliter [ADV] whitaker		# incorruptibly
+inrecusabiliter [ADV] whitaker		# without possibility of refusal
+inrefragabiliter [ADV] whitaker		# unavoidably; irresistibly; incontestably
+inreligiose [ADV] whitaker		# impiously; blasphemously; irreligiously
+interdius [ADV] whitaker		# in the daytime; by day; (archaic form of interdiu)
+interminabiliter [ADV] whitaker		# unendingly
+introsum [ADV] whitaker		# to within, inwards, internally
+introsus [ADV] whitaker		# within, inside, to within, inwards, internally
+involuntarie [ADV] whitaker		# involuntarily
+iracunditer [ADV] whitaker		# angrily, irately; irritably; passionately
+irrecusabiliter [ADV] whitaker		# without possibility of refusal
+irrefragabiliter [ADV] whitaker		# unavoidably; irresistibly; incontestably
+irreligiose [ADV] whitaker		# impiously; blasphemously
+laciniatim [ADV] whitaker		# in small groups
+laetrosum [ADV] whitaker		# on the left
+laevorsum [ADV] whitaker		# on the left hand
+laevorsus [ADV] whitaker		# on the left hand
+lamma [ADV] whitaker		# why; (Aramaic)
+lema [ADV] whitaker		# why; (Aramaic)
+lemma [ADV] whitaker		# My God
+localiter [ADV] whitaker		# locally
+longinquo [ADV] whitaker		# far/long way (off), distant, at a distance
+longinquom [ADV] whitaker		# far/long way (off), distant, at a distance
+lycaonice [ADV] whitaker		# in the dialect of Lycaonia (district in southern Asia...
+maeste [ADV] whitaker		# sadly; mournfully; sorrowfully (Latham)
+maestiter [ADV] whitaker		# sadly; mournfully; sorrowfully (Latham)
+magnificenter [ADV] whitaker		# splendidly, in fine/lordly manner/language
+magnuficenter [ADV] whitaker		# splendidly, in fine/lordly manner/language
+malefice [ADV] whitaker		# wickedly; viciously; mischievously (L+S)
+malevole [ADV] whitaker		# malevolently
+malivole [ADV] whitaker		# malevolently
+manifestative [ADV] whitaker		# demonstratively, revealingly
+materialiter [ADV] whitaker		# materially; according to the occasion
+maximopere [ADV] whitaker	maximopere{Sup}	# greatly, exceedingly, with great endeavor
+methodice [ADV] whitaker		# methodically
+militarie [ADV] whitaker		# in a military or soldier-like manner
+miraculo [ADV] whitaker		# wonderfully
+moeste [ADV] whitaker		# sadly; mournfully; sorrowfully (Latham)
+moestiter [ADV] whitaker		# sadly; mournfully; sorrowfully (Latham)
+momentaliter [ADV] whitaker		# in a moment
+mordaciter [ADV] whitaker		# sharply, bitingly, stingingly, caustically
+mundialiter [ADV] whitaker		# in the manner of the world
+mutabiliter [ADV] whitaker		# with changeability of purpose
+mystice [ADV] whitaker		# mystically
+neglectim [ADV] whitaker		# negligently
+neutrubi [ADV] whitaker		# in neither place; neither way
+obsecundanter [ADV] whitaker		# according to; in compliance with
+opsecundanter [ADV] whitaker		# according to; in compliance with
+orthodoxe [ADV] whitaker		# in an orthodox manner
+ossiculatim [ADV] whitaker		# bone-by-bone
+paullatim [ADV] whitaker		# little by little, by degrees, gradually
+paullulatim [ADV] whitaker		# little by little, by degrees, bit by bit, gradually
+paullumper [ADV] whitaker		# for a short while/little bit
+paululatim [ADV] whitaker		# little by little, by degrees, bit by bit, gradually
+paulumper [ADV] whitaker		# for a short while/little bit
+perditim [ADV] whitaker		# desperately, to desperation
+perdudum [ADV] whitaker		# for a very long time past; long time ago
+peregri [ADV] whitaker		# abroad; away from home
+perpensius [ADV] whitaker		# more deliberately
+perspicace [ADV] whitaker		# watchfully; observantly
+persuasibiliter [ADV] whitaker		# persuasively, convincingly
+philosophice [ADV] whitaker		# philosophically
+plenarie [ADV] whitaker		# plenarily; fully
+pompatice [ADV] whitaker		# showily
+posterga [ADV] whitaker		# behind; behind one's back
+postergum [ADV] whitaker		# behind; behind one's back
+postibi [ADV] whitaker		# hereupon; afterwards
+postidea [ADV] whitaker		# afterwards
+praefiscine [ADV] whitaker		# meaning no evil; without offense
+praefiscini [ADV] whitaker		# meaning no evil; without offense
+praesentarie [ADV] whitaker		# in a moment; promptly/quickly
+praesentialiter [ADV] whitaker		# face to face; in the presence
+pressule [ADV] whitaker		# while pressing against
+proditiose [ADV] whitaker		# treacherously
+prognariter [ADV] whitaker		# very skillfully
+proparte [ADV] whitaker		# concerning
+proximo [ADV] whitaker		# very lately
+quamde [ADV] whitaker		# how, how much; as; (archaic form of quam)
+quandiucumque [ADV] whitaker		# for as long as; (rel adv)
+quandius [ADV] whitaker		# for as long as; up to the time that
+quoiuscemodi [ADV] whitaker		# of what kind/sort/nature soever
+quoiusquemodi [ADV] whitaker		# of whatever kind/sort/nature
+rationalabiliter [ADV] whitaker		# rationally, reasonably, logically
+regulatim [ADV] whitaker		# by way of general rule; according to rule (L+S)
+relative [ADV] whitaker		# relatively
+ritualiter [ADV] whitaker		# ritually; by religious means
+scripulatim [ADV] whitaker		# by amounts of a scripulum (1/288 libra/pound)
+scurriliter [ADV] whitaker		# in the manner of a scurra, with untimely/offensive...
+sempiternaliter [ADV] whitaker		# everlastingly; perpetually
+septempliciter [ADV] whitaker		# sevenfold; seven times; in a sevenfold manner
+septimpliciter [ADV] whitaker		# sevenfold; seven times; in a sevenfold manner
+sequestratim [ADV] whitaker		# in sequestration; separately
+seriose [ADV] whitaker		# seriously; effectually
+silentiose [ADV] whitaker		# silently
+solemnitus [ADV] whitaker		# solemnly; with due ritual/ceremony
+solempniter [ADV] whitaker		# solemnly
+sollemnitus [ADV] whitaker		# solemnly; with due ritual/ceremony
+spontaliter [ADV] whitaker		# voluntarily
+subreptum [ADV] whitaker		# stealthily
+subsultim [ADV] whitaker		# with frequent jumps/leaps into the air
+superabundanter [ADV] whitaker		# very abundantly
+superficietenus [ADV] whitaker		# superficially
+surreptum [ADV] whitaker		# stealthily
+suspecto [ADV] whitaker		# in suspicious circumstances; suspiciously
+susurratim [ADV] whitaker		# in a low voice/whisper, softly
+temperanter [ADV] whitaker		# temperately; with moderation/restraint
+terratenus [ADV] whitaker		# on the ground
+tessellatim [ADV] whitaker		# in checkered form
+transverse [ADV] whitaker		# crosswise; transversely; sideways
+trifarie [ADV] whitaker		# in three parts
+tripliciter [ADV] whitaker		# triply, in three ways
+tropologice [ADV] whitaker		# allegorically
+turpissime [ADV] whitaker	turpissime{Sup}	# basely; shamefully; uglily
+ubiquomque [ADV] whitaker		# wherever, in whatever place; in any place, somewhere
+ullatenus [ADV] whitaker		# in any respect whatever
+ultimate [ADV] whitaker		# extremely, to the last degree, utterly
+umbraliter [ADV] whitaker		# figuratively; metaphorically
+universim [ADV] whitaker		# generally, with universal application
+utralibet [ADV] whitaker		# on either side
+utrinde [ADV] whitaker		# from either side
+utrolibet [ADV] whitaker		# to whichever side you please
+utrumlibet [ADV] whitaker		# on either side; whichever/wherever (side) you please
+vapide [ADV] whitaker		# in a flat/vapid manner
+vellicatim [ADV] whitaker		# piecemeal; (by pinches)
+veneranter [ADV] whitaker		# reverently
+vicissatim [ADV] whitaker		# in turn, again; (pre-classical form of vicissim)
+vigies [ADV] whitaker		# twenty times; (mis-reading of vicies)
+visibiliter [ADV] whitaker		# visibly
+acre [ADV] whitaker		# 
+acutum [ADV] whitaker		# 
+adductius [ADV] whitaker		# 
+adulanter [ADV] whitaker		# 
+alterim [ADV] whitaker		# 
+ambiformiter [ADV] whitaker		# 
+Asiane [ADV] whitaker		# 
+bone [ADV] whitaker		# 
+callenter [ADV] whitaker		# 
+Celtice [ADV] whitaker		# 
+centiens [ADV] whitaker		# 
+citime [ADV] whitaker		# 
+cogitato [ADV] whitaker		# 
+commutate [ADV] whitaker		# 
+compluscule [ADV] whitaker		# 
+conjugaliter [ADV] whitaker		# 
+consentanee [ADV] whitaker		# 
+contanter [ADV] whitaker		# 
+conubialiter [ADV] whitaker		# 
+conversim [ADV] whitaker		# 
+cunque [ADV] whitaker		# 
+datatim [ADV] whitaker		# 
+desidiosus [ADV] whitaker		# slothful, indolent, lazy
+discriminatim [ADV] whitaker		# 
+discursim [ADV] whitaker		# 
+dissolute [ADV] whitaker		# 
+distincte [ADV] whitaker		# 
+diurne [ADV] whitaker		# 
+diutine [ADV] whitaker		# 
+diuturne [ADV] whitaker		# 
+divine [ADV] whitaker		# 
+docte [ADV] whitaker		# 
+domestice [ADV] whitaker		# 
+dominanter [ADV] whitaker		# 
+Dorice [ADV] whitaker		# 
+dubie [ADV] whitaker		# 
+dubitatim [ADV] whitaker		# 
+ducenties [ADV] whitaker		# two hundred times
+dulce [ADV] whitaker		# sweetly; pleasantly; fin
+duodecies [ADV] whitaker		# 
+duodetriciens [ADV] whitaker		# 
+duplicato [ADV] whitaker		# 
+duriter [ADV] whitaker		# 
+eapropter [ADV] whitaker		# 
+ecquo [ADV] whitaker		# 
+edocenter [ADV] whitaker		# 
+effeminate [ADV] whitaker		# 
+efferate [ADV] whitaker		# 
+effrenate [ADV] whitaker		# 
+electe [ADV] whitaker		# 
+emendate [ADV] whitaker		# 
+enarrate [ADV] whitaker		# 
+enucleate [ADV] whitaker		# 
+eradicitus [ADV] whitaker		# 
+erecte [ADV] whitaker		# 
+ethnice [ADV] whitaker		# 
+exacte [ADV] whitaker		# 
+exaggeranter [ADV] whitaker		# 
+exaltative [ADV] whitaker		# 
+examinate [ADV] whitaker		# 
+excitate [ADV] whitaker		# 
+excusate [ADV] whitaker		# 
+exercitate [ADV] whitaker		# 
+exercite [ADV] whitaker		# 
+exhinc [ADV] whitaker		# 
+exigue [ADV] whitaker		# 
+eximie [ADV] whitaker		# 
+exitiose [ADV] whitaker		# 
+expedite [ADV] whitaker		# 
+expense [ADV] whitaker		# 
+expergite [ADV] whitaker		# 
+explanate [ADV] whitaker		# 
+explicanter [ADV] whitaker		# 
+explicate [ADV] whitaker		# 
+explorate [ADV] whitaker		# 
+exposite [ADV] whitaker		# 
+expulsim [ADV] whitaker		# 
+exradicitus [ADV] whitaker		# 
+exsecrabiliter [ADV] whitaker		# 
+exserte [ADV] whitaker		# 
+exsultanter [ADV] whitaker		# 
+extempulo [ADV] whitaker		# 
+extense [ADV] whitaker		# 
+extente [ADV] whitaker		# 
+extrorsus [ADV] whitaker		# 
+fabulose [ADV] whitaker		# 
+facete [ADV] whitaker		# 
+factiose [ADV] whitaker		# 
+facul [ADV] whitaker		# 
+faculter [ADV] whitaker		# 
+faenerato [ADV] whitaker		# 
+famose [ADV] whitaker		# 
+famulanter [ADV] whitaker		# 
+fanatice [ADV] whitaker		# 
+fartim [ADV] whitaker		# 
+fastidienter [ADV] whitaker		# 
+fastidiose [ADV] whitaker		# 
+fastigate [ADV] whitaker		# 
+fauste [ADV] whitaker		# 
+fecunde [ADV] whitaker		# 
+feminine [ADV] whitaker		# 
+feraciter [ADV] whitaker		# 
+fertiliter [ADV] whitaker		# 
+ferventer [ADV] whitaker		# 
+fide [ADV] whitaker		# 
+fidele [ADV] whitaker		# 
+fidenter [ADV] whitaker		# 
+figurate [ADV] whitaker		# 
+figurato [ADV] whitaker		# 
+Finite [ADV] whitaker		# 
+fistulatim [ADV] whitaker		# 
+fixe [ADV] whitaker		# 
+flagitiose [ADV] whitaker		# 
+flexuose [ADV] whitaker		# 
+florenter [ADV] whitaker		# 
+floride [ADV] whitaker		# 
+fluxe [ADV] whitaker		# 
+fortassean [ADV] whitaker		# 
+fragose [ADV] whitaker		# 
+fragranter [ADV] whitaker		# 
+fraterne [ADV] whitaker		# 
+frequentative [ADV] whitaker		# 
+frigide [ADV] whitaker		# 
+fructuose [ADV] whitaker		# 
+fucate [ADV] whitaker		# 
+fugaciter [ADV] whitaker		# 
+furaciter [ADV] whitaker		# 
+furenter [ADV] whitaker		# 
+furialiter [ADV] whitaker		# 
+furibunde [ADV] whitaker		# 
+furiose [ADV] whitaker		# 
+furtive [ADV] whitaker		# 
+fuse [ADV] whitaker		# 
+futtiliter [ADV] whitaker		# 
+Gallice [ADV] whitaker		# 
+genialiter [ADV] whitaker		# 
+genitaliter [ADV] whitaker		# 
+gentiliter [ADV] whitaker		# 
+gentilitus [ADV] whitaker		# 
+germane [ADV] whitaker		# 
+germanitus [ADV] whitaker		# 
+Getice [ADV] whitaker		# 
+gladiatorie [ADV] whitaker		# 
+glaebatim [ADV] whitaker		# 
+globatim [ADV] whitaker		# 
+glomerate [ADV] whitaker		# 
+glomeratim [ADV] whitaker		# 
+graciliter [ADV] whitaker		# 
+Graecanice [ADV] whitaker		# 
+Graecatim [ADV] whitaker		# 
+Graece [ADV] whitaker		# 
+granatim [ADV] whitaker		# 
+grande [ADV] whitaker		# 
+gratiose [ADV] whitaker		# 
+gulose [ADV] whitaker		# 
+habiliter [ADV] whitaker		# 
+haeretice [ADV] whitaker		# 
+heic [ADV] whitaker		# 
+hereditarie [ADV] whitaker		# 
+hilare [ADV] whitaker		# 
+hilariter [ADV] whitaker		# 
+hinnienter [ADV] whitaker		# 
+hiulce [ADV] whitaker		# 
+horno [ADV] whitaker		# 
+horrende [ADV] whitaker		# 
+horride [ADV] whitaker		# 
+horrifice [ADV] whitaker		# 
+horsum [ADV] whitaker		# 
+hostifice [ADV] whitaker		# 
+hucine [ADV] whitaker		# 
+humane [ADV] whitaker		# 
+ignave [ADV] whitaker		# 
+ignaviter [ADV] whitaker		# 
+ignobiliter [ADV] whitaker		# 
+ignominiose [ADV] whitaker		# 
+ilicet [ADV] whitaker		# you may go; it is over
+illa [ADV] whitaker		# 
+illactenus [ADV] whitaker		# 
+illaese [ADV] whitaker		# 
+illatenus [ADV] whitaker		# 
+illecebrose [ADV] whitaker		# 
+illepide [ADV] whitaker		# 
+illi [ADV] whitaker		# 
+illicite [ADV] whitaker		# 
+illuminate [ADV] whitaker		# 
+imaginarie [ADV] whitaker		# 
+imbecille [ADV] whitaker		# 
+imbricatim [ADV] whitaker		# 
+imitus [ADV] whitaker		# 
+immane [ADV] whitaker		# 
+immaniter [ADV] whitaker		# 
+immature [ADV] whitaker		# 
+immeditate [ADV] whitaker		# 
+immite [ADV] whitaker		# 
+immoderate [ADV] whitaker		# 
+immodice [ADV] whitaker		# 
+immutabiliter [ADV] whitaker		# 
+imparcenter [ADV] whitaker		# 
+impariter [ADV] whitaker		# 
+impatienter [ADV] whitaker		# 
+impavide [ADV] whitaker		# 
+impendio [ADV] whitaker		# 
+imperabiliter [ADV] whitaker		# 
+imperative [ADV] whitaker		# 
+imperatorie [ADV] whitaker		# 
+imperfecte [ADV] whitaker		# 
+imperiose [ADV] whitaker		# 
+imperite [ADV] whitaker		# 
+importune [ADV] whitaker		# 
+impotenter [ADV] whitaker		# 
+impresse [ADV] whitaker		# 
+imprincipaliter [ADV] whitaker		# 
+improbe [ADV] whitaker		# 
+improbiter [ADV] whitaker		# 
+imprope [ADV] whitaker		# 
+improperanter [ADV] whitaker		# 
+improprie [ADV] whitaker		# 
+improvide [ADV] whitaker		# 
+impudice [ADV] whitaker		# 
+inaniter [ADV] whitaker		# 
+inargute [ADV] whitaker		# 
+inaugurato [ADV] whitaker		# 
+inauspicato [ADV] whitaker		# 
+incallide [ADV] whitaker		# 
+incaute [ADV] whitaker		# 
+incerte [ADV] whitaker		# 
+inceste [ADV] whitaker		# 
+incise [ADV] whitaker		# 
+incitate [ADV] whitaker		# 
+incoinquinabiliter [ADV] whitaker		# 
+incompte [ADV] whitaker		# 
+inconcinne [ADV] whitaker		# 
+inconcinniter [ADV] whitaker		# 
+inconcusse [ADV] whitaker		# 
+incondite [ADV] whitaker		# 
+inconsiderate [ADV] whitaker		# 
+incoram [ADV] whitaker		# In the presence of; in the presence of all
+incorporaliter [ADV] whitaker		# 
+incredibiliter [ADV] whitaker		# 
+incruente [ADV] whitaker		# 
+inculpate [ADV] whitaker		# 
+indecore [ADV] whitaker		# 
+indefense [ADV] whitaker		# 
+indefinite [ADV] whitaker		# 
+indeliberanter [ADV] whitaker		# 
+indevote [ADV] whitaker		# 
+indifficulter [ADV] whitaker		# 
+indigeste [ADV] whitaker		# 
+indisjunctim [ADV] whitaker		# 
+indisposite [ADV] whitaker		# 
+indistanter [ADV] whitaker		# Uninterruptedly
+indistincte [ADV] whitaker		# 
+indivise [ADV] whitaker		# 
+indocte [ADV] whitaker		# 
+indubie [ADV] whitaker		# 
+inefficaciter [ADV] whitaker		# 
+inepte [ADV] whitaker		# 
+infacete [ADV] whitaker		# 
+infecunde [ADV] whitaker		# 
+infense [ADV] whitaker		# 
+infestiviter [ADV] whitaker		# 
+infideliter [ADV] whitaker		# 
+infinite [ADV] whitaker		# 
+inflammanter [ADV] whitaker		# 
+inflate [ADV] whitaker		# 
+informiter [ADV] whitaker		# 
+infructuose [ADV] whitaker		# 
+ingenue [ADV] whitaker		# 
+ingravate [ADV] whitaker		# 
+inhumaniter [ADV] whitaker		# 
+ininvicem [ADV] whitaker		# 
+injucunde [ADV] whitaker		# 
+injurie [ADV] whitaker		# 
+injuriose [ADV] whitaker		# 
+injuste [ADV] whitaker		# 
+innocue [ADV] whitaker		# 
+innoxie [ADV] whitaker		# 
+innumerabiliter [ADV] whitaker		# 
+inoffense [ADV] whitaker		# 
+inquiete [ADV] whitaker		# 
+inquinate [ADV] whitaker		# 
+inscie [ADV] whitaker		# 
+inscite [ADV] whitaker		# 
+insignite [ADV] whitaker		# 
+insigniter [ADV] whitaker		# 
+insolite [ADV] whitaker		# 
+inspirate [ADV] whitaker		# 
+instabiliter [ADV] whitaker		# 
+instrenue [ADV] whitaker		# 
+instructe [ADV] whitaker		# 
+insubide [ADV] whitaker		# 
+insuete [ADV] whitaker		# 
+insulse [ADV] whitaker		# 
+insultatorie [ADV] whitaker		# 
+intellegenter [ADV] whitaker		# 
+intemerate [ADV] whitaker		# 
+intempestive [ADV] whitaker		# 
+intempestiviter [ADV] whitaker		# 
+intentiose [ADV] whitaker		# 
+inter [ADV] whitaker		# in the midst; in between
+intercise [ADV] whitaker		# 
+interjective [ADV] whitaker		# 
+interne [ADV] whitaker		# 
+internecine [ADV] whitaker		# 
+interrite [ADV] whitaker		# 
+interrogative [ADV] whitaker		# 
+intervocaliter [ADV] whitaker		# 
+intestato [ADV] whitaker		# 
+intimide [ADV] whitaker		# 
+intolerabiliter [ADV] whitaker		# 
+intransitive [ADV] whitaker		# 
+intrepide [ADV] whitaker		# 
+introversus [ADV] whitaker		# 
+inurbane [ADV] whitaker		# 
+inusque [ADV] whitaker		# 
+invalide [ADV] whitaker		# 
+invenuste [ADV] whitaker		# 
+inverecunde [ADV] whitaker		# 
+inversum [ADV] whitaker		# 
+invicte [ADV] whitaker		# 
+invise [ADV] whitaker		# 
+invisibiliter [ADV] whitaker		# 
+invite [ADV] whitaker		# 
+involute [ADV] whitaker		# 
+Ionice [ADV] whitaker		# 
+irrecitabiliter [ADV] whitaker		# 
+irremisse [ADV] whitaker		# 
+irridenter [ADV] whitaker		# 
+irrisive [ADV] whitaker		# 
+irritate [ADV] whitaker		# 
+istim [ADV] whitaker		# 
+istorsum [ADV] whitaker		# 
+itatenus [ADV] whitaker		# 
+iterato [ADV] whitaker		# 
+jejune [ADV] whitaker		# 
+joculanter [ADV] whitaker		# 
+judicato [ADV] whitaker		# 
+juge [ADV] whitaker		# 
+jugeratim [ADV] whitaker		# 
+jurato [ADV] whitaker		# 
+juveniliter [ADV] whitaker		# 
+laciniose [ADV] whitaker		# 
+lacrimose [ADV] whitaker		# 
+laetanter [ADV] whitaker		# 
+laeve [ADV] whitaker		# 
+lascive [ADV] whitaker		# 
+lasciviter [ADV] whitaker		# 
+latebrose [ADV] whitaker		# 
+Latinae [ADV] whitaker		# 
+laudabiliter [ADV] whitaker		# 
+laudate [ADV] whitaker		# 
+lecte [ADV] whitaker		# 
+lene [ADV] whitaker		# 
+libidinose [ADV] whitaker		# 
+librate [ADV] whitaker		# 
+licentiose [ADV] whitaker		# 
+limate [ADV] whitaker		# 
+liquide [ADV] whitaker		# 
+liquido [ADV] whitaker		# 
+liventer [ADV] whitaker		# 
+livide [ADV] whitaker		# 
+locuplete [ADV] whitaker		# 
+longiter [ADV] whitaker		# 
+longiuscule [ADV] whitaker		# 
+longum [ADV] whitaker		# 
+loquaciter [ADV] whitaker		# 
+lotiolente [ADV] whitaker		# 
+luci [ADV] whitaker		# 
+lucide [ADV] whitaker		# 
+lucrose [ADV] whitaker		# 
+luctuose [ADV] whitaker		# 
+ludibriose [ADV] whitaker		# 
+lugubre [ADV] whitaker		# 
+lugubriter [ADV] whitaker		# 
+lusorie [ADV] whitaker		# 
+lutulente [ADV] whitaker		# 
+luxuriose [ADV] whitaker		# 
+maculatim [ADV] whitaker		# 
+mage [ADV] whitaker		# 
+maligne [ADV] whitaker		# 
+mansuete [ADV] whitaker		# 
+massaliter [ADV] whitaker		# 
+maturate [ADV] whitaker		# 
+mediatenus [ADV] whitaker		# 
+medioxime [ADV] whitaker		# 
+meditate [ADV] whitaker		# 
+memore [ADV] whitaker		# 
+memoritei [ADV] whitaker		# 
+mendice [ADV] whitaker		# 
+mendose [ADV] whitaker		# 
+mensatim [ADV] whitaker		# 
+merace [ADV] whitaker		# 
+mere [ADV] whitaker		# 
+meretricie [ADV] whitaker		# 
+meritissime [ADV] whitaker		# 
+metaphorice [ADV] whitaker		# 
+millies [ADV] whitaker		# 
+mimice [ADV] whitaker		# 
+minanter [ADV] whitaker		# 
+minime [ADV] whitaker		# 
+minitabiliter [ADV] whitaker		# 
+mirifice [ADV] whitaker		# 
+mirimodis [ADV] whitaker		# 
+miseranter [ADV] whitaker		# 
+miseriter [ADV] whitaker		# 
+mite [ADV] whitaker		# 
+mitigabiliter [ADV] whitaker		# 
+mitiganter [ADV] whitaker		# 
+moderate [ADV] whitaker		# 
+modeste [ADV] whitaker		# 
+monstrifice [ADV] whitaker		# 
+monstruose [ADV] whitaker		# 
+morate [ADV] whitaker		# 
+moratim [ADV] whitaker		# 
+mordicitus [ADV] whitaker		# 
+more [ADV] whitaker		# 
+morose [ADV] whitaker		# 
+morsicatim [ADV] whitaker		# 
+mortaliter [ADV] whitaker		# 
+muliebriter [ADV] whitaker		# 
+munde [ADV] whitaker		# 
+munditer [ADV] whitaker		# 
+mundule [ADV] whitaker		# 
+munite [ADV] whitaker		# 
+muricatim [ADV] whitaker		# 
+muscose [ADV] whitaker		# 
+mutuiter [ADV] whitaker		# 
+mysterialiter [ADV] whitaker		# 
+narrative [ADV] whitaker		# 
+nasute [ADV] whitaker		# 
+nativitus [ADV] whitaker		# 
+naturalitus [ADV] whitaker		# 
+nave [ADV] whitaker		# 
+necne [ADV] whitaker		# or not
+necopinato [ADV] whitaker		# 
+nefande [ADV] whitaker		# 
+neglecte [ADV] whitaker		# 
+neoterice [ADV] whitaker		# 
+nervose [ADV] whitaker		# 
+nescienter [ADV] whitaker		# 
+neu [ADV] whitaker		# 
+neutre [ADV] whitaker		# 
+neve [ADV] whitaker		# 
+nitenter [ADV] whitaker		# 
+nitide [ADV] whitaker		# 
+nitidiuscule [ADV] whitaker		# 
+nocenter [ADV] whitaker		# 
+noctanter [ADV] whitaker		# 
+nodose [ADV] whitaker		# 
+nonagies [ADV] whitaker		# 
+noningenties [ADV] whitaker		# 
+nono [ADV] whitaker		# 
+novelle [ADV] whitaker		# 
+novicio [ADV] whitaker		# 
+novitio [ADV] whitaker		# 
+nugacissime [ADV] whitaker		# 
+nugatorie [ADV] whitaker		# 
+numerositer [ADV] whitaker		# 
+nuncubi [ADV] whitaker		# anywhere? whether anywhere?
+nuncupatim [ADV] whitaker		# 
+oblique [ADV] whitaker		# 
+obnise [ADV] whitaker		# 
+obnoxie [ADV] whitaker		# 
+obnoxiose [ADV] whitaker		# 
+obreptive [ADV] whitaker		# 
+obscure [ADV] whitaker		# 
+observanter [ADV] whitaker		# 
+observate [ADV] whitaker		# 
+obtemperanter [ADV] whitaker		# 
+obtuse [ADV] whitaker		# 
+occasionaliter [ADV] whitaker		# 
+octingenties [ADV] whitaker		# 
+oculitus [ADV] whitaker		# 
+offatim [ADV] whitaker		# 
+officiose [ADV] whitaker		# 
+offirmate [ADV] whitaker		# 
+ominose [ADV] whitaker		# 
+onerose [ADV] whitaker		# 
+operose [ADV] whitaker		# 
+operte [ADV] whitaker		# 
+opime [ADV] whitaker		# 
+oppidatim [ADV] whitaker		# 
+optato [ADV] whitaker		# 
+optime [ADV] whitaker		# 
+orbiculatim [ADV] whitaker		# 
+ordinarie [ADV] whitaker		# 
+originitus [ADV] whitaker		# 
+Osce [ADV] whitaker		# 
+oscitanter [ADV] whitaker		# 
+ostiatim [ADV] whitaker		# from door to door; from house to house
+otiose [ADV] whitaker		# 
+pacate [ADV] whitaker		# 
+palliolatim [ADV] whitaker		# 
+parabolice [ADV] whitaker		# 
+parate [ADV] whitaker		# 
+parciter [ADV] whitaker		# 
+pariliter [ADV] whitaker		# 
+partialiter [ADV] whitaker		# 
+partiatim [ADV] whitaker		# 
+particulatim [ADV] whitaker		# 
+parve [ADV] whitaker		# 
+parvulum [ADV] whitaker		# 
+passibiliter [ADV] whitaker		# 
+patenter [ADV] whitaker		# 
+patrice [ADV] whitaker		# 
+patrie [ADV] whitaker		# 
+paucies [ADV] whitaker		# 
+pauperius [ADV] whitaker		# 
+pausate [ADV] whitaker		# 
+pauxillatim [ADV] whitaker		# 
+pauxillulum [ADV] whitaker		# 
+pauxillum [ADV] whitaker		# 
+pavide [ADV] whitaker		# 
+peccanter [ADV] whitaker		# 
+pectinatim [ADV] whitaker		# 
+pecuniarie [ADV] whitaker		# 
+pejus [ADV] whitaker		# 
+pene [ADV] whitaker		# 
+penite [ADV] whitaker		# 
+pense [ADV] whitaker		# 
+pensiculate [ADV] whitaker		# 
+pensim [ADV] whitaker		# 
+peracute [ADV] whitaker		# 
+peragranter [ADV] whitaker		# 
+peranguste [ADV] whitaker		# 
+perbelle [ADV] whitaker		# 
+perbenigne [ADV] whitaker		# 
+perblande [ADV] whitaker		# 
+percommode [ADV] whitaker		# 
+percontative [ADV] whitaker		# 
+percopiose [ADV] whitaker		# 
+perdifficiliter [ADV] whitaker		# 
+peremptorie [ADV] whitaker		# 
+perenne [ADV] whitaker		# 
+perexigue [ADV] whitaker		# 
+perfide [ADV] whitaker		# 
+perfidiose [ADV] whitaker		# 
+perfortiter [ADV] whitaker		# 
+perfusorie [ADV] whitaker		# 
+periculose [ADV] whitaker		# 
+perindigne [ADV] whitaker		# 
+perite [ADV] whitaker		# 
+perjucunde [ADV] whitaker		# 
+perlate [ADV] whitaker		# 
+perlibenter [ADV] whitaker		# 
+perlubenter [ADV] whitaker		# 
+permale [ADV] whitaker		# 
+permananter [ADV] whitaker		# 
+permaxime [ADV] whitaker		# 
+permixte [ADV] whitaker		# 
+permixtim [ADV] whitaker		# 
+permodice [ADV] whitaker		# 
+perniciose [ADV] whitaker		# 
+perniciter [ADV] whitaker		# 
+pernimium [ADV] whitaker		# 
+peropportune [ADV] whitaker		# 
+perparce [ADV] whitaker		# 
+perpense [ADV] whitaker		# 
+perplexe [ADV] whitaker		# 
+perplexim [ADV] whitaker		# 
+perraro [ADV] whitaker		# 
+persevere [ADV] whitaker		# 
+personative [ADV] whitaker		# 
+perspecte [ADV] whitaker		# 
+perspicaciter [ADV] whitaker		# 
+pertinenter [ADV] whitaker		# 
+pertractate [ADV] whitaker		# 
+pertumultuose [ADV] whitaker		# 
+perturbate [ADV] whitaker		# 
+perubique [ADV] whitaker		# 
+perurbane [ADV] whitaker		# 
+pervarie [ADV] whitaker		# 
+perverse [ADV] whitaker		# 
+perviam [ADV] whitaker		# 
+pervicaciter [ADV] whitaker		# 
+pervulgate [ADV] whitaker		# 
+pessime [ADV] whitaker		# 
+phantastice [ADV] whitaker		# 
+physiologice [ADV] whitaker		# 
+pie [ADV] whitaker		# 
+pigre [ADV] whitaker		# 
+pilatim [ADV] whitaker		# pillar-wise; with pillars
+placabiliter [ADV] whitaker		# 
+placate [ADV] whitaker		# 
+plusculum [ADV] whitaker		# 
+Poenice [ADV] whitaker		# 
+poenitenter [ADV] whitaker		# 
+polite [ADV] whitaker		# 
+pollenter [ADV] whitaker		# 
+pollucibiliter [ADV] whitaker		# 
+pollucte [ADV] whitaker		# 
+pompabiliter [ADV] whitaker		# 
+pompaliter [ADV] whitaker		# 
+pone [ADV] whitaker		# after; behind; back
+poplicitus [ADV] whitaker		# 
+populatim [ADV] whitaker		# 
+porrecte [ADV] whitaker		# 
+portuose [ADV] whitaker		# 
+posteaquam [ADV] whitaker		# 
+postriduo [ADV] whitaker		# 
+potentialiter [ADV] whitaker		# 
+praealte [ADV] whitaker		# 
+praeceptive [ADV] whitaker		# 
+praecipitanter [ADV] whitaker		# 
+praecise [ADV] whitaker		# 
+praeclare [ADV] whitaker		# 
+praeclariter [ADV] whitaker		# 
+praecoque [ADV] whitaker		# 
+praedulce [ADV] whitaker		# 
+praefascine [ADV] whitaker		# 
+praefinito [ADV] whitaker		# 
+praefracte [ADV] whitaker		# 
+praelicenter [ADV] whitaker		# 
+praemature [ADV] whitaker		# 
+praemetuenter [ADV] whitaker		# 
+praemodum [ADV] whitaker		# 
+praenimis [ADV] whitaker		# 
+praeparato [ADV] whitaker		# 
+praepostere [ADV] whitaker		# 
+praepropere [ADV] whitaker		# 
+praequam [ADV] whitaker		# 
+praescriptive [ADV] whitaker		# 
+praesentanee [ADV] whitaker		# 
+praestanter [ADV] whitaker		# 
+praestructim [ADV] whitaker		# 
+praesumenter [ADV] whitaker		# 
+praesumptiose [ADV] whitaker		# 
+praeter [ADV] whitaker		# by; past; beyond
+praetereunter [ADV] whitaker		# 
+praeterhac [ADV] whitaker		# 
+praevalide [ADV] whitaker		# 
+praevise [ADV] whitaker		# 
+prave [ADV] whitaker		# 
+precario [ADV] whitaker		# 
+precative [ADV] whitaker		# 
+presse [ADV] whitaker		# 
+pressim [ADV] whitaker		# 
+prime [ADV] whitaker		# 
+primiter [ADV] whitaker		# 
+primulum [ADV] whitaker		# 
+priorsum [ADV] whitaker		# 
+prisce [ADV] whitaker		# 
+privato [ADV] whitaker		# 
+probiter [ADV] whitaker		# 
+probrose [ADV] whitaker		# 
+procaciter [ADV] whitaker		# 
+procellose [ADV] whitaker		# 
+proclive [ADV] whitaker		# 
+procliviter [ADV] whitaker		# 
+prodige [ADV] whitaker		# 
+prodigiose [ADV] whitaker		# 
+profane [ADV] whitaker		# 
+proficienter [ADV] whitaker		# 
+profluenter [ADV] whitaker		# 
+profunde [ADV] whitaker		# 
+profuse [ADV] whitaker		# 
+prohinc [ADV] whitaker		# 
+projecte [ADV] whitaker		# 
+prominenter [ADV] whitaker		# 
+promiscuus [ADV] whitaker		# mixed; not separate; distinct
+promissive [ADV] whitaker		# 
+promptim [ADV] whitaker		# 
+pronuntiative [ADV] whitaker		# 
+propense [ADV] whitaker		# 
+properatim [ADV] whitaker		# 
+properato [ADV] whitaker		# 
+prophetice [ADV] whitaker		# 
+propinque [ADV] whitaker		# 
+propius [ADV] whitaker		# 
+proportionabiliter [ADV] whitaker		# 
+propriatim [ADV] whitaker		# 
+propter [ADV] whitaker		# near; hard by; at hand
+prospecte [ADV] whitaker		# 
+prospere [ADV] whitaker		# 
+prosperiter [ADV] whitaker		# 
+prospicienter [ADV] whitaker		# 
+prospicue [ADV] whitaker		# 
+protenus [ADV] whitaker		# 
+proterve [ADV] whitaker		# 
+proterviter [ADV] whitaker		# 
+protinis [ADV] whitaker		# 
+protracte [ADV] whitaker		# 
+prout [ADV] whitaker		# 
+provide [ADV] whitaker		# 
+providenter [ADV] whitaker		# 
+proxime [ADV] whitaker		# 
+pudice [ADV] whitaker		# 
+pugnaciter [ADV] whitaker		# 
+Punice [ADV] whitaker		# 
+purgate [ADV] whitaker		# 
+puriter [ADV] whitaker		# 
+putide [ADV] whitaker		# 
+quadragies [ADV] whitaker		# 
+quadrate [ADV] whitaker		# 
+quadrifariter [ADV] whitaker		# 
+quadringenties [ADV] whitaker		# 
+quadripartito [ADV] whitaker		# 
+quadruplicato [ADV] whitaker		# 
+quaestionaliter [ADV] whitaker		# 
+quaestuose [ADV] whitaker		# 
+quamobrem [ADV] whitaker		# Interrog; for what reason? on what account? wherefore?...
+quanam [ADV] whitaker		# Where indeed; where
+quandolibet [ADV] whitaker		# 
+quandoquidem [ADV] whitaker		# 
+quantisper [ADV] whitaker		# how long
+quantulum [ADV] whitaker		# 
+quaque [ADV] whitaker		# 
+quarto [ADV] whitaker		# 
+quartum [ADV] whitaker		# 
+quindecies [ADV] whitaker		# 
+quingenties [ADV] whitaker		# 
+quinquagiens [ADV] whitaker		# 
+quinquepartito [ADV] whitaker		# 
+quinquiens [ADV] whitaker		# 
+quoad [ADV] whitaker		# how long?
+quomodolibet [ADV] whitaker		# 
+quoniam [ADV] whitaker		# since now; since then; since
+quotcumque [ADV] whitaker		# 
+quotidiano [ADV] whitaker		# 
+quotiensque [ADV] whitaker		# 
+quovis [ADV] whitaker		# 
+rabide [ADV] whitaker		# 
+rancide [ADV] whitaker		# 
+rapide [ADV] whitaker		# 
+rationaliter [ADV] whitaker		# 
+rato [ADV] whitaker		# 
+recessim [ADV] whitaker		# 
+recto [ADV] whitaker		# 
+redundanter [ADV] whitaker		# 
+reflexim [ADV] whitaker		# 
+regie [ADV] whitaker		# 
+regifice [ADV] whitaker		# 
+regionatim [ADV] whitaker		# 
+reluctanter [ADV] whitaker		# 
+renitenter [ADV] whitaker		# 
+repentinaliter [ADV] whitaker		# 
+repentino [ADV] whitaker		# 
+represse [ADV] whitaker		# 
+repugnanter [ADV] whitaker		# 
+resolute [ADV] whitaker		# 
+responsive [ADV] whitaker		# 
+restricte [ADV] whitaker		# 
+retorride [ADV] whitaker		# 
+reverecunditer [ADV] whitaker		# 
+rhetorice [ADV] whitaker		# 
+rigide [ADV] whitaker		# 
+rivatim [ADV] whitaker		# 
+rotatim [ADV] whitaker		# 
+rotunde [ADV] whitaker		# 
+sacrabiliter [ADV] whitaker		# 
+sacrate [ADV] whitaker		# 
+sacrilege [ADV] whitaker		# 
+saeve [ADV] whitaker		# 
+saeviter [ADV] whitaker		# 
+sagaciter [ADV] whitaker		# 
+salse [ADV] whitaker		# 
+saltatim [ADV] whitaker		# 
+saltatorie [ADV] whitaker		# 
+saltuatim [ADV] whitaker		# by leaps; hops
+saniter [ADV] whitaker		# 
+sapide [ADV] whitaker		# 
+satianter [ADV] whitaker		# 
+satiate [ADV] whitaker		# 
+saturanter [ADV] whitaker		# 
+scaenice [ADV] whitaker		# 
+scelerate [ADV] whitaker		# 
+sceleste [ADV] whitaker		# 
+scissim [ADV] whitaker		# 
+scite [ADV] whitaker		# 
+scitule [ADV] whitaker		# 
+scrupulose [ADV] whitaker		# 
+secrete [ADV] whitaker		# 
+secunde [ADV] whitaker		# 
+secundum [ADV] whitaker		# 
+secure [ADV] whitaker		# 
+sedate [ADV] whitaker		# 
+seditiose [ADV] whitaker		# 
+sedule [ADV] whitaker		# 
+segne [ADV] whitaker		# 
+segregatim [ADV] whitaker		# 
+Semigraece [ADV] whitaker		# 
+semiplene [ADV] whitaker		# 
+semote [ADV] whitaker		# 
+sempiternum [ADV] whitaker		# 
+sensibiliter [ADV] whitaker		# 
+separate [ADV] whitaker		# 
+septimo [ADV] whitaker		# 
+septimum [ADV] whitaker		# 
+septingenties [ADV] whitaker		# 
+septuagies [ADV] whitaker		# 
+sequaciter [ADV] whitaker		# 
+serene [ADV] whitaker		# 
+sermocinanter [ADV] whitaker		# 
+serratim [ADV] whitaker		# 
+seu [ADV] whitaker		# 
+severe [ADV] whitaker		# 
+severiter [ADV] whitaker		# 
+sexto [ADV] whitaker		# 
+signate [ADV] whitaker		# 
+silenter [ADV] whitaker		# 
+simulter [ADV] whitaker		# 
+sincere [ADV] whitaker		# 
+sinceriter [ADV] whitaker		# 
+singillariter [ADV] whitaker		# 
+singlariter [ADV] whitaker		# 
+singularie [ADV] whitaker		# 
+sinistre [ADV] whitaker		# 
+sinuose [ADV] whitaker		# 
+siquidem [ADV] whitaker		# If only; if indeed; Sy
+sitienter [ADV] whitaker		# 
+socialiter [ADV] whitaker		# 
+solide [ADV] whitaker		# 
+solute [ADV] whitaker		# 
+sonore [ADV] whitaker		# 
+sortito [ADV] whitaker		# 
+sparsim [ADV] whitaker		# 
+spatiose [ADV] whitaker		# 
+speciatim [ADV] whitaker		# 
+spectate [ADV] whitaker		# 
+spisse [ADV] whitaker		# 
+splendide [ADV] whitaker		# 
+spurce [ADV] whitaker		# 
+squalide [ADV] whitaker		# 
+stabiliter [ADV] whitaker		# 
+stillanter [ADV] whitaker		# 
+stirpitus [ADV] whitaker		# by the stalk; by the roots
+Stoice [ADV] whitaker		# 
+stomachanter [ADV] whitaker		# 
+stomachose [ADV] whitaker		# 
+strenue [ADV] whitaker		# 
+stricte [ADV] whitaker		# 
+structe [ADV] whitaker		# 
+suadenter [ADV] whitaker		# 
+subdiu [ADV] whitaker		# 
+subdole [ADV] whitaker		# 
+subjecte [ADV] whitaker		# 
+subjective [ADV] whitaker		# 
+sublate [ADV] whitaker		# 
+sublimen [ADV] whitaker		# 
+subobscure [ADV] whitaker		# 
+succincte [ADV] whitaker		# 
+suffrigide [ADV] whitaker		# 
+summisse [ADV] whitaker		# 
+summissim [ADV] whitaker		# 
+sumptuose [ADV] whitaker		# 
+superbiter [ADV] whitaker		# 
+superflue [ADV] whitaker		# 
+superstitiose [ADV] whitaker		# 
+supervacue [ADV] whitaker		# 
+supervacuo [ADV] whitaker		# 
+supine [ADV] whitaker		# 
+supplicue [ADV] whitaker		# 
+suppresse [ADV] whitaker		# 
+surculose [ADV] whitaker		# 
+surde [ADV] whitaker		# 
+surrepente [ADV] whitaker		# 
+surrustice [ADV] whitaker		# 
+suspense [ADV] whitaker		# 
+syllabatim [ADV] whitaker		# 
+syllabice [ADV] whitaker		# 
+symbolice [ADV] whitaker		# 
+synecdochice [ADV] whitaker		# 
+tacite [ADV] whitaker		# 
+tacito [ADV] whitaker		# 
+taediose [ADV] whitaker		# 
+tammodo [ADV] whitaker		# 
+tanquam [ADV] whitaker		# 
+tarde [ADV] whitaker		# 
+tardiuscule [ADV] whitaker		# 
+tecte [ADV] whitaker		# 
+temerarie [ADV] whitaker		# 
+temeriter [ADV] whitaker		# 
+temperate [ADV] whitaker		# 
+tempestive [ADV] whitaker		# 
+tempestivo [ADV] whitaker		# 
+temporaliter [ADV] whitaker		# 
+temporarie [ADV] whitaker		# 
+temporatim [ADV] whitaker		# 
+temulenter [ADV] whitaker		# 
+tenaciter [ADV] whitaker		# 
+tenebrose [ADV] whitaker		# 
+tenere [ADV] whitaker		# 
+tepide [ADV] whitaker		# 
+terdecies [ADV] whitaker		# 
+tergenus [ADV] whitaker		# 
+tergiversanter [ADV] whitaker		# 
+terminate [ADV] whitaker		# 
+terrulente [ADV] whitaker		# 
+tertiato [ADV] whitaker		# 
+testatim [ADV] whitaker		# 
+testato [ADV] whitaker		# 
+tetre [ADV] whitaker		# 
+titubanter [ADV] whitaker		# 
+tolerabiliter [ADV] whitaker		# 
+tolutim [ADV] whitaker		# 
+topper [ADV] whitaker		# 
+torrenter [ADV] whitaker		# 
+torte [ADV] whitaker		# 
+tortuose [ADV] whitaker		# 
+torviter [ADV] whitaker		# 
+totiens [ADV] whitaker		# so often; so many times; as often
+tractabiliter [ADV] whitaker		# 
+tragice [ADV] whitaker		# 
+tranquille [ADV] whitaker		# 
+transcursim [ADV] whitaker		# 
+translaticie [ADV] whitaker		# 
+transversim [ADV] whitaker		# 
+trebaciter [ADV] whitaker		# 
+trecenties [ADV] whitaker		# 
+trementer [ADV] whitaker		# 
+tremule [ADV] whitaker		# 
+tricenties [ADV] whitaker		# 
+tricies [ADV] whitaker		# 
+tripartito [ADV] whitaker		# 
+trivialiter [ADV] whitaker		# 
+tropice [ADV] whitaker		# 
+truculente [ADV] whitaker		# 
+Tulliane [ADV] whitaker		# 
+tumide [ADV] whitaker		# 
+tumultuarie [ADV] whitaker		# 
+tumultuose [ADV] whitaker		# 
+turbate [ADV] whitaker		# 
+turbide [ADV] whitaker		# 
+turbulente [ADV] whitaker		# 
+turbulenter [ADV] whitaker		# 
+Tusce [ADV] whitaker		# 
+ulterius [ADV] whitaker		# 
+umide [ADV] whitaker		# 
+undanter [ADV] whitaker		# 
+undatim [ADV] whitaker		# in a waving manner; like waves
+undelibet [ADV] whitaker		# 
+undose [ADV] whitaker		# 
+unose [ADV] whitaker		# 
+urbanatim [ADV] whitaker		# 
+urbane [ADV] whitaker		# 
+usitate [ADV] whitaker		# 
+usurpative [ADV] whitaker		# 
+ut [ADV] whitaker		# 
+utrasque [ADV] whitaker		# 
+utrobi [ADV] whitaker		# 
+utrobidem [ADV] whitaker		# 
+utroqueversum [ADV] whitaker		# 
+utrubi [ADV] whitaker		# 
+utut [ADV] whitaker		# 
+vacanter [ADV] whitaker		# 
+vafre [ADV] whitaker		# 
+valgiter [ADV] whitaker		# 
+valide [ADV] whitaker		# 
+vaporate [ADV] whitaker		# 
+variatim [ADV] whitaker		# 
+varicose [ADV] whitaker		# 
+vaste [ADV] whitaker		# 
+velato [ADV] whitaker		# 
+venerabiliter [ADV] whitaker		# 
+ventose [ADV] whitaker		# 
+verbose [ADV] whitaker		# 
+verecunde [ADV] whitaker		# 
+verecunditer [ADV] whitaker		# 
+verenter [ADV] whitaker		# 
+veridice [ADV] whitaker		# 
+vermiculate [ADV] whitaker		# 
+versute [ADV] whitaker		# 
+vexabiliter [ADV] whitaker		# 
+vigilate [ADV] whitaker		# 
+viliter [ADV] whitaker		# 
+viride [ADV] whitaker		# 
+viriose [ADV] whitaker		# 
+vitiose [ADV] whitaker		# 
+vivaciter [ADV] whitaker		# 
+vivide [ADV] whitaker		# 
+vocaliter [ADV] whitaker		# 
+vocative [ADV] whitaker		# 
+volenter [ADV] whitaker		# 
+volucriter [ADV] whitaker		# 
+voluptarie [ADV] whitaker		# 
+voluptuose [ADV] whitaker		# 
+voraciter [ADV] whitaker		# 
+vulgariter [ADV] whitaker		# 
+vulgate [ADV] whitaker		# 
+zelanter [ADV] whitaker		# 

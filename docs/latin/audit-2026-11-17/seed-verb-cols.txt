@@ -1,0 +1,584 @@
+sum [-] ‖ es sunt ‖ F ero ‖ S sim ‖ P fui ‖ I es ‖ - - futurus gdv - sup -
+possum [-] ‖ potes possunt ‖ F potero ‖ S possim ‖ P potui ‖ I - ‖ - - - gdv - sup -
+eo [-] ‖ is eunt ‖ F ibo ‖ S eam ‖ P ii/ivi~ ‖ I i ‖ iens - iturus gdv - sup itum
+fero [-] ‖ fers ferunt ‖ F feram ‖ S feram ‖ P tuli ‖ I fer ‖ ferens latus laturus gdv ferendus sup latum
+volo [-] ‖ vis volunt ‖ F volam ‖ S velim ‖ P volui ‖ I - ‖ volens - - gdv - sup -
+nolo [-] ‖ - nolunt ‖ F nolam ‖ S nolim ‖ P nolui ‖ I noli ‖ nolens - - gdv - sup -
+malo [-] ‖ mavis malunt ‖ F malam ‖ S malim ‖ P malui ‖ I - ‖ - - - gdv - sup -
+fio [-] ‖ fis fiunt ‖ F fiam ‖ S fiam ‖ P - ‖ I fi ‖ - - - gdv - sup -
+aio [- DEF] ‖ ais aiunt ‖ F - ‖ S - ‖ P - ‖ I - ‖ - - - gdv - sup -
+inquam [- DEF] ‖ inquis inquiunt ‖ F - ‖ S - ‖ P - ‖ I - ‖ - - - gdv - sup -
+memini [- DEF] ‖ - - ‖ F - ‖ S - ‖ P memini ‖ I - ‖ - - - gdv - sup -
+odi [- DEF] ‖ - - ‖ F - ‖ S - ‖ P odi ‖ I - ‖ - - - gdv - sup -
+coepi [- DEF] ‖ - - ‖ F - ‖ S - ‖ P coepi ‖ I - ‖ - - - gdv - sup -
+absum [-] ‖ abes absunt ‖ F abero ‖ S absim ‖ P afui ‖ I abes ‖ - - abfuturus gdv - sup -
+adsum [-] ‖ ades adsunt ‖ F adero ‖ S adsim ‖ P adfui ‖ I ades ‖ - - adfuturus gdv - sup -
+desum [-] ‖ dees desunt ‖ F deero ‖ S desim ‖ P defui ‖ I dees ‖ - - defuturus gdv - sup -
+praesum [-] ‖ praees praesunt ‖ F praeero ‖ S praesim ‖ P praefui ‖ I praees ‖ - - praefuturus gdv - sup -
+intersum [-] ‖ interes intersunt ‖ F interero ‖ S intersim ‖ P interfui ‖ I interes ‖ - - interfuturus gdv - sup -
+insum [-] ‖ ines insunt ‖ F inero ‖ S insim ‖ P infui ‖ I ines ‖ - - infuturus gdv - sup -
+supersum [-] ‖ superes supersunt ‖ F superero ‖ S supersim ‖ P superfui ‖ I superes ‖ - - superfuturus gdv - sup -
+obsum [-] ‖ obes obsunt ‖ F obero ‖ S obsim ‖ P obfui ‖ I obes ‖ - - obfuturus gdv - sup -
+prosum [-] ‖ prodes prosunt ‖ F prodero ‖ S prosim ‖ P profui ‖ I prodes ‖ - - profuturus gdv - sup -
+transeo [-] ‖ transis transeunt ‖ F transibo ‖ S transeam ‖ P transii/transivi~ ‖ I transi ‖ transiens - transiturus gdv - sup transitum
+abeo [-] ‖ abis abeunt ‖ F abibo ‖ S abeam ‖ P abii/abivi~ ‖ I abi ‖ abiens - abiturus gdv - sup abitum
+exeo [-] ‖ exis exeunt ‖ F exibo ‖ S exeam ‖ P exii/exivi~ ‖ I exi ‖ exiens - exiturus gdv - sup exitum
+pereo [-] ‖ peris pereunt ‖ F peribo ‖ S peream ‖ P perii/perivi~ ‖ I peri ‖ periens - periturus gdv - sup peritum
+introeo [-] ‖ introis introeunt ‖ F introibo ‖ S introeam ‖ P introii/introivi~ ‖ I introi ‖ introiens - introiturus gdv - sup introitum
+pertranseo [-] ‖ pertransis pertranseunt ‖ F pertransibo ‖ S pertranseam ‖ P pertransii/pertransivi~ ‖ I pertransi ‖ pertransiens - pertransiturus gdv - sup pertransitum
+praetereo [-] ‖ praeteris praetereunt ‖ F praeteribo ‖ S praeteream ‖ P praeterii/praeterivi~ ‖ I praeteri ‖ praeteriens - praeteriturus gdv - sup praeteritum
+ineo [-] ‖ inis ineunt ‖ F inibo ‖ S ineam ‖ P inii/inivi~ ‖ I ini ‖ iniens - initurus gdv - sup initum
+circueo [-] ‖ circuis circueunt ‖ F circuibo ‖ S circueam ‖ P circuii/circuivi~ ‖ I circui ‖ circuiens - circuiturus gdv - sup circuitum
+redeo [-] ‖ redis redeunt ‖ F redibo ‖ S redeam ‖ P redii/redivi~ ‖ I redi ‖ rediens - rediturus gdv - sup reditum
+intereo [-] ‖ interis intereunt ‖ F interibo ‖ S inteream ‖ P interii/interivi~ ‖ I interi ‖ interiens - interiturus gdv - sup interitum
+adeo [-] ‖ adis adeunt ‖ F adibo ‖ S adeam ‖ P adii/adivi~ ‖ I adi ‖ adiens - aditurus gdv - sup aditum
+praeeo [-] ‖ praeis praeeunt ‖ F praeibo ‖ S praeeam ‖ P praeii/praeivi~ ‖ I praei ‖ praeiens - praeiturus gdv - sup praeitum
+subeo [-] ‖ subis subeunt ‖ F subibo ‖ S subeam ‖ P subii/subivi~ ‖ I subi ‖ subiens - subiturus gdv - sup subitum
+obeo [-] ‖ obis obeunt ‖ F obibo ‖ S obeam ‖ P obii/obivi~ ‖ I obi ‖ obiens - obiturus gdv - sup obitum
+coeo [-] ‖ cois coeunt ‖ F coibo ‖ S coeam ‖ P coii/coivi~ ‖ I coi ‖ coiens - coiturus gdv - sup coitum
+aufero [-] ‖ aufers auferunt ‖ F auferam ‖ S auferam ‖ P abstuli ‖ I aufer ‖ auferens ablatus ablaturus gdv auferendus sup ablatum
+affero [-] ‖ affers afferunt ‖ F afferam ‖ S afferam ‖ P attuli ‖ I affer ‖ afferens allatus allaturus gdv afferendus sup allatum
+transfero [-] ‖ transfers transferunt ‖ F transferam ‖ S transferam ‖ P transtuli ‖ I transfer ‖ transferens translatus translaturus gdv transferendus sup translatum
+infero [-] ‖ infers inferunt ‖ F inferam ‖ S inferam ‖ P intuli ‖ I infer ‖ inferens illatus illaturus gdv inferendus sup illatum
+profero [-] ‖ profers proferunt ‖ F proferam ‖ S proferam ‖ P protuli ‖ I profer ‖ proferens prolatus prolaturus gdv proferendus sup prolatum
+defero [-] ‖ defers deferunt ‖ F deferam ‖ S deferam ‖ P detuli ‖ I defer ‖ deferens delatus delaturus gdv deferendus sup delatum
+refero [-] ‖ refers referunt ‖ F referam ‖ S referam ‖ P rettuli ‖ I refer ‖ referens relatus relaturus gdv referendus sup relatum
+offero [-] ‖ offers offerunt ‖ F offeram ‖ S offeram ‖ P obtuli ‖ I offer ‖ offerens oblatus oblaturus gdv offerendus sup oblatum
+confero [-] ‖ confers conferunt ‖ F conferam ‖ S conferam ‖ P contuli ‖ I confer ‖ conferens collatus collaturus gdv conferendus sup collatum
+effero [-] ‖ effers efferunt ‖ F efferam ‖ S efferam ‖ P extuli ‖ I effer ‖ efferens elatus elaturus gdv efferendus sup elatum
+suffero [-] ‖ suffers sufferunt ‖ F sufferam ‖ S sufferam ‖ P sustuli ‖ I suffer ‖ sufferens sublatus sublaturus gdv sufferendus sup sublatum
+perfero [-] ‖ perfers perferunt ‖ F perferam ‖ S perferam ‖ P pertuli ‖ I perfer ‖ perferens perlatus perlaturus gdv perferendus sup perlatum
+praefero [-] ‖ praefers praeferunt ‖ F praeferam ‖ S praeferam ‖ P praetuli ‖ I praefer ‖ praeferens praelatus praelaturus gdv praeferendus sup praelatum
+differo [-] ‖ differs differunt ‖ F differam ‖ S differam ‖ P distuli ‖ I differ ‖ differens dilatus dilaturus gdv differendus sup dilatum
+adfero [-] ‖ adfers adferunt ‖ F adferam ‖ S adferam ‖ P adtuli ‖ I adfer ‖ adferens adlatus adlaturus gdv adferendus sup adlatum
+circumfero [-] ‖ circumfers circumferunt ‖ F circumferam ‖ S circumferam ‖ P circumtuli ‖ I circumfer ‖ circumferens circumlatus circumlaturus gdv circumferendus sup circumlatum
+antefero [-] ‖ antefers anteferunt ‖ F anteferam ‖ S anteferam ‖ P antetuli ‖ I antefer ‖ anteferens antelatus antelaturus gdv anteferendus sup antelatum
+dico, dicere, dixi, dictum [3] ‖ dicis dicunt ‖ F dicam ‖ S dicam ‖ P dixi ‖ I dice/dic ‖ dicens dictus dicturus gdv dicendus/dicundus~ sup dictum
+facio, facere, feci, factum [3io] ‖ facis faciunt ‖ F faciam ‖ S faciam ‖ P feci ‖ I face/fac ‖ faciens factus facturus gdv faciendus/faciundus~ sup factum
+venio, venire, veni, ventum [4] ‖ venis veniunt ‖ F veniam ‖ S veniam ‖ P veni ‖ I veni ‖ veniens ventus venturus gdv veniendus/veniundus~ sup ventum
+video, videre, vidi, visum [2] ‖ vides vident ‖ F videbo ‖ S videam ‖ P vidi ‖ I vide ‖ videns visus visurus gdv videndus sup visum
+loquor, loqui, locutus sum [3 DEP] ‖ loqueris/loquere~ loquuntur ‖ F loquar ‖ S loquar ‖ P - ‖ I loquere ‖ loquens locutus locuturus gdv loquendus/loquundus~ sup locutum
+habeo, habere, habui, habitum [2] ‖ habes habent ‖ F habebo ‖ S habeam ‖ P habui ‖ I habe ‖ habens habitus habiturus gdv habendus sup habitum
+audio, audire, audivi, auditum [4] ‖ audis audiunt ‖ F audiam ‖ S audiam ‖ P audivi/audii^ ‖ I audi ‖ audiens auditus auditurus gdv audiendus/audiundus~ sup auditum
+mitto, mittere, misi, missum [3] ‖ mittis mittunt ‖ F mittam ‖ S mittam ‖ P misi ‖ I mitte ‖ mittens missus missurus gdv mittendus/mittundus~ sup missum
+pono, ponere, posui, positum [3] ‖ ponis ponunt ‖ F ponam ‖ S ponam ‖ P posui ‖ I pone ‖ ponens positus positurus gdv ponendus/ponundus~ sup positum
+respondeo, respondere, respondi, responsum [2] ‖ respondes respondent ‖ F respondebo ‖ S respondeam ‖ P respondi ‖ I responde ‖ respondens responsus responsurus gdv respondendus sup responsum
+morior, mori, mortuus sum [3io DEP] ‖ moreris/morere~ moriuntur ‖ F moriar ‖ S moriar ‖ P - ‖ I morere ‖ moriens mortuus mortuurus gdv moriendus/moriundus~ sup mortuum
+ascendo, ascendere, ascendi, ascensum [3] ‖ ascendis ascendunt ‖ F ascendam ‖ S ascendam ‖ P ascendi ‖ I ascende ‖ ascendens ascensus ascensurus gdv ascendendus/ascendundus~ sup ascensum
+invenio, invenire, inveni, inventum [4] ‖ invenis inveniunt ‖ F inveniam ‖ S inveniam ‖ P inveni ‖ I inveni ‖ inveniens inventus inventurus gdv inveniendus/inveniundus~ sup inventum
+egredior, egredi, egressus sum [3io DEP] ‖ egrederis/egredere~ egrediuntur ‖ F egrediar ‖ S egrediar ‖ P - ‖ I egredere ‖ egrediens egressus egressurus gdv egrediendus/egrediundus~ sup egressum
+habito, habitare, habitavi, habitatum [1] ‖ habitas habitant ‖ F habitabo ‖ S habitem ‖ P habitavi ‖ I habita ‖ habitans habitatus habitaturus gdv habitandus sup habitatum
+scio, scire, scivi, scitum [4] ‖ scis sciunt ‖ F sciam ‖ S sciam ‖ P scivi/scii^ ‖ I sci ‖ sciens scitus sciturus gdv sciendus/sciundus~ sup scitum
+sto, stare, steti, statum [1] ‖ stas stant ‖ F stabo ‖ S stem ‖ P steti/stavi~ ‖ I sta ‖ stans status staturus gdv standus sup statum
+voco, vocare, vocavi, vocatum [1] ‖ vocas vocant ‖ F vocabo ‖ S vocem ‖ P vocavi ‖ I voca ‖ vocans vocatus vocaturus gdv vocandus sup vocatum
+revertor, reverti, reversus sum [3 DEP] ‖ reverteris/revertere~ revertuntur ‖ F revertar ‖ S revertar ‖ P - ‖ I revertere ‖ revertens reversus reversurus gdv revertendus/revertundus~ sup reversum
+praecipio, praecipere, praecepi, praeceptum [3io] ‖ praecipis praecipiunt ‖ F praecipiam ‖ S praecipiam ‖ P praecepi ‖ I praecipe ‖ praecipiens praeceptus praecepturus gdv praecipiendus/praecipiundus~ sup praeceptum
+accipio, accipere, accepi, acceptum [3io] ‖ accipis accipiunt ‖ F accipiam ‖ S accipiam ‖ P accepi ‖ I accipe ‖ accipiens acceptus accepturus gdv accipiendus/accipiundus~ sup acceptum
+ingredior, ingredi, ingressus sum [3io DEP] ‖ ingrederis/ingredere~ ingrediuntur ‖ F ingrediar ‖ S ingrediar ‖ P - ‖ I ingredere ‖ ingrediens ingressus ingressurus gdv ingrediendus/ingrediundus~ sup ingressum
+percutio, percutere, percussi, percussum [3io] ‖ percutis percutiunt ‖ F percutiam ‖ S percutiam ‖ P percussi ‖ I percute ‖ percutiens percussus percussurus gdv percutiendus/percutiundus~ sup percussum
+comedo, comedere, comedi, comesum [3] ‖ comedis comedunt ‖ F comedam ‖ S comedam ‖ P comedi ‖ I comede ‖ comedens comesus comesurus gdv comedendus/comedundus~ sup comesum
+vivo, vivere, vixi, victum [3] ‖ vivis vivunt ‖ F vivam ‖ S vivam ‖ P vixi ‖ I vive ‖ vivens victus victurus gdv vivendus/vivundus~ sup victum
+trado, tradere, tradidi, traditum [3] ‖ tradis tradunt ‖ F tradam ‖ S tradam ‖ P tradidi ‖ I trade ‖ tradens traditus traditurus gdv tradendus/tradundus~ sup traditum
+timeo, timere, timui [2] ‖ times timent ‖ F timebo ‖ S timeam ‖ P timui ‖ I time ‖ timens - - gdv timendus sup -
+aedifico, aedificare, aedificavi, aedificatum [1] ‖ aedificas aedificant ‖ F aedificabo ‖ S aedificem ‖ P aedificavi ‖ I aedifica ‖ aedificans aedificatus aedificaturus gdv aedificandus sup aedificatum
+scribo, scribere, scripsi, scriptum [3] ‖ scribis scribunt ‖ F scribam ‖ S scribam ‖ P scripsi ‖ I scribe ‖ scribens scriptus scripturus gdv scribendus/scribundus~ sup scriptum
+sedeo, sedere, sedi, sessum [2] ‖ sedes sedent ‖ F sedebo ‖ S sedeam ‖ P sedi ‖ I sede ‖ sedens sessus sessurus gdv sedendus sup sessum
+surgo, surgere, surrexi, surrectum [3] ‖ surgis surgunt ‖ F surgam ‖ S surgam ‖ P surrexi ‖ I surge ‖ surgens surrectus surrecturus gdv surgendus/surgundus~ sup surrectum
+quaero, quaerere, quaesivi, quaesitum [3] ‖ quaeris quaerunt ‖ F quaeram ‖ S quaeram ‖ P quaesivi/quaesii^ ‖ I quaere ‖ quaerens quaesitus quaesiturus gdv quaerendus/quaerundus~ sup quaesitum
+interficio, interficere, interfeci, interfectum [3io] ‖ interficis interficiunt ‖ F interficiam ‖ S interficiam ‖ P interfeci ‖ I interfice ‖ interficiens interfectus interfecturus gdv interficiendus/interficiundus~ sup interfectum
+dimitto, dimittere, dimisi, dimissum [3] ‖ dimittis dimittunt ‖ F dimittam ‖ S dimittam ‖ P dimisi ‖ I dimitte ‖ dimittens dimissus dimissurus gdv dimittendus/dimittundus~ sup dimissum
+cado, cadere, cecidi, casum [3] ‖ cadis cadunt ‖ F cadam ‖ S cadam ‖ P cecidi ‖ I cade ‖ cadens casus casurus gdv cadendus/cadundus~ sup casum
+congrego, congregare, congregavi, congregatum [1] ‖ congregas congregant ‖ F congregabo ‖ S congregem ‖ P congregavi ‖ I congrega ‖ congregans congregatus congregaturus gdv congregandus sup congregatum
+descendo, descendere, descendi, descensum [3] ‖ descendis descendunt ‖ F descendam ‖ S descendam ‖ P descendi ‖ I descende ‖ descendens descensus descensurus gdv descendendus/descendundus~ sup descensum
+ambulo, ambulare, ambulavi, ambulatum [1] ‖ ambulas ambulant ‖ F ambulabo ‖ S ambulem ‖ P ambulavi ‖ I ambula ‖ ambulans ambulatus ambulaturus gdv ambulandus sup ambulatum
+converto, convertere, converti, conversum [3] ‖ convertis convertunt ‖ F convertam ‖ S convertam ‖ P converti ‖ I converte ‖ convertens conversus conversurus gdv convertendus/convertundus~ sup conversum
+custodio, custodire, custodivi, custoditum [4] ‖ custodis custodiunt ‖ F custodiam ‖ S custodiam ‖ P custodivi/custodii^ ‖ I custodi ‖ custodiens custoditus custoditurus gdv custodiendus/custodiundus~ sup custoditum
+ago, agere, egi, actum [3] ‖ agis agunt ‖ F agam ‖ S agam ‖ P egi ‖ I age ‖ agens actus acturus gdv agendus/agundus~ sup actum
+fugio, fugere, fugi, fugitum [3io] ‖ fugis fugiunt ‖ F fugiam ‖ S fugiam ‖ P fugi ‖ I fuge ‖ fugiens fugitus fugiturus gdv fugiendus/fugiundus~ sup fugitum
+benedico, benedicere, benedixi, benedictum [3] ‖ benedicis benedicunt ‖ F benedicam ‖ S benedicam ‖ P benedixi ‖ I benedice/benedic ‖ benedicens benedictus benedicturus gdv benedicendus/benedicundus~ sup benedictum
+cognosco, cognoscere, cognovi, cognitum [3] ‖ cognoscis cognoscunt ‖ F cognoscam ‖ S cognoscam ‖ P cognovi ‖ I cognosce ‖ cognoscens cognitus cogniturus gdv cognoscendus/cognoscundus~ sup cognitum
+tollo, tollere, sustuli, sublatum [3] ‖ tollis tollunt ‖ F tollam ‖ S tollam ‖ P sustuli ‖ I tolle ‖ tollens sublatus sublaturus gdv tollendus/tollundus~ sup sublatum
+vado, vadere, vasi [3] ‖ vadis vadunt ‖ F vadam ‖ S vadam ‖ P vasi ‖ I vade ‖ vadens - - gdv vadendus/vadundus~ sup -
+iudico, iudicare, iudicavi, iudicatum [1] ‖ iudicas iudicant ‖ F iudicabo ‖ S iudicem ‖ P iudicavi ‖ I iudica ‖ iudicans iudicatus iudicaturus gdv iudicandus sup iudicatum
+diligo, diligere, dilexi, dilectum [3] ‖ diligis diligunt ‖ F diligam ‖ S diligam ‖ P dilexi ‖ I dilige ‖ diligens dilectus dilecturus gdv diligendus/diligundus~ sup dilectum
+credo, credere, credidi, creditum [3] ‖ credis credunt ‖ F credam ‖ S credam ‖ P credidi ‖ I crede ‖ credens creditus crediturus gdv credendus/credundus~ sup creditum
+regno, regnare, regnavi, regnatum [1] ‖ regnas regnant ‖ F regnabo ‖ S regnem ‖ P regnavi ‖ I regna ‖ regnans regnatus regnaturus gdv regnandus sup regnatum
+bibo, bibere, bibi, bibitum [3] ‖ bibis bibunt ‖ F bibam ‖ S bibam ‖ P bibi ‖ I bibe ‖ bibens bibitus bibiturus gdv bibendus/bibundus~ sup bibitum
+constituo, constituere, constitui, constitutum [3] ‖ constituis constituunt ‖ F constituam ‖ S constituam ‖ P constitui ‖ I constitue ‖ constituens constitutus constituturus gdv constituendus/constituundus~ sup constitutum
+eligo, eligere, elegi, electum [3] ‖ eligis eligunt ‖ F eligam ‖ S eligam ‖ P elegi ‖ I elige ‖ eligens electus electurus gdv eligendus/eligundus~ sup electum
+duco, ducere, duxi, ductum [3] ‖ ducis ducunt ‖ F ducam ‖ S ducam ‖ P duxi ‖ I duce/duc ‖ ducens ductus ducturus gdv ducendus/ducundus~ sup ductum
+clamo, clamare, clamavi, clamatum [1] ‖ clamas clamant ‖ F clamabo ‖ S clamem ‖ P clamavi ‖ I clama ‖ clamans clamatus clamaturus gdv clamandus sup clamatum
+gigno, gignere, genui, genitum [3] ‖ gignis gignunt ‖ F gignam ‖ S gignam ‖ P genui ‖ I gigne ‖ gignens genitus geniturus gdv gignendus/gignundus~ sup genitum
+adduco, adducere, adduxi, adductum [3] ‖ adducis adducunt ‖ F adducam ‖ S adducam ‖ P adduxi ‖ I adduce/adduc ‖ adducens adductus adducturus gdv adducendus/adducundus~ sup adductum
+aperio, aperire, aperui, apertum [4] ‖ aperis aperiunt ‖ F aperiam ‖ S aperiam ‖ P aperui ‖ I aperi ‖ aperiens apertus aperturus gdv aperiendus/aperiundus~ sup apertum
+relinquo, relinquere, reliqui, relictum [3] ‖ relinquis relinquunt ‖ F relinquam ‖ S relinquam ‖ P reliqui ‖ I relinque ‖ relinquens relictus relicturus gdv relinquendus/relinquundus~ sup relictum
+pecco, peccare, peccavi, peccatum [1] ‖ peccas peccant ‖ F peccabo ‖ S peccem ‖ P peccavi ‖ I pecca ‖ peccans peccatus peccaturus gdv peccandus sup peccatum
+servio, servire, servivi, servitum [4] ‖ servis serviunt ‖ F serviam ‖ S serviam ‖ P servivi/servii^ ‖ I servi ‖ serviens servitus serviturus gdv serviendus/serviundus~ sup servitum
+occido, occidere, occidi, occisum [3] ‖ occidis occidunt ‖ F occidam ‖ S occidam ‖ P occidi ‖ I occide ‖ occidens occisus occisurus gdv occidendus/occidundus~ sup occisum
+adoro, adorare, adoravi, adoratum [1] ‖ adoras adorant ‖ F adorabo ‖ S adorem ‖ P adoravi ‖ I adora ‖ adorans adoratus adoraturus gdv adorandus sup adoratum
+sequor, sequi, secutus sum [3 DEP] ‖ sequeris/sequere~ sequuntur ‖ F sequar ‖ S sequar ‖ P - ‖ I sequere ‖ sequens secutus secuturus gdv sequendus/sequundus~ sup secutum
+reddo, reddere, reddidi, redditum [3] ‖ reddis reddunt ‖ F reddam ‖ S reddam ‖ P reddidi ‖ I redde ‖ reddens redditus redditurus gdv reddendus/reddundus~ sup redditum
+oro, orare, oravi, oratum [1] ‖ oras orant ‖ F orabo ‖ S orem ‖ P oravi ‖ I ora ‖ orans oratus oraturus gdv orandus sup oratum
+impleo, implere, implevi, impletum [2] ‖ imples implent ‖ F implebo ‖ S impleam ‖ P implevi ‖ I imple ‖ implens impletus impleturus gdv implendus sup impletum
+capio, capere, cepi, captum [3io] ‖ capis capiunt ‖ F capiam ‖ S capiam ‖ P cepi ‖ I cape ‖ capiens captus capturus gdv capiendus/capiundus~ sup captum
+possideo, possidere, possedi, possessum [2] ‖ possides possident ‖ F possidebo ‖ S possideam ‖ P possedi ‖ I posside ‖ possidens possessus possessurus gdv possidendus sup possessum
+porto, portare, portavi, portatum [1] ‖ portas portant ‖ F portabo ‖ S portem ‖ P portavi ‖ I porta ‖ portans portatus portaturus gdv portandus sup portatum
+ostendo, ostendere, ostendi, ostensum [3] ‖ ostendis ostendunt ‖ F ostendam ‖ S ostendam ‖ P ostendi ‖ I ostende ‖ ostendens ostensus ostensurus gdv ostendendus/ostendundus~ sup ostensum
+intro, intrare, intravi, intratum [1] ‖ intras intrant ‖ F intrabo ‖ S intrem ‖ P intravi ‖ I intra ‖ intrans intratus intraturus gdv intrandus sup intratum
+maneo, manere, mansi, mansum [2] ‖ manes manent ‖ F manebo ‖ S maneam ‖ P mansi ‖ I mane ‖ manens mansus mansurus gdv manendus sup mansum
+dormio, dormire, dormivi, dormitum [4] ‖ dormis dormiunt ‖ F dormiam ‖ S dormiam ‖ P dormivi/dormii^ ‖ I dormi ‖ dormiens dormitus dormiturus gdv dormiendus/dormiundus~ sup dormitum
+derelinquo, derelinquere, dereliqui, derelictum [3] ‖ derelinquis derelinquunt ‖ F derelinquam ‖ S derelinquam ‖ P dereliqui ‖ I derelinque ‖ derelinquens derelictus derelicturus gdv derelinquendus/derelinquundus~ sup derelictum
+libero, liberare, liberavi, liberatum [1] ‖ liberas liberant ‖ F liberabo ‖ S liberem ‖ P liberavi ‖ I libera ‖ liberans liberatus liberaturus gdv liberandus sup liberatum
+placeo, placere, placui, placitum [2] ‖ places placent ‖ F placebo ‖ S placeam ‖ P placui ‖ I place ‖ placens placitus placiturus gdv placendus sup placitum
+laudo, laudare, laudavi, laudatum [1] ‖ laudas laudant ‖ F laudabo ‖ S laudem ‖ P laudavi ‖ I lauda ‖ laudans laudatus laudaturus gdv laudandus sup laudatum
+operor, operari, operatus sum [1 DEP] ‖ operaris/operare~ operantur ‖ F operabor ‖ S operer ‖ P - ‖ I operare ‖ operans operatus operaturus gdv operandus sup operatum
+recedo, recedere, recessi, recessum [3] ‖ recedis recedunt ‖ F recedam ‖ S recedam ‖ P recessi ‖ I recede ‖ recedens recessus recessurus gdv recedendus/recedundus~ sup recessum
+sanctifico, sanctificare, sanctificavi, sanctificatum [1] ‖ sanctificas sanctificant ‖ F sanctificabo ‖ S sanctificem ‖ P sanctificavi ‖ I sanctifica ‖ sanctificans sanctificatus sanctificaturus gdv sanctificandus sup sanctificatum
+respicio, respicere, respexi, respectum [3io] ‖ respicis respiciunt ‖ F respiciam ‖ S respiciam ‖ P respexi ‖ I respice ‖ respiciens respectus respecturus gdv respiciendus/respiciundus~ sup respectum
+accedo, accedere, accessi, accessum [3] ‖ accedis accedunt ‖ F accedam ‖ S accedam ‖ P accessi ‖ I accede ‖ accedens accessus accessurus gdv accedendus/accedundus~ sup accessum
+doceo, docere, docui, doctum [2] ‖ doces docent ‖ F docebo ‖ S doceam ‖ P docui ‖ I doce ‖ docens doctus docturus gdv docendus sup doctum
+pugno, pugnare, pugnavi, pugnatum [1] ‖ pugnas pugnant ‖ F pugnabo ‖ S pugnem ‖ P pugnavi ‖ I pugna ‖ pugnans pugnatus pugnaturus gdv pugnandus sup pugnatum
+cogito, cogitare, cogitavi, cogitatum [1] ‖ cogitas cogitant ‖ F cogitabo ‖ S cogitem ‖ P cogitavi ‖ I cogita ‖ cogitans cogitatus cogitaturus gdv cogitandus sup cogitatum
+nosco, noscere, novi, notum [3] ‖ noscis noscunt ‖ F noscam ‖ S noscam ‖ P novi ‖ I nosce ‖ noscens notus noturus gdv noscendus/noscundus~ sup notum
+exaudio, exaudire, exaudivi, exauditum [4] ‖ exaudis exaudiunt ‖ F exaudiam ‖ S exaudiam ‖ P exaudivi/exaudii^ ‖ I exaudi ‖ exaudiens exauditus exauditurus gdv exaudiendus/exaudiundus~ sup exauditum
+contero, conterere, contrivi, contritum [3] ‖ conteris conterunt ‖ F conteram ‖ S conteram ‖ P contrivi/contrii^ ‖ I contere ‖ conterens contritus contriturus gdv conterendus/conterundus~ sup contritum
+interrogo, interrogare, interrogavi, interrogatum [1] ‖ interrogas interrogant ‖ F interrogabo ‖ S interrogem ‖ P interrogavi ‖ I interroga ‖ interrogans interrogatus interrogaturus gdv interrogandus sup interrogatum
+teneo, tenere, tenui, tentum [2] ‖ tenes tenent ‖ F tenebo ‖ S teneam ‖ P tenui ‖ I tene ‖ tenens tentus tenturus gdv tenendus sup tentum
+divido, dividere, divisi, divisum [3] ‖ dividis dividunt ‖ F dividam ‖ S dividam ‖ P divisi ‖ I divide ‖ dividens divisus divisurus gdv dividendus/dividundus~ sup divisum
+appareo, apparere, apparui, apparitum [2] ‖ appares apparent ‖ F apparebo ‖ S appaream ‖ P apparui ‖ I appare ‖ apparens apparitus appariturus gdv apparendus sup apparitum
+nuntio, nuntiare, nuntiavi, nuntiatum [1] ‖ nuntias nuntiant ‖ F nuntiabo ‖ S nuntiem ‖ P nuntiavi ‖ I nuntia ‖ nuntians nuntiatus nuntiaturus gdv nuntiandus sup nuntiatum
+persequor, persequi, persecutus sum [3 DEP] ‖ persequeris/persequere~ persequuntur ‖ F persequar ‖ S persequar ‖ P - ‖ I persequere ‖ persequens persecutus persecuturus gdv persequendus/persequundus~ sup persecutum
+iuro, iurare, iuravi, iuratum [1] ‖ iuras iurant ‖ F iurabo ‖ S iurem ‖ P iuravi ‖ I iura ‖ iurans iuratus iuraturus gdv iurandus sup iuratum
+operio, operire, operui, opertum [4] ‖ operis operiunt ‖ F operiam ‖ S operiam ‖ P operui ‖ I operi ‖ operiens opertus operturus gdv operiendus/operiundus~ sup opertum
+suscipio, suscipere, suscepi, susceptum [3io] ‖ suscipis suscipiunt ‖ F suscipiam ‖ S suscipiam ‖ P suscepi ‖ I suscipe ‖ suscipiens susceptus suscepturus gdv suscipiendus/suscipiundus~ sup susceptum
+nescio, nescire, nescivi, nescitum [4] ‖ nescis nesciunt ‖ F nesciam ‖ S nesciam ‖ P nescivi/nescii^ ‖ I nesci ‖ nesciens nescitus nesciturus gdv nesciendus/nesciundus~ sup nescitum
+extendo, extendere, extendi, extensum [3] ‖ extendis extendunt ‖ F extendam ‖ S extendam ‖ P extendi ‖ I extende ‖ extendens extensus extensurus gdv extendendus/extendundus~ sup extensum
+immolo, immolare, immolavi, immolatum [1] ‖ immolas immolant ‖ F immolabo ‖ S immolem ‖ P immolavi ‖ I immola ‖ immolans immolatus immolaturus gdv immolandus sup immolatum
+confundo, confundere, confudi, confusum [3] ‖ confundis confundunt ‖ F confundam ‖ S confundam ‖ P confudi ‖ I confunde ‖ confundens confusus confusurus gdv confundendus/confundundus~ sup confusum
+nascor, nasci, natus sum [3 DEP] ‖ nasceris/nascere~ nascuntur ‖ F nascar ‖ S nascar ‖ P - ‖ I nascere ‖ nascens natus naturus gdv nascendus/nascundus~ sup natum
+statuo, statuere, statui, statutum [3] ‖ statuis statuunt ‖ F statuam ‖ S statuam ‖ P statui ‖ I statue ‖ statuens statutus statuturus gdv statuendus/statuundus~ sup statutum
+pergo, pergere, perrexi, perrectum [3] ‖ pergis pergunt ‖ F pergam ‖ S pergam ‖ P perrexi ‖ I perge ‖ pergens perrectus perrecturus gdv pergendus/pergundus~ sup perrectum
+misereor, misereri, miseritus sum [2 DEP] ‖ misereris/miserere~ miserentur ‖ F miserebor ‖ S miserear ‖ P - ‖ I miserere ‖ miserens miseritus miseriturus gdv miserendus sup miseritum
+irascor, irasci, iratus sum [3 DEP] ‖ irasceris/irascere~ irascuntur ‖ F irascar ‖ S irascar ‖ P - ‖ I irascere ‖ irascens iratus iraturus gdv irascendus/irascundus~ sup iratum
+paro, parare, paravi, paratum [1] ‖ paras parant ‖ F parabo ‖ S parem ‖ P paravi ‖ I para ‖ parans paratus paraturus gdv parandus sup paratum
+orior, oriri, ortus sum [4 DEP] ‖ oriris/orire~ oriuntur ‖ F oriar ‖ S oriar ‖ P - ‖ I orire ‖ oriens ortus orturus gdv oriendus/oriundus~ sup ortum
+pario, parere, peperi, partum [3io] ‖ paris pariunt ‖ F pariam ‖ S pariam ‖ P peperi ‖ I pare ‖ pariens partus parturus gdv pariendus/pariundus~ sup partum
+exalto, exaltare, exaltavi, exaltatum [1] ‖ exaltas exaltant ‖ F exaltabo ‖ S exaltem ‖ P exaltavi ‖ I exalta ‖ exaltans exaltatus exaltaturus gdv exaltandus sup exaltatum
+multiplico, multiplicare, multiplicavi, multiplicatum [1] ‖ multiplicas multiplicant ‖ F multiplicabo ‖ S multiplicem ‖ P multiplicavi/multiplicui~ ‖ I multiplica ‖ multiplicans multiplicatus multiplicaturus gdv multiplicandus sup multiplicatum
+effundo, effundere, effudi, effusum [3] ‖ effundis effundunt ‖ F effundam ‖ S effundam ‖ P effudi ‖ I effunde ‖ effundens effusus effusurus gdv effundendus/effundundus~ sup effusum
+laetor, laetari, laetatus sum [1 DEP] ‖ laetaris/laetare~ laetantur ‖ F laetabor ‖ S laeter ‖ P - ‖ I laetare ‖ laetans laetatus laetaturus gdv laetandus sup laetatum
+manduco, manducare, manducavi, manducatum [1] ‖ manducas manducant ‖ F manducabo ‖ S manducem ‖ P manducavi ‖ I manduca ‖ manducans manducatus manducaturus gdv manducandus sup manducatum
+sepelio, sepelire, sepelivi, sepultum [4] ‖ sepelis sepeliunt ‖ F sepeliam ‖ S sepeliam ‖ P sepelivi/sepelii^ ‖ I sepeli ‖ sepeliens sepultus sepulturus gdv sepeliendus/sepeliundus~ sup sepultum
+salvo, salvare, salvavi, salvatum [1] ‖ salvas salvant ‖ F salvabo ‖ S salvem ‖ P salvavi ‖ I salva ‖ salvans salvatus salvaturus gdv salvandus sup salvatum
+confiteor, confiteri, confessus sum [2 DEP] ‖ confiteris/confitere~ confitentur ‖ F confitebor ‖ S confitear ‖ P - ‖ I confitere ‖ confitens confessus confessurus gdv confitendus sup confessum
+suscito, suscitare, suscitavi, suscitatum [1] ‖ suscitas suscitant ‖ F suscitabo ‖ S suscitem ‖ P suscitavi ‖ I suscita ‖ suscitans suscitatus suscitaturus gdv suscitandus sup suscitatum
+deficio, deficere, defeci, defectum [3io] ‖ deficis deficiunt ‖ F deficiam ‖ S deficiam ‖ P defeci ‖ I defice ‖ deficiens defectus defecturus gdv deficiendus/deficiundus~ sup defectum
+tango, tangere, tetigi, tactum [3] ‖ tangis tangunt ‖ F tangam ‖ S tangam ‖ P tetigi ‖ I tange ‖ tangens tactus tacturus gdv tangendus/tangundus~ sup tactum
+spero, sperare, speravi, speratum [1] ‖ speras sperant ‖ F sperabo ‖ S sperem ‖ P speravi ‖ I spera ‖ sperans speratus speraturus gdv sperandus sup speratum
+invoco, invocare, invocavi, invocatum [1] ‖ invocas invocant ‖ F invocabo ‖ S invocem ‖ P invocavi ‖ I invoca ‖ invocans invocatus invocaturus gdv invocandus sup invocatum
+rogo, rogare, rogavi, rogatum [1] ‖ rogas rogant ‖ F rogabo ‖ S rogem ‖ P rogavi ‖ I roga ‖ rogans rogatus rogaturus gdv rogandus sup rogatum
+abscondo, abscondere, abscondi, absconditum [3] ‖ abscondis abscondunt ‖ F abscondam ‖ S abscondam ‖ P abscondi ‖ I absconde ‖ abscondens absconditus absconditurus gdv abscondendus/abscondundus~ sup absconditum
+consurgo, consurgere, consurrexi, consurrectum [3] ‖ consurgis consurgunt ‖ F consurgam ‖ S consurgam ‖ P consurrexi ‖ I consurge ‖ consurgens consurrectus consurrecturus gdv consurgendus/consurgundus~ sup consurrectum
+iubeo, iubere, iussi, iussum [2] ‖ iubes iubent ‖ F iubebo ‖ S iubeam ‖ P iussi ‖ I iube ‖ iubens iussus iussurus gdv iubendus sup iussum
+occurro, occurrere, occucurri, occursum [3] ‖ occurris occurrunt ‖ F occurram ‖ S occurram ‖ P occucurri/occurri~ ‖ I occurre ‖ occurrens occursus occursurus gdv occurrendus/occurrundus~ sup occursum
+deleo, delere, delevi, deletum [2] ‖ deles delent ‖ F delebo ‖ S deleam ‖ P delevi ‖ I dele ‖ delens deletus deleturus gdv delendus sup deletum
+maledico, maledicere, maledixi, maledictum [3] ‖ maledicis maledicunt ‖ F maledicam ‖ S maledicam ‖ P maledixi ‖ I maledice/maledic ‖ maledicens maledictus maledicturus gdv maledicendus/maledicundus~ sup maledictum
+devoro, devorare, devoravi, devoratum [1] ‖ devoras devorant ‖ F devorabo ‖ S devorem ‖ P devoravi ‖ I devora ‖ devorans devoratus devoraturus gdv devorandus sup devoratum
+consumo, consumere, consumpsi, consumptum [3] ‖ consumis consumunt ‖ F consumam ‖ S consumam ‖ P consumpsi ‖ I consume ‖ consumens consumptus consumpturus gdv consumendus/consumundus~ sup consumptum
+averto, avertere, averti, aversum [3] ‖ avertis avertunt ‖ F avertam ‖ S avertam ‖ P averti ‖ I averte ‖ avertens aversus aversurus gdv avertendus/avertundus~ sup aversum
+debeo, debere, debui, debitum [2] ‖ debes debent ‖ F debebo ‖ S debeam ‖ P debui ‖ I debe ‖ debens debitus debiturus gdv debendus sup debitum
+levo, levare, levavi, levatum [1] ‖ levas levant ‖ F levabo ‖ S levem ‖ P levavi ‖ I leva ‖ levans levatus levaturus gdv levandus sup levatum
+repleo, replere, replevi, repletum [2] ‖ reples replent ‖ F replebo ‖ S repleam ‖ P replevi ‖ I reple ‖ replens repletus repleturus gdv replendus sup repletum
+ignoro, ignorare, ignoravi, ignoratum [1] ‖ ignoras ignorant ‖ F ignorabo ‖ S ignorem ‖ P ignoravi ‖ I ignora ‖ ignorans ignoratus ignoraturus gdv ignorandus sup ignoratum
+educo, educare, educavi, educatum [1] ‖ educas educant ‖ F educabo ‖ S educem ‖ P educavi ‖ I educa ‖ educans educatus educaturus gdv educandus sup educatum
+proficiscor, proficisci, profectus sum [3 DEP] ‖ proficisceris/proficiscere~ proficiscuntur ‖ F proficiscar ‖ S proficiscar ‖ P - ‖ I proficiscere ‖ proficiscens profectus profecturus gdv proficiscendus/proficiscundus~ sup profectum
+polluo, polluere, pollui, pollutum [3] ‖ polluis polluunt ‖ F polluam ‖ S polluam ‖ P pollui ‖ I pollue ‖ polluens pollutus polluturus gdv polluendus/polluundus~ sup pollutum
+perdo, perdere, perdidi, perditum [3] ‖ perdis perdunt ‖ F perdam ‖ S perdam ‖ P perdidi ‖ I perde ‖ perdens perditus perditurus gdv perdendus/perdundus~ sup perditum
+emo, emere, emi, emptum [3] ‖ emis emunt ‖ F emam ‖ S emam ‖ P emi ‖ I eme ‖ emens emptus empturus gdv emendus/emundus~ sup emptum
+elevo, elevare, elevavi, elevatum [1] ‖ elevas elevant ‖ F elevabo ‖ S elevem ‖ P elevavi ‖ I eleva ‖ elevans elevatus elevaturus gdv elevandus sup elevatum
+fundo, fundere, fudi, fusum [3] ‖ fundis fundunt ‖ F fundam ‖ S fundam ‖ P fudi ‖ I funde ‖ fundens fusus fusurus gdv fundendus/fundundus~ sup fusum
+humilio, humiliare, humiliavi, humiliatum [1] ‖ humilias humiliant ‖ F humiliabo ‖ S humiliem ‖ P humiliavi ‖ I humilia ‖ humilians humiliatus humiliaturus gdv humiliandus sup humiliatum
+fleo, flere, flevi, fletum [2] ‖ fles flent ‖ F flebo ‖ S fleam ‖ P flevi ‖ I fle ‖ flens fletus fleturus gdv flendus sup fletum
+patior, pati, passus sum [3io DEP] ‖ pateris/patere~ patiuntur ‖ F patiar ‖ S patiar ‖ P - ‖ I patere ‖ patiens passus passurus gdv patiendus/patiundus~ sup passum
+lavo, lavare, lavi, lotum [1] ‖ lavas lavant ‖ F lavabo ‖ S lavem ‖ P lavi ‖ I lava ‖ lavans lotus loturus gdv lavandus sup lotum
+praeparo, praeparare, praeparavi, praeparatum [1] ‖ praeparas praeparant ‖ F praeparabo ‖ S praeparem ‖ P praeparavi ‖ I praepara ‖ praeparans praeparatus praeparaturus gdv praeparandus sup praeparatum
+compleo, complere, complevi, completum [2] ‖ comples complent ‖ F complebo ‖ S compleam ‖ P complevi ‖ I comple ‖ complens completus completurus gdv complendus sup completum
+moveo, movere, movi, motum [2] ‖ moves movent ‖ F movebo ‖ S moveam ‖ P movi ‖ I move ‖ movens motus moturus gdv movendus sup motum
+sumo, sumere, sumpsi, sumptum [3] ‖ sumis sumunt ‖ F sumam ‖ S sumam ‖ P sumpsi ‖ I sume ‖ sumens sumptus sumpturus gdv sumendus/sumundus~ sup sumptum
+annuntio, annuntiare, annuntiavi, annuntiatum [1] ‖ annuntias annuntiant ‖ F annuntiabo ‖ S annuntiem ‖ P annuntiavi ‖ I annuntia ‖ annuntians annuntiatus annuntiaturus gdv annuntiandus sup annuntiatum
+recordor, recordari, recordatus sum [1 DEP] ‖ recordaris/recordare~ recordantur ‖ F recordabor ‖ S recorder ‖ P - ‖ I recordare ‖ recordans recordatus recordaturus gdv recordandus sup recordatum
+sustineo, sustinere, sustinui, sustentum [2] ‖ sustines sustinent ‖ F sustinebo ‖ S sustineam ‖ P sustinui ‖ I sustine ‖ sustinens sustentus sustenturus gdv sustinendus sup sustentum
+induo, induere, indui, indutum [3] ‖ induis induunt ‖ F induam ‖ S induam ‖ P indui ‖ I indue ‖ induens indutus induturus gdv induendus/induundus~ sup indutum
+pasco, pascere, pavi, pastum [3] ‖ pascis pascunt ‖ F pascam ‖ S pascam ‖ P pavi ‖ I pasce ‖ pascens pastus pasturus gdv pascendus/pascundus~ sup pastum
+intelligo, intelligere [3] ‖ intelligis intelligunt ‖ F intelligam ‖ S intelligam ‖ P - ‖ I intellige ‖ intelligens - - gdv intelligendus/intelligundus~ sup -
+colo, colere, colui, cultum [3] ‖ colis colunt ‖ F colam ‖ S colam ‖ P colui ‖ I cole ‖ colens cultus culturus gdv colendus/colundus~ sup cultum
+dispergo, dispergere, dispersi, dispersum [3] ‖ dispergis dispergunt ‖ F dispergam ‖ S dispergam ‖ P dispersi ‖ I disperge ‖ dispergens dispersus dispersurus gdv dispergendus/dispergundus~ sup dispersum
+addo, addere, addidi, additum [3] ‖ addis addunt ‖ F addam ‖ S addam ‖ P addidi ‖ I adde ‖ addens additus additurus gdv addendus/addundus~ sup additum
+apprehendo, apprehendere, apprehendi, apprehensum [3] ‖ apprehendis apprehendunt ‖ F apprehendam ‖ S apprehendam ‖ P apprehendi ‖ I apprehende ‖ apprehendens apprehensus apprehensurus gdv apprehendendus/apprehendundus~ sup apprehensum
+pango, pangere, pepigi, pactum [3] ‖ pangis pangunt ‖ F pangam ‖ S pangam ‖ P pepigi ‖ I pange ‖ pangens pactus pacturus gdv pangendus/pangundus~ sup pactum
+succendo, succendere, succendi, succensum [3] ‖ succendis succendunt ‖ F succendam ‖ S succendam ‖ P succendi ‖ I succende ‖ succendens succensus succensurus gdv succendendus/succendundus~ sup succensum
+propheto, prophetare, prophetavi, prophetatum [1] ‖ prophetas prophetant ‖ F prophetabo ‖ S prophetem ‖ P prophetavi ‖ I propheta ‖ prophetans prophetatus prophetaturus gdv prophetandus sup prophetatum
+caedo, caedere, cecidi, caesum [3] ‖ caedis caedunt ‖ F caedam ‖ S caedam ‖ P cecidi ‖ I caede ‖ caedens caesus caesurus gdv caedendus/caedundus~ sup caesum
+mando, mandare, mandavi, mandatum [1] ‖ mandas mandant ‖ F mandabo ‖ S mandem ‖ P mandavi ‖ I manda ‖ mandans mandatus mandaturus gdv mandandus sup mandatum
+peto, petere, petivi, petitum [3] ‖ petis petunt ‖ F petam ‖ S petam ‖ P petivi/petii^ ‖ I pete ‖ petens petitus petiturus gdv petendus/petundus~ sup petitum
+remaneo, remanere, remansi, remansum [2] ‖ remanes remanent ‖ F remanebo ‖ S remaneam ‖ P remansi ‖ I remane ‖ remanens remansus remansurus gdv remanendus sup remansum
+destruo, destruere, destruxi, destructum [3] ‖ destruis destruunt ‖ F destruam ‖ S destruam ‖ P destruxi ‖ I destrue ‖ destruens destructus destructurus gdv destruendus/destruundus~ sup destructum
+declino, declinare, declinavi, declinatum [1] ‖ declinas declinant ‖ F declinabo ‖ S declinem ‖ P declinavi ‖ I declina ‖ declinans declinatus declinaturus gdv declinandus sup declinatum
+vendo, vendere, vendidi, venditum [3] ‖ vendis vendunt ‖ F vendam ‖ S vendam ‖ P vendidi ‖ I vende ‖ vendens venditus venditurus gdv vendendus/vendundus~ sup venditum
+servo, servare, servavi, servatum [1] ‖ servas servant ‖ F servabo ‖ S servem ‖ P servavi ‖ I serva ‖ servans servatus servaturus gdv servandus sup servatum
+circumdo, circumdare, circumdedi, circumdatum [1] ‖ circumdas circumdant ‖ F circumdabo ‖ S circumdem ‖ P circumdedi/circumdavi~ ‖ I circumda ‖ circumdans circumdatus circumdaturus gdv circumdandus sup circumdatum
+turbo, turbare, turbavi, turbatum [1] ‖ turbas turbant ‖ F turbabo ‖ S turbem ‖ P turbavi ‖ I turba ‖ turbans turbatus turbaturus gdv turbandus sup turbatum
+narro, narrare, narravi, narratum [1] ‖ narras narrant ‖ F narrabo ‖ S narrem ‖ P narravi ‖ I narra ‖ narrans narratus narraturus gdv narrandus sup narratum
+verto, vertere, verti, versum [3] ‖ vertis vertunt ‖ F vertam ‖ S vertam ‖ P verti ‖ I verte ‖ vertens versus versurus gdv vertendus/vertundus~ sup versum
+dissipo, dissipare, dissipavi, dissipatum [1] ‖ dissipas dissipant ‖ F dissipabo ‖ S dissipem ‖ P dissipavi ‖ I dissipa ‖ dissipans dissipatus dissipaturus gdv dissipandus sup dissipatum
+conforto, confortare, confortavi, confortatum [1] ‖ confortas confortant ‖ F confortabo ‖ S confortem ‖ P confortavi ‖ I conforta ‖ confortans confortatus confortaturus gdv confortandus sup confortatum
+dirigo, dirigere, direxi, directum [3] ‖ dirigis dirigunt ‖ F dirigam ‖ S dirigam ‖ P direxi ‖ I dirige ‖ dirigens directus directurus gdv dirigendus/dirigundus~ sup directum
+considero, considerare, consideravi, consideratum [1] ‖ consideras considerant ‖ F considerabo ‖ S considerem ‖ P consideravi ‖ I considera ‖ considerans consideratus consideraturus gdv considerandus sup consideratum
+separo, separare, separavi, separatum [1] ‖ separas separant ‖ F separabo ‖ S separem ‖ P separavi ‖ I separa ‖ separans separatus separaturus gdv separandus sup separatum
+obliviscor, oblivisci, oblitus sum [3 DEP] ‖ oblivisceris/obliviscere~ obliviscuntur ‖ F obliviscar ‖ S obliviscar ‖ P - ‖ I obliviscere ‖ obliviscens oblitus obliturus gdv obliviscendus/obliviscundus~ sup oblitum
+ministro, ministrare, ministravi, ministratum [1] ‖ ministras ministrant ‖ F ministrabo ‖ S ministrem ‖ P ministravi ‖ I ministra ‖ ministrans ministratus ministraturus gdv ministrandus sup ministratum
+recipio, recipere, recepi, receptum [3io] ‖ recipis recipiunt ‖ F recipiam ‖ S recipiam ‖ P recepi ‖ I recipe ‖ recipiens receptus recepturus gdv recipiendus/recipiundus~ sup receptum
+cesso, cessare, cessavi, cessatum [1] ‖ cessas cessant ‖ F cessabo ‖ S cessem ‖ P cessavi ‖ I cessa ‖ cessans cessatus cessaturus gdv cessandus sup cessatum
+gaudeo, gaudere, gavisus sum [2 DEP] ‖ gaudes gaudent ‖ F gaudebo ‖ S gaudeam ‖ P - ‖ I gaude ‖ gaudens gavisus gavisurus gdv gaudendus sup gavisum
+dominor, dominari, dominatus sum [1 DEP] ‖ dominaris/dominare~ dominantur ‖ F dominabor ‖ S dominer ‖ P - ‖ I dominare ‖ dominans dominatus dominaturus gdv dominandus sup dominatum
+visito, visitare, visitavi, visitatum [1] ‖ visitas visitant ‖ F visitabo ‖ S visitem ‖ P visitavi ‖ I visita ‖ visitans visitatus visitaturus gdv visitandus sup visitatum
+impono, imponere, imposui, impositum [3] ‖ imponis imponunt ‖ F imponam ‖ S imponam ‖ P imposui ‖ I impone ‖ imponens impositus impositurus gdv imponendus/imponundus~ sup impositum
+convenio, convenire, conveni, conventum [4] ‖ convenis conveniunt ‖ F conveniam ‖ S conveniam ‖ P conveni ‖ I conveni ‖ conveniens conventus conventurus gdv conveniendus/conveniundus~ sup conventum
+revelo, revelare, revelavi, revelatum [1] ‖ revelas revelant ‖ F revelabo ‖ S revelem ‖ P revelavi ‖ I revela ‖ revelans revelatus revelaturus gdv revelandus sup revelatum
+probo, probare, probavi, probatum [1] ‖ probas probant ‖ F probabo ‖ S probem ‖ P probavi ‖ I proba ‖ probans probatus probaturus gdv probandus sup probatum
+disperdo, disperdere, disperdi, disperditum [3] ‖ disperdis disperdunt ‖ F disperdam ‖ S disperdam ‖ P disperdi ‖ I disperde ‖ disperdens disperditus disperditurus gdv disperdendus/disperdundus~ sup disperditum
+eruo, eruere, erui, erutum [3] ‖ eruis eruunt ‖ F eruam ‖ S eruam ‖ P erui ‖ I erue ‖ eruens erutus eruturus gdv eruendus/eruundus~ sup erutum
+affligo, affligere, afflixi, afflictum [3] ‖ affligis affligunt ‖ F affligam ‖ S affligam ‖ P afflixi ‖ I afflige ‖ affligens afflictus afflicturus gdv affligendus/affligundus~ sup afflictum
+laboro, laborare, laboravi, laboratum [1] ‖ laboras laborant ‖ F laborabo ‖ S laborem ‖ P laboravi ‖ I labora ‖ laborans laboratus laboraturus gdv laborandus sup laboratum
+lego, legere, legi, lectum [3] ‖ legis legunt ‖ F legam ‖ S legam ‖ P legi ‖ I lege ‖ legens lectus lecturus gdv legendus/legundus~ sup lectum
+confringo, confringere, confregi, confractum [3] ‖ confringis confringunt ‖ F confringam ‖ S confringam ‖ P confregi ‖ I confringe ‖ confringens confractus confracturus gdv confringendus/confringundus~ sup confractum
+procedo, procedere, processi, processum [3] ‖ procedis procedunt ‖ F procedam ‖ S procedam ‖ P processi ‖ I procede ‖ procedens processus processurus gdv procedendus/procedundus~ sup processum
+obsecro, obsecrare, obsecravi, obsecratum [1] ‖ obsecras obsecrant ‖ F obsecrabo ‖ S obsecrem ‖ P obsecravi ‖ I obsecra ‖ obsecrans obsecratus obsecraturus gdv obsecrandus sup obsecratum
+proicio, proicere, proieci, proiectum [3io] ‖ proicis proiciunt ‖ F proiciam ‖ S proiciam ‖ P proieci ‖ I proice ‖ proiciens proiectus proiecturus gdv proiciendus/proiciundus~ sup proiectum
+puto, putare, putavi, putatum [1] ‖ putas putant ‖ F putabo ‖ S putem ‖ P putavi ‖ I puta ‖ putans putatus putaturus gdv putandus sup putatum
+magnifico, magnificare, magnificavi, magnificatum [1] ‖ magnificas magnificant ‖ F magnificabo ‖ S magnificem ‖ P magnificavi ‖ I magnifica ‖ magnificans magnificatus magnificaturus gdv magnificandus sup magnificatum
+curro, currere, cucurri, cursum [3] ‖ curris currunt ‖ F curram ‖ S curram ‖ P cucurri ‖ I curre ‖ currens cursus cursurus gdv currendus/currundus~ sup cursum
+deduco, deducere, deduxi, deductum [3] ‖ deducis deducunt ‖ F deducam ‖ S deducam ‖ P deduxi ‖ I deduce/deduc ‖ deducens deductus deducturus gdv deducendus/deducundus~ sup deductum
+praedico, praedicare, praedicavi, praedicatum [1] ‖ praedicas praedicant ‖ F praedicabo ‖ S praedicem ‖ P praedicavi ‖ I praedica ‖ praedicans praedicatus praedicaturus gdv praedicandus sup praedicatum
+deprecor, deprecari, deprecatus sum [1 DEP] ‖ deprecaris/deprecare~ deprecantur ‖ F deprecabor ‖ S deprecer ‖ P - ‖ I deprecare ‖ deprecans deprecatus deprecaturus gdv deprecandus sup deprecatum
+oportet, oportere, oportui [2] ‖ - - ‖ F - ‖ S - ‖ P - ‖ I - ‖ oportens - - gdv - sup -
+taceo, tacere, tacui, tacitum [2] ‖ taces tacent ‖ F tacebo ‖ S taceam ‖ P tacui ‖ I tace ‖ tacens tacitus taciturus gdv tacendus sup tacitum
+permaneo, permanere, permansi, permansum [2] ‖ permanes permanent ‖ F permanebo ‖ S permaneam ‖ P permansi ‖ I permane ‖ permanens permansus permansurus gdv permanendus sup permansum
+consolor, consolari, consolatus sum [1 DEP] ‖ consolaris/consolare~ consolantur ‖ F consolabor ‖ S consoler ‖ P - ‖ I consolare ‖ consolans consolatus consolaturus gdv consolandus sup consolatum
+claudo, claudere, clausi, clausum [3] ‖ claudis claudunt ‖ F claudam ‖ S claudam ‖ P clausi ‖ I claude ‖ claudens clausus clausurus gdv claudendus/claudundus~ sup clausum
+comburo, comburere, combusi, combustum [3] ‖ comburis comburunt ‖ F comburam ‖ S comburam ‖ P combusi ‖ I combure ‖ comburens combustus combusturus gdv comburendus/comburundus~ sup combustum
+induco, inducere, induxi, inductum [3] ‖ inducis inducunt ‖ F inducam ‖ S inducam ‖ P induxi ‖ I induce/induc ‖ inducens inductus inducturus gdv inducendus/inducundus~ sup inductum
+requiesco, requiescere, requievi, requietum [3] ‖ requiescis requiescunt ‖ F requiescam ‖ S requiescam ‖ P requievi ‖ I requiesce ‖ requiescens requietus requieturus gdv requiescendus/requiescundus~ sup requietum
+conturbo, conturbare, conturbavi, conturbatum [1] ‖ conturbas conturbant ‖ F conturbabo ‖ S conturbem ‖ P conturbavi ‖ I conturba ‖ conturbans conturbatus conturbaturus gdv conturbandus sup conturbatum
+introduco, introducere, introduxi, introductum [3] ‖ introducis introducunt ‖ F introducam ‖ S introducam ‖ P introduxi ‖ I introduce/introduc ‖ introducens introductus introducturus gdv introducendus/introducundus~ sup introductum
+creo, creare, creavi, creatum [1] ‖ creas creant ‖ F creabo ‖ S creem ‖ P creavi ‖ I crea ‖ creans creatus creaturus gdv creandus sup creatum
+cano, canere, cecini, cantum [3] ‖ canis canunt ‖ F canam ‖ S canam ‖ P cecini ‖ I cane ‖ canens cantus canturus gdv canendus/canundus~ sup cantum
+pervenio, pervenire, perveni, perventum [4] ‖ pervenis perveniunt ‖ F perveniam ‖ S perveniam ‖ P perveni ‖ I perveni ‖ perveniens perventus perventurus gdv perveniendus/perveniundus~ sup perventum
+quiesco, quiescere, quievi, quietum [3] ‖ quiescis quiescunt ‖ F quiescam ‖ S quiescam ‖ P quievi ‖ I quiesce ‖ quiescens quietus quieturus gdv quiescendus/quiescundus~ sup quietum
+confido, confidere, confisus sum [3 DEP] ‖ confidis confidunt ‖ F confidam ‖ S confidam ‖ P - ‖ I confide ‖ confidens confisus confisurus gdv confidendus/confidundus~ sup confisum
+reduco, reducere, reduxi, reductum [3] ‖ reducis reducunt ‖ F reducam ‖ S reducam ‖ P reduxi ‖ I reduce/reduc ‖ reducens reductus reducturus gdv reducendus/reducundus~ sup reductum
+glorior, gloriari, gloriatus sum [1 DEP] ‖ gloriaris/gloriare~ gloriantur ‖ F gloriabor ‖ S glorier ‖ P - ‖ I gloriare ‖ glorians gloriatus gloriaturus gdv gloriandus sup gloriatum
+mundo, mundare, mundavi, mundatum [1] ‖ mundas mundant ‖ F mundabo ‖ S mundem ‖ P mundavi ‖ I munda ‖ mundans mundatus mundaturus gdv mundandus sup mundatum
+metior, metiri, mensus sum [4 DEP] ‖ metiris/metire~ metiuntur ‖ F metiar ‖ S metiar ‖ P - ‖ I metire ‖ metiens mensus mensurus gdv metiendus/metiundus~ sup mensum
+exsulto, exsultare, exsultavi, exsultatum [1] ‖ exsultas exsultant ‖ F exsultabo ‖ S exsultem ‖ P exsultavi ‖ I exsulta ‖ exsultans exsultatus exsultaturus gdv exsultandus sup exsultatum
+indico, indicare, indicavi, indicatum [1] ‖ indicas indicant ‖ F indicabo ‖ S indicem ‖ P indicavi ‖ I indica ‖ indicans indicatus indicaturus gdv indicandus sup indicatum
+solvo, solvere, solvi, solutum [3] ‖ solvis solvunt ‖ F solvam ‖ S solvam ‖ P solvi ‖ I solve ‖ solvens solutus soluturus gdv solvendus/solvundus~ sup solutum
+planto, plantare, plantavi, plantatum [1] ‖ plantas plantant ‖ F plantabo ‖ S plantem ‖ P plantavi ‖ I planta ‖ plantans plantatus plantaturus gdv plantandus sup plantatum
+scindo, scindere, scidi, scissum [3] ‖ scindis scindunt ‖ F scindam ‖ S scindam ‖ P scidi ‖ I scinde ‖ scindens scissus scissurus gdv scindendus/scindundus~ sup scissum
+confirmo, confirmare, confirmavi, confirmatum [1] ‖ confirmas confirmant ‖ F confirmabo ‖ S confirmem ‖ P confirmavi ‖ I confirma ‖ confirmans confirmatus confirmaturus gdv confirmandus sup confirmatum
+inclino, inclinare, inclinavi, inclinatum [1] ‖ inclinas inclinant ‖ F inclinabo ‖ S inclinem ‖ P inclinavi ‖ I inclina ‖ inclinans inclinatus inclinaturus gdv inclinandus sup inclinatum
+subverto, subvertere, subverti, subversum [3] ‖ subvertis subvertunt ‖ F subvertam ‖ S subvertam ‖ P subverti ‖ I subverte ‖ subvertens subversus subversurus gdv subvertendus/subvertundus~ sup subversum
+redimo, redimere, redemi, redemptum [3] ‖ redimis redimunt ‖ F redimam ‖ S redimam ‖ P redemi ‖ I redime ‖ redimens redemptus redempturus gdv redimendus/redimundus~ sup redemptum
+vasto, vastare, vastavi, vastatum [1] ‖ vastas vastant ‖ F vastabo ‖ S vastem ‖ P vastavi ‖ I vasta ‖ vastans vastatus vastaturus gdv vastandus sup vastatum
+colligo, colligere, collegi, collectum [3] ‖ colligis colligunt ‖ F colligam ‖ S colligam ‖ P collegi ‖ I collige ‖ colligens collectus collecturus gdv colligendus/colligundus~ sup collectum
+disco, discere, didici, discitum [3] ‖ discis discunt ‖ F discam ‖ S discam ‖ P didici ‖ I disce ‖ discens discitus disciturus gdv discendus/discundus~ sup discitum
+aro, arare, aravi, aratum [1] ‖ aras arant ‖ F arabo ‖ S arem ‖ P aravi ‖ I ara ‖ arans aratus araturus gdv arandus sup aratum
+corruo, corruere, corrui, corrutum [3] ‖ corruis corruunt ‖ F corruam ‖ S corruam ‖ P corrui ‖ I corrue ‖ corruens corrutus corruturus gdv corruendus/corruundus~ sup corrutum
+glorifico, glorificare, glorificavi, glorificatum [1] ‖ glorificas glorificant ‖ F glorificabo ‖ S glorificem ‖ P glorificavi ‖ I glorifica ‖ glorificans glorificatus glorificaturus gdv glorificandus sup glorificatum
+cresco, crescere, crevi, cretum [3] ‖ crescis crescunt ‖ F crescam ‖ S crescam ‖ P crevi ‖ I cresce ‖ crescens cretus creturus gdv crescendus/crescundus~ sup cretum
+vestio, vestire, vestivi, vestitum [4] ‖ vestis vestiunt ‖ F vestiam ‖ S vestiam ‖ P vestivi/vestii^ ‖ I vesti ‖ vestiens vestitus vestiturus gdv vestiendus/vestiundus~ sup vestitum
+requiro, requirere, requisivi, requisitum [3] ‖ requiris requirunt ‖ F requiram ‖ S requiram ‖ P requisivi/requisii^ ‖ I require ‖ requirens requisitus requisiturus gdv requirendus/requirundus~ sup requisitum
+commoveo, commovere, commovi, commotum [2] ‖ commoves commovent ‖ F commovebo ‖ S commoveam ‖ P commovi ‖ I commove ‖ commovens commotus commoturus gdv commovendus sup commotum
+festino, festinare, festinavi, festinatum [1] ‖ festinas festinant ‖ F festinabo ‖ S festinem ‖ P festinavi ‖ I festina ‖ festinans festinatus festinaturus gdv festinandus sup festinatum
+despicio, despicere, despexi, despectum [3io] ‖ despicis despiciunt ‖ F despiciam ‖ S despiciam ‖ P despexi ‖ I despice ‖ despiciens despectus despecturus gdv despiciendus/despiciundus~ sup despectum
+parco, parcere, peperci, parsum [3] ‖ parcis parcunt ‖ F parcam ‖ S parcam ‖ P peperci ‖ I parce ‖ parcens parsus parsurus gdv parcendus/parcundus~ sup parsum
+torreo, torrere, torrui, tostum [2] ‖ torres torrent ‖ F torrebo ‖ S torream ‖ P torrui ‖ I torre ‖ torrens tostus tosturus gdv torrendus sup tostum
+sano, sanare, sanavi, sanatum [1] ‖ sanas sanant ‖ F sanabo ‖ S sanem ‖ P sanavi ‖ I sana ‖ sanans sanatus sanaturus gdv sanandus sup sanatum
+resisto, resistere, restiti [3] ‖ resistis resistunt ‖ F resistam ‖ S resistam ‖ P restiti ‖ I resiste ‖ resistens - - gdv resistendus/resistundus~ sup -
+desero, deserere, deserui, desertum [3] ‖ deseris deserunt ‖ F deseram ‖ S deseram ‖ P deserui ‖ I desere ‖ deserens desertus deserturus gdv deserendus/deserundus~ sup desertum
+observo, observare, observavi, observatum [1] ‖ observas observant ‖ F observabo ‖ S observem ‖ P observavi ‖ I observa ‖ observans observatus observaturus gdv observandus sup observatum
+vescor, vesci [3 DEP] ‖ vesceris/vescere~ vescuntur ‖ F vescar ‖ S vescar ‖ P - ‖ I vescere ‖ vescens - - gdv vescendus/vescundus~ sup -
+plango, plangere, planxi, planctum [3] ‖ plangis plangunt ‖ F plangam ‖ S plangam ‖ P planxi ‖ I plange ‖ plangens planctus plancturus gdv plangendus/plangundus~ sup planctum
+erigo, erigere, erexi, erectum [3] ‖ erigis erigunt ‖ F erigam ‖ S erigam ‖ P erexi ‖ I erige ‖ erigens erectus erecturus gdv erigendus/erigundus~ sup erectum
+moror, morari, moratus sum [1 DEP] ‖ moraris/morare~ morantur ‖ F morabor ‖ S morer ‖ P - ‖ I morare ‖ morans moratus moraturus gdv morandus sup moratum
+numero, numerare, numeravi, numeratum [1] ‖ numeras numerant ‖ F numerabo ‖ S numerem ‖ P numeravi ‖ I numera ‖ numerans numeratus numeraturus gdv numerandus sup numeratum
+tribuo, tribuere, tribui, tributum [3] ‖ tribuis tribuunt ‖ F tribuam ‖ S tribuam ‖ P tribui ‖ I tribue ‖ tribuens tributus tributurus gdv tribuendus/tribuundus~ sup tributum
+rego, regere, rexi, rectum [3] ‖ regis regunt ‖ F regam ‖ S regam ‖ P rexi ‖ I rege ‖ regens rectus recturus gdv regendus/regundus~ sup rectum
+opprimo, opprimere, oppressi, oppressum [3] ‖ opprimis opprimunt ‖ F opprimam ‖ S opprimam ‖ P oppressi ‖ I opprime ‖ opprimens oppressus oppressurus gdv opprimendus/opprimundus~ sup oppressum
+perficio, perficere, perfeci, perfectum [3io] ‖ perficis perficiunt ‖ F perficiam ‖ S perficiam ‖ P perfeci ‖ I perfice ‖ perficiens perfectus perfecturus gdv perficiendus/perficiundus~ sup perfectum
+canto, cantare, cantavi, cantatum [1] ‖ cantas cantant ‖ F cantabo ‖ S cantem ‖ P cantavi ‖ I canta ‖ cantans cantatus cantaturus gdv cantandus sup cantatum
+decipio, decipere, decepi, deceptum [3io] ‖ decipis decipiunt ‖ F decipiam ‖ S decipiam ‖ P decepi ‖ I decipe ‖ decipiens deceptus decepturus gdv decipiendus/decipiundus~ sup deceptum
+reperio, reperire, repperi, repertum [4] ‖ reperis reperiunt ‖ F reperiam ‖ S reperiam ‖ P repperi ‖ I reperi ‖ reperiens repertus reperturus gdv reperiendus/reperiundus~ sup repertum
+curo, curare, curavi, curatum [1] ‖ curas curant ‖ F curabo ‖ S curem ‖ P curavi ‖ I cura ‖ curans curatus curaturus gdv curandus sup curatum
+saluto, salutare, salutavi, salutatum [1] ‖ salutas salutant ‖ F salutabo ‖ S salutem ‖ P salutavi ‖ I saluta ‖ salutans salutatus salutaturus gdv salutandus sup salutatum
+contemno, contemnere, contempsi, contemptum [3] ‖ contemnis contemnunt ‖ F contemnam ‖ S contemnam ‖ P contempsi ‖ I contemne ‖ contemnens contemptus contempturus gdv contemnendus/contemnundus~ sup contemptum
+eicio, eicere, eici, eictum [3io] ‖ eicis eiciunt ‖ F eiciam ‖ S eiciam ‖ P eici ‖ I eice ‖ eiciens eictus eicturus gdv eiciendus/eiciundus~ sup eictum
+cubo, cubare, cubui, cubitum [1] ‖ cubas cubant ‖ F cubabo ‖ S cubem ‖ P cubui/cubui~/cubavi~ ‖ I cuba ‖ cubans cubitus cubiturus gdv cubandus sup cubitum
+impero, imperare, imperavi, imperatum [1] ‖ imperas imperant ‖ F imperabo ‖ S imperem ‖ P imperavi ‖ I impera ‖ imperans imperatus imperaturus gdv imperandus sup imperatum
+aspicio, aspicere, aspexi, aspectum [3io] ‖ aspicis aspiciunt ‖ F aspiciam ‖ S aspiciam ‖ P aspexi ‖ I aspice ‖ aspiciens aspectus aspecturus gdv aspiciendus/aspiciundus~ sup aspectum
+baptizo, baptizare, baptizavi, baptizatum [1] ‖ baptizas baptizant ‖ F baptizabo ‖ S baptizem ‖ P baptizavi ‖ I baptiza ‖ baptizans baptizatus baptizaturus gdv baptizandus sup baptizatum
+semino, seminare, seminavi, seminatum [1] ‖ seminas seminant ‖ F seminabo ‖ S seminem ‖ P seminavi ‖ I semina ‖ seminans seminatus seminaturus gdv seminandus sup seminatum
+obtineo, obtinere, obtinui, obtentum [2] ‖ obtines obtinent ‖ F obtinebo ‖ S obtineam ‖ P obtinui ‖ I obtine ‖ obtinens obtentus obtenturus gdv obtinendus sup obtentum
+iustifico, iustificare, iustificavi, iustificatum [1] ‖ iustificas iustificant ‖ F iustificabo ‖ S iustificem ‖ P iustificavi ‖ I iustifica ‖ iustificans iustificatus iustificaturus gdv iustificandus sup iustificatum
+adiuvo, adiuvare, adiuvi, adiutum [1] ‖ adiuvas adiuvant ‖ F adiuvabo ‖ S adiuvem ‖ P adiuvi/adiuvui~/adiuvavi~ ‖ I adiuva ‖ adiuvans adiutus adiuturus gdv adiuvandus sup adiutum
+concipio, concipere, concepi, conceptum [3io] ‖ concipis concipiunt ‖ F concipiam ‖ S concipiam ‖ P concepi ‖ I concipe ‖ concipiens conceptus concepturus gdv concipiendus/concipiundus~ sup conceptum
+sacrifico, sacrificare, sacrificavi, sacrificatum [1] ‖ sacrificas sacrificant ‖ F sacrificabo ‖ S sacrificem ‖ P sacrificavi ‖ I sacrifica ‖ sacrificans sacrificatus sacrificaturus gdv sacrificandus sup sacrificatum
+contristo, contristare, contristavi, contristatum [1] ‖ contristas contristant ‖ F contristabo ‖ S contristem ‖ P contristavi ‖ I contrista ‖ contristans contristatus contristaturus gdv contristandus sup contristatum
+utor, uti, usus sum [3 DEP] ‖ uteris/utere~ utuntur ‖ F utar ‖ S utar ‖ P - ‖ I utere ‖ utens - - gdv utendus/utundus~ sup -
+appropinquo, appropinquare, appropinquavi, appropinquatum [1] ‖ appropinquas appropinquant ‖ F appropinquabo ‖ S appropinquem ‖ P appropinquavi ‖ I appropinqua ‖ appropinquans appropinquatus appropinquaturus gdv appropinquandus sup appropinquatum
+munio, munire, munivi, munitum [4] ‖ munis muniunt ‖ F muniam ‖ S muniam ‖ P munivi/munii^ ‖ I muni ‖ muniens munitus muniturus gdv muniendus/muniundus~ sup munitum
+comprehendo, comprehendere, comprehendi, comprehensum [3] ‖ comprehendis comprehendunt ‖ F comprehendam ‖ S comprehendam ‖ P comprehendi ‖ I comprehende ‖ comprehendens comprehensus comprehensurus gdv comprehendendus/comprehendundus~ sup comprehensum
+abundo, abundare, abundavi, abundatum [1] ‖ abundas abundant ‖ F abundabo ‖ S abundem ‖ P abundavi ‖ I abunda ‖ abundans abundatus abundaturus gdv abundandus sup abundatum
+postulo, postulare, postulavi, postulatum [1] ‖ postulas postulant ‖ F postulabo ‖ S postulem ‖ P postulavi ‖ I postula ‖ postulans postulatus postulaturus gdv postulandus sup postulatum
+erudio, erudire, erudivi, eruditum [4] ‖ erudis erudiunt ‖ F erudiam ‖ S erudiam ‖ P erudivi/erudii^ ‖ I erudi ‖ erudiens eruditus eruditurus gdv erudiendus/erudiundus~ sup eruditum
+restituo, restituere, restitui, restitutum [3] ‖ restituis restituunt ‖ F restituam ‖ S restituam ‖ P restitui ‖ I restitue ‖ restituens restitutus restituturus gdv restituendus/restituundus~ sup restitutum
+gero, gerere, gessi, gestum [3] ‖ geris gerunt ‖ F geram ‖ S geram ‖ P gessi ‖ I gere ‖ gerens gestus gesturus gdv gerendus/gerundus~ sup gestum
+exspecto, exspectare, exspectavi, exspectatum [1] ‖ exspectas exspectant ‖ F exspectabo ‖ S exspectem ‖ P exspectavi ‖ I exspecta ‖ exspectans exspectatus exspectaturus gdv exspectandus sup exspectatum
+rapio, rapere, rapui, raptum [3io] ‖ rapis rapiunt ‖ F rapiam ‖ S rapiam ‖ P rapui ‖ I rape ‖ rapiens raptus rapturus gdv rapiendus/rapiundus~ sup raptum
+reputo, reputare, reputavi, reputatum [1] ‖ reputas reputant ‖ F reputabo ‖ S reputem ‖ P reputavi ‖ I reputa ‖ reputans reputatus reputaturus gdv reputandus sup reputatum
+appello, appellare, appellavi, appellatum [1] ‖ appellas appellant ‖ F appellabo ‖ S appellem ‖ P appellavi ‖ I appella ‖ appellans appellatus appellaturus gdv appellandus sup appellatum
+provoco, provocare, provocavi, provocatum [1] ‖ provocas provocant ‖ F provocabo ‖ S provocem ‖ P provocavi ‖ I provoca ‖ provocans provocatus provocaturus gdv provocandus sup provocatum
+saturo, saturare, saturavi, saturatum [1] ‖ saturas saturant ‖ F saturabo ‖ S saturem ‖ P saturavi ‖ I satura ‖ saturans saturatus saturaturus gdv saturandus sup saturatum
+erro, errare, erravi, erratum [1] ‖ erras errant ‖ F errabo ‖ S errem ‖ P erravi ‖ I erra ‖ errans erratus erraturus gdv errandus sup erratum
+muto, mutare, mutavi, mutatum [1] ‖ mutas mutant ‖ F mutabo ‖ S mutem ‖ P mutavi ‖ I muta ‖ mutans mutatus mutaturus gdv mutandus sup mutatum
+irruo, irruere, irrui, irrutum [3] ‖ irruis irruunt ‖ F irruam ‖ S irruam ‖ P irrui ‖ I irrue ‖ irruens irrutus irruturus gdv irruendus/irruundus~ sup irrutum
+obedio, obedire, obedivi, obeditum [4] ‖ obedis obediunt ‖ F obediam ‖ S obediam ‖ P obedivi/obedii^ ‖ I obedi ‖ obediens obeditus obediturus gdv obediendus/obediundus~ sup obeditum
+prohibeo, prohibere, prohibui, prohibitum [2] ‖ prohibes prohibent ‖ F prohibebo ‖ S prohibeam ‖ P prohibui ‖ I prohibe ‖ prohibens prohibitus prohibiturus gdv prohibendus sup prohibitum
+valeo, valere, valui, valitum [2] ‖ vales valent ‖ F valebo ‖ S valeam ‖ P valui ‖ I vale ‖ valens valitus valiturus gdv valendus sup valitum
+resurgo, resurgere, resurrexi, resurrectum [3] ‖ resurgis resurgunt ‖ F resurgam ‖ S resurgam ‖ P resurrexi ‖ I resurge ‖ resurgens resurrectus resurrecturus gdv resurgendus/resurgundus~ sup resurrectum
+intellego, intellegere, intellexi, intellectum [3] ‖ intellegis intellegunt ‖ F intellegam ‖ S intellegam ‖ P intellexi ‖ I intellege ‖ intellegens intellectus intellecturus gdv intellegendus/intellegundus~ sup intellectum
+eripio, eripere, eripui, ereptum [3io] ‖ eripis eripiunt ‖ F eripiam ‖ S eripiam ‖ P eripui ‖ I eripe ‖ eripiens ereptus erepturus gdv eripiendus/eripiundus~ sup ereptum
+attendo, attendere, attendi, attentum [3] ‖ attendis attendunt ‖ F attendam ‖ S attendam ‖ P attendi ‖ I attende ‖ attendens attentus attenturus gdv attendendus/attendundus~ sup attentum
+praebeo, praebere, praebui, praebitum [2] ‖ praebes praebent ‖ F praebebo ‖ S praebeam ‖ P praebui ‖ I praebe ‖ praebens praebitus praebiturus gdv praebendus sup praebitum
+consummo, consummare, consummavi, consummatum [1] ‖ consummas consummant ‖ F consummabo ‖ S consummem ‖ P consummavi ‖ I consumma ‖ consummans consummatus consummaturus gdv consummandus sup consummatum
+praecedo, praecedere, praecessi, praecessum [3] ‖ praecedis praecedunt ‖ F praecedam ‖ S praecedam ‖ P praecessi ‖ I praecede ‖ praecedens praecessus praecessurus gdv praecedendus/praecedundus~ sup praecessum
+accido, accidere, accidi [3] ‖ accidis accidunt ‖ F accidam ‖ S accidam ‖ P accidi ‖ I accide ‖ accidens - - gdv accidendus/accidundus~ sup -
+arguo, arguere, argui, argutum [3] ‖ arguis arguunt ‖ F arguam ‖ S arguam ‖ P argui ‖ I argue ‖ arguens argutus arguturus gdv arguendus/arguundus~ sup argutum
+fornicor, fornicari, fornicatus sum [1 DEP] ‖ fornicaris/fornicare~ fornicantur ‖ F fornicabor ‖ S fornicer ‖ P - ‖ I fornicare ‖ fornicans fornicatus fornicaturus gdv fornicandus sup fornicatum
+proiicio, proiicere, proieci, proiectum [3io] ‖ proiicis proiiciunt ‖ F proiiciam ‖ S proiiciam ‖ P proieci ‖ I proiice ‖ proiiciens proiectus proiecturus gdv proiiciendus/proiiciundus~ sup proiectum
+ligo, ligare, ligavi, ligatum [1] ‖ ligas ligant ‖ F ligabo ‖ S ligem ‖ P ligavi ‖ I liga ‖ ligans ligatus ligaturus gdv ligandus sup ligatum
+vincio, vincire, vinxi, vinctum [4] ‖ vincis vinciunt ‖ F vinciam ‖ S vinciam ‖ P vinxi ‖ I vinci ‖ vinciens vinctus vincturus gdv vinciendus/vinciundus~ sup vinctum
+esurio, esurire, esurivi, esuritum [4] ‖ esuris esuriunt ‖ F esuriam ‖ S esuriam ‖ P esurivi/esurii^ ‖ I esuri ‖ esuriens esuritus esuriturus gdv esuriendus/esuriundus~ sup esuritum
+iungo, iungere, iunxi, iunctum [3] ‖ iungis iungunt ‖ F iungam ‖ S iungam ‖ P iunxi ‖ I iunge ‖ iungens iunctus iuncturus gdv iungendus/iungundus~ sup iunctum
+appendo, appendere, appendi, appensum [3] ‖ appendis appendunt ‖ F appendam ‖ S appendam ‖ P appendi ‖ I appende ‖ appendens appensus appensurus gdv appendendus/appendundus~ sup appensum
+soleo, solere, solitus sum [2 DEP] ‖ soles solent ‖ F solebo ‖ S soleam ‖ P - ‖ I sole ‖ solens solitus soliturus gdv solendus sup solitum
+obsideo, obsidere, obsedi, obsessum [2] ‖ obsides obsident ‖ F obsidebo ‖ S obsideam ‖ P obsedi ‖ I obside ‖ obsidens obsessus obsessurus gdv obsidendus sup obsessum
+excipio, excipere, excepi, exceptum [3io] ‖ excipis excipiunt ‖ F excipiam ‖ S excipiam ‖ P excepi ‖ I excipe ‖ excipiens exceptus excepturus gdv excipiendus/excipiundus~ sup exceptum
+honoro, honorare, honoravi, honoratum [1] ‖ honoras honorant ‖ F honorabo ‖ S honorem ‖ P honoravi ‖ I honora ‖ honorans honoratus honoraturus gdv honorandus sup honoratum
+contamino, contaminare, contaminavi, contaminatum [1] ‖ contaminas contaminant ‖ F contaminabo ‖ S contaminem ‖ P contaminavi ‖ I contamina ‖ contaminans contaminatus contaminaturus gdv contaminandus sup contaminatum
+castrametor, castrametari, castrametatus sum [1 DEP] ‖ castrametaris/castrametare~ castrametantur ‖ F castrametabor ‖ S castrameter ‖ P - ‖ I castrametare ‖ castrametans castrametatus castrametaturus gdv castrametandus sup castrametatum
+sino, sinere, sivi, situm [3] ‖ sinis sinunt ‖ F sinam ‖ S sinam ‖ P sivi/sii^ ‖ I sine ‖ sinens situs siturus gdv sinendus/sinundus~ sup situm
+amo, amare, amavi, amatum [1] ‖ amas amant ‖ F amabo ‖ S amem ‖ P amavi ‖ I ama ‖ amans amatus amaturus gdv amandus sup amatum
+discedo, discedere, discessi, discessum [3] ‖ discedis discedunt ‖ F discedam ‖ S discedam ‖ P discessi ‖ I discede ‖ discedens discessus discessurus gdv discedendus/discedundus~ sup discessum
+licet, licere, licui, licitum [2] ‖ - - ‖ F - ‖ S - ‖ P - ‖ I - ‖ licens licitus liciturus gdv - sup -
+formido, formidare, formidavi, formidatum [1] ‖ formidas formidant ‖ F formidabo ‖ S formidem ‖ P formidavi ‖ I formida ‖ formidans formidatus formidaturus gdv formidandus sup formidatum
+accingo, accingere, accinxi, accinctum [3] ‖ accingis accingunt ‖ F accingam ‖ S accingam ‖ P accinxi ‖ I accinge ‖ accingens accinctus accincturus gdv accingendus/accingundus~ sup accinctum
+consecro, consecrare, consecravi, consecratum [1] ‖ consecras consecrant ‖ F consecrabo ‖ S consecrem ‖ P consecravi ‖ I consecra ‖ consecrans consecratus consecraturus gdv consecrandus sup consecratum
+iaceo, iacere, iacui, iacitum [2] ‖ iaces iacent ‖ F iacebo ‖ S iaceam ‖ P iacui ‖ I iace ‖ iacens iacitus iaciturus gdv iacendus sup iacitum
+intueor, intueri, intuitus sum [2 DEP] ‖ intueris/intuere~ intuentur ‖ F intuebor ‖ S intuear ‖ P - ‖ I intuere ‖ intuens intuitus intuiturus gdv intuendus sup intuitum
+desidero, desiderare, desideravi, desideratum [1] ‖ desideras desiderant ‖ F desiderabo ‖ S desiderem ‖ P desideravi ‖ I desidera ‖ desiderans desideratus desideraturus gdv desiderandus sup desideratum
+ardeo, ardere, arsi, arsum [2] ‖ ardes ardent ‖ F ardebo ‖ S ardeam ‖ P arsi ‖ I arde ‖ ardens arsus arsurus gdv ardendus sup arsum
+detraho, detrahere, detraxi, detractum [3] ‖ detrahis detrahunt ‖ F detraham ‖ S detraham ‖ P detraxi ‖ I detrahe ‖ detrahens detractus detracturus gdv detrahendus/detrahundus~ sup detractum
+ungo, ungere, unxi, unctum [3] ‖ ungis ungunt ‖ F ungam ‖ S ungam ‖ P unxi ‖ I unge ‖ ungens unctus uncturus gdv ungendus/ungundus~ sup unctum
+lugeo, lugere, luxi, luctum [2] ‖ luges lugent ‖ F lugebo ‖ S lugeam ‖ P luxi ‖ I luge ‖ lugens luctus lucturus gdv lugendus sup luctum
+miror, mirari, miratus sum [1 DEP] ‖ miraris/mirare~ mirantur ‖ F mirabor ‖ S mirer ‖ P - ‖ I mirare ‖ mirans miratus miraturus gdv mirandus sup miratum
+contineo, continere, continui, contentum [2] ‖ contines continent ‖ F continebo ‖ S contineam ‖ P continui ‖ I contine ‖ continens contentus contenturus gdv continendus sup contentum
+vulnero, vulnerare, vulneravi, vulneratum [1] ‖ vulneras vulnerant ‖ F vulnerabo ‖ S vulnerem ‖ P vulneravi ‖ I vulnera ‖ vulnerans vulneratus vulneraturus gdv vulnerandus sup vulneratum
+applico, applicare, applicavi, applicatum [1] ‖ applicas applicant ‖ F applicabo ‖ S applicem ‖ P applicavi/applicui~ ‖ I applica ‖ applicans applicatus applicaturus gdv applicandus sup applicatum
+no, nare, navi [1] ‖ nas nant ‖ F nabo ‖ S nem ‖ P navi ‖ I na ‖ nans - - gdv nandus sup -
+sufficio, sufficere, suffeci, suffectum [3io] ‖ sufficis sufficiunt ‖ F sufficiam ‖ S sufficiam ‖ P suffeci ‖ I suffice ‖ sufficiens suffectus suffecturus gdv sufficiendus/sufficiundus~ sup suffectum
+sterno, sternere, stravi, stratum [3] ‖ sternis sternunt ‖ F sternam ‖ S sternam ‖ P stravi ‖ I sterne ‖ sternens stratus straturus gdv sternendus/sternundus~ sup stratum
+vigilo, vigilare, vigilavi, vigilatum [1] ‖ vigilas vigilant ‖ F vigilabo ‖ S vigilem ‖ P vigilavi ‖ I vigila ‖ vigilans vigilatus vigilaturus gdv vigilandus sup vigilatum
+pertineo, pertinere, pertinui, pertentum [2] ‖ pertines pertinent ‖ F pertinebo ‖ S pertineam ‖ P pertinui ‖ I pertine ‖ pertinens pertentus pertenturus gdv pertinendus sup pertentum
+praevaricor, praevaricari, praevaricatus sum [1 DEP] ‖ praevaricaris/praevaricare~ praevaricantur ‖ F praevaricabor ‖ S praevaricer ‖ P - ‖ I praevaricare ‖ praevaricans praevaricatus praevaricaturus gdv praevaricandus sup praevaricatum
+bello, bellare, bellavi, bellatum [1] ‖ bellas bellant ‖ F bellabo ‖ S bellem ‖ P bellavi ‖ I bella ‖ bellans bellatus bellaturus gdv bellandus sup bellatum
+vecto, vectare, vectavi, vectatum [1] ‖ vectas vectant ‖ F vectabo ‖ S vectem ‖ P vectavi ‖ I vecta ‖ vectans vectatus vectaturus gdv vectandus sup vectatum
+remitto, remittere, remisi, remissum [3] ‖ remittis remittunt ‖ F remittam ‖ S remittam ‖ P remisi ‖ I remitte ‖ remittens remissus remissurus gdv remittendus/remittundus~ sup remissum
+caveo, cavere, cavi, cautum [2] ‖ caves cavent ‖ F cavebo ‖ S caveam ‖ P cavi ‖ I cave ‖ cavens cautus cauturus gdv cavendus sup cautum
+celebro, celebrare, celebravi, celebratum [1] ‖ celebras celebrant ‖ F celebrabo ‖ S celebrem ‖ P celebravi ‖ I celebra ‖ celebrans celebratus celebraturus gdv celebrandus sup celebratum
+conspergo, conspergere, conspersi, conspersum [3] ‖ conspergis conspergunt ‖ F conspergam ‖ S conspergam ‖ P conspersi ‖ I consperge ‖ conspergens conspersus conspersurus gdv conspergendus/conspergundus~ sup conspersum
+meto, metere, messui, messum [3] ‖ metis metunt ‖ F metam ‖ S metam ‖ P messui ‖ I mete ‖ metens messus messurus gdv metendus/metundus~ sup messum
+blasphemo, blasphemare, blasphemavi, blasphematum [1] ‖ blasphemas blasphemant ‖ F blasphemabo ‖ S blasphemem ‖ P blasphemavi ‖ I blasphema ‖ blasphemans blasphematus blasphematurus gdv blasphemandus sup blasphematum
+diripio, diripere, diripui, direptum [3io] ‖ diripis diripiunt ‖ F diripiam ‖ S diripiam ‖ P diripui ‖ I diripe ‖ diripiens direptus direpturus gdv diripiendus/diripiundus~ sup direptum
+fodio, fodere, fodi, fossum [3io] ‖ fodis fodiunt ‖ F fodiam ‖ S fodiam ‖ P fodi ‖ I fode ‖ fodiens fossus fossurus gdv fodiendus/fodiundus~ sup fossum
+supervenio, supervenire, superveni, superventum [4] ‖ supervenis superveniunt ‖ F superveniam ‖ S superveniam ‖ P superveni ‖ I superveni ‖ superveniens superventus superventurus gdv superveniendus/superveniundus~ sup superventum
+decerno, decernere, decrevi, decretum [3] ‖ decernis decernunt ‖ F decernam ‖ S decernam ‖ P decrevi ‖ I decerne ‖ decernens decretus decreturus gdv decernendus/decernundus~ sup decretum
+sero, serere, serui, sertum [3] ‖ seris serunt ‖ F seram ‖ S seram ‖ P serui ‖ I sere ‖ serens sertus serturus gdv serendus/serundus~ sup sertum
+orno, ornare, ornavi, ornatum [1] ‖ ornas ornant ‖ F ornabo ‖ S ornem ‖ P ornavi ‖ I orna ‖ ornans ornatus ornaturus gdv ornandus sup ornatum
+incipio, incipere, incepi, inceptum [3io] ‖ incipis incipiunt ‖ F incipiam ‖ S incipiam ‖ P incepi ‖ I incipe ‖ incipiens inceptus incepturus gdv incipiendus/incipiundus~ sup inceptum
+lateo, latere, latui [2] ‖ lates latent ‖ F latebo ‖ S lateam ‖ P latui ‖ I late ‖ latens - - gdv latendus sup -
+tendo, tendere, tetendi, tensum [3] ‖ tendis tendunt ‖ F tendam ‖ S tendam ‖ P tetendi ‖ I tende ‖ tendens tensus tensurus gdv tendendus/tendundus~ sup tensum
+sono, sonare, sonavi, sonatum [1] ‖ sonas sonant ‖ F sonabo ‖ S sonem ‖ P sonavi/sonui~ ‖ I sona ‖ sonans sonatus sonaturus gdv sonandus sup sonatum
+desolo, desolare, desolavi, desolatum [1] ‖ desolas desolant ‖ F desolabo ‖ S desolem ‖ P desolavi ‖ I desola ‖ desolans desolatus desolaturus gdv desolandus sup desolatum
+gradior, gradi, gressus sum [3io DEP] ‖ graderis/gradere~ gradiuntur ‖ F gradiar ‖ S gradiar ‖ P - ‖ I gradere ‖ gradiens gressus gressurus gdv gradiendus/gradiundus~ sup gressum
+adolesco, adolescere, adolevi, adultum [3] ‖ adolescis adolescunt ‖ F adolescam ‖ S adolescam ‖ P adolevi ‖ I adolesce ‖ adolescens adultus adulturus gdv adolescendus/adolescundus~ sup adultum
+pessimo, pessimare, pessimavi, pessimatum [1] ‖ pessimas pessimant ‖ F pessimabo ‖ S pessimem ‖ P pessimavi ‖ I pessima ‖ pessimans pessimatus pessimaturus gdv pessimandus sup pessimatum
+luceo, lucere, luxi [2] ‖ luces lucent ‖ F lucebo ‖ S luceam ‖ P luxi ‖ I luce ‖ lucens - - gdv lucendus sup -
+depono, deponere, deposui, depostum [3] ‖ deponis deponunt ‖ F deponam ‖ S deponam ‖ P deposui ‖ I depone ‖ deponens depostus deposturus gdv deponendus/deponundus~ sup depostum
+concludo, concludere, conclusi, conclusum [3] ‖ concludis concludunt ‖ F concludam ‖ S concludam ‖ P conclusi ‖ I conclude ‖ concludens conclusus conclusurus gdv concludendus/concludundus~ sup conclusum
+vinco, vincere, vici, victum [3] ‖ vincis vincunt ‖ F vincam ‖ S vincam ‖ P vici ‖ I vince ‖ vincens victus victurus gdv vincendus/vincundus~ sup victum
+fluo, fluere, fluxi, fluxum [3] ‖ fluis fluunt ‖ F fluam ‖ S fluam ‖ P fluxi ‖ I flue ‖ fluens fluxus fluxurus gdv fluendus/fluundus~ sup fluxum
+effugio, effugere, effugi, effugitum [3io] ‖ effugis effugiunt ‖ F effugiam ‖ S effugiam ‖ P effugi ‖ I effuge ‖ effugiens effugitus effugiturus gdv effugiendus/effugiundus~ sup effugitum
+expando, expandere, expandi, expansum [3] ‖ expandis expandunt ‖ F expandam ‖ S expandam ‖ P expandi ‖ I expande ‖ expandens expansus expansurus gdv expandendus/expandundus~ sup expansum
+adoleo, adolere, adolui, adolultum [2] ‖ adoles adolent ‖ F adolebo ‖ S adoleam ‖ P adolui ‖ I adole ‖ adolens adolultus adolulturus gdv adolendus sup adolultum
+ploro, plorare, ploravi, ploratum [1] ‖ ploras plorant ‖ F plorabo ‖ S plorem ‖ P ploravi ‖ I plora ‖ plorans ploratus ploraturus gdv plorandus sup ploratum
+conculco, conculcare, conculcavi, conculcatum [1] ‖ conculcas conculcant ‖ F conculcabo ‖ S conculcem ‖ P conculcavi ‖ I conculca ‖ conculcans conculcatus conculcaturus gdv conculcandus sup conculcatum
+convoco, convocare, convocavi, convocatum [1] ‖ convocas convocant ‖ F convocabo ‖ S convocem ‖ P convocavi ‖ I convoca ‖ convocans convocatus convocaturus gdv convocandus sup convocatum
+erubesco, erubescere, erubui [3] ‖ erubescis erubescunt ‖ F erubescam ‖ S erubescam ‖ P erubui ‖ I erubesce ‖ erubescens - - gdv erubescendus/erubescundus~ sup -
+retribuo, retribuere, retribui, retributum [3] ‖ retribuis retribuunt ‖ F retribuam ‖ S retribuam ‖ P retribui ‖ I retribue ‖ retribuens retributus retributurus gdv retribuendus/retribuundus~ sup retributum
+inhabito, inhabitare, inhabitavi, inhabitatum [1] ‖ inhabitas inhabitant ‖ F inhabitabo ‖ S inhabitem ‖ P inhabitavi ‖ I inhabita ‖ inhabitans inhabitatus inhabitaturus gdv inhabitandus sup inhabitatum
+corripio, corripere, corripui, correptum [3io] ‖ corripis corripiunt ‖ F corripiam ‖ S corripiam ‖ P corripui ‖ I corripe ‖ corripiens correptus correpturus gdv corripiendus/corripiundus~ sup correptum
+crucifigo, crucifigere, crucifixi, crucifixum [3] ‖ crucifigis crucifigunt ‖ F crucifigam ‖ S crucifigam ‖ P crucifixi ‖ I crucifige ‖ crucifigens crucifixus crucifixurus gdv crucifigendus/crucifigundus~ sup crucifixum
+promitto, promittere, promisi, promissum [3] ‖ promittis promittunt ‖ F promittam ‖ S promittam ‖ P promisi ‖ I promitte ‖ promittens promissus promissurus gdv promittendus/promittundus~ sup promissum
+advenio, advenire, adveni, adventum [4] ‖ advenis adveniunt ‖ F adveniam ‖ S adveniam ‖ P adveni ‖ I adveni ‖ adveniens adventus adventurus gdv adveniendus/adveniundus~ sup adventum
+voveo, vovere, vovi, votum [2] ‖ voves vovent ‖ F vovebo ‖ S voveam ‖ P vovi ‖ I vove ‖ vovens votus voturus gdv vovendus sup votum
+incendo, incendere, incendi, incensum [3] ‖ incendis incendunt ‖ F incendam ‖ S incendam ‖ P incendi ‖ I incende ‖ incendens incensus incensurus gdv incendendus/incendundus~ sup incensum
+exstruo, exstruere, exstruxi, exstructum [3] ‖ exstruis exstruunt ‖ F exstruam ‖ S exstruam ‖ P exstruxi ‖ I exstrue ‖ exstruens exstructus exstructurus gdv exstruendus/exstruundus~ sup exstructum
+germino, germinare, germinavi, germinatum [1] ‖ germinas germinant ‖ F germinabo ‖ S germinem ‖ P germinavi ‖ I germina ‖ germinans germinatus germinaturus gdv germinandus sup germinatum
+circumcido, circumcidere, circumcidi, circumcisum [3] ‖ circumcidis circumcidunt ‖ F circumcidam ‖ S circumcidam ‖ P circumcidi ‖ I circumcide ‖ circumcidens circumcisus circumcisurus gdv circumcidendus/circumcidundus~ sup circumcisum
+salio, salire, salivi, saltum [4] ‖ salis saliunt ‖ F saliam ‖ S saliam ‖ P salivi/salii^ ‖ I sali ‖ saliens saltus salturus gdv saliendus/saliundus~ sup saltum
+psallo, psallere, psalli [3] ‖ psallis psallunt ‖ F psallam ‖ S psallam ‖ P psalli ‖ I psalle ‖ psallens - - gdv psallendus/psallundus~ sup -
+adhaereo, adhaerere, adhaesi, adhaesum [2] ‖ adhaeres adhaerent ‖ F adhaerebo ‖ S adhaeream ‖ P adhaesi ‖ I adhaere ‖ adhaerens adhaesus adhaesurus gdv adhaerendus sup adhaesum
+recenseo, recensere, recensui, recensum [2] ‖ recenses recensent ‖ F recensebo ‖ S recenseam ‖ P recensui ‖ I recense ‖ recensens recensus recensurus gdv recensendus sup recensum
+sitio, sitire, sitivi [4] ‖ sitis sitiunt ‖ F sitiam ‖ S sitiam ‖ P sitivi/sitii^ ‖ I siti ‖ sitiens - - gdv sitiendus/sitiundus~ sup -
+nego, negare, negavi, negatum [1] ‖ negas negant ‖ F negabo ‖ S negem ‖ P negavi ‖ I nega ‖ negans negatus negaturus gdv negandus sup negatum
+aestimo, aestimare, aestimavi, aestimatum [1] ‖ aestimas aestimant ‖ F aestimabo ‖ S aestimem ‖ P aestimavi ‖ I aestima ‖ aestimans aestimatus aestimaturus gdv aestimandus sup aestimatum
+cerno, cernere, crevi, cretum [3] ‖ cernis cernunt ‖ F cernam ‖ S cernam ‖ P crevi ‖ I cerne ‖ cernens cretus creturus gdv cernendus/cernundus~ sup cretum
+efficio, efficere, effeci, effectum [3io] ‖ efficis efficiunt ‖ F efficiam ‖ S efficiam ‖ P effeci ‖ I effice ‖ efficiens effectus effecturus gdv efficiendus/efficiundus~ sup effectum
+frango, frangere, fregi, fractum [3] ‖ frangis frangunt ‖ F frangam ‖ S frangam ‖ P fregi ‖ I frange ‖ frangens fractus fracturus gdv frangendus/frangundus~ sup fractum
+emitto, emittere, emisi, emissum [3] ‖ emittis emittunt ‖ F emittam ‖ S emittam ‖ P emisi ‖ I emitte ‖ emittens emissus emissurus gdv emittendus/emittundus~ sup emissum
+audeo, audere, ausus sum [2 DEP] ‖ audes audent ‖ F audebo ‖ S audeam ‖ P - ‖ I aude ‖ audens aus aurus gdv audendus sup aum
+succido, succidere, succidi, succisum [3] ‖ succidis succidunt ‖ F succidam ‖ S succidam ‖ P succidi ‖ I succide ‖ succidens succisus succisurus gdv succidendus/succidundus~ sup succisum
+dissolvo, dissolvere, dissolvi, dissolutum [3] ‖ dissolvis dissolvunt ‖ F dissolvam ‖ S dissolvam ‖ P dissolvi ‖ I dissolve ‖ dissolvens dissolutus dissoluturus gdv dissolvendus/dissolvundus~ sup dissolutum
+conservo, conservare, conservavi, conservatum [1] ‖ conservas conservant ‖ F conservabo ‖ S conservem ‖ P conservavi ‖ I conserva ‖ conservans conservatus conservaturus gdv conservandus sup conservatum
+propono, proponere, proposui, propositum [3] ‖ proponis proponunt ‖ F proponam ‖ S proponam ‖ P proposui ‖ I propone ‖ proponens propositus propositurus gdv proponendus/proponundus~ sup propositum
+praesto, praestare, praestiti, praestitum [1] ‖ praestas praestant ‖ F praestabo ‖ S praestem ‖ P praestiti/praestavi~ ‖ I praesta ‖ praestans praestitus praestiturus gdv praestandus sup praestitum
+praevaleo, praevalere, praevalui [2] ‖ praevales praevalent ‖ F praevalebo ‖ S praevaleam ‖ P praevalui ‖ I praevale ‖ praevalens - - gdv praevalendus sup -
+calco, calcare, calcavi, calcatum [1] ‖ calcas calcant ‖ F calcabo ‖ S calcem ‖ P calcavi ‖ I calca ‖ calcans calcatus calcaturus gdv calcandus sup calcatum
+inebrio, inebriare, inebriavi, inebriatum [1] ‖ inebrias inebriant ‖ F inebriabo ‖ S inebriem ‖ P inebriavi ‖ I inebria ‖ inebrians inebriatus inebriaturus gdv inebriandus sup inebriatum
+protego, protegere, protexi, protectum [3] ‖ protegis protegunt ‖ F protegam ‖ S protegam ‖ P protexi ‖ I protege ‖ protegens protectus protecturus gdv protegendus/protegundus~ sup protectum
+acquiesco, acquiescere, acquiei, acquietum [3] ‖ acquiescis acquiescunt ‖ F acquiescam ‖ S acquiescam ‖ P acquiei ‖ I acquiesce ‖ acquiescens acquietus acquieturus gdv acquiescendus/acquiescundus~ sup acquietum
+increpo, increpare, increpui, increpitum [1] ‖ increpas increpant ‖ F increpabo ‖ S increpem ‖ P increpui/increpui~/increpavi~ ‖ I increpa ‖ increpans increpitus increpiturus gdv increpandus sup increpitum
+seduco, seducere, seduxi, seductum [3] ‖ seducis seducunt ‖ F seducam ‖ S seducam ‖ P seduxi ‖ I seduce/seduc ‖ seducens seductus seducturus gdv seducendus/seducundus~ sup seductum
+vivifico, vivificare, vivificavi, vivificatum [1] ‖ vivificas vivificant ‖ F vivificabo ‖ S vivificem ‖ P vivificavi ‖ I vivifica ‖ vivificans vivificatus vivificaturus gdv vivificandus sup vivificatum
+tento, tentare, tentavi, tentatum [1] ‖ tentas tentant ‖ F tentabo ‖ S tentem ‖ P tentavi ‖ I tenta ‖ tentans tentatus tentaturus gdv tentandus sup tentatum
+contingo, contingere, contigi, contactum [3] ‖ contingis contingunt ‖ F contingam ‖ S contingam ‖ P contigi ‖ I continge ‖ contingens contactus contacturus gdv contingendus/contingundus~ sup contactum
+nutrio, nutrire, nutrivi, nutritum [4] ‖ nutris nutriunt ‖ F nutriam ‖ S nutriam ‖ P nutrivi/nutrii^ ‖ I nutri ‖ nutriens nutritus nutriturus gdv nutriendus/nutriundus~ sup nutritum
+paveo, pavere, pavi [2] ‖ paves pavent ‖ F pavebo ‖ S paveam ‖ P pavi ‖ I pave ‖ pavens - - gdv pavendus sup -
+intendo, intendere, intendi, intentum [3] ‖ intendis intendunt ‖ F intendam ‖ S intendam ‖ P intendi ‖ I intende ‖ intendens intentus intenturus gdv intendendus/intendundus~ sup intentum
+excello, excellere, excelsum [3] ‖ excellis excellunt ‖ F excellam ‖ S excellam ‖ P - ‖ I excelle ‖ excellens excelsus excelsurus gdv excellendus/excellundus~ sup excelsum
+figo, figere, fixi, fixum [3] ‖ figis figunt ‖ F figam ‖ S figam ‖ P fixi ‖ I fige ‖ figens fixus fixurus gdv figendus/figundus~ sup fixum
+cedo, cedere, cessi, cessum [3] ‖ cedis cedunt ‖ F cedam ‖ S cedam ‖ P cessi ‖ I cede ‖ cedens cessus cessurus gdv cedendus/cedundus~ sup cessum
+evangelizo, evangelizare, evangelizavi, evangelizatum [1] ‖ evangelizas evangelizant ‖ F evangelizabo ‖ S evangelizem ‖ P evangelizavi ‖ I evangeliza ‖ evangelizans evangelizatus evangelizaturus gdv evangelizandus sup evangelizatum
+condemno, condemnare, condemnavi, condemnatum [1] ‖ condemnas condemnant ‖ F condemnabo ‖ S condemnem ‖ P condemnavi ‖ I condemna ‖ condemnans condemnatus condemnaturus gdv condemnandus sup condemnatum
+insidior, insidiari, insidiatus sum [1 DEP] ‖ insidiaris/insidiare~ insidiantur ‖ F insidiabor ‖ S insidier ‖ P - ‖ I insidiare ‖ insidians insidiatus insidiaturus gdv insidiandus sup insidiatum
+committo, committere, commisi, commissum [3] ‖ committis committunt ‖ F committam ‖ S committam ‖ P commisi ‖ I committe ‖ committens commissus commissurus gdv committendus/committundus~ sup commissum
+incedo, incedere, incessi, incessum [3] ‖ incedis incedunt ‖ F incedam ‖ S incedam ‖ P incessi ‖ I incede ‖ incedens incessus incessurus gdv incedendus/incedundus~ sup incessum
+sileo, silere, silui [2] ‖ siles silent ‖ F silebo ‖ S sileam ‖ P silui ‖ I sile ‖ silens - - gdv silendus sup -
+tego, tegere, texi, tectum [3] ‖ tegis tegunt ‖ F tegam ‖ S tegam ‖ P texi ‖ I tege ‖ tegens tectus tecturus gdv tegendus/tegundus~ sup tectum
+ieiuno, ieiunare, ieiunavi, ieiunatum [1] ‖ ieiunas ieiunant ‖ F ieiunabo ‖ S ieiunem ‖ P ieiunavi ‖ I ieiuna ‖ ieiunans ieiunatus ieiunaturus gdv ieiunandus sup ieiunatum
+benefacio, benefacere, benefeci, benefactum [3io] ‖ benefacis benefaciunt ‖ F benefaciam ‖ S benefaciam ‖ P benefeci ‖ I beneface ‖ benefaciens benefactus benefacturus gdv benefaciendus/benefaciundus~ sup benefactum
+exclamo, exclamare, exclamavi, exclamatum [1] ‖ exclamas exclamant ‖ F exclamabo ‖ S exclamem ‖ P exclamavi ‖ I exclama ‖ exclamans exclamatus exclamaturus gdv exclamandus sup exclamatum
+manifesto, manifestare, manifestavi, manifestatum [1] ‖ manifestas manifestant ‖ F manifestabo ‖ S manifestem ‖ P manifestavi ‖ I manifesta ‖ manifestans manifestatus manifestaturus gdv manifestandus sup manifestatum
+sperno, spernere, sprevi, spretum [3] ‖ spernis spernunt ‖ F spernam ‖ S spernam ‖ P sprevi ‖ I sperne ‖ spernens spretus spreturus gdv spernendus/spernundus~ sup spretum
+armo, armare, armavi, armatum [1] ‖ armas armant ‖ F armabo ‖ S armem ‖ P armavi ‖ I arma ‖ armans armatus armaturus gdv armandus sup armatum
+traho, trahere, traxi, tractum [3] ‖ trahis trahunt ‖ F traham ‖ S traham ‖ P traxi ‖ I trahe ‖ trahens tractus tracturus gdv trahendus/trahundus~ sup tractum
+firmo, firmare, firmavi, firmatum [1] ‖ firmas firmant ‖ F firmabo ‖ S firmem ‖ P firmavi ‖ I firma ‖ firmans firmatus firmaturus gdv firmandus sup firmatum
+mentior, mentiri, mentitus sum [4 DEP] ‖ mentiris/mentire~ mentiuntur ‖ F mentiar ‖ S mentiar ‖ P - ‖ I mentire ‖ mentiens mentitus mentiturus gdv mentiendus/mentiundus~ sup mentitum
+produco, producere, produxi, productum [3] ‖ producis producunt ‖ F producam ‖ S producam ‖ P produxi ‖ I produce/produc ‖ producens productus producturus gdv producendus/producundus~ sup productum
+infirmo, infirmare, infirmavi, infirmatum [1] ‖ infirmas infirmant ‖ F infirmabo ‖ S infirmem ‖ P infirmavi ‖ I infirma ‖ infirmans infirmatus infirmaturus gdv infirmandus sup infirmatum
+scrutor, scrutari, scrutatus sum [1 DEP] ‖ scrutaris/scrutare~ scrutantur ‖ F scrutabor ‖ S scruter ‖ P - ‖ I scrutare ‖ scrutans scrutatus scrutaturus gdv scrutandus sup scrutatum
+dispono, disponere, disposui, dispositum [3] ‖ disponis disponunt ‖ F disponam ‖ S disponam ‖ P disposui ‖ I dispone ‖ disponens dispositus dispositurus gdv disponendus/disponundus~ sup dispositum
+tribulo, tribulare, tribulavi, tribulatum [1] ‖ tribulas tribulant ‖ F tribulabo ‖ S tribulem ‖ P tribulavi ‖ I tribula ‖ tribulans tribulatus tribulaturus gdv tribulandus sup tribulatum
+consulo, consulere, consului, consultum [3] ‖ consulis consulunt ‖ F consulam ‖ S consulam ‖ P consului ‖ I consule ‖ consulens consultus consulturus gdv consulendus/consulundus~ sup consultum
+metuo, metuere, metui [3] ‖ metuis metuunt ‖ F metuam ‖ S metuam ‖ P metui ‖ I metue ‖ metuens - - gdv metuendus/metuundus~ sup -
+doleo, dolere, dolui, dolitum [2] ‖ doles dolent ‖ F dolebo ‖ S doleam ‖ P dolui ‖ I dole ‖ dolens dolitus doliturus gdv dolendus sup dolitum
+libo, libare, libavi, libatum [1] ‖ libas libant ‖ F libabo ‖ S libem ‖ P libavi ‖ I liba ‖ libans libatus libaturus gdv libandus sup libatum
+appono, apponere, apposui, appositum [3] ‖ apponis apponunt ‖ F apponam ‖ S apponam ‖ P apposui ‖ I appone ‖ apponens appositus appositurus gdv apponendus/apponundus~ sup appositum
+evenio, evenire, eveni, eventum [4] ‖ evenis eveniunt ‖ F eveniam ‖ S eveniam ‖ P eveni ‖ I eveni ‖ eveniens eventus eventurus gdv eveniendus/eveniundus~ sup eventum
+exprobro, exprobrare, exprobravi, exprobratum [1] ‖ exprobras exprobrant ‖ F exprobrabo ‖ S exprobrem ‖ P exprobravi ‖ I exprobra ‖ exprobrans exprobratus exprobraturus gdv exprobrandus sup exprobratum
+polliceor, polliceri, pollicitus sum [2 DEP] ‖ polliceris/pollicere~ pollicentur ‖ F pollicebor ‖ S pollicear ‖ P - ‖ I pollicere ‖ pollicens pollicitus polliciturus gdv pollicendus sup pollicitum
+comminuo, comminuere, comminui, comminutum [3] ‖ comminuis comminuunt ‖ F comminuam ‖ S comminuam ‖ P comminui ‖ I comminue ‖ comminuens comminutus comminuturus gdv comminuendus/comminuundus~ sup comminutum
+noceo, nocere, nocui, nocitum [2] ‖ noces nocent ‖ F nocebo ‖ S noceam ‖ P nocui ‖ I noce ‖ nocens nocitus nociturus gdv nocendus sup nocitum
+perhibeo, perhibere, perhibui, perhibitum [2] ‖ perhibes perhibent ‖ F perhibebo ‖ S perhibeam ‖ P perhibui ‖ I perhibe ‖ perhibens perhibitus perhibiturus gdv perhibendus sup perhibitum
+parturio, parturire, parturivi [4] ‖ parturis parturiunt ‖ F parturiam ‖ S parturiam ‖ P parturivi/parturii^ ‖ I parturi ‖ parturiens - - gdv parturiendus/parturiundus~ sup -
+tingo, tingere, tinxi, tinctum [3] ‖ tingis tingunt ‖ F tingam ‖ S tingam ‖ P tinxi ‖ I tinge ‖ tingens tinctus tincturus gdv tingendus/tingundus~ sup tinctum
+concupisco, concupiscere, concupivi, concupitum [3] ‖ concupiscis concupiscunt ‖ F concupiscam ‖ S concupiscam ‖ P concupivi/concupii^ ‖ I concupisce ‖ concupiscens concupitus concupiturus gdv concupiscendus/concupiscundus~ sup concupitum
+prosterno, prosternere, prostravi, prostratum [3] ‖ prosternis prosternunt ‖ F prosternam ‖ S prosternam ‖ P prostravi ‖ I prosterne ‖ prosternens prostratus prostraturus gdv prosternendus/prosternundus~ sup prostratum
+haurio, haurire, hausi, haustum [4] ‖ hauris hauriunt ‖ F hauriam ‖ S hauriam ‖ P hausi ‖ I hauri ‖ hauriens haustus hausturus gdv hauriendus/hauriundus~ sup haustum
+redigo, redigere, redegi, redactum [3] ‖ redigis redigunt ‖ F redigam ‖ S redigam ‖ P redegi ‖ I redige ‖ redigens redactus redacturus gdv redigendus/redigundus~ sup redactum
+eiicio, eiicere, eieci, eiectum [3io] ‖ eiicis eiiciunt ‖ F eiiciam ‖ S eiiciam ‖ P eieci ‖ I eiice ‖ eiiciens eiectus eiecturus gdv eiiciendus/eiiciundus~ sup eiectum
+immuto, immutare, immutavi, immutatum [1] ‖ immutas immutant ‖ F immutabo ‖ S immutem ‖ P immutavi ‖ I immuta ‖ immutans immutatus immutaturus gdv immutandus sup immutatum
+aspergo, aspergere, aspersi, aspersum [3] ‖ aspergis aspergunt ‖ F aspergam ‖ S aspergam ‖ P aspersi ‖ I asperge ‖ aspergens aspersus aspersurus gdv aspergendus/aspergundus~ sup aspersum
+alligo, alligare, alligavi, alligatum [1] ‖ alligas alligant ‖ F alligabo ‖ S alligem ‖ P alligavi ‖ I alliga ‖ alligans alligatus alligaturus gdv alligandus sup alligatum
+transgredior, transgredi, transgressus sum [3io DEP] ‖ transgrederis/transgredere~ transgrediuntur ‖ F transgrediar ‖ S transgrediar ‖ P - ‖ I transgredere ‖ transgrediens transgressus transgressurus gdv transgrediendus/transgrediundus~ sup transgressum
+osculor, osculari, osculatus sum [1 DEP] ‖ oscularis/osculare~ osculantur ‖ F osculabor ‖ S osculer ‖ P - ‖ I osculare ‖ osculans osculatus osculaturus gdv osculandus sup osculatum
+existimo, existimare, existimavi, existimatum [1] ‖ existimas existimant ‖ F existimabo ‖ S existimem ‖ P existimavi ‖ I existima ‖ existimans existimatus existimaturus gdv existimandus sup existimatum
+formo, formare, formavi, formatum [1] ‖ formas formant ‖ F formabo ‖ S formem ‖ P formavi ‖ I forma ‖ formans formatus formaturus gdv formandus sup formatum
+praelior, praeliari, praeliatus sum [1 DEP] ‖ praeliaris/praeliare~ praeliantur ‖ F praeliabor ‖ S praelier ‖ P - ‖ I praeliare ‖ praelians praeliatus praeliaturus gdv praeliandus sup praeliatum
+superexalto, superexaltare, superexaltavi, superexaltatum [1] ‖ superexaltas superexaltant ‖ F superexaltabo ‖ S superexaltem ‖ P superexaltavi ‖ I superexalta ‖ superexaltans superexaltatus superexaltaturus gdv superexaltandus sup superexaltatum
+scandalizo, scandalizare, scandalizavi, scandalizatum [1] ‖ scandalizas scandalizant ‖ F scandalizabo ‖ S scandalizem ‖ P scandalizavi ‖ I scandaliza ‖ scandalizans scandalizatus scandalizaturus gdv scandalizandus sup scandalizatum
+indigeo, indigere, indigui [2] ‖ indiges indigent ‖ F indigebo ‖ S indigeam ‖ P indigui ‖ I indige ‖ indigens - - gdv indigendus sup -
+persevero, perseverare, perseveravi, perseveratum [1] ‖ perseveras perseverant ‖ F perseverabo ‖ S perseverem ‖ P perseveravi ‖ I persevera ‖ perseverans perseveratus perseveraturus gdv perseverandus sup perseveratum
+agnosco, agnoscere, agnovi, agnitum [3] ‖ agnoscis agnoscunt ‖ F agnoscam ‖ S agnoscam ‖ P agnovi ‖ I agnosce ‖ agnoscens agnitus agniturus gdv agnoscendus/agnoscundus~ sup agnitum
+concito, concitare, concitavi, concitatum [1] ‖ concitas concitant ‖ F concitabo ‖ S concitem ‖ P concitavi ‖ I concita ‖ concitans concitatus concitaturus gdv concitandus sup concitatum
+contradico, contradicere, contradixi, contradictum [3] ‖ contradicis contradicunt ‖ F contradicam ‖ S contradicam ‖ P contradixi ‖ I contradice/contradic ‖ contradicens contradictus contradicturus gdv contradicendus/contradicundus~ sup contradictum
+occupo, occupare, occupavi, occupatum [1] ‖ occupas occupant ‖ F occupabo ‖ S occupem ‖ P occupavi ‖ I occupa ‖ occupans occupatus occupaturus gdv occupandus sup occupatum
+expleo, explere, explevi, expletum [2] ‖ exples explent ‖ F explebo ‖ S expleam ‖ P explevi ‖ I exple ‖ explens expletus expleturus gdv explendus sup expletum
+expugno, expugnare, expugnavi, expugnatum [1] ‖ expugnas expugnant ‖ F expugnabo ‖ S expugnem ‖ P expugnavi ‖ I expugna ‖ expugnans expugnatus expugnaturus gdv expugnandus sup expugnatum
+uro, urere, ussi, ustum [3] ‖ uris urunt ‖ F uram ‖ S uram ‖ P ussi ‖ I ure ‖ urens ustus usturus gdv urendus/urundus~ sup ustum
+colloco, collocare, collocavi, collocatum [1] ‖ collocas collocant ‖ F collocabo ‖ S collocem ‖ P collocavi ‖ I colloca ‖ collocans collocatus collocaturus gdv collocandus sup collocatum
+compono, componere, composui, compositum [3] ‖ componis componunt ‖ F componam ‖ S componam ‖ P composui ‖ I compone ‖ componens compositus compositurus gdv componendus/componundus~ sup compositum
+irrito, irritare, irritavi, irritatum [1] ‖ irritas irritant ‖ F irritabo ‖ S irritem ‖ P irritavi ‖ I irrita ‖ irritans irritatus irritaturus gdv irritandus sup irritatum
+accuso, accusare, accusavi, accusatum [1] ‖ accusas accusant ‖ F accusabo ‖ S accusem ‖ P accusavi ‖ I accusa ‖ accusans accusatus accusaturus gdv accusandus sup accusatum
+corrumpo, corrumpere, corrupi, corruptum [3] ‖ corrumpis corrumpunt ‖ F corrumpam ‖ S corrumpam ‖ P corrupi ‖ I corrumpe ‖ corrumpens corruptus corrupturus gdv corrumpendus/corrumpundus~ sup corruptum
+induro, indurare, induravi, induratum [1] ‖ induras indurant ‖ F indurabo ‖ S indurem ‖ P induravi ‖ I indura ‖ indurans induratus induraturus gdv indurandus sup induratum
+extermino, exterminare, exterminavi, exterminatum [1] ‖ exterminas exterminant ‖ F exterminabo ‖ S exterminem ‖ P exterminavi ‖ I extermina ‖ exterminans exterminatus exterminaturus gdv exterminandus sup exterminatum
+subicio, subicere, subieci, subiectum [3io] ‖ subicis subiciunt ‖ F subiciam ‖ S subiciam ‖ P subieci ‖ I subice ‖ subiciens subiectus subiecturus gdv subiciendus/subiciundus~ sup subiectum
+fabrico, fabricare, fabricavi, fabricatum [1] ‖ fabricas fabricant ‖ F fabricabo ‖ S fabricem ‖ P fabricavi ‖ I fabrica ‖ fabricans fabricatus fabricaturus gdv fabricandus sup fabricatum
+extinguo, extinguere, extinxi, extinctum [3] ‖ extinguis extinguunt ‖ F extinguam ‖ S extinguam ‖ P extinxi ‖ I extingue ‖ extinguens extinctus extincturus gdv extinguendus/extinguundus~ sup extinctum
+delecto, delectare, delectavi, delectatum [1] ‖ delectas delectant ‖ F delectabo ‖ S delectem ‖ P delectavi ‖ I delecta ‖ delectans delectatus delectaturus gdv delectandus sup delectatum
+accendo, accendere, accendi, accensum [3] ‖ accendis accendunt ‖ F accendam ‖ S accendam ‖ P accendi ‖ I accende ‖ accendens accensus accensurus gdv accendendus/accendundus~ sup accensum
+flagello, flagellare, flagellavi, flagellatum [1] ‖ flagellas flagellant ‖ F flagellabo ‖ S flagellem ‖ P flagellavi ‖ I flagella ‖ flagellans flagellatus flagellaturus gdv flagellandus sup flagellatum
+suspendo, suspendere, suspendi, suspensum [3] ‖ suspendis suspendunt ‖ F suspendam ‖ S suspendam ‖ P suspendi ‖ I suspende ‖ suspendens suspensus suspensurus gdv suspendendus/suspendundus~ sup suspensum
+iacio, iacere, ieci, iactum [3io] ‖ iacis iaciunt ‖ F iaciam ‖ S iaciam ‖ P ieci ‖ I iace ‖ iaciens iactus iacturus gdv iaciendus/iaciundus~ sup iactum
+sicco, siccare, siccavi, siccatum [1] ‖ siccas siccant ‖ F siccabo ‖ S siccem ‖ P siccavi ‖ I sicca ‖ siccans siccatus siccaturus gdv siccandus sup siccatum
+sentio, sentire, sensi, sensum [4] ‖ sentis sentiunt ‖ F sentiam ‖ S sentiam ‖ P sensi ‖ I senti ‖ sentiens sensus sensurus gdv sentiendus/sentiundus~ sup sensum
+dono, donare, donavi, donatum [1] ‖ donas donant ‖ F donabo ‖ S donem ‖ P donavi ‖ I dona ‖ donans donatus donaturus gdv donandus sup donatum
+perambulo, perambulare, perambulavi, perambulatum [1] ‖ perambulas perambulant ‖ F perambulabo ‖ S perambulem ‖ P perambulavi ‖ I perambula ‖ perambulans perambulatus perambulaturus gdv perambulandus sup perambulatum
+rideo, ridere, risi, risum [2] ‖ rides rident ‖ F ridebo ‖ S rideam ‖ P risi ‖ I ride ‖ ridens risus risurus gdv ridendus sup risum
+satio, satiare, satiavi, satiatum [1] ‖ satias satiant ‖ F satiabo ‖ S satiem ‖ P satiavi ‖ I satia ‖ satians satiatus satiaturus gdv satiandus sup satiatum
+ulciscor, ulcisci, ultus sum [3 DEP] ‖ ulcisceris/ulciscere~ ulciscuntur ‖ F ulciscar ‖ S ulciscar ‖ P - ‖ I ulciscere ‖ ulciscens ultus ulturus gdv ulciscendus/ulciscundus~ sup ultum
+rugio, rugire, rugivi, rugitum [4] ‖ rugis rugiunt ‖ F rugiam ‖ S rugiam ‖ P rugivi/rugii^ ‖ I rugi ‖ rugiens rugitus rugiturus gdv rugiendus/rugiundus~ sup rugitum
+exquiro, exquirere, exquisivi, exquisitum [3] ‖ exquiris exquirunt ‖ F exquiram ‖ S exquiram ‖ P exquisivi/exquisii^ ‖ I exquire ‖ exquirens exquisitus exquisiturus gdv exquirendus/exquirundus~ sup exquisitum
+dilato, dilatare, dilatavi, dilatatum [1] ‖ dilatas dilatant ‖ F dilatabo ‖ S dilatem ‖ P dilatavi ‖ I dilata ‖ dilatans dilatatus dilataturus gdv dilatandus sup dilatatum
+enarro, enarrare, enarravi, enarratum [1] ‖ enarras enarrant ‖ F enarrabo ‖ S enarrem ‖ P enarravi ‖ I enarra ‖ enarrans enarratus enarraturus gdv enarrandus sup enarratum
+meditor, meditari, meditatus sum [1 DEP] ‖ meditaris/meditare~ meditantur ‖ F meditabor ‖ S mediter ‖ P - ‖ I meditare ‖ meditans meditatus meditaturus gdv meditandus sup meditatum
+evado, evadere, evasi, evasum [3] ‖ evadis evadunt ‖ F evadam ‖ S evadam ‖ P evasi ‖ I evade ‖ evadens evasus evasurus gdv evadendus/evadundus~ sup evasum
+immitto, immittere, immisi, immissum [3] ‖ immittis immittunt ‖ F immittam ‖ S immittam ‖ P immisi ‖ I immitte ‖ immittens immissus immissurus gdv immittendus/immittundus~ sup immissum
+consequor, consequi, consecutus sum [3 DEP] ‖ consequeris/consequere~ consequuntur ‖ F consequar ‖ S consequar ‖ P - ‖ I consequere ‖ consequens consecutus consecuturus gdv consequendus/consequundus~ sup consecutum
+consentio, consentire, consensi, consensum [4] ‖ consentis consentiunt ‖ F consentiam ‖ S consentiam ‖ P consensi ‖ I consenti ‖ consentiens consensus consensurus gdv consentiendus/consentiundus~ sup consensum
+torqueo, torquere, torsi, tortum [2] ‖ torques torquent ‖ F torquebo ‖ S torqueam ‖ P torsi ‖ I torque ‖ torquens tortus torturus gdv torquendus sup tortum
+adiuro, adiurare, adiuravi, adiuratum [1] ‖ adiuras adiurant ‖ F adiurabo ‖ S adiurem ‖ P adiuravi ‖ I adiura ‖ adiurans adiuratus adiuraturus gdv adiurandus sup adiuratum
+involvo, involvere, involvi, involutum [3] ‖ involvis involvunt ‖ F involvam ‖ S involvam ‖ P involvi ‖ I involve ‖ involvens involutus involuturus gdv involvendus/involvundus~ sup involutum
+commoror, commorari, commoratus sum [1 DEP] ‖ commoraris/commorare~ commorantur ‖ F commorabor ‖ S commorer ‖ P - ‖ I commorare ‖ commorans commoratus commoraturus gdv commorandus sup commoratum
+illumino, illuminare, illuminavi, illuminatum [1] ‖ illuminas illuminant ‖ F illuminabo ‖ S illuminem ‖ P illuminavi ‖ I illumina ‖ illuminans illuminatus illuminaturus gdv illuminandus sup illuminatum
+abicio, abicere, abieci, abiectum [3io] ‖ abicis abiciunt ‖ F abiciam ‖ S abiciam ‖ P abieci ‖ I abice ‖ abiciens abiectus abiecturus gdv abiciendus/abiciundus~ sup abiectum
+concido, concidere, concidi [3] ‖ concidis concidunt ‖ F concidam ‖ S concidam ‖ P concidi ‖ I concide ‖ concidens - - gdv concidendus/concidundus~ sup -
+delinquo, delinquere, deliqui, delictum [3] ‖ delinquis delinquunt ‖ F delinquam ‖ S delinquam ‖ P deliqui ‖ I delinque ‖ delinquens delictus delicturus gdv delinquendus/delinquundus~ sup delictum
+incido, incidere, incidi, incasum [3] ‖ incidis incidunt ‖ F incidam ‖ S incidam ‖ P incidi ‖ I incide ‖ incidens incasus incasurus gdv incidendus/incidundus~ sup incasum
+demolior, demoliri, demolitus sum [4 DEP] ‖ demoliris/demolire~ demoliuntur ‖ F demoliar ‖ S demoliar ‖ P - ‖ I demolire ‖ demoliens demolitus demoliturus gdv demoliendus/demoliundus~ sup demolitum
+supero, superare, superavi, superatum [1] ‖ superas superant ‖ F superabo ‖ S superem ‖ P superavi ‖ I supera ‖ superans superatus superaturus gdv superandus sup superatum
+do, dare, dedi, datum [1] ‖ das dant ‖ F dabo ‖ S dem ‖ P dedi/davi~ ‖ I da ‖ dans datus daturus gdv dandus sup datum
+edo, edere, edi, esum [3] ‖ edis edunt ‖ F edam ‖ S edam ‖ P edi ‖ I ede ‖ edens esus esurus gdv edendus/edundus~ sup esum
+decet, decere, decuit [2] ‖ - - ‖ F - ‖ S - ‖ P - ‖ I - ‖ decens - - gdv - sup -

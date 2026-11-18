@@ -1,0 +1,179 @@
+# Battery 3: the verb. Sentences written by the auditor.
+# regular tenses and moods
+la | Puellam amabam. | amabam
+la | Cras te videbo. | videbo
+la | Regem audiemus. | audiemus
+la | Urbem capient. | capient
+la | Epistulam scripseram. | scripseram
+la | Cum venero, tibi dicam. | venero
+la | Utinam veniat! | veniat
+la | Rogavit ut venirem. | venirem
+la | Nescio quid fecerit. | fecerit
+la | Si venisset, vidisset. | venisset
+la | Laudatur ab omnibus. | Laudatur
+la | Urbs capta est. | capta
+la | Libri legebantur. | legebantur
+la | Amaberis ab omnibus. | Amaberis
+la | Mittar in Galliam. | Mittar
+la | Timeo ne capiatur. | capiatur
+# imperatives
+la | Ama Deum tuum. | Ama
+la | Venite ad me omnes. | Venite
+la | Dic mihi veritatem. | Dic
+la | Duc nos in viam rectam. | Duc
+la | Fac hoc et vives. | Fac
+la | Fer opem miseris. | Fer
+la | Esto fidelis usque ad mortem. | Esto
+la | Estote parati. | Estote
+la | Noli timere. | Noli
+la | Nolite iudicare. | Nolite
+la | Memento mori. | Memento
+la | Ora pro nobis, sancta Dei Genetrix. | Ora
+la | Benefac servo tuo. | Benefac
+la | Sequere me. | Sequere
+la | Loquere, Domine, quia audit servus tuus. | Loquere
+la | I, lictor, colliga manus. | I
+la | Ite, missa est. | Ite
+la | Salve, Regina, mater misericordiae. | Salve
+la | Ave Maria, gratia plena. | Ave
+la | Vale, amice. | Vale
+la | Scito te ipsum. | Scito
+# infinitives, participles, gerund, supine
+la | Errare humanum est. | Errare
+la | Dicitur venisse. | venisse
+la | Credo eum venturum esse. | venturum
+la | Vult amari. | amari
+la | Puer currens cecidit. | currens
+la | Video puerum currentem. | currentem
+la | Verba volant, scripta manent. | scripta
+la | Morituri te salutant. | Morituri
+la | Nasciturus pro iam nato habetur. | Nasciturus
+la | Carthago delenda est. | delenda
+la | Ars amandi. | amandi
+la | Docendo discimus. | Docendo
+la | Venit ad videndum. | videndum
+la | Mirabile dictu. | dictu
+la | Venerunt pacem petitum. | petitum
+la | Eundum est nobis. | Eundum
+# deponents and semi-deponents
+la | Loquitur cum amico. | Loquitur
+la | Locutus est Dominus ad Moysen. | Locutus
+la | Hostes sequuntur. | sequuntur
+la | Mortuus est et sepultus. | Mortuus
+la | Multa passus est. | passus
+la | Patitur iniuriam. | Patitur
+la | Usus est gladio. | Usus
+la | Utuntur armis. | Utuntur
+la | Ausus est hoc dicere. | Ausus
+la | Non audet venire. | audet
+la | Gavisus sum valde. | Gavisus
+la | Gaudeamus igitur. | Gaudeamus
+la | Confisus est Domino. | Confisus
+la | Solitus erat mane surgere. | Solitus
+la | Hortatur milites. | Hortatur
+la | Veritus est ne caperetur. | Veritus
+la | Proficiscitur Romam. | Proficiscitur
+la | Profecti sunt prima luce. | Profecti
+la | Natus est nobis hodie Salvator. | Natus
+la | Confitebor tibi, Domine. | Confitebor
+la | Miserere nobis. | Miserere
+la | Orta est stella. | Orta
+la | Oriturus est sol. | Oriturus
+# irregulars
+la | Possumus hoc facere. | Possumus
+la | Potuit venire. | Potuit
+la | Non poterant intrare. | poterant
+la | Prodest nobis. | Prodest
+la | Profuit multis. | Profuit
+la | Abest a patria. | Abest
+la | Afuit tres dies. | Afuit
+la | Adsum, quid vis? | Adsum
+la | Aderat ibi mulier. | Aderat
+la | Eo Romam. | Eo
+la | Ibant per viam. | Ibant
+la | Ibit in pace. | Ibit
+la | Iit ad patrem. | Iit
+la | Eunt in urbem. | Eunt
+la | Euntes docete omnes gentes. | Euntes
+la | Redibo ad vos. | Redibo
+la | Exiit edictum a Caesare. | Exiit
+la | Periit memoria eorum. | Periit
+la | Transiit per medium illorum. | Transiit
+la | Tulit crucem suam. | Tulit
+la | Latus est in sepulcrum. | Latus
+la | Attulerunt ei munera. | Attulerunt
+la | Abstulit eum Dominus. | Abstulit
+la | Sustulit lapidem. | Sustulit
+la | Sublatus est in caelum. | Sublatus
+la | Auferte ista hinc. | Auferte
+la | Offerebant ei parvulos. | Offerebant
+la | Quid vis? | vis
+la | Vult venire. | Vult
+la | Vellem adesse. | Vellem
+la | Si vis pacem, para bellum. | vis
+la | Nolo mortem peccatoris. | Nolo
+la | Non vult. | vult
+la | Mavult manere. | Mavult
+la | Malim tacere. | Malim
+la | Fit clamor. | Fit
+la | Fiat lux. | Fiat
+la | Factum est vespere et mane. | Factum
+la | Fiebant haec omnia. | Fiebant
+la | Fieri non potest. | Fieri
+la | Dat panem pauperibus. | Dat
+la | Dedit ei panem. | Dedit
+la | Da nobis hodie. | Da
+la | Dabit vobis Pater. | Dabit
+la | Panem edit. | edit
+la | Vinum bibit et panem est. | est
+la | Esse quam videri. | Esse
+la | Hoc, inquam, verum est. | inquam
+la | Ait illi Iesus. | Ait
+la | Aiunt eum venisse. | Aiunt
+la | Coepit docere. | Coepit
+la | Coeperunt loqui variis linguis. | Coeperunt
+la | Memini me puerum esse. | Memini
+la | Meminerint omnes. | Meminerint
+la | Odi et amo. | Odi
+la | Oderunt me gratis. | Oderunt
+la | Licet tibi abire. | Licet
+la | Oportet me ire. | Oportet
+la | Pluit tota nocte. | Pluit
+la | Paenitet me peccati. | Paenitet
+la | Miseret me tui. | Miseret
+la | Placet mihi. | Placet
+la | Pudet me. | Pudet
+la | Taedet me vitae. | Taedet
+# syncopated and alternative forms
+la | Hostes urbem oppugnarunt. | oppugnarunt
+la | Dicit se amasse. | amasse
+la | Audierunt vocem eius. | Audierunt
+la | Reges terrae venere. | venere
+la | Amavere patriam. | Amavere
+la | Laudabere ab omnibus. | Laudabere
+la | Dixti verum. | Dixti
+la | Nosse omnia non possumus. | Nosse
+la | Noram eum bene. | Noram
+la | Faxo ut scias. | Faxo
+la | Audisti verbum Domini. | Audisti
+la | Petiit a rege auxilium. | Petiit
+la | Norunt omnes. | Norunt
+# reduplicated and suppletive perfects
+la | Miles in proelio cecidit. | cecidit
+la | Arborem cecidit. | cecidit
+la | Hostes pepulit. | pepulit
+la | Tetigit vestimentum eius. | Tetigit
+la | Cucurrit ad eum. | Cucurrit
+la | Stetit in medio eorum. | Stetit
+la | Occurrit ei turba. | Occurrit
+la | Didicit litteras. | Didicit
+la | Poposcit aquam. | Poposcit
+la | Fefellit me spes. | Fefellit
+la | Spopondit se venturum. | Spopondit
+la | Combussit urbem igni. | Combussit
+la | Eiecit daemonium. | Eiecit
+la | Disperdidit eos Dominus. | Disperdidit
+la | Deposuit potentes de sede. | Deposuit
+la | Depositum custodi. | Depositum
+la | Semen satum est in terra bona. | satum
+la | Vetitum est intrare. | Vetitum

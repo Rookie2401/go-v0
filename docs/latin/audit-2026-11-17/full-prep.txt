@@ -1,0 +1,49 @@
+abs [ADP] whitaker gov Abl		# by (agent), from (departure, cause, remote origin (time)
+adversum [ADP] whitaker gov Acc		# facing, opposite, against, towards
+advorsum [ADP] whitaker gov Acc		# facing, opposite, against, towards
+advorsus [ADP] whitaker gov Acc		# facing, opposite, against, towards
+aput [ADP] whitaker gov Acc		# at, by, near, among; at the house of
+causa [ADP] whitaker gov Gen		# for sake/purpose of (preceded by GEN.), on...
+caussa [ADP] whitaker gov Gen		# for the sake/purpose of (preceded by GEN), on...
+citra [ADP] whitaker gov Acc		# on this/near side of, short of
+com [ADP] whitaker gov Abl		# with, together/jointly/along/simultaneous with, amid
+infra [ADP] whitaker gov Acc		# below, lower than; later than
+callim [ADP] whitaker gov Acc		# without knowledge of, unknown to
+erga [ADP] whitaker gov Acc		# towards, opposite (friendly)
+insuper [ADP] whitaker gov Acc		# above, on top; in addition (to)
+abusque [ADP] whitaker gov Abl		# all the way from; from/since the time of
+adusque [ADP] whitaker gov Acc		# all the way/right up to, as far as, to the point of...
+apsque [ADP] whitaker gov Abl		# without, apart from, away from
+cis [ADP] whitaker gov Acc		# on/to this/near side of, short of
+clam [ADP] whitaker gov Acc		# without knowledge of, unknown to
+quum [ADP] whitaker gov Abl		# with, together with, at the same time with
+subter [ADP] whitaker gov Acc		# beneath, under (cover/shelter)
+supter [ADP] whitaker gov Acc		# beneath, under (cover/shelter)
+versum [ADP] whitaker gov Acc		# toward, in the direction of; (placed after ACC)
+versus [ADP] whitaker gov Acc		# toward, in the direction of; (placed after ACC)
+vorsum [ADP] whitaker gov Acc		# toward, in the direction of; (placed after ACC)
+vorsus [ADP] whitaker gov Acc		# toward, in the direction of; (placed after ACC)
+circiter [ADP] whitaker gov Acc		# about, around, near (space/time/numeral)
+fine [ADP] whitaker gov Abl		# up to
+fini [ADP] whitaker gov Abl		# up to
+iuxtim [ADP] whitaker gov Acc		# next to, beside
+palam [ADP] whitaker gov Abl		# in presence of
+penes [ADP] whitaker gov Acc		# in the power of, in the hands of (person)
+pone [ADP] whitaker gov Acc		# behind (in local relations) (rare)
+praeterquam [ADP] whitaker gov Acc		# except, besides, beyond, contrary to
+quom [ADP] whitaker gov Abl		# with, together/jointly/along/simultaneous with, amid
+tenus [ADP] whitaker gov Abl		# as far as, to the extent of, up to, down to
+uls [ADP] whitaker gov Acc		# beyond, on the other side, on that side
+ultra [ADP] whitaker gov Acc		# beyond, on the other side, on that side
+usque [ADP] whitaker gov Acc		# up to (name of town or locality)
+abante [ADP] whitaker gov Abl		# from before/in front of
+desuper [ADP] whitaker gov Acc		# over, above
+dextra [ADP] whitaker gov Acc		# on the right of; on the right-hand side of
+qum [ADP] whitaker gov Abl		# with, together/jointly/along/simultaneous with, amid
+cata [ADP] whitaker gov Abl		# by; (in distributed sense)
+clanculum [ADP] whitaker gov Acc		# without knowledge of, secret from
+desub [ADP] whitaker gov Abl		# below, under; beneath
+alioqui [ADP] whitaker gov Abl		# in some other way
+am [ADP] whitaker gov Acc		# 
+ambe [ADP] whitaker gov Acc		# 
+praeterpropter [ADP] whitaker gov Acc		# 

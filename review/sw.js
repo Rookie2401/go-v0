@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = '074aa595f81b';
+var BUILD_ID = '0adae5db72a7';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -37,9 +37,9 @@ var PRECACHE = [
   "./assets/go-globe-rim-CzbKbQV5.png",
   "./assets/go-globe-turn-Dop5YaWE.png",
   "./assets/go-logo-D1Qp-DDg.png",
-  "./assets/index-CQhJVrEZ.js",
+  "./assets/index-CGa-rwSh.js",
   "./assets/jerusalem-YWyJNBCG.webp",
-  "./assets/languageChoices-BxZMtgzB.js",
+  "./assets/languageChoices-7AFJkDLn.js",
   "./assets/oslo-CP39LCLT.webp",
   "./assets/registry-Ckw02z84.js",
   "./assets/rolldown-runtime-DK3Fl9T5.js",
@@ -47,7 +47,7 @@ var PRECACHE = [
   "./assets/rothenburg-vv8nBX67.webp",
   "./assets/shared-f3Tn5VdE.js",
   "./assets/src-Be7uuN7L.js",
-  "./assets/style-CoGell2J.css",
+  "./assets/style-C1vB5n_3.css",
   "./assets/syntax-CGmPxLTF.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",
@@ -67,38 +67,38 @@ var LANG_CHUNKS = {
     "./assets/lang-aramaic-B5WkUau3.js"
   ],
   "de": [
-    "./assets/lang-de-BWL_Ue5L.js"
+    "./assets/lang-de-C_IHTs05.js"
   ],
   "el": [
-    "./assets/lang-el-BisGgALP.js"
+    "./assets/lang-el-lx90B2t9.js"
   ],
   "es": [
-    "./assets/lang-es-BY6iTTtc.js"
+    "./assets/lang-es-j0_8daRj.js"
   ],
   "he": [
-    "./assets/lang-he-BqXF_S8y.js"
+    "./assets/lang-he-uURHj8pF.js"
   ],
   "hebrew": [
     "./assets/lang-hebrew-Bsnip4qd.js",
     "./assets/lang-hebrew-apRjTzMX.js"
   ],
   "hi": [
-    "./assets/lang-hi-1A5KrEOQ.js"
+    "./assets/lang-hi-Dm-OlhJI.js"
   ],
   "la": [
-    "./assets/lang-la-BuDW5HDM.js"
+    "./assets/lang-la-JDHOIhG_.js"
   ],
   "nb": [
-    "./assets/lang-nb-BbYRAOYO.js"
+    "./assets/lang-nb-uGPGKyNL.js"
   ],
   "nn": [
-    "./assets/lang-nn-DSpxYLBv.js"
+    "./assets/lang-nn-DJMIrF2r.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-DLD6ZAOX.js"
+    "./assets/lang-norwegian-DY6V3L_B.js"
   ],
   "sq": [
-    "./assets/lang-sq-eAyiDF8j.js"
+    "./assets/lang-sq-CAHJZbuq.js"
   ],
   "th": [
     "./assets/lang-th-NmWvP-CH.js"

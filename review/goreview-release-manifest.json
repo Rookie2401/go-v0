@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "f180f51975586f418084eb2a67fbfbf619479352",
-    "tree": "34b9d040b18162ec84d8b425d78447745703c302",
+    "commit": "ca930aa2aaed7f6afdcd33f5b8e240fb42e781b5",
+    "tree": "122963ee4468d357e03456dfe298a6a7624c9b9a",
     "dirty": false
   },
-  "sourceManifestSha256": "7b0af11dd644482b1c5d4578eb8fff641e2238bbf39a401fabf3e9ff10d5dcea",
+  "sourceManifestSha256": "ffba2b2f8a79f957bb87324c2390ef141b89efc3e32c46525c5c99d027df06c2",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -485,7 +485,7 @@
     },
     {
       "path": "packages/goreview/app/packFacts.ts",
-      "sha256": "9ee690e91d0ac2ac65e280e9be7f29210c529ba53a1bf77a64627e27c6cde4e3"
+      "sha256": "387889706bb5cec3019e5f65c41e8cc58f9cb2eb5b38a2088d3bc67860155c11"
     },
     {
       "path": "packages/goreview/app/photos/athens.webp",
@@ -561,7 +561,7 @@
     },
     {
       "path": "packages/goreview/app/public/sw.js",
-      "sha256": "32df25d32204a65fb3244f8a0715db1ac611d22dcc00dbdae83523e6c32cf585"
+      "sha256": "6a3fdcbacf0757929434d256764eeafb32bbe41350b2545e8f7cf12a9eed290d"
     },
     {
       "path": "packages/goreview/app/recoveredCandidates.ts",
@@ -761,7 +761,7 @@
     },
     {
       "path": "packages/goreview/app/workspace.ts",
-      "sha256": "8e5ce29d987de4ea9016e3a696d38270d922743e38c050aeb2cf0c3d19361cf9"
+      "sha256": "ebab03122d36831988d4c35e47cc1e166625b4b6726f57715a3e13042faa50ea"
     },
     {
       "path": "packages/goreview/src/exercises/README.md",
@@ -1397,7 +1397,7 @@
     },
     {
       "path": "packages/repository-service/src/api.ts",
-      "sha256": "29a6b916107af84dac7be63824140f0b570e5261ea991708bfda426e0a391fe3"
+      "sha256": "4ed7ee8dff6102ad9cc7ff73fd1bc2947be8c22ee76c0053078426004e520237"
     },
     {
       "path": "packages/repository-service/src/backupHealth.ts",
@@ -1421,7 +1421,7 @@
     },
     {
       "path": "packages/repository-service/src/handler.ts",
-      "sha256": "b70457fbd42e61eedf3e78222854c401f05811dfb1760b5dbc5e64e70f4c2528"
+      "sha256": "d66cc20265763cc063b839d7770a1267cdea28e1891e496e6525deda8392df49"
     },
     {
       "path": "packages/repository-service/src/http.ts",
@@ -4609,7 +4609,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "f7bb6e83483d8603af14dbfb3fd0561332ae1090e3fcb9d0bd22de65e8631f28",
+  "artifactManifestSha256": "6b684e048c723ea83af4bbdf3668a24c4e8ee598f5cf89533371bce80e170547",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4664,8 +4664,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-3-QgyoEm.js",
-      "sha256": "468aa46a3e90cef437bb789716bb801beddc25631a90134896bc701509225f77"
+      "path": "assets/index-BTu7wbc8.js",
+      "sha256": "12d259ea614298ed346208418437e137713870739d1693515028453c33a9fa7e"
     },
     {
       "path": "assets/jerusalem-YWyJNBCG.webp",
@@ -4676,20 +4676,20 @@
       "sha256": "c7324768bd26c74911f4d583d18cc3d0f62fcbbc14da15668ef4b4cb855bb868"
     },
     {
-      "path": "assets/lang-de-ArEpbAHN.js",
-      "sha256": "e9670a4873770be96442e8b618b744835b30190784ffa451d913c1e2c7ad1254"
+      "path": "assets/lang-de-CvS55otu.js",
+      "sha256": "633d5d5e8bef6c31dc7c5c4734c33d0dd1a322d6609048cfa66543d34c496baf"
     },
     {
-      "path": "assets/lang-el-pfdsM3sC.js",
-      "sha256": "7df0a9cd3cec798364e0474733c4b6a441bd6e9312b74f542c594fb52e2b5b94"
+      "path": "assets/lang-el-CurW_Rjk.js",
+      "sha256": "1df81789539183b729ffe7de661b1a4a4f140a2a7c699dbada299bf220bb35c6"
     },
     {
-      "path": "assets/lang-es-CX8BdVQu.js",
-      "sha256": "d82c44bb426123aedf27c2523f1aee637ee091e2596f29c0341ece3cf251599f"
+      "path": "assets/lang-es-BVXkQTYW.js",
+      "sha256": "110b3f86b7c13f9ad20f550e7f23636543ef63939bc2db799df1ebe84951ee64"
     },
     {
-      "path": "assets/lang-he-DKviKOZk.js",
-      "sha256": "f4cc77ee2cbbb4e82a3209217ff03fb1d22defbd3c00323b594cf02c4e4023a5"
+      "path": "assets/lang-he-RbHxsjh8.js",
+      "sha256": "08a9fbc32404817035526e10876c35397f8522530d5e5057d7dcd51dc906b19e"
     },
     {
       "path": "assets/lang-hebrew-Bsnip4qd.js",
@@ -4700,36 +4700,36 @@
       "sha256": "fa0a59464851c6d94c25e39cd9a1706bede329c8f8b6d856911a5a63912048a0"
     },
     {
-      "path": "assets/lang-hi-B9i5BQmS.js",
-      "sha256": "031e8f19711c6f75ebc07e60523c50604884151c52df4e902bf9d7ed96c664a3"
+      "path": "assets/lang-hi-jkR-XDuz.js",
+      "sha256": "8c5a0cad9f6374ebcb157b3b8912420e0b228a9d72aadb61cedce38775eb7243"
     },
     {
-      "path": "assets/lang-la-BGpI-u0w.js",
-      "sha256": "68de23f8eb303e6e127825f13b95704cb4b2001e00b4a5534377f35118df7237"
+      "path": "assets/lang-la-CUJHH5Ki.js",
+      "sha256": "2dabc97a31629c43e2bb69e46e6f96afbb00a402e804f31e3001f0435d550d83"
     },
     {
-      "path": "assets/lang-nb-BSx_Tk0T.js",
-      "sha256": "b763181e7c0fdc7290529400a6d8c2199fbe677bae948c01438956baabd92097"
+      "path": "assets/lang-nb-CcPiuy_s.js",
+      "sha256": "6f5ec8592baf7e40c8d0457a8b96d9e60567dc300731b16298198b855e480d28"
     },
     {
-      "path": "assets/lang-nn-8ygVEfXS.js",
-      "sha256": "e392bc704934e395f4a0b554c2585a0d63602f913f6619dfe7b514f1ff958b50"
+      "path": "assets/lang-nn-BNj_9qTG.js",
+      "sha256": "b0d00214287f3399e7708ad566935c9fcd872c0d7f405461877727df309442fc"
     },
     {
-      "path": "assets/lang-norwegian-D3lwdb4N.js",
-      "sha256": "c4be912216f4061dd4639d82725f8aa1a93ed722f4205bbeace9fa5413cdc117"
+      "path": "assets/lang-norwegian-B52G15NQ.js",
+      "sha256": "d361b3150a5ff2a28e8a76ffeede904575165fc2f56f932fdb50fbd92844f64f"
     },
     {
-      "path": "assets/lang-sq-4iQCwH-q.js",
-      "sha256": "96840569efe4aa78497e14a9a9f4e3f529ba743894ece64d8b46f77c4b87c2ff"
+      "path": "assets/lang-sq-B6ZVZhjM.js",
+      "sha256": "30a347beedb9c7a654a4a5cf881959fd65d89874f16adad90003807af8bd253d"
     },
     {
       "path": "assets/lang-th-NmWvP-CH.js",
       "sha256": "7deb79119077e8c483116fe7405b31d19a2888e468e671e09a8b0da72ceb0478"
     },
     {
-      "path": "assets/languages-9LjGAeeA.js",
-      "sha256": "9b7c1eeeef3aac5f29b412ec9c79e657117bc163becff9d29ceab29f87a3d574"
+      "path": "assets/languages-Catd9R_3.js",
+      "sha256": "a517c33a41660fd162634ff1047f195ec18d88b99409dbbfb045694098d41067"
     },
     {
       "path": "assets/oslo-CP39LCLT.webp",
@@ -4805,7 +4805,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "72d0dd83322568dffcba19c3832783612cfd489fd232d7b9422c352f6de323b9"
+      "sha256": "6259cef5e15cf85b9a5ca11719ba66419fa8c67bbb7b4d9ca55dd5d0c0cd260a"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5749,7 +5749,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "bb492788abbaeb60d6fb4df12eb50b5aaf01ba5d935d395b4dfb019aec6a2665"
+      "sha256": "9111a024a3e5e5e6ced986916add43b9d0760bac610d39a388a299ec2f2c74c7"
     }
   ]
 }

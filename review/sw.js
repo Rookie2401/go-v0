@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = 'b7fb3c5e15ef';
+var BUILD_ID = 'd9bdf84fe5d0';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -36,9 +36,9 @@ var PRECACHE = [
   "./assets/go-globe-rim-CzbKbQV5.png",
   "./assets/go-globe-turn-Dop5YaWE.png",
   "./assets/go-logo-D1Qp-DDg.png",
-  "./assets/index-3-QgyoEm.js",
+  "./assets/index-BTu7wbc8.js",
   "./assets/jerusalem-YWyJNBCG.webp",
-  "./assets/languages-9LjGAeeA.js",
+  "./assets/languages-Catd9R_3.js",
   "./assets/oslo-CP39LCLT.webp",
   "./assets/registry-DfmZJRJW.js",
   "./assets/rolldown-runtime-DK3Fl9T5.js",
@@ -66,38 +66,38 @@ var LANG_CHUNKS = {
     "./assets/lang-aramaic-B5WkUau3.js"
   ],
   "de": [
-    "./assets/lang-de-ArEpbAHN.js"
+    "./assets/lang-de-CvS55otu.js"
   ],
   "el": [
-    "./assets/lang-el-pfdsM3sC.js"
+    "./assets/lang-el-CurW_Rjk.js"
   ],
   "es": [
-    "./assets/lang-es-CX8BdVQu.js"
+    "./assets/lang-es-BVXkQTYW.js"
   ],
   "he": [
-    "./assets/lang-he-DKviKOZk.js"
+    "./assets/lang-he-RbHxsjh8.js"
   ],
   "hebrew": [
     "./assets/lang-hebrew-Bsnip4qd.js",
     "./assets/lang-hebrew-apRjTzMX.js"
   ],
   "hi": [
-    "./assets/lang-hi-B9i5BQmS.js"
+    "./assets/lang-hi-jkR-XDuz.js"
   ],
   "la": [
-    "./assets/lang-la-BGpI-u0w.js"
+    "./assets/lang-la-CUJHH5Ki.js"
   ],
   "nb": [
-    "./assets/lang-nb-BSx_Tk0T.js"
+    "./assets/lang-nb-CcPiuy_s.js"
   ],
   "nn": [
-    "./assets/lang-nn-8ygVEfXS.js"
+    "./assets/lang-nn-BNj_9qTG.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-D3lwdb4N.js"
+    "./assets/lang-norwegian-B52G15NQ.js"
   ],
   "sq": [
-    "./assets/lang-sq-4iQCwH-q.js"
+    "./assets/lang-sq-B6ZVZhjM.js"
   ],
   "th": [
     "./assets/lang-th-NmWvP-CH.js"
@@ -111,7 +111,11 @@ var LEXICON_PREFIX = 'goreview-lexicon-';
 var LEXICON_CACHE = LEXICON_PREFIX + BUILD_ID;
 var LANG_PREFIX = 'goreview-lang-';
 var LANG_CACHE = LANG_PREFIX + BUILD_ID;
-var DICT_MAX_ENTRIES = 400;
+// 400 until 2026-11-17: one cache serves every language, and it drops its oldest file first, however recently that file was read. The
+// owner's Hindi recovery alone reads about 130 files, and German, Latin, Greek and Thai beside it overflowed 400, so the Hindi files
+// were dropped and fetched again on every visit (some 130 requests over a phone's connection, any failure of which left the recovery
+// incomplete). 3,000 files of about 40 KB is some 120 MB at most.
+var DICT_MAX_ENTRIES = 3000;
 var DICT_MAX_BYTES = 3 * 1024 * 1024; // one shard larger than this is served but not kept
 
 /** Paths of the Repository service. A request whose path from the scope root starts with one is never cached (nor is anything outside the scope). */

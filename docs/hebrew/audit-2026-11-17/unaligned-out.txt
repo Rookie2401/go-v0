@@ -1,0 +1,145 @@
+tokens with no source reading in the alignment: 143; card blank 18; card unconfirmed guess 16; card reads it from the Tanakh index (the form occurs elsewhere) 78; card reads it from Wiktionary / a rule 31
+
+1Chr 2:16	וַעֲשָׂהאֵ֖ל	עֲשָׂהאֵל/PROPN "Asahel" 0.92 src=oshb
+1Chr 6:48	זְבֻלוּן֙	זְבוּלוּן/PROPN "Zebulun" 0.92 src=oshb
+1Chr 6:62	זְבֻל֔וּן	זְבוּלוּן/PROPN "Zebulun" 0.92 src=oshb
+1Chr 8:33	מַלְכִּישׁ֔וּעַ	∅ BLANK
+1Chr 9:39	מַלְכִּישׁ֔וּעַ	∅ BLANK
+1Chr 10:2	מַלְכִּישׁ֖וּעַ	∅ BLANK
+1Chr 11:26	עֲשָׂהאֵל֙	עֲשָׂהאֵל/PROPN "Asahel" 0.92 src=oshb
+1Chr 15:13	לְמַבָּרִ֥אשׁוֹנָ֖ה	∅ BLANK
+1Chr 27:7	עֲשָׂהאֵל֙	עֲשָׂהאֵל/PROPN "Asahel" 0.92 src=oshb
+1Sam 2:10	מְרִיבָ֗ו	רִיב/VERB "strive, contend, displaying co" 0.29 UNCONF src=rule rule=prefix מִן cut off by rule; the rest is the source's form
+1Sam 2:10	עָלָו֙	עָלָה/VERB "to go up, ascend" 0.27 UNCONF src=oshb
+1Sam 3:2	בִּמְקוֹמ֑וֹ	מָקוֹם/NOUN "standing-place, place, station" 0.92 src=oshb
+1Sam 3:2	וְעֵינָו֙	עַיִן/NOUN "eye; spring" 0.39 src=rule rule=prefix וְ cut off by rule; the rest is the source's form
+1Sam 4:21	אִֽיכָבוֹד֙	אִי־כָבוֹד/PROPN "I-chabod" 0.71 src=oshb
+1Sam 14:49	וּמַלְכִּישׁ֑וּעַ	∅ BLANK
+1Sam 31:2	מַלְכִּישׁ֖וּעַ	∅ BLANK
+2Chr 30:3	לְמַדַּ֔י	לְמַדַּי/ADV "quite, pretty, fairly, reasona" 0.78 src=kaikki-he
+2Kgs 6:25	דִּב	דֹּב/NOUN "bear" 0.32 UNCONF src=kaikki-he
+2Kgs 6:25	יוֹנִ֖ים	יוֹנָה/NOUN "dove" 0.68 src=oshb
+2Kgs 18:17	רַבְשָׁקֵ֨ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+2Kgs 18:19	אֲלֵיהֶם֙	אֵל/ADP "to, toward, into" 0.71 src=oshb
+2Kgs 18:19	רַבְשָׁקֵ֔ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+2Kgs 18:26	רַבְשָׁקֵ֗ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+2Kgs 18:27	רַבְשָׁקֵ֗ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+2Kgs 18:28	רַבְשָׁקֵ֔ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+2Kgs 18:37	רַבְשָׁקֵֽה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+2Kgs 19:4	רַבְשָׁקֵ֗ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+2Kgs 19:8	רַבְשָׁקֵ֔ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+2Sam 3:27	עֲשָׂהאֵ֥ל	עֲשָׂהאֵל/PROPN "Asahel" 0.92 src=oshb
+2Sam 7:22	אֱלֹהִ֑ים	אֱלֹהִים/NOUN "God; gods" 0.71 src=oshb
+2Sam 11:24	וַיֹּר֨אוּ	רָאָה/VERB "to see" 0.29 UNCONF src=oshb
+2Sam 11:24	הַמּוֹרִ֤אים	מוֹרָא/NOUN "fear, fright, terror" 0.49 UNCONF src=kaikki-he
+2Sam 15:37	וְאַ֨בְשָׁל֔וֹם	אֲבִישָׁלוֹם/PROPN "Abishalom" 0.92 src=oshb
+2Sam 15:37	יָב֖וֹא	בּוֹא/VERB "to come, go in, enter" 0.7 src=oshb
+2Sam 16:1	מְפִיבֹ֖שֶׁת	מְפִיבֹשֶׁת/PROPN "Mephibosheth" 0.85 src=oshb
+2Sam 16:4	לִמְפִיבֹ֑שֶׁת	מְפִיבֹשֶׁת/PROPN "Mephibosheth" 0.92 src=oshb
+2Sam 21:7	מְפִיבֹ֖שֶׁת	מְפִיבֹשֶׁת/PROPN "Mephibosheth" 0.85 src=oshb
+2Sam 23:24	עֲשָׂהאֵ֥ל	עֲשָׂהאֵל/PROPN "Asahel" 0.92 src=oshb
+Dan 1:8	בְּפַת	פַּתְבַּג/NOUN "portion, for, delicacies" 0.39 src=rule rule=prefix בְּ cut off by rule; the rest is the source's form
+Dan 1:8	בַּ֥ג	פַּתְבַּג/NOUN "portion, for, delicacies" 0.71 src=oshb
+Dan 1:13	פַּת	פַּת/NOUN "fragment, bit, morsel" 0.8 src=oshb
+Dan 1:13	בַּ֣ג	פַּתְבַּג/NOUN "portion, for, delicacies" 0.71 src=oshb
+Dan 1:15	פַּת	פַּת/NOUN "fragment, bit, morsel" 0.8 src=oshb
+Dan 1:15	בַּ֥ג	פַּתְבַּג/NOUN "portion, for, delicacies" 0.71 src=oshb
+Dan 1:16	פַּת	פַּת/NOUN "fragment, bit, morsel" 0.8 src=oshb
+Dan 1:16	בָּגָ֔ם	גַּם/PART "also, even, moreover" 0.26 UNCONF src=rule rule=prefix בְּ cut off by rule; the rest is the source's form
+Dan 4:22	עִלָּאָה֙	עִלַּי/ADJ "highest" 0.86 src=oshb
+Dan 4:29	עִלָּאָה֙	עִלַּי/ADJ "highest" 0.86 src=oshb
+Dan 5:19	הֲוָ֨א	הָוָא/VERB "come to pass, become, be" 0.92 src=oshb
+Dan 5:19	צָבֵ֜א	צְבָא/VERB "be inclined, desire, be please" 0.92 src=oshb
+Dan 5:19	הֲוָ֥א	הָוָא/VERB "come to pass, become, be" 0.92 src=oshb
+Dan 5:19	מַשְׁפִּֽל	שָׁפָל/ADJ "low, humiliated, lowly" 0.3 UNCONF src=rule rule=prefix מִן cut off by rule; the rest is the source's form
+Dan 6:1	מָֽדָאָ֔ה	דָּאָה/VERB "to soar, to glide" 0.24 UNCONF src=rule rule=prefix מִן cut off by rule; the rest is the source's form
+Deut 4:42	מִתְּמֹ֣ל	תְּמוֹל/ADV "yesterday, recently, formerly" 0.92 src=oshb
+Deut 4:42	שִׁלְשֹׁ֑ם	שִׁלְשׁוֹם/NOUN "three days ago, day before yes" 0.73 src=oshb
+Deut 6:4	שְׁמַ֖ע	שָׁמַע/VERB "to hear, listen, obey" 0.71 src=oshb
+Deut 6:4	אֶחָֽד	אֶחָד/NUM "one; each; a certain" 0.71 src=oshb
+Deut 6:9	מְזֻז֥וֹת	זָז/VERB "to move" 0.35 UNCONF src=rule rule=prefix מִן cut off by rule; the rest is the source's form
+Deut 32:7	דֹּר	דּוֹר/NOUN "period, generation, dwelling" 0.67 src=oshb
+Deut 32:7	וָדֹ֑ר	דּוֹר/NOUN "period, generation, dwelling" 0.71 src=oshb
+Exod 29:40	רְבִיעִ֥ת	רְבִיעִי/ADJ "fourth" 0.92 src=oshb
+Exod 36:19	אֵילִ֖ם	אַיִל/NOUN "ram" 0.71 src=oshb
+Ezek 17:6	פֹּרֹֽאות	∅ BLANK
+Ezek 40:21	וְאֵילָ֤ו	אַיִל/NOUN "projecting pillar, pilaster" 0.92 src=oshb
+Ezek 40:21	וְאֵֽלַמָּו֙	אֵילָם/NOUN "porch" 0.92 src=oshb
+Ezek 40:22	וְחַלּוֹנָ֤ו	חִלּוּן/NOUN "secularization (transformation" 0.35 UNCONF src=rule rule=prefix וְ cut off by rule; the rest is the source's form
+Ezek 40:22	וְאֵֽילַמָּו֙	אֵילָם/NOUN "porch" 0.92 src=oshb
+Ezek 40:22	וְתִ֣ימֹרָ֔ו	∅ BLANK
+Ezek 40:24	אֵילָו֙	אַיִל/NOUN "projecting pillar, pilaster" 0.92 src=oshb
+Ezek 40:24	וְאֵ֣ילַמָּ֔ו	אֵילָם/NOUN "porch" 0.92 src=oshb
+Ezek 40:26	עֹֽלוֹתָ֔ו	∅ BLANK
+Ezek 40:26	וְאֵלַמָּ֖ו	אֵילָם/NOUN "porch" 0.92 src=oshb
+Ezek 40:29	וְתָאָ֞ו	תָּא/NOUN "chamber" 0.92 src=oshb
+Ezek 40:29	וְאֵילָ֤ו	אַיִל/NOUN "projecting pillar, pilaster" 0.92 src=oshb
+Ezek 40:29	וְאֵֽלַמָּו֙	אֵילָם/NOUN "porch" 0.92 src=oshb
+Ezek 40:33	וְתָאָ֞ו	תָּא/NOUN "chamber" 0.92 src=oshb
+Ezek 40:33	וְאֵלָ֤ו	אֵל/ADP "to, toward, into" 0.36 src=rule rule=prefix וְ cut off by rule; the rest is the source's form
+Ezek 40:33	וְאֵֽלַמָּו֙	אֵילָם/NOUN "porch" 0.92 src=oshb
+Ezek 40:36	תָּאָו֙	תְּאוֹ/NOUN "buffalo" 0.49 UNCONF src=kaikki-he
+Ezek 40:36	אֵלָ֣ו	אֵל/ADP "to, toward, into" 0.66 src=oshb
+Ezek 40:36	וְאֵלַמָּ֔ו	אֵילָם/NOUN "porch" 0.92 src=oshb
+Ezek 46:21	הַחִ֣יצוֹנָ֔ה	חִיצוֹן/ADJ "outer, external" 0.89 src=oshb
+Ezek 46:21	וַיַּ֣עֲבִרֵ֔נִי	עָבַר/VERB "to pass over, pass through, pa" 0.71 src=oshb
+Gen 46:14	זְבֻל֑וּן	זְבוּלוּן/PROPN "Zebulun" 0.92 src=oshb
+Isa 36:2	רַבְשָׁקֵ֨ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+Isa 36:4	רַבְשָׁקֵ֔ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+Isa 36:11	רַבְשָׁקֵ֗ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+Isa 36:12	רַבְשָׁקֵ֗ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+Isa 36:13	רַבְשָׁקֵ֔ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+Isa 36:22	רַבְשָׁקֵֽה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+Isa 37:4	רַבְשָׁקֵ֗ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+Isa 37:8	רַבְשָׁקֵ֔ה	רַבְשָׁקֵה/PROPN "Rabshakeh" 0.78 src=kaikki-he
+Isa 44:14	אֹ֖רֶן	אֹרֶן/NOUN "pine tree" 0.55 src=kaikki-he
+Isa 65:3	הַמַּכְעִסִ֥ים	כַּעַס/VERB "be vexed, angry, indignant" 0.5 src=rule rule=prefix הַ cut off by rule; the rest is the source's form
+Isa 65:3	אֹתִ֛י	אֵת/PART "(marks the definite direct obj" 0.71 src=oshb
+Jer 18:9	לִבְנ֖וֹת	בָּנָה/VERB "build, be built, be rebuilt" 0.7 src=oshb
+Jer 18:9	וְלִנְטֽוֹעַ	נָטַע/VERB "plant, be planted" 0.92 src=oshb
+Jer 39:3	שַׂ֠רְאֶ֠צֶר	∅ BLANK
+Jer 39:3	שַׂרְאֶ֙צֶר֙	∅ BLANK
+Jer 39:9	נְבוּזַרְאֲדָ֥ן	נְבוּזַרְאֲדָן/PROPN "Nebuzaradan" 0.92 src=oshb
+Jer 39:13	וּנְבֽוּשַׁזְבָּן֙	∅ BLANK
+Jer 39:13	שַׂרְאֶ֖צֶר	∅ BLANK
+Job 18:15	מִבְּלִיל֑וֹ	בְּלִיל/NOUN "fodder" 0.43 src=rule rule=prefix מִן cut off by rule; the rest is the source's form
+Job 38:13	רְשָׁעִ֣ים	רָשָׁע/ADJ "wicked, criminal" 0.71 src=oshb
+Job 38:15	מֵרְשָׁעִ֣ים	רָשָׁע/ADJ "wicked, criminal" 0.69 src=oshb
+Judg 11:31	וְהַעֲלִיתִ֖יהוּ	∅ BLANK
+Judg 11:31	עֹלָֽה	עֹלָה/NOUN "whole burnt-offering" 0.69 src=oshb
+Judg 16:5	וַאֲסַרְנ֖וּהוּ	∅ BLANK
+Judg 16:5	לְעַנּוֹת֑וֹ	עָנָה/VERB "be bowed down, afflicted, be p" 0.92 src=oshb
+Judg 18:30	מְנַשֶּׁ֜ה	מְנַשֶּׁה/PROPN "Manasseh" 0.71 src=oshb
+Lev 11:42	גָּח֜וֹן	גָּחוֹן/NOUN "a belly, an underbelly; in mod" 0.78 src=kaikki-he
+Neh 9:25	בְּצוּרֹת֮	צוּרָה/NOUN "form, fashion" 0.27 UNCONF src=rule rule=prefix בְּ cut off by rule; the rest is the source's form
+Num 2:12	צוּרִֽישַׁדָּֽי	צוּרִישַׁדַּי/PROPN "Zurishaddai" 0.92 src=oshb
+Num 7:54	פְּדָהצֽוּר	פְּדָהצוּר/PROPN "Pedahzur" 0.92 src=oshb
+Num 7:59	פְּדָהצֽוּר	פְּדָהצוּר/PROPN "Pedahzur" 0.92 src=oshb
+Num 10:19	צוּרִֽישַׁדָּֽי	צוּרִישַׁדַּי/PROPN "Zurishaddai" 0.92 src=oshb
+Num 10:23	פְּדָהצֽוּר	פְּדָהצוּר/PROPN "Pedahzur" 0.92 src=oshb
+Num 26:1	וַיְהִ֖י	הָיָה/VERB "to be, become, happen" 0.71 src=oshb
+Num 26:1	אַחֲרֵ֣י	אַחַר/ADP "after, behind" 0.71 src=oshb
+Num 26:1	הַמַּגֵּפָ֑ה	מַגֵּפָה/NOUN "blow, slaughter, plague" 0.92 src=oshb
+Num 27:5	מִשְׁפָּטָ֖ן	מִשְׁפָּט/NOUN "A trial: a legal proceeding be" 0.78 src=kaikki-he
+Prov 16:28	וְ֝נִרְגָּ֗ן	נִרְגָּן/VERB "murmur, whisper, murmurers" 0.41 src=rule rule=prefix וְ cut off by rule; the rest is the source's form
+Prov 26:27	יִפּ֑וֹל	נָפַל/VERB "to fall" 0.71 src=oshb
+Prov 26:27	וְג֥וֹלֵֽל	גָּלַל/VERB "to roll (literally or figurati" 0.35 UNCONF src=rule rule=prefix וְ cut off by rule; the rest is the source's form
+Ps 9:1	עַל	עַל/ADP "on, upon, over, against, conce" 0.71 src=oshb
+Ps 9:1	מ֥וּת	מוּת לַבֵּן/VERB "Muth-labben (a tune title, “to" 0.61 src=oshb
+Ps 44:15	בַּלְאֻמִּֽים	לְאֹם/NOUN "people" 0.47 src=rule rule=prefix בְּ cut off by rule; the rest is the source's form
+Ps 57:10	בַּלְאֻמִּֽים	לְאֹם/NOUN "people" 0.47 src=rule rule=prefix בְּ cut off by rule; the rest is the source's form
+Ps 68:27	אֲ֝דֹנָ֗י	אֲדֹנָי/NOUN "the Lord (of God)" 0.71 src=oshb
+Ps 80:14	מִיָּ֑עַר	יַעַר/NOUN "wood, forest, thicket" 0.33 UNCONF src=oshb
+Ps 102:4	כְּמוֹקֵ֥ד	∅ BLANK
+Ps 108:4	בַּלְאֻמִּֽים	לְאֹם/NOUN "people" 0.47 src=rule rule=prefix בְּ cut off by rule; the rest is the source's form
+Ps 123:4	לִגְאֵ֥י	גָּאָה/VERB "to flow, to rise" 0.35 UNCONF src=rule rule=prefix לְ cut off by rule; the rest is the source's form
+Ps 123:4	יוֹנִֽים	יוֹנָה/NOUN "dove" 0.68 src=oshb
+Ps 135:9	אוֹתֹ֣ת	אוֹת/NOUN "sign, pledge, token" 0.92 src=oshb
+Ps 139:20	יֹ֭מְרוּךָ	∅ BLANK
+Ps 149:7	תּ֝וֹכֵח֗וֹת	תּוֹכַ֫חַת/NOUN "argument, reproof, impeachment" 0.33 UNCONF src=oshb
+Ps 149:7	בַּלְאֻמִּֽים	לְאֹם/NOUN "people" 0.47 src=rule rule=prefix בְּ cut off by rule; the rest is the source's form
+Song 2:15	שֻֽׁעָלִ֔ים	שׁוּעָל/NOUN "fox, jackal" 0.92 src=oshb
+Song 2:15	שֻׁעָלִ֥ים	שׁוּעָל/NOUN "fox, jackal" 0.92 src=oshb
+Song 4:3	שִׂפְתוֹתַ֔יִךְ	שָׂפָה/NOUN "lip, speech, edge" 0.92 src=oshb
+Song 4:3	וּמִדְבָּרֵ֖ךְ	מִדְבָּר/NOUN "desert, unsettled pastureland" 0.5 src=rule rule=prefix וְ cut off by rule; the rest is the source's form
+Zech 7:2	שַׂרְאֶ֕צֶר	∅ BLANK

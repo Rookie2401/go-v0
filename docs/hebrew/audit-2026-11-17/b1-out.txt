@@ -1,0 +1,682 @@
+[wayyiqtol] Gen 1:3 «וַיֹּ֥אמֶר»  source: c/559 HC/Vqw3ms = VERB, Qal, wayyiqtol (narrative past), 3rd person masculine singular  (2071 such tokens)
+   verse: וַיֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר וַֽיְהִי־אֽוֹר׃
+   ⇒ אָמַר / VERB / Qal, wayyiqtol (narrative past), 3rd person masculine singular / INFL:And he said / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: אָמַר/VERB(0.43)=to say, tell
+   parts: וַ: and ; יֹּ: imperfect preformative, third person masculine singular ; אמֶר: Qal verbal base
+   R: vayoʾmer (lemma amar) / D: to say, tell ; to intend
+[weqatal] Gen 4:14 «וְהָיָ֥ה»  source: c/1961 HC/Vqq3ms = VERB, Qal, weqatal (sequential perfect), 3rd person masculine singular  (353 such tokens)
+   verse: הֵן֩ גֵּרַ֨שְׁתָּ אֹתִ֜י הַיּ֗וֹם מֵעַל֙ פְּנֵ֣י הָֽאֲדָמָ֔ה וּמִפָּנֶ֖יךָ אֶסָּתֵ֑ר וְהָיִ֜יתִי נָ֤ע וָנָד֙ ב
+   ⇒ הָיָה / VERB / Qal, weqatal (sequential perfect), 3rd person masculine singular / INFL:And he will be / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: הָיָה/VERB(0.53)=to be, become, h, הָיָה/VERB(0.51)=to be, become, h, וְהָיָה/VERB(0.43)=Third-person mas
+   parts: וְ: and ; הָיָה: Qal verb
+   R: vehaya (lemma haya) / D: to be: — to exist ; to be: — connects a noun to a prepositional phrase or adjective descri
+[simple waw + perfect (same spelling as the weqatal)] Gen 2:10 «וְהָיָ֖ה»  source: c/1961 HC/Vqp3ms = VERB, Qal, perfect (qatal), 3rd person masculine singular  (43 such tokens)
+   verse: וְנָהָר֙ יֹצֵ֣א מֵעֵ֔דֶן לְהַשְׁק֖וֹת אֶת־הַגָּ֑ן וּמִשָּׁם֙ יִפָּרֵ֔ד וְהָיָ֖ה לְאַרְבָּעָ֥ה רָאשִֽׁים׃
+   ⇒ הָיָה / VERB / Qal, weqatal (sequential perfect), 3rd person masculine singular / INFL:And he will be / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: הָיָה/VERB(0.53)=to be, become, h, הָיָה/VERB(0.51)=to be, become, h, וְהָיָה/VERB(0.43)=Third-person mas
+   parts: וְ: and ; הָיָה: Qal verb
+   R: vehaya (lemma haya) / D: to be: — to exist ; to be: — connects a noun to a prepositional phrase or adjective descri
+[wayyiqtol of hayah] Gen 1:8 «וַֽיְהִי»  source: c/1961 HC/Vqw3ms = VERB, Qal, wayyiqtol (narrative past), 3rd person masculine singular  (783 such tokens)
+   verse: וַיִּקְרָ֧א אֱלֹהִ֛ים לָֽרָקִ֖יעַ שָׁמָ֑יִם וַֽיְהִי־עֶ֥רֶב וַֽיְהִי־בֹ֖קֶר י֥וֹם שֵׁנִֽי׃
+   ⇒ הָיָה / VERB / Qal, wayyiqtol (narrative past), 3rd person masculine singular / INFL:And he was / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: הָיָה/VERB(0.43)=to be:
+   parts: וַ: and ; יְ: imperfect preformative, third person masculine singular ; הִי: Qal verbal base
+   R: vayehi (lemma haya) / D: to be: — to exist ; to be: — connects a noun to a prepositional phrase or adjective descri
+[weqatal 3ms or 1cs] Gen 46:33 «וְאָמַ֖ר»  source: c/559 HC/Vqq3ms = VERB, Qal, weqatal (sequential perfect), 3rd person masculine singular  (49 such tokens)
+   verse: וְהָיָ֕ה כִּֽי־יִקְרָ֥א לָכֶ֖ם פַּרְעֹ֑ה וְאָמַ֖ר מַה־מַּעֲשֵׂיכֶֽם׃
+   ⇒ אָמַר / VERB / Qal, weqatal (sequential perfect), 3rd person masculine singular / INFL:And he will say / 0.66 / lexicon / period he-bib / Variety: he-bib.
+   also: אָמַר/VERB(0.52)=to say, אֲמַר/VERB(0.58)=say, tell, comma, וְאָמַר/VERB(0.43)=Third-person mas
+   parts: וְ: and ; אָמַר: Qal verb
+   R: veʾamar (lemma amar) / D: to say, tell ; to intend
+[weqatal 2ms] Gen 32:19 «וְאָֽמַרְתָּ֙»  source: c/559 HC/Vqq2ms = VERB, Qal, weqatal (sequential perfect), 2nd person masculine singular  (126 such tokens)
+   verse: וְאָֽמַרְתָּ֙ לְעַבְדְּךָ֣ לְיַעֲקֹ֔ב מִנְחָ֥ה הִוא֙ שְׁלוּחָ֔ה לַֽאדֹנִ֖י לְעֵשָׂ֑ו וְהִנֵּ֥ה גַם־ה֖וּא אַחֲר
+   ⇒ אָמַר / VERB / Qal, weqatal (sequential perfect), 2nd person masculine singular / INFL:And you will say / 0.7 / lexicon / period he-bib / Variety: he-bib.
+   also: אָמַר/VERB(0.52)=to say, וְאָמַרְתָּ/VERB(0.43)=Second-person ma
+   parts: וְ: and ; אָמַרְ: Qal verbal base ; תָּ: perfect second person masculine singular ending
+   R: veʾamareta (lemma amar) / D: to say, tell ; to intend
+[interrogative he (Am I my brother's keeper)] Gen 4:9 «הֲשֹׁמֵ֥ר»  source: i/8104 HTi/Vqrmsa = VERB, Qal, participle, masculine singular, absolute
+   verse: וַיֹּ֤אמֶר יְהֹוָה֙ אֶל־קַ֔יִן אֵ֖י הֶ֣בֶל אָחִ֑יךָ וַיֹּ֙אמֶר֙ לֹ֣א יָדַ֔עְתִּי הֲשֹׁמֵ֥ר אָחִ֖י אָנֹֽכִי׃
+   ⇒ שָׁמַר / VERB / Qal, participle, masculine singular, absolute / INFL:keeping / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: הֲ: (question) ; שֹׁמֵר: Qal verb
+   R: hashomer (lemma shamar) / D: to guard ; to keep
+[article] Gen 14:17 «הַמֶּֽלֶךְ»  source: d/4428 HTd/Ncmsa = NOUN, masculine singular, absolute, with the article  (1047 such tokens)
+   verse: וַיֵּצֵ֣א מֶֽלֶךְ־סְדֹם֮ לִקְרָאתוֹ֒ אַחֲרֵ֣י שׁוּב֗וֹ מֵֽהַכּוֹת֙ אֶת־כְּדׇרְלָעֹ֔מֶר וְאֶת־הַמְּלָכִ֖ים אֲשֶ
+   ⇒ מֶלֶךְ / NOUN / masculine singular, absolute, with the article / LEX:king / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: מֶלֶךְ/NOUN(0.43)=king
+   parts: הַ: the ; מֶּֽלֶךְ: from מֶלֶךְ, stem
+   R: hamelekh (lemma melekh) / D: king ; to reign (to rule as a king)
+[ha + lo] Gen 4:7 «הֲל֤וֹא»  source: i/3808 HTi/Tn = PART, negative  (142 such tokens)
+   verse: הֲל֤וֹא אִם־תֵּיטִיב֙ שְׂאֵ֔ת וְאִם֙ לֹ֣א תֵיטִ֔יב לַפֶּ֖תַח חַטָּ֣את רֹבֵ֑ץ וְאֵלֶ֙יךָ֙ תְּשׁ֣וּקָת֔וֹ וְאַתָ
+   ⇒ לֹא / PART / negative / LEX:not, no / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: הֲ: (question) ; ל֤וֹא: from לֹא, stem
+   R: halo (lemma lo) / D: Not; used in negating verbs, adjectives, and adverbs. ; No; used in responding to question
+[ha + lo, short] Gen 13:9 «הֲלֹ֤א»  source: i/3808 HTi/Tn = PART, negative  (132 such tokens)
+   verse: הֲלֹ֤א כׇל־הָאָ֙רֶץ֙ לְפָנֶ֔יךָ הִפָּ֥רֶד נָ֖א מֵעָלָ֑י אִם־הַשְּׂמֹ֣אל וְאֵימִ֔נָה וְאִם־הַיָּמִ֖ין וְאַשְׂמְ
+   ⇒ לֹא / PART / negative / LEX:not, no / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: הֲלֹא/PART(0.43)=Negative interro
+   parts: הֲ: (question) ; לֹ֤א: from לֹא, stem
+   R: halo (lemma lo) / D: Not; used in negating verbs, adjectives, and adverbs. ; No; used in responding to question
+[interrogative before a pronoun] Gen 27:21 «הַֽאַתָּ֥ה»  source: i/859 a HTi/Pp2ms = PRON, personal, 2nd person masculine singular  (10 such tokens)
+   verse: וַיֹּ֤אמֶר יִצְחָק֙ אֶֽל־יַעֲקֹ֔ב גְּשָׁה־נָּ֥א וַאֲמֻֽשְׁךָ֖ בְּנִ֑י הַֽאַתָּ֥ה זֶ֛ה בְּנִ֥י עֵשָׂ֖ו אִם־לֹֽא
+   ⇒ אַתָּה / PRON / personal, 2nd person masculine singular / LEX:you (masculine singular) / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: הַֽ: from הֲ, (question) ; אַתָּ֥ה: from אַתָּה, stem
+   R: haʾata (lemma ata) / D: you, thou (second-person singular masculine) ; to come
+[hamin] Gen 3:11 «הֲמִן»  source: i/4480 a HTi/R = ADP,   (3 such tokens)
+   verse: וַיֹּ֕אמֶר מִ֚י הִגִּ֣יד לְךָ֔ כִּ֥י עֵירֹ֖ם אָ֑תָּה הֲמִן־הָעֵ֗ץ אֲשֶׁ֧ר צִוִּיתִ֛יךָ לְבִלְתִּ֥י אֲכׇל־מִמֶּ
+   ⇒ מִן / ADP /  / LEX:from, out of; than / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: הֲ: (question) ; מִן: stem
+   R: hamin (lemma min) / D: manna
+[article before aleph] Gen 20:7 «הָאִישׁ֙»  source: d/376 HTd/Ncmsa = NOUN, masculine singular, absolute, with the article  (167 such tokens)
+   verse: וְעַתָּ֗ה הָשֵׁ֤ב אֵֽשֶׁת־הָאִישׁ֙ כִּֽי־נָבִ֣יא ה֔וּא וְיִתְפַּלֵּ֥ל בַּֽעַדְךָ֖ וֶֽחְיֵ֑ה וְאִם־אֵֽינְךָ֣ מֵ
+   ⇒ אִישׁ / NOUN / masculine singular, absolute, with the article / LEX:man, husband; each / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: אִישׁ/NOUN(0.43)=A man, adult mal
+   parts: הָ: from הַ, the ; אִישׁ֙: from אִישׁ, stem
+   R: haʾish (lemma ish) / D: A man, adult male human being. ; husband (a man in a marriage or marital relationship, esp
+[article before he] Exod 3:12 «הָהָ֥ר»  source: d/2022 HTd/Ncmsa = NOUN, masculine singular, absolute, with the article  (91 such tokens)
+   verse: וַיֹּ֙אמֶר֙ כִּֽי־אֶֽהְיֶ֣ה עִמָּ֔ךְ וְזֶה־לְּךָ֣ הָא֔וֹת כִּ֥י אָנֹכִ֖י שְׁלַחְתִּ֑יךָ בְּהוֹצִֽיאֲךָ֤ אֶת־הָ
+   ⇒ הַר / NOUN / masculine singular, absolute, with the article / LEX:mountain, hill / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: הַר/NOUN(0.43)=mountain (mass o
+   parts: הָ: from הַ, the ; הָ֥ר: from הַר, stem
+   R: hahar (lemma har) / D: mountain (mass of earth and rock)
+[article before het] Jer 9:11 «הֶחָכָם֙»  source: d/2450 HTd/Aamsa = ADJ, masculine singular, absolute, with the article  (6 such tokens)
+   verse: מִֽי־הָאִ֤ישׁ הֶחָכָם֙ וְיָבֵ֣ן אֶת־זֹ֔את וַאֲשֶׁ֨ר דִּבֶּ֧ר פִּֽי־יְהֹוָ֛ה אֵלָ֖יו וְיַגִּדָ֑הּ עַל־מָה֙ אָבְ
+   ⇒ חָכָם / ADJ / masculine singular, absolute, with the article / LEX:wise, skilful, shrewd / 0.66 / lexicon / period he-bib / Variety: he-bib.
+   also: חָכָם/ADJ(0.54)=wise, skilful, s, חָכָם/NOUN(0.46)=wise man, sage
+   parts: הֶ: from הַ, the ; חָכָם֙: from חָכָם, stem
+   R: heḥakham (lemma ḥakham) / D: wise, smart ; wise man, sage
+[article before ayin] Gen 14:16 «הָעָֽם»  source: d/5971 a HTd/Ncmsa = NOUN, masculine singular, absolute, with the article  (744 such tokens)
+   verse: וַיָּ֕שֶׁב אֵ֖ת כׇּל־הָרְכֻ֑שׁ וְגַם֩ אֶת־ל֨וֹט אָחִ֤יו וּרְכֻשׁוֹ֙ הֵשִׁ֔יב וְגַ֥ם אֶת־הַנָּשִׁ֖ים וְאֶת־הָעָ
+   ⇒ עַם / NOUN / masculine singular, absolute, with the article / LEX:people, nation / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: עַם/NOUN(0.43)=A nation, a peop, הָעָם/PROPN(0.43)=a surname
+   parts: הָ: from הַ, the ; עָֽם: from עַם, stem
+   R: haʿam (lemma am) / D: A nation, a people. ; With: used to indicate togetherness, being together.
+[in THE house: article hidden] Gen 27:15 «בַּבָּ֑יִת»  source: b/1004 b HRd/Ncmsa = NOUN, masculine singular, absolute, with the article  (45 such tokens)
+   verse: וַתִּקַּ֣ח רִ֠בְקָ֠ה אֶת־בִּגְדֵ֨י עֵשָׂ֜ו בְּנָ֤הּ הַגָּדֹל֙ הַחֲמֻדֹ֔ת אֲשֶׁ֥ר אִתָּ֖הּ בַּבָּ֑יִת וַתַּלְבֵ
+   ⇒ בַּיִת / NOUN / masculine singular, absolute, with the article / LEX:house, household / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: בַּ: from בְּ, preposition with the article fused into it ; בָּ֑יִת: from בַּיִת, stem
+   R: babayit (lemma bayit) / D: house ; school
+[in the house OF: no article] Gen 31:14 «בְּבֵ֥ית»  source: b/1004 b HR/Ncmsc = NOUN, masculine singular, construct  (101 such tokens)
+   verse: וַתַּ֤עַן רָחֵל֙ וְלֵאָ֔ה וַתֹּאמַ֖רְנָה ל֑וֹ הַע֥וֹד לָ֛נוּ חֵ֥לֶק וְנַחֲלָ֖ה בְּבֵ֥ית אָבִֽינוּ׃
+   ⇒ בַּיִת / NOUN / masculine singular, construct / LEX:house, household / 0.68 / lexicon / period he-bib / Variety: he-bib.
+   also: בֵּית־אֵל/PROPN(0.53)=Beth-el, בֵּית שֶׁמֶשׁ/PROPN(0.51)=Beth-shemesh, בֵּית לֶחֶם/PROPN(0.51)=Bethlehem
+   parts: בְּ: in, with, by ; בֵ֥ית: from בַּיִת, stem
+   R: bevet (lemma bayit) / D: house ; school
+[to THE king] 1Sam 18:18 «לַמֶּֽלֶךְ»  source: l/4428 HRd/Ncmsa = NOUN, masculine singular, absolute, with the article  (90 such tokens)
+   verse: וַיֹּ֨אמֶר דָּוִ֜ד אֶל־שָׁא֗וּל מִ֤י אָֽנֹכִי֙ וּמִ֣י חַיַּ֔י מִשְׁפַּ֥חַת אָבִ֖י בְּיִשְׂרָאֵ֑ל כִּי־אֶהְיֶ֥ה
+   ⇒ מֶלֶךְ / NOUN / masculine singular, absolute, with the article / LEX:king / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: לַ: from לְ, preposition with the article fused into it ; מֶּֽלֶךְ: from מֶלֶךְ, stem
+   R: lamelekh (lemma melekh) / D: king ; to reign (to rule as a king)
+[to A king] Judg 9:6 «לְמֶ֑לֶךְ»  source: l/4428 HR/Ncmsa = NOUN, masculine singular, absolute  (38 such tokens)
+   verse: וַיֵּאָ֨סְפ֜וּ כׇּל־בַּעֲלֵ֤י שְׁכֶם֙ וְכׇל־בֵּ֣ית מִלּ֔וֹא וַיֵּ֣לְכ֔וּ וַיַּמְלִ֥יכוּ אֶת־אֲבִימֶ֖לֶךְ לְמֶ֑
+   ⇒ מֶלֶךְ / NOUN / masculine singular, absolute / LEX:king / 0.63 / lexicon / period he-bib / Variety: he-bib.
+   also: מֶלֶךְ/NOUN(0.58)=king, מֶלֶךְ/NOUN(0.51)=king
+   parts: לְ: to, for ; מֶ֑לֶךְ: from מֶלֶךְ, stem
+   R: lemelekh (lemma melekh) / D: king ; to reign (to rule as a king)
+[and on THE day] Exod 12:16 «וּבַיּ֤וֹם»  source: c/b/3117 HC/Rd/Ncmsa = NOUN, masculine singular, absolute, with the article  (35 such tokens)
+   verse: וּבַיּ֤וֹם הָרִאשׁוֹן֙ מִקְרָא־קֹ֔דֶשׁ וּבַיּוֹם֙ הַשְּׁבִיעִ֔י מִקְרָא־קֹ֖דֶשׁ יִהְיֶ֣ה לָכֶ֑ם כׇּל־מְלָאכָה֙
+   ⇒ יוֹם / NOUN / masculine singular, absolute, with the article / LEX:day; time / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: וּ: from וְ, and ; בַ: from בְּ, preposition with the article fused into it ; יּ֤וֹם: from יוֹם, stem
+   R: uvayom (lemma yom) / D: Day: the period between dawn and dusk. ; A day: a unit of time corresponding to the period
+[from + the + land] 1Sam 28:3 «מֵהָאָֽרֶץ»  source: m/d/776 HR/Td/Ncbsa = NOUN, masculine or feminine singular, absolute, with the article  (5 such tokens)
+   verse: וּשְׁמוּאֵ֣ל מֵ֔ת וַיִּסְפְּדוּ־לוֹ֙ כׇּל־יִשְׂרָאֵ֔ל וַיִּקְבְּרֻ֥הוּ בָרָמָ֖ה וּבְעִיר֑וֹ וְשָׁא֗וּל הֵסִ֛יר
+   ⇒ אֶרֶץ / NOUN / masculine or feminine singular, absolute, with the article / LEX:earth, land, ground / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: מֵ: from מִן, from ; הָ: from הַ, the ; אָֽרֶץ: from אֶרֶץ, stem
+   R: mehaʾarets (lemma erets) / D: country, land ; territory, district, region
+[ka'asher] Gen 7:9 «כַּֽאֲשֶׁ֛ר»  source: k/834 d HR/Tr = SCONJ, relative  (495 such tokens)
+   verse: שְׁנַ֨יִם שְׁנַ֜יִם בָּ֧אוּ אֶל־נֹ֛חַ אֶל־הַתֵּבָ֖ה זָכָ֣ר וּנְקֵבָ֑ה כַּֽאֲשֶׁ֛ר צִוָּ֥ה אֱלֹהִ֖ים אֶת־נֹֽחַ׃
+   ⇒ כַּאֲשֶׁר / SCONJ / relative / LEX:as, according as, when / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: כַּאֲשֶׁר/CONJ(0.43)=when, as, at the
+   parts: כַּֽ: from כְּ, like, as ; אֲשֶׁ֛ר: from כַּאֲשֶׁר, stem
+   R: kaʾasher / D: when, as, at the time that (frequenly preceded by a disjunctive וַיְהִי in Biblical Hebrew
+[and as] Gen 26:29 «וְכַאֲשֶׁ֨ר»  source: c/k/834 d HC/R/Tr = SCONJ, relative  (15 such tokens)
+   verse: אִם־תַּעֲשֵׂ֨ה עִמָּ֜נוּ רָעָ֗ה כַּאֲשֶׁר֙ לֹ֣א נְגַֽעֲנ֔וּךָ וְכַאֲשֶׁ֨ר עָשִׂ֤ינוּ עִמְּךָ֙ רַק־ט֔וֹב וַנְּש
+   ⇒ כַּאֲשֶׁר / SCONJ / relative / LEX:as, according as, when / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: וְ: and ; כַ: from כְּ, like, as ; אֲשֶׁ֨ר: from כַּאֲשֶׁר, stem
+   R: vekhaʾasher (lemma kaʾasher) / D: when, as, at the time that (frequenly preceded by a disjunctive וַיְהִי in Biblical Hebrew
+!! no token for: bare=שבשמים  # she + ba + shamayim
+[she + perfect] Ps 124:1 «שֶׁהָ֣יָה»  source: s/1961 HTr/Vqp3ms = VERB, Qal, perfect (qatal), 3rd person masculine singular  (8 such tokens)
+   verse: שִׁ֥יר הַֽמַּעֲל֗וֹת לְדָ֫וִ֥ד לוּלֵ֣י יְ֭הֹוָה שֶׁהָ֣יָה לָ֑נוּ יֹאמַר־נָ֝֗א יִשְׂרָאֵֽל׃
+   ⇒ הָיָה / VERB / Qal, perfect (qatal), 3rd person masculine singular / INFL:He was / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: שֶׁ: that, which ; הָיָה: Qal verb
+   R: shehaya (lemma haya) / D: to be: — to exist ; to be: — connects a noun to a prepositional phrase or adjective descri
+[shelli (Song 1:6)] Song 1:6 «שֶׁלִּ֖י»  source: s/l HTr/R/Sp1cs = ADP,   (2 such tokens)
+   verse: אַל־תִּרְא֙וּנִי֙ שֶׁאֲנִ֣י שְׁחַרְחֹ֔רֶת שֶׁשְּׁזָפַ֖תְנִי הַשָּׁ֑מֶשׁ בְּנֵ֧י אִמִּ֣י נִֽחֲרוּ־בִ֗י שָׂמֻ֙נִ
+   ⇒ לְ / ADP /  / LEX:to, for / 0.62 / lexicon / period he-bib / Variety: he-bib.
+   also: שֶׁל/ADP(0.53)=Of, belonging to, שֶׁל/ADP(0.48)=Of, belonging to
+   parts: שֶׁ: that, which ; לִּ֖: from לְ, stem ; י: object of the preposition
+   R: sheli (lemma l) / D: To; indicating a destination or end-point. — Indicating the destination of movement. ; To;
+[she + ani] Song 1:6 «שֶׁאֲנִ֣י»  source: s/589 HTr/Pp1cs = PRON, personal, 1st person common gender singular  (2 such tokens)
+   verse: אַל־תִּרְא֙וּנִי֙ שֶׁאֲנִ֣י שְׁחַרְחֹ֔רֶת שֶׁשְּׁזָפַ֖תְנִי הַשָּׁ֑מֶשׁ בְּנֵ֧י אִמִּ֣י נִֽחֲרוּ־בִ֗י שָׂמֻ֙נִ
+   ⇒ אֲנִי / PRON / personal, 1st person common gender singular / LEX:I / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: שֶׁ: that, which ; אֲנִ֣י: from אֲנִי, stem
+   R: sheʾani (lemma ani) / D: I (first person nominative singular pronoun, masculine and feminine) ; ego
+[me'et] Gen 17:27 «מֵאֵ֣ת»  source: m/854 HR/R = ADP,   (119 such tokens)
+   verse: וְכׇל־אַנְשֵׁ֤י בֵיתוֹ֙ יְלִ֣יד בָּ֔יִת וּמִקְנַת־כֶּ֖סֶף מֵאֵ֣ת בֶּן־נֵכָ֑ר נִמֹּ֖לוּ אִתּֽוֹ׃
+   ⇒ אֵת / ADP /  / LEX:with, beside / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: מֵאֵת/ADP(0.43)=from
+   parts: מֵ: from מִן, from ; אֵ֣ת: from אֵת, stem
+   R: meʾet (lemma et) / D: Used to introduce a semantically definite direct object. ; To, with.
+[umin] Gen 6:20 «וּמִן»  source: c/4480 a HC/R = ADP,   (113 such tokens)
+   verse: מֵהָע֣וֹף לְמִינֵ֗הוּ וּמִן־הַבְּהֵמָה֙ לְמִינָ֔הּ מִכֹּ֛ל רֶ֥מֶשׂ הָֽאֲדָמָ֖ה לְמִינֵ֑הוּ שְׁנַ֧יִם מִכֹּ֛ל י
+   ⇒ מִן / ADP /  / LEX:from, out of; than / 0.7 / lexicon / period he-bib / Variety: he-bib.
+   also: מִן/ADP(0.52)=from, out of, by
+   parts: וּ: from וְ, and ; מִן: stem
+   R: umin (lemma min) / D: manna
+[like the waters] Gen 49:4 «כַּמַּ֙יִם֙»  source: k/4325 HRd/Ncmpa = NOUN, masculine plural, absolute, with the article  (21 such tokens)
+   verse: פַּ֤חַז כַּמַּ֙יִם֙ אַל־תּוֹתַ֔ר כִּ֥י עָלִ֖יתָ מִשְׁכְּבֵ֣י אָבִ֑יךָ אָ֥ז חִלַּ֖לְתָּ יְצוּעִ֥י עָלָֽה׃
+   ⇒ מַיִם / NOUN / masculine plural, absolute, with the article / LEX:water / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: כַּ: from כְּ, preposition with the article fused into it ; מַּ֙יִם֙: from מַיִם, stem
+   R: kamayim (lemma mayim) / D: (uncountable) water
+[lemor] Gen 1:22 «לֵאמֹ֑ר»  source: l/559 HR/Vqc = VERB, Qal, infinitive construct  (933 such tokens)
+   verse: וַיְבָ֧רֶךְ אֹתָ֛ם אֱלֹהִ֖ים לֵאמֹ֑ר פְּר֣וּ וּרְב֗וּ וּמִלְא֤וּ אֶת־הַמַּ֙יִם֙ בַּיַּמִּ֔ים וְהָע֖וֹף יִ֥רֶב 
+   ⇒ אָמַר / VERB / Qal, infinitive construct / INFL:to say / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: לֵאמֹר/VERB(0.43)=to-infinitive of, אָמַר/VERB(0.43)=to say, tell
+   parts: לֵ: to, for ; אמֹר: Qal verb
+   R: leʾmor (lemma amar) / D: to say, tell ; to intend
+[and in the heavens] Exod 35:8 «וּבְשָׂמִים֙»  source: c/1314 HC/Ncmpa = NOUN, masculine plural, absolute  (5 such tokens)
+   verse: וְשֶׁ֖מֶן לַמָּא֑וֹר וּבְשָׂמִים֙ לְשֶׁ֣מֶן הַמִּשְׁחָ֔ה וְלִקְטֹ֖רֶת הַסַּמִּֽים׃
+   ⇒ בֶּשֶׂם / NOUN / masculine plural, absolute / LEX:spice, balsam, balsam-tree / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: וּ: from וְ, and ; בְשָׂמִים֙: from בֶּשֶׂם, stem
+   R: uvesamim (lemma besem) / D: perfume
+[as the day / as at this day] Gen 25:31 «כַיּ֛וֹם»  source: k/3117 HRd/Ncmsa = NOUN, masculine singular, absolute, with the article  (41 such tokens)
+   verse: וַיֹּ֖אמֶר יַעֲקֹ֑ב מִכְרָ֥ה כַיּ֛וֹם אֶת־בְּכֹרָתְךָ֖ לִֽי׃
+   ⇒ יוֹם / NOUN / masculine singular, absolute, with the article / LEX:day; time / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: כַ: from כְּ, preposition with the article fused into it ; יּ֛וֹם: from יוֹם, stem
+   R: khayom (lemma yom) / D: Day: the period between dawn and dusk. ; A day: a unit of time corresponding to the period
+[from the day] Exod 10:6 «מִיּ֗וֹם»  source: m/3117 HR/Ncmsc = NOUN, masculine singular, construct  (25 such tokens)
+   verse: וּמָלְא֨וּ בָתֶּ֜יךָ וּבָתֵּ֣י כׇל־עֲבָדֶ֘יךָ֮ וּבָתֵּ֣י כׇל־מִצְרַ֒יִם֒ אֲשֶׁ֨ר לֹֽא־רָא֤וּ אֲבֹתֶ֙יךָ֙ וַאֲב
+   ⇒ יוֹם / NOUN / masculine singular, construct / LEX:day; time / 0.61 / lexicon / period he-bib / Variety: he-bib.
+   also: יוֹם/NOUN(0.61)=day; time
+   parts: מִ: from מִן, from ; יּ֗וֹם: from יוֹם, stem
+   R: miyom (lemma yom) / D: Day: the period between dawn and dusk. ; A day: a unit of time corresponding to the period
+[from the house of] Gen 20:13 «מִבֵּ֣ית»  source: m/1004 b HR/Ncmsc = NOUN, masculine singular, construct  (73 such tokens)
+   verse: וַיְהִ֞י כַּאֲשֶׁ֧ר הִתְע֣וּ אֹתִ֗י אֱלֹהִים֮ מִבֵּ֣ית אָבִי֒ וָאֹמַ֣ר לָ֔הּ זֶ֣ה חַסְדֵּ֔ךְ אֲשֶׁ֥ר תַּעֲשִׂ֖
+   ⇒ בַּיִת / NOUN / masculine singular, construct / LEX:house, household / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: בֵּית לֶחֶם/PROPN(0.53)=Bethlehem, בֵּית־אֵל/PROPN(0.52)=Beth-el, בֵּית שְׁאָן/PROPN(0.51)=Beth-shean
+   parts: מִ: from מִן, from ; בֵּ֣ית: from בַּיִת, stem
+   R: mibet (lemma bayit) / D: house ; school
+[and to the sons of] Gen 25:6 «וְלִבְנֵ֤י»  source: c/l/1121 a HC/R/Ncmpc = NOUN, masculine plural, construct  (30 such tokens)
+   verse: וְלִבְנֵ֤י הַפִּֽילַגְשִׁים֙ אֲשֶׁ֣ר לְאַבְרָהָ֔ם נָתַ֥ן אַבְרָהָ֖ם מַתָּנֹ֑ת וַֽיְשַׁלְּחֵ֞ם מֵעַ֨ל יִצְחָ֤ק 
+   ⇒ בֵּן / NOUN / masculine plural, construct / LEX:son; child; member of a class / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: וְ: and ; לִ: from לְ, to, for ; בְנֵ֤י: from בֵּן, stem
+   R: velivene (lemma ben) / D: son ; A direct male descendant.
+[and from all] Gen 3:14 «וּמִכֹּ֖ל»  source: c/m/3605 HC/R/Ncmsc = NOUN, masculine singular, construct  (21 such tokens)
+   verse: וַיֹּ֩אמֶר֩ יְהֹוָ֨ה אֱלֹהִ֥ים ׀ אֶֽל־הַנָּחָשׁ֮ כִּ֣י עָשִׂ֣יתָ זֹּאת֒ אָר֤וּר אַתָּה֙ מִכׇּל־הַבְּהֵמָ֔ה וּמ
+   ⇒ כֹּל / NOUN / masculine singular, construct / LEX:all, every, the whole / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: וּ: from וְ, and ; מִ: from מִן, from ; כֹּ֖ל: from כֹּל, stem
+   R: umikol (lemma kol) / D: All, whole, entirety, everything; found almost exclusively in singular definite and singul
+[Ps 144:15 shekkakha] Ps 144:15 «שֶׁכָּ֣כָה»  source: s/3602 HTr/D = ADV,   (3 such tokens)
+   verse: אַשְׁרֵ֣י הָ֭עָם שֶׁכָּ֣כָה לּ֑וֹ אַֽשְׁרֵ֥י הָ֝עָ֗ם שֱׁיְהֹוָ֥ה אֱלֹהָֽיו׃
+   ⇒ כָּכָה / ADV /  / LEX:thus / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: שֶׁ: that, which ; כָּ֣כָה: from כָּכָה, stem
+   R: shekakha (lemma kakha) / D: thus (in this way, like so)
+[his word] Num 30:3 «דְּבָר֑וֹ»  source: 1697 HNcmsc/Sp3ms = NOUN, masculine singular, construct  (24 such tokens)
+   verse: אִישׁ֩ כִּֽי־יִדֹּ֨ר נֶ֜דֶר לַֽיהֹוָ֗ה אֽוֹ־הִשָּׁ֤בַע שְׁבֻעָה֙ לֶאְסֹ֤ר אִסָּר֙ עַל־נַפְשׁ֔וֹ לֹ֥א יַחֵ֖ל דְ
+   ⇒ דָּבָר / NOUN / masculine singular, construct / LEX:word, speech, thing, matter / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: דָּבָר/NOUN(0.44)=thing
+   parts: דְּבָר֑: from דָּבָר, stem ; וֹ: possessive suffix
+   R: devaro (lemma davar) / D: thing ; speech
+[my word] Num 11:23 «דְבָרִ֖י»  source: 1697 HNcmsc/Sp1cs = NOUN, masculine singular, construct  (13 such tokens)
+   verse: וַיֹּ֤אמֶר יְהֹוָה֙ אֶל־מֹשֶׁ֔ה הֲיַ֥ד יְהֹוָ֖ה תִּקְצָ֑ר עַתָּ֥ה תִרְאֶ֛ה הֲיִקְרְךָ֥ דְבָרִ֖י אִם־לֹֽא׃
+   ⇒ דָּבָר / NOUN / masculine singular, construct / LEX:word, speech, thing, matter / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: דְבָרִ֖: from דָּבָר, stem ; י: possessive suffix
+   R: devari (lemma davar) / D: thing ; speech
+[words of (construct plural, same letters)] Gen 24:30 «דִּבְרֵ֞י»  source: 1697 HNcmpc = NOUN, masculine plural, construct  (242 such tokens)
+   verse: וַיְהִ֣י ׀ כִּרְאֹ֣ת אֶת־הַנֶּ֗זֶם וְֽאֶת־הַצְּמִדִים֮ עַל־יְדֵ֣י אֲחֹתוֹ֒ וּכְשׇׁמְע֗וֹ אֶת־דִּבְרֵ֞י רִבְקָ֤
+   ⇒ דָּבָר / NOUN / masculine plural, construct / LEX:word, speech, thing, matter / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: דָּבָר/NOUN(0.43)=thing
+   R: divere (lemma davar) / D: thing ; speech
+[my words] Gen 24:33 «דְּבָרָ֑י»  source: 1697 HNcmpc/Sp1cs = NOUN, masculine plural, construct  (36 such tokens)
+   verse: וַיּוּשַׂ֤ם לְפָנָיו֙ לֶאֱכֹ֔ל וַיֹּ֙אמֶר֙ לֹ֣א אֹכַ֔ל עַ֥ד אִם־דִּבַּ֖רְתִּי דְּבָרָ֑י וַיֹּ֖אמֶר דַּבֵּֽר׃
+   ⇒ דָּבָר / NOUN / masculine plural, construct / LEX:word, speech, thing, matter / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: דְּבָרָ֑: from דָּבָר, stem ; י: possessive suffix
+   R: devaray (lemma davar) / D: thing ; speech
+[their horses] Josh 11:6 «סוּסֵיהֶ֣ם»  source: 5483 b HNcmpc/Sp3mp = NOUN, masculine plural, construct  (4 such tokens)
+   verse: וַיֹּ֨אמֶר יְהֹוָ֣ה אֶל־יְהוֹשֻׁ֘עַ֮ אַל־תִּירָ֣א מִפְּנֵיהֶם֒ כִּֽי־מָחָ֞ר כָּעֵ֣ת הַזֹּ֗את אָנֹכִ֞י נֹתֵ֧ן א
+   ⇒ סוּס / NOUN / masculine plural, construct / LEX:horse / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: סוּס/NOUN(0.47)=horse
+   parts: סוּסֵי: from סוּס, stem ; הֶ֣ם: possessive suffix
+   R: susehem (lemma sus) / D: horse ; a strong or muscular man; stud, stallion
+[to me] Gen 3:12 «לִּ֥י»  source: l HR/Sp1cs = ADP,   (742 such tokens)
+   verse: וַיֹּ֖אמֶר הָֽאָדָ֑ם הָֽאִשָּׁה֙ אֲשֶׁ֣ר נָתַ֣תָּה עִמָּדִ֔י הִ֛וא נָֽתְנָה־לִּ֥י מִן־הָעֵ֖ץ וָאֹכֵֽל׃
+   ⇒ לְ / ADP /  / LEX:to, for / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: לִּ֥: from לְ, stem ; י: object of the preposition
+   R: li (lemma l) / D: To; indicating a destination or end-point. — Indicating the destination of movement. ; To;
+[to him] Gen 8:9 «אֵלָיו֙»  source: 413 HR/Sp3ms = ADP,   (429 such tokens)
+   verse: וְלֹֽא־מָצְאָה֩ הַיּוֹנָ֨ה מָנ֜וֹחַ לְכַף־רַגְלָ֗הּ וַתָּ֤שׇׁב אֵלָיו֙ אֶל־הַתֵּבָ֔ה כִּי־מַ֖יִם עַל־פְּנֵ֣י כ
+   ⇒ אֵל / ADP /  / LEX:to, toward, into / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: אֵל/NOUN(0.43)=god (a deity or , אֶל/ADP(0.43)=to, towards, int, לְ־/ADP(0.43)=To; indicating a
+   parts: אֵלָי: from אֵל, stem ; ו֙: object of the preposition
+   R: elayv (lemma el) / D: to, towards, into ; at, by
+[with us] Gen 24:25 «עִמָּ֑נוּ»  source: 5973 a HR/Sp1cp = ADP,   (36 such tokens)
+   verse: וַתֹּ֣אמֶר אֵלָ֔יו גַּם־תֶּ֥בֶן גַּם־מִסְפּ֖וֹא רַ֣ב עִמָּ֑נוּ גַּם־מָק֖וֹם לָלֽוּן׃
+   ⇒ עִם / ADP /  / LEX:with, together with / 0.7 / lexicon / period he-bib / Variety: he-bib.
+   also: עִמָּנוּאֵל/PROPN(0.52)=Immanuel, עִם/ADP(0.43)=With: used to in
+   parts: עִמָּ֑: from עִם, stem ; נוּ: object of the preposition
+   R: imanu (lemma im) / D: With: used to indicate togetherness, being together. ; And also.
+[him (object marker + suffix)] Gen 1:27 «אֹת֑וֹ»  source: 853 HTo/Sp3ms = PART, object marker  (438 such tokens)
+   verse: וַיִּבְרָ֨א אֱלֹהִ֤ים ׀ אֶת־הָֽאָדָם֙ בְּצַלְמ֔וֹ בְּצֶ֥לֶם אֱלֹהִ֖ים בָּרָ֣א אֹת֑וֹ זָכָ֥ר וּנְקֵבָ֖ה בָּרָ֥א
+   ⇒ אֵת / PART / object marker / LEX:(marks the definite direct object) / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: אֹתוֹ/ADP(0.43)=defective spelli
+   role: object marker
+   parts: אֹת֑: from אֵת, stem ; וֹ: possessive suffix
+   R: oto (lemma et) / D: Used to introduce a semantically definite direct object. ; To, with.
+[with him] Gen 7:7 «אִתּ֖וֹ»  source: 854 HR/Sp3ms = ADP,   (153 such tokens)
+   verse: וַיָּ֣בֹא נֹ֗חַ וּ֠בָנָ֠יו וְאִשְׁתּ֧וֹ וּנְשֵֽׁי־בָנָ֛יו אִתּ֖וֹ אֶל־הַתֵּבָ֑ה מִפְּנֵ֖י מֵ֥י הַמַּבּֽוּל׃
+   ⇒ אֵת / ADP /  / LEX:with, beside / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: אֵת/ADP(0.43)=Used to introduc, אֹת/NOUN(0.43)=defective spelli, עִם/ADP(0.43)=With: used to in
+   parts: אִתּ֖: from אֵת, stem ; וֹ: object of the preposition
+   R: ito (lemma et) / D: Used to introduce a semantically definite direct object. ; To, with.
+[you / with you] Gen 6:18 «אִתָּ֑ךְ»  source: 854 HR/Sp2fs = ADP,   (130 such tokens)
+   verse: וַהֲקִמֹתִ֥י אֶת־בְּרִיתִ֖י אִתָּ֑ךְ וּבָאתָ֙ אֶל־הַתֵּבָ֔ה אַתָּ֕ה וּבָנֶ֛יךָ וְאִשְׁתְּךָ֥ וּנְשֵֽׁי־בָנֶ֖יך
+   ⇒ אֵת / ADP /  / LEX:with, beside / 0.7 / lexicon / period he-bib / Variety: he-bib.
+   also: אֵת/ADP(0.43)=Used to introduc, עִם/ADP(0.43)=With: used to in
+   parts: אִתָּ֑: from אֵת, stem ; ךְ: object of the preposition
+   R: itakh (lemma et) / D: Used to introduce a semantically definite direct object. ; To, with.
+[from me] Gen 22:12 «מִמֶּֽנִּי»  source: 4480 a HR/Sp1cs = ADP,   (87 such tokens)
+   verse: וַיֹּ֗אמֶר אַל־תִּשְׁלַ֤ח יָֽדְךָ֙ אֶל־הַנַּ֔עַר וְאַל־תַּ֥עַשׂ ל֖וֹ מְא֑וּמָה כִּ֣י ׀ עַתָּ֣ה יָדַ֗עְתִּי כִּ
+   ⇒ מִן / ADP /  / LEX:from, out of; than / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: מִן/ADP(0.43)=alternative form, מִ־/ADP(0.43)=From, of, from i
+   parts: מִמֶּֽ: from מִן, stem ; נִּי: object of the preposition
+   R: mimeni (lemma min) / D: manna
+[from him] Gen 3:5 «מִמֶּ֔נּוּ»  source: 4480 a HR/Sp3ms = ADP,   (26 such tokens)
+   verse: כִּ֚י יֹדֵ֣עַ אֱלֹהִ֔ים כִּ֗י בְּיוֹם֙ אֲכׇלְכֶ֣ם מִמֶּ֔נּוּ וְנִפְקְח֖וּ עֵֽינֵיכֶ֑ם וִהְיִיתֶם֙ כֵּֽאלֹהִ֔ים
+   ⇒ מִן / ADP /  / LEX:from, out of; than / 0.68 / lexicon / period he-bib / Variety: he-bib.
+   also: מ/ADP(0.43), מִן/ADP(0.43)=alternative form, מִן/ADP(0.43)=alternative form
+   parts: מִמֶּ֔: from מִן, stem ; נּוּ: object of the preposition
+   R: mimenu (lemma min) / D: manna
+[from us (the source's own tag)] Gen 2:17 «מִמֶּ֑נּוּ»  source: 4480 a HR/Sp1cp = ADP,   (145 such tokens)
+   verse: וּמֵעֵ֗ץ הַדַּ֙עַת֙ ט֣וֹב וָרָ֔ע לֹ֥א תֹאכַ֖ל מִמֶּ֑נּוּ כִּ֗י בְּי֛וֹם אֲכׇלְךָ֥ מִמֶּ֖נּוּ מ֥וֹת תָּמֽוּת׃
+   ⇒ מִן / ADP /  / LEX:from, out of; than / 0.68 / lexicon / period he-bib / Variety: he-bib.
+   also: מ/ADP(0.43), מִן/ADP(0.43)=alternative form, מִן/ADP(0.43)=alternative form
+   parts: מִמֶּ֑: from מִן, stem ; נּוּ: object of the preposition
+   R: mimenu (lemma min) / D: manna
+[to you (m.)] Gen 3:11 «לְךָ֔»  source: l HR/Sp2ms = ADP,   (486 such tokens)
+   verse: וַיֹּ֕אמֶר מִ֚י הִגִּ֣יד לְךָ֔ כִּ֥י עֵירֹ֖ם אָ֑תָּה הֲמִן־הָעֵ֗ץ אֲשֶׁ֧ר צִוִּיתִ֛יךָ לְבִלְתִּ֥י אֲכׇל־מִמֶּ
+   ⇒ לְ / ADP /  / LEX:to, for / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: כָּרַת/PRON(0.51)=cut off, cut dow, יָלַךְ/VERB(0.51)=to go, walk, לְ־/ADP(0.43)=To; indicating a
+   parts: לְ: stem ; ךָ֔: object of the preposition
+   R: lekha (lemma l) / D: To; indicating a destination or end-point. — Indicating the destination of movement. ; To;
+[to you (f.)] Gen 3:18 «לָ֑ךְ»  source: l HR/Sp2fs = ADP,   (371 such tokens)
+   verse: וְק֥וֹץ וְדַרְדַּ֖ר תַּצְמִ֣יחַֽ לָ֑ךְ וְאָכַלְתָּ֖ אֶת־עֵ֥שֶׂב הַשָּׂדֶֽה׃
+   ⇒ לְ / ADP /  / LEX:to, for / 0.7 / lexicon / period he-bib / Variety: he-bib.
+   also: סָלַח/PRON(0.51)=forgive, pardon,, לְ/ADP(0.51)=to, for, לְ/PART(0.51)=to, for
+   parts: לָ֑: from לְ, stem ; ךְ: object of the preposition
+   R: lakh (lemma l) / D: To; indicating a destination or end-point. — Indicating the destination of movement. ; To;
+[go! (imperative)] Gen 12:1 «לֶךְ»  source: 3212 HVqv2ms = VERB, Qal, imperative, 2nd person masculine singular  (92 such tokens)
+   verse: וַיֹּ֤אמֶר יְהֹוָה֙ אֶל־אַבְרָ֔ם לֶךְ־לְךָ֛ מֵאַרְצְךָ֥ וּמִמּֽוֹלַדְתְּךָ֖ וּמִבֵּ֣ית אָבִ֑יךָ אֶל־הָאָ֖רֶץ א
+   ⇒ יָלַךְ / VERB / Qal, imperative, 2nd person masculine singular / CTX:Go! / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: לֶךְ: Qal verb
+   R: lekh (lemma yalakh) / D: ∅
+[in you] Gen 3:16 «בָּֽךְ»  source: b HR/Sp2fs = ADP,   (164 such tokens)
+   verse: אֶֽל־הָאִשָּׁ֣ה אָמַ֗ר הַרְבָּ֤ה אַרְבֶּה֙ עִצְּבוֹנֵ֣ךְ וְהֵֽרֹנֵ֔ךְ בְּעֶ֖צֶב תֵּֽלְדִ֣י בָנִ֑ים וְאֶל־אִישֵ
+   ⇒ בְּ / ADP /  / LEX:in, with, by / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: בְּ/ADP(0.52)=in, with, by, בְּ־/ADP(0.43)=In (a place or t
+   parts: בָּֽ: from בְּ, stem ; ךְ: object of the preposition
+   R: bakh (lemma b) / D: In (a place or time). ; With
+[on them] Gen 14:15 «עֲלֵיהֶ֧ם»  source: 5921 a HR/Sp3mp = ADP,   (218 such tokens)
+   verse: וַיֵּחָלֵ֨ק עֲלֵיהֶ֧ם ׀ לַ֛יְלָה ה֥וּא וַעֲבָדָ֖יו וַיַּכֵּ֑ם וַֽיִּרְדְּפֵם֙ עַד־חוֹבָ֔ה אֲשֶׁ֥ר מִשְּׂמֹ֖אל 
+   ⇒ עַל / ADP /  / LEX:on, upon, over, against, concerning / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: עַל/ADP(0.43)=on, on top of
+   parts: עֲלֵי: from עַל, stem ; הֶ֧ם: object of the preposition
+   R: alehem (lemma al) / D: on, on top of ; on
+[after him] Gen 17:19 «אַחֲרָֽיו»  source: 310 a HR/Sp3ms = ADP,   (81 such tokens)
+   verse: וַיֹּ֣אמֶר אֱלֹהִ֗ים אֲבָל֙ שָׂרָ֣ה אִשְׁתְּךָ֗ יֹלֶ֤דֶת לְךָ֙ בֵּ֔ן וְקָרָ֥אתָ אֶת־שְׁמ֖וֹ יִצְחָ֑ק וַהֲקִמֹת
+   ⇒ אַחַר / ADP /  / LEX:after, behind / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: אַחֲרָֽי: from אַחַר, stem ; ו: object of the preposition
+   R: aḥarayv (lemma aḥar) / D: after (subsequent to, following in time) ; hind part
+[under him] Gen 36:33 «תַּחְתָּ֔יו»  source: 8478 HR/Sp3ms = ADP,   (93 such tokens)
+   verse: וַיָּ֖מׇת בָּ֑לַע וַיִּמְלֹ֣ךְ תַּחְתָּ֔יו יוֹבָ֥ב בֶּן־זֶ֖רַח מִבׇּצְרָֽה׃
+   ⇒ תַּחַת / ADP /  / LEX:under, beneath, instead of / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: תַּחַת/ADP(0.43)=below
+   parts: תַּחְתָּ֔י: from תַּחַת, stem ; ו: object of the preposition
+   R: taḥetayv (lemma taḥat) / D: below ; underneath
+[keep me] Ps 16:1 «שׇֽׁמְרֵ֥נִי»  source: 8104 HVqv2ms/Sp1cs = VERB, Qal, imperative, 2nd person masculine singular  (4 such tokens)
+   verse: מִכְתָּ֥ם לְדָוִ֑ד שׇֽׁמְרֵ֥נִי אֵ֝֗ל כִּֽי־חָסִ֥יתִי בָֽךְ׃
+   ⇒ שָׁמַר / VERB / Qal, imperative, 2nd person masculine singular / INFL:Keep me! / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: שָׁמְרֵ: Qal verb ; נִי: object suffix
+   R: shamereni (lemma shamar) / D: to guard ; to keep
+[and he gave him / set him] Gen 39:20 «וַֽיִּתְּנֵ֙הוּ֙»  source: c/5414 HC/Vqw3ms/Sp3ms = VERB, Qal, wayyiqtol (narrative past), 3rd person masculine singular  (15 such tokens)
+   verse: וַיִּקַּח֩ אֲדֹנֵ֨י יוֹסֵ֜ף אֹת֗וֹ וַֽיִּתְּנֵ֙הוּ֙ אֶל־בֵּ֣ית הַסֹּ֔הַר מְק֕וֹם אֲשֶׁר־אֲסִירֵ֥י הַמֶּ֖לֶךְ א
+   ⇒ נָתַן / VERB / Qal, wayyiqtol (narrative past), 3rd person masculine singular / INFL:And he gave him / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: וַ: and ; יִּ: imperfect preformative, third person masculine singular ; תְּנֵ: Qal verbal base ; הוּ: object suffix
+   R: vayitenehu (lemma natan) / D: to give ; to allow, permit, let
+[and he blessed him] Gen 14:19 «וַֽיְבָרְכֵ֖הוּ»  source: c/1288 HC/Vpw3ms/Sp3ms = VERB, Piʿel, wayyiqtol (narrative past), 3rd person masculine singular  (9 such tokens)
+   verse: וַֽיְבָרְכֵ֖הוּ וַיֹּאמַ֑ר בָּר֤וּךְ אַבְרָם֙ לְאֵ֣ל עֶלְי֔וֹן קֹנֵ֖ה שָׁמַ֥יִם וָאָֽרֶץ׃
+   ⇒ בָרַךְ / VERB / Piʿel, wayyiqtol (narrative past), 3rd person masculine singular / INFL:And he knelt him / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: וַ: and ; יְ: imperfect preformative, third person masculine singular ; בָרְכֵ: Piʿel verbal base ; הוּ: object suffix
+   R: vayevarekhehu (lemma varakh) / D: kneeled ; knee
+[I have loved you] Judg 16:15 «אֲהַבְתִּ֔יךְ»  source: 157 HVqp1cs/Sp2fs = VERB, Qal, perfect (qatal), 1st person common gender singular  (3 such tokens)
+   verse: וַתֹּ֣אמֶר אֵלָ֗יו אֵ֚יךְ תֹּאמַ֣ר אֲהַבְתִּ֔יךְ וְלִבְּךָ֖ אֵ֣ין אִתִּ֑י זֶ֣ה שָׁלֹ֤שׁ פְּעָמִים֙ הֵתַ֣לְתָּ 
+   ⇒ אָהַב / VERB / Qal, perfect (qatal), 1st person common gender singular / INFL:I loved you / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: אֲהַבְ: Qal verbal base ; תִּי: perfect first person common singular ending ; ךְ: object suffix
+   R: ahavetikh (lemma ahav) / D: to love ; Related to love.
+[I saw him] Gen 44:28 «רְאִיתִ֖יו»  source: 7200 HVqp1cs/Sp3ms = VERB, Qal, perfect (qatal), 1st person common gender singular  (2 such tokens)
+   verse: וַיֵּצֵ֤א הָֽאֶחָד֙ מֵֽאִתִּ֔י וָאֹמַ֕ר אַ֖ךְ טָרֹ֣ף טֹרָ֑ף וְלֹ֥א רְאִיתִ֖יו עַד־הֵֽנָּה׃
+   ⇒ רָאָה / VERB / Qal, perfect (qatal), 1st person common gender singular / INFL:I saw him / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: רְאִי: Qal verbal base ; תִי: perfect first person common singular ending ; ו: object suffix
+   R: reʾitiv (lemma raʾa) / D: To see, to have vision; figuratively, to perceive. ; To observe, look at; figuratively, to
+[may he keep you] Ps 121:7 «יִשְׁמׇרְךָ֥»  source: 8104 HVqi3ms/Sp2ms = VERB, Qal, imperfect (yiqtol), 3rd person masculine singular
+   verse: יְֽהֹוָ֗ה יִשְׁמׇרְךָ֥ מִכׇּל־רָ֑ע יִ֝שְׁמֹ֗ר אֶת־נַפְשֶֽׁךָ׃
+   ⇒ שָׁמַר / VERB / Qal, imperfect (yiqtol), 3rd person masculine singular / INFL:He will keep you / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: יִ: imperfect preformative, third person masculine singular ; שְׁמָרְ: Qal verbal base ; ךָ: object suffix
+   R: yishemarekha (lemma shamar) / D: to guard ; to keep
+[his father] Gen 2:24 «אָבִ֖יו»  source: 1 HNcmsc/Sp3ms = NOUN, masculine singular, construct  (193 such tokens)
+   verse: עַל־כֵּן֙ יַֽעֲזׇב־אִ֔ישׁ אֶת־אָבִ֖יו וְאֶת־אִמּ֑וֹ וְדָבַ֣ק בְּאִשְׁתּ֔וֹ וְהָי֖וּ לְבָשָׂ֥ר אֶחָֽד׃
+   ⇒ אָב / NOUN / masculine singular, construct / LEX:father / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: אָב/PROPN(0.51)=father, אָב/NOUN(0.43)=father (a male p, אָב/NOUN(0.43)=father (a male p
+   parts: אָבִ֖י: from אָב, stem ; ו: possessive suffix
+   R: aviv (lemma av) / D: father (a male parent, especially of a human; a male who parents a child (which he has sir
+[your brother] Gen 4:9 «אָחִ֑יךָ»  source: 251 HNcmsc/Sp2ms = NOUN, masculine singular, construct  (74 such tokens)
+   verse: וַיֹּ֤אמֶר יְהֹוָה֙ אֶל־קַ֔יִן אֵ֖י הֶ֣בֶל אָחִ֑יךָ וַיֹּ֙אמֶר֙ לֹ֣א יָדַ֔עְתִּי הֲשֹׁמֵ֥ר אָחִ֖י אָנֹֽכִי׃
+   ⇒ אָח / NOUN / masculine singular, construct / LEX:brother; kinsman / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: אָח/NOUN(0.43)=brother (son of 
+   parts: אָחִ֑י: from אָח, stem ; ךָ: possessive suffix
+   R: aḥikha (lemma aḥ) / D: brother (son of the same parents as another person) ; brother, fellow, peer
+[his son] Gen 4:17 «בְּנ֥וֹ»  source: 1121 a HNcmsc/Sp3ms = NOUN, masculine singular, construct  (235 such tokens)
+   verse: וַיֵּ֤דַע קַ֙יִן֙ אֶת־אִשְׁתּ֔וֹ וַתַּ֖הַר וַתֵּ֣לֶד אֶת־חֲנ֑וֹךְ וַֽיְהִי֙ בֹּ֣נֶה עִ֔יר וַיִּקְרָא֙ שֵׁ֣ם הָ
+   ⇒ בֵּן / NOUN / masculine singular, construct / LEX:son; child; member of a class / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: בֵּן/NOUN(0.43)=son, בֵּן/NOUN(0.43)=son, בֵּן/NOUN(0.43)=son
+   parts: בְּנ֥: from בֵּן, stem ; וֹ: possessive suffix
+   R: beno (lemma ben) / D: son ; A direct male descendant.
+[they built (same letters)] Gen 11:5 «בָּנ֖וּ»  source: 1129 HVqp3cp = VERB, Qal, perfect (qatal), 3rd person common gender plural  (11 such tokens)
+   verse: וַיֵּ֣רֶד יְהֹוָ֔ה לִרְאֹ֥ת אֶת־הָעִ֖יר וְאֶת־הַמִּגְדָּ֑ל אֲשֶׁ֥ר בָּנ֖וּ בְּנֵ֥י הָאָדָֽם׃
+   ⇒ בְּ / ADP /  / LEX:in, with, by / 0.64 / lexicon / period he-bib / Variety: he-bib.
+   also: בָּנָה/VERB(0.56)=build, be built,, בּוֹא/VERB(0.51)=to come, go in, , בָּן/VERB(0.43)=to understand.
+   parts: בָּ: from בְּ, stem ; נ֖וּ: object of the preposition
+   R: banu (lemma b) / D: In (a place or time). ; With
+[his wife] Gen 3:20 «אִשְׁתּ֖וֹ»  source: 802 HNcfsc/Sp3ms = NOUN, feminine singular, construct  (66 such tokens)
+   verse: וַיִּקְרָ֧א הָֽאָדָ֛ם שֵׁ֥ם אִשְׁתּ֖וֹ חַוָּ֑ה כִּ֛י הִ֥וא הָֽיְתָ֖ה אֵ֥ם כׇּל־חָֽי׃
+   ⇒ אִשָּׁה / NOUN / feminine singular, construct / LEX:woman, wife / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: אִשָּׁה/NOUN(0.43)=woman (an adult , אִשָּׁה/NOUN(0.43)=woman (an adult , אשה/NOUN(0.43)
+   parts: אִשְׁתּ֖: from אִשָּׁה, stem ; וֹ: possessive suffix
+   R: isheto (lemma isha) / D: woman (an adult female human) ; wife (a married woman, especially in relation to her spous
+[his hands] Gen 27:16 «יָדָ֑יו»  source: 3027 HNcbdc/Sp3ms = NOUN, masculine or feminine dual, construct  (41 such tokens)
+   verse: וְאֵ֗ת עֹרֹת֙ גְּדָיֵ֣י הָֽעִזִּ֔ים הִלְבִּ֖ישָׁה עַל־יָדָ֑יו וְעַ֖ל חֶלְקַ֥ת צַוָּארָֽיו׃
+   ⇒ יָד / NOUN / masculine or feminine dual, construct / LEX:hand; power; side / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: יָד/NOUN(0.43)=arm
+   parts: יָדָ֑י: from יָד, stem ; ו: possessive suffix
+   R: yadayv (lemma yad) / D: arm ; hand
+[their eyes] Gen 37:25 «עֵֽינֵיהֶם֙»  source: 5869 a HNcbdc/Sp3mp = NOUN, masculine or feminine dual, construct  (15 such tokens)
+   verse: וַיֵּשְׁבוּ֮ לֶֽאֱכׇל־לֶ֒חֶם֒ וַיִּשְׂא֤וּ עֵֽינֵיהֶם֙ וַיִּרְא֔וּ וְהִנֵּה֙ אֹרְחַ֣ת יִשְׁמְעֵאלִ֔ים בָּאָ֖ה 
+   ⇒ עַיִן / NOUN / masculine or feminine dual, construct / LEX:eye; spring / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: עַיִן/NOUN(0.44)=eye
+   parts: עֵֽינֵי: from עַיִן, stem ; הֶם֙: possessive suffix
+   R: enehem (lemma ayin) / D: eye ; spring, fountain
+[our king] 1Sam 8:20 «מַלְכֵּ֙נוּ֙»  source: 4428 HNcmsc/Sp1cp = NOUN, masculine singular, construct  (4 such tokens)
+   verse: וְהָיִ֥ינוּ גַם־אֲנַ֖חְנוּ כְּכׇל־הַגּוֹיִ֑ם וּשְׁפָטָ֤נוּ מַלְכֵּ֙נוּ֙ וְיָצָ֣א לְפָנֵ֔ינוּ וְנִלְחַ֖ם אֶת־מִ
+   ⇒ מֶלֶךְ / NOUN / masculine singular, construct / LEX:king / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: מֶלֶךְ/NOUN(0.47)=king
+   parts: מַלְכֵּ֙: from מֶלֶךְ, stem ; נוּ֙: possessive suffix
+   R: malekenu (lemma melekh) / D: king ; to reign (to rule as a king)
+[my God] Gen 31:30 «אֱלֹהָֽי»  source: 430 HNcmpc/Sp1cs = NOUN, masculine plural, construct  (103 such tokens)
+   verse: וְעַתָּה֙ הָלֹ֣ךְ הָלַ֔כְתָּ כִּֽי־נִכְסֹ֥ף נִכְסַ֖פְתָּה לְבֵ֣ית אָבִ֑יךָ לָ֥מָּה גָנַ֖בְתָּ אֶת־אֱלֹהָֽי׃
+   ⇒ אֱלֹהִים / NOUN / masculine plural, construct / LEX:God; gods / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: אֱלֹהָֽ: from אֱלֹהִים, stem ; י: possessive suffix
+   R: elohay (lemma elohim) / D: a god ; a godlike figure, someone with godlike power or authority (like rulers or judges)
+[to the ground / to the land] Gen 11:31 «אַ֣רְצָה»  source: 776 HNcbsc/Sd = NOUN, masculine or feminine singular, construct  (85 such tokens)
+   verse: וַיִּקַּ֨ח תֶּ֜רַח אֶת־אַבְרָ֣ם בְּנ֗וֹ וְאֶת־ל֤וֹט בֶּן־הָרָן֙ בֶּן־בְּנ֔וֹ וְאֵת֙ שָׂרַ֣י כַּלָּת֔וֹ אֵ֖שֶׁת
+   ⇒ אֶרֶץ / NOUN / masculine or feminine singular, absolute / LEX:earth, land, ground / 0.66 / lexicon / period he-bib / Variety: he-bib.
+   also: אֶרֶץ/NOUN(0.56)=earth, land, gro
+   parts: אַ֣רְצָ: from אֶרֶץ, stem ; ה: directional he
+   R: aretsa (lemma erets) / D: country, land ; territory, district, region
+[to Egypt] Gen 12:10 «מִצְרַ֙יְמָה֙»  source: 4714 HNp/Sd = PROPN,   (28 such tokens)
+   verse: וַיְהִ֥י רָעָ֖ב בָּאָ֑רֶץ וַיֵּ֨רֶד אַבְרָ֤ם מִצְרַ֙יְמָה֙ לָג֣וּר שָׁ֔ם כִּֽי־כָבֵ֥ד הָרָעָ֖ב בָּאָֽרֶץ׃
+   ⇒ מִצְרַיִם / PROPN /  / LEX:Egypt / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: מִצְרַיִם/PROPN(0.44)=Egypt (a country
+   parts: מִצְרַ֙יְמָ: from מִצְרַיִם, stem ; ה֙: directional he
+   R: mitserayema (lemma mitserayim) / D: Egypt (a country in North Africa and West Asia) ; Mizraim, son of Ham and grandson of Noah
+[thither] Gen 14:10 «שָׁ֑מָּה»  source: 8033 HD/Sd = ADV,   (134 such tokens)
+   verse: וְעֵ֣מֶק הַשִּׂדִּ֗ים בֶּֽאֱרֹ֤ת בֶּאֱרֹת֙ חֵמָ֔ר וַיָּנֻ֛סוּ מֶֽלֶךְ־סְדֹ֥ם וַעֲמֹרָ֖ה וַיִּפְּלוּ־שָׁ֑מָּה ו
+   ⇒ שָׁם / ADV /  / LEX:there / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: שָׁמָּה/ADV(0.43)=there
+   parts: שָׁ֑מָּ: from שָׁם, stem ; ה: directional he
+   R: shama (lemma sham) / D: there (somewhere at some distance from the speaker) ; a name
+[to the house] Gen 19:10 «הַבָּ֑יְתָה»  source: d/1004 b HTd/Ncmsa/Sd = NOUN, masculine singular, absolute, with the article  (19 such tokens)
+   verse: וַיִּשְׁלְח֤וּ הָֽאֲנָשִׁים֙ אֶת־יָדָ֔ם וַיָּבִ֧יאוּ אֶת־ל֛וֹט אֲלֵיהֶ֖ם הַבָּ֑יְתָה וְאֶת־הַדֶּ֖לֶת סָגָֽרוּ׃
+   ⇒ בַּיִת / NOUN / masculine singular, absolute, with the article / LEX:house, household / 0.7 / lexicon / period he-bib / Variety: he-bib.
+   parts: הַ: the ; בָּ֑יְתָ: from בַּיִת, stem ; ה: directional he
+   R: habayeta (lemma bayit) / D: house ; school
+[westward / to the sea] Gen 28:14 «יָ֥מָּה»  source: 3220 HNcmsa/Sd = NOUN, masculine singular, absolute  (48 such tokens)
+   verse: וְהָיָ֤ה זַרְעֲךָ֙ כַּעֲפַ֣ר הָאָ֔רֶץ וּפָרַצְתָּ֛ יָ֥מָּה וָקֵ֖דְמָה וְצָפֹ֣נָה וָנֶ֑גְבָּה וְנִבְרְכ֥וּ בְךָ
+   ⇒ יָם / NOUN / masculine singular, absolute / LEX:sea / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: יָם/NOUN(0.51)=sea
+   parts: יָ֥מָּ: from יָם, stem ; ה: directional he
+   R: yama (lemma yam) / D: sea ; west (the direction opposite to that of the earth's rotation, specifically 270°)
+[paragogic nun (Gen 3:4)] Gen 3:3 «תְּמֻתֽוּן»  source: 4191 HVqi2mp/Sn = VERB, Qal, imperfect (yiqtol), 2nd person masculine plural  (3 such tokens)
+   verse: וּמִפְּרִ֣י הָעֵץ֮ אֲשֶׁ֣ר בְּתוֹךְ־הַגָּן֒ אָמַ֣ר אֱלֹהִ֗ים לֹ֤א תֹֽאכְלוּ֙ מִמֶּ֔נּוּ וְלֹ֥א תִגְּע֖וּ בּ֑וֹ
+   ⇒ מוּת / VERB / Qal, imperfect (yiqtol), 2nd person masculine plural / INFL:You (plural) will die / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: תְּ: imperfect preformative, second person masculine plural ; מֻת: Qal verbal base ; וּ: masculine plural ending ; ן: paragogic nun
+   R: temutun (lemma mut) / D: bare infinitive (infinitive construct or gerund) of מֵת (mét) ; Related to death.
+[paragogic nun] Deut 8:3 «יָדְע֖וּן»  source: 3045 HVqp3cp/Sn = VERB, Qal, perfect (qatal), 3rd person common gender plural  (6 such tokens)
+   verse: וַֽיְעַנְּךָ֮ וַיַּרְעִבֶ֒ךָ֒ וַיַּאֲכִֽלְךָ֤ אֶת־הַמָּן֙ אֲשֶׁ֣ר לֹא־יָדַ֔עְתָּ וְלֹ֥א יָדְע֖וּן אֲבֹתֶ֑יךָ ל
+   ⇒ יָדַע / VERB / Qal, perfect (qatal), 3rd person common gender plural / INFL:They knew / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: יָדְע: Qal verbal base ; וּ: perfect third person common plural ending ; ן: paragogic nun
+   R: yadeʿun (lemma yada) / D: To know (a fact). ; To know how (to do something).
+[cohortative] Gen 45:28 «אֵֽלְכָ֥ה»  source: 3212 HVqh1cs = VERB, Qal, cohortative, 1st person common gender singular  (6 such tokens)
+   verse: וַיֹּ֙אמֶר֙ יִשְׂרָאֵ֔ל רַ֛ב עוֹד־יוֹסֵ֥ף בְּנִ֖י חָ֑י אֵֽלְכָ֥ה וְאֶרְאֶ֖נּוּ בְּטֶ֥רֶם אָמֽוּת׃
+   ⇒ יָלַךְ / VERB / Qal, cohortative, 1st person common gender singular / INFL:Let me go / 0.64 / lexicon / period he-bib / Variety: he-bib.
+   also: יָלַךְ/VERB(0.57)=to go, walk, הָלַךְ/VERB(0.45)=to walk, go, esp
+   parts: אֵ: imperfect preformative, first person common singular ; לְכָה: Qal verbal base
+   R: elekha (lemma yalakh) / D: ∅
+[cohortative plural] Gen 22:5 «נֵלְכָ֖ה»  source: 3212 HVqh1cp = VERB, Qal, cohortative, 1st person common gender plural  (14 such tokens)
+   verse: וַיֹּ֨אמֶר אַבְרָהָ֜ם אֶל־נְעָרָ֗יו שְׁבוּ־לָכֶ֥ם פֹּה֙ עִֽם־הַחֲמ֔וֹר וַאֲנִ֣י וְהַנַּ֔עַר נֵלְכָ֖ה עַד־כֹּ֑ה
+   ⇒ יָלַךְ / VERB / Qal, cohortative, 1st person common gender plural / INFL:Let us go / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: הָלַךְ/VERB(0.44)=to walk, go, esp
+   parts: נֵ: imperfect preformative, first person common plural ; לְכָה: Qal verbal base
+   R: nelekha (lemma yalakh) / D: ∅
+[cohortative] Ps 39:2 «אֶ֥שְׁמְרָ֣ה»  source: 8104 HVqh1cs = VERB, Qal, cohortative, 1st person common gender singular  (3 such tokens)
+   verse: אָמַ֗רְתִּי אֶ֥שְׁמְרָ֣ה דְרָכַי֮ מֵחֲט֢וֹא בִלְשׁ֫וֹנִ֥י אֶשְׁמְרָ֥ה לְפִ֥י מַחְס֑וֹם בְּעֹ֖ד רָשָׁ֣ע לְנֶגְד
+   ⇒ שָׁמַר / VERB / Qal, cohortative, 1st person common gender singular / INFL:Let me keep / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: אֶ: imperfect preformative, first person common singular ; שְׁמְרָה: Qal verbal base
+   R: eshemera (lemma shamar) / D: to guard ; to keep
+[energic nun (Ps 72:15)] Ps 72:15 «יְבָרְכֶֽנְהוּ»  source: 1288 HVpj3ms/Sp3ms = VERB, Piʿel, jussive, 3rd person masculine singular
+   verse: וִיחִ֗י וְיִתֶּן־לוֹ֮ מִזְּהַ֢ב שְׁ֫בָ֥א וְיִתְפַּלֵּ֣ל בַּעֲד֣וֹ תָמִ֑יד כׇּל־הַ֝יּ֗וֹם יְבָרְכֶֽנְהוּ׃
+   ⇒ בָרַךְ / VERB / Piʿel, jussive, 3rd person masculine singular / INFL:May he kneel him / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: יְ: imperfect preformative, third person masculine singular ; בָרְכֶ: Piʿel verbal base ; נְהוּ: object suffix
+   R: yevarekhenehu (lemma varakh) / D: kneeled ; knee
+[energic nun + suffix] Gen 13:15 «אֶתְּנֶ֑נָּה»  source: 5414 HVqi1cs/Sp3fs = VERB, Qal, imperfect (yiqtol), 1st person common gender singular  (10 such tokens)
+   verse: כִּ֧י אֶת־כׇּל־הָאָ֛רֶץ אֲשֶׁר־אַתָּ֥ה רֹאֶ֖ה לְךָ֣ אֶתְּנֶ֑נָּה וּֽלְזַרְעֲךָ֖ עַד־עוֹלָֽם׃
+   ⇒ נָתַן / VERB / Qal, imperfect (yiqtol), 1st person common gender singular / INFL:I will give her / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: אֶ: imperfect preformative, first person common singular ; תְּנֶ: Qal verbal base ; נָּה: object suffix
+   R: etenena (lemma natan) / D: to give ; to allow, permit, let
+[house of] Gen 12:15 «בֵּ֥ית»  source: 1004 b HNcmsc = NOUN, masculine singular, construct  (786 such tokens)
+   verse: וַיִּרְא֤וּ אֹתָהּ֙ שָׂרֵ֣י פַרְעֹ֔ה וַיְהַֽלְל֥וּ אֹתָ֖הּ אֶל־פַּרְעֹ֑ה וַתֻּקַּ֥ח הָאִשָּׁ֖ה בֵּ֥ית פַּרְעֹֽ
+   ⇒ בַּיִת / NOUN / masculine singular, construct / LEX:house, household / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: בֵּית־אֵל/PROPN(0.52)=Beth-el, בֵּית לֶחֶם/PROPN(0.51)=Bethlehem, בֵּית חוֹרוֹן/PROPN(0.51)=Beth-horon
+   R: bet (lemma bayit) / D: house ; school
+[sons of] Gen 6:2 «בְנֵי»  source: 1121 a HNcmpc = NOUN, masculine plural, construct  (1566 such tokens)
+   verse: וַיִּרְא֤וּ בְנֵי־הָֽאֱלֹהִים֙ אֶת־בְּנ֣וֹת הָֽאָדָ֔ם כִּ֥י טֹבֹ֖ת הֵ֑נָּה וַיִּקְח֤וּ לָהֶם֙ נָשִׁ֔ים מִכֹּ֖ל
+   ⇒ בֵּן / NOUN / masculine plural, construct / LEX:son; child; member of a class / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: בֵּן/NOUN(0.51)=son
+   R: vene (lemma ben) / D: son ; A direct male descendant.
+[kings of] Gen 17:16 «מַלְכֵ֥י»  source: 4428 HNcmpc = NOUN, masculine plural, construct  (110 such tokens)
+   verse: וּבֵרַכְתִּ֣י אֹתָ֔הּ וְגַ֨ם נָתַ֧תִּי מִמֶּ֛נָּה לְךָ֖ בֵּ֑ן וּבֵֽרַכְתִּ֙יהָ֙ וְהָֽיְתָ֣ה לְגוֹיִ֔ם מַלְכֵ֥י
+   ⇒ מֶלֶךְ / NOUN / masculine plural, construct / LEX:king / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: מֶלֶךְ/NOUN(0.43)=king
+   R: malekhe (lemma melekh) / D: king ; to reign (to rule as a king)
+[my king] 2Sam 19:44 «מַלְכִּ֑י»  source: 4428 HNcmsc/Sp1cs = NOUN, masculine singular, construct  (7 such tokens)
+   verse: וַיַּ֣עַן אִֽישׁ־יִשְׂרָאֵל֩ אֶת־אִ֨ישׁ יְהוּדָ֜ה וַיֹּ֗אמֶר עֶשֶׂר־יָד֨וֹת לִ֣י בַמֶּ֘לֶךְ֮ וְגַם־בְּדָוִד֮ א
+   ⇒ מֶלֶךְ / NOUN / masculine singular, construct / LEX:king / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: מַלְכִּי־צֶדֶק/PROPN(0.53)=Melchizedek, מֶלֶךְ/NOUN(0.45)=king
+   parts: מַלְכִּ֑: from מֶלֶךְ, stem ; י: possessive suffix
+   R: maleki (lemma melekh) / D: king ; to reign (to rule as a king)
+[word of (devar)] Gen 12:17 «דְּבַ֥ר»  source: 1697 HNcmsc = NOUN, masculine singular, construct  (273 such tokens)
+   verse: וַיְנַגַּ֨ע יְהֹוָ֧ה ׀ אֶת־פַּרְעֹ֛ה נְגָעִ֥ים גְּדֹלִ֖ים וְאֶת־בֵּית֑וֹ עַל־דְּבַ֥ר שָׂרַ֖י אֵ֥שֶׁת אַבְרָֽם׃
+   ⇒ דָּבָר / NOUN / masculine singular, construct / LEX:word, speech, thing, matter / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: דָּבָר/NOUN(0.43)=thing
+   R: devar (lemma davar) / D: thing ; speech
+[land of] Gen 2:11 «אֶ֣רֶץ»  source: 776 HNcbsc = NOUN, masculine or feminine singular, construct  (244 such tokens)
+   verse: שֵׁ֥ם הָֽאֶחָ֖ד פִּישׁ֑וֹן ה֣וּא הַסֹּבֵ֗ב אֵ֚ת כׇּל־אֶ֣רֶץ הַֽחֲוִילָ֔ה אֲשֶׁר־שָׁ֖ם הַזָּהָֽב׃
+   ⇒ אֶרֶץ / NOUN / masculine or feminine singular, construct / LEX:earth, land, ground / 0.64 / lexicon / period he-bib / Variety: he-bib.
+   also: אֶרֶץ/NOUN(0.58)=earth, land, gro, אֶרֶץ/NOUN(0.43)=country, land, אֶרֶץ/NOUN(0.43)=country, land
+   R: erets / D: country, land ; territory, district, region
+[wife of] Gen 11:29 «אֵֽשֶׁת»  source: 802 HNcfsc = NOUN, feminine singular, construct  (97 such tokens)
+   verse: וַיִּקַּ֨ח אַבְרָ֧ם וְנָח֛וֹר לָהֶ֖ם נָשִׁ֑ים שֵׁ֤ם אֵֽשֶׁת־אַבְרָם֙ שָׂרָ֔י וְשֵׁ֤ם אֵֽשֶׁת־נָחוֹר֙ מִלְכָּ֔ה
+   ⇒ אִשָּׁה / NOUN / feminine singular, construct / LEX:woman, wife / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: אִשָּׁה/NOUN(0.43)=woman (an adult , אשה/NOUN(0.43)
+   R: eshet (lemma isha) / D: woman (an adult female human) ; wife (a married woman, especially in relation to her spous
+[queen of] 1Kgs 10:4 «מַֽלְכַּת»  source: 4436 HNcfsc = NOUN, feminine singular, construct  (4 such tokens)
+   verse: וַתֵּ֙רֶא֙ מַֽלְכַּת־שְׁבָ֔א אֵ֖ת כׇּל־חׇכְמַ֣ת שְׁלֹמֹ֑ה וְהַבַּ֖יִת אֲשֶׁ֥ר בָּנָֽה׃
+   ⇒ מַלְכָּה / NOUN / feminine singular, construct / LEX:queen / 0.78 / lexicon / period he-bib / Variety: he-bib.
+   also: מַלְכָּה/NOUN(0.55)=queen (female mo
+   R: malekat (lemma maleka) / D: queen (female monarch) ; queen
+[days of] Gen 3:14 «יְמֵ֥י»  source: 3117 HNcmpc = NOUN, masculine plural, construct  (130 such tokens)
+   verse: וַיֹּ֩אמֶר֩ יְהֹוָ֨ה אֱלֹהִ֥ים ׀ אֶֽל־הַנָּחָשׁ֮ כִּ֣י עָשִׂ֣יתָ זֹּאת֒ אָר֤וּר אַתָּה֙ מִכׇּל־הַבְּהֵמָ֔ה וּמ
+   ⇒ יוֹם / NOUN / masculine plural, construct / LEX:day; time / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: יוֹם/NOUN(0.43)=Day: the period 
+   R: yeme (lemma yom) / D: Day: the period between dawn and dusk. ; A day: a unit of time corresponding to the period
+[year of] Gen 41:50 «שְׁנַ֣ת»  source: 8141 HNcfsc = NOUN, feminine singular, construct  (36 such tokens)
+   verse: וּלְיוֹסֵ֤ף יֻלַּד֙ שְׁנֵ֣י בָנִ֔ים בְּטֶ֥רֶם תָּב֖וֹא שְׁנַ֣ת הָרָעָ֑ב אֲשֶׁ֤ר יָֽלְדָה־לּוֹ֙ אָֽסְנַ֔ת בַּת־
+   ⇒ שָׁנֶה / NOUN / feminine singular, construct / LEX:year / 0.67 / lexicon / period he-bib / Variety: he-bib.
+   also: שֵׁנָה/NOUN(0.53)=sleep, שְׁנָת/NOUN(0.51)=sleep, שָׁנָה/NOUN(0.45)=year (the time i
+   R: shenat (lemma shane) / D: year (the time it takes for the Earth to complete one revolution around the Sun) ; year (t
+[eyes of (dual construct)] Gen 3:7 «עֵינֵ֣י»  source: 5869 a HNcbdc = NOUN, masculine or feminine dual, construct  (24 such tokens)
+   verse: וַתִּפָּקַ֙חְנָה֙ עֵינֵ֣י שְׁנֵיהֶ֔ם וַיֵּ֣דְע֔וּ כִּ֥י עֵֽירֻמִּ֖ם הֵ֑ם וַֽיִּתְפְּרוּ֙ עֲלֵ֣ה תְאֵנָ֔ה וַיַּ
+   ⇒ עַיִן / NOUN / masculine or feminine dual, construct / LEX:eye; spring / 0.7 / lexicon / period he-bib / Variety: he-bib.
+   also: עַיִן/NOUN(0.44)=eye
+   R: ene (lemma ayin) / D: eye ; spring, fountain
+[waters of] Gen 7:7 «מֵ֥י»  source: 4325 HNcmpc = NOUN, masculine plural, construct  (54 such tokens)
+   verse: וַיָּ֣בֹא נֹ֗חַ וּ֠בָנָ֠יו וְאִשְׁתּ֧וֹ וּנְשֵֽׁי־בָנָ֛יו אִתּ֖וֹ אֶל־הַתֵּבָ֑ה מִפְּנֵ֖י מֵ֥י הַמַּבּֽוּל׃
+   ⇒ מַיִם / NOUN / masculine plural, construct / LEX:water / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: מֵי זָהָב/PROPN(0.51)=Mezahab, מַיִם/NOUN(0.44)=(uncountable) wa
+   R: me (lemma mayim) / D: (uncountable) water
+[men of] Gen 6:4 «אַנְשֵׁ֥י»  source: 376 HNcmpc = NOUN, masculine plural, construct  (170 such tokens)
+   verse: הַנְּפִלִ֞ים הָי֣וּ בָאָ֘רֶץ֮ בַּיָּמִ֣ים הָהֵם֒ וְגַ֣ם אַֽחֲרֵי־כֵ֗ן אֲשֶׁ֨ר יָבֹ֜אוּ בְּנֵ֤י הָֽאֱלֹהִים֙ אֶ
+   ⇒ אִישׁ / NOUN / masculine plural, construct / LEX:man, husband; each / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: אִישׁ/NOUN(0.43)=A man, adult mal
+   R: aneshe (lemma ish) / D: A man, adult male human being. ; husband (a man in a marriage or marital relationship, esp
+[hands (dual)] Gen 34:21 «יָדַ֖יִם»  source: 3027 HNcbda = NOUN, masculine or feminine dual, absolute  (22 such tokens)
+   verse: הָאֲנָשִׁ֨ים הָאֵ֜לֶּה שְֽׁלֵמִ֧ים הֵ֣ם אִתָּ֗נוּ וְיֵשְׁב֤וּ בָאָ֙רֶץ֙ וְיִסְחֲר֣וּ אֹתָ֔הּ וְהָאָ֛רֶץ הִנֵּ֥
+   ⇒ יָד / NOUN / masculine or feminine dual, absolute / LEX:hand; power; side / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: יָד/NOUN(0.46)=arm, יָדַיִם/NOUN(0.44)=defective spelli
+   R: yadayim (lemma yad) / D: arm ; hand
+[water] Gen 1:6 «מַ֖יִם»  source: 4325 HNcmpa = NOUN, masculine plural, absolute  (244 such tokens)
+   verse: וַיֹּ֣אמֶר אֱלֹהִ֔ים יְהִ֥י רָקִ֖יעַ בְּת֣וֹךְ הַמָּ֑יִם וִיהִ֣י מַבְדִּ֔יל בֵּ֥ין מַ֖יִם לָמָֽיִם׃
+   ⇒ מַיִם / NOUN / masculine plural, absolute / LEX:water / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: מִשְׂרְפוֹת מַיִם/PROPN(0.51)=Misrephoth-mayim, מַיִם/NOUN(0.43)=(uncountable) wa
+   R: mayim / D: (uncountable) water
+[heavens] Gen 1:8 «שָׁמָ֑יִם»  source: 8064 HNcmpa = NOUN, masculine plural, absolute  (90 such tokens)
+   verse: וַיִּקְרָ֧א אֱלֹהִ֛ים לָֽרָקִ֖יעַ שָׁמָ֑יִם וַֽיְהִי־עֶ֥רֶב וַֽיְהִי־בֹ֖קֶר י֥וֹם שֵׁנִֽי׃
+   ⇒ שָׁמַיִם / NOUN / masculine plural, absolute / LEX:heavens, sky / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   R: shamayim / D: sky, skies, heavens, heaven
+[feet] Exod 23:14 «רְגָלִ֔ים»  source: 7272 HNcfpa = NOUN, feminine plural, absolute  (11 such tokens)
+   verse: שָׁלֹ֣שׁ רְגָלִ֔ים תָּחֹ֥ג לִ֖י בַּשָּׁנָֽה׃
+   ⇒ רֶגֶל / NOUN / feminine plural, absolute / LEX:foot, three times / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: רֶגֶל/NOUN(0.47)=foot, leg
+   R: regalim (lemma regel) / D: foot, leg ; leg (as of a table or chair)
+[ears] Isa 42:20 «אׇזְנַ֖יִם»  source: 241 HNcfda = NOUN, feminine dual, absolute  (7 such tokens)
+   verse: רָא֥וֹת רַבּ֖וֹת וְלֹ֣א תִשְׁמֹ֑ר פָּק֥וֹחַ אׇזְנַ֖יִם וְלֹ֥א יִשְׁמָֽע׃
+   ⇒ אֹזֶן / NOUN / feminine dual, absolute / LEX:ear, organ of hearing, open ears of / 0.68 / lexicon / period he-bib / Variety: he-bib.
+   also: אֹזֶן/NOUN(0.45)=ear, אֹזֶן/NOUN(0.45)=ear
+   R: azenayim (lemma ozen) / D: ear
+[two days] Exod 16:29 «יוֹמָ֑יִם»  source: 3117 HNcmda = NOUN, masculine dual, absolute  (3 such tokens)
+   verse: רְא֗וּ כִּֽי־יְהֹוָה֮ נָתַ֣ן לָכֶ֣ם הַשַּׁבָּת֒ עַל־כֵּ֠ן ה֣וּא נֹתֵ֥ן לָכֶ֛ם בַּיּ֥וֹם הַשִּׁשִּׁ֖י לֶ֣חֶם יו
+   ⇒ יוֹם / NOUN / masculine dual, absolute / LEX:day; time / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   R: yomayim (lemma yom) / D: Day: the period between dawn and dusk. ; A day: a unit of time corresponding to the period
+[two years] Gen 11:10 «שְׁנָתַ֖יִם»  source: 8141 HAcfda = NUM, cardinal number, feminine dual, absolute  (11 such tokens)
+   verse: אֵ֚לֶּה תּוֹלְדֹ֣ת שֵׁ֔ם שֵׁ֚ם בֶּן־מְאַ֣ת שָׁנָ֔ה וַיּ֖וֹלֶד אֶת־אַרְפַּכְשָׁ֑ד שְׁנָתַ֖יִם אַחַ֥ר הַמַּבּֽוּ
+   ⇒ שָׁנֶה / NOUN / feminine dual, absolute / LEX:year / 0.64 / lexicon / period he-bib / Variety: he-bib.
+   also: שָׁנֶה/NUM(0.56)=year, שָׁנָה/NOUN(0.5)=year (the time i
+   R: shenatayim (lemma shane) / D: year (the time it takes for the Earth to complete one revolution around the Sun) ; year (t
+!! no token for: bare=אלפים code=d  # two thousand
+[two hundred] Gen 11:23 «מָאתַ֣יִם»  source: 3967 HAcbda = NUM, cardinal number, masculine or feminine dual, absolute  (46 such tokens)
+   verse: וַיְחִ֣י שְׂר֗וּג אַחֲרֵ֛י הוֹלִיד֥וֹ אֶת־נָח֖וֹר מָאתַ֣יִם שָׁנָ֑ה וַיּ֥וֹלֶד בָּנִ֖ים וּבָנֽוֹת׃
+   ⇒ מֵאָה / NUM / cardinal number, masculine or feminine dual, absolute / LEX:hundred / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: מֵאָה/NUM(0.43)=hundred, one hun, מָאתַיִם/NUM(0.43)=Two hundred (200
+   R: maʾtayim (lemma meʾa) / D: hundred, one hundred ; century
+[fathers] Exod 34:7 «אָב֗וֹת»  source: 1 HNcmpa = NOUN, masculine plural, absolute  (29 such tokens)
+   verse: נֹצֵ֥ר חֶ֙סֶד֙ לָאֲלָפִ֔ים נֹשֵׂ֥א עָוֺ֛ן וָפֶ֖שַׁע וְחַטָּאָ֑ה וְנַקֵּה֙ לֹ֣א יְנַקֶּ֔ה פֹּקֵ֣ד ׀ עֲוֺ֣ן אָב֗
+   ⇒ אָב / NOUN / masculine plural, absolute / LEX:father / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: אָב/NOUN(0.44)=father (a male p, אַבָּא/NOUN(0.43)=father (a male p, אב m/NOUN(0.43)
+   R: avot (lemma av) / D: father (a male parent, especially of a human; a male who parents a child (which he has sir
+[our fathers] Gen 46:34 «אֲבֹתֵ֑ינוּ»  source: 1 HNcmpc/Sp1cp = NOUN, masculine plural, construct  (24 such tokens)
+   verse: וַאֲמַרְתֶּ֗ם אַנְשֵׁ֨י מִקְנֶ֜ה הָי֤וּ עֲבָדֶ֙יךָ֙ מִנְּעוּרֵ֣ינוּ וְעַד־עַ֔תָּה גַּם־אֲנַ֖חְנוּ גַּם־אֲבֹתֵ֑
+   ⇒ אָב / NOUN / masculine plural, construct / LEX:father / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: אֲבֹתֵ֑י: from אָב, stem ; נוּ: possessive suffix
+   R: avotenu (lemma av) / D: father (a male parent, especially of a human; a male who parents a child (which he has sir
+[men] Gen 12:20 «אֲנָשִׁ֑ים»  source: 376 HNcmpa = NOUN, masculine plural, absolute  (109 such tokens)
+   verse: וַיְצַ֥ו עָלָ֛יו פַּרְעֹ֖ה אֲנָשִׁ֑ים וַֽיְשַׁלְּח֥וּ אֹת֛וֹ וְאֶת־אִשְׁתּ֖וֹ וְאֶת־כׇּל־אֲשֶׁר־לֽוֹ׃
+   ⇒ אִישׁ / NOUN / masculine plural, absolute / LEX:man, husband; each / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: אִישׁ/NOUN(0.43)=A man, adult mal, אֱנָשׁ/NOUN(0.51)=man, mankind, נָשִׁים/NOUN(0.43)=women
+   R: anashim (lemma ish) / D: A man, adult male human being. ; husband (a man in a marriage or marital relationship, esp
+[women] Gen 4:19 «נָשִׁ֑ים»  source: 802 HNcfpa = NOUN, feminine plural, absolute  (55 such tokens)
+   verse: וַיִּֽקַּֽח־ל֥וֹ לֶ֖מֶךְ שְׁתֵּ֣י נָשִׁ֑ים שֵׁ֤ם הָֽאַחַת֙ עָדָ֔ה וְשֵׁ֥ם הַשֵּׁנִ֖ית צִלָּֽה׃
+   ⇒ אִשָּׁה / NOUN / feminine plural, absolute / LEX:woman, wife / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: אִשָּׁה/NOUN(0.44)=woman (an adult , נָשִׁים/NOUN(0.43)=women
+   R: nashim (lemma isha) / D: woman (an adult female human) ; wife (a married woman, especially in relation to her spous
+[houses] Exod 1:21 «בָּתִּֽים»  source: 1004 b HNcmpa = NOUN, masculine plural, absolute  (22 such tokens)
+   verse: וַיְהִ֕י כִּֽי־יָרְא֥וּ הַֽמְיַלְּדֹ֖ת אֶת־הָאֱלֹהִ֑ים וַיַּ֥עַשׂ לָהֶ֖ם בָּתִּֽים׃
+   ⇒ בַּיִת / NOUN / masculine plural, absolute / LEX:house, household / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: בַּיִת/NOUN(0.47)=house
+   R: batim (lemma bayit) / D: house ; school
+[days] Gen 1:10 «יַמִּ֑ים»  source: 3220 HNcmpa = NOUN, masculine plural, absolute  (291 such tokens)
+   verse: וַיִּקְרָ֨א אֱלֹהִ֤ים ׀ לַיַּבָּשָׁה֙ אֶ֔רֶץ וּלְמִקְוֵ֥ה הַמַּ֖יִם קָרָ֣א יַמִּ֑ים וַיַּ֥רְא אֱלֹהִ֖ים כִּי־ט
+   ⇒ יָם / NOUN / masculine plural, absolute / LEX:sea / 0.7 / lexicon / period he-bib / Variety: he-bib.
+   also: יָם/NOUN(0.45)=sea
+   R: yamim (lemma yam) / D: sea ; west (the direction opposite to that of the earth's rotation, specifically 270°)
+[cities] Num 32:24 «עָרִים֙»  source: 5892 b HNcfpa = NOUN, feminine plural, absolute  (77 such tokens)
+   verse: בְּנֽוּ־לָכֶ֤ם עָרִים֙ לְטַפְּכֶ֔ם וּגְדֵרֹ֖ת לְצֹנַאֲכֶ֑ם וְהַיֹּצֵ֥א מִפִּיכֶ֖ם תַּעֲשֽׂוּ׃
+   ⇒ עִיר / NOUN / feminine plural, absolute / LEX:city, town / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: קִרְיַת יְעָרִים/PROPN(0.51)=Kirjath, עִיר/NOUN(0.44)=city, עָר/NOUN(0.43)=laurel (plant)
+   R: arim (lemma ir) / D: city ; donkey foal
+[sons] Gen 3:16 «בָנִ֑ים»  source: 1121 a HNcmpa = NOUN, masculine plural, absolute  (146 such tokens)
+   verse: אֶֽל־הָאִשָּׁ֣ה אָמַ֗ר הַרְבָּ֤ה אַרְבֶּה֙ עִצְּבוֹנֵ֣ךְ וְהֵֽרֹנֵ֔ךְ בְּעֶ֖צֶב תֵּֽלְדִ֣י בָנִ֑ים וְאֶל־אִישֵ
+   ⇒ בֵּן / NOUN / masculine plural, absolute / LEX:son; child; member of a class / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   R: vanim (lemma ben) / D: son ; A direct male descendant.
+[daughters] Gen 19:8 «בָנ֗וֹת»  source: 1323 HNcfpa = NOUN, feminine plural, absolute  (23 such tokens)
+   verse: הִנֵּה־נָ֨א לִ֜י שְׁתֵּ֣י בָנ֗וֹת אֲשֶׁ֤ר לֹֽא־יָדְעוּ֙ אִ֔ישׁ אוֹצִֽיאָה־נָּ֤א אֶתְהֶן֙ אֲלֵיכֶ֔ם וַעֲשׂ֣וּ ל
+   ⇒ בַּת / NOUN / feminine plural, absolute / LEX:daughter / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   R: vanot (lemma bat) / D: daughter ; a direct female descendant
+[brothers] Gen 13:8 «אַחִ֖ים»  source: 251 HNcmpa = NOUN, masculine plural, absolute  (14 such tokens)
+   verse: וַיֹּ֨אמֶר אַבְרָ֜ם אֶל־ל֗וֹט אַל־נָ֨א תְהִ֤י מְרִיבָה֙ בֵּינִ֣י וּבֵינֶ֔ךָ וּבֵ֥ין רֹעַ֖י וּבֵ֣ין רֹעֶ֑יךָ כִ
+   ⇒ אָח / NOUN / masculine plural, absolute / LEX:brother; kinsman / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: אָח/NOUN(0.45)=brother (son of , אח m/NOUN(0.44)
+   R: aḥim (lemma aḥ) / D: brother (son of the same parents as another person) ; brother, fellow, peer
+[heads] Gen 2:10 «רָאשִֽׁים»  source: 7218 a HNcmpa = NOUN, masculine plural, absolute  (20 such tokens)
+   verse: וְנָהָר֙ יֹצֵ֣א מֵעֵ֔דֶן לְהַשְׁק֖וֹת אֶת־הַגָּ֑ן וּמִשָּׁם֙ יִפָּרֵ֔ד וְהָיָ֖ה לְאַרְבָּעָ֥ה רָאשִֽׁים׃
+   ⇒ רֹאשׁ / NOUN / masculine plural, absolute / LEX:head; top; chief / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: רוּשׁ/VERB(0.52)=be in want, poor, רֹאשׁ/NOUN(0.45)=head
+   R: raʾshim (lemma roʾsh) / D: head ; head, chief, leader, chairperson
+[vessels] Exod 22:6 «כֵלִים֙»  source: 3627 HNcmpa = NOUN, masculine plural, absolute  (7 such tokens)
+   verse: כִּֽי־יִתֵּן֩ אִ֨ישׁ אֶל־רֵעֵ֜הוּ כֶּ֤סֶף אֽוֹ־כֵלִים֙ לִשְׁמֹ֔ר וְגֻנַּ֖ב מִבֵּ֣ית הָאִ֑ישׁ אִם־יִמָּצֵ֥א הַג
+   ⇒ כְּלִי / NOUN / masculine plural, absolute / LEX:article, utensil, vessel / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   R: khelim (lemma keli) / D: armory; tool; utensil; instrument ; dishes
+[mouths] Judg 3:16 «פֵי֖וֹת»  source: 6366 HNcmpa = NOUN, masculine plural, absolute  (2 such tokens)
+   verse: וַיַּ֩עַשׂ֩ ל֨וֹ אֵה֜וּד חֶ֗רֶב וְלָ֛הּ שְׁנֵ֥י פֵי֖וֹת גֹּ֣מֶד אׇרְכָּ֑הּ וַיַּחְגֹּ֤ר אוֹתָהּ֙ מִתַּ֣חַת לְמ
+   ⇒ פֵּיָה / NOUN / masculine plural, absolute / LEX:mouth, edge, extremity / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   R: fevot (lemma peya) / D: ∅
+[names] Gen 2:20 «שֵׁמ֗וֹת»  source: 8034 HNcmpa = NOUN, masculine plural, absolute  (14 such tokens)
+   verse: וַיִּקְרָ֨א הָֽאָדָ֜ם שֵׁמ֗וֹת לְכׇל־הַבְּהֵמָה֙ וּלְע֣וֹף הַשָּׁמַ֔יִם וּלְכֹ֖ל חַיַּ֣ת הַשָּׂדֶ֑ה וּלְאָדָ֕ם
+   ⇒ שֵׁם / NOUN / masculine plural, absolute / LEX:name; reputation / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: שֵׁם/NOUN(0.46)=a name
+   R: shemot (lemma shem) / D: a name ; a first name
+[tents] Gen 25:27 «אֹהָלִֽים»  source: 168 HNcmpa = NOUN, masculine plural, absolute  (4 such tokens)
+   verse: וַֽיִּגְדְּלוּ֙ הַנְּעָרִ֔ים וַיְהִ֣י עֵשָׂ֗ו אִ֛ישׁ יֹדֵ֥עַ צַ֖יִד אִ֣ישׁ שָׂדֶ֑ה וְיַעֲקֹב֙ אִ֣ישׁ תָּ֔ם יֹש
+   ⇒ אֹהֶל / NOUN / masculine plural, absolute / LEX:tent, dwelling, habitation / 0.66 / lexicon / period he-bib / Variety: he-bib.
+   also: אֹהֶל/NOUN(0.52)=tent (a pavilion
+   R: ohalim (lemma ohel) / D: tent (a pavilion or portable lodge consisting of skins, canvas, or some strong cloth, stre
+[holy things] Exod 29:37 «קׇֽדָשִׁ֔ים»  source: 6944 HNcmpa = NOUN, masculine plural, absolute  (41 such tokens)
+   verse: שִׁבְעַ֣ת יָמִ֗ים תְּכַפֵּר֙ עַל־הַמִּזְבֵּ֔חַ וְקִדַּשְׁתָּ֖ אֹת֑וֹ וְהָיָ֤ה הַמִּזְבֵּ֙חַ֙ קֹ֣דֶשׁ קׇֽדָשִׁ֔
+   ⇒ קֹדֶשׁ / NOUN / masculine plural, absolute / LEX:holiness; holy thing, sanctuary / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: קׇדָשִׁים/NOUN(0.44)=Kodashim, an ord
+   R: kadashim (lemma kodesh) / D: sanctity, holiness ; to be sanctified
+[months] Gen 38:24 «חֳדָשִׁ֗ים»  source: 2320 HNcmpa = NOUN, masculine plural, absolute  (39 such tokens)
+   verse: וַיְהִ֣י ׀ כְּמִשְׁלֹ֣שׁ חֳדָשִׁ֗ים וַיֻּגַּ֨ד לִֽיהוּדָ֤ה לֵאמֹר֙ זָֽנְתָה֙ תָּמָ֣ר כַּלָּתֶ֔ךָ וְגַ֛ם הִנֵּ֥
+   ⇒ חֹדֶשׁ / NOUN / masculine plural, absolute / LEX:newness, new moon, month / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: חֹדֶשׁ/NOUN(0.45)=month, חָדָשׁ/NOUN(0.44)=grain from a new, חֳדָשִׁים/NOUN(0.43)=defective spelli
+   R: ḥodashim (lemma ḥodesh) / D: month ; new moon, the day of the new moon
+[kings (segolate plural)] Gen 14:9 «מְלָכִ֖ים»  source: 4428 HNcmpa = NOUN, masculine plural, absolute  (39 such tokens)
+   verse: אֵ֣ת כְּדׇרְלָעֹ֜מֶר מֶ֣לֶךְ עֵילָ֗ם וְתִדְעָל֙ מֶ֣לֶךְ גּוֹיִ֔ם וְאַמְרָפֶל֙ מֶ֣לֶךְ שִׁנְעָ֔ר וְאַרְי֖וֹךְ מ
+   ⇒ מֶלֶךְ / NOUN / masculine plural, absolute / LEX:king / 0.7 / lexicon / period he-bib / Variety: he-bib.
+   also: מֶלֶךְ/NOUN(0.44)=king, מְלָכִים/PROPN(0.43)=Kings
+   R: melakhim (lemma melekh) / D: king ; to reign (to rule as a king)
+[books] 1Kgs 4:3 «סֹפְרִ֑ים»  source: 5608 b HNcmpa = NOUN, masculine plural, absolute  (15 such tokens)
+   verse: אֱלִיחֹ֧רֶף וַאֲחִיָּ֛ה בְּנֵ֥י שִׁישָׁ֖א סֹפְרִ֑ים יְהוֹשָׁפָ֥ט בֶּן־אֲחִיל֖וּד הַמַּזְכִּֽיר׃
+   ⇒ סָפַר / NOUN / masculine plural, absolute / LEX:enumerator, muster-officer, secretary / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   R: soferim (lemma safar) / D: book ; a writing
+[youths] 1Sam 25:5 «נְעָרִ֑ים»  source: 5288 HNcmpa = NOUN, masculine plural, absolute  (9 such tokens)
+   verse: וַיִּשְׁלַ֥ח דָּוִ֖ד עֲשָׂרָ֣ה נְעָרִ֑ים וַיֹּ֨אמֶר דָּוִ֜ד לַנְּעָרִ֗ים עֲל֤וּ כַרְמֶ֙לָה֙ וּבָאתֶ֣ם אֶל־נָבָ
+   ⇒ נַעַר / NOUN / masculine plural, absolute / LEX:boy, lad, youth / 0.68 / lexicon / period he-bib / Variety: he-bib.
+   also: נַעַר/NOUN(0.45)=non-infant child, נַעַר/NOUN(0.45)=non-infant child, נער m/NOUN(0.45)
+   R: neʿarim (lemma naʿar) / D: non-infant child ; boy, physically able young man. Also, a servant.

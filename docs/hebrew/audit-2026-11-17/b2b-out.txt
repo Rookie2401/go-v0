@@ -1,0 +1,326 @@
+[qam (hollow perfect)] Deut 34:10 «קָ֨ם»  source: 6965 b HVqp3ms = VERB, Qal, perfect (qatal), 3rd person masculine singular  (11 such tokens)
+   verse: וְלֹא־קָ֨ם נָבִ֥יא ע֛וֹד בְּיִשְׂרָאֵ֖ל כְּמֹשֶׁ֑ה אֲשֶׁר֙ יְדָע֣וֹ יְהֹוָ֔ה פָּנִ֖ים אֶל־פָּנִֽים׃
+   ⇒ קוּם / VERB / Qal, perfect (qatal), 3rd person masculine singular / INFL:He arose / 0.66 / lexicon / period he-bib / Variety: he-bib.
+   also: קוּם/VERB(0.53)=to arise, stand , קָם/VERB(0.45)=to rise, stand u, קָם/VERB(0.45)=to rise, stand u
+   parts: קָם: Qal verb
+   R: kam (lemma kum) / D: Bare infinitive (infinitive construct or gerund) of קם (kam)
+[yaqum] Exod 21:19 «יָק֞וּם»  source: 6965 b HVqi3ms = VERB, Qal, imperfect (yiqtol), 3rd person masculine singular  (39 such tokens)
+   verse: אִם־יָק֞וּם וְהִתְהַלֵּ֥ךְ בַּח֛וּץ עַל־מִשְׁעַנְתּ֖וֹ וְנִקָּ֣ה הַמַּכֶּ֑ה רַ֥ק שִׁבְתּ֛וֹ יִתֵּ֖ן וְרַפֹּ֥א 
+   ⇒ קוּם / VERB / Qal, imperfect (yiqtol), 3rd person masculine singular / INFL:He will arise / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: קָם/VERB(0.44)=to rise, stand u
+   parts: יָ: imperfect preformative, third person masculine singular ; קוּם: Qal verbal base
+   R: yakum (lemma kum) / D: Bare infinitive (infinitive construct or gerund) of קם (kam)
+[vayyaqom] Gen 4:8 «וַיָּ֥קׇם»  source: c/6965 b HC/Vqw3ms = VERB, Qal, wayyiqtol (narrative past), 3rd person masculine singular  (107 such tokens)
+   verse: וַיֹּ֥אמֶר קַ֖יִן אֶל־הֶ֣בֶל אָחִ֑יו וַֽיְהִי֙ בִּהְיוֹתָ֣ם בַּשָּׂדֶ֔ה וַיָּ֥קׇם קַ֛יִן אֶל־הֶ֥בֶל אָחִ֖יו וַ
+   ⇒ קוּם / VERB / Qal, wayyiqtol (narrative past), 3rd person masculine singular / INFL:And he arose / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: וַיָּקׇם/VERB(0.43)=(he/it) rose: th
+   parts: וַ: and ; יָּ: imperfect preformative, third person masculine singular ; קָם: Qal verbal base
+   R: vayakam (lemma kum) / D: Bare infinitive (infinitive construct or gerund) of קם (kam)
+[vayyaqem (hifil, same letters)] Exod 40:18 «וַיָּ֨קֶם»  source: c/6965 b HC/Vhw3ms = VERB, Hifʿil, wayyiqtol (narrative past), 3rd person masculine singular  (20 such tokens)
+   verse: וַיָּ֨קֶם מֹשֶׁ֜ה אֶת־הַמִּשְׁכָּ֗ן וַיִּתֵּן֙ אֶת־אֲדָנָ֔יו וַיָּ֙שֶׂם֙ אֶת־קְרָשָׁ֔יו וַיִּתֵּ֖ן אֶת־בְּרִיח
+   ⇒ קוּם / VERB / Hifʿil, wayyiqtol (narrative past), 3rd person masculine singular / INFL:And he raised up / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: וַ: and ; יָּ: imperfect preformative, third person masculine singular ; קֶם: Hifʿil verbal base
+   R: vayakem (lemma kum) / D: Bare infinitive (infinitive construct or gerund) of קם (kam)
+[qum!] Gen 13:17 «ק֚וּם»  source: 6965 b HVqv2ms = VERB, Qal, imperative, 2nd person masculine singular  (38 such tokens)
+   verse: ק֚וּם הִתְהַלֵּ֣ךְ בָּאָ֔רֶץ לְאׇרְכָּ֖הּ וּלְרׇחְבָּ֑הּ כִּ֥י לְךָ֖ אֶתְּנֶֽנָּה׃
+   ⇒ קוּם / VERB / Qal, imperative, 2nd person masculine singular / INFL:Arise! / 0.68 / lexicon / period he-bib / Variety: he-bib.
+   also: קוּם/VERB(0.53)=to arise, stand , קָם/VERB(0.44)=to rise, stand u, קוּם/VERB(0.43)=Bare infinitive 
+   parts: קוּם: Qal verb
+   R: kum / D: Bare infinitive (infinitive construct or gerund) of קם (kam)
+[heqim] Num 30:15 «הֵקִ֣ים»  source: 6965 b HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (10 such tokens)
+   verse: וְאִם־הַחֲרֵשׁ֩ יַחֲרִ֨ישׁ לָ֥הּ אִישָׁהּ֮ מִיּ֣וֹם אֶל־יוֹם֒ וְהֵקִים֙ אֶת־כׇּל־נְדָרֶ֔יהָ א֥וֹ אֶת־כׇּל־אֱסָ
+   ⇒ קוּם / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He raised up / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: הֵקִים/VERB(0.46)=To erect, establ, הוּקַם/VERB(0.44)=to be built, est
+   parts: הֵקִים: Hifʿil verb
+   R: hekim (lemma kum) / D: Bare infinitive (infinitive construct or gerund) of קם (kam)
+[aqim] Gen 17:21 «אָקִ֣ים»  source: 6965 b HVhi1cs = VERB, Hifʿil, imperfect (yiqtol), 1st person common gender singular  (6 such tokens)
+   verse: וְאֶת־בְּרִיתִ֖י אָקִ֣ים אֶת־יִצְחָ֑ק אֲשֶׁר֩ תֵּלֵ֨ד לְךָ֤ שָׂרָה֙ לַמּוֹעֵ֣ד הַזֶּ֔ה בַּשָּׁנָ֖ה הָאַחֶֽרֶת׃
+   ⇒ קוּם / VERB / Hifʿil, imperfect (yiqtol), 1st person common gender singular / INFL:I will raise up / 0.68 / lexicon / period he-bib / Variety: he-bib.
+   also: הֵקִים/VERB(0.48)=To erect, establ
+   parts: אָ: imperfect preformative, first person common singular ; קִים: Hifʿil verbal base
+   R: akim (lemma kum) / D: Bare infinitive (infinitive construct or gerund) of קם (kam)
+!! no token for: bare=השתחוה  # hishtahavah
+[Isa 1:2 (the adapter's own contextual example)] Isa 1:2 «וְרוֹמַ֔מְתִּי»  source: c/7311 a HC/Vop1cs = VERB, Polel, perfect (qatal), 1st person common gender singular
+   verse: שִׁמְע֤וּ שָׁמַ֙יִם֙ וְהַאֲזִ֣ינִי אֶ֔רֶץ כִּ֥י יְהֹוָ֖ה דִּבֵּ֑ר בָּנִים֙ גִּדַּ֣לְתִּי וְרוֹמַ֔מְתִּי וְהֵ֖ם
+   ⇒ רוּם / VERB / Polel, perfect (qatal), 1st person common gender singular / CTX:And I brought up / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: וְ: and ; רוֹמַמְ: Polel verbal base ; תִּי: perfect first person common singular ending
+   R: veromameti (lemma rum) / D: height, altitude, level ; rise (the height of an arch or a step)
+[konen] Isa 51:13 «כּוֹנֵ֖ן»  source: 3559 a HVop3ms = VERB, Polel, perfect (qatal), 3rd person masculine singular  (4 such tokens)
+   verse: וַתִּשְׁכַּ֞ח יְהֹוָ֣ה עֹשֶׂ֗ךָ נוֹטֶ֣ה שָׁמַ֘יִם֮ וְיֹסֵ֣ד אָ֒רֶץ֒ וַתְּפַחֵ֨ד תָּמִ֜יד כׇּל־הַיּ֗וֹם מִפְּנֵ
+   ⇒ כּוּן / VERB / Polel, perfect (qatal), 3rd person masculine singular / INFL:He established / 0.67 / lexicon / period he-bib / Variety: he-bib.
+   also: כּוֹנֵן/VERB(0.46)=to establish, bu, כּוֹנֵן/VERB(0.46)=to establish, bu
+   parts: כּוֹנֵן: Polel verb
+   R: konen (lemma kun) / D: Forming words relating to firmness, establishment. ; Forming words relating to straightnes
+[hitqaddesh] Isa 30:29 «הִתְקַדֶּשׁ»  source: 6942 HVtc = VERB, Hitpaʿel, infinitive construct
+   verse: הַשִּׁיר֙ יִהְיֶ֣ה לָכֶ֔ם כְּלֵ֖יל הִתְקַדֶּשׁ־חָ֑ג וְשִׂמְחַ֣ת לֵבָ֗ב כַּהוֹלֵךְ֙ בֶּחָלִ֔יל לָב֥וֹא בְהַר־יְ
+   ⇒ קָדַשׁ / VERB / Hitpaʿel, infinitive construct / INFL:to consecrate oneself / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: הִתְקַדֶּשׁ: Hitpaʿel verb
+   R: hitekadesh (lemma kadash) / D: a male pagan prostitute ; Related to holiness, sanctity, sacredness.
+!! no token for: bare=ספר code=Vpp  # sipper
+!! no token for: bare=כפר code=Vpp  # kipper
+!! no token for: bare=הורה code=Vh  # horah
+!! no token for: bare=השקה code=Vh  # hishqah
+[he'evid] 2Kgs 10:19 «הַאֲבִ֖יד»  source: 6 HVhc = VERB, Hifʿil, infinitive construct
+   verse: וְעַתָּ֣ה כׇל־נְבִיאֵ֣י הַבַּ֡עַל כׇּל־עֹבְדָ֣יו וְכׇל־כֹּהֲנָיו֩ קִרְא֨וּ אֵלַ֜י אִ֣ישׁ אַל־יִפָּקֵ֗ד כִּי֩ ז
+   ⇒ אָבַד / VERB / Hifʿil, infinitive construct / INFL:to destroy / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: הַאֲבִיד: Hifʿil verb
+   R: haʾavid (lemma avad) / D: to be pressed ; to go around in despair
+[nakhon] Gen 41:32 «נָכ֤וֹן»  source: 3559 a HVNrmsa = VERB, Nifʿal, participle, masculine singular, absolute  (30 such tokens)
+   verse: וְעַ֨ל הִשָּׁנ֧וֹת הַחֲל֛וֹם אֶל־פַּרְעֹ֖ה פַּעֲמָ֑יִם כִּֽי־נָכ֤וֹן הַדָּבָר֙ מֵעִ֣ם הָאֱלֹהִ֔ים וּמְמַהֵ֥ר ה
+   ⇒ כּוּן / VERB / Nifʿal, participle, masculine singular, absolute / INFL:being established / 0.7 / lexicon / period he-bib / Variety: he-bib.
+   also: נָכוֹן/PROPN(0.51)=Nachon, נָכוֹן/NOUN(0.51)=blow, נָכוֹן/ADJ(0.43)=Right, correct.
+   parts: נָכוֹן: Nifʿal verb
+   R: nakhon (lemma kun) / D: Forming words relating to firmness, establishment. ; Forming words relating to straightnes
+!! no token for: bare=התנבא  # hitnabbe
+[luqqah (qal passive)] 2Kgs 2:10 «לֻקָּ֤ח»  source: 3947 HVQsmsa = VERB, Qal passive, passive participle, masculine singular, absolute
+   verse: וַיֹּ֖אמֶר הִקְשִׁ֣יתָ לִשְׁא֑וֹל אִם־תִּרְאֶ֨ה אֹתִ֜י לֻקָּ֤ח מֵֽאִתָּךְ֙ יְהִי־לְךָ֣ כֵ֔ן וְאִם־אַ֖יִן לֹ֥א 
+   ⇒ לָקַח / VERB / Qal passive, passive participle, masculine singular, absolute / INFL:taken / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: לָקַח/VERB(0.71)=to take
+   parts: לֻקָּח: Qal passive verb
+   R: lukaḥ (lemma lakaḥ) / D: to take (grasp with the hands) ; to take (carry somewhere, remove)
+!! no token for: bare=כבד code=^HVqp3ms$  # kaved
+[yekhabbed] Mal 1:6 «יְכַבֵּ֥ד»  source: 3513 HVpi3ms = VERB, Piʿel, imperfect (yiqtol), 3rd person masculine singular  (4 such tokens)
+   verse: בֵּ֛ן יְכַבֵּ֥ד אָ֖ב וְעֶ֣בֶד אֲדֹנָ֑יו וְאִם־אָ֣ב אָ֣נִי אַיֵּ֣ה כְבוֹדִ֡י וְאִם־אֲדוֹנִ֣ים אָ֩נִי֩ אַיֵּ֨ה מ
+   ⇒ כָּבַד / VERB / Piʿel, imperfect (yiqtol), 3rd person masculine singular / INFL:He will make heavy / 0.84 / lexicon / period he-bib / Variety: he-bib.
+   also: כִּבֵּד/VERB(0.5)=to respect, to h
+   parts: יְ: imperfect preformative, third person masculine singular ; כַבֵּד: Piʿel verbal base
+   R: yekhabed (lemma kavad) / D: to be heavy, weighty, burdensome, honoured ; liver (organ of the body)
+[honoured me] 1Sam 15:30 «כַּבְּדֵ֥נִי»  source: 3513 HVpv2ms/Sp1cs = VERB, Piʿel, imperative, 2nd person masculine singular
+   verse: וַיֹּ֣אמֶר חָטָ֔אתִי עַתָּ֗ה כַּבְּדֵ֥נִי נָ֛א נֶ֥גֶד זִקְנֵֽי־עַמִּ֖י וְנֶ֣גֶד יִשְׂרָאֵ֑ל וְשׁ֣וּב עִמִּ֔י ו
+   ⇒ כָּבַד / VERB / Piʿel, imperative, 2nd person masculine singular / INFL:Make me heavy! / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: כַּבְּדֵ: Piʿel verb ; נִי: object suffix
+   R: kabedeni (lemma kavad) / D: to be heavy, weighty, burdensome, honoured ; liver (organ of the body)
+[mille: filled] Exod 35:35 «מִלֵּ֨א»  source: 4390 HVpp3ms = VERB, Piʿel, perfect (qatal), 3rd person masculine singular  (18 such tokens)
+   verse: מִלֵּ֨א אֹתָ֜ם חׇכְמַת־לֵ֗ב לַעֲשׂוֹת֮ כׇּל־מְלֶ֣אכֶת חָרָ֣שׁ ׀ וְחֹשֵׁב֒ וְרֹקֵ֞ם בַּתְּכֵ֣לֶת וּבָֽאַרְגָּמָ
+   ⇒ מָלֵא / VERB / Piʿel, perfect (qatal), 3rd person masculine singular / INFL:He filled / 0.7 / lexicon / period he-bib / Variety: he-bib.
+   also: מָלֵא/VERB(0.44)=To fill, to beco, מִלֵּא/VERB(0.44)=To fill (somethi, מֻלָּא/VERB(0.44)=to be filled
+   parts: מִלֵּא: Piʿel verb
+   R: mile (lemma male) / D: To fill, to become full. ; To complete.
+[male: was full] Exod 40:34 «מָלֵ֖א»  source: 4390 HVqp3ms = VERB, Qal, perfect (qatal), 3rd person masculine singular  (19 such tokens)
+   verse: וַיְכַ֥ס הֶעָנָ֖ן אֶת־אֹ֣הֶל מוֹעֵ֑ד וּכְב֣וֹד יְהֹוָ֔ה מָלֵ֖א אֶת־הַמִּשְׁכָּֽן׃
+   ⇒ מָלֵא / VERB / Qal, perfect (qatal), 3rd person masculine singular / INFL:He was full / 0.64 / lexicon / period he-bib / Variety: he-bib.
+   also: מָלֵא/ADJ(0.61)=full, מָלֵא/VERB(0.52)=be full, fill, b, מָלֵא/ADJ(0.44)=Full (of), fille
+   parts: מָלֵא: Qal verb
+   R: male / D: To fill, to become full. ; To complete.
+[filled (piel)] Gen 29:28 «וַיְמַלֵּ֖א»  source: c/4390 HC/Vpw3ms = VERB, Piʿel, wayyiqtol (narrative past), 3rd person masculine singular  (10 such tokens)
+   verse: וַיַּ֤עַשׂ יַעֲקֹב֙ כֵּ֔ן וַיְמַלֵּ֖א שְׁבֻ֣עַ זֹ֑את וַיִּתֶּן־ל֛וֹ אֶת־רָחֵ֥ל בִּתּ֖וֹ ל֥וֹ לְאִשָּֽׁה׃
+   ⇒ מָלֵא / VERB / Piʿel, wayyiqtol (narrative past), 3rd person masculine singular / INFL:And he filled / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: וַ: and ; יְ: imperfect preformative, third person masculine singular ; מַלֵּא: Piʿel verbal base
+   R: vayemale (lemma male) / D: To fill, to become full. ; To complete.
+[ibbed: destroyed] 2Kgs 21:3 «אִבַּ֖ד»  source: 6 HVpp3ms = VERB, Piʿel, perfect (qatal), 3rd person masculine singular  (2 such tokens)
+   verse: וַיָּ֗שׇׁב וַיִּ֙בֶן֙ אֶת־הַבָּמ֔וֹת אֲשֶׁ֥ר אִבַּ֖ד חִזְקִיָּ֣הוּ אָבִ֑יו וַיָּ֨קֶם מִזְבְּחֹ֜ת לַבַּ֗עַל וַי
+   ⇒ אָבַד / VERB / Piʿel, perfect (qatal), 3rd person masculine singular / INFL:He destroyed / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: אִבַּד: Piʿel verb
+   R: ibad (lemma avad) / D: to be pressed ; to go around in despair
+[I taught] Deut 4:5 «לִמַּ֣דְתִּי»  source: 3925 HVpp1cs = VERB, Piʿel, perfect (qatal), 1st person common gender singular
+   verse: רְאֵ֣ה ׀ לִמַּ֣דְתִּי אֶתְכֶ֗ם חֻקִּים֙ וּמִשְׁפָּטִ֔ים כַּאֲשֶׁ֥ר צִוַּ֖נִי יְהֹוָ֣ה אֱלֹהָ֑י לַעֲשׂ֣וֹת כֵּ֔
+   ⇒ לָמַד / VERB / Piʿel, perfect (qatal), 1st person common gender singular / INFL:I exercised in / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: לִמֵּד/VERB(0.6)=To teach.
+   parts: לִמַּדְ: Piʿel verbal base ; תִּי: perfect first person common singular ending
+   R: limadeti (lemma lamad) / D: to learn, to study ; Forming words pertaining to learning.
+[and he taught / learnt] Ezek 19:3 «וַיִּלְמַ֥ד»  source: c/3925 HC/Vqw3ms = VERB, Qal, wayyiqtol (narrative past), 3rd person masculine singular  (3 such tokens)
+   verse: וַתַּ֛עַל אֶחָ֥ד מִגֻּרֶ֖יהָ כְּפִ֣יר הָיָ֑ה וַיִּלְמַ֥ד לִטְרׇף־טֶ֖רֶף אָדָ֥ם אָכָֽל׃
+   ⇒ לָמַד / VERB / Qal, wayyiqtol (narrative past), 3rd person masculine singular / INFL:And he exercised in / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: וַ: and ; יִּ: imperfect preformative, third person masculine singular ; לְמַד: Qal verbal base
+   R: vayilemad (lemma lamad) / D: to learn, to study ; Forming words pertaining to learning.
+[hitsil] Gen 31:16 «הִצִּ֤יל»  source: 5337 HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (10 such tokens)
+   verse: כִּ֣י כׇל־הָעֹ֗שֶׁר אֲשֶׁ֨ר הִצִּ֤יל אֱלֹהִים֙ מֵֽאָבִ֔ינוּ לָ֥נוּ ה֖וּא וּלְבָנֵ֑ינוּ וְעַתָּ֗ה כֹּל֩ אֲשֶׁ֨ר
+   ⇒ נָצַל / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He stripped / 0.69 / lexicon / period he-bib / Variety: he-bib.
+   also: הִצִּיל/VERB(0.45)=To save, to resc, הֻצַּל/VERB(0.45)=to be rescued
+   parts: הִצִּיל: Hifʿil verb
+   R: hitsil (lemma natsal) / D: To save, to rescue.
+[and he delivered] Gen 31:9 «וַיַּצֵּ֧ל»  source: c/5337 HC/Vhw3ms = VERB, Hifʿil, wayyiqtol (narrative past), 3rd person masculine singular  (7 such tokens)
+   verse: וַיַּצֵּ֧ל אֱלֹהִ֛ים אֶת־מִקְנֵ֥ה אֲבִיכֶ֖ם וַיִּתֶּן־לִֽי׃
+   ⇒ נָצַל / VERB / Hifʿil, wayyiqtol (narrative past), 3rd person masculine singular / INFL:And he stripped / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: וַ: and ; יַּ: imperfect preformative, third person masculine singular ; צֵּל: Hifʿil verbal base
+   R: vayatsel (lemma natsal) / D: ∅
+[] 2Sam 3:18 «הוֹשִׁ֜יעַ»  source: 3467 HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (2 such tokens)
+   verse: וְעַתָּ֖ה עֲשׂ֑וּ כִּ֣י יְהֹוָ֗ה אָמַ֤ר אֶל־דָּוִד֙ לֵאמֹ֔ר בְּיַ֣ד ׀ דָּוִ֣ד עַבְדִּ֗י הוֹשִׁ֜יעַ אֶת־עַמִּ֤י
+   ⇒ יָשַׁע / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He delivered / 0.78 / lexicon / period he-bib / Variety: he-bib.
+   also: הוֹשִׁיעַ/VERB(0.55)=to save, free
+   parts: הוֹשִׁיעַ: Hifʿil verb
+   R: hoshiʿa (lemma yasha) / D: to save, free
+[and he saved] Exod 14:30 «וַיּ֨וֹשַׁע»  source: c/3467 HC/Vhw3ms = VERB, Hifʿil, wayyiqtol (narrative past), 3rd person masculine singular  (8 such tokens)
+   verse: וַיּ֨וֹשַׁע יְהֹוָ֜ה בַּיּ֥וֹם הַה֛וּא אֶת־יִשְׂרָאֵ֖ל מִיַּ֣ד מִצְרָ֑יִם וַיַּ֤רְא יִשְׂרָאֵל֙ אֶת־מִצְרַ֔יִם
+   ⇒ יָשַׁע / VERB / Hifʿil, wayyiqtol (narrative past), 3rd person masculine singular / INFL:And he delivered / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: וַ: and ; יּ: imperfect preformative, third person masculine singular ; וֹשַׁע: Hifʿil verbal base
+   R: vayosha (lemma yasha) / D: ∅
+[he prayed] 2Chr 30:18 «הִתְפַּלֵּ֨ל»  source: 6419 HVtp3ms = VERB, Hitpaʿel, perfect (qatal), 3rd person masculine singular
+   verse: כִּ֣י מַרְבִּ֣ית הָעָ֡ם רַ֠בַּ֠ת מֵאֶפְרַ֨יִם וּמְנַשֶּׁ֜ה יִשָּׂשכָ֤ר וּזְבֻלוּן֙ לֹ֣א הִטֶּהָ֔רוּ כִּֽי־אָכְ
+   ⇒ פָּלַל / VERB / Hitpaʿel, imperative, 2nd person masculine singular / INFL:Intervene! / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: פָּלַל/VERB(0.58)=intervene, inter, הִתְפַּלֵּל/VERB(0.49)=To pray, to dave, הִתְפַּלֵּל/VERB(0.49)=To pray, to dave
+   parts: הִתְפַּלֵּל: Hitpaʿel verb
+   R: hitepalel (lemma palal) / D: To pray, to daven: to talk to God or a higher power, especially to ask for blessings.
+[] Gen 20:7 «וְיִתְפַּלֵּ֥ל»  source: c/6419 HC/Vti3ms = VERB, Hitpaʿel, imperfect (yiqtol), 3rd person masculine singular  (19 such tokens)
+   verse: וְעַתָּ֗ה הָשֵׁ֤ב אֵֽשֶׁת־הָאִישׁ֙ כִּֽי־נָבִ֣יא ה֔וּא וְיִתְפַּלֵּ֥ל בַּֽעַדְךָ֖ וֶֽחְיֵ֑ה וְאִם־אֵֽינְךָ֣ מֵ
+   ⇒ פָּלַל / VERB / Hitpaʿel, imperfect (yiqtol), 3rd person masculine singular / INFL:And he will intervene / 0.78 / lexicon / period he-bib / Variety: he-bib.
+   also: פָּלַל/VERB(0.64)=intervene, inter
+   parts: וְ: and ; יִ: imperfect preformative, third person masculine singular ; תְפַּלֵּל: Hitpaʿel verbal base
+   R: veyitepalel (lemma palal) / D: ∅
+[destroyed] Deut 2:22 «הִשְׁמִ֤יד»  source: 8045 HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (6 such tokens)
+   verse: כַּאֲשֶׁ֤ר עָשָׂה֙ לִבְנֵ֣י עֵשָׂ֔ו הַיֹּשְׁבִ֖ים בְּשֵׂעִ֑יר אֲשֶׁ֨ר הִשְׁמִ֤יד אֶת־הַחֹרִי֙ מִפְּנֵיהֶ֔ם וַי
+   ⇒ שָׁמַד / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He destroyed / 0.85 / lexicon / period he-bib / Variety: he-bib.
+   also: הִשְׁמִיד/VERB(0.49)=to destroy
+   parts: הִשְׁמִיד: Hifʿil verb
+   R: hishemid (lemma shamad) / D: to destroy
+[cut off] 1Sam 28:9 «הִכְרִ֛ית»  source: 3772 HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (3 such tokens)
+   verse: וַתֹּ֨אמֶר הָאִשָּׁ֜ה אֵלָ֗יו הִנֵּ֨ה אַתָּ֤ה יָדַ֙עְתָּ֙ אֵ֣ת אֲשֶׁר־עָשָׂ֣ה שָׁא֔וּל אֲשֶׁ֥ר הִכְרִ֛ית אֶת־ה
+   ⇒ כָּרַת / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He cut off / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: הִכְרִית: Hifʿil verb
+   R: hikherit (lemma karat) / D: to cut down, to cut off ; kareth, a severe divine punishment
+[appointed] Gen 39:5 «הִפְקִ֨יד»  source: 6485 a HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (10 such tokens)
+   verse: וַיְהִ֡י מֵאָז֩ הִפְקִ֨יד אֹת֜וֹ בְּבֵית֗וֹ וְעַל֙ כׇּל־אֲשֶׁ֣ר יֶשׁ־ל֔וֹ וַיְבָ֧רֶךְ יְהֹוָ֛ה אֶת־בֵּ֥ית הַמִ
+   ⇒ פָּקַד / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He attended to / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: הִפְקִיד: Hifʿil verb
+   R: hifekid (lemma pakad) / D: to count ; to visit, befall, remember
+[mentioned] 2Sam 18:18 «הַזְכִּ֣יר»  source: 2142 HVhc = VERB, Hifʿil, infinitive construct  (2 such tokens)
+   verse: וְאַבְשָׁלֹ֣ם לָקַ֗ח וַיַּצֶּב־ל֤וֹ בְחַיָּו֙ אֶת־מַצֶּ֙בֶת֙ אֲשֶׁ֣ר בְּעֵֽמֶק־הַמֶּ֔לֶךְ כִּ֤י אָמַר֙ אֵֽין־ל
+   ⇒ זָכַר / VERB / Hifʿil, infinitive construct / INFL:to mention / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: הַזְכִּיר: Hifʿil verb
+   R: hazekir (lemma zakhar) / D: to remember ; man, male
+[offered] Gen 12:11 «הִקְרִ֖יב»  source: 7126 HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (7 such tokens)
+   verse: וַיְהִ֕י כַּאֲשֶׁ֥ר הִקְרִ֖יב לָב֣וֹא מִצְרָ֑יְמָה וַיֹּ֙אמֶר֙ אֶל־שָׂרַ֣י אִשְׁתּ֔וֹ הִנֵּה־נָ֣א יָדַ֔עְתִּי 
+   ⇒ קָרַב / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He brought near / 0.7 / lexicon / period he-bib / Variety: he-bib.
+   also: הִקְרִיב/VERB(0.46)=to bring, to pre
+   parts: הִקְרִיב: Hifʿil verb
+   R: hikeriv (lemma karav) / D: to approach. ; battle, war
+[burnt incense] Lev 9:10 «הִקְטִ֖יר»  source: 6999 a HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (2 such tokens)
+   verse: וְאֶת־הַחֵ֨לֶב וְאֶת־הַכְּלָיֹ֜ת וְאֶת־הַיֹּתֶ֤רֶת מִן־הַכָּבֵד֙ מִן־הַ֣חַטָּ֔את הִקְטִ֖יר הַמִּזְבֵּ֑חָה כַּא
+   ⇒ קָטַר / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He made sacrifices smoke / 0.78 / lexicon / period he-bib / Variety: he-bib.
+   also: הִקְטִיר/VERB(0.55)=to offer up (inc
+   parts: הִקְטִיר: Hifʿil verb
+   R: hiketir (lemma katar) / D: A locomotive (The power unit of a train) ; Qatar (a country in West Asia in the Middle Eas
+[rose early] Jer 44:4 «הַשְׁכֵּ֥ים»  source: 7925 HVha = VERB, Hifʿil, infinitive absolute  (2 such tokens)
+   verse: וָאֶשְׁלַ֤ח אֲלֵיכֶם֙ אֶת־כׇּל־עֲבָדַ֣י הַנְּבִיאִ֔ים הַשְׁכֵּ֥ים וְשָׁלֹ֖חַ לֵאמֹ֑ר אַל־נָ֣א תַעֲשׂ֗וּ אֵ֛ת ד
+   ⇒ שָׁכַם / VERB / Hifʿil, infinitive absolute / INFL:to start / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: הַשְׁכֵּים: Hifʿil verb
+   R: hashekem (lemma shakham) / D: shoulder, upper part of the back ; Shechem, son of the Hivite king Hamor
+[and he rose early] Gen 19:27 «וַיַּשְׁכֵּ֥ם»  source: c/7925 HC/Vhw3ms = VERB, Hifʿil, wayyiqtol (narrative past), 3rd person masculine singular  (20 such tokens)
+   verse: וַיַּשְׁכֵּ֥ם אַבְרָהָ֖ם בַּבֹּ֑קֶר אֶ֨ל־הַמָּק֔וֹם אֲשֶׁר־עָ֥מַד שָׁ֖ם אֶת־פְּנֵ֥י יְהֹוָֽה׃
+   ⇒ שָׁכַם / VERB / Hifʿil, wayyiqtol (narrative past), 3rd person masculine singular / INFL:And he started / 0.9 / lexicon / period he-bib / Variety: he-bib.
+   also: הִשְׁכִּים/VERB(0.45)=to rise early in
+   parts: וַ: and ; יַּ: imperfect preformative, third person masculine singular ; שְׁכֵּם: Hifʿil verbal base
+   R: vayashekem (lemma shakham) / D: shoulder, upper part of the back ; Shechem, son of the Hivite king Hamor
+[destroyed] Gen 6:12 «הִשְׁחִ֧ית»  source: 7843 HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (2 such tokens)
+   verse: וַיַּ֧רְא אֱלֹהִ֛ים אֶת־הָאָ֖רֶץ וְהִנֵּ֣ה נִשְׁחָ֑תָה כִּֽי־הִשְׁחִ֧ית כׇּל־בָּשָׂ֛ר אֶת־דַּרְכּ֖וֹ עַל־הָאָֽ
+   ⇒ שָׁחַת / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He went to ruin / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: הִשְׁחִית/VERB(0.6)=to destroy, to r
+   parts: הִשְׁחִית: Hifʿil verb
+   R: hisheḥit (lemma shaḥat) / D: hay
+[separated] Num 16:9 «הִבְדִּיל֩»  source: 914 HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (2 such tokens)
+   verse: הַמְעַ֣ט מִכֶּ֗ם כִּֽי־הִבְדִּיל֩ אֱלֹהֵ֨י יִשְׂרָאֵ֤ל אֶתְכֶם֙ מֵעֲדַ֣ת יִשְׂרָאֵ֔ל לְהַקְרִ֥יב אֶתְכֶ֖ם אֵלָ
+   ⇒ בָּדַל / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He divided / 0.78 / lexicon / period he-bib / Variety: he-bib.
+   also: הִבְדִּיל/VERB(0.55)=To separate.
+   parts: הִבְדִּיל: Hifʿil verb
+   R: hivedil (lemma badal) / D: To divide (in various senses literally or figuratively, separate, distinguish, differ, sel
+[caused to rain] Gen 2:5 «הִמְטִ֜יר»  source: 4305 HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (2 such tokens)
+   verse: וְכֹ֣ל ׀ שִׂ֣יחַ הַשָּׂדֶ֗ה טֶ֚רֶם יִֽהְיֶ֣ה בָאָ֔רֶץ וְכׇל־עֵ֥שֶׂב הַשָּׂדֶ֖ה טֶ֣רֶם יִצְמָ֑ח כִּי֩ לֹ֨א הִמְ
+   ⇒ מָטַר / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He rained / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: הִמְטִיר: Hifʿil verb
+   R: himetir (lemma matar) / D: rain ; metre
+[magnified] 1Sam 20:41 «הִגְדִּֽיל»  source: 1431 HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (13 such tokens)
+   verse: הַנַּ֘עַר֮ בָּא֒ וְדָוִ֗ד קָ֚ם מֵאֵ֣צֶל הַנֶּ֔גֶב וַיִּפֹּ֨ל לְאַפָּ֥יו אַ֛רְצָה וַיִּשְׁתַּ֖חוּ שָׁלֹ֣שׁ פְּע
+   ⇒ גָּדַל / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He magnified / 0.89 / lexicon / period he-bib / Variety: he-bib.
+   also: הִגְדִּיל/VERB(0.45)=to enlarge, incr
+   parts: הִגְדִּיל: Hifʿil verb
+   R: higedil (lemma gadal) / D: to be big, large, great ; to grow (become bigger, greater, more)
+[hid] Ps 10:11 «הִסְתִּ֥יר»  source: 5641 HVhp3ms = VERB, Hifʿil, perfect (qatal), 3rd person masculine singular  (2 such tokens)
+   verse: אָמַ֣ר בְּ֭לִבּוֹ שָׁ֣כַֽח אֵ֑ל הִסְתִּ֥יר פָּ֝נָ֗יו בַּל־רָאָ֥ה לָנֶֽצַח׃
+   ⇒ סָתַר / VERB / Hifʿil, perfect (qatal), 3rd person masculine singular / INFL:He hid / 0.78 / lexicon / period he-bib / Variety: he-bib.
+   also: הִסְתִּיר/VERB(0.55)=to hide, conceal
+   parts: הִסְתִּיר: Hifʿil verb
+   R: hisetir (lemma satar) / D: to contradict ; to refute
+[was hidden] Gen 31:49 «נִסָּתֵ֖ר»  source: 5641 HVNi1cp = VERB, Nifʿal, imperfect (yiqtol), 1st person common gender plural  (3 such tokens)
+   verse: וְהַמִּצְפָּה֙ אֲשֶׁ֣ר אָמַ֔ר יִ֥צֶף יְהֹוָ֖ה בֵּינִ֣י וּבֵינֶ֑ךָ כִּ֥י נִסָּתֵ֖ר אִ֥ישׁ מֵרֵעֵֽהוּ׃
+   ⇒ סָתַר / VERB / Nifʿal, imperfect (yiqtol), 1st person common gender plural / INFL:We will hide / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: נִ: imperfect preformative, first person common plural ; סָּתֵר: Nifʿal verbal base
+   R: nisater (lemma satar) / D: to contradict ; to refute
+[was broken] Exod 22:9 «נִשְׁבַּ֥ר»  source: 7665 HVNp3ms = VERB, Nifʿal, perfect (qatal), 3rd person masculine singular  (6 such tokens)
+   verse: כִּֽי־יִתֵּן֩ אִ֨ישׁ אֶל־רֵעֵ֜הוּ חֲמ֨וֹר אוֹ־שׁ֥וֹר אוֹ־שֶׂ֛ה וְכׇל־בְּהֵמָ֖ה לִשְׁמֹ֑ר וּמֵ֛ת אוֹ־נִשְׁבַּ֥ר
+   ⇒ שָׁבַר / VERB / Nifʿal, perfect (qatal), 3rd person masculine singular / INFL:He was broken / 0.67 / lexicon / period he-bib / Variety: he-bib.
+   also: שָׁבַר/VERB(0.46)=to break (separa, נִשְׁבַּר/VERB(0.46)=To break, to be 
+   parts: נִשְׁבַּר: Nifʿal verb
+   R: nishebar (lemma shavar) / D: to break (separate into pieces or create cracks in) ; to break (cause to malfunction or st
+[shattered (piel)] Exod 9:25 «שִׁבֵּֽר»  source: 7665 HVpp3ms = VERB, Piʿel, perfect (qatal), 3rd person masculine singular  (6 such tokens)
+   verse: וַיַּ֨ךְ הַבָּרָ֜ד בְּכׇל־אֶ֣רֶץ מִצְרַ֗יִם אֵ֚ת כׇּל־אֲשֶׁ֣ר בַּשָּׂדֶ֔ה מֵאָדָ֖ם וְעַד־בְּהֵמָ֑ה וְאֵ֨ת כׇּל
+   ⇒ שָׁבַר / VERB / Piʿel, perfect (qatal), 3rd person masculine singular / INFL:He broke / 0.64 / lexicon / period he-bib / Variety: he-bib.
+   also: שָׁבַר/VERB(0.55)=to break (separa, שִׁבֵּר/VERB(0.55)=to shatter (brea
+   parts: שִׁבֵּר: Piʿel verb
+   R: shiber (lemma shavar) / D: to break (separate into pieces or create cracks in) ; to break (cause to malfunction or st
+[fighting] Exod 14:25 «נִלְחָ֥ם»  source: 3898 a HVNrmsa = VERB, Nifʿal, participle, masculine singular, absolute  (7 such tokens)
+   verse: וַיָּ֗סַר אֵ֚ת אֹפַ֣ן מַרְכְּבֹתָ֔יו וַֽיְנַהֲגֵ֖הוּ בִּכְבֵדֻ֑ת וַיֹּ֣אמֶר מִצְרַ֗יִם אָנ֙וּסָה֙ מִפְּנֵ֣י יִ
+   ⇒ לָחַם / VERB / Nifʿal, participle, masculine singular, absolute / INFL:fighting / 0.63 / lexicon / period he-bib / Variety: he-bib.
+   also: לָחַם/VERB(0.58)=fight, do battle, נִלְחַם/VERB(0.44)=to fight, wage w
+   parts: נִלְחָם: Nifʿal verb
+   R: nileḥam (lemma laḥam) / D: to eat ; to inflict, wreak
+[was called] Exod 5:3 «נִקְרָ֣א»  source: 7122 HVNp3ms = VERB, Nifʿal, perfect (qatal), 3rd person masculine singular  (27 such tokens)
+   verse: וַיֹּ֣אמְר֔וּ אֱלֹהֵ֥י הָעִבְרִ֖ים נִקְרָ֣א עָלֵ֑ינוּ נֵ֣לְכָה נָּ֡א דֶּ֩רֶךְ֩ שְׁלֹ֨שֶׁת יָמִ֜ים בַּמִּדְבָּ֗
+   ⇒ קָרָא / VERB / Nifʿal, perfect (qatal), 3rd person masculine singular / INFL:He was called / 0.67 / lexicon / period he-bib / Variety: he-bib.
+   also: קָרָא/VERB(0.52)=to call, proclai, קָרָא/VERB(0.51)=to call, proclai, קָרָא/VERB(0.51)=to call, proclai
+   parts: נִקְרָא: Nifʿal verb
+   R: nikera (lemma kara) / D: to read ; to call
+[was gathered] Gen 49:29 «נֶאֱסָ֣ף»  source: 622 HVNsmsa = VERB, Nifʿal, passive participle, masculine singular, absolute  (3 such tokens)
+   verse: וַיְצַ֣ו אוֹתָ֗ם וַיֹּ֤אמֶר אֲלֵהֶם֙ אֲנִי֙ נֶאֱסָ֣ף אֶל־עַמִּ֔י קִבְר֥וּ אֹתִ֖י אֶל־אֲבֹתָ֑י אֶ֨ל־הַמְּעָרָ֔ה
+   ⇒ אָסַף / VERB / Nifʿal, passive participle, masculine singular, absolute / INFL:gathered / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: נֶאֱסָף: Nifʿal verb
+   R: neʾesaf (lemma asaf) / D: To gather, to collect: to bring a group of things together. ; To take, to gather to onesel
+[lifted up (nifal)] 2Sam 19:43 «נִשָּׂ֖א»  source: 5375 HVNp3ms = VERB, Nifʿal, perfect (qatal), 3rd person masculine singular  (2 such tokens)
+   verse: וַיַּ֩עַן֩ כׇּל־אִ֨ישׁ יְהוּדָ֜ה עַל־אִ֣ישׁ יִשְׂרָאֵ֗ל כִּֽי־קָר֤וֹב הַמֶּ֙לֶךְ֙ אֵלַ֔י וְלָ֤מָּה זֶּה֙ חָרָ֣
+   ⇒ נָשָׂא / VERB / Piʿel, perfect (qatal), 3rd person masculine singular / INFL:He lifted / 0.55 / lexicon / period he-bib / Variety: he-bib.
+   also: נָשָׂא/VERB(0.55)=to lift, carry, , נָשָׂא/VERB(0.55)=to lift, carry, , נָשָׂא/VERB(0.55)=to lift, carry, 
+   parts: נִשָּׂא: Piʿel verb
+   R: nisa (lemma nasa) / D: to lift ; to bear, carry, support
+[commanding] Gen 27:8 «מְצַוָּ֥ה»  source: 6680 HVprfsa = VERB, Piʿel, participle, feminine singular, absolute  (16 such tokens)
+   verse: וְעַתָּ֥ה בְנִ֖י שְׁמַ֣ע בְּקֹלִ֑י לַאֲשֶׁ֥ר אֲנִ֖י מְצַוָּ֥ה אֹתָֽךְ׃
+   ⇒ צָוָה / VERB / Piʿel, participle, feminine singular, absolute / INFL:commanding / 0.64 / lexicon / period he-bib / Variety: he-bib.
+   also: צִוָּה/VERB(0.55)=to command, צִוָּה/VERB(0.55)=to command
+   parts: מְצַוָּה: Piʿel verb
+   R: metsava (lemma tsava) / D: Forming words relating to commands.
+[seeking] Gen 37:16 «מְבַקֵּ֑שׁ»  source: 1245 HVprmsa = VERB, Piʿel, participle, masculine singular, absolute  (22 such tokens)
+   verse: וַיֹּ֕אמֶר אֶת־אַחַ֖י אָנֹכִ֣י מְבַקֵּ֑שׁ הַגִּֽידָה־נָּ֣א לִ֔י אֵיפֹ֖ה הֵ֥ם רֹעִֽים׃
+   ⇒ בָּקַשׁ / VERB / Piʿel, participle, masculine singular, absolute / INFL:seeking / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: בִּקֵּשׁ/VERB(0.44)=to ask for, requ
+   parts: מְבַקֵּשׁ: Piʿel verb
+   R: mevakesh (lemma bakash) / D: defective spelling of ביקש. ; bare infinitive (infinitive construct or gerund) of ביקש / ב
+[teaching] Deut 4:1 «מְלַמֵּ֥ד»  source: 3925 HVprmsa = VERB, Piʿel, participle, masculine singular, absolute  (3 such tokens)
+   verse: וְעַתָּ֣ה יִשְׂרָאֵ֗ל שְׁמַ֤ע אֶל־הַֽחֻקִּים֙ וְאֶל־הַמִּשְׁפָּטִ֔ים אֲשֶׁ֧ר אָֽנֹכִ֛י מְלַמֵּ֥ד אֶתְכֶ֖ם לַעֲ
+   ⇒ לָמַד / VERB / Piʿel, participle, masculine singular, absolute / INFL:exercising in / 0.68 / lexicon / period he-bib / Variety: he-bib.
+   also: לִמֵּד/VERB(0.48)=To teach., לָמַד/VERB(0.48)=to learn, to stu, מְלַמֵּד/NOUN(0.48)=melamed, teacher
+   parts: מְלַמֵּד: Piʿel verb
+   R: melamed (lemma lamad) / D: to learn, to study ; Forming words pertaining to learning.
+!! no token for: bare=מהלל code=Vp  # praising
+[striking] Exod 2:11 «מַכֶּ֥ה»  source: 5221 HVhrmsa = VERB, Hifʿil, participle, masculine singular, absolute  (16 such tokens)
+   verse: וַיְהִ֣י ׀ בַּיָּמִ֣ים הָהֵ֗ם וַיִּגְדַּ֤ל מֹשֶׁה֙ וַיֵּצֵ֣א אֶל־אֶחָ֔יו וַיַּ֖רְא בְּסִבְלֹתָ֑ם וַיַּרְא֙ אִ֣
+   ⇒ נָכָה / VERB / Hifʿil, participle, masculine singular, absolute / INFL:striking / 0.68 / lexicon / period he-bib / Variety: he-bib.
+   also: הִכָּה/VERB(0.49)=to hit, smite, s
+   parts: מַכֶּה: Hifʿil verb
+   R: make (lemma nakha) / D: A cripple.
+[bringing] Gen 6:17 «מֵבִ֨יא»  source: 935 HVhrmsa = VERB, Hifʿil, participle, masculine singular, absolute  (31 such tokens)
+   verse: וַאֲנִ֗י הִנְנִי֩ מֵבִ֨יא אֶת־הַמַּבּ֥וּל מַ֙יִם֙ עַל־הָאָ֔רֶץ לְשַׁחֵ֣ת כׇּל־בָּשָׂ֗ר אֲשֶׁר־בּוֹ֙ ר֣וּחַ חַי
+   ⇒ בּוֹא / VERB / Hifʿil, participle, masculine singular, absolute / INFL:bringing / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   also: הֵבִיא/VERB(0.43)=To bring.
+   parts: מֵבִיא: Hifʿil verb
+   R: mevi (lemma bo) / D: bare infinitive (infinitive construct or gerund) of בָּא (bá) ; Forming words relating to 
+[bringing out] Ps 68:7 «מוֹצִ֣יא»  source: 3318 HVhrmsa = VERB, Hifʿil, participle, masculine singular, absolute
+   verse: אֱלֹהִ֤ים ׀ מ֘וֹשִׁ֤יב יְחִידִ֨ים ׀ בַּ֗יְתָה מוֹצִ֣יא אֲ֭סִירִים בַּכּוֹשָׁר֑וֹת אַ֥ךְ ס֝וֹרְרִ֗ים שָׁכְנ֥וּ 
+   ⇒ יָצָא / VERB / Hifʿil, participle, masculine singular, absolute / INFL:bringing out / 0.64 / lexicon / period he-bib / Variety: he-bib.
+   also: הוֹצִיא/VERB(0.55)=to take or bring, הוֹצִיא/VERB(0.55)=to take or bring
+   parts: מוֹצִיא: Hifʿil verb
+   R: motsi (lemma yatsa) / D: To go out (of, from), come out (of, from), exit (from), leave, depart, get out (of, from).
+!! no token for: bare=מושב code=VH  # returned (hofal)
+[was appointed] Lev 5:23 «הׇפְקַ֖ד»  source: 6485 HVHp3ms = VERB, Hofʿal, perfect (qatal), 3rd person masculine singular  (2 such tokens)
+   verse: וְהָיָה֮ כִּֽי־יֶחֱטָ֣א וְאָשֵׁם֒ וְהֵשִׁ֨יב אֶת־הַגְּזֵלָ֜ה אֲשֶׁ֣ר גָּזָ֗ל א֤וֹ אֶת־הָעֹ֙שֶׁק֙ אֲשֶׁ֣ר עָשָׁ
+   ⇒ פָּקַד / VERB / Hofʿal, perfect (qatal), 3rd person masculine singular / INFL:He was attended to / 0.71 / lexicon / period he-bib / Variety: he-bib.
+   parts: הָפְקַד: Hofʿal verb
+   R: hafekad (lemma pakad) / D: to count ; to visit, befall, remember
+[infinitive absolute hofal (hugged huggad)] Josh 9:24 «הֻגֵּ֨ד»  source: 5046 HVHa = VERB, Hofʿal, infinitive absolute  (2 such tokens)
+   verse: וַיַּעֲנ֨וּ אֶת־יְהוֹשֻׁ֜עַ וַיֹּאמְר֗וּ כִּי֩ הֻגֵּ֨ד הֻגַּ֤ד לַעֲבָדֶ֙יךָ֙ אֵת֩ אֲשֶׁ֨ר צִוָּ֜ה יְהֹוָ֤ה אֱל
+   ⇒ נָגַד / VERB / Hofʿal, infinitive absolute / INFL:to be declared / 0.92 / lexicon / period he-bib / Variety: he-bib.
+   parts: הֻגֵּד: Hofʿal verb
+   R: huged (lemma nagad) / D: to oppose ; warrant officer
+[infinitive absolute hifil] Judg 14:12 «הַגֵּ֣ד»  source: 5046 HVha = VERB, Hifʿil, infinitive absolute  (3 such tokens)
+   verse: וַיֹּ֤אמֶר לָהֶם֙ שִׁמְשׁ֔וֹן אָחֽוּדָה־נָּ֥א לָכֶ֖ם חִידָ֑ה אִם־הַגֵּ֣ד תַּגִּ֩ידוּ֩ אוֹתָ֨הּ לִ֜י שִׁבְעַ֨ת 
+   ⇒ נָגַד / VERB / Hifʿil, imperative, 2nd person masculine singular / INFL:Declare! / 0.63 / lexicon / period he-bib / Variety: he-bib.
+   also: נָגַד/VERB(0.58)=be conspicuous, , הִגִּיד/VERB(0.45)=to tell, say
+   parts: הַגֵּד: Hifʿil verb
+   R: haged (lemma nagad) / D: to oppose ; warrant officer

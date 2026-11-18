@@ -1,0 +1,84 @@
+base: 25 verses, 243 words (Gen 1:1–5, Deut 6:4–9, Ps 23, Isa 53:4–6, Ruth 1:16–17, Ps 122:2, 122:6, 137:5)
+
+== NFD (decomposed): 243 words; reading changed 0; blank 0; unconfirmed 1; verses whose word count changed 0; periods {"he-bib":25}
+
+== presentation forms U+FB1D–FB4B for letter + dot: 243 words; reading changed 0; blank 0; unconfirmed 1; verses whose word count changed 0; periods {"he-bib":25}
+
+== dagesh typed BEFORE the vowel point (and left unnormalised by a combining grapheme joiner): 243 words; reading changed 66; blank 0; unconfirmed 66; verses whose word count changed 0; periods {"he-bib":25}
+   בּ͏ָרָ֣א: בַּר/NOUN/masculine singular, determined → בָּרָא/VERB/imperative, masculine singular/UNCONF
+   פּ͏ְנֵ֣י: פָּנִים/NOUN/masculine or feminine plura → פָּנִים/NOUN/masculine or feminine plural, constru
+   פּ͏ְנֵ֥י: פָּנִים/NOUN/masculine or feminine plura → פָּנִים/NOUN/masculine or feminine plural, constru
+   וַיּ͏ֹ֥אמֶר: אָמַר/VERB/Qal, wayyiqtol (narrative pas → אָמַר/VERB/Qal, wayyiqtol (narrative past), 3rd pe
+   וַיּ͏ַ֧רְא: רָאָה/VERB/Qal, wayyiqtol (narrative pas → רָאָה/VERB/Qal, wayyiqtol (narrative past), 3rd pe
+   כּ͏ִי: כִּי/CONJ/ → כִּי/CONJ//UNCONF
+   וַיּ͏ַבְדּ͏ֵ֣ל: בָּדַל/VERB/Hifʿil, wayyiqtol (narrative → בָּדַל/VERB/Hifʿil, wayyiqtol (narrative past), 3r
+   בּ͏ֵ֥ין: בֵּין/ADP/ → בֵּין/ADP//UNCONF
+   וַיּ͏ִקְרָ֨א: קָרָא/VERB/Qal, wayyiqtol (narrative pas → קָרָא/VERB/Qal, wayyiqtol (narrative past), 3rd pe
+   וְאָ֣הַבְתּ͏ָ֔: אָהַב/VERB/Qal, weqatal (sequential perf → אָהַב/VERB/Qal, weqatal (sequential perfect), 2nd 
+   הָאֵ֗לּ͏ֶה: אֵלֶּה/PRON/demonstrative, common gender → אֵלֶּה/PRON/demonstrative, common gender plural, w
+   מְצַוּ͏ְךָ֛: צָוָה/VERB/Piʿel, participle, masculine  → צָוָה/VERB/Piʿel, participle, masculine singular, 
+   וְשִׁנּ͏ַנְתּ͏ָ֣ם: שָׁנַן/VERB/Piʿel, weqatal (sequential p → שָׁנַן/VERB/Piʿel, weqatal (sequential perfect), 2
+   וְדִבּ͏ַרְתּ͏ָ֖: דָבַר/VERB/Piʿel, weqatal (sequential pe → דָבַר/VERB/Piʿel, weqatal (sequential perfect), 2n
+
+== ASCII hyphen for the maqaf: 243 words; reading changed 0; blank 0; unconfirmed 1; verses whose word count changed 0; periods {"he-bib":25}
+
+== maqaf dropped, words run together: 218 words; reading changed 0; blank 22; unconfirmed 2; verses whose word count changed 15; periods {"he-bib":24,"none":1}
+   [verse 2: 12 words instead of 14: וְהָאָ֗רֶץ · הָיְתָ֥ה · תֹ֙הוּ֙ · וָבֹ֔הוּ · וְחֹ֖שֶׁךְ · עַלפְּנֵ֣י]
+   [verse 3: 5 words instead of 6: וַיֹּ֥אמֶר · אֱלֹהִ֖ים · יְהִ֣י · א֑וֹר · וַֽיְהִיאֽוֹר]
+   [verse 4: 10 words instead of 12: וַיַּ֧רְא · אֱלֹהִ֛ים · אֶתהָא֖וֹר · כִּיט֑וֹב · וַיַּבְדֵּ֣ל · אֱלֹהִ֔ים]
+   [verse 5: 11 words instead of 13: וַיִּקְרָ֨א · אֱלֹהִ֤ים · לָאוֹר֙ · י֔וֹם · וְלַחֹ֖שֶׁךְ · קָ֣רָא]
+   [verse 7: 7 words instead of 10: וְאָ֣הַבְתָּ֔ · אֵ֖ת · יְהֹוָ֣ה · אֱלֹהֶ֑יךָ · בְּכׇללְבָבְךָ֥ · וּבְכׇלנַפְשְׁךָ֖]
+   [verse 8: 8 words instead of 9: וְהָי֞וּ · הַדְּבָרִ֣ים · הָאֵ֗לֶּה · אֲשֶׁ֨ר · אָנֹכִ֧י · מְצַוְּךָ֛]
+   [verse 10: 7 words instead of 8: וּקְשַׁרְתָּ֥ם · לְא֖וֹת · עַליָדֶ֑ךָ · וְהָי֥וּ · לְטֹטָפֹ֖ת · בֵּ֥ין]
+   [verse 11: 4 words instead of 5: וּכְתַבְתָּ֛ם · עַלמְזֻז֥וֹת · בֵּיתֶ֖ךָ · וּבִשְׁעָרֶֽיךָ]
+   [verse 13: 6 words instead of 7: בִּנְא֣וֹת · דֶּ֭שֶׁא · יַרְבִּיצֵ֑נִי · עַלמֵ֖י · מְנֻח֣וֹת · יְנַהֲלֵֽנִי]
+   [verse 14: 6 words instead of 7: נַפְשִׁ֥י · יְשׁוֹבֵ֑ב · יַֽנְחֵ֥נִי · בְמַעְגְּלֵיצֶ֝֗דֶק · לְמַ֣עַן · שְׁמֽוֹ]
+   [verse 15: 12 words instead of 15: גַּ֤ם · כִּֽיאֵלֵ֨ךְ · בְּגֵ֪יא · צַלְמָ֡וֶת · לֹאאִ֘ירָ֤א · רָ֗ע]
+   [verse 17: 10 words instead of 12: אַ֤ךְ · ט֤וֹב · וָחֶ֣סֶד · יִ֭רְדְּפוּנִי · כׇּליְמֵ֣י · חַיָּ֑י]
+   [verse 19: 10 words instead of 11: וְהוּא֙ · מְחֹלָ֣ל · מִפְּשָׁעֵ֔נוּ · מְדֻכָּ֖א · מֵעֲוֺנֹתֵ֑ינוּ · מוּסַ֤ר]
+   [verse 21: 17 words instead of 20: וַתֹּ֤אמֶר · רוּת֙ · אַלתִּפְגְּעִיבִ֔י · לְעׇזְבֵ֖ךְ · לָשׁ֣וּב · מֵאַחֲרָ֑יִךְ]
+
+== colon for the sof pasuq, vertical bar for the paseq: 243 words; reading changed 0; blank 0; unconfirmed 1; verses whose word count changed 0; periods {"he-bib":25}
+
+== no cantillation, meteg kept: 243 words; reading changed 0; blank 0; unconfirmed 1; verses whose word count changed 0; periods {"he-bib":25}
+
+== qamats qatan (U+05C7) and holam haser (U+05BA) written as plain qamats and holam; CGJ removed: 243 words; reading changed 3; blank 0; unconfirmed 4; verses whose word count changed 0; periods {"he-bib":25}
+   יְרוּשָׁלִָֽם: יְרוּשָׁלַ͏ִם/PROPN/ → יְרוּשָׁלַ͏ִם/PROPN//UNCONF
+   יְרוּשָׁלִָ֑ם: יְרוּשָׁלַ͏ִם/PROPN/ → יְרוּשָׁלַ͏ִם/PROPN//UNCONF
+   יְֽרוּשָׁלִָ֗ם: יְרוּשָׁלַ͏ִם/PROPN/ → יְרוּשָׁלַ͏ִם/PROPN//UNCONF
+
+== every hataf vowel written as a shva (a common typing fault): 243 words; reading changed 27; blank 0; unconfirmed 28; verses whose word count changed 0; periods {"he-bib":25}
+   אְלֹהִ֑ים: אֱלֹהִים/NOUN/masculine plural, absolute → אֱלֹהִים/NOUN/masculine plural, absolute/UNCONF
+   אְלֹהִ֔ים: אֱלֹהִים/NOUN/masculine plural, absolute → אֱלֹהִים/NOUN/masculine plural, absolute/UNCONF
+   אְלֹהִ֖ים: אֱלֹהִים/NOUN/masculine plural, absolute → אֱלֹהִים/NOUN/masculine plural, absolute/UNCONF
+   אְלֹהִ֛ים: אֱלֹהִים/NOUN/masculine plural, absolute → אֱלֹהִים/NOUN/masculine plural, absolute/UNCONF
+   אְלֹהִ֔ים: אֱלֹהִים/NOUN/masculine plural, absolute → אֱלֹהִים/NOUN/masculine plural, absolute/UNCONF
+   אְלֹהִ֤ים: אֱלֹהִים/NOUN/masculine plural, absolute → אֱלֹהִים/NOUN/masculine plural, absolute/UNCONF
+   אְלֹהֵ֖ינוּ: אֱלֹהִים/NOUN/masculine plural, construc → אֱלֹהִים/NOUN/masculine plural, construct/UNCONF
+   אְלֹהֶ֑יךָ: אֱלֹהִים/NOUN/masculine plural, construc → אֱלֹהִים/NOUN/masculine plural, construct/UNCONF
+   אְשֶׁ֨ר: אֲשֶׁר/SCONJ/relative → אֲשֶׁר/SCONJ/relative/UNCONF
+   יְנַהְלֵֽנִי: נָהַל/VERB/Piʿel, imperfect (yiqtol), 3r → נָהַל/VERB/Piʿel, imperfect (yiqtol), 3rd person m
+   יְנַֽחְמֻֽנִי: נָחַם/VERB/Piʿel, imperfect (yiqtol), 3r → נָחַם/VERB/Piʿel, imperfect (yiqtol), 3rd person m
+   תַּעְרֹ֬ךְ: עָרַךְ/VERB/Qal, imperfect (yiqtol), 2nd → עָרַךְ/VERB/future, 2nd person masculine singular/
+   חְלָיֵ֙נוּ֙: חֳלִי/NOUN/masculine plural, construct → חָלָה/VERB/past, 1st person masculine or feminine 
+   וַאְנַ֣חְנוּ: אֲנַחְנוּ/PRON/personal, 1st person comm → אֲנַחְנוּ/PRON/personal, 1st person common gender 
+
+== zero-width joiner / LRM/RLM marks between words (copied from a web page): 243 words; reading changed 0; blank 0; unconfirmed 1; verses whose word count changed 0; periods {"he-bib":25}
+
+== non-breaking spaces between words: 243 words; reading changed 0; blank 0; unconfirmed 1; verses whose word count changed 0; periods {"he-bib":25}
+
+== geresh-style apostrophes inside? none; final letters replaced by medial ones (a typing fault): 243 words; reading changed 75; blank 75; unconfirmed 1; verses whose word count changed 0; periods {"he-bib":16,"none":9}
+   אֱלֹהִ֑ימ: אֱלֹהִים/NOUN/masculine plural, absolute → ∅//
+   הַשָּׁמַ֖יִמ: שָׁמַיִם/NOUN/masculine plural, absolute → ∅//
+   הָאָֽרֶצ: אֶרֶץ/NOUN/masculine or feminine singula → ∅//
+   וְהָאָ֗רֶצ: אֶרֶץ/NOUN/masculine or feminine singula → ∅//
+   וְחֹ֖שֶׁכְ: חֹשֶׁךְ/NOUN/masculine singular, absolut → ∅//
+   תְה֑וֹמ: תְּהוֹם/NOUN/masculine or feminine singu → ∅//
+   אֱלֹהִ֔ימ: אֱלֹהִים/NOUN/masculine plural, absolute → ∅//
+   הַמָּֽיִמ: מַיִם/NOUN/masculine plural, absolute, w → ∅//
+   אֱלֹהִ֖ימ: אֱלֹהִים/NOUN/masculine plural, absolute → ∅//
+   אֱלֹהִ֛ימ: אֱלֹהִים/NOUN/masculine plural, absolute → ∅//
+   אֱלֹהִ֔ימ: אֱלֹהִים/NOUN/masculine plural, absolute → ∅//
+   בֵּ֥ינ: בֵּין/ADP/ → ∅//
+   וּבֵ֥ינ: בֵּין/ADP/ → ∅//
+   הַחֹֽשֶׁכְ: חֹשֶׁךְ/NOUN/masculine singular, absolut → ∅//

@@ -1,0 +1,137 @@
+# Battery 1: prefixed particles, the article, suffixes, the construct state, noun plurals and duals. Pointed text from the repository.
+# --- waw
+bare=ויאמר code=^HC/Vqw3ms$ # wayyiqtol
+bare=והיה code=^HC/Vqq3ms$ # weqatal
+bare=והיה code=^HC/Vqp3ms$ # simple waw + perfect (same spelling as the weqatal)
+bare=ויהי code=^HC/Vqw3ms$ n=5 # wayyiqtol of hayah
+bare=ואמר code=Vqq # weqatal 3ms or 1cs
+bare=ואמרת code=^HC/Vqq2ms$ # weqatal 2ms
+# --- he: article against the question particle
+bare=השמר code=Ti # interrogative he (Am I my brother's keeper)
+bare=המלך code=^HTd/Ncmsa$ # article
+bare=הלוא # ha + lo
+bare=הלא code=Ti # ha + lo, short
+bare=האתה # interrogative before a pronoun
+bare=המן code=Ti # hamin
+bare=האיש code=^HTd/Ncmsa$ # article before aleph
+bare=ההר code=^HTd # article before he
+bare=החכם # article before het
+bare=העם code=^HTd/Ncmsa$ # article before ayin
+# --- b k l m sh and the article hidden under them
+bare=בבית code=^HRd/Ncmsa$ # in THE house: article hidden
+bare=בבית code=^HR/Ncmsc$ # in the house OF: no article
+bare=למלך code=^HRd/Ncmsa$ # to THE king
+bare=למלך code=^HR/Ncmsa$ # to A king
+bare=וביום code=^HC/Rd/Ncmsa$ # and on THE day
+bare=מהארץ # from + the + land
+bare=כאשר # ka'asher
+bare=וכאשר # and as
+bare=שבשמים # she + ba + shamayim
+bare=שהיה code=^HTr/ # she + perfect
+bare=שלי # shelli (Song 1:6)
+bare=שאני # she + ani
+bare=מאת code=^HR/R$ # me'et
+bare=ומן # umin
+bare=כמים # like the waters
+bare=לאמר code=^HR/Vqc$ # lemor
+bare=ובשמים # and in the heavens
+bare=כיום # as the day / as at this day
+bare=מיום # from the day
+bare=מבית code=^HR/Ncmsc$ # from the house of
+bare=ולבני # and to the sons of
+bare=ומכל # and from all
+bare=שככה # Ps 144:15 shekkakha
+# --- suffixes on nouns, prepositions and verbs
+bare=דברו code=^HNcmsc/Sp3ms$ # his word
+bare=דברי code=^HNcmsc/Sp1cs$ # my word
+bare=דברי code=^HNcmpc$ # words of (construct plural, same letters)
+bare=דברי code=^HNcmpc/Sp1cs$ # my words
+bare=סוסיהם # their horses
+bare=לי code=^HR/Sp1cs$ # to me
+bare=אליו code=^HR/Sp3ms$ # to him
+bare=עמנו code=^HR/Sp1cp$ # with us
+bare=אתו code=^HTo/Sp3ms$ # him (object marker + suffix)
+bare=אתו code=^HR/Sp3ms$ # with him
+bare=אתך code=Sp2 # you / with you
+bare=ממני # from me
+bare=ממנו code=Sp3ms # from him
+bare=ממנו code=Sp1cp # from us (the source's own tag)
+bare=לך code=^HR/Sp2ms$ # to you (m.)
+bare=לך code=^HR/Sp2fs$ # to you (f.)
+bare=לך code=^HVqv2ms$ # go! (imperative)
+bare=בך # in you
+bare=עליהם # on them
+bare=אחריו # after him
+bare=תחתיו # under him
+bare=שמרני code=Sp1cs # keep me
+bare=ויתנהו # and he gave him / set him
+bare=ויברכהו # and he blessed him
+bare=אהבתיך # I have loved you
+bare=ראיתיו # I saw him
+bare=ישמרך # may he keep you
+bare=אביו # his father
+bare=אחיך # your brother
+bare=בנו code=^HNcmsc/Sp3ms$ # his son
+bare=בנו code=^HVqp3cp$ # they built (same letters)
+bare=אשתו # his wife
+bare=ידיו # his hands
+bare=עיניהם # their eyes
+bare=מלכנו # our king
+bare=אלהי code=Sp1cs # my God
+# --- directional he, paragogic letters, cohortative
+bare=ארצה code=/Sd$ # to the ground / to the land
+bare=מצרימה # to Egypt
+bare=שמה code=/Sd$ # thither
+bare=הביתה # to the house
+bare=ימה # westward / to the sea
+bare=תמתון # paragogic nun (Gen 3:4)
+bare=ידעון # paragogic nun
+bare=אלכה code=Vqh # cohortative
+bare=נלכה code=Vqh # cohortative plural
+bare=אשמרה # cohortative
+bare=יברכנהו # energic nun (Ps 72:15)
+bare=אתננה # energic nun + suffix
+# --- construct state
+bare=בית code=^HNcmsc$ # house of
+bare=בני code=^HNcmpc$ # sons of
+bare=מלכי code=^HNcmpc$ # kings of
+bare=מלכי code=^HNcmsc/Sp1cs$ # my king
+bare=דבר code=^HNcmsc$ # word of (devar)
+bare=ארץ code=^HNcbsc$ # land of
+bare=אשת code=^HNcfsc$ # wife of
+bare=מלכת code=^HNcfsc$ # queen of
+bare=ימי code=^HNcmpc$ # days of
+bare=שנת code=^HNcfsc$ # year of
+bare=עיני code=^HNcbdc$ # eyes of (dual construct)
+bare=מי code=^HNcmpc$ # waters of
+bare=אנשי # men of
+# --- duals and irregular plurals
+bare=ידים # hands (dual)
+bare=מים code=^HNcmpa$ # water
+bare=שמים code=^HNcmpa$ # heavens
+bare=רגלים # feet
+bare=אזנים # ears
+bare=יומים # two days
+bare=שנתים # two years
+bare=אלפים code=d # two thousand
+bare=מאתים # two hundred
+bare=אבות code=^HNcmpa$ # fathers
+bare=אבתינו # our fathers
+bare=אנשים code=^HNcmpa$ # men
+bare=נשים code=^HNcfpa$ # women
+bare=בתים code=^HNcmpa$ # houses
+bare=ימים code=^HNcmpa$ # days
+bare=ערים code=^HNcfpa$ # cities
+bare=בנים code=^HNcmpa$ # sons
+bare=בנות code=^HNcfpa$ # daughters
+bare=אחים # brothers
+bare=ראשים # heads
+bare=כלים # vessels
+bare=פיות # mouths
+bare=שמות code=^HNcmpa$ # names
+bare=אהלים # tents
+bare=קדשים # holy things
+bare=חדשים # months
+bare=מלכים code=^HNcmpa$ # kings (segolate plural)
+bare=ספרים # books
+bare=נערים # youths

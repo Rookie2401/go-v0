@@ -1,0 +1,262 @@
+
+===== modern-text.txt =====
+L1: [he-mod]
+    אתמול = אֶתְמוֹל/ADV [] "yesterday" 0.5 +1alt(אֶתְמוֹל/NOUN) R:—
+    בבוקר = בֹּקֶר/NOUN [singular, construct] "A morning, dawn." 0.35 rule +3alt(בֹּקֶר/NOUN,בֻּקַּר/VERB,בִּקֵּר/VERB) {ב: from בְּ, in, with, by ; בוקר: from בֹּקֶר, stem} R:—
+    קמתי = קָם/VERB [past, 1st person masculine or feminine singular] "to rise, stand up" 0.45 +1alt(קוּם/VERB) R:—
+    מוקדם = מֻקְדָּם/ADJ [] "early" 0.6 +1alt(מֻקְדָּם/ADV) R:—
+    והלכתי = הָלַךְ/VERB [Qal, weqatal (sequential perfect), 1st person common gender singular] "And I will go" 0.46 {ו: and ; הלכתי: Qal verb} R:—
+    לעבודה = עֲבֹדָה/NOUN [feminine singular, absolute] "labour, service, work" 0.6 {ל: from לְ, to, for ; עבודה: from עֲבֹדָה, stem} R:—
+    ברגל = רֶגֶל/NOUN [feminine singular, absolute] "foot, three times" 0.51 {ב: from בְּ, in, with, by ; רגל: from רֶגֶל, stem} R:—
+    כי = כִּי/CONJ [] "that, because, for, when" 0.46 +3alt(כִי/NOUN,כִּי/ADV,כִּי/CONJ) R:—
+    האוטובוס = אוֹטוֹבּוּס/NOUN [singular, construct, with the article] "a bus (vehicle)" 0.5 rule {ה: from הַ, the ; אוטובוס: from אוֹטוֹבּוּס, stem} R:—
+    שלי = שֶׁל/ADP [personal, 1st person singular] "my, mine" 0.8 rule +3alt(שֶׁל/ADP,שָׁלָה/VERB,שֶׁל/ADP) R:—
+    איחר = אִחֵר/VERB [past, 3rd person masculine singular] "to be late" 0.78 R:—
+    שוב = שׁוּב/ADV [] "again" 0.43 +3alt(שָׁב/VERB,שׁוּב/VERB,שׁוּב/VERB) R:—
+L1: [he-mod]
+    בדרך = דֶּרֶךְ/NOUN [masculine or feminine singular, absolute, with the article] "way, road; journey; manner" 0.38 +2alt(דֶּרֶךְ/NOUN,דֶּרֶךְ/NOUN) {ב: from בְּ, preposition with the article fused into it ; דרך: from דֶּרֶךְ, stem} R:—
+    קניתי = קָנָה/VERB [Qal, perfect (qatal), 1st person common gender singular] "I got" 0.52 +2alt(קְנִיָּה/NOUN,קָנָה/VERB) {קניתי: Qal verb} R:—
+    קפה = קָפֶה/NOUN [] "coffee" 0.57 +1alt(קֻפָּה/NOUN) R:—
+    ולחמנייה = לַחְמָנִיָּה/NOUN [singular] "bread roll (a miniature round loaf of bread," 0.5 rule {ו: from וְ, and ; לחמנייה: from לַחְמָנִיָּה, stem} R:—
+    במאפייה = מַאֲפִיָּה/NOUN [singular] "bakery" 0.5 rule {ב: from בְּ, in, with, by ; מאפייה: from מַאֲפִיָּה, stem} R:—
+    הקטנה = קָטָן/ADJ [feminine singular, absolute, with the article] "small, young, unimportant" 0.53 +2alt(הִקְטִין/VERB,הִקְטִין/VERB) {ה: from הַ, the ; קטנה: from קָטָן, stem} R:—
+    שליד = ∅
+    הבית = בֵּית/PROPN [] "alternative form of בי״ת" 0.43 +3alt(בית m/NOUN,בַּיִת/NOUN,בַּיִת/NOUN) R:—
+L1: [he-mod]
+    המוכרת = מֻכָּר/ADJ [feminine, with the article] "Familiar, known, recognized." 0.33 rule +3alt(הֻכַּר/VERB,מוֹכֵר/NOUN,מָכַר/VERB) {ה: from הַ, the ; מוכרת: from מֻכָּר, stem} R:—
+    שאלה = שְׁאֵלָה/NOUN [] "question" 0.45 +3alt(שָׁאַל/VERB,שְׁאוֹל/PROPN,שְׁאֵלָה/NOUN) R:—
+    אותי = אֶת/ADP [personal, 1st person singular] "me (object)" 0.8 rule +3alt(אֵת/PART,אֵת/ADP,אֵת/ADP) R:—
+    אם = אִם/CONJ [] "if; whether" 0.44 +3alt(אֵם/NOUN,אִם/CONJ,אֵם/NOUN) R:—
+    אני = אֲנִי/PRON [personal, 1st person common gender singular] "I" 0.44 +3alt(אֲנִי/NOUN,אֲנִי/PRON,אֳנִי/NOUN) R:—
+    רוצה = רָצָה/VERB [present, masculine singular] "wanting" 0.47 +3alt(רָצָה/VERB,רָצָה/VERB,רָצָה/VERB) R:—
+    גם = גַּם/PART [affirmative particle] "also, even, moreover" 0.45 +2alt(גַּם/ADV,גַּם/ADV) R:—
+    עוגה = עוּגָה/NOUN [] "cake" 0.6 R:—
+    אבל = אֲבָל/CONJ [] "but" 0.44 +3alt(אֵבֶל/NOUN,אָבַל/VERB,אֵבֶל/NOUN) R:—
+    אמרתי = אָמַר/VERB [Qal, perfect (qatal), 1st person common gender singular] "I said" 0.46 +2alt(אָמַר/VERB,אִמְרָה/NOUN) {אמרתי: Qal verb} R:—
+    לה = לְ/ADP [personal, 3rd person feminine singular] "to her, it" 0.8 rule +3alt(ל/ADP,לָה/PROPN,לְ־/ADP) R:—
+    שאני = אֲנִי/PRON [personal, 1st person common gender singular] "I" 0.47 {ש: from שֶׁ, that, which ; אני: from אֲנִי, stem} R:—
+    לא = לֹא/PART [negative] "not, no" 0.46 +3alt(לֹא/ADV,לֹא/INTJ,לָא/PART) R:—
+    רעב = רָעָב/NOUN [masculine singular, absolute] "famine, hunger" 0.52 +3alt(רָעֵב/ADJ,רָעָב/NOUN,רָעַב/VERB) R:—
+L1: [none]
+    כשהגעתי = ∅
+    למשרד = מִשְׂרָד/NOUN [singular, construct] "An office: a person's office, a workplace." 0.43 rule +1alt(מִשְׂרָד/NOUN) {ל: from לְ, to, for ; משרד: from מִשְׂרָד, stem} R:—
+    כולם = כֹּל/NOUN [3rd person masculine plural] "All, whole, entirety, everything; found almo" 0.52 +3alt(כֻּלָּם/PRON,כל/PRON,כֹּל/NOUN) R:—
+    כבר = כְּבָר/ADV [] "Already: before now, or before then." 0.44 +3alt(כְּבָר/PROPN,כָּבַר/VERB,כָּבַר/VERB) R:—
+    ישבו = יָשַׁב/VERB [Qal, perfect (qatal), 3rd person common gender plural] "They sat" 0.4 +3alt(שָׁבָה/VERB,יָשַׁב/VERB,יָשַׁב/VERB) {ישבו: Qal verb} R:—
+    ליד = לְיַד־/ADP [] "Beside, near, by, near to, next to, adjacent" 0.45 +2alt(יָד/NOUN,יָד/NOUN) R:—
+    המחשבים = מַחְשֵׁב/NOUN [plural, with the article] "computer" 0.7 R:—
+    ועבדו = עָבַד/VERB [Qal, imperative, 2nd person masculine plural] "And work! (plural)" 0.38 +3alt(עָבַד/VERB,עֶבֶד/NOUN,עָבַד/VERB) {ו: and ; עבדו: Qal verb} R:—
+L1: [he-mod]
+    המנהלת = מְנַהֶלֶת/NOUN [with the article] "a (female) boss" 0.3 rule +3alt(נִהֵל/VERB,נהל/VERB,מְנַהֵל/NOUN) {ה: from הַ, the ; מנהלת: from מְנַהֶלֶת, stem} R:—
+    שלנו = שֶׁל/ADP [personal, 1st person plural] "our, ours" 0.8 rule +2alt(שֶׁל/ADP,שֶׁל/ADP) R:—
+    אמרה = אָמַר/VERB [Qal, perfect (qatal), 3rd person feminine singular] "She said" 0.45 +3alt(אָמַר/VERB,אָמַר/VERB,אֹמֶר/NOUN) {אמרה: Qal verb} R:—
+    שיש = שָׂשׂ/VERB [imperative, masculine singular] "to rejoice, be happy" 0.45 +3alt(שָׂשׂ/VERB,יֵשׁ/PART,שַׁיִשׁ/NOUN) R:—
+    לנו = לְ/ADP [personal, 1st person plural] "to us" 0.8 rule +3alt(ל/ADP,לָן/VERB,לָן/VERB) R:—
+    ישיבה = יָשַׁב/VERB [] "to sit, to be in a position with the torso u" 0.54 +1alt(יְשִׁיבָה/NOUN) R:—
+    חשובה = חָשׁוּב/ADJ [feminine] "important" 0.54 +1alt(חִשּׁוּב/NOUN) R:—
+    בשעה = שָׁעָה/NOUN [] "hour (a unit of time of one twenty-fourth of" 0.31 rule +3alt(שָׁעָה/VERB,שָׁעָה/VERB,שָׁעָה/VERB) {ב: from בְּ, in, with, by ; שעה: from שָׁעָה, stem} R:—
+    עשר = עָשָׂר/NUM [] "-teen" 0.43 +3alt(עֲשָׂרָה/NUM,עֹשֶׁר/NOUN,עָשָׂר/NUM) R:—
+    ושכדאי = ∅
+    להתכונן = הִתְכּוֹנֵן/VERB [past, 3rd person masculine singular] "to prepare oneself (e.g. for an exam)" 0.39 rule +1alt(הִתְכּוֹנֵן/VERB) {ל: from לְ, to, for ; התכונן: from הִתְכּוֹנֵן, stem} R:—
+    אליה = אֶל/ADP [personal, 3rd person feminine singular] "to her, it" 0.8 rule +3alt(אֶל/ADP,אֵלִיָּה/PROPN,אֵל/NOUN) R:—
+L1: [he-mod]
+    אחרי = אַחַר/ADP [] "after, behind" 0.45 +3alt(אַחֲרֵי/ADP,אַחֲרֵי/ADV,אִחֵר/VERB) R:—
+    הישיבה = יְשִׁיבָה/NOUN [singular, with the article] "sitting" 0.7 R:—
+    אכלנו = אִכֵּל/VERB [past, 1st person masculine or feminine plural] "to corrode" 0.45 +3alt(אֹֽכֶל/NOUN,אָכַל/VERB,אֻכַּל/VERB) R:—
+    צהריים = צׇהֳרַיִם/NOUN [] "Noon, midday." 0.78 R:—
+    ביחד = בְּיַחַד/ADV [] "together" 0.6 R:—
+    ודיברנו = דִּבֵּר/VERB [past, 1st person masculine or feminine plural] "to speak (say words)" 0.5 rule {ו: from וְ, and ; דיברנו: from דִּבֵּר, stem} R:—
+    על = עַל/ADP [] "on, upon, over, against, concerning" 0.46 +3alt(עֹל/NOUN,עַל/ADP,עֹל/NOUN) R:—
+    החופשה = חֹפֶשׁ/NOUN [3rd person feminine singular, with the article, with a possessive suffix] "Freedom." 0.39 rule +1alt(חֻפְשָׁה/NOUN) {ה: from הַ, the ; חופשה: from חֹפֶשׁ, stem} R:—
+    בקיץ = קַיִץ/NOUN [masculine singular, absolute, with the article] "summer, summer-fruit" 0.55 {ב: from בְּ, preposition with the article fused into it ; קיץ: from קַיִץ, stem} R:—
+L1: [he-mod]
+    חברה = חֲבֵרָה/NOUN [] "A female friend, or more generally a female " 0.51 +3alt(חָבַר/VERB,חָבֵר/NOUN,חָבֵר/NOUN) R:—
+    שלי = שֶׁל/ADP [personal, 1st person singular] "my, mine" 0.8 rule +3alt(שֶׁל/ADP,שָׁלָה/VERB,שֶׁל/ADP) R:—
+    סיפרה = סִפֵּר/VERB [past, 3rd person feminine singular] "to tell (a story), to narrate, to recount" 0.78 R:—
+    שהיא = ∅
+    נוסעת = נָסַע/VERB [present, feminine singular] "To travel." 0.46 +3alt(נוֹסֵעַ/NOUN,נוֹסֵעַ/NOUN,נוֹסֵעַ/NOUN) R:—
+    עם = עִם/ADP [] "With: used to indicate togetherness, being t" 0.43 +3alt(עַם/NOUN,עַם/NOUN,עִם/ADP) R:—
+    המשפחה = מִשְׁפָּחָה/NOUN [feminine singular, absolute, with the article] "clan, guild, species" 0.45 +1alt(מִשְׁפָּחָה/NOUN) {ה: from הַ, the ; משפחה: from מִשְׁפָּחָה, stem} R:—
+    שלה = שֶׁל/ADP [personal, 3rd person feminine singular] "her, hers, its" 0.8 rule +3alt(שֶׁל/ADP,שָׁלָה/VERB,שֶׁל/ADP) R:—
+    לצפון = צָפוֹן/NOUN [feminine singular, absolute, with the article] "north, hidden, dark" 0.45 +1alt(צְפוֹן/PROPN) {ל: from לְ, preposition with the article fused into it ; צפון: from צָפוֹן, stem} R:—
+    והילדים = יֶלֶד/NOUN [masculine plural, absolute, with the article] "child, son, boy" 0.6 {ו: from וְ, and ; ה: from הַ, the ; ילדים: from יֶלֶד, stem} R:—
+    שלה = שֶׁל/ADP [personal, 3rd person feminine singular] "her, hers, its" 0.8 rule +3alt(שֶׁל/ADP,שָׁלָה/VERB,שֶׁל/ADP) R:—
+    כבר = כְּבָר/ADV [] "Already: before now, or before then." 0.44 +3alt(כְּבָר/PROPN,כָּבַר/VERB,כָּבַר/VERB) R:—
+    מתרגשים = הִתְרַגֵּשׁ/VERB [present, masculine plural] "be moved emotionally, be touched" 0.7 R:—
+    מאוד = מְאוֹד/ADV [] "Very, quite." 0.5 +2alt(מְאוֹד/NOUN,מְאוֹד/NOUN) R:—
+L1: [he-mod]
+    אני = אֲנִי/PRON [personal, 1st person common gender singular] "I" 0.44 +3alt(אֲנִי/NOUN,אֲנִי/PRON,אֳנִי/NOUN) R:—
+    עדיין = עֲדַיִן/ADV [] "Still, yet." 0.78 R:—
+    לא = לֹא/PART [negative] "not, no" 0.46 +3alt(לֹא/ADV,לֹא/INTJ,לָא/PART) R:—
+    יודע = יֻדַּע/VERB [past, 3rd person masculine singular] "to be informed" 0.43 +3alt(יָדַע/VERB,יִדֵּעַ/VERB,יָדַע/VERB) R:—
+    מה = מָה/PRON [] "what" 0.43 +3alt(מָה/INTJ,מָה/PART,מָה/PRON) R:—
+    אעשה = עָשָׂה/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I will do" 0.46 +3alt(עָשָׂה/VERB,עָשָׂה/VERB,נַעֲשָׂה/VERB) {א: imperfect preformative, first person common singular ; עשה: Qal verbal base} R:—
+    אולי = אוּלַי/ADV [] "peradventure, perhaps, if peradventure" 0.57 +3alt(אוּלַי/ADV,אוּלַי/PROPN,אֱוִלִי/ADJ) R:—
+    אשאר = נִשְׁאַר/VERB [future, 1st person masculine or feminine singular] "to stay, to remain" 0.7 R:—
+    בבית = בַּיִת/NOUN [masculine singular, construct] "house, household" 0.41 +3alt(בַּיִת/NOUN,בֵּית־אֵל/PROPN,בַּיִת/NOUN) {ב: from בְּ, in, with, by ; בית: from בַּיִת, stem} R:—
+    ואקרא = קָרָא/VERB [Qal, wayyiqtol (narrative past), 1st person common gender singular] "And I called" 0.47 {ו: and ; א: imperfect preformative, first person common singular ; קרא: Qal verbal base} R:—
+    כמה = כַּמָּה/DET [] "How much, how many." 0.44 +3alt(כַּמָּה/ADV,כָּמֵהַּ/ADJ,כָּמַהּ/VERB) R:—
+    ספרים = סֵפֶר/NOUN [masculine plural, absolute] "missive, document, writing" 0.43 +2alt(סֵפֶר/NOUN,סָפַר/NOUN) R:—
+L1: [he-mod]
+    בערב = עֶרֶב/NOUN [masculine singular, absolute, with the article] "set, evening, between two evenings" 0.4 +3alt(עֵרֶב/NOUN,עֵרֶב/NOUN,עֶרֶב/NOUN) {ב: from בְּ, preposition with the article fused into it ; ערב: from עֶרֶב, stem} R:—
+    התקשרתי = הִתְקַשֵּׁר/VERB [past, 1st person masculine or feminine singular] "to phone, call someone on a telephone" 0.7 R:—
+    לאמא = אִמָּא/NOUN [] "mother" 0.32 rule +1alt(אַבָּא/NOUN) {ל: from לְ, to, for ; אמא: from אִמָּא, stem} R:—
+    שלי = שֶׁל/ADP [personal, 1st person singular] "my, mine" 0.8 rule +3alt(שֶׁל/ADP,שָׁלָה/VERB,שֶׁל/ADP) R:—
+    ושאלתי = שָׁאַל/VERB [Qal, perfect (qatal), 1st person common gender singular] "And I asked" 0.34 rule +2alt(שָׁאַל/VERB,שְׁאֵלָה/NOUN) {ו: and ; שאלתי: Qal verb} R:—
+    מה = מָה/PRON [] "what" 0.43 +3alt(מָה/INTJ,מָה/PART,מָה/PRON) R:—
+    שלומה = שָׁלוֹם/NOUN [3rd person feminine singular, with a possessive suffix] "peace" 0.54 +1alt(שִׁלּוּם/NOUN) R:—
+L1: [he-mod]
+    היא = הוּא/PRON [personal, 3rd person feminine singular] "he, it; that" 0.46 +3alt(הִיא/PRON,הוּא/PRON,הוּא/PART) R:—
+    סיפרה = סִפֵּר/VERB [past, 3rd person feminine singular] "to tell (a story), to narrate, to recount" 0.78 R:—
+    לי = לְ/ADP [personal, 1st person singular] "to me" 0.8 rule +3alt(ל/ADP,לִי/PROPN,לְ־/ADP) R:—
+    שאבא = ∅
+    לא = לֹא/PART [negative] "not, no" 0.46 +3alt(לֹא/ADV,לֹא/INTJ,לָא/PART) R:—
+    מרגיש = הִרְגִּישׁ/VERB [present, masculine singular] "feel, sense" 0.7 R:—
+    טוב = טוֹב/ADJ [] "good, fair, fine" 0.43 +3alt(טוֹב/ADV,טוֹב/INTJ,טוֹב/NOUN) R:—
+    ושהם = שֹׁהַם/PROPN [] "Shoham" 0.47 +1alt(שֹׁהַם/NOUN) {ו: from וְ, and ; שהם: from שֹׁהַם, stem} R:—
+    הולכים = הָלַךְ/VERB [present, masculine plural] "to walk, go, especially on foot" 0.54 +1alt(הָלַךְ/VERB) R:—
+    מחר = מָחָר/NOUN [masculine singular, absolute] "to-morrow, in time to come, in future time" 0.58 +2alt(מָחָר/ADV,חֹר הַגִּדְגָּד/PROPN) R:—
+    לרופא = רָפָא/VERB [present, masculine singular] "healing" 0.31 rule +3alt(רֻפָּא/VERB,רִפֵּא/VERB,רוֹפֵא/NOUN) {ל: from לְ, to, for ; רופא: from רָפָא, stem} R:—
+L2: [he-mod]
+    שלום = שָׁלוֹם/NOUN [masculine singular, absolute] "peace, well-being, completeness" 0.44 +3alt(שָׁלוֹם/NOUN,שָׁלוֹם/INTJ,שָׁלוֹם/PROPN) R:—
+    מה = מָה/PRON [] "what" 0.43 +3alt(מָה/INTJ,מָה/PART,מָה/PRON) R:—
+    שלומך = שָׁלוֹם/NOUN [2nd person masculine singular, with a possessive suffix] "peace" 0.45 +3alt(שָׁלוֹם/NOUN,שִׁלּוּם/NOUN,שִׁלּוּם/NOUN) R:—
+L2: [he-mod]
+    בסדר = בְּסֵדֶר/ADJ [] "all right, okay, O.K., fine" 0.49 +2alt(בְּסֵדֶר/ADV,בְּסֵדֶר/INTJ) R:—
+    גמור = גָּמַר/VERB [passive participle, passive] "finished" 0.51 +2alt(גָּמַר/VERB,גָּמוּר/ADJ) R:—
+    תודה = תּוֹדָה/NOUN [feminine singular, absolute] "thanksgiving, give praise to, thanksgiving c" 0.46 +3alt(תּוֹדָה/NOUN,תּוֹדָה/INTJ,הוֹדָה/VERB) R:—
+L2: [he-bib]
+    ומה = מָה/PART [interrogative particle] "what? how? why?" 0.42 +1alt(מָה/PRON) {ו: from וְ, and ; מה: from מָה, stem} R:—
+    איתך = אֵת/ADP [personal, 2nd person singular] "with you (sg.)" 0.8 rule +3alt(אֵת/ADP,אֵת/ADP,אֵת/ADP) R:—
+L2: [he-mod]
+    גם = גַּם/PART [affirmative particle] "also, even, moreover" 0.45 +2alt(גַּם/ADV,גַּם/ADV) R:—
+    אני = אֲנִי/PRON [personal, 1st person common gender singular] "I" 0.44 +3alt(אֲנִי/NOUN,אֲנִי/PRON,אֳנִי/NOUN) R:—
+    בסדר = בְּסֵדֶר/ADJ [] "all right, okay, O.K., fine" 0.49 +2alt(בְּסֵדֶר/ADV,בְּסֵדֶר/INTJ) R:—
+L2: [he-mod]
+    אתה = אַתָּה/PRON [] "you, thou (second-person singular masculine)" 0.43 +3alt(עִם/ADP,עִם/ADP,אֹתוֹ/ADP) R:—
+    בא = בָּא/ADJ [] "Coming, next, upcoming." 0.43 +3alt(בָּא/VERB,בָּא/VERB,בָּא/VERB) R:—
+    למסיבה = הֵסֵב/VERB [present, feminine singular] "to cause a change in course or direction" 0.43 rule +1alt(מְסִבָּה/NOUN) {ל: from לְ, to, for ; מסיבה: from הֵסֵב, stem} R:—
+    ביום = יוֹם/NOUN [masculine singular, absolute, with the article] "day; time" 0.41 +3alt(בִּיֵּם/VERB,יוֹם/NOUN,יוֹם/NOUN) {ב: from בְּ, preposition with the article fused into it ; יום: from יוֹם, stem} R:—
+    שישי = שִׁשִּׁי/ADJ [] "sixth" 0.55 +2alt(שָׂשׂ/VERB,שׂוּשׂ/VERB) R:—
+L2: [he-mod]
+    אני = אֲנִי/PRON [personal, 1st person common gender singular] "I" 0.44 +3alt(אֲנִי/NOUN,אֲנִי/PRON,אֳנִי/NOUN) R:—
+    לא = לֹא/PART [negative] "not, no" 0.46 +3alt(לֹא/ADV,לֹא/INTJ,לָא/PART) R:—
+    בטוח = בָּטוּחַ/ADJ [] "Confident, sure, certain." 0.47 +3alt(בִּטּוּחַ/NOUN,בִּטּוּחַ/NOUN,בִּטּוּחַ/NOUN) R:—
+    אני = אֲנִי/PRON [personal, 1st person common gender singular] "I" 0.44 +3alt(אֲנִי/NOUN,אֲנִי/PRON,אֳנִי/NOUN) R:—
+    צריך = צַר/NOUN [masculine plural, construct] "adversary, foe" 0.47 +2alt(צָרִיךְ/ADJ,צִיר/NOUN) {צרי: from צַר, stem ; ך: possessive suffix} R:—
+    לשאול = שָׁאוּל/PROPN [] "Saul" 0.43 +2alt(שָׁאַל/VERB,שְׁאוֹל/PROPN) {ל: from לְ, to, for ; שאול: from שָׁאוּל, stem} R:—
+    את = אֵת/PART [object marker] "(marks the definite direct object)" 0.45 +3alt(אַתְּ/PRON,אֵת/ADP,אַתְּ/PRON) R:—
+    אשתי = אִשָּׁה/NOUN [feminine singular, construct] "woman, wife" 0.46 +1alt(אִשָּׁה/NOUN) {אשת: from אִשָּׁה, stem ; י: possessive suffix} R:—
+L2: [he-mod]
+    באיזו = אֵיזוֹ/DET [] "What, which; used in forming questions." 0.35 rule +1alt(אֵיזֶה/DET) {ב: from בְּ, in, with, by ; איזו: from אֵיזוֹ, stem} R:—
+    שעה = שָׁעָה/NOUN [] "hour (a unit of time of one twenty-fourth of" 0.49 +3alt(שָׁעָה/VERB,שָׁעָה/VERB,שָׁעָה/VERB) R:—
+    זה = זֶה/PRON [demonstrative, masculine singular] "this (masculine)" 0.45 +3alt(זֶה/DET,זֶה/PRON,זוֹ/PRON) R:—
+    מתחיל = הִתְחִיל/VERB [present, masculine singular] "to start, to begin" 0.7 R:—
+L2: [he-bib]
+    בשמונה = שְׁמֹנֶה/NUM [cardinal number, feminine singular, absolute] "eight" 0.6 {ב: from בְּ, in, with, by ; שמונה: from שְׁמֹנֶה, stem} R:—
+    וחצי = חֵצִי/NOUN [masculine singular, construct] "half, middle, midnight" 0.5 +2alt(חֵצִי/NOUN,חֲצִי הַמְּנַחְתִּי/NOUN) {ו: from וְ, and ; חצי: from חֵצִי, stem} R:—
+L2: [he-mod]
+    תביא = הֵבִיא/VERB [future, 2nd person masculine singular] "To bring." 0.4 +3alt(הֵבִיא/VERB,בּוֹא/VERB,בּוֹא/VERB) R:—
+    משהו = מַשֶּׁהוּ/PRON [] "something" 0.6 R:—
+    לשתות = שָׁתָה/VERB [Qal, infinitive construct] "to drink" 0.46 +2alt(לִשְׁתּוֹת/VERB,שָׁתָה/VERB) {ל: to, for ; שתות: Qal verb} R:—
+    בבקשה = בְּבַקָּשָׁה/INTJ [] "please (said in expressing a request)" 0.6 R:—
+L2: [he-mod]
+    אין = אַיִן/PART [negative] "there is not, without" 0.46 +3alt(אֵין/PART,אַיִן/NOUN,אַיֵּה/ADV) R:—
+    בעיה = בְּעָיָה/NOUN [] "problem" 0.6 R:—
+L2: [he-mod]
+    להתראות = לְהִתְרָאוֹת/INTJ [] "Goodbye, bye, see you later." 0.52 +1alt(לְהִתְרָאוֹת/VERB) R:—
+L3: [he-mod]
+    ראש = רֹאשׁ/NOUN [masculine singular, construct] "head; top; chief" 0.43 +3alt(רֹאשׁ/NOUN,רֹאשׁ/NOUN,רֹאשׁ/NOUN) R:—
+    הממשלה = מֶמְשָׁלָה/NOUN [singular, with the article] "A government." 0.55 +1alt(מֶמְשָׁלָה/NOUN) R:—
+    הודיע = הוֹדִיעַ/VERB [past, 3rd person masculine singular] "to inform, to announce, to make known" 0.49 +2alt(יָדַע/VERB,יָדַע/VERB) R:—
+    אתמול = אֶתְמוֹל/ADV [] "yesterday" 0.5 +1alt(אֶתְמוֹל/NOUN) R:—
+    כי = כִּי/CONJ [] "that, because, for, when" 0.46 +3alt(כִי/NOUN,כִּי/ADV,כִּי/CONJ) R:—
+    הממשלה = מֶמְשָׁלָה/NOUN [singular, with the article] "A government." 0.55 +1alt(מֶמְשָׁלָה/NOUN) R:—
+    תאשר = אִשֵּׁר/VERB [future, 2nd person masculine singular] "to approve, allow" 0.49 +2alt(אִשֵּׁר/VERB,אָשַׁר/VERB) R:—
+    בשבוע = שָׁבוּעַ/NOUN [singular, construct] "week, period of seven days" 0.32 rule +3alt(שָׂבַע/VERB,שָׁבוּעַ/NOUN,שָׁבוּעַ/NOUN) {ב: from בְּ, in, with, by ; שבוע: from שָׁבוּעַ, stem} R:—
+    הבא = בּוֹא/VERB [Qal, participle, masculine singular, absolute] "coming" 0.45 +3alt(הֵבִיא/VERB,הַבָּא/NOUN,הַבָּא/ADJ) {ה: the ; בא: Qal verb} R:—
+    תוכנית = תׇּכְנִית/NOUN [] "A program, a plan." 0.78 R:—
+    חדשה = חָדָשׁ/ADJ [feminine singular, absolute] "new" 0.53 +3alt(חָדָשׁ/ADJ,חָדָשׁ/ADJ,חִדֵּשׁ/VERB) R:—
+    להורדת = הוֹרִיד/VERB [past, 2nd person feminine singular] "to take down, to bring down, to lower" 0.31 rule +3alt(הוֹרִיד/VERB,הוּרַד/VERB,הוּרַד/VERB) {ל: from לְ, to, for ; הורדת: from הוֹרִיד, stem} R:—
+    מחירי = מְחִיר/NOUN [plural, construct] "A (good or service's) price, cost." 0.54 +1alt(מְחִיר/NOUN) R:—
+    הדיור = ∅
+L3: [he-mod]
+    לפי = פֶּה/NOUN [masculine singular, construct] "mouth; edge; command" 0.45 +1alt(לְפִי־/ADP) {ל: from לְ, to, for ; פי: from פֶּה, stem} R:—
+    התוכנית = תׇּכְנִית/NOUN [with the article] "A program, a plan." 0.5 rule {ה: from הַ, the ; תוכנית: from תׇּכְנִית, stem} R:—
+    המדינה = מְדִינָה/NOUN [feminine singular, absolute, with the article] "province" 0.6 {ה: from הַ, the ; מדינה: from מְדִינָה, stem} R:—
+    תבנה = בָּנָה/VERB [future, 2nd person masculine singular] "to build, to construct, to raise, to erect (" 0.39 +3alt(בָּנָה/VERB,נִבְנָה/VERB,נִבְנָה/VERB) R:—
+    אלפי = אֶלֶף/NUM [cardinal number, masculine or feminine plural, construct] "thousand" 0.43 +3alt(אֶלֶף/NOUN,אֲלָפִים/NOUN,אִלֵּף/VERB) R:—
+    דירות = דִּירָה/NOUN [plural] "apartment (domicile occupying part of a buil" 0.7 R:—
+    חדשות = חָדָשׁ/ADJ [feminine plural] "new, recently made" 0.49 +3alt(חֲדָשׁוֹת/NOUN,חָדָשׁ/ADJ,חָדָשׁ/ADJ) R:—
+    בערים = עִיר/NOUN [feminine plural, absolute, with the article] "city, town" 0.43 +2alt(בַּעַר/NOUN,בָּעַר/VERB) {ב: from בְּ, preposition with the article fused into it ; ערים: from עִיר, stem} R:—
+    הגדולות = גָּדוֹל/ADJ [feminine plural, with the article] "big, large" 0.5 rule {ה: from הַ, the ; גדולות: from גָּדוֹל, stem} R:—
+    ותשקיע = הִשְׁקִיעַ/VERB [future, 2nd person masculine singular] "to invest (money, time, capital, work, or th" 0.35 rule +2alt(הִשְׁקִיעַ/VERB,שָׁקַע/VERB) {ו: from וְ, and ; תשקיע: from הִשְׁקִיעַ, stem} R:—
+    מיליארדי = ∅
+    שקלים = שֶׁקֶל/NOUN [masculine plural, absolute] "a weight, shekel" 0.56 +1alt(שֶׁקֶל/NOUN) R:—
+    בתחבורה = תַּחְבּוּרָה/NOUN [] "Transport, transit, transportation: the move" 0.39 rule {ב: from בְּ, in, with, by ; תחבורה: from תַּחְבּוּרָה, stem} R:—
+    ציבורית = צִבּוּרִי/ADJ [feminine] "Public: pertaining to the public; or concern" 0.78 R:—
+L3: [he-mod]
+    באופוזיציה = אוֹפּוֹזִיצְיָה/NOUN [] "Opposition: a term for those parties that ar" 0.39 rule {ב: from בְּ, in, with, by ; אופוזיציה: from אוֹפּוֹזִיצְיָה, stem} R:—
+    אמרו = אָמַר/VERB [Qal, perfect (qatal), 3rd person common gender plural] "They said" 0.43 +3alt(אָמַר/VERB,אֹמֶר/NOUN,אָמַר/VERB) {אמרו: Qal verb} R:—
+    שהתוכנית = ∅
+    לא = לֹא/PART [negative] "not, no" 0.46 +3alt(לֹא/ADV,לֹא/INTJ,לָא/PART) R:—
+    תפתור = פָּתַר/VERB [future, 2nd person masculine singular] "to solve" 0.6 +1alt(פָּתַר/VERB) R:—
+    את = אֵת/PART [object marker] "(marks the definite direct object)" 0.45 +3alt(אַתְּ/PRON,אֵת/ADP,אַתְּ/PRON) R:—
+    הבעיה = בְּעָיָה/NOUN [with the article] "problem" 0.39 rule {ה: from הַ, the ; בעיה: from בְּעָיָה, stem} R:—
+    ושהמחירים = ∅
+    ימשיכו = הִמְשִׁיךְ/VERB [future, 3rd person masculine plural] "To continue, to still do." 0.7 R:—
+    לעלות = עָלָה/VERB [Qal, infinitive construct] "to go up" 0.45 +3alt(עֹלָה/NOUN,עֹלָה/NOUN,עָלָה/VERB) {ל: to, for ; עלות: Qal verb} R:—
+L3: [he-mod]
+    בינתיים = בינתיים \ בֵּינְתַיִם/ADV [] "Meanwhile, in the meantime." 0.78 R:—
+    מזג = מָזַג/VERB [imperative, masculine singular] "to pour" 0.42 +3alt(מִזֵּג/VERB,מֻזַּג/VERB,מֶזֶג/NOUN) R:—
+    האוויר = אֲוִיר/NOUN [singular, with the article] "air" 0.78 R:—
+    צפוי = צָפוּי/ADJ [] "Expected." 0.47 +3alt(צִפָּה/VERB,צָפָה/VERB,צִפּוּי/NOUN) R:—
+    להיות = הָיָה/VERB [Qal, infinitive construct] "to be" 0.46 +1alt(לִהְיוֹת/VERB) {ל: to, for ; היות: Qal verb} R:—
+    חם = חַם/ADJ [] "Hot: at a high temperature." 0.44 +3alt(חוּם/NOUN,חָם/PROPN,חָמוֹת/NOUN) R:—
+    מהרגיל = רָגִיל/ADJ [with the article] "regular, usual" 0.39 rule {מ: from מִן, from ; ה: from הַ, the ; רגיל: from רָגִיל, stem} R:—
+    ובסוף = בַּסּוֹף/ADV [] "finally" 0.33 rule +2alt(סוֹף/NOUN,סוּף/NOUN) {ו: from וְ, and ; בסוף: from בַּסּוֹף, stem} R:—
+    השבוע = שָׁבוּעַ/NOUN [singular, with the article] "week, period of seven days" 0.54 +1alt(שָׁבוּעַ/NOUN) R:—
+    ירד = יֶרֶד/PROPN [] "Jared (a man mentioned in the Book of Genesi" 0.43 +3alt(יָרַד/VERB,יָרַד/VERB,יָרַד/VERB) R:—
+    גשם = גֶּשֶׁם/NOUN [masculine singular, absolute] "rain, shower" 0.46 +3alt(גֶּשֶׁם/NOUN,גֶּשֶׁם/NOUN,גֶּשֶׁם/NOUN) R:—
+    בצפון = צָפוֹן/NOUN [feminine singular, absolute, with the article] "north, hidden, dark" 0.6 {ב: from בְּ, preposition with the article fused into it ; צפון: from צָפוֹן, stem} R:—
+    הארץ = אֶרֶץ/NOUN [masculine or feminine singular, absolute, with the article] "earth, land, ground" 0.46 +2alt(אֶרֶץ/NOUN,הָאָרֶץ/PROPN) {ה: from הַ, the ; ארץ: from אֶרֶץ, stem} R:—
+L4: [he-mod]
+    כל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.44 +3alt(כֹּל/NOUN,כֹּל/NOUN,כֹּל/CONJ) R:—
+    בני = בֵּן/NOUN [singular] "son" 0.43 +3alt(בֵּן/NOUN,בֵּן/NOUN,בֵּן/NOUN) R:—
+    האדם = אָדָם/NOUN [masculine singular, absolute, with the article] "human being, man, mankind; Adam" 0.46 +3alt(הֶאֱדִים/VERB,אָדֹם/ADJ,אָדָם/NOUN) {ה: from הַ, the ; אדם: from אָדָם, stem} R:—
+    נולדו = יָלַד/VERB [Nifʿal, perfect (qatal), 3rd person common gender plural] "They were born" 0.51 +1alt(נוֹלַד/VERB) {נולדו: Nifʿal verb} R:—
+    בני = בֵּן/NOUN [singular] "son" 0.43 +3alt(בֵּן/NOUN,בֵּן/NOUN,בֵּן/NOUN) R:—
+    חורין = ∅
+    ושווים = שָׁוֶה/ADJ [masculine plural] "equal, identical (the same in all respects, " 0.5 rule {ו: from וְ, and ; שווים: from שָׁוֶה, stem} R:—
+    בערכם = ∅
+    ובזכויותיהם = ∅
+L4: [he-mod]
+    כולם = כֹּל/NOUN [3rd person masculine plural] "All, whole, entirety, everything; found almo" 0.52 +3alt(כֻּלָּם/PRON,כל/PRON,כֹּל/NOUN) R:—
+    חוננו = ∅
+    בתבונה = תָּבוּן/NOUN [feminine singular, absolute] "understanding, teacher" 0.6 {ב: from בְּ, in, with, by ; תבונה: from תָּבוּן, stem} R:—
+    ובמצפון = צָפוֹן/NOUN [feminine singular, absolute] "north, hidden, dark" 0.36 rule +2alt(מַצְפּוּן/NOUN,צָפוֹן/NOUN) {ו: from וְ, and ; ב: from בְּ, in, with, by ; מצפון: from צָפוֹן, stem} R:—
+    לפיכך = לְפִיכָךְ/ADV [] "Therefore, hence, thereby." 0.6 R:—
+    חובה = חוֹב/NOUN [3rd person feminine singular, with a possessive suffix] "debt" 0.55 +2alt(חוֹבָה/NOUN,חוֹבָה/PROPN) R:—
+    עליהם = עַל/ADP [personal, 3rd person masculine plural] "on them (m.)" 0.8 rule +3alt(עַל/ADP,עֹל/NOUN,עַל/ADP) R:—
+    לנהוג = נָהוּג/ADJ [] "customary" 0.34 rule +2alt(נָהוּג/ADV,נָהַג/VERB) {ל: from לְ, to, for ; נהוג: from נָהוּג, stem} R:—
+    איש = אִישׁ/NOUN [masculine singular, absolute] "man, husband; each" 0.44 +3alt(אִישׁ/NOUN,אִישׁ/PRON,אִשָּׁה/NOUN) R:—
+    ברעהו = רֵעַ/NOUN [masculine singular, construct] "friend, companion, fellow" 0.46 {ב: from בְּ, in, with, by ; רע: from רֵעַ, stem ; הו: possessive suffix} R:—
+    ברוח = רוּחַ/NOUN [masculine or feminine singular, construct] "wind, breath, spirit" 0.41 +3alt(רוּחַ/NOUN,רוּחַ/NOUN,בָּרַח/VERB) {ב: from בְּ, in, with, by ; רוח: from רוּחַ, stem} R:—
+    של = שֶׁל/ADP [] "Of, belonging to, owned by, pertaining to." 0.46 +3alt(נשל/VERB,שֶׁלְּ־/ADP,נָשַׁל/VERB) R:—
+    אחווה = אַחֲוָה/NOUN [singular] "brotherhood, camaraderie, fraternity, guild" 0.78 R:—
+L5: [he-mod]
+    בארץ = אֶרֶץ/NOUN [masculine or feminine singular, construct] "earth, land, ground" 0.4 +2alt(אֶרֶץ/NOUN,אֶרֶץ/NOUN) {ב: from בְּ, in, with, by ; ארץ: from אֶרֶץ, stem} R:—
+    ישראל = יִשְׂרָאֵל/PROPN [] "Israel" 0.46 +2alt(יִשְׂרָאֵל/PROPN,יִשְׂרָאֵל/PROPN) R:—
+    קם = קָם/NOUN [] "foe" 0.44 +3alt(קָם/VERB,קָם/VERB,נָקַם/VERB) R:—
+    העם = עַם/NOUN [masculine singular, absolute, with the article] "people, nation" 0.46 +2alt(עַם/NOUN,הָעָם/PROPN) {ה: from הַ, the ; עם: from עַם, stem} R:—
+    היהודי = יְהוּדִי/NOUN [gentilic, masculine singular, absolute, with the article] "Jewish, a Jew" 0.56 +1alt(יְהוּדִי/ADJ) {ה: from הַ, the ; יהודי: from יְהוּדִי, stem} R:—
+    בה = בְּ/ADP [personal, 3rd person feminine singular] "in her, it" 0.8 rule +3alt(בְּ־/ADP,בְּ/ADP,בְּ/ADP) R:—
+    עוצבה = ∅
+    דמותו = ∅
+    הרוחנית = רוּחָנִי/ADJ [feminine, with the article] "spiritual" 0.5 rule {ה: from הַ, the ; רוחנית: from רוּחָנִי, stem} R:—
+    הדתית = דָּתִי/ADJ [feminine, with the article] "religious" 0.5 rule {ה: from הַ, the ; דתית: from דָּתִי, stem} R:—
+    והמדינית = מִדְיָנִי/ADJ [feminine singular, absolute, with the article] "Midianite" 0.5 rule {ו: from וְ, and ; המדינית: from מִדְיָנִי, stem} R:—
+
+== modern-text.txt: 228 words; blank 15 (6.6 %); unconfirmed guess 0 (0.0 %); made by rule (prefix cut, hand table) 46 (20.2 %); with other readings 162 (71.1 %); no transliteration 213 (93.4 %); sentences read as {"he-mod":25,"none":1,"he-bib":2}
+blank: שליד כשהגעתי ושכדאי שהיא שאבא הדיור מיליארדי שהתוכנית ושהמחירים חורין בערכם ובזכויותיהם חוננו עוצבה דמותו
+unconfirmed: 

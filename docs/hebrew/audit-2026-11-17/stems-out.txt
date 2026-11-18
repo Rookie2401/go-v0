@@ -1,0 +1,262 @@
+2070 (lemma, stem) pairs outside the Qal, 22433 tokens; the 260 commonest pairs below cover 16643 tokens (74.2 %)
+tokens	lemma	stem	commonest form	code	the card's English	citation gloss
+1090	דָבַר	Piel	דִּבֶּ֥ר	HVpp3ms	He spoke	|| citation: to speak
+549	בּוֹא	Hifil	וַיָּבֵ֥א	HC/Vhw3ms	And he brought	|| citation: to come, go in, enter
+485	צָוָה	Piel	צִוָּ֔ה	HVpp3ms	He commanded	|| citation: to command, charge
+481	נָכָה	Hifil	וַיַּ֥ךְ	HC/Vhw3ms	And he struck	|| citation: to strike, smite
+358	שׁוּב	Hifil	לְהָשִׁ֥יב	HR/Vhc	to bring back	|| citation: to return, turn back
+335	נָגַד	Hifil	וַיַּגֶּד	HC/Vhw3ms	And he declared	|| citation: be conspicuous, declare, tell
+276	יָצָא	Hifil	וַיֹּצֵ֨א	HC/Vhw3ms	And he brought out	|| citation: to go out, come out
+268	שָׁלַח	Piel	וַיְשַׁלַּ֧ח	HC/Vpw3ms	And he sent	|| citation: to send, stretch out
+257	עָלָה	Hifil	לְהַעֲל֣וֹת	HR/Vhc	to bring up	|| citation: to go up, ascend
+233	בָרַךְ	Piel	וַיְבָ֧רֶךְ	HC/Vpw3ms	And he knelt	|| citation: kneel, bless, kneel down
+222	בָּקַשׁ	Piel	לְבַקֵּ֥שׁ	HR/Vpc	to seek	|| citation: seek, seek to find, seek to secure
+191	נָצַל	Hifil	מַצִּ֖יל	HVhrmsa	stripping	|| citation: strip, plunder, deliver oneself
+184	יָשַׁע	Hifil	מוֹשִׁ֣יעַ	HVhrmsa	delivering	|| citation: deliver, be liberated, saved
+177	קָרַב	Hifil	וְהִקְרִ֨יב	HC/Vhq3ms	And he will bring near	|| citation: come near, approach, cause to approach
+176	יָלַד	Hifil	הוֹלִ֣יד	HVhp3ms	He fathered	|| citation: to bear, beget, bring forth
+173	יָסַף	Hifil	יּוֹסִ֨יף	HVhi3ms	He will add	|| citation: add, join, join oneself to
+167	לָחַם	Nifal	לְהִלָּחֵם֙	HR/VNc	to fight	|| citation: fight, do battle, engage in battle
+162	רָבָה	Hifil	הַרְבֵּ֥ה	HVha	to multiply	|| citation: be, become, much
+154	שָׁבַע	Nifal	נִשְׁבַּ֤ע	HVNp3ms	He swore	|| citation: swear, seven oneself, bind oneself by seven things
+146	קוּם	Hifil	וַהֲקִימוֹתִ֤י	HC/Vhq1cs	And I will raise up	|| citation: to arise, stand up
+140	מָצָא	Nifal	יִמָּ֣צֵא	HVNi3ms	He will be found	|| citation: to find, attain
+138	מוּת	Hifil	לְהָמִ֣ית	HR/Vhc	to put to death	|| citation: to die
+138	כָּלָה	Piel	וַיְכַ֣ל	HC/Vpw3ms	And he finished	|| citation: be complete, at an end, finished
+133	סוּר	Hifil	הֵסִ֨יר	HVhp3ms	He removed	|| citation: turn aside, depart, be removed
+131	כָּסָה	Piel	לְכַסּ֤וֹת	HR/Vpc	to cover	|| citation: cover, conceal, covered
+117	חָזַק	Hifil	הֶחֱזִ֖יק	HVhp3ms	He took hold of	|| citation: be, grow firm, strong
+113	הָלַל	Piel	הַֽלְל֖וּ	HVpv2mp	Praise! (plural)	|| citation: be boastful, praise, boast
+112	שָׁלַךְ	Hifil	וַיַּשְׁלֵ֥ךְ	HC/Vhw3ms	And he threw	|| citation: throw, fling, cast
+111	מָלֵא	Piel	מִלֵּ֖א	HVpp3ms	He filled	|| citation: be full, fill, be filled
+108	כּוּן	Hifil	הֵכִ֥ין	HVhp3ms	He established	|| citation: be firm, be set up, established
+101	רָאָה	Nifal	נִרְאָ֧ה	HVNp3ms	He was seen	|| citation: to see
+100	יָדָה	Hifil	הוֹד֤וּ	HVhv2mp	Throw! (plural)	|| citation: throw, cast, shoot
+99	עָשָׂה	Nifal	יֵעָשֶׂ֖ה	HVNi3ms	He will be done	|| citation: to do, make
+97	שָׁרַת	Piel	לְשָׁרֵ֞ת	HR/Vpc	to minister	|| citation: minister, serve
+96	שָׁחַת	Hifil	לְהַשְׁחִ֖ית	HR/Vhc	to go to ruin	|| citation: go to ruin, be marred, spoiled
+94	שָׁאַר	Nifal	הַנִּשְׁאָרִ֗ים	HTd/VNrmpa	remaining	|| citation: remain, be left over, remains
+93	שָׁחָה	Hishtafel	וַתִּשְׁתַּ֖חוּ	HC/Vvw3fs	And she bowed down	|| citation: bow down, depresses it, prostrate oneself
+92	כָּפַר	Piel	וְכִפֶּ֥ר	HC/Vpq3ms	And he will cover	|| citation: to cover; to atone, make atonement
+89	רוּם	Hifil	תָּרִ֩ימוּ֩	HVhi2mp	You (plural) will raise	|| citation: be high, exalted, rise
+89	שָׁלַם	Piel	יְשַׁלֵּ֣ם	HVpi3ms	He will finish	|| citation: be complete, sound, finished
+87	נָבָא	Nifal	הִנָּבֵ֖א	HVNv2ms	Prophesy!	|| citation: prophesy, heathen prophets
+84	עָמַד	Hifil	וַיַּעֲמֵ֣ד	HC/Vhw3ms	And he stationed	|| citation: to stand, take a stand
+83	נָתַן	Nifal	נִתְּנָה֙	HVNp3fs	She was given	|| citation: to give, put, set
+82	יָתַר	Nifal	הַנּֽוֹתָרִ֗ים	HTd/VNrmpa	being remained over	|| citation: remain over, the remainder, be left over
+81	אָסַף	Nifal	נֶאֶסְפוּ	HVNp3cp	They gathered	|| citation: gather, remove, collect
+80	פָּלַל	Hitpael	וַיִּתְפַּלֵּ֥ל	HC/Vtw3ms	And he intervened	|| citation: intervene, interpose, mediate
+79	עָבַר	Hifil	לְהַעֲבִ֨יר	HR/Vhc	to bring across	|| citation: to pass over, pass through, pass by
+77	כָּרַת	Hifil	וְהִכְרַתִּ֣י	HC/Vhq1cs	And I will cut off	|| citation: cut off, cut down, hew
+77	שָׁחָה	Hitpael	וַיִּשְׁתַּ֧חוּ	HC/Vtw3ms	And he bowed down	|| citation: bow down, depresses it, prostrate oneself
+75	נָטָה	Hifil	הַטֵּ֨ה	HVhv2ms	Stretch out!	|| citation: stretch out, spread out, extend
+75	קָדַשׁ	Piel	קַדְּשׁ֧וּ	HVpv2mp	Consecrate! (plural)	|| citation: be set apart, consecrated, be hallowed
+73	כָּרַת	Nifal	יִכָּרֵ֤ת	HVNi3ms	He will be cut off	|| citation: cut off, cut down, hew
+71	יָדַע	Hifil	הוֹדִעֵ֤נִי	HVhv2ms/Sp1cs	Make me known!	|| citation: to know
+71	יָנַח	Hifil	הִנִּ֤יחַ	HVhp3ms	He rested	|| citation: rest, settle down and remain, repose
+70	קָטַר	Hifil	וְהִקְטִ֥יר	HC/Vhq3ms	And he will make sacrifices smoke	|| citation: make sacrifices smoke, fumigated with myrrh, cause incense t
+69	שָׁמַד	Hifil	לְהַשְׁמִ֨יד	HR/Vhc	to destroy	|| citation: be exterminated, destroyed, annihilate
+69	יָטַב	Hifil	הֵיטֵ֔ב	HVha	to do good	|| citation: be good, well, glad
+68	רָעַע	Hifil	מְרֵעִ֔ים	HVhrmpa	doing evil	|| citation: be evil, bad, be displeasing
+68	נָבַט	Hifil	הַבֵּ֣ט	HVhv2ms	Look!	|| citation: look
+68	מוּת	Hofal	יוּמַ֖ת	HVHi3ms	He will be put to death	|| citation: to die
+67	סָפַר	Piel	וַיְסַפֶּר	HC/Vpw3ms	And he counted	|| citation: count, recount, relate
+67	כּוּן	Nifal	נָכ֖וֹן	HVNrmsa	being established	|| citation: be firm, be set up, established
+67	יָרַד	Hifil	וַיּ֥וֹרֶד	HC/Vhw3ms	And he brought down	|| citation: come, go down, descend
+66	חָלַל	Piel	חִלְּל֣וּ	HVpp3cp	They polluted	|| citation: pollute, defile, profane
+66	יָרַשׁ	Hifil	הוֹרִ֣ישׁ	HVhp3ms	He dispossessed	|| citation: take possession of, inherit, dispossess
+65	שָׁכַם	Hifil	וַיַּשְׁכֵּ֧ם	HC/Vhw3ms	And he started	|| citation: start, rise, early
+64	נָצַח	Piel	לַמְנַצֵּ֖חַ	HRd/Vprmsa	acting as overseer	|| citation: be pre-eminent, enduring, act as overseer
+64	הָלַךְ	Hitpael	מִתְהַלֵּ֣ךְ	HVtrmsa	going	|| citation: to go, walk
+64	חָזַק	Piel	וַיְחַזֵּ֥ק	HC/Vpw3ms	And he strengthened	|| citation: be, grow firm, strong
+63	קָרָא	Nifal	נִקְרָ֥א	HVNp3ms	He was called	|| citation: to call, proclaim, read aloud
+63	שָׁמַע	Hifil	הַשְׁמִ֙יעוּ֙	HVhv2mp	Proclaim! (plural)	|| citation: to hear, listen, obey
+63	מָלַט	Nifal	יִמָּלֵט֙	HVNi3ms	He will slip away	|| citation: slip away, escape, be delivered
+62	רָאָה	Hifil	הִרְאַ֧נִי	HVhp3ms/Sp1cs	He showed me	|| citation: to see
+61	בִּין	Hifil	מֵבִ֖ין	HVhrmsa	discerning	|| citation: discern, perceive, understand
+61	נָפַל	Hifil	לְהַפִּ֥יל	HR/Vhc	to fall	|| citation: to fall
+60	שָׁקָה	Hifil	לְהַשְׁק֣וֹת	HR/Vhc	to cause to drink water	|| citation: cause to drink water, give to drink, water
+60	שָׂכַל	Hifil	מַשְׂכִּ֑יל	HVhrmsa	(no English of its own; lemma meaning: contemplative poem)	|| citation: be prudent, circumspect, look at  [card lemma מַשְׂכִּיל]
+59	יָרָה	Hifil	יוֹרֶ֥ה	HVhi3ms	He will throw	|| citation: throw, shoot, cast
+59	מָהַר	Piel	וַיְמַהֵ֕ר	HC/Vpw3ms	And he hastened	|| citation: hasten, be hurried, hasty
+57	עָנָה	Piel	עִנָּ֔ה	HVpp3ms	He afflicted	|| citation: be bowed down, afflicted, be put down
+57	שָׁבַר	Nifal	נִשְׁבְּרָה֙	HVNp3fs	She was broken	|| citation: break, break in pieces, be broken
+57	לָמַד	Piel	לַמְּדֵֽנִי	HVpv2ms/Sp1cs	Exercise me in!	|| citation: exercise in, learn, teach
+56	חָלַל	Hifil	הֵחֵ֔ל	HVhp3ms	He polluted	|| citation: pollute, defile, profane
+56	חָיָה	Piel	חַ֝יֵּ֗נִי	HVpv2ms/Sp1cs	Keep me alive!	|| citation: live, be quickened, revive
+56	פָּלָא	Nifal	נִפְלָא֑וֹת	HVNrfpa	being surpassing	|| citation: be surpassing, extraordinary, be beyond one's power
+56	גָּלָה	Piel	תְגַלֵּ֑ה	HVpi2ms	You will uncover	|| citation: uncover, remove, uncover the ear
+54	יָכַח	Hifil	מוֹכִ֑יחַ	HVhrmsa	deciding	|| citation: decide, adjudge, prove
+51	נָחַם	Piel	מְנַחֵ֔ם	HVprmsa	(no English of its own; lemma meaning: Menahem)	|| citation: be sorry, console oneself, moved to pity  [card lemma מְנַחֵם]
+51	נָצַב	Nifal	נִצָּ֥ב	HVNrmsa	taking one's stand	|| citation: take one's stand, stand, station oneself
+51	אָמַן	Hifil	יַאֲמִ֣ינוּ	HVhi3mp	They will believe	|| citation: confirm, support, nourish
+50	נָשַׂג	Hifil	תַּשִּׂ֖יג	HVhi3fs	She will reach	|| citation: reach, overtake, attain
+50	טָמֵא	Piel	טִמֵּ֖א	HVpp3ms	He defiled	|| citation: be, become unclean, defile oneself
+49	מָלַךְ	Hifil	וַיַּמְלִ֤יכוּ	HC/Vhw3mp	And they made king	|| citation: be, become king, queen
+49	קָבַץ	Piel	וְקִבַּצְתִּ֤י	HC/Vpq1cs	And I will gather	|| citation: gather, collect, assemble
+48	חָרַם	Hifil	הֶחֱרִ֥ים	HVhp3ms	He banned	|| citation: ban, devote, exterminate
+48	יָצַב	Hitpael	יִתְיַצֵּ֥ב	HVti3ms	He will set	|| citation: set, station oneself, take one's stand
+48	נָחַם	Nifal	וַיִּנָּ֣חֶם	HC/VNw3ms	And he was sorry	|| citation: be sorry, console oneself, moved to pity
+46	אָמַן	Nifal	נֶֽאֱמָן֙	HVNrmsa	being confirmed	|| citation: confirm, support, nourish
+45	זָמַר	Piel	זַמְּרוּ	HVpv2mp	Make music! (plural)	|| citation: make music
+45	יָרֵא	Nifal	נוֹרָ֥א	HVNrmsa	being feared	|| citation: fear, be afraid, stand in awe of
+45	קָדַשׁ	Hifil	הִקְדִּ֞ישׁ	HVhp3ms	He consecrated	|| citation: be set apart, consecrated, be hallowed
+45	יָלַךְ	Hifil	וַיֹּ֥לֶךְ	HC/Vhw3ms	And he went	|| citation: to go, walk
+45	כַּעַס	Hifil	לְהַכְעִיסֵ֔נִי	HR/Vhc/Sp1cs	to make vexed	|| citation: be vexed, angry, indignant
+45	קָשַׁב	Hifil	הַֽקְשִׁ֥יבָה	HVhv2ms/Sh	Incline!	|| citation: incline, attend, give attention
+45	אָכַל	Nifal	יֵאָכֵ֤ל	HVNi3ms	He will be eaten	|| citation: to eat
+44	צָפָה	Piel	וַיְצַ֛ף	HC/Vpw3ms	And he laid out	|| citation: lay out, lay over, overlay
+44	סָתַר	Hifil	תַסְתִּ֑יר	HVhi2ms	You will hide	|| citation: hide, conceal, hide oneself
+44	כָּבַס	Piel	יְכַבֵּ֥ס	HVpi3ms	He will tread	|| citation: tread, wash, highway of fuller’s
+43	שָׁמַע	Nifal	נִשְׁמַ֥ע	HVNp3ms	He was heard	|| citation: to hear, listen, obey
+43	פָּרַר	Hifil	לְהָפֵ֞ר	HR/Vhc	to break	|| citation: break, frustrate, be frustrated
+42	רָחַם	Piel	אֲרַחֵֽם	HVpi1cs	I will love	|| citation: love, have compassion, compassionate
+42	קָטַר	Piel	לְקַטֵּ֖ר	HR/Vpc	to make sacrifices smoke	|| citation: make sacrifices smoke, fumigated with myrrh, cause incense t
+41	יָדַע	Nifal	נוֹדַ֣ע	HVNp3ms	He was known	|| citation: to know
+41	מָאֵן	Piel	מֵאֲנ֖וּ	HVpp3cp	They refused	|| citation: refuse
+41	אָזַן	Hifil	הַאֲזִֽינָה	HVhv2ms/Sh	Give ear!	|| citation: give ear, listen, hear
+41	אָבַד	Piel	לְאַבֵּ֔ד	HR/Vpc	to destroy	|| citation: perish, die, be exterminated
+40	זָכַר	Hifil	הַמַּזְכִּֽיר	HTd/Vhrmsa	mentioning	|| citation: remember, recall, call to mind
+40	קָלַל	Piel	יְקַלֵּ֞ל	HVpi3ms	He will make slight	|| citation: be slight, swift, trifling
+40	רוּעַ	Hifil	הָרִ֙יעוּ֙	HVhv2mp	Raise a shout! (plural)	|| citation: raise a shout, give a blast, shout in triumph
+40	שָׁבַת	Hifil	וְהִשְׁבַּתִּי֙	HC/Vhq1cs	And I will put an end to	|| citation: cease, desist, rest
+40	קָוָה	Piel	קִוִּ֥יתִי	HVpp1cs	I waited for	|| citation: wait for, those waiting for, wait
+39	צָלַח	Hifil	וְהִצְלִ֣יחַ	HC/Vhq3ms	And he will advance	|| citation: advance, prosper, make prosperous
+39	קָבַר	Nifal	וַיִּקָּבֵ֖ר	HC/VNw3ms	And he was buried	|| citation: bury, be buried
+39	עוּד	Hifil	הַעִידֹ֩תִי֩	HVhp1cs	I bore witness	|| citation: bear witness, testify, cause to testify
+39	בָּעַר	Piel	וּבִֽעַרְתָּ֥	HC/Vpq2ms	And you will burn	|| citation: burn, consume, kindle
+39	חָרַשׁ	Hifil	אַחֲרִ֖ישׁ	HVhi1cs	I will make silent	|| citation: be silent, dumb, speechless
+39	שָׁחַת	Piel	לְשַׁחֵ֥ת	HR/Vpc	to go to ruin	|| citation: go to ruin, be marred, spoiled
+39	טָהֵר	Piel	וְטִהֲר֤וֹ	HC/Vpq3ms/Sp3ms	And he will make him clean	|| citation: be clean, pure, be clean ceremonially
+38	יָלַד	Nifal	נ֣וֹלַד	HVNp3ms	He was born	|| citation: to bear, beget, bring forth
+38	גָּלָה	Hifil	הֶגְלָ֔ה	HVhp3ms	He exiled	|| citation: uncover, remove, uncover the ear
+38	כָּבַד	Piel	יְכַבֵּ֑ד	HVpi3ms	He will make heavy	|| citation: be heavy, weighty, burdensome
+38	שָׁאַר	Hifil	הִשְׁאִ֧יר	HVhp3ms	He remained	|| citation: remain, be left over, remains
+38	נָכַר	Hifil	יַכִּ֖יר	HVhi3ms	He will regard	|| citation: regard, recognize, they are not recognized
+38	נָגַע	Hifil	מַגִּ֕יעַ	HVhrmsa	touching	|| citation: touch, reach, strike
+37	שִׁיר	Polel	הַ֠מְשֹׁרְרִ֠ים	HTd/Vormpa	singing	|| citation: sing, be sung
+37	יָשַׁב	Hifil	וַיּ֥וֹשֶׁב	HC/Vhw3ms	And he settled	|| citation: to sit, dwell, remain
+37	נָגַשׁ	Hifil	וַיַּגֵּ֧שׁ	HC/Vhw3ms	And he brought near	|| citation: draw near, approach, come near
+37	שָׁמַר	Nifal	הִשָּׁמֶר	HVNv2ms	Be kept!	|| citation: to keep, watch, guard, observe
+36	מָלֵא	Nifal	יִמָּ֣לֵא	HVNi3ms	He will be full	|| citation: be full, fill, be filled
+36	לָכַד	Nifal	נִלְכְּדָ֣ה	HVNp3fs	She was captured	|| citation: capture, seize, take
+36	שָׁבַר	Piel	שִׁבַּ֣ר	HVpp3ms	He broke	|| citation: break, break in pieces, be broken
+35	גָּרַשׁ	Piel	וַיְגָ֤רֶשׁ	HC/Vpw3ms	And he drove out	|| citation: drive out, cast out, thrust out
+35	נָגַד	Hofal	וַיֻּגַּ֣ד	HC/VHw3ms	And he was declared	|| citation: be conspicuous, declare, tell
+35	חָרַף	Piel	חֵרֵ֔ף	HVpp3ms	He reproached	|| citation: reproach, say sharp things against, taunt
+35	נָסָה	Piel	וַיְנַסּ֣וּ	HC/Vpw3mp	And they tested	|| citation: test, try, attempt
+35	פּוּץ	Hifil	וַהֲפִיצוֹתִ֤י	HC/Vhq1cs	And I will scatter	|| citation: be dispersed, scattered, disperse
+34	הָפַךְ	Nifal	נֶהְפַּ֤ךְ	HVNp3ms	He was turned	|| citation: turn, overturn, turn about
+34	אוֹר	Hifil	לְהָאִ֣יר	HR/Vhc	to give light	|| citation: be, become light, shine
+33	עוּר	Hifil	יָעִ֣יר	HVhi3ms	He will rouse	|| citation: rouse oneself, awake, be roused
+33	גָּדַל	Hifil	הִגְדִּ֖ל	HVhp3ms	He magnified	|| citation: grow up, become great, to be magnified
+33	נוּחַ	Hifil	וַהֲנִיח֥וֹתִי	HC/Vhq1cs	And I will give rest	|| citation: rest, settle down and remain, repose
+32	סָבַב	Hifil	וַיַּסֵּב֙	HC/Vhw3ms	And he turned around	|| citation: turn about, go around, surround
+32	נָשָׂא	Nifal	וְנִשָּׂ֣א	HC/VNq3ms	And he will be lifted	|| citation: to lift, carry, bear
+32	בָּדַל	Hifil	וַיַּבְדֵּ֣ל	HC/Vhw3ms	And he divided	|| citation: be divided, separate, divide
+32	חָטָא	Hifil	הֶחֱטִ֖יא	HVhp3ms	He missed	|| citation: miss, go wrong, sin
+32	גָּלָה	Nifal	נִגְלָ֨ה	HVNp3ms	He was uncovered	|| citation: uncover, remove, uncover the ear
+32	לָבַשׁ	Hifil	וַיַּלְבֵּ֨שׁ	HC/Vhw3ms	And he clothed	|| citation: put on, wear, clothe
+32	נוּף	Hifil	וְהֵנִ֥יף	HC/Vhq3ms	And he will move to and fro	|| citation: move to and fro, wave, besprinkle
+31	קָבַץ	Nifal	וַיִּקָּבְצ֧וּ	HC/VNw3mp	And they were gathered	|| citation: gather, collect, assemble
+31	שָׁבַע	Hifil	וַיַּשְׁבַּ֤ע	HC/Vhw3ms	And he made swear	|| citation: swear, seven oneself, bind oneself by seven things
+31	אָרַךְ	Hifil	יַאֲרִ֨יךְ	HVhi3ms	He will prolong	|| citation: be long, prolong, grow long
+31	יָסַר	Piel	יִסַּ֤ר	HVpp3ms	He disciplined	|| citation: discipline, chasten, admonish
+30	כָּבַד	Nifal	נִכְבָּ֖ד	HVNrmsa	being heavy	|| citation: be heavy, weighty, burdensome
+30	בָּנָה	Nifal	יִבָּנֶֽה	HVNi3ms	He will be built	|| citation: build, be built, be rebuilt
+30	חָשַׁב	Nifal	יֵחָשֵׁ֣ב	HVNi3ms	He will be thought	|| citation: think, account, devise
+30	קָנָא	Piel	קִנֵּ֜אתִי	HVpp1cs	I made jealous	|| citation: be jealous, zealous, be jealous of
+30	סָתַר	Nifal	נִסְתְּרָ֤ה	HVNp3fs	She hid	|| citation: hide, conceal, hide oneself
+30	סָגַר	Hifil	וְהִסְגִּ֧יר	HC/Vhq3ms	And he will shut	|| citation: shut, close, close up
+30	יָלַל	Hifil	הֵילִ֖ילוּ	HVhv2mp	Howl! (plural)	|| citation: howl, make a howling
+29	כּוּן	Polel	כּוֹנֵ֖ן	HVop3ms	He established	|| citation: be firm, be set up, established
+29	פָּקַד	Hifil	הִפְקִ֨יד	HVhp3ms	He attended to	|| citation: attend to, visit, muster
+29	יָבֵשׁ	Hifil	הוֹבִ֣ישׁ	HVhp3ms	He dried up	|| citation: be dry, dried up, withered
+28	מָלַט	Piel	יְמַלֵּ֥ט	HVpi3ms	He will slip away	|| citation: slip away, escape, be delivered
+28	נָחָה	Hifil	וַיַּנְחֵם֙	HC/Vhw3ms/Sp3mp	And he led them	|| citation: lead, guide, bring
+28	נָבָא	Hitpael	וַיִּֽתְנַבְּא֔וּ	HC/Vtw3mp	And they prophesied	|| citation: prophesy, heathen prophets
+27	חָזַק	Hitpael	וַיִּתְחַזֵּ֣ק	HC/Vtw3ms	And he grew himself firm	|| citation: be, grow firm, strong
+27	רָנַן	Piel	יְרַנְּנ֖וּ	HVpi3mp	They will give a ringing cry	|| citation: give a ringing cry, cry aloud, cause to ring out
+27	נָדַח	Hifil	הִדַּחְתִּ֣ים	HVhp1cs/Sp3mp	I impeled them	|| citation: impel, thrust, banish
+27	שָׂמַח	Piel	יְשַׂמַּ֣ח	HVpi3ms	He will rejoice	|| citation: rejoice, be glad, cause to rejoice
+26	חָלַק	Piel	יְחַלֵּ֥ק	HVpi3ms	He will divide	|| citation: divide, share, apportion
+26	כָּלַם	Nifal	וְיִכָּ֣לְמ֔וּ	HC/VNi3mp	And they will be humiliated	|| citation: be humiliated, humiliate, ashamed
+26	חָתַת	Nifal	תֵּחָֽת	HVNj2ms	May you be dismayed	|| citation: be shattered, dismayed, broken
+26	זָרָה	Piel	וְזֵרִיתִ֥י	HC/Vpq1cs	And I will scatter	|| citation: scatter, fan, winnow
+26	אָבַד	Hifil	וְהַ֣אֲבַדְתִּ֔י	HC/Vhq1cs	And I will destroy	|| citation: perish, die, be exterminated
+25	יָלַד	Pual	יֻלַּ֖ד	HVPp3ms	He was born	|| citation: to bear, beget, bring forth
+25	כָּנַע	Nifal	וַיִּכָּנֵֽעוּ	HC/VNw3mp	And they were humble	|| citation: be humble, humble oneself, be humbled
+25	גָּדַל	Piel	גִּדַּל֩	HVpp3ms	He brought up	|| citation: grow up, become great, to be magnified
+25	רָשַׁע	Hifil	יַרְשִֽׁיעַ	HVhi3ms	He will act wickedly	|| citation: be wicked, act wickedly, be guilty
+25	הָלַךְ	Piel	יְהַלֵּ֔כוּ	HVpi3mp	They will go	|| citation: to go, walk
+24	קָדַשׁ	Hitpael	הִֽתְקַדְּשׁוּ֙	HVtv2mp	Consecrate yourselves! (plural)	|| citation: be set apart, consecrated, be hallowed
+24	יָתַר	Hifil	וְהוֹתֵר֙	HC/Vha	and to remain over	|| citation: remain over, the remainder, be left over
+24	רָגַל	Piel	מְרַגְּלִ֑ים	HVprmpa	spying out	|| citation: foot it, go about, as slanderer
+24	נָקָה	Nifal	יִ֝נָּקֶ֗ה	HVNi3ms	He will be empty	|| citation: be empty, clean, be cleaned out
+24	בָּהַל	Nifal	נִבְהָֽלוּ	HVNp3cp	They were dismayed	|| citation: be disturbed, dismayed, terrified
+24	בּוֹא	Hofal	הַמּוּבָ֣א	HTd/VHsmsa	brought	|| citation: to come, go in, enter
+24	קָדַם	Piel	קִדְּמ֤וּ	HVpp3cp	They came	|| citation: come, be in front, meet
+24	שָׁמֵם	Nifal	וְנָשַׁ֙מּוּ֙	HC/VNq3cp	And they will be appalled	|| citation: be desolated, appalled, be appalled
+24	רָחַק	Hifil	הַרְחֵ֥ק	HVha	to make far	|| citation: be, become, far
+24	יָחַל	Piel	יִחָֽלְתִּי	HVpp1cs	I waited	|| citation: wait, await, tarry
+23	כָּהַן	Piel	מִכַּהֵ֖ן	HR/Vpc	to act as priest	|| citation: act as priest
+23	בָּשַׂר	Piel	מְבַשֵּֽׂר	HVprmsa	bearing tidings	|| citation: bear tidings, gladden with good tidings, herald as glad tidi
+23	הָלַל	Hitpael	יִתְהַלֵּ֥ל	HVtj3ms	May he praise	|| citation: be boastful, praise, boast
+23	מוֹט	Nifal	יִמּֽוֹט	HVNi3ms	He will be tottered	|| citation: totter, shake, slip
+23	נָגַף	Nifal	וַיִּנָּ֥גֶף	HC/VNw3ms	And he was struck	|| citation: strike, smite, be smitten
+23	כּוּל	Pilpel	יְכַלְכֵּ֣ל	HVli3ms	He will sustain	|| citation: comprehend, contain, sustain
+23	כָּשַׁל	Nifal	יִכָּֽשְׁל֗וּ	HVNi3mp	They will be stumbled	|| citation: stumble, stagger, totter
+23	רוּם	Polel	אֲרֽוֹמִמְךָ֙	HVoi1cs/Sp2ms	I will raise you	|| citation: be high, exalted, rise
+23	יַעַל	Hifil	יוֹעִ֛ילוּ	HVhi3mp	They will profit	|| citation: profit, avail, benefit
+23	חָיָה	Hifil	הֶחֱיָ֨ה	HVhp3ms	He kept alive	|| citation: live, be quickened, revive
+23	בָּלַע	Piel	בִּלַּ֤ע	HVpp3ms	He swallowed down	|| citation: swallow down, swallow up, engulf
+22	יָעַץ	Nifal	וַיִּוָּעַ֣ץ	HC/VNw3ms	And he advised	|| citation: advise, counsel, consult together
+22	זָבַח	Piel	מְזַבְּחִ֖ים	HVprmpa	slaughtering for sacrifice	|| citation: slaughter for sacrifice, slaughter for eating, slaughter for
+22	בִּין	Nifal	נָב֣וֹן	HVNrmsa	being discerned	|| citation: discern, perceive, understand
+22	מָרָה	Hifil	וַיַּמְרוּ	HC/Vhw3mp	And they made contentious	|| citation: be contentious, refractory, rebellious
+22	קוּץ	Hifil	יָקִ֑יצוּ	HVhi3mp	They will awake	|| citation: awake
+22	שָׁעַן	Nifal	נִשְׁעָ֣ן	HVNrmsa	leaning	|| citation: lean, support oneself
+22	נָדַח	Nifal	וְנִדַּחְתָּ֛	HC/VNq2ms	And you will be impeled	|| citation: impel, thrust, banish
+22	פָּלַט	Piel	וּמְפַלְטִי	HC/Vprmsc/Sp1cs	and escaping	|| citation: escape, and, bring into security
+21	נָצַב	Hifil	וַיַּצֶּב	HC/Vhw3ms	And he took one's stand	|| citation: take one's stand, stand, station oneself
+21	רָפָה	Hifil	הֶ֣רֶף	HVhv2ms	Sink!	|| citation: sink, relax, sink down
+21	בִּין	Hitpolel	אֶ֝תְבּוֹנֵ֗ן	HVri1cs	I will discern	|| citation: discern, perceive, understand
+21	קָשָׁה	Hifil	הִקְשָׁ֣ה	HVhp3ms	He made hard	|| citation: be hard, severe, fierce
+21	בָּשַׁל	Piel	תְבַשֵּׁ֥ל	HVpi2ms	You will boil	|| citation: boil, seethe, grow ripe
+21	פָּקַד	Nifal	יִפָּקֵ֔ד	HVNi3ms	He will be attended to	|| citation: attend to, visit, muster
+21	אָכַל	Hifil	וְהַאֲכִלֻ֜הוּ	HC/Vhv2mp/Sp3ms	And feed him! (plural)	|| citation: to eat
+21	לָקַט	Piel	וַיְלַקֵּ֞ט	HC/Vpw3ms	And he picked	|| citation: pick, gather up, glean
+21	תָּעָה	Hifil	וַיַּתְעֵ֤ם	HC/Vhw3ms/Sp3mp	And he erred them	|| citation: err, wander about, be made to wander about
+21	שָׁמַד	Nifal	הִשָּׁמְדָֽךְ	HVNc/Sp2fs	to be destroyed	|| citation: be exterminated, destroyed, annihilate
+21	יָשַׁע	Nifal	וְנִוָּשֵֽׁעָה	HC/VNh1cp	And let us be delivered	|| citation: deliver, be liberated, saved
+21	רָחַב	Hifil	תַּרְחִ֥יב	HVhi2ms	You will grow	|| citation: be, grow, wide
+21	אָמַר	Nifal	יֵאָמֵ֣ר	HVNi3ms	He will be said	|| citation: to say
+21	שָׁזַר	Hofal	מׇשְׁזָ֗ר	HVHsmsa	twisted	|| citation: be twisted
+21	שָׁוַע	Piel	שִׁוַּ֖עְתִּי	HVpp1cs	I cried out	|| citation: cry out
+20	יָחַשׂ	Hitpael	וְהִתְיַחְשָׂ֖ם	HC/Vtc/Sp3mp	and to enroll oneself	|| citation: enroll oneself, be enrolled by genealogy
+20	קָהַל	Hifil	וַיַּקְהֵ֤ל	HC/Vhw3ms	And he assembled as a	|| citation: assemble as a, summon an assembly
+20	רָכַב	Hifil	וַיַּרְכִּ֜יבוּ	HC/Vhw3mp	And they mounted and ride	|| citation: mount and ride, ride, mount
+20	הָיָה	Nifal	נִהְיְתָ֥ה	HVNp3fs	She was	|| citation: to be, become, happen
+20	טָהֵר	Hitpael	הַמִּטַּהֵ֛ר	HTd/Vtrmsa	making oneself clean	|| citation: be clean, pure, be clean ceremonially
+20	זָכַר	Nifal	תִזָּכַ֗רְןָ	HVNi3fp	They will be remembered	|| citation: remember, recall, call to mind
+20	סָבַב	Nifal	יִסַּ֣בּוּ	HVNi3mp	They will be turned about	|| citation: turn about, go around, surround
+20	שָׁדַד	Pual	שֻׁדַּ֨ד	HVPp3ms	He was dealt violently with	|| citation: deal violently with, despoil, devastate
+19	אָבַל	Hitpael	וַיִּתְאַבֵּ֛ל	HC/Vtw3ms	And he mourned	|| citation: mourn, lament, cause to mourn
+19	יָאַל	Hifil	וַיֹּ֣אֶל	HC/Vhw3ms	And he determined	|| citation: be pleased, determine, undertake
+19	נָקָה	Piel	יְנַקֶּה֙	HVpi3ms	He will make empty	|| citation: be empty, clean, be cleaned out
+19	קָהַל	Nifal	וַיִּקָּ֨הֲל֜וּ	HC/VNw3mp	And they assembled as a	|| citation: assemble as a, summon an assembly
+19	יָעַד	Nifal	הַנּוֹעָדִ֣ים	HTd/VNrmpa	being appointed	|| citation: appoint, assign, designate
+19	כָּחַשׁ	Piel	וְכִ֥חֶשׁ	HC/Vpq3ms	And he will deceive	|| citation: be disappointing, deceive, fail
+19	פָּתַח	Piel	פִּתֵּ֑חַ	HVpp3ms	He opened	|| citation: open, be opened, free
+19	שָׁפֵל	Hifil	מַשְׁפִּ֖יל	HVhrmsa	making low	|| citation: be, become low, be abased
+19	מָסַס	Nifal	יִמָּ֑ס	HVNi3ms	He will be dissolved	|| citation: dissolve, melt, like the melting
+19	אָמַץ	Piel	וַיְאַמֵּ֣ץ	HC/Vpw3ms	And he made stout	|| citation: be stout, strong, bold
+19	מָכַר	Nifal	יִמָּכֵ֨ר	HVNi3ms	He will sell	|| citation: sell, be sold, sell oneself
+19	נָזָה	Hifil	וְהִזָּ֨ה	HC/Vhq3ms	And he will spurt	|| citation: spurt, spatter, sprinkle
+18	גָּלַח	Piel	יְגַלֵּ֔חַ	HVpi3ms	He will shave	|| citation: be bald, shave, shave off
+18	סוּת	Hifil	וַיָּ֙סֶת֙	HC/Vhw3ms	And he incited	|| citation: incite, allure, instigate
+18	שָׁמֵם	Hifil	וַהֲשִׁמֹּתִ֞י	HC/Vhq1cs	And I will appall	|| citation: be desolated, appalled, be appalled
+18	עָלָה	Nifal	נַעֲלָ֣ה	HVNp3ms	He was gone up	|| citation: to go up, ascend
+18	מוּל	Nifal	יִמּ֥וֹל	HVNi3ms	He will be circumcised	|| citation: circumcise, be circumcised, in the name of
+18	פָּתַח	Nifal	יִפָּ֤תַח	HVNi3ms	He will be opened	|| citation: open, be opened, free
+18	טָמֵא	Nifal	נִטְמָֽאָה	HVNp3fs	She was unclean	|| citation: be, become unclean, defile oneself

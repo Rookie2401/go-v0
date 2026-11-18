@@ -1,0 +1,218 @@
+# Battery 2: the verb. Seven binyanim in every conjugation, weak roots, and the meaning of the binyan. Pointed text from the repository.
+# --- Qal of a strong verb (shamar 8104, katav 3789), every conjugation
+lemma=^8104$ code=^HVqp3ms$ # qal perfect 3ms
+lemma=^8104$ code=^HVqp1cs$ # qal perfect 1cs
+lemma=^8104$ code=^HVqp2ms$ # qal perfect 2ms
+lemma=^8104$ code=^HVqp3cp$ # qal perfect 3cp
+lemma=^8104$ code=^HVqi3ms$ # qal imperfect 3ms
+lemma=^8104$ code=^HVqi2mp$ # qal imperfect 2mp
+lemma=^8104$ code=^HVqi3fs$ # qal imperfect 3fs
+lemma=^c/8104$ code=^HC/Vqw3ms$ # qal wayyiqtol
+lemma=^c/8104$ code=^HC/Vqq2ms$ # qal weqatal
+lemma=^8104$ code=^HVqv2ms$ # qal imperative ms
+lemma=^8104$ code=^HVqv2mp$ # qal imperative mp
+lemma=8104$ code=Vqc$ # qal infinitive construct
+lemma=^8104$ code=^HVqa$ # qal infinitive absolute
+lemma=^8104$ code=^HVqrmsa$ # qal active participle
+lemma=8104$ code=Vqrmpc # qal participle plural construct
+lemma=3789$ code=Vqsmsa$ # qal passive participle (katuv)
+lemma=3789$ code=Vqsmpa$ # qal passive participle plural
+lemma=^559$ code=^HVqj3ms$ # jussive
+lemma=^1961$ code=^HVqj3ms$ # jussive of hayah
+lemma=^7725$ code=^HVqj3ms$ # jussive of shuv (yashov)
+# --- Nifal
+lemma=^8104$ code=^HVNp3ms$ # nifal perfect
+lemma=^8104$ code=^HVNv2ms$ # nifal imperative (hishamer)
+lemma=^7200$ code=^HVNp3ms$ # nifal of ra'ah: appeared
+lemma=^c/7200$ code=^HC/VNw3ms$ # and he appeared
+lemma=^4672$ code=^HVNp3ms$ # nifal: was found
+lemma=^4672$ code=^HVNi3ms$ # nifal imperfect
+lemma=^3898 a$ code=^HVNp3ms$ # nilham: fought
+lemma=^7650$ code=^HVNp3ms$ # nishba: swore
+lemma=^5012$ code=^HVNp3ms$ # nibba: prophesied
+lemma=^7604$ code=^HVNp3ms$ # nish'ar: remained
+lemma=3205$ code=VNp3ms$ # nolad: was born
+lemma=^1129$ code=^HVNp3ms$ # nivnah: was built
+lemma=^6213 a$ code=^HVNp3ms$ # na'asah
+lemma=^8085$ code=^HVNp3ms$ # nishma: was heard
+lemma=5414$ code=VNp3ms$ # nittan: was given
+lemma=^3559$ code=^HVNrmsa$ # nakhon: established
+lemma=539$ code=VNrmsa$ # ne'eman: faithful
+lemma=^6381$ code=^HVNrfpa$ # nifla'ot: wonders
+# --- Piel and Pual
+lemma=^1696$ code=^HVpp3ms$ # dibber
+lemma=^c/1696$ code=^HC/Vpw3ms$ # vaydabber
+lemma=1696$ code=Vpc$ # ledabber
+lemma=^1696$ code=^HVpv2ms$ # dabber!
+lemma=^1696$ code=^HVprmsa$ # medabber
+lemma=^7971$ code=^HVpp3ms$ # shillah: sent away
+lemma=^c/7971$ code=^HC/Vpw3ms$ # vayshallah
+lemma=^1288$ code=^HVpp3ms$ # berakh: blessed
+lemma=^1288$ code=^HVqsmsa$ # barukh: blessed
+lemma=^1288$ code=^HVPsmsa$ # mevorakh
+lemma=^6942$ code=^HVpp3ms$ # qiddesh: sanctified
+lemma=^c/6942$ code=^HC/Vpw3ms$ # vayqaddesh
+lemma=^3513$ code=^HVpv2ms$ # kabbed: honour!
+lemma=^1431$ code=^HVpp3ms$ # giddel: brought up
+lemma=^3925$ code=^HVpp3ms$ # limmed: taught
+lemma=3925$ code=Vpc$ # lelammed
+lemma=^5608 a$ code=^HVpp3ms$ # sipper: told
+lemma=^c/5608 a$ code=^HC/Vpw3ms$ # vaysapper
+lemma=^1245$ code=^HVpp3ms$ # biqqesh: sought
+lemma=^6680$ code=^HVpp3ms$ # tsivvah: commanded
+lemma=^c/6680$ code=^HC/Vpw3ms$ # vaytsav
+lemma=^3722 a$ code=^HVpp3ms$ # kipper: atoned
+lemma=^1984 b$ code=^HVpv2mp$ # hallelu
+lemma=^2421$ code=^HVpp3ms$ # hiyyah: kept alive
+lemma=^1984 b$ code=^HVPsmsa$ # mehullal
+lemma=3205$ code=^HVPp3ms$ # yullad: was born (pual)
+lemma=^3722 a$ code=^HVPi3ms$ # yekhuppar
+# --- Hifil and Hofal (the stem changes the English verb)
+lemma=^935$ code=^HVhp3ms$ # hevi: brought
+lemma=^c/935$ code=^HC/Vhw3ms$ # vayyave: and he brought
+lemma=935$ code=Vhc$ # lehavi
+lemma=^935$ code=^HVhv2ms$ # have: bring!
+lemma=^935$ code=^HVHp3ms$ # huva: was brought
+lemma=^3318$ code=^HVhp3ms$ # hotsi: brought out
+lemma=^c/3318$ code=^HC/Vhw3ms$ # vayyotse
+lemma=^5927$ code=^HVhp3ms$ # he'elah: brought up
+lemma=^3381$ code=^HVhp3ms$ # horid: brought down
+lemma=^7725$ code=^HVhp3ms$ # heshiv: brought back
+lemma=^c/7725$ code=^HC/Vhw3ms$ # vayyashev
+lemma=^6965$ code=^HVhp3ms$ # heqim: raised
+lemma=^7200$ code=^HVhp3ms$ # her'ah: showed
+lemma=^3045$ code=^HVhp3ms$ # hodia: made known
+lemma=^4191$ code=^HVhp3ms$ # hemit: put to death
+lemma=^4191$ code=^HVHi3ms$ # yumat: shall be put to death
+lemma=^5046$ code=^HVhp3ms$ # higgid: told
+lemma=^c/5046$ code=^HC/Vhw3ms$ # vayyagged
+lemma=^5046$ code=^HVHp3ms$ # huggad: was told
+lemma=^5221$ code=^HVhp3ms$ # hikkah: struck
+lemma=^c/5221$ code=^HC/Vhw3ms$ # vayyakh
+lemma=^8085$ code=^HVhp3ms$ # hishmia: proclaimed
+lemma=^539$ code=^HVhp3ms$ # he'emin: believed
+lemma=^3205$ code=^HVhp3ms$ # holid: fathered
+lemma=^5337$ code=^HVhp3ms$ # hitsil: delivered
+lemma=^3467$ code=^HVhp3ms$ # hoshia: saved
+lemma=^7993$ code=^HVhp3ms$ # hishlikh: threw
+lemma=^7993$ code=^HVHp3ms$ # hushlakh
+lemma=^4427 a$ code=^HVhp3ms$ # himlikh: made king
+lemma=^6$ code=^HVhp3ms$ # he'evid: destroyed
+lemma=^3384$ code=^HVhp3ms$ # horah: taught
+lemma=^5186$ code=^HVhp3ms$ # hittah
+lemma=^8248$ code=^HVhp3ms$ # hishqah: gave to drink
+lemma=^3423$ code=^HVhp3ms$ # horish: dispossessed
+lemma=^6213 a$ code=^HVhp # hifil of asah, if any
+lemma=^3254$ code=^HVhp3ms$ # hosif: added
+lemma=^5975$ code=^HVhp3ms$ # he'emid: stationed
+lemma=^7235 a$ code=^HVhp3ms$ # hirbah: multiplied
+lemma=^2388$ code=^HVhp3ms$ # hehziq: seized
+lemma=^5674 a$ code=^HVhp3ms$ # he'evir: brought across
+lemma=^5046$ code=^HVhrmsa$ # maggid
+lemma=^3467$ code=^HVhrmsa$ # moshia: saviour
+# --- Hitpael and rare stems
+lemma=^1980$ code=^HVtp3ms$ # hithallekh: walked about
+lemma=^c/1980$ code=^HC/Vtw3ms$ # vayyithallekh
+lemma=^1980$ code=^HVtrmsa$ # mithallekh
+lemma=^6419$ code=^HVtp3ms$ # hitpallel: prayed
+lemma=^c/6419$ code=^HC/Vtw3ms$ # vayyitpallel
+lemma=^6942$ code=^HVtp3ms$ # hitqaddesh
+lemma=^6942$ code=^HVtv2mp$ # hitqaddeshu
+lemma=^5012$ code=^HVtp3ms$ # hitnabbe
+lemma=^2388$ code=^HVtp3ms$ # hithazzeq
+lemma=^3320$ code=^HVtp # hityatsev: took his stand
+lemma=^7812$ code=^HVvp3ms$ # hishtahavah: bowed down
+lemma=^c/7812$ code=^HC/Vvw3ms$ # vayyishtahu
+lemma=^c/7812$ code=^HC/Vvw3mp$ # vayyishtahavu
+lemma=^6965$ code=^HVoi # polel of qum
+lemma=^3559$ code=^HVop3ms$ # konen: established
+lemma=^7311$ code=^HVop1cs$ # romamti
+lemma=^3557$ code=^HVlp # pilpel: kilkel
+lemma=^1556$ code=^HVtl|^HVf # hitgalgel
+lemma=^5162$ code=^HVNp3ms$ # niham: relented
+lemma=^5162$ code=^HVpp3ms$ # niham: comforted
+lemma=^5162$ code=^HVtp # hitnahem
+# --- weak roots
+lemma=^5307$ code=^HVqp3ms$ # nafal
+lemma=^5307$ code=^HVqi3ms$ # yippol (I-nun)
+lemma=^c/5307$ code=^HC/Vqw3ms$ # vayyippol
+lemma=5307$ code=Vqc$ # linpol / nefol
+lemma=^5414$ code=^HVqi3ms$ # yitten
+lemma=^c/5414$ code=^HC/Vqw3ms$ # vayyitten
+lemma=^l/5414$ code=^HR/Vqc$ # latet
+lemma=^5414$ code=^HVqv2ms$ # ten!
+lemma=^5414$ code=^HVqp1cs$ # natatti
+lemma=^3947$ code=^HVqi3ms$ # yiqqah
+lemma=^c/3947$ code=^HC/Vqw3ms$ # vayyiqqah
+lemma=^l/3947$ code=^HR/Vqc$ # laqahat
+lemma=^3947$ code=^HVqv2ms$ # qah!
+lemma=^3947$ code=^HVQp3ms$ # luqqah (qal passive)
+lemma=^3427$ code=^HVqi3ms$ # yeshev (I-yod)
+lemma=^c/3427$ code=^HC/Vqw3ms$ # vayyeshev
+lemma=^l/3427$ code=^HR/Vqc$ # lashevet
+lemma=^3427$ code=^HVqv2ms$ # shev!
+lemma=^3045$ code=^HVqi3ms$ # yeda
+lemma=^l/3045$ code=^HR/Vqc$ # lada'at
+lemma=^3045$ code=^HVqv2ms$ # da!
+lemma=^1980$ code=^HVqp3ms$ # halakh
+lemma=^c/3212$ code=^HC/Vqw3ms$ # vayyelekh
+lemma=^l/3212$ code=^HR/Vqc$ # lalekhet
+lemma=^3318$ code=^HVqi3ms$ # yetse
+lemma=^6965$ code=^HVqp3ms$ # qam (hollow)
+lemma=^6965$ code=^HVqi3ms$ # yaqum
+lemma=^c/6965$ code=^HC/Vqw3ms$ # vayyaqom
+lemma=^6965$ code=^HVqv2ms$ # qum!
+lemma=^6965$ code=^HVqrmsa$ # qam (participle)
+lemma=^7760 a$ code=^HVqp3ms$ # sam
+lemma=^7760 a$ code=^HVqi3ms$ # yasim
+lemma=^c/7760 a$ code=^HC/Vqw3ms$ # vayyasem
+lemma=^935$ code=^HVqp3ms$ # ba
+lemma=^935$ code=^HVqi3ms$ # yavo
+lemma=^c/935$ code=^HC/Vqw3ms$ # vayyavo
+lemma=^935$ code=^HVqrmsa$ # ba (participle)
+lemma=^4191$ code=^HVqp3ms$ # met
+lemma=^4191$ code=^HVqi3ms$ # yamut
+lemma=^c/4191$ code=^HC/Vqw3ms$ # vayyamot
+lemma=^4191$ code=^HVqa$ # mot (infinitive absolute: mot tamut)
+lemma=^1540$ code=^HVqp3ms$ # galah (III-he)
+lemma=^1540$ code=^HVpp3ms$ # gillah
+lemma=^1540$ code=^HVhp3ms$ # heglah: exiled
+lemma=^6213 a$ code=^HVqp3ms$ # asah
+lemma=^6213 a$ code=^HVqi3ms$ # ya'aseh
+lemma=^c/6213 a$ code=^HC/Vqw3ms$ # vayya'as
+lemma=^l/6213 a$ code=^HR/Vqc$ # la'asot
+lemma=^6213 a$ code=^HVqsmsa$ # asuy
+lemma=^6213 a$ code=^HVqp3fs$ # asetah
+lemma=^1961$ code=^HVqi3ms$ # yihyeh
+lemma=^l/1961$ code=^HR/Vqc$ # lihyot
+lemma=^1961$ code=^HVqp1cs$ # hayiti
+lemma=^1961$ code=^HVqv2ms$ # heyeh!
+lemma=^7200$ code=^HVqi3ms$ # yir'eh
+lemma=^c/7200$ code=^HC/Vqw3ms$ # vayyar
+lemma=^l/7200$ code=^HR/Vqc$ # lir'ot
+lemma=^5437$ code=^HVqp3ms$ # savav (geminate)
+lemma=^5437$ code=^HVqi3ms$ # yissov / yasov
+lemma=^c/5437$ code=^HC/Vqw3ms$ # vayyissov
+lemma=^5437$ code=^HVqv2mp$ # sobbu
+lemma=^5437$ code=^HVhp3ms$ # hesev
+lemma=^5975$ code=^HVqi3ms$ # ya'amod (I-guttural)
+lemma=^c/5975$ code=^HC/Vqw3ms$ # vayya'amod
+lemma=^4672$ code=^HVqp3ms$ # matsa (III-aleph)
+lemma=^4672$ code=^HVqi3ms$ # yimtsa
+lemma=^4672$ code=^HVqp1cs$ # matsati
+lemma=^c/5186$ code=^HC/Vqw3ms$ # vayyet (doubly weak)
+lemma=^5186$ code=^HVqv2ms$ # neteh
+lemma=^c/2421$ code=^HC/Vqw3ms$ # vayhi (lived)
+lemma=^2421$ code=^HVqi3ms$ # yihyeh (will live)
+lemma=^3372$ code=^HVqi3ms$ # yira
+lemma=^c/3372$ code=^HC/Vqw3ms$ # vayyira
+lemma=^3201$ code=^HVqi3ms$ # yukhal
+lemma=^c/8354$ code=^HC/Vqw3ms$ # vayyesht
+lemma=^c/1129$ code=^HC/Vqw3ms$ # vayyiven
+lemma=^398$ code=^HVqi3ms$ # yokhal (I-aleph)
+lemma=^c/559$ code=^HC/Vqw1cs$ # va'omar
+lemma=^157$ code=^HVqp3ms$ # ahev
+lemma=^3513$ code=^HVqp3ms$ # kaved (stative)
+lemma=^1431$ code=^HVqp3ms$ # gadal (stative)
+lemma=^6994$ code=^HVqp1cs$ # qatonti (stative)
+lemma=^2204$ code=^HVqp3ms$ # zaqen (stative)

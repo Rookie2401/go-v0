@@ -1,0 +1,66 @@
+# Battery 2b: the verbs battery 2 could not find by lemma number, found by their letters.
+bare=קם code=^HVqp3ms$ # qam (hollow perfect)
+bare=יקום code=^HVqi3ms$ # yaqum
+bare=ויקם code=^HC/Vqw3ms$ # vayyaqom
+bare=ויקם code=^HC/Vhw3ms$ # vayyaqem (hifil, same letters)
+bare=קום code=^HVqv2ms$ # qum!
+bare=הקים code=^HVhp3ms$ # heqim
+bare=אקים code=Vh # aqim
+bare=השתחוה # hishtahavah
+bare=ורוממתי # Isa 1:2 (the adapter's own contextual example)
+bare=כונן code=Vo # konen
+bare=התקדש # hitqaddesh
+bare=ספר code=Vpp # sipper
+bare=כפר code=Vpp # kipper
+bare=הורה code=Vh # horah
+bare=השקה code=Vh # hishqah
+bare=האביד code=Vh # he'evid
+bare=נכון code=VN # nakhon
+bare=התנבא # hitnabbe
+bare=לקח code=VQ # luqqah (qal passive)
+bare=כבד code=^HVqp3ms$ # kaved
+bare=יכבד code=Vp # yekhabbed
+bare=כבדני code=Vp # honoured me
+bare=מלא code=^HVpp3ms$ # mille: filled
+bare=מלא code=^HVqp3ms$ # male: was full
+bare=וימלא code=Vp # filled (piel)
+bare=אבד code=^HVpp3ms$ # ibbed: destroyed
+bare=למדתי code=Vp # I taught
+bare=וילמד # and he taught / learnt
+bare=הציל code=Vh # hitsil
+bare=ויצל # and he delivered
+bare=הושיע code=Vh
+bare=ויושע # and he saved
+bare=התפלל code=Vtp # he prayed
+bare=ויתפלל
+bare=השמיד code=Vh # destroyed
+bare=הכרית code=Vh # cut off
+bare=הפקיד code=Vh # appointed
+bare=הזכיר code=Vh # mentioned
+bare=הקריב code=Vh # offered
+bare=הקטיר code=Vh # burnt incense
+bare=השכים code=Vh # rose early
+bare=וישכם code=Vh # and he rose early
+bare=השחית code=Vh # destroyed
+bare=הבדיל code=Vh # separated
+bare=המטיר code=Vh # caused to rain
+bare=הגדיל code=Vh # magnified
+bare=הסתיר code=Vh # hid
+bare=נסתר code=VN # was hidden
+bare=נשבר code=VN # was broken
+bare=שבר code=Vpp # shattered (piel)
+bare=נלחם code=VNrmsa # fighting
+bare=נקרא code=VN # was called
+bare=נאסף code=VN # was gathered
+bare=נשא code=VN # lifted up (nifal)
+bare=מצוה code=Vp # commanding
+bare=מבקש code=Vp # seeking
+bare=מלמד code=Vp # teaching
+bare=מהלל code=Vp # praising
+bare=מכה code=Vhr # striking
+bare=מביא code=Vh # bringing
+bare=מוציא code=Vh # bringing out
+bare=מושב code=VH # returned (hofal)
+bare=הפקד code=VH # was appointed
+bare=הגד code=^HVHa$ # infinitive absolute hofal (hugged huggad)
+bare=הגד code=^HVha$ # infinitive absolute hifil

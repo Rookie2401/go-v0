@@ -1,0 +1,1084 @@
+«בכיתה» in "הילד יושב בכיתה."
+   ⇒ כִּתָּה / NOUN / singular / g:A class, a course. / LEX:A class, a course. / 0.5 / rule
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ב: from בְּ, in, with, by ; כיתה: from כִּתָּה, stem
+   C: form:Definite=Ind|Number=Sing[singular]
+   R: — (lemma kita) / D: A class, a course. ; A class, a grade.
+«לסופרמרקט» in "הלכתי לסופרמרקט."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«מהעבודה» in "הוא חזר מהעבודה מאוחר."
+   ⇒ עֲבֹדָה / NOUN / feminine singular, absolute, with the article / g:labour, service, work / LEX:labour, service, work / 0.35 / rule
+   also: הָעֲבוֹדָה/PROPN(0.3)=the Israeli Labor , עֲבוֹדָה/NOUN(0.3)=worship, service
+   period: he-mod (text) 73 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: מ: from מִן, from ; העבודה: from עֲבֹדָה, stem
+   C: form:Definite=Def|Gender=Fem|Number=Sing|State=Abs[feminine singular, absolute, with the article]
+   R: — (lemma avoda) / D: a staff of servants
+«שבתיק» in "הספר שבתיק שלי."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«כשהגעתי» in "כשהגעתי הביתה, ירד גשם."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«ולכן» in "ולכן לא באתי."
+   ⇒ לְ / ADP / personal, 2nd person feminine plural / g:and to you (pl. f.) / LEX:and to you (pl. f.) / 0.7000000000000001 / rule
+   also: כֵּן/ADV(0.47)=so, thus; therefor
+   period: he-mod (text) 46 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ו: from וְ, and ; לכן: from לְ, stem
+   C: form:Gender=Fem|Number=Plur|Person=2|PronType=Prs[personal, 2nd person feminine plural]
+   R: — (lemma l) / D: To; indicating a destination or end-point. — Indicating the destination of movement. ; To;
+«שהילדים» in "אמרתי שהילדים ישנים."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«שהוא» in "הוא אמר שהוא עייף."
+   ⇒ הוּא / PRON / personal, 3rd person masculine singular / g:he, it; that / LEX:he, it; that / 0.47 / lexicon
+   period: he-mod (text) 60 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ש: from שֶׁ, that, which ; הוא: from הוּא, stem
+   C: form:Gender=Masc|Number=Sing|Person=3|PronType=Prs[personal, 3rd person masculine singular]
+   R: — (lemma hu) / D: he ; Used as a copula: is.
+«שזה» in "אני חושב שזה נכון."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«שקנינו» in "הבית שקנינו גדול."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«שראיתי» in "מה שראיתי היה מוזר."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«לכשתגיע» in "לכשתגיע, תתקשר."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«מהבית» in "הוא בא מהבית."
+   ⇒ בַּיִת / NOUN / masculine singular, absolute, with the article / g:house, household / LEX:house, household / 0.47 / lexicon
+   period: he-mod (default) the words are read in more than one period alike; unpointed text is read as Modern Hebrew / parts: מ: from מִן, from ; ה: from הַ, the ; בית: from בַּיִת, stem
+   C: form:Definite=Def|Gender=Masc|Number=Sing|State=Abs[masculine singular, absolute, with the article]
+   R: — (lemma bayit) / D: house ; school
+«בשנת» in "זה קרה בשנת אלפיים."
+   ⇒ שָׁנֶה / NOUN / feminine singular, construct / g:year / LEX:year / 0.46 / lexicon
+   also: שְׁנָה/NOUN(0.34)=year
+   period: he-mod (text) 67 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ב: from בְּ, in, with, by ; שנת: from שָׁנֶה, stem
+   C: form:Gender=Fem|Number=Sing|State=Cons[feminine singular, construct]
+   R: — (lemma shane) / D: year (the time it takes for the Earth to complete one revolution around the Sun) ; year (t
+«בתל» in "נפגשנו בתל אביב."
+   ⇒ תֵּל / NOUN / masculine singular, construct / g:mound / LEX:mound / 0.35 / rule
+   also: תֵּל/NOUN(0.31)=tell (a hill or mo, תֵּל חַרְשָׁא/PROPN(0.35)=Tel-haresha, תֵּל אָבִיב/PROPN(0.31)=Tel-abib
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ב: from בְּ, in, with, by ; תל: from תֵּל, stem
+   C: form:Gender=Masc|Number=Sing|State=Cons[masculine singular, construct]
+   R: — (lemma tel) / D: tell (a hill or mound, originally and especially in the Middle East, over or consisting of
+«בירושלים» in "היא גרה בירושלים."
+   ⇒ יְרוּשָׁלַ͏ִם / PROPN /  / g:Jerusalem / LEX:Jerusalem / 0.6 / lexicon
+   period: he-mod (text) 57 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ב: from בְּ, in, with, by ; ירושלים: from יְרוּשָׁלַ͏ִם, stem
+   R: — (lemma yerushalim) / D: Jerusalem (a city in the Holy Land between the Mediterranean Sea and Dead Sea, holy in Jud
+«לאילת» in "הם נסעו לאילת."
+   ⇒ אֵילוֹת / PROPN /  / g:Elath / LEX:Elath / 0.34 / rule
+   also: אֵילַת/PROPN(0.3)=Eilat (a city in s, אַיֶּלֶת/NOUN(0.3)=Defective spelling, אַיָּל/NOUN(0.3)=deer, stag
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ל: from לְ, to, for ; אילת: from אֵילוֹת, stem
+   R: — (lemma elot) / D: ∅
+«שאמרתי» in "כמו שאמרתי."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«הכי» in "זה הכי טוב."
+   ⇒ הֲכִי / ADV /  / g:Most, the most. / LEX:Most, the most. / 0.46 / lexicon
+   also: הִכָּה/VERB(0.41)=to hit, smite, str, כִּי/CONJ(0.43)=that, because, for
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma hakhi) / D: Most, the most.
+«ממני» in "הוא גבוה ממני."
+   ⇒ מִן / ADP / personal, 1st person singular / g:from me / LEX:from me / 0.8 / rule
+   also: מִן/ADP(0.39)=alternative form o, מִ־/ADP(0.39)=From, of, from ins, מִמֵּן/VERB(0.39)=to fund, to financ
+   period: he-mod (text) 46 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Number=Sing|Person=1|PronType=Prs[personal, 1st person singular]
+   R: — (lemma min) / D: manna
+«כותב» in "אני כותב מכתב."
+   ⇒ כּוֹתֵב / NOUN / singular, construct / g:A (male) writer or author. / LEX:A (male) writer or author. / 0.49 / lexicon
+   also: כָּתַב/VERB(0.49)=to write, כָּתַב/VERB(0.44)=to write, כּוֹתֵב/NOUN(0.44)=A (male) writer or
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Number=Sing|State=Cons[singular, construct]
+   R: — (lemma kotev) / D: A (male) writer or author.
+«כותבת» in "היא כותבת מכתב."
+   ⇒ כָּתַב / VERB / present, feminine singular / g:to write / LEX:to write / 0.54 / lexicon
+   also: כּוֹתֵב/NOUN(0.54)=A (male) writer or
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Fem|Number=Sing|VerbForm=Fin[present, feminine singular]
+   R: — (lemma katav) / D: to write ; writing, script, handwriting
+«כותבים» in "הם כותבים מכתבים."
+   ⇒ כּוֹתֵב / NOUN / plural / g:A (male) writer or author. / LEX:A (male) writer or author. / 0.57 / lexicon
+   also: כָּתַב/VERB(0.45)=to write
+   period: he-mod (text) 86 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Definite=Ind|Number=Plur[plural]
+   R: — (lemma kotev) / D: A (male) writer or author.
+«כותבות» in "הן כותבות מכתבים."
+   ⇒ כָּתַב / VERB / present, feminine plural / g:to write / LEX:to write / 0.7 / lexicon
+   period: he-mod (text) 86 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Fem|Number=Plur|VerbForm=Fin[present, feminine plural]
+   R: — (lemma katav) / D: to write ; writing, script, handwriting
+«כתבתי» in "כתבתי מכתב."
+   ⇒ כָּתַב / VERB / past, 1st person singular / g:to write / LEX:to write / 0.5 / lexicon
+   also: כָּתַב/VERB(0.45)=to write, כָּתַב/VERB(0.38)=write, write down,
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Past|Number=Sing|Person=1|VerbForm=Fin[past, 1st person singular]
+   R: — (lemma katav) / D: to write ; writing, script, handwriting
+«יכתוב» in "הוא יכתוב מחר."
+   ⇒ כָּתַב / VERB / future, 3rd person masculine singular / g:to write / LEX:to write / 0.55 / lexicon
+   also: כָּתַב/VERB(0.55)=to write
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Fut|Gender=Masc|Number=Sing|Person=3|VerbForm=Fin[future, 3rd person masculine singular]
+   R: — (lemma katav) / D: to write ; writing, script, handwriting
+«לכתוב» in "אני רוצה לכתוב."
+   ⇒ לִכְתֹּב \ לִכְתּוֹב / VERB /  / g:to-infinitive of כתב (katáv). / LEX:to-infinitive of כתב (katáv). / 0.78 / lexicon
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — / D: to-infinitive of כתב (katáv).
+«נכתב» in "המכתב נכתב אתמול."
+   ⇒ כָּתַב / VERB / passive / g:to write / LEX:to write / 0.42 / lexicon
+   also: נִכְתַּב/VERB(0.42)=to be written: to , נִכְתַּב/VERB(0.42)=to be written: to , כָּתַב/VERB(0.42)=to write
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Voice=Pass[passive]
+   R: — (lemma katav) / D: to write ; writing, script, handwriting
+«ייכתב» in "המכתב ייכתב מחר."
+   ⇒ נִכְתַּב / VERB / future, 3rd person masculine singular / g:to be written: to get written, to undergo writing, to come i / LEX:to be written: to get written, to undergo writing, to come into wr / 0.78 / lexicon
+   period: he-mod (text) 86 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Fut|Gender=Masc|Number=Sing|Person=3|VerbForm=Fin[future, 3rd person masculine singular]
+   R: — (lemma nikhetav) / D: to be written: to get written, to undergo writing, to come into written existence
+«מדבר» in "אני מדבר עברית."
+   ⇒ דִּבֵּר / VERB / present, masculine singular / g:speaking / INFL:speaking / 0.43 / lexicon
+   also: מִדְבָּר/NOUN(0.39)=desert, unsettled , מְדֻבָּר/VERB(0.43)=defective spelling, דִּבֵּר/VERB(0.39)=to speak (say word
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Masc|Number=Sing|VerbForm=Part[present, masculine singular]
+   R: — (lemma diber) / D: to speak (say words)
+«דיברתי» in "דיברתי איתו אתמול."
+   ⇒ דִּבֵּר / VERB / past, 1st person masculine or feminine singular / g:to speak (say words) / LEX:to speak (say words) / 0.78 / lexicon
+   period: he-mod (text) 46 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Past|Gender=Fem,Masc|Number=Sing|Person=1|VerbForm=Fin[past, 1st person masculine or feminine singular]
+   R: — (lemma diber) / D: to speak (say words)
+«תדבר» in "היא תדבר איתך."
+   ⇒ דִּבֵּר / VERB / future, 2nd person masculine singular / g:defective spelling of דיבר / LEX:defective spelling of דיבר / 0.43 / lexicon
+   also: דִּבֵּר/VERB(0.43)=defective spelling, דֻּבַּר/VERB(0.39)=to be spoken, דֻּבַּר/VERB(0.39)=to be spoken
+   period: he-mod (text) 43 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Fut|Gender=Masc|Number=Sing|Person=2|VerbForm=Fin[future, 2nd person masculine singular]
+   R: — (lemma diber) / D: to speak (say words)
+«לדבר» in "קשה לדבר עברית."
+   ⇒ דָבַר / VERB / Piʿel, infinitive construct / g:to speak / INFL:to speak / 0.44 / lexicon
+   also: לְדַבֵּר/VERB(0.43)=To-infinitive of ד, דָּבָר/NOUN(0.35)=word, speech, thin, דָּבָר/NOUN(0.34)=word, speech, thin
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ל: to, for ; דבר: Piʿel verb
+   C: form:Binyan=Piel|Conj=InfCons|VerbForm=Inf[Piʿel, infinitive construct]
+   R: — (lemma davar) / D: thing ; speech
+«מתלבש» in "הוא מתלבש מהר."
+   ⇒ הִתְלַבֵּשׁ / VERB / present, masculine singular / g:to dress, dress oneself, get dressed / LEX:to dress, dress oneself, get dressed / 0.7 / lexicon
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Masc|Number=Sing|VerbForm=Fin[present, masculine singular]
+   R: — (lemma hitelabesh) / D: to dress, dress oneself, get dressed
+«התלבשתי» in "התלבשתי ויצאתי."
+   ⇒ הִתְלַבֵּשׁ / VERB / past, 1st person masculine or feminine singular / g:to dress, dress oneself, get dressed / LEX:to dress, dress oneself, get dressed / 0.7 / lexicon
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Past|Gender=Fem,Masc|Number=Sing|Person=1|VerbForm=Fin[past, 1st person masculine or feminine singular]
+   R: — (lemma hitelabesh) / D: to dress, dress oneself, get dressed
+«להתלבש» in "צריך להתלבש."
+   ⇒ הִתְלַבֵּשׁ / VERB / past, 3rd person masculine singular / g:to dress, dress oneself, get dressed / LEX:to dress, dress oneself, get dressed / 0.39 / rule
+   also: הִתְלַבֵּשׁ/VERB(0.39)=to dress, dress on
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ל: from לְ, to, for ; התלבש: from הִתְלַבֵּשׁ, stem
+   C: form:Conj=Past|Gender=Masc|Number=Sing|Person=3|VerbForm=Fin[past, 3rd person masculine singular]
+   R: — (lemma hitelabesh) / D: to dress, dress oneself, get dressed
+«הזמנתי» in "הזמנתי פיצה."
+   ⇒ הִזְמִין / VERB / past, 1st person masculine or feminine singular / g:To invite. / LEX:To invite. / 0.7 / lexicon
+   period: he-mod (default) 100 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-onl
+   C: form:Conj=Past|Gender=Fem,Masc|Number=Sing|Person=1|VerbForm=Fin[past, 1st person masculine or feminine singular]
+   R: — (lemma hizemin) / D: To invite. ; To order: to request a product or service.
+«מזמין» in "הוא מזמין חברים."
+   ⇒ הִזְמִין / VERB / present, masculine singular / g:To invite. / LEX:To invite. / 0.7 / lexicon
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Masc|Number=Sing|VerbForm=Fin[present, masculine singular]
+   R: — (lemma hizemin) / D: To invite. ; To order: to request a product or service.
+«להזמין» in "רציתי להזמין אותך."
+   ⇒ הִזְמִין / VERB / past, 3rd person masculine singular / g:To invite. / LEX:To invite. / 0.5 / rule
+   period: he-mod (text) 50 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ל: from לְ, to, for ; הזמין: from הִזְמִין, stem
+   C: form:Conj=Past|Gender=Masc|Number=Sing|Person=3|VerbForm=Fin[past, 3rd person masculine singular]
+   R: — (lemma hizemin) / D: To invite. ; To order: to request a product or service.
+«הוזמן» in "הוא הוזמן למסיבה."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«מוזמן» in "אתה מוזמן."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«שולם» in "החשבון שולם."
+   ⇒ שָׁלַם / VERB / present, masculine singular / g:to be safe (mind, body or state) / LEX:to be safe (mind, body or state) / 0.54 / lexicon
+   also: שׁוּל/NOUN(0.54)=margin, brim, rim
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Masc|Number=Sing|VerbForm=Fin[present, masculine singular]
+   R: — (lemma shalam) / D: to be safe (mind, body or state) ; to be resigned to a treaty or covenant
+«מבושל» in "האוכל מבושל היטב."
+   ⇒ מְבֻשָּׁל / ADJ /  / g:cooked / LEX:cooked / 0.78 / lexicon
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma mevushal) / D: cooked ; mevushal
+«נסגרה» in "הדלת נסגרה."
+   ⇒ נִסְגַּר / VERB / past, 3rd person feminine singular / g:To close, to be closed: to become closed. / LEX:To close, to be closed: to become closed. / 0.7 / lexicon
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Past|Gender=Fem|Number=Sing|Person=3|VerbForm=Fin[past, 3rd person feminine singular]
+   R: — (lemma nisegar) / D: To close, to be closed: to become closed.
+«נכנס» in "הוא נכנס לחדר."
+   ⇒ כִּנֵּס / VERB / future, 1st person masculine or feminine plural / g:to assemble (a group of people), to call a meeting / LEX:to assemble (a group of people), to call a meeting / 0.44 / lexicon
+   also: כֻּנַּס/VERB(0.44)=to be assembled, t, נִכְנַס/VERB(0.44)=To enter; to go in, נִכְנַס/VERB(0.44)=To enter; to go in
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Fut|Gender=Fem,Masc|Number=Plur|Person=1|VerbForm=Fin[future, 1st person masculine or feminine plural]
+   R: — (lemma kines) / D: to assemble (a group of people), to call a meeting ; to compile: to make by gathering from
+«ייכנסו» in "הם ייכנסו בקרוב."
+   ⇒ נִכְנַס / VERB / future, 3rd person masculine plural / g:To enter; to go in or come in [with ל־ (l'-) ‘to’]. / LEX:To enter; to go in or come in [with ל־ (l'-) ‘to’]. / 0.78 / lexicon
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Fut|Gender=Masc|Number=Plur|Person=3|VerbForm=Fin[future, 3rd person masculine plural]
+   R: — (lemma nikhenas) / D: To enter; to go in or come in [with ל־ (l'-) ‘to’]. ; To enter (a state) [with ל־ (l'-) ‘t
+«תיכנס» in "תיכנס בבקשה."
+   ⇒ נִכְנַס / VERB / future, 2nd person masculine singular / g:To enter; to go in or come in [with ל־ (l'-) ‘to’]. / LEX:To enter; to go in or come in [with ל־ (l'-) ‘to’]. / 0.6 / lexicon
+   also: נִכְנַס/VERB(0.6)=To enter; to go in
+   period: he-mod (default) 100 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-onl
+   C: form:Conj=Fut|Gender=Masc|Number=Sing|Person=2|VerbForm=Fin[future, 2nd person masculine singular]
+   R: — (lemma nikhenas) / D: To enter; to go in or come in [with ל־ (l'-) ‘to’]. ; To enter (a state) [with ל־ (l'-) ‘t
+«שב» in "שב בבקשה!"
+   ⇒ שׁוּב / VERB / Qal, perfect (qatal), 3rd person masculine singular / g:He returned / INFL:He returned / 0.42 / lexicon
+   also: יָשַׁב/VERB(0.39)=to sit, to be in a, יָשַׁב/VERB(0.39)=to sit, to be in a, שָׁב/VERB(0.39)=to return (to go b
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: שב: Qal verb
+   C: form:Binyan=Qal|Conj=Perf|Gender=Masc|Number=Sing|Person=3|VerbForm=Fin[Qal, perfect (qatal), 3rd person masculine singular]
+   R: — (lemma shuv) / D: again
+«בואי» in "בואי הנה!"
+   ⇒ בָּא / VERB / imperative, feminine singular / g:To come. / LEX:To come. / 0.49 / lexicon
+   also: בּוֹא/VERB(0.42)=to come, go in, en, בּוֹא/VERB(0.42)=to come, go in, en
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Imp|Gender=Fem|Number=Sing|VerbForm=Fin[imperative, feminine singular]
+   R: — (lemma ba) / D: To come. ; To want (Used in expressing an unintentional or spontaneous desire)
+«תנו» in "תנו לי רגע."
+   ⇒ נָתַן / VERB / Qal, imperative, 2nd person masculine plural / g:Give! (plural) / INFL:Give! (plural) / 0.46 / lexicon
+   also: נָתַן/VERB(0.39)=to give, יָנָה/VERB(0.34)=suppress, oppress,
+   period: he-mod (text) 46 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: תנו: Qal verb
+   C: form:Binyan=Qal|Conj=Imp|Gender=Masc|Number=Plur|Person=2|VerbForm=Fin[Qal, imperative, 2nd person masculine plural]
+   R: — (lemma natan) / D: to give ; to allow, permit, let
+«תלך» in "אל תלך!"
+   ⇒ יָלַךְ / VERB / Qal, imperfect (yiqtol), 2nd person masculine singular / g:You will go / INFL:You will go / 0.4 / lexicon
+   also: הָלַךְ/VERB(0.39)=to walk, go, espec, הָלַךְ/VERB(0.39)=to walk, go, espec, יָלַךְ/VERB(0.34)=to go, walk
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ת: imperfect preformative, second person masculine singular ; לך: Qal verbal base
+   C: form:Binyan=Qal|Conj=Impf|Gender=Masc|Number=Sing|Person=2|VerbForm=Fin[Qal, imperfect (yiqtol), 2nd person masculine singular]
+   R: — (lemma yalakh) / D: ∅
+«הייתי» in "הייתי בבית."
+   ⇒ הָיָה / VERB / Qal, perfect (qatal), 1st person common gender singular / g:I was / INFL:I was / 0.46 / lexicon
+   also: הָיָה/VERB(0.43)=to be:, הָיָה/VERB(0.39)=to be:
+   period: he-mod (default) the words are read in more than one period alike; unpointed text is read as Modern Hebrew / parts: הייתי: Qal verb
+   C: form:Binyan=Qal|Conj=Perf|Gender=Com|Number=Sing|Person=1|VerbForm=Fin[Qal, perfect (qatal), 1st person common gender singular]
+   R: — (lemma haya) / D: to be: — to exist ; to be: — connects a noun to a prepositional phrase or adjective descri
+«היינו» in "היינו שם."
+   ⇒ הָיְנוּ / CONJ /  / g:that is, which means, in other words / LEX:that is, which means, in other words / 0.44 / lexicon
+   also: הָיָה/VERB(0.44)=to be:, הָיָה/VERB(0.4)=to be:, הָיָה/VERB(0.44)=to be, become, hap
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma hayenu) / D: that is, which means, in other words
+«יהיה» in "הוא יהיה כאן מחר."
+   ⇒ הָיָה / VERB / Qal, imperfect (yiqtol), 3rd person masculine singular / g:He will be / INFL:He will be / 0.46 / lexicon
+   also: הָיָה/VERB(0.43)=to be:, הָיָה/VERB(0.33)=to be, become, hap
+   period: he-mod (text) 67 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: י: imperfect preformative, third person masculine singular ; היה: Qal verbal base
+   C: form:Binyan=Qal|Conj=Impf|Gender=Masc|Number=Sing|Person=3|VerbForm=Fin[Qal, imperfect (yiqtol), 3rd person masculine singular]
+   R: — (lemma haya) / D: to be: — to exist ; to be: — connects a noun to a prepositional phrase or adjective descri
+«יהיו» in "הם יהיו מאוחרים."
+   ⇒ הָיָה / VERB / Qal, imperfect (yiqtol), 3rd person masculine plural / g:They will be / INFL:They will be / 0.46 / lexicon
+   also: הָיָה/VERB(0.39)=to be:, הָיָה/VERB(0.34)=to be, become, hap
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: י: imperfect preformative, third person masculine plural ; היו: Qal verbal base
+   C: form:Binyan=Qal|Conj=Impf|Gender=Masc|Number=Plur|Person=3|VerbForm=Fin[Qal, imperfect (yiqtol), 3rd person masculine plural]
+   R: — (lemma haya) / D: to be: — to exist ; to be: — connects a noun to a prepositional phrase or adjective descri
+«ראיתי» in "ראיתי אותו."
+   ⇒ רָאָה / VERB / Qal, perfect (qatal), 1st person common gender singular / g:I saw / INFL:I saw / 0.46 / lexicon
+   also: רָאָה/VERB(0.43)=To see, to have vi, רָאָה/VERB(0.39)=To see, to have vi
+   period: he-mod (default) 36 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ראיתי: Qal verb
+   C: form:Binyan=Qal|Conj=Perf|Gender=Com|Number=Sing|Person=1|VerbForm=Fin[Qal, perfect (qatal), 1st person common gender singular]
+   R: — (lemma raʾa) / D: To see, to have vision; figuratively, to perceive. ; To observe, look at; figuratively, to
+«ראתה» in "היא ראתה אותי."
+   ⇒ רָאָה / VERB / Qal, perfect (qatal), 3rd person feminine singular / g:She saw / INFL:She saw / 0.44 / lexicon
+   also: רֵאָה/NOUN(0.4)=lungs, collectivel, רָאָה/VERB(0.4)=To see, to have vi, רָאָה/VERB(0.34)=to see
+   period: he-mod (text) 46 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ראתה: Qal verb
+   C: form:Binyan=Qal|Conj=Perf|Gender=Fem|Number=Sing|Person=3|VerbForm=Fin[Qal, perfect (qatal), 3rd person feminine singular]
+   R: — (lemma raʾa) / D: To see, to have vision; figuratively, to perceive. ; To observe, look at; figuratively, to
+«קנינו» in "קנינו בית."
+   ⇒ קִנְיָן / NOUN / masculine singular, construct / g:thing got, acquired, acquisition / LEX:thing got, acquired, acquisition / 0.43 / lexicon
+   also: קֵן/NOUN(0.42)=nest (bird-built s, קָנָה/VERB(0.42)=to buy, to purchas, קָנֶה/NOUN(0.42)=a cane: a long hol
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: קנינ: from קִנְיָן, stem ; ו: possessive suffix
+   C: form:Gender=Masc|Number=Sing|State=Cons[masculine singular, construct]
+   R: — (lemma kineyan) / D: ∅
+«רץ» in "הוא רץ מהר."
+   ⇒ רוּץ / VERB / Qal, participle, masculine singular, absolute / g:running / INFL:running / 0.47 / lexicon
+   also: רָץ/NOUN(0.45)=A runner: a messen, רָץ/VERB(0.4)=To run; to move fo, רָץ/VERB(0.4)=To run; to move fo
+   period: he-mod (text) 60 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: רץ: Qal verb
+   C: form:Binyan=Qal|Conj=Part|Gender=Masc|Number=Sing|State=Abs|VerbForm=Part[Qal, participle, masculine singular, absolute]
+   R: — (lemma ruts) / D: Forming words pertaining to running.
+«שרה» in "היא שרה שיר."
+   ⇒ שָׂרָה / PROPN /  / g:Sarah / LEX:Sarah / 0.51 / lexicon
+   also: שָׂרָה/PROPN(0.44)=a female given nam, שָׂרָה/NOUN(0.44)=lady, princess, qu, שָׁר/VERB(0.44)=to sing
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma sara) / D: a female given name, equivalent to English Sarah ; Sarah (the wife of Abraham and mother o
+«גרים» in "אנחנו גרים בחיפה."
+   ⇒ גֵּר / NOUN / plural / g:foreigner, stranger: one who sojourns in a foreign place / LEX:foreigner, stranger: one who sojourns in a foreign place / 0.42 / lexicon
+   also: גָּר/VERB(0.42)=to dwell, reside, , גֵּר/ADJ(0.4)=adventitious, גֵּר/NOUN(0.4)=foreigner, strange
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Definite=Ind|Number=Plur[plural]
+   R: — (lemma ger) / D: foreigner, stranger: one who sojourns in a foreign place ; convert to Judaism, proselyte
+«אוהב» in "אני אוהב אותך."
+   ⇒ אָהַב / VERB / future, 1st person masculine or feminine singular / g:to love / LEX:to love / 0.49 / lexicon
+   also: אָהַב/VERB(0.49)=to love, אָהַב/VERB(0.49)=to love, אָהַב/VERB(0.44)=to love
+   period: he-mod (text) 43 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Fut|Gender=Fem,Masc|Number=Sing|Person=1|VerbForm=Fin[future, 1st person masculine or feminine singular]
+   R: — (lemma ahav) / D: to love ; Related to love.
+«אוהבת» in "אני אוהבת אותך."
+   ⇒ אָהַב / VERB / present, feminine singular / g:loving / INFL:loving / 0.55 / lexicon
+   also: אָהַב/VERB(0.49)=to love
+   period: he-mod (text) 46 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Fem|Number=Sing|VerbForm=Part[present, feminine singular]
+   R: — (lemma ahav) / D: to love ; Related to love.
+«יכול» in "אני יכול לעזור."
+   ⇒ יָכֹל / VERB / Qal, perfect (qatal), 3rd person masculine singular / g:He was able / INFL:He was able / 0.43 / lexicon
+   also: יָכֹל/VERB(0.42)=can, to be able to, יָכֹל/VERB(0.36)=be able, have powe
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: יכול: Qal verb
+   C: form:Binyan=Qal|Conj=Perf|Gender=Masc|Number=Sing|Person=3|VerbForm=Fin[Qal, perfect (qatal), 3rd person masculine singular]
+   R: — (lemma yakhol) / D: can, to be able to
+«יכולה» in "היא יכולה לבוא."
+   ⇒ יָכֹל / VERB / present, feminine singular / g:being able to / INFL:being able to / 0.55 / lexicon
+   also: יָכֹל/VERB(0.49)=can, to be able to
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Fem|Number=Sing|VerbForm=Part[present, feminine singular]
+   R: — (lemma yakhol) / D: can, to be able to
+«אפשר» in "אפשר לשלם בכרטיס?"
+   ⇒ אֶפְשָׁר / ADJ /  / g:Possible: being a possibility; not impossible. / LEX:Possible: being a possibility; not impossible. / 0.49 / lexicon
+   also: אֶפְשָׁר/ADV(0.49)=perhaps, maybe, אִפְשֵׁר/VERB(0.44)=To permit: to enab, אִפְשֵׁר/VERB(0.44)=To permit: to enab
+   period: he-mod (text) 80 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma efeshar) / D: Possible: being a possibility; not impossible. ; Possible, permitted, allowed.
+«אסור» in "אסור לעשן כאן."
+   ⇒ אָסַר / VERB / imperative, masculine singular / g:to bind, tie, join / LEX:to bind, tie, join / 0.45 / lexicon
+   also: אָסַר/VERB(0.42)=to bind, tie, join, אָסוּר/ADJ(0.45)=forbidden, אִסּוּר/NOUN(0.45)=defective spelling
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Imp|Gender=Masc|Number=Sing|VerbForm=Fin[imperative, masculine singular]
+   R: — (lemma asar) / D: to bind, tie, join ; to imprison
+«מותר» in "מותר להיכנס."
+   ⇒ מֻתָּר / ADJ /  / g:permissible, permitted, allowed / LEX:permissible, permitted, allowed / 0.52 / lexicon
+   also: מוֹתָר/NOUN(0.46)=leftover, extra, וִתֵּר/VERB(0.46)=To give up (on), מוֹתָר/NOUN(0.4)=abundance, pre-emi
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma mutar) / D: permissible, permitted, allowed ; loose, loosened
+«חייב» in "אתה חייב לבוא."
+   ⇒ חַיָּב / ADJ /  / g:obligated, required, bound, must / LEX:obligated, required, bound, must / 0.52 / lexicon
+   also: חַיָּב/NOUN(0.52)=debtor, חַיָּב/NOUN(0.52)=debtor, חִיֵּב/VERB(0.52)=to force, coerce
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma ḥayav) / D: obligated, required, bound, must ; owing, having a debt
+«כדאי» in "כדאי לך לנסות."
+   ⇒ כְּדַאי / ADJ /  / g:fitting, suitable / LEX:fitting, suitable / 0.6 / lexicon
+   period: he-mod (text) 40 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma kedaʾy) / D: fitting, suitable ; convenient, desirable, worthwhile (impersonal)
+«של» in "זה הספר של דני."
+   ⇒ שֶׁל / ADP /  / g:Of, belonging to, owned by, pertaining to. / LEX:Of, belonging to, owned by, pertaining to. / 0.46 / lexicon
+   also: נשל/VERB(0.46), שֶׁלְּ־/ADP(0.46)=alternative form o, נָשַׁל/VERB(0.38)=slip, drop off, dr
+   period: he-mod (text) 73 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma shel) / D: Of, belonging to, owned by, pertaining to.
+«את» in "ראיתי את הסרט."
+   ⇒ אֵת / PART / object marker / g:(marks the definite direct object) / LEX:(marks the definite direct object) / 0.45 / lexicon
+   also: אַתְּ/PRON(0.43)=You, thou: (the fe, אֵת/ADP(0.33)=with, beside, אַתְּ/PRON(0.33)=you (feminine sing
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / role: object marker
+   C: form:PartType=Obj[object marker]
+   R: — (lemma et) / D: Used to introduce a semantically definite direct object. ; To, with.
+«את» in "את יפה מאוד."
+   ⇒ אֵת / PART / object marker / g:(marks the definite direct object) / LEX:(marks the definite direct object) / 0.45 / lexicon
+   also: אַתְּ/PRON(0.43)=You, thou: (the fe, אֵת/ADP(0.33)=with, beside, אַתְּ/PRON(0.33)=you (feminine sing
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / role: object marker
+   C: form:PartType=Obj[object marker]
+   R: — (lemma et) / D: Used to introduce a semantically definite direct object. ; To, with.
+«יש» in "יש לי כלב."
+   ⇒ יֵשׁ / ADV /  / g:there is or are; there exist(s); see usage notes below. / LEX:there is or are; there exist(s); see usage notes below. / 0.43 / lexicon
+   also: יש!/INTJ(0.43)=Yes: used to expre, יֵשׁ/NOUN(0.39)=Being, existence., יֵשׁ/NOUN(0.39)=Being, existence.
+   period: he-mod (text) 46 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma yesh) / D: there is or are; there exist(s); see usage notes below. ; someone/something has; see usage
+«אין» in "אין לי זמן."
+   ⇒ אַיִן / PART / negative / g:there is not, without / LEX:there is not, without / 0.46 / lexicon
+   also: אֵין/PART(0.43)=There is not, ther, אַיִן/NOUN(0.43)=nothing, אַיֵּה/ADV(0.39)=where
+   period: he-mod (text) 46 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Polarity=Neg[negative]
+   R: — (lemma ayin) / D: There is not, there are not: used in expressing non-existence in the present tense. ; Used
+«לו» in "אין לו כסף."
+   ⇒ לְ / ADP / personal, 3rd person masculine singular / g:to him, it / LEX:to him, it / 0.8 / rule
+   also: לוּ/CONJ(0.43)=if (used in formin, ל/ADP(0.43), לְ־/ADP(0.39)=To; indicating a d
+   period: he-mod (text) 46 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Masc|Number=Sing|Person=3|PronType=Prs[personal, 3rd person masculine singular]
+   R: — (lemma l) / D: To; indicating a destination or end-point. — Indicating the destination of movement. ; To;
+«איננו» in "הוא איננו כאן."
+   ⇒ אַיִן / PART / negative / g:there is not, without / LEX:there is not, without / 0.46 / lexicon
+   also: אֵין/PART(0.39)=There is not, ther, אֵין/PART(0.39)=There is not, ther
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: אינ: from אַיִן, stem ; נו: possessive suffix
+   C: form:Polarity=Neg[negative]
+   R: — (lemma ayin) / D: There is not, there are not: used in expressing non-existence in the present tense. ; Used
+«ישנם» in "ישנם אנשים שחושבים כך."
+   ⇒ יֵשׁ / ADV / 3rd person masculine plural / g:there is or are; there exist(s); see usage notes below. / LEX:there is or are; there exist(s); see usage notes below. / 0.54 / lexicon
+   also: יֵשׁ/NOUN(0.54)=Being, existence.
+   period: he-mod (text) 86 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Masc|Number=Plur|Person=3[3rd person masculine plural]
+   R: — (lemma yesh) / D: there is or are; there exist(s); see usage notes below. ; someone/something has; see usage
+«בעצמו» in "הוא עשה זאת בעצמו."
+   ⇒ בְּעֶצֶם־ / ADP / 3rd person masculine singular / g:by oneself, on one's own, without assistance / LEX:by oneself, on one's own, without assistance / 0.6 / lexicon
+   also: בְּעֶצֶם־/ADP(0.6)=by oneself, on one
+   period: he-mod (text) 67 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Masc|Number=Sing|Person=3[3rd person masculine singular]
+   R: — (lemma beʿetsem) / D: by oneself, on one's own, without assistance ; actually, in fact, essentially
+«עצמה» in "היא ראתה את עצמה."
+   ⇒ עִצֵּם / VERB / past, 3rd person feminine singular / g:Defective spelling of עיצם / LEX:Defective spelling of עיצם / 0.48 / lexicon
+   also: עׇצְמָה/NOUN(0.48)=strength, power, i, עֶצֶם/NOUN(0.43)=bone, עׇצְמָה/NOUN(0.37)=might
+   period: he-mod (text) 67 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Past|Gender=Fem|Number=Sing|Person=3|VerbForm=Fin[past, 3rd person feminine singular]
+   R: — (lemma itsem) / D: to close (one's eyes) ; to become mighty
+«ביניהם» in "ביניהם אין הבדל."
+   ⇒ בֵּין / ADP /  / g:between / LEX:between / 0.43 / lexicon
+   also: בֵּין/ADP(0.41)=between, among, am
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ביני: from בֵּין, stem ; הם: object of the preposition
+   R: — (lemma ben) / D: between, among, amid
+«בגללו» in "בגללו איחרתי."
+   ⇒ גָּלַל / VERB / imperative, masculine plural / g:to roll (literally or figuratively) / LEX:to roll (literally or figuratively) / 0.39 / rule
+   also: גָּלַל/VERB(0.39)=to roll (literally
+   period: he-mod (default) 100 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-onl / parts: ב: from בְּ, in, with, by ; גללו: from גָּלַל, stem
+   C: form:Conj=Imp|Gender=Masc|Number=Plur|VerbForm=Fin[imperative, masculine plural]
+   R: — (lemma galal) / D: to roll (literally or figuratively) ; to scroll
+«בלעדיך» in "בלעדיך לא אלך."
+   ⇒ בִּלְעֲדֵי / ADP / 2nd person masculine singular / g:without, in the absence of / LEX:without, in the absence of / 0.54 / lexicon
+   also: בִּלְעֲדֵי/ADP(0.54)=without, in the ab
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Masc|Number=Sing|Person=2[2nd person masculine singular]
+   R: — (lemma bileʿade) / D: without, in the absence of ; Exclusive: available to only a few.
+«לידי» in "הוא יושב לידי."
+   ⇒ לְיַד־ / ADP / 1st person masculine or feminine singular / g:Beside, near, by, near to, next to, adjacent to, alongside. / LEX:Beside, near, by, near to, next to, adjacent to, alongside. / 0.54 / lexicon
+   also: יָד/NOUN(0.47)=hand; power; side
+   period: he-mod (text) 60 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Fem,Masc|Number=Sing|Person=1[1st person masculine or feminine singular]
+   R: — (lemma leyad) / D: Beside, near, by, near to, next to, adjacent to, alongside. ; Near, nearby, next, adjacent
+«בתוכו» in "מה בתוכו?"
+   ⇒ תָּוֶךְ / NOUN / masculine singular, construct / g:midst, middle / LEX:midst, middle / 0.46 / lexicon
+   also: בְּתוֹךְ/ADP(0.4)=inside, within, in
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ב: from בְּ, in, with, by ; תוכ: from תָּוֶךְ, stem ; ו: possessive suffix
+   C: form:Gender=Masc|Number=Sing|State=Cons[masculine singular, construct]
+   R: — (lemma tavekh) / D: the midst
+«עבורך» in "קניתי את זה עבורך."
+   ⇒ עֲבוּר / ADP / 2nd person masculine singular / g:because of, for, for the sake of, in order to / LEX:because of, for, for the sake of, in order to / 0.54 / lexicon
+   also: עֲבוּר/ADP(0.54)=because of, for, f
+   period: he-mod (text) 73 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Masc|Number=Sing|Person=2[2nd person masculine singular]
+   R: — (lemma avur) / D: because of, for, for the sake of, in order to ; Over!
+«עליי» in "הם דיברו עליי."
+   ⇒ עַל / ADP / personal, 1st person singular / g:on me / LEX:on me / 0.8 / rule
+   also: עַל/ADP(0.52)=on, on top of, עֹל/NOUN(0.52)=yoke, על including first-person singular personal pronoun as object/ADP(0.52)
+   period: he-mod (text) 55 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Number=Sing|Person=1|PronType=Prs[personal, 1st person singular]
+   R: — (lemma al) / D: on, on top of ; on
+«כולנו» in "כולנו כאן."
+   ⇒ כֹּל / NOUN / 1st person masculine or feminine plural / g:All, whole, entirety, everything; found almost exclusively i / LEX:All, whole, entirety, everything; found almost exclusively in sing / 0.6 / lexicon
+   also: כל/PRON(0.6)
+   period: he-mod (default) 100 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-onl
+   C: form:Gender=Fem,Masc|Number=Plur|Person=1[1st person masculine or feminine plural]
+   R: — (lemma kol) / D: All, whole, entirety, everything; found almost exclusively in singular definite and singul
+«לבדו» in "הוא לבדו בבית."
+   ⇒ בַּד / NOUN / masculine singular, construct / g:separation, part, in a state of separation / LEX:separation, part, in a state of separation / 0.46 / lexicon
+   also: לֶבֶד/NOUN(0.39)=Felt: a certain ma
+   period: he-mod (default) the words are read in more than one period alike; unpointed text is read as Modern Hebrew / parts: ל: from לְ, to, for ; בד: from בַּד, stem ; ו: possessive suffix
+   C: form:Gender=Masc|Number=Sing|State=Cons[masculine singular, construct]
+   R: — (lemma bad) / D: fabric, cloth, linen ; screen (film or television): the fabric it is projected on.
+«אחי» in "זה אחי הגדול."
+   ⇒ אָחִי / NOUN /  / g:bro, man, dude / LEX:bro, man, dude / 0.43 / lexicon
+   also: אָח/NOUN(0.39)=brother (son of th, אָח/NOUN(0.43)=brother (son of th, אָח/NOUN(0.43)=brother (son of th
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma aḥi) / D: bro, man, dude
+«אשתו» in "זאת אשתו."
+   ⇒ אִשָּׁה / NOUN / feminine singular, construct / g:woman, wife / LEX:woman, wife / 0.46 / lexicon
+   also: אִשָּׁה/NOUN(0.43)=woman (an adult fe, אשה/NOUN(0.43), אִשָּׁה/NOUN(0.39)=woman (an adult fe
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: אשת: from אִשָּׁה, stem ; ו: possessive suffix
+   C: form:Gender=Fem|Number=Sing|State=Cons[feminine singular, construct]
+   R: — (lemma isha) / D: woman (an adult female human) ; wife (a married woman, especially in relation to her spous
+«לדעתי» in "לדעתי זה לא נכון."
+   ⇒ לְדַעַת־ / ADP / 1st person masculine or feminine singular / g:according to; in one's opinion; in the opinion of / LEX:according to; in one's opinion; in the opinion of / 0.54 / lexicon
+   also: דַּעַת/NOUN(0.47)=knowledge, percept
+   period: he-mod (text) 67 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Fem,Masc|Number=Sing|Person=1[1st person masculine or feminine singular]
+   R: — (lemma ledaʿat) / D: according to; in one's opinion; in the opinion of ; to-infinitive of ידע (yadá).
+«הספר» in "הילדים הולכים לבית הספר."
+   ⇒ סֵפֶר / NOUN / masculine singular, absolute, with the article / g:missive, document, writing / LEX:missive, document, writing / 0.42 / lexicon
+   also: סֵפֶר/NOUN(0.39)=book, סָפַר/NOUN(0.42)=enumerator, muster, סְפָר/NOUN(0.33)=enumeration, censu
+   period: he-mod (text) 60 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ה: from הַ, the ; ספר: from סֵפֶר, stem
+   C: form:Definite=Def|Gender=Masc|Number=Sing|State=Abs[masculine singular, absolute, with the article]
+   R: — (lemma sefer) / D: book ; a writing
+«עורך» in "הוא עורך דין."
+   ⇒ עָרַךְ / VERB / present, masculine singular / g:to organize, manage, handle, arrange, set up / LEX:to organize, manage, handle, arrange, set up / 0.54 / lexicon
+   also: עוֹרֵךְ/NOUN(0.54)=editor
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Masc|Number=Sing|VerbForm=Fin[present, masculine singular]
+   R: — (lemma arakh) / D: to organize, manage, handle, arrange, set up ; to formulate, draw up
+«הולדת» in "יום הולדת שמח!"
+   ⇒ הֻלֶּדֶת / NOUN / singular / g:birth / LEX:birth / 0.49 / lexicon
+   also: הֻלֶּדֶת/NOUN(0.49)=birth, הוֹלִיד/VERB(0.44)=To give birth, to , הוֹלִיד/VERB(0.44)=To give birth, to 
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Definite=Ind|Number=Sing[singular]
+   R: — (lemma huledet) / D: birth
+«בתי» in "בתי הספר סגורים."
+   ⇒ בַּיִת / NOUN / plural, construct / g:house / LEX:house / 0.4 / lexicon
+   also: בַּיִת/NOUN(0.39)=house, בַּיִת/NOUN(0.39)=house, household, בַּת/NOUN(0.36)=daughter
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Number=Plur|State=Cons[plural, construct]
+   R: — (lemma bayit) / D: house ; school
+«עוגת» in "עוגת שוקולד טעימה."
+   ⇒ עוּגָה / NOUN / singular, construct / g:cake / LEX:cake / 0.7 / lexicon
+   period: he-mod (text) 100 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-onl
+   C: form:Number=Sing|State=Cons[singular, construct]
+   R: — (lemma uga) / D: cake
+«האוכל» in "חדר האוכל גדול."
+   ⇒ אֹֽכֶל / NOUN / singular, with the article / g:food / LEX:food / 0.55 / lexicon
+   also: אָכַל/VERB(0.42)=to eat, יָכֹל/VERB(0.42)=be able, have powe
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Definite=Def|Number=Sing[singular, with the article]
+   R: — (lemma okhel) / D: food ; to corrode, be consumed, be devoured
+«הגדול» in "הבית הגדול שלנו."
+   ⇒ גָּדוֹל / ADJ / masculine singular, absolute, with the article / g:great, large, important / LEX:great, large, important / 0.46 / lexicon
+   also: גִּדּוּל/NOUN(0.39)=growing, growth
+   period: he-mod (text) 50 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ה: from הַ, the ; גדול: from גָּדוֹל, stem
+   C: form:Definite=Def|Gender=Masc|Number=Sing|State=Abs[masculine singular, absolute, with the article]
+   R: — (lemma gadol) / D: big, large ; great, important
+«קטנה» in "ילדה קטנה ויפה."
+   ⇒ קָטָן / ADJ / feminine singular, absolute / g:small, young, unimportant / LEX:small, young, unimportant / 0.52 / lexicon
+   also: קָטֹן/VERB(0.41)=to be or become sm, קָטָן/ADJ(0.41)=Little, small, dim, קָטֹן/VERB(0.41)=to be or become sm
+   period: he-mod (text) 57 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Fem|Number=Sing|State=Abs[feminine singular, absolute]
+   R: — (lemma katan) / D: Little, small, diminutive. ; Little, young.
+«טובים» in "אנשים טובים."
+   ⇒ טוֹב / ADJ / masculine plural, absolute / g:good, pleasant / LEX:good, pleasant / 0.46 / lexicon
+   also: טוֹב/ADJ(0.39)=good, fair, fine
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Masc|Number=Plur|State=Abs[masculine plural, absolute]
+   R: — (lemma tov) / D: good, fair, fine ; kind
+«חדשות» in "מכוניות חדשות."
+   ⇒ חָדָשׁ / ADJ / feminine plural / g:new, recently made / LEX:new, recently made / 0.49 / lexicon
+   also: חֲדָשׁוֹת/NOUN(0.49)=news, חָדָשׁ/ADJ(0.44)=new, recently made, חָדָשׁ/ADJ(0.38)=new
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Definite=Ind|Gender=Fem|Number=Plur[feminine plural]
+   R: — (lemma ḥadash) / D: new, recently made ; new, current, recent (as opposed to former)
+«יותר» in "הוא יותר גבוה."
+   ⇒ יוֹתֵר / ADV /  / g:more / LEX:more / 0.45 / lexicon
+   also: יוֹתֵר/DET(0.45)=more., וִתֵּר/VERB(0.41)=To give up (on), נוֹתַר/VERB(0.41)=to be left, to rem
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma yoter) / D: more ; anymore (with a preceding negation)
+«טלפון» in "יש לי טלפון חדש."
+   ⇒ טֶלֶפוֹן / NOUN / singular, construct / g:telephone, phone / LEX:telephone, phone / 0.51 / lexicon
+   also: טִלְפֵּן/VERB(0.45)=To telephone, to p, טֶלֶפוֹן/NOUN(0.45)=telephone, phone
+   period: he-mod (text) 53 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Number=Sing|State=Cons[singular, construct]
+   R: — (lemma telefon) / D: telephone, phone
+«באוניברסיטה» in "הוא לומד באוניברסיטה."
+   ⇒ אוּנִיבֶרְסִיטָה / NOUN / singular / g:university / LEX:university / 0.5 / rule
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ב: from בְּ, in, with, by ; אוניברסיטה: from אוּנִיבֶרְסִיטָה, stem
+   C: form:Definite=Ind|Number=Sing[singular]
+   R: — (lemma univeresita) / D: university
+«אינטרנט» in "אין אינטרנט בבית."
+   ⇒ אִינְטֶרְנֶט / NOUN /  / g:An internet: a group of mutually connected computer networks / LEX:An internet: a group of mutually connected computer networks. / 0.55 / lexicon
+   also: הָאִינְטֶרְנֶט/PROPN(0.55)=Internet (the glob
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma ineterenet) / D: An internet: a group of mutually connected computer networks. ; Internet (the global, dece
+«בטלוויזיה» in "ראיתי את זה בטלוויזיה."
+   ⇒ טֶלֶוִיזְיָה / NOUN /  / g:television (an electronic home entertainment device equipped / LEX:television (an electronic home entertainment device equipped with  / 0.5 / rule
+   period: he-mod (text) 73 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ב: from בְּ, in, with, by ; טלוויזיה: from טֶלֶוִיזְיָה, stem
+   R: — (lemma televizeya) / D: television (an electronic home entertainment device equipped with a screen and a speaker f
+«סטודנט» in "הוא סטודנט למשפטים."
+   ⇒ סְטוּדֶנְט / NOUN / singular, construct / g:A (male) student (in a college, university, or other institu / LEX:A (male) student (in a college, university, or other institute of  / 0.7 / lexicon
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Number=Sing|State=Cons[singular, construct]
+   R: — (lemma setudenet) / D: A (male) student (in a college, university, or other institute of higher education).
+«בווטסאפ» in "שלח לי הודעה בווטסאפ."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«בגוגל» in "חיפשתי בגוגל."
+   ⇒ גוגל / PROPN /  / g:Google (a particular Internet company) / LEX:Google (a particular Internet company) / 0.5 / rule
+   period: he-mod (default) 100 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-onl / parts: ב: from בְּ, in, with, by ; גוגל: stem
+   R: — / D: Google (a particular Internet company) ; Google (Google Search, a very popular search engi
+«בסטארטאפ» in "היא עובדת בסטארטאפ."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«סבבה» in "הכול סבבה."
+   ⇒ סַבַּבָּה / ADJ /  / g:cool (trendy, fashionable or popular) / LEX:cool (trendy, fashionable or popular) / 0.49 / lexicon
+   also: סַבַּבָּה/INTJ(0.49)=cool!, great!, סֶבֶב/NOUN(0.44)=A round (of a game, סָבַב/VERB(0.44)=to surround, encir
+   period: he-mod (default) 100 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-onl
+   R: — (lemma sababa) / D: cool (trendy, fashionable or popular) ; fine.
+«יאללה» in "יאללה, הולכים!"
+   ⇒ יַאלְלָה / INTJ /  / g:come on, c’mon / LEX:come on, c’mon / 0.6 / lexicon
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma yaʾlela) / D: come on, c’mon ; let’s go, hurry up
+«פרגן» in "הוא פרגן לי מאוד."
+   ⇒ פִרְגֵּן / VERB / past, 3rd person masculine singular / g:Feel genuine delight or pride in another person's achievemen / LEX:Feel genuine delight or pride in another person's achievement or i / 0.54 / lexicon
+   also: פִרְגֵּן/VERB(0.54)=Feel genuine delig
+   period: he-mod (text) 53 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Past|Gender=Masc|Number=Sing|Person=3|VerbForm=Fin[past, 3rd person masculine singular]
+   R: — (lemma firegen) / D: Feel genuine delight or pride in another person's achievement or in something good that ha
+«לסמס» in "צריך לסמס לה."
+   ⇒ סמס / NOUN /  / g:SMS (a text message sent on a cell phone) / LEX:SMS (a text message sent on a cell phone) / 0.5 / rule
+   period: he-mod (text) 50 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ל: from לְ, to, for ; סמס: stem
+   R: — / D: SMS (a text message sent on a cell phone)
+«הקורונה» in "בזמן הקורונה עבדנו מהבית."
+   ⇒ קוֹרוֹנָה / NOUN / with the article / g:short for נְגִיף קוֹרוֹנָה (negíf koróna, “coronavirus”) / LEX:short for נְגִיף קוֹרוֹנָה (negíf koróna, “coronavirus”) / 0.39 / rule
+   period: he-mod (text) 86 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ה: from הַ, the ; קורונה: from קוֹרוֹנָה, stem
+   C: form:Definite=Def[with the article]
+   R: — (lemma korona) / D: short for נְגִיף קוֹרוֹנָה (negíf koróna, “coronavirus”)
+«פלאפל» in "אכלנו פלאפל וחומוס."
+   ⇒ פָלָאפֶל / NOUN /  / g:falafel / LEX:falafel / 0.6 / lexicon
+   period: he-mod (text) 86 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma falaʾfel) / D: falafel ; One of the oak leaves on the shoulders of Israeli military uniforms to indicate 
+«קפוצ'ינו» in "הזמנתי קפוצ'ינו."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«ג'ורג'» in "דיברתי עם ג'ורג'."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«לצ'ילה» in "נסעתי לצ'ילה."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«נתניהו» in "נתניהו נאם בכנסת."
+   ⇒ נְתַנְיָה / PROPN /  / g:Nethaniah / LEX:Nethaniah / 0.51 / lexicon
+   also: נְתַנְיָהוּ/PROPN(0.49)=a surname, Netanya
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma netaneya) / D: Netanya (a city in central Israel)
+«טראמפ» in "טראמפ ביקר בישראל."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«ללונדון» in "היא טסה ללונדון."
+   ⇒ לוֹנְדּוֹן / PROPN /  / g:London (the capital city of the United Kingdom; the capital  / LEX:London (the capital city of the United Kingdom; the capital city o / 0.39 / rule
+   period: he-mod (text) 86 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ל: from לְ, to, for ; לונדון: from לוֹנְדּוֹן, stem
+   R: — (lemma lonedon) / D: London (the capital city of the United Kingdom; the capital city of England, within Greate
+«זבנגור» in "זבנגור קרפלון."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«בצה"ל» in "הוא משרת בצה"ל."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«ד"ר» in "ד"ר כהן יקבל אותך."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«ארה"ב» in "ארה"ב היא מדינה גדולה."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«וכו'» in "קניתי לחם, חלב וכו'."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«עו"ד» in "הוא עו"ד מצליח."
+   ⇒ עוד / NUM / cardinal number / g:80 / LEX:80 / 0.8 / rule
+   period: he-mod (text) 40 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:NumType=Card[cardinal number]
+   R: — / D: still, longer, more; no longer, no more, any longer (signifies that an action which began 
+«לת"א» in "נסענו לת"א."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«ש"ח» in "זה עולה 20 ש"ח."
+   ⇒ שח / NUM / cardinal number / g:308 / LEX:308 / 0.8 / rule
+   period: he-mod (text) 43 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:NumType=Card[cardinal number]
+   R: — / D: ∅
+«ק"מ» in "רצתי 5 ק"מ."
+   ⇒ קמ / NUM / cardinal number / g:140 / LEX:140 / 0.8 / rule
+   period: he-mod (default) 36 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:NumType=Card[cardinal number]
+   R: — / D: ∅
+«ע"י» in "המכתב נכתב ע"י המנהל."
+   ⇒ עי / NUM / cardinal number / g:80 / LEX:80 / 0.8 / rule
+   period: he-mod (text) 53 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:NumType=Card[cardinal number]
+   R: — / D: ∅
+«רח'» in "רח' הרצל 5."
+   ⇒ רח / NUM / cardinal number / g:208 / LEX:208 / 0.8 / rule
+   period: he-mod (default) the words are read in more than one period alike; unpointed text is read as Modern Hebrew
+   C: form:NumType=Card[cardinal number]
+   R: — / D: ∅
+«בע"מ» in "חברת כלל בע"מ."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«יו"ר» in "יו"ר הכנסת נאם."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«מנכ"ל» in "מנכ"ל החברה התפטר."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«התנ"ך» in "התנ"ך נכתב בעברית."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«הרמב"ם» in "הרמב"ם חי במצרים."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«ז"ל» in "סבא שלי ז"ל."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«ב'» in "ביום ב' אני עובד."
+   ⇒ ב / NUM / cardinal number / g:2 / LEX:2 / 0.8 / rule
+   period: he-mod (text) 47 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:NumType=Card[cardinal number]
+   R: — / D: initialism of בֵּינַיִם, used to indicate that a term originates from the third layer of t
+«ג'» in "כיתה ג' יצאה לטיול."
+   ⇒ ג / NUM / cardinal number / g:3 / LEX:3 / 0.8 / rule
+   period: he-mod (text) 53 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:NumType=Card[cardinal number]
+   R: — / D: ∅
+«כ"ט» in "כ"ט בנובמבר 1947."
+   ⇒ כט / NUM / cardinal number / g:29 / LEX:29 / 0.8 / rule
+   period: he-mod (default) 40 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:NumType=Card[cardinal number]
+   R: — / D: ∅
+«תשפ"ו» in "שנת תשפ"ו."
+   ⇒ תשפו / NUM / cardinal number / g:786 / LEX:786 / 0.8 / rule
+   period: he-mod (default) 36 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:NumType=Card[cardinal number]
+   R: — / D: ∅
+«שלושה» in "יש לי שלושה ילדים."
+   ⇒ שָׁלוֹשׁ / NUM / cardinal number, masculine singular, absolute / g:three / LEX:three / 0.46 / lexicon
+   also: שְׁלוֹשָׁה/NUM(0.4)=three
+   period: he-mod (text) 50 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Masc|NumType=Card|Number=Sing|State=Abs[cardinal number, masculine singular, absolute]
+   R: — (lemma shalosh) / D: three
+«שלוש» in "יש לה שלוש בנות."
+   ⇒ שָׁלוֹשׁ / NUM / cardinal number, feminine singular, absolute / g:three / LEX:three / 0.45 / lexicon
+   also: שְׁלוֹשָׁה/NUM(0.4)=three
+   period: he-mod (text) 50 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Fem|NumType=Card|Number=Sing|State=Abs[cardinal number, feminine singular, absolute]
+   R: — (lemma shalosh) / D: three
+«שתי» in "שתי בנות ושני בנים."
+   ⇒ שְׁנַיִם / NUM / cardinal number, feminine dual, construct / g:two / LEX:two / 0.45 / lexicon
+   also: שָׁתָה/VERB(0.39)=to drink, שניים \ שנים/NUM(0.43), שְׁנַיִם/NUM(0.39)=two
+   period: he-mod (text) 60 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Fem|NumType=Card|Number=Dual|State=Cons[cardinal number, feminine dual, construct]
+   R: — (lemma shenayim) / D: two
+«ושני» in "שתי בנות ושני בנים."
+   ⇒ שְׁנַיִם / NUM / cardinal number, masculine dual, construct / g:two / LEX:two / 0.44 / lexicon
+   also: שָׁנֶה/NUM(0.34)=year, שֵׁן/NOUN(0.34)=tooth, ivory, שָׁנִי/NOUN(0.34)=scarlet
+   period: he-mod (text) 60 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ו: from וְ, and ; שני: from שְׁנַיִם, stem
+   C: form:Gender=Masc|NumType=Card|Number=Dual|State=Cons[cardinal number, masculine dual, construct]
+   R: — (lemma shenayim) / D: two
+«עשרה» in "אחת עשרה בנות."
+   ⇒ עֲשָׂרָה / NUM /  / g:ten / LEX:ten / 0.43 / lexicon
+   also: עָשָׂר/NUM(0.39)=-teen, עָשָׂר/NUM(0.42)=ten, עֶשֶׂר/NUM(0.37)=ten
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma asara) / D: ten
+«ואחד» in "עשרים ואחד תלמידים."
+   ⇒ אֶחָד / NUM / cardinal number, masculine singular, absolute / g:one; each; a certain / LEX:one; each; a certain / 0.46 / lexicon
+   also: אֶחָד/NUM(0.34)=one; each; a certa
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ו: from וְ, and ; אחד: from אֶחָד, stem
+   C: form:Gender=Masc|NumType=Card|Number=Sing|State=Abs[cardinal number, masculine singular, absolute]
+   R: — (lemma eḥad) / D: one ; one, one of
+«מאה» in "מאה שקלים."
+   ⇒ מֵאָה / NUM / cardinal number, masculine or feminine singular, absolute / g:hundred / LEX:hundred / 0.46 / lexicon
+   also: מֵאָה/NUM(0.43)=hundred, one hundr, מֵאָה/NOUN(0.43)=century, מֵאָה/ADJ(0.43)=hundredth
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Fem,Masc|NumType=Card|Number=Sing|State=Abs[cardinal number, masculine or feminine singular, absolute]
+   R: — (lemma meʾa) / D: hundred, one hundred ; century
+«אלפיים» in "אלפיים שנה."
+   ⇒ אֶלֶף / NUM / dual / g:thousand, one thousand / LEX:thousand, one thousand / 0.78 / lexicon
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Number=Dual[dual]
+   R: — (lemma elef) / D: thousand, one thousand ; millennium
+«הראשונה» in "הפעם הראשונה."
+   ⇒ רִאשׁוֹן / ADJ / feminine singular, absolute, with the article / g:former, first, chief / LEX:former, first, chief / 0.51 / lexicon
+   also: רִאשׁוֹן/ADJ(0.42)=former, first, chi
+   period: he-mod (default) the words are read in more than one period alike; unpointed text is read as Modern Hebrew / parts: ה: from הַ, the ; ראשונה: from רִאשׁוֹן, stem
+   C: form:Definite=Def|Gender=Fem|Number=Sing|State=Abs[feminine singular, absolute, with the article]
+   R: — (lemma riʾshon) / D: first ; earliest
+«השנייה» in "הקומה השנייה."
+   ⇒ שֵׁנִי / ADJ / feminine, with the article / g:second / LEX:second / 0.39 / rule
+   also: שְׁנִיָּה/NOUN(0.39)=A second: a short 
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ה: from הַ, the ; שנייה: from שֵׁנִי, stem
+   C: form:Definite=Def|Gender=Fem[feminine, with the article]
+   R: — (lemma sheni) / D: second ; scarlet, crimson
+«25» in "יש 25 תלמידים."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«12:30» in "בשעה 12:30."
+   ⇒ ∅ / — /  / g:— / — / 0 / none
+   period: —
+   R: — / D: ∅
+«דיבר» in "הוא דיבר איתי."
+   ⇒ דִּבֵּר / VERB / past, 3rd person masculine singular / g:to speak (say words) / LEX:to speak (say words) / 0.6 / lexicon
+   also: דֻּבַּר/VERB(0.6)=to be spoken
+   period: he-mod (text) 43 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Past|Gender=Masc|Number=Sing|Person=3|VerbForm=Fin[past, 3rd person masculine singular]
+   R: — (lemma diber) / D: to speak (say words)
+«השולחן» in "השולחן גדול."
+   ⇒ שֻׁלְחָן / NOUN / singular, construct, with the article / g:table (piece of furniture), desk / LEX:table (piece of furniture), desk / 0.5 / rule
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ה: from הַ, the ; שולחן: from שֻׁלְחָן, stem
+   C: form:Definite=Def|Number=Sing|State=Cons[singular, construct, with the article]
+   R: — (lemma shuleḥan) / D: table (piece of furniture), desk
+«השלחן» in "השלחן גדול."
+   ⇒ שֻׁלְחָן / NOUN / masculine singular, absolute, with the article / g:table / LEX:table / 0.59 / lexicon
+   also: שֻׁלְחָן/NOUN(0.4)=table (piece of fu
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ה: from הַ, the ; שלחן: from שֻׁלְחָן, stem
+   C: form:Definite=Def|Gender=Masc|Number=Sing|State=Abs[masculine singular, absolute, with the article]
+   R: — (lemma shuleḥan) / D: table (piece of furniture), desk
+«חודש» in "חודש טוב!"
+   ⇒ חֹדֶשׁ / NOUN / singular / g:month / LEX:month / 0.55 / lexicon
+   also: חֹדֶשׁ/NOUN(0.55)=month, חִדֵּשׁ/VERB(0.55)=to resume, renew
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Definite=Ind|Number=Sing[singular]
+   R: — (lemma ḥodesh) / D: month ; new moon, the day of the new moon
+«חדש» in "חדש טוב!"
+   ⇒ חָדָשׁ / ADJ /  / g:new, recently made / LEX:new, recently made / 0.43 / lexicon
+   also: חִדֵּשׁ/VERB(0.39)=to resume, renew, חָדָשׁ/NOUN(0.43)=grain from a new c, חִדֵּשׁ/VERB(0.39)=to resume, renew
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma ḥadash) / D: new, recently made ; new, current, recent (as opposed to former)
+«האישה» in "האישה הזאת."
+   ⇒ אִישׁ / NOUN / masculine singular, construct, with the article / g:man, husband; each / LEX:man, husband; each / 0.37 / rule
+   also: נָשָׁה/VERB(0.28)=To forget, אִישׁ/NOUN(0.28)=A man, adult male , אִשָּׁה/NOUN(0.28)=woman (an adult fe
+   period: he-mod (default) the words are read in more than one period alike; unpointed text is read as Modern Hebrew / parts: ה: from הַ, the ; אישה: from אִישׁ, stem
+   C: form:Definite=Def|Gender=Masc|Number=Sing|State=Cons[masculine singular, construct, with the article]
+   R: — (lemma ish) / D: A man, adult male human being. ; husband (a man in a marriage or marital relationship, esp
+«האשה» in "האשה הזאת."
+   ⇒ אִשָּׁה / NOUN / feminine singular, absolute, with the article / g:woman, wife / LEX:woman, wife / 0.46 / lexicon
+   also: אִשָּׁה/NOUN(0.39)=woman (an adult fe, אִשָּׁה/NOUN(0.33)=an offering made b
+   period: he-mod (default) the words are read in more than one period alike; unpointed text is read as Modern Hebrew / parts: ה: from הַ, the ; אשה: from אִשָּׁה, stem
+   C: form:Definite=Def|Gender=Fem|Number=Sing|State=Abs[feminine singular, absolute, with the article]
+   R: — (lemma isha) / D: woman (an adult female human) ; wife (a married woman, especially in relation to her spous
+«הצהריים» in "אחר הצהריים."
+   ⇒ צׇהֳרַיִם / NOUN / with the article / g:Noon, midday. / LEX:Noon, midday. / 0.5 / rule
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ה: from הַ, the ; צהריים: from צׇהֳרַיִם, stem
+   C: form:Definite=Def[with the article]
+   R: — (lemma tsahorayim) / D: Noon, midday. ; ellipsis of אֲרוּחַת צׇהֳרַיִם (arukhát-tsohoráyim, “lunch”)
+«הצהרים» in "אחר הצהרים."
+   ⇒ צֹהַר / NOUN / masculine plural, absolute, with the article / g:midday, noon / LEX:midday, noon / 0.53 / lexicon
+   period: he-mod (default) the words are read in more than one period alike; unpointed text is read as Modern Hebrew / parts: ה: from הַ, the ; צהרים: from צֹהַר, stem
+   C: form:Definite=Def|Gender=Masc|Number=Plur|State=Abs[masculine plural, absolute, with the article]
+   R: — (lemma tsohar) / D: a light (that is, window)
+«מילה» in "מילה אחת."
+   ⇒ מִילָה / NOUN / singular / g:circumcision / LEX:circumcision / 0.6 / lexicon
+   also: מָל/VERB(0.54)=to circumcise
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Definite=Ind|Number=Sing[singular]
+   R: — (lemma mila) / D: circumcision ; word
+«מלה» in "מלה אחת."
+   ⇒ מִלָּה / NOUN /  / g:defective spelling of מילה / LEX:defective spelling of מילה / 0.48 / lexicon
+   also: מִילָה/NOUN(0.43)=circumcision, מָל/VERB(0.43)=to circumcise, מָל/VERB(0.43)=to circumcise
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma mila) / D: circumcision ; word
+«הכיסא» in "הכיסא נשבר."
+   ⇒ כִּסֵּא / NOUN / singular, with the article / g:chair / LEX:chair / 0.78 / lexicon
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Definite=Def|Number=Sing[singular, with the article]
+   R: — (lemma kise) / D: chair
+«הכסא» in "הכסא נשבר."
+   ⇒ כִּסֵּא / NOUN / masculine singular, absolute, with the article / g:seat, throne / LEX:seat, throne / 0.45 / lexicon
+   also: כִּסֵּא/NOUN(0.4)=chair, כֶּסֶא/NOUN(0.35)=full moon
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ה: from הַ, the ; כסא: from כִּסֵּא, stem
+   C: form:Definite=Def|Gender=Masc|Number=Sing|State=Abs[masculine singular, absolute, with the article]
+   R: — (lemma kise) / D: chair
+«אמיתי» in "סיפור אמיתי."
+   ⇒ אֲמִתִּי / ADJ /  / g:real, true, actual / LEX:real, true, actual / 0.6 / lexicon
+   also: אֲמִתַּי/PROPN(0.6)=a male given name,
+   period: he-mod (default) 100 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-onl
+   R: — (lemma amiti) / D: real, true, actual ; a male given name, Amitai and Amittai
+«אמתי» in "סיפור אמתי."
+   ⇒ אֲמִתִּי / ADJ /  / g:real, true, actual / LEX:real, true, actual / 0.46 / lexicon
+   also: אֲמִתַּי/PROPN(0.46)=a male given name,, אִמֵּת/VERB(0.41)=to authenticate, t, אִמֵּת/VERB(0.41)=to authenticate, t
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma amiti) / D: real, true, actual ; a male given name, Amitai and Amittai
+«עיתון» in "קראתי עיתון."
+   ⇒ עִתּוֹן / NOUN /  / g:newspaper / LEX:newspaper / 0.78 / lexicon
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma iton) / D: newspaper
+«עתון» in "קראתי עתון."
+   ⇒ עִתּוֹן / NOUN /  / g:newspaper / LEX:newspaper / 0.6 / lexicon
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma iton) / D: newspaper
+«מאוד» in "תודה רבה מאוד."
+   ⇒ מְאוֹד / ADV /  / g:Very, quite. / LEX:Very, quite. / 0.5 / lexicon
+   also: מְאוֹד/NOUN(0.5)=Strength, ability,, מְאוֹד/NOUN(0.45)=Strength, ability,
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma meʾod) / D: Very, quite. ; Strength, ability, power.
+«מאד» in "תודה רבה מאד."
+   ⇒ מְאֹד / ADV /  / g:muchness, force, abundance / LEX:muchness, force, abundance / 0.46 / lexicon
+   also: מְאֹד/ADV(0.43)=defective spelling, מְאֹד/NOUN(0.43)=defective spelling, מְאוֹד/NOUN(0.39)=Strength, ability,
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma meʾod) / D: Very, quite. ; Strength, ability, power.
+«נשמע» in "מה נשמע?"
+   ⇒ שָׁמַע / VERB / future, 1st person masculine or feminine plural / g:to hear, to be able to hear / LEX:to hear, to be able to hear / 0.39 / lexicon
+   also: שָׁמַע/VERB(0.39)=to hear, to be abl, נִשְׁמַע/VERB(0.39)=to sound, to be he, נִשְׁמַע/VERB(0.39)=to sound, to be he
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Fut|Gender=Fem,Masc|Number=Plur|Person=1|VerbForm=Fin[future, 1st person masculine or feminine plural]
+   R: — (lemma shama) / D: to hear, to be able to hear ; to listen
+«בוקר» in "בוקר טוב!"
+   ⇒ בֹּקֶר / NOUN / singular, construct / g:A morning, dawn. / LEX:A morning, dawn. / 0.55 / lexicon
+   also: בֹּקֶר/NOUN(0.47)=A morning, dawn., בֻּקַּר/VERB(0.47)=to be visited, בִּקֵּר/VERB(0.47)=to visit
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Number=Sing|State=Cons[singular, construct]
+   R: — (lemma boker) / D: A morning, dawn. ; A cowboy, cattleman.
+«לילה» in "לילה טוב."
+   ⇒ לַיִל / NOUN / masculine singular, absolute / g:night / LEX:night / 0.41 / lexicon
+   also: לַיְלָה/NOUN(0.39)=night (the time wh, לַיְלָה/NOUN(0.39)=night (the time wh
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Masc|Number=Sing|State=Abs[masculine singular, absolute]
+   R: — (lemma layil) / D: night ; Lille (the capital of Nord department and the Hauts-de-France region, France)
+«סליחה» in "סליחה, איפה התחנה?"
+   ⇒ סְלִיחָה / NOUN /  / g:forgiveness, pardon / LEX:forgiveness, pardon / 0.5 / lexicon
+   also: סְלִיחָה/INTJ(0.5)=excuse me, pardon , סָלַח/VERB(0.45)=to forgive
+   period: he-mod (text) 86 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma seliḥa) / D: forgiveness, pardon ; excuse me, pardon me, sorry
+«איפה» in "סליחה, איפה התחנה?"
+   ⇒ אֵיפֹה / ADV /  / g:where; at what place / LEX:where; at what place / 0.44 / lexicon
+   also: אֵיפָה/NOUN(0.44)=An ephah, a former, אֵיפֹה/PART(0.41)=what manner, אֵיפָה/NOUN(0.4)=ephah
+   period: he-mod (text) 86 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma efo) / D: where; at what place ; where
+«מתי» in "מתי אתה בא?"
+   ⇒ מָתַי / ADV /  / g:when (at what time; at which time) / LEX:when (at what time; at which time) / 0.43 / lexicon
+   also: מָתַי/PRON(0.43)=when (what time; w, מֵת/VERB(0.43)=To die., מַתִּי/PROPN(0.43)=a diminutive, Mati
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma matay) / D: when (at what time; at which time) ; when (what time; which time)
+«למה» in "למה לא?"
+   ⇒ מָה / PART / interrogative particle / g:what? how? why? / LEX:what? how? why? / 0.44 / lexicon
+   also: לָמָּה/ADV(0.43)=why, for what reas, לָמָה/NOUN(0.43)=llama, מָה/PART(0.33)=how great
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: ל: from לְ, to, for ; מה: from מָה, stem
+   C: form:PartType=Int[interrogative particle]
+   R: — (lemma ma) / D: what ; that which, the thing that
+«קוראים» in "איך קוראים לך?"
+   ⇒ קָרָא / VERB / present, masculine plural / g:to read / LEX:to read / 0.7 / lexicon
+   period: he-mod (text) 50 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Masc|Number=Plur|VerbForm=Fin[present, masculine plural]
+   R: — (lemma kara) / D: to read ; to call
+«עולה» in "כמה זה עולה?"
+   ⇒ עָלָה / VERB / present, masculine singular / g:ascending / INFL:ascending / 0.43 / lexicon
+   also: עָלָה/VERB(0.43)=To ascend, rise, g, עָלָה/VERB(0.39)=To ascend, rise, g, עוֹלֶה/NOUN(0.39)=A (male) immigrant
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Masc|Number=Sing|VerbForm=Part[present, masculine singular]
+   R: — (lemma ala) / D: To ascend, rise, go up; to move from a point to a higher point. ; To cost.
+«אנחנו» in "אנחנו כאן."
+   ⇒ אֲנַחְנוּ / PRON / personal, 1st person common gender plural / g:we / LEX:we / 0.44 / lexicon
+   also: אֲנַחְנוּ/PRON(0.43)=We; the subject fo
+   period: he-mod (default) 80 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Com|Number=Plur|Person=1|PronType=Prs[personal, 1st person common gender plural]
+   R: — (lemma anaḥenu) / D: We; the subject form of the first-person plural personal pronoun.
+«אתם» in "אתם מוכנים?"
+   ⇒ אַתֶּם / PRON /  / g:You, y'all, you guys: the second-person masculine plural sub / LEX:You, y'all, you guys: the second-person masculine plural subject p / 0.43 / lexicon
+   also: עִם/ADP(0.39)=With: used to indi, עִם/ADP(0.39)=With: used to indi, אֵת/PART(0.4)=(marks the definit
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma atem) / D: You, y'all, you guys: the second-person masculine plural subject pronoun.
+«הן» in "הן באות מחר."
+   ⇒ הֵן / PART /  / g:lo! as expressing surprise: behold, if, lo, though / LEX:lo! as expressing surprise: behold, if, lo, though / 0.43 / lexicon
+   also: הֵן/PRON(0.43)=they (feminine), הֵן/PART(0.43)=behold, הֵן/CONJ(0.34)=if, whether
+   period: he-mod (text) 67 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma hen) / D: lo! as expressing surprise: behold, if, lo, though ; yes, yea, aye
+«הם» in "הם באים."
+   ⇒ הֵם / PRON / personal, 3rd person masculine plural / g:they, those / LEX:they, those / 0.46 / lexicon
+   also: הֵם/PRON(0.43)=they (the third-pe, הֵם/ADJ(0.43)=those, yon (the ma, הם/NOUN(0.43)=heme
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Masc|Number=Plur|Person=3|PronType=Prs[personal, 3rd person masculine plural]
+   R: — (lemma hem) / D: they (the third-person masculine plural personal pronoun, masculine plural of הוא (hu')) ;
+«זאת» in "זאת הבת שלי."
+   ⇒ זֹאת / PRON / demonstrative, feminine singular / g:this (feminine) / LEX:this (feminine) / 0.45 / lexicon
+   also: זֶה/DET(0.43)=this, זֶה/PRON(0.43)=this, this one., זֶה/PRON(0.39)=this, this one.
+   period: he-mod (text) 36 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Gender=Fem|Number=Sing|PronType=Dem[demonstrative, feminine singular]
+   R: — (lemma zoʾt) / D: this, this one. ; it (for a content clause in subject position or as complement of a prepo
+«האלה» in "האנשים האלה."
+   ⇒ אֵלֶּה / PRON / demonstrative, common gender plural, with the article / g:these / LEX:these / 0.46 / lexicon
+   also: אֵלָה/NOUN(0.33)=terebinth, אָלָה/NOUN(0.33)=oath, curse, execr, אֵלָה/PROPN(0.33)=Elah
+   period: he-mod (default) the words are read in more than one period alike; unpointed text is read as Modern Hebrew / parts: ה: from הַ, the ; אלה: from אֵלֶּה, stem
+   C: form:Definite=Def|Gender=Com|Number=Plur|PronType=Dem[demonstrative, common gender plural, with the article]
+   R: — (lemma ele) / D: A goddess. ; A terebinth, a tree of the genus Pistacia.
+«רק» in "רק רגע."
+   ⇒ רַק / PART / affirmative particle / g:thin, only, altogether / LEX:thin, only, altogether / 0.46 / lexicon
+   also: רֹק/NOUN(0.43)=saliva, רַק/ADV(0.43)=only, רֵיק/ADJ(0.33)=empty, vain
+   period: he-mod (default) 57 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:PartType=Aff[affirmative particle]
+   R: — (lemma rak) / D: only ; however, nonetheless
+«עוד» in "עוד פעם."
+   ⇒ עוֹד / ADV /  / g:still, yet, again, more / LEX:still, yet, again, more / 0.46 / lexicon
+   also: עוּד/NOUN(0.39)=oud, עוֹד/ADV(0.43)=still, longer, mor, עוֹד/DET(0.43)=more, another
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma vod) / D: still, longer, more; no longer, no more, any longer (signifies that an action which began 
+«אז» in "אז מה?"
+   ⇒ אָז / ADV /  / g:then, at that time / LEX:then, at that time / 0.59 / lexicon
+   also: אָז/ADV(0.43)=So, therefore, the, אָז/PRON(0.43)=then (that time), מֵאָז/ADV(0.33)=from that time
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma az) / D: So, therefore, then, thus. ; Then, next.
+«אולי» in "אולי מחר."
+   ⇒ אוּלַי / ADV /  / g:peradventure, perhaps, if peradventure / LEX:peradventure, perhaps, if peradventure / 0.57 / lexicon
+   also: אוּלַי/ADV(0.44)=maybe, אוּלַי/PROPN(0.34)=Ulai, אֱוִלִי/ADJ(0.34)=silly
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma ulay) / D: maybe
+«לפעמים» in "תמיד, לפעמים, אף פעם."
+   ⇒ לִפְעָמִים / ADV /  / g:sometimes, at times, every so often, occasionally. / LEX:sometimes, at times, every so often, occasionally. / 0.6 / lexicon
+   period: he-mod (text) 73 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma lifeʿamim) / D: sometimes, at times, every so often, occasionally.
+«עכשיו» in "עכשיו אני מבין."
+   ⇒ עַכְשָׁו / ADV /  / g:now / LEX:now / 0.78 / lexicon
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: — (lemma akheshav) / D: now
+«מבין» in "עכשיו אני מבין."
+   ⇒ הֵבִין / VERB / present, masculine singular / g:understanding / INFL:understanding / 0.43 / lexicon
+   also: הֵבִין/VERB(0.39)=To understand, to , בִּין/VERB(0.4)=discern, perceive,, בֵּין/ADP(0.39)=between
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Masc|Number=Sing|VerbForm=Part[present, masculine singular]
+   R: — (lemma hevin) / D: To understand, to have understanding, to be one who understands.
+«הוֹלֵךְ» in "הַיֶּלֶד הוֹלֵךְ לַגַּן."
+   ⇒ הָלַךְ / VERB / Qal, participle, masculine singular, absolute / g:going / INFL:going / 0.7 / lexicon
+   also: הָלַךְ/VERB(0.51)=to go, walk, הָלַךְ/VERB(0.43)=to walk, go, espec, הָלַךְ/VERB(0.43)=to walk, go, espec
+   period: he-bib (default) the words are read in more than one period alike; the text is fully pointed, as a Biblical text is / parts: הוֹלֵךְ: Qal verb
+   C: form:Binyan=Qal|Conj=Part|Gender=Masc|Number=Sing|State=Abs|VerbForm=Part[Qal, participle, masculine singular, absolute]
+   R: holekh (lemma halakh) / D: to walk, go, especially on foot ; to happen, go on
+«לַגַּן» in "הַיֶּלֶד הוֹלֵךְ לַגַּן."
+   ⇒ גַּן / NOUN / masculine or feminine singular, construct / g:enclosure, garden / LEX:enclosure, garden / 0.38 / rule
+   also: גַּן/NOUN(0.33)=enclosure, garden, גַּן/NOUN(0.33)=A garden., גַּן/NOUN(0.3)=A garden.
+   period: he-bib (default) the words are read in more than one period alike; the text is fully pointed, as a Biblical text is / parts: לַ: from לְ, to, for ; גַּן: stem
+   C: form:Gender=Fem,Masc|Number=Sing|State=Cons[masculine or feminine singular, construct]
+   R: lagan (lemma gan) / D: A garden. ; ellipsis of גַּן־יְלָדִים (gan yeladím): a kindergarten, preschool.
+«קוֹרֵאת» in "אִמָּא קוֹרֵאת סִפּוּר."
+   ⇒ קָרָא / VERB / present, feminine singular / g:to read / LEX:to read / 0.78 / lexicon
+   period: he-mod (text) 100 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-onl
+   C: form:Conj=Pres|Gender=Fem|Number=Sing|VerbForm=Fin[present, feminine singular]
+   R: koreʾt (lemma kara) / D: to read ; to call
+«סִפּוּר» in "אִמָּא קוֹרֵאת סִפּוּר."
+   ⇒ סִפֵּר / VERB /  / g:to tell (a story), to narrate, to recount / LEX:to tell (a story), to narrate, to recount / 0.6 / lexicon
+   also: סִפּוּר/NOUN(0.6)=A story: a sequenc
+   period: he-mod (text) 100 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-onl
+   R: sipur (lemma siper) / D: to tell (a story), to narrate, to recount ; to cut the hair of, to give a haircut to
+«מַהֵר» in "הַכֶּלֶב רָץ מַהֵר."
+   ⇒ מַהֵר / VERB / Piʿel, infinitive absolute / g:quickly, speedily / LEX:quickly, speedily / 0.73 / lexicon
+   also: מָהַר/VERB(0.58)=hasten, be hurried, מַהֵר/VERB(0.58)=quickly, speedily, מַהֵר שָׁלָל חָשׁ בַּז/PROPN(0.52)=Maher-sha-lal-bash
+   period: he-bib (default) the words are read in more than one period alike; the text is fully pointed, as a Biblical text is / parts: מַהֵר: Piʿel verb
+   C: form:Binyan=Piel|Conj=InfAbs|VerbForm=Inf[Piʿel, infinitive absolute]
+   R: maher / D: to acquire a wife by paying her purchase price ; quickly, rapidly, fast
+«טֶלֶפוֹן» in "יֵשׁ לִי טֶלֶפוֹן חָדָשׁ."
+   ⇒ טֶלֶפוֹן / NOUN / singular, construct / g:telephone, phone / LEX:telephone, phone / 0.66 / lexicon
+   also: טֶלֶפוֹן/NOUN(0.55)=telephone, phone
+   period: he-mod (text) 57 % of the weight of the 4 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Number=Sing|State=Cons[singular, construct]
+   R: telefon / D: telephone, phone
+«הַמַּחְשֵׁב» in "הַמַּחְשֵׁב שֶׁלִּי."
+   ⇒ מַחְשֵׁב / NOUN / singular, with the article / g:computer / LEX:computer / 0.78 / lexicon
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Definite=Def|Number=Sing[singular, with the article]
+   R: hamaḥeshev (lemma maḥeshev) / D: computer ; to computerize
+«שֶׁלִּי» in "הַמַּחְשֵׁב שֶׁלִּי."
+   ⇒ לְ / ADP /  / g:to, for / LEX:to, for / 0.62 / lexicon
+   also: שֶׁל/ADP(0.53)=Of, belonging to, , שֶׁל/ADP(0.48)=Of, belonging to, 
+   period: he-mod (default) 67 % of the weight of the 2 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only / parts: שֶׁ: that, which ; לִּ: from לְ, stem ; י: object of the preposition
+   R: sheli (lemma l) / D: To; indicating a destination or end-point. — Indicating the destination of movement. ; To;
+«אוֹהֶבֶת» in "אֲנִי אוֹהֶבֶת שׁוֹקוֹלָד."
+   ⇒ אָהַב / VERB / present, feminine singular / g:to love / LEX:to love / 0.6 / lexicon
+   also: אָהַב/VERB(0.6)=to love
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   C: form:Conj=Pres|Gender=Fem|Number=Sing|VerbForm=Fin[present, feminine singular]
+   R: vohevet (lemma ahav) / D: to love ; Related to love.
+«שׁוֹקוֹלָד» in "אֲנִי אוֹהֶבֶת שׁוֹקוֹלָד."
+   ⇒ שׁוֹקוֹלָד / NOUN /  / g:chocolate (a food made from ground roasted cocoa beans) / LEX:chocolate (a food made from ground roasted cocoa beans) / 0.78 / lexicon
+   period: he-mod (text) 75 % of the weight of the 3 recognised words' readings is in Modern Hebrew (an unpointed word's consonant-only
+   R: shokolad / D: chocolate (a food made from ground roasted cocoa beans)

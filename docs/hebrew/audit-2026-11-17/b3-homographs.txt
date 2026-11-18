@@ -1,0 +1,135 @@
+# Battery 3: homographs, divine names, numbers, names, Aramaic inside the Hebrew Bible. Pointed text from the repository.
+bare=את lemma=^853$ code=^HTo$ n=3 # object marker
+bare=את lemma=^854$ code=^HR$ # et = with
+bare=אל lemma=^413$ # el = to
+bare=אל lemma=^410$ code=^HNcmsa$ # el = God
+bare=אל lemma=^408$ # al = do not
+bare=על lemma=^5921 a$ n=2 # al = on
+bare=על lemma=^5923$ # ol = yoke
+bare=אם lemma=^518 # im = if
+bare=אם lemma=^517$ code=^HNcfsa$ # em = mother
+bare=אם lemma=^517$ code=^HNcfsc$ # em = mother of
+bare=עם lemma=^5973 # im = with
+bare=עם lemma=^5971 a$ code=^HNcmsa$ # am = people
+bare=לא lemma=^3808$ n=2 # lo = not
+bare=לו lemma=^l$ code=Sp3ms # lo = to him
+bare=לו lemma=^3863 # lu = if only
+bare=דבר lemma=^1697$ code=^HNcmsa$ # davar
+bare=דבר lemma=^1696$ code=^HVpp3ms$ # dibber
+bare=דבר lemma=^1698$ # dever = pestilence
+bare=דבר lemma=^1696$ code=^HVpv2ms$ # dabber!
+bare=מלך lemma=^4428$ code=^HNcmsa$ # melekh
+bare=מלך lemma=^4427 a$ code=^HVqp3ms$ # malakh = reigned
+bare=מלך lemma=^4432$ # Molech
+bare=אדם lemma=^120$ # adam = man
+bare=אדם lemma=^121$ # Adam (name)
+bare=אדום lemma=^123$ # Edom
+bare=אדם lemma=^122$ # adom = red
+bare=הוא code=^HPp3ms$ # hu
+bare=היא code=^HPp3fs$ # hi
+bare=הוא code=^HPp3fs$ # the Pentateuch's hi written HW'
+bare=אשר lemma=^834 a$ n=2 # asher (relative)
+bare=אשר lemma=^836$ # Asher (the tribe)
+bare=אשרי lemma=^835$ # ashre = happy
+bare=אשר lemma=^833 # isher / ashur
+bare=כי lemma=^3588 a$ n=4 # ki
+bare=כי lemma=^3588 b$ # ki (other sense number)
+bare=הנה lemma=^2009$ # hinneh
+bare=הנה lemma=^2008$ # hennah = hither
+bare=הנה lemma=^2007$ # hennah = they (f.)
+bare=שם lemma=^8034$ code=^HNcmsa$ # shem = name
+bare=שם lemma=^8033$ # sham = there
+bare=שם lemma=^7760 a$ code=^HVqp3ms$ # sam = he put
+bare=בן lemma=^1121 a$ code=^HNcmsc$ # ben = son of
+bare=בן lemma=^995$ # bin = understand
+bare=אחר lemma=^310 a$ # ahar = after
+bare=אחר lemma=^312$ # aher = other
+bare=עד lemma=^5704$ # ad = until
+bare=עד lemma=^5707$ # ed = witness
+bare=עד lemma=^5703$ # ad = for ever
+bare=מן lemma=^4480 a$ # min
+bare=מן lemma=^4478 a$ # man = manna
+bare=עתה # attah = now
+bare=אתה code=^HPp2ms$ # attah = you
+bare=אתה lemma=^857$ # atah = came
+bare=אין lemma=^369$ # en = there is not
+bare=יש lemma=^3426$ # yesh
+bare=נא lemma=^4994$ # na
+bare=רעה lemma=^7451 # ra'ah = evil
+bare=רעה lemma=^7462 # ro'eh = shepherd
+bare=חדש lemma=^2320$ # hodesh = month
+bare=חדש lemma=^2319$ # hadash = new
+bare=ערב lemma=^6153$ # erev = evening
+bare=בקר lemma=^1242$ # boqer = morning
+bare=בקר lemma=^1241$ # baqar = cattle
+bare=ספר lemma=^5612 # sefer = book
+bare=עבד lemma=^5650$ code=^HNcmsa$ # eved = servant
+bare=עבד lemma=^5647$ code=^HVqp3ms$ # avad = served
+bare=זכר lemma=^2145$ # zakhar = male
+bare=זכר lemma=^2142$ code=^HVqp3ms$ # zakhar = remembered
+bare=שבע lemma=^7651$ # sheva = seven
+bare=שבע lemma=^7646$ # savea = satisfied
+# --- the divine names
+bare=יהוה lemma=^3068$ # the Name
+bare=יהוה lemma=^3069$ # the Name pointed as Elohim (Adonai YHWH)
+bare=אדני lemma=^136$ # Adonai
+bare=אדני lemma=^113$ code=Sp1cs # adoni = my lord
+bare=שדי lemma=^7706 # Shaddai
+bare=יה lemma=^3050$ # Yah
+bare=צבאות lemma=^6635 # tseva'ot
+bare=אלוה lemma=^433$ # Eloah
+bare=עליון lemma=^5945 # Elyon
+bare=אהיה ref=^Exod_3:14$ # ehyeh asher ehyeh
+bare=ויאמרו ref=^Gen_11:3$ # a plural verb
+bare=ברא ref=^Gen_1:27$ # bara with Elohim as subject
+bare=נעשה ref=^Gen_1:26$ # let us make
+# --- numbers (gender polarity)
+bare=שלשה lemma=^7969$ code=^HAcmsa$ # sheloshah (with a masculine noun)
+bare=שלש lemma=^7969$ code=^HAcfsa$ # shalosh (with a feminine noun)
+bare=שלשת lemma=^7969$ # sheloshet (construct)
+bare=אחת lemma=^259$ # ahat
+bare=שנים lemma=^8147$ code=^HAcmda$ # shenayim = two
+bare=שנים lemma=^8141$ # shanim = years (same letters)
+bare=שתים lemma=^8147$ # shetayim
+bare=שני lemma=^8147$ code=^HAcmdc$ # shene = two of
+bare=שני lemma=^8145$ # sheni = second
+bare=עשר lemma=^6240$ # asar (in the teens)
+bare=עשרה lemma=^6235$ # asarah
+bare=עשרים lemma=^6242$ # twenty
+bare=מאה lemma=^3967$ # hundred
+bare=אלף lemma=^505$ code=^HAcbsa$ # thousand
+bare=רבבה # ten thousand
+bare=ראשון lemma=^7223$ # first
+bare=שלישי lemma=^7992$ # third
+bare=חמשים lemma=^2572$ # fifty
+bare=שבעתים # sevenfold
+# --- names
+bare=אברהם # Abraham
+bare=משה lemma=^4872$ # Moses
+bare=ירושלם n=3 # Jerusalem (written without yod)
+bare=מצרים lemma=^4714$ # Egypt
+bare=מצרים lemma=^4713$ # Egyptians
+bare=דוד lemma=^1732$ # David
+bare=דוד lemma=^1730$ # dod = beloved / uncle
+bare=יעקב # Jacob
+bare=יהודה lemma=^3063$ # Judah
+bare=פרעה # Pharaoh
+bare=ישראל lemma=^3478$ n=5 # Israel
+bare=ציון # Zion
+bare=בבל lemma=^894$ # Babylon
+bare=כנען # Canaan
+bare=פלשתים # Philistines
+# --- Aramaic inside the Hebrew Bible
+ref=^Dan_2:4$ bare=ארמית # Aramaic (the word that opens the Aramaic part)
+ref=^Dan_2:4$ bare=מלכא # malka (Aramaic: the king)
+ref=^Dan_2:4$ bare=לעלמין # le'almin
+ref=^Dan_2:4$ bare=חיי # heyi (live!)
+ref=^Dan_3:1$ bare=עבד # avad (Aramaic: made)
+ref=^Dan_3:1$ bare=די # di
+ref=^Ezra_4:8$ bare=כתבו # ketavu
+ref=^Jer_10:11$ bare=אלהיא # the gods (Aramaic verse in Jeremiah)
+ref=^Jer_10:11$ bare=שמיא # the heavens
+ref=^Gen_31:47$ bare=יגר # Jegar-sahadutha
+ref=^Gen_31:47$ bare=שהדותא
+ref=^Dan_7:13$ bare=אנש # bar enash
+ref=^Dan_7:13$ bare=כבר

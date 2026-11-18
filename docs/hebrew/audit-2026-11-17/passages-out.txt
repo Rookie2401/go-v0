@@ -1,0 +1,768 @@
+
+===== as printed (points and cantillation) =====
+Gen.1.1: [he-bib]
+    בְּרֵאשִׁ֖ית = רֵאשִׁית/NOUN [feminine singular, construct] "beginning, chief, first" 0.74 +3alt(רֵאשִׁית/NOUN,בְּרֵאשִׁית/ADV,בְּרֵאשִׁית/PROPN) {בְּ: in, with, by ; רֵאשִׁ֖ית: from רֵאשִׁית, stem} R:bereʾshit  ⟹ FORM (source: NOUN, feminine singular, absolute)
+    בָּרָ֣א = בַּר/NOUN [masculine singular, determined (emphatic), with the article] "He created" 0.7 +3alt(בָּרָא/VERB,בָּרָא/VERB,נִבְרָא/VERB) {בָּרָ֣: from בַּר, stem ; א: suffix} R:bara  ⟹ LEMMA (source: בָּרָא VERB, Qal, perfect (qatal), 3rd person masculine singular; "shape, create, fashion")
+    אֱלֹהִ֑ים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    אֵ֥ת = אֵת/PART [object marker] "(marks the definite direct object)" 0.71 +3alt(אֵת/ADP,אֹת/NOUN,אֹת/NOUN) R:et  ⟹ OK
+    הַשָּׁמַ֖יִם = שָׁמַיִם/NOUN [masculine plural, absolute, with the article] "heavens, sky" 0.71 +1alt(שמיים/NOUN) {הַ: the ; שָּׁמַ֖יִם: from שָׁמַיִם, stem} R:hashamayim  ⟹ OK
+    וְאֵ֥ת = אֵת/PART [object marker] "(marks the definite direct object)" 0.71 +1alt(אֵת/ADP) {וְ: and ; אֵ֥ת: from אֵת, stem} R:veʾet  ⟹ OK
+    הָאָֽרֶץ = אֶרֶץ/NOUN [masculine or feminine singular, absolute, with the article] "earth, land, ground" 0.71 +2alt(אֶרֶץ/NOUN,הָאָרֶץ/PROPN) {הָ: from הַ, the ; אָֽרֶץ: from אֶרֶץ, stem} R:haʾarets  ⟹ OK
+Gen.1.2: [he-bib]
+    וְהָאָ֗רֶץ = אֶרֶץ/NOUN [masculine or feminine singular, absolute, with the article] "earth, land, ground" 0.71 {וְ: and ; הָ: from הַ, the ; אָ֗רֶץ: from אֶרֶץ, stem} R:vehaʾarets  ⟹ OK
+    הָיְתָ֥ה = הָיָה/VERB [Qal, perfect (qatal), 3rd person feminine singular] "She was" 0.71 +1alt(הָיָה/VERB) {הָיְתָ: Qal verbal base ; ה: perfect third person feminine singular ending} R:hayeta  ⟹ OK
+    תֹ֙הוּ֙ = תֹּהוּ/NOUN [masculine singular, absolute] "formlessness, confusion, unreality" 0.92 R:tohu  ⟹ OK
+    וָבֹ֔הוּ = בֹּהוּ/NOUN [masculine singular, absolute] "emptiness" 0.92 {וָ: from וְ, and ; בֹ֔הוּ: from בֹּהוּ, stem} R:vavohu  ⟹ OK
+    וְחֹ֖שֶׁךְ = חֹשֶׁךְ/NOUN [masculine singular, absolute] "darkness, obscurity, secret place(s)" 0.92 {וְ: and ; חֹ֖שֶׁךְ: from חֹשֶׁךְ, stem} R:veḥoshekh  ⟹ OK
+    עַל = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(כִּי עַל כֵּן/ADP,עַל/NOUN,עַל/ADP) R:al  ⟹ OK
+    פְּנֵ֣י = פָּנִים/NOUN [masculine or feminine plural, construct] "face; before, in front of" 0.71 +2alt(פָּנִים/NOUN,פָּן/NOUN) R:pene  ⟹ OK
+    תְה֑וֹם = תְּהוֹם/NOUN [masculine or feminine singular, absolute] "deep, sea, abyss" 0.92 R:tehom  ⟹ OK
+    וְר֣וּחַ = רוּחַ/NOUN [masculine or feminine singular, absolute] "wind, breath, spirit" 0.64 +1alt(רוּחַ/NOUN) {וְ: and ; ר֣וּחַ: from רוּחַ, stem} R:veruḥa  ⟹ FORM (source: NOUN, masculine or feminine singular, construct)
+    אֱלֹהִ֔ים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    מְרַחֶ֖פֶת = רָחַף/VERB [Piʿel, participle, feminine singular, absolute] "hovering" 0.71 +1alt(רִחֵף/VERB) {מְרַחֶפֶת: Piʿel verb} R:meraḥefet  ⟹ OK
+    עַל = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(כִּי עַל כֵּן/ADP,עַל/NOUN,עַל/ADP) R:al  ⟹ OK
+    פְּנֵ֥י = פָּנִים/NOUN [masculine or feminine plural, construct] "face; before, in front of" 0.71 +2alt(פָּנִים/NOUN,פָּן/NOUN) R:pene  ⟹ OK
+    הַמָּֽיִם = מַיִם/NOUN [masculine plural, absolute, with the article] "water" 0.71 {הַ: the ; מָּֽיִם: from מַיִם, stem} R:hamayim  ⟹ OK
+Gen.1.3: [he-bib]
+    וַיֹּ֥אמֶר = אָמַר/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he said" 0.71 +1alt(אָמַר/VERB) {וַ: and ; יֹּ: imperfect preformative, third person masculine singular ; אמֶר: Qal verbal base} R:vayoʾmer  ⟹ OK
+    אֱלֹהִ֖ים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    יְהִ֣י = הָיָה/VERB [Qal, jussive, 3rd person masculine singular] "Let there be" 0.68 +2alt(הָיָה/VERB,הָיָה/VERB) {יְ: imperfect preformative, third person masculine singular ; הִי: Qal verbal base} R:yehi  ⟹ OK
+    א֑וֹר = אוֹר/NOUN [masculine or feminine singular, absolute] "light, morning light, dawn" 0.78 +3alt(אוֹר/NOUN,אוֹר/VERB,אוֹר/VERB) R:vor  ⟹ OK
+    וַֽיְהִי = הָיָה/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And there was" 0.71 +1alt(הָיָה/VERB) {וַ: and ; יְ: imperfect preformative, third person masculine singular ; הִי: Qal verbal base} R:vayehi  ⟹ OK
+    אֽוֹר = אוֹר/NOUN [masculine or feminine singular, absolute] "light, morning light, dawn" 0.78 +3alt(אוֹר/NOUN,אוֹר/VERB,אוֹר/VERB) R:vor  ⟹ OK
+Gen.1.4: [he-bib]
+    וַיַּ֧רְא = רָאָה/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he saw" 0.71 +2alt(רָאָה/VERB,וַיַּרְא/VERB) {וַ: and ; יַּ: imperfect preformative, third person masculine singular ; רְא: Qal verbal base} R:vayare  ⟹ OK
+    אֱלֹהִ֛ים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    אֶת = אֵת/PART [object marker] "(marks the definite direct object)" 0.71 +1alt(אֵת/ADP) R:et  ⟹ OK
+    הָא֖וֹר = אוֹר/NOUN [masculine or feminine singular, absolute, with the article] "light, morning light, dawn" 0.87 +1alt(אוֹר/NOUN) {הָ: from הַ, the ; א֖וֹר: from אוֹר, stem} R:haʾor  ⟹ OK
+    כִּי = כִּי/CONJ [] "that, because, for, when" 0.71 +3alt(כִּי אם־/CONJ,כִּי עַל כֵּן/CONJ,כִי/NOUN) R:ki  ⟹ OK
+    ט֑וֹב = טוֹב/ADJ [masculine singular, absolute] "good, pleasant" 0.67 +3alt(טוֹב/VERB,טוֹב/PROPN,טוֹב/ADJ) R:tov  ⟹ OK
+    וַיַּבְדֵּ֣ל = בָּדַל/VERB [Hifʿil, wayyiqtol (narrative past), 3rd person masculine singular] "And he divided" 0.92 {וַ: and ; יַּ: imperfect preformative, third person masculine singular ; בְדֵּל: Hifʿil verbal base} R:vayavedel  ⟹ OK
+    אֱלֹהִ֔ים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    בֵּ֥ין = בֵּין/ADP [] "between" 0.71 +3alt(בֵּין/NOUN,בֵּין/ADP,בֵּין/ADP) R:ben  ⟹ OK
+    הָא֖וֹר = אוֹר/NOUN [masculine or feminine singular, absolute, with the article] "light, morning light, dawn" 0.87 +1alt(אוֹר/NOUN) {הָ: from הַ, the ; א֖וֹר: from אוֹר, stem} R:haʾor  ⟹ OK
+    וּבֵ֥ין = בֵּין/ADP [] "between" 0.71 {וּ: from וְ, and ; בֵ֥ין: from בֵּין, stem} R:uven  ⟹ OK
+    הַחֹֽשֶׁךְ = חֹשֶׁךְ/NOUN [masculine singular, absolute, with the article] "darkness, obscurity, secret place(s)" 0.86 +1alt(חֹשֶׁךְ/NOUN) {הַ: the ; חֹֽשֶׁךְ: from חֹשֶׁךְ, stem} R:haḥoshekh  ⟹ OK
+Gen.1.5: [he-bib]
+    וַיִּקְרָ֨א = קָרָא/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he called" 0.71 +2alt(וַיִּקְרָא/PROPN,קָרָא/VERB) {וַ: and ; יִּ: imperfect preformative, third person masculine singular ; קְרָא: Qal verbal base} R:vayikera  ⟹ OK
+    אֱלֹהִ֤ים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    לָאוֹר֙ = אוֹר/NOUN [masculine or feminine singular, absolute, with the article] "light, morning light, dawn" 0.92 {לָ: from לְ, preposition with the article fused into it ; אוֹר֙: from אוֹר, stem} R:laʾor  ⟹ OK
+    י֔וֹם = יוֹם/NOUN [masculine singular, absolute] "day; time" 0.64 +3alt(יוֹם/NOUN,יוֹם/NOUN,יוֹם/NOUN) R:yom  ⟹ OK
+    וְלַחֹ֖שֶׁךְ = חֹשֶׁךְ/NOUN [masculine singular, absolute, with the article] "darkness, obscurity, secret place(s)" 0.92 {וְ: and ; לַ: from לְ, preposition with the article fused into it ; חֹ֖שֶׁךְ: from חֹשֶׁךְ, stem} R:velaḥoshekh  ⟹ OK
+    קָ֣רָא = קָרָא/VERB [Qal, perfect (qatal), 3rd person masculine singular] "He called" 0.71 +2alt(קָרָא/VERB,נִקְרָא/VERB) {קָרָא: Qal verb} R:kara  ⟹ OK
+    לָ֑יְלָה = לַיִל/NOUN [masculine singular, absolute] "night" 0.71 R:layela  ⟹ OK
+    וַֽיְהִי = הָיָה/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he was" 0.71 +1alt(הָיָה/VERB) {וַ: and ; יְ: imperfect preformative, third person masculine singular ; הִי: Qal verbal base} R:vayehi  ⟹ OK
+    עֶ֥רֶב = עֶרֶב/NOUN [masculine singular, absolute] "set, evening, between two evenings" 0.71 +1alt(עֶרֶב/NOUN) R:erev  ⟹ OK
+    וַֽיְהִי = הָיָה/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he was" 0.71 +1alt(הָיָה/VERB) {וַ: and ; יְ: imperfect preformative, third person masculine singular ; הִי: Qal verbal base} R:vayehi  ⟹ OK
+    בֹ֖קֶר = בֹּקֶר/NOUN [masculine singular, absolute] "morning, morrow, next day" 0.71 R:voker  ⟹ OK
+    י֥וֹם = יוֹם/NOUN [masculine singular, absolute] "day; time" 0.64 +3alt(יוֹם/NOUN,יוֹם/NOUN,יוֹם/NOUN) R:yom  ⟹ OK
+    אֶחָֽד = אֶחָד/NUM [cardinal number, masculine singular, absolute] "one; each; a certain" 0.71 +2alt(אֶחָד/NUM,אֶחָד/PRON) R:eḥad  ⟹ OK
+Deut.6.4: [he-bib]
+    שְׁמַ֖ע = שָׁמַע/VERB [Qal, imperative, 2nd person masculine singular] "Hear!" 0.71 +3alt(שְׁמַע/VERB,שָׁמַע/VERB,שְׁמַע/PROPN) {שְׁמַע: Qal verb} R:shema
+    יִשְׂרָאֵ֑ל = יִשְׂרָאֵל/PROPN [] "Israel" 0.71 +2alt(יִשְׂרָאֵל/PROPN,יִשְׂרָאֵל/PROPN) R:yiseraʾel  ⟹ OK
+    יְהֹוָ֥ה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 +2alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN) R:yehova  ⟹ OK
+    אֱלֹהֵ֖ינוּ = אֱלֹהִים/NOUN [masculine plural, construct] "God; gods" 0.71 {אֱלֹהֵ֖י: from אֱלֹהִים, stem ; נוּ: possessive suffix} R:elohenu  ⟹ OK
+    יְהֹוָ֥ה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 +2alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN) R:yehova  ⟹ OK
+    אֶחָֽד = אֶחָד/NUM [cardinal number, masculine singular, absolute] "one; each; a certain" 0.71 +2alt(אֶחָד/NUM,אֶחָד/PRON) R:eḥad
+Deut.6.5: [he-bib]
+    וְאָ֣הַבְתָּ֔ = אָהַב/VERB [Qal, weqatal (sequential perfect), 2nd person masculine singular] "And you will love" 0.71 {וְ: and ; אָהַבְ: Qal verbal base ; תָּ: perfect second person masculine singular ending} R:veʾahaveta  ⟹ OK
+    אֵ֖ת = אֵת/PART [object marker] "(marks the definite direct object)" 0.71 +3alt(אֵת/ADP,אֹת/NOUN,אֹת/NOUN) R:et  ⟹ OK
+    יְהֹוָ֣ה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 +2alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN) R:yehova  ⟹ OK
+    אֱלֹהֶ֑יךָ = אֱלֹהִים/NOUN [masculine plural, construct] "God; gods" 0.71 {אֱלֹהֶ֑י: from אֱלֹהִים, stem ; ךָ: possessive suffix} R:elohekha  ⟹ OK
+    בְּכׇל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.71 +1alt(כֹּל/NOUN) {בְּ: in, with, by ; כׇל: from כֹּל, stem} R:bekhal  ⟹ OK
+    לְבָבְךָ֥ = לֵבָב/NOUN [masculine singular, construct] "inner man, mind, will" 0.71 +1alt(לֵב/NOUN) {לְבָבְ: from לֵבָב, stem ; ךָ֥: possessive suffix} R:levavekha  ⟹ OK
+    וּבְכׇל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.71 +1alt(כֹּל/NOUN) {וּ: from וְ, and ; בְ: from בְּ, in, with, by ; כׇל: from כֹּל, stem} R:uvekhal  ⟹ OK
+    נַפְשְׁךָ֖ = נֶפֶשׁ/NOUN [masculine or feminine singular, construct] "soul, life, self, person, appetite" 0.71 +1alt(נֶפֶשׁ/NOUN) {נַפְשְׁ: from נֶפֶשׁ, stem ; ךָ֖: possessive suffix} R:nafeshekha  ⟹ OK
+    וּבְכׇל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.71 +1alt(כֹּל/NOUN) {וּ: from וְ, and ; בְ: from בְּ, in, with, by ; כׇל: from כֹּל, stem} R:uvekhal  ⟹ OK
+    מְאֹדֶֽךָ = מְאֹד/NOUN [masculine singular, construct] "muchness, force, abundance" 0.92 {מְאֹדֶֽ: from מְאֹד, stem ; ךָ: possessive suffix} R:meʾodekha  ⟹ OK
+Deut.6.6: [he-bib]
+    וְהָי֞וּ = הָיָה/VERB [Qal, weqatal (sequential perfect), 3rd person common gender plural] "And they will be" 0.68 +2alt(הָיָה/VERB,וְהָיוּ/VERB) {וְ: and ; הָי: Qal verbal base ; וּ: perfect third person common plural ending} R:vehayu  ⟹ OK
+    הַדְּבָרִ֣ים = דָּבָר/NOUN [masculine plural, absolute, with the article] "word, speech, thing, matter" 0.71 +1alt(דָּבָר/NOUN) {הַ: the ; דְּבָרִ֣ים: from דָּבָר, stem} R:hadevarim  ⟹ OK
+    הָאֵ֗לֶּה = אֵלֶּה/PRON [demonstrative, common gender plural, with the article] "these" 0.71 {הָ: from הַ, the ; אֵ֗לֶּה: from אֵלֶּה, stem} R:haʾele  ⟹ OK
+    אֲשֶׁ֨ר = אֲשֶׁר/SCONJ [relative] "who, which, that" 0.71 +2alt(כַּאֲשֶׁר/SCONJ,אֲשֶׁר/CONJ) R:asher  ⟹ OK
+    אָנֹכִ֧י = אָנֹכִי/PRON [personal, 1st person common gender singular] "I" 0.71 +1alt(אָנֹכִי/PRON) R:anokhi  ⟹ OK
+    מְצַוְּךָ֛ = צָוָה/VERB [Piʿel, participle, masculine singular, construct] "commanding" 0.71 {מְצַוְּ: Piʿel verb ; ךָ: object suffix} R:metsavekha  ⟹ OK
+    הַיּ֖וֹם = יוֹם/NOUN [masculine singular, absolute, with the article] "day; time" 0.71 +2alt(יוֹם/NOUN,הַיּוֹם/ADV) {הַ: the ; יּ֖וֹם: from יוֹם, stem} R:hayom  ⟹ OK
+    עַל = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(כִּי עַל כֵּן/ADP,עַל/NOUN,עַל/ADP) R:al  ⟹ OK
+    לְבָבֶֽךָ = לֵבָב/NOUN [masculine singular, construct] "inner man, mind, will" 0.71 {לְבָבֶֽ: from לֵבָב, stem ; ךָ: possessive suffix} R:levavekha  ⟹ OK
+Deut.6.7: [he-bib]
+    וְשִׁנַּנְתָּ֣ם = שָׁנַן/VERB [Piʿel, weqatal (sequential perfect), 2nd person masculine singular] "And you will whet them" 0.92 {וְ: and ; שִׁנַּנְ: Piʿel verbal base ; תָּ: perfect second person masculine singular ending ; ם: object suffix} R:veshinanetam  ⟹ OK
+    לְבָנֶ֔יךָ = בֵּן/NOUN [masculine plural, construct] "son; child; member of a class" 0.71 {לְ: to, for ; בָנֶ֔י: from בֵּן, stem ; ךָ: possessive suffix} R:levanekha  ⟹ OK
+    וְדִבַּרְתָּ֖ = דָבַר/VERB [Piʿel, weqatal (sequential perfect), 2nd person masculine singular] "And you will speak" 0.68 +2alt(דָבַר/VERB,וְדִבַּרְתָּ/VERB) {וְ: and ; דִבַּרְ: Piʿel verbal base ; תָּ: perfect second person masculine singular ending} R:vedibareta  ⟹ OK
+    בָּ֑ם = בְּ/ADP [] "in, with, by" 0.71 +2alt(בְּ־/ADP,ב/ADP) {בָּ֑: from בְּ, stem ; ם: object of the preposition} R:bam  ⟹ OK
+    בְּשִׁבְתְּךָ֤ = יָשַׁב/VERB [Qal, infinitive construct] "to sit" 0.71 {בְּ: in, with, by ; שִׁבְתְּ: Qal verb ; ךָ: object suffix} R:beshivetekha  ⟹ OK
+    בְּבֵיתֶ֙ךָ֙ = בַּיִת/NOUN [masculine singular, construct] "house, household" 0.71 {בְּ: in, with, by ; בֵיתֶ֙: from בַּיִת, stem ; ךָ֙: possessive suffix} R:bevetekha  ⟹ OK
+    וּבְלֶכְתְּךָ֣ = יָלַךְ/VERB [Qal, infinitive construct] "and to go" 0.92 {וּ: and ; בְ: in, with, by ; לֶכְתְּ: Qal verb ; ךָ: object suffix} R:uvelekhetekha  ⟹ OK
+    בַדֶּ֔רֶךְ = דֶּרֶךְ/NOUN [masculine or feminine singular, absolute, with the article] "way, road; journey; manner" 0.71 {בַ: from בְּ, preposition with the article fused into it ; דֶּ֔רֶךְ: from דֶּרֶךְ, stem} R:vaderekh  ⟹ OK
+    וּֽבְשׇׁכְבְּךָ֖ = שָׁכַב/VERB [Qal, infinitive construct] "and to lie down" 0.92 {וּ: and ; בְ: in, with, by ; שָׁכְבְּ: Qal verb ; ךָ: object suffix} R:uveshakhebekha  ⟹ OK
+    וּבְקוּמֶֽךָ = קוּם/VERB [Qal, infinitive construct] "and to arise" 0.92 {וּ: and ; בְ: in, with, by ; קוּמֶ: Qal verb ; ךָ: object suffix} R:uvekumekha  ⟹ OK
+Deut.6.8: [he-bib]
+    וּקְשַׁרְתָּ֥ם = קָשַׁר/VERB [Qal, weqatal (sequential perfect), 2nd person masculine singular] "And you will bind them" 0.92 {וּ: and ; קְשַׁרְ: Qal verbal base ; תָּ: perfect second person masculine singular ending ; ם: object suffix} R:ukesharetam  ⟹ OK
+    לְא֖וֹת = אוֹת/NOUN [masculine or feminine singular, absolute] "sign, pledge, token" 0.83 +1alt(אוֹת/NOUN) {לְ: to, for ; א֖וֹת: from אוֹת, stem} R:leʾot  ⟹ OK
+    עַל = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(כִּי עַל כֵּן/ADP,עַל/NOUN,עַל/ADP) R:al  ⟹ OK
+    יָדֶ֑ךָ = יָד/NOUN [masculine or feminine singular, construct] "hand; power; side" 0.71 +1alt(יָד/NOUN) {יָדֶ֑: from יָד, stem ; ךָ: possessive suffix} R:yadekha  ⟹ OK
+    וְהָי֥וּ = הָיָה/VERB [Qal, weqatal (sequential perfect), 3rd person common gender plural] "And they will be" 0.68 +2alt(הָיָה/VERB,וְהָיוּ/VERB) {וְ: and ; הָי: Qal verbal base ; וּ: perfect third person common plural ending} R:vehayu  ⟹ OK
+    לְטֹטָפֹ֖ת = טוֹפָפָה/NOUN [feminine plural, absolute] "bands, frontlet-bands, between the eyes" 0.92 {לְ: to, for ; טֹטָפֹ֖ת: from טוֹפָפָה, stem} R:letotafot  ⟹ OK
+    בֵּ֥ין = בֵּין/ADP [] "between" 0.71 +3alt(בֵּין/NOUN,בֵּין/ADP,בֵּין/ADP) R:ben  ⟹ OK
+    עֵינֶֽיךָ = עַיִן/NOUN [masculine or feminine dual, construct] "eye; spring" 0.71 +1alt(עַיִן/NOUN) {עֵינֶֽי: from עַיִן, stem ; ךָ: possessive suffix} R:enekha  ⟹ OK
+Deut.6.9: [he-bib]
+    וּכְתַבְתָּ֛ם = כָּתַב/VERB [Qal, weqatal (sequential perfect), 2nd person masculine singular] "And you will write them" 0.92 {וּ: and ; כְתַבְ: Qal verbal base ; תָּ: perfect second person masculine singular ending ; ם: object suffix} R:ukhetavetam  ⟹ OK
+    עַל = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(כִּי עַל כֵּן/ADP,עַל/NOUN,עַל/ADP) R:al  ⟹ OK
+    מְזֻז֥וֹת = זָז/VERB [present, feminine plural] "—" 0.35 UNCONF rule {מ: from מִן, from ; ְזֻז֥וֹת: from זָז, stem} R:mezuzot
+    בֵּיתֶ֖ךָ = בַּיִת/NOUN [masculine singular, construct] "house, household" 0.71 {בֵּיתֶ֖: from בַּיִת, stem ; ךָ: possessive suffix} R:betekha  ⟹ OK
+    וּבִשְׁעָרֶֽיךָ = שַׁעַר/NOUN [masculine plural, construct] "gate" 0.92 {וּ: from וְ, and ; בִ: from בְּ, in, with, by ; שְׁעָרֶֽי: from שַׁעַר, stem ; ךָ: possessive suffix} R:uvisheʿarekha  ⟹ OK
+Ps.23.1: [he-bib]
+    מִזְמ֥וֹר = מִזְמוֹר/NOUN [masculine singular, absolute] "melody" 0.91 +2alt(מִזְמוֹר/NOUN,מִזְמוֹר/NOUN) R:mizemor  ⟹ OK
+    לְדָוִ֑ד = דָּוִד/PROPN [] "David" 0.71 {לְ: to, for ; דָוִ֑ד: from דָּוִד, stem} R:ledavid  ⟹ OK
+    יְהֹוָ֥ה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 +2alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN) R:yehova  ⟹ OK
+    רֹ֝עִ֗י = רֹעִי/VERB [Qal, participle, masculine singular, construct] "pasturing" 0.68 +3alt(רָעָה/VERB,רֹעֶה/NOUN,רֹעִי/PROPN) {רֹעִ: Qal verb ; י: object suffix} R:roʿi  ⟹ LEMMA (source: רָעָה VERB, Qal, participle, masculine singular, construct; "to pasture, tend, shepherd; to")
+    לֹ֣א = לֹא/PART [negative] "not, no" 0.71 +3alt(לֹא רֻחָמָה/PART,לְ/ADP,לוּא/PART) R:lo  ⟹ OK
+    אֶחְסָֽר = חָסֵר/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I shall not lack" 0.92 {אֶ: imperfect preformative, first person common singular ; חְסָר: Qal verbal base} R:eḥesar  ⟹ OK
+Ps.23.2: [he-bib]
+    בִּנְא֣וֹת = נָאָה/NOUN [feminine plural, construct] "pasture, meadow" 0.92 {בִּ: from בְּ, in, with, by ; נְא֣וֹת: from נָאָה, stem} R:bineʾot  ⟹ OK
+    דֶּ֭שֶׁא = דֶּשֶׁא/NOUN [masculine singular, absolute] "grass" 0.84 +2alt(דֶּשֶׁא/NOUN,דֶּשֶׁא/NOUN) R:deshe  ⟹ OK
+    יַרְבִּיצֵ֑נִי = רָבַץ/VERB [Hifʿil, imperfect (yiqtol), 3rd person masculine singular] "He will stretch me out" 0.92 {יַ: imperfect preformative, third person masculine singular ; רְבִּיצֵ: Hifʿil verbal base ; נִי: object suffix} R:yarebitseni  ⟹ OK
+    עַל = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(כִּי עַל כֵּן/ADP,עַל/NOUN,עַל/ADP) R:al  ⟹ OK
+    מֵ֖י = מַיִם/NOUN [masculine plural, construct] "water" 0.71 +2alt(מֵי זָהָב/PROPN,מַיִם/NOUN) R:me  ⟹ OK
+    מְנֻח֣וֹת = מְנוּחָה/NOUN [masculine or feminine plural, absolute] "resting-place, rest" 0.92 R:menuḥot  ⟹ OK
+    יְנַהֲלֵֽנִי = נָהַל/VERB [Piʿel, imperfect (yiqtol), 3rd person masculine singular] "He will lead me" 0.92 {יְ: imperfect preformative, third person masculine singular ; נַהֲלֵ: Piʿel verbal base ; נִי: object suffix} R:yenahaleni  ⟹ OK
+Ps.23.3: [he-bib]
+    נַפְשִׁ֥י = נֶפֶשׁ/NOUN [masculine or feminine singular, construct] "soul, life, self, person, appetite" 0.71 +2alt(נֶפֶשׁ/NOUN,נַפְשִׁי/ADJ) {נַפְשִׁ֥: from נֶפֶשׁ, stem ; י: possessive suffix} R:nafeshi  ⟹ OK
+    יְשׁוֹבֵ֑ב = שׁוּב/VERB [Polel, imperfect (yiqtol), 3rd person masculine singular] "He will restore" 0.92 {יְ: imperfect preformative, third person masculine singular ; שׁוֹבֵב: Polel verbal base} R:yeshovev  ⟹ OK
+    יַֽנְחֵ֥נִי = נָחָה/VERB [Hifʿil, imperfect (yiqtol), 3rd person masculine singular] "He will lead me" 0.92 {יַ: imperfect preformative, third person masculine singular ; נְחֵ: Hifʿil verbal base ; נִי: object suffix} R:yaneḥeni  ⟹ OK
+    בְמַעְגְּלֵי = מַעְגָּל/NOUN [masculine plural, construct] "entrenchment, track" 0.92 {בְ: from בְּ, in, with, by ; מַעְגְּלֵי: from מַעְגָּל, stem} R:vemaʿegele  ⟹ OK
+    צֶ֝֗דֶק = צֶדֶק/NOUN [masculine singular, absolute] "rightness, righteousness, what is right" 0.87 +3alt(צֶדֶק/NOUN,מַלְכִּי־צֶדֶק/PROPN,אֲדֹנִי־צֶדֶק/PROPN) R:tsedek  ⟹ OK
+    לְמַ֣עַן = מַעַן/ADP [] "purpose, intent, for the sake of" 0.71 +1alt(לְמַעַן/ADP) R:lemaʿan  ⟹ OK
+    שְׁמֽוֹ = שֵׁם/NOUN [masculine singular, construct] "name; reputation" 0.71 +2alt(שֵׁם/NOUN,שֵׁם/NOUN) {שְׁמֽ: from שֵׁם, stem ; וֹ: possessive suffix} R:shemo  ⟹ OK
+Ps.23.4: [he-bib]
+    גַּ֤ם = גַּם/PART [affirmative particle] "also, even, moreover" 0.71 +1alt(גַּם/ADV) R:gam  ⟹ OK
+    כִּֽי = כִּי/CONJ [] "that, because, for, when" 0.71 +3alt(כִּי אם־/CONJ,כִּי עַל כֵּן/CONJ,כִי/NOUN) R:ki  ⟹ OK
+    אֵלֵ֨ךְ = יָלַךְ/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I will go" 0.7 +3alt(הָלַךְ/VERB,אֵל/NOUN,הָלַךְ/VERB) {אֵ: imperfect preformative, first person common singular ; לֵךְ: Qal verbal base} R:elekh  ⟹ OK
+    בְּגֵ֪יא = גַּיְא/NOUN [masculine or feminine singular, construct] "valley" 0.76 +1alt(גַּיְא/PROPN) {בְּ: in, with, by ; גֵ֪יא: from גַּיְא, stem} R:bege  ⟹ OK
+    צַלְמָ֡וֶת = צַלְמָוֶת/NOUN [masculine singular, absolute] "death-shadow, deep shadow" 0.88 +1alt(צַלְמָוֶת/NOUN) R:tsalemavet  ⟹ OK
+    לֹא = לֹא/PART [negative] "not, no" 0.71 +3alt(לֹא רֻחָמָה/PART,לְ/ADP,לוּא/PART) R:lo  ⟹ OK
+    אִ֘ירָ֤א = יָרֵא/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I will fear" 0.7 +1alt(יָרֵא/VERB) {אִ: imperfect preformative, first person common singular ; ירָא: Qal verbal base} R:ira  ⟹ OK
+    רָ֗ע = רַע/ADJ [masculine singular, absolute] "evil, distress, misery" 0.66 +2alt(רַע/VERB,רָעַע/ADJ) R:ra  ⟹ OK
+    כִּי = כִּי/CONJ [] "that, because, for, when" 0.71 +3alt(כִּי אם־/CONJ,כִּי עַל כֵּן/CONJ,כִי/NOUN) R:ki  ⟹ OK
+    אַתָּ֥ה = אַתָּה/PRON [personal, 2nd person masculine singular] "you (masculine singular)" 0.71 +2alt(אַתְּ/PRON,אַתָּה/PRON) R:ata  ⟹ OK
+    עִמָּדִ֑י = עִמָּד/ADP [] "with, aid, against" 0.71 +1alt(עִם/ADP) {עִמָּדִ֑: from עִמָּד, stem ; י: object of the preposition} R:imadi  ⟹ OK
+    שִׁבְטְךָ֥ = שֵׁבֶט/NOUN [masculine singular, construct] "rod, staff, club" 0.92 {שִׁבְטְ: from שֵׁבֶט, stem ; ךָ֥: possessive suffix} R:shivetekha  ⟹ OK
+    וּ֝מִשְׁעַנְתֶּ֗ךָ = מִשְׁעֶ֫נֶת/NOUN [feminine singular, construct] "staff" 0.92 {וּ֝: from וְ, and ; מִשְׁעַנְתֶּ֗: from מִשְׁעֶ֫נֶת, stem ; ךָ: possessive suffix} R:umisheʿanetekha  ⟹ OK
+    הֵ֣מָּה = הֵם/PRON [personal, 3rd person masculine plural] "they, those" 0.71 +1alt(הֵמָּה/PRON) R:hema  ⟹ OK
+    יְנַֽחֲמֻֽנִי = נָחַם/VERB [Piʿel, imperfect (yiqtol), 3rd person masculine plural] "They will console me" 0.92 {יְ: imperfect preformative, third person masculine plural ; נַחֲמֻ: Piʿel verbal base ; נִי: object suffix} R:yenaḥamuni  ⟹ OK
+Ps.23.5: [he-bib]
+    תַּעֲרֹ֬ךְ = עָרַךְ/VERB [Qal, imperfect (yiqtol), 2nd person masculine singular] "You will arrange" 0.64 +2alt(עָרַךְ/VERB,עָרַךְ/VERB) {תַּ: imperfect preformative, second person masculine singular ; עֲרֹךְ: Qal verbal base} R:taʿarokh  ⟹ OK
+    לְפָנַ֨י = פָּנִים/NOUN [masculine or feminine plural, construct] "face; before, in front of" 0.71 +1alt(לִפְנֵי/ADP) {לְ: to, for ; פָנַ֨: from פָּנִים, stem ; י: possessive suffix} R:lefanay  ⟹ OK
+    שֻׁלְחָ֗ן = שֻׁלְחָן/NOUN [masculine singular, absolute] "table" 0.8 +2alt(שֻׁלְחָן/NOUN,שֻׁלְחָן/NOUN) R:shuleḥan  ⟹ OK
+    נֶ֥גֶד = נֶגֶד/ADP [] "what is conspicuous, in front, in front of" 0.71 +2alt(נֶגֶד/ADP,נֶגֶד/ADP) R:neged  ⟹ OK
+    צֹרְרָ֑י = צָרַר/VERB [Qal, participle, masculine plural, construct] "vexing" 0.92 {צֹרְרָ: Qal verb ; י: object suffix} R:tsoreray  ⟹ OK
+    דִּשַּׁ֥נְתָּ = דָּשֵׁן/VERB [Piʿel, perfect (qatal), 2nd person masculine singular] "You grew fat" 0.92 {דִּשַּׁנְ: Piʿel verbal base ; תָּ: perfect second person masculine singular ending} R:dishaneta  ⟹ OK
+    בַשֶּׁ֥מֶן = שֶׁמֶן/NOUN [masculine singular, absolute, with the article] "fat, oil" 0.71 {בַ: from בְּ, preposition with the article fused into it ; שֶּׁ֥מֶן: from שֶׁמֶן, stem} R:vashemen  ⟹ OK
+    רֹ֝אשִׁ֗י = רֹאשׁ/NOUN [masculine singular, construct] "head; top; chief" 0.71 +1alt(רֹאשׁ/NOUN) {רֹ֝אשִׁ֗: from רֹאשׁ, stem ; י: possessive suffix} R:roʾshi  ⟹ OK
+    כּוֹסִ֥י = כּוֹס/NOUN [feminine singular, construct] "cup" 0.71 +1alt(כּוֹס/NOUN) {כּוֹסִ֥: from כּוֹס, stem ; י: possessive suffix} R:kosi  ⟹ OK
+    רְוָיָֽה = רְוָיָה/NOUN [feminine singular, absolute] "saturation" 0.71 +1alt(רְוָיָה/NOUN) R:revaya  ⟹ OK
+Ps.23.6: [he-bib]
+    אַ֤ךְ = אַךְ/PART [affirmative particle] "surely" 0.71 +2alt(אַךְ/ADV,אַךְ/CONJ) R:akh  ⟹ OK
+    ט֤וֹב = טוֹב/ADJ [masculine singular, absolute] "good, pleasant" 0.67 +3alt(טוֹב/VERB,טוֹב/PROPN,טוֹב/ADJ) R:tov  ⟹ FORM (source: ADJ, masculine singular, absolute; not offered at all)
+    וָחֶ֣סֶד = חֵסֵד/NOUN [masculine singular, absolute] "loyal love, kindness, faithfulness" 0.71 {וָ: from וְ, and ; חֶ֣סֶד: from חֵסֵד, stem} R:vaḥesed  ⟹ OK
+    יִ֭רְדְּפוּנִי = רָדַף/VERB [Piʿel, imperfect (yiqtol), 3rd person masculine plural] "They will pursue me" 0.92 {יִ: imperfect preformative, third person masculine plural ; רְדְּפ: Piʿel verbal base ; וּ: masculine plural ending ; נִי: object suffix} R:yiredefuni  ⟹ OK
+    כׇּל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.71 +3alt(כֹּל/NOUN,כׇּל־חֹזֶה/PROPN,כֹּל/ADP) R:kal  ⟹ OK
+    יְמֵ֣י = יוֹם/NOUN [masculine plural, construct] "day; time" 0.71 +1alt(יוֹם/NOUN) R:yeme  ⟹ OK
+    חַיָּ֑י = חַיִּים/NOUN [masculine plural, construct] "life, sustenance, maintenance" 0.71 {חַיָּ֑: from חַיִּים, stem ; י: possessive suffix} R:ḥayay  ⟹ OK
+    וְשַׁבְתִּ֥י = שׁוּב/VERB [Qal, weqatal (sequential perfect), 1st person common gender singular] "And I will return" 0.64 +2alt(שׁוּב/VERB,יָשַׁב/VERB) {וְ: and ; שַׁבְ: Qal verbal base ; תִּי: perfect first person common singular ending} R:veshaveti  ⟹ LEMMA (source: יָשַׁב VERB, Qal, weqatal (sequential perfect), 1st person common gender singular; "to sit, dwell, remain")
+    בְּבֵית = בַּיִת/NOUN [masculine singular, construct] "house, household" 0.68 +3alt(בֵּית־אֵל/PROPN,בֵּית שֶׁמֶשׁ/PROPN,בֵּית לֶחֶם/PROPN) {בְּ: in, with, by ; בֵית: from בַּיִת, stem} R:bevet  ⟹ OK
+    יְ֝הֹוָ֗ה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 +2alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN) R:yehova  ⟹ OK
+    לְאֹ֣רֶךְ = אֹרֶךְ/NOUN [masculine singular, construct] "length, forbearance, self-restraint" 0.92 {לְ: to, for ; אֹ֣רֶךְ: from אֹרֶךְ, stem} R:leʾorekh  ⟹ OK
+    יָמִֽים = יוֹם/NOUN [masculine plural, absolute] "day; time" 0.71 +1alt(יוֹם/NOUN) R:yamim  ⟹ OK
+Isa.53.4: [he-bib]
+    אָכֵ֤ן = אָכֵן/ADV [] "surely, truly, but indeed" 0.9 +1alt(אָכֵן/ADV) R:akhen  ⟹ OK
+    חֳלָיֵ֙נוּ֙ = חֳלִי/NOUN [masculine plural, construct] "sickness" 0.92 {חֳלָיֵ֙: from חֳלִי, stem ; נוּ֙: possessive suffix} R:ḥolayenu  ⟹ OK
+    ה֣וּא = הוּא/PRON [personal, 3rd person masculine singular] "he, it; that" 0.71 +3alt(הוּא/PRON,הוּא/PRON,הוּא/PART) R:hu  ⟹ OK
+    נָשָׂ֔א = נָשָׂא/VERB [Qal, perfect (qatal), 3rd person masculine singular] "He lifted" 0.71 +2alt(נָשָׂא/VERB,נִשָּׂא/VERB) {נָשָׂא: Qal verb} R:nasa  ⟹ OK
+    וּמַכְאֹבֵ֖ינוּ = מַכְאֹב/NOUN [masculine plural, construct] "pain" 0.92 {וּ: from וְ, and ; מַכְאֹבֵ֖י: from מַכְאֹב, stem ; נוּ: possessive suffix} R:umakheʾovenu  ⟹ OK
+    סְבָלָ֑ם = סָבַל/VERB [Qal, perfect (qatal), 3rd person masculine singular] "He bore them a heavy load" 0.92 {סְבָלָ: Qal verb ; ם: object suffix} R:sevalam  ⟹ OK
+    וַאֲנַ֣חְנוּ = אֲנַחְנוּ/PRON [personal, 1st person common gender plural] "we" 0.71 {וַ: from וְ, and ; אֲנַ֣חְנוּ: from אֲנַחְנוּ, stem} R:vaʾanaḥenu  ⟹ OK
+    חֲשַׁבְנֻ֔הוּ = חָשַׁב/VERB [Qal, perfect (qatal), 1st person common gender plural] "We thought him" 0.92 {חֲשַׁבְנֻ: Qal verb ; הוּ: object suffix} R:ḥashavenuhu  ⟹ OK
+    נָג֛וּעַ = נָגַע/VERB [Qal, passive participle, masculine singular, absolute] "touched" 0.78 +1alt(נָגַע/VERB) {נָגוּעַ: Qal verb} R:naguʿa  ⟹ OK
+    מֻכֵּ֥ה = נָכָה/VERB [Hofʿal, passive participle, masculine singular, construct] "struck" 0.92 {מֻכֵּה: Hofʿal verb} R:muke  ⟹ OK
+    אֱלֹהִ֖ים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    וּמְעֻנֶּֽה = עָנָה/VERB [Puʿal, passive participle, masculine singular, absolute] "and bowed down" 0.92 {וּ: and ; מְעֻנֶּה: Puʿal verb} R:umeʿune  ⟹ OK
+Isa.53.5: [he-bib]
+    וְהוּא֙ = הוּא/PRON [personal, 3rd person masculine singular] "he, it; that" 0.71 +1alt(הוּא/PRON) {וְ: and ; הוּא֙: from הוּא, stem} R:vehu  ⟹ OK
+    מְחֹלָ֣ל = חָלַל/VERB [Polal, passive participle, masculine singular, absolute] "bored" 0.92 {מְחֹלָל: Polal verb} R:meḥolal  ⟹ OK
+    מִפְּשָׁעֵ֔נוּ = פֶּשַׁע/NOUN [masculine plural, construct] "transgression" 0.92 {מִ: from מִן, from ; פְּשָׁעֵ֔: from פֶּשַׁע, stem ; נוּ: possessive suffix} R:mipeshaʿenu  ⟹ OK
+    מְדֻכָּ֖א = דָּכָא/VERB [Puʿal, passive participle, masculine singular, absolute] "crushed" 0.71 +1alt(דֻּכָּא/VERB) {מְדֻכָּא: Puʿal verb} R:meduka  ⟹ OK
+    מֵעֲוֺנֹתֵ֑ינוּ = עָוֺן/NOUN [masculine or feminine plural, construct] "iniquity, guilt, punishment of iniquity" 0.92 {מֵ: from מִן, from ; עֲוֺנֹתֵ֑י: from עָוֺן, stem ; נוּ: possessive suffix} R:meʿavonotenu  ⟹ OK
+    מוּסַ֤ר = מוּסָר/NOUN [masculine singular, construct] "discipline, chastening, correction" 0.87 +1alt(מוּסָר/NOUN) R:musar  ⟹ OK
+    שְׁלוֹמֵ֙נוּ֙ = שָׁלוֹם/NOUN [masculine singular, construct] "peace, well-being, completeness" 0.71 +1alt(שָׁלוֹם/NOUN) {שְׁלוֹמֵ֙: from שָׁלוֹם, stem ; נוּ֙: possessive suffix} R:shelomenu  ⟹ OK
+    עָלָ֔יו = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(עַל/ADP,עלה with third-person masculine singular personal pronoun as possessor/NOUN,עַל/ADP) {עָלָ֔י: from עַל, stem ; ו: object of the preposition} R:alayv  ⟹ OK
+    וּבַחֲבֻרָת֖וֹ = חַבּוּרָה/NOUN [feminine singular, construct] "stripe, blow" 0.92 {וּ: from וְ, and ; בַ: from בְּ, in, with, by ; חֲבֻרָת֖: from חַבּוּרָה, stem ; וֹ: possessive suffix} R:uvaḥavurato  ⟹ OK
+    נִרְפָּא = רָפָא/VERB [Nifʿal, perfect (qatal), 3rd person masculine singular] "He was healed" 0.84 +1alt(רָפָא/VERB) {נִרְפָּא: Nifʿal verb} R:nirepa  ⟹ OK
+    לָֽנוּ = לְ/ADP [] "to, for" 0.71 +3alt(לְ־/ADP,ל/ADP,לָן/VERB) {לָֽ: from לְ, stem ; נוּ: object of the preposition} R:lanu  ⟹ OK
+Isa.53.6: [he-bib]
+    כֻּלָּ֙נוּ֙ = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.7 +2alt(כֹּל/NOUN,כל/PRON) {כֻּלָּ֙: from כֹּל, stem ; נוּ֙: possessive suffix} R:kulanu  ⟹ OK
+    כַּצֹּ֣אן = צֹאן/NOUN [masculine or feminine singular, absolute, with the article] "small cattle, sheep and goats, flock" 0.71 {כַּ: from כְּ, preposition with the article fused into it ; צֹּ֣אן: from צֹאן, stem} R:katsoʾn  ⟹ OK
+    תָּעִ֔ינוּ = תָּעָה/VERB [Qal, perfect (qatal), 1st person common gender plural] "We erred" 0.71 +1alt(תָּעָה/VERB) {תָּעִי: Qal verbal base ; נוּ: perfect first person common plural ending} R:taʿinu  ⟹ OK
+    אִ֥ישׁ = אִישׁ/NOUN [masculine singular, absolute] "man, husband; each" 0.67 +3alt(אִישׁ/NOUN,אִישׁ־בֹּשֶׁת/PROPN,אִישׁ־בֹּשֶׁת/NOUN) R:ish  ⟹ OK
+    לְדַרְכּ֖וֹ = דֶּרֶךְ/NOUN [masculine or feminine singular, construct] "way, road; journey; manner" 0.71 {לְ: to, for ; דַרְכּ֖: from דֶּרֶךְ, stem ; וֹ: possessive suffix} R:ledareko  ⟹ OK
+    פָּנִ֑ינוּ = פָּנָה/VERB [Qal, perfect (qatal), 1st person common gender plural] "We turned" 0.71 +1alt(פָּנָה/VERB) {פָּנִי: Qal verbal base ; נוּ: perfect first person common plural ending} R:paninu  ⟹ OK
+    וַיהֹוָה֙ = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 {וַ: from וְ, and ; יהֹוָה֙: from יְהֹוָה, stem} R:vayhova  ⟹ OK
+    הִפְגִּ֣יעַ = פָּגַע/VERB [Hifʿil, perfect (qatal), 3rd person masculine singular] "He met" 0.92 {הִפְגִּיעַ: Hifʿil verb} R:hifegiʿa  ⟹ OK
+    בּ֔וֹ = בְּ/ADP [] "in, with, by" 0.71 +3alt(שָׂמַח/PRON,בְּ־/ADP,ב/ADP) {בּ֔: from בְּ, stem ; וֹ: object of the preposition} R:bo  ⟹ OK
+    אֵ֖ת = אֵת/PART [object marker] "(marks the definite direct object)" 0.71 +3alt(אֵת/ADP,אֹת/NOUN,אֹת/NOUN) R:et  ⟹ OK
+    עֲוֺ֥ן = עָוֺן/NOUN [masculine or feminine singular, construct] "iniquity, guilt, punishment of iniquity" 0.71 +1alt(עָווֹן/NOUN) R:avon  ⟹ OK
+    כֻּלָּֽנוּ = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.7 +2alt(כֹּל/NOUN,כל/PRON) {כֻּלָּֽ: from כֹּל, stem ; נוּ: possessive suffix} R:kulanu  ⟹ OK
+Ruth.1.16: [he-bib]
+    וַתֹּ֤אמֶר = אָמַר/VERB [Qal, wayyiqtol (narrative past), 3rd person feminine singular] "And she said" 0.7 +2alt(אָמַר/VERB,וַתֹּאמֶר/VERB) {וַ: and ; תֹּ: imperfect preformative, third person feminine singular ; אמֶר: Qal verbal base} R:vatoʾmer  ⟹ OK
+    רוּת֙ = רוּת/PROPN [] "Ruth" 0.85 +2alt(רוּת/PROPN,רוּת/INTJ) R:rut  ⟹ OK
+    אַל = אַל/PART [negative] "do not (with a wish or command)" 0.71 +3alt(אַל תַּשְׁחֵת/PART,אַל/ADP,לֹא/PART) R:al  ⟹ OK
+    תִּפְגְּעִי = פָּגַע/VERB [Qal, jussive, 2nd person feminine singular] "May you meet" 0.71 +1alt(פָּגַע/VERB) {תִּ: imperfect preformative, second person feminine singular ; פְגְּעִ: Qal verbal base ; י: second person feminine singular ending} R:tifegeʿi  ⟹ OK
+    בִ֔י = בְּ/ADP [] "in, with, by" 0.71 {בִ֔: from בְּ, stem ; י: object of the preposition} R:vi  ⟹ OK
+    לְעׇזְבֵ֖ךְ = עָזַב/VERB [Qal, infinitive construct] "to leave" 0.92 {לְ: to, for ; עָזְבֵ: Qal verb ; ךְ: object suffix} R:leʿazevekh  ⟹ OK
+    לָשׁ֣וּב = שׁוּב/VERB [Qal, infinitive construct] "to return" 0.71 +1alt(לָשׁוּב/VERB) {לָ: to, for ; שׁוּב: Qal verb} R:lashuv  ⟹ OK
+    מֵאַחֲרָ֑יִךְ = אַחַר/ADP [] "after, behind" 0.71 {מֵ: from מִן, from ; אַחֲרָ֑יִ: from אַחַר, stem ; ךְ: object of the preposition} R:meʾaḥarayikh  ⟹ OK
+    כִּ֠י = כִּי/CONJ [] "that, because, for, when" 0.71 +3alt(כִּי אם־/CONJ,כִּי עַל כֵּן/CONJ,כִי/NOUN) R:ki  ⟹ OK
+    אֶל = אֵל/ADP [] "to, toward, into" 0.71 +3alt(אֵל/PART,אֵת/ADP,אֶל/ADP) R:el  ⟹ OK
+    אֲשֶׁ֨ר = אֲשֶׁר/SCONJ [relative] "who, which, that" 0.71 +2alt(כַּאֲשֶׁר/SCONJ,אֲשֶׁר/CONJ) R:asher  ⟹ OK
+    תֵּלְכִ֜י = יָלַךְ/VERB [Qal, imperfect (yiqtol), 2nd person feminine singular] "You will go" 0.71 +2alt(יָלַךְ/VERB,הָלַךְ/VERB) {תֵּ: imperfect preformative, second person feminine singular ; לְכִ: Qal verbal base ; י: second person feminine singular ending} R:telekhi  ⟹ OK
+    אֵלֵ֗ךְ = יָלַךְ/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I will go" 0.7 +3alt(הָלַךְ/VERB,אֵל/NOUN,הָלַךְ/VERB) {אֵ: imperfect preformative, first person common singular ; לֵךְ: Qal verbal base} R:elekh  ⟹ OK
+    וּבַאֲשֶׁ֤ר = בַאֲשֶׁר/SCONJ [relative] "who, which, that" 0.71 {וּ: from וְ, and ; בַ: from בְּ, in, with, by ; אֲשֶׁ֤ר: from בַאֲשֶׁר, stem} R:uvaʾasher  ⟹ OK
+    תָּלִ֙ינִי֙ = לוּן/VERB [Qal, imperfect (yiqtol), 2nd person feminine singular] "You will lodge" 0.92 {תָּ: imperfect preformative, second person feminine singular ; לִינִ: Qal verbal base ; י: second person feminine singular ending} R:talini  ⟹ OK
+    אָלִ֔ין = לוּן/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I will lodge" 0.92 {אָ: imperfect preformative, first person common singular ; לִין: Qal verbal base} R:alin  ⟹ OK
+    עַמֵּ֣ךְ = עַם/NOUN [masculine singular, construct] "people, nation" 0.69 +1alt(עַם/NOUN) {עַמֵּ֣: from עַם, stem ; ךְ: possessive suffix} R:amekh  ⟹ OK
+    עַמִּ֔י = עַם/NOUN [masculine singular, construct] "people, nation" 0.71 +3alt(בֶּן־עַמִּי/PROPN,לֹא עַמִּי/PROPN,עַם/PROPN) {עַמִּ֔: from עַם, stem ; י: possessive suffix} R:ami  ⟹ OK
+    וֵאלֹהַ֖יִךְ = אֱלֹהִים/NOUN [masculine plural, construct] "God; gods" 0.71 {וֵ: from וְ, and ; אלֹהַ֖יִ: from אֱלֹהִים, stem ; ךְ: possessive suffix} R:veʾlohayikh  ⟹ OK
+    אֱלֹהָֽי = אֱלֹהִים/NOUN [masculine plural, construct] "God; gods" 0.71 {אֱלֹהָֽ: from אֱלֹהִים, stem ; י: possessive suffix} R:elohay  ⟹ OK
+Ruth.1.17: [he-bib]
+    בַּאֲשֶׁ֤ר = בַאֲשֶׁר/SCONJ [relative] "who, which, that" 0.71 +1alt(בַּאֲשֶׁר/ADP) {בַּ: from בְּ, in, with, by ; אֲשֶׁ֤ר: from בַאֲשֶׁר, stem} R:baʾasher  ⟹ OK
+    תָּמ֙וּתִי֙ = מוּת/VERB [Qal, imperfect (yiqtol), 2nd person feminine singular] "You will die" 0.71 +1alt(מֵת/VERB) {תָּ: imperfect preformative, second person feminine singular ; מוּתִ: Qal verbal base ; י: second person feminine singular ending} R:tamuti  ⟹ OK
+    אָמ֔וּת = מוּת/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I will die" 0.71 +1alt(מֵת/VERB) {אָ: imperfect preformative, first person common singular ; מוּת: Qal verbal base} R:amut  ⟹ OK
+    וְשָׁ֖ם = שָׁם/ADV [] "there" 0.71 {וְ: and ; שָׁ֖ם: from שָׁם, stem} R:vesham  ⟹ OK
+    אֶקָּבֵ֑ר = קָבַר/VERB [Nifʿal, imperfect (yiqtol), 1st person common gender singular] "I will be buried" 0.92 {אֶ: imperfect preformative, first person common singular ; קָּבֵר: Nifʿal verbal base} R:ekaver  ⟹ OK
+    כֹּה֩ = כֹּה/ADV [] "thus, so; here" 0.71 R:ko  ⟹ OK
+    יַעֲשֶׂ֨ה = עָשָׂה/VERB [Qal, imperfect (yiqtol), 3rd person masculine singular] "He will do" 0.69 +3alt(עָשָׂה/VERB,עָשָׂה/VERB,עָשָׂה/VERB) {יַ: imperfect preformative, third person masculine singular ; עֲשֶׂה: Qal verbal base} R:yaʿase  ⟹ OK
+    יְהֹוָ֥ה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 +2alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN) R:yehova  ⟹ OK
+    לִי֙ = לְ/ADP [] "to, for" 0.71 +3alt(קָרָא/PRON,לְ/ADP,לְ־/ADP) {לִ: from לְ, stem ; י֙: object of the preposition} R:li  ⟹ OK
+    וְכֹ֣ה = כֹּה/ADV [] "thus, so; here" 0.71 {וְ: and ; כֹ֣ה: from כֹּה, stem} R:vekho  ⟹ OK
+    יוֹסִ֔יף = יָסַף/VERB [Hifʿil, imperfect (yiqtol), 3rd person masculine singular] "He will add" 0.66 +2alt(יָסַף/VERB,הוֹסִיף/VERB) {י: imperfect preformative, third person masculine singular ; וֹסִיף: Hifʿil verbal base} R:yosif  ⟹ OK
+    כִּ֣י = כִּי/CONJ [] "that, because, for, when" 0.71 +3alt(כִּי אם־/CONJ,כִּי עַל כֵּן/CONJ,כִי/NOUN) R:ki  ⟹ OK
+    הַמָּ֔וֶת = מָוֶת/NOUN [masculine singular, absolute, with the article] "death, death by violence, state of death" 0.7 +1alt(מָוֶת/NOUN) {הַ: the ; מָּ֔וֶת: from מָוֶת, stem} R:hamavet  ⟹ OK
+    יַפְרִ֖יד = פָּרַד/VERB [Hifʿil, imperfect (yiqtol), 3rd person masculine singular] "He will divide" 0.78 +1alt(הִפְרִיד/VERB) {יַ: imperfect preformative, third person masculine singular ; פְרִיד: Hifʿil verbal base} R:yaferid  ⟹ OK
+    בֵּינִ֥י = בֵּין/ADP [] "between" 0.71 +1alt(בֵּין/ADP) {בֵּינִ֥: from בֵּין, stem ; י: object of the preposition} R:beni  ⟹ OK
+    וּבֵינֵֽךְ = בֵּין/ADP [] "between" 0.71 {וּ: from וְ, and ; בֵינֵֽ: from בֵּין, stem ; ךְ: object of the preposition} R:uvenekh  ⟹ OK
+
+== as printed (points and cantillation): 228 words; blank 0 (0.0 %); unconfirmed guess 1 (0.4 %); made by rule (prefix cut, hand table) 0 (0.0 %); with other readings 148 (64.9 %); no transliteration 0 (0.0 %); card = source reading 219 (96.1 %); right lemma, other form 3 (1.3 %); WRONG LEMMA 3 (1.3 %); sentences read as {"he-bib":22}
+blank: 
+unconfirmed: מְזֻז֥וֹת→זָז
+
+===== points, no cantillation =====
+Gen.1.1: [he-bib]
+    בְּרֵאשִׁית = רֵאשִׁית/NOUN [feminine singular, construct] "beginning, chief, first" 0.74 +3alt(רֵאשִׁית/NOUN,בְּרֵאשִׁית/ADV,בְּרֵאשִׁית/PROPN) {בְּ: in, with, by ; רֵאשִׁית: stem} R:bereʾshit  ⟹ FORM (source: NOUN, feminine singular, absolute)
+    בָּרָא = בַּר/NOUN [masculine singular, determined (emphatic), with the article] "He created" 0.7 +3alt(בָּרָא/VERB,בָּרָא/VERB,נִבְרָא/VERB) {בָּרָ: from בַּר, stem ; א: suffix} R:bara  ⟹ LEMMA (source: בָּרָא VERB, Qal, perfect (qatal), 3rd person masculine singular; "shape, create, fashion")
+    אֱלֹהִים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    אֵת = אֵת/PART [object marker] "(marks the definite direct object)" 0.71 +3alt(אֵת/ADP,אֹת/NOUN,אֹת/NOUN) R:et  ⟹ OK
+    הַשָּׁמַיִם = שָׁמַיִם/NOUN [masculine plural, absolute, with the article] "heavens, sky" 0.71 +1alt(שמיים/NOUN) {הַ: the ; שָּׁמַיִם: from שָׁמַיִם, stem} R:hashamayim  ⟹ OK
+    וְאֵת = אֵת/PART [object marker] "(marks the definite direct object)" 0.71 +1alt(אֵת/ADP) {וְ: and ; אֵת: stem} R:veʾet  ⟹ OK
+    הָאָרֶץ = אֶרֶץ/NOUN [masculine or feminine singular, absolute, with the article] "earth, land, ground" 0.71 +2alt(אֶרֶץ/NOUN,הָאָרֶץ/PROPN) {הָ: from הַ, the ; אָרֶץ: from אֶרֶץ, stem} R:haʾarets  ⟹ OK
+Gen.1.2: [he-bib]
+    וְהָאָרֶץ = אֶרֶץ/NOUN [masculine or feminine singular, absolute, with the article] "earth, land, ground" 0.71 {וְ: and ; הָ: from הַ, the ; אָרֶץ: from אֶרֶץ, stem} R:vehaʾarets  ⟹ OK
+    הָיְתָה = הָיָה/VERB [Qal, perfect (qatal), 3rd person feminine singular] "She was" 0.71 +1alt(הָיָה/VERB) {הָיְתָ: Qal verbal base ; ה: perfect third person feminine singular ending} R:hayeta  ⟹ OK
+    תֹהוּ = תֹּהוּ/NOUN [masculine singular, absolute] "formlessness, confusion, unreality" 0.92 R:tohu  ⟹ OK
+    וָבֹהוּ = בֹּהוּ/NOUN [masculine singular, absolute] "emptiness" 0.92 {וָ: from וְ, and ; בֹהוּ: from בֹּהוּ, stem} R:vavohu  ⟹ OK
+    וְחֹשֶׁךְ = חֹשֶׁךְ/NOUN [masculine singular, absolute] "darkness, obscurity, secret place(s)" 0.92 {וְ: and ; חֹשֶׁךְ: stem} R:veḥoshekh  ⟹ OK
+    עַל = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(כִּי עַל כֵּן/ADP,עַל/NOUN,עַל/ADP) R:al  ⟹ OK
+    פְּנֵי = פָּנִים/NOUN [masculine or feminine plural, construct] "face; before, in front of" 0.71 +2alt(פָּנִים/NOUN,פָּן/NOUN) R:pene  ⟹ OK
+    תְהוֹם = תְּהוֹם/NOUN [masculine or feminine singular, absolute] "deep, sea, abyss" 0.92 R:tehom  ⟹ OK
+    וְרוּחַ = רוּחַ/NOUN [masculine or feminine singular, absolute] "wind, breath, spirit" 0.64 +1alt(רוּחַ/NOUN) {וְ: and ; רוּחַ: stem} R:veruḥa  ⟹ FORM (source: NOUN, masculine or feminine singular, construct)
+    אֱלֹהִים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    מְרַחֶפֶת = רָחַף/VERB [Piʿel, participle, feminine singular, absolute] "hovering" 0.71 +1alt(רִחֵף/VERB) {מְרַחֶפֶת: Piʿel verb} R:meraḥefet  ⟹ OK
+    עַל = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(כִּי עַל כֵּן/ADP,עַל/NOUN,עַל/ADP) R:al  ⟹ OK
+    פְּנֵי = פָּנִים/NOUN [masculine or feminine plural, construct] "face; before, in front of" 0.71 +2alt(פָּנִים/NOUN,פָּן/NOUN) R:pene  ⟹ OK
+    הַמָּיִם = מַיִם/NOUN [masculine plural, absolute, with the article] "water" 0.71 {הַ: the ; מָּיִם: from מַיִם, stem} R:hamayim  ⟹ OK
+Gen.1.3: [he-bib]
+    וַיֹּאמֶר = אָמַר/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he said" 0.71 +1alt(אָמַר/VERB) {וַ: and ; יֹּ: imperfect preformative, third person masculine singular ; אמֶר: Qal verbal base} R:vayoʾmer  ⟹ OK
+    אֱלֹהִים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    יְהִי = הָיָה/VERB [Qal, jussive, 3rd person masculine singular] "Let there be" 0.68 +2alt(הָיָה/VERB,הָיָה/VERB) {יְ: imperfect preformative, third person masculine singular ; הִי: Qal verbal base} R:yehi  ⟹ OK
+    אוֹר = אוֹר/NOUN [masculine or feminine singular, absolute] "light, morning light, dawn" 0.78 +3alt(אוֹר/NOUN,אוֹר/VERB,אוֹר/VERB) R:vor  ⟹ OK
+    וַיְהִי = הָיָה/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And there was" 0.71 +1alt(הָיָה/VERB) {וַ: and ; יְ: imperfect preformative, third person masculine singular ; הִי: Qal verbal base} R:vayehi  ⟹ OK
+    אוֹר = אוֹר/NOUN [masculine or feminine singular, absolute] "light, morning light, dawn" 0.78 +3alt(אוֹר/NOUN,אוֹר/VERB,אוֹר/VERB) R:vor  ⟹ OK
+Gen.1.4: [he-bib]
+    וַיַּרְא = רָאָה/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he saw" 0.71 +2alt(רָאָה/VERB,וַיַּרְא/VERB) {וַ: and ; יַּ: imperfect preformative, third person masculine singular ; רְא: Qal verbal base} R:vayare  ⟹ OK
+    אֱלֹהִים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    אֶת = אֵת/PART [object marker] "(marks the definite direct object)" 0.71 +1alt(אֵת/ADP) R:et  ⟹ OK
+    הָאוֹר = אוֹר/NOUN [masculine or feminine singular, absolute, with the article] "light, morning light, dawn" 0.87 +1alt(אוֹר/NOUN) {הָ: from הַ, the ; אוֹר: stem} R:haʾor  ⟹ OK
+    כִּי = כִּי/CONJ [] "that, because, for, when" 0.71 +3alt(כִּי אם־/CONJ,כִּי עַל כֵּן/CONJ,כִי/NOUN) R:ki  ⟹ OK
+    טוֹב = טוֹב/ADJ [masculine singular, absolute] "good, pleasant" 0.67 +3alt(טוֹב/VERB,טוֹב/PROPN,טוֹב/ADJ) R:tov  ⟹ OK
+    וַיַּבְדֵּל = בָּדַל/VERB [Hifʿil, wayyiqtol (narrative past), 3rd person masculine singular] "And he divided" 0.92 {וַ: and ; יַּ: imperfect preformative, third person masculine singular ; בְדֵּל: Hifʿil verbal base} R:vayavedel  ⟹ OK
+    אֱלֹהִים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    בֵּין = בֵּין/ADP [] "between" 0.71 +3alt(בֵּין/NOUN,בֵּין/ADP,בֵּין/ADP) R:ben  ⟹ OK
+    הָאוֹר = אוֹר/NOUN [masculine or feminine singular, absolute, with the article] "light, morning light, dawn" 0.87 +1alt(אוֹר/NOUN) {הָ: from הַ, the ; אוֹר: stem} R:haʾor  ⟹ OK
+    וּבֵין = בֵּין/ADP [] "between" 0.71 {וּ: from וְ, and ; בֵין: from בֵּין, stem} R:uven  ⟹ OK
+    הַחֹשֶׁךְ = חֹשֶׁךְ/NOUN [masculine singular, absolute, with the article] "darkness, obscurity, secret place(s)" 0.86 +1alt(חֹשֶׁךְ/NOUN) {הַ: the ; חֹשֶׁךְ: stem} R:haḥoshekh  ⟹ OK
+Gen.1.5: [he-bib]
+    וַיִּקְרָא = קָרָא/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he called" 0.71 +2alt(וַיִּקְרָא/PROPN,קָרָא/VERB) {וַ: and ; יִּ: imperfect preformative, third person masculine singular ; קְרָא: Qal verbal base} R:vayikera  ⟹ OK
+    אֱלֹהִים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    לָאוֹר = אוֹר/NOUN [masculine or feminine singular, absolute, with the article] "light, morning light, dawn" 0.92 {לָ: from לְ, preposition with the article fused into it ; אוֹר: stem} R:laʾor  ⟹ OK
+    יוֹם = יוֹם/NOUN [masculine singular, absolute] "day; time" 0.64 +3alt(יוֹם/NOUN,יוֹם/NOUN,יוֹם/NOUN) R:yom  ⟹ OK
+    וְלַחֹשֶׁךְ = חֹשֶׁךְ/NOUN [masculine singular, absolute, with the article] "darkness, obscurity, secret place(s)" 0.92 {וְ: and ; לַ: from לְ, preposition with the article fused into it ; חֹשֶׁךְ: stem} R:velaḥoshekh  ⟹ OK
+    קָרָא = קָרָא/VERB [Qal, perfect (qatal), 3rd person masculine singular] "He called" 0.71 +2alt(קָרָא/VERB,נִקְרָא/VERB) {קָרָא: Qal verb} R:kara  ⟹ OK
+    לָיְלָה = לַיִל/NOUN [masculine singular, absolute] "night" 0.71 R:layela  ⟹ OK
+    וַיְהִי = הָיָה/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he was" 0.71 +1alt(הָיָה/VERB) {וַ: and ; יְ: imperfect preformative, third person masculine singular ; הִי: Qal verbal base} R:vayehi  ⟹ OK
+    עֶרֶב = עֶרֶב/NOUN [masculine singular, absolute] "set, evening, between two evenings" 0.71 +1alt(עֶרֶב/NOUN) R:erev  ⟹ OK
+    וַיְהִי = הָיָה/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he was" 0.71 +1alt(הָיָה/VERB) {וַ: and ; יְ: imperfect preformative, third person masculine singular ; הִי: Qal verbal base} R:vayehi  ⟹ OK
+    בֹקֶר = בֹּקֶר/NOUN [masculine singular, absolute] "morning, morrow, next day" 0.71 R:voker  ⟹ OK
+    יוֹם = יוֹם/NOUN [masculine singular, absolute] "day; time" 0.64 +3alt(יוֹם/NOUN,יוֹם/NOUN,יוֹם/NOUN) R:yom  ⟹ OK
+    אֶחָד = אֶחָד/NUM [cardinal number, masculine singular, absolute] "one; each; a certain" 0.71 +2alt(אֶחָד/NUM,אֶחָד/PRON) R:eḥad  ⟹ OK
+Deut.6.4: [he-bib]
+    שְׁמַע = שָׁמַע/VERB [Qal, imperative, 2nd person masculine singular] "Hear!" 0.71 +3alt(שְׁמַע/VERB,שָׁמַע/VERB,שְׁמַע/PROPN) {שְׁמַע: Qal verb} R:shema
+    יִשְׂרָאֵל = יִשְׂרָאֵל/PROPN [] "Israel" 0.71 +2alt(יִשְׂרָאֵל/PROPN,יִשְׂרָאֵל/PROPN) R:yiseraʾel  ⟹ OK
+    יְהֹוָה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 +2alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN) R:yehova  ⟹ OK
+    אֱלֹהֵינוּ = אֱלֹהִים/NOUN [masculine plural, construct] "God; gods" 0.71 {אֱלֹהֵי: from אֱלֹהִים, stem ; נוּ: possessive suffix} R:elohenu  ⟹ OK
+    יְהֹוָה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 +2alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN) R:yehova  ⟹ OK
+    אֶחָד = אֶחָד/NUM [cardinal number, masculine singular, absolute] "one; each; a certain" 0.71 +2alt(אֶחָד/NUM,אֶחָד/PRON) R:eḥad
+Deut.6.5: [he-bib]
+    וְאָהַבְתָּ = אָהַב/VERB [Qal, weqatal (sequential perfect), 2nd person masculine singular] "And you will love" 0.71 {וְ: and ; אָהַבְ: Qal verbal base ; תָּ: perfect second person masculine singular ending} R:veʾahaveta  ⟹ OK
+    אֵת = אֵת/PART [object marker] "(marks the definite direct object)" 0.71 +3alt(אֵת/ADP,אֹת/NOUN,אֹת/NOUN) R:et  ⟹ OK
+    יְהֹוָה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 +2alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN) R:yehova  ⟹ OK
+    אֱלֹהֶיךָ = אֱלֹהִים/NOUN [masculine plural, construct] "God; gods" 0.71 {אֱלֹהֶי: from אֱלֹהִים, stem ; ךָ: possessive suffix} R:elohekha  ⟹ OK
+    בְּכׇל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.71 +1alt(כֹּל/NOUN) {בְּ: in, with, by ; כׇל: from כֹּל, stem} R:bekhal  ⟹ OK
+    לְבָבְךָ = לֵבָב/NOUN [masculine singular, construct] "inner man, mind, will" 0.71 +1alt(לֵב/NOUN) {לְבָבְ: from לֵבָב, stem ; ךָ: possessive suffix} R:levavekha  ⟹ OK
+    וּבְכׇל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.71 +1alt(כֹּל/NOUN) {וּ: from וְ, and ; בְ: from בְּ, in, with, by ; כׇל: from כֹּל, stem} R:uvekhal  ⟹ OK
+    נַפְשְׁךָ = נֶפֶשׁ/NOUN [masculine or feminine singular, construct] "soul, life, self, person, appetite" 0.71 +1alt(נֶפֶשׁ/NOUN) {נַפְשְׁ: from נֶפֶשׁ, stem ; ךָ: possessive suffix} R:nafeshekha  ⟹ OK
+    וּבְכׇל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.71 +1alt(כֹּל/NOUN) {וּ: from וְ, and ; בְ: from בְּ, in, with, by ; כׇל: from כֹּל, stem} R:uvekhal  ⟹ OK
+    מְאֹדֶךָ = מְאֹד/NOUN [masculine singular, construct] "muchness, force, abundance" 0.92 {מְאֹדֶ: from מְאֹד, stem ; ךָ: possessive suffix} R:meʾodekha  ⟹ OK
+Deut.6.6: [he-bib]
+    וְהָיוּ = הָיָה/VERB [Qal, weqatal (sequential perfect), 3rd person common gender plural] "And they will be" 0.68 +2alt(הָיָה/VERB,וְהָיוּ/VERB) {וְ: and ; הָי: Qal verbal base ; וּ: perfect third person common plural ending} R:vehayu  ⟹ OK
+    הַדְּבָרִים = דָּבָר/NOUN [masculine plural, absolute, with the article] "word, speech, thing, matter" 0.71 +1alt(דָּבָר/NOUN) {הַ: the ; דְּבָרִים: from דָּבָר, stem} R:hadevarim  ⟹ OK
+    הָאֵלֶּה = אֵלֶּה/PRON [demonstrative, common gender plural, with the article] "these" 0.71 {הָ: from הַ, the ; אֵלֶּה: stem} R:haʾele  ⟹ OK
+    אֲשֶׁר = אֲשֶׁר/SCONJ [relative] "who, which, that" 0.71 +2alt(כַּאֲשֶׁר/SCONJ,אֲשֶׁר/CONJ) R:asher  ⟹ OK
+    אָנֹכִי = אָנֹכִי/PRON [personal, 1st person common gender singular] "I" 0.71 +1alt(אָנֹכִי/PRON) R:anokhi  ⟹ OK
+    מְצַוְּךָ = צָוָה/VERB [Piʿel, participle, masculine singular, construct] "commanding" 0.71 {מְצַוְּ: Piʿel verb ; ךָ: object suffix} R:metsavekha  ⟹ OK
+    הַיּוֹם = יוֹם/NOUN [masculine singular, absolute, with the article] "day; time" 0.71 +2alt(יוֹם/NOUN,הַיּוֹם/ADV) {הַ: the ; יּוֹם: from יוֹם, stem} R:hayom  ⟹ OK
+    עַל = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(כִּי עַל כֵּן/ADP,עַל/NOUN,עַל/ADP) R:al  ⟹ OK
+    לְבָבֶךָ = לֵבָב/NOUN [masculine singular, construct] "inner man, mind, will" 0.71 {לְבָבֶ: from לֵבָב, stem ; ךָ: possessive suffix} R:levavekha  ⟹ OK
+Deut.6.7: [he-bib]
+    וְשִׁנַּנְתָּם = שָׁנַן/VERB [Piʿel, weqatal (sequential perfect), 2nd person masculine singular] "And you will whet them" 0.92 {וְ: and ; שִׁנַּנְ: Piʿel verbal base ; תָּ: perfect second person masculine singular ending ; ם: object suffix} R:veshinanetam  ⟹ OK
+    לְבָנֶיךָ = בֵּן/NOUN [masculine plural, construct] "son; child; member of a class" 0.71 {לְ: to, for ; בָנֶי: from בֵּן, stem ; ךָ: possessive suffix} R:levanekha  ⟹ OK
+    וְדִבַּרְתָּ = דָבַר/VERB [Piʿel, weqatal (sequential perfect), 2nd person masculine singular] "And you will speak" 0.68 +2alt(דָבַר/VERB,וְדִבַּרְתָּ/VERB) {וְ: and ; דִבַּרְ: Piʿel verbal base ; תָּ: perfect second person masculine singular ending} R:vedibareta  ⟹ OK
+    בָּם = בְּ/ADP [] "in, with, by" 0.71 +2alt(בְּ־/ADP,ב/ADP) {בָּ: from בְּ, stem ; ם: object of the preposition} R:bam  ⟹ OK
+    בְּשִׁבְתְּךָ = יָשַׁב/VERB [Qal, infinitive construct] "to sit" 0.71 {בְּ: in, with, by ; שִׁבְתְּ: Qal verb ; ךָ: object suffix} R:beshivetekha  ⟹ OK
+    בְּבֵיתֶךָ = בַּיִת/NOUN [masculine singular, construct] "house, household" 0.71 {בְּ: in, with, by ; בֵיתֶ: from בַּיִת, stem ; ךָ: possessive suffix} R:bevetekha  ⟹ OK
+    וּבְלֶכְתְּךָ = יָלַךְ/VERB [Qal, infinitive construct] "and to go" 0.92 {וּ: and ; בְ: in, with, by ; לֶכְתְּ: Qal verb ; ךָ: object suffix} R:uvelekhetekha  ⟹ OK
+    בַדֶּרֶךְ = דֶּרֶךְ/NOUN [masculine or feminine singular, absolute, with the article] "way, road; journey; manner" 0.71 {בַ: from בְּ, preposition with the article fused into it ; דֶּרֶךְ: stem} R:vaderekh  ⟹ OK
+    וּבְשׇׁכְבְּךָ = שָׁכַב/VERB [Qal, infinitive construct] "and to lie down" 0.92 {וּ: and ; בְ: in, with, by ; שָׁכְבְּ: Qal verb ; ךָ: object suffix} R:uveshakhebekha  ⟹ OK
+    וּבְקוּמֶךָ = קוּם/VERB [Qal, infinitive construct] "and to arise" 0.92 {וּ: and ; בְ: in, with, by ; קוּמֶ: Qal verb ; ךָ: object suffix} R:uvekumekha  ⟹ OK
+Deut.6.8: [he-bib]
+    וּקְשַׁרְתָּם = קָשַׁר/VERB [Qal, weqatal (sequential perfect), 2nd person masculine singular] "And you will bind them" 0.92 {וּ: and ; קְשַׁרְ: Qal verbal base ; תָּ: perfect second person masculine singular ending ; ם: object suffix} R:ukesharetam  ⟹ OK
+    לְאוֹת = אוֹת/NOUN [masculine or feminine singular, absolute] "sign, pledge, token" 0.83 +1alt(אוֹת/NOUN) {לְ: to, for ; אוֹת: stem} R:leʾot  ⟹ OK
+    עַל = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(כִּי עַל כֵּן/ADP,עַל/NOUN,עַל/ADP) R:al  ⟹ OK
+    יָדֶךָ = יָד/NOUN [masculine or feminine singular, construct] "hand; power; side" 0.71 +1alt(יָד/NOUN) {יָדֶ: from יָד, stem ; ךָ: possessive suffix} R:yadekha  ⟹ OK
+    וְהָיוּ = הָיָה/VERB [Qal, weqatal (sequential perfect), 3rd person common gender plural] "And they will be" 0.68 +2alt(הָיָה/VERB,וְהָיוּ/VERB) {וְ: and ; הָי: Qal verbal base ; וּ: perfect third person common plural ending} R:vehayu  ⟹ OK
+    לְטֹטָפֹת = טוֹפָפָה/NOUN [feminine plural, absolute] "bands, frontlet-bands, between the eyes" 0.92 {לְ: to, for ; טֹטָפֹת: from טוֹפָפָה, stem} R:letotafot  ⟹ OK
+    בֵּין = בֵּין/ADP [] "between" 0.71 +3alt(בֵּין/NOUN,בֵּין/ADP,בֵּין/ADP) R:ben  ⟹ OK
+    עֵינֶיךָ = עַיִן/NOUN [masculine or feminine dual, construct] "eye; spring" 0.71 +1alt(עַיִן/NOUN) {עֵינֶי: from עַיִן, stem ; ךָ: possessive suffix} R:enekha  ⟹ OK
+Deut.6.9: [he-bib]
+    וּכְתַבְתָּם = כָּתַב/VERB [Qal, weqatal (sequential perfect), 2nd person masculine singular] "And you will write them" 0.92 {וּ: and ; כְתַבְ: Qal verbal base ; תָּ: perfect second person masculine singular ending ; ם: object suffix} R:ukhetavetam  ⟹ OK
+    עַל = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(כִּי עַל כֵּן/ADP,עַל/NOUN,עַל/ADP) R:al  ⟹ OK
+    מְזֻזוֹת = זָז/VERB [present, feminine plural] "—" 0.35 UNCONF rule {מ: from מִן, from ; ְזֻזוֹת: from זָז, stem} R:mezuzot
+    בֵּיתֶךָ = בַּיִת/NOUN [masculine singular, construct] "house, household" 0.71 {בֵּיתֶ: from בַּיִת, stem ; ךָ: possessive suffix} R:betekha  ⟹ OK
+    וּבִשְׁעָרֶיךָ = שַׁעַר/NOUN [masculine plural, construct] "gate" 0.92 {וּ: from וְ, and ; בִ: from בְּ, in, with, by ; שְׁעָרֶי: from שַׁעַר, stem ; ךָ: possessive suffix} R:uvisheʿarekha  ⟹ OK
+Ps.23.1: [he-bib]
+    מִזְמוֹר = מִזְמוֹר/NOUN [masculine singular, absolute] "melody" 0.91 +2alt(מִזְמוֹר/NOUN,מִזְמוֹר/NOUN) R:mizemor  ⟹ OK
+    לְדָוִד = דָּוִד/PROPN [] "David" 0.71 {לְ: to, for ; דָוִד: from דָּוִד, stem} R:ledavid  ⟹ OK
+    יְהֹוָה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 +2alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN) R:yehova  ⟹ OK
+    רֹעִי = רֹעִי/VERB [Qal, participle, masculine singular, construct] "pasturing" 0.68 +3alt(רָעָה/VERB,רֹעֶה/NOUN,רֹעִי/PROPN) {רֹעִ: Qal verb ; י: object suffix} R:roʿi  ⟹ LEMMA (source: רָעָה VERB, Qal, participle, masculine singular, construct; "to pasture, tend, shepherd; to")
+    לֹא = לֹא/PART [negative] "not, no" 0.71 +3alt(לֹא רֻחָמָה/PART,לְ/ADP,לוּא/PART) R:lo  ⟹ OK
+    אֶחְסָר = חָסֵר/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I shall not lack" 0.92 {אֶ: imperfect preformative, first person common singular ; חְסָר: Qal verbal base} R:eḥesar  ⟹ OK
+Ps.23.2: [he-bib]
+    בִּנְאוֹת = נָאָה/NOUN [feminine plural, construct] "pasture, meadow" 0.92 {בִּ: from בְּ, in, with, by ; נְאוֹת: from נָאָה, stem} R:bineʾot  ⟹ OK
+    דֶּשֶׁא = דֶּשֶׁא/NOUN [masculine singular, absolute] "grass" 0.84 +2alt(דֶּשֶׁא/NOUN,דֶּשֶׁא/NOUN) R:deshe  ⟹ OK
+    יַרְבִּיצֵנִי = רָבַץ/VERB [Hifʿil, imperfect (yiqtol), 3rd person masculine singular] "He will stretch me out" 0.92 {יַ: imperfect preformative, third person masculine singular ; רְבִּיצֵ: Hifʿil verbal base ; נִי: object suffix} R:yarebitseni  ⟹ OK
+    עַל = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(כִּי עַל כֵּן/ADP,עַל/NOUN,עַל/ADP) R:al  ⟹ OK
+    מֵי = מַיִם/NOUN [masculine plural, construct] "water" 0.71 +2alt(מֵי זָהָב/PROPN,מַיִם/NOUN) R:me  ⟹ OK
+    מְנֻחוֹת = מְנוּחָה/NOUN [masculine or feminine plural, absolute] "resting-place, rest" 0.92 R:menuḥot  ⟹ OK
+    יְנַהֲלֵנִי = נָהַל/VERB [Piʿel, imperfect (yiqtol), 3rd person masculine singular] "He will lead me" 0.92 {יְ: imperfect preformative, third person masculine singular ; נַהֲלֵ: Piʿel verbal base ; נִי: object suffix} R:yenahaleni  ⟹ OK
+Ps.23.3: [he-bib]
+    נַפְשִׁי = נֶפֶשׁ/NOUN [masculine or feminine singular, construct] "soul, life, self, person, appetite" 0.71 +2alt(נֶפֶשׁ/NOUN,נַפְשִׁי/ADJ) {נַפְשִׁ: from נֶפֶשׁ, stem ; י: possessive suffix} R:nafeshi  ⟹ OK
+    יְשׁוֹבֵב = שׁוּב/VERB [Polel, imperfect (yiqtol), 3rd person masculine singular] "He will restore" 0.92 {יְ: imperfect preformative, third person masculine singular ; שׁוֹבֵב: Polel verbal base} R:yeshovev  ⟹ OK
+    יַנְחֵנִי = נָחָה/VERB [Hifʿil, imperfect (yiqtol), 3rd person masculine singular] "He will lead me" 0.92 {יַ: imperfect preformative, third person masculine singular ; נְחֵ: Hifʿil verbal base ; נִי: object suffix} R:yaneḥeni  ⟹ OK
+    בְמַעְגְּלֵי = מַעְגָּל/NOUN [masculine plural, construct] "entrenchment, track" 0.92 {בְ: from בְּ, in, with, by ; מַעְגְּלֵי: from מַעְגָּל, stem} R:vemaʿegele  ⟹ OK
+    צֶדֶק = צֶדֶק/NOUN [masculine singular, absolute] "rightness, righteousness, what is right" 0.87 +3alt(צֶדֶק/NOUN,מַלְכִּי־צֶדֶק/PROPN,אֲדֹנִי־צֶדֶק/PROPN) R:tsedek  ⟹ OK
+    לְמַעַן = מַעַן/ADP [] "purpose, intent, for the sake of" 0.71 +1alt(לְמַעַן/ADP) R:lemaʿan  ⟹ OK
+    שְׁמוֹ = שֵׁם/NOUN [masculine singular, construct] "name; reputation" 0.71 +2alt(שֵׁם/NOUN,שֵׁם/NOUN) {שְׁמ: from שֵׁם, stem ; וֹ: possessive suffix} R:shemo  ⟹ OK
+Ps.23.4: [he-bib]
+    גַּם = גַּם/PART [affirmative particle] "also, even, moreover" 0.71 +1alt(גַּם/ADV) R:gam  ⟹ OK
+    כִּי = כִּי/CONJ [] "that, because, for, when" 0.71 +3alt(כִּי אם־/CONJ,כִּי עַל כֵּן/CONJ,כִי/NOUN) R:ki  ⟹ OK
+    אֵלֵךְ = יָלַךְ/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I will go" 0.7 +3alt(הָלַךְ/VERB,אֵל/NOUN,הָלַךְ/VERB) {אֵ: imperfect preformative, first person common singular ; לֵךְ: Qal verbal base} R:elekh  ⟹ OK
+    בְּגֵיא = גַּיְא/NOUN [masculine or feminine singular, construct] "valley" 0.76 +1alt(גַּיְא/PROPN) {בְּ: in, with, by ; גֵיא: from גַּיְא, stem} R:bege  ⟹ OK
+    צַלְמָוֶת = צַלְמָוֶת/NOUN [masculine singular, absolute] "death-shadow, deep shadow" 0.88 +1alt(צַלְמָוֶת/NOUN) R:tsalemavet  ⟹ OK
+    לֹא = לֹא/PART [negative] "not, no" 0.71 +3alt(לֹא רֻחָמָה/PART,לְ/ADP,לוּא/PART) R:lo  ⟹ OK
+    אִירָא = יָרֵא/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I will fear" 0.7 +1alt(יָרֵא/VERB) {אִ: imperfect preformative, first person common singular ; ירָא: Qal verbal base} R:ira  ⟹ OK
+    רָע = רַע/ADJ [masculine singular, absolute] "evil, distress, misery" 0.66 +2alt(רַע/VERB,רָעַע/ADJ) R:ra  ⟹ OK
+    כִּי = כִּי/CONJ [] "that, because, for, when" 0.71 +3alt(כִּי אם־/CONJ,כִּי עַל כֵּן/CONJ,כִי/NOUN) R:ki  ⟹ OK
+    אַתָּה = אַתָּה/PRON [personal, 2nd person masculine singular] "you (masculine singular)" 0.71 +2alt(אַתְּ/PRON,אַתָּה/PRON) R:ata  ⟹ OK
+    עִמָּדִי = עִמָּד/ADP [] "with, aid, against" 0.71 +1alt(עִם/ADP) {עִמָּדִ: from עִמָּד, stem ; י: object of the preposition} R:imadi  ⟹ OK
+    שִׁבְטְךָ = שֵׁבֶט/NOUN [masculine singular, construct] "rod, staff, club" 0.92 {שִׁבְטְ: from שֵׁבֶט, stem ; ךָ: possessive suffix} R:shivetekha  ⟹ OK
+    וּמִשְׁעַנְתֶּךָ = מִשְׁעֶ֫נֶת/NOUN [feminine singular, construct] "staff" 0.92 {וּ: from וְ, and ; מִשְׁעַנְתֶּ: from מִשְׁעֶ֫נֶת, stem ; ךָ: possessive suffix} R:umisheʿanetekha  ⟹ OK
+    הֵמָּה = הֵם/PRON [personal, 3rd person masculine plural] "they, those" 0.71 +1alt(הֵמָּה/PRON) R:hema  ⟹ OK
+    יְנַחֲמֻנִי = נָחַם/VERB [Piʿel, imperfect (yiqtol), 3rd person masculine plural] "They will console me" 0.92 {יְ: imperfect preformative, third person masculine plural ; נַחֲמֻ: Piʿel verbal base ; נִי: object suffix} R:yenaḥamuni  ⟹ OK
+Ps.23.5: [he-bib]
+    תַּעֲרֹךְ = עָרַךְ/VERB [Qal, imperfect (yiqtol), 2nd person masculine singular] "You will arrange" 0.64 +2alt(עָרַךְ/VERB,עָרַךְ/VERB) {תַּ: imperfect preformative, second person masculine singular ; עֲרֹךְ: Qal verbal base} R:taʿarokh  ⟹ OK
+    לְפָנַי = פָּנִים/NOUN [masculine or feminine plural, construct] "face; before, in front of" 0.71 +1alt(לִפְנֵי/ADP) {לְ: to, for ; פָנַ: from פָּנִים, stem ; י: possessive suffix} R:lefanay  ⟹ OK
+    שֻׁלְחָן = שֻׁלְחָן/NOUN [masculine singular, absolute] "table" 0.8 +2alt(שֻׁלְחָן/NOUN,שֻׁלְחָן/NOUN) R:shuleḥan  ⟹ OK
+    נֶגֶד = נֶגֶד/ADP [] "what is conspicuous, in front, in front of" 0.71 +2alt(נֶגֶד/ADP,נֶגֶד/ADP) R:neged  ⟹ OK
+    צֹרְרָי = צָרַר/VERB [Qal, participle, masculine plural, construct] "vexing" 0.92 {צֹרְרָ: Qal verb ; י: object suffix} R:tsoreray  ⟹ OK
+    דִּשַּׁנְתָּ = דָּשֵׁן/VERB [Piʿel, perfect (qatal), 2nd person masculine singular] "You grew fat" 0.92 {דִּשַּׁנְ: Piʿel verbal base ; תָּ: perfect second person masculine singular ending} R:dishaneta  ⟹ OK
+    בַשֶּׁמֶן = שֶׁמֶן/NOUN [masculine singular, absolute, with the article] "fat, oil" 0.71 {בַ: from בְּ, preposition with the article fused into it ; שֶּׁמֶן: from שֶׁמֶן, stem} R:vashemen  ⟹ OK
+    רֹאשִׁי = רֹאשׁ/NOUN [masculine singular, construct] "head; top; chief" 0.71 +1alt(רֹאשׁ/NOUN) {רֹאשִׁ: from רֹאשׁ, stem ; י: possessive suffix} R:roʾshi  ⟹ OK
+    כּוֹסִי = כּוֹס/NOUN [feminine singular, construct] "cup" 0.71 +1alt(כּוֹס/NOUN) {כּוֹסִ: from כּוֹס, stem ; י: possessive suffix} R:kosi  ⟹ OK
+    רְוָיָה = רְוָיָה/NOUN [feminine singular, absolute] "saturation" 0.71 +1alt(רְוָיָה/NOUN) R:revaya  ⟹ OK
+Ps.23.6: [he-bib]
+    אַךְ = אַךְ/PART [affirmative particle] "surely" 0.71 +2alt(אַךְ/ADV,אַךְ/CONJ) R:akh  ⟹ OK
+    טוֹב = טוֹב/ADJ [masculine singular, absolute] "good, pleasant" 0.67 +3alt(טוֹב/VERB,טוֹב/PROPN,טוֹב/ADJ) R:tov  ⟹ FORM (source: ADJ, masculine singular, absolute; not offered at all)
+    וָחֶסֶד = חֵסֵד/NOUN [masculine singular, absolute] "loyal love, kindness, faithfulness" 0.71 {וָ: from וְ, and ; חֶסֶד: from חֵסֵד, stem} R:vaḥesed  ⟹ OK
+    יִרְדְּפוּנִי = רָדַף/VERB [Piʿel, imperfect (yiqtol), 3rd person masculine plural] "They will pursue me" 0.92 {יִ: imperfect preformative, third person masculine plural ; רְדְּפ: Piʿel verbal base ; וּ: masculine plural ending ; נִי: object suffix} R:yiredefuni  ⟹ OK
+    כׇּל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.71 +3alt(כֹּל/NOUN,כׇּל־חֹזֶה/PROPN,כֹּל/ADP) R:kal  ⟹ OK
+    יְמֵי = יוֹם/NOUN [masculine plural, construct] "day; time" 0.71 +1alt(יוֹם/NOUN) R:yeme  ⟹ OK
+    חַיָּי = חַיִּים/NOUN [masculine plural, construct] "life, sustenance, maintenance" 0.71 {חַיָּ: from חַיִּים, stem ; י: possessive suffix} R:ḥayay  ⟹ OK
+    וְשַׁבְתִּי = שׁוּב/VERB [Qal, weqatal (sequential perfect), 1st person common gender singular] "And I will return" 0.64 +2alt(שׁוּב/VERB,יָשַׁב/VERB) {וְ: and ; שַׁבְ: Qal verbal base ; תִּי: perfect first person common singular ending} R:veshaveti  ⟹ LEMMA (source: יָשַׁב VERB, Qal, weqatal (sequential perfect), 1st person common gender singular; "to sit, dwell, remain")
+    בְּבֵית = בַּיִת/NOUN [masculine singular, construct] "house, household" 0.68 +3alt(בֵּית־אֵל/PROPN,בֵּית שֶׁמֶשׁ/PROPN,בֵּית לֶחֶם/PROPN) {בְּ: in, with, by ; בֵית: from בַּיִת, stem} R:bevet  ⟹ OK
+    יְהֹוָה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 +2alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN) R:yehova  ⟹ OK
+    לְאֹרֶךְ = אֹרֶךְ/NOUN [masculine singular, construct] "length, forbearance, self-restraint" 0.92 {לְ: to, for ; אֹרֶךְ: stem} R:leʾorekh  ⟹ OK
+    יָמִים = יוֹם/NOUN [masculine plural, absolute] "day; time" 0.71 +1alt(יוֹם/NOUN) R:yamim  ⟹ OK
+Isa.53.4: [he-bib]
+    אָכֵן = אָכֵן/ADV [] "surely, truly, but indeed" 0.9 +1alt(אָכֵן/ADV) R:akhen  ⟹ OK
+    חֳלָיֵנוּ = חֳלִי/NOUN [masculine plural, construct] "sickness" 0.92 {חֳלָיֵ: from חֳלִי, stem ; נוּ: possessive suffix} R:ḥolayenu  ⟹ OK
+    הוּא = הוּא/PRON [personal, 3rd person masculine singular] "he, it; that" 0.71 +3alt(הוּא/PRON,הוּא/PRON,הוּא/PART) R:hu  ⟹ OK
+    נָשָׂא = נָשָׂא/VERB [Qal, perfect (qatal), 3rd person masculine singular] "He lifted" 0.71 +2alt(נָשָׂא/VERB,נִשָּׂא/VERB) {נָשָׂא: Qal verb} R:nasa  ⟹ OK
+    וּמַכְאֹבֵינוּ = מַכְאֹב/NOUN [masculine plural, construct] "pain" 0.92 {וּ: from וְ, and ; מַכְאֹבֵי: from מַכְאֹב, stem ; נוּ: possessive suffix} R:umakheʾovenu  ⟹ OK
+    סְבָלָם = סָבַל/VERB [Qal, perfect (qatal), 3rd person masculine singular] "He bore them a heavy load" 0.92 {סְבָלָ: Qal verb ; ם: object suffix} R:sevalam  ⟹ OK
+    וַאֲנַחְנוּ = אֲנַחְנוּ/PRON [personal, 1st person common gender plural] "we" 0.71 {וַ: from וְ, and ; אֲנַחְנוּ: stem} R:vaʾanaḥenu  ⟹ OK
+    חֲשַׁבְנֻהוּ = חָשַׁב/VERB [Qal, perfect (qatal), 1st person common gender plural] "We thought him" 0.92 {חֲשַׁבְנֻ: Qal verb ; הוּ: object suffix} R:ḥashavenuhu  ⟹ OK
+    נָגוּעַ = נָגַע/VERB [Qal, passive participle, masculine singular, absolute] "touched" 0.78 +1alt(נָגַע/VERB) {נָגוּעַ: Qal verb} R:naguʿa  ⟹ OK
+    מֻכֵּה = נָכָה/VERB [Hofʿal, passive participle, masculine singular, construct] "struck" 0.92 {מֻכֵּה: Hofʿal verb} R:muke  ⟹ OK
+    אֱלֹהִים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.71 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:elohim  ⟹ OK
+    וּמְעֻנֶּה = עָנָה/VERB [Puʿal, passive participle, masculine singular, absolute] "and bowed down" 0.92 {וּ: and ; מְעֻנֶּה: Puʿal verb} R:umeʿune  ⟹ OK
+Isa.53.5: [he-bib]
+    וְהוּא = הוּא/PRON [personal, 3rd person masculine singular] "he, it; that" 0.71 +1alt(הוּא/PRON) {וְ: and ; הוּא: stem} R:vehu  ⟹ OK
+    מְחֹלָל = חָלַל/VERB [Polal, passive participle, masculine singular, absolute] "bored" 0.92 {מְחֹלָל: Polal verb} R:meḥolal  ⟹ OK
+    מִפְּשָׁעֵנוּ = פֶּשַׁע/NOUN [masculine plural, construct] "transgression" 0.92 {מִ: from מִן, from ; פְּשָׁעֵ: from פֶּשַׁע, stem ; נוּ: possessive suffix} R:mipeshaʿenu  ⟹ OK
+    מְדֻכָּא = דָּכָא/VERB [Puʿal, passive participle, masculine singular, absolute] "crushed" 0.71 +1alt(דֻּכָּא/VERB) {מְדֻכָּא: Puʿal verb} R:meduka  ⟹ OK
+    מֵעֲוֺנֹתֵינוּ = עָוֺן/NOUN [masculine or feminine plural, construct] "iniquity, guilt, punishment of iniquity" 0.92 {מֵ: from מִן, from ; עֲוֺנֹתֵי: from עָוֺן, stem ; נוּ: possessive suffix} R:meʿavonotenu  ⟹ OK
+    מוּסַר = מוּסָר/NOUN [masculine singular, construct] "discipline, chastening, correction" 0.87 +1alt(מוּסָר/NOUN) R:musar  ⟹ OK
+    שְׁלוֹמֵנוּ = שָׁלוֹם/NOUN [masculine singular, construct] "peace, well-being, completeness" 0.71 +1alt(שָׁלוֹם/NOUN) {שְׁלוֹמֵ: from שָׁלוֹם, stem ; נוּ: possessive suffix} R:shelomenu  ⟹ OK
+    עָלָיו = עַל/ADP [] "on, upon, over, against, concerning" 0.71 +3alt(עַל/ADP,עלה with third-person masculine singular personal pronoun as possessor/NOUN,עַל/ADP) {עָלָי: from עַל, stem ; ו: object of the preposition} R:alayv  ⟹ OK
+    וּבַחֲבֻרָתוֹ = חַבּוּרָה/NOUN [feminine singular, construct] "stripe, blow" 0.92 {וּ: from וְ, and ; בַ: from בְּ, in, with, by ; חֲבֻרָת: from חַבּוּרָה, stem ; וֹ: possessive suffix} R:uvaḥavurato  ⟹ OK
+    נִרְפָּא = רָפָא/VERB [Nifʿal, perfect (qatal), 3rd person masculine singular] "He was healed" 0.84 +1alt(רָפָא/VERB) {נִרְפָּא: Nifʿal verb} R:nirepa  ⟹ OK
+    לָנוּ = לְ/ADP [] "to, for" 0.71 +3alt(לְ־/ADP,ל/ADP,לָן/VERB) {לָ: from לְ, stem ; נוּ: object of the preposition} R:lanu  ⟹ OK
+Isa.53.6: [he-bib]
+    כֻּלָּנוּ = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.7 +2alt(כֹּל/NOUN,כל/PRON) {כֻּלָּ: from כֹּל, stem ; נוּ: possessive suffix} R:kulanu  ⟹ OK
+    כַּצֹּאן = צֹאן/NOUN [masculine or feminine singular, absolute, with the article] "small cattle, sheep and goats, flock" 0.71 {כַּ: from כְּ, preposition with the article fused into it ; צֹּאן: from צֹאן, stem} R:katsoʾn  ⟹ OK
+    תָּעִינוּ = תָּעָה/VERB [Qal, perfect (qatal), 1st person common gender plural] "We erred" 0.71 +1alt(תָּעָה/VERB) {תָּעִי: Qal verbal base ; נוּ: perfect first person common plural ending} R:taʿinu  ⟹ OK
+    אִישׁ = אִישׁ/NOUN [masculine singular, absolute] "man, husband; each" 0.67 +3alt(אִישׁ/NOUN,אִישׁ־בֹּשֶׁת/PROPN,אִישׁ־בֹּשֶׁת/NOUN) R:ish  ⟹ OK
+    לְדַרְכּוֹ = דֶּרֶךְ/NOUN [masculine or feminine singular, construct] "way, road; journey; manner" 0.71 {לְ: to, for ; דַרְכּ: from דֶּרֶךְ, stem ; וֹ: possessive suffix} R:ledareko  ⟹ OK
+    פָּנִינוּ = פָּנָה/VERB [Qal, perfect (qatal), 1st person common gender plural] "We turned" 0.71 +1alt(פָּנָה/VERB) {פָּנִי: Qal verbal base ; נוּ: perfect first person common plural ending} R:paninu  ⟹ OK
+    וַיהֹוָה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 {וַ: from וְ, and ; יהֹוָה: from יְהֹוָה, stem} R:vayhova  ⟹ OK
+    הִפְגִּיעַ = פָּגַע/VERB [Hifʿil, perfect (qatal), 3rd person masculine singular] "He met" 0.92 {הִפְגִּיעַ: Hifʿil verb} R:hifegiʿa  ⟹ OK
+    בּוֹ = בְּ/ADP [] "in, with, by" 0.71 +3alt(שָׂמַח/PRON,בְּ־/ADP,ב/ADP) {בּ: from בְּ, stem ; וֹ: object of the preposition} R:bo  ⟹ OK
+    אֵת = אֵת/PART [object marker] "(marks the definite direct object)" 0.71 +3alt(אֵת/ADP,אֹת/NOUN,אֹת/NOUN) R:et  ⟹ OK
+    עֲוֺן = עָוֺן/NOUN [masculine or feminine singular, construct] "iniquity, guilt, punishment of iniquity" 0.71 +1alt(עָווֹן/NOUN) R:avon  ⟹ OK
+    כֻּלָּנוּ = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.7 +2alt(כֹּל/NOUN,כל/PRON) {כֻּלָּ: from כֹּל, stem ; נוּ: possessive suffix} R:kulanu  ⟹ OK
+Ruth.1.16: [he-bib]
+    וַתֹּאמֶר = אָמַר/VERB [Qal, wayyiqtol (narrative past), 3rd person feminine singular] "And she said" 0.7 +2alt(אָמַר/VERB,וַתֹּאמֶר/VERB) {וַ: and ; תֹּ: imperfect preformative, third person feminine singular ; אמֶר: Qal verbal base} R:vatoʾmer  ⟹ OK
+    רוּת = רוּת/PROPN [] "Ruth" 0.85 +2alt(רוּת/PROPN,רוּת/INTJ) R:rut  ⟹ OK
+    אַל = אַל/PART [negative] "do not (with a wish or command)" 0.71 +3alt(אַל תַּשְׁחֵת/PART,אַל/ADP,לֹא/PART) R:al  ⟹ OK
+    תִּפְגְּעִי = פָּגַע/VERB [Qal, jussive, 2nd person feminine singular] "May you meet" 0.71 +1alt(פָּגַע/VERB) {תִּ: imperfect preformative, second person feminine singular ; פְגְּעִ: Qal verbal base ; י: second person feminine singular ending} R:tifegeʿi  ⟹ OK
+    בִי = בְּ/ADP [] "in, with, by" 0.71 {בִ: from בְּ, stem ; י: object of the preposition} R:vi  ⟹ OK
+    לְעׇזְבֵךְ = עָזַב/VERB [Qal, infinitive construct] "to leave" 0.92 {לְ: to, for ; עָזְבֵ: Qal verb ; ךְ: object suffix} R:leʿazevekh  ⟹ OK
+    לָשׁוּב = שׁוּב/VERB [Qal, infinitive construct] "to return" 0.71 +1alt(לָשׁוּב/VERB) {לָ: to, for ; שׁוּב: Qal verb} R:lashuv  ⟹ OK
+    מֵאַחֲרָיִךְ = אַחַר/ADP [] "after, behind" 0.71 {מֵ: from מִן, from ; אַחֲרָיִ: from אַחַר, stem ; ךְ: object of the preposition} R:meʾaḥarayikh  ⟹ OK
+    כִּי = כִּי/CONJ [] "that, because, for, when" 0.71 +3alt(כִּי אם־/CONJ,כִּי עַל כֵּן/CONJ,כִי/NOUN) R:ki  ⟹ OK
+    אֶל = אֵל/ADP [] "to, toward, into" 0.71 +3alt(אֵל/PART,אֵת/ADP,אֶל/ADP) R:el  ⟹ OK
+    אֲשֶׁר = אֲשֶׁר/SCONJ [relative] "who, which, that" 0.71 +2alt(כַּאֲשֶׁר/SCONJ,אֲשֶׁר/CONJ) R:asher  ⟹ OK
+    תֵּלְכִי = יָלַךְ/VERB [Qal, imperfect (yiqtol), 2nd person feminine singular] "You will go" 0.71 +2alt(יָלַךְ/VERB,הָלַךְ/VERB) {תֵּ: imperfect preformative, second person feminine singular ; לְכִ: Qal verbal base ; י: second person feminine singular ending} R:telekhi  ⟹ OK
+    אֵלֵךְ = יָלַךְ/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I will go" 0.7 +3alt(הָלַךְ/VERB,אֵל/NOUN,הָלַךְ/VERB) {אֵ: imperfect preformative, first person common singular ; לֵךְ: Qal verbal base} R:elekh  ⟹ OK
+    וּבַאֲשֶׁר = בַאֲשֶׁר/SCONJ [relative] "who, which, that" 0.71 {וּ: from וְ, and ; בַ: from בְּ, in, with, by ; אֲשֶׁר: from בַאֲשֶׁר, stem} R:uvaʾasher  ⟹ OK
+    תָּלִינִי = לוּן/VERB [Qal, imperfect (yiqtol), 2nd person feminine singular] "You will lodge" 0.92 {תָּ: imperfect preformative, second person feminine singular ; לִינִ: Qal verbal base ; י: second person feminine singular ending} R:talini  ⟹ OK
+    אָלִין = לוּן/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I will lodge" 0.92 {אָ: imperfect preformative, first person common singular ; לִין: Qal verbal base} R:alin  ⟹ OK
+    עַמֵּךְ = עַם/NOUN [masculine singular, construct] "people, nation" 0.69 +1alt(עַם/NOUN) {עַמֵּ: from עַם, stem ; ךְ: possessive suffix} R:amekh  ⟹ OK
+    עַמִּי = עַם/NOUN [masculine singular, construct] "people, nation" 0.71 +3alt(בֶּן־עַמִּי/PROPN,לֹא עַמִּי/PROPN,עַם/PROPN) {עַמִּ: from עַם, stem ; י: possessive suffix} R:ami  ⟹ OK
+    וֵאלֹהַיִךְ = אֱלֹהִים/NOUN [masculine plural, construct] "God; gods" 0.71 {וֵ: from וְ, and ; אלֹהַיִ: from אֱלֹהִים, stem ; ךְ: possessive suffix} R:veʾlohayikh  ⟹ OK
+    אֱלֹהָי = אֱלֹהִים/NOUN [masculine plural, construct] "God; gods" 0.71 {אֱלֹהָ: from אֱלֹהִים, stem ; י: possessive suffix} R:elohay  ⟹ OK
+Ruth.1.17: [he-bib]
+    בַּאֲשֶׁר = בַאֲשֶׁר/SCONJ [relative] "who, which, that" 0.71 +1alt(בַּאֲשֶׁר/ADP) {בַּ: from בְּ, in, with, by ; אֲשֶׁר: from בַאֲשֶׁר, stem} R:baʾasher  ⟹ OK
+    תָּמוּתִי = מוּת/VERB [Qal, imperfect (yiqtol), 2nd person feminine singular] "You will die" 0.71 +1alt(מֵת/VERB) {תָּ: imperfect preformative, second person feminine singular ; מוּתִ: Qal verbal base ; י: second person feminine singular ending} R:tamuti  ⟹ OK
+    אָמוּת = מוּת/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I will die" 0.71 +1alt(מֵת/VERB) {אָ: imperfect preformative, first person common singular ; מוּת: Qal verbal base} R:amut  ⟹ OK
+    וְשָׁם = שָׁם/ADV [] "there" 0.71 {וְ: and ; שָׁם: stem} R:vesham  ⟹ OK
+    אֶקָּבֵר = קָבַר/VERB [Nifʿal, imperfect (yiqtol), 1st person common gender singular] "I will be buried" 0.92 {אֶ: imperfect preformative, first person common singular ; קָּבֵר: Nifʿal verbal base} R:ekaver  ⟹ OK
+    כֹּה = כֹּה/ADV [] "thus, so; here" 0.71 R:ko  ⟹ OK
+    יַעֲשֶׂה = עָשָׂה/VERB [Qal, imperfect (yiqtol), 3rd person masculine singular] "He will do" 0.69 +3alt(עָשָׂה/VERB,עָשָׂה/VERB,עָשָׂה/VERB) {יַ: imperfect preformative, third person masculine singular ; עֲשֶׂה: Qal verbal base} R:yaʿase  ⟹ OK
+    יְהֹוָה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.71 +2alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN) R:yehova  ⟹ OK
+    לִי = לְ/ADP [] "to, for" 0.71 +3alt(קָרָא/PRON,לְ/ADP,לְ־/ADP) {לִ: from לְ, stem ; י: object of the preposition} R:li  ⟹ OK
+    וְכֹה = כֹּה/ADV [] "thus, so; here" 0.71 {וְ: and ; כֹה: from כֹּה, stem} R:vekho  ⟹ OK
+    יוֹסִיף = יָסַף/VERB [Hifʿil, imperfect (yiqtol), 3rd person masculine singular] "He will add" 0.66 +2alt(יָסַף/VERB,הוֹסִיף/VERB) {י: imperfect preformative, third person masculine singular ; וֹסִיף: Hifʿil verbal base} R:yosif  ⟹ OK
+    כִּי = כִּי/CONJ [] "that, because, for, when" 0.71 +3alt(כִּי אם־/CONJ,כִּי עַל כֵּן/CONJ,כִי/NOUN) R:ki  ⟹ OK
+    הַמָּוֶת = מָוֶת/NOUN [masculine singular, absolute, with the article] "death, death by violence, state of death" 0.7 +1alt(מָוֶת/NOUN) {הַ: the ; מָּוֶת: from מָוֶת, stem} R:hamavet  ⟹ OK
+    יַפְרִיד = פָּרַד/VERB [Hifʿil, imperfect (yiqtol), 3rd person masculine singular] "He will divide" 0.78 +1alt(הִפְרִיד/VERB) {יַ: imperfect preformative, third person masculine singular ; פְרִיד: Hifʿil verbal base} R:yaferid  ⟹ OK
+    בֵּינִי = בֵּין/ADP [] "between" 0.71 +1alt(בֵּין/ADP) {בֵּינִ: from בֵּין, stem ; י: object of the preposition} R:beni  ⟹ OK
+    וּבֵינֵךְ = בֵּין/ADP [] "between" 0.71 {וּ: from וְ, and ; בֵינֵ: from בֵּין, stem ; ךְ: object of the preposition} R:uvenekh  ⟹ OK
+
+== points, no cantillation: 228 words; blank 0 (0.0 %); unconfirmed guess 1 (0.4 %); made by rule (prefix cut, hand table) 0 (0.0 %); with other readings 148 (64.9 %); no transliteration 0 (0.0 %); card = source reading 219 (96.1 %); right lemma, other form 3 (1.3 %); WRONG LEMMA 3 (1.3 %); sentences read as {"he-bib":22}
+blank: 
+unconfirmed: מְזֻזוֹת→זָז
+
+===== consonants only =====
+Gen.1.1: [he-mod]
+    בראשית = בְּרֵאשִׁית/ADV [] "at first, firstly, initially; in the beginni" 0.47 +3alt(בְּרֵאשִׁית/PROPN,רֵאשִׁית/NOUN,רֵאשִׁית/NOUN) R:—  ⟹ LEMMA (source: רֵאשִׁית NOUN, feminine singular, absolute; "beginning, chief, first")
+    ברא = נִבְרָא/VERB [] "He created" 0.4 +3alt(בַּר/NOUN,בָּרָא/VERB,בָּרָא/VERB) R:—  ⟹ LEMMA (source: בָּרָא VERB, Qal, perfect (qatal), 3rd person masculine singular; "shape, create, fashion")
+    אלהים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.46 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:—  ⟹ OK
+    את = אֵת/PART [object marker] "(marks the definite direct object)" 0.45 +3alt(אַתְּ/PRON,אֵת/ADP,אַתְּ/PRON) R:—  ⟹ OK
+    השמים = שָׁמַיִם/NOUN [masculine plural, absolute, with the article] "heavens, sky" 0.43 +1alt(שמיים/NOUN) {ה: from הַ, the ; שמים: from שָׁמַיִם, stem} R:—  ⟹ OK
+    ואת = אֵת/PART [object marker] "(marks the definite direct object)" 0.44 +3alt(אֵת/ADP,אַתְּ/PRON,אתִּי/PRON) {ו: from וְ, and ; את: from אֵת, stem} R:—  ⟹ OK
+    הארץ = אֶרֶץ/NOUN [masculine or feminine singular, absolute, with the article] "earth, land, ground" 0.46 +2alt(אֶרֶץ/NOUN,הָאָרֶץ/PROPN) {ה: from הַ, the ; ארץ: from אֶרֶץ, stem} R:—  ⟹ OK
+Gen.1.2: [he-mod]
+    והארץ = אֶרֶץ/NOUN [masculine or feminine singular, absolute, with the article] "earth, land, ground" 0.47 {ו: from וְ, and ; ה: from הַ, the ; ארץ: from אֶרֶץ, stem} R:—  ⟹ OK
+    היתה = הָיָה/VERB [Qal, perfect (qatal), 3rd person feminine singular] "She was" 0.46 +1alt(הָיָה/VERB) {היתה: Qal verb} R:—  ⟹ OK
+    תהו = תֹּהוּ/NOUN [] "defective spelling of תוהו" 0.45 +3alt(תָּהָה/VERB,תָּהָה/VERB,תֹּהוּ/NOUN) R:—  ⟹ LEMMA (source: תֹּהוּ NOUN, masculine singular, absolute; "formlessness, confusion, unrea")
+    ובהו = בֹּהוּ/NOUN [masculine singular, absolute] "emptiness" 0.6 {ו: from וְ, and ; בהו: from בֹּהוּ, stem} R:—  ⟹ OK
+    וחשך = חֹשֶׁךְ/NOUN [masculine singular, absolute] "darkness, obscurity, secret place(s)" 0.51 +1alt(חָשַׂךְ/VERB) {ו: from וְ, and ; חשך: from חֹשֶׁךְ, stem} R:—  ⟹ OK
+    על = עַל/ADP [] "on, upon, over, against, concerning" 0.46 +3alt(עֹל/NOUN,עַל/ADP,עֹל/NOUN) R:—  ⟹ OK
+    פני = פָּנָה/VERB [imperative, feminine singular] "to face" 0.43 +3alt(פָּנִים/NOUN,פָּנִים/NOUN,פֶּנִי/NOUN) R:—  ⟹ LEMMA (source: פָּנִים NOUN, masculine or feminine plural, construct; "face; before, in front of")
+    תהום = תְּהוֹם/NOUN [masculine or feminine singular, absolute] "deep, sea, abyss" 0.54 +1alt(תְּהוֹם/NOUN) R:—  ⟹ OK
+    ורוח = רוּחַ/NOUN [masculine or feminine singular, absolute] "wind, breath, spirit" 0.42 +3alt(רוּחַ/NOUN,רֶוַח/NOUN,רָוַח/VERB) {ו: from וְ, and ; רוח: from רוּחַ, stem} R:—  ⟹ FORM (source: NOUN, masculine or feminine singular, construct)
+    אלהים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.46 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:—  ⟹ OK
+    מרחפת = רִחֵף/VERB [present, feminine singular] "to hover" 0.54 +1alt(רָחַף/VERB) R:—  ⟹ LEMMA (source: רָחַף VERB, Piʿel, participle, feminine singular, absolute; "hover, move gently, cherish")
+    על = עַל/ADP [] "on, upon, over, against, concerning" 0.46 +3alt(עֹל/NOUN,עַל/ADP,עֹל/NOUN) R:—  ⟹ OK
+    פני = פָּנָה/VERB [imperative, feminine singular] "to face" 0.43 +3alt(פָּנִים/NOUN,פָּנִים/NOUN,פֶּנִי/NOUN) R:—  ⟹ LEMMA (source: פָּנִים NOUN, masculine or feminine plural, construct; "face; before, in front of")
+    המים = מַיִם/NOUN [masculine plural, absolute, with the article] "water" 0.42 {ה: from הַ, the ; מים: from מַיִם, stem} R:—  ⟹ OK
+Gen.1.3: [he-mod]
+    ויאמר = אָמַר/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he said" 0.46 +3alt(אָמַר/VERB,אָמַר/VERB,אֲמַר/VERB) {ו: and ; י: imperfect preformative, third person masculine singular ; אמר: Qal verbal base} R:—  ⟹ OK
+    אלהים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.46 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:—  ⟹ OK
+    יהי = הָיָה/VERB [Qal, jussive, 3rd person masculine singular] "Let there be" 0.44 +2alt(הָיָה/VERB,הָיָה/VERB) {י: imperfect preformative, third person masculine singular ; הי: Qal verbal base} R:—  ⟹ OK
+    אור = אוֹר/NOUN [masculine or feminine singular, absolute] "light, morning light, dawn" 0.49 +3alt(אוֹר/VERB,אוֹר/VERB,אוֹר/VERB) R:—  ⟹ OK
+    ויהי = הָיָה/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And there was" 0.46 +3alt(הָיָה/VERB,הָיָה/VERB,הָיָה/VERB) {ו: and ; י: imperfect preformative, third person masculine singular ; הי: Qal verbal base} R:—  ⟹ OK
+    אור = אוֹר/NOUN [masculine or feminine singular, absolute] "light, morning light, dawn" 0.49 +3alt(אוֹר/VERB,אוֹר/VERB,אוֹר/VERB) R:—  ⟹ OK
+Gen.1.4: [he-mod]
+    וירא = רָאָה/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he saw" 0.44 +3alt(וַיַּרְא/VERB,רָאָה/VERB,יָרֵא/VERB) {ו: and ; י: imperfect preformative, third person masculine singular ; רא: Qal verbal base} R:—  ⟹ OK
+    אלהים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.46 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:—  ⟹ OK
+    את = אֵת/PART [object marker] "(marks the definite direct object)" 0.45 +3alt(אַתְּ/PRON,אֵת/ADP,אַתְּ/PRON) R:—  ⟹ OK
+    האור = אוֹר/NOUN [masculine or feminine singular, absolute, with the article] "light, morning light, dawn" 0.54 +1alt(אוֹר/NOUN) {ה: from הַ, the ; אור: from אוֹר, stem} R:—  ⟹ OK
+    כי = כִּי/CONJ [] "that, because, for, when" 0.46 +3alt(כִי/NOUN,כִּי/ADV,כִּי/CONJ) R:—  ⟹ OK
+    טוב = טוֹב/ADJ [] "good, fair, fine" 0.43 +3alt(טוֹב/ADV,טוֹב/INTJ,טוֹב/NOUN) R:—  ⟹ LEMMA (source: טוֹב ADJ, masculine singular, absolute; "good, pleasant")
+    ויבדל = בָּדַל/VERB [Hifʿil, wayyiqtol (narrative past), 3rd person masculine singular] "And he divided" 0.53 +1alt(בָּדַל/VERB) {ו: and ; י: imperfect preformative, third person masculine singular ; בדל: Hifʿil verbal base} R:—  ⟹ OK
+    אלהים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.46 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:—  ⟹ OK
+    בין = בֵּין/ADP [] "between" 0.46 +3alt(בֵּין/ADP,בָּן/VERB,בֵּין/NOUN) R:—  ⟹ OK
+    האור = אוֹר/NOUN [masculine or feminine singular, absolute, with the article] "light, morning light, dawn" 0.54 +1alt(אוֹר/NOUN) {ה: from הַ, the ; אור: from אוֹר, stem} R:—  ⟹ OK
+    ובין = בֵּין/ADP [] "between" 0.46 +2alt(בִּין/VERB,בִּין/VERB) {ו: from וְ, and ; בין: from בֵּין, stem} R:—  ⟹ OK
+    החשך = חֹשֶׁךְ/NOUN [masculine singular, absolute, with the article] "darkness, obscurity, secret place(s)" 0.48 +3alt(הֻחְשַׁךְ/VERB,הֶחְשִׁיךְ/VERB,חֹשֶׁךְ/NOUN) {ה: from הַ, the ; חשך: from חֹשֶׁךְ, stem} R:—  ⟹ OK
+Gen.1.5: [he-mod]
+    ויקרא = קָרָא/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he called" 0.46 +3alt(וַיִּקְרָא/PROPN,קָרָא/VERB,קָרָא/VERB) {ו: and ; י: imperfect preformative, third person masculine singular ; קרא: Qal verbal base} R:—  ⟹ OK
+    אלהים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.46 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:—  ⟹ OK
+    לאור = לְאוֹר־/ADP [] "In light of: given, considering." 0.44 +3alt(אוֹר/NOUN,אוֹר/NOUN,אוֹר/NOUN) R:—  ⟹ LEMMA (source: אוֹר NOUN, masculine or feminine singular, absolute, with the article; "light, morning light, dawn")
+    יום = יוֹם/NOUN [masculine singular, absolute] "day; time" 0.42 +3alt(יוֹם/NOUN,יוֹם/NOUN,יוֹם/NOUN) R:—  ⟹ OK
+    ולחשך = חֹשֶׁךְ/NOUN [masculine singular, absolute, with the article] "darkness, obscurity, secret place(s)" 0.6 {ו: from וְ, and ; ל: from לְ, preposition with the article fused into it ; חשך: from חֹשֶׁךְ, stem} R:—  ⟹ OK
+    קרא = קָרָא/VERB [Qal, perfect (qatal), 3rd person masculine singular] "He called" 0.4 +3alt(קָרָא/VERB,קָרָא/VERB,נִקְרָא/VERB) {קרא: Qal verb} R:—  ⟹ OK
+    לילה = לַיִל/NOUN [masculine singular, absolute] "night" 0.41 +2alt(לַיְלָה/NOUN,לַיְלָה/NOUN) R:—  ⟹ OK
+    ויהי = הָיָה/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he was" 0.46 +3alt(הָיָה/VERB,הָיָה/VERB,הָיָה/VERB) {ו: and ; י: imperfect preformative, third person masculine singular ; הי: Qal verbal base} R:—  ⟹ OK
+    ערב = עָרֵב/ADJ [] "pretty, pleasant" 0.43 +3alt(עֲרָב/PROPN,עָרַב/VERB,עֶרֶב/NOUN) R:—  ⟹ LEMMA (source: עֶרֶב NOUN, masculine singular, absolute; "set, evening, between two even")
+    ויהי = הָיָה/VERB [Qal, wayyiqtol (narrative past), 3rd person masculine singular] "And he was" 0.46 +3alt(הָיָה/VERB,הָיָה/VERB,הָיָה/VERB) {ו: and ; י: imperfect preformative, third person masculine singular ; הי: Qal verbal base} R:—  ⟹ OK
+    בקר = בִּקֵּר/VERB [] "defective spelling of ביקר." 0.43 +3alt(בָּקָר/NOUN,בֹּקֶר/NOUN,בֵּקָר/ADJ) R:—  ⟹ LEMMA (source: בֹּקֶר NOUN, masculine singular, absolute; "morning, morrow, next day")
+    יום = יוֹם/NOUN [masculine singular, absolute] "day; time" 0.42 +3alt(יוֹם/NOUN,יוֹם/NOUN,יוֹם/NOUN) R:—  ⟹ OK
+    אחד = אֶחָד/NUM [cardinal number, masculine singular, absolute] "one; each; a certain" 0.46 +3alt(אִחֵד/VERB,אֻחַד/VERB,אִחֵד/VERB) R:—  ⟹ OK
+Deut.6.4: [he-mod]
+    שמע = שְׁמַע/PROPN [] "the Shema" 0.43 +3alt(שָׁמַע/VERB,שֵׁמַע/NOUN,שָׁמַע/VERB) R:—
+    ישראל = יִשְׂרָאֵל/PROPN [] "Israel" 0.46 +2alt(יִשְׂרָאֵל/PROPN,יִשְׂרָאֵל/PROPN) R:—  ⟹ OK
+    יהוה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.46 +3alt(יהוה/PROPN,הִוָּה/VERB,יְהֹוִה/PROPN) R:—  ⟹ OK
+    אלהינו = אֱלֹהִים/NOUN [masculine plural, construct] "God; gods" 0.47 {אלהי: from אֱלֹהִים, stem ; נו: possessive suffix} R:—  ⟹ OK
+    יהוה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.46 +3alt(יהוה/PROPN,הִוָּה/VERB,יְהֹוִה/PROPN) R:—  ⟹ OK
+    אחד = אֶחָד/NUM [cardinal number, masculine singular, absolute] "one; each; a certain" 0.46 +3alt(אִחֵד/VERB,אֻחַד/VERB,אִחֵד/VERB) R:—
+Deut.6.5: [he-bib]
+    ואהבת = אָהַב/VERB [Qal, weqatal (sequential perfect), 2nd person masculine singular] "And you will love" 0.44 +1alt(אַהֲבָה/NOUN) {ו: and ; אהבת: Qal verb} R:—  ⟹ OK
+    את = אֵת/PART [object marker] "(marks the definite direct object)" 0.45 +3alt(אֵת/ADP,אַתְּ/PRON,אתִּי/PRON) R:—  ⟹ OK
+    יהוה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.46 +3alt(יְהֹוִה/PROPN,יְהֹוָה נִסִּי/PROPN,יהוה/PROPN) R:—  ⟹ OK
+    אלהיך = אֱלֹהִים/NOUN [masculine plural, construct] "God; gods" 0.46 {אלהי: from אֱלֹהִים, stem ; ך: possessive suffix} R:—  ⟹ OK
+    בכל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.43 +3alt(כֹּל/NOUN,כֹּל/NOUN,כֹּל/NOUN) {ב: from בְּ, in, with, by ; כל: from כֹּל, stem} R:—  ⟹ OK
+    לבבך = לֵבָב/NOUN [masculine singular, construct] "inner man, mind, will" 0.41 +3alt(לְבַב/NOUN,לֵב/NOUN,לֵב/NOUN) {לבב: from לֵבָב, stem ; ך: possessive suffix} R:—  ⟹ OK
+    ובכל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.44 +2alt(כֹּל/NOUN,כֹּל/NOUN) {ו: from וְ, and ; ב: from בְּ, in, with, by ; כל: from כֹּל, stem} R:—  ⟹ OK
+    נפשך = נֶפֶשׁ/NOUN [singular] "a soul, psyche (spirit of a person or animal" 0.44 +3alt(נֶפֶשׁ/NOUN,נֶפֶשׁ/NOUN,נֶפֶשׁ/NOUN) R:—  ⟹ LEMMA (source: נֶפֶשׁ NOUN, masculine or feminine singular, construct; "soul, life, self, person, appe")
+    ובכל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.44 +2alt(כֹּל/NOUN,כֹּל/NOUN) {ו: from וְ, and ; ב: from בְּ, in, with, by ; כל: from כֹּל, stem} R:—  ⟹ OK
+    מאדך = מְאֹד/NOUN [masculine singular, construct] "muchness, force, abundance" 0.6 {מאד: from מְאֹד, stem ; ך: possessive suffix} R:—  ⟹ OK
+Deut.6.6: [he-mod]
+    והיו = הָיָה/VERB [Qal, weqatal (sequential perfect), 3rd person common gender plural] "And they will be" 0.44 +3alt(וְהָיוּ/VERB,הָיָה/VERB,הָיָה/VERB) {ו: and ; היו: Qal verb} R:—  ⟹ OK
+    הדברים = דָּבָר/NOUN [masculine plural, absolute, with the article] "word, speech, thing, matter" 0.46 +2alt(דָּבָר/NOUN,דְּבוֹרָה/NOUN) {ה: from הַ, the ; דברים: from דָּבָר, stem} R:—  ⟹ OK
+    האלה = אֵלֶּה/PRON [demonstrative, common gender plural, with the article] "these" 0.46 +3alt(אֵלָה/NOUN,אָלָה/NOUN,אֵלָה/PROPN) {ה: from הַ, the ; אלה: from אֵלֶּה, stem} R:—  ⟹ OK
+    אשר = אֲשֶׁר/SCONJ [relative] "who, which, that" 0.46 +3alt(אִשֵּׁר/VERB,אֲשֶׁר/CONJ,אָשֵׁר/PROPN) R:—  ⟹ OK
+    אנכי = אָנֹכִי/PRON [personal, 1st person common gender singular] "I" 0.46 +2alt(אָנֹכִי/PRON,אֲנָכִי/ADJ) R:—  ⟹ OK
+    מצוך = צָוָה/VERB [Piʿel, participle, masculine singular, construct] "commanding" 0.46 {מצו: Piʿel verb ; ך: object suffix} R:—  ⟹ OK
+    היום = יוֹם/NOUN [masculine singular, absolute, with the article] "day; time" 0.46 +2alt(הַיּוֹם/ADV,יוֹם/NOUN) {ה: from הַ, the ; יום: from יוֹם, stem} R:—  ⟹ OK
+    על = עַל/ADP [] "on, upon, over, against, concerning" 0.46 +3alt(עֹל/NOUN,עַל/ADP,עֹל/NOUN) R:—  ⟹ OK
+    לבבך = לֵבָב/NOUN [masculine singular, construct] "inner man, mind, will" 0.41 +3alt(לֵב/NOUN,לֵב/NOUN,לְבַב/NOUN) {לבב: from לֵבָב, stem ; ך: possessive suffix} R:—  ⟹ OK
+Deut.6.7: [he-bib]
+    ושננתם = שָׁנַן/VERB [Piʿel, weqatal (sequential perfect), 2nd person masculine singular] "And you will whet them" 0.6 {ו: and ; שננת: Piʿel verb ; ם: object suffix} R:—  ⟹ OK
+    לבניך = בֵּן/NOUN [masculine plural, construct] "son; child; member of a class" 0.44 +2alt(לְבָנָה/NOUN,לְבָנָה/NOUN) {ל: from לְ, to, for ; בני: from בֵּן, stem ; ך: possessive suffix} R:—  ⟹ OK
+    ודברת = דָבַר/VERB [Piʿel, weqatal (sequential perfect), 2nd person masculine singular] "And you will speak" 0.44 +3alt(דָבַר/VERB,דָבַר/VERB,וְדִבַּרְתָּ/VERB) {ו: and ; דברת: Piʿel verb} R:—  ⟹ OK
+    בם = ב/ADP [] "—" 0.43 +2alt(בְּ/ADP,בְּ־/ADP) R:—  ⟹ LEMMA (source: בְּ ADP, ; "in, with, by")
+    בשבתך = יָשַׁב/VERB [Qal, infinitive construct] "to sit" 0.47 {ב: in, with, by ; שבת: Qal verb ; ך: object suffix} R:—  ⟹ OK
+    בביתך = בַּיִת/NOUN [masculine singular, construct] "house, household" 0.43 {ב: from בְּ, in, with, by ; בית: from בַּיִת, stem ; ך: possessive suffix} R:—  ⟹ OK
+    ובלכתך = יָלַךְ/VERB [Qal, infinitive construct] "and to go" 0.6 {ו: and ; ב: in, with, by ; לכת: Qal verb ; ך: object suffix} R:—  ⟹ OK
+    בדרך = דֶּרֶךְ/NOUN [masculine or feminine singular, absolute, with the article] "way, road; journey; manner" 0.38 +2alt(דֶּרֶךְ/NOUN,דֶּרֶךְ/NOUN) {ב: from בְּ, preposition with the article fused into it ; דרך: from דֶּרֶךְ, stem} R:—  ⟹ OK
+    ובשכבך = שָׁכַב/VERB [Qal, infinitive construct] "and to lie down" 0.6 {ו: and ; ב: in, with, by ; שכב: Qal verb ; ך: object suffix} R:—  ⟹ OK
+    ובקומך = קוּם/VERB [Qal, infinitive construct] "and to arise" 0.6 {ו: and ; ב: in, with, by ; קומ: Qal verb ; ך: object suffix} R:—  ⟹ OK
+Deut.6.8: [he-mod]
+    וקשרתם = קָשַׁר/VERB [Qal, weqatal (sequential perfect), 2nd person masculine plural] "And you (plural) will bind" 0.47 +1alt(קָשַׁר/VERB) {ו: and ; קשרתם: Qal verb} R:—  ⟹ FORM (source: VERB, Qal, weqatal (sequential perfect), 2nd person masculine singular)
+    לאות = אוֹת/NOUN [masculine or feminine singular, absolute] "sign, pledge, token" 0.54 +1alt(אוֹת/NOUN) {ל: from לְ, to, for ; אות: from אוֹת, stem} R:—  ⟹ OK
+    על = עַל/ADP [] "on, upon, over, against, concerning" 0.46 +3alt(עֹל/NOUN,עַל/ADP,עֹל/NOUN) R:—  ⟹ OK
+    ידך = יָד/NOUN [singular] "arm" 0.43 +3alt(יָד/NOUN,יָד/NOUN,יָד/NOUN) R:—  ⟹ LEMMA (source: יָד NOUN, masculine or feminine singular, construct; "hand; power; side")
+    והיו = הָיָה/VERB [Qal, weqatal (sequential perfect), 3rd person common gender plural] "And they will be" 0.44 +3alt(וְהָיוּ/VERB,הָיָה/VERB,הָיָה/VERB) {ו: and ; היו: Qal verb} R:—  ⟹ OK
+    לטטפת = טוֹפָפָה/NOUN [feminine plural, absolute] "bands, frontlet-bands, between the eyes" 0.6 {ל: from לְ, to, for ; טטפת: from טוֹפָפָה, stem} R:—  ⟹ OK
+    בין = בֵּין/ADP [] "between" 0.46 +3alt(בֵּין/ADP,בָּן/VERB,בֵּין/NOUN) R:—  ⟹ OK
+    עיניך = עַיִן/NOUN [masculine or feminine dual, construct] "eye; spring" 0.44 +2alt(עַיִן/NOUN,עַיִן/NOUN) {עיני: from עַיִן, stem ; ך: possessive suffix} R:—  ⟹ OK
+Deut.6.9: [he-mod]
+    וכתבתם = כָּתַב/VERB [Qal, weqatal (sequential perfect), 2nd person masculine singular] "And you will write them" 0.6 {ו: and ; כתבת: Qal verb ; ם: object suffix} R:—  ⟹ OK
+    על = עַל/ADP [] "on, upon, over, against, concerning" 0.46 +3alt(עֹל/NOUN,עַל/ADP,עֹל/NOUN) R:—  ⟹ OK
+    מזזות = זָז/VERB [present, feminine plural] "to move" 0.5 rule {מ: from מִן, from ; זזות: from זָז, stem} R:—
+    ביתך = בַּיִת/NOUN [2nd person masculine singular, with a possessive suffix] "house" 0.39 +2alt(בַּיִת/NOUN,בַּיִת/NOUN) R:—  ⟹ LEMMA (source: בַּיִת NOUN, masculine singular, construct; "house, household")
+    ובשעריך = שַׁעַר/NOUN [masculine plural, construct] "gate" 0.6 {ו: from וְ, and ; ב: from בְּ, in, with, by ; שערי: from שַׁעַר, stem ; ך: possessive suffix} R:—  ⟹ OK
+Ps.23.1: [he-mod]
+    מזמור = מִזְמוֹר/NOUN [masculine singular, absolute] "melody" 0.59 +2alt(מִזְמוֹר/NOUN,מִזְמוֹר/NOUN) R:—  ⟹ OK
+    לדוד = דָּוִד/PROPN [] "David" 0.47 {ל: from לְ, to, for ; דוד: from דָּוִד, stem} R:—  ⟹ OK
+    יהוה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.46 +3alt(יהוה/PROPN,הִוָּה/VERB,יְהֹוִה/PROPN) R:—  ⟹ OK
+    רעי = רֹעִי/PROPN [] "a male given name, Roy, Roi, Roee, and Roey" 0.44 +3alt(רֹעֶה/NOUN,רֹעִי/VERB,רָעָה/VERB) R:—  ⟹ LEMMA (source: רָעָה VERB, Qal, participle, masculine singular, construct; "to pasture, tend, shepherd; to")
+    לא = לֹא/PART [negative] "not, no" 0.46 +3alt(לֹא/ADV,לֹא/INTJ,לָא/PART) R:—  ⟹ OK
+    אחסר = חָסֵר/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I shall not lack" 0.6 {א: imperfect preformative, first person common singular ; חסר: Qal verbal base} R:—  ⟹ OK
+Ps.23.2: [he-mod]
+    בנאות = נָאָה/NOUN [feminine plural, construct] "pasture, meadow" 0.6 {ב: from בְּ, in, with, by ; נאות: from נָאָה, stem} R:—  ⟹ OK
+    דשא = דֶּשֶׁא/NOUN [masculine singular, absolute] "grass" 0.46 +3alt(דָּשָׁא/VERB,דֶּשֶׁא/NOUN,דֶּשֶׁא/NOUN) R:—  ⟹ OK
+    ירביצני = רָבַץ/VERB [Hifʿil, imperfect (yiqtol), 3rd person masculine singular] "He will stretch me out" 0.6 {י: imperfect preformative, third person masculine singular ; רביצ: Hifʿil verbal base ; ני: object suffix} R:—  ⟹ OK
+    על = עַל/ADP [] "on, upon, over, against, concerning" 0.46 +3alt(עֹל/NOUN,עַל/ADP,עֹל/NOUN) R:—  ⟹ OK
+    מי = מִי/PART [interrogative particle] "who?" 0.45 +3alt(מַיִם/NOUN,מִי/PRON,מַיִם/NOUN) R:—  ⟹ LEMMA (source: מַיִם NOUN, masculine plural, construct; "water")
+    מנחות = מִנְחָה/NOUN [plural] "an offering" 0.46 +3alt(מִנְחָה/NOUN,הִנְחָה/VERB,מְנוּחָה/NOUN) R:—  ⟹ LEMMA (source: מְנוּחָה NOUN, masculine or feminine plural, absolute; "resting-place, rest")
+    ינהלני = נָהַל/VERB [Piʿel, imperfect (yiqtol), 3rd person masculine singular] "He will lead me" 0.6 {י: imperfect preformative, third person masculine singular ; נהל: Piʿel verbal base ; ני: object suffix} R:—  ⟹ OK
+Ps.23.3: [he-mod]
+    נפשי = נֶפֶשׁ/NOUN [masculine or feminine singular, construct] "soul, life, self, person, appetite" 0.46 +3alt(נַפְשִׁי/ADJ,נָפַשׁ/VERB,נֶפֶשׁ/NOUN) {נפש: from נֶפֶשׁ, stem ; י: possessive suffix} R:—  ⟹ OK
+    ישובב = שׁוּב/VERB [Polel, imperfect (yiqtol), 3rd person masculine singular] "He will restore" 0.6 {י: imperfect preformative, third person masculine singular ; שובב: Polel verbal base} R:—  ⟹ OK
+    ינחני = נָחָה/VERB [Hifʿil, imperfect (yiqtol), 3rd person masculine singular] "He will lead me" 0.6 {י: imperfect preformative, third person masculine singular ; נח: Hifʿil verbal base ; ני: object suffix} R:—  ⟹ OK
+    במעגלי = מַעְגָּל/NOUN [masculine plural, construct] "entrenchment, track" 0.47 {ב: from בְּ, in, with, by ; מעגלי: from מַעְגָּל, stem} R:—  ⟹ OK
+    צדק = צֶדֶק/NOUN [masculine singular, absolute] "rightness, righteousness, what is right" 0.55 +3alt(צֶדֶק/PROPN,צָדַק/VERB,צֶדֶק/NOUN) R:—  ⟹ OK
+    למען = מַעַן/ADP [] "purpose, intent, for the sake of" 0.46 +1alt(לְמַעַן/ADP) R:—  ⟹ OK
+    שמו = שֵׁם/NOUN [masculine singular, construct] "name; reputation" 0.44 +3alt(שָׂם/VERB,שֵׁם/NOUN,שָׂם/VERB) {שמ: from שֵׁם, stem ; ו: possessive suffix} R:—  ⟹ OK
+Ps.23.4: [he-mod]
+    גם = גַּם/PART [affirmative particle] "also, even, moreover" 0.45 +2alt(גַּם/ADV,גַּם/ADV) R:—  ⟹ OK
+    כי = כִּי/CONJ [] "that, because, for, when" 0.46 +3alt(כִי/NOUN,כִּי/ADV,כִּי/CONJ) R:—  ⟹ OK
+    אלך = הָלַךְ/VERB [future, 1st person singular] "to walk, go, especially on foot" 0.43 +3alt(אֵל/NOUN,הָלַךְ/VERB,אֵל/NOUN) R:—  ⟹ LEMMA (source: יָלַךְ VERB, Qal, imperfect (yiqtol), 1st person common gender singular; "to go, walk")
+    בגיא = גַּיְא/NOUN [masculine or feminine singular, construct] "valley" 0.45 +2alt(גַּיְא/PROPN,גַּיְא/NOUN) {ב: from בְּ, in, with, by ; גיא: from גַּיְא, stem} R:—  ⟹ OK
+    צלמות = צַלְמָוֶת/NOUN [masculine singular, absolute] "death-shadow, deep shadow" 0.56 +1alt(צַלְמָוֶת/NOUN) R:—  ⟹ OK
+    לא = לֹא/PART [negative] "not, no" 0.46 +3alt(לֹא/ADV,לֹא/INTJ,לָא/PART) R:—  ⟹ OK
+    אירא = יָרֵא/VERB [Qal, imperfect (yiqtol), 1st person common gender singular] "I will fear" 0.46 +1alt(יָרֵא/VERB) {א: imperfect preformative, first person common singular ; ירא: Qal verbal base} R:—  ⟹ OK
+    רע = רַע/NOUN [] "An evil, trouble; something bad." 0.43 +3alt(רַע/ADJ,רֹעַ/NOUN,רַע/ADJ) R:—  ⟹ LEMMA (source: רַע ADJ, masculine singular, absolute; "evil, distress, misery")
+    כי = כִּי/CONJ [] "that, because, for, when" 0.46 +3alt(כִי/NOUN,כִּי/ADV,כִּי/CONJ) R:—  ⟹ OK
+    אתה = אַתָּה/PRON [] "you, thou (second-person singular masculine)" 0.43 +3alt(עִם/ADP,עִם/ADP,אֹתוֹ/ADP) R:—  ⟹ LEMMA (source: אַתָּה PRON, personal, 2nd person masculine singular; "you (masculine singular)")
+    עמדי = עִמָּד/ADP [] "with, aid, against" 0.45 +3alt(עָמַד/VERB,עִם/ADP,עָמַד/NOUN) {עמד: from עִמָּד, stem ; י: object of the preposition} R:—  ⟹ OK
+    שבטך = שֵׁבֶט/NOUN [masculine singular, construct] "rod, staff, club" 0.6 {שבט: from שֵׁבֶט, stem ; ך: possessive suffix} R:—  ⟹ OK
+    ומשענתך = מִשְׁעֶ֫נֶת/NOUN [feminine singular, construct] "staff" 0.6 {ו: from וְ, and ; משענת: from מִשְׁעֶ֫נֶת, stem ; ך: possessive suffix} R:—  ⟹ OK
+    המה = הֵם/PRON [personal, 3rd person masculine plural] "they, those" 0.46 +3alt(הָמָה/VERB,הָמָה/VERB,הָמָה/VERB) R:—  ⟹ OK
+    ינחמני = נָחַם/VERB [Piʿel, imperfect (yiqtol), 3rd person masculine plural] "They will console me" 0.6 {י: imperfect preformative, third person masculine plural ; נחמ: Piʿel verbal base ; ני: object suffix} R:—  ⟹ OK
+Ps.23.5: [he-mod]
+    תערך = עָרַךְ/VERB [future, 2nd person masculine singular] "to organize, manage, handle, arrange, set up" 0.46 +3alt(עָרַךְ/VERB,תַּעַר/NOUN,עָרַךְ/VERB) R:—  ⟹ LEMMA (source: עָרַךְ VERB, Qal, imperfect (yiqtol), 2nd person masculine singular; "arrange, set in order, arrange")
+    לפני = פָּנִים/NOUN [masculine or feminine plural, construct] "face; before, in front of" 0.45 +3alt(לִפְנֵי/ADP,לִפְנֵי/ADP,לִפְנַי/NOUN) {ל: from לְ, to, for ; פני: from פָּנִים, stem} R:—  ⟹ FORM (source: NOUN, masculine or feminine plural, construct; not offered at all)
+    שלחן = שֻׁלְחָן/NOUN [masculine singular, construct] "table" 0.46 +3alt(שֻׁלְחָן/NOUN,שֻׁלְחָן/NOUN,שֻׁלְחָן/NOUN) R:—  ⟹ FORM (source: NOUN, masculine singular, absolute)
+    נגד = נֶגֶד/ADP [] "what is conspicuous, in front, in front of" 0.45 +3alt(נֶגֶד/ADP,נָגַד/VERB,נַגָּד/NOUN) R:—  ⟹ OK
+    צררי = צָרַר/VERB [Qal, participle, masculine plural, construct] "vexing" 0.47 {צררי: Qal verb} R:—  ⟹ FORM (source: VERB, Qal, participle, masculine plural, construct; not offered at all)
+    דשנת = דָּשֵׁן/VERB [Piʿel, perfect (qatal), 2nd person masculine singular] "You grew fat" 0.6 {דשנת: Piʿel verb} R:—  ⟹ OK
+    בשמן = בֹּשֶׂם/NOUN [3rd person feminine plural, with a possessive suffix] "perfume" 0.39 +3alt(שֶׁמֶן/NOUN,שֶׁמֶן/NOUN,שֶׁמֶן/NOUN) R:—  ⟹ LEMMA (source: שֶׁמֶן NOUN, masculine singular, absolute, with the article; "fat, oil")
+    ראשי = רָאשִׁי/ADJ [] "main, principal" 0.43 +3alt(רֹאשׁ/NOUN,רֹאשׁ/NOUN,רֹאשׁ/NOUN) R:—  ⟹ LEMMA (source: רֹאשׁ NOUN, masculine singular, construct; "head; top; chief")
+    כוסי = כּוֹס/NOUN [1st person masculine or feminine singular, with a possessive suffix] "cup" 0.49 +2alt(כּוֹס/NOUN,כּוֹס/NOUN) R:—  ⟹ LEMMA (source: כּוֹס NOUN, feminine singular, construct; "cup")
+    רויה = רְוָיָה/NOUN [] "saturation, satiation" 0.55 +1alt(רְוָיָה/NOUN) R:—  ⟹ LEMMA (source: רְוָיָה NOUN, feminine singular, absolute; "saturation")
+Ps.23.6: [he-mod]
+    אך = אַךְ/PART [affirmative particle] "surely" 0.46 +2alt(אַךְ/ADV,אַךְ/CONJ) R:—  ⟹ OK
+    טוב = טוֹב/ADJ [] "good, fair, fine" 0.43 +3alt(טוֹב/ADV,טוֹב/INTJ,טוֹב/NOUN) R:—  ⟹ LEMMA (source: טוֹב ADJ, masculine singular, absolute; "a good thing, benefit, welfare"; not offered at all)
+    וחסד = חֵסֵד/NOUN [masculine singular, absolute] "loyal love, kindness, faithfulness" 0.41 +1alt(חֵסֵד/NOUN) {ו: from וְ, and ; חסד: from חֵסֵד, stem} R:—  ⟹ OK
+    ירדפוני = רָדַף/VERB [Piʿel, imperfect (yiqtol), 3rd person masculine plural] "They will pursue me" 0.6 {י: imperfect preformative, third person masculine plural ; רדפו: Piʿel verbal base ; ני: object suffix} R:—  ⟹ OK
+    כל = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.44 +3alt(כֹּל/NOUN,כֹּל/NOUN,כֹּל/CONJ) R:—  ⟹ OK
+    ימי = יוֹם/NOUN [masculine plural, construct] "day; time" 0.45 +3alt(יוֹם/NOUN,יוֹם/NOUN,יָם/NOUN) R:—  ⟹ OK
+    חיי = חַיִּים/NOUN [construct] "life (period during which one is alive)" 0.43 +3alt(חַיִּים/NOUN,חַיִּים/NOUN,חַי/VERB) R:—  ⟹ LEMMA (source: חַיִּים NOUN, masculine plural, construct; "life, sustenance, maintenance"; not offered at all)
+    ושבתי = שׁוּב/VERB [Qal, weqatal (sequential perfect), 1st person common gender singular] "And I will return" 0.4 +3alt(שׁוּב/VERB,שַׁבְּתַי/PROPN,יָשַׁב/VERB) {ו: and ; שבתי: Qal verb} R:—  ⟹ LEMMA (source: יָשַׁב VERB, Qal, weqatal (sequential perfect), 1st person common gender singular; "to sit, dwell, remain")
+    בבית = בַּיִת/NOUN [masculine singular, construct] "house, household" 0.41 +3alt(בַּיִת/NOUN,בֵּית־אֵל/PROPN,בַּיִת/NOUN) {ב: from בְּ, in, with, by ; בית: from בַּיִת, stem} R:—  ⟹ OK
+    יהוה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.46 +3alt(יהוה/PROPN,הִוָּה/VERB,יְהֹוִה/PROPN) R:—  ⟹ OK
+    לארך = אֹרֶךְ/NOUN [masculine singular, construct] "length, forbearance, self-restraint" 0.53 +1alt(אָרֵךְ/ADJ) {ל: from לְ, to, for ; ארך: from אֹרֶךְ, stem} R:—  ⟹ OK
+    ימים = יוֹם/NOUN [masculine plural, absolute] "day; time" 0.45 +3alt(יָם/NOUN,יוֹם/NOUN,יָם/NOUN) R:—  ⟹ OK
+Isa.53.4: [he-mod]
+    אכן = אָכֵן/ADV [] "surely, truly, but indeed" 0.57 +1alt(אָכֵן/ADV) R:—  ⟹ OK
+    חלינו = חָלָה/VERB [past, 1st person masculine or feminine plural] "To become sick, to be ill." 0.54 +2alt(חֳלִי/NOUN,חָלָה/VERB) R:—  ⟹ LEMMA (source: חֳלִי NOUN, masculine plural, construct; "sickness")
+    הוא = הוּא/PRON [personal, 3rd person masculine singular] "he, it; that" 0.45 +3alt(הֱוֵא/VERB,הוּא/PRON,הָוָא/VERB) R:—  ⟹ OK
+    נשא = נִשָּׂא/ADJ [] "lofty, exalted" 0.43 +3alt(נָשָׂא/VERB,נָשָׂא/VERB,נָשָׂא/VERB) R:—  ⟹ LEMMA (source: נָשָׂא VERB, Qal, perfect (qatal), 3rd person masculine singular; "to lift, carry, bear")
+    ומכאבינו = מַכְאֹב/NOUN [masculine plural, construct] "pain" 0.6 {ו: from וְ, and ; מכאבי: from מַכְאֹב, stem ; נו: possessive suffix} R:—  ⟹ OK
+    סבלם = סָבַל/VERB [Qal, perfect (qatal), 3rd person masculine singular] "He bore them a heavy load" 0.6 {סבל: Qal verb ; ם: object suffix} R:—  ⟹ OK
+    ואנחנו = אֲנַחְנוּ/PRON [personal, 1st person common gender plural] "we" 0.47 {ו: from וְ, and ; אנחנו: from אֲנַחְנוּ, stem} R:—  ⟹ OK
+    חשבנהו = חָשַׁב/VERB [Qal, perfect (qatal), 1st person common gender plural] "We thought him" 0.6 {חשבנ: Qal verb ; הו: object suffix} R:—  ⟹ OK
+    נגוע = נָגַע/VERB [Qal, passive participle, masculine singular, absolute] "touched" 0.47 +2alt(גָּוַע/VERB,נָגַע/VERB) {נגוע: Qal verb} R:—  ⟹ OK
+    מכה = מַכָּה/NOUN [] "an attack, an assault, a hit, a wound" 0.43 +3alt(הִכָּה/VERB,הִכָּה/VERB,הֻכָּה/VERB) R:—  ⟹ LEMMA (source: נָכָה VERB, Hofʿal, passive participle, masculine singular, construct; "to strike, smite")
+    אלהים = אֱלֹהִים/NOUN [masculine plural, absolute] "God; gods" 0.46 +3alt(אֱלוֹהַּ/NOUN,אֱלֹהִים/PROPN,אֱלֹהִים/NOUN) R:—  ⟹ OK
+    ומענה = עָנָה/VERB [Puʿal, passive participle, masculine singular, absolute] "and bowed down" 0.6 {ו: and ; מענה: Puʿal verb} R:—  ⟹ OK
+Isa.53.5: [he-mod]
+    והוא = הוּא/PRON [personal, 3rd person masculine singular] "he, it; that" 0.46 +2alt(הוּא/PRON,הוּא/PRON) {ו: from וְ, and ; הוא: from הוּא, stem} R:—  ⟹ OK
+    מחלל = חִלֵּל/VERB [present, masculine singular] "to desecrate, violate" 0.54 +2alt(חָלַל/VERB,חָלַל/VERB) R:—  ⟹ LEMMA (source: חָלַל VERB, Polal, passive participle, masculine singular, absolute; "bore, pierce, my heart is pier")
+    מפשענו = פֶּשַׁע/NOUN [masculine plural, construct] "transgression" 0.6 {מ: from מִן, from ; פשע: from פֶּשַׁע, stem ; נו: possessive suffix} R:—  ⟹ OK
+    מדכא = דִּכֵּא/VERB [present, masculine singular] "to oppress, to subjugate" 0.49 +2alt(דֻּכָּא/VERB,דָּכָא/VERB) R:—  ⟹ LEMMA (source: דָּכָא VERB, Puʿal, passive participle, masculine singular, absolute; "crush, crushed, contrite ones")
+    מעונתינו = עָוֺן/NOUN [masculine or feminine plural, construct] "iniquity, guilt, punishment of iniquity" 0.6 {מ: from מִן, from ; עונתי: from עָוֺן, stem ; נו: possessive suffix} R:—  ⟹ OK
+    מוסר = מוּסָר/NOUN [masculine singular, absolute] "discipline, chastening, correction" 0.49 +3alt(מוּסָר/NOUN,מָסַר/VERB,מוּסָר/NOUN) R:—  ⟹ FORM (source: NOUN, masculine singular, construct)
+    שלומנו = שָׁלוֹם/NOUN [1st person masculine or feminine plural, with a possessive suffix] "peace" 0.49 +2alt(שִׁלּוּם/NOUN,שָׁלוֹם/NOUN) R:—  ⟹ LEMMA (source: שָׁלוֹם NOUN, masculine singular, construct; "peace, well-being, completenes")
+    עליו = עַל/ADP [personal, 3rd person masculine singular] "on him, it" 0.8 rule +3alt(עלה with third-person masculine singular personal pronoun as possessor/NOUN,עַל/ADP,עַל/ADP) R:—  ⟹ FORM (source: ADP, )
+    ובחברתו = חַבּוּרָה/NOUN [feminine singular, construct] "stripe, blow" 0.6 {ו: from וְ, and ; ב: from בְּ, in, with, by ; חברת: from חַבּוּרָה, stem ; ו: possessive suffix} R:—  ⟹ OK
+    נרפא = רָפָא/VERB [Nifʿal, perfect (qatal), 3rd person masculine singular] "He was healed" 0.48 +3alt(רִפֵּא/VERB,רֻפָּא/VERB,רָפָא/VERB) {נרפא: Nifʿal verb} R:—  ⟹ OK
+    לנו = לְ/ADP [personal, 1st person plural] "to us" 0.8 rule +3alt(ל/ADP,לָן/VERB,לָן/VERB) R:—  ⟹ FORM (source: ADP, )
+Isa.53.6: [he-mod]
+    כלנו = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.44 +3alt(כֹּל/NOUN,כל/PRON,כָּלָה/VERB) {כל: from כֹּל, stem ; נו: possessive suffix} R:—  ⟹ OK
+    כצאן = צֹאן/NOUN [masculine or feminine singular, absolute, with the article] "small cattle, sheep and goats, flock" 0.41 +2alt(צֹאן/NOUN,צֹאן/NOUN) {כ: from כְּ, preposition with the article fused into it ; צאן: from צֹאן, stem} R:—  ⟹ OK
+    תעינו = עִיֵּן/VERB [future, 2nd person masculine plural] "to see, view, eye, to lay eyes on" 0.49 +2alt(תָּעָה/VERB,תָּעָה/VERB) R:—  ⟹ LEMMA (source: תָּעָה VERB, Qal, perfect (qatal), 1st person common gender plural; "err, wander about, be made to ")
+    איש = אִישׁ/NOUN [masculine singular, absolute] "man, husband; each" 0.44 +3alt(אִישׁ/NOUN,אִישׁ/PRON,אִשָּׁה/NOUN) R:—  ⟹ OK
+    לדרכו = דֶּרֶךְ/NOUN [masculine or feminine singular, construct] "way, road; journey; manner" 0.47 {ל: from לְ, to, for ; דרכ: from דֶּרֶךְ, stem ; ו: possessive suffix} R:—  ⟹ OK
+    פנינו = פִּנָּה/VERB [past, 1st person masculine or feminine plural] "to clear (an area or space of someone or som" 0.44 +3alt(פָּנָה/VERB,פָּנִים/NOUN,פֻּנָּה/VERB) R:—  ⟹ LEMMA (source: פָּנָה VERB, Qal, perfect (qatal), 1st person common gender plural; "turn, decline, turn toward")
+    ויהוה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.47 {ו: from וְ, and ; יהוה: from יְהֹוָה, stem} R:—  ⟹ OK
+    הפגיע = פָּגַע/VERB [Hifʿil, perfect (qatal), 3rd person masculine singular] "He met" 0.6 {הפגיע: Hifʿil verb} R:—  ⟹ OK
+    בו = בְּ/ADP [personal, 3rd person masculine singular] "in him, it" 0.8 rule +3alt(ב/ADP,בְּ־/ADP,בְּ/ADP) R:—  ⟹ FORM (source: ADP, )
+    את = אֵת/PART [object marker] "(marks the definite direct object)" 0.45 +3alt(אַתְּ/PRON,אֵת/ADP,אַתְּ/PRON) R:—  ⟹ OK
+    עון = עָוֺן/NOUN [masculine or feminine singular, construct] "iniquity, guilt, punishment of iniquity" 0.41 +2alt(עָווֹן/NOUN,עָוֺן/NOUN) R:—  ⟹ OK
+    כלנו = כֹּל/NOUN [masculine singular, construct] "all, every, the whole" 0.44 +3alt(כֹּל/NOUN,כל/PRON,כָּלָה/VERB) {כל: from כֹּל, stem ; נו: possessive suffix} R:—  ⟹ OK
+Ruth.1.16: [he-mod]
+    ותאמר = אָמַר/VERB [Qal, wayyiqtol (narrative past), 3rd person feminine singular] "And she said" 0.45 +2alt(וַתֹּאמֶר/VERB,אָמַר/VERB) {ו: and ; ת: imperfect preformative, third person feminine singular ; אמר: Qal verbal base} R:—  ⟹ OK
+    רות = רוּת/PROPN [] "Ruth" 0.52 +2alt(רוּת/PROPN,רוּת/INTJ) R:—  ⟹ OK
+    אל = אֵל/ADP [] "to, toward, into" 0.44 +3alt(אֵל/NOUN,אֵל/PROPN,אֶל/ADP) R:—  ⟹ LEMMA (source: אַל PART, negative; "do not (with a wish or command")
+    תפגעי = פָּגַע/VERB [future, 2nd person feminine singular] "to hurt or injure (someone or something): to" 0.49 +2alt(נִפְגַּע/VERB,פָּגַע/VERB) R:—  ⟹ LEMMA (source: פָּגַע VERB, Qal, jussive, 2nd person feminine singular; "meet, encounter, reach")
+    בי = בְּ/ADP [personal, 1st person singular] "in me" 0.8 rule +3alt(ב/ADP,בִּי/PART,בַּי/INTJ) R:—  ⟹ FORM (source: ADP, )
+    לעזבך = עָזַב/VERB [Qal, infinitive construct] "to leave" 0.6 {ל: to, for ; עזב: Qal verb ; ך: object suffix} R:—  ⟹ OK
+    לשוב = שׁוּב/VERB [Qal, infinitive construct] "to return" 0.46 +1alt(לָשׁוּב/VERB) {ל: to, for ; שוב: Qal verb} R:—  ⟹ OK
+    מאחריך = אַחַר/ADP [] "after, behind" 0.42 {מ: from מִן, from ; אחרי: from אַחַר, stem ; ך: object of the preposition} R:—  ⟹ FORM (source: ADP, ; not offered at all)
+    כי = כִּי/CONJ [] "that, because, for, when" 0.46 +3alt(כִי/NOUN,כִּי/ADV,כִּי/CONJ) R:—  ⟹ OK
+    אל = אֵל/ADP [] "to, toward, into" 0.44 +3alt(אֵל/NOUN,אֵל/PROPN,אֶל/ADP) R:—  ⟹ OK
+    אשר = אֲשֶׁר/SCONJ [relative] "who, which, that" 0.46 +3alt(אִשֵּׁר/VERB,אֲשֶׁר/CONJ,אָשֵׁר/PROPN) R:—  ⟹ OK
+    תלכי = הָלַךְ/VERB [future, 2nd person feminine singular] "to walk, go, especially on foot" 0.43 +2alt(יָלַךְ/VERB,יָלַךְ/VERB) R:—  ⟹ LEMMA (source: יָלַךְ VERB, Qal, imperfect (yiqtol), 2nd person feminine singular; "to go, walk")
+    אלך = הָלַךְ/VERB [future, 1st person singular] "to walk, go, especially on foot" 0.43 +3alt(אֵל/NOUN,הָלַךְ/VERB,אֵל/NOUN) R:—  ⟹ LEMMA (source: יָלַךְ VERB, Qal, imperfect (yiqtol), 1st person common gender singular; "to go, walk")
+    ובאשר = בַאֲשֶׁר/SCONJ [relative] "who, which, that" 0.43 +1alt(אָשֵׁר/PROPN) {ו: from וְ, and ; ב: from בְּ, in, with, by ; אשר: from בַאֲשֶׁר, stem} R:—  ⟹ OK
+    תליני = לוּן/VERB [Qal, imperfect (yiqtol), 2nd person feminine singular] "You will lodge" 0.6 {ת: imperfect preformative, second person feminine singular ; ליני: Qal verbal base} R:—  ⟹ OK
+    אלין = אִלֵּין/PRON [demonstrative, masculine or feminine plural] "these" 0.4 +2alt(לוּן/VERB,אִלֵּין/PRON) R:—  ⟹ LEMMA (source: לוּן VERB, Qal, imperfect (yiqtol), 1st person common gender singular; "lodge, pass the night, abide")
+    עמך = עִם/ADP [personal, 2nd person singular] "with you (sg.)" 0.65 rule +3alt(עִם/ADP,עַם/NOUN,עִם/ADP) R:—  ⟹ LEMMA (source: עַם NOUN, masculine singular, construct; "people, nation"; not offered at all)
+    עמי = עִם/ADP [personal, 1st person singular] "with me" 0.65 rule +3alt(עִם/ADP,עַם/NOUN,עַם/NOUN) R:—  ⟹ LEMMA (source: עַם NOUN, masculine singular, construct; "people, nation")
+    ואלהיך = אֱלֹהִים/NOUN [masculine plural, construct] "God; gods" 0.47 {ו: from וְ, and ; אלהי: from אֱלֹהִים, stem ; ך: possessive suffix} R:—  ⟹ OK
+    אלהי = אֱלֹהִים/NOUN [masculine plural, construct] "God; gods" 0.44 +3alt(אלהים/NOUN,אֱלֹהִי/ADJ,אלהים/NOUN) R:—  ⟹ FORM (source: NOUN, masculine plural, construct; not offered at all)
+Ruth.1.17: [he-mod]
+    באשר = בַאֲשֶׁר/SCONJ [relative] "who, which, that" 0.45 +2alt(בַּאֲשֶׁר/ADP,אָשֵׁר/PROPN) {ב: from בְּ, in, with, by ; אשר: from בַאֲשֶׁר, stem} R:—  ⟹ OK
+    תמותי = מֵת/VERB [future, 2nd person feminine singular] "To die." 0.54 +1alt(מוּת/VERB) R:—  ⟹ LEMMA (source: מוּת VERB, Qal, imperfect (yiqtol), 2nd person feminine singular; "to die")
+    אמות = אַמָּה/NOUN [feminine plural, absolute] "ell, cubit, measure" 0.44 +3alt(אֵם/NOUN,אַמָּה/NOUN,אַמָּה/NOUN) R:—  ⟹ LEMMA (source: מוּת VERB, Qal, imperfect (yiqtol), 1st person common gender singular; "to die")
+    ושם = שֵׁם/NOUN [masculine singular, construct] "name; reputation" 0.42 +3alt(שָׁם/ADV,שׂוּם/VERB,שׂוּם/VERB) {ו: from וְ, and ; שם: from שֵׁם, stem} R:—  ⟹ LEMMA (source: שָׁם ADV, ; "there")
+    אקבר = נִקְבַּר/VERB [future, 1st person masculine or feminine singular] "to be buried, interred" 0.49 +2alt(קָבַר/VERB,קָבַר/VERB) R:—  ⟹ LEMMA (source: קָבַר VERB, Nifʿal, imperfect (yiqtol), 1st person common gender singular; "bury, be buried")
+    כה = כֹּה/ADV [] "thus, so; here" 0.45 +1alt(כָּה/ADV) R:—  ⟹ OK
+    יעשה = נַעֲשָׂה/VERB [future, 3rd person masculine singular] "to be done, performed, executed" 0.43 +3alt(עָשָׂה/VERB,עָשָׂה/VERB,עָשָׂה/VERB) R:—  ⟹ LEMMA (source: עָשָׂה VERB, Qal, imperfect (yiqtol), 3rd person masculine singular; "to do, make")
+    יהוה = יְהֹוָה/PROPN [] "the LORD (YHWH)" 0.46 +3alt(יהוה/PROPN,הִוָּה/VERB,יְהֹוִה/PROPN) R:—  ⟹ OK
+    לי = לְ/ADP [personal, 1st person singular] "to me" 0.8 rule +3alt(ל/ADP,לִי/PROPN,לְ־/ADP) R:—  ⟹ FORM (source: ADP, )
+    וכה = כֹּה/ADV [] "thus, so; here" 0.46 {ו: from וְ, and ; כה: from כֹּה, stem} R:—  ⟹ OK
+    יוסיף = יָסַף/VERB [Hifʿil, imperfect (yiqtol), 3rd person masculine singular] "He will add" 0.43 +2alt(הוֹסִיף/VERB,יָסַף/VERB) {י: imperfect preformative, third person masculine singular ; וסיף: Hifʿil verbal base} R:—  ⟹ OK
+    כי = כִּי/CONJ [] "that, because, for, when" 0.46 +3alt(כִי/NOUN,כִּי/ADV,כִּי/CONJ) R:—  ⟹ OK
+    המות = מָוֶת/NOUN [masculine singular, absolute, with the article] "death, death by violence, state of death" 0.45 +2alt(מָוֶת/NOUN,הָמָה/VERB) {ה: from הַ, the ; מות: from מָוֶת, stem} R:—  ⟹ OK
+    יפריד = פָּרַד/VERB [Hifʿil, imperfect (yiqtol), 3rd person masculine singular] "He will divide" 0.51 +1alt(הִפְרִיד/VERB) {י: imperfect preformative, third person masculine singular ; פריד: Hifʿil verbal base} R:—  ⟹ OK
+    ביני = בֵּין/ADP [] "between" 0.46 +2alt(בָּן/VERB,בֵּין/ADP) {בינ: from בֵּין, stem ; י: object of the preposition} R:—  ⟹ OK
+    ובינך = בֵּין/ADP [] "between" 0.43 {ו: from וְ, and ; בינ: from בֵּין, stem ; ך: object of the preposition} R:—  ⟹ FORM (source: ADP, ; not offered at all)
+
+== consonants only: 228 words; blank 0 (0.0 %); unconfirmed guess 0 (0.0 %); made by rule (prefix cut, hand table) 8 (3.5 %); with other readings 179 (78.5 %); no transliteration 228 (100.0 %); card = source reading 163 (71.5 %); right lemma, other form 14 (6.1 %); WRONG LEMMA 48 (21.1 %); sentences read as {"he-mod":20,"he-bib":2}
+blank: 
+unconfirmed: 

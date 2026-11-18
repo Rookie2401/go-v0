@@ -107,7 +107,9 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
   const VALIDATED_MAX = 32;
 
   async function call<T>(method: string, path: string, body?: unknown, query?: Record<string, string | number | undefined>): Promise<ApiResult<T>> {
-    const qs = query ? Object.entries(query).filter(([, v]) => v !== undefined && v !== '').map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`).join('&') : '';
+    // null is left out as undefined is (2026-11-18): an argument that crossed extension messaging (JSON) arrives as null, and GoReview inside
+    // the extension asked for /candidates?after=null, which the service refused (422), so no card was ever built there
+    const qs = query ? Object.entries(query).filter(([, v]) => v !== undefined && v !== null && v !== '').map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`).join('&') : '';
     const headers: Record<string, string> = {};
     if (self.token) headers.Authorization = `Bearer ${self.token}`;
     if (body !== undefined) headers['Content-Type'] = 'application/json';

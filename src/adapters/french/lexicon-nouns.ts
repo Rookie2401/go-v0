@@ -1320,4 +1320,5 @@ secrétaire/mf = secretary
 période/f = period
 désert/m = desert
 malade/mf = sick person, patient
+quotidien/m = daily newspaper; everyday life
 `;

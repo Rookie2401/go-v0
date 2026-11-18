@@ -23,7 +23,7 @@ export type { ExperimentalSpec } from './packs/experimental';
 export { bokmalManifest, NB_VERSION, NB_VALIDATION } from './packs/nb';
 export { nynorskManifest, NN_VERSION, NN_VALIDATION } from './packs/nn';
 export { latinManifest, LA_VERSION, LA_VALIDATION, LA_DICTIONARY } from './packs/la';
-export { frenchManifest, FR_VERSION, FR_VALIDATION, FR_DICTIONARY } from './packs/fr';
+export { frenchManifest, FR_VERSION, FR_VALIDATION, FR_DICTIONARY, FR_TUTORIAL_REF, FR_TUTORIAL_MINUTES } from './packs/fr';
 export {
   SQ_TUTORIAL, SQ_TUTORIAL_STEPS, SQ_PASSAGE, ES_TUTORIAL, ES_TUTORIAL_STEPS, ES_PASSAGE, DE_TUTORIAL, DE_TUTORIAL_STEPS, HI_TUTORIAL, HI_TUTORIAL_STEPS,
   TH_TUTORIAL, TH_TUTORIAL_STEPS, NB_TUTORIAL, NB_TUTORIAL_STEPS, NN_TUTORIAL, NN_TUTORIAL_STEPS, LA_TUTORIAL, LA_TUTORIAL_STEPS, TUTORIALS, tutorialFor,

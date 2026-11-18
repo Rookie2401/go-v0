@@ -17,12 +17,17 @@
  */
 import { FRENCH_CONSTRUCTION_TEXTS } from '../../../../src/adapters/french/construction-texts';
 import type { PackManifest, ValidationCase } from '../manifest';
-import { FR_TUTORIAL } from '../tutorial/fr';
 import { experimentalManifest } from './experimental';
 
 /** Adapter version (checked against src/adapters/fr.ts by test/language-packs/registry.test.ts). */
 export const FR_VERSION = '1';
 /** The shipped dictionary (public/dict/fr/manifest.json): checked by installPack against the files on the device. Built 2026-11-17 from the extract of 2026-10-30. */
+/**
+ * The orientation (tutorial/fr.ts), by its reference and length. Constants, not an import: the manifest is listed by the extension's background
+ * worker, which has no use for the tutorial's text (about 12 KB); test/language-packs/french-tutorial.test.ts compares them with FR_TUTORIAL.
+ */
+export const FR_TUTORIAL_REF = 'tutorial/fr';
+export const FR_TUTORIAL_MINUTES = 21;
 export const FR_DICTIONARY = { id: 'kaikki-fr@2026-10-30', entries: 401953, frequency: false } as const;
 
 /**
@@ -120,7 +125,7 @@ export function frenchManifest(): PackManifest {
     },
     validation: FR_VALIDATION,
     pronunciationNotes: true,
-    tutorial: { ref: FR_TUTORIAL.ref, estimatedMinutes: FR_TUTORIAL.estimatedMinutes },
+    tutorial: { ref: FR_TUTORIAL_REF, estimatedMinutes: FR_TUTORIAL_MINUTES },
     thin: [
       'the hand word list holds about 3,400 lemmas and their glosses; a word outside it is read by the rules and confirmed, where it can be, by the dictionary-derived lemma list and the installed dictionary, and otherwise shown as a rule guess that says so;',
       'a written form that several words share (porte, livre, est, été, son, vis) returns every reading, and the order follows the neighbouring words only where they decide: homographs that meaning alone separates (les vers, les fils) are not decided;',

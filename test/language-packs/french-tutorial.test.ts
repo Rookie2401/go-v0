@@ -6,6 +6,7 @@
 import { describe, expect, it } from 'vitest';
 import { FR_ALPHABET_ROWS, FR_PASSAGE, FR_TUTORIAL } from '../../packages/language-packs/src/tutorial/fr';
 import type { TutorialStepKind } from '../../packages/language-packs/src/tutorial/types';
+import { FR_TUTORIAL_MINUTES, FR_TUTORIAL_REF, frenchManifest } from '../../packages/language-packs/src/packs/fr';
 
 const KINDS: TutorialStepKind[] = ['alphabet', 'sounds', 'words', 'patterns', 'passage', 'concept', 'practice'];
 const step = (id: string) => {
@@ -107,5 +108,13 @@ describe('FR_ALPHABET_ROWS', () => {
     for (const l of ['é', 'è', 'ê', 'ë', 'à', 'â', 'î', 'ï', 'ô', 'ù', 'û', 'ü', 'ç', 'œ', 'æ']) expect(glyphs.has(l), l).toBe(true);
     for (const p of ['ou', 'oi', 'au', 'eau', 'ai', 'ei', 'eu', 'œu', 'an / en', 'on', 'in / ain / ein', 'un', 'gn', 'ch', 'ph', 'th', 'qu', 'ill', 'final -e']) expect(glyphs.has(p), p).toBe(true);
     expect([...glyphs].some((x) => x.startsWith('final d'))).toBe(true);
+  });
+});
+
+describe('the pack names its orientation by constants (the manifest does not import the tutorial text)', () => {
+  it('the constants are the reference and length of the tutorial itself, and the manifest carries them', () => {
+    expect(FR_TUTORIAL_REF).toBe(FR_TUTORIAL.ref);
+    expect(FR_TUTORIAL_MINUTES).toBe(FR_TUTORIAL.estimatedMinutes);
+    expect(frenchManifest().tutorial).toEqual({ ref: FR_TUTORIAL.ref, estimatedMinutes: FR_TUTORIAL.estimatedMinutes, skippable: true });
   });
 });

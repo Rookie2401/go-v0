@@ -316,6 +316,9 @@ function invertedSubjectAfter(h: Here): string | undefined {
   return f;
 }
 
+/** Verbs that link a subject to an adjective: after them an adjective / adverb homograph is the adjective. */
+const LINKING_VERBS = new Set(['être', 'sembler', 'devenir', 'redevenir', 'rester', 'demeurer', 'paraître', 'avoir', 'trouver', 'rendre', 'croire', 'juger', 'tenir', 'faire']);
+
 // ── the rules, in the order they are asked; the first that gives a verdict decides ──
 interface Rule { name: string; run(h: Here): Verdict }
 
@@ -600,6 +603,11 @@ const RULES: readonly Rule[] = [
     const own = h.prev === undefined ? [] : h.base[h.prev].filter(isOwn);
     if (own.length === 0 || !own.every(isVerbal) || !own.some(isFinite)) return undefined;
     if (h.cands.some((c) => c.pos === 'ADV') && h.cands.some((c) => c.pos === 'NOUN')) return h.pick((c) => c.pos === 'ADV', 'directly after a verb: the adverb', 'weak');
+    // parler fort, chanter juste, coûter cher, travailler dur: a word that is an adjective and an adverb, right after a verb that is not a
+    // linking verb (il est fort, elle semble juste), is the adverb (added by the lead after the held-out run: "Les enfants crient fort")
+    if (h.cands.some((c) => c.pos === 'ADV') && h.cands.some((c) => c.pos === 'ADJ') && !own.some((c) => LINKING_VERBS.has(c.lemma ?? '')) && !h.own(h.next).some((c) => c.pos === 'NOUN')) {
+      return h.pick((c) => c.pos === 'ADV', 'directly after a verb that is not être or another linking verb: the adverb', 'weak');
+    }
     const auxiliary = h.cands.some((c) => isFinite(c) && (c.lemma === 'être' || c.lemma === 'avoir'));
     if (!auxiliary && !own.some((c) => c.lemma === 'avoir' || c.lemma === 'être') && h.cands.some(isFinite) && h.cands.some((c) => !isVerbal(c))) {
       return h.pick((c) => !isVerbal(c), 'after a conjugated verb: its object or complement, not a second verb', 'weak');

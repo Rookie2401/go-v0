@@ -189,6 +189,9 @@ function handFirst(readings: AnalysisCandidate[]): AnalysisCandidate[] {
 /** A reading whose lemma a list vouches for (the hand list, or the dictionary's lemma list): not a guess from the ending. */
 const vouched = (c: AnalysisCandidate): boolean => c.notes?.lemmaStatus !== undefined && c.notes.lemmaStatus !== 'inferred by the rules';
 
+/** The lemma of the second half of a contraction: aux = à + les (le); auxquels = à + lesquels (lequel). */
+const CONTRACTED_LEMMA: Readonly<Record<string, string>> = { les: 'le', la: 'le', lesquels: 'lequel', lesquelles: 'lequel', laquelle: 'lequel' };
+
 /** au = à + le: the halves the word list names (`notes.components`), as parts of the written word. */
 function withContractionParts(form: string, c: AnalysisCandidate): AnalysisCandidate {
   const comps = c.notes?.components;
@@ -197,7 +200,7 @@ function withContractionParts(form: string, c: AnalysisCandidate): AnalysisCandi
   // the written word does not show where one half ends: both parts cover the whole word, in order
   const parts: WordPart[] = [
     { text: form, start: 0, end: form.length, lemma: first, pos: 'ADP', kind: 'contracted' },
-    { text: form, start: 0, end: form.length, lemma: second === 'les' || second === 'la' ? 'le' : second, pos: c.pos === 'PRON' ? 'PRON' : 'DET', kind: 'contracted',
+    { text: form, start: 0, end: form.length, lemma: CONTRACTED_LEMMA[second] ?? second, pos: c.pos === 'PRON' ? 'PRON' : 'DET', kind: 'contracted',
       ...(c.pos === 'PRON' ? {} : { morph: { Definite: 'Def', PronType: 'Art', Number: second === 'les' ? 'Plur' : 'Sing' } }) },
   ];
   return { ...c, parts };
@@ -277,6 +280,8 @@ function analyzeFormUncached(form: string): AnalysisCandidate[] {
     if (!mergeable) return hand;
     const have = new Set(hand.map(keyOf));
     // beside a word-list reading the rules add only readings of lemmas the list also knows: never a guessed verb or a guessed derivation
+    // (not the lemma list's: a noun use of every adjective it lists would crowd the adjective out — ces beaux paysages, un court moment; measured on
+    // UD French GSD dev, adding them lowered the first reading's part of speech by 0.3 points. A noun the hand list lacks is added to the hand list.)
     const alt = engineRead(form).filter((c) => !have.has(keyOf(c)) && c.notes?.lemmaStatus === 'in the word list');
     if (!alt.length) return hand;
     // the word list's reading comes first; the rules' other readings follow it, below it

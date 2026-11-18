@@ -111,6 +111,8 @@ const SPECS: readonly Spec[] = [
     varieties: [{ id: 'el-mod', label: 'Modern Greek (default)' }, { id: 'el-koi', label: 'Koine Greek' }, { id: 'el-att', label: 'Attic Greek' }, { id: 'el-hom', label: 'Homeric Greek' }],
   },
   { packIds: ['pack:arc'] },
+  // French: one language; the regions are labels on words, not a choice the learner must make before reading
+  { packIds: ['pack:fr'] },
 ];
 
 const SCRIPT_NAME: Readonly<Record<string, string>> = { Latn: 'Latin', Deva: 'Devanagari', Thai: 'Thai script', Hebr: 'Hebrew script', Grek: 'Greek alphabet' };

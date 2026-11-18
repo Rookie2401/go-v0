@@ -43,6 +43,9 @@ import { VERB_SLOT_PATTERNS, buildPhraseRules } from './french/phrases';
 import { frenchSyntax } from './french/syntax';
 import { historicalReadings } from './french/historical';
 import { checkFrenchProduction } from './french/production';
+import { FR_FULL_SOURCE_ID, fullFlags, fullGender, fullLemma, loadFrenchLexicon, onFrenchLexiconLoaded } from './french/lexicon-full';
+
+export { loadFrenchLexicon };
 
 const LANG = 'fr' as const;
 const VERSION = '1';
@@ -54,6 +57,8 @@ export const FR_SOURCE_IDS = {
   phrases: `${ANALYZER}:phrases`,
   constructions: `${ANALYZER}:constructions`,
   rules: `${ANALYZER}:rules`,
+  /** The lemma list taken from the dictionary (french/lexicon-full): it says that a word exists, with its part of speech and gender; it carries no meaning. */
+  lemmas: `${ANALYZER}:lemmas`,
 } as const;
 
 const FR_SOURCES: Record<string, AnalysisSourceInfo> = {
@@ -61,6 +66,7 @@ const FR_SOURCES: Record<string, AnalysisSourceInfo> = {
   [FR_SOURCE_IDS.phrases]: { id: FR_SOURCE_IDS.phrases, label: 'French phrase list', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
   [FR_SOURCE_IDS.constructions]: { id: FR_SOURCE_IDS.constructions, label: 'French grammar patterns', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
   [FR_SOURCE_IDS.rules]: { id: FR_SOURCE_IDS.rules, label: 'French word-form rules', origin: 'rule', reviewStatus: 'machine-drafted', version: VERSION },
+  [FR_SOURCE_IDS.lemmas]: { id: FR_SOURCE_IDS.lemmas, label: `French lemma list (Wiktionary, via kaikki.org — CC BY-SA 4.0; ${FR_FULL_SOURCE_ID})`, origin: 'dictionary', reviewStatus: 'machine-drafted', version: VERSION },
 };
 
 // ── the word list: rows (text blocks) → entries ──
@@ -95,11 +101,24 @@ const CLOSED = new Set(['DET', 'PRON', 'ADP', 'CONJ', 'SCONJ', 'NUM', 'INTJ', 'P
 /** Closed-class words that are also common verb or noun forms: the engine's reading is kept beside the hand one (entre: between / enters). */
 const ALSO_OPEN = new Set(['entre', 'pendant', 'durant', 'suivant', 'devant', 'puis', 'contre', 'sous', 'tu', 'vers', 'dix', 'neuf', 'la', 'sur', 'car', 'or', 'pas', 'point', 'personne', 'son', 'ton']);
 
-const knownLemma = (lemma: string, pos?: PartOfSpeech): boolean => !!frLexicon.find(lemma, pos);
-/** The gender the list gives a noun: the first gender among its forms (a /mf noun says "Fem,Masc"). */
-const genderOf = (lemma: string, pos: PartOfSpeech): string | undefined => frLexicon.find(lemma, pos)?.forms.map((f) => f.morph.Gender).find((g) => g !== undefined);
-/** One options object, so that the engine's per-lexicon memo is shared by every call. */
-const ENGINE_OPTS = { knownLemma, genderOf };
+/** Is the lemma, with this very part of speech, in the hand word list? (être and avoir are AUX there; the engine calls them verbs.) */
+const inHandPair = (lemma: string, pos: PartOfSpeech): boolean => !!frLexicon.find(lemma, pos) || ((pos === 'VERB' || pos === 'AUX') && (!!frLexicon.find(lemma, 'VERB') || !!frLexicon.find(lemma, 'AUX')));
+/** Is the lemma in the hand word list (the one that carries glosses)? */
+const inHandList = (lemma: string, pos?: PartOfSpeech): boolean => !!frLexicon.find(lemma, pos);
+/**
+ * Is this a real lemma? The hand word list answers first; then the lemma list taken from the dictionary (french/lexicon-full: about
+ * 78,000 lemmas with part of speech and gender, loaded lazily, so it answers "no" until it has arrived). être and avoir are AUX in the
+ * hand list and verbs in the dictionary's.
+ */
+const knownLemma = (lemma: string, pos?: PartOfSpeech): boolean => inHandList(lemma, pos) || fullLemma(lemma, pos === 'AUX' ? 'VERB' : pos);
+/** The gender the hand list gives a noun (the first gender among its forms; a /mf noun says "Fem,Masc"), else the dictionary lemma list's. */
+const genderOf = (lemma: string, pos: PartOfSpeech): string | undefined =>
+  frLexicon.find(lemma, pos)?.forms.map((f) => f.morph.Gender).find((g) => g !== undefined) ?? (pos === 'NOUN' || pos === 'PROPN' ? fullGender(lemma) : undefined);
+/**
+ * One options object, so that the engine's per-lexicon memo is shared by every call. The engine remembers its answers per knownLemma
+ * function, so when the lemma list arrives the object is made again with new functions and every cache built on the old answers is dropped.
+ */
+let ENGINE_OPTS = { knownLemma: (l: string, p?: PartOfSpeech) => knownLemma(l, p), genderOf: (l: string, p: PartOfSpeech) => genderOf(l, p) };
 const union = <T extends string>(a: readonly T[] | undefined, b: readonly T[] | undefined): T[] | undefined => {
   const out = [...new Set([...(a ?? []), ...(b ?? [])])];
   return out.length ? out : undefined;
@@ -131,11 +150,21 @@ function annotate(c: AnalysisCandidate): AnalysisCandidate {
  */
 function fromEngine(a: FrenchAnalysis): AnalysisCandidate {
   const entry = a.lemmaKnown ? frLexicon.find(a.lemma, a.pos) ?? frLexicon.find(a.lemma) : undefined;
+  // a lemma only the dictionary's lemma list knows: the word exists (so the reading is not a guess), but the list gives it no meaning
+  const listed = a.lemmaKnown && !inHandPair(a.lemma, a.pos);
   const c: AnalysisCandidate = {
-    lemma: a.lemma, pos: a.pos, morph: { ...a.morph }, confidence: a.lemmaKnown ? a.confidence : Math.min(a.confidence, 0.6),
-    notes: { source: 'rule', rule: a.rule, lemmaStatus: a.lemmaKnown ? 'in the word list' : 'inferred by the rules' },
+    lemma: a.lemma, pos: a.pos, morph: { ...a.morph }, confidence: a.lemmaKnown ? (listed ? Math.min(a.confidence, 0.8) : a.confidence) : Math.min(a.confidence, 0.6),
+    notes: { source: 'rule', rule: a.rule, lemmaStatus: !a.lemmaKnown ? 'inferred by the rules' : listed ? 'in the dictionary lemma list' : 'in the word list' },
     origin: 'rule', sourceId: FR_SOURCE_IDS.rules,
   };
+  if (listed) {
+    const notes: Record<string, string | string[]> = { ...c.notes, lemmaSource: FR_SOURCE_IDS.lemmas };
+    const flags = fullFlags(a.lemma, a.pos === 'AUX' ? 'VERB' : a.pos);
+    if (flags?.hAspire) notes.hAspire = 'yes';
+    if (flags?.pronominal) notes.pronominal = 'yes';
+    if (flags?.dated) c.register = ['archaic'];
+    c.notes = notes;
+  }
   if (entry) c.gloss = entry.gloss;
   if (!a.lemmaKnown) c.unconfirmed = true;
   if (a.parts?.length) c.parts = a.parts.map((p) => ({ ...p }));
@@ -145,6 +174,20 @@ function fromEngine(a: FrenchAnalysis): AnalysisCandidate {
 }
 
 const engineRead = (form: string): AnalysisCandidate[] => analyzeFrenchForm(form, ENGINE_OPTS).map(fromEngine);
+/**
+ * Readings of one form, some of a lemma the hand list holds and some of a lemma only the dictionary's lemma list holds: the hand list's
+ * come first. The hand list is the common words; the dictionary's list also holds rare ones that are spelled like a form of a common
+ * one (verra: the future of voir, and the passé simple of the rare verrer; belle: the adjective, and a noun use of beau), and those
+ * must not lead. They are kept, below.
+ */
+function handFirst(readings: AnalysisCandidate[]): AnalysisCandidate[] {
+  const hand = readings.filter((c) => c.notes?.lemmaStatus === 'in the word list');
+  if (!hand.length || hand.length === readings.length) return readings;
+  const floor = Math.min(...hand.map((c) => c.confidence)) - 0.2;
+  return [...hand, ...readings.filter((c) => !hand.includes(c)).map((c) => ({ ...c, confidence: Math.min(c.confidence, Math.max(0.3, floor)) }))];
+}
+/** A reading whose lemma a list vouches for (the hand list, or the dictionary's lemma list): not a guess from the ending. */
+const vouched = (c: AnalysisCandidate): boolean => c.notes?.lemmaStatus !== undefined && c.notes.lemmaStatus !== 'inferred by the rules';
 
 /** au = à + le: the halves the word list names (`notes.components`), as parts of the written word. */
 function withContractionParts(form: string, c: AnalysisCandidate): AnalysisCandidate {
@@ -241,7 +284,8 @@ function analyzeFormUncached(form: string): AnalysisCandidate[] {
     return [...hand.map((c) => ({ ...c, confidence: Math.min(c.confidence, top) })), ...alt.map((c) => ({ ...c, confidence: Math.min(c.confidence, top - 0.05) }))];
   }
   const eng = engineRead(form);
-  if (eng.some((c) => c.notes?.lemmaStatus === 'in the word list')) return eng;
+  // a reading a list vouches for stands; the guesses the rules made beside it for lemmas no list knows are dropped (cathédrale is the noun, not a verb the rules could spell)
+  if (eng.some(vouched)) return handFirst(eng.filter(vouched));
   // the page writes "coeur", "oeuvre", "soeur": the word is the one with the ligature; the text is not changed, the card says so
   for (const v of ligatureVariants(form)) {
     const solid = solidReadings(v);
@@ -339,6 +383,11 @@ function startAgain(list: AnalysisCandidate[], contextFree: AnalysisCandidate[])
 
 const PHRASES: PhraseRule[] = buildPhraseRules();
 
+onFrenchLexiconLoaded(() => {
+  ENGINE_OPTS = { knownLemma: (l: string, p?: PartOfSpeech) => knownLemma(l, p), genderOf: (l: string, p: PartOfSpeech) => genderOf(l, p) };
+  FORM_CACHE.clear();
+});
+
 const SUPPORT: AdapterSupport = {
   tokenization: 'dependable', // its own scanner: elided words and hyphen clitics are their own tokens, compounds are whole; every token slices the input exactly
   sentenceSegmentation: 'limited', // guillemets, dialogue dashes, French spacing and a list of abbreviations; an unlisted abbreviation followed by a capital can split a sentence
@@ -385,8 +434,46 @@ function orderByContext(tokens: RawToken[], base: AnalysisCandidate[][]): Analys
   });
 }
 
+/**
+ * Function words that only French has among the languages a learner's pages are likely to be in: none of them is a common word of
+ * English, Spanish, German, Italian or Albanian (so not le, la, de, en, que, un, les, il, on, son, sur, qui, nos, vos, mes, bien, which those languages share).
+ * A text of two or more words that shows none of them gives no sign of being French.
+ */
+const FRENCH_ANCHORS: ReadonlySet<string> = new Set([
+  'des', 'du', 'au', 'aux', 'dans', 'pas', 'avec', 'pour', 'sans', 'sous', 'chez', 'vers', 'et', 'est', 'sont', 'ont', 'était', 'étaient', 'être', 'avoir', 'été', 'suis', 'sommes', 'êtes',
+  'avons', 'avez', 'avait', 'avaient', 'sera', 'seront', 'serait', 'fut', 'je', 'nous', 'vous', 'ils', 'elle', 'elles', 'eux', 'moi', 'toi', 'ce', 'cet', 'cette', 'ces', 'cela', 'ça', 'ceci',
+  'une', 'tes', 'ses', 'notre', 'votre', 'leur', 'leurs', 'mais', 'où', 'donc', 'alors', 'aussi', 'comme', 'quand', 'parce', 'puisque', 'lorsque', 'depuis', 'pendant',
+  'après', 'avant', 'très', 'trop', 'beaucoup', 'peu', 'toujours', 'jamais', 'encore', 'déjà', 'ici', 'oui', 'tout', 'tous', 'toute', 'toutes', 'même', 'autre', 'autres', 'quel',
+  'quelle', 'quels', 'quelles', 'dont', 'lequel', 'laquelle', 'pourquoi', 'comment', 'fait', 'faire', 'peut', 'peut-être', "aujourd'hui", 'voici', 'voilà', 'à',
+  "qu'", "j'", "c'", "n'", "d'", "l'", "s'", "jusqu'", "lorsqu'", "puisqu'",
+]);
+
+/**
+ * A reading that only the dictionary's lemma list vouches for is taken at its word only in a text that shows it is French. That list
+ * holds some 78,000 lemmas, many of them words French shares with or lent to its neighbours (important, table, service, contact, general,
+ * animal): on its own it reads a quarter of an English page and two fifths of a Spanish one, enough for the pack to take text that is not
+ * French (GoLearn Active gives a block to the pack that reads 45 % of its words). So where a text of two or more words holds none of the
+ * French-only function words above, those readings stay what they are, readings by rule, but are not vouched for: `unconfirmed`, 0.6 at
+ * most, and the installed dictionary may still confirm them. The hand word list's readings are not touched, and a word looked up on its
+ * own (no sentence) is read as before.
+ */
+function unanchored(tokens: RawToken[], base: AnalysisCandidate[][]): AnalysisCandidate[][] {
+  let words = 0;
+  for (const t of tokens) {
+    if (!t.isWord) continue;
+    words++;
+    if (FRENCH_ANCHORS.has(t.normalized)) return base;
+  }
+  if (words < 2) return base;
+  return base.map((list) => (list.some((c) => c.notes?.lemmaSource === FR_SOURCE_IDS.lemmas)
+    ? list.map((c) => (c.notes?.lemmaSource === FR_SOURCE_IDS.lemmas
+      ? { ...c, unconfirmed: true, confidence: Math.min(c.confidence, 0.6), notes: { ...c.notes, vouching: 'the text around this word shows no French function word, so the lemma list alone does not vouch for this reading' } }
+      : c))
+    : list));
+}
+
 function analyzeAll(tokens: RawToken[]): AnalysisCandidate[][] {
-  return orderByContext(tokens, tokens.map((t, i) => (t.isWord ? readWord(i, tokens) : [])));
+  return orderByContext(tokens, unanchored(tokens, tokens.map((t, i) => (t.isWord ? readWord(i, tokens) : []))));
 }
 
 export const frAdapter: LanguageAdapter = {
@@ -420,7 +507,7 @@ export const frAdapter: LanguageAdapter = {
       if (given?.has(i)) return t.isWord ? startAgain(analyzed[i].candidates, readWord(i, tokens)) : analyzed[i].candidates;
       return t.isWord ? readWord(i, tokens) : [];
     });
-    const ordered = orderByContext(tokens, base);
+    const ordered = orderByContext(tokens, unanchored(tokens, base));
     return tokens.map((t, i) => (t.isWord && analyzers.has(analyzed[i].analyzer) ? { ...analyzed[i], candidates: [...ordered[i]] } : analyzed[i]));
   },
 

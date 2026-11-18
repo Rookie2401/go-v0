@@ -14,8 +14,10 @@ import { TH_TUTORIAL, TH_TUTORIAL_STEPS } from './th';
 import { HE_TUTORIAL, HE_TUTORIAL_STEPS } from './he';
 import { EL_TUTORIAL, EL_TUTORIAL_STEPS } from './el';
 import { ARC_TUTORIAL, ARC_TUTORIAL_STEPS } from './arc';
+import { FR_TUTORIAL, FR_TUTORIAL_STEPS, FR_PASSAGE } from './fr';
 import type { Tutorial } from './types';
 
+export { FR_TUTORIAL, FR_TUTORIAL_STEPS, FR_PASSAGE };
 export { ARC_TUTORIAL, ARC_TUTORIAL_STEPS, DE_TUTORIAL, DE_TUTORIAL_STEPS, ES_TUTORIAL, ES_TUTORIAL_STEPS, ES_PASSAGE, HI_TUTORIAL, HI_TUTORIAL_STEPS, LA_TUTORIAL, LA_TUTORIAL_STEPS, NB_TUTORIAL, NB_TUTORIAL_STEPS, NN_TUTORIAL, NN_TUTORIAL_STEPS, SQ_TUTORIAL, SQ_TUTORIAL_STEPS, SQ_PASSAGE, TH_TUTORIAL, TH_TUTORIAL_STEPS, HE_TUTORIAL, HE_TUTORIAL_STEPS, EL_TUTORIAL, EL_TUTORIAL_STEPS };
 export type {
   Tutorial, TutorialAuthorship, TutorialExample, TutorialPassage, TutorialPractice, TutorialStep, TutorialStepKind,
@@ -34,6 +36,7 @@ export const TUTORIALS: Readonly<Record<string, Tutorial>> = Object.freeze({
   he: HE_TUTORIAL,
   el: EL_TUTORIAL,
   arc: ARC_TUTORIAL,
+  fr: FR_TUTORIAL,
 });
 
 /** The orientation of a language; undefined for a language with none (never an inherited key). */

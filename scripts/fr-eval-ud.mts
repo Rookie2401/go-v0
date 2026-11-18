@@ -132,6 +132,13 @@ if (dry) {
 const mod = await import('../src/adapters/fr').catch(() => undefined);
 const adapter = (mod as { frAdapter?: LanguageAdapter } | undefined)?.frAdapter;
 if (!adapter) { console.error('src/adapters/fr.ts (export frAdapter) does not exist yet: nothing to evaluate. Use --dry for the treebank statistics.'); process.exit(2); }
+// --lemmas: with the lemma list taken from the dictionary loaded (what the extension has a moment after the analyser loads); without it, the hand word list alone
+if (flag('lemmas')) {
+  const load = (mod as { loadFrenchLexicon?: () => Promise<void> }).loadFrenchLexicon;
+  if (!load) { console.error('--lemmas: src/adapters/fr.ts does not export loadFrenchLexicon'); process.exit(2); }
+  await load();
+  console.log('(the dictionary lemma list is loaded)');
+} else console.log('(the hand word list alone; --lemmas loads the dictionary lemma list as the extension does)');
 
 const FEATURES = ['Mood', 'Tense', 'Person', 'Number', 'Gender', 'VerbForm'] as const;
 const mapPos = (p: string | undefined): string => (p === 'CONJ' ? 'CCONJ' : p ?? '?');

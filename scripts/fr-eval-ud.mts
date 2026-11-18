@@ -244,6 +244,36 @@ for (const k of FEATURES) {
 console.log(`\nCONTRACTIONS (multiword tokens, e.g. du = de + le; lemma compared with either UD lemma or the surface)`);
 console.log(`  contractions whose span the adapter matched: ${contr.total}; lemma of first reading ok: ${pct(contr.lemmaFirst, contr.total)}; among readings: ${pct(contr.lemmaAmong, contr.total)}; adapter gives parts: ${contr.partsGiven}, parts agree with the two UD lemmas: ${pct(contr.partsAgree, contr.partsGiven)}`);
 
+// --json <file>: the counts of this run, merged into the file under "<split>" / "<lemmas|hand>" (docs/french/EVALUATION.json is the committed
+// report the pack's evidence cites; test/language-packs/french-evidence.test.ts compares the two). No date is written: the caller records it.
+const jsonOut = opt('json');
+if (jsonOut) {
+  if (Number.isFinite(limit)) { console.error('--json is refused with --limit: a report holds whole splits only'); process.exit(1); }
+  const fsm = await import('node:fs');
+  const file = join(ROOT, jsonOut);
+  const prior = fsm.existsSync(file) ? JSON.parse(fsm.readFileSync(file, 'utf8')) as Record<string, unknown> : {};
+  const runs = (prior.runs ?? {}) as Record<string, Record<string, unknown>>;
+  const count = (t: Tally) => ({ ok: t.ok, n: t.n });
+  (runs[split] ??= {})[flag('lemmas') ? 'lemmas' : 'hand'] = {
+    analyser: `adapter-fr@${adapter.version}`, sentences: sentences.length,
+    tokenisation: { udWords: tok.udWords, matched: tok.matched },
+    coverage: { aligned: cov.aligned, anyReading: cov.any, vouched: cov.confirmed },
+    lemmaFirst: count(lemmaFirst), lemmaAmong: count(lemmaAmong), lemmaFirstWithoutPronouns: count(lemmaFirstNoPron),
+    uposStrict: count(uposStrict), uposAuxVerbMerged: count(uposMerged),
+    features: Object.fromEntries(FEATURES.filter((k) => featAll[k]).map((k) => [k, count(featAll[k]!)])),
+    contractions: { total: contr.total, lemmaFirst: contr.lemmaFirst },
+  };
+  const out = {
+    what: 'The French analyser (src/adapters/fr.ts) against the Universal Dependencies French GSD treebank: counts written by scripts/fr-eval-ud.mts --json.',
+    gold: 'UD French GSD (https://github.com/UniversalDependencies/UD_French-GSD), CC BY-SA 4.0: a treebank annotated by people. Evaluation only; never shipped.',
+    conventions: 'First reading of each word; lemma compared case-insensitively. "hand" = the hand word list alone; "lemmas" = with the dictionary lemma list loaded, as in the extension. The dev split was looked at while the context rules were written; the test split was run once, at the end, and not looked into.',
+    ...(prior.measuredOn ? { measuredOn: prior.measuredOn } : {}),
+    runs,
+  };
+  fsm.writeFileSync(file, `${JSON.stringify(out, null, 2)}\n`);
+  console.log(`\nwritten: ${jsonOut} (${split} / ${flag('lemmas') ? 'lemmas' : 'hand'})`);
+}
+
 if (show !== undefined) {
   const top = (m: Map<string, number>, n: number) => [...m].sort((a, b) => b[1] - a[1]).slice(0, n).map(([k, c]) => `  ${String(c).padStart(4)}  ${k}`).join('\n');
   console.log(`\nTOP 30 LEMMA ERRORS (first reading)\n${top(lemmaErrors, 30)}`);

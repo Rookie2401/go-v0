@@ -83,7 +83,7 @@ export function frenchCellFeatureSets(pos: PartOfSpeech, morph: Record<string, s
 const LAYOUT_LABELS: ParadigmLayout['labels'] = {
   VerbForm: { Inf: 'infinitive', Part: 'participle', Fin: 'finite forms' },
   Mood: { Ind: 'indicative', Sub: 'subjunctive', Imp: 'imperative', Cnd: 'conditional' },
-  Tense: { Pres: 'present', Imp: 'imperfect', Past: 'past (passé simple, literary)', Fut: 'future' },
+  Tense: { Pres: 'present', Imp: 'imperfect', Past: 'past', Fut: 'future' },
   Gender: { '': 'masculine', Masc: 'masculine', Fem: 'feminine' },
 };
 

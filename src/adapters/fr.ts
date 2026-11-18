@@ -173,7 +173,22 @@ function fromEngine(a: FrenchAnalysis): AnalysisCandidate {
   return annotate(c);
 }
 
-const engineRead = (form: string): AnalysisCandidate[] => analyzeFrenchForm(form, ENGINE_OPTS).map(fromEngine);
+/**
+ * One reading per person. The engine writes je parle / il parle as one reading with Person "1,3" (the form is the same); kept so, the card
+ * would say "I carry" of "Paul porte un manteau", because nothing could put the third person first. As separate readings the subject
+ * decides (french/disambiguate.ts: after je the first person, after a noun or il the third), and where no subject is in sight both are
+ * there, as they were. Only finite verbs, and only the person: a noun's "singular or plural" (fils) stays one reading.
+ */
+function byPerson(c: AnalysisCandidate): AnalysisCandidate[] {
+  const persons = c.morph.Person?.split(',') ?? [];
+  if (persons.length < 2 || c.morph.VerbForm !== 'Fin') return [c];
+  // the third person first: in written French a verb without je or tu beside it is nearly always third person (a noun subject, a relative
+  // clause, a subject several words back), and je / tu, when they are the subject, stand next to the verb where the rules see them
+  const order = ['3', '1', '2'];
+  return [...persons].sort((x, y) => order.indexOf(x) - order.indexOf(y)).map((p) => ({ ...c, morph: { ...c.morph, Person: p }, confidence: Math.min(c.confidence, 0.75) }));
+}
+
+const engineRead = (form: string): AnalysisCandidate[] => analyzeFrenchForm(form, ENGINE_OPTS).map(fromEngine).flatMap(byPerson);
 /**
  * Readings of one form, some of a lemma the hand list holds and some of a lemma only the dictionary's lemma list holds: the hand list's
  * come first. The hand list is the common words; the dictionary's list also holds rare ones that are spelled like a form of a common
@@ -215,9 +230,9 @@ function withContractionParts(form: string, c: AnalysisCandidate): AnalysisCandi
 function verbCells(form: string, c: AnalysisCandidate): AnalysisCandidate[] {
   if ((c.pos !== 'AUX' && c.pos !== 'VERB') || !c.lemma) return [c];
   const cells = analyzeFrenchForm(form, ENGINE_OPTS).filter((a) => a.lemma === c.lemma && (a.pos === 'VERB' || a.pos === 'AUX'));
-  if (cells.length < 2) return cells.length === 1 ? [{ ...c, morph: { ...cells[0].morph } }] : [c];
+  if (cells.length < 2) return cells.length === 1 ? byPerson({ ...c, morph: { ...cells[0].morph } }) : [c];
   // several cells of one verb: each is a reading, none more confident than a competing one may be
-  return cells.map((a) => ({ ...c, morph: { ...a.morph }, confidence: Math.min(c.confidence, 0.75) }));
+  return cells.flatMap((a) => byPerson({ ...c, morph: { ...a.morph }, confidence: Math.min(c.confidence, 0.75) }));
 }
 
 /**
@@ -231,6 +246,32 @@ function listReadings(form: string): AnalysisCandidate[] {
   const differs = (k: 'Polarity' | 'Poss', pos: string) => (h: (typeof hits)[number]) =>
     h.entry.pos === pos && h.form.morph[k] === undefined && hits.some((o) => o.entry === h.entry && o.form.morph[k] !== undefined);
   const split = hits.filter((h) => differs('Polarity', 'ADV')(h) || differs('Poss', 'PRON')(h));
+  // a noun whose gender changes its meaning (le livre, la livre; le tour, la tour) lists both genders as forms of their own: one reading each,
+  // with the meaning that goes with the gender, so that the article can decide between them
+  const gendered = hits.filter((h) => h.entry.pos === 'NOUN' && (h.form.morph.Gender === 'Masc' || h.form.morph.Gender === 'Fem')
+    && hits.some((o) => o.entry === h.entry && o.form.morph.Gender !== undefined && o.form.morph.Gender !== h.form.morph.Gender));
+  if (gendered.length) {
+    const rest = hits.filter((h) => !gendered.includes(h));
+    // the gender the word list's gloss names first is the commoner word (la somme before le somme) and leads where nothing decides
+    const gl = gendered[0].entry.gloss;
+    const femFirst = gl.includes('(f)') && (!gl.includes('(m)') || gl.indexOf('(f)') < gl.indexOf('(m)'));
+    const byGender = (femFirst ? ['Fem', 'Masc'] : ['Masc', 'Fem']).flatMap((g) => frLexicon.toCandidates(gendered.filter((h) => h.form.morph.Gender === g)).map((c) => ({ ...c, gloss: glossFor(c.gloss, g), confidence: Math.min(c.confidence, 0.55) })));
+    return [...byGender, ...(rest.length ? listReadingsOf(rest) : [])];
+  }
+  return listReadingsOf(hits, split);
+}
+
+/** "book (m); pound (f)" → "book" for the masculine, "pound" for the feminine; a gloss not written that way is left whole. */
+function glossFor(gloss: string | undefined, gender: string): string | undefined {
+  if (!gloss) return gloss;
+  const parts = gloss.split(';').map((p) => p.trim());
+  const tag = gender === 'Masc' ? '(m)' : '(f)';
+  if (!parts.every((p) => p.endsWith('(m)') || p.endsWith('(f)'))) return gloss;
+  const mine = parts.filter((p) => p.endsWith(tag)).map((p) => p.slice(0, -3).trim());
+  return mine.length ? mine.join('; ') : gloss;
+}
+
+function listReadingsOf(hits: ReturnType<typeof frLexicon.lookup>, split: ReturnType<typeof frLexicon.lookup> = []): AnalysisCandidate[] {
   if (!split.length) return frLexicon.toCandidates(hits);
   // the entries keep the order the list has them in (leur: the possessive determiner before the pronoun); inside one entry the split reading comes first
   const orderOf = (c: AnalysisCandidate) => Math.min(...hits.filter((h) => h.entry.lemma === c.lemma && h.entry.pos === c.pos).map((h) => h.order));

@@ -275,7 +275,7 @@ autre = another, the other | autre:sg PronType=Ind; autres:pl PronType=Ind
 autrui = others, other people [formal] | autrui:PronType=Ind
 quiconque = whoever, anyone | quiconque:PronType=Ind
 # PART
-ne = not (the first half of the negation) | ne:neg; n':neg
+ne = not (with pas, jamais, plus, rien …: the first half of the negation); with que alone: only (ne … que) | ne:neg; n':neg
 t = (a linking t between a verb and il, elle or on: a-t-il; it has no meaning) | t
 voici = here is, here are (pointing to what is near) | voici
 voilà = there is, there are; here you are | voilà

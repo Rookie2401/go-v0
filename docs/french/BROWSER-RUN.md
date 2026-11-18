@@ -244,3 +244,38 @@ in `api.ts` `call()` (or in the worker's `op: 'api'` before calling the method) 
 **New in this re-run (current analysers):** the French install now reports **"Downloaded · did not verify"**: 1 of 21 validation cases
 fails, verbatim `{"id":"v-sont","pass":false,"got":"être AUX VerbForm=Fin Mood=Ind Tense=Pres Person=3 Number=Plur [conflicted, 2 readings] — differs: status conflicted"}`.
 The main run's analysers (before 654e1184) passed all 21.
+
+## The lead's re-run (after the fixes)
+
+The same rig, run again by the coordinating session on the build `3d852824bbc1-dirty` (3d852824 plus the loaders' wait for the lemma
+list, committed as 37d06e87): extension, setup page (`GOLEARN_APP_DICT=sq,fr`) and GoReview all rebuilt from the current source.
+
+| step | result |
+|---|---|
+| 1 install | PASS: "Downloaded · ready" (the `sont` install check that failed in the follow-up run passes: être and avoir are one word) |
+| 2, 3 reading language, page language | PASS |
+| 4 prose lookups | PASS, 28 of 28. `porte` (Paul porte un manteau): "He, she, or it carries"; `livre` (le facteur livre): "He, she, or it delivers"; `livre` after un: lemma livre, "book"; `ne` in ne … que: "… with que alone: only" |
+| 5 literary lookups | PASS, 11 of 11. `vit` in the tale: voir, "He, she, or it saw"; `cherra`: choir, "will fall [literary]"; `prirent`: prendre, "They took" |
+| 6 pronunciation | PASS (no French voice on this device, said so) |
+| 7, 8, 8c marks and their persistence | PASS |
+| 8b the extension's own reload | FAIL as before: the unpacked extension does not come back in headless Brave (not French) |
+| 9 Active | PASS: 224 words scanned, all marked; maison known, chevaux familiar |
+| 10 mixed page, 11 `<p lang="fr">` in an English page | PASS: no English or Spanish word underlined |
+| 12 real sites | PASS |
+| 13, 14 account and a fresh profile | PASS |
+| 15 GoReview | FAIL as before: the null cursor of the candidates call (every language; reported to the release manager) |
+| 16 timings | first French lookup 175 ms (it now waits for the lemma list), second 52 ms, after a stopped worker 133 ms; Active's scan of the 224-word page 83 ms |
+| 17 Albanian | PASS |
+
+Card findings of the first run and what became of them:
+
+- "I carry" for a noun subject: fixed (one reading per person; the third leads without je or tu).
+- "le livre" as both genders: fixed (the two genders are two readings with their own meanings; the article decides).
+- the past participle heading "passé simple, literary": fixed (the label is "past").
+- ne in ne … que: its meaning now names "only".
+- The three empty grids above a verb's forms (infinitive, participles): the shared card draws a person × number grid for every section
+  of a paradigm and lists the forms without a person under "Other forms"; Spanish has the same. Not changed here.
+- No IPA and no pronunciation notes on the card: the shared card does not show either for any language (it shows a romanization
+  where a script needs one). The French analyser supplies notes and passes the dictionary's IPA through; nothing displays them yet.
+- An English or Spanish word selected on a page that declares no language gets a card in the learner's reading language, with a
+  reading marked as a guess, and is recorded: that is the shared fallback (`team-default`) for every language, not a French rule.

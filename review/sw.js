@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = '4325eee87f1f';
+var BUILD_ID = 'b7fb3c5e15ef';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -36,13 +36,17 @@ var PRECACHE = [
   "./assets/go-globe-rim-CzbKbQV5.png",
   "./assets/go-globe-turn-Dop5YaWE.png",
   "./assets/go-logo-D1Qp-DDg.png",
-  "./assets/index-hcRmL4Wa.js",
+  "./assets/index-3-QgyoEm.js",
   "./assets/jerusalem-YWyJNBCG.webp",
+  "./assets/languages-9LjGAeeA.js",
   "./assets/oslo-CP39LCLT.webp",
+  "./assets/registry-DfmZJRJW.js",
+  "./assets/rolldown-runtime-DK3Fl9T5.js",
   "./assets/roman-forum-BwyPrRQO.webp",
   "./assets/rothenburg-vv8nBX67.webp",
   "./assets/shared-f3Tn5VdE.js",
-  "./assets/style-T_MH5Xf9.css",
+  "./assets/src-DkMOjudb.js",
+  "./assets/style-BfuAMWJn.css",
   "./assets/syntax-CGmPxLTF.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",
@@ -59,40 +63,41 @@ var PRECACHE = [
 var ASSET_BASE = '../';
 var LANG_CHUNKS = {
   "aramaic": [
-    "./assets/lang-aramaic-BuLZzP9g.js"
+    "./assets/lang-aramaic-B5WkUau3.js"
   ],
   "de": [
-    "./assets/lang-de-UAF4vtHo.js"
+    "./assets/lang-de-ArEpbAHN.js"
   ],
   "el": [
-    "./assets/lang-el-CMXoV07Q.js"
+    "./assets/lang-el-pfdsM3sC.js"
   ],
   "es": [
-    "./assets/lang-es-X02j9eOF.js"
+    "./assets/lang-es-CX8BdVQu.js"
   ],
   "he": [
-    "./assets/lang-he-BdZmv2-s.js"
+    "./assets/lang-he-DKviKOZk.js"
   ],
   "hebrew": [
-    "./assets/lang-hebrew-J14_ab0a.js"
+    "./assets/lang-hebrew-Bsnip4qd.js",
+    "./assets/lang-hebrew-apRjTzMX.js"
   ],
   "hi": [
-    "./assets/lang-hi-fllpyV0m.js"
+    "./assets/lang-hi-B9i5BQmS.js"
   ],
   "la": [
-    "./assets/lang-la-CN_QrM_Y.js"
+    "./assets/lang-la-BGpI-u0w.js"
   ],
   "nb": [
-    "./assets/lang-nb-CYnHbk7R.js"
+    "./assets/lang-nb-BSx_Tk0T.js"
   ],
   "nn": [
-    "./assets/lang-nn-C8DP0AsR.js"
+    "./assets/lang-nn-8ygVEfXS.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-B3z9knG_.js"
+    "./assets/lang-norwegian-D3lwdb4N.js"
   ],
   "sq": [
-    "./assets/lang-sq-Byefdhht.js"
+    "./assets/lang-sq-4iQCwH-q.js"
   ],
   "th": [
     "./assets/lang-th-NmWvP-CH.js"

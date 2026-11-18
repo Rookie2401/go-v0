@@ -97,14 +97,3 @@ its own forms.
   popup's switch. A link inside a sentence is exempt; a checkbox is pressed through its label.
 - Every text size in rem/em; `:focus-visible` is never removed; motion only under `prefers-reduced-motion: no-preference`.
 - Check a change in a real extension page, light and dark, at 390px and at desktop width, before calling it done.
-
-## The Languages page in GoReview's home look (2026-11-18)
-
-The owner: "Look at the choose your language in both GoLearn and GoReview. Please redesign both of them in line with the design philosophy
-of the homescreen of GoReview." The Languages page (`data-route="languages"`) is the one exception to the tokens above: it takes the
-GoReview home's stone, leather and brass whatever the system theme (as that home does), a large serif title under a "Choose your language"
-kicker with a short gold rule, each group's name as a kicker between rules, each language as a warm tile with no outline (the ones
-downloaded here a lighter tile, like GoReview's Current Deck), Download as the gold pill, and Details, Use for reading and Remove as gold
-links. The rows keep their markup, ids and behaviour (`screens/language.ts`); only the stylesheet changed (the block at the end of
-`app/styles.css`). Every other GoLearn page keeps the system above. GoReview's own language list (`#/setup`) and Account page wear the
-same look, and GoReview's Account is where a learner switches or adds a language.

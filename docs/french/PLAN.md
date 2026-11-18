@@ -29,6 +29,13 @@ conditionnel = `Mood Cnd, Tense Pres`; participe passé = `VerbForm Part, Tense 
 `Person 1|2|3`, `Number Sing|Plur`, `Gender Masc|Fem`, `Definite Def|Ind`, `PronType Art|Prs|Dem|Rel|Int|Ind|Neg|Part`, `Poss Yes`,
 `Reflex Yes`, `Polarity Neg`, `Case Nom|Acc|Dat` (clitics), `NumType Card|Ord`. Unions are comma lists in alphabetical order.
 
+`Tense` is always read together with `VerbForm`: `Tense Past` is the passé simple on a finite verb and the past participle on `VerbForm Part`.
+
+**Lemmas of the closed classes** follow the dictionary and ordinary grammar, not the UD treebank: je, tu, il, elle, on, nous, vous, ils, elles are
+their own lemmas (UD GSD files il/elle/ils/elles under `lui` and je under `moi`); le/la/les/l' → `le` (article and clitic alike); un/une → `un`;
+ce/cet/cette/ces → `ce` (the dictionary lists `cet` separately; the pack does not); mon/ma/mes → `mon`; possessive leur/leurs → `leur`.
+The UD evaluation therefore reports lemma accuracy with and without pronouns.
+
 **Identity.** `normalizeFr` (`french/orth.ts`): NFC, lower case, typographic apostrophes → `'`, typographic hyphens → `-`. Accents
 and ligatures are kept.
 

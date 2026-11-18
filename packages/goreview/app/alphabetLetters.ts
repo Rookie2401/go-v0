@@ -12,6 +12,8 @@
  * the ones the pack's tutorial uses (aleph, beth, …) and the back gives the conventional transliteration only: the names identify the
  * letters, they are not a recording of how Aramaic was spoken.
  */
+import { FR_ALPHABET_ROWS } from '../../language-packs/src/tutorial/fr';
+
 export type LetterRow = readonly [glyph: string, back: string];
 
 const ES: readonly LetterRow[] = [
@@ -108,4 +110,4 @@ const ARC: readonly LetterRow[] = [
 ];
 
 /** By language id. */
-export const HAND_LETTERS: Readonly<Record<string, readonly LetterRow[]>> = { es: ES, sq: SQ, de: DE, nb: NO, nn: NO, la: LA, el: EL, he: HE, arc: ARC };
+export const HAND_LETTERS: Readonly<Record<string, readonly LetterRow[]>> = { es: ES, sq: SQ, de: DE, nb: NO, nn: NO, la: LA, el: EL, he: HE, arc: ARC, fr: FR_ALPHABET_ROWS };

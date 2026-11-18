@@ -1,0 +1,108 @@
+
+«ξυνέηκε» in "τίς τ᾽ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;"
+  lemma ξυνίημι | pos VERB | form line: aorist active indicative, 3rd person singular | meaning: He, she, or it olded Attic form of συνίημι | conf 0.76 | tokens 1
+  period: Homeric Greek (text) — 1 word with an Epic-only reading and 1 Homeric shape (-οιο, -εσσι, -φι, κε(ν), ῥα, ἠδέ, μιν …) among 8 words
+  notes: Variety: el-att.
+  constructions: form:form:Mood=Ind|Number=Sing|Person=3|Tense=Aor|VerbForm=Fin|Voice=Act “aorist active indicative, 3rd person singular” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ξυνίημι:VERB | words: 
+  alternatives: 
+  variants: Homeric Greek [this text]: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek: ξυνίημι, ξυνῑ́ημι, ξῠνῑ́ημι (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek: not in our sources (only the New Testament core is loaded; the full index was not searched) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: not in our sources (no Modern Greek entry has this headword and the Ancient entry names no Modern descendant)
+
+«ἁθροίζονται» in "ὅσοι ἐς Καστωλοῦ πεδίον ἁθροίζονται."
+  lemma ἁθροίζω | pos VERB | form line: present middle or passive indicative, 3rd person plural | meaning: They old Attic form of ἀθροίζω (athroízō | conf 0.76 | tokens 1
+  period: Attic Greek (default) — ancient spelling without Homeric marks; 3 of 4 recognised words are outside the New Testament's vocabulary, so Attic (the stage the Ancient tables describe) rather than Koine
+  notes: Variety: el-att.
+  constructions: form:form:Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid,Pass “present middle or passive indicative, 3rd person plural” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ἁθροίζω:VERB | words: 
+  alternatives: 
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek [this text]: ἁθροίζω (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek: not in our sources (only the New Testament core is loaded; the full index was not searched) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: αθροίζω
+
+«ἔννεπε» in "Ἄνδρα μοι ἔννεπε, Μοῦσα, πολύτροπον"
+  lemma ἐννέπω | pos VERB | form line: present active imperative, 2nd person singular | meaning: Epic! | conf 0.5 | tokens 1
+  period: Attic Greek (default) — ancient spelling without Homeric marks; 3 of 5 recognised words are outside the New Testament's vocabulary, so Attic (the stage the Ancient tables describe) rather than Koine
+  notes: Variety: el-att. || 3 other form readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Mood=Imp|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act “present active imperative, 2nd person singular” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ἐννέπω:VERB | words: 
+  alternatives: ἐννέπω/VERB “Epic, Doric, and Tragic form of ἐνέπω (enépō)” 0.5 | ἐννέπω/VERB “Epic, Doric, and Tragic form of ἐνέπω (enépō)” 0.5 | ἐννέπω/VERB “Epic, Doric, and Tragic form of ἐνέπω (enépō)” 0.5
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek [this text]: ἐννέπω (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek: not in our sources (only the New Testament core is loaded; the full index was not searched) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: not in our sources (no Modern Greek entry has this headword and the Ancient entry names no Modern descendant)
+
+«τῶν» in "ἐν ταῖς ἡμέραις τῶν ἡμερῶν ἐκείνων."
+  lemma ὁ | pos DET | form line: definite article, genitive masculine plural | meaning: the | conf 0.78 | tokens 1
+  period: Koine Greek (text) — 6 of 6 recognised words are New Testament words and only 0 are not: read as Koine
+  notes: Variety: el-koi. || 52 other readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Case=Gen|Definite=Def|Gender=Masc|Number=Plur “definite article, genitive masculine plural” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ὁ:DET | words: 
+  alternatives: ὁ/DET “the” 0.59 | ὁ/DET “the” 0.55 | ὁ/DET “the” 0.42
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek: ὁ (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek [this text]: ὁ (19,769× in the New Testament, 88,295× in the Septuagint) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: ο
+
+«τῶν» in "τίθημι τὴν ψυχήν μου ὑπὲρ τῶν προβάτων."
+  lemma ὁ | pos DET | form line: definite article, genitive masculine plural | meaning: the | conf 0.78 | tokens 1
+  period: Koine Greek (text) — 7 of 7 recognised words are New Testament words and only 0 are not: read as Koine
+  notes: Variety: el-koi. || 52 other readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Case=Gen|Definite=Def|Gender=Masc|Number=Plur “definite article, genitive masculine plural” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ὁ:DET | words: 
+  alternatives: ὁ/DET “the” 0.59 | ὁ/DET “the” 0.55 | ὁ/DET “the” 0.42
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek: ὁ (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek [this text]: ὁ (19,769× in the New Testament, 88,295× in the Septuagint) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: ο
+
+«τῶν» in "ἡ δόξα τῶν γυναικῶν μεγάλη ἐστίν."
+  lemma ὁ | pos DET | form line: definite article, genitive masculine plural | meaning: the | conf 0.78 | tokens 1
+  period: Koine Greek (text) — 6 of 6 recognised words are New Testament words and only 0 are not: read as Koine
+  notes: Variety: el-koi. || 52 other readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Case=Gen|Definite=Def|Gender=Masc|Number=Plur “definite article, genitive masculine plural” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ὁ:DET | words: 
+  alternatives: ὁ/DET “the” 0.59 | ὁ/DET “the” 0.55 | ὁ/DET “the” 0.42
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek: ὁ (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek [this text]: ὁ (19,769× in the New Testament, 88,295× in the Septuagint) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: ο
+
+«τῷ» in "μακάριοι οἱ πτωχοὶ τῷ πνεύματι."
+  lemma ὁ | pos DET | form line: definite article, dative masculine singular | meaning: the | conf 0.77 | tokens 1
+  period: Attic Greek (default) — ancient spelling without Homeric marks; 1 of 5 recognised words are outside the New Testament's vocabulary, so Attic (the stage the Ancient tables describe) rather than Koine
+  notes: Variety: el-koi. || 50 other readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Case=Dat|Definite=Def|Gender=Masc|Number=Sing “definite article, dative masculine singular” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ὁ:DET | words: 
+  alternatives: ὁ/DET “the” 0.42 | ὁ/DET “the” 0.42 | ὁ/PRON “that” 0.42
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek [this text]: ὁ (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek: ὁ (19,769× in the New Testament, 88,295× in the Septuagint) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: ο
+
+«τοῖς» in "ἔδωκεν ἄρτον τοῖς τέκνοις."
+  lemma ὁ | pos DET | form line: definite article, dative masculine plural | meaning: the | conf 0.79 | tokens 1
+  period: Koine Greek (default) — 4 of 4 recognised words are New Testament words and only 0 are not: read as Koine
+  notes: Variety: el-koi. || 43 other readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Case=Dat|Definite=Def|Gender=Masc|Number=Plur “definite article, dative masculine plural” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ὁ:DET | words: 
+  alternatives: ὁ/DET “the” 0.61 | ὁ/DET “the” 0.42 | ὁ/DET “the” 0.42
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek: ὁ (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek [this text]: ὁ (19,769× in the New Testament, 88,295× in the Septuagint) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: ο
+
+«τὰ» in "τὰ τέκνα παίζει ἐν τῇ ὁδῷ."
+  lemma ὁ | pos DET | form line: definite article, accusative neuter plural | meaning: the | conf 0.79 | tokens 1
+  period: Attic Greek (default) — ancient spelling without Homeric marks; 0 of 6 recognised words are outside the New Testament's vocabulary, so Attic (the stage the Ancient tables describe) rather than Koine
+  notes: Variety: el-koi. || 69 other readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Case=Acc|Definite=Def|Gender=Neut|Number=Plur “definite article, accusative neuter plural” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ὁ:DET | words: 
+  alternatives: ὁ/DET “the” 0.42 | ὁ/DET “the” 0.42 | ὁ/PRON “that” 0.42
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek [this text]: ὁ (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek: ὁ (19,769× in the New Testament, 88,295× in the Septuagint) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: ο
+
+«Έφαγα» in "Έφαγα ψωμί με τυρί."
+  lemma τρώγω | pos VERB | form line: active indicative, 1st person singular | meaning: I alternative form of τρώω | conf 0.53 | tokens 1
+  period: Modern Greek (text) — monotonic spelling; read as Modern Greek
+  notes: Variety: el-mod. || 2 other readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Aspect=Perf|Mood=Ind|Number=Sing|Person=1|VerbForm=Fin|Voice=Act “active indicative, 1st person singular” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:τρώγω:VERB | words: 
+  alternatives: τρώω/VERB “to eat” 0.53 | τρώω/VERB “to eat” 0.53
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek: τρώγω (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek: not in our sources (only the New Testament core is loaded; the full index was not searched) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek [this text]: τρώγω
+
+«Πλένομαι» in "Πλένομαι κάθε πρωί."
+  lemma πλένω | pos VERB | form line: present passive indicative, 1st person singular | meaning: I am washed (your body | conf 0.59 | tokens 1
+  period: Modern Greek (default) — no polytonic mark; read as Modern Greek
+  notes: Variety: el-mod. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Aspect=Imp|Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Pass “present passive indicative, 1st person singular” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:πλένω:VERB | words: 
+  alternatives: πλένω/VERB “to wash (your body, dishes, clothes, car, etc)” 0.59
+  variants: Homeric Greek: not in our sources (no Ancient Greek entry has this headword) | Attic Greek: not in our sources (no Ancient Greek entry has this headword) | Koine Greek: not in our sources (only the New Testament core is loaded; the full index was not searched) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek [this text]: πλένω
+
+«να» in "Θέλω να φάω κάτι."
+  lemma να | pos PART | form line: undefined | meaning: added before the dependent or present verb forms to form the different subjunctive moods, serving a variety of different clausal functions and to express imperatives, wishes or hypotheticals | conf 0.65 | tokens 1
+  period: Modern Greek (default) — no polytonic mark; read as Modern Greek
+  notes: Variety: el-mod. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+  constructions: none | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:να:PART | words: 
+  alternatives: ΝΑ/NOUN “SE, initialism of νοτιοανατολικός (notioanatolikós, “southeast, southeastern, southeasterly”)” 0.53
+  variants: Homeric Greek: not in our sources (no Ancient Greek entry has this headword) | Attic Greek: not in our sources (no Ancient Greek entry has this headword) | Koine Greek: not in our sources (only the New Testament core is loaded; the full index was not searched) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek [this text]: να

@@ -1,0 +1,22 @@
+[ext] counted 294
+analyser's first reading (what docs/greek/MODERN-AUDIT.md measured): covered 289 (98.3 %), lemma 281 (95.6 %), part of speech 282 (95.9 %), both 280 (95.2 %)
+the card (highest confidence):                                     covered 289 (98.3 %), lemma 271 (92.2 %), part of speech 271 (92.2 %), both 270 (91.8 %); shown from MorphGNT 15 (5.1 %); confidence under 0.5 72 (24.5 %)
+τροφίμου: card τρόφιμος/ADJ “nourishing” [kaikki-grc] — wanted τρόφιμο/NOUN
+με: card ἐγώ/PRON “I” [morphgnt] — wanted με/ADP (analyser's first reading: με/ADP)
+ιδιαίτερα: card ιδιαίτερος/ADJ “special” [kaikki-el] — wanted ιδιαίτερα/ADV
+σε: card σύ/PRON “you” [morphgnt] — wanted σε/ADP (analyser's first reading: σε/ADP)
+με: card ἐγώ/PRON “I” [morphgnt] — wanted με/ADP (analyser's first reading: με/ADP)
+πλέον: card πολύς/ADJ “much, many, often” [morphgnt] — wanted πλέον/ADV (analyser's first reading: πλέον/ADV)
+τρόφιμο: card τρόφιμος/NOUN “inmate (of prison or” [kaikki-el] — wanted τρόφιμο/NOUN
+σε: card σύ/PRON “you” [morphgnt] — wanted σε/ADP (analyser's first reading: σε/ADP)
+Σε: card σύ/PRON “you” [morphgnt] — wanted σε/ADP (analyser's first reading: σε/ADP)
+βασικά: card βασικός/ADJ “basic, essential, fu” [kaikki-el] — wanted βασικά/ADV
+Επιπλέον: card επιπλέον/ADJ “further, more, extra” [kaikki-el] — wanted επιπλέον/ADV
+με: card ἐγώ/PRON “I” [morphgnt] — wanted με/ADP (analyser's first reading: με/ADP)
+τελικά: card τελικός/ADJ “final, last” [kaikki-el] — wanted τελικά/ADV
+αέρια: card αέριο/NOUN “gas” [kaikki-el] — wanted αέριος/ADJ
+κοντά: card κοντός/ADJ “short (in height)” [kaikki-el] — wanted κοντά/ADV|ADP
+σε: card σύ/PRON “you” [morphgnt] — wanted σε/ADP (analyser's first reading: σε/ADP)
+σε: card σύ/PRON “you” [morphgnt] — wanted σε/ADP (analyser's first reading: σε/ADP)
+γενικά: card γενικός/ADJ “general, unspecific” [kaikki-el] — wanted γενικά/ADV
+σε: card σύ/PRON “you” [morphgnt] — wanted σε/ADP (analyser's first reading: σε/ADP)

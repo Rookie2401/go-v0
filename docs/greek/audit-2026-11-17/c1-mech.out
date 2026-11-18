@@ -1,0 +1,121 @@
+«με» (key με) in "Έφαγα ψωμί με τυρί, ήπια έναν καφέ και βγήκα από τ": 14 readings; period el-mod (text)
+   1. με/ADP [] 0.42 {el-mod} kaikki-el form:citation form g:with
+   2. με/PRON [] 0.42 {el-mod} kaikki-el form:citation form g:me (1st person singular, accusative)
+   3. τα/PRON [accusative singular, 1st person] 0.42 {el-mod} kaikki-el tags:accusative|first-person|possessive|singular|weak g:they (3rd person neuter plural, nominati
+   4. ἐγώ/PRON [personal, accusative singular] 0.9 {el-koi} morphgnt code:RP|----AS-- g:I
+   5. ἐγώ/PRON [accusative singular] 0.42 {el-att} kaikki-grc tags:accusative|singular|table:Attic irregular g:first person singular personal pronoun: 
+   6. ἐγώ/PRON [accusative singular] 0.42 {el-hom} kaikki-grc tags:accusative|singular|table:Epic irregular g:first person singular personal pronoun: 
+   7. ἐγώ/PRON [accusative singular] 0.42 {el-ion} kaikki-grc tags:accusative|singular|table:Ionic irregular g:first person singular personal pronoun: 
+   8. ἐγώ/PRON [accusative singular] 0.42 {el-dor} kaikki-grc tags:accusative|singular|table:Doric irregular g:first person singular personal pronoun: 
+   9. ἐγώ/PRON [accusative singular] 0.42 {el-aeo} kaikki-grc tags:accusative|singular|table:Aeolic irregular g:first person singular personal pronoun: 
+   10. ἐγώ/PRON [accusative] 0.42 {el-att,el-hom,el-ion,el-koi,el-aeo} kaikki-grc tags:accusative g:first person singular personal pronoun: 
+   11. ἐγών/PRON [accusative singular] 0.42 {el-hom} kaikki-grc tags:accusative|singular|table:Epic irregular g:Epic and Doric form of ἐγώ (egṓ, “I”)
+   12. ἐγών/PRON [accusative singular] 0.42 {el-dor} kaikki-grc tags:accusative|singular|table:Doric irregular g:Epic and Doric form of ἐγώ (egṓ, “I”)
+«βγήκα» (key βγήκα) in "Έφαγα ψωμί με τυρί, ήπια έναν καφέ και βγήκα από τ": 2 readings; period el-mod (text)
+   1. βγαίνω/VERB [perfect active indicative, 1st person singular] 0.59 {el-mod} kaikki-el tags:active|first-person|indicative|past|perfective|singular|table:perfect g:to go out, come out, exit
+   2. βγαίνω/VERB [1st person singular] 0.59 {el-mod} kaikki-el tags:first-person|past|singular g:to go out, come out, exit
+«Έφαγα» (key έφαγα) in "Έφαγα ψωμί με τυρί, ήπια έναν καφέ και βγήκα από τ": 3 readings; period el-mod (text)
+   1. τρώγω/VERB [active indicative, 1st person singular] 0.53 {el-mod} kaikki-el tags:active|first-person|indicative|past|perfective|singular g:alternative form of τρώω (tróo)
+   2. τρώω/VERB [active indicative, 1st person singular] 0.53 {el-mod} kaikki-el tags:active|first-person|indicative|past|perfective|singular g:to eat
+   3. τρώω/VERB [1st person singular] 0.53 {el-mod} kaikki-el tags:first-person|past|singular g:to eat
+«το» (key το) in "Έφαγα ψωμί με τυρί, ήπια έναν καφέ και βγήκα από τ": 8 readings; period el-mod (text)
+   1. ο/DET [accusative masculine singular] 0.49 {el-mod} kaikki-el tags:accusative|definite|masculine|singular g:the definite masculine singular article.
+   2. ο/DET [nominative neuter singular] 0.46 {el-mod} kaikki-el tags:definite|neuter|nominative|singular g:the definite masculine singular article.
+   3. ο/DET [accusative neuter singular] 0.46 {el-mod} kaikki-el tags:accusative|definite|neuter|singular g:the definite masculine singular article.
+   4. ο/DET [accusative or nominative neuter singular] 0.46 {el-mod} kaikki-el tags:accusative|definite|neuter|nominative|singular g:the definite masculine singular article.
+   5. το/PRON [] 0.46 {el-mod} kaikki-el form:citation form g:it (3rd person neuter singular, nominati
+   6. τον/PRON [] 0.46 {el-mod} kaikki-el tags: g:him (3rd person masculine singular, accu
+   7. τα/PRON [nominative neuter singular, 3rd person] 0.46 {el-mod} kaikki-el tags:neuter|nominative|possessive|singular|third-person|weak g:they (3rd person neuter plural, nominati
+   8. τα/PRON [accusative neuter singular, 3rd person] 0.46 {el-mod} kaikki-el tags:accusative|neuter|possessive|singular|third-person|weak g:they (3rd person neuter plural, nominati
+«έκανε» (key έκανε) in "Ο καιρός ήταν καλός, αλλά έκανε λίγο κρύο.": 4 readings; period el-mod (text)
+   1. κάνω/VERB [imperfect or perfect active indicative, 3rd person singular] 0.5 {el-mod} kaikki-el tags:active|imperfect|imperfective|indicative|singular|table:perfect|third-person g:to do
+   2. κάνω/VERB [perfect active indicative, 3rd person singular] 0.5 {el-mod} kaikki-el tags:active|indicative|past|perfective|singular|table:perfect|third-person g:to do
+   3. κάνω/VERB [imperfect, 3rd person singular] 0.5 {el-mod} kaikki-el tags:imperfect|singular|third-person g:to do
+   4. κάνω/VERB [3rd person singular] 0.5 {el-mod} kaikki-el tags:past|singular|third-person g:to do
+«μέτρα» (key μέτρα) in "Η κυβέρνηση ανακοίνωσε χθες νέα μέτρα για την οικο": 10 readings; period el-mod (text)
+   1. μετράω/VERB [active imperative, 2nd person singular] 0.45 {el-mod} kaikki-el tags:active|imperative|imperfective|second-person|singular g:to count, measure, include
+   2. μετράω/VERB [active imperative, 2nd person singular] 0.45 {el-mod} kaikki-el tags:active|imperative|perfective|second-person|singular g:to count, measure, include
+   3. μέτρο/NOUN [nominative plural] 0.45 {el-mod} kaikki-el tags:nominative|plural g:measure, measurement
+   4. μέτρο/NOUN [accusative plural] 0.45 {el-mod} kaikki-el tags:accusative|plural g:measure, measurement
+   5. μέτρο/NOUN [vocative plural] 0.45 {el-mod} kaikki-el tags:plural|vocative g:measure, measurement
+   6. μέτρο/NOUN [accusative or nominative or vocative neuter plural] 0.45 {el-mod} kaikki-el tags:accusative|neuter|nominative|plural|vocative g:measure, measurement
+   7. μέτρον/NOUN [nominative plural] 0.45 {el-att} kaikki-grc tags:nominative|plural|table:Attic declension-2 g:something used to measure: measure, rule
+   8. μέτρον/NOUN [accusative plural] 0.45 {el-att} kaikki-grc tags:accusative|plural|table:Attic declension-2 g:something used to measure: measure, rule
+   9. μέτρον/NOUN [vocative plural] 0.45 {el-att} kaikki-grc tags:plural|table:Attic declension-2|vocative g:something used to measure: measure, rule
+   10. μέτρον/NOUN [accusative or nominative or vocative plural] 0.45 {el-att} kaikki-grc tags:accusative|nominative|plural|vocative g:something used to measure: measure, rule
+«ανακοίνωσε» (key ανακοίνωσε) in "Η κυβέρνηση ανακοίνωσε χθες νέα μέτρα για την οικο": 2 readings; period el-mod (text)
+   1. ανακοινώνω/VERB [active indicative, 3rd person singular] 0.59 {el-mod} kaikki-el tags:active|indicative|past|perfective|singular|third-person g:to announce, declare (make people aware 
+   2. ανακοινώνω/VERB [active imperative, 2nd person singular] 0.59 {el-mod} kaikki-el tags:active|imperative|perfective|second-person|singular g:to announce, declare (make people aware 
+«ἄειδε» (key ἄειδε) in "Μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος": 4 readings; period el-hom (text)
+   1. ἀείδω/VERB [imperfect or perfect active indicative, 3rd person singular] 0.5 {el-hom} kaikki-grc tags:active|indicative|singular|table:Epic imperfect|third-person g:to sing, chant, praise
+   2. ᾰ̓είδω/VERB [imperfect active indicative, 3rd person singular] 0.5 {el-hom} kaikki-grc tags:Epic|active|imperfect|indicative|singular|third-person g:
+   3. ἀείδω/VERB [present active imperative, 2nd person singular] 0.5 {el-att} kaikki-grc tags:active|imperative|second-person|singular|table:present g:to sing, chant, praise
+   4. ᾰ̓είδω/VERB [present active imperative, 2nd person singular] 0.5 {el-att} kaikki-grc tags:active|imperative|present|second-person|singular g:
+«ἔλυε» (key ἔλυε) in "ὁ δοῦλος ἔλυε τὸν ἵππον.": 3 readings; period el-att (default)
+   1. λύω/VERB [imperfect or perfect active indicative, 3rd person singular] 0.53 {el-att} kaikki-grc tags:active|indicative|singular|table:imperfect|third-person g:to loose; to loosen; to untie
+   2. λῡ́ω/VERB [imperfect active indicative, 3rd person singular] 0.53 {el-att} kaikki-grc tags:active|imperfect|indicative|singular|third-person g:
+   3. λύω/VERB [imperfect or perfect active indicative, 3rd person singular] 0.53 {el-hom} kaikki-grc tags:active|indicative|singular|table:Epic imperfect|third-person g:to loose; to loosen; to untie
+«σκότος» (key σκότος) in "καὶ τὸ σκότος ἐκάλεσεν νύκτα.": 9 readings; period el-att (default)
+   1. σκότος/NOUN [nominative singular] 0.45 {el-att} kaikki-grc tags:nominative|singular|table:Attic declension-2 g:darkness; gloom
+   2. σκότος/NOUN [accusative singular] 0.45 {el-att} kaikki-grc tags:accusative|singular|table:Attic declension-3 g:darkness; gloom
+   3. σκότος/NOUN [vocative singular] 0.45 {el-att} kaikki-grc tags:singular|table:Attic declension-3|vocative g:darkness; gloom
+   4. Σκώτος/NOUN [] 0.45 {el-mod} kaikki-el tags: g:Scot, Scottish man, Scotsman, Scotchman 
+   5. Σκότος/NOUN [nominative singular] 0.45 {el-mod} kaikki-el tags:nominative|singular g:alternative form of Σκώτος (Skótos)
+   6. σκότος/NOUN [nominative singular] 0.45 {el-hom} kaikki-grc tags:nominative|singular|table:Epic declension-2 g:darkness; gloom
+   7. σκότος/NOUN [nominative singular] 0.45 {el-ion} kaikki-grc tags:nominative|singular|table:Ionic declension-3 g:darkness; gloom
+   8. σκότος/NOUN [accusative singular] 0.45 {el-ion} kaikki-grc tags:accusative|singular|table:Ionic declension-3 g:darkness; gloom
+   9. σκότος/NOUN [vocative singular] 0.45 {el-ion} kaikki-grc tags:singular|table:Ionic declension-3|vocative g:darkness; gloom
+«ἔλεός» (key ἔλεός) in "καὶ τὸ ἔλεός σου καταδιώξεταί με.": 10 readings; period el-att (default)
+   1. ἐλεός/NOUN [] 0.38 {el-att} kaikki-grc accents-inferred form:citation form g:kitchen table
+   2. ἔλεος/NOUN [nominative singular] 0.35 {el-att} kaikki-grc accents-inferred tags:nominative|singular|table:Attic declension-2 g:pity, mercy, compassion
+   3. ἔλεος/NOUN [accusative singular] 0.35 {el-att} kaikki-grc accents-inferred tags:accusative|singular|table:Attic declension-3 g:pity, mercy, compassion
+   4. ἔλεος/NOUN [vocative singular] 0.35 {el-att} kaikki-grc accents-inferred tags:singular|table:Attic declension-3|vocative g:pity, mercy, compassion
+   5. έλεος/NOUN [nominative singular] 0.35 {el-mod} kaikki-el accents-inferred tags:nominative|singular g:mercy, compassion, pity
+   6. έλεος/NOUN [accusative singular] 0.35 {el-mod} kaikki-el accents-inferred tags:accusative|singular g:mercy, compassion, pity
+   7. έλεος/NOUN [vocative singular] 0.35 {el-mod} kaikki-el accents-inferred tags:singular|vocative g:mercy, compassion, pity
+   8. έλεος/INTJ [] 0.35 {el-mod} kaikki-el accents-inferred form:citation form g:enough!
+   9. ἕλος/NOUN [genitive singular] 0.35 {el-hom} kaikki-grc accents-inferred tags:genitive|singular|table:Epic declension-3 g:marsh-meadow
+   10. ἕλος/NOUN [genitive singular] 0.35 {el-ion} kaikki-grc accents-inferred tags:genitive|singular|table:Ionic declension-3 g:marsh-meadow
+«τίς» (key τίς) in "τίς τ᾽ ἄρ σφωε θεῶν ἔριδι ξυνέηκε μάχεσθαι;": 10 readings; period el-hom (text)
+   1. τίς/PRON [nominative feminine or masculine singular] 0.42 {el-hom} kaikki-grc tags:feminine|masculine|nominative|singular|table:Epic declension-3 g:who?
+   2. τίς/DET [nominative feminine or masculine singular] 0.42 {el-hom} kaikki-grc tags:feminine|masculine|nominative|singular|table:Epic declension-3 g:what? which? what kind?
+   3. τίς/PRON [interrogative or indefinite, nominative masculine singular] 0.83 {el-koi} morphgnt code:RI|----NSM- g:who, which, what
+   4. τίς/PRON [interrogative or indefinite, nominative feminine singular] 0.56 {el-koi} morphgnt code:RI|----NSF- g:who, which, what
+   5. τις/PRON [interrogative or indefinite, nominative masculine singular] 0.52 {el-koi} morphgnt code:RI|----NSM- g:any one, some one
+   6. τίς/PRON [nominative feminine or masculine singular] 0.42 {el-att} kaikki-grc tags:feminine|masculine|nominative|singular|table:Attic declension-3 g:who?
+   7. τίς/PRON [nominative feminine or masculine singular] 0.42 {el-ion} kaikki-grc tags:feminine|masculine|nominative|singular|table:Ionic declension-3 g:who?
+   8. τις/PRON [] 0.42 {el-mod} kaikki-el tags:polytonic g:them (3rd person feminine plural, accusa
+   9. τίς/DET [nominative feminine or masculine singular] 0.42 {el-att} kaikki-grc tags:feminine|masculine|nominative|singular|table:Attic declension-3 g:what? which? what kind?
+   10. τίς/DET [nominative feminine or masculine singular] 0.42 {el-ion} kaikki-grc tags:feminine|masculine|nominative|singular|table:Ionic declension-3 g:what? which? what kind?
+«παρέλαβον» (key παρέλαβον) in "εἰς τὰ ἴδια ἦλθεν, καὶ οἱ ἴδιοι αὐτὸν οὐ παρέλαβον": 3 readings; period el-koi (text)
+   1. παραλαμβάνω/VERB [aorist active indicative, 1st person singular] 0.68 {el-koi} morphgnt code:V-|1AAI-S-- g:I take, receive
+   2. παραλαμβάνω/VERB [aorist active indicative, 3rd person plural] 0.68 {el-koi} morphgnt code:V-|3AAI-P-- g:I take, receive
+   3. παραλαμβάνω/VERB [aorist active indicative, 1,3 plural or singular] 0.47 {el-att} kaikki-grc tags:active|aorist|first-person|indicative|plural|singular|third-person g:to receive from another
+«παραδῶ» (key παραδῶ) in "καὶ ἐὰν παραδῶ τὸ σῶμά μου ἵνα καυχήσωμαι": 2 readings; period el-koi (text)
+   1. παραδίδωμι/VERB [aorist active subjunctive, 3rd person singular] 0.53 {el-koi} morphgnt accents-inferred code:V-|3AAS-S-- g:I hand over, deliver, betray
+   2. παραβλέπω/VERB [active indicative, 1st person singular] 0.4 {el-mod} kaikki-el accents-inferred tags:active|dependent|first-person|indicative|perfective|singular|table:irregular g:to turn a blind eye to, shut one's eyes 
+«παρὼν» (key παρών) in "ὁ μὲν οὖν πρεσβύτερος παρὼν ἐτύγχανε·": 6 readings; period el-att (default)
+   1. παρών/NOUN [] 0.48 {el-att} kaikki-grc form:citation form g:a kind of light boat
+   2. πάρειμι/VERB [singular] 0.48 {el-att} kaikki-grc tags:masculine|nominative|singular|table:Attic declension-3 g:to be by or present
+   3. πάρειμι/VERB [singular] 0.48 {el-att} kaikki-grc tags:masculine|singular|table:Attic declension-3|vocative g:to be by or present
+   4. πᾰ́ρειμῐ/VERB [present active participle] 0.48 {el-att} kaikki-grc tags:active|participle|present g:
+   5. παρών/ADJ [nominative masculine singular] 0.48 {el-mod} kaikki-el tags:masculine|nominative|singular g:present, in attendance (located in the i
+   6. παρών/ADJ [vocative masculine singular] 0.48 {el-mod} kaikki-el tags:masculine|singular|vocative g:present, in attendance (located in the i
+«Κῦρον» (key κῦρον) in "Κῦρον δὲ μεταπέμπεται ἀπὸ τῆς ἀρχῆς": 4 readings; period el-att (default)
+   1. κύρω/VERB [present active participle, neuter] 0.5 {el-att} kaikki-grc tags:active|neuter|participle|table:present g:to hit upon
+   2. Κῦρος/PROPN [accusative singular] 0.5 {el-att} kaikki-grc tags:accusative|singular g:Cyrus
+   3. κύρω/VERB [imperfect or perfect active indicative, 1st person singular] 0.5 {el-hom} kaikki-grc tags:active|first-person|indicative|singular|table:Epic imperfect g:to hit upon
+   4. κύρω/VERB [imperfect or perfect active indicative, 3rd person plural] 0.5 {el-hom} kaikki-grc tags:active|indicative|plural|table:Epic imperfect|third-person g:to hit upon
+«τὸ» (key τό) in "ἦν τὸ φῶς τὸ ἀληθινόν.": 39 readings; period el-koi (default)
+   1. ὁ/DET [definite article, accusative neuter singular] 0.77 {el-koi} morphgnt code:RA|----ASN- g:the
+   2. ὁ/DET [definite article, nominative neuter singular] 0.65 {el-koi} morphgnt code:RA|----NSN- g:the
+   3. ὁ/DET [nominative neuter singular] 0.42 {el-att} kaikki-grc tags:neuter|nominative|singular|table:Attic declension-2 g:the
+   4. ὁ/DET [accusative neuter singular] 0.42 {el-att} kaikki-grc tags:accusative|neuter|singular|table:Attic declension-2 g:the
+   5. ὁ/DET [nominative neuter singular] 0.42 {el-ion} kaikki-grc tags:neuter|nominative|singular|table:Ionic declension-2 g:the
+   6. ὁ/DET [accusative neuter singular] 0.42 {el-ion} kaikki-grc tags:accusative|neuter|singular|table:Ionic declension-2 g:the
+   7. ὁ/DET [nominative neuter singular] 0.42 {el-dor} kaikki-grc tags:neuter|nominative|singular|table:Laconian declension-2 g:the
+   8. ὁ/DET [accusative neuter singular] 0.42 {el-dor} kaikki-grc tags:accusative|neuter|singular|table:Laconian declension-2 g:the
+   9. ὁ/PRON [nominative neuter singular] 0.42 {el-att} kaikki-grc tags:neuter|nominative|singular|table:Attic declension-2 g:that
+   10. ὁ/PRON [accusative neuter singular] 0.42 {el-att} kaikki-grc tags:accusative|neuter|singular|table:Attic declension-2 g:that
+   11. ὁ/PRON [nominative neuter singular] 0.42 {el-hom} kaikki-grc tags:neuter|nominative|singular|table:Epic declension-2 g:that
+   12. ὁ/PRON [accusative neuter singular] 0.42 {el-hom} kaikki-grc tags:accusative|neuter|singular|table:Epic declension-2 g:that

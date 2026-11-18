@@ -1,0 +1,1657 @@
+36	καλῶς: card καλός/ADJ “beautiful; lovely” [kaikki-grc] / MorphGNT καλῶς “well, nobly, rightly”
+29	πόθεν: card πίνω/VERB “to drink” [kaikki-grc] / MorphGNT πόθεν “whence”
+26	μαριάμ: card Μαρία/PROPN “Mary, Maria” [kaikki-grc] / MorphGNT Μαριάμ “Mary, Miriam”
+22	ἔξεστιν: card ἔξεστι/VERB “to be allowed, to be possible” [kaikki-grc] / MorphGNT ἔξεστι(ν) “it is permitted, lawful, possi”
+22	τεσσεράκοντα: card τεσσαράκοντα/NUM “forty” [kaikki-grc] / MorphGNT τεσσεράκοντα “forty”
+18	ἀληθῶς: card ἀληθής/ADJ “true, real, genuine” [kaikki-grc] / MorphGNT ἀληθῶς “truly, really, certainly”
+16	ἀρνίου: card αρνί/NOUN “lamb (farm animal or meat)” [kaikki-el] / MorphGNT ἀρνίον “a lamb”
+16	κακῶς: card κακός/ADJ “As a measure of quality: bad, ” [kaikki-grc] / MorphGNT κακῶς “badly, evilly”
+14	μῆνας: card μείς/NOUN “month” [kaikki-grc] / MorphGNT μήν “certainly”
+14	πως: card πως/ADV “In any way, at all, by any mea” [kaikki-grc] / MorphGNT πώς “how, in what manner”
+12	δεῦτε: card δεῦρο/INTJ “come on!” [kaikki-grc] / MorphGNT δεῦτε “come hither, come, hither”
+12	στέφανον: card Στέφανος/PROPN “a male given name” [kaikki-grc] / MorphGNT στέφανος “a crown, garland”
+12	ταχύ: card ταχύς/ADJ “fast, rapid” [kaikki-el] / MorphGNT ταχύ “quickly, speedily”
+11	ἀμπελῶνα: card αμπελώνας/NOUN “vineyard” [kaikki-el] / MorphGNT ἀμπελών “a vineyard”
+11	εἴκοσι: card εἴκοσι/NUM “twenty” [kaikki-grc] / MorphGNT εἴκοσι(ν) “twenty”
+11	ὀφείλει: card οφείλω/VERB “to owe” [kaikki-el] / MorphGNT ὀφείλω “I owe, ought”
+11	πετεινά: card πετεινός/ADJ “fully fledged; able to fly” [kaikki-grc] / MorphGNT πετεινόν “a bird”
+11	προσέχετε: card προσέχετε/VERB “second-person plural present a” [kaikki-grc] / MorphGNT προσέχω “I pay attention to, devote mys”
+10	ἀνέγνωτε: card ἀναγιγνώσκω/VERB “to know well, know certainly” [kaikki-grc] / MorphGNT ἀναγινώσκω “I read”
+10	ὄντως: card ὤν/VERB “actual; real” [kaikki-grc] / MorphGNT ὄντως “really, truly”
+10	παραγενόμενος: card παραγίγνομαι/VERB “to be beside; to be by or near” [kaikki-grc] / MorphGNT παραγίνομαι “I appear, come, arrive at”
+10	σκοτίᾳ: card σκότιος/ADJ “secret, clandestine; done or e” [kaikki-grc] / MorphGNT σκοτία “darkness”
+10	ταχέως: card ταχύς/ADJ “swift; quick; fast; rapid” [kaikki-grc] / MorphGNT ταχέως “soon, quickly, hastily”
+9	ἔσω: card εἴσω/ADV “into” [kaikki-grc] / MorphGNT ἔσω “within, inside”
+9	νοῦν: card νόος/NOUN “mind” [kaikki-grc] / MorphGNT νοῦς “the mind, reasoning faculty”
+9	σαούλ: card Σαῦλος/PROPN “a male given name from Hebrew,” [kaikki-grc] / MorphGNT Σαούλ “Saul”
+8	ἀδελφή: card ἀδελφός/ADJ “brotherly or sisterly” [kaikki-grc] / MorphGNT ἀδελφή “a sister”
+8	ἁνανίας: card Ἀνανίας/PROPN “a male given name from Hebrew,” [kaikki-grc] / MorphGNT Ἁνανίας “Ananias”
+8	ἀσκούς: card ασκός/NOUN “animal skin, goatskin” [kaikki-el] / MorphGNT ἀσκός “a wine-skin”
+8	γεγονός: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+8	κρυπτῷ: card κρύπτω/VERB “to hide; to cover” [kaikki-grc] / MorphGNT κρυπτός “hidden, secret”
+8	κύκλῳ: card κύκλος/NOUN “circle, ring” [kaikki-grc] / MorphGNT κύκλῳ “a circle”
+8	μελχισέδεκ: card Μελχισεδέκ/PROPN “Melchizedek, a biblical charac” [kaikki-grc] / MorphGNT Μελχισέδεκ “Melchizedek”
+8	νικῶν: card νίκη/NOUN “victory; success (the act of w” [kaikki-grc] / MorphGNT νικάω “I conquer, overcome”
+8	πάντως: card πᾶς/DET “all; every; each” [kaikki-grc] / MorphGNT πάντως “entirely, in every way, certai”
+8	ὑπομονῆς: card υπομονή/NOUN “patience, forbearance” [kaikki-el] / MorphGNT ὑπομονή “endurance, steadfastness”
+7	ἀμφότεροι: card ἀμφότερος/DET “both” [kaikki-grc] / MorphGNT ἀμφότεροι “both of two”
+7	δρέπανον: card δρεπάνη/NOUN “sickle” [kaikki-grc] / MorphGNT δρέπανον “a sickle”
+7	ἐκλεκτούς: card εκλεκτός/ADJ “chosen, elect, select” [kaikki-el] / MorphGNT ἐκλεκτός “chosen, elect, choice, select”
+7	ἐλέησόν: card ἐλεέω/VERB “to have pity on, take pity on,” [kaikki-grc] / MorphGNT ἐλεάω “to have mercy, show compassion”
+7	ἐνετείλατο: card ἐντέλλω/VERB “to order, command to be done, ” [kaikki-grc] / MorphGNT ἐντέλλομαι “I give orders, command”
+7	ἰωνᾶ: card Ἴων/NOUN “one of the Ionians; a native o” [kaikki-grc] / MorphGNT Ἰωνᾶς “Jonah”
+7	μέλει: card μέλω/VERB “to be an object of care or int” [kaikki-grc] / MorphGNT μέλει “it matters, it is a concern (t”
+7	τέλειον: card τελείω/VERB “Epic form of τελέω (teléō)” [kaikki-grc] / MorphGNT τέλειος “perfect, full-grown”
+6	ἀκάνθας: card άκανθα/NOUN “formal of αγκάθι (agkáthi): th” [kaikki-el] / MorphGNT ἄκανθα “a thorn-bush”
+6	ἅλας: card ἅλς/NOUN “salt” [kaikki-grc] / MorphGNT ἅλας “salt”
+6	ἀξίως: card ἄξιος/ADJ “counterbalancing, weighing as ” [kaikki-grc] / MorphGNT ἀξίως “worthily, in a manner worthy o”
+6	ἀπαρνήσῃ: card απάρνηση/NOUN “renunciation, rejection, aband” [kaikki-el] / MorphGNT ἀπαρνέομαι “I deny, disown, disregard”
+6	ἀπαρχή: card απαρχή/NOUN “beginning, origin” [kaikki-el] / MorphGNT ἀπαρχή “the first-fruits”
+6	ἀπολύτρωσιν: card ἀπολυτρόω/VERB “to release on payment of ranso” [kaikki-grc] / MorphGNT ἀπολύτρωσις “redemption, deliverance”
+6	ἀσθενεῖ: card ἀσθενής/ADJ “without strength, weak” [kaikki-grc] / MorphGNT ἀσθενέω “I am weak, sick”
+6	ἀσθενῶν: card ἀσθενής/ADJ “without strength, weak” [kaikki-grc] / MorphGNT ἀσθενέω “I am weak, sick”
+6	βαρναβᾷ: card Βαρνάβας/PROPN “Barnabas” [kaikki-el] / MorphGNT Βαρναβᾶς “Barnabas”
+6	δίς: card Ζεύς/PROPN “Zeus” [kaikki-grc] / MorphGNT δίς “twice”
+6	ἔνι: card ἐν/ADP “(with dative) in; on; at; (wit” [kaikki-grc] / MorphGNT ἔνι “there is in, is present”
+6	ἱνατί: card γινάτι/NOUN “stubbornness, obstinacy, pighe” [kaikki-el] / MorphGNT ἱνατί “for what reason ?”
+6	μιμηταί: card μιμέομαι/VERB “to mimic” [kaikki-grc] / MorphGNT μιμητής “an imitator”
+6	μύρου: card μύρο/NOUN “perfume, scent” [kaikki-el] / MorphGNT μύρον “anointing-oil, ointment”
+6	νοΐ: card νόος/NOUN “mind” [kaikki-grc] / MorphGNT νοῦς “the mind, reasoning faculty”
+6	νοός: card νόος/NOUN “mind” [kaikki-grc] / MorphGNT νοῦς “the mind, reasoning faculty”
+6	ὁρίων: card όριο/NOUN “limit, boundary; border, divid” [kaikki-el] / MorphGNT ὅριον “districts, territory”
+6	παρών: card παρών/NOUN “a kind of light boat” [kaikki-grc] / MorphGNT πάρειμι “I am present, am near”
+6	πλείονα: card πλείων/ADJ “more, comparative degree of πο” [kaikki-grc] / MorphGNT πολύς “much, many, often”
+6	πλούτου: card Πλοῦτος/PROPN “Plutus” [kaikki-grc] / MorphGNT πλοῦτος “riches, wealth”
+6	σιλᾶν: card Σιλᾶς/PROPN “a male given name from Aramaic” [kaikki-grc] / MorphGNT Σίλας “Silas”
+6	σκοτία: card σκότιος/ADJ “secret, clandestine; done or e” [kaikki-grc] / MorphGNT σκοτία “darkness”
+6	χοίρων: card χοίρος/NOUN “pig” [kaikki-el] / MorphGNT χοῖρος “swine”
+6	χρυσοῦν: card χρύσεος/ADJ “golden; made of gold; decked o” [kaikki-grc] / MorphGNT χρυσοῦς “golden, made of gold”
+5	ἀδελφάς: card ἀδελφός/ADJ “brotherly or sisterly” [kaikki-grc] / MorphGNT ἀδελφή “a sister”
+5	ἀδελφήν: card ἀδελφός/ADJ “brotherly or sisterly” [kaikki-grc] / MorphGNT ἀδελφή “a sister”
+5	ἀδικίᾳ: card Ἀδικία/PROPN “Adikia” [kaikki-grc] / MorphGNT ἀδικία “unrighteousness”
+5	ἀκάθαρτα: card ακάθαρτος/ADJ “dirty, unclean, filthy” [kaikki-el] / MorphGNT ἀκάθαρτος “unclean, impure”
+5	ἀκαθάρτου: card ακάθαρτος/ADJ “dirty, unclean, filthy” [kaikki-el] / MorphGNT ἀκάθαρτος “unclean, impure”
+5	ἀκανθῶν: card άκανθος/NOUN “acanthus (plant and flower)” [kaikki-el] / MorphGNT ἄκανθα “a thorn-bush”
+5	ἀνέχεσθε: card ανέχομαι/VERB “tolerate, put up with, bear” [kaikki-el] / MorphGNT ἀνέχομαι “I endure, bear with”
+5	ἀπειθεῖς: card ἀπειθέω/VERB “to disobey” [kaikki-grc] / MorphGNT ἀπειθής “unbelieving, disobedient”
+5	ἀπίστοις: card ἀπιστέω/VERB “to disbelieve, doubt” [kaikki-grc] / MorphGNT ἄπιστος “unbelieving, incredulous, unch”
+5	ἀπωλείας: card απώλεια/NOUN “loss (of an object)” [kaikki-el] / MorphGNT ἀπώλεια “destruction, ruin, loss”
+5	γέγονα: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+5	δεήσει: card δέω/VERB “to bind, tie, fasten, fetter” [kaikki-grc] / MorphGNT δέησις “supplication, prayer”
+5	δικαίως: card δίκαιος/ADJ “observant of custom, orderly, ” [kaikki-grc] / MorphGNT δικαίως “justly, righteously”
+5	ἐμβάς: card ἐμβάτης/NOUN “a half-boot of felt” [kaikki-grc] / MorphGNT ἐμβαίνω “I embark”
+5	ἐμνήσθησαν: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+5	ἐνάτην: card νάω/VERB “to flow (over)” [kaikki-grc] / MorphGNT ἔνατος “ninth”
+5	ἐξαίφνης: card ἐξαπίνης/ADV “suddenly, all of a sudden” [kaikki-grc] / MorphGNT ἐξαίφνης “suddenly, unexpectedly”
+5	ἔξεστίν: card ἔξεστι/VERB “to be allowed, to be possible” [kaikki-grc] / MorphGNT ἔξεστι(ν) “it is permitted, lawful, possi”
+5	ἐπυνθάνετο: card ἐπυνθάνετο/VERB “third-person singular imperfec” [kaikki-grc] / MorphGNT πυνθάνομαι “I ask, inquire”
+5	εὖ: card ἀγαθός/ADJ “good; brave; noble; moral; gen” [kaikki-grc] / MorphGNT εὖ “well, well done”
+5	εὐχαριστίας: card ευχαριστία/NOUN “thanks” [kaikki-el] / MorphGNT εὐχαριστία “thankfulness, gratitude”
+5	ἐφάπαξ: card εφάπαξ/ADV “once” [kaikki-el] / MorphGNT ἐφάπαξ “once, once for all”
+5	καθεξῆς: card καθεξής/ADV “forth (forward in time, place,” [kaikki-el] / MorphGNT καθεξῆς “in order, just after”
+5	λευί: card Λευΐς/PROPN “Levi” [kaikki-grc] / MorphGNT Λευί “Levi”
+5	πηλόν: card πάλλω/VERB “to poise or sway a missile bef” [kaikki-grc] / MorphGNT πηλός “clay, mud”
+5	πλατείας: card πλατύς/ADJ “wide; broad” [kaikki-grc] / MorphGNT πλατεῖα “a street”
+5	συκῆ: card συκέα/NOUN “fig tree” [kaikki-grc] / MorphGNT συκῆ “a fig-tree”
+5	τύρου: card τυρός/NOUN “cheese” [kaikki-grc] / MorphGNT Τύρος “Tyre”
+5	ὑπακούετε: card υπακούω/VERB “to obey, comply, be obedient” [kaikki-el] / MorphGNT ὑπακούω “I listen, obey”
+5	χοίρους: card χοίρος/NOUN “pig” [kaikki-el] / MorphGNT χοῖρος “swine”
+5	χρυσᾶς: card χρύσεος/ADJ “golden; made of gold; decked o” [kaikki-grc] / MorphGNT χρυσοῦς “golden, made of gold”
+4	ἀδόκιμοι: card αδόκιμος/ADJ “unidiomatic” [kaikki-el] / MorphGNT ἀδόκιμος “failing to pass the test”
+4	ᾅδου: card ᾍδης/PROPN “Hades (Greek god)” [kaikki-grc] / MorphGNT ᾅδης “Hades”
+4	ἀκαθάρτων: card ακάθαρτος/ADJ “dirty, unclean, filthy” [kaikki-el] / MorphGNT ἀκάθαρτος “unclean, impure”
+4	ἀκριβέστερον: card ἀκριβής/ADJ “accurate, precise” [kaikki-grc] / MorphGNT ἀκριβέστερον “more exactly”
+4	ἀληθινοί: card αληθινός/ADJ “true, real” [kaikki-el] / MorphGNT ἀληθινός “true, real, genuine”
+4	ἀμφότερα: card ἀμφότερος/DET “both” [kaikki-grc] / MorphGNT ἀμφότεροι “both of two”
+4	ἀνατολῆς: card ανατολή/NOUN “east, East” [kaikki-el] / MorphGNT ἀνατολή “rising of the sun, the East”
+4	ἀνατολῶν: card ανατολή/NOUN “east, East” [kaikki-el] / MorphGNT ἀνατολή “rising of the sun, the East”
+4	ἀπειθείας: card απείθεια/NOUN “disobedience, indiscipline, in” [kaikki-el] / MorphGNT ἀπείθεια “willful unbelief, obstinacy, d”
+4	ἀπίστων: card ἀπιστέω/VERB “to disbelieve, doubt” [kaikki-grc] / MorphGNT ἄπιστος “unbelieving, incredulous, unch”
+4	ἀπολλῶ: card Ἀπόλλων/PROPN “Apollo” [kaikki-grc] / MorphGNT Ἀπολλῶς “Apollos”
+4	ἀπώλεια: card απώλεια/NOUN “loss (of an object)” [kaikki-el] / MorphGNT ἀπώλεια “destruction, ruin, loss”
+4	ἀσκοί: card ασκός/NOUN “animal skin, goatskin” [kaikki-el] / MorphGNT ἀσκός “a wine-skin”
+4	ἀσπασμός: card ασπασμός/NOUN “kiss, hug” [kaikki-el] / MorphGNT ἀσπασμός “a greeting, salutation”
+4	ἀσπασμούς: card ασπασμός/NOUN “kiss, hug” [kaikki-el] / MorphGNT ἀσπασμός “a greeting, salutation”
+4	ἀφόβως: card ἄφοβος/ADJ “fearless” [kaikki-grc] / MorphGNT ἀφόβως “fearlessly”
+4	βαρναβᾶ: card Βαρνάβας/PROPN “Barnabas” [kaikki-el] / MorphGNT Βαρναβᾶς “Barnabas”
+4	βρῶσιν: card βιβρώσκω/VERB “to eat, eat up” [kaikki-grc] / MorphGNT βρῶσις “eating, food, a meal, rust”
+4	γεγονέναι: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+4	γενομένην: card γενόμενος/VERB “” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+4	γενόμενον: card γενόμενος/VERB “” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+4	δέομαι: card δέω/VERB “to bind, tie, fasten, fetter” [kaikki-grc] / MorphGNT δέομαι “I request, beg”
+4	ἐκλεκτῶν: card εκλεκτός/ADJ “chosen, elect, select” [kaikki-el] / MorphGNT ἐκλεκτός “chosen, elect, choice, select”
+4	ἐλαχίστων: card ἐλαχύς/ADJ “small; short; mean; little” [kaikki-grc] / MorphGNT ἐλάχιστος “least, smallest, very little”
+4	ἐλέησον: card ἐλεέω/VERB “to have pity on, take pity on,” [kaikki-grc] / MorphGNT ἐλεάω “to have mercy, show compassion”
+4	ἐνέπαιξαν: card εμπαίζω/VERB “to mock, tease, ridicule” [kaikki-el] / MorphGNT ἐμπαίζω “I mock”
+4	ἔρις: card Ἔρις/PROPN “Eris” [kaikki-grc] / MorphGNT ἔρις “contention, strife”
+4	εὐλογίας: card ευλογιά/NOUN “smallpox” [kaikki-el] / MorphGNT εὐλογία “adulation, praise, blessing”
+4	εὐπρόσδεκτος: card ευπρόσδεκτος/ADJ “welcome (whose arrival is a ca” [kaikki-el] / MorphGNT εὐπρόσδεκτος “well-received, acceptable”
+4	ἔχον: card ἔχων/VERB “” [kaikki-grc] / MorphGNT ἔχω “I have, hold, possess”
+4	ζυγόν: card ζυγόν/NOUN “yoke (for joining animals)” [kaikki-grc] / MorphGNT ζυγός “a yoke, heavy burden, pair of ”
+4	ἠλίᾳ: card ήλιο/NOUN “helium” [kaikki-el] / MorphGNT Ἠλίας “Elijah”
+4	θάρσει: card θάρσος/NOUN “courage; confidence; audacity” [kaikki-grc] / MorphGNT θαρσέω “be of good cheer”
+4	κανά: card κανοῦν/NOUN “Attic form of κᾰ́νεον (kắneon)” [kaikki-grc] / MorphGNT Κανά “Cana”
+4	κρυπτά: card κρυπτή/NOUN “a crypt, vault” [kaikki-grc] / MorphGNT κρυπτός “hidden, secret”
+4	κτίσει: card κτίζω/VERB “to people” [kaikki-grc] / MorphGNT κτίσις “creation, creature, institutio”
+4	λάθρᾳ: card λάθρῃ/ADV “secretly, by stealth” [kaikki-grc] / MorphGNT λάθρᾳ “secretly”
+4	μετώπων: card μέτωπο/NOUN “forehead” [kaikki-el] / MorphGNT μέτωπον “the forehead”
+4	μυστήρια: card μυστήριο/NOUN “mystery” [kaikki-el] / MorphGNT μυστήριον “anything hidden, a mystery”
+4	νῖκος: card νίκη/NOUN “victory; success (the act of w” [kaikki-grc] / MorphGNT νῖκος “victory”
+4	οἰκοδεσπότῃ: card οἰκοδεσποτέω/VERB “to be the master or head of a ” [kaikki-grc] / MorphGNT οἰκοδεσπότης “a head of a household”
+4	οἰκουμένης: card οικουμένη/NOUN “world, ecumene (the whole inha” [kaikki-el] / MorphGNT οἰκουμένη “the inhabited (Roman) world”
+4	ὅρια: card όριο/NOUN “limit, boundary; border, divid” [kaikki-el] / MorphGNT ὅριον “districts, territory”
+4	ὁρκωμοσίας: card ορκωμοσία/NOUN “swearing-in, oathtaking” [kaikki-el] / MorphGNT ὁρκωμοσία “the taking of an oath, an oath”
+4	παρεγένετο: card παραγίγνομαι/VERB “to be beside; to be by or near” [kaikki-grc] / MorphGNT παραγίνομαι “I appear, come, arrive at”
+4	παρεγένοντο: card παραγίγνομαι/VERB “to be beside; to be by or near” [kaikki-grc] / MorphGNT παραγίνομαι “I appear, come, arrive at”
+4	περισσῶς: card περισσός/ADJ “prodigious (beyond the regular” [kaikki-grc] / MorphGNT περισσῶς “greatly, exceedingly”
+4	πέτρας: card πέτρη/NOUN “Epic and Ionic form of πέτρᾱ (” [kaikki-grc] / MorphGNT πέτρα “rock”
+4	πορνείᾳ: card πορνεῖον/NOUN “a brothel, lupanar, whorehouse” [kaikki-grc] / MorphGNT πορνεία “fornication, idolatry”
+4	ποτηρίου: card ποτήρι/NOUN “glass (drinking vessel, usuall” [kaikki-el] / MorphGNT ποτήριον “a drinking cup”
+4	σταδίους: card στᾰ́δῐον/NOUN “” [kaikki-grc] / MorphGNT στάδιος “a stadion (about 185 m); a rac”
+4	ταπεινώσει: card ταπεινώνω/VERB “to humiliate, humble” [kaikki-el] / MorphGNT ταπείνωσις “abasement, low condition”
+4	τύρῳ: card τυρός/NOUN “cheese” [kaikki-grc] / MorphGNT Τύρος “Tyre”
+4	ὕπνου: card ὕπνον/NOUN “a kind of lichen” [kaikki-grc] / MorphGNT ὕπνος “sleep”
+4	ὑψίστοις: card ῠ̔́ψῐστᾰ/NOUN “” [kaikki-grc] / MorphGNT ὕψιστος “highest, most high, the height”
+4	φιλῶν: card φίλος/ADJ “that which is loved or importa” [kaikki-grc] / MorphGNT φιλέω “I love, kiss”
+4	ψεύδομαι: card ψεύδω/VERB “to lie, deceive” [kaikki-grc] / MorphGNT ψεύδομαι “I lie”
+3	αββα: card ἀββα/NOUN “father” [kaikki-grc] / MorphGNT αββα “Father”
+3	ἀγαλλιάσει: card ἀγαλλιάω/VERB “to be overjoyed, to rejoice” [kaikki-grc] / MorphGNT ἀγαλλίασις “exultation, exhilaration”
+3	ἀδελφαί: card ἀδελφός/ADJ “brotherly or sisterly” [kaikki-grc] / MorphGNT ἀδελφή “a sister”
+3	ἀδελφῆς: card ἀδελφός/ADJ “brotherly or sisterly” [kaikki-grc] / MorphGNT ἀδελφή “a sister”
+3	ᾅδης: card ᾍδης/PROPN “Hades (Greek god)” [kaikki-grc] / MorphGNT ᾅδης “Hades”
+3	ἀκαθαρσίᾳ: card ακαθαρσία/NOUN “impurity, dirt, filth” [kaikki-el] / MorphGNT ἀκαθαρσία “uncleanness, impurity”
+3	ἀκαθαρσίας: card ακαθαρσία/NOUN “impurity, dirt, filth” [kaikki-el] / MorphGNT ἀκαθαρσία “uncleanness, impurity”
+3	ἀληθινή: card αληθινός/ADJ “true, real” [kaikki-el] / MorphGNT ἀληθινός “true, real, genuine”
+3	ἄλφα: card ἄλφα/NOUN “alpha, the name for the first ” [kaikki-grc] / MorphGNT Ἄλφα “Alpha”
+3	ἄμμος: card ἡμέτερος/ADJ “our, of ours” [kaikki-grc] / MorphGNT ἄμμος “sand”
+3	ἀμώμους: card άμωμος/ADJ “immaculate, unblemished” [kaikki-el] / MorphGNT ἄμωμος “blameless”
+3	ἀμώς: card ἀμάω/VERB “to reap, cut” [kaikki-grc] / MorphGNT Ἀμώς “Amos”
+3	ἀνθρωποκτόνος: card ανθρωποκτόνος/ADJ “homicidal” [kaikki-el] / MorphGNT ἀνθρωποκτόνος “a murderer”
+3	ἀντιοχείας: card Αντιόχεια/PROPN “Antioch” [kaikki-el] / MorphGNT Ἀντιόχεια “Antioch”
+3	ἀπώσατο: card ἀπωθέω/VERB “to thrust away, push back, cas” [kaikki-grc] / MorphGNT ἀπωθέομαι “I push or thrust away, reject”
+3	ἀρνούμενος: card αρνούμαι/VERB “to deny, reject, turn down” [kaikki-el] / MorphGNT ἀρνέομαι “I deny, repudiate”
+3	ἀσελγείᾳ: card ασέλγεια/NOUN “lewdness, lechery (vulgar over” [kaikki-el] / MorphGNT ἀσέλγεια “wantonness, lewdness”
+3	ἆσσον: card ἄγχι/ADV “near, nigh” [kaikki-grc] / MorphGNT Ἆσσος “Assos”
+3	ἀσφαλῶς: card ἀσφαλής/ADJ “immovable, steadfast, unshaken” [kaikki-grc] / MorphGNT ἀσφαλῶς “safely, securely, assuredly”
+3	ἀφρόνων: card άφρων/ADJ “foolish, frivolous” [kaikki-el] / MorphGNT ἄφρων “senseless, foolish, inconsider”
+3	ἀχαΐας: card Αχαΐα/PROPN “Achaea” [kaikki-el] / MorphGNT Ἀχαΐα “Achaia”
+3	γέγονας: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+3	γείτονας: card γείτονας/NOUN “neighbour (UK), neighbor (US)” [kaikki-el] / MorphGNT γείτων “a neighbor”
+3	γενομένοις: card γενόμενος/VERB “” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+3	γενομένων: card γενόμενος/VERB “” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+3	δεήσεις: card δέω/VERB “to bind, tie, fasten, fetter” [kaikki-grc] / MorphGNT δέησις “supplication, prayer”
+3	δέομαί: card δέω/VERB “to bind, tie, fasten, fetter” [kaikki-grc] / MorphGNT δέομαι “I request, beg”
+3	δεόμενοι: card δέω/VERB “to bind, tie, fasten, fetter” [kaikki-grc] / MorphGNT δέομαι “I request, beg”
+3	δεσμά: card δεσμός m/NOUN “” [kaikki-grc] / MorphGNT δεσμόν “a bond, chain”
+3	δίδυμος: card δίδυμος/ADJ “double; twofold” [kaikki-grc] / MorphGNT Δίδυμος “the Twin, Didymus, Thomas”
+3	δυναμένου: card δῠνᾰ́μενος/VERB “” [kaikki-grc] / MorphGNT δύναμαι “I am powerful, am able”
+3	δῶρά: card Δῶρα/PROPN “Dora; Tantura, Palestine” [kaikki-grc] / MorphGNT δῶρον “a gift, present”
+3	ἔθαψαν: card θάβω/VERB “to bury, inter” [kaikki-el] / MorphGNT θάπτω “I bury”
+3	ἐκλεκτοί: card εκλεκτός/ADJ “chosen, elect, select” [kaikki-el] / MorphGNT ἐκλεκτός “chosen, elect, choice, select”
+3	ἐλαχίστῳ: card ἐλαχύς/ADJ “small; short; mean; little” [kaikki-grc] / MorphGNT ἐλάχιστος “least, smallest, very little”
+3	ἔλεγχε: card ελέγχω/VERB “to question, check, test” [kaikki-el] / MorphGNT ἐλέγχω “I rebuke, expose”
+3	ἐνδύματος: card ένδυμα/NOUN “garment, item of clothing” [kaikki-el] / MorphGNT ἔνδυμα “a garment, raiment”
+3	ἐνεργεῖται: card ενεργώ/VERB “to act, carry out an action” [kaikki-el] / MorphGNT ἐνεργέω “I work, accomplish, am operati”
+3	ἐνεργής: card ἐνεργός/ADJ “at work, active” [kaikki-grc] / MorphGNT ἐνεργής “effective”
+3	ἐνεργῶν: card ἐνεργός/ADJ “at work, active” [kaikki-grc] / MorphGNT ἐνεργέω “I work, accomplish, am operati”
+3	ἐντάλματα: card ένταλμα/NOUN “order, warrant (written author” [kaikki-el] / MorphGNT ἔνταλμα “an injunction, ordinance, prec”
+3	ἔντρομος: card έντρομος/ADJ “terrified, frightened, terror-” [kaikki-el] / MorphGNT ἔντρομος “trembling through fear”
+3	ἐξόν: card ἔξεστι/VERB “to be allowed, to be possible” [kaikki-grc] / MorphGNT ἔξεστι(ν) “it is permitted, lawful, possi”
+3	ἐπίγεια: card ἐπίγεια/NOUN “a kind of reed extending over ” [kaikki-grc] / MorphGNT ἐπίγειος “earthly”
+3	ἐπιθέσεως: card επίθεση/NOUN “attack, offensive (in warfare)” [kaikki-el] / MorphGNT ἐπίθεσις “laying on”
+3	ἐπισκοπῆς: card επισκοπή/NOUN “episcopacy, diocese” [kaikki-el] / MorphGNT ἐπισκοπή “visitation of judgment, oversi”
+3	ἐπιστραφείς: card επιστρέφω/VERB “to return, come back” [kaikki-el] / MorphGNT ἐπιστρέφω “I turn back to”
+3	ἔρημος: card ἐρῆμος/ADJ “lonely, lonesome, solitary” [kaikki-grc] / MorphGNT ἔρημος “deserted, desolate, a desert”
+3	ἐτάφη: card θάβω/VERB “to bury, inter” [kaikki-el] / MorphGNT θάπτω “I bury”
+3	ἑτοίμως: card ἕτοιμος/ADJ “alternative form of ἑτοῖμος (h” [kaikki-grc] / MorphGNT ἑτοίμως “readily”
+3	εὐαγγελίζεται: card ευαγγελίζομαι/VERB “to bring good news” [kaikki-el] / MorphGNT εὐαγγελίζω “I bring good news, preach good”
+3	εὐνοῦχοι: card ευνούχος/NOUN “eunuch” [kaikki-el] / MorphGNT εὐνοῦχος “a eunuch, keeper of the bed-ch”
+3	ἐχθές: card χθές/ADV “yesterday” [kaikki-grc] / MorphGNT ἐχθές “yesterday”
+3	ἡγούμενος: card ἡγούμενος/NOUN “abbot, principal” [kaikki-grc] / MorphGNT ἡγέομαι “I lead, think”
+3	ἡδέως: card ἡδύς/ADJ “sweet (pleasant to the taste o” [kaikki-grc] / MorphGNT ἡδέως “gladly, pleasantly”
+3	ἥκω: card ἵημι/VERB “to release, let go” [kaikki-grc] / MorphGNT ἥκω “I have come, am present”
+3	ἠλί: card Ἠλί/PROPN “Eli, a given name, most famous” [kaikki-grc] / MorphGNT ἠλί “Eli”
+3	ἤρεσεν: card ἐρέσσω/VERB “to row, paddle” [kaikki-grc] / MorphGNT ἀρέσκω “I please, serve”
+3	ἠσαῦ: card Ἡσαῦ/PROPN “Esau” [kaikki-grc] / MorphGNT Ἠσαῦ “Esau”
+3	θεῖον: card θεῖον/NOUN “divinity” [kaikki-grc] / MorphGNT θεῖος “divine”
+3	θείῳ: card θεῖος/ADJ “of or from the gods or God, di” [kaikki-grc] / MorphGNT θεῖον “brimstone, sulfur”
+3	θερμαινόμενος: card θερμαίνω/VERB “to heat” [kaikki-el] / MorphGNT θερμαίνομαι “I warm”
+3	ἰσκαριώθ: card Ἰσκαριώτης/PROPN “Iscariot, a byname of the bibl” [kaikki-grc] / MorphGNT Ἰσκαριώθ “Iscariot, a man of Kerioth”
+3	κατάρας: card καταίρω/VERB “to come down, swoop down” [kaikki-grc] / MorphGNT κατάρα “a curse, cursing”
+3	καταργήσει: card καταργώ/VERB “to abolish, quash, repeal, nul” [kaikki-el] / MorphGNT καταργέω “I bring to naught, sever, abol”
+3	καταργήσῃ: card κατάργηση/NOUN “abolition, abrogation” [kaikki-el] / MorphGNT καταργέω “I bring to naught, sever, abol”
+3	κρανίου: card κρανίο/NOUN “cranium, skull” [kaikki-el] / MorphGNT κρανίον “a skull”
+3	κρεῖσσον: card κρείσσων/ADJ “” [kaikki-grc] / MorphGNT κρείττων “stronger, more excellent”
+3	κριτήν: card κριτός/ADJ “picked out, chosen” [kaikki-grc] / MorphGNT κριτής “a judge”
+3	λόγια: card λόγῐος/ADJ “” [kaikki-grc] / MorphGNT λόγιον “divine communication”
+3	λυπούμενος: card λυπώ/VERB “to sadden, distress” [kaikki-el] / MorphGNT λυπέω “I pain, grieve, vex”
+3	μείζονος: card μείζων/ADJ “comparative degree of μέγᾰς (m” [kaikki-grc] / MorphGNT μέγας “large, great”
+3	μνησθῆναι: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+3	μυστηρίου: card μυστήριο/NOUN “mystery” [kaikki-el] / MorphGNT μυστήριον “anything hidden, a mystery”
+3	νίψαι: card νίζω/VERB “to wash the hands or feet of a” [kaikki-grc] / MorphGNT νίπτω “I wash”
+3	νοῦς: card νόος/NOUN “mind” [kaikki-grc] / MorphGNT νοῦς “the mind, reasoning faculty”
+3	ὁμολογήσω: card ομολογώ/VERB “to confess, admit (concede the” [kaikki-el] / MorphGNT ὁμολογέω “I confess, profess, acknowledg”
+3	ὀργισθείς: card ὀργίζω/VERB “to anger, irritate” [kaikki-grc] / MorphGNT ὀργίζομαι “I irritate, provoke, am angry”
+3	ὀφείλεις: card οφείλω/VERB “to owe” [kaikki-el] / MorphGNT ὀφείλω “I owe, ought”
+3	ὀφειλέται: card οφείλω/VERB “to owe” [kaikki-el] / MorphGNT ὀφειλέτης “a debtor, sinner”
+3	παρασκευή: card Παρασκευή/PROPN “Friday (day of preparation for” [kaikki-grc] / MorphGNT παρασκευή “the day before the Sabbath”
+3	πεινᾷ: card πεῖνα/NOUN “hunger, famine, starvation” [kaikki-grc] / MorphGNT πεινάω “I am hungry, needy”
+3	πενθερά: card πεθερά/NOUN “mother-in-law” [kaikki-el] / MorphGNT πενθερά “a mother-in-law”
+3	πεντηκοστῆς: card πεντηκοστός/ADJ “fiftieth” [kaikki-grc] / MorphGNT πεντηκοστή “Pentecost”
+3	πετεινῶν: card πετεινός/ADJ “fully fledged; able to fly” [kaikki-grc] / MorphGNT πετεινόν “a bird”
+3	πλοῦτον: card Πλοῦτος/PROPN “Plutus” [kaikki-grc] / MorphGNT πλοῦτος “riches, wealth”
+3	πονηρίας: card πονηριά/NOUN “cunning, guile” [kaikki-el] / MorphGNT πονηρία “wickedness, iniquities”
+3	που: card που/ADV “anywhere, somewhere” [kaikki-grc] / MorphGNT πού “somewhere”
+3	πτωχή: card πτωχή/NOUN “beggarwoman” [kaikki-grc] / MorphGNT πτωχός “poor, destitute”
+3	πυρετός: card Πυρετός/PROPN “River Pyretus; Prut River, now” [kaikki-grc] / MorphGNT πυρετός “a fever”
+3	ῥώμῃ: card ῥώμη/NOUN “might, power, force, strength” [kaikki-grc] / MorphGNT Ῥώμη “Rome”
+3	σαμαρίτης: card Σαμαρείτης/NOUN “Samaritan” [kaikki-grc] / MorphGNT Σαμαρίτης “a Samaritan”
+3	σελήνης: card Σελήνη/PROPN “the earth's Moon” [kaikki-grc] / MorphGNT σελήνη “the moon”
+3	σπεῖραν: card σπείρω/VERB “to sow” [kaikki-grc] / MorphGNT σπεῖρα “a cohort”
+3	σπουδαίως: card σπουδαῖος/ADJ “earnest, serious” [kaikki-grc] / MorphGNT σπουδαίως “diligently, earnestly”
+3	στεφανᾶ: card στέφανο/NOUN “wedding garland/wreath (placed” [kaikki-el] / MorphGNT Στεφανᾶς “Stephanas”
+3	σῦκα: card συκῆ/NOUN “Epic and Ionic form of σῡκέᾱ (” [kaikki-grc] / MorphGNT σῦκον “a fig”
+3	συμφέρον: card συμφέρων/VERB “” [kaikki-grc] / MorphGNT συμφέρω “I collect, am profitable to”
+3	τολμᾷ: card τόλμα/NOUN “courage, hardihood” [kaikki-grc] / MorphGNT τολμάω “I dare, endure, am bold”
+3	τρῳάδα: card Τρωάς/PROPN “the Troas; the Troad” [kaikki-grc] / MorphGNT Τρῳάς “Troas”
+3	ὑετόν: card ὕω/VERB “to rain” [kaikki-grc] / MorphGNT ὑετός “rain”
+3	ὑπόδειγμα: card υπόδειγμα/NOUN “model, exemplar, paragon (some” [kaikki-el] / MorphGNT ὑπόδειγμα “a figure, copy, example”
+3	φεύγετε: card φεύγετε/VERB “second-person plural present a” [kaikki-grc] / MorphGNT φεύγω “I flee, escape, shun”
+3	χῆραι: card χαίρω/VERB “to be full of cheer; to be hap” [kaikki-grc] / MorphGNT χήρα “a widow”
+3	ὠργίσθη: card ὀργίζω/VERB “to anger, irritate” [kaikki-grc] / MorphGNT ὀργίζομαι “I irritate, provoke, am angry”
+2	ἀγαθοποιῶν: card ἀγαθοποιέω/VERB “to do good to; to be helpful t” [kaikki-grc] / MorphGNT ἀγαθοποιός “a doer of that which is good”
+2	ἀγαπητά: card αγαπητός/ADJ “dear” [kaikki-el] / MorphGNT ἀγαπητός “loved, beloved”
+2	ἀγαπητοῖς: card Ἀγαπητός/PROPN “a male given name, Agapetus” [kaikki-grc] / MorphGNT ἀγαπητός “loved, beloved”
+2	ἁγάρ: card Ἄγαρ/PROPN “Hagar” [kaikki-grc] / MorphGNT Ἁγάρ “Hagar”
+2	ἄγει: card ἄγος/NOUN “awe; reverence; dread” [kaikki-grc] / MorphGNT ἄγω “I lead”
+2	ἀγνοεῖτε: card αγνοώ/VERB “to not know, be ignorant of” [kaikki-el] / MorphGNT ἀγνοέω “I do not know, am ignorant of”
+2	ἄγονται: card άγω/VERB “to lead” [kaikki-el] / MorphGNT ἄγω “I lead”
+2	ἀγοράζει: card αγοράζω/VERB “to buy, to purchase” [kaikki-el] / MorphGNT ἀγοράζω “I buy”
+2	ἀγοράζοντας: card αγοράζω/VERB “to buy, to purchase” [kaikki-el] / MorphGNT ἀγοράζω “I buy”
+2	ᾅδην: card ᾍδης/PROPN “Hades (Greek god)” [kaikki-grc] / MorphGNT ᾅδης “Hades”
+2	ἀδικεῖτε: card ἀδικεῖτε/VERB “second-person plural present a” [kaikki-grc] / MorphGNT ἀδικέω “I act unjustly towards”
+2	ἀδικίαν: card Ἀδικία/PROPN “Adikia” [kaikki-grc] / MorphGNT ἀδικία “unrighteousness”
+2	ἀδόκιμος: card αδόκιμος/ADJ “unidiomatic” [kaikki-el] / MorphGNT ἀδόκιμος “failing to pass the test”
+2	αἴρων: card αἱρέω/VERB “to take, grasp, seize” [kaikki-grc] / MorphGNT αἴρω “I raise, lift up”
+2	αἰσχυνθήσομαι: card αἰσχύνω/VERB “to make ugly; disfigure” [kaikki-grc] / MorphGNT αἰσχύνομαι “I am ashamed, am put to shame”
+2	αἰτίας: card αἴτῐος/ADJ “” [kaikki-grc] / MorphGNT αἰτία “a cause, reason, charge”
+2	αἰτῶν: card αιτών/NOUN “applicant” [kaikki-el] / MorphGNT αἰτέω “I ask, request, beg, petition”
+2	αἰφνίδιος: card αιφνίδιος/ADJ “sudden” [kaikki-el] / MorphGNT αἰφνίδιος “unexpected, sudden”
+2	ἀκαθαρσία: card ακαθαρσία/NOUN “impurity, dirt, filth” [kaikki-el] / MorphGNT ἀκαθαρσία “uncleanness, impurity”
+2	ἀκαταστασίας: card ακαταστασία/NOUN “mess, disorder, confusion” [kaikki-el] / MorphGNT ἀκαταστασία “disturbance, upheaval, revolut”
+2	ἀκέραιοι: card ακέραιος/ADJ “whole, intact, undivided” [kaikki-el] / MorphGNT ἀκέραιος “simple, unsophisticated, innoc”
+2	ἀκολουθήσατε: card ακολουθώ/VERB “to follow, pursue” [kaikki-el] / MorphGNT ἀκολουθέω “I accompany, attend, follow”
+2	ἀκολουθῶν: card ακόλουθος/NOUN “attendant, attaché” [kaikki-el] / MorphGNT ἀκολουθέω “I accompany, attend, follow”
+2	ἀκροατής: card ακροατής/NOUN “listener (someone who is liste” [kaikki-el] / MorphGNT ἀκροατής “a hearer of, a listener to”
+2	ἄκρον: card ἄκρος/ADJ “at the edge” [kaikki-grc] / MorphGNT ἄκρον “the end, extremity”
+2	ἄκρου: card ἄκρος/ADJ “at the edge” [kaikki-grc] / MorphGNT ἄκρον “the end, extremity”
+2	ἄκρων: card ἄκρος/ADJ “at the edge” [kaikki-grc] / MorphGNT ἄκρον “the end, extremity”
+2	ἀληθινῆς: card αληθινός/ADJ “true, real” [kaikki-el] / MorphGNT ἀληθινός “true, real, genuine”
+2	ἅλωνα: card Άλωνα/PROPN “Alona (a village in Nicosia di” [kaikki-el] / MorphGNT ἅλων “a threshing-floor”
+2	ἄμεμπτοι: card άμεμπτος/ADJ “spotless, unblemished” [kaikki-el] / MorphGNT ἄμεμπτος “blameless”
+2	ἄμεμπτος: card άμεμπτος/ADJ “spotless, unblemished” [kaikki-el] / MorphGNT ἄμεμπτος “blameless”
+2	ἀμερίμνους: card αμέριμνος/ADJ “unconcerned, insouciant” [kaikki-el] / MorphGNT ἀμέριμνος “free from anxiety”
+2	ἄμετρα: card άμετρος/ADJ “unmeasured, immeasurable” [kaikki-el] / MorphGNT ἄμετρος “not measurable, immeasurable”
+2	ἄμωμον: card ἄμωμον/NOUN “black cardamom (Amomum subulat” [kaikki-grc] / MorphGNT ἄμωμος “blameless”
+2	ἀναβλέψω: card αναβλέπω/VERB “see again, recover sight” [kaikki-el] / MorphGNT ἀναβλέπω “I look up, recover my sight”
+2	ἀναγνώσει: card ἀναγιγνώσκω/VERB “to know well, know certainly” [kaikki-grc] / MorphGNT ἀνάγνωσις “reading”
+2	ἀναφέρει: card αναφέρω/VERB “to mention, present, announce” [kaikki-el] / MorphGNT ἀναφέρω “I carry up, lead up, offer up”
+2	ἀνέβλεψα: card αναβλέπω/VERB “see again, recover sight” [kaikki-el] / MorphGNT ἀναβλέπω “I look up, recover my sight”
+2	ἀνεγκλήτους: card ανέγκλητος/ADJ “unindictable” [kaikki-el] / MorphGNT ἀνέγκλητος “irreproachable, blameless”
+2	ἀνῆκεν: card ἀνίημι/VERB “to let go, loosen” [kaikki-grc] / MorphGNT ἀνήκω “is due, becoming, suitable, pr”
+2	ἀνθέξεται: card ἀντέχω/VERB “to hold out, keep” [kaikki-grc] / MorphGNT ἀντέχομαι “I hold fast to”
+2	ἅννα: card Ἄννα/PROPN “Hannah (biblical character)” [kaikki-grc] / MorphGNT Ἅννα “Anna”
+2	ἅννας: card Ἄννα/PROPN “Hannah (biblical character)” [kaikki-grc] / MorphGNT Ἅννας “Annas”
+2	ἀνοίξῃ: card άνοιξη/NOUN “spring, springtime, springtide” [kaikki-el] / MorphGNT ἀνοίγω “I open”
+2	ἀνόμως: card ἄνομος/ADJ “lawless, impious” [kaikki-grc] / MorphGNT ἀνόμως “without law”
+2	ἀντάλλαγμα: card αντάλλαγμα/NOUN “exchange, swap” [kaikki-el] / MorphGNT ἀντάλλαγμα “an exchange, purchasing price”
+2	ἀντίδικος: card αντίδικος/ADJ “relating to litigants or legal” [kaikki-el] / MorphGNT ἀντίδικος “an opponent, adversary”
+2	ἀντιδίκου: card αντίδικος/NOUN “litigant, legal opponent” [kaikki-el] / MorphGNT ἀντίδικος “an opponent, adversary”
+2	ἀντιλέγοντας: card αντιλέγω/VERB “to contradict” [kaikki-el] / MorphGNT ἀντιλέγω “I speak or say in opposition, ”
+2	ἄνυδροι: card άνυδρος/ADJ “very dry, arid, waterless” [kaikki-el] / MorphGNT ἄνυδρος “without water, dry”
+2	ἀνύδρων: card άνυδρος/ADJ “very dry, arid, waterless” [kaikki-el] / MorphGNT ἄνυδρος “without water, dry”
+2	ἀνυπόκριτος: card ανυπόκριτος/ADJ “frank, undisguised, unfeigned” [kaikki-el] / MorphGNT ἀνυπόκριτος “unfeigned, without hypocrisy”
+2	ἀνυποκρίτου: card ανυπόκριτος/ADJ “frank, undisguised, unfeigned” [kaikki-el] / MorphGNT ἀνυπόκριτος “unfeigned, without hypocrisy”
+2	ἄξιοί: card ἀξιόω/VERB “to think or deem worthy” [kaikki-grc] / MorphGNT ἄξιος “worthy, worthy of, deserving”
+2	ἀόρατα: card αόρατος/ADJ “invisible, unseen” [kaikki-el] / MorphGNT ἀόρατος “unseen, invisible”
+2	ἀπεκρίθην: card ᾰ̓ποκρῑ́νω/VERB “” [kaikki-grc] / MorphGNT ἀποκρίνομαι “I answer, reply”
+2	ἀπέλθω: card απέρχομαι/VERB “to depart, go away from” [kaikki-el] / MorphGNT ἀπέρχομαι “I come or go away from, depart”
+2	ἀπεστάλη: card αποστέλλω/VERB “to send, remit, ship, dispatch” [kaikki-el] / MorphGNT ἀποστέλλω “I send forth, send, send away,”
+2	ἀπεσταλμένους: card απεσταλμένος/NOUN “emissary, envoy, delegate” [kaikki-el] / MorphGNT ἀποστέλλω “I send forth, send, send away,”
+2	ἀπέστη: card ἀφίστημι/VERB “to stand off or away” [kaikki-grc] / MorphGNT ἀφίσταμαι “I lead away, seduce, depart, a”
+2	ἀπίστου: card ἀπιστέω/VERB “to disbelieve, doubt” [kaikki-grc] / MorphGNT ἄπιστος “unbelieving, incredulous, unch”
+2	ἁπλοῦς: card ἁπλόος/ADJ “single; onefold” [kaikki-grc] / MorphGNT ἁπλοῦς “single, simple, sound”
+2	ἀποβολή: card αποβολή/NOUN “expulsion” [kaikki-el] / MorphGNT ἀποβολή “a casting away, rejection, los”
+2	ἀποδῷς: card ἄπους/ADJ “without feet, footless” [kaikki-grc] / MorphGNT ἀποδίδωμι “I give back, return, sell”
+2	ἀπολλῶν: card Ἀπόλλων/PROPN “Apollo” [kaikki-grc] / MorphGNT Ἀπολλῶς “Apollos”
+2	ἀπολυτρώσεως: card απολύτρωση/NOUN “freedom, liberation” [kaikki-el] / MorphGNT ἀπολύτρωσις “redemption, deliverance”
+2	ἀπόστητε: card ἀφίστημι/VERB “to stand off or away” [kaikki-grc] / MorphGNT ἀφίσταμαι “I lead away, seduce, depart, a”
+2	ἀποτόμως: card ἀπότομος/ADJ “cut off, abrupt, precipitous” [kaikki-grc] / MorphGNT ἀποτόμως “sharply, severely”
+2	ἀρεστά: card αρεστός/ADJ “pleasing, satisfying, likeable” [kaikki-el] / MorphGNT ἀρεστός “pleasing, satisfactory, accept”
+2	ἄρθητι: card ἀραρίσκω/VERB “join, fasten” [kaikki-grc] / MorphGNT αἴρω “I raise, lift up”
+2	ἀριθμοῦ: card ἀριθμέω/VERB “to count” [kaikki-grc] / MorphGNT ἀριθμός “a number, total”
+2	ἀρκεῖ: card αρκώ/VERB “to suffice, be enough, be suff” [kaikki-el] / MorphGNT ἀρκέω “I am sufficient, I suffice, am”
+2	ἀροῦσιν: card ἀρόω/VERB “to plow; to till” [kaikki-grc] / MorphGNT αἴρω “I raise, lift up”
+2	ἀροῦσίν: card ἀρόω/VERB “to plow; to till” [kaikki-grc] / MorphGNT αἴρω “I raise, lift up”
+2	ἁρπαγῆς: card ἁρπάγη/NOUN “hook” [kaikki-grc] / MorphGNT ἁρπαγή “the act of plundering, plunder”
+2	ἁρπάζει: card αρπάζω/VERB “to snatch, grab, steal” [kaikki-el] / MorphGNT ἁρπάζω “I seize, snatch, obtain by rob”
+2	ἀρχιτρίκλινος: card αρχιτρίκλινος/NOUN “master of a feast, master of c” [kaikki-el] / MorphGNT ἀρχιτρίκλινος “master of the feast”
+2	ἀσέλγεια: card ασέλγεια/NOUN “lewdness, lechery (vulgar over” [kaikki-el] / MorphGNT ἀσέλγεια “wantonness, lewdness”
+2	ἀσθενῶ: card ασθενώ/VERB “to sicken, to fall ill, to get” [kaikki-el] / MorphGNT ἀσθενέω “I am weak, sick”
+2	ἀσύνετοί: card ἀσυνετέω/VERB “to lack or be without understa” [kaikki-grc] / MorphGNT ἀσύνετος “unintelligent, unwise, undisce”
+2	ἄτεκνος: card άτεκνος/ADJ “childless” [kaikki-el] / MorphGNT ἄτεκνος “childless”
+2	ἀτιμίας: card ατιμία/NOUN “disgrace, dishonour (UK), dish” [kaikki-el] / MorphGNT ἀτιμία “disgrace, dishonor”
+2	ἄτιμος: card άτιμος/ADJ “dishonourable (UK), dishonorab” [kaikki-el] / MorphGNT ἄτιμος “without honor, despised”
+2	αὐτομάτη: card αυτόματος/ADJ “automatic” [kaikki-el] / MorphGNT αὐτόματος “of its own accord”
+2	ἀφῆκαν: card αφήνω/VERB “to leave, allow, let, let go, ” [kaikki-el] / MorphGNT ἀφίημι “I send away, release, remit, f”
+2	ἀφήσω: card αφήνω/VERB “to leave, allow, let, let go, ” [kaikki-el] / MorphGNT ἀφίημι “I send away, release, remit, f”
+2	ἄφρονες: card άφρων/ADJ “foolish, frivolous” [kaikki-el] / MorphGNT ἄφρων “senseless, foolish, inconsider”
+2	ἄχρις: card ἄχρι/ADV “to the very bottom, to the utt” [kaikki-grc] / MorphGNT ἄχρις “until, as far as”
+2	βαρέως: card βαρύς/ADJ “heavy; weighty” [kaikki-grc] / MorphGNT βαρέως “heavily, with difficulty”
+2	βίας: card Βίας/PROPN “Bias” [kaikki-grc] / MorphGNT βία “force, violence”
+2	βόες: card βοῦς/NOUN “cow, ox, cattle” [kaikki-grc] / MorphGNT Βόες “Boaz”
+2	βορρᾶ: card Βορρᾶς/PROPN “Attic form of Βορέᾱς (Boréās, ” [kaikki-grc] / MorphGNT βορρᾶς “the north wind, the North”
+2	βουλεύομαι: card βουλεύω/VERB “to take counsel, deliberate, c” [kaikki-grc] / MorphGNT βουλεύομαι “I deliberate, take counsel”
+2	γάϊον: card γαίω/VERB “to rejoice, exult, take pride ” [kaikki-grc] / MorphGNT Γάϊος “Gaius”
+2	γεγόναμεν: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+2	γεγόνατε: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+2	γεγονότες: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+2	γενεαῖς: card γενεή/NOUN “Epic and Ionic form of γενεᾱ́ ” [kaikki-grc] / MorphGNT γενεά “a generation”
+2	γενεῶν: card γενεή/NOUN “Epic and Ionic form of γενεᾱ́ ” [kaikki-grc] / MorphGNT γενεά “a generation”
+2	γενηθέντες: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+2	γένωμαι: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+2	γλωσσόκομον: card γλωσσοκομεῖον/NOUN “case to keep the reeds or tong” [kaikki-grc] / MorphGNT γλωσσόκομον “bag, purse, box, chest”
+2	γνώσομαι: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+2	γονυπετῶν: card γονῠπετής/ADJ “” [kaikki-grc] / MorphGNT γονυπετέω “I fall on my knees before, sup”
+2	γραφῇ: card γράφω/VERB “to scratch, cut into” [kaikki-grc] / MorphGNT γραφή “a writing, passage of scriptur”
+2	γρηγορῶν: card γρήγορος/ADJ “quick, fast, swift, brisk” [kaikki-el] / MorphGNT γρηγορέω “I am awake, am vigilant, watch”
+2	δάκρυσιν: card δάκρυ/NOUN “tear (drop of liquid from the ” [kaikki-grc] / MorphGNT δάκρυον “a tear”
+2	δεινῶς: card δεινός/ADJ “terrible; horrible; fearful; a” [kaikki-grc] / MorphGNT δεινῶς “vehemently, terribly”
+2	δεκάτας: card δέκατος/ADJ “tenth (ordinal number)” [kaikki-grc] / MorphGNT δεκάτη “a tenth part, a tithe”
+2	δεκάτην: card δέκατος/ADJ “tenth (ordinal number)” [kaikki-grc] / MorphGNT δεκάτη “a tenth part, a tithe”
+2	διδόντα: card δῐδούς/VERB “” [kaikki-grc] / MorphGNT δίδωμι “I offer, give”
+2	διδόντες: card διδούς/VERB “” [kaikki-grc] / MorphGNT δίδωμι “I offer, give”
+2	διδόντος: card δῐδούς/VERB “” [kaikki-grc] / MorphGNT δίδωμι “I offer, give”
+2	διελέξατο: card διαλέγω/VERB “to choose, gather, pick (out),” [kaikki-grc] / MorphGNT διαλέγομαι “I converse, address, preach, l”
+2	διεπρίοντο: card διαπρίω/VERB “to saw asunder or in two, to d” [kaikki-grc] / MorphGNT διαπρίομαι “I cut to the quick”
+2	διχοτομήσει: card διχοτομώ/VERB “to bisect (to divide an angle,” [kaikki-el] / MorphGNT διχοτομέω “I cut in two, scourge severely”
+2	δόντα: card δούς/VERB “” [kaikki-grc] / MorphGNT δίδωμι “I offer, give”
+2	δόντος: card δούς/VERB “” [kaikki-grc] / MorphGNT δίδωμι “I offer, give”
+2	δόξαντες: card δόξᾱς/VERB “” [kaikki-grc] / MorphGNT δοκέω “I think, seem, appear, it seem”
+2	ἐβουλεύσαντο: card βουλεύω/VERB “to take counsel, deliberate, c” [kaikki-grc] / MorphGNT βουλεύομαι “I deliberate, take counsel”
+2	ἐγγίζει: card εγγίζω/VERB “alternative form of αγγίζω (an” [kaikki-el] / MorphGNT ἐγγίζω “I come near, approach”
+2	ἐγένου: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+2	ἔγνωκα: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+2	ἐγνώσθη: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+2	ἐδίωξα: card διώχνω/VERB “to chase away, to drive away, ” [kaikki-el] / MorphGNT διώκω “I pursue, persecute”
+2	ἔζησαν: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+2	ἐθνικοί: card εθνικός/ADJ “national” [kaikki-el] / MorphGNT ἐθνικός “pagan, heathen, gentile; a Gen”
+2	εἰδότας: card οἶδα/VERB “to know; to be acquainted with” [kaikki-grc] / MorphGNT ὁράω “I see, look upon, experience”
+2	εἰλικρινείας: card ειλικρίνεια/NOUN “sincerity, frankness” [kaikki-el] / MorphGNT εἰλικρίνεια “clearness, sincerity, purity”
+2	εἵλκυσεν: card ἑλκύω/VERB “synonym of ἕλκω (hélkō)” [kaikki-grc] / MorphGNT ἕλκω “I drag, draw, pull, persuade”
+2	εἵνεκεν: card ἕνεκα/CONJ “because” [kaikki-grc] / MorphGNT εἵνεκεν “because of, for the sake of”
+2	εἰσῄει: card εἰσέρχομαι/VERB “to go into; to enter; to invad” [kaikki-grc] / MorphGNT εἴσειμι “I go in, enter”
+2	εἰωθός: card εἰωθώς/VERB “accustomed, customary, usual” [kaikki-grc] / MorphGNT εἴωθα “to be accustomed”
+2	ἑκατονταρχῶν: card ἑκατόνταρχος/NOUN “centurion” [kaikki-grc] / MorphGNT ἑκατοντάρχης “a centurion”
+2	ἐκοιμήθη: card κοιμάω/VERB “to put to sleep, lull” [kaikki-grc] / MorphGNT κοιμάομαι “I fall asleep, am asleep”
+2	ἐκοιμήθησαν: card κοιμάω/VERB “to put to sleep, lull” [kaikki-grc] / MorphGNT κοιμάομαι “I fall asleep, am asleep”
+2	ἑκουσίως: card ἑκούσιος/ADJ “voluntary (done, given, or act” [kaikki-grc] / MorphGNT ἑκουσίως “willingly”
+2	ἔκτεινον: card κτείνω/VERB “to kill, slay” [kaikki-grc] / MorphGNT ἐκτείνω “I stretch out, cast forth”
+2	ἐκτινάξατε: card εκτινάσσω/VERB “to throw out, to propel out (t” [kaikki-el] / MorphGNT ἐκτινάσσω “I shake off”
+2	ἔλαττον: card ἐλάττων/ADJ “Attic form of ἐλάσσων (elássōn” [kaikki-grc] / MorphGNT ἐλάσσων “less, smaller, inferior”
+2	ἐλάχιστος: card μικρός/ADJ “little, small” [kaikki-grc] / MorphGNT ἐλάχιστος “least, smallest, very little”
+2	ἐλεγχόμενος: card ελέγχω/VERB “to question, check, test” [kaikki-el] / MorphGNT ἐλέγχω “I rebuke, expose”
+2	ἔμελεν: card μέλω/VERB “to be an object of care or int” [kaikki-grc] / MorphGNT μέλει “it matters, it is a concern (t”
+2	ἐμνήσθη: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+2	ἐνεργουμένη: card ἐνεργούμενος/VERB “” [kaikki-grc] / MorphGNT ἐνεργέω “I work, accomplish, am operati”
+2	ἐνεστῶτα: card ενεστώτας/NOUN “present tense” [kaikki-el] / MorphGNT ἐνίστημι “I place in or upon, am at hand”
+2	ἐνθυμήσεις: card ενθύμηση/NOUN “memory (mostly in the plural)” [kaikki-el] / MorphGNT ἐνθύμησις “inward thought, reflection, th”
+2	ἔνιψεν: card νίφω/VERB “to snow” [kaikki-grc] / MorphGNT νίπτω “I wash”
+2	ἑνότητα: card ενότητα/NOUN “unity, oneness” [kaikki-el] / MorphGNT ἑνότης “oneness, unity”
+2	ἐντέλλομαι: card ἐντέλλω/VERB “to order, command to be done, ” [kaikki-grc] / MorphGNT ἐντέλλομαι “I give orders, command”
+2	ἐξαλείψει: card εξαλείφω/VERB “efface, wipe out” [kaikki-el] / MorphGNT ἐξαλείφω “I wipe away, obliterate”
+2	ἐξέρχεσθε: card ἐξέρχεσθε/VERB “second-person plural present m” [kaikki-grc] / MorphGNT ἐξέρχομαι “I go out, come out”
+2	ἐξετράπησαν: card ἐκτρέπω/VERB “to turn out of the course, tur” [kaikki-grc] / MorphGNT ἐκτρέπομαι “I turn aside, wander, forsake”
+2	ἐξομολογοῦμαί: card εξομολογούμαι/VERB “to confess (to unburden onesel” [kaikki-el] / MorphGNT ἐξομολογέω “I consent fully, confess”
+2	ἐξουσιάζει: card εξουσιάζω/VERB “to dominate, to rule (to gover” [kaikki-el] / MorphGNT ἐξουσιάζω “I exercise authority”
+2	ἕξουσιν: card ἕξων/VERB “” [kaikki-grc] / MorphGNT ἔχω “I have, hold, possess”
+2	ἐπείρασαν: card πειράω/VERB “to try” [kaikki-grc] / MorphGNT πειράζω “I try, tempt, test”
+2	ἐπείρασεν: card πειράω/VERB “to try” [kaikki-grc] / MorphGNT πειράζω “I try, tempt, test”
+2	ἐπέστρεψαν: card επιστρέφω/VERB “to return, come back” [kaikki-el] / MorphGNT ἐπιστρέφω “I turn back to”
+2	ἐπεφάνη: card φαίνω/VERB “to cause to appear; to bring t” [kaikki-grc] / MorphGNT ἐπιφαίνω “I appear, shine upon”
+2	ἐπιβάλλει: card επιβάλλω/VERB “to impose, force” [kaikki-el] / MorphGNT ἐπιβάλλω “I throw upon, lay, strike upon”
+2	ἐπιγείων: card ἐπίγεια/NOUN “a kind of reed extending over ” [kaikki-grc] / MorphGNT ἐπίγειος “earthly”
+2	ἐπιθυμεῖ: card επιθυμώ/VERB “to desire, want, wish” [kaikki-el] / MorphGNT ἐπιθυμέω “I long for, covet, lust after”
+2	ἐπιθυμήσεις: card επιθυμώ/VERB “to desire, want, wish” [kaikki-el] / MorphGNT ἐπιθυμέω “I long for, covet, lust after”
+2	ἐπιτιμῶν: card επίτιμος/ADJ “honorary (with no duties)” [kaikki-el] / MorphGNT ἐπιτιμάω “I rebuke, chide, admonish, war”
+2	ἐπιφανείας: card επιφάνεια/NOUN “surface (the overside or up-si” [kaikki-el] / MorphGNT ἐπιφάνεια “appearing, manifestation”
+2	ἐργασίας: card εργασία/NOUN “job, profession, work” [kaikki-el] / MorphGNT ἐργασία “working, activity, trade, perf”
+2	ἔρημός: card ἐρῆμος/ADJ “lonely, lonesome, solitary” [kaikki-grc] / MorphGNT ἔρημος “deserted, desolate, a desert”
+2	ἐρήμου: card ἐρημόω/VERB “to lay waste, devastate, bring” [kaikki-grc] / MorphGNT ἔρημος “deserted, desolate, a desert”
+2	ἐρημοῦται: card ἐρημόω/VERB “to lay waste, devastate, bring” [kaikki-grc] / MorphGNT ἐρημόομαι “I destroy, strip, rob”
+2	ἑρμηνεύεται: card ερμηνεύω/VERB “to interpret, explain, constru” [kaikki-el] / MorphGNT ἑρμηνεύω “I translate, interpret”
+2	ἑρπετά: card ερπετό/NOUN “reptile” [kaikki-el] / MorphGNT ἑρπετόν “a creeping creature, reptile”
+2	ἑρπετῶν: card ερπετό/NOUN “reptile” [kaikki-el] / MorphGNT ἑρπετόν “a creeping creature, reptile”
+2	ἐρχόμενα: card ἐρχόμενος/VERB “coming” [kaikki-grc] / MorphGNT ἔρχομαι “I come, go”
+2	ἐρχομένου: card ἐρχόμενος/VERB “coming” [kaikki-grc] / MorphGNT ἔρχομαι “I come, go”
+2	ἐρωτᾷς: card ἔρως/NOUN “love, desire (usually of a rom” [kaikki-grc] / MorphGNT ἐρωτάω “I ask, question, request”
+2	ἐστρωμένον: card στόρνυμι/VERB “to smooth out, spread” [kaikki-grc] / MorphGNT στρώννυμι “I spread, make a bed”
+2	ἔστρωσαν: card στόρνυμι/VERB “to smooth out, spread” [kaikki-grc] / MorphGNT στρώννυμι “I spread, make a bed”
+2	ἕτοιμός: card ἑτοῖμος/ADJ “at hand, ready, prepared” [kaikki-grc] / MorphGNT ἕτοιμος “ready, prepared”
+2	εὐαγγελίζονται: card ευαγγελίζομαι/VERB “to bring good news” [kaikki-el] / MorphGNT εὐαγγελίζω “I bring good news, preach good”
+2	εὐλογῶν: card εύλογος/ADJ “reasonable” [kaikki-el] / MorphGNT εὐλογέω “I bless”
+2	εὐσεβῶς: card εὐσεβής/ADJ “pious, righteous, reverent to ” [kaikki-grc] / MorphGNT εὐσεβῶς “piously, religiously”
+2	εὐφροσύνης: card Εὐφροσύνη/PROPN “Euphrosyne (one of the Charite” [kaikki-grc] / MorphGNT εὐφροσύνη “joy, gladness”
+2	εὐχαριστεῖ: card ευχαριστώ/VERB “to thank” [kaikki-el] / MorphGNT εὐχαριστέω “I thank, give thanks”
+2	εὐχαριστῶν: card ευχάριστος/ADJ “pleasant, pleasing, agreeable” [kaikki-el] / MorphGNT εὐχαριστέω “I thank, give thanks”
+2	ἐχούσης: card ἔχων/VERB “” [kaikki-grc] / MorphGNT ἔχω “I have, hold, possess”
+2	ζήλῳ: card Ζῆλος/PROPN “Zelus” [kaikki-grc] / MorphGNT ζῆλος “eagerness, zeal, rivalry”
+2	ζῇς: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+2	ζήσῃ: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+2	ζῶσιν: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+2	ἤγγισαν: card εγγίζω/VERB “alternative form of αγγίζω (an” [kaikki-el] / MorphGNT ἐγγίζω “I come near, approach”
+2	ἠγέρθησαν: card ἀγείρω/VERB “to collect, gather” [kaikki-grc] / MorphGNT ἐγείρω “I wake, arouse, raise up”
+2	ἡγούμενοι: card ἡγούμενος/NOUN “abbot, principal” [kaikki-grc] / MorphGNT ἡγέομαι “I lead, think”
+2	ἡγουμένους: card ἡγούμενος/NOUN “abbot, principal” [kaikki-grc] / MorphGNT ἡγέομαι “I lead, think”
+2	ἠθέλησας: card ἐθέλω/VERB “usually weaker than βούλομαι (” [kaikki-grc] / MorphGNT θέλω “I will, wish, desire”
+2	ἠλίου: card ἥλιος/NOUN “sun” [kaikki-grc] / MorphGNT Ἠλίας “Elijah”
+2	ἥλων: card ἁλίσκομαι/VERB “to be captured” [kaikki-grc] / MorphGNT ἧλος “a nail”
+2	ἠρημώθη: card ἐρημόω/VERB “to lay waste, devastate, bring” [kaikki-grc] / MorphGNT ἐρημόομαι “I destroy, strip, rob”
+2	θάνατε: card Θᾰ́νᾰτος/NOUN “” [kaikki-grc] / MorphGNT θάνατος “death”
+2	θείας: card θείος/ADJ “divine” [kaikki-el] / MorphGNT θεῖος “divine”
+2	θείου: card θείο/NOUN “sulphur (UK), sulfur (US) (use” [kaikki-el] / MorphGNT θεῖον “brimstone, sulfur”
+2	ἱερέων: card ἱερός/ADJ “divine (connected with the god” [kaikki-grc] / MorphGNT ἱερεύς “a priest”
+2	ἰουδαία: card Ῐ̓ουδαῖος/ADJ “” [kaikki-grc] / MorphGNT Ἰουδαία “Judea”
+2	ἶρις: card Ἶρις/PROPN “Iris” [kaikki-grc] / MorphGNT ἶρις “a rainbow”
+2	καθήσεσθε: card καθίημι/VERB “to send down, let fall, let do” [kaikki-grc] / MorphGNT κάθημαι “I sit, am seated”
+2	κάθηται: card καθίημι/VERB “to send down, let fall, let do” [kaikki-grc] / MorphGNT κάθημαι “I sit, am seated”
+2	καινοῦ: card καινόω/VERB “to make new, renew, change” [kaikki-grc] / MorphGNT καινός “fresh, new”
+2	καρποφορεῖ: card καρποφορώ/VERB “to bear fruit, to yield fruit,” [kaikki-el] / MorphGNT καρποφορέω “I bear fruit”
+2	καταργεῖται: card καταργώ/VERB “to abolish, quash, repeal, nul” [kaikki-el] / MorphGNT καταργέω “I bring to naught, sever, abol”
+2	κατηχούμενος: card κατηχούμενος/VERB “catechumen” [kaikki-grc] / MorphGNT κατηχέω “I instruct orally”
+2	κατοικητήριον: card κατοικητήριος/ADJ “living in or about a house” [kaikki-grc] / MorphGNT κατοικητήριον “a habitation, dwelling-place”
+2	κεκλεισμένων: card κεκλεισμένος/VERB “” [kaikki-grc] / MorphGNT κλείω “I shut, shut up”
+2	κεκοίμηται: card κοιμάω/VERB “to put to sleep, lull” [kaikki-grc] / MorphGNT κοιμάομαι “I fall asleep, am asleep”
+2	κῆπος: card κῆβος/NOUN “long-tailed monkey” [kaikki-grc] / MorphGNT κῆπος “a garden”
+2	κλέψεις: card κλέβω/VERB “to steal” [kaikki-el] / MorphGNT κλέπτω “I steal”
+2	κλίβανον: card κρίβανος/NOUN “covered earthen vessel, wherei” [kaikki-grc] / MorphGNT κλίβανος “an oven, furnace”
+2	κλίνῃ: card κλίνη/NOUN “bed; couch” [kaikki-grc] / MorphGNT κλίνω “I rest, recline, make to yield”
+2	κοιμηθέντας: card κοιμάω/VERB “to put to sleep, lull” [kaikki-grc] / MorphGNT κοιμάομαι “I fall asleep, am asleep”
+2	κοκκίνου: card κόκκινο/NOUN “red (color/colour)” [kaikki-el] / MorphGNT κόκκινος “crimson”
+2	κόπῳ: card κόβω/VERB “Ι cut, chop, divide, carve, sl” [kaikki-el] / MorphGNT κόπος “trouble, toil, labor”
+2	κρατῶν: card κράτος/NOUN “might; strength” [kaikki-grc] / MorphGNT κρατέω “I lay hold of, obtain”
+2	κρίματα: card κρῖμα/NOUN “alternative form of κρίμα (krí” [kaikki-grc] / MorphGNT κρίμα “a judgment, verdict, lawsuit”
+2	κρίματι: card κρῖμα/NOUN “alternative form of κρίμα (krí” [kaikki-grc] / MorphGNT κρίμα “a judgment, verdict, lawsuit”
+2	κρίματος: card κρῖμα/NOUN “alternative form of κρίμα (krí” [kaikki-grc] / MorphGNT κρίμα “a judgment, verdict, lawsuit”
+2	κριτῇ: card κριτός/ADJ “picked out, chosen” [kaikki-grc] / MorphGNT κριτής “a judge”
+2	κριτήρια: card κριτήριο/NOUN “criterion” [kaikki-el] / MorphGNT κριτήριον “criterion, a law-court”
+2	λαχάνων: card λάχανο/NOUN “cabbage” [kaikki-el] / MorphGNT λάχανον “an herb, garden plant”
+2	λεγιών: card λεγεών/NOUN “legion” [kaikki-grc] / MorphGNT λεγιών “a legion, very large number”
+2	λεπτά: card λεπτός/ADJ “peeled, husked (of grain)” [kaikki-grc] / MorphGNT λεπτόν “a small piece of money”
+2	λευίν: card Λευΐς/PROPN “Levi” [kaikki-grc] / MorphGNT Λευί “Levi”
+2	λευίτης: card Λευΐτης/PROPN “Levite” [kaikki-grc] / MorphGNT Λευίτης “a Levite”
+2	λευκάς: card Λευκάς/PROPN “Leucas; Lefkada, Ionian Island” [kaikki-grc] / MorphGNT λευκός “white, bright”
+2	μαθθαῖος: card Ματθαῖος/PROPN “a male given name from Aramaic” [kaikki-grc] / MorphGNT Μαθθαῖος “Matthew”
+2	μακαρία: card Μακαρία/PROPN “Macaria” [kaikki-grc] / MorphGNT μακάριος “happy, blessed”
+2	μαργαρίτας: card μαργαρίτα/NOUN “daisy (flower)” [kaikki-el] / MorphGNT μαργαρίτης “a pearl”
+2	μαρτυρούμενος: card μαρτυρώ/VERB “to bear witness” [kaikki-el] / MorphGNT μαρτυρέω “I witness, testify”
+2	μείζω: card μείζων/ADJ “comparative degree of μέγᾰς (m” [kaikki-grc] / MorphGNT μέγας “large, great”
+2	μέλανος: card μέλας/ADJ “dark in color; sometimes so da” [kaikki-grc] / MorphGNT μέλαν “ink”
+2	μεσονυκτίου: card μεσονύκτιο/NOUN “midnight” [kaikki-el] / MorphGNT μεσονύκτιον “midnight”
+2	μετάπεμψαι: card μεταπέμπω/VERB “to send for, to summon” [kaikki-grc] / MorphGNT μεταπέμπομαι “I send for, summon”
+2	μετεκαλέσατο: card μετακαλέω/VERB “summon, recall” [kaikki-grc] / MorphGNT μετακαλέομαι “I send for”
+2	μῆνα: card μείς/NOUN “month” [kaikki-grc] / MorphGNT μήν “certainly”
+2	μισήσει: card μισώ/VERB “to hate” [kaikki-el] / MorphGNT μισέω “I hate, detest”
+2	μισῶ: card μισώ/VERB “to hate” [kaikki-el] / MorphGNT μισέω “I hate, detest”
+2	μνήσθητε: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+2	μόχθῳ: card μοχθέω/VERB “to be weary with toil, be sore” [kaikki-grc] / MorphGNT μόχθος “wearisome labor, toil, hardshi”
+2	μύλος: card μύλλος/NOUN “A kind of fish brought salted ” [kaikki-grc] / MorphGNT μύλος “a millstone”
+2	νῆσον: card νέω/VERB “to swim” [kaikki-grc] / MorphGNT νῆσος “an island”
+2	νομίμως: card νόμιμος/ADJ “conformable to custom, usage, ” [kaikki-grc] / MorphGNT νομίμως “lawfully”
+2	ξενίαν: card ξένιος/ADJ “pertaining to hospitality” [kaikki-grc] / MorphGNT ξενία “lodging, hospitality”
+2	οἰκοδεσπότου: card οἰκοδεσποτέω/VERB “to be the master or head of a ” [kaikki-grc] / MorphGNT οἰκοδεσπότης “a head of a household”
+2	οἰκοδομή: card οικοδομή/NOUN “building under construction” [kaikki-el] / MorphGNT οἰκοδομή “the act of building, a buildin”
+2	οἰκοδομῆς: card οικοδομή/NOUN “building under construction” [kaikki-el] / MorphGNT οἰκοδομή “the act of building, a buildin”
+2	οἰκοδομῶ: card οἰκοδόμος/NOUN “builder, architect” [kaikki-grc] / MorphGNT οἰκοδομέω “I build, build up, edify”
+2	οἰκοδομῶν: card οἰκοδόμος/NOUN “builder, architect” [kaikki-grc] / MorphGNT οἰκοδομέω “I build, build up, edify”
+2	οἰκουμένῃ: card οἰκούμενος/VERB “” [kaikki-grc] / MorphGNT οἰκουμένη “the inhabited (Roman) world”
+2	ὁλοκαυτώματα: card ολοκαύτωμα/NOUN “burnt offering” [kaikki-el] / MorphGNT ὁλοκαύτωμα “a whole burnt offering”
+2	ὁμοιότητα: card ομοιότητα/NOUN “similarity” [kaikki-el] / MorphGNT ὁμοιότης “likeness, resemblance”
+2	ὁμολογεῖ: card ομολογώ/VERB “to confess, admit (concede the” [kaikki-el] / MorphGNT ὁμολογέω “I confess, profess, acknowledg”
+2	ὁμολογήσει: card ομολογώ/VERB “to confess, admit (concede the” [kaikki-el] / MorphGNT ὁμολογέω “I confess, profess, acknowledg”
+2	ὁρκίζω: card ορκίζω/VERB “to swear, to affirm something ” [kaikki-el] / MorphGNT ὁρκίζω “I adjure by, charge solemnly b”
+2	ὀρφανούς: card ορφανός/ADJ “orphaned” [kaikki-el] / MorphGNT ὀρφανός “bereaved, an orphan”
+2	ὀσμή: card ὀδμή/NOUN “smell, scent, odour” [kaikki-grc] / MorphGNT ὀσμή “an odor”
+2	ὀσφύος: card ὀσφῦς/NOUN “hips or loins; lower part of t” [kaikki-grc] / MorphGNT ὀσφύς “the loins”
+2	οὖσι: card ὤν/VERB “actual; real” [kaikki-grc] / MorphGNT εἰμί “I am, exist”
+2	ὀφείλετε: card οφείλω/VERB “to owe” [kaikki-el] / MorphGNT ὀφείλω “I owe, ought”
+2	παντελές: card παντελῶς/ADV “completely, entirely, absolute” [kaikki-grc] / MorphGNT παντελής “complete, forever, entirely”
+2	παραβάσεων: card παράβαση/NOUN “offence, transgression, violat” [kaikki-el] / MorphGNT παράβασις “a transgression”
+2	παρεγενόμην: card παραγίγνομαι/VERB “to be beside; to be by or near” [kaikki-grc] / MorphGNT παραγίνομαι “I appear, come, arrive at”
+2	παριστάνετε: card παριστάνω/VERB “alternative form of πᾰρῐ́στημῐ” [kaikki-grc] / MorphGNT παρίστημι “I bring, present, come up to a”
+2	πεζῇ: card πεζός/ADJ “on foot, walking” [kaikki-grc] / MorphGNT πεζῇ “on foot”
+2	πεῖραν: card πείρω/VERB “to pierce; to run through” [kaikki-grc] / MorphGNT πεῖρα “a trial, experiment”
+2	πειράσαι: card πειράω/VERB “to try” [kaikki-grc] / MorphGNT πειράζω “I try, tempt, test”
+2	περιβεβλημένος: card περιβεβλημένος/VERB “perfect middle/passive partici” [kaikki-grc] / MorphGNT περιβάλλω “I cast around, clothe”
+2	πέρυσι: card πέρυσι/ADV “a year ago; last year” [kaikki-grc] / MorphGNT πέρυσι(ν) “last year”
+2	πέσετε: card πέφτω/VERB “to fall, fall off, drop” [kaikki-el] / MorphGNT πίπτω “I fall, fall under”
+2	πέτρα: card πέτρη/NOUN “Epic and Ionic form of πέτρᾱ (” [kaikki-grc] / MorphGNT πέτρα “rock”
+2	πλατεῖα: card πλατύς/ADJ “wide; broad” [kaikki-grc] / MorphGNT πλατεῖα “a street”
+2	πλείοσιν: card πλείων/ADJ “more, comparative degree of πο” [kaikki-grc] / MorphGNT πολύς “much, many, often”
+2	πλεῖστος: card πλεῖστος/ADJ “most, very much” [kaikki-grc] / MorphGNT πολύς “much, many, often”
+2	πλουτῶν: card πλοῦτος/NOUN “wealth, riches” [kaikki-grc] / MorphGNT πλουτέω “I become rich”
+2	πνευματικῶς: card πνευματικός/ADJ “Related to the wind: windy” [kaikki-grc] / MorphGNT πνευματικῶς “spiritually”
+2	πρασιαί: card Πρασιαί/PROPN “Prasiae, Arcadia, Greece” [kaikki-grc] / MorphGNT πρασιά “a company formed into division”
+2	πραΰς: card πρᾶος/ADJ “soft; gentle” [kaikki-grc] / MorphGNT πραΰς “mild, gentle”
+2	πρέπον: card πρέπων/VERB “appropriate, fitting, proper, ” [kaikki-el] / MorphGNT πρέπω “it becomes, is fitting to”
+2	πρεσβείαν: card πρέσβυς/ADJ “elderly, aged” [kaikki-grc] / MorphGNT πρεσβεία “an embassy, delegation”
+2	προέθετο: card προτίθημι/VERB “to place or set before, set ou” [kaikki-grc] / MorphGNT προτίθεμαι “I purpose, design beforehand”
+2	προσδοκᾷ: card προσδοκώ/VERB “to hope for, expect” [kaikki-el] / MorphGNT προσδοκάω “I expect, await”
+2	προσέρχονται: card προσέρχονται/VERB “third-person singular present ” [kaikki-grc] / MorphGNT προσέρχομαι “I come near, consent to”
+2	προσκαλεῖται: card προσκαλώ/VERB “to invite” [kaikki-el] / MorphGNT προσκαλέομαι “I summon”
+2	προσκυνήσεις: card προσκύνησις/NOUN “proskynesis (prostration as an” [kaikki-grc] / MorphGNT προσκυνέω “I worship”
+2	ραββουνι: card ῥαββί/NOUN “O my Master” [kaikki-grc] / MorphGNT ραββουνι “Rabboni, my master (Aramaic)”
+2	ῥήξει: card ῥῆξις/NOUN “breaking, bursting” [kaikki-grc] / MorphGNT ῥήγνυμι “I break, break forth”
+2	ῥωμαῖοι: card Ρωμαίος/PROPN “Roman (a native or resident of” [kaikki-el] / MorphGNT Ῥωμαῖος “Roman, a Roman citizen”
+2	σαβαχθάνι: card σαβαχθανι/VERB “you have forsaken me (said by ” [kaikki-grc] / MorphGNT σαβαχθάνι “thou hast forsaken me”
+2	σάρρᾳ: card Σάρα/PROPN “Sarah” [kaikki-grc] / MorphGNT Σάρρα “Sarah”
+2	σιδῶνα: card Σιδώνα/PROPN “Sidon (a city in Lebanon)” [kaikki-el] / MorphGNT Σιδών “Sidon”
+2	σιλᾷ: card Σιλᾶς/PROPN “a male given name from Aramaic” [kaikki-grc] / MorphGNT Σίλας “Silas”
+2	σκανδάλου: card σκάνδαλο/NOUN “scandal (incident or event tha” [kaikki-el] / MorphGNT σκάνδαλον “a snare, stumbling-block”
+2	σολομῶντος: card Σολομών/PROPN “a male given name from Hebrew,” [kaikki-grc] / MorphGNT Σολομῶν “Solomon”
+2	σπασάμενος: card σπάω/VERB “to draw a sword” [kaikki-grc] / MorphGNT σπάομαι “I draw (as a sword)”
+2	σπένδομαι: card σπένδω/VERB “to libate” [kaikki-grc] / MorphGNT σπένδομαι “I pour out as a libation”
+2	σταύρου: card σταυρός/NOUN “cross (geometrical figure)” [kaikki-el] / MorphGNT σταυρόω “I crucify”
+2	στενοχωρεῖσθε: card στενοχωρώ/VERB “to sadden, to grieve, to distr” [kaikki-el] / MorphGNT στενοχωρέομαι “I press upon, cramp, restrain”
+2	στρουθίων: card στρουθίων/NOUN “synonym of στρουθοκάμηλος (str” [kaikki-grc] / MorphGNT στρουθίον “a small bird, sparrow”
+2	συμπόσια: card συμπόσιο/NOUN “symposium, convivium, drinking” [kaikki-el] / MorphGNT συμπόσιον “a drinking party, festive comp”
+2	σύμφορον: card σύμφορος/ADJ “useful, profitable, expedient,” [kaikki-grc] / MorphGNT σύμφορον “advantage, benefit”
+2	συνέθεντο: card συντίθημι/VERB “to assemble, put together” [kaikki-grc] / MorphGNT συντίθεμαι “I make an agreement, agree”
+2	συνῆτε: card σύνειμι/VERB “to be with, be joined or linke” [kaikki-grc] / MorphGNT συνίημι “I consider, understand”
+2	συνιέναι: card σύνειμι/VERB “to be with, be joined or linke” [kaikki-grc] / MorphGNT συνίημι “I consider, understand”
+2	συνιῶσιν: card σύνειμι/VERB “to be with, be joined or linke” [kaikki-grc] / MorphGNT συνίημι “I consider, understand”
+2	συντόμως: card σύντομος/ADJ “cut short, abridged” [kaikki-grc] / MorphGNT συντόμως “concisely, briefly”
+2	συνῶσιν: card σύνειμι/VERB “to be with, be joined or linke” [kaikki-grc] / MorphGNT συνίημι “I consider, understand”
+2	τάχα: card ταχύς/ADJ “swift; quick; fast; rapid” [kaikki-grc] / MorphGNT τάχα “quickly, perhaps”
+2	τελειώσω: card τελειώνω/VERB “to finish, complete, end” [kaikki-el] / MorphGNT τελειόω “I complete, accomplish, make p”
+2	τηρήσει: card τηρώ/VERB “to abide (by), to adhere (to),” [kaikki-el] / MorphGNT τήρησις “a prison, observance”
+2	τηρήσω: card τηρώ/VERB “to abide (by), to adhere (to),” [kaikki-el] / MorphGNT τηρέω “I keep, guard, observe”
+2	τρόφιμον: card τρόφιμος/ADJ “nourishing” [kaikki-grc] / MorphGNT Τρόφιμος “Trophimus”
+2	τρῳάδι: card Τρωάς/PROPN “the Troas; the Troad” [kaikki-grc] / MorphGNT Τρῳάς “Troas”
+2	τύρον: card τυρός/NOUN “cheese” [kaikki-grc] / MorphGNT Τύρος “Tyre”
+2	ὑπακούει: card υπακούω/VERB “to obey, comply, be obedient” [kaikki-el] / MorphGNT ὑπακούω “I listen, obey”
+2	ὑπεδέξατο: card ὑποδείκνυμι/VERB “to show” [kaikki-grc] / MorphGNT ὑποδέχομαι “I receive as a guest”
+2	ὑπερῷον: card ὑπερῷος/ADJ “upper” [kaikki-grc] / MorphGNT ὑπερῷον “an upper room”
+2	ὑπερῴῳ: card ὑπερῷος/ADJ “upper” [kaikki-grc] / MorphGNT ὑπερῷον “an upper room”
+2	ὕπνῳ: card ὕπνον/NOUN “a kind of lichen” [kaikki-grc] / MorphGNT ὕπνος “sleep”
+2	ὑποκριτῶν: card υποκριτής/NOUN “actor” [kaikki-el] / MorphGNT ὑποκριτής “a hypocrite, dissembler”
+2	ὑψῶν: card ὕψος/NOUN “height” [kaikki-grc] / MorphGNT ὑψόω “I lift up, exalt”
+2	ὑψώσει: card υψώνω/VERB “to elevate, raise” [kaikki-el] / MorphGNT ὑψόω “I lift up, exalt”
+2	φανερώσει: card φανερώνω/VERB “to reveal” [kaikki-el] / MorphGNT φανερόω “I make clear, visible, or mani”
+2	φαρισαίου: card Φαρισαίος/NOUN “Pharisee (a member of an ancie” [kaikki-el] / MorphGNT Φαρισαῖος “a Pharisee”
+2	φειδομένως: card φείδομαι/VERB “to spare, have mercy on” [kaikki-grc] / MorphGNT φειδομένως “sparingly”
+2	φιλίπποις: card Φίλιππος/PROPN “a male given name, equivalent ” [kaikki-grc] / MorphGNT Φίλιπποι “Philippi”
+2	φιλόξενον: card Φιλόξενος/PROPN “a male given name, Philoxenus” [kaikki-grc] / MorphGNT φιλόξενος “hospitable”
+2	φοβουμένοις: card φοβέω/VERB “to put to flight” [kaikki-grc] / MorphGNT φοβέομαι “I fear, am terrified”
+2	φυλάξει: card φυλάττω/VERB “Attic form of φῠλᾰ́σσω (phŭlắs” [kaikki-grc] / MorphGNT φυλάσσω “I keep, guard, observe”
+2	φύλαξον: card φυλάττω/VERB “Attic form of φῠλᾰ́σσω (phŭlắs” [kaikki-grc] / MorphGNT φυλάσσω “I keep, guard, observe”
+2	χανάαν: card Χαναάν/PROPN “Canaan, an ancient region corr” [kaikki-grc] / MorphGNT Χανάαν “Canaan”
+2	χείρων: card κακός/ADJ “As a measure of quality: bad, ” [kaikki-grc] / MorphGNT χείρων “worse”
+2	χρυσοῦ: card χρυσός/NOUN “gold (substance)” [kaikki-grc] / MorphGNT χρυσοῦς “golden, made of gold”
+2	ὡραῖοι: card ωραίος/ADJ “good, fine, nice” [kaikki-el] / MorphGNT ὡραῖος “fair, beautiful”
+2	ὠτάριον: card οὖς/NOUN “ear” [kaikki-grc] / MorphGNT ὠτάριον “an ear”
+2	ὠτίον: card οὖς/NOUN “ear” [kaikki-grc] / MorphGNT ὠτίον “an ear”
+1	ἀγαθουργῶν: card ἀγαθουργός/ADJ “beneficent, doing good” [kaikki-grc] / MorphGNT ἀγαθουργέω “to do good”
+1	ἀγαλλιάσεως: card αγαλλίαση/NOUN “exultation, joy, jubilation, r” [kaikki-el] / MorphGNT ἀγαλλίασις “exultation, exhilaration”
+1	ἀγαπητοῦ: card Ἀγαπητός/PROPN “a male given name, Agapetus” [kaikki-grc] / MorphGNT ἀγαπητός “loved, beloved”
+1	ἀγγέλλουσα: card ἀγγέλλων/VERB “” [kaikki-grc] / MorphGNT ἀγγέλλω “to announce, report”
+1	ἀγενῆ: card αγενής/ADJ “rude, impolite, uncivil (bad-m” [kaikki-el] / MorphGNT ἀγενής “without family, ignoble”
+1	ἄγεσθε: card άγω/VERB “to lead” [kaikki-el] / MorphGNT ἄγω “I lead”
+1	ἁγνισμοῦ: card αγνισμός/NOUN “purification, cleansing” [kaikki-el] / MorphGNT ἁγνισμός “purification”
+1	ἀγνοεῖ: card αγνοώ/VERB “to not know, be ignorant of” [kaikki-el] / MorphGNT ἀγνοέω “I do not know, am ignorant of”
+1	ἀγνοεῖται: card αγνοώ/VERB “to not know, be ignorant of” [kaikki-el] / MorphGNT ἀγνοέω “I do not know, am ignorant of”
+1	ἀγνοούμενοι: card αγνοούμενος/NOUN “missing person” [kaikki-el] / MorphGNT ἀγνοέω “I do not know, am ignorant of”
+1	ἀγνοούμενος: card αγνοώ/VERB “to not know, be ignorant of” [kaikki-el] / MorphGNT ἀγνοέω “I do not know, am ignorant of”
+1	ἁγνῶς: card ἁγνός/ADJ “pure; chaste” [kaikki-grc] / MorphGNT ἁγνῶς “purely, sincerely”
+1	ἀγοράσατε: card αγοράζω/VERB “to buy, to purchase” [kaikki-el] / MorphGNT ἀγοράζω “I buy”
+1	ἀγράμματοί: card αγράμματος/ADJ “illiterate” [kaikki-el] / MorphGNT ἀγράμματος “uneducated”
+1	ἀγρῶν: card ἄγρα/NOUN “a hunt (a chase in order to ca” [kaikki-grc] / MorphGNT ἀγρός “a field, the country”
+1	ἄγωσιν: card ἀγών/NOUN “a gathering, an assembly” [kaikki-grc] / MorphGNT ἄγω “I lead”
+1	ἀδελφῇ: card ἀδελφός/ADJ “brotherly or sisterly” [kaikki-grc] / MorphGNT ἀδελφή “a sister”
+1	ἀδελφότητα: card αδελφότητα/NOUN “brotherhood, fellowship (the l” [kaikki-el] / MorphGNT ἀδελφότης “brotherhood”
+1	ᾅδῃ: card ᾍδης/PROPN “Hades (Greek god)” [kaikki-grc] / MorphGNT ᾅδης “Hades”
+1	ἀδήλως: card ἄδηλος/ADJ “invisible” [kaikki-grc] / MorphGNT ἀδήλως “out of sight, uncertainly”
+1	ἀδιάκριτος: card αδιάκριτος/ADJ “indiscreet (not discreet; want” [kaikki-el] / MorphGNT ἀδιάκριτος “unambiguous”
+1	ἀδιάλειπτος: card αδιάλειπτος/ADJ “incessant, continuous” [kaikki-el] / MorphGNT ἀδιάλειπτος “unceasing, unremitting”
+1	ἀδίκως: card ἄδικος/ADJ “unjust” [kaikki-grc] / MorphGNT ἀδίκως “unjustly”
+1	ἀδόκιμοί: card αδόκιμος/ADJ “unidiomatic” [kaikki-el] / MorphGNT ἀδόκιμος “failing to pass the test”
+1	ἄζωτον: card ἄζωτος/ADJ “synonym of ἄζωστος (ázōstos, “” [kaikki-grc] / MorphGNT Ἄζωτος “Azotus, Ashdod”
+1	ἀθλήσῃ: card άθληση/NOUN “gymnastics, PE, physical educa” [kaikki-el] / MorphGNT ἀθλέω “I compete”
+1	αἰνών: card αἰνέω/VERB “to tell of; to speak of” [kaikki-grc] / MorphGNT Αἰνών “Aenon”
+1	αἴρετε: card αἴρετε/VERB “second-person plural present a” [kaikki-grc] / MorphGNT αἴρω “I raise, lift up”
+1	αἱρήσομαι: card αἱρέω/VERB “to take, grasp, seize” [kaikki-grc] / MorphGNT αἱρέομαι “I choose, prefer”
+1	αἰσθητήρια: card αισθητήριος/ADJ “sensory, sense” [kaikki-el] / MorphGNT αἰσθητήριον “perceptive faculty”
+1	αἰσχροκερδεῖς: card αισχροκερδής/ADJ “mercenary, profiteering” [kaikki-el] / MorphGNT αἰσχροκερδής “greedy”
+1	αἰσχροκερδῆ: card αισχροκερδής/ADJ “mercenary, profiteering” [kaikki-el] / MorphGNT αἰσχροκερδής “greedy”
+1	αἰσχύνας: card αἰσχύνω/VERB “to make ugly; disfigure” [kaikki-grc] / MorphGNT αἰσχύνη “shame”
+1	αἰσχυνέσθω: card αἰσχύνω/VERB “to make ugly; disfigure” [kaikki-grc] / MorphGNT αἰσχύνομαι “I am ashamed, am put to shame”
+1	αἰσχύνῃ: card αἰσχύνω/VERB “to make ugly; disfigure” [kaikki-grc] / MorphGNT αἰσχύνη “shame”
+1	αἰσχυνθῶμεν: card αἰσχύνω/VERB “to make ugly; disfigure” [kaikki-grc] / MorphGNT αἰσχύνομαι “I am ashamed, am put to shame”
+1	αἰσχύνομαι: card αἰσχύνω/VERB “to make ugly; disfigure” [kaikki-grc] / MorphGNT αἰσχύνομαι “I am ashamed, am put to shame”
+1	αἰτήσῃ: card αίτηση/NOUN “request” [kaikki-el] / MorphGNT αἰτέω “I ask, request, beg, petition”
+1	αἰτήσῃς: card αίτηση/NOUN “request” [kaikki-el] / MorphGNT αἰτέω “I ask, request, beg, petition”
+1	αἰτίου: card αἴτῐος/ADJ “” [kaikki-grc] / MorphGNT αἴτιον “cause, crime”
+1	αἰτοῦμαι: card αιτούμαι/VERB “request, ask by petition, call” [kaikki-el] / MorphGNT αἰτέω “I ask, request, beg, petition”
+1	αἰτοῦσά: card αιτούσα/NOUN “applicant” [kaikki-el] / MorphGNT αἰτέω “I ask, request, beg, petition”
+1	ἀκάθαρτά: card ακάθαρτος/ADJ “dirty, unclean, filthy” [kaikki-el] / MorphGNT ἀκάθαρτος “unclean, impure”
+1	ἀκαίρως: card ακαίρως/ADV “at the wrong time, out of time” [kaikki-el] / MorphGNT ἀκαίρως “unseasonably”
+1	ἄκαρπα: card άκαρπος/ADJ “barren, unfruitful, fruitless,” [kaikki-el] / MorphGNT ἄκαρπος “unfruitful, barren”
+1	ἄκαρποι: card άκαρπος/ADJ “barren, unfruitful, fruitless,” [kaikki-el] / MorphGNT ἄκαρπος “unfruitful, barren”
+1	ἀκάρπους: card άκαρπος/ADJ “barren, unfruitful, fruitless,” [kaikki-el] / MorphGNT ἄκαρπος “unfruitful, barren”
+1	ἀκατακρίτους: card ακατάκριτος/ADJ “blameless” [kaikki-el] / MorphGNT ἀκατάκριτος “uncondemned”
+1	ἀκαταλύτου: card ακατάλυτος/ADJ “enduring, indissoluble” [kaikki-el] / MorphGNT ἀκατάλυτος “indissoluble, that cannot be b”
+1	ἀκαταπαύστους: card ακατάπαυστος/ADJ “unceasing, constant, continuou” [kaikki-el] / MorphGNT ἀκατάπαυστος “not ceasing from, not abandoni”
+1	ἀκαταστασία: card ακαταστασία/NOUN “mess, disorder, confusion” [kaikki-el] / MorphGNT ἀκαταστασία “disturbance, upheaval, revolut”
+1	ἁκελδαμάχ: card Ἀκελδαμά/PROPN “Aceldama, the “Field of Blood”” [kaikki-grc] / MorphGNT Ἁκελδαμάχ “Akeldama”
+1	ἀκεραίους: card ακέραιος/ADJ “whole, intact, undivided” [kaikki-el] / MorphGNT ἀκέραιος “simple, unsophisticated, innoc”
+1	ἀκμήν: card ἀκμή/NOUN “point; edge” [kaikki-grc] / MorphGNT ἀκμήν “even now”
+1	ἀκολουθήσεις: card ακολουθώ/VERB “to follow, pursue” [kaikki-el] / MorphGNT ἀκολουθέω “I accompany, attend, follow”
+1	ἀκρογωνιαίου: card ακρογωνιαίος/ADJ “fundamental found chiefly in t” [kaikki-el] / MorphGNT ἀκρογωνιαῖος “in the corner, cornerstone”
+1	ἀκυροῖ: card ἄκυρος/ADJ “without authority” [kaikki-grc] / MorphGNT ἀκυρόω “I annul, make of no effect, ca”
+1	ἅλα: card ἅλς/NOUN “salt” [kaikki-grc] / MorphGNT ἅλα “salt”
+1	ἀλαζονεία: card αλαζονεία/NOUN “arrogance, haughtiness, presum” [kaikki-el] / MorphGNT ἀλαζονεία “boasting, show, arrogant displ”
+1	ἀλαλάζοντας: card αλαλάζω/VERB “to shout, scream (especially w” [kaikki-el] / MorphGNT ἀλαλάζω “I cry aloud, a clanging or cla”
+1	ἀλαλήτοις: card ἀλαλητός/NOUN “shouting” [kaikki-grc] / MorphGNT ἀλάλητος “unutterable, that baffles word”
+1	ἀλάλους: card άλαλος/ADJ “mute, speechless” [kaikki-el] / MorphGNT ἄλαλος “unable to speak”
+1	ἀληθινῶν: card αληθινός/ADJ “true, real” [kaikki-el] / MorphGNT ἀληθινός “true, real, genuine”
+1	ἀλλαχοῦ: card αλλαχού/ADV “elsewhere” [kaikki-el] / MorphGNT ἀλλαχοῦ “elsewhere”
+1	ἀλλογενής: card αλλογενής/ADJ “alien, foreign” [kaikki-el] / MorphGNT ἀλλογενής “of another nation, a foreigner”
+1	ἄλλως: card ἄλλος/ADJ “other, another, different, els” [kaikki-grc] / MorphGNT ἄλλως “otherwise”
+1	ἀλοῶν: card ἀλόη/NOUN “aloe (Aloe vera)” [kaikki-grc] / MorphGNT ἀλοάω “I thresh”
+1	ἀλυπότερος: card ἄλυπος/ADJ “without pain, painless” [kaikki-grc] / MorphGNT ἀλυπότερος “free from pain, grief, trouble”
+1	ἅλυσίν: card ἄλυς/NOUN “agitation” [kaikki-grc] / MorphGNT ἅλυσις “a light chain”
+1	ἀλυσιτελές: card αλυσιτελής/ADJ “unproductive, profitless witho” [kaikki-el] / MorphGNT ἀλυσιτελής “profitless, unprofitable”
+1	ἀμέλει: card ἀμελής/ADJ “careless, negligent” [kaikki-grc] / MorphGNT ἀμελέω “I neglect”
+1	ἀμέμπτους: card άμεμπτος/ADJ “spotless, unblemished” [kaikki-el] / MorphGNT ἄμεμπτος “blameless”
+1	ἀμετακίνητοι: card αμετακίνητος/ADJ “unshakeable, firm (beliefs)” [kaikki-el] / MorphGNT ἀμετακίνητος “immovable, firm”
+1	ἀμεταμέλητα: card αμεταμέλητος/ADJ “unrepentant, impenitent, unrep” [kaikki-el] / MorphGNT ἀμεταμέλητος “not to be repented of”
+1	ἀμφιβάλλοντας: card αμφιβάλλω/VERB “to doubt, have doubts” [kaikki-el] / MorphGNT ἀμφιβάλλω “to throw around”
+1	ἀμφοτέροις: card ἀμφότερος/DET “both” [kaikki-grc] / MorphGNT ἀμφότεροι “both of two”
+1	ἀμφοτέρους: card ἀμφότερος/DET “both” [kaikki-grc] / MorphGNT ἀμφότεροι “both of two”
+1	ἀμφοτέρων: card ἀμφότερος/DET “both” [kaikki-grc] / MorphGNT ἀμφότεροι “both of two”
+1	ἄμωμα: card ἄμωμον/NOUN “black cardamom (Amomum subulat” [kaikki-grc] / MorphGNT ἄμωμος “blameless”
+1	ἀμώμητοι: card αμώμητος/ADJ “impeccable, unblemished” [kaikki-el] / MorphGNT ἀμώμητος “without blame or fault”
+1	ἄμωμοί: card άμωμος/ADJ “immaculate, unblemished” [kaikki-el] / MorphGNT ἄμωμος “blameless”
+1	ἄμωμος: card άμωμος/ADJ “immaculate, unblemished” [kaikki-el] / MorphGNT ἄμωμος “blameless”
+1	ἀμώμου: card ἄμωμον/NOUN “black cardamom (Amomum subulat” [kaikki-grc] / MorphGNT ἄμωμος “blameless”
+1	ἀνάβα: card ανάβω/VERB “to ignite, to set alight, to s” [kaikki-el] / MorphGNT ἀναβαίνω “I go up, mount, ascend”
+1	ἀναβαθμούς: card αναβαθμός/NOUN “step, ramp” [kaikki-el] / MorphGNT ἀναβαθμός “a step, a flight of steps”
+1	ἀναβαθμῶν: card αναβαθμός/NOUN “step, ramp” [kaikki-el] / MorphGNT ἀναβαθμός “a step, a flight of steps”
+1	ἀνάβατε: card ανάβω/VERB “to ignite, to set alight, to s” [kaikki-el] / MorphGNT ἀναβαίνω “I go up, mount, ascend”
+1	ἀναβλέψῃ: card ανάβλεψη/NOUN “seeing again (recovery of visi” [kaikki-el] / MorphGNT ἀναβλέπω “I look up, recover my sight”
+1	ἀναβλέψῃς: card ανάβλεψη/NOUN “seeing again (recovery of visi” [kaikki-el] / MorphGNT ἀναβλέπω “I look up, recover my sight”
+1	ἀναγνούς: card ἀναγιγνώσκω/VERB “to know well, know certainly” [kaikki-grc] / MorphGNT ἀναγινώσκω “I read”
+1	ἀναγνῶναι: card ἀναγιγνώσκω/VERB “to know well, know certainly” [kaikki-grc] / MorphGNT ἀναγινώσκω “I read”
+1	ἀναγνῶτε: card ἀναγιγνώσκω/VERB “to know well, know certainly” [kaikki-grc] / MorphGNT ἀναγινώσκω “I read”
+1	ἀναδείξεως: card ανάδειξη/NOUN “distinction, eminence” [kaikki-el] / MorphGNT ἀνάδειξις “the proclamation of an appoint”
+1	ἀναιρεῖ: card αναιρώ/VERB “to refute, revoke” [kaikki-el] / MorphGNT ἀναιρέω “I take up, abolish, murder”
+1	ἀναίτιοί: card αναίτιος/ADJ “unjustified, causeless” [kaikki-el] / MorphGNT ἀναίτιος “guiltless”
+1	ἀναιτίους: card αναίτιος/ADJ “unjustified, causeless” [kaikki-el] / MorphGNT ἀναίτιος “guiltless”
+1	ἀνακρίσεως: card ανάκριση/NOUN “cross-examination, examination” [kaikki-el] / MorphGNT ἀνάκρισις “judicial examination, prelimin”
+1	ἀνακύψατε: card ανακύπτω/VERB “to arise, crop up (difficultie” [kaikki-el] / MorphGNT ἀνακύπτω “I raise myself, look up”
+1	ἀναμιμνῄσκω: card ἀναμιμνήσκω/VERB “to remind” [kaikki-grc] / MorphGNT ἀναμιμνῄσκω “I remind, admonish, remember”
+1	ἀναντιρρήτων: card αναντίρρητος/ADJ “undeniable, unmistakable, inco” [kaikki-el] / MorphGNT ἀναντίρρητος “indisputable, not to be contra”
+1	ἀνάξιοί: card ανάξιος/ADJ “unworthy, inadequate” [kaikki-el] / MorphGNT ἀνάξιος “unworthy, inadequate”
+1	ἀναπαύεται: card αναπαύω/VERB “to give comfort, give a rest” [kaikki-el] / MorphGNT ἀναπαύω “I make to rest, give rest to, ”
+1	ἀναπαύσω: card αναπαύω/VERB “to give comfort, give a rest” [kaikki-el] / MorphGNT ἀναπαύω “I make to rest, give rest to, ”
+1	ἀναπληρώσετε: card αναπληρώνω/VERB “to substitute, replace” [kaikki-el] / MorphGNT ἀναπληρόω “I fill up, make up, fulfill”
+1	ἀναπληρώσῃ: card αναπλήρωση/NOUN “substitution, replacement (act” [kaikki-el] / MorphGNT ἀναπληρόω “I fill up, make up, fulfill”
+1	ἀναπολογήτους: card αναπολόγητος/ADJ “undefended” [kaikki-el] / MorphGNT ἀναπολόγητος “indefensible, inexcusable”
+1	ἀναρίθμητος: card αναρίθμητος/ADJ “innumerable, countless” [kaikki-el] / MorphGNT ἀναρίθμητος “uncountable, innumerable”
+1	ἀνατάξασθαι: card ᾰ̓νᾰτᾰ́σσω/VERB “” [kaikki-grc] / MorphGNT ἀνατάσσομαι “I arrange, draw up, compose”
+1	ἀνατέλλει: card ανατέλλω/VERB “to rise, appear (celestial obj” [kaikki-el] / MorphGNT ἀνατέλλω “I make to rise, I rise, shine”
+1	ἀνέβλεψαν: card αναβλέπω/VERB “see again, recover sight” [kaikki-el] / MorphGNT ἀναβλέπω “I look up, recover my sight”
+1	ἀνέγκλητοι: card ανέγκλητος/ADJ “unindictable” [kaikki-el] / MorphGNT ἀνέγκλητος “irreproachable, blameless”
+1	ἀνέγκλητος: card ανέγκλητος/ADJ “unindictable” [kaikki-el] / MorphGNT ἀνέγκλητος “irreproachable, blameless”
+1	ἀνέγνωσαν: card ἀναγιγνώσκω/VERB “to know well, know certainly” [kaikki-grc] / MorphGNT ἀναγινώσκω “I read”
+1	ἀνεθέμην: card ἀνατίθημι/VERB “lay upon, put upon” [kaikki-grc] / MorphGNT ἀνατίθεμαι “I lay a case before, impart, c”
+1	ἀνέθετο: card ἀνατίθημι/VERB “lay upon, put upon” [kaikki-grc] / MorphGNT ἀνατίθεμαι “I lay a case before, impart, c”
+1	ἀνέκραξαν: card ανακράζω/VERB “to exclaim, shout out, cry out” [kaikki-el] / MorphGNT ἀνακράζω “I shout aloud”
+1	ἀνεξιχνίαστοι: card ανεξιχνίαστος/ADJ “unfathomable, insoluble, unsol” [kaikki-el] / MorphGNT ἀνεξιχνίαστος “incomprehensible”
+1	ἀνέπαυσαν: card αναπαύω/VERB “to give comfort, give a rest” [kaikki-el] / MorphGNT ἀναπαύω “I make to rest, give rest to, ”
+1	ἀνέπεμψά: card αναπέμπω/VERB “to refer back, remit” [kaikki-el] / MorphGNT ἀναπέμπω “I send up to a higher tribunal”
+1	ἀνέχεσθέ: card ανέχομαι/VERB “tolerate, put up with, bear” [kaikki-el] / MorphGNT ἀνέχομαι “I endure, bear with”
+1	ἀνήμεροι: card ανήμερος/ADJ “fierce, wild, savage” [kaikki-el] / MorphGNT ἀνήμερος “not tame, fierce”
+1	ἀνθύπατοί: card ανθύπατος/NOUN “proconsul or provincial govern” [kaikki-el] / MorphGNT ἀνθύπατος “a proconsul”
+1	ἀνθυπάτου: card ανθύπατος/NOUN “proconsul or provincial govern” [kaikki-el] / MorphGNT ἀνθύπατος “a proconsul”
+1	ἀνόητοί: card ανόητος/ADJ “foolish, stupid” [kaikki-el] / MorphGNT ἀνόητος “foolish, thoughtless”
+1	ἀνοίξει: card ανοίγω/VERB “to make something accessible: ” [kaikki-el] / MorphGNT ἄνοιξις “the act of opening”
+1	ἀνοίξω: card ανοίγω/VERB “to make something accessible: ” [kaikki-el] / MorphGNT ἀνοίγω “I open”
+1	ἀνομιῶν: card ανομία/NOUN “lawlessness” [kaikki-el] / MorphGNT ἀνομία “lawlessness, iniquity”
+1	ἀνορθώσατε: card ανορθώνω/VERB “to restore, set up” [kaikki-el] / MorphGNT ἀνορθόω “I make straight again, rear ag”
+1	ἀνορθώσω: card ανορθώνω/VERB “to restore, set up” [kaikki-el] / MorphGNT ἀνορθόω “I make straight again, rear ag”
+1	ἀντέχεσθε: card ἀντέχω/VERB “to hold out, keep” [kaikki-grc] / MorphGNT ἀντέχομαι “I hold fast to”
+1	ἀντεχόμενον: card ἀντέχω/VERB “to hold out, keep” [kaikki-grc] / MorphGNT ἀντέχομαι “I hold fast to”
+1	ἀντιδίκῳ: card αντιδικώ/VERB “to argue, oppose, litigate” [kaikki-el] / MorphGNT ἀντίδικος “an opponent, adversary”
+1	ἀντικειμένων: card αντικείμενο/NOUN “object, subject (a physical th” [kaikki-el] / MorphGNT ἀντίκειμαι “I resist, oppose”
+1	ἄντικρυς: card άντικρυς/ADV “alternative form of αντίκρυ (a” [kaikki-el] / MorphGNT ἄντικρυς “right opposite, over against”
+1	ἀντιλέγει: card αντιλέγω/VERB “to contradict” [kaikki-el] / MorphGNT ἀντιλέγω “I speak or say in opposition, ”
+1	ἀντιπᾶς: card Ἀντίπας/PROPN “contraction of Ἀντῐ́πᾰτρος (An” [kaikki-grc] / MorphGNT Ἀντιπᾶς “Antipas”
+1	ἀντιπέρα: card αντίπερα/ADV “across, on the other side, on ” [kaikki-el] / MorphGNT ἀντιπέρα “on the opposite side or shore”
+1	ἀντίτυπα: card αντίτυπο/NOUN “copy, issue, edition” [kaikki-el] / MorphGNT ἀντίτυπος “typical of, representing by ty”
+1	ἄντλημα: card άντλημα/NOUN “bucket (for drawing water)” [kaikki-el] / MorphGNT ἄντλημα “a pail”
+1	ἀντλήσατε: card αντλώ/VERB “to pump, draw off (liquid)” [kaikki-el] / MorphGNT ἀντλέω “I draw, draw out”
+1	ἀνυπότακτα: card ανυπότακτος/ADJ “undisciplined, unruly, insubor” [kaikki-el] / MorphGNT ἀνυπότακτος “unruly”
+1	ἀνυπότακτοι: card ανυπότακτος/ADJ “undisciplined, unruly, insubor” [kaikki-el] / MorphGNT ἀνυπότακτος “unruly”
+1	ἀνωφελεῖς: card ανωφελής/ADJ “useless, in vain” [kaikki-el] / MorphGNT ἀνωφελής “useless, unprofitable”
+1	ἀνωφελές: card ανωφελής/ADJ “useless, in vain” [kaikki-el] / MorphGNT ἀνωφελής “useless, unprofitable”
+1	ἄξει: card ἄγνυμι/VERB “to break; to shatter” [kaikki-grc] / MorphGNT ἄγω “I lead”
+1	ἄξων: card ἄξων/NOUN “an axle” [kaikki-grc] / MorphGNT ἄγω “I lead”
+1	ἀοράτου: card αόρατος/ADJ “invisible, unseen” [kaikki-el] / MorphGNT ἀόρατος “unseen, invisible”
+1	ἀπαιδεύτους: card απαίδευτος/ADJ “uneducated, ignorant” [kaikki-el] / MorphGNT ἀπαίδευτος “untrained, uneducated”
+1	ἀπαράβατον: card απαράβατος/ADJ “not to be transgressed, inviol” [kaikki-grc] / MorphGNT ἀπαράβατος “inviolable, unchangeable”
+1	ἀπατῶν: card ἀπάτη/NOUN “deceit; fraud” [kaikki-grc] / MorphGNT ἀπατάω “I deceive, lead into error”
+1	ἀπαύγασμα: card απαύγασμα/NOUN “brilliance, glow, radiance” [kaikki-el] / MorphGNT ἀπαύγασμα “a light flashing forth, radiat”
+1	ἀπεδέξαντο: card ἀποδείκνυμι/VERB “to demonstrate, point out, sho” [kaikki-grc] / MorphGNT ἀποδέχομαι “I receive, welcome, entertain”
+1	ἀπεδέξατο: card ἀποδείκνυμι/VERB “to demonstrate, point out, sho” [kaikki-grc] / MorphGNT ἀποδέχομαι “I receive, welcome, entertain”
+1	ἀπέδοντο: card πωλέω/VERB “to sell” [kaikki-grc] / MorphGNT ἀποδίδωμι “I give back, return, sell”
+1	ἀπέδοσθε: card πωλέω/VERB “to sell” [kaikki-grc] / MorphGNT ἀποδίδωμι “I give back, return, sell”
+1	ἀπειθείᾳ: card απείθεια/NOUN “disobedience, indiscipline, in” [kaikki-el] / MorphGNT ἀπείθεια “willful unbelief, obstinacy, d”
+1	ἀπειθής: card ἀπειθέω/VERB “to disobey” [kaikki-grc] / MorphGNT ἀπειθής “unbelieving, disobedient”
+1	ἀπέκοψαν: card αποκόπτω/VERB “to cut off, sever” [kaikki-el] / MorphGNT ἀποκόπτω “I smite, cut off, emasculate”
+1	ἀπερίτμητοι: card απερίτμητος/ADJ “uncircumcised” [kaikki-el] / MorphGNT ἀπερίτμητος “uncircumcised, unclean”
+1	ἀπέστησαν: card ἀφίστημι/VERB “to stand off or away” [kaikki-grc] / MorphGNT ἀφίσταμαι “I lead away, seduce, depart, a”
+1	ἀπέστησε: card ἀφίστημι/VERB “to stand off or away” [kaikki-grc] / MorphGNT ἀφίσταμαι “I lead away, seduce, depart, a”
+1	ἀπῆλθα: card απέρχομαι/VERB “to depart, go away from” [kaikki-el] / MorphGNT ἀπέρχομαι “I come or go away from, depart”
+1	ἄπιστοι: card ἀπιστέω/VERB “to disbelieve, doubt” [kaikki-grc] / MorphGNT ἄπιστος “unbelieving, incredulous, unch”
+1	ἁπλότητα: card απλότητα/NOUN “simplicity, plainness” [kaikki-el] / MorphGNT ἁπλότης “simplicity, sincerity, purity”
+1	ἁπλῶς: card ἁπλοῦς/ADJ “Attic form of ᾰ̔πλόος (hăplóos” [kaikki-grc] / MorphGNT ἁπλῶς “simply, sincerely”
+1	ἀπογενόμενοι: card ἀπογίγνομαι/VERB “to be away from; to have no pa” [kaikki-grc] / MorphGNT ἀπογίνομαι “I go out of being, cease to be”
+1	ἀπογραφή: card απογραφή/NOUN “census, inventory” [kaikki-el] / MorphGNT ἀπογραφή “an enrollment, census-taking, ”
+1	ἀπογραφῆς: card απογραφή/NOUN “census, inventory” [kaikki-el] / MorphGNT ἀπογραφή “an enrollment, census-taking, ”
+1	ἀποδείξει: card ἀποδείκνυμι/VERB “to demonstrate, point out, sho” [kaikki-grc] / MorphGNT ἀπόδειξις “demonstration, proof”
+1	ἀποδεξάμενος: card ἀποδείκνυμι/VERB “to demonstrate, point out, sho” [kaikki-grc] / MorphGNT ἀποδέχομαι “I receive, welcome, entertain”
+1	ἀποδέξασθαι: card ἀποδείκνυμι/VERB “to demonstrate, point out, sho” [kaikki-grc] / MorphGNT ἀποδέχομαι “I receive, welcome, entertain”
+1	ἀπόδημος: card απόδημος/ADJ “migrant, migratory, emigrant” [kaikki-el] / MorphGNT ἀπόδημος “away from home”
+1	ἀποδημῶν: card απόδημος/ADJ “migrant, migratory, emigrant” [kaikki-el] / MorphGNT ἀποδημέω “I go into another country”
+1	ἀποδώσεις: card αποδίδω/VERB “to attribute, ascribe” [kaikki-el] / MorphGNT ἀποδίδωμι “I give back, return, sell”
+1	ἀποθησαυρίζοντας: card αποθησαυρίζω/VERB “to hoard, amass (money, food)” [kaikki-el] / MorphGNT ἀποθησαυρίζω “I store up, treasure up”
+1	ἀπόκειται: card απόκειται/VERB “to it depends upon” [kaikki-el] / MorphGNT ἀπόκειμαι “I have been put away, am store”
+1	ἀπόκειταί: card απόκειται/VERB “to it depends upon” [kaikki-el] / MorphGNT ἀπόκειμαι “I have been put away, am store”
+1	ἀποκριθεῖσα: card ἀποκρίνω/VERB “to separate, set apart” [kaikki-grc] / MorphGNT ἀποκρίνομαι “I answer, reply”
+1	ἀποκριθέν: card ἀποκρίνω/VERB “to separate, set apart” [kaikki-grc] / MorphGNT ἀποκρίνομαι “I answer, reply”
+1	ἀπόκριμα: card απόκριμα/NOUN “secretion” [kaikki-el] / MorphGNT ἀπόκριμα “an answer, a judicial decision”
+1	ἀπόλουσαι: card ἀπόλλυμι/VERB “to completely destroy; to kill” [kaikki-grc] / MorphGNT ἀπολούομαι “I wash off, wash away”
+1	ἀπόντες: card απών/ADJ “absent” [kaikki-el] / MorphGNT ἄπειμι “I am absent”
+1	ἀποστάντα: card ἀφίστημι/VERB “to stand off or away” [kaikki-grc] / MorphGNT ἀφίσταμαι “I lead away, seduce, depart, a”
+1	ἀποστάς: card ἀφίστημι/VERB “to stand off or away” [kaikki-grc] / MorphGNT ἀφίσταμαι “I lead away, seduce, depart, a”
+1	ἀποστείλω: card αποστέλλω/VERB “to send, remit, ship, dispatch” [kaikki-el] / MorphGNT ἀποστέλλω “I send forth, send, send away,”
+1	ἀποστῇ: card ἀφίστημι/VERB “to stand off or away” [kaikki-grc] / MorphGNT ἀφίσταμαι “I lead away, seduce, depart, a”
+1	ἀποστῆναι: card ᾰ̓φῐ́στημῐ/VERB “” [kaikki-grc] / MorphGNT ἀφίσταμαι “I lead away, seduce, depart, a”
+1	ἀποστήσονταί: card ἀφίστημι/VERB “to stand off or away” [kaikki-grc] / MorphGNT ἀφίσταμαι “I lead away, seduce, depart, a”
+1	ἀποστήτω: card ἀφίστημι/VERB “to stand off or away” [kaikki-grc] / MorphGNT ἀφίσταμαι “I lead away, seduce, depart, a”
+1	ἀποσυνάγωγος: card αποσυνάγωγος/ADJ “ostracised (UK), ostracized (U” [kaikki-el] / MorphGNT ἀποσυνάγωγος “away from the synagogue, excom”
+1	ἀποφεύγοντας: card αποφεύγω/VERB “to avoid (keep away from)” [kaikki-el] / MorphGNT ἀποφεύγω “I flee from, escape”
+1	ἀποχρήσει: card ἀποχράω/VERB “to suffice, be sufficient, be ” [kaikki-grc] / MorphGNT ἀπόχρησις “using up”
+1	ἀπταίστους: card άπταιστος/ADJ “fluent, perfect” [kaikki-el] / MorphGNT ἄπταιστος “without stumbling or falling”
+1	ἀπωθεῖσθε: card ἀπωθέω/VERB “to thrust away, push back, cas” [kaikki-grc] / MorphGNT ἀπωθέομαι “I push or thrust away, reject”
+1	ἀπωσάμενοι: card ἀπωθέω/VERB “to thrust away, push back, cas” [kaikki-grc] / MorphGNT ἀπωθέομαι “I push or thrust away, reject”
+1	ἀπώσαντο: card ἀπωθέω/VERB “to thrust away, push back, cas” [kaikki-grc] / MorphGNT ἀπωθέομαι “I push or thrust away, reject”
+1	ἄρειον: card ἄρειος/ADJ “warlike; martial” [kaikki-grc] / MorphGNT Ἄρειος “Areopagus (in Ἄρειος Πάγος, th”
+1	ἀρείου: card ἄρειος/ADJ “warlike; martial” [kaikki-grc] / MorphGNT Ἄρειος “Areopagus (in Ἄρειος Πάγος, th”
+1	ἁρέτα: card ἀρετή/NOUN “human goodness, human excellen” [kaikki-grc] / MorphGNT Ἁρέτας “Aretas”
+1	ἄρῃς: card Ἄρης/PROPN “the deity Ares” [kaikki-grc] / MorphGNT αἴρω “I raise, lift up”
+1	ἀρθῇ: card ἀραρίσκω/VERB “join, fasten” [kaikki-grc] / MorphGNT αἴρω “I raise, lift up”
+1	ἀρθήτω: card ἀραρίσκω/VERB “join, fasten” [kaikki-grc] / MorphGNT αἴρω “I raise, lift up”
+1	ἀρθῶσιν: card ἀραρίσκω/VERB “join, fasten” [kaikki-grc] / MorphGNT αἴρω “I raise, lift up”
+1	ἀρίστου: card ἄριστος/ADJ “excellent, superb, superlative” [kaikki-grc] / MorphGNT ἄριστον “breakfast or a mid-day meal”
+1	ἀρκούμενος: card αρκώ/VERB “to suffice, be enough, be suff” [kaikki-el] / MorphGNT ἀρκέω “I am sufficient, I suffice, am”
+1	ἀρκοῦσιν: card ἀρκῶν/VERB “sufficient, enough” [kaikki-grc] / MorphGNT ἀρκέω “I am sufficient, I suffice, am”
+1	ἁρμάτων: card άρμα/NOUN “tank” [kaikki-el] / MorphGNT ἅρμα “a chariot”
+1	ἄρνας: card ἀμνός/NOUN “a lamb” [kaikki-grc] / MorphGNT ἀρήν “a lamb”
+1	ἀρνήσῃ: card άρνηση/NOUN “refusal, rejection” [kaikki-el] / MorphGNT ἀρνέομαι “I deny, repudiate”
+1	ἀρνί: card ἀμνός/NOUN “a lamb” [kaikki-grc] / MorphGNT Ἀρνί “Arni”
+1	ἀρνία: card αρνί/NOUN “lamb (farm animal or meat)” [kaikki-el] / MorphGNT ἀρνίον “a lamb”
+1	ἁρπαγήν: card ἁρπάγη/NOUN “hook” [kaikki-grc] / MorphGNT ἁρπαγή “the act of plundering, plunder”
+1	ἀρτιγέννητα: card αρτιγέννητος/ADJ “newborn, newly born” [kaikki-el] / MorphGNT ἀρτιγέννητος “newly begotten, newly born”
+1	ἀρχιερατικοῦ: card αρχιερατικός/ADJ “prelatic, prelatical, archprie” [kaikki-el] / MorphGNT ἀρχιερατικός “high priestly, to which the ch”
+1	ἄρχουσιν: card ἄρχω/VERB “to begin” [kaikki-grc] / MorphGNT ἄρχων “a ruler, prince, leader”
+1	ἀρῶ: card ἀρόω/VERB “to plow; to till” [kaikki-grc] / MorphGNT αἴρω “I raise, lift up”
+1	ἀρωμάτων: card άρωμα/NOUN “perfume, fragrance, smell, aro” [kaikki-el] / MorphGNT ἄρωμα “spice, perfume”
+1	ἀσάλευτος: card ασάλευτος/ADJ “still, firm, stationary, unmov” [kaikki-el] / MorphGNT ἀσάλευτος “unshaken, immovable”
+1	ἀσθενοῦσαν: card ασθενώ/VERB “to sicken, to fall ill, to get” [kaikki-el] / MorphGNT ἀσθενέω “I am weak, sick”
+1	ἀσιανοί: card ασιανός/ADJ “Asian, Asiatic” [kaikki-el] / MorphGNT Ἀσιανός “belonging to the Roman provinc”
+1	ἀσιτίας: card ασιτία/NOUN “starvation” [kaikki-el] / MorphGNT ἀσιτία “abstinence, a fast”
+1	ἀσκῶ: card ασκώ/VERB “to train, practise (UK), pract” [kaikki-el] / MorphGNT ἀσκέω “I train, practice, exercise”
+1	ἀσμένως: card ασμένως/ADV “with great pleasure, gladly” [kaikki-el] / MorphGNT ἀσμένως “joyfully, with delight”
+1	ἄσοφοι: card άσοφος/ADJ “unwise” [kaikki-el] / MorphGNT ἄσοφος “unskilled, unwise, foolish”
+1	ἀσπασμοῦ: card ασπασμός/NOUN “kiss, hug” [kaikki-el] / MorphGNT ἀσπασμός “a greeting, salutation”
+1	ἄσπιλοι: card άσπιλος/ADJ “blameless, spotless” [kaikki-el] / MorphGNT ἄσπιλος “unstained, undefiled”
+1	ἀσπίλου: card άσπιλος/ADJ “blameless, spotless” [kaikki-el] / MorphGNT ἄσπιλος “unstained, undefiled”
+1	ἀστήρικτοι: card αστήρικτος/ADJ “unsupported, unpropped” [kaikki-el] / MorphGNT ἀστήρικτος “unsteady, unstable”
+1	ἀστηρίκτους: card αστήρικτος/ADJ “unsupported, unpropped” [kaikki-el] / MorphGNT ἀστήρικτος “unsteady, unstable”
+1	ἄστοργοι: card άστοργος/ADJ “heartless” [kaikki-el] / MorphGNT ἄστοργος “unloving, devoid of affection”
+1	ἀστόργους: card άστοργος/ADJ “heartless” [kaikki-el] / MorphGNT ἄστοργος “unloving, devoid of affection”
+1	ἀσύμφωνοι: card ασύμφωνος/ADJ “disagreeing, in disagreement, ” [kaikki-el] / MorphGNT ἀσύμφωνος “dissonant, discordant”
+1	ἀσώτως: card ἄσωτος/ADJ “not saved; abandoned” [kaikki-grc] / MorphGNT ἀσώτως “prodigally, with prodigal livi”
+1	ἀτάκτους: card άτακτος/ADJ “cheeky, mischievous, naughty” [kaikki-el] / MorphGNT ἄτακτος “disorderly, slack”
+1	ἄτιμοι: card άτιμος/ADJ “dishonourable (UK), dishonorab” [kaikki-el] / MorphGNT ἄτιμος “without honor, despised”
+1	αὐγῆς: card αυγή/NOUN “dawn, sunrise, daybreak” [kaikki-el] / MorphGNT αὐγή “light of day”
+1	αὐγούστου: card Αύγουστος/PROPN “August (the 8th month)” [kaikki-el] / MorphGNT Αὐγοῦστος “Augustus”
+1	αὐθάδεις: card αυθάδης/ADJ “insolent, saucy, cheeky, impud” [kaikki-el] / MorphGNT αὐθάδης “self-satisfied, arrogant”
+1	αὐθάδη: card αυθάδης/ADJ “insolent, saucy, cheeky, impud” [kaikki-el] / MorphGNT αὐθάδης “self-satisfied, arrogant”
+1	αὐξάνει: card αυξάνω/VERB “to increase, raise, put up” [kaikki-el] / MorphGNT αὐξάνω “I cause to increase, become gr”
+1	αὐξάνετε: card αυξάνω/VERB “to increase, raise, put up” [kaikki-el] / MorphGNT αὐξάνω “I cause to increase, become gr”
+1	αὐξήσει: card αὔξησις/NOUN “growth, increase” [kaikki-grc] / MorphGNT αὐξάνω “I cause to increase, become gr”
+1	αὐτόχειρες: card αυτόχειρας/NOUN “suicide (the person)” [kaikki-el] / MorphGNT αὐτόχειρ “with one's own hand”
+1	ἀφανισμοῦ: card αφανισμός/NOUN “destruction, devastation” [kaikki-el] / MorphGNT ἀφανισμός “disappearing, disappearance”
+1	ἄφαντος: card άφαντος/ADJ “vanished” [kaikki-el] / MorphGNT ἄφαντος “disappearing, invisible, hidde”
+1	ἀφειδίᾳ: card αφειδία/NOUN “generosity, abundance” [kaikki-el] / MorphGNT ἀφειδία “severity”
+1	ἀφῆκά: card αφήνω/VERB “to leave, allow, let, let go, ” [kaikki-el] / MorphGNT ἀφίημι “I send away, release, remit, f”
+1	ἀφήκατε: card αφήνω/VERB “to leave, allow, let, let go, ” [kaikki-el] / MorphGNT ἀφίημι “I send away, release, remit, f”
+1	ἀφῆκες: card αφήνω/VERB “to leave, allow, let, let go, ” [kaikki-el] / MorphGNT ἀφίημι “I send away, release, remit, f”
+1	ἀφήσεις: card αφήνω/VERB “to leave, allow, let, let go, ” [kaikki-el] / MorphGNT ἀφίημι “I send away, release, remit, f”
+1	ἀφίστανται: card ἀφίστημι/VERB “to stand off or away” [kaikki-grc] / MorphGNT ἀφίσταμαι “I lead away, seduce, depart, a”
+1	ἀφίστατο: card ἀφίστημι/VERB “to stand off or away” [kaikki-grc] / MorphGNT ἀφίσταμαι “I lead away, seduce, depart, a”
+1	ἀφορίζει: card αφορίζω/VERB “to excommunicate” [kaikki-el] / MorphGNT ἀφορίζω “I rail off, separate, place ap”
+1	ἀφορίσατε: card αφορίζω/VERB “to excommunicate” [kaikki-el] / MorphGNT ἀφορίζω “I rail off, separate, place ap”
+1	ἀφορίσει: card αφορίζω/VERB “to excommunicate” [kaikki-el] / MorphGNT ἀφορίζω “I rail off, separate, place ap”
+1	ἄφωνα: card άφωνος/ADJ “voiceless, mute, silent” [kaikki-el] / MorphGNT ἄφωνος “soundless, voiceless, speechle”
+1	ἀχαϊκοῦ: card αχαϊκός/ADJ “Achaean, Achaian” [kaikki-el] / MorphGNT Ἀχαϊκός “Achaicus”
+1	ἄψινθος: card ἀψίνθιον/NOUN “wormwood (Artemisia absinthium” [kaikki-grc] / MorphGNT Ἄψινθος “wormwood”
+1	ἄψυχα: card άψυχος/ADJ “inanimate, lifeless (having no” [kaikki-el] / MorphGNT ἄψυχος “lifeless”
+1	βαΐα: card βαιός/ADJ “little, small” [kaikki-grc] / MorphGNT βάϊον “a palm branch”
+1	βασίλειον: card Βασίλειος/PROPN “a male given name, equivalent ” [kaikki-grc] / MorphGNT βασίλειος “courtiers, palaces, a body of ”
+1	βεβαίωσιν: card βεβαιόω/VERB “to confirm, assure, secure” [kaikki-grc] / MorphGNT βεβαίωσις “confirmation, ratification, es”
+1	βέλτιον: card ἀγαθός/ADJ “good; brave; noble; moral; gen” [kaikki-grc] / MorphGNT βέλτιον “better”
+1	βίωσίν: card βιόω/VERB “to live” [kaikki-grc] / MorphGNT βίωσις “manner of life”
+1	βοηθεῖτε: card βοάω/VERB “to shout” [kaikki-grc] / MorphGNT βοηθέω “I come to the rescue of”
+1	βόος: card βοῦς/NOUN “cow, ox, cattle” [kaikki-grc] / MorphGNT Βόος “Boaz”
+1	βουλεύσεται: card βουλεύω/VERB “to take counsel, deliberate, c” [kaikki-grc] / MorphGNT βουλεύομαι “I deliberate, take counsel”
+1	βραχίονι: card βραχύς/ADJ “short, brief” [kaikki-grc] / MorphGNT βραχίων “the arm, strength”
+1	βραχίονος: card βραχύς/ADJ “short, brief” [kaikki-grc] / MorphGNT βραχίων “the arm, strength”
+1	βρέχει: card βρέχει/VERB “"it rains"” [kaikki-el] / MorphGNT βρέχω “I moisten, rain, send rain”
+1	βρώσει: card βιβρώσκω/VERB “to eat, eat up” [kaikki-grc] / MorphGNT βρῶσις “eating, food, a meal, rust”
+1	γαΐῳ: card γαίω/VERB “to rejoice, exult, take pride ” [kaikki-grc] / MorphGNT Γάϊος “Gaius”
+1	γαλάται: card Γαλάτας/NOUN “Lyric form of Γᾰλᾰ́της (Gălắtē” [kaikki-grc] / MorphGNT Γαλάτης “a Galatian”
+1	γεγενημένον: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γεγενῆσθαι: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γεγόνασι: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γεγόνασιν: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γεγονότας: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γεγονότι: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γεγονυῖα: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γεγονώς: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γενέσθω: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γενηθέντας: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γενηθέντων: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γενηθῆναι: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γενήθητε: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γενηθῶμεν: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γενήσεσθε: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γενησόμενον: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γενήσονται: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γεννᾶται: card γεννᾶται/VERB “third-person singular present ” [kaikki-grc] / MorphGNT γεννάω “I beget, bring forth, give bir”
+1	γεννήσει: card γέννησῐς/NOUN “” [kaikki-grc] / MorphGNT γεννάω “I beget, bring forth, give bir”
+1	γενώμεθα: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	γεύσῃ: card γεύση/NOUN “taste (sense)” [kaikki-el] / MorphGNT γεύομαι “I taste, experience”
+1	γνόντα: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	γνῶ: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	γνῶθι: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	γνῷς: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	γνώσεται: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	γνώσῃ: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	γνωσθέντες: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	γνωσθῇ: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	γνωσθήτω: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	γνωσόμεθα: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	γνώστην: card γνωστός/ADJ “known” [kaikki-grc] / MorphGNT γνώστης “one who knows, an expert”
+1	γνώτω: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	γραφόμενα: card γρᾰφόμενος/VERB “” [kaikki-grc] / MorphGNT γράφω “I write”
+1	γρηγορῇ: card γρήγορος/ADJ “quick, fast, swift, brisk” [kaikki-el] / MorphGNT γρηγορέω “I am awake, am vigilant, watch”
+1	δαμασκηνῶν: card δαμασκηνής/ADJ “plum, damson (color/colour)” [kaikki-el] / MorphGNT Δαμασκηνός “an inhabitant of Damascus”
+1	δέδεκται: card δείκνυμι/VERB “to show, point out” [kaikki-grc] / MorphGNT δέχομαι “I take, receive, accept, welco”
+1	δεδουλωμένοι: card δουλόω/VERB “to enslave” [kaikki-grc] / MorphGNT δουλεύω “I am a slave, am subject to, o”
+1	δεδώρηται: card δωρέω/VERB “to gift a thing to one” [kaikki-grc] / MorphGNT δωρέομαι “I give, grant, donate”
+1	δεηθέντων: card δέω/VERB “to bind, tie, fasten, fetter” [kaikki-grc] / MorphGNT δέομαι “I request, beg”
+1	δεήθητι: card δέω/VERB “to bind, tie, fasten, fetter” [kaikki-grc] / MorphGNT δέομαι “I request, beg”
+1	δεῖνα: card δεινός/ADJ “terrible; horrible; fearful; a” [kaikki-grc] / MorphGNT δεῖνα “so and so, such a one”
+1	δεκτήν: card δέκτης/NOUN “beggar” [kaikki-grc] / MorphGNT δεκτός “acceptable, accepted”
+1	δεξαμένη: card δείκνυμι/VERB “to show, point out” [kaikki-grc] / MorphGNT δέχομαι “I take, receive, accept, welco”
+1	δεξάμενοι: card δεξάμενος/VERB “” [kaikki-grc] / MorphGNT δέχομαι “I take, receive, accept, welco”
+1	δέξωνται: card δείκνυμι/VERB “to show, point out” [kaikki-grc] / MorphGNT δέχομαι “I take, receive, accept, welco”
+1	δέξωνταί: card δείκνυμι/VERB “to show, point out” [kaikki-grc] / MorphGNT δέχομαι “I take, receive, accept, welco”
+1	δεσμωτηρίου: card δεσμωτήριο/NOUN “prison, cell” [kaikki-el] / MorphGNT δεσμωτήριον “a prison”
+1	δηλώσει: card δήλωσις/NOUN “explanation” [kaikki-grc] / MorphGNT δηλόω “I show, make clear, reveal”
+1	διαγνώσομαι: card διαγιγνώσκω/VERB “to distinguish; to discern” [kaikki-grc] / MorphGNT διαγινώσκω “I know accurately, examine, de”
+1	διαλέγεται: card διαλέγω/VERB “to choose, select, pick out” [kaikki-el] / MorphGNT διαλέγομαι “I converse, address, preach, l”
+1	διαστάσης: card διάσταση/NOUN “dimension (length, width, heig” [kaikki-el] / MorphGNT διΐστημι “I put apart, separate, put som”
+1	διαφύγῃ: card διαφυγή/NOUN “escape (from dangerous or unpl” [kaikki-el] / MorphGNT διαφεύγω “I escape by flight”
+1	διαχωρίζεσθαι: card διαχωρίζω/VERB “to separate” [kaikki-grc] / MorphGNT διαχωρίζομαι “I separate myself from, part f”
+1	διηγοῦ: card διάγω/VERB “to carry over or across” [kaikki-grc] / MorphGNT διηγέομαι “I relate in full, describe”
+1	δικαιώσει: card δικαιώνω/VERB “to exonerate, justify, vindica” [kaikki-el] / MorphGNT δικαιόω “I make righteous, defend the c”
+1	διοτρέφης: card διοτρεφής/ADJ “nourished by Zeus” [kaikki-grc] / MorphGNT Διοτρέφης “Diotrephes”
+1	διπλώσατε: card διπλώνω/VERB “to fold, to fold in two, to fo” [kaikki-el] / MorphGNT διπλόω “I double”
+1	δίψει: card διψέω/VERB “Ionic form of διψάω (dipsáō)” [kaikki-grc] / MorphGNT δίψος “thirst”
+1	διώξετε: card διώχνω/VERB “to chase away, to drive away, ” [kaikki-el] / MorphGNT διώκω “I pursue, persecute”
+1	δογματίζεσθε: card δογματίζω/VERB “to lay down as an opinion” [kaikki-grc] / MorphGNT δογματίζομαι “I subject to regulations, decr”
+1	δοῖ: card δέω/VERB “to bind, tie, fasten, fetter” [kaikki-grc] / MorphGNT δίδωμι “I offer, give”
+1	δόλιοι: card δολίζω/VERB “to adulterate” [kaikki-grc] / MorphGNT δόλιος “treacherous, deceitful”
+1	δοξάσαι: card δόξᾱς/VERB “” [kaikki-grc] / MorphGNT δοξάζω “I glorify, honor, bestow glory”
+1	δοξάσῃ: card δόξᾱς/VERB “” [kaikki-grc] / MorphGNT δοξάζω “I glorify, honor, bestow glory”
+1	δόσεως: card δόση/NOUN “dose, instalment, tranche” [kaikki-el] / MorphGNT δόσις “a giving, gift.”
+1	δότην: card δίδωμι/VERB “to give; to present; to offer;” [kaikki-grc] / MorphGNT δότης “a giver”
+1	δούλας: card δοῦλος/ADJ “slavish, servile, subject” [kaikki-grc] / MorphGNT δούλη “a female slave, bonds-maid”
+1	δούλη: card δοῦλος/ADJ “slavish, servile, subject” [kaikki-grc] / MorphGNT δούλη “a female slave, bonds-maid”
+1	δούλης: card δοῦλος/ADJ “slavish, servile, subject” [kaikki-grc] / MorphGNT δούλη “a female slave, bonds-maid”
+1	δρέπανόν: card δρεπάνη/NOUN “sickle” [kaikki-grc] / MorphGNT δρέπανον “a sickle”
+1	δυνάμεναι: card δῠνᾰ́μενος/VERB “” [kaikki-grc] / MorphGNT δύναμαι “I am powerful, am able”
+1	δυναμένη: card δῠνᾰ́μενος/VERB “” [kaikki-grc] / MorphGNT δύναμαι “I am powerful, am able”
+1	δυναμένους: card δυνάμενος/VERB “” [kaikki-grc] / MorphGNT δύναμαι “I am powerful, am able”
+1	δυναμένων: card δῠνᾰ́μενος/VERB “” [kaikki-grc] / MorphGNT δύναμαι “I am powerful, am able”
+1	δύσεως: card δύση/NOUN “west” [kaikki-el] / MorphGNT δύσις “a sinking, setting”
+1	δῶσιν: card δέω/VERB “to bind, tie, fasten, fetter” [kaikki-grc] / MorphGNT δίδωμι “I offer, give”
+1	ἔα: card εἰμί/VERB “to be; to exist” [kaikki-grc] / MorphGNT ἔα “an interjection: ho!”
+1	ἐβουλεύοντο: card βουλεύω/VERB “to take counsel, deliberate, c” [kaikki-grc] / MorphGNT βουλεύομαι “I deliberate, take counsel”
+1	ἑβραῖοί: card Εβραίος/NOUN “Jew (a male who follows the re” [kaikki-el] / MorphGNT Ἑβραῖος “a Hebrew”
+1	ἑβραίους: card Εβραίος/NOUN “Jew (a male who follows the re” [kaikki-el] / MorphGNT Ἑβραῖος “a Hebrew”
+1	ἑβραίων: card Εβραίος/NOUN “Jew (a male who follows the re” [kaikki-el] / MorphGNT Ἑβραῖος “a Hebrew”
+1	ἐγγίσατε: card εγγίζω/VERB “alternative form of αγγίζω (an” [kaikki-el] / MorphGNT ἐγγίζω “I come near, approach”
+1	ἐγεγόνει: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	ἐγενήθην: card γίγνομαι/VERB “to come into being” [kaikki-grc] / MorphGNT γίνομαι “I come into being, am born”
+1	ἐγκαθέτους: card εγκάθετος/ADJ “Having deliberately infiltrate” [kaikki-el] / MorphGNT ἐγκάθετος “a spy”
+1	ἐγκαταλείψεις: card εγκαταλείπω/VERB “to abandon” [kaikki-el] / MorphGNT ἐγκαταλείπω “I abandon, desert”
+1	ἐγκλήματος: card έγκλημα/NOUN “crime, felony” [kaikki-el] / MorphGNT ἔγκλημα “an accusation, charge”
+1	ἐγκρατείας: card εγκράτεια/NOUN “abstinence, continence” [kaikki-el] / MorphGNT ἐγκράτεια “self-mastery, self-control”
+1	ἔγνωκάς: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	ἐγνωκέναι: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	ἔγνωσται: card γιγνώσκω/VERB “to be aware of; to perceive, o” [kaikki-grc] / MorphGNT γινώσκω “I come to know, learn, realize”
+1	ἐδεξάμεθα: card δείκνυμι/VERB “to show, point out” [kaikki-grc] / MorphGNT δέχομαι “I take, receive, accept, welco”
+1	ἔδυ: card δύω/VERB “to cause to sink; to plunge” [kaikki-grc] / MorphGNT δύνω “I sink, set”
+1	ἐδωρήσατο: card δωρέω/VERB “to gift a thing to one” [kaikki-grc] / MorphGNT δωρέομαι “I give, grant, donate”
+1	ἔζησα: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+1	ἐζῆτε: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+1	ἔζων: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+1	ἐθνικῶν: card εθνικός/ADJ “national” [kaikki-el] / MorphGNT ἐθνικός “pagan, heathen, gentile; a Gen”
+1	εἰδέα: card ἰδέα/NOUN “form, shape” [kaikki-grc] / MorphGNT εἰδέα “appearance, look”
+1	εἴδει: card εἴδομαι/VERB “to be seen, appear” [kaikki-grc] / MorphGNT εἶδος “visible form, shape, appearanc”
+1	εἰλικρινείᾳ: card ειλικρίνεια/NOUN “sincerity, frankness” [kaikki-el] / MorphGNT εἰλικρίνεια “clearness, sincerity, purity”
+1	εἵλκυσαν: card ἑλκύω/VERB “synonym of ἕλκω (hélkō)” [kaikki-grc] / MorphGNT ἕλκω “I drag, draw, pull, persuade”
+1	εἰπάτω: card εἶπον/VERB “to say; to speak” [kaikki-grc] / MorphGNT λέγω “I say, speak”
+1	εἶπε: card εἶπον/VERB “to say; to speak” [kaikki-grc] / MorphGNT λέγω “I say, speak”
+1	εἶπες: card εἶπον/VERB “to say; to speak” [kaikki-grc] / MorphGNT λέγω “I say, speak”
+1	εἰρηνική: card ειρηνικός/ADJ “peaceful (not at war; not dist” [kaikki-el] / MorphGNT εἰρηνικός “peaceable, disposed to peace”
+1	εἰσάγαγε: card εισάγω/VERB “to import (goods from abroad)” [kaikki-el] / MorphGNT εἰσάγω “I lead in, bring in”
+1	εἰσήλθατε: card εισέρχομαι/VERB “to enter, to make one's entran” [kaikki-el] / MorphGNT εἰσέρχομαι “I go in, come in, enter”
+1	ἑκατόνταρχον: card ἑκατόνταρχος/NOUN “centurion” [kaikki-grc] / MorphGNT ἑκατοντάρχης “a centurion”
+1	ἑκατοντάρχου: card ἑκατόνταρχος/NOUN “centurion” [kaikki-grc] / MorphGNT ἑκατοντάρχης “a centurion”
+1	ἔκλασα: card κλάνω/VERB “to fart” [kaikki-el] / MorphGNT κλάω “I break”
+1	ἐκλεκτῇ: card εκλεκτός/ADJ “chosen, elect, select” [kaikki-el] / MorphGNT ἐκλεκτός “chosen, elect, choice, select”
+1	ἐκλεκτῆς: card εκλεκτός/ADJ “chosen, elect, select” [kaikki-el] / MorphGNT ἐκλεκτός “chosen, elect, choice, select”
+1	ἔκλεψαν: card κλέβω/VERB “to steal” [kaikki-el] / MorphGNT κλέπτω “I steal”
+1	ἐκλυθήσονται: card ἐκλύω/VERB “to set free, to release, to be” [kaikki-grc] / MorphGNT ἐκλύομαι “I am unstrung, become weak, fa”
+1	ἐκλυθῶσιν: card ἐκλύω/VERB “to set free, to release, to be” [kaikki-grc] / MorphGNT ἐκλύομαι “I am unstrung, become weak, fa”
+1	ἐκλύου: card ἐκλύω/VERB “to set free, to release, to be” [kaikki-grc] / MorphGNT ἐκλύομαι “I am unstrung, become weak, fa”
+1	ἔκτεινόν: card κτείνω/VERB “to kill, slay” [kaikki-grc] / MorphGNT ἐκτείνω “I stretch out, cast forth”
+1	ἐκτραπῇ: card ἐκτρέπω/VERB “to turn out of the course, tur” [kaikki-grc] / MorphGNT ἐκτρέπομαι “I turn aside, wander, forsake”
+1	ἐκτραπήσονται: card ἐκτρέπω/VERB “to turn out of the course, tur” [kaikki-grc] / MorphGNT ἐκτρέπομαι “I turn aside, wander, forsake”
+1	ἐκτρεπόμενος: card ἐκτρέπω/VERB “to turn out of the course, tur” [kaikki-grc] / MorphGNT ἐκτρέπομαι “I turn aside, wander, forsake”
+1	ἐκυλίετο: card κυλίω/VERB “to roll along, wallow” [kaikki-grc] / MorphGNT κυλίομαι “I roll”
+1	ἐκχέετε: card εκχέω/VERB “to pour away” [kaikki-el] / MorphGNT ἐκχέω “I pour out, shed”
+1	ἐλάκησεν: card λάσκω/VERB “to ring, rattle, crash, crack” [kaikki-grc] / MorphGNT λακάω “to burst open”
+1	ἐλάσσω: card ἐλαύνω/VERB “to drive, set in motion” [kaikki-grc] / MorphGNT ἐλάσσων “less, smaller, inferior”
+1	ἐλαφρίᾳ: card ελαφρός/ADJ “light” [kaikki-el] / MorphGNT ἐλαφρία “levity, fickleness”
+1	ἐλαχίστη: card ἐλαχύς/ADJ “small; short; mean; little” [kaikki-grc] / MorphGNT ἐλάχιστος “least, smallest, very little”
+1	ἐλάχιστον: card ἐλαχύς/ADJ “small; short; mean; little” [kaikki-grc] / MorphGNT ἐλάχιστος “least, smallest, very little”
+1	ἐλάχιστόν: card ἐλαχύς/ADJ “small; short; mean; little” [kaikki-grc] / MorphGNT ἐλάχιστος “least, smallest, very little”
+1	ἐλαχίστου: card ἐλαχύς/ADJ “small; short; mean; little” [kaikki-grc] / MorphGNT ἐλάχιστος “least, smallest, very little”
+1	ἐλέγξει: card ελέγχω/VERB “to question, check, test” [kaikki-el] / MorphGNT ἐλέγχω “I rebuke, expose”
+1	ἐλέγχει: card ἔλεγχος/NOUN “argument of disproof, refutati” [kaikki-grc] / MorphGNT ἐλέγχω “I rebuke, expose”
+1	ἐλέγχεται: card ελέγχω/VERB “to question, check, test” [kaikki-el] / MorphGNT ἐλέγχω “I rebuke, expose”
+1	ἐλέγχετε: card ελέγχω/VERB “to question, check, test” [kaikki-el] / MorphGNT ἐλέγχω “I rebuke, expose”
+1	ἐλεεῖ: card ἔλεος/NOUN “pity, mercy, compassion” [kaikki-grc] / MorphGNT ἐλεάω “to have mercy, show compassion”
+1	ἐλεήσῃ: card ἐλεέω/VERB “to have pity on, take pity on,” [kaikki-grc] / MorphGNT ἐλεάω “to have mercy, show compassion”
+1	ἐλεύθεροί: card ἐλευθερόω/VERB “to free, set free, loose, rele” [kaikki-grc] / MorphGNT ἐλεύθερος “free, delivered from obligatio”
+1	ἐλεῶ: card ἐλεός/NOUN “kitchen table” [kaikki-grc] / MorphGNT ἐλεάω “to have mercy, show compassion”
+1	ἐλεῶν: card ἔλεος/NOUN “pity, mercy, compassion” [kaikki-grc] / MorphGNT ἐλεάω “to have mercy, show compassion”
+1	ἑλκύσαι: card ἑλκύω/VERB “synonym of ἕλκω (hélkō)” [kaikki-grc] / MorphGNT ἕλκω “I drag, draw, pull, persuade”
+1	ἑλκύσῃ: card ἑλκύω/VERB “synonym of ἕλκω (hélkō)” [kaikki-grc] / MorphGNT ἕλκω “I drag, draw, pull, persuade”
+1	ἑλκύσω: card ἑλκύω/VERB “synonym of ἕλκω (hélkō)” [kaikki-grc] / MorphGNT ἕλκω “I drag, draw, pull, persuade”
+1	ἑλόμενος: card αἱρέω/VERB “to take, grasp, seize” [kaikki-grc] / MorphGNT αἱρέομαι “I choose, prefer”
+1	ἐλυτρώθητε: card λυτρόω/VERB “to release on receipt of a ran” [kaikki-grc] / MorphGNT λυτρόομαι “I ransom, liberate, deliver”
+1	ἐμεθύσθησαν: card μεθύσκω/VERB “to intoxicate, make drunk” [kaikki-grc] / MorphGNT μεθύω “I am drunk”
+1	ἐμέσαι: card Ἔμεσα/PROPN “Emesa” [kaikki-grc] / MorphGNT ἐμέω “I vomit forth”
+1	ἐμισθώσατο: card μισθόω/VERB “to hire” [kaikki-grc] / MorphGNT μισθόομαι “I hire out, hire, engage”
+1	ἐμμαοῦς: card Ἐμμαούς/PROPN “alternative form of Ἐμμαοῦς (E” [kaikki-grc] / MorphGNT Ἐμμαοῦς “Emmaus”
+1	ἐμνήσθημεν: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+1	ἐμνήσθην: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+1	ἐμνηστευμένῃ: card μνηστεύω/VERB “to espouse, betroth” [kaikki-grc] / MorphGNT μνηστεύομαι “I ask in marriage”
+1	ἐμπλέκεται: card ἐμπλέκω/VERB “to plait or weave in, entwine” [kaikki-grc] / MorphGNT ἐμπλέκομαι “I enfold, entangle”
+1	ἐμπορίου: card εμπόριο/NOUN “trade, commerce” [kaikki-el] / MorphGNT ἐμπόριον “market, market-house”
+1	ἔμποροί: card έμπορος/NOUN “merchant, trader, dealer” [kaikki-el] / MorphGNT ἔμπορος “a merchant, trader”
+1	ἐναλίων: card ἐνάλιος/ADJ “in, on or of the sea, marine” [kaikki-grc] / MorphGNT ἐνάλιον “sea creature”
+1	ἐνδέχεται: card ενδέχεται/VERB “to be possible” [kaikki-el] / MorphGNT ἐνδέχεται “I allow, it is possible”
+1	ἐνεργεῖ: card ἐνεργής/ADJ “productive (of land)” [kaikki-grc] / MorphGNT ἐνεργέω “I work, accomplish, am operati”
+1	ἐνεργουμένης: card ενεργούμενος/ADJ “controlled, pawnlike, robotic ” [kaikki-el] / MorphGNT ἐνεργέω “I work, accomplish, am operati”
+1	ἐνετειλάμην: card ἐντέλλω/VERB “to order, command to be done, ” [kaikki-grc] / MorphGNT ἐντέλλομαι “I give orders, command”
+1	ἐνθυμήσεων: card ενθύμηση/NOUN “memory (mostly in the plural)” [kaikki-el] / MorphGNT ἐνθύμησις “inward thought, reflection, th”
+1	ἐνθυμήσεως: card ενθύμηση/NOUN “memory (mostly in the plural)” [kaikki-el] / MorphGNT ἐνθύμησις “inward thought, reflection, th”
+1	ἔνιψα: card νίφω/VERB “to snow” [kaikki-grc] / MorphGNT νίπτω “I wash”
+1	ἐνιψάμην: card νίφω/VERB “to snow” [kaikki-grc] / MorphGNT νίπτω “I wash”
+1	ἐνίψατο: card νίφω/VERB “to snow” [kaikki-grc] / MorphGNT νίπτω “I wash”
+1	ἔνοχοι: card ένοχος/ADJ “guilty” [kaikki-el] / MorphGNT ἔνοχος “involved in, liable”
+1	ἐντειλάμενος: card ἐντέλλω/VERB “to order, command to be done, ” [kaikki-grc] / MorphGNT ἐντέλλομαι “I give orders, command”
+1	ἐντέταλται: card ἐντέλλω/VERB “to order, command to be done, ” [kaikki-grc] / MorphGNT ἐντέλλομαι “I give orders, command”
+1	ἔντιμος: card έντιμος/ADJ “honourable (UK), honorable (US” [kaikki-el] / MorphGNT ἔντιμος “precious, honored, honorable”
+1	ἐντιμότερός: card έντιμος/ADJ “honourable (UK), honorable (US” [kaikki-el] / MorphGNT ἔντιμος “precious, honored, honorable”
+1	ἐντίμους: card έντιμος/ADJ “honourable (UK), honorable (US” [kaikki-el] / MorphGNT ἔντιμος “precious, honored, honorable”
+1	ἐνυπνιασθήσονται: card ἐνυπνιάζω/VERB “to dream” [kaikki-grc] / MorphGNT ἐνυπνιάζομαι “I dream”
+1	ἐνυπνίοις: card ἐνύπνιος/ADJ “appearing in dreams or sleep, ” [kaikki-grc] / MorphGNT ἐνύπνιον “a dream, vision”
+1	ἐνώς: card ἕνος/ADJ “belonging to the former of two” [kaikki-grc] / MorphGNT Ἐνώς “Enosh”
+1	ἐξαλείψω: card εξαλείφω/VERB “efface, wipe out” [kaikki-el] / MorphGNT ἐξαλείφω “I wipe away, obliterate”
+1	ἐξαπατήσῃ: card εξαπάτηση/NOUN “deception” [kaikki-el] / MorphGNT ἐξαπατάω “I deceive thoroughly”
+1	ἐξέπεσαν: card εκπίπτω/VERB “to extracted discount amount (” [kaikki-el] / MorphGNT ἐκπίπτω “I fall out, fall off, fall awa”
+1	ἔξεστι: card ἔξεστι/VERB “to be allowed, to be possible” [kaikki-grc] / MorphGNT ἔξεστι(ν) “it is permitted, lawful, possi”
+1	ἐξέχεαν: card εκχέω/VERB “to pour away” [kaikki-el] / MorphGNT ἐκχέω “I pour out, shed”
+1	ἐξήγειρά: card εξεγείρω/VERB “to excite, stir up, rouse” [kaikki-el] / MorphGNT ἐξεγείρω “I raise up, arouse”
+1	ἐξῃτήσατο: card ἐξαιτέω/VERB “to demand from” [kaikki-grc] / MorphGNT ἐξαιτέομαι “I demand of, ask for”
+1	ἐξόδου: card έξοδος/NOUN “exit, way out” [kaikki-el] / MorphGNT ἔξοδος “an exit, departure, death”
+1	ἔπαθον: card ἔπαθον/VERB “first-person singular/third-pe” [kaikki-grc] / MorphGNT πάσχω “I am acted upon, suffer”
+1	ἐπαύοντο: card ἐπαύοντο/VERB “third-person plural imperfect ” [kaikki-grc] / MorphGNT παύω “I cause to cease”
+1	ἐπέβαλαν: card επιβάλλω/VERB “to impose, force” [kaikki-el] / MorphGNT ἐπιβάλλω “I throw upon, lay, strike upon”
+1	ἐπείρασας: card πειράω/VERB “to try” [kaikki-grc] / MorphGNT πειράζω “I try, tempt, test”
+1	ἐπῆλθαν: card επέρχομαι/VERB “to be approaching/upcoming/onc” [kaikki-el] / MorphGNT ἐπέρχομαι “I approach, overtake, attack”
+1	ἐπιβάλλον: card ἐπιβάλλον/NOUN “a kind of ephemeron (short-liv” [kaikki-grc] / MorphGNT ἐπιβάλλω “I throw upon, lay, strike upon”
+1	ἐπιβάλω: card επιβάλλω/VERB “to impose, force” [kaikki-el] / MorphGNT ἐπιβάλλω “I throw upon, lay, strike upon”
+1	ἐπιδιορθώσῃ: card επιδιόρθωση/NOUN “repair” [kaikki-el] / MorphGNT ἐπιδιορθόω “I put in order”
+1	ἐπιεικεῖς: card επιεικής/ADJ “lenient” [kaikki-el] / MorphGNT ἐπιεικής “gentle, mild, forbearing, fair”
+1	ἐπιεικῆ: card επιεικής/ADJ “lenient” [kaikki-el] / MorphGNT ἐπιεικής “gentle, mild, forbearing, fair”
+1	ἐπίθες: card πείθω/VERB “to convince, persuade” [kaikki-grc] / MorphGNT ἐπιτίθημι “I put, place upon, lay on”
+1	ἐπιθέσεώς: card επίθεση/NOUN “attack, offensive (in warfare)” [kaikki-el] / MorphGNT ἐπίθεσις “laying on”
+1	ἐπιθυμεῖτε: card επιθυμώ/VERB “to desire, want, wish” [kaikki-el] / MorphGNT ἐπιθυμέω “I long for, covet, lust after”
+1	ἐπιθυμήσετε: card επιθυμώ/VERB “to desire, want, wish” [kaikki-el] / MorphGNT ἐπιθυμέω “I long for, covet, lust after”
+1	ἐπιθυμῶν: card ἐπίθυμον/NOUN “hellweed (Cuscuta epithymum)” [kaikki-grc] / MorphGNT ἐπιθυμέω “I long for, covet, lust after”
+1	ἐπικείμενα: card επικείμενος/VERB “imminent, impending (soon to h” [kaikki-el] / MorphGNT ἐπίκειμαι “I lie upon, am insistent”
+1	ἐπικειμένου: card επικείμενος/VERB “imminent, impending (soon to h” [kaikki-el] / MorphGNT ἐπίκειμαι “I lie upon, am insistent”
+1	ἐπίκειται: card επίκειται/VERB “to be imminent, to be about to” [kaikki-el] / MorphGNT ἐπίκειμαι “I lie upon, am insistent”
+1	ἐπιμελῶς: card ἐπιμελής/ADJ “careful, anxious [with genitiv” [kaikki-grc] / MorphGNT ἐπιμελῶς “carefully, diligently”
+1	ἐπίσημοι: card επίσημος/ADJ “formal, official, authoritativ” [kaikki-el] / MorphGNT ἐπίσημος “notable, conspicuous”
+1	ἐπισκόπους: card επίσκοπος/NOUN “bishop” [kaikki-el] / MorphGNT ἐπίσκοπος “overseer, supervisor, ruler”
+1	ἐπιστῇ: card ἐπίσταμαι/VERB “to know, to have the knowledge” [kaikki-grc] / MorphGNT ἐφίστημι “I stand by, am urgent, befall ”
+1	ἐπιστήμων: card ἐπιστήμη/NOUN “understanding of or acquaintan” [kaikki-grc] / MorphGNT ἐπιστήμων “skillful, experienced”
+1	ἐπιστρέφετε: card επιστρέφω/VERB “to return, come back” [kaikki-el] / MorphGNT ἐπιστρέφω “I turn back to”
+1	ἐπιστρέψατε: card επιστρέφω/VERB “to return, come back” [kaikki-el] / MorphGNT ἐπιστρέφω “I turn back to”
+1	ἐπιστρέψει: card επιστρέφω/VERB “to return, come back” [kaikki-el] / MorphGNT ἐπιστρέφω “I turn back to”
+1	ἐπιστρέψω: card επιστρέφω/VERB “to return, come back” [kaikki-el] / MorphGNT ἐπιστρέφω “I turn back to”
+1	ἐπιτροπῆς: card επιτροπή/NOUN “panel, committee” [kaikki-el] / MorphGNT ἐπιτροπή “commission, full power”
+1	ἐπονομάζῃ: card ἐπονομάζω/VERB “to name, call (give a name to)” [kaikki-grc] / MorphGNT ἐπονομάζομαι “I name, impose a name on”
+1	ἐπορευόμην: card πορεύω/VERB “to cause to go, carry, convey” [kaikki-grc] / MorphGNT πορεύομαι “I travel, journey, go”
+1	ἐπύθετο: card πύθω/VERB “to make rot” [kaikki-grc] / MorphGNT πυνθάνομαι “I ask, inquire”
+1	ἐργάζονται: card εργάζομαι/VERB “to work” [kaikki-el] / MorphGNT ἐργάζομαι “I word, trade, do”
+1	ἐρεθίζετε: card ερεθίζω/VERB “to annoy, irritate” [kaikki-el] / MorphGNT ἐρεθίζω “I stir up, provoke”
+1	ἔρεις: card ἐρέω/VERB “Epic and Ionic form of ἔρομαι ” [kaikki-grc] / MorphGNT ἔρις “contention, strife”
+1	ἐρημίας: card ερημιά/NOUN “wilderness, desolation” [kaikki-el] / MorphGNT ἐρημία “a desert place”
+1	ἐρήμους: card ἐρῆμος/ADJ “lonely, lonesome, solitary” [kaikki-grc] / MorphGNT ἔρημος “deserted, desolate, a desert”
+1	ἔριδι: card Ἔρις/PROPN “Eris” [kaikki-grc] / MorphGNT ἔρις “contention, strife”
+1	ἔριδος: card Ἔρις/PROPN “Eris” [kaikki-grc] / MorphGNT ἔρις “contention, strife”
+1	ἔριν: card Ἔρις/PROPN “Eris” [kaikki-grc] / MorphGNT ἔρις “contention, strife”
+1	ἐρίφια: card ερίφιο/NOUN “kid, young goat” [kaikki-el] / MorphGNT ἐρίφιον “a goat, kid”
+1	ἑρμᾶν: card Ἑρμῆς/PROPN “Hermes” [kaikki-grc] / MorphGNT Ἑρμᾶς “Hermas”
+1	ἑρμηνευόμενος: card ερμηνεύω/VERB “to interpret, explain, constru” [kaikki-el] / MorphGNT ἑρμηνεύω “I translate, interpret”
+1	ἐρρέθησαν: card εἴρω/VERB “to tie; to join; to fasten; to” [kaikki-grc] / MorphGNT λέγω “I say, speak”
+1	ἔρρωσθε: card ῥώννυμι/VERB “to strengthen” [kaikki-grc] / MorphGNT ῥώννυμαι “farewell (be strong)”
+1	ἐρυθρᾷ: card ἐρῠθρός/ADJ “” [kaikki-grc] / MorphGNT Ἐρυθρός “red”
+1	ἐρχομένης: card ἐρχόμενος/VERB “coming” [kaikki-grc] / MorphGNT ἔρχομαι “I come, go”
+1	ἐρχομένους: card ἐρχόμενος/VERB “coming” [kaikki-grc] / MorphGNT ἔρχομαι “I come, go”
+1	ἐρχομένων: card ἐρχόμενος/VERB “coming” [kaikki-grc] / MorphGNT ἔρχομαι “I come, go”
+1	ἐρωτήσατε: card ερωτώ/VERB “alternative form of ρωτάω (rot” [kaikki-el] / MorphGNT ἐρωτάω “I ask, question, request”
+1	ἐρωτήσετε: card ερωτώ/VERB “alternative form of ρωτάω (rot” [kaikki-el] / MorphGNT ἐρωτάω “I ask, question, request”
+1	ἐρωτήσῃ: card ερώτηση/NOUN “question (sentence asking for ” [kaikki-el] / MorphGNT ἐρωτάω “I ask, question, request”
+1	ἔσθων: card ἐσθίω/VERB “to eat; to devour; to consume” [kaikki-grc] / MorphGNT ἔσθω “to eat”
+1	ἐσκοτώθη: card σκοτόω/VERB “I blind” [kaikki-grc] / MorphGNT σκοτόομαι “I darken”
+1	ἐσκοτωμένη: card σκοτόω/VERB “I blind” [kaikki-grc] / MorphGNT σκοτόομαι “I darken”
+1	ἐσχάτως: card ἔσχατος/ADJ “At one end of a continuum:” [kaikki-grc] / MorphGNT ἐσχάτως “to be at the extremity”
+1	ἐσχηκότα: card ἐσχηκώς/VERB “” [kaikki-grc] / MorphGNT ἔχω “I have, hold, possess”
+1	ἑτέρως: card ἕτερος/ADJ “one or the other of two” [kaikki-grc] / MorphGNT ἑτέρως “otherwise, differently”
+1	ἑτοιμασίᾳ: card ετοιμασία/NOUN “preparation (the act of gettin” [kaikki-el] / MorphGNT ἑτοιμασία “preparation, readiness”
+1	ἕτοιμοί: card έτοιμος/ADJ “ready, prepared” [kaikki-el] / MorphGNT ἕτοιμος “ready, prepared”
+1	εὕα: card Εὔα/PROPN “Eve (wife of Adam)” [kaikki-grc] / MorphGNT Εὕα “Eve”
+1	εὕαν: card Εὔα/PROPN “Eve (wife of Adam)” [kaikki-grc] / MorphGNT Εὕα “Eve”
+1	εὐεργετῶν: card εὐεργέτης/NOUN “A benefactor, euergete, euerge” [kaikki-grc] / MorphGNT εὐεργετέω “I do good deeds, benefit”
+1	εὐλογῇς: card εύλογος/ADJ “reasonable” [kaikki-el] / MorphGNT εὐλογέω “I bless”
+1	εὐπειθής: card Εὐπείθης/PROPN “Eupithes, father of Antinous o” [kaikki-grc] / MorphGNT εὐπειθής “compliant”
+1	εὐπροσδέκτους: card ευπρόσδεκτος/ADJ “welcome (whose arrival is a ca” [kaikki-el] / MorphGNT εὐπρόσδεκτος “well-received, acceptable”
+1	εὐρύχωρος: card ευρύχωρος/ADJ “spacious, roomy” [kaikki-el] / MorphGNT εὐρύχωρος “broad, spacious”
+1	εὐφράτῃ: card Ευφράτης/PROPN “Euphrates (a river in West Asi” [kaikki-el] / MorphGNT Εὐφράτης “the Euphrates”
+1	εὐχαριστεῖς: card ευχαριστώ/VERB “to thank” [kaikki-el] / MorphGNT εὐχαριστέω “I thank, give thanks”
+1	εὐχαριστεῖτε: card ευχαριστώ/VERB “to thank” [kaikki-el] / MorphGNT εὐχαριστέω “I thank, give thanks”
+1	εὐχαριστιῶν: card ευχαριστία/NOUN “thanks” [kaikki-el] / MorphGNT εὐχαριστία “thankfulness, gratitude”
+1	εὐχάριστοι: card ευχάριστος/ADJ “pleasant, pleasing, agreeable” [kaikki-el] / MorphGNT εὐχάριστος “thankful, grateful”
+1	εὔχεσθε: card εύχομαι/VERB “to wish” [kaikki-el] / MorphGNT εὔχομαι “I pray, wish”
+1	εὐψυχῶ: card εὔψυχος/ADJ “of good courage, stout of hear” [kaikki-grc] / MorphGNT εὐψυχέω “I am of good cheer”
+1	ἐφοβεῖτο: card φοβέω/VERB “to put to flight” [kaikki-grc] / MorphGNT φοβέομαι “I fear, am terrified”
+1	ἐφοβούμην: card φοβέω/VERB “to put to flight” [kaikki-grc] / MorphGNT φοβέομαι “I fear, am terrified”
+1	ἐχόμενα: card ἐχόμενος/VERB “next, following” [kaikki-grc] / MorphGNT ἔχω “I have, hold, possess”
+1	ἐχομένας: card ἐχόμενος/VERB “next, following” [kaikki-grc] / MorphGNT ἔχω “I have, hold, possess”
+1	ἐχούσῃ: card ἔχων/VERB “” [kaikki-grc] / MorphGNT ἔχω “I have, hold, possess”
+1	ἐχρησάμεθα: card χράω/VERB “to fall upon, attack, assail” [kaikki-grc] / MorphGNT χράομαι “I use, make use of, deal with”
+1	ἐχρησάμην: card χράω/VERB “to fall upon, attack, assail” [kaikki-grc] / MorphGNT χράομαι “I use, make use of, deal with”
+1	ἐχρῶντο: card χράω/VERB “to fall upon, attack, assail” [kaikki-grc] / MorphGNT χράομαι “I use, make use of, deal with”
+1	ζάρα: card Ζαρά/PROPN “Zerah” [kaikki-grc] / MorphGNT Ζάρα “Zerah”
+1	ζηλοῖ: card ζῆλος/NOUN “eager rivalry, zealous imitati” [kaikki-grc] / MorphGNT ζηλόω “I am jealous, eager for”
+1	ζηλῶ: card ζῆλος/NOUN “eager rivalry, zealous imitati” [kaikki-grc] / MorphGNT ζηλόω “I am jealous, eager for”
+1	ζημιωθείς: card ζημιώνω/VERB “to wrong, to disservice” [kaikki-el] / MorphGNT ζημιόω “I inflict loss upon, punish”
+1	ζήσασα: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+1	ζήσεσθε: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+1	ζήσετε: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+1	ζήσουσιν: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+1	ζήσω: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+1	ζῆτε: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+1	ζητήσῃ: card ζήτηση/NOUN “demand (the desire to purchase” [kaikki-el] / MorphGNT ζητέω “I seek, search for, desire”
+1	ζυγός: card ζυγόν/NOUN “yoke (for joining animals)” [kaikki-grc] / MorphGNT ζυγός “a yoke, heavy burden, pair of ”
+1	ζυγῷ: card ζυγόν/NOUN “yoke (for joining animals)” [kaikki-grc] / MorphGNT ζυγός “a yoke, heavy burden, pair of ”
+1	ζῶσα: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+1	ζῶσαι: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζώννυμι “I gird”
+1	ζώσει: card ζώνω/VERB “to gird, girdle” [kaikki-el] / MorphGNT ζώννυμι “I gird”
+1	ζῶσι: card ζῶ/VERB “to live” [kaikki-grc] / MorphGNT ζάω “I live”
+1	ἤγειραν: card ἀγείρω/VERB “to collect, gather” [kaikki-grc] / MorphGNT ἐγείρω “I wake, arouse, raise up”
+1	ἡγεμονίας: card ηγεμονία/NOUN “hegemony” [kaikki-el] / MorphGNT ἡγεμονία “rule, authority”
+1	ἡγουμένοις: card ἡγούμενος/NOUN “abbot, principal” [kaikki-grc] / MorphGNT ἡγέομαι “I lead, think”
+1	ἡγούμενον: card ἡγούμενος/NOUN “abbot, principal” [kaikki-grc] / MorphGNT ἡγέομαι “I lead, think”
+1	ἡγουμένων: card ἡγούμενος/NOUN “abbot, principal” [kaikki-grc] / MorphGNT ἡγέομαι “I lead, think”
+1	ἡδονήν: card Ἡδονή/PROPN “Hedone” [kaikki-grc] / MorphGNT ἡδονή “pleasure, lust, strong desire”
+1	ἤθελες: card ἐθέλω/VERB “usually weaker than βούλομαι (” [kaikki-grc] / MorphGNT θέλω “I will, wish, desire”
+1	ἠθελήσαμεν: card ἐθέλω/VERB “usually weaker than βούλομαι (” [kaikki-grc] / MorphGNT θέλω “I will, wish, desire”
+1	ἠμύνατο: card ἀμύνω/VERB “to keep off, ward off, defend,” [kaikki-grc] / MorphGNT ἀμύνομαι “I defend”
+1	ἤπερ: card ὅσπερ/PRON “the very man who, the very thi” [kaikki-grc] / MorphGNT ἤπερ “than”
+1	ἤρ: card ἔαρ/NOUN “blood; gore” [kaikki-grc] / MorphGNT Ἤρ “Er”
+1	ἦρε: card ἦρ/NOUN “Attic and Ionic form of ἔαρ (é” [kaikki-grc] / MorphGNT αἴρω “I raise, lift up”
+1	ἡρμοσάμην: card ἁρμόζω/VERB “to fit together; join (for the” [kaikki-grc] / MorphGNT ἁρμόζομαι “I fit, join”
+1	ἤρχου: card ἄρχω/VERB “to begin” [kaikki-grc] / MorphGNT ἔρχομαι “I come, go”
+1	ἡσύχιον: card Ἡσύχιος/PROPN “a male given name, equivalent ” [kaikki-grc] / MorphGNT ἡσύχιος “quiet, tranquil”
+1	ἡσυχίου: card Ἡσύχιος/PROPN “a male given name, equivalent ” [kaikki-grc] / MorphGNT ἡσύχιος “quiet, tranquil”
+1	ἡττῶνται: card ηττώμαι/VERB “to be defeated, to lose” [kaikki-el] / MorphGNT ἡττάομαι “I am defeated, made inferior”
+1	ἠχῶν: card ἠχώ/NOUN “echo; reflected sound” [kaikki-grc] / MorphGNT ἠχέω “I make a sound, sound when str”
+1	θά: card θα/PART “added before the present verb ” [kaikki-el] / MorphGNT θά “come! (Aramaic, in μαράνα θά)”
+1	θαμάρ: card Θάμαρ/PROPN “Tamar” [kaikki-grc] / MorphGNT Θαμάρ “Tamar”
+1	θανάσιμόν: card θανάσιμος/ADJ “deadly” [kaikki-grc] / MorphGNT θανάσιμον “something deadly”
+1	θειότης: card θεότης/NOUN “divinity, divine nature, Godhe” [kaikki-grc] / MorphGNT θειότης “divinity”
+1	θέλοντας: card θέλων/VERB “” [kaikki-grc] / MorphGNT θέλω “I will, wish, desire”
+1	θεμέλια: card θεμέλια/NOUN “foundations, substructure” [kaikki-el] / MorphGNT θεμέλιον “foundation”
+1	θεμελίου: card θεμέλιο/NOUN “foundation, substructure, base” [kaikki-el] / MorphGNT θεμέλιος “belonging to the foundation”
+1	θέντες: card θείς/VERB “” [kaikki-grc] / MorphGNT τίθημι “I put, place”
+1	θέντος: card θείς/VERB “” [kaikki-grc] / MorphGNT τίθημι “I put, place”
+1	θλίψεις: card θλίψη/NOUN “sorrow, sadness, grief, afflic” [kaikki-el] / MorphGNT θλῖψις “persecution, affliction, distr”
+1	θρηνήσετε: card θρηνώ/VERB “to mourn, lament” [kaikki-el] / MorphGNT θρηνέω “I wail, lament”
+1	θρησκός: card θρῆσκος/ADJ “religious, pious, devout” [kaikki-grc] / MorphGNT θρησκός “religious”
+1	θωμᾷ: card θαῦμα/NOUN “a wonder, marvel, something st” [kaikki-grc] / MorphGNT Θωμᾶς “Thomas”
+1	ἵλεως: card ἵλαος/ADJ “propitious, gracious, merciful” [kaikki-grc] / MorphGNT ἵλεως “propitious, forgiving”
+1	ἵλεώς: card ἵλαος/ADJ “propitious, gracious, merciful” [kaikki-grc] / MorphGNT ἵλεως “propitious, forgiving”
+1	ἰλλυρικοῦ: card Ἰλλυρικός/ADJ “Illyrian” [kaikki-grc] / MorphGNT Ἰλλυρικόν “Illyricum”
+1	ἱππικοῦ: card ιππικό/NOUN “cavalry” [kaikki-el] / MorphGNT ἱππικόν “of a horse”
+1	ἰσότητα: card ισότητα/NOUN “equality, parity” [kaikki-el] / MorphGNT ἰσότης “equality”
+1	ἰσσαχάρ: card Ἰσσάχαρ/PROPN “Issachar” [kaikki-grc] / MorphGNT Ἰσσαχάρ “Issachar”
+1	ἴσως: card ἴσος/ADJ “equal (to); equivalent (to); c” [kaikki-grc] / MorphGNT ἴσως “perhaps”
+1	ἰταλικῆς: card ιταλικός/ADJ “Italian (relating to Italy or ” [kaikki-el] / MorphGNT Ἰταλικός “Italian”
+1	καθαίρει: card καθαιρέω/VERB “to demolish, destroy” [kaikki-grc] / MorphGNT καθαίρω “I cleanse, purify, prune”
+1	κάθῃ: card καθίημι/VERB “to send down, let fall, let do” [kaikki-grc] / MorphGNT κάθημαι “I sit, am seated”
+1	καθῆκεν: card καθίημι/VERB “to send down, let fall, let do” [kaikki-grc] / MorphGNT καθήκω “it is fitting”
+1	καθήκοντα: card καθήκον/NOUN “duty” [kaikki-el] / MorphGNT καθήκω “it is fitting”
+1	καθίσει: card κάθομαι/VERB “to sit, sit down” [kaikki-el] / MorphGNT καθίζω “I set, make to sit”
+1	κάκωσιν: card κακόω/VERB “to treat ill, maltreat, afflic” [kaikki-grc] / MorphGNT κάκωσις “affliction, ill-treatment”
+1	κάλαμος: card plants/NOUN “” [kaikki-grc] / MorphGNT κάλαμος “a reed, reed-pen”
+1	καμίνου: card Κάμινος/PROPN “Fornax (constellation)” [kaikki-el] / MorphGNT κάμινος “a furnace”
+1	κάρπῳ: card καρπός/NOUN “fruit; grain; produce; harvest” [kaikki-grc] / MorphGNT Κάρπος “Carpus”
+1	καταλύσει: card κατάλυσις/NOUN “dissolution, disbanding” [kaikki-grc] / MorphGNT καταλύω “I break up, overthrow, unharne”
+1	κατάραν: card καταίρω/VERB “to come down, swoop down” [kaikki-grc] / MorphGNT κατάρα “a curse, cursing”
+1	καταρᾶσθε: card καταίρω/VERB “to come down, swoop down” [kaikki-grc] / MorphGNT καταράομαι “I curse”
+1	καταργεῖ: card καταργώ/VERB “to abolish, quash, repeal, nul” [kaikki-el] / MorphGNT καταργέω “I bring to naught, sever, abol”
+1	καταρώμεθα: card καταίρω/VERB “to come down, swoop down” [kaikki-grc] / MorphGNT καταράομαι “I curse”
+1	κατασκηνώσει: card κατασκήνωσις/NOUN “an encamping, taking up one's ” [kaikki-grc] / MorphGNT κατασκηνόω “I encamp, tabernacle, dwell”
+1	κατασχέσει: card κατάσχω/VERB “to confiscate, seize, sequeste” [kaikki-el] / MorphGNT κατάσχεσις “a possession”
+1	καταφρονεῖς: card καταφρονώ/VERB “to scorn, be contemptuous of, ” [kaikki-el] / MorphGNT καταφρονέω “I despise, scorn”
+1	καταφρονεῖτε: card καταφρονώ/VERB “to scorn, be contemptuous of, ” [kaikki-el] / MorphGNT καταφρονέω “I despise, scorn”
+1	κατηγορεῖται: card κατηγορώ/VERB “to blame, accuse” [kaikki-el] / MorphGNT κατηγορέω “I accuse, charge, prosecute”
+1	κατηγορεῖτε: card κατηγορώ/VERB “to blame, accuse” [kaikki-el] / MorphGNT κατηγορέω “I accuse, charge, prosecute”
+1	κατηγορήσω: card κατηγορώ/VERB “to blame, accuse” [kaikki-el] / MorphGNT κατηγορέω “I accuse, charge, prosecute”
+1	κατηγορούμενος: card κατηγορούμενος/NOUN “accused, defendant, charged” [kaikki-el] / MorphGNT κατηγορέω “I accuse, charge, prosecute”
+1	κατοικεῖς: card κατοικώ/VERB “to inhabit, reside permanently” [kaikki-el] / MorphGNT κατοικέω “I dwell in, settle in, inhabit”
+1	κατοικεῖτε: card κατοικώ/VERB “to inhabit, reside permanently” [kaikki-el] / MorphGNT κατοικέω “I dwell in, settle in, inhabit”
+1	κατοικῶν: card κάτοικος/NOUN “inhabitant” [kaikki-grc] / MorphGNT κατοικέω “I dwell in, settle in, inhabit”
+1	καυχῶμαι: card καυχιέμαι/VERB “to boast, to brag, to vaunt on” [kaikki-el] / MorphGNT καυχάομαι “I boast, glory”
+1	κεδρών: card κέδρος/NOUN “cedar (Cedrus)” [kaikki-el] / MorphGNT Κεδρών “Kidron”
+1	κείμεθα: card κείμεθα/VERB “first-person plural present/im” [kaikki-grc] / MorphGNT κεῖμαι “I lie, recline, am laid”
+1	κενά: card κενόν/NOUN “vacuum” [kaikki-grc] / MorphGNT κενός “empty, vain, hollow”
+1	κενοῖς: card κενόν/NOUN “vacuum” [kaikki-grc] / MorphGNT κενός “empty, vain, hollow”
+1	κεφάλαιον: card κεφάλαιος/ADJ “main; chief; principal; primar” [kaikki-grc] / MorphGNT κεφάλαιον “the chief matter, a sum of mon”
+1	κεφαλαίου: card κεφάλαιος/ADJ “main; chief; principal; primar” [kaikki-grc] / MorphGNT κεφάλαιον “the chief matter, a sum of mon”
+1	κεχαριτωμένη: card κεχαριτωμένος/ADJ “” [kaikki-grc] / MorphGNT χαριτόω “I favor, bestow freely on”
+1	κήτους: card κήτος/NOUN “cetacean: whale, dolphin” [kaikki-el] / MorphGNT κῆτος “a sea monster, huge fish”
+1	κίς: card κίς/NOUN “weevil (beetle in the superfam” [kaikki-grc] / MorphGNT Κίς “Kish”
+1	κλέπτων: card κλέπτης/NOUN “thief” [kaikki-grc] / MorphGNT κλέπτω “I steal”
+1	κλίνας: card κλίνη/NOUN “bed; couch” [kaikki-grc] / MorphGNT κλίνω “I rest, recline, make to yield”
+1	κλωπᾶ: card κλώψ/NOUN “thief” [kaikki-grc] / MorphGNT Κλωπᾶς “Clopas”
+1	κοιμηθέντες: card κοιμάω/VERB “to put to sleep, lull” [kaikki-grc] / MorphGNT κοιμάομαι “I fall asleep, am asleep”
+1	κοιμηθῇ: card κοιμάω/VERB “to put to sleep, lull” [kaikki-grc] / MorphGNT κοιμάομαι “I fall asleep, am asleep”
+1	κοιμηθησόμεθα: card κοιμάω/VERB “to put to sleep, lull” [kaikki-grc] / MorphGNT κοιμάομαι “I fall asleep, am asleep”
+1	κοιμώμενος: card κοιμάω/VERB “to put to sleep, lull” [kaikki-grc] / MorphGNT κοιμάομαι “I fall asleep, am asleep”
+1	κοιμῶνται: card κοιμάω/VERB “to put to sleep, lull” [kaikki-grc] / MorphGNT κοιμάομαι “I fall asleep, am asleep”
+1	κολωνία: card Κολωνία/PROPN “Cologne (the largest city in N” [kaikki-el] / MorphGNT κολωνία “a colony, garrison city”
+1	κόμη: card κόμης/NOUN “count, earl (rank in the nobil” [kaikki-el] / MorphGNT κόμη “hair, long hair”
+1	κόπρια: card κοπριά/NOUN “dung, manure, muck” [kaikki-el] / MorphGNT κόπριον “dung”
+1	κορβᾶν: card κορβᾶν/NOUN “corban, gift or votive offerin” [kaikki-grc] / MorphGNT Κορβᾶν “a gift, offering”
+1	κόρε: card κόρος/NOUN “boy, youth” [kaikki-grc] / MorphGNT Κόρε “Korah”
+1	κρατεῖς: card κρατύς/ADJ “strong; mighty” [kaikki-grc] / MorphGNT κρατέω “I lay hold of, obtain”
+1	κρατήσει: card κράτησις/NOUN “might, power, dominion” [kaikki-grc] / MorphGNT κρατέω “I lay hold of, obtain”
+1	κρείσσονα: card κρείσσων/ADJ “” [kaikki-grc] / MorphGNT κρείττων “stronger, more excellent”
+1	κρείττων: card ἀγαθός/ADJ “good; brave; noble; moral; gen” [kaikki-grc] / MorphGNT κρείττων “stronger, more excellent”
+1	κριθῶν: card κρῖ/NOUN “Epic form of κρῑθή (krīthḗ)” [kaikki-grc] / MorphGNT κριθή “barley”
+1	κριτάς: card κριτός/ADJ “picked out, chosen” [kaikki-grc] / MorphGNT κριτής “a judge”
+1	κριτηρίων: card κριτήριο/NOUN “criterion” [kaikki-el] / MorphGNT κριτήριον “criterion, a law-court”
+1	κρύπτην: card κρύπτης/NOUN “a member of the Spartan κρυπτε” [kaikki-grc] / MorphGNT κρύπτη “a cellar, vault”
+1	κυρία: card κύριος/ADJ “main; major; primary; principa” [kaikki-grc] / MorphGNT κυρία “a lady”
+1	κυρίᾳ: card κύριος/ADJ “main; major; primary; principa” [kaikki-grc] / MorphGNT κυρία “a lady”
+1	κυριακόν: card κυριακόν/NOUN “church” [kaikki-grc] / MorphGNT κυριακός “of the Lord”
+1	κυριότητα: card κυριότητα/NOUN “ownership, possession (the sta” [kaikki-el] / MorphGNT κυριότης “lordship, domination, dignity”
+1	κυριότητες: card κυριότητα/NOUN “ownership, possession (the sta” [kaikki-el] / MorphGNT κυριότης “lordship, domination, dignity”
+1	κῶ: card πω/PART “up to this time, yet (as a neg” [kaikki-grc] / MorphGNT Κώς “Cos”
+1	κωμοπόλεις: card κωμόπολη/NOUN “small town” [kaikki-el] / MorphGNT κωμόπολις “a large village”
+1	λαλῇ: card λάλη/NOUN “synonym of λᾰλῐᾱ́ (lălĭā́)” [kaikki-grc] / MorphGNT λαλέω “I speak, say”
+1	λαληθείς: card λαλώ/VERB “to talk, speak” [kaikki-el] / MorphGNT λαλέω “I speak, say”
+1	λαμπρῶς: card λαμπρός/ADJ “bright, radiant, brilliant” [kaikki-grc] / MorphGNT λαμπρῶς “magnificently, sumptuously”
+1	λάμψει: card λαμβάνω/VERB “to take” [kaikki-grc] / MorphGNT λάμπω “I shine”
+1	λάχανα: card λάχανο/NOUN “cabbage” [kaikki-el] / MorphGNT λάχανον “an herb, garden plant”
+1	λείας: card λεία/NOUN “booty; plunder” [kaikki-grc] / MorphGNT λεῖος “smooth, level”
+1	λελυμένα: card λελῠμένος/VERB “” [kaikki-grc] / MorphGNT λύω “I loose, untie, release, destr”
+1	λεπίδες: card λεπίδα/NOUN “blade” [kaikki-el] / MorphGNT λεπίς “a scale, scaly substance”
+1	λεπτόν: card λεπτός/ADJ “peeled, husked (of grain)” [kaikki-grc] / MorphGNT λεπτόν “a small piece of money”
+1	λευίς: card Λευΐς/PROPN “Levi” [kaikki-grc] / MorphGNT Λευίς “Levi”
+1	λευίτας: card Λευΐτης/PROPN “Levite” [kaikki-grc] / MorphGNT Λευίτης “a Levite”
+1	λευιτικῆς: card Λευϊτικός/ADJ “pertaining to the Levites, lev” [kaikki-grc] / MorphGNT Λευιτικός “Levitical”
+1	λήθην: card Λήθη/PROPN “the river Lethe” [kaikki-grc] / MorphGNT λήθη “forgetfulness”
+1	λιμένας: card λῐμήν/NOUN “” [kaikki-grc] / MorphGNT Λιμήν “a harbor, port”
+1	λογικήν: card λογική/NOUN “speech, prose” [kaikki-grc] / MorphGNT λογικός “reasonable, rational, metaphor”
+1	λυκίας: card Λύκιος/ADJ “Lycian” [kaikki-grc] / MorphGNT Λυκία “Lycia”
+1	λυομένων: card λῡόμενος/VERB “” [kaikki-grc] / MorphGNT λύω “I loose, untie, release, destr”
+1	λύοντες: card λῡ́ων/VERB “” [kaikki-grc] / MorphGNT λύω “I loose, untie, release, destr”
+1	λυπεῖτε: card λυπώ/VERB “to sadden, distress” [kaikki-el] / MorphGNT λυπέω “I pain, grieve, vex”
+1	λυπηθείς: card λυπώ/VERB “to sadden, distress” [kaikki-el] / MorphGNT λυπέω “I pain, grieve, vex”
+1	λυπῶ: card λυπώ/VERB “to sadden, distress” [kaikki-el] / MorphGNT λυπέω “I pain, grieve, vex”
+1	λυσανίου: card λυσανίας/NOUN “ending sorrow (Scholia Aristop” [kaikki-grc] / MorphGNT Λυσανίας “Lysanias”
+1	λυσιτελεῖ: card λυσιτελής/ADJ “paying for expenses incurred, ” [kaikki-grc] / MorphGNT λυσιτελεῖ “it profits”
+1	λυτροῦσθαι: card λυτρόω/VERB “to release on receipt of a ran” [kaikki-grc] / MorphGNT λυτρόομαι “I ransom, liberate, deliver”
+1	λυτρώσηται: card λυτρόω/VERB “to release on receipt of a ran” [kaikki-grc] / MorphGNT λυτρόομαι “I ransom, liberate, deliver”
+1	μαθουσαλά: card Μαθουσάλα/PROPN “Methuselah” [kaikki-grc] / MorphGNT Μαθουσαλά “Methuselah”
+1	μακαρίαν: card Μακαρία/PROPN “Macaria” [kaikki-grc] / MorphGNT μακάριος “happy, blessed”
+1	μακάριον: card Μακάριος/PROPN “a male given name” [kaikki-grc] / MorphGNT μακάριος “happy, blessed”
+1	μακάριόν: card Μακάριος/PROPN “a male given name” [kaikki-grc] / MorphGNT μακάριος “happy, blessed”
+1	μακαρίου: card Μακάριος/PROPN “a male given name” [kaikki-grc] / MorphGNT μακάριος “happy, blessed”
+1	μανίαν: card Μανία/PROPN “a female given name, Mania” [kaikki-grc] / MorphGNT μανία “raving madness”
+1	μαράνα: card μαραίνω/VERB “to wither, shrivel” [kaikki-el] / MorphGNT μαράνα “our Lord (Aramaic, in μαράνα θ”
+1	μαργαριτῶν: card μαργαρίτα/NOUN “daisy (flower)” [kaikki-el] / MorphGNT μαργαρίτης “a pearl”
+1	μαρτυρήσει: card μαρτυρώ/VERB “to bear witness” [kaikki-el] / MorphGNT μαρτυρέω “I witness, testify”
+1	μαρτυρήσω: card μαρτυρώ/VERB “to bear witness” [kaikki-el] / MorphGNT μαρτυρέω “I witness, testify”
+1	μαρτυρούμενός: card μαρτυρώ/VERB “to bear witness” [kaikki-el] / MorphGNT μαρτυρέω “I witness, testify”
+1	μαστιγώσετε: card μαστιγώνω/VERB “to flog, to whip” [kaikki-el] / MorphGNT μαστιγόω “I flog, scourge”
+1	μεγαλεῖα: card μεγαλείο/NOUN “greatness” [kaikki-el] / MorphGNT μεγαλεῖος “grand, magnificent”
+1	μεγάλως: card μέγας/ADJ “big; large” [kaikki-grc] / MorphGNT μεγάλως “greatly”
+1	μέγιστα: card μέγας/ADJ “big; large” [kaikki-grc] / MorphGNT μέγιστος “greatest or very great”
+1	μεθυσθῶσιν: card μεθύσκω/VERB “to intoxicate, make drunk” [kaikki-grc] / MorphGNT μεθύω “I am drunk”
+1	μεθύσκεσθαι: card μεθύσκω/VERB “to intoxicate, make drunk” [kaikki-grc] / MorphGNT μεθύσκομαι “I make drunk”
+1	μεθύσκεσθε: card μεθύσκω/VERB “to intoxicate, make drunk” [kaikki-grc] / MorphGNT μεθύσκομαι “I make drunk”
+1	μείζονας: card μείζων/ADJ “comparative degree of μέγᾰς (m” [kaikki-grc] / MorphGNT μέγας “large, great”
+1	μέλανι: card μέλας/ADJ “dark in color; sometimes so da” [kaikki-grc] / MorphGNT μέλαν “ink”
+1	μελεά: card μέλεος/ADJ “idle, useless, futile, vain” [kaikki-grc] / MorphGNT Μελεά “Melea”
+1	μελέτα: card μελέτη/NOUN “care, attention” [kaikki-grc] / MorphGNT μελετάω “I devise, plan”
+1	μελέτω: card μέλω/VERB “to be an object of care or int” [kaikki-grc] / MorphGNT μέλει “it matters, it is a concern (t”
+1	μεμνημένος: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+1	μέμνησθε: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+1	μεμύημαι: card μυέω/VERB “to initiate (confer membership” [kaikki-grc] / MorphGNT μυέομαι “I initiate, instruct”
+1	μενοῦν: card μένω/VERB “to stay, reside, live (somewhe” [kaikki-el] / MorphGNT μενοῦν “rather, on the contrary; indee”
+1	μέριμναν: card μεριμνάω/VERB “to be worried, preoccupied” [kaikki-grc] / MorphGNT μέριμνα “care, worry, anxiety”
+1	μεριστήν: card μεριστός/ADJ “separate, divided” [kaikki-grc] / MorphGNT μεριστής “a divider, distributor”
+1	μεσοποταμίᾳ: card μεσοποτάμιος/ADJ “between rivers” [kaikki-grc] / MorphGNT Μεσοποταμία “Mesopotamia”
+1	μεσοποταμίαν: card μεσοποτάμιος/ADJ “between rivers” [kaikki-grc] / MorphGNT Μεσοποταμία “Mesopotamia”
+1	μετακάλεσαι: card μετακαλέω/VERB “summon, recall” [kaikki-grc] / MorphGNT μετακαλέομαι “I send for”
+1	μετακαλέσομαί: card μετακαλέω/VERB “summon, recall” [kaikki-grc] / MorphGNT μετακαλέομαι “I send for”
+1	μεταπεμπόμενος: card μεταπέμπω/VERB “to send for, to summon” [kaikki-grc] / MorphGNT μεταπέμπομαι “I send for, summon”
+1	μεταπεμφθείς: card μεταπέμπω/VERB “to send for, to summon” [kaikki-grc] / MorphGNT μεταπέμπομαι “I send for, summon”
+1	μεταπεμψάμενος: card μεταπέμπω/VERB “to send for, to summon” [kaikki-grc] / MorphGNT μεταπέμπομαι “I send for, summon”
+1	μεταπέμψασθαί: card μεταπέμπω/VERB “to send for, to summon” [kaikki-grc] / MorphGNT μεταπέμπομαι “I send for, summon”
+1	μεταπέμψηται: card μεταπέμπω/VERB “to send for, to summon” [kaikki-grc] / MorphGNT μεταπέμπομαι “I send for, summon”
+1	μετεπέμψασθέ: card μεταπέμπω/VERB “to send for, to summon” [kaikki-grc] / MorphGNT μεταπέμπομαι “I send for, summon”
+1	μετεπέμψατο: card μεταπέμπω/VERB “to send for, to summon” [kaikki-grc] / MorphGNT μεταπέμπομαι “I send for, summon”
+1	μετρητάς: card μετρητός/ADJ “measurable” [kaikki-grc] / MorphGNT μετρητής “a measure, amphora”
+1	μετρίως: card μέτριος/ADJ “moderate, average, mean” [kaikki-grc] / MorphGNT μετρίως “moderately, greatly”
+1	μετώπου: card μέτωπο/NOUN “forehead” [kaikki-el] / MorphGNT μέτωπον “the forehead”
+1	μηκύνηται: card μηκύνω/VERB “to lengthen” [kaikki-grc] / MorphGNT μηκύνομαι “I lengthen”
+1	μηνί: card μείς/NOUN “month” [kaikki-grc] / MorphGNT μήν “certainly”
+1	μιμνῄσκεσθε: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+1	μιμνῄσκῃ: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+1	μιμοῦ: card μῖμος/NOUN “mime; actor” [kaikki-grc] / MorphGNT μιμέομαι “I imitate”
+1	μισεῖς: card μισώ/VERB “to hate” [kaikki-el] / MorphGNT μισέω “I hate, detest”
+1	μισῇ: card μῖσος/NOUN “hatred; hate” [kaikki-grc] / MorphGNT μισέω “I hate, detest”
+1	μισήσεις: card μισώ/VERB “to hate” [kaikki-el] / MorphGNT μισέω “I hate, detest”
+1	μισθώσασθαι: card μισθόω/VERB “to hire” [kaikki-grc] / MorphGNT μισθόομαι “I hire out, hire, engage”
+1	μνησθῇς: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+1	μνησθήσομαι: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+1	μνήσθητι: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+1	μνήσθητί: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+1	μνησθῶ: card μιμνήσκω/VERB “to remind [with accusative ‘so” [kaikki-grc] / MorphGNT μιμνῄσκομαι “I remember, recall”
+1	μοναί: card μόνος/ADJ “alone, forsaken, solitary” [kaikki-grc] / MorphGNT μονή “lodging, dwelling-place, room”
+1	μονήν: card μόνος/ADJ “alone, forsaken, solitary” [kaikki-grc] / MorphGNT μονή “lodging, dwelling-place, room”
+1	μυρίων: card μυρίζω/VERB “to rub with ointment or unguen” [kaikki-grc] / MorphGNT μύριοι “ten thousand, innumerable”
+1	μυστηρίων: card μυστήριο/NOUN “mystery” [kaikki-el] / MorphGNT μυστήριον “anything hidden, a mystery”
+1	νέαν: card νέος/ADJ “young” [kaikki-grc] / MorphGNT Νέα “Nea (in Neapolis)”
+1	νίκα: card νίκη/NOUN “victory; success (the act of w” [kaikki-grc] / MorphGNT νικάω “I conquer, overcome”
+1	νικῶ: card νικώ/VERB “alternative form of νικάω (nik” [kaikki-el] / MorphGNT νικάω “I conquer, overcome”
+1	νιψάμενος: card νίζω/VERB “to wash the hands or feet of a” [kaikki-grc] / MorphGNT νίπτω “I wash”
+1	νίψασθαι: card νίζω/VERB “to wash the hands or feet of a” [kaikki-grc] / MorphGNT νίπτω “I wash”
+1	νίψῃς: card νίζω/VERB “to wash the hands or feet of a” [kaikki-grc] / MorphGNT νίπτω “I wash”
+1	νίψω: card νίζω/VERB “to wash the hands or feet of a” [kaikki-grc] / MorphGNT νίπτω “I wash”
+1	νίψωνται: card νίζω/VERB “to wash the hands or feet of a” [kaikki-grc] / MorphGNT νίπτω “I wash”
+1	νοσῶν: card νόσος/NOUN “sickness, disease, illness” [kaikki-grc] / MorphGNT νοσέω “I am diseased”
+1	νύμφαν: card νῠ́μφᾱ/NOUN “” [kaikki-grc] / MorphGNT Νύμφα “Nymphas”
+1	νῶτον: card νῶτον/NOUN “back (the rear part of the bod” [kaikki-grc] / MorphGNT νῶτος “the back of men or animals”
+1	ξεστῶν: card ξεστός/ADJ “smoothed, polished, wrought” [kaikki-grc] / MorphGNT ξέστης “a Roman measure, pitcher”
+1	ὀδυρμός: card οδυρμός/NOUN “lamentation, wailing, loud wee” [kaikki-el] / MorphGNT ὀδυρμός “lamentation, wailing”
+1	οἰέσθω: card οἴομαι/VERB “to anticipate or to conclude l” [kaikki-grc] / MorphGNT οἶμαι “to suppose, think”
+1	οἰκείων: card οἰκέω/VERB “to inhabit” [kaikki-grc] / MorphGNT οἰκεῖος “of one's family, domestic”
+1	οἰκιακοί: card οικιακός/ADJ “domestic” [kaikki-el] / MorphGNT οἰκιακός “one of a family”
+1	οἰκιακούς: card οικιακός/ADJ “domestic” [kaikki-el] / MorphGNT οἰκιακός “one of a family”
+1	οἰκοδομεῖται: card οικοδομώ/VERB “to build, construct” [kaikki-el] / MorphGNT οἰκοδομέω “I build, build up, edify”
+1	οἰκοδομήσετέ: card οικοδομώ/VERB “to build, construct” [kaikki-el] / MorphGNT οἰκοδομέω “I build, build up, edify”
+1	οἰκουμένη: card οἰκούμενος/VERB “” [kaikki-grc] / MorphGNT οἰκουμένη “the inhabited (Roman) world”
+1	οἶμαι: card οἴομαι/VERB “to anticipate or to conclude l” [kaikki-grc] / MorphGNT οἶμαι “to suppose, think”
+1	οἰόμενοι: card οἴομαι/VERB “to anticipate or to conclude l” [kaikki-grc] / MorphGNT οἶμαι “to suppose, think”
+1	ὀκνηρέ: card οκνηρός/ADJ “lazy” [kaikki-el] / MorphGNT ὀκνηρός “slothful, backward”
+1	ὀκνηροί: card οκνηρός/ADJ “lazy” [kaikki-el] / MorphGNT ὀκνηρός “slothful, backward”
+1	ὀλίγως: card ὀλίγος/ADJ “few; little (small amount)” [kaikki-grc] / MorphGNT ὀλίγως “a little”
+1	ὁλοκαυτωμάτων: card ολοκαύτωμα/NOUN “burnt offering” [kaikki-el] / MorphGNT ὁλοκαύτωμα “a whole burnt offering”
+1	ὁλόκληροι: card ολόκληρος/ADJ “whole, entire, complete” [kaikki-el] / MorphGNT ὁλόκληρος “complete in every part, sound,”
+1	ὀμνύναι: card ὄμνυμι/VERB “to swear” [kaikki-grc] / MorphGNT ὀμνύω “I swear, take an oath”
+1	ὁμοίας: card ὁμοῖος/ADJ “Epic, Ionic, and Old Attic for” [kaikki-grc] / MorphGNT ὅμοιος “like, similar to”
+1	ὁμοιώματα: card ομοίωμα/NOUN “effigy” [kaikki-el] / MorphGNT ὁμοίωμα “a likeness, form, similitude”
+1	ὁμολογεῖται: card ομολογώ/VERB “to confess, admit (concede the” [kaikki-el] / MorphGNT ὁμολογέω “I confess, profess, acknowledg”
+1	ὁμολογουμένως: card ομολογουμένως/ADV “admittedly” [kaikki-el] / MorphGNT ὁμολογουμένως “admittedly”
+1	ὁμολογῶ: card ὁμόλογος/ADJ “in agreement, of one mind” [kaikki-grc] / MorphGNT ὁμολογέω “I confess, profess, acknowledg”
+1	ὁμολογῶν: card ομόλογος/ADJ “corresponding (have a similar ” [kaikki-el] / MorphGNT ὁμολογέω “I confess, profess, acknowledg”
+1	ὀπῆς: card οπή/NOUN “hole, aperture” [kaikki-el] / MorphGNT ὀπή “a crevice, cave”
+1	ὁπλίσασθε: card ὁπλίζω/VERB “to arm (supply with armour or ” [kaikki-grc] / MorphGNT ὁπλίζομαι “I arm, equip”
+1	ὀπτοῦ: card οπτός/ADJ “fired” [kaikki-el] / MorphGNT ὀπτός “roasted, broiled”
+1	ὁράσεις: card όραση/NOUN “vision, sight, eyesight” [kaikki-el] / MorphGNT ὅρασις “a sight, vision, appearance”
+1	ὁρατά: card ορατός/ADJ “visible, in sight, seen” [kaikki-el] / MorphGNT ὁρατός “visible”
+1	ὀργίζεσθε: card ὀργίζω/VERB “to anger, irritate” [kaikki-grc] / MorphGNT ὀργίζομαι “I irritate, provoke, am angry”
+1	ὀργιζόμενος: card ὀργίζω/VERB “to anger, irritate” [kaikki-grc] / MorphGNT ὀργίζομαι “I irritate, provoke, am angry”
+1	ὀρέγονται: card ὀρέγω/VERB “to reach, stretch, stretch out” [kaikki-grc] / MorphGNT ὀρέγομαι “I stretch forth, long for”
+1	ὁρίζει: card ορίζω/VERB “to define, designate” [kaikki-el] / MorphGNT ὁρίζω “I define, determine, appoint, ”
+1	ὄρνεα: card όρνεο/NOUN “alternative form of όρνιο (órn” [kaikki-el] / MorphGNT ὄρνεον “a bird”
+1	ὀρνέου: card όρνεο/NOUN “alternative form of όρνιο (órn” [kaikki-el] / MorphGNT ὄρνεον “a bird”
+1	ὁσίως: card ὅσιος/ADJ “pious, hallowed, sanctioned by” [kaikki-grc] / MorphGNT ὁσίως “piously”
+1	ὀσφύας: card ὀσφῦς/NOUN “hips or loins; lower part of t” [kaikki-grc] / MorphGNT ὀσφύς “the loins”
+1	ὀσφύες: card ὀσφῦς/NOUN “hips or loins; lower part of t” [kaikki-grc] / MorphGNT ὀσφύς “the loins”
+1	ὀσφύϊ: card ὀσφῦς/NOUN “hips or loins; lower part of t” [kaikki-grc] / MorphGNT ὀσφύς “the loins”
+1	οὐρίου: card οὔριος/ADJ “with a fair wind; sending a fa” [kaikki-grc] / MorphGNT Οὐρίας “Uriah”
+1	οὖσαι: card ὤν/VERB “actual; real” [kaikki-grc] / MorphGNT εἰμί “I am, exist”
+1	οὐσῶν: card ὤν/VERB “actual; real” [kaikki-grc] / MorphGNT εἰμί “I am, exist”
+1	ὀφρύος: card ὀφρύς/NOUN “eyebrow” [kaikki-grc] / MorphGNT ὀφρῦς “the brow, a ridge”
+1	ὄχλων: card όχλος/NOUN “mob, populace” [kaikki-el] / MorphGNT ὄχλος “a crowd”
+1	πάγου: card πάγος/NOUN “ice (frozen water)” [kaikki-el] / MorphGNT Πάγος “hill, crag (in Ἄρειος Πάγος, t”
+1	παιδευόμενοι: card παιδευόμενος/VERB “” [kaikki-grc] / MorphGNT παιδεύω “I discipline, educate, train, ”
+1	παιδεύουσα: card παιδεύων/VERB “” [kaikki-grc] / MorphGNT παιδεύω “I discipline, educate, train, ”
+1	παραγενόμενον: card παραγίγνομαι/VERB “to be beside; to be by or near” [kaikki-grc] / MorphGNT παραγίνομαι “I appear, come, arrive at”
+1	παραγενόμενός: card παραγίγνομαι/VERB “to be beside; to be by or near” [kaikki-grc] / MorphGNT παραγίνομαι “I appear, come, arrive at”
+1	παραγένωμαι: card παραγίγνομαι/VERB “to be beside; to be by or near” [kaikki-grc] / MorphGNT παραγίνομαι “I appear, come, arrive at”
+1	παραγένωνται: card παραγίγνομαι/VERB “to be beside; to be by or near” [kaikki-grc] / MorphGNT παραγίνομαι “I appear, come, arrive at”
+1	παράγοντά: card παράγοντας/NOUN “factor (that which contributes” [kaikki-el] / MorphGNT παράγω “I pass by, depart, pass away”
+1	παραδιδῷ: card παραδίδω/VERB “to hand over, transfer, entrus” [kaikki-el] / MorphGNT παραδίδωμι “I hand over, deliver, betray”
+1	παραδοθείς: card παραδίνω/VERB “alternative form of παραδίδω (” [kaikki-el] / MorphGNT παραδίδωμι “I hand over, deliver, betray”
+1	παραδοθῶ: card παραδίνω/VERB “alternative form of παραδίδω (” [kaikki-el] / MorphGNT παραδίδωμι “I hand over, deliver, betray”
+1	παραδώσω: card παραδίνω/VERB “alternative form of παραδίδω (” [kaikki-el] / MorphGNT παραδίδωμι “I hand over, deliver, betray”
+1	παρακολουθήσει: card παρακολουθώ/VERB “to watch, spectate” [kaikki-el] / MorphGNT παρακολουθέω “I accompany, follow closely, i”
+1	παρανομῶν: card παράνομος/ADJ “lawless; violent (acting contr” [kaikki-grc] / MorphGNT παρανομέω “I act contrary to law”
+1	παραπλήσιον: card παραπλήσιος/ADJ “nearly resembling” [kaikki-grc] / MorphGNT παραπλήσιον “near to, nearly”
+1	παραπλησίως: card παραπλήσιος/ADJ “nearly resembling” [kaikki-grc] / MorphGNT παραπλησίως “similarly, in like manner”
+1	παρατηρεῖσθε: card παρατηρώ/VERB “to observe” [kaikki-el] / MorphGNT παρατηρέω “I watch”
+1	παρελθόντες: card πᾰρελθών/VERB “” [kaikki-grc] / MorphGNT παρέρχομαι “I pass by”
+1	παρηγορία: card παρηγοριά/NOUN “consolation, solace, comfort” [kaikki-el] / MorphGNT παρηγορία “solace, consolation”
+1	παρθενίας: card παρθενίη/NOUN “Epic and Ionic form of πᾰρθενί” [kaikki-grc] / MorphGNT παρθενία “virginity”
+1	παρόν: card πᾰρών/VERB “” [kaikki-grc] / MorphGNT πάρειμι “I am present, am near”
+1	παρόντος: card παρών/ADJ “present, in attendance (locate” [kaikki-el] / MorphGNT πάρειμι “I am present, am near”
+1	πάσχετε: card πάσχετε/VERB “second-person plural present a” [kaikki-grc] / MorphGNT πάσχω “I am acted upon, suffer”
+1	πατεῖ: card πατέομαι/VERB “to eat” [kaikki-grc] / MorphGNT πατέω “I tread, trample upon”
+1	πατουμένη: card πατέομαι/VERB “to eat” [kaikki-grc] / MorphGNT πατέω “I tread, trample upon”
+1	παύεται: card παύεται/VERB “third-person singular present ” [kaikki-grc] / MorphGNT παύω “I cause to cease”
+1	παυόμεθα: card παυόμεθα/VERB “first-person plural present me” [kaikki-grc] / MorphGNT παύω “I cause to cease”
+1	πέδας: card πεδάω/VERB “to fetter, shackle” [kaikki-grc] / MorphGNT πέδη “a shackle”
+1	πειθοῖ: card Πειθώ/NOUN “the goddess Peitho, the person” [kaikki-grc] / MorphGNT πειθός “persuasive”
+1	πειθομένοις: card πειθόμενος/VERB “” [kaikki-grc] / MorphGNT πείθω “I persuade, urge”
+1	πειθομένου: card πειθόμενος/VERB “” [kaikki-grc] / MorphGNT πείθω “I persuade, urge”
+1	πενθερός: card πεθερός/NOUN “father-in-law” [kaikki-el] / MorphGNT πενθερός “a father-in-law”
+1	πεντακόσια: card πεντακόσια/NUM “five hundred” [kaikki-el] / MorphGNT πεντακόσιοι “five hundred”
+1	πεπολίτευμαι: card πολιτεύω/VERB “to live as a citizen or freema” [kaikki-grc] / MorphGNT πολιτεύομαι “I live the life of a citizen”
+1	πεπυρωμένον: card πυρόω/VERB “to burn, set aflame, ignite” [kaikki-grc] / MorphGNT πυρόομαι “I burn, am purified by fire”
+1	πέργαμον: card Πέργαμον/PROPN “Pergamon; Pergamum; Bergama, İ” [kaikki-grc] / MorphGNT Πέργαμος “Pergamum”
+1	περιεποιήσατο: card περιποιέω/VERB “to keep, preserve” [kaikki-grc] / MorphGNT περιποιέομαι “I acquire, purchase”
+1	περιεσπᾶτο: card περισπάω/VERB “to draw off from around, strip” [kaikki-grc] / MorphGNT περισπάομαι “I distract, trouble greatly”
+1	περιποιήσασθαι: card περιποιέω/VERB “to keep, preserve” [kaikki-grc] / MorphGNT περιποιέομαι “I acquire, purchase”
+1	περιποιήσεως: card περιποίηση/NOUN “looking after, care, attention” [kaikki-el] / MorphGNT περιποίησις “obtaining, possessing, possess”
+1	περιποιοῦνται: card περιποιέω/VERB “to keep, preserve” [kaikki-grc] / MorphGNT περιποιέομαι “I acquire, purchase”
+1	περισσοτέρᾳ: card πολύς/ADJ “much, many, a lot of” [kaikki-el] / MorphGNT περισσότερος “greater, more”
+1	πέτραι: card πέτρη/NOUN “Epic and Ionic form of πέτρᾱ (” [kaikki-grc] / MorphGNT πέτρα “rock”
+1	πέτραις: card πέτρη/NOUN “Epic and Ionic form of πέτρᾱ (” [kaikki-grc] / MorphGNT πέτρα “rock”
+1	πηγαί: card Πηγαί/PROPN “Pegae” [kaikki-grc] / MorphGNT πηγή “a fountain, spring, well”
+1	πηδαλίου: card πηδάλιο/NOUN “rudder, helm” [kaikki-el] / MorphGNT πηδάλιον “the rudder of a ship”
+1	πηδαλίων: card πηδάλιο/NOUN “rudder, helm” [kaikki-el] / MorphGNT πηδάλιον “the rudder of a ship”
+1	πίεσαι: card πιέζω/VERB “to squeeze” [kaikki-grc] / MorphGNT πίνω “I drink, imbibe”
+1	πλείονος: card πλείων/ADJ “more, comparative degree of πο” [kaikki-grc] / MorphGNT πολύς “much, many, often”
+1	πλεῖσται: card πλεῖστος/ADJ “most, very much” [kaikki-grc] / MorphGNT πολύς “much, many, often”
+1	πλεῖστον: card πλεῖστος/ADJ “most, very much” [kaikki-grc] / MorphGNT πολύς “much, many, often”
+1	πλείω: card πλείων/ADJ “more, comparative degree of πο” [kaikki-grc] / MorphGNT πολύς “much, many, often”
+1	πληγῇ: card πλήσσω/VERB “to strike, smite” [kaikki-grc] / MorphGNT πληγή “a blow, stripe, wound”
+1	πλοός: card πλόος/NOUN “sailing; voyage” [kaikki-grc] / MorphGNT πλοῦς “a voyage”
+1	πνεῖ: card ἐμπνέω/VERB “to blow or breathe upon” [kaikki-grc] / MorphGNT πνέω “I blow”
+1	ποιεῖσθε: card ποιεῖσθε/VERB “contracted second-person plura” [kaikki-grc] / MorphGNT ποιέω “I do, make”
+1	ποιήσασαν: card ποιήσᾱς/VERB “” [kaikki-grc] / MorphGNT ποιέω “I do, make”
+1	πολιτεύεσθε: card πολιτεύω/VERB “to live as a citizen or freema” [kaikki-grc] / MorphGNT πολιτεύομαι “I live the life of a citizen”
+1	πολυμερῶς: card πολυμερής/ADJ “consisting of many parts, mani” [kaikki-grc] / MorphGNT πολυμερῶς “in many parts”
+1	πονηρίᾳ: card πονηριά/NOUN “cunning, guile” [kaikki-el] / MorphGNT πονηρία “wickedness, iniquities”
+1	πονηριῶν: card πονηριά/NOUN “cunning, guile” [kaikki-el] / MorphGNT πονηρία “wickedness, iniquities”
+1	πόντου: card πόντος/NOUN “point (the unit of scoring in ” [kaikki-el] / MorphGNT Πόντος “Pontus”
+1	πότερον: card πότερος/ADJ “which of the two?” [kaikki-grc] / MorphGNT πότερον “which of two, whether”
+1	ποτηρίων: card ποτήρι/NOUN “glass (drinking vessel, usuall” [kaikki-el] / MorphGNT ποτήριον “a drinking cup”
+1	πραεῖς: card πρᾶος/ADJ “soft; gentle” [kaikki-grc] / MorphGNT πραΰς “mild, gentle”
+1	πραέως: card πρᾶος/ADJ “soft; gentle” [kaikki-grc] / MorphGNT πραΰς “mild, gentle”
+1	πραΰτης: card πραότης/NOUN “gentleness; mildness; meekness” [kaikki-grc] / MorphGNT πραΰτης “mildness, gentleness”
+1	πρηνής: card πρανής/ADJ “prone, with the face downwards” [kaikki-grc] / MorphGNT πρηνής “falling headlong”
+1	προεθέμην: card προτίθημι/VERB “to place or set before, set ou” [kaikki-grc] / MorphGNT προτίθεμαι “I purpose, design beforehand”
+1	προεῖπε: card προεῖπον/VERB “to tell or state before” [kaikki-grc] / MorphGNT προλέγω “I forewarn”
+1	προεῖπον: card προεῖπον/VERB “to tell or state before” [kaikki-grc] / MorphGNT προλέγω “I forewarn”
+1	προεχόμεθα: card προέχω/VERB “to be ahead” [kaikki-grc] / MorphGNT προέχομαι “I excel, surpass”
+1	προηγούμενοι: card προηγούμενος/VERB “preceding, going first, leadin” [kaikki-grc] / MorphGNT προηγέομαι “I lead onward by example”
+1	προθύμως: card πρόθυμος/ADJ “eager, willing” [kaikki-grc] / MorphGNT προθύμως “readily”
+1	προϊστάμενοι: card προϊστάμενος/ADJ “superior, senior (in a hierarc” [kaikki-el] / MorphGNT προΐστημι “I rule”
+1	προϊσταμένους: card προϊστάμενος/ADJ “superior, senior (in a hierarc” [kaikki-el] / MorphGNT προΐστημι “I rule”
+1	προκαλούμενοι: card προκαλέω/VERB “to call forth” [kaikki-grc] / MorphGNT προκαλέομαι “I provoke, stimulate”
+1	προσδεόμενός: card προσδέω/VERB “to bind on, attach” [kaikki-grc] / MorphGNT προσδέομαι “I want more”
+1	προσδοκῶντας: card προσδοκώ/VERB “to hope for, expect” [kaikki-el] / MorphGNT προσδοκάω “I expect, await”
+1	προσεποιήσατο: card προσποιέω/VERB “to make over to” [kaikki-grc] / MorphGNT προσποιέομαι “I pretend, regard”
+1	προσεύχῃ: card προσευχή/NOUN “prayer” [kaikki-el] / MorphGNT προσεύχομαι “I pray, pray for”
+1	προσκυνήσει: card προσκύνησις/NOUN “proskynesis (prostration as an” [kaikki-grc] / MorphGNT προσκυνέω “I worship”
+1	προσφάτως: card πρόσφατος/ADJ “fresh, not decomposed” [kaikki-grc] / MorphGNT προσφάτως “recently”
+1	πρωϊνός: card πρωινός/ADJ “morning” [kaikki-el] / MorphGNT πρωϊνός “belonging to the morning”
+1	πρωτεύων: card πρωτεύων/ADJ “main, primary” [kaikki-el] / MorphGNT πρωτεύω “I have preeminence, am chief”
+1	πρωτοτόκων: card πρωτοτόκος/ADJ “having her firstborn” [kaikki-grc] / MorphGNT πρωτότοκος “first-born”
+1	πρώτως: card πρῶτος/ADJ “first” [kaikki-grc] / MorphGNT πρώτως “first”
+1	πτηνῶν: card πτηνός/ADJ “flying” [kaikki-grc] / MorphGNT πτηνόν “winged”
+1	πτώματα: card πτώμα/NOUN “cadaver, corpse, dead body” [kaikki-el] / MorphGNT πτῶμα “a carcass, corpse”
+1	πτῶσιν: card ἵπταμαι/VERB “Koine form of πέτομαι (pétomai” [kaikki-grc] / MorphGNT πτῶσις “a falling, a fall”
+1	πύθωνα: card Πύθων/PROPN “Python (earth-dragon of Delphi” [kaikki-grc] / MorphGNT πύθων “a divining spirit”
+1	πυκνά: card πυκνός/ADJ “thick” [kaikki-grc] / MorphGNT πυκνά “often, frequently”
+1	πύλαι: card Πύλαι/PROPN “Pylae” [kaikki-grc] / MorphGNT πύλη “a door, gate”
+1	πυροῦμαι: card πυρόω/VERB “to burn, set aflame, ignite” [kaikki-grc] / MorphGNT πυρόομαι “I burn, am purified by fire”
+1	πυροῦσθαι: card πυρόω/VERB “to burn, set aflame, ignite” [kaikki-grc] / MorphGNT πυρόομαι “I burn, am purified by fire”
+1	πυρώσει: card πυρόω/VERB “to burn, set aflame, ignite” [kaikki-grc] / MorphGNT πύρωσις “a burning, trial, fiery test”
+1	ῥάβδου: card ράβδος/NOUN “rod, stick, baton” [kaikki-el] / MorphGNT ῥάβδος “a rod, staff”
+1	ῥαπίσματα: card ράπισμα/NOUN “slap (to the face)” [kaikki-el] / MorphGNT ῥάπισμα “a slap”
+1	ῥηθείς: card εἴρω/VERB “to tie; to join; to fasten; to” [kaikki-grc] / MorphGNT λέγω “I say, speak”
+1	ῥητῶς: card ῥητός/ADJ “spoken, stipulated” [kaikki-grc] / MorphGNT ῥητῶς “in so many words”
+1	ῥόδον: card ῥόδον/NOUN “rose (usually Rosa gallica)” [kaikki-grc] / MorphGNT Ῥόδος “Rhodes”
+1	ῥωμαῖοί: card Ρωμαίος/PROPN “Roman (a native or resident of” [kaikki-el] / MorphGNT Ῥωμαῖος “Roman, a Roman citizen”
+1	ῥωμαίους: card Ρωμαίος/PROPN “Roman (a native or resident of” [kaikki-el] / MorphGNT Ῥωμαῖος “Roman, a Roman citizen”
+1	ῥωμαϊστί: card ῥωμαϊστί/ADV “in Latin (language)” [kaikki-grc] / MorphGNT Ῥωμαϊστί “in the Latin language”
+1	σάββατα: card Σάββατο/NOUN “Saturday” [kaikki-el] / MorphGNT σάββατον “the Sabbath, a week”
+1	σανδάλια: card σανδάλι/NOUN “sandal” [kaikki-el] / MorphGNT σανδάλιον “a sandal”
+1	σανδάλιά: card σανδάλι/NOUN “sandal” [kaikki-el] / MorphGNT σανδάλιον “a sandal”
+1	σάρρα: card Σάρα/PROPN “Sarah” [kaikki-grc] / MorphGNT Σάρρα “Sarah”
+1	σαρῶνα: card σαρώνω/VERB “to sweep (with broom)” [kaikki-el] / MorphGNT Σαρών “Sharon”
+1	σελήνῃ: card Σελήνη/PROPN “the earth's Moon” [kaikki-grc] / MorphGNT σελήνη “the moon”
+1	σεμεΐν: card Σεμεΐ/PROPN “Shimei” [kaikki-grc] / MorphGNT Σεμεΐν “Semein”
+1	σημειοῦσθε: card σημειόω/VERB “to mark, stamp” [kaikki-grc] / MorphGNT σημειόομαι “I note”
+1	σιγᾶν: card σιγά/NOUN “Doric form of σῑγή (sīgḗ)” [kaikki-grc] / MorphGNT σιγάω “I keep silent”
+1	σιδηροῦς: card Σιδηροῦς/PROPN “Siderus, Lycia, Turkey” [kaikki-grc] / MorphGNT σιδηροῦς “made of iron”
+1	σιώπα: card σιωπή/NOUN “silence” [kaikki-grc] / MorphGNT σιωπάω “I keep silence”
+1	σιωπῶν: card σιωπή/NOUN “silence” [kaikki-grc] / MorphGNT σιωπάω “I keep silence”
+1	σκανδάλων: card σκάνδαλο/NOUN “scandal (incident or event tha” [kaikki-el] / MorphGNT σκάνδαλον “a snare, stumbling-block”
+1	σκευᾶ: card σκευή/NOUN “equipment, attire, apparel, dr” [kaikki-grc] / MorphGNT Σκευᾶς “Sceva”
+1	σκληρότητά: card σκληρότητα/NOUN “hardness, severity, cruelty” [kaikki-el] / MorphGNT σκληρότης “hardness of heart”
+1	σκοπῶν: card σκοπή/NOUN “a vantage point, a lookout, a ” [kaikki-grc] / MorphGNT σκοπέω “regard attentively, take heed”
+1	σκορπίοι: card σκορπίζω/VERB “scatter, disperse” [kaikki-grc] / MorphGNT σκορπίος “a scorpion”
+1	σκορπίοις: card σκορπίον/NOUN “jointfir (Ephedra distachya)” [kaikki-grc] / MorphGNT σκορπίος “a scorpion”
+1	σκορπίον: card σκορπίον/NOUN “jointfir (Ephedra distachya)” [kaikki-grc] / MorphGNT σκορπίος “a scorpion”
+1	σκορπίου: card σκορπίον/NOUN “jointfir (Ephedra distachya)” [kaikki-grc] / MorphGNT σκορπίος “a scorpion”
+1	σκορπίων: card σκορπίον/NOUN “jointfir (Ephedra distachya)” [kaikki-grc] / MorphGNT σκορπίος “a scorpion”
+1	σκοτίας: card σκότιος/ADJ “secret, clandestine; done or e” [kaikki-grc] / MorphGNT σκοτία “darkness”
+1	σμύρνῃ: card σμύρνα/NOUN “myrrh, the gum of Commiphora m” [kaikki-grc] / MorphGNT Σμύρνα “Smyrna”
+1	σολομῶν: card Σολομών/PROPN “a male given name from Hebrew,” [kaikki-grc] / MorphGNT Σολομῶν “Solomon”
+1	σπαράξαν: card σπαράζω/VERB “to tear to pieces, to rend, to” [kaikki-el] / MorphGNT σπαράσσω “I convulse”
+1	σπυρίδων: card Σπυρίδων/PROPN “a male given name, Spyridon” [kaikki-grc] / MorphGNT σπυρίς “a plaited basket”
+1	στάντος: card στᾱ́ς/VERB “” [kaikki-grc] / MorphGNT ἵστημι “I cause to stand, stand”
+1	σταυρώσατε: card σταυρώνω/VERB “to crucify (to execute (a pers” [kaikki-el] / MorphGNT σταυρόω “I crucify”
+1	σταυρώσετε: card σταυρώνω/VERB “to crucify (to execute (a pers” [kaikki-el] / MorphGNT σταυρόω “I crucify”
+1	σταυρώσω: card σταυρώνω/VERB “to crucify (to execute (a pers” [kaikki-el] / MorphGNT σταυρόω “I crucify”
+1	στέγει: card στέγος/NOUN “roof” [kaikki-grc] / MorphGNT στέγω “I cover, conceal, bear with”
+1	στέγων: card στέγος/NOUN “roof” [kaikki-grc] / MorphGNT στέγω “I cover, conceal, bear with”
+1	στέφανόν: card Στέφανος/PROPN “a male given name” [kaikki-grc] / MorphGNT στέφανος “a crown, garland”
+1	στιβάδας: card στιβάδα/NOUN “layer” [kaikki-el] / MorphGNT στιβάς “a litter of leaves”
+1	στρατεύεται: card στρατεύω/VERB “advance with an army or fleet,” [kaikki-grc] / MorphGNT στρατεύομαι “I wage war, fight”
+1	στρατεύῃ: card στρατεύω/VERB “advance with an army or fleet,” [kaikki-grc] / MorphGNT στρατεύομαι “I wage war, fight”
+1	στρατευόμεθα: card στρατεύω/VERB “advance with an army or fleet,” [kaikki-grc] / MorphGNT στρατεύομαι “I wage war, fight”
+1	στρατευόμενοι: card στρατεύω/VERB “advance with an army or fleet,” [kaikki-grc] / MorphGNT στρατεύομαι “I wage war, fight”
+1	στρατευόμενος: card στρατεύω/VERB “advance with an army or fleet,” [kaikki-grc] / MorphGNT στρατεύομαι “I wage war, fight”
+1	στρατευομένων: card στρατεύω/VERB “advance with an army or fleet,” [kaikki-grc] / MorphGNT στρατεύομαι “I wage war, fight”
+1	στρατεύονται: card στρατεύω/VERB “advance with an army or fleet,” [kaikki-grc] / MorphGNT στρατεύομαι “I wage war, fight”
+1	στρῶσον: card στόρνυμι/VERB “to smooth out, spread” [kaikki-grc] / MorphGNT στρώννυμι “I spread, make a bed”
+1	σύκων: card σύκο/NOUN “fig (fruit)” [kaikki-el] / MorphGNT σῦκον “a fig”
+1	συμβεβηκότι: card συμβεβηκός/NOUN “a contingent attribute or acci” [kaikki-grc] / MorphGNT συμβαίνω “I happen, occur”
+1	συμβεβηκότων: card συμβεβηκός/NOUN “a contingent attribute or acci” [kaikki-grc] / MorphGNT συμβαίνω “I happen, occur”
+1	συμβουλίου: card συμβούλιο/NOUN “board (committee that manages ” [kaikki-el] / MorphGNT συμβούλιον “a council, advice”
+1	συναίρει: card συναιρέω/VERB “to grasp or seize together, to” [kaikki-grc] / MorphGNT συναίρω “I make a reckoning, settle acc”
+1	συναίρειν: card συναιρέω/VERB “to grasp or seize together, to” [kaikki-grc] / MorphGNT συναίρω “I make a reckoning, settle acc”
+1	συναλιζόμενος: card συναλιζόμενος/VERB “present middle/passive indicat” [kaikki-grc] / MorphGNT συναλίζομαι “I am assembled together with”
+1	συνετάφημεν: card συνθάπτω/VERB “to bury together (with)” [kaikki-grc] / MorphGNT συνθάπτομαι “I bury along with”
+1	συνέχει: card συνεχής/ADJ “continuous, contiguous, uninte” [kaikki-grc] / MorphGNT συνέχω “I press together, confine, com”
+1	συνήρχετο: card συνάρχω/VERB “to rule or govern jointly” [kaikki-grc] / MorphGNT συνέρχομαι “I come or go with, accompany, ”
+1	συνήρχοντο: card συνάρχω/VERB “to rule or govern jointly” [kaikki-grc] / MorphGNT συνέρχομαι “I come or go with, accompany, ”
+1	συνιᾶσιν: card σύνειμι/VERB “to be with, be joined or linke” [kaikki-grc] / MorphGNT συνίημι “I consider, understand”
+1	συνιστάνω: card συνίστημι/VERB “to combine, unite” [kaikki-grc] / MorphGNT συνιστάνω “to commend; to demonstrate; to”
+1	συνίων: card σύνειμι/VERB “to be with, be joined or linke” [kaikki-grc] / MorphGNT συνίημι “I consider, understand”
+1	συντελῶν: card συντελής/ADJ “associated in the payment of t” [kaikki-grc] / MorphGNT συντελέω “I fulfill, accomplish”
+1	συντηροῦνται: card συντηρώ/VERB “to conserve, maintain, preserv” [kaikki-el] / MorphGNT συντηρέω “I preserve, keep safe, keep in”
+1	σχοινία: card σχοινί/NOUN “rope” [kaikki-el] / MorphGNT σχοινίον “a cord, rope”
+1	σχοινίων: card σχοινί/NOUN “rope” [kaikki-el] / MorphGNT σχοινίον “a cord, rope”
+1	σωματικῶς: card σωματικός/ADJ “of or for the body, bodily” [kaikki-grc] / MorphGNT σωματικῶς “bodily”
+1	σώπατρος: card Σωσίπατρος/PROPN “Sosipater” [kaikki-grc] / MorphGNT Σώπατρος “Sopater”
+1	σωφρόνως: card σώφρων/ADJ “sane (of sound mind)” [kaikki-grc] / MorphGNT σωφρόνως “soberly, with moderation”
+1	ταβερνῶν: card ταβέρνα/NOUN “taverna, cafe” [kaikki-el] / MorphGNT Ταβέρνη “taverns”
+1	ταῦροί: card Ταυρώ/PROPN “a name of Artemis” [kaikki-grc] / MorphGNT ταῦρος “a bull, an ox”
+1	τελείοις: card τελείω/VERB “Epic form of τελέω (teléō)” [kaikki-grc] / MorphGNT τέλειος “perfect, full-grown”
+1	τελειωθείς: card τελειώνω/VERB “to finish, complete, end” [kaikki-el] / MorphGNT τελειόω “I complete, accomplish, make p”
+1	τελείων: card τελείω/VERB “Epic form of τελέω (teléō)” [kaikki-grc] / MorphGNT τέλειος “perfect, full-grown”
+1	τέτυχεν: card τεύχω/VERB “to make; to do; to fashion; to” [kaikki-grc] / MorphGNT τυγχάνω “I obtain, I happen, perhaps”
+1	τηλαυγῶς: card τηλαυγής/ADJ “far-shining, far-beaming” [kaikki-grc] / MorphGNT τηλαυγῶς “clearly, distinctly”
+1	τηρεῖτε: card τηρώ/VERB “to abide (by), to adhere (to),” [kaikki-el] / MorphGNT τηρέω “I keep, guard, observe”
+1	τηρήσατε: card τηρώ/VERB “to abide (by), to adhere (to),” [kaikki-el] / MorphGNT τηρέω “I keep, guard, observe”
+1	τηρήσετε: card τηρώ/VERB “to abide (by), to adhere (to),” [kaikki-el] / MorphGNT τηρέω “I keep, guard, observe”
+1	τηρῶ: card τηρώ/VERB “to abide (by), to adhere (to),” [kaikki-el] / MorphGNT τηρέω “I keep, guard, observe”
+1	τιμῶν: card τιμή/NOUN “honor; worship; esteem” [kaikki-grc] / MorphGNT τιμάω “I value at a price, honor”
+1	τιμωρῶν: card τιμωρός/ADJ “avenging, helping one to venge” [kaikki-grc] / MorphGNT τιμωρέω “I punish”
+1	τολμᾶν: card τόλμα/NOUN “courage, hardihood” [kaikki-grc] / MorphGNT τολμάω “I dare, endure, am bold”
+1	τομώτερος: card τομός/ADJ “cutting, sharp” [kaikki-grc] / MorphGNT τομώτερος “sharper, keener”
+1	τοπάζιον: card τόπαζος/NOUN “gem of green hue, probably chr” [kaikki-grc] / MorphGNT τοπάζιον “topaz”
+1	τοὔνομα: card ὄνομα/NOUN “name” [rule] / MorphGNT τοὔνομα “by name”
+1	τραύματα: card τραύμα/NOUN “wound, injury” [kaikki-el] / MorphGNT τραῦμα “a wound”
+1	τρέχοντες: card τρέχων/VERB “current” [kaikki-el] / MorphGNT τρέχω “I run, exercise myself”
+1	τρέχοντος: card τρέχων/VERB “current” [kaikki-el] / MorphGNT τρέχω “I run, exercise myself”
+1	τρόφιμος: card τρόφιμος/ADJ “nourishing” [kaikki-grc] / MorphGNT Τρόφιμος “Trophimus”
+1	τρῳάδος: card Τρωάς/PROPN “the Troas; the Troad” [kaikki-grc] / MorphGNT Τρῳάς “Troas”
+1	τυράννου: card τύραννος/ADJ “kingly; royal; regal” [kaikki-grc] / MorphGNT Τύραννος “Tyrannus”
+1	ὑάκινθος: card Ὑάκινθος/PROPN “Hyacinthus” [kaikki-grc] / MorphGNT ὑάκινθος “jacinth”
+1	ὑετούς: card υετός/NOUN “precipitation” [kaikki-el] / MorphGNT ὑετός “rain”
+1	ὑπάρξεις: card ὑπάρχω/VERB “to begin, make a beginning, ta” [kaikki-grc] / MorphGNT ὕπαρξις “goods, substance, property”
+1	ὑπεροχῇ: card υπεροχή/NOUN “advantage (over)” [kaikki-el] / MorphGNT ὑπεροχή “superiority, excellence”
+1	ὑποδέδεκται: card ὑποδείκνυμι/VERB “to show” [kaikki-grc] / MorphGNT ὑποδέχομαι “I receive as a guest”
+1	ὑποδείγματα: card υπόδειγμα/NOUN “model, exemplar, paragon (some” [kaikki-el] / MorphGNT ὑπόδειγμα “a figure, copy, example”
+1	ὑποδεξαμένη: card ὑποδείκνυμι/VERB “to show” [kaikki-grc] / MorphGNT ὑποδέχομαι “I receive as a guest”
+1	ὑποζυγίου: card υποζύγιο/NOUN “beast of burden” [kaikki-el] / MorphGNT ὑποζύγιον “a beast of burden, an ass or m”
+1	ὑστέρησιν: card ὑστέρα/NOUN “uterus; womb” [kaikki-grc] / MorphGNT ὑστέρησις “poverty, want”
+1	ὑστερῶν: card ὑστέρα/NOUN “uterus; womb” [kaikki-grc] / MorphGNT ὑστερέω “I am lacking, fall short, suff”
+1	ὑψωθείς: card υψώνω/VERB “to elevate, raise” [kaikki-el] / MorphGNT ὑψόω “I lift up, exalt”
+1	ὑψωθῶ: card υψώνω/VERB “to elevate, raise” [kaikki-el] / MorphGNT ὑψόω “I lift up, exalt”
+1	φαινομένου: card φαινόμενο/NOUN “phenomenon” [kaikki-el] / MorphGNT φαίνω “I shine, appear, seem”
+1	φαινομένων: card φαινόμενο/NOUN “phenomenon” [kaikki-el] / MorphGNT φαίνω “I shine, appear, seem”
+1	φαίνοντι: card φαίνων/VERB “shining” [kaikki-grc] / MorphGNT φαίνω “I shine, appear, seem”
+1	φανερώσω: card φανερώνω/VERB “to reveal” [kaikki-el] / MorphGNT φανερόω “I make clear, visible, or mani”
+1	φανῶν: card φαίνω/VERB “to cause to appear; to bring t” [kaikki-grc] / MorphGNT φανός “a torch, lantern”
+1	φαρισαῖε: card Φαρισαίος/NOUN “Pharisee (a member of an ancie” [kaikki-el] / MorphGNT Φαρισαῖος “a Pharisee”
+1	φαρμακεία: card φαρμακείο/NOUN “pharmacy, drugstore (US), chem” [kaikki-el] / MorphGNT φαρμακεία “magic, sorcery, enchantment”
+1	φαρμακείᾳ: card φαρμακείο/NOUN “pharmacy, drugstore (US), chem” [kaikki-el] / MorphGNT φαρμακεία “magic, sorcery, enchantment”
+1	φαρμάκοις: card φάρμακον/NOUN “drug (whether healing or noxio” [kaikki-grc] / MorphGNT φάρμακος “a magician, sorcerer”
+1	φιλήμονι: card φιλήμων/ADJ “kindly, affectionate” [kaikki-grc] / MorphGNT Φιλήμων “Philemon”
+1	φιλία: card φῐ́λῐος/ADJ “” [kaikki-grc] / MorphGNT φιλία “friendship”
+1	φιλίππους: card Φίλιππος/PROPN “a male given name, equivalent ” [kaikki-grc] / MorphGNT Φίλιπποι “Philippi”
+1	φιλίππων: card Φίλιππος/PROPN “a male given name, equivalent ” [kaikki-grc] / MorphGNT Φίλιπποι “Philippi”
+1	φιλόξενοι: card Φιλόξενος/PROPN “a male given name, Philoxenus” [kaikki-grc] / MorphGNT φιλόξενος “hospitable”
+1	φιμώσεις: card φίμωσις/NOUN “muzzling, silencing of death” [kaikki-grc] / MorphGNT φιμόω “I muzzle, silence”
+1	φοβηθῇς: card φοβέω/VERB “to put to flight” [kaikki-grc] / MorphGNT φοβέομαι “I fear, am terrified”
+1	φοβηθήσομαι: card φοβέω/VERB “to put to flight” [kaikki-grc] / MorphGNT φοβέομαι “I fear, am terrified”
+1	φοβούμεναι: card φοβέω/VERB “to put to flight” [kaikki-grc] / MorphGNT φοβέομαι “I fear, am terrified”
+1	φοίνικα: card φοίνικας/NOUN “palm tree” [kaikki-el] / MorphGNT Φοῖνιξ “Phoenix”
+1	φοίνικες: card φοίνικας/NOUN “palm tree” [kaikki-el] / MorphGNT φοῖνιξ “a palm tree, palm branch”
+1	φοινίκων: card φοίνικας/NOUN “palm tree” [kaikki-el] / MorphGNT φοῖνιξ “a palm tree, palm branch”
+1	φόρου: card φόρος/NOUN “tribute” [kaikki-grc] / MorphGNT Φόρον “Forum, Market”
+1	φορῶν: card φορά/NOUN “an act” [kaikki-grc] / MorphGNT φορέω “I carry, wear”
+1	φρυγάνων: card φρύγανο/NOUN “brush, twigs (generic name for” [kaikki-el] / MorphGNT φρύγανον “a dry stick for burning”
+1	φυλάξῃ: card φυλάττω/VERB “Attic form of φῠλᾰ́σσω (phŭlắs” [kaikki-grc] / MorphGNT φυλάσσω “I keep, guard, observe”
+1	φωνεῖτέ: card φωνεῖτε/VERB “contracted second-person plura” [kaikki-grc] / MorphGNT φωνέω “I crow, shout, summon”
+1	χαλκηδών: card Χαλκηδών/PROPN “Chalcedon” [kaikki-grc] / MorphGNT χαλκηδών “chalcedony”
+1	χερουβίν: card χερούβ/NOUN “cherub” [kaikki-grc] / MorphGNT Χεροῦβ “cherub”
+1	χίου: card Χῖος/ADJ “Chian” [kaikki-grc] / MorphGNT Χίος “Chios”
+1	χλιαρός: card Χλιαρός/PROPN “Chliarus, the ancient name of ” [kaikki-grc] / MorphGNT χλιαρός “lukewarm”
+1	χλόης: card χλόη/NOUN “A new green shoot in the sprin” [kaikki-grc] / MorphGNT Χλόη “Chloe”
+1	χοῖροι: card χοίρος/NOUN “pig” [kaikki-el] / MorphGNT χοῖρος “swine”
+1	χρῆσαι: card χράω/VERB “to fall upon, attack, assail” [kaikki-grc] / MorphGNT χράομαι “I use, make use of, deal with”
+1	χρησάμενος: card χράω/VERB “to fall upon, attack, assail” [kaikki-grc] / MorphGNT χράομαι “I use, make use of, deal with”
+1	χρήσιμον: card χρήσιμος/ADJ “useful, serviceable, profitabl” [kaikki-grc] / MorphGNT χρήσιμον “useful, profitable”
+1	χρῆσόν: card χράω/VERB “to fall upon, attack, assail” [kaikki-grc] / MorphGNT κίχρημι “to lend”
+1	χρήσωμαι: card χράω/VERB “to fall upon, attack, assail” [kaikki-grc] / MorphGNT χράομαι “I use, make use of, deal with”
+1	χρῆται: card χράω/VERB “to fall upon, attack, assail” [kaikki-grc] / MorphGNT χράομαι “I use, make use of, deal with”
+1	χριστιανόν: card χριστιανός/NOUN “alternative letter-case form o” [kaikki-grc] / MorphGNT Χριστιανός “a Christian”
+1	χριστιανός: card χριστιανός/NOUN “alternative letter-case form o” [kaikki-grc] / MorphGNT Χριστιανός “a Christian”
+1	χριστιανούς: card χριστιανός/NOUN “alternative letter-case form o” [kaikki-grc] / MorphGNT Χριστιανός “a Christian”
+1	χρυσῆ: card χρύσεος/ADJ “golden; made of gold; decked o” [kaikki-grc] / MorphGNT χρυσοῦς “golden, made of gold”
+1	χρυσοῦς: card χρύσεος/ADJ “golden; made of gold; decked o” [kaikki-grc] / MorphGNT χρυσοῦς “golden, made of gold”
+1	χρυσῶν: card χρυσός/NOUN “gold (substance)” [kaikki-grc] / MorphGNT χρυσοῦς “golden, made of gold”
+1	χρῶ: card χράω/VERB “to fall upon, attack, assail” [kaikki-grc] / MorphGNT χράομαι “I use, make use of, deal with”
+1	χρώμεθα: card χράω/VERB “to fall upon, attack, assail” [kaikki-grc] / MorphGNT χράομαι “I use, make use of, deal with”
+1	ψευδομάρτυρες: card ψευδομάρτυρας/NOUN “false witness, perjurer” [kaikki-el] / MorphGNT ψευδόμαρτυς “a false witness”
+1	ψευδομαρτύρων: card ψευδομάρτυρας/NOUN “false witness, perjurer” [kaikki-el] / MorphGNT ψευδόμαρτυς “a false witness”
+1	ψυγήσεται: card ψύχω/VERB “to breathe; to blow” [kaikki-grc] / MorphGNT ψύχομαι “I cool, grow cold”
+1	ψύχει: card ψύχω/VERB “to breathe; to blow” [kaikki-grc] / MorphGNT ψῦχος “cold”
+1	ὠδίν: card ὠδίς/NOUN “pangs or throes of childbirth ” [kaikki-grc] / MorphGNT ὠδίν “the pain of childbirth, severe”
+1	ὠνήσατο: card ὀνίνημι/VERB “to help, to support, to be use” [kaikki-grc] / MorphGNT ὠνέομαι “I buy, purchase”
+1	ὧραί: card ὤρα/NOUN “care; concern” [kaikki-grc] / MorphGNT ὥρα “an hour, season”
+1	ὡραίᾳ: card ωραίος/ADJ “good, fine, nice” [kaikki-el] / MorphGNT ὡραῖος “fair, beautiful”
+1	ὠργίσθησαν: card ὀργίζω/VERB “to anger, irritate” [kaikki-grc] / MorphGNT ὀργίζομαι “I irritate, provoke, am angry”
+1	ὠτίου: card οὖς/NOUN “ear” [kaikki-grc] / MorphGNT ὠτίον “an ear”
+1	ὠφελεῖτε: card ὀνίνημι/VERB “to help, to support, to be use” [kaikki-grc] / MorphGNT ὠφελέω “I help, benefit, do good”

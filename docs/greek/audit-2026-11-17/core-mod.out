@@ -1,0 +1,22 @@
+355 everyday Modern Greek words, each selected alone
+
+blank card: 0
+   
+
+the reading shown is a New Testament (MorphGNT) one, with the Koine lemma and gloss: 32
+   με→ἐγώ “I” | σε→σύ “you” | πολύ→πολύς “much, many, often” | πάντα→πᾶς “all, the whole, every ki” | χωρίς→χωρίς “apart from, without” | μέχρι→μέχρι(ς) “as far as, until” | μετά→μετά “with, after” | τι→τις “any one, some one” | πατέρας→πατήρ “father, Father, ancestor” | μητέρα→μήτηρ “a mother” | θάλασσα→θάλασσα “the sea, lake” | μαθητής→μαθητής “a learner, disciple, pup” | στόμα→στόμα “the mouth, speech” | χρόνος→χρόνος “time, a particular time,” | ζωή→ζωή “life” | θάνατος→θάνατος “death” | φόβος→φόβος “fear, terror, reverence” | χαρά→χαρά “joy, gladness” | βλέπω→βλέπω “I look” | θέλω→θέλω “I wish” | γράφω→γράφω “I write” | πιστεύω→πιστεύω “I believe” | καλός→καλός “beautiful, good, worthy” | μηδέν→μηδείς “no one, nothing” | δύο→δύο “two” | τρία→τρεῖς “three” | πέντε→πέντε “five” | δώδεκα→δώδεκα “twelve” | δεύτερος→δεύτερος “second, in the second pl” | τρίτος→τρίτος “third” | Δευτέρα→δεύτερος “second, in the second pl” | Τρίτη→τρίτος “third”
+
+the reading shown is an Ancient Greek (Wiktionary) one: 0
+   
+
+a Modern reading whose lemma is not the word: 24
+   δεν→δε/PART “alternative form of δεν ” | μόνο→μόνος/ADJ “solitary, alone” | κοντά→κοντός/ADJ “short (in height)” | αυτοί→του/PRON “him, it” | πόσο→πόσος/PRON “how much? (questions of ” | αυγό→αβγό/NOUN “egg (spherical or ellips” | πρωινό→πρωινός/ADJ “morning” | μεσημεριανό→μεσημεριανός/ADJ “midday, related to noon” | βραδινό→βραδινός/ADJ “of the evening or night” | άλογο→άλογος/ADJ “illogical, irrational” | χρήματα→χρήματα/NOUN “money (means of exchange” | μέρα→ημέρα/NOUN “day” | λεπτό→λεπτός/ADJ “thin, skinny, slim” | μιλάω→μιλώ/VERB “a more formal variant of” | τρώω→τρώγω/VERB “I alternative form of τρ” | πουλάω→πωλώ/VERB “to sell, alternative for” | περπατάω→περπατώ/VERB “alternative form of περπ” | μεγάλος→μέγας/ADJ “great, very important” | παλιός→παλαιός/ADJ “long established, old, f” | βρόμικος→βρώμικος/ADJ “dirty, filthy, polluted” | κουρασμένος→κουράζω/VERB “being tired” | τέσσερα→τέσσερα/NUM “four, 4” | χίλια→χίλια/NUM “one thousand” | γεια→υγεία/NOUN “health”
+
+confidence under 0.5 (the lookup is credited to the written form, not to the lemma): 41
+   το(0.49) | ο(0.46) | του(0.45) | τα(0.46) | είναι(0.49) | ένα(0.49) | μια(0.48) | ποτέ(0.48) | μέσα(0.43) | κοντά(0.47) | μακριά(0.46) | αυτή(0.46) | αυτό(0.45) | αυτοί(0.47) | παιδί(0.49) | κόρη(0.48) | φίλος(0.46) | πόλη(0.45) | χώρα(0.44) | κρέας(0.46) | γάλα(0.44) | πρωινό(0.49) | μεσημεριανό(0.49) | βραδινό(0.49) | άλογο(0.49) | χρήματα(0.46) | λεφτά(0.46) | τράπεζα(0.46) | εισιτήριο(0.49) | λεπτό(0.49) | πρόβλημα(0.48) | γλώσσα(0.46) | μουσική(0.45) | βάζω(0.49) | τρέχω(0.49) | χίλια(0.45) | Πέμπτη(0.44) | Παρασκευή(0.46) | Κυριακή(0.46) | γεια(0.48) | συγγνώμη(0.48)
+
+no meaning: 0
+   
+
+the meaning is a cross-reference: 6
+   δεν “alternative form of δεν (den) used optio” | αυτί “alternative form of αφτί (aftí)” | πάω “alternative form of πηγαίνω (pigaíno, “t” | τρώω “I alternative form of τρώω” | πουλάω “to sell, alternative form of πουλάω (pou” | περπατάω “alternative form of περπατάω (perpatáo)”

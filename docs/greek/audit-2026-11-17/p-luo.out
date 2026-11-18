@@ -1,0 +1,716 @@
+
+== λύω → λύω/VERB: 713 cells {"generated":713}; sources Greek analyser (rules and its irregular tables)
+   Tense=Aor Voice=Pass VerbForm=Inf: λυθῆναι
+   Tense=Aor Voice=Act VerbForm=Inf: λῦσαι
+   Person=2 Tense=Aor Voice=Act Mood=Imp VerbForm=Fin Number=Plur: λύσατε
+   Voice=Act Mood=Ind Tense=Pres Number=Sing Person=3 VerbForm=Fin: λύει
+   Voice=Act Mood=Ind Tense=Pres Person=2 Number=Sing VerbForm=Fin: λύεις
+   Voice=Act Mood=Ind Number=Plur Tense=Pres Person=2 VerbForm=Fin: λύετε
+   Voice=Act Mood=Imp Number=Plur Tense=Pres Person=2 VerbForm=Fin: λύετε
+   Person=1 Mood=Ind Voice=Pass Tense=Pres Number=Sing VerbForm=Fin: λύομαι
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Pres VerbForm=Fin: λύομε  (also λύομεν)
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Pres VerbForm=Fin Dialect=Katharevousa: λύομεν  (Katharevousa)
+   Voice=Act Mood=Ind Number=Plur Tense=Pres Person=3 VerbForm=Fin: λύουν  (also λύουσι; also λύουσιν)
+   Voice=Act Person=1 Mood=Ind Number=Sing Tense=Perf VerbForm=Fin: λέλυκα
+   Voice=Act Person=1 Mood=Ind Number=Sing Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λέλυκα  (Homeric Greek)
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Perf VerbForm=Fin: λελύκαμεν
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκαμεν  (Homeric Greek)
+   Voice=Act Mood=Ind Person=2 Number=Sing Tense=Perf VerbForm=Fin: λέλυκας
+   Voice=Act Mood=Ind Person=2 Number=Sing Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λέλυκας  (Homeric Greek)
+   Voice=Act Mood=Ind Number=Plur Tense=Perf Person=3 VerbForm=Fin: λελύκασι  (also λελύκασιν)
+   Voice=Act Mood=Ind Number=Plur Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύκασι  (Homeric Greek; also λελύκασιν)
+   Voice=Act Mood=Ind Number=Plur Person=2 Tense=Perf VerbForm=Fin: λελύκατε
+   Voice=Act Mood=Ind Number=Plur Person=2 Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκατε  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Ind Person=2 Tense=Perf VerbForm=Fin: λελύκατον
+   Voice=Act Number=Dual Mood=Ind Tense=Perf Person=3 VerbForm=Fin: λελύκατον
+   Voice=Act Number=Dual Mood=Ind Person=2 Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκατον  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Ind Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύκατον  (Homeric Greek)
+   Voice=Act Mood=Ind Number=Sing Tense=Perf Person=3 VerbForm=Fin: λέλυκε  (also λέλυκεν)
+   Voice=Act Mood=Imp Person=2 Number=Sing Tense=Perf VerbForm=Fin: λέλυκε
+   Voice=Act Mood=Ind Number=Sing Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λέλυκε  (Homeric Greek; also λέλυκεν)
+   Voice=Act Mood=Imp Person=2 Number=Sing Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λέλυκε  (Homeric Greek)
+   Voice=Act Person=1 Mood=Ind Number=Sing Tense=Perf,Plup VerbForm=Fin Dialect=Homeric Greek: λελύκεα  (Homeric Greek; also λελύκεεν)
+   Voice=Act Mood=Ind Person=2 Number=Sing Tense=Perf,Plup VerbForm=Fin Dialect=Homeric Greek: λελύκεας  (Homeric Greek; also λελύκεες)
+   Voice=Act Mood=Ind Number=Sing Tense=Perf,Plup Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύκεε  (Homeric Greek; also λελύκεεν)
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Perf,Plup VerbForm=Fin Dialect=Homeric Greek: λελύκεμεν  (Homeric Greek)
+   Voice=Act VerbForm=Inf Tense=Perf: λελυκέναι
+   Voice=Act VerbForm=Inf Tense=Perf Dialect=Homeric Greek: λελυκέναι  (Homeric Greek)
+   Voice=Act Mood=Ind Number=Plur Tense=Perf,Plup Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύκεσαν  (Homeric Greek)
+   Voice=Act Mood=Imp Number=Plur Person=2 Tense=Perf VerbForm=Fin: λελύκετε
+   Voice=Act Mood=Imp Number=Plur Person=2 Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκετε  (Homeric Greek)
+   Voice=Act Mood=Ind Number=Plur Person=2 Tense=Perf,Plup VerbForm=Fin Dialect=Homeric Greek: λελύκετε  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Ind Tense=Perf,Plup Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυκέτην  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Imp Person=2 Tense=Perf VerbForm=Fin: λελύκετον
+   Voice=Act Number=Dual Mood=Imp Person=2 Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκετον  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Ind Person=2 Tense=Perf,Plup VerbForm=Fin Dialect=Homeric Greek: λελύκετον  (Homeric Greek)
+   Voice=Act Mood=Imp Number=Sing Tense=Perf Person=3 VerbForm=Fin: λελυκέτω
+   Voice=Act Mood=Imp Number=Sing Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυκέτω  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Imp Tense=Perf Person=3 VerbForm=Fin: λελυκέτων
+   Voice=Act Number=Dual Mood=Imp Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυκέτων  (Homeric Greek)
+   Voice=Act Number=Sing Mood=Sub Tense=Perf Person=3 VerbForm=Fin: λελύκῃ
+   Voice=Act Number=Sing Mood=Sub Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύκῃ  (Homeric Greek; also λελύκῃσι; also λελύκῃσιν)
+   Voice=Act Person=2 Number=Sing Mood=Sub Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκῃσ  (Homeric Greek; also λελύκῃσθα)
+   Voice=Act Person=2 Number=Sing Mood=Sub Tense=Perf VerbForm=Fin: λελύκῃς
+   Voice=Act Number=Plur Person=2 Mood=Sub Tense=Perf VerbForm=Fin: λελύκητε
+   Voice=Act Number=Plur Person=2 Mood=Sub Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκητε  (Homeric Greek)
+   Voice=Act Number=Dual Person=2 Mood=Sub Tense=Perf VerbForm=Fin: λελύκητον
+   Voice=Act Number=Dual Mood=Sub Tense=Perf Person=3 VerbForm=Fin: λελύκητον
+   Voice=Act Number=Dual Person=2 Mood=Sub Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκητον  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Sub Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύκητον  (Homeric Greek)
+   Voice=Act Mood=Opt Number=Sing Tense=Perf Person=3 VerbForm=Fin: λελύκοι  (also λελυκοίη)
+   Voice=Act Mood=Opt Number=Sing Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύκοι  (Homeric Greek; also λελυκοίη)
+   Voice=Act Mood=Opt Number=Plur Tense=Perf Person=3 VerbForm=Fin: λελύκοιεν
+   Voice=Act Mood=Opt Number=Plur Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύκοιεν  (Homeric Greek)
+   Voice=Act Person=1 Mood=Opt Number=Sing Tense=Perf VerbForm=Fin: λελυκοίην  (also λελύκοιμι)
+   Voice=Act Person=1 Mood=Opt Number=Sing Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελυκοίην  (Homeric Greek; also λελύκοιμι)
+   Voice=Act Mood=Opt Person=2 Number=Sing Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελυκοίησ  (Homeric Greek; also λελυκοίησθα; also λελύκοισ; also λελύκοισθα)
+   Voice=Act Mood=Opt Person=2 Number=Sing Tense=Perf VerbForm=Fin: λελυκοίης  (also λελύκοις)
+   Voice=Act Person=1 Mood=Opt Number=Plur Tense=Perf VerbForm=Fin: λελύκοιμεν
+   Voice=Act Person=1 Mood=Opt Number=Plur Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκοιμεν  (Homeric Greek)
+   Voice=Act Mood=Opt Number=Plur Person=2 Tense=Perf VerbForm=Fin: λελύκοιτε
+   Voice=Act Mood=Opt Number=Plur Person=2 Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκοιτε  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Opt Tense=Perf Person=3 VerbForm=Fin: λελυκοίτην
+   Voice=Act Number=Dual Mood=Opt Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυκοίτην  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Opt Person=2 Tense=Perf VerbForm=Fin: λελύκοιτον
+   Voice=Act Number=Dual Mood=Opt Person=2 Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκοιτον  (Homeric Greek)
+   Voice=Act Mood=Imp Number=Plur Tense=Perf Person=3 VerbForm=Fin: λελυκόντων
+   Voice=Act Mood=Imp Number=Plur Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυκόντων  (Homeric Greek)
+   Voice=Act Gender=Neut VerbForm=Part Tense=Perf: λελυκός
+   Voice=Act Gender=Neut VerbForm=Part Tense=Perf Dialect=Homeric Greek: λελυκός  (Homeric Greek)
+   Voice=Act Gender=Fem VerbForm=Part Tense=Perf: λελυκυῖα
+   Voice=Act Gender=Fem VerbForm=Part Tense=Perf Dialect=Homeric Greek: λελυκυῖα  (Homeric Greek)
+   Voice=Act Person=1 Number=Sing Mood=Sub Tense=Perf VerbForm=Fin: λελύκω
+   Voice=Act Person=1 Number=Sing Mood=Sub Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκω  (Homeric Greek; also λελύκωμι)
+   Voice=Act Person=1 Number=Plur Mood=Sub Tense=Perf VerbForm=Fin: λελύκωμεν
+   Voice=Act Person=1 Number=Plur Mood=Sub Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύκωμεν  (Homeric Greek)
+   Voice=Act Gender=Masc VerbForm=Part Tense=Perf: λελυκώς
+   Voice=Act Gender=Masc VerbForm=Part Tense=Perf Dialect=Homeric Greek: λελυκώς  (Homeric Greek)
+   Voice=Act Number=Plur Mood=Sub Tense=Perf Person=3 VerbForm=Fin: λελύκωσι  (also λελύκωσιν)
+   Voice=Act Number=Plur Mood=Sub Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύκωσι  (Homeric Greek; also λελύκωσιν)
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Sing Tense=Perf VerbForm=Fin: λέλυμαι
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Sing Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λέλυμαι  (Homeric Greek)
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Plur Tense=Perf VerbForm=Fin: λελύμεθα
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Plur Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελύμεθα  (Homeric Greek)
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Plur Tense=Perf,Plup VerbForm=Fin Dialect=Homeric Greek: λελύμεθα  (Homeric Greek)
+   Gender=Fem Voice=Mid,Pass VerbForm=Part Tense=Perf: λελυμένη
+   Gender=Fem Voice=Mid,Pass VerbForm=Part Tense=Perf Dialect=Homeric Greek: λελυμένη  (Homeric Greek)
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Plur Tense=Perf VerbForm=Fin: λελυμένοι εἴημεν
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Plur Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελυμένοι εἴημεν  (Homeric Greek)
+   Voice=Mid,Pass Mood=Opt Number=Plur Tense=Perf Person=3 VerbForm=Fin: λελυμένοι εἴησαν
+   Voice=Mid,Pass Mood=Opt Number=Plur Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυμένοι εἴησαν  (Homeric Greek)
+   Voice=Mid,Pass Mood=Opt Number=Plur Person=2 Tense=Perf VerbForm=Fin: λελυμένοι εἴητε
+   Voice=Mid,Pass Mood=Opt Number=Plur Person=2 Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελυμένοι εἴητε  (Homeric Greek)
+   Voice=Mid,Pass Number=Plur Person=2 Mood=Sub Tense=Perf VerbForm=Fin: λελυμένοι ἦτε
+   Voice=Mid,Pass Number=Plur Person=2 Mood=Sub Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελυμένοι ἦτε  (Homeric Greek)
+   Person=1 Voice=Mid,Pass Number=Plur Mood=Sub Tense=Perf VerbForm=Fin: λελυμένοι ὦμεν
+   Person=1 Voice=Mid,Pass Number=Plur Mood=Sub Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελυμένοι ὦμεν  (Homeric Greek)
+   Voice=Mid,Pass Number=Plur Mood=Sub Tense=Perf Person=3 VerbForm=Fin: λελυμένοι ὦσι  (also λελυμένοι ὦσιν)
+   Voice=Mid,Pass Number=Plur Mood=Sub Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυμένοι ὦσι  (Homeric Greek; also λελυμένοι ὦσιν)
+   Voice=Mid,Pass Gender=Neut VerbForm=Part Tense=Perf: λελυμένον
+   Voice=Mid,Pass Gender=Neut VerbForm=Part Tense=Perf Dialect=Homeric Greek: λελυμένον  (Homeric Greek)
+   Gender=Masc Voice=Mid,Pass VerbForm=Part Tense=Perf: λελυμένος
+   Gender=Masc Voice=Mid,Pass VerbForm=Part Tense=Perf Dialect=Homeric Greek: λελυμένος  (Homeric Greek)
+   Voice=Mid,Pass Mood=Opt Number=Sing Tense=Perf Person=3 VerbForm=Fin: λελυμένος εἴη
+   Voice=Mid,Pass Mood=Opt Number=Sing Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυμένος εἴη  (Homeric Greek; also λελύοιτο; also λελῦτο)
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Sing Tense=Perf VerbForm=Fin: λελυμένος εἴην
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Sing Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελυμένος εἴην  (Homeric Greek)
+   Voice=Mid,Pass Mood=Opt Person=2 Number=Sing Tense=Perf VerbForm=Fin: λελυμένος εἴης
+   Voice=Mid,Pass Mood=Opt Person=2 Number=Sing Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελυμένος εἴης  (Homeric Greek)
+   Voice=Mid,Pass Number=Sing Mood=Sub Tense=Perf Person=3 VerbForm=Fin: λελυμένος ᾖ
+   Voice=Mid,Pass Number=Sing Mood=Sub Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυμένος ᾖ  (Homeric Greek)
+   Voice=Mid,Pass Person=2 Number=Sing Mood=Sub Tense=Perf VerbForm=Fin: λελυμένος ᾖς
+   Voice=Mid,Pass Person=2 Number=Sing Mood=Sub Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελυμένος ᾖς  (Homeric Greek)
+   Person=1 Voice=Mid,Pass Number=Sing Mood=Sub Tense=Perf VerbForm=Fin: λελυμένος ὦ
+   Person=1 Voice=Mid,Pass Number=Sing Mood=Sub Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελυμένος ὦ  (Homeric Greek)
+   Number=Dual Voice=Mid,Pass Mood=Opt Tense=Perf Person=3 VerbForm=Fin: λελυμένω εἰήτην
+   Number=Dual Voice=Mid,Pass Mood=Opt Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυμένω εἰήτην  (Homeric Greek)
+   Number=Dual Voice=Mid,Pass Mood=Opt Person=2 Tense=Perf VerbForm=Fin: λελυμένω εἴητον
+   Number=Dual Voice=Mid,Pass Mood=Opt Person=2 Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελυμένω εἴητον  (Homeric Greek)
+   Number=Dual Voice=Mid,Pass Person=2 Mood=Sub Tense=Perf VerbForm=Fin: λελυμένω ἦτον
+   Number=Dual Voice=Mid,Pass Mood=Sub Tense=Perf Person=3 VerbForm=Fin: λελυμένω ἦτον
+   Number=Dual Voice=Mid,Pass Person=2 Mood=Sub Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λελυμένω ἦτον  (Homeric Greek)
+   Number=Dual Voice=Mid,Pass Mood=Sub Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυμένω ἦτον  (Homeric Greek)
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Sing Tense=Perf,Plup VerbForm=Fin Dialect=Homeric Greek: λελύμην  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Plur Tense=Perf Person=3 VerbForm=Fin: λέλυνται
+   Mood=Ind Voice=Mid,Pass Number=Plur Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λέλυνται  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Plur Tense=Perf,Plup Person=3 VerbForm=Fin Dialect=Homeric Greek: λέλυντο  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Person=2 Number=Sing Tense=Perf VerbForm=Fin: λέλυσαι
+   Mood=Ind Voice=Mid,Pass Person=2 Number=Sing Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λέλυσαι  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Person=2 Number=Sing Tense=FutPerf VerbForm=Fin Dialect=Homeric Greek: λελύσεαι  (Homeric Greek; also λελύσῃ)
+   Mood=Ind Voice=Mid,Pass Person=2 Number=Sing Tense=FutPerf VerbForm=Fin: λελύσει  (also λελύσῃ)
+   VerbForm=Inf Voice=Mid,Pass Number=Plur Tense=FutPerf: λελύσεσθαι
+   VerbForm=Inf Voice=Mid,Pass Number=Plur Tense=FutPerf Dialect=Homeric Greek: λελύσεσθαι  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Plur Person=2 Tense=FutPerf VerbForm=Fin: λελύσεσθε
+   Mood=Ind Voice=Mid,Pass Number=Plur Person=2 Tense=FutPerf VerbForm=Fin Dialect=Homeric Greek: λελύσεσθε  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid,Pass Person=2 Tense=FutPerf VerbForm=Fin: λελύσεσθον
+   Number=Dual Mood=Ind Voice=Mid,Pass Tense=FutPerf Person=3 VerbForm=Fin: λελύσεσθον
+   Number=Dual Mood=Ind Voice=Mid,Pass Person=2 Tense=FutPerf VerbForm=Fin Dialect=Homeric Greek: λελύσεσθον  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid,Pass Tense=FutPerf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύσεσθον  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Sing Tense=FutPerf Person=3 VerbForm=Fin: λελύσεται
+   Mood=Ind Voice=Mid,Pass Number=Sing Tense=FutPerf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύσεται  (Homeric Greek)
+   VerbForm=Inf Voice=Mid,Pass Tense=Perf: λελύσθαι
+   VerbForm=Inf Voice=Mid,Pass Tense=Perf Dialect=Homeric Greek: λελύσθαι  (Homeric Greek; also λελῦσθαι)
+   Mood=Ind Voice=Mid,Pass Number=Plur Person=2 Tense=Perf VerbForm=Fin: λέλυσθε
+   Mood=Imp Voice=Mid,Pass Number=Plur Person=2 Tense=Perf VerbForm=Fin: λέλυσθε
+   Mood=Ind Voice=Mid,Pass Number=Plur Person=2 Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λέλυσθε  (Homeric Greek)
+   Mood=Imp Voice=Mid,Pass Number=Plur Person=2 Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λέλυσθε  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Plur Person=2 Tense=Perf,Plup VerbForm=Fin Dialect=Homeric Greek: λέλυσθε  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid,Pass Tense=Perf,Plup Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύσθην  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid,Pass Person=2 Tense=Perf VerbForm=Fin: λέλυσθον
+   Number=Dual Mood=Ind Voice=Mid,Pass Tense=Perf Person=3 VerbForm=Fin: λέλυσθον
+   Number=Dual Mood=Imp Voice=Mid,Pass Person=2 Tense=Perf VerbForm=Fin: λέλυσθον
+   Number=Dual Mood=Ind Voice=Mid,Pass Person=2 Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λέλυσθον  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid,Pass Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λέλυσθον  (Homeric Greek)
+   Number=Dual Mood=Imp Voice=Mid,Pass Person=2 Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λέλυσθον  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid,Pass Person=2 Tense=Perf,Plup VerbForm=Fin Dialect=Homeric Greek: λέλυσθον  (Homeric Greek)
+   Mood=Imp Voice=Mid,Pass Number=Sing Tense=Perf Person=3 VerbForm=Fin: λελύσθω
+   Mood=Imp Voice=Mid,Pass Number=Sing Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύσθω  (Homeric Greek)
+   Number=Dual Mood=Imp Voice=Mid,Pass Tense=Perf Person=3 VerbForm=Fin: λελύσθων
+   Mood=Imp Voice=Mid,Pass Number=Plur Tense=Perf Person=3 VerbForm=Fin: λελύσθων
+   Number=Dual Mood=Imp Voice=Mid,Pass Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύσθων  (Homeric Greek)
+   Mood=Imp Voice=Mid,Pass Number=Plur Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύσθων  (Homeric Greek)
+   Mood=Imp Voice=Mid,Pass Person=2 Number=Sing Tense=Perf VerbForm=Fin: λέλυσο
+   Mood=Imp Voice=Mid,Pass Person=2 Number=Sing Tense=Perf VerbForm=Fin Dialect=Homeric Greek: λέλυσο  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Person=2 Number=Sing Tense=Perf,Plup VerbForm=Fin Dialect=Homeric Greek: λέλυσο  (Homeric Greek)
+   Voice=Mid,Pass Mood=Opt Number=Plur Tense=FutPerf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυσοίατο  (Homeric Greek)
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Plur Tense=FutPerf VerbForm=Fin: λελυσοίμεθα
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Plur Tense=FutPerf VerbForm=Fin Dialect=Homeric Greek: λελυσοίμεθα  (Homeric Greek; also λελυσοίμεσθα)
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Sing Tense=FutPerf VerbForm=Fin: λελυσοίμην
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Sing Tense=FutPerf VerbForm=Fin Dialect=Homeric Greek: λελυσοίμην  (Homeric Greek)
+   Voice=Mid,Pass Mood=Opt Number=Plur Tense=FutPerf Person=3 VerbForm=Fin: λελύσοιντο
+   Voice=Mid,Pass Mood=Opt Person=2 Number=Sing Tense=FutPerf VerbForm=Fin: λελύσοιο
+   Voice=Mid,Pass Mood=Opt Person=2 Number=Sing Tense=FutPerf VerbForm=Fin Dialect=Homeric Greek: λελύσοιο  (Homeric Greek)
+   Voice=Mid,Pass Mood=Opt Number=Plur Person=2 Tense=FutPerf VerbForm=Fin: λελύσοισθε
+   Voice=Mid,Pass Mood=Opt Number=Plur Person=2 Tense=FutPerf VerbForm=Fin Dialect=Homeric Greek: λελύσοισθε  (Homeric Greek)
+   Number=Dual Voice=Mid,Pass Mood=Opt Tense=FutPerf Person=3 VerbForm=Fin: λελυσοίσθην
+   Number=Dual Voice=Mid,Pass Mood=Opt Tense=FutPerf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελυσοίσθην  (Homeric Greek)
+   Number=Dual Voice=Mid,Pass Mood=Opt Person=2 Tense=FutPerf VerbForm=Fin: λελύσοισθον
+   Number=Dual Voice=Mid,Pass Mood=Opt Person=2 Tense=FutPerf VerbForm=Fin Dialect=Homeric Greek: λελύσοισθον  (Homeric Greek)
+   Voice=Mid,Pass Mood=Opt Number=Sing Tense=FutPerf Person=3 VerbForm=Fin: λελύσοιτο
+   Voice=Mid,Pass Mood=Opt Number=Sing Tense=FutPerf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύσοιτο  (Homeric Greek)
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Sing Tense=FutPerf VerbForm=Fin: λελύσομαι
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Sing Tense=FutPerf VerbForm=Fin Dialect=Homeric Greek: λελύσομαι  (Homeric Greek)
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Plur Tense=FutPerf VerbForm=Fin: λελυσόμεθα
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Plur Tense=FutPerf VerbForm=Fin Dialect=Homeric Greek: λελυσόμεθα  (Homeric Greek; also λελυσόμεσθα)
+   Gender=Fem Voice=Mid,Pass VerbForm=Part Number=Plur Tense=FutPerf: λελυσομένη
+   Gender=Fem Voice=Mid,Pass VerbForm=Part Number=Plur Tense=FutPerf Dialect=Homeric Greek: λελυσομένη  (Homeric Greek)
+   Voice=Mid,Pass Gender=Neut VerbForm=Part Number=Plur Tense=FutPerf: λελυσόμενον
+   Voice=Mid,Pass Gender=Neut VerbForm=Part Number=Plur Tense=FutPerf Dialect=Homeric Greek: λελυσόμενον  (Homeric Greek)
+   Gender=Masc Voice=Mid,Pass VerbForm=Part Number=Plur Tense=FutPerf: λελυσόμενος
+   Gender=Masc Voice=Mid,Pass VerbForm=Part Number=Plur Tense=FutPerf Dialect=Homeric Greek: λελυσόμενος  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Plur Tense=FutPerf Person=3 VerbForm=Fin: λελύσονται
+   Mood=Ind Voice=Mid,Pass Number=Plur Tense=FutPerf Person=3 VerbForm=Fin Dialect=Homeric Greek: λελύσονται  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Sing Tense=Perf Person=3 VerbForm=Fin: λέλυται
+   Mood=Ind Voice=Mid,Pass Number=Sing Tense=Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λέλυται  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Sing Tense=Perf,Plup Person=3 VerbForm=Fin Dialect=Homeric Greek: λέλυτο  (Homeric Greek)
+   Voice=Act Mood=Imp Person=2 Number=Sing Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύε  (Homeric Greek; also λῦε)
+   Voice=Act Mood=Ind Number=Sing Tense=Impf,Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λύε  (Homeric Greek; also λῦε; also λύεν; also λῦεν)
+   Voice=Act Mood=Imp Person=2 Number=Sing Tense=Pres VerbForm=Fin: λῦε
+   Mood=Ind Voice=Mid,Pass Person=2 Number=Sing Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύεαι  (Homeric Greek; also λύῃ)
+   Mood=Ind Voice=Mid,Pass Person=2 Number=Sing Tense=Pres VerbForm=Fin: λύει  (also λύῃ)
+   Voice=Act Mood=Ind Number=Sing Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύει  (Homeric Greek)
+   Voice=Act VerbForm=Inf Tense=Pres: λύειν
+   Voice=Act VerbForm=Inf Tense=Pres Dialect=Homeric Greek: λύειν  (Homeric Greek; also λυέμεν; also λυέμεναι; also λύμεν; also λυμέναι; also λύμεναι)
+   Voice=Act Mood=Ind Person=2 Number=Sing Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύεις  (Homeric Greek)
+   Mood=Imp Voice=Mid,Pass Person=2 Number=Sing Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύεο  (Homeric Greek; also λύευ)
+   Mood=Ind Voice=Mid,Pass Person=2 Number=Sing Tense=Impf,Perf VerbForm=Fin Dialect=Homeric Greek: λύεο  (Homeric Greek; also λύευ)
+   Voice=Act Mood=Ind Person=2 Number=Sing Tense=Impf,Perf VerbForm=Fin Dialect=Homeric Greek: λύες  (Homeric Greek; also λῦες)
+   VerbForm=Inf Voice=Mid,Pass Tense=Pres: λύεσθαι
+   VerbForm=Inf Voice=Mid,Pass Tense=Pres Dialect=Homeric Greek: λύεσθαι  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Plur Person=2 Tense=Pres VerbForm=Fin: λύεσθε
+   Mood=Imp Voice=Mid,Pass Number=Plur Person=2 Tense=Pres VerbForm=Fin: λύεσθε
+   Mood=Ind Voice=Mid,Pass Number=Plur Person=2 Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύεσθε  (Homeric Greek)
+   Mood=Imp Voice=Mid,Pass Number=Plur Person=2 Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύεσθε  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Plur Person=2 Tense=Impf,Perf VerbForm=Fin Dialect=Homeric Greek: λύεσθε  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid,Pass Tense=Impf,Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λυέσθην  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid,Pass Person=2 Tense=Pres VerbForm=Fin: λύεσθον
+   Number=Dual Mood=Ind Voice=Mid,Pass Tense=Pres Person=3 VerbForm=Fin: λύεσθον
+   Number=Dual Mood=Imp Voice=Mid,Pass Person=2 Tense=Pres VerbForm=Fin: λύεσθον
+   Number=Dual Mood=Ind Voice=Mid,Pass Person=2 Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύεσθον  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid,Pass Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύεσθον  (Homeric Greek)
+   Number=Dual Mood=Imp Voice=Mid,Pass Person=2 Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύεσθον  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid,Pass Person=2 Tense=Impf,Perf VerbForm=Fin Dialect=Homeric Greek: λύεσθον  (Homeric Greek)
+   Mood=Imp Voice=Mid,Pass Number=Sing Tense=Pres Person=3 VerbForm=Fin: λυέσθω
+   Mood=Imp Voice=Mid,Pass Number=Sing Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λυέσθω  (Homeric Greek)
+   Number=Dual Mood=Imp Voice=Mid,Pass Tense=Pres Person=3 VerbForm=Fin: λυέσθων
+   Mood=Imp Voice=Mid,Pass Number=Plur Tense=Pres Person=3 VerbForm=Fin: λυέσθων
+   Number=Dual Mood=Imp Voice=Mid,Pass Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λυέσθων  (Homeric Greek)
+   Mood=Imp Voice=Mid,Pass Number=Plur Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λυέσθων  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Sing Tense=Pres Person=3 VerbForm=Fin: λύεται
+   Mood=Ind Voice=Mid,Pass Number=Sing Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύεται  (Homeric Greek)
+   Voice=Act Mood=Ind Number=Plur Person=2 Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύετε  (Homeric Greek)
+   Voice=Act Mood=Imp Number=Plur Person=2 Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύετε  (Homeric Greek)
+   Voice=Act Mood=Ind Number=Plur Person=2 Tense=Impf,Perf VerbForm=Fin Dialect=Homeric Greek: λύετε  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Ind Tense=Impf,Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λυέτην  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Sing Tense=Impf,Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λύετο  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Ind Person=2 Tense=Pres VerbForm=Fin: λύετον
+   Voice=Act Number=Dual Mood=Ind Tense=Pres Person=3 VerbForm=Fin: λύετον
+   Voice=Act Number=Dual Mood=Imp Person=2 Tense=Pres VerbForm=Fin: λύετον
+   Voice=Act Number=Dual Mood=Ind Person=2 Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύετον  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Ind Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύετον  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Imp Person=2 Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύετον  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Ind Person=2 Tense=Impf,Perf VerbForm=Fin Dialect=Homeric Greek: λύετον  (Homeric Greek)
+   Voice=Act Mood=Imp Number=Sing Tense=Pres Person=3 VerbForm=Fin: λυέτω
+   Voice=Act Mood=Imp Number=Sing Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λυέτω  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Imp Tense=Pres Person=3 VerbForm=Fin: λυέτων
+   Voice=Act Number=Dual Mood=Imp Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λυέτων  (Homeric Greek)
+   Voice=Act Number=Sing Mood=Sub Tense=Pres Person=3 VerbForm=Fin: λύῃ
+   Voice=Mid,Pass Person=2 Number=Sing Mood=Sub Tense=Pres VerbForm=Fin: λύῃ
+   Voice=Act Number=Sing Mood=Sub Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύῃ  (Homeric Greek; also λύῃσι; also λύῃσιν)
+   Voice=Mid,Pass Person=2 Number=Sing Mood=Sub Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύῃ  (Homeric Greek; also λύηαι)
+   Voice=Act Person=2 Number=Sing Mood=Sub Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύῃσ  (Homeric Greek; also λύῃσθα)
+   Voice=Act Person=2 Number=Sing Mood=Sub Tense=Pres VerbForm=Fin: λύῃς
+   Voice=Mid,Pass Number=Plur Person=2 Mood=Sub Tense=Pres VerbForm=Fin: λύησθε
+   Voice=Mid,Pass Number=Plur Person=2 Mood=Sub Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύησθε  (Homeric Greek)
+   Number=Dual Voice=Mid,Pass Person=2 Mood=Sub Tense=Pres VerbForm=Fin: λύησθον
+   Number=Dual Voice=Mid,Pass Mood=Sub Tense=Pres Person=3 VerbForm=Fin: λύησθον
+   Number=Dual Voice=Mid,Pass Person=2 Mood=Sub Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύησθον  (Homeric Greek)
+   Number=Dual Voice=Mid,Pass Mood=Sub Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύησθον  (Homeric Greek)
+   Voice=Mid,Pass Number=Sing Mood=Sub Tense=Pres Person=3 VerbForm=Fin: λύηται
+   Voice=Mid,Pass Number=Sing Mood=Sub Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύηται  (Homeric Greek)
+   Voice=Act Number=Plur Person=2 Mood=Sub Tense=Pres VerbForm=Fin: λύητε
+   Voice=Act Number=Plur Person=2 Mood=Sub Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύητε  (Homeric Greek)
+   Voice=Act Number=Dual Person=2 Mood=Sub Tense=Pres VerbForm=Fin: λύητον
+   Voice=Act Number=Dual Mood=Sub Tense=Pres Person=3 VerbForm=Fin: λύητον
+   Voice=Act Number=Dual Person=2 Mood=Sub Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύητον  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Sub Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύητον  (Homeric Greek)
+   Mood=Opt Voice=Pass Number=Plur Tense=Aor Person=3 VerbForm=Fin: λυθεῖεν  (also λυθείησαν)
+   Mood=Opt Voice=Pass Number=Plur Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθεῖεν  (Homeric Greek)
+   Mood=Opt Voice=Pass Number=Sing Tense=Aor Person=3 VerbForm=Fin: λυθείη
+   Mood=Opt Voice=Pass Number=Sing Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθείη  (Homeric Greek)
+   Person=1 Mood=Opt Voice=Pass Number=Plur Tense=Aor VerbForm=Fin: λυθείημεν  (also λυθεῖμεν)
+   Person=1 Mood=Opt Voice=Pass Number=Sing Tense=Aor VerbForm=Fin: λυθείην
+   Person=1 Mood=Opt Voice=Pass Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυθείην  (Homeric Greek)
+   Mood=Opt Voice=Pass Person=2 Number=Sing Tense=Aor VerbForm=Fin: λυθείης
+   Mood=Opt Voice=Pass Person=2 Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυθείης  (Homeric Greek)
+   Mood=Opt Voice=Pass Number=Plur Person=2 Tense=Aor VerbForm=Fin: λυθείητε  (also λυθεῖτε)
+   Number=Dual Mood=Opt Voice=Pass Tense=Aor Person=3 VerbForm=Fin: λυθειήτην  (also λυθείτην)
+   Number=Dual Mood=Opt Voice=Pass Person=2 Tense=Aor VerbForm=Fin: λυθείητον  (also λυθεῖτον)
+   Person=1 Mood=Opt Voice=Pass Number=Plur Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυθεῖμεν  (Homeric Greek)
+   Gender=Masc VerbForm=Part Voice=Pass Tense=Aor: λυθείς
+   Gender=Masc VerbForm=Part Voice=Pass Tense=Aor Dialect=Homeric Greek: λυθείς  (Homeric Greek)
+   Gender=Fem VerbForm=Part Voice=Pass Tense=Aor: λυθεῖσα
+   Gender=Fem VerbForm=Part Voice=Pass Tense=Aor Dialect=Homeric Greek: λυθεῖσα  (Homeric Greek)
+   Mood=Opt Voice=Pass Number=Plur Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυθεῖτε  (Homeric Greek)
+   Number=Dual Mood=Opt Voice=Pass Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθείτην  (Homeric Greek)
+   Number=Dual Mood=Opt Voice=Pass Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυθεῖτον  (Homeric Greek)
+   Gender=Neut VerbForm=Part Voice=Pass Tense=Aor: λυθέν
+   Gender=Neut VerbForm=Part Voice=Pass Tense=Aor Dialect=Homeric Greek: λυθέν  (Homeric Greek)
+   Mood=Ind Voice=Pass Number=Plur Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύθεν  (Homeric Greek; also λύθησαν)
+   Mood=Imp Voice=Pass Number=Plur Tense=Aor Person=3 VerbForm=Fin: λυθέντων
+   Mood=Imp Voice=Pass Number=Plur Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθέντων  (Homeric Greek)
+   Voice=Pass Number=Sing Mood=Sub Tense=Aor Person=3 VerbForm=Fin: λυθῇ
+   Voice=Pass Number=Sing Mood=Sub Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθῇ  (Homeric Greek)
+   Mood=Ind Voice=Pass Number=Sing Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύθη  (Homeric Greek)
+   Person=1 Mood=Ind Voice=Pass Number=Plur Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύθημεν  (Homeric Greek)
+   VerbForm=Inf Voice=Pass Tense=Aor Dialect=Homeric Greek: λυθήμεναι  (Homeric Greek; also λυθῆναι)
+   Person=1 Mood=Ind Voice=Pass Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύθην  (Homeric Greek)
+   Voice=Pass Person=2 Number=Sing Mood=Sub Tense=Aor VerbForm=Fin: λυθῇς
+   Voice=Pass Person=2 Number=Sing Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυθῇς  (Homeric Greek)
+   Mood=Ind Voice=Pass Person=2 Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύθης  (Homeric Greek)
+   Mood=Ind Voice=Pass Person=2 Number=Sing Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυθήσεαι  (Homeric Greek; also λυθήσῃ)
+   Mood=Ind Voice=Pass Person=2 Number=Sing Tense=Fut VerbForm=Fin: λυθήσει  (also λυθήσῃ)
+   VerbForm=Inf Voice=Pass Tense=Fut: λυθήσεσθαι
+   VerbForm=Inf Voice=Pass Tense=Fut Dialect=Homeric Greek: λυθήσεσθαι  (Homeric Greek)
+   Mood=Ind Voice=Pass Number=Plur Person=2 Tense=Fut VerbForm=Fin: λυθήσεσθε
+   Mood=Ind Voice=Pass Number=Plur Person=2 Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυθήσεσθε  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Pass Person=2 Tense=Fut VerbForm=Fin: λυθήσεσθον
+   Number=Dual Mood=Ind Voice=Pass Tense=Fut Person=3 VerbForm=Fin: λυθήσεσθον
+   Number=Dual Mood=Ind Voice=Pass Person=2 Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυθήσεσθον  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Pass Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθήσεσθον  (Homeric Greek)
+   Mood=Ind Voice=Pass Number=Sing Tense=Fut Person=3 VerbForm=Fin: λυθήσεται
+   Mood=Ind Voice=Pass Number=Sing Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθήσεται  (Homeric Greek)
+   Mood=Opt Voice=Pass Number=Plur Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθησοίατο  (Homeric Greek)
+   Person=1 Mood=Opt Voice=Pass Number=Plur Tense=Fut VerbForm=Fin: λυθησοίμεθα
+   Person=1 Mood=Opt Voice=Pass Number=Plur Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυθησοίμεθα  (Homeric Greek; also λυθησοίμεσθα)
+   Person=1 Mood=Opt Voice=Pass Number=Sing Tense=Fut VerbForm=Fin: λυθησοίμην
+   Person=1 Mood=Opt Voice=Pass Number=Sing Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυθησοίμην  (Homeric Greek)
+   Mood=Opt Voice=Pass Number=Plur Tense=Fut Person=3 VerbForm=Fin: λυθήσοιντο
+   Mood=Opt Voice=Pass Person=2 Number=Sing Tense=Fut VerbForm=Fin: λυθήσοιο
+   Mood=Opt Voice=Pass Person=2 Number=Sing Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυθήσοιο  (Homeric Greek)
+   Mood=Opt Voice=Pass Number=Plur Person=2 Tense=Fut VerbForm=Fin: λυθήσοισθε
+   Mood=Opt Voice=Pass Number=Plur Person=2 Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυθήσοισθε  (Homeric Greek)
+   Number=Dual Mood=Opt Voice=Pass Tense=Fut Person=3 VerbForm=Fin: λυθησοίσθην
+   Number=Dual Mood=Opt Voice=Pass Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθησοίσθην  (Homeric Greek)
+   Number=Dual Mood=Opt Voice=Pass Person=2 Tense=Fut VerbForm=Fin: λυθήσοισθον
+   Number=Dual Mood=Opt Voice=Pass Person=2 Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυθήσοισθον  (Homeric Greek)
+   Mood=Opt Voice=Pass Number=Sing Tense=Fut Person=3 VerbForm=Fin: λυθήσοιτο
+   Mood=Opt Voice=Pass Number=Sing Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθήσοιτο  (Homeric Greek)
+   Person=1 Mood=Ind Voice=Pass Number=Sing Tense=Fut VerbForm=Fin: λυθήσομαι
+   Person=1 Mood=Ind Voice=Pass Number=Sing Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυθήσομαι  (Homeric Greek)
+   Person=1 Mood=Ind Voice=Pass Number=Plur Tense=Fut VerbForm=Fin: λυθησόμεθα
+   Person=1 Mood=Ind Voice=Pass Number=Plur Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυθησόμεθα  (Homeric Greek; also λυθησόμεσθα)
+   Gender=Fem VerbForm=Part Voice=Pass Tense=Fut: λυθησομένη
+   Gender=Fem VerbForm=Part Voice=Pass Tense=Fut Dialect=Homeric Greek: λυθησομένη  (Homeric Greek)
+   Gender=Neut VerbForm=Part Voice=Pass Tense=Fut: λυθησόμενον
+   Gender=Neut VerbForm=Part Voice=Pass Tense=Fut Dialect=Homeric Greek: λυθησόμενον  (Homeric Greek)
+   Gender=Masc VerbForm=Part Voice=Pass Tense=Fut: λυθησόμενος
+   Gender=Masc VerbForm=Part Voice=Pass Tense=Fut Dialect=Homeric Greek: λυθησόμενος  (Homeric Greek)
+   Mood=Ind Voice=Pass Number=Plur Tense=Fut Person=3 VerbForm=Fin: λυθήσονται
+   Mood=Ind Voice=Pass Number=Plur Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθήσονται  (Homeric Greek)
+   Voice=Pass Number=Plur Person=2 Mood=Sub Tense=Aor VerbForm=Fin: λυθῆτε
+   Voice=Pass Number=Plur Person=2 Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυθῆτε  (Homeric Greek)
+   Mood=Imp Voice=Pass Number=Plur Person=2 Tense=Aor VerbForm=Fin: λύθητε
+   Mood=Ind Voice=Pass Number=Plur Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύθητε  (Homeric Greek)
+   Mood=Imp Voice=Pass Number=Plur Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύθητε  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Pass Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθήτην  (Homeric Greek)
+   Mood=Imp Voice=Pass Person=2 Number=Sing Tense=Aor VerbForm=Fin: λύθητι
+   Mood=Imp Voice=Pass Person=2 Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύθητι  (Homeric Greek)
+   Number=Dual Voice=Pass Person=2 Mood=Sub Tense=Aor VerbForm=Fin: λυθῆτον
+   Number=Dual Voice=Pass Mood=Sub Tense=Aor Person=3 VerbForm=Fin: λυθῆτον
+   Number=Dual Voice=Pass Person=2 Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυθῆτον  (Homeric Greek)
+   Number=Dual Voice=Pass Mood=Sub Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθῆτον  (Homeric Greek)
+   Number=Dual Mood=Imp Voice=Pass Person=2 Tense=Aor VerbForm=Fin: λύθητον
+   Number=Dual Mood=Ind Voice=Pass Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύθητον  (Homeric Greek)
+   Number=Dual Mood=Imp Voice=Pass Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύθητον  (Homeric Greek)
+   Mood=Imp Voice=Pass Number=Sing Tense=Aor Person=3 VerbForm=Fin: λυθήτω
+   Mood=Imp Voice=Pass Number=Sing Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθήτω  (Homeric Greek)
+   Number=Dual Mood=Imp Voice=Pass Tense=Aor Person=3 VerbForm=Fin: λυθήτων
+   Number=Dual Mood=Imp Voice=Pass Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθήτων  (Homeric Greek)
+   Person=1 Voice=Pass Number=Sing Mood=Sub Tense=Aor VerbForm=Fin: λυθῶ
+   Person=1 Voice=Pass Number=Sing Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυθῶ  (Homeric Greek)
+   Person=1 Voice=Pass Number=Plur Mood=Sub Tense=Aor VerbForm=Fin: λυθῶμεν  (also λυθῶ)
+   Person=1 Voice=Pass Number=Plur Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυθῶμεν  (Homeric Greek)
+   Voice=Pass Number=Plur Mood=Sub Tense=Aor Person=3 VerbForm=Fin: λυθῶσι  (also λυθῶσιν)
+   Voice=Pass Number=Plur Mood=Sub Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυθῶσι  (Homeric Greek; also λυθῶσιν)
+   Person=1 Mood=Ind Voice=Mid Number=Plur Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύμεθα  (Homeric Greek; also λύμεσθα; also λυσάμεθα; also λυσάμεσθα)
+   Person=1 Mood=Ind Voice=Mid Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύμην  (Homeric Greek; also λυσάμην)
+   Mood=Ind Voice=Mid Number=Plur Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύντο  (Homeric Greek; also λῦντο; also λύσαντο)
+   Mood=Ind Voice=Mid Person=2 Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύο  (Homeric Greek; also λῦο; also λύσαο; also λύσω)
+   Voice=Act Mood=Opt Number=Sing Tense=Pres Person=3 VerbForm=Fin: λύοι
+   Voice=Act Mood=Opt Number=Sing Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύοι  (Homeric Greek)
+   Voice=Mid,Pass Mood=Opt Number=Plur Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λυοίατο  (Homeric Greek)
+   Voice=Act Mood=Opt Number=Plur Tense=Pres Person=3 VerbForm=Fin: λύοιεν
+   Voice=Act Mood=Opt Number=Plur Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύοιεν  (Homeric Greek)
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Plur Tense=Pres VerbForm=Fin: λυοίμεθα
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Plur Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λυοίμεθα  (Homeric Greek; also λυοίμεσθα)
+   Voice=Act Person=1 Mood=Opt Number=Plur Tense=Pres VerbForm=Fin: λύοιμεν
+   Voice=Act Person=1 Mood=Opt Number=Plur Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύοιμεν  (Homeric Greek)
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Sing Tense=Pres VerbForm=Fin: λυοίμην
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Sing Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λυοίμην  (Homeric Greek)
+   Voice=Act Person=1 Mood=Opt Number=Sing Tense=Pres VerbForm=Fin: λύοιμι
+   Voice=Act Person=1 Mood=Opt Number=Sing Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύοιμι  (Homeric Greek)
+   Voice=Mid,Pass Mood=Opt Number=Plur Tense=Pres Person=3 VerbForm=Fin: λύοιντο
+   Voice=Mid,Pass Mood=Opt Person=2 Number=Sing Tense=Pres VerbForm=Fin: λύοιο
+   Voice=Mid,Pass Mood=Opt Person=2 Number=Sing Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύοιο  (Homeric Greek)
+   Voice=Act Mood=Opt Person=2 Number=Sing Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύοισ  (Homeric Greek; also λύοισθα)
+   Voice=Act Mood=Opt Person=2 Number=Sing Tense=Pres VerbForm=Fin: λύοις
+   Voice=Mid,Pass Mood=Opt Number=Plur Person=2 Tense=Pres VerbForm=Fin: λύοισθε
+   Voice=Mid,Pass Mood=Opt Number=Plur Person=2 Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύοισθε  (Homeric Greek)
+   Number=Dual Voice=Mid,Pass Mood=Opt Tense=Pres Person=3 VerbForm=Fin: λυοίσθην
+   Number=Dual Voice=Mid,Pass Mood=Opt Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λυοίσθην  (Homeric Greek)
+   Number=Dual Voice=Mid,Pass Mood=Opt Person=2 Tense=Pres VerbForm=Fin: λύοισθον
+   Number=Dual Voice=Mid,Pass Mood=Opt Person=2 Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύοισθον  (Homeric Greek)
+   Voice=Act Mood=Opt Number=Plur Person=2 Tense=Pres VerbForm=Fin: λύοιτε
+   Voice=Act Mood=Opt Number=Plur Person=2 Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύοιτε  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Opt Tense=Pres Person=3 VerbForm=Fin: λυοίτην
+   Voice=Act Number=Dual Mood=Opt Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λυοίτην  (Homeric Greek)
+   Voice=Mid,Pass Mood=Opt Number=Sing Tense=Pres Person=3 VerbForm=Fin: λύοιτο
+   Voice=Mid,Pass Mood=Opt Number=Sing Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύοιτο  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Opt Person=2 Tense=Pres VerbForm=Fin: λύοιτον
+   Voice=Act Number=Dual Mood=Opt Person=2 Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύοιτον  (Homeric Greek)
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Sing Tense=Pres VerbForm=Fin: λύομαι
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Sing Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύομαι  (Homeric Greek)
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Plur Tense=Pres VerbForm=Fin: λυόμεθα
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Plur Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λυόμεθα  (Homeric Greek; also λυόμεσθα)
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Plur Tense=Impf,Perf VerbForm=Fin Dialect=Homeric Greek: λυόμεθα  (Homeric Greek; also λυόμεσθα)
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύομεν  (Homeric Greek)
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Impf,Perf VerbForm=Fin Dialect=Homeric Greek: λύομεν  (Homeric Greek)
+   Gender=Fem Voice=Mid,Pass VerbForm=Part Tense=Pres: λυομένη
+   Gender=Fem Voice=Mid,Pass VerbForm=Part Tense=Pres Dialect=Homeric Greek: λυομένη  (Homeric Greek)
+   Voice=Mid,Pass Gender=Neut VerbForm=Part Tense=Pres: λυόμενον
+   Voice=Mid,Pass Gender=Neut VerbForm=Part Tense=Pres Dialect=Homeric Greek: λυόμενον  (Homeric Greek)
+   Gender=Masc Voice=Mid,Pass VerbForm=Part Tense=Pres: λυόμενος
+   Gender=Masc Voice=Mid,Pass VerbForm=Part Tense=Pres Dialect=Homeric Greek: λυόμενος  (Homeric Greek)
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Sing Tense=Impf,Perf VerbForm=Fin Dialect=Homeric Greek: λυόμην  (Homeric Greek)
+   Voice=Act Gender=Neut VerbForm=Part Tense=Pres Dialect=Homeric Greek: λύον  (Homeric Greek; also λῦον)
+   Voice=Act Person=1 Mood=Ind Number=Sing Tense=Impf,Perf VerbForm=Fin Dialect=Homeric Greek: λύον  (Homeric Greek; also λῦον)
+   Voice=Act Mood=Ind Number=Plur Tense=Impf,Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λύον  (Homeric Greek; also λῦον)
+   Voice=Act Gender=Neut VerbForm=Part Tense=Pres: λῦον
+   Mood=Ind Voice=Mid,Pass Number=Plur Tense=Pres Person=3 VerbForm=Fin: λύονται
+   Mood=Ind Voice=Mid,Pass Number=Plur Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύονται  (Homeric Greek)
+   Mood=Ind Voice=Mid,Pass Number=Plur Tense=Impf,Perf Person=3 VerbForm=Fin Dialect=Homeric Greek: λύοντο  (Homeric Greek)
+   Voice=Act Mood=Imp Number=Plur Tense=Pres Person=3 VerbForm=Fin: λυόντων
+   Voice=Act Mood=Imp Number=Plur Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λυόντων  (Homeric Greek; also λυέτωσαν)
+   Mood=Imp Voice=Mid,Pass Person=2 Number=Sing Tense=Pres VerbForm=Fin: λύου
+   Voice=Act Gender=Fem VerbForm=Part Tense=Pres: λύουσα
+   Voice=Act Gender=Fem VerbForm=Part Tense=Pres Dialect=Homeric Greek: λύουσα  (Homeric Greek)
+   Voice=Act Mood=Ind Number=Plur Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύουσι  (Homeric Greek; also λύουσιν)
+   Voice=Act Person=1 Mood=Ind Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λῦσα  (Homeric Greek)
+   Voice=Act Mood=Opt Number=Sing Tense=Aor Person=3 VerbForm=Fin: λύσαι  (also λύσειε; also λύσειεν)
+   Voice=Act Mood=Opt Number=Sing Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσαι  (Homeric Greek; also λύσειε; also λύσειεν)
+   Mood=Imp Voice=Mid Person=2 Number=Sing Tense=Aor VerbForm=Fin: λῦσαι
+   Mood=Imp Voice=Mid Person=2 Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λῦσαι  (Homeric Greek)
+   Voice=Act VerbForm=Inf Tense=Aor Dialect=Homeric Greek: λῦσαι  (Homeric Greek; also λυσάμεν; also λυσάμεναι)
+   Voice=Mid Mood=Opt Number=Plur Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσαίατο  (Homeric Greek)
+   Voice=Act Mood=Opt Number=Plur Tense=Aor Person=3 VerbForm=Fin: λύσαιεν  (also λύσειαν)
+   Voice=Act Mood=Opt Number=Plur Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσαιεν  (Homeric Greek; also λύσειαν)
+   Person=1 Voice=Mid Mood=Opt Number=Plur Tense=Aor VerbForm=Fin: λυσαίμεθα
+   Person=1 Voice=Mid Mood=Opt Number=Plur Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυσαίμεθα  (Homeric Greek; also λυσαίμεσθα)
+   Voice=Act Person=1 Mood=Opt Number=Plur Tense=Aor VerbForm=Fin: λύσαιμεν
+   Voice=Act Person=1 Mood=Opt Number=Plur Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσαιμεν  (Homeric Greek)
+   Person=1 Voice=Mid Mood=Opt Number=Sing Tense=Aor VerbForm=Fin: λυσαίμην
+   Person=1 Voice=Mid Mood=Opt Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυσαίμην  (Homeric Greek)
+   Voice=Act Person=1 Mood=Opt Number=Sing Tense=Aor VerbForm=Fin: λύσαιμι
+   Voice=Act Person=1 Mood=Opt Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσαιμι  (Homeric Greek)
+   Voice=Mid Mood=Opt Number=Plur Tense=Aor Person=3 VerbForm=Fin: λύσαιντο
+   Voice=Mid Mood=Opt Person=2 Number=Sing Tense=Aor VerbForm=Fin: λύσαιο
+   Voice=Mid Mood=Opt Person=2 Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσαιο  (Homeric Greek)
+   Voice=Act Mood=Opt Person=2 Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσαισ  (Homeric Greek; also λύσαισθα; also λύσειασ; also λύσειασθα)
+   Voice=Act Mood=Opt Person=2 Number=Sing Tense=Aor VerbForm=Fin: λύσαις  (also λύσειας)
+   Voice=Mid Mood=Opt Number=Plur Person=2 Tense=Aor VerbForm=Fin: λύσαισθε
+   Voice=Mid Mood=Opt Number=Plur Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσαισθε  (Homeric Greek)
+   Number=Dual Voice=Mid Mood=Opt Tense=Aor Person=3 VerbForm=Fin: λυσαίσθην
+   Number=Dual Voice=Mid Mood=Opt Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσαίσθην  (Homeric Greek)
+   Number=Dual Voice=Mid Mood=Opt Person=2 Tense=Aor VerbForm=Fin: λύσαισθον
+   Number=Dual Voice=Mid Mood=Opt Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσαισθον  (Homeric Greek)
+   Voice=Act Mood=Opt Number=Plur Person=2 Tense=Aor VerbForm=Fin: λύσαιτε
+   Voice=Act Mood=Opt Number=Plur Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσαιτε  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Opt Tense=Aor Person=3 VerbForm=Fin: λυσαίτην
+   Voice=Act Number=Dual Mood=Opt Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσαίτην  (Homeric Greek)
+   Voice=Mid Mood=Opt Number=Sing Tense=Aor Person=3 VerbForm=Fin: λύσαιτο
+   Voice=Mid Mood=Opt Number=Sing Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσαιτο  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Opt Person=2 Tense=Aor VerbForm=Fin: λύσαιτον
+   Voice=Act Number=Dual Mood=Opt Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσαιτον  (Homeric Greek)
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσαμεν  (Homeric Greek)
+   Gender=Fem Voice=Mid VerbForm=Part Tense=Aor: λυσαμένη
+   Gender=Fem Voice=Mid VerbForm=Part Tense=Aor Dialect=Homeric Greek: λυσαμένη  (Homeric Greek)
+   Voice=Mid Gender=Neut VerbForm=Part Tense=Aor: λυσάμενον
+   Voice=Mid Gender=Neut VerbForm=Part Tense=Aor Dialect=Homeric Greek: λυσάμενον  (Homeric Greek)
+   Gender=Masc Voice=Mid VerbForm=Part Tense=Aor: λυσάμενος
+   Gender=Masc Voice=Mid VerbForm=Part Tense=Aor Dialect=Homeric Greek: λυσάμενος  (Homeric Greek)
+   Voice=Act Gender=Neut VerbForm=Part Tense=Aor: λῦσαν
+   Voice=Act Mood=Ind Number=Plur Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λῦσαν  (Homeric Greek)
+   Voice=Act Gender=Neut VerbForm=Part Tense=Aor Dialect=Homeric Greek: λῦσαν  (Homeric Greek)
+   Gender=Neut Case=Nom Number=Sing: λῦσαν  (also λῦσον)
+   Case=Acc Gender=Neut Number=Sing: λῦσαν  (also λῦσον)
+   Gender=Neut Number=Sing Case=Voc: λῦσαν  (also λῦσον)
+   Gender=Neut Case=Nom Number=Plur: λύσαντα  (also λύσοντα)
+   Case=Acc Gender=Masc Number=Sing: λύσαντα  (also λύσοντα)
+   Case=Acc Gender=Neut Number=Plur: λύσαντα  (also λύσοντα)
+   Gender=Neut Number=Plur Case=Voc: λύσαντα  (also λύσοντα)
+   Case=Acc Gender=Masc Number=Plur: λύσαντας  (also λύσοντας)
+   Number=Dual Gender=Masc Case=Nom: λύσαντε  (also λύσοντε)
+   Number=Dual Gender=Neut Case=Nom: λύσαντε  (also λύσοντε)
+   Case=Acc Number=Dual Gender=Masc: λύσαντε  (also λύσοντε)
+   Case=Acc Number=Dual Gender=Neut: λύσαντε  (also λύσοντε)
+   Number=Dual Gender=Masc Case=Voc: λύσαντε  (also λύσοντε)
+   Number=Dual Gender=Neut Case=Voc: λύσαντε  (also λύσοντε)
+   Gender=Masc Case=Nom Number=Plur: λύσαντες  (also λύσοντες)
+   Gender=Masc Number=Plur Case=Voc: λύσαντες  (also λύσοντες)
+   Case=Dat Gender=Masc Number=Sing: λύσαντι  (also λύσοντι)
+   Case=Dat Gender=Neut Number=Sing: λύσαντι  (also λύσοντι)
+   Number=Dual Case=Gen Gender=Masc: λυσάντοιν  (also λυσόντοιν)
+   Number=Dual Case=Gen Gender=Neut: λυσάντοιν  (also λυσόντοιν)
+   Case=Dat Number=Dual Gender=Masc: λυσάντοιν  (also λυσόντοιν)
+   Case=Dat Number=Dual Gender=Neut: λυσάντοιν  (also λυσόντοιν)
+   Case=Gen Gender=Masc Number=Sing: λύσαντος  (also λύσοντος)
+   Case=Gen Gender=Neut Number=Sing: λύσαντος  (also λύσοντος)
+   Voice=Act Mood=Imp Number=Plur Tense=Aor Person=3 VerbForm=Fin: λυσάντων
+   Voice=Act Mood=Imp Number=Plur Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσάντων  (Homeric Greek)
+   Case=Gen Gender=Masc Number=Plur: λυσάντων  (also λυσόντων)
+   Case=Gen Gender=Neut Number=Plur: λυσάντων  (also λυσόντων)
+   Adverbial=Yes: λυσάντως  (also λυσόντως)
+   Voice=Act Gender=Masc VerbForm=Part Tense=Aor: λύσας
+   Voice=Act Gender=Masc VerbForm=Part Tense=Aor Dialect=Homeric Greek: λύσας  (Homeric Greek)
+   Gender=Masc Case=Nom Number=Sing: λύσας  (also λύσων)
+   Gender=Masc Number=Sing Case=Voc: λύσας  (also λύσων)
+   Voice=Act Tense=Aor VerbForm=Part: λύσας
+   Voice=Act Mood=Ind Person=2 Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λῦσας  (Homeric Greek)
+   Number=Dual Gender=Fem Case=Nom: λυσάσα  (also λυσούσα)
+   Case=Acc Number=Dual Gender=Fem: λυσάσα  (also λυσούσα)
+   Number=Dual Gender=Fem Case=Voc: λυσάσα  (also λυσούσα)
+   Voice=Act Gender=Fem VerbForm=Part Tense=Aor: λύσασα
+   Voice=Act Gender=Fem VerbForm=Part Tense=Aor Dialect=Homeric Greek: λύσασα  (Homeric Greek)
+   Gender=Fem Case=Nom Number=Sing: λύσασα  (also λύσουσα)
+   Gender=Fem Number=Sing Case=Voc: λύσασα  (also λύσουσα)
+   Gender=Fem Case=Nom Number=Plur: λύσασαι  (also λύσουσαι)
+   Gender=Fem Number=Plur Case=Voc: λύσασαι  (also λύσουσαι)
+   Number=Dual Gender=Fem Case=Gen: λυσάσαιν  (also λυσούσαιν)
+   Case=Dat Number=Dual Gender=Fem: λυσάσαιν  (also λυσούσαιν)
+   Case=Dat Gender=Fem Number=Plur: λυσάσαις  (also λυσούσαις)
+   Case=Acc Gender=Fem Number=Sing: λύσασαν  (also λύσουσαν)
+   Case=Acc Gender=Fem Number=Plur: λυσάσας  (also λυσούσας)
+   Case=Dat Gender=Fem Number=Sing: λυσάσῃ  (also λυσούσῃ)
+   Gender=Fem Case=Gen Number=Sing: λυσάσης  (also λυσούσης)
+   VerbForm=Inf Voice=Mid Tense=Aor: λύσασθαι
+   VerbForm=Inf Voice=Mid Tense=Aor Dialect=Homeric Greek: λύσασθαι  (Homeric Greek; also λύσθαι)
+   Mood=Imp Voice=Mid Number=Plur Person=2 Tense=Aor VerbForm=Fin: λύσασθε
+   Mood=Ind Voice=Mid Number=Plur Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσασθε  (Homeric Greek; also λύσθε; also λῦσθε)
+   Mood=Imp Voice=Mid Number=Plur Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσασθε  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσάσθην  (Homeric Greek; also λύσθην)
+   Number=Dual Mood=Imp Voice=Mid Person=2 Tense=Aor VerbForm=Fin: λύσασθον
+   Number=Dual Mood=Ind Voice=Mid Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσασθον  (Homeric Greek; also λύσθον; also λῦσθον)
+   Number=Dual Mood=Imp Voice=Mid Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσασθον  (Homeric Greek)
+   Mood=Imp Voice=Mid Number=Sing Tense=Aor Person=3 VerbForm=Fin: λυσάσθω
+   Mood=Imp Voice=Mid Number=Sing Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσάσθω  (Homeric Greek)
+   Number=Dual Mood=Imp Voice=Mid Tense=Aor Person=3 VerbForm=Fin: λυσάσθων
+   Mood=Imp Voice=Mid Number=Plur Tense=Aor Person=3 VerbForm=Fin: λυσάσθων
+   Number=Dual Mood=Imp Voice=Mid Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσάσθων  (Homeric Greek)
+   Mood=Imp Voice=Mid Number=Plur Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσάσθων  (Homeric Greek)
+   Case=Dat Gender=Masc Number=Plur: λύσασι  (also λύσασιν; also λύσουσι; also λύσουσιν)
+   Case=Dat Gender=Neut Number=Plur: λύσασι  (also λύσασιν; also λύσουσι; also λύσουσιν)
+   Gender=Fem Case=Gen Number=Plur: λυσασῶν  (also λυσουσῶν)
+   Voice=Act Mood=Ind Number=Plur Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσατε  (Homeric Greek)
+   Voice=Act Mood=Imp Number=Plur Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσατε  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Ind Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσάτην  (Homeric Greek)
+   Mood=Ind Voice=Mid Number=Sing Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσατο  (Homeric Greek; also λύτο; also λῦτο)
+   Voice=Act Number=Dual Mood=Imp Person=2 Tense=Aor VerbForm=Fin: λύσατον
+   Voice=Act Number=Dual Mood=Ind Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσατον  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Imp Person=2 Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσατον  (Homeric Greek)
+   Voice=Act Mood=Imp Number=Sing Tense=Aor Person=3 VerbForm=Fin: λυσάτω
+   Voice=Act Mood=Imp Number=Sing Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσάτω  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Imp Tense=Aor Person=3 VerbForm=Fin: λυσάτων
+   Voice=Act Number=Dual Mood=Imp Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσάτων  (Homeric Greek)
+   Voice=Act Mood=Ind Number=Sing Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λῦσε  (Homeric Greek; also λῦσεν)
+   Mood=Ind Voice=Mid Person=2 Number=Sing Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσεαι  (Homeric Greek; also λύσῃ)
+   Voice=Mid Person=2 Number=Sing Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσεαι  (Homeric Greek; also λύσῃ)
+   Voice=Act Mood=Ind Number=Sing Tense=Fut Person=3 VerbForm=Fin: λύσει
+   Mood=Ind Voice=Mid Person=2 Number=Sing Tense=Fut VerbForm=Fin: λύσει  (also λύσῃ)
+   Voice=Act Mood=Ind Number=Sing Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσει  (Homeric Greek)
+   Voice=Act VerbForm=Inf Tense=Fut: λύσειν
+   Voice=Act VerbForm=Inf Tense=Fut Dialect=Homeric Greek: λύσειν  (Homeric Greek; also λυσέμεν; also λυσέμεναι; also λυσμέναι)
+   Voice=Act Mood=Ind Person=2 Number=Sing Tense=Fut VerbForm=Fin: λύσεις
+   Voice=Act Mood=Ind Person=2 Number=Sing Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσεις  (Homeric Greek)
+   VerbForm=Inf Voice=Mid Tense=Fut: λύσεσθαι
+   VerbForm=Inf Voice=Mid Tense=Fut Dialect=Homeric Greek: λύσεσθαι  (Homeric Greek)
+   Mood=Ind Voice=Mid Number=Plur Person=2 Tense=Fut VerbForm=Fin: λύσεσθε
+   Mood=Ind Voice=Mid Number=Plur Person=2 Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσεσθε  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid Person=2 Tense=Fut VerbForm=Fin: λύσεσθον
+   Number=Dual Mood=Ind Voice=Mid Tense=Fut Person=3 VerbForm=Fin: λύσεσθον
+   Number=Dual Mood=Ind Voice=Mid Person=2 Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσεσθον  (Homeric Greek)
+   Number=Dual Mood=Ind Voice=Mid Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσεσθον  (Homeric Greek)
+   Mood=Ind Voice=Mid Number=Sing Tense=Fut Person=3 VerbForm=Fin: λύσεται
+   Mood=Ind Voice=Mid Number=Sing Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσεται  (Homeric Greek)
+   Voice=Mid Number=Sing Mood=Sub Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσεται  (Homeric Greek; also λύσηται)
+   Voice=Act Mood=Ind Number=Plur Person=2 Tense=Fut VerbForm=Fin: λύσετε
+   Voice=Act Mood=Ind Number=Plur Person=2 Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσετε  (Homeric Greek)
+   Voice=Act Number=Plur Person=2 Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσετε  (Homeric Greek; also λύσητε)
+   Voice=Act Number=Dual Mood=Ind Person=2 Tense=Fut VerbForm=Fin: λύσετον
+   Voice=Act Number=Dual Mood=Ind Tense=Fut Person=3 VerbForm=Fin: λύσετον
+   Voice=Act Number=Dual Mood=Ind Person=2 Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσετον  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Ind Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσετον  (Homeric Greek)
+   Voice=Act Number=Dual Person=2 Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσετον  (Homeric Greek; also λύσητον)
+   Voice=Act Number=Dual Mood=Sub Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσετον  (Homeric Greek; also λύσητον)
+   Voice=Act Number=Sing Mood=Sub Tense=Aor Person=3 VerbForm=Fin: λύσῃ
+   Voice=Mid Person=2 Number=Sing Mood=Sub Tense=Aor VerbForm=Fin: λύσῃ
+   Voice=Act Number=Sing Mood=Sub Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσῃ  (Homeric Greek; also λύσῃσι; also λύσῃσιν)
+   Voice=Act Person=2 Number=Sing Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσῃσ  (Homeric Greek; also λύσῃσθα)
+   Voice=Act Person=2 Number=Sing Mood=Sub Tense=Aor VerbForm=Fin: λύσῃς
+   Voice=Mid Number=Plur Person=2 Mood=Sub Tense=Aor VerbForm=Fin: λύσησθε
+   Voice=Mid Number=Plur Person=2 Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσησθε  (Homeric Greek)
+   Number=Dual Voice=Mid Person=2 Mood=Sub Tense=Aor VerbForm=Fin: λύσησθον
+   Number=Dual Voice=Mid Mood=Sub Tense=Aor Person=3 VerbForm=Fin: λύσησθον
+   Number=Dual Voice=Mid Person=2 Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσησθον  (Homeric Greek)
+   Number=Dual Voice=Mid Mood=Sub Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσησθον  (Homeric Greek)
+   Voice=Mid Number=Sing Mood=Sub Tense=Aor Person=3 VerbForm=Fin: λύσηται
+   Voice=Act Number=Plur Person=2 Mood=Sub Tense=Aor VerbForm=Fin: λύσητε
+   Voice=Act Number=Dual Person=2 Mood=Sub Tense=Aor VerbForm=Fin: λύσητον
+   Voice=Act Number=Dual Mood=Sub Tense=Aor Person=3 VerbForm=Fin: λύσητον
+   Voice=Act Mood=Opt Number=Sing Tense=Fut Person=3 VerbForm=Fin: λύσοι
+   Voice=Act Mood=Opt Number=Sing Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσοι  (Homeric Greek)
+   Voice=Mid Mood=Opt Number=Plur Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσοίατο  (Homeric Greek)
+   Voice=Act Mood=Opt Number=Plur Tense=Fut Person=3 VerbForm=Fin: λύσοιεν
+   Voice=Act Mood=Opt Number=Plur Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσοιεν  (Homeric Greek)
+   Person=1 Voice=Mid Mood=Opt Number=Plur Tense=Fut VerbForm=Fin: λυσοίμεθα
+   Person=1 Voice=Mid Mood=Opt Number=Plur Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυσοίμεθα  (Homeric Greek; also λυσοίμεσθα)
+   Voice=Act Person=1 Mood=Opt Number=Plur Tense=Fut VerbForm=Fin: λύσοιμεν
+   Voice=Act Person=1 Mood=Opt Number=Plur Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσοιμεν  (Homeric Greek)
+   Person=1 Voice=Mid Mood=Opt Number=Sing Tense=Fut VerbForm=Fin: λυσοίμην
+   Person=1 Voice=Mid Mood=Opt Number=Sing Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυσοίμην  (Homeric Greek)
+   Voice=Act Person=1 Mood=Opt Number=Sing Tense=Fut VerbForm=Fin: λύσοιμι
+   Voice=Act Person=1 Mood=Opt Number=Sing Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσοιμι  (Homeric Greek)
+   Voice=Mid Mood=Opt Number=Plur Tense=Fut Person=3 VerbForm=Fin: λύσοιντο
+   Voice=Mid Mood=Opt Person=2 Number=Sing Tense=Fut VerbForm=Fin: λύσοιο
+   Voice=Mid Mood=Opt Person=2 Number=Sing Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσοιο  (Homeric Greek)
+   Voice=Act Mood=Opt Person=2 Number=Sing Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσοισ  (Homeric Greek; also λύσοισθα)
+   Voice=Act Mood=Opt Person=2 Number=Sing Tense=Fut VerbForm=Fin: λύσοις
+   Voice=Mid Mood=Opt Number=Plur Person=2 Tense=Fut VerbForm=Fin: λύσοισθε
+   Voice=Mid Mood=Opt Number=Plur Person=2 Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσοισθε  (Homeric Greek)
+   Number=Dual Voice=Mid Mood=Opt Tense=Fut Person=3 VerbForm=Fin: λυσοίσθην
+   Number=Dual Voice=Mid Mood=Opt Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσοίσθην  (Homeric Greek)
+   Number=Dual Voice=Mid Mood=Opt Person=2 Tense=Fut VerbForm=Fin: λύσοισθον
+   Number=Dual Voice=Mid Mood=Opt Person=2 Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσοισθον  (Homeric Greek)
+   Voice=Act Mood=Opt Number=Plur Person=2 Tense=Fut VerbForm=Fin: λύσοιτε
+   Voice=Act Mood=Opt Number=Plur Person=2 Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσοιτε  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Opt Tense=Fut Person=3 VerbForm=Fin: λυσοίτην
+   Voice=Act Number=Dual Mood=Opt Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λυσοίτην  (Homeric Greek)
+   Voice=Mid Mood=Opt Number=Sing Tense=Fut Person=3 VerbForm=Fin: λύσοιτο
+   Voice=Mid Mood=Opt Number=Sing Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσοιτο  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Opt Person=2 Tense=Fut VerbForm=Fin: λύσοιτον
+   Voice=Act Number=Dual Mood=Opt Person=2 Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσοιτον  (Homeric Greek)
+   Person=1 Mood=Ind Voice=Mid Number=Sing Tense=Fut VerbForm=Fin: λύσομαι
+   Person=1 Mood=Ind Voice=Mid Number=Sing Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσομαι  (Homeric Greek)
+   Person=1 Voice=Mid Number=Sing Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσομαι  (Homeric Greek; also λύσωμαι)
+   Person=1 Mood=Ind Voice=Mid Number=Plur Tense=Fut VerbForm=Fin: λυσόμεθα
+   Person=1 Mood=Ind Voice=Mid Number=Plur Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λυσόμεθα  (Homeric Greek; also λυσόμεσθα)
+   Person=1 Voice=Mid Number=Plur Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λυσόμεθα  (Homeric Greek; also λυσόμεσθα; also λυσώμεθα; also λυσώμεσθα)
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Fut VerbForm=Fin: λύσομεν
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσομεν  (Homeric Greek)
+   Voice=Act Person=1 Number=Plur Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσομεν  (Homeric Greek; also λύσωμεν)
+   Gender=Fem Voice=Mid VerbForm=Part Tense=Fut: λυσομένη
+   Gender=Fem Voice=Mid VerbForm=Part Tense=Fut Dialect=Homeric Greek: λυσομένη  (Homeric Greek)
+   Voice=Mid Gender=Neut VerbForm=Part Tense=Fut: λυσόμενον
+   Voice=Mid Gender=Neut VerbForm=Part Tense=Fut Dialect=Homeric Greek: λυσόμενον  (Homeric Greek)
+   Gender=Masc Voice=Mid VerbForm=Part Tense=Fut: λυσόμενος
+   Gender=Masc Voice=Mid VerbForm=Part Tense=Fut Dialect=Homeric Greek: λυσόμενος  (Homeric Greek)
+   Tense=Fut Voice=Mid VerbForm=Part: λυσόμενος
+   Voice=Act Gender=Neut VerbForm=Part Tense=Fut: λῦσον
+   Voice=Act Gender=Neut VerbForm=Part Tense=Fut Dialect=Homeric Greek: λῦσον  (Homeric Greek)
+   Voice=Act Mood=Imp Person=2 Number=Sing Tense=Aor VerbForm=Fin: λῦσον
+   Voice=Act Mood=Imp Person=2 Number=Sing Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λῦσον  (Homeric Greek)
+   Mood=Ind Voice=Mid Number=Plur Tense=Fut Person=3 VerbForm=Fin: λύσονται
+   Mood=Ind Voice=Mid Number=Plur Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσονται  (Homeric Greek)
+   Voice=Act Gender=Fem VerbForm=Part Tense=Fut: λύσουσα
+   Voice=Act Gender=Fem VerbForm=Part Tense=Fut Dialect=Homeric Greek: λύσουσα  (Homeric Greek)
+   Voice=Act Mood=Ind Number=Plur Tense=Fut Person=3 VerbForm=Fin: λύσουσι  (also λύσουσιν)
+   Voice=Act Mood=Ind Number=Plur Tense=Fut Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσουσι  (Homeric Greek; also λύσουσιν)
+   Voice=Act Person=1 Mood=Ind Number=Sing Tense=Fut VerbForm=Fin: λύσω
+   Voice=Act Person=1 Mood=Ind Number=Sing Tense=Fut VerbForm=Fin Dialect=Homeric Greek: λύσω  (Homeric Greek)
+   Voice=Act Person=1 Number=Sing Mood=Sub Tense=Aor VerbForm=Fin: λύσω
+   Voice=Act Person=1 Number=Sing Mood=Sub Tense=Aor VerbForm=Fin Dialect=Homeric Greek: λύσω  (Homeric Greek; also λύσωμι)
+   Person=1 Voice=Mid Number=Sing Mood=Sub Tense=Aor VerbForm=Fin: λύσωμαι
+   Person=1 Voice=Mid Number=Plur Mood=Sub Tense=Aor VerbForm=Fin: λυσώμεθα
+   Voice=Act Person=1 Number=Plur Mood=Sub Tense=Aor VerbForm=Fin: λύσωμεν
+   Voice=Act Gender=Masc VerbForm=Part Tense=Fut: λύσων
+   Voice=Act Gender=Masc VerbForm=Part Tense=Fut Dialect=Homeric Greek: λύσων  (Homeric Greek)
+   Voice=Mid Number=Plur Mood=Sub Tense=Aor Person=3 VerbForm=Fin: λύσωνται
+   Voice=Mid Number=Plur Mood=Sub Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσωνται  (Homeric Greek)
+   Voice=Act Number=Plur Mood=Sub Tense=Aor Person=3 VerbForm=Fin: λύσωσι  (also λύσωσιν)
+   Voice=Act Number=Plur Mood=Sub Tense=Aor Person=3 VerbForm=Fin Dialect=Homeric Greek: λύσωσι  (Homeric Greek; also λύσωσιν)
+   Voice=Act Person=1 Mood=Ind Number=Sing Tense=Pres VerbForm=Fin: λύω
+   Voice=Act Person=1 Number=Sing Mood=Sub Tense=Pres VerbForm=Fin: λύω
+   Voice=Act Person=1 Mood=Ind Number=Sing Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύω  (Homeric Greek)
+   Voice=Act Person=1 Number=Sing Mood=Sub Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύω  (Homeric Greek; also λύωμι)
+   Person=1 Voice=Mid,Pass Number=Sing Mood=Sub Tense=Pres VerbForm=Fin: λύωμαι
+   Person=1 Voice=Mid,Pass Number=Sing Mood=Sub Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύωμαι  (Homeric Greek)
+   Person=1 Voice=Mid,Pass Number=Plur Mood=Sub Tense=Pres VerbForm=Fin: λυώμεθα
+   Person=1 Voice=Mid,Pass Number=Plur Mood=Sub Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λυώμεθα  (Homeric Greek; also λυώμεσθα)
+   Voice=Act Person=1 Number=Plur Mood=Sub Tense=Pres VerbForm=Fin: λύωμεν
+   Voice=Act Person=1 Number=Plur Mood=Sub Tense=Pres VerbForm=Fin Dialect=Homeric Greek: λύωμεν  (Homeric Greek)
+   Voice=Act Gender=Masc VerbForm=Part Tense=Pres: λύων
+   Voice=Act Gender=Masc VerbForm=Part Tense=Pres Dialect=Homeric Greek: λύων  (Homeric Greek)
+   Voice=Mid,Pass Number=Plur Mood=Sub Tense=Pres Person=3 VerbForm=Fin: λύωνται
+   Voice=Mid,Pass Number=Plur Mood=Sub Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύωνται  (Homeric Greek)
+   Voice=Act Number=Plur Mood=Sub Tense=Pres Person=3 VerbForm=Fin: λύωσι  (also λύωσιν)
+   Voice=Act Number=Plur Mood=Sub Tense=Pres Person=3 VerbForm=Fin Dialect=Homeric Greek: λύωσι  (Homeric Greek; also λύωσιν)
+   Voice=Act VerbForm=Part Tense=Perf: λελυκώς
+   Voice=Mid,Pass VerbForm=Part Tense=Perf: λελυμένος
+   Voice=Act Tense=Impf Mood=Ind Number=Sing Person=3 VerbForm=Fin Dialect=Homeric Greek: λῦε  (Homeric Greek)
+   Voice=Act Tense=Impf Mood=Ind Number=Plur Person=2 VerbForm=Fin Dialect=Homeric Greek: λύετε  (Homeric Greek)
+   Tense=Impf Mood=Ind Voice=Mid,Pass Number=Sing Person=3 VerbForm=Fin Dialect=Homeric Greek: λύετο  (Homeric Greek)
+   Voice=Act Number=Dual Mood=Ind Tense=Pres Person=2,3 VerbForm=Fin: λύετον
+   Voice=Act Number=Dual Tense=Pres Person=2,3 Mood=Sub VerbForm=Fin: λύητον
+   Tense=Aor VerbForm=Part Voice=Pass: λυθείς
+   Voice=Act Person=1 Tense=Impf Mood=Ind Number=Plur VerbForm=Fin Dialect=Homeric Greek: λύομεν  (Homeric Greek)
+   Gender=Fem Voice=Mid,Pass VerbForm=Part Tense=Pres Number=Sing: λυομένη
+   Voice=Mid,Pass VerbForm=Part Tense=Pres: λυόμενον  (also λυόμενος)
+   Person=1 Tense=Impf Mood=Ind Voice=Mid,Pass Number=Plur VerbForm=Fin Dialect=Homeric Greek: λυόμην  (Homeric Greek)
+   Voice=Act Person=1 Tense=Impf Mood=Ind Number=Sing VerbForm=Fin Dialect=Homeric Greek: λῦον  (Homeric Greek)
+   Voice=Act Tense=Impf Mood=Ind Number=Plur Person=3 VerbForm=Fin Dialect=Homeric Greek: λῦον  (Homeric Greek)
+   Tense=Impf Mood=Ind Voice=Mid,Pass Number=Plur Person=3 VerbForm=Fin Dialect=Homeric Greek: λύοντο  (Homeric Greek)
+   Tense=Aor: λύσασθαι
+   Voice=Act Number=Dual Tense=Fut Mood=Ind Person=2,3 VerbForm=Fin: λύσετον
+   Voice=Act Tense=Fut VerbForm=Part: λύσων
+   Voice=Act VerbForm=Part Tense=Pres: λύων
+   notes: Cells are the forms the sources hold for this word: attested in the New Testament (MorphGNT) and listed in the Wiktionary Modern Greek table and listed in the Wiktionary Ancient Greek table. A cell no source holds is absent — nothing is generated. A cell from a dialect table (Epic, Ionic, Doric …) is marked with its dialect. || The dictionary has no table for this word; every form here comes from 

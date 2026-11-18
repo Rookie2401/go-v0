@@ -1,0 +1,105 @@
+
+«ἁγιασθήτω» in "Πάτερ ἡμῶν ὁ ἐν τοῖς οὐρανοῖς· ἁγιασθήτω τὸ ὄνομά σου·"
+  lemma ἁγιάζω | pos VERB | form line: aorist passive imperative, 3rd person singular | meaning: Let him, her, or it be koined form of ἁγίζω | conf 0.76 | tokens 1
+  period: Koine Greek (text) — 9 of 10 recognised words are New Testament words and only 0 are not: read as Koine
+  notes: Variety: el-koi.
+  constructions: form:form:Mood=Imp|Number=Sing|Person=3|Tense=Aor|VerbForm=Fin|Voice=Pass “aorist passive imperative, 3rd person singular” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ἁγιάζω:VERB | words: 
+  alternatives: 
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek: ἁγιάζω (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek [this text]: ἁγιάζω (Koine forms Wiktionary lists for this word) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: αγιάζω
+
+«ἡμῶν» in "Πάτερ ἡμῶν ὁ ἐν τοῖς οὐρανοῖς· ἁγιασθήτω τὸ ὄνομά σου·"
+  lemma ἐγώ | pos PRON | form line: personal, genitive plural | meaning: I | conf 0.92 | tokens 1
+  period: Koine Greek (text) — 9 of 10 recognised words are New Testament words and only 0 are not: read as Koine
+  notes: Variety: el-koi. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Case=Gen|Number=Plur|PronType=Prs “personal, genitive plural” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ἐγώ:PRON | words: 
+  alternatives: ἡμεῖς/PRON “we, us, our” 0.42
+  variants: Homeric Greek: not in our sources (no Ancient Greek entry has this headword) | Attic Greek: not in our sources (no Ancient Greek entry has this headword) | Koine Greek [this text]: ἐγώ (2,572× in the New Testament, 12,700× in the Septuagint) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: εγώ
+
+«ὠφελοῦμαι» in "ἀγάπην δὲ μὴ ἔχω, οὐδὲν ὠφελοῦμαι."
+  lemma ὠφελέω | pos VERB | form line: present middle or passive indicative, 1st person singular | meaning: I help | conf 0.76 | tokens 1
+  period: Attic Greek (default) — ancient spelling without Homeric marks; 1 of 6 recognised words are outside the New Testament's vocabulary, so Attic (the stage the Ancient tables describe) rather than Koine
+  notes: Variety: el-att.
+  constructions: form:form:Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Mid,Pass “present middle or passive indicative, 1st person singular” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ὠφελέω:VERB | words: 
+  alternatives: 
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek [this text]: ὠφελέω (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek: not in our sources (only the New Testament core is loaded; the full index was not searched) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: ωφελώ (the Modern Greek descendant Wiktionary states under the Ancient entry)
+
+«μὴ γένοιτο» in "μὴ γένοιτο."
+  lemma undefined | pos undefined | form line: undefined | meaning: undefined | conf 0.85 | tokens 2
+  period: undefined (undefined) — undefined
+  notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+  constructions: none | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:μή:ADV, lemma:el:γίνομαι:VERB | words: μὴ=μή γένοιτο=γίνομαι
+  alternatives: 
+
+«λέγω ὑμῖν» in "ἀμὴν ἀμὴν λέγω ὑμῖν."
+  lemma undefined | pos undefined | form line: undefined | meaning: undefined | conf 0.9 | tokens 2
+  period: undefined (undefined) — undefined
+  notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+  constructions: none | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:λέγω:VERB, lemma:el:σύ:PRON | words: λέγω=λέγω ὑμῖν=σύ
+  alternatives: 
+
+«Τι κάνεις» in "Τι κάνεις;"
+  lemma undefined | pos undefined | form line: undefined | meaning: undefined | conf 0.5 | tokens 2
+  period: undefined (undefined) — undefined
+  notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+  constructions: none | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:τις:PRON, lemma:el:κάνω:VERB | words: Τι=τις κάνεις=κάνω
+  alternatives: 
+
+«πολεμίων» in "τῶν πολεμίων προσιόντων οἱ πολῖται ἔφυγον."
+  lemma πολέμιος | pos ADJ | form line: genitive masculine plural | meaning: belonging to war ( of war) | conf 0.48 | tokens 1
+  period: Attic Greek (default) — ancient spelling without Homeric marks; 4 of 6 recognised words are outside the New Testament's vocabulary, so Attic (the stage the Ancient tables describe) rather than Koine
+  notes: Variety: el-att. || 5 other readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Case=Gen|Gender=Masc|Number=Plur “genitive masculine plural” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: form:el:πολεμίων | words: 
+  alternatives: πολέμιος/ADJ “belonging to war ( of war)” 0.48 | πολέμιος/ADJ “belonging to war ( of war)” 0.48 | πολέμιος/NOUN “enemy” 0.48
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek [this text]: πολέμιος, πολέμῐος (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek: not in our sources (only the New Testament core is loaded; the full index was not searched) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: not in our sources (no Modern Greek entry has this headword and the Ancient entry names no Modern descendant)
+
+«ἵνα» in "ἦλθον ἵνα ἴδω τὴν πόλιν."
+  lemma ἵνα | pos CONJ | form line: undefined | meaning: in order that, so that | conf 0.9 | tokens 1
+  period: Koine Greek (text) — 5 of 5 recognised words are New Testament words and only 0 are not: read as Koine
+  notes: Variety: el-koi. || 2 other readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: none | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ἵνα:CONJ | words: 
+  alternatives: ἵνα/ADV “in order that, so that” 0.52 | ἵνα/CONJ “subordinating conjunction” 0.42
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek: ἵνα (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek [this text]: ἵνα (662× in the New Testament, 621× in the Septuagint) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: να (the Modern Greek descendant Wiktionary states under the Ancient entry)
+
+«είναι» in "Ο λόγος είναι ελεύθερος."
+  lemma είμαι | pos VERB | form line: present active indicative, 3rd person singular | meaning: He, she, or it is | conf 0.49 | tokens 1
+  period: Modern Greek (text) — monotonic spelling; read as Modern Greek
+  notes: Variety: el-mod. || 4 other readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Aspect=Imp|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act “present active indicative, 3rd person singular” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: form:el:είναι | words: 
+  alternatives: είμαι/VERB “to be” 0.49 | είμαι/VERB “to be” 0.49 | είμαι/VERB “to be” 0.49
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek: εἶμαι (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek: not in our sources (only the New Testament core is loaded; the full index was not searched) | Medieval (Byzantine) Greek: εἶμαι (Byzantine forms Wiktionary lists for this word) | Modern Greek [this text]: είμαι
+
+«έγραψα» in "Χθες έγραψα δύο γράμματα."
+  lemma γράφω | pos VERB | form line: active indicative, 1st person singular | meaning: I write | conf 0.59 | tokens 1
+  period: Modern Greek (text) — monotonic spelling; read as Modern Greek
+  notes: Variety: el-mod. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Aspect=Perf|Mood=Ind|Number=Sing|Person=1|VerbForm=Fin|Voice=Act “active indicative, 1st person singular” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:γράφω:VERB | words: 
+  alternatives: γράφω/VERB “to write, pen” 0.59
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek: γράφω, γρᾰ́φω (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek: γράφω (190× in the New Testament, 304× in the Septuagint) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek [this text]: γράφω
+
+«τοῖς» in "ὁ βασιλεὺς τοῖς στρατιώταις χρήματα δίδωσιν."
+  lemma ὁ | pos DET | form line: definite article, dative masculine plural | meaning: the | conf 0.79 | tokens 1
+  period: Attic Greek (default) — ancient spelling without Homeric marks; 2 of 6 recognised words are outside the New Testament's vocabulary, so Attic (the stage the Ancient tables describe) rather than Koine
+  notes: Variety: el-koi. || 43 other readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Case=Dat|Definite=Def|Gender=Masc|Number=Plur “definite article, dative masculine plural” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:ὁ:DET | words: 
+  alternatives: ὁ/DET “the” 0.42 | ὁ/DET “the” 0.42 | ὁ/PRON “that” 0.42
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek [this text]: ὁ (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek: ὁ (19,769× in the New Testament, 88,295× in the Septuagint) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: ο
+
+«δεῖ» in "δεῖ ὑμᾶς γεννηθῆναι ἄνωθεν."
+  lemma δέω | pos VERB | form line: present active indicative, 3rd person singular | meaning: He, she, or it binds | conf 0.88 | tokens 1
+  period: Attic Greek (default) — ancient spelling without Homeric marks; 1 of 4 recognised words are outside the New Testament's vocabulary, so Attic (the stage the Ancient tables describe) rather than Koine
+  notes: Variety: el-koi. || 5 other readings possible even with the sentence; the one shown has the highest confidence.
+  constructions: form:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act “present active indicative, 3rd person singular” — The form shows these features; the pack has no separate explanation for this combination. | phrases: 0 | role: none | syntax: none
+  item ids: lemma:el:δέω:VERB | words: 
+  alternatives: δέω/VERB “to bind, tie, fasten, fetter” 0.43 | δέω/VERB “to bind, tie, fasten, fetter” 0.43 | δέω/VERB “to bind, tie, fasten, fetter” 0.43
+  variants: Homeric Greek: not in our sources (the Ancient Greek entry lists no Epic-specific form; the Perseus treebank of Homer is not yet consulted here) | Attic Greek [this text]: δέω (the Ancient Greek entry (its tables are Attic unless the header says otherwise)) | Koine Greek: δέω (154× in the New Testament, 104× in the Septuagint) | Medieval (Byzantine) Greek: not in our sources (recognised from Byzantine labels only; none here) | Modern Greek: δέω

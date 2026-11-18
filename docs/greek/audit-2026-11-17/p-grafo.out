@@ -1,0 +1,342 @@
+
+== Γράφω → γράφω/VERB: 339 cells {"generated":339}; sources Greek analyser (rules and its irregular tables)
+   Tense=Perf Voice=Pass VerbForm=Part Case=Acc Number=Plur Gender=Neut: γεγραμμένα
+   Tense=Perf Voice=Pass VerbForm=Part Case=Nom Number=Plur Gender=Neut: γεγραμμένα
+   Tense=Perf Voice=Pass VerbForm=Part Case=Nom Number=Sing Gender=Neut: γεγραμμένον
+   Tense=Perf Voice=Pass VerbForm=Part Case=Acc Number=Sing Gender=Neut: γεγραμμένον
+   Tense=Perf Voice=Pass VerbForm=Part Case=Nom Number=Sing Gender=Masc: γεγραμμένος
+   Person=3 Tense=Perf Voice=Pass Mood=Ind VerbForm=Fin Number=Sing: γέγραπται
+   Tense=Pres Voice=Act VerbForm=Inf: γράφειν
+   Person=1 Tense=Pres Voice=Act Mood=Ind VerbForm=Fin Number=Sing: γράφω
+   Tense=Aor Voice=Act VerbForm=Inf: γράψαι
+   Tense=Aor Voice=Act VerbForm=Part Case=Nom Number=Sing Gender=Masc: γράψας
+   Person=2 Tense=Aor Voice=Act Mood=Imp VerbForm=Fin Number=Sing: γράψον
+   Person=3 Tense=Aor Voice=Pass Mood=Ind VerbForm=Fin Number=Sing: ἐγράφη
+   Person=1 Tense=Aor Voice=Act Mood=Ind VerbForm=Fin Number=Sing: ἔγραψα
+   Person=3 Tense=Aor Voice=Act Mood=Ind VerbForm=Fin Number=Sing: ἔγραψεν
+   VerbForm=Part Voice=Pass: γραμμένος
+   Voice=Act Mood=Imp Aspect=Perf Person=2 Number=Sing VerbForm=Fin: γράφ'  (also γράψε)
+   Voice=Act Person=1 Tense=Impf Aspect=Imp Mood=Ind Number=Plur VerbForm=Fin: γράφαμε
+   Voice=Act Tense=Impf Aspect=Imp Mood=Ind Number=Plur Person=3 VerbForm=Fin: γράφαν  (also γράφανε; also έγραφαν)
+   Voice=Act Tense=Impf Aspect=Imp Mood=Ind Number=Plur Person=2 VerbForm=Fin: γράφατε
+   Voice=Act Mood=Imp Aspect=Imp Person=2 Number=Sing VerbForm=Fin: γράφε
+   Mood=Ind Voice=Pass Aspect=Perf Number=Sing Person=3 VerbForm=Fin: γραφεί  (also γράφηκε; also γραφτεί; also γράφτηκε)
+   Voice=Pass: γραφεί  (also γράφομαι; also γραφτεί)
+   Voice=Act Aspect=Imp Mood=Ind Tense=Pres Number=Sing Person=3 VerbForm=Fin: γράφει
+   Tense=Pres Number=Sing Person=3: γράφει
+   Mood=Ind Voice=Pass Aspect=Perf Person=2 Number=Sing VerbForm=Fin: γραφείς  (also γράφηκες; also γραφτείς; also γράφτηκες)
+   Voice=Act Aspect=Imp Mood=Ind Tense=Pres Person=2 Number=Sing VerbForm=Fin: γράφεις
+   Mood=Ind Voice=Pass Aspect=Perf Number=Plur Person=2 VerbForm=Fin: γραφείτε  (also γραφήκατε; also γραφτείτε; also γραφτήκατε)
+   Mood=Imp Voice=Pass Aspect=Perf Number=Plur Person=2 VerbForm=Fin: γραφείτε  (also γραφτείτε)
+   Aspect=Imp Mood=Ind Voice=Pass Tense=Pres Person=2 Number=Sing VerbForm=Fin: γράφεσαι
+   Aspect=Imp Mood=Ind Voice=Pass Number=Plur Tense=Pres Person=2 VerbForm=Fin: γράφεστε  (also γραφόσαστε)
+   Mood=Imp Aspect=Imp Voice=Pass Number=Plur Person=2 VerbForm=Fin: γράφεστε
+   Aspect=Imp Mood=Ind Voice=Pass Tense=Pres Number=Sing Person=3 VerbForm=Fin: γράφεται
+   Voice=Act Aspect=Imp Mood=Ind Number=Plur Tense=Pres Person=2 VerbForm=Fin: γράφετε
+   Voice=Act Mood=Imp Aspect=Imp Number=Plur Person=2 VerbForm=Fin: γράφετε
+   Person=1 Mood=Ind Voice=Pass Aspect=Perf Number=Sing VerbForm=Fin: γράφηκα  (also γράφτηκα; also γραφτώ; also γραφώ)
+   Person=1 Mood=Ind Voice=Pass Aspect=Perf Number=Plur VerbForm=Fin: γραφήκαμε  (also γραφούμε; also γραφτήκαμε; also γραφτούμε)
+   Mood=Ind Voice=Pass Aspect=Perf Number=Plur Person=3 VerbForm=Fin: γραφήκαν  (also γράφηκαν; also γραφήκανε; also γραφούν; also γραφούνε; also γραφτήκαν; also γράφτηκαν; also γραφτήκανε; also γραφτούν; also γραφτούνε)
+   Person=1 Aspect=Imp Mood=Ind Voice=Pass Tense=Pres Number=Sing VerbForm=Fin: γράφομαι
+   Person=1 Tense=Impf Aspect=Imp Mood=Ind Voice=Pass Number=Plur VerbForm=Fin: γραφόμασταν  (also γραφόμαστε)
+   Person=1 Aspect=Imp Mood=Ind Voice=Pass Number=Plur Tense=Pres VerbForm=Fin: γραφόμαστε
+   Voice=Act Person=1 Aspect=Imp Mood=Ind Number=Plur Tense=Pres VerbForm=Fin: γράφομε  (also γράφουμε)
+   Person=1 Number=Plur Tense=Pres: γράφομε  (also γράφουμε)
+   Person=1 Tense=Impf Aspect=Imp Mood=Ind Voice=Pass Number=Sing VerbForm=Fin: γραφόμουν  (also γραφόμουνα)
+   Aspect=Imp Mood=Ind Voice=Pass Number=Plur Tense=Pres Person=3 VerbForm=Fin: γράφονται
+   Tense=Impf Aspect=Imp Mood=Ind Voice=Pass Number=Plur Person=3 VerbForm=Fin: γράφονταν  (also γραφόντουσαν)
+   Voice=Act VerbForm=Part Tense=Pres: γράφοντας
+   Tense=Impf Aspect=Imp Mood=Ind Voice=Pass Number=Plur Person=2 VerbForm=Fin: γραφόσασταν  (also γραφόσαστε)
+   Tense=Impf Aspect=Imp Mood=Ind Voice=Pass Person=2 Number=Sing VerbForm=Fin: γραφόσουν  (also γραφόσουνα)
+   Tense=Impf Aspect=Imp Mood=Ind Voice=Pass Number=Sing Person=3 VerbForm=Fin: γραφόταν  (also γραφότανε)
+   Voice=Act Aspect=Imp Mood=Ind Number=Plur Tense=Pres Person=3 VerbForm=Fin: γράφουν  (also γράφουνε)
+   Voice=Act Mood=Imp Aspect=Perf Number=Plur Person=2 VerbForm=Fin: γράφτε  (also γράψτε)
+   Person=1 Tense=Fut Mood=Ind Voice=Pass Aspect=Perf Number=Sing VerbForm=Fin: γραφώ
+   Voice=Act Person=1 Aspect=Imp Mood=Ind Tense=Pres Number=Sing VerbForm=Fin: γράφω
+   Voice=Act Person=1 Mood=Ind Aspect=Perf Number=Plur VerbForm=Fin: γράψαμε  (also γράψομε; also γράψουμε)
+   Person=1 Number=Plur: γράψαμε
+   Voice=Act Mood=Ind Aspect=Perf Number=Plur Person=3 VerbForm=Fin: γράψαν  (also γράψανε; also γράψουν; also γράψουνε; also έγραψαν)
+   Voice=Act Mood=Ind Aspect=Perf Number=Plur Person=2 VerbForm=Fin: γράψατε  (also γράψετε)
+   Voice=Act Mood=Ind Aspect=Perf Number=Sing Person=3 VerbForm=Fin: γράψει  (also έγραψε)
+   Voice=Act: γράψει
+   Voice=Act Mood=Ind Aspect=Perf Person=2 Number=Sing VerbForm=Fin: γράψεις  (also έγραψες)
+   Mood=Imp Voice=Pass Aspect=Perf Person=2 Number=Sing VerbForm=Fin: γράψου
+   Voice=Act Person=1 Mood=Ind Aspect=Perf Number=Sing VerbForm=Fin: γράψω  (also έγραψα)
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Sing Tense=Perf VerbForm=Fin: γέγραμμαι
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Plur Tense=Perf VerbForm=Fin: γεγράμμεθα
+   Gender=Fem Voice=Mid,Pass VerbForm=Part Tense=Perf: γεγραμμένη
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Plur Tense=Perf VerbForm=Fin: γεγραμμένοι εἴημεν
+   Voice=Mid,Pass Mood=Opt Number=Plur Tense=Perf Person=3 VerbForm=Fin: γεγραμμένοι εἴησαν
+   Voice=Mid,Pass Mood=Opt Number=Plur Person=2 Tense=Perf VerbForm=Fin: γεγραμμένοι εἴητε
+   Voice=Mid,Pass Number=Plur Person=2 Mood=Sub Tense=Perf VerbForm=Fin: γεγραμμένοι ἦτε
+   Person=1 Voice=Mid,Pass Number=Plur Mood=Sub Tense=Perf VerbForm=Fin: γεγραμμένοι ὦμεν
+   Voice=Mid,Pass Number=Plur Mood=Sub Tense=Perf Person=3 VerbForm=Fin: γεγραμμένοι ὦσι  (also γεγραμμένοι ὦσιν)
+   Voice=Mid,Pass Gender=Neut VerbForm=Part Tense=Perf: γεγραμμένον
+   Gender=Masc Voice=Mid,Pass VerbForm=Part Tense=Perf: γεγραμμένος
+   Voice=Mid,Pass Mood=Opt Number=Sing Tense=Perf Person=3 VerbForm=Fin: γεγραμμένος εἴη
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Sing Tense=Perf VerbForm=Fin: γεγραμμένος εἴην
+   Voice=Mid,Pass Mood=Opt Person=2 Number=Sing Tense=Perf VerbForm=Fin: γεγραμμένος εἴης
+   Voice=Mid,Pass Number=Sing Mood=Sub Tense=Perf Person=3 VerbForm=Fin: γεγραμμένος ᾖ
+   Voice=Mid,Pass Person=2 Number=Sing Mood=Sub Tense=Perf VerbForm=Fin: γεγραμμένος ᾖς
+   Person=1 Voice=Mid,Pass Number=Sing Mood=Sub Tense=Perf VerbForm=Fin: γεγραμμένος ὦ
+   Number=Dual Voice=Mid,Pass Mood=Opt Tense=Perf Person=3 VerbForm=Fin: γεγραμμένω εἰήτην
+   Number=Dual Voice=Mid,Pass Mood=Opt Person=2 Tense=Perf VerbForm=Fin: γεγραμμένω εἴητον
+   Number=Dual Voice=Mid,Pass Person=2 Mood=Sub Tense=Perf VerbForm=Fin: γεγραμμένω ἦτον
+   Number=Dual Voice=Mid,Pass Mood=Sub Tense=Perf Person=3 VerbForm=Fin: γεγραμμένω ἦτον
+   Mood=Ind Voice=Mid,Pass Number=Sing Tense=Perf Person=3 VerbForm=Fin: γέγραπται
+   Voice=Act Person=1 Mood=Ind Number=Sing Tense=Perf VerbForm=Fin: γέγραφα
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Perf VerbForm=Fin: γεγράφαμεν
+   Voice=Act Mood=Ind Person=2 Number=Sing Tense=Perf VerbForm=Fin: γέγραφας
+   Voice=Act Mood=Ind Number=Plur Tense=Perf Person=3 VerbForm=Fin: γεγράφασι  (also γεγράφασιν)
+   Mood=Ind Voice=Mid,Pass Number=Plur Tense=Perf Person=3 VerbForm=Fin: γεγράφαται
+   Voice=Act Mood=Ind Number=Plur Person=2 Tense=Perf VerbForm=Fin: γεγράφατε
+   Voice=Act Number=Dual Mood=Ind Person=2 Tense=Perf VerbForm=Fin: γεγράφατον
+   Voice=Act Number=Dual Mood=Ind Tense=Perf Person=3 VerbForm=Fin: γεγράφατον
+   Voice=Act Mood=Ind Number=Sing Tense=Perf Person=3 VerbForm=Fin: γέγραφε  (also γέγραφεν)
+   Voice=Act Mood=Imp Person=2 Number=Sing Tense=Perf VerbForm=Fin: γέγραφε
+   Voice=Act VerbForm=Inf Tense=Perf: γεγραφέναι
+   Voice=Act Mood=Imp Number=Plur Person=2 Tense=Perf VerbForm=Fin: γεγράφετε
+   Voice=Act Number=Dual Mood=Imp Person=2 Tense=Perf VerbForm=Fin: γεγράφετον
+   Voice=Act Mood=Imp Number=Sing Tense=Perf Person=3 VerbForm=Fin: γεγραφέτω
+   Voice=Act Number=Dual Mood=Imp Tense=Perf Person=3 VerbForm=Fin: γεγραφέτων
+   Voice=Act Number=Sing Mood=Sub Tense=Perf Person=3 VerbForm=Fin: γεγράφῃ
+   Voice=Act Person=2 Number=Sing Mood=Sub Tense=Perf VerbForm=Fin: γεγράφῃς
+   Voice=Act Number=Plur Person=2 Mood=Sub Tense=Perf VerbForm=Fin: γεγράφητε
+   Voice=Act Number=Dual Person=2 Mood=Sub Tense=Perf VerbForm=Fin: γεγράφητον
+   Voice=Act Number=Dual Mood=Sub Tense=Perf Person=3 VerbForm=Fin: γεγράφητον
+   VerbForm=Inf Voice=Mid,Pass Tense=Perf: γεγράφθαι
+   Mood=Ind Voice=Mid,Pass Number=Plur Person=2 Tense=Perf VerbForm=Fin: γέγραφθε
+   Mood=Imp Voice=Mid,Pass Number=Plur Person=2 Tense=Perf VerbForm=Fin: γέγραφθε
+   Number=Dual Mood=Ind Voice=Mid,Pass Person=2 Tense=Perf VerbForm=Fin: γέγραφθον
+   Number=Dual Mood=Ind Voice=Mid,Pass Tense=Perf Person=3 VerbForm=Fin: γέγραφθον
+   Number=Dual Mood=Imp Voice=Mid,Pass Person=2 Tense=Perf VerbForm=Fin: γέγραφθον
+   Mood=Imp Voice=Mid,Pass Number=Sing Tense=Perf Person=3 VerbForm=Fin: γεγράφθω
+   Number=Dual Mood=Imp Voice=Mid,Pass Tense=Perf Person=3 VerbForm=Fin: γεγράφθων
+   Mood=Imp Voice=Mid,Pass Number=Plur Tense=Perf Person=3 VerbForm=Fin: γεγράφθων
+   Voice=Act Mood=Opt Number=Sing Tense=Perf Person=3 VerbForm=Fin: γεγράφοι  (also γεγραφοίη)
+   Voice=Act Mood=Opt Number=Plur Tense=Perf Person=3 VerbForm=Fin: γεγράφοιεν
+   Voice=Act Person=1 Mood=Opt Number=Sing Tense=Perf VerbForm=Fin: γεγραφοίην  (also γεγράφοιμι)
+   Voice=Act Mood=Opt Person=2 Number=Sing Tense=Perf VerbForm=Fin: γεγραφοίης  (also γεγράφοις)
+   Voice=Act Person=1 Mood=Opt Number=Plur Tense=Perf VerbForm=Fin: γεγράφοιμεν
+   Voice=Act Mood=Opt Number=Plur Person=2 Tense=Perf VerbForm=Fin: γεγράφοιτε
+   Voice=Act Number=Dual Mood=Opt Tense=Perf Person=3 VerbForm=Fin: γεγραφοίτην
+   Voice=Act Number=Dual Mood=Opt Person=2 Tense=Perf VerbForm=Fin: γεγράφοιτον
+   Voice=Act Mood=Imp Number=Plur Tense=Perf Person=3 VerbForm=Fin: γεγραφόντων
+   Voice=Act Gender=Neut VerbForm=Part Tense=Perf: γεγραφός
+   Voice=Act Gender=Fem VerbForm=Part Tense=Perf: γεγραφυῖα
+   Voice=Act Person=1 Number=Sing Mood=Sub Tense=Perf VerbForm=Fin: γεγράφω
+   Voice=Act Person=1 Number=Plur Mood=Sub Tense=Perf VerbForm=Fin: γεγράφωμεν
+   Voice=Act Gender=Masc VerbForm=Part Tense=Perf: γεγραφώς
+   Voice=Act Number=Plur Mood=Sub Tense=Perf Person=3 VerbForm=Fin: γεγράφωσι  (also γεγράφωσιν)
+   Mood=Ind Voice=Mid,Pass Person=2 Number=Sing Tense=Perf VerbForm=Fin: γέγραψαι
+   Mood=Imp Voice=Mid,Pass Person=2 Number=Sing Tense=Perf VerbForm=Fin: γέγραψο
+   Voice=Act Mood=Imp Person=2 Number=Sing Tense=Pres VerbForm=Fin: γράφε
+   Voice=Act Mood=Ind Number=Sing Tense=Pres Person=3 VerbForm=Fin: γράφει
+   Mood=Ind Voice=Mid,Pass Person=2 Number=Sing Tense=Pres VerbForm=Fin: γράφει  (also γράφῃ)
+   Mood=Opt Voice=Pass Number=Plur Tense=Aor Person=3 VerbForm=Fin: γραφεῖεν  (also γραφείησαν)
+   Mood=Opt Voice=Pass Number=Sing Tense=Aor Person=3 VerbForm=Fin: γραφείη
+   Person=1 Mood=Opt Voice=Pass Number=Plur Tense=Aor VerbForm=Fin: γραφείημεν  (also γραφεῖμεν)
+   Person=1 Mood=Opt Voice=Pass Number=Sing Tense=Aor VerbForm=Fin: γραφείην
+   Mood=Opt Voice=Pass Person=2 Number=Sing Tense=Aor VerbForm=Fin: γραφείης
+   Mood=Opt Voice=Pass Number=Plur Person=2 Tense=Aor VerbForm=Fin: γραφείητε  (also γραφεῖτε)
+   Number=Dual Mood=Opt Voice=Pass Tense=Aor Person=3 VerbForm=Fin: γραφειήτην  (also γραφείτην)
+   Number=Dual Mood=Opt Voice=Pass Person=2 Tense=Aor VerbForm=Fin: γραφείητον  (also γραφεῖτον)
+   Gender=Masc VerbForm=Part Voice=Pass Tense=Aor: γραφείς
+   Voice=Act Mood=Ind Person=2 Number=Sing Tense=Pres VerbForm=Fin: γράφεις
+   Gender=Fem VerbForm=Part Voice=Pass Tense=Aor: γραφεῖσα
+   Gender=Neut VerbForm=Part Voice=Pass Tense=Aor: γραφέν
+   Mood=Imp Voice=Pass Number=Plur Tense=Aor Person=3 VerbForm=Fin: γραφέντων
+   VerbForm=Inf Voice=Mid,Pass Tense=Pres: γράφεσθαι
+   Mood=Ind Voice=Mid,Pass Number=Plur Person=2 Tense=Pres VerbForm=Fin: γράφεσθε
+   Mood=Imp Voice=Mid,Pass Number=Plur Person=2 Tense=Pres VerbForm=Fin: γράφεσθε
+   Number=Dual Mood=Ind Voice=Mid,Pass Person=2 Tense=Pres VerbForm=Fin: γράφεσθον
+   Number=Dual Mood=Ind Voice=Mid,Pass Tense=Pres Person=3 VerbForm=Fin: γράφεσθον
+   Number=Dual Mood=Imp Voice=Mid,Pass Person=2 Tense=Pres VerbForm=Fin: γράφεσθον
+   Mood=Imp Voice=Mid,Pass Number=Sing Tense=Pres Person=3 VerbForm=Fin: γραφέσθω
+   Number=Dual Mood=Imp Voice=Mid,Pass Tense=Pres Person=3 VerbForm=Fin: γραφέσθων
+   Mood=Imp Voice=Mid,Pass Number=Plur Tense=Pres Person=3 VerbForm=Fin: γραφέσθων
+   Mood=Ind Voice=Mid,Pass Number=Sing Tense=Pres Person=3 VerbForm=Fin: γράφεται
+   Voice=Act Mood=Ind Number=Plur Person=2 Tense=Pres VerbForm=Fin: γράφετε
+   Voice=Act Mood=Imp Number=Plur Person=2 Tense=Pres VerbForm=Fin: γράφετε
+   Voice=Act Number=Dual Mood=Ind Person=2 Tense=Pres VerbForm=Fin: γράφετον
+   Voice=Act Number=Dual Mood=Ind Tense=Pres Person=3 VerbForm=Fin: γράφετον
+   Voice=Act Number=Dual Mood=Imp Person=2 Tense=Pres VerbForm=Fin: γράφετον
+   Voice=Act Mood=Imp Number=Sing Tense=Pres Person=3 VerbForm=Fin: γραφέτω
+   Voice=Act Number=Dual Mood=Imp Tense=Pres Person=3 VerbForm=Fin: γραφέτων
+   Voice=Pass Number=Sing Mood=Sub Tense=Aor Person=3 VerbForm=Fin: γραφῇ
+   Voice=Act Number=Sing Mood=Sub Tense=Pres Person=3 VerbForm=Fin: γράφῃ
+   Voice=Mid,Pass Person=2 Number=Sing Mood=Sub Tense=Pres VerbForm=Fin: γράφῃ
+   Mood=Imp Voice=Pass Person=2 Number=Sing Tense=Aor VerbForm=Fin: γράφηθι
+   VerbForm=Inf Voice=Pass Tense=Aor: γραφῆναι
+   Voice=Pass Person=2 Number=Sing Mood=Sub Tense=Aor VerbForm=Fin: γραφῇς
+   Voice=Act Person=2 Number=Sing Mood=Sub Tense=Pres VerbForm=Fin: γράφῃς
+   Mood=Ind Voice=Pass Person=2 Number=Sing Tense=Fut VerbForm=Fin: γραφήσει  (also γραφήσῃ)
+   VerbForm=Inf Voice=Pass Tense=Fut: γραφήσεσθαι
+   Mood=Ind Voice=Pass Number=Plur Person=2 Tense=Fut VerbForm=Fin: γραφήσεσθε
+   Number=Dual Mood=Ind Voice=Pass Person=2 Tense=Fut VerbForm=Fin: γραφήσεσθον
+   Number=Dual Mood=Ind Voice=Pass Tense=Fut Person=3 VerbForm=Fin: γραφήσεσθον
+   Mood=Ind Voice=Pass Number=Sing Tense=Fut Person=3 VerbForm=Fin: γραφήσεται
+   Voice=Mid,Pass Number=Plur Person=2 Mood=Sub Tense=Pres VerbForm=Fin: γράφησθε
+   Number=Dual Voice=Mid,Pass Person=2 Mood=Sub Tense=Pres VerbForm=Fin: γράφησθον
+   Number=Dual Voice=Mid,Pass Mood=Sub Tense=Pres Person=3 VerbForm=Fin: γράφησθον
+   Person=1 Mood=Opt Voice=Pass Number=Plur Tense=Fut VerbForm=Fin: γραφησοίμεθα
+   Person=1 Mood=Opt Voice=Pass Number=Sing Tense=Fut VerbForm=Fin: γραφησοίμην
+   Mood=Opt Voice=Pass Number=Plur Tense=Fut Person=3 VerbForm=Fin: γραφήσοιντο
+   Mood=Opt Voice=Pass Person=2 Number=Sing Tense=Fut VerbForm=Fin: γραφήσοιο
+   Mood=Opt Voice=Pass Number=Plur Person=2 Tense=Fut VerbForm=Fin: γραφήσοισθε
+   Number=Dual Mood=Opt Voice=Pass Tense=Fut Person=3 VerbForm=Fin: γραφησοίσθην
+   Number=Dual Mood=Opt Voice=Pass Person=2 Tense=Fut VerbForm=Fin: γραφήσοισθον
+   Mood=Opt Voice=Pass Number=Sing Tense=Fut Person=3 VerbForm=Fin: γραφήσοιτο
+   Person=1 Mood=Ind Voice=Pass Number=Sing Tense=Fut VerbForm=Fin: γραφήσομαι
+   Person=1 Mood=Ind Voice=Pass Number=Plur Tense=Fut VerbForm=Fin: γραφησόμεθα
+   Gender=Fem VerbForm=Part Voice=Pass Tense=Fut: γραφησομένη
+   Gender=Neut VerbForm=Part Voice=Pass Tense=Fut: γραφησόμενον
+   Gender=Masc VerbForm=Part Voice=Pass Tense=Fut: γραφησόμενος
+   Mood=Ind Voice=Pass Number=Plur Tense=Fut Person=3 VerbForm=Fin: γραφήσονται
+   Voice=Mid,Pass Number=Sing Mood=Sub Tense=Pres Person=3 VerbForm=Fin: γράφηται
+   Voice=Pass Number=Plur Person=2 Mood=Sub Tense=Aor VerbForm=Fin: γραφῆτε
+   Voice=Act Number=Plur Person=2 Mood=Sub Tense=Pres VerbForm=Fin: γράφητε
+   Mood=Imp Voice=Pass Number=Plur Person=2 Tense=Aor VerbForm=Fin: γράφητε
+   Number=Dual Voice=Pass Person=2 Mood=Sub Tense=Aor VerbForm=Fin: γραφῆτον
+   Number=Dual Voice=Pass Mood=Sub Tense=Aor Person=3 VerbForm=Fin: γραφῆτον
+   Voice=Act Number=Dual Person=2 Mood=Sub Tense=Pres VerbForm=Fin: γράφητον
+   Voice=Act Number=Dual Mood=Sub Tense=Pres Person=3 VerbForm=Fin: γράφητον
+   Number=Dual Mood=Imp Voice=Pass Person=2 Tense=Aor VerbForm=Fin: γράφητον
+   Mood=Imp Voice=Pass Number=Sing Tense=Aor Person=3 VerbForm=Fin: γραφήτω
+   Number=Dual Mood=Imp Voice=Pass Tense=Aor Person=3 VerbForm=Fin: γραφήτων
+   Voice=Act Mood=Opt Number=Sing Tense=Pres Person=3 VerbForm=Fin: γράφοι
+   Voice=Act Mood=Opt Number=Plur Tense=Pres Person=3 VerbForm=Fin: γράφοιεν
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Plur Tense=Pres VerbForm=Fin: γραφοίμεθα
+   Voice=Act Person=1 Mood=Opt Number=Plur Tense=Pres VerbForm=Fin: γράφοιμεν
+   Person=1 Voice=Mid,Pass Mood=Opt Number=Sing Tense=Pres VerbForm=Fin: γραφοίμην
+   Voice=Act Person=1 Mood=Opt Number=Sing Tense=Pres VerbForm=Fin: γράφοιμι
+   Voice=Mid,Pass Mood=Opt Number=Plur Tense=Pres Person=3 VerbForm=Fin: γράφοιντο
+   Voice=Mid,Pass Mood=Opt Person=2 Number=Sing Tense=Pres VerbForm=Fin: γράφοιο
+   Voice=Act Mood=Opt Person=2 Number=Sing Tense=Pres VerbForm=Fin: γράφοις
+   Voice=Mid,Pass Mood=Opt Number=Plur Person=2 Tense=Pres VerbForm=Fin: γράφοισθε
+   Number=Dual Voice=Mid,Pass Mood=Opt Tense=Pres Person=3 VerbForm=Fin: γραφοίσθην
+   Number=Dual Voice=Mid,Pass Mood=Opt Person=2 Tense=Pres VerbForm=Fin: γράφοισθον
+   Voice=Act Mood=Opt Number=Plur Person=2 Tense=Pres VerbForm=Fin: γράφοιτε
+   Voice=Act Number=Dual Mood=Opt Tense=Pres Person=3 VerbForm=Fin: γραφοίτην
+   Voice=Mid,Pass Mood=Opt Number=Sing Tense=Pres Person=3 VerbForm=Fin: γράφοιτο
+   Voice=Act Number=Dual Mood=Opt Person=2 Tense=Pres VerbForm=Fin: γράφοιτον
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Sing Tense=Pres VerbForm=Fin: γράφομαι
+   Person=1 Mood=Ind Voice=Mid,Pass Number=Plur Tense=Pres VerbForm=Fin: γραφόμεθα
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Pres VerbForm=Fin: γράφομεν
+   Gender=Fem Voice=Mid,Pass VerbForm=Part Tense=Pres: γραφομένη
+   Voice=Mid,Pass Gender=Neut VerbForm=Part Tense=Pres: γραφόμενον
+   Gender=Masc Voice=Mid,Pass VerbForm=Part Tense=Pres: γραφόμενος
+   Voice=Act Gender=Neut VerbForm=Part Tense=Pres: γράφον
+   Mood=Ind Voice=Mid,Pass Number=Plur Tense=Pres Person=3 VerbForm=Fin: γράφονται
+   Voice=Act Mood=Imp Number=Plur Tense=Pres Person=3 VerbForm=Fin: γραφόντων
+   Mood=Imp Voice=Mid,Pass Person=2 Number=Sing Tense=Pres VerbForm=Fin: γράφου
+   Voice=Act Gender=Fem VerbForm=Part Tense=Pres: γράφουσα
+   Voice=Act Mood=Ind Number=Plur Tense=Pres Person=3 VerbForm=Fin: γράφουσι  (also γράφουσιν)
+   Person=1 Voice=Pass Number=Sing Mood=Sub Tense=Aor VerbForm=Fin: γραφῶ
+   Voice=Act Person=1 Number=Sing Mood=Sub Tense=Pres VerbForm=Fin: γράφω
+   Person=1 Voice=Mid,Pass Number=Sing Mood=Sub Tense=Pres VerbForm=Fin: γράφωμαι
+   Person=1 Voice=Mid,Pass Number=Plur Mood=Sub Tense=Pres VerbForm=Fin: γραφώμεθα
+   Person=1 Voice=Pass Number=Plur Mood=Sub Tense=Aor VerbForm=Fin: γραφῶμεν
+   Voice=Act Person=1 Number=Plur Mood=Sub Tense=Pres VerbForm=Fin: γράφωμεν
+   Voice=Act Gender=Masc VerbForm=Part Tense=Pres: γράφων
+   Voice=Mid,Pass Number=Plur Mood=Sub Tense=Pres Person=3 VerbForm=Fin: γράφωνται
+   Voice=Pass Number=Plur Mood=Sub Tense=Aor Person=3 VerbForm=Fin: γραφῶσι  (also γραφῶσιν)
+   Voice=Act Number=Plur Mood=Sub Tense=Pres Person=3 VerbForm=Fin: γράφωσι  (also γράφωσιν)
+   Voice=Act Mood=Opt Number=Sing Tense=Aor Person=3 VerbForm=Fin: γράψαι  (also γράψειε; also γράψειεν)
+   Mood=Imp Voice=Mid Person=2 Number=Sing Tense=Aor VerbForm=Fin: γράψαι
+   Voice=Act Mood=Opt Number=Plur Tense=Aor Person=3 VerbForm=Fin: γράψαιεν  (also γράψειαν)
+   Person=1 Voice=Mid Mood=Opt Number=Plur Tense=Aor VerbForm=Fin: γραψαίμεθα
+   Voice=Act Person=1 Mood=Opt Number=Plur Tense=Aor VerbForm=Fin: γράψαιμεν
+   Person=1 Voice=Mid Mood=Opt Number=Sing Tense=Aor VerbForm=Fin: γραψαίμην
+   Voice=Act Person=1 Mood=Opt Number=Sing Tense=Aor VerbForm=Fin: γράψαιμι
+   Voice=Mid Mood=Opt Number=Plur Tense=Aor Person=3 VerbForm=Fin: γράψαιντο
+   Voice=Mid Mood=Opt Person=2 Number=Sing Tense=Aor VerbForm=Fin: γράψαιο
+   Voice=Act Mood=Opt Person=2 Number=Sing Tense=Aor VerbForm=Fin: γράψαις  (also γράψειας)
+   Voice=Mid Mood=Opt Number=Plur Person=2 Tense=Aor VerbForm=Fin: γράψαισθε
+   Number=Dual Voice=Mid Mood=Opt Tense=Aor Person=3 VerbForm=Fin: γραψαίσθην
+   Number=Dual Voice=Mid Mood=Opt Person=2 Tense=Aor VerbForm=Fin: γράψαισθον
+   Voice=Act Mood=Opt Number=Plur Person=2 Tense=Aor VerbForm=Fin: γράψαιτε
+   Voice=Act Number=Dual Mood=Opt Tense=Aor Person=3 VerbForm=Fin: γραψαίτην
+   Voice=Mid Mood=Opt Number=Sing Tense=Aor Person=3 VerbForm=Fin: γράψαιτο
+   Voice=Act Number=Dual Mood=Opt Person=2 Tense=Aor VerbForm=Fin: γράψαιτον
+   Gender=Fem Voice=Mid VerbForm=Part Tense=Aor: γραψαμένη
+   Voice=Mid Gender=Neut VerbForm=Part Tense=Aor: γραψάμενον
+   Gender=Masc Voice=Mid VerbForm=Part Tense=Aor: γραψάμενος
+   Voice=Act Gender=Neut VerbForm=Part Tense=Aor: γράψαν
+   Voice=Act Mood=Imp Number=Plur Tense=Aor Person=3 VerbForm=Fin: γραψάντων
+   Voice=Act Gender=Masc VerbForm=Part Tense=Aor: γράψας
+   Voice=Act Gender=Fem VerbForm=Part Tense=Aor: γράψασα
+   VerbForm=Inf Voice=Mid Tense=Aor: γράψασθαι
+   Mood=Imp Voice=Mid Number=Plur Person=2 Tense=Aor VerbForm=Fin: γράψασθε
+   Number=Dual Mood=Imp Voice=Mid Person=2 Tense=Aor VerbForm=Fin: γράψασθον
+   Mood=Imp Voice=Mid Number=Sing Tense=Aor Person=3 VerbForm=Fin: γραψάσθω
+   Number=Dual Mood=Imp Voice=Mid Tense=Aor Person=3 VerbForm=Fin: γραψάσθων
+   Mood=Imp Voice=Mid Number=Plur Tense=Aor Person=3 VerbForm=Fin: γραψάσθων
+   Voice=Act Mood=Imp Number=Plur Person=2 Tense=Aor VerbForm=Fin: γράψατε
+   Voice=Act Number=Dual Mood=Imp Person=2 Tense=Aor VerbForm=Fin: γράψατον
+   Voice=Act Mood=Imp Number=Sing Tense=Aor Person=3 VerbForm=Fin: γραψάτω
+   Voice=Act Number=Dual Mood=Imp Tense=Aor Person=3 VerbForm=Fin: γραψάτων
+   Voice=Act Mood=Ind Number=Sing Tense=Fut Person=3 VerbForm=Fin: γράψει
+   Mood=Ind Voice=Mid Person=2 Number=Sing Tense=Fut VerbForm=Fin: γράψει  (also γράψῃ)
+   Voice=Act VerbForm=Inf Tense=Fut: γράψειν
+   Voice=Act Mood=Ind Person=2 Number=Sing Tense=Fut VerbForm=Fin: γράψεις
+   VerbForm=Inf Voice=Mid Tense=Fut: γράψεσθαι
+   Mood=Ind Voice=Mid Number=Plur Person=2 Tense=Fut VerbForm=Fin: γράψεσθε
+   Number=Dual Mood=Ind Voice=Mid Person=2 Tense=Fut VerbForm=Fin: γράψεσθον
+   Number=Dual Mood=Ind Voice=Mid Tense=Fut Person=3 VerbForm=Fin: γράψεσθον
+   Mood=Ind Voice=Mid Number=Sing Tense=Fut Person=3 VerbForm=Fin: γράψεται
+   Voice=Act Mood=Ind Number=Plur Person=2 Tense=Fut VerbForm=Fin: γράψετε
+   Voice=Act Number=Dual Mood=Ind Person=2 Tense=Fut VerbForm=Fin: γράψετον
+   Voice=Act Number=Dual Mood=Ind Tense=Fut Person=3 VerbForm=Fin: γράψετον
+   Voice=Act Number=Sing Mood=Sub Tense=Aor Person=3 VerbForm=Fin: γράψῃ
+   Voice=Mid Person=2 Number=Sing Mood=Sub Tense=Aor VerbForm=Fin: γράψῃ
+   Voice=Act Person=2 Number=Sing Mood=Sub Tense=Aor VerbForm=Fin: γράψῃς
+   Voice=Mid Number=Plur Person=2 Mood=Sub Tense=Aor VerbForm=Fin: γράψησθε
+   Number=Dual Voice=Mid Person=2 Mood=Sub Tense=Aor VerbForm=Fin: γράψησθον
+   Number=Dual Voice=Mid Mood=Sub Tense=Aor Person=3 VerbForm=Fin: γράψησθον
+   Voice=Mid Number=Sing Mood=Sub Tense=Aor Person=3 VerbForm=Fin: γράψηται
+   Voice=Act Number=Plur Person=2 Mood=Sub Tense=Aor VerbForm=Fin: γράψητε
+   Voice=Act Number=Dual Person=2 Mood=Sub Tense=Aor VerbForm=Fin: γράψητον
+   Voice=Act Number=Dual Mood=Sub Tense=Aor Person=3 VerbForm=Fin: γράψητον
+   Voice=Act Mood=Opt Number=Sing Tense=Fut Person=3 VerbForm=Fin: γράψοι
+   Voice=Act Mood=Opt Number=Plur Tense=Fut Person=3 VerbForm=Fin: γράψοιεν
+   Person=1 Voice=Mid Mood=Opt Number=Plur Tense=Fut VerbForm=Fin: γραψοίμεθα
+   Voice=Act Person=1 Mood=Opt Number=Plur Tense=Fut VerbForm=Fin: γράψοιμεν
+   Person=1 Voice=Mid Mood=Opt Number=Sing Tense=Fut VerbForm=Fin: γραψοίμην
+   Voice=Act Person=1 Mood=Opt Number=Sing Tense=Fut VerbForm=Fin: γράψοιμι
+   Voice=Mid Mood=Opt Number=Plur Tense=Fut Person=3 VerbForm=Fin: γράψοιντο
+   Voice=Mid Mood=Opt Person=2 Number=Sing Tense=Fut VerbForm=Fin: γράψοιο
+   Voice=Act Mood=Opt Person=2 Number=Sing Tense=Fut VerbForm=Fin: γράψοις
+   Voice=Mid Mood=Opt Number=Plur Person=2 Tense=Fut VerbForm=Fin: γράψοισθε
+   Number=Dual Voice=Mid Mood=Opt Tense=Fut Person=3 VerbForm=Fin: γραψοίσθην
+   Number=Dual Voice=Mid Mood=Opt Person=2 Tense=Fut VerbForm=Fin: γράψοισθον
+   Voice=Act Mood=Opt Number=Plur Person=2 Tense=Fut VerbForm=Fin: γράψοιτε
+   Voice=Act Number=Dual Mood=Opt Tense=Fut Person=3 VerbForm=Fin: γραψοίτην
+   Voice=Mid Mood=Opt Number=Sing Tense=Fut Person=3 VerbForm=Fin: γράψοιτο
+   Voice=Act Number=Dual Mood=Opt Person=2 Tense=Fut VerbForm=Fin: γράψοιτον
+   Person=1 Mood=Ind Voice=Mid Number=Sing Tense=Fut VerbForm=Fin: γράψομαι
+   Person=1 Mood=Ind Voice=Mid Number=Plur Tense=Fut VerbForm=Fin: γραψόμεθα
+   Voice=Act Person=1 Mood=Ind Number=Plur Tense=Fut VerbForm=Fin: γράψομεν
+   Gender=Fem Voice=Mid VerbForm=Part Tense=Fut: γραψομένη
+   Voice=Mid Gender=Neut VerbForm=Part Tense=Fut: γραψόμενον
+   Gender=Masc Voice=Mid VerbForm=Part Tense=Fut: γραψόμενος
+   Voice=Act Gender=Neut VerbForm=Part Tense=Fut: γράψον
+   Mood=Ind Voice=Mid Number=Plur Tense=Fut Person=3 VerbForm=Fin: γράψονται
+   Voice=Act Gender=Fem VerbForm=Part Tense=Fut: γράψουσα
+   Voice=Act Mood=Ind Number=Plur Tense=Fut Person=3 VerbForm=Fin: γράψουσι  (also γράψουσιν)
+   Voice=Act Person=1 Mood=Ind Number=Sing Tense=Fut VerbForm=Fin: γράψω
+   Voice=Act Person=1 Number=Sing Mood=Sub Tense=Aor VerbForm=Fin: γράψω
+   Person=1 Voice=Mid Number=Sing Mood=Sub Tense=Aor VerbForm=Fin: γράψωμαι
+   Person=1 Voice=Mid Number=Plur Mood=Sub Tense=Aor VerbForm=Fin: γραψώμεθα
+   Voice=Act Person=1 Number=Plur Mood=Sub Tense=Aor VerbForm=Fin: γράψωμεν
+   Voice=Act Gender=Masc VerbForm=Part Tense=Fut: γράψων
+   Voice=Mid Number=Plur Mood=Sub Tense=Aor Person=3 VerbForm=Fin: γράψωνται
+   Voice=Act Number=Plur Mood=Sub Tense=Aor Person=3 VerbForm=Fin: γράψωσι  (also γράψωσιν)
+   Voice=Mid,Pass VerbForm=Part Tense=Pres: γραφόμενος
+   Voice=Act Person=1 Tense=Impf Aspect=Imp Mood=Ind Number=Sing VerbForm=Fin: έγραφα
+   Voice=Act Tense=Impf Aspect=Imp Mood=Ind Number=Sing Person=3 VerbForm=Fin: έγραφε
+   Voice=Act Tense=Impf Aspect=Imp Mood=Ind Person=2 Number=Sing VerbForm=Fin: έγραφες
+   Person=1 Number=Sing: έγραψα
+   Number=Sing Person=3: έγραψε
+   Voice=Act VerbForm=Part: έχοντας γράψει
+   notes: Cells are the forms the sources hold for this word: attested in the New Testament (MorphGNT) and listed in the Wiktionary Modern Greek table and listed in the Wiktionary Ancient Greek table. A cell no source holds is absent — nothing is generated. A cell from a dialect table (Epic, Ionic, Doric …) is marked with its dialect. || The dictionary has no table for this word; every form here comes from 

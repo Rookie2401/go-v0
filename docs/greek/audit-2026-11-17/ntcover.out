@@ -1,0 +1,8 @@
+New Testament forms 18056, tokens 137554
+  read from the compiled core (MorphGNT): forms 2940 (16.3 %), tokens 110753 (80.5 %)
+    … of these, the reading shown is not MorphGNT’s commonest reading of the form (context-free): forms 22 (0.1 %), tokens 29 (0.0 %)
+  no reading at all (blank card): forms 6456 (35.8 %), tokens 9368 (6.8 %)
+  read from the Wiktionary tables, same lemma as MorphGNT: forms 7003 (38.8 %), tokens 14336 (10.4 %)
+  read from the Wiktionary tables with ANOTHER lemma than MorphGNT’s: forms 1657 (9.2 %), tokens 3097 (2.3 %)
+  reading shown has confidence under 0.5 (no lemma credit): forms 1669 (9.2 %), tokens 3476 (2.5 %)
+  same lemma but a different form line: 4653 forms, 10093 tokens

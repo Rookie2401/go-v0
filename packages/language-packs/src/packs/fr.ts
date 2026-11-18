@@ -39,7 +39,7 @@ export const FR_DICTIONARY = { id: 'kaikki-fr@2026-10-30', entries: 401953, freq
  */
 export const FR_VALIDATION: ValidationCase[] = [
   { id: 'v-lit', surface: 'lit', sentence: 'Elle lit un livre.', expect: { lemma: 'lire', pos: 'VERB', features: { Person: '3', Number: 'Sing', Tense: 'Pres', Mood: 'Ind' } } },
-  { id: 'v-livre', surface: 'livre', sentence: 'Elle lit un livre.', expect: { lemma: 'livre', pos: 'NOUN', features: { Gender: 'Fem,Masc', Number: 'Sing' } } }, // one written noun with both genders: le livre (book), la livre (pound); the reading says so
+  { id: 'v-livre', surface: 'livre', sentence: 'Elle lit un livre.', expect: { lemma: 'livre', pos: 'NOUN', features: { Gender: 'Masc', Number: 'Sing' } } }, // le livre (book) and la livre (pound) are two readings; the article un puts the masculine first
   { id: 'v-maison', surface: 'maison', sentence: 'Il entra dans la maison.', expect: { lemma: 'maison', pos: 'NOUN', features: { Gender: 'Fem', Number: 'Sing' }, status: 'high-confidence' } },
   { id: 'v-entra', surface: 'entra', sentence: 'Il entra dans la maison.', expect: { lemma: 'entrer', pos: 'VERB', features: { Person: '3', Number: 'Sing', Tense: 'Past', Mood: 'Ind' }, status: 'provisional' } },
   { id: 'v-dans', surface: 'dans', sentence: 'Il entra dans la maison.', expect: { lemma: 'dans', pos: 'ADP', status: 'high-confidence' } },

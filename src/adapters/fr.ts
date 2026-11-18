@@ -123,7 +123,8 @@ const union = <T extends string>(a: readonly T[] | undefined, b: readonly T[] | 
   const out = [...new Set([...(a ?? []), ...(b ?? [])])];
   return out.length ? out : undefined;
 };
-const keyOf = (c: AnalysisCandidate) => `${c.lemma}|${c.pos}`;
+/** One word: its lemma and part of speech. être and avoir are AUX in the word list and VERB to the engine: the same word, never two readings. */
+const keyOf = (c: AnalysisCandidate) => `${c.lemma}|${c.pos === 'AUX' ? 'VERB' : c.pos}`;
 
 /** Copy variety and register tags, and the facts a card or a rule needs (auxiliary, h aspiré, pronominal), from the annotation table onto a candidate. */
 function annotate(c: AnalysisCandidate): AnalysisCandidate {

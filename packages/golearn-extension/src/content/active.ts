@@ -39,8 +39,6 @@ export interface ActiveDeps {
    * confirm) does the language's dictionary have? Absent: the analyser's word list alone decides, as before.
    */
   confirmForms?: (forms: string[], languageId: string) => Promise<ConfirmFormsReply | undefined>;
-  /** Alphabet Sprint: hands the worker the character counts of the words read (each text node counted once per page; single characters only). */
-  pageScript?: (languageId: string, counts: Record<string, number>) => Promise<unknown>;
   /** Records the units newly seen in an explicitly enabled Active scan. */
   recordEncounter?: (event: GoEvent) => Promise<unknown>;
   buildEncounter?: (ids: string[], languageId: string, readerId: string) => GoEvent;
@@ -96,25 +94,6 @@ const CONTROL_SEL = 'a[href], button, input, textarea, select, label, summary, [
 export class ActiveMode {
   private on = false;
   private speak = true;
-  // Alphabet Sprint: character counts of the words read, each text node once, sent in one batch a few seconds after a scan
-  private lettered = new WeakSet<Node>();
-  private letters = new Map<string, Map<string, number>>();
-  private lettersTimer: ReturnType<typeof setTimeout> | undefined;
-  private tallyLetters(byLang: Map<string, ScanToken[]>): void {
-    const seen = new Set<Node>();
-    for (const [lang, tokens] of byLang) for (const t of tokens) {
-      if (this.lettered.has(t.node)) continue;
-      seen.add(t.node);
-      const m = this.letters.get(lang) ?? this.letters.set(lang, new Map()).get(lang)!;
-      for (const ch of t.surface.normalize('NFC').toLowerCase()) if (/[\p{L}\p{M}]/u.test(ch)) m.set(ch, (m.get(ch) ?? 0) + 1);
-    }
-    for (const n of seen) this.lettered.add(n);
-    if (this.letters.size && !this.lettersTimer) this.lettersTimer = setTimeout(() => {
-      this.lettersTimer = undefined;
-      for (const [lang, m] of this.letters) void this.d.pageScript?.(lang, Object.fromEntries(m)).catch(() => undefined);
-      this.letters.clear();
-    }, 4000);
-  }
   private languageId: string | undefined;
   private reason: string | undefined;
   private scanner: Scanner | undefined;
@@ -327,7 +306,6 @@ export class ActiveMode {
     const all = [...byDoc.values()].flat();
     const byLang = new Map<string, ScanToken[]>();
     for (const t of all) (byLang.get(langOf(t)) ?? byLang.set(langOf(t), []).get(langOf(t))!).push(t);
-    if (this.d.pageScript) this.tallyLetters(byLang);
     const counts = { confirmed: 0, unconfirmed: 0 };
     for (const [lang, tokens] of byLang) {
       const c = await this.confirm(tokens, lang, clock);

@@ -33,8 +33,6 @@ export interface ContentServices {
   activeProfile?(req: ProfileRequest): Promise<ProfileReply | undefined>;
   /** The scan's dictionary question (2026-10-27): which of these normalised forms does the language's forms index have? Public dictionary data only. */
   confirmForms?(req: ConfirmFormsRequest): Promise<ConfirmFormsReply | undefined>;
-  /** Alphabet Sprint: the character counts of the words a scan read (single characters and numbers only). */
-  pageScript?(languageId: string, counts: Record<string, number>): Promise<unknown>;
   /** Calls the background's local model bridge only after an explicit sentence-translation action. */
   translateSentence?(req: LocalSentenceTranslationRequest): Promise<LocalSentenceTranslationReply | undefined>;
   /** Keep-warm: any message resets the browser's idle timer for the worker. False = the send threw (the extension was reloaded: this script is orphaned). Optional for fakes. */
@@ -93,7 +91,6 @@ export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
     activeProfile: (req) => call<ProfileReply>(MSG.activeProfile, { ...req }, timeoutMs, true),
     // the first question of a page may make the worker locate the dictionary and fetch several shards: more time than a profile row
     confirmForms: (req) => call<ConfirmFormsReply>(MSG.confirmForms, { ...req }, 20_000),
-    pageScript: (languageId, counts) => call<unknown>(MSG.pageScript, { op: 'add', languageId, counts }, 5_000),
     // The worker allows a cold local model up to 60 seconds; include time for its private config read and message round-trip.
     translateSentence: (req) => call<LocalSentenceTranslationReply>(MSG.translateSentence, { ...req }, 125_000),
     events: {

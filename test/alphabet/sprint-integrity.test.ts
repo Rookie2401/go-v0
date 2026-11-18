@@ -80,3 +80,15 @@ describe('the extension keeps letter counts only (privacy)', () => {
     expect(es!.get('J j')).toBe(3);
   });
 });
+
+describe('the worker counts page letters from the form ids Active already asks about', () => {
+  it('counts each distinct form once, ignores lemma and other ids, and keeps letters only', async () => {
+    const area = memoryArea();
+    const s = createPageScriptStore(area);
+    expect(await s.addFromUnitIds('es', ['form:es:niño', 'form:es:niño', 'lemma:es:niño:NOUN', 'sense:es:x', 'form:es:Año', 42])).toEqual({ ok: true });
+    const got = await s.get('es');
+    expect(got.counts).toMatchObject({ 'ñ': 2, 'o': 2, 'n': 1, 'i': 1, 'a': 1 });
+    expect(await s.addFromUnitIds('es', ['lemma:es:casa:NOUN'])).toEqual({ ok: false });
+    expect(await s.addFromUnitIds('es', 'form:es:casa')).toEqual({ ok: false });
+  });
+});

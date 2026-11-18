@@ -1,7 +1,8 @@
 /**
- * The letters of the learner's pages, for Alphabet Sprint (packages/goreview/app/alphabetPage.ts). GoLearn Active's scan counts the
- * characters of the words it reads, by language (content/active.ts), and sends the counts here; GoReview asks for one language's totals
- * to choose the letters the learner's own pages use most.
+ * The letters of the learner's pages, for Alphabet Sprint (packages/goreview/app/alphabetPage.ts). GoLearn Active already asks this worker
+ * about the words on the learner's screen (MSG.activeProfile, unit ids such as form:he:<word>); the worker counts the characters of those
+ * word forms here, by language. Nothing new leaves the page for this. GoReview asks for one language's totals to choose the letters the
+ * learner's own pages use most. Each distinct word counts once per request (Active asks about a word once per tab).
  *
  * What is kept: per language, a count for each single character, the number of batches added, and when. Nothing else: no word, no
  * sentence, no address, no title, no tab. Older counts fade (each new batch scales the totals by DECAY), at most MAX_CHARS characters a
@@ -57,6 +58,15 @@ export function createPageScriptStore(area: StorageArea, now: () => number = Dat
         await area.set({ [PAGE_SCRIPT_KEY]: Object.fromEntries(langs) });
         return { ok: true };
       });
+    },
+    /** Counts the characters of the word forms named by form ids (`form:<lang>:<surface>`), each distinct form once. */
+    addFromUnitIds(languageId: unknown, unitIds: unknown): Promise<{ ok: boolean }> {
+      if (!Array.isArray(unitIds)) return Promise.resolve({ ok: false });
+      const counts: Record<string, number> = {};
+      for (const surface of new Set(unitIds.flatMap((id) => (typeof id === 'string' ? /^form:[a-z]{2,3}(?:-[a-z0-9]+)*:(.+)$/.exec(id)?.[1] ?? [] : [])))) {
+        for (const ch of surface.normalize('NFC').toLowerCase()) counts[ch] = (counts[ch] ?? 0) + 1;
+      }
+      return Object.keys(counts).length ? this.add(languageId, counts) : Promise.resolve({ ok: false });
     },
     /** One language's counts (for GoReview, an extension page). */
     async get(languageId: unknown): Promise<{ ok: boolean; counts?: Record<string, number>; pages?: number }> {

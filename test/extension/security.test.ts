@@ -50,12 +50,11 @@ describe('message senders', () => {
     expect((await rig.page({ type: MSG.status })).connected).toBe(true);
   });
 
-  it('Alphabet Sprint letter counts: a content script may only add them; only an extension page reads them back', async () => {
+  it('Alphabet Sprint page-letter counts: only an extension page reads them; a content script can neither read nor write them', async () => {
     const rig = createRig();
-    expect(await rig.content({ type: MSG.pageScript, op: 'add', languageId: 'he', counts: { 'ש': 3, 'שלום': 9 } })).toEqual({ ok: true });
-    expect(await rig.content({ type: MSG.pageScript, op: 'get', languageId: 'he' })).toEqual({ ok: false, error: 'forbidden' });
+    expect(await rig.content({ type: MSG.pageScript, op: 'add', languageId: 'he', counts: { 'ש': 3 } })).toEqual({ ok: false, error: 'forbidden' });
     expect(await rig.content({ type: MSG.pageScript, languageId: 'he' })).toEqual({ ok: false, error: 'forbidden' });
-    expect(await rig.page({ type: MSG.pageScript, languageId: 'he' })).toEqual({ ok: true, counts: { 'ש': 3 }, pages: 1 });
+    expect(await rig.page({ type: MSG.pageScript, languageId: 'he' })).toEqual({ ok: true });
     await rig.page({ type: MSG.clearLocal });
     expect(await rig.page({ type: MSG.pageScript, languageId: 'he' })).toEqual({ ok: true });
   });

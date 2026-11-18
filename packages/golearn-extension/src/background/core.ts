@@ -75,6 +75,7 @@ const PAGE_ONLY: ReadonlySet<string> = new Set<string>([
   MSG.getState, MSG.setEnabled, MSG.serviceConfig, MSG.connect, MSG.createAccount, MSG.disconnect, MSG.syncNow,
   MSG.enrol, MSG.refreshSession, MSG.selectEnrolment, MSG.useLanguage, MSG.clearLocal, MSG.localRepo, MSG.dictionaryDownload,
   MSG.speechConfig,
+  MSG.pageScript, // Alphabet Sprint: GoReview reads one language's page-letter counts
 ]);
 const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.record, MSG.profile, MSG.gloss, MSG.entry, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
@@ -82,7 +83,6 @@ const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
   MSG.activeProfile, // the scan's learner-model question: device rows only, and only while Active is on (below)
   MSG.confirmForms, // the scan's dictionary question: public dictionary data only, forms in, lemmas out
-  MSG.pageScript, // Alphabet Sprint: a content script may only ADD character counts; reading them back is for an extension page (below)
   MSG.translateSentence,
   MSG.speech,
 ]);
@@ -534,7 +534,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       case MSG.gloss: return gloss.glossFor(m) satisfies Promise<GlossReply>;
       case MSG.entry: return gloss.entryFor(m);
       case MSG.confirmForms: return forms.confirm(m);
-      case MSG.pageScript: return m.op === 'add' ? pageScript.add(m.languageId, m.counts) : kind === 'page' ? pageScript.get(m.languageId) : { ok: false, error: 'forbidden' };
+      case MSG.pageScript: return pageScript.get(m.languageId); // extension pages only (PAGE_ONLY)
       case MSG.explain: return gloss.explainFor(m);
       case MSG.pronounceInfo: return pronounceInfo(m);
       case MSG.speechConfig: return kind === 'page' ? speech.configure(m) : { ok: false };
@@ -548,6 +548,8 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
         const s = await active.get();
         if (!s.active || !(await active.granted())) return { ok: false, error: 'inactive' };
         const languageId = typeof m.languageId === 'string' ? m.languageId : 'sq';
+        // Alphabet Sprint: the letters of the words asked about (from their form ids; nothing new leaves the page), counted on this device
+        void pageScript.addFromUnitIds(languageId, m.unitIds).catch(() => undefined);
         return profile.knowledgeFor(m.unitIds, languageId, { deviceOnly: true });
       }
       case MSG.translateSentence:

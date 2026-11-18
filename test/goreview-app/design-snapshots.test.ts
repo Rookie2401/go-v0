@@ -67,6 +67,15 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
     for (const f of fs.readdirSync(path.join(REPO, 'packages/shared-fonts')).filter((n) => n.endsWith('.woff2'))) fs.copyFileSync(path.join(REPO, 'packages/shared-fonts', f), path.join(dir!, 'fonts', f));
     fs.copyFileSync(path.join(REPO, 'packages/shared-brand/go-logo.png'), path.join(dir!, 'go-logo.png'));
 
+    // (0) the sign-in page in the home's look (the owner, 2026-11-17): the hosted GoReview, where the account is the way in, and the extension's copy
+    for (const [name, opts] of [['signin.html', { edition: 'review' as const }], ['signin-extension.html', {}]] as const) {
+      const signin = await makeRig(opts);
+      await signin.go('signin');
+      await until(() => !!signin.root.querySelector('#signin-form'), 'the sign-in form');
+      write(name, signin);
+      destroyRigs();
+    }
+
     // (2) nothing due
     const empty = await makeRig({ signedIn: true, builders: BUILDERS });
     write('home-empty.html', empty);

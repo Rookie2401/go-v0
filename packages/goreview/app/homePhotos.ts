@@ -116,6 +116,15 @@ const photos: Readonly<Record<string, HomePhoto>> = {
   },
 };
 
+/**
+ * The sign-in page's photograph (the owner, 2026-11-17: the sign-in page in the home's look): no language is chosen there yet, so it is one
+ * of the language homes' photographs, a different one from visit to visit. `random` in [0, 1) picks it (deterministic in tests).
+ */
+export function welcomePhoto(random: () => number = Math.random): HomePhoto {
+  const all = [...new Map(Object.values(photos).map((p) => [p.id, p])).values()];
+  return all[Math.min(all.length - 1, Math.floor(Math.max(0, random()) * all.length))]!;
+}
+
 export function homePhoto(languageId: string): HomePhoto | undefined {
   const language = languageId.split('-')[0].toLowerCase();
   return Object.hasOwn(photos, language) ? photos[language] : undefined;

@@ -25,50 +25,53 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const expired = !!session && (sync.authExpired || Date.parse(session.expiresAt) <= ctx.deps.now().getTime());
   const hosted = mode === 'none';
   const links = ctx.deps.links ?? {};
+  // the page in the home's look (the owner, 2026-11-17): under the photograph and the GoReview title, the home's column of warm tiles
+  const page = h('div', { class: 'home signin', id: 'signin-home' });
+  el.append(page);
 
   if (ctx.deps.mobile?.native && !ctx.deps.mobile.bridge) {
-    append(el, [h('section', { class: 'card error', id: 'native-storage-unavailable' },
+    append(page, [h('section', { class: 'card error', id: 'native-storage-unavailable' },
       h('h2', {}, 'GoReview needs to reconnect to secure storage'),
       p('Your sign-in is kept in iPhone Keychain. This app could not reach that storage. Close and reopen GoReview, then try again.'))]);
   }
 
   if (hosted && ctx.deps.edition === 'review') {
     // the iPhone app: there is no extension on a phone, so the account is the only way in, and it is the one GoLearn uses
-    append(el, [h('section', { class: 'card', id: 'review-first-launch', 'aria-labelledby': 'review-first-h' },
-      h('h2', { id: 'review-first-h' }, 'Welcome to GoReview'),
-      p('GoReview shows what you read with GoLearn on the same account. Sign in with the account you use in GoLearn, or create one below: your words, your decks and your reviews appear here, and what you look up while reading on your computer arrives within seconds while GoReview is open.'),
-      p('New here? Create an account below, then choose your language: everything is set up in GoReview, and GoLearn is not needed to start.', 'muted'),
-      p('Your reviews done here go back to the same account, so GoLearn sees them too. Nothing is shown until you sign in.', 'muted'))]);
+    append(page, [h('section', { class: 'deck-tile signin-tile', id: 'review-first-launch', 'aria-labelledby': 'review-first-h' },
+      h('h2', { id: 'review-first-h', class: 'deck-kicker' }, 'Welcome to GoReview'),
+      p('GoReview shows what you read with GoLearn on the same account. Sign in with the account you use in GoLearn, or create one below: your words, your decks and your reviews appear here, and what you look up while reading on your computer arrives within seconds while GoReview is open.', 'signin-lede'),
+      p('New here? Create an account below, then choose your language: everything is set up in GoReview, and GoLearn is not needed to start.', 'deck-caption'),
+      p('Your reviews done here go back to the same account, so GoLearn sees them too. Nothing is shown until you sign in.', 'deck-caption'))]);
   } else if (hosted) {
     // no wall: the page says what this copy is and where the copy that needs no account lives
-    append(el, [h('section', { class: 'card', id: 'hosted-copy', 'aria-labelledby': 'hosted-h' },
-      h('h2', { id: 'hosted-h' }, 'This is the hosted copy of GoReview'),
-      p('The hosted copy keeps your reviews and drafts on your account, so it needs one. New here? Create an account below, then choose your language: everything is set up here. The copy inside the GoLearn extension works on your own device with no account at all: it reads what you met while reading from the device, and keeps your reviews and drafts there.'),
+    append(page, [h('section', { class: 'deck-tile signin-tile', id: 'hosted-copy', 'aria-labelledby': 'hosted-h' },
+      h('h2', { id: 'hosted-h', class: 'deck-kicker' }, 'This is the hosted copy of GoReview'),
+      p('The hosted copy keeps your reviews and drafts on your account, so it needs one. New here? Create an account below, then choose your language: everything is set up here. The copy inside the GoLearn extension works on your own device with no account at all: it reads what you met while reading from the device, and keeps your reviews and drafts there.', 'signin-lede'),
       links.extension
-        ? h('p', {}, h('a', { class: 'btn primary', id: 'open-extension-copy', href: links.extension }, 'Open GoReview in the extension'))
-        : p('To use it without an account, install the GoLearn extension and open GoReview from its setup page.', 'muted'))]);
+        ? h('p', {}, h('a', { class: 'btn primary signin-pill', id: 'open-extension-copy', href: links.extension }, 'Open GoReview in the extension'))
+        : p('To use it without an account, install the GoLearn extension and open GoReview from its setup page.', 'deck-caption'))]);
   } else if (!session) {
-    append(el, [
-      h('section', { class: 'card', id: 'account-optional' },
-        h('h2', {}, 'Keep your progress across devices'),
-        p('An account is optional. GoReview already works on this device: your reviews and drafts are kept here, and nothing leaves it. Sign in only if you want them on your other devices too.'),
-        p('Signing in uploads what is on this device to your account once, then keeps the two in step. Signing out later brings you back to this device alone and removes nothing.', 'muted'),
-        h('p', {}, h('a', { class: 'btn', id: 'signin-not-now', href: '#/review' }, 'Not now'))),
+    append(page, [
+      h('section', { class: 'deck-tile signin-tile', id: 'account-optional' },
+        h('h2', { class: 'deck-kicker' }, 'Keep your progress across devices'),
+        p('An account is optional. GoReview already works on this device: your reviews and drafts are kept here, and nothing leaves it. Sign in only if you want them on your other devices too.', 'signin-lede'),
+        p('Signing in uploads what is on this device to your account once, then keeps the two in step. Signing out later brings you back to this device alone and removes nothing.', 'deck-caption'),
+        h('p', {}, h('a', { class: 'signin-link', id: 'signin-not-now', href: '#/review' }, 'Not now'))),
     ]);
   }
 
-  append(el, [
-    hosted ? null : p(session ? 'GoReview reviews what you met while reading and keeps your drafts.' : 'Use the account you use in GoLearn. To create one, use GoLearn setup.'),
+  append(page, [
+    hosted ? null : p(session ? 'GoReview reviews what you met while reading and keeps your drafts.' : 'Use the account you use in GoLearn. To create one, use GoLearn setup.', 'signin-note'),
     session
       ? h('p', { id: 'signed-in-as', class: expired ? 'error' : 'muted' }, expired ? `Your session for ${session.email} has expired. Sign in again; nothing on this device was lost.` : `Signed in as ${session.email}. Signing in with another account switches accounts: the cached profile and language are forgotten, and ${session.email}'s unsent events stay on this device under that account.`)
       : null,
-    !hosted && !session && links.setup ? h('p', { class: 'muted' }, h('a', { href: links.setup, id: 'link-setup' }, 'GoLearn setup')) : null,
+    !hosted && !session && links.setup ? h('p', { class: 'muted signin-note' }, h('a', { href: links.setup, id: 'link-setup' }, 'GoLearn setup')) : null,
   ]);
   const email = h('input', { type: 'email', id: 'signin-email', name: 'email', autocomplete: 'email', required: true, value: session?.email ?? '' }) as HTMLInputElement;
   const password = h('input', { type: 'password', id: 'signin-password', name: 'password', autocomplete: 'current-password', required: true }) as HTMLInputElement;
   const status = statusLine();
-  const submit = h('button', { type: 'submit', id: 'signin-submit', class: 'btn primary' }, 'Sign in') as HTMLButtonElement;
-  const next = h('p', { id: 'signin-next', hidden: true }, h('a', { class: 'btn primary', id: 'signin-continue', href: '#/review' }, 'Continue to GoReview'));
+  const submit = h('button', { type: 'submit', id: 'signin-submit', class: 'btn primary signin-pill' }, 'Sign in') as HTMLButtonElement;
+  const next = h('p', { id: 'signin-next', hidden: true }, h('a', { class: 'btn primary signin-pill', id: 'signin-continue', href: '#/review' }, 'Continue to GoReview'));
   const unverified = h('div', { id: 'unverified-notice' });
   // Where there is no setup page to go to (the hosted copy, the iPhone app) the account is made here.
   const name = h('input', { type: 'text', id: 'signin-name', name: 'name', autocomplete: 'name', maxlength: 100 }) as HTMLInputElement;
@@ -76,7 +79,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   nameField.hidden = true;
   const terms = h('p', { class: 'muted', id: 'terms-note', hidden: true }, 'By creating an account you accept the ', h('a', { href: '#/terms' }, 'Terms'), ' and the ', h('a', { href: '#/privacy' }, 'Privacy Policy'), '.');
   let creating = false;
-  const heading = h('h2', {}, 'Sign in');
+  const heading = h('h2', { class: 'deck-title signin-title' }, 'Sign in');
   const toggle = button('Create an account', () => {
     creating = !creating;
     heading.textContent = creating ? 'Create an account' : 'Sign in';
@@ -85,15 +88,16 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     nameField.hidden = !creating;
     terms.hidden = !creating;
     password.setAttribute('autocomplete', creating ? 'new-password' : 'current-password');
-  }, { id: 'signin-create-toggle', class: 'btn' }) as HTMLButtonElement;
-  const form = h('form', { id: 'signin-form', novalidate: true, class: 'card' },
+  }, { id: 'signin-create-toggle', class: 'signin-link' }) as HTMLButtonElement;
+  const form = h('form', { id: 'signin-form', novalidate: true, class: 'deck-tile signin-tile', 'data-deck': 'current' },
+    h('p', { class: 'deck-kicker', 'aria-hidden': 'true' }, 'Your account'),
     heading,
     nameField, field('Email', email), field('Password', password), terms,
-    h('div', { class: 'row' }, submit, hosted && !session ? toggle : null), status, unverified, next);
+    h('div', { class: 'signin-actions' }, submit, hosted && !session ? toggle : null), status, unverified, next);
   const banner = h('div', { id: 'deletion-slot' });
-  el.append(banner, form, forgotBlock(ctx, email), h('p', { class: 'muted', id: 'email-links-note' }, 'Links in confirmation and password-reset emails open GoLearn setup. ',
+  page.append(banner, form, forgotBlock(ctx, email), h('p', { class: 'signin-footnote', id: 'email-links-note' }, 'Links in confirmation and password-reset emails open GoLearn setup. ',
     links.setup ? h('a', { href: links.setup, id: 'link-setup-email' }, 'Open GoLearn setup') : null),
-  h('p', { class: 'muted', id: 'legal-links' }, h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' · ', h('a', { href: '#/privacy', id: 'link-privacy-policy' }, 'Privacy Policy'), ' (drafts) · ', h('a', { href: '#/help', id: 'link-help' }, 'Help')));
+  h('p', { class: 'signin-footnote', id: 'legal-links' }, h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' · ', h('a', { href: '#/privacy', id: 'link-privacy-policy' }, 'Privacy Policy'), ' (drafts) · ', h('a', { href: '#/help', id: 'link-help' }, 'Help')));
   const repaintBanner = mountDeletionBanner(banner, ctx, view);
 
   form.addEventListener('submit', (ev) => {
@@ -160,11 +164,11 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 function forgotBlock(ctx: AppContext, signInEmail: HTMLInputElement): HTMLElement {
   const email = h('input', { type: 'email', id: 'forgot-email', name: 'forgot-email', autocomplete: 'email' }) as HTMLInputElement;
   const out = statusLine();
-  const box = h('details', { class: 'card', id: 'forgot' },
+  const box = h('details', { class: 'signin-forgot', id: 'forgot' },
     h('summary', { id: 'forgot-h' }, 'Forgot password?'),
-    p('Enter the email address of your account and we will send you a link to choose a new password.', 'muted'),
+    p('Enter the email address of your account and we will send you a link to choose a new password.', 'deck-caption'),
     field('Email', email),
-    h('div', { class: 'row' }, button('Email me a reset link', () => {
+    h('div', { class: 'signin-actions' }, button('Email me a reset link', () => {
       void (async () => {
         const addr = email.value.trim();
         if (!EMAIL.test(addr)) { setStatus(out, 'Enter a valid email address.', 'error'); return; }
@@ -174,7 +178,7 @@ function forgotBlock(ctx: AppContext, signInEmail: HTMLInputElement): HTMLElemen
         if (r.ok || (r.status >= 400 && r.status < 500 && r.status !== 429)) setStatus(out, 'If that address has an account, an email is on its way.', 'ok');
         else setStatus(out, r.status === 0 ? 'The service could not be reached, so no email was sent. Try again.' : r.status === 429 ? 'Too many attempts. Wait a few minutes and try again.' : r.message || `The service answered ${r.status}.`, 'error');
       })();
-    }, { id: 'forgot-submit', class: 'btn' })), out);
+    }, { id: 'forgot-submit', class: 'btn primary signin-pill' })), out);
   box.addEventListener('toggle', () => { if ((box as HTMLDetailsElement).open && !email.value) email.value = signInEmail.value.trim(); });
   return box;
 }

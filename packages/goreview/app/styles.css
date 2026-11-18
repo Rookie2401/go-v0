@@ -269,7 +269,7 @@ table.paradigm td.sel > span:first-child, .forms-list li.sel > span:first-child 
 }
 
 /* The review home uses the colors of stone, leather and brass. The photograph is bundled with the app. */
-body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"])) {
+body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"])) {
   color-scheme: dark;
   --paper: #211a15;
   --paper-raised: #30251c;
@@ -293,9 +293,9 @@ body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-
   --focus: var(--accent);
   background: var(--paper);
 }
-body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
-html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"]))::before { background: var(--paper); }
-.screen:is([data-route="review"], [data-route="review/session"]) {
+body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
+html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"]))::before { background: var(--paper); }
+.screen:is([data-route="review"], [data-route="review/session"], [data-route="signin"]) {
   --home-gutter: clamp(1.125rem, 5vw, 2rem);
   max-width: none;
   padding: 0 0 calc(1.25rem + env(safe-area-inset-bottom, 0px));
@@ -473,6 +473,81 @@ html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-rou
   font-size: .83rem;
 }
 .home-photo-credit a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
+
+/* The sign-in page in the home's look (the owner, 2026-11-17): the hero (app.ts: a language home's photograph, "Welcome" between gold rules,
+   the GoReview title), then the home's column of warm tiles. A tile here holds words and a form, not a single control, so it does not ripple;
+   its text sits at the tile's inset. Fields are a single line on the tile, the action is the gold pill, the other ways on are gold links. */
+.signin { display: grid; gap: .8rem; }
+.signin > .signin-tile { --deck-inset: clamp(.95rem, 4vw, 1.55rem); display: block; padding: 1.05rem var(--deck-inset) 1.15rem; }
+.signin-tile > :first-child { margin-top: 0; }
+.signin-tile > :last-child { margin-bottom: 0; }
+.signin-tile h2.deck-kicker { margin: 0 0 .55rem; font: inherit; font-size: .78rem; font-weight: 400; color: var(--ink-soft); letter-spacing: .18em; text-transform: uppercase; }
+.signin-tile p.deck-kicker { margin: 0 0 .2rem; }
+.signin-tile .signin-title { margin: 0 0 .5rem; color: var(--ink); font-size: clamp(2.35rem, 9vw, 3.4rem); font-weight: 400; line-height: 1; letter-spacing: -.018em; text-transform: none; }
+.signin > #deletion-slot:empty { display: none; }
+.signin-lede { margin: 0 0 .7rem; font-size: 1.12rem; line-height: 1.5; color: var(--ink); }
+.signin-tile p.deck-caption { margin: 0 0 .5rem; display: block; }
+.signin .field { max-width: none; margin: .85rem 0; }
+.signin .field .cap { color: var(--ink-soft); font-weight: 400; letter-spacing: .18em; }
+.signin .field .help { color: var(--ink-soft); }
+.signin input:is([type="text"], [type="email"], [type="password"]) {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: .35rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--control-line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 1.2rem/1.3 var(--serif);
+}
+/* the line turns gold under the field being typed in; the focus outline itself stays the page's own (A-C02) */
+.signin input:is([type="text"], [type="email"], [type="password"]):focus { border-bottom-color: var(--accent); }
+.signin-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.4rem; margin: 1.25rem 0 .2rem; }
+.signin .btn.signin-pill, .signin button.signin-pill {
+  min-height: 2.75rem;
+  padding: .45rem 1.9rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: 600 1.02rem/1.3 var(--serif);
+  letter-spacing: .04em;
+}
+.signin .btn.signin-pill:hover, .signin button.signin-pill:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); opacity: .9; }
+.signin .signin-link, .signin-forgot > summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: .15rem .5rem;
+  margin-inline-start: -.5rem;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font: 600 .95rem/1.3 var(--serif);
+  text-decoration: underline;
+  text-underline-offset: .23em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.signin .signin-link:hover:not(:disabled), .signin-forgot > summary:hover { color: var(--ink); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.signin .signin-link:focus-visible, .signin-forgot > summary:focus-visible, .signin .btn.signin-pill:focus-visible, .signin button.signin-pill:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.signin .status { text-align: start; margin-top: .9rem; }
+.signin #signin-form .status { font-style: italic; }
+.signin-forgot { justify-self: center; width: 100%; text-align: center; }
+.signin-forgot > summary { list-style: none; margin-inline: auto; }
+.signin-forgot > summary::-webkit-details-marker { display: none; }
+.signin-forgot[open] { padding: .4rem clamp(.95rem, 4vw, 1.55rem) 1rem; border-radius: .8rem; background: #2a211a; text-align: start; }
+.signin-forgot[open] > summary { margin-inline-start: -.5rem; }
+.signin-note { margin: 0; text-align: center; color: var(--ink-soft); }
+.signin > #signed-in-as { margin: 0; text-align: center; }
+.signin-footnote { margin: .1rem 0 0; color: var(--ink-faint); text-align: center; font-size: .83rem; }
+.signin-footnote a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
+.signin-footnote a:hover { color: var(--accent); }
+@media (forced-colors: active) {
+  .signin input:is([type="text"], [type="email"], [type="password"]) { border-bottom-color: CanvasText; }
+  .signin-forgot[open] { border: 1px solid CanvasText; }
+}
 @media (min-width: 720px) {
   [data-home-photo] .home-hero { min-height: 17.5rem; background-position: center, var(--home-photo-desktop-position); }
   .deck-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }

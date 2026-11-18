@@ -7,7 +7,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { CONTRACT_VERSION, validateEvent } from '../../packages/repository-contract/src';
 import type { Enrolment, GoEvent } from '../../packages/repository-contract/src';
-import { LOCAL_LEARNER, defaultService, destroyRigs, flush, makeRig, until } from './helpers';
+import { LOCAL_LEARNER, accountLanguages, shownEnrolment, switchLanguage, defaultService, destroyRigs, flush, makeRig, until } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -21,18 +21,17 @@ const lookedUp = (learnerId: string, enrolmentId: string, languageId: string, at
   return e;
 };
 
-const optionLabels = (rig: Awaited<ReturnType<typeof makeRig>>): string[] => rig.qa<HTMLOptionElement>('#language-select option').map((o) => o.textContent ?? '');
+/** The learner's languages as the Account page lists them (since 2026-11-18 the home has no dropdown); back on the home afterwards. */
+const languageNames = async (rig: Awaited<ReturnType<typeof makeRig>>): Promise<string[]> => { const l = (await accountLanguages(rig)).map((x) => x.name); await rig.go('review'); return l; };
 /** The sentence "X: the language you read most recently" is no longer on screen; it is the tooltip of the language control. */
 const note = (rig: Awaited<ReturnType<typeof makeRig>>): string | undefined => {
-  const title = rig.root.querySelector('#language-select, #language-name')?.getAttribute('title') ?? '';
+  const title = rig.root.querySelector('#language-name')?.getAttribute('title') ?? '';
   return /most recently/.test(title) ? title : undefined;
 };
 /** GoReview does not re-render a route it is already on: leave and return, so the header is read afresh. */
 const rerender = async (rig: Awaited<ReturnType<typeof makeRig>>): Promise<void> => { await rig.go('settings'); await rig.go('review'); };
 const pick = async (rig: Awaited<ReturnType<typeof makeRig>>, enrolmentId: string): Promise<void> => {
-  const select = rig.q<HTMLSelectElement>('#language-select');
-  select.value = enrolmentId;
-  select.dispatchEvent(new Event('change', { bubbles: true }));
+  await switchLanguage(rig, enrolmentId); // on the Account page, as a learner does it (2026-11-18)
   await until(async () => (await rig.app.ctx.identity())?.enrolmentId === enrolmentId, 'the language to change');
   await flush(6);
 };
@@ -55,8 +54,8 @@ describe('on the device (the extension\'s copy), with Albanian, German and Hindi
     await rerender(rig);
     const id = await rig.app.ctx.identity();
     expect(id).toMatchObject({ languageId: 'de', enrolmentId: E.de, chosenBy: 'recent-reading' });
-    expect(rig.q<HTMLSelectElement>('#language-select').value).toBe(E.de);
-    expect(optionLabels(rig).sort()).toEqual(['Albanian', 'German', 'Hindi']);
+    expect(shownEnrolment(rig)).toBe(E.de);
+    expect((await languageNames(rig)).sort()).toEqual(['Albanian', 'German', 'Hindi']);
     expect(note(rig)).toBe('German: the language you read most recently');
     expect(rig.q('main').getAttribute('data-language')).toBe('de');
   });
@@ -85,7 +84,7 @@ describe('on the device (the extension\'s copy), with Albanian, German and Hindi
     service.inject(LOCAL_LEARNER, lookedUp(LOCAL_LEARNER, E.sq, 'sq', '2026-10-09T09:00:00.000Z')); // reading elsewhere afterwards
     expect((await rig.app.ctx.identity())?.languageId).toBe('hi');
     await rerender(rig);
-    expect(rig.q<HTMLSelectElement>('#language-select').value).toBe(E.hi);
+    expect(shownEnrolment(rig)).toBe(E.hi);
     expect(note(rig)).toBeUndefined();
   });
 
@@ -127,8 +126,8 @@ describe('with an account, and Albanian and German enabled', () => {
     await rig.app.ctx.syncNow({ force: true });
     await rerender(rig);
     expect(await rig.app.ctx.identity()).toMatchObject({ learnerId: 'L9', languageId: 'sq', chosenBy: 'recent-reading' });
-    expect(optionLabels(rig).sort()).toEqual(['Albanian', 'German']);
-    expect(rig.q<HTMLSelectElement>('#language-select').value).toBe('L9-e1');
+    expect((await languageNames(rig)).sort()).toEqual(['Albanian', 'German']);
+    expect(shownEnrolment(rig)).toBe('L9-e1');
     expect(note(rig)).toBe('Albanian: the language you read most recently');
   });
 

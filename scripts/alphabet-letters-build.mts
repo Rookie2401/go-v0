@@ -1,4 +1,4 @@
-// Writes packages/goreview/app/alphabetLetters.thhi.ts: the Thai and Hindi letters of GoReview's Alphabet saved deck, as plain data, from
+// Writes packages/language-packs/src/alphabet-sprint/letters-thhi.ts: the Thai and Hindi letters of GoReview's Alphabet saved deck, as plain data, from
 // the alphabet trainer's decks (src/alphabet). GoReview then carries the letters and not the spelling engines the trainer reads them from.
 //   npx vite-node --config scripts/vite.config.ts scripts/alphabet-letters-build.mts      (from the repository root)
 import fs from 'node:fs';
@@ -20,5 +20,5 @@ for (const lang of ['th', 'hi'] as const) {
   for (const [glyph, back, kind] of rowsFor(lang)) lines.push(`  [${JSON.stringify(glyph)}, ${JSON.stringify(back)}, ${JSON.stringify(kind)}],`);
   lines.push('];', '');
 }
-fs.writeFileSync('packages/goreview/app/alphabetLetters.thhi.ts', lines.join('\n'));
+fs.writeFileSync('packages/language-packs/src/alphabet-sprint/letters-thhi.ts', lines.join('\n'));
 console.log(`alphabetLetters.thhi.ts: th ${rowsFor('th').length}, hi ${rowsFor('hi').length} rows`);

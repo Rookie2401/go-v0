@@ -10,7 +10,7 @@ import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packag
 import { saveDeck } from '../../packages/goreview/app/deckModel';
 import { createLive } from '../../packages/goreview/app/live';
 import { createRealDeps } from '../../packages/goreview/app/main';
-import { cardAdded, defaultService, destroyRigs, dueCard, ids, key, makeRig, startWith, type, until, type FakeService, type Rig, readyCards, PICKED } from './helpers';
+import { accountLanguages, cardAdded, defaultService, destroyRigs, dueCard, ids, key, makeRig, startWith, type, until, type FakeService, type Rig, readyCards, PICKED } from './helpers';
 
 afterEach(() => { destroyRigs(); vi.useRealTimers(); });
 const A = ids('L1', 'sq');
@@ -100,12 +100,13 @@ describe('live updates in the app', () => {
     const svc = liveService(service);
     const rig = await makeRig({ service, fetch: svc.fetchFn, live, signedIn: true });
     await ready(rig, svc);
-    expect(rig.root.querySelector('#language-select')).toBeNull();
+    expect(rig.root.querySelectorAll('#account-languages .account-language')).toHaveLength(0);
     service.enrolments.get('L1')!.push({ enrolmentId: 'L1-e2', learnerId: 'L1', packId: 'pack-de', packVersion: '1', goals: [], startedAt: '2026-10-01T00:00:00.000Z', languageId: 'de' });
     service.inject('L1', cardAdded(A, 'mace', 'meaning-to-form', '2026-10-08T09:00:00.000Z'));
     svc.push();
-    await until(() => !!rig.root.querySelector('#language-select'), 'the language switcher');
-    const names = [...rig.root.querySelectorAll('#language-select option')].map((o) => o.textContent ?? '');
+    // the languages are listed on the Account page (2026-11-18: the home only names the one being reviewed)
+    let names: string[] = [];
+    await until(async () => { names = (await accountLanguages(rig)).map((l) => l.name); return names.length === 2; }, 'the new language on the Account page');
     expect(names).toHaveLength(2);
     expect(names.join('|')).toMatch(/Albanian.*German|German.*Albanian/);
   });

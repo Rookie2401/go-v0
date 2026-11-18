@@ -15,6 +15,7 @@ import { ACTIVE_LEVELS, LEVEL_LEGEND, type ActiveLevel } from '../src/active/lev
 import { MSG, getChrome, type ChromeApi } from '../src/platform';
 import { ACTIVE_ORIGINS, languageNameOf, type ActiveReply, type ActiveSettings, type PageStatus } from '../src/protocol';
 import type { ActiveState } from '../src/content/active';
+import { initReadingPanel } from './reading';
 
 export interface PopupHandle { refresh(): Promise<void> }
 
@@ -81,8 +82,15 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
       langLine.textContent = r?.message ?? 'GoLearn could not switch the language.';
       langLine.classList.add('warn');
     }
+    reading?.languageChanged();
     await refresh();
   });
+
+  // Reading Analysis (action/reading.ts): present when the popup's page carries its part
+  const reading = doc.getElementById('reading-run') ? initReadingPanel(doc, chrome, {
+    languageId: () => langSelect.value,
+    tab: async () => (await chrome.tabs?.query({ active: true, currentWindow: true }))?.[0],
+  }) : undefined;
 
   /** The foot line: the build the worker runs, and for 10 minutes after a self-reload that it updated itself (plain text, no control). */
   function renderBuild(s: PageStatus | undefined): void {
@@ -213,6 +221,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
   }
 
   await refresh();
+  await reading?.restore(); // after the language is known: the last result of this page, if a run was made here
   return { refresh };
 }
 

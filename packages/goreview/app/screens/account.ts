@@ -1,31 +1,87 @@
 /**
- * #/account — the learner's account, reached from the person icon beside the Settings cog. Quiet and short:
+ * #/account — the learner's account, reached from the person icon beside the Settings cog, in the home's look (the owner, 2026-11-18): the
+ * hero (app.ts: "Your account" between gold rules, the title, the photo of the language being reviewed), then the home's column of warm tiles
+ * with no outline.
  *
- *   Name           the display name on the account (set when the account is created in GoLearn; editable here)
- *   Email          the address, and only if it is not confirmed yet, a note with "send the email again"
- *   Sign out                      a friendly pill, centred (the owner, 2026-10-28: the plain text links read as sterile)
- *   Download my data              the same
- *   Delete account                the same in red; opens the guided deletion below, nothing of it shown before
+ *   Your languages   one tile per language the learner has; the one being reviewed says so, any other switches to it at a press. Under them,
+ *                    "Add a language" opens #/setup. (The home's language dropdown moved here: "move the Choose your language from the
+ *                    dropdown to the Your Account option".)
+ *   Name, Email      one tile of facts: the name, editable in place; the address, and only while it is unconfirmed, the note and "send again"
+ *   Sign out, Download my data, Delete account   a tile each, like the home's Review Deck; Delete opens the guided deletion below it
+ *   Devices signed in   a closed dropdown at the foot
  *
- * The deletion walks through what happens (nothing for 14 days), how to restore the account in that time (sign in and press
- * Cancel), then asks for the password and deletes. While a deletion is pending the banner with its Cancel sits at the top.
- * The devices signed in to the account wait under a closed disclosure at the bottom. Nothing here says learner ids, session
+ * The deletion walks through what happens (nothing for 14 days), how to restore the account in that time (sign in and press Cancel), then asks
+ * for the password and deletes. While a deletion is pending the banner with its Cancel sits at the top. Nothing here says learner ids, session
  * expiries or security events: those are the developer's (#/developer).
  *
- * Without an account: on a device-only copy, the offer to keep progress across devices and "Clear local data"; on the hosted
- * copy, the way to sign in.
+ * Without an account: on a device-only copy, the languages, then the offer to keep progress across devices and "Clear local data"; on the
+ * hosted copy, the way to sign in.
  */
 import { icon, type IconName } from '../icons';
 import type { AppContext } from '../context';
 import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } from '../dom';
+import { enrolmentName } from '../enrolmentName';
+import { attachRipple } from '../ripple';
 import { ACCOUNT_CHANGED, dataFilename, explainAccountFailure, GRACE_DAYS, mountDeletionBanner, saveFile, sessionsBlock } from './accountSecurity';
 import type { View } from './view';
+
+/** A label in the home's manner: the kicker, the title, the caption under it. */
+const tileLabel = (kicker: string | null, title: string, caption?: string, captionLang?: string): HTMLElement =>
+  h('span', { class: 'deck-label' },
+    kicker ? h('span', { class: 'deck-kicker' }, kicker) : null,
+    h('span', { class: 'deck-title' }, title),
+    caption ? h('span', { class: 'deck-caption', ...(captionLang ? { lang: captionLang } : {}) }, caption) : null);
+
+/**
+ * The learner's languages as tiles, the one being reviewed first and saying so; a press on another makes it the language being reviewed and
+ * opens its home. Then "Add a language". Empty (and only the link) when there is none yet.
+ */
+async function languageTiles(ctx: AppContext, view: View): Promise<HTMLElement[]> {
+  const [list, id, { languagesOf }] = await Promise.all([ctx.enrolments().catch(() => []), ctx.identity().catch(() => undefined), import('../languageChoices')]);
+  if (!view.alive()) return [];
+  const catalogue = languagesOf();
+  const nativeOf = (languageId: string): string | undefined =>
+    catalogue.find((l) => l.languageId === languageId || l.choice?.options.some((o) => o.languageId === languageId))?.nativeName;
+  const active = list.find((e) => e.enrolmentId === id?.enrolmentId) ?? list[0];
+  const ordered = active ? [active, ...list.filter((e) => e !== active)] : [];
+  const tiles = ordered.map((e) => {
+    const current = e === active;
+    const name = enrolmentName(e, list);
+    const face = button('', () => {
+      void (async () => {
+        if (!current && !(await ctx.setLanguage(e.enrolmentId))) return;
+        ctx.go('review');
+      })();
+    }, { class: 'deck-face', 'aria-label': current ? `${name}: being reviewed now. Open its home` : `Review ${name} instead` , ...(current ? { 'aria-current': 'true' } : {}) });
+    face.append(tileLabel(current ? 'Reviewing now' : 'Your language', name, nativeOf(e.languageId), e.languageId), icon(ctx.deps.doc, 'arrow'));
+    const tile = h('div', { class: 'deck-tile account-language', 'data-deck': current ? 'current' : 'language', 'data-enrolment': e.enrolmentId }, face);
+    attachRipple(tile);
+    return tile;
+  });
+  return [
+    h('div', { class: 'account-group', id: 'account-languages', 'aria-label': 'Your languages' }, ...tiles,
+      h('a', { class: 'home-link account-add-language', id: 'add-language', href: '#/setup' }, list.length ? 'Add a language' : 'Choose your language')),
+  ];
+}
+
+/** One of the account's actions as a tile, like the home's Review Deck: an icon, a title and its caption, the arrow. Keeps the button (and its id). */
+function actionTile(ctx: AppContext, action: HTMLButtonElement, glyph: IconName, caption: string, deck: string): HTMLElement {
+  const title = action.textContent ?? '';
+  action.className = 'deck-face';
+  action.replaceChildren(h('span', { class: 'deck-row' }, icon(ctx.deps.doc, glyph), tileLabel(null, title, caption)), icon(ctx.deps.doc, 'arrow'));
+  const tile = h('div', { class: 'deck-tile account-action', 'data-deck': deck }, action);
+  attachRipple(tile);
+  return tile;
+}
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const session = await ctx.state.getSession();
   const mode = await ctx.mode();
-  const card = h('section', { class: 'card account-page', id: 'account-card', 'aria-labelledby': 'account-h' }, h('h2', { id: 'account-h', class: 'sr' }, 'Account'));
+  // the home's column: tiles with no outline, one under the other (styles.css, "#/account in the home's look")
+  const card = h('section', { class: 'home account-page', id: 'account-card', 'aria-labelledby': 'account-h' }, h('h2', { id: 'account-h', class: 'sr' }, 'Account'));
   el.append(card);
+  if (mode !== 'none') append(card, await languageTiles(ctx, view));
+  if (!view.alive()) return;
 
   if (!session) {
     if (mode === 'device') {
@@ -45,15 +101,21 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
           const n = await ctx.clearLocalData();
           setStatus(clearOut, `Cleared the local data on this device (${n} row${n === 1 ? '' : 's'}).`, 'ok');
         })();
-      }, { id: 'clear-local', class: 'btn' });
+      }, { id: 'clear-local', class: 'account-link' });
       clearBtn.addEventListener('blur', () => { if (armed) { armed = false; clearBtn.textContent = 'Clear local data'; setStatus(clearOut, 'Nothing was cleared.', 'info'); } });
       append(card, [
-        h('p', { id: 'settings-device-only' }, 'On this device only.'),
-        p('Your reviews and drafts are kept on this device, and nothing is sent anywhere. An account is optional; it only keeps your progress across devices.', 'muted'),
-        h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/signin', id: 'settings-keep-progress' }, 'Keep your progress across devices (optional)'), clearBtn),
-        clearOut,
+        h('div', { class: 'deck-tile account-panel', id: 'account-device' },
+          h('p', { class: 'deck-kicker', id: 'settings-device-only' }, 'On this device only'),
+          p('Your reviews and drafts are kept on this device, and nothing is sent anywhere. An account is optional; it only keeps your progress across devices.', 'account-lede'),
+          h('div', { class: 'account-panel-actions' },
+            h('a', { class: 'account-pill', href: '#/signin', id: 'settings-keep-progress' }, 'Keep your progress across devices'), clearBtn),
+          clearOut),
       ]);
-    } else append(card, [p('Not signed in.', 'muted'), h('a', { class: 'btn primary', href: '#/signin' }, 'Sign in')]);
+    } else {
+      append(card, [h('div', { class: 'deck-tile account-panel' },
+        h('p', { class: 'deck-kicker' }, 'Not signed in'),
+        h('div', { class: 'account-panel-actions' }, h('a', { class: 'account-pill', href: '#/signin' }, 'Sign in')))]);
+    }
     return;
   }
 
@@ -64,7 +126,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   // ── name: shown, and editable in place
   const nameText = h('span', { id: 'account-name' }, '…');
-  const nameEdit = button('Edit', () => openNameEditor(), { class: 'btn friendly small', id: 'account-name-edit' });
+  const nameEdit = button('Edit', () => openNameEditor(), { class: 'account-link', id: 'account-name-edit' });
   const nameRow = h('dd', { class: 'account-name-row account-profile-fact account-name-fact' }, nameText, ' ', nameEdit);
   let currentName = '';
   function showName(name: string | undefined): void {
@@ -91,8 +153,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         editor.replaceWith(nameRow);
         setStatus(status, 'Name saved.', 'ok');
       })();
-    }, { class: 'btn small', id: 'account-name-save' });
-    const cancel = button('Cancel', () => { editor.replaceWith(nameRow); }, { class: 'linklike small', id: 'account-name-cancel' });
+    }, { class: 'account-pill small', id: 'account-name-save' });
+    const cancel = button('Cancel', () => { editor.replaceWith(nameRow); }, { class: 'account-link', id: 'account-name-cancel' });
     const editor = h('dd', { class: 'account-name-edit' }, input, save, cancel);
     nameRow.replaceWith(editor);
     input.focus();
@@ -108,7 +170,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       const r = await client.resendVerification(s.email);
       setStatus(verifyOut, r.ok ? `If ${s.email} still needs confirming, a new email is on its way.` : explainAccountFailure(r), r.ok ? 'ok' : 'error');
     })();
-  }, { id: 'verification-resend', class: 'linklike small' });
+  }, { id: 'verification-resend', class: 'account-link' });
   resend.hidden = true;
   const verifyNote = h('p', { class: 'muted help', id: 'verification-note', hidden: true });
   const verifyOut = statusLine();
@@ -122,7 +184,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       // back to the device alone where there is one (nothing was removed); the hosted copy has nothing to show without an account
       ctx.go((await ctx.mode()) === 'device' ? 'review' : 'signin');
     })();
-  }, { id: 'sign-out', class: 'btn friendly account-action-tile account-action-signout' });
+  }, { id: 'sign-out' });
   const download = button('Download my data', () => {
     void (async () => {
       const { client, session: s } = await ctx.accountApi();
@@ -134,17 +196,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       saveFile(ctx, name, new Blob([r.data], { type: 'application/json' }));
       setStatus(status, `Your data is ready: ${name}.`, 'ok');
     })();
-  }, { id: 'export-data', class: 'btn friendly account-action-tile account-action-export' });
-  const deleteOpen = button('Delete account', () => { void openDeletion(); }, { id: 'delete-open', class: 'btn friendly danger account-action-tile account-action-delete' });
-  const decorateAction = (action: HTMLButtonElement, glyph: IconName): void => {
-    const label = action.textContent;
-    action.replaceChildren(icon(ctx.deps.doc, glyph), h('span', { class: 'account-action-label' }, label),
-      icon(ctx.deps.doc, 'arrow'));
-  };
-  decorateAction(signOut, 'sign-out');
-  decorateAction(download, 'download');
-  decorateAction(deleteOpen, 'trash');
-  const actions = h('div', { class: 'account-actions', 'aria-label': 'Account actions' }, signOut, download, deleteOpen);
+  }, { id: 'export-data' });
+  const deleteOpen = button('Delete account', () => { void openDeletion(); }, { id: 'delete-open' });
+  // a tile each, like the home's Review Deck (the delete tile hides with its button while the deletion is open: styles.css)
+  const actions = h('div', { class: 'account-group account-actions', 'aria-label': 'Account actions' },
+    actionTile(ctx, signOut, 'sign-out', 'Your reviews stay on your account', 'action'),
+    actionTile(ctx, download, 'download', 'Everything held about you, as one file', 'action'),
+    actionTile(ctx, deleteOpen, 'trash', `Erased after ${GRACE_DAYS} days; you can cancel until then`, 'danger'));
 
   // ── the guided deletion, shown only once asked for
   const deleteBody = h('div', { id: 'delete-body', hidden: true });
@@ -215,13 +273,17 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   }
 
   // ── the devices signed in, out of the way (the owner's request of 2026-10-28: no "remove this device's data" link; Sign out is the one exit)
-  const devices = h('details', { class: 'quiet', id: 'acct-devices' }, h('summary', {}, 'Devices signed in'), sessionsBlock(ctx, view));
+  // a closed dropdown at the foot, like the sign-in page's welcome: a tile's kicker with a gold caret
+  const devices = h('details', { class: 'signin-about account-devices', id: 'acct-devices' }, h('summary', {}, 'Devices signed in'), sessionsBlock(ctx, view));
 
+  // a pending deletion's banner leads the page, above the languages
+  card.insertBefore(banner, card.children[1] ?? null);
   append(card, [
-    banner,
-    h('dl', { class: 'account-facts account-profile', 'aria-label': 'Account profile' }, h('div', { class: 'account-fact' }, h('dt', {}, icon(ctx.deps.doc, 'person'), 'Name'), nameRow),
-      h('div', { class: 'account-fact' }, h('dt', {}, icon(ctx.deps.doc, 'mail'), 'Email'), emailRow)),
-    actions, status, deleteBody, devices,
+    h('div', { class: 'deck-tile account-panel' },
+      h('dl', { class: 'account-facts account-profile', 'aria-label': 'Account profile' },
+        h('div', { class: 'account-fact' }, h('dt', { class: 'deck-kicker' }, icon(ctx.deps.doc, 'person'), 'Name'), nameRow),
+        h('div', { class: 'account-fact' }, h('dt', { class: 'deck-kicker' }, icon(ctx.deps.doc, 'mail'), 'Email'), emailRow))),
+    actions, status, h('div', { class: 'deck-tile account-panel', id: 'delete-panel' }, deleteBody), devices,
   ]);
 
   // what the service says about the account: the name, whether the email is confirmed, whether a deletion is pending

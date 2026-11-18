@@ -7,6 +7,7 @@ import { arcAdapter } from '../../src/adapters/arc';
 import { deAdapter } from '../../src/adapters/de';
 import { esAdapter } from '../../src/adapters/es';
 import { elAdapter } from '../../src/adapters/el';
+import { frAdapter } from '../../src/adapters/fr';
 import { heAdapter } from '../../src/adapters/he';
 import { createGreekShardLoader } from '../../src/adapters/greek/shards';
 import { createHebrewShardLoader } from '../../src/adapters/hebrew/shards';
@@ -30,4 +31,5 @@ export function registerAllAnalysers(): void {
   if (languageMeta('he')) registerAnalyser('he', heAdapter, { createShardLoader: createHebrewShardLoader }); // with the chunk's extras, as dist/analysers/he.js brings them
   if (languageMeta('el')) registerAnalyser('el', elAdapter, { createShardLoader: createGreekShardLoader });
   if (languageMeta('la')) registerAnalyser('la', laAdapter); // once the adapter lane's parser entry exists
+  registerAnalyser('fr', frAdapter); // the hand word list alone: the lemma list is a lazy module a test loads itself when it wants it
 }

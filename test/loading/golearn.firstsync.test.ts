@@ -138,7 +138,7 @@ async function deviceDump(rig: Rig, idb: { indexedDB: IDBFactory }, remoteIds: s
   remoteIds.forEach((r, i) => names.set(r, `REMOTE-${i}`));
   const main = await dumpDb(idb.indexedDB, 'golearn-repository');
   const kv = await dumpDb(idb.indexedDB, 'golearn-repository-kv');
-  const storage = withStorage ? Object.fromEntries(Object.entries(await rig.fake.local.get(null)).filter(([k]) => /^golearn:(sync|local|repo)/.test(k) && !/session|token|secret/i.test(k) && k !== 'golearn:local-pull-open')) : {}; // (the pull-open row is new: it is gone again after a finished pull)
+  const storage = withStorage ? Object.fromEntries(Object.entries(await rig.fake.local.get(null)).filter(([k]) => /^golearn:(sync|local|repo)/.test(k) && !/session|token|secret/i.test(k) && k !== 'golearn:local-pull-open' && k !== 'golearn:local-accounts' && k !== 'golearn:local-level')) : {}; // (the pull-open row is new: it is gone again after a finished pull)
   let text = JSON.stringify(canon({ main, kv, storage }));
   for (const [raw, name] of names) text = text.split(raw).join(name);
   text = text.replace(/"accountId":"[0-9a-f-]{36}"/g, '"accountId":"LOCAL-ACCOUNT"'); // the device's own random account id

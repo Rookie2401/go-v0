@@ -45,10 +45,9 @@ describe.skipIf(!has('dist/app/app.js'))('the options-page build (dist/app)', ()
     // 2026-10-24: 650 -> 760 KB, the same ceiling test/extension/bundle.test.ts keeps for app/app.js; the setup app grew with the
     // Hebrew, Greek and Latin packs' tutorials and catalogue rows (measured 708 KB on the day)
     // 2026-11-08: 760 -> 800 KB, with test/extension/bundle.test.ts (master already measured 779 KB)
-    // 2026-11-17: 800 -> 878 KB, the ceiling test/extension/bundle.test.ts keeps for app/app.js. This copy was not raised with it on
-    // 2026-11-13 (800 -> 840) and already failed on master 985c742b, whose build measures 847,227 characters; the French pack's manifest,
-    // construction explanations and orientation add 37.6 KB (see bundle.test.ts).
-    expect(code.length).toBeLessThan(878 * 1024);
+    // 2026-11-17: 800 -> 840 KB, the ceiling test/extension/bundle.test.ts has kept since 2026-11-13 (the packs' self-report, 467d2b6c); this
+    // duplicate was missed then. Master 985c742b measured 847,520 characters (857,670 bytes). A ceiling again, not a target.
+    expect(code.length).toBeLessThan(840 * 1024);
   });
 
   it('carries the dictionary the installer fetches, and nothing of a planned language', () => {

@@ -78,6 +78,15 @@
   .counts > summary:hover { color: var(--ink); }
   .counts > p { margin: .1rem 0 0; line-height: 1.4; }
   #connection { margin-top: .3rem; }
+  /* Reading Analysis: one button, then one number; what qualifies the number is said under it in the status-line voice */
+  #reading-run { padding: .25rem .6rem; border: 1px solid var(--control-line); border-radius: 2px; background: var(--paper-raised); color: var(--ink); cursor: pointer; }
+  #reading-run:hover { border-color: var(--accent); color: var(--accent); }
+  #reading-variety-row { margin-top: .5rem; }
+  #reading-variety-row[hidden] { display: none; }
+  .reading-figure { margin: .55rem 0 0; font-size: 1.5rem; font-weight: 600; line-height: 1.2; color: var(--ink); }
+  .reading-figure:empty { display: none; }
+  #reading-count { color: var(--ink); }
+  #reading-notes > p:first-child { margin-top: .5rem; }
   /* the legend, one line, as Biblia's reader shows it: a sample word in each mark, then the names; known words carry no mark */
   .legend { margin: .55rem 0 0; font-size: 0.85rem; line-height: 1.5; color: var(--ink-faint); }
   .legend .sw { color: var(--ink); padding: 0 0.15em; border-radius: 2px; text-underline-offset: 0.2em; }
@@ -118,6 +127,25 @@
       <select id="language-select" class="grow" aria-describedby="language"><option value="">Checking…</option></select>
     </div>
     <div class="status-line" id="language" role="status" aria-live="polite"></div>
+  </section>
+
+  <section class="part" aria-labelledby="reading-name" id="reading">
+    <div class="row">
+      <span class="cap grow" id="reading-name">Reading Analysis</span>
+      <button type="button" id="reading-run" aria-describedby="reading-about">Analyse this page</button>
+    </div>
+    <p class="muted sr" id="reading-about">Says what share of the words of this page you already know.</p>
+    <div class="row" id="reading-variety-row" hidden>
+      <label for="reading-variety" class="cap">This text is</label>
+      <select id="reading-variety" class="grow"><option value="">Choose…</option></select>
+    </div>
+    <div id="reading-result" role="status" aria-live="polite">
+      <p class="reading-figure" id="reading-figure"></p>
+      <div class="status-line" id="reading-count"></div>
+      <div class="status-line" id="reading-scope"></div>
+      <div id="reading-notes"></div>
+      <div class="status-line" id="reading-line"></div>
+    </div>
   </section>
 
   <p class="build" id="build"></p>

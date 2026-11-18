@@ -25,7 +25,7 @@ describe('the popup', () => {
     expect(document.getElementById('practise')).toBeNull();
     expect(document.body.textContent).not.toMatch(/Practise|no account needed/);
     const buttons = [...document.querySelectorAll('button')];
-    expect(buttons.map((b) => b.id)).toEqual(['open-setup']);
+    expect(buttons.map((b) => b.id)).toEqual(['open-setup', 'reading-run']); // Reading Analysis' one button (the owner's brief of 2026-11-17)
     expect(buttons[0].getAttribute('aria-label')).toBe('Open GoLearn setup');
     expect(buttons[0].querySelector('.go-brand-mark')).not.toBeNull();
     expect(buttons[0].textContent).toBe('GoLearn→');

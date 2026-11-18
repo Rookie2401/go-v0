@@ -13,8 +13,8 @@
  *    enrolment. Only the learner's own choice (`enrol`, from the setup page) counts as the active language.
  *  - Nothing here may break recording: any failure is swallowed and the event stays in the worker's own log and queue.
  */
-import type { Enrolment, GoEvent, LearningGoal } from '../../../repository-contract/src';
-import { inspectLocal, markEventsOwned, openLocalRepository, uploadWaiting, type LocalRepository, type OpenLocalOptions, type StorageInfo } from '../../../repository-local/src';
+import type { Enrolment, GoEvent, LearningGoal, UnitKnowledge } from '../../../repository-contract/src';
+import { accountsOfRepository, inspectLocal, markEventsOwned, openLocalRepository, pullPositionOf, storageModeOf, uploadWaiting, type LocalRepository, type OpenLocalOptions, type PullOutcome, type StorageInfo } from '../../../repository-local/src';
 import { adaptStorageArea, createLock } from '../../../repository-sync/src';
 import type { LanguageAdapter } from '../../../../src/core';
 import type { StorageArea } from '../platform';
@@ -51,6 +51,23 @@ export const KEEP_ALIVE_MS = 20_000;
  * network dropped). The next successful sync round of a worker that finds it runs the upload-and-pull again, which resumes from the pull cursor kept per page.
  */
 export const PULL_OPEN_KEY = 'golearn:local-pull-open';
+/**
+ * The accounts whose history this device's Repository has taken in or sent to (their learner ids), kept from 2026-11-17. The device has ONE
+ * local learner: signing in to a second account pulls that account's history into the same record, so its knowledge is then the two accounts'
+ * together. Nothing here prevents that (it is how a device has always worked); the list lets a reader that must be exact (Reading Analysis)
+ * say so instead of presenting the mixture as one learner's. Removed with the device's data (`clear`).
+ */
+export const ACCOUNTS_KEY = 'golearn:local-accounts';
+/** When the device was last known to hold the whole of an account's history: `{ learnerId, at, afterSeq, head }`, written by a complete pull. */
+export const LEVEL_KEY = 'golearn:local-level';
+/** The knowledge route takes at most this many unit ids in one request (repository-service handler: more is refused, not trimmed). */
+export const KNOWLEDGE_CHUNK = 200;
+
+/** What bringing the device level with the account came to. `level`: the device holds every event the account held when the pull ended. */
+export type CatchUp =
+  | { state: 'no-account' }
+  | { state: 'level'; at: number; added: number; mixedAccounts: boolean }
+  | { state: 'behind'; reason: 'unreachable' | 'timeout' | 'incomplete' | 'refused-events' | 'unavailable' | 'needs-sign-in' | 'deletions-unknown'; added: number; lastLevelAt?: number; mixedAccounts: boolean };
 
 /**
  * One 20 s extension-API touch shared by everything that runs long in the worker (the Repository's open, the upload-and-pull, a sync round): `hold()` starts it
@@ -85,6 +102,8 @@ export interface LocalRepoServiceOptions {
   keepAlive?: () => void;
   /** The worker's shared hold (see `createWorkerHold`); without it the service makes its own from `keepAlive`. */
   hold?: () => () => void;
+  /** The account refused the stored sign-in (401) while the device was being brought level with it: the sync service is told, so the popup says "sign in again". */
+  onUnauthorized?: () => void | Promise<void>;
   /** Test seam: passed to the migration as `migrate.inject`. */
   migrationInject?: NonNullable<OpenLocalOptions['migrate']>['inject'];
 }
@@ -112,6 +131,49 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   let summaryWritten = '';
   let signInWork: Promise<unknown> = Promise.resolve();
   const enrolmentOf = new Map<string, string>();
+  /**
+   * Changes whenever this Repository takes in an event (a record, a page of a pull, a clear, a rebuild). Two reads that saw the same value
+   * read one state of the learner's knowledge. The first part is new in every worker, so a restart is a change too.
+   *
+   * An event is readable from the moment the store has it, which is before the write's own call returns (and a pull writes page by page while
+   * it runs). So a write is announced BEFORE it starts (`beginWrite`): while one is under way the value carries a mark no settled value has,
+   * and it never equals a value read before or after. A reader that named a snapshot cannot be answered from the middle of a write.
+   */
+  const boot = Math.random().toString(36).slice(2, 10);
+  let changes = 0;
+  let writing = 0;
+  const generation = (): string => `${boot}:${changes}${writing ? ':w' : ''}`;
+  const beginWrite = (): void => { writing += 1; };
+  const endWrite = (): void => { changes += 1; writing = Math.max(0, writing - 1); };
+  let accountsKnown: Set<string> | undefined;
+  /** The list in storage was read from the markers of the device's events at least once (true from then on, across workers: the row exists). */
+  let accountsSeeded = false;
+
+  /** Remembers that this device's Repository holds (or has sent to) the history of the account `learnerId`. Returns every account so remembered. */
+  async function noteAccount(learnerId: string | undefined, repo?: LocalRepository): Promise<Set<string>> {
+    if (!accountsKnown) {
+      let kept: unknown;
+      try { kept = (await opts.area.get(ACCOUNTS_KEY))[ACCOUNTS_KEY]; } catch { kept = undefined; }
+      accountsSeeded = Array.isArray(kept);
+      accountsKnown = new Set(Array.isArray(kept) ? kept.filter((x): x is string => typeof x === 'string' && !!x) : []);
+    }
+    const before = accountsKnown.size;
+    if (learnerId) accountsKnown.add(learnerId);
+    let write = accountsKnown.size !== before;
+    // A device from before this list was kept: its accounts are read ONCE from the markers of its own events (every event sent to an account or
+    // taken from one says which), so two accounts already mixed here are found. Until that read has succeeded the list is not written, and it is tried again.
+    if (!accountsSeeded && repo) {
+      try {
+        for (const id of await accountsOfRepository(repo)) accountsKnown.add(id);
+        const p = await pullPositionOf(repo);
+        if (p) accountsKnown.add(p.remoteLearnerId);
+        accountsSeeded = true;
+        write = true;
+      } catch { accountsKnown = undefined; return new Set(learnerId ? [learnerId] : []); }
+    } else if (!accountsSeeded) write = false; // nothing is kept yet and this call cannot read the markers: leave the list unwritten for a call that can
+    if (write) { try { await opts.area.set({ [ACCOUNTS_KEY]: [...accountsKnown] }); } catch { /* asked again next time */ } }
+    return accountsKnown;
+  }
 
   // read at call time, so an analyser the worker loads later is used; the worker itself carries Albanian only
   const adapters = new Proxy({}, { get: (_t, k) => (typeof k === 'string' ? getAnalyser(k) : undefined) }) as Record<string, LanguageAdapter | undefined>;
@@ -227,8 +289,11 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
         const id = await repo.identity();
         const enrolmentId = await enrolmentFor(repo, event.languageId);
         if (!enrolmentId) return false;
-        const r = await repo.api.appendEvents([{ ...event, learnerId: id.learnerId, enrolmentId, producer: { ...event.producer, deviceId: id.deviceId } }]);
+        beginWrite();
+        let r;
+        try { r = await repo.api.appendEvents([{ ...event, learnerId: id.learnerId, enrolmentId, producer: { ...event.producer, deviceId: id.deviceId } }]); } finally { endWrite(); }
         if (!r.ok) return false;
+        if (attributed === 'account') await noteAccount(event.learnerId);
         if (attributed === 'local') pendingHint = true;
         if (attributed === 'account') await markEventsOwned(repo, [event.id], event.learnerId);
         return true;
@@ -275,11 +340,14 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
       if (!a) return { ok: false, skipped: 'not-connected' };
       // marked before anything is sent: a worker stopped from here on finds it on its next sync round and runs this again (the pull resumes from its cursor)
       try { await opts.area.set({ [PULL_OPEN_KEY]: true }); } catch { /* a convenience: the learner's next upload resumes as well */ }
+      await noteAccount(a.session.learnerId, repo); // before anything moves: the device's record now holds this account's history as well
       const raw = await repo.uploadTo(a.api);
       const upload = { sent: raw.sent, duplicates: raw.duplicates, failed: raw.failed, waiting: uploadWaiting(repo) };
       pendingHint = upload.failed > 0 || upload.waiting > 0;
       let complete = false;
-      const { added } = await repo.pullFrom(a.api, { onEnd: (c) => { complete = c; } });
+      const pulled = await repo.pullFrom(a.api, { onEnd: (c) => { complete = c; }, beforeWrite: beginWrite, afterWrite: endWrite });
+      const { added } = pulled;
+      await noteLevel(a.session.learnerId, pulled);
       if (complete) { try { await opts.area.remove(PULL_OPEN_KEY); } catch { /* the next round finds it and does one cheap pull */ } }
       const status: UploadStatus = { at: opts.now(), ...upload, pulled: added, ...(upload.failed ? { error: `${upload.failed} event${upload.failed === 1 ? '' : 's'} could not be sent; they will be tried again` } : {}) };
       try { await opts.area.set({ [UPLOAD_STATUS_KEY]: status }); } catch { /* a convenience */ }
@@ -291,17 +359,116 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
     } finally { transferring -= 1; release(); }
   }
 
+  /** A pull that reached the account's head with nothing refused: the device is level with the account as of now. */
+  async function noteLevel(learnerId: string, p: PullOutcome): Promise<void> {
+    if (!p.complete || p.refused || p.remoteLearnerId !== learnerId || p.deletions !== 'applied') return;
+    try { await opts.area.set({ [LEVEL_KEY]: { learnerId, at: opts.now(), afterSeq: p.afterSeq ?? 0, ...(p.head !== undefined ? { head: p.head } : {}) } }); } catch { /* a convenience */ }
+  }
+
+  async function lastLevelAt(learnerId: string): Promise<number | undefined> {
+    try {
+      const v = (await opts.area.get(LEVEL_KEY))[LEVEL_KEY] as { learnerId?: unknown; at?: unknown } | undefined;
+      return v && v.learnerId === learnerId && typeof v.at === 'number' ? v.at : undefined;
+    } catch { return undefined; }
+  }
+
+  /**
+   * Brings this device's Repository level with the signed-in account: pulls the events of the learner's other devices that it does not hold yet
+   * (from the pull cursor, so an up-to-date device costs two small requests) and says whether it reached the account's head. Until 2026-11-17
+   * the device pulled only at sign-in: a word marked in GoReview on a phone never reached GoLearn's own record afterwards (the sync round's
+   * pull counts other devices' events and drops them), so everything read from the device, the page underlines included, went stale.
+   * Nothing is uploaded here and nothing about a page is sent: the request is "the learner's events after number N". Never throws.
+   * `timeoutMs`: how long the caller waits. The pull itself is not abandoned (it resumes from its cursor either way).
+   */
+  async function catchUp(o: { timeoutMs?: number } = {}): Promise<CatchUp> {
+    const repo = await open();
+    if (!repo) return { state: 'behind', reason: 'unavailable', added: 0, mixedAccounts: false };
+    let a: Awaited<ReturnType<SessionManager['authenticated']>>;
+    try { a = await opts.session.authenticated(); } catch { a = undefined; }
+    if (!a) return { state: 'no-account' };
+    const learnerId = a.session.learnerId;
+    const accounts = await noteAccount(learnerId, repo);
+    const mixedAccounts = accounts.size > 1;
+    const release = hold();
+    transferring += 1;
+    const work = (async (): Promise<CatchUp> => {
+      try {
+        await signInWork.catch(() => undefined); // a sign-in's first pull is running: it is the same job, so wait for it, then check the head
+        const p = await repo.pullFrom(a!.api, { beforeWrite: beginWrite, afterWrite: endWrite });
+        await noteLevel(learnerId, p);
+        if (p.unauthorized) {
+          // the account refused the sign-in: that is not a network failure, and the learner is the one who can mend it
+          try { await opts.onUnauthorized?.(); } catch { /* the snapshot still says it */ }
+          return { state: 'behind', reason: 'needs-sign-in', added: 0, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
+        }
+        if (p.remoteLearnerId !== learnerId) return { state: 'behind', reason: 'unreachable', added: p.added, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
+        if (p.refused) return { state: 'behind', reason: 'refused-events', added: p.added, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
+        if (!p.complete) return { state: 'behind', reason: 'incomplete', added: p.added, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
+        // every event is here, but the account could not say what the learner deleted: the device may hold more than the account does
+        if (p.deletions !== 'applied') return { state: 'behind', reason: 'deletions-unknown', added: p.added, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
+        return { state: 'level', at: opts.now(), added: p.added, mixedAccounts };
+      } catch {
+        return { state: 'behind', reason: 'unreachable', added: 0, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
+      } finally { transferring -= 1; release(); }
+    })();
+    if (!o.timeoutMs) return work;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const late = new Promise<CatchUp>((resolve) => { timer = setTimeout(() => { void lastLevelAt(learnerId).then((at) => resolve({ state: 'behind', reason: 'timeout', added: 0, lastLevelAt: at, mixedAccounts })); }, o.timeoutMs); });
+    try { return await Promise.race([work, late]); } finally { clearTimeout(timer); }
+  }
+
+  /** When the device was last known to be level with the account now signed in; undefined when never, or when there is no account. */
+  async function levelAt(): Promise<number | undefined> {
+    // the stored sign-in, expired or not: a session the service no longer accepts is still this account's
+    try { const s = await opts.session.current(); return s ? await lastLevelAt(s.learnerId) : undefined; } catch { return undefined; }
+  }
+
+  /**
+   * True when what is open is NOT the device's history: its IndexedDB would not open this time, and a memory-only stand-in answers
+   * (repository-local: storage mode rows-frozen). Every word would read as never met. A reader that reports the learner's knowledge must say
+   * the record is unavailable instead.
+   */
+  async function standIn(): Promise<boolean> {
+    try { const repo = await open(); return !!repo && storageModeOf(repo) === 'rows-frozen'; } catch { return false; }
+  }
+
+  /**
+   * The device's full rows for these units (every field, the per-variety slices included): one request per KNOWLEDGE_CHUNK ids, and every
+   * request must be answered. `ok: false` when the Repository would not open or any request failed: a caller that needs every unit accounted
+   * for never gets a part of the answer. A unit absent from `rows` of an `ok` reply has no record (asked, and answered).
+   */
+  async function knowledgeRows(unitIds: readonly string[]): Promise<{ ok: true; rows: UnitKnowledge[]; learnerId: string; generation: string; asked: number } | { ok: false; error: 'unavailable' | 'failed' }> {
+    try {
+      const repo = await open();
+      if (!repo) return { ok: false, error: 'unavailable' };
+      const before = generation();
+      const { learnerId } = await repo.identity();
+      const rows: UnitKnowledge[] = [];
+      let asked = 0; // the ids that went to the Repository in a request it answered: counted here, not assumed from the list's length
+      for (let i = 0; i < unitIds.length; i += KNOWLEDGE_CHUNK) {
+        const chunk = unitIds.slice(i, i + KNOWLEDGE_CHUNK);
+        const r = await repo.api.knowledge(chunk);
+        if (!r.ok || !Array.isArray(r.data.knowledge)) return { ok: false, error: 'failed' };
+        rows.push(...r.data.knowledge);
+        asked += chunk.length;
+      }
+      return { ok: true, rows, learnerId, generation: before, asked };
+    } catch { return { ok: false, error: 'failed' }; }
+  }
+
   /**
    * Called after a successful sync round: when an upload-and-pull was begun and did not reach the account's head (see PULL_OPEN_KEY), runs it again; it continues from the
-   * pull cursor, so only the events after it are asked for. One cheap read of a small row when nothing is open. Never throws.
+   * pull cursor, so only the events after it are asked for. One cheap read of a small row when nothing is open. Never throws. True when a pull ran
+   * or is running (the caller then has no need to pull again).
    */
-  async function resumePull(): Promise<void> {
+  async function resumePull(): Promise<boolean> {
     try {
-      if (transferring > 0) return; // one is running (the sign-in's): it finishes the job
-      if (!(await opts.area.get(PULL_OPEN_KEY))[PULL_OPEN_KEY]) return;
+      if (transferring > 0) return true; // one is running (the sign-in's): it finishes the job
+      if (!(await opts.area.get(PULL_OPEN_KEY))[PULL_OPEN_KEY]) return false;
       signInWork = signInWork.then(() => uploadAndPull(), () => uploadAndPull());
       await signInWork;
-    } catch { /* the next round tries again */ }
+      return true;
+    } catch { return false; /* the next round tries again */ }
   }
 
   /** After a successful sign-in: the history goes up once, then the account's comes down. Resolves when both are done; never rejects. */
@@ -329,7 +496,10 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
     enrolmentOf.clear();
     summaryWritten = '';
     pendingHint = undefined;
-    try { await opts.area.remove([ACTIVE_KEY, UPLOAD_STATUS_KEY, ENROLMENTS_KEY, PULL_OPEN_KEY]); } catch { /* absent */ }
+    changes += 1;
+    accountsKnown = undefined;
+    accountsSeeded = false;
+    try { await opts.area.remove([ACTIVE_KEY, UPLOAD_STATUS_KEY, ENROLMENTS_KEY, PULL_OPEN_KEY, ACCOUNTS_KEY, LEVEL_KEY]); } catch { /* absent */ }
     if (repo) { await repo.clear(); return; }
     // The repository would not open (so it cannot clear itself): take the learner's data away by hand, both databases first, then the frozen rows. With no
     // state row left, the next open is a fresh device in IndexedDB. Without IndexedDB nothing was ever stored anywhere but the rows.
@@ -428,15 +598,18 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
           return ended.ok ? { ok: true } : bad(ended.message || ended.error);
         }
         case 'upload': return { ...(await lock.run(() => uploadAndPull())) };
-        case 'rebuild': await repo.rebuild(); return { ok: true };
+        case 'rebuild': { beginWrite(); try { await repo.rebuild(); } finally { endWrite(); } return { ok: true }; }
         case 'clear': await clear(); return { ok: true };
         case 'api': {
           const method = String(r.method ?? '');
           if (!LOCAL_API_METHODS.includes(method)) return bad('That call is not available on this device.');
           const args = Array.isArray(r.args) ? r.args : [];
           if (/^(append|submit)/.test(method)) pendingHint = true; // an extension page wrote events here: they may wait for an upload
+          const writes = /^(append|submit|enrol|endEnrolment|correct|put|delete)/.test(method); // a write: a new state for a reader of knowledge
           if (method === 'clear') pendingHint = undefined;
-          const result = await (repo.api as unknown as Record<string, (...a: unknown[]) => Promise<unknown>>)[method](...args);
+          if (writes) beginWrite();
+          let result: unknown;
+          try { result = await (repo.api as unknown as Record<string, (...a: unknown[]) => Promise<unknown>>)[method](...args); } finally { if (writes) endWrite(); }
           if (/nrol/.test(method)) await openEnrolments(repo);
           return { ok: true, result };
         }
@@ -450,7 +623,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   /** True while the repository is opening or migrating (read-only; used by the worker's self-update to not reload mid-open). */
   const busy = (): boolean => !!opening && !opened;
 
-  return { open, record, forProfile, activeLanguage, chosenLanguages, afterSignIn, afterEnrolment, resumePull, uploadAndPull, clear, handle, status, busy };
+  return { open, record, forProfile, activeLanguage, chosenLanguages, afterSignIn, afterEnrolment, resumePull, uploadAndPull, catchUp, knowledgeRows, generation, levelAt, standIn, clear, handle, status, busy };
 }
 
 export type LocalRepoService = ReturnType<typeof createLocalRepoService>;

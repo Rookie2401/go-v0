@@ -1,0 +1,984 @@
+«ตัว» in ผม มี หมา สอง [ตัว]
+    ⇒ ตัว / CLF / “(classifier for animals, letters, clothes)” / 0.85 / lexicon / role: classifier of 'หมา'
+    also: ตัว/NOUN“body; self”@0.3
+    C: classifier-phrase
+    S: classifier of 'หมา' (generated)
+    D: Classifier for animals. ⇒ all nouns using this classifier ; Classifier for digits, letters, and certain object
+«หมา» in ผม มี [หมา] สอง ตัว
+    ⇒ หมา / NOUN / “dog” / 0.92 / lexicon / role: object of 'มี'
+    S: object of 'มี' (generated)
+    D: canine: any animal of the family Canidae, as dog, coyote, fox, jackal, wolf, etc. ; dogmeat ; person betrayed,
+«เล่ม» in ฉัน ซื้อ หนังสือ สาม [เล่ม]
+    ⇒ เล่ม / CLF / “(classifier for books, knives)” / 0.92 / lexicon / role: classifier of 'หนังสือ'
+    C: classifier-phrase
+    S: classifier of 'หนังสือ' (generated)
+    D: Classifier for books, candles, carts and sharp-edged objects, such as knives, axes, swords, pins, needles, etc
+«คัน» in เขา มี รถ สอง [คัน]
+    ⇒ คัน / CLF / “(classifier for vehicles, umbrellas)” / 0.92 / lexicon / role: classifier of 'รถ'
+    C: classifier-phrase
+    S: classifier of 'รถ' (generated)
+    D: Classifier for long articles, such as umbrella, vehicle, spoon, fork, etc. ⇒ all nouns using this classifier ;
+«แก้ว» in ขอ น้ำ สอง [แก้ว] ครับ
+    ⇒ แก้ว / CLF / “(classifier for glasses of drink)” / 0.85 / lexicon / role: classifier of 'น้ำ'
+    also: แก้ว/NOUN“glass (for drinking)”@0.3
+    C: classifier-phrase
+    S: classifier of 'น้ำ' (generated)
+    D: any clear, transparent substance, as crystal, diamond, glass, etc, whether natural or artificial ; anything ma
+«ขวด» in ขอ เบียร์ สาม [ขวด]
+    ⇒ ขวด / CLF / “(classifier for bottles)” / 0.85 / lexicon / role: classifier of 'เบียร์'
+    also: ขวด/NOUN“bottle”@0.3
+    C: classifier-phrase
+    S: classifier of 'เบียร์' (generated)
+    D: bottle
+«หลัง» in บ้าน [หลัง] นี้ ใหญ่ มาก
+    ⇒ หลัง / CLF / “(classifier for houses)” / 0.75 / lexicon / role: classifier of 'บ้าน'
+    also: หลัง/ADP“after, behind”@0.3
+    C: classifier-demonstrative
+    S: classifier of 'บ้าน' (generated)
+    D: Classifier for houses, tents, mosquito nets, etc. ⇒ all nouns using this classifier ; back ; back; rear
+«หลัง» in ผม อยู่ [หลัง] บ้าน
+    ⇒ หลัง / ADP / “after, behind” / 0.6 / lexicon / role: preposition
+    also: หลัง/CLF“(classifier for houses)”@0.3
+    S: preposition "หลัง" marking 'บ้าน' (generated)
+    D: behind ; after, past ; back
+«หลัง» in [หลัง] จาก นั้น เขา ก็ กลับ บ้าน
+    ⇒ หลัง / ADP / “after, behind” / 0.6 / lexicon / role: preposition
+    also: หลัง/CLF“(classifier for houses)”@0.3
+    P: หลังจาก“after”
+    S: "after that" modifying 'กลับ' (generated)
+    D: behind ; after, past ; back
+«หลัง» in เขา ปวด [หลัง]
+    ⇒ หลัง / ADP / “after, behind” / 0.6 / lexicon / role: preposition
+    also: หลัง/CLF“(classifier for houses)”@0.3
+    S: "หลัง" (time word) with 'ปวด' (generated)
+    D: behind ; after, past ; back
+«ลูก» in ฉัน กิน ส้ม สอง [ลูก]
+    ⇒ ลูก / CLF / “(classifier for round things)” / 0.85 / lexicon / role: classifier of 'ส้ม'
+    also: ลูก/NOUN“child (of someone); fruit; bal”@0.3
+    C: classifier-phrase
+    S: classifier of 'ส้ม' (generated)
+    D: Classifier for balls, round objects, and fruits. ⇒ all nouns using this classifier ; child; offspring; issue ;
+«ลูก» in [ลูก] ของ ฉัน ไป โรงเรียน
+    ⇒ ลูก / NOUN / “child (of someone); fruit; ball” / 0.6 / lexicon / role: subject of 'ไป'
+    also: ลูก/CLF“(classifier for round things)”@0.3
+    S: subject of 'ไป' (generated)
+    D: child; offspring; issue ; son; daughter ; ball; round object
+«ใบ» in ขอก ระ เป๋า [ใบ] นั้น
+    ⇒ ใบ / NOUN / “leaf; sheet” / 0.6 / lexicon / role: object of 'ระ'
+    also: ใบ/CLF“(classifier for flat or hollow”@0.3
+    C: classifier-demonstrative
+    S: object of 'ระ' (generated)
+    D: leaf (of a plant) ; sail (of a boat) ; sheet (as of paper)
+«คน» in มี นักเรียน สิบ [คน]
+    ⇒ คน / CLF / “(classifier for people)” / 0.85 / lexicon / role: classifier of 'นักเรียน'
+    also: คน/NOUN“person”@0.3
+    C: classifier-phrase
+    S: classifier of 'นักเรียน' (generated)
+    D: Classifier for most human beings. ⇒ all nouns using this classifier ; person; people; human being (Classifiers
+«คน» in มี ครู กี่ [คน]
+    ⇒ คน / CLF / “(classifier for people)” / 0.85 / lexicon / role: classifier of 'ครู'
+    also: คน/NOUN“person”@0.3
+    S: classifier of 'ครู' (generated)
+    D: Classifier for most human beings. ⇒ all nouns using this classifier ; person; people; human being (Classifiers
+«กี่» in มี ครู [กี่] คน
+    ⇒ กี่ / DET / “how many (before a classifier)” / 0.92 / lexicon / role: question word
+    C: question-word-in-place
+    S: determiner of 'ครู' (generated)
+    D: loom (weaving machine) ; bookbinding machine ; how many, how much (followed by classifier or common noun)
+«อัน» in ผม เอา [อัน] นี้
+    ⇒ อัน / SCONJ / “which, that” / 0.6 / lexicon / role: relative marker
+    also: อัน/CLF“(general classifier for small ”@0.3
+    C: classifier-demonstrative
+    D: item; piece ; one ; Classifier for small objects; the general classifier for small inanimate things. ⇒ all nou
+«ตัว» in หมา [ตัว] นั้น ดุ
+    ⇒ ตัว / CLF / “(classifier for animals, letters, clothes)” / 0.55 / lexicon / role: classifier of 'หมา'
+    also: ตัว/NOUN“body; self”@0.55
+    C: classifier-demonstrative
+    S: classifier of 'หมา' (generated)
+    D: Classifier for animals. ⇒ all nouns using this classifier ; Classifier for digits, letters, and certain object
+«ตัว» in [ตัว] เขา เอง ไม่รู้
+    ⇒ ตัว / NOUN / “body; self” / 0.7 / lexicon / role: subject of 'ไม่รู้'
+    also: ตัว/CLF“(classifier for animals, lette”@0.3
+    S: subject of 'ไม่รู้' (generated)
+    D: self; person ; body; physique ; figure; form; shape
+«ตัว» in เสื้อ [ตัว] นี้ สวย
+    ⇒ ตัว / CLF / “(classifier for animals, letters, clothes)” / 0.55 / lexicon / role: classifier of 'เสื้อ'
+    also: ตัว/NOUN“body; self”@0.55
+    C: classifier-demonstrative
+    S: classifier of 'เสื้อ' (generated)
+    D: Classifier for animals. ⇒ all nouns using this classifier ; Classifier for digits, letters, and certain object
+«สาม» in ผม มี พี่ น้อง [สาม] คน
+    ⇒ สาม / NUM / “three” / 0.92 / lexicon / role: number counting 'พี่'
+    C: classifier-phrase
+    S: number counting 'พี่' (generated)
+    D: 3 (Thai numeral: ๓ (3)) ; three ; third son
+«ด้าม» in ปากกา สอง [ด้าม]
+    ⇒ ด้าม / CLF / “(classifier for things with a handle)” / 0.92 / lexicon / role: classifier of 'ปากกา'
+    C: classifier-phrase
+    S: classifier of 'ปากกา' (generated)
+    D: Classifier for handles, pens, brushes, etc. ; handle; hilt; holder
+«รูป» in พระ สงฆ์ สาม [รูป]
+    ⇒ รูป / CLF / “(classifier for monks, pictures)” / 0.85 / lexicon / role: classifier of 'พระ'
+    also: รูป/NOUN“picture; shape”@0.3
+    C: classifier-phrase
+    S: classifier of 'พระ' (generated)
+    D: Classifier for priests. ⇒ all nouns using this classifier ; outward appearance ; shape; form; figure
+«ฟอง» in ไข่ สิบ [ฟอง]
+    ⇒ ฟอง / CLF / “—” / 0.75 / lexicon / role: classifier of 'ไข่'
+    also: ฟอง/NOUN@0.45, ฟอง/VERB@0.45
+    C: classifier-phrase
+    S: classifier of 'ไข่' (generated)
+    D: Classifier for eggs and bubbles. ; egg. (Classifier: ฟอง) ; bubble; foam. (Classifier: ฟอง)
+«ผม» in [ผม] ชื่อ สมชาย ครับ
+    ⇒ ผม / PRON / “I (male)” / 0.92 / lexicon / role: first-person pronoun (men)
+    S: the main word of the sentence (generated)
+    D: a first person pronoun employed by a male when addressing any commoner. ; headhair.
+«ผม» in [ผม] ยาว มาก
+    ⇒ ผม / PRON / “I (male)” / 0.92 / lexicon / role: first-person pronoun (men)
+    S: subject of 'ยาว' (generated)
+    D: a first person pronoun employed by a male when addressing any commoner. ; headhair.
+«ผม» in เธอ สระ [ผม] ทุก วัน
+    ⇒ ผม / PRON / “I (male)” / 0.92 / lexicon / role: first-person pronoun (men)
+    S: pronoun after 'สระ' (possessor, or part of พวกเรา) (generated)
+    D: a first person pronoun employed by a male when addressing any commoner. ; headhair.
+«ดิฉัน» in [ดิฉัน] มา จาก อเมริกา ค่ะ
+    ⇒ ดิฉัน / PRON / “I (woman, formal)” / 0.92 / lexicon / role: first-person pronoun
+    S: subject of 'มา' (generated)
+    D: a first person pronoun employed by a male when addressing a person of equal or higher status. ; a first person
+«เธอ» in ฉัน รัก [เธอ]
+    ⇒ เธอ / PRON / “she; you (to an equal)” / 0.92 / lexicon / role: pronoun
+    S: object of 'รัก' (generated)
+    D: a second-person pronoun used to address a person of equal or lower status ; a third-person pronoun used to ref
+«เรา» in [เรา] ไป กัน เถอะ
+    ⇒ เรา / PRON / “we; I” / 0.92 / lexicon / role: first-person pronoun (we, or I)
+    S: subject of 'ไป' (generated)
+    D: a first person plural/singular pronoun employed when addressing a person of equal or lower status; I, we ; a s
+«เขา» in [เขา] ไม่ มา
+    ⇒ เขา / PRON / “he, she, they” / 0.92 / lexicon / role: third-person pronoun
+    S: subject of 'มา' (generated)
+    D: he; she; they ; I; oneself ; one who is not on someone's part or side or is not a member of someone's group, e
+«เขา» in เรา ขึ้น [เขา] ไป ดู พระอาทิตย์
+    ⇒ เขา / PRON / “he, she, they” / 0.92 / lexicon / role: third-person pronoun
+    S: place or goal of 'ขึ้น' (conflicted)
+    D: he; she; they ; I; oneself ; one who is not on someone's part or side or is not a member of someone's group, e
+«เขา» in ควาย มี [เขา] สอง ข้าง
+    ⇒ เขา / PRON / “he, she, they” / 0.92 / lexicon / role: third-person pronoun
+    S: object of 'มี' (generated)
+    D: he; she; they ; I; oneself ; one who is not on someone's part or side or is not a member of someone's group, e
+«เค้า» in [เค้า] ไม่ มา
+    ⇒ เค้า / NOUN / “—” / 0.7 / lexicon / role: subject of 'มา'
+    also: เค้า/PRON@0.55
+    S: subject of 'มา' (generated)
+    D: trace, imprint, stamp (as of ancestry); vestige; outline ; origin, beginning, primary cause ; owl
+«มัน» in [มัน] อร่อย มาก
+    ⇒ มัน / PRON / “it; he, she (rude)” / 0.92 / lexicon / role: third-person pronoun
+    S: subject of 'อร่อย' (generated)
+    D: a third person pronoun used to refer to a non-human animal/animals: he, she, it, they, etc. ; a third person p
+«มัน» in ฉัน ชอบ กิน [มัน] ทอด
+    ⇒ มัน / PRON / “it; he, she (rude)” / 0.92 / lexicon / role: third-person pronoun
+    S: object of 'กิน' (generated)
+    D: a third person pronoun used to refer to a non-human animal/animals: he, she, it, they, etc. ; a third person p
+«ท่าน» in [ท่าน] จะ ไป ไหน ครับ
+    ⇒ ท่าน / PRON / “you, he, she (respectful)” / 0.6 / lexicon / role: respectful pronoun
+    also: ท่าน/CLF“(classifier for respected peop”@0.3
+    S: subject of 'ไป' (generated)
+    D: a second or third person pronoun, giving a sense of either neutrality or respect ; added before or after a nam
+«หนู» in [หนู] หิว ข้าว ค่ะ
+    ⇒ หนู / PRON / “I, you (to or from a child)” / 0.92 / lexicon / role: child-directed pronoun
+    S: subject of 'หิว' (generated)
+    D: first or second person pronoun for lower status person, or just for fun ; murid: member of the Muridae family 
+«หนู» in แมว จับ [หนู]
+    ⇒ หนู / PRON / “I, you (to or from a child)” / 0.92 / lexicon / role: child-directed pronoun
+    S: object of 'จับ' (generated)
+    D: first or second person pronoun for lower status person, or just for fun ; murid: member of the Muridae family 
+«พี่» in [พี่] ไป ไหน มา คะ
+    ⇒ พี่ / NOUN / “older sibling” / 0.92 / lexicon / role: kin term, also "you" or "I" to someone older
+    S: subject of 'ไป' (generated)
+    D: elder brother; elder sister ; older person ; superior; master; leader; boss
+«น้อง» in [น้อง] ครับ ขอ น้ำ หน่อย
+    ⇒ น้อง / NOUN / “younger sibling” / 0.92 / lexicon / role: kin term, also "you" or "I" to someone younger
+    S: subject of 'ขอ' (generated)
+    D: younger brother; younger sister ; younger person ; baby; infant; young child
+«คุณ» in [คุณ] แม่ ไป ตลาด
+    ⇒ คุณ / PRON / “you (polite)” / 0.92 / lexicon / role: second-person pronoun (polite)
+    S: title before 'แม่' (generated)
+    D: a second or third person pronoun, used out of respect ; attribute; characteristic; property ; benefit; interes
+«คุณ» in [ขอบคุณ] ครับ คุณ สมชาย
+    ⇒ ขอบคุณ / VERB / “to thank” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to thank; to give thanks. ; thank you.
+    notes: The selection is part of the word "ขอบคุณ"; the reading is for the whole word.
+«แก» in [แก] จะ ไป ไหน
+    ⇒ แก / PRON / “—” / 0.7 / lexicon / role: subject of 'ไป'
+    S: subject of 'ไป' (generated)
+    D: a second person pronoun used to address a person of equal or lower status out of affection or intimacy ; a sec
+«ตา» in [ตา] ไป นา
+    ⇒ ตา / NOUN / “eye; grandfather (mother's father)” / 0.92 / lexicon / role: subject of 'ไป'
+    S: subject of 'ไป' (generated)
+    D: eye ; one who does something with an eye or the eyes, especially as a profession ; anything that is like an ey
+«ตา» in [ตา] ของ เธอ สวย
+    ⇒ ตา / NOUN / “eye; grandfather (mother's father)” / 0.92 / lexicon / role: subject of 'สวย'
+    S: subject of 'สวย' (generated)
+    D: eye ; one who does something with an eye or the eyes, especially as a profession ; anything that is like an ey
+«ขา» in [ขา] ของ เขา เจ็บ
+    ⇒ ขา / NOUN / “leg” / 0.92 / lexicon / role: subject of 'เจ็บ'
+    S: subject of 'เจ็บ' (generated)
+    D: leg. ; something resembling or suggesting a leg or legs, as a table leg, chair leg, trouser leg, easel, tripod
+«ขา» in พี่ [ขา] ช่วย หน่อย
+    ⇒ ขา / NOUN / “leg” / 0.92 / lexicon / role: noun modifying 'พี่'
+    S: noun modifying 'พี่' (generated)
+    D: leg. ; something resembling or suggesting a leg or legs, as a table leg, chair leg, trouser leg, easel, tripod
+«ครับ» in ไป ไหน [ครับ]
+    ⇒ ครับ / PART / “(polite particle, male speaker)” / 0.92 / lexicon / role: polite particle (man speaking)
+    C: final-particle
+    S: polite particle ครับ ending the sentence (generated)
+    D: employed by males to express affirmation or assent, or to politely end any expression.
+«ค่ะ» in สวัสดี [ค่ะ]
+    ⇒ ค่ะ / PART / “(polite particle, female speaker; statements)” / 0.92 / lexicon / role: polite particle (woman, statements)
+    C: final-particle
+    S: polite particle ค่ะ ending the sentence (generated)
+    D: used at the end of an indicative expression, request, or wish. ; used to express affirmation, agreement, or ac
+«คะ» in ไป ไหม [คะ]
+    ⇒ คะ / PART / “(polite particle, female speaker; questions)” / 0.92 / lexicon / role: polite particle (woman, questions)
+    C: final-particle
+    S: polite particle คะ ending the sentence (generated)
+    D: used at the end of an expression of doubt, interrogation, or suggestion. ; used to express doubt, interrogatio
+«นะ» in ไป ด้วย กัน [นะ]
+    ⇒ นะ / PART / “(softening particle)” / 0.92 / lexicon / role: softening particle
+    C: final-particle
+    S: final particle นะ (softening particle) (generated)
+    D: particle used to make a sentence seem softer, more persuasive or less abrupt ; expresses a mild question isn't
+«สิ» in กิน [สิ]
+    ⇒ สิ / PART / “(urging particle)” / 0.92 / lexicon / role: urging particle
+    S: final particle สิ (urging particle) (generated)
+    D: a particle, usually placed at the end of a sentence, to indicate request, confirmation or emphasis
+«ซิ» in [ไปซิ]
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: a particle used as an intensive to modify a verb in the imperative mood.
+    notes: The selection is part of the word "ไปซิ"; the reading is for the whole word. || Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+«เถอะ» in ไป กัน [เถอะ]
+    ⇒ เถอะ / PART / “(urging: go on; let us)” / 0.92 / lexicon / role: urging particle
+    S: final particle เถอะ (urging particle) (generated)
+    D: alternative form of เถิด (tə̀ət, “suggestive particle”)
+«ล่ะ» in แล้ว คุณ [ล่ะ]
+    ⇒ ล่ะ / PART / “(what about…? / emphasis)” / 0.92 / lexicon / role: follow-up particle
+    C: final-particle
+    S: final particle ล่ะ (follow-up particle) (generated)
+    D: alternative form of เล่า (lâo)
+«หรอก» in ไม่ ไป [หรอก]
+    ⇒ หรอก / PART / “(softens a denial)” / 0.92 / lexicon / role: softening particle
+    S: final particle หรอก (softening particle) (generated)
+    D: at all
+«จ้ะ» in มา แล้ว [จ้ะ]
+    ⇒ จ้ะ / PART / “(friendly polite particle)” / 0.92 / lexicon / role: friendly particle
+    C: final-particle
+    S: final particle จ้ะ (friendly particle) (generated)
+    D: alternative form of ค่ะ (kâ) ; alternative form of ค่ะ (kâ)
+«เลย» in ผม ไม่ ชอบ [เลย]
+    ⇒ เลย / PART / “(emphasis: at all; right away; very)” / 0.92 / lexicon / role: emphasis particle
+    C: not-at-all-mai-loei
+    S: final particle เลย (emphasis particle) (generated)
+    D: really; completely; entirely; at all!; so much!; extremely (used for emphasis at the end of a statement) ; so;
+«เลย» in เขา เดิน [เลย] บ้าน ไป
+    ⇒ เลย / PART / “(emphasis: at all; right away; very)” / 0.92 / lexicon / role: emphasis particle
+    S: final particle เลย (emphasis particle) (generated)
+    D: really; completely; entirely; at all!; so much!; extremely (used for emphasis at the end of a statement) ; so;
+«เลย» in ไป [เลย]
+    ⇒ เลย / PART / “(emphasis: at all; right away; very)” / 0.92 / lexicon / role: emphasis particle
+    S: final particle เลย (emphasis particle) (generated)
+    D: really; completely; entirely; at all!; so much!; extremely (used for emphasis at the end of a statement) ; so;
+«ด้วย» in ผม ไป [ด้วย]
+    ⇒ ด้วย / ADV / “also, with” / 0.92 / lexicon / role: also / together marker
+    S: also / together marker "ด้วย" modifying 'ไป' (generated)
+    D: also; as well; too ; used at the end of an expression to indicate an appeal, request, or requirement ; because
+«ด้วย» in เขา กิน ข้าว [ด้วย] ช้อน
+    ⇒ ด้วย / ADV / “also, with” / 0.92 / lexicon / role: also / together marker
+    S: preposition "ด้วย" marking 'ช้อน' (generated)
+    D: also; as well; too ; used at the end of an expression to indicate an appeal, request, or requirement ; because
+«ด้วย» in ช่วย [ด้วย]
+    ⇒ ด้วย / ADV / “also, with” / 0.92 / lexicon / role: also / together marker
+    P: ช่วยด้วย“help!”
+    S: also / together marker "ด้วย" modifying 'ช่วย' (generated)
+    D: also; as well; too ; used at the end of an expression to indicate an appeal, request, or requirement ; because
+«ไหม» in คุณ ชอบ [ไหม]
+    ⇒ ไหม / PART / “(yes/no question particle)” / 0.92 / lexicon / role: question particle (yes/no)
+    C: yes-no-question
+    S: question particle ไหม: makes it a yes/no question (generated)
+    D: or not? ; silkworm. ; thread.
+«ไหม» in ผ้า [ไหม] สวย มาก
+    ⇒ ไหม / PART / “(yes/no question particle)” / 0.92 / lexicon / role: question particle (yes/no)
+    S: question particle ไหม: makes it a yes/no question (generated)
+    D: or not? ; silkworm. ; thread.
+«หรือ» in คุณ จะ ไป [หรือ]
+    ⇒ หรือ / CONJ / “or; (also ends a yes/no question)” / 0.92 / lexicon / role: or-connective
+    D: or ; final interrogative particle on a yes-no question
+«หรือ» in ชา [หรือ] กาแฟ
+    ⇒ หรือ / CONJ / “or; (also ends a yes/no question)” / 0.92 / lexicon / role: or-connective
+    S: "หรือ" joining 'ชา' and 'กาแฟ' (generated)
+    D: or ; final interrogative particle on a yes-no question
+«เปล่า» in คุณ ไป หรือ [เปล่า]
+    ⇒ เปล่า / INTJ / “no, not so (denying)” / 0.92 / lexicon / role: denial
+    C: yes-no-question
+    P: หรือเปล่า“or not? (yes/no question)”
+    S: interjection in the sentence of 'ไป' (generated)
+    D: an exclamation used to express negation: no, not, never, nah, nothing, etc. ; containing nothing, being nothin
+«เปล่า» in ขวด [เปล่า]
+    ⇒ เปล่า / INTJ / “no, not so (denying)” / 0.92 / lexicon / role: denial
+    S: interjection in the sentence of 'ขวด' (generated)
+    D: an exclamation used to express negation: no, not, never, nah, nothing, etc. ; containing nothing, being nothin
+«มั้ย» in ไป [มั้ย]
+    ⇒ มั้ย / PART / “(yes/no question particle, informal spelling of ไหม)” / 0.92 / lexicon / role: question particle
+    C: yes-no-question
+    S: question particle มั้ย: makes it a yes/no question (generated)
+    D: alternative form of ไหม (mǎi)
+«จัง» in อร่อย [จัง]
+    ⇒ จัง / ADV / “—” / 0.7 / lexicon / role: adverb "จัง" modifying 'อร่อย'
+    S: adverb "จัง" modifying 'อร่อย' (generated)
+    D: so; very much; how
+«นะ» in ดี มาก เลย [นะ] ครับ
+    ⇒ นะ / PART / “(softening particle)” / 0.92 / lexicon / role: softening particle
+    S: final particle นะ (softening particle) (generated)
+    D: particle used to make a sentence seem softer, more persuasive or less abrupt ; expresses a mild question isn't
+«ก็» in [ก็] ดี เหมือน กัน
+    ⇒ ก็ / PART / “(so, also; linking particle)” / 0.92 / lexicon / role: linking particle
+    S: linking particle ก็ with 'เหมือน' (generated)
+    D: used just for linking words or for starting or emphasising an expression ; used to indicate a consequence or r
+«ก็» in ผม [ก็] ไป
+    ⇒ ก็ / PART / “(so, also; linking particle)” / 0.92 / lexicon / role: linking particle
+    S: linking particle ก็ with 'ไป' (generated)
+    D: used just for linking words or for starting or emphasising an expression ; used to indicate a consequence or r
+«แล้ว» in ผม กิน ข้าว [แล้ว]
+    ⇒ แล้ว / ADV / “already” / 0.92 / lexicon / role: completed or changed-state marker
+    C: completed-laeo
+    S: aspect marker 'แล้ว' (completed or changed-state marker) on 'กิน' (generated)
+    D: Used at the end of a sentence to indicate completion of an action, or beginning of a new situation — Indicatin
+«แล้ว» in [แล้ว] เขา ก็ ไป
+    ⇒ แล้ว / ADV / “already” / 0.92 / lexicon / role: completed or changed-state marker
+    S: aspect marker 'แล้ว' (completed or changed-state marker) on 'ไป' (generated)
+    D: Used at the end of a sentence to indicate completion of an action, or beginning of a new situation — Indicatin
+«แล้ว» in [แล้ว] เจอ กัน
+    ⇒ แล้ว / ADV / “already” / 0.92 / lexicon / role: completed or changed-state marker
+    S: aspect marker 'แล้ว' (completed or changed-state marker) on 'เจอ' (generated)
+    D: Used at the end of a sentence to indicate completion of an action, or beginning of a new situation — Indicatin
+«กำลัง» in เขา [กำลัง] นอน อยู่
+    ⇒ กำลัง / AUX / “in the middle of (doing)” / 0.92 / lexicon / role: progressive marker
+    C: progressive-kamlang
+    S: aspect / modal marker 'กำลัง' (progressive marker) on 'นอน' (generated)
+    D: force; strength; power; vigour ; power: product of equal factors ; power: rate of doing work
+«กำลัง» in เขา มี [กำลัง] มาก
+    ⇒ กำลัง / AUX / “in the middle of (doing)” / 0.92 / lexicon / role: progressive marker
+    S: aspect / modal marker 'กำลัง' (progressive marker) on 'มี' (generated)
+    D: force; strength; power; vigour ; power: product of equal factors ; power: rate of doing work
+«อยู่» in เขา กำลัง นอน [อยู่]
+    ⇒ อยู่ / AUX / “to be located; (ongoing)” / 0.92 / lexicon / role: continuing-state marker
+    C: progressive-kamlang,continuing-yu
+    S: aspect / modal marker 'อยู่' (continuing-state marker) on 'นอน' (generated)
+    D: to be (at, in, on some place, some condition, etc.) ; to dwell, to live, to reside; to remain, to stay ; used 
+«อยู่» in เขา [อยู่] ที่ บ้าน
+    ⇒ อยู่ / AUX / “to be located; (ongoing)” / 0.92 / lexicon / role: continuing-state marker
+    S: the main word of the sentence (conflicted)
+    D: to be (at, in, on some place, some condition, etc.) ; to dwell, to live, to reside; to remain, to stay ; used 
+«จะ» in พรุ่งนี้ ผม [จะ] ไป
+    ⇒ จะ / AUX / “will” / 0.92 / lexicon / role: future marker
+    C: future-ja
+    S: aspect / modal marker 'จะ' (future marker) on 'ไป' (generated)
+    D: used to indicate a future tense: will; would; to be to; to be about to; to be going to; etc. ; almost; nearly 
+«เคย» in ผม [เคย] ไป เชียงใหม่
+    ⇒ เคย / AUX / “to have ever; used to” / 0.92 / lexicon / role: experience marker
+    C: experience-khoey
+    S: aspect / modal marker 'เคย' (experience marker) on 'ไป' (generated)
+    D: ever ; never, at all ; to use to (usually express a past tense)
+«ได้» in ผม [ได้] ไป เชียงใหม่
+    ⇒ ได้ / AUX / “can; got to” / 0.92 / lexicon / role: ability marker, or "got to"
+    C: dai-before-verb
+    S: aspect / modal marker 'ได้' (ability marker, or "got to") on 'ไป' (generated)
+    D: to get; to obtain; to receive ; used before a verb to indicate that one has done or has an opportunity to do t
+«ได้» in ผม ไป ไม่ [ได้]
+    ⇒ ได้ / AUX / “can; got to” / 0.92 / lexicon / role: ability marker, or "got to"
+    C: negation-mai,ability-dai
+    P: ไม่ได้“did not; cannot”
+    S: aspect / modal marker 'ได้' (ability marker, or "got to") on 'ไป' (generated)
+    D: to get; to obtain; to receive ; used before a verb to indicate that one has done or has an opportunity to do t
+«ได้» in ผม พูด ไทย [ได้]
+    ⇒ ได้ / AUX / “can; got to” / 0.92 / lexicon / role: ability marker, or "got to"
+    C: ability-dai
+    S: aspect / modal marker 'ได้' (ability marker, or "got to") on 'พูด' (generated)
+    D: to get; to obtain; to receive ; used before a verb to indicate that one has done or has an opportunity to do t
+«ได้» in ผม [ได้] เงิน มา
+    ⇒ ได้ / AUX / “can; got to” / 0.92 / lexicon / role: ability marker, or "got to"
+    S: aspect / modal marker 'ได้' (ability marker, or "got to") on 'มา' (generated)
+    D: to get; to obtain; to receive ; used before a verb to indicate that one has done or has an opportunity to do t
+«ได้» in [ได้] ครับ
+    ⇒ ได้ / AUX / “can; got to” / 0.92 / lexicon / role: ability marker, or "got to"
+    S: the main word of the sentence (conflicted)
+    D: to get; to obtain; to receive ; used before a verb to indicate that one has done or has an opportunity to do t
+«ยัง» in ผม [ยัง] ไม่ ได้ กิน
+    ⇒ ยัง / ADV / “still, yet” / 0.92 / lexicon / role: still / not-yet marker
+    C: not-yet-yang-mai
+    P: ยังไม่“not yet”
+    S: aspect marker 'ยัง' (still / not-yet marker) on 'กิน' (generated)
+    D: still; yet ; also; too ; not yet
+«ยัง» in เขา [ยัง] อยู่ ที่ นี่
+    ⇒ ยัง / ADV / “still, yet” / 0.92 / lexicon / role: still / not-yet marker
+    S: aspect marker 'ยัง' (still / not-yet marker) on 'อยู่' (generated)
+    D: still; yet ; also; too ; not yet
+«ยัง» in ไป [ยัง] กรุงเทพ
+    ⇒ ยัง / ADV / “still, yet” / 0.92 / lexicon / role: still / not-yet marker
+    S: aspect marker 'ยัง' (still / not-yet marker) on 'ไป' (generated)
+    D: still; yet ; also; too ; not yet
+«ยัง» in กิน ข้าว หรือ [ยัง]
+    ⇒ ยัง / ADV / “still, yet” / 0.92 / lexicon / role: still / not-yet marker
+    S: aspect marker 'ยัง' (still / not-yet marker) on 'กิน' (generated)
+    D: still; yet ; also; too ; not yet
+«เพิ่ง» in เขา [เพิ่ง] มา
+    ⇒ เพิ่ง / ADV / “just (a moment ago)” / 0.92 / lexicon / role: just-happened marker
+    S: aspect marker 'เพิ่ง' (just-happened marker) on 'มา' (generated)
+    D: just; just now ; just; only; (not) yet
+«ต้อง» in ผม [ต้อง] ไป แล้ว
+    ⇒ ต้อง / AUX / “must, have to” / 0.92 / lexicon / role: obligation marker
+    C: modal-before-verb
+    S: aspect / modal marker 'ต้อง' (obligation marker) on 'ไป' (generated)
+    D: to touch; to come into contact (with); to hit ; to be subject to; to be liable to; to be susceptible of; to be
+«ไป» in เขา เดิน [ไป] ตลาด
+    ⇒ ไป / VERB / “to go” / 0.92 / lexicon / role: direction or result added to 'เดิน'
+    C: directional-after-verb
+    S: direction or result added to 'เดิน' (conflicted)
+    D: to go; to move (away from the speaker); to leave; to depart ; used to indicate motion away from the speaker's 
+«เดิน» in เขา [เดิน] ไป ตลาด
+    ⇒ เดิน / VERB / “to walk” / 0.92 / lexicon / role: the main word of the sentence
+    C: directional-after-verb
+    S: the main word of the sentence (generated)
+    D: to move on or as if on foot: to walk, to step, to run, to flow, etc. ; to cause to go or move, to set in motio
+«มา» in เขา เอา หนังสือ [มา]
+    ⇒ มา / VERB / “to come” / 0.92 / lexicon / role: direction or result added to 'เอา'
+    S: direction or result added to 'เอา' (conflicted)
+    D: to move or come (towards the speaker's direction); to arrive ; used to indicate motion towards the speaker's d
+«ขึ้น» in ราคา [ขึ้น] ทุก วัน
+    ⇒ ขึ้น / VERB / “to go up, rise” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to wax ; to move or go up, upwards, frontwards, northwards, or eastwards ; to come above the horizon, as a hea
+«ขึ้น» in สวย [ขึ้น] มาก
+    ⇒ ขึ้น / VERB / “to go up, rise” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to wax ; to move or go up, upwards, frontwards, northwards, or eastwards ; to come above the horizon, as a hea
+«เข้า» in เขา เดิน [เข้าไป] ใน บ้าน
+    ⇒ เข้าไป / VERB / “to go in” / 0.92 / lexicon / role: second verb in a chain with 'เดิน'
+    C: directional-after-verb
+    S: second verb in a chain with 'เดิน' (conflicted)
+    D: to enter, to reach, to get into
+    notes: The selection is part of the word "เข้าไป"; the reading is for the whole word.
+«ออก» in เขา คิด ไม่ [ออก]
+    ⇒ ออก / VERB / “to go out, exit” / 0.92 / lexicon / role: direction or result added to 'คิด'
+    C: negation-mai
+    S: direction or result added to 'คิด' (conflicted)
+    D: to pay (a monetary sum) ; to come under (a governing power) ; to come or go out, into view, or into being; to 
+«ให้» in แม่ [ให้] เงิน ลูก
+    ⇒ ให้ / ADP / “for, to (benefactive)” / 0.6 / lexicon / role: benefactive marker (for, to)
+    also: ให้/VERB“to give; to let”@0.3
+    S: the main word of the sentence (generated)
+    D: to; for; that, so that; to the point of, to the extent of, to the degree of, until; in a manner that (is) ; fo
+«ให้» in ผม [ให้] หนังสือ เขา
+    ⇒ ให้ / ADP / “for, to (benefactive)” / 0.6 / lexicon / role: benefactive marker (for, to)
+    also: ให้/VERB“to give; to let”@0.3
+    S: the main word of the sentence (generated)
+    D: to; for; that, so that; to the point of, to the extent of, to the degree of, until; in a manner that (is) ; fo
+«ให้» in ผม ซื้อ ของ [ให้] แม่
+    ⇒ ให้ / VERB / “to give; to let” / 0.55 / lexicon / role: giving or causing
+    also: ให้/ADP“for, to (benefactive)”@0.55
+    S: "for / to" marking 'แม่' (conflicted)
+    D: to give; to grant ; to gratuitously give; to donate ; to allow; to permit
+«ให้» in แม่ [ให้] ลูก ไป โรงเรียน
+    ⇒ ให้ / ADP / “for, to (benefactive)” / 0.6 / lexicon / role: benefactive marker (for, to)
+    also: ให้/VERB“to give; to let”@0.3
+    S: the main word of the sentence (generated)
+    D: to; for; that, so that; to the point of, to the extent of, to the degree of, until; in a manner that (is) ; fo
+«ทำให้» in เขา [ทำให้] ฉัน เสียใจ
+    ⇒ ทำให้ / VERB / “to cause; to make (so that)” / 0.92 / lexicon / role: causative
+    C: causative-hai
+    S: the main word of the sentence (generated)
+    D: to cause (something to be or do); to make (do something)
+«ให้» in ขอ [ให้] โชค ดี
+    ⇒ ให้ / ADP / “for, to (benefactive)” / 0.6 / lexicon / role: benefactive marker (for, to)
+    also: ให้/VERB“to give; to let”@0.3
+    C: benefactive-hai
+    P: ขอให้“may; I hope that”
+    S: "for / to" marking 'โชค' (conflicted)
+    D: to; for; that, so that; to the point of, to the extent of, to the degree of, until; in a manner that (is) ; fo
+«ให้» in พูด [ให้] ชัด
+    ⇒ ให้ / ADP / “for, to (benefactive)” / 0.6 / lexicon / role: benefactive marker (for, to)
+    also: ให้/VERB“to give; to let”@0.3
+    S: "ให้" introducing 'ชัด' (generated)
+    D: to; for; that, so that; to the point of, to the extent of, to the degree of, until; in a manner that (is) ; fo
+«ให้» in [ให้] ฉัน ช่วย ไหม
+    ⇒ ให้ / VERB / “to give; to let” / 0.55 / lexicon / role: giving or causing
+    also: ให้/ADP“for, to (benefactive)”@0.55
+    C: causative-hai
+    S: the main word of the sentence (generated)
+    D: to give; to grant ; to gratuitously give; to donate ; to allow; to permit
+«ที่» in คน [ที่มา] เมื่อวาน เป็น หมอ
+    ⇒ ที่มา / NOUN / “—” / 0.7 / lexicon / role: noun modifying 'คน'
+    S: noun modifying 'คน' (generated)
+    D: origin; source; cause.
+    notes: The selection is part of the word "ที่มา"; the reading is for the whole word.
+«ที่» in ผม อยู่ [ที่] กรุงเทพ
+    ⇒ ที่ / SCONJ / “that, who, which” / 0.92 / lexicon / role: relative or complement marker
+    S: preposition "ที่" marking 'กรุงเทพ' (generated)
+    D: at; to; on the site of; within; amidst; at the location of ; for; during; at the time of ; land; place; area; 
+«ที่» in [ที่] นี่ ไม่มี ที่ จอด รถ
+    ⇒ ที่ / SCONJ / “that, who, which” / 0.92 / lexicon / role: relative or complement marker
+    S: preposition "ที่" marking 'นี่' (generated)
+    D: at; to; on the site of; within; amidst; at the location of ; for; during; at the time of ; land; place; area; 
+«ที่» in ที่ นี่ ไม่มี [ที่] จอด รถ
+    ⇒ ที่ / SCONJ / “that, who, which” / 0.92 / lexicon / role: relative or complement marker
+    S: "ที่" introducing 'จอด' (generated)
+    D: at; to; on the site of; within; amidst; at the location of ; for; during; at the time of ; land; place; area; 
+«ที่» in ผม ดีใจ [ที่] คุณ มา
+    ⇒ ที่ / SCONJ / “that, who, which” / 0.92 / lexicon / role: relative or complement marker
+    S: "ที่" introducing 'มา' (generated)
+    D: at; to; on the site of; within; amidst; at the location of ; for; during; at the time of ; land; place; area; 
+«ที่» in เขา เป็น ลูก คน [ที่] สอง
+    ⇒ ที่ / SCONJ / “that, who, which” / 0.92 / lexicon / role: relative or complement marker
+    C: ordinal-thi
+    S: "ที่" with no noun phrase after it (generated)
+    D: at; to; on the site of; within; amidst; at the location of ; for; during; at the time of ; land; place; area; 
+«ที่ดิน» in [ที่ดิน] แปลง นี้ แพง
+    ⇒ ที่ดิน / NOUN / “land, a plot of land” / 0.92 / lexicon / role: subject of 'แพง'
+    C: classifier-demonstrative
+    S: subject of 'แพง' (generated)
+    D: land (as real estate).
+«ว่า» in เขา บอก [ว่า] จะ มา
+    ⇒ ว่า / SCONJ / “that (complementizer)” / 0.92 / lexicon / role: complement marker (that)
+    C: complement-wa
+    S: "ว่า" introducing 'มา' (generated)
+    D: to say, to speak, to tell; to utter, to pronounce ; to instruct; to direct ; to address; to deal (with); to ha
+«ว่า» in แม่ [ว่า] ลูก
+    ⇒ ว่า / SCONJ / “that (complementizer)” / 0.92 / lexicon / role: complement marker (that)
+    D: to say, to speak, to tell; to utter, to pronounce ; to instruct; to direct ; to address; to deal (with); to ha
+«ว่า» in คุณ [ว่า] อย่างไร
+    ⇒ ว่า / SCONJ / “that (complementizer)” / 0.92 / lexicon / role: complement marker (that)
+    D: to say, to speak, to tell; to utter, to pronounce ; to instruct; to direct ; to address; to deal (with); to ha
+«ของ» in หนังสือ [ของ] ผม
+    ⇒ ของ / ADP / “of” / 0.92 / lexicon / role: preposition (of, belonging to)
+    S: "of" marking 'ผม' (generated)
+    D: of; belonging to; pertaining to ; thing; item; article; stuff; matter ; possession; belonging; property; someo
+«ของ» in ผม ไป ซื้อ [ของ]
+    ⇒ ของ / ADP / “of” / 0.92 / lexicon / role: preposition (of, belonging to)
+    S: object of 'ซื้อ' (generated)
+    D: of; belonging to; pertaining to ; thing; item; article; stuff; matter ; possession; belonging; property; someo
+«ของ» in [ของ] นี้ แพง
+    ⇒ ของ / ADP / “of” / 0.92 / lexicon / role: preposition (of, belonging to)
+    S: subject of 'แพง' (generated)
+    D: of; belonging to; pertaining to ; thing; item; article; stuff; matter ; possession; belonging; property; someo
+«การ» in [การ] เรียน ภาษา ไทย สนุก
+    ⇒ การ / NOUN / “(prefix: the act of …-ing)” / 0.92 / lexicon / role: noun-forming prefix
+    C: nominalizer-kan
+    S: noun-forming prefix of 'เรียน' (generated)
+    D: work; matter; task; affair ; prefixed to nouns to form noun derivatives, meaning “affairs of.; matters of .; -
+«ความ» in [ความ] รัก เป็น สิ่ง สำคัญ
+    ⇒ ความ / NOUN / “(prefix forming abstract nouns)” / 0.92 / lexicon / role: noun-forming prefix
+    C: nominalizer-khwam
+    S: noun-forming prefix of 'รัก' (generated)
+    D: affair; matter ; content; essence ; text, message, passage; version, edition
+«รัก» in ความ [รัก] เป็น สิ่ง สำคัญ
+    ⇒ รัก / VERB / “to love” / 0.92 / lexicon / role: subject of 'สิ่ง'
+    C: nominalizer-khwam
+    S: subject of 'สิ่ง' (generated)
+    D: to love, to have affection (for), to adore, to admire, to cherish, to be fond (of); to prefer, to favour ; lov
+«คือ» in ความ จริง [คือ] อะไร
+    ⇒ คือ / VERB / “to be (defining: A is B)” / 0.92 / lexicon / role: "to be": links the subject to 'อะไร'
+    S: "to be": links the subject to 'อะไร' (generated)
+    D: to be ; to be as follows
+«เป็น» in เขา [เป็น] ครู
+    ⇒ เป็น / VERB / “to be (identity); to be able to (a skill)” / 0.92 / lexicon / role: "to be": links the subject to 'ครู'
+    S: "to be": links the subject to 'ครู' (generated)
+    D: to be ; to get; to have; to experience; to suffer ; used at the end of an expression to indicate that the pers
+«เป็น» in เขา ว่าย น้ำ [เป็น]
+    ⇒ เป็น / VERB / “to be (identity); to be able to (a skill)” / 0.92 / lexicon / role: direction or result added to 'ว่าย'
+    S: direction or result added to 'ว่าย' (conflicted)
+    D: to be ; to get; to have; to experience; to suffer ; used at the end of an expression to indicate that the pers
+«เป็น» in เขา [เป็น] ไข้
+    ⇒ เป็น / VERB / “to be (identity); to be able to (a skill)” / 0.92 / lexicon / role: "to be": links the subject to 'ไข้'
+    S: "to be": links the subject to 'ไข้' (generated)
+    D: to be ; to get; to have; to experience; to suffer ; used at the end of an expression to indicate that the pers
+«ไม่» in ผม [ไม่] ไป
+    ⇒ ไม่ / PART / “not” / 0.92 / lexicon / role: negation
+    C: negation-mai
+    S: negation of 'ไป' (generated)
+    D: no; not ; neither; nor ; no
+«ไม่» in ผม [ไม่] ได้ ไป
+    ⇒ ไม่ / PART / “not” / 0.92 / lexicon / role: negation
+    C: negation-mai,did-not-mai-dai
+    P: ไม่ได้“did not; cannot”
+    S: negation of 'ไป' (generated)
+    D: no; not ; neither; nor ; no
+«ไม่ใช่» in นี่ [ไม่ใช่] ของ ผม
+    ⇒ ไม่ใช่ / VERB / “to not be (A is not B)” / 0.92 / lexicon / role: negated "to be"
+    S: the main word of the sentence (generated)
+    D: no; not.
+«ยัง» in ผม [ยัง] ไม่ หิว
+    ⇒ ยัง / ADV / “still, yet” / 0.92 / lexicon / role: still / not-yet marker
+    C: not-yet-yang-mai
+    P: ยังไม่“not yet”
+    S: aspect marker 'ยัง' (still / not-yet marker) on 'หิว' (generated)
+    D: still; yet ; also; too ; not yet
+«ไม่มี» in [ไม่มี] ใคร อยู่ บ้าน
+    ⇒ ไม่มี / VERB / “to not have; there is no” / 0.92 / lexicon / role: the main word of the sentence
+    P: ไม่มีใคร“nobody”
+    S: the main word of the sentence (generated)
+    D: to not have, to not be ; non-, un- ; without
+«ต้อง» in ไม่ [ต้อง] กลัว
+    ⇒ ต้อง / AUX / “must, have to” / 0.92 / lexicon / role: obligation marker
+    C: negation-mai,modal-before-verb
+    S: aspect / modal marker 'ต้อง' (obligation marker) on 'กลัว' (generated)
+    D: to touch; to come into contact (with); to hit ; to be subject to; to be liable to; to be susceptible of; to be
+«อย่า» in [อย่า] ไป
+    ⇒ อย่า / AUX / “do not (command)” / 0.92 / lexicon / role: prohibition marker
+    C: prohibition-ya
+    S: aspect / modal marker 'อย่า' (prohibition marker) on 'ไป' (generated)
+    D: don't, do not
+«ห้าม» in [ห้าม] สูบ บุหรี่
+    ⇒ ห้าม / VERB / “to forbid” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to forbid; to prohibit; to inhibit ; do not ; to stop; to prevent; to block
+«อะไร» in นี่ [อะไร]
+    ⇒ อะไร / PRON / “what” / 0.92 / lexicon / role: question word
+    C: question-word-in-place
+    D: what? ; something; anything ; whatever
+«ใคร» in [ใคร] มา
+    ⇒ ใคร / PRON / “who” / 0.92 / lexicon / role: question word
+    C: question-word-in-place
+    S: subject of 'มา' (generated)
+    D: who; which person; what person? ; whoever; anyone; someone; everyone; they (people in general) ; person; one
+«ที่ไหน» in ห้องน้ำ อยู่ [ที่ไหน]
+    ⇒ ที่ไหน / ADV / “where?” / 0.92 / lexicon / role: question word
+    C: question-word-in-place
+    S: place or goal of 'อยู่' (generated)
+    D: where?
+«เมื่อไร» in คุณ จะ ไป [เมื่อไร]
+    ⇒ เมื่อไร / ADV / “when?” / 0.92 / lexicon / role: question word
+    C: question-word-in-place
+    S: question word "เมื่อไร" modifying 'ไป' (generated)
+    D: when ; whenever
+«เมื่อไหร่» in คุณ จะ ไป [เมื่อ] [ไหร่]
+    2 tokens: เมื่อ=เมื่อ/SCONJ“when (a point in time)” + ไหร่=ไหร่/PRON“what (informal spelling of ไร)” | PHRASE เมื่อไหร่ “when?” | conf 0.9 | P: เมื่อไหร่“when?”
+    notes: Matches the phrase entry "เมื่อไหร่" (formula).
+    SEG chosen เมื่อ(when (a point in t)+ไหร่(what (informal spe)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«ทำไม» in [ทำไม] คุณ ไม่ มา
+    ⇒ ทำไม / ADV / “why” / 0.92 / lexicon / role: question word (why)
+    C: question-word-in-place
+    S: question word (why) "ทำไม" modifying 'มา' (generated)
+    D: why? what? for what? for what purpose, reason, or cause? ; what to do?
+«อย่างไร» in ไป [อย่างไร]
+    ⇒ อย่างไร / ADV / “how?” / 0.92 / lexicon / role: question word
+    C: question-word-in-place
+    S: question word "อย่างไร" modifying 'ไป' (generated)
+    D: how? what? in what manner? in what way? by what means? ; whatever; however; no matter what; whatever happens
+«ยังไง» in ไป [ยัง] [ไง]
+    2 tokens: ยัง=ยัง/ADV“still, yet” + ไง=ไง/ADV“how (short form of อย่างไร)” | PHRASE ยังไง “how? (colloquial)” | conf 0.9 | P: ยังไง“how? (colloquial)”
+    notes: Matches the phrase entry "ยังไง" (formula).
+    SEG chosen ยัง(still, yet)+ไง(how (short form of)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«เท่าไร» in ราคา [เท่าไร]
+    ⇒ เท่าไร / PRON / “how much?” / 0.92 / lexicon / role: question word
+    C: question-word-in-place
+    S: "what / which" asking about 'ราคา' (generated)
+    D: to what extent or degree?; how much?; how many? ; to whatever extent or degree; no matter how (much); however 
+«เท่าไหร่» in ราคา [เท่า] [ไหร่]
+    2 tokens: เท่า=เท่า/ADJ“equal to; as much as; times” + ไหร่=ไหร่/PRON“what (informal spelling of ไร)” | PHRASE เท่าไหร่ “how much?” | conf 0.9 | P: เท่าไหร่“how much?”
+    notes: Matches the phrase entry "เท่าไหร่" (formula).
+    SEG chosen เท่า(equal to; as much )+ไหร่(what (informal spe)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«กี่» in คุณ มี พี่ น้อง [กี่] คน
+    ⇒ กี่ / DET / “how many (before a classifier)” / 0.92 / lexicon / role: question word
+    C: question-word-in-place
+    S: determiner of 'พี่' (generated)
+    D: loom (weaving machine) ; bookbinding machine ; how many, how much (followed by classifier or common noun)
+«อะไร» in ผม ไม่รู้ [อะไร] เลย
+    ⇒ อะไร / PRON / “what” / 0.92 / lexicon / role: question word
+    C: question-word-in-place
+    S: object of 'ไม่รู้' (generated)
+    D: what? ; something; anything ; whatever
+«ใคร» in [ใคร] ก็ได้
+    ⇒ ใคร / PRON / “who” / 0.92 / lexicon / role: question word
+    C: question-word-in-place
+    P: ใครก็ได้“anyone at all”
+    S: the main word of the sentence (generated)
+    D: who; which person; what person? ; whoever; anyone; someone; everyone; they (people in general) ; person; one
+«กว่า» in เขา สูง [กว่า] ผม
+    ⇒ กว่า / ADP / “more than; -er” / 0.92 / lexicon / role: comparative marker
+    C: comparative-kwa
+    S: preposition "กว่า" marking 'ผม' (generated)
+    D: than ; more than; over; beyond ; until; up to; by
+«ที่สุด» in เขา สูง [ที่สุด]
+    ⇒ ที่สุด / ADV / “the most” / 0.92 / lexicon / role: superlative marker
+    C: superlative-thisut
+    S: superlative marker "ที่สุด" modifying 'สูง' (generated)
+    D: the most, very most
+«เท่ากับ» in ผม สูง [เท่ากับ] เขา
+    ⇒ เท่ากับ / VERB / “—” / 0.7 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to be equal to; equals to
+«เหมือน» in เขา [เหมือน] พ่อ
+    ⇒ เหมือน / VERB / “to be like, resemble” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: same, similar ; as, like, as if, similar to
+«มากกว่า» in ผม ชอบ อัน นี้ [มากกว่า]
+    ⇒ มากกว่า / ADV / “more than” / 0.92 / lexicon / role: adverb "มากกว่า" modifying 'ชอบ'
+    S: adverb "มากกว่า" modifying 'ชอบ' (generated)
+    D: more than
+«ถูก» in เขา [ถูก] ตำรวจ จับ
+    ⇒ ถูก / AUX / “(passive: to be done to)” / 0.75 / lexicon / role: passive marker
+    also: ถูก/ADJ“cheap; correct”@0.3
+    C: passive-thuk
+    S: aspect / modal marker 'ถูก' (passive marker) on 'จับ' (generated)
+    D: cheap; inexpensive; low ; to touch; to contact; to come into contact with ; to be in accordance with; to be in
+«ถูก» in ของ นี้ [ถูก] มาก
+    ⇒ ถูก / ADJ / “cheap; correct” / 0.7 / lexicon / role: the main word of the sentence
+    also: ถูก/AUX“(passive: to be done to)”@0.3
+    S: the main word of the sentence (conflicted)
+    D: cheap; inexpensive; low ; to touch; to contact; to come into contact with ; to be in accordance with; to be in
+«ถูก» in คุณ พูด [ถูก]
+    ⇒ ถูก / ADJ / “cheap; correct” / 0.7 / lexicon / role: how or in what state 'พูด' happens
+    also: ถูก/AUX“(passive: to be done to)”@0.3
+    S: how or in what state 'พูด' happens (conflicted)
+    D: cheap; inexpensive; low ; to touch; to contact; to come into contact with ; to be in accordance with; to be in
+«ถูก» in เขา [ถูก] หวย
+    ⇒ ถูก / ADJ / “cheap; correct” / 0.7 / lexicon / role: the main word of the sentence
+    also: ถูก/AUX“(passive: to be done to)”@0.3
+    S: the main word of the sentence (generated)
+    D: cheap; inexpensive; low ; to touch; to contact; to come into contact with ; to be in accordance with; to be in
+«โดน» in เขา [โดน] หมา กัด
+    ⇒ โดน / AUX / “(passive, usually for bad events)” / 0.92 / lexicon / role: passive marker
+    C: passive-thuk
+    S: aspect / modal marker 'โดน' (passive marker) on 'กัด' (generated)
+    D: to bump against, to hit ; to be in trouble ; passive voice marker
+«กัน» in เรา ไป ด้วย [กัน]
+    ⇒ กัน / ADV / “each other; together” / 0.92 / lexicon / role: part of the fixed "ด้วยกัน" (together)
+    P: ด้วยกัน“together”
+    S: part of the fixed "ด้วยกัน" (together) (generated)
+    D: together; jointly; altogether ; each other; one another ; a first person pronoun used when speaking to a male 
+«กัน» in เขา รัก [กัน]
+    ⇒ กัน / ADV / “each other; together” / 0.92 / lexicon / role: adverb "กัน" modifying 'รัก'
+    S: adverb "กัน" modifying 'รัก' (generated)
+    D: together; jointly; altogether ; each other; one another ; a first person pronoun used when speaking to a male 
+«กัน» in ยา [กัน] ยุง
+    ⇒ กัน / ADV / “each other; together” / 0.92 / lexicon
+    D: together; jointly; altogether ; each other; one another ; a first person pronoun used when speaking to a male 
+«เอง» in ผม ไป [เอง]
+    ⇒ เอง / ADV / “-self” / 0.92 / lexicon / role: emphasis (oneself)
+    S: emphasis (oneself) "เอง" modifying 'ไป' (generated)
+    D: by oneself, alone ; only, just ; oneself
+«มากๆ» in เขา มี เพื่อ [นมาก] [ๆ]
+    2 tokens: นมาก=∅/∅“” + ๆ=ๆ/PART“(repeat the previous word)” | conf 0
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen มากๆ(very; much, many)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«ดีๆ» in [ดีๆ]
+    ⇒ ดี / ADJ / “good” / 0.6 / rule
+    C: reduplication-mai-yamok
+    D: good: — nice; fine; excellent; satisfactory; agreeable; pleasant; favourable ; good: — beautiful; adorable; lo
+«ต่างๆ» in บ้าน [ต่างๆ]
+    ⇒ ต่าง / DET / “different; each, every (as in ต่างคน)” / 0.6 / rule
+    C: reduplication-mai-yamok
+    D: a shoulder pole carried by a beast of burden ; a packsaddle ; used in หน้าต่าง (nâa-dtàang, “window”)
+«ทรง» in พระเจ้า [ทรง] รัก โลก
+    ⇒ ทรง / AUX / “(royal/divine auxiliary before verbs)” / 0.92 / lexicon / role: royal or divine verb marker
+    C: royal-verb
+    S: aspect / modal marker 'ทรง' (royal or divine verb marker) on 'รัก' (generated)
+    D: to bear; to hold; to carry ; to bear; to hold up; to support ; to have; to possess; to contain
+«ตรัส» in พระเยซู [ตรัส] ว่า
+    ⇒ ตรัส / VERB / “—” / 0.7 / lexicon / role: the main word of the sentence
+    also: ตรัส/ADV@0.55
+    C: complement-wa
+    S: the main word of the sentence (generated)
+    D: to speak; to say; to tell; to utter. ; brightly; clearly; thoroughly.
+«พระองค์» in [พระองค์] ทรง เป็น ความ รัก
+    ⇒ พระองค์ / PRON / “he (royal/divine); God” / 0.92 / lexicon / role: royal or divine pronoun
+    S: subject of 'รัก' (generated)
+    D: a second or third person pronoun referring to a god, religious personage, high priest, or royal person. ; Clas
+«ทรง» in พระองค์ [ทรง] เป็น ความ รัก
+    ⇒ ทรง / AUX / “(royal/divine auxiliary before verbs)” / 0.92 / lexicon / role: royal or divine verb marker
+    C: royal-verb
+    S: aspect / modal marker 'ทรง' (royal or divine verb marker) on 'รัก' (generated)
+    D: to bear; to hold; to carry ; to bear; to hold up; to support ; to have; to possess; to contain
+«เสด็จ» in ในหลวง [เสด็จ] ไป เชียงใหม่
+    ⇒ เสด็จ / VERB / “to go, to come (royal)” / 0.92 / lexicon / role: royal verb
+    C: directional-after-verb
+    S: the main word of the sentence (generated)
+    D: to come; to go; to move. ; to remain; to stand; to stay. ; used as a ceremonious addition to a verb when the s
+«ฉัน» in พระ [ฉัน] อาหาร เช้า
+    ⇒ ฉัน / PRON / “I (neutral/female)” / 0.92 / lexicon / role: first-person pronoun
+    S: pronoun after 'พระ' (possessor, or part of พวกเรา) (generated)
+    D: a first-person pronoun used by anyone when addressing a person of equal or lower status ; as; like; as if ; as
+«เสวย» in พระ ราชินี [เสวยพ] ระ กระยาหาร
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: to consume; to eat; to take; to drink. ; to own; possess; to come into possession. ; to experience; to undergo
+    notes: The selection is part of the word "เสวยพ"; the reading is for the whole word. || Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+«ประชวร» in พระเจ้าอยู่หัว ทรง พระ [ประชวร]
+    ⇒ ประชวร / NOUN / “—” / 0.7 / lexicon / role: noun modifying 'พระ'
+    also: ประชวร/VERB@0.55
+    S: noun modifying 'พระ' (generated)
+    D: (พระ~) ailment; illness; sickness. ; to be ailing; to be sick; to be ill.
+«สิ้นพระชนม์» in พระเยซู [สิ้นพระชนม์] บน ไม้ กางเขน
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: ∅
+    notes: Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+«ไม้กางเขน» in พระเยซู สิ้นพระชนม์ บน [ไม้] [กางเขน]
+    2 tokens: ไม้=ไม้/NOUN“wood; stick” + กางเขน=กางเขน/NOUN“cross” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ไม้(wood; stick)+กางเขน(cross)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«อวยพร» in ขอ พระเจ้า [อวยพร] คุณ
+    ⇒ อวยพร / VERB / “—” / 0.7 / lexicon / role: second verb in a chain with 'ขอ'
+    S: second verb in a chain with 'ขอ' (conflicted)
+    D: to give a blessing (to); to express a good wish (for); to wish (someone something)
+«ข้าพระองค์» in ข้า แต่ พระบิดา ของ [ข้า] [พระองค์] ทั้ง หลาย
+    2 tokens: ข้า=ข้า/PRON“I (old style)” + พระองค์=พระองค์/PRON“he (royal/divine); God” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ข้า(I (old style))+พระองค์(he (royal/divine);)@0.95 | reason: Other cuts exist (ข้า-พระ-องค์) but each is far less plausible than the tokenizer's cut.
+«ข้าแต่» in [ข้า] [แต่] พระบิดา ของ ข้า พระองค์ ทั้ง หลาย
+    2 tokens: ข้า=ข้า/PRON“I (old style)” + แต่=แต่/CONJ“but” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ข้า(I (old style))+แต่(but)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«เชื่อ» in เรา [เชื่อ] ใน พระเยซู คริสต์
+    ⇒ เชื่อ / VERB / “to believe” / 0.92 / lexicon / role: the main word of the sentence
+    P: เชื่อใน…“to believe in”
+    S: the main word of the sentence (generated)
+    D: to believe ; to rely on ; to trust
+«พระวิญญาณ» in [พระวิญญาณ] บริสุทธิ์
+    ⇒ พระวิญญาณ / NOUN / “the Spirit (of God)” / 0.92 / lexicon / role: subject of 'บริสุทธิ์'
+    S: subject of 'บริสุทธิ์' (generated)
+    D: ∅
+«นมัสการ» in คริสตจักร ของ เรา [นมัสการ] วัน อาทิตย์
+    ⇒ นมัสการ / VERB / “to worship” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to salute, adore, or worship, especially by means of กราบ (gràap) or ไหว้ (wâai). ; to express a greeting or f
+«เทศนา» in ศิษยาภิบาล [เทศนา] เรื่อง ความ รอด
+    ⇒ เทศนา / NOUN / “—” / 0.7 / lexicon / role: noun modifying 'ศิษยาภิบาล'
+    also: เทศนา/VERB@0.55
+    S: noun modifying 'ศิษยาภิบาล' (generated)
+    D: preaching; teaching; sermon; discourse; lecture. ; preaching: moral advice, especially one given in an obtrusi
+«ความรอด» in ศิษยาภิบาล เทศนา เรื่อง [ความ] [รอด]
+    2 tokens: ความ=ความ/NOUN“(prefix forming abstract nouns)” + รอด=รอด/VERB“to be saved; to survive” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ความ((prefix forming ab)+รอด(to be saved; to su)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«บัพติศมา» in เขา รับ [บัพติศมา] แล้ว
+    ⇒ บัพติศมา / NOUN / “baptism” / 0.92 / lexicon / role: object of 'รับ'
+    S: object of 'รับ' (generated)
+    D: ∅
+«พระวรสาร» in [พระ] [ว] [รสาร] ยอห์น
+    3 tokens: พระ=พระ/NOUN“monk; Buddha image; royal or holy (prefix)” + ว=∅/∅“” + รสาร=∅/∅“” | conf 0
+    notes: 3 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen พระ(monk; Buddha image)+ว?+รสาร?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ว, รสาร), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ข่าวประเสริฐ» in [ข่าว] [ประเสริฐ]
+    2 tokens: ข่าว=ข่าว/NOUN“news” + ประเสริฐ=ประเสริฐ/ADJ“” | conf 0.68
+    notes: No sentence context: the word was read alone, so neighbouring words could not help choose a reading. || 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ข่าว(news)+ประเสริฐ?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ประเสริฐ), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«อาพาธ» in หลวง พ่อ [อาพาธ]
+    ⇒ อาพาธ / ADJ / “—” / 0.68 / lexicon / role: adjective describing 'พ่อ'
+    also: อาพาธ/NOUN@0.45, อาพาธ/VERB@0.45
+    S: adjective describing 'พ่อ' (generated)
+    D: ill; sick. ; illness; sickness. ; to be ill; to be sick.
+«อ่ะ» in เค้า บอก ว่า ยัง ไง [อ่ะ]
+    ⇒ อ่ะ / INTJ / “—” / 0.7 / lexicon / role: clause that 'บอก' reports or is about
+    also: อ่ะ/PART@0.55
+    S: clause that 'บอก' reports or is about (generated)
+    D: deliberate misspelling of อะ (à) ; deliberate misspelling of อะ (à)
+«ไง» in เป็น [ไง] บ้าง
+    ⇒ ไง / ADV / “how (short form of อย่างไร)” / 0.92 / lexicon / role: question word
+    C: question-word-in-place
+    S: question word "ไง" modifying 'เป็น' (generated)
+    D: how; what; in what way. ; used as a conventional greeting.
+«ไม่เป็นไร» in [ไม่] [เป็นไร]
+    2 tokens: ไม่=ไม่/PART“not” + เป็นไร=เป็นไร/VERB“to matter; to be wrong (as in ไม่เป็นไร "never mind")” | PHRASE ไม่เป็นไร “never mind; it is nothing” | conf 0.9 | P: ไม่เป็นไร“never mind; it is nothing”
+    notes: No sentence context: the word was read alone, so neighbouring words could not help choose a reading. || Matches the phrase entry "ไม่เป็นไร" (formula).
+    SEG chosen ไม่(not)+เป็นไร(to matter; to be w)@0.95 | reason: Other cuts exist (ไม่-เป็น-ไร) but each is far less plausible than the tokenizer's cut.
+«ไร» in ทำ [ไร] อยู่
+    ⇒ ไร / PRON / “what (short form of อะไร)” / 0.92 / lexicon / role: question word
+    C: question-word-in-place
+    S: object of 'ทำ' (generated)
+    D: what ; how; what; which; when; why ; louse; mite
+«ชอบ» in ผม [ชอบ] อ่ะ
+    ⇒ ชอบ / VERB / “to like” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to like; to admire; to appreciate; to adore; to approve; to be in favour (of) ; to tend (to); to be likely (to
+«ขอบใจ» in [ขอบใจ] นะ
+    ⇒ ขอบใจ / INTJ / “—” / 0.7 / lexicon / role: the main word of the sentence
+    also: ขอบใจ/VERB@0.55
+    S: the main word of the sentence (generated)
+    D: thank you ; to thank
+«ทุ่ม» in ตอนนี้ สอง [ทุ่ม] แล้ว
+    ⇒ ทุ่ม / NOUN / “(evening hours: ทุ่ม marks 7-11 pm)” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: a Thai unit of time originated from the sound of beating a timekeeping drum, formerly referring to any of the 
+«โมง» in ผม ตื่น หก [โมง] เช้า
+    ⇒ โมง / CLF / “o'clock (daytime hours)” / 0.92 / lexicon
+    C: classifier-phrase
+    D: a Thai unit of time equal to an hour (60 minutes) ; time ; a kind of tree found in the forest, the liquid excr
+«บ่าย» in เจอ กัน [บ่าย] สอง โมง
+    ⇒ บ่าย / NOUN / “afternoon” / 0.92 / lexicon / role: object of 'เจอ'
+    S: object of 'เจอ' (generated)
+    D: afternoon ; time or hour in the afternoon, especially under the six-hour clock ; to turn, move, shift, or swit
+«ตี» in เขา กลับ บ้าน [ตี] สอง
+    ⇒ ตี / VERB / “to hit; (of a clock) to strike” / 0.92 / lexicon / role: second verb in a chain with 'กลับ'
+    S: second verb in a chain with 'กลับ' (conflicted)
+    D: to hit; to strike; to beat ; to attack; to assail ; to fight; to quarrel; to brawl
+«เที่ยง» in [เที่ยง] แล้ว
+    ⇒ เที่ยง / NOUN / “—” / 0.7 / lexicon / role: the main word of the sentence
+    also: เที่ยง/ADJ@0.55
+    C: completed-laeo
+    S: the main word of the sentence (generated)
+    D: midday; midnight. ; straight; direct. ; certain; sure; changeless, stable; invariable; constant; consistent.
+«พ.ศ.» in ปี [พ.ศ] [.] ๒๕๖๘
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: abbreviation of พุทธศักราช (pút-tá-sàk-gà-ràat) ; abbreviation of พระพุทธศักราช (pút-tá-sàk-gà-ràat)
+    notes: Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+«พ.ศ.» in เขา เกิด เมื่อ [พ.ศ] [.] 2540
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: abbreviation of พุทธศักราช (pút-tá-sàk-gà-ràat) ; abbreviation of พระพุทธศักราช (pút-tá-sàk-gà-ràat)
+    notes: Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+«จันทร์» in วัน [จันทร์] ที่ 5 มกราคม
+    ⇒ จันทร์ / NOUN / “Monday (in วันจันทร์); the moon” / 0.92 / lexicon / role: noun modifying 'วัน'
+    S: noun modifying 'วัน' (generated)
+    D: Monday (Abbreviation: จ. (jɔɔ.)) ; (ดวง~) moon; satellite (of other planets) ; (พระ~) Candra, the moon god
+«ที่» in วัน จันทร์ [ที่] 5 มกราคม
+    ⇒ ที่ / SCONJ / “that, who, which” / 0.92 / lexicon / role: relative or complement marker
+    D: at; to; on the site of; within; amidst; at the location of ; for; during; at the time of ; land; place; area; 
+«น.» in เวลา 14.30 [น] [.]
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: initialism of เหนือ (nʉ̌ʉa) (cardinal north) ; initialism of นาม (naam) ; initialism of นาฬิกา (naa-lí-gaa) (o
+    notes: Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+«เย็น» in อากาศ [เย็น] มาก
+    ⇒ เย็น / NOUN / “evening” / 0.92 / lexicon / role: noun modifying 'อากาศ'
+    S: noun modifying 'อากาศ' (generated)
+    D: the period of time from 4 p.m. to 6 p.m. ; evening; late afternoon; early evening ; cold; cool; chill
+«เย็น» in น้ำ [เย็น]
+    ⇒ เย็น / NOUN / “evening” / 0.92 / lexicon / role: noun modifying 'น้ำ'
+    S: noun modifying 'น้ำ' (generated)
+    D: the period of time from 4 p.m. to 6 p.m. ; evening; late afternoon; early evening ; cold; cool; chill
+«เย็น» in ตอน [เย็น] ผม ไป วิ่ง
+    ⇒ เย็น / NOUN / “evening” / 0.92 / lexicon / role: noun modifying 'ตอน'
+    S: noun modifying 'ตอน' (generated)
+    D: the period of time from 4 p.m. to 6 p.m. ; evening; late afternoon; early evening ; cold; cool; chill
+«ดี» in เขา เป็น คน [ดี]
+    ⇒ ดี / ADJ / “good” / 0.92 / lexicon / role: adjective describing 'คน'
+    S: adjective describing 'คน' (generated)
+    D: good: — nice; fine; excellent; satisfactory; agreeable; pleasant; favourable ; good: — beautiful; adorable; lo
+«เร็ว» in รถ คัน นี้ [เร็ว] มาก
+    ⇒ เร็ว / ADJ / “fast, quick” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (conflicted)
+    D: fast; quick; rapid ; early (ahead of time) ; fast; quickly; rapidly
+«เร็ว» in เขา วิ่ง [เร็ว]
+    ⇒ เร็ว / ADJ / “fast, quick” / 0.92 / lexicon / role: how or in what state 'วิ่ง' happens
+    S: how or in what state 'วิ่ง' happens (conflicted)
+    D: fast; quick; rapid ; early (ahead of time) ; fast; quickly; rapidly
+«แต่» in อาหาร ไทย เผ็ด [แต่] อร่อย
+    ⇒ แต่ / CONJ / “but” / 0.92 / lexicon / role: contrast connective
+    D: but; however ; each and every (one of), every single (followed by a classifier) ; from; since
+«แต่» in ผม ชอบ [แต่] คุณ
+    ⇒ แต่ / CONJ / “but” / 0.92 / lexicon / role: contrast connective
+    S: "แต่" joining 'ชอบ' and 'คุณ' (generated)
+    D: but; however ; each and every (one of), every single (followed by a classifier) ; from; since
+«ตั้งแต่» in [ตั้งแต่] เช้า
+    ⇒ ตั้งแต่ / ADP / “since, from (a time)” / 0.92 / lexicon / role: preposition
+    D: from; since
+«หน้าตา» in เขา [หน้าตา] ดี
+    ⇒ หน้าตา / NOUN / “—” / 0.7 / lexicon / role: subject of 'ดี'
+    S: subject of 'ดี' (generated)
+    D: countenance; look; outward appearance; physical appearance.

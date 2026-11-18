@@ -1,0 +1,212 @@
+«หมา» หมา/NOUN | R: ma  | dict: mǎa /maː˩˩˦/ forms:[{"f":"ตัว","t":["classifier"]}] | Tone by syllable: หมา rising.
+«หนู» หนู/PRON | R: nu  | dict: nǔu /nuː˩˩˦/ | Tone by syllable: หนู rising.
+«หญิง» หญิง/NOUN | R: ying  | dict: yǐng /jiŋ˩˩˦/ | Tone by syllable: หญิง rising.
+«ไหม» ไหม/PART | R: mai  | dict: mǎi /maj˩˩˦/ /maj˦˥/ | Tone by syllable: ไหม rising.
+«ใหม่» ใหม่/ADJ | R: mai  | dict: mài /maj˨˩/ forms:[{"f":"ความใหม่","t":["abstract-noun"]}] | Tone by syllable: ใหม่ low.
+«ไหม้» ไหม้/VERB | R: mai  | dict: mâi /maj˥˩/ forms:[{"f":"การไหม้","t":["abstract-noun"]}] | Tone by syllable: ไหม้ falling.
+«อยาก» อยาก/AUX | R: yak  | dict: yàak /jaːk̚˨˩/ forms:[{"f":"การอยาก","t":["abstract-noun"]},{"f":"ความอยาก","t":["abstract-noun"]}] | Tone by syllable: อยาก low.
+«อยู่» อยู่/AUX | R: yu  | dict: yùu /juː˨˩/ forms:[{"f":"การอยู่","t":["abstract-noun"]}] | Tone by syllable: อยู่ low.
+«อย่า» อย่า/AUX | R: ya  | dict: yàa /jaː˨˩/ forms:[{"f":"หย่า","t":["alternative"],"r":"yàa"}] | Tone by syllable: อย่า low.
+«อย่าง» อย่าง/NOUN | R: yang  | dict: yàang /jaːŋ˨˩/ | Tone by syllable: อย่าง low.
+«ไม้» ไม้/NOUN | R: mai  | dict: máai /maːj˦˥/ | Tone by syllable: ไม้ high.
+«ไม่» ไม่/PART | R: mai  | dict: mâi /maj˥˩/ | Tone by syllable: ไม่ falling.
+«มา» มา/VERB | R: ma  | dict: maa /maː˧/ forms:[{"f":"การมา","t":["abstract-noun"]}] | Tone by syllable: มา mid.
+«ม้า» ม้า/NOUN | R: ma  | dict: máa /maː˦˥/ | Tone by syllable: ม้า high.
+«หมา» หมา/NOUN | R: ma  | dict: mǎa /maː˩˩˦/ forms:[{"f":"ตัว","t":["classifier"]}] | Tone by syllable: หมา rising.
+«ขาว» ขาว/ADJ | R: khao  | dict: kǎao /kʰaːw˩˩˦/ forms:[{"f":"ความขาว","t":["abstract-noun"]},{"f":"ฃาว","t":["alternative","obsolete"] | Tone by syllable: ขาว rising.
+«ข่าว» ข่าว/NOUN | R: khao  | dict: kàao /kʰaːw˨˩/ forms:[{"f":"ข่าว","t":["classifier"]},{"f":"เรื่อง","t":["classifier"]},{"f":"ฃ่าว"," | Tone by syllable: ข่าว low.
+«ข้าว» ข้าว/NOUN | R: khao  | dict: — /kʰaːw˥˩/ /kʰaw˥˩/ | Tone by syllable: ข้าว falling.
+«เขา» เขา/PRON | R: khao  | dict: kǎo /kʰaw˩˩˦/ /kʰaw˦˥/ | Tone by syllable: เขา rising.
+«เข้า» เข้า/VERB | R: khao  | dict: kâo /kʰaw˥˩/ forms:[{"f":"การเข้า","t":["abstract-noun"]},{"f":"เฃ้า","t":["alternative","obsolete" | Tone by syllable: เข้า falling.
+«เข่า» เข่า/NOUN | R: khao  | dict: kào /kʰaw˨˩/ | Tone by syllable: เข่า low.
+«ปา» ปา/VERB | R: pa  | dict: bpaa /paː˧/ forms:[{"f":"การปา","t":["abstract-noun"]}] | Tone by syllable: ปา mid.
+«ป่า» ป่า/NOUN | R: pa  | dict: bpàa /paː˨˩/ | Tone by syllable: ป่า low.
+«ป้า» ป้า/NOUN | R: pa  | dict: bpâa /paː˥˩/ forms:[{"f":"คน","t":["classifier"]}] | Tone by syllable: ป้า falling.
+«ป๊า» ป๊า/NOUN | R: pa  | dict: bpáa /paː˦˥/ | Tone by syllable: ป๊า high.
+«ป๋า» ป๋า/NOUN | R: pa  | dict: bpǎa /paː˩˩˦/ | Tone by syllable: ป๋า rising.
+«คะ» คะ/PART | R: kha  | dict: ká /kʰaʔ˦˥/ | Tone by syllable: คะ high.
+«ค่ะ» ค่ะ/PART | R: kha  | dict: kâ /kʰaʔ˥˩/ /kʰaʔ˨˩/ | Tone by syllable: ค่ะ falling.
+«นะ» นะ/PART | R: na  | dict: ná /naʔ˦˥/ | Tone by syllable: นะ high.
+«น่ะ» น่ะ/PART | R: na  | dict: nâ /naʔ˥˩/ | Tone by syllable: น่ะ falling.
+«โต๊ะ» โต๊ะ/NOUN | R: to  | dict: dtó /toʔ˦˥/ forms:[{"f":"ตัว","t":["classifier"]},{"f":"โต๊ะ","t":["classifier"]}] | Tone by syllable: โต๊ะ high.
+«เก๋» ∅/∅ | R: ke  | dict: ∅ | Tone by syllable: เก๋ rising.
+«จ๋า» ∅/∅ | R: cha  | dict: ∅ | Tone by syllable: จ๋า rising.
+«จันทร์» จันทร์/NOUN | R: —  | dict: jan /t͡ɕan˧/ forms:[{"f":"จันทร","t":["alternative"]},{"f":"จันทรา","t":["alternative"]},{"f":"จัน" | Tone by syllable: จันทร์ mid.
+«สัปดาห์» สัปดาห์/NOUN | R: sap-da  | dict: — /sap̚˨˩.daː˧/ /sap̚˨˩.pa˨˩.daː˧/ forms:[{"f":"สัปดาห์","t":["classifier"]},{"f":"สัปดาหะ","t":["alternative","obsolete" | Tone by syllable: สัป low, ดาห์ mid.
+«ศาสตร์» ศาสตร์/NOUN | R: —  | dict: sàat /saːt̚˨˩/ forms:[{"f":"ศาสตร","t":["alternative","prefix"],"r":"sàat-dtrà-"},{"f":"ศาสตรา","t":[ | Tone by syllable: ศาสตร์ low.
+«วิทยาศาสตร์» วิทยาศาสตร์/NOUN | R: wit-tha-ya-sat  | dict: wít-tá-yaa-sàat /wit̚˦˥.tʰa˦˥.jaː˧.saːt̚˨˩/ | Tone by syllable: วิ high, ท high, ยา mid, ศาสตร์ low.
+«อาทิตย์» อาทิตย์/NOUN | R: a-thit  | dict: aa-tít /ʔaː˧.tʰit̚˦˥/ forms:[{"f":"อาทิตย","t":["alternative"],"r":"aa-tít"}] | Tone by syllable: อา mid, ทิตย์ high.
+«สัตว์» สัตว์/NOUN | R: —  | dict: sàt /sat̚˨˩/ forms:[{"f":"สัตว","t":["alternative"],"r":"sàt-dtà-wá-"},{"f":"สัด","t":["alternative | Tone by syllable: สัตว์ low.
+«ศักดิ์» ศักดิ์/NOUN | R: sak  | dict: sàk /sak̚˨˩/ forms:[{"f":"ศักดิ","t":["alternative"],"r":"sàk-dì-"}] | Tone by syllable: ศักดิ์ low.
+«สิทธิ์» สิทธิ์/NOUN | R: —  | dict: sìt /sit̚˨˩/ | Tone by syllable: สิทธิ์ low.
+«บริสุทธิ์» บริสุทธิ์/ADJ | R: —  | dict: bɔɔ-rí-sùt /bɔː˧.ri˦˥.sut̚˨˩/ forms:[{"f":"ความบริสุทธิ์","t":["abstract-noun"]}] | The tone of this spelling is not certain; Go does not guess it.
+«พันธุ์» พันธุ์/NOUN | R: phan  | dict: pan /pʰan˧/ forms:[{"f":"พันธุ","t":["alternative"]}] | Tone by syllable: พันธุ์ mid.
+«รถยนต์» รถยนต์/NOUN | R: —  | dict: rót-yon /rot̚˦˥.jon˧/ forms:[{"f":"คัน","t":["classifier"]},{"f":"รถยนตร์","t":["alternative"]}] | Tone by syllable: รถ high, ยนต์ mid.
+«โทรศัพท์» โทรศัพท์/NOUN | R: tho-ra-sap  | dict: too-rá-sàp /tʰoː˧.ra˦˥.sap̚˨˩/ | Tone by syllable: โท mid, ร high, ศัพท์ low.
+«เบียร์» เบียร์/NOUN | R: —  | dict: biia /bia̯˧/ | Tone by syllable: เบียร์ mid.
+«คอมพิวเตอร์» คอมพิวเตอร์/NOUN | R: —  | dict: kɔm-piu-dtə̂ə /kʰɔm˧.pʰiw˧.tɤː˥˩/ /kʰɔm˧.pʰiw˦˥.tɤː˥˩/ forms:[{"f":"เครื่อง","t":["classifier"]}] | Tone by syllable: คอม mid, พิว mid, เตอร์ mid.
+«ทราบ» ทราบ/VERB | R: sap  | dict: sâap /saːp̚˥˩/ forms:[{"f":"การทราบ","t":["abstract-noun"]}] | Tone by syllable: ทราบ falling.
+«ทราย» ทราย/NOUN | R: sai  | dict: saai /saːj˧/ forms:[{"f":"ซาย","t":["alternative","archaic","dated","obsolete"],"r":"saai"}] | Tone by syllable: ทราย mid.
+«ทรง» ทรง/AUX | R: song  | dict: song /soŋ˧/ forms:[{"f":"การทรง","t":["abstract-noun"]},{"f":"ซง","t":["alternative","obsolete"]," | Tone by syllable: ทรง mid.
+«จริง» จริง/ADJ | R: ching  | dict: jing /t͡ɕiŋ˧/ forms:[{"f":"ความจริง","t":["abstract-noun"]}] | Tone by syllable: จริง mid.
+«สร้าง» สร้าง/VERB | R: sang  | dict: sâang /saːŋ˥˩/ forms:[{"f":"การสร้าง","t":["abstract-noun"]}] | Tone by syllable: สร้าง falling.
+«สระ» สระ/NOUN | R: sa  | dict: sà /saʔ˨˩/ forms:[{"f":"สระ","t":["classifier"]}] | Tone by syllable: สระ low.
+«เศร้า» เศร้า/ADJ | R: sao  | dict: sâo /saw˥˩/ forms:[{"f":"การเศร้า","t":["abstract-noun"]},{"f":"ความเศร้า","t":["abstract-noun"]}, | Tone by syllable: เศร้า falling.
+«เพชร» เพชร/NOUN | R: phet  | dict: pét /pʰet̚˦˥/ /pʰet̚˦˥./ /pʰet̚˦˥.t͡ɕʰa˦˥./ forms:[{"f":"เพชญ","t":["alternative","archaic","dated","obsolete"]},{"f":"เพชญร","t": | Tone by syllable: เพชร high.
+«ธรรม» ธรรม/NOUN | R: tham  | dict: — /tʰam˧/ /tʰam˧.ma˦˥./ forms:[{"f":"ธรรมะ","t":["alternative"],"r":"tam-má"},{"f":"ธารมา","t":["alternative", | Tone by syllable: ธรรม mid.
+«ธรรมะ» ธรรมะ/NOUN | R: —  | dict: — /tʰam˧.maʔ˦˥/ | Tone by syllable: ธรร mid, มะ high.
+«กรรม» กรรม/NOUN | R: —  | dict: gam /kam˧/ /kam˧.ma˦˥./ forms:[{"f":"กรรม์","t":["alternative"]},{"f":"กำ","t":["alternative","archaic","dated | Tone by syllable: กรรม mid.
+«สามารถ» สามารถ/VERB | R: sa-mat  | dict: sǎa-mâat /saː˩˩˦.maːt̚˥˩/ forms:[{"f":"การสามารถ","t":["abstract-noun"]},{"f":"ความสามารถ","t":["abstract-noun"] | Tone by syllable: สา rising, มารถ falling.
+«ผลไม้» ผลไม้/NOUN | R: phon-la-mai  | dict: pǒn-lá-máai /pʰon˩˩˦.la˦˥.maːj˦˥/ forms:[{"f":"ผล","t":["classifier"]},{"f":"ลูก","t":["classifier"]}] | Tone by syllable: ผน rising, ละ high, ไม้ high.
+«ไทย» ไทย/PROPN | R: thai  | dict: tai /tʰaj˧/ forms:[{"f":"ไท","t":["alternative","obsolete"],"r":"tai"},{"f":"ไทย์","t":["alternati | Tone by syllable: ไทย mid.
+«น้ำ» น้ำ/NOUN | R: nam  | dict: náam /naːm˦˥/ /naːm˦˥./ /nam˦˥./ | Tone by syllable: น้ำ high.
+«ได้» ได้/AUX | R: dai  | dict: dâai /daːj˥˩/ forms:[{"f":"การได้","t":["abstract-noun"]},{"f":"ใด้","t":["alternative"],"r":"dâi"}, | Tone by syllable: ได้ falling.
+«เปล่า» เปล่า/INTJ | R: plao  | dict: bplàao /plaːw˨˩/ | Tone by syllable: เปล่า low.
+«เก้า» เก้า/NUM | R: kao  | dict: gâao /kaːw˥˩/ | Tone by syllable: เก้า falling.
+«เช้า» เช้า/NOUN | R: chao  | dict: cháao /t͡ɕʰaːw˦˥/ | Tone by syllable: เช้า high.
+«ไม้» ไม้/NOUN | R: mai  | dict: máai /maːj˦˥/ | Tone by syllable: ไม้ high.
+«ก็» ก็/PART | R: ko  | dict: gɔ̂ /kɔʔ˥˩/ /kɔː˥˩/ forms:[{"f":"ก","t":["alternative","obsolete"],"r":"gɔɔ"},{"f":"ก่","t":["alternative" | Tone by syllable: ก็ falling.
+«บ่» บ่/ADV | R: —  | dict: bɔ̀ɔ /bɔː˨˩/ /bɔʔ˨˩/ forms:[{"f":"บ","t":["alternative"],"r":"bɔɔ"}] | Thai is tonal: five tones distinguish words.
+«ธ» ธ/PRON | R: —  | dict: tá /tʰaʔ˦˥/ | Thai is tonal: five tones distinguish words.
+«ณ» ณ/ADP | R: —  | dict: ná /naʔ˦˥/ forms:[{"f":"ณะ","t":["alternative"],"r":"ná"}] | Thai is tonal: five tones distinguish words.
+«ฯพณฯ» ฯพณฯ/NOUN | R: —  | dict: pá-ná-tân /pʰa˦˥.na˦˥.tʰan˥˩/ | Thai is tonal: five tones distinguish words.
+«คน» คน/NOUN | R: khon  | dict: kon /kʰon˧/ forms:[{"f":"ฅน","t":["alternative"],"r":"kon"}] | Tone by syllable: คน mid.
+«ถนน» ถนน/NOUN | R: tha-non  | dict: tà-nǒn /tʰa˨˩.non˩˩˦/ forms:[{"f":"สาย","t":["classifier"]},{"f":"เส้น","t":["classifier"]},{"f":"ถนล","t":[ | Tone by syllable: ถ low, นน rising.
+«ตลาด» ตลาด/NOUN | R: ta-lat  | dict: dtà-làat /ta˨˩.laːt̚˨˩/ | Tone by syllable: ต low, ลาด low.
+«สนุก» สนุก/ADJ | R: sa-nuk  | dict: sà-nùk /sa˨˩.nuk̚˨˩/ forms:[{"f":"ความสนุก","t":["abstract-noun"]},{"f":"สนุกนิ์","t":["alternative","archa | Tone by syllable: ส low, นุก low.
+«ขนม» ขนม/NOUN | R: kha-nom  | dict: kà-nǒm /kʰa˨˩.nom˩˩˦/ | Tone by syllable: ข low, นม rising.
+«สบาย» สบาย/ADJ | R: sabai  | dict: sà-baai /sa˨˩.baːj˧/ /sa˧.baːj˧/ forms:[{"f":"ความสบาย","t":["abstract-noun"]}] | Tone by syllable: ส low, บาย mid.
+«ทหาร» ทหาร/NOUN | R: tha-han  | dict: tá-hǎan /tʰa˦˥.haːn˩˩˦/ forms:[{"f":"คน","t":["classifier"]},{"f":"นาย","t":["classifier"]}] | Tone by syllable: ท high, หาร rising.
+«อร่อย» อร่อย/ADJ | R: a-roi  | dict: à-rɔ̀i /ʔa˨˩.rɔj˨˩/ forms:[{"f":"ความอร่อย","t":["abstract-noun"]}] | Tone by syllable: อ low, ร่อย low.
+«ตลก» ตลก/VERB | R: ta-lok  | dict: dtà-lòk /ta˨˩.lok̚˨˩/ forms:[{"f":"การตลก","t":["abstract-noun"]}] | Tone by syllable: ต low, ลก low.
+«ฝรั่ง» ฝรั่ง/NOUN | R: fa-rang  | dict: — /fa˨˩.raŋ˨˩/ /fa˦˥.raŋ˨˩/ | Tone by syllable: ฝ low, รั่ง low.
+«สวัสดี» สวัสดี/INTJ | R: sawatdi  | dict: sà-wàt-dii /sa˨˩.wat̚˨˩.diː˧/ forms:[{"f":"สวัสดิ์","t":["alternative"],"r":"sà-wàt"},{"f":"สวัสดิ","t":["alternativ | Tone by syllable: ส low, วัส low, ดี mid.
+«ขยะ» ขยะ/NOUN | R: —  | dict: kà-yà /kʰa˨˩.jaʔ˨˩/ | Tone by syllable: ข low, ยะ low.
+«แสดง» แสดง/VERB | R: —  | dict: sà-dɛɛng /sa˨˩.dɛːŋ˧/ forms:[{"f":"การแสดง","t":["abstract-noun"]},{"f":"สำแดง","t":["alternative","dated"], | Tone by syllable: แส rising, ดง mid.
+«เสมอ» เสมอ/ADV | R: —  | dict: sà-mə̌ə /sa˨˩.mɤː˩˩˦/ forms:[{"f":"ความเสมอ","t":["abstract-noun"]}] | Tone by syllable: เส rising, มอ mid.
+«เฉพาะ» เฉพาะ/ADJ | R: —  | dict: chà-pɔ́ /t͡ɕʰa˨˩.pʰɔʔ˦˥/ forms:[{"f":"ความเฉพาะ","t":["abstract-noun"]},{"f":"ฉะเพาะ","t":["alternative"]},{"f" | Thai is tonal: five tones distinguish words.
+«ตำรวจ» ตำรวจ/NOUN | R: tam-ruat  | dict: dtam-rùuat /tam˧.rua̯t̚˨˩/ forms:[{"f":"คน","t":["classifier"]},{"f":"นาย","t":["classifier"]}] | Tone by syllable: ตำ mid, รวจ low.
+«สำเร็จ» สำเร็จ/VERB | R: sam-ret  | dict: sǎm-rèt /sam˩˩˦.ret̚˨˩/ forms:[{"f":"การสำเร็จ","t":["abstract-noun"]},{"f":"สำเรจ์","t":["alternative","archa | Tone by syllable: สำ rising, เร็จ low.
+«ประโยชน์» ประโยชน์/NOUN | R: —  | dict: bprà-yòot /pra˨˩.joːt̚˨˩/ | The tone of this spelling is not certain; Go does not guess it.
+«บริษัท» บริษัท/NOUN | R: —  | dict: bɔɔ-rí-sàt /bɔː˧.ri˦˥.sat̚˨˩/ /bɔː˧.ri˧.sat̚˨˩/ | The tone of this spelling is not certain; Go does not guess it.
+«บริการ» บริการ/NOUN | R: —  | dict: bɔɔ-rí-gaan /bɔː˧.ri˦˥.kaːn˧/ | The tone of this spelling is not certain; Go does not guess it.
+«กรุณา» กรุณา/ADV | R: —  | dict: gà-rú-naa /ka˨˩.ru˦˥.naː˧/ forms:[{"f":"ความกรุณา","t":["abstract-noun"]},{"f":"กรรุณา","t":["alternative","archa | The tone of this spelling is not certain; Go does not guess it.
+«มหาวิทยาลัย» มหาวิทยาลัย/NOUN | R: ma-ha-wit-tha-ya-lai  | dict: má-hǎa-wít-tá-yaa-lai /ma˦˥.haː˩˩˦.wit̚˦˥.tʰa˦˥.jaː˧.laj˧/ forms:[{"f":"แห่ง","t":["classifier"]},{"f":"มหาวิชชาลัย","t":["alternative"]}] | Tone by syllable: ม high, หา rising, วิ high, ท high, ยา mid, ลัย mid.
+«รัฐบาล» รัฐบาล/NOUN | R: rat-tha-ban  | dict: — /rat̚˦˥.tʰa˨˩.baːn˧/ forms:[{"f":"ร้าบาน","t":["alternative"],"r":"ráa-baan"}] | Tone by syllable: รั high, ฐ low, บาล mid.
+«ราชการ» ราชการ/NOUN | R: rat-cha-kan  | dict: râat-chá-gaan /raːt̚˥˩.t͡ɕʰa˦˥.kaːn˧/ | Tone by syllable: รา falling, ช high, การ mid.
+«คุณภาพ» คุณภาพ/NOUN | R: khun-na-phap  | dict: kun-ná-pâap /kʰun˧.na˦˥.pʰaːp̚˥˩/ | Tone by syllable: คุ mid, ณ high, ภาพ falling.
+«สุขภาพ» สุขภาพ/NOUN | R: suk-kha-phap  | dict: sùk-kà-pâap /suk̚˨˩.kʰa˨˩.pʰaːp̚˥˩/ | Tone by syllable: สุ low, ข low, ภาพ falling.
+«ผลิต» ผลิต/VERB | R: pha-lit  | dict: pà-lìt /pʰa˨˩.lit̚˨˩/ /pʰa˨˩.lit̚˨˩.ta˨˩./ forms:[{"f":"การผลิต","t":["abstract-noun"]}] | Tone by syllable: ผ low, ลิต low.
+«สถานี» สถานี/NOUN | R: —  | dict: sà-tǎa-nii /sa˨˩.tʰaː˩˩˦.niː˧/ | Tone by syllable: ส low, ถา rising, นี mid.
+«ชนบท» ชนบท/NOUN | R: chon-na-bot  | dict: chon-ná-bòt /t͡ɕʰon˧.na˦˥.bot̚˨˩/ | Tone by syllable: ช mid, น high, บท low.
+«บรรทัด» บรรทัด/NOUN | R: —  | dict: ban-tát /ban˧.tʰat̚˦˥/ forms:[{"f":"บันทัด","t":["alternative","archaic","dated","obsolete"]}] | The tone of this spelling is not certain; Go does not guess it.
+«สวรรค์» สวรรค์/NOUN | R: —  | dict: sà-wǎn /sa˨˩.wan˩˩˦/ forms:[{"f":"สัค","t":["alternative"],"r":"sàk"},{"f":"สัคคะ","t":["alternative"]},{"f | Tone by syllable: ส low, วรรค์ rising.
+«พรรค» พรรค/NOUN | R: —  | dict: pák /pʰak̚˦˥/ /pʰak̚˦˥.kʰa˦˥./ | Tone by syllable: พรรค high.
+«ภรรยา» ภรรยา/NOUN | R: —  | dict: pan-yaa /pʰan˧.jaː˧/ /pʰan˧.ra˦˥.jaː˧/ forms:[{"f":"คน","t":["classifier"]}] | Tone by syllable: ภรร mid, ยา mid.
+«กรรไกร» กรรไกร/NOUN | R: —  | dict: gan-grai /kan˧.kraj˧/ forms:[{"f":"เล่ม","t":["classifier"]},{"f":"กรรไตร","t":["alternative","archaic","dat | The tone of this spelling is not certain; Go does not guess it.
+«ฤดู» ฤดู/NOUN | R: —  | dict: rʉ́-duu /rɯ˦˥.duː˧/ | The tone of this spelling is not certain; Go does not guess it.
+«อังกฤษ» อังกฤษ/ADJ | R: ang-krit  | dict: ang-grìt /ʔaŋ˧.krit̚˨˩/ forms:[{"f":"อังกริด","t":["alternative","obsolete"]},{"f":"อังกริส","t":["alternative | Tone by syllable: อัง mid, กฤษ low.
+«พฤษภาคม» พฤษภาคม/NOUN | R: —  | dict: prʉ́t-sà-paa-kom /pʰrɯt̚˦˥.sa˨˩.pʰaː˧.kʰom˧/ forms:[{"f":"พ.ค.","t":["abbreviation","alternative"],"r":"pɔɔ.kɔɔ."},{"f":"พฤษภา","t" | The tone of this spelling is not certain; Go does not guess it.
+«พฤหัสบดี» พฤหัสบดี/NOUN | R: —  | dict: prʉ́-hàt-sà-bɔɔ-dii /pʰrɯ˦˥.hat̚˨˩.sa˨˩.bɔː˧.diː˧/ /pʰa˦˥.rɯ˦˥.hat̚˨˩.sa˨˩.bɔː˧.diː˧/ forms:[{"f":"พฤหัศบดี","t":["alternative","archaic","dated","obsolete"]},{"f":"พฤหัสปต | The tone of this spelling is not certain; Go does not guess it.
+«ฤกษ์» ฤกษ์/NOUN | R: —  | dict: rə̂ək /rɤːk̚˥˩/ | Thai is tonal: five tones distinguish words.
+«ทฤษฎี» ทฤษฎี/NOUN | R: —  | dict: trít-sà-dii /tʰrit̚˦˥.sa˨˩.diː˧/ forms:[{"f":"ทฤษฎิ","t":["alternative"]},{"f":"ทฤษฏิ","t":["alternative"]},{"f":"ทฤษฏี | The tone of this spelling is not certain; Go does not guess it.
+«ใจ» ใจ/NOUN | R: chai  | dict: jai /t͡ɕaj˧/ | Tone by syllable: ใจ mid.
+«ไป» ไป/VERB | R: pai  | dict: bpai /paj˧/ forms:[{"f":"การไป","t":["abstract-noun"]}] | Tone by syllable: ไป mid.
+«ใหญ่» ใหญ่/ADJ | R: yai  | dict: yài /jaj˨˩/ forms:[{"f":"ความใหญ่","t":["abstract-noun"]},{"f":"†ไหญ่","t":["alternative"]},{"f":" | Tone by syllable: ใหญ่ low.
+«ให้» ให้/VERB | R: hai  | dict: hâi /haj˥˩/ forms:[{"f":"การให้","t":["abstract-noun"]},{"f":"ให้ย","t":["alternative"]}] | Tone by syllable: ให้ falling.
+«กิน» กิน/VERB | R: kin  | dict: gin /kin˧/ forms:[{"f":"การกิน","t":["abstract-noun"]}] | Tone by syllable: กิน mid.
+«จีน» จีน/PROPN | R: chin  | dict: jiin /t͡ɕiːn˧/ | Tone by syllable: จีน mid.
+«เด็ก» เด็ก/NOUN | R: dek  | dict: dèk /dek̚˨˩/ | Tone by syllable: เด็ก low.
+«เอก» เอก/ADJ | R: ek  | dict: èek /ʔeːk̚˨˩/ /ʔeː˧.ka˨˩./ /ʔeːk̚˨˩.ka˨˩./ | Tone by syllable: เอก low.
+«แข็ง» แข็ง/ADJ | R: —  | dict: kɛ̌ng /kʰɛŋ˩˩˦/ forms:[{"f":"ความแข็ง","t":["abstract-noun"]},{"f":"แขง","t":["alternative","obsolete" | Tone by syllable: แข็ง rising.
+«แขก» แขก/NOUN | R: khaek  | dict: kɛ̀ɛk /kʰɛːk̚˨˩/ forms:[{"f":"คน","t":["classifier"]},{"f":"ท่าน","t":["classifier"]},{"f":"แฃก","t":[" | Tone by syllable: แขก low.
+«ล็อก» ล็อก/VERB | R: —  | dict: lɔ́k /lɔk̚˦˥/ forms:[{"f":"การล็อก","t":["abstract-noun"]},{"f":"ล็อค","t":["alternative"],"r":"lɔ́k | Tone by syllable: ล็อก high.
+«หนึ่ง» หนึ่ง/NUM | R: nueng  | dict: — /nɯŋ˨˩/ /nɯŋ˧/ forms:[{"f":"นึง","t":["alternative"],"r":"nʉng"},{"f":"นุง","t":["alternative"],"r":" | Tone by syllable: หนึ่ง low.
+«คืน» คืน/NOUN | R: khuen  | dict: kʉʉn /kʰɯːn˧/ forms:[{"f":"ฅืน","t":["alternative","obsolete"],"r":"kʉʉn"}] | Tone by syllable: คืน mid.
+«คุณ» คุณ/PRON | R: khun  | dict: kun /kʰun˧/ /kʰun˧.na˦˥./ forms:[{"f":"ขุ่น","t":["alternative"],"r":"kùn"},{"f":"จุ่น","t":["alternative"],"r": | Tone by syllable: คุณ mid.
+«ปู» ปู/NOUN | R: pu  | dict: bpuu /puː˧/ forms:[{"f":"ตัว","t":["classifier"]}] | Tone by syllable: ปู mid.
+«เงิน» เงิน/NOUN | R: ngoen  | dict: ngən /ŋɤn˧/ forms:[{"f":"งึน","t":["alternative","obsolete"],"r":"ngʉn"},{"f":"เง็น","t":["alterna | Tone by syllable: เงิน mid.
+«เดิน» เดิน/VERB | R: doen  | dict: dəən /dɤːn˧/ forms:[{"f":"การเดิน","t":["abstract-noun"]},{"f":"เดิร","t":["alternative","obsolete" | Tone by syllable: เดิน mid.
+«เลย» เลย/PART | R: loei  | dict: ləəi /lɤːj˧/ | Tone by syllable: เลย mid.
+«เคย» เคย/AUX | R: khoei  | dict: kəəi /kʰɤːj˧/ | Tone by syllable: เคย mid.
+«เนย» เนย/NOUN | R: noei  | dict: nəəi /nɤːj˧/ forms:[{"f":"ก้อน","t":["classifier"]}] | Tone by syllable: เนย mid.
+«เพลง» เพลง/NOUN | R: phleng  | dict: pleeng /pʰleːŋ˧/ forms:[{"f":"เพลง","t":["classifier"]}] | Tone by syllable: เพลง mid.
+«เพลีย» เพลีย/VERB | R: phlia  | dict: pliia /pʰlia̯˧/ forms:[{"f":"การเพลีย","t":["abstract-noun"]},{"f":"ความเพลีย","t":["abstract-noun"]}] | Tone by syllable: เพลีย mid.
+«เสือ» เสือ/NOUN | R: suea  | dict: sʉ̌ʉa /sɯa̯˩˩˦/ | Tone by syllable: เสือ rising.
+«เมือง» เมือง/NOUN | R: mueang  | dict: mʉʉang /mɯa̯ŋ˧/ forms:[{"f":"เมือง","t":["classifier"]},{"f":"แห่ง","t":["classifier"]}] | Tone by syllable: เมือง mid.
+«เรียน» เรียน/VERB | R: rian  | dict: riian /ria̯n˧/ forms:[{"f":"การเรียน","t":["abstract-noun"]}] | Tone by syllable: เรียน mid.
+«สวย» สวย/ADJ | R: suai  | dict: sǔai /sua̯j˩˩˦/ forms:[{"f":"ความสวย","t":["abstract-noun"]}] | Tone by syllable: สวย rising.
+«รวย» รวย/ADJ | R: ruai  | dict: ruai /rua̯j˧/ forms:[{"f":"ความรวย","t":["abstract-noun"]}] | Tone by syllable: รวย mid.
+«เดียว» เดียว/ADJ | R: diao  | dict: diao /dia̯w˧/ forms:[{"f":"ดยว","t":["alternative"]}] | Tone by syllable: เดียว mid.
+«แล้ว» แล้ว/ADV | R: laeo  | dict: lɛ́ɛo /lɛːw˦˥/ | Tone by syllable: แล้ว high.
+«เร็ว» เร็ว/ADJ | R: reo  | dict: reo /rew˧/ forms:[{"f":"ความเร็ว","t":["abstract-noun"]}] | Tone by syllable: เร็ว mid.
+«หิว» หิว/ADJ | R: hio  | dict: hǐu /hiw˩˩˦/ forms:[{"f":"การหิว","t":["abstract-noun"]},{"f":"ความหิว","t":["abstract-noun"]}] | Tone by syllable: หิว rising.
+«เหนื่อย» เหนื่อย/ADJ | R: nueai  | dict: nʉ̀ai /nɯa̯j˨˩/ forms:[{"f":"ความเหนื่อย","t":["abstract-noun"]}] | Tone by syllable: เหนื่อย low.
+«นก» นก/NOUN | R: nok  | dict: nók /nok̚˦˥/ forms:[{"f":"ตัว","t":["classifier"]}] | Tone by syllable: นก high.
+«เลข» เลข/NOUN | R: —  | dict: lêek /leːk̚˥˩/ | Tone by syllable: เลข falling.
+«โรค» โรค/NOUN | R: rok  | dict: rôok /roːk̚˥˩/ | Tone by syllable: โรค falling.
+«เมฆ» เมฆ/NOUN | R: —  | dict: mêek /meːk̚˥˩/ forms:[{"f":"ก้อน","t":["classifier"]}] | Tone by syllable: เมฆ falling.
+«กิจ» กิจ/NOUN | R: —  | dict: gìt /kit̚˨˩/ | Tone by syllable: กิจ low.
+«ราช» ราช/NOUN | R: —  | dict: râat /raːt̚˥˩/ /raːt̚˥˩.t͡ɕʰa˦˥./ | Tone by syllable: ราช falling.
+«ก๊าซ» ก๊าซ/NOUN | R: kat  | dict: gáat /kaːt̚˦˥/ /kaːs˦˥/ | Tone by syllable: ก๊าซ high.
+«กฎ» กฎ/NOUN | R: —  | dict: — /kot̚˨˩/ forms:[{"f":"กด","t":["alternative","obsolete"],"r":"gòt"}] | Tone by syllable: กฎ low.
+«รัฐ» รัฐ/NOUN | R: —  | dict: rát /rat̚˦˥/ /rat̚˦˥.tʰa˨˩./ /rat̚˦˥./ | Tone by syllable: รัฐ high.
+«รถ» รถ/NOUN | R: rot  | dict: rót /rot̚˦˥/ /ra˦˥.tʰa˨˩./ | Tone by syllable: รถ high.
+«บาท» บาท/NOUN | R: —  | dict: bàat /baːt̚˨˩/ /baːt̚˨˩.tʰa˦˥./ /baːt̚˨˩./ forms:[{"f":"ข้าง","t":["classifier"]},{"f":"คู่","t":["classifier"]},{"f":"บาทา","t": | Tone by syllable: บาท low.
+«โกรธ» โกรธ/VERB | R: —  | dict: gròot /kroːt̚˨˩/ forms:[{"f":"ความโกรธ","t":["abstract-noun"]},{"f":"โกรฎ","t":["alternative"],"r":"grò | Tone by syllable: โกรธ low.
+«อากาศ» อากาศ/NOUN | R: —  | dict: aa-gàat /ʔaː˧.kaːt̚˨˩/ /ʔaː˧.kaːt̚˨˩.sa˨˩./ | Tone by syllable: อา mid, กาศ low.
+«พิเศษ» พิเศษ/ADJ | R: —  | dict: pí-sèet /pʰi˦˥.seːt̚˨˩/ forms:[{"f":"ความพิเศษ","t":["abstract-noun"]},{"f":"วิเศษ","t":["alternative","archai | Tone by syllable: พิ high, เศษ low.
+«รส» รส/NOUN | R: —  | dict: rót /rot̚˦˥/ /rot̚˦˥.sa˨˩./ forms:[{"f":"รส","t":["classifier"]},{"f":"รศ","t":["alternative"],"r":"rót"}] | Tone by syllable: รส high.
+«บาป» บาป/NOUN | R: bap  | dict: bàap /baːp̚˨˩/ /baːp̚˨˩.pa˨˩./ | Tone by syllable: บาป low.
+«ภาพ» ภาพ/NOUN | R: phap  | dict: pâap /pʰaːp̚˥˩/ /pʰaːp̚˥˩.pʰa˦˥./ forms:[{"f":"ภาว","t":["alternative"],"r":"paao"},{"f":"ภาวะ","t":["alternative"],"r": | Tone by syllable: ภาพ falling.
+«ลาภ» ลาภ/NOUN | R: lap  | dict: lâap /laːp̚˥˩/ | Tone by syllable: ลาภ falling.
+«กราฟ» กราฟ/NOUN | R: —  | dict: gráaf /kraːf˦˥/ /kraːp̚˦˥/ | Tone by syllable: กราฟ low.
+«คุณ» คุณ/PRON | R: khun  | dict: kun /kʰun˧/ /kʰun˧.na˦˥./ forms:[{"f":"ขุ่น","t":["alternative"],"r":"kùn"},{"f":"จุ่น","t":["alternative"],"r": | Tone by syllable: คุณ mid.
+«หาญ» หาญ/ADJ | R: han  | dict: hǎan /haːn˩˩˦/ forms:[{"f":"ความหาญ","t":["abstract-noun"]}] | Tone by syllable: หาญ rising.
+«อาหาร» อาหาร/NOUN | R: a-han  | dict: aa-hǎan /ʔaː˧.haːn˩˩˦/ forms:[{"f":"อย่าง","t":["classifier"]},{"f":"มื้อ","t":["classifier"]},{"f":"ชนิด","t | Tone by syllable: อา mid, หาร rising.
+«บอล» บอล/NOUN | R: bon  | dict: bɔn /bɔn˧/ /bɔl˧/ | Tone by syllable: บอล mid.
+«กาฬ» กาฬ/ADJ | R: kan  | dict: gaan /kaːn˧/ /kaː˧.la˦˥./ /kaːn˧.la˦˥./ forms:[{"f":"ความกาฬ","t":["abstract-noun"]}] | Tone by syllable: กาฬ mid.
+«สัญญาณ» สัญญาณ/NOUN | R: —  | dict: sǎn-yaan /san˩˩˦.jaːn˧/ | Tone by syllable: สัญ rising, ญาณ mid.
+«ญาติ» ญาติ/NOUN | R: —  | dict: yâat /jaːt̚˥˩/ /jaː˧.ti˨˩./ /jaːt̚˥˩.ti˨˩./ | Tone by syllable: ญา mid, ติ low.
+«หญ้า» หญ้า/NOUN | R: ya  | dict: yâa /jaː˥˩/ forms:[{"f":"ต้น","t":["classifier"]}] | Tone by syllable: หญ้า falling.
+«ใหญ่» ใหญ่/ADJ | R: yai  | dict: yài /jaj˨˩/ forms:[{"f":"ความใหญ่","t":["abstract-noun"]},{"f":"†ไหญ่","t":["alternative"]},{"f":" | Tone by syllable: ใหญ่ low.
+«ชาติ» ชาติ/NOUN | R: chat  | dict: châat /t͡ɕʰaːt̚˥˩/ /t͡ɕʰaː˧.ti˨˩./ /t͡ɕʰaːt̚˥˩.ti˨˩./ | Tone by syllable: ชาติ falling.
+«เหตุ» เหตุ/NOUN | R: het  | dict: hèet /heːt̚˨˩/ | Tone by syllable: เหตุ low.
+«ธาตุ» ธาตุ/NOUN | R: that  | dict: tâat /tʰaːt̚˥˩/ forms:[{"f":"ทาตุ","t":["alternative","archaic","dated","obsolete"],"r":"tâat"}] | Tone by syllable: ธาตุ falling.
+«ภูมิ» ภูมิ/NOUN | R: —  | dict: puum /pʰuːm˧/ /pʰuːm˧./ /pʰuː˧.mi˦˥./ /pʰuːm˧.mi˦˥./ | Tone by syllable: ภู mid, มิ high.
+«ประวัติ» ประวัติ/NOUN | R: pra-wat  | dict: bprà-wàt /pra˨˩.wat̚˨˩/ /pra˨˩.wat̚˨˩.ti˨˩./ /pra˨˩.wat̚˨˩./ | Tone by syllable: ประ low, วัติ low.
+«สมบัติ» สมบัติ/NOUN | R: —  | dict: sǒm-bàt /som˩˩˦.bat̚˨˩/ | Thai is tonal: five tones distinguish words.
+«กรุงเทพ» กรุงเทพ/PROPN | R: krung-thep  | dict: grung-têep /kruŋ˧.tʰeːp̚˥˩/ | Tone by syllable: กรุง mid, เทพ falling.
+«เชียงใหม่» เชียงใหม่/PROPN | R: chiang-mai  | dict: chiiang-mài /t͡ɕʰia̯ŋ˧.maj˨˩/ forms:[{"f":"เชยีงใหม","t":["alternative","archaic","dated","obsolete"],"r":"chiiang-m | Tone by syllable: เชียง mid, ใหม่ low.
+«อยุธยา» อยุธยา/PROPN | R: —  | dict: à-yút-tá-yaa /ʔa˨˩.jut̚˦˥.tʰa˦˥.jaː˧/ forms:[{"f":"อยุทยา","t":["alternative"]},{"f":"อยุทธยา","t":["alternative"]},{"f":"อโ | Tone by syllable: อ low, ยุธ low, ยา mid.
+«สุโขทัย» สุโขทัย/PROPN | R: —  | dict: sù-kǒo-tai /su˨˩.kʰoː˩˩˦.tʰaj˧/ /suk̚˨˩.kʰoː˩˩˦.tʰaj˧/ forms:[{"f":"ศุกโขไท","t":["alternative","obsolete"],"r":"sùk-kǒo-tai"},{"f":"ศุกโขไทย | Tone by syllable: สุ low, โข rising, ทัย mid.
+«มกราคม» มกราคม/PROPN | R: —  | dict: má-gà-raa-kom /ma˦˥.ka˨˩.raː˧.kʰom˧/ /mok̚˦˥.ka˨˩.raː˧.kʰom˧/ forms:[{"f":"ม.ค.","t":["abbreviation","alternative"],"r":"mɔɔ.kɔɔ."},{"f":"มกรา","t": | The tone of this spelling is not certain; Go does not guess it.
+«กุมภาพันธ์» กุมภาพันธ์/PROPN | R: —  | dict: gum-paa-pan /kum˧.pʰaː˧.pʰan˧/ forms:[{"f":"ก.พ.","t":["abbreviation","alternative"],"r":"gɔɔ.pɔɔ."},{"f":"กุมภา","t" | Tone by syllable: กุม mid, ภา mid, พันธ์ mid.
+«กรกฎาคม» กรกฎาคม/PROPN | R: ka-ra-ka-da-khom  | dict: gà-rá-gà-daa-kom /ka˨˩.ra˦˥.ka˨˩.daː˧.kʰom˧/ /ka˨˩.rak̚˦˥.ka˨˩.daː˧.kʰom˧/ forms:[{"f":"ก.ค.","t":["abbreviation","alternative"],"r":"gɔɔ.kɔɔ."},{"f":"กรกฎา","t" | Tone by syllable: ก low, ร high, ก low, ฎา mid, คม mid.
+«ธันวาคม» ธันวาคม/PROPN | R: —  | dict: tan-waa-kom /tʰan˧.waː˧.kʰom˧/ forms:[{"f":"ธ.ค.","t":["abbreviation","alternative"],"r":"tɔɔ.kɔɔ."},{"f":"ธันวา","t" | Tone by syllable: ธัน mid, วา mid, คม mid.
+«พุทธ» พุทธ/ADJ | R: phut  | dict: pút /pʰut̚˦˥/ /pʰut̚˦˥.tʰa˦˥./ | Tone by syllable: พุทธ high.
+«พุทธศักราช» พุทธศักราช/PROPN | R: —  | dict: pút-tá-sàk-gà-ràat /pʰut̚˦˥.tʰa˦˥.sak̚˨˩.ka˨˩.raːt̚˨˩/ forms:[{"f":"พ.ศ.","t":["abbreviation","alternative"],"r":"pɔɔ.sɔ̌ɔ."},{"f":"พุทธสักรา | The tone of this spelling is not certain; Go does not guess it.
+«คริสต์» คริสต์/PROPN | R: —  | dict: krít /kʰrit̚˦˥/ /kʰris˦˥/ forms:[{"f":"คริสต","t":["alternative"]}] | Tone by syllable: คริสต์ high.
+«พระเยซู» พระเยซู/PROPN | R: —  | dict: ∅ | The tone of this spelling is not certain; Go does not guess it.
+«พระเจ้า» พระเจ้า/PROPN | R: phrachao  | dict: prá-jâao /pʰra˦˥.t͡ɕaːw˥˩/ | The tone of this spelling is not certain; Go does not guess it.
+«พระองค์» พระองค์/PRON | R: phraong  | dict: prá-ong /pʰra˦˥.ʔoŋ˧/ | The tone of this spelling is not certain; Go does not guess it.
+«พระคัมภีร์» พระคัมภีร์/NOUN | R: —  | dict: ∅ | The tone of this spelling is not certain; Go does not guess it.
+«อธิษฐาน» อธิษฐาน/VERB | R: —  | dict: à-tít-tǎan /ʔa˨˩.tʰit̚˦˥.tʰaːn˩˩˦/ forms:[{"f":"การอธิษฐาน","t":["abstract-noun"]}] | Tone by syllable: อ low, ธิษ high, ฐาน rising.
+«สรรเสริญ» สรรเสริญ/VERB | R: —  | dict: sǎn-sə̌ən /san˩˩˦.sɤːn˩˩˦/ /san˩˩˦.ra˦˥.sɤːn˩˩˦/ forms:[{"f":"การสรรเสริญ","t":["abstract-noun"]},{"f":"ความสรรเสริญ","t":["abstract-no | The tone of this spelling is not certain; Go does not guess it.
+«บริสุทธิ์» บริสุทธิ์/ADJ | R: —  | dict: bɔɔ-rí-sùt /bɔː˧.ri˦˥.sut̚˨˩/ forms:[{"f":"ความบริสุทธิ์","t":["abstract-noun"]}] | The tone of this spelling is not certain; Go does not guess it.
+«กษัตริย์» กษัตริย์/NOUN | R: ka-sat  | dict: gà-sàt /ka˨˩.sat̚˨˩/ forms:[{"f":"องค์","t":["classifier"]},{"f":"พระองค์","t":["classifier"]},{"f":"ตน","t | Tone by syllable: ก low, ษัตริย์ low.
+«ศักดิ์สิทธิ์» ศักดิ์สิทธิ์/ADJ | R: —  | dict: sàk-sìt /sak̚˨˩.sit̚˨˩/ forms:[{"f":"ศักดิ์ สิทธิ์","t":["canonical"]},{"f":"ความศักดิ์สิทธิ์","t":["abstract- | Tone by syllable: ศักดิ์ low, สิทธิ์ low.
+«นิรันดร์» นิรันดร์/ADJ | R: niran  | dict: ∅ | Tone by syllable: นิ high, รันดร์ mid.
+«เทป» เทป/NOUN | R: —  | dict: téep /tʰeːp̚˦˥/ | Tone by syllable: เทป falling.
+«โน้ต» ∅/∅ | R: not  | dict: ∅ | Tone by syllable: โน้ต high.
+«เค้ก» เค้ก/NOUN | R: khek  | dict: kéek /kʰeːk̚˦˥/ | Tone by syllable: เค้ก high.
+«แท็กซี่» แท็กซี่/NOUN | R: —  | dict: tɛ́k-sîi /tʰɛk̚˦˥.siː˥˩/ forms:[{"f":"คัน","t":["classifier"]}] | Tone by syllable: แท็ก high, ซี่ falling.
+«ออฟฟิศ» ออฟฟิศ/NOUN | R: —  | dict: ɔ́ɔp-fít /ʔɔːp̚˦˥.fit̚˦˥/ /ʔɔːp̚˦˥.fis˦˥/ | Tone by syllable: ออฟ low, ฟิศ high.
+«ฟุตบอล» ฟุตบอล/NOUN | R: —  | dict: fút-bɔn /fut̚˦˥.bɔn˧/ /fut̚˦˥.bɔl˧/ | Tone by syllable: ฟุต high, บอล mid.
+«เบอร์» เบอร์/NOUN | R: —  | dict: bəə /bɤː˧/ | Tone by syllable: เบอร์ mid.
+«โอเค» โอเค/INTJ | R: —  | dict: oo-kee /ʔoː˧.kʰeː˧/ | Tone by syllable: โอ mid, เค mid.
+«ไมล์» ไมล์/NOUN | R: —  | dict: mai /maj˧/ /maːj˧/ | Tone by syllable: ไมล์ mid.
+«ชีส» ชีส/NOUN | R: —  | dict: chíis /t͡ɕʰiːs˦˥/ | Tone by syllable: ชีส falling.
+«เด็กๆ» เด็ก/NOUN | R: dek  | dict: dèk /dek̚˨˩/ | Tone by syllable: เด็กๆ low.
+«ช้าๆ» ช้า/ADJ | R: cha  | dict: cháa /t͡ɕʰaː˦˥/ forms:[{"f":"ความช้า","t":["abstract-noun"]}] | Tone by syllable: ช้าๆ high.
+«ต่างๆ» ต่าง/DET | R: tang  | dict: dtàang /taːŋ˨˩/ forms:[{"f":"ตาง","t":["alternative"],"r":"dtaang"}] | Tone by syllable: ต่างๆ low.

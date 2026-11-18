@@ -1,0 +1,1692 @@
+ฉัน	PRON	I (neutral/female)	role=first-person pronoun	R=chan	T=ฉัน rising	dict=chǎn /t͡ɕʰan˩˩˦/
+ผม	PRON	I (male)	role=first-person pronoun (men)	R=phom	T=ผม rising	dict=pǒm /pʰom˩˩˦/
+เรา	PRON	we; I	role=first-person pronoun (we, or I)	R=rao	T=เรา mid	dict=rao /raw˧/
+คุณ	PRON	you (polite)	role=second-person pronoun (polite)	R=khun	T=คุณ mid	dict=kun /kʰun˧/
+พระองค์	PRON	he (royal/divine); God	role=royal or divine pronoun	reg=royal,religious	R=phraong	T=(tone not given)	dict=prá-ong /pʰra˦˥.ʔoŋ˧/
+อะไร	PRON	what	role=question word	R=arai	T=อะ low, ไร mid	dict=à-rai /ʔa˨˩.raj˧/
+ทุกคน	PRON	everyone	R=thukkhon	T=ทุก high, คน mid	dict=túk-kon /tʰuk̚˦˥.kʰon˧/
+เข้าใจ	VERB	to understand	R=khaochai	T=เข้า falling, ใจ mid	dict=kâo-jai /kʰaw˥˩.t͡ɕaj˧/
+เชื่อ	VERB	to believe	R=chuea	T=เชื่อ falling	dict=chʉ̂ʉa /t͡ɕʰɯa̯˥˩/
+เริ่ม	VERB	to begin	R=roem	T=เริ่ม falling	dict=rə̂əm /rɤːm˥˩/
+ยก	VERB	to lift; to take away	R=yok	T=ยก high	dict=yók /jok̚˦˥/
+รัก	VERB	to love	R=rak	T=รัก high	dict=rák /rak̚˦˥/
+มี	VERB	to have; there is	R=mi	T=มี mid	dict=mii /miː˧/
+ไม่มี	VERB	to not have; there is no	R=maimi	T=ไม่ falling, มี mid	dict=mâi-mii /maj˥˩.miː˧/
+พูด	VERB	to say, speak	R=phut	T=พูด falling	dict=pûut /pʰuːt̚˥˩/
+หลอกลวง	VERB	to deceive	R=lokluang	T=(tone not given)	dict=lɔ̀ɔk-luuang /lɔːk̚˨˩.lua̯ŋ˧/
+สารภาพ	VERB	to confess	R=saraphap	T=สา rising, ร high, ภาพ falling	dict=sǎa-rá-pâap /saː˩˩˦.ra˦˥.pʰaːp̚˥˩/
+โปรด	VERB	to kindly grant (royal/formal)	reg=royal,religious	R=prot	T=โปรด low	dict=bpròot /proːt̚˨˩/
+ชำระ	VERB	to cleanse	R=chamra	T=ชำ mid, ระ high	dict=cham-rá /t͡ɕʰam˧.raʔ˦˥/
+พ้น	VERB	to be free of	R=phon	T=พ้น high	dict=pón /pʰon˦˥/
+ประทาน	VERB	to give (royal/divine)	role=royal or divine verb	reg=royal,religious	R=prathan	T=ประ low, ทาน mid	dict=bprà-taan /pra˨˩.tʰaːn˧/
+พินาศ	VERB	to perish	R=phinat	T=พิ high, นาศ falling	dict=— 	NODICT
+ขอบคุณ	VERB	to thank	R=khopkhun	T=ขอบ low, คุณ mid	dict=kɔ̀ɔp-kun /kʰɔːp̚˨˩.kʰun˧/
+ให้	VERB	to give; to let	role=giving or causing	R=hai	T=ให้ falling	dict=hâi /haj˥˩/
+ให้	ADP	for, to (benefactive)	role=benefactive marker (for, to)	R=hai	T=ให้ falling	dict=hâi /haj˥˩/
+ทรง	AUX	(royal/divine auxiliary before verbs)	role=royal or divine verb marker	reg=royal,religious	R=song	T=ทรง mid	dict=song /soŋ˧/
+จะ	AUX	will	role=future marker	R=cha	T=จะ low	dict=jà /t͡ɕaʔ˨˩/
+ได้	AUX	can; got to	role=ability marker, or "got to"	R=dai	T=ได้ falling	dict=dâai /daːj˥˩/
+อยาก	AUX	to want to	role=wish marker	R=yak	T=อยาก low	dict=yàak /jaːk̚˨˩/
+อยู่	AUX	to be located; (ongoing)	role=continuing-state marker	R=yu	T=อยู่ low	dict=yùu /juː˨˩/
+พระเจ้า	PROPN	God	reg=religious	R=phrachao	T=(tone not given)	dict=prá-jâao /pʰra˦˥.t͡ɕaːw˥˩/
+บาป	NOUN	sin	R=bap	T=บาป low	dict=bàap /baːp̚˨˩/	CLF: —
+โทษ	NOUN	fault, blame, penalty	R=thot	T=โทษ falling	dict=tôot /tʰoːt̚˥˩/	CLF: —
+หัวใจ	NOUN	heart	R=huachai	T=หัว rising, ใจ mid	dict=hǔua-jai /hua̯˩˩˦.t͡ɕaj˧/	CLF: —
+สันติสุข	NOUN	peace	R=santisuk	T=สัน rising, ติ low, สุข low	dict=sǎn-dtì-sùk /san˩˩˦.ti˨˩.suk̚˨˩/	CLF: —
+โลก	NOUN	world	R=lok	T=โลก falling	dict=lôok /loːk̚˥˩/	CLF: —
+ชีวิต	NOUN	life	R=chiwit	T=ชี mid, วิต high	dict=chii-wít /t͡ɕʰiː˧.wit̚˦˥/	CLF: —
+พระบุตร	NOUN	the Son (royal/divine)	reg=religious	R=phrabut	T=(tone not given)	dict=— 	NODICT	CLF: —
+เรื่อง	NOUN	matter, story	counts=UNIT	R=rueang	T=เรื่อง falling	dict=rʉ̂ʉang /rɯa̯ŋ˥˩/	CLF: เรื่อง counts itself: a number follows it without a classifier.
+เรื่อง	CLF	(classifier for stories, matters)	counts=stories, matters	R=rueang	T=เรื่อง falling	dict=rʉ̂ʉang /rɯa̯ŋ˥˩/
+อธรรม	NOUN	unrighteousness	R=a-tham	T=อ low, ธรรม mid	dict=— 	NODICT	CLF: —
+ความ	NOUN	(prefix forming abstract nouns)	role=noun-forming prefix	R=khwam	T=ความ mid	dict=kwaam /kʰwaːm˧/	CLF: —
+วัน	NOUN	day	counts=UNIT	R=wan	T=วัน mid	dict=wan /wan˧/	CLF: วัน counts itself: a number follows it without a classifier.
+ครั้ง	NOUN	time, occasion	counts=times, occasions	R=khrang	T=ครั้ง high	dict=kráng /kʰraŋ˦˥/	CLF: ครั้ง counts itself: a number follows it without a classifier.
+ตอน	NOUN	time, when	R=ton	T=ตอน mid	dict=dtɔɔn /tɔːn˧/	CLF: Classifier: หน (counts times, occasions).
+หนังสือ	NOUN	book	R=nangsue	T=หนัง rising, สือ rising	dict=nǎng-sʉ̌ʉ /naŋ˩˩˦.sɯː˩˩˦/	CLF: Classifier: เล่ม (counts books, knives).
+บ้าน	NOUN	house, home	R=ban	T=บ้าน falling	dict=bâan /baːn˥˩/	CLF: Classifier: หลัง (counts houses, buildings).
+เด็ก	NOUN	child; young	R=dek	T=เด็ก low	dict=dèk /dek̚˨˩/	CLF: —
+คน	NOUN	person	R=khon	T=คน mid	dict=kon /kʰon˧/	CLF: —
+คน	CLF	(classifier for people)	counts=people	R=khon	T=คน mid	dict=kon /kʰon˧/
+ตัว	CLF	(classifier for animals, letters, clothes)	counts=animals, letters, clothes, furniture	R=tua	T=ตัว mid	dict=dtuua /tua̯˧/
+ตัว	NOUN	body; self	R=tua	T=ตัว mid	dict=dtuua /tua̯˧/	CLF: —
+อัน	CLF	(general classifier for small things)	counts=small objects in general	R=an	T=อัน mid	dict=an /ʔan˧/
+เล่ม	CLF	(classifier for books, knives)	counts=books, knives	R=lem	T=เล่ม falling	dict=lêm /lem˥˩/
+องค์	CLF	(classifier for royalty, deity, monks)	counts=royalty, deities, monks, holy images	R=ong	T=องค์ mid	dict=ong /ʔoŋ˧/
+หลัง	CLF	(classifier for houses)	counts=houses, buildings	R=lang	T=หลัง rising	dict=lǎng /laŋ˩˩˦/
+หนึ่ง	NUM	one	R=nueng	T=หนึ่ง low	dict=— /nɯŋ˨˩/
+สอง	NUM	two	R=song	T=สอง rising	dict=— /sɔːŋ˩˩˦/
+สาม	NUM	three	R=sam	T=สาม rising	dict=— /saːm˩˩˦/
+สี่	NUM	four	R=si	T=สี่ low	dict=— /siː˨˩/
+ห้า	NUM	five	R=ha	T=ห้า falling	dict=— /haː˥˩/
+สบาย	ADJ	comfortable, well	R=sabai	T=ส low, บาย mid	dict=sà-baai /sa˨˩.baːj˧/
+ดี	ADJ	good	R=di	T=ดี mid	dict=dii /diː˧/
+จริง	ADJ	true, real	R=ching	T=จริง mid	dict=jing /t͡ɕiŋ˧/
+สัตย์ซื่อ	ADJ	faithful	R=—	T=สัตย์ low, ซื่อ falling	dict=— 	NODICT NOROM
+ยุติธรรม	ADJ	just, fair	R=yut-ti-tham	T=ยุ high, ติ low, ธรรม mid	dict=yút-dtì-tam /jut̚˦˥.ti˨˩.tʰam˧/
+นิรันดร์	ADJ	eternal	R=niran	T=นิ high, รันดร์ mid	dict=— 	NODICT
+เดียว	ADJ	single, only	R=diao	T=เดียว mid	dict=diao /dia̯w˧/
+ทั้งหมด	ADJ	all, entire	R=thangmot	T=(tone not given)	dict=táng-mòt /tʰaŋ˦˥.mot̚˨˩/
+ทั้งสิ้น	ADV	entirely, altogether	R=thangsin	T=ทั้ง high, สิ้น falling	dict=— 	NODICT
+ยัง	ADV	still, yet	role=still / not-yet marker	R=yang	T=ยัง mid	dict=yang /jaŋ˧/
+แล้ว	ADV	already	role=completed or changed-state marker	R=laeo	T=แล้ว high	dict=lɛ́ɛo /lɛːw˦˥/
+ด้วย	ADV	also, with	role=also / together marker	R=duai	T=ด้วย falling	dict=dûai /dua̯j˥˩/
+ตอนนี้	ADV	now	R=tonni	T=ตอน mid, นี้ high	dict=dtɔɔn-níi /tɔːn˧.niː˦˥/
+วันหนึ่ง	ADV	one day	R=wan nueng	T=(tone not given)	dict=— 	NODICT
+เอง	ADV	-self	role=emphasis (oneself)	R=eng	T=เอง mid	dict=eeng /ʔeːŋ˧/
+ทำไม	ADV	why	role=question word (why)	R=thammai	T=ทำ mid, ไม mid	dict=tam-mai /tʰam˧.maj˧/
+ทุก	DET	every	R=thuk	T=ทุก high	dict=túk /tʰuk̚˦˥/
+นี้	DET	this	R=ni	T=นี้ high	dict=níi /niː˦˥/
+นั้น	DET	that	R=nan	T=นั้น high	dict=nán /nan˦˥/
+ไม่	PART	not	role=negation	R=mai	T=ไม่ falling	dict=mâi /maj˥˩/
+ก็	PART	(so, also; linking particle)	role=linking particle	R=ko	T=ก็ falling	dict=gɔ̂ /kɔʔ˥˩/
+ครับ	PART	(polite particle, male speaker)	role=polite particle (man speaking)	R=khrap	T=ครับ high	dict=kráp /kʰrap̚˦˥/
+ค่ะ	PART	(polite particle, female speaker; statements)	role=polite particle (woman, statements)	R=kha	T=ค่ะ falling	dict=kâ /kʰaʔ˥˩/
+คะ	PART	(polite particle, female speaker; questions)	role=polite particle (woman, questions)	R=kha	T=คะ high	dict=ká /kʰaʔ˦˥/
+ไหม	PART	(yes/no question particle)	role=question particle (yes/no)	R=mai	T=ไหม rising	dict=mǎi /maj˩˩˦/
+นะ	PART	(softening particle)	role=softening particle	R=na	T=นะ high	dict=ná /naʔ˦˥/
+สิ	PART	(urging particle)	role=urging particle	R=si	T=สิ low	dict=sì /siʔ˨˩/
+เหรอ	PART	(tag question particle)	role=checking question particle	reg=colloquial	R=roe	T=เหรอ rising	dict=rə̌ə /rɤː˩˩˦/
+ของ	ADP	of	role=preposition (of, belonging to)	R=khong	T=ของ rising	dict=kɔ̌ɔng /kʰɔːŋ˩˩˦/
+ใน	ADP	in	role=preposition	R=nai	T=ใน mid	dict=nai /naj˧/
+จาก	ADP	from	role=preposition	R=chak	T=จาก low	dict=jàak /t͡ɕaːk̚˨˩/
+และ	CONJ	and	role=and-connective	R=lae	T=และ high	dict=lɛ́ /lɛʔ˦˥/
+แต่	CONJ	but	role=contrast connective	R=tae	T=แต่ low	dict=dtɛ̀ɛ /tɛː˨˩/
+เพราะ	CONJ	because	role=reason connective	R=phro	T=เพราะ high	dict=prɔ́ /pʰrɔʔ˦˥/
+จน	CONJ	until; so much that	role=extent connective (until, so that)	R=chon	T=จน mid	dict=jon /t͡ɕon˧/
+ที่	SCONJ	that, who, which	role=relative or complement marker	R=thi	T=ที่ falling	dict=tîi /tʰiː˥˩/
+ว่า	SCONJ	that (complementizer)	role=complement marker (that)	R=wa	T=ว่า falling	dict=wâa /waː˥˩/
+เพื่อ	SCONJ	in order to, for	role=purpose connective	R=phuea	T=เพื่อ falling	dict=pʉ̂ʉa /pʰɯa̯˥˩/
+ถ้า	SCONJ	if	role=condition connective	R=tha	T=ถ้า falling	dict=tâa /tʰaː˥˩/
+สวัสดี	INTJ	hello	R=sawatdi	T=ส low, วัส low, ดี mid	dict=sà-wàt-dii /sa˨˩.wat̚˨˩.diː˧/
+แม่	NOUN	mother	R=mae	T=แม่ falling	dict=mɛ̂ɛ /mɛː˥˩/	CLF: —
+พ่อ	NOUN	father	R=pho	T=พ่อ falling	dict=pɔ̂ɔ /pʰɔː˥˩/	CLF: —
+ลูก	NOUN	child (of someone); fruit; ball	R=luk	T=ลูก falling	dict=lûuk /luːk̚˥˩/	CLF: Classifier: ลูก (counts fruit, balls, mountains, round things).
+ครอบครัว	NOUN	family	R=khrop-khrua	T=ครอบ falling, ครัว mid	dict=krɔ̂ɔp-kruua /kʰrɔːp̚˥˩.kʰrua̯˧/	CLF: —
+เพื่อน	NOUN	friend	R=phuean	T=เพื่อน falling	dict=pʉ̂ʉan /pʰɯa̯n˥˩/	CLF: —
+ครู	NOUN	teacher	R=khru	T=ครู mid	dict=kruu /kʰruː˧/	CLF: —
+นักเรียน	NOUN	pupil, student	R=—	T=นัก high, เรียน mid	dict=nák-riian /nak̚˦˥.ria̯n˧/	NOROM	CLF: —
+หมอ	NOUN	doctor	R=mo	T=หมอ rising	dict=mɔ̌ɔ /mɔː˩˩˦/	CLF: —
+ตำรวจ	NOUN	police officer	R=tam-ruat	T=ตำ mid, รวจ low	dict=dtam-rùuat /tam˧.rua̯t̚˨˩/	CLF: —
+ทหาร	NOUN	soldier	R=tha-han	T=ท high, หาร rising	dict=tá-hǎan /tʰa˦˥.haːn˩˩˦/	CLF: —
+ผู้หญิง	NOUN	woman	R=phu-ying	T=ผู้ falling, หญิง rising	dict=pûu-yǐng /pʰuː˥˩.jiŋ˩˩˦/	CLF: —
+ผู้ชาย	NOUN	man	R=phu-chai	T=ผู้ falling, ชาย mid	dict=pûu-chaai /pʰuː˥˩.t͡ɕʰaːj˧/	CLF: —
+ผู้ใหญ่	NOUN	adult; grown-up	R=phu-yai	T=ผู้ falling, ใหญ่ low	dict=pûu-yài /pʰuː˥˩.jaj˨˩/	CLF: —
+สามี	NOUN	husband	R=—	T=สา rising, มี mid	dict=sǎa-mii /saː˩˩˦.miː˧/	NOROM	CLF: —
+ภรรยา	NOUN	wife	R=—	T=ภรร mid, ยา mid	dict=pan-yaa /pʰan˧.jaː˧/	NOROM	CLF: —
+หลาน	NOUN	grandchild; niece, nephew	R=lan	T=หลาน rising	dict=lǎan /laːn˩˩˦/	CLF: —
+ผู้	NOUN	person who (before a verb)	R=phu	T=ผู้ falling	dict=pûu /pʰuː˥˩/	CLF: —
+พวก	NOUN	group, crowd; people of a kind	R=phuak	T=พวก falling	dict=pûuak /pʰua̯k̚˥˩/	CLF: Classifier: ฝูง (counts herds, flocks, crowds).
+หมา	NOUN	dog	R=ma	T=หมา rising	dict=mǎa /maː˩˩˦/	CLF: —
+สุนัข	NOUN	dog (formal)	reg=formal	R=—	T=สุ low, นัข high	dict=sù-nák /su˨˩.nak̚˦˥/	NOROM	CLF: —
+แมว	NOUN	cat	R=maeo	T=แมว mid	dict=mɛɛo /mɛːw˧/	CLF: —
+ปลา	NOUN	fish	R=pla	T=ปลา mid	dict=bplaa /plaː˧/	CLF: —
+นก	NOUN	bird	R=nok	T=นก high	dict=nók /nok̚˦˥/	CLF: —
+ช้าง	NOUN	elephant	R=chang	T=ช้าง high	dict=cháang /t͡ɕʰaːŋ˦˥/	CLF: —
+ม้า	NOUN	horse	R=ma	T=ม้า high	dict=máa /maː˦˥/	CLF: —
+วัว	NOUN	cow, ox	R=wua	T=วัว mid	dict=wuua /wua̯˧/	CLF: —
+ควาย	NOUN	water buffalo	R=khwai	T=ควาย mid	dict=kwaai /kʰwaːj˧/	CLF: —
+หมู	NOUN	pig; pork	R=mu	T=หมู rising	dict=mǔu /muː˩˩˦/	CLF: —
+ไก่	NOUN	chicken	R=kai	T=ไก่ low	dict=gài /kaj˨˩/	CLF: —
+เป็ด	NOUN	duck	R=pet	T=เป็ด low	dict=bpèt /pet̚˨˩/	CLF: —
+ลิง	NOUN	monkey	R=ling	T=ลิง mid	dict=ling /liŋ˧/	CLF: —
+เสือ	NOUN	tiger	R=suea	T=เสือ rising	dict=sʉ̌ʉa /sɯa̯˩˩˦/	CLF: —
+งู	NOUN	snake	R=ngu	T=งู mid	dict=nguu /ŋuː˧/	CLF: —
+กบ	NOUN	frog	R=kop	T=กบ low	dict=gòp /kop̚˨˩/	CLF: —
+ยุง	NOUN	mosquito	R=yung	T=ยุง mid	dict=yung /juŋ˧/	CLF: —
+มด	NOUN	ant	R=mot	T=มด high	dict=mót /mot̚˦˥/	CLF: —
+หัว	NOUN	head	R=hua	T=หัว rising	dict=hǔua /hua̯˩˩˦/	CLF: —
+ตา	NOUN	eye; grandfather (mother's father)	R=ta	T=ตา mid	dict=dtaa /taː˧/	CLF: —
+หู	NOUN	ear	R=hu	T=หู rising	dict=hǔu /huː˩˩˦/	CLF: —
+จมูก	NOUN	nose	R=cha-muk	T=จ low, มูก low	dict=jà-mùuk /t͡ɕa˨˩.muːk̚˨˩/	CLF: —
+ปาก	NOUN	mouth	R=pak	T=ปาก low	dict=bpàak /paːk̚˨˩/	CLF: —
+ฟัน	NOUN	tooth	R=fan	T=ฟัน mid	dict=fan /fan˧/	CLF: —
+มือ	NOUN	hand	R=mue	T=มือ mid	dict=mʉʉ /mɯː˧/	CLF: —
+เท้า	NOUN	foot	R=thao	T=เท้า high	dict=táao /tʰaːw˦˥/	CLF: —
+ขา	NOUN	leg	R=kha	T=ขา rising	dict=kǎa /kʰaː˩˩˦/	CLF: —
+แขน	NOUN	arm	R=khaen	T=แขน rising	dict=kɛ̌ɛn /kʰɛːn˩˩˦/	CLF: —
+ท้อง	NOUN	belly, stomach	R=thong	T=ท้อง high	dict=tɔ́ɔng /tʰɔːŋ˦˥/	CLF: —
+หน้า	NOUN	face; front	R=na	T=หน้า falling	dict=nâa /naː˥˩/	CLF: —
+นิ้ว	NOUN	finger; inch	R=nio	T=นิ้ว high	dict=níu /niw˦˥/	CLF: —
+ใจ	NOUN	heart, mind	R=chai	T=ใจ mid	dict=jai /t͡ɕaj˧/	CLF: —
+เลือด	NOUN	blood	R=lueat	T=เลือด falling	dict=lʉ̂ʉat /lɯa̯t̚˥˩/	CLF: —
+ร่างกาย	NOUN	body	R=rang-kai	T=ร่าง falling, กาย mid	dict=râang-gaai /raːŋ˥˩.kaːj˧/	CLF: —
+ห้อง	NOUN	room	R=hong	T=ห้อง falling	dict=hɔ̂ng /hɔŋ˥˩/	CLF: Classifier: ห้อง (counts rooms).
+ประตู	NOUN	door	R=pra-tu	T=ประ low, ตู mid	dict=bprà-dtuu /pra˨˩.tuː˧/	CLF: —
+โต๊ะ	NOUN	table, desk	R=to	T=โต๊ะ high	dict=dtó /toʔ˦˥/	CLF: —
+เก้าอี้	NOUN	chair	R=kao-i	T=เก้า falling, อี้ falling	dict=gâo-îi /kaw˥˩.ʔiː˥˩/	CLF: —
+เตียง	NOUN	bed	R=tiang	T=เตียง mid	dict=dtiiang /tia̯ŋ˧/	CLF: —
+ครัว	NOUN	kitchen	R=khrua	T=ครัว mid	dict=kruua /kʰrua̯˧/	CLF: —
+รถ	NOUN	car; vehicle	R=rot	T=รถ high	dict=rót /rot̚˦˥/	CLF: Classifier: คัน (counts cars, buses, bicycles, umbrellas).
+เรือ	NOUN	boat, ship	R=ruea	T=เรือ mid	dict=rʉʉa /rɯa̯˧/	CLF: Classifier: ลำ (counts boats, aircraft).
+ถนน	NOUN	road, street	R=tha-non	T=ถ low, นน rising	dict=tà-nǒn /tʰa˨˩.non˩˩˦/	CLF: Classifier: เส้น (counts roads, hairs, noodles, ropes); สาย (counts roads, rivers, bus routes, ropes).
+เงิน	NOUN	money; silver	R=ngoen	T=เงิน mid	dict=ngən /ŋɤn˧/	CLF: —
+ตลาด	NOUN	market	R=ta-lat	T=ต low, ลาด low	dict=dtà-làat /ta˨˩.laːt̚˨˩/	CLF: —
+ร้าน	NOUN	shop	R=ran	T=ร้าน high	dict=ráan /raːn˦˥/	CLF: —
+โรงเรียน	NOUN	school	R=—	T=โรง mid, เรียน mid	dict=roong-riian /roːŋ˧.ria̯n˧/	NOROM	CLF: —
+โรงพยาบาล	NOUN	hospital	R=rong-pha-ya-ban	T=โรง mid, พ high, ยา mid, บาล mid	dict=roong-pá-yaa-baan /roːŋ˧.pʰa˦˥.jaː˧.baːn˧/	CLF: —
+วัด	NOUN	temple	R=wat	T=วัด high	dict=wát /wat̚˦˥/	CLF: —
+โบสถ์	NOUN	church (building)	R=—	T=โบสถ์ low	dict=bòot /boːt̚˨˩/	NOROM	CLF: —
+เมือง	NOUN	city, town; country	R=mueang	T=เมือง mid	dict=mʉʉang /mɯa̯ŋ˧/	CLF: —
+ประเทศ	NOUN	country, nation	R=pra-thet	T=ประ low, เทศ falling	dict=bprà-têet /pra˨˩.tʰeːt̚˥˩/	CLF: —
+สวน	NOUN	garden, orchard	R=suan	T=สวน rising	dict=sǔuan /sua̯n˩˩˦/	CLF: —
+ที่นอน	NOUN	mattress, bed	R=—	T=(tone not given)	dict=tîi-nɔɔn /tʰiː˥˩.nɔːn˧/	NOROM	CLF: —
+ชื่อ	NOUN	name	R=chue	T=ชื่อ falling	dict=chʉ̂ʉ /t͡ɕʰɯː˥˩/	CLF: —
+งาน	NOUN	work, job; event	R=ngan	T=งาน mid	dict=ngaan /ŋaːn˧/	CLF: Classifier: ชิ้น (counts pieces, slices, works).
+ราคา	NOUN	price	R=—	T=รา mid, คา mid	dict=raa-kaa /raː˧.kʰaː˧/	NOROM	CLF: —
+สิ่ง	NOUN	thing	R=sing	T=สิ่ง low	dict=sìng /siŋ˨˩/	CLF: —
+คำ	NOUN	word	R=kham	T=คำ mid	dict=kam /kʰam˧/	CLF: Classifier: คำ (counts words; mouthfuls).
+ภาษา	NOUN	language	R=pha-sa	T=ภา mid, ษา rising	dict=paa-sǎa /pʰaː˧.saː˩˩˦/	CLF: —
+ข่าว	NOUN	news	R=khao	T=ข่าว low	dict=kàao /kʰaːw˨˩/	CLF: —
+จดหมาย	NOUN	letter	R=—	T=(tone not given)	dict=jòt-mǎai /t͡ɕot̚˨˩.maːj˩˩˦/	NOROM	CLF: Classifier: ตัว (counts animals, letters, clothes, furniture); ฉบับ (counts newspapers, letters, documents).
+โทรศัพท์	NOUN	telephone	R=tho-ra-sap	T=โท mid, ร high, ศัพท์ low	dict=too-rá-sàp /tʰoː˧.ra˦˥.sap̚˨˩/	CLF: —
+รูป	NOUN	picture; shape	R=rup	T=รูป falling	dict=rûup /ruːp̚˥˩/	CLF: Classifier: รูป (counts monks, pictures).
+ภาพ	NOUN	picture, image	R=phap	T=ภาพ falling	dict=pâap /pʰaːp̚˥˩/	CLF: Classifier: รูป (counts monks, pictures).
+เพลง	NOUN	song	R=phleng	T=เพลง mid	dict=pleeng /pʰleːŋ˧/	CLF: —
+ยา	NOUN	medicine	R=ya	T=ยา mid	dict=yaa /jaː˧/	CLF: —
+ฝัน	NOUN	dream	R=fan	T=ฝัน rising	dict=fǎn /fan˩˩˦/	CLF: —
+ปัญหา	NOUN	problem	R=—	T=ปัญ mid, หา rising	dict=bpan-hǎa /pan˧.haː˩˩˦/	NOROM	CLF: —
+โอกาส	NOUN	chance, opportunity	R=—	T=โอ mid, กาส low	dict=oo-gàat /ʔoː˧.kaːt̚˨˩/	NOROM	CLF: —
+สุขภาพ	NOUN	health	R=suk-kha-phap	T=สุ low, ข low, ภาพ falling	dict=sùk-kà-pâap /suk̚˨˩.kʰa˨˩.pʰaːp̚˥˩/	CLF: —
+ศาสนา	NOUN	religion	R=sat-sa-na	T=ศา low, ส low, นา rising	dict=sàat-sà-nǎa /saːt̚˨˩.sa˨˩.naː˩˩˦/	CLF: —
+ศรัทธา	NOUN	faith	R=—	T=ศรัท low, ธา mid	dict=sàt-taa /sat̚˨˩.tʰaː˧/	NOROM	CLF: —
+สังคม	NOUN	society	R=sang-khom	T=สัง rising, คม mid	dict=sǎng-kom /saŋ˩˩˦.kʰom˧/	CLF: —
+ประวัติศาสตร์	NOUN	history	R=—	T=—	dict=bprà-wàt-dtì-sàat /pra˨˩.wat̚˨˩.ti˨˩.saːt̚˨˩/	NOROM	CLF: —
+วัฒนธรรม	NOUN	culture	R=wat-tha-na-tham	T=วั high, ฒ high, น high, ธรรม mid	dict=— /wat̚˦˥.tʰa˦˥.na˦˥.tʰam˧/	CLF: —
+รัฐบาล	NOUN	government	R=rat-tha-ban	T=รั high, ฐ low, บาล mid	dict=— /rat̚˦˥.tʰa˨˩.baːn˧/	CLF: —
+กฎหมาย	NOUN	law	R=—	T=(tone not given)	dict=gòt-mǎai /kot̚˨˩.maːj˩˩˦/	NOROM	CLF: —
+ประสบการณ์	NOUN	experience	R=—	T=(tone not given)	dict=bprà-sòp-gaan /pra˨˩.sop̚˨˩.kaːn˧/	NOROM	CLF: —
+ข้าว	NOUN	rice; food, a meal	R=khao	T=ข้าว falling	dict=— /kʰaːw˥˩/	CLF: —
+น้ำ	NOUN	water	R=nam	T=น้ำ high	dict=náam /naːm˦˥/	CLF: —
+อาหาร	NOUN	food	R=a-han	T=อา mid, หาร rising	dict=aa-hǎan /ʔaː˧.haːn˩˩˦/	CLF: —
+ขนม	NOUN	sweets, snack	R=kha-nom	T=ข low, นม rising	dict=kà-nǒm /kʰa˨˩.nom˩˩˦/	CLF: —
+ผลไม้	NOUN	fruit	R=phon-la-mai	T=ผน rising, ละ high, ไม้ high	dict=pǒn-lá-máai /pʰon˩˩˦.la˦˥.maːj˦˥/	CLF: Classifier: ลูก (counts fruit, balls, mountains, round things).
+ผัก	NOUN	vegetable	R=phak	T=ผัก low	dict=pàk /pʰak̚˨˩/	CLF: —
+เนื้อ	NOUN	meat; flesh	R=nuea	T=เนื้อ high	dict=nʉ́ʉa /nɯa̯˦˥/	CLF: —
+ไข่	NOUN	egg	R=khai	T=ไข่ low	dict=kài /kʰaj˨˩/	CLF: —
+นม	NOUN	milk	R=nom	T=นม mid	dict=nom /nom˧/	CLF: —
+กาแฟ	NOUN	coffee	R=—	T=กา mid, แฟ mid	dict=gaa-fɛɛ /kaː˧.fɛː˧/	NOROM	CLF: —
+ชา	NOUN	tea	R=cha	T=ชา mid	dict=chaa /t͡ɕʰaː˧/	CLF: —
+เกลือ	NOUN	salt	R=kluea	T=เกลือ mid	dict=glʉʉa /klɯa̯˧/	CLF: —
+กล้วย	NOUN	banana	R=kluai	T=กล้วย falling	dict=glûai /klua̯j˥˩/	CLF: —
+มะม่วง	NOUN	mango	R=ma-muang	T=มะ high, ม่วง falling	dict=má-mûuang /ma˦˥.mua̯ŋ˥˩/	CLF: —
+ฟ้า	NOUN	sky	R=fa	T=ฟ้า high	dict=fáa /faː˦˥/	CLF: —
+ดาว	NOUN	star	R=dao	T=ดาว mid	dict=daao /daːw˧/	CLF: —
+ฝน	NOUN	rain	R=fon	T=ฝน rising	dict=fǒn /fon˩˩˦/	CLF: —
+ลม	NOUN	wind	R=lom	T=ลม mid	dict=lom /lom˧/	CLF: —
+ไฟ	NOUN	fire; light; electricity	R=fai	T=ไฟ mid	dict=fai /faj˧/	CLF: —
+ดิน	NOUN	soil, earth	R=din	T=ดิน mid	dict=din /din˧/	CLF: —
+ทราย	NOUN	sand	R=sai	T=ทราย mid	dict=saai /saːj˧/	CLF: —
+ภูเขา	NOUN	mountain	R=phu-khao	T=ภู mid, เขา rising	dict=puu-kǎo /pʰuː˧.kʰaw˩˩˦/	CLF: Classifier: ลูก (counts fruit, balls, mountains, round things).
+ทะเล	NOUN	sea	R=—	T=ทะ high, เล mid	dict=tá-lee /tʰa˦˥.leː˧/	NOROM	CLF: —
+ป่า	NOUN	forest	R=pa	T=ป่า low	dict=bpàa /paː˨˩/	CLF: —
+ต้นไม้	NOUN	tree	R=ton-mai	T=ต้น falling, ไม้ high	dict=dtôn-máai /ton˥˩.maːj˦˥/	CLF: Classifier: ต้น (counts trees, plants).
+ดอกไม้	NOUN	flower	R=dok-mai	T=ดอก low, ไม้ high	dict=dɔ̀ɔk-máai /dɔːk̚˨˩.maːj˦˥/	CLF: Classifier: ดอก (counts flowers).
+หญ้า	NOUN	grass	R=ya	T=หญ้า falling	dict=yâa /jaː˥˩/	CLF: —
+หิน	NOUN	stone, rock	R=hin	T=หิน rising	dict=hǐn /hin˩˩˦/	CLF: Classifier: ก้อน (counts stones, lumps, clouds).
+อากาศ	NOUN	air; weather	R=—	T=อา mid, กาศ low	dict=aa-gàat /ʔaː˧.kaːt̚˨˩/	NOROM	CLF: —
+แดด	NOUN	sunshine	R=daet	T=แดด low	dict=dɛ̀ɛt /dɛːt̚˨˩/	CLF: —
+วันนี้	ADV	today	R=wan-ni	T=วัน mid, นี้ high	dict=wan-níi /wan˧.niː˦˥/
+พรุ่งนี้	ADV	tomorrow	R=phrung-ni	T=พรุ่ง falling, นี้ high	dict=prûng-níi /pʰruŋ˥˩.niː˦˥/
+เมื่อวาน	ADV	yesterday	R=muea-wan	T=เมื่อ falling, วาน mid	dict=mʉ̂ʉa-waan /mɯa̯˥˩.waːn˧/
+คืน	NOUN	night	counts=UNIT	R=khuen	T=คืน mid	dict=kʉʉn /kʰɯːn˧/	CLF: คืน counts itself: a number follows it without a classifier.
+เช้า	NOUN	morning	counts=UNIT	R=chao	T=เช้า high	dict=cháao /t͡ɕʰaːw˦˥/	CLF: เช้า counts itself: a number follows it without a classifier.
+บ่าย	NOUN	afternoon	counts=UNIT	R=bai	T=บ่าย low	dict=bàai /baːj˨˩/	CLF: บ่าย counts itself: a number follows it without a classifier.
+เย็น	NOUN	evening	counts=UNIT	R=yen	T=เย็น mid	dict=yen /jen˧/	CLF: เย็น counts itself: a number follows it without a classifier.
+ปี	NOUN	year	counts=UNIT	R=pi	T=ปี mid	dict=bpii /piː˧/	CLF: ปี counts itself: a number follows it without a classifier.
+เดือน	NOUN	month; moon	counts=UNIT	R=duean	T=เดือน mid	dict=dʉʉan /dɯa̯n˧/	CLF: เดือน counts itself: a number follows it without a classifier.
+สัปดาห์	NOUN	week	counts=UNIT	R=sap-da	T=สัป low, ดาห์ mid	dict=— /sap̚˨˩.daː˧/	CLF: สัปดาห์ counts itself: a number follows it without a classifier.
+อาทิตย์	NOUN	week; sun	counts=UNIT	R=a-thit	T=อา mid, ทิตย์ high	dict=aa-tít /ʔaː˧.tʰit̚˦˥/	CLF: อาทิตย์ counts itself: a number follows it without a classifier.
+ชั่วโมง	NOUN	hour	counts=UNIT	R=chua-mong	T=ชั่ว falling, โมง mid	dict=chûua-moong /t͡ɕʰua̯˥˩.moːŋ˧/	CLF: ชั่วโมง counts itself: a number follows it without a classifier.
+นาที	NOUN	minute	counts=UNIT	R=—	T=นา mid, ที mid	dict=naa-tii /naː˧.tʰiː˧/	NOROM	CLF: นาที counts itself: a number follows it without a classifier.
+วินาที	NOUN	second (of time)	counts=UNIT	R=—	T=วิ high, นา mid, ที mid	dict=wí-naa-tii /wi˦˥.naː˧.tʰiː˧/	NOROM	CLF: วินาที counts itself: a number follows it without a classifier.
+เวลา	NOUN	time	R=—	T=เว mid, ลา mid	dict=wee-laa /weː˧.laː˧/	NOROM	CLF: Classifier: หน (counts times, occasions).
+บาท	NOUN	baht	counts=UNIT	R=—	T=บาท low	dict=bàat /baːt̚˨˩/	NOROM	CLF: บาท counts itself: a number follows it without a classifier.
+ศูนย์	NUM	zero	R=sun	T=ศูนย์ rising	dict=sǔun /suːn˩˩˦/
+หก	NUM	six	R=hok	T=หก low	dict=hòk /hok̚˨˩/
+เจ็ด	NUM	seven	R=chet	T=เจ็ด low	dict=— /t͡ɕet̚˨˩/
+แปด	NUM	eight	R=paet	T=แปด low	dict=— /pɛːt̚˨˩/
+เก้า	NUM	nine	R=kao	T=เก้า falling	dict=gâao /kaːw˥˩/
+สิบ	NUM	ten	R=sip	T=สิบ low	dict=sìp /sip̚˨˩/
+ร้อย	NUM	hundred	R=roi	T=ร้อย high	dict=rɔ́ɔi /rɔːj˦˥/
+พัน	NUM	thousand	R=phan	T=พัน mid	dict=pan /pʰan˧/
+หมื่น	NUM	ten thousand	R=muen	T=หมื่น low	dict=mʉ̀ʉn /mɯːn˨˩/
+แสน	NUM	hundred thousand	R=saen	T=แสน rising	dict=sɛ̌ɛn /sɛːn˩˩˦/
+ล้าน	NUM	million	R=lan	T=ล้าน high	dict=láan /laːn˦˥/
+สี	NOUN	colour	R=si	T=สี rising	dict=sǐi /siː˩˩˦/	CLF: —
+แดง	ADJ	red	R=daeng	T=แดง mid	dict=dɛɛng /dɛːŋ˧/
+เขียว	ADJ	green	R=khiao	T=เขียว rising	dict=kǐao /kʰia̯w˩˩˦/
+เหลือง	ADJ	yellow	R=lueang	T=เหลือง rising	dict=lʉ̌ʉang /lɯa̯ŋ˩˩˦/
+ขาว	ADJ	white	R=khao	T=ขาว rising	dict=kǎao /kʰaːw˩˩˦/
+ดำ	ADJ	black	R=dam	T=ดำ mid	dict=dam /dam˧/
+ชมพู	ADJ	pink	R=—	T=ชม mid, พู mid	dict=chom-puu /t͡ɕʰom˧.pʰuː˧/	NOROM
+ม่วง	ADJ	purple	R=muang	T=ม่วง falling	dict=mûuang /mua̯ŋ˥˩/
+น้ำเงิน	ADJ	dark blue	R=nam-ngoen	T=น้ำ high, เงิน mid	dict=— /nam˦˥.ŋɤn˧/
+ไป	VERB	to go	R=pai	T=ไป mid	dict=bpai /paj˧/
+มา	VERB	to come	R=ma	T=มา mid	dict=maa /maː˧/
+ขึ้น	VERB	to go up, rise	R=khuen	T=ขึ้น falling	dict=kʉ̂n /kʰɯn˥˩/
+ลง	VERB	to go down	R=long	T=ลง mid	dict=long /loŋ˧/
+เข้า	VERB	to enter, go in	R=khao	T=เข้า falling	dict=kâo /kʰaw˥˩/
+ออก	VERB	to go out, exit	R=ok	T=ออก low	dict=ɔ̀ɔk /ʔɔːk̚˨˩/
+กลับ	VERB	to return, go back	R=klap	T=กลับ low	dict=glàp /klap̚˨˩/
+ถึง	VERB	to arrive, reach; until	R=thueng	T=ถึง rising	dict=tʉ̌ng /tʰɯŋ˩˩˦/
+เดิน	VERB	to walk	R=doen	T=เดิน mid	dict=dəən /dɤːn˧/
+วิ่ง	VERB	to run	R=wing	T=วิ่ง falling	dict=wîng /wiŋ˥˩/
+ขับ	VERB	to drive	R=khap	T=ขับ low	dict=kàp /kʰap̚˨˩/
+บิน	VERB	to fly	R=bin	T=บิน mid	dict=bin /bin˧/
+นั่ง	VERB	to sit	R=nang	T=นั่ง falling	dict=nâng /naŋ˥˩/
+ยืน	VERB	to stand	R=yuen	T=ยืน mid	dict=yʉʉn /jɯːn˧/
+นอน	VERB	to lie down; to sleep	R=non	T=นอน mid	dict=nɔɔn /nɔːn˧/
+ตื่น	VERB	to wake up	R=tuen	T=ตื่น low	dict=dtʉ̀ʉn /tɯːn˨˩/
+หยุด	VERB	to stop; to take a break	R=yut	T=หยุด low	dict=yùt /jut̚˨˩/
+รอ	VERB	to wait	R=ro	T=รอ mid	dict=rɔɔ /rɔː˧/
+กิน	VERB	to eat	R=kin	T=กิน mid	dict=gin /kin˧/
+ดื่ม	VERB	to drink	R=duem	T=ดื่ม low	dict=dʉ̀ʉm /dɯːm˨˩/
+ดู	VERB	to look at, watch	R=du	T=ดู mid	dict=duu /duː˧/
+เห็น	VERB	to see	R=hen	T=เห็น rising	dict=hěn /hen˩˩˦/
+ฟัง	VERB	to listen	R=fang	T=ฟัง mid	dict=fang /faŋ˧/
+ได้ยิน	VERB	to hear	R=dai-yin	T=ได้ falling, ยิน mid	dict=dâi-yin /daj˥˩.jin˧/
+อ่าน	VERB	to read	R=an	T=อ่าน low	dict=àan /ʔaːn˨˩/
+เขียน	VERB	to write	R=khian	T=เขียน rising	dict=kǐian /kʰia̯n˩˩˦/
+เรียน	VERB	to study, learn	R=rian	T=เรียน mid	dict=riian /ria̯n˧/
+สอน	VERB	to teach	R=son	T=สอน rising	dict=sɔ̌ɔn /sɔːn˩˩˦/
+บอก	VERB	to tell	R=bok	T=บอก low	dict=bɔ̀ɔk /bɔːk̚˨˩/
+ถาม	VERB	to ask (a question)	R=tham	T=ถาม rising	dict=tǎam /tʰaːm˩˩˦/
+ตอบ	VERB	to answer	R=top	T=ตอบ low	dict=dtɔ̀ɔp /tɔːp̚˨˩/
+คิด	VERB	to think	R=khit	T=คิด high	dict=kít /kʰit̚˦˥/
+รู้	VERB	to know	R=ru	T=รู้ high	dict=rúu /ruː˦˥/
+รู้สึก	VERB	to feel	R=ru-suek	T=รู้ high, สึก low	dict=rúu-sʉ̀k /ruː˦˥.sɯk̚˨˩/
+จำ	VERB	to remember	R=cham	T=จำ mid	dict=jam /t͡ɕam˧/
+ลืม	VERB	to forget	R=luem	T=ลืม mid	dict=lʉʉm /lɯːm˧/
+ชอบ	VERB	to like	R=chop	T=ชอบ falling	dict=chɔ̂ɔp /t͡ɕʰɔːp̚˥˩/
+เกลียด	VERB	to hate	R=kliat	T=เกลียด low	dict=glìiat /klia̯t̚˨˩/
+กลัว	VERB	to fear, be afraid	R=klua	T=กลัว mid	dict=gluua /klua̯˧/
+หวัง	VERB	to hope	R=wang	T=หวัง rising	dict=wǎng /waŋ˩˩˦/
+โกรธ	VERB	to be angry	R=—	T=โกรธ low	dict=gròot /kroːt̚˨˩/	NOROM
+ต้องการ	VERB	to want, need	R=tong-kan	T=ต้อง falling, การ mid	dict=dtɔ̂ng-gaan /tɔŋ˥˩.kaːn˧/
+ซื้อ	VERB	to buy	R=sue	T=ซื้อ high	dict=sʉ́ʉ /sɯː˦˥/
+ขาย	VERB	to sell	R=khai	T=ขาย rising	dict=kǎai /kʰaːj˩˩˦/
+เอา	VERB	to take; to want	R=ao	T=เอา mid	dict=ao /ʔaw˧/
+รับ	VERB	to receive, accept	R=rap	T=รับ high	dict=ráp /rap̚˦˥/
+ส่ง	VERB	to send	R=song	T=ส่ง low	dict=sòng /soŋ˨˩/
+ทำ	VERB	to do, make	R=tham	T=ทำ mid	dict=tam /tʰam˧/
+ใช้	VERB	to use	R=chai	T=ใช้ high	dict=chái /t͡ɕʰaj˦˥/
+เปิด	VERB	to open; to turn on	R=poet	T=เปิด low	dict=bpə̀ət /pɤːt̚˨˩/
+ปิด	VERB	to close; to turn off	R=pit	T=ปิด low	dict=bpìt /pit̚˨˩/
+หา	VERB	to look for; to find	R=ha	T=หา rising	dict=hǎa /haː˩˩˦/
+เจอ	VERB	to meet; to find	R=choe	T=เจอ mid	dict=jəə /t͡ɕɤː˧/
+ช่วย	VERB	to help	R=chuai	T=ช่วย falling	dict=chûai /t͡ɕʰua̯j˥˩/
+ขอ	VERB	to ask for, request	R=kho	T=ขอ rising	dict=kɔ̌ɔ /kʰɔː˩˩˦/
+เรียก	VERB	to call; to be called	R=riak	T=เรียก falling	dict=rîiak /ria̯k̚˥˩/
+สร้าง	VERB	to build, create	R=sang	T=สร้าง falling	dict=sâang /saːŋ˥˩/
+เปลี่ยน	VERB	to change	R=plian	T=เปลี่ยน low	dict=bplìian /plia̯n˨˩/
+เล่น	VERB	to play	R=len	T=เล่น falling	dict=lên /len˥˩/
+หัวเราะ	VERB	to laugh	R=—	T=หัว rising, เราะ high	dict=hǔua-rɔ́ /hua̯˩˩˦.rɔʔ˦˥/	NOROM
+ยิ้ม	VERB	to smile	R=yim	T=ยิ้ม high	dict=yím /jim˦˥/
+ร้อง	VERB	to sing; to cry out	R=rong	T=ร้อง high	dict=rɔ́ɔng /rɔːŋ˦˥/
+ล้าง	VERB	to wash	R=lang	T=ล้าง high	dict=láang /laːŋ˦˥/
+กัด	VERB	to bite	R=kat	T=กัด low	dict=gàt /kat̚˨˩/
+จับ	VERB	to catch, grab; to arrest	R=chap	T=จับ low	dict=jàp /t͡ɕap̚˨˩/
+ตัด	VERB	to cut	R=tat	T=ตัด low	dict=dtàt /tat̚˨˩/
+จบ	VERB	to end, finish	R=chop	T=จบ low	dict=jòp /t͡ɕop̚˨˩/
+เกิด	VERB	to be born; to happen	R=koet	T=เกิด low	dict=gə̀ət /kɤːt̚˨˩/
+ตาย	VERB	to die	R=tai	T=ตาย mid	dict=dtaai /taːj˧/
+อธิษฐาน	VERB	to pray	R=—	T=อ low, ธิษ high, ฐาน rising	dict=à-tít-tǎan /ʔa˨˩.tʰit̚˦˥.tʰaːn˩˩˦/	NOROM
+รอด	VERB	to be saved; to survive	R=rot	T=รอด falling	dict=rɔ̂ɔt /rɔːt̚˥˩/
+เป็น	VERB	to be (identity); to be able to (a skill)	R=pen	T=เป็น mid	dict=bpen /pen˧/
+คือ	VERB	to be (defining: A is B)	R=khue	T=คือ mid	dict=kʉʉ /kʰɯː˧/
+ใหญ่	ADJ	big, large	R=yai	T=ใหญ่ low	dict=yài /jaj˨˩/
+เล็ก	ADJ	small	R=lek	T=เล็ก high	dict=lék /lek̚˦˥/
+ยาว	ADJ	long	R=yao	T=ยาว mid	dict=yaao /jaːw˧/
+สั้น	ADJ	short (length)	R=san	T=สั้น falling	dict=sân /san˥˩/
+สูง	ADJ	tall; high	R=sung	T=สูง rising	dict=sǔung /suːŋ˩˩˦/
+ต่ำ	ADJ	low	R=tam	T=ต่ำ low	dict=dtàm /tam˨˩/
+หนัก	ADJ	heavy	R=nak	T=หนัก low	dict=nàk /nak̚˨˩/
+เบา	ADJ	light (weight)	R=bao	T=เบา mid	dict=bao /baw˧/
+เร็ว	ADJ	fast, quick	R=reo	T=เร็ว mid	dict=reo /rew˧/
+ช้า	ADJ	slow	R=cha	T=ช้า high	dict=cháa /t͡ɕʰaː˦˥/
+ใหม่	ADJ	new	R=mai	T=ใหม่ low	dict=mài /maj˨˩/
+เก่า	ADJ	old (things)	R=kao	T=เก่า low	dict=gào /kaw˨˩/
+แก่	ADJ	old (people); aged	R=kae	T=แก่ low	dict=gɛ̀ɛ /kɛː˨˩/
+สวย	ADJ	beautiful, pretty	R=suai	T=สวย rising	dict=sǔai /sua̯j˩˩˦/
+เก่ง	ADJ	skilled, clever	R=keng	T=เก่ง low	dict=gèng /keŋ˨˩/
+ขยัน	ADJ	hard-working	R=kha-yan	T=ข low, ยัน rising	dict=kà-yǎn /kʰa˨˩.jan˩˩˦/
+เหนื่อย	ADJ	tired	R=nueai	T=เหนื่อย low	dict=nʉ̀ai /nɯa̯j˨˩/
+หิว	ADJ	hungry	R=hio	T=หิว rising	dict=hǐu /hiw˩˩˦/
+อิ่ม	ADJ	full (after eating)	R=im	T=อิ่ม low	dict=ìm /ʔim˨˩/
+ง่วง	ADJ	sleepy	R=nguang	T=ง่วง falling	dict=ngûuang /ŋua̯ŋ˥˩/
+ป่วย	ADJ	ill, sick	R=puai	T=ป่วย low	dict=bpùai /pua̯j˨˩/
+แพง	ADJ	expensive	R=phaeng	T=แพง mid	dict=pɛɛng /pʰɛːŋ˧/
+ถูก	ADJ	cheap; correct	R=thuk	T=ถูก low	dict=tùuk /tʰuːk̚˨˩/
+ไกล	ADJ	far	R=klai	T=ไกล mid	dict=glai /klaj˧/
+ใกล้	ADJ	near	R=klai	T=ใกล้ falling	dict=glâi /klaj˥˩/
+น้อย	ADJ	few, little	R=noi	T=น้อย high	dict=nɔ́ɔi /nɔːj˦˥/
+ยาก	ADJ	difficult	R=yak	T=ยาก falling	dict=yâak /jaːk̚˥˩/
+ง่าย	ADJ	easy	R=ngai	T=ง่าย falling	dict=ngâai /ŋaːj˥˩/
+อร่อย	ADJ	delicious	R=a-roi	T=อ low, ร่อย low	dict=à-rɔ̀i /ʔa˨˩.rɔj˨˩/
+สนุก	ADJ	fun, enjoyable	R=sa-nuk	T=ส low, นุก low	dict=sà-nùk /sa˨˩.nuk̚˨˩/
+เศร้า	ADJ	sad	R=sao	T=เศร้า falling	dict=sâo /saw˥˩/
+หนาว	ADJ	cold (weather)	R=nao	T=หนาว rising	dict=nǎao /naːw˩˩˦/
+ร้อน	ADJ	hot	R=ron	T=ร้อน high	dict=rɔ́ɔn /rɔːn˦˥/
+สะอาด	ADJ	clean	R=sa-at	T=สะ low, อาด low	dict=sà-àat /sa˨˩.ʔaːt̚˨˩/
+สุข	ADJ	happy; happiness	R=suk	T=สุข low	dict=sùk /suk̚˨˩/
+อื่น	ADJ	other, else	R=uen	T=อื่น low	dict=ʉ̀ʉn /ʔɯːn˨˩/
+มาก	ADV	very; much, many	R=mak	T=มาก falling	dict=mâak /maːk̚˥˩/
+เพียง	ADV	only, merely	R=phiang	T=เพียง mid	dict=piiang /pʰia̯ŋ˧/
+แค่	ADV	only, just	R=khae	T=แค่ falling	dict=kɛ̂ɛ /kʰɛː˥˩/
+บาง	DET	some	R=bang	T=บาง mid	dict=baang /baːŋ˧/
+หลาย	DET	several, many	R=lai	T=หลาย rising	dict=lǎai /laːj˩˩˦/
+นี่	PRON	this; here (pointing)	R=ni	T=นี่ falling	dict=nîi /niː˥˩/
+นั่น	PRON	that (pointing)	R=nan	T=นั่น falling	dict=nân /nan˥˩/
+โน้น	DET	that over there	R=non	T=โน้น high	dict=nóon /noːn˦˥/
+ไปหา	VERB	to go to see (a person)	R=pai-ha	T=ไป mid, หา rising	dict=— 	NODICT
+ทำงาน	VERB	to work	R=—	T=ทำ mid, งาน mid	dict=tam-ngaan /tʰam˧.ŋaːn˧/	NOROM
+รู้จัก	VERB	to know (a person or place)	R=ru-chak	T=รู้ high, จัก low	dict=rúu-jàk /ruː˦˥.t͡ɕak̚˨˩/
+ตั้งใจ	VERB	to intend; to pay attention	R=tang-chai	T=ตั้ง falling, ใจ mid	dict=dtâng-jai /taŋ˥˩.t͡ɕaj˧/
+ดีใจ	ADJ	glad	R=di-chai	T=ดี mid, ใจ mid	dict=dii-jai /diː˧.t͡ɕaj˧/
+เสียใจ	ADJ	sad; sorry	R=sia-chai	T=เสีย rising, ใจ mid	dict=sǐia-jai /sia̯˩˩˦.t͡ɕaj˧/
+ตกใจ	VERB	to be startled	R=tok-chai	T=ตก low, ใจ mid	dict=dtòk-jai /tok̚˨˩.t͡ɕaj˧/
+ใจดี	ADJ	kind-hearted	R=—	T=ใจ mid, ดี mid	dict=jai-dii /t͡ɕaj˧.diː˧/	NOROM
+ใจเย็น	ADJ	calm, patient	R=chai-yen	T=ใจ mid, เย็น mid	dict=jai-yen /t͡ɕaj˧.jen˧/
+ใจร้อน	ADJ	impatient	R=—	T=(tone not given)	dict=jai-rɔ́ɔn /t͡ɕaj˧.rɔːn˦˥/	NOROM
+เท่าไร	PRON	how much?	role=question word	R=thao-rai	T=เท่า falling, ไร mid	dict=tâo-rai /tʰaw˥˩.raj˧/
+ที่ไหน	ADV	where?	role=question word	R=thi-nai	T=ที่ falling, ไหน rising	dict=tîi-nǎi /tʰiː˥˩.naj˩˩˦/
+เมื่อไร	ADV	when?	role=question word	R=muea-rai	T=เมื่อ falling, ไร mid	dict=mʉ̂ʉa-rai /mɯa̯˥˩.raj˧/
+อย่างไร	ADV	how?	role=question word	R=yang-rai	T=อย่าง low, ไร mid	dict=yàang-rai /jaːŋ˨˩.raj˧/
+ขอโทษ	VERB	to apologise; sorry, excuse me	R=—	T=ขอ rising, โทษ falling	dict=kɔ̌ɔ-tôot /kʰɔː˩˩˦.tʰoːt̚˥˩/	NOROM
+ก็ได้	PART	(that will do; or anything)	role=acceptance particle	R=—	T=—	dict=gɔ̂ɔ-dâai /kɔː˥˩.daːj˥˩/	NOROM
+ทันที	ADV	immediately	R=—	T=ทัน mid, ที mid	dict=tan-tii /tʰan˧.tʰiː˧/	NOROM
+ที่สุด	ADV	the most	role=superlative marker	R=thi-sut	T=ที่ falling, สุด low	dict=tîi-sùt /tʰiː˥˩.sut̚˨˩/
+เท่านั้น	ADV	only; that is all	R=thao-nan	T=เท่า falling, นั้น high	dict=tâo-nán /tʰaw˥˩.nan˦˥/
+ไม่ใช่	VERB	to not be (A is not B)	role=negated "to be"	R=mai-chai	T=ไม่ falling, ใช่ falling	dict=mâi-châi /maj˥˩.t͡ɕʰaj˥˩/
+ทำให้	VERB	to cause; to make (so that)	role=causative	R=tham-hai	T=ทำ mid, ให้ falling	dict=tam-hâi /tʰam˧.haj˥˩/
+เที่ยว	VERB	to go out for fun; to tour	R=thiao	T=เที่ยว falling	dict=tîao /tʰia̯w˥˩/
+อาบ	VERB	to bathe	R=ap	T=อาบ low	dict=àap /ʔaːp̚˨˩/
+แปรง	VERB	to brush	R=praeng	T=แปรง mid	dict=bprɛɛng /prɛːŋ˧/
+หลับ	VERB	to sleep, be asleep	R=lap	T=หลับ low	dict=làp /lap̚˨˩/
+ลอง	VERB	to try	R=long	T=ลอง mid	dict=lɔɔng /lɔːŋ˧/
+ห่วง	VERB	to worry about; to care for	R=huang	T=ห่วง low	dict=hùuang /hua̯ŋ˨˩/
+อภัย	VERB	to forgive, pardon	reg=formal	R=—	T=อ low, ภัย mid	dict=à-pai /ʔa˨˩.pʰaj˧/	NOROM
+เกี่ยว	VERB	to be related to	R=kiao	T=เกี่ยว low	dict=gìao /kia̯w˨˩/
+นิด	ADV	a little bit	R=nit	T=นิด high	dict=nít /nit̚˦˥/
+หน่อย	ADV	a little; (softens a request)	R=noi	T=หน่อย low	dict=nɔ̀i /nɔj˨˩/
+กัน	ADV	each other; together	R=kan	T=กัน mid	dict=gan /kan˧/
+เหมือน	VERB	to be like, resemble	R=muean	T=เหมือน rising	dict=mʉ̌ʉan /mɯa̯n˩˩˦/
+อีก	ADV	again; more; another	R=ik	T=อีก low	dict=ìik /ʔiːk̚˨˩/
+ตลอด	ADV	throughout, all along	R=—	T=(tone not given)	dict=dtà-lɔ̀ɔt /ta˨˩.lɔːt̚˨˩/	NOROM
+ยินดี	VERB	to be glad, pleased	R=—	T=ยิน mid, ดี mid	dict=yin-dii /jin˧.diː˧/	NOROM
+ต้อนรับ	VERB	to welcome	R=ton-rap	T=ต้อน falling, รับ high	dict=dtɔ̂ɔn-ráp /tɔːn˥˩.rap̚˦˥/
+ลา	VERB	to take leave	R=la	T=ลา mid	dict=laa /laː˧/
+เกือบ	ADV	almost, nearly	R=kueap	T=เกือบ low	dict=gʉ̀ʉap /kɯa̯p̚˨˩/
+ค่อย	ADV	gradually; (not) very much	R=khoi	T=ค่อย falling	dict=kɔ̂i /kʰɔj˥˩/
+ก็ตาม	PART	(whatever, however, after a question word)	role=concession marker	R=—	T=—	dict=gɔ̀-dtaam /kɔ˨˩.taːm˧/	NOROM
+ไหร่	PRON	what (informal spelling of ไร)	role=question word	reg=colloquial	R=rai	T=ไหร่ low	dict=— 	NODICT
+ฉะนั้น	CONJ	therefore	role=result connective	reg=formal	R=cha-nan	T=ฉะ low, นั้น high	dict=chà-nán /t͡ɕʰa˨˩.nan˦˥/
+ขณะ	NOUN	moment, time	R=—	T=ข low, ณะ high	dict=kà-nà /kʰa˨˩.naʔ˨˩/	NOROM TONE≠dict(low,low)	CLF: Classifier: หน (counts times, occasions).
+ๆ	PART	(repeat the previous word)	role=repetition mark (mai yamok)	R=—	T=—	dict=— 	NODICT NOROM
+ดังนี้	ADV	as follows; thus	R=dang-ni	T=ดัง mid, นี้ high	dict=— 	NODICT
+ยาห์เวห์	PROPN	Yahweh (the LORD, the name of God)	reg=religious	R=—	T=ยาห์ mid, เวห์ mid	dict=— 	NODICT NOROM
+ไทย	PROPN	Thai; Thailand	R=thai	T=ไทย mid	dict=tai /tʰaj˧/
+พระเยซู	PROPN	Jesus	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+พระคัมภีร์	NOUN	Bible; scripture	reg=religious	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+คริสตจักร	NOUN	church (the congregation)	reg=religious	R=—	T=(tone not given)	dict=krít-dtà-jàk /kʰrit̚˦˥.ta˨˩.t͡ɕak̚˨˩/	NOROM	CLF: —
+กำลัง	AUX	in the middle of (doing)	role=progressive marker	R=kam-lang	T=กำ mid, ลัง mid	dict=gam-lang /kam˧.laŋ˧/
+เคย	AUX	to have ever; used to	role=experience marker	R=khoei	T=เคย mid	dict=kəəi /kʰɤːj˧/
+ต้อง	AUX	must, have to	role=obligation marker	R=tong	T=ต้อง falling	dict=— /tɔŋ˥˩/
+ควร	AUX	should, ought to	role=advice marker	R=khuan	T=ควร mid	dict=kuuan /kʰua̯n˧/
+อาจ	AUX	may, might	role=possibility marker	R=—	T=อาจ low	dict=àat /ʔaːt̚˨˩/	NOROM
+น่าจะ	AUX	probably; ought to	role=probability marker	R=—	T=น่า falling, จะ low	dict=nâa-jà /naː˥˩.t͡ɕaʔ˨˩/	NOROM
+คง	AUX	probably, surely	role=probability marker	R=khong	T=คง mid	dict=kong /kʰoŋ˧/
+เพิ่ง	ADV	just (a moment ago)	role=just-happened marker	R=phoeng	T=เพิ่ง falling	dict=pə̂ng /pʰɤŋ˥˩/
+กว่า	ADP	more than; -er	role=comparative marker	R=kwa	T=กว่า low	dict=gwàa /kwaː˨˩/
+การ	NOUN	(prefix: the act of …-ing)	role=noun-forming prefix	R=kan	T=การ mid	dict=gaan /kaːn˧/	CLF: —
+ถูก	AUX	(passive: to be done to)	role=passive marker	R=thuk	T=ถูก low	dict=tùuk /tʰuːk̚˨˩/
+โดน	AUX	(passive, usually for bad events)	role=passive marker	R=don	T=โดน mid	dict=doon /doːn˧/
+อย่า	AUX	do not (command)	role=prohibition marker	R=ya	T=อย่า low	dict=yàa /jaː˨˩/
+มิ	PART	not (written)	role=negation	reg=formal	R=mi	T=มิ high	dict=mí /miʔ˦˥/
+ใช่	INTJ	yes; that is right	role=agreement	R=chai	T=ใช่ falling	dict=châi /t͡ɕʰaj˥˩/
+เปล่า	INTJ	no, not so (denying)	role=denial	R=plao	T=เปล่า low	dict=bplàao /plaːw˨˩/
+ใคร	PRON	who	role=question word	R=khrai	T=ใคร mid	dict=krai /kʰraj˧/
+ไหน	PRON	which; where	role=question word	R=nai	T=ไหน rising	dict=nǎi /naj˩˩˦/
+กี่	DET	how many (before a classifier)	role=question word	R=ki	T=กี่ low	dict=gìi /kiː˨˩/
+ไร	PRON	what (short form of อะไร)	role=question word	reg=colloquial	R=rai	T=ไร mid	dict=rai /raj˧/
+ไง	ADV	how (short form of อย่างไร)	role=question word	reg=colloquial	R=ngai	T=ไง mid	dict=ngai /ŋaj˧/
+มั้ย	PART	(yes/no question particle, informal spelling of ไหม)	role=question particle	reg=colloquial	R=mai	T=มั้ย high	dict=mái /maj˦˥/
+หรือ	CONJ	or; (also ends a yes/no question)	role=or-connective	R=rue	T=หรือ rising	dict=rʉ̌ʉ /rɯː˩˩˦/
+ล่ะ	PART	(what about…? / emphasis)	role=follow-up particle	R=la	T=ล่ะ falling	dict=lâ /laʔ˥˩/
+ละ	PART	(short form of ล่ะ or แล้ว)	role=follow-up particle	reg=colloquial	R=la	T=ละ high	dict=lá /laʔ˦˥/
+จ้ะ	PART	(friendly polite particle)	role=friendly particle	reg=colloquial	R=cha	T=จ้ะ falling	dict=jâ /t͡ɕaʔ˥˩/
+จ๊ะ	PART	(friendly polite particle)	role=friendly particle	reg=colloquial	R=cha	T=จ๊ะ high	dict=— 	NODICT
+ฮะ	PART	(casual form of ครับ)	role=polite particle	reg=colloquial	R=—	T=ฮะ high	dict=— 	NODICT NOROM
+ซิ	PART	(urging particle)	role=urging particle	reg=colloquial	R=si	T=ซิ high	dict=sí /siʔ˦˥/
+ซะ	PART	(urging: go ahead and …)	role=urging particle	reg=colloquial	R=sa	T=ซะ high	dict=sá /saʔ˦˥/
+เถอะ	PART	(urging: go on; let us)	role=urging particle	R=thoe	T=เถอะ low	dict=tə̀ /tʰɤʔ˨˩/
+หรอก	PART	(softens a denial)	role=softening particle	reg=colloquial	R=rok	T=หรอก low	dict=rɔ̀k /rɔk̚˨˩/
+เลย	PART	(emphasis: at all; right away; very)	role=emphasis particle	R=loei	T=เลย mid	dict=ləəi /lɤːj˧/
+น่ะ	PART	(stressing or explaining particle)	role=stress particle	reg=colloquial	R=na	T=น่ะ falling	dict=nâ /naʔ˥˩/
+แหละ	PART	(that is it; exactly)	role=confirming particle	reg=colloquial	R=lae	T=แหละ low	dict=lɛ̀ /lɛʔ˨˩/
+จึง	CONJ	so, therefore	role=result connective	R=chueng	T=จึง mid	dict=jʉng /t͡ɕɯŋ˧/
+ดังนั้น	CONJ	therefore, so	role=result connective	reg=formal	R=dang-nan	T=ดัง mid, นั้น high	dict=dang-nán /daŋ˧.nan˦˥/
+แม้	SCONJ	although; even if	role=concession connective	R=mae	T=แม้ high	dict=mɛ́ɛ /mɛː˦˥/
+แม้ว่า	SCONJ	although; even if	role=concession connective	R=mae-wa	T=แม้ high, ว่า falling	dict=mɛ́ɛ-wâa /mɛː˦˥.waː˥˩/
+เมื่อ	SCONJ	when (a point in time)	role=time connective	R=muea	T=เมื่อ falling	dict=mʉ̂ʉa /mɯa̯˥˩/
+ก่อน	ADP	before; first	role=time word	R=kon	T=ก่อน low	dict=gɔ̀ɔn /kɔːn˨˩/
+ส่วน	CONJ	as for; whereas	role=contrast connective	R=suan	T=ส่วน low	dict=sùuan /sua̯n˨˩/
+หาก	SCONJ	if	role=condition connective	reg=formal	R=hak	T=หาก low	dict=hàak /haːk̚˨˩/
+อนึ่ง	CONJ	furthermore	role=added-point connective	reg=formal	R=—	T=อ low, นึ่ง low	dict=à-nʉ̀ng /ʔa˨˩.nɯŋ˨˩/	NOROM
+ฤๅ	CONJ	or	role=or-connective	reg=literary,archaic	R=—	T=(tone not given)	dict=rʉʉ /rɯː˧/	NOROM
+ครั้น	SCONJ	when	role=time connective	reg=literary	R=khran	T=ครั้น high	dict=krán /kʰran˦˥/
+ซึ่ง	SCONJ	which, that	role=relative marker	reg=formal	R=sueng	T=ซึ่ง falling	dict=sʉ̂ng /sɯŋ˥˩/
+อัน	SCONJ	which, that	role=relative marker	reg=formal	R=an	T=อัน mid	dict=an /ʔan˧/
+สำหรับ	ADP	for; as for	role=preposition	R=—	T=(tone not given)	dict=sǎm-ràp /sam˩˩˦.rap̚˨˩/	NOROM
+กับ	ADP	with; and	role=preposition	R=kap	T=กับ low	dict=gàp /kap̚˨˩/
+ต่อ	ADP	to, toward; against	role=preposition	R=to	T=ต่อ low	dict=dtɔ̀ɔ /tɔː˨˩/
+โดย	ADP	by; by means of	role=preposition	R=doi	T=โดย mid	dict=dooi /doːj˧/
+ตาม	ADP	according to; along	role=preposition	R=tam	T=ตาม mid	dict=dtaam /taːm˧/
+บน	ADP	on, above	role=preposition	R=bon	T=บน mid	dict=bon /bon˧/
+ใต้	ADP	under, below	role=preposition	R=tai	T=ใต้ falling	dict=dtâai /taːj˥˩/
+นอก	ADP	outside	role=preposition	R=nok	T=นอก falling	dict=nɔ̂ɔk /nɔːk̚˥˩/
+ระหว่าง	ADP	between; during	role=preposition	R=—	T=(tone not given)	dict=rá-wàang /ra˦˥.waːŋ˨˩/	NOROM
+หลัง	ADP	after, behind	role=preposition	R=lang	T=หลัง rising	dict=lǎng /laŋ˩˩˦/
+แทน	ADP	instead of	role=preposition	R=thaen	T=แทน mid	dict=tɛɛn /tʰɛːn˧/
+ตั้งแต่	ADP	since, from (a time)	role=preposition	R=tang-tae	T=ตั้ง falling, แต่ low	dict=dtâng-dtɛ̀ɛ /taŋ˥˩.tɛː˨˩/
+ภายใน	ADP	within, inside	role=preposition	reg=formal	R=phai-nai	T=ภาย mid, ใน mid	dict=paai-nai /pʰaːj˧.naj˧/
+ณ	ADP	at	role=preposition	reg=formal	R=—	T=—	dict=ná /naʔ˦˥/	NOROM
+แห่ง	ADP	of	role=preposition	reg=formal	R=haeng	T=แห่ง low	dict=hɛ̀ng /hɛŋ˨˩/
+แก่	ADP	to (a person)	role=preposition	reg=formal	R=kae	T=แก่ low	dict=gɛ̀ɛ /kɛː˨˩/
+สู่	ADP	to, into	role=preposition	reg=formal	R=su	T=สู่ low	dict=sùu /suː˨˩/
+เขา	PRON	he, she, they	role=third-person pronoun	R=khao	T=เขา rising	dict=kǎo /kʰaw˩˩˦/
+มัน	PRON	it; he, she (rude)	role=third-person pronoun	R=man	T=มัน mid	dict=man /man˧/
+เธอ	PRON	she; you (to an equal)	role=pronoun	R=thoe	T=เธอ mid	dict=təə /tʰɤː˧/
+ท่าน	PRON	you, he, she (respectful)	role=respectful pronoun	reg=formal	R=than	T=ท่าน falling	dict=tâan /tʰaːn˥˩/
+ข้าพเจ้า	PRON	I (written, formal)	role=first-person pronoun	reg=formal	R=—	T=ข้าพ falling, เจ้า falling	dict=kâa-pá-jâao /kʰaː˥˩.pʰa˦˥.t͡ɕaːw˥˩/	NOROM TONE≠dict(falling,high,falling)
+ดิฉัน	PRON	I (woman, formal)	role=first-person pronoun	reg=formal	R=di-chan	T=ดิ low, ฉัน rising	dict=dì-chǎn /di˨˩.t͡ɕʰan˩˩˦/
+กระผม	PRON	I (man, very polite)	role=first-person pronoun	reg=formal	R=—	T=(tone not given)	dict=grà-pǒm /kra˨˩.pʰom˩˩˦/	NOROM
+หนู	PRON	I, you (to or from a child)	role=child-directed pronoun	reg=child-directed	R=nu	T=หนู rising	dict=nǔu /nuː˩˩˦/
+กู	PRON	I (very rude or intimate)	role=first-person pronoun	reg=slang	R=ku	T=กู mid	dict=guu /kuː˧/
+มึง	PRON	you (very rude or intimate)	role=second-person pronoun	reg=slang	R=mueng	T=มึง mid	dict=mʉng /mɯŋ˧/
+ข้า	PRON	I (old style)	role=first-person pronoun	reg=archaic	R=kha	T=ข้า falling	dict=kâa /kʰaː˥˩/
+เจ้า	PRON	you, he, she (old or literary)	role=pronoun	reg=archaic,literary	R=chao	T=เจ้า falling	dict=jâo /t͡ɕaw˥˩/
+พี่	NOUN	older sibling	role=kin term, also "you" or "I" to someone older	R=phi	T=พี่ falling	dict=pîi /pʰiː˥˩/	CLF: —
+น้อง	NOUN	younger sibling	role=kin term, also "you" or "I" to someone younger	R=nong	T=น้อง high	dict=nɔ́ɔng /nɔːŋ˦˥/	CLF: —
+ลุง	NOUN	uncle (parent's older brother); older man	role=kin term, also used for an older man	R=lung	T=ลุง mid	dict=lung /luŋ˧/	CLF: —
+ป้า	NOUN	aunt (parent's older sister); older woman	role=kin term, also used for an older woman	R=pa	T=ป้า falling	dict=bpâa /paː˥˩/	CLF: —
+น้า	NOUN	mother's younger brother or sister	role=kin term	R=na	T=น้า high	dict=náa /naː˦˥/	CLF: —
+อา	NOUN	father's younger brother or sister	role=kin term	R=a	T=อา mid	dict=aa /ʔaː˧/	CLF: —
+ยาย	NOUN	grandmother (mother's mother)	role=kin term	R=yai	T=ยาย mid	dict=yaai /jaːj˧/	CLF: —
+ปู่	NOUN	grandfather (father's father)	role=kin term	R=pu	T=ปู่ low	dict=bpùu /puː˨˩/	CLF: —
+ย่า	NOUN	grandmother (father's mother)	role=kin term	R=ya	T=ย่า falling	dict=yâa /jaː˥˩/	CLF: —
+เสด็จ	VERB	to go, to come (royal)	role=royal verb	reg=royal	R=—	T=—	dict=sà-dèt /sa˨˩.det̚˨˩/	NOROM
+พระ	NOUN	monk; Buddha image; royal or holy (prefix)	role=royal or holy prefix	reg=royal,religious	R=phra	T=พระ high	dict=prá /pʰraʔ˦˥/	CLF: Classifier: องค์ (counts royalty, deities, monks, holy images); รูป (counts monks, pictures); ท่าน (counts respected people, monks).
+ถวาย	VERB	to offer (to royalty, monks or God)	role=royal or religious verb	reg=royal,religious	R=—	T=ถ low, วาย rising	dict=tà-wǎai /tʰa˨˩.waːj˩˩˦/	NOROM
+รับสั่ง	VERB	to say, to command (royal)	role=royal verb	reg=royal	R=rap-sang	T=รับ high, สั่ง low	dict=ráp-sàng /rap̚˦˥.saŋ˨˩/
+พระราชทาน	VERB	to grant (royal)	role=royal verb	reg=royal	R=—	T=(tone not given)	dict=prá-râat-chá-taan /pʰra˦˥.raːt̚˥˩.t͡ɕʰa˦˥.tʰaːn˧/	NOROM
+อาตมา	PRON	I (a monk speaking)	role=first-person pronoun	reg=religious	R=—	T=อาต low, มา mid	dict=àat-dtà-maa /ʔaːt̚˨˩.ta˨˩.maː˧/	NOROM TONE≠dict(low,low,mid)
+โยม	PRON	you, I (a lay person with a monk)	role=pronoun	reg=religious	R=yom	T=โยม mid	dict=yoom /joːm˧/
+บ่	ADV	not (Isan)	role=negation	reg=regional-isan	R=—	T=—	dict=bɔ̀ɔ /bɔː˨˩/	NOROM
+ข้อย	PRON	I (Isan)	role=first-person pronoun	reg=regional-isan	R=khoi	T=ข้อย falling	dict=— 	NODICT
+เด้อ	PART	(Isan particle, like นะ)	role=softening particle	reg=regional-isan	R=doe	T=เด้อ falling	dict=— 	NODICT
+หยัง	PRON	what (Isan)	role=question word	reg=regional-isan	R=yang	T=หยัง rising	dict=— 	NODICT
+ไส	PRON	where (Isan)	role=question word	reg=regional-isan	R=sai	T=ไส rising	dict=sǎi /saj˩˩˦/
+หรอย	ADJ	delicious (southern)	reg=regional-south	R=roi	T=หรอย rising	dict=— 	NODICT
+แหลง	VERB	to speak (southern)	reg=regional-south	R=laeng	T=แหลง rising	dict=— 	NODICT
+กิ๋น	VERB	to eat (northern)	reg=regional-north	R=kin	T=กิ๋น rising	dict=— 	NODICT
+แอ่ว	VERB	to go out, to visit for fun (northern)	reg=regional-north	R=aeo	T=แอ่ว low	dict=— 	NODICT
+จ๊าด	ADV	very (northern)	reg=regional-north	R=chat	T=จ๊าด high	dict=jáat /t͡ɕaːt̚˦˥/
+หม่ำ	VERB	to eat (said to children)	reg=child-directed	R=mam	T=หม่ำ low	dict=— 	NODICT
+ใบ	NOUN	leaf; sheet	R=bai	T=ใบ mid	dict=bai /baj˧/	CLF: Classifier: ใบ (counts leaves, bags, cards, hats, certificates).
+ใบ	CLF	(classifier for flat or hollow things)	counts=leaves, bags, cards, hats, certificates	R=bai	T=ใบ mid	dict=bai /baj˧/
+ลูก	CLF	(classifier for round things)	counts=fruit, balls, mountains, round things	R=luk	T=ลูก falling	dict=lûuk /luːk̚˥˩/
+คัน	CLF	(classifier for vehicles, umbrellas)	counts=cars, buses, bicycles, umbrellas	R=khan	T=คัน mid	dict=kan /kʰan˧/
+ห้อง	CLF	(classifier for rooms)	counts=rooms	R=hong	T=ห้อง falling	dict=hɔ̂ng /hɔŋ˥˩/
+แผ่น	NOUN	sheet, flat piece	R=phaen	T=แผ่น low	dict=pɛ̀n /pʰɛn˨˩/	CLF: —
+แผ่น	CLF	(classifier for flat sheets)	counts=paper, boards, discs, slices	R=phaen	T=แผ่น low	dict=pɛ̀n /pʰɛn˨˩/
+เส้น	NOUN	line; strand; thread	R=sen	T=เส้น falling	dict=sên /sen˥˩/	CLF: —
+เส้น	CLF	(classifier for lines and strands)	counts=roads, hairs, noodles, ropes	R=sen	T=เส้น falling	dict=sên /sen˥˩/
+ดอก	NOUN	flower, blossom	R=dok	T=ดอก low	dict=dɔ̀ɔk /dɔːk̚˨˩/	CLF: Classifier: ดอก (counts flowers).
+ดอก	CLF	(classifier for flowers)	counts=flowers	R=dok	T=ดอก low	dict=dɔ̀ɔk /dɔːk̚˨˩/
+ต้น	NOUN	trunk; plant; beginning	R=ton	T=ต้น falling	dict=dtôn /ton˥˩/	CLF: Classifier: ต้น (counts trees, plants).
+ต้น	CLF	(classifier for plants)	counts=trees, plants	R=ton	T=ต้น falling	dict=dtôn /ton˥˩/
+ผืน	CLF	(classifier for spread-out things)	counts=cloth, mats, flags, plots of land	R=phuen	T=ผืน rising	dict=pʉ̌ʉn /pʰɯːn˩˩˦/
+คู่	NOUN	pair; partner	R=khu	T=คู่ falling	dict=kûu /kʰuː˥˩/	CLF: Classifier: คู่ (counts pairs).
+คู่	CLF	(classifier for pairs)	counts=pairs	R=khu	T=คู่ falling	dict=kûu /kʰuː˥˩/
+ชิ้น	NOUN	piece	R=chin	T=ชิ้น high	dict=chín /t͡ɕʰin˦˥/	CLF: Classifier: ชิ้น (counts pieces, slices, works).
+ชิ้น	CLF	(classifier for pieces)	counts=pieces, slices, works	R=chin	T=ชิ้น high	dict=chín /t͡ɕʰin˦˥/
+ก้อน	NOUN	lump	R=kon	T=ก้อน falling	dict=gɔ̂ɔn /kɔːn˥˩/	CLF: Classifier: ก้อน (counts stones, lumps, clouds).
+ก้อน	CLF	(classifier for lumps)	counts=stones, lumps, clouds	R=kon	T=ก้อน falling	dict=gɔ̂ɔn /kɔːn˥˩/
+เม็ด	NOUN	seed, grain	R=met	T=เม็ด high	dict=mét /met̚˦˥/	CLF: Classifier: เม็ด (counts seeds, grains, pills, beads).
+เม็ด	CLF	(classifier for small round things)	counts=seeds, grains, pills, beads	R=met	T=เม็ด high	dict=mét /met̚˦˥/
+ขวด	NOUN	bottle	R=khuat	T=ขวด low	dict=kùuat /kʰua̯t̚˨˩/	CLF: Classifier: ขวด (counts bottles, and what is in them).
+ขวด	CLF	(classifier for bottles)	counts=bottles, and what is in them	R=khuat	T=ขวด low	dict=kùuat /kʰua̯t̚˨˩/
+แก้ว	NOUN	glass (for drinking)	R=kaeo	T=แก้ว falling	dict=gɛ̂ɛo /kɛːw˥˩/	CLF: Classifier: แก้ว (counts glasses of drink).
+แก้ว	CLF	(classifier for glasses of drink)	counts=glasses of drink	R=kaeo	T=แก้ว falling	dict=gɛ̂ɛo /kɛːw˥˩/
+ถ้วย	NOUN	cup	R=thuai	T=ถ้วย falling	dict=tûai /tʰua̯j˥˩/	CLF: Classifier: ถ้วย (counts cups, small bowls).
+ถ้วย	CLF	(classifier for cups)	counts=cups, small bowls	R=thuai	T=ถ้วย falling	dict=tûai /tʰua̯j˥˩/
+จาน	NOUN	plate, dish	R=chan	T=จาน mid	dict=jaan /t͡ɕaːn˧/	CLF: Classifier: จาน (counts plates of food).
+จาน	CLF	(classifier for plates)	counts=plates of food	R=chan	T=จาน mid	dict=jaan /t͡ɕaːn˧/
+ชาม	NOUN	bowl	R=cham	T=ชาม mid	dict=chaam /t͡ɕʰaːm˧/	CLF: Classifier: ชาม (counts bowls of food).
+ชาม	CLF	(classifier for bowls)	counts=bowls of food	R=cham	T=ชาม mid	dict=chaam /t͡ɕʰaːm˧/
+ฉบับ	NOUN	copy; edition	R=—	T=ฉ low, บับ low	dict=chà-bàp /t͡ɕʰa˨˩.bap̚˨˩/	NOROM	CLF: —
+ฉบับ	CLF	(classifier for papers)	counts=newspapers, letters, documents	R=—	T=ฉ low, บับ low	dict=chà-bàp /t͡ɕʰa˨˩.bap̚˨˩/	NOROM
+หน	CLF	(classifier for times)	counts=times, occasions	R=hon	T=หน rising	dict=hǒn /hon˩˩˦/
+รูป	CLF	(classifier for monks, pictures)	counts=monks, pictures	R=rup	T=รูป falling	dict=rûup /ruːp̚˥˩/
+ท่าน	CLF	(classifier for respected people)	counts=respected people, monks	R=than	T=ท่าน falling	dict=tâan /tʰaːn˥˩/
+สาย	NOUN	line, string	R=sai	T=สาย rising	dict=sǎai /saːj˩˩˦/	CLF: Classifier: พวง (counts bunches, strings, clusters).
+สาย	CLF	(classifier for lines)	counts=roads, rivers, bus routes, ropes	R=sai	T=สาย rising	dict=sǎai /saːj˩˩˦/
+ด้าม	CLF	(classifier for things with a handle)	counts=pens, pencils, tools with a handle	R=dam	T=ด้าม falling	dict=dâam /daːm˥˩/
+เครื่อง	NOUN	machine; equipment	R=khrueang	T=เครื่อง falling	dict=krʉ̂ʉang /kʰrɯa̯ŋ˥˩/	CLF: Classifier: เครื่อง (counts machines, devices).
+เครื่อง	CLF	(classifier for machines)	counts=machines, devices	R=khrueang	T=เครื่อง falling	dict=krʉ̂ʉang /kʰrɯa̯ŋ˥˩/
+ลำ	CLF	(classifier for boats, aircraft)	counts=boats, aircraft	R=lam	T=ลำ mid	dict=lam /lam˧/
+ขบวน	NOUN	procession	R=—	T=ข low, บวน mid	dict=kà-buuan /kʰa˨˩.bua̯n˧/	NOROM	CLF: Classifier: ขบวน (counts processions, trains).
+ขบวน	CLF	(classifier for processions, trains)	counts=processions, trains	R=—	T=ข low, บวน mid	dict=kà-buuan /kʰa˨˩.bua̯n˧/	NOROM
+ซอง	NOUN	envelope	R=song	T=ซอง mid	dict=sɔɔng /sɔːŋ˧/	CLF: Classifier: ซอง (counts envelopes, packets).
+ซอง	CLF	(classifier for envelopes)	counts=envelopes, packets	R=song	T=ซอง mid	dict=sɔɔng /sɔːŋ˧/
+กล่อง	NOUN	box	R=klong	T=กล่อง low	dict=glɔ̀ng /klɔŋ˨˩/	CLF: Classifier: กล่อง (counts boxes).
+กล่อง	CLF	(classifier for boxes)	counts=boxes	R=klong	T=กล่อง low	dict=glɔ̀ng /klɔŋ˨˩/
+ถุง	NOUN	bag	R=thung	T=ถุง rising	dict=tǔng /tʰuŋ˩˩˦/	CLF: Classifier: ใบ (counts leaves, bags, cards, hats, certificates); ถุง (counts bags).
+ถุง	CLF	(classifier for bags)	counts=bags	R=thung	T=ถุง rising	dict=tǔng /tʰuŋ˩˩˦/
+ช่อ	CLF	(classifier for bunches of flowers)	counts=bouquets, bunches of flowers	R=cho	T=ช่อ falling	dict=chɔ̂ɔ /t͡ɕʰɔː˥˩/
+พวง	CLF	(classifier for bunches)	counts=bunches, strings, clusters	R=phuang	T=พวง mid	dict=puuang /pʰua̯ŋ˧/
+ฝูง	CLF	(classifier for herds, flocks)	counts=herds, flocks, crowds	R=fung	T=ฝูง rising	dict=fǔung /fuːŋ˩˩˦/
+อย่าง	NOUN	kind, way	R=yang	T=อย่าง low	dict=yàang /jaːŋ˨˩/	CLF: Classifier: อย่าง (counts kinds, types of things).
+อย่าง	CLF	(classifier for kinds)	counts=kinds, types of things	R=yang	T=อย่าง low	dict=yàang /jaːŋ˨˩/
+แห่ง	CLF	(classifier for places)	counts=places	R=haeng	T=แห่ง low	dict=hɛ̀ng /hɛŋ˨˩/
+ชุด	NOUN	set; outfit	R=chut	T=ชุด high	dict=chút /t͡ɕʰut̚˦˥/	CLF: Classifier: ชุด (counts sets, outfits).
+ชุด	CLF	(classifier for sets)	counts=sets, outfits	R=chut	T=ชุด high	dict=chút /t͡ɕʰut̚˦˥/
+บท	NOUN	chapter; lesson	R=—	T=บท low	dict=bòt /bot̚˨˩/	NOROM	CLF: Classifier: บท (counts chapters, lessons, poems).
+บท	CLF	(classifier for chapters, lessons)	counts=chapters, lessons, poems	R=—	T=บท low	dict=bòt /bot̚˨˩/	NOROM
+ข้อ	NOUN	item; clause	R=kho	T=ข้อ falling	dict=kɔ̂ɔ /kʰɔː˥˩/	CLF: Classifier: ข้อ (counts items, points, questions).
+ข้อ	CLF	(classifier for items)	counts=items, points, questions	R=kho	T=ข้อ falling	dict=kɔ̂ɔ /kʰɔː˥˩/
+หน้า	CLF	(classifier for pages)	counts=pages	R=na	T=หน้า falling	dict=nâa /naː˥˩/
+คำ	CLF	(classifier for words)	counts=words; mouthfuls	R=kham	T=คำ mid	dict=kam /kʰam˧/
+เก็บ	VERB	to pick up; to collect; to put away; to keep	R=kep	T=เก็บ low	dict=gèp /kep̚˨˩/
+ไว้	PART	(after a verb: set aside, in place, for later; e.g. เก็บไว้ "keep it")	role=resultative marker (keep, for later)	R=wai	T=ไว้ high	dict=wái /waj˦˥/
+ไว้	VERB	to keep; to leave (as it is); to let (hair) grow	R=wai	T=ไว้ high	dict=wái /waj˦˥/
+ช้อน	NOUN	spoon	R=chon	T=ช้อน high	dict=chɔ́ɔn /t͡ɕʰɔːn˦˥/	CLF: —
+ช้อน	VERB	to scoop up	R=chon	T=ช้อน high	dict=chɔ́ɔn /t͡ɕʰɔːn˦˥/
+เหนือ	ADP	above, over	R=nuea	T=เหนือ rising	dict=nʉ̌ʉa /nɯa̯˩˩˦/
+เหนือ	NOUN	north	R=nuea	T=เหนือ rising	dict=nʉ̌ʉa /nɯa̯˩˩˦/	CLF: —
+ตกลง	VERB	to agree; to decide	R=—	T=(tone not given)	dict=dtòk-long /tok̚˨˩.loŋ˧/	NOROM
+เลิก	VERB	to stop, quit; to end (work, school)	R=loek	T=เลิก falling	dict=lə̂ək /lɤːk̚˥˩/
+ตั้ง	VERB	to set up, put in place; to give (a name); to start	R=tang	T=ตั้ง falling	dict=dtâng /taŋ˥˩/
+สถานี	NOUN	station (train, bus, radio)	R=—	T=ส low, ถา rising, นี mid	dict=sà-tǎa-nii /sa˨˩.tʰaː˩˩˦.niː˧/	NOROM	CLF: —
+รถไฟ	NOUN	train	R=rot-fai	T=รถ high, ไฟ mid	dict=rót-fai /rot̚˦˥.faj˧/	CLF: Classifier: ขบวน (counts processions, trains).
+ค่ำ	NOUN	evening, nightfall	R=kham	T=ค่ำ falling	dict=kâm /kʰam˥˩/	CLF: —
+ดัง	ADJ	loud; (of a sound) to ring out; famous	R=dang	T=ดัง mid	dict=dang /daŋ˧/
+นาฬิกา	NOUN	clock, watch; o'clock	R=na-li-ka	T=นา mid, ฬิ high, กา mid	dict=naa-lí-gaa /naː˧.li˦˥.kaː˧/	CLF: —
+ใส่	VERB	to put in or on; to wear	R=sai	T=ใส่ low	dict=sài /saj˨˩/
+ถ่าย	VERB	to take (a photo); to copy; to transfer	R=thai	T=ถ่าย low	dict=tàai /tʰaːj˨˩/
+ของขวัญ	NOUN	gift, present	R=—	T=(tone not given)	dict=kɔ̌ɔng-kwǎn /kʰɔːŋ˩˩˦.kʰwan˩˩˦/	NOROM	CLF: —
+การบ้าน	NOUN	homework	R=—	T=การ mid, บ้าน falling	dict=gaan-bâan /kaːn˧.baːn˥˩/	NOROM	CLF: —
+ซอย	NOUN	soi (a side street)	R=soi	T=ซอย mid	dict=sɔɔi /sɔːj˧/	CLF: —
+ซอย	VERB	to chop, mince	R=soi	T=ซอย mid	dict=sɔɔi /sɔːj˧/
+เกาะ	NOUN	island	R=ko	T=เกาะ low	dict=gɔ̀ /kɔʔ˨˩/	CLF: —
+เกาะ	VERB	to cling to; to perch on; to grip	R=ko	T=เกาะ low	dict=gɔ̀ /kɔʔ˨˩/
+ปู	NOUN	crab	R=pu	T=ปู mid	dict=bpuu /puː˧/	CLF: —
+ปู	VERB	to spread out (a mat, a cloth); to lay (a floor)	R=pu	T=ปู mid	dict=bpuu /puː˧/
+จันทร์	NOUN	Monday (in วันจันทร์); the moon	R=—	T=จันทร์ mid	dict=jan /t͡ɕan˧/	NOROM	CLF: —
+อังคาร	NOUN	Tuesday (in วันอังคาร); Mars	R=—	T=อัง mid, คาร mid	dict=ang-kaan /ʔaŋ˧.kʰaːn˧/	NOROM	CLF: —
+พุธ	NOUN	Wednesday (in วันพุธ); Mercury	R=—	T=พุธ high	dict=pút /pʰut̚˦˥/	NOROM	CLF: —
+พฤหัสบดี	NOUN	Thursday (in วันพฤหัสบดี); Jupiter	R=—	T=(tone not given)	dict=prʉ́-hàt-sà-bɔɔ-dii /pʰrɯ˦˥.hat̚˨˩.sa˨˩.bɔː˧.diː˧/	NOROM	CLF: —
+ศุกร์	NOUN	Friday (in วันศุกร์); Venus	R=—	T=ศุกร์ low	dict=sùk /suk̚˨˩/	NOROM	CLF: —
+เสาร์	NOUN	Saturday (in วันเสาร์); Saturn	R=—	T=เสาร์ rising	dict=sǎo /saw˩˩˦/	NOROM	CLF: —
+ดาวิด	PROPN	David	R=—	T=ดา mid, วิด high	dict=— 	NODICT NOROM
+โมเสส	PROPN	Moses	R=—	T=โม mid, เสส low	dict=— 	NODICT NOROM
+ซาอูล	PROPN	Saul	cut=ซา+อูล	R=—	T=—	dict=— 	SPLIT NODICT
+ยาโคบ	PROPN	Jacob	cut=ยา+โคบ	R=—	T=—	dict=— 	SPLIT NODICT
+เลวี	PROPN	Levi	R=—	T=เล mid, วี mid	dict=— 	NODICT NOROM
+อาโรน	PROPN	Aaron	cut=อา+โรน	R=—	T=—	dict=— 	SPLIT NODICT
+โยเซฟ	PROPN	Joseph	R=—	T=โย mid, เซฟ falling	dict=— 	NODICT NOROM
+โซโลมอน	PROPN	Solomon	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+เปาโล	PROPN	Paul	R=—	T=เปา mid, โล mid	dict=— 	NODICT NOROM
+โยชูวา	PROPN	Joshua	R=—	T=โย mid, ชู mid, วา mid	dict=— 	NODICT NOROM
+เปโตร	PROPN	Peter	R=—	T=เป mid, โตร mid	dict=— 	NODICT NOROM
+ยอห์น	PROPN	John	R=yon	T=ยอห์น mid	dict=— 	NODICT
+โยอาบ	PROPN	Joab	R=yo-ap	T=โย mid, อาบ low	dict=— 	NODICT
+เยเรมีย์	PROPN	Jeremiah	cut=เยเร+มีย์	R=—	T=—	dict=— 	SPLIT NODICT
+อิสอัค	PROPN	Isaac	cut=อิส+อัค	R=—	T=—	dict=— 	SPLIT NODICT
+ซามูเอล	PROPN	Samuel	cut=ซา+มู+เอล	R=—	T=—	dict=— 	SPLIT NODICT
+เฮเซคียาห์	PROPN	Hezekiah	cut=เฮ+เซ+คี+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เอลียาห์	PROPN	Elijah	cut=เอลี+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+โยนาธาน	PROPN	Jonathan	cut=โย+นา+ธาน	R=—	T=—	dict=— 	SPLIT NODICT
+เอลีชา	PROPN	Elisha	R=—	T=เอ mid, ลี mid, ชา mid	dict=— 	NODICT NOROM
+อาหับ	PROPN	Ahab	cut=อา+หับ	R=—	T=—	dict=— 	SPLIT NODICT
+อับซาโลม	PROPN	Absalom	cut=อับ+ซา+โลม	R=—	T=—	dict=— 	SPLIT NODICT
+เอซาว	PROPN	Esau	cut=เอ+ซาว	R=—	T=—	dict=— 	SPLIT NODICT
+เยโรโบอัม	PROPN	Jeroboam	cut=เย+โร+โบ+อัม	R=—	T=—	dict=— 	SPLIT NODICT
+เนบูคัดเนสซาร์	PROPN	Nebuchadnezzar	cut=เนบู+คัด+เนส+ซาร์	R=—	T=—	dict=— 	SPLIT NODICT
+เยโฮชาฟัท	PROPN	Jehoshaphat	cut=เย+โฮ+ชา+ฟัท	R=—	T=—	dict=— 	SPLIT NODICT
+เยฮู	PROPN	Jehu	R=—	T=เย mid, ฮู mid	dict=— 	NODICT NOROM
+โยสิยาห์	PROPN	Josiah	cut=โย+สิ+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+แซมสัน	PROPN	Samson	cut=แซม+สัน	R=—	T=—	dict=— 	SPLIT NODICT
+ดาเนียล	PROPN	Daniel	cut=ดา+เนีย+ล	R=—	T=—	dict=— 	SPLIT NODICT
+เอเลอาซาร์	PROPN	Eleazar	R=—	T=เอ mid, เล mid, อา mid, ซาร์ mid	dict=— 	NODICT NOROM
+ซีโมน	PROPN	Simon	cut=ซี+โมน	R=—	T=—	dict=— 	SPLIT NODICT
+บาลาอัม	PROPN	Balaam	cut=บา+ลา+อัม	R=—	T=—	dict=— 	SPLIT NODICT
+อาบีเมเลค	PROPN	Abimelech	cut=อาบี+เม+เลค	R=—	T=—	dict=— 	SPLIT NODICT
+มารีย์	PROPN	Mary	cut=มา+รีย์	R=—	T=—	dict=— 	SPLIT NODICT
+อับราม	PROPN	Abram	cut=อับ+ราม	R=—	T=—	dict=— 	SPLIT NODICT
+เศเดคียาห์	PROPN	Zedekiah	cut=เศเด+คี+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+ปีลาต	PROPN	Pilate	cut=ปี+ลาต	R=—	T=—	dict=— 	SPLIT NODICT
+โมรเดคัย	PROPN	Mordecai	cut=โม+รเดคัย	R=—	T=—	dict=— 	SPLIT NODICT
+เรโหโบอัม	PROPN	Rehoboam	cut=เรโห+โบ+อัม	R=—	T=—	dict=— 	SPLIT NODICT
+เฮโรด	PROPN	Herod	cut=เฮ+โรด	R=—	T=—	dict=— 	SPLIT NODICT
+ลาบัน	PROPN	Laban	cut=ลา+บัน	R=—	T=—	dict=— 	SPLIT NODICT
+โยอาช	PROPN	Joash	cut=โย+อาช	R=—	T=—	dict=— 	SPLIT NODICT
+กิเดโอน	PROPN	Gideon	cut=กิเด+โอน	R=—	T=—	dict=— 	SPLIT NODICT
+เศคาริยาห์	PROPN	Zechariah	cut=เศ+คา+ริ+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+โนอาห์	PROPN	Noah	cut=โน+อาห์	R=—	T=—	dict=— 	SPLIT NODICT
+อิชมาเอล	PROPN	Ishmael	cut=อิ+ชมา+เอล	R=—	T=—	dict=— 	SPLIT NODICT
+อับเนอร์	PROPN	Abner	cut=อับ+เนอ+ร์	R=—	T=—	dict=— 	SPLIT NODICT
+เยโฮยาดา	PROPN	Jehoiada	cut=เย+โฮ+ยาดา	R=—	T=—	dict=— 	SPLIT NODICT
+อิสยาห์	PROPN	Isaiah	cut=อิส+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+ศาโดก	PROPN	Zadok	cut=ศา+โดก	R=—	T=—	dict=— 	SPLIT NODICT
+ฮามาน	PROPN	Haman	R=—	T=ฮา mid, มาน mid	dict=— 	NODICT NOROM
+อาหัสยาห์	PROPN	Ahaziah	cut=อา+หัส+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+อามาซิยาห์	PROPN	Amaziah	cut=อา+มา+ซิ+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+อาหัส	PROPN	Ahaz	cut=อา+หัส	R=—	T=—	dict=— 	SPLIT NODICT
+อาซาริยาห์	PROPN	Azariah	cut=อา+ซา+ริ+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เอสเธอร์	PROPN	Esther	R=—	T=เอส low, เธอร์ mid	dict=— 	NODICT NOROM
+เจสซี	PROPN	Jesse	cut=เจส+ซี	R=—	T=—	dict=— 	SPLIT NODICT
+ราเชล	PROPN	Rachel	cut=รา+เชล	R=—	T=—	dict=— 	SPLIT NODICT
+ชิเมอี	PROPN	Shimei	R=—	T=ชิ high, เม mid, อี mid	dict=— 	NODICT NOROM
+ยูดาส	PROPN	Judas	cut=ยู+ดาส	R=—	T=—	dict=— 	SPLIT NODICT
+เอลี	PROPN	Eli	R=—	T=เอ mid, ลี mid	dict=— 	NODICT NOROM
+คาเลบ	PROPN	Caleb	cut=คา+เลบ	R=—	T=—	dict=— 	SPLIT NODICT
+นาธัน	PROPN	Nathan	cut=นา+ธัน	R=—	T=—	dict=— 	SPLIT NODICT
+เบไนยาห์	PROPN	Benaiah	cut=เบ+ไน+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+โลท	PROPN	Lot	R=—	T=โลท falling	dict=— 	NODICT NOROM
+ยากอบ	PROPN	James	cut=ยาก+อบ	R=—	T=—	dict=— 	SPLIT NODICT
+บาลาค	PROPN	Balak	cut=บา+ลาค	R=—	T=—	dict=— 	SPLIT NODICT
+ซาราห์	PROPN	Sarah	cut=ซา+ราห์	R=—	T=—	dict=— 	SPLIT NODICT
+เยโฮยาคิม	PROPN	Jehoiakim	cut=เย+โฮ+ยาคิ+ม	R=—	T=—	dict=— 	SPLIT NODICT
+เยโฮรัม	PROPN	Jehoram	R=—	T=เย mid, โฮ mid, รัม mid	dict=— 	NODICT NOROM
+อุรียาห์	PROPN	Uriah	cut=อุ+รี+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+อุสซียาห์	PROPN	Uzziah	cut=อุส+ซี+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+บารนาบัส	PROPN	Barnabas	cut=บา+รนา+บัส	R=—	T=—	dict=— 	SPLIT NODICT
+เซาโล	PROPN	Saul (Paul's other name)	cut=เซา+โล	R=—	T=—	dict=— 	SPLIT NODICT
+เชไมอาห์	PROPN	Shemaiah	cut=เชไม+อาห์	R=—	T=—	dict=— 	SPLIT NODICT
+โยนาห์	PROPN	Jonah	cut=โย+นาห์	R=—	T=—	dict=— 	SPLIT NODICT
+ฟีลิป	PROPN	Philip	R=—	T=ฟี mid, ลิป high	dict=— 	NODICT NOROM
+มีคาห์	PROPN	Micah	cut=มี+คาห์	R=—	T=—	dict=— 	SPLIT NODICT
+โบอาส	PROPN	Boaz	cut=โบ+อาส	R=—	T=—	dict=— 	SPLIT NODICT
+เบนฮาดัด	PROPN	Ben-hadad	R=—	T=เบน mid, ฮา mid, ดัด low	dict=— 	NODICT NOROM
+เลอาห์	PROPN	Leah	cut=เลอ+าห์	R=—	T=—	dict=— 	SPLIT NODICT
+เรเบคาห์	PROPN	Rebekah	cut=เรเบ+คาห์	R=—	T=—	dict=— 	SPLIT NODICT
+โยธาม	PROPN	Jotham	cut=โยธา+ม	R=—	T=—	dict=— 	SPLIT NODICT
+อาบียาห์	PROPN	Abijah	cut=อาบี+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+อาสาฟ	PROPN	Asaph	cut=อา+สาฟ	R=—	T=—	dict=— 	SPLIT NODICT
+นาโอมี	PROPN	Naomi	cut=นา+โอ+มี	R=—	T=—	dict=— 	SPLIT NODICT
+โยรัม	PROPN	Joram	R=yo-ram	T=โย mid, รัม mid	dict=— 	NODICT
+ฮิลคียาห์	PROPN	Hilkiah	cut=ฮิ+ล+คี+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+ทามาร์	PROPN	Tamar	cut=ทา+มาร์	R=—	T=—	dict=— 	SPLIT NODICT
+เกดาลิยาห์	PROPN	Gedaliah	cut=เก+ดา+ลิ+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เอสรา	PROPN	Ezra	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+อาบียาธาร์	PROPN	Abiathar	cut=อาบี+ยา+ธาร์	R=—	T=—	dict=— 	SPLIT NODICT
+มีคายาห์	PROPN	Micaiah	cut=มี+คา+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+ชาฟาน	PROPN	Shaphan	cut=ชา+ฟาน	R=—	T=—	dict=— 	SPLIT NODICT
+อาโดนียาห์	PROPN	Adonijah	cut=อา+โด+นี+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+บาอาชา	PROPN	Baasha	cut=บา+อาชา	R=—	T=—	dict=— 	SPLIT NODICT
+เยโฮอาช	PROPN	Jehoash	cut=เย+โฮ+อาช	R=—	T=—	dict=— 	SPLIT NODICT
+เซอร์ซีส	PROPN	Xerxes	cut=เซ+อร์+ซีส	R=—	T=—	dict=— 	SPLIT NODICT
+เยโฮยาคีน	PROPN	Jehoiachin	cut=เย+โฮ+ยา+คีน	R=—	T=—	dict=— 	SPLIT NODICT
+ทิโมธี	PROPN	Timothy	cut=ทิ+โมธี	R=—	T=—	dict=— 	SPLIT NODICT
+รูธ	PROPN	Ruth	R=—	T=รูธ falling	dict=— 	NODICT NOROM
+บารุค	PROPN	Baruch	cut=บา+รุค	R=—	T=—	dict=— 	SPLIT NODICT
+เอลคานาห์	PROPN	Elkanah	cut=เอ+ล+คา+นาห์	R=—	T=—	dict=— 	SPLIT NODICT
+ดาริอัส	PROPN	Darius	cut=ดา+ริ+อัส	R=—	T=—	dict=— 	SPLIT NODICT
+นาอามาน	PROPN	Naaman	cut=นา+อา+มาน	R=—	T=—	dict=— 	SPLIT NODICT
+ฟีเนหัส	PROPN	Phinehas	cut=ฟีเน+หัส	R=—	T=—	dict=— 	SPLIT NODICT
+อาบีชัย	PROPN	Abishai	cut=อาบี+ชัย	R=—	T=—	dict=— 	SPLIT NODICT
+เศรุยาห์	PROPN	Zeruiah	cut=เศ+รุ+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+ฮาซาเอล	PROPN	Hazael	cut=ฮา+ซา+เอล	R=—	T=—	dict=— 	SPLIT NODICT
+เนบัท	PROPN	Nebat	R=—	T=เน mid, บัท low	dict=— 	NODICT NOROM
+นาโบท	PROPN	Naboth	cut=นา+โบท	R=—	T=—	dict=— 	SPLIT NODICT
+เยโฮอาหาส	PROPN	Jehoahaz	cut=เย+โฮ+อา+หาส	R=—	T=—	dict=— 	SPLIT NODICT
+โยฮานัน	PROPN	Johanan	cut=โย+ฮา+นัน	R=—	T=—	dict=— 	SPLIT NODICT
+เศรุบบาเบล	PROPN	Zerubbabel	cut=เศ+รุบ+บา+เบล	R=—	T=—	dict=— 	SPLIT NODICT
+เยฟธาห์	PROPN	Jephthah	R=—	T=เยฟ falling, ธาห์ mid	dict=— 	NODICT NOROM
+ฮานันยาห์	PROPN	Hananiah	cut=ฮา+นัน+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+มาอาเสอาห์	PROPN	Maaseiah	cut=มา+อา+เส+อาห์	R=—	T=—	dict=— 	SPLIT NODICT
+ฮีราม	PROPN	Hiram	R=—	T=ฮี mid, ราม mid	dict=— 	NODICT NOROM
+ฮาดัดเอเซอร์	PROPN	Hadadezer	R=—	T=ฮา mid, ดัด low, เอ mid, เซอร์ mid	dict=— 	NODICT NOROM
+สิลาส	PROPN	Silas	cut=สิ+ลาส	R=—	T=—	dict=— 	SPLIT NODICT
+ฮาการ์	PROPN	Hagar	cut=ฮา+การ์	R=—	T=—	dict=— 	SPLIT NODICT
+ศิมรี	PROPN	Zimri	cut=ศิ+มรี	R=—	T=—	dict=— 	SPLIT NODICT
+โยเอล	PROPN	Joel	cut=โย+เอล	R=—	T=—	dict=— 	SPLIT NODICT
+อาหิยาห์	PROPN	Ahijah	cut=อา+หิ+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+นาบาล	PROPN	Nabal	cut=นา+บาล	R=—	T=—	dict=— 	SPLIT NODICT
+ไซรัส	PROPN	Cyrus	cut=ไซ+รัส	R=—	T=—	dict=— 	SPLIT NODICT
+คาอิน	PROPN	Cain	cut=คา+อิน	R=—	T=—	dict=— 	SPLIT NODICT
+เปเรศ	PROPN	Perez	R=—	T=เป mid, เรศ falling	dict=— 	NODICT NOROM
+นาดับ	PROPN	Nadab	cut=นา+ดับ	R=—	T=—	dict=— 	SPLIT NODICT
+เอลีอับ	PROPN	Eliab	R=—	T=เอ mid, ลี mid, อับ low	dict=— 	NODICT NOROM
+เมชุลลาม	PROPN	Meshullam	R=—	T=เม mid, ชุล mid, ลาม mid	dict=— 	NODICT NOROM
+ชัลลูม	PROPN	Shallum	R=—	T=ชัล mid, ลูม mid	dict=— 	NODICT NOROM
+เศราห์	PROPN	Zerah	cut=เศ+ราห์	R=—	T=—	dict=— 	SPLIT NODICT
+เมรารี	PROPN	Merari	R=—	T=เม mid, รา mid, รี mid	dict=— 	NODICT NOROM
+เกอร์โชน	PROPN	Gershon	cut=เกอร์+โชน	R=—	T=—	dict=— 	SPLIT NODICT
+โคฮาท	PROPN	Kohath	cut=โค+ฮาท	R=—	T=—	dict=— 	SPLIT NODICT
+โคราห์	PROPN	Korah	cut=โค+ราห์	R=—	T=—	dict=— 	SPLIT NODICT
+เอเสเคียล	PROPN	Ezekiel	cut=เอ+เส+เคี+ยล	R=—	T=—	dict=— 	SPLIT NODICT
+เยชูอา	PROPN	Jeshua	cut=เย+ชู+อา	R=—	T=—	dict=— 	SPLIT NODICT
+มาคีร์	PROPN	Machir	cut=มา+คีร์	R=—	T=—	dict=— 	SPLIT NODICT
+อัมโนน	PROPN	Amnon	cut=อัม+โนน	R=—	T=—	dict=— 	SPLIT NODICT
+บาอัล	PROPN	Baal	cut=บา+อัล	R=—	T=—	dict=— 	SPLIT NODICT
+พระบาอัล	PROPN	Baal (the god)	cut=พระ+บา+อัล	R=—	T=—	dict=— 	SPLIT NODICT
+อาเชราห์	PROPN	Asherah	cut=อา+เชรา+ห์	R=—	T=—	dict=— 	SPLIT NODICT
+มาอาคาห์	PROPN	Maacah	cut=มา+อา+คาห์	R=—	T=—	dict=— 	SPLIT NODICT
+โอก	PROPN	Og	R=ok	T=โอก low	dict=— 	NODICT
+สิโหน	PROPN	Sihon	cut=สิ+โหน	R=—	T=—	dict=— 	SPLIT NODICT
+พระคริสต์	PROPN	Christ	cut=พระ+คริสต์	R=—	T=—	dict=— 	SPLIT NODICT
+พระเมสสิยาห์	PROPN	Messiah	cut=พระ+เม+ส+สิ+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เยเซเบล	PROPN	Jezebel	cut=เย+เซ+เบล	R=—	T=—	dict=— 	SPLIT NODICT
+ฮันนาห์	PROPN	Hannah	cut=ฮัน+นาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เดโบราห์	PROPN	Deborah	cut=เด+โบ+ราห์	R=—	T=—	dict=— 	SPLIT NODICT
+โธมัส	PROPN	Thomas	R=—	T=โธ mid, มัส high	dict=— 	NODICT NOROM
+โทบียาห์	PROPN	Tobiah	cut=โท+บี+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+ชัดรัค	PROPN	Shadrach	cut=ชัด+รัค	R=—	T=—	dict=— 	SPLIT NODICT
+อาโมศ	PROPN	Amos	cut=อา+โมศ	R=—	T=—	dict=— 	SPLIT NODICT
+ฮานานี	PROPN	Hanani	R=—	T=ฮา mid, นา mid, นี mid	dict=— 	NODICT NOROM
+เมเชค	PROPN	Meshech	cut=เม+เชค	R=—	T=—	dict=— 	SPLIT NODICT
+มาห์ลี	PROPN	Mahli	R=—	T=มาห์ mid, ลี mid	dict=— 	NODICT NOROM
+ฮาชาบิยาห์	PROPN	Hashabiah	cut=ฮา+ชา+บิ+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+โอโฮลาห์	PROPN	Oholah	cut=โอ+โฮ+ลาห์	R=—	T=—	dict=— 	SPLIT NODICT
+โอโฮลีบามาห์	PROPN	Oholibamah	cut=โอ+โฮ+ลี+บา+มาห์	R=—	T=—	dict=— 	SPLIT NODICT
+โปทิฟาร์	PROPN	Potiphar	cut=โป+ทิฟาร์	R=—	T=—	dict=— 	SPLIT NODICT
+เนบาโยท	PROPN	Nebaioth	cut=เน+บา+โยท	R=—	T=—	dict=— 	SPLIT NODICT
+เอลีมาส	PROPN	Elymas	R=—	T=เอ mid, ลี mid, มาส falling	dict=— 	NODICT NOROM
+อาราวนาห์	PROPN	Araunah	cut=อา+รา+วนา+ห์	R=—	T=—	dict=— 	SPLIT NODICT
+บิลฮาห์	PROPN	Bilhah	cut=บิล+ฮาห์	R=—	T=—	dict=— 	SPLIT NODICT
+ศิลปาห์	PROPN	Zilpah	cut=ศิลป+าห์	R=—	T=—	dict=— 	SPLIT NODICT
+เนบูซาระดาน	PROPN	Nebuzaradan	cut=เนบู+ซา+ระ+ดาน	R=—	T=—	dict=— 	SPLIT NODICT
+อารทาเซอร์ซีส	PROPN	Artaxerxes	cut=อาร+ทา+เซ+อร์+ซีส	R=—	T=—	dict=— 	SPLIT NODICT
+อาบีเอเซอร์	PROPN	Abiezer	cut=อาบี+เอ+เซอร์	R=—	T=—	dict=— 	SPLIT NODICT
+ชิมชัย	PROPN	Shimshai	cut=ชิม+ชัย	R=—	T=—	dict=— 	SPLIT NODICT
+เนอร์กัลชาเรเซอร์	PROPN	Nergal-sharezer	cut=เนอ+ร์กัล+ชา+เร+เซอร์	R=—	T=—	dict=— 	SPLIT NODICT
+เรฮูม	PROPN	Rehum	cut=เร+ฮูม	R=—	T=—	dict=— 	SPLIT NODICT
+เฮเฟอร์	PROPN	Hepher	cut=เฮ+เฟอร์	R=—	T=—	dict=— 	SPLIT NODICT
+ลาซารัส	PROPN	Lazarus	cut=ลาซา+รัส	R=—	T=—	dict=— 	SPLIT NODICT
+เฟสทัส	PROPN	Festus	cut=เฟส+ทัส	R=—	T=—	dict=— 	SPLIT NODICT
+เฟลิกส์	PROPN	Felix	cut=เฟลิ+กส์	R=—	T=—	dict=— 	SPLIT NODICT
+อันดรูว์	PROPN	Andrew	cut=อัน+ดรูว์	R=—	T=—	dict=— 	SPLIT NODICT
+อิธามาร์	PROPN	Ithamar	cut=อิธา+มาร์	R=—	T=—	dict=— 	SPLIT NODICT
+อัมราม	PROPN	Amram	cut=อัม+ราม	R=—	T=—	dict=— 	SPLIT NODICT
+เยฮีเอล	PROPN	Jehiel	cut=เยฮี+เอล	R=—	T=—	dict=— 	SPLIT NODICT
+เรอูเอล	PROPN	Reuel	cut=เรอู+เอล	R=—	T=—	dict=— 	SPLIT NODICT
+เชอัลทิเอล	PROPN	Shealtiel	cut=เชอั+ลทิ+เอล	R=—	T=—	dict=— 	SPLIT NODICT
+ฮักกัย	PROPN	Haggai	cut=ฮัก+กัย	R=—	T=—	dict=— 	SPLIT NODICT
+เศโลเฟหัด	PROPN	Zelophehad	cut=เศโลเฟ+หัด	R=—	T=—	dict=— 	SPLIT NODICT
+เบธูเอล	PROPN	Bethuel	cut=เบธู+เอล	R=—	T=—	dict=— 	SPLIT NODICT
+สันบาลลัท	PROPN	Sanballat	cut=สัน+บาล+ลัท	R=—	T=—	dict=— 	SPLIT NODICT
+เบลชัสซาร์	PROPN	Belshazzar	cut=เบลชัส+ซาร์	R=—	T=—	dict=— 	SPLIT NODICT
+อาบีรัม	PROPN	Abiram	cut=อาบี+รัม	R=—	T=—	dict=— 	SPLIT NODICT
+เอกโลน	PROPN	Eglon	cut=เอก+โลน	R=—	T=—	dict=— 	SPLIT NODICT
+อาบีดัน	PROPN	Abidan	cut=อาบี+ดัน	R=—	T=—	dict=— 	SPLIT NODICT
+อาบีชูร์	PROPN	Abishur	cut=อาบี+ชูร์	R=—	T=—	dict=— 	SPLIT NODICT
+อาบีชาก	PROPN	Abishag	cut=อาบี+ชาก	R=—	T=—	dict=— 	SPLIT NODICT
+คลาวดิอัส	PROPN	Claudius	cut=คลา+วดิ+อัส	R=—	T=—	dict=— 	SPLIT NODICT
+กายอัส	PROPN	Gaius	cut=กาย+อัส	R=—	T=—	dict=— 	SPLIT NODICT
+ชัมมัย	PROPN	Shammai	cut=ชัม+มัย	R=—	T=—	dict=— 	SPLIT NODICT
+ทัลมัย	PROPN	Talmai	cut=ทัล+มัย	R=—	T=—	dict=— 	SPLIT NODICT
+ฮักกีท	PROPN	Haggith	cut=ฮัก+กีท	R=—	T=—	dict=— 	SPLIT NODICT
+ชัมโมท	PROPN	Shammoth	cut=ชัม+โมท	R=—	T=—	dict=— 	SPLIT NODICT
+อิสฮาร์	PROPN	Izhar	cut=อิส+ฮาร์	R=—	T=—	dict=— 	SPLIT NODICT
+ยาเบช	PROPN	Jabesh	cut=ยา+เบช	R=—	T=—	dict=— 	SPLIT NODICT
+อาหิเมเลค	PROPN	Ahimelech	cut=อา+หิ+เม+เลค	R=—	T=—	dict=— 	SPLIT NODICT
+อาคีช	PROPN	Achish	cut=อา+คีช	R=—	T=—	dict=— 	SPLIT NODICT
+อามาสา	PROPN	Amasa	cut=อา+มา+สา	R=—	T=—	dict=— 	SPLIT NODICT
+โอบาดีห์	PROPN	Obadiah	cut=โอ+บา+ดีห์	R=—	T=—	dict=— 	SPLIT NODICT
+อาหิคัม	PROPN	Ahikam	cut=อา+หิคัม	R=—	T=—	dict=— 	SPLIT NODICT
+ซาราย	PROPN	Sarai	cut=ซา+ราย	R=—	T=—	dict=— 	SPLIT NODICT
+เอลีชามา	PROPN	Elishama	R=—	T=เอ mid, ลี mid, ชา mid, มา mid	dict=— 	NODICT NOROM
+อาสาเฮล	PROPN	Asahel	cut=อา+สา+เฮล	R=—	T=—	dict=— 	SPLIT NODICT
+อาหิโธเฟล	PROPN	Ahithophel	cut=อา+หิโธ+เฟล	R=—	T=—	dict=— 	SPLIT NODICT
+อมรี	PROPN	Omri	R=—	T=อม mid, รี mid	dict=— 	NODICT NOROM
+เกหะซี	PROPN	Gehazi	R=—	T=เก mid, หะ low, ซี mid	dict=— 	NODICT NOROM
+เซนนาเคอริบ	PROPN	Sennacherib	cut=เซน+นา+เค+อริ+บ	R=—	T=—	dict=— 	SPLIT NODICT
+เนธานิยาห์	PROPN	Nethaniah	cut=เนธา+นิ+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เชลาห์	PROPN	Shelah	cut=เช+ลาห์	R=—	T=—	dict=— 	SPLIT NODICT
+อุสซีเอล	PROPN	Uzziel	cut=อุส+ซี+เอล	R=—	T=—	dict=— 	SPLIT NODICT
+อานาค	PROPN	Anak	cut=อา+นาค	R=—	T=—	dict=— 	SPLIT NODICT
+ทีรซาห์	PROPN	Tirzah	cut=ทีร+ซาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เคอีลาห์	PROPN	Keilah	cut=เค+อี+ลาห์	R=—	T=—	dict=— 	SPLIT NODICT
+อานาโธท	PROPN	Anathoth	cut=อา+นา+โธท	R=—	T=—	dict=— 	SPLIT NODICT
+บาราค	PROPN	Barak	cut=บา+ราค	R=—	T=—	dict=— 	SPLIT NODICT
+มีคาล	PROPN	Michal	cut=มี+คาล	R=—	T=—	dict=— 	SPLIT NODICT
+โกลิอัท	PROPN	Goliath	cut=โก+ลิ+อัท	R=—	T=—	dict=— 	SPLIT NODICT
+อิชโบเชท	PROPN	Ish-bosheth	cut=อิช+โบ+เชท	R=—	T=—	dict=— 	SPLIT NODICT
+เรคาบ	PROPN	Rechab	cut=เร+คาบ	R=—	T=—	dict=— 	SPLIT NODICT
+โอเบดเอโดม	PROPN	Obed-edom	cut=โอ+เบด+เอ+โดม	R=—	T=—	dict=— 	SPLIT NODICT
+ศิบา	PROPN	Ziba	R=—	T=ศิ low, บา mid	dict=— 	NODICT NOROM
+ทิตัส	PROPN	Titus	cut=ทิตั+ส	R=—	T=—	dict=— 	SPLIT NODICT
+นาโฮร์	PROPN	Nahor	cut=นา+โฮร์	R=—	T=—	dict=— 	SPLIT NODICT
+มีคาเอล	PROPN	Michael	cut=มี+คา+เอล	R=—	T=—	dict=— 	SPLIT NODICT
+เอฮูด	PROPN	Ehud	cut=เอ+ฮูด	R=—	T=—	dict=— 	SPLIT NODICT
+อาหิทูบ	PROPN	Ahitub	cut=อา+หิ+ทูบ	R=—	T=—	dict=— 	SPLIT NODICT
+อาบีกายิล	PROPN	Abigail	cut=อาบี+กายิ+ล	R=—	T=—	dict=— 	SPLIT NODICT
+เมฟีโบเชท	PROPN	Mephibosheth	cut=เม+ฟี+โบ+เชท	R=—	T=—	dict=— 	SPLIT NODICT
+เสไรอาห์	PROPN	Seraiah	cut=เส+ไร+อาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เมลคีเซเดค	PROPN	Melchizedek	cut=เมล+คี+เซ+เดค	R=—	T=—	dict=— 	SPLIT NODICT
+ฮาดัด	PROPN	Hadad	R=ha-dat	T=ฮา mid, ดัด low	dict=— 	NODICT
+อัมมีนาดับ	PROPN	Amminadab	cut=อัม+มี+นา+ดับ	R=—	T=—	dict=— 	SPLIT NODICT
+มิเรียม	PROPN	Miriam	cut=มิ+เรียม	R=—	T=—	dict=— 	SPLIT NODICT
+เยฟุนเนห์	PROPN	Jephunneh	cut=เย+ฟุน+เนห์	R=—	T=—	dict=— 	SPLIT NODICT
+มาโนอาห์	PROPN	Manoah	cut=มา+โน+อาห์	R=—	T=—	dict=— 	SPLIT NODICT
+อาหิมาอัส	PROPN	Ahimaaz	cut=อา+หิม+า+อัส	R=—	T=—	dict=— 	SPLIT NODICT
+เฮมาน	PROPN	Heman	cut=เฮ+มาน	R=—	T=—	dict=— 	SPLIT NODICT
+อาธาลิยาห์	PROPN	Athaliah	cut=อา+ธา+ลิ+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เอลียาคิม	PROPN	Eliakim	cut=เอลี+ยาคิ+ม	R=—	T=—	dict=— 	SPLIT NODICT
+มัททานิยาห์	PROPN	Mattaniah	cut=มัท+ทา+นิ+ยาห์	R=—	T=—	dict=— 	SPLIT NODICT
+สเทเฟน	PROPN	Stephen	cut=ส+เท+เฟน	R=—	T=—	dict=— 	SPLIT NODICT
+เบลา	PROPN	Bela	R=blao	T=เบลา mid	dict=— 	NODICT
+ราหับ	PROPN	Rahab	cut=รา+หับ	R=—	T=—	dict=— 	SPLIT NODICT
+เอลาห์	PROPN	Elah	cut=เอ+ลาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เอลีฟัส	PROPN	Eliphaz	cut=เอลี+ฟัส	R=—	T=—	dict=— 	SPLIT NODICT
+โอเบด	PROPN	Obed	cut=โอ+เบด	R=—	T=—	dict=— 	SPLIT NODICT
+ฮานูน	PROPN	Hanun	R=—	T=ฮา mid, นูน mid	dict=— 	NODICT NOROM
+อิดโด	PROPN	Iddo	cut=อิด+โด	R=—	T=—	dict=— 	SPLIT NODICT
+เอลียาชีบ	PROPN	Eliashib	cut=เอลี+ยา+ชีบ	R=—	T=—	dict=— 	SPLIT NODICT
+เมชาค	PROPN	Meshach	cut=เม+ชาค	R=—	T=—	dict=— 	SPLIT NODICT
+อาเบดเนโก	PROPN	Abednego	cut=อา+เบดเน+โก	R=—	T=—	dict=— 	SPLIT NODICT
+มารธา	PROPN	Martha	R=—	T=มาร mid, ธา mid	dict=— 	NODICT NOROM
+ยาเฟท	PROPN	Japheth	cut=ยา+เฟท	R=—	T=—	dict=— 	SPLIT NODICT
+ฮาโมร์	PROPN	Hamor	cut=ฮา+โมร์	R=—	T=—	dict=— 	SPLIT NODICT
+เยโธร	PROPN	Jethro	R=—	T=เย mid, โธร mid	dict=— 	NODICT NOROM
+พระโมเลค	PROPN	Molech	cut=พระ+โม+เลค	R=—	T=—	dict=— 	SPLIT NODICT
+เยรุบบาอัล	PROPN	Jerubbaal	cut=เย+รุบ+บา+อัล	R=—	T=—	dict=— 	SPLIT NODICT
+เคนัส	PROPN	Kenaz	cut=เคนั+ส	R=—	T=—	dict=— 	SPLIT NODICT
+ยูดาห์	PROPN	Judah	cut=ยู+ดาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เบนยามิน	PROPN	Benjamin	cut=เบน+ยา+มิน	R=—	T=—	dict=— 	SPLIT NODICT
+มนัสเสห์	PROPN	Manasseh	cut=มนัส+เสห์	R=—	T=—	dict=— 	SPLIT NODICT
+เอฟราอิม	PROPN	Ephraim	cut=เอฟ+รา+อิม	R=—	T=—	dict=— 	SPLIT NODICT
+รูเบน	PROPN	Reuben	cut=รู+เบน	R=—	T=—	dict=— 	SPLIT NODICT
+สิเมโอน	PROPN	Simeon	R=—	T=สิ low, เม mid, โอน mid	dict=— 	NODICT NOROM
+นัฟทาลี	PROPN	Naphtali	cut=นัฟ+ทา+ลี	R=—	T=—	dict=— 	SPLIT NODICT
+เศบูลุน	PROPN	Zebulun	cut=เศบู+ลุน	R=—	T=—	dict=— 	SPLIT NODICT
+อาเชอร์	PROPN	Asher	cut=อา+เชอ+ร์	R=—	T=—	dict=— 	SPLIT NODICT
+อิสสาคาร์	PROPN	Issachar	cut=อิส+สา+คาร์	R=—	T=—	dict=— 	SPLIT NODICT
+ฟีลิสเตีย	PROPN	Philistine; Philistia	cut=ฟี+ลิ+ส+เตีย	R=—	T=—	dict=— 	SPLIT NODICT
+โมอับ	PROPN	Moab	cut=โม+อับ	R=—	T=—	dict=— 	SPLIT NODICT
+อัมโมน	PROPN	Ammon	cut=อัม+โมน	R=—	T=—	dict=— 	SPLIT NODICT
+เอโดม	PROPN	Edom	cut=เอ+โดม	R=—	T=—	dict=— 	SPLIT NODICT
+อารัม	PROPN	Aram	cut=อา+รัม	R=—	T=—	dict=— 	SPLIT NODICT
+มีเดียน	PROPN	Midian	cut=มี+เดีย+น	R=—	T=—	dict=— 	SPLIT NODICT
+อามาเลข	PROPN	Amalek	cut=อา+มา+เลข	R=—	T=—	dict=— 	SPLIT NODICT
+ฮิตไทต์	PROPN	Hittite	cut=ฮิต+ไทต์	R=—	T=—	dict=— 	SPLIT NODICT
+อาโมไรต์	PROPN	Amorite	cut=อา+โม+ไรต์	R=—	T=—	dict=— 	SPLIT NODICT
+ฮีไวต์	PROPN	Hivite	cut=ฮี+ไวต์	R=—	T=—	dict=— 	SPLIT NODICT
+เปริสซี	PROPN	Perizzite	cut=เปริ+ส+ซี	R=—	T=—	dict=— 	SPLIT NODICT
+คูช	PROPN	Cush	R=—	T=คูช falling	dict=— 	NODICT NOROM
+เยบุส	PROPN	Jebus	cut=เย+บุส	R=—	T=—	dict=— 	SPLIT NODICT
+เยรูซาเล็ม	PROPN	Jerusalem	R=—	T=เย mid, รู mid, ซา mid, เล็ม mid	dict=— 	NODICT NOROM
+ศิโยน	PROPN	Zion	R=—	T=ศิ low, โยน mid	dict=— 	NODICT NOROM
+อัสซีเรีย	PROPN	Assyria	cut=อัส+ซีเรีย	R=—	T=—	dict=— 	SPLIT NODICT
+กิเลอาด	PROPN	Gilead	R=—	T=กิ low, เล mid, อาด low	dict=— 	NODICT NOROM
+สะมาเรีย	PROPN	Samaria	R=—	T=สะ low, มา mid, เรีย mid	dict=— 	NODICT NOROM
+เฮโบรน	PROPN	Hebron	cut=เฮ+โบ+รน	R=—	T=—	dict=— 	SPLIT NODICT
+เบธเอล	PROPN	Bethel	cut=เบธ+เอล	R=—	T=—	dict=— 	SPLIT NODICT
+กาลิลี	PROPN	Galilee	R=—	T=กา mid, ลิ high, ลี mid	dict=— 	NODICT NOROM
+เชเคม	PROPN	Shechem	R=—	T=เช mid, เคม mid	dict=— 	NODICT NOROM
+เยรีโค	PROPN	Jericho	R=—	T=เย mid, รี mid, โค mid	dict=— 	NODICT NOROM
+บาชาน	PROPN	Bashan	cut=บา+ชาน	R=—	T=—	dict=— 	SPLIT NODICT
+ไทระ	PROPN	Tyre	R=—	T=ไท mid, ระ high	dict=— 	NODICT NOROM
+ยูเฟรติส	PROPN	Euphrates	cut=ยู+เฟ+รติ+ส	R=—	T=—	dict=— 	SPLIT NODICT
+กิเบโอน	PROPN	Gibeon	cut=กิเบ+โอน	R=—	T=—	dict=— 	SPLIT NODICT
+กิเบอาห์	PROPN	Gibeah	cut=กิเบ+อาห์	R=—	T=—	dict=— 	SPLIT NODICT
+ไซดอน	PROPN	Sidon	cut=ไซ+ดอน	R=—	T=—	dict=— 	SPLIT NODICT
+เบธเลเฮม	PROPN	Bethlehem	cut=เบธเล+เฮม	R=—	T=—	dict=— 	SPLIT NODICT
+โสโดม	PROPN	Sodom	R=—	T=โส rising, โดม mid	dict=— 	NODICT NOROM
+ยิสเรเอล	PROPN	Jezreel	cut=ยิสเร+เอล	R=—	T=—	dict=— 	SPLIT NODICT
+ยูเดีย	PROPN	Judea	cut=ยู+เดีย	R=—	T=—	dict=— 	SPLIT NODICT
+มิสปาห์	PROPN	Mizpah	cut=มิส+ปาห์	R=—	T=—	dict=— 	SPLIT NODICT
+อัย	PROPN	Ai	R=ai	T=อัย mid	dict=— 	NODICT
+กัท	PROPN	Gath	R=—	T=กัท low	dict=— 	NODICT NOROM
+ซีนาย	PROPN	Sinai	cut=ซี+นาย	R=—	T=—	dict=— 	SPLIT NODICT
+เนเกบ	PROPN	Negev	cut=เน+เกบ	R=—	T=—	dict=— 	SPLIT NODICT
+เสอีร์	PROPN	Seir	cut=เส+อีร์	R=—	T=—	dict=— 	SPLIT NODICT
+กิลกาล	PROPN	Gilgal	cut=กิล+กาล	R=—	T=—	dict=— 	SPLIT NODICT
+เฮชโบน	PROPN	Heshbon	cut=เฮช+โบน	R=—	T=—	dict=— 	SPLIT NODICT
+ชิโลห์	PROPN	Shiloh	cut=ชิ+โลห์	R=—	T=—	dict=— 	SPLIT NODICT
+รามาห์	PROPN	Ramah	cut=รา+มาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เบเออร์เชบา	PROPN	Beersheba	cut=เบ+เอ+อร์เช+บา	R=—	T=—	dict=— 	SPLIT NODICT
+เชบา	PROPN	Sheba	R=—	T=เช mid, บา mid	dict=— 	NODICT NOROM
+ไนล์	PROPN	the Nile	R=—	T=ไนล์ mid	dict=— 	NODICT NOROM
+นาซาเร็ธ	PROPN	Nazareth	cut=นา+ซา+เร็ธ	R=—	T=—	dict=— 	SPLIT NODICT
+เอลาม	PROPN	Elam	cut=เอ+ลาม	R=—	T=—	dict=— 	SPLIT NODICT
+ราโมท	PROPN	Ramoth	cut=รา+โมท	R=—	T=—	dict=— 	SPLIT NODICT
+คารเมล	PROPN	Carmel	cut=คา+ร+เมล	R=—	T=—	dict=— 	SPLIT NODICT
+นีนะเวห์	PROPN	Nineveh	cut=นี+นะ+เวห์	R=—	T=—	dict=— 	SPLIT NODICT
+ฮามัท	PROPN	Hamath	cut=ฮามั+ท	R=—	T=—	dict=— 	SPLIT NODICT
+อาราบาห์	PROPN	the Arabah	cut=อา+รา+บาห์	R=—	T=—	dict=— 	SPLIT NODICT
+อารโนน	PROPN	Arnon	cut=อา+ร+โนน	R=—	T=—	dict=— 	SPLIT NODICT
+กาซา	PROPN	Gaza	R=—	T=กา mid, ซา mid	dict=— 	NODICT NOROM
+โกโมราห์	PROPN	Gomorrah	cut=โก+โม+ราห์	R=—	T=—	dict=— 	SPLIT NODICT
+เฮสโรน	PROPN	Hezron	cut=เฮ+ส+โรน	R=—	T=—	dict=— 	SPLIT NODICT
+เอโครน	PROPN	Ekron	cut=เอ+โค+รน	R=—	T=—	dict=— 	SPLIT NODICT
+มีเดีย	PROPN	Media	R=—	T=มี mid, เดีย mid	dict=— 	NODICT NOROM
+ฮาราน	PROPN	Haran	cut=ฮา+ราน	R=—	T=—	dict=— 	SPLIT NODICT
+เคลเดีย	PROPN	Chaldea	cut=เคล+เดีย	R=—	T=—	dict=— 	SPLIT NODICT
+ทารชิช	PROPN	Tarshish	cut=ทาร+ชิช	R=—	T=—	dict=— 	SPLIT NODICT
+ริมโมน	PROPN	Rimmon	cut=ริม+โมน	R=—	T=—	dict=— 	SPLIT NODICT
+อัชเคโลน	PROPN	Ashkelon	cut=อัชเค+โลน	R=—	T=—	dict=— 	SPLIT NODICT
+เคดาร์	PROPN	Kedar	cut=เคด+าร์	R=—	T=—	dict=— 	SPLIT NODICT
+ขิดโรน	PROPN	Kidron	cut=ขิด+โรน	R=—	T=—	dict=— 	SPLIT NODICT
+อดุลลัม	PROPN	Adullam	cut=อดุล+ลัม	R=—	T=—	dict=— 	SPLIT NODICT
+เบธชาน	PROPN	Beth-shan	cut=เบธ+ชาน	R=—	T=—	dict=— 	SPLIT NODICT
+อาบีเลน	PROPN	Abilene	cut=อาบี+เลน	R=—	T=—	dict=— 	SPLIT NODICT
+อัสโมน	PROPN	Azmon	cut=อัส+โมน	R=—	T=—	dict=— 	SPLIT NODICT
+เบธซูร์	PROPN	Beth-zur	cut=เบธ+ซูร์	R=—	T=—	dict=— 	SPLIT NODICT
+อันทิโอก	PROPN	Antioch	R=—	T=อัน mid, ทิ high, โอก low	dict=— 	NODICT NOROM
+เอเฟซัส	PROPN	Ephesus	cut=เอ+เฟซัส	R=—	T=—	dict=— 	SPLIT NODICT
+ลาคีช	PROPN	Lachish	cut=ลา+คีช	R=—	T=—	dict=— 	SPLIT NODICT
+คีช	PROPN	Kish	R=—	T=คีช falling	dict=— 	NODICT NOROM
+เอเดน	PROPN	Eden	R=—	T=เอ mid, เดน mid	dict=— 	NODICT NOROM
+เชม	PROPN	Shem	R=chem	T=เชม mid	dict=— 	NODICT
+คีริยาทเยอาริม	PROPN	Kiriath-jearim	cut=คี+ริ+ยา+ท+เยอ+า+ริม	R=—	T=—	dict=— 	SPLIT NODICT
+ซีซารียา	PROPN	Caesarea	cut=ซี+ซา+รี+ยา	R=—	T=—	dict=— 	SPLIT NODICT
+เรฟาอิม	PROPN	Rephaim	R=—	T=เร mid, ฟา mid, อิม mid	dict=— 	NODICT NOROM
+สุคคท	PROPN	Succoth	cut=สุ+คคท	R=—	T=—	dict=— 	SPLIT NODICT
+โฮเรบ	PROPN	Horeb	cut=โฮ+เรบ	R=—	T=—	dict=— 	SPLIT NODICT
+เทมาน	PROPN	Teman	cut=เท+มาน	R=—	T=—	dict=— 	SPLIT NODICT
+อาโรเออร์	PROPN	Aroer	cut=อา+โร+เอ+อร์	R=—	T=—	dict=— 	SPLIT NODICT
+ฮาโซร์	PROPN	Hazor	cut=ฮา+โซร์	R=—	T=—	dict=— 	SPLIT NODICT
+คาเดช	PROPN	Kadesh	cut=คา+เดช	R=—	T=—	dict=— 	SPLIT NODICT
+ลิบนาห์	PROPN	Libnah	cut=ลิ+บนาห์	R=—	T=—	dict=— 	SPLIT NODICT
+คาเปอรนาอุม	PROPN	Capernaum	cut=คา+เป+อร+นา+อุม	R=—	T=—	dict=— 	SPLIT NODICT
+เคไนต์	PROPN	Kenite	cut=เค+ไนต์	R=—	T=—	dict=— 	SPLIT NODICT
+โกเชน	PROPN	Goshen	R=—	T=โก mid, เชน mid	dict=— 	NODICT NOROM
+รับบาห์	PROPN	Rabbah	cut=รับ+บาห์	R=—	T=—	dict=— 	SPLIT NODICT
+เบธโฮโรน	PROPN	Beth-horon	cut=เบธ+โฮ+โรน	R=—	T=—	dict=— 	SPLIT NODICT
+เกบา	PROPN	Geba	R=—	T=เก mid, บา mid	dict=— 	NODICT NOROM
+มาหะนาอิม	PROPN	Mahanaim	cut=มา+หะ+นา+อิม	R=—	T=—	dict=— 	SPLIT NODICT
+เฮอร์โมน	PROPN	Hermon	cut=เฮ+อร์+โมน	R=—	T=—	dict=— 	SPLIT NODICT
+เกเซอร์	PROPN	Gezer	cut=เก+เซอร์	R=—	T=—	dict=— 	SPLIT NODICT
+ยัฟฟา	PROPN	Joppa	R=—	T=ยัฟ high, ฟา mid	dict=— 	NODICT NOROM
+โศบาห์	PROPN	Zobah	cut=โศ+บาห์	R=—	T=—	dict=— 	SPLIT NODICT
+คาเรอาห์	PROPN	Kareah	cut=คา+เรอ+าห์	R=—	T=—	dict=— 	SPLIT NODICT
+เนโบ	PROPN	Nebo	R=—	T=เน mid, โบ mid	dict=— 	NODICT NOROM
+กาลาเทีย	PROPN	Galatia	cut=กา+ลา+เทีย	R=—	T=—	dict=— 	SPLIT NODICT
+เกชูร์	PROPN	Geshur	cut=เก+ชูร์	R=—	T=—	dict=— 	SPLIT NODICT
+อารารัต	PROPN	Ararat	cut=อา+รา+รัต	R=—	T=—	dict=— 	SPLIT NODICT
+เอนโรเกล	PROPN	En-rogel	cut=เอน+โร+เกล	R=—	T=—	dict=— 	SPLIT NODICT
+กีโฮน	PROPN	Gihon	cut=กี+โฮน	R=—	T=—	dict=— 	SPLIT NODICT
+ธิยาทิรา	PROPN	Thyatira	R=—	T=ธิ high, ยา mid, ทิ high, รา mid	dict=— 	NODICT NOROM
+เบธเปโอร์	PROPN	Beth-peor	cut=เบธเป+โอร์	R=—	T=—	dict=— 	SPLIT NODICT
+ครีต	PROPN	Crete	R=—	T=ครีต falling	dict=— 	NODICT NOROM
+อัชโดด	PROPN	Ashdod	cut=อัช+โดด	R=—	T=—	dict=— 	SPLIT NODICT
+เบธเชเมช	PROPN	Beth-shemesh	cut=เบธเช+เมช	R=—	T=—	dict=— 	SPLIT NODICT
+พระวจนะ	NOUN	the word (of God); message	reg=religious	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: Classifier: คำ (counts words; mouthfuls).
+พันธสัญญา	NOUN	covenant	cut=พันธ+สัญญา	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+พระวิญญาณ	NOUN	the Spirit (of God)	reg=religious	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+พระบิดา	NOUN	the Father (God)	reg=religious	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+พระพร	NOUN	blessing (from God)	reg=religious	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+พระบัญญัติ	NOUN	commandment; law (of God)	cut=พระ+บัญญัติ	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+ฟ้าสวรรค์	NOUN	the heavens, the sky	cut=ฟ้า+สวรรค์	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+เทพเจ้า	NOUN	god, deity	reg=religious	R=—	T=เทพ falling, เจ้า falling	dict=— 	NODICT NOROM	CLF: Classifier: องค์ (counts royalty, deities, monks, holy images).
+บัพติศมา	NOUN	baptism	reg=religious	R=—	T=บัพ low, ติศ low, มา mid	dict=— 	NODICT NOROM	CLF: —
+อัครทูต	NOUN	apostle	cut=อัคร+ทูต	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+ฟาริสี	NOUN	Pharisee	reg=religious	R=—	T=ฟา mid, ริ high, สี rising	dict=— 	NODICT NOROM	CLF: —
+ปัสกา	NOUN	Passover	cut=ปัส+กา	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+อาเมน	INTJ	amen	reg=religious	R=—	T=อา mid, เมน mid	dict=— 	NODICT NOROM
+เครูบ	NOUN	cherub	cut=เค+รูบ	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+เอโฟด	NOUN	ephod (a priest's garment)	cut=เอ+โฟด	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+สิบลด	NOUN	tithe	cut=สิบ+ลด	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+ฤทธิ์เดช	NOUN	power, might	cut=ฤทธิ์+เดช	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+สง่าราศี	NOUN	glory, splendour	cut=สง่า+ราศี	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+พันธกิจ	NOUN	mission, ministry	cut=พันธ+กิจ	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+เอ๋ย	PART	(calling someone: "O ...")	role=vocative particle	R=oei	T=เอ๋ย rising	dict=— 	NODICT
+หนอ	PART	(exclamation or plea: "oh!")	role=exclamatory particle	R=no	T=หนอ rising	dict=— 	NODICT
+เชเขล	NOUN	shekel (a weight, a coin)	cut=เช+เขล	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+ตะลันต์	NOUN	talent (a weight, a sum of money)	cut=ตะ+ลัน+ต์	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+เอฟาห์	NOUN	ephah (a dry measure)	cut=เอ+ฟาห์	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+ฮิน	NOUN	hin (a liquid measure)	R=hin	T=ฮิน mid	dict=— 	NODICT	CLF: —
+คิวบิท	NOUN	cubit	cut=คิว+บิท	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+ลินิน	NOUN	linen	R=—	T=ลิ high, นิน mid	dict=— 	NODICT NOROM	CLF: —
+ซีดาร์	NOUN	cedar	cut=ซี+ดาร์	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+สัมฤทธิ์	NOUN	bronze (as in ทองสัมฤทธิ์)	R=—	T=—	dict=— 	NODICT NOROM	CLF: —
+สาลี	NOUN	wheat (as in ข้าวสาลี)	R=—	T=สา rising, ลี mid	dict=— 	NODICT NOROM	CLF: —
+สีน้ำเงิน	NOUN	blue	R=si-nam-ngoen	T=สี rising, น้ำ high, เงิน mid	dict=— 	NODICT	CLF: —
+วงล้อ	NOUN	wheel	cut=วง+ล้อ	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+เชิงงอน	NOUN	horn (of the altar)	cut=เชิง+งอน	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+นายร้อย	NOUN	centurion	cut=นาย+ร้อย	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+อิ่มหนำ	VERB	to be well fed, satisfied	cut=อิ่ม+หนำ	R=—	T=—	dict=— 	SPLIT NODICT
+เกลื่อนกลาด	ADJ	scattered about, littered	cut=เกลื่อน+กลาด	R=—	T=—	dict=— 	SPLIT NODICT
+ยืนหยัด	VERB	to stand firm	cut=ยืน+หยัด	R=—	T=—	dict=yʉʉn-yàt /jɯːn˧.jat̚˨˩/	SPLIT
+ยืนกราน	VERB	to insist, stand one's ground	cut=ยืน+กราน	R=—	T=—	dict=yʉʉn-graan /jɯːn˧.kraːn˧/	SPLIT
+เกรียงไกร	ADJ	mighty, powerful	cut=เกรียง+ไกร	R=—	T=—	dict=griiang-grai /kria̯ŋ˧.kraj˧/	SPLIT
+เกริกไกร	ADJ	mighty, renowned	cut=เกริก+ไกร	R=—	T=—	dict=— 	SPLIT NODICT
+ห้ำหั่น	VERB	to hack at one another, fight fiercely	cut=ห้ำ+หั่น	R=—	T=—	dict=hâm-hàn /ham˥˩.han˨˩/	SPLIT
+ฉับพลัน	ADV	suddenly, all at once	cut=ฉับ+พลัน	R=—	T=—	dict=chàp-plan /t͡ɕʰap̚˨˩.pʰlan˧/	SPLIT
+โชติช่วง	ADJ	blazing, brilliant	cut=โชติ+ช่วง	R=—	T=—	dict=— 	SPLIT NODICT
+ต่อหน้าต่อตา	ADV	right before one's eyes	cut=ต่อ+หน้า+ต่อตา	R=—	T=—	dict=— 	SPLIT NODICT
+สาส์น	NOUN	letter, message	R=—	T=สาส์น rising	dict=— 	NODICT NOROM	CLF: Classifier: ตัว (counts animals, letters, clothes, furniture); ฉบับ (counts newspapers, letters, documents).
+สยดสยอง	ADJ	horrible, appalling	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+ยืนยาว	ADJ	long-lasting	R=—	T=ยืน mid, ยาว mid	dict=— 	NODICT NOROM
+ประจัน	VERB	to face (in opposition)	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+รกราก	NOUN	roots (in ตั้งรกราก "to settle")	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+ปรักปรำ	VERB	to accuse, blame	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+กำลังพล	NOUN	troops, fighting men	cut=กำลัง+พล	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+คบคิด	VERB	to plot together, conspire	R=—	T=คบ high, คิด high	dict=— 	NODICT NOROM
+ท้อแท้	ADJ	discouraged, disheartened	R=tho-thae	T=ท้อ high, แท้ high	dict=— 	NODICT
+วิจารณญาณ	NOUN	discernment, judgement	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+เมามาย	ADJ	drunk	R=—	T=เมา mid, มาย mid	dict=— 	NODICT NOROM
+อ้วนพี	ADJ	fat, plump	R=uan-phi	T=อ้วน falling, พี mid	dict=— 	NODICT
+เกียรติยศ	NOUN	honour, glory	R=—	T=เกียร mid, ติ low, ยศ high	dict=— 	NODICT NOROM	CLF: —
+ตัดขาด	VERB	to cut off	R=tat-khat	T=ตัด low, ขาด low	dict=— 	NODICT
+ชนเผ่า	NOUN	tribe	cut=ชน+เผ่า	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+ดลใจ	VERB	to inspire, move (the heart)	R=—	T=ดล mid, ใจ mid	dict=— 	NODICT NOROM
+โทษทัณฑ์	NOUN	punishment	R=—	T=โทษ falling, ทัณฑ์ mid	dict=— 	NODICT NOROM	CLF: —
+โอหัง	ADJ	arrogant, haughty	R=o-hang	T=โอ mid, หัง rising	dict=— 	NODICT
+ติเตียน	VERB	to criticize, blame	cut=ติ+เตียน	R=—	T=—	dict=— 	SPLIT NODICT
+รุ่งอรุณ	NOUN	dawn	R=—	T=รุ่ falling, งอ mid, รุณ mid	dict=— 	NODICT NOROM	CLF: —
+กำมือ	NOUN	fist; a handful	cut=กำ+มือ	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+ยืนยง	VERB	to endure, last	R=—	T=ยืน mid, ยง mid	dict=— 	NODICT NOROM
+ท่วมท้น	VERB	to overflow, overwhelm	R=—	T=ท่วม falling, ท้น high	dict=— 	NODICT NOROM
+ข้อหา	NOUN	charge, accusation	R=kho-ha	T=ข้อ falling, หา rising	dict=— 	NODICT	CLF: —
+อาภรณ์	NOUN	garments, clothing	R=—	T=อา mid, ภรณ์ mid	dict=— 	NODICT NOROM	CLF: —
+เร่ร่อน	VERB	to wander, roam	R=re-ron	T=เร่ falling, ร่อน falling	dict=— 	NODICT
+มึนเมา	ADJ	drunk, intoxicated	R=muen-mao	T=มึน mid, เมา mid	dict=— 	NODICT
+ลำน้ำ	NOUN	stream, watercourse	R=lam-nam	T=ลำ mid, น้ำ high	dict=— 	NODICT	CLF: —
+เคร่งครัด	ADJ	strict, devout	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+ละมั่ง	NOUN	gazelle, antelope	R=la-mang	T=ละ high, มั่ง falling	dict=— 	NODICT	CLF: —
+โคนขา	NOUN	thigh	cut=โคน+ขา	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+เพิ่มพูน	VERB	to increase, grow	R=phoem-phun	T=เพิ่ม falling, พูน mid	dict=— 	NODICT
+หมอดู	NOUN	fortune-teller, diviner	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+ถากถาง	VERB	to mock, sneer at	R=thak-thang	T=ถาก low, ถาง rising	dict=— 	NODICT
+สบประมาท	VERB	to insult, despise	cut=สบ+ประมาท	R=—	T=—	dict=— 	SPLIT NODICT
+ราวกับ	SCONJ	as if, just like	R=rao-kap	T=ราว mid, กับ low	dict=— 	NODICT
+น้ำมือ	NOUN	hand, power (of someone)	R=nam-mue	T=น้ำ high, มือ mid	dict=— 	NODICT	CLF: —
+อึกทึก	ADJ	noisy, clamorous	R=—	T=อึก low, ทึก high	dict=— 	NODICT NOROM
+ฤดูกาล	NOUN	season	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+มรณา	NOUN	death	R=—	T=มร mid, ณา mid	dict=— 	NODICT NOROM	CLF: —
+ราบคาบ	ADJ	utterly subdued, flat	R=—	T=ราบ falling, คาบ falling	dict=— 	NODICT NOROM
+จองหอง	ADJ	arrogant, proud	R=chong-hong	T=จอง mid, หอง rising	dict=— 	NODICT
+ตกตะลึง	VERB	to be stunned, astonished	cut=ตก+ตะลึง	R=—	T=—	dict=— 	SPLIT NODICT
+รำพึง	VERB	to muse, murmur to oneself	R=ram-phueng	T=รำ mid, พึง mid	dict=— 	NODICT
+อดอยาก	VERB	to starve, go hungry	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+ชักจูง	VERB	to lead astray, persuade	R=—	T=ชัก high, จูง mid	dict=— 	NODICT NOROM
+สายน้ำ	NOUN	stream (of water)	R=sai-nam	T=สาย rising, น้ำ high	dict=— 	NODICT	CLF: —
+ที่นา	NOUN	rice field	cut=ที่+นา	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+มานา	NOUN	manna	reg=religious	R=—	T=มา mid, นา mid	dict=— 	NODICT NOROM	CLF: —
+แซนเฮดริน	NOUN	the Sanhedrin	cut=แซ+น+เฮ+ดริน	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+นาศีร์	NOUN	Nazirite	cut=นาศี+ร์	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+รับบี	NOUN	rabbi	cut=รับ+บี	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+สะดูสี	NOUN	Sadducee	reg=religious	R=—	T=สะ low, ดู mid, สี rising	dict=— 	NODICT NOROM	CLF: —
+ปฐมกาล	NOUN	the beginning (of the world); (Genesis)	cut=ปฐม+กาล	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+โปรดปราน	VERB	to favour; to be pleased with	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+กระหน่ำ	VERB	to pound, lash	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+ลวดลาย	NOUN	pattern, design	R=—	T=ลวด falling, ลาย mid	dict=— 	NODICT NOROM	CLF: —
+แมนเดรก	NOUN	mandrake	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+โภชน	NOUN	food (in โภชนบูชา "food offering")	R=—	T=โภ mid, ชน mid	dict=— 	NODICT NOROM	CLF: —
+ส่วนร่วม	NOUN	share, part, participation	cut=ส่วน+ร่วม	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+ฝ่าเท้า	NOUN	sole of the foot	R=fa-thao	T=ฝ่า low, เท้า high	dict=— 	NODICT	CLF: —
+หัวเสา	NOUN	capital (the top of a pillar)	cut=หัว+เสา	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+ตรงกันข้าม	ADV	on the contrary; opposite	cut=ตรง+กัน+ข้าม	R=—	T=—	dict=— 	SPLIT NODICT
+หมั้นหมาย	VERB	to be engaged, betrothed	cut=หมั้น+หมาย	R=—	T=—	dict=— 	SPLIT NODICT
+แหลกลาญ	VERB	to be shattered, smashed	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+ย่างก้าว	VERB	to step, stride	cut=ย่าง+ก้าว	R=—	T=—	dict=— 	SPLIT NODICT
+ยึดถือ	VERB	to hold to, adhere to	R=—	T=ยึด high, ถือ rising	dict=— 	NODICT NOROM
+ชั่วนิรันดร์	ADV	for ever, eternally	cut=ชั่ว+นิรันดร์	R=—	T=—	dict=— 	SPLIT NODICT
+ไพร่พล	NOUN	troops, people (under a leader)	R=—	T=ไพร่ falling, พล mid	dict=— 	NODICT NOROM	CLF: Classifier: คน (counts people).
+ชาญฉลาด	ADJ	wise, clever	cut=ชาญ+ฉลาด	R=—	T=—	dict=— 	SPLIT NODICT
+ขนานนาม	VERB	to name, give a name	cut=ขนาน+นาม	R=—	T=—	dict=— 	SPLIT NODICT
+จำนน	VERB	to surrender, yield	R=—	T=จำ mid, นน mid	dict=— 	NODICT NOROM
+แซ่ซ้อง	VERB	to acclaim, praise loudly	cut=แซ่+ซ้อง	R=—	T=—	dict=— 	SPLIT NODICT
+ส่ายหน้า	VERB	to shake one's head	cut=ส่าย+หน้า	R=—	T=—	dict=— 	SPLIT NODICT
+ชั่วครู่	ADV	for a moment	cut=ชั่ว+ครู่	R=—	T=—	dict=— 	SPLIT NODICT
+เหลวไหล	ADJ	worthless, nonsensical	cut=เหลว+ไหล	R=—	T=—	dict=— 	SPLIT NODICT
+โศกสลด	ADJ	sorrowful, sombre	cut=โศก+สลด	R=—	T=—	dict=— 	SPLIT NODICT
+พลิกผัน	VERB	to turn about, be overturned	cut=พลิก+ผัน	R=—	T=—	dict=— 	SPLIT NODICT
+เสื่อมสูญ	VERB	to decline and disappear	cut=เสื่อม+สูญ	R=—	T=—	dict=— 	SPLIT NODICT
+ล่วงประเวณี	VERB	to commit adultery	cut=ล่วง+ประเวณี	R=—	T=—	dict=— 	SPLIT NODICT
+ตั้งมั่น	VERB	to be firmly established	cut=ตั้ง+มั่น	R=—	T=—	dict=— 	SPLIT NODICT
+อุดมสมบูรณ์	ADJ	fertile, abundant	cut=อุดม+สมบูรณ์	R=—	T=—	dict=— 	SPLIT NODICT
+พระพักตร์	NOUN	the face (of God or a king)	cut=พระ+พักตร์	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+พระชนม์	NOUN	life (of a king)	reg=religious	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+ปีนป่าย	VERB	to climb	cut=ปีน+ป่าย	R=—	T=—	dict=— 	SPLIT NODICT
+ยุ่งเกี่ยว	VERB	to get involved with	cut=ยุ่ง+เกี่ยว	R=—	T=—	dict=— 	SPLIT NODICT
+เมินเฉย	VERB	to ignore, turn a blind eye	cut=เมิน+เฉย	R=—	T=—	dict=— 	SPLIT NODICT
+อ่อนเพลีย	ADJ	weak, worn out	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+หัวปี	ADJ	first (in ลูกหัวปี "the firstborn")	R=—	T=หัว rising, ปี mid	dict=— 	NODICT NOROM
+พืชผล	NOUN	crops, produce	cut=พืช+ผล	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+พืชพันธุ์	NOUN	plants, crops	R=—	T=พืช falling, พันธุ์ mid	dict=— 	NODICT NOROM	CLF: Classifier: ต้น (counts trees, plants).
+ผลผลิต	NOUN	produce, yield	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+ผลิตผล	NOUN	produce, yield	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+ถิ่นฐาน	NOUN	homeland, dwelling place	R=—	T=ถิ่น low, ฐาน rising	dict=— 	NODICT NOROM	CLF: —
+ท้องทุ่ง	NOUN	open country, fields	cut=ท้อง+ทุ่ง	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+เขตแดน	NOUN	border, territory	R=—	T=เขต low, แดน mid	dict=— 	NODICT NOROM	CLF: —
+ใบหน้า	NOUN	face	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+หญิงสาว	NOUN	young woman	cut=หญิง+สาว	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+พรรคพวก	NOUN	followers, associates	cut=พรรค+พวก	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+บทเพลง	NOUN	song	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+บ้านเรือน	NOUN	houses, homes	cut=บ้าน+เรือน	R=—	T=—	dict=— 	SPLIT NODICT	CLF: Classifier: หลัง (counts houses, buildings).
+ฐานราก	NOUN	foundation	R=—	T=ฐาน rising, ราก falling	dict=— 	NODICT NOROM	CLF: —
+ทิศใต้	NOUN	the south	cut=ทิศ+ใต้	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+จุดจบ	NOUN	the end, final outcome	R=—	T=จุด low, จบ low	dict=— 	NODICT NOROM	CLF: —
+รายชื่อ	NOUN	list of names	cut=ราย+ชื่อ	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+วงศ์ตระกูล	NOUN	family line, clan	cut=วงศ์+ตระกูล	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+แนวรบ	NOUN	battle line	R=—	T=แนว mid, รบ high	dict=— 	NODICT NOROM	CLF: —
+สรรพสิ่ง	NOUN	all things	cut=สรรพ+สิ่ง	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+ลำห้วย	NOUN	stream, brook	R=lam-huai	T=ลำ mid, ห้วย falling	dict=— 	NODICT	CLF: —
+ร่มเงา	NOUN	shade	cut=ร่ม+เงา	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+วิถีทาง	NOUN	way, path (of life)	cut=วิถี+ทาง	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+ชั่วอายุ	NOUN	lifetime; generation (in ชั่วอายุคน)	cut=ชั่ว+อายุ	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+รุ่งขึ้น	ADV	the next day, the next morning	cut=รุ่ง+ขึ้น	R=—	T=—	dict=— 	SPLIT NODICT
+รุ่งเช้า	NOUN	daybreak, the morning	cut=รุ่ง+เช้า	R=—	T=—	dict=— 	SPLIT NODICT	CLF: —
+เช้าตรู่	ADV	very early in the morning	cut=เช้า+ตรู่	R=—	T=—	dict=— 	SPLIT NODICT
+พลบค่ำ	NOUN	dusk	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+นิตย์	ADJ	perpetual (in เป็นนิตย์ "forever")	R=—	T=นิตย์ high	dict=— 	NODICT NOROM
+สืบไป	ADV	onward, for ever after (from generation to generation)	R=suep-pai	T=สืบ low, ไป mid	dict=— 	NODICT
+เมื่อใด	ADV	when; whenever	cut=เมื่อ+ใด	R=—	T=—	dict=— 	SPLIT NODICT
+เท่าใด	PRON	how much, how many; as much as	R=thao-dai	T=เท่า falling, ใด mid	dict=— 	NODICT
+เพียงใด	ADV	how much; to what extent	cut=เพียง+ใด	R=—	T=—	dict=— 	SPLIT NODICT
+เหตุใด	ADV	why; for what reason	cut=เหตุ+ใด	R=—	T=—	dict=— 	SPLIT NODICT
+สิ่งใด	PRON	what (thing); whatever	cut=สิ่ง+ใด	R=—	T=—	dict=— 	SPLIT NODICT
+นอกเหนือ	ADV	apart from, in addition to	cut=นอก+เหนือ	R=—	T=—	dict=— 	SPLIT NODICT
+เนื่องด้วย	SCONJ	because of, owing to	cut=เนื่อง+ด้วย	R=—	T=—	dict=— 	SPLIT NODICT
+จวบจน	SCONJ	until, up to the time of	cut=จวบ+จน	R=—	T=—	dict=— 	SPLIT NODICT
+ตราบจน	SCONJ	until	cut=ตราบ+จน	R=—	T=—	dict=— 	SPLIT NODICT
+ควบคู่	ADV	together with, side by side	R=—	T=ควบ falling, คู่ falling	dict=— 	NODICT NOROM
+สุดใจ	ADV	with all one's heart (in สุดจิตสุดใจ)	R=sut-chai	T=สุด low, ใจ mid	dict=— 	NODICT
+มายัง	VERB	to come to (a place)	R=ma-yang	T=มา mid, ยัง mid	dict=— 	NODICT
+มาหา	VERB	to come to (someone)	R=ma-ha	T=มา mid, หา rising	dict=— 	NODICT
+นำมา	VERB	to bring	R=—	T=นำ mid, มา mid	dict=— 	NODICT NOROM
+หมายถึง	VERB	to mean; to refer to	cut=หมาย+ถึง	R=—	T=—	dict=— 	SPLIT NODICT
+ลุกขึ้น	VERB	to get up, rise	cut=ลุก+ขึ้น	R=—	T=—	dict=— 	SPLIT NODICT
+แสวงหา	VERB	to seek, look for	R=—	T=แสว rising, ง high, หา rising	dict=— 	NODICT NOROM
+สู้รบ	VERB	to fight, do battle	cut=สู้+รบ	R=—	T=—	dict=— 	SPLIT NODICT
+ยกทัพ	VERB	to march an army	cut=ยก+ทัพ	R=—	T=—	dict=— 	SPLIT NODICT
+สั่งการ	VERB	to give orders	cut=สั่ง+การ	R=—	T=—	dict=— 	SPLIT NODICT
+กำชับ	VERB	to charge, order strictly	R=—	T=กำ mid, ชับ high	dict=— 	NODICT NOROM
+ตักเตือน	VERB	to warn, admonish	cut=ตัก+เตือน	R=—	T=—	dict=— 	SPLIT NODICT
+ทอดทิ้ง	VERB	to abandon, forsake	cut=ทอด+ทิ้ง	R=—	T=—	dict=— 	SPLIT NODICT
+โห่ร้อง	VERB	to shout, cry out	cut=โห่+ร้อง	R=—	T=—	dict=— 	SPLIT NODICT
+ร่ำร้อง	VERB	to cry out, wail	cut=ร่ำ+ร้อง	R=—	T=—	dict=— 	SPLIT NODICT
+ครวญ	VERB	to lament, wail	R=khruan	T=ครวญ mid	dict=— 	NODICT
+อ้อนวอน	VERB	to plead, beg	R=on-won	T=อ้อน falling, วอน mid	dict=— 	NODICT
+เยาะเย้ย	VERB	to mock, jeer at	cut=เยาะ+เย้ย	R=—	T=—	dict=— 	SPLIT NODICT
+เยาะ	VERB	to mock	R=yo	T=เยาะ high	dict=— 	NODICT
+เย้ยหยัน	VERB	to scorn, deride	cut=เย้ย+หยัน	R=—	T=—	dict=— 	SPLIT NODICT
+เหยียดหยาม	VERB	to despise, look down on	cut=เหยียด+หยาม	R=—	T=—	dict=— 	SPLIT NODICT
+โอ้อวด	VERB	to boast, show off	R=o-uat	T=โอ้ falling, อวด low	dict=— 	NODICT
+เผาผลาญ	VERB	to burn up, consume	cut=เผา+ผลาญ	R=—	T=—	dict=— 	SPLIT NODICT
+ชดใช้	VERB	to compensate, pay back	R=—	T=ชด high, ใช้ high	dict=— 	NODICT NOROM
+เกรงกลัว	VERB	to fear, revere	cut=เกรง+กลัว	R=—	T=—	dict=— 	SPLIT NODICT
+หวาดหวั่น	VERB	to be afraid, dread	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+สะพรึง	VERB	to be frightened	cut=สะ+พรึง	R=—	T=—	dict=— 	SPLIT NODICT
+ครั่นคร้าม	VERB	to dread, shrink in fear	cut=ครั่น+คร้าม	R=—	T=—	dict=— 	SPLIT NODICT
+กระจัดกระจาย	VERB	to be scattered	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+ตรากตรำ	VERB	to toil, labour hard	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+โศกเศร้า	VERB	to grieve, mourn	cut=โศก+เศร้า	R=—	T=—	dict=— 	SPLIT NODICT
+ระทม	VERB	to grieve, be sorrowful	R=—	T=ระ high, ทม mid	dict=— 	NODICT NOROM
+อดสู	VERB	to be ashamed	R=—	T=อด low, สู rising	dict=— 	NODICT NOROM
+ชื่นบาน	VERB	to be glad, rejoice	R=chuen-ban	T=ชื่น falling, บาน mid	dict=— 	NODICT
+ย่อยยับ	VERB	to be ruined, devastated	R=yoi-yap	T=ย่อย falling, ยับ high	dict=— 	NODICT
+เข่นฆ่า	VERB	to slaughter, massacre	cut=เข่น+ฆ่า	R=—	T=—	dict=— 	SPLIT NODICT
+ฟาดฟัน	VERB	to strike down, cut down	cut=ฟาด+ฟัน	R=—	T=—	dict=— 	SPLIT NODICT
+ยั่วยุ	VERB	to provoke, incite	cut=ยั่ว+ยุ	R=—	T=—	dict=— 	SPLIT NODICT
+แตกแยก	VERB	to split, be divided	R=—	T=แตก low, แยก falling	dict=— 	NODICT NOROM
+ชักนำ	VERB	to lead on, induce	R=chak-nam	T=ชัก high, นำ mid	dict=— 	NODICT
+เสาะหา	VERB	to search for, seek out	cut=เสาะ+หา	R=—	T=—	dict=— 	SPLIT NODICT
+กล่าวโทษ	VERB	to accuse, blame	cut=กล่าว+โทษ	R=—	T=—	dict=— 	SPLIT NODICT
+กอบกู้	VERB	to rescue, redeem	cut=กอบ+กู้	R=—	T=—	dict=— 	SPLIT NODICT
+โต้แย้ง	VERB	to argue, dispute	cut=โต้+แย้ง	R=—	T=—	dict=— 	SPLIT NODICT
+โต้ตอบ	VERB	to respond, retort	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+จัดเตรียม	VERB	to prepare, arrange	cut=จัด+เตรียม	R=—	T=—	dict=— 	SPLIT NODICT
+แบ่งสรร	VERB	to apportion, allot	cut=แบ่ง+สรร	R=—	T=—	dict=— 	SPLIT NODICT
+เลือกสรร	VERB	to choose, select	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+ประพรม	VERB	to sprinkle	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+คำนับ	VERB	to bow, pay respects	R=—	T=คำ mid, นับ high	dict=— 	NODICT NOROM
+ขานรับ	VERB	to answer, respond	R=—	T=ขาน rising, รับ high	dict=— 	NODICT NOROM
+รอดพ้น	VERB	to be saved, escape	R=—	T=รอด falling, พ้น high	dict=— 	NODICT NOROM
+สยบ	VERB	to subdue, bring down	R=—	T=ส low, ยบ low	dict=— 	NODICT NOROM
+ทวี	VERB	to increase, multiply	R=—	T=ท high, วี mid	dict=— 	NODICT NOROM
+รุกไล่	VERB	to pursue, drive out	cut=รุก+ไล่	R=—	T=—	dict=— 	SPLIT NODICT
+หันหน้า	VERB	to turn one's face	cut=หัน+หน้า	R=—	T=—	dict=— 	SPLIT NODICT
+ชูมือ	VERB	to raise one's hand	cut=ชู+มือ	R=—	T=—	dict=— 	SPLIT NODICT
+หึงหวง	VERB	to be jealous	cut=หึง+หวง	R=—	T=—	dict=— 	SPLIT NODICT
+พักพิง	VERB	to take shelter, stay	R=—	T=พัก high, พิง mid	dict=— 	NODICT NOROM
+หมดสิ้น	VERB	to be completely gone, finished	cut=หมด+สิ้น	R=—	T=—	dict=— 	SPLIT NODICT
+สะเทือน	VERB	to shake, tremble	R=—	T=สะ low, เทือน mid	dict=— 	NODICT NOROM
+หยั่ง	VERB	to sink (roots); to fathom	R=yang	T=หยั่ง low	dict=— 	NODICT
+ลุกโชน	VERB	to blaze up	cut=ลุก+โชน	R=—	T=—	dict=— 	SPLIT NODICT
+งอกงาม	VERB	to flourish, grow	R=—	T=งอก falling, งาม mid	dict=— 	NODICT NOROM
+พลุ่ง	VERB	to gush, spout up	R=—	T=พลุ่ง falling	dict=— 	NODICT NOROM
+ขัดสน	ADJ	in need, destitute	R=—	T=ขัด low, สน rising	dict=— 	NODICT NOROM
+ยากไร้	ADJ	destitute, poor	R=yak-rai	T=ยาก falling, ไร้ high	dict=— 	NODICT
+ร่ำรวย	ADJ	rich, wealthy	R=ram-ruai	T=ร่ำ falling, รวย mid	dict=— 	NODICT
+ล้ำค่า	ADJ	precious, priceless	R=lam-kha	T=ล้ำ high, ค่า falling	dict=— 	NODICT
+ล้ำลึก	ADJ	profound, deep	cut=ล้ำ+ลึก	R=—	T=—	dict=— 	SPLIT NODICT
+แข็งแกร่ง	ADJ	strong, sturdy	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+ดื้อด้าน	ADJ	stubborn	cut=ดื้อ+ด้าน	R=—	T=—	dict=— 	SPLIT NODICT
+ดื้อรั้น	ADJ	stubborn	cut=ดื้อ+รั้น	R=—	T=—	dict=— 	SPLIT NODICT
+ยโส	ADJ	arrogant, proud	R=—	T=ย high, โส rising	dict=— 	NODICT NOROM
+เย่อหยิ่ง	ADJ	arrogant, haughty	cut=เย่อ+หยิ่ง	R=—	T=—	dict=— 	SPLIT NODICT
+เปรมปรีดิ์	ADJ	delighted, joyful	cut=เปรม+ปรีดิ์	R=—	T=—	dict=— 	SPLIT NODICT
+รื่นเริง	ADJ	cheerful, merry	R=ruen-roeng	T=รื่น falling, เริง mid	dict=— 	NODICT
+อิ่มเอม	ADJ	content, deeply satisfied	cut=อิ่ม+เอม	R=—	T=—	dict=— 	SPLIT NODICT
+เจิดจ้า	ADJ	brilliant, dazzling	cut=เจิด+จ้า	R=—	T=—	dict=— 	SPLIT NODICT
+เลื่องลือ	ADJ	famous, renowned	cut=เลื่อง+ลือ	R=—	T=—	dict=— 	SPLIT NODICT
+อ่อนล้า	ADJ	weary, exhausted	cut=อ่อน+ล้า	R=—	T=—	dict=— 	SPLIT NODICT
+หิวโหย	ADJ	hungry, starving	R=hio-hoi	T=หิว rising, โหย rising	dict=— 	NODICT
+มืดมน	ADJ	dark, gloomy	R=—	T=มืด falling, มน mid	dict=— 	NODICT NOROM
+มหาศาล	ADJ	enormous, vast	R=—	T=ม high, หา rising, ศาล rising	dict=— 	NODICT NOROM
+ห่างไกล	ADJ	far away, remote	cut=ห่าง+ไกล	R=—	T=—	dict=— 	SPLIT NODICT
+ใกล้ชิด	ADJ	close, intimate	cut=ใกล้+ชิด	R=—	T=—	dict=— 	SPLIT NODICT
+รกร้าง	ADJ	desolate, abandoned	R=—	T=(tone not given)	dict=— 	NODICT NOROM
+สาสม	ADJ	fitting, deserved (of a punishment)	R=—	T=สา rising, สม rising	dict=— 	NODICT NOROM
+ลำเค็ญ	ADJ	wretched, in hardship (in ทุกข์ลำเค็ญ)	R=lam-khen	T=ลำ mid, เค็ญ mid	dict=— 	NODICT
+แซม	PROPN	Sam (a given name)	R=saem	T=แซม mid	dict=sɛɛm /sɛːm˧/
+สมชาย	PROPN	Somchai (a given name)	R=—	T=สม rising, ชาย mid	dict=sǒm-chaai /som˩˩˦.t͡ɕʰaːj˧/	NOROM
+มะลิ	NOUN	jasmine	R=—	T=มะ high, ลิ high	dict=má-lí /ma˦˥.liʔ˦˥/	NOROM	CLF: —
+บอล	NOUN	ball; football	R=bon	T=บอล mid	dict=bɔn /bɔn˧/	CLF: Classifier: ลูก (counts fruit, balls, mountains, round things).
+ต้น	PROPN	Ton (a given name; also "tree")	R=ton	T=ต้น falling	dict=dtôn /ton˥˩/
+มะลิ	PROPN	Mali (a given name; also "jasmine")	R=—	T=มะ high, ลิ high	dict=má-lí /ma˦˥.liʔ˦˥/	NOROM
+บอล	PROPN	Ball (a given name; also "ball")	R=bon	T=บอล mid	dict=bɔn /bɔn˧/
+แดง	PROPN	Daeng (a given name; also "red")	R=daeng	T=แดง mid	dict=dɛɛng /dɛːŋ˧/
+เล็ก	PROPN	Lek (a given name; also "small")	R=lek	T=เล็ก high	dict=lék /lek̚˦˥/
+เอมี่	PROPN	Amy (a given name)	R=—	T=เอ mid, มี่ falling	dict=— 	NODICT NOROM
+มาร์ค	PROPN	Mark (a given name)	R=—	T=มาร์ค falling	dict=— 	NODICT NOROM
+อับราฮัม	PROPN	Abraham	reg=religious	R=—	T=อับ low, รา mid, ฮัม mid	dict=àp-raa-ham /ʔap̚˨˩.raː˧.ham˧/	NOROM
+เยริโค	PROPN	Jericho (the spelling many texts use; the OTCV writes เยรีโค)	reg=religious	R=—	T=เย mid, ริ high, โค mid	dict=— 	NODICT NOROM
+ซิม	NOUN	SIM card	R=sim	T=ซิม mid	dict=— 	NODICT	CLF: —
+ซิมการ์ด	NOUN	SIM card	R=—	T=ซิม mid, การ์ด low	dict=— 	NODICT NOROM	CLF: —
+แชท	NOUN	chat (a message conversation)	R=—	T=แชท falling	dict=— 	NODICT NOROM	CLF: —
+แชท	VERB	to chat (by messages)	R=—	T=แชท falling	dict=— 	NODICT NOROM
+โอเค	INTJ	okay	reg=colloquial	R=—	T=โอ mid, เค mid	dict=oo-kee /ʔoː˧.kʰeː˧/	NOROM
+ไซส์	NOUN	size (of clothes, shoes)	R=—	T=ไซส์ mid	dict=— 	NODICT NOROM	CLF: —
+ศิษยาภิบาล	NOUN	pastor	reg=religious	R=—	T=ศิษ low, ยา mid, ภิ high, บาล mid	dict=— 	NODICT NOROM	CLF: —
+มิชชันนารี	NOUN	missionary	reg=religious	R=—	T=มิช high, ชัน mid, นา mid, รี mid	dict=— 	NODICT NOROM	CLF: —
+อีสเตอร์	NOUN	Easter	reg=religious	R=—	T=อีส low, เตอร์ mid	dict=íis-dtə̂ə /ʔiːs˦˥.tɤː˥˩/	NOROM TONE≠dict(high,falling)	CLF: —
+ยี่สิบ	NUM	twenty	R=yi-sip	T=ยี่ falling, สิบ low	dict=yîi-sìp /jiː˥˩.sip̚˨˩/
+สามสิบ	NUM	thirty	R=sam-sip	T=สาม rising, สิบ low	dict=— /saːm˩˩˦.sip̚˨˩/
+สี่สิบ	NUM	forty	R=si-sip	T=สี่ low, สิบ low	dict=sìi-sìp /siː˨˩.sip̚˨˩/
+ห้าสิบ	NUM	fifty	R=ha-sip	T=ห้า falling, สิบ low	dict=hâa-sìp /haː˥˩.sip̚˨˩/
+หกสิบ	NUM	sixty	R=—	T=หก low, สิบ low	dict=hòk-sìp /hok̚˨˩.sip̚˨˩/	NOROM
+เจ็ดสิบ	NUM	seventy	R=chet-sip	T=เจ็ด low, สิบ low	dict=jèt-sìp /t͡ɕet̚˨˩.sip̚˨˩/
+แปดสิบ	NUM	eighty	R=paet-sip	T=แปด low, สิบ low	dict=bpɛ̀ɛt-sìp /pɛːt̚˨˩.sip̚˨˩/
+เก้าสิบ	NUM	ninety	R=kao-sip	T=เก้า falling, สิบ low	dict=gâao-sìp /kaːw˥˩.sip̚˨˩/
+เอ็ด	NUM	one (last digit above ten: สิบเอ็ด 11, ยี่สิบเอ็ด 21)	R=et	T=เอ็ด low	dict=èt /ʔet̚˨˩/
+หน้าที่	NOUN	duty, responsibility	cut=หน้า+ที่	R=—	T=—	dict=nâa-tîi /naː˥˩.tʰiː˥˩/	SPLIT	CLF: —
+ตากลม	VERB	to take the air; to dry in the wind	cut=ตา+กลม	R=—	T=—	dict=— 	SPLIT NODICT
+ตู้	NOUN	cupboard, cabinet	R=tu	T=ตู้ falling	dict=dtûu /tuː˥˩/	CLF: —
+จ่าย	VERB	to pay; to spend	R=chai	T=จ่าย low	dict=jàai /t͡ɕaːj˨˩/
+อายุ	VERB	to be (so many) years old; (noun) age	R=—	T=อา mid, ยุ high	dict=aa-yú /ʔaː˧.juʔ˦˥/	NOROM
+ปวด	VERB	to ache, to hurt	R=puat	T=ปวด low	dict=bpùuat /pua̯t̚˨˩/
+ขวาน	NOUN	axe	R=khwan	T=ขวาน rising	dict=kwǎan /kʰwaːn˩˩˦/	CLF: —
+กระต่าย	NOUN	hare; rabbit	R=—	T=(tone not given)	dict=grà-dtàai /kra˨˩.taːj˨˩/	NOROM	CLF: —
+นา	NOUN	rice field, paddy	R=na	T=นา mid	dict=naa /naː˧/	CLF: —
+เล่า	VERB	to tell, to narrate (a story)	R=lao	T=เล่า falling	dict=lâo /law˥˩/
+หาย	VERB	to disappear, to be lost; to recover (from illness)	R=hai	T=หาย rising	dict=hǎai /haːj˩˩˦/
+ทั้ง	DET	all, both, whole (as in ทั้งสอง "both", ทั้งหมด "all")	R=thang	T=ทั้ง high	dict=táng /tʰaŋ˦˥/
+ชาย	NOUN	man, male	R=chai	T=ชาย mid	dict=chaai /t͡ɕʰaːj˧/	CLF: —
+มอง	VERB	to look at, to watch	R=mong	T=มอง mid	dict=mɔɔng /mɔːŋ˧/
+เต่า	NOUN	tortoise, turtle	R=tao	T=เต่า low	dict=dtào /taw˨˩/	CLF: —
+ฤดู	NOUN	season	R=—	T=(tone not given)	dict=rʉ́-duu /rɯ˦˥.duː˧/	NOROM	CLF: —
+ราชสีห์	NOUN	lion (the royal lion of fables)	R=—	T=ราช falling, สีห์ rising	dict=râat-chá-sǐi /raːt̚˥˩.t͡ɕʰa˦˥.siː˩˩˦/	NOROM TONE≠dict(falling,high,rising)	CLF: —
+ชาวนา	NOUN	rice farmer	R=—	T=ชาว mid, นา mid	dict=chaao-naa /t͡ɕʰaːw˧.naː˧/	NOROM	CLF: —
+เทวดา	NOUN	deity, spirit, angel-like being	reg=religious	R=—	T=เทว mid, ดา mid	dict=tee-wá-daa /tʰeː˧.wa˦˥.daː˧/	NOROM TONE≠dict(mid,high,mid)	CLF: Classifier: องค์ (counts royalty, deities, monks, holy images).
+เสียง	NOUN	sound, voice	R=siang	T=เสียง rising	dict=sǐiang /sia̯ŋ˩˩˦/	CLF: —
+หัวร่อ	VERB	to laugh (old-fashioned form of หัวเราะ)	reg=literary	R=hua-ro	T=หัว rising, ร่อ falling	dict=hǔua-rɔ̂ɔ /hua̯˩˩˦.rɔː˥˩/
+เกิน	VERB	to exceed, to be too much	R=koen	T=เกิน mid	dict=gəən /kɤːn˧/
+เสีย	VERB	to lose; to spoil, to break down; to pay	R=sia	T=เสีย rising	dict=sǐia /sia̯˩˩˦/
+หมด	VERB	to be used up, to run out; all gone	R=mot	T=หมด low	dict=mòt /mot̚˨˩/
+หมู่บ้าน	NOUN	village	R=—	T=(tone not given)	dict=mùu-bâan /muː˨˩.baːn˥˩/	NOROM	CLF: —
+ทาง	NOUN	way, path, road	R=thang	T=ทาง mid	dict=taang /tʰaːŋ˧/	CLF: Classifier: เส้น (counts roads, hairs, noodles, ropes); สาย (counts roads, rivers, bus routes, ropes).
+ร้องไห้	VERB	to cry, to weep	R=rong-hai	T=ร้อง high, ไห้ falling	dict=rɔ́ɔng-hâai /rɔːŋ˦˥.haːj˥˩/
+ทอง	NOUN	gold	R=thong	T=ทอง mid	dict=tɔɔng /tʰɔːŋ˧/	CLF: —
+เหรียญ	NOUN	coin; medal	R=rian	T=เหรียญ rising	dict=rǐian /ria̯n˩˩˦/	CLF: —
+ค่า	NOUN	price, fee, cost; worth	R=kha	T=ค่า falling	dict=kâa /kʰaː˥˩/	CLF: —
+สัก	DET	about; a (small) ...; even one	R=sak	T=สัก low	dict=sàk /sak̚˨˩/
+เชือก	NOUN	rope, cord	R=chueak	T=เชือก falling	dict=chʉ̂ʉak /t͡ɕʰɯa̯k̚˥˩/	CLF: Classifier: เส้น (counts roads, hairs, noodles, ropes); สาย (counts roads, rivers, bus routes, ropes).
+พริก	NOUN	chilli	R=phrik	T=พริก high	dict=prík /pʰrik̚˦˥/	CLF: —
+คด	ADJ	crooked, bent, not straight	R=khot	T=คด high	dict=kót /kʰot̚˦˥/
+ริม	ADP	beside, along the edge of	R=rim	T=ริม mid	dict=rim /rim˧/
+ช่วง	NOUN	stretch of time, period	R=chuang	T=ช่วง falling	dict=chûuang /t͡ɕʰua̯ŋ˥˩/	CLF: —
+นัด	VERB	to arrange to meet; (noun) an appointment	R=nat	T=นัด high	dict=nát /nat̚˦˥/
+ลำธาร	NOUN	stream	R=—	T=ลำ mid, ธาร mid	dict=lam-taan /lam˧.tʰaːn˧/	NOROM	CLF: —
+แพะ	NOUN	goat	R=phae	T=แพะ high	dict=pɛ́ /pʰɛʔ˦˥/	CLF: —
+หมาป่า	NOUN	wolf	R=—	T=(tone not given)	dict=mǎa-bpàa /maː˩˩˦.paː˨˩/	NOROM	CLF: —
+รักษา	VERB	to treat (an illness); to keep, to preserve	R=—	T=รัก high, ษา rising	dict=rák-sǎa /rak̚˦˥.saː˩˩˦/	NOROM
+ไม่รู้	VERB	not to know	R=mai-ru	T=ไม่ falling, รู้ high	dict=mâi-rúu /maj˥˩.ruː˦˥/
+ทุน	NOUN	capital; scholarship, grant	R=thun	T=ทุน mid	dict=tun /tʰun˧/	CLF: —
+นาน	ADJ	long (of time)	R=nan	T=นาน mid	dict=naan /naːn˧/
+มิตร	NOUN	friend (formal)	reg=literary	R=—	T=มิตร high	dict=mít /mit̚˦˥/	NOROM	CLF: —
+สหาย	NOUN	friend, comrade (literary)	reg=literary	R=—	T=ส low, หาย rising	dict=sà-hǎai /sa˨˩.haːj˩˩˦/	NOROM	CLF: —
+ควัน	NOUN	smoke	R=khwan	T=ควัน mid	dict=kwan /kʰwan˧/	CLF: —
+ผ่าน	VERB	to pass, to go through	R=phan	T=ผ่าน low	dict=pàan /pʰaːn˨˩/
+ประมาณ	ADV	about, approximately	R=—	T=(tone not given)	dict=bprà-maan /pra˨˩.maːn˧/	NOROM
+เมล็ด	NOUN	seed, grain	R=—	T=—	dict=má-lét /ma˦˥.let̚˦˥/	NOROM	CLF: Classifier: เม็ด (counts seeds, grains, pills, beads).
+เถิด	PART	please, do ... (urging or encouraging particle)	reg=literary	R=thoet	T=เถิด low	dict=tə̀ət /tʰɤːt̚˨˩/
+ข้าวต้ม	NOUN	rice porridge	R=—	T=ข้าว falling, ต้ม falling	dict=kâao-dtôm /kʰaːw˥˩.tom˥˩/	NOROM	CLF: —
+เหลือ	VERB	to be left over, to remain	R=luea	T=เหลือ rising	dict=lʉ̌ʉa /lɯa̯˩˩˦/
+นิทาน	NOUN	tale, story, fable	R=—	T=นิ high, ทาน mid	dict=ní-taan /ni˦˥.tʰaːn˧/	NOROM	CLF: Classifier: เรื่อง (counts stories, matters).
+เต็ม	ADJ	full	R=tem	T=เต็ม mid	dict=dtem /tem˧/
+ซ่อม	VERB	to repair, to mend	R=som	T=ซ่อม falling	dict=sɔ̂m /sɔm˥˩/
+ที	NOUN	time, turn (as in ทีหนึ่ง "once")	R=thi	T=ที mid	dict=tii /tʰiː˧/	CLF: Classifier: หน (counts times, occasions).
+พอ	ADV	enough; to be enough	R=pho	T=พอ mid	dict=pɔɔ /pʰɔː˧/
+หนี	VERB	to flee, to run away	R=ni	T=หนี rising	dict=nǐi /niː˩˩˦/
+สงกรานต์	NOUN	Songkran, the Thai New Year (13-15 April)	R=—	T=(tone not given)	dict=sǒng-graan /soŋ˩˩˦.kraːn˧/	NOROM	CLF: —
+แบบ	NOUN	kind, style, pattern	R=baep	T=แบบ low	dict=bɛ̀ɛp /bɛːp̚˨˩/	CLF: Classifier: อย่าง (counts kinds, types of things).
+เปียก	ADJ	wet	R=piak	T=เปียก low	dict=bpìiak /pia̯k̚˨˩/
+ชาว	NOUN	people (of a place or trade), as in ชาวนา "rice farmer"	R=chao	T=ชาว mid	dict=chaao /t͡ɕʰaːw˧/	CLF: Classifier: คน (counts people).
+พ่อค้า	NOUN	merchant, trader	R=pho-kha	T=พ่อ falling, ค้า high	dict=pɔ̂ɔ-káa /pʰɔː˥˩.kʰaː˦˥/	CLF: —
+ผ้า	NOUN	cloth, fabric	R=pha	T=ผ้า falling	dict=pâa /pʰaː˥˩/	CLF: Classifier: ตัว (counts animals, letters, clothes, furniture); ผืน (counts cloth, mats, flags, plots of land).
+น้ำลง	NOUN	ebb tide, low water	R=—	T=น้ำ high, ลง mid	dict=náam-long /naːm˦˥.loŋ˧/	NOROM	CLF: —
+งุ่มง่าม	ADJ	clumsy, awkward	R=ngum-ngam	T=งุ่ม falling, ง่าม falling	dict=ngûm-ngâam /ŋum˥˩.ŋaːm˥˩/
+รายงาน	NOUN	report (noun); to report	R=—	T=ราย mid, งาน mid	dict=raai-ngaan /raːj˧.ŋaːn˧/	NOROM	CLF: —
+ตน	PRON	oneself, self (formal)	reg=formal	R=ton	T=ตน mid	dict=dton /ton˧/
+แรก	ADJ	first	R=—	T=แรก falling	dict=rɛ̂ɛk /rɛːk̚˥˩/	NOROM
+ทุกข์	NOUN	suffering, grief, trouble	R=thuk	T=ทุกข์ high	dict=túk /tʰuk̚˦˥/	CLF: —
+ฟื้น	VERB	to recover, to revive; to rise again	R=fuen	T=ฟื้น high	dict=fʉ́ʉn /fɯːn˦˥/
+ศัตรู	NOUN	enemy	R=—	T=ศัต low, รู mid	dict=sàt-dtruu /sat̚˨˩.truː˧/	NOROM	CLF: —
+ผิด	ADJ	wrong, mistaken	R=phit	T=ผิด low	dict=pìt /pʰit̚˨˩/
+สมุด	NOUN	notebook	R=sa-mut	T=ส low, มุด low	dict=sà-mùt /sa˨˩.mut̚˨˩/	CLF: —
+พบ	VERB	to meet; to find	R=phop	T=พบ high	dict=póp /pʰop̚˦˥/
+ฉลอง	VERB	to celebrate	R=—	T=(tone not given)	dict=chà-lɔ̌ɔng /t͡ɕʰa˨˩.lɔːŋ˩˩˦/	NOROM
+สัตว์	NOUN	animal	R=—	T=สัตว์ low	dict=sàt /sat̚˨˩/	NOROM	CLF: Classifier: ตัว (counts animals, letters, clothes, furniture).
+หมาจิ้งจอก	NOUN	fox	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+มืด	ADJ	dark	R=muet	T=มืด falling	dict=mʉ̂ʉt /mɯːt̚˥˩/
+ดูถูก	VERB	to look down on, to despise	R=du-thuk	T=ดู mid, ถูก low	dict=duu-tùuk /duː˧.tʰuːk̚˨˩/
+แถว	NOUN	row, line	R=thaeo	T=แถว rising	dict=tɛ̌o /tʰɛw˩˩˦/	CLF: —
+โดยสาร	VERB	to travel as a passenger	R=doi-san	T=โดย mid, สาร rising	dict=dooi-sǎan /doːj˧.saːn˩˩˦/
+ไม้	NOUN	wood; stick	R=mai	T=ไม้ high	dict=máai /maːj˦˥/	CLF: —
+เลี้ยง	VERB	to raise, to feed; to treat (to a meal)	R=liang	T=เลี้ยง high	dict=líiang /lia̯ŋ˦˥/
+งวด	NOUN	period; instalment; the lowest point (as in น้ำลงงวด "lowest ebb")	R=nguat	T=งวด falling	dict=ngûuat /ŋua̯t̚˥˩/	CLF: —
+เซ	VERB	to stagger, to sway	R=se	T=เซ mid	dict=see /seː˧/
+สึก	VERB	to wear away; (in รู้สึก) part of "to feel"	R=suek	T=สึก low	dict=sʉ̀k /sɯk̚˨˩/
+โลภ	ADJ	greedy	R=lop	T=โลภ falling	dict=lôop /loːp̚˥˩/
+คนใน	NOUN	people inside; insiders	R=—	T=คน mid, ใน mid	dict=— 	NODICT NOROM	CLF: —
+สัญญา	NOUN	promise; contract (verb: to promise)	R=—	T=สัญ rising, ญา mid	dict=sǎn-yaa /san˩˩˦.jaː˧/	NOROM	CLF: —
+ลำบาก	ADJ	hard, difficult; in hardship	R=lam-bak	T=ลำ mid, บาก low	dict=lam-bàak /lam˧.baːk̚˨˩/
+สรรเสริญ	VERB	to praise	R=—	T=(tone not given)	dict=sǎn-sə̌ən /san˩˩˦.sɤːn˩˩˦/	NOROM
+จด	VERB	to write down, to note	R=chot	T=จด low	dict=jòt /t͡ɕot̚˨˩/
+คิดถึง	VERB	to miss; to think of	R=khit-thueng	T=คิด high, ถึง rising	dict=kít-tʉ̌ng /kʰit̚˦˥.tʰɯŋ˩˩˦/
+คนไข้	NOUN	patient	R=—	T=คน mid, ไข้ falling	dict=kon-kâi /kʰon˧.kʰaj˥˩/	NOROM	CLF: —
+นัก	ADV	very, too (as in นักหนา)	reg=literary	R=nak	T=นัก high	dict=nák /nak̚˦˥/
+ชนะ	VERB	to win, to overcome	R=cha-na	T=ช high, นะ high	dict=chá-ná /t͡ɕʰa˦˥.naʔ˦˥/
+พัก	VERB	to rest; to stay (somewhere)	R=phak	T=พัก high	dict=pák /pʰak̚˦˥/
+ยอม	VERB	to yield; to agree to; to allow	R=yom	T=ยอม mid	dict=yɔɔm /jɔːm˧/
+เสื้อ	NOUN	shirt, garment	R=suea	T=เสื้อ falling	dict=sʉ̂ʉa /sɯa̯˥˩/	CLF: —
+แห้ง	ADJ	dry	R=haeng	T=แห้ง falling	dict=hɛ̂ɛng /hɛːŋ˥˩/
+ท้องฟ้า	NOUN	sky	R=thong-fa	T=ท้อง high, ฟ้า high	dict=tɔ́ɔng-fáa /tʰɔːŋ˦˥.faː˦˥/	CLF: —
+เหล่า	DET	group of; (plural marker for people or animals)	R=lao	T=เหล่า low	dict=lào /law˨˩/
+ภูมิใจ	VERB	to be proud	R=—	T=ภู mid, มิ high, ใจ mid	dict=puum-jai /pʰuːm˧.t͡ɕaj˧/	NOROM TONE≠dict(mid,mid)
+กลาง	NOUN	middle, centre	R=klang	T=กลาง mid	dict=glaang /klaːŋ˧/	CLF: —
+เอ็ง	PRON	you (rough or old-fashioned, to someone lower)	reg=colloquial	R=eng	T=เอ็ง mid	dict=eng /ʔeŋ˧/
+ฆ่า	VERB	to kill	R=kha	T=ฆ่า falling	dict=kâa /kʰaː˥˩/
+โมง	CLF	o'clock (daytime hours)	R=mong	T=โมง mid	dict=moong /moːŋ˧/
+เท่า	ADJ	equal to; as much as; times	R=thao	T=เท่า falling	dict=tâo /tʰaw˥˩/
+วิธี	NOUN	method, way	R=—	T=วิ high, ธี mid	dict=wí-tii /wi˦˥.tʰiː˧/	NOROM	CLF: —
+ย่อม	ADV	naturally, of course (literary)	reg=literary	R=yom	T=ย่อม falling	dict=yɔ̂m /jɔm˥˩/
+รุ่ง	NOUN	dawn, daybreak	R=rung	T=รุ่ง falling	dict=rûng /ruŋ˥˩/	CLF: —
+กระโดด	VERB	to jump	R=—	T=(tone not given)	dict=grà-dòot /kra˨˩.doːt̚˨˩/	NOROM
+โกง	VERB	to cheat, to swindle	R=kong	T=โกง mid	dict=goong /koːŋ˧/
+หอมแดง	NOUN	shallot	R=—	T=หอม rising, แดง mid	dict=hɔ̌ɔm-dɛɛng /hɔːm˩˩˦.dɛːŋ˧/	NOROM	CLF: —
+พร้อม	ADJ	ready; together	R=phrom	T=พร้อม high	dict=prɔ́ɔm /pʰrɔːm˦˥/
+ซื่อสัตย์	ADJ	honest, faithful	R=—	T=ซื่อ falling, สัตย์ low	dict=sʉ̂ʉ-sàt /sɯː˥˩.sat̚˨˩/	NOROM
+แกะ	NOUN	sheep	R=kae	T=แกะ low	dict=gɛ̀ /kɛʔ˨˩/	CLF: —
+สวรรค์	NOUN	heaven	reg=religious	R=—	T=ส low, วรรค์ rising	dict=sà-wǎn /sa˨˩.wan˩˩˦/	NOROM	CLF: —
+ยกย่อง	VERB	to praise highly, to honour	R=—	T=ยก high, ย่อง falling	dict=yók-yɔ̂ng /jok̚˦˥.jɔŋ˥˩/	NOROM
+เลียน	VERB	to imitate, to copy	R=lian	T=เลียน mid	dict=liian /lia̯n˧/
+กระหาย	VERB	to be thirsty (for)	R=—	T=(tone not given)	dict=grà-hǎai /kra˨˩.haːj˩˩˦/	NOROM
+มุม	NOUN	corner	R=mum	T=มุม mid	dict=mum /mum˧/	CLF: —
+หากิน	VERB	to look for food; to earn a living	R=ha-kin	T=หา rising, กิน mid	dict=hǎa-gin /haː˩˩˦.kin˧/
+ข้าม	VERB	to cross over	R=kham	T=ข้าม falling	dict=kâam /kʰaːm˥˩/
+ลาภ	NOUN	gain, good fortune, windfall	R=lap	T=ลาภ falling	dict=lâap /laːp̚˥˩/	CLF: —
+ฝ่าย	NOUN	side; department, party	R=fai	T=ฝ่าย low	dict=fàai /faːj˨˩/	CLF: —
+หญิง	NOUN	woman, female	R=ying	T=หญิง rising	dict=yǐng /jiŋ˩˩˦/	CLF: —
+น้ำใจ	NOUN	kindness, generosity	R=nam-chai	T=น้ำ high, ใจ mid	dict=náam-jai /naːm˦˥.t͡ɕaj˧/	CLF: —
+หนี้	NOUN	debt	R=ni	T=หนี้ falling	dict=nîi /niː˥˩/	CLF: —
+ลูกชาย	NOUN	son	R=—	T=ลูก falling, ชาย mid	dict=lûuk-chaai /luːk̚˥˩.t͡ɕʰaːj˧/	NOROM	CLF: —
+เกรงใจ	VERB	to feel reluctant to impose; to be considerate	R=—	T=(tone not given)	dict=greeng-jai /kreːŋ˧.t͡ɕaj˧/	NOROM
+ร่วม	VERB	to join, to share in	R=ruam	T=ร่วม falling	dict=rûuam /rua̯m˥˩/
+ลุก	VERB	to get up, to rise	R=luk	T=ลุก high	dict=lúk /luk̚˦˥/
+คุย	VERB	to chat, to talk	R=khui	T=คุย mid	dict=kui /kʰuj˧/
+สาวก	NOUN	disciple	reg=religious	R=—	T=—	dict=sǎa-wók /saː˩˩˦.wok̚˦˥/	NOROM	CLF: —
+กางเขน	NOUN	cross	reg=religious	R=kang-khen	T=กาง mid, เขน rising	dict=gaang-kěen /kaːŋ˧.kʰeːn˩˩˦/	CLF: —
+โกหก	VERB	to lie, to tell a lie	R=—	T=โก mid, หก low	dict=goo-hòk /koː˧.hok̚˨˩/	NOROM
+หายใจ	VERB	to breathe	R=hai-chai	T=หาย rising, ใจ mid	dict=hǎai-jai /haːj˩˩˦.t͡ɕaj˧/
+นึกถึง	VERB	to think of, to recall	R=nuek-thueng	T=นึก high, ถึง rising	dict=— 	NODICT
+จง	PART	must, do ... (imperative particle)	reg=literary	R=chong	T=จง mid	dict=jong /t͡ɕoŋ˧/
+นึก	VERB	to think, to imagine, to recall	R=nuek	T=นึก high	dict=nʉ́k /nɯk̚˦˥/
+เตรียม	VERB	to prepare	R=triam	T=เตรียม mid	dict=dtriiam /tria̯m˧/
+ปลูก	VERB	to plant, to grow; to build	R=pluk	T=ปลูก low	dict=bplùuk /pluːk̚˨˩/
+ตาก	VERB	to dry in the sun; to hang out to dry	R=tak	T=ตาก low	dict=dtàak /taːk̚˨˩/
+ว่าง	ADJ	empty, vacant; free (not busy)	R=wang	T=ว่าง falling	dict=wâang /waːŋ˥˩/
+ปล่อย	VERB	to release, to let go	R=ploi	T=ปล่อย low	dict=bplɔ̀i /plɔj˨˩/
+กล้า	VERB	to dare	R=kla	T=กล้า falling	dict=glâa /klaː˥˩/
+ขาด	VERB	to lack, to be short of; to snap, to be torn	R=khat	T=ขาด low	dict=kàat /kʰaːt̚˨˩/
+ไข้	NOUN	fever	R=khai	T=ไข้ falling	dict=kâi /kʰaj˥˩/	CLF: —
+เหยียบ	VERB	to step on, to tread	R=yiap	T=เหยียบ low	dict=yìiap /jia̯p̚˨˩/
+ครึ่ง	NOUN	half	R=khrueng	T=ครึ่ง falling	dict=krʉ̂ng /kʰrɯŋ˥˩/	CLF: —
+ตั๋ว	NOUN	ticket	R=tua	T=ตั๋ว rising	dict=dtǔua /tua̯˩˩˦/	CLF: —
+ไล่	VERB	to chase, to drive away	R=lai	T=ไล่ falling	dict=lâi /laj˥˩/
+ท่วม	VERB	to flood	R=thuam	T=ท่วม falling	dict=tûuam /tʰua̯m˥˩/
+ล้ม	VERB	to fall over; to lie down	R=lom	T=ล้ม high	dict=lóm /lom˦˥/
+คราว	NOUN	time, occasion	R=khrao	T=คราว mid	dict=kraao /kʰraːw˧/	CLF: Classifier: หน (counts times, occasions).
+ฝาก	VERB	to leave with, to deposit; to entrust	R=fak	T=ฝาก low	dict=fàak /faːk̚˨˩/
+แบ่ง	VERB	to divide, to share	R=baeng	T=แบ่ง low	dict=bɛ̀ng /bɛŋ˨˩/
+แปล	VERB	to translate; to mean	R=paen	T=แปล mid	dict=bplɛɛ /plɛː˧/	ROM≠dict(plae)
+เปลือก	NOUN	peel, skin, husk, shell	R=plueak	T=เปลือก low	dict=bplʉ̀ʉak /plɯa̯k̚˨˩/	CLF: —
+จ้าง	VERB	to hire	R=chang	T=จ้าง falling	dict=jâang /t͡ɕaːŋ˥˩/
+รับจ้าง	VERB	to work for hire	R=rap-chang	T=รับ high, จ้าง falling	dict=ráp-jâang /rap̚˦˥.t͡ɕaːŋ˥˩/
+ทุ่ง	NOUN	open field, plain	R=thung	T=ทุ่ง falling	dict=tûng /tʰuŋ˥˩/	CLF: —
+สมบัติ	NOUN	possessions, treasure	R=—	T=—	dict=sǒm-bàt /som˩˩˦.bat̚˨˩/	NOROM	CLF: —
+สวม	VERB	to wear (clothes, a hat), to put on	R=suam	T=สวม rising	dict=sǔuam /sua̯m˩˩˦/
+ขุน	VERB	to fatten (an animal)	R=khun	T=ขุน rising	dict=kǔn /kʰun˩˩˦/
+ชั่ว	ADJ	bad, wicked	R=chua	T=ชั่ว falling	dict=chûua /t͡ɕʰua̯˥˩/
+ดำเนิน	VERB	to proceed, to walk; to carry on	R=—	T=ดำ mid, เนิน mid	dict=dam-nəən /dam˧.nɤːn˧/	NOROM
+เจริญ	VERB	to grow, to prosper	R=choen	T=เจริญ mid	dict=jà-rəən /t͡ɕa˨˩.rɤːn˧/	TONE≠dict(low,mid) ROM≠dict(charoen)
+สำคัญ	ADJ	important	R=sam-khan	T=สำ rising, คัญ mid	dict=sǎm-kan /sam˩˩˦.kʰan˧/
+คาบ	VERB	to hold in the mouth	R=khap	T=คาบ falling	dict=kâap /kʰaːp̚˥˩/
+เช่น	CONJ	for example, such as	R=chen	T=เช่น falling	dict=chên /t͡ɕʰen˥˩/
+สนับสนุน	VERB	to support	R=—	T=ส low, นับ low, ส low, นุน rising	dict=sà-nàp-sà-nǔn /sa˨˩.nap̚˨˩.sa˨˩.nun˩˩˦/	NOROM
+ปรึกษา	VERB	to consult, to talk over	R=—	T=(tone not given)	dict=bprʉ̀k-sǎa /prɯk̚˨˩.saː˩˩˦/	NOROM
+ติดตาม	VERB	to follow, to keep track of	R=—	T=ติด low, ตาม mid	dict=dtìt-dtaam /tit̚˨˩.taːm˧/	NOROM
+ท่ามกลาง	ADP	in the midst of	R=—	T=(tone not given)	dict=tâam-glaang /tʰaːm˥˩.klaːŋ˧/	NOROM
+ทิ้ง	VERB	to throw away; to leave behind	R=thing	T=ทิ้ง high	dict=tíng /tʰiŋ˦˥/
+ผนัง	NOUN	wall	R=—	T=ผ low, นัง rising	dict=pà-nǎng /pʰa˨˩.naŋ˩˩˦/	NOROM	CLF: —
+หนุ่ม	ADJ	young (of a man)	R=num	T=หนุ่ม low	dict=nùm /num˨˩/
+กอด	VERB	to hug, to embrace	R=kot	T=กอด low	dict=gɔ̀ɔt /kɔːt̚˨˩/
+เสมอ	ADV	always	R=—	T=เส rising, มอ mid	dict=sà-mə̌ə /sa˨˩.mɤː˩˩˦/	NOROM TONE≠dict(low,rising)
+กลุ่ม	NOUN	group	R=klum	T=กลุ่ม low	dict=glùm /klum˨˩/	CLF: —
+เลือก	VERB	to choose	R=lueak	T=เลือก falling	dict=lʉ̂ʉak /lɯa̯k̚˥˩/
+ปลาย	NOUN	tip, end	R=plai	T=ปลาย mid	dict=bplaai /plaːj˧/	CLF: —
+จุด	VERB	to light, to set alight; (noun) a dot, a point	R=chut	T=จุด low	dict=jùt /t͡ɕut̚˨˩/
+ระวัง	VERB	to be careful, to beware	R=ra-wang	T=ระ high, วัง mid	dict=rá-wang /ra˦˥.waŋ˧/
+พฤศจิกายน	NOUN	November	R=—	T=(tone not given)	dict=prʉ́t-sà-jì-gaa-yon /pʰrɯt̚˦˥.sa˨˩.t͡ɕi˨˩.kaː˧.jon˧/	NOROM	CLF: —
+ปลอดภัย	ADJ	safe	R=—	T=(tone not given)	dict=bplɔ̀ɔt-pai /plɔːt̚˨˩.pʰaj˧/	NOROM
+จัด	VERB	to arrange, to organise	R=chat	T=จัด low	dict=jàt /t͡ɕat̚˨˩/
+หยิบ	VERB	to pick up	R=yip	T=หยิบ low	dict=yìp /jip̚˨˩/
+ตี	VERB	to hit; (of a clock) to strike	R=ti	T=ตี mid	dict=dtii /tiː˧/
+ปฏิเสธ	VERB	to refuse, to deny	R=—	T=ป low, ฏิ low, เสธ low	dict=bpà-dtì-sèet /pa˨˩.ti˨˩.seːt̚˨˩/	NOROM
+พยายาม	VERB	to try, to make an effort	R=pha-ya-yam	T=พ high, ยา mid, ยาม mid	dict=pá-yaa-yaam /pʰa˦˥.jaː˧.jaːm˧/
+เผ็ด	ADJ	spicy, hot	R=phet	T=เผ็ด low	dict=pèt /pʰet̚˨˩/
+ลด	VERB	to reduce; to go down	R=lot	T=ลด high	dict=lót /lot̚˦˥/
+เบื่อ	VERB	to be bored, to be tired of	R=buea	T=เบื่อ low	dict=bʉ̀ʉa /bɯa̯˨˩/
+ขนาด	NOUN	size	R=—	T=ข low, นาด low	dict=kà-nàat /kʰa˨˩.naːt̚˨˩/	NOROM	CLF: —
+แตก	VERB	to break, to burst, to crack	R=taek	T=แตก low	dict=dtɛ̀ɛk /tɛːk̚˨˩/
+ทันใด	ADV	at once, suddenly	reg=literary	R=than-dai	T=ทัน mid, ใด mid	dict=tan-dai /tʰan˧.daj˧/
+เมษายน	NOUN	April	R=—	T=เม mid, ษา rising, ยน mid	dict=mee-sǎa-yon /meː˧.saː˩˩˦.jon˧/	NOROM	CLF: —
+เสร็จ	VERB	to finish, to be done	R=—	T=เสร็จ low	dict=sèt /set̚˨˩/	NOROM
+โง่	ADJ	foolish, stupid	R=ngo	T=โง่ falling	dict=ngôo /ŋoː˥˩/
+เพิ่ม	VERB	to add, to increase	R=phoem	T=เพิ่ม falling	dict=pə̂əm /pʰɤːm˥˩/
+อาศัย	VERB	to live (in), to depend on	R=—	T=อา mid, ศัย rising	dict=aa-sǎi /ʔaː˧.saj˩˩˦/	NOROM
+วาง	VERB	to put down, to place	R=wang	T=วาง mid	dict=waang /waːŋ˧/
+พัด	VERB	to blow; to fan	R=phat	T=พัด high	dict=pát /pʰat̚˦˥/
+เจ้าของ	NOUN	owner	R=chao-khong	T=เจ้า falling, ของ rising	dict=jâo-kɔ̌ɔng /t͡ɕaw˥˩.kʰɔːŋ˩˩˦/	CLF: —
+ผล	NOUN	fruit; result	R=—	T=ผล rising	dict=pǒn /pʰon˩˩˦/	NOROM	CLF: Classifier: ลูก (counts fruit, balls, mountains, round things).
+มัว	ADJ	hazy, dim; (before a verb) busy with, absorbed in	R=mua	T=มัว mid	dict=muua /mua̯˧/
+ทั่ว	ADV	all over, throughout	R=thua	T=ทั่ว falling	dict=tûua /tʰua̯˥˩/
+บ้าง	ADV	some, a bit	R=bang	T=บ้าง falling	dict=bâng /baŋ˥˩/
+โต	ADJ	big; grown up	R=to	T=โต mid	dict=dtoo /toː˧/
+กระเทียม	NOUN	garlic	R=—	T=(tone not given)	dict=grà-tiiam /kra˨˩.tʰia̯m˧/	NOROM	CLF: —
+น้ำปลา	NOUN	fish sauce	R=—	T=(tone not given)	dict=nám-bplaa /nam˦˥.plaː˧/	NOROM	CLF: —
+หอม	ADJ	fragrant	R=hom	T=หอม rising	dict=hɔ̌ɔm /hɔːm˩˩˦/
+ย่าง	VERB	to grill, to roast	R=yang	T=ย่าง falling	dict=yâang /jaːŋ˥˩/
+ชิม	VERB	to taste, to try	R=chim	T=ชิม mid	dict=chim /t͡ɕʰim˧/
+เติม	VERB	to add, to top up	R=toem	T=เติม mid	dict=dtəəm /tɤːm˧/
+สงสาร	VERB	to pity, to feel sorry for	R=—	T=สง rising, สาร rising	dict=sǒng-sǎan /soŋ˩˩˦.saːn˩˩˦/	NOROM
+ปลอบ	VERB	to comfort	R=plop	T=ปลอบ low	dict=bplɔ̀ɔp /plɔːp̚˨˩/
+เหล็ก	NOUN	iron	R=lek	T=เหล็ก low	dict=lèk /lek̚˨˩/	CLF: —
+ปัก	VERB	to stick in; to embroider; (ปักดำ) to transplant rice seedlings	R=pak	T=ปัก low	dict=bpàk /pak̚˨˩/
+ที่ดิน	NOUN	land, a plot of land	R=thi-din	T=ที่ falling, ดิน mid	dict=tîi-din /tʰiː˥˩.din˧/	CLF: —
+แบก	VERB	to carry on the shoulder	R=baek	T=แบก low	dict=bɛ̀ɛk /bɛːk̚˨˩/
+เหลือเฟือ	ADJ	plentiful, more than enough	R=—	T=(tone not given)	dict=lʉ̌ʉa-fʉʉa /lɯa̯˩˩˦.fɯa̯˧/	NOROM
+ดนตรี	NOUN	music	R=—	T=(tone not given)	dict=don-dtrii /don˧.triː˧/	NOROM	CLF: —
+เต้นรำ	VERB	to dance	R=ten-ram	T=เต้น falling, รำ mid	dict=dtên-ram /ten˥˩.ram˧/
+กันดาร	ADJ	barren; scarce (of food or water)	R=—	T=กัน mid, ดาร mid	dict=gan-daan /kan˧.daːn˧/	NOROM
+โรง	NOUN	building, hall; mill (as in โรงสี)	R=rong	T=โรง mid	dict=roong /roːŋ˧/	CLF: Classifier: หลัง (counts houses, buildings).
+สมมุติ	VERB	to suppose, to assume	R=—	T=สม rising, มุ high, ติ low	dict=sǒm-mút /som˩˩˦.mut̚˦˥/	NOROM TONE≠dict(rising,high)
+ผลาญ	VERB	to squander, to waste	R=phlan	T=ผลาญ rising	dict=plǎan /pʰlaːn˩˩˦/
+คู่ควร	ADJ	worthy, deserving	R=khu-khuan	T=คู่ falling, ควร mid	dict=kûu-kuuan /kʰuː˥˩.kʰua̯n˧/
+สั่ง	VERB	to order, to command	R=sang	T=สั่ง low	dict=sàng /saŋ˨˩/
+นำ	VERB	to lead; to bring	R=nam	T=นำ mid	dict=nam /nam˧/
+ปฏิบัติ	VERB	to practise; to treat (someone)	R=—	T=—	dict=bpà-dtì-bàt /pa˨˩.ti˨˩.bat̚˨˩/	NOROM
+หมึก	NOUN	ink	R=muek	T=หมึก low	dict=mʉ̀k /mɯk̚˨˩/	CLF: —
+พยาน	NOUN	witness	R=—	T=พ high, ยาน mid	dict=pá-yaan /pʰa˦˥.jaːn˧/	NOROM	CLF: —
+ดับ	VERB	to go out (a light); to put out	R=dap	T=ดับ low	dict=dàp /dap̚˨˩/
+เลน	NOUN	mud (of a mudflat)	R=len	T=เลน mid	dict=leen /leːn˧/	CLF: —
+สะพาน	NOUN	bridge	R=—	T=สะ low, พาน mid	dict=sà-paan /sa˨˩.pʰaːn˧/	NOROM	CLF: —
+เงา	NOUN	shadow	R=ngao	T=เงา mid	dict=ngao /ŋaw˧/	CLF: —
+แย่ง	VERB	to snatch, to seize	R=yaeng	T=แย่ง falling	dict=yɛ̂ɛng /jɛːŋ˥˩/
+สอบ	VERB	to take an examination	R=sop	T=สอบ low	dict=sɔ̀ɔp /sɔːp̚˨˩/
+วิทยาลัย	NOUN	college	R=—	T=วิท high, ยา mid, ลัย mid	dict=wít-tá-yaa-lai /wit̚˦˥.tʰa˦˥.jaː˧.laj˧/	NOROM TONE≠dict(high,high,mid,mid)	CLF: —
+ฝึกงาน	VERB	to train on the job, to do an internship	R=—	T=ฝึก low, งาน mid	dict=fʉ̀k-ngaan /fɯk̚˨˩.ŋaːn˧/	NOROM
+ปริญญา	NOUN	degree (academic)	R=—	T=(tone not given)	dict=bpà-rin-yaa /pa˨˩.rin˧.jaː˧/	NOROM	CLF: —
+นอกจาก	CONJ	apart from, besides	R=—	T=นอก falling, จาก low	dict=nɔ̂ɔk-jàak /nɔːk̚˥˩.t͡ɕaːk̚˨˩/	NOROM
+ดอกเบี้ย	NOUN	interest (on money)	R=—	T=ดอก low, เบี้ย falling	dict=dɔ̀ɔk-bîia /dɔːk̚˨˩.bia̯˥˩/	NOROM	CLF: —
+ขอร้อง	VERB	to beg, to ask earnestly	R=kho-rong	T=ขอ rising, ร้อง high	dict=kɔ̌ɔ-rɔ́ɔng /kʰɔː˩˩˦.rɔːŋ˦˥/
+ชั้น	NOUN	class, grade; floor, layer	R=chan	T=ชั้น high	dict=chán /t͡ɕʰan˦˥/	CLF: —
+กิจกรรม	NOUN	activity	R=—	T=(tone not given)	dict=gìt-jà-gam /kit̚˨˩.t͡ɕa˨˩.kam˧/	NOROM	CLF: —
+แสดง	VERB	to show; to perform	R=—	T=แส rising, ดง mid	dict=sà-dɛɛng /sa˨˩.dɛːŋ˧/	NOROM TONE≠dict(low,mid)
+เชิญ	VERB	to invite	R=choen	T=เชิญ mid	dict=chəən /t͡ɕʰɤːn˧/
+สามัคคี	VERB	to be united	R=—	T=สา rising, มัค high, คี mid	dict=sǎa-mák-kii /saː˩˩˦.mak̚˦˥.kʰiː˧/	NOROM
+ลงโทษ	VERB	to punish	R=—	T=ลง mid, โทษ falling	dict=long-tôot /loŋ˧.tʰoːt̚˥˩/	NOROM
+ทดสอบ	VERB	to test	R=—	T=ทด high, สอบ low	dict=tót-sɔ̀ɔp /tʰot̚˦˥.sɔːp̚˨˩/	NOROM
+พิพากษา	VERB	to judge, to sentence	R=—	T=พิ high, พาก falling, ษา rising	dict=pí-pâak-sǎa /pʰi˦˥.pʰaːk̚˥˩.saː˩˩˦/	NOROM
+สามารถ	VERB	to be able to	R=sa-mat	T=สา rising, มารถ falling	dict=sǎa-mâat /saː˩˩˦.maːt̚˥˩/
+ปรากฏ	VERB	to appear, to become apparent	R=—	T=(tone not given)	dict=bpraa-gòt /praː˧.kot̚˨˩/	NOROM
+สมบูรณ์	ADJ	complete, perfect	R=—	T=สม rising, บูรณ์ mid	dict=sǒm-buun /som˩˩˦.buːn˧/	NOROM
+คริสเตียน	NOUN	Christian	reg=religious	R=—	T=(tone not given)	dict=krít-sà-dtiian /kʰrit̚˦˥.sa˨˩.tia̯n˧/	NOROM	CLF: —
+จักรยาน	NOUN	bicycle	R=—	T=จัก low, ร high, ยาน mid	dict=jàk-grà-yaan /t͡ɕak̚˨˩.kra˨˩.jaːn˧/	NOROM TONE≠dict(low,low,mid)	CLF: Classifier: คัน (counts cars, buses, bicycles, umbrellas).
+นมัสการ	VERB	to worship	reg=religious	R=—	T=น high, มัส high, การ mid	dict=ná-mát-sà-gaan /na˦˥.mat̚˦˥.sa˨˩.kaːn˧/	NOROM TONE≠dict(high,high,low,mid)
+ชวน	VERB	to invite, to urge (someone to join)	R=chuan	T=ชวน mid	dict=chuuan /t͡ɕʰua̯n˧/
+ตัดสิน	VERB	to judge, to decide	R=tat-sin	T=ตัด low, สิน rising	dict=dtàt-sǐn /tat̚˨˩.sin˩˩˦/
+มั่นใจ	VERB	to be confident	R=man-chai	T=มั่น falling, ใจ mid	dict=mân-jai /man˥˩.t͡ɕaj˧/
+มีนาคม	NOUN	March	R=—	T=มี mid, นา mid, คม mid	dict=mii-naa-kom /miː˧.naː˧.kʰom˧/	NOROM	CLF: —
+มิถุนายน	NOUN	June	R=—	T=มิ high, ถุ low, นา mid, ยน mid	dict=mí-tù-naa-yon /mi˦˥.tʰu˨˩.naː˧.jon˧/	NOROM	CLF: —
+ดอย	NOUN	mountain (northern Thai)	R=doi	T=ดอย mid	dict=dɔɔi /dɔːj˧/	CLF: Classifier: ลูก (counts fruit, balls, mountains, round things).
+ลอย	VERB	to float	R=loi	T=ลอย mid	dict=lɔɔi /lɔːj˧/
+ใส	ADJ	clear (of water, sky)	R=sai	T=ใส rising	dict=sǎi /saj˩˩˦/
+ไอ	VERB	to cough	R=ai	T=ไอ mid	dict=ai /ʔaj˧/
+หมู่	NOUN	group, party	R=mu	T=หมู่ low	dict=mùu /muː˨˩/	CLF: —
+หลังคา	NOUN	roof	R=—	T=(tone not given)	dict=lǎng-kaa /laŋ˩˩˦.kʰaː˧/	NOROM	CLF: —
+ดึก	ADJ	late at night	R=duek	T=ดึก low	dict=dʉ̀k /dɯk̚˨˩/
+นาย	NOUN	master, boss; Mr	R=nai	T=นาย mid	dict=naai /naːj˧/	CLF: —
+พราน	NOUN	hunter	R=phran	T=พราน mid	dict=praan /pʰraːn˧/	CLF: —
+ปีน	VERB	to climb	R=pin	T=ปีน mid	dict=bpiin /piːn˧/
+อาการ	NOUN	symptom; condition	R=—	T=อา mid, การ mid	dict=aa-gaan /ʔaː˧.kaːn˧/	NOROM	CLF: —
+กรุณา	ADV	please (formal)	reg=formal	R=—	T=(tone not given)	dict=gà-rú-naa /ka˨˩.ru˦˥.naː˧/	NOROM
+โทร	VERB	to phone	R=thon	T=โทร mid	dict=too /tʰoː˧/	ROM≠dict(tho)
+กระดาษ	NOUN	paper	R=—	T=(tone not given)	dict=grà-dàat /kra˨˩.daːt̚˨˩/	NOROM	CLF: Classifier: แผ่น (counts paper, boards, discs, slices).
+ไม่ทัน	VERB	not to be in time	R=mai-than	T=ไม่ falling, ทัน mid	dict=mâi-tan /maj˥˩.tʰan˧/
+เป็นไร	VERB	to matter; to be wrong (as in ไม่เป็นไร "never mind")	R=pen-rai	T=เป็น mid, ไร mid	dict=— 	NODICT
+ทำบุญ	VERB	to make merit	R=tham-bun	T=ทำ mid, บุญ mid	dict=tam-bun /tʰam˧.bun˧/
+เคารพ	VERB	to respect	R=—	T=เคา mid, รพ high	dict=kao-róp /kʰaw˧.rop̚˦˥/	NOROM
+ประเพณี	NOUN	custom, tradition	R=—	T=(tone not given)	dict=bprà-pee-nii /pra˨˩.pʰeː˧.niː˧/	NOROM	CLF: —
+ลำพัง	ADV	alone, by oneself	R=lam-phang	T=ลำ mid, พัง mid	dict=lam-pang /lam˧.pʰaŋ˧/
+สุดท้าย	ADJ	last, final	R=sut-thai	T=สุด low, ท้าย high	dict=sùt-táai /sut̚˨˩.tʰaːj˦˥/
+ฉลาด	ADJ	clever, wise	R=cha-lat	T=ฉ low, ลาด low	dict=chà-làat /t͡ɕʰa˨˩.laːt̚˨˩/
+เข้าไป	VERB	to go in	R=khao-pai	T=เข้า falling, ไป mid	dict=kâo-bpai /kʰaw˥˩.paj˧/
+ซ่อน	VERB	to hide	R=son	T=ซ่อน falling	dict=sɔ̂ɔn /sɔːn˥˩/
+สบายใจ	ADJ	at ease, content	R=—	T=ส low, บาย mid, ใจ mid	dict=— 	NODICT NOROM
+ฝั่ง	NOUN	bank, shore	R=fang	T=ฝั่ง low	dict=fàng /faŋ˨˩/	CLF: —
+หัวหน้า	NOUN	leader, head, chief	R=—	T=(tone not given)	dict=hǔua-nâa /hua̯˩˩˦.naː˥˩/	NOROM	CLF: —
+แพ้	VERB	to lose; to be allergic	R=phae	T=แพ้ high	dict=pɛ́ɛ /pʰɛː˦˥/
+ทุ่ม	NOUN	(evening hours: ทุ่ม marks 7-11 pm)	R=thum	T=ทุ่ม falling	dict=tûm /tʰum˥˩/	CLF: —
+พื้น	NOUN	floor, ground	R=phuen	T=พื้น high	dict=pʉ́ʉn /pʰɯːn˦˥/	CLF: —
+ทัน	VERB	to be in time; to catch up with	R=than	T=ทัน mid	dict=tan /tʰan˧/
+จม	VERB	to sink	R=chom	T=จม mid	dict=jom /t͡ɕom˧/
+เวร	NOUN	duty shift; turn on duty	R=wen	T=เวร mid	dict=ween /weːn˧/	CLF: —
+ท่อ	NOUN	pipe, drain	R=tho	T=ท่อ falling	dict=tɔ̂ɔ /tʰɔː˥˩/	CLF: —
+หม้อ	NOUN	pot	R=mo	T=หม้อ falling	dict=mɔ̂ɔ /mɔː˥˩/	CLF: —
+ต่าง	DET	different; each, every (as in ต่างคน)	R=tang	T=ต่าง low	dict=dtàang /taːŋ˨˩/
+ขาดทุน	VERB	to make a loss	R=khat-thun	T=ขาด low, ทุน mid	dict=— 	NODICT
+เดิม	ADJ	original, former	R=doem	T=เดิม mid	dict=dəəm /dɤːm˧/
+มากมาย	ADJ	a great many, plentiful	R=—	T=มาก falling, มาย mid	dict=mâak-maai /maːk̚˥˩.maːj˧/	NOROM
+มัก	ADV	often, tending to	R=mak	T=มัก high	dict=mák /mak̚˦˥/
+เสื้อผ้า	NOUN	clothes	R=suea-pha	T=เสื้อ falling, ผ้า falling	dict=sʉ̂ʉa-pâa /sɯa̯˥˩.pʰaː˥˩/	CLF: Classifier: ตัว (counts animals, letters, clothes, furniture); ผืน (counts cloth, mats, flags, plots of land).
+ส้ม	NOUN	orange; sour (as of fruit)	R=som	T=ส้ม falling	dict=sôm /som˥˩/	CLF: —
+ธรรมดา	ADJ	ordinary, usual	R=tham-ma-da	T=ธรร mid, ม high, ดา mid	dict=tam-má-daa /tʰam˧.ma˦˥.daː˧/
+กลิ่น	NOUN	smell	R=klin	T=กลิ่น low	dict=glìn /klin˨˩/	CLF: —
+หั่น	VERB	to slice, to chop	R=han	T=หั่น low	dict=hàn /han˨˩/
+ครก	NOUN	mortar	R=khrok	T=ครก high	dict=krók /kʰrok̚˦˥/	CLF: —
+ตำ	VERB	to pound	R=tam	T=ตำ mid	dict=dtam /tam˧/
+ละเอียด	ADJ	fine; detailed	R=la-iat	T=ละ high, เอียด low	dict=lá-ìiat /la˦˥.ʔia̯t̚˨˩/
+เค็ม	ADJ	salty	R=khem	T=เค็ม mid	dict=kem /kʰem˧/
+เปรี้ยว	ADJ	sour	R=priao	T=เปรี้ยว falling	dict=bprîao /pria̯w˥˩/
+น้ำตา	NOUN	tears	R=nam-ta	T=น้ำ high, ตา mid	dict=nám-dtaa /nam˦˥.taː˧/	CLF: —
+ไหล	VERB	to flow	R=lai	T=ไหล rising	dict=lǎi /laj˩˩˦/
+พยัก	VERB	to nod (as in พยักหน้า)	R=—	T=พ high, ยัก high	dict=pá-yák /pʰa˦˥.jak̚˦˥/	NOROM
+เหนียว	ADJ	sticky; tough	R=niao	T=เหนียว rising	dict=nǐao /nia̯w˩˩˦/
+หลุด	VERB	to slip off, to come loose	R=lut	T=หลุด low	dict=lùt /lut̚˨˩/
+ว่าย	VERB	to swim	R=wai	T=ว่าย falling	dict=wâai /waːj˥˩/
+โยน	VERB	to throw, to toss	R=yon	T=โยน mid	dict=yoon /joːn˧/
+แกล้ง	VERB	to pretend; to tease	R=klaeng	T=แกล้ง falling	dict=glɛ̂ɛng /klɛːŋ˥˩/
+พฤษภาคม	NOUN	May	R=—	T=(tone not given)	dict=prʉ́t-sà-paa-kom /pʰrɯt̚˦˥.sa˨˩.pʰaː˧.kʰom˧/	NOROM	CLF: —
+สมัย	NOUN	era, period of time	R=—	T=ส low, มัย rising	dict=sà-mǎi /sa˨˩.maj˩˩˦/	NOROM	CLF: —
+ย้าย	VERB	to move (house), to transfer	R=yai	T=ย้าย high	dict=yáai /jaːj˦˥/
+เกษตรกร	NOUN	farmer	R=—	T=(tone not given)	dict=gà-sèet-dtrà-gɔɔn /ka˨˩.seːt̚˨˩.tra˨˩.kɔːn˧/	NOROM	CLF: —
+แล้ง	ADJ	dry (of weather or land), drought	R=laeng	T=แล้ง high	dict=lɛ́ɛng /lɛːŋ˦˥/
+ข้าวสาร	NOUN	uncooked milled rice	R=khao-san	T=ข้าว falling, สาร rising	dict=kâao-sǎan /kʰaːw˥˩.saːn˩˩˦/	CLF: —
+ภาษี	NOUN	tax	R=—	T=ภา mid, ษี rising	dict=paa-sǐi /pʰaː˧.siː˩˩˦/	NOROM	CLF: —
+รวม	VERB	to combine, to total	R=ruam	T=รวม mid	dict=ruuam /rua̯m˧/
+กฎ	NOUN	rule, law	R=—	T=กฎ low	dict=— /kot̚˨˩/	NOROM	CLF: —
+บัญญัติ	NOUN	commandment; law	reg=religious	R=—	T=—	dict=ban-yàt /ban˧.jat̚˨˩/	NOROM	CLF: —
+บ่น	VERB	to grumble, to complain	R=bon	T=บ่น low	dict=bòn /bon˨˩/
+พึมพำ	VERB	to mutter	R=phuem-pham	T=พึม mid, พำ mid	dict=pʉm-pam /pʰɯm˧.pʰam˧/
+อุปมา	NOUN	parable; simile	reg=religious	R=—	T=อุป low, มา mid	dict=ùp-bpà-maa /ʔup̚˨˩.pa˨˩.maː˧/	NOROM TONE≠dict(low,low,mid)	CLF: —
+บ่า	NOUN	shoulder (the top of it)	R=ba	T=บ่า low	dict=bàa /baː˨˩/	CLF: —
+หลง	VERB	to be lost; to be infatuated	R=long	T=หลง rising	dict=lǒng /loŋ˩˩˦/
+ธรรม	NOUN	teaching, righteousness (dharma)	reg=religious	R=tham	T=ธรรม mid	dict=— /tʰam˧/	CLF: —
+ตะเกียง	NOUN	lamp	R=—	T=ตะ low, เกียง mid	dict=dtà-giiang /ta˨˩.kia̯ŋ˧/	NOROM	CLF: —
+กวาด	VERB	to sweep	R=kwat	T=กวาด low	dict=gwàat /kwaːt̚˨˩/
+ค้น	VERB	to search	R=khon	T=ค้น high	dict=kón /kʰon˦˥/
+ซอก	NOUN	nook, narrow gap	R=sok	T=ซอก falling	dict=sɔ̂ɔk /sɔːk̚˥˩/	CLF: —
+ทำนอง	NOUN	melody; manner	R=—	T=ทำ mid, นอง mid	dict=tam-nɔɔng /tʰam˧.nɔːŋ˧/	NOROM	CLF: —
+เดียวกัน	ADJ	the same, one and the same	R=diao-kan	T=เดียว mid, กัน mid	dict=diao-gan /dia̯w˧.kan˧/
+ทูต	NOUN	envoy, messenger	reg=religious	R=—	T=ทูต falling	dict=tûut /tʰuːt̚˥˩/	NOROM	CLF: —
+ทรัพย์	NOUN	wealth, property	R=sap	T=ทรัพย์ high	dict=sáp /sap̚˦˥/	CLF: —
+รวบรวม	VERB	to gather together	R=—	T=รวบ falling, รวม mid	dict=rûuap-ruuam /rua̯p̚˥˩.rua̯m˧/	NOROM
+เสเพล	ADJ	dissolute, wayward	R=—	T=เส rising, เพล mid	dict=— 	NODICT NOROM
+แดน	NOUN	land, territory	R=daen	T=แดน mid	dict=dɛɛn /dɛːn˧/	CLF: —
+ฝัก	NOUN	pod, sheath	R=fak	T=ฝัก low	dict=fàk /fak̚˨˩/	CLF: —
+ถั่ว	NOUN	bean, pea, nut	R=thua	T=ถั่ว low	dict=tùua /tʰua̯˨˩/	CLF: —
+อด	VERB	to go without; to hold back	R=ot	T=อด low	dict=òt /ʔot̚˨˩/
+จูบ	VERB	to kiss	R=chup	T=จูบ low	dict=jùup /t͡ɕuːp̚˨˩/
+แหวน	NOUN	ring	R=waen	T=แหวน rising	dict=wɛ̌ɛn /wɛːn˩˩˦/	CLF: —
+รองเท้า	NOUN	shoes	R=rong-thao	T=รอง mid, เท้า high	dict=rɔɔng-táao /rɔːŋ˧.tʰaːw˦˥/	CLF: —
+ขัด	VERB	to polish; to resist, to conflict with	R=khat	T=ขัด low	dict=kàt /kʰat̚˨˩/
+โสเภณี	NOUN	prostitute	R=—	T=โส rising, เภ mid, ณี mid	dict=sǒo-pee-nii /soː˩˩˦.pʰeː˧.niː˧/	NOROM	CLF: —
+มากกว่า	ADV	more than	R=—	T=(tone not given)	dict=mâak-gwàa /maːk̚˥˩.kwaː˨˩/	NOROM
+ประมาท	VERB	to be careless; to look down on	R=—	T=(tone not given)	dict=bprà-màat /pra˨˩.maːt̚˨˩/	NOROM
+จักจั่น	NOUN	cicada	R=—	T=จัก low, จั่น low	dict=jàk-gà-jàn /t͡ɕak̚˨˩.ka˨˩.t͡ɕan˨˩/	NOROM TONE≠dict(low,low,low)	CLF: —
+คำถาม	NOUN	question	R=kham-tham	T=คำ mid, ถาม rising	dict=kam-tǎam /kʰam˧.tʰaːm˩˩˦/	CLF: Classifier: ข้อ (counts items, points, questions).
+ปกครอง	VERB	to rule, to govern	R=—	T=(tone not given)	dict=bpòk-krɔɔng /pok̚˨˩.kʰrɔːŋ˧/	NOROM
+รุ่งเรือง	ADJ	flourishing, prosperous	R=rung-rueang	T=รุ่ง falling, เรือง mid	dict=rûng-rʉʉang /ruŋ˥˩.rɯa̯ŋ˧/
+จิต	NOUN	mind, spirit	R=—	T=จิต low	dict=jìt /t͡ɕit̚˨˩/	NOROM	CLF: —
+วิญญาณ	NOUN	spirit, soul	reg=religious	R=—	T=วิญ mid, ญาณ mid	dict=win-yaan /win˧.jaːn˧/	NOROM	CLF: —
+ยิ่ง	ADV	more, ever more (as in ยิ่ง ... ยิ่ง ...)	R=ying	T=ยิ่ง falling	dict=yîng /jiŋ˥˩/
+สัตย์	NOUN	truth, faithfulness	reg=literary	R=—	T=สัตย์ low	dict=sàt /sat̚˨˩/	NOROM	CLF: —
+ซื่อ	ADJ	honest, straightforward	R=sue	T=ซื่อ falling	dict=sʉ̂ʉ /sɯː˥˩/
+แปลก	ADJ	strange, unusual	R=plaek	T=แปลก low	dict=bplɛ̀ɛk /plɛːk̚˨˩/
+เกียรติ	NOUN	honour	R=—	T=เกียร mid, ติ low	dict=gìiat /kia̯t̚˨˩/	NOROM TONE≠dict(low)	CLF: —
+แด่	ADP	to, for (respectful, formal)	reg=formal	R=dae	T=แด่ low	dict=dɛ̀ɛ /dɛː˨˩/
+พระนาม	NOUN	name (of God or royalty)	reg=religious	R=—	T=(tone not given)	dict=— 	NODICT NOROM	CLF: —
+ร้าย	ADJ	bad, fierce, wicked	R=rai	T=ร้าย high	dict=ráai /raːj˦˥/
+ซ้ำ	ADV	again, repeatedly	R=sam	T=ซ้ำ high	dict=sám /sam˦˥/
+ห้าม	VERB	to forbid	R=ham	T=ห้าม falling	dict=hâam /haːm˥˩/
+ปากกา	NOUN	pen	R=—	T=ปาก low, กา mid	dict=bpàak-gaa /paːk̚˨˩.kaː˧/	NOROM	CLF: Classifier: ด้าม (counts pens, pencils, tools with a handle).

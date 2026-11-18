@@ -1,0 +1,427 @@
+CUT "เขามีเพื่อนมากๆ" ⇒ เขา/PRON · มี/VERB · เพื่อ/SCONJ · นมาก/∅ · ๆ/PART
+CUT "เขามีเพื่อนมาก ๆ" ⇒ เขา/PRON · มี/VERB · เพื่อน/NOUN · มาก/ADV · ๆ/PART
+CUT "ผมชอบกินอาหารอร่อยๆ" ⇒ ผม/PRON · ชอบ/VERB · กิน/VERB · อา/NOUN · หา/VERB · รอ/VERB · ร่อย/∅ · ๆ/PART
+CUT "เดินเร็วๆหน่อย" ⇒ เดิน/VERB · เร็วๆ/ADJ · หน่อย/ADV
+CUT "มีของต่างๆมากมาย" ⇒ มี/VERB · ของ/ADP · ต่างๆ/DET · มากมาย/ADJ
+CUT "ทุกๆวันผมไปทำงาน" ⇒ ทุกๆ/DET · วัน/NOUN · ผม/PRON · ไป/VERB · ทำงาน/VERB
+CUT "เด็กๆชอบเล่นน้ำ" ⇒ เด็กๆ/NOUN · ชอบ/VERB · เล่น/VERB · น้ำ/NOUN
+CUT "ค่อยๆเดินนะ" ⇒ ค่อยๆ/ADV · เดิน/VERB · นะ/PART
+CUT "จริงๆแล้วผมไม่รู้" ⇒ จริงๆ/ADJ · แล้ว/ADV · ผม/PRON · ไม่รู้/VERB
+CUT "ขอกระเป๋าใบนั้น" ⇒ ขอก/∅ · ระ/VERB° · เป๋า/∅ · ใบ/NOUN · นั้น/DET
+CUT "คนที่มาเมื่อวานเป็นหมอ" ⇒ คน/NOUN · ที่มา/NOUN° · เมื่อวาน/ADV · เป็น/VERB · หมอ/NOUN
+CUT "คนที่มาสายต้องรอ" ⇒ คน/NOUN · ที่มา/NOUN° · สาย/NOUN · ต้อง/AUX · รอ/VERB
+CUT "ผมจะไปที่ทำการไปรษณีย์" ⇒ ผม/PRON · จะ/AUX · ไป/VERB · ที่ทำการ/NOUN° · ไปรษณีย์/NOUN°
+CUT "เขาเป็นคนที่ดีมาก" ⇒ เขา/PRON · เป็น/VERB · คน/NOUN · ที่/SCONJ · ดี/ADJ · มาก/ADV
+CUT "ไปซิ" ⇒ ไปซิ/∅
+CUT "ไปสิ" ⇒ ไปสิ/∅
+CUT "พระราชินีเสวยพระกระยาหาร" ⇒ พระ/NOUN · ราชินี/NOUN° · เสวยพ/∅ · ระ/VERB° · กระยาหาร/NOUN°
+CUT "ทะเลสาบใหญ่มาก" ⇒ ทะเลสาบ/NOUN° · ใหญ่/ADJ · มาก/ADV
+CUT "ตามหาลูก" ⇒ ตาม/ADP · หา/VERB · ลูก/NOUN
+CUT "มากินข้าว" ⇒ มา/VERB · กิน/VERB · ข้าว/NOUN
+CUT "ยายกลับบ้านแล้ว" ⇒ ยาย/NOUN · กลับ/VERB · บ้าน/NOUN · แล้ว/ADV
+CUT "โคลงเรือ" ⇒ โคลง/∅ · เรือ/NOUN
+CUT "ฉันทนาไม่ได้" ⇒ ฉันท/∅ · นา/NOUN · ไม่/PART · ได้/AUX
+CUT "แม่ค้าขายของ" ⇒ แม่ค้า/NOUN° · ขาย/VERB · ของ/ADP
+CUT "พ่อค้าแม่ค้า" ⇒ พ่อค้า/NOUN · แม่ค้า/NOUN°
+CUT "คุณครูสอนภาษาไทย" ⇒ คุณครู/∅ · สอน/VERB · ภาษา/NOUN · ไทย/PROPN
+CUT "ผมปวดหัวมาก" ⇒ ผม/PRON · ปวด/VERB · หัว/NOUN · มาก/ADV
+CUT "รองเท้าคู่นี้ราคาเท่าไร" ⇒ รองเท้า/NOUN · คู่/CLF · นี้/DET · ราคา/NOUN · เท่าไร/PRON
+CUT "ห้องน้ำอยู่ที่ไหนครับ" ⇒ ห้องน้ำ/NOUN° · อยู่/AUX · ที่ไหน/ADV · ครับ/PART
+CUT "ขอเมนูหน่อยครับ" ⇒ ขอ/VERB · เมนู/NOUN° · หน่อย/ADV · ครับ/PART
+CUT "เช็คบิลด้วยครับ" ⇒ เช็ค/NOUN° · บิล/NOUN° · ด้วย/ADV · ครับ/PART
+CUT "ผมแพ้อาหารทะเล" ⇒ ผม/PRON · แพ้/VERB · อาหาร/NOUN · ทะเล/NOUN
+CUT "ไปสนามบินสุวรรณภูมิ" ⇒ ไป/VERB · สนาม/NOUN° · บิน/VERB · สุวรรณภูมิ/PROPN°
+CUT "รถไฟฟ้าบีทีเอส" ⇒ รถ/NOUN · ไฟ/NOUN · ฟ้า/NOUN · บี/NOUN° · ที/NOUN · เอส/NOUN°
+CUT "ผมทำงานที่บริษัทไมโครซอฟท์" ⇒ ผม/PRON · ทำงาน/VERB · ที่/SCONJ · บริษัท/NOUN° · ไมโคร/∅ · ซอฟท์/∅
+CUT "เฟซบุ๊กและไลน์" ⇒ เฟ/∅ · ซบุ๊ก/∅ · และ/CONJ · ไลน์/∅
+CUT "โควิดระบาดหนัก" ⇒ โค/NOUN° · วิด/VERB° · ระบาด/VERB° · หนัก/ADJ
+CUT "นายกฯ แถลงข่าว" ⇒ นา/NOUN · ยกฯ/∅ · แถลง/VERB° · ข่าว/NOUN
+CUT "รมว.คลังเผยว่าเศรษฐกิจดีขึ้น" ⇒ รมว.คลัง/∅ · เผย/VERB° · ว่า/SCONJ · เศรษฐกิจ/NOUN° · ดี/ADJ · ขึ้น/VERB
+CUT "ยาโคบ​รัก​โยเซฟ​มาก" ⇒ ยาโคบ/PROPN · รัก/VERB · โยเซฟ/PROPN · มาก/ADV
+CUT "ใน​ปฐมกาล​พระเจ้า​ทรง​สร้าง​ฟ้า​สวรรค์​และ​แผ่นดิน​โลก" ⇒ ใน/ADP · ปฐมกาล/NOUN · พระเจ้า/PROPN · ทรง/AUX · สร้าง/VERB · ฟ้า/NOUN · สวรรค์/NOUN · และ/CONJ · แผ่น/NOUN · ดิน/NOUN · โลก/NOUN
+CUT "พระเยซู​ตรัส​ตอบ​เขา​ว่า" ⇒ พระเยซู/PROPN · ตรัส/VERB° · ตอบ/VERB · เขา/PRON · ว่า/SCONJ
+«ที่มา» in คน [ที่มา] เมื่อวาน เป็น หมอ
+    ⇒ ที่มา / NOUN / “—” / 0.7 / lexicon / role: noun modifying 'คน'
+    S: noun modifying 'คน' (generated)
+    D: origin; source; cause.
+«มา» in คน [ที่มา] เมื่อวาน เป็น หมอ
+    ⇒ ที่มา / NOUN / “—” / 0.7 / lexicon / role: noun modifying 'คน'
+    S: noun modifying 'คน' (generated)
+    D: origin; source; cause.
+    notes: The selection is part of the word "ที่มา"; the reading is for the whole word.
+«กระเป๋า» in [ขอก] [ระ] [เป๋า] ใบ นั้น
+    3 tokens: ขอก=∅/∅“” + ระ=ระ/VERB“” + เป๋า=∅/∅“” | conf 0
+    notes: 3 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen กระเป๋า?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (กระเป๋า), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«เพื่อน» in เขา มี [เพื่อ] [นมาก] ๆ
+    2 tokens: เพื่อ=เพื่อ/SCONJ“in order to, for” + นมาก=∅/∅“” | conf 0
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen เพื่อน(friend)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«ทุกๆ» in [ทุกๆ] วัน ผม ไป ทำงาน
+    ⇒ ทุก / DET / “every” / 0.6 / rule
+    C: reduplication-mai-yamok
+    P: ทุกวัน“every day”
+    D: every, each
+«ปวดหัว» in ผม [ปวด] [หัว] มาก
+    2 tokens: ปวด=ปวด/VERB“to ache, to hurt” + หัว=หัว/NOUN“head” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ปวด(to ache, to hurt)+หัว(head)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«แพ้» in ผม [แพ้] อาหาร ทะเล
+    ⇒ แพ้ / VERB / “to lose; to be allergic” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to defeat; to overcome; to win ; to be defeated; to lose; to be overcome ; to be allergic (to); to have an all
+«เมนู» in ขอ [เมนู] หน่อย ครับ
+    ⇒ เมนู / NOUN / “—” / 0.7 / lexicon / role: object of 'ขอ'
+    S: object of 'ขอ' (generated)
+    D: menu (in a restaurant) ; a dish or set of meal ; menu
+«เช็คบิล» in [เช็ค] [บิล] ด้วย ครับ
+    2 tokens: เช็ค=เช็ค/NOUN“” + บิล=บิล/NOUN“” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen เช็ค?+บิล?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (เช็ค, บิล), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«เฟซบุ๊ก» in [เฟ] [ซบุ๊ก] และ ไลน์
+    2 tokens: เฟ=∅/∅“” + ซบุ๊ก=∅/∅“” | conf 0
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen เฟ?+ซบุ๊ก?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (เฟ, ซบุ๊ก), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ไลน์» in เฟ ซบุ๊ก และ [ไลน์]
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: ∅
+    notes: Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+«โควิด» in [โค] [วิด] ระบาด หนัก
+    2 tokens: โค=โค/NOUN“” + วิด=วิด/VERB“” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen โค?+วิด?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (โค, วิด), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«นายกฯ» in [นา] [ยกฯ] แถลง ข่าว
+    2 tokens: นา=นา/NOUN“rice field, paddy” + ยกฯ=∅/∅“” | conf 0
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen นา(rice field, paddy)+ยกฯ?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ยกฯ), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«รมว.» in [รมว.คลัง] เผย ว่า เศรษฐกิจ ดี ขึ้น
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: initialism of รัฐมนตรีว่าการ (rát-tà-mon-dtrii-wâa-gaan, “minister in charge (of a ministry, agency, etc)”)
+    notes: The selection is part of the word "รมว.คลัง"; the reading is for the whole word. || Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+«เศรษฐกิจ» in รมว.คลัง เผย ว่า [เศรษฐกิจ] ดี ขึ้น
+    ⇒ เศรษฐกิจ / NOUN / “—” / 0.7 / lexicon / role: subject of 'ขึ้น'
+    S: subject of 'ขึ้น' (generated)
+    D: economy.
+«ยาโคบ» in [ยาโคบ] รัก โยเซฟ มาก
+    ⇒ ยาโคบ / PROPN / “Jacob” / 0.92 / lexicon / role: subject of 'รัก'
+    S: subject of 'รัก' (generated)
+    D: ∅
+«ปฐมกาล» in ใน [ปฐมกาล] พระเจ้า ทรง สร้าง ฟ้า สวรรค์ และ แผ่น ดิน โลก
+    ⇒ ปฐมกาล / NOUN / “the beginning (of the world); (Genesis)” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: ∅
+«แผ่นดิน» in ใน ปฐมกาล พระเจ้า ทรง สร้าง ฟ้า สวรรค์ และ [แผ่น] [ดิน] โลก
+    2 tokens: แผ่น=แผ่น/NOUN“sheet, flat piece” + ดิน=ดิน/NOUN“soil, earth” | conf 0.6
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen แผ่น(sheet, flat piece)+ดิน(soil, earth)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«สมหญิง» in สมชาย รัก [สม] [หญิง]
+    2 tokens: สม=สม/VERB“” + หญิง=หญิง/NOUN“woman, female” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen สม?+หญิง(woman, female)@0.95 | reason: The tokenizer's cut has pieces the word list does not know (สม), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«วิชัย» in คุณ [วิชัย] มา จาก ขอนแก่น
+    ⇒ วิชัย / NOUN / “—” / 0.7 / lexicon / role: subject of 'มา'
+    S: subject of 'มา' (generated)
+    D: victory; triumph.
+«ขอนแก่น» in คุณ วิชัย มา จาก [ขอนแก่น]
+    ⇒ ขอนแก่น / PROPN / “—” / 0.7 / lexicon / role: จาก-phrase of 'มา'
+    S: จาก-phrase of 'มา' (generated)
+    D: Khon Kaen (a city in Thailand) ; Khon Kaen (a province of Thailand) ; Mueang Khon Kaen (a district of Khon Kae
+«ต้น» in [ต้น] ไป โรงเรียน
+    ⇒ ต้น / PROPN / “Ton (a given name; also "tree")” / 0.8 / lexicon / role: subject of 'ไป'
+    also: ต้น/NOUN“trunk; plant; beginning”@0.3, ต้น/CLF“(classifier for plants)”@0.3
+    S: subject of 'ไป' (generated)
+    D: tree (used to precede any plant's name) (Classifier: ต้น) ; trunk (of a tree); stalk ; beginning; source
+«ต้น» in [ต้นไม้] ต้น นี้ สูง
+    ⇒ ต้นไม้ / NOUN / “tree” / 0.92 / lexicon / role: subject of 'สูง'
+    C: classifier-demonstrative
+    S: subject of 'สูง' (generated)
+    D: tree
+    notes: The selection is part of the word "ต้นไม้"; the reading is for the whole word.
+«บอล» in ผม เจอ [บอล] ที่ ตลาด
+    ⇒ บอล / NOUN / “ball; football” / 0.55 / lexicon / role: object of 'เจอ'
+    also: บอล/PROPN“Ball (a given name; also "ball”@0.3
+    S: object of 'เจอ' (generated)
+    D: ball (object) (classifier: ลูก (lûuk) or ใบ (bai)) ; ball (formal dance) (classifier: งาน (ngaan))
+«แดง» in [แดง] เป็น เพื่อน ผม
+    ⇒ แดง / PROPN / “Daeng (a given name; also "red")” / 0.8 / lexicon / role: subject of 'เพื่อน'
+    also: แดง/ADJ“red”@0.3
+    S: subject of 'เพื่อน' (generated)
+    D: red ; to reveal ; cent; money (for expressing destitution)
+«มะลิ» in [มะลิ] หอม มาก
+    ⇒ มะลิ / NOUN / “jasmine” / 0.55 / lexicon / role: subject of 'หอม'
+    also: มะลิ/PROPN“Mali (a given name; also "jasm”@0.3
+    S: subject of 'หอม' (generated)
+    D: Arabian jasmine: the plant Jasminum sambac of the family Oleaceae.
+«ทิโมธี» in เปาโล เขียน จด หมาย ถึง [ทิ] [โมธี]
+    2 tokens: ทิ=∅/∅“” + โมธี=∅/∅“” | conf 0
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ทิ?+โมธี?@0.27 | alt ทิโมธี(Timothy)@0.73
+«เปาโล» in [เปาโล] เขียน จด หมาย ถึง ทิ โมธี
+    ⇒ เปาโล / PROPN / “Paul” / 0.92 / lexicon / role: subject of 'เขียน'
+    S: subject of 'เขียน' (generated)
+    D: ∅
+«โมเสส» in [โมเสส] นำ ชนชาติ อิสราเอล ออก จาก อียิปต์
+    ⇒ โมเสส / PROPN / “Moses” / 0.92 / lexicon / role: subject of 'นำ'
+    S: subject of 'นำ' (generated)
+    D: ∅
+«อียิปต์» in โมเสส นำ ชนชาติ อิสราเอล ออก จาก [อียิปต์]
+    ⇒ อียิปต์ / PROPN / “—” / 0.7 / lexicon / role: จาก-phrase of 'นำ'
+    S: จาก-phrase of 'นำ' (generated)
+    D: Egypt (a country in North Africa and West Asia)
+«มารีย์» in [มา] [รีย์] เป็น มารดา ของ พระเยซู
+    2 tokens: มา=มา/VERB“to come” + รีย์=∅/∅“” | conf 0
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen มา(to come)+รีย์?@0.5 | alt มารีย์(Mary)@0.5
+«สอง» in ผม มี ลูก [สอง] คน
+    ⇒ สอง / NUM / “two” / 0.92 / lexicon / role: number counting 'ลูก'
+    C: classifier-phrase
+    S: number counting 'ลูก' (generated)
+    D: 2 (Thai numeral: ๒ (2))
+«ที่สาม» in เขา อยู่ ชั้น [ที่] [สาม]
+    2 tokens: ที่=ที่/SCONJ“that, who, which” + สาม=สาม/NUM“three” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ที่(that, who, which)+สาม(three)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«แรก» in ครั้ง [แรก]
+    ⇒ แรก / ADJ / “first” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (conflicted)
+    D: first; being before all others with respect to time, order, rank, importance, etc. ; of, relating to, or occur
+«ห้าร้อย» in ราคา [ห้า] [ร้อย] บาท
+    2 tokens: ห้า=ห้า/NUM“five” + ร้อย=ร้อย/NUM“hundred” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ห้า(five)+ร้อย(hundred)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«เอ็ด» in ยี่สิบ [เอ็ด] คน
+    ⇒ เอ็ด / NUM / “one (last digit above ten: สิบเอ็ด 11, ยี่สิบเอ็ด 21)” / 0.92 / lexicon / role: number counting 'คน'
+    C: classifier-phrase
+    S: number counting 'คน' (generated)
+    D: one (when used as part of another numeral – eleven, twenty-one, etc.) ; to scold ; to be noisy, loud
+«สิบเอ็ด» in [สิบ] [เอ็ด]
+    2 tokens: สิบ=สิบ/NUM“ten” + เอ็ด=เอ็ด/NUM“one (last digit above ten: สิบเอ็ด 11, ยี่สิบเอ็ด 21)” | conf 0.92
+    notes: No sentence context: the word was read alone, so neighbouring words could not help choose a reading. || 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen สิบ(ten)+เอ็ด(one (last digit ab)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«แสน» in หนึ่ง ล้าน ห้า [แสน]
+    ⇒ แสน / NUM / “hundred thousand” / 0.92 / lexicon
+    D: hundred thousand ; very, so; extremely, greatly; truly, really ; a high military rank in feudal Northern Thail
+«ครึ่ง» in [ครึ่ง] ชั่วโมง
+    ⇒ ครึ่ง / NOUN / “half” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: half; exactly 50% ; approximately a half, whether more or less
+«เท่า» in สอง [เท่า]
+    ⇒ เท่า / ADJ / “equal to; as much as; times” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to the extent of; to the degree of; to the point of; up to; as far as; until ; equivalent to; equal to; on a p
+«ที่หนึ่ง» in [ที่] [หนึ่ง]
+    2 tokens: ที่=ที่/SCONJ“that, who, which” + หนึ่ง=หนึ่ง/NUM“one” | conf 0.92
+    notes: No sentence context: the word was read alone, so neighbouring words could not help choose a reading. || 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ที่(that, who, which)+หนึ่ง(one)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«บาท» in ผม มี เงิน 500 [บาท]
+    ⇒ บาท / NOUN / “baht” / 0.92 / lexicon / role: second noun phrase of 'มี'
+    S: second noun phrase of 'มี' (conflicted)
+    D: foot ; baht (Thai unit of currency, equal to 4 สลึง (sà-lʉ̌ng)) ; a Thai unit of poem: line, stanza, verse, et
+«เล่ม» in ผม มี หนังสือ 3 [เล่ม]
+    ⇒ เล่ม / CLF / “(classifier for books, knives)” / 0.92 / lexicon / role: classifier of 'หนังสือ'
+    S: classifier of 'หนังสือ' (generated)
+    D: Classifier for books, candles, carts and sharp-edged objects, such as knives, axes, swords, pins, needles, etc
+«คน» in มีคน ๕ [คน]
+    ⇒ คน / NOUN / “person” / 0.7 / lexicon / role: the main word of the sentence
+    also: คน/CLF“(classifier for people)”@0.3
+    S: the main word of the sentence (generated)
+    D: person; people; human being (Classifiers: คน or หัว or ราย or นาย or ท่าน) ; Classifier for most human beings.
+«ลุง» in [ลุง] ไป ไหน ครับ
+    ⇒ ลุง / NOUN / “uncle (parent's older brother); older man” / 0.92 / lexicon / role: kin term, also used for an older man
+    S: subject of 'ไป' (generated)
+    D: uncle: older brother of one's father or mother ; a familiar title or term of address for any elderly man ; a t
+«ป้า» in [ป้า] ขาย อะไร คะ
+    ⇒ ป้า / NOUN / “aunt (parent's older sister); older woman” / 0.92 / lexicon / role: kin term, also used for an older woman
+    S: subject of 'ขาย' (generated)
+    D: elder sister of one's parent. ; a title or term of address for any elderly woman, especially that of relative 
+«แม่» in [แม่] รัก ลูก นะ
+    ⇒ แม่ / NOUN / “mother” / 0.92 / lexicon / role: subject of 'รัก'
+    S: subject of 'รัก' (generated)
+    D: mother: — female parent, mother-in-law, or person regarded as a female parent ; mother: — female parent of an 
+«ครู» in [ครู] จะ สอน หนู เอง
+    ⇒ ครู / NOUN / “teacher” / 0.92 / lexicon / role: subject of 'สอน'
+    S: subject of 'สอน' (generated)
+    D: teacher; schoolteacher; instructor
+«คือ» in นี่ [คือ] บ้าน ของ ผม
+    ⇒ คือ / VERB / “to be (defining: A is B)” / 0.92 / lexicon / role: "to be": links the subject to 'บ้าน'
+    S: "to be": links the subject to 'บ้าน' (generated)
+    D: to be ; to be as follows
+«มี» in [มี] คน อยู่ ใน ห้อง
+    ⇒ มี / VERB / “to have; there is” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to have; to own; to possess ; to contain; to include; to consist of; to be composed of ; to be; to exist; to c
+«ไม่มี» in ผม [ไม่มี] เงิน
+    ⇒ ไม่มี / VERB / “to not have; there is no” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to not have, to not be ; non-, un- ; without
+«แมว» in ผม มี [แมว] สาม ตัว
+    ⇒ แมว / NOUN / “cat” / 0.92 / lexicon / role: object of 'มี'
+    S: object of 'มี' (generated)
+    D: cat ; catmeat ; any of numerous fish of the genera Thryssa and Setipinna.
+«ถ้วย» in ขอ กาแฟ สอง [ถ้วย]
+    ⇒ ถ้วย / CLF / “(classifier for cups)” / 0.85 / lexicon / role: classifier of 'กาแฟ'
+    also: ถ้วย/NOUN“cup”@0.3
+    C: classifier-phrase
+    S: classifier of 'กาแฟ' (generated)
+    D: Classifier for the quantity of acup or a bowl: cupful, bowlful ; cup; bowl ; trophy cup
+«ต้น» in ต้นไม้ ห้า [ต้น]
+    ⇒ ต้น / CLF / “(classifier for plants)” / 0.85 / lexicon / role: classifier of 'ต้นไม้'
+    also: ต้น/NOUN“trunk; plant; beginning”@0.3, ต้น/PROPN“Ton (a given name; also "tree"”@0.3
+    C: classifier-phrase
+    S: classifier of 'ต้นไม้' (generated)
+    D: Classifier for plants, posts and pillars. ⇒ all nouns using this classifier ; tree (used to precede any plant'
+«คัน» in รถ สอง [คัน] นั้น
+    ⇒ คัน / CLF / “(classifier for vehicles, umbrellas)” / 0.92 / lexicon / role: classifier of 'รถ'
+    C: classifier-phrase
+    S: classifier of 'รถ' (generated)
+    D: Classifier for long articles, such as umbrella, vehicle, spoon, fork, etc. ⇒ all nouns using this classifier ;
+«คน» in นักเรียน [คน] หนึ่ง
+    ⇒ คน / NOUN / “person” / 0.7 / lexicon / role: classifier of 'นักเรียน'
+    also: คน/CLF“(classifier for people)”@0.3
+    S: classifier of 'นักเรียน' (generated)
+    D: person; people; human being (Classifiers: คน or หัว or ราย or นาย or ท่าน) ; Classifier for most human beings.
+«ทุกคน» in [ทุกคน] มา แล้ว
+    ⇒ ทุกคน / PRON / “everyone” / 0.92 / lexicon / role: subject of 'มา'
+    S: subject of 'มา' (generated)
+    D: everyone, everybody
+«แต่ละ» in [แต่ละ] คน
+    ⇒ แต่ละ / ADJ / “—” / 0.7 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: each; every; each and every (usually followed by classifier).
+«บาง» in [บาง] คน ไม่ ชอบ
+    ⇒ บาง / DET / “some” / 0.92 / lexicon
+    D: narrow or small watercourse ; community or polity located near such watercourse or at the place used to be suc
+«หลาย» in [หลาย] คน คิด อย่าง นั้น
+    ⇒ หลาย / DET / “several, many” / 0.92 / lexicon
+    D: several; numerous ; many
+«ขอโทษ» in [ขอโทษ] ครับ
+    ⇒ ขอโทษ / VERB / “to apologise; sorry, excuse me” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to apologise; to express apology (to, for, etc.) ; sorry; excuse me; pardon
+«ยินดีที่ได้รู้จัก» in [ยินดี] [ที่] [ได้] [รู้จัก] ครับ
+    4 tokens: ยินดี=ยินดี/VERB“to be glad, pleased” + ที่=ที่/SCONJ“that, who, which” + ได้=ได้/AUX“can; got to” + รู้จัก=รู้จัก/VERB“to know (a person or place)” | PHRASE ยินดีที่ได้รู้จัก “nice to meet you” | conf 0.9 | P: ยินดีที่ได้รู้จัก“nice to meet you”
+    notes: Matches the phrase entry "ยินดีที่ได้รู้จัก" (formula).
+    SEG chosen ยินดี(to be glad, please)+ที่(that, who, which)+ได้(can; got to)+รู้จัก(to know (a person )@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«เป็นไร» in ไม่ [เป็นไร] ค่ะ
+    ⇒ เป็นไร / VERB / “to matter; to be wrong (as in ไม่เป็นไร "never mind")” / 0.92 / lexicon / role: the main word of the sentence
+    C: negation-mai
+    P: ไม่เป็นไร“never mind; it is nothing”
+    S: the main word of the sentence (generated)
+    D: ∅
+«สบายดี» in [สบาย] [ดี] ไหม ครับ
+    2 tokens: สบาย=สบาย/ADJ“comfortable, well” + ดี=ดี/ADJ“good” | PHRASE สบายดี “well, fine” | conf 0.9 | P: สบายดี“well, fine”
+    notes: Matches the phrase entry "สบายดี" (formula).
+    SEG chosen สบาย(comfortable, well)+ดี(good)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«เชิญ» in [เชิญ] นั่ง ครับ
+    ⇒ เชิญ / VERB / “to invite” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to invite; to request ; to bring; to take; to carry ; used to express a request, command, or permission
+«กรุณา» in [กรุณา] รอ สัก ครู่
+    ⇒ กรุณา / ADV / “please (formal)” / 0.92 / lexicon / role: adverb "กรุณา" modifying 'รอ'
+    S: adverb "กรุณา" modifying 'รอ' (generated)
+    D: used as a polite addition to a request, command, etc: kindly, please, etc. ; compassion ; (พระ~) favour; kindn
+«สักครู่» in กรุณา รอ [สัก] [ครู่]
+    2 tokens: สัก=สัก/DET“about; a (small) ...; even one” + ครู่=ครู่/NOUN“” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen สัก(about; a (small) .)+ครู่?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ครู่), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ราตรีสวัสดิ์» in [ราตรี] [สวัสดิ์]
+    2 tokens: ราตรี=ราตรี/NOUN“” + สวัสดิ์=สวัสดิ์/NOUN“” | conf 0.7
+    notes: No sentence context: the word was read alone, so neighbouring words could not help choose a reading. || 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ราตรี?+สวัสดิ์?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ราตรี, สวัสดิ์), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«โชคดี» in [โชค] [ดี] นะ
+    2 tokens: โชค=โชค/NOUN“” + ดี=ดี/ADJ“good” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen โชค?+ดี(good)@0.95 | reason: The tokenizer's cut has pieces the word list does not know (โชค), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ซื้อ» in ผม จะ ไป [ซื้อ] ของกิน ที่ ตลาด
+    ⇒ ซื้อ / VERB / “to buy” / 0.92 / lexicon / role: second verb in a chain with 'ไป'
+    S: second verb in a chain with 'ไป' (conflicted)
+    D: to buy; to purchase
+«นั่ง» in เขา [นั่ง] อ่าน หนังสือ
+    ⇒ นั่ง / VERB / “to sit” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to sit; to be seated ; to chair, to preside (over); to rule, to administer ; to stay; to reside
+«เอา» in [เอา] ไป ให้ เขา
+    ⇒ เอา / VERB / “to take; to want” / 0.92 / lexicon / role: the main word of the sentence
+    C: directional-after-verb
+    S: the main word of the sentence (generated)
+    D: to bring; to take ; to capture; to seize ; to cope; to handle
+«ดู» in ลอง ชิม [ดู] สิ
+    ⇒ ดู / VERB / “to look at, watch” / 0.92 / lexicon / role: second verb in a chain with 'ชิม'
+    S: second verb in a chain with 'ชิม' (conflicted)
+    D: to view; to look; to watch ; to view; to consider; to examine; to inspect ; to view; to consider; to regard; t
+«เสร็จ» in กิน [เสร็จ] แล้ว
+    ⇒ เสร็จ / VERB / “to finish, to be done” / 0.92 / lexicon / role: direction or result added to 'กิน'
+    C: completed-laeo
+    S: direction or result added to 'กิน' (conflicted)
+    D: to be finished (complete); ready
+«เจอ» in หาไม่ [เจอ]
+    ⇒ เจอ / VERB / “to meet; to find” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to discover, to meet, to find
+«เห็น» in มอง ไม่ [เห็น]
+    ⇒ เห็น / VERB / “to see” / 0.92 / lexicon / role: second verb in a chain with 'มอง'
+    C: negation-mai
+    S: second verb in a chain with 'มอง' (conflicted)
+    D: to see: to perceive visually or mentally ; to think; to opine; to view; to consider; to feel ; to seem, to app
+«ทัน» in ฟัง [ไม่ทัน]
+    ⇒ ไม่ทัน / VERB / “not to be in time” / 0.92 / lexicon / role: second verb in a chain with 'ฟัง'
+    S: second verb in a chain with 'ฟัง' (conflicted)
+    D: unable to ; cannot
+    notes: The selection is part of the word "ไม่ทัน"; the reading is for the whole word.
+«หลับ» in นอน ไม่ [หลับ]
+    ⇒ หลับ / VERB / “to sleep, be asleep” / 0.92 / lexicon / role: second verb in a chain with 'นอน'
+    C: negation-mai
+    S: second verb in a chain with 'นอน' (conflicted)
+    D: to close (the eyes) ; to sleep
+«เกินไป» in แพง [เกิน] [ไป]
+    2 tokens: เกิน=เกิน/VERB“to exceed, to be too much” + ไป=ไป/VERB“to go” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen เกิน(to exceed, to be t)+ไป(to go)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«ไป» in แพง [ไป]
+    ⇒ ไป / VERB / “to go” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to go; to move (away from the speaker); to leave; to depart ; used to indicate motion away from the speaker's 
+«ขึ้น» in อ้วน [ขึ้น]
+    ⇒ ขึ้น / VERB / “to go up, rise” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to wax ; to move or go up, upwards, frontwards, northwards, or eastwards ; to come above the horizon, as a hea
+«ลง» in ผอม [ลง]
+    ⇒ ลง / VERB / “to go down” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to come down; to get down; to descend ; to cause to do so ; to get on; to embark; to enter; to board
+«ถ้า» in [ถ้า] ฝน ตก ผม จะ ไม่ ไป
+    ⇒ ถ้า / SCONJ / “if” / 0.92 / lexicon / role: condition connective
+    S: "ถ้า" introducing 'ตก' (generated)
+    D: if
+«เพราะว่า» in [เพราะ] [ว่า] ฝน ตก ผม จึง ไม่ ไป
+    2 tokens: เพราะ=เพราะ/CONJ“because” + ว่า=ว่า/SCONJ“that (complementizer)” | PHRASE เพราะว่า “because” | conf 0.9 | P: เพราะว่า“because”
+    notes: Matches the phrase entry "เพราะว่า" (collocation).
+    SEG chosen เพราะ(because)+ว่า(that (complementiz)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«ถึงแม้ว่า» in [ถึง] [แม้ว่า] เขา จะ จน แต่ เขา ก็ มี ความ สุข
+    2 tokens: ถึง=ถึง/VERB“to arrive, reach; until” + แม้ว่า=แม้ว่า/SCONJ“although; even if” | PHRASE ถึงแม้ว่า “even though” | conf 0.9 | P: ถึงแม้ว่า“even though”
+    notes: Matches the phrase entry "ถึงแม้ว่า" (collocation).
+    SEG chosen ถึง(to arrive, reach; )+แม้ว่า(although; even if)@0.95 | reason: Other cuts exist (ถึง-แม้-ว่า) but each is far less plausible than the tokenizer's cut.
+«ทั้ง» in [ทั้ง] พ่อ และ แม่
+    ⇒ ทั้ง / DET / “all, both, whole (as in ทั้งสอง "both", ทั้งหมด "all")” / 0.92 / lexicon / role: determiner of 'พ่อ'
+    S: determiner of 'พ่อ' (generated)
+    D: all; entire; whole; total ; throughout ; also; too
+«ไม่ว่า» in [ไม่] [ว่า] จะ เป็น ใคร
+    2 tokens: ไม่=ไม่/PART“not” + ว่า=ว่า/SCONJ“that (complementizer)” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ไม่(not)+ว่า(that (complementiz)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«หรือว่า» in [หรือ] [ว่า] เขา ไม่ มา
+    2 tokens: หรือ=หรือ/CONJ“or; (also ends a yes/no question)” + ว่า=ว่า/SCONJ“that (complementizer)” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen หรือ(or; (also ends a y)+ว่า(that (complementiz)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«เมื่อ» in [เมื่อ] ผม เป็น เด็ก
+    ⇒ เมื่อ / SCONJ / “when (a point in time)” / 0.92 / lexicon / role: time connective
+    S: "เมื่อ" introducing 'เด็ก' (generated)
+    D: classifier for a time, times ; when
+«ก่อน» in [ก่อน] กิน ข้าว ต้อง ล้าง มือ
+    ⇒ ก่อน / ADP / “before; first” / 0.92 / lexicon / role: time word
+    S: "ก่อน" introducing 'กิน' (generated)
+    D: before ; before ; early
+«ก่อน» in ผม จะ ไป [ก่อน]
+    ⇒ ก่อน / ADP / “before; first” / 0.92 / lexicon / role: time word
+    S: "ก่อน" (time word) with 'ไป' (generated)
+    D: before ; before ; early

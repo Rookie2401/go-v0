@@ -1,0 +1,439 @@
+CUT "ตากลม" ⇒ ตา/NOUN · กลม/ADJ°
+CUT "เธอมีตากลมโต" ⇒ เธอ/PRON · มี/VERB · ตา/NOUN · กลม/ADJ° · โต/ADJ
+CUT "เขาไปตากลมที่ชายหาด" ⇒ เขา/PRON · ไป/VERB · ตากลม/VERB · ที่/SCONJ · ชายหาด/NOUN°
+CUT "แม่ตากผ้าไว้ข้างนอก" ⇒ แม่/NOUN · ตาก/VERB · ผ้า/NOUN · ไว้/PART · ข้าง/ADP° · นอก/ADP
+CUT "ผมรักคุณมากกว่าใคร" ⇒ ผม/PRON · รัก/VERB · คุณ/PRON · มากกว่า/ADV · ใคร/PRON
+CUT "เขามากกว่าฉันสองปี" ⇒ เขา/PRON · มากกว่า/ADV · ฉัน/PRON · สอง/NUM · ปี/NOUN
+CUT "พระราชาไปหามเหสี" ⇒ พระ/NOUN · ราชา/NOUN° · ไป/VERB · หาม/VERB° · เห/VERB° · สี/NOUN
+CUT "เขาไปหาหมอ" ⇒ เขา/PRON · ไป/VERB · หา/VERB · หมอ/NOUN
+CUT "คนขับรถมาแล้ว" ⇒ คน/NOUN · ขับ/VERB · รถ/NOUN · มา/VERB · แล้ว/ADV
+CUT "ที่นั่งนี้ว่างไหมครับ" ⇒ ที่/SCONJ · นั่ง/VERB · นี้/DET · ว่าง/ADJ · ไหม/PART · ครับ/PART
+CUT "เขานั่งที่นั่งข้างหน้าต่าง" ⇒ เขา/PRON · นั่ง/VERB · ที่/SCONJ · นั่ง/VERB · ข้าง/ADP° · หน้าต่าง/NOUN°
+CUT "เด็กเล่นอยู่ข้างนอกบ้าน" ⇒ เด็ก/NOUN · เล่น/VERB · อยู่/AUX · ข้าง/ADP° · นอก/ADP · บ้าน/NOUN
+CUT "ผมอยากกินน้ำแข็ง" ⇒ ผม/PRON · อยาก/AUX · กิน/VERB · น้ำ/NOUN · แข็ง/ADJ°
+CUT "น้ำแข็งละลายแล้ว" ⇒ น้ำ/NOUN · แข็ง/ADJ° · ละลาย/VERB° · แล้ว/ADV
+CUT "โรงเรียนอยู่ใกล้แม่น้ำ" ⇒ โรงเรียน/NOUN · อยู่/AUX · ใกล้/ADJ · แม่น้ำ/NOUN°
+CUT "เขานั่งรถไฟไปเชียงใหม่" ⇒ เขา/PRON · นั่ง/VERB · รถไฟ/NOUN · ไป/VERB · เชียงใหม่/PROPN°
+CUT "ความสุขอยู่ที่ใจ" ⇒ ความ/NOUN · สุข/ADJ · อยู่/AUX · ที่/SCONJ · ใจ/NOUN
+CUT "การเดินทางครั้งนี้สนุกมาก" ⇒ การ/NOUN · เดิน/VERB · ทาง/NOUN · ครั้ง/NOUN · นี้/DET · สนุก/ADJ · มาก/ADV
+CUT "ผู้ใหญ่บ้านเป็นคนดี" ⇒ ผู้ใหญ่/NOUN · บ้าน/NOUN · เป็น/VERB · คน/NOUN · ดี/ADJ
+CUT "นักเรียนไปโรงเรียนทุกวัน" ⇒ นักเรียน/NOUN · ไป/VERB · โรงเรียน/NOUN · ทุก/DET · วัน/NOUN
+CUT "ช่างไม้ทำโต๊ะ" ⇒ ช่างไม้/NOUN° · ทำ/VERB · โต๊ะ/NOUN
+CUT "คุณสมชายทำงานที่กรุงเทพมหานคร" ⇒ คุณ/PRON · สมชาย/PROPN · ทำงาน/VERB · ที่/SCONJ · กรุงเทพมหานคร/PROPN°
+CUT "ผมชื่อสมศักดิ์ มาจากจังหวัดเชียงใหม่" ⇒ ผม/PRON · ชื่อ/NOUN · สม/VERB° · ศักดิ์/NOUN° · มา/VERB · จาก/ADP · จังหวัด/NOUN° · เชียงใหม่/PROPN°
+CUT "นายกรัฐมนตรีเดินทางไปประเทศญี่ปุ่น" ⇒ นายก/NOUN° · รัฐมนตรี/NOUN° · เดิน/VERB · ทาง/NOUN · ไป/VERB · ประเทศ/NOUN · ญี่ปุ่น/PROPN°
+CUT "ผมใช้คอมพิวเตอร์และอินเทอร์เน็ตทุกวัน" ⇒ ผม/PRON · ใช้/VERB · คอมพิวเตอร์/NOUN° · และ/CONJ · อินเทอร์เน็ต/PROPN° · ทุก/DET · วัน/NOUN
+CUT "เขาเล่นฟุตบอลและดูโทรทัศน์" ⇒ เขา/PRON · เล่น/VERB · ฟุตบอล/NOUN° · และ/CONJ · ดู/VERB · โทรทัศน์/NOUN°
+CUT "ฉันกินพิซซ่ากับแฮมเบอร์เกอร์" ⇒ ฉัน/PRON · กิน/VERB · พิซซ่า/NOUN° · กับ/ADP · แฮมเบอร์เกอร์/NOUN°
+CUT "ปี ๒๕๖๘ มีนักเรียน ๑๒๓ คน" ⇒ ปี/NOUN · มี/VERB · นักเรียน/NOUN · คน/NOUN
+CUT "ยี่สิบเอ็ด" ⇒ ยี่สิบ/NUM · เอ็ด/NUM
+CUT "เขามีเงินสองร้อยห้าสิบบาท" ⇒ เขา/PRON · มี/VERB · เงิน/NOUN · สอง/NUM · ร้อย/NUM · ห้าสิบ/NUM · บาท/NOUN
+CUT "หนึ่งพันสองร้อยสามสิบสี่" ⇒ หนึ่ง/NUM · พัน/NUM · สอง/NUM · ร้อย/NUM · สามสิบ/NUM · สี่/NUM
+CUT "เด็ก ๆ วิ่งเล่น" ⇒ เด็ก/NOUN · ๆ/PART · วิ่ง/VERB · เล่น/VERB
+CUT "เด็กๆ วิ่งเร็วๆ" ⇒ เด็กๆ/NOUN · วิ่ง/VERB · เร็วๆ/ADJ
+CUT "เขาเดินช้าๆ" ⇒ เขา/PRON · เดิน/VERB · ช้าๆ/ADJ
+CUT "กรุงเทพฯ เป็นเมืองหลวง" ⇒ กรุงเทพฯ/PROPN° · เป็น/VERB · เมือง/NOUN · หลวง/ADJ°
+CUT "มีผลไม้หลายอย่าง เช่น มะม่วง กล้วย ส้ม ฯลฯ" ⇒ มี/VERB · ผลไม้/NOUN · หลาย/DET · อย่าง/NOUN · เช่น/CONJ · มะม่วง/NOUN · กล้วย/NOUN · ส้ม/NOUN · ฯลฯ/∅
+CUT "ฉันชอบ coffee มาก" ⇒ ฉัน/PRON · ชอบ/VERB · coffee/∅ · มาก/ADV
+CUT "ผมใช้ iPhone 15 ครับ" ⇒ ผม/PRON · ใช้/VERB · iPhone/∅ · ครับ/PART
+CUT "เขาอยู่บ้านเลขที่ 25/3 ถนนสุขุมวิท" ⇒ เขา/PRON · อยู่/AUX · บ้าน/NOUN · เลข/NOUN° · ที่/SCONJ · ถนน/NOUN · สุขุมวิท/NOUN°
+CUT "ผมจะไปเซเว่นซื้อของ" ⇒ ผม/PRON · จะ/AUX · ไป/VERB · เซ/VERB · เว่น/∅ · ซื้อ/VERB · ของ/ADP
+CUT "เธอสวยมากกกก" ⇒ เธอ/PRON · สวย/ADJ · มา/VERB · กก/NOUN° · กก/NOUN°
+CUT "วันนี้อากาศดีมากเลยค่ะ" ⇒ วันนี้/ADV · อากาศ/NOUN · ดี/ADJ · มาก/ADV · เลย/PART · ค่ะ/PART
+CUT "ไม่เป็นไรครับ" ⇒ ไม่/PART · เป็นไร/VERB · ครับ/PART
+CUT "ขอบคุณมากนะคะ" ⇒ ขอบคุณ/VERB · มาก/ADV · นะ/PART · คะ/PART
+CUT "ยาโคบรักโยเซฟมาก" ⇒ ยา/NOUN · โค/NOUN° · บรัก/∅ · โยเซฟ/PROPN · มาก/ADV
+CUT "ดาวิดเป็นกษัตริย์ของอิสราเอล" ⇒ ดาวิด/PROPN · เป็น/VERB · กษัตริย์/NOUN° · ของ/ADP · อิสราเอล/PROPN°
+CUT "พระเยซูคริสต์ทรงรักเรา" ⇒ พระเยซู/PROPN · คริสต์/PROPN° · ทรง/AUX · รัก/VERB · เรา/PRON
+CUT "พระเจ้าทรงสร้างฟ้าสวรรค์และแผ่นดินโลก" ⇒ พระเจ้า/PROPN · ทรง/AUX · สร้าง/VERB · ฟ้า/NOUN · สวรรค์/NOUN · และ/CONJ · แผ่น/NOUN · ดิน/NOUN · โลก/NOUN
+CUT "เขาลุกขึ้นแล้วเดินออกไป" ⇒ เขา/PRON · ลุก/VERB · ขึ้น/VERB · แล้ว/ADV · เดิน/VERB · ออก/VERB · ไป/VERB
+CUT "คำนี้หมายถึงอะไร" ⇒ คำ/NOUN · นี้/DET · หมาย/VERB° · ถึง/VERB · อะไร/PRON
+CUT "หญิงสาวคนนั้นสวยมาก" ⇒ หญิง/NOUN · สาว/ADJ° · คน/NOUN · นั้น/DET · สวย/ADJ · มาก/ADV
+CUT "เมื่อใดท่านจะมา" ⇒ เมื่อ/SCONJ · ใด/PRON° · ท่าน/PRON · จะ/AUX · มา/VERB
+CUT "เขามีหน้าที่ดูแลเด็ก" ⇒ เขา/PRON · มี/VERB · หน้าที่/NOUN · ดูแล/VERB° · เด็ก/NOUN
+CUT "ครูให้การบ้านเยอะ" ⇒ ครู/NOUN · ให้/ADP · การบ้าน/NOUN · เยอะ/ADJ°
+CUT "คนในบ้านหลับหมดแล้ว" ⇒ คนใน/NOUN · บ้าน/NOUN · หลับ/VERB · หมด/VERB · แล้ว/ADV
+CUT "ตอนกลางคืนอากาศเย็น" ⇒ ตอน/NOUN · กลาง/NOUN · คืน/NOUN · อากาศ/NOUN · เย็น/NOUN
+CUT "ฉันไม่ชอบกินเผ็ด" ⇒ ฉัน/PRON · ไม่/PART · ชอบ/VERB · กิน/VERB · เผ็ด/ADJ
+CUT "เขากำลังอ่านหนังสือพิมพ์อยู่" ⇒ เขา/PRON · กำลัง/AUX · อ่าน/VERB · หนังสือพิมพ์/NOUN° · อยู่/AUX
+CUT "มหาวิทยาลัยธรรมศาสตร์" ⇒ มหาวิทยาลัย/NOUN° · ธรรมศาสตร์/PROPN°
+CUT "รถติดมากตอนเช้า" ⇒ รถ/NOUN · ติด/VERB° · มาก/ADV · ตอน/NOUN · เช้า/NOUN
+CUT "แม่ซื้อปลาทูมาสามตัว" ⇒ แม่/NOUN · ซื้อ/VERB · ปลา/NOUN · ทู/NOUN° · มา/VERB · สาม/NUM · ตัว/CLF
+CUT "กาแฟเย็นแก้วหนึ่งครับ" ⇒ กาแฟ/NOUN · เย็น/NOUN · แก้ว/NOUN · หนึ่ง/NUM · ครับ/PART
+CUT "ไปไหนมา" ⇒ ไป/VERB · ไหน/PRON · มา/VERB
+CUT "กินข้าวหรือยัง" ⇒ กิน/VERB · ข้าว/NOUN · หรือ/CONJ · ยัง/ADV
+CUT "สวัสดีปีใหม่" ⇒ สวัสดี/INTJ · ปี/NOUN · ใหม่/ADJ
+CUT "ผมเป็นคนอเมริกัน" ⇒ ผม/PRON · เป็น/VERB · คน/NOUN · อเมริกัน/ADJ°
+CUT "เขาพูดภาษาอังกฤษไม่ได้" ⇒ เขา/PRON · พูด/VERB · ภาษา/NOUN · อังกฤษ/ADJ° · ไม่/PART · ได้/AUX
+CUT "เราจะพบกันใหม่พรุ่งนี้" ⇒ เรา/PRON · จะ/AUX · พบ/VERB · กัน/ADV · ใหม่/ADJ · พรุ่งนี้/ADV
+CUT "พี่ชายของผมเป็นทหาร" ⇒ พี่/NOUN · ชาย/NOUN · ของ/ADP · ผม/PRON · เป็น/VERB · ทหาร/NOUN
+CUT "น้องสาวฉันอายุสิบสองปี" ⇒ น้อง/NOUN · สาว/ADJ° · ฉัน/PRON · อายุ/VERB · สิบ/NUM · สอง/NUM · ปี/NOUN
+CUT "ตอนนี้กี่โมงแล้ว" ⇒ ตอนนี้/ADV · กี่/DET · โมง/CLF · แล้ว/ADV
+CUT "สองทุ่มครึ่ง" ⇒ สอง/NUM · ทุ่ม/NOUN · ครึ่ง/NOUN
+CUT "ตีสามสิบห้านาที" ⇒ ตี/VERB · สามสิบ/NUM · ห้า/NUM · นาที/NOUN
+CUT "บ่ายสามโมง" ⇒ บ่าย/NOUN · สาม/NUM · โมง/CLF
+CUT "เที่ยงคืน" ⇒ เที่ยง/NOUN° · คืน/NOUN
+«โรง» in [โรงเรียน] อยู่ ใกล้ แม่น้ำ
+    ⇒ โรงเรียน / NOUN / “school” / 0.92 / lexicon / role: subject of 'ใกล้'
+    S: subject of 'ใกล้' (generated)
+    D: school
+    notes: The selection is part of the word "โรงเรียน"; the reading is for the whole word.
+    SEG chosen โรง(building, hall; mi)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«เรียนอยู่» in [โรงเรียน] [อยู่] ใกล้ แม่น้ำ
+    2 tokens: โรงเรียน=โรงเรียน/NOUN“school” + อยู่=อยู่/AUX“to be located; (ongoing)” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen เรียน(to study, learn)+อยู่(to be located; (on)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«แม่» in โรงเรียน อยู่ ใกล้ [แม่น้ำ]
+    ⇒ แม่น้ำ / NOUN / “—” / 0.7 / lexicon / role: object of 'ใกล้'
+    S: object of 'ใกล้' (generated)
+    D: river
+    notes: The selection is part of the word "แม่น้ำ"; the reading is for the whole word.
+    SEG chosen แม่(mother)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«น้ำ» in โรงเรียน อยู่ ใกล้ [แม่น้ำ]
+    ⇒ แม่น้ำ / NOUN / “—” / 0.7 / lexicon / role: object of 'ใกล้'
+    S: object of 'ใกล้' (generated)
+    D: river
+    notes: The selection is part of the word "แม่น้ำ"; the reading is for the whole word.
+    SEG chosen น้ำ(water)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«แข็ง» in ผม อยาก กิน น้ำ [แข็ง]
+    ⇒ แข็ง / ADJ / “—” / 0.7 / lexicon / role: adjective describing 'น้ำ'
+    S: adjective describing 'น้ำ' (generated)
+    D: hard; rigid
+    SEG chosen แข็ง?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (แข็ง), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«กินน้ำ» in ผม อยาก [กิน] [น้ำ] แข็ง
+    2 tokens: กิน=กิน/VERB“to eat” + น้ำ=น้ำ/NOUN“water” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen กิน(to eat)+น้ำ(water)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«คนขับรถ» in [คน] [ขับ] [รถ] มา แล้ว
+    3 tokens: คน=คน/NOUN“person” + ขับ=ขับ/VERB“to drive” + รถ=รถ/NOUN“car; vehicle” | conf 0.7
+    notes: 3 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen คน(person)+ขับ(to drive)+รถ(car; vehicle)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«คนขับ» in [คน] [ขับ] รถ มา แล้ว
+    2 tokens: คน=คน/NOUN“person” + ขับ=ขับ/VERB“to drive” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen คน(person)+ขับ(to drive)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«นัก» in [นักเรียน] ไป โรงเรียน ทุก วัน
+    ⇒ นักเรียน / NOUN / “pupil, student” / 0.92 / lexicon / role: subject of 'ไป'
+    S: subject of 'ไป' (generated)
+    D: student
+    notes: The selection is part of the word "นักเรียน"; the reading is for the whole word.
+    SEG chosen นัก(very, too (as in น)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«ความ» in [ความ] สุข อยู่ ที่ ใจ
+    ⇒ ความ / NOUN / “(prefix forming abstract nouns)” / 0.92 / lexicon / role: noun-forming prefix
+    C: nominalizer-khwam
+    S: noun-forming prefix of 'สุข' (generated)
+    D: affair; matter ; content; essence ; text, message, passage; version, edition
+    SEG chosen ความ((prefix forming ab)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«สุข» in ความ [สุข] อยู่ ที่ ใจ
+    ⇒ สุข / ADJ / “happy; happiness” / 0.92 / lexicon / role: subject of 'อยู่'
+    C: nominalizer-khwam
+    S: subject of 'อยู่' (generated)
+    D: joy; happiness ; delight
+    SEG chosen สุข(happy; happiness)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«การ» in [การ] เดิน ทาง ครั้ง นี้ สนุก มาก
+    ⇒ การ / NOUN / “(prefix: the act of …-ing)” / 0.92 / lexicon / role: noun-forming prefix
+    C: nominalizer-kan
+    S: noun-forming prefix of 'เดิน' (generated)
+    D: work; matter; task; affair ; prefixed to nouns to form noun derivatives, meaning “affairs of.; matters of .; -
+    SEG chosen การ((prefix: the act o)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«เดินทาง» in การ [เดิน] [ทาง] ครั้ง นี้ สนุก มาก
+    2 tokens: เดิน=เดิน/VERB“to walk” + ทาง=ทาง/NOUN“way, path, road” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen เดิน(to walk)+ทาง(way, path, road)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«การเดินทาง» in [การ] [เดิน] [ทาง] ครั้ง นี้ สนุก มาก
+    3 tokens: การ=การ/NOUN“(prefix: the act of …-ing)” + เดิน=เดิน/VERB“to walk” + ทาง=ทาง/NOUN“way, path, road” | conf 0.92
+    notes: 3 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen การ((prefix: the act o)+เดิน(to walk)+ทาง(way, path, road)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«ผู้ใหญ่บ้าน» in [ผู้ใหญ่] [บ้าน] เป็น คน ดี
+    2 tokens: ผู้ใหญ่=ผู้ใหญ่/NOUN“adult; grown-up” + บ้าน=บ้าน/NOUN“house, home” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ผู้ใหญ่(adult; grown-up)+บ้าน(house, home)@0.95 | reason: Other cuts exist (ผู้-ใหญ่-บ้าน) but each is far less plausible than the tokenizer's cut.
+«ใหญ่» in [ผู้ใหญ่] บ้าน เป็น คน ดี
+    ⇒ ผู้ใหญ่ / NOUN / “adult; grown-up” / 0.92 / lexicon / role: subject of 'คน'
+    S: subject of 'คน' (generated)
+    D: elder. ; person over 18 years of age. ; adult person; mature person.
+    notes: The selection is part of the word "ผู้ใหญ่"; the reading is for the whole word.
+    SEG chosen ใหญ่(big, large)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«ที่นั่ง» in [ที่] [นั่ง] นี้ ว่าง ไหม ครับ
+    2 tokens: ที่=ที่/SCONJ“that, who, which” + นั่ง=นั่ง/VERB“to sit” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ที่(that, who, which)+นั่ง(to sit)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«หน้าต่าง» in เขา นั่ง ที่ นั่ง ข้าง [หน้าต่าง]
+    ⇒ หน้าต่าง / NOUN / “—” / 0.7 / lexicon / role: ข้าง-phrase of 'นั่ง'
+    S: ข้าง-phrase of 'นั่ง' (generated)
+    D: window
+    SEG chosen หน้าต่าง?@0.92 | reason: Other cuts exist (หน้า-ต่าง) but each is far less plausible than the tokenizer's cut.
+«ข้างหน้า» in เขา นั่ง ที่ นั่ง [ข้าง] [หน้าต่าง]
+    2 tokens: ข้าง=ข้าง/ADP“” + หน้าต่าง=หน้าต่าง/NOUN“” | conf 0.6
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ข้าง?+หน้า(face; front)@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ข้าง), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ข้างนอก» in เด็ก เล่น อยู่ [ข้าง] [นอก] บ้าน
+    2 tokens: ข้าง=ข้าง/ADP“” + นอก=นอก/ADP“outside” | conf 0.6
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ข้าง?+นอก(outside)@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ข้าง), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«มากกว่า» in ผม รัก คุณ [มากกว่า] ใคร
+    ⇒ มากกว่า / ADV / “more than” / 0.92 / lexicon / role: adverb "มากกว่า" modifying 'รัก'
+    S: adverb "มากกว่า" modifying 'รัก' (generated)
+    D: more than
+    SEG chosen มากกว่า(more than)@0.95 | reason: Other cuts exist (มาก-กว่า) but each is far less plausible than the tokenizer's cut.
+«กว่า» in ผม รัก คุณ [มากกว่า] ใคร
+    ⇒ มากกว่า / ADV / “more than” / 0.92 / lexicon / role: adverb "มากกว่า" modifying 'รัก'
+    S: adverb "มากกว่า" modifying 'รัก' (generated)
+    D: more than
+    notes: The selection is part of the word "มากกว่า"; the reading is for the whole word.
+    SEG chosen กว่า(more than; -er)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«มเหสี» in พระ ราชา ไป [หาม] [เห] [สี]
+    3 tokens: หาม=หาม/VERB“” + เห=เห/VERB“” + สี=สี/NOUN“colour” | conf 0.7
+    notes: 3 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen มเหสี?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (มเหสี), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«หาม» in พระ ราชา ไป [หาม] เห สี
+    ⇒ หาม / VERB / “—” / 0.7 / lexicon / role: second verb in a chain with 'ไป'
+    S: second verb in a chain with 'ไป' (conflicted)
+    D: to carry; to take
+    SEG chosen หาม?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (หาม), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ไปหา» in พระ ราชา [ไป] [หาม] เห สี
+    2 tokens: ไป=ไป/VERB“to go” + หาม=หาม/VERB“” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ไปหา(to go to see (a pe)@0.95 | reason: Other cuts exist (ไป-หา) but each is far less plausible than the tokenizer's cut.
+«ตา» in เธอ มี [ตา] กลม โต
+    ⇒ ตา / NOUN / “eye; grandfather (mother's father)” / 0.92 / lexicon / role: object of 'มี'
+    S: object of 'มี' (generated)
+    D: eye ; one who does something with an eye or the eyes, especially as a profession ; anything that is like an ey
+    SEG chosen ตา(eye; grandfather ()@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«กลม» in เธอ มี ตา [กลม] โต
+    ⇒ กลม / ADJ / “—” / 0.7 / lexicon / role: adjective describing 'ตา'
+    S: adjective describing 'ตา' (generated)
+    D: circular, round
+    SEG chosen กลม?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (กลม), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ตาก» in แม่ [ตาก] ผ้า ไว้ ข้าง นอก
+    ⇒ ตาก / VERB / “to dry in the sun; to hang out to dry” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to expose (something or oneself) to; to be exposed (to) ; to dry by exposing to the air or sunlight ; dried (b
+    SEG chosen ตาก(to dry in the sun;)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«ช่างไม้» in [ช่างไม้] ทำ โต๊ะ
+    ⇒ ช่างไม้ / NOUN / “—” / 0.7 / lexicon / role: subject of 'ทำ'
+    S: subject of 'ทำ' (generated)
+    D: carpenter
+    SEG chosen ช่างไม้?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ช่างไม้), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ช่าง» in [ช่างไม้] ทำ โต๊ะ
+    ⇒ ช่างไม้ / NOUN / “—” / 0.7 / lexicon / role: subject of 'ทำ'
+    S: subject of 'ทำ' (generated)
+    D: carpenter
+    notes: The selection is part of the word "ช่างไม้"; the reading is for the whole word.
+    SEG chosen ช่าง?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ช่าง), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«เชียงใหม่» in เขา นั่ง รถไฟ ไป [เชียงใหม่]
+    ⇒ เชียงใหม่ / PROPN / “—” / 0.7 / lexicon / role: place or goal of 'นั่ง'
+    S: place or goal of 'นั่ง' (generated)
+    D: Chiang Mai (a province of Thailand) ; Mueang Chiang Mai (a district of Chiang Mai Province) ; Chiang Mai (a ci
+    SEG chosen เชียงใหม่?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (เชียงใหม่), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«รถ» in เขา นั่ง [รถไฟ] ไป เชียงใหม่
+    ⇒ รถไฟ / NOUN / “train” / 0.92 / lexicon / role: place or goal of 'นั่ง'
+    S: place or goal of 'นั่ง' (generated)
+    D: (classifier: คัน or ตู้ for separate sections, as cars, carriages, coaches, etc.; ขบวน for lines or procession
+    notes: The selection is part of the word "รถไฟ"; the reading is for the whole word.
+    SEG chosen รถ(car; vehicle)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«กรุงเทพมหานคร» in คุณ สมชาย ทำงาน ที่ [กรุงเทพมหานคร]
+    ⇒ กรุงเทพมหานคร / PROPN / “—” / 0.7 / lexicon / role: ที่-phrase of 'ทำงาน'
+    S: ที่-phrase of 'ทำงาน' (generated)
+    D: Ayutthaya Kingdom (a kingdom based in present-day Phra Nakhon Si Ayutthaya Province, Thailand) ; Thon Buri Kin
+    SEG chosen กรุงเทพมหานคร?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (กรุงเทพมหานคร), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«สมศักดิ์» in ผม ชื่อ [สม] [ศักดิ์] มา จาก จังหวัด เชียงใหม่
+    2 tokens: สม=สม/VERB“” + ศักดิ์=ศักดิ์/NOUN“” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen สม?+ศักดิ์?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (สม, ศักดิ์), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«นายกรัฐมนตรี» in [นายก] [รัฐมนตรี] เดิน ทาง ไป ประเทศ ญี่ปุ่น
+    2 tokens: นายก=นายก/NOUN“” + รัฐมนตรี=รัฐมนตรี/NOUN“” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen นายก?+รัฐมนตรี?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (นายก, รัฐมนตรี), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ญี่ปุ่น» in นายก รัฐมนตรี เดิน ทาง ไป ประเทศ [ญี่ปุ่น]
+    ⇒ ญี่ปุ่น / PROPN / “—” / 0.7 / lexicon / role: noun modifying 'ประเทศ'
+    S: noun modifying 'ประเทศ' (generated)
+    D: Japan (a country in East Asia)
+    SEG chosen ญี่ปุ่น?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ญี่ปุ่น), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«คอมพิวเตอร์» in ผม ใช้ [คอมพิวเตอร์] และ อินเทอร์เน็ต ทุก วัน
+    ⇒ คอมพิวเตอร์ / NOUN / “—” / 0.7 / lexicon / role: object of 'ใช้'
+    S: object of 'ใช้' (generated)
+    D: computer
+    SEG chosen คอมพิวเตอร์?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (คอมพิวเตอร์), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«อินเทอร์เน็ต» in ผม ใช้ คอมพิวเตอร์ และ [อินเทอร์เน็ต] ทุก วัน
+    ⇒ อินเทอร์เน็ต / PROPN / “—” / 0.7 / lexicon / role: coordinated with 'คอมพิวเตอร์'
+    S: coordinated with 'คอมพิวเตอร์' (generated)
+    D: the Internet
+    SEG chosen อินเทอร์เน็ต?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (อินเทอร์เน็ต), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ฟุตบอล» in เขา เล่น [ฟุตบอล] และ ดู โทรทัศน์
+    ⇒ ฟุตบอล / NOUN / “—” / 0.7 / lexicon / role: object of 'เล่น'
+    S: object of 'เล่น' (generated)
+    D: soccer; association football ; the inflated ball used in such a game (classifier: ลูก (lûuk))
+    SEG chosen ฟุตบอล?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ฟุตบอล), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«พิซซ่า» in ฉัน กิน [พิซซ่า] กับ แฮมเบอร์เกอร์
+    ⇒ พิซซ่า / NOUN / “—” / 0.7 / lexicon / role: object of 'กิน'
+    also: พิซซ่า/PROPN@0.55
+    S: object of 'กิน' (generated)
+    D: pizza ; section 112 of the Thai Penal Code, which criminalises lèse majesté
+    SEG chosen พิซซ่า?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (พิซซ่า), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«แฮมเบอร์เกอร์» in ฉัน กิน พิซซ่า กับ [แฮมเบอร์เกอร์]
+    ⇒ แฮมเบอร์เกอร์ / NOUN / “—” / 0.7 / lexicon / role: กับ-phrase of 'กิน'
+    S: กับ-phrase of 'กิน' (conflicted)
+    D: hamburger.
+    SEG chosen แฮมเบอร์เกอร์?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (แฮมเบอร์เกอร์), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«๑๒๓» in ปี ๒๕๖๘ มี นักเรียน [๑๒๓] คน
+    0 tokens:  | conf 0
+    notes: No word was found in the selection (only punctuation or numerals).
+    SEG chosen ๑๒๓?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (๑๒๓), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«คน» in ปี ๒๕๖๘ มี นักเรียน ๑๒๓ [คน]
+    ⇒ คน / NOUN / “person” / 0.7 / lexicon / role: second noun phrase of 'มี'
+    also: คน/CLF“(classifier for people)”@0.3
+    S: second noun phrase of 'มี' (conflicted)
+    D: person; people; human being (Classifiers: คน or หัว or ราย or นาย or ท่าน) ; Classifier for most human beings.
+    SEG chosen คน(person)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«ยี่สิบเอ็ด» in [ยี่สิบ] [เอ็ด]
+    2 tokens: ยี่สิบ=ยี่สิบ/NUM“twenty” + เอ็ด=เอ็ด/NUM“one (last digit above ten: สิบเอ็ด 11, ยี่สิบเอ็ด 21)” | conf 0.92
+    notes: No sentence context: the word was read alone, so neighbouring words could not help choose a reading. || 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ยี่สิบ(twenty)+เอ็ด(one (last digit ab)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«สองร้อย» in เขา มี เงิน [สอง] [ร้อย] ห้าสิบ บาท
+    2 tokens: สอง=สอง/NUM“two” + ร้อย=ร้อย/NUM“hundred” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen สอง(two)+ร้อย(hundred)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«ร้อย» in เขา มี เงิน สอง [ร้อย] ห้าสิบ บาท
+    ⇒ ร้อย / NUM / “hundred” / 0.92 / lexicon / role: number counting 'เงิน'
+    S: number counting 'เงิน' (generated)
+    D: hundred; 100 (Thai numeral: ๑๐๐ (100)) ; lieutenant (military or police rank) ; to thread; to stitch
+    SEG chosen ร้อย(hundred)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«ๆ» in เด็ก [ๆ] วิ่ง เล่น
+    ⇒ ๆ / PART / “(repeat the previous word)” / 0.92 / lexicon / role: repetition mark (mai yamok)
+    C: reduplication-mai-yamok
+    S: repetition mark: say 'เด็ก' twice (generated)
+    D: ∅
+    SEG chosen ๆ((repeat the previo)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«เด็กๆ» in [เด็กๆ] วิ่ง เร็วๆ
+    ⇒ เด็ก / NOUN / “child; young” / 0.6 / rule / role: subject of 'วิ่ง'
+    C: reduplication-mai-yamok
+    S: subject of 'วิ่ง' (generated)
+    D: child: person below the age of adulthood ; young person ; childish person
+    SEG chosen เด็กๆ(child; young)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«เร็วๆ» in เด็กๆ วิ่ง [เร็วๆ]
+    ⇒ เร็ว / ADJ / “fast, quick” / 0.6 / rule / role: how or in what state 'วิ่ง' happens
+    C: reduplication-mai-yamok
+    S: how or in what state 'วิ่ง' happens (conflicted)
+    D: fast; quick; rapid ; early (ahead of time) ; fast; quickly; rapidly
+    SEG chosen เร็วๆ(fast, quick)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«กรุงเทพฯ» in [กรุงเทพฯ] เป็น เมือง หลวง
+    ⇒ กรุงเทพฯ / PROPN / “—” / 0.7 / lexicon / role: subject of 'เมือง'
+    S: subject of 'เมือง' (generated)
+    D: short for กรุงเทพมหานคร (grung-têep-má-hǎa-ná-kɔɔn)
+    SEG chosen กรุงเทพฯ?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (กรุงเทพฯ), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ฯลฯ» in มี ผลไม้ หลาย อย่าง เช่น มะม่วง กล้วย ส้ม [ฯลฯ]
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: ∅
+    notes: Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+    SEG chosen ฯลฯ?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ฯลฯ), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«coffee» in ฉัน ชอบ [coffee] มาก
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: ∅
+    notes: This selection is not in Thai script: the Thai word list does not apply to it. || Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+    SEG chosen coffee?@0.5 | reason: The selection holds spaces or characters that are not Thai letters; it is read as written and only the tokenizer's cut is shown.
+«เซเว่น» in ผม จะ ไป [เซ] [เว่น] ซื้อ ของ
+    2 tokens: เซ=เซ/VERB“to stagger, to sway” + เว่น=∅/∅“” | conf 0
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen เซ(to stagger, to swa)+เว่น?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (เว่น), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«มากกกก» in เธอ สวย [มา] [กก] [กก]
+    3 tokens: มา=มา/VERB“to come” + กก=กก/NOUN“” + กก=กก/NOUN“” | conf 0.7
+    notes: 3 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen มา(to come)+กก?+กก?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (กก, กก), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ยาโคบ» in [ยา] [โค] [บรัก] โยเซฟ มาก
+    3 tokens: ยา=ยา/NOUN“medicine” + โค=โค/NOUN“” + บรัก=∅/∅“” | conf 0
+    notes: 3 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ยา(medicine)+โคบ?@0.5 | alt ยาโคบ(Jacob)@0.5
+«โยเซฟ» in ยา โค บรัก [โยเซฟ] มาก
+    ⇒ โยเซฟ / PROPN / “Joseph” / 0.92 / lexicon / role: object of 'บรัก'
+    S: object of 'บรัก' (generated)
+    D: ∅
+    SEG chosen โยเซฟ(Joseph)@0.95 | reason: This is one word of the word list, and no other cut gives pieces that are all listed words.
+«อิสราเอล» in ดาวิด เป็น กษัตริย์ ของ [อิสราเอล]
+    ⇒ อิสราเอล / PROPN / “—” / 0.7 / lexicon / role: possessor of 'กษัตริย์'
+    S: possessor of 'กษัตริย์' (generated)
+    D: Israel (a country in Western Asia in the Middle East, at the eastern shore of the Mediterranean) ; Israel (the
+    SEG chosen อิสราเอล?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (อิสราเอล), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«กษัตริย์» in ดาวิด เป็น [กษัตริย์] ของ อิสราเอล
+    ⇒ กษัตริย์ / NOUN / “—” / 0.7 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: kṣatriya: those who fight, the ruling and military elite, being one of the four social classes in the society,
+    SEG chosen กษัตริย์?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (กษัตริย์), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«พระเยซูคริสต์» in [พระเยซู] [คริสต์] ทรง รัก เรา
+    2 tokens: พระเยซู=พระเยซู/PROPN“Jesus” + คริสต์=คริสต์/PROPN“” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen พระเยซู(Jesus)+คริสต์?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (คริสต์), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ฟ้าสวรรค์» in พระเจ้า ทรง สร้าง [ฟ้า] [สวรรค์] และ แผ่น ดิน โลก
+    2 tokens: ฟ้า=ฟ้า/NOUN“sky” + สวรรค์=สวรรค์/NOUN“heaven” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ฟ้า(sky)+สวรรค์(heaven)@0.82 | alt ฟ้าสวรรค์(the heavens, the s)@0.18
+«แผ่นดิน» in พระเจ้า ทรง สร้าง ฟ้า สวรรค์ และ [แผ่น] [ดิน] โลก
+    2 tokens: แผ่น=แผ่น/NOUN“sheet, flat piece” + ดิน=ดิน/NOUN“soil, earth” | conf 0.6
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen แผ่น(sheet, flat piece)+ดิน(soil, earth)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«ลุกขึ้น» in เขา [ลุก] [ขึ้น] แล้ว เดิน ออก ไป
+    2 tokens: ลุก=ลุก/VERB“to get up, to rise” + ขึ้น=ขึ้น/VERB“to go up, rise” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ลุก(to get up, to rise)+ขึ้น(to go up, rise)@0.82 | alt ลุกขึ้น(to get up, rise)@0.18
+«หมายถึง» in คำ นี้ [หมาย] [ถึง] อะไร
+    2 tokens: หมาย=หมาย/VERB“” + ถึง=ถึง/VERB“to arrive, reach; until” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen หมาย?+ถึง(to arrive, reach; )@0.62 | alt หมายถึง(to mean; to refer )@0.38
+«หญิงสาว» in [หญิง] [สาว] คน นั้น สวย มาก
+    2 tokens: หญิง=หญิง/NOUN“woman, female” + สาว=สาว/ADJ“” | conf 0.68
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen หญิง(woman, female)+สาว?@0.62 | alt หญิงสาว(young woman)@0.38
+«หน้าที่» in เขา มี [หน้าที่] ดูแล เด็ก
+    ⇒ หน้าที่ / NOUN / “duty, responsibility” / 0.92 / lexicon / role: object of 'มี'
+    S: object of 'มี' (generated)
+    D: post; position ; duty; function; office
+    SEG chosen หน้าที่(duty, responsibili)@0.95 | reason: Other cuts exist (หน้า-ที่) but each is far less plausible than the tokenizer's cut.
+«ดูแล» in เขา มี หน้าที่ [ดูแล] เด็ก
+    ⇒ ดูแล / VERB / “—” / 0.7 / lexicon / role: second verb in a chain with 'มี'
+    S: second verb in a chain with 'มี' (conflicted)
+    D: to look after; to take care of; to tend to; to supervise.
+    SEG chosen ดูแล?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ดูแล), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«คนใน» in [คนใน] บ้าน หลับ หมด แล้ว
+    ⇒ คนใน / NOUN / “people inside; insiders” / 0.92 / lexicon / role: subject of 'หลับ'
+    S: subject of 'หลับ' (generated)
+    D: ∅
+    SEG chosen คนใน(people inside; ins)@0.95 | reason: Other cuts exist (คน-ใน) but each is far less plausible than the tokenizer's cut.
+«หนังสือพิมพ์» in เขา กำลัง อ่าน [หนังสือพิมพ์] อยู่
+    ⇒ หนังสือพิมพ์ / NOUN / “—” / 0.7 / lexicon / role: object of 'อ่าน'
+    S: object of 'อ่าน' (generated)
+    D: newspaper
+    SEG chosen หนังสือพิมพ์?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (หนังสือพิมพ์), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ธรรมศาสตร์» in มหาวิทยาลัย [ธรรมศาสตร์]
+    ⇒ ธรรมศาสตร์ / PROPN / “—” / 0.7 / lexicon / role: noun modifying 'มหาวิทยาลัย'
+    also: ธรรมศาสตร์/NOUN@0.55
+    S: noun modifying 'มหาวิทยาลัย' (generated)
+    D: (พระ~) Dharmaśāstra, a genre of Indic legal treatises. ; (พระ~) the name of a procedural law of Siam, enacted 
+    SEG chosen ธรรมศาสตร์?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ธรรมศาสตร์), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ปลาทู» in แม่ ซื้อ [ปลา] [ทู] มา สาม ตัว
+    2 tokens: ปลา=ปลา/NOUN“fish” + ทู=ทู/NOUN“” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ปลา(fish)+ทู?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (ทู), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«อเมริกัน» in ผม เป็น คน [อเมริกัน]
+    ⇒ อเมริกัน / ADJ / “—” / 0.68 / lexicon / role: adjective describing 'คน'
+    also: อเมริกัน/NOUN@0.45
+    S: adjective describing 'คน' (generated)
+    D: American. ; American (person).
+    SEG chosen อเมริกัน?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (อเมริกัน), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«อังกฤษ» in เขา พูด ภาษา [อังกฤษ] ไม่ ได้
+    ⇒ อังกฤษ / ADJ / “—” / 0.68 / lexicon / role: adjective describing 'ภาษา'
+    also: อังกฤษ/NOUN@0.45, อังกฤษ/PROPN@0.45
+    S: adjective describing 'ภาษา' (generated)
+    D: English ; British ; English
+    SEG chosen อังกฤษ?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (อังกฤษ), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«พี่ชาย» in [พี่] [ชาย] ของ ผม เป็น ทหาร
+    2 tokens: พี่=พี่/NOUN“older sibling” + ชาย=ชาย/NOUN“man, male” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen พี่(older sibling)+ชาย(man, male)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«น้องสาว» in [น้อง] [สาว] ฉัน อายุ สิบ สอง ปี
+    2 tokens: น้อง=น้อง/NOUN“younger sibling” + สาว=สาว/ADJ“” | conf 0.68
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen น้อง(younger sibling)+สาว?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (สาว), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«สิบสอง» in น้อง สาว ฉัน อายุ [สิบ] [สอง] ปี
+    2 tokens: สิบ=สิบ/NUM“ten” + สอง=สอง/NUM“two” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen สิบ(ten)+สอง(two)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.

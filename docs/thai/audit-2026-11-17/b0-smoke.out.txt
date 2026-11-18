@@ -1,0 +1,39 @@
+CUT "ฉันกินข้าวที่บ้านทุกวัน" ⇒ ฉัน/PRON · กิน/VERB · ข้าว/NOUN · ที่/SCONJ · บ้าน/NOUN · ทุก/DET · วัน/NOUN
+CUT "ตากลม" ⇒ ตา/NOUN · กลม/ADJ°
+«ข้าว» in ฉัน กิน [ข้าว] ที่ บ้าน ทุก วัน
+    ⇒ ข้าว / NOUN / “rice; food, a meal” / 0.92 / lexicon / role: object of 'กิน'
+    P: กินข้าว“to eat (a meal)”
+    S: object of 'กิน' (generated)
+    D: rice ; food; meal ; year
+    R: khao  | dict: — /kʰaːw˥˩/ /kʰaw˥˩/
+    pron: Initial consonant class: high (tone also depends on vowel length, final consonant and tone mark). Contains a tone mark; it changes the tone with the consonant class. Tone by syllable: ข้าว falling. Thai is tonal: five tones distinguish words.
+    syl: ข้าว=khao/falling@0.95
+«ตากลม» in เธอ มี [ตา] [กลม] โต
+    2 tokens: ตา=ตา/NOUN“eye; grandfather (mother's father)” + กลม=กลม/ADJ“” | conf 0.7
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ตา(eye; grandfather ()+กลม?@0.45 | alt ตากลม(to take the air; t)@0.45 | ตาก(to dry in the sun;)+ลม(wind)@0.1
+«ตากลม» in เขา ไป [ตากลม] ที่ ชายหาด
+    ⇒ ตากลม / VERB / “to take the air; to dry in the wind” / 0.92 / lexicon / role: second verb in a chain with 'ไป'
+    S: second verb in a chain with 'ไป' (conflicted)
+    D: ∅
+    R: —  | dict: ∅
+    pron: Initial consonant class: mid (tone also depends on vowel length, final consonant and tone mark). The tone of this spelling is not certain; Go does not guess it. Thai is tonal: five tones distinguish words.
+    syl: ตา=ta/mid@0.55 กลม=klom/mid@0.55
+«คนขับรถ» in [คน] [ขับ] [รถ] มา แล้ว
+    3 tokens: คน=คน/NOUN“person” + ขับ=ขับ/VERB“to drive” + รถ=รถ/NOUN“car; vehicle” | conf 0.7
+    notes: 3 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen คน(person)+ขับ(to drive)+รถ(car; vehicle)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«ขับ» in คน [ขับ] รถ มา แล้ว
+    ⇒ ขับ / VERB / “to drive” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to cause or force to move (out, away, along, etc): — to drive; to chase ; to cause or force to move (out, away
+    R: khap  | dict: kàp /kʰap̚˨˩/ forms:[{"f":"การขับ","t":["abstract-noun"]},{"f":"ขบบ","t":["alternative","obsolete"]}
+    pron: Initial consonant class: high (tone also depends on vowel length, final consonant and tone mark). Tone by syllable: ขับ low. Thai is tonal: five tones distinguish words.
+    syl: ขับ=khap/low@0.95
+«โรง» in [โรงเรียน]
+    ⇒ โรงเรียน / NOUN / “school” / 0.92 / lexicon
+    D: school
+    R: —  | dict: roong-riian /roːŋ˧.ria̯n˧/ forms:[{"f":"แห่ง","t":["classifier"]}]
+    pron: Initial consonant class: low (tone also depends on vowel length, final consonant and tone mark). Tone by syllable: โรง mid, เรียน mid. Thai is tonal: five tones distinguish words.
+    syl: โรง=rong/mid@0.95
+    notes: The selection is part of the word "โรงเรียน"; the reading is for the whole word.

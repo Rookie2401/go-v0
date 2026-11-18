@@ -1,0 +1,164 @@
+== ladder: 98 files, 5902 Thai lines, 49557 Thai word tokens; no reading 139 (0.28 %), 25 different; dictionary headword only 2606 (5.3 %), 283 different; course word list 46812 (94.5 %)
+   commonest tokens with no reading: สุขใจ×11 หลับตา×9 ถึงที่×9 รดน้ำ×8 ชาลา×7 น้ำตาย×7 ตะเกียกตะกาย×7 เป็นต้น×7 ข่าวดี×7 จวนตัว×6 ไม่สู้×6 กระโจน×6 ทำการ×6 ซุกซ่อน×6 เผอิญ×6 ตะครุบ×6 หาความ×6 นักหนา×6 ถือดี×5 มิได้×3 ทอดแห×1 ใจอ่อน×1 ไม้ไผ่×1 มิใช่×1 เป็นสุข×1
+   commonest dictionary-only tokens: เชียงใหม่×70 ตก×59 ผัด×44 ตรวจ×34 พา×34 อเมริกา×33 ข้อความ×30 ตรง×30 เจ็บ×27 รีบ×27 ข้าง×27 พยาบาล×26 หน้าต่าง×25 กระเป๋า×25 บ่อ×25 กรุงเทพ×23 ยืม×23 ติด×23 แรง×22 บ่อย×21 พายุ×20 ลำพูน×19 เดี๋ยว×18 ไหว้×18 ถือ×18 เช่า×18 นิ่ง×18 อำนวย×17 ร่ม×16 ไร่×16 เงียบ×16 แม่น้ำ×15 หวาน×15 ผูก×15 บิดา×15 ตนเอง×15 คลินิก×14 บาดแผล×14 ภาค×14 แจ้ง×14 สม×14 ฉีดยา×13 สัมภาษณ์×13 กิ่ง×13 หัก×13 กางเกง×13 ธนาคาร×13 คอ×12 อาจารย์×12 เทียน×11 เรียบร้อย×11 นับ×11 ลึก×11 ทัก×10 เช็ด×10 รบกวน×10 ขอบใจ×10 แต่ง×10 ห้องเรียน×10 ดูแล×10
+== stage0 scenes: 22 files, 411 Thai lines, 1716 Thai word tokens; no reading 28 (1.63 %), 17 different; dictionary headword only 4 (0.2 %), 4 different; course word list 1684 (98.1 %)
+   commonest tokens with no reading: น×4 ห×4 ม×3 ง×2 ไ×2 ใ×2 มีชา×1 ก×1 ด×1 ล×1 ว×1 ย×1 คร×1 เ×1 แ×1 โ×1 ป×1
+   commonest dictionary-only tokens: บ×1 ร×1 กล×1 นาก×1
+
+== sample ladder/th/units/th-a1-1-01.json
+สวัสดีค่ะ แซม   = Hello, Sam.
+      สวัสดี · ค่ะ · แซม
+สวัสดีครับ คุณมะลิ   = Hello, Mali.
+      สวัสดี · ครับ · คุณ · มะลิ
+สบายดีไหมคะ   = Are you well?
+      สบาย · ดี · ไหม · คะ
+สบายดีครับ ขอบคุณมากครับ   = I'm well, thank you very much.
+      สบาย · ดี · ครับ · ขอบคุณ · มาก · ครับ
+สวัสดีครับ แซม   = Hello, Sam.
+      สวัสดี · ครับ · แซม
+สวัสดีครับ คุณต้น   = Hello, Ton.
+      สวัสดี · ครับ · คุณ · ต้น
+วันนี้เหนื่อยไหมครับ   = Are you tired today?
+      วันนี้ · เหนื่อย · ไหม · ครับ
+ผมเหนื่อยนิดหน่อยครับ   = I'm a little tired.
+      ผม · เหนื่อย · นิด · หน่อย · ครับ
+คุณเหนื่อยไหมครับ   = Are you tired?
+      คุณ · เหนื่อย · ไหม · ครับ
+ไม่เหนื่อยครับ   = No, I'm not tired.
+      ไม่ · เหนื่อย · ครับ
+ฉันเหนื่อยนิดหน่อยค่ะ   = I'm a little tired.
+      ฉัน · เหนื่อย · นิด · หน่อย · ค่ะ
+คุณมาจากอเมริกา ใช่ไหมคะ   = You come from America, right?
+      คุณ · มา · จาก · อเมริกา · ใช่ · ไหม · คะ
+ครับ ผมมาจากอเมริกาครับ   = Yes, I come from America.
+      ครับ · ผม · มา · จาก · อเมริกา · ครับ
+คุณมะลิมาจากที่ไหนครับ   = Mali, where do you come from?
+      คุณ · มะลิ · มา · จาก · ที่ไหน · ครับ
+เชียงใหม่ค่ะ   = Chiang Mai.
+      เชียงใหม่ · ค่ะ
+ต้นก็อยู่ที่เชียงใหม่ค่ะ   = Ton lives in Chiang Mai too.
+      ต้น · ก็ · อยู่ · ที่ · เชียงใหม่ · ค่ะ
+ผมชอบอเมริกาครับ   = I like America.
+      ผม · ชอบ · อเมริกา · ครับ
+คุณชอบเชียงใหม่ไหมครับ   = Do you like Chiang Mai?
+      คุณ · ชอบ · เชียงใหม่ · ไหม · ครับ
+ชอบครับ   = Yes, I do.
+      ชอบ · ครับ
+คุณพูดภาษาไทยได้ไหมคะ   = Can you speak Thai?
+      คุณ · พูด · ภาษา · ไทย · ได้ · ไหม · คะ
+ได้ครับ   = Yes, I can.
+      ได้ · ครับ
+ผมพูดได้นิดหน่อยครับ   = I can speak a little.
+      ผม · พูด · ได้ · นิด · หน่อย · ครับ
+คุณพูดดีครับ   = You speak well.
+      คุณ · พูด · ดี · ครับ
+คุณเรียนภาษาไทยที่ไหนครับ   = Where do you study Thai?
+      คุณ · เรียน · ภาษา · ไทย · ที่ไหน · ครับ
+ผมเรียนที่โรงเรียนครับ   = I study at a school.
+      ผม · เรียน · ที่ · โรงเรียน · ครับ
+วันนี้ผมเรียนภาษาไทยครับ   = Today I am studying Thai.
+      วันนี้ · ผม · เรียน · ภาษา · ไทย · ครับ
+
+== sample ladder/th/units/th-a2-1-05.json
+คืนนี้แซมกับมะลิไปตลาดกลางคืน   = Tonight Sam and Mali go to the night bazaar.
+      คืน · นี้ · แซม · กับ · มะลิ · ไป · ตลาด · กลาง · คืน
+พรุ่งนี้แซมต้องไปสัมภาษณ์งานที่โรงเรียน   = Tomorrow Sam has to go to a job interview at the school.
+      พรุ่งนี้ · แซม · ต้อง · ไป · สัมภาษณ์ · งาน · ที่ · โรงเรียน
+ผู้อำนวยการกับหัวหน้าครูจะคุยกับเขา   = The director and the head teacher will talk with him.
+      ผู้ · อำนวย · การ · กับ · หัวหน้า · ครู · จะ · คุย · กับ · เขา
+ผมต้องการเสื้อกับกางเกงใหม่ครับ   = I need a new shirt and new trousers.
+      ผม · ต้องการ · เสื้อ · กับ · กางเกง · ใหม่ · ครับ
+ทำไมคะ เสื้อผ้าของแซมเก่าหมดแล้วไหมคะ   = Why? Are all your clothes old?
+      ทำไม · คะ · เสื้อผ้า · ของ · แซม · เก่า · หมด · แล้ว · ไหม · คะ
+ผมมีแต่ตัวสั้นๆ ครับ ไม่มีชุดสวยๆ   = I only have short ones, no nice outfit.
+      ผม · มี · แต่ · ตัว · สั้นๆ · ครับ · ไม่มี · ชุด · สวยๆ
+ผู้อำนวยการต้องการครูที่มีประสบการณ์ ผมมีประสบการณ์ไม่มากครับ   = The director wants a teacher with experience. I don't have much.
+      ผู้ · อำนวย · การ · ต้องการ · ครู · ที่ · มี · ประสบการณ์ · ผม · มี · ประสบการณ์ · ไม่ · มาก · ครับ
+ไม่ต้องกลัวนะคะ แซมสมัครแล้ว เขาเชิญแซมไปคุยแล้ว   = Don't be afraid. You have applied, and they have invited you to talk.
+      ไม่ · ต้อง · กลัว · นะ · คะ · แซม · สมัคร · แล้ว · เขา · เชิญ · แซม · ไป · คุย · แล้ว
+เรามาเลือกของดีๆ กันค่ะ น้าของฉันก็ขายของที่ตลาดนี้   = Let's choose some good things. My aunt sells things at this market too.
+      เรา · มา · เลือก · ของ · ดีๆ · กัน · ค่ะ · น้า · ของ · ฉัน · ก็ · ขาย · ของ · ที่ · ตลาด · นี้
+ตลาดนี้มีหลังคาใหญ่ มีคนมาก   = The bazaar has a big roof, and there are many people.
+      ตลาด · นี้ · มี · หลังคา · ใหญ่ · มี · คน · มาก
+คนขายตะโกนเรียกคนที่เดินผ่าน   = The sellers shout to call people walking past.
+      คน · ขาย · ตะโกน · เรียก · คน · ที่ · เดิน · ผ่าน
+มีตำรวจสองนายเดินอยู่ในตลาด ที่นี่ปลอดภัยค่ะ   = Two police officers walk through the market. It is safe here.
+      มี · ตำรวจ · สอง · นาย · เดิน · อยู่ · ใน · ตลาด · ที่ · นี่ · ปลอดภัย · ค่ะ
+เชิญค่ะ เชิญดูก่อนนะคะ   = Welcome. Please have a look.
+      เชิญ · ค่ะ · เชิญ · ดู · ก่อน · นะ · คะ
+ขอโทษครับ ผมอยากได้เสื้อยาวสีฟ้า   = Excuse me, I would like a long shirt in blue.
+      ขอโทษ · ครับ · ผม · อยาก · ได้ · เสื้อ · ยาว · สี · ฟ้า
+ตัวนี้ค่ะ สีฟ้าสวยมาก จับดูได้เลยค่ะ   = This one. A very pretty blue. Feel it, please.
+      ตัว · นี้ · ค่ะ · สี · ฟ้า · สวย · มาก · จับ · ดู · ได้ · เลย · ค่ะ
+ต้องการไซส์อะไรคะ   = What size do you need?
+      ต้องการ · ไซส์ · อะไร · คะ
+ผมจำไซส์ของผมไม่ได้ครับ ที่อเมริกาไม่เหมือนที่นี่   = I can't remember my size. In America it is not like here.
+      ผม · จำ · ไซส์ · ของ · ผม · ไม่ · ได้ · ครับ · ที่ · อเมริกา · ไม่ · เหมือน · ที่ · นี่
+ใส่ตัวนี้ดูค่ะ ไซส์ใหญ่   = Try this one on. It is a large size.
+      ใส่ · ตัว · นี้ · ดู · ค่ะ · ไซส์ · ใหญ่
+แซมลองตัวนั้น มันหลวมมาก   = Sam tried that one. It was very loose.
+      แซม · ลอง · ตัว · นั้น · มัน · หลวม · มาก
+ตัวนี้หลวมครับ ผมอยากลองตัวที่เล็กกว่านี้   = This one is loose. I'd like to try a smaller one.
+      ตัว · นี้ · หลวม · ครับ · ผม · อยาก · ลอง · ตัว · ที่ · เล็ก · กว่า · นี้
+แซมใส่ตัวที่เล็กกว่า แต่มันคับ   = Sam put on a smaller one, but it was tight.
+      แซม · ใส่ · ตัว · ที่ · เล็ก · กว่า · แต่ · มัน · คับ
+ฉันว่าตัวใหญ่ไป ตัวเล็กไปค่ะ   = I think the big one is too big and the small one too small.
+      ฉัน · ว่า · ตัว · ใหญ่ · ไป · ตัว · เล็ก · ไป · ค่ะ
+ตัวนี้ไซส์ใหญ่กว่าตัวเล็ก แต่เล็กกว่าตัวใหญ่ ใส่ดูไหมคะ   = This one is bigger than the small one but smaller than the large one. Do you want to try it on?
+      ตัว · นี้ · ไซส์ · ใหญ่ · กว่า · ตัว · เล็ก · แต่ · เล็ก · กว่า · ตัว · ใหญ่ · ใส่ · ดู · ไหม · คะ
+แซมสวมตัวใหม่ แล้วยิ้ม   = Sam put on the new one and smiled.
+      แซม · สวม · ตัว · ใหม่ · แล้ว · ยิ้ม
+ตัวนี้ไม่หลวมไม่คับครับ แบบนี้ผมชอบ   = This one is neither loose nor tight. I like this style.
+      ตัว · นี้ · ไม่ · หลวม · ไม่ · คับ · ครับ · แบบ · นี้ · ผม · ชอบ
+ผมชอบแบบง่ายๆ ครับ   = I like simple styles.
+      ผม · ชอบ · แบบ · ง่ายๆ · ครับ
+
+== sample ladder/th/units/th-b1-10.json
+ใบนัดของโรงพยาบาลเชียงใหม่   = Chiang Mai Hospital appointment slip.
+      ใบ · นัด · ของ · โรงพยาบาล · เชียงใหม่
+ชื่อผู้ป่วย บอล อายุสิบปี   = Patient's name: Ball, aged ten.
+      ชื่อ · ผู้ · ป่วย · บอล · อายุ · สิบ · ปี
+อาการ ปวดท้องและมีไข้สองวัน   = Symptoms: stomach ache and fever for two days.
+      อาการ · ปวด · ท้อง · และ · มี · ไข้ · สอง · วัน
+หมอให้ยามาแล้ว   = The doctor has given medicine.
+      หมอ · ให้ · ยา · มา · แล้ว
+วันนัดครั้งต่อไป อีกสามวัน เวลาเก้าโมงเช้า   = Next appointment: in three days, at nine in the morning.
+      วัน · นัด · ครั้ง · ต่อ · ไป · อีก · สาม · วัน · เวลา · เก้า · โมง · เช้า
+ถ้าไม่มาตามนัด กรุณาโทรบอกโรงพยาบาลก่อน   = If you cannot come as arranged, please phone the hospital first.
+      ถ้า · ไม่ · มา · ตาม · นัด · กรุณา · โทร · บอก · โรงพยาบาล · ก่อน
+หนึ่ง กินยาวันละสามครั้ง หลังอาหารเช้า กลางวัน และเย็น   = One: take the medicine three times a day, after breakfast, lunch and dinner.
+      หนึ่ง · กิน · ยา · วัน · ละ · สาม · ครั้ง · หลัง · อาหาร · เช้า · กลาง · วัน · และ · เย็น
+สอง ดื่มน้ำมากๆ ไม่ดื่มน้ำเย็นจัด   = Two: drink a lot of water, but not icy water.
+      สอง · ดื่ม · น้ำ · มากๆ · ไม่ · ดื่ม · น้ำ · เย็น · จัด
+สาม กินข้าวต้มหรืออาหารอ่อน ไม่กินอาหารเผ็ด   = Three: eat rice porridge or soft food, and nothing spicy.
+      สาม · กิน · ข้าวต้ม · หรือ · อาหาร · อ่อน · ไม่ · กิน · อาหาร · เผ็ด
+สี่ นอนพักมากๆ และไม่ไปโรงเรียนสามวัน   = Four: rest a lot in bed and do not go to school for three days.
+      สี่ · นอน · พัก · มากๆ · และ · ไม่ · ไป · โรงเรียน · สาม · วัน
+ถ้าปวดท้องมาก หรือไข้ไม่ลด ให้รีบมาโรงพยาบาลทันที   = If the stomach ache is bad, or the fever does not go down, come to the hospital at once.
+      ถ้า · ปวด · ท้อง · มาก · หรือ · ไข้ · ไม่ · ลด · ให้ · รีบ · มา · โรงพยาบาล · ทันที
+ยายของบอลอ่านหนังสือไม่ค่อยออก แต่อยากรู้ว่าหมอพูดอะไร   = Ball's grandmother cannot read well, but she wants to know what the doctor said.
+      ยาย · ของ · บอล · อ่าน · หนังสือ · ไม่ · ค่อย · ออก · แต่ · อยาก · รู้ · ว่า · หมอ · พูด · อะไร
+มะลิจึงอ่านใบนัดให้ยายฟังทีละคำ   = So Mali read the slip to her, word by word.
+      มะลิ · จึง · อ่าน · ใบ · นัด · ให้ · ยาย · ฟัง · ที · ละ · คำ
+ยายถามว่า ยาต้องกินกี่ครั้งคะ   = Grandmother asked, "How many times must he take the medicine?"
+      ยาย · ถาม · ว่า · ยา · ต้อง · กิน · กี่ · ครั้ง · คะ
+มะลิตอบว่า วันละสามครั้งค่ะ หลังกินข้าวเสมอ   = Mali answered, "Three times a day, always after he eats."
+      มะลิ · ตอบ · ว่า · วัน · ละ · สาม · ครั้ง · ค่ะ · หลัง · กิน · ข้าว · เสมอ
+ยายถามว่า แล้วบอลกินข้าวได้ไหม เขาบอกว่าไม่หิว   = Grandmother asked, "And can Ball eat? He says he is not hungry."
+      ยาย · ถาม · ว่า · แล้ว · บอล · กิน · ข้าว · ได้ · ไหม · เขา · บอก · ว่า · ไม่ · หิว
+มะลิตอบว่า ให้กินข้าวต้มก่อนค่ะ แล้วค่อยกินยา   = Mali answered, "Give him rice porridge first, and then the medicine."
+      มะลิ · ตอบ · ว่า · ให้ · กิน · ข้าวต้ม · ก่อน · ค่ะ · แล้ว · ค่อย · กิน · ยา
+ยายยิ้ม และจดเวลากินยาไว้บนกระดาษ   = Grandmother smiled and wrote the medicine times on a piece of paper.
+      ยาย · ยิ้ม · และ · จด · เวลา · กิน · ยา · ไว้ · บน · กระดาษ
+ตัวหนังสือของเธอใหญ่ แต่สวยมาก   = Her handwriting was large, but very beautiful.
+      ตัว · หนังสือ · ของ · เธอ · ใหญ่ · แต่ · สวย · มาก
+สามวันต่อมา บอลมาที่โรงพยาบาลตามนัด   = Three days later Ball came to the hospital as arranged.
+      สาม · วัน · ต่อ · มา · บอล · มา · ที่ · โรงพยาบาล · ตาม · นัด
+หมอพูดว่า ไข้หายแล้ว และบอลไปโรงเรียนได้   = The doctor said the fever was gone and Ball could go to school.
+      หมอ · พูด · ว่า · ไข้ · หาย · แล้ว · และ · บอล · ไป · โรงเรียน · ได้
+บอลดีใจมาก เพราะเขาเบื่อการนอนอยู่บ้าน   = Ball was delighted, because he was tired of lying around at home.
+      บอล · ดีใจ · มาก · เพราะ · เขา · เบื่อ · การ · นอน · อยู่ · บ้าน
+ตอนเย็น ยายทำข้าวต้มให้บอลอีกชามหนึ่ง   = That evening Grandmother made Ball another bowl of rice porridge.
+      ตอน · เย็น · ยาย · ทำ · ข้าวต้ม · ให้ · บอล · อีก · ชาม · หนึ่ง
+บอลกินหมดชาม และบอกว่า ผมหิวแล้วครับ   = Ball finished the bowl and said, "Now I am hungry."
+      บอล · กิน · หมด · ชาม · และ · บอก · ว่า · ผม · หิว · แล้ว · ครับ

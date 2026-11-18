@@ -1,0 +1,60 @@
+== กิน VERB: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || Tense, aspect and negation are separate words placed beside the verb (กำลัง, จะ, เคย, แล้ว, อยู่, ไม่), never changes to the verb itself. || Verbs are often strung together with no linking word (serial verbs, ไปซื้อ "go and buy"); the card shows each verb as its own word.
+   constructions (as passed to the card): progressive-kamlang, continuing-yu, future-ja, experience-khoey, completed-laeo, negation-mai, did-not-mai-dai, not-yet-yang-mai, not-at-all-mai-loei, ability-dai, modal-before-verb, prohibition-ya, passive-thuk, causative-hai, benefactive-hai, directional-after-verb, nominalizer-kan
+== หมา NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || The word list records no classifier for this noun; a dictionary entry may name one.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== แมว NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || The word list records no classifier for this noun; a dictionary entry may name one.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== หนังสือ NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || Classifier: เล่ม (counts books, knives). The word list names it by what the classifier counts, not by a rule for this noun.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== จดหมาย NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || Classifier: ตัว (counts animals, letters, clothes, furniture); ฉบับ (counts newspapers, letters, documents). The word list names it by what the classifier counts, not by a rule for this noun.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== เวลา NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || Classifier: หน (counts times, occasions). The word list names it by what the classifier counts, not by a rule for this noun.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== ตอน NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || Classifier: หน (counts times, occasions). The word list names it by what the classifier counts, not by a rule for this noun.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== ลูก NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || Classifier: ลูก (counts fruit, balls, mountains, round things). The word list names it by what the classifier counts, not by a rule for this noun.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== ผ้า NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || Classifier: ตัว (counts animals, letters, clothes, furniture); ผืน (counts cloth, mats, flags, plots of land). The word list names it by what the classifier counts, not by a rule for this noun.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== รถ NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || Classifier: คัน (counts cars, buses, bicycles, umbrellas). The word list names it by what the classifier counts, not by a rule for this noun.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== คน NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || The word list records no classifier for this noun; a dictionary entry may name one.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== เด็ก NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || The word list records no classifier for this noun; a dictionary entry may name one.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== ครู NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || The word list records no classifier for this noun; a dictionary entry may name one.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== ปากกา NOUN: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A noun has no plural form: number comes from the context, from a number + classifier, or sometimes from repeating the word with ๆ. || Classifier: ด้าม (counts pens, pencils, tools with a handle). The word list names it by what the classifier counts, not by a rule for this noun.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative, reduplication-mai-yamok, relative-thi
+== ดี ADJ: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || An adjective follows its noun and is used without a linking verb (บ้านใหญ่ "the house is big"); it does not agree with the noun.
+   constructions (as passed to the card): negation-mai, future-ja, completed-laeo, comparative-kwa, superlative-thisut, not-at-all-mai-loei, nominalizer-khwam, reduplication-mai-yamok
+== ตัว CLF: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A classifier stands between a number (or a demonstrative) and the thing counted: noun + number + classifier.
+   constructions (as passed to the card): classifier-phrase, classifier-demonstrative
+== ครับ PART: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A particle closes a sentence or softens it; it adds politeness, mood or a question, and does not change.
+   constructions (as passed to the card): final-particle
+== ผม PRON: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A pronoun has no case or number forms; the same word serves as subject and object.
+   constructions (as passed to the card): 
+== สอง NUM: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it. || A number goes after the noun it counts and before the classifier.
+   constructions (as passed to the card): classifier-phrase, ordinal-thi
+== ที่ SCONJ: kind=none template=does not inflect
+   notes: Thai words never change form: there is no conjugation, declension, gender or number marking, so there is no table, and what a word does is shown by the words around it.
+   constructions (as passed to the card): relative-thi, ordinal-thi

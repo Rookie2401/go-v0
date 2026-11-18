@@ -1,0 +1,189 @@
+«เย็น» in สอง ดื่ม น้ำ มากๆ ไม่ ดื่ม น้ำ [เย็น] จัด
+    ⇒ เย็น / NOUN / “evening” / 0.92 / lexicon / role: noun modifying 'น้ำ'
+    S: noun modifying 'น้ำ' (generated)
+    D: the period of time from 4 p.m. to 6 p.m. ; evening; late afternoon; early evening ; cold; cool; chill
+    R: yen  | dict: yen /jen˧/
+    pron: Initial consonant class: low (tone also depends on vowel length, final consonant and tone mark). Tone by syllable: เย็น mid. Thai is tonal: five tones distinguish words.
+    syl: เย็น=yen/mid@0.95
+    notes: 
+    basis: 
+«ละ» in หนึ่ง กิน ยา วัน [ละ] สาม ครั้ง
+    ⇒ ละ / PART / “(short form of ล่ะ or แล้ว)” / 0.92 / lexicon / role: follow-up particle
+    S: final particle ละ (follow-up particle) (generated)
+    D: particle used often with mildly entreative or corroborative force ; each, per ; already
+    R: la  | dict: lá /laʔ˦˥/
+    pron: Initial consonant class: low (tone also depends on vowel length, final consonant and tone mark). Tone by syllable: ละ high. Thai is tonal: five tones distinguish words.
+    syl: ละ=la/high@0.95
+    notes: 
+    basis: 
+«ผู้อำนวยการ» in [ผู้] [อำนวย] [การ] กับ หัวหน้า ครู จะ คุย กับ เขา
+    3 tokens: ผู้=ผู้/NOUN“person who (before a verb)” + อำนวย=อำนวย/VERB“” + การ=การ/NOUN“(prefix: the act of …-ing)” | conf 0.7
+    notes: 3 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ผู้(person who (before)+อำนวย?+การ((prefix: the act o)@0.95 | reason: The tokenizer's cut has pieces the word list does not know (อำนวย), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«การ» in ผู้ อำนวย [การ] กับ หัวหน้า ครู จะ คุย กับ เขา
+    ⇒ การ / NOUN / “(prefix: the act of …-ing)” / 0.92 / lexicon / role: noun-forming prefix
+    S: object of 'อำนวย' (generated)
+    D: work; matter; task; affair ; prefixed to nouns to form noun derivatives, meaning “affairs of.; matters of .; -
+    R: kan  | dict: gaan /kaːn˧/
+    pron: Initial consonant class: mid (tone also depends on vowel length, final consonant and tone mark). Tone by syllable: การ mid. Thai is tonal: five tones distinguish words.
+    syl: การ=kan/mid@0.95
+    notes: 
+    basis: 
+«เล็ก» in [เล็ก] ไป หน่อย ครับ
+    ⇒ เล็ก / PROPN / “Lek (a given name; also "small")” / 0.8 / lexicon / role: subject of 'ไป'
+    also: เล็ก/ADJ“small”@0.3
+    S: subject of 'ไป' (generated)
+    D: small
+    R: lek  | dict: lék /lek̚˦˥/ forms:[{"f":"ความเล็ก","t":["abstract-noun"]}]
+    pron: Initial consonant class: low (tone also depends on vowel length, final consonant and tone mark). Tone by syllable: เล็ก high. Thai is tonal: five tones distinguish words.
+    syl: เล็ก=lek/high@0.95
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+«แดง» in [แดง] มาก เลย
+    ⇒ แดง / ADJ / “red” / 0.55 / lexicon / role: the main word of the sentence
+    also: แดง/PROPN“Daeng (a given name; also "red”@0.3
+    S: the main word of the sentence (generated)
+    D: red ; to reveal ; cent; money (for expressing destitution)
+    R: daeng  | dict: dɛɛng /dɛːŋ˧/ forms:[{"f":"ความแดง","t":["abstract-noun"]}]
+    pron: Initial consonant class: mid (tone also depends on vowel length, final consonant and tone mark). Tone by syllable: แดง mid. Thai is tonal: five tones distinguish words.
+    syl: แดง=daeng/mid@0.95
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+«ต้น» in [ต้น] ไม่ สูง
+    ⇒ ต้น / PROPN / “Ton (a given name; also "tree")” / 0.8 / lexicon / role: subject of 'สูง'
+    also: ต้น/NOUN“trunk; plant; beginning”@0.3, ต้น/CLF“(classifier for plants)”@0.3
+    S: subject of 'สูง' (generated)
+    D: tree (used to precede any plant's name) (Classifier: ต้น) ; trunk (of a tree); stalk ; beginning; source
+    R: ton  | dict: dtôn /ton˥˩/
+    pron: Initial consonant class: mid (tone also depends on vowel length, final consonant and tone mark). Contains a tone mark; it changes the tone with the consonant class. Tone by syllable: ต้น falling. Thai is tonal: five tones distinguish words.
+    syl: ต้น=ton/falling@0.85
+    notes: 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+«ตู้เย็น» in [ตู้] [เย็น] เสีย
+    2 tokens: ตู้=ตู้/NOUN“cupboard, cabinet” + เย็น=เย็น/NOUN“evening” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen ตู้(cupboard, cabinet)+เย็น(evening)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«ตก» in ฝน [ตกหนัก] มาก
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: to drop; to fall ; to drop (to give birth to) ; to drop; to let out; to discharge; to release
+    R: —  | dict: dtòk /tok̚˨˩/ forms:[{"f":"การตก","t":["abstract-noun"]}]
+    pron: Initial consonant class: mid (tone also depends on vowel length, final consonant and tone mark). The tone of this spelling is not certain; Go does not guess it. Thai is tonal: five tones distinguish words.
+    syl: ตก=tok/low@0.85
+    notes: The selection is part of the word "ตกหนัก"; the reading is for the whole word. || Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+    basis: 
+«ตกหนัก» in ฝน [ตกหนัก] มาก
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: ∅
+    R: —  | dict: ∅
+    pron: Initial consonant class: mid (tone also depends on vowel length, final consonant and tone mark). The tone of this spelling is not certain; Go does not guess it. Thai is tonal: five tones distinguish words.
+    syl: ตก=tok/low@0.7 หนัก=nak/low@0.55
+    notes: Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+    basis: 
+«ตก» in วันนี้ ฝน [ตก]
+    ⇒ ตก / VERB / “—” / 0.7 / lexicon / role: the main word of the sentence
+    also: ตก/ADV@0.55
+    S: the main word of the sentence (generated)
+    D: to drop; to fall ; to drop (to give birth to) ; to drop; to let out; to discharge; to release
+    R: tok  | dict: dtòk /tok̚˨˩/ forms:[{"f":"การตก","t":["abstract-noun"]}]
+    pron: Initial consonant class: mid (tone also depends on vowel length, final consonant and tone mark). Tone by syllable: ตก low. Thai is tonal: five tones distinguish words.
+    syl: ตก=tok/low@0.85
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+«น้ำตาล» in ผม ไม่ ใส่ [น้ำตาล]
+    ⇒ น้ำตาล / NOUN / “—” / 0.7 / lexicon / role: object of 'ใส่'
+    S: object of 'ใส่' (generated)
+    D: palmyra palm juice ; a traditional intoxicating beverage made from palmyra palm juice fermented with barks of 
+    R: nam-tan  | dict: nám-dtaan /nam˦˥.taːn˧/ /naːm˦˥.taːn˧/
+    pron: Initial consonant class: low (tone also depends on vowel length, final consonant and tone mark). Contains a tone mark; it changes the tone with the consonant class. Tone by syllable: น้ำ high, ตาล mid. Thai is tonal: five tones distinguish words.
+    syl: น้ำ=nam/high@0.9 ตาล=tan/mid@0.9
+    notes: 
+    basis: 
+«ที่» in [ที่] นี่ ปลอดภัย ค่ะ
+    ⇒ ที่ / SCONJ / “that, who, which” / 0.92 / lexicon / role: relative or complement marker
+    S: preposition "ที่" marking 'นี่' (generated)
+    D: at; to; on the site of; within; amidst; at the location of ; for; during; at the time of ; land; place; area; 
+    R: thi  | dict: tîi /tʰiː˥˩/
+    pron: Initial consonant class: low (tone also depends on vowel length, final consonant and tone mark). Contains a tone mark; it changes the tone with the consonant class. Tone by syllable: ที่ falling. Thai is tonal: five tones distinguish words.
+    syl: ที่=thi/falling@0.95
+    notes: 
+    basis: 
+«คุณครู» in [คุณครู] สอน ภาษา ไทย
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: ∅
+    R: —  | dict: ∅
+    pron: Initial consonant class: low (tone also depends on vowel length, final consonant and tone mark). The tone of this spelling is not certain; Go does not guess it. Thai is tonal: five tones distinguish words.
+    syl: คุณ=khun/mid@0.55 ครู=khru/mid@0.55
+    notes: Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+    basis: 
+«พระองค์» in ขอ [พระองค์] ทรง อวยพร เรา
+    ⇒ พระองค์ / PRON / “he (royal/divine); God” / 0.92 / lexicon / role: royal or divine pronoun
+    S: object of 'ขอ' (generated)
+    D: a second or third person pronoun referring to a god, religious personage, high priest, or royal person. ; Clas
+    R: phraong  | dict: prá-ong /pʰra˦˥.ʔoŋ˧/
+    pron: Initial consonant class: low (tone also depends on vowel length, final consonant and tone mark). The tone of this spelling is not certain; Go does not guess it. Thai is tonal: five tones distinguish words.
+    syl: พระ=phra/high@0.55 องค์=ong/mid@0.6
+    notes: 
+    basis: 
+«รัก» in ผม [รัก] คุณ
+    ⇒ รัก / VERB / “to love” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: to love, to have affection (for), to adore, to admire, to cherish, to be fond (of); to prefer, to favour ; lov
+    R: rak  | dict: rák /rak̚˦˥/ forms:[{"f":"การรัก","t":["abstract-noun"]}]
+    pron: Initial consonant class: low (tone also depends on vowel length, final consonant and tone mark). Tone by syllable: รัก high. Thai is tonal: five tones distinguish words.
+    syl: รัก=rak/high@0.95
+    notes: 
+    basis: 
+«เล่ม» in หนังสือ [เล่ม] นี้ ดี มาก
+    ⇒ เล่ม / CLF / “(classifier for books, knives)” / 0.92 / lexicon / role: classifier of 'หนังสือ'
+    C: classifier-demonstrative
+    S: classifier of 'หนังสือ' (generated)
+    D: Classifier for books, candles, carts and sharp-edged objects, such as knives, axes, swords, pins, needles, etc
+    R: lem  | dict: lêm /lem˥˩/ forms:[{"f":"เหล้ม","t":["alternative"],"r":"lêm"}]
+    pron: Initial consonant class: low (tone also depends on vowel length, final consonant and tone mark). Contains a tone mark; it changes the tone with the consonant class. Tone by syllable: เล่ม falling. Thai is tonal: five tones distinguish words.
+    syl: เล่ม=lem/falling@0.95
+    notes: 
+    basis: 
+«พี่ชาย» in ผม มี [พี่] [ชาย] สอง คน และ น้อง สาว หนึ่ง คน
+    2 tokens: พี่=พี่/NOUN“older sibling” + ชาย=ชาย/NOUN“man, male” | conf 0.92
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen พี่(older sibling)+ชาย(man, male)@0.95 | reason: No other cut gives pieces that are all listed words, so the tokenizer's cut is the only plausible one.
+«หมอ» in เขา เป็น [หมอ]
+    ⇒ หมอ / NOUN / “doctor” / 0.92 / lexicon / role: the main word of the sentence
+    S: the main word of the sentence (generated)
+    D: person specialising in something: expert, specialist, professional, etc. ; person specialising in magic, the o
+    R: mo  | dict: mɔ̌ɔ /mɔː˩˩˦/ forms:[{"f":"คน","t":["classifier"]}]
+    pron: Initial consonant class: high (tone also depends on vowel length, final consonant and tone mark). Tone by syllable: หมอ rising. Thai is tonal: five tones distinguish words.
+    syl: หมอ=mo/rising@0.95
+    notes: 
+    basis: 
+«สวย» in เธอ [สวย] กว่า ฉัน
+    ⇒ สวย / ADJ / “beautiful, pretty” / 0.92 / lexicon / role: the main word of the sentence
+    C: comparative-kwa
+    S: the main word of the sentence (generated)
+    D: beautiful ; perfectly steamed; well steamed ; to undergo something bad, such as to get scolded or punched
+    R: suai  | dict: sǔai /sua̯j˩˩˦/ forms:[{"f":"ความสวย","t":["abstract-noun"]}]
+    pron: Initial consonant class: high (tone also depends on vowel length, final consonant and tone mark). Tone by syllable: สวย rising. Thai is tonal: five tones distinguish words.
+    syl: สวย=suai/rising@0.95
+    notes: 
+    basis: 
+«นั่น» in [นั่น] คือ อะไร
+    ⇒ นั่น / PRON / “that (pointing)” / 0.92 / lexicon / role: subject of 'อะไร'
+    S: subject of 'อะไร' (generated)
+    D: that; those
+    R: nan  | dict: nân /nan˥˩/
+    pron: Initial consonant class: low (tone also depends on vowel length, final consonant and tone mark). Contains a tone mark; it changes the tone with the consonant class. Tone by syllable: นั่น falling. Thai is tonal: five tones distinguish words.
+    syl: นั่น=nan/falling@0.95
+    notes: 
+    basis: 
+«เมืองหลวง» in กรุงเทพมหานคร เป็น [เมือง] [หลวง] ของ ประเทศไทย
+    2 tokens: เมือง=เมือง/NOUN“city, town; country” + หลวง=หลวง/ADJ“” | conf 0.68
+    notes: 2 words selected; no phrase entry covers them, so each word is shown on its own and the card takes its confidence from the weakest.
+    SEG chosen เมือง(city, town; countr)+หลวง?@0.95 | reason: The tokenizer's cut has pieces the word list does not know (หลวง), and no other cut gives pieces that are all listed words, so there is nothing to compare it with.
+«ประเทศไทย» in กรุงเทพมหานคร เป็น เมือง หลวง ของ [ประเทศไทย]
+    ⇒ ∅ / ∅ / “—” / 0 / none
+    D: ∅
+    R: —  | dict: ∅
+    pron: Initial consonant class: mid (tone also depends on vowel length, final consonant and tone mark). The tone of this spelling is not certain; Go does not guess it. Thai is tonal: five tones distinguish words.
+    syl: ประ=pra/low@0.55 เทศ=thet/falling@0.6 ไทย=thai/mid@0.6
+    notes: Not an entry of the Thai word list, and the rules found no reading: the word is unknown to this pack.
+    basis: 

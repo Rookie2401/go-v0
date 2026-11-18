@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 2,
+  "id": "la-a1-1-12",
+  "lang": "la",
+  "title": "At the sea",
+  "contentType": "narrative",
+  "corpus": {
+    "id": "ladder-la",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Latin (Church Latin)"
+  },
+  "source": {
+    "id": "src:la:la-a1-1-12",
+    "title": "At the sea (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Church Latin. Drafted by an AI model; not yet reviewed by a Latinist.",
+    "provenance": "Drafted by an AI model for the course ladder in simple Ecclesiastical (Church) Latin; not reviewed by a Latinist. It is controlled, deliberately repetitive Latin written for learners and may contain unidiomatic phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet reviewed by a Latinist.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a Latinist. House style: simple Church Latin, spelled without macrons, with u/v and i/j as in Stage 0 (v and i only); present tense, with a few perfects (venit, vidit, fuit, dixit) in the last units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "sea",
+    "journey",
+    "island",
+    "ship"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-latinist-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "la",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-11-13",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nico": "Marcus",
+    "luis": "Lucius",
+    "sam": "Samuel",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Ad mare",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Heri Anna et Lucius ad mare venerunt. Samuel et Marcus quoque venerunt.",
+              "english": "Yesterday Anna and Lucius came to the sea. Samuel and Marcus came too."
+            },
+            {
+              "text": "Mare non longe est. Postquam ad litus venerunt, mare viderunt.",
+              "english": "The sea is not far. After they came to the shore, they saw the sea."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ecce mare! Ecce aqua magna!",
+              "english": "Look, the sea! Look, the big water!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Mare est. Ecce litus. Hic ambulamus.",
+              "english": "It is the sea. Look, the shore. Here we walk.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Quid est hoc in aqua? Estne insula?",
+              "english": "What is this in the water? Is it an island?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Insula est, et longe est. Ecce, navis ad insulam it!",
+              "english": "It is an island, and it is far away. Look, a ship goes to the island!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Navem video! Navis magna est. In nave multi homines sunt.",
+              "english": "I see the ship! The ship is big. In the ship there are many people.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Homines ad insulam eunt. Ibi habitant.",
+              "english": "The people go to the island. They live there.",
+              "speaker": "luis"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marcus in litore sedet. Aquam videt. Piscem in aqua videt.",
+              "english": "Marcus sits on the shore. He sees the water. He sees a fish in the water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ecce piscis! Piscem in aqua video!",
+              "english": "Look, a fish! I see a fish in the water!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ubi est? Non video.",
+              "english": "Where is it? I do not see it.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ibi est! Statim video. Sed nunc piscis in aqua non est.",
+              "english": "It is there! I see it at once. But now the fish is not in the water.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Piscis aquam amat. Ego aquam amo.",
+              "english": "The fish loves the water. I love water.",
+              "speaker": "ana"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna panem et pomum in litore parat, et omnes edunt et bibunt.",
+              "english": "Anna prepares bread and fruit on the shore, and all eat and drink."
+            },
+            {
+              "text": "Lucius dixit: Heri in schola fui. Hodie in schola non sum. Hodie hic sum. Bene est!",
+              "english": "Lucius said: Yesterday I was at school. Today I am not at school. Today I am here. It is well!"
+            },
+            {
+              "text": "Samuel dixit: Dies bonus est. Gratias Deo ago.",
+              "english": "Samuel said: It is a good day. I give thanks to God."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Post cenam ad urbem eunt. Marcus iterum aquam videt.",
+              "english": "After the meal they go to the town. Marcus looks at the water again."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Cras iterum ad mare venimus?",
+              "english": "Do we come to the sea again tomorrow?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Cras non venimus. Cras in valetudinario laboro.",
+              "english": "Tomorrow we do not come. Tomorrow I work at the clinic.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Cras in schola sum. Sed dies Dominica venimus.",
+              "english": "Tomorrow I am at school. But on Sunday we come.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Bene! Dies Dominica iterum venimus.",
+              "english": "Good! On Sunday we come again.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Gratias vobis ago, amici. Hodie dies bonus fuit. Pax vobis!",
+              "english": "Thank you, friends. Today was a good day. Peace to you!",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Canis quoque ad litus venit. Marcus canem amat. Canis aquam amat, et in aqua ambulat.",
+              "english": "The dog comes to the shore too. Marcus loves the dog. The dog loves water, and walks in the water."
+            },
+            {
+              "text": "Anna et Samuel ad montem ambulant. Ex monte mare vident, et insulam vident. Avis in arbore cantat.",
+              "english": "Anna and Samuel walk to the hill. From the hill they see the sea, and they see the island. A bird sings in the tree."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

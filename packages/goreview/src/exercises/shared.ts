@@ -142,28 +142,119 @@ export function glossSplit(facts: UnitFacts): GlossSplit {
   return { lexicon: facts.glosses.slice(0, n), dictionary: facts.glosses.slice(n) };
 }
 
-/** The most concise gloss to show or to use as the reference answer: the first lexicon gloss, else the first short dictionary sense. */
-export function referenceGloss(facts: UnitFacts): string | undefined {
-  const { lexicon, dictionary } = glossSplit(facts);
-  return lexicon[0] ?? dictionary.find((g) => wordCount(g) <= 6);
+/*
+ * Dictionary senses are judged by the meanings they list, not as one string. A sense like "to believe, to trust in, to give
+ * credence to" is too long to be an answer whole, but it is the word's main meaning: judged whole, it was dropped while a short
+ * tail sense ("to lend, to loan") survived, so credo accepted only "to lend". A long sense is therefore split first, at its
+ * semicolons into meanings and, where a meaning reads as a list of short items, at its commas, and each piece is judged by its
+ * own length. A long meaning that is prose ("a municipality of Sogn og Fjordane, Norway") is not cut into fragments.
+ */
+
+/** The pieces of `text` between the top-level separators (outside brackets), trimmed, with where each ends in `text`. */
+function splitTop(text: string, separator: ';' | ','): Array<{ text: string; end: number }> {
+  const out: Array<{ text: string; end: number }> = [];
+  let depth = 0;
+  let start = 0;
+  for (let i = 0; i < text.length; i += 1) {
+    const ch = text[i];
+    if (ch === '(' || ch === '[') depth += 1;
+    else if (ch === ')' || ch === ']') depth = Math.max(0, depth - 1);
+    else if (ch === separator && depth === 0) { out.push({ text: text.slice(start, i), end: i }); start = i + 1; }
+  }
+  out.push({ text: text.slice(start), end: text.length });
+  return out.map((p) => ({ text: p.text.trim(), end: p.end })).filter((p) => /\p{L}/u.test(p.text));
 }
 
-/** Every accepted meaning: the lexicon glosses and their parts, then short dictionary senses (at most four words each) and their parts. */
+/** A piece with a bracket in it is an annotation or a broken fragment, not an answer. */
+const hasBracket = (s: string): boolean => /[()[\]]/u.test(s);
+const withoutBrackets = (s: string): string => s.replace(/\([^()]*\)|\[[^[\]]*\]/gu, ' ');
+const wordsIn = (s: string): string[] => s.toLowerCase().split(/\s+/u).map((w) => w.replace(/^[^\p{L}]+|[^\p{L}]+$/gu, '')).filter(Boolean);
+/** "etc.", "i.e.", "e.g." split off a list ("plates, glasses, etc.") are never a meaning. */
+const ABBREVIATIONS = new Set(['etc', 'i.e', 'e.g', 'esp', 'cf']);
+const isAbbreviation = (piece: string): boolean => wordsIn(piece).every((w) => ABBREVIATIONS.has(w));
+/** A sentence break inside a meaning ("neuter gender. Nominative, …") marks prose, not a list. */
+const SENTENCE_BREAK = /\.\s+[^\s\p{Ll}]/u;
+/** The adjective template "of, from, or relating to Chalatenango" is a definition: its comma pieces ("of", "from") are not meanings. */
+const RELATING_TO = /\b(?:relating|pertaining|belonging) to\b/iu;
+
+/** The comma items of a meaning that reads as a list of short items ("to believe, to trust in, to give credence to"), else none. */
+function listItems(meaning: string): Array<{ text: string; end: number }> {
+  if (SENTENCE_BREAK.test(meaning) || RELATING_TO.test(meaning)) return [];
+  const items = splitTop(meaning, ',');
+  if (items.length < 2) return [];
+  return items.every((i) => { const n = wordCount(withoutBrackets(i.text)); return n >= 1 && n <= 4; }) ? items : [];
+}
+
+/** The answers one dictionary sense supplies, in its own order. */
+function senseAnswers(sense: string): string[] {
+  // a sense short enough to be an answer whole keeps its old treatment: the whole and every part ("in, at, on" for en)
+  if (wordCount(sense) <= 4) return hasBracket(sense) ? glossParts(sense).slice(1).filter((p) => !hasBracket(p)) : glossParts(sense);
+  const out: string[] = [];
+  for (const { text: meaning } of splitTop(sense, ';')) {
+    // a list item is the item without its aside ("stay (at a location)" → "stay") or its conjunction ("or place" → "place")
+    const pieces = wordCount(meaning) <= 4 ? glossParts(meaning)
+      : listItems(meaning).map((i) => withoutBrackets(i.text).replace(/\s+/gu, ' ').trim().replace(/^(?:or|and)\s+/iu, ''));
+    for (const p of pieces) if (wordCount(p) <= 4 && !hasBracket(p) && !isAbbreviation(p)) out.push(p);
+  }
+  return out;
+}
+
+/** The gloss one dictionary sense offers to show: the whole if short, else its first short meaning, else the leading items of its first list. */
+function senseReference(sense: string): string | undefined {
+  if (wordCount(sense) <= 6) return sense;
+  for (const { text: meaning } of splitTop(sense, ';')) {
+    if (wordCount(meaning) <= 6) return meaning;
+    const items = listItems(meaning);
+    if (!items.length) continue;
+    // as many leading items as fit in six words, cut from the dictionary's own text ("to believe, to trust in")
+    let cut = 0;
+    let words = 0;
+    for (const i of items) {
+      words += wordCount(i.text);
+      if (words > 6) break;
+      cut = i.end;
+    }
+    if (cut > 0) return meaning.slice(0, cut).trim();
+  }
+  return undefined;
+}
+
+/**
+ * The most concise gloss to show or to use as the reference answer: the first lexicon gloss, else, taking the dictionary's
+ * senses in order, the first that offers a short gloss: the sense itself if at most six words, else its first meaning of at most
+ * six words, else the leading items of its first list of meanings that fit in six words.
+ */
+export function referenceGloss(facts: UnitFacts): string | undefined {
+  const { lexicon, dictionary } = glossSplit(facts);
+  if (lexicon[0] !== undefined) return lexicon[0];
+  for (const sense of dictionary) {
+    const g = senseReference(sense);
+    if (g) return g;
+  }
+  return undefined;
+}
+
+/**
+ * Every accepted meaning: the lexicon glosses and their parts, then, sense by sense in the dictionary's order, the pieces of each
+ * sense of at most four words with no bracket (a short sense whole and its parts; a long sense split as described above).
+ */
 export function acceptedMeanings(facts: UnitFacts): string[] {
   const { lexicon, dictionary } = glossSplit(facts);
   const out: string[] = [];
-  const push = (g: string): void => { for (const p of glossParts(g)) if (!out.includes(p)) out.push(p); };
-  lexicon.forEach(push);
-  dictionary.filter((g) => wordCount(g) <= 4 && !/[(\[]/u.test(g)).forEach(push);
+  const add = (p: string): void => { if (!out.includes(p)) out.push(p); };
+  for (const g of lexicon) glossParts(g).forEach(add);
+  for (const sense of dictionary) senseAnswers(sense).forEach(add);
   return out;
 }
 
 /** True when the glosses shown include a dictionary sense (the attribution line is then owed). */
 export const usesDictionary = (facts: UnitFacts): boolean => glossSplit(facts).dictionary.length > 0 && !!facts.glossAttribution;
 
+/** The attribution line, owed when a gloss shown is a dictionary sense or a piece of one (and not a word-list gloss). */
 export function attributionLine(facts: UnitFacts, shown: string[]): string {
-  const { dictionary } = glossSplit(facts);
-  return facts.glossAttribution && shown.some((g) => dictionary.includes(g)) ? ` (Dictionary meaning: ${facts.glossAttribution}.)` : '';
+  const { lexicon, dictionary } = glossSplit(facts);
+  const fromDictionary = (g: string): boolean => !lexicon.includes(g) && dictionary.some((d) => d.includes(g));
+  return facts.glossAttribution && shown.some(fromDictionary) ? ` (Dictionary meaning: ${facts.glossAttribution}.)` : '';
 }
 
 export function sameText(a: string, b: string): boolean {

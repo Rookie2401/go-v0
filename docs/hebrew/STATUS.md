@@ -65,3 +65,31 @@ Readings of the chosen period go first on every word; none is removed; every rea
   "pointing differs from the source's form", unconfirmed; (7) the prefix morphemes OSHB cites by a letter (l in לוֹ, b, k, m) had the code
   letter as their headword in the index and on cards — the Biblical index and core were rebuilt with their Hebrew headwords and glosses
   (לְ "to, for"; same core size: 441 lemmas, 6,994 forms).
+
+## Modern Hebrew on web pages: the dictionary and the commonest misses (2026-11-13)
+
+The language audit of 2026-11-13 read two Hebrew Wikipedia articles (לחם, מים; 1,000 word tokens) through the card exactly as the
+extension reads them, with both full indexes installed. Before: 80.9 % of words had a reading, and the dictionary answered for none
+(Hebrew had no dictionary). The commonest misses were not rare words but whole classes:
+
+- **Headword-line forms.** `he:build-modern` read only the inflection TABLES; the plural, construct and feminine forms Wiktionary gives on
+  the headword line of an entry without a table (פְּרִי: plural פירות; נְקֻדָּה: construct נקודת־) had no reading. They are read now:
+  15,788 more rows, 157,329 form keys (was 149,277).
+- **Prepositions with a pronoun suffix** (שלהם, לי, אותו, עליו, ממנו …). Wiktionary has no entry for any of them. A hand table
+  (`src/adapters/hebrew/pronominal.ts`: 14 prepositions × 9 persons, AI-drafted, unreviewed) reads them, with a leading ו / ש / כש
+  peeled. On unpointed text its reading comes first and any other reading of the same letters stays (שָׁלֵו for שלו); on pointed text
+  the Tanakh index keeps the word unless it has no reading.
+- **The dictionary.** `dict:build --lang he` now builds the Wiktionary Hebrew dictionary (kaikki-he@2026-10-03, 41,288 entries, 256
+  shards, plus 15,902 full records under `full/`), and the pack declares it. The build files every entry also under its POINTED
+  spelling and its headword-line forms (`src/dict/hebrew.ts`), because the card asks for the pointed lemma (לֶחֶם) while Wiktionary files
+  the entry under the unpointed word (לחם); a spelling-only entry ("defective spelling of נקודה.") becomes a link to the entry it names.
+  The adapter's `lemmaVariants` adds the unpointed Wiktionary headword and the bare consonants.
+
+After, on the same 1,000 words: **87.2 %** have a reading, and the dictionary answers for **86.3 %** of them. Regression test:
+`test/adapters/hebrew-modern-web.test.ts` (with a floor of 88 % on the opening of the Wikipedia article לחם, fixture CC BY-SA 4.0).
+Still missing: words Wiktionary has no entry for (צלזיוס, תרכובת, שאור, גלוטן, תמיסה), participles of verbs without a table (המהווה,
+מזוקקים), and the construct of nouns in -ייה (אפיית). Readings are still not ranked: 58 % of words keep several.
+
+**Shipping order.** The pack now declares `dict/he`: installing the Hebrew pack fetches its manifest, and GoReview reads it. The hosted
+copy (`dict/he` beside the other dictionaries) must be published before, or together with, any GoLearn or GoReview build from this
+change; otherwise a fresh Hebrew install fails with `dictionary-unreachable`, and GoReview counts the 404 as a source failure.

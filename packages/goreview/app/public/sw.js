@@ -32,7 +32,11 @@ var LEXICON_PREFIX = 'goreview-lexicon-';
 var LEXICON_CACHE = LEXICON_PREFIX + BUILD_ID;
 var LANG_PREFIX = 'goreview-lang-';
 var LANG_CACHE = LANG_PREFIX + BUILD_ID;
-var DICT_MAX_ENTRIES = 400;
+// 400 until 2026-11-17: one cache serves every language, and it drops its oldest file first, however recently that file was read. The
+// owner's Hindi recovery alone reads about 130 files, and German, Latin, Greek and Thai beside it overflowed 400, so the Hindi files
+// were dropped and fetched again on every visit (some 130 requests over a phone's connection, any failure of which left the recovery
+// incomplete). 3,000 files of about 40 KB is some 120 MB at most.
+var DICT_MAX_ENTRIES = 3000;
 var DICT_MAX_BYTES = 3 * 1024 * 1024; // one shard larger than this is served but not kept
 
 /** Paths of the Repository service. A request whose path from the scope root starts with one is never cached (nor is anything outside the scope). */

@@ -4,7 +4,7 @@
  *   vite build -c packages/goreview/app/vite.config.ts
  *       -> packages/goreview/app/dist/   a static site with relative URLs (base './'), any host or sub-path:
  *          index.html, assets/*.js, styles.css, config.json, and dict/<lang>/ for the languages in GOREVIEW_DICT
- *          (default "sq,es,de,hi,th,la", the packs declaring dictionaries; set it empty when using a shared dictionary tree). Review exercises read
+ *          (default "sq,es,de,hi,th,la,he,nb,nn", the packs declaring dictionaries: Hebrew, Bokmål and Nynorsk since 2026-11-13; set it empty when using a shared dictionary tree). Review exercises read
  *          glosses from there, lazily, shard by shard.
  *   vite build -c packages/goreview/app/vite.config.ts --mode extension
  *       -> packages/golearn-extension/dist/review/   the same app as a page of the GoLearn extension (chrome-extension://<id>/review/index.html).
@@ -31,7 +31,7 @@ import { gzipHebrewFormFrequency } from './hebrewFrequencyAssets.ts';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '../../..');
 
-const dictLanguages = (): string[] => (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th,la').split(',').map((s) => s.trim()).filter(Boolean);
+const dictLanguages = (): string[] => (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th,la,he,nb,nn').split(',').map((s) => s.trim()).filter(Boolean);
 
 const fontsSource = path.join(repoRoot, 'packages', 'shared-fonts');
 

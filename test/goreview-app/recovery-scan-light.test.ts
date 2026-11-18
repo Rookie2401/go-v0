@@ -30,6 +30,7 @@ async function scanAgainst(honoursLight: boolean) {
   service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [{ languageId: 'he', varietyId: 'he-bib' }]);
   const rig = await makeRig({ service, signedIn: true });
   const asked: VocabularyQuery[] = [];
+  const wholeReads: (string | undefined)[] = [];
   let recovered: string[] | undefined;
   rig.app.ctx.engine.canRecoverCandidates = () => true;
   rig.app.ctx.engine.recoverCandidates = async (request) => { recovered = request.unresolvedVocabulary.map((item) => item.knowledge.unitId); return { candidates: [], complete: true }; };
@@ -38,7 +39,10 @@ async function scanAgainst(honoursLight: boolean) {
   Object.assign(api, {
     async candidates() { return ok({ candidates: [unknownCandidate(ids[1]!)] }); },
     async units(unitIds: string[]) { return ok({ units: {}, missing: unitIds }); },
-    async knowledge(unitIds?: string[]) { return ok({ knowledge: (unitIds?.length ? unitIds : ids).map((id) => row(ids.indexOf(id), false).knowledge) }); },
+    async knowledge(unitIds?: string[], opts?: { languageId?: string }) {
+      if (!unitIds?.length) wholeReads.push(opts?.languageId);
+      return ok({ knowledge: (unitIds?.length ? unitIds : ids).map((id) => row(ids.indexOf(id), false).knowledge) });
+    },
     async vocabulary(query: VocabularyQuery) {
       asked.push(query);
       const from = query.after ? Number(query.after) : 0;
@@ -54,7 +58,7 @@ async function scanAgainst(honoursLight: boolean) {
     },
   });
   await loadReviewModel(rig.app.ctx);
-  return { asked, recovered };
+  return { asked, recovered, wholeReads };
 }
 
 describe('the home recovery scan asks for the light listing', () => {
@@ -65,6 +69,12 @@ describe('the home recovery scan asks for the light listing', () => {
     expect(asked.length).toBe(1);
     expect(asked.every((q) => q.detail === 'light' && q.catalogued === false && q.sort === undefined && q.languageId === 'he')).toBe(true);
     expect(recovered).toEqual(expected);
+  });
+
+  // 2026-11-17: the whole read of the owner's eight languages was about 15 MB, and a phone gave up on it after 8 s
+  it('the whole knowledge read asks for the reviewed language only', async () => {
+    const { wholeReads } = await scanAgainst(true);
+    expect(wholeReads).toEqual(['he']);
   });
 
   it('reaches the same rows on a service that ignores the parameters and answers in full', async () => {

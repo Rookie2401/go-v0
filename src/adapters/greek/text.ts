@@ -12,6 +12,7 @@
  */
 import type { RawToken, Span } from '../../core';
 import { makeWordTokenizer } from '../shared';
+import { elAbbreviationStop } from './abbreviations';
 
 /** Polytonic marks that monotonic Greek does not write: breathings, iota subscript, grave, circumflex (as combining marks after NFD). */
 const POLYTONIC_ONLY = /[̓̔͂̀̄̆ͅ]/g;
@@ -66,6 +67,7 @@ export function elSegmentSentences(text: string): Span[] {
       let j = i + 1;
       while (j < text.length && /[.;;!?…"'”’»)\]]/u.test(text[j])) j++;
       if (ch === '.' && j < text.length && /[\p{L}\p{N}]/u.test(text[j])) continue; // 3.5, an abbreviation
+      if (ch === '.' && elAbbreviationStop(text, i)) continue; // π.χ. μήλα · 5ος αι. π.Χ. · ο κ. Παπαδόπουλος: the stop is the abbreviation's, not the sentence's
       // a verse or chapter number follows without a space in some editions; still a break
       push(start, j);
       start = j;

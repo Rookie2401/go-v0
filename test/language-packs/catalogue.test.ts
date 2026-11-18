@@ -73,7 +73,7 @@ describe('every field agrees with the manifests (nothing is hard-coded)', () => 
     const by = Object.fromEntries(LANGUAGE_CATALOGUE.map((e) => [e.languageId, e]));
     expect([by.sq.level, by.sq.validation]).toEqual(['installable', 'unreviewed']);
     expect([by.es.level, by.es.validation]).toEqual(['installable', 'unreviewed']);
-    for (const l of ['nb', 'de', 'hi', 'th', 'la']) expect([by[l].level, by[l].validation, by[l].levelLabel], l).toEqual(['experimental', 'experimental', 'experimental, seed-only lemmatisation, unreviewed']);
+    for (const l of ['nb', 'de', 'hi', 'th', 'la']) expect([by[l].level, by[l].validation, by[l].levelLabel], l).toEqual(['experimental', 'experimental', 'experimental, unreviewed']);
     expect(by.nb.packs.map((p) => p.level)).toEqual(['experimental', 'experimental']);
     for (const e of LANGUAGE_CATALOGUE) expect(e.validation, e.languageId).not.toBe('production-validated');
   });
@@ -112,26 +112,46 @@ describe('audio, whatWorks and whatDoesNot', () => {
       expect(e.whatWorks, e.languageId).toMatch(/^Selecting a word/);
       expect(e.whatWorks.match(/\./g)!.length, e.languageId).toBe(1);
       expect(e.whatWorks, e.languageId).toContain(`its lemma (${r[0].lemma.quality})`);
+      // the dictionary is named when every pack of the entry declares one, with its declared size
+      const d = e.packs.map((p) => PACKS[p.languageId].lexical.dictionary);
+      if (d.every(Boolean)) expect(e.whatWorks, e.languageId).toContain(`its meaning from a Wiktionary dictionary of ${Math.min(...d.map((x) => x!.entries)).toLocaleString('en')} entries`);
+      else expect(e.whatWorks, e.languageId).not.toContain('dictionary');
+      // a language whose lemmas are read off form indexes says how many forms those hold
+      const indexed = r.flatMap((x) => x.lemma.sources).filter((s) => s.kind === 'attested-form-index').reduce((sum, s) => sum + s.size!.count, 0);
+      expect(e.whatWorks.includes(' indexed forms'), e.languageId).toBe(indexed > 0);
+      if (indexed) expect(e.whatWorks, e.languageId).toContain(`its lemma (limited) from ${indexed.toLocaleString('en')} indexed forms`);
       if (r.every((x) => x.morphology.supported)) expect(e.whatWorks, e.languageId).toContain(`its grammar features (${r[0].morphology.quality})`);
       else expect(e.whatWorks, e.languageId).not.toContain('grammar features');
       // a pack states phrases and patterns only when it declares them (Latin declares neither)
       if (r.every((x) => x.phrases.supported)) expect(e.whatWorks, e.languageId).toContain('fixed phrases');
       if (r.every((x) => x.constructions.supported)) expect(e.whatWorks, e.languageId).toContain('listed sentence patterns');
     }
+    expect(LANGUAGE_CATALOGUE.find((e) => e.languageId === 'he')!.whatWorks).toBe('Selecting a word in a sentence gives its lemma (limited) from 210,016 indexed forms, its meaning from a Wiktionary dictionary of 41,288 entries and its grammar features (limited), each read with its neighbouring words.');
+    expect(LANGUAGE_CATALOGUE.find((e) => e.languageId === 'de')!.whatWorks).toBe('Selecting a word in a sentence gives its lemma (limited), its meaning from a Wiktionary dictionary of 357,750 entries, its grammar features (limited), fixed phrases and listed sentence patterns, each read with its neighbouring words.');
     const th = LANGUAGE_CATALOGUE.find((e) => e.languageId === 'th')!;
     expect(th.whatWorks).toContain('word boundaries are limited');
     expect(th.whatWorks).not.toContain('grammar features'); // Thai has no inflection to analyse
     expect(LANGUAGE_CATALOGUE.find((e) => e.languageId === 'de')!.whatWorks).not.toContain('word boundaries are');
   });
 
-  it('whatDoesNot states the limits the report states: a seed-only word list, no review, no roles, and nothing written is checked unless the pack offers a checker', () => {
+  it('whatDoesNot states the limits the report states: a small word list only where lemmas come from one, else what was measured; no review, no roles, and nothing written is checked unless the pack offers a checker', () => {
     for (const e of LANGUAGE_CATALOGUE) {
-      expect(e.whatDoesNot, e.languageId).toMatch(/^Lemmas come from a small machine-drafted word list/);
+      const seedOnly = e.packs.some((p) => packCapabilities(p.languageId)!.lemma.quality === 'seed-only');
+      // "a small machine-drafted word list" is said of the one language it is true of (Norwegian, which has no dictionary) and of no other
+      expect(/^Lemmas come from a small machine-drafted word list/.test(e.whatDoesNot), e.languageId).toBe(seedOnly);
+      expect(seedOnly, e.languageId).toBe(e.languageId === 'nb');
       expect(e.whatDoesNot, e.languageId).toContain('no native speaker has reviewed the pack');
       expect(e.whatDoesNot, e.languageId).toContain('there are no subject or object labels');
       const offered = e.packs.every((p) => packCapabilities(p.languageId)!.checker.offered);
       expect(e.whatDoesNot.includes('nothing you write is checked'), e.languageId).toBe(!offered);
     }
+    const not = (id: string): string => LANGUAGE_CATALOGUE.find((e) => e.languageId === id)!.whatDoesNot;
+    // measured against human treebanks: the figures, as a limit (a lemma is still wrong some of the time)
+    expect(not('la')).toMatch(/^Lemmas are not always right: the first reading had the right one 95\.6% on the Latin New Testament \(Clementine Vulgate\) against the PROIEL treebank \(104,345 words\) and 90\.5% on twelve classical and late Latin authors against the Perseus treebank \(65,595 words\); /);
+    // measured only against AI-written labels: said so, never as accuracy
+    expect(not('de')).toMatch(/^Lemma accuracy is known only as agreement with AI-written labels that nobody has checked \(96\.3% of 215 words of course texts and 96\.3% of 80 words of held-out text\); /);
+    // not measured at all
+    for (const id of ['he', 'el', 'arc']) expect(not(id), id).toMatch(/^Lemma accuracy has not been measured on running text; /);
     expect(LANGUAGE_CATALOGUE.find((e) => e.languageId === 'sq')!.whatDoesNot).not.toContain('nothing you write is checked');
     expect(LANGUAGE_CATALOGUE.find((e) => e.languageId === 'nb')!.whatDoesNot).toContain('nothing you write is checked');
   });

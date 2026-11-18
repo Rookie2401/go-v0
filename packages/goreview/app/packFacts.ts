@@ -80,6 +80,9 @@ interface HebrewFormFrequencyIndex {
   forms: Record<string, { rank: number; count: number }>;
 }
 
+/** How long a failed dictionary read waits before it is asked once more. */
+export const SOURCE_RETRY_DELAY_MS = 400;
+
 export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexiconBaseUrl?: string }): PackFacts {
   const runtimes = new Map<string, ReturnType<typeof createPackRuntime>>();
   const formsIndexes = new Map<string, ReturnType<typeof createFormsSource>>();
@@ -206,9 +209,20 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
   const providerFor = (languageId: string, api: RepositoryApi, manifest: NonNullable<ReturnType<typeof packFor>>): Provider | undefined => {
     let runtime = runtimes.get(languageId);
     if (!runtime) {
-      const trackedFetch: typeof fetch = async (input, init) => {
+      // A dropped connection or a server error is asked once more before it counts as a failed source (2026-11-17): the candidate
+      // recovery of one Hindi visit reads about 130 dictionary files, and any one failure marked the whole recovery incomplete, so
+      // on a phone's connection it almost never completed. A 404 is an answer, not a transient failure, and is not asked again.
+      const once = async (input: Parameters<typeof fetch>[0], init?: Parameters<typeof fetch>[1]): Promise<Response> => {
         try {
           const response = await opts.fetch(input, init);
+          if (response.status < 500) return response;
+        } catch { /* asked again below */ }
+        await new Promise((resolve) => setTimeout(resolve, SOURCE_RETRY_DELAY_MS));
+        return opts.fetch(input, init);
+      };
+      const trackedFetch: typeof fetch = async (input, init) => {
+        try {
+          const response = await once(input, init);
           if (!response.ok) runtimeSourceFailures.set(languageId, (runtimeSourceFailures.get(languageId) ?? 0) + 1);
           return response;
         } catch (error) { runtimeSourceFailures.set(languageId, (runtimeSourceFailures.get(languageId) ?? 0) + 1); throw error; }

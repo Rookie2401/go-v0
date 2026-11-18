@@ -39,8 +39,8 @@ describe('Languages: download your languages', () => {
     expect(albanian.querySelector('.works')!.textContent).toContain('reference analyser');
     expect(albanian.querySelector('.does-not')!.textContent).toContain('No person has reviewed');
     expect(albanian.querySelector('.audio')!.textContent).toContain('Browser voices');
-    expect(rig.q('[data-language="de"]').textContent).toContain('experimental, seed-only');
-    expect(rig.q('[data-language="la"]').textContent).toContain('experimental, seed-only');
+    expect(rig.q('[data-language="de"]').textContent).toContain('experimental, unreviewed');
+    expect(rig.q('[data-language="la"]').textContent).toContain('experimental, unreviewed');
     // a language with nothing to ask downloads on ONE press: its button is the control, named for the row it is in
     const latin = rig.q<HTMLButtonElement>('[data-language="la"] [data-action="choose"]');
     expect(rig.root.querySelector('[data-language="la"] details.download')).toBeNull();

@@ -137,6 +137,15 @@ export interface PlanInput {
   /** Deck fill (2026-11-03): the cards an automatic plan may use as early practice to reach the deck size, in the order to try them. Absent: derived from `deck`, soonest due first. */
   fillPool?: readonly DeckItem[];
 }
+/**
+ * An Easy word comes back only when it is due (the owner, 2026-11-17: "if I say a word was easy, it appears far too often again"): true when
+ * the card's latest answer was Easy and the learner has never answered it Again or Hard. Deck fill passes over such a card; one that was
+ * once found difficult may still be practised early. Listening practice (computer voice) is not an answer about the word.
+ */
+export const easyAndNeverDifficult = (item: DeckItem): boolean => {
+  const answers = item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict && !h.listeningPractice);
+  return answers.at(-1)?.rating === 4 && !answers.some(h => h.rating === 1 || h.rating === 2);
+};
 /** Recent failures in the effective history; a listening-practice answer (computer voice) is schedule bookkeeping, never a failure signal. */
 export const recentAgains = (item: DeckItem): number => item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict && !h.listeningPractice).slice(-WEAK_WINDOW).filter(h => h.rating === 1).length;
 export const benefitOf = (deficit: number, score: number, seconds: number, cost: number): number => deficit * score / Math.max(.1, seconds / 30 * (1 + cost));
@@ -269,6 +278,7 @@ export function planSession(input: PlanInput): SessionPlan {
   // remediation and the budgeted new admissions fall short of it, the deck is completed with early practice of cards that are not yet due,
   // soonest due first. Fill is explicit early practice (a success keeps the schedule, a miss reschedules); it never creates a due obligation,
   // never counts as new, never touches the new-card budgets, and never passes the time limit. Explicit plans are never filled.
+  // A card last answered Easy is never fill unless it was once answered Again or Hard (the owner, 2026-11-17): it comes back when it is due.
   let filled = 0;
   if (intent.kind === 'automatic' && items.length < target.targetQuestions) {
     const early = { kind: 'explicit' as const, reason: 'early-review' as const, requestedAt: now };
@@ -281,6 +291,7 @@ export function planSession(input: PlanInput): SessionPlan {
       if (inDeck.has(item.itemId) || item.status !== 'active' || item.invalidatedAt || item.suspendedReason) continue;
       if (!item.history.some(h => !h.retracted && !h.scheduleExcluded && !h.conflict) || scheduler.isDue(item.schedule, now)) continue;
       if (knowledge.get(item.unitId)?.level === 'automatic') continue; // an Automatic word is left alone
+      if (easyAndNeverDifficult(item)) continue; // an Easy word waits for its due time, unless it was once answered Again or Hard (2026-11-17)
       const poolBefore = pool.length, skippedBefore = skipped.length;
       make(item, ['early practice that fills the deck to its size; a success keeps the schedule, a miss reschedules'], true, early, undefined, true);
       if (pool.length === poolBefore) { skipped.length = skippedBefore; continue; } // refused by the shared eligibility: never fill; the earlier entry stays

@@ -23,7 +23,7 @@ import { heParadigm, heVariants } from './hebrew/paradigm';
 import { transliterateHebrew } from './hebrew/pronunciation';
 import { checkHeProduction } from './hebrew/production';
 import { heFeaturesFromTableTags, heMorphFromTags } from './hebrew/tags';
-import { heNormalize, heSearchNormalize, heSegmentSentences, heTokenize, isPointed } from './hebrew/text';
+import { consonantal, heNormalize, heSearchNormalize, heSegmentSentences, heTokenize, isPointed } from './hebrew/text';
 import { HE_VARIETIES, heVarietiesFromTags } from './hebrew/varieties';
 
 installHebrewIndex(BIBLICAL_CORE);
@@ -53,12 +53,30 @@ const SUPPORT: AdapterSupport = {
     `Lemmatization is seed-only in the compiled analyser: it carries a compact core of the Tanakh index (${BIBLICAL_CORE.stats?.lemmas ?? 0} lemmas: the closed classes and the commonest words, ${Math.round(((BIBLICAL_CORE.stats?.tokenCoverage as number) ?? 0) * 100)} % of the Bible's words). The full Biblical and Modern indexes are assets the reader installs when Hebrew is loaded; until then a word outside the core has no reading.`,
     'An unpointed word is matched to the pointed Biblical forms that share its consonants: such a reading says that its points were inferred, and it is less confident. A Modern form the tables do not list (most ktiv male spellings of rarer words, slang, names) has no reading; nothing is guessed from the letters alone.',
     'A prefix (וְ בְּ לְ כְּ מִ הַ שֶׁ הֲ) is cut off by rule only when the rest is a form a source knows; the reading is then marked as made by rule at low confidence.',
+    'Prepositions with a pronoun suffix (שלהם, לי, אותו, עליו: fourteen prepositions, nine persons each) are read from a hand-made table, since Wiktionary lists none of them; on unpointed text that reading comes first and any other reading of the same letters stays as the alternative. The table is AI-drafted and not reviewed.',
     'There is no parser. The sentence decides only the PERIOD it is read in (cantillation → Biblical; else the period most readings belong to; a tie → the declared or targeted variety; else Modern). A form with several readings in one period keeps them all; none is presented as certain.',
     'The Aramaic chapters of Daniel and Ezra are read with their own Aramaic morphology and tagged as Biblical Aramaic, a heritage language: never credited to Hebrew.',
     'Pronunciation: a written transliteration of a pointed form in a general scheme with Modern Israeli letter values; an unpointed word gets none. There is no voice for Biblical Hebrew: a Modern Hebrew voice, labelled as such, is the only playback.',
     'Production checks are three rules (final letters at the end of a word, final letters inside a word, a narrative form of the other period as a register note); they say nothing about anything else.',
   ],
 };
+
+/** Per installed Wiktionary index: pointed citation form → the unpointed headword(s) Wiktionary files it under (נְקֻדָּה → נקודה). */
+const WORDS_BY_HEADWORD = new WeakMap<object, Map<string, string[]>>();
+function wiktionaryWords(lemma: string): string[] {
+  const out: string[] = [];
+  for (const idx of installedHebrewIndexes()) {
+    if (idx.codes !== 'kaikki-tags') continue;
+    let m = WORDS_BY_HEADWORD.get(idx);
+    if (!m) {
+      m = new Map();
+      for (const [id, row] of Object.entries(idx.lemmas)) { const k = heNormalize(row[0]); m.set(k, [...(m.get(k) ?? []), id.split('|')[0]]); }
+      WORDS_BY_HEADWORD.set(idx, m);
+    }
+    out.push(...(m.get(heNormalize(lemma)) ?? []));
+  }
+  return out;
+}
 
 /** The lemma ids a form is read with across the installed indexes, as "<lemma id>|<source>" keys. */
 function lemmaKeys(form: string): Set<string> {
@@ -80,6 +98,12 @@ export const heAdapter: LanguageAdapter = {
   tokenize: heTokenize,
   normalize: heNormalize,
   searchNormalize: heSearchNormalize,
+  /**
+   * The spellings a dictionary may file a pointed lemma under (2026-11-13): the unpointed headword Wiktionary gives it (נְקֻדָּה →
+   * נקודה, with its vowel letter), when an installed Modern index names one, and its bare consonants (לֶחֶם → לחם). The dictionary
+   * build also files every entry under its pointed spelling (src/dict/hebrew.ts), so either way finds it.
+   */
+  lemmaVariants: (lemma): string[] => [...new Set([...wiktionaryWords(lemma), ...(isPointed(lemma) ? [consonantal(lemma)] : [])])].filter((v) => v && v !== lemma),
 
   analyze: (tokens, opts) => heAnalyze(tokens, opts),
 

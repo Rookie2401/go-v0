@@ -1,0 +1,106 @@
+{
+  "id": "la-snd2",
+  "lang": "la",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "Soft c and g, and ae"
+  },
+  "features": [
+    "la:c-soft",
+    "la:ae-oe",
+    "la:g-soft"
+  ],
+  "words": [
+    {
+      "text": "caelum",
+      "en": "sky, heaven",
+      "picture": "☁️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "cena",
+      "en": "dinner",
+      "picture": "🍽️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "magister",
+      "en": "teacher",
+      "picture": "👨‍🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "clavis",
+      "en": "key",
+      "picture": "🔑",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Before e, i, ae and oe the letter c is soft, like \"ch\" in \"church\", and g is soft, like \"j\" in \"gentle\". So cena is CHEH-nah and magister is mah-JIS-ter. The letters ae are said like \"e\" in \"bed\": caelum is CHEH-loom.",
+    "more": "Before a, o, u, or a consonant, c is hard like \"k\" and g is hard like the g in \"go\": clavis is KLAH-vis. The same letters, read in the Italian way, are the Church Latin pronunciation used in the Mass and in the Vulgate."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "caelum",
+      "prompt": "How is \"caelum\" said?",
+      "options": [
+        "CHEH-loom (ch as in \"church\")",
+        "KAY-loom"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "cena",
+      "prompt": "How is \"cena\" said?",
+      "options": [
+        "CHEH-nah",
+        "KEH-nah"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "magister",
+      "prompt": "How is \"magister\" said?",
+      "options": [
+        "mah-JIS-ter (g like j)",
+        "mah-GIS-ter (hard g)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "clavis",
+      "prompt": "How is \"clavis\" said?",
+      "options": [
+        "KLAH-vis (c before l is k)",
+        "CHLAH-vis"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  }
+}

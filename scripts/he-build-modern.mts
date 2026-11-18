@@ -35,9 +35,12 @@ const isObj = (x: unknown): x is Record<string, unknown> => typeof x === 'object
 const str = (x: unknown): string | undefined => (typeof x === 'string' && x.trim() ? x.trim() : undefined);
 const list = (x: unknown): unknown[] => (Array.isArray(x) ? x : []);
 
+/** Labels of a headword-line form that make it not an inflected form of the entry (its citation spelling, a transcription, the pattern). */
+const isPointedForm = (s: string): boolean => /[ְ-ׇ]/u.test(s);
+const HEAD_SKIP = new Set(['canonical', 'romanization', 'class', 'table-tags', 'inflection-template', 'error-unrecognized-form', 'alternative', 'abbreviation']);
 const lemmas: Record<string, HeLemmaRow> = {};
 const forms = new Map<string, Map<string, HeFormRow>>();
-const stats = { lines: 0, entries: 0, withTable: 0, tableRows: 0, formOfLines: 0, rowsKept: 0, pointedKeys: 0, unpointedKeys: 0, skippedPos: 0, labelled: { 'he-bib': 0, 'he-mish': 0, 'he-med': 0, 'he-mod': 0, 'arc-bib': 0 } as Record<string, number> };
+const stats = { lines: 0, entries: 0, withTable: 0, tableRows: 0, headRows: 0, formOfLines: 0, rowsKept: 0, pointedKeys: 0, unpointedKeys: 0, skippedPos: 0, labelled: { 'he-bib': 0, 'he-mish': 0, 'he-med': 0, 'he-mod': 0, 'arc-bib': 0 } as Record<string, number> };
 
 function addRow(key: string, lemmaId: string, tags: string[]): void {
   if (!key) return;
@@ -84,7 +87,7 @@ for await (const line of rl) {
     if (consonantal(headword) !== pointed(headword)) addRow(consonantal(headword), lemmaId, ['citation-form']);
     if (word !== consonantal(headword)) addRow(word, lemmaId, ['citation-form']);
     // the table
-    const table = formsOf.filter((f) => f.source === 'conjugation' || f.source === 'declension');
+    const table = formsOf.filter((f) => f.source === 'conjugation' || f.source === 'declension' || f.source === 'inflection');
     if (table.length) stats.withTable++;
     for (const f of table) {
       const form = str(f.form);
@@ -93,6 +96,19 @@ for await (const line of rl) {
       stats.tableRows++;
       const key = /[ְ-ׇּׁׂ]/.test(form) ? pointed(form) : consonantal(form);
       addRow(key, lemmaId, tags);
+    }
+  }
+  // the headword line's own forms (2026-11-13): the plural, the construct, the feminine … that Wiktionary gives beside the headword
+  // when the entry has no table (פְּרִי: plural פירות / פֵּרוֹת; נְקֻדָּה: construct נקודת־). Without them a word as common as פירות had
+  // no reading on a Modern page. The construct's trailing maqaf is not part of the word as printed.
+  if (glossSenses.length) {
+    for (const f of formsOf.filter((x) => !x.source)) {
+      const form = str(f.form)?.normalize('NFC').replace(/[־-]$/u, '');
+      const tags = list(f.tags).map(str).filter((t): t is string => !!t);
+      if (!form || !/[א-ת]/u.test(form) || /[A-Za-z]/.test(form) || /\s/.test(form)) continue;
+      if (!tags.length || tags.some((t) => HEAD_SKIP.has(t))) continue;
+      stats.headRows++;
+      addRow(isPointedForm(form) ? pointed(form) : consonantal(form), lemmaId, tags);
     }
   }
   // a "form of" entry: its own written form is a reading of the lemma it names
@@ -128,7 +144,7 @@ for (const [key, m] of [...forms].sort((a, b) => a[0].localeCompare(b[0]))) {
 }
 // a lemma named only by form-of rows and never defined gets a bare row (no gloss), so the reading can still name it
 for (const lst of Object.values(index.forms)) for (const r of lst) if (!index.lemmas[r[0]]) { const [w, pos] = r[0].split('|'); index.lemmas[r[0]] = [w, '', pos, 0]; }
-index.stats = { entries: stats.entries, entriesWithTable: stats.withTable, tableRows: stats.tableRows, formOfEntries: stats.formOfLines, forms: Object.keys(index.forms).length, rows, pointedKeys: stats.pointedKeys, unpointedKeys: stats.unpointedKeys, lemmas: Object.keys(index.lemmas).length, ...Object.fromEntries(Object.entries(stats.labelled).map(([k, v]) => [`labelled:${k}`, v])) };
+index.stats = { entries: stats.entries, entriesWithTable: stats.withTable, tableRows: stats.tableRows, headRows: stats.headRows, formOfEntries: stats.formOfLines, forms: Object.keys(index.forms).length, rows, pointedKeys: stats.pointedKeys, unpointedKeys: stats.unpointedKeys, lemmas: Object.keys(index.lemmas).length, ...Object.fromEntries(Object.entries(stats.labelled).map(([k, v]) => [`labelled:${k}`, v])) };
 
 fs.mkdirSync('public/lexicon/he', { recursive: true });
 fs.writeFileSync('public/lexicon/he/modern-index.json', JSON.stringify(index));
@@ -144,6 +160,7 @@ Every row is a Wiktionary inflection-table row or a "form of" entry; its labels 
 | entries read (noun, verb, adjective, adverb, pronoun, determiner, preposition, conjunction, numeral, interjection) | ${stats.entries.toLocaleString('en')} (${stats.skippedPos.toLocaleString('en')} lines of other headings skipped: roots, suffixes, phrases, characters) |
 | entries with an inflection table | ${stats.withTable.toLocaleString('en')} |
 | table rows read | ${stats.tableRows.toLocaleString('en')} |
+| headword-line forms read (plural, construct … of entries without a table) | ${stats.headRows.toLocaleString('en')} |
 | "form of" entries | ${stats.formOfLines.toLocaleString('en')} |
 | distinct form keys | ${Object.keys(index.forms).length.toLocaleString('en')} (${stats.pointedKeys.toLocaleString('en')} pointed, ${stats.unpointedKeys.toLocaleString('en')} unpointed) |
 | readings | ${rows.toLocaleString('en')} |

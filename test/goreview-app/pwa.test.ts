@@ -532,7 +532,7 @@ describe('sw.js (run in a sandbox)', () => {
     expect(await offline.text()).toBe('{"serviceUrl":"https://new.example"}');
   });
 
-  it('caches dictionary shards on demand, keeps at most 400, and does not keep one over 3 MB', async () => {
+  it('caches dictionary shards on demand, keeps at most 3,000, and does not keep one over 3 MB', async () => {
     const s = sandbox({ fetchImpl: async (r) => new Response('shard ' + r.url, { status: 200, headers: r.url.includes('big') ? { 'content-length': String(4 * 1024 * 1024) } : {} }) });
     await s.fire('install', {});
     const first = (await s.fire('fetch', { request: s.request('./dict/sq/a.json') })) as Response;
@@ -549,10 +549,16 @@ describe('sw.js (run in a sandbox)', () => {
     await new Promise((r) => setTimeout(r, 5));
     expect(dict.has('https://app.test/goreview/dict/sq/big.json')).toBe(false);
     // the cap
-    for (let i = 0; i < 420; i++) { await s.fire('fetch', { request: s.request(`./dict/de/s${i}.json`) }); await new Promise((r) => setTimeout(r, 0)); }
+    // (400 until 2026-11-17: the owner's languages together overflowed it and the Hindi files were fetched again on every visit)
+    // the cache is filled to just under the cap directly (3,000 fetches through the sandbox take minutes), then read on through the cap
+    for (let i = 0; i < 2990; i++) dict.set(`https://app.test/goreview/dict/de/pre${i}.json`, new Response('pre'));
+    for (let i = 0; i < 30; i++) { await s.fire('fetch', { request: s.request(`./dict/de/s${i}.json`) }); await new Promise((r) => setTimeout(r, 0)); }
     await new Promise((r) => setTimeout(r, 20));
-    expect(dict.size).toBeLessThanOrEqual(401);
-    expect(dict.size).toBeGreaterThan(300);
+    expect(dict.size).toBeLessThanOrEqual(3001);
+    expect(dict.size).toBeGreaterThanOrEqual(2999);
+    // the oldest go first, the newest stay
+    expect(dict.has('https://app.test/goreview/dict/sq/a.json')).toBe(false);
+    expect(dict.has('https://app.test/goreview/dict/de/s29.json')).toBe(true);
     // none of the dictionary is in the shell cache
     expect([...s.store.get(s.SHELL()[0])!.keys()].some((k) => k.includes('/dict/'))).toBe(false);
   }, 30_000);

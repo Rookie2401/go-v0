@@ -31,7 +31,7 @@ describe('the pack bindings', () => {
     expect(sq.licences.length).toBeGreaterThan(0);
     expect(sq.varieties.filter((v) => v.analysed).map((v) => v.varietyId)).toEqual(['sq-standard']);
     expect(sq.remoteVoiceProvider).toBeTruthy();
-    for (const p of packs.filter((x) => ['de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc'].includes(x.languageId))) expect(p, p.packId).toMatchObject({ status: 'installable', level: 'experimental', levelLabel: 'experimental, seed-only lemmatisation, unreviewed' });
+    for (const p of packs.filter((x) => ['de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc'].includes(x.languageId))) expect(p, p.packId).toMatchObject({ status: 'installable', level: 'experimental', levelLabel: 'experimental, unreviewed' });
     expect(sq).toMatchObject({ level: 'installable', levelLabel: 'installable' });
     expect(b.packFor('es')).toMatchObject({ packId: 'pack:es', status: 'installable', reviewStatus: 'machine-drafted' });
     expect(b.packFor('xx')).toBeUndefined();
@@ -87,7 +87,7 @@ describe('the pack bindings', () => {
 
   it('Latin is listed (seventh, before Hebrew and Greek) and as an experimental pack in Latin script, with its one analysed variety and an orientation', () => {
     const entry = b.languages().find((l) => l.languageId === 'la')!;
-    expect(entry).toMatchObject({ name: 'Latin', nativeName: 'Latina', scriptId: 'Latn', packIds: ['pack:la'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: true });
+    expect(entry).toMatchObject({ name: 'Latin', nativeName: 'Latina', scriptId: 'Latn', packIds: ['pack:la'], level: 'experimental, unreviewed', validation: 'experimental', tutorialAvailable: true });
     expect(entry.choice).toBeUndefined();
     const la = b.packFor('la')!;
     expect(la).toMatchObject({ packId: 'pack:la', status: 'installable', level: 'experimental', name: 'Latin', scriptId: 'Latn', defaultVarietyId: 'la-ecclesiastical' });

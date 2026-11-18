@@ -18,7 +18,8 @@ import { PACKS, TUTORIALS, readSelection, tutorialFor } from '../../packages/lan
 import type { Tutorial, TutorialStep } from '../../packages/language-packs/src';
 
 const ADAPTERS: Record<string, LanguageAdapter> = { de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter };
-const NEW = ['de', 'hi', 'th', 'nb', 'nn', 'la'];
+// la left the minimal shape on 2026-11-13 (sounds, three patterns and a passage, like es and sq): test/course/latin-tutorial.test.ts checks it
+const NEW = ['de', 'hi', 'th', 'nb', 'nn'];
 
 /** The words a reader of the card would meet: every word of a sentence, read by the analyser, none of them a guess. */
 const wordsOf = (a: LanguageAdapter, text: string) => a.analyze(a.tokenize(text)).filter((x) => x.token.isWord);

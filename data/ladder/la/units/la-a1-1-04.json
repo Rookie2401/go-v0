@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 2,
+  "id": "la-a1-1-04",
+  "lang": "la",
+  "title": "At the clinic",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-la",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Latin (Church Latin)"
+  },
+  "source": {
+    "id": "src:la:la-a1-1-04",
+    "title": "At the clinic (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Church Latin. Drafted by an AI model; not yet reviewed by a Latinist.",
+    "provenance": "Drafted by an AI model for the course ladder in simple Ecclesiastical (Church) Latin; not reviewed by a Latinist. It is controlled, deliberately repetitive Latin written for learners and may contain unidiomatic phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet reviewed by a Latinist.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a Latinist. House style: simple Church Latin, spelled without macrons, with u/v and i/j as in Stage 0 (v and i only); present tense, with a few perfects (venit, vidit, fuit, dixit) in the last units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "clinic",
+    "health",
+    "body",
+    "advice"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-latinist-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical communication"
+  ],
+  "variety": "la",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-11-13",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "marta": "Martha",
+    "sam": "Samuel",
+    "luis": "Lucius"
+  },
+  "sections": [
+    {
+      "title": "In valetudinario",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna in valetudinario est. Anna nutrix est. Hodie multi in valetudinario sunt.",
+              "english": "Anna is at the clinic. Anna is a nurse. Today many people are at the clinic."
+            },
+            {
+              "text": "Martha quoque in valetudinario est. Martha non bene valet.",
+              "english": "Martha is at the clinic too. Martha is not well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve, Martha! Quomodo vales?",
+              "english": "Hello, Martha! How are you?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Non bene valeo, Anna. Caput meum dolet.",
+              "english": "I am not well, Anna. My head hurts.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ubi dolet?",
+              "english": "Where does it hurt?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Hic. Et fessa sum.",
+              "english": "Here. And I am tired.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Quid habes? Quid vis?",
+              "english": "What do you have? What do you want?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Lac bibo, et panem edo. Aquam non bibo.",
+              "english": "I drink milk, and I eat bread. I do not drink water.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Aquam bibe! Aqua bona est.",
+              "english": "Drink water! Water is good.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Libenter aquam bibo. Et nunc?",
+              "english": "I gladly drink water. And now?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Hodie in domo manere bonum est.",
+              "english": "Today it is good to stay at home.",
+              "speaker": "ana"
+            },
+            {
+              "text": "In domo maneo. Gratias tibi ago, Anna. Tu nutrix bona es.",
+              "english": "I stay at home. Thank you, Anna. You are a good nurse.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Vale, Martha! Pax tibi.",
+              "english": "Goodbye, Martha! Peace to you.",
+              "speaker": "ana"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Martha domum it. Anna in valetudinario est.",
+              "english": "Martha goes home. Anna is at the clinic."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Samuel quoque in valetudinario est. Samuel Annam videt.",
+              "english": "Samuel is at the clinic too. Samuel sees Anna."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve, Anna! Manus mea dolet.",
+              "english": "Hello, Anna! My hand hurts.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ecce manus tua. Hic dolet?",
+              "english": "Look, your hand. Does it hurt here?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ita, hic dolet!",
+              "english": "Yes, it hurts here!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Manum in aqua habe. Aqua bona est.",
+              "english": "Keep your hand in the water. The water is good.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Manum in aqua habeo. Nunc manus non dolet.",
+              "english": "I keep my hand in the water. Now my hand does not hurt.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bene! Tu fessus es. Quid vis? Panem vis?",
+              "english": "Good! You are tired. What do you want? Do you want bread?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Panem volo, et aquam volo. Libenter edo, libenter bibo.",
+              "english": "I want bread, and I want water. I gladly eat, I gladly drink.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bene! Hodie in domo manere bonum est, Samuel. Cras in valetudinario es, sed non fessus.",
+              "english": "Good! Today it is good to stay at home, Samuel. Tomorrow you are at the clinic, but not tired.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Gratias tibi ago, Anna. Tu amica bona es!",
+              "english": "Thank you, Anna. You are a good friend!",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna in valetudinario laborat. Hodie Anna multum laborat. Lucius in schola laborat. Martha in domo non laborat.",
+              "english": "Anna works at the clinic. Today Anna works a lot. Lucius works at school. Martha does not work at home."
+            },
+            {
+              "text": "Anna fessa est, sed bene valet. Omnes iuvat, et omnes Annam amant.",
+              "english": "Anna is tired, but she is well. She helps everyone, and everyone loves Anna."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lucius quoque in valetudinario est. Annam videt.",
+              "english": "Lucius is at the clinic too. He sees Anna."
+            },
+            {
+              "text": "Salve, Anna! Quomodo vales? Fessane es?",
+              "english": "Hello, Anna! How are you? Are you tired?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Bene valeo, sed fessa sum. Quid habes, frater?",
+              "english": "I am well, but I am tired. What do you have, brother?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ecce panis et lac. Tibi do. Tu soror bona es.",
+              "english": "Look, bread and milk. I give them to you. You are a good sister.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Gratias tibi ago, Luci! Tu frater bonus es. Hodie multum laboro, sed bene est.",
+              "english": "Thank you, Lucius! You are a good brother. Today I work a lot, but it is well.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

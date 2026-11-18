@@ -32,6 +32,8 @@ class FakeService {
   /** What POST /accounts says about the confirmation email (undefined = it says nothing). */
   verificationSent: boolean | undefined = true;
   unverified = false;
+  displayName?: string;
+  scheduledPurgeAt?: string;
   failNext = new Map<string, { status: number; body: Record<string, unknown> }>();
   calls: Array<{ method: string; path: string; body?: Record<string, unknown>; auth?: string; text?: string }> = [];
   revoked = new Set<string>();
@@ -60,7 +62,16 @@ class FakeService {
       return this.json(201, { token: this.token, learnerId: 'L1', expiresAt: '2099-01-01T00:00:00.000Z' });
     }
     if (key === 'DELETE /sessions/current') { if (!authed) return this.json(401, { error: 'unauthorized', message: 'Sign in.' }); this.revoked.add(this.token); return this.json(204); }
-    if (key === 'GET /me') return authed ? this.json(200, { learner: null, account: { accountId: 'A1', email: this.email, createdAt: '2026-09-01T00:00:00.000Z' }, enrolments: [], devices: [], consents: [] }) : this.json(401, { error: 'unauthorized', message: 'Sign in.' });
+    if (key === 'GET /me' && authed) return this.json(200, { learner: { displayName: this.displayName }, account: { accountId: 'A1', email: this.email, scheduledPurgeAt: this.scheduledPurgeAt, createdAt: '2026-09-01T00:00:00.000Z' }, enrolments: [], devices: [], consents: [] });
+    if (key === 'GET /me') return this.json(401, { error: 'unauthorized', message: 'Sign in.' });
+    if (key === 'POST /me/profile' && authed) { this.displayName = String(body?.displayName); return this.json(204); }
+    if (key === 'GET /me/sessions' && authed) return this.json(200, { sessions: [{ id: 'S1', deviceLabel: 'Safari', current: true, lastSeenAt: '2026-10-21T12:00:00Z' }] });
+    if (key === 'GET /me/export' && authed) return this.json(200, { events: [] });
+    if (key === 'DELETE /me' && authed && body?.password === this.password) {
+      this.scheduledPurgeAt = '2026-11-05T12:00:00Z';
+      return this.json(202, { scheduledPurgeAt: this.scheduledPurgeAt });
+    }
+    if (key === 'POST /me/delete/cancel' && authed) { this.scheduledPurgeAt = undefined; return this.json(204); }
     if (key === 'POST /accounts/password/forgot') return this.json(202, { accepted: true });
     if (key === 'POST /accounts/verify/resend') return this.json(202, { accepted: true });
     return this.json(404, { error: 'not-found', message: `No route ${key}` });
@@ -248,12 +259,79 @@ describe('the account screen', () => {
     expect([...document.querySelector('.screen')!.children].map((c) => c.id || c.className.split(' ')[0] || c.tagName.toLowerCase())).toEqual(['h1', 'account-welcome', 'account-form', 'forgot', 'email-links-note', 'muted']);
   });
 
-  it('signed in, the same page is titled Account and carries who and Sign out in a card', async () => {
+  it('shows the signed-in profile, actions, and a closed device list', async () => {
     await account.signIn('ana@example.org', PASSWORD);
     mount();
+    await flush();
     expect(q('.screen > h1').textContent).toBe('Account');
-    expect(q('#account-signed-in > h2').textContent).toBe('Signed in');
-    expect(q('#account-signed-in #account-signout').textContent).toBe('Sign out');
+    expect(q('#account-name').textContent).toBe('No name yet');
+    expect(q('#account-name-edit').textContent).toBe('Add a name');
+    expect(q('#account-who').textContent).toBe('ana@example.org');
+    expect([...document.querySelectorAll('.account-tile__title')].map((title) => title.textContent)).toEqual(['Sign out', 'Download my data', 'Delete account']);
+    expect(q<HTMLDetailsElement>('.account-devices').open).toBe(false);
+    expect(svc.count('GET', '/me/sessions')).toBe(0);
+    q<HTMLDetailsElement>('.account-devices').open = true;
+    await flush();
+    expect(q('.account-devices__list').textContent).toContain('Safari · This device');
+  });
+
+  it('edits the display name through the signed-in account', async () => {
+    await account.signIn(svc.email, PASSWORD);
+    mount();
+    await flush();
+    q<HTMLButtonElement>('#account-name-edit').click();
+    const input = q<HTMLInputElement>('#account-name-input');
+    expect(document.activeElement).toBe(input);
+    input.value = '  Ana Walker  ';
+    q('.account-identity form').dispatchEvent(new Event('submit', { cancelable: true }));
+    await flush();
+    expect(svc.displayName).toBe('Ana Walker');
+    expect(q('#account-name').textContent).toBe('Ana Walker');
+    expect(q('#account-name-edit').textContent).toBe('Edit');
+    expect(document.activeElement).toBe(q('#account-name-edit'));
+  });
+
+  it('exports through the authenticated Repository endpoint', async () => {
+    await account.signIn(svc.email, PASSWORD);
+    mount();
+    await flush();
+    let filename = '';
+    const click = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(function (this: HTMLAnchorElement) { filename = this.download; });
+    const makeUrl = vi.fn((_blob: Blob) => 'blob:account-export');
+    const revokeUrl = vi.fn();
+    vi.stubGlobal('URL', class extends URL {
+      static createObjectURL = makeUrl;
+      static revokeObjectURL = revokeUrl;
+    });
+    try {
+      q<HTMLButtonElement>('#account-export').click();
+      await flush();
+      expect(svc.calls.at(-1)).toMatchObject({ method: 'GET', path: '/me/export', auth: `Bearer ${svc.token}` });
+      expect(makeUrl.mock.calls[0][0]).toMatchObject({ type: 'application/json' });
+      expect(filename).toMatch(/^biblia-data-.*\.json$/);
+    } finally { click.mockRestore(); vi.unstubAllGlobals(); }
+  });
+
+  it('requires password confirmation and lets the learner cancel a scheduled deletion after reopening', async () => {
+    await account.signIn(svc.email, PASSWORD);
+    mount();
+    await flush();
+    q<HTMLButtonElement>('#account-delete').click();
+    expect(svc.count('DELETE', '/me')).toBe(0);
+    const input = q<HTMLInputElement>('#account-delete-password');
+    input.value = PASSWORD;
+    q('#account-deletion').dispatchEvent(new Event('submit', { cancelable: true }));
+    expect(input.value).toBe('');
+    await flush();
+    expect(svc.scheduledPurgeAt).toBeDefined();
+    expect(q('.account-pending').textContent).toMatch(/scheduled for deletion/);
+    mount();
+    await flush();
+    q<HTMLButtonElement>('#account-cancel-deletion').click();
+    await flush();
+    expect(svc.scheduledPurgeAt).toBeUndefined();
+    expect(q<HTMLButtonElement>('#account-delete').hidden).toBe(false);
+    expect([...storage.data.values()].join('')).not.toContain(PASSWORD);
   });
 
   it('Sign in: checks the fields first, then signs in, empties the password field and moves on', async () => {
@@ -339,7 +417,7 @@ describe('the account screen', () => {
   it('signed in: who, and Sign out', async () => {
     await account.signIn('ana@example.org', PASSWORD);
     mount();
-    expect(q('#account-who').textContent).toMatch(/^Signed in as ana@example.org/);
+    expect(q('#account-who').textContent).toBe('ana@example.org');
     expect(document.querySelector('#account-form')).toBeNull();
     q<HTMLButtonElement>('#account-signout').click();
     await flush();

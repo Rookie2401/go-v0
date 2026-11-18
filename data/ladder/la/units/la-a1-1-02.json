@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 2,
+  "id": "la-a1-1-02",
+  "lang": "la",
+  "title": "Martha's house",
+  "contentType": "description",
+  "corpus": {
+    "id": "ladder-la",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Latin (Church Latin)"
+  },
+  "source": {
+    "id": "src:la:la-a1-1-02",
+    "title": "Martha's house (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Church Latin. Drafted by an AI model; not yet reviewed by a Latinist.",
+    "provenance": "Drafted by an AI model for the course ladder in simple Ecclesiastical (Church) Latin; not reviewed by a Latinist. It is controlled, deliberately repetitive Latin written for learners and may contain unidiomatic phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet reviewed by a Latinist.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a Latinist. House style: simple Church Latin, spelled without macrons, with u/v and i/j as in Stage 0 (v and i only); present tense, with a few perfects (venit, vidit, fuit, dixit) in the last units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "house",
+    "description",
+    "home",
+    "seeing"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-latinist-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "description"
+  ],
+  "variety": "la",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-11-13",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Samuel",
+    "marta": "Martha",
+    "ana": "Anna",
+    "nico": "Marcus"
+  },
+  "sections": [
+    {
+      "title": "Domus Marthae",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Martha in domo parva habitat. Domus bona est.",
+              "english": "Martha lives in a small house. The house is good."
+            },
+            {
+              "text": "Hodie Samuel in domo Marthae est. Libenter in domo est.",
+              "english": "Today Samuel is in Martha's house. He is gladly in the house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve, Martha! Domus tua bona est.",
+              "english": "Hello, Martha! Your house is good.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Salve, Samuel! Domus mea parva est, sed domum meam amo.",
+              "english": "Hello, Samuel! My house is small, but I love my house.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ecce porta! Porta magna est.",
+              "english": "Look, a door! The door is big.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Porta magna est, sed fenestra parva est. Ecce fenestra!",
+              "english": "The door is big, but the window is small. Look, the window!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Fenestram video. Portam quoque video.",
+              "english": "I see the window. I see the door too.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Et quid in mensa vides?",
+              "english": "And what do you see on the table?",
+              "speaker": "marta"
+            },
+            {
+              "text": "In mensa video panem et lac.",
+              "english": "On the table I see bread and milk.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Mensam amo. Panem et lac habeo. Multa in domo habeo.",
+              "english": "I love the table. I have bread and milk. I have many things in the house.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Multa habes! Libenter in domo tua sum.",
+              "english": "You have many things! I am gladly in your house.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Et tu, Samuel? Ubi habitas?",
+              "english": "And you, Samuel? Where do you live?",
+              "speaker": "marta"
+            },
+            {
+              "text": "In domo parva habito. Domus mea magna non est.",
+              "english": "I live in a small house. My house is not big.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Domus tua et domus mea bonae sunt. Bene est!",
+              "english": "Your house and my house are good. It is well!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Libenter te video, Martha. Domum tuam amo.",
+              "english": "I am glad to see you, Martha. I love your house.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Gratias tibi ago, Samuel. Lac bibis? Lac bonum est.",
+              "english": "Thank you, Samuel. Do you drink milk? The milk is good.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Lac volo. Gratias tibi ago. Multa habes, et multa mihi das.",
+              "english": "I want milk. Thank you. You have many things, and you give me many.",
+              "speaker": "sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna quoque in domo Marthae est.",
+              "english": "Anna is in Martha's house too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve, Martha! Salve, Samuel! Quomodo valetis?",
+              "english": "Hello, Martha! Hello, Samuel! How are you?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Bene valemus, Anna. Et tu? Quomodo vales?",
+              "english": "We are well, Anna. And you? How are you?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Bene valeo, sed fessa sum. Ubi est frater meus?",
+              "english": "I am well, but I am tired. Where is my brother?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Lucius in schola est. Magister bonus est.",
+              "english": "Lucius is at school. He is a good teacher.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Et Marcus? Estne in schola?",
+              "english": "And Marcus? Is he at school?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Non est in schola. Hic est, in domo mea. Marcus clavem non habet.",
+              "english": "He is not at school. He is here, in my house. Marcus does not have his key.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ubi est clavis? Estne in mensa?",
+              "english": "Where is the key? Is it on the table?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Non est in mensa. Marcus clavem non habet.",
+              "english": "It is not on the table. Marcus does not have the key.",
+              "speaker": "marta"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marcus quoque in domo est. Puer bonus est, sed clavem non habet.",
+              "english": "Marcus is in the house too. He is a good boy, but he does not have the key."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve, Anna! Ubi est clavis mea? Clavem non habeo.",
+              "english": "Hello, Anna! Where is my key? I do not have the key.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Clavis tua hic est, Marce. Ecce clavis!",
+              "english": "Your key is here, Marcus. Look, the key!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Gratias tibi ago! Clavem habeo. Et lac volo.",
+              "english": "Thank you! I have the key. And I want milk.",
+              "speaker": "nico"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

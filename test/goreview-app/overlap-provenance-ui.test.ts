@@ -34,7 +34,7 @@ describe('repeat-presentation provenance in the session UI', () => {
     await showOverlap('scheduled', 'due-learning-return', 'A timed learning return became due.');
   });
   it('labels a delayed remediation item separately', async () => {
-    await showOverlap('remediation', 'remediation-reassessment', 'You chose a delayed remediation reassessment.');
+    await showOverlap('remediation', 'remediation-reassessment', 'This item returned after you studied it.');
   });
   it('labels requested repeat practice as explicit overlap', async () => {
     await showOverlap('explicit', 'explicit-repeat', 'You chose to repeat this practice.');

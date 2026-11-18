@@ -48,7 +48,7 @@ describe('the hash router', () => {
     const headerOf = (): string => rig.q('header').innerHTML;
     const homeHeader = headerOf();
     await rig.go('review/decks');
-    expect(rig.q('#decks-title').textContent).toBe('Saved decks');
+    expect(rig.q('#decks-title').textContent).toBe('Saved Decks');
     expect(rig.root.querySelector('#back-home, .crumb')).toBeNull();
     expect(rig.root.querySelector('header .language, header #language-name, header #language-select')).toBeNull();
     expect(headerOf()).toBe(homeHeader); // the top bar does not change between screens

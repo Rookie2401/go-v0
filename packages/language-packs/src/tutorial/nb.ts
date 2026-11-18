@@ -79,7 +79,7 @@ export const NB_TUTORIAL: Tutorial = orientation({
     'Lemmatisation is seed-only: the Bokmål word list is machine-drafted, no native speaker has checked it against any official word list, and a word outside it gets a marked guess or nothing.',
     'There is no parser, so what the neighbouring words do not settle stays a list of readings.',
     'A compound is split only into words the list knows, and no meaning is given for it.',
-    'There is no dictionary for Norwegian in this build, so meanings come from the word list alone.',
+    'Meanings come from Wiktionary’s Bokmål entries (CC BY-SA 4.0, via kaikki.org): machine-extracted, not checked by a native speaker, and never taken from Nynorsk. A word Wiktionary lacks has no meaning on the card.',
     'There are no recordings. If your device has a matching Bokmål voice, GoLearn can play a word as synthetic practice only. With explicit remote-speech consent and a configured service, a remote Bokmål voice can also read approved pack words and examples; availability is not guaranteed. No spoken standard is claimed, and a card gives a rule-based East Norwegian respelling, not a norm. Nynorsk has no registered remote voice here; a matching device voice may still be available.',
   ],
   languageSteps: NB_TUTORIAL_STEPS_OWN,

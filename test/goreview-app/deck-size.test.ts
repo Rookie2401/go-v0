@@ -5,7 +5,7 @@ import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
 import { planCurrentDeck, holdOutOf } from '../../packages/goreview/app/deckModel';
 import { loadReviewModel } from '../../packages/goreview/app/workspace';
-import { cardAdded, destroyRigs, dueCard, ids, makeRig, reopen, seed, type, until, type Rig, readyCards, reviewed } from './helpers';
+import { cardAdded, destroyRigs, dueCard, ids, makeRig, reopen, saveCurrentDeck, seed, type, until, type Rig, readyCards, reviewed, PICKED } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -15,7 +15,7 @@ const cards = (rig: Rig): number => Number(String(readyCards(rig)));
 
 function word(label: string, level: UnitKnowledge['level'], encounters: number, at: string): VocabularyItem {
   const unitId = `lemma:sq:${label}:NOUN`;
-  return { knowledge: { unitId, languageId: 'sq', level, encounters, firstSeenAt: at, lastSeenAt: at } as UnitKnowledge, unit: { unitId, languageId: 'sq', label, kind: 'lexeme' } as VocabularyItem['unit'], surfaceForms: [label], lastEncounter: at, sources: [] };
+  return { knowledge: { unitId, languageId: 'sq', level, encounters, firstSeenAt: at, lastSeenAt: at, dimensions: PICKED } as UnitKnowledge, unit: { unitId, languageId: 'sq', label, kind: 'lexeme' } as VocabularyItem['unit'], surfaceForms: [label], lastEncounter: at, sources: [] };
 }
 function useWords(rig: Rig, items: VocabularyItem[]): void {
   const page: VocabularyPage = { items, catalog: { total: items.length, counts: { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 } } };
@@ -73,12 +73,13 @@ describe('cards per deck', () => {
     expect(cards(rig)).toBe(0);
     expect(readyCards(rig)).toBe(0);
     expect(rig.q<HTMLButtonElement>('#start-session').disabled).toBe(true);
-    expect(rig.q('#vocab-count').textContent).toBe('4 words');
+    // two of the four are New: words never picked are not the learner's words, and are not counted (the owner, 2026-11-14)
+    expect(rig.q('#vocab-count').textContent).toBe('2 words');
   });
 
   it('fills a short deck to the size the learner set: one due card, no admissible new word and nine spaced reviews not yet due make a full Current Deck (the owner, 2026-11-03)', async () => {
     const rig = await makeRig({ signedIn: true });
-    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + (i % 7)}T10:00:00.000Z`)];
+    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + (i % 7)}T10:00:00.000Z`), reviewed(A, `s${i}`, 'meaning-to-form', 3, `2026-10-0${1 + (i % 7)}T22:00:00.000Z`)] /* Easy, then Good: an established review whose latest answer is not Easy (an Easy-last card is never fill, 2026-11-17) */;
     await seed(rig, [...dueCard(A, 'w0', 'meaning-to-form'), ...Array.from({ length: 9 }, (_, i) => i).flatMap(spaced)]);
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { maxNew: 0 });
     await reopen(rig);
@@ -97,7 +98,7 @@ describe('cards per deck', () => {
 
   it('one due review plus nine fill: the obligations summary says 1 due review while the deck says 10 cards, and the kicker never says "due" (the owner, 2026-11-03)', async () => {
     const rig = await makeRig({ signedIn: true });
-    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + (i % 7)}T10:00:00.000Z`)];
+    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + (i % 7)}T10:00:00.000Z`), reviewed(A, `s${i}`, 'meaning-to-form', 3, `2026-10-0${1 + (i % 7)}T22:00:00.000Z`)] /* Easy, then Good: an established review whose latest answer is not Easy (an Easy-last card is never fill, 2026-11-17) */;
     // w0: answered Again, then Easy a day later, so it is an established review that has come due; nine more reviews are not due
     await seed(rig, [...dueCard(A, 'w0', 'meaning-to-form'), reviewed(A, 'w0', 'meaning-to-form', 4, '2026-09-02T10:00:00.000Z'), ...Array.from({ length: 9 }, (_, i) => i).flatMap(spaced)]);
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { maxNew: 0 });
@@ -117,7 +118,7 @@ describe('cards per deck', () => {
 
   it('a pool smaller than the deck size is the whole pool: the Current Deck says it holds all of the learner cards', async () => {
     const rig = await makeRig({ signedIn: true });
-    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + i}T10:00:00.000Z`)];
+    const spaced = (i: number) => [cardAdded(A, `s${i}`, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, `s${i}`, 'meaning-to-form', 4, `2026-10-0${1 + i}T10:00:00.000Z`), reviewed(A, `s${i}`, 'meaning-to-form', 3, `2026-10-0${1 + i}T22:00:00.000Z`)] /* Easy, then Good (2026-11-17) */;
     await seed(rig, [0, 1, 2, 3, 4, 5].flatMap(spaced));
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { maxNew: 0, cardsPerDeck: 10 });
     await reopen(rig);
@@ -135,12 +136,12 @@ describe('cards per deck', () => {
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 5 });
     await reopen(rig);
     await rig.go('review/decks');
-    click(rig.q('#save-deck'));
-    await until(() => rig.qa('.deckrow').length === 2, 'the saved deck');
+    await saveCurrentDeck(rig);
+    await until(() => rig.qa('#saved-decks .deck-tile').length === 3, 'the saved deck');
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 20 });
     await rig.go('review/decks');
-    expect(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) .deckrow-line').textContent).toMatch(/ · 5 cards · /);
-    click(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="practise-again"]'));
+    expect(rig.q('[data-deck-id]:not([data-builtin]) .deck-caption').textContent).toMatch(/^5 cards · /);
+    click(rig.q('[data-deck-id]:not([data-builtin]) [data-action="practise-again"]'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the session');
     expect(rig.app.ctx.run.active!.plan.items).toHaveLength(5);
   });

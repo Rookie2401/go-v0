@@ -9,6 +9,7 @@ import type { VocabularyItem } from '../../repository-service/src/api';
 import { createReviewEligibilityContext, reviewEligibility, type ReviewEligibilityContext } from '../src/planner/eligibility';
 import { remediationBacklog } from '../src/planner/remediation';
 import { eventHead } from './engine';
+import { planCouldHaveChanged } from './freshness';
 import { admissionBudget } from '../src/planner/budget';
 import type { AudioAvailability, DeckItem, IntakeOutcome, ReviewPreferences, SessionPlan, SessionState } from '../src/types';
 import type { AppContext } from './context';
@@ -304,7 +305,9 @@ async function recoveryScan(ctx: AppContext, api: Awaited<ReturnType<AppContext[
     let fullKnowledge: UnitKnowledge[] = [];
     let fullKnowledgeRead = false;
     try {
-      const result = await api.knowledge();
+      // this language only (2026-11-17): the whole read carried every language (about 15 MB for the owner's eight) and a phone gave up after 8 s,
+      // so the recovery never completed there; a service older than that answers every language and the filter below keeps this one
+      const result = await api.knowledge(undefined, { languageId: identity.languageId });
       if (!result.ok) throw new Error(result.message || `the service answered ${result.status}`);
       fullKnowledge = result.data.knowledge.filter((row) => row.languageId === identity.languageId && typeof row.unitId === 'string');
       fullKnowledgeRead = true;
@@ -516,19 +519,40 @@ async function buildReviewModel(ctx: AppContext, opts: { savedOnly?: boolean } =
     } else recoveryIncomplete = true;
   }
 
-  // A completed candidate page is not enough to publish a partial recovery. If
-  // vocabulary scanning, full knowledge, or pack recovery was incomplete, prefer
-  // the last compatible prepared universe as a whole and keep the partial status.
-  if (candidateSource === 'live' && recoveryIncomplete) {
+  // An incomplete recovery (a vocabulary page, the full knowledge read or some pack facts failed) keeps the LIVE candidates and runs
+  // intake on them. Words only the last complete load knew (recovered words this refresh could not check) are carried over from it,
+  // each with its knowledge read now; a word whose knowledge cannot be read now is left out rather than judged on an old row.
+  // Until 2026-11-15 an incomplete recovery replaced the whole live model with that saved copy and its saved intake outcomes. A device
+  // whose recovery never completed (Hindi on the owner's phone: nearly every Hindi word is a pack-recovered form) then showed the same
+  // outcomes forever: their test-now words were admitted by 2026-11-01 and no new word could reach test-now again. The saved copy is
+  // still never overwritten by an incomplete load (candidateSnapshotEligible below).
+  if (candidateSource === 'live' && recoveryIncomplete && candidateApi) {
     const previous = (await readSnapshot(ctx, identity.learnerId, identity.languageId))?.model;
     if (snapshotMatches(previous)) {
-      cachedPreparedModel = previous;
-      candidates = previous.candidates;
-      knowledge = previous.knowledge;
-      candidateSource = 'cached';
-      knowledgeStatus = { source: 'partial', requested: Math.max(knowledgeStatus.requested, knowledge.length), resolved: knowledge.length,
-        missing: [], fetchedAt: previous.savedAt, note: 'The latest vocabulary refresh was incomplete; the last complete word data is shown.' };
-      candidateNote = `The latest vocabulary refresh was incomplete; using saved word data from ${previous.savedAt.slice(0, 16).replace('T', ' ')} UTC.`;
+      // a live candidate the service could only call 'unknown' (no catalogue unit) is replaced by the copy's recovered version of it
+      const liveById = new Map(candidates.map((candidate) => [candidate.unitId, candidate]));
+      const carried = previous.candidates.filter((candidate) => !isClassUnit(candidate.unitId) && (!liveById.has(candidate.unitId)
+        || (liveById.get(candidate.unitId)!.eligibility.status === 'unknown' && candidate.eligibility.status !== 'unknown')));
+      if (carried.length) {
+        const rows = new Map(knowledge.map((row) => [row.unitId, row]));
+        const unread = carried.map((candidate) => candidate.unitId).filter((unitId) => !rows.has(unitId));
+        const api = candidateApi;
+        for (let offset = 0; offset < unread.length; offset += KNOWLEDGE_BATCH * KNOWLEDGE_PARALLEL) {
+          const group: string[][] = [];
+          for (let i = offset; i < Math.min(unread.length, offset + KNOWLEDGE_BATCH * KNOWLEDGE_PARALLEL); i += KNOWLEDGE_BATCH) group.push(unread.slice(i, i + KNOWLEDGE_BATCH));
+          const answers = await Promise.allSettled(group.map(async (ids) => api.knowledge(ids)));
+          for (const answer of answers) {
+            if (answer.status === 'fulfilled' && answer.value.ok) {
+              for (const row of answer.value.data.knowledge) if (row.languageId === identity.languageId) rows.set(row.unitId, row);
+            }
+          }
+        }
+        const kept = carried.filter((candidate) => rows.has(candidate.unitId));
+        const keptIds = new Set(kept.map((candidate) => candidate.unitId));
+        candidates = [...candidates.filter((candidate) => !keptIds.has(candidate.unitId)), ...kept];
+        knowledge = [...rows.values()];
+        if (kept.length) recoveryNotes.push(`${plural(kept.length, 'word', 'words')} the refresh could not check ${kept.length === 1 ? 'comes' : 'come'} from this device's word data of ${utc(previous.savedAt)}.`);
+      }
     }
   }
   if (candidateSource === 'cached' && recoveryIncomplete && cachedPreparedModel) {
@@ -751,9 +775,8 @@ export async function currentReviewModel(ctx: AppContext, opts: { waitMs?: numbe
     const now = ctx.deps.now().getTime(), then = Date.parse(last.now);
     // the other local stores a model reads besides the log and the preferences: the learner's per-word choices (Later)
     const choices = await ctx.state.getChoices(id.learnerId);
-    const moved = [...last.deck, ...(last.classDeck ?? [])].some((i) => i.status === 'active' && Date.parse(i.schedule.due) > then && Date.parse(i.schedule.due) <= now);
     // a choice made since (Later) changes nothing the live load found: the same model with the choices as they stand now
-    if (entry.events === sig && now >= then && now - then <= 5 * 60_000 && !moved) local = JSON.stringify(choices) === JSON.stringify(last.choices) ? last : { ...last, choices };
+    if (entry.events === sig && now >= then && now - then <= 5 * 60_000 && !planCouldHaveChanged(last, now)) local = JSON.stringify(choices) === JSON.stringify(last.choices) ? last : { ...last, choices };
   }
   local ??= await buildReviewModel(ctx, { savedOnly: true }).catch(() => undefined);
   if (local) {
@@ -762,7 +785,7 @@ export async function currentReviewModel(ctx: AppContext, opts: { waitMs?: numbe
     const refresh = refreshReviewModel(ctx).catch(() => undefined);
     if (opts.waitMs) {
       const live = await within(ctx, opts.waitMs, refresh, () => undefined);
-      if (live && !live.provisional) return live;
+      if (live && !live.provisional && !planCouldHaveChanged(live, ctx.deps.now().getTime())) return live;
     }
     return local;
   }

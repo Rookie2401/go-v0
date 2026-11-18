@@ -5,6 +5,20 @@
  * silently kept). Nothing here is hand-asserted capability: a feature is `supported` only when the manifest declares it
  * AND the analyser the runtime bundles does not say 'none' for it.
  *
+ * LEMMA QUALITY is derived, not copied (2026-11-13). An analyser states the level of its OWN word list ('seed-only' for every one of
+ * them), which says nothing of the dictionary, the form indexes or the measurements that also stand behind a lemma. The report keeps
+ * that statement as `lemma.analyserLevel` and derives `lemma.quality` from the evidence table (evidence.ts), by this rule and no other:
+ *
+ *   none         the pack does not declare lemmas, or no analyser is bundled, or the analyser says 'none'
+ *   dependable   the analyser itself says so; or EVERY measurement against a human-annotated treebank on record is at least
+ *                DEPENDABLE_ACCURACY % (strict, first reading), and one of them scored at least DEPENDABLE_MIN_ITEMS words
+ *   limited      the analyser says so; or a lemma can come from a source beyond the hand word list: the form index of the pack's
+ *                declared dictionary, an attested form index, the analyser's own large lexicon
+ *   seed-only    none of the above: lemmas come from a small hand word list and the closed classes
+ *
+ * A figure measured against AI-written labels never raises the level (it is agreement with a machine, and the note says so); it is
+ * reported beside it. Review is not evidence either: `reviewStatus` stays what the manifest says whatever the figures are.
+ *
  *   packCapabilities('de')   the report; undefined for a language with no pack
  *   allPackCapabilities()    every pack, in registry order
  *
@@ -17,6 +31,7 @@
  * it with the manifest and the adapter (test/language-packs/capabilities.test.ts).
  */
 import type { LanguageAdapter, SupportLevel } from '../../../src/core';
+import { evidenceFor, type LemmaMeasurement, type LemmaSource, type PackEvidence } from './evidence';
 import { levelOf, type PackLevel, type PackManifest, type ReviewStatus } from './manifest';
 import { PACKS } from './registry';
 import { builtInAdapter } from './runtime';
@@ -61,7 +76,20 @@ export interface PackCapabilities {
   analyzerId: string;
   tokenization: { quality: Quality; method: 'adapter' | 'intl'; note: string };
   sentenceSegmentation: { quality: Quality; note: string };
-  lemma: { supported: boolean; quality: SupportLevel; note: string };
+  lemma: {
+    supported: boolean;
+    /** Derived from the evidence (see the header); never lower than what the analyser states for its own word list. */
+    quality: SupportLevel;
+    /** What the analyser states for its own word list and rules. */
+    analyserLevel: SupportLevel;
+    /** What a lemma can come from beyond the hand word list (empty: the hand list and the closed classes only). */
+    sources: LemmaSource[];
+    /** Every measurement of first-reading lemma accuracy on record, with what it was scored against. */
+    measured: LemmaMeasurement[];
+    note: string;
+  };
+  /** The dictionary the pack declares (meanings; its form index is a lemma source when the evidence lists it). */
+  dictionary: { declared: boolean; id?: string; entries?: number; licence?: string; attribution?: string; note: string };
   morphology: {
     supported: boolean;
     quality: SupportLevel;
@@ -87,6 +115,40 @@ export interface PackCapabilities {
 // ───────────────────────────── helpers ─────────────────────────────
 
 const qualityOf = (l: SupportLevel | undefined): Quality => (l === 'dependable' ? 'dependable' : l === 'limited' ? 'limited' : 'none');
+
+/** The bar for 'dependable' lemmas: every human-treebank measurement at least this accurate, one of them over at least this many words. */
+export const DEPENDABLE_ACCURACY = 95;
+export const DEPENDABLE_MIN_ITEMS = 10_000;
+
+const LEVEL_RANK: Readonly<Record<SupportLevel, number>> = { none: 0, 'seed-only': 1, limited: 2, dependable: 3 };
+const n = (x: number): string => x.toLocaleString('en');
+const pct = (x: number): string => `${x.toFixed(1)}%`;
+const andList = (xs: string[]): string => (xs.length <= 1 ? (xs[0] ?? '') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
+
+/** The lemma level the evidence supports, given what the analyser states for its own word list (never lower than that). */
+export function deriveLemmaQuality(stated: SupportLevel, evidence: PackEvidence): SupportLevel {
+  if (stated === 'none') return 'none';
+  const human = evidence.lemmaMeasurements.filter((m) => m.goldKind === 'human-treebank');
+  const dependable = human.length > 0 && human.every((m) => m.lemmaAccuracy >= DEPENDABLE_ACCURACY) && human.some((m) => m.items >= DEPENDABLE_MIN_ITEMS);
+  const derived: SupportLevel = dependable ? 'dependable' : evidence.lemmaSources.length > 0 ? 'limited' : 'seed-only';
+  return LEVEL_RANK[derived] > LEVEL_RANK[stated] ? derived : stated;
+}
+
+/** "95.6% on the Latin New Testament (Clementine Vulgate) against the PROIEL treebank (104,345 words)". */
+export const measurementPhrase = (m: LemmaMeasurement): string => `${pct(m.lemmaAccuracy)} on ${m.corpus} against ${m.gold} (${n(m.items)} words)`;
+
+/** One sentence on what has been measured: human treebanks first, then AI-labelled sets, named for what they are; or that nothing has. */
+export function measuredSentence(measured: readonly LemmaMeasurement[]): string {
+  const human = measured.filter((m) => m.goldKind === 'human-treebank');
+  const ai = measured.filter((m) => m.goldKind === 'ai-labelled');
+  const parts: string[] = [];
+  if (human.length) parts.push(`The first reading had the right lemma ${andList(human.map(measurementPhrase))}.`);
+  if (ai.length) parts.push(`${human.length ? 'It also agreed' : 'Its first reading agreed'} with AI-written labels that nobody has checked on ${andList(ai.map((m) => `${pct(m.lemmaAccuracy)} of ${n(m.items)} words of ${m.corpus}`))}: agreement with a machine, not a measure of correctness.`);
+  if (!parts.length) parts.push('Lemma accuracy has not been measured on running text.');
+  return parts.join(' ');
+}
+
+const sourcePhrase = (s: LemmaSource): string => `${s.label}${s.size ? ` (${n(s.size.count)} ${s.size.unit})` : ''}`;
 
 const SYNTAX_NOTE = 'No analyser gives dependency roles or syntactic functions (subject, object, modifier): a card says "role: not available from this analyser". A few function words carry a plain description of their own job (a linking article, a relative pronoun, a separable prefix, a first-person pronoun); that is a word description, not a parse. Phrase units and construction ids are listed patterns, not a parse.';
 
@@ -265,13 +327,25 @@ export function capabilitiesOf(m: PackManifest, adapter: LanguageAdapter | undef
   const limitations = s?.limitations ?? [];
   const probes = adapter ? PROBES[m.languageId] ?? [] : [];
 
+  const evidence = evidenceFor(m.languageId);
+  const dict = m.lexical.dictionary;
+  // a dictionary form index is a lemma source only while the pack still declares that dictionary
+  const sources = lemmaOk ? evidence.lemmaSources.filter((x) => x.kind !== 'dictionary-forms-index' || (!!dict && dict.id === x.id)) : [];
+  const measured = lemmaOk ? evidence.lemmaMeasurements : [];
+  const lemmaQuality: SupportLevel = lemmaOk ? deriveLemmaQuality(s!.lemmatization, { lemmaSources: sources, lemmaMeasurements: measured }) : 'none';
   const lemmaNote = !adapter
     ? 'No analyser is bundled for this language: nothing is lemmatised.'
     : !lemmaOk
       ? 'The pack does not declare lemmatisation.'
-      : s!.lemmatization === 'seed-only'
-        ? 'Seed-only: lemmas come from a small machine-drafted word list and the closed classes; any other word gets an inferred (unconfirmed) reading or none.'
-        : `Lemmatisation is ${s!.lemmatization}.`;
+      : lemmaQuality === 'seed-only'
+        ? `Seed-only: lemmas come from a small machine-drafted word list and the closed classes; any other word gets an inferred (unconfirmed) reading or none. ${measuredSentence(measured)}`
+        : sources.length
+          ? `${lemmaQuality === 'dependable' ? 'Dependable' : 'Limited'}: a lemma comes from the pack’s hand word list and the closed classes, and for other words from ${andList(sources.map(sourcePhrase))}; a word none of them holds gets an inferred (unconfirmed) reading or none. ${measuredSentence(measured)} The analyser states ‘${s!.lemmatization}’ for its own word list.`
+          : `Lemmatisation is ${lemmaQuality}. ${measuredSentence(measured)}`;
+  const dictionary: PackCapabilities['dictionary'] = dict
+    ? { declared: true, id: dict.id, entries: dict.entries, licence: dict.licence, attribution: dict.attribution,
+      note: `Meanings come from ${dict.id} (${n(dict.entries)} entries, ${dict.licence}); the installer checks the files, and every gloss is shown with its attribution. Nobody has reviewed the entries for this pack.` }
+    : { declared: false, note: 'The pack declares no dictionary: meanings come from the pack’s own word list and, where the analyser reads a form index, from that index.' };
   const morphNote = !adapter
     ? 'No analyser is bundled for this language.'
     : !morphOk
@@ -292,7 +366,8 @@ export function capabilitiesOf(m: PackManifest, adapter: LanguageAdapter | undef
     sentenceSegmentation: adapter
       ? { quality: qualityOf(s!.sentenceSegmentation), note: `Sentence boundaries by the ${m.sentenceBoundaries.method}; an unlisted abbreviation can split a sentence.` }
       : { quality: 'limited', note: 'No analyser is bundled: sentences are split by the browser’s segmenter only.' },
-    lemma: { supported: lemmaOk, quality: lemmaOk ? s!.lemmatization : 'none', note: lemmaNote },
+    lemma: { supported: lemmaOk, quality: lemmaQuality, analyserLevel: lemmaOk ? s!.lemmatization : 'none', sources: sources.map((x) => ({ ...x, ...(x.size ? { size: { ...x.size } } : {}) })), measured: measured.map((x) => ({ ...x })), note: lemmaNote },
+    dictionary,
     morphology: {
       supported: morphOk,
       quality: morphOk ? s!.morphology : 'none',

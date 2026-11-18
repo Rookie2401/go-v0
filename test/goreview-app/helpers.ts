@@ -20,7 +20,8 @@ import type { LocalRepo } from '../../packages/goreview/app/localRepo';
 import { createReviewEngine } from '../../packages/goreview/app/engine';
 import type { AudioDeps, Deps } from '../../packages/goreview/app/ports';
 import type { MobileRuntime } from '../../packages/goreview/app/mobile';
-import { refreshIdle } from '../../packages/goreview/app/workspace';
+import { PRESS_WAIT_MS, currentReviewModel, refreshIdle } from '../../packages/goreview/app/workspace';
+import { holdOutOf, planCurrentDeck, saveDeck } from '../../packages/goreview/app/deckModel';
 
 export const T0 = '2026-10-08T10:00:00.000Z';
 
@@ -110,6 +111,25 @@ export class FakeService {
         return ok({ learner: { learnerId: l, createdAt: T0, ...(a.displayName ? { displayName: a.displayName } : {}) }, account: { accountId: `acc-${l}`, email: a.email, createdAt: T0 }, enrolments: self.enrolments.get(l) ?? [], devices: [], consents: [] });
       },
       async listEnrolments() { net(false); const l = learner(); return l ? ok({ enrolments: self.enrolments.get(l) ?? [] }) : fail(401); },
+      // GoReview's own setup (#/setup, 2026-11-17) enrols and replaces another variety of the same language
+      async enrol(input: Pick<Enrolment, 'languageId' | 'packId' | 'packVersion' | 'goals'> & Partial<Enrolment>) {
+        net(false); const l = learner(); if (!l) return fail(401);
+        self.calls.push(`enrol:${input.languageId}:${input.varietyId ?? ''}`);
+        const list = self.enrolments.get(l) ?? [];
+        const enrolment: Enrolment = { ...input, enrolmentId: `${l}-e${list.length + 1}`, learnerId: l, startedAt: new Date().toISOString() } as Enrolment;
+        self.enrolments.set(l, [...list, enrolment]);
+        return ok({ enrolment });
+      },
+      async endEnrolment(enrolmentId: string) {
+        net(false); const l = learner(); if (!l) return fail(401);
+        self.calls.push(`endEnrolment:${enrolmentId}`);
+        const list = self.enrolments.get(l) ?? [];
+        const ended = list.find((e) => e.enrolmentId === enrolmentId);
+        if (!ended) return fail(404);
+        const enrolment = { ...ended, endedAt: new Date().toISOString() };
+        self.enrolments.set(l, list.map((e) => (e.enrolmentId === enrolmentId ? enrolment : e)));
+        return ok({ enrolment });
+      },
       async candidates(enrolmentId: string) {
         net(false); const l = learner(); if (!l) return fail(401);
         self.calls.push('candidates');
@@ -541,6 +561,12 @@ export function candidate(label: string, score: number, over: Partial<ReviewCand
   };
 }
 
+/**
+ * A word the learner PICKED: looked up once (a lookup adds to `exposure.negative`). My vocab lists the words the learner picked, Seen to
+ * Automatic; a row at Seen without this was only met in passing, reads New, and is not listed (the owner, 2026-11-14).
+ */
+export const PICKED = { exposure: { score: 0, confidence: 0, observations: 1, positive: 0, negative: 1, weight: 0, contexts: 0 } } as unknown as UnitKnowledge['dimensions'];
+
 const est = (over: Partial<DimensionEstimate> = {}): DimensionEstimate => ({ score: 0, confidence: 0, observations: 0, positive: 0, negative: 0, weight: 0, contexts: 0, ...over });
 export function knowledgeRow(learnerId: string, unitId: string, languageId: string, dims: Partial<Record<Dimension, Partial<DimensionEstimate>>>): UnitKnowledge {
   const dimensions = Object.fromEntries((['exposure', 'assistedRecognition', 'readingRecognition', 'listeningRecognition', 'productiveRetrieval', 'contextualProduction', 'grammaticalUnderstanding'] as Dimension[])
@@ -562,6 +588,21 @@ export async function queued(rig: Rig): Promise<GoEvent[]> {
 }
 
 export const ids = (learnerId = 'L1', languageId = 'sq'): Ids => ({ learnerId, enrolmentId: `${learnerId}-e1`, languageId });
+
+/**
+ * Saves the learner's Current Deck to Saved decks, as the Saved decks page's own button did until the redesign of 2026-11-14 took the button
+ * off the page: the same model, plan and deck-model call. The page is then opened afresh so it lists the deck.
+ */
+export async function saveCurrentDeck(rig: Rig): Promise<void> {
+  const model = await currentReviewModel(rig.app.ctx, { waitMs: PRESS_WAIT_MS });
+  if (!model) throw new Error('no review model to save a deck from');
+  const holdOut = await holdOutOf(rig.app.ctx, model.identity.learnerId, model.identity.languageId);
+  const deck = await planCurrentDeck(rig.app.ctx, model, holdOut, undefined, 'current');
+  const saved = await saveDeck(rig.app.ctx, model.identity, deck.entries);
+  if (!saved) throw new Error('there was no deck to save');
+  await rig.go('review');
+  await rig.go('review/decks');
+}
 
 /** Re-renders the GoReview home (four entries) from the current local log. */
 export async function reopen(rig: Rig): Promise<void> {

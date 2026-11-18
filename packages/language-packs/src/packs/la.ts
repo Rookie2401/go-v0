@@ -70,10 +70,10 @@ export function latinManifest(): PackManifest {
     pronunciationNotes: true,
     tutorial: { ref: LA_TUTORIAL.ref, estimatedMinutes: LA_TUTORIAL.estimatedMinutes },
     thin: [
-      'lemmatization is seed-only (a word outside the list gets an inferred reading marked as a guess, or none);',
-      'many Latin forms are written alike (the same ending serves several cases), and the pack keeps every reading rather than choosing one;',
-      'the spelling is the Clementine Vulgate’s; other editions and classical spelling are read through the same word list and have not been measured;',
-      'nothing has been measured on running prose, only on short sentences written by the same authors.',
+      'the word list starts as a 1,916-lexeme seed and grows to about 52,000 lexemes (Whitaker’s Words, Lewis & Short, the Vulgate’s names) once the full lexicon loads; before that, a word outside the seed gets an inferred reading marked as a guess, or none;',
+      'many Latin forms are written alike (the same ending serves several cases), and the pack keeps every reading rather than choosing one; the first reading is the one measured below;',
+      'measured on running prose against held-out gold annotation (docs/latin/EVAL.md, 2026-10-25): first-reading lemma 95.6 % strict / 97.6 % lenient on the PROIEL Latin New Testament (104,345 words), 95.5 % on Perseus Jerome, 89.5–91.7 % on Perseus Cicero, Vergil and Ovid; the full set of features (case, number, tense …) is right far less often, 47.6 % strict / 89.6 % lenient on the New Testament;',
+      'the spelling is the Clementine Vulgate’s; classical texts are read through the same word list and are measured less well than the Vulgate (above).',
     ],
     extraProvenance: ['Latin: ported analyser, Clementine-Vulgate orthography, unreviewed.', 'Latin is no one’s first language: there is no native speaker to review this pack. The review it needs is a Latinist’s.'],
   });

@@ -47,27 +47,34 @@ export function syncLine(v: SyncView, mode: Mode, now: number): { text: string; 
 export async function render(el: HTMLElement, ctx: AppContext, _view: View): Promise<void> {
   const mode = await ctx.mode();
   const id = await ctx.identity();
-  // everything the GoReview home no longer shows is kept here, one tap away
-  const moreBox = h('section', { class: 'card', id: 'settings-more', 'aria-labelledby': 'more-h' }, h('h2', { id: 'more-h' }, 'More from GoReview'),
-    h('ul', { class: 'plainlinks' },
-      h('li', {}, h('a', { href: '#/review/details', id: 'link-details' }, 'Review details'), h('span', { class: 'muted' }, ' · missed words, selected practice, and deck controls')),
-      h('li', {}, h('a', { href: '#/review/transfer', id: 'link-transfer' }, 'Transfer measures'), h('span', { class: 'muted' }, ' · research measures, not conclusions')),
-      h('li', {}, h('a', { href: '#/vocabulary', id: 'link-vocabulary' }, 'Vocabulary details'), h('span', { class: 'muted' }, ' · search, filters and the unit records'))));
-  const prefsBox = h('section', { class: 'card', id: 'settings-prefs', 'aria-labelledby': 'prefs-h' }, h('h2', { id: 'prefs-h' }, 'Review preferences'));
-  el.append(moreBox, prefsBox, licencesSection(ctx), legalLinks(),
+  const page = h('div', { class: 'settings-page', id: 'settings-page' });
+  const prefsBox = h('section', { class: 'card settings-panel', id: 'settings-prefs', 'aria-labelledby': 'prefs-h' },
+    h('h2', { id: 'prefs-h' }, 'Review preferences'));
+  const linksBox = h('nav', { class: 'settings-links', id: 'settings-more', 'aria-label': 'More from GoReview' },
+    h('a', { class: 'settings-row', href: '#/review/details', id: 'link-details' }, h('span', {}, 'Review details'), h('span', { class: 'settings-chevron', 'aria-hidden': 'true' }, '›')),
+    h('a', { class: 'settings-row', href: '#/review/transfer', id: 'link-transfer' }, h('span', {}, 'Transfer measures'), h('span', { class: 'settings-chevron', 'aria-hidden': 'true' }, '›')),
+    h('a', { class: 'settings-row', href: '#/vocabulary', id: 'link-vocabulary' }, h('span', {}, 'Vocabulary details'), h('span', { class: 'settings-chevron', 'aria-hidden': 'true' }, '›')));
+  const footer = h('footer', { class: 'settings-footer' },
+    legalLinks(),
     h('p', { class: 'muted developer-line', id: 'developer-line' }, h('a', { href: '#/developer', id: 'link-developer' }, 'Developer information')));
 
-  // ── preferences
+  page.append(prefsBox, linksBox, licencesSection(ctx), footer);
+  el.append(page);
+
   if (id) {
     const prefs = await ctx.state.getPrefs(id.learnerId, id.languageId);
-    prefsBox.append(p(`These apply to ${id.languageId}${id.varietyId ? ` (${id.varietyId})` : ''}, the active language.`, 'muted'), prefsForm(ctx, id.learnerId, prefs));
+    prefsBox.append(p(`These apply to ${id.languageId}${id.varietyId ? ` (${id.varietyId})` : ''}, the active language.`, 'muted'),
+      h('div', { class: 'settings-pref-content' }, prefsForm(ctx, id.learnerId, prefs)));
   } else prefsBox.append(p(mode === 'device' ? 'Choose a language in GoLearn setup to set preferences.' : 'Sign in and choose a language to set preferences.', 'muted'));
-  prefsBox.append(await profileControls(ctx));
+
+  const profile = await profileControls(ctx);
+  profile.classList.add('settings-profile');
+  prefsBox.append(profile);
+
   const settings = await ctx.state.getSettings();
   const consent = h('input', { type: 'checkbox', id: 'consent-remote-speech', name: 'remote-speech' }) as HTMLInputElement;
   consent.checked = settings.remoteSpeechConsent;
   const consentStatus = statusLine();
-  // the switch records ConsentGiven / ConsentWithdrawn through the event queue (screens/consent.ts); when the record cannot be made it stays off
   consent.addEventListener('change', () => {
     const wanted = consent.checked;
     void setRemoteSpeechConsent(ctx, wanted).then((r) => {
@@ -76,5 +83,7 @@ export async function render(el: HTMLElement, ctx: AppContext, _view: View): Pro
       else setStatus(consentStatus, wanted ? 'Remote speech is allowed on this device. Your consent is recorded.' : r.recorded ? 'Remote speech is off. Your withdrawal is recorded.' : 'Remote speech is off.', 'ok');
     }, () => { consent.checked = !wanted; setStatus(consentStatus, 'The switch could not be changed.', 'error'); });
   });
-  prefsBox.append(h('label', { class: 'toggle' }, consent, h('span', {}, 'Allow my text to be sent to a remote speech service ', h('span', { class: 'help' }, '(off by default; local voices need no remote consent, cloud-backed browser voices do)'))), consentStatus);
+  prefsBox.append(h('label', { class: 'toggle settings-row settings-consent-row' }, consent,
+    h('span', {}, 'Allow my text to be sent to a remote speech service ',
+      h('span', { class: 'help' }, '(off by default; local voices need no remote consent, cloud-backed browser voices do)'))), consentStatus);
 }

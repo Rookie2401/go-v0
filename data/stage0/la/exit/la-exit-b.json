@@ -1,0 +1,291 @@
+{
+  "id": "la-exit-b",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-11-13",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Church (Ecclesiastical) Latin drafted for Stage 0; needs a Latinist."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "Cras dies Dominica est.",
+        "en": "Tomorrow is Sunday.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "Lucius et Anna in foro sunt.",
+        "en": "Lucius and Anna are in the market.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "Anna fessa est, sed bene valet.",
+        "en": "Anna is tired, but she is well.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "Martha panem et lac habet.",
+        "en": "Martha has bread and milk.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "Hodie pluit; Marcus in domo est et lac bibit.",
+        "en": "It is raining today; Marcus is at home and drinks milk.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "When is Sunday?"
+        },
+        "options": [
+          {
+            "en": "Tomorrow"
+          },
+          {
+            "en": "Today"
+          },
+          {
+            "en": "Yesterday"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where are Lucius and Anna?"
+        },
+        "options": [
+          {
+            "en": "In the market"
+          },
+          {
+            "en": "At church"
+          },
+          {
+            "en": "At school"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r3"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How is Anna?"
+        },
+        "options": [
+          {
+            "en": "Tired, but well"
+          },
+          {
+            "en": "Ill"
+          },
+          {
+            "en": "Angry"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r4"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Martha have?"
+        },
+        "options": [
+          {
+            "en": "Bread and milk"
+          },
+          {
+            "en": "Water and wine"
+          },
+          {
+            "en": "Only bread"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q5",
+        "lines": [
+          "r5"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What is Marcus doing?"
+        },
+        "options": [
+          {
+            "en": "Drinking milk at home"
+          },
+          {
+            "en": "Going to school"
+          },
+          {
+            "en": "Buying bread"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "Anna in foro est.",
+        "en": "Anna is in the market.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "Lucius vinum non habet.",
+        "en": "Lucius does not have wine.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Anna?"
+        },
+        "options": [
+          {
+            "en": "In the market"
+          },
+          {
+            "en": "At church"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Lucius not have?"
+        },
+        "options": [
+          {
+            "en": "Wine"
+          },
+          {
+            "en": "Milk"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "What does Martha have? Answer in Latin.",
+      "basedOn": [
+        "r4"
+      ],
+      "accept": [
+        {
+          "text": "Martha panem et lac habet"
+        },
+        {
+          "text": "Panem et lac habet"
+        },
+        {
+          "text": "Panem et lac"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Give your name and say you are not tired.",
+      "basedOn": [
+        "la.sum-1sg",
+        "la.negation-non"
+      ],
+      "personal": "your name",
+      "accept": [
+        {
+          "text": "{x} sum. Non sum fessus",
+          "speakerForm": "m"
+        },
+        {
+          "text": "{x} sum. Non sum fessa",
+          "speakerForm": "f"
+        }
+      ]
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Ask where the key is.",
+      "basedOn": [
+        "la.question-ubi"
+      ],
+      "accept": [
+        {
+          "text": "Ubi est clavis"
+        },
+        {
+          "text": "Ubi est clavis mea"
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say that you have bread and that you want water.",
+      "model": "Panem habeo. Aquam volo."
+    }
+  ]
+}

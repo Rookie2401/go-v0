@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 2,
+  "id": "la-a1-1-05",
+  "lang": "la",
+  "title": "A letter to my mother",
+  "contentType": "letter",
+  "corpus": {
+    "id": "ladder-la",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Latin (Church Latin)"
+  },
+  "source": {
+    "id": "src:la:la-a1-1-05",
+    "title": "A letter to my mother (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Church Latin. Drafted by an AI model; not yet reviewed by a Latinist.",
+    "provenance": "Drafted by an AI model for the course ladder in simple Ecclesiastical (Church) Latin; not reviewed by a Latinist. It is controlled, deliberately repetitive Latin written for learners and may contain unidiomatic phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet reviewed by a Latinist.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a Latinist. House style: simple Church Latin, spelled without macrons, with u/v and i/j as in Stage 0 (v and i only); present tense, with a few perfects (venit, vidit, fuit, dixit) in the last units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "letter",
+    "family",
+    "town",
+    "friends"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-latinist-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "la",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-11-13",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "marta": "Martha",
+    "sam": "Samuel",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Epistula",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Samuel in domo est. Samuel in mensa epistulam scribit. Mater longe est.",
+              "english": "Samuel is in the house. Samuel writes a letter at the table. His mother is far away."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Samuel matri salutem dicit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mater cara, salve!",
+              "english": "Dear mother, hello!"
+            },
+            {
+              "text": "Ego bene valeo. In urbe nova sum. Urbs bona est.",
+              "english": "I am well. I am in a new town. The town is good."
+            },
+            {
+              "text": "Domus mea parva est, sed bona est. In domo mensam habeo. Fenestram quoque habeo.",
+              "english": "My house is small, but it is good. In the house I have a table. I have a window too."
+            },
+            {
+              "text": "Hic amicos habeo. Anna amica mea est, et in valetudinario laborat. Lucius magister est, et in schola laborat. Martha panem et lac vendit. Marcus puer bonus est.",
+              "english": "Here I have friends. Anna is my friend. She works at the clinic. Lucius is a teacher, and he works at school. Martha sells bread and milk. Marcus is a good boy."
+            },
+            {
+              "text": "Quomodo vales, mater cara? Et pater, quomodo valet? Ubi est frater meus? Ubi est soror mea?",
+              "english": "How are you, dear mother? And father, how is he? Where is my brother? Where is my sister?"
+            },
+            {
+              "text": "Cras ad ecclesiam eo, et gratias Deo ago. Hodie panem et lac habeo. Bene est.",
+              "english": "Tomorrow I go to church, and I give thanks to God. Today I have bread and milk. It is well."
+            },
+            {
+              "text": "Scribe mihi, mater!",
+              "english": "Write to me, mother!"
+            },
+            {
+              "text": "Vale! Pax tibi, mater. Pax tibi, pater.",
+              "english": "Goodbye! Peace to you, mother. Peace to you, father."
+            },
+            {
+              "text": "Samuel tuus",
+              "english": "Your Samuel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Epistula in foro",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Samuel in foro est. Martha Samuelem videt.",
+              "english": "Samuel is in the market. Martha sees Samuel."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve, Samuel! Quid est hoc? Estne epistula?",
+              "english": "Hello, Samuel! What is this? Is it a letter?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Epistula est. Matri meae scribo. Hodie scribo.",
+              "english": "It is a letter. I am writing to my mother. Today I write.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bene! Urbs nova bona est, et hic amicos habes.",
+              "english": "Good! The new town is good, and here you have friends.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Amicos bonos habeo, et gratias Deo ago.",
+              "english": "I have good friends, and I give thanks to God.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Scribe, Samuel. Mater cara epistulam amat. Pater quoque bonus est.",
+              "english": "Write, Samuel. Your dear mother loves a letter. Your father is good too.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Bene! Gratias tibi ago, Martha. Panem et lac emo.",
+              "english": "Good! Thank you, Martha. I buy bread and milk.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vale, Samuel! Pax tibi. Ecce panis, ecce lac. Panem et lac tibi do.",
+              "english": "Goodbye, Samuel! Peace to you. Look, bread, look, milk. I give you bread and milk.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Gratias tibi ago! Bene valeo, et fessus non sum.",
+              "english": "Thank you! I am well, and I am not tired.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Salvete! Quomodo valetis? Ubi est Lucius?",
+              "english": "Hello! How are you? Where is Lucius?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Bene valemus, Anna. Lucius in schola est.",
+              "english": "We are well, Anna. Lucius is at school.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Bene! Panem et lac emo. Gratias tibi ago, Martha. Vale, Samuel!",
+              "english": "Good! I buy bread and milk. Thank you, Martha. Goodbye, Samuel!",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

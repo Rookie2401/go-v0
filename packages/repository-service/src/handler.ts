@@ -776,7 +776,12 @@ route('GET', '/events', true, async (ctx) => {
 route('GET', '/knowledge', true, async (ctx) => {
   assertSelf(ctx, ctx.query.get('learnerId') ?? undefined);
   const unitIds = listParam(ctx.query, 'unitIds', 200);
-  return respond(200, { knowledge: await ctx.deps.engine.knowledge(ctx.session.learnerId, unitIds) });
+  // one language of a whole read (2026-11-17): GoReview's candidate recovery needs only the language it reviews, and the whole read of a learner
+  // of eight languages was about 15 MB of JSON, which a phone could not fetch within the client's 8 s timeout, so the recovery never completed
+  const languageId = ctx.query.get('languageId') ?? undefined;
+  if (languageId !== undefined && (!languageId || languageId.length > 200)) throw new Refusal(422, 'invalid-query', 'A languageId of at most 200 characters is required.');
+  const rows = await ctx.deps.engine.knowledge(ctx.session.learnerId, unitIds);
+  return respond(200, { knowledge: languageId === undefined ? rows : rows.filter((row) => row.languageId === languageId) });
 });
 
 /** One row of the My Vocabulary listing, as the response carries it. */

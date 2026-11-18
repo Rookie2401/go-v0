@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 2,
+  "id": "la-a1-1-10",
+  "lang": "la",
+  "title": "A visitor",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-la",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Latin (Church Latin)"
+  },
+  "source": {
+    "id": "src:la:la-a1-1-10",
+    "title": "A visitor (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Church Latin. Drafted by an AI model; not yet reviewed by a Latinist.",
+    "provenance": "Drafted by an AI model for the course ladder in simple Ecclesiastical (Church) Latin; not reviewed by a Latinist. It is controlled, deliberately repetitive Latin written for learners and may contain unidiomatic phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet reviewed by a Latinist.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a Latinist. House style: simple Church Latin, spelled without macrons, with u/v and i/j as in Stage 0 (v and i only); present tense, with a few perfects (venit, vidit, fuit, dixit) in the last units."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "visitor",
+    "names",
+    "origin",
+    "welcome"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-latinist-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "la",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-11-13",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "hospes": "Paulus",
+    "marta": "Martha",
+    "sam": "Samuel",
+    "nico": "Marcus"
+  },
+  "sections": [
+    {
+      "title": "Hospes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hodie hospes in urbe est. Hospes ex urbe Roma venit.",
+              "english": "Today a guest is in the town. The guest comes from the city of Rome."
+            },
+            {
+              "text": "Hospes ad domum Marthae it. Martha in porta est.",
+              "english": "The guest goes to Martha's house. Martha is at the door."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve! Estne haec domus Marthae?",
+              "english": "Hello! Is this Martha's house?",
+              "speaker": "hospes"
+            },
+            {
+              "text": "Salve! Martha sum. Haec domus mea est. Quis es tu?",
+              "english": "Hello! I am Martha. This is my house. Who are you?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Hospes sum. Nomen mihi Paulus est. Ex urbe Roma venio.",
+              "english": "I am a guest. My name is Paul. I come from the city of Rome.",
+              "speaker": "hospes"
+            },
+            {
+              "text": "Salve, Paule! Veni in domum!",
+              "english": "Hello, Paul! Come into the house!",
+              "speaker": "marta"
+            },
+            {
+              "text": "Gratias tibi ago, Martha. Urbs Roma longe est, et fessus sum.",
+              "english": "Thank you, Martha. The city of Rome is far away, and I am tired.",
+              "speaker": "hospes"
+            },
+            {
+              "text": "Sede, Paule! Aquam bibis? Lac bibis?",
+              "english": "Sit, Paul! Do you drink water? Do you drink milk?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Aquam volo. Gratias tibi ago.",
+              "english": "I want water. Thank you.",
+              "speaker": "hospes"
+            },
+            {
+              "text": "Ecce aqua. Panem quoque habes. Panis bonus est.",
+              "english": "Here is water. You have bread too. The bread is good.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Panem libenter edo. Tu bona es, Martha.",
+              "english": "I gladly eat bread. You are good, Martha.",
+              "speaker": "hospes"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Samuel et Marcus in domum veniunt. Hospitem vident.",
+              "english": "Samuel and Marcus come into the house. They see the guest."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salve! Quis est ille, Martha?",
+              "english": "Hello! Who is that, Martha?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ille hospes est. Nomen ei Paulus est. Ex urbe Roma venit.",
+              "english": "He is a guest. His name is Paul. He comes from the city of Rome.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Salve, hospes! Nomen mihi Marcus est. Puer sum.",
+              "english": "Hello, guest! My name is Marcus. I am a boy.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Salve, Marce! Et quis est ille?",
+              "english": "Hello, Marcus! And who is that?",
+              "speaker": "hospes"
+            },
+            {
+              "text": "Samuel sum. Hic in urbe habito.",
+              "english": "I am Samuel. I live here in the town.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Tu quoque hospes es?",
+              "english": "Are you a guest too?",
+              "speaker": "hospes"
+            },
+            {
+              "text": "Hospes sum, sed hic habito. Amicos bonos habeo.",
+              "english": "I am a guest, but I live here. I have good friends.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ubi est ecclesia? Cras ad ecclesiam eo, quia dies Dominica est.",
+              "english": "Where is the church? Tomorrow I go to church, because it is Sunday.",
+              "speaker": "hospes"
+            },
+            {
+              "text": "Ecclesia non longe est. Ibi Deum laudamus. Cras ad ecclesiam imus.",
+              "english": "The church is not far. There we praise God. Tomorrow we go to church.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Libenter ad ecclesiam eo. Gratias tibi ago, Martha.",
+              "english": "I gladly go to church. Thank you, Martha.",
+              "speaker": "hospes"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hospes in domo Marthae manet. Marcus quoque in domo manet. Martha panem et lac habet, et hospes bene edit.",
+              "english": "The guest stays in Martha's house. Marcus stays in the house too. Martha has bread and milk, and the guest eats well."
+            },
+            {
+              "text": "Post cenam hospes dicit: In urbe nova amicos bonos habeo. Deus bonus est.",
+              "english": "After supper the guest says: In the new town I have good friends. God is good."
+            },
+            {
+              "text": "Martha dicit: Deo gratias! Pax tibi, Paule.",
+              "english": "Martha says: Thanks be to God! Peace to you, Paul."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hospes epistulam habet. Epistula ex urbe Roma est. Mater Samuelis epistulam scribit.",
+              "english": "The guest has a letter. The letter is from the city of Rome. Samuel's mother writes a letter."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Samuel, ecce epistula! Mater tua epistulam scribit, et ego epistulam habeo.",
+              "english": "Samuel, look, a letter! Your mother writes a letter, and I have the letter.",
+              "speaker": "hospes"
+            },
+            {
+              "text": "Epistula! Gratias tibi ago, Paule. Mater mea bona est. Pater quoque epistulam amat.",
+              "english": "A letter! Thank you, Paul. My mother is good. My father loves the letter too.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Mater tua dicit: Pax tibi, Samuel. Deus tecum est.",
+              "english": "Your mother says: Peace to you, Samuel. God is with you.",
+              "speaker": "hospes"
+            },
+            {
+              "text": "Deo gratias! Libenter epistulam audio. Hodie dies bonus est.",
+              "english": "Thanks be to God! I gladly hear the letter. Today is a good day.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

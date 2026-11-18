@@ -1,0 +1,34 @@
+=== la-a1-1-08 | description | description | A walk | Iter | walk,road,nature,town
+## Iter
+Hodie dies bonus est. Anna et Samuel in via ambulant. || Today is a good day. Anna and Samuel walk on the road.
+Anna fessa non est. Hodie in valetudinario non laborat. Samuel quoque fessus non est. || Anna is not tired. Today she does not work at the clinic. Samuel is not tired either.
+
+[sam] Quo imus, Anna? || Where are we going, Anna?
+[ana] Ad montem ambulamus. Mons non longe est. || We walk to the hill. The hill is not far.
+[sam] Ecce via! Via magna est. || Look, a road! The road is big.
+[ana] Bona est. Veni mecum! || It is good. Come with me!
+
+Arbores magnae sunt. In arbore avis est. Avis cantat. || There are big trees. In the tree there is a bird. The bird sings.
+
+[sam] Audi! Avis cantat. || Listen! The bird is singing.
+[ana] Parva est, sed bene cantat. Arbor magna est. || It is small, but it sings well. The tree is big.
+[sam] Quid est hoc? Estne canis? || What is this? Is it a dog?
+[ana] Canis est. Ecce, in via est! Magnus est. || It is a dog. Look, it is on the road! It is big.
+[sam] Ille nos videt. Timeo! || It sees us. I am afraid!
+[ana] Canis bonus est. Ecce, ad nos venit. || The dog is good. Look, he comes to us.
+[sam] Nunc non timeo. Bonus est. || Now I am not afraid. He is good.
+
+Samuel canem timet. Canis ad Annam et Samuelem venit. Anna canem amat. || Samuel is afraid of the dog. The dog comes to Anna and Samuel. Anna loves the dog.
+
+[ana] Nunc ad montem ambulamus. Ecce aqua! || Now we walk to the hill. Look, water!
+[sam] Estne aqua ibi? Aquam bibere volo. || Is there water there? I want to drink water.
+[ana] Aqua ibi est. Aqua bona est. Veni! || There is water there. The water is good. Come!
+
+Tandem ad montem veniunt. Ibi aquam bibunt. Aqua bona est. || At last they come to the hill. There they drink water. The water is good.
+Ibi urbem vident. Urbs non magna est, sed bona est. Domus Marthae parva est. Ecclesia magna est. || There they see the town. The town is not big, but it is good. Martha's house is small. The church is big.
+
+[sam] Ecce urbs! Omnia bona sunt. || Look, the town! All things are good.
+[ana] Hodie dies bonus est. Gratias Deo ago. || Today is a good day. I give thanks to God.
+[sam] Et ego gratias Deo ago. Et tibi gratias ago, Anna. || And I give thanks to God. And I thank you, Anna.
+
+Tandem ad urbem eunt. Samuel fessus est, sed bene valet. Anna quoque bene valet. || At last they go to the town. Samuel is tired, but he is well. Anna is well too.

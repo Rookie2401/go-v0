@@ -79,23 +79,24 @@ export const FLOORS: Record<string, LangFloor> = {
     "dictHit": 0.96,
     "definition": 0.98
   },
+  // th re-measured 2026-11-13 after the dictionary headword readings (scripts/gold-score.mts --langs th; same rounding as above)
   "th": {
     "dev": {
-      "lemma": 0.82,
-      "pos": 0.71,
+      "lemma": 0.9,
+      "pos": 0.79,
       "f1": 0,
-      "conflictMax": 0.02
+      "conflictMax": 0.03
     },
     "hard": {
-      "lemma": 0.61,
-      "pos": 0.5,
+      "lemma": 0.76,
+      "pos": 0.65,
       "f1": 0,
       "conflictMax": 0.07
     },
     "tokenAligned": 0.89,
     "roundTrip": 0,
-    "dictHit": 0.82,
-    "definition": 0.83
+    "dictHit": 0.9,
+    "definition": 0.9
   },
   "nb": {
     "dev": {

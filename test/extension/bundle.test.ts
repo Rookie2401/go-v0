@@ -35,7 +35,9 @@ describe.skipIf(!have)('the built extension', () => {
     console.info(`[bundle] dist/ JavaScript, minified:\n${table}`);
     // 2026-11-08: 520 -> 560 KB; master's build already measured 528 KB (the card's word-analysis and verb work since the last fit),
     // and the orphaned-script guard adds 0.2 KB. A ceiling, not a target.
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(560 * KB);
+    // 2026-11-13: 560 -> 564 KB; the Greek sentence splitter now keeps an abbreviation's full stop inside the sentence (π.χ., δηλ.:
+    // src/adapters/greek/abbreviations.ts, ~3 KB, merge dcffa49e), and the content script splits sentences; the build measured 560.3 KB.
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(564 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
@@ -47,7 +49,9 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(800 * KB);
+    // 2026-11-13: 800 -> 840 KB; master's build of 24bdc6b3 already measured 820 KB (unnoticed: this test needs a local build), and the
+    // packs' self-report (evidence.ts, merge 467d2b6c) adds 8 KB so the setup page can say what stands behind each language: 828 KB.
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(840 * KB);
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 

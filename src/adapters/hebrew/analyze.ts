@@ -21,6 +21,7 @@ import { type HeIndexHit, lemmaStem, lookupHebrewForm } from './index-store';
 import { PREFIXES, decodeOshb, oshbParts } from './oshb';
 import { heMorphFromTags } from './tags';
 import { gematriaValue } from './numbers';
+import { pronominalReadings } from './pronominal';
 import { consonantal, hasCantillation, isPointed, pointed } from './text';
 import { HE_VARIETIES } from './varieties';
 
@@ -190,6 +191,11 @@ export function heCandidates(token: RawToken): AnalysisCandidate[] {
   const key = token.normalized;
   if (!key) return [];
   const read = readForm(token, key);
+  // a preposition with a pronoun suffix (שלהם, לי, אותו): Wiktionary lists none of them, so the hand table reads them; on unpointed text
+  // they go before an index reading of the same letters (which stays), on pointed text only where no index reads the form
+  const pointedText = isPointed(key);
+  const pronominal = !pointedText || !read.length ? pronominalReadings(token, key, pointedText) : [];
+  if (pronominal.length) return [...pronominal, ...read].sort((a, b) => (b.confidence ?? 0) - (a.confidence ?? 0));
   if (read.length) return read;
   // nothing attested as written, with or without prefixes: the rules below, each saying what it did
   // the Mishnaic masculine plural in ־ִין (Biblical and Modern ־ִים): read as the ־ִים form, which counts as Mishnaic evidence

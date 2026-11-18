@@ -37,6 +37,8 @@ describe('the two decks on the GoReview home', () => {
     expect(rig.q('#start-review-count').textContent).toBe('1 card'); // the count of the deck, never "due" (a deck may hold deck-fill)
 
     click(rig.q('#start-review'));
+    await until(() => !!rig.root.querySelector('#start-deck-review'), 'Review Deck with study work');
+    click(rig.q('#start-deck-review'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the review session');
     const plan = rig.app.ctx.run.active!.plan;
     expect(plan.items.map((p) => p.item.unitId)).toHaveLength(1);
@@ -90,8 +92,9 @@ describe('the two decks on the GoReview home', () => {
 
 describe('deck fill: each deck is always the size the learner set (the owner, 2026-11-03)', () => {
   const labels = (n: number, prefix: string): string[] => Array.from({ length: n }, (_, i) => `${prefix}${i}`);
-  /** A card answered Easy a few days ago: an established spaced review that is not due for a good while. */
-  const spaced = (label: string, day: string): GoEvent[] => [cardAdded(A, label, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, label, 'meaning-to-form', 4, `2026-10-${day}T10:00:00.000Z`)];
+  /** A card answered Easy a few days ago and Good that evening: an established spaced review, not due for a good while, whose latest answer is
+   *  not Easy (a card last answered Easy is never deck fill unless it was once answered Again or Hard: the owner, 2026-11-17). */
+  const spaced = (label: string, day: string): GoEvent[] => [cardAdded(A, label, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, label, 'meaning-to-form', 4, `2026-10-${day}T10:00:00.000Z`), reviewed(A, label, 'meaning-to-form', 3, `2026-10-${day}T22:00:00.000Z`)];
   /** A card answered Good six minutes ago: still in its learning steps, with its return not yet due. */
   const stepping = (label: string): GoEvent[] => [cardAdded(A, label, 'meaning-to-form', '2026-09-01T09:00:00.000Z'), reviewed(A, label, 'meaning-to-form', 3, '2026-10-08T09:54:00.000Z')];
   const planOf = async (rig: Rig, part: 'current' | 'review') => {

@@ -144,7 +144,9 @@ describe('Sign-in page (optional)', () => {
     rig.service.down = true;
     type(rig.q('#acct-password'), 'right password!');
     submit(rig.q('#acct-form'));
-    await until(() => /could not reach/i.test(rig.q('#acct-form .status').textContent ?? ''));
+    // a sign-in that gets no answer is tried once more after a 2 s pause (signInOnce, 9f66e1b2: a waking service): wait past that pause,
+    // not the helper's default 2 s, which raced it and lost on slower machines
+    await until(() => /could not reach/i.test(rig.q('#acct-form .status').textContent ?? ''), 6000);
     expect(await sessionOf(rig.area)).toBeUndefined();
     expect(rig.q<HTMLInputElement>('#acct-password').value).toBe('');
   });

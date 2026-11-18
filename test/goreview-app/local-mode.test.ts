@@ -97,16 +97,15 @@ describe('on the device, with no account', () => {
     expect(rig.q('#sync-indicator').textContent).toBe('On this device only');
   });
 
-  it('GoReview home says what to do when no language was chosen yet, and points to setup', async () => {
+  it('GoReview home with no language chosen yet opens GoReview’s own language list (2026-11-17: no GoLearn setup first)', async () => {
     const service = defaultService();
     const rig = await makeRig({ service, local: { }, links: { setup: '../app/index.html#/language' } });
     rig.local!.api.listEnrolments = async () => ({ ok: true as const, status: 200, data: { enrolments: [] } });
     await rig.go('settings');
     await rig.go('review');
-    await until(() => !!rig.root.querySelector('#no-enrolment'), 'the notice');
-    expect(rig.q('#no-enrolment').textContent).toContain('choose your language in GoLearn setup');
-    expect(rig.q('#no-enrolment').textContent).toContain('no account is needed');
-    expect(rig.q<HTMLAnchorElement>('#link-setup').getAttribute('href')).toBe('../app/index.html#/language');
+    await until(() => rig.app.current() === 'setup' && !!rig.root.querySelector('#setup-languages li'), 'the language list');
+    expect(rig.q('#setup').textContent).toContain('Choose the language you want to review');
+    expect(rig.root.querySelector('a[href="../app/index.html#/language"]')).toBeNull();
   });
 
   it('the language switcher lists the device’s own enrolments and prefers the one chosen in setup', async () => {

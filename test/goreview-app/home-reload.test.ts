@@ -13,7 +13,7 @@ import { createReviewEngine } from '../../packages/goreview/app/engine';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { loadVocab } from '../../packages/goreview/app/deckModel';
 import type { AppContext } from '../../packages/goreview/app/context';
-import { candidate, destroyRigs, dueCard, ids, makeRig, seed, until, readyCards } from './helpers';
+import { candidate, destroyRigs, dueCard, ids, makeRig, seed, until, readyCards, PICKED } from './helpers';
 
 afterEach(() => { destroyRigs(); });
 
@@ -148,7 +148,7 @@ describe('the planner and the vocabulary ask the Repository in batches', () => {
 
   it('loadVocab sends the unit batches together: with three batches of forms, all three are in flight at once', async () => {
     const forms = Array.from({ length: 120 }, (_, i) => `form:sq:w${i}`);
-    const items = forms.map((unitId) => ({ knowledge: { unitId, languageId: 'sq', level: 'seen', encounters: 2, firstSeenAt: '2026-10-01T00:00:00.000Z', lastSeenAt: '2026-10-02T00:00:00.000Z' }, unit: { unitId, languageId: 'sq', label: unitId.slice(8), kind: 'form' }, surfaceForms: [], sources: [] }));
+    const items = forms.map((unitId) => ({ knowledge: { unitId, languageId: 'sq', level: 'seen', encounters: 2, firstSeenAt: '2026-10-01T00:00:00.000Z', lastSeenAt: '2026-10-02T00:00:00.000Z', dimensions: PICKED }, unit: { unitId, languageId: 'sq', label: unitId.slice(8), kind: 'form' }, surfaceForms: [], sources: [] }));
     let inFlight = 0; let peak = 0; const batches: number[] = [];
     const api = {
       async vocabulary() { return { ok: true as const, status: 200, data: { items, catalog: { total: items.length, counts: {} } } }; },

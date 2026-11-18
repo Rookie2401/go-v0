@@ -32,7 +32,7 @@ export function thaiManifest(): PackManifest {
     languageId: 'th', version: TH_VERSION, varietyId: 'th-standard', scriptId: 'Thai', name: 'Thai', nativeName: 'ไทย',
     varieties: [{ varietyId: 'th-standard', label: 'Standard (Central) Thai', analysed: true }],
     dictionary: { entries: 20254, frequency: true },
-    adapterSummary: 'seed-only lemmatization (a hand lexicon of about 600 entries), no inflection to analyse, listed phrase units; word and sentence segmentation are limited and Thai has no word spaces.',
+    adapterSummary: 'seed-only lemmatization (a hand lexicon of about 600 entries, then the 17,222 headwords of the Thai dictionary as words of their own), no inflection to analyse, listed phrase units; word and sentence segmentation are limited and Thai has no word spaces.',
     capabilities: ['tokenization', 'sentence-segmentation', 'lemma', 'phrases', 'script-decoding', 'constructions'],
     features: [
       { key: 'Class', label: 'Classifier', values: { Cl: 'classifier' }, explain: 'Counting nouns need a classifier word between the number and the noun.' },
@@ -46,7 +46,7 @@ export function thaiManifest(): PackManifest {
     pronunciationNotes: true,
     tutorial: { ref: TH_TUTORIAL.ref, estimatedMinutes: TH_TUTORIAL.estimatedMinutes },
     thin: [
-      'lemmatization is seed-only (a hand lexicon of about 600 entries; any other word is left unanalysed);',
+      'lemmatization is seed-only (a hand lexicon of about 600 entries, then the Thai dictionary headwords with their parts of speech; any other word is left unanalysed);',
       'word segmentation is the weakest part: an unlisted compound can be cut where a learner does not expect it (คนใน for คน + ใน) and nothing has been measured on running prose;',
       'sentence breaks need a newline or two spaces; a single space is a clause pause;',
       'there is no inflection to analyse, so a reading carries a part of speech and a lemma but no morphology.',

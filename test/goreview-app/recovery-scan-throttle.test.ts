@@ -20,7 +20,8 @@ const unknownCandidate = (unitId: string): ReviewCandidate => ({
   unitId, kind: 'unknown', score: 0, reasons: [], targetDimension: 'readingRecognition',
   eligibility: { eligible: false, status: 'unknown', reason: 'unit is not in the linguistic store' }, cost: 0.2,
 });
-const vocabRow = (unitId: string): VocabularyItem => ({ knowledge: { ...knowledgeRow('L1', unitId, 'he', {}), analysisStatus: 'high-confidence' } as UnitKnowledge, surfaceForms: [unitId], sources: [] });
+// each a word the learner picked (a lookup on its exposure): the home counts Seen to Automatic, never a word only met in passing
+const vocabRow = (unitId: string): VocabularyItem => ({ knowledge: { ...knowledgeRow('L1', unitId, 'he', { exposure: { observations: 1, negative: 1 } }), analysisStatus: 'high-confidence' } as UnitKnowledge, surfaceForms: [unitId], sources: [] });
 const ids = Array.from({ length: 250 }, (_, i) => `form:he:w${i}`);
 
 /** A service whose vocabulary is `size` rows long, 100 a page; it counts what it is asked. `pageMs`: each page takes that long (real time). */

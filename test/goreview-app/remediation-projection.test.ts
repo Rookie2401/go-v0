@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 /**
  * B3: one remediation projection. Ordinary cards and Class Essentials are computed together by effectiveRemediation(model);
- * the home counts, the remediation screen and planRemediation all read it, so no surface can disagree about what is listed,
+ * the home counts, Review Deck and planRemediation all read it, so no surface can disagree about what is listed,
  * counted or ready.
  */
 import { afterEach, describe, expect, it } from 'vitest';
@@ -11,7 +11,7 @@ import { buildRemediationStudiedEvent } from '../../packages/goreview/src/planne
 import type { GoEvent } from '../../packages/repository-contract/src';
 import { effectiveRemediation, planCurrentDeck, planRemediation } from '../../packages/goreview/app/deckModel';
 import { loadReviewModel, type ReviewModel } from '../../packages/goreview/app/workspace';
-import { destroyRigs, dueCard, ids, key, makeRig, reopenDetails, seed, shownLabel, startWith, type as typeInto, until, type Rig } from './helpers';
+import { destroyRigs, dueCard, ids, key, makeRig, reopen, reopenDetails, reviewed, seed, shownLabel, startWith, type as typeInto, until, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -37,7 +37,7 @@ const advance = (rig: Rig, minutes: number): void => rig.clock.set(new Date(rig.
 const rowIds = (rig: Rig): string[] => rig.qa('#remediation-backlog [data-item-id]').map(row => row.dataset.itemId!).sort();
 
 describe('effectiveRemediation: one projection over ordinary and Class Essentials cards', () => {
-  it('lists, counts and splits an ordinary and a class failure the same way on the model, the home and the remediation screen', async () => {
+  it('lists, counts and splits an ordinary and a class failure the same way on the model and in Review Deck', async () => {
     const rig = await makeRig({ signedIn: true, builders: registry as never });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...failedClassCard('seedc', 'Faleminderit')]);
     const m = await model(rig);
@@ -63,13 +63,13 @@ describe('effectiveRemediation: one projection over ordinary and Class Essential
     expect(current.summary.classRemediation).toBe(r.class.length);
     expect(current.remediation.map(c => c.itemId)).toEqual(r.ordinary.map(c => c.itemId));
     await reopenDetails(rig);
-    expect(rig.q('#open-remediation').textContent).toBe('1 missed word to study');
-    await rig.go('review/decks'); // Class Essentials' missed phrases sit under its card in Saved decks
-    await until(() => !!rig.root.querySelector('#open-class-remediation'), 'the class remediation link');
-    expect(rig.q('#open-class-remediation').textContent).toBe('1 missed phrase to study');
+    expect(rig.root.querySelector('a[href="#/review/remediation"]')).toBeNull();
+    await rig.go('review/decks');
+    expect(rig.root.querySelector('a[href="#/review/remediation"]')).toBeNull();
 
-    // the remediation screen lists exactly the projection, each row tagged with its source
+    // An old bookmark is normalized to Review Deck.
     await rig.go('review/remediation');
+    expect(rig.app.current()).toBe('review/deck');
     await until(() => !!rig.root.querySelector('#remediation-backlog'), 'the backlog');
     expect(rowIds(rig)).toEqual(r.all.map(c => c.itemId).sort());
     expect(rig.q(`#remediation-backlog [data-item-id="${classItemId('Faleminderit')}"]`).dataset.source).toBe('class-essentials');
@@ -101,9 +101,6 @@ describe('effectiveRemediation: one projection over ordinary and Class Essential
     expect(plan.items.map(p => p.item.itemId)).toEqual([classItemId('Faleminderit')]);
     expect(plan.items[0].queue).toBe('remediation');
     expect(plan.intent).toMatchObject({ kind: 'explicit', reason: 'reassessment' });
-    // the same plan comes from the candidates the screen passes (its row's candidate only)
-    const viaScreen = await planRemediation(rig.app.ctx, m, r.all.filter(c => c.itemId === classItemId('Faleminderit')));
-    expect(viaScreen.items.map(p => p.item.itemId)).toEqual([classItemId('Faleminderit')]);
     // the unstudied ordinary card is listed but not plannable
     expect(plan.items.some(p => p.item.itemId === ordinaryItemId('zog'))).toBe(false);
 
@@ -114,15 +111,28 @@ describe('effectiveRemediation: one projection over ordinary and Class Essential
     expect(r.all.length).toBe(r.ordinary.length + r.class.length);
 
     // the screen offers the begin button for the ready class card only
-    await rig.go('review/remediation');
+    await rig.go('review/deck');
     await until(() => !!rig.root.querySelector('#remediation-backlog'), 'the backlog');
     expect(rowIds(rig)).toEqual([classItemId('Faleminderit'), ordinaryItemId('zog')].sort());
-    const begins = rig.qa<HTMLButtonElement>('#remediation-backlog [data-action="begin-reassessment"]');
-    expect(begins).toHaveLength(1);
-    expect(begins[0].closest('[data-item-id]')!.getAttribute('data-item-id')).toBe(classItemId('Faleminderit'));
-    begins[0].click();
+    expect(rig.q(`[data-item-id="${classItemId('Faleminderit')}"]`).textContent).toContain('Ready to review.');
+    rig.q('#start-deck-review').click();
     await until(() => rig.app.current() === 'review/session', 'the reassessment session');
     expect(rig.app.ctx.run.active?.plan.items.map(p => p.item.itemId)).toEqual([classItemId('Faleminderit')]);
+  });
+
+  it('starts a due spaced review before ready reassessment through the same Review Deck control', async () => {
+    const rig = await makeRig({ signedIn: true });
+    await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form'),
+      reviewed(A, 'mace', 'meaning-to-form', 4, '2026-09-02T10:00:00.000Z')]);
+    await seed(rig, [studied(rig, ordinaryItemId('zog'), 'zog')]);
+    advance(rig, 10);
+    await reopen(rig);
+    rig.q('#start-review').click();
+    await until(() => !!rig.root.querySelector('#start-deck-review'), 'Review Deck');
+    rig.q('#start-deck-review').click();
+    await until(() => rig.app.current() === 'review/session', 'the scheduled review session');
+    expect(rig.app.ctx.run.active?.plan.items.map(p => p.item.itemId)).toEqual([ordinaryItemId('mace')]);
+    expect(rig.app.ctx.run.active?.plan.intent).toMatchObject({ kind: 'automatic' });
   });
 
   it('plans a ready ORDINARY reassessment through the same default projection', async () => {
@@ -169,7 +179,7 @@ describe('effectiveRemediation: one projection over ordinary and Class Essential
     expect(current.summary.remediation).toBe(1);
     expect(current.summary.classRemediation).toBe(0);
 
-    await rig.go('review/remediation');
+    await rig.go('review/deck');
     await until(() => !!rig.root.querySelector('#facts-repair-backlog'), 'the facts repair queue');
     expect(rowIds(rig)).toEqual([ordinaryItemId('mace')]);
     expect(rig.qa('#facts-repair-backlog [data-item-id]').map(row => row.getAttribute('data-item-id')!).sort()).toEqual([classItemId('Faleminderit'), ordinaryItemId('zog')].sort());
@@ -177,8 +187,7 @@ describe('effectiveRemediation: one projection over ordinary and Class Essential
 });
 
 describe('the next-deck panel on the session summary', () => {
-  // Fails until screens/session.ts nextDeckSection reads effectiveRemediation(model) instead of remediationBacklog(model.deck ...): it ignored Class Essentials.
-  it('counts and enables a ready Class Essentials reassessment exactly as the projection does', async () => {
+  it('opens the Review Deck from the existing Next Deck action', async () => {
     const rig = await makeRig({ signedIn: true, builders: registry as never });
     await seed(rig, failedClassCard('seedc', 'Faleminderit'));
     await seed(rig, [studied(rig, classItemId('Faleminderit'), 'seedc')]);
@@ -197,7 +206,9 @@ describe('the next-deck panel on the session summary', () => {
     const r = effectiveRemediation(await model(rig));
     expect(r.ready.map(c => c.itemId)).toEqual([classItemId('Faleminderit')]);
     expect(r.class).toHaveLength(1);
-    expect(rig.q('#next-remediation-note').textContent).toContain(`${r.needsStudy.length} need study, ${r.waiting.length} await their delayed return, and ${r.ready.length} are ready for reassessment`);
-    expect(rig.q<HTMLButtonElement>('#begin-remediation').disabled).toBe(false);
+    await until(() => !!rig.root.querySelector('#continue-due-work'), 'the next deck action');
+    expect(rig.root.querySelector('#next-remediation-note, #open-remediation, #begin-remediation')).toBeNull();
+    rig.q('#continue-due-work').click();
+    await until(() => rig.app.current() === 'review/deck' && !!rig.root.querySelector('#start-deck-review'), 'Review Deck');
   });
 });

@@ -15,7 +15,7 @@ import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, k
 import { DEFAULT_PREFERENCES } from '../../packages/goreview/app/state';
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { FakeAccountService } from '../golearn-app/accountFake';
-import { destroyRigs } from '../goreview-app/helpers';
+import { destroyRigs, PICKED } from '../goreview-app/helpers';
 import { makeTellRig, resetTellRig, typeInto, type TellRig } from '../gotell-ui/rig';
 import { SCREENS } from '../../packages/golearn-extension/app/app';
 import { downloadLanguage as appChoose, destroyRigs as destroyAppRigs, failingInstall as appFailingInstall, makeRig as makeAppRig, signIn as appSignIn } from '../golearn-app/helpers';
@@ -99,7 +99,8 @@ describe('GoReview screens', () => {
     const entry = (label: string): { knowledge: unknown; unit: unknown; surfaceForms: string[]; lastEncounter: string; sources: unknown[] } => {
       const unitId = unitOf(label);
       return {
-        knowledge: { unitId, languageId: 'sq', level: 'new', encounters: 1, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-06T00:00:00.000Z' },
+        // a word the learner picked (looked up once): My vocab lists Seen to Automatic, never New (the owner, 2026-11-14)
+        knowledge: { unitId, languageId: 'sq', level: 'seen', encounters: 1, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-06T00:00:00.000Z', dimensions: PICKED },
         unit: { unitId, languageId: 'sq', label, kind: 'lexeme' }, surfaceForms: [label], lastEncounter: '2026-10-06T00:00:00.000Z', sources: [],
       };
     };
@@ -147,32 +148,35 @@ describe('GoReview screens', () => {
     await until(() => !!rig.root.querySelector('#summary'), 'the summary');
     await until(() => !!rig.root.querySelector('#summary-next'), 'the next-deck section of the summary');
     audit(rig.root, 'practice/session summary');
-    // the optional extra practice (repeat this batch) and the remediation parts of the next-deck section
+    // the optional extra practice in the next-deck section
     const extra = rig.q<HTMLDetailsElement>('#optional-extra-practice');
     extra.open = true; extra.dispatchEvent(new Event('toggle'));
     await flush(2);
-    expect(rig.root.querySelector('#next-remediation-note'), 'the summary names the remediation backlog').toBeTruthy();
+    expect(rig.root.querySelector('#open-remediation')).toBeNull();
     audit(rig.root, 'practice/session summary (next deck, optional practice open)');
     row('A-S02', 'screens', 'exercise families met in the session', [...new Set(families)].join(', '));
     expect(new Set(families).size).toBeGreaterThanOrEqual(4);
 
-    // the remediation page, with the backlog the wrong answers left
-    click(rig.q('#open-remediation'));
+    // Study material is available through the Review Deck tile.
+    await rig.go('review');
+    click(rig.q('#start-review'));
     await until(() => !!rig.root.querySelector('#remediation-backlog'), 'the remediation backlog');
     expect(rig.root.querySelectorAll('#remediation-backlog [data-item-id]').length, 'a backlog to audit').toBeGreaterThanOrEqual(1);
     await flush(4);
-    audit(rig.root, 'practice/remediation (backlog)');
+    audit(rig.root, 'practice/review deck (backlog)');
     const study = rig.root.querySelector<HTMLButtonElement>('[data-action="mark-studied"]');
     if (study) {
-      click(study);
-      await until(() => !!rig.root.querySelector('#remediation .status')?.getAttribute('data-kind'), 'the study marker to be saved');
-      audit(rig.root, 'practice/remediation (after Mark studied)');
+      study.closest('details')!.open = true;
+      await until(() => !rig.root.querySelector<HTMLButtonElement>('[data-action="mark-studied"]')?.disabled, 'the study material');
+      click(rig.q('[data-action="mark-studied"]'));
+      await until(() => !!rig.root.querySelector('#review-deck .status')?.getAttribute('data-kind'), 'the study marker to be saved');
+      audit(rig.root, 'practice/review deck (after Mark studied)');
       // ten minutes later the delayed reassessment is offered
       rig.clock.set(new Date(rig.clock.now.getTime() + 11 * 60_000).toISOString());
       await rig.go('review');
-      await rig.go('review/remediation');
+      await rig.go('review/deck');
       await until(() => !!rig.root.querySelector('#remediation-backlog'), 'the backlog again');
-      if (rig.root.querySelector('[data-action="begin-reassessment"]')) audit(rig.root, 'practice/remediation (reassessment ready)');
+      if (rig.root.querySelector('#start-deck-review')) audit(rig.root, 'practice/review deck (reassessment ready)');
     }
 
     await rig.go('review/transfer');

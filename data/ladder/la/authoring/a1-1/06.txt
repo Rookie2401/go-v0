@@ -1,0 +1,37 @@
+=== la-a1-1-06 | explanation | explanation | Sunday | Dies Dominica | Sunday,church,prayer,people
+## Dies Dominica
+Hodie dies Dominica est. Dies Dominica dies Dei est. Omnes ad ecclesiam eunt. || Today is Sunday. Sunday is God's day. All go to church.
+Martha ad ecclesiam it. Anna et Lucius ad ecclesiam eunt. Marcus et Samuel quoque ad ecclesiam eunt. || Martha goes to church. Anna and Lucius go to church. Marcus and Samuel go to church too.
+Ecclesia non longe est. Ecclesia magna est, et multi homines in ecclesia sunt. || The church is not far. The church is big, and many people are in the church.
+
+## In ecclesia
+In ecclesia homines Deum laudant. Homines Deum amant. Homines Deo gratias agunt. || In church people praise God. People love God. People give thanks to God.
+Homines audiunt, et orant, et cantant. || People listen, and pray, and sing.
+Sacerdos quoque in ecclesia est. Sacerdos Deum laudat. Sacerdos dicit: Pax vobis! || The priest is in the church too. The priest praises God. The priest says: Peace to you!
+Omnes dicunt: Deo gratias! || All say: Thanks be to God!
+Post ecclesiam Martha in foro est. Martha panem vendit. || After church Martha is in the market. Martha sells bread.
+
+## Samuel et Martha
+Samuel ad ecclesiam venit. Marthae dicit: Salve! || Samuel comes to the church. He says to Martha: Hello!
+
+[sam] Salve, Martha! Hodie ad ecclesiam venio. || Hello, Martha! Today I come to church.
+[marta] Bene! Hodie bonum est. || Good! It is good today.
+[sam] Ubi est Anna? Estne in ecclesia? || Where is Anna? Is she in church?
+[marta] Anna ibi est! Et Lucius ibi est. || Anna is there! And Lucius is there too.
+[sam] Et Marcus? Ubi est puer? || And Marcus? Where is the boy?
+[marta] Marcus hic est. Ecce Marcus! Ibi cantat. || Marcus is here. Look, Marcus! He is singing there.
+[nico] Ego Deum laudo! Libenter in ecclesia sum. || I praise God! I am gladly in church.
+[sam] Et ego Deum laudo. Gratias Deo ago. || And I praise God. I give thanks to God.
+[sam] Martha, tu quoque oras? || Martha, do you pray too?
+[marta] Oro, et Deo gratias ago. Libenter oro, libenter canto. || I pray, and I give thanks to God. I gladly pray, I gladly sing.
+
+Lucius et Anna in ecclesia sunt. Lucius Samuelem videt. || Lucius and Anna are in the church. Lucius sees Samuel.
+
+[luis] Salve, Samuel! Quomodo vales? || Hello, Samuel! How are you?
+[sam] Bene valeo, Luci. Et tu? Quomodo vales? || I am well, Lucius. And you? How are you?
+[luis] Bene valeo, sed fessus sum. Anna quoque fessa est. || I am well, but I am tired. Anna is tired too.
+[ana] Hodie in valetudinario non laboro. Hic sum, et bene est. || Today I do not work at the clinic. I am here, and it is well.
+
+Sacerdos dicit: Pax vobis! Omnes dicunt: Deo gratias! || The priest says: Peace to you! All say: Thanks be to God!
+Post ecclesiam Samuel in domo Marthae est. Panem edunt et lac bibunt. || After church Samuel is in Martha's house. They eat bread and drink milk.
+Martha Deum amat, et omnes homines Deum amant. || Martha loves God, and all people love God.

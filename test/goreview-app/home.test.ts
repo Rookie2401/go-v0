@@ -7,7 +7,7 @@ import { decksKey, sortVocab, type SavedDeck } from '../../packages/goreview/app
 import { forgetPaintedHome } from '../../packages/goreview/app/screens/review';
 import { homePhoto } from '../../packages/goreview/app/homePhotos';
 import { UI_KEY } from '../../packages/goreview/app/screens/uiprefs';
-import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, reopenDetails, seed, until, unitOf, type Rig, readyCards } from './helpers';
+import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, reopenDetails, saveCurrentDeck, seed, until, unitOf, type Rig, readyCards, PICKED } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -40,13 +40,13 @@ describe('the GoReview home', () => {
     expect(rig.root.querySelector('#entry-tell')).toBeNull();
     expect(rig.qa('#review-home svg').every((node) => node.getAttribute('aria-hidden') === 'true')).toBe(true);
     expect(rig.qa('#start-session-count, #start-review-count, #previous-count, #vocab-count').every(node => node.classList.contains('sr'))).toBe(true);
-    // two cards answered Again are still being drilled: the Current Deck holds them, the Review Deck has nothing due
+    // Current Deck holds the two learning returns, and Review Deck holds study material for the missed cards.
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('2');
     expect(rig.q('#start-session-count').textContent).toBe('all 2 of your cards'); // the two are the whole eligible pool: deck fill (2026-11-03) says so instead of a bare count
-    expect(rig.q<HTMLButtonElement>('#start-review').disabled).toBe(true);
-    expect(rig.q('#start-review-count').textContent).toMatch(/^Nothing due/);
+    expect(rig.q<HTMLButtonElement>('#start-review').disabled).toBe(false);
+    expect(rig.q('#start-review-count').textContent).toBe('Open Review Deck');
     expect(rig.q('#start-new').closest('[data-deck]')?.getAttribute('data-deck')).toBe('current'); // Begin new deck sits beside the Current Deck
-    expect(rig.q('#previous-count').textContent).toBe('1 saved'); // Class Essentials, the built-in deck, is already there
+    expect(rig.q('#previous-count').textContent).toBe('2 saved'); // the built-in decks, Class Essentials and the Alphabet, are already there
     expect(rig.root.querySelector('#review-home #class-essentials-due')).toBeNull(); // Class Essentials lives in Saved decks
     expect(rig.q('#vocab-count').textContent).toMatch(/^\d+ words?$/);
     expect(rig.qa('#review-home button').map((b) => b.id)).toEqual(['start-session', 'start-new', 'start-review']); // no deck-size line (Settings keeps the stepper, 2026-10-28)
@@ -121,9 +121,10 @@ describe('the GoReview home', () => {
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
     click(rig.q('#entry-previous'));
-    await until(() => rig.app.current() === 'review/decks' && !!rig.root.querySelector('#save-deck'), 'the saved page');
-    click(rig.q('#save-deck'));
-    await until(() => rig.qa('.deckrow').length === 2, 'the saved deck');
+    await until(() => rig.app.current() === 'review/decks' && !!rig.root.querySelector('#saved-decks'), 'the saved page');
+    expect(rig.root.querySelector('#save-deck')).toBeNull(); // the redesign of 2026-11-14 took Save Current Deck off this page
+    await saveCurrentDeck(rig);
+    await until(() => rig.qa('#saved-decks .deck-tile').length === 3, 'the saved deck');
     const [deck] = await savedDecks(rig);
     expect(deck.items.map((i) => i.unitId).sort()).toEqual([unitOf('mace'), unitOf('zog')]);
     expect(deck.languageId).toBe('sq');
@@ -131,22 +132,22 @@ describe('the GoReview home', () => {
     await reopen(rig);
     expect(Number(String(readyCards(rig)))).toBeGreaterThan(0); // an actual due obligation remains scheduled after being saved
     await rig.go('review/decks');
-    expect(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) .deckrow-line').textContent).toMatch(/ · 2 cards · Albanian$/);
+    expect(rig.q('[data-deck-id]:not([data-builtin]) .deck-caption').textContent).toBe('2 cards · Albanian');
     // the card is the button: it holds the deck's line and names itself for a screen reader; no separate "Practise again" button, Remove beside it
-    const card = rig.q<HTMLButtonElement>('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="practise-again"]');
+    const card = rig.q<HTMLButtonElement>('[data-deck-id]:not([data-builtin]) [data-action="practise-again"]');
     expect(card.tagName).toBe('BUTTON');
     expect(card.classList.contains('deckrow-open')).toBe(true);
-    expect(card.querySelector('.deckrow-line')).not.toBeNull();
+    expect(card.querySelector('.deck-caption')).not.toBeNull();
     expect(card.textContent).toMatch(/2 cards · Albanian, press to practise$/);
-    expect(rig.root.querySelector('.deckrow .btn')).toBeNull();
-    expect(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="remove-deck"]').classList.contains('deckrow-remove')).toBe(true);
+    expect(rig.qa('#saved-decks .deck-tile:not([data-builtin]) .btn')).toHaveLength(0);
+    expect(rig.q('[data-deck-id]:not([data-builtin]) [data-action="remove-deck"]').closest('.saved-deck-actions')).not.toBeNull();
     click(card);
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the session');
     expect(rig.app.ctx.run.active!.plan.items.map((p) => p.item.unitId).sort()).toEqual([unitOf('mace'), unitOf('zog')]);
 
     await rig.go('review/decks');
-    click(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="remove-deck"]'));
-    await until(() => rig.qa('.deckrow').length === 1, 'the removal');
+    click(rig.q('[data-deck-id]:not([data-builtin]) [data-action="remove-deck"]'));
+    await until(() => rig.qa('#saved-decks .deck-tile').length === 2, 'the removal');
     expect(await savedDecks(rig)).toEqual([]);
   });
 
@@ -155,7 +156,7 @@ describe('the GoReview home', () => {
     await rig.area.set({ [decksKey('L1', 'sq')]: { v: 7, decks: 'nonsense' } });
     await rig.go('review');
     await until(() => !!rig.root.querySelector('#previous-count'), 'the home');
-    expect(rig.q('#previous-count').textContent).toBe('1 saved'); // nothing of the learner's own, and only the built-in deck
+    expect(rig.q('#previous-count').textContent).toBe('2 saved'); // nothing of the learner's own, and only the two built-in decks
   });
 
   it('puts the details, the session controls and the transfer measures one tap away in Settings', async () => {
@@ -169,11 +170,12 @@ describe('the GoReview home', () => {
 
 function word(label: string, level: UnitKnowledge['level'], encounters: number, lastSeenAt: string): VocabularyItem {
   const unitId = `lemma:sq:${label}:NOUN`;
-  const knowledge = { unitId, languageId: 'sq', level, encounters, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt } as UnitKnowledge;
+  const knowledge = { unitId, languageId: 'sq', level, encounters, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt, dimensions: PICKED } as UnitKnowledge;
   return { knowledge, unit: { unitId, languageId: 'sq', label, kind: 'lexeme' } as VocabularyItem['unit'], surfaceForms: [label], lastEncounter: lastSeenAt, sources: [] };
 }
+// every word here is one the learner picked (My vocab lists Seen to Automatic, never New: the owner, 2026-11-14)
 const WORDS = [
-  word('mace', 'known', 9, '2026-10-01T00:00:00.000Z'), word('zog', 'new', 1, '2026-10-05T00:00:00.000Z'),
+  word('mace', 'known', 9, '2026-10-01T00:00:00.000Z'), word('zog', 'seen', 1, '2026-10-05T00:00:00.000Z'),
   word('qen', 'seen', 4, '2026-10-03T00:00:00.000Z'), word('shtepi', 'seen', 2, '2026-10-07T00:00:00.000Z'), word('diell', 'recognized', 3, '2026-10-02T00:00:00.000Z'),
 ];
 async function openVocab(rig: Rig): Promise<void> {
@@ -206,7 +208,7 @@ describe('My vocab', () => {
     const row = rig.q(`[data-unit-id="${unitOf('zog')}"]`);
     await until(() => row.querySelector('.vocab-gloss')!.textContent !== '', 'the meaning');
     expect(row.querySelector('.vocab-word')!.getAttribute('lang')).toBe('sq-AL');
-    expect(row.querySelector('.vocab-level')!.textContent).toBe('new');
+    expect(row.querySelector('.vocab-level')!.textContent).toBe('seen');
     expect(row.querySelector<HTMLAnchorElement>('a.vocab-history')!.getAttribute('href')).toBe(`#/review/history/${encodeURIComponent(unitOf('zog'))}`);
   });
 
@@ -218,7 +220,7 @@ describe('My vocab', () => {
 });
 
 function entry(unitId: string, label: string, level: UnitKnowledge['level'], encounters: number, lastSeenAt: string, forms: string[] = [label]): VocabularyItem {
-  const knowledge = { unitId, languageId: 'sq', level, encounters, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt } as UnitKnowledge;
+  const knowledge = { unitId, languageId: 'sq', level, encounters, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt, dimensions: PICKED } as UnitKnowledge;
   return { knowledge, unit: { unitId, languageId: 'sq', label, kind: unitId.startsWith('form:') ? 'form' : 'lexeme' } as VocabularyItem['unit'], surfaceForms: forms, lastEncounter: lastSeenAt, sources: [] };
 }
 /** The vocabulary the Repository lists, and which form belongs to which lemma (the `form-of` relations of the batch lookup). */
@@ -291,7 +293,7 @@ describe('My vocab: one line per word', () => {
 });
 
 describe('My vocab: add a word to the current deck', () => {
-  const WORDS2 = [entry('lemma:sq:zog:NOUN', 'zog', 'seen', 4, '2026-10-05T00:00:00.000Z'), entry('lemma:sq:mace:NOUN', 'mace', 'new', 1, '2026-10-06T00:00:00.000Z')];
+  const WORDS2 = [entry('lemma:sq:zog:NOUN', 'zog', 'seen', 4, '2026-10-05T00:00:00.000Z'), entry('lemma:sq:mace:NOUN', 'mace', 'seen', 1, '2026-10-06T00:00:00.000Z')];
 
   it('tapping a word asks, "Not now" closes the question, and History stays a small link on the row', async () => {
     const rig = await makeRig({ signedIn: true });

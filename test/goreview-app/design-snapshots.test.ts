@@ -11,7 +11,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import type { ExerciseBuilder } from '../../packages/goreview/src';
 import { PACKS } from '../../packages/language-packs/src/registry';
 import { homePhoto } from '../../packages/goreview/app/homePhotos';
-import { defaultService, destroyRigs, dueCard, FAKE_BUILDERS, ids, key, makeRig, reopen, reviewed, seed, startWith, until, type Rig } from './helpers';
+import { defaultService, destroyRigs, dueCard, FAKE_BUILDERS, ids, key, makeRig, reopen, reviewed, saveCurrentDeck, seed, startWith, until, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 const REPO = path.resolve(__dirname, '../..');
@@ -67,6 +67,15 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
     for (const f of fs.readdirSync(path.join(REPO, 'packages/shared-fonts')).filter((n) => n.endsWith('.woff2'))) fs.copyFileSync(path.join(REPO, 'packages/shared-fonts', f), path.join(dir!, 'fonts', f));
     fs.copyFileSync(path.join(REPO, 'packages/shared-brand/go-logo.png'), path.join(dir!, 'go-logo.png'));
 
+    // (0) the sign-in page in the home's look (the owner, 2026-11-17): the hosted GoReview, where the account is the way in, and the extension's copy
+    for (const [name, opts] of [['signin.html', { edition: 'review' as const }], ['signin-extension.html', {}]] as const) {
+      const signin = await makeRig(opts);
+      await signin.go('signin');
+      await until(() => !!signin.root.querySelector('#signin-form'), 'the sign-in form');
+      write(name, signin);
+      destroyRigs();
+    }
+
     // (2) nothing due
     const empty = await makeRig({ signedIn: true, builders: BUILDERS });
     write('home-empty.html', empty);
@@ -85,8 +94,8 @@ describe.skipIf(!dir)('design snapshots (GOREVIEW_SNAPSHOT_DIR)', () => {
     await reopen(rig);
     expect(rig.q('#start-session').getAttribute('data-cards')).toBe('10');
     await rig.go('review/decks');
-    rig.q('#save-deck').click();
-    await until(() => rig.qa('.deckrow').length === 2, 'two saved decks');
+    await saveCurrentDeck(rig);
+    await until(() => rig.qa('#saved-decks .deck-tile').length === 3, 'three saved decks');
     await seed(rig, words.slice(0, 10).flatMap((w) => dueCard(A, `${w}x`, 'written-recognition')));
     await reopen(rig);
     write('home-decks.html', rig);

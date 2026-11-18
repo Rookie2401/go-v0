@@ -151,7 +151,7 @@ describe('lemma quality is derived from the evidence, by one stated rule', () =>
   it('each language gets the level its evidence gives it: Norwegian seed-only, every language with a dictionary or form index limited, none dependable', () => {
     const level = Object.fromEntries(allPackCapabilities().map((c) => [c.languageId, c.lemma.quality]));
     expect(level).toEqual({ sq: 'limited', es: 'limited', de: 'limited', hi: 'limited', th: 'limited', nb: 'seed-only', nn: 'seed-only', la: 'limited', he: 'limited', el: 'limited', arc: 'limited',
-      // TODO(french evidence): the lead adds PACK_EVIDENCE.fr with its report; this expectation changes then
+      // French is measured on a human treebank (92 % of first-reading lemmas on the held-out part): below the 95 % bar, so limited
       fr: 'limited' });
     // Latin is measured at the bar on the Vulgate New Testament and below it on the classical authors: the rule asks for every corpus
     const la = packCapabilities('la')!.lemma;

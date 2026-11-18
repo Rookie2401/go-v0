@@ -1,0 +1,264 @@
+{
+  "what": "The French analyser (src/adapters/fr.ts) against the Universal Dependencies French GSD treebank: counts written by scripts/fr-eval-ud.mts --json.",
+  "gold": "UD French GSD (https://github.com/UniversalDependencies/UD_French-GSD), CC BY-SA 4.0: a treebank annotated by people. Evaluation only; never shipped.",
+  "conventions": "First reading of each word; lemma compared case-insensitively. \"hand\" = the hand word list alone; \"lemmas\" = with the dictionary lemma list loaded, as in the extension. The dev split was looked at while the context rules were written; the test split was run once, at the end, and not looked into.",
+  "measuredOn": "2026-11-17",
+  "runs": {
+    "dev": {
+      "hand": {
+        "analyser": "adapter-fr@1",
+        "sentences": 1476,
+        "tokenisation": {
+          "udWords": 31904,
+          "matched": 30971
+        },
+        "coverage": {
+          "aligned": 28889,
+          "anyReading": 27943,
+          "vouched": 22832
+        },
+        "lemmaFirst": {
+          "ok": 25170,
+          "n": 28889
+        },
+        "lemmaAmong": {
+          "ok": 25672,
+          "n": 28889
+        },
+        "lemmaFirstWithoutPronouns": {
+          "ok": 24488,
+          "n": 27387
+        },
+        "uposStrict": {
+          "ok": 25238,
+          "n": 28889
+        },
+        "uposAuxVerbMerged": {
+          "ok": 25334,
+          "n": 28889
+        },
+        "features": {
+          "Mood": {
+            "ok": 2101,
+            "n": 2120
+          },
+          "Tense": {
+            "ok": 3187,
+            "n": 3233
+          },
+          "Person": {
+            "ok": 3112,
+            "n": 3123
+          },
+          "Number": {
+            "ok": 16507,
+            "n": 16638
+          },
+          "Gender": {
+            "ok": 11016,
+            "n": 11242
+          },
+          "VerbForm": {
+            "ok": 3741,
+            "n": 3770
+          }
+        },
+        "contractions": {
+          "total": 1041,
+          "lemmaFirst": 887
+        }
+      },
+      "lemmas": {
+        "analyser": "adapter-fr@1",
+        "sentences": 1476,
+        "tokenisation": {
+          "udWords": 31904,
+          "matched": 30971
+        },
+        "coverage": {
+          "aligned": 28889,
+          "anyReading": 28451,
+          "vouched": 26598
+        },
+        "lemmaFirst": {
+          "ok": 26703,
+          "n": 28889
+        },
+        "lemmaAmong": {
+          "ok": 27052,
+          "n": 28889
+        },
+        "lemmaFirstWithoutPronouns": {
+          "ok": 26019,
+          "n": 27387
+        },
+        "uposStrict": {
+          "ok": 26290,
+          "n": 28889
+        },
+        "uposAuxVerbMerged": {
+          "ok": 26386,
+          "n": 28889
+        },
+        "features": {
+          "Mood": {
+            "ok": 2109,
+            "n": 2126
+          },
+          "Tense": {
+            "ok": 3249,
+            "n": 3269
+          },
+          "Person": {
+            "ok": 3120,
+            "n": 3131
+          },
+          "Number": {
+            "ok": 17248,
+            "n": 17340
+          },
+          "Gender": {
+            "ok": 13038,
+            "n": 13098
+          },
+          "VerbForm": {
+            "ok": 3789,
+            "n": 3805
+          }
+        },
+        "contractions": {
+          "total": 1041,
+          "lemmaFirst": 942
+        }
+      }
+    },
+    "test": {
+      "hand": {
+        "analyser": "adapter-fr@1",
+        "sentences": 416,
+        "tokenisation": {
+          "udWords": 8825,
+          "matched": 8564
+        },
+        "coverage": {
+          "aligned": 8018,
+          "anyReading": 7779,
+          "vouched": 6612
+        },
+        "lemmaFirst": {
+          "ok": 6975,
+          "n": 8018
+        },
+        "lemmaAmong": {
+          "ok": 7114,
+          "n": 8018
+        },
+        "lemmaFirstWithoutPronouns": {
+          "ok": 6682,
+          "n": 7485
+        },
+        "uposStrict": {
+          "ok": 6936,
+          "n": 8018
+        },
+        "uposAuxVerbMerged": {
+          "ok": 6996,
+          "n": 8018
+        },
+        "features": {
+          "Mood": {
+            "ok": 632,
+            "n": 639
+          },
+          "Tense": {
+            "ok": 929,
+            "n": 938
+          },
+          "Person": {
+            "ok": 1000,
+            "n": 1005
+          },
+          "Number": {
+            "ok": 4657,
+            "n": 4698
+          },
+          "Gender": {
+            "ok": 2962,
+            "n": 3024
+          },
+          "VerbForm": {
+            "ok": 1136,
+            "n": 1141
+          }
+        },
+        "contractions": {
+          "total": 273,
+          "lemmaFirst": 235
+        }
+      },
+      "lemmas": {
+        "analyser": "adapter-fr@1",
+        "sentences": 416,
+        "tokenisation": {
+          "udWords": 8825,
+          "matched": 8564
+        },
+        "coverage": {
+          "aligned": 8018,
+          "anyReading": 7921,
+          "vouched": 7588
+        },
+        "lemmaFirst": {
+          "ok": 7401,
+          "n": 8018
+        },
+        "lemmaAmong": {
+          "ok": 7499,
+          "n": 8018
+        },
+        "lemmaFirstWithoutPronouns": {
+          "ok": 7108,
+          "n": 7485
+        },
+        "uposStrict": {
+          "ok": 7248,
+          "n": 8018
+        },
+        "uposAuxVerbMerged": {
+          "ok": 7307,
+          "n": 8018
+        },
+        "features": {
+          "Mood": {
+            "ok": 634,
+            "n": 641
+          },
+          "Tense": {
+            "ok": 945,
+            "n": 950
+          },
+          "Person": {
+            "ok": 1003,
+            "n": 1008
+          },
+          "Number": {
+            "ok": 4873,
+            "n": 4897
+          },
+          "Gender": {
+            "ok": 3525,
+            "n": 3543
+          },
+          "VerbForm": {
+            "ok": 1149,
+            "n": 1153
+          }
+        },
+        "contractions": {
+          "total": 273,
+          "lemmaFirst": 245
+        }
+      }
+    }
+  }
+}

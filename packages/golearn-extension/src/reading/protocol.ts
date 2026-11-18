@@ -98,7 +98,7 @@ export interface ReadingScope {
   complete: boolean;
   characters: number;
   analysedCharacters: number;
-  /** Text nodes left out because they declare another language (lang=). */
+  /** Passages left out because they declare another language: counted by the element that carries the lang attribute. */
   foreignBlocks: number;
   /** Same-origin frames whose text was read with the page. */
   frames: number;

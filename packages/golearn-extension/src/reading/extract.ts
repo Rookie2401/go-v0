@@ -108,18 +108,21 @@ function renderedCheck(doc: Document): (el: Element) => boolean {
   return rendered;
 }
 
-/** A block that says it is in another language (or, for Hebrew and Greek, another variety than the one being analysed). */
-function declaresOther(node: Text, languageId: string, varietyId: string | undefined): boolean {
+/**
+ * The element that says this text is in another language (or, for Hebrew and Greek, another variety than the one being analysed): the
+ * nearest ancestor with a lang attribute, when what it declares is not the analysed language. Undefined when the text is not declared foreign.
+ */
+function declaresOther(node: Text, languageId: string, varietyId: string | undefined): Element | undefined {
   const root = node.ownerDocument.documentElement;
   for (let el = node.parentElement; el && el !== root; el = el.parentElement) {
     const tag = el.getAttribute('lang') ?? el.getAttribute('xml:lang');
     if (!tag?.trim()) continue;
     const mapped = mapLanguageTag(tag);
-    if (mapped.kind !== 'pack' || mapped.languageId !== languageId) return true;
+    if (mapped.kind !== 'pack' || mapped.languageId !== languageId) return el;
     const stated = declaredVariety(languageId, tag);
-    return !!stated && !!varietyId && stated !== varietyId;
+    return !!stated && !!varietyId && stated !== varietyId ? el : undefined;
   }
-  return false;
+  return undefined;
 }
 
 const letters = (s: string): number => (s.match(/\p{L}/gu) ?? []).length;
@@ -147,7 +150,8 @@ export function extractReadingText(o: ExtractOptions): Extraction | ExtractionFa
 
   const seen = new Set<Text>();
   const readable: Text[] = [];
-  let foreignBlocks = 0;
+  // counted by the element that makes the declaration: a quotation of three paragraphs under one lang= is one passage, not three
+  const foreign = new Set<Element>();
   let framesRead = 0;
   for (const root of roots) {
     const rendered = renderedCheck(root);
@@ -157,7 +161,8 @@ export function extractReadingText(o: ExtractOptions): Extraction | ExtractionFa
       seen.add(node);
       const parent = node.parentElement;
       if (!parent || !rendered(parent)) continue;
-      if (declaresOther(node, o.languageId, o.varietyId)) { foreignBlocks++; continue; }
+      const other = declaresOther(node, o.languageId, o.varietyId);
+      if (other) { foreign.add(other); continue; }
       readable.push(node);
       any = true;
     }
@@ -175,5 +180,5 @@ export function extractReadingText(o: ExtractOptions): Extraction | ExtractionFa
   }
   const characters = nodes.reduce((sum, n) => sum + n.data.length, 0);
   const title = (doc.title || '').replace(/\s+/gu, ' ').trim().slice(0, 160);
-  return { ok: true, nodes, scope: { kind, title, foreignBlocks, frames: framesRead, characters }, fingerprint: fingerprintOf(nodes) };
+  return { ok: true, nodes, scope: { kind, title, foreignBlocks: foreign.size, frames: framesRead, characters }, fingerprint: fingerprintOf(nodes) };
 }

@@ -5,7 +5,7 @@ import { FUNCTION_ROWS } from '../../src/adapters/thai/function-words';
 import { LADDER_ROWS } from '../../src/adapters/thai/lexicon-ladder';
 import { decodeThai } from '../../src/adapters/thai/orthography';
 import { firstSense, frequencyRanks, weightFromRank, writeWords } from './lib.mts';
-import type { StarterWord } from '../../src/alphabet/sprint/types';
+import type { StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const ranks = frequencyRanks('th');
 const sources: Array<[string, readonly (readonly [string, string, string, ...unknown[]])[]]> = [

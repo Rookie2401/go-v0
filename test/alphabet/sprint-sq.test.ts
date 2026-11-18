@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { SQ_PROFILE } from '../../src/alphabet/sprint/profiles/sq';
+import { SQ_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/sq';
 import { profileChecks } from './sprint-kit';
 
 profileChecks(SQ_PROFILE, { newKeys: [] });

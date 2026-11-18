@@ -1,6 +1,6 @@
 // What GoReview's Alphabet saved deck shows for a Thai or Hindi letter, worked out from the alphabet trainer's decks (src/alphabet):
 // the glyph, the text on the card's back, and the kind of sign. scripts/alphabet-letters-build.mts writes the result into
-// packages/goreview/app/alphabetLetters.thhi.ts, and test/goreview-app/alphabet-deck.test.ts compares the two.
+// packages/language-packs/src/alphabet-sprint/letters-thhi.ts, and test/goreview-app/alphabet-deck.test.ts compares the two.
 import { deckFor } from '../src/alphabet/decks';
 import type { AlphabetCard } from '../src/alphabet/decks';
 

@@ -9,7 +9,7 @@ import { NB_NOUNS_4 } from '../../src/adapters/norwegian/lexicon-nouns-nb-4';
 import { transcribe } from '../../src/adapters/norwegian/pronunciation';
 import { NB_TUTORIAL_STEPS_OWN } from '../../packages/language-packs/src/tutorial/nb';
 import { firstSense, frequencyRanks, lexiconRows, weightFromRank, writeWords } from './lib.mts';
-import type { StarterPhrase, StarterWord } from '../../src/alphabet/sprint/types';
+import type { StarterPhrase, StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const ranks = frequencyRanks('nb');
 const sources: Array<[string, string, 'pipe' | 'eq']> = [

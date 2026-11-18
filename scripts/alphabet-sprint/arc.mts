@@ -1,9 +1,9 @@
 /** Biblical Aramaic starter words: distinct pointed forms of the pack seed (Daniel, Ezra; OSHB), no verbs, no attached prefix or suffix, ranked by how often the form occurs. */
 import { ARAMAIC_SEED } from '../../src/adapters/aramaic/seed';
 import { pointed } from '../../src/adapters/hebrew/text';
-import { squareDependencies } from '../../src/alphabet/sprint/profiles/hebrew-script';
+import { squareDependencies } from '../../packages/language-packs/src/alphabet-sprint/profiles/hebrew-script';
 import { firstSense, weightFromRank, writeWords } from './lib.mts';
-import type { StarterWord } from '../../src/alphabet/sprint/types';
+import type { StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const byForm = new Map<string, { n: number; glosses: Map<string, number> }>();
 for (const r of ARAMAIC_SEED) {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { LA_PROFILE } from '../../src/alphabet/sprint/profiles/la';
+import { LA_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/la';
 import { profileChecks } from './sprint-kit';
 
 profileChecks(LA_PROFILE, { newKeys: ['ae', 'oe', 'au', 'ch', 'ph', 'th', 'gn', 'rule-ti', 'rule-sc'] });

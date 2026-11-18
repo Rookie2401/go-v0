@@ -6,7 +6,7 @@ import { VERB_ROWS } from '../../src/adapters/german/lexicon-verbs';
 import { ADJECTIVE_ROWS, ADVERB_ROWS } from '../../src/adapters/german/lexicon-modifiers';
 import { FUNCTION_ROWS } from '../../src/adapters/german/function-words';
 import { firstSense, frequencyRanks, lexiconRows, weightFromRank, writeWords } from './lib.mts';
-import type { StarterWord } from '../../src/alphabet/sprint/types';
+import type { StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const ranks = frequencyRanks('de');
 const sources: Array<[string, string]> = [

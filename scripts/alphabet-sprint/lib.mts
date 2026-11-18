@@ -2,14 +2,14 @@
  * Shared helpers of the Alphabet Sprint word-list builders (scripts/alphabet-sprint/<lang>.mts). Each builder reads the pack's
  * COMMITTED word data (lexicons, tutorials, Stage 0, glossed corpus words), keeps real words with a meaning, ranks them by the local
  * frequency list when this machine has one (public/dict/<lang>/frequency.json, git-ignored), and writes
- * src/alphabet/sprint/words/<lang>.ts. The written module is committed, so the app never needs the local data.
+ * packages/language-packs/src/alphabet-sprint/words/<lang>.ts. The written module is committed, so the app never needs the local data.
  *
  *   npx vite-node scripts/alphabet-sprint/<lang>.mts            write
  *   npx vite-node scripts/alphabet-sprint/<lang>.mts --check    compare only (exit 1 when the module differs)
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import type { StarterPhrase, StarterWord } from '../../src/alphabet/sprint/types';
+import type { StarterPhrase, StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 export interface Row { lemma: string; gloss: string; pos?: string }
 
@@ -49,7 +49,7 @@ export const weightFromRank = (rank: number | undefined, fallback = 0.2): number
 
 export interface BuildResult { lang: string; words: StarterWord[]; phrases: StarterPhrase[]; sources: string[]; note: string; /** The script that builds it, when not scripts/alphabet-sprint/<lang>.mts. */ script?: string }
 
-/** Write (or check) src/alphabet/sprint/words/<lang>.ts. Words are deduplicated by form, sorted by weight then form. */
+/** Write (or check) packages/language-packs/src/alphabet-sprint/words/<lang>.ts. Words are deduplicated by form, sorted by weight then form. */
 export function writeWords(r: BuildResult): void {
   const seen = new Set<string>();
   const words = r.words.filter((w) => { const k = w.form.normalize('NFC'); if (seen.has(k)) return false; seen.add(k); return true; })
@@ -69,7 +69,7 @@ export const WORDS: readonly StarterWord[] = ${JSON.stringify(words, null, 1)};
 
 export const PHRASES: readonly StarterPhrase[] = ${JSON.stringify(phrases, null, 1)};
 `;
-  const out = path.join('src/alphabet/sprint/words', `${r.lang}.ts`);
+  const out = path.join('packages/language-packs/src/alphabet-sprint/words', `${r.lang}.ts`);
   if (process.argv.includes('--check')) {
     const same = fs.existsSync(out) && fs.readFileSync(out, 'utf8') === body;
     console.log(JSON.stringify({ lang: r.lang, words: words.length, phrases: phrases.length, same }));

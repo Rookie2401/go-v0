@@ -14,7 +14,7 @@ import fs from 'node:fs';
 import { KOINE_CORE } from '../../src/adapters/greek/generated/koine-core';
 import { transliterateGreek } from '../../src/adapters/greek/pronunciation';
 import { firstSense, writeWords } from './lib.mts';
-import type { StarterPhrase, StarterWord } from '../../src/alphabet/sprint/types';
+import type { StarterPhrase, StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const GREEK_WORD = /^[\p{Script=Greek}]+$/u;
 

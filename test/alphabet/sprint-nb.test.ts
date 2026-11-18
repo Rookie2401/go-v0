@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { NB_PROFILE } from '../../src/alphabet/sprint/profiles/nb';
-import { NORWEGIAN_NEW_KEYS } from '../../src/alphabet/sprint/profiles/norwegian';
+import { NB_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/nb';
+import { NORWEGIAN_NEW_KEYS } from '../../packages/language-packs/src/alphabet-sprint/profiles/norwegian';
 import { profileChecks } from './sprint-kit';
 
 profileChecks(NB_PROFILE, { newKeys: NORWEGIAN_NEW_KEYS });

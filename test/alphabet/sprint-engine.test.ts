@@ -4,12 +4,12 @@
  * and readiness figures with honest denominators.
  */
 import { describe, expect, it } from 'vitest';
-import { sprintUnitId, parseSprintUnitId, isSprintUnitId, contrastKey } from '../../src/alphabet/sprint/ids';
-import { scriptKnowledge, readyUnits, type SprintCardState } from '../../src/alphabet/sprint/knowledge';
-import { planSprint, sprintCardFor } from '../../src/alphabet/sprint/plan';
-import { scriptReadiness, tokensOf, unitCounts } from '../../src/alphabet/sprint/readiness';
-import { selectNextUnits, sprintOrder, decodableAfter, SELECT_WEIGHTS } from '../../src/alphabet/sprint/select';
-import { ES_PROFILE as p } from '../../src/alphabet/sprint/profiles/es';
+import { sprintUnitId, parseSprintUnitId, isSprintUnitId, contrastKey } from '../../packages/language-packs/src/alphabet-sprint/ids';
+import { scriptKnowledge, readyUnits, type SprintCardState } from '../../packages/language-packs/src/alphabet-sprint/knowledge';
+import { planSprint, sprintCardFor } from '../../packages/language-packs/src/alphabet-sprint/plan';
+import { scriptReadiness, tokensOf, unitCounts } from '../../packages/language-packs/src/alphabet-sprint/readiness';
+import { selectNextUnits, sprintOrder, decodableAfter, SELECT_WEIGHTS } from '../../packages/language-packs/src/alphabet-sprint/select';
+import { ES_PROFILE as p } from '../../packages/language-packs/src/alphabet-sprint/profiles/es';
 import { isVocabularyUnitId } from '../../packages/repository-contract/src';
 
 const NOW = '2026-11-17T12:00:00.000Z';

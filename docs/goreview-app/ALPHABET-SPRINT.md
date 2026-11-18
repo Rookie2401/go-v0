@@ -34,7 +34,7 @@ system to reading real words. The alphabet is never the goal.
 ## B. What Alphabet Sprint does
 
 The Alphabet tile in Saved decks plans a fresh Sprint session every time it is opened (`packages/goreview/app/alphabetSprint.ts`,
-`src/alphabet/sprint/plan.ts`):
+`packages/language-packs/src/alphabet-sprint/plan.ts`):
 
 1. **Due cards first.** The scheduler's own decision decides. A card answered Easy and not yet due is not asked.
 2. **A few new units, chosen by reading utility** (`select.ts`).

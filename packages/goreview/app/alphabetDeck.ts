@@ -16,7 +16,7 @@ import type { LinguisticUnit } from '../../repository-contract/src';
 import type { DeckEntry, SavedDeck } from './deckModel';
 import { HAND_LETTERS } from './alphabetLetters';
 import { HI_LETTERS, TH_LETTERS } from './alphabetLetters.thhi';
-import { isSprintUnitId } from '../../../src/alphabet/sprint/ids';
+import { isSprintUnitId } from '../../language-packs/src/alphabet-sprint/ids';
 
 export const ALPHABET_NAME = 'Alphabet';
 export const ALPHABET_DESCRIPTION = 'Alphabet Sprint: a few letters at a time, chosen for the real words they let you read.';

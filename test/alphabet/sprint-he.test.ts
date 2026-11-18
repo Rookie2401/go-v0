@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { consonantal } from '../../src/adapters/hebrew/text';
-import { HE_PROFILE } from '../../src/alphabet/sprint/profiles/he';
-import { ARC_PROFILE } from '../../src/alphabet/sprint/profiles/arc';
-import { KEY } from '../../src/alphabet/sprint/profiles/hebrew-script';
+import { HE_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/he';
+import { ARC_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/arc';
+import { KEY } from '../../packages/language-packs/src/alphabet-sprint/profiles/hebrew-script';
 import { profileChecks } from './sprint-kit';
 
 // vowel points, digraphs and rules are new to the Sprint; every letter and final form must be an old deck glyph

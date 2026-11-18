@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { consonantal } from '../../src/adapters/hebrew/text';
-import { ARC_PROFILE } from '../../src/alphabet/sprint/profiles/arc';
-import { HE_PROFILE } from '../../src/alphabet/sprint/profiles/he';
-import { KEY } from '../../src/alphabet/sprint/profiles/hebrew-script';
-import { sprintUnitId } from '../../src/alphabet/sprint/ids';
+import { ARC_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/arc';
+import { HE_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/he';
+import { KEY } from '../../packages/language-packs/src/alphabet-sprint/profiles/hebrew-script';
+import { sprintUnitId } from '../../packages/language-packs/src/alphabet-sprint/ids';
 import { profileChecks } from './sprint-kit';
 
 const newKeys = ARC_PROFILE.units.filter((u) => u.kind !== 'letter' && u.kind !== 'final-form').map((u) => u.key);

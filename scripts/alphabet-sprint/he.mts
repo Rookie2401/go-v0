@@ -3,9 +3,9 @@ import { BIBLICAL_CORE } from '../../src/adapters/hebrew/generated/biblical-core
 import { transliterateHebrew } from '../../src/adapters/hebrew/pronunciation';
 import { pointed } from '../../src/adapters/hebrew/text';
 import { HE_TUTORIAL_STEPS_OWN } from '../../packages/language-packs/src/tutorial/he';
-import { squareDependencies } from '../../src/alphabet/sprint/profiles/hebrew-script';
+import { squareDependencies } from '../../packages/language-packs/src/alphabet-sprint/profiles/hebrew-script';
 import { firstSense, weightFromRank, writeWords } from './lib.mts';
-import type { StarterWord } from '../../src/alphabet/sprint/types';
+import type { StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const pron = (form: string): string | undefined => transliterateHebrew(form)?.text || undefined;
 const words: StarterWord[] = [];

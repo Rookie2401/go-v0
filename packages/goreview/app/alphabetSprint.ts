@@ -2,12 +2,12 @@
  * Alphabet Sprint in GoReview: the built-in Alphabet saved deck, made dynamic (docs/goreview-app/ALPHABET-SPRINT.md). Opening the
  * deck no longer walks the letters in alphabet order: it asks what is due, then a few new units chosen for the words they unlock,
  * each followed at once by a real word to decode, a contrast where the learner mixes two units up, a short phrase, and new words
- * from known letters (src/alphabet/sprint/plan.ts).
+ * from known letters (packages/language-packs/src/alphabet-sprint/plan.ts).
  *
- * Everything runs on GoReview's own machinery. A Sprint card is a `class:` unit (src/alphabet/sprint/ids.ts) asked as an ordinary
+ * Everything runs on GoReview's own machinery. A Sprint card is a `class:` unit (packages/language-packs/src/alphabet-sprint/ids.ts) asked as an ordinary
  * flashcard (written-recognition), graded with Again/Hard/Good/Easy, recorded as a CardReviewed event through the device queue to the
  * Repository, and scheduled by the same FSRS fold as every other card (model.classDeck). The learner's script knowledge is read back
- * from those cards (src/alphabet/sprint/knowledge.ts); nothing is kept anywhere else, so another device that pulls the events has the
+ * from those cards (packages/language-packs/src/alphabet-sprint/knowledge.ts); nothing is kept anywhere else, so another device that pulls the events has the
  * same knowledge. Being `class:` units, Sprint cards never enter the ordinary queue, My vocab, the candidates or any vocabulary figure.
  */
 import type { SessionPlan, UnitFacts } from '../src/types';
@@ -15,11 +15,11 @@ import type { LinguisticUnit } from '../../repository-contract/src';
 import type { AppContext } from './context';
 import type { ReviewModel } from './workspace';
 import { assemble, type Wanted } from './deckModel';
-import { isSprintUnitId, parseSprintUnitId } from '../../../src/alphabet/sprint/ids';
-import { scriptKnowledge, type SprintCardState, type UnitKnowledge } from '../../../src/alphabet/sprint/knowledge';
-import { planSprint, sprintCardFor, sprintProgress, type SprintProgress } from '../../../src/alphabet/sprint/plan';
-import { loadSprintProfiles, profileForVariety } from '../../../src/alphabet/sprint/profiles';
-import type { ScriptProfile } from '../../../src/alphabet/sprint/types';
+import { isSprintUnitId, parseSprintUnitId } from '../../language-packs/src/alphabet-sprint/ids';
+import { scriptKnowledge, type SprintCardState, type UnitKnowledge } from '../../language-packs/src/alphabet-sprint/knowledge';
+import { planSprint, sprintCardFor, sprintProgress, type SprintProgress } from '../../language-packs/src/alphabet-sprint/plan';
+import { loadSprintProfiles, profileForVariety } from '../../language-packs/src/alphabet-sprint/profiles';
+import type { ScriptProfile } from '../../language-packs/src/alphabet-sprint/types';
 
 export { isSprintUnitId };
 

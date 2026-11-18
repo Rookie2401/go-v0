@@ -3,11 +3,11 @@
  * profile's own structure and its usefulness for reading, never a native speaker's judgement (none has reviewed any profile).
  */
 import { describe, expect, it } from 'vitest';
-import { parseSprintUnitId, sprintUnitId } from '../../src/alphabet/sprint/ids';
-import { scriptKnowledge } from '../../src/alphabet/sprint/knowledge';
-import { planSprint } from '../../src/alphabet/sprint/plan';
-import { decodableAfter, sprintOrder, wordDependencies } from '../../src/alphabet/sprint/select';
-import type { ScriptProfile } from '../../src/alphabet/sprint/types';
+import { parseSprintUnitId, sprintUnitId } from '../../packages/language-packs/src/alphabet-sprint/ids';
+import { scriptKnowledge } from '../../packages/language-packs/src/alphabet-sprint/knowledge';
+import { planSprint } from '../../packages/language-packs/src/alphabet-sprint/plan';
+import { decodableAfter, sprintOrder, wordDependencies } from '../../packages/language-packs/src/alphabet-sprint/select';
+import type { ScriptProfile } from '../../packages/language-packs/src/alphabet-sprint/types';
 import { alphabetCards } from '../../packages/goreview/app/alphabetDeck';
 
 export interface KitOptions {

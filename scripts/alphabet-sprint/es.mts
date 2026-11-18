@@ -6,7 +6,7 @@ import { ADJECTIVE_ROWS } from '../../src/adapters/spanish/lexicon-modifiers';
 import { FUNCTION_ROWS } from '../../src/adapters/spanish/function-words';
 import { ES_PASSAGE } from '../../packages/language-packs/src/tutorial/es';
 import { firstSense, frequencyRanks, lexiconRows, weightFromRank, writeWords } from './lib.mts';
-import type { StarterWord } from '../../src/alphabet/sprint/types';
+import type { StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const ranks = frequencyRanks('es');
 const sources: Array<[string, string]> = [

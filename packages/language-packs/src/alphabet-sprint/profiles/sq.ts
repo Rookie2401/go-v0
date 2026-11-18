@@ -6,7 +6,7 @@
  * Unit keys are the Alphabet deck's own glyphs (alphabetLetters.ts), so a letter already practised there carries over. Sounds are the
  * deck's hints, shortened. WRITTEN FOR THIS DECK, not reviewed by a native speaker.
  */
-import { sqLetters } from '../../../adapters/albanian/orthography';
+import { sqLetters } from '../../../../../src/adapters/albanian/orthography';
 import { PHRASES, WORDS } from '../words/sq';
 import type { ScriptProfile, ScriptUnit } from '../types';
 

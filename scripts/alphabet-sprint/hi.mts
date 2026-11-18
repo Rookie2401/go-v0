@@ -9,7 +9,7 @@ import { WORD_MORE_ROWS } from '../../src/adapters/hindi/lexicon-more-words';
 import { NUMBER_TIME_ROWS } from '../../src/adapters/hindi/lexicon-numbers-time';
 import { transliterateHindi } from '../../src/adapters/hindi/translit';
 import { firstSense, frequencyRanks, lexiconRows, weightFromRank, writeWords } from './lib.mts';
-import type { StarterWord } from '../../src/alphabet/sprint/types';
+import type { StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const ranks = frequencyRanks('hi');
 const sources: Array<[string, string]> = [

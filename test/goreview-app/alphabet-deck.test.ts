@@ -15,9 +15,9 @@ import { decksKey, listSavedDecks, type SavedDeck } from '../../packages/gorevie
 import { unitLabel } from '../../packages/goreview/app/format';
 import { rowsFor } from '../../scripts/alphabet-letters.lib.mts';
 import { destroyRigs, dueCard, FakeService, ids, makeRig, queued, reopen, seed, until, type Rig, readyCards } from './helpers';
-import { SQ_PROFILE } from '../../src/alphabet/sprint/profiles/sq';
-import { scriptKnowledge } from '../../src/alphabet/sprint/knowledge';
-import { planSprint } from '../../src/alphabet/sprint/plan';
+import { SQ_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/sq';
+import { scriptKnowledge } from '../../packages/language-packs/src/alphabet-sprint/knowledge';
+import { planSprint } from '../../packages/language-packs/src/alphabet-sprint/plan';
 
 const FIRST_VISIT = 'Start with a few letters and read your first word.';
 
@@ -182,7 +182,7 @@ describe('Alphabet: in Saved decks', () => {
     click(rig.q('[data-deck-id="alphabet:sq"] [data-action="practise-again"]'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the first card');
     const items = rig.app.ctx.run.active!.plan.items;
-    // the session is the Sprint's plan for a beginner (src/alphabet/sprint/plan.ts), at the configured size, never in alphabet order
+    // the session is the Sprint's plan for a beginner (packages/language-packs/src/alphabet-sprint/plan.ts), at the configured size, never in alphabet order
     const sprint = planSprint({ profile: SQ_PROFILE, knowledge: scriptKnowledge(SQ_PROFILE, []), cards: [], now: rig.app.ctx.deps.now().toISOString(), size: items.length });
     expect(items.length).toBeGreaterThan(2);
     expect(items.every((p) => p.family === 'written-recognition' && isAlphabetUnit(p.item.unitId))).toBe(true);

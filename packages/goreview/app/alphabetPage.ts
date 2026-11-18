@@ -8,7 +8,7 @@
  */
 import type { AppContext } from './context';
 import { getExtension } from './localBinding';
-import { loadSprintProfiles, profileForVariety } from '../../../src/alphabet/sprint/profiles';
+import { loadSprintProfiles, profileForVariety } from '../../language-packs/src/alphabet-sprint/profiles';
 
 /** The worker's message (packages/golearn-extension/src/platform.ts MSG.pageScript). */
 export const PAGE_SCRIPT_MESSAGE = 'golearn:page-script';

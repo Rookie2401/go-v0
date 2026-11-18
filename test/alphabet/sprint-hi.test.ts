@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { HI_PROFILE } from '../../src/alphabet/sprint/profiles/hi';
+import { HI_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/hi';
 import { profileChecks } from './sprint-kit';
 
 profileChecks(HI_PROFILE, { newKeys: ['rule-inherent-a', 'rule-schwa', 'rule-conjunct'] });

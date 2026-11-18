@@ -3,7 +3,7 @@ import { ADJ_ROWS, ADV_ROWS, CONJ_ROWS, NOUN_ROWS, PREP_ROWS, VERB_ROWS } from '
 import { GLOSS_LEAD } from '../../src/adapters/latin/gloss-data';
 import { LA_PASSAGE } from '../../packages/language-packs/src/tutorial/la';
 import { firstSense, writeWords } from './lib.mts';
-import type { StarterWord } from '../../src/alphabet/sprint/types';
+import type { StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const F = 'src/adapters/latin/lexicon-data.ts';
 const cand: Array<{ lemma: string; pos: string; gloss: string; count: number; source: string }> = [];

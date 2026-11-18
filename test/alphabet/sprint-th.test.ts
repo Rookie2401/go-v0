@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { TH_PROFILE } from '../../src/alphabet/sprint/profiles/th';
+import { TH_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/th';
 import { profileChecks } from './sprint-kit';
 
 profileChecks(TH_PROFILE, { newKeys: ['rule-tone', 'rule-final', 'rule-cluster', 'rule-ho-nam', 'rule-o-nam', 'rule-implicit-vowel'] });

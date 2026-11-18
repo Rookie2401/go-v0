@@ -6,7 +6,7 @@ import { SQ_FUNCTION_WORDS } from '../../src/adapters/albanian/function-words';
 import { SQ_PLAN_LEXEMES } from '../../src/adapters/albanian/lexicon-ladder';
 import { SQ_PASSAGE } from '../../packages/language-packs/src/tutorial/sq';
 import { firstSense, frequencyRanks, weightFromRank, writeWords } from './lib.mts';
-import type { StarterWord } from '../../src/alphabet/sprint/types';
+import type { StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const ranks = frequencyRanks('sq');
 const sources: Array<[string, Array<{ lemma: string; gloss: string }>]> = [

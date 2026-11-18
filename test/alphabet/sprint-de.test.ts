@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DE_PROFILE } from '../../src/alphabet/sprint/profiles/de';
+import { DE_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/de';
 import { profileChecks } from './sprint-kit';
 
 profileChecks(DE_PROFILE, { newKeys: ['ch', 'sch', 'ei', 'ie', 'eu', 'rule-sp-st', 'rule-final-devoicing', 'rule-long-vowel'] });

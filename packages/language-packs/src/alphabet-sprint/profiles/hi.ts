@@ -8,8 +8,8 @@
  * IPA from the reader's own tables), with an English hint. MACHINE-DRAFTED: no Hindi teacher or native speaker has checked it.
  * Spoken values follow the pack's decoder (src/adapters/hindi/pronunciation.ts).
  */
-import { aksharas, isDevanagariConsonant, isIndependentVowel } from '../../../adapters/hindi/script';
-import { decodeHindi } from '../../../adapters/hindi/pronunciation';
+import { aksharas, isDevanagariConsonant, isIndependentVowel } from '../../../../../src/adapters/hindi/script';
+import { decodeHindi } from '../../../../../src/adapters/hindi/pronunciation';
 import { PHRASES, WORDS } from '../words/hi';
 import type { ScriptProfile, ScriptUnit } from '../types';
 

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { EL_CLASSICAL_PROFILE, EL_PROFILE } from '../../src/alphabet/sprint/profiles/el';
-import { sprintUnitId } from '../../src/alphabet/sprint/ids';
-import { scriptKnowledge } from '../../src/alphabet/sprint/knowledge';
+import { EL_CLASSICAL_PROFILE, EL_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/el';
+import { sprintUnitId } from '../../packages/language-packs/src/alphabet-sprint/ids';
+import { scriptKnowledge } from '../../packages/language-packs/src/alphabet-sprint/knowledge';
 import { profileChecks } from './sprint-kit';
 
 const NEW_KEYS = ['ς', 'ου', 'αι', 'ει', 'οι', 'υι', 'αυ', 'ευ', 'ηυ', 'μπ', 'ντ', 'γκ', 'γγ', 'τσ', 'τζ', 'rule-accent', 'rule-breathing', 'rule-iota-subscript', 'rule-diaeresis'];

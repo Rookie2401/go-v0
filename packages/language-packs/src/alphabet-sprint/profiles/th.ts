@@ -7,8 +7,8 @@
  * letter, the tone mark and the rules that word needs. A word the decoder cannot analyse with confidence, or whose pieces match no unit,
  * is not modelled (undefined). Machine-drafted from the reader's decoder and lexicons; NOT checked by a Thai teacher or native speaker.
  */
-import { TH_LETTERS } from '../../../../packages/goreview/app/alphabetLetters.thhi';
-import { decodeThai } from '../../../adapters/thai/orthography';
+import { TH_LETTERS } from '../letters-thhi';
+import { decodeThai } from '../../../../../src/adapters/thai/orthography';
 import { PHRASES, WORDS } from '../words/th';
 import type { ScriptProfile, ScriptUnit } from '../types';
 

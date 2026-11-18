@@ -11,7 +11,7 @@ import { NN_ADJECTIVES } from '../../src/adapters/norwegian/lexicon-adjectives-n
 import { transcribe } from '../../src/adapters/norwegian/pronunciation';
 import { NN_TUTORIAL_STEPS_OWN } from '../../packages/language-packs/src/tutorial/nn';
 import { firstSense, frequencyRanks, lexiconRows, weightFromRank, writeWords } from './lib.mts';
-import type { StarterPhrase, StarterWord } from '../../src/alphabet/sprint/types';
+import type { StarterPhrase, StarterWord } from '../../packages/language-packs/src/alphabet-sprint/types';
 
 const nbRanks = frequencyRanks('nb');
 const sources: Array<[string, string, 'pipe' | 'eq']> = [

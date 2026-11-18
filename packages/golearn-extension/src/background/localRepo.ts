@@ -14,7 +14,7 @@
  *  - Nothing here may break recording: any failure is swallowed and the event stays in the worker's own log and queue.
  */
 import type { Enrolment, GoEvent, LearningGoal, UnitKnowledge } from '../../../repository-contract/src';
-import { inspectLocal, markEventsOwned, openLocalRepository, pullPositionOf, uploadWaiting, type LocalRepository, type OpenLocalOptions, type PullOutcome, type StorageInfo } from '../../../repository-local/src';
+import { inspectLocal, markEventsOwned, openLocalRepository, pullPositionOf, storageModeOf, uploadWaiting, type LocalRepository, type OpenLocalOptions, type PullOutcome, type StorageInfo } from '../../../repository-local/src';
 import { adaptStorageArea, createLock } from '../../../repository-sync/src';
 import type { LanguageAdapter } from '../../../../src/core';
 import type { StorageArea } from '../platform';
@@ -67,7 +67,7 @@ export const KNOWLEDGE_CHUNK = 200;
 export type CatchUp =
   | { state: 'no-account' }
   | { state: 'level'; at: number; added: number; mixedAccounts: boolean }
-  | { state: 'behind'; reason: 'unreachable' | 'timeout' | 'incomplete' | 'refused-events' | 'unavailable'; added: number; lastLevelAt?: number; mixedAccounts: boolean };
+  | { state: 'behind'; reason: 'unreachable' | 'timeout' | 'incomplete' | 'refused-events' | 'unavailable' | 'needs-sign-in'; added: number; lastLevelAt?: number; mixedAccounts: boolean };
 
 /**
  * One 20 s extension-API touch shared by everything that runs long in the worker (the Repository's open, the upload-and-pull, a sync round): `hold()` starts it
@@ -102,6 +102,8 @@ export interface LocalRepoServiceOptions {
   keepAlive?: () => void;
   /** The worker's shared hold (see `createWorkerHold`); without it the service makes its own from `keepAlive`. */
   hold?: () => () => void;
+  /** The account refused the stored sign-in (401) while the device was being brought level with it: the sync service is told, so the popup says "sign in again". */
+  onUnauthorized?: () => void | Promise<void>;
   /** Test seam: passed to the migration as `migrate.inject`. */
   migrationInject?: NonNullable<OpenLocalOptions['migrate']>['inject'];
 }
@@ -130,12 +132,19 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   let signInWork: Promise<unknown> = Promise.resolve();
   const enrolmentOf = new Map<string, string>();
   /**
-   * Changes whenever this Repository takes in an event (a record, a pull that added something, a clear, a rebuild). Two reads that saw the same
-   * value read one state of the learner's knowledge. The first part is new in every worker, so a restart is a change too.
+   * Changes whenever this Repository takes in an event (a record, a page of a pull, a clear, a rebuild). Two reads that saw the same value
+   * read one state of the learner's knowledge. The first part is new in every worker, so a restart is a change too.
+   *
+   * An event is readable from the moment the store has it, which is before the write's own call returns (and a pull writes page by page while
+   * it runs). So a write is announced BEFORE it starts (`beginWrite`): while one is under way the value carries a mark no settled value has,
+   * and it never equals a value read before or after. A reader that named a snapshot cannot be answered from the middle of a write.
    */
   const boot = Math.random().toString(36).slice(2, 10);
   let changes = 0;
-  const generation = (): string => `${boot}:${changes}`;
+  let writing = 0;
+  const generation = (): string => `${boot}:${changes}${writing ? ':w' : ''}`;
+  const beginWrite = (): void => { writing += 1; };
+  const endWrite = (): void => { changes += 1; writing = Math.max(0, writing - 1); };
   let accountsKnown: Set<string> | undefined;
 
   /** Remembers that this device's Repository holds (or has sent to) the history of the account `learnerId`. Returns every account so remembered. */
@@ -267,9 +276,10 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
         const id = await repo.identity();
         const enrolmentId = await enrolmentFor(repo, event.languageId);
         if (!enrolmentId) return false;
-        const r = await repo.api.appendEvents([{ ...event, learnerId: id.learnerId, enrolmentId, producer: { ...event.producer, deviceId: id.deviceId } }]);
+        beginWrite();
+        let r;
+        try { r = await repo.api.appendEvents([{ ...event, learnerId: id.learnerId, enrolmentId, producer: { ...event.producer, deviceId: id.deviceId } }]); } finally { endWrite(); }
         if (!r.ok) return false;
-        changes += 1;
         if (attributed === 'account') await noteAccount(event.learnerId);
         if (attributed === 'local') pendingHint = true;
         if (attributed === 'account') await markEventsOwned(repo, [event.id], event.learnerId);
@@ -322,9 +332,8 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
       const upload = { sent: raw.sent, duplicates: raw.duplicates, failed: raw.failed, waiting: uploadWaiting(repo) };
       pendingHint = upload.failed > 0 || upload.waiting > 0;
       let complete = false;
-      const pulled = await repo.pullFrom(a.api, { onEnd: (c) => { complete = c; } });
+      const pulled = await repo.pullFrom(a.api, { onEnd: (c) => { complete = c; }, beforeWrite: beginWrite, afterWrite: endWrite });
       const { added } = pulled;
-      if (added > 0) changes += 1;
       await noteLevel(a.session.learnerId, pulled);
       if (complete) { try { await opts.area.remove(PULL_OPEN_KEY); } catch { /* the next round finds it and does one cheap pull */ } }
       const status: UploadStatus = { at: opts.now(), ...upload, pulled: added, ...(upload.failed ? { error: `${upload.failed} event${upload.failed === 1 ? '' : 's'} could not be sent; they will be tried again` } : {}) };
@@ -372,9 +381,13 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
     const work = (async (): Promise<CatchUp> => {
       try {
         await signInWork.catch(() => undefined); // a sign-in's first pull is running: it is the same job, so wait for it, then check the head
-        const p = await repo.pullFrom(a!.api);
-        if (p.added > 0) changes += 1;
+        const p = await repo.pullFrom(a!.api, { beforeWrite: beginWrite, afterWrite: endWrite });
         await noteLevel(learnerId, p);
+        if (p.unauthorized) {
+          // the account refused the sign-in: that is not a network failure, and the learner is the one who can mend it
+          try { await opts.onUnauthorized?.(); } catch { /* the snapshot still says it */ }
+          return { state: 'behind', reason: 'needs-sign-in', added: 0, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
+        }
         if (p.remoteLearnerId !== learnerId) return { state: 'behind', reason: 'unreachable', added: p.added, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
         if (p.refused) return { state: 'behind', reason: 'refused-events', added: p.added, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
         if (!p.complete) return { state: 'behind', reason: 'incomplete', added: p.added, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
@@ -389,24 +402,41 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
     try { return await Promise.race([work, late]); } finally { clearTimeout(timer); }
   }
 
+  /** When the device was last known to be level with the account now signed in; undefined when never, or when there is no account. */
+  async function levelAt(): Promise<number | undefined> {
+    try { const a = await opts.session.authenticated(); return a ? await lastLevelAt(a.session.learnerId) : undefined; } catch { return undefined; }
+  }
+
+  /**
+   * True when what is open is NOT the device's history: its IndexedDB would not open this time, and a memory-only stand-in answers
+   * (repository-local: storage mode rows-frozen). Every word would read as never met. A reader that reports the learner's knowledge must say
+   * the record is unavailable instead.
+   */
+  async function standIn(): Promise<boolean> {
+    try { const repo = await open(); return !!repo && storageModeOf(repo) === 'rows-frozen'; } catch { return false; }
+  }
+
   /**
    * The device's full rows for these units (every field, the per-variety slices included): one request per KNOWLEDGE_CHUNK ids, and every
    * request must be answered. `ok: false` when the Repository would not open or any request failed: a caller that needs every unit accounted
    * for never gets a part of the answer. A unit absent from `rows` of an `ok` reply has no record (asked, and answered).
    */
-  async function knowledgeRows(unitIds: readonly string[]): Promise<{ ok: true; rows: UnitKnowledge[]; learnerId: string; generation: string } | { ok: false; error: 'unavailable' | 'failed' }> {
+  async function knowledgeRows(unitIds: readonly string[]): Promise<{ ok: true; rows: UnitKnowledge[]; learnerId: string; generation: string; asked: number } | { ok: false; error: 'unavailable' | 'failed' }> {
     try {
       const repo = await open();
       if (!repo) return { ok: false, error: 'unavailable' };
       const before = generation();
       const { learnerId } = await repo.identity();
       const rows: UnitKnowledge[] = [];
+      let asked = 0; // the ids that went to the Repository in a request it answered: counted here, not assumed from the list's length
       for (let i = 0; i < unitIds.length; i += KNOWLEDGE_CHUNK) {
-        const r = await repo.api.knowledge(unitIds.slice(i, i + KNOWLEDGE_CHUNK));
+        const chunk = unitIds.slice(i, i + KNOWLEDGE_CHUNK);
+        const r = await repo.api.knowledge(chunk);
         if (!r.ok || !Array.isArray(r.data.knowledge)) return { ok: false, error: 'failed' };
         rows.push(...r.data.knowledge);
+        asked += chunk.length;
       }
-      return { ok: true, rows, learnerId, generation: before };
+      return { ok: true, rows, learnerId, generation: before, asked };
     } catch { return { ok: false, error: 'failed' }; }
   }
 
@@ -551,16 +581,18 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
           return ended.ok ? { ok: true } : bad(ended.message || ended.error);
         }
         case 'upload': return { ...(await lock.run(() => uploadAndPull())) };
-        case 'rebuild': await repo.rebuild(); changes += 1; return { ok: true };
+        case 'rebuild': { beginWrite(); try { await repo.rebuild(); } finally { endWrite(); } return { ok: true }; }
         case 'clear': await clear(); return { ok: true };
         case 'api': {
           const method = String(r.method ?? '');
           if (!LOCAL_API_METHODS.includes(method)) return bad('That call is not available on this device.');
           const args = Array.isArray(r.args) ? r.args : [];
           if (/^(append|submit)/.test(method)) pendingHint = true; // an extension page wrote events here: they may wait for an upload
-          if (/^(append|submit|enrol|endEnrolment|correct|put|delete)/.test(method)) changes += 1; // a write: a new state for a reader of knowledge
+          const writes = /^(append|submit|enrol|endEnrolment|correct|put|delete)/.test(method); // a write: a new state for a reader of knowledge
           if (method === 'clear') pendingHint = undefined;
-          const result = await (repo.api as unknown as Record<string, (...a: unknown[]) => Promise<unknown>>)[method](...args);
+          if (writes) beginWrite();
+          let result: unknown;
+          try { result = await (repo.api as unknown as Record<string, (...a: unknown[]) => Promise<unknown>>)[method](...args); } finally { if (writes) endWrite(); }
           if (/nrol/.test(method)) await openEnrolments(repo);
           return { ok: true, result };
         }
@@ -574,7 +606,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   /** True while the repository is opening or migrating (read-only; used by the worker's self-update to not reload mid-open). */
   const busy = (): boolean => !!opening && !opened;
 
-  return { open, record, forProfile, activeLanguage, chosenLanguages, afterSignIn, afterEnrolment, resumePull, uploadAndPull, catchUp, knowledgeRows, generation, clear, handle, status, busy };
+  return { open, record, forProfile, activeLanguage, chosenLanguages, afterSignIn, afterEnrolment, resumePull, uploadAndPull, catchUp, knowledgeRows, generation, levelAt, standIn, clear, handle, status, busy };
 }
 
 export type LocalRepoService = ReturnType<typeof createLocalRepoService>;

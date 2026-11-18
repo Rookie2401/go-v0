@@ -19,11 +19,12 @@
  * for its tab is refused. So a page cannot make its content script ask about words the learner did not ask to have analysed.
  */
 import type { UnitKnowledge } from '../../../repository-contract/src';
+import { isKnowledgeLevel } from '../../../repository-contract/src/knowledge-levels';
 import { canonicalVarietyId, hasLearningVarieties } from '../../../repository-contract/src/varieties';
 import type { StorageArea } from '../platform';
 import { isLanguageId, isUnitId, type SyncView } from '../protocol';
 import { classifyWord } from '../reading/classify';
-import { GRANT_MS, MAX_READINGS, MAX_WORDS_PER_MESSAGE, type KnowledgeSnapshot, type ReadingKnowledgeReply, type WireWord } from '../reading/protocol';
+import { GRANT_MS, MAX_READINGS, MAX_WORDS_PER_MESSAGE, type KnowledgeSnapshot, type ReadingKnowledgeReply, type WireVerdict, type WireWord } from '../reading/protocol';
 import type { CatchUp, LocalRepoService } from './localRepo';
 import type { SessionManager } from './session';
 
@@ -32,7 +33,7 @@ export const GRANT_PREFIX = 'golearn:reading-grant:';
 export const VERIFY_TIMEOUT_MS = 20_000;
 
 export interface ReadingServiceOptions {
-  local: Pick<LocalRepoService, 'open' | 'catchUp' | 'knowledgeRows' | 'generation'>;
+  local: Pick<LocalRepoService, 'open' | 'catchUp' | 'knowledgeRows' | 'generation'> & Partial<Pick<LocalRepoService, 'levelAt' | 'standIn'>>;
   session: Pick<SessionManager, 'status'>;
   sync: { status(): Promise<SyncView>; needsSignIn(): Promise<boolean> };
   /** Where grants are kept (`chrome.storage.session` when it exists: cleared with the browser, unreadable by a content script). */
@@ -84,12 +85,16 @@ export function createReadingService(o: ReadingServiceOptions) {
     if (!repo) return bad('repository-unavailable', 'The on-device Repository would not open.');
     const s = await o.session.status();
     const waiting = await unsent();
+    // The device's history would not open and a memory-only stand-in answers: with no account nothing can refill it, and every word would read
+    // as never met. That is a record that is unavailable, not a learner who knows nothing. (Signed in, the pull below refills it from the account.)
+    if (!s.connected && await o.local.standIn?.()) return bad('repository-unavailable', 'The vocabulary kept on this device could not be opened.');
     if (!s.connected) return { ok: true, op: 'snapshot', snapshot: { id: o.local.generation(), authority: 'device', state: 'verified', verifiedAt: o.now(), unsent: waiting } };
+    const since = async (): Promise<{ lastVerifiedAt?: number }> => { const at = await o.local.levelAt?.(); return at !== undefined ? { lastVerifiedAt: at } : {}; };
     if (s.expired || await o.sync.needsSignIn()) {
-      return { ok: true, op: 'snapshot', snapshot: { id: o.local.generation(), authority: 'account', state: 'unverified', reason: 'needs-sign-in', unsent: waiting } };
+      return { ok: true, op: 'snapshot', snapshot: { id: o.local.generation(), authority: 'account', state: 'unverified', reason: 'needs-sign-in', ...(await since()), unsent: waiting } };
     }
     if (o.online && !o.online()) {
-      return { ok: true, op: 'snapshot', snapshot: { id: o.local.generation(), authority: 'account', state: 'unverified', reason: 'offline', unsent: waiting } };
+      return { ok: true, op: 'snapshot', snapshot: { id: o.local.generation(), authority: 'account', state: 'unverified', reason: 'offline', ...(await since()), unsent: waiting } };
     }
     const c = await o.local.catchUp({ timeoutMs: timeout });
     // the id is read AFTER the pull: what it brought in is part of the state the batches will be checked against
@@ -117,6 +122,8 @@ export function createReadingService(o: ReadingServiceOptions) {
       if (by.has(row.unitId)) return 'the same unit twice';
       if (row.learnerId !== learnerId) return 'a row of another learner';
       if (row.languageId !== languageId) return 'a row of another language';
+      // a row whose level is damaged is not read by some other rule (the page's older thresholds would work one out from the dimensions): it is refused
+      if (!isKnowledgeLevel(row.level)) return 'a row with no valid level';
       by.set(row.unitId, row);
     }
     return by;
@@ -138,10 +145,13 @@ export function createReadingService(o: ReadingServiceOptions) {
     if (!got.ok) return bad(got.error === 'unavailable' ? 'repository-unavailable' : 'lookup-failed');
     // an event recorded while the rows were being read: this batch may straddle two states
     if (got.generation !== m.snapshot || o.local.generation() !== m.snapshot) return bad('snapshot-changed');
+    // every id was in a request the Repository answered: measured where the requests are made, not assumed here
+    if (got.asked !== ids.length) return bad('lookup-failed', 'not every word was asked of the Repository');
     const rows = accept(got.rows, new Set(ids), got.learnerId, languageId);
     if (typeof rows === 'string') return bad('lookup-failed', rows);
-    const verdicts = words.map((w) => classifyWord(w, (id) => rows.get(id), languageId, variety));
-    return { ok: true, op: 'classify', snapshot: m.snapshot, verdicts, asked: ids.length, answered: ids.length };
+    let verdicts: WireVerdict[];
+    try { verdicts = words.map((w) => classifyWord(w, (id) => rows.get(id), languageId, variety)); } catch (e) { return bad('lookup-failed', e instanceof Error ? e.message : 'a row could not be read'); }
+    return { ok: true, op: 'classify', snapshot: m.snapshot, verdicts, asked: ids.length, answered: got.asked };
   }
 
   /** `kind`: who sent the message; `tabId`: the tab of a content script. */

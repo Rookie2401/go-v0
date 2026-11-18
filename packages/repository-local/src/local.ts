@@ -30,7 +30,7 @@ import type { AdapterLike } from './linguistics';
 import { FORMAT, keysFor, loadInto, persistingStore, removeRows, writeRows } from './persist';
 import type { LoadReport, LocalMeta, PersistIO, PersistStats } from './persist';
 import { allEvents, markersOf, markOwned, pendingFor, pull, pullPosition, upload } from './transfer';
-import type { PullOutcome } from './transfer';
+import type { PullOptions, PullOutcome } from './transfer';
 import { cowArea, deleteBothDatabases, migrationKey, readState, runMigration, writeState } from './migrate';
 import type { MigrationInject, MigrationState, Probe } from './migrate';
 import type { TransferContext } from './transfer';
@@ -46,7 +46,7 @@ export interface LocalRepository {
   /** Sends every local event not yet uploaded to a signed-in remote API, idempotently (ids/dedupeKeys); remembers what was sent. */
   uploadTo(remote: RepositoryApi, opts?: { onProgress?: (sent: number, total: number) => void }): Promise<{ sent: number; duplicates: number; failed: number }>;
   /** Pulls the remote history for the same learner (after sign-in) so the device sees what other devices recorded; idempotent. */
-  pullFrom(remote: RepositoryApi, opts?: { pageSize?: number; onEnd?: (complete: boolean) => void }): Promise<PullOutcome>;
+  pullFrom(remote: RepositoryApi, opts?: PullOptions): Promise<PullOutcome>;
   rebuild(): Promise<void>;
   /** The learner's "clear local data". */
   clear(): Promise<void>;
@@ -111,10 +111,21 @@ const inspectors = new WeakMap<LocalRepository, () => Promise<LocalInspection>>(
 const probes = new WeakMap<LocalRepository, () => Probe>();
 const owners = new WeakMap<LocalRepository, (ids: string[], remoteLearnerId: string) => Promise<void>>();
 const waitingOf = new WeakMap<LocalRepository, () => number>();
-const positions = new WeakMap<LocalRepository, () => Promise<{ remoteLearnerId: string; afterSeq: number } | undefined>>();
+const positions = new WeakMap<LocalRepository, () => Promise<{ remoteLearnerId: string; afterSeq: number; refused: number } | undefined>>();
+const modes = new WeakMap<LocalRepository, () => StorageInfo['mode']>();
+
+/**
+ * Where this repository keeps the history, read without touching it. `rows-frozen`: a device that moved to IndexedDB whose IndexedDB would not open this time; what is
+ * open is a memory-only stand-in that does NOT hold the device's history (see `openMigrating`). A reader that needs the learner's real record must not take it for one.
+ */
+export function storageModeOf(repo: LocalRepository): StorageInfo['mode'] {
+  const f = modes.get(repo);
+  if (!f) throw new Error('not a local repository');
+  return f();
+}
 
 /** The account this device last pulled from, and the account sequence number it holds everything up to; undefined when it never pulled. One small row, read by key. */
-export async function pullPositionOf(repo: LocalRepository): Promise<{ remoteLearnerId: string; afterSeq: number } | undefined> {
+export async function pullPositionOf(repo: LocalRepository): Promise<{ remoteLearnerId: string; afterSeq: number; refused: number } | undefined> {
   const f = positions.get(repo);
   if (!f) throw new Error('not a local repository');
   return f();
@@ -471,6 +482,7 @@ async function openCore(opts: OpenLocalOptions, core: Core): Promise<LocalReposi
   owners.set(repo, (ids, remoteLearnerId) => markOwned(context(), ids, remoteLearnerId));
   waitingOf.set(repo, () => lastWaiting);
   positions.set(repo, () => pullPosition(context()));
+  modes.set(repo, () => (core.mode === 'indexeddb' ? 'indexeddb' : core.frozen ? 'rows-frozen' : 'rows'));
   inspectors.set(repo, async () => {
     const c = context();
     const events = await allEvents(state.store, state.meta.learnerId);

@@ -52,7 +52,7 @@ export interface KnowledgeSnapshot {
   reason?: 'offline' | 'needs-sign-in' | 'unreachable' | 'timeout' | 'incomplete' | 'refused-events' | 'mixed-accounts';
   /** Epoch ms of the check that established `state`. */
   verifiedAt?: number;
-  /** Epoch ms of the last time the device was known to be level with this account, when `state` is `unverified`. */
+  /** Epoch ms of the last time the device was known to be level with this account, when `state` is `unverified` (absent when it never was). */
   lastVerifiedAt?: number;
   /** Events of other devices this check brought in. */
   added?: number;

@@ -20,7 +20,7 @@
  *    looked up that spelling), the form's own row answers. Otherwise the word is `unidentified`: never assumed unknown, never guessed.
  */
 import type { UnitKnowledge } from '../../../repository-contract/src';
-import { KNOWLEDGE_LEVEL_RANK, type KnowledgeLevel } from '../../../repository-contract/src/knowledge-levels';
+import { KNOWLEDGE_LEVEL_RANK, isKnowledgeLevel, type KnowledgeLevel } from '../../../repository-contract/src/knowledge-levels';
 import { canonicalVarietyId, hasLearningVarieties, knowledgeInVariety, ownKnowledgeOf } from '../../../repository-contract/src/varieties';
 import { levelOfRows } from '../active/levels';
 import { compactKnowledge } from '../background/profile';
@@ -35,13 +35,22 @@ const lower = (a: KnowledgeLevel, b: KnowledgeLevel): KnowledgeLevel => (KNOWLED
 
 type One = { state: 'known' | 'unsettled' | 'below'; level: KnowledgeLevel };
 
+/**
+ * The row as the page's level reader takes it. A row (or a variety's view of one) whose level is not one of the six is damaged: the reader would
+ * otherwise work a level out from the dimensions by older thresholds and could call a Familiar word Known. It throws; the caller refuses the batch.
+ */
+function strict(k: UnitKnowledge): ReturnType<typeof compactKnowledge> {
+  if (!isKnowledgeLevel(k.level)) throw new RangeError('a row with no valid level');
+  return compactKnowledge(k);
+}
+
 /** One reading of a word: its form row and (when it has one) its lemma row, read in the text's variety. */
 function readOne(rows: Array<UnitKnowledge | undefined>, languageId: string, varietyId: string | undefined): One {
   if (!hasLearningVarieties(languageId)) {
-    const level = levelOfRows(rows.map((r) => (r ? compactKnowledge(r) : undefined)));
+    const level = levelOfRows(rows.map((r) => (r ? strict(r) : undefined)));
     return { state: isKnown(level) ? 'known' : 'below', level };
   }
-  const level = levelOfRows(rows.map((r) => (r ? compactKnowledge(knowledgeInVariety(r, varietyId).knowledge) : undefined)));
+  const level = levelOfRows(rows.map((r) => (r ? strict(knowledgeInVariety(r, varietyId).knowledge) : undefined)));
   if (!isKnown(level)) return { state: 'below', level };
   // Known in the variety's view: is it Known on evidence that belongs to this variety, or only on records nothing assigns to one?
   const own = varietyId ? rows.some((r) => { const o = ownKnowledgeOf(r, varietyId); return !!o && isKnown(o.level); }) : false;

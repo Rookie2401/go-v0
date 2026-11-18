@@ -200,6 +200,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     area: local, deviceId, session, packs, now,
     ...(idbFactory ? { idb: { indexedDB: idbFactory, ...(typeof IDBKeyRange !== 'undefined' ? { keyRange: IDBKeyRange } : {}) } } : {}),
     keepAlive: ping,
+    onUnauthorized: () => holder.sync?.noteUnauthorized(),
     ...bg.localRepo, // tests only: another IndexedDB, a keep-alive probe, a fault for the migration
     hold,
   });

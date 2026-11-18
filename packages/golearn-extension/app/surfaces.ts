@@ -17,7 +17,7 @@ export const SURFACES: readonly SurfaceInfo[] = [
     id: 'web-generic',
     name: 'Ordinary web pages',
     status: 'works',
-    summary: 'Select a word or a short phrase; GoLearn reads the selection and its sentence from the page you are looking at, only after your gesture.',
+    summary: 'For a one-time lookup, select a word or short phrase and use the toolbar, shortcut or context menu; GoLearn reads the selection and its sentence after your gesture. GoLearn Active can also scan supported pages after you switch it on and grant site access.',
   },
   {
     id: 'web-frames',
@@ -53,10 +53,10 @@ export const STATUS_LABEL: Record<SurfaceStatus, string> = {
 
 /** The permissions the extension asks for, each with the reason, as the manifest declares them. */
 export const PERMISSIONS: ReadonlyArray<{ name: string; why: string }> = [
-  { name: 'activeTab', why: 'lets GoLearn read the page you are on only after you press its toolbar button, the keyboard shortcut or the right-click item; it expires when you leave the page.' },
-  { name: 'scripting', why: 'puts the lookup card on that page after your gesture. Nothing is declared to run on pages by itself.' },
+  { name: 'activeTab', why: 'grants temporary access to the current tab after a toolbar click, keyboard shortcut or context-menu lookup; it expires when you navigate to another site or close the tab.' },
+  { name: 'scripting', why: 'adds the one-time lookup card to the current tab. GoLearn Active runs only after you switch it on and approve the separate optional site-access prompt.' },
   { name: 'storage', why: 'keeps your settings, your sign-in on this device and the local record of what you looked up.' },
-  { name: 'unlimitedStorage', why: 'lets that local record grow past the browser’s 10 MB default: GoLearn Active notes every page you read, and a full store would refuse to save your marks.' },
+  { name: 'unlimitedStorage', why: 'lets GoLearn keep its local record of word encounters and marks past the browser’s 10 MB default.' },
   { name: 'contextMenus', why: 'adds “Look up with GoLearn” to the right-click menu for a selection.' },
   { name: 'alarms', why: 'wakes the extension every few minutes to send what you looked up to your own account, when you are signed in; nothing else is scheduled.' },
 ];

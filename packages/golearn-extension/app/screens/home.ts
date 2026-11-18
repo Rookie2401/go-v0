@@ -21,7 +21,11 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       h('strong', {}, label), ' ', h('span', {}, value), ' ', h('a', { href: `#/${route}`, 'aria-label': `Change: ${label}` }, 'Change'));
 
   append(el, [
-    setupComplete(completion) ? p('GoLearn is set up. Open the page you want to read, press the GoLearn button in the toolbar and select a word.') : p('Setup is not finished. Download a language on the Languages page: its pack installs by itself.'),
+    setupComplete(completion)
+      ? p(ctx.inExtension
+        ? 'GoLearn is set up. For a one-time lookup, select a word and use the GoLearn toolbar button, keyboard shortcut or right-click menu. To scan supported pages automatically, turn on GoLearn Active in the toolbar popup and approve Chrome’s site-access prompt.'
+        : 'GoLearn is set up. Open “Look up shared text” to paste a word or passage. On Android Chrome, install this web app to share selected text to GoLearn from other apps.')
+      : p('Setup is not finished. Download a language on the Languages page: its pack installs by itself.'),
     h('p', { id: 'progress-mode', 'data-state': session ? 'synced' : 'device' },
       h('strong', {}, session ? 'Synced to your account' : 'On this device only'),
       session ? ` as ${session.email}.` : '. ',

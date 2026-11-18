@@ -54,9 +54,14 @@ function copyStatic(): Plugin {
       const dist = path.join(here, 'dist');
       fs.mkdirSync(path.join(dist, 'action'), { recursive: true });
       fs.copyFileSync(path.join(here, 'manifest.json'), path.join(dist, 'manifest.json'));
-      // Optional device-only translation credentials: never a web-accessible asset or a source-controlled file.
+      // Optional device-only translation credentials are only for local development. Store builds fail closed and omit them.
       const translationConfig = path.join(here, '..', '..', 'data', 'translation.local', 'extension-config.json');
-      if (fs.existsSync(translationConfig)) fs.copyFileSync(translationConfig, path.join(dist, 'translation.local.json'));
+      if (process.env.GOLEARN_STORE_RELEASE === '1') {
+        if (!process.env.GOLEARN_STORE_BUILD_ID) throw new Error('GOLEARN_STORE_BUILD_ID is required for a store build');
+        fs.writeFileSync(path.join(dist, 'store-build-marker.json'), JSON.stringify({ buildId: process.env.GOLEARN_STORE_BUILD_ID, packageVersion: JSON.parse(fs.readFileSync(path.join(here, 'manifest.json'), 'utf8')).version }) + '\n');
+      } else if (fs.existsSync(translationConfig)) {
+        fs.copyFileSync(translationConfig, path.join(dist, 'translation.local.json'));
+      }
       fs.copyFileSync(path.join(here, 'action/popup.html'), path.join(dist, 'action/popup.html'));
       const notices = path.join(here, '..', '..', 'THIRD-PARTY-NOTICES.md');
       if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(dist, 'THIRD-PARTY-NOTICES.md'));

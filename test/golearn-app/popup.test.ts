@@ -45,4 +45,5 @@ describe('the popup', () => {
   it('mentions no team, mission team or leader', () => {
     expect(html).not.toMatch(/team|leader/i);
   });
+
 });

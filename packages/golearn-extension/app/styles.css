@@ -43,7 +43,7 @@ body {
   margin: 0; background: var(--bg); color: var(--ink);
   font-family: var(--serif); font-size: 1.125rem; line-height: 1.6;
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
-  font-feature-settings: 'kern' 1, 'liga' 1, 'locl' 0; font-variant-alternates: normal;
+  font-feature-settings: 'kern' 1, 'liga' 1; font-variant-alternates: normal;
 }
 ::selection { background: var(--selection); }
 a { color: var(--accent); text-decoration: none; }
@@ -106,6 +106,7 @@ textarea { font: .85rem/1.4 var(--mono); }
 /* buttons: quiet text on a rule; primary is accent-filled */
 button, .btn {
   font: inherit; font-size: 1rem; cursor: pointer; text-decoration: none; display: inline-block;
+  min-height: 2.75rem;
   padding: .4rem .95rem; border-radius: 6px; border: 1px solid var(--line); background: var(--panel); color: var(--ink);
 }
 button:hover:not(:disabled), .btn:hover { border-color: var(--accent-soft); text-decoration: none; background: color-mix(in srgb, var(--ink) 3.5%, var(--panel)); }
@@ -114,7 +115,7 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .btn.primary:hover, button.primary:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); opacity: .92; }
 .btn.danger { background: var(--bad); color: var(--panel); border-color: var(--bad); }
 .btn.danger:hover, button.danger:hover:not(:disabled) { background: var(--bad); border-color: var(--bad); opacity: .92; }
-.btn.small, button.small { padding: .1rem .65rem; font-size: .92rem; }
+.btn.small, button.small { min-height: 2.75rem; padding: .1rem .65rem; font-size: .92rem; }
 /* a bar: the button spans the whole screen with its words centred (Continue to GoLearn, Continue without an account, Done — back to reading; the owner, 2026-10-28) */
 .btn.bar, button.bar { display: block; width: 100%; flex: 1 1 100%; box-sizing: border-box; text-align: center; padding: .7rem 1rem; font-size: 1.05rem; }
 button[hidden] { display: none; }

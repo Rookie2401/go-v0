@@ -45,8 +45,9 @@ const DISTS: Dist[] = [
 
 const KAIKKI_ATTRIBUTION = 'Wiktionary, via kaikki.org — CC BY-SA 4.0';
 const TEXT_EXT = /\.(js|mjs|css|html|json|md|txt|xml|svg|webmanifest)$/i;
-/** The one binary kind of a web build: the EB Garamond web fonts (SIL OFL 1.1, packages/shared-fonts). */
+/** Binary kinds allowed in these web bundles: licensed EB Garamond fonts and the six known Go icon sizes. */
 const FONT_EXT = /\.woff2$/i;
+const GOLEARN_STORE_ICON = /^icons\/(icon-(16|32|48|128|192|512)|go-logo|apple-touch-icon)\.png$/i; // the sized icons, the Go mark the pages draw as a mask (master, 2026-10-28), the iOS touch icon
 
 const listAll = (dir: string): string[] => {
   const out: string[] = [];
@@ -344,11 +345,19 @@ describe.each(DISTS)('$id', (dist) => {
     const shards = files.filter((f) => /^lexicon\/(he|el)\/[a-z]+\/[^/]+\.json\.gz$/.test(f));
     for (const sh of shards) expect(files, `manifest beside ${sh}`).toContain(path.posix.join(path.posix.dirname(sh), 'manifest.json'));
     const rest = files.filter((f) => !shards.includes(f));
+    const icons = rest.filter((f) => f.toLowerCase().endsWith('.png'));
+    expect(icons.every((f) => GOLEARN_STORE_ICON.test(f)), 'only the known Go app/store PNG icons are allowed').toBe(true);
+    for (const icon of icons) {
+      const bytes = fs.readFileSync(abs(path.posix.join(dist.dir, icon)));
+      const size = Number(/icon-(\d+)\.png$/i.exec(icon)?.[1]);
+      expect(bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])), `${icon} PNG signature`).toBe(true);
+      if (Number.isFinite(size)) expect([bytes.readUInt32BE(16), bytes.readUInt32BE(20)], `${icon} dimensions`).toEqual([size, size]);
+    }
     expect(rest.filter((f) => /\.(epub|usfm|usx|sfm|wav|oga|ogg|mp3|m4a|zip|gz|tgz|map|sqlite|db|jsonl|pdf|docx?)$/i.test(f))).toEqual([]);
     const dirs = new Set(files.flatMap((f) => f.split('/').slice(0, -1)));
     expect([...dirs].filter((d) => /^(library|corpus|sources|ladder|stage0|scripture|bible|bibles|audio|recordings|texts|books)$/i.test(d))).toEqual([]);
     // every file is one of the build's known kinds
-    expect(rest.filter((f) => !TEXT_EXT.test(f) && !FONT_EXT.test(f))).toEqual([]);
+    expect(rest.filter((f) => !TEXT_EXT.test(f) && !FONT_EXT.test(f) && !GOLEARN_STORE_ICON.test(f))).toEqual([]);
   });
 
   it('ships exactly the font files its stylesheet names (woff2 only) and the EB Garamond SIL OFL text beside the notices', (ctx) => {

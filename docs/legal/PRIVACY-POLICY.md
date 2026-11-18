@@ -6,15 +6,15 @@ Drafted 2026-10-17. This policy covers GoLearn (the browser extension and its se
 
 ## The short version
 
-- **Without an account, everything stays on your device.** Nothing is sent anywhere.
+- **Without an account, your learning history stays on your device.** Loading the hosted app or downloading dictionaries still makes network requests. Hosting and content providers receive the connection metadata needed to serve those requests. Optional remote speech is described below.
 - **With an account**, your learning record is copied to a sync service so that it follows you between devices. That is the only reason an account exists.
-- We keep **what you looked up, not what you read**. The text of the pages you read is never stored or sent.
-- We do not sell or share your information, show advertising, or use third-party analytics or tracking.
+- Ordinary page lookups and GoLearn Active keep **word encounters rather than copies of the pages you read**. If you explicitly enable and use remote speech, the text you ask to hear is sent to that service as described below. Writing drafts are a separate data category.
+- We do not sell your information or use it for advertising. Service providers process the data needed for the functions described below. [Confirm the final release's analytics and provider settings before adopting this policy.]
 - You can download everything we hold about you and delete your account at any time.
 
 ## Who is responsible
 
-[OWNER NAME OR ENTITY — to be filled in] operates GoLearn, GoReview and the sync service (the "service"). Contact: [CONTACT EMAIL — to be filled in].
+Christian Walker, operating GoLearn in Arizona, United States, operates GoLearn, GoReview and the sync service (the "service"). Contact: GoLearntech@outlook.com.
 
 ## What is kept on your device
 
@@ -41,14 +41,14 @@ You can clear this under Privacy → Local data on this device.
 
 ## What we do not keep
 
-The text of the pages or books you read, the sentences around your lookups, your browsing history, your contacts, your location, advertising identifiers, or recordings of your voice.
+Ordinary page lookup and Active scanning do not retain copies of the pages or books you read or the surrounding sentences. They do not collect your contacts, precise location, advertising identifiers or recordings of your voice. Source hashes and learning events are described above; they must not be described as anonymous merely because they are hashed. Optional remote speech sends the requested text, and account-backed writing practice can store your drafts.
 
 ## What is shared
 
 Nothing is shared for advertising or sold. The service depends on a few providers that necessarily handle data on our behalf:
 
-- **Network provider.** The service is reached through Cloudflare (a tunnel and DNS), so your traffic to it passes through Cloudflare's network. [Owner to confirm the final hosting arrangement.]
-- **Email provider.** Confirmation and password-reset emails are sent through [EMAIL PROVIDER — to be filled in], which sees your address and the email.
+- **Hosting and network providers.** The sync service runs on Render in Oregon, United States. Its canonical address is `repo.golearn-global-languages.com`; `go-v0.onrender.com` reaches the same service. Cloudflare supplies DNS for the canonical address. The former tunnel to the owner's computer is no longer the service's hosting path.
+- **Email provider.** Confirmation and password-reset emails are sent through Resend, which handles the recipient address and email content to deliver them.
 - **Speech provider, only if you switch it on.** Remote speech is off by default. If you turn it on, the single word, phrase or sentence you ask to hear is sent, through the speech backend you set up, to the text-to-speech provider (Microsoft Azure) to produce audio. Nothing else is sent. Switching it on is recorded as a consent event you can withdraw at any time.
 
 ## Dictionary content
@@ -57,7 +57,7 @@ The dictionaries in GoLearn's language packs are derived from **Wiktionary** (vi
 
 ## Where the service runs
 
-At the time of this draft the sync service runs on a computer operated by the owner in [COUNTRY / REGION — to be filled in], and is reached at repo.golearn-global-languages.com. It may move to a hosting provider; if it does, this policy will say where before the move. [International transfers — to be addressed by counsel if users outside that region are accepted.]
+The sync service runs on Render in Oregon, United States. The operator is based in Arizona, United States. [International transfers and supported distribution regions remain to be finalized before public release.]
 
 ## How long we keep things
 
@@ -77,7 +77,7 @@ Connections to the service use HTTPS. Passwords are stored hashed. Sessions are 
 
 ## Children
 
-GoLearn and GoReview are not directed at children under [13 / 16 — counsel to decide], and we do not knowingly create accounts for them. If you believe a child has made an account, contact us and we will delete it.
+The proposed 4+ designation concerns content suitability; it is not a minimum account age or a claim that the service has a separate child-account system. The owner does not want additional reading restrictions beyond the content permitted by the user's browser. Content suitability and browser controls do not establish authorization for account data collection or cloud processing. The release's audience, account eligibility, actual data practices and any applicable parent/guardian notice or consent requirements remain to be resolved before this draft is adopted. Contact GoLearntech@outlook.com about privacy or account data.
 
 ## Changes
 
@@ -85,7 +85,7 @@ If this policy changes in a way that matters, the apps will show the new version
 
 ## Contact
 
-[CONTACT NAME AND EMAIL — to be filled in]
+Christian Walker, GoLearn — GoLearntech@outlook.com. Arizona, United States.
 
 ---
 

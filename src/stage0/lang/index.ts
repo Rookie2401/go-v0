@@ -277,6 +277,19 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
     exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 }, decoding: { minCorrect: 0.75 } },
     intro: 'Thai has its own letters, no spaces between words, and tones. You will learn them inside real Thai, step by step; romanization helps at first and then steps aside.',
   },
+  fr: {
+    lang: 'fr', name: 'French', voiceLangs: ['fr-FR', 'fr-CA', 'fr-BE', 'fr-CH', 'fr'],
+    script: { kind: 'latin', features: 'spelling', spelling: [
+      { id: 'fr:ou', label: 'ou — like oo in "food"', pattern: /ou/ },
+      { id: 'fr:oi', label: 'oi — like "wa"', pattern: /oi/ },
+      { id: 'fr:eau', label: 'au, eau — a short, pure o', pattern: /e?au/ },
+      { id: 'fr:nasal', label: 'an, en, on, in, un before a consonant or at the end — said through the nose, the n is not pronounced', pattern: /[aeiou][nm](?![aeiouyàâéèêëîïôûùnm])/ },
+      { id: 'fr:silent-final', label: 'a final d, p, s, t, x or z is usually silent', pattern: /[dpstxz]$/ },
+    ] },
+    bands: { earlyScenes: 4, earlyMaxNew: 5, laterMaxNew: 7, laterMinCoverage: 0.6, exitMinCoverage: 0.95 },
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
+    intro: 'French is read in the Latin alphabet, but its spelling does not sound the way an English reader expects. The pack orientation (the optional Decoding Sprint) introduces the spelling patterns; a Stage 0 course is not part of the French pack.',
+  },
 };
 
 export function stage0Config(lang: LanguageCode): Stage0LanguageConfig {

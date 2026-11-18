@@ -185,7 +185,7 @@ describe('import of the bundled corpus', () => {
 
   it('gives the same form in story and Bible the same formId, yet distinct tokens', async () => {
     const sharedContent: Record<LanguageCode, string[]> = { arc: [],
-      es: ['pecado', 'dios'], de: ['sünde', 'gott'], sq: ['mëkat', 'perëndia'], th: ['บาป', 'พระเจ้า'], hi: ['पाप', 'परमेश्वर'], nb: [], nn: [], he: [], el: [], la: [],
+      es: ['pecado', 'dios'], de: ['sünde', 'gott'], sq: ['mëkat', 'perëndia'], th: ['บาป', 'พระเจ้า'], hi: ['पाप', 'परमेश्वर'], nb: [], nn: [], he: [], el: [], la: [], fr: [],
     };
     for (const lang of LANGUAGES) {
       for (const word of sharedContent[lang]) {
@@ -225,7 +225,7 @@ describe('import of the bundled corpus', () => {
       sq: ['mëkat', 'fal', 'kuptoj', 'zemër', 'besoj'],
       th: ['บาป', 'ยก', 'เข้าใจ', 'หัวใจ', 'เชื่อ'],
       hi: ['पाप', 'क्षमा', 'समझना', 'दिल', 'विश्वास'],
-      nb: [], nn: [], he: [], el: [], la: [],
+      nb: [], nn: [], he: [], el: [], la: [], fr: [],
     };
     for (const lang of ANALYZED) {
       const lemmas = await store.lemmas.where('lang', lang);
@@ -253,6 +253,7 @@ describe('import of the bundled corpus', () => {
       he: { young: [], began: [], believe: [] },
       el: { young: [], began: [], believe: [] },
       la: { young: [], began: [], believe: [] },
+      fr: { young: [], began: [], believe: [] },
     };
     for (const lang of ORIGINAL_SEVEN) {
       const occIn = async (slug: string, pattern: string[]) =>

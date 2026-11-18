@@ -109,6 +109,14 @@ export const BIBLE_ACCESS: Readonly<Record<LanguageCode, BibleAccessRecord>> = {
     rights: 'Copyright and permission to bundle or redistribute are not established. No approved Albanian Bible text is available in GoLearn’s Scripture library.',
     historicalVarieties: ['Gheg (Kristoforidhi)', 'Tosk (Kristoforidhi)'],
   },
+  fr: {
+    lang: 'fr', translation: 'Louis Segond 1910', edition: 'not bundled', status: 'not-bundled',
+    sourceUrl: 'https://ebible.org/fraLSG/',
+    method: 'No French Bible text is bundled. The French pack reads a French Bible on an ordinary web page through the GoLearn extension, like any other page.',
+    importMethod: 'Nothing is imported. An edition would be bundled only after its rights and its wording were checked against the printing.',
+    rights: 'Not verified by this project: the Louis Segond 1910 is widely distributed as public domain, but no edition has been checked here.',
+    historicalVarieties: ['Early twentieth-century literary French (passé simple, formal negation)'],
+  },
 };
 
 export function bibleAccessFor(lang: LanguageCode): BibleAccessRecord {

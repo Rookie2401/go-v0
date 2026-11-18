@@ -29,6 +29,7 @@ const VOICES: Record<LanguageCode, Array<{ id: string; locale: string }>> = {
   he: [{ id: 'fixture-he-il', locale: 'he-IL' }],
   el: [{ id: 'fixture-el-gr', locale: 'el-GR' }],
   la: [{ id: 'fixture-la', locale: 'la' }],
+  fr: [{ id: 'fixture-fr-fr', locale: 'fr-FR' }],
 };
 
 export interface FixtureChunk { text: string; charStart: number; charEnd: number }

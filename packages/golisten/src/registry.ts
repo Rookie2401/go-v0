@@ -14,8 +14,8 @@
  */
 import type { PronunciationKind, PhoneticDetail, VoiceDescriptor } from './contracts';
 import { albanianPhonetics } from './phonetics';
-import { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS } from './deviceTags';
-export { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS } from './deviceTags';
+import { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, FRENCH_DEVICE_TAGS } from './deviceTags';
+export { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, FRENCH_DEVICE_TAGS } from './deviceTags';
 
 export type VoiceSource =
   | { kind: 'device'; langTags: string[] }
@@ -266,6 +266,16 @@ export function pronunciationRegistries(): VoiceRegistry[] {
         azureEntry('it-IT-ElsaNeural', 'Elsa', 'female', { languageId: 'la', locale: 'it-IT', name: 'Italian stand-in for Ecclesiastical Latin' }),
       ],
       gaps: ['No Latin recordings are registered; nothing is claimed.', 'No Latin voice exists: these remote Italian voices are stand-ins for the Ecclesiastical (Church) reading only; they do not pronounce Classical Latin or preserve vowel length.'],
+    },
+    {
+      ...deviceRegistry('fr', [...FRENCH_DEVICE_TAGS], 'French'),
+      entries: [
+        ...deviceRegistry('fr', [...FRENCH_DEVICE_TAGS], 'French').entries,
+        azureEntry('fr-FR-DeniseNeural', 'Denise', 'female', { languageId: 'fr', locale: 'fr-FR', name: 'French (France)' }),
+        azureEntry('fr-FR-HenriNeural', 'Henri', 'male', { languageId: 'fr', locale: 'fr-FR', name: 'French (France)' }),
+        azureEntry('fr-CA-SylvieNeural', 'Sylvie', 'female', { languageId: 'fr', locale: 'fr-CA', name: 'French (Canada)' }),
+      ],
+      gaps: ['No French recordings are registered; nothing is claimed.', 'A synthetic voice decides liaison and the silent letters by its own rules; it is not a reference for either.'],
     },
   ];
 }

@@ -17,6 +17,7 @@ export const LANGUAGE_ROWS: Language[] = [
   { id: 'el', name: 'Greek', endonym: 'Ελληνικά', script: 'Grek', direction: 'ltr', whitespaceDelimited: true },
   { id: 'la', name: 'Latin', endonym: 'Latina', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
   { id: 'arc', name: 'Aramaic (Biblical)', endonym: 'אֲרָמִית', script: 'Hebr', direction: 'rtl', whitespaceDelimited: true },
+  { id: 'fr', name: 'French', endonym: 'Français', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
 ];
 
 export const COURSES: Course[] = [
@@ -72,6 +73,12 @@ export const COURSES: Course[] = [
     // No variety policy yet: Classical Latin is the working target; the Vulgate and later Latin are read as Latin of their period.
   },
   { id: 'aramaic-arc', lang: 'arc', country: 'Aramaic', title: 'Biblical Aramaic', primaryReadingKinds: ['scripture'], preferredLocales: [], variety: { target: 'arc-bib', within: [] } },
+  {
+    id: 'french-fr', lang: 'fr', country: 'France', title: 'French', preferredLocales: ['fr-FR', 'fr-CA', 'fr-BE', 'fr-CH', 'fr'],
+    // Active target: contemporary standard written French. Regional words (Québec, Belgium, Switzerland, Africa) are labelled where the
+    // sources label them; older spelling and the literary tenses are recognised and explained, never suppressed.
+    variety: { target: 'fr-FR', within: [] },
+  },
 ];
 
 /** The course for a language: the course whose own language it is; for a companion language (Nynorsk) the course that reads it. */

@@ -24,6 +24,7 @@ const IMPORTS: Readonly<Record<string, () => Promise<AnalyserModule>>> = {
   he: () => import('./he'),
   el: () => import('./el'),
   arc: () => import('./arc'),
+  fr: () => import('./fr'),
 };
 
 /** Loads (once) and registers the analyser of a language; resolves with it, or undefined for a language the parser does not know. A failed import rejects. */

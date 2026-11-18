@@ -81,6 +81,15 @@ export const AZURE_VOICES: Record<LanguageCode, AzureVoiceEntry[]> = {
     { id: 'it-IT-IsabellaNeural', locale: 'it-IT', gender: 'female' },
     { id: 'it-IT-DiegoNeural', locale: 'it-IT', gender: 'male' },
   ],
+  // French: Azure's neural voices (ids from memory of the Azure voice gallery; unverified against the live list, which `listVoices` reads at runtime when it can).
+  fr: [
+    { id: 'fr-FR-DeniseNeural', locale: 'fr-FR', gender: 'female' },
+    { id: 'fr-FR-HenriNeural', locale: 'fr-FR', gender: 'male' },
+    { id: 'fr-CA-SylvieNeural', locale: 'fr-CA', gender: 'female' },
+    { id: 'fr-CA-JeanNeural', locale: 'fr-CA', gender: 'male' },
+    { id: 'fr-BE-CharlineNeural', locale: 'fr-BE', gender: 'female' },
+    { id: 'fr-CH-ArianeNeural', locale: 'fr-CH', gender: 'female' },
+  ],
 };
 
 export interface AzureSpeechOptions {

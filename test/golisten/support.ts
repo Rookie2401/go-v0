@@ -134,6 +134,11 @@ export const STORY: Record<LanguageCode, FixtureSentence[]> = {
     { tokens: ['Deus', 'mihi', 'remisit'].map(w).concat(dot()) },
     { tokens: ['Intellego', 'cor', 'meum'].map(w).concat(dot()) },
   ],
+  fr: [
+    { tokens: ['Je', 'crois', 'en', 'Dieu'].map(w).concat(dot()) },
+    { tokens: ['Dieu', 'me', 'pardonne'].map(w).concat(dot()) },
+    { tokens: ['Je', 'comprends', 'mon', 'cœur'].map(w).concat(dot()) },
+  ],
 };
 
 /** Scripture: verse numbers are metadata (verseRefs), never in the sentence text. */
@@ -178,6 +183,10 @@ export const SCRIPTURE: Record<LanguageCode, FixtureSentence[]> = {
   la: [
     { tokens: ['Sic', 'enim', 'Deus', 'dilexit', 'mundum'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
     { tokens: ['Si', 'confiteamur', 'peccata', 'nostra'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
+  ],
+  fr: [
+    { tokens: ['Car', 'Dieu', 'a', 'tant', 'aimé', 'le', 'monde'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
+    { tokens: ['Si', 'nous', 'confessons', 'nos', 'péchés'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
   ],
 };
 

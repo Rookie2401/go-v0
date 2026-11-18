@@ -247,6 +247,7 @@ const MODELS: Record<LanguageCode, Record<string, string | { text: string; note:
     'goal:m.do-you-believe': 'คุณเชื่อในพระเยซูไหม',
     'goal:d.understand-now': 'ตอนนี้ฉันเข้าใจแล้ว',
   },
+  fr: {},
 };
 
 /** The catalog's model wording for a goal in a language, if there is one. */

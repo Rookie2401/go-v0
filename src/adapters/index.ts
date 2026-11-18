@@ -14,12 +14,13 @@ import { heAdapter } from './he';
 import { elAdapter } from './el';
 import { laAdapter } from './la';
 import { arcAdapter } from './arc';
+import { frAdapter } from './fr';
 
-export { esAdapter, sqAdapter, thAdapter, hiAdapter, deAdapter, nbAdapter, nnAdapter, heAdapter, elAdapter, laAdapter, arcAdapter };
+export { esAdapter, sqAdapter, thAdapter, hiAdapter, deAdapter, nbAdapter, nnAdapter, heAdapter, elAdapter, laAdapter, arcAdapter, frAdapter };
 export * from './shared';
 
 const BY_LANG: Record<LanguageCode, LanguageAdapter> = {
-  es: esAdapter, sq: sqAdapter, th: thAdapter, hi: hiAdapter, de: deAdapter, nb: nbAdapter, nn: nnAdapter, he: heAdapter, el: elAdapter, la: laAdapter, arc: arcAdapter,
+  es: esAdapter, sq: sqAdapter, th: thAdapter, hi: hiAdapter, de: deAdapter, nb: nbAdapter, nn: nnAdapter, he: heAdapter, el: elAdapter, la: laAdapter, arc: arcAdapter, fr: frAdapter,
 };
 
 /** Registry over the course-language adapters, in `LANGUAGES` order. `get` throws for an unknown language code. */

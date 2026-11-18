@@ -115,7 +115,12 @@ export function planSprint(input: PlanInput): SprintPlan {
   const room = size - out.length;
   let count = firstSprint ? p.firstBatch : Math.max(0, p.laterBatch - shaky.length);
   count = Math.min(count, Math.max(0, Math.floor(room / 2)));
-  const fresh = count > 0 ? selectNextUnits(p, { count, ready, exclude: introduced, pageCounts: input.pageCounts }, words) : [];
+  const selected = count > 0 ? selectNextUnits(p, { count, ready, exclude: introduced, pageCounts: input.pageCounts }, words) : [];
+  // a rule or a sign is never the first new card: it is shown on a letter, so a plain letter of the batch comes first (unless one is learned)
+  const plain = selected.findIndex((k) => unitOf.get(k)?.kind === 'letter');
+  const firstLetter = plain >= 0 ? plain : selected.findIndex((k) => unitOf.get(k)?.kind !== 'rule');
+  const fresh = firstLetter > 0 && ![...ready].some((k) => unitOf.get(k)?.kind !== 'rule' && !unitOf.get(k)?.familiar)
+    ? [selected[firstLetter], ...selected.filter((_, i) => i !== firstLetter)] : selected;
   const usedWords = new Set(mine.flatMap((c) => { const id = parseSprintUnitId(c.unitId)!; return id.kind === 'word' ? [id.key] : []; }));
   const pickWord = (have: ReadonlySet<string>, mustUse: readonly string[]): WordDeps | undefined => words
     .filter(({ word, deps }) => !usedWords.has(word.form) && !taken.has(idFor(p, 'word', word.form)) && decodableWith(deps, have) && deps.some((d) => mustUse.includes(d)))

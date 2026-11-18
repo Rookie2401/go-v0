@@ -41,9 +41,9 @@ const CONJUNCTS: ReadonlyArray<readonly [string, string]> = [
 ];
 
 const UNITS: ScriptUnit[] = [
-  U('rule-inherent-a', 'rule', 'कमल', 'a consonant with no vowel sign carries a short a: क is ka, म is ma', { difficulty: 1, example: { form: 'कमल', gloss: 'lotus' } }),
-  U('rule-schwa', 'rule', 'लड़का', 'that written-nowhere a is often NOT said: at the end of a word and between syllables (लड़का is laṛkā, not laṛakā)', { difficulty: 3 }),
-  U('rule-conjunct', 'rule', 'स्कूल', 'two consonants joined with no vowel between them, the first one shortened or fused (स् + कू = स्कू)', { difficulty: 2 }),
+  U('rule-inherent-a', 'rule', 'क = ka', 'a consonant with no vowel sign carries a short a: क is ka, म is ma', { difficulty: 1, example: { form: 'कमल', gloss: 'lotus' } }),
+  U('rule-schwa', 'rule', 'कमल = kamal', 'that written-nowhere a is often NOT said: at the end of a word and between syllables (लड़का is laṛkā, not laṛakā)', { difficulty: 3 }),
+  U('rule-conjunct', 'rule', 'स् + क = स्क', 'two consonants joined with no vowel between them, the first one shortened or fused (स् + कू = स्कू)', { difficulty: 2 }),
   ...VOWELS.map(([g, s]) => U(g, 'letter', g, s, { difficulty: g === 'अ' || g === 'आ' ? 1 : 2 })),
   ...CONSONANTS.map(([g, s, d]) => U(g, 'letter', g, s, d ? { difficulty: d } : {})),
   ...VOWELS.filter(([, , sign]) => sign).map(([g, s, sign]) => U(CARRIER + sign, 'vowel-sign', '◌' + sign, `the vowel sign for ${g}, shown on क (${CARRIER}${sign}): ${s}`, { difficulty: 2 })),

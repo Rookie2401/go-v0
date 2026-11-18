@@ -69,19 +69,6 @@ code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divide
 .language-picker { position: relative; display: inline-flex; align-items: center; }
 select.language-kicker { width: auto; appearance: none; -webkit-appearance: none; background: transparent; border: 0; border-radius: 2px; padding: .2rem 1rem .2rem 0; cursor: pointer; }
 select.language-kicker:hover { color: var(--ink); }
-/* "Add a language" beside the language (2026-11-17): a quiet plus, the size of a finger on a phone */
-.language-add { display: inline-flex; align-items: center; justify-content: center; min-width: 1.75rem; min-height: 1.75rem; margin-left: .35rem; color: var(--ink-faint); text-decoration: none; font-weight: 600; border-radius: 4px; }
-.language-add:hover, .language-add:focus-visible { color: var(--ink); }
-/* #/setup: the languages to choose from */
-.setup-list { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 1rem; }
-.setup-language { border-top: 1px solid var(--divider); padding-top: 1rem; }
-.setup-language h2 { margin: 0 0 .2rem; font-size: 1.15rem; }
-.setup-language h2 .muted { font-weight: 400; margin-left: .35rem; }
-.setup-language > p { margin: .35rem 0; }
-.setup-choice { border: 0; padding: 0; margin: .5rem 0; display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; align-items: center; }
-.setup-choice legend { padding: 0; margin-bottom: .35rem; font-weight: 600; width: 100%; }
-.setup-option { display: inline-flex; gap: .35rem; align-items: center; min-height: 2.75rem; }
-#setup-recheck { background: none; border: 0; padding: 0; color: inherit; text-decoration: underline; cursor: pointer; font: inherit; }
 .language-caret { position: absolute; right: 0; font-size: .7rem; color: var(--ink-faint); pointer-events: none; }
 .sync { margin: 0 0 0 auto; font-size: .9rem; font-style: italic; color: var(--ink-soft); max-width: 32rem; }
 .sync[data-kind="error"] { color: var(--bad); font-style: normal; }
@@ -269,7 +256,7 @@ table.paradigm td.sel > span:first-child, .forms-list li.sel > span:first-child 
 }
 
 /* The review home uses the colors of stone, leather and brass. The photograph is bundled with the app. */
-body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"])) {
+body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"], [data-route="setup"])) {
   color-scheme: dark;
   --paper: #211a15;
   --paper-raised: #30251c;
@@ -293,9 +280,9 @@ body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-
   --focus: var(--accent);
   background: var(--paper);
 }
-body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
-html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"]))::before { background: var(--paper); }
-.screen:is([data-route="review"], [data-route="review/session"], [data-route="signin"]) {
+body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"], [data-route="setup"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
+html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"], [data-route="setup"]))::before { background: var(--paper); }
+.screen:is([data-route="review"], [data-route="review/session"], [data-route="signin"], [data-route="account"], [data-route="setup"]) {
   --home-gutter: clamp(1.125rem, 5vw, 2rem);
   max-width: none;
   padding: 0 0 calc(1.25rem + env(safe-area-inset-bottom, 0px));
@@ -483,7 +470,7 @@ html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-rou
 .signin-tile > :last-child { margin-bottom: 0; }
 .signin-tile h2.deck-kicker { margin: 0 0 .55rem; font: inherit; font-size: .78rem; font-weight: 400; color: var(--ink-soft); letter-spacing: .18em; text-transform: uppercase; }
 .signin-tile p.deck-kicker { margin: 0 0 .2rem; }
-.signin-tile .signin-title { margin: 0 0 .5rem; color: var(--ink); font-size: clamp(2.35rem, 9vw, 3.4rem); font-weight: 400; line-height: 1; letter-spacing: -.018em; text-transform: none; }
+.signin-tile .signin-title { margin: 0 0 1.6rem; color: var(--ink); font-size: clamp(2.35rem, 9vw, 3.4rem); font-weight: 400; line-height: 1; letter-spacing: -.018em; text-transform: none; }
 .signin > #deletion-slot:empty { display: none; }
 .signin-lede { margin: 0 0 .7rem; font-size: 1.12rem; line-height: 1.5; color: var(--ink); }
 .signin-tile p.deck-caption { margin: 0 0 .5rem; display: block; }
@@ -534,6 +521,34 @@ html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-rou
 .signin .signin-link:focus-visible, .signin-forgot > summary:focus-visible, .signin .btn.signin-pill:focus-visible, .signin button.signin-pill:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .signin .status { text-align: start; margin-top: .9rem; }
 .signin #signin-form .status { font-style: italic; }
+/* the iPhone app's welcome, a dropdown under the form (the owner, 2026-11-17): closed, a tile's kicker with a gold caret; open, the words */
+.signin-about { border-radius: .8rem; background: #2a211a; }
+.signin-about > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8rem;
+  min-height: 3.25rem;
+  padding: .55rem clamp(.95rem, 4vw, 1.55rem);
+  border-radius: .8rem;
+  color: var(--ink-soft);
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  list-style: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.signin-about > summary::-webkit-details-marker { display: none; }
+.signin-about > summary::after { content: "▾"; color: var(--accent); font-size: 1rem; letter-spacing: 0; }
+.signin-about[open] > summary::after { transform: rotate(180deg); }
+.signin-about > summary:hover { color: var(--ink); }
+.signin-about > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
+.signin-about > p { margin: 0 clamp(.95rem, 4vw, 1.55rem) .7rem; }
+.signin-about > p:last-child { margin-bottom: 1.1rem; }
+/* the caret turns only for a learner who has not asked for less motion (A-C04: every transition sits behind this gate) */
+@media (prefers-reduced-motion: no-preference) { .signin-about > summary::after { transition: transform .2s; } }
+@media (forced-colors: active) { .signin-about { border: 1px solid CanvasText; } }
 .signin-forgot { justify-self: center; width: 100%; text-align: center; }
 .signin-forgot > summary { list-style: none; margin-inline: auto; }
 .signin-forgot > summary::-webkit-details-marker { display: none; }
@@ -1122,102 +1137,168 @@ img, svg, video, canvas { max-width: 100%; }
 @keyframes settings-pull-left { to { transform: translateX(-100%); } }
 @keyframes settings-pull-right { to { transform: translateX(100%); } }
 
-/* Account uses the same warm surfaces as Settings and Review. */
-.screen[data-route="account"] { max-width: 43rem; }
-.screen[data-route="account"] > h1 {
-  margin: .95rem 0 1.45rem;
+/* #/account and #/setup in the home's look (the owner, 2026-11-18: "in line with the design philosophy of the homescreen"). Both wear the home's
+   hero (app.ts: a kicker between gold rules, the title, the photo of the language being reviewed) and then the home's column of warm tiles with no
+   outline. A tile that is one control (a language to switch to or start, Sign out, Download, Delete) is a .deck-tile with a .deck-face and lights
+   from the point of contact (ripple.ts); a tile that holds words and a form (the name and email, a question to answer, the deletion) is an
+   .account-panel and does not light. Kickers are the home's small spaced capitals; titles the home's serif; the action the gold pill; other ways
+   on gold links. */
+.account-page, .setup-page {
+  --deck-inset: clamp(.95rem, 4vw, 1.55rem);
+  display: grid;
+  gap: .8rem;
+}
+[data-home-photo] .account-page, [data-home-photo] .setup-page { margin-top: -1.25rem; }
+.account-group { display: grid; gap: .8rem; }
+.account-page > .home-link, .account-group > .home-link { margin-top: .2rem; }
+.deck-tile[data-deck="danger"] .deck-title { color: var(--bad); }
+.deck-tile[data-deck="danger"] .deck-face .ec-icon { color: var(--bad); }
+/* a tile whose one control is put away (Delete while the deletion is open) is put away with it */
+.deck-tile:has(> .deck-face[hidden]) { display: none; }
+.account-panel { display: block; padding: 1.05rem var(--deck-inset) 1.15rem; }
+.account-panel > :first-child { margin-top: 0; }
+.account-panel > :last-child { margin-bottom: 0; }
+#delete-panel:has(> #delete-body[hidden]) { display: none; }
+.account-panel p.deck-kicker, .account-panel .deck-label { margin: 0 0 .55rem; }
+.account-lede, .setup-lede { margin: 0 0 .7rem; font-size: 1.12rem; line-height: 1.5; color: var(--ink); }
+.setup-lede { margin: .2rem 0 0; text-align: center; }
+.setup-note { margin: 0; color: var(--ink-soft); font-style: italic; text-align: center; }
+/* the name and the email: each a kicker with its glyph, then the fact in the home's serif */
+.account-page .account-facts { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.15rem; margin: 0; }
+.account-page .account-fact { display: grid; gap: .3rem; }
+.account-page .account-facts dt { display: flex; align-items: center; gap: .55rem; margin: 0; }
+.account-page .account-facts dt svg { width: 1.15rem; height: 1.15rem; color: var(--accent); }
+.account-page .account-facts dd { margin: 0; font-size: clamp(1.25rem, 5vw, 1.45rem); line-height: 1.25; overflow-wrap: anywhere; }
+.account-page .account-name-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .45rem 1rem; }
+.account-page .account-name-edit { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; }
+.account-page .account-name-edit input {
+  flex: 1 1 12rem;
+  min-height: 2.75rem;
+  padding: .35rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--control-line);
+  border-radius: 0;
+  background: transparent;
   color: var(--ink);
-  font: 500 clamp(2rem, 7vw, 3.2rem)/1 var(--serif);
-  letter-spacing: .14em;
-  text-align: center;
-  text-transform: uppercase;
+  font: 1.2rem/1.3 var(--serif);
 }
-.screen[data-route="account"] > h1::after {
-  content: "";
-  display: block;
-  width: 3rem;
-  height: 2px;
-  margin: .9rem auto 0;
-  background: var(--accent-soft);
+.account-page .account-name-edit input:focus { border-bottom-color: var(--accent); }
+.account-page .account-email-fact .help { margin: .45rem 0 0; font-size: 1rem; color: var(--ink-soft); }
+/* the gold pill (the page's own action) and the gold link (the other ways on), as on the sign-in page */
+.account-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: .45rem 1.9rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: 600 1.02rem/1.3 var(--serif);
+  letter-spacing: .04em;
+  text-decoration: none;
+  cursor: pointer;
 }
-.screen[data-route="account"] .account-page {
-  max-width: none;
-  padding: 0;
+.account-pill.small { padding-inline: 1.3rem; font-size: .95rem; }
+.account-pill:hover:not(:disabled) { opacity: .9; }
+.account-pill:disabled { opacity: .55; cursor: default; }
+.account-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: .15rem .5rem;
+  margin-inline-start: -.5rem;
   border: 0;
   background: transparent;
-  box-shadow: none;
+  color: var(--accent);
+  font: 600 .95rem/1.3 var(--serif);
+  text-decoration: underline;
+  text-underline-offset: .23em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
-.account-page .account-facts {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1rem;
-  margin: 0 0 1.4rem;
-  padding: clamp(.85rem, 4vw, 1.4rem);
-  border: 1px solid var(--rule);
-  border-radius: .85rem;
-  background: var(--panel);
-}
-.account-fact {
-  position: relative;
-  padding-inline-start: clamp(2.55rem, 10vw, 3.5rem);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: .25rem;
-}
-.account-page .account-facts dt {
+.account-link:hover:not(:disabled) { color: var(--ink); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.account-pill:focus-visible, .account-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.account-panel-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.4rem; margin: 1rem 0 .1rem; }
+.account-page .status, .setup-page .status { margin: .2rem var(--deck-inset) 0; font-style: italic; }
+.account-page .status:empty, .setup-page .status:empty { display: none; }
+/* the guided deletion inside its own tile */
+#delete-body h3 { margin: 0 0 .6rem; font: 400 clamp(1.4rem, 5vw, 1.7rem)/1.15 var(--serif); color: var(--bad); }
+#delete-body .steps { margin: 0 0 1rem; padding-inline-start: 1.2rem; line-height: 1.5; }
+#delete-body .field { max-width: none; }
+/* the devices: the sign-in page's dropdown (.signin-about), its body inset like a tile's */
+.account-devices > :not(summary) { margin: 0 var(--deck-inset) .9rem; }
+
+/* #/setup: one list, the learner's own languages first; a kicker over each group */
+.setup-list { list-style: none; margin: .6rem 0; padding: 0; display: grid; gap: .8rem; }
+.setup-group { margin-top: .6rem; }
+.setup-group:first-child { margin-top: 0; }
+.tiles-heading {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  margin: 0;
   color: var(--ink-soft);
-  font: 500 .8rem/1.3 var(--serif);
-  letter-spacing: .16em;
+  font: 400 .78rem/1.4 var(--serif);
+  letter-spacing: .18em;
   text-transform: uppercase;
 }
-.account-fact dt svg { position: absolute; inset-inline-start: .2rem; top: .7rem; }
-.account-page .account-facts dd { margin: 0; font-size: 1.2rem; overflow-wrap: anywhere; }
-.account-page .account-name-row { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; justify-content: space-between; }
-.account-page .account-name-row .btn { min-height: 2.75rem; }
-.account-page .account-actions {
-  display: grid;
-  justify-items: stretch;
-  gap: .65rem;
-  margin: 0;
-}
-.account-page .account-actions > button {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  gap: clamp(.65rem, 4vw, 1.2rem);
+.tiles-heading::before, .tiles-heading::after { content: ""; flex: 1 1 auto; height: 1px; background: var(--rule-strong); }
+.setup-language { display: grid; gap: .3rem; }
+.setup-asks .setup-choice { margin: .9rem 0 0; }
+/* Norwegian: two words, the chosen one underlined in gold; the radio itself stays for assistive technology and the keyboard */
+.setup-choice[data-choice="standard"] { display: flex; flex-wrap: wrap; align-items: center; gap: .2rem 1.6rem; border: 0; padding: 0; }
+.setup-choice[data-choice="standard"] legend { width: 100%; padding: 0; margin-bottom: .2rem; color: var(--ink-soft); font-style: italic; }
+.setup-option { position: relative; display: inline-flex; align-items: center; min-height: 2.75rem; cursor: pointer; }
+.setup-option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.setup-option span { padding-bottom: .15rem; border-bottom: 2px solid transparent; color: var(--ink-soft); font-size: 1.25rem; }
+.setup-option:hover span { color: var(--ink); }
+.setup-option input:checked + span { color: var(--ink); border-bottom-color: var(--accent); }
+.setup-option input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* a variety: its question in italics, the choice a single line on the tile, as the sign-in fields */
+.setup-choice[data-choice="variety"] { display: grid; gap: .2rem; }
+.setup-choice-label { color: var(--ink-soft); font-style: italic; }
+.setup-choice[data-choice="variety"] select {
   width: 100%;
-  min-height: 4.4rem;
-  margin: 0;
-  padding: .8rem clamp(.85rem, 4vw, 1.35rem);
-  border: 1px solid var(--rule);
-  border-radius: .85rem;
-  background: var(--panel);
+  min-height: 2.75rem;
+  padding: .35rem 1.5rem .35rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--control-line);
+  border-radius: 0;
+  background: transparent;
   color: var(--ink);
-  text-align: start;
+  font: 1.15rem/1.3 var(--serif);
 }
-.account-action-label {
-  border-inline-start: 1px solid var(--rule-strong);
-  padding-inline-start: clamp(.65rem, 4vw, 1.2rem);
-  font: 400 clamp(1.2rem, 5vw, 1.55rem)/1.15 var(--serif);
+.setup-choice[data-choice="variety"] select:focus { border-bottom-color: var(--accent); }
+.setup-choice select option { background: var(--paper); color: var(--ink); }
+/* the older account rules that still reach these elements (the centred column of pills, the deletion under a rule, the sessions card) give way
+   to the tiles (found by session dbdaefbd, 2026-11-18) */
+.account-page .account-actions { display: grid; flex-direction: initial; align-items: stretch; margin: 0; }
+.account-page #delete-body { margin: 0; padding: 0; border-top: 0; }
+.account-page #delete-body .field .cap { color: var(--ink-soft); font-weight: 400; letter-spacing: .18em; }
+.account-page #delete-body input[type="password"] {
+  width: 100%; min-height: 2.75rem; padding: .35rem 0; border: 0; border-bottom: 1px solid var(--control-line); border-radius: 0;
+  background: transparent; color: var(--ink); font: 1.2rem/1.3 var(--serif);
 }
-.account-page .account-actions > button:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--panel), var(--accent) 10%);
+.account-page #delete-body input[type="password"]:focus { border-bottom-color: var(--bad); }
+.account-page #delete-body .row { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.4rem; margin-top: 1rem; }
+.account-page #delete-body .btn.danger, .account-page #delete-body #delete-cancel {
+  min-height: 2.75rem; padding: .45rem 1.9rem; border-radius: 999px; font: 600 1.02rem/1.3 var(--serif); letter-spacing: .04em;
 }
-.account-page .account-actions > button[hidden] { display: none; }
-.account-page .account-actions > button.danger { color: var(--bad); }
-.account-page .account-actions svg, .account-page .account-facts svg {
-  width: 1.45rem;
-  height: 1.45rem;
-  color: var(--accent);
+.account-page #delete-body .btn.danger { border: 1px solid var(--bad); background: var(--bad); color: var(--paper); }
+.account-page #delete-body #delete-cancel { border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); }
+.account-page #delete-body .linklike {
+  min-height: 2.75rem; padding: .15rem .5rem; border: 0; background: transparent; color: var(--accent); font: 600 .95rem/1.3 var(--serif);
+  text-decoration: underline; text-underline-offset: .23em;
 }
-.account-page .account-actions > button.danger svg:first-child { color: currentColor; }
-.account-page .account-actions svg:last-child { width: 1.2rem; }
-.account-page #acct-devices {
-  margin-top: 1.25rem;
-  padding: .8rem 1rem;
-  border: 1px solid var(--rule);
-  border-radius: .85rem;
-  background: var(--panel);
+/* the devices, inside their dropdown: no card of their own, each a line, the actions gold links */
+.account-page #acct-sessions { margin: 0; padding: 0 var(--deck-inset) 1rem; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.account-page #acct-sessions > h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.account-page #acct-sessions ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
+.account-page #acct-sessions li { line-height: 1.45; }
+.account-page #acct-sessions .btn {
+  min-height: 2.75rem; padding: .15rem .5rem; margin-inline-start: -.5rem; border: 0; border-radius: 0; background: transparent; color: var(--accent);
+  font: 600 .95rem/1.3 var(--serif); text-decoration: underline; text-underline-offset: .23em;
 }
-.account-page #acct-devices > summary { min-height: 2rem; color: var(--ink); font-size: 1.2rem; }
-.account-page #acct-devices[open] > summary { margin-bottom: .6rem; }
+.account-page #acct-sessions .btn:hover:not(:disabled) { color: var(--ink); background: color-mix(in srgb, var(--accent) 8%, transparent); }

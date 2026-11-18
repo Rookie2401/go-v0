@@ -43,6 +43,9 @@ Greek (el)                              Hebrew (he)
 - The registry is data. `defineLanguageVarieties` adds a language. A language absent from it has no learning
   varieties: its regional varieties (es-HN, de-AT) stay usage labels.
 - A test holds the registry to the packs' own declarations (`test/varieties/contract.test.ts`).
+- **Decided by the owner, 2026-11-17: Homeric, Classical and Koine stay separate learning identities** (their own knowledge, cards and
+  queues), not one "Ancient Greek" identity with the stage as a label. What is known in one of them reaches the others only as familiarity
+  (section 5: strong for Known or Automatic, since they share a historical group).
 
 Three things are kept apart:
 

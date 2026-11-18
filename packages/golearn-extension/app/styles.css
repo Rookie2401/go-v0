@@ -332,3 +332,96 @@ details.forgot { margin: 1rem 0; }
 .download-one { justify-self: end; }
 @media (max-width: 640px) { .download-one { justify-self: start; } }
 .field[hidden] { display: none; } /* the grid would otherwise win over the hidden attribute (the name field under "Sign in") */
+
+/* ── Languages in GoReview's home look (the owner, 2026-11-18: "redesign both of them in line with the design philosophy of the homescreen of
+   GoReview"). The page takes the home's stone, leather and brass whatever the system theme, as GoReview's home does; the title is the home's
+   large serif with a short gold rule and a kicker over it; each group is a kicker between rules; each language is a warm tile with no outline
+   (the one being read in a lighter tile, like GoReview's Current Deck); Download is the gold pill, the other ways on (Details) gold links. The
+   rows keep their markup and behaviour (screens/language.ts); only how they look changes. Other GoLearn pages keep the design system above. */
+body:has(.screen[data-route="languages"]) {
+  color-scheme: dark;
+  --paper: #211a15; --paper-raised: #30251c; --ink: #f3e6d2; --ink-soft: #d1bda5; --ink-faint: #baa58d;
+  --rule: #534233; --rule-strong: #7f6246; --accent: #e0b780; --accent-soft: #cda06a; --accent-ink: #211a15;
+  --control-line: #a28260; --bad: #ffb5a5; --ok: #a8d8a8; --warn-bg: #39291c;
+  --bg: var(--paper); --panel: var(--paper-raised); --muted: var(--ink-soft); --line: var(--control-line); --divider: var(--rule); --focus: var(--accent);
+  background: var(--paper);
+}
+body:has(.screen[data-route="languages"]) .topbar { background: #211a15; border-bottom-color: var(--rule); }
+.screen[data-route="languages"] { --tile-inset: clamp(.95rem, 4vw, 1.55rem); max-width: 47rem; }
+.screen[data-route="languages"] > h1 {
+  margin: .4rem 0 1.4rem;
+  text-align: center;
+  font-size: clamp(3rem, 11vw, 4.6rem);
+  font-weight: 400;
+  line-height: .96;
+  letter-spacing: -.042em;
+}
+.screen[data-route="languages"] > h1::before {
+  content: "Choose your language";
+  display: block;
+  margin-bottom: .55rem;
+  color: var(--ink);
+  font: 600 .83rem/1.5 var(--serif);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.screen[data-route="languages"] > h1::after { content: ""; display: block; width: 2.2rem; height: 2px; margin: .75rem auto 0; background: var(--accent-soft); }
+.screen[data-route="languages"] .home-status { text-align: center; }
+.screen[data-route="languages"] .home-status .lede { font-size: 1.15rem; }
+.screen[data-route="languages"] .account-line { color: var(--ink-soft); font-style: italic; }
+.screen[data-route="languages"] .home-actions { justify-content: center; }
+/* a group: its name as a kicker between rules */
+.screen[data-route="languages"] .lang-rows { display: grid; gap: .8rem; }
+.screen[data-route="languages"] .lang-group { margin: 1.1rem 0 0; }
+.screen[data-route="languages"] .lang-group:first-child { margin-top: .4rem; }
+.screen[data-route="languages"] .lang-group > h2 {
+  display: flex; align-items: center; gap: .9rem; margin: 0; padding: 0; border: 0;
+  color: var(--ink-soft); font: 400 .78rem/1.4 var(--serif); letter-spacing: .18em; text-transform: uppercase;
+}
+.screen[data-route="languages"] .lang-group > h2::before, .screen[data-route="languages"] .lang-group > h2::after { content: ""; flex: 1 1 auto; height: 1px; background: var(--rule-strong); }
+/* a language: a warm tile with no outline; the one being read in is lighter */
+.screen[data-route="languages"] .lang-row {
+  gap: .35rem 1rem;
+  padding: 1.05rem var(--tile-inset) 1rem;
+  border: 0;
+  border-radius: .8rem;
+  background: #2a211a;
+}
+.screen[data-route="languages"] .lang-row.chosen { background: #382a20; }
+.screen[data-route="languages"] .lang-row .lang-name { font-size: clamp(1.65rem, 6vw, 2rem); font-weight: 400; line-height: 1.05; letter-spacing: -.018em; }
+.screen[data-route="languages"] .lang-row.chosen .lang-name { font-weight: 400; }
+.screen[data-route="languages"] .lang-row .native { display: block; margin-top: .2rem; font-size: 1.04rem; letter-spacing: 0; color: var(--ink-soft); }
+.screen[data-route="languages"] .lang-row .lang-level { margin-top: .45rem; color: var(--ink-soft); font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; }
+.screen[data-route="languages"] .lang-actions { align-self: center; }
+/* the gold pill: Download, and a question's Download in its panel */
+.screen[data-route="languages"] .lang-row .btn, .screen[data-route="languages"] details.download > summary {
+  min-height: 2.75rem;
+  padding: .45rem 1.6rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: 600 1rem/1.3 var(--serif);
+  letter-spacing: .04em;
+}
+.screen[data-route="languages"] .lang-row .btn:hover:not(:disabled), .screen[data-route="languages"] details.download > summary:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); opacity: .9; }
+.screen[data-route="languages"] details.download > summary::after { color: var(--accent-ink); }
+.screen[data-route="languages"] .lang-row.chosen details.download > summary { padding: .3rem 1.1rem; font-size: .95rem; }
+/* a quiet action inside a row (Use for reading, Remove): a gold link, not a pill */
+.screen[data-route="languages"] .lang-row .btn.small, .screen[data-route="languages"] .lang-row .linklike {
+  min-height: 2.75rem; padding: .15rem .5rem; border: 0; background: transparent; color: var(--accent);
+  font: 600 .95rem/1.3 var(--serif); text-decoration: underline; text-underline-offset: .23em; letter-spacing: 0;
+}
+.screen[data-route="languages"] .lang-row .btn.small:hover:not(:disabled), .screen[data-route="languages"] .lang-row .linklike:hover { color: var(--ink); background: color-mix(in srgb, var(--accent) 8%, transparent); opacity: 1; }
+.screen[data-route="languages"] .lang-row > details.about > summary {
+  display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--accent); font: 600 .9rem/1.3 var(--serif); text-decoration: underline; text-underline-offset: .23em;
+}
+.screen[data-route="languages"] .lang-row .dl-panel select {
+  width: 100%; min-height: 2.75rem; padding: .35rem 1.5rem .35rem 0; border: 0; border-bottom: 1px solid var(--control-line); border-radius: 0;
+  background: transparent; color: var(--ink); font: 1.1rem/1.3 var(--serif);
+}
+.screen[data-route="languages"] .lang-row .dl-panel select:focus { border-bottom-color: var(--accent); }
+.screen[data-route="languages"] .lang-row .dl-panel option { background: var(--paper); color: var(--ink); }
+.screen[data-route="languages"] .lang-row :is(.btn, summary, select):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.screen[data-route="languages"] .foot-links { text-align: center; }
+.screen[data-route="languages"] ~ * #done-reading, body:has(.screen[data-route="languages"]) #done-reading { border-color: var(--rule-strong); border-radius: 999px; }

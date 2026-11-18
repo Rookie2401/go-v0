@@ -44,7 +44,7 @@ export function connectLocalRepository(send: Send, type: string): LocalRepositor
       const u = (r.upload ?? {}) as { sent?: number; duplicates?: number; failed?: number };
       return { sent: u.sent ?? 0, duplicates: u.duplicates ?? 0, failed: u.failed ?? 0 };
     },
-    async pullFrom() { const r = await ask('upload'); return { added: typeof r.pulled === 'number' ? r.pulled : 0 }; },
+    async pullFrom() { const r = await ask('upload'); return { added: typeof r.pulled === 'number' ? r.pulled : 0, complete: false }; }, // the worker's reply does not say whether the pull reached the account's head: not claimed
     async rebuild() { await ask('rebuild'); },
     async clear() { await ask('clear'); },
     async close() { /* the worker keeps the repository open */ },

@@ -28,7 +28,7 @@ describe('action popup page', () => {
     expect($('active')).toBeTruthy();
     for (const id of ['enabled', 'speak', 'active-revoke', 'count', 'export-events', 'export-metrics', 'delete-all', 'delete-note', 'output']) expect(document.getElementById(id), id).toBeNull();
     // 2026-10-28 (the owner): the brand is the one button; Practise and Sync now are gone, and so is every explanation
-    expect([...document.querySelectorAll('button')].map((b) => b.id)).toEqual(['open-setup']);
+    expect([...document.querySelectorAll('button')].map((b) => b.id)).toEqual(['open-setup', 'reading-run']); // Reading Analysis' one button (the owner's brief of 2026-11-17)
     expect(html).not.toMatch(/export and deletion|Practise|Sync now/);
   });
 

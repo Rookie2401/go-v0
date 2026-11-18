@@ -12,6 +12,7 @@ import type {
 import type { WriteResult } from '../store';
 import type { LocalSentenceTranslationReply, LocalSentenceTranslationRequest } from '../translation/localProtocol';
 import type { SpeechMessage, SpeechReply } from '../speechProtocol';
+import type { ReadingKnowledgeReply, ReadingKnowledgeRequest } from '../reading/protocol';
 
 /** Where the controller writes events: the background (identity replaced there), or a test store. */
 export interface EventSink { append(event: GoEvent): Promise<WriteResult> }
@@ -35,6 +36,11 @@ export interface ContentServices {
   confirmForms?(req: ConfirmFormsRequest): Promise<ConfirmFormsReply | undefined>;
   /** Calls the background's local model bridge only after an explicit sentence-translation action. */
   translateSentence?(req: LocalSentenceTranslationRequest): Promise<LocalSentenceTranslationReply | undefined>;
+  /**
+   * Reading Analysis: the snapshot of the learner's knowledge and the verdict on each batch of words (unit ids only; src/reading/protocol.ts).
+   * One attempt, with a long wait: the snapshot may bring the device level with the account first. The caller decides about a second attempt.
+   */
+  readingKnowledge?(req: Omit<Extract<ReadingKnowledgeRequest, { op: 'snapshot' | 'classify' }>, 'type'>): Promise<ReadingKnowledgeReply | undefined>;
   /** Keep-warm: any message resets the browser's idle timer for the worker. False = the send threw (the extension was reloaded: this script is orphaned). Optional for fakes. */
   keepWarm?(): Promise<boolean>;
 }
@@ -89,6 +95,7 @@ export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
     keepWarm: async () => { try { await api.runtime.sendMessage({ type: MSG.keepWarm }); return true; } catch { return false; } },
     entry: (req) => call<EntryReply>(MSG.entry, { ...req }, timeoutMs, true),
     activeProfile: (req) => call<ProfileReply>(MSG.activeProfile, { ...req }, timeoutMs, true),
+    readingKnowledge: (req) => call<ReadingKnowledgeReply>(MSG.readingKnowledge, { ...req }, req.op === 'snapshot' ? 45_000 : 30_000),
     // the first question of a page may make the worker locate the dictionary and fetch several shards: more time than a profile row
     confirmForms: (req) => call<ConfirmFormsReply>(MSG.confirmForms, { ...req }, 20_000),
     // The worker allows a cold local model up to 60 seconds; include time for its private config read and message round-trip.

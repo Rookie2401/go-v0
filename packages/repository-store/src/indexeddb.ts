@@ -11,6 +11,7 @@
  * `stats()` is left out: `StoreStats.kind` (./rules) cannot name this store and that file is not ours to widen.
  */
 import { provenanceColumns } from '../../repository-contract/src';
+import { isVocabularyUnitId } from '../../repository-contract/src';
 import type {
   Account, AccountToken, AppendOutcome, AssistancePreferences, Device, Enrolment, EncounterEventSummary, FormAnalysis, LanguagePackInfo, Learner, LinguisticUnit,
   PrivateDocument, ReviewStatusSummary, SecurityEvent, Session, StoredEvent, Team, Tombstone, UnitAlias, UnitKnowledge, UnitRelation,
@@ -546,7 +547,7 @@ export async function openIndexedDbStore(opts: IndexedDbStoreOptions): Promise<C
     async getEncounteredKnowledgeStats(learnerId, languageId) {
       return ro(['knowledge'], async (tx) => {
         const counts = { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 };
-        await scan(tx.objectStore('knowledge'), under(learnerId), 'next', (k: UnitKnowledge) => { if (k.languageId === languageId && k.encounters > 0) counts[k.level]++; });
+        await scan(tx.objectStore('knowledge'), under(learnerId), 'next', (k: UnitKnowledge) => { if (k.languageId === languageId && k.encounters > 0 && isVocabularyUnitId(k.unitId)) counts[k.level]++; });
         return { total: Object.values(counts).reduce((a, b) => a + b, 0), counts };
       });
     },

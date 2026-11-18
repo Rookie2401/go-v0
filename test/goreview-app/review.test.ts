@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
-import { destroyRigs, defaultService, knowledgeRow, candidate, cardAdded, flush, ids, makeRig, queued, reopenDetails, reviewed, seed, type, until, unitOf, type Rig, FakeService } from './helpers';
+import { destroyRigs, defaultService, shownEnrolment, switchLanguage, knowledgeRow, candidate, cardAdded, flush, ids, makeRig, queued, reopenDetails, reviewed, seed, type, until, unitOf, type Rig, FakeService } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -150,24 +150,23 @@ describe('the one active language', () => {
     const { rig } = await twoLanguages();
     const counts = (): string => `${rig.q('#count-due').textContent}/${rig.q('#count-fresh').textContent}`;
     const before = counts();
-    // the language is switched on the home, the one place that shows the dropdown (2026-10-28: the top bar never carries it)
+    // the language is switched on the Account page (2026-11-18: the home only names it); neither the top bar nor the home has a dropdown
     await rig.go('review');
-    expect(rig.root.querySelector('header #language-select')).toBeNull();
+    expect(rig.root.querySelector('#language-select')).toBeNull();
     // the newest enrolment is active by default: de (three new items); sq is the other
-    const select = rig.q<HTMLSelectElement>('#home-language #language-select');
-    expect(select.options.length).toBe(2);
-    const first = select.value;
-    select.value = first === 'L1-e1' ? 'L1-e2' : 'L1-e1';
-    select.dispatchEvent(new Event('change'));
-    // switching draws the home afresh for the other language (a new dropdown element); the counts are on the details page
-    await until(() => rig.app.current() === 'review' && rig.root.querySelector('#home-language #language-select') !== select && !!rig.root.querySelector('#current-deck'), 'the home of the other language');
+    const first = shownEnrolment(rig);
+    expect(first === 'L1-e1' || first === 'L1-e2').toBe(true);
+    const other = first === 'L1-e1' ? 'L1-e2' : 'L1-e1';
+    await switchLanguage(rig, other);
+    // switching draws the home afresh for the other language; the counts are on the details page
+    await until(() => !!rig.root.querySelector('#current-deck'), 'the home of the other language');
     await rig.go('review/details');
     await until(() => !!rig.root.querySelector('#count-due') && counts() !== before, 'the other language');
     const after = counts();
     expect(new Set([before, after])).toEqual(new Set(['0/3', '1/0']));
     expect(rig.q('main').getAttribute('data-language')).toMatch(/^(de|sq-AL)$/);
     // the choice is remembered
-    expect(await rig.app.ctx.state.getActive('L1')).toBe(select.value);
+    expect(await rig.app.ctx.state.getActive('L1')).toBe(other);
   });
 });
 

@@ -9,7 +9,7 @@ import { decodeBody } from '../../packages/gotell/src/documents';
 import { tellOverrides } from '../../packages/goreview/app/screens/tell/overrides';
 import { draftIdFromHash, press, typeInto } from '../gotell-ui/rig';
 import {
-  LOCAL_LEARNER, candidate, cardAdded, defaultService, destroyRigs, flush, ids, makeRig, queued, reopenDetails, reviewed, seed, type, unitOf, until, type Rig,
+  LOCAL_LEARNER, accountLanguages, shownEnrolment, candidate, cardAdded, defaultService, destroyRigs, flush, ids, makeRig, queued, reopenDetails, reviewed, seed, type, unitOf, until, type Rig,
 } from './helpers';
 
 afterEach(() => { tellOverrides.timers = undefined; tellOverrides.download = undefined; destroyRigs(); });
@@ -35,9 +35,9 @@ describe('on the device, with no account', () => {
     expect(rig.root.querySelector('#account-link')).toBeNull();
     await rig.go('account');
     expect(rig.q<HTMLAnchorElement>('#settings-keep-progress').getAttribute('href')).toBe('#/signin');
-    expect(rig.q('#settings-keep-progress').textContent).toBe('Keep your progress across devices (optional)');
+    expect(rig.q('#settings-keep-progress').textContent).toBe('Keep your progress across devices');
     await rig.go('review');
-    expect(rig.q('#language-name').textContent).toBe('Albanian'); // one language: plain text, no select
+    expect(rig.q('#language-name').textContent).toBe('Albanian'); // the home names the language; choosing it is on the Account page (2026-11-18)
     expect(rig.root.querySelector('#language-select')).toBeNull();
     expect(rig.q('main').getAttribute('data-language')).toBe('sq-AL');
     expect(rig.service.calls).not.toContain('createSession');
@@ -59,7 +59,7 @@ describe('on the device, with no account', () => {
   it('shows no team even for an account whose enrolment carries one, and labels the language only', async () => {
     const rig = await makeRig({ signedIn: true, enableGoTell: true }); // the default account’s enrolment is stored with teamId 'albania'
     expect(rig.service.enrolments.get('L1')![0].teamId).toBe('albania');
-    expect(rig.q('#language-name').textContent).toBe('Albanian'); // one language: plain text, no select
+    expect(rig.q('#language-name').textContent).toBe('Albanian'); // the home names the language; choosing it is on the Account page (2026-11-18)
     expect(rig.root.querySelector('#language-select')).toBeNull();
     for (const route of ['review', 'tell', 'settings']) {
       await rig.go(route);
@@ -118,10 +118,12 @@ describe('on the device, with no account', () => {
     ] } });
     await rig.go('settings');
     await rig.go('review');
-    const options = rig.qa<HTMLOptionElement>('#language-select option');
-    expect(options.map((o) => o.textContent)).toEqual(['German', 'Albanian', 'Hindi']); // setup’s choices first, newest first
-    expect(rig.q<HTMLSelectElement>('#language-select').value).toBe('LOC-e2');
+    expect(shownEnrolment(rig)).toBe('LOC-e2');
     expect(rig.q('main').getAttribute('data-language')).toBe('de');
+    // the languages are listed and switched on the Account page (2026-11-18): the one being reviewed first, then setup's choices, newest first
+    const listed = await accountLanguages(rig);
+    expect(listed.map((l) => l.name)).toEqual(['German', 'Albanian', 'Hindi']);
+    expect(listed.map((l) => l.current)).toEqual([true, false, false]);
   });
 
   it('GoTell saves a draft on the device: the local api’s documents hold it, with no account', async () => {
@@ -241,7 +243,7 @@ describe('the account is optional and only keeps progress across devices', () =>
     const rig = await makeRig({ local: true });
     await rig.app.ctx.record([cardAdded(LOC, 'zog', 'meaning-to-form', '2026-09-01T09:00:00.000Z')]);
     await rig.go('account');
-    expect(rig.q('#settings-device-only').textContent).toBe('On this device only.');
+    expect(rig.q('#settings-device-only').textContent).toBe('On this device only');
     expect(rig.q<HTMLAnchorElement>('#settings-keep-progress').getAttribute('href')).toBe('#/signin');
     const btn = rig.q<HTMLButtonElement>('#clear-local');
     click(btn);

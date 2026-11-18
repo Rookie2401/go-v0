@@ -7,7 +7,7 @@ import { h } from '../dom';
 import type { View } from './view';
 
 const QUESTIONS: ReadonlyArray<readonly [string, string]> = [
-  ['How do I start?', 'Choose your language: GoReview asks the first time you open it, and the + beside the language at the top adds another. On this website and on a phone, create an account first; everything else is set up in GoReview, and GoLearn is not needed to start.'],
+  ['How do I start?', 'Choose your language: GoReview asks the first time you open it. To switch to another of your languages or add a new one, open Account (the person beside the Settings cog). On this website and on a phone, create an account first; everything else is set up in GoReview, and GoLearn is not needed to start.'],
   ['Where do my words come from?', 'From what you read. Look up a word with GoLearn on a web page or in Biblia, and it can come to GoReview once you have met it. You can also choose words yourself under My Vocabulary.'],
   ['Why are there no new words today?', 'GoReview only asks about words you have met and that it has checked facts for, and it keeps to the number of new words you set. The home page says which of these is holding things back. You can change the numbers in Settings.'],
   ['How does GoReview decide when a word comes back?', 'Each answer moves the word’s next review: sooner when it was hard, later when it was easy. Words you have not reached stay due until you answer them.'],

@@ -37,7 +37,10 @@ describe.skipIf(!have)('the built extension', () => {
     // and the orphaned-script guard adds 0.2 KB. A ceiling, not a target.
     // 2026-11-13: 560 -> 564 KB; the Greek sentence splitter now keeps an abbreviation's full stop inside the sentence (π.χ., δηλ.:
     // src/adapters/greek/abbreviations.ts, ~3 KB, merge dcffa49e), and the content script splits sentences; the build measured 560.3 KB.
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(564 * KB);
+    // 2026-11-17: 564 -> 580 KB for Reading Analysis (docs/ecosystem/READING-ANALYSIS.md): the page reads its whole text, names and counts its words and
+    // runs the analysis (src/reading/{extract,lexical,session,coverage}.ts), and needs the variety registry to know which languages must state a
+    // variety. content.js measured 575.5 KB (589,359 bytes; 560.3 KB before).
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(580 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
@@ -48,7 +51,11 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-17: 1,180 -> 1,190 KB for language varieties (6aa02507): the device's own Repository runs the same projection as the service, so
     // the worker now carries the variety registry and rules (repository-contract/src/varieties.ts), the per-variety fold (projection@8), the
     // scoped candidates and the variety a reader's events record. background.js measured 1,181.2 KB (1,209,578 bytes; 1,200,438 before).
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1190 * KB);
+    // 2026-11-17: 1,190 -> 1,200 KB for Reading Analysis: the worker's verified knowledge lookup (src/background/reading.ts, src/reading/classify.ts), and
+    // what keeps the device's Repository level with the account (localRepo catchUp, the accounts a device has taken in, a pull that knows whether it
+    // reached the account's head, remembers the events it could not store and carries out the account's deletions: repository-local/src/transfer.ts).
+    // background.js measured 1,195.8 KB (1,224,510 bytes; 1,181.2 KB before).
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1200 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.

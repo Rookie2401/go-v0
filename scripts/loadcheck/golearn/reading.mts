@@ -374,6 +374,15 @@ async function main(): Promise<void> {
   const stamp = await bg({ type: 'golearn:status' });
   step('I2 the worker that answered is the build under test', stamp?.build?.id === build.id, { running: stamp?.build?.id, expected: build.id });
 
+  // ── J. the learner deletes a record on the other device ──
+  const undone = await phone.putTombstone({ kind: 'event', id: mark.id }, 'marked by mistake');
+  step('J1 the second device deletes its mark of "libër" from the account', undone.ok === true && undone.data.applied?.events === 1, undone.ok ? undone.data.applied : undone);
+  const j = await analyse('article');
+  const rj = j.s?.result;
+  const liberAfter = await deviceRow('lemma:sq:libër:NOUN');
+  step(`J2 the next analysis no longer counts it: Known is back to ${shkon} of ${total} (${pct(shkon, total)}), verified, and the device no longer holds the mark`, j.s?.stage === 'done' && rj.coverage.knownOccurrences === shkon && rj.snapshot.state === 'verified' && liberAfter?.level !== 'known',
+    { ms: j.ms, known: rj?.coverage.knownOccurrences, snapshot: rj?.snapshot, deviceLevel: liberAfter?.level ?? 'no row' });
+
   const bad = consoleLog.filter((l) => /reading|Reading/.test(l.text));
   step('no error or exception from Reading Analysis in any console', bad.length === 0, bad.slice(0, 5));
 }

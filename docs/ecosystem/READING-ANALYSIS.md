@@ -160,8 +160,19 @@ the page underlines included, went stale without saying so.
 
 Now:
 
-- `localRepo.catchUp()` pulls the events the device lacks, from its cursor, and says whether it reached the
-  account's head. A pull returns `{ added, complete, afterSeq, head, refused }` (`repository-local/transfer.ts`).
+- `localRepo.catchUp()` brings the device level with the account and says whether it got there. The pull
+  (`repository-local/src/transfer.ts`) returns `{ added, complete, afterSeq, head, refused, deletions, removed }`:
+  - **the end is the account's head.** A page shorter than asked is not the end while the head lies beyond it;
+  - **a page that does not begin after the cursor is not trusted.** It is asked for again, then one event after
+    the cursor is asked for by itself. An event before the page's first shows a hole: the page is not taken and
+    the pull ends incomplete. (A range the learner deleted looks the same from one answer; two different
+    questions tell them apart.)
+  - **an event the device's store will not take is remembered** with the cursor (a kind from a newer contract),
+    however many there are, and asked for again at every pull. While one is outstanding the device is not level;
+  - **what the learner deleted on another device is deleted here.** The event list only says what was added, so
+    the account now lists its deletion instructions (`GET /tombstones`) and the device carries out each one it
+    has not carried out yet, before it reads the new events. A service that cannot list them (older than this
+    change) leaves the device "not level": `deletions-unknown`.
 - A sync round that received events recorded by **another** device calls it (the device's own events coming back
   do not), so GoLearn Active benefits as well.
 - Every analysis starts with a snapshot that does the same and reports the outcome.
@@ -172,8 +183,9 @@ Now:
 | `device`, `verified` | not signed in: this device's record is the whole of it |
 | `account`, `unverified` + reason | the account could not be read to its head now; the device's record was used, and the popup says since when it is known to be whole |
 
-Reasons: `offline`, `needs-sign-in`, `unreachable`, `timeout` (20 s), `incomplete`, `refused-events` (the device's
-store would not take an event the account holds), `mixed-accounts`.
+Reasons: `offline`, `needs-sign-in` (also when the service answers 401 while the device is being brought level),
+`unreachable`, `timeout` (20 s), `incomplete`, `refused-events`, `deletions-unknown`, `mixed-accounts`. Each has its
+own sentence in the popup, and each says since when the device is known to have been level, when it ever was.
 
 An unverified figure is shown as "87.6% Known (not verified)" with "A definitive current figure is not available"
 and the reason. It is never shown as if it were verified.
@@ -181,7 +193,16 @@ and the reason. It is never shown as if it were verified.
 **Mixed accounts.** A device has one local learner. Signing in to a second account pulls that account's history
 into the same record. That is how a device has always worked and it is not changed here; the accounts a device has
 exchanged history with are now remembered (`golearn:local-accounts`), and with more than one the snapshot is
-`unverified`, reason `mixed-accounts`, until the device's data is cleared.
+`unverified`, reason `mixed-accounts`, until the device's data is cleared. A device from before the list was kept
+has it read once from the markers of its own events (every event sent to an account or taken from one says
+which), so two accounts already mixed are found.
+
+**A store that would not open.** A device whose history lives in IndexedDB, and whose IndexedDB will not open,
+runs on a memory-only stand-in that does not hold the history. Every word would read as never met. Reading
+Analysis gives no figure then ("the vocabulary kept on this device could not be opened"), signed in or not.
+
+**Signed in, but no account to ask** (no service address, a session that cannot be used) is an account that could
+not be checked, never "this device is the whole record".
 
 ### 6.2 Every word of the text was asked about, and answered
 
@@ -201,6 +222,14 @@ exchanged history with are now remembered (`golearn:local-accounts`), and with m
 The Repository has a generation that changes whenever it takes in an event. The snapshot names it; every batch
 names it; a batch that arrives after a change is answered `snapshot-changed`, and the page starts the batches again
 from a new snapshot (three times, then "your vocabulary kept changing"). A worker restart is a change too.
+
+An event is readable from the moment the store has it, which is before the write's own call returns, and a pull
+writes page by page while it runs. So a write is announced before it starts: while one is under way the generation
+carries a mark no settled value has. A batch cannot be answered from the middle of a write under a snapshot taken
+before or during it.
+
+A row whose level is not one of the six is damaged. It is not re-read by some other rule (the page's older
+thresholds would work a level out from its dimensions and could call a Familiar word Known): the batch is refused.
 
 ### 6.4 What "100 % agreement" means here
 
@@ -257,8 +286,9 @@ Not kept, and why:
    range rather than a single exact figure.
 3. **The extension cannot yet check that the service runs the same projection version as the device.** Both are
    built from one repository, so a deploy of the service and a build of the extension from the same commit agree.
-4. **Accounts used on a device before this version are not all detectable.** Only the last account the device
-   pulled from is known from before; from now on every one is remembered.
+4. **The service must be deployed with this change for a signed-in figure to be verified.** Until it lists
+   deletions (`GET /tombstones`), every signed-in analysis says "not verified: your account could not say which
+   records you have deleted". The figure itself is still given, from the device's record.
 5. **A heading inside `<header>` is not read** (the scanner treats `header` as page chrome, for Active too), so an
    article's title placed there is not in the count.
 6. **Only what the document holds is analysed.** A reader that loads one chapter at a time gives a chapter's
@@ -266,6 +296,13 @@ Not kept, and why:
 7. **A registry entry that refuses a reader refuses Reading Analysis.** Kindle Cloud Reader, Kobo and the other
    refused readers are not read.
 8. **Cross-origin frames are not read** (the browser does not allow it, and the registry does not ask).
+8a. **What a transport that lies consistently cannot be told from.** A service or proxy that gave the same wrong
+    answer to every shape of question about a position could not be told from a range the learner deleted, and a
+    Repository that returned fewer rows than it holds could not be told from "no record". The checks catch a wrong
+    or short answer to one request; they are not proof against a store that is wrong throughout.
+8b. **A sync round does not notice a deletion.** A deletion made on another device reaches this one at the next
+    analysis or sign-in, not at the minute's sync round (which is prompted by new events), so GoLearn Active's
+    underlines can show a deleted record until then.
 9. **Packs with a small built-in word list.** On the course samples the Latin and Hebrew analysers leave about
    29 % of tokens without a reading before the dictionary is asked (Greek 8 %). With the dictionary not downloaded
    or offline those stay unidentified, and the popup says so.

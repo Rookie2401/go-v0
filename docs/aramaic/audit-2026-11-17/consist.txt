@@ -1,0 +1,404 @@
+
+##### 0 flagged occurrences
+Dan 2:39	אֲרַע	ANcfsd	772	אֲרַע	3	 [FLAGGED]
+Dan 3:1	אַמִּ֣ין	ANcfsa	521	אַמָּה	4	 [FLAGGED]
+Dan 3:1	אַמִּ֣ין	ANcfsa	521	אַמָּה	4	 [FLAGGED]
+Dan 4:14	יִצְבֵּא֙	AVqp3ms	6634	צְבָא	4	 [FLAGGED]
+Dan 4:21	מַלְכָּֽא	ANcmsc/Sp1cs	4430	מֶלֶךְ	3/1	 [FLAGGED]
+Dan 4:31	עַיְנַ֣י	ANcfsc/Sp1cs	5870	עַיִן	3/1	 [FLAGGED]
+Dan 5:18	יְהַ֖ב	AVqi3ms	3052	יְהַב	3	 [FLAGGED]
+Dan 5:27	תְּקִ֥ילְתָּה	AVQi2ms	8625 a	תְּקַל	6	 [FLAGGED]
+Dan 7:7	קָֽדָמַ֔יהּ	ANcfsd/Td	6925	קֳדָם	4/1	 [FLAGGED]
+Dan 7:19	כָּלְּהֵ֑ין	ANcmsc/Sp3fs	3605	כֹּל	2/3	 [FLAGGED]
+Ezra 5:9	דְנָה֙	APdxmp	1836	דֵּן	3	 [FLAGGED]
+Ezra 7:18	עֲלָ֨ךְ	AR/Sp2ms	5921 a	עַל	2/1	 [FLAGGED]
+
+##### 1 code segments vs lemma-chain prefixes vs letter segmentation
+count 0
+
+##### 2 state letter d without a Td segment, and Td without state d
+Dan 2:39	אֲרַע	ANcfsd	772	אֲרַע	3	state d, no Td piece [FLAGGED]
+Dan 5:8	וּפִשְׁרֵ֖הּ	AC/Ncmsd/Sp3ms	c/6591	פְּשַׁר	1/3/1	state d, no Td piece
+Dan 5:28	לְמָדַ֥י	AR/Ngmsd	l/4076	מָדַי	1/3	state d, no Td piece
+Dan 5:28	וּפָרָֽס	AC/Ngmsd	c/6540	פָּרַס	1/3	state d, no Td piece
+Dan 7:22	יֽוֹמַיָּ֔א	ANp/Td	3118	יוֹם	4/1	Td piece, state not d
+Ezra 4:10	נַהֲרָ֖ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 4:11	נַהֲרָ֖ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 4:16	נַהֲרָ֔א	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 4:17	נַהֲרָ֛ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 4:20	נַהֲרָ֑ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 5:3	נַהֲרָ֛ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 5:6	נַהֲרָ֗ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 5:6	נַהֲרָ֑ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 6:6	נַהֲרָ֜ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 6:6	נַהֲרָ֑ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 6:8	נַהֲרָ֔ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 6:13	נַהֲרָ֛ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 7:21	נַהֲרָ֑ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+Ezra 7:25	נַהֲרָ֔ה	ANp/Td	5103	נְהַר	3/1	Td piece, state not d
+count 19
+
+##### 3 nominal ending against the tagged gender/number/state (nouns, adjectives, numerals, participles without suffix)
+Dan 2:4b	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:5	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:7	תִנְיָנ֖וּת	AAobpa	8579	תִּנְיָנוּת	6	plural absolute without -in/-an
+Dan 2:7	מַלְכָּ֕א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:8	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:10	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:10	יַבֶּשְׁתָּ֔א	ANcfsd/Td	3007	יַבֶּשֶׁת	4/1	singular determined without -a
+Dan 2:10	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:11	מַלְכָּ֤ה	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:11	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:12	מַלְכָּ֕א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:14	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:15	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:15	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:16	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:16	לְמַלְכָּֽא	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 2:23	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:24	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:24	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:24	לְמַלְכָּ֥א	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 2:25	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:25	לְמַלְכָּ֥א	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 2:26	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:27	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:27	מַלְכָּ֣א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:27	חַרְטֻמִּין֙	ANcmpa	2749	חַרְטֹם	6	plural absolute without -in/-an
+Dan 2:27	לְמַלְכָּֽא	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 2:28	לְמַלְכָּא֙	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 2:29	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:30	חַיַּיָּ֔א	AAampd/Td	2417	חַי	3/1	plural determined without -ayya/-ata
+Dan 2:30	לְמַלְכָּ֣א	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 2:31	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:34	וְחַסְפָּ֑א	AC/Ncmsd/Td	c/2635	חֲסַף	1/3/1	singular determined without -a
+Dan 2:35	חַסְפָּ֨א	ANcmsd/Td	2635	חֲסַף	3/1	singular determined without -a
+Dan 2:35	נְחָשָׁ֜א	ANcmsd/Td	5174	נְחָשׁ	3/1	singular determined without -a
+Dan 2:35	כַּסְפָּ֣א	ANcmsd/Td	3702	כְּסַף	3/1	singular determined without -a
+Dan 2:36	מַלְכָּֽא	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:37	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:37	וְתָקְפָּ֥א	AC/Ncmsd/Td	c/8632 b	תְּקֹף	1/3/1	singular determined without -a
+Dan 2:38	אֲ֠נָשָׁא	ANcmsd/Td	606	אֱנָשׁ	3/1	singular determined without -a
+Dan 2:38	רֵאשָׁ֖ה	ANcmsd/Td	7217	רֵאשׁ	3/1	singular determined without -a
+Dan 2:39	אֲרַע	ANcfsd	772	אֲרַע	3	singular determined without -a [FLAGGED]
+Dan 2:39	נְחָשָׁ֔א	ANcmsd/Td	5174	נְחָשׁ	3/1	singular determined without -a
+Dan 2:40	כֹּ֔לָּא	ANcmsd/Td	3606	כֹּל	2/1	singular determined without -a
+Dan 2:43	אֲנָשָׁ֔א	ANcmsd/Td	606	אֱנָשׁ	3/1	singular determined without -a
+Dan 2:43	חַסְפָּֽא	ANcmsd/Td	2635	חֲסַף	3/1	singular determined without -a
+Dan 2:45	נְחָשָׁ֤א	ANcmsd/Td	5174	נְחָשׁ	3/1	singular determined without -a
+Dan 2:45	חַסְפָּא֙	ANcmsd/Td	2635	חֲסַף	3/1	singular determined without -a
+Dan 2:45	כַּסְפָּ֣א	ANcmsd/Td	3702	כְּסַף	3/1	singular determined without -a
+Dan 2:45	לְמַלְכָּ֔א	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 2:46	מַלְכָּ֤א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:47	מַלְכָּ֨א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:48	מַלְכָּ֜א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:49	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 2:49	עֲבִֽידְתָּא֙	ANcfsd/Td	5673	עֲבִידָה	5/1	singular determined without -a
+Dan 2:49	מַלְכָּֽא	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:1	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:1	שִׁתִּ֔ין	AAcfpa	8361	שִׁתִּין	4	plural absolute without -in/-an
+Dan 3:2	מַלְכָּ֡א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:2	מַלְכָּֽא	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:3	מִֽתְכַּנְּשִׁ֡ין	AVMrmpa	3673	כָּנַשׁ	7	plural absolute without -in/-an
+Dan 3:3	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:4	אֻמַּיָּ֖א	ANcfpd/Td	524	אֻמָּה	3/1	plural determined without -ayya/-ata
+Dan 3:5	פְּסַנְתֵּרִין֙	ANcmsa	6460	פְּסַנְטֵרִין	7	singular ending in -in
+Dan 3:5	מַלְכָּֽא	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:6	יָקִֽדְתָּֽא	AVqrfsd/Td	3345	יְקַד	4/1	singular determined without -a
+Dan 3:7	פְּסַנְטֵרִ֔ין	ANcmsa	6460	פְּסַנְטֵרִין	7	singular ending in -in
+Dan 3:7	מַלְכָּֽא	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:9	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:9	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:10	מַלְכָּא֮	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:10	פְסַנְתֵּרִין֙	ANcmsa	6460	פְּסַנְטֵרִין	7	singular ending in -in
+Dan 3:11	יָקִֽדְתָּֽא	AVqrfsd/Td	3345	יְקַד	4/1	singular determined without -a
+Dan 3:12	יְהוּדָאיִ֗ן	ANgmpa	3062	יְהוּדָאִי	7	plural absolute without -in/-an
+Dan 3:12	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:13	מַלְכָּֽא	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:15	פְּסַנְתֵּרִין֩	ANcmsa	6460	פְּסַנְטֵרִין	7	singular ending in -in
+Dan 3:15	יָקִֽדְתָּ֑א	AVqrfsd/Td	3345	יְקַד	4/1	singular determined without -a
+Dan 3:16	לְמַלְכָּ֑א	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 3:17	יָקִֽדְתָּ֛א	AVqrfsd/Td	3345	יְקַד	4/1	singular determined without -a
+Dan 3:17	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:18	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:19	שִׁבְעָ֔ה	AAcmsa	7655	שִׁבְעָה	4	masc. sing. absolute ending in -a
+Dan 3:20	יָקִֽדְתָּֽא	AVqrfsd/Td	3345	יְקַד	4/1	singular determined without -a
+Dan 3:21	יָקִֽדְתָּֽא	AVqrfsd/Td	3345	יְקַד	4/1	singular determined without -a
+Dan 3:22	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:23	יָֽקִדְתָּ֖א	AVqrfsd/Td	3345	יְקַד	4/1	singular determined without -a
+Dan 3:24	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:24	תְּלָתָ֜א	AAcmsa	8532	תְּלָת	4	masc. sing. absolute ending in -a
+Dan 3:24	לְמַלְכָּ֔א	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 3:24	מַלְכָּֽא	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:26	יָקִֽדְתָּא֒	AVqrfsd/Td	3345	יְקַד	4/1	singular determined without -a
+Dan 3:27	וּ֠מִֽתְכַּנְּשִׁין	AC/VMrmpa	c/3673	כָּנַשׁ	1/7	plural absolute without -in/-an
+Dan 3:27	מַלְכָּא֒	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:28	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:29	אֱלָ֣ה	ANcmsa	426	אֱלָהּ	3	masc. sing. absolute ending in -a
+Dan 3:30	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 3:31	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 4:4	עָלִּ֗ין	AVqrmpa	5954	עֲלַל	4	plural absolute without -in/-an
+Dan 4:5	קַדִּישִׁ֖ין	AAampa	6922	קַדִּישׁ	6	plural absolute without -in/-an
+Dan 4:6	קַדִּישִׁין֙	AAampa	6922	קַדִּישׁ	6	plural absolute without -in/-an
+Dan 4:9	לְכֹ֖לָּא	AR/Ncmsd/Td	l/3606	כֹּל	1/2/1	singular determined without -a
+Dan 4:13	אֲנָשָׁ֣א	ANcmsd/Td	606	אֱנָשׁ	3/1	singular determined without -a
+Dan 4:14	קַדִּישִׁ֖ין	AAampa	6922	קַדִּישׁ	6	plural absolute without -in/-an
+Dan 4:14	חַ֠יַּיָּא	AAampd/Td	2417	חַי	3/1	plural determined without -ayya/-ata
+Dan 4:14	אֲנָשָׁ֗א	ANcmsd/Td	606	אֱנָשׁ	3/1	singular determined without -a
+Dan 4:14	אֲנָשִׁ֖ים	ANcmpa	606	אֱנָשׁ	5	plural absolute without -in/-an
+Dan 4:15	מַלְכָּ֣א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 4:15	פִּשְׁרֵ֣א	ANcmsd/Td	6591	פְּשַׁר	3/1	singular determined without -a
+Dan 4:15	קַדִּישִׁ֖ין	AAampa	6922	קַדִּישׁ	6	plural absolute without -in/-an
+Dan 4:16	מַלְכָּ֜א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 4:16	וּפִשְׁרֵא֙	AC/Ncmsd/Td	c/6591	פְּשַׁר	1/3/1	singular determined without -a
+Dan 4:18	לְכֹ֖לָּא	AR/Ncmsd/Td	l/3606	כֹּל	1/2/1	singular determined without -a
+Dan 4:19	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 4:20	מַלְכָּ֡א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 4:20	עִדָּנִ֖ין	AAcbsa	5732	עִדָּן	5	singular ending in -in
+Dan 4:21	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 4:22	אֲנָשָׁ֡א	ANcmsd/Td	606	אֱנָשׁ	3/1	singular determined without -a
+Dan 4:22	וְעִשְׂבָּ֥א	AC/Ncmsd/Td	c/6211 b	עֲשַׂב	1/3/1	singular determined without -a
+Dan 4:22	אֲנָשָׁ֔א	ANcmsd/Td	606	אֱנָשׁ	3/1	singular determined without -a
+Dan 4:23	שַׁלִּטִ֖ן	AAampa	7990	שַׁלִּיט	4	plural absolute without -in/-an
+Dan 4:24	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 4:24	עֲנָ֑יִן	ANcmpa	6033	עֲנָה	4	plural absolute without -in/-an
+Dan 4:25	כֹּ֣לָּא	ANcmsd/Td	3606	כֹּל	2/1	singular determined without -a
+Dan 4:25	מַלְכָּֽא	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 4:27	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 4:28	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 4:28	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 4:29	אֲנָשָׁא֩	ANcmsd/Td	606	אֱנָשׁ	3/1	singular determined without -a
+Dan 4:29	עִשְׂבָּ֤א	ANcmsd/Td	6211 b	עֲשַׂב	3/1	singular determined without -a
+Dan 4:29	אֲנָשָׁ֔א	ANcmsd/Td	606	אֱנָשׁ	3/1	singular determined without -a
+Dan 4:30	אֲנָשָׁ֣א	ANcmsd/Td	606	אֱנָשׁ	3/1	singular determined without -a
+Dan 4:30	וְעִשְׂבָּ֤א	AC/Ncmsd/Td	c/6211 b	עֲשַׂב	1/3/1	singular determined without -a
+Dan 5:1	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:1	אַלְפָּ֖א	AAcmsd/Td	506	אֲלַף	3/1	singular determined without -a
+Dan 5:2	וְכַסְפָּ֔א	AC/Ncmsd/Td	c/3702	כְּסַף	1/3/1	singular determined without -a
+Dan 5:2	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:3	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:4	וְכַסְפָּ֛א	AC/Ncmsd/Td	c/3702	כְּסַף	1/3/1	singular determined without -a
+Dan 5:4	נְחָשָׁ֥א	ANcmsd/Td	5174	נְחָשׁ	3/1	singular determined without -a
+Dan 5:5	נֶבְרַשְׁתָּ֔א	ANcfsd/Td	5043	נֶבְרְשָׁא	5/1	singular determined without -a
+Dan 5:5	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:5	וּמַלְכָּ֣א	AC/Ncmsd/Td	c/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 5:6	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:6	נָֽקְשָֽׁן	AVqrfpa	5368	נְקַשׁ	4	plural absolute without -in/-an
+Dan 5:7	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:7	מַלְכָּ֜א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:8	עָֽלִּ֔ין	AVqrmpa	5954	עֲלַל	4	plural absolute without -in/-an
+Dan 5:8	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:8	לְמַלְכָּֽא	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 5:9	מַלְכָּ֤א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:9	מִֽשְׁתַּבְּשִֽׁין	AVMrmpa	7672	שְׁבַשׁ	7	plural absolute without -in/-an
+Dan 5:10	מִלֵּ֤י	ANcfpc	4406	מִלָּה	3	plural construct without -e/-at
+Dan 5:10	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:10	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:11	קַדִּישִׁין֮	AAampa	6922	קַדִּישׁ	6	plural absolute without -in/-an
+Dan 5:11	וּמַלְכָּ֤א	AC/Ncmsd/Td	c/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 5:11	חַרְטֻמִּ֣ין	ANcmpa	2749	חַרְטֹם	6	plural absolute without -in/-an
+Dan 5:11	מַלְכָּֽא	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:12	וּמְשָׁרֵ֣א	AC/Vprmpc	c/8271	שְׁרֵא	1/4	plural construct without -e/-at
+Dan 5:12	מַלְכָּ֥א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:13	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:13	מַלְכָּ֜א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:13	מַלְכָּ֥א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:17	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:17	לְמַלְכָּ֔א	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 5:18	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 5:19	זָיְעִ֥ין	AVqrmsa	2112	זוּעַ	5	singular ending in -in
+Dan 5:21	אֲנָשָׁ֨א	ANcmsd/Td	606	אֱנָשׁ	3/1	singular determined without -a
+Dan 5:21	עִשְׂבָּ֤א	ANcmsd/Td	6211 b	עֲשַׂב	3/1	singular determined without -a
+Dan 5:21	אֲנָשָׁ֔א	ANcmsd/Td	606	אֱנָשׁ	3/1	singular determined without -a
+Dan 5:23	כַסְפָּֽא	ANcmsd/Td	3702	כְּסַף	3/1	singular determined without -a
+Dan 5:23	נְחָשָׁ֨א	ANcmsd/Td	5174	נְחָשׁ	3/1	singular determined without -a
+Dan 5:24	פַּסָּ֣א	ANcmsd/Td	6447	פַּס	2/1	singular determined without -a
+Dan 5:27	בְמֹֽאזַנְיָ֖א	AR/Ncmpd/Td	b/3977	מֹאזֵן	1/5/1	plural determined without -ayya/-ata
+Dan 5:28	לְמָדַ֥י	AR/Ngmsd	l/4076	מָדַי	1/3	singular determined without -a
+Dan 5:28	וּפָרָֽס	AC/Ngmsd	c/6540	פָּרַס	1/3	singular determined without -a
+Dan 5:30	מַלְכָּ֥א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:1	שִׁתִּ֥ין	AAcbpa	8361	שִׁתִּין	4	plural absolute without -in/-an
+Dan 6:1	וְתַרְתֵּֽין	AC/Acbpa	c/8648	תְּרֵין	1/5	plural absolute without -in/-an
+Dan 6:3	תְּלָתָ֔א	AAcmsa	8532	תְּלָת	4	masc. sing. absolute ending in -a
+Dan 6:3	וּמַלְכָּ֖א	AC/Ncmsd/Td	c/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 6:4	וַאֲחַשְׁדַּרְפְּנַיָּ֑א	AC/Ncmsd/Td	c/324	אֲחַשְׁדַּרְפַּן	1/8/1	singular determined without -a; singular ending in -ayya
+Dan 6:4	וּמַלְכָּ֣א	AC/Ncmsd/Td	c/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 6:7	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:7	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:8	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:8	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:9	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:10	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:11	וְכַוִּ֨ין	AC/Ncfpa	c/3551	כַּו	1/4	plural absolute without -in/-an
+Dan 6:11	בְיוֹמָ֜א	AR/Ncmpd/Td	b/3118	יוֹם	1/3/1	plural determined without -ayya/-ata
+Dan 6:13	וְאָמְרִ֥ין	AC/Vqrmsa	c/560	אֲמַר	1/5	singular ending in -in
+Dan 6:13	מַלְכָּא֮	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:13	מַלְכָּא֒	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:13	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:13	מַלְכָּ֜א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:14	מַלְכָּא֒	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:14	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:15	מַלְכָּ֜א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:15	שִׁמְשָׁ֔א	ANcbsd/Td	8122	שֶׁמֶשׁ	3/1	singular determined without -a
+Dan 6:16	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:16	לְמַלְכָּ֗א	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Dan 6:16	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:16	מַלְכָּ֥א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:17	מַלְכָּ֣א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:17	לְגֻבָּ֖א	AR/Ncmsd/Td	l/1358	גֹּב	1/2/1	singular determined without -a
+Dan 6:17	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:18	גֻּבָּ֑א	ANcmsd/Td	1358	גֹּב	2/1	singular determined without -a
+Dan 6:18	מַלְכָּ֜א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:19	מַלְכָּ֤א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:20	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:20	לְגֻבָּ֥א	AR/Ncmsd/Td	l/1358	גֹּב	1/2/1	singular determined without -a
+Dan 6:21	לְגֻבָּ֔א	AR/Ncmsd/Td	l/1358	גֹּב	1/2/1	singular determined without -a
+Dan 6:21	מַלְכָּ֜א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:21	חַיָּ֔א	AAamsd/Td	2417	חַי	2/1	singular determined without -a; singular ending in -ayya
+Dan 6:22	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:22	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:23	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:24	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:24	גֻּבָּ֑א	ANcmsd/Td	1358	גֹּב	2/1	singular determined without -a
+Dan 6:24	גֻּבָּ֗א	ANcmsd/Td	1358	גֹּב	2/1	singular determined without -a
+Dan 6:25	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:25	גֻּבָּ֗א	ANcmsd/Td	1358	גֹּב	2/1	singular determined without -a
+Dan 6:26	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Dan 6:27	חַיָּ֗א	AAamsd/Td	2417	חַי	2/1	singular determined without -a; singular ending in -ayya
+Dan 7:1	מִלִּ֖ין	ANcfpa	4406	מִלָּה	4	plural absolute without -in/-an
+Dan 7:2	לְיַמָּ֥א	ATo/Ncmsd/Td	l/3221	יָם	1/2/1	singular determined without -a
+Dan 7:2	רַבָּֽא	AAamsd/Td	7229	רַב	2/1	singular determined without -a
+Dan 7:3	יַמָּ֑א	ANcmsd/Td	3221	יָם	2/1	singular determined without -a
+Dan 7:4	וְגַפִּ֥ין	AC/Ncbpa	c/1611	גַּף	1/4	plural absolute without -in/-an
+Dan 7:6	גַּפִּ֥ין	ANcbpa	1611	גַּף	4	plural absolute without -in/-an
+Dan 7:6	רֵאשִׁין֙	ANcmpa	7217	רֵאשׁ	5	plural absolute without -in/-an
+Dan 7:7	קָֽדָמַ֔יהּ	ANcfsd/Td	6925	קֳדָם	4/1	singular determined without -a [FLAGGED]
+Dan 7:8	אֲנָשָׁא֙	ANcmsd/Td	606	אֱנָשׁ	3/1	singular determined without -a
+Dan 7:11	מִלַּיָּ֣א	ANcfpd/Td	4406	מִלָּה	3/1	plural determined without -ayya/-ata
+Dan 7:12	בְחַיִּ֛ין	AR/Ncmpa	b/2417	חַי	1/4	plural absolute without -in/-an
+Dan 7:16	מִלַּיָּ֖א	ANcfpd/Td	4406	מִלָּה	3/1	plural determined without -ayya/-ata
+Dan 7:18	קַדִּישֵׁ֖י	AAampc	6922	קַדִּישׁ	5	plural construct without -e/-at
+Dan 7:21	קַדִּישִׁ֑ין	AAampa	6922	קַדִּישׁ	6	plural absolute without -in/-an
+Dan 7:22	לְקַדִּישֵׁ֖י	AR/Aampc	l/6922	קַדִּישׁ	1/5	plural construct without -e/-at
+Dan 7:22	עֶלְיוֹנִ֑ין	AAamsa	5946	עֶלְיוֹן	7	singular ending in -in
+Dan 7:22	קַדִּישִֽׁין	AAampa	6922	קַדִּישׁ	6	plural absolute without -in/-an
+Dan 7:23	כֵּן֮	AAampa	3652	כֵּן	2	plural absolute without -in/-an
+Dan 7:25	וּמִלִּ֗ין	AC/Ncfpa	c/4406	מִלָּה	1/4	plural absolute without -in/-an
+Dan 7:25	וּלְקַדִּישֵׁ֥י	AC/R/Aampc	c/l/6922	קַדִּישׁ	1/1/5	plural construct without -e/-at
+Dan 7:27	קַדִּישֵׁ֣י	AAampc	6922	קַדִּישׁ	5	plural construct without -e/-at
+Ezra 4:8	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 4:10	אֻמַּיָּ֗א	ANcfpd/Td	524	אֻמָּה	3/1	plural determined without -ayya/-ata
+Ezra 4:10	רַבָּ֣א	AAamsd/Td	7229	רַב	2/1	singular determined without -a
+Ezra 4:10	בְּקִרְיָ֖ה	AR/Ncfpa	b/7149	קִרְיָא	1/4	plural absolute without -in/-an
+Ezra 4:11	אִגַּרְתָּ֔א	ANcfsd/Td	104	אִגְּרָא	4/1	singular determined without -a
+Ezra 4:11	מַלְכָּ֑א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 4:12	לְמַלְכָּ֔א	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Ezra 4:12	מָֽרָדְתָּ֤א	AAafsd/Td	4779	מָרָד	4/1	singular determined without -a
+Ezra 4:12	וּבִֽישְׁתָּא֙	AC/Aafsd/Td	c/873	בִּאוּשׁ	1/4/1	singular determined without -a
+Ezra 4:12	וְאֻשַּׁיָּ֖א	AC/Ncmpd/Td	c/787	אֹשׁ	1/3/1	plural determined without -ayya/-ata
+Ezra 4:13	לְמַלְכָּ֔א	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Ezra 4:14	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 4:14	לְמַלְכָּֽא	ATo/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Ezra 4:15	עָבְדִ֣ין	AVqrmsa	5648	עֲבַד	5	singular ending in -in
+Ezra 4:16	לְמַלְכָּ֔א	ATo/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Ezra 4:17	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 4:23	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 4:24	תַּרְתֵּ֔ין	AAocpa	8648	תְּרֵין	5	plural absolute without -in/-an
+Ezra 5:1	נְבִיָּ֗א	ANcmsd/Td	5029	נְבִיא	3/1	singular determined without -a
+Ezra 5:1	נְבִיַּיָּ֔א	ANcmpd/Td	5029	נְבִיא	4/1	plural determined without -ayya/-ata
+Ezra 5:2	נְבִיַּיָּ֥א	ANcmpd/Td	5029	נְבִיא	4/1	plural determined without -ayya/-ata
+Ezra 5:6	אִ֠גַּרְתָּא	ANcfsd/Td	104	אִגְּרָא	4/1	singular determined without -a
+Ezra 5:6	מַלְכָּֽא	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 5:7	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 5:7	כֹֽלָּא	ANcmsd/Td	3606	כֹּל	2/1	singular determined without -a
+Ezra 5:8	לְמַלְכָּ֗א	AR/Ncmsd/Td	l/4430	מֶלֶךְ	1/3/1	singular determined without -a
+Ezra 5:8	מְדִֽינְתָּא֙	ANcfsd/Td	4083	מְדִינָה	5/1	singular determined without -a
+Ezra 5:8	רַבָּ֔א	AAamsd/Td	7229	רַב	2/1	singular determined without -a
+Ezra 5:8	וַעֲבִ֥ידְתָּא	AC/Ncfsd/Td	c/5673	עֲבִידָה	1/5/1	singular determined without -a
+Ezra 5:12	וְעַמָּ֖ה	AC/Ncmsd/Td	c/5972	עַם	1/2/1	singular determined without -a
+Ezra 5:13	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 5:13	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 5:14	וְכַסְפָּא֒	AC/Ncmsd/Td	c/3702	כְּסַף	1/3/1	singular determined without -a
+Ezra 5:14	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 5:14	פֶחָ֖ה	ANcmsa	6347	פֶּחָה	3	masc. sing. absolute ending in -a
+Ezra 5:16	אֻשַּׁיָּ֛א	ANcmpd/Td	787	אֹשׁ	3/1	plural determined without -ayya/-ata
+Ezra 5:17	מַלְכָּ֣א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 5:17	מַלְכָּ֣א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 5:17	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 5:17	מַלְכָּ֛א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 6:1	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 6:2	מְדִינְתָּ֖ה	ANcfsd/Td	4083	מְדִינָה	5/1	singular determined without -a
+Ezra 6:3	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 6:3	מַלְכָּא֮	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 6:3	אַמִּ֣ין	ANcfpa	521	אַמָּה	4	plural absolute without -in/-an
+Ezra 6:3	אַמִּ֥ין	ANcfpa	521	אַמָּה	4	plural absolute without -in/-an
+Ezra 6:4	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 6:5	וְכַסְפָּא֒	AC/Ncmsd/Td	c/3702	כְּסַף	1/3/1	singular determined without -a
+Ezra 6:8	מַלְכָּ֗א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 6:10	וּמְצַלַּ֕יִן	AC/Vprmpa	c/6739	צְלָא	1/5	plural absolute without -in/-an
+Ezra 6:10	לְחַיֵּ֥י	AR/Ncmpc	l/2417	חַי	1/3	plural construct without -e/-at
+Ezra 6:10	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 6:13	מַלְכָּ֛א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 6:14	נְבִיָּ֔א	ANcmpd/Td	5029	נְבִיא	3/1	plural determined without -ayya/-ata
+Ezra 6:15	מַלְכָּֽא	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 6:17	עִזִּ֜ין	ANcfpa	5796	עֵז	4	plural absolute without -in/-an
+Ezra 7:13	עַמָּ֨ה	ANcmsd/Td	5972	עַם	2/1	singular determined without -a
+Ezra 7:14	מַלְכָּ֜א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 7:15	מַלְכָּ֣א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 7:16	עַמָּ֤א	ANcmsd/Td	5972	עַם	2/1	singular determined without -a
+Ezra 7:17	בְּכַסְפָּ֣א	AR/Ncmsd/Td	b/3702	כְּסַף	1/3/1	singular determined without -a
+Ezra 7:18	כַּסְפָּ֥א	ANcmsd/Td	3702	כְּסַף	3/1	singular determined without -a
+Ezra 7:20	מַלְכָּֽא	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 7:21	מַלְכָּא֙	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 7:22	בַּתִּ֣ין	ANcmpa	1325	בַּת	4	plural absolute without -in/-an
+Ezra 7:22	בַּתִּ֥ין	ANcmpa	1325	בַּת	4	plural absolute without -in/-an
+Ezra 7:23	מַלְכָּ֖א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+Ezra 7:25	עַמָּה֙	ANcmsd/Td	5972	עַם	2/1	singular determined without -a
+Ezra 7:26	מַלְכָּ֔א	ANcmsd/Td	4430	מֶלֶךְ	3/1	singular determined without -a
+count 316
+
+##### 4 verb shape against the tagged stem and conjugation
+Dan 2:9	הִזְדְּמִנְתּוּן֙	AVMp3mp	2164	זְמַן	8	perfect 3mp without -u
+Dan 2:31	חָזֵ֤ה	AVhrmsa	2370	חֲזָא	3	derived-stem participle without m-; hafel imperfect/participle without -h-
+Dan 2:40	תַּדִּ֥ק	AVhi3fs	1855	דְּקַק	3	hafel imperfect/participle without -h-
+Dan 2:44	תַּדִּ֤ק	AVhi3fs	1855	דְּקַק	3	hafel imperfect/participle without -h-
+Dan 2:44	וְתָסֵיף֙	AC/Vhi3fs	c/5487	סוּף	1/4	hafel imperfect/participle without -h-
+Dan 3:21	וּרְמִ֕יו	AC/VQp3mp	c/7412	רְמָה	1/4	perfect 3mp without -u
+Dan 3:25	מַהְלְכִ֣ין	AVarmpa	1981	הֲלַךְ	6	afel imperfect/participle with -h-
+Dan 3:28	שַׁנִּ֔יו	AVpp3mp	8133	שְׁנָא	4	perfect 3mp without -u
+Dan 4:9	יְדוּרָן֙	AVqi3mp	1753	דּוּר	5	imperfect mp without -un/-u
+Dan 4:34	מַהְלְכִ֣ין	AVarmpa	1981	הֲלַךְ	6	afel imperfect/participle with -h-
+Dan 5:3	הַיְתִיו֙	AVhp3mp	858	אָתָה	5	perfect 3mp without -u
+Dan 5:3	וְאִשְׁתִּ֣יו	AC/Vqp3mp	c/8355	שְׁתָה	1/5	perfect 3mp without -u
+Dan 5:4	אִשְׁתִּ֖יו	AVqp3mp	8355	שְׁתָה	5	perfect 3mp without -u
+Dan 5:12	וַֽאַֽחֲוָיַ֨ת	AC/Vhc	c/263	אַחֲוָה	1/5	hafel without h-
+Dan 5:21	שַׁוִּ֗יְו	AVQp3mp	7739 a	שְׁוָה	4	perfect 3mp without -u
+Dan 5:23	הַיְתִ֣יו	AVhp3mp	858	אָתָה	5	perfect 3mp without -u
+Dan 6:6	הַשְׁכַּ֥חְנָֽה	AVhp1cp	7912	שְׁכַח	6	perfect 1cp without -na
+Dan 6:17	וְהַיְתִיו֙	AC/Vhp3mp	c/858	אָתָה	1/5	perfect 3mp without -u
+Dan 6:25	וְהַיְתִ֞יו	AC/Vhp3mp	c/858	אָתָה	1/5	perfect 3mp without -u
+Dan 7:8	אֶתְעֲקַ֖רָה	AVip3mp	6132	עֲקַר	6	perfect 3mp without -u
+Dan 7:9	רְמִ֔יו	AVQp3mp	7412	רְמָה	4	perfect 3mp without -u
+Dan 7:12	הֶעְדִּ֖יו	AVhp3mp	5709	עֲדָא	5	perfect 3mp without -u
+Dan 7:23	כָּל	AVqi3fs	3606	כֹּל	2	imperfect without a prefix letter; imperfect 2 / 3fs without t-
+Ezra 4:13	תְּהַנְזִֽק	AVhi3ms	5142	נְזַק	5	imperfect 3m/3fp without y-/l-
+Ezra 4:17	יָתְבִ֖ין	AVqrmpa	3488	יְתִב	5	peal that looks like a t-stem
+Ezra 5:2	וְשָׁרִ֣יו	AC/Vpp3mp	c/8271	שְׁרֵא	1/4	perfect 3mp without -u
+Ezra 5:3	לִבְּנֵ֔א	AR/Vqc	l/1124	בְּנָא	1/3	peal infinitive without m-
+Ezra 5:13	לִבְּנֵֽא	AR/Vqc	l/1124	בְּנָא	1/3	peal infinitive without m-
+count 28
+
+##### 5 pronominal suffix shape against the tagged person
+Dan 4:21	מַלְכָּֽא	ANcmsc/Sp1cs	4430	מֶלֶךְ	3/1	suffix piece "א" tagged 1cs [FLAGGED]
+Dan 4:22	עֲלָ֑יךְ	AR/Sp2ms	5922	עַל	2/2	suffix piece "יך" tagged 2ms
+Dan 4:27	הַדְרִֽי	ANcmsc/Sp1ms	1923	הֲדַר	3/1	unusual suffix tag 1ms on "י"
+Dan 5:11	אֲב֗וּךְ	ANcmsc/Sp2ms	2	אַב	2/2	suffix piece "וך" tagged 2ms
+Dan 5:11	אֲב֔וּךְ	ANcmsc/Sp2ms	2	אַב	2/2	suffix piece "וך" tagged 2ms
+Dan 5:11	אֲב֥וּךְ	ANcmsc/Sp2ms	2	אַב	2/2	suffix piece "וך" tagged 2ms
+Dan 5:18	אֲבֽוּךְ	ANcmsc/Sp2ms	2	אַב	2/2	suffix piece "וך" tagged 2ms
+Dan 5:21	עֲלַֽהּ	AR/Sp3cs	5922	עַל	2/1	unusual suffix tag 3cs on "ה"
+Dan 7:19	כָּלְּהֵ֑ין	ANcmsc/Sp3fs	3605	כֹּל	2/3	suffix piece "הין" tagged 3fs [FLAGGED]
+Ezra 4:17	כְּנָוָ֣תְה֔וֹן	ANcmpc/Sp3ms	3675	כְּנָת	4/3	suffix piece "הון" tagged 3ms
+Ezra 6:11	וּמִנִּי֮	AC/Ncmpc/Sp3ms	c/4481	מִן	1/2/1	suffix piece "י" tagged 3ms
+Jer 10:11	לְה֔וֹם	AR/Sp3mp	l	לְ	1/3	suffix piece "הום" tagged 3mp
+count 12

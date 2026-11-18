@@ -1,0 +1,42 @@
+# Battery 2: words and texts outside the exact bundled verse. Lines starting with T are typed by the auditor WITHOUT vowel points
+# (the consonants are certain; no pointing was typed). @MAM lines come from the owner's Biblia data; @WLC from the bundled corpus.
+# --- other Aramaic (not Biblical): Targum Onkelos Genesis 1:1, New Testament Aramaic put back into square script, the Kaddish opening
+T | בקדמין ברא יי ית שמיא וית ארעא | *
+T | טליתא קומי | *
+T | מרנא תא | *
+T | אבא | *
+T | אלהי אלהי למה שבקתני | *
+T | אתפתח | *
+T | יתגדל ויתקדש שמה רבא בעלמא די ברא כרעותה | *
+# --- single unpointed words that are also Hebrew words
+T alone | מלך | *
+T alone | מלכא | *
+T alone | שלם | *
+T alone | בר | *
+T alone | עבד | *
+T alone | אמר | *
+T alone | יום | *
+T alone | כל | *
+T alone | לא | *
+T alone | אתה | *
+T alone | על | *
+T alone | מן | *
+T alone | הוא | *
+T alone | די | *
+# --- other scripts
+T | ܡܠܟܐ ܕܥܠܡܐ | *
+T | malka di shmayya | *
+# --- Hebrew text given to the Aramaic card (MAM, from Biblia)
+@MAM Dan 1:1-2 | *
+@MAM Gen 1:1-3 | *
+@MAM Ps 23:1-3 | *
+@MAM Ezra 6:19-20 | *
+# --- the Hebrew card given an Aramaic verse (for the question how the language of a word is decided)
+@MAM Dan 2:20 lang=he | *
+# --- one word outside its verse: the first-listed reading wins
+@WLC Dan 7:13 alone | 1
+@WLC Dan 7:13 [1-2] | *
+@WLC Dan 3:14 alone | 4
+@WLC Dan 6:4 alone | 4
+@WLC Dan 2:20 [5-8] | *
+@WLC Dan 2:20 nopoint | *

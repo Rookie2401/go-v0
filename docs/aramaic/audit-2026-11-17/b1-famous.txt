@@ -1,0 +1,17 @@
+# Battery 1: the famous lines and the language boundary. Text is taken from the repository's bundled corpus (WLC) or from
+# the owner's Biblia data (MAM); nothing here is hand-typed.
+@WLC Dan 5:25 | *
+@WLC Dan 5:26 | *
+@WLC Dan 5:27 | *
+@WLC Dan 5:28 | *
+@WLC Gen 31:47 | *
+@MAM Gen 31:47 | *
+@WLC Jer 10:11 | *
+@MAM Jer 10:11 | *
+@MAM Jer 10:10-12 | *
+@WLC Dan 7:13 | *
+@WLC Dan 2:47 | *
+@MAM Dan 2:4 | *
+@MAM Ezra 4:7 | *
+@MAM Ezra 4:7-8 | *
+@WLC Dan 2:20 | *

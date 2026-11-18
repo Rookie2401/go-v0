@@ -1,0 +1,99 @@
+== 4481 מִן: ADP×107, CONJ×1, PRON×1, NOUN×1
+   CONJ: מִן AC 4481 Dan 3:22
+   PRON: וּמִנִּי֮ AC/R/Sp1cs c/m/4481 Dan 3:29
+   NOUN: וּמִנִּי֮ AC/Ncmpc/Sp3ms c/4481 Ezra 6:11
+== 2006 a הֵן: CONJ×14, PART×1
+   PART: וְהֵ֨ן AC/Tm c/2006 a Dan 2:6
+== 6925 קֳדָם: ADP×41, NOUN×1
+   NOUN: קָֽדָמַ֔יהּ ANcfsd/Td 6925 Dan 7:7
+== 1768 דִּי: SCONJ×286, CONJ×44, PRON×7, PART×7, ADJ×1
+   CONJ: דִּ֣י AC 1768 Dan 2:8 | דִּ֚י AC 1768 Dan 2:10 | דִּ֣י AC 1768 Dan 2:18 | דִּ֧י AC 1768 Dan 2:20 | דִּֽי AC 1768 Dan 2:23 | דִּ֤י AC 1768 Dan 2:40 | וְדִֽי AC/C c/1768 Dan 2:41 | דִּ֣י AC 1768 Dan 2:41 | וְדִ֣י AC/C c/1768 Dan 2:43 | כְדִ֣י AC/C k/1768 Dan 2:43 | דִּֽי AC 1768 Dan 2:45 | דִּ֣י AC 1768 Dan 2:47
+   PRON: דִּי APf3bs 1768 Dan 3:6 | דִּי APf3cs 1768 Dan 3:11 | דִּ֤י APfxcs 1768 Dan 4:14 | דִּ֥י APrxcs 1768 Dan 4:22 | דִּ֥י APrxcs 1768 Dan 4:29 | דִּ֥י APf3cs 1768 Dan 5:21 | דִי֩ APfxcs 1768 Ezra 7:18
+   PART: דִּ֣י AT 1768 Dan 4:12 | דִּ֣י AT 1768 Dan 4:20 | דִּ֥י AT 1768 Dan 4:26 | דִּ֣י AT 1768 Dan 5:5 | דִּֽי AT 1768 Dan 5:5 | דִֽי AT 1768 Dan 5:7
+   ADJ: דִּ֣י AAafsa 1768 Dan 4:23
+== 5732 עִדָּן: NOUN×12, NUM×1
+   NUM: עִדָּנִ֖ין AAcbsa 5732 Dan 4:20
+== 3606 כֹּל: NOUN×80, CONJ×22, VERB×1
+   CONJ: כָּל AC/C k/3606 Dan 2:8 | כָּל AC/C k/3606 Dan 2:10 | כָּל AC/C k/3606 Dan 2:12 | כָּל AC/C k/3606 Dan 2:24 | כָּל AC/C k/3606 Dan 2:40 | כָּל AC/C k/3606 Dan 2:41 | כָּל AC/C k/3606 Dan 2:45 | כָּל AC/C k/3606 Dan 3:7 | כָּל AC/C k/3606 Dan 3:8 | כָּל AC/C k/3606 Dan 3:22 | כָּל AC/C k/3606 Dan 3:29 | כָּל AC/C k/3606 Dan 4:15
+   VERB: כָּל AVqi3fs 3606 Dan 7:23
+== 6903 קְבֵל: CONJ×23, ADP×6
+   ADP: לְקָבְלָ֑ךְ AR/R/Sp2ms l/6903 Dan 2:31 | לָקֳבֵ֣ל AR/R l/6903 Dan 3:3 | וְלָקֳבֵ֥ל AC/R/R c/l/6903 Dan 5:1 | לָקֳבֵ֣ל AR/R l/6903 Dan 5:5 | לָקֳבֵ֨ל AR/R l/6903 Dan 5:10 | לָקֳבֵ֗ל AR/R l/6903 Ezra 6:13
+== 2370 חֲזָא: VERB×30, SCONJ×1
+   SCONJ: חֲזֵ֖ית ATr 2370 Dan 2:26
+== 2298 חַד: NUM×12, NOUN×1, ADJ×1
+   NOUN: חֲדָ֔ה ANcfsa 2298 Dan 6:18
+   ADJ: חַד֙ AAomsa 2298 Dan 7:16
+== 1932 הוּא: PRON×16, PART×6
+   PART: הִֽיא ATa 1932 Dan 2:20 | הֽוּא ATa 1932 Dan 2:28 | ה֔וּא ATa 1932 Dan 2:38 | ה֣וּא ATa 1932 Dan 2:47 | ה֣וּא ATa 1932 Dan 3:15 | ה֤וּא ATa 1932 Dan 5:13
+== l לְ: ADP×62, PART×5
+   PART: וְלָ֣ךְ AC/To/Sp2ms c/l Dan 4:22 | לָ֨ךְ ATo/Sp2ms l Dan 4:29 | לֵהּ֙ ATo/Sp3ms l Dan 6:17 | לֵהּ֙ ATo/Sp3ms l Dan 6:21 | לְהֽוֹן ATo/Sp3mp l Ezra 5:2
+== 1836 דֵּן: PRON×50, CONJ×8
+   CONJ: דְּנָ֔ה AC 1836 Dan 2:12 | דְּנָ֗ה AC 1836 Dan 2:24 | דְּנָ֡ה AC 1836 Dan 3:7 | דְּנָה֙ AC 1836 Dan 3:8 | דְּנָ֗ה AC 1836 Dan 3:22 | דְּנָ֑ה AC 1836 Dan 6:10 | דְּנָ֔ה AC 1836 Ezra 4:16 | דְּנָה֩ AC 1836 Ezra 7:17
+== 4101 מָה: PRON×11, PART×2
+   PART: מָ֥ה ATi 4101 Dan 2:15 | לְמָה֙ AR/Ti l/4101 Ezra 4:22
+== 3652 כֵּן: ADV×7, ADJ×1
+   ADJ: כֵּן֮ AAampa 3652 Dan 7:23
+== 927 בְּהַל: VERB×10, NOUN×1
+   NOUN: וּבְהִ֨תְבְּהָלָ֔ה AC/R/Ncfsa c/b/927 Dan 6:20
+== 1505 גְּזַר: VERB×6
+   VERB: גָּזְרִ֔ין AVqrmpa 1505 Dan 2:27 | הִתְגְּזֶ֤רֶת AVup3fs 1505 Dan 2:34 | אִתְגְּזֶ֨רֶת AVip3fs 1505 Dan 2:45 | וְגָזְרַיָּ֑א AC/Vqrmpd/Td c/1505 Dan 4:4 | וְגָזְרַיָּ֑א AC/Vqrmpd/Td c/1505 Dan 5:7 | גָּזְרִ֔ין AVqrmpa 1505 Dan 5:11
+== 1297 בְּרַם: CONJ×4, ADV×1
+   ADV: בְּרַ֗ם AD 1297 Dan 5:17
+== 3118 יוֹם: NOUN×14, PROPN×2
+   PROPN: יֽוֹמַיָּ֔א ANp/Td 3118 Dan 7:22 | בְּי֖וֹם AR/Np b/3118 Ezra 6:9
+== 2417 חַי: ADJ×5, NOUN×2
+   NOUN: בְחַיִּ֛ין AR/Ncmpa b/2417 Dan 7:12 | לְחַיֵּ֥י AR/Ncmpc l/2417 Ezra 6:10
+== 1994 הִמּוֹ: PRON×11, PART×1
+   PART: הִמּ֡וֹ ATa 1994 Ezra 5:11
+== 870 אֲתַר: NOUN×6, ADP×2
+   ADP: בָּאתַ֨ר AR 870 Dan 7:6 | בָּאתַ֣ר AR 870 Dan 7:7
+== 581 a אִנּוּן: PRON×2, PART×1
+   PART: אִנּוּן֙ ATa 581 a Ezra 5:4
+== 8532 תְּלָת: NUM×10, ADJ×1
+   ADJ: תְּלָתָ֖ה AAobsa 8532 Ezra 6:15
+== 703 אַרְבַּע: NUM×7, ADJ×1
+   ADJ: אַרְבְּעָ֥ה AAabsa 703 Dan 7:17
+== 5943 עִלַּי: ADJ×9, NOUN×1
+   NOUN: עִלָּאָ֜ה ANcmsd/Td 5943 Dan 4:14
+== 7954 שְׁלָה: ADJ×1
+   ADJ: שְׁלֵ֤ה AAamsa 7954 Dan 4:1
+== 2939 טְעַם: VERB×3, NOUN×1
+   NOUN: בִּטְעֵ֣ם AR/Ncmsc b/2939 Dan 5:2
+== 8648 תְּרֵין: NUM×3, ADJ×1
+   ADJ: תַּרְתֵּ֔ין AAocpa 8648 Ezra 4:24
+== 263 אַחֲוָה: VERB×1
+   VERB: וַֽאַֽחֲוָיַ֨ת AC/Vhc c/263 Dan 5:12
+== 4076 מָדַי: PROPN×4, NOUN×1
+   NOUN: לְמָדַ֥י AR/Ngmsd l/4076 Dan 5:28
+== 6540 פָּרַס: PROPN×5, NOUN×1
+   NOUN: וּפָרָֽס AC/Ngmsd c/6540 Dan 5:28
+== 5142 נְזַק: VERB×3, NOUN×1
+   NOUN: לְהַנְזָקַ֖ת AR/Ncfsc l/5142 Ezra 4:22
+== 3272 a יְעַט: VERB×1
+   VERB: אִתְיָעַ֜טוּ AVPp3mp 3272 a Dan 6:8
+== 6088 עֲצַב: ADJ×1
+   ADJ: עֲצִ֖יב AAamsa 6088 Dan 6:21
+== 6268 עַתִּיק: ADJ×2, PROPN×1
+   PROPN: עַתִּיק֙ ANp 6268 Dan 7:22
+== 5103 נְהַר: PROPN×14, NOUN×1
+   NOUN: נְהַ֣ר ANcmsa 5103 Dan 7:10
+== 5675 עֲבַר: PROPN×14
+   PROPN: עֲבַֽר ANp 5675 Ezra 4:10 | עֲבַֽר ANp 5675 Ezra 4:11 | בַּעֲבַ֣ר AR/Np b/5675 Ezra 4:16 | עֲבַֽר ANp 5675 Ezra 4:17 | עֲבַ֣ר ANp 5675 Ezra 4:20 | עֲבַֽר ANp 5675 Ezra 5:3 | עֲבַֽר ANp 5675 Ezra 5:6 | בַּעֲבַ֣ר AR/Np b/5675 Ezra 5:6 | עֲבַֽר ANp 5675 Ezra 6:6 | בַּעֲבַ֣ר AR/Np b/5675 Ezra 6:6 | עֲבַ֣ר ANp 5675 Ezra 6:8 | עֲבַֽר ANp 5675 Ezra 6:13
+== 749 אֲרַךְ: ADJ×1
+   ADJ: אֲֽרִֽיךְ AAamsa 749 Ezra 4:14
+== 2095 זְהַר: ADJ×1
+   ADJ: וּזְהִירִ֥ין AC/Aampa c/2095 Ezra 4:22
+== 5013 נְבָא: VERB×1
+   VERB: וְהִתְנַבִּ֞י AC/VMp3ms c/5013 Ezra 5:1
+== 7868 שִׂיב: NOUN×5
+   NOUN: שָׂבֵ֣י ANcmpc 7868 Ezra 5:5 | לְשָׂבַיָּ֣א AR/Ncmpd/Td l/7868 Ezra 5:9 | וּלְשָׂבֵ֣י AC/R/Ncmpc c/l/7868 Ezra 6:7 | שָׂבֵ֤י ANcmpc 7868 Ezra 6:8 | וְשָׂבֵ֤י AC/Ncmpc c/7868 Ezra 6:14
+== 412 אֵל: NOUN×1
+   NOUN: אֵ֚ל ANcmsa 412 Ezra 5:15
+== 5796 עֵז: NOUN×1
+   NOUN: עִזִּ֜ין ANcfpa 5796 Ezra 6:17
+== 2402 חַטָּאָה: VERB×1
+   VERB: לְחַטָּאָ֤ה AR/Vpc l/2402 Ezra 6:17
+== 5069 נְדַב: VERB×3, NOUN×1
+   NOUN: הִתְנַדָּב֨וּת ANcfsc 5069 Ezra 7:16
+== 3272 b יָעֵט: VERB×2
+   VERB: יָעֲטֹ֨הִי֙ AVqrmpc/Sp3ms 3272 b Ezra 7:14 | וְיָעֲט֗וֹהִי AC/Vqrmpc/Sp3ms c/3272 b Ezra 7:15

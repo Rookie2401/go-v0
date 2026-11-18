@@ -1,0 +1,1501 @@
+
+### @WLC Dan 5:25 | *
+    text: וּדְנָה כְתָבָא דִּי רְשִׁים מְנֵא מְנֵא תְּקֵל וּפַרְסִין׃
+  וּדְנָה ⇒ דֵּן | PRON | demonstrative, masculine singular | means: this | 0.98
+        parts: וּ: from וְ, and ; דְנָ֥ה: from דֵּן, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: demonstrative, masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  כְתָבָא ⇒ כְּתָב | NOUN | masculine singular, determined (emphatic), with the article | means: writing | 0.98
+        parts: כְתָבָ֖: from כְּתָב, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  דִּי ⇒ דִּי | SCONJ | relative | means: that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of | 0.98
+        also: דִּי/CONJ/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65
+        notes: Variety: arc-bib. || 7 other readings possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: relative — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: דִּי (CONJ; no morphology) / דִּי (PRON; PronType=Ind, Person=3, Gender=Fem,Masc, Number=Sing) / דִּי (PRON; PronType=Ind, Person=3, Gender=Com, Number=Sing) / דִּי (PART; no morphology) / דִּי (PRON; PronType=Ind, Gender=Com, Number=Sing) / דִּי (PRON; PronType=Rel, Gender=Com, Number=Sing) / דִּי (ADJ; Gender=Fem, Number=Sing, State=Abs)
+  רְשִׁים ⇒ רְשַׁם | VERB | Peʿil, perfect (qatal), 3rd person masculine singular | means: He inscribes (lemma: inscribe) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿil, perfect (qatal), 3rd person masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מְנֵא ⇒ מְנֵא | NOUN | absolute | means: numbered | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מְנֵא ⇒ מְנֵא | NOUN | absolute | means: numbered | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  תְּקֵל ⇒ תְּקֵל | NOUN | absolute | means: shekel | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וּפַרְסִין ⇒ פְּרֵס | NOUN | absolute | means: half-mina | 0.98
+        parts: וּ: from וְ, and ; פַרְסִֽין: from פְּרֵס, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+
+### @WLC Dan 5:26 | *
+    text: דְּנָה פְּשַׁר־מִלְּתָא מְנֵא מְנָה־אֱלָהָא מַלְכוּתָךְ וְהַשְׁלְמַהּ׃
+  דְּנָה ⇒ דֵּן | PRON | demonstrative, masculine singular | means: this | 0.98
+        also: דֵּן/CONJ/this@0.65 ; דֵּן/PRON/this@0.65
+        notes: Variety: arc-bib. || 2 other readings possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: demonstrative, masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: דֵּן (CONJ; no morphology) / Alternative reading (PronType=Dem, Gender=Com, Number=Sing)
+  פְּשַׁר ⇒ פְּשַׁר | NOUN | masculine singular, construct | means: an interpretation | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מִלְּתָא ⇒ מִלָּה | NOUN | feminine singular, determined (emphatic), with the article | means: a word, command, discourse, or subject | 0.98
+        parts: מִלְּתָ֑: from מִלָּה, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: feminine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מְנֵא ⇒ מְנֵא | NOUN | absolute | means: numbered | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מְנָה ⇒ מְנָא | VERB | Peʿal, perfect (qatal), 3rd person masculine singular | means: He counts (lemma: to count, appoint) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, perfect (qatal), 3rd person masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  אֱלָהָא ⇒ אֱלָהּ | NOUN | masculine singular, determined (emphatic), with the article | means: God | 0.98
+        parts: אֱלָהָ֥: from אֱלָהּ, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מַלְכוּתָךְ ⇒ מַלְכוּ | NOUN | feminine singular, construct | means: dominion (abstractly or concretely) | 0.98
+        parts: מַלְכוּתָ֖: from מַלְכוּ, stem ; ךְ: possessive suffix
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: feminine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וְהַשְׁלְמַהּ ⇒ שְׁלַם | VERB | Hafʿel, perfect (qatal), 3rd person masculine singular | means: He completes (lemma: to complete, to restore) | 0.98
+        parts: וְ: and ; הַשְׁלְמַֽ: from שְׁלַם, stem ; הּ: object suffix
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Hafʿel, perfect (qatal), 3rd person masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+
+### @WLC Dan 5:27 | *
+    text: תְּקֵל תְּקִילְתָּה בְמֹאזַנְיָא וְהִשְׁתְּכַחַתְּ חַסִּיר׃
+  תְּקֵל ⇒ תְּקֵל | NOUN | absolute | means: shekel | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  תְּקִילְתָּה ⇒ תְּקַל | VERB | Peʿil, imperfect (yiqtol), 2nd person masculine singular | means: You weigh (lemma: weigh) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿil, imperfect (yiqtol), 2nd person masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  בְמֹאזַנְיָא ⇒ מֹאזֵן | NOUN | masculine plural, determined (emphatic), with the article | means: scale | 0.98
+        parts: בְ: from בְּ, in, with, by ; מֹֽאזַנְיָ֖: from מֹאזֵן, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וְהִשְׁתְּכַחַתְּ ⇒ שְׁכַח | VERB | Hitpeʿel, perfect (qatal), 2nd person masculine singular | means: You discover (lemma: to discover (literally or figuratively)) | 0.98
+        parts: וְ: and ; הִשְׁתְּכַ֥חַתְּ: from שְׁכַח, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Hitpeʿel, perfect (qatal), 2nd person masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  חַסִּיר ⇒ חַסִּיר | ADJ | masculine singular, absolute | means: deficient | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+
+### @WLC Dan 5:28 | *
+    text: פְּרֵס פְּרִיסַת מַלְכוּתָךְ וִיהִיבַת לְמָדַי וּפָרָס׃
+  פְּרֵס ⇒ פְּרֵס | NOUN | absolute | means: half-mina | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  פְּרִיסַת ⇒ פְּרַס | VERB | Peʿil, perfect (qatal), 3rd person feminine singular | means: She breaks in two (lemma: break in two) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿil, perfect (qatal), 3rd person feminine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מַלְכוּתָךְ ⇒ מַלְכוּ | NOUN | feminine singular, construct | means: dominion (abstractly or concretely) | 0.98
+        parts: מַלְכוּתָ֔: from מַלְכוּ, stem ; ךְ: possessive suffix
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: feminine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וִיהִיבַת ⇒ יְהַב | VERB | Peʿil, perfect (qatal), 3rd person feminine singular | means: She gives (lemma: give) | 0.98
+        parts: וִ: from וְ, and ; יהִיבַ֖ת: from יְהַב, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿil, perfect (qatal), 3rd person feminine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  לְמָדַי ⇒ מָדַי | NOUN | gentilic, masculine singular, determined (emphatic) | means: Mede(-s) | 0.98
+        also: מָדַי/PROPN/Mede(-s)@0.65
+        parts: לְ: to, for ; מָדַ֥י: from מָדַי, stem
+        notes: Variety: arc-bib. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: gentilic, masculine singular, determined (emphatic) — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: מָדַי (PROPN; no morphology)
+  וּפָרָס ⇒ פָּרַס | NOUN | gentilic, masculine singular, determined (emphatic) | means: Persia | 0.98
+        parts: וּ: from וְ, and ; פָרָֽס: from פָּרַס, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: gentilic, masculine singular, determined (emphatic) — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+
+### @WLC Gen 31:47 | *
+    text: יְגַר שָׂהֲדוּתָא׃
+  יְגַר ⇒ יְגַר | PROPN |  | means: heap | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  שָׂהֲדוּתָא ⇒ שָֽׂהֲדוּ | PROPN |  | means: testimony | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+
+### @MAM Gen 31:47 | *
+    text: וַיִּקְרָא־לוֹ לָבָן יְגַר שָׂהֲדוּתָא וְיַעֲקֹב קָרָא לוֹ גַּלְעֵד׃
+  וַיִּקְרָא ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  לוֹ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  לָבָן ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  יְגַר ⇒ יְגַר | PROPN |  | means: heap | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  שָׂהֲדוּתָא ⇒ שָֽׂהֲדוּ | PROPN |  | means: testimony | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  וְיַעֲקֹב ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  קָרָא ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  לוֹ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  גַּלְעֵד ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+
+### @WLC Jer 10:11 | *
+    text: כִּדְנָה תֵּאמְרוּן לְהוֹם אֱלָהַיָּא דִּי־שְׁמַיָּא וְאַרְקָא לָא עֲבַדוּ יֵאבַדוּ מֵאַרְעָא וּמִן־תְּחוֹת שְׁמַיָּא אֵלֶּה׃
+  כִּדְנָה ⇒ דֵּן | PRON | demonstrative, common gender singular | means: this | 0.98
+        also: דֵּן/PRON/this@0.65
+        parts: כִּ: from כְּ, like, as ; דְנָה֙: from דֵּן, stem
+        notes: Variety: arc-bib. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: demonstrative, common gender singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: Alternative reading (PronType=Dem, Gender=Masc, Number=Sing)
+  תֵּאמְרוּן ⇒ אֲמַר | VERB | Peʿal, imperfect (yiqtol), 2nd person masculine plural | means: You (plural) say (lemma: say) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, imperfect (yiqtol), 2nd person masculine plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  לְהוֹם ⇒ לְ | ADP |  | means: to, for | 0.98
+        parts: לְ: stem ; ה֔וֹם: object of the preposition
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אֱלָהַיָּא ⇒ אֱלָהּ | NOUN | masculine plural, determined (emphatic), with the article | means: God | 0.98
+        parts: אֱלָ֣הַיָּ֔: from אֱלָהּ, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  דִּי ⇒ דִּי | SCONJ | relative | means: that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of | 0.98
+        also: דִּי/CONJ/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65
+        notes: Variety: arc-bib. || 7 other readings possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: relative — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: דִּי (CONJ; no morphology) / דִּי (PRON; PronType=Ind, Person=3, Gender=Fem,Masc, Number=Sing) / דִּי (PRON; PronType=Ind, Person=3, Gender=Com, Number=Sing) / דִּי (PART; no morphology) / דִּי (PRON; PronType=Ind, Gender=Com, Number=Sing) / דִּי (PRON; PronType=Rel, Gender=Com, Number=Sing) / דִּי (ADJ; Gender=Fem, Number=Sing, State=Abs)
+  שְׁמַיָּא ⇒ שָׁמַיִן | NOUN | masculine plural, determined (emphatic), with the article | means: heavens | 0.98
+        parts: שְׁמַיָּ֥: from שָׁמַיִן, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וְאַרְקָא ⇒ אֲרַק | NOUN | feminine singular, determined (emphatic), with the article | means: the earth | 0.98
+        parts: וְ: and ; אַרְקָ֖: from אֲרַק, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: feminine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  לָא ⇒ לָא | PART | negative | means: not | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: negative — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  עֲבַדוּ ⇒ עֲבַד | VERB | Peʿal, perfect (qatal), 3rd person masculine plural | means: They do (lemma: to do, make, prepare, keep, etc.) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, perfect (qatal), 3rd person masculine plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  יֵאבַדוּ ⇒ אֲבַד | VERB | Peʿal, imperfect (yiqtol), 3rd person masculine plural | means: They perish (lemma: perish) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, imperfect (yiqtol), 3rd person masculine plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מֵאַרְעָא ⇒ אֲרַע | NOUN | feminine singular, determined (emphatic), with the article | means: the earth; by implication (figuratively) low | 0.98
+        parts: מֵֽ: from מִן, from ; אַרְעָ֛: from אֲרַע, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: feminine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וּמִן ⇒ מִן | ADP |  | means: from | 0.98
+        parts: וּ: from וְ, and ; מִן: stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  תְּחוֹת ⇒ תְּחוֹת | ADP |  | means: beneath | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  שְׁמַיָּא ⇒ שָׁמַיִן | NOUN | masculine plural, determined (emphatic), with the article | means: heavens | 0.98
+        parts: שְׁמַיָּ֖: from שָׁמַיִן, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  אֵלֶּה ⇒ אֵלֶּה | PRON | demonstrative, common gender plural | means: these | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: demonstrative, common gender plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+
+### @MAM Jer 10:11 | *
+    text: כִּדְנָה תֵּאמְרוּן לְהוֹם אֱלָהַיָּא דִּי־שְׁמַיָּא וְאַרְקָא לָא עֲבַדוּ יֵאבַדוּ מֵאַרְעָא וּמִן־תְּחוֹת שְׁמַיָּא אֵלֶּה׃
+  כִּדְנָה ⇒ דֵּן | PRON | demonstrative, common gender singular | means: this | 0.98
+        also: דֵּן/PRON/this@0.65
+        parts: כִּ: from כְּ, like, as ; דְנָה֙: from דֵּן, stem
+        notes: Variety: arc-bib. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: demonstrative, common gender singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: Alternative reading (PronType=Dem, Gender=Masc, Number=Sing)
+  תֵּאמְרוּן ⇒ אֲמַר | VERB | Peʿal, imperfect (yiqtol), 2nd person masculine plural | means: You (plural) say (lemma: say) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, imperfect (yiqtol), 2nd person masculine plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  לְהוֹם ⇒ לְ | ADP |  | means: to, for | 0.98
+        parts: לְ: stem ; ה֔וֹם: object of the preposition
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אֱלָהַיָּא ⇒ אֱלָהּ | NOUN | masculine plural, determined (emphatic), with the article | means: God | 0.98
+        parts: אֱלָ֣הַיָּ֔: from אֱלָהּ, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  דִּי ⇒ דִּי | SCONJ | relative | means: that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of | 0.98
+        also: דִּי/CONJ/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65
+        notes: Variety: arc-bib. || 7 other readings possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: relative — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: דִּי (CONJ; no morphology) / דִּי (PRON; PronType=Ind, Person=3, Gender=Fem,Masc, Number=Sing) / דִּי (PRON; PronType=Ind, Person=3, Gender=Com, Number=Sing) / דִּי (PART; no morphology) / דִּי (PRON; PronType=Ind, Gender=Com, Number=Sing) / דִּי (PRON; PronType=Rel, Gender=Com, Number=Sing) / דִּי (ADJ; Gender=Fem, Number=Sing, State=Abs)
+  שְׁמַיָּא ⇒ שָׁמַיִן | NOUN | masculine plural, determined (emphatic), with the article | means: heavens | 0.98
+        parts: שְׁמַיָּ֥: from שָׁמַיִן, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וְאַרְקָא ⇒ אֲרַק | NOUN | feminine singular, determined (emphatic), with the article | means: the earth | 0.98
+        parts: וְ: and ; אַרְקָ֖: from אֲרַק, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: feminine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  לָא ⇒ לָא | PART | negative | means: not | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: negative — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  עֲבַדוּ ⇒ עֲבַד | VERB | Peʿal, perfect (qatal), 3rd person masculine plural | means: They do (lemma: to do, make, prepare, keep, etc.) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, perfect (qatal), 3rd person masculine plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  יֵאבַדוּ ⇒ אֲבַד | VERB | Peʿal, imperfect (yiqtol), 3rd person masculine plural | means: They perish (lemma: perish) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, imperfect (yiqtol), 3rd person masculine plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מֵאַרְעָא ⇒ אֲרַע | NOUN | feminine singular, determined (emphatic), with the article | means: the earth; by implication (figuratively) low | 0.98
+        parts: מֵ: from מִן, from ; אַרְעָ֛: from אֲרַע, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: feminine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וּמִן ⇒ מִן | ADP |  | means: from | 0.98
+        parts: וּ: from וְ, and ; מִן: stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  תְּחוֹת ⇒ תְּחוֹת | ADP |  | means: beneath | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  שְׁמַיָּא ⇒ שָׁמַיִן | NOUN | masculine plural, determined (emphatic), with the article | means: heavens | 0.98
+        parts: שְׁמַיָּ֖: from שָׁמַיִן, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  אֵלֶּה ⇒ אֵלֶּה | PRON | demonstrative, common gender plural | means: these | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: demonstrative, common gender plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+
+### @MAM Jer 10:10-12 | *
+    text: וַיהֹוָה אֱלֹהִים אֱמֶת הוּא־אֱלֹהִים חַיִּים וּמֶלֶךְ עוֹלָם מִקִּצְפּוֹ תִּרְעַשׁ הָאָרֶץ וְלֹא־יָכִלוּ גוֹיִם זַעְמוֹ׃ כִּדְנָה תֵּאמְרוּן לְהוֹם אֱלָהַיָּא דִּי־שְׁמַיָּא וְאַרְקָא לָא עֲבַדוּ יֵאבַדוּ מֵאַרְעָא וּמִן־תְּחוֹת שְׁמַיָּא אֵלֶּה׃ עֹשֵׂה אֶרֶץ בְּכֹחוֹ מֵכִין תֵּבֵל בְּחׇכְמָתוֹ וּבִתְבוּנָתוֹ נָטָה שָׁמָיִם׃
+  וַיהֹוָה ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אֱלֹהִים ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אֱמֶת ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  הוּא ⇒ הוּא | PRON | personal, 3rd person masculine singular | means: he | 0.92
+        also: הוּא/PART/he@0.92 ; הוּא/PRON/he@0.92 ; הוּא/PRON/he@0.92
+        notes: Variety: arc-bib. || 3 other readings possible even with the sentence; the one shown has the highest confidence.
+        basis: 
+        form-construction: personal, 3rd person masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: הוּא (PART; PartType=Aff) / Alternative reading (PronType=Dem, Person=3, Gender=Masc, Number=Sing) / Alternative reading (PronType=Dem, Gender=Masc, Number=Sing)
+  אֱלֹהִים ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  חַיִּים ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  וּמֶלֶךְ ⇒ מֶלֶךְ | NOUN | masculine singular, absolute | means: a king | 0.92
+        parts: וּ: from וְ, and ; מֶ֣לֶךְ: from מֶלֶךְ, stem
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  עוֹלָם ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  מִקִּצְפּוֹ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  תִּרְעַשׁ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  הָאָרֶץ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  וְלֹא ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  יָכִלוּ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  גוֹיִם ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  זַעְמוֹ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  כִּדְנָה ⇒ דֵּן | PRON | demonstrative, masculine singular | means: this | 0.92
+        also: דֵּן/PRON/this@0.92
+        parts: כִּ: from כְּ, like, as ; דְנָה֙: from דֵּן, stem
+        notes: Variety: arc-bib. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+        basis: 
+        form-construction: demonstrative, masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: Alternative reading (PronType=Dem, Gender=Com, Number=Sing)
+  תֵּאמְרוּן ⇒ אֲמַר | VERB | Peʿal, imperfect (yiqtol), 2nd person masculine plural | means: You (plural) say (lemma: say) | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: Peʿal, imperfect (yiqtol), 2nd person masculine plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  לְהוֹם ⇒ לְ | ADP |  | means: to, for | 0.92
+        parts: לְ: stem ; ה֔וֹם: object of the preposition
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אֱלָהַיָּא ⇒ אֱלָהּ | NOUN | masculine plural, determined (emphatic), with the article | means: God | 0.92
+        parts: אֱלָ֣הַיָּ֔: from אֱלָהּ, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine plural, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  דִּי ⇒ דִּי | SCONJ | relative | means: that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of | 0.92
+        also: דִּי/CONJ/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.92 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.92 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.92
+        notes: Variety: arc-bib. || 7 other readings possible even with the sentence; the one shown has the highest confidence.
+        basis: 
+        form-construction: relative — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: דִּי (CONJ; no morphology) / דִּי (PRON; PronType=Ind, Person=3, Gender=Fem,Masc, Number=Sing) / דִּי (PRON; PronType=Ind, Person=3, Gender=Com, Number=Sing) / דִּי (PART; no morphology) / דִּי (PRON; PronType=Ind, Gender=Com, Number=Sing) / דִּי (PRON; PronType=Rel, Gender=Com, Number=Sing) / דִּי (ADJ; Gender=Fem, Number=Sing, State=Abs)
+  שְׁמַיָּא ⇒ שָׁמַיִן | NOUN | masculine plural, determined (emphatic), with the article | means: heavens | 0.92
+        parts: שְׁמַיָּ֥: from שָׁמַיִן, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine plural, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וְאַרְקָא ⇒ אֲרַק | NOUN | feminine singular, determined (emphatic), with the article | means: the earth | 0.92
+        parts: וְ: and ; אַרְקָ֖: from אֲרַק, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: feminine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  לָא ⇒ לָא | PART | negative | means: not | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: negative — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  עֲבַדוּ ⇒ עֲבַד | VERB | Peʿal, perfect (qatal), 3rd person masculine plural | means: They do (lemma: to do, make, prepare, keep, etc.) | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: Peʿal, perfect (qatal), 3rd person masculine plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  יֵאבַדוּ ⇒ אֲבַד | VERB | Peʿal, imperfect (yiqtol), 3rd person masculine plural | means: They perish (lemma: perish) | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: Peʿal, imperfect (yiqtol), 3rd person masculine plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מֵאַרְעָא ⇒ אֲרַע | NOUN | feminine singular, determined (emphatic), with the article | means: the earth; by implication (figuratively) low | 0.92
+        parts: מֵ: from מִן, from ; אַרְעָ֛: from אֲרַע, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: feminine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וּמִן ⇒ מִן | ADP |  | means: from | 0.92
+        parts: וּ: from וְ, and ; מִן: stem
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  תְּחוֹת ⇒ תְּחוֹת | ADP |  | means: beneath | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  שְׁמַיָּא ⇒ שָׁמַיִן | NOUN | masculine plural, determined (emphatic), with the article | means: heavens | 0.92
+        parts: שְׁמַיָּ֖: from שָׁמַיִן, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine plural, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  אֵלֶּה ⇒ אֵלֶּה | PRON | demonstrative, common gender plural | means: these | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: demonstrative, common gender plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  עֹשֵׂה ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אֶרֶץ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  בְּכֹחוֹ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  מֵכִין ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  תֵּבֵל ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  בְּחׇכְמָתוֹ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  וּבִתְבוּנָתוֹ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  נָטָה ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  שָׁמָיִם ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+
+### @WLC Dan 7:13 | *
+    text: חָזֵה הֲוֵית בְּחֶזְוֵי לֵילְיָא וַאֲרוּ עִם־עֲנָנֵי שְׁמַיָּא כְּבַר אֱנָשׁ אָתֵה הֲוָה וְעַד־עַתִּיק יוֹמַיָּא מְטָה וּקְדָמוֹהִי הַקְרְבוּהִי׃
+  חָזֵה ⇒ חֲזָא | VERB | Peʿal, participle, masculine singular, absolute | means: gazing upon (lemma: to gaze upon; mentally to dream, be usual (i.e. seem)) | 0.98
+        also: חֲזָא/VERB/to gaze upon; mentally to dream, be usual (i.e. seem)@0.65
+        notes: Variety: arc-bib. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, participle, masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  הֲוֵית ⇒ הָוָא | VERB | Peʿal, perfect (qatal), 1st person common gender singular | means: I exist (lemma: to exist; used in a great variety of applications (especially in connection with other words)) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, perfect (qatal), 1st person common gender singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  בְּחֶזְוֵי ⇒ חֵזֵו | NOUN | masculine plural, construct | means: a sight | 0.98
+        parts: בְּ: in, with, by ; חֶזְוֵ֣י: from חֵזֵו, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  לֵילְיָא ⇒ לֵילְיָא | NOUN | masculine singular, determined (emphatic), with the article | means: night | 0.98
+        parts: לֵֽילְיָ֔: from לֵילְיָא, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וַאֲרוּ ⇒ אֲרוּ | PART | Dem | means: lo! | 0.98
+        parts: וַ: from וְ, and ; אֲרוּ֙: from אֲרוּ, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Dem — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  עִם ⇒ עִם | ADP |  | means: with | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  עֲנָנֵי ⇒ עֲנַן | NOUN | masculine plural, construct | means: cloud | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  שְׁמַיָּא ⇒ שָׁמַיִן | NOUN | masculine plural, determined (emphatic), with the article | means: heavens | 0.98
+        parts: שְׁמַיָּ֔: from שָׁמַיִן, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  כְּבַר ⇒ בַּר | NOUN | masculine singular, construct | means: a son, grandson, etc. | 0.98
+        parts: כְּ: like, as ; בַ֥ר: from בַּר, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  אֱנָשׁ ⇒ אֱנָשׁ | NOUN | masculine singular, absolute | means: a man | 0.98
+        also: אֱנָשׁ/NOUN/a man@0.65
+        notes: Variety: arc-bib. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: Alternative reading (Gender=Masc, Number=Sing, State=Cons)
+  אָתֵה ⇒ אָתָה | VERB | Peʿal, participle, masculine singular, absolute | means: coming (lemma: come) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, participle, masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  הֲוָה ⇒ הָוָא | VERB | Peʿal, perfect (qatal), 3rd person masculine singular | means: He exists (lemma: to exist; used in a great variety of applications (especially in connection with other words)) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, perfect (qatal), 3rd person masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וְעַד ⇒ עַד | ADP |  | means: even to | 0.98
+        parts: וְ: and ; עַד: stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  עַתִּיק ⇒ עַתִּיק | ADJ | masculine singular, construct | means: venerable | 0.98
+        also: עַתִּיק/PROPN/venerable@0.65
+        notes: Variety: arc-bib. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: עַתִּיק (PROPN; no morphology)
+  יוֹמַיָּא ⇒ יוֹם | NOUN | masculine plural, determined (emphatic), with the article | means: a day | 0.98
+        also: יוֹם/PROPN/a day@0.65
+        parts: יֽוֹמַיָּ: from יוֹם, stem ; א֙: determined (emphatic) state ending
+        notes: Variety: arc-bib. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: יוֹם (PROPN; Definite=Def)
+  מְטָה ⇒ מְטָא | VERB | Peʿal, perfect (qatal), 3rd person masculine singular | means: He arrives (lemma: to arrive, extend or happen) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, perfect (qatal), 3rd person masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וּקְדָמוֹהִי ⇒ קֳדָם | ADP |  | means: before | 0.98
+        parts: וּ: from וְ, and ; קְדָמ֖וֹ: from קֳדָם, stem ; הִי: object of the preposition
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  הַקְרְבוּהִי ⇒ קְרֵב | VERB | Hafʿel, perfect (qatal), 3rd person masculine plural | means: They approach (lemma: approach) | 0.98
+        parts: הַקְרְבֽוּ: from קְרֵב, stem ; הִי: object suffix
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Hafʿel, perfect (qatal), 3rd person masculine plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+
+### @WLC Dan 2:47 | *
+    text: עָנֵה מַלְכָּא לְדָנִיֵּאל וְאָמַר מִן־קְשֹׁט דִּי אֱלָהֲכוֹן הוּא אֱלָהּ אֱלָהִין וּמָרֵא מַלְכִין וְגָלֵה רָזִין דִּי יְכֵלְתָּ לְמִגְלֵא רָזָה דְנָה׃
+  עָנֵה ⇒ עֲנָה | VERB | Peʿal, participle, masculine singular, absolute | means: answering (lemma: answer) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, participle, masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מַלְכָּא ⇒ מֶלֶךְ | NOUN | masculine singular, determined (emphatic), with the article | means: a king | 0.98
+        also: מֶלֶךְ/NOUN/a king@0.65
+        parts: מַלְכָּ֨: from מֶלֶךְ, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: Alternative reading (Gender=Masc, Number=Sing, State=Cons)
+  לְדָנִיֵּאל ⇒ דָּנִיֵּאל | PROPN |  | means: Danijel, the Hebrew prophet | 0.98
+        parts: לְ: to, for ; דָנִיֵּ֜אל: from דָּנִיֵּאל, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  וְאָמַר ⇒ אֲמַר | VERB | Peʿal, participle, masculine singular, absolute | means: saying (lemma: say) | 0.98
+        parts: וְ: and ; אָמַ֗ר: from אֲמַר, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, participle, masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מִן ⇒ מִן | ADP |  | means: from | 0.98
+        also: מִן/CONJ/from@0.65
+        notes: Variety: arc-bib. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: מִן (CONJ; no morphology)
+  קְשֹׁט ⇒ קְשׁוֹט | NOUN | masculine singular, absolute | means: fidelity | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  דִּי ⇒ דִּי | SCONJ | relative | means: that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of | 0.98
+        also: דִּי/CONJ/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65
+        notes: Variety: arc-bib. || 7 other readings possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: relative — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: דִּי (CONJ; no morphology) / דִּי (PRON; PronType=Ind, Person=3, Gender=Fem,Masc, Number=Sing) / דִּי (PRON; PronType=Ind, Person=3, Gender=Com, Number=Sing) / דִּי (PART; no morphology) / דִּי (PRON; PronType=Ind, Gender=Com, Number=Sing) / דִּי (PRON; PronType=Rel, Gender=Com, Number=Sing) / דִּי (ADJ; Gender=Fem, Number=Sing, State=Abs)
+  אֱלָהֲכוֹן ⇒ אֱלָהּ | NOUN | masculine singular, construct | means: God | 0.98
+        parts: אֱלָהֲ: from אֱלָהּ, stem ; כ֗וֹן: possessive suffix
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  הוּא ⇒ הוּא | PART | affirmative particle | means: he | 0.98
+        also: הוּא/PRON/he@0.65 ; הוּא/PRON/he@0.65 ; הוּא/PRON/he@0.65
+        notes: Variety: arc-bib. || 3 other readings possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: affirmative particle — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: הוּא (PRON; PronType=Prs, Person=3, Gender=Masc, Number=Sing) / הוּא (PRON; PronType=Dem, Person=3, Gender=Masc, Number=Sing) / הוּא (PRON; PronType=Dem, Gender=Masc, Number=Sing)
+  אֱלָהּ ⇒ אֱלָהּ | NOUN | masculine singular, construct | means: God | 0.98
+        also: אֱלָהּ/NOUN/God@0.65
+        notes: Variety: arc-bib. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: Alternative reading (Gender=Masc, Number=Sing, State=Abs)
+  אֱלָהִין ⇒ אֱלָהּ | NOUN | masculine plural, absolute | means: God | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וּמָרֵא ⇒ מָרֵא | NOUN | masculine singular, construct | means: a master | 0.98
+        parts: וּ: from וְ, and ; מָרֵ֥א: from מָרֵא, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מַלְכִין ⇒ מֶלֶךְ | NOUN | masculine plural, absolute | means: a king | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וְגָלֵה ⇒ גְּלָה | VERB | Peʿal, participle, masculine singular, construct | means: revealing (lemma: reveal) | 0.98
+        parts: וְ: and ; גָלֵ֣ה: from גְּלָה, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, participle, masculine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  רָזִין ⇒ רָז | NOUN | masculine plural, absolute | means: to attenuate, i.e. (figuratively) hide; a mystery | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine plural, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  דִּי ⇒ דִּי | CONJ |  | means: that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of | 0.98
+        also: דִּי/SCONJ/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65
+        notes: Variety: arc-bib. || 7 other readings possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: דִּי (SCONJ; PronType=Rel) / דִּי (PRON; PronType=Ind, Person=3, Gender=Fem,Masc, Number=Sing) / דִּי (PRON; PronType=Ind, Person=3, Gender=Com, Number=Sing) / דִּי (PART; no morphology) / דִּי (PRON; PronType=Ind, Gender=Com, Number=Sing) / דִּי (PRON; PronType=Rel, Gender=Com, Number=Sing) / דִּי (ADJ; Gender=Fem, Number=Sing, State=Abs)
+  יְכֵלְתָּ ⇒ יְכֵל | VERB | Peʿal, perfect (qatal), 2nd person masculine singular | means: You are able (lemma: be able) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, perfect (qatal), 2nd person masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  לְמִגְלֵא ⇒ גְּלָה | VERB | Peʿal, infinitive construct | means: to reveal (lemma: reveal) | 0.98
+        parts: לְ: to, for ; מִגְלֵ֖א: from גְּלָה, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, infinitive construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  רָזָה ⇒ רָז | NOUN | masculine singular, determined (emphatic), with the article | means: to attenuate, i.e. (figuratively) hide; a mystery | 0.98
+        parts: רָזָ֥: from רָז, stem ; ה: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  דְנָה ⇒ דֵּן | PRON | demonstrative, masculine singular | means: this | 0.98
+        also: דֵּן/PRON/this@0.65
+        notes: Variety: arc-bib. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: demonstrative, masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: Alternative reading (PronType=Dem, Gender=Masc, Number=Plur)
+
+### @MAM Dan 2:4 | *
+    text: וַיְדַבְּרוּ הַכַּשְׂדִּים לַמֶּלֶךְ אֲרָמִית מַלְכָּא לְעָלְמִין חֱיִי אֱמַר חֶלְמָא לְעַבְדָךְ וּפִשְׁרָא נְחַוֵּא׃
+  וַיְדַבְּרוּ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  הַכַּשְׂדִּים ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  לַמֶּלֶךְ ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אֲרָמִית ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  מַלְכָּא ⇒ מֶלֶךְ | NOUN | masculine singular, determined (emphatic), with the article | means: a king | 0.92
+        also: מֶלֶךְ/NOUN/a king@0.5
+        parts: מַלְכָּ: from מֶלֶךְ, stem ; א֙: determined (emphatic) state ending
+        notes: Variety: arc-bib. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+        basis: 
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: Alternative reading (Gender=Masc, Number=Sing, State=Cons)
+  לְעָלְמִין ⇒ עָלַם | NOUN | masculine plural, absolute | means: remote time, i.e. the future or past indefinitely; often adverb, forever | 0.92
+        parts: לְ: to, for ; עָלְמִ֣ין: from עָלַם, stem
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine plural, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  חֱיִי ⇒ חֲיָא | VERB | Peʿal, imperative, 2nd person masculine singular | means: You live (lemma: to live) | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: Peʿal, imperative, 2nd person masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  אֱמַר ⇒ אֲמַר | VERB | Peʿal, imperative, 2nd person masculine singular | means: You say (lemma: say) | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: Peʿal, imperative, 2nd person masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  חֶלְמָא ⇒ חֵלֶם | NOUN | masculine singular, determined (emphatic), with the article | means: a dream | 0.92
+        parts: חֶלְמָ֛: from חֵלֶם, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  לְעַבְדָךְ ⇒ עֲבַד | NOUN | masculine singular, construct | means: a servant | 0.92
+        parts: לְ: to, for ; עַבְדָ֖: from עֲבַד, stem ; ךְ: possessive suffix
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וּפִשְׁרָא ⇒ פְּשַׁר | NOUN | masculine singular, determined (emphatic), with the article | means: an interpretation | 0.92
+        parts: וּ: from וְ, and ; פִשְׁרָ֥: from פְּשַׁר, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  נְחַוֵּא ⇒ חֲוָא | VERB | Paʿel, imperfect (yiqtol), 1st person common gender plural | means: We show (lemma: to show) | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: Paʿel, imperfect (yiqtol), 1st person common gender plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+
+### @MAM Ezra 4:7 | *
+    text: וּבִימֵי אַרְתַּחְשַׁשְׂתָּא כָּתַב בִּשְׁלָם מִתְרְדָת טָבְאֵל וּשְׁאָר כְּנָוֺתָו עַל־אַרְתַּחְשַׁשְׂתְּא מֶלֶךְ פָּרָס וּכְתָב הַנִּשְׁתְּוָן כָּתוּב אֲרָמִית וּמְתֻרְגָּם אֲרָמִית׃
+  וּבִימֵי ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אַרְתַּחְשַׁשְׂתָּא ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  כָּתַב ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  בִּשְׁלָם ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  מִתְרְדָת ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  טָבְאֵל ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  וּשְׁאָר ⇒ שְׁאָר | NOUN | masculine singular, construct | means: rest | 0.92
+        parts: וּ: from וְ, and ; שְׁאָ֣ר: from שְׁאָר, stem
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  כְּנָוֺתָו ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  עַל ⇒ עַל | ADP |  | means: upon | 0.92
+        also: עֲלַל/VERB/to enter; causatively, to introduce@0.92
+        notes: Variety: arc-bib. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: עֲלַל (VERB; Binyan=Peal, Conj=Perf, VerbForm=Fin, Person=3, Gender=Masc, Number=Sing)
+  אַרְתַּחְשַׁשְׂתְּא ⇒ אַרְתַּחְשַׁשְׂתְּא | PROPN |  | means: Artaxerxes | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  מֶלֶךְ ⇒ מֶלֶךְ | NOUN | masculine singular, absolute | means: a king | 0.92
+        also: מֶלֶךְ/NOUN/a king@0.92
+        notes: Variety: arc-bib. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+        basis: 
+        form-construction: masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: Alternative reading (Gender=Masc, Number=Sing, State=Cons)
+  פָּרָס ⇒ פָּרַס | PROPN |  | means: Persia | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  וּכְתָב ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  הַנִּשְׁתְּוָן ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  כָּתוּב ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אֲרָמִית ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  וּמְתֻרְגָּם ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אֲרָמִית ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+
+### @MAM Ezra 4:7-8 | *
+    text: וּבִימֵי אַרְתַּחְשַׁשְׂתָּא כָּתַב בִּשְׁלָם מִתְרְדָת טָבְאֵל וּשְׁאָר כְּנָוֺתָו עַל־אַרְתַּחְשַׁשְׂתְּא מֶלֶךְ פָּרָס וּכְתָב הַנִּשְׁתְּוָן כָּתוּב אֲרָמִית וּמְתֻרְגָּם אֲרָמִית׃ רְחוּם בְּעֵל־טְעֵם וְשִׁמְשַׁי סָפְרָא כְּתַבוּ אִגְּרָה חֲדָה עַל־יְרוּשְׁלֶם לְאַרְתַּחְשַׁשְׂתְּא מַלְכָּא כְּנֵמָא׃
+  וּבִימֵי ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אַרְתַּחְשַׁשְׂתָּא ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  כָּתַב ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  בִּשְׁלָם ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  מִתְרְדָת ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  טָבְאֵל ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  וּשְׁאָר ⇒ שְׁאָר | NOUN | masculine singular, construct | means: rest | 0.92
+        parts: וּ: from וְ, and ; שְׁאָ֣ר: from שְׁאָר, stem
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  כְּנָוֺתָו ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  עַל ⇒ עַל | ADP |  | means: upon | 0.92
+        also: עֲלַל/VERB/to enter; causatively, to introduce@0.92
+        notes: Variety: arc-bib. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: עֲלַל (VERB; Binyan=Peal, Conj=Perf, VerbForm=Fin, Person=3, Gender=Masc, Number=Sing)
+  אַרְתַּחְשַׁשְׂתְּא ⇒ אַרְתַּחְשַׁשְׂתְּא | PROPN |  | means: Artaxerxes | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  מֶלֶךְ ⇒ מֶלֶךְ | NOUN | masculine singular, absolute | means: a king | 0.92
+        also: מֶלֶךְ/NOUN/a king@0.92
+        notes: Variety: arc-bib. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+        basis: 
+        form-construction: masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: Alternative reading (Gender=Masc, Number=Sing, State=Cons)
+  פָּרָס ⇒ פָּרַס | PROPN |  | means: Persia | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  וּכְתָב ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  הַנִּשְׁתְּוָן ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  כָּתוּב ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אֲרָמִית ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  וּמְתֻרְגָּם ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  אֲרָמִית ⇒ ∅ |  |  | means: — | 0
+        notes: Not an entry of the Biblical Aramaic word list, and the rules found no reading: the word is unknown to this pack.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  רְחוּם ⇒ רְחוּם | PROPN |  | means: Rehum | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  בְּעֵל ⇒ בְּעֵל | NOUN | masculine singular, construct | means: owner | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  טְעֵם ⇒ טְעֵם | NOUN | masculine singular, absolute | means: properly, flavor; figuratively, judgment (both subjective and objective); hence, account (both subjectively and objectively) | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וְשִׁמְשַׁי ⇒ שִׁמְשַׁי | PROPN |  | means: Shimshai, a Samaritan | 0.92
+        parts: וְ: and ; שִׁמְשַׁי֙: from שִׁמְשַׁי, stem
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  סָפְרָא ⇒ סָפֵר | NOUN | masculine singular, determined (emphatic), with the article | means: a scribe (secular or sacred) | 0.92
+        parts: סָֽפְרָ֔: from סָפֵר, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  כְּתַבוּ ⇒ כְּתַב | VERB | Peʿal, perfect (qatal), 3rd person masculine plural | means: They write (lemma: write) | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: Peʿal, perfect (qatal), 3rd person masculine plural — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  אִגְּרָה ⇒ אִגְּרָא | NOUN | feminine singular, absolute | means: an epistle (as carried by a state courier or postman) | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: feminine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  חֲדָה ⇒ חַד | NUM | cardinal number, feminine singular, absolute | means: as card. one; as article single; as an ordinal, first; adverbially, at once | 0.92
+        also: חַד/NOUN/as card. one; as article single; as an ordinal, first; adverbially, at once@0.92
+        notes: Variety: arc-bib. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+        basis: 
+        form-construction: cardinal number, feminine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: חַד (NOUN; Gender=Fem, Number=Sing, State=Abs)
+  עַל ⇒ עַל | ADP |  | means: upon | 0.92
+        also: עֲלַל/VERB/to enter; causatively, to introduce@0.92
+        notes: Variety: arc-bib. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: עֲלַל (VERB; Binyan=Peal, Conj=Perf, VerbForm=Fin, Person=3, Gender=Masc, Number=Sing)
+  יְרוּשְׁלֶם ⇒ יְרוּשָׁלֵם | PROPN |  | means: Jerusalem | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  לְאַרְתַּחְשַׁשְׂתְּא ⇒ אַרְתַּחְשַׁשְׂתְּא | PROPN |  | means: Artaxerxes | 0.92
+        parts: לְ: to, for ; אַרְתַּחְשַׁ֥שְׂתְּא: from אַרְתַּחְשַׁשְׂתְּא, stem
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  מַלְכָּא ⇒ מֶלֶךְ | NOUN | masculine singular, determined (emphatic), with the article | means: a king | 0.92
+        also: מֶלֶךְ/NOUN/a king@0.5
+        parts: מַלְכָּ֖: from מֶלֶךְ, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+        basis: 
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: Alternative reading (Gender=Masc, Number=Sing, State=Cons)
+  כְּנֵמָא ⇒ כְּנֵמָא | ADV |  | means: so or thus | 0.92
+        notes: Variety: arc-bib.
+        basis: 
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+
+### @WLC Dan 2:20 | *
+    text: עָנֵה דָנִיֵּאל וְאָמַר לֶהֱוֵא שְׁמֵהּ דִּי־אֱלָהָא מְבָרַךְ מִן־עָלְמָא וְעַד־עָלְמָא דִּי חָכְמְתָא וּגְבוּרְתָא דִּי לֵהּ־הִיא׃
+  עָנֵה ⇒ עֲנָה | VERB | Peʿal, participle, masculine singular, absolute | means: answering (lemma: answer) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, participle, masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  דָנִיֵּאל ⇒ דָּנִיֵּאל | PROPN |  | means: Danijel, the Hebrew prophet | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  וְאָמַר ⇒ אֲמַר | VERB | Peʿal, participle, masculine singular, absolute | means: saying (lemma: say) | 0.98
+        parts: וְ: and ; אָמַ֔ר: from אֲמַר, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, participle, masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  לֶהֱוֵא ⇒ הָוָא | VERB | Peʿal, imperfect (yiqtol), 3rd person masculine singular | means: He exists (lemma: to exist; used in a great variety of applications (especially in connection with other words)) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Peʿal, imperfect (yiqtol), 3rd person masculine singular — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  שְׁמֵהּ ⇒ שֻׁם | NOUN | masculine singular, construct | means: name | 0.98
+        parts: שְׁמֵ֤: from שֻׁם, stem ; הּ: possessive suffix
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, construct — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  דִּי ⇒ דִּי | SCONJ | relative | means: that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of | 0.98
+        also: דִּי/CONJ/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65
+        notes: Variety: arc-bib. || 7 other readings possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: relative — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: דִּי (CONJ; no morphology) / דִּי (PRON; PronType=Ind, Person=3, Gender=Fem,Masc, Number=Sing) / דִּי (PRON; PronType=Ind, Person=3, Gender=Com, Number=Sing) / דִּי (PART; no morphology) / דִּי (PRON; PronType=Ind, Gender=Com, Number=Sing) / דִּי (PRON; PronType=Rel, Gender=Com, Number=Sing) / דִּי (ADJ; Gender=Fem, Number=Sing, State=Abs)
+  אֱלָהָא ⇒ אֱלָהּ | NOUN | masculine singular, determined (emphatic), with the article | means: God | 0.98
+        parts: אֱלָהָ: from אֱלָהּ, stem ; א֙: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מְבָרַךְ ⇒ בְּרַךְ | VERB | Paʿel, passive participle, masculine singular, absolute | means: kneeling (lemma: kneel) | 0.98
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: Paʿel, passive participle, masculine singular, absolute — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  מִן ⇒ מִן | ADP |  | means: from | 0.98
+        also: מִן/CONJ/from@0.65
+        notes: Variety: arc-bib. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: מִן (CONJ; no morphology)
+  עָלְמָא ⇒ עָלַם | NOUN | masculine singular, determined (emphatic), with the article | means: remote time, i.e. the future or past indefinitely; often adverb, forever | 0.98
+        parts: עָלְמָ֖: from עָלַם, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וְעַד ⇒ עַד | ADP |  | means: even to | 0.98
+        parts: וְ: and ; עַ֣ד: from עַד, stem
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: 
+  עָלְמָא ⇒ עָלַם | NOUN | masculine singular, determined (emphatic), with the article | means: remote time, i.e. the future or past indefinitely; often adverb, forever | 0.98
+        parts: עָלְמָ֑: from עָלַם, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: masculine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  דִּי ⇒ דִּי | CONJ |  | means: that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of | 0.98
+        also: דִּי/SCONJ/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65
+        notes: Variety: arc-bib. || 7 other readings possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: דִּי (SCONJ; PronType=Rel) / דִּי (PRON; PronType=Ind, Person=3, Gender=Fem,Masc, Number=Sing) / דִּי (PRON; PronType=Ind, Person=3, Gender=Com, Number=Sing) / דִּי (PART; no morphology) / דִּי (PRON; PronType=Ind, Gender=Com, Number=Sing) / דִּי (PRON; PronType=Rel, Gender=Com, Number=Sing) / דִּי (ADJ; Gender=Fem, Number=Sing, State=Abs)
+  חָכְמְתָא ⇒ חׇכְמָה | NOUN | feminine singular, determined (emphatic), with the article | means: wisdom | 0.98
+        parts: חָכְמְתָ֛: from חׇכְמָה, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: feminine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  וּגְבוּרְתָא ⇒ גְּבוּרָה | NOUN | feminine singular, determined (emphatic), with the article | means: power | 0.98
+        parts: וּ: from וְ, and ; גְבוּרְתָ֖: from גְּבוּרָה, stem ; א: determined (emphatic) state ending
+        notes: Variety: arc-bib.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: feminine singular, determined (emphatic), with the article — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: 
+  דִּי ⇒ דִּי | SCONJ | relative | means: that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of | 0.98
+        also: דִּי/CONJ/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65 ; דִּי/PRON/that, used as relative conjunction, and especially (with a preposition) in adverbial phrases; also as preposition of@0.65
+        notes: Variety: arc-bib. || 7 other readings possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: relative — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: דִּי (CONJ; no morphology) / דִּי (PRON; PronType=Ind, Person=3, Gender=Fem,Masc, Number=Sing) / דִּי (PRON; PronType=Ind, Person=3, Gender=Com, Number=Sing) / דִּי (PART; no morphology) / דִּי (PRON; PronType=Ind, Gender=Com, Number=Sing) / דִּי (PRON; PronType=Rel, Gender=Com, Number=Sing) / דִּי (ADJ; Gender=Fem, Number=Sing, State=Abs)
+  לֵהּ ⇒ לְ | ADP |  | means: to, for | 0.98
+        also: לְ/PART/to, for@0.65
+        parts: לֵֽ: from לְ, stem ; הּ: object of the preposition
+        notes: Variety: arc-bib. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: 
+        role:  syntax: 
+        ambiguity: לְ (PART; PartType=Obj)
+  הִיא ⇒ הוּא | PART | affirmative particle | means: he | 0.98
+        also: הוּא/PRON/he@0.65
+        notes: Variety: arc-bib. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+        basis: Exact annotated source passage; alternatives are retained.
+        form-construction: affirmative particle — The form shows these features; the pack has no separate explanation for this combination.
+        role:  syntax: 
+        ambiguity: הוּא (PRON; PronType=Prs, Person=3, Gender=Fem, Number=Sing)
+
+== totals: 224 words; blank 59; in-verse 0.98 115; other 50

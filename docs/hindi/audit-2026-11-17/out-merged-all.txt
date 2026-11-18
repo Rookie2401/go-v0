@@ -1,0 +1,69 @@
+{"lemmas":2467,"noRecord":161,"noTable":331,"verified":22435,"supported":3940,"generated":5192,"conflicted":136}
+lemmas with a conflict: 66
+होना AUX :: Fin.Sub.3.Sing: dictionary होए / rules हो ; Fin.Sub.3.Plur: dictionary होएँ / rules हों ; Fin.Sub.2.Fam: dictionary होओ / rules हो ; Fin.Sub.2.Plur.Form: dictionary होएँ / rules हों ; Fin.Ind.Fut.Masc.3.Sing: dictionary होएगा / rules होगा ; Fin.Ind.Fut.Masc.3.Plur: dictionary होएँगे / rules होंगे ; Fin.Ind.Fut.Masc.2.Plur.Form: dictionary होएँगे / rules होंगे ; Fin.Ind.Fut.Fem.3.Sing: dictionary होएगी / rules होगी ; Fin.Ind.Fut.Fem.3.Plur: dictionary होएँगी / rules होंगी ; Fin.Ind.Fut.Fem.2.Plur.Form: dictionary होएँगी / rules होंगी
+पीना VERB :: Fin.Sub.1.Sing: dictionary पियूँ / rules पिऊँ,पिऊं,पीऊँ ; Fin.Sub.2.Fam: dictionary पियो / rules पिओ ; Fin.Ind.Fut.1.Sing.Masc: dictionary पियूँगा / rules पिऊँगा,पिऊंगा,पीऊँगा ; Fin.Ind.Fut.1.Sing.Fem: dictionary पियूँगी / rules पिऊँगी,पिऊंगी,पीऊँगी
+जीना VERB :: Fin.Sub.1.Sing: dictionary जियूँ / rules जिऊँ,जिऊं ; Fin.Sub.2.Fam: dictionary जियो / rules जिओ ; Fin.Ind.Fut.1.Sing.Masc: dictionary जियूँगा / rules जिऊँगा,जिऊंगा ; Fin.Ind.Fut.1.Sing.Fem: dictionary जियूँगी / rules जिऊँगी,जिऊंगी ; Fin.Imp.2.Form: dictionary जीइये / rules जीजिए,जीजिये ; Fin.Imp.2.Form.Fut: dictionary जीइयेगा / rules जीजिएगा,जीजियेगा
+सीना VERB :: Fin.Sub.1.Sing: dictionary सियूँ / rules सिऊँ,सिऊं ; Fin.Sub.2.Fam: dictionary सियो / rules सिओ ; Fin.Ind.Fut.1.Sing.Masc: dictionary सियूँगा / rules सिऊँगा,सिऊंगा ; Fin.Ind.Fut.1.Sing.Fem: dictionary सियूँगी / rules सिऊँगी,सिऊंगी ; Fin.Imp.2.Form: dictionary सीइये / rules सीजिए,सीजिये ; Fin.Imp.2.Form.Fut: dictionary सीइयेगा / rules सीजिएगा,सीजियेगा
+दोपहर NOUN :: Dir.Plur: dictionary दोपहर / rules दोपहरें
+बच्ची NOUN :: Dir.Sing: dictionary बच्चा / rules बच्ची ; Obl.Sing: dictionary बच्चे / rules बच्ची ; Dir.Plur: dictionary बच्चे / rules बच्चियाँ,बच्चियां ; Obl.Plur: dictionary बच्चों / rules बच्चियों ; Voc.Plur: dictionary बच्चो / rules बच्चियो
+पोती NOUN :: Dir.Sing: dictionary पोता / rules पोती ; Obl.Sing: dictionary पोते / rules पोती ; Dir.Plur: dictionary पोते / rules पोतियाँ,पोतियां ; Obl.Plur: dictionary पोतों / rules पोतियों ; Voc.Plur: dictionary पोतो / rules पोतियो
+गाल NOUN :: Dir.Plur: dictionary गालें / rules गाल
+पीठ NOUN :: Dir.Plur: dictionary पीठ / rules पीठें
+कोहनी NOUN :: Dir.Plur: dictionary कोहनी / rules कोहनियाँ,कोहनियां
+तकिया NOUN :: Obl.Sing: dictionary तकिए / rules तकिये ; Dir.Plur: dictionary तकिए / rules तकिये
+दीया NOUN :: Obl.Sing: dictionary दीए / rules दीये ; Dir.Plur: dictionary दीए / rules दीये
+झाड़ू NOUN :: Dir.Plur: dictionary झाड़ू / rules झाड़ुएँ,झाड़ुयेँ,झाड़ुयें,झाड़ुएं
+धुआँ NOUN :: Voc.Plur: dictionary धुओं / rules धुओ
+पैंट NOUN :: Dir.Plur: dictionary पैंट / rules पैंटें
+चीनी NOUN :: Dir.Plur: dictionary चीनी / rules चीनियाँ,चीनियां
+मटर NOUN :: Dir.Plur: dictionary मटरें / rules मटर
+भेड़िया NOUN :: Obl.Sing: dictionary भेड़िए / rules भेड़िये ; Dir.Plur: dictionary भेड़िए / rules भेड़िये
+हिंदी NOUN :: Dir.Plur: dictionary हिंदी / rules हिंदियाँ,हिंदियां
+कुआँ NOUN :: Voc.Plur: dictionary कुओं / rules कुओ
+बस NOUN :: Dir.Plur: dictionary बस / rules बसें
+साइकिल NOUN :: Dir.Plur: dictionary साइकिल / rules साइकिलें
+रुपया NOUN :: Obl.Sing: dictionary रुपए / rules रुपये,rupe,rupae,rupye,rupaye ; Dir.Plur: dictionary रुपए / rules रुपये,rupe,rupae,rupye,rupaye
+जेल NOUN :: Dir.Plur: dictionary जेल / rules जेलें
+रेडियो NOUN :: Obl.Plur: dictionary रेडियों / rules रेडियोओं ; Voc.Plur: dictionary रेडियो / rules रेडियोओ
+स्थान NOUN :: Dir.Plur: dictionary स्थानें / rules स्थान
+क़िस्म NOUN :: Dir.Plur: dictionary क़िस्म / rules क़िस्में
+शक्ल NOUN :: Dir.Plur: dictionary शक्ल / rules शक्लें
+गेंद NOUN :: Dir.Plur: dictionary गेंद / rules गेंदें
+भोर NOUN :: Dir.Plur: dictionary भोर / rules भोरें
+ख़ुदा NOUN :: Obl.Sing: dictionary ख़ुदा / rules ख़ुदे ; Dir.Plur: dictionary ख़ुदा / rules ख़ुदे ; Obl.Plur: dictionary ख़ुदाओं / rules ख़ुदों ; Voc.Plur: dictionary ख़ुदाओ / rules ख़ुदो
+आशीष NOUN :: Dir.Plur: dictionary आशीष / rules आशीषें
+कलीसिया NOUN :: Dir.Plur: dictionary कलीसियाएँ / rules कलीसियाँ,कलीसियां ; Obl.Plur: dictionary कलीसियाओं / rules कलीसियों ; Voc.Plur: dictionary कलीसियाओ / rules कलीसियो
+मसीहा NOUN :: Obl.Sing: dictionary मसीहे / rules मसीहा ; Dir.Plur: dictionary मसीहे / rules मसीहा ; Obl.Plur: dictionary मसीहों / rules मसीहाओं ; Voc.Plur: dictionary मसीहो / rules मसीहाओ
+बलि NOUN :: Dir.Plur: dictionary बलि / rules बलियाँ,बलियां
+तौलिया NOUN :: Obl.Sing: dictionary तौलिए / rules तौलिये ; Dir.Plur: dictionary तौलिए / rules तौलिये
+माचिस NOUN :: Dir.Plur: dictionary माचिस / rules माचिसें
+अदरक NOUN :: Dir.Plur: dictionary अदरकें / rules अदरक
+धनिया NOUN :: Obl.Sing: dictionary धनिए / rules धनिये ; Dir.Plur: dictionary धनिए / rules धनिये
+मक्का NOUN :: Obl.Sing: dictionary मक्के / rules मक्का ; Dir.Plur: dictionary मक्के / rules मक्काएँ,मक्कायेँ,मक्कायें,मक्काएं ; Obl.Plur: dictionary मक्कों / rules मक्काओं ; Voc.Plur: dictionary मक्को / rules मक्काओ
+डाकघर NOUN :: Dir.Plur: dictionary डाकघरें / rules डाकघर
+पहिया NOUN :: Obl.Sing: dictionary पहिए / rules पहिये ; Dir.Plur: dictionary पहिए / rules पहिये
+रसोइया NOUN :: Obl.Sing: dictionary रसोइए / rules रसोइये,रसोइया ; Dir.Plur: dictionary रसोइए / rules रसोइये,रसोइयाएँ
+हार NOUN :: Dir.Plur: dictionary हार / rules हारें
+ढोलक NOUN :: Dir.Plur: dictionary ढोलक / rules ढोलकें
+प्लेट NOUN :: Dir.Plur: dictionary प्लेट / rules प्लेटें
+सराय NOUN :: Dir.Plur: dictionary सराय / rules सरायें
+बंदरगाह NOUN :: Dir.Plur: dictionary बंदरगाहें / rules बंदरगाह
+तौल NOUN :: Dir.Plur: dictionary तौल / rules तौलें
+कार NOUN :: Dir.Plur: dictionary कार / rules कारें
+क्रिया NOUN :: Dir.Plur: dictionary क्रियाएँ / rules क्रियाँ,क्रियां ; Obl.Plur: dictionary क्रियाओं / rules क्रियों ; Voc.Plur: dictionary क्रियाओ / rules क्रियो
+ज़िद NOUN :: Dir.Plur: dictionary ज़िद / rules ज़िदें
+किराया NOUN :: Obl.Sing: dictionary किराए / rules किराये ; Dir.Plur: dictionary किराए / rules किराये
+किलो NOUN :: Obl.Plur: dictionary किलों / rules किलोओं ; Voc.Plur: dictionary किलो / rules किलोओ
+ससुराल NOUN :: Dir.Plur: dictionary ससुरालें / rules ससुराल
+अब्बू NOUN :: Dir.Sing: dictionary अब्बा / rules अब्बू ; Obl.Sing: dictionary अब्बे / rules अब्बू ; Dir.Plur: dictionary अब्बे / rules अब्बू ; Obl.Plur: dictionary अब्बों / rules अब्बुओं ; Voc.Plur: dictionary अब्बो / rules अब्बुओ
+राजमा NOUN :: Obl.Sing: dictionary राजमा / rules राजमे ; Dir.Plur: dictionary राजमाएँ / rules राजमे ; Obl.Plur: dictionary राजमाओं / rules राजमों ; Voc.Plur: dictionary राजमाओ / rules राजमो
+पुताई NOUN :: Dir.Sing: dictionary - / rules पुताई,पुतायी ; Obl.Sing: dictionary - / rules पुताई,पुतायी ; Dir.Plur: dictionary - / rules पुताइयाँ,पुताइयां ; Obl.Plur: dictionary - / rules पुताइयों ; Voc.Plur: dictionary - / rules पुताइयो
+नाप NOUN :: Dir.Plur: dictionary नापें / rules नाप
+राय NOUN :: Dir.Plur: dictionary राय / rules रायें
+मच्छरदानी NOUN :: Dir.Plur: dictionary मच्छरदानी / rules मच्छरदानियाँ,मच्छरदानियां
+फ़ोटो NOUN :: Obl.Plur: dictionary फ़ोटों / rules फ़ोटोओं ; Voc.Plur: dictionary फ़ोटो / rules फ़ोटोओ
+वीडियो NOUN :: Obl.Plur: dictionary वीडियों / rules वीडियोओं ; Voc.Plur: dictionary वीडियो / rules वीडियोओ
+मुखिया NOUN :: Obl.Sing: dictionary मुखिए / rules मुखिया,मुखिये ; Dir.Plur: dictionary मुखिए / rules मुखिया,मुखिये ; Obl.Plur: dictionary मुखियों / rules मुखियाओं ; Voc.Plur: dictionary मुखियो / rules मुखियाओ
+मई NOUN :: Dir.Plur: dictionary मइयाँ / rules मई,मयी
+बेल NOUN :: Dir.Plur: dictionary बेल / rules बेलें
+RECORD BUT NO TABLE CELLS MERGED: जाना छठा नौवाँ सारा ऐसा वैसा जैसा कैसा इतना उतना कितना जितना भारी भरा खाली थोड़ा गोल बढ़िया घटिया सुंदर ख़ूबसूरत अजीब मज़ेदार दिलचस्प आसान मुश्किल कठिन सरल सही ग़लत ठीक असली नक़ली ज़रूरी आवश्यक ज़्यादा कम आख़िरी अंतिम प्राचीन साफ़ गर्म गरम नमकीन सख़्त नरम मुलायम तेज़ मज़बूत कमज़ोर लाल सफ़ेद गुलाबी नारंगी बैंगनी रंगीन बीमार तंदुरुस्त स्वस्थ ज़िंदा जीवित मृत तैयार मौजूद मालूम अनजान ख़ुश दुखी उदास नाराज़ परेशान हैरान शांत अमीर ग़रीब जवान युवा बहादुर डरपोक चालाक होशियार बुद्धिमान मूर्ख पागल सुस्त आलसी मेहनती ईमानदार बेईमान दयालु कंजूस उदार विनम्र नम्र घमंडी लालची कुल अन्य अलग समान बराबर ख़ास आम मुख्य साधारण सामान्य विशेष अनेक अनगिनत प्रत्येक पूर्ण संपूर्ण पर्याप्त निश्चित संभव असंभव उचित अनुचित सुरक्षित ख़तरनाक विदेशी भारतीय हिंदुस्तानी शुरू ख़त्म बाक़ी बेहतर बेहतरीन जंगली शक्तिशाली अशुद्ध घरेलू प्रसन्न सुनसान नियत उत्पन्न योग्य प्रिय चकित चुप पीड़ित सफल स्थिर बंद पवित्र शुद्ध अनन्त सनातन धर्मी दुष्ट पापी निर्दोष दोषी परम महान श्रेष्ठ धन्य पूज्य स्वर्गीय सांसारिक आत्मिक शारीरिक न्यायी बेडौल नासरी सुखदायी कठोर बासी बदसूरत नटखट मासूम भयानक अद्भुत विचित्र मशहूर प्रसिद्ध लोकप्रिय चमकदार ठोस चौकोर टूटा फटा घायल मुर्दा लज्जित आभारी लापरवाह सावधान व्यस्त क़ीमती मूल्यवान मुफ़्त स्वादिष्ट ताक़तवर भाग्यशाली नेक सर्वोच्च अमर नश्वर धार्मिक आध्यात्मिक स्थानीय राष्ट्रीय सरकारी निजी सार्वजनिक सामाजिक पारिवारिक प्राकृतिक ऐतिहासिक आर्थिक मानसिक दैनिक वार्षिक छठवाँ सुखी बेवक़ूफ़ समझदार नादान नासमझ ग़ायब दयावान निराश चिंतित संतुष्ट भयभीत असफल अयोग्य अप्रिय महत्त्वपूर्ण सर्वश्रेष्ठ उत्तम नवीन आधुनिक दीर्घ लघु विशाल असंख्य अपार असीम सीमित समस्त तमाम वरिष्ठ कनिष्ठ बहुत प्रधान ज्ञानी पसंद नापसंद सक्षम क़ाबिल मुमकिन समाप्त माफ़ चालू हवाई सुखद तंग ज़िद्दी बेहोश ख़राब कंगाल धनी पका कटा जला बैठा सोया भुना तला लिखा खोया डरा गिरा रखा आदरणीय सहमत सूचित पालतू पैदा विशालकाय महसूस तय बृहस्पतिवार देह शेर अंग्रेज़ी गीत मंडी सूरज सूर्य चंद्रमा दाम उजियाला अंधियारा विश्वास मुक्ति धार्मिकता वरदान ज्योति ख़ुशी मोहब्बत मर्ज़ी हक़ प्रतीक्षा स्वागत सलाद हल्दी भूसा केंचुआ मछुआ दिशा कोहरा दिवाली होली ईद क्रिसमस ईस्टर बेचैनी फ़ीस प्रकृति दर्जन सूखा वंश मरी तड़प गुज़ारा मलेरिया ऑटो इंटरनेट

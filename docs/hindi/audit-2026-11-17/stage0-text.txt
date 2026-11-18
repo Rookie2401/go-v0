@@ -1,0 +1,123 @@
+# hi-s01
+hi | नमस्ते।   # Hello.
+hi | नमस्ते।   # Hello.
+hi | मेरा नाम मीरा है।   # My name is Meera.
+hi | आपका नाम?   # And your name?
+hi | मेरा नाम सैम है।   # My name is Sam.
+# hi-s02
+hi | यह रवि है।   # This is Ravi.
+hi | रवि मेरा भाई है।   # Ravi is my brother.
+hi | नमस्ते, सैम।   # Hello, Sam.
+hi | नमस्ते, रवि।   # Hello, Ravi.
+hi | मीरा मेरी बहन है।   # Meera is my sister.
+# hi-s03
+hi | यह मेरा घर है।   # This is my house.
+hi | यह क्या है?   # What is this?
+hi | यह चाय है।   # This is tea.
+hi | और वह क्या है?   # And what is that?
+hi | वह पानी है।   # That is water.
+# hi-s04
+hi | मैं घर में हूँ।   # I am at home.
+hi | रवि भी घर में है।   # Ravi is at home too.
+hi | पापा घर में हैं?   # Is Dad at home?
+hi | नहीं, पापा घर में नहीं हैं।   # No, Dad is not at home.
+hi | पापा बाज़ार में हैं।   # Dad is at the market.
+hi | हाँ, पापा बाज़ार में हैं।   # Yes, Dad is at the market.
+# hi-s05
+hi | सैम, क्या आपको चाय चाहिए?   # Sam, would you like tea? (do you need tea?)
+hi | नहीं, मुझे चाय नहीं चाहिए।   # No, I don't want tea.
+hi | मुझे पानी चाहिए।   # I want water.
+hi | यह लीजिए, पानी।   # Here you are, water.
+hi | शुक्रिया!   # Thanks!
+hi | रवि को चाय चाहिए।   # Ravi wants tea.
+# hi-s06
+hi | मुझे चाय बहुत पसंद है।   # I like tea a lot.
+hi | मुझे चाय पसंद नहीं है।   # I don't like tea.
+hi | लेकिन मुझे दूध पसंद है।   # But I like milk.
+hi | रवि को चाय पसंद है।   # Ravi likes tea.
+hi | सैम को दूध पसंद है।   # Sam likes milk.
+hi | मुझे पानी पसंद है।   # I like water.
+# hi-s07
+hi | सैम, आप कैसे हैं?   # Sam, how are you?
+hi | मैं ठीक हूँ।   # I am fine.
+hi | मैं थका हूँ।   # I am tired.
+hi | आज बहुत काम है।   # There is a lot of work today.
+hi | मैं भी थकी हूँ।   # I am tired too.
+hi | मैं थका नहीं हूँ।   # I am not tired.
+# hi-s08
+hi | मेरा बैग कहाँ है?   # Where is my bag?
+hi | आपका बैग मेज़ पर है।   # Your bag is on the table.
+hi | और मेरी चाबी?   # And my key?
+hi | चाबी कुर्सी पर है।   # The key is on the chair.
+hi | और मेरा फ़ोन?   # And my phone?
+hi | आपका फ़ोन बैग में है।   # Your phone is in the bag.
+hi | शुक्रिया!   # Thanks!
+# hi-s09
+hi | अमन, तुम्हारी किताब कहाँ है?   # Aman, where is your book?
+hi | मुझे नहीं पता।   # I don't know.
+hi | मेरा बैग भी नहीं है।   # My bag is not here either.
+hi | कुर्सी पर अमन का बैग है!   # Aman's bag is on the chair!
+hi | हाँ! यह मेरा बैग है।   # Yes! This is my bag.
+hi | शुक्रिया, दीदी।   # Thanks, Didi (big sister).
+# hi-s10
+hi | आज हम बाज़ार जाते हैं।   # Today we go to the market.
+hi | बाज़ार में क्या है?   # What is at the market?
+hi | बाज़ार बड़ा है।   # The market is big.
+hi | बाज़ार में सीता नानी हैं।   # Seeta Nani is at the market.
+hi | सीता नानी रोटी बेचती हैं।   # Seeta Nani sells roti (bread).
+hi | मुझे रोटी चाहिए।   # I want roti.
+hi | चलो!   # Let's go!
+# hi-s11
+hi | नमस्ते, नानी। रोटी कितने की है?   # Hello, Nani. How much is the roti?
+hi | एक रोटी पाँच रुपये की है।   # One roti is five rupees.
+hi | मुझे दो रोटी चाहिए।   # I want two rotis.
+hi | दो रोटी, दस रुपये।   # Two rotis, ten rupees.
+hi | यह लीजिए।   # Here you are.
+hi | धन्यवाद!   # Thank you!
+# hi-s12
+hi | रवि, आप क्या काम करते हैं?   # Ravi, what work do you do?
+hi | मैं स्कूल में काम करता हूँ।   # I work at a school.
+hi | और मीरा, आप?   # And Meera, you?
+hi | मैं अस्पताल में काम करती हूँ।   # I work at a hospital.
+hi | और अमन कौन है?   # And who is Aman?
+hi | अमन मेरे स्कूल में है।   # Aman is at my school.
+hi | अमन छोटा लड़का है।   # Aman is a little boy.
+# hi-s13
+hi | आज शनिवार है। कल रविवार है।   # Today is Saturday. Tomorrow is Sunday.
+hi | रविवार को हम चर्च जाते हैं।   # On Sunday we go to church.
+hi | मैं भी चर्च जाता हूँ। यह मेरी बाइबल है।   # I go to church too. This is my Bible.
+hi | अमन और सीता नानी भी चर्च जाती हैं।   # Aman and Seeta Nani go to church too.
+hi | चर्च सुबह दस बजे है।   # Church is at ten in the morning.
+hi | ठीक है। हम कल सुबह चलते हैं!   # All right. We will go tomorrow morning!
+# hi-s14
+hi | आज शनिवार है और बारिश है।   # Today is Saturday and it is raining.
+hi | हम बाज़ार नहीं जाते।   # We are not going to the market.
+hi | मैं थकी हूँ।   # I am tired.
+hi | सीता नानी भी आज रोटी नहीं बेचती हैं।   # Seeta Nani is not selling roti today either.
+hi | मैं दूध पीता हूँ।   # I will have milk.
+hi | मैं गरम चाय बनाती हूँ।   # I will make hot tea.
+hi | मेज़ पर दाल और रोटी है।   # There is dal and roti on the table.
+# hi-s15
+hi | मैं सैम हूँ। मैं यहाँ रहता हूँ।   # I am Sam. I live here.
+hi | मैं हिंदी बोलना सीखता हूँ।   # I am learning to speak Hindi.
+hi | मीरा और रवि मेरे दोस्त हैं।   # Meera and Ravi are my friends.
+hi | मीरा रवि की बहन है। वह अस्पताल में काम करती है।   # Meera is Ravi's sister. She works at a hospital.
+hi | रवि मीरा का भाई है। वह स्कूल में काम करता है।   # Ravi is Meera's brother. He works at a school.
+hi | रविवार को हम दस बजे चर्च जाते हैं।   # On Sunday we go to church at ten.
+hi | मुझे यहाँ अच्छा लगता है।   # I like it here.
+# hi-s16
+hi | आज हम चावल खाते हैं।   # Today we eat rice.
+hi | चावल गरम है।   # The rice is hot.
+hi | मुझे चावल बहुत पसंद है।   # I like rice a lot.
+hi | मुझे चावल पसंद नहीं है, लेकिन रोटी पसंद है।   # I don't like rice, but I like roti.
+hi | मुझे तीन रोटी चाहिए!   # I want three rotis!
+hi | ठीक है, अमन। दाल भी है।   # All right, Aman. There is dal too.
+hi | और मेज़ पर फल भी है।   # And there is fruit on the table too.
+# hi-s17
+hi | मेरी बाइबल हिंदी में है।   # My Bible is in Hindi.
+hi | सैम, आप हिंदी बोलते हैं?   # Sam, do you speak Hindi?
+hi | थोड़ी-थोड़ी।   # A little.
+hi | सैम मेरा दोस्त है। वह यहाँ रहता है।   # Sam is my friend. He lives here.
+hi | सैम यहाँ हिंदी बोलना सीखता है।   # Sam is learning to speak Hindi here.
+hi | मुझे हिंदी बहुत पसंद है। मुझे यहाँ अच्छा लगता है।   # I like Hindi a lot. I like it here.
+hi | धन्यवाद, सीता नानी।   # Thank you, Seeta Nani.

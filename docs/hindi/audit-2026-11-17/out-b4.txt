@@ -1,0 +1,125 @@
+hi «हिन्दी» in "मैं हिन्दी सीख रहा हूँ।" ⇒ हिंदी / NOUN / feminine singular / g:Hindi / 0.8 / C:form:Gender=Fem|Number=Sing / S:direct object of "सीख" / D:an Indian; a person of India ; Modern Standard Hindi, a standardized a
+hi «हिंदी» in "मैं हिंदी सीख रहा हूँ।" ⇒ हिंदी / NOUN / feminine singular / g:Hindi / 0.92 / C:form:Gender=Fem|Number=Sing / S:direct object of "सीख" / D:an Indian; a person of India ; Modern Standard Hindi, a standardized a
+hi «लिये» in "यह आपके लिये है।" ⇒ लिए / ADP /  / g:for, for the sake of (in के लिए) / 0.55 / also लेना/VERB / P:के लिए / S:postposition of "आपके" / D:to take ; to buy, get
+hi «चाहिये» in "आपको जाना चाहिये।" ⇒ चाहिए / AUX /  / g:ought to, should; is needed / 0.55 / also चाहना/VERB / C:obligation / S:helping verb of "जाना" / D:to want, desire ; to wish
+hi «कीजिये» in "यह काम कीजिये।" ⇒ करना / VERB / polite command (आप) / g:to do, to make / 0.8 / C:polite-request,form:Mood=Imp|Person=2|Polite=Form|VerbForm=Fin / P:काम करना / S:the main word of the sentence / D:to do, to perform, to execute ; to work, to engage in a profession
+hi «सुन्दर» in "वह सुन्दर है।" ⇒ सुंदर / ADJ / does not change / g:beautiful, handsome / 0.75 / also सुंदर/NOUN,सुंदर/NOUN,सुंदर/NOUN / S:the main word of the sentence / D:beautiful, pretty; good-looking, handsome
+hi «अण्डा» in "उसने अण्डा खाया।" ⇒ अंडा / NOUN / masculine, direct singular / g:egg / 0.8 / C:form:Case=Dir|Gender=Masc|Number=Sing / S:direct object of "खाया" / D:egg
+hi «लम्बा» in "वह लम्बा आदमी है।" ⇒ लंबा / ADJ / masculine, direct singular / g:long, tall / 0.75 / also लंबा/NOUN,लंबा/NOUN,लंबा/NOUN / C:adjective-noun-agreement,form:Case=Dir|Gender=Masc|Number=Sing / S:describes "आदमी" / D:tall (of people) ; long (of objects, duration, etc)
+hi «गंगा» in "गंगा पवित्र नदी है।" ⇒ गंगा / PROPN / feminine / g:the Ganga (Ganges) / 0.92 / C:form:Gender=Fem / S:subject of "नदी" / D:Ganges, Ganga (a major river in the states of Uttarakhand, Uttar Prade
+hi «गङ्गा» in "गङ्गा पवित्र नदी है।" ⇒ गंगा / PROPN / feminine / g:the Ganga (Ganges) / 0.8 / C:form:Gender=Fem / S:subject of "नदी" / D:Ganges, Ganga (a major river in the states of Uttarakhand, Uttar Prade
+hi «हूं» in "मैं हूं।" ⇒ होना / AUX / first person singular, present (is / am / are) / g:I am / 0.8 / C:form:Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to be (used to indicate that the subject and object are the same) ; to
+hi «वहां» in "वहां कौन है?" ⇒ वहाँ / ADV /  / g:there / 0.8 / S:adverb of "है" / D:there (only in the sense of an abstract noun of place. Hindi does not 
+hi «मां» in "मां घर पर है।" ⇒ माँ / NOUN / feminine singular / g:mother / 0.8 / C:form:Gender=Fem|Number=Sing / S:subject of "घर" / D:mother ; mum, mummy
+hi «पांच» in "पांच लोग आए।" ⇒ पाँच / NUM /  / g:five / 0.75 / also पाँच/NOUN,पाँच/NOUN,पाँच/NOUN / S:number of "लोग" / D:five
+hi «लड़कियां» in "लड़कियां खेल रही हैं।" ⇒ लड़की / NOUN / feminine, direct plural / g:girl / 0.9 / C:plural-forms,form:Case=Dir|Gender=Fem|Number=Plur / S:subject of "खेल" / D:girl ; daughter
+hi «हंस» in "वह हंस रहा है।" ⇒ हंस / NOUN / masculine / g:swan / 0.92 / C:form:Gender=Masc / S:subject of "रहा" / D:swan ; goose
+hi «हंस» in "तालाब में एक हंस है।" ⇒ हंस / NOUN / masculine / g:swan / 0.92 / C:form:Gender=Masc / S:subject of "है" / D:swan ; goose
+hi «दरवाजा» in "उसने दरवाजा खोला।" ⇒ दरवाज़ा / NOUN / masculine, direct singular / g:door / 0.8 / C:form:Case=Dir|Gender=Masc|Number=Sing / S:direct object of "खोला" / D:door
+hi «जरूरत» in "मुझे जरूरत है।" ⇒ ज़रूरत / NOUN / feminine singular / g:need, necessity / 0.8 / C:ko-experiencer,form:Gender=Fem|Number=Sing / P:ज़रूरत होना / S:subject of "है" / D:necessity ; requirement
+hi «गरीब» in "वह बहुत गरीब है।" ⇒ ग़रीब / ADJ / does not change / g:poor / 0.75 / also ग़रीब/NOUN,ग़रीब/NOUN,ग़रीब/NOUN / S:the main word of the sentence / D:poor, impoverished ; foreign, strange
+hi «बाजार» in "बाजार बंद है।" ⇒ बाज़ार / NOUN / masculine / g:market / 0.8 / C:form:Gender=Masc / S:subject of "बंद" / D:market; bazaar
+hi «ताजा» in "यह फल ताजा है।" ⇒ ताज़ा / ADJ / masculine, direct singular / g:fresh / 0.75 / also ताज़ा/NOUN,ताज़ा/NOUN,ताज़ा/NOUN / C:form:Case=Dir|Gender=Masc|Number=Sing / S:the main word of the sentence / D:fresh, just made ; new, breaking
+hi «फोन» in "मुझे फोन करो।" ⇒ फ़ोन / NOUN / masculine / g:telephone / 0.8 / C:form:Gender=Masc / S:part of a compound / D:phone
+hi «लडका» in "लडका पढ रहा है।" ⇒ लड़का / NOUN / masculine, direct singular / g:boy / 0.8 / C:form:Case=Dir|Gender=Masc|Number=Sing / S:subject of "पढ" / D:boy ; son
+hi «पढ» in "लडका पढ रहा है।" ⇒ पढ़ना / VERB / bare stem (before a second verb) / g:to read, to study / 0.8 / C:auxiliary-chain,progressive,form:VerbForm=Stem / S:the main word of the sentence / D:to read ; to study, learn
+hi «मेज» in "मेज पर किताब है।" ⇒ मेज़ / NOUN / feminine singular / g:table / 0.8 / C:postposition-after-noun,form:Gender=Fem|Number=Sing / S:adverbial phrase of "है" (place, time, means, source) / D:table
+hi «आवाज» in "उसकी आवाज मीठी है।" ⇒ आवाज़ / NOUN / feminine singular / g:voice, sound / 0.8 / C:genitive-agreement,form:Gender=Fem|Number=Sing / S:subject of "मीठी" / D:voice; call, cry ; sound, noise
+hi «सडक» in "वह सडक पर खडा है।" ⇒ सड़क / NOUN / feminine singular / g:road, street / 0.8 / C:postposition-after-noun,form:Gender=Fem|Number=Sing / S:adverbial phrase of "खडा" (place, time, means, source) / D:road
+hi «सफेद» in "यह कागज सफेद है।" ⇒ सफ़ेद / ADJ / does not change / g:white / 0.75 / also सफ़ेद/NOUN,सफ़ेद/NOUN,सफ़ेद/NOUN / S:the main word of the sentence / D:white (color) ; white, fair (used for appearance of a person or animal
+hi «दुःख» in "दुःख और सुख जीवन में आते हैं।" ⇒ दुख / NOUN / masculine / g:sorrow, grief, pain / 0.55 / also दुखना/VERB / C:form:Gender=Masc / S:subject of "आते" / D:alternative spelling of दुःख (duḥkh)
+hi «नयी» in "उसने नयी किताब ख़रीदी।" ⇒ नया / ADJ / feminine singular / g:new / 0.8 / also नया/ADJ / C:adjective-noun-agreement,form:Gender=Fem|Number=Sing / S:describes "किताब" / D:new
+hi «आये» in "बच्चे आये।" ⇒ आना / VERB / masculine plural, perfective participle / g:coming / 0.8 / also आना/VERB,आना/VERB / C:perfective-past,form:Aspect=Perf|Gender=Masc|Number=Plur|VerbForm=Part / S:the main word of the sentence / D:to come, approach, draw near; to arrive, reach (a place or a point) ; 
+hi «आयी» in "उसने कहा कि वह आयी थी।" ⇒ आना / VERB / feminine singular, perfective participle / g:coming / 0.8 / also आना/VERB / C:ergative-ne,pluperfect,form:Aspect=Perf|Gender=Fem|Number=Sing|VerbForm=Part / S:clause that is what "कहा" says, knows or wants / D:to come, approach, draw near; to arrive, reach (a place or a point) ; 
+hi «दिये» in "मैंने उसे दिये।" ⇒ देना / VERB / masculine plural, perfective participle / g:giving / 0.8 / C:ergative-ne,perfective-past,form:Aspect=Perf|Gender=Masc|Number=Plur|VerbForm=Part / S:the main word of the sentence / D:to give, grant, award ; to lay (eggs), give birth to
+hi «हुये» in "हुये काम को भूल जाओ।" ⇒ होना / AUX / masculine plural, perfective participle / g:being / 0.8 / C:form:Aspect=Perf|Gender=Masc|Number=Plur|VerbForm=Part / S:the main word of the sentence / D:to be (used to indicate that the subject and object are the same) ; to
+hi «उन्हे» in "उन्हे बुलाओ।" ⇒ उन्हा / NOUN / masculine, direct plural / g:— / 0.4 UNCONF / also उन्हा/NOUN / C:plural-forms / S:direct object of "बुलाओ" / D:∅
+hi «मै» in "मै जा रहा हूँ।" ⇒ — / — /  / g:— / 0 / D:∅
+hi «नही» in "वह नही आया।" ⇒ — / — /  / g:— / 0 / D:alternative form of नहीं (nahī̃)
+hi «ज़्यादा» in "ज़्यादा मत खाओ।" ⇒ ज़्यादा / NOUN / masculine, direct singular / g:more, too much; very / 0.5 / also ज़्यादा/NOUN,ज़्यादा/NOUN,ज़्यादा/NOUN / C:form:Case=Dir|Gender=Masc|Number=Sing / S:adverb of "खाओ" / D:more, very many ; too many
+hi «ज्यादा» in "ज्यादा मत खाओ।" ⇒ ज़्यादा / NOUN / masculine, direct singular / g:more, too much; very / 0.5 / also ज़्यादा/NOUN,ज़्यादा/NOUN,ज़्यादा/NOUN / C:plural-forms,form:Case=Dir|Gender=Masc|Number=Sing / S:adverb of "खाओ" / D:more, very many ; too many
+hi «क़लम» in "क़लम से लिखो।" ⇒ कलम / NOUN / feminine singular / g:pen / 0.8 / C:postposition-after-noun,form:Gender=Fem|Number=Sing / S:adverbial phrase of "लिखो" (place, time, means, source) / D:nuqtaless form of क़लम (qalam)
+hi «ईमानदार» in "सबको मालूम है कि राम ईमानदार है।" ⇒ ईमानदार / ADJ / does not change / g:honest / 0.75 / also ईमानदार/NOUN,ईमानदार/NOUN,ईमानदार/NOUN / S:clause that is what "मालूम" says, knows or wants / D:honest, true, trustworthy, ; faithful, believing integrity,
+hi «कल» in "उसने कल फ़ोन किया था।" ⇒ कल / ADV /  / g:yesterday; tomorrow / 0.92 / S:adverb of "किया" / D:yesterday ; tomorrow
+hi «कल» in "मैं कल आऊँगा।" ⇒ कल / ADV /  / g:yesterday; tomorrow / 0.92 / S:adverb of "आऊँगा" / D:yesterday ; tomorrow
+hi «कल» in "कल कारख़ाने में काम बंद रहेगा।" ⇒ कल / ADV /  / g:yesterday; tomorrow / 0.92 / S:adverb of "रहेगा" / D:yesterday ; tomorrow
+hi «आम» in "आम बहुत मीठा है।" ⇒ आम / NOUN / masculine / g:mango / 0.55 / also आम/ADJ / C:form:Gender=Masc / S:subject of "मीठा" / D:mango ; common, ordinary
+hi «आम» in "यह आम बात है।" ⇒ आम / ADJ / does not change / g:common, ordinary / 0.55 / also आम/NOUN / S:describes "बात" / D:common, ordinary ; innocent
+hi «आम» in "आम आदमी परेशान है।" ⇒ आम / ADJ / does not change / g:common, ordinary / 0.55 / also आम/NOUN / S:describes "आदमी" / D:common, ordinary ; innocent
+hi «सोना» in "मैं सोना चाहता हूँ।" ⇒ सोना / VERB / infinitive / g:to sleep / 0.55 / also सोना/NOUN / C:auxiliary-chain,wanting-chahna,form:VerbForm=Inf / S:the main word of the sentence / D:to sleep ; to repose
+hi «सोना» in "सोना बहुत महँगा है।" ⇒ सोना / VERB / infinitive / g:to sleep / 0.55 / also सोना/NOUN / C:infinitive-as-noun,form:VerbForm=Inf / S:subject of "महँगा" / D:to sleep ; to repose
+hi «सोने» in "सोने की अँगूठी सुंदर है।" ⇒ सोना / NOUN / masculine, oblique singular / g:gold / 0.7 / also सोना/NOUN,सोना/VERB / C:oblique-before-postposition,postposition-after-noun,form:Case=Obl|Gender=Masc|Number=Sing / S:part of a compound / D:gold ; to sleep
+hi «सोने» in "सोने से पहले दूध पियो।" ⇒ सोना / NOUN / masculine, oblique singular / g:gold / 0.7 / also सोना/NOUN,सोना/VERB / C:comparison-se,oblique-before-postposition,postposition-after-noun,form:Case=Obl|Gender=Masc|Number=Sing / S:adverbial phrase of "पियो" (place, time, means, source) / D:gold ; to sleep
+hi «खाना» in "खाना तैयार है।" ⇒ खाना / VERB / infinitive / g:to eat / 0.55 / also खाना/NOUN / C:infinitive-as-noun,form:VerbForm=Inf / S:subject of "तैयार" / D:to eat, consume (food) ; to consume, use up, waste (time, resources, e
+hi «खाना» in "मुझे खाना खाना है।" ⇒ खाना / VERB / infinitive / g:to eat / 0.55 / also खाना/NOUN / C:obligation,form:VerbForm=Inf / S:the main word of the sentence / D:to eat, consume (food) ; to consume, use up, waste (time, resources, e
+hi «और» in "राम और श्याम आए।" ⇒ और / CONJ /  / g:and / 0.55 / also और/ADV / D:and ; other, different
+hi «और» in "मुझे और चाय चाहिए।" ⇒ और / ADV /  / g:more, else, another (और चाहिए, और कुछ) / 0.55 / also और/CONJ / S:describes "चाय" / D:more ; other, different
+hi «और» in "और क्या चाहिए?" ⇒ और / CONJ /  / g:and / 0.55 / also और/ADV / S:joins "चाहिए" to what came before / D:and ; other, different
+hi «की» in "राम की किताब यहाँ है।" ⇒ का / ADP / feminine / g:of; 's (agrees with the thing owned: का के की) / 0.55 / also करना/VERB,करना/VERB / C:genitive-agreement,form:Gender=Fem / S:postposition of "राम" / D:marks the genitive case: -'s, of, belonging to ; part of, originating 
+hi «की» in "उसने बात की।" ⇒ करना / VERB / feminine singular, perfective participle / g:doing / 0.6 / also करना/VERB,का/ADP / C:ergative-ne,perfective-past,form:Aspect=Perf|Gender=Fem|Number=Sing|VerbForm=Part / P:बात करना / S:the main word of the sentence / D:to do, to perform, to execute ; to work, to engage in a profession
+hi «कि» in "राम के भाई ने कहा कि वह आएगा।" ⇒ कि / SCONJ /  / g:that / 0.92 / C:complement-ki / S:introduces the clause of "आएगा" / D:that ; or
+hi «से» in "वह स्कूल से घर आया।" ⇒ से / ADP /  / g:from; with, by; than / 0.55 / also सा/PART,सा/PART,सा/PART / C:postposition-after-noun / S:postposition of "स्कूल" / D:indicates association or mutual dealing; comitative case: by; with; to
+hi «अच्छा» in "वह मुझसे अच्छा गाता है।" ⇒ अच्छा / ADJ / masculine, direct singular / g:good, nice, fine; well / 0.75 / also अच्छा/NOUN,अच्छा/NOUN,अच्छा/NOUN / C:comparison-se,form:Case=Dir|Gender=Masc|Number=Sing / S:complement of "गाता" / D:good, nice, fine ; delicious, tasty
+hi «अच्छा» in "अच्छा, मैं चलता हूँ।" ⇒ अच्छा / ADJ / masculine, direct singular / g:good, nice, fine; well / 0.75 / also अच्छा/NOUN,अच्छा/NOUN,अच्छा/NOUN / C:form:Case=Dir|Gender=Masc|Number=Sing / S:complement of "चलता" / D:good, nice, fine ; delicious, tasty
+hi «गाना» in "मैंने गाना गाया।" ⇒ गाना / NOUN / masculine, direct singular / g:song / 0.55 / also गाना/VERB / C:form:Case=Dir|Gender=Masc|Number=Sing / P:गाना गाना / S:direct object of "गाया" / D:song ; to sing
+hi «गाना» in "मुझे गाना अच्छा लगता है।" ⇒ गाना / VERB / infinitive / g:to sing / 0.55 / also गाना/NOUN / C:infinitive-as-noun,form:VerbForm=Inf / S:subject of "लगता" / D:to sing ; song
+hi «मान» in "वह मेरी बात मान गया।" ⇒ मानना / VERB / bare stem (before a second verb) / g:to accept, to obey; to believe; to confess / 0.92 / C:compound-verb,perfective-past,form:VerbForm=Stem / P:बात मानना;मान जाना / S:the main word of the sentence / D:to accept, agree ; to acknowledge
+hi «मान» in "उसका बहुत मान है।" ⇒ मानना / VERB / bare stem (before a second verb) / g:to accept, to obey; to believe; to confess / 0.92 / C:form:VerbForm=Stem / S:the main word of the sentence / D:to accept, agree ; to acknowledge
+hi «चल» in "वह पैदल चल रहा है।" ⇒ चलना / VERB / bare stem (before a second verb) / g:to walk, to move, to go along; to work (a machine) / 0.92 / C:auxiliary-chain,progressive,form:VerbForm=Stem / S:the main word of the sentence / D:to go, to move — to walk, stroll ; to go, to move — to come
+hi «जल» in "जल ही जीवन है।" ⇒ जलना / VERB / bare stem (before a second verb) / g:to burn (by itself) / 0.92 / C:emphatic-particles,form:VerbForm=Stem / S:the main word of the sentence / D:to burn, be on fire ; to ignite
+hi «जल» in "लकड़ी जल रही है।" ⇒ जलना / VERB / bare stem (before a second verb) / g:to burn (by itself) / 0.92 / C:auxiliary-chain,progressive,form:VerbForm=Stem / S:the main word of the sentence / D:to burn, be on fire ; to ignite
+hi «लो» in "उसे बुला लो।" ⇒ लेना / VERB / familiar command (तुम) / g:to take / 0.8 / also लेना/VERB / C:command,compound-verb,form:Mood=Imp|Person=2|Polite=Fam|VerbForm=Fin / P:बुला लेना / S:helping verb of "बुला" / D:to take ; to buy, get
+hi «लो» in "लो, यह तुम्हारा है।" ⇒ लेना / VERB / familiar command (तुम) / g:to take / 0.8 / also लेना/VERB / C:command,form:Mood=Imp|Person=2|Polite=Fam|VerbForm=Fin / S:the main word of the sentence / D:to take ; to buy, get
+hi «उत्तर» in "उत्तर दो।" ⇒ उत्तर / NOUN / masculine / g:answer; north / 0.92 / C:form:Gender=Masc / P:उत्तर देना / S:part of a compound / D:reply, answer ; north (cardinal direction)
+hi «उत्तर» in "उत्तर भारत में सर्दी पड़ती है।" ⇒ उत्तर / NOUN / masculine / g:answer; north / 0.92 / C:form:Gender=Masc / S:direct object of "पड़ती" / D:reply, answer ; north (cardinal direction)
+hi «बाल» in "वह बाल काट रहा है।" ⇒ बाल / NOUN / masculine / g:hair / 0.92 / C:form:Gender=Masc / S:subject of "काट" / D:hair ; child, boy
+hi «बाल» in "बाल दिवस पर छुट्टी है।" ⇒ बाल / NOUN / masculine / g:hair / 0.92 / C:form:Gender=Masc / S:adverbial phrase of "है" (place, time, means, source) / D:hair ; child, boy
+hi «सीता» in "उसने मुझे बताया कि सीता बीमार है।" ⇒ सीता / PROPN / feminine / g:Sita (a girl's name) / 0.55 / also सीना/VERB / C:form:Gender=Fem / S:subject of "बीमार" / D:Sita (an avatar of Lakshmi) and wife of Lord Rāma ; a female given nam
+hi «सीता» in "वह कपड़े सीता है।" ⇒ सीना / VERB / masculine singular, imperfective participle / g:sewing / 0.55 / also सीता/PROPN / C:habitual-present,form:Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part / S:the main word of the sentence / D:to sew, stitch, mend ; chest, breast
+hi «था» in "मैं पढ़ता था।" ⇒ होना / AUX / masculine singular, past (was / were) / g:I was / 0.8 / also होना/AUX,होना/AUX / C:habitual-past,form:Gender=Masc|Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin / S:helping verb of "पढ़ता" / D:to be (used to indicate that the subject and object are the same) ; to
+hi «भारत» in "दिल्ली भारत की राजधानी है।" ⇒ भारत / PROPN / masculine / g:India / 0.92 / C:postposition-after-noun,form:Gender=Masc / S:part of the name "दिल्ली" / D:India (a country in South Asia) ; India (a region of South Asia, tradi
+hi «पार» in "नदी के पार एक गाँव है।" ⇒ पार / NOUN / masculine / g:the other side, the far bank / 0.92 / C:genitive-agreement,form:Gender=Masc / S:subject of "गाँव" / D:the other side ; limit, end
+hi «पार» in "वह नदी पार कर गया।" ⇒ पार / NOUN / masculine / g:the other side, the far bank / 0.92 / C:form:Gender=Masc / P:पार करना / S:part of a compound / D:the other side ; limit, end
+hi «पीटा» in "उसने मुझे पीटा।" ⇒ पीटना / VERB / masculine singular, perfective participle / g:beating / 0.92 / C:ergative-ne,ne-with-ko-object,ko-definite-object,perfective-past,form:Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part / S:the main word of the sentence / D:to beat, strike (someone) ; to beat up
+hi «पता» in "मुझे पता नहीं।" ⇒ पता / NOUN / masculine, direct singular / g:address; trace / 0.92 / C:form:Case=Dir|Gender=Masc|Number=Sing / P:पता नहीं / S:the main word of the sentence / D:address ; knowledge, clue
+hi «पता» in "उसका पता लिखो।" ⇒ पता / NOUN / masculine, direct singular / g:address; trace / 0.92 / C:genitive-agreement,form:Case=Dir|Gender=Masc|Number=Sing / S:direct object of "लिखो" / D:address ; knowledge, clue
+hi «पत्ता» in "पेड़ से पत्ता गिरा।" ⇒ पत्ता / NOUN / masculine, direct singular / g:leaf / 0.92 / C:form:Case=Dir|Gender=Masc|Number=Sing / S:subject of "गिरा" / D:leaf ; leaflet
+hi «कम» in "दाल में नमक कम है।" ⇒ कम / ADV /  / g:less, little; few / 0.55 / also कम/ADJ,कम/NOUN,कम/NOUN / P:कम होना / S:the main word of the sentence / D:less (in lower degree; to smaller extent) ; little (not much)
+hi «जीता» in "भारत ने मैच जीता।" ⇒ जीतना / VERB / masculine singular, perfective participle / g:winning / 0.6 / also जीना/VERB / C:form:Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part / S:the main word of the sentence / D:to win, conquer
+hi «जीता» in "वह अस्सी साल जीता रहा।" ⇒ जीतना / VERB / masculine singular, perfective participle / g:winning / 0.6 / also जीना/VERB / C:form:Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part / S:the main word of the sentence / D:to win, conquer
+hi «पीता» in "वह चाय पीता है।" ⇒ पीना / VERB / masculine singular, imperfective participle / g:drinking / 0.92 / C:habitual-present,form:Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part / S:the main word of the sentence / D:to drink ; to consume, to smoke
+hi «जी» in "जी हाँ, मैं आऊँगा।" ⇒ जीना / VERB / feminine singular, perfective participle / g:living / 0.6 / also जी/PART,जी/INTJ,जीना/VERB / C:perfective-past,form:Aspect=Perf|Gender=Fem|Number=Sing|VerbForm=Part / P:जी हाँ / S:the main word of the sentence / D:to live ; a female given name, Jeena
+hi «जी» in "पिता जी घर पर हैं।" ⇒ जी / PART /  / g:(honorific after a name or title: माँ जी, गांधी जी) / 0.55 / also जी/INTJ,जीना/VERB,जीना/VERB / S:part of the name "पिता" / D:the honorific particle, usually appended to names (of any gender) and 
+hi «जी» in "मेरा जी घबरा रहा है।" ⇒ जी / NOUN / masculine / g:heart, mind (जी लगना, जी चाहना) / 0.55 / also जी/PART,जी/INTJ,जीना/VERB / C:genitive-agreement,form:Gender=Masc / S:subject of "घबरा" / D:heart, mind (in the figurative, not anatomical, sense) ; the honorific
+hi «राहुल» in "राहुल स्कूल जाता है।" ⇒ — / — /  / g:— / 0 / D:a male given name, Rahul, from Sanskrit ; Rāhula (the son of Siddharth
+hi «प्रियंका» in "प्रियंका ने गाना गाया।" ⇒ — / — /  / g:— / 0 / D:∅
+hi «मोदी» in "नरेंद्र मोदी भारत के प्रधानमंत्री हैं।" ⇒ — / — /  / g:— / 0 / D:grocer; grain and flour merchant ; a surname, Modi, traditionally held
+hi «प्रधानमंत्री» in "नरेंद्र मोदी भारत के प्रधानमंत्री हैं।" ⇒ — / — /  / g:— / 0 / D:alternative spelling of प्रधान मंत्री (pradhān mantrī)
+hi «मुंबई» in "मुंबई एक बड़ा शहर है।" ⇒ मुंबई / PROPN / feminine / g:Mumbai / 0.92 / C:form:Gender=Fem / S:subject of "शहर" / D:Mumbai (a megacity, the capital of Maharashtra, India, also known as B
+hi «गांधी» in "महात्मा गांधी का जन्म गुजरात में हुआ।" ⇒ — / — /  / g:— / 0 / D:a surname, equivalent to English Gandhi, famously held by: — Mohandas 
+hi «गुजरात» in "महात्मा गांधी का जन्म गुजरात में हुआ।" ⇒ — / — /  / g:— / 0 / D:Gujarat (a state in western India) ; Gujrat (a city in Punjab, Pakista
+hi «डॉ» in "डॉ. शर्मा अभी नहीं हैं।" ⇒ — / — /  / g:— / 0 / D:initialism of डॉक्टर (ḍŏkṭar)
+hi «श्री» in "श्री वर्मा कल आएँगे।" ⇒ — / — /  / g:— / 0 / D:sir, lord, mister ; light, lustre, radiance, splendour, glory, beauty,
+hi «श्रीमती» in "श्रीमती गुप्ता अध्यापिका हैं।" ⇒ श्रीमना / VERB / feminine singular, imperfective participle / g:— / 0.55 UNCONF / also श्रीमना/VERB / S:the main word of the sentence / D:madam, Mrs, Smt.
+hi «बी» in "वह बी.ए. पास है।" ⇒ — / — /  / g:— / 0 / D:synonym of बीवी (bīvī, “wife”)
+hi «इंटरनेट» in "मैंने इंटरनेट पर वीडियो देखा।" ⇒ इंटरनेट / NOUN / masculine / g:the internet / 0.92 / C:postposition-after-noun,form:Gender=Masc / S:adverbial phrase of "देखा" (place, time, means, source) / D:the Internet ; internet
+hi «मोबाइल» in "मेरा मोबाइल ख़राब हो गया।" ⇒ मोबाइल / NOUN / masculine / g:mobile phone / 0.92 / C:genitive-agreement,form:Gender=Masc / S:subject of "हो" / D:mobile phone, smartphone, phone
+hi «फ़ेसबुक» in "उसने फ़ेसबुक पर फ़ोटो डाली।" ⇒ — / — /  / g:— / 0 / D:Facebook
+hi «ऑफ़िस» in "मुझे ऑफ़िस जाना है।" ⇒ ऑफ़िस / NOUN / masculine / g:office / 0.92 / C:form:Gender=Masc / S:subject of "जाना" / D:office, working place
+hi «कॉलेज» in "कॉलेज में छुट्टी है।" ⇒ — / — /  / g:— / 0 / D:∅
+hi «मेट्रो» in "मेट्रो स्टेशन कहाँ है?" ⇒ मेट्रना / VERB / you (तुम), subjunctive / g:— / 0.25 UNCONF / also मेट्रना/VERB / C:subjunctive / S:the main word of the sentence / D:metro, subway
+hi «घोषणा» in "सरकार ने नई योजना की घोषणा की।" ⇒ — / — /  / g:— / 0 / P:घोषणा करना / D:advertisement ; announcement
+hi «पर्यावरण» in "पर्यावरण की रक्षा करना हमारा कर्तव्य है।" ⇒ — / — /  / g:— / 0 / D:environment
+hi «अर्थव्यवस्था» in "अर्थव्यवस्था में सुधार हो रहा है।" ⇒ — / — /  / g:— / 0 / D:economy
+hi «महत्वपूर्ण» in "यह एक महत्वपूर्ण निर्णय है।" ⇒ महत्त्वपूर्ण / ADJ / does not change / g:important / 0.75 / also महत्त्वपूर्ण/NOUN,महत्त्वपूर्ण/NOUN,महत्त्वपूर्ण/NOUN / S:the main word of the sentence / D:important, primary
+hi «निर्णय» in "यह एक महत्वपूर्ण निर्णय है।" ⇒ — / — /  / g:— / 0 / P:निर्णय होना / D:decision ; judgment, verdict
+hi «मिलकर» in "मुझे आपसे मिलकर ख़ुशी हुई।" ⇒ मिलना / VERB / stem + कर: having done / g:to meet; to be found, to be got / 0.92 / C:conjunctive-participle,form:VerbForm=Conv / P:आपसे मिलकर ख़ुशी हुई / S:clause that gives the circumstance of "हुई" / D:to meet, encounter; have a meeting ; to be found
+hi «मेहरबानी» in "शुक्रिया, आपकी मेहरबानी।" ⇒ मेहरबाना / VERB / feminine infinitive / g:— / 0.45 UNCONF / C:infinitive-as-noun / S:the main word of the sentence / D:kindness
+hi «इजाज़त» in "इजाज़त हो तो मैं चलूँ।" ⇒ — / — /  / g:— / 0 / D:permission, authorization, leave ; authority, jurisdiction
+hi «अफ़सोस» in "मुझे अफ़सोस है।" ⇒ अफ़सोस / NOUN / masculine / g:regret, sorrow / 0.92 / C:form:Gender=Masc / S:subject of "है" / D:regret, remorse ; sadness, sorrow
+hi «ज़िम्मेदारी» in "यह मेरी ज़िम्मेदारी है।" ⇒ ज़िम्मेदारी / NOUN / feminine singular / g:responsibility / 0.92 / C:genitive-agreement,form:Gender=Fem|Number=Sing / S:the main word of the sentence / D:responsibility, duty, obligation
+hi «प्रतीक्षा» in "कृपया प्रतीक्षा कीजिए।" ⇒ प्रतीक्षा / NOUN / feminine singular / g:waiting, expectation / 0.92 / C:form:Gender=Fem|Number=Sing / P:प्रतीक्षा करना / S:part of a compound / D:waiting, awaiting ; a female given name, Pratiksha and Prateeksha, fro
+hi «आविष्कार» in "आवश्यकता आविष्कार की जननी है।" ⇒ — / — /  / g:— / 0 / D:invention; discovery
+hi «जननी» in "आवश्यकता आविष्कार की जननी है।" ⇒ जनना / VERB / feminine infinitive / g:— / 0.45 UNCONF / C:obligation / S:coordinated with "की" / D:mother; cause, source
+hi «झटपटाहट» in "झटपटाहट में वह गिरा।" ⇒ — / — /  / g:— / 0 / D:∅
+hi «टिपलू» in "टिपलू ने गेंद फेंकी।" ⇒ — / — /  / g:— / 0 / D:∅

@@ -1,0 +1,371 @@
+ADP	का	kā	= of; 's (agrees with the thing owned: का के की)	का{Ge=Masc Nu=Sing Ca=Dir} के{Ge=Masc} की{Ge=Fem}
+ADP	को	ko	= to; (marks the person receiving or the definite object)	को{}
+ADP	में	meṁ	= in, inside; among	में{}
+ADP	पर	par	= on, at; (in believe in)	पर{}
+ADP	से	se	= from; with, by; than	से{}
+ADP	ने	ne	= (marks the doer of a perfective verb)	ने{Ca=Erg}
+ADP	तक	tak	= up to, until, as far as; even	तक{}
+ADP	लिए	lie	= for, for the sake of (in के लिए)	लिए{}
+ADP	साथ	sāth	= with, together with (in के साथ)	साथ{}
+ADP	पास	pās	= near, with; at hand (in के पास)	पास{}
+ADP	बाद	bād	= after (in के बाद)	बाद{}
+ADP	पहले	pahle	= before; first, earlier (in से पहले)	पहले{}
+ADP	ऊपर	ūpar	= above, on top of; upstairs (in के ऊपर)	ऊपर{}
+ADP	नीचे	nīce	= under, below; downstairs (in के नीचे)	नीचे{}
+ADP	अंदर	andar	= inside, in (in के अंदर)	अंदर{}
+ADP	बाहर	bāhar	= outside (in के बाहर)	बाहर{}
+ADP	सामने	sāmne	= in front of, facing (in के सामने)	सामने{}
+ADP	पीछे	pīche	= behind; after (in के पीछे)	पीछे{}
+ADP	आगे	āge	= ahead of, in front of; further (in के आगे)	आगे{}
+ADP	बीच	bīc	= between, in the middle of (in के बीच)	बीच{}
+ADP	बिना	binā	= without	बिना{}
+ADP	द्वारा	dvārā	= by, through (the doer or the means)	द्वारा{}
+ADP	ओर	or	= toward, in the direction of (in की ओर)	ओर{}
+ADP	तरफ़	taraf	= toward, side (in की तरफ़)	तरफ़{}
+ADP	तरह	tarah	= like, in the manner of (in की तरह)	तरह{}
+ADP	बारे	bāre	= about, concerning (in के बारे में)	बारे{}
+ADP	कारण	kāraṇ	= because of, owing to (in के कारण)	कारण{}
+ADP	वजह	vajah	= because of, owing to (in की वजह से)	वजह{}
+ADP	बजाय	bajāy	= instead of (in के बजाय)	बजाय{}
+ADP	अलावा	alāvā	= besides, apart from (in के अलावा)	अलावा{}
+ADP	भीतर	bhītar	= inside, within (in के भीतर)	भीतर{}
+ADP	निकट	nikaṭ	= near, close to (in के निकट)	निकट{}
+ADP	समीप	samīp	= near, close to (in के समीप)	समीप{}
+ADP	दौरान	daurān	= during (in के दौरान)	दौरान{}
+ADP	ज़रिए	zarie	= through, by means of (in के ज़रिए)	ज़रिए{}
+ADP	अनुसार	anusār	= according to (in के अनुसार)	अनुसार{}
+ADP	सहित	sahit	= together with (in के सहित)	सहित{}
+ADP	समेत	samet	= along with, including	समेत{}
+ADP	सिवा	sivā	= except, apart from (in के सिवा)	सिवा{}
+ADP	सिवाय	sivāy	= except, apart from (in के सिवाय)	सिवाय{}
+ADP	बगैर	bagair	= without	बगैर{}
+ADP	ख़िलाफ़	ḵẖilāf	= against (in के ख़िलाफ़)	ख़िलाफ़{}
+ADP	ख़ातिर	ḵẖātir	= for the sake of (in की ख़ातिर)	ख़ातिर{}
+ADP	बदले	badle	= in exchange for, instead of (in के बदले)	बदले{}
+ADP	बावजूद	bāvjūd	= in spite of (in के बावजूद)	बावजूद{}
+ADP	संग	saṅg	= with, along with (in के संग)	संग{}
+ADP	निमित्त	nimitt	= for the sake of, on account of (in के निमित्त)	निमित्त{}
+ADP	हेतु	hetu	= for, for the purpose of (in के हेतु)	हेतु{}
+ADP	समक्ष	samakṣ	= in front of, before (in के समक्ष)	समक्ष{}
+ADP	उपरांत	(uparānt?)	= after (in के उपरांत)	उपरांत{}
+ADP	पश्चात्	paścāt	= after (in के पश्चात्)	पश्चात्{}
+ADP	अंतर्गत	antargat	= within, under (in के अंतर्गत)	अंतर्गत{}
+PRON	मैं	maiṁ	= I	मैं{Pe=1 Nu=Sing Ca=Dir Pr=Prs} मैंने{Pe=1 Nu=Sing Pr=Prs Ca=Erg} मुझ{Pe=1 Nu=Sing Ca=Obl Pr=Prs} मुझे{Pe=1 Nu=Sing Pr=Prs Ca=Dat} मुझको{Pe=1 Nu=Sing Pr=Prs Ca=Dat} मुझसे{Pe=1 Nu=Sing Ca=Obl Pr=Prs} मुझमें{Pe=1 Nu=Sing Ca=Obl Pr=Prs} मुझपर{Pe=1 Nu=Sing Ca=Obl Pr=Prs}
+PRON	हम	ham	= we	हम{Pe=1 Nu=Plur Ca=Dir Pr=Prs} हम{Pe=1 Nu=Plur Ca=Obl Pr=Prs} हमने{Pe=1 Nu=Plur Pr=Prs Ca=Erg} हमें{Pe=1 Nu=Plur Pr=Prs Ca=Dat} हमको{Pe=1 Nu=Plur Pr=Prs Ca=Dat} हमसे{Pe=1 Nu=Plur Ca=Obl Pr=Prs} हममें{Pe=1 Nu=Plur Ca=Obl Pr=Prs} हमपर{Pe=1 Nu=Plur Ca=Obl Pr=Prs}
+PRON	तू	tū	= you (intimate: to a child, a close friend, God in prayer)	तू{Pe=2 Nu=Sing Ca=Dir Pr=Prs Po=Infm} तूने{Pe=2 Nu=Sing Pr=Prs Ca=Erg Po=Infm} तुझ{Pe=2 Nu=Sing Ca=Obl Pr=Prs Po=Infm} तुझे{Pe=2 Nu=Sing Pr=Prs Ca=Dat Po=Infm} तुझको{Pe=2 Nu=Sing Pr=Prs Ca=Dat Po=Infm} तुझसे{Pe=2 Nu=Sing Ca=Obl Pr=Prs Po=Infm} तुझमें{Pe=2 Nu=Sing Ca=Obl Pr=Prs Po=Infm} तुझपर{Pe=2 Nu=Sing Ca=Obl Pr=Prs Po=Infm}
+PRON	तुम	tum	= you (familiar)	तुम{Pe=2 Ca=Dir Pr=Prs Po=Fam} तुम{Pe=2 Ca=Obl Pr=Prs Po=Fam} तुमने{Pe=2 Pr=Prs Ca=Erg Po=Fam} तुम्हें{Pe=2 Pr=Prs Ca=Dat Po=Fam} तुमको{Pe=2 Pr=Prs Ca=Dat Po=Fam} तुमसे{Pe=2 Ca=Obl Pr=Prs Po=Fam} तुममें{Pe=2 Ca=Obl Pr=Prs Po=Fam} तुमपर{Pe=2 Ca=Obl Pr=Prs Po=Fam}
+PRON	आप	āp	= you (polite); oneself (in अपने आप)	आप{Pe=2 Ca=Dir Pr=Prs Po=Form} आप{Pe=2 Ca=Obl Pr=Prs Po=Form} आपने{Pe=2 Pr=Prs Ca=Erg Po=Form} आपको{Pe=2 Pr=Prs Ca=Dat Po=Form} आपसे{Pe=2 Ca=Obl Pr=Prs Po=Form} आपमें{Pe=2 Ca=Obl Pr=Prs Po=Form} आपपर{Pe=2 Ca=Obl Pr=Prs Po=Form}
+PRON	यह	yah	= this; he, she, it (near)	यह{Pe=3 Nu=Sing Ca=Dir Pr=Dem} इस{Pe=3 Nu=Sing Ca=Obl Pr=Dem} इसे{Pe=3 Nu=Sing Pr=Dem Ca=Dat} इसको{Pe=3 Nu=Sing Pr=Dem Ca=Dat} इसने{Pe=3 Nu=Sing Pr=Dem Ca=Erg} इससे{Pe=3 Nu=Sing Ca=Obl Pr=Dem} इसमें{Pe=3 Nu=Sing Ca=Obl Pr=Dem} इसपर{Pe=3 Nu=Sing Ca=Obl Pr=Dem}
+PRON	ये	ye	= these; they (near); this	ये{Pe=3 Nu=Plur Ca=Dir Pr=Dem} इन{Pe=3 Nu=Plur Ca=Obl Pr=Dem} इन्हें{Pe=3 Nu=Plur Pr=Dem Ca=Dat} इनको{Pe=3 Nu=Plur Pr=Dem Ca=Dat} इन्होंने{Pe=3 Nu=Plur Pr=Dem Ca=Erg} इनसे{Pe=3 Nu=Plur Ca=Obl Pr=Dem} इनमें{Pe=3 Nu=Plur Ca=Obl Pr=Dem} इनपर{Pe=3 Nu=Plur Ca=Obl Pr=Dem}
+PRON	वह	vah	= that; he, she, it (far)	वह{Pe=3 Nu=Sing Ca=Dir Pr=Dem} उस{Pe=3 Nu=Sing Ca=Obl Pr=Dem} उसे{Pe=3 Nu=Sing Pr=Dem Ca=Dat} उसको{Pe=3 Nu=Sing Pr=Dem Ca=Dat} उसने{Pe=3 Nu=Sing Pr=Dem Ca=Erg} उससे{Pe=3 Nu=Sing Ca=Obl Pr=Dem} उसमें{Pe=3 Nu=Sing Ca=Obl Pr=Dem} उसपर{Pe=3 Nu=Sing Ca=Obl Pr=Dem}
+PRON	वे	ve	= those; they (far)	वे{Pe=3 Nu=Plur Ca=Dir Pr=Dem} उन{Pe=3 Nu=Plur Ca=Obl Pr=Dem} उन्हें{Pe=3 Nu=Plur Pr=Dem Ca=Dat} उनको{Pe=3 Nu=Plur Pr=Dem Ca=Dat} उन्होंने{Pe=3 Nu=Plur Pr=Dem Ca=Erg} उनसे{Pe=3 Nu=Plur Ca=Obl Pr=Dem} उनमें{Pe=3 Nu=Plur Ca=Obl Pr=Dem} उनपर{Pe=3 Nu=Plur Ca=Obl Pr=Dem}
+PRON	यही	yahī	= this very one (यह + ही)	यही{Pe=3 Nu=Sing Ca=Dir Pr=Dem} इसी{Pe=3 Nu=Sing Ca=Obl Pr=Dem} इन्हीं{Pe=3 Nu=Plur Ca=Obl Pr=Dem}
+PRON	वही	vahī	= that very one (वह + ही)	वही{Pe=3 Nu=Sing Ca=Dir Pr=Dem} उसी{Pe=3 Nu=Sing Ca=Obl Pr=Dem} उन्हीं{Pe=3 Nu=Plur Ca=Obl Pr=Dem}
+PRON	कौन	kaun	= who	कौन{Pr=Int Ca=Dir} किस{Pr=Int Ca=Obl} किसे{Pr=Int Ca=Dat} किसको{Pr=Int Ca=Dat} किसने{Pr=Int Ca=Erg} किससे{Pr=Int Ca=Obl} किसमें{Pr=Int Ca=Obl} किसपर{Pr=Int Ca=Obl} किन{Pr=Int Ca=Obl Nu=Plur} किन्हें{Pr=Int Ca=Dat Nu=Plur} किन्होंने{Pr=Int Ca=Erg Nu=Plur} किनसे{Pr=Int Ca=Obl Nu=Plur} किनमें{Pr=Int Ca=Obl Nu=Plur}
+PRON	क्या	kyā	= what	क्या{Pr=Int}
+PRON	जो	jo	= who, which, that (relative)	जो{Pr=Rel Ca=Dir} जिस{Pr=Rel Ca=Obl} जिसे{Pr=Rel Ca=Dat} जिसको{Pr=Rel Ca=Dat} जिसने{Pr=Rel Ca=Erg} जिससे{Pr=Rel Ca=Obl} जिसमें{Pr=Rel Ca=Obl} जिसपर{Pr=Rel Ca=Obl} जिन{Pr=Rel Ca=Obl Nu=Plur} जिन्हें{Pr=Rel Ca=Dat Nu=Plur} जिन्होंने{Pr=Rel Ca=Erg Nu=Plur} जिनसे{Pr=Rel Ca=Obl Nu=Plur} जिनमें{Pr=Rel Ca=Obl Nu=Plur}
+PRON	कोई	koī	= someone, anyone; some, any	कोई{Pr=Ind Ca=Dir} किसी{Pr=Ind Ca=Obl}
+PRON	कुछ	kuch	= something, anything; some	कुछ{Pr=Ind}
+PRON	सब	sab	= all, everyone, everything	सब{} सबको{Ca=Dat} सबने{Ca=Erg} सबसे{Ca=Obl} सबमें{Ca=Obl}
+PRON	सभी	sabhī	= all, everyone	सभी{}
+PRON	दोनों	donoṁ	= both	दोनों{}
+PRON	खुद	khud	= oneself, myself, himself (emphasis)	खुद{}
+PRON	स्वयं	svayaṁ	= oneself, in person	स्वयं{}
+DET	मेरा	merā	= my	मेरा{Ge=Masc Nu=Sing Ca=Dir Po=Yes Pe=1} मेरे{Ge=Masc Nu=Sing Ca=Obl Po=Yes Pe=1} मेरे{Ge=Masc Nu=Plur Ca=Dir Po=Yes Pe=1} मेरे{Ge=Masc Nu=Plur Ca=Obl Po=Yes Pe=1} मेरी{Ge=Fem Nu=Sing Po=Yes Pe=1} मेरी{Ge=Fem Nu=Plur Po=Yes Pe=1}
+DET	हमारा	hamārā	= our	हमारा{Ge=Masc Nu=Sing Ca=Dir Po=Yes Pe=1} हमारे{Ge=Masc Nu=Sing Ca=Obl Po=Yes Pe=1} हमारे{Ge=Masc Nu=Plur Ca=Dir Po=Yes Pe=1} हमारे{Ge=Masc Nu=Plur Ca=Obl Po=Yes Pe=1} हमारी{Ge=Fem Nu=Sing Po=Yes Pe=1} हमारी{Ge=Fem Nu=Plur Po=Yes Pe=1}
+DET	तेरा	terā	= your (intimate)	तेरा{Ge=Masc Nu=Sing Ca=Dir Po=Yes Pe=2 Po=Infm} तेरे{Ge=Masc Nu=Sing Ca=Obl Po=Yes Pe=2 Po=Infm} तेरे{Ge=Masc Nu=Plur Ca=Dir Po=Yes Pe=2 Po=Infm} तेरे{Ge=Masc Nu=Plur Ca=Obl Po=Yes Pe=2 Po=Infm} तेरी{Ge=Fem Nu=Sing Po=Yes Pe=2 Po=Infm} तेरी{Ge=Fem Nu=Plur Po=Yes Pe=2 Po=Infm}
+DET	तुम्हारा	tumhārā	= your (familiar)	तुम्हारा{Ge=Masc Nu=Sing Ca=Dir Po=Yes Pe=2 Po=Fam} तुम्हारे{Ge=Masc Nu=Sing Ca=Obl Po=Yes Pe=2 Po=Fam} तुम्हारे{Ge=Masc Nu=Plur Ca=Dir Po=Yes Pe=2 Po=Fam} तुम्हारे{Ge=Masc Nu=Plur Ca=Obl Po=Yes Pe=2 Po=Fam} तुम्हारी{Ge=Fem Nu=Sing Po=Yes Pe=2 Po=Fam} तुम्हारी{Ge=Fem Nu=Plur Po=Yes Pe=2 Po=Fam}
+DET	आपका	āpkā	= your (polite)	आपका{Ge=Masc Nu=Sing Ca=Dir Po=Yes Pe=2 Po=Form} आपके{Ge=Masc Nu=Sing Ca=Obl Po=Yes Pe=2 Po=Form} आपके{Ge=Masc Nu=Plur Ca=Dir Po=Yes Pe=2 Po=Form} आपके{Ge=Masc Nu=Plur Ca=Obl Po=Yes Pe=2 Po=Form} आपकी{Ge=Fem Nu=Sing Po=Yes Pe=2 Po=Form} आपकी{Ge=Fem Nu=Plur Po=Yes Pe=2 Po=Form}
+DET	उसका	uskā	= his, her, its (that one's)	उसका{Ge=Masc Nu=Sing Ca=Dir Po=Yes Pe=3} उसके{Ge=Masc Nu=Sing Ca=Obl Po=Yes Pe=3} उसके{Ge=Masc Nu=Plur Ca=Dir Po=Yes Pe=3} उसके{Ge=Masc Nu=Plur Ca=Obl Po=Yes Pe=3} उसकी{Ge=Fem Nu=Sing Po=Yes Pe=3} उसकी{Ge=Fem Nu=Plur Po=Yes Pe=3}
+DET	इसका	iskā	= its, his, her (this one's)	इसका{Ge=Masc Nu=Sing Ca=Dir Po=Yes Pe=3} इसके{Ge=Masc Nu=Sing Ca=Obl Po=Yes Pe=3} इसके{Ge=Masc Nu=Plur Ca=Dir Po=Yes Pe=3} इसके{Ge=Masc Nu=Plur Ca=Obl Po=Yes Pe=3} इसकी{Ge=Fem Nu=Sing Po=Yes Pe=3} इसकी{Ge=Fem Nu=Plur Po=Yes Pe=3}
+DET	उनका	unkā	= their; his, her (respectful)	उनका{Ge=Masc Nu=Sing Ca=Dir Po=Yes Pe=3} उनके{Ge=Masc Nu=Sing Ca=Obl Po=Yes Pe=3} उनके{Ge=Masc Nu=Plur Ca=Dir Po=Yes Pe=3} उनके{Ge=Masc Nu=Plur Ca=Obl Po=Yes Pe=3} उनकी{Ge=Fem Nu=Sing Po=Yes Pe=3} उनकी{Ge=Fem Nu=Plur Po=Yes Pe=3}
+DET	इनका	inkā	= their; his, her (respectful, near)	इनका{Ge=Masc Nu=Sing Ca=Dir Po=Yes Pe=3} इनके{Ge=Masc Nu=Sing Ca=Obl Po=Yes Pe=3} इनके{Ge=Masc Nu=Plur Ca=Dir Po=Yes Pe=3} इनके{Ge=Masc Nu=Plur Ca=Obl Po=Yes Pe=3} इनकी{Ge=Fem Nu=Sing Po=Yes Pe=3} इनकी{Ge=Fem Nu=Plur Po=Yes Pe=3}
+DET	किसका	kiskā	= whose	किसका{Ge=Masc Nu=Sing Ca=Dir Po=Yes Pr=Int} किसके{Ge=Masc Nu=Sing Ca=Obl Po=Yes Pr=Int} किसके{Ge=Masc Nu=Plur Ca=Dir Po=Yes Pr=Int} किसके{Ge=Masc Nu=Plur Ca=Obl Po=Yes Pr=Int} किसकी{Ge=Fem Nu=Sing Po=Yes Pr=Int} किसकी{Ge=Fem Nu=Plur Po=Yes Pr=Int}
+DET	जिसका	jiskā	= whose (relative)	जिसका{Ge=Masc Nu=Sing Ca=Dir Po=Yes Pr=Rel} जिसके{Ge=Masc Nu=Sing Ca=Obl Po=Yes Pr=Rel} जिसके{Ge=Masc Nu=Plur Ca=Dir Po=Yes Pr=Rel} जिसके{Ge=Masc Nu=Plur Ca=Obl Po=Yes Pr=Rel} जिसकी{Ge=Fem Nu=Sing Po=Yes Pr=Rel} जिसकी{Ge=Fem Nu=Plur Po=Yes Pr=Rel}
+DET	अपना	apnā	= own (my own, your own, his own …: the subject's)	अपना{Ge=Masc Nu=Sing Ca=Dir Po=Yes} अपने{Ge=Masc Nu=Sing Ca=Obl Po=Yes} अपने{Ge=Masc Nu=Plur Ca=Dir Po=Yes} अपने{Ge=Masc Nu=Plur Ca=Obl Po=Yes} अपनी{Ge=Fem Nu=Sing Po=Yes} अपनी{Ge=Fem Nu=Plur Po=Yes}
+DET	हर	har	= every, each	हर{}
+DET	कई	kaī	= several, many a	कई{}
+DET	अन्य	(anya?)	= other, another	अन्य{}
+CONJ	और	aur	= and	और{}
+CONJ	या	yā	= or	या{}
+CONJ	लेकिन	lekin	= but	लेकिन{}
+CONJ	पर	par	= but	पर{}
+CONJ	मगर	magar	= but	मगर{}
+CONJ	परन्तु	parantu	= but, yet	परन्तु{}
+CONJ	किन्तु	kintu	= but, however	किन्तु{}
+CONJ	बल्कि	balki	= but rather, on the contrary	बल्कि{}
+CONJ	इसलिए	islie	= therefore, so, for this reason	इसलिए{}
+CONJ	अथवा	athvā	= or	अथवा{}
+CONJ	तथा	tathā	= and	तथा{}
+CONJ	एवं	evaṁ	= and	एवं{}
+CONJ	यानी	yānī	= that is, in other words	यानी{}
+CONJ	अर्थात्	arthāt	= that is, namely	अर्थात्{}
+CONJ	वरना	varnā	= otherwise, or else	वरना{}
+CONJ	अन्यथा	anyathā	= otherwise	अन्यथा{}
+CONJ	तथापि	tathāpi	= even so, nevertheless	तथापि{}
+CONJ	हालाँकि	hālāṁki	= although, however	हालाँकि{}
+CONJ	जबकि	jabki	= while, whereas	जबकि{}
+CONJ	अलबत्ता	albattā	= however, indeed	अलबत्ता{}
+SCONJ	कि	ki	= that	कि{}
+SCONJ	क्योंकि	kyoṅki	= because, for	क्योंकि{}
+SCONJ	ताकि	tāki	= so that, in order that	ताकि{}
+SCONJ	अगर	agar	= if	अगर{}
+SCONJ	यदि	yadi	= if	यदि{}
+SCONJ	जब	jab	= when	जब{}
+SCONJ	जैसे	jaise	= as, like; for example	जैसे{}
+SCONJ	चूँकि	cūṁki	= since, because	चूँकि{}
+SCONJ	चाहे	cāhe	= whether; although	चाहे{}
+SCONJ	बशर्ते	baśarte	= provided that	बशर्ते{}
+SCONJ	ज्योंही	jyoṁhī	= as soon as	ज्योंही{}
+PART	भी	bhī	= also, too, even	भी{}
+PART	ही	hī	= only, just, very; (emphasis)	ही{}
+PART	तो	to	= then, so; indeed, as for (emphasis)	तो{}
+PART	न	na	= not; (a tag question: न?)	न{}
+PART	मत	mat	= do not (a command)	मत{}
+PART	क्या	kyā	= (marks a yes/no question)	क्या{Pr=Int}
+PART	सा	sā	= -ish; like, as if (after a word: थोड़ा सा, कौन सा)	सा{Ge=Masc Nu=Sing Ca=Dir} से{Ge=Masc Nu=Sing Ca=Obl} से{Ge=Masc Nu=Plur Ca=Dir} से{Ge=Masc Nu=Plur Ca=Obl} सी{Ge=Fem Nu=Sing} सी{Ge=Fem Nu=Plur}
+PART	वाला	vālā	= one who, one that; -er (आने वाला = the coming one)	वाला{Ge=Masc Nu=Sing Ca=Dir} वाले{Ge=Masc Nu=Sing Ca=Obl} वाले{Ge=Masc Nu=Plur Ca=Dir} वाले{Ge=Masc Nu=Plur Ca=Obl} वाली{Ge=Fem Nu=Sing} वाली{Ge=Fem Nu=Plur} वालों{Ge=Masc Nu=Plur Ca=Obl} वालियों{Ge=Fem Nu=Plur Ca=Obl}
+PART	भर	bhar	= all through, the whole of; only (दिन भर)	भर{}
+PART	सिर्फ़	sirf	= only, merely	सिर्फ़{}
+PART	केवल	keval	= only, merely	केवल{}
+PART	जी	jī	= (honorific after a name or title: माँ जी, गांधी जी)	जी{}
+PART	ना	nā	= no; isn't it? (a colloquial tag, a softener)	ना{}
+ADV	नहीं	nahīṁ	= not, no	नहीं{}
+ADV	अब	ab	= now	अब{}
+ADV	तब	tab	= then, at that time	तब{}
+ADV	फिर	phir	= then, again, afterwards	फिर{}
+ADV	कभी	kabhī	= ever, sometime; (with न: never)	कभी{}
+ADV	अभी	abhī	= right now, just now	अभी{}
+ADV	यहाँ	yahāṁ	= here	यहाँ{}
+ADV	वहाँ	vahāṁ	= there	वहाँ{}
+ADV	जहाँ	jahāṁ	= where (relative)	जहाँ{}
+ADV	कहाँ	kahāṁ	= where	कहाँ{}
+ADV	कब	kab	= when	कब{}
+ADV	क्यों	kyoṁ	= why	क्यों{}
+ADV	कैसे	kaise	= how; in what way	कैसे{}
+ADV	ऐसे	aise	= in this way, like this	ऐसे{}
+ADV	वैसे	vaise	= in that way; by the way	वैसे{}
+ADV	बहुत	bahut	= very, much, many	बहुत{}
+ADV	ज़रूर	zarūr	= certainly, surely; without fail	ज़रूर{}
+ADV	शायद	śāyad	= perhaps, maybe	शायद{}
+ADV	कृपया	kr̥pyā	= please	कृपया{}
+ADV	आज	āj	= today	आज{}
+ADV	कल	kal	= yesterday; tomorrow	कल{}
+ADV	परसों	parsoṁ	= the day before yesterday; the day after tomorrow	परसों{}
+ADV	हमेशा	hameśā	= always	हमेशा{}
+ADV	सदा	sadā	= always	सदा{}
+ADV	सदैव	sadaiv	= always, forever	सदैव{}
+ADV	अक्सर	aksar	= often	अक्सर{}
+ADV	प्रायः	prāyaḥ	= mostly, usually	प्रायः{}
+ADV	रोज़	roz	= every day, daily	रोज़{}
+ADV	रोज़ाना	rozānā	= daily, every day	रोज़ाना{}
+ADV	प्रतिदिन	pratidin	= every day	प्रतिदिन{}
+ADV	जल्दी	jaldī	= quickly; early, soon	जल्दी{}
+ADV	जल्द	jald	= soon	जल्द{}
+ADV	धीरे	dhīre	= slowly; softly	धीरे{}
+ADV	तुरंत	turant	= at once, immediately	तुरंत{}
+ADV	फ़ौरन	fauran	= at once, immediately	फ़ौरन{}
+ADV	अचानक	acānak	= suddenly	अचानक{}
+ADV	तभी	tabhī	= just then, only then	तभी{}
+ADV	दोबारा	dobārā	= again, a second time	दोबारा{}
+ADV	आख़िर	āḵẖir	= finally, after all	आख़िर{}
+ADV	आख़िरकार	(āḵẖirakār?)	= finally, at last	आख़िरकार{}
+ADV	इधर	idhar	= here, this way	इधर{}
+ADV	उधर	udhar	= there, that way	उधर{}
+ADV	जिधर	jidhar	= whichever way (relative)	जिधर{}
+ADV	किधर	kidhar	= which way, where	किधर{}
+ADV	यहीं	yahīṁ	= right here	यहीं{}
+ADV	वहीं	vahīṁ	= right there	वहीं{}
+ADV	कहीं	kahīṁ	= somewhere; anywhere; perhaps (कहीं ऐसा न हो)	कहीं{}
+ADV	दूर	dūr	= far, far away	दूर{}
+ADV	नज़दीक	nazdīk	= near, close	नज़दीक{}
+ADV	थोड़ा	thoṛā	= a little, a bit	थोड़ा{}
+ADV	ज़्यादा	zyādā	= more, too much; very	ज़्यादा{}
+ADV	ज़्यादातर	zyādātar	= mostly, for the most part	ज़्यादातर{}
+ADV	अधिक	adhik	= more, much	अधिक{}
+ADV	कम	kam	= less, little; few	कम{}
+ADV	काफ़ी	kāfī	= quite, enough, rather	काफ़ी{}
+ADV	बिलकुल	bilkul	= completely, absolutely, quite	बिलकुल{}
+ADV	एकदम	ekdam	= all at once; quite, completely	एकदम{}
+ADV	बेहद	behad	= extremely, boundlessly	बेहद{}
+ADV	अत्यंत	atyant	= extremely, very	अत्यंत{}
+ADV	अति	ati	= very, too, extremely	अति{}
+ADV	ख़ूब	ḵẖūb	= very much, a great deal	ख़ूब{}
+ADV	लगभग	lagbhag	= about, approximately	लगभग{}
+ADV	क़रीब	qarīb	= about, nearly; near	क़रीब{}
+ADV	बस	bas	= enough; only, just	बस{}
+ADV	ज़रा	zarā	= a little; just, please	ज़रा{}
+ADV	सचमुच	sacmuc	= really, truly	सचमुच{}
+ADV	वाक़ई	vāqī	= really, truly	वाक़ई{}
+ADV	दरअसल	darasal	= in fact, actually	दरअसल{}
+ADV	बेशक	beśak	= of course, without doubt	बेशक{}
+ADV	ख़ासकर	ḵẖāskar	= especially	ख़ासकर{}
+ADV	सबसे	sabse	= most, the most (सबसे बड़ा)	सबसे{}
+ADV	आजकल	ājkal	= nowadays, these days	आजकल{}
+ADV	फ़िलहाल	filhāl	= for the moment, at present	फ़िलहाल{}
+ADV	कतई	katī	= at all, absolutely (with a negative)	कतई{}
+ADV	हरगिज़	hargiz	= by no means, never (with a negative)	हरगिज़{}
+ADV	चुपचाप	cupcāp	= quietly, silently	चुपचाप{}
+ADV	महज़	mahaz	= merely, only	महज़{}
+ADV	यूँ	yūṁ	= thus, like this, for no reason	यूँ{}
+ADV	अधिकतर	(adhikatar?)	= mostly, for the most part	अधिकतर{}
+ADV	पुनः	punaḥ	= again	पुनः{}
+ADV	सर्वदा	sarvadā	= always, for ever	सर्वदा{}
+ADV	तक़रीबन	taqrīban	= approximately, nearly	तक़रीबन{}
+ADV	आदि	ādi	= and so on, etcetera	आदि{}
+ADV	खुल्लमखुल्ला	(khullamakhullā?)	= openly, in the open	खुल्लमखुल्ला{}
+ADV	आपस	āpas	= one another, mutually (आपस में = among themselves)	आपस{}
+ADV	अवश्य	(avaśya?)	= certainly, without fail	अवश्य{}
+ADV	कदापि	kadāpi	= ever, never (with a negative)	कदापि{}
+ADV	सर्वत्र	(sarvatra?)	= everywhere	सर्वत्र{}
+ADV	हरदम	hardam	= at every moment, always	हरदम{}
+ADV	लगातार	lagātār	= continuously, without a break	लगातार{}
+ADV	निरंतर	nirantar	= constantly, continually	निरंतर{}
+ADV	तत्काल	tatkāl	= at once, immediately	तत्काल{}
+ADV	शीघ्र	(śīghra?)	= soon, quickly	शीघ्र{}
+ADV	सवेरे	savere	= early in the morning	सवेरे{}
+ADV	आसपास	āspās	= around, nearby	आसपास{}
+ADV	निहायत	nihāyat	= extremely, exceedingly	निहायत{}
+ADV	विशेषकर	viśeṣkar	= especially	विशेषकर{}
+ADV	मानो	māno	= as if, as though	मानो{}
+ADV	और	aur	= more, else, another (और चाहिए, और कुछ)	और{}
+ADV	किसलिए	kislie	= why, for what purpose	किसलिए{}
+ADV	वापस	vāpas	= back, returned (वापस आना = to come back)	वापस{}
+ADV	झटपट	jhaṭpaṭ	= quickly, in a trice	झटपट{}
+ADV	पैदल	paidal	= on foot	पैदल{}
+INTJ	हाँ	hāṁ	= yes	हाँ{}
+INTJ	जी	jī	= yes (respectful); sir, madam	जी{}
+INTJ	नमस्ते	namaste	= hello; goodbye (a greeting)	नमस्ते{}
+INTJ	नमस्कार	namaskār	= hello; greetings	नमस्कार{}
+INTJ	धन्यवाद	dhanyavād	= thank you	धन्यवाद{}
+INTJ	शुक्रिया	śukriyā	= thanks	शुक्रिया{}
+INTJ	आमीन	āmīn	= amen	आमीन{}
+INTJ	हे	he	= O (before a name one calls: हे प्रभु)	हे{}
+INTJ	अरे	are	= hey, oh	अरे{}
+INTJ	वाह	vāh	= wow, well done	वाह{}
+INTJ	हैलो	hailo	= hello (on the telephone, or to a friend)	हैलो{}
+INTJ	सलाम	salām	= greetings, salaam	सलाम{}
+INTJ	प्रणाम	praṇām	= greetings, respectful salutation	प्रणाम{}
+INTJ	अलविदा	alvidā	= goodbye	अलविदा{}
+INTJ	मुबारक	mubārak	= congratulations, blessed (मुबारक हो)	मुबारक{}
+INTJ	शाबाश	śābāś	= well done, bravo	शाबाश{}
+INTJ	ओह	oh	= oh	ओह{}
+INTJ	अहा	ahā	= ah, how nice	अहा{}
+INTJ	छी	chī	= ugh, shame	छी{}
+INTJ	हाय	hāy	= alas; hi	हाय{}
+INTJ	सॉरी	sôrī	= sorry	सॉरी{}
+INTJ	प्लीज़	plīz	= please	प्लीज़{}
+INTJ	ख़बरदार	(ḵẖabaradār?)	= beware, watch out	ख़बरदार{}
+INTJ	हल्लिलूय्याह	hallilūyyāh	= hallelujah, praise the LORD	हल्लिलूय्याह{}
+INTJ	होशाना	hośānā	= hosanna	होशाना{}
+INTJ	ओके	oke	= okay	ओके{}
+INTJ	हेलो	helo	= hello (a second spelling of हैलो)	हेलो{}
+NUM	शून्य	(śūnya?)	= zero	शून्य{}
+NUM	एक	ek	= one; a, an	एक{}
+NUM	दो	do	= two	दो{}
+NUM	तीन	tīn	= three	तीन{}
+NUM	चार	cār	= four	चार{}
+NUM	पाँच	pāṁc	= five	पाँच{}
+NUM	छह	chah	= six	छह{}
+NUM	सात	sāt	= seven	सात{}
+NUM	आठ	āṭh	= eight	आठ{}
+NUM	नौ	nau	= nine	नौ{}
+NUM	दस	das	= ten	दस{}
+NUM	ग्यारह	gyārah	= eleven	ग्यारह{}
+NUM	बारह	bārah	= twelve	बारह{}
+NUM	तेरह	terah	= thirteen	तेरह{}
+NUM	चौदह	caudah	= fourteen	चौदह{}
+NUM	पंद्रह	pandrah	= fifteen	पंद्रह{}
+NUM	सोलह	solah	= sixteen	सोलह{}
+NUM	सत्रह	satrah	= seventeen	सत्रह{}
+NUM	अठारह	aṭhārah	= eighteen	अठारह{}
+NUM	उन्नीस	unnīs	= nineteen	उन्नीस{}
+NUM	बीस	bīs	= twenty	बीस{}
+NUM	इक्कीस	ikkīs	= twenty-one	इक्कीस{}
+NUM	बाईस	bāīs	= twenty-two	बाईस{}
+NUM	तेईस	teīs	= twenty-three	तेईस{}
+NUM	चौबीस	caubīs	= twenty-four	चौबीस{}
+NUM	पच्चीस	paccīs	= twenty-five	पच्चीस{}
+NUM	छब्बीस	chabbīs	= twenty-six	छब्बीस{}
+NUM	सत्ताईस	sattāīs	= twenty-seven	सत्ताईस{}
+NUM	अट्ठाईस	aṭṭhāīs	= twenty-eight	अट्ठाईस{}
+NUM	उनतीस	untīs	= twenty-nine	उनतीस{}
+NUM	तीस	tīs	= thirty	तीस{}
+NUM	चालीस	cālīs	= forty	चालीस{}
+NUM	पचास	pacās	= fifty	पचास{}
+NUM	साठ	sāṭh	= sixty	साठ{}
+NUM	सत्तर	sattar	= seventy	सत्तर{}
+NUM	अस्सी	assī	= eighty	अस्सी{}
+NUM	नब्बे	nabbe	= ninety	नब्बे{}
+NUM	सौ	sau	= hundred	सौ{}
+NUM	हज़ार	hazār	= thousand	हज़ार{}
+NUM	लाख	lākh	= hundred thousand, lakh	लाख{}
+NUM	करोड़	karoṛ	= ten million, crore	करोड़{}
+NUM	डेढ़	ḍeṛh	= one and a half	डेढ़{}
+NUM	ढाई	ḍhāī	= two and a half	ढाई{}
+NUM	सवा	savā	= plus a quarter (सवा सौ = 125)	सवा{}
+NUM	पौन	paun	= three-quarters (पौन घंटा)	पौन{}
+NUM	साढ़े	sāṛhe	= and a half (साढ़े तीन = three and a half)	साढ़े{}
+NUM	इकतीस	iktīs	= thirty-one	इकतीस{}
+NUM	बत्तीस	battīs	= thirty-two	बत्तीस{}
+NUM	तैंतीस	taintīs	= thirty-three	तैंतीस{}
+NUM	चौंतीस	cauntīs	= thirty-four	चौंतीस{}
+NUM	पैंतीस	paintīs	= thirty-five	पैंतीस{}
+NUM	छत्तीस	chattīs	= thirty-six	छत्तीस{}
+NUM	सैंतीस	saintīs	= thirty-seven	सैंतीस{}
+NUM	अड़तीस	aṛtīs	= thirty-eight	अड़तीस{}
+NUM	उनतालीस	untālīs	= thirty-nine	उनतालीस{}
+NUM	इकतालीस	iktālīs	= forty-one	इकतालीस{}
+NUM	बयालीस	bayālīs	= forty-two	बयालीस{}
+NUM	तैंतालीस	taintālīs	= forty-three	तैंतालीस{}
+NUM	चौवालीस	cauvālīs	= forty-four	चौवालीस{}
+NUM	पैंतालीस	paintālīs	= forty-five	पैंतालीस{}
+NUM	छियालीस	chiyālīs	= forty-six	छियालीस{}
+NUM	सैंतालीस	saintālīs	= forty-seven	सैंतालीस{}
+NUM	अड़तालीस	aṛtālīs	= forty-eight	अड़तालीस{}
+NUM	उनचास	uncās	= forty-nine	उनचास{}
+NUM	इक्यावन	ikyāvan	= fifty-one	इक्यावन{}
+NUM	बावन	bāvan	= fifty-two	बावन{}
+NUM	तिरपन	tirpan	= fifty-three	तिरपन{}
+NUM	चौवन	cauvan	= fifty-four	चौवन{}
+NUM	पचपन	pacpan	= fifty-five	पचपन{}
+NUM	छप्पन	chappan	= fifty-six	छप्पन{}
+NUM	सत्तावन	sattāvan	= fifty-seven	सत्तावन{}
+NUM	अट्ठावन	aṭṭhāvan	= fifty-eight	अट्ठावन{}
+NUM	उनसठ	unsaṭh	= fifty-nine	उनसठ{}
+NUM	इकसठ	iksaṭh	= sixty-one	इकसठ{}
+NUM	बासठ	bāsaṭh	= sixty-two	बासठ{}
+NUM	तिरसठ	tirsaṭh	= sixty-three	तिरसठ{}
+NUM	चौंसठ	cauṁsaṭh	= sixty-four	चौंसठ{}
+NUM	पैंसठ	paiṁsaṭh	= sixty-five	पैंसठ{}
+NUM	छियासठ	chiyāsaṭh	= sixty-six	छियासठ{}
+NUM	सड़सठ	saṛsaṭh	= sixty-seven	सड़सठ{}
+NUM	अड़सठ	aṛsaṭh	= sixty-eight	अड़सठ{}
+NUM	उनहत्तर	unhattar	= sixty-nine	उनहत्तर{}
+NUM	इकहत्तर	ikhattar	= seventy-one	इकहत्तर{}
+NUM	बहत्तर	bahattar	= seventy-two	बहत्तर{}
+NUM	तिहत्तर	tihattar	= seventy-three	तिहत्तर{}
+NUM	चौहत्तर	cauhattar	= seventy-four	चौहत्तर{}
+NUM	पचहत्तर	pachattar	= seventy-five	पचहत्तर{}
+NUM	छिहत्तर	chihattar	= seventy-six	छिहत्तर{}
+NUM	सतहत्तर	sathattar	= seventy-seven	सतहत्तर{}
+NUM	अठहत्तर	aṭhhattar	= seventy-eight	अठहत्तर{}
+NUM	उनासी	unāsī	= seventy-nine	उनासी{}
+NUM	इक्यासी	ikyāsī	= eighty-one	इक्यासी{}
+NUM	बयासी	bayāsī	= eighty-two	बयासी{}
+NUM	तिरासी	tirāsī	= eighty-three	तिरासी{}
+NUM	चौरासी	caurāsī	= eighty-four	चौरासी{}
+NUM	पचासी	pacāsī	= eighty-five	पचासी{}
+NUM	छियासी	chiyāsī	= eighty-six	छियासी{}
+NUM	सत्तासी	sattāsī	= eighty-seven	सत्तासी{}
+NUM	अट्ठासी	aṭṭhāsī	= eighty-eight	अट्ठासी{}
+NUM	नवासी	navāsī	= eighty-nine	नवासी{}
+NUM	इक्यानवे	ikyānve	= ninety-one	इक्यानवे{}
+NUM	बानवे	bānve	= ninety-two	बानवे{}
+NUM	तिरानवे	tirānve	= ninety-three	तिरानवे{}
+NUM	चौरानवे	caurānve	= ninety-four	चौरानवे{}
+NUM	पंचानवे	pañcānve	= ninety-five	पंचानवे{}
+NUM	छियानवे	chiyānve	= ninety-six	छियानवे{}
+NUM	सत्तानवे	sattānve	= ninety-seven	सत्तानवे{}
+NUM	अट्ठानवे	aṭṭhānve	= ninety-eight	अट्ठानवे{}
+NUM	निन्यानवे	ninyānve	= ninety-nine	निन्यानवे{}

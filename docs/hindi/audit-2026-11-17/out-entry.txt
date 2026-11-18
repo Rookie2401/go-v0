@@ -1,0 +1,114 @@
+क्रिया NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"kriyā","ipa":[{"i":"/kɾɪ.jɑː/","t":["Hindi","Standard"]},{"i":"[kɾi.jäː]","t":["Hindi","Standard"]}]}
+   forms: []
+दुनिया NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"duniyā","ipa":[{"i":"/d̪ʊ.nɪ.jɑː/","t":["Hindi","Standard"]},{"i":"[d̪ʊ.ni.jäː]","t":["Hindi","Standard"]},{"i":"/d̪ʊn.jɑː/","t":["Hindi","Standard"]},{"i":"[d̪ʊ̃ɲ.jäː]","t":["Hindi","Standard"]}]}
+   forms: []
+चंद्रमा NOUN: record pos=undefined keys=w,s,p,f,rom,ipa,ety,rel
+   rom/ipa: {"rom":"candramā","ipa":[{"i":"/t͡ʃən.d̪ɾə.mɑː/","t":["Hindi","Standard"]},{"i":"[t͡ʃɐ̃n̪.d̪ɾɐ.mäː]","t":["Hindi","Standard"]}]}
+   forms: []
+चंद्रमा NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety
+   rom/ipa: {"rom":"candramā","ipa":[{"i":"/t͡ʃən.d̪ɾə.mɑː/","t":["Hindi","Standard"]},{"i":"[t͡ʃɐ̃n̪.d̪ɾɐ.mäː]","t":["Hindi","Standard"]}]}
+   forms: []
+ख़ुदा NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"xudā","ipa":[{"i":"/xʊ.d̪ɑː/","t":["Hindi","Standard"]},{"i":"[xʊ.d̪äː]","t":["Hindi","Standard"]},{"i":"/kʰʊ.d̪ɑː/","t":["Hindi","Standard"]},{"i":"[kʰʊ.d̪äː]","t":["Hindi","Standard"]}]}
+   forms: []
+सिनेमा NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"sinemā","ipa":[{"i":"/sɪ.neː.mɑː/","t":["Hindi","Standard"]},{"i":"[sɪ.neː.mäː]","t":["Hindi","Standard"]}]}
+   forms: []
+भाई NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"bhāī","ipa":[{"i":"/bʱɑː.iː/","t":["Hindi","Standard"]},{"i":"[bʱäː.iː]","t":["Hindi","Standard"]}]}
+   forms: []
+मिठाई NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety
+   rom/ipa: {"rom":"miṭhāī","ipa":[{"i":"/mɪ.ʈʰɑː.iː/","t":["Hindi","Standard"]},{"i":"[mɪ.ʈʰäː.iː]","t":["Hindi","Standard"]}]}
+   forms: []
+माँ NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"mā̃","ipa":[{"i":"/mɑ̃ː/","t":["Hindi","Standard"]},{"i":"[mä̃ː]","t":["Hindi","Standard"]}]}
+   forms: []
+हार NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety
+   rom/ipa: {"rom":"hār","ipa":[{"i":"/ɦɑːɾ/","t":["Hindi","Standard"]},{"i":"[ɦäːɾ]","t":["Hindi","Standard"]}]}
+   forms: []
+हार NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"hār","ipa":[{"i":"/ɦɑːɾ/","t":["Hindi","Standard"]},{"i":"[ɦäːɾ]","t":["Hindi","Standard"]}]}
+   forms: []
+ससुराल NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"sasurāl","ipa":[{"i":"/sə.sʊ.ɾɑːl/","t":["Hindi","Standard"]},{"i":"[sɐ.sʊ.ɾäːl]","t":["Hindi","Standard"]}]}
+   forms: []
+मक्का NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"makkā","ipa":[{"i":"/mək.kɑː/","t":["Hindi","Standard"]},{"i":"[mɐk̚.käː]","t":["Hindi","Standard"]}]}
+   forms: []
+मक्का NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety
+   rom/ipa: {"rom":"makkā","ipa":[{"i":"/mək.kɑː/","t":["Hindi","Standard"]},{"i":"[mɐk̚.käː]","t":["Hindi","Standard"]}]}
+   forms: []
+मई NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety
+   rom/ipa: {"rom":"maī","ipa":[{"i":"/mə.iː/","t":["Hindi","Standard"]},{"i":"[mɐ.iː]","t":["Hindi","Standard"]}]}
+   forms: []
+गौरैया NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"gauraiyā","ipa":[{"i":"/ɡɔː.ɾə̯i.jɑː/","t":["Hindi","Standard"]},{"i":"[ɡɔː.ɾɐ̯i.jäː]","t":["Hindi","Standard"]}]}
+   forms: []
+करना VERB: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,audio,hyph,ety
+   rom/ipa: {"rom":"karnā","ipa":[{"i":"/kəɾ.nɑː/","t":["Hindi","Standard"]},{"i":"[kɐɾ.näː]","t":["Hindi","Standard"]}]}
+   forms: []
+जीना VERB: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,audio,ety
+   rom/ipa: {"rom":"jīnā","ipa":[{"i":"/d͡ʒiː.nɑː/","t":["Hindi","Standard"]},{"i":"[d͡ʒiː.näː]","t":["Hindi","Standard"]}]}
+   forms: []
+जीना VERB: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,audio,ety
+   rom/ipa: {"rom":"jīnā","ipa":[{"i":"/d͡ʒiː.nɑː/","t":["Hindi","Standard"]},{"i":"[d͡ʒiː.näː]","t":["Hindi","Standard"]}]}
+   forms: []
+सकना VERB: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety
+   rom/ipa: {"rom":"saknā","ipa":[{"i":"/sək.nɑː/","t":["Hindi","Standard"]},{"i":"[sɐk.näː]","t":["Hindi","Standard"]}]}
+   forms: []
+हँसना VERB: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,audio,ety,rel
+   rom/ipa: {"rom":"hãsnā","ipa":[{"i":"/ɦə̃s.nɑː/","t":["Hindi","Standard"]},{"i":"[ɦɐ̃s.näː]","t":["Hindi","Standard"]}]}
+   forms: []
+फेंकना VERB: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,audio,ety,rel
+   rom/ipa: {"rom":"phẽknā","ipa":[{"i":"/pʰẽːk.nɑː/","t":["Hindi","Standard"]},{"i":"[pʰẽːk.näː]","t":["Hindi","Standard"]}]}
+   forms: []
+इकट्ठा ADJ: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"ikaṭṭhā","ipa":[{"i":"/ɪ.kəʈ.ʈʰɑː/","t":["Hindi","Standard"]},{"i":"[ɪ.kɐʈ̚.ʈʰäː]","t":["Hindi","Standard"]}]}
+   forms: []
+बढ़ई NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety
+   rom/ipa: {"rom":"baṛhaī","ipa":[{"i":"/bə.ɽʱə.iː/","t":["Hindi","Standard"]},{"i":"[bɐ.ɽʱɐ.iː]","t":["Hindi","Standard"]}]}
+   forms: []
+यह PRON: record pos=undefined keys=w,s,p,f,rom,ipa,audio,ety
+   rom/ipa: {"rom":"yah","ipa":[{"i":"/jəɦ/","t":["Hindi","Standard"]},{"i":"[jɛʱ]","t":["Hindi","Standard"]},{"i":"/jeː/","t":["Hindi","Standard"]}]}
+   forms: []
+यह PRON: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,audio,ety
+   rom/ipa: {"rom":"yah","ipa":[{"i":"/jəɦ/","t":["Hindi","Standard"]},{"i":"[jɛʱ]","t":["Hindi","Standard"]},{"i":"/jeː/","t":["Hindi","Standard"]}]}
+   forms: []
+वह PRON: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,audio,ety
+   rom/ipa: {"rom":"vah","ipa":[{"i":"/ʋəɦ/","t":["Hindi","Standard"]},{"i":"[ʋɛʱ]","t":["Hindi","Standard"]},{"i":"/wəɦ/","t":["Hindi","Standard"]},{"i":"[wɛʱ]","t":["Hindi","Standard"]},{"i":"/ʋoː/","t":["Hindi","Standard"]},{"i":"/woː/","t":["Hindi","Standard"]}]}
+   forms: []
+ज्ञान NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety
+   rom/ipa: {"rom":"jñān","ipa":[{"i":"/d͡ʒɲɑːn/","t":["Hindi","Standard"]},{"i":"[ɡjä̃ːn]","t":["Hindi","Standard"]}]}
+   forms: []
+पहला ADJ: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,audio,ety,rel
+   rom/ipa: {"rom":"pahlā","ipa":[{"i":"/pəɦ.lɑː/","t":["Hindi","Standard"]},{"i":"[pɛʱ.läː]","t":["Hindi","Standard"]}]}
+   forms: []
+बहन NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"bahan","ipa":[{"i":"/bə.ɦən/","t":["Hindi","Standard"]},{"i":"[bɛ.ɦɛ̃n]","t":["Hindi","Standard"]},{"i":"/bə.ɦɪn/","t":["Eastern","Hindi"]},{"i":"[bɐ.ɦɪ̃n]","t":["Eastern","Hindi"]}]}
+   forms: []
+नींद NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ety,rel
+   rom/ipa: {"rom":"nīnd"}
+   forms: []
+दुश्मनी NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ety,rel
+   rom/ipa: {"rom":"duśmanī"}
+   forms: []
+पत्र NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"patra","ipa":[{"i":"/pət̪.ɾᵊ/","t":["Hindi","Standard"]},{"i":"[pɐt̪.ɾᵊ]","t":["Hindi","Standard"]}]}
+   forms: []
+कृपा NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety
+   rom/ipa: {"rom":"kŕpā","ipa":[{"i":"/kɾɪ.pɑː/","t":["Hindi","Standard"]},{"i":"[kɾɪ.päː]","t":["Hindi","Standard"]}]}
+   forms: []
+संतरा NOUN: record pos=undefined keys=w,s,p,f,tpl,rom,ipa,ety,rel
+   rom/ipa: {"rom":"santrā","ipa":[{"i":"/sən.t̪ɾɑː/","t":["Hindi","Standard"]},{"i":"[sɐ̃n̪.t̪ɾäː]","t":["Hindi","Standard"]}]}
+   forms: []
+वाक़ई ADV: record pos=undefined keys=w,s,p,f,rom,ipa,ety,rel
+   rom/ipa: {"rom":"vāqaī","ipa":[{"i":"/ʋɑː.qə.iː/","t":["Hindi","Standard"]},{"i":"[ʋäː.qɐ.iː]","t":["Hindi","Standard"]},{"i":"/ʋɑː.kə.iː/","t":["Hindi","Standard"]},{"i":"[ʋäː.kɐ.iː]","t":["Hindi","Standard"]}]}
+   forms: []
+वाक़ई ADV: record pos=undefined keys=w,s,p,f,rom,ipa,ety
+   rom/ipa: {"rom":"vāqaī","ipa":[{"i":"/ʋɑː.qə.iː/","t":["Hindi","Standard"]},{"i":"[ʋäː.qɐ.iː]","t":["Hindi","Standard"]},{"i":"/ʋɑː.kə.iː/","t":["Hindi","Standard"]},{"i":"[ʋäː.kɐ.iː]","t":["Hindi","Standard"]}]}
+   forms: []
+असफल ADJ: record pos=undefined keys=w,s,p,rom,ipa,ety,rel
+   rom/ipa: {"rom":"asaphal","ipa":[{"i":"/ə.sə.pʰəl/","t":["Hindi","Standard"]},{"i":"[ɐ.sɐ.pʰɐl]","t":["Hindi","Standard"]}]}
+   forms: []

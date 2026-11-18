@@ -1,0 +1,24 @@
+hi «जाना» in "मुझे जाना है।" ⇒ जानना / VERB / masculine singular, perfective participle / g:knowing / 0.6 / also जाना/VERB / C:obligation,form:Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part / S:the main word of the sentence / D:to know, comprehend, understand ; to be familiar with
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"VerbForm","value":"Part"},{"key":"Aspect","value":"Perf"},{"key":"Gender","value":"Masc"},{"key":"Number","value":"Sing"}]
+hi «भाइयों» in "भाइयों ने मिलकर काम किया।" ⇒ भाइ / NOUN / oblique plural / g:— / 0.5 UNCONF / also भाइय/NOUN,भाइया/NOUN / C:oblique-before-postposition,postposition-after-noun / S:subject of "किया" / D:brother ; used to refer to any male person
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given. || 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: noun (gender not known), oblique plural; भाइ is not in the word list, this is the rule alone
+    feats: [{"key":"Number","value":"Plur"},{"key":"Case","value":"Obl"}]
+hi «पढ़ी» in "उसने किताब पढ़ी।" ⇒ पढ़ना / VERB / feminine singular, perfective participle / g:reading / 0.8 / also पढ़ना/VERB / C:ergative-ne,perfective-past,form:Aspect=Perf|Gender=Fem|Number=Sing|VerbForm=Part / S:the main word of the sentence / D:to read ; to study, learn
+    notes: 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+    basis: the object "किताब" is singular
+    feats: [{"key":"VerbForm","value":"Part"},{"key":"Aspect","value":"Perf"},{"key":"Gender","value":"Fem"},{"key":"Number","value":"Sing"}]
+hi «ज्ञान» in "यह ज्ञान की बात है।" ⇒ ज्ञान / NOUN / masculine / g:knowledge, wisdom / 0.92 / C:postposition-after-noun,form:Gender=Masc / S:noun that belongs with "बात" / D:knowledge
+    notes: 
+    basis: 
+    feats: [{"key":"Gender","value":"Masc"}]
+hi «बजे» in "दो बजे मिलते हैं।" ⇒ बजना / VERB / masculine plural, perfective participle / g:ringing / 0.8 / also बजना/VERB,बजना/VERB / C:perfective-past,form:Aspect=Perf|Gender=Masc|Number=Plur|VerbForm=Part / S:the main word of the sentence / D:to ring, chime, make noise ; to hit the hour
+    notes: 2 other form readings possible even with the sentence; the one shown has the highest confidence.
+    basis: 
+    feats: [{"key":"VerbForm","value":"Part"},{"key":"Aspect","value":"Perf"},{"key":"Gender","value":"Masc"},{"key":"Number","value":"Plur"}]
+hi «जरूर» in "जरूर आना।" ⇒ ज़रूर / ADV /  / g:certainly, surely; without fail / 0.8 / S:adverb of "आना" / D:certainly, surely ; definitely; of course!
+    notes: 
+    basis: 
+    feats: []

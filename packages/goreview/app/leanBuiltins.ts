@@ -26,7 +26,8 @@ const LOADERS: Readonly<Record<string, () => Promise<LanguageAdapter>>> = Object
   he: () => import('../../../src/adapters/he').then((m) => m.heAdapter),
   el: () => import('../../../src/adapters/el').then((m) => m.elAdapter),
   arc: () => import('../../../src/adapters/arc').then((m) => m.arcAdapter),
-  fr: () => import('../../../src/adapters/fr').then((m) => m.frAdapter),
+  // French also waits for the lemma list it reads beside its hand word list (a second chunk; no meanings), so a card's facts do not depend on which arrived first
+  fr: () => import('../../../src/adapters/fr').then(async (m) => { await m.loadFrenchLexicon().catch(() => undefined); return m.frAdapter; }),
 });
 
 const loaded = new Map<string, LanguageAdapter>();

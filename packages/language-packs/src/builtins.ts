@@ -20,7 +20,7 @@ import { laAdapter } from '../../../src/adapters/la';
 import { arcAdapter } from '../../../src/adapters/arc';
 import { heAdapter } from '../../../src/adapters/he';
 import { elAdapter } from '../../../src/adapters/el';
-import { frAdapter } from '../../../src/adapters/fr';
+import { frAdapter, loadFrenchLexicon } from '../../../src/adapters/fr';
 import type { LanguageAdapter } from '../../../src/core';
 
 /**
@@ -41,6 +41,9 @@ export function builtInAdapter(languageId: string): LanguageAdapter | undefined 
  * must not use an analyser before it is loaded awaits this first (and `builtInAdapter` then answers synchronously, as before).
  */
 export function loadBuiltInAdapter(languageId: string): Promise<LanguageAdapter | undefined> {
+  // French reads a lemma list beside its hand word list (a lazily loaded module: src/adapters/french/lexicon-full). Whoever waits for the
+  // analyser waits for that list too, here as in the lean loaders, so every path reads a French word the same way; it settles either way.
+  if (languageId === 'fr') return loadFrenchLexicon().catch(() => undefined).then(() => builtInAdapter(languageId));
   return Promise.resolve(builtInAdapter(languageId));
 }
 

@@ -985,17 +985,17 @@
   {
    "text": "Elle est arrivée hier.",
    "summary": "elle=elle/PRON est=être/AUX arrivée=arriver/VERB hier=hier/ADV",
-   "sha256": "c75dbb89981ebc4b9391538e4f3fec4ea11f1536a1492fe51547bd403af8ab6f"
+   "sha256": "a7784c42bf3c44c3e28f8b075f18e1166ff491e92bf5bd0e38df8ad7f867d510"
   },
   {
    "text": "Elle est arrivée hier.",
    "summary": "elle=elle/PRON est=être/AUX arrivée=arriver/VERB hier=hier/ADV",
-   "sha256": "c75dbb89981ebc4b9391538e4f3fec4ea11f1536a1492fe51547bd403af8ab6f"
+   "sha256": "a7784c42bf3c44c3e28f8b075f18e1166ff491e92bf5bd0e38df8ad7f867d510"
   },
   {
    "text": "Les lettres que j'ai écrites.",
    "summary": "les=le/DET lettres=lettre/NOUN que=que/PRON j'=je/PRON ai=avoir/AUX écrites=écrire/VERB",
-   "sha256": "616757d245efe7c162aeab21e6b488f9e8da480714e5371416c530dadd52078f"
+   "sha256": "ff70548d2191f7a24c65dce5902d4eba4ca57322aed9f0d2a1b5d3d62cde0f2a"
   },
   {
    "text": "L'homme parle.",

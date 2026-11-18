@@ -70,3 +70,12 @@ export function displayLevelOf(row: DisplayableRow | null | undefined, level: st
   const l = isKnowledgeLevel(level) ? level : 'new';
   return metOnlyInPassing(row, l) ? 'new' : l;
 }
+
+/**
+ * Units that are not vocabulary: a learner's practice cards of GoReview's built-in decks (Class Essentials phrases, Alphabet Sprint letters,
+ * rules and decoding words) have `class:` ids. They are reviewed and synced like every card, and their knowledge rows exist, but they are
+ * never words of the learner's vocabulary: the vocabulary listing and the encountered-words counts leave them out (Alphabet Sprint,
+ * 2026-11-17: decoding a word must never count as knowing it).
+ */
+export const NON_VOCABULARY_PREFIX = 'class:';
+export const isVocabularyUnitId = (unitId: string): boolean => !unitId.startsWith(NON_VOCABULARY_PREFIX);

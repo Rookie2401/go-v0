@@ -15,6 +15,11 @@ import { decksKey, listSavedDecks, type SavedDeck } from '../../packages/gorevie
 import { unitLabel } from '../../packages/goreview/app/format';
 import { rowsFor } from '../../scripts/alphabet-letters.lib.mts';
 import { destroyRigs, dueCard, FakeService, ids, makeRig, queued, reopen, seed, until, type Rig, readyCards } from './helpers';
+import { SQ_PROFILE } from '../../packages/language-packs/src/alphabet-sprint/profiles/sq';
+import { scriptKnowledge } from '../../packages/language-packs/src/alphabet-sprint/knowledge';
+import { planSprint } from '../../packages/language-packs/src/alphabet-sprint/plan';
+
+const FIRST_VISIT = 'Start with a few letters and read your first word.';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -115,7 +120,7 @@ describe('Alphabet: the cards', () => {
 
   it('builds the deck with its name and description, and notes that say who has not reviewed it', () => {
     const deck = alphabetDeckFor('hi', undefined, '2026-11-14T00:00:00.000Z')!;
-    expect(deck).toMatchObject({ id: 'alphabet:hi', name: 'Alphabet', description: 'The letters of the alphabet, one card each.', builtin: 'alphabet', languageId: 'hi' });
+    expect(deck).toMatchObject({ id: 'alphabet:hi', name: 'Alphabet', description: 'Alphabet Sprint: a few letters at a time, chosen for the real words they let you read.', builtin: 'alphabet', languageId: 'hi' });
     expect(deck.items).toHaveLength(71);
     expect(deck.items[0]).toMatchObject({ unitId: 'class:hi-alphabet:अ', label: 'अ', dimension: 'written-recognition', family: 'written-recognition' });
     expect(deck.notes).toMatch(/not yet checked by a Hindi teacher or native speaker/);
@@ -137,7 +142,7 @@ describe('Alphabet: in Saved decks', () => {
     const row = rig.q('[data-deck-id="alphabet:sq"]');
     expect(row.getAttribute('data-builtin')).toBe('alphabet');
     expect(row.querySelector('.deck-title')!.textContent).toBe('Alphabet');
-    expect(row.querySelector('.deck-caption')!.textContent).toBe('36 cards · Albanian');
+    expect(row.querySelector('.deck-caption')!.textContent).toBe(FIRST_VISIT); // Alphabet Sprint: practical progress, not a card count
     expect(row.textContent).not.toContain('native speaker'); // the note stays in the deck's record, not on this page
     expect(rig.q('#alphabet-due-count').textContent).toBe('Nothing due');
     expect(rig.root.querySelector('#start-alphabet-due')).toBeNull(); // the seeded letters do not become due work by being seeded
@@ -164,30 +169,34 @@ describe('Alphabet: in Saved decks', () => {
     await rig.go('review/decks');
     await until(() => !!rig.root.querySelector('[data-deck-id="alphabet:he"]'), 'the Hebrew alphabet');
     expect(rig.qa('#saved-decks .deck-tile').map((r) => r.getAttribute('data-deck-id'))).toEqual(['alphabet:he']);
-    expect(rig.q('[data-deck-id="alphabet:he"] .deck-caption').textContent).toBe('27 cards · Hebrew');
+    expect(rig.q('[data-deck-id="alphabet:he"] .deck-caption').textContent).toBe(FIRST_VISIT);
     expect(rig.root.querySelector('#class-essentials-due')).toBeNull();
     await rig.go('review');
     expect(rig.q('#previous-count').textContent).toBe('1 saved');
   });
 
-  it('opens through the flashcard flow: the letter, its name and sound hidden, then revealed, graded once, and the ordinary queue never meets it', async () => {
+  it('opens as Alphabet Sprint through the flashcard flow: letters chosen for the words they unlock, each followed by a real word; graded once; the ordinary queue never meets it', async () => {
     const rig = await makeRig({ signedIn: true, builders: registry as never });
     await rig.go('review/decks');
     await until(() => !!rig.root.querySelector('[data-deck-id="alphabet:sq"]'), 'the deck');
     click(rig.q('[data-deck-id="alphabet:sq"] [data-action="practise-again"]'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the first card');
     const items = rig.app.ctx.run.active!.plan.items;
-    expect(items).toHaveLength(10); // the deck keeps its 36 letters; a session is the configured size
+    // the session is the Sprint's plan for a beginner (packages/language-packs/src/alphabet-sprint/plan.ts), at the configured size, never in alphabet order
+    const sprint = planSprint({ profile: SQ_PROFILE, knowledge: scriptKnowledge(SQ_PROFILE, []), cards: [], now: rig.app.ctx.deps.now().toISOString(), size: items.length });
+    expect(items.length).toBeGreaterThan(2);
     expect(items.every((p) => p.family === 'written-recognition' && isAlphabetUnit(p.item.unitId))).toBe(true);
-    expect(items.map((p) => unitLabel(p.item.unitId))).toEqual(alphabetCards('sq').slice(0, 10).map((c) => c.glyph)); // in alphabet order
+    expect(items.map((p) => p.item.unitId)).toEqual(sprint.cards.slice(0, items.length).map((c) => c.unitId));
+    expect(items.slice(0, 3).some((p) => p.item.unitId.includes('-alphabet-word:'))).toBe(true); // a real word within the first cards
+    expect(items.map((p) => unitLabel(p.item.unitId))).not.toEqual(alphabetCards('sq').slice(0, items.length).map((c) => c.glyph));
     expect(rig.q('.exercise').classList.contains('flashcard')).toBe(true);
-    expect(rig.q('#stimulus').textContent).toBe('A a');
+    expect(rig.q('#stimulus').textContent).toBe(sprint.cards[0].front);
     expect(rig.root.querySelector('#revealed-answer')).toBeNull();
     click(rig.q('#flip-card'));
-    expect(rig.q('#revealed-answer').textContent).toBe('a: a as in father');
+    expect(rig.q('#revealed-answer').textContent).toBe(sprint.cards[0].back);
     click(rig.q('[data-grade="good"]'));
     await until(async () => (await queued(rig)).some((e) => e.kind === 'CardReviewed'), 'the review event');
-    expect((await queued(rig)).find((e) => e.kind === 'CardReviewed')!.subject.itemIds).toEqual(['class:sq-alphabet:A a']);
+    expect((await queued(rig)).find((e) => e.kind === 'CardReviewed')!.subject.itemIds).toEqual([sprint.cards[0].unitId]);
     expect((await stored(rig)).find((d) => d.id === 'alphabet:sq')!.items).toHaveLength(36);
 
     // reviewed, but out of the ordinary queue and the home's deck
@@ -215,7 +224,7 @@ describe('Alphabet: in Saved decks', () => {
     click(rig.q('#start-alphabet-due'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the due letter');
     expect(rig.app.ctx.run.active!.plan.items.map((p) => p.item.unitId)).toEqual([letter]);
-    expect(rig.q('#stimulus').textContent).toBe('Ç ç');
+    expect(rig.q('#stimulus').textContent).toBe(SQ_PROFILE.units.find((u) => u.key === 'Ç ç')!.display); // the Sprint shows the letter as the profile writes it
   });
 
   it('Remove takes it out and it stays out; "Restore Alphabet" brings it back once, and Class Essentials is untouched', async () => {

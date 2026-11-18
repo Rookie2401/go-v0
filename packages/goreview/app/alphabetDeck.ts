@@ -16,9 +16,10 @@ import type { LinguisticUnit } from '../../repository-contract/src';
 import type { DeckEntry, SavedDeck } from './deckModel';
 import { HAND_LETTERS } from './alphabetLetters';
 import { HI_LETTERS, TH_LETTERS } from './alphabetLetters.thhi';
+import { isSprintUnitId } from '../../language-packs/src/alphabet-sprint/ids';
 
 export const ALPHABET_NAME = 'Alphabet';
-export const ALPHABET_DESCRIPTION = 'The letters of the alphabet, one card each.';
+export const ALPHABET_DESCRIPTION = 'Alphabet Sprint: a few letters at a time, chosen for the real words they let you read.';
 
 const NOTES_DEFAULT = 'The letter names and the sound hints were written for this deck and are not yet reviewed by a native speaker. A sound hint is an approximation for an English speaker.';
 const NOTES: Readonly<Record<string, string>> = {
@@ -64,7 +65,7 @@ export function alphabetCards(languageId: string): AlphabetCard[] {
 }
 
 /** A unit of an Alphabet deck (it is a class unit too: kept out of the ordinary queue, My vocab and the candidates). */
-export const isAlphabetUnit = (unitId: string): boolean => /^class:[a-z]+-alphabet:/.test(unitId);
+export const isAlphabetUnit = (unitId: string): boolean => isSprintUnitId(unitId);
 
 export const alphabetDeckId = (languageId: string): string => `alphabet:${alphabetLanguageOf(languageId) ?? languageId}`;
 

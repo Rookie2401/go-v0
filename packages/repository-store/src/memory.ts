@@ -3,6 +3,7 @@
  * SQLite store; nothing persists. Everything handed in or out is copied, so a caller can never mutate a stored row.
  */
 import { provenanceColumns } from '../../repository-contract/src';
+import { isVocabularyUnitId } from '../../repository-contract/src';
 import type {
   Account, AccountToken, AppendOutcome, SecurityEvent, AssistancePreferences, Device, Enrolment, EventFilter, EncounterEventSummary, FormAnalysis, LanguagePackInfo, Learner,
   LinguisticUnit, PrivateDocument, ReviewStatusSummary, Session, StoredEvent, Team, Tombstone, UnitAlias, UnitKnowledge, UnitRelation,
@@ -293,7 +294,7 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
     },
     async getEncounteredKnowledgeStats(learnerId, languageId) {
       const counts = { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 };
-      for (const k of knowledge.values()) if (k.learnerId === learnerId && k.languageId === languageId && k.encounters > 0) counts[k.level]++;
+      for (const k of knowledge.values()) if (k.learnerId === learnerId && k.languageId === languageId && k.encounters > 0 && isVocabularyUnitId(k.unitId)) counts[k.level]++;
       return { total: Object.values(counts).reduce((a, b) => a + b, 0), counts };
     },
     async putKnowledge(rows) {

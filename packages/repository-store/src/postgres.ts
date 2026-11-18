@@ -445,7 +445,7 @@ export async function openPostgresStore(pool: PgPool, opts: PostgresOptions = {}
     },
     async getEncounteredKnowledgeStats(learnerId, languageId) {
       const rows = await all(`SELECT json ->> 'level' AS level, count(*) AS n FROM knowledge
-        WHERE learner_id = ? AND language_id = ? AND (json ->> 'encounters')::numeric > 0 GROUP BY json ->> 'level'`, learnerId, languageId);
+        WHERE learner_id = ? AND language_id = ? AND (json ->> 'encounters')::numeric > 0 AND unit_id NOT LIKE 'class:%' GROUP BY json ->> 'level'`, learnerId, languageId);
       const counts = { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 };
       for (const row of rows) if (typeof row.level === 'string' && row.level in counts) counts[row.level as keyof typeof counts] = Number(row.n);
       return { total: Object.values(counts).reduce((a, b) => a + b, 0), counts };

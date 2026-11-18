@@ -44,12 +44,12 @@ describe('the account page', () => {
     expect(text).not.toMatch(/session until/i);
     const actions = [...rig.q('.account-actions').querySelectorAll('button')];
     expect(actions.map((b) => b.id)).toEqual(['sign-out', 'export-data', 'delete-open']);
-    expect(actions.map((b) => b.textContent)).toEqual(['Sign out', 'Download my data', 'Delete account']);
-    // friendly pills, not underlined text (the owner, 2026-10-28); Delete account keeps its red
-    for (const b of actions) expect(b.classList.contains('btn') && b.classList.contains('friendly'), b.id).toBe(true);
+    expect(actions.map((b) => b.querySelector('.deck-title')?.textContent)).toEqual(['Sign out', 'Download my data', 'Delete account']);
+    // in the home's look (the owner, 2026-11-18): a warm tile each, like the home's Review Deck, never underlined text; Delete account keeps its red
+    for (const b of actions) expect(b.classList.contains('deck-face') && b.parentElement?.classList.contains('deck-tile'), b.id).toBe(true);
     expect(rig.root.querySelector('.account-actions .linklike')).toBeNull();
-    expect(rig.q('#delete-open').classList.contains('danger')).toBe(true);
-    expect(rig.q('#account-name-edit').classList.contains('friendly')).toBe(true);
+    expect(rig.q('#delete-open').parentElement?.getAttribute('data-deck')).toBe('danger');
+    expect(rig.q('#account-name-edit').classList.contains('account-link')).toBe(true);
     // there is no "remove this device's data" link anywhere on the page: Sign out is the one exit
     expect(rig.root.querySelector('#sign-out-forget')).toBeNull();
     expect(rig.q('#account-card').textContent).not.toContain('remove this device');

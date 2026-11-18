@@ -22,9 +22,11 @@ import { createGlossService, defaultPacks, SHARD_PREFIX, type PackProvider } fro
 import { createDictionaryStore } from './dictionaryStore';
 import { DOWNLOAD_KEY_PREFIX, createDictionaryDownload } from './dictionaryDownload';
 import { createFormsService } from './forms';
+import { createPageScriptStore } from './pageScript';
 import { levelOf } from '../../../language-packs/src/manifest';
 import { PACKS } from '../../../language-packs/src/registry';
 import { createLocalRepoService, createWorkerHold, type LocalRepoServiceOptions } from './localRepo';
+import { createReadingService } from './reading';
 import { createProfileService } from './profile';
 import { createRecorder } from './recorder';
 import { createSessionManager } from './session';
@@ -62,6 +64,8 @@ export interface BackgroundOptions {
   defaultServiceUrl?: string;
   /** Tests only: replaces the device Repository's IndexedDB, keep-alive and migration fault (see LocalRepoServiceOptions). */
   localRepo?: Partial<Pick<LocalRepoServiceOptions, 'idb' | 'keepAlive' | 'migrationInject'>>;
+  /** Tests only: Reading Analysis' wait for the account, and whether the worker is online. */
+  reading?: { verifyTimeoutMs?: number; online?: () => boolean };
   /** Tests only: the build this worker claims to be (default: what the build compiled in; none when run from source, and then there is no self-update). */
   build?: BuildInfo;
   /** Tests only: the dictionary downloads' IndexedDB (default: the worker's own), waits between attempts, and concurrency. */
@@ -74,12 +78,14 @@ const PAGE_ONLY: ReadonlySet<string> = new Set<string>([
   MSG.getState, MSG.setEnabled, MSG.serviceConfig, MSG.connect, MSG.createAccount, MSG.disconnect, MSG.syncNow,
   MSG.enrol, MSG.refreshSession, MSG.selectEnrolment, MSG.useLanguage, MSG.clearLocal, MSG.localRepo, MSG.dictionaryDownload,
   MSG.speechConfig,
+  MSG.pageScript, // Alphabet Sprint: GoReview reads one language's page-letter counts
 ]);
 const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.record, MSG.profile, MSG.gloss, MSG.entry, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
   MSG.keepWarm,
   MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
   MSG.activeProfile, // the scan's learner-model question: device rows only, and only while Active is on (below)
+  MSG.readingKnowledge, // Reading Analysis: device rows only, read-only, and only for a tab an extension page granted (background/reading.ts)
   MSG.confirmForms, // the scan's dictionary question: public dictionary data only, forms in, lemmas out
   MSG.translateSentence,
   MSG.speech,
@@ -175,6 +181,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   const dictionaryStore = createDictionaryStore(bg.dictionary?.idb ?? (globalThis as { indexedDB?: IDBFactory }).indexedDB);
   const gloss = createGlossService({ area: local, session, fetch: doFetch, packs, now, getURL: (path) => chrome.runtime.getURL?.(path), ...(dictionaryStore.available ? { offline: dictionaryStore } : {}) });
   const forms = createFormsService({ gloss });
+  const pageScript = createPageScriptStore(local, now);
   const translation = createLocalTranslationService({
     fetch: doFetch,
     extensionId: chrome.runtime.id,
@@ -196,6 +203,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     area: local, deviceId, session, packs, now,
     ...(idbFactory ? { idb: { indexedDB: idbFactory, ...(typeof IDBKeyRange !== 'undefined' ? { keyRange: IDBKeyRange } : {}) } } : {}),
     keepAlive: ping,
+    onUnauthorized: () => holder.sync?.noteUnauthorized(),
     ...bg.localRepo, // tests only: another IndexedDB, a keep-alive probe, a fault for the migration
     hold,
   });
@@ -206,13 +214,17 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     ...(bg.dictionary?.sleep ? { sleep: bg.dictionary.sleep } : {}), ...(bg.dictionary?.concurrency ? { concurrency: bg.dictionary.concurrency } : {}),
   });
   const profile = createProfileService({ area: cache, session, settings: settings.get, now, local: localRepo.forProfile });
-  const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, hold, onSynced: async () => {
-    void localRepo.resumePull(); // an account pull that was begun and cut off (the worker was stopped, the network dropped) continues from its cursor
+  const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, hold, onSynced: async (round) => {
+    // An account pull that was begun and cut off (the worker was stopped, the network dropped) continues from its cursor. Otherwise, when another
+    // device of the learner's recorded something (a word marked in GoReview on a phone): the round's own pull only counts those events; the device's
+    // Repository, which the page underlines and Reading Analysis read, takes them in here (2026-11-17: until now it did so only at sign-in).
+    void localRepo.resumePull().then((resumed) => { if (!resumed && round.pulled > 0) return localRepo.catchUp(); return undefined; }).catch(() => undefined);
     await profile.refreshAfterSync();
     // the account's enrolments are read again now and then (a language chosen on another device; a session from before they were kept): marks waiting for one go up
     const s = await session.refreshEnrolments();
     if (s && await holder.recorder?.fileWaitingMarks(s)) holder.sync?.schedule();
   } });
+  const reading = createReadingService({ local: localRepo, session, sync, area: cache, now, online: () => (globalThis as { navigator?: { onLine?: boolean } }).navigator?.onLine !== false, ...(bg.reading ?? {}) });
   const recorder = createRecorder({ area: local, queue: sync.queue, session, deviceId, version, now: Date.now, onQueued: () => sync.schedule(), onRecorded: (e, attributed) => localRepo.record(e, attributed) });
   holder.recorder = recorder; holder.sync = sync; holder.profile = profile; holder.local = localRepo;
 
@@ -485,6 +497,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     const drop = [...events, ...metrics, ...queued, ...dictionaryRows];
     if (drop.length) await local.remove(drop);
     await profile.clear();
+    await pageScript.clear().catch(() => undefined);
     return { ok: true, events: events.length, metrics: metrics.length, queued: queued.length };
   }
 
@@ -530,6 +543,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       case MSG.gloss: return gloss.glossFor(m) satisfies Promise<GlossReply>;
       case MSG.entry: return gloss.entryFor(m);
       case MSG.confirmForms: return forms.confirm(m);
+      case MSG.pageScript: return pageScript.get(m.languageId); // extension pages only (PAGE_ONLY)
       case MSG.explain: return gloss.explainFor(m);
       case MSG.pronounceInfo: return pronounceInfo(m);
       case MSG.speechConfig: return kind === 'page' ? speech.configure(m) : { ok: false };
@@ -543,8 +557,11 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
         const s = await active.get();
         if (!s.active || !(await active.granted())) return { ok: false, error: 'inactive' };
         const languageId = typeof m.languageId === 'string' ? m.languageId : 'sq';
+        // Alphabet Sprint: the letters of the words asked about (from their form ids; nothing new leaves the page), counted on this device
+        void pageScript.addFromUnitIds(languageId, m.unitIds).catch(() => undefined);
         return profile.knowledgeFor(m.unitIds, languageId, { deviceOnly: true });
       }
+      case MSG.readingKnowledge: return reading.handle(m, kind, sender?.tab?.id);
       case MSG.translateSentence:
         if (kind !== 'content') return { ok: false, reason: 'unavailable' };
         return translation.translate(m);

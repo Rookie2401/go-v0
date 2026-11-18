@@ -13,7 +13,7 @@ import { isClassUnit } from '../classEssentials';
 
 /** The built-in deck a class unit belongs to: the page names it and marks the row with it. */
 const builtinOf = (unitId: string): { name: string; source: string; what: string } => (isAlphabetUnit(unitId)
-  ? { name: 'Alphabet', source: 'alphabet', what: 'letter' } : { name: 'Class Essentials', source: 'class-essentials', what: 'phrase' });
+  ? { name: 'Alphabet', source: 'alphabet', what: 'card' } : { name: 'Class Essentials', source: 'class-essentials', what: 'phrase' });
 import { nextChangeAt } from '../freshness';
 import type { View } from './view';
 

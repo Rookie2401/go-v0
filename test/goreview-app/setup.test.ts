@@ -38,7 +38,12 @@ describe('GoReview setup, signed in to an account with no language', () => {
     expect(service.enrolments.get('L9')?.map((e) => [e.languageId, e.varietyId, e.packId])).toEqual([['sq', 'sq-standard', 'pack:sq']]);
     await until(() => !!rig.root.querySelector('#language-name'), 'the language in the header');
     expect(rig.q('#language-name').textContent).toContain('Albanian');
+    // another language is added from the Account page (2026-11-18: the home has no + and no dropdown)
+    expect(rig.root.querySelector('#add-language, #language-select')).toBeNull();
+    await rig.go('account');
+    await until(() => !!rig.root.querySelector('#add-language'), 'the Account page');
     expect(rig.q<HTMLAnchorElement>('#add-language').getAttribute('href')).toBe('#/setup');
+    expect(rig.q('#account-languages [data-deck="current"] .deck-title').textContent).toBe('Albanian');
   });
 
   it('Norwegian asks for the written standard and guesses nothing; the choice is the enrolment', async () => {

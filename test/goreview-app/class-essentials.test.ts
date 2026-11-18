@@ -6,7 +6,7 @@ import type { GoEvent } from '../../packages/repository-contract/src';
 import { classCards, classDeckFor, classFacts, CLASS_ESSENTIALS_DESCRIPTION, CLASS_ESSENTIALS_NOTES_LA, CLASS_LANGUAGES, isClassUnit } from '../../packages/goreview/app/classEssentials';
 import { decksKey, listSavedDecks, type SavedDeck } from '../../packages/goreview/app/deckModel';
 import { languageName } from '../../packages/goreview/app/format';
-import { defaultService, destroyRigs, dueCard, FakeService, ids, makeRig, queued, reopen, reviewed, saveCurrentDeck, seed, until, type Rig, readyCards } from './helpers';
+import { defaultService, destroyRigs, switchLanguage, dueCard, FakeService, ids, makeRig, queued, reopen, reviewed, saveCurrentDeck, seed, until, type Rig, readyCards } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -244,13 +244,8 @@ describe('Class Essentials: in Saved decks', () => {
     const service = new FakeService();
     service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [{ languageId: 'sq', varietyId: 'sq-AL' }, { languageId: 'de' }, { languageId: 'en' }]);
     const rig = await makeRig({ service, signedIn: true });
-    // the language is switched on the home, the one place that shows the dropdown (2026-10-28: the top bar never carries it)
-    const pick = async (enrolment: string): Promise<void> => {
-      await rig.go('review');
-      const select = rig.q<HTMLSelectElement>('#home-language #language-select');
-      select.value = enrolment; select.dispatchEvent(new Event('change'));
-      await until(() => { const now = rig.root.querySelector<HTMLSelectElement>('#home-language #language-select'); return !!now && now !== select && now.value === enrolment; }, 'the switch');
-    };
+    // the language is switched on the Account page (2026-11-18: the home only names it)
+    const pick = async (enrolment: string): Promise<void> => { await switchLanguage(rig, enrolment); };
     await pick('L1-e2');
     await rig.go('settings'); await rig.go('review/decks');
     await until(() => !!rig.root.querySelector('[data-deck-id="class-essentials:de"]'), 'the German deck');

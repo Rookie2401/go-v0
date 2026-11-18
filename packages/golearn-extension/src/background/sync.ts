@@ -47,8 +47,8 @@ export interface SyncServiceOptions {
   session: SessionManager;
   deviceId: () => Promise<string>;
   now?: () => number;
-  /** Called after a successful sync round (the profile cache refresh). */
-  onSynced?: () => Promise<void> | void;
+  /** Called after a successful sync round (the profile cache refresh). `pulled`: how many events of the learner's other devices the round's pull received. */
+  onSynced?: (round: { pulled: number }) => Promise<void> | void;
   timers?: { set(fn: () => void, ms: number): unknown; clear(handle: unknown): void };
   /** The worker's shared keep-alive hold (localRepo.ts `createWorkerHold`): held for the length of a round, so a long first pull is not cut off by the browser's 30 s idle limit. */
   hold?: () => () => void;
@@ -163,7 +163,7 @@ export function createSyncService(opts: SyncServiceOptions) {
       if (r.ok) {
         failureStreak = 0;
         await save({ lastPushAt: st.lastPushAt ?? now(), lastError: undefined });
-        try { await opts.onSynced?.(); } catch { /* a cache refresh must not fail a sync */ }
+        try { await opts.onSynced?.({ pulled: r.pull?.received ?? 0 }); } catch { /* a cache refresh must not fail a sync */ }
         return { ok: true };
       }
       // the transport throws UnauthorizedError; the client keeps only its message

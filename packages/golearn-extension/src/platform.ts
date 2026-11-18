@@ -175,6 +175,10 @@ export const MSG = {
   confirmForms: 'golearn:confirm-forms',
   /** Explicit on-demand request for the local sentence translation service. */
   translateSentence: 'golearn:translate-sentence',
+  /** Reading Analysis, popup -> content script: start, status, cancel (src/reading/protocol.ts). */
+  readingAnalysis: 'golearn:reading-analysis',
+  /** Reading Analysis, -> background: the popup's grant for a tab; the content script's snapshot and word batches. Device Repository only, read-only. */
+  readingKnowledge: 'golearn:reading-knowledge',
   // background -> content (GoLearn Active)
   activate: 'golearn:activate',
   deactivate: 'golearn:deactivate',

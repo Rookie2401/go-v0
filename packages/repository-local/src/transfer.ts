@@ -199,13 +199,28 @@ async function localEnrolment(c: TransferContext, languageId: string, remoteEnro
 }
 
 /** `pageSize` is the number of events asked for per request (the default is PAGE; a test asks for small pages). */
-export async function pull(c: TransferContext, remote: RepositoryApi, newId: () => string, opts: { pageSize?: number; onEnd?: (complete: boolean) => void } = {}): Promise<{ added: number }> {
+/**
+ * What a pull reached (2026-11-17, for a reader that must know whether the device holds the whole account history: Reading Analysis).
+ * `complete` is true only when the loop reached the account's head; a refused or failed request leaves it false. `afterSeq` is the account
+ * sequence number the device now holds everything up to, `head` the account's head as the last answered page reported it.
+ */
+export interface PullOutcome { added: number; complete: boolean; remoteLearnerId?: string; afterSeq?: number; head?: number; /** Account events this device's store refused (not stored, not a duplicate): the cursor still moves past them. */ refused?: number }
+
+/** The account this device last pulled from and how far (the stored cursor), or undefined when it never pulled. Read-only. */
+export async function pullPosition(c: TransferContext): Promise<{ remoteLearnerId: string; afterSeq: number } | undefined> {
+  const stored = (await area(c).get(c.io.keys.pull))[c.io.keys.pull] as PullCursor | undefined;
+  return stored && typeof stored.learnerId === 'string' && Number.isInteger(stored.afterSeq) && stored.afterSeq >= 0 ? { remoteLearnerId: stored.learnerId, afterSeq: stored.afterSeq } : undefined;
+}
+
+export async function pull(c: TransferContext, remote: RepositoryApi, newId: () => string, opts: { pageSize?: number; onEnd?: (complete: boolean) => void } = {}): Promise<PullOutcome> {
   const me = await remote.me().catch(() => undefined);
   const remoteLearner = me?.ok ? me.data.learner?.learnerId : undefined;
-  if (!me || !me.ok || !remoteLearner) return { added: 0 };
+  if (!me || !me.ok || !remoteLearner) return { added: 0, complete: false };
   const stored = (await area(c).get(c.io.keys.pull))[c.io.keys.pull] as PullCursor | undefined;
   let afterSeq = stored && stored.learnerId === remoteLearner && Number.isInteger(stored.afterSeq) && stored.afterSeq >= 0 ? stored.afterSeq : 0;
   let added = 0;
+  let refused = 0;
+  let head: number | undefined;
   let complete = false; // true when the loop reached the account's head (not when a request failed): the host asks, to know whether a pull must be resumed
   const appended: GoEvent[] = [];
   const registered = new Set<string>(); // events that would register the same surfaces as one already registered in this pull are not registered again
@@ -215,6 +230,7 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
     let r;
     try { r = await remote.listEvents({ afterSeq, limit: opts.pageSize ?? PAGE }); } catch { r = undefined; }
     if (!r || !r.ok) break;
+    if (typeof r.data.head === 'number') head = r.data.head;
     const events = [...r.data.events].sort((a, b) => a.seq - b.seq);
     if (!events.length) { complete = true; break; }
     const rows: Record<string, unknown> = {};
@@ -240,6 +256,7 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
       const stored: GoEvent[] = [];
       fresh.forEach((f, i) => {
         if (outcomes[i]?.stored) { added += 1; appended.push(f.local); stored.push(f.local); rows[c.io.keys.uploaded + f.remoteId] = { from: remoteLearner, at: c.now() } satisfies UploadMarker; }
+        else if (outcomes[i]?.duplicateOf === undefined) refused += 1; // the device's store would not take an event the account holds: the device is then NOT a whole copy
       });
       // surfaces are registered per page: a pull stopped here resumes after these events and would never register them
       const unseen = stored.filter((e) => { const k = `${e.kind} ${e.languageId} ${(e.subject?.itemIds ?? []).join('')} ${String((e.payload as { surface?: unknown } | undefined)?.surface ?? '')}`; if (registered.has(k)) return false; registered.add(k); return true; });
@@ -254,5 +271,5 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
   // per page, so a pull stopped after any page resumes from there; until it is projected, every read folds the events newer than the projection cursor, so knowledge is correct.
   if (appended.length) await c.project();
   try { opts.onEnd?.(complete); } catch { /* a listener must not break a pull */ }
-  return { added };
+  return { added, complete, remoteLearnerId: remoteLearner, afterSeq, ...(head !== undefined ? { head } : {}), ...(refused ? { refused } : {}) };
 }

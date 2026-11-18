@@ -20,6 +20,8 @@ import { MSG, getContentChrome, type ContentChromeApi, type LookupMessage } from
 import { createCardUI, type CardUI } from '../popup/card';
 import type { ActivateMessage } from '../protocol';
 import { PENDING_IDENTITY, buildEncounterEvent, createMemoryEncounterStore, type Identity } from '../store';
+import { createReadingSession } from '../reading/session';
+import type { ReadingRequest } from '../reading/protocol';
 import { ActiveMode } from './active';
 import { LookupController } from './controller';
 import { createBridge } from './services';
@@ -125,6 +127,15 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   const warm = bridge?.keepWarm ? createKeepWarm({ doc, ping: bridge.keepWarm, activeOn: () => active.isOn, alive: chromeApi ? () => contextAlive(chromeApi) : undefined }) : undefined;
   controller.onRecorded((e) => { if (e.kind === 'SelectionLookedUp') warm?.noteLookup(); });
 
+  // Reading Analysis: nothing is read until the popup starts a run in this tab (src/reading/session.ts)
+  const reading = bridge?.readingKnowledge ? createReadingSession({
+    doc, adapters, languages: PARSER_LANGUAGES, adapterOf: getAnalyser, loadAnalyser,
+    defaultLanguage: async () => (await bridge.status())?.languageId,
+    ...(bridge.confirmForms ? { confirmForms: (forms: string[], languageId: string) => bridge.confirmForms!({ forms, languageId }) } : {}),
+    knowledge: (req) => bridge.readingKnowledge!(req),
+  }) : undefined;
+  doc.defaultView?.addEventListener('pagehide', () => reading?.dispose());
+
   // the harness build (loopback pages, never shipped) also exposes the card, so a harness page can read what the card says
   w[GLOBAL_KEY] = { controller, active, ...(warm ? { warm } : {}), ...(chromeApi ? { alive: () => contextAlive(chromeApi) } : {}), ...(typeof __GOLEARN_HARNESS__ !== 'undefined' && __GOLEARN_HARNESS__ ? { card: ui } : {}) };
 
@@ -152,6 +163,12 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
         return true;
       }
       case MSG.deactivate: active.stop(); warm?.refresh(); sendResponse({ ok: true }); return;
+      case MSG.readingAnalysis: {
+        const req = m as ReadingRequest;
+        if (!reading || (req.op !== 'start' && req.op !== 'status' && req.op !== 'cancel')) { sendResponse({ ok: false }); return; }
+        sendResponse(reading.handle(req)); // a run goes on by itself; the popup asks for its status
+        return;
+      }
       default: return;
     }
   });

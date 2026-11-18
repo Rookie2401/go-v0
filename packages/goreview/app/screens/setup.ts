@@ -13,14 +13,14 @@ import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
 import { flushTermsAcceptance } from './consent';
 import type { View } from './view';
 
-/** A catalogue row as GoLearn setup shows it (packages/golearn-extension/app/languages.ts). Loaded on demand: most visits never need it. */
-type LanguageView = import('../../../golearn-extension/app/ports').LanguageView;
+/** A catalogue row as GoLearn setup shows it (GoReview's copy, ../languageChoices.ts). Loaded on demand: most visits never need it. */
+type LanguageView = import('../languageChoices').LanguageView;
 
 const STANDARD_MESSAGE = 'Norwegian has two written standards, Bokmål and Nynorsk. Choose the one you will read; GoReview never guesses.';
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const [{ languagesOf }, { packFor }, mode, enrolments] = await Promise.all([
-    import('../../../golearn-extension/app/languages'),
+    import('../languageChoices'),
     import('../../../language-packs/src/registry'),
     ctx.mode(),
     ctx.enrolments().catch(() => []),

@@ -45,7 +45,10 @@ describe.skipIf(!have)('the built extension', () => {
     // (background.js measured 1,078 KB when that work was committed).
     // 2026-11-10: 1,100 -> 1,180 KB for the device Repository's IndexedDB store, its one-time verified migration and the split store
     // (background.js measured 1,131 KB; in exchange the worker's cold open of a 12,000-event history goes from 3.4 s to about 1 ms).
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1180 * KB);
+    // 2026-11-17: 1,180 -> 1,190 KB for language varieties (6aa02507): the device's own Repository runs the same projection as the service, so
+    // the worker now carries the variety registry and rules (repository-contract/src/varieties.ts), the per-variety fold (projection@8), the
+    // scoped candidates and the variety a reader's events record. background.js measured 1,181.2 KB (1,209,578 bytes; 1,200,438 before).
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1190 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.

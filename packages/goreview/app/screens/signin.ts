@@ -35,13 +35,15 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       p('Your sign-in is kept in iPhone Keychain. This app could not reach that storage. Close and reopen GoReview, then try again.'))]);
   }
 
+  // the iPhone app's welcome: a dropdown under the sign-in form (the owner, 2026-11-17), closed until asked for; placed after the form below
+  let about: HTMLElement | null = null;
   if (hosted && ctx.deps.edition === 'review') {
     // the iPhone app: there is no extension on a phone, so the account is the only way in, and it is the one GoLearn uses
-    append(page, [h('section', { class: 'deck-tile signin-tile', id: 'review-first-launch', 'aria-labelledby': 'review-first-h' },
-      h('h2', { id: 'review-first-h', class: 'deck-kicker' }, 'Welcome to GoReview'),
+    about = h('details', { class: 'signin-about', id: 'review-first-launch' },
+      h('summary', { id: 'review-first-h' }, 'Welcome to GoReview'),
       p('GoReview shows what you read with GoLearn on the same account. Sign in with the account you use in GoLearn, or create one below: your words, your decks and your reviews appear here, and what you look up while reading on your computer arrives within seconds while GoReview is open.', 'signin-lede'),
       p('New here? Create an account below, then choose your language: everything is set up in GoReview, and GoLearn is not needed to start.', 'deck-caption'),
-      p('Your reviews done here go back to the same account, so GoLearn sees them too. Nothing is shown until you sign in.', 'deck-caption'))]);
+      p('Your reviews done here go back to the same account, so GoLearn sees them too. Nothing is shown until you sign in.', 'deck-caption'));
   } else if (hosted) {
     // no wall: the page says what this copy is and where the copy that needs no account lives
     append(page, [h('section', { class: 'deck-tile signin-tile', id: 'hosted-copy', 'aria-labelledby': 'hosted-h' },
@@ -75,8 +77,10 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const unverified = h('div', { id: 'unverified-notice' });
   // Where there is no setup page to go to (the hosted copy, the iPhone app) the account is made here.
   const name = h('input', { type: 'text', id: 'signin-name', name: 'name', autocomplete: 'name', maxlength: 100 }) as HTMLInputElement;
-  const nameField = field('Your name', name, 'Shown on your account in GoLearn and GoReview.');
-  nameField.hidden = true;
+  // shown from the start where an account can be made here, at the top of the form (the owner, 2026-11-17); used only for a new account
+  const canCreate = hosted && !session;
+  const nameField = field('Your name', name, 'For a new account only: the name shown on your account in GoLearn and GoReview.');
+  nameField.hidden = !canCreate;
   const terms = h('p', { class: 'muted', id: 'terms-note', hidden: true }, 'By creating an account you accept the ', h('a', { href: '#/terms' }, 'Terms'), ' and the ', h('a', { href: '#/privacy' }, 'Privacy Policy'), '.');
   let creating = false;
   const heading = h('h2', { class: 'deck-title signin-title' }, 'Sign in');
@@ -85,7 +89,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     heading.textContent = creating ? 'Create an account' : 'Sign in';
     submit.textContent = creating ? 'Create the account' : 'Sign in';
     toggle.textContent = creating ? 'I already have an account' : 'Create an account';
-    nameField.hidden = !creating;
     terms.hidden = !creating;
     password.setAttribute('autocomplete', creating ? 'new-password' : 'current-password');
   }, { id: 'signin-create-toggle', class: 'signin-link' }) as HTMLButtonElement;
@@ -93,9 +96,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     h('p', { class: 'deck-kicker', 'aria-hidden': 'true' }, 'Your account'),
     heading,
     nameField, field('Email', email), field('Password', password), terms,
-    h('div', { class: 'signin-actions' }, submit, hosted && !session ? toggle : null), status, unverified, next);
+    h('div', { class: 'signin-actions' }, submit, canCreate ? toggle : null), status, unverified, next);
   const banner = h('div', { id: 'deletion-slot' });
-  page.append(banner, form, forgotBlock(ctx, email), h('p', { class: 'signin-footnote', id: 'email-links-note' }, 'Links in confirmation and password-reset emails open GoLearn setup. ',
+  page.append(banner, form, ...(about ? [about] : []), forgotBlock(ctx, email), h('p', { class: 'signin-footnote', id: 'email-links-note' }, 'Links in confirmation and password-reset emails open GoLearn setup. ',
     links.setup ? h('a', { href: links.setup, id: 'link-setup-email' }, 'Open GoLearn setup') : null),
   h('p', { class: 'signin-footnote', id: 'legal-links' }, h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' · ', h('a', { href: '#/privacy', id: 'link-privacy-policy' }, 'Privacy Policy'), ' (drafts) · ', h('a', { href: '#/help', id: 'link-help' }, 'Help')));
   const repaintBanner = mountDeletionBanner(banner, ctx, view);

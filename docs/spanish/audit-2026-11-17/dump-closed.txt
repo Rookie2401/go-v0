@@ -1,0 +1,378 @@
+PROPN Dios	Dios:Gender=Masc,Number=Sing	God
+PROPN Ana	Ana:	Ana (name)
+PROPN Pedro	Pedro:	Pedro (name)
+PROPN Sam	Sam:	Sam (name)
+PROPN Nico	Nico:	Nico (name)
+PROPN San	San:	San, Saint (in names: San Pedro Sula)
+PRON yo	yo:Person=1,Number=Sing,Case=Nom,PronType=Prs	I
+PRON tú	tú:Person=2,Number=Sing,Case=Nom,PronType=Prs	you (informal)
+PRON él	él:Person=3,Number=Sing,Gender=Masc,PronType=Prs	he, him
+PRON nosotros	nosotros:Person=1,Number=Plur,Gender=Masc,Case=Nom,PronType=Prs	we
+PRON nos	nos:Person=1,Number=Plur,Case=Acc,Dat,PronType=Prs	us (clitic)
+PRON se	se:PronType=Prs	oneself (reflexive clitic)
+PRON qué	qué:PronType=Int	what
+ADV cómo	cómo:PronType=Int	how
+PRON aquel	aquel:Gender=Masc,Number=Sing,PronType=Dem ; aquella:Gender=Fem,Number=Sing,PronType=Dem ; aquello:Number=Sing,PronType=Dem ; aquellos:Gender=Masc,Number=Plur,PronType=Dem ; aquellas:Gender=Fem,Number=Plur,PronType=Dem	that one
+DET el	el:Gender=Masc,Number=Sing,Definite=Def,PronType=Art	the
+DET la	la:Gender=Fem,Number=Sing,Definite=Def,PronType=Art	the
+DET los	los:Gender=Masc,Number=Plur,Definite=Def,PronType=Art	the
+DET las	las:Gender=Fem,Number=Plur,Definite=Def,PronType=Art	the
+DET un	un:Gender=Masc,Number=Sing,Definite=Ind,PronType=Art	a, an
+DET una	una:Gender=Fem,Number=Sing,Definite=Ind,PronType=Art	a, an
+DET unos	unos:Gender=Masc,Number=Plur,Definite=Ind,PronType=Art	some
+DET unas	unas:Gender=Fem,Number=Plur,Definite=Ind,PronType=Art	some
+DET mi	mi:Number=Sing,Poss=Yes ; mis:Number=Plur,Poss=Yes	my
+DET su	su:Number=Sing,Poss=Yes ; sus:Number=Plur,Poss=Yes	his/her/their
+DET nuestro	nuestro:Gender=Masc,Number=Sing,Poss=Yes ; nuestros:Gender=Masc,Number=Plur,Poss=Yes ; nuestra:Gender=Fem,Number=Sing,Poss=Yes ; nuestras:Gender=Fem,Number=Plur,Poss=Yes	our
+DET todo	todo:Gender=Masc,Number=Sing ; toda:Gender=Fem,Number=Sing ; todos:Gender=Masc,Number=Plur ; todas:Gender=Fem,Number=Plur	all, every
+ADV no	no:Polarity=Neg	not
+ADV ahora	ahora:	now
+ADV también	también:	also
+ADV bien	bien:	well
+INTJ sí	sí:	yes
+INTJ hola	hola:	hello
+INTJ gracias	gracias:	thank you
+ADP a	a:	to, at (personal a)
+ADP al	al:	to the (a + el)
+ADP del	del:	of the (de + el)
+ADP en	en:	in, on
+ADP con	con:	with
+ADP por	por:	by, for
+ADP para	para:	for, in order to
+ADP de	de:	of, from
+CONJ y	y:	and
+CONJ pero	pero:	but
+CONJ mas	mas:	but (literary)
+SCONJ si	si:	if
+SCONJ que	que:	that
+SCONJ porque	porque:	because, for
+SCONJ cuando	cuando:	when
+NUM uno	uno:Gender=Masc,Number=Sing	one
+NUM dos	dos:	two
+NUM tres	tres:	three
+NUM cuatro	cuatro:	four
+NUM cinco	cinco:	five
+NUM seis	seis:	six
+NUM siete	siete:	seven
+NUM ocho	ocho:	eight
+NUM nueve	nueve:	nine
+NUM diez	diez:	ten
+NUM doce	doce:	twelve
+NUM veinte	veinte:	twenty
+NUM treinta	treinta:	thirty
+PRON ella	ella:Person=3,Number=Sing,Gender=Fem,Case=Nom,PronType=Prs	she, her
+PRON usted	usted:Person=3,Number=Sing,Case=Nom,PronType=Prs,Polite=Form	you (formal, singular)
+PRON ustedes	ustedes:Person=3,Number=Plur,Case=Nom,PronType=Prs,Polite=Form	you (plural)
+PRON ellos	ellos:Person=3,Number=Plur,Gender=Masc,Case=Nom,PronType=Prs	they (masculine or mixed)
+PRON ellas	ellas:Person=3,Number=Plur,Gender=Fem,Case=Nom,PronType=Prs	they (feminine)
+PRON nosotras	nosotras:Person=1,Number=Plur,Gender=Fem,Case=Nom,PronType=Prs	we (feminine)
+PRON vos	vos:Person=2,Number=Sing,Case=Nom,PronType=Prs	you (informal singular, voseo)
+PRON vosotros	vosotros:Person=2,Number=Plur,Gender=Masc,Case=Nom,PronType=Prs	you all (informal; Spain)
+PRON vosotras	vosotras:Person=2,Number=Plur,Gender=Fem,Case=Nom,PronType=Prs	you all, feminine (informal; Spain)
+PRON mí	mí:Person=1,Number=Sing,Case=Obl,PronType=Prs	me (after a preposition)
+PRON ti	ti:Person=2,Number=Sing,Case=Obl,PronType=Prs	you (after a preposition)
+PRON conmigo	conmigo:Person=1,Number=Sing,Case=Obl,PronType=Prs	with me
+PRON contigo	contigo:Person=2,Number=Sing,Case=Obl,PronType=Prs	with you
+PRON consigo	consigo:Person=3,Number=Sing,Case=Obl,PronType=Prs	with himself, herself, themselves
+PRON me	me:Person=1,Number=Sing,Case=Acc,Dat,PronType=Prs	me (object pronoun)
+PRON te	te:Person=2,Number=Sing,Case=Acc,Dat,PronType=Prs	you (object pronoun)
+PRON lo	lo:Person=3,Number=Sing,Gender=Masc,Case=Acc,PronType=Prs	him, it (object pronoun); the (before an adjective)
+PRON le	le:Person=3,Number=Sing,Case=Dat,PronType=Prs	him, her, you (indirect object)
+PRON les	les:Person=3,Number=Plur,Case=Dat,PronType=Prs	them, you all (indirect object)
+PRON os	os:Person=2,Number=Plur,Case=Acc,Dat,PronType=Prs	you all (object pronoun; Spain)
+PRON algo	algo:Number=Sing	something
+PRON alguien	alguien:Number=Sing	someone
+PRON nadie	nadie:Number=Sing,Polarity=Neg	nobody
+PRON nada	nada:Number=Sing,Polarity=Neg	nothing
+PRON cualquiera	cualquiera:Number=Sing	anyone, any
+PRON quién	quién:PronType=Int,Number=Sing ; quiénes:PronType=Int,Number=Plur	who
+PRON cuál	cuál:PronType=Int,Number=Sing ; cuáles:PronType=Int,Number=Plur	which
+PRON quien	quien:PronType=Rel,Number=Sing ; quienes:PronType=Rel,Number=Plur	who, whom
+PRON cual	cual:PronType=Rel,Number=Sing ; cuales:PronType=Rel,Number=Plur	which (relative)
+DET tu	tu:Number=Sing,Poss=Yes ; tus:Number=Plur,Poss=Yes	your (informal)
+DET vuestro	vuestro:Gender=Masc,Number=Sing,Poss=Yes ; vuestra:Gender=Fem,Number=Sing,Poss=Yes ; vuestros:Gender=Masc,Number=Plur,Poss=Yes ; vuestras:Gender=Fem,Number=Plur,Poss=Yes	your (of you all; Spain)
+DET mío	mío:Gender=Masc,Number=Sing,Poss=Yes ; mía:Gender=Fem,Number=Sing,Poss=Yes ; míos:Gender=Masc,Number=Plur,Poss=Yes ; mías:Gender=Fem,Number=Plur,Poss=Yes	mine, of mine
+DET tuyo	tuyo:Gender=Masc,Number=Sing,Poss=Yes ; tuya:Gender=Fem,Number=Sing,Poss=Yes ; tuyos:Gender=Masc,Number=Plur,Poss=Yes ; tuyas:Gender=Fem,Number=Plur,Poss=Yes	yours (informal)
+DET suyo	suyo:Gender=Masc,Number=Sing,Poss=Yes ; suya:Gender=Fem,Number=Sing,Poss=Yes ; suyos:Gender=Masc,Number=Plur,Poss=Yes ; suyas:Gender=Fem,Number=Plur,Poss=Yes	his, hers, theirs, yours (formal)
+DET este	este:Gender=Masc,Number=Sing,PronType=Dem ; esta:Gender=Fem,Number=Sing,PronType=Dem ; esto:Number=Sing,PronType=Dem ; estos:Gender=Masc,Number=Plur,PronType=Dem ; estas:Gender=Fem,Number=Plur,PronType=Dem	this
+DET ese	ese:Gender=Masc,Number=Sing,PronType=Dem ; esa:Gender=Fem,Number=Sing,PronType=Dem ; eso:Number=Sing,PronType=Dem ; esos:Gender=Masc,Number=Plur,PronType=Dem ; esas:Gender=Fem,Number=Plur,PronType=Dem	that
+DET cada	cada:	each, every
+DET otro	otro:Gender=Masc,Number=Sing ; otra:Gender=Fem,Number=Sing ; otros:Gender=Masc,Number=Plur ; otras:Gender=Fem,Number=Plur	other, another
+DET varios	varios:Gender=Masc,Number=Plur ; varias:Gender=Fem,Number=Plur	several
+DET ambos	ambos:Gender=Masc,Number=Plur ; ambas:Gender=Fem,Number=Plur	both
+DET alguno	alguno:Gender=Masc,Number=Sing ; algún:Gender=Masc,Number=Sing ; alguna:Gender=Fem,Number=Sing ; algunos:Gender=Masc,Number=Plur ; algunas:Gender=Fem,Number=Plur	some, any
+DET ninguno	ninguno:Gender=Masc,Number=Sing,Polarity=Neg ; ningún:Gender=Masc,Number=Sing,Polarity=Neg ; ninguna:Gender=Fem,Number=Sing,Polarity=Neg ; ningunos:Gender=Masc,Number=Plur,Polarity=Neg ; ningunas:Gender=Fem,Number=Plur,Polarity=Neg	no, none
+DET cualquier	cualquier:Number=Sing	any
+DET mucho	mucho:Gender=Masc,Number=Sing ; mucha:Gender=Fem,Number=Sing ; muchos:Gender=Masc,Number=Plur ; muchas:Gender=Fem,Number=Plur	much, a lot of
+DET poco	poco:Gender=Masc,Number=Sing ; poca:Gender=Fem,Number=Sing ; pocos:Gender=Masc,Number=Plur ; pocas:Gender=Fem,Number=Plur	little, not much
+DET tanto	tanto:Gender=Masc,Number=Sing ; tanta:Gender=Fem,Number=Sing ; tantos:Gender=Masc,Number=Plur ; tantas:Gender=Fem,Number=Plur	so much, as much
+DET demasiado	demasiado:Gender=Masc,Number=Sing ; demasiada:Gender=Fem,Number=Sing ; demasiados:Gender=Masc,Number=Plur ; demasiadas:Gender=Fem,Number=Plur	too much
+DET bastante	bastante:Number=Sing ; bastantes:Number=Plur	enough, quite a lot of
+DET cuánto	cuánto:Gender=Masc,Number=Sing,PronType=Int ; cuánta:Gender=Fem,Number=Sing,PronType=Int ; cuántos:Gender=Masc,Number=Plur,PronType=Int ; cuántas:Gender=Fem,Number=Plur,PronType=Int	how much, how many
+DET cuyo	cuyo:Gender=Masc,Number=Sing,PronType=Rel ; cuya:Gender=Fem,Number=Sing,PronType=Rel ; cuyos:Gender=Masc,Number=Plur,PronType=Rel ; cuyas:Gender=Fem,Number=Plur,PronType=Rel	whose
+ADV dónde	dónde:PronType=Int	where
+ADV cuándo	cuándo:PronType=Int	when
+ADV adónde	adónde:PronType=Int	where to
+ADV donde	donde:PronType=Rel	where
+ADP ante	ante:	before, in front of
+ADP bajo	bajo:	under
+ADP contra	contra:	against
+ADP desde	desde:	from, since
+ADP durante	durante:	during
+ADP entre	entre:	between, among
+ADP hacia	hacia:	towards
+ADP hasta	hasta:	until, up to; even
+ADP mediante	mediante:	by means of
+ADP según	según:	according to
+ADP sin	sin:	without
+ADP sobre	sobre:	on, above; about
+ADP tras	tras:	after, behind
+ADP excepto	excepto:	except
+ADP salvo	salvo:	except, save
+CONJ e	e:	and (used before i- and hi-)
+CONJ o	o:	or
+CONJ u	u:	or (used before o- and ho-)
+CONJ ni	ni:	nor, not even
+CONJ sino	sino:	but, rather
+CONJ pues	pues:	since, well then
+SCONJ aunque	aunque:	although, even if
+SCONJ mientras	mientras:	while
+SCONJ como	como:	as, like; since
+NUM cero	cero:	zero
+NUM once	once:	eleven
+NUM trece	trece:	thirteen
+NUM catorce	catorce:	fourteen
+NUM quince	quince:	fifteen
+NUM dieciséis	dieciséis:	sixteen
+NUM diecisiete	diecisiete:	seventeen
+NUM dieciocho	dieciocho:	eighteen
+NUM diecinueve	diecinueve:	nineteen
+NUM veintiuno	veintiuno:Gender=Masc,Number=Sing ; veintiún:Gender=Masc,Number=Sing ; veintiuna:Gender=Fem,Number=Sing	twenty-one
+NUM veintidós	veintidós:	twenty-two
+NUM veintitrés	veintitrés:	twenty-three
+NUM veinticuatro	veinticuatro:	twenty-four
+NUM veinticinco	veinticinco:	twenty-five
+NUM veintiséis	veintiséis:	twenty-six
+NUM veintisiete	veintisiete:	twenty-seven
+NUM veintiocho	veintiocho:	twenty-eight
+NUM veintinueve	veintinueve:	twenty-nine
+NUM cuarenta	cuarenta:	forty
+NUM cincuenta	cincuenta:	fifty
+NUM sesenta	sesenta:	sixty
+NUM setenta	setenta:	seventy
+NUM ochenta	ochenta:	eighty
+NUM noventa	noventa:	ninety
+NUM cien	cien:	a hundred (before a noun)
+NUM ciento	ciento:	a hundred (before a smaller number)
+NUM doscientos	doscientos:Gender=Masc,Number=Plur ; doscientas:Gender=Fem,Number=Plur	two hundred
+NUM trescientos	trescientos:Gender=Masc,Number=Plur ; trescientas:Gender=Fem,Number=Plur	three hundred
+NUM cuatrocientos	cuatrocientos:Gender=Masc,Number=Plur ; cuatrocientas:Gender=Fem,Number=Plur	four hundred
+NUM quinientos	quinientos:Gender=Masc,Number=Plur ; quinientas:Gender=Fem,Number=Plur	five hundred
+NUM seiscientos	seiscientos:Gender=Masc,Number=Plur ; seiscientas:Gender=Fem,Number=Plur	six hundred
+NUM setecientos	setecientos:Gender=Masc,Number=Plur ; setecientas:Gender=Fem,Number=Plur	seven hundred
+NUM ochocientos	ochocientos:Gender=Masc,Number=Plur ; ochocientas:Gender=Fem,Number=Plur	eight hundred
+NUM novecientos	novecientos:Gender=Masc,Number=Plur ; novecientas:Gender=Fem,Number=Plur	nine hundred
+NUM mil	mil:	a thousand
+NUM millón	millón:	a million
+ADV aquí	aquí:	here
+ADV allí	allí:	there
+ADV allá	allá:	over there
+ADV acá	acá:	here (this side)
+ADV ahí	ahí:	there (near you)
+ADV hoy	hoy:	today
+ADV ayer	ayer:	yesterday
+ADV mañana	mañana:	tomorrow
+ADV anteayer	anteayer:	the day before yesterday
+ADV anoche	anoche:	last night
+ADV siempre	siempre:	always
+ADV nunca	nunca:	never
+ADV jamás	jamás:	never, ever
+ADV ya	ya:	already; now
+ADV todavía	todavía:	still, yet
+ADV aún	aún:	still, yet
+ADV apenas	apenas:	hardly, barely
+ADV muy	muy:	very
+ADV más	más:	more
+ADV menos	menos:	less
+ADV tan	tan:	so, as
+ADV tanto	tanto:	so much, so often
+ADV casi	casi:	almost
+ADV solo	solo:	only
+ADV sólo	sólo:	only
+ADV tampoco	tampoco:	neither, not either
+ADV además	además:	besides, also
+ADV antes	antes:	before
+ADV después	después:	after, afterwards
+ADV luego	luego:	then, later
+ADV pronto	pronto:	soon
+ADV tarde	tarde:	late
+ADV temprano	temprano:	early
+ADV mal	mal:	badly
+ADV mejor	mejor:	better
+ADV peor	peor:	worse
+ADV así	así:	like this, thus
+ADV quizá	quizá:	perhaps
+ADV quizás	quizás:	perhaps
+ADV acaso	acaso:	perhaps
+ADV cerca	cerca:	near
+ADV lejos	lejos:	far
+ADV dentro	dentro:	inside
+ADV fuera	fuera:	outside
+ADV arriba	arriba:	up, above
+ADV abajo	abajo:	down, below
+ADV delante	delante:	in front
+ADV detrás	detrás:	behind
+ADV encima	encima:	on top, above
+ADV debajo	debajo:	underneath
+ADV adelante	adelante:	forward, ahead
+ADV atrás	atrás:	back, behind
+ADV afuera	afuera:	outside
+ADV adentro	adentro:	inside
+ADV enfrente	enfrente:	opposite, in front
+ADV alrededor	alrededor:	around
+ADV junto	junto:	together; next to
+ADV aparte	aparte:	apart, aside
+ADV despacio	despacio:	slowly
+ADV deprisa	deprisa:	quickly
+ADV mucho	mucho:	a lot, much
+ADV poco	poco:	little, not much
+ADV demasiado	demasiado:	too much
+ADV bastante	bastante:	quite, enough
+PROPN Jesús	Jesús:	Jesus
+PROPN Cristo	Cristo:	Christ
+PROPN Satanás	Satanás:	Satan
+PROPN Marta	Marta:	Marta (name)
+PROPN Luis	Luis:	Luis (name)
+PROPN Tomás	Tomás:	Tomás (name)
+PROPN Karla	Karla:	Karla (name)
+PROPN Daniel	Daniel:	Daniel (name)
+PROPN Marvin	Marvin:	Marvin (name)
+PROPN Elena	Elena:	Elena (name)
+PROPN Kevin	Kevin:	Kevin (name)
+PROPN Carlos	Carlos:	Carlos (name)
+PROPN Mario	Mario:	Mario (name)
+PROPN Sofía	Sofía:	Sofía (name)
+PROPN Miguel	Miguel:	Miguel (name)
+PROPN Jorge	Jorge:	Jorge (name)
+PROPN Sara	Sara:	Sara (name)
+PROPN Diego	Diego:	Diego (name)
+PROPN Andrés	Andrés:	Andrés (name)
+PROPN Rafael	Rafael:	Rafael (name)
+PROPN Gabriel	Gabriel:	Gabriel (name)
+PROPN Isabel	Isabel:	Isabel (name)
+PROPN Carmen	Carmen:	Carmen (name)
+PROPN Roberto	Roberto:	Roberto (name)
+PROPN Ricardo	Ricardo:	Ricardo (name)
+PROPN Fernando	Fernando:	Fernando (name)
+PROPN Manuel	Manuel:	Manuel (name)
+PROPN Antonio	Antonio:	Antonio (name)
+PROPN Francisco	Francisco:	Francisco (name)
+PROPN Laura	Laura:	Laura (name)
+PROPN Juana	Juana:	Juana (name)
+PROPN María	María:	Mary; Maria
+PROPN José	José:	Joseph; José
+PROPN Juan	Juan:	John; Juan
+PROPN Pablo	Pablo:	Paul; Pablo
+PROPN Mateo	Mateo:	Matthew; Mateo
+PROPN Moisés	Moisés:	Moses
+PROPN Abraham	Abraham:	Abraham
+PROPN David	David:	David
+PROPN Honduras	Honduras:	Honduras
+PROPN Tegucigalpa	Tegucigalpa:	Tegucigalpa, the capital of Honduras
+PROPN Guatemala	Guatemala:	Guatemala
+PROPN México	México:	Mexico
+PROPN España	España:	Spain
+PROPN Nicaragua	Nicaragua:	Nicaragua
+PROPN Panamá	Panamá:	Panama
+PROPN Colombia	Colombia:	Colombia
+PROPN Argentina	Argentina:	Argentina
+PROPN Cuba	Cuba:	Cuba
+PROPN Perú	Perú:	Peru
+PROPN Chile	Chile:	Chile
+PROPN Venezuela	Venezuela:	Venezuela
+PROPN Ecuador	Ecuador:	Ecuador
+PROPN Bolivia	Bolivia:	Bolivia
+PROPN Jerusalén	Jerusalén:	Jerusalem
+PROPN Egipto	Egipto:	Egypt
+PROPN Israel	Israel:	Israel
+PROPN Roma	Roma:	Rome
+PROPN Belén	Belén:	Bethlehem
+PROPN Galilea	Galilea:	Galilee
+PROPN Europa	Europa:	Europe
+PROPN América	América:	America
+PROPN África	África:	Africa
+PROPN Asia	Asia:	Asia
+PROPN Augusto	Augusto:	Augusto (name)
+PROPN Eugenia	Eugenia:	Eugenia (name)
+PROPN Liduvina	Liduvina:	Liduvina (name)
+PROPN Mauricio	Mauricio:	Mauricio (name)
+PROPN Mauricia	Mauricia:	Mauricia (name)
+PROPN Rosario	Rosario:	Rosario (name)
+PROPN Teodoro	Teodoro:	Teodoro (name)
+PROPN Florentina	Florentina:	Florentina (name)
+PROPN Nela	Nela:	Nela (name)
+PROPN Meñique	Meñique:	Meñique (name, the hero of Martí's tale)
+PROPN Garduña	Garduña:	Garduña (name)
+PROPN Lucas	Lucas:	Lucas (name)
+PROPN Alonso	Alonso:	Alonso (name)
+PROPN Pishi	Pishi:	Pishi (name, a fish in a story)
+PROPN Ratnakara	Ratnakara:	Ratnakara (name)
+PROPN Sringeri	Sringeri:	Sringeri (name)
+PROPN Tharu	Tharu:	Tharu (the Tharu people)
+PROPN CERN	CERN:	the European nuclear research laboratory
+PROPN WWW	WWW:	the World Wide Web
+PROPN Tam	Tam:	Tam (name)
+PROPN Rehman	Rehman:	Rehman (name)
+PROPN Jehová	Jehová:	Jehovah
+PROPN Saúl	Saúl:	Saul
+PROPN Celipín	Celipín:	Celipín (name)
+PROPN Lili	Lili:	Lili (name)
+PROPN Frasquita	Frasquita:	Frasquita (name)
+PROPN Toñuelo	Toñuelo:	Toñuelo (name)
+PROPN Boseth	Boseth:	Boseth (name)
+PROPN Mephi	Mephi:	Mephi (name)
+PROPN Aram	Aram:	Aram
+PROPN Lehem	Lehem:	Lehem (name)
+PROPN D	D:	D. (abbreviation for don)
+PROPN P	P:	P. (abbreviation)
+PROPN Pro	Pro:	Pro (name in a text)
+INTJ adiós	adiós:	goodbye
+INTJ ojalá	ojalá:	I hope so; if only
+INTJ ay	ay:	oh, ouch
+INTJ ah	ah:	ah
+INTJ oh	oh:	oh
+INTJ eh	eh:	hey; eh
+INTJ amén	amén:	amen
+INTJ aleluya	aleluya:	hallelujah
+PROPN Wilmer	Wilmer:	Wilmer (name)
+PROPN Yesenia	Yesenia:	Yesenia (name)
+PROPN Chepe	Chepe:	Chepe (name; a short form of José)
+PROPN Idalia	Idalia:	Idalia (name)
+PROPN Mercedes	Mercedes:	Mercedes (name)
+PROPN Comayagua	Comayagua:	Comayagua (city and department of Honduras)
+PROPN Copán	Copán:	Copán (department of Honduras; the Maya site Copán Ruinas)
+PROPN Roatán	Roatán:	Roatán (largest of the Bay Islands, Honduras)
+PROPN Yojoa	Yojoa:	Yojoa (Lake Yojoa, Honduras)
+PROPN Choluteca	Choluteca:	Choluteca (city, department and river of Honduras)
+PROPN Olancho	Olancho:	Olancho (department of Honduras)
+PROPN Picacho	Picacho:	Picacho (hill above Tegucigalpa)
+PROPN Morazán	Morazán:	Morazán (Francisco Morazán, Central American statesman)
+PROPN Siguatepeque	Siguatepeque:	Siguatepeque (city of Honduras)
+PROPN Danlí	Danlí:	Danlí (city of Honduras)
+PROPN Trujillo	Trujillo:	Trujillo (city of Honduras)
+PROPN Omoa	Omoa:	Omoa (town of Honduras)
+PROPN Intibucá	Intibucá:	Intibucá (department of Honduras)
+PROPN Yoro	Yoro:	Yoro (department of Honduras)
+PROPN Garífuna	Garífuna:	Garífuna (the Garífuna people of the Honduran coast)
+PROPN Cadejo	Cadejo:	Cadejo (a spirit dog of Central American legend)
+PROPN Llorona	Llorona:	Llorona (the Weeping Woman of the legend)
+PROPN Sisimite	Sisimite:	Sisimite (a hairy giant of the mountains in legend)
+PROPN Mildred	Mildred:	Mildred (name)
+PROPN Eulalia	Eulalia:	Eulalia (name)
+PROPN Chavela	Chavela:	Chavela (name; a short form of Isabel)
+PROPN Marisol	Marisol:	Marisol (name)
+ADV ahorita	ahorita:	right now, in a moment (informal)
+ADV enseguida	enseguida:	at once, right away
+ADV entonces	entonces:	then, so
+ADV cuanto	cuanto:	as much as
+PROPN Sula	Sula:	Sula (as in San Pedro Sula, a city in Honduras)

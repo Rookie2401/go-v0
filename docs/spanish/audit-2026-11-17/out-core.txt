@@ -1,0 +1,37 @@
+es: 295 everyday words checked; 167 are not in the word list (57 %)
+  missing: aun incluso cabe versus vía ello quienquiera sendos demás ajeno sexto séptimo octavo noveno décimo docena par tercio doble triple billón bus camión televisor radio internet pantalla contraseña red programa sistema caso gusto ruido fila dulce charco presupuesto ministro conferencia prensa inflación oposición inversión educación cifra desempleo alcaldía fondo medida investigación situación información organización población relación condición atención voluntad dignidad conciencia tentación deudor igualdad colonia municipio departamento alcalde diputado ayuno goma maje púchica milpa champa güirro macizo bolo vaya término crisis régimen carácter águila orden cura guía cometa llama dicho crear preferir recomendar producir reducir introducir exigir recoger vencer averiguar fijar librar cobrar arrancar arruinar investigar resultar madrugar advertir comportar perjudicar botar santificar acontecer desarrollar funcionar considerar realizar añadir enamorar duchar afeitar peinar conversar charlar parquear chequear imprimir satisfacer prever componer disponer convenir prevenir intervenir contener sostener retener entretener predecir contradecir maldecir atraer distraer económico cuidadoso simple probable grave fraternal increíble terrible horrible agradable responsable interesante aburrido divertido chiquito poquito flaco disculpe bienvenido felicidades vale oye mira
+  held: quizás acaso jamás apenas casi demasiado bastante pronto todavía entonces luego mientras durante hacia contra según salvo excepto aunque sino pues además tampoco también sobre tras ante bajo mediante esto eso aquello conmigo contigo consigo cualquiera alguien nadie algo nada ambos varios cierto tal mismo propio mitad medio computadora celular teléfono correo mensaje página cosa poder mal bien este canción nación ser humano derecho libertad paz barrio aldea presidente gobierno policía ejército iglesia pastor culto oración ofrenda diezmo bautismo pisto cipote catracho baleada pulpería chele chamba cheque frente capital corte cerca bota vista hecho puesto platicar regresar manejar estacionar necesitar posible importante cansado enojado nervioso tranquilo bonito lindo feo guapo gordo delgado alto joven viejo nuevo hola adiós gracias perdón salud ojalá bueno claro usted ustedes vos vosotros
+  para: para/ADP
+  nada: nada/PRON
+  entre: entre/ADP
+  sobre: sobre/ADP
+  este: este/DET
+  como: como/SCONJ
+  bajo: bajo/ADP, bajo/ADJ
+  salvo: salvo/ADP, salvo/ADJ
+  mal: mal/ADV
+  poder: poder/VERB
+  ser: ser/AUX
+  caso: —
+  gusto: —
+  cerca: cerca/ADV
+  corte: corte/NOUN
+  capital: capital/NOUN
+  la: la/DET
+  los: los/DET
+  las: las/DET
+  lo: lo/PRON
+  se: se/PRON
+  que: que/SCONJ
+  sí: sí/INTJ
+  una: una/DET
+  aquel: aquel/PRON
+  medio: medio/ADJ
+  bien: bien/ADV
+  haber: haber/AUX
+  deber: deber/VERB
+  bota: bota/NOUN
+  llama: —
+  cura: —
+  frente: frente/NOUN
+  papa: papa/NOUN

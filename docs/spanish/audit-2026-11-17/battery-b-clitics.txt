@@ -1,0 +1,129 @@
+# B. Clitics, voseo, vosotros, regional
+# enclitics
+es | Dámelo. | Dámelo
+es | Dímelo ahora. | Dímelo
+es | Díselo a tu madre. | Díselo
+es | Cómpratelo. | Cómpratelo
+es | Vámonos ya. | Vámonos
+es | Voy a sentarme aquí. | sentarme
+es | Quiere sentarse. | sentarse
+es | Está lavándose las manos. | lavándose
+es | Estoy diciéndoselo. | diciéndoselo
+es | Quiero hacerlo. | hacerlo
+es | Voy a verla mañana. | verla
+es | Levántate. | Levántate
+es | Póntelo. | Póntelo
+es | Dime la verdad. | Dime
+es | Dale el libro. | Dale
+es | Hazlo ahora. | Hazlo
+es | Ponlo en la mesa. | Ponlo
+es | Tráigamelo, por favor. | Tráigamelo
+es | Siéntense, por favor. | Siéntense
+es | Cállate. | Cállate
+es | Vete de aquí. | Vete
+es | Idos de aquí. | Idos
+es | Démosle gracias a Dios. | Démosle
+es | Hay que decírselo. | decírselo
+es | No puedo creerlo. | creerlo
+es | Ayúdame. | Ayúdame
+es | Perdónanos nuestras deudas. | Perdónanos
+es | Escúchame bien. | Escúchame
+es | Decime la verdad. | Decime
+es | Andá a la pulpería. | Andá
+es | Sentate aquí. | Sentate
+es | Mirame. | Mirame
+es | Dame pisto. | Dame
+es | Fijate bien. | Fijate
+es | Callate, cipote. | Callate
+es | Vení, ayudame. | ayudame
+es | Quedate con nosotros. | Quedate
+es | Acordate de mí. | Acordate
+# proclitics
+es | Se lo di ayer. | Se
+es | Se lo di ayer. | lo
+es | Me lo dijo mi hermano. | Me
+es | No te lo voy a decir. | te
+es | Le dije la verdad a María. | Le
+es | Les di el dinero. | Les
+es | La vi ayer en el mercado. | La
+es | Los compré en la pulpería. | Los
+es | Las conozco bien. | Las
+es | Le vi ayer. | Le
+es | La dije que viniera. | La
+es | Lo bueno es que llegó. | Lo
+es | No lo sé. | lo
+es | Se levanta a las seis. | Se
+es | Se me olvidó el libro. | Se
+es | Se me olvidó el libro. | me
+es | Nos vemos mañana. | Nos
+es | Te quiero mucho. | Te
+es | Vosotros os levantáis tarde. | os
+# voseo
+es | Vos tenés razón. | Vos
+es | Vos sos mi amigo. | sos
+es | ¿Vos querés café? | querés
+es | ¿De dónde sos? | sos
+es | ¿Qué hacés? | hacés
+es | ¿Cómo estás vos? | vos
+es | Vos podés hacerlo. | podés
+es | ¿Vos venís mañana? | venís
+es | No te preocupés. | preocupés
+es | No me digás. | digás
+es | Vos sabés que te quiero. | sabés
+es | ¿Para dónde vas vos? | vas
+es | Tomá, es para vos. | Tomá
+# ustedes / vosotros
+es | Ustedes son mis amigos. | Ustedes
+es | Ustedes tienen razón. | tienen
+es | Vosotros tenéis razón. | tenéis
+es | Vosotros sois la sal de la tierra. | sois
+es | Amad a vuestros enemigos. | Amad
+es | Amad a vuestros enemigos. | vuestros
+es | ¿Qué queréis? | queréis
+es | Os digo la verdad. | Os
+es | ¿Habéis comido? | Habéis
+es | Venid a mí todos. | Venid
+es | No temáis. | temáis
+es | Id y haced discípulos. | haced
+es | ¿Estáis listos? | Estáis
+# Honduran / Central American vocabulary
+es | No tengo pisto. | pisto
+es | El cipote juega en la calle. | cipote
+es | Voy a la pulpería. | pulpería
+es | ¿Qué onda, maje? | maje
+es | Soy catracho. | catracho
+es | Todo cheque. | cheque
+es | Quiero una baleada. | baleada
+es | Hay un chele en el bus. | chele
+es | Ahorita vengo. | Ahorita
+es | Cuesta veinte lempiras. | lempiras
+es | ¡Púchica! | Púchica
+es | Está bien macizo. | macizo
+es | Tengo goma. | goma
+es | La güirra está llorando. | güirra
+es | Vamos en la rapidito. | rapidito
+es | Se fue a mojado. | mojado
+es | Dame un fresco. | fresco
+es | Andá con Dios. | Andá
+es | El bus va para San Pedro Sula. | bus
+es | Los chigüines juegan. | chigüines
+es | Vaya pues. | Vaya
+es | Es bien pinta. | pinta
+es | Comimos tajadas con pollo. | tajadas
+es | Hace un calor del diablo, vos. | vos
+es | Mi papá trabaja en la milpa. | milpa
+es | Me cae mal ese jodido. | jodido
+es | ¡Qué chilero! | chilero
+es | Deme una champa. | champa
+es | Vive en una colonia. | colonia
+es | Voy a agarrar un taxi colectivo. | colectivo
+# Peninsular words still recognised
+es | Tengo un ordenador nuevo. | ordenador
+es | Quiero zumo de naranja. | zumo
+es | Vale, nos vemos. | Vale
+es | ¿Tenéis hambre, tíos? | tíos
+es | Voy a coger el autobús. | coger
+es | Conduzco un coche. | coche
+es | He perdido el móvil. | móvil
+es | Las patatas están fritas. | patatas
+es | Mola mucho. | Mola

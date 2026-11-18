@@ -1,0 +1,642 @@
+es | Buenos días, Sam.
+es | Hola, Ana.
+es | Hoy estoy cansado.
+es | ¿Y vos?
+es | Yo estoy muy cansada.
+es | Hoy voy a trabajar en la tarde.
+es | Aquí tenés café.
+es | Me gusta el café, gracias.
+es | De nada.
+es | ¿Tenés agua también?
+es | Sí, aquí tenés agua.
+es | Sam, aquí está mi amiga.
+es | Hola.
+es | ¿Cómo te llamás?
+es | Mi nombre es Karla.
+es | Mucho gusto, Sam.
+es | Mucho gusto, Karla.
+es | Ana es mi amiga.
+es | Hoy voy con Ana a la clínica.
+es | En la tarde estoy en la escuela.
+es | ¿Y vos, Sam?
+es | ¿Dónde vivís?
+es | Aquí, en la casa de doña Marta.
+es | ¡Qué bueno!
+es | ¿Te gusta Honduras?
+es | Sí, me gusta mucho.
+es | ¿Y te gusta el café?
+es | Sí, ¡y me gusta el pan!
+es | Doña Marta vende pan en el mercado.
+es | Sí, me gusta el pan de doña Marta.
+es | Aquí está doña Marta.
+es | Hola, doña Marta.
+es | ¿Cómo está usted?
+es | Bien, gracias, Sam.
+es | ¿Y vos?
+es | Estoy bien, gracias.
+es | Aquí tengo pan y arroz.
+es | ¿Qué querés?
+es | Quiero pan, por favor.
+es | Aquí está el pan.
+es | Gracias, doña Marta.
+es | De nada.
+es | Sam, el señor se llama Mario.
+es | Hola.
+es | ¿Cómo se llama usted?
+es | Mi nombre es Sam.
+es | Mucho gusto, Sam.
+es | Mi nombre es Mario.
+es | Mucho gusto, señor Mario.
+es | ¿Habla usted español?
+es | Sí, señor, hablo español.
+es | ¡Qué bueno!
+es | En mi casa se habla español.
+es | Sam vive en mi casa.
+es | Hoy en la tarde voy a la iglesia.
+es | Yo también voy a la iglesia.
+es | Sam, ¿vas con nosotros?
+es | Sí, voy con ustedes.
+es | Yo voy con mi hermana.
+es | Mi casa es tu casa, Sam.
+es | Gracias, doña Marta.
+es | Me gusta mucho Honduras.
+es | Hoy escribo sobre mi primera semana en Honduras.
+es | El lunes fue mi primer día en la casa de doña Marta.
+es | Todo es diferente: la comida, la gente, la lluvia y el idioma.
+es | Mi vida aquí es diferente.
+es | La casa es diferente.
+es | Cuando llegué, no entendí nada.
+es | Doña Marta habló mucho, y yo miré a doña Marta.
+es | Sam, ¿querés café o agua?
+es | Café, gracias, doña Marta.
+es | Entonces, aquí estás en tu casa.
+es | Anoche cené con la familia.
+es | Terminé de cenar muy cansado, pero feliz.
+es | El idioma es difícil.
+es | Hay muchas palabras nuevas.
+es | Hay mucho que no entiendo.
+es | Luis es maestro, y Luis me ayuda.
+es | Luis, tengo una pregunta.
+es | ¿Qué quiere decir "ahorita"?
+es | Quiere decir "en un momento".
+es | ¿Y "luego"?
+es | "Luego" quiere decir "después".
+es | Ahora entiendo.
+es | ¡Qué difícil!
+es | Si tenés una pregunta, hacela.
+es | Claro que es difícil, pero vas a aprender.
+es | Hago preguntas todos los días.
+es | Luis o Ana me ayuda cuando hablo mal.
+es | Hablo con doña Marta, y ella dice: "Seguí, Sam, seguí."
+es | Es fácil hablar con ella, porque ella me ayuda.
+es | Doña Marta cocina como mi mamá.
+es | Aquí me siento como en mi casa.
+es | Quiero aprender el idioma.
+es | Hablo como un cipote: poco y mal.
+es | Un día fui a la pulpería con Nico.
+es | Nico es mi amigo.
+es | Buenos días, señora.
+es | ¿Cuánto cuesta el pan?
+es | Cuesta cinco lempiras.
+es | Dame dos, por favor.
+es | ¿Nada más?
+es | Nada más, gracias.
+es | Sam, hablás bien.
+es | Hablo poco, pero hablo.
+es | Aquí me gustan los frijoles, el arroz, el plátano y la tortilla.
+es | Tomo café y bebo agua.
+es | Ana, Luis y Nico son mis amigos.
+es | Ellos me ayudan mucho.
+es | El sábado caminé al centro con Ana.
+es | Allí hablé con una señora.
+es | La señora vendió pan, y yo compré pan.
+es | Sam, tengo un regalo para vos.
+es | Es un libro pequeño de palabras.
+es | ¡Gracias, Ana!
+es | ¿Es posible leer ahora?
+es | Claro, pero primero tomá café.
+es | Está bien.
+es | Tomo café y leo.
+es | El domingo fue el último día de la semana.
+es | Fuimos a la iglesia.
+es | Después, doña Marta cocinó frijoles o pollo.
+es | Cenamos todos.
+es | Hoy aprendí una palabra nueva: pulpería.
+es | No es fácil, pero es fácil hacer amigos aquí.
+es | Si llueve, me quedo en la casa.
+es | Si hace sol, voy al centro.
+es | Cuando llega el viento y el frío del invierno, quiero estar con doña Marta.
+es | Después de la lluvia, hay sol y hay menos frío.
+es | Ayer escribí a mi familia sobre el viaje al mar.
+es | Quiero volver al mar y seguir con mis visitas.
+es | Es posible, claro.
+es | Escribo esto en el último momento del domingo.
+es | La última noche de la semana, doña Marta oró por mí.
+es | Ya tengo una semana en Honduras, y tengo mucho que aprender.
+es | Mañana es lunes de nuevo, y voy a trabajar con el equipo.
+es | Voy a visitar a una familia con el pastor y con Ana.
+es | Luis dice que el equipo es grande, y que todos necesitan ayuda.
+es | Yo también necesito ayuda, pero ahora tengo amigos y tengo paz.
+es | Quiero hablar más, escribir más y ayudar más.
+es | Gracias, Dios, por esta semana.
+es | Es sábado por la noche, y en la casa de doña Marta todos se preparan para el domingo.
+es | Nico se acuesta temprano.
+es | Doña Marta cepilla los zapatos de él.
+es | Ana y Karla llegan con el pan.
+es | —Nosotras llevamos el pan y el café al templo —dice Ana.
+es | Sam lee el grupo del equipo en su celular.
+es | Daniel mandó un correo.
+es | Mañana nos reunimos en el templo a las ocho y treinta.
+es | Hay una familia nueva, y quiero darles una buena bienvenida.
+es | Sam contesta: —Voy a asistir con Nico.
+es | Me voy a sentar con él.
+es | Sam se acuesta tarde, porque estudia el versículo de la semana.
+es | Es del capítulo tres de Juan.
+es | Doña Marta se levanta a las cinco.
+es | Se baña y se cepilla el pelo.
+es | Nico se despierta a las siete.
+es | —¡Levantate! —dice su abuela.
+es | Los dos salen de la casa.
+es | Caminan a la iglesia con Sam, Ana y Karla.
+es | La iglesia tiene un techo rojo y paredes blancas.
+es | La semana pasada llovió mucho.
+es | Un rayo cayó cerca de la iglesia, y el techo se rompió.
+es | Todos tuvimos un susto, pero no hubo peligro.
+es | Luis y Carlos arreglaron el techo el sábado.
+es | Ahora está bien.
+es | Antes del culto, en el patio, la gente se saluda.
+es | Los hombres se abrazan, y las mujeres se dan un beso.
+es | Un abrazo y un beso son la bienvenida de esta gente.
+es | —Buenos días, hermano Sam —dice el señor Mario—.
+es | Que Dios lo bendiga.
+es | El señor Mario abraza a Sam con mucho gusto.
+es | Ana y Karla se saludan con un abrazo.
+es | Una familia llega a la iglesia.
+es | El pastor Andrés la saluda: —Les damos la bienvenida.
+es | Gracias, pastor.
+es | Yo soy creyente, pero mi familia no.
+es | Hoy vienen conmigo.
+es | Sam presta su Biblia a Roberto.
+es | Roberto promete devolverla después del culto.
+es | La congregación se sienta.
+es | Hay mucha gente en el templo: hombres, mujeres y niños.
+es | Primero hay alabanza.
+es | La congregación canta, y Sam canta también.
+es | Después el pastor lee un versículo del capítulo tres.
+es | Todos lo leen.
+es | —Este versículo habla de cómo Dios ama a su gente —dice el pastor.
+es | Cuando el pastor predica, Nico escucha.
+es | El pastor habla con palabras fáciles.
+es | Hoy predica sobre una oveja perdida.
+es | Dice que Dios busca a todos.
+es | Después hay un momento para el diezmo y la ofrenda.
+es | Doña Marta pone su diezmo en la caja.
+es | El pastor explica que el diezmo es para agradecer a Dios.
+es | Cada familia da lo que puede.
+es | Después hay un testimonio.
+es | Marvin se levanta y habla a la congregación.
+es | Hace años, una noche de lluvia, perdí mi casa en una inundación.
+es | Hubo truenos, y un rayo cayó cerca.
+es | Después hubo un incendio.
+es | Yo gritaba, y mi familia lloraba.
+es | Escapamos a la iglesia.
+es | Los hermanos nos ofrecieron comida y camas.
+es | Yo no era creyente.
+es | Pero la iglesia me enseñó que Dios cuida a su gente.
+es | Hoy soy creyente, y quiero bautizarme en septiembre.
+es | Gracias a Dios y gracias a ustedes.
+es | El pastor responde: —Gracias, Marvin.
+es | El bautismo es para los que creen en Dios.
+es | Otros dos hermanos también quieren bautizarse.
+es | Hay tres bautismos en septiembre.
+es | —Voy a avisar en el grupo —dice el pastor—.
+es | Y mando un correo con el horario.
+es | Karla comparte una foto de la congregación en el celular.
+es | Cuando acaba el culto, la gente se despide, pero muchos se quedan en el patio.
+es | —Nosotras preparamos el café y el pan —dice Ana.
+es | Roberto habla con Sam.
+es | Le devuelvo su Biblia.
+es | Gracias.
+es | Mi esposa quiere asistir de nuevo.
+es | —Prometo asistir todos los domingos —dice la esposa de Roberto.
+es | El pastor abraza a Roberto.
+es | —Quiero dar mi testimonio en septiembre —dice Roberto—.
+es | Pero primero necesito aprender.
+es | —Gracias por tu testimonio, Marvin —dice el pastor—.
+es | El día del bautismo es una fiesta para todos.
+es | Voy a bautizar a los tres.
+es | Ana dice: —El pastor cumple cuarenta años en octubre.
+es | Vamos a celebrar.
+es | Los jóvenes se reúnen los martes, y los hermanos estudian la Biblia el miércoles.
+es | —¿Cuándo nos vemos de nuevo? —pregunta Sam.
+es | —El jueves nos reunimos con el equipo —responde Ana.
+es | Doña Marta está cansada.
+es | —Nosotras la acompañamos a la casa —dice Karla.
+es | Sam, Ana y Karla la acompañan.
+es | Nico va con ellos.
+es | Él también acompaña a su abuela.
+es | En la casa, Nico se despide de Sam con un abrazo.
+es | Doña Marta se despide con un beso.
+es | —Que Dios te bendiga, Sam —dice.
+es | Sam camina solo por la calle.
+es | Piensa en la bienvenida de esta gente y está feliz.
+es | El pastor predica muy bien.
+es | Esta noche Sam va a leer el capítulo tres de nuevo.
+es | Es jueves, y el grupo pequeño se reúne otra vez en la casa de doña Marta.
+es | Esta noche el pastor Mario quiere contar un cuento de Jesús.
+es | Sam lo va a traducir para su amigo Kevin, que habla otro idioma, pero primero lo escucha en español.
+es | Este cuento es muy conocido, pero no es fácil.
+es | Escuchen con cuidado, y después hablamos.
+es | Un día, un hombre que conocía la ley fue a hablar con Jesús.
+es | No quería aprender.
+es | Quería ver si Jesús sabía más que él.
+es | Maestro, ¿qué tengo que hacer para tener vida eterna?
+es | ¿Qué dice la ley?
+es | ¿Cómo la leés vos?
+es | Dice que debo amar a Dios con todo el corazón, y a mi vecino como a mí.
+es | Bien dicho.
+es | Hacé eso, y vas a vivir.
+es | Pero el hombre quería defender su opinión.
+es | Entonces preguntó otra cosa.
+es | ¿Y quién es mi vecino?
+es | Jesús no discutió con él.
+es | Contó un cuento.
+es | Un hombre bajaba por el camino de Jerusalén a Jericó.
+es | Era un camino lejano y peligroso, fuera de la ciudad, con cerros y pocos árboles.
+es | Había lugares donde los ladrones esperaban debajo de los árboles.
+es | De pronto salieron unos ladrones.
+es | Eran malvados.
+es | Le robaron todo, le pegaron mucho y le quebraron una pierna.
+es | Después se fueron, y lo dejaron encima de la tierra, casi sin vida.
+es | Nadie vio nada.
+es | El hombre estaba tan solo, con sed y con dolor.
+es | El sol estaba encima de él, y estaba debajo del sol sin agua.
+es | Tenía cortes por todo el cuerpo, y olía a sangre.
+es | No tenía culpa, y no merecía ese castigo.
+es | Los ladrones robaron su dinero, quebraron su paz y se fueron.
+es | Los pueblos pelean, y los vecinos pelean por el agua.
+es | Los que pegan no piensan en el dolor de otro.
+es | Los malvados no siempre se ven malvados.
+es | Pasó por ahí un sacerdote.
+es | Vio al hombre en el piso, pero no se detuvo.
+es | Se fue por el otro lado del camino, fuera del peligro, lejos del hombre.
+es | Poco después llegó otro hombre, que trabajaba en el templo.
+es | También lo vio, y también siguió su camino.
+es | Los dos tenían razones, y eran tan buenas como las nuestras.
+es | Quizás el sacerdote pensó: «Tengo que llegar temprano al templo».
+es | Esa fue una mentira.
+es | Cuando uno dice «no tengo tiempo», muchas veces miente.
+es | A veces uno se engaña con buenas razones.
+es | Es verdad.
+es | Yo una vez mentí así.
+es | Dije «no puedo», y era mentira.
+es | Me engañé yo sola.
+es | Las mentiras pequeñas también hacen mal.
+es | Después pasó otro hombre, de Samaria.
+es | Era extranjero.
+es | Los de Jerusalén lo rechazaban, y los de Samaria rechazaban a los de Jerusalén.
+es | Eran enemigos.
+es | Se odiaban, y a veces se peleaban.
+es | Pero este hombre vio al hombre y tuvo compasión.
+es | Fue hasta él despacio, para no hacerle más mal.
+es | Le puso aceite y vino en los cortes, y lo cubrió con su camisa.
+es | Lo puso encima de su animal, y lo llevó hasta un lugar para dormir.
+es | Anduvo despacio toda la noche, porque el hombre estaba muy débil.
+es | Dentro del lugar, lo cuidó con agua, pan y vino.
+es | Al otro día sacó dinero y habló con el señor del lugar: «Cuidalo bien.
+es | Si gastás más, yo te lo pago cuando vuelva».
+es | Miren: el extranjero, que era el enemigo, hizo lo que el sacerdote no hizo.
+es | No juró ayudar; ayudó.
+es | No mintió, y no pidió nada.
+es | Decime, ¿quién de los tres fue el vecino del hombre?
+es | El que tuvo compasión de él.
+es | Andá, entonces, y hacé como él.
+es | Ese es el cuento.
+es | El mandamiento más grande es amar a Dios y al vecino.
+es | Los mandamientos y los profetas dicen una sola cosa.
+es | Pero Jesús agrega algo: el vecino no es solo el que vive cerca.
+es | Es el que necesita de mí.
+es | Pastor, yo soy presidente de la comunidad, pero no soy juez.
+es | ¿Quién tiene la culpa en este cuento?
+es | ¿Solo los ladrones?
+es | ¿Y cuál es el castigo para el que pasa sin ayudar?
+es | Un juez daría el castigo a los ladrones.
+es | Pero la culpa de otros es no hacer nada.
+es | Los dos hombres que pasaron también robaron: robaron el tiempo del hombre.
+es | Y los mandamientos dicen: «No robes, no mientas, no jures, no engañes».
+es | Pero ningún mandamiento dice: «Parate y ayudá».
+es | Eso lo dice el amor.
+es | En la política también pasa esto.
+es | Muchos ciudadanos ven un problema y siguen su camino.
+es | Dicen: «Eso no depende de mí».
+es | Depende de cada uno.
+es | Los profetas ya hablaban de justicia.
+es | Un ciudadano tiene derechos, pero también tiene algo que hacer.
+es | Si votamos y después no actuamos, la justicia no existe solo con votos.
+es | Pastor, ¿y en una guerra?
+es | ¿También hay vecinos y enemigos?
+es | Mi amigo y yo nos peleamos ayer por el balón.
+es | Sí, Nico.
+es | En una guerra cada patria llama «enemigo» a la otra.
+es | Pero el que odia a su vecino no ama a Dios.
+es | Jesús nos enseña a ver primero a la persona.
+es | Esas cosas suceden hoy en muchos lugares.
+es | No hay que odiar a nadie.
+es | Muchas veces rechazamos a los extranjeros sin conocerlos.
+es | Yo sugiero que publiquemos este cuento en el periódico.
+es | Así lo leen personas de todas las religiones.
+es | Y propongo que votemos un día de ayuda para el pueblo.
+es | Cada ciudadano puede apoyar con su fuerza.
+es | Podemos convencer a la comunidad.
+es | La justicia no ocurre sola.
+es | Hay que actuar.
+es | Si más personas ayudan, la ayuda aumenta.
+es | Yo declaro que esa idea es muy buena.
+es | Yo no juro, pero prometo ayudar.
+es | En la elección que viene, cada voto va a decir qué pueblo queremos.
+es | Pastor, ¿y hoy?
+es | ¿Existen ladrones en el camino?
+es | Claro que sí, Nico.
+es | Pero a veces el ladrón no lleva nada en la mano.
+es | A veces es el dinero, o el trabajo.
+es | Dentro de nosotros hay algo que nos dice: «No es tu problema».
+es | Yo viví algo parecido.
+es | Hace un mes manejaba por el camino y vi a un joven.
+es | Su carro estaba fuera del camino.
+es | Él estaba debajo de un árbol, con la cara llena de sangre y una pierna quebrada.
+es | Alguien le pegó y se fue.
+es | ¿Y qué hiciste?
+es | Al comienzo no me detuve.
+es | Pensé en mi trabajo y en la hora.
+es | Pero después di la vuelta.
+es | Era tan joven que me dolió el corazón.
+es | Lo puse dentro de mi carro y lo llevé despacio al hospital.
+es | Yo no soy juez de nadie.
+es | Entonces usted fue el extranjero, Luis, y no el sacerdote.
+es | Casi fui el sacerdote.
+es | Por eso entiendo este cuento.
+es | Si ves a alguien en el camino con cortes, no esperés.
+es | Pará, ayudalo y llamá a alguien.
+es | Luis, te felicito.
+es | Me alegra tener un hermano así.
+es | Sam, si practicás con nosotros esta noche, vas a traducir bien la idea de «vecino» para Kevin.
+es | Es lo más importante del cuento.
+es | Esta semana quiero que hagamos algo.
+es | Vamos a ayunar un día y a dar la comida de ese día a una familia.
+es | Vamos a sacrificar una comida, y vamos a disfrutar de ver a esa familia contenta.
+es | El sacerdote de la misa del pueblo me dijo ayer lo que dice el pastor: el altar, la comunión con pan y vino y el sermón no sirven si el corazón no ayuda.
+es | El predicador de nuestra iglesia y el sacerdote dicen lo que dijeron los profetas.
+es | Padre celestial, Dios santo, poderoso y fiel, tu nombre es sagrado y bendito.
+es | Eres más poderoso que los malvados.
+es | Jesús, siervo fiel y cordero de Dios, tu cruz es la señal de tu amor divino.
+es | Tu promesa es eterna, y la profecía se cumple en ti.
+es | Que nuestra vida sea una adoración espiritual, y que tu nombre sea glorioso en este pueblo.
+es | En el nombre de Jesús.
+es | El parque de este pueblo del norte tiene hoy cuatro bancos, un árbol viejo y cinco pinos altos.
+es | Pero hace cien años no era un parque: era un campo de tierra, con un solo pino y un camino largo.
+es | Los vecinos cuentan que el cura plantó los primeros pinos con sus propias manos, y que era un hombre viejo, con una barba blanca y una voz muy fuerte.
+es | «El cura de la barba blanca era bueno —dice doña Mercedes—.
+es | Un día se atrevió a decirle al capitán que el campo era de todos.»
+es | —Así fue —prosiguió—.
+es | Y desde entonces nadie se atrevió a decir que el parque era de uno solo.
+es | El capitán era el jefe del pueblo, y tenía su despacho en una casa pintada de rojo, al lado del campo.
+es | Sin embargo, no era un hombre malo, y al cabo de un año dio la orden de plantar más árboles.
+es | Así empezó el parque: con un viejo, un jefe y unos árboles que crecían despacio.
+es | Pero la existencia de un parque no es cosa de un día.
+es | Al cabo de diez años, el viento llevaba las hojas por todo el camino.
+es | Las hojas eran largas y secas, y los niños las usaban para hacer escobas pequeñas.
+es | Por suerte, había buena agua, y el campo seco se puso verde.
+es | «Tuvimos suerte —dice doña Mercedes—.
+es | Con mala suerte, no habría pueblo.»
+es | Al cabo de otro tiempo, esa orden se cumplió, y el parque tuvo su primera casa pintada de blanco.
+es | La segunda casa fue pintada de azul por un maestro, y en ella estuvo el despacho de la escuela.
+es | Hoy esa casa sigue ahí, a merced del sol y de las lluvias, y la orden de cuidarla pasó de padres a hijos.
+es | Los años siguientes trajeron gente nueva.
+es | Primero llegó un inglés, un ingeniero que venía a hacer el tren, y se quedó dos años en una casa cerca del parque.
+es | El inglés hablaba poco español, pero observó todo con mucho cuidado, y escribió una carta larga.
+es | «El pueblo vive a merced de la lluvia —escribió—: si llueve poco, no hay comida, y si llueve mucho, el río se lleva los caminos.»
+es | También llegó un canario, un hombre de las islas Canarias, que abrió una tienda de carne y de pan en una esquina.
+es | El canario vendía carne de cerdo los sábados, y la gente se reunía a comprar y a hablar.
+es | Aquellas conversaciones eran la mejor manera de saber qué pasaba en el pueblo.
+es | «Con una conversación en la tienda del canario se sabía todo —cuenta una vecina—: quién se casaba, quién estaba enfermo, quién tenía carne esa semana.»
+es | El inglés observó que las mujeres eran las que mejor hablaban, y las que más oían.
+es | Un matrimonio joven abrió después la primera farmacia, y el marido era capaz de leer cuatro idiomas.
+es | El hijo de ese matrimonio, capaz de todo, fue más tarde el primer médico del pueblo.
+es | El matrimonio ayudaba a los enfermos sin pedir dinero, y la mujer era capaz de sanar con hierbas.
+es | Pero no todos eran tan buenos.
+es | Un señorito de la ciudad llegó con un carro nuevo y quiso comprar todo el parque.
+es | —¿Para qué querés tanta tierra? —le preguntó el viejo de la barba.
+es | —Bah, para nada —dijo el señorito—.
+es | Para conquistar el pueblo.
+es | —Conquistar un pueblo es imposible, hijo —prosiguió el viejo, con calma—.
+es | Un pueblo sólo se conquista cuando ya es tuyo.
+es | —¡Bah!
+es | Eso es imposible de creer —dijo el señorito.
+es | Pero se fue sin decir nada, y el parque siguió siendo de todos.
+es | —Ay, qué hombre tan malo —dijeron algunos—.
+es | Bah, ya se le pasará.
+es | Esa tarde nadie quiso hablar más, y sólo quedó el viento.
+es | En 1930 se construyó la escuela de la esquina, y con ella llegaron los primeros maestros.
+es | La portera de la escuela era una mujer resignada, y casi nunca hablaba.
+es | Pero guardaba en silencio todo lo que oía, y por eso los maestros le contaban sus problemas en el despacho.
+es | «La portera sabía más que todos los libros —dice un maestro viejo—.
+es | Su silencio era una creación, como una canción que nadie canta.»
+es | Una vecina decía que ella era tan resignada que era la mujer más feliz del pueblo.
+es | Nunca la oían decir una palabra mala, y su cara resignada era una señal de paz.
+es | Uno de esos maestros, don Ricardo, escribía versos por las noches, y los leía a los vecinos en el parque.
+es | Algunos decían que sus versos eran ridículos, porque hablaban de los pinos como si fueran personas.
+es | Nadie quería hacer el ridículo, y por eso casi nadie los leía en voz alta.
+es | —¡Ay, maestro! —le decían—.
+es | ¿Quién va a querer un árbol con nombre?
+es | Don Ricardo sonreía y prosiguió con sus versos, y un día escribió un libro grande.
+es | No era una novela ni un cuento, y el maestro le puso un nombre inventado: una nivola.
+es | «Una nivola es una obra de ficción —explicaba—, pero hecha con personas de verdad: el viejo, el capitán, la portera.»
+es | El libro habla de un ente extraño, mitad árbol y mitad hombre, que cuida el parque de noche.
+es | Ese ente de ficción habla con los vecinos, y casi siempre les dice lo contrario de lo que esperan.
+es | Los niños devoraban el libro en la escuela, y una niña quiso devorar todos los libros del maestro, y los devoró en una semana.
+es | Jugaban a ser él, y todos hacían lo contrario de lo que se les pedía.
+es | —Es lo contrario de la escuela —se reía el maestro.
+es | Un joven anarquista, llegado de la costa, leyó el libro con gozo.
+es | Dijo que el ente de don Ricardo era un anarquista también, porque no obedecía a nadie.
+es | El maestro contestó que no: que un anarquista no cree en la ficción, y que su figura era sólo una creación de papel.
+es | Con el tiempo, el parque tuvo también música.
+es | Un pianista que tocaba en el cine se sentaba los domingos bajo los árboles, y tocaba un piano viejo que le prestaban.
+es | El pianista no tenía casa propia, y vivía a merced de lo que le daban los vecinos.
+es | Sin embargo, su música daba tanto gozo que nadie lo dejaba solo.
+es | Sin embargo, el pianista nunca quiso otra casa, y tocaba hasta muy tarde.
+es | Una mujer de la ciudad, que estudiaba psicología, pasó tres semanas en el parque con un libro de psicología bajo el brazo.
+es | Escribió lo que veía, y dijo que la psicología de los pueblos pequeños era más fácil de lo que se pensaba.
+es | Observó que la existencia de la gente era dura, pero que la conversación la hacía más fácil.
+es | «La necesidad nos hace hablar —escribió—, y hablar nos hace pueblo.»
+es | Algunos se rieron: «Ay, esa señora quiere hacernos creer que somos brutos».
+es | Pero ella contestó con calma que los brutos no escriben versos ni inventan palabras.
+es | Pensaba, además, que era imposible conocer un pueblo sin escuchar a los brutos y a los que saben por igual.
+es | Esa fue una buena respuesta, y desde entonces todos la saludaban en el parque.
+es | Hoy el parque tiene cinco árboles, un banco nuevo y una historia que nadie ha escrito del todo.
+es | Doña Mercedes dice que la existencia del parque es una creación de todos los vecinos.
+es | Y don Ricardo, ya viejo, sigue escribiendo cada noche, con la esperanza de terminar su libro.
+es | «Cada pueblo es una nivola —dice—, una mezcla de lo que existe y de lo que se ha inventado.»
+es | Después de leer la historia del parque, Karla y Sam van a la biblioteca para buscar fotos antiguas.
+es | La biblioteca tiene varias computadoras, y todas están conectadas a internet.
+es | La bibliotecaria los mira sonriendo, con una mirada amable.
+es | —Aquí hay una colección de imágenes de todo el país —les dice—. Es una red de archivos, y el acceso es libre.
+es | —¿Millones de fotos? —pregunta Sam.
+es | —Millones, sí. Cualquiera puede buscar en la web y encontrar información sobre su pueblo.
+es | Karla se sienta frente a una computadora, y Sam se sienta a su lado, ante la pantalla.
+es | Escriben la dirección de la página y esperan.
+es | —Siquiera una foto del kiosco, por favor —dice Karla—. Aunque sea una sola.
+es | La primera imagen aparece en un instante: el parque de 1920, con una sola banca y un pino.
+es | —¡Genial! —dice Sam—. Hay incluso una foto del alcalde con su sombrero.
+es | Un pensamiento cruza la mente de Karla: la realidad de ayer está guardada en una pantalla de hoy.
+es | —El efecto de internet en la aldea es enorme —dice la bibliotecaria—. En otra ocasión, una niña encontró aquí una novela escrita por su abuelo.
+es | El domingo, el parque está lleno de gente, y hay un kiosco de estuco blanco en el centro.
+es | Enfrente del kiosco vende una señora yuca con chicharrón, y enfrente de ella hay un puesto de hilos de colores.
+es | La señora del puesto es sorda, pero todos la entienden, y todos le dicen «mi reina».
+es | Sam les cuenta a unos niños las adivinanzas que aprendió en el mercado.
+es | —«Oro parece, plata no es» —dice, y se pone colorado—. ¿Quién adivina?
+es | —¡Enseguida! —grita una niña—. El plátano. Pero ahora vos, Sam, adiviná esta: «Soy agua, pero no me mojo».
+es | —No tengo entendederas para tanto —se ríe Sam—. Voy a descifrarla en casa.
+es | —Es la cascada, mijo —le dice un viejo muy sabio que pasa por ahí—. La respuesta siempre está enfrente, pero uno no la ve.
+es | —Mijo, yo conocí a un rey que le daba un enigma a cada noble, y los cortesanos se reían de los que no podían descifrarlo —sigue el viejo.
+es | —Pero un enigma no hace a nadie indigno —termina—. Solo enseña a esperar.
+es | Cerca del kiosco, una pareja joven se saca fotos para su boda.
+es | Sam piensa que esa foto, en cien años, estará también en una computadora de la biblioteca.
+es | Una cooperativa de mujeres del pueblo vende dulces en la puerta, y el pisto es para la escuela.
+es | Una ardilla sube por el pino del kiosco y mira a los niños con su cabecita inclinada.
+es | Los hilos de colores brillantes y el estuco blanco del kiosco dan al parque un aspecto alegre.
+es | En verano, los árboles del parque dan frutos, y los niños los recogen del suelo.
+es | Cuarenta familias pasan la noche en un albergue después de la crecida del río
+es | Sur de Honduras, 14 de octubre.
+es | Después de tres días de lluvia, el río subió el lunes por la noche y entró en las casas de una aldea del sur del país.
+es | Según los vecinos, el agua llegó casi sin avisar.
+es | «Fue de repente», dijo Marta Reyes, de cincuenta y ocho años, que vive a cien pasos del río.
+es | «Yo estaba cocinando, y de repente el agua ya estaba en la cocina».
+es | Esa noche hubo relámpagos entre las nubes negras, y el río, agitado y profundo, se llevó techos y pedazos de camino.
+es | Ahora es un río profundo y callado, pero esa noche parecía otro.
+es | Nadie recuerda una noche con tantos relámpagos y tantas nubes.
+es | Un árbol grande cayó sobre el río, y la corriente lo empujó contra el puente.
+es | La corriente empujó también un carro, y dos hombres tuvieron que correr.
+es | Por la mañana, el alcalde dijo que no hubo muertos, pero que cuarenta familias se quedaron sin casa.
+es | Esas familias, que ahora llaman los damnificados, duermen en la escuela de la aldea, convertida en albergue.
+es | Las víctimas de la crecida son casi doscientas personas, y la mitad son niños.
+es | En el albergue, los voluntarios prepararon camas con cobijas prestadas, y las víctimas durmieron bajo techo.
+es | La respuesta de los vecinos fue rápida.
+es | Una multitud de personas llegó al albergue con ropa, comida y agua, y algunos traían cestas llenas de pan.
+es | Otros traían cestas con arroz, y las cestas se acabaron en una hora.
+es | «Nadie preguntó cuánto había que traer», contó una de las voluntarias.
+es | «Todos trabajaron con prisa, porque sabían que la noche venía otra vez».
+es | Con prisa llegaron también los maestros, y sin prisa se fueron los últimos voluntarios, ya de noche.
+es | Las donaciones llegan de varios pueblos, y los voluntarios las dan en una mesa larga delante de la escuela.
+es | Cada familia recibe comida, una botella de agua limpia y una cobija.
+es | Las donaciones de agua son las más importantes, porque el agua no es potable en ninguna casa.
+es | El agua de la aldea está llena de lodo, y las familias no pueden beber agua que no sea potable.
+es | El agua potable llega en un carro dos veces al día, y los voluntarios cuidan que alcance para todos.
+es | Luis tiene dieciséis años y llegó al albergue la primera noche, con su mamá, que es maestra.
+es | Esta es la entrevista que le hicimos mientras daba cobijas.
+es | ¿Qué hacés vos aquí, Luis?
+es | Ayudo con las donaciones.
+es | Mi mamá me dijo: «Vení, que hay mucho por hacer», y vine inmediatamente.
+es | ¿Y cuántas horas trabajás?
+es | Casi diez, porque hago doble trabajo: de mañana con las donaciones y de noche con los niños.
+es | ¿Y qué fue lo más difícil de esa noche?
+es | Ver el río.
+es | Las nubes se pusieron negras de repente, hubo relámpagos, y el río estaba agitado y profundo, como nunca lo había visto.
+es | Una ola empujó la casa de mi tío, y yo corrí con prisa hasta la calle para gritarle que saliera.
+es | Él salió, gracias a Dios, y hoy es una de las víctimas que duermen aquí.
+es | ¿Qué hacés cuando un niño llora de noche?
+es | Le doy agua, le canto algo, y espero.
+es | Algunos niños están inquietos porque les duele el estómago, y otros no tienen apetito.
+es | Entonces busco a la enfermera, porque sé que ella nos dijo que hay que llamarla inmediatamente.
+es | ¿Cómo te preparaste para esto?
+es | No me preparé, y nadie se prepara para una cosa así.
+es | Pero la preparación de los grandes ayuda: ellos saben qué hacer, y uno aprende mirando.
+es | ¿Y la gente, está de acuerdo con la ayuda que reciben?
+es | Sí, pero algunos se sienten mal por pedir, y hay que explicarles que no es mala cosa pedir en un momento así.
+es | Mi mamá dice que una ayuda que se da con cariño no necesita justificar nada.
+es | El alcalde atendió a este periódico en la puerta del albergue.
+es | ¿Cuál es su primer trabajo hoy, señor alcalde?
+es | Que nadie pase hambre ni frío.
+es | Hemos solicitado ayuda al gobierno y a las iglesias, y estamos esperando la respuesta.
+es | Los vecinos solicitaron cobijas y camas, y la respuesta llegó en dos días.
+es | Los vecinos solicitaron una reunión con el alcalde para el viernes.
+es | ¿Cuánto va a costar arreglar las casas?
+es | Todavía no tenemos un número claro, pero va a ser mucho dinero, y el trabajo va a durar meses.
+es | Mientras tanto, el albergue tiene un doble trabajo: dar techo a los damnificados y cuidar su salud.
+es | ¿Tiene usted algún mensaje para los vecinos?
+es | Sí: gracias.
+es | Esta ayuda no se puede justificar con palabras, y yo no lo voy a intentar.
+es | Es un compromiso de todos, y nadie debe quedar fuera.
+es | A los tres días llegó al albergue un equipo de salud, con la enfermera Ana y dos voluntarios.
+es | Ana atendió a los niños, revisó el agua y habló con las madres de la campaña que empieza esta semana.
+es | Después de un día largo, aceptó una entrevista.
+es | Esa entrevista fue la primera de la semana, y la hicimos en la cocina de la escuela.
+es | ¿Cuál es el mayor riesgo después de una crecida, Ana?
+es | Hay dos riesgos concretos.
+es | También hay otros riesgos concretos, pero esos dos son los más graves.
+es | El primero es el agua mala, que causa diarrea y dolor de estómago, sobre todo en los niños.
+es | La diarrea es peligrosa para los bebés, y un bebé con diarrea pierde el apetito.
+es | El segundo riesgo es el dengue, porque el agua que queda en el suelo es un criadero de zancudos.
+es | Toda agua que no corre es un criadero, y cada criadero puede dar muchos zancudos.
+es | ¿Cómo pasa el contagio?
+es | Los zancudos se alimentan de una persona enferma y después de una persona sana, y así pasa el contagio.
+es | Por eso la campaña pide sacar el agua de cualquier cosa donde se junte, porque toda agua que no corre es un criadero.
+es | Los voluntarios van de casa en casa con la campaña, y yo explico cómo se hace.
+es | Para los voluntarios el trabajo es doble: explicar la campaña y volver a explicarla.
+es | ¿Qué le aconseja usted a una familia en el albergue?
+es | Les aconsejo tomar sólo agua con cloro o agua de botella, y lavarse las manos antes de comer.
+es | Eso mismo les aconsejo a las madres que se quedan en casa.
+es | El cloro es barato, y un poco de cloro en cada botella limpia el agua.
+es | Es un consejo fácil, pero la gente no está acostumbrada a pensar en eso cuando acaba de perder su casa.
+es | Los niños se acostumbran más rápido que los grandes, y a veces ellos enseñan a los padres.
+es | Hay que acostumbrarse otra vez a lavar las manos, y a mirar cada semana dónde se junta el agua.
+es | ¿Qué señales deben preocupar a las madres?
+es | Fiebre alta, pérdida de apetito y dolor fuerte de estómago.
+es | Si los niños están inquietos, no quieren comer y tienen la piel caliente, hay que llevarlos inmediatamente a la clínica.
+es | Los bebés inquietos son una señal, y una madre que mira bien lo nota antes que nadie.
+es | Ana dio tres consejos concretos a las madres, y todos eran fáciles de recordar.
+es | No hay que esperar al día siguiente: hay que ir inmediatamente.
+es | ¿Tiene el equipo todo lo necesario para tantos enfermos?
+es | La preparación nunca es bastante, pero tenemos un compromiso con estas familias.
+es | Nuestro compromiso es visitar el albergue cada mañana, y la clínica de la aldea va a abrir otra vez el jueves.
+es | La preparación del equipo empezó antes de la lluvia, con una reunión y muchas ideas.
+es | Es difícil justificar un descanso cuando hay niños enfermos, y nadie lo pide.
+es | ¿Cómo ha visto usted a la gente en estos días?
+es | Cansada, pero con calma.
+es | Hay mucha tristeza, y a veces alguien llora, pero la gente se mueve lentamente, con cuidado, como quien se levanta después de una caída.
+es | Ayer una señora me dijo: «Perdí la casa, pero no perdí a mi familia».
+es | Esa frase me acompañó toda la tarde, y me ayudó a trabajar lentamente, sin perder la calma.
+es | El albergue sigue recibiendo ayuda: comida que no se dañe, agua potable, cobijas y ropa para niños.
+es | Quien quiera ayudar puede llevar sus donaciones a la escuela cualquier día antes de las cinco de la tarde.
+es | El alcalde recuerda que las donaciones se dan a todos los damnificados, sin dejar a nadie.
+es | Mientras escribimos esta nota, la lluvia ha parado, y el río, que hace tres días estaba agitado y enorme, vuelve lentamente a su lugar.
+es | En octubre es un río profundo, y nadie lo cruza hasta que baje el agua.
+es | Alrededor del albergue, los niños juegan otra vez en el patio.
+es | Alrededor de las cinco, los voluntarios cierran la mesa de donaciones, y alrededor de las seis llega la noche.
+es | Yesenia, Karla y Sam fueron voluntarios en el albergue durante una semana, y Yesenia escribió esta crónica.
+es | «El lunes llegamos con sacos de maíz y cobijas. El río había rodeado la cárcel del pueblo, y los presos, encerrados desde hacía días, fueron trasladados a la escuela.»
+es | «Un testigo contó al alcalde lo que había acontecido. Dijo que había visto el agua subir en la noche, y que no sintió miedo sino un temor callado, un espanto sin gritos.»
+es | «Quiso testificar ante todos, aunque estaba pálido y atormentaba a sus manos con un pañuelo. Su voz era un susurro, pero nadie lo ofendió ni lo interrumpió.»
+es | «Una señora, alarmada, preguntó si habría castigo para quien robara las cobijas. El alcalde contestó que en un desastre no hay capricho ni suspenso: hay que dar una mano, y no pedir nada.»
+es | «El martes, Karla encontró a un niño con una cadena de plástico en el cuello y una mirada de resplandor, como un pequeño sepulcro iluminado. Lo llevó a la mesa de los voluntarios y le dio un plato de sopa.»
+es | «Después de aquel encuentro, el niño recobró la tranquilidad y empezó a dibujar. El miércoles, los demás niños dibujaban con él.»
+es | «Yo les conté de la isla, y ellos dibujaron una tortuga carey, unos budiones, plantas marinas y un pez payaso amarillo escondido en una anémona. Un niño pintó una sombra enorme y dijo que era un tiburón, pero que no hacía daño.»
+es | «Otro dibujó un pez aguja arrojado sobre la arena, tendido y quieto, y una niña lo corrigió: —Las criaturas del mar no se arrojan; el mar las sostiene.»
+es | «A través del dibujo, muchos niños hablaron por primera vez de la noche de la creciente. Desde esa distancia, el miedo ya era un cuento que podían contar sin queja.»
+es | «Sam preparó con ellos una sopa sencilla, y una experta de la clínica les explicó cómo purificar el agua. Esa misma tarde, una artista de la capital pintó con los niños un mural sobre la puerta.»
+es | «Nada de esto es perfecto: faltan cobijas, falta luz y falta tiempo. Pero el servicio de cada día, la timidez de los niños que se vuelve confianza y la admirada paciencia de las voluntarias han formado una pequeña familia.»
+es | «En el corredor, la maestra rozó el hombro de una niña y le dijo que la literatura de este país también se escribe en los albergues.»
+es | «El sábado hubo un velorio por una señora envejecida que no resistió la humedad. El profe Wilmer, con humildad, dijo unas palabras sin discurso, y el pastor leyó que el que cree vivirá.»
+es | «Una científica de la universidad, que estudiaba las aguas, simplemente se quedó de pie con una vela. Prefería no hablar. La rareza de ese silencio brillaba más que cualquier frase.»
+es | «Los recorría un frío que no era del aire, y ardían las velas con una llama que parecía fantástica. Alguien dijo en voz baja: —Honremos a quien se fue con lo que nos queda: la pausa y la compañía.»
+es | «El domingo, cuando el río bajó, la gente volvió a sus casas con rumbo incierto, pero con sencilla esperanza. En el puerto de la ciudad, un experto en inundaciones dijo que las aguas del sur traerían otra vez la plata del café.»
+es | «El jueves llegó un barco desde Roatán con ayuda. Las mujeres garífunas cocinaron machuca con coco y una sopa de caracol para trescientas personas. Nadie quiso discursos; solo cucharas.»
+es | «Un joven que había hecho buceo en el arrecife bajó al río para rescatar unas cobijas, con la linterna plateada de su padre.»
+es | «Hubo miedo al contagio de la diarrea, pero el médico dijo que no se trataba de castigar a nadie ni de acusar a nadie, sino de hervir el agua.»
+es | «Los sepulcros del cementerio quedaron bajo el agua, y una vecina dijo, con una sábana en las manos, que ni siquiera la muerte se salvó del azote de la creciente.»
+es | «Sobre la puerta del albergue, el mural mostraba una flecha que señalaba hacia arriba, y la luz de la mañana brillaba sobre los colores recién pintados.»
+es | «Yo vislumbraba al volver a casa que la humildad es un oficio, y que se aprende sirviendo.»
+es | En el albergue, una voluntaria repasó con los niños la historia de los panes.
+es | —¿Quién señaló al muchacho de los panes? —Un discípulo lo señaló. Jesús repartió los panes y los peces, y la multitud se sentó a comer.
+es | —¿Qué hacían los que contendían con Jesús? —Los que contendían querían una señal. Jesús les habló del pan vivo, el pan viviente.
+es | —¿Qué es una bebida verdadera? —La que quita la sed para siempre. Los saciados no tienen hambre, y los que beben de Él no tienen sed.
+es | —¿Qué les escandaliza? —Les escandaliza que un hombre diga «yo soy el pan». Muchos recostaron la cabeza y se marcharon.

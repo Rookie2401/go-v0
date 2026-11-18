@@ -1,0 +1,5 @@
+verbs: 122 checked; 7 missing (6 %): producir resultar crear considerar realizar preferir duchar
+nouns: 140 checked; 12 missing (9 %): caso punto radio situación relación educación información condición programa sistema proyecto desarrollo
+adjectives: 71 checked; 9 missing (13 %): simple increíble terrible agradable interesante aburrido divertido famoso serio
+others: 58 checked; 2 missing (3 %): incluso aun
+TOTAL 391 checked; 30 missing (8 %)

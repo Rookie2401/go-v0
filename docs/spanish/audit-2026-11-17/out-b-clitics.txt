@@ -1,0 +1,204 @@
+«Dámelo» in "Dámelo." ⇒ dar / VERB / second person singular, imperative / g:Give! / 0.9 / C:enclitic-pronoun,double-object-pronouns,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to give, to give out ; to hand over
+    parts: dá: from dar, VERB ¦ me: indirect object pronoun ¦ lo: direct object pronoun
+«Dímelo» in "Dímelo ahora." ⇒ decir / VERB / second person singular, imperative / g:Say! / 0.9 / C:enclitic-pronoun,double-object-pronouns,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to say, to tell, to name, to mention ; to pronounce, sound out
+    parts: dí: from decir, VERB ¦ me: indirect object pronoun ¦ lo: direct object pronoun
+«Díselo» in "Díselo a tu madre." ⇒ decir / VERB / second person singular, imperative / g:Say! / 0.9 / C:enclitic-pronoun,double-object-pronouns,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to say, to tell, to name, to mention ; to pronounce, sound out
+    parts: dí: from decir, VERB ¦ se: indirect object pronoun ¦ lo: direct object pronoun
+«Cómpratelo» in "Cómpratelo." ⇒ comprar / VERB / second person singular, imperative / g:Buy! / 0.85 / C:enclitic-pronoun,double-object-pronouns,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to buy (to obtain in exchange of money or goods) ; to buy out
+    parts: cómpra: from comprar, VERB ¦ te: indirect object pronoun ¦ lo: direct object pronoun
+«Vámonos» in "Vámonos ya." ⇒ ir / VERB / first person plural, imperative / g:Let us go / 0.9 / C:enclitic-pronoun,form:Mood=Imp|Number=Plur|Person=1|VerbForm=Fin / S:the main word of the sentence / D:to go (away from speaker and listener) ; to be suitable or apt for its
+    parts: vámo: from ir, VERB ¦ nos: object pronoun
+«sentarme» in "Voy a sentarme aquí." ⇒ sentar / VERB / infinitive / g:to seat / 0.85 / C:enclitic-pronoun,ir-a-infinitive,form:VerbForm=Inf / P:ir a …=to be going to (do something) / S:the main word of the sentence / D:to seat ; to set, to establish, to lay
+    parts: sentar: VERB ¦ me: object pronoun
+«sentarse» in "Quiere sentarse." ⇒ sentar / VERB / infinitive / g:to seat / 0.85 / C:enclitic-pronoun,form:VerbForm=Inf / S:verb that completes “Quiere” / D:to seat ; to set, to establish, to lay
+    parts: sentar: VERB ¦ se: reflexive
+«lavándose» in "Está lavándose las manos." ⇒ lavar / VERB / gerund / g:to wash / 0.85 / C:enclitic-pronoun,estar-gerund,form:VerbForm=Ger / S:the main word of the sentence / D:to wash ; to wipe, clear (disgrace, doubt, etc.)
+    parts: lavándo: from lavar, VERB ¦ se: reflexive
+«diciéndoselo» in "Estoy diciéndoselo." ⇒ decir / VERB / gerund / g:to say / 0.9 / C:enclitic-pronoun,estar-gerund,double-object-pronouns,form:VerbForm=Ger / S:the main word of the sentence / D:to say, to tell, to name, to mention ; to pronounce, sound out
+    parts: diciéndo: from decir, VERB ¦ se: indirect object pronoun ¦ lo: direct object pronoun
+«hacerlo» in "Quiero hacerlo." ⇒ hacer / VERB / infinitive / g:to do / 0.85 / C:enclitic-pronoun,form:VerbForm=Inf / S:verb that completes “Quiero” / D:to do, perform, execute, carry out ; to do, perform, execute, carry ou
+    parts: hacer: VERB ¦ lo: direct object pronoun
+«verla» in "Voy a verla mañana." ⇒ ver / VERB / infinitive / g:to see / 0.85 / C:enclitic-pronoun,ir-a-infinitive,form:VerbForm=Inf / P:ir a …=to be going to (do something) / S:the main word of the sentence / D:to see, to spot ; to see, to look at, to view (perceive)
+    parts: ver: VERB ¦ la: direct object pronoun
+«Levántate» in "Levántate." ⇒ levantar / VERB / second person singular, imperative / g:Raise! / 0.85 / C:enclitic-pronoun,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to lift ; to raise; to put up
+    parts: levánta: from levantar, VERB ¦ te: object pronoun
+«Póntelo» in "Póntelo." ⇒ poner / VERB / second person singular, imperative / g:Put! / 0.9 / C:enclitic-pronoun,double-object-pronouns,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to put, to place (cause to assume a specified position) ; to write
+    parts: pón: from poner, VERB ¦ te: indirect object pronoun ¦ lo: direct object pronoun
+«Dime» in "Dime la verdad." ⇒ decir / VERB / second person singular, imperative / g:Say! / 0.9 / C:enclitic-pronoun,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to say, to tell, to name, to mention ; to pronounce, sound out
+    parts: di: from decir, VERB ¦ me: object pronoun
+«Dale» in "Dale el libro." ⇒ dar / VERB / second person singular, imperative / g:Give! / 0.9 / C:enclitic-pronoun,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to give, to give out ; to hand over
+    parts: da: from dar, VERB ¦ le: object pronoun
+«Hazlo» in "Hazlo ahora." ⇒ hacer / VERB / second person singular, imperative / g:Do! / 0.9 / C:enclitic-pronoun,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to do, perform, execute, carry out ; to do, perform, execute, carry ou
+    parts: haz: from hacer, VERB ¦ lo: direct object pronoun
+«Ponlo» in "Ponlo en la mesa." ⇒ poner / VERB / second person singular, imperative / g:Put! / 0.9 / C:enclitic-pronoun,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to put, to place (cause to assume a specified position) ; to write
+    parts: pon: from poner, VERB ¦ lo: direct object pronoun
+«Tráigamelo» in "Tráigamelo, por favor." ⇒ traer / VERB / third person singular, imperative (formal, usted) / g:Let him, her, or it bring / 0.9 / C:enclitic-pronoun,double-object-pronouns,form:Mood=Imp|Number=Sing|Person=3|Polite=Form|VerbForm=Fin / S:the main word of the sentence / D:to bring (in the sense of transport, for differences with llevar and e
+    parts: tráiga: from traer, VERB ¦ me: indirect object pronoun ¦ lo: direct object pronoun
+«Siéntense» in "Siéntense, por favor." ⇒ sentar / VERB / third person plural, imperative (formal, usted) / g:Let them seat / 0.85 / C:enclitic-pronoun,form:Mood=Imp|Number=Plur|Person=3|Polite=Form|VerbForm=Fin / S:the main word of the sentence / D:to seat ; to set, to establish, to lay
+    parts: siénten: from sentar, VERB ¦ se: reflexive
+«Cállate» in "Cállate." ⇒ callar / VERB / second person singular, imperative / g:Be quiet! / 0.85 / C:enclitic-pronoun,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to calm ; to be silent, to shut up
+    parts: cálla: from callar, VERB ¦ te: object pronoun
+«Vete» in "Vete de aquí." ⇒ ir / VERB / second person singular, imperative / g:Go! / 0.7 / also ver/VERB / C:enclitic-pronoun,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to go (away from speaker and listener) ; to be suitable or apt for its
+    parts: ve: from ir, VERB ¦ te: object pronoun
+«Idos» in "Idos de aquí." ⇒ ir / VERB / past participle, masculine plural / g:going / 0.7 / also ir/VERB / C:vosotros,form:Gender=Masc|Number=Plur|VerbForm=Part / D:to go (away from speaker and listener) ; to be suitable or apt for its
+«Démosle» in "Démosle gracias a Dios." ⇒ dar / VERB / first person plural, imperative / g:Let us give / 0.9 / C:enclitic-pronoun,form:Mood=Imp|Number=Plur|Person=1|VerbForm=Fin / S:the main word of the sentence / D:to give, to give out ; to hand over
+    parts: démos: from dar, VERB ¦ le: object pronoun
+«decírselo» in "Hay que decírselo." ⇒ decir / VERB / infinitive / g:to say / 0.9 / C:enclitic-pronoun,tener-que,double-object-pronouns,form:VerbForm=Inf / P:haber que …=one must (hay que) / S:verb that completes “Hay” / D:to say, to tell, to name, to mention ; to pronounce, sound out
+    parts: decír: from decir, VERB ¦ se: indirect object pronoun ¦ lo: direct object pronoun
+«creerlo» in "No puedo creerlo." ⇒ creer / VERB / infinitive / g:to believe / 0.85 / C:enclitic-pronoun,form:VerbForm=Inf / S:verb that completes “puedo” / D:to believe ; to think, to believe, to reckon, to be of the opinion
+    parts: creer: VERB ¦ lo: direct object pronoun
+«Ayúdame» in "Ayúdame." ⇒ ayudar / VERB / second person singular, imperative / g:Help! / 0.85 / C:enclitic-pronoun,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to help
+    parts: ayúda: from ayudar, VERB ¦ me: object pronoun
+«Perdónanos» in "Perdónanos nuestras deudas." ⇒ perdonar / VERB / second person singular, imperative / g:Forgive! / 0.85 / C:enclitic-pronoun,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to pardon, excuse, forgive
+    parts: perdóna: from perdonar, VERB ¦ nos: object pronoun
+«Escúchame» in "Escúchame bien." ⇒ escuchar / VERB / second person singular, imperative / g:Listen to! / 0.85 / C:enclitic-pronoun,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to listen to, to hear out ; to hear
+    parts: escúcha: from escuchar, VERB ¦ me: object pronoun
+«Decime» in "Decime la verdad." ⇒ decir / VERB / second person singular, imperative / g:Say! / 0.9 / C:enclitic-pronoun,voseo,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to say, to tell, to name, to mention ; to pronounce, sound out
+    parts: deci: from decir, VERB ¦ me: object pronoun
+    Variety: voseo.
+«Andá» in "Andá a la pulpería." ⇒ andar / VERB / second person singular, imperative / g:Walk! / 0.9 / C:voseo,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to walk, to go ; to amble, to travel
+    Variety: voseo.
+«Sentate» in "Sentate aquí." ⇒ sentar / VERB / second person singular, imperative / g:Seat! / 0.85 / C:enclitic-pronoun,voseo,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to seat ; to set, to establish, to lay
+    parts: senta: from sentar, VERB ¦ te: object pronoun
+    Variety: voseo.
+«Mirame» in "Mirame." ⇒ mirar / VERB / second person singular, imperative / g:Look at! / 0.85 / C:enclitic-pronoun,voseo,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to look at (to try to see, to pay attention to with one’s eyes) ; to w
+    parts: mira: from mirar, VERB ¦ me: object pronoun
+    Variety: voseo.
+«Dame» in "Dame pisto." ⇒ dar / VERB / second person singular, imperative / g:Give! / 0.9 / C:enclitic-pronoun,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to give, to give out ; to hand over
+    parts: da: from dar, VERB ¦ me: object pronoun
+«Fijate» in "Fijate bien." ⇒ fijatar / VERB / first person singular, present subjunctive / g:— / 0.35 UNCONF / also fijatar/VERB,fijatar/VERB,fijater/VERB / C:voseo / S:the main word of the sentence / D:to fix, fasten, set, establish, determine ; to determine, ascertain
+«Callate» in "Callate, cipote." ⇒ callar / VERB / second person singular, imperative / g:Be quiet! / 0.85 / C:enclitic-pronoun,voseo,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to calm ; to be silent, to shut up
+    parts: calla: from callar, VERB ¦ te: object pronoun
+    Variety: voseo.
+«ayudame» in "Vení, ayudame." ⇒ ayudar / VERB / second person singular, imperative / g:Help! / 0.85 / C:enclitic-pronoun,voseo,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:joined with “Vení” / D:to help
+    parts: ayuda: from ayudar, VERB ¦ me: object pronoun
+    Variety: voseo.
+«Quedate» in "Quedate con nosotros." ⇒ quedar / VERB / second person singular, imperative / g:Remain! / 0.85 / C:enclitic-pronoun,voseo,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to be (as a result of something), to end up ; to be situated; to be lo
+    parts: queda: from quedar, VERB ¦ te: object pronoun
+    Variety: voseo.
+«Acordate» in "Acordate de mí." ⇒ acordar / VERB / second person singular, imperative / g:Agree on! / 0.85 / C:enclitic-pronoun,voseo,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to agree ; to decide, arrange (plan)
+    parts: acorda: from acordar, VERB ¦ te: object pronoun
+    Variety: voseo.
+«Se» in "Se lo di ayer." ⇒ se / PRON /  / g:oneself (reflexive clitic) / 0.92 / C:double-object-pronouns,form:PronType=Prs / S:indirect object of “di” / D:A reflexive or reciprocal pronoun: oneself, himself, herself, itself, 
+«lo» in "Se lo di ayer." ⇒ lo / PRON / third person singular / g:him, it (object pronoun); the (before an adjective) / 0.92 / C:double-object-pronouns,form:Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs / S:direct object of “di” / D:neuter definite article used only before nominalized adjectives: the, 
+«Me» in "Me lo dijo mi hermano." ⇒ me / PRON / first person singular / g:me (object pronoun) / 0.92 / C:double-object-pronouns,form:Case=Acc,Dat|Number=Sing|Person=1|PronType=Prs / S:indirect object of “dijo” / D:Used as an emphatic pronoun or as an expletive. ; initialism of muerte
+«te» in "No te lo voy a decir." ⇒ te / PRON / second person singular / g:you (object pronoun) / 0.92 / C:double-object-pronouns,form:Case=Acc,Dat|Number=Sing|Person=2|PronType=Prs / S:indirect object of “decir” / D:yourself ; The name of the Latin script letter T/t.
+«Le» in "Le dije la verdad a María." ⇒ le / PRON / third person singular / g:him, her, you (indirect object) / 0.92 / C:form:Case=Dat|Number=Sing|Person=3|PronType=Prs / S:indirect object of “dije” / D:to him, for him; dative of él ; to her, for her; dative of ella
+«Les» in "Les di el dinero." ⇒ les / PRON / third person plural / g:them, you all (indirect object) / 0.92 / C:form:Case=Dat|Number=Plur|Person=3|PronType=Prs / S:indirect object of “di” / D:the (plural)
+«La» in "La vi ayer en el mercado." ⇒ la / DET / feminine singular / g:the / 0.92 / C:form:Definite=Def|Gender=Fem|Number=Sing|PronType=Art / S:direct object of “vi” / D:feminine singular definite article; the ; impersonal neuter pronoun (a
+«Los» in "Los compré en la pulpería." ⇒ los / DET / masculine plural / g:the / 0.92 / C:form:Definite=Def|Gender=Masc|Number=Plur|PronType=Art / S:direct object of “compré” / D:plural masculine or neuter pronoun
+«Las» in "Las conozco bien." ⇒ las / DET / feminine plural / g:the / 0.92 / C:form:Definite=Def|Gender=Fem|Number=Plur|PronType=Art / S:direct object of “conozco” / D:feminine plural definite article; the ; feminine plural pronoun
+«Le» in "Le vi ayer." ⇒ le / PRON / third person singular / g:him, her, you (indirect object) / 0.92 / C:form:Case=Dat|Number=Sing|Person=3|PronType=Prs / S:indirect object of “vi” / D:to him, for him; dative of él ; to her, for her; dative of ella
+«La» in "La dije que viniera." ⇒ la / DET / feminine singular / g:the / 0.92 / C:form:Definite=Def|Gender=Fem|Number=Sing|PronType=Art / S:direct object of “dije” / D:feminine singular definite article; the ; impersonal neuter pronoun (a
+«Lo» in "Lo bueno es que llegó." ⇒ lo / PRON / third person singular / g:him, it (object pronoun); the (before an adjective) / 0.92 / C:form:Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs / S:article or determiner of “bueno” / D:neuter definite article used only before nominalized adjectives: the, 
+«lo» in "No lo sé." ⇒ lo / PRON / third person singular / g:him, it (object pronoun); the (before an adjective) / 0.92 / C:form:Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs / S:direct object of “sé” / D:neuter definite article used only before nominalized adjectives: the, 
+«Se» in "Se levanta a las seis." ⇒ se / PRON /  / g:oneself (reflexive clitic) / 0.92 / C:se-impersonal,form:PronType=Prs / S:“se” with “levanta”, not a separate thing / D:A reflexive or reciprocal pronoun: oneself, himself, herself, itself, 
+«Se» in "Se me olvidó el libro." ⇒ se / PRON /  / g:oneself (reflexive clitic) / 0.92 / C:form:PronType=Prs / S:“se” with “olvidó”, not a separate thing / D:A reflexive or reciprocal pronoun: oneself, himself, herself, itself, 
+«me» in "Se me olvidó el libro." ⇒ me / PRON / first person singular / g:me (object pronoun) / 0.92 / C:form:Case=Acc,Dat|Number=Sing|Person=1|PronType=Prs / S:direct object of “olvidó” / D:Used as an emphatic pronoun or as an expletive. ; initialism of muerte
+«Nos» in "Nos vemos mañana." ⇒ nos / PRON / first person plural / g:us (clitic) / 0.92 / C:form:Case=Acc,Dat|Number=Plur|Person=1|PronType=Prs / S:direct object of “vemos” / D:first person (except in vocative, and in the oblique it requires a pre
+«Te» in "Te quiero mucho." ⇒ te / PRON / second person singular / g:you (object pronoun) / 0.92 / C:form:Case=Acc,Dat|Number=Sing|Person=2|PronType=Prs / S:direct object of “quiero” / D:yourself ; The name of the Latin script letter T/t.
+«os» in "Vosotros os levantáis tarde." ⇒ vosotros / PRON / second person plural / g:you all (informal; Spain) / 0.92 / C:vosotros,form:Case=Nom|Gender=Masc|Number=Plur|Person=2|PronType=Prs / S:subject of “levantáis” / D:you, you guys; second person plural personal pronoun
+    Variety: vosotros.
+«Vos» in "Vos tenés razón." ⇒ vos / PRON / second person singular / g:you (informal singular, voseo) / 0.92 / C:voseo,form:Case=Nom|Number=Sing|Person=2|PronType=Prs / S:subject of “tenés” / D:you, familiar form of the second-person singular pronoun ; an elevated
+    Variety: voseo.
+«sos» in "Vos sos mi amigo." ⇒ ser / AUX / second person singular, present indicative / g:You are / 0.9 / C:voseo,form:Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin / S:“to be” linking “amigo” to its subject / D:to be (essentially or identified as) ; to be (in the passive voice sen
+    Variety: voseo.
+«querés» in "¿Vos querés café?" ⇒ querer / VERB / second person singular, present indicative / g:You want / 0.9 / C:voseo,form:Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to desire, to want, to want to ; to love; to be fond of (usually used 
+    Variety: voseo.
+«sos» in "¿De dónde sos?" ⇒ ser / AUX / second person singular, present indicative / g:You are / 0.9 / C:voseo,form:Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to be (essentially or identified as) ; to be (in the passive voice sen
+    Variety: voseo.
+«hacés» in "¿Qué hacés?" ⇒ hacer / VERB / second person singular, present indicative / g:You do / 0.9 / C:voseo,form:Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to do, perform, execute, carry out ; to do, perform, execute, carry ou
+    Variety: voseo.
+«vos» in "¿Cómo estás vos?" ⇒ vos / PRON / second person singular / g:you (informal singular, voseo) / 0.92 / C:voseo,form:Case=Nom|Number=Sing|Person=2|PronType=Prs / S:the main word of the sentence / D:you, familiar form of the second-person singular pronoun ; an elevated
+    Variety: voseo.
+«podés» in "Vos podés hacerlo." ⇒ poder / VERB / second person singular, present indicative / g:You are able to / 0.9 / C:voseo,form:Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to be able to, can ; to be familiar with something, or with someone's 
+    Variety: voseo.
+«venís» in "¿Vos venís mañana?" ⇒ venir / VERB / second person singular, present indicative / g:You come / 0.7 / also venir/VERB / C:voseo,form:Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:Senses relating to literal movement. — to come (move closer to some lo
+    Variety: voseo.
+«preocupés» in "No te preocupés." ⇒ preocupar / VERB / second person singular, present subjunctive / g:to worry (preocuparse: to be worried) / 0.85 / C:voseo,form:Mood=Sub|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to worry, to concern, to trouble, to be worrisome to, to preoccupy ; t
+    Variety: voseo.
+«digás» in "No me digás." ⇒ decir / VERB / second person singular, present subjunctive / g:to say / 0.9 / C:voseo,form:Mood=Sub|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to say, to tell, to name, to mention ; to pronounce, sound out
+    Variety: voseo.
+«sabés» in "Vos sabés que te quiero." ⇒ saber / VERB / second person singular, present indicative / g:You know / 0.9 / C:voseo,form:Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to know, to understand (a fact) ; to know how to do something
+    Variety: voseo.
+«vas» in "¿Para dónde vas vos?" ⇒ ir / VERB / second person singular, present indicative / g:You go / 0.9 / C:form:Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to go (away from speaker and listener) ; to be suitable or apt for its
+«Tomá» in "Tomá, es para vos." ⇒ tomar / VERB / second person singular, imperative / g:Take! / 0.85 / C:voseo,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to take (put under one's physical or mental control, often in one's ha
+    Variety: voseo.
+«Ustedes» in "Ustedes son mis amigos." ⇒ ustedes / PRON / third person plural / g:you (plural) / 0.92 / C:form:Case=Nom|Number=Plur|Person=3|Polite=Form|PronType=Prs / S:subject of “amigos” / D:you (plural), you guys, y'all, yous, yinz, ye
+«tienen» in "Ustedes tienen razón." ⇒ tener / VERB / third person plural, present indicative / g:They have / 0.9 / C:form:Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin / P:tener razón=to be right / S:the main word of the sentence / D:to have; to possess ; to have; to possess; to be (a condition or quali
+«tenéis» in "Vosotros tenéis razón." ⇒ tener / VERB / second person plural, present indicative / g:You (plural) have / 0.9 / C:vosotros,form:Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin / P:tener razón=to be right / S:the main word of the sentence / D:to have; to possess ; to have; to possess; to be (a condition or quali
+    Variety: vosotros.
+«sois» in "Vosotros sois la sal de la tierra." ⇒ ser / AUX / second person plural, present indicative / g:You (plural) are / 0.9 / C:vosotros,form:Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin / S:“to be” linking “sal” to its subject / D:to be (essentially or identified as) ; to be (in the passive voice sen
+    Variety: vosotros.
+«Amad» in "Amad a vuestros enemigos." ⇒ amar / VERB / second person plural, imperative / g:Love! (plural) / 0.85 / C:vosotros,form:Mood=Imp|Number=Plur|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to love, have great affection for, care about ; to wish
+    Variety: vosotros.
+«vuestros» in "Amad a vuestros enemigos." ⇒ vuestro / DET / masculine plural / g:your (of you all; Spain) / 0.92 / C:vosotros,form:Gender=Masc|Number=Plur|Poss=Yes / S:article or determiner of “enemigos” / D:yours, your, to you ; yours
+    Variety: vosotros.
+«queréis» in "¿Qué queréis?" ⇒ querer / VERB / second person plural, present indicative / g:You (plural) want / 0.9 / C:vosotros,form:Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to desire, to want, to want to ; to love; to be fond of (usually used 
+    Variety: vosotros.
+«Os» in "Os digo la verdad." ⇒ os / PRON / second person plural / g:you all (object pronoun; Spain) / 0.92 / C:vosotros,form:Case=Acc,Dat|Number=Plur|Person=2|PronType=Prs / S:indirect object of “digo” / D:you, to you, for you; dative and accusative of vosotros ; alternative 
+    Variety: vosotros.
+«Habéis» in "¿Habéis comido?" ⇒ haber / AUX / second person plural, present indicative / g:You (plural) have / 0.9 / C:perfect-tense,vosotros,form:Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin / S:auxiliary of “comido” / D:to have; forms the perfect aspect ; to hold, to possess
+    Variety: vosotros.
+«Venid» in "Venid a mí todos." ⇒ venir / VERB / second person plural, imperative / g:Come! (plural) / 0.9 / C:vosotros,form:Mood=Imp|Number=Plur|Person=2|VerbForm=Fin / S:the main word of the sentence / D:Senses relating to literal movement. — to come (move closer to some lo
+    Variety: vosotros.
+«temáis» in "No temáis." ⇒ temer / VERB / second person plural, present subjunctive / g:to fear / 0.85 / C:vosotros,form:Mood=Sub|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to fear ; to dread
+    Variety: vosotros.
+«haced» in "Id y haced discípulos." ⇒ hacer / VERB / second person plural, imperative / g:Do! (plural) / 0.9 / C:vosotros,form:Mood=Imp|Number=Plur|Person=2|VerbForm=Fin / S:joined with “Id” / D:to do, perform, execute, carry out ; to do, perform, execute, carry ou
+    Variety: vosotros.
+«Estáis» in "¿Estáis listos?" ⇒ estar / AUX / second person plural, present indicative / g:You (plural) are (state / 0.9 / C:ser-estar-adjective,vosotros,form:Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin / S:“to be” linking “listos” to its subject / D:to be (have a temporary or permanent location in space) ; to be presen
+    Variety: vosotros.
+«pisto» in "No tengo pisto." ⇒ pisto / NOUN / masculine singular / g:money (informal); in Spain, a vegetable stew / 0.92 / C:form:Gender=Masc|Number=Sing / S:direct object of “tengo” / D:money ; hard liquor
+    Variety: es-CA.
+«cipote» in "El cipote juega en la calle." ⇒ cipote / NOUN / masculine singular / g:boy, kid; a vulgar word in Spain / 0.92 / C:form:Gender=Masc|Number=Sing / S:subject of “juega” / D:penis, cock ; youngster, kid, child, boy
+    Variety: es-HN.
+«pulpería» in "Voy a la pulpería." ⇒ pulpería / NOUN / feminine singular / g:small neighbourhood shop / 0.92 / C:form:Gender=Fem|Number=Sing / S:adverbial phrase of “Voy” / D:a small grocery store or convenience store ; a bar or tavern
+    Variety: es-CA.
+«maje» in "¿Qué onda, maje?" ⇒ majar / VERB / first person singular, present subjunctive / g:— / 0.35 UNCONF / also majar/VERB,majar/VERB,majer/VERB / S:the main word of the sentence / D:dude! (said to a man) ; idiot, stupid (said about a man)
+«catracho» in "Soy catracho." ⇒ catracho / NOUN / masculine singular / g:Honduran man (friendly, informal) / 0.92 / C:form:Gender=Masc|Number=Sing / S:the main word of the sentence / D:Honduran person ; a dish consisting of fried corn with beans and chees
+    Variety: es-HN.
+«cheque» in "Todo cheque." ⇒ cheque / NOUN / masculine singular / g:cheque / 0.92 / C:form:Gender=Masc|Number=Sing / S:the main word of the sentence / D:cheque, blank cheque ; checkmark
+«baleada» in "Quiero una baleada." ⇒ baleada / NOUN / feminine singular / g:Honduran snack: a folded flour tortilla with beans, cheese and cream / 0.92 / C:form:Gender=Fem|Number=Sing / S:direct object of “Quiero” / D:∅
+    Variety: es-HN.
+«chele» in "Hay un chele en el bus." ⇒ chele / NOUN / masculine singular / g:fair-skinned or fair-haired person (informal) / 0.92 / C:form:Gender=Masc|Number=Sing / S:direct object of “Hay” / D:sleep (in the corner of the eye) ; cent (currency)
+    Variety: es-CA.
+«Ahorita» in "Ahorita vengo." ⇒ ahorita / ADV /  / g:right now, in a moment (informal) / 0.92 / S:adverb of “vengo” / D:later ; earlier
+    Variety: es-419.
+«lempiras» in "Cuesta veinte lempiras." ⇒ lempira / NOUN / plural / g:lempira, the currency of Honduras / 0.85 / C:form:Number=Plur / S:direct object of “Cuesta” / D:lempira ; a department of Honduras
+    Variety: es-HN.
+«Púchica» in "¡Púchica!" ⇒ púchico / NOUN / feminine singular / g:— / 0.35 UNCONF / also púchica/NOUN,púchico/ADJ / S:the main word of the sentence / D:fudge: euphemistic form of puta
+«macizo» in "Está bien macizo." ⇒ macizar / VERB / first person singular, present indicative / g:— / 0.35 UNCONF / also macizer/VERB,macizir/VERB / D:solid ; massive, large
+«goma» in "Tengo goma." ⇒ gomo / NOUN / feminine singular / g:— / 0.35 UNCONF / also goma/NOUN,gomo/ADJ,gomar/VERB / S:direct object of “Tengo” / D:rubber (substance, material) — ellipsis of cinta de goma or goma elást
+«güirra» in "La güirra está llorando." ⇒ güirro / NOUN / feminine singular / g:— / 0.35 UNCONF / also güirra/NOUN,güirro/ADJ,güirrar/VERB / S:subject of “llorando” / D:∅
+«rapidito» in "Vamos en la rapidito." ⇒ rapidito / NOUN / masculine singular / g:small shared minibus / 0.92 / C:form:Gender=Masc|Number=Sing / S:adverbial phrase of “Vamos” / D:quickie (quick sex)
+    Variety: es-HN.
+«mojado» in "Se fue a mojado." ⇒ mojado / ADJ / masculine singular / g:wet / 0.92 / C:form:Gender=Masc|Number=Sing / S:adverbial phrase of “fue” / D:wet ; ellipsis of espalda mojada (“wetback”)
+«fresco» in "Dame un fresco." ⇒ fresco / ADJ / masculine singular / g:fresh; cool / 0.92 / C:form:Gender=Masc|Number=Sing / S:direct object of “Dame” / D:fresh ; cool (temperature)
+«Andá» in "Andá con Dios." ⇒ andar / VERB / second person singular, imperative / g:Walk! / 0.9 / C:voseo,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to walk, to go ; to amble, to travel
+    Variety: voseo.
+«bus» in "El bus va para San Pedro Sula." ⇒ — / — /  / g:— / 0 / D:clipping of autobús; bus ; bus
+«chigüines» in "Los chigüines juegan." ⇒ chigüín / NOUN / plural / g:— / 0.35 UNCONF / also chigüín/ADJ,chigüine/NOUN,chigüinar/VERB / S:subject of “juegan” / D:kid; child
+«Vaya» in "Vaya pues." ⇒ ir / VERB / first person singular, present subjunctive / g:to go / 0.7 / also ir/VERB,ir/VERB / C:form:Mood=Sub|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to go (away from speaker and listener) ; to be suitable or apt for its
+«pinta» in "Es bien pinta." ⇒ pintar / VERB / third person singular, present indicative / g:He, she, or it paints / 0.7 / also pintar/VERB / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin / S:joined with “bien” / D:to paint (to apply paint to) ; to paint (to create an image with paint
+«tajadas» in "Comimos tajadas con pollo." ⇒ tajada / NOUN / plural / g:slice / 0.85 / C:form:Number=Plur / S:direct object of “Comimos” / D:chop, slice (of meat) ; hoarseness
+«vos» in "Hace un calor del diablo, vos." ⇒ vos / PRON / second person singular / g:you (informal singular, voseo) / 0.92 / C:voseo,form:Case=Nom|Number=Sing|Person=2|PronType=Prs / S:renames “diablo” / D:you, familiar form of the second-person singular pronoun ; an elevated
+    Variety: voseo.
+«milpa» in "Mi papá trabaja en la milpa." ⇒ milpo / NOUN / feminine singular / g:— / 0.35 UNCONF / also milpa/NOUN,milpo/ADJ,milpar/VERB / S:adverbial phrase of “trabaja” / D:cornfield
+«jodido» in "Me cae mal ese jodido." ⇒ joder / VERB / past participle, masculine singular / g:— / 0.35 UNCONF / also jodir/VERB,jodidar/VERB,jodider/VERB / S:subject of “cae” / D:fucking, darned, crappy ; fucked, screwed
+«chilero» in "¡Qué chilero!" ⇒ chilerar / VERB / first person singular, present indicative / g:— / 0.35 UNCONF / also chilerer/VERB,chilerir/VERB / S:the main word of the sentence / D:cool, terrific
+«champa» in "Deme una champa." ⇒ champo / NOUN / feminine singular / g:— / 0.35 UNCONF / also champa/NOUN,champo/ADJ,champar/VERB / S:direct object of “Deme” / D:clod, tuft (small cluster of plants with adhering earth, piece of turf
+«colonia» in "Vive en una colonia." ⇒ colonio / NOUN / feminine singular / g:— / 0.35 UNCONF / also colonia/NOUN,colonio/ADJ,coloniar/VERB / S:adverbial phrase of “Vive” / D:colony ; neighbourhood
+«colectivo» in "Voy a agarrar un taxi colectivo." ⇒ colectivar / VERB / first person singular, present indicative / g:— / 0.35 UNCONF / also colectiver/VERB,colectivir/VERB / D:collective ; collective, group, association, union, guild
+«ordenador» in "Tengo un ordenador nuevo." ⇒ ordenador / NOUN / masculine singular / g:computer (Spain; Latin America says computadora) / 0.92 / C:form:Gender=Masc|Number=Sing / S:direct object of “Tengo” / D:computer ; ordinator, one who performs an ordination ceremony.
+    Variety: es-ES.
+«zumo» in "Quiero zumo de naranja." ⇒ zumo / NOUN / masculine singular / g:juice (Spain; Latin America says jugo) / 0.92 / C:form:Gender=Masc|Number=Sing / S:direct object of “Quiero” / D:juice (liquid from a plant) ; extract; herbal tincture
+    Variety: es-ES.
+«Vale» in "Vale, nos vemos." ⇒ valer / VERB / third person singular, present indicative / g:He, she, or it is worth / 0.7 / also valer/VERB / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to be worth ; to be useful or valid
+«tíos» in "¿Tenéis hambre, tíos?" ⇒ tío / NOUN / plural / g:uncle / 0.85 / C:form:Number=Plur / S:renames “hambre” / D:uncle (the brother, brother-in-law, or male cousin or cousin-in-law of
+«coger» in "Voy a coger el autobús." ⇒ coger / VERB / infinitive / g:to take / 0.92 / C:ir-a-infinitive,form:VerbForm=Inf / P:ir a …=to be going to (do something) / S:the main word of the sentence / D:to take, catch, hold, to get, to seize ; to pick, harvest
+«coche» in "Conduzco un coche." ⇒ coche / NOUN / masculine singular / g:car (the usual word in Spain; much of Latin America prefers carro) / 0.92 / C:form:Gender=Masc|Number=Sing / S:direct object of “Conduzco” / D:car, automobile ; carriage, coach (a wheeled vehicle, generally drawn 
+«móvil» in "He perdido el móvil." ⇒ móvil / NOUN / masculine singular / g:mobile phone (Spain; Latin America says celular) / 0.92 / C:form:Gender=Masc|Number=Sing / S:direct object of “perdido” / D:cellular, cell phone (US), mobile phone (UK, Australia) ; sculpture, d
+    Variety: es-ES.
+«patatas» in "Las patatas están fritas." ⇒ patata / NOUN / plural / g:potato (Spain; Latin America says papa) / 0.85 / C:form:Number=Plur / S:subject of “fritas” / D:potato ; piece of rubbish
+    Variety: es-ES.
+«Mola» in "Mola mucho." ⇒ molar / VERB / third person singular, present indicative / g:— / 0.35 UNCONF / also molar/VERB,molir/VERB,molir/VERB / S:the main word of the sentence / D:to rule, rock (be pleasing) ; molar (back tooth)

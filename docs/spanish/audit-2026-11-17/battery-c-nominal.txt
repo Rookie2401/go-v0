@@ -1,0 +1,196 @@
+# C. Nouns, adjectives, derivation, accent pairs, homographs
+# gender exceptions
+es | El día es largo. | día
+es | Me duele la mano. | mano
+es | Tengo un problema. | problema
+es | ¿Tienes un mapa? | mapa
+es | El agua fría es buena. | agua
+es | El agua fría es buena. | fría
+es | El águila vuela alto. | águila
+es | Mira la foto. | foto
+es | Escucho la radio. | radio
+es | La estudiante es lista. | estudiante
+es | El policía llegó tarde. | policía
+es | La policía llegó tarde. | policía
+es | El cura habló en la misa. | cura
+es | No hay cura para eso. | cura
+es | La capital de Honduras es Tegucigalpa. | capital
+es | No tengo capital para el negocio. | capital
+es | El orden es importante. | orden
+es | Le dio una orden. | orden
+# plurals
+es | Las luces están encendidas. | luces
+es | Tengo dos lápices. | lápices
+es | Los jóvenes cantan. | jóvenes
+es | Los ingleses toman té. | ingleses
+es | Hay dos crisis. | crisis
+es | Trabajo los lunes. | lunes
+es | Cayeron dos regímenes. | regímenes
+es | Los caracteres chinos son difíciles. | caracteres
+es | Hay muchos taxis. | taxis
+es | Los espíritus malos. | espíritus
+es | Compré dos sofás. | sofás
+es | Los reyes magos. | reyes
+es | Vi tres peces. | peces
+es | Son exámenes difíciles. | exámenes
+es | Tienen dos autobuses. | autobuses
+es | Los menús son caros. | menús
+es | Unos clubes de fútbol. | clubes
+# adjectives: agreement, apocope, position
+es | Es un buen hombre. | buen
+es | Hace mal tiempo. | mal
+es | Es un gran día. | gran
+es | Vivo en el primer piso. | primer
+es | Vivo en el tercer piso. | tercer
+es | ¿Tienes algún libro? | algún
+es | No tengo ningún problema. | ningún
+es | Cualquier día vengo. | Cualquier
+es | San Pedro es un apóstol. | San
+es | Cuesta cien lempiras. | cien
+es | Es una mujer pobre. | pobre
+es | ¡Pobre mujer! | Pobre
+es | Mi viejo amigo. | viejo
+es | Las casas blancas son bonitas. | blancas
+es | Una chica muy trabajadora. | trabajadora
+es | Es más alto que yo. | más
+es | Es más alto que yo. | que
+es | Este libro es mejor. | mejor
+es | Mi hermano mayor vive aquí. | mayor
+es | Es el peor día de mi vida. | peor
+es | Es tan alto como su padre. | como
+es | Mi hermana menor. | menor
+# superlatives and derivation
+es | La comida está riquísima. | riquísima
+es | Es un camino larguísimo. | larguísimo
+es | Estoy felicísimo. | felicísimo
+es | Es buenísimo. | buenísimo
+es | Es bonísimo. | bonísimo
+es | Un hombre fortísimo. | fortísimo
+es | Está sucísimo. | sucísimo
+es | Muchísimas gracias. | Muchísimas
+es | Quiero un cafecito. | cafecito
+es | Dame un panecillo. | panecillo
+es | Ahorita vengo. | Ahorita
+es | Dame un poquito. | poquito
+es | Un perro chiquitito. | chiquitito
+es | Era una mujerona. | mujerona
+es | Mi abuelita vive lejos. | abuelita
+es | Hola, hermanito. | hermanito
+es | Tiene una casita. | casita
+es | Un pedacito de pan. | pedacito
+es | Le dio un golpazo. | golpazo
+es | Qué perrote. | perrote
+es | Un momentito, por favor. | momentito
+es | Adiós, mamita. | mamita
+es | Espere un ratito. | ratito
+es | Vive cerquita. | cerquita
+es | Habla rápidamente. | rápidamente
+es | Habló lenta y cuidadosamente. | lenta
+es | Habló lenta y cuidadosamente. | cuidadosamente
+es | Simplemente no quiero. | Simplemente
+es | Felizmente llegó. | Felizmente
+# accent pairs
+es | Él tiene el libro. | Él
+es | Él tiene el libro. | el
+es | Tú tienes tu libro. | Tú
+es | Tú tienes tu libro. | tu
+es | Para mí, mi casa es mejor. | mí
+es | Si quieres, sí. | Si
+es | Si quieres, sí. | sí
+es | Se lo dije: no lo sé. | sé
+es | Quiero que me dé un vaso de agua. | dé
+es | ¿Te gusta el té? | Te
+es | ¿Te gusta el té? | té
+es | Quiso ir, mas no pudo. | mas
+es | Aun así, no vino. | Aun
+es | Aún no ha llegado. | Aún
+es | ¿Qué quieres que haga? | Qué
+es | ¿Qué quieres que haga? | que
+es | ¿Cómo estás? | Cómo
+es | Como pan todos los días. | Como
+es | Es como su padre. | como
+es | ¿Cuándo vienes? | Cuándo
+es | Cuando vengas, hablamos. | Cuando
+es | ¿Dónde vives? | Dónde
+es | La casa donde vivo. | donde
+es | ¿Quién es? | Quién
+es | El hombre con quien hablé. | quien
+es | Este libro es mío. | Este
+es | Espero que esté bien. | esté
+es | Me gusta éste. | éste
+es | Esta casa es grande. | Esta
+es | Ella está en casa. | está
+es | Yo hablo y él habló. | habló
+es | Ayer hablé con él; ojalá hable hoy. | hable
+es | Yo termino a las cinco. | termino
+es | Él terminó a las cinco. | terminó
+es | El término es difícil. | término
+es | La papa es barata. | papa
+es | Mi papá es alto. | papá
+es | El Papa vive en Roma. | Papa
+es | El inglés es difícil. | inglés
+es | Me duelen las ingles. | ingles
+es | Solo quiero agua. | Solo
+es | Sólo quiero agua. | Sólo
+es | Estoy solo en casa. | solo
+es | El libro que leí. | que
+es | Hay más de cien. | más
+# homographs
+es | El vino es tinto. | vino
+es | Ella vino ayer. | vino
+es | Es para ti. | para
+es | El bus para aquí. | para
+es | El libro está sobre la mesa. | sobre
+es | Puse la carta en el sobre. | sobre
+es | Me puse el traje nuevo. | traje
+es | Te traje un regalo. | traje
+es | Lo siento mucho. | siento
+es | Me siento aquí. | siento
+es | Me siento mal. | siento
+es | Creo que sí. | Creo
+es | Yo creo arte. | creo
+es | No quiero nada. | nada
+es | Ella nada muy bien. | nada
+es | Me corté el pelo. | corté
+es | Hizo un corte limpio. | corte
+es | El fuego: la llama es roja. | llama
+es | Ella me llama todos los días. | llama
+es | Se llama Pedro. | llama
+es | No creo que haya llegado. | haya
+es | No halla sus llaves. | halla
+es | Vive en el piso de abajo, bajo el puente. | bajo
+es | Es un hombre bajo. | bajo
+es | Ahora bajo. | bajo
+es | Entre, por favor. | Entre
+es | Está entre la casa y el río. | entre
+es | Pásame la sal. | sal
+es | Ve la televisión todo el día. | Ve
+es | Los niños ven la tele. | ven
+es | Tiene la cara sucia. | cara
+es | La vida está cara. | cara
+es | Vive cerca de aquí. | cerca
+es | Saltó la cerca. | cerca
+es | Compré una bota. | bota
+es | Bota la basura. | Bota
+es | Fui a la corte. | corte
+es | Me gusta el este del país. | este
+es | Mañana por la mañana. | Mañana
+es | Mañana por la mañana. | mañana
+es | Llegó tarde por la tarde. | tarde
+es | La cuenta, por favor. | cuenta
+es | Mi abuelo cuenta historias. | cuenta
+es | La cocina es grande. | cocina
+es | Mi madre cocina bien. | cocina
+es | El trabajo es duro. | trabajo
+es | Yo trabajo aquí. | trabajo
+es | Todos los días camino al trabajo. | camino
+es | El camino es largo. | camino
+es | La casa es bonita. | casa
+es | Se casa mañana. | casa
+es | Una y media. | media
+es | Le pedí ayuda. | ayuda
+es | Dios ayuda a todos. | ayuda
+es | Es muy fuerte. | fuerte
+es | Esa es la verdad. | Esa
+es | Espera un momento. | Espera
+es | La espera fue larga. | espera

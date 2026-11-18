@@ -1,0 +1,173 @@
+«al» in "Voy al mercado." ⇒ al / ADP /  / g:to the (a + el) / 0.92 / S:preposition of “mercado” / D:initialism of América Latina ; contraction of a + el, literally “at th
+    parts: a: ADP ¦ l: from el, DET
+«del» in "Vengo del trabajo." ⇒ del / ADP /  / g:of the (de + el) / 0.92 / S:preposition of “trabajo” / D:of the, from the (+ a masculine noun in singular).
+    parts: de: ADP ¦ l: from el, DET
+«a» in "Veo a María todos los días." ⇒ a / ADP /  / g:to, at (personal a) / 0.92 / C:personal-a / S:preposition of “María” / D:to ; by
+«a» in "Busco a mi hermano." ⇒ a / ADP /  / g:to, at (personal a) / 0.92 / S:preposition of “hermano” / D:to ; by
+«por» in "Gracias por la comida." ⇒ por / ADP /  / g:by, for / 0.92 / D:by ; for (indicates something given in an exchange)
+«por» in "Lo hice por ti." ⇒ por / ADP /  / g:by, for / 0.92 / S:preposition of “ti” / D:by ; for (indicates something given in an exchange)
+«para» in "Este regalo es para ti." ⇒ para / ADP /  / g:for, in order to / 0.92 / S:preposition of “ti” / D:for, to (expressing a recipient) ; to, in order to, so, for (expressin
+«para» in "Estudio para aprender." ⇒ para / ADP /  / g:for, in order to / 0.92 / S:word that introduces the clause of “aprender” / D:for, to (expressing a recipient) ; to, in order to, so, for (expressin
+«para» in "Salimos para Tegucigalpa mañana." ⇒ para / ADP /  / g:for, in order to / 0.92 / S:preposition of “Tegucigalpa” / D:for, to (expressing a recipient) ; to, in order to, so, for (expressin
+«por» in "Pasamos por el parque." ⇒ por / ADP /  / g:by, for / 0.92 / S:preposition of “parque” / D:by ; for (indicates something given in an exchange)
+«por» in "Fue escrito por Cervantes." ⇒ por / ADP /  / g:by, for / 0.92 / S:preposition of “Cervantes” / D:by ; for (indicates something given in an exchange)
+«Según» in "Según el pastor, es verdad." ⇒ según / ADP /  / g:according to / 0.92 / S:preposition of “pastor” / D:according to ; as, just as, the same way
+«desde» in "Vivo aquí desde 2010." ⇒ desde / ADP /  / g:from, since / 0.92 / D:since (from a specified time in the past) ; from (a location)
+«sin» in "Lo hago sin ayuda." ⇒ sin / ADP /  / g:without / 0.92 / S:preposition of “ayuda” / D:without
+«detrás» in "Está detrás de la casa." ⇒ detrás / ADV /  / g:behind / 0.92 / P:detrás de=behind / S:the main word of the sentence / D:behind, at the rear ; after
+«pesar» in "A pesar de todo, vino." ⇒ pesar / VERB / infinitive / g:to weigh / 0.92 / C:form:VerbForm=Inf / P:a pesar de=in spite of / D:to weigh (to determine the weight of an object) ; to weigh (to have a 
+«Además» in "Además de eso, nada." ⇒ además / ADV /  / g:besides, also / 0.92 / S:the main word of the sentence / D:in addition, moreover, furthermore, further, also, additionally ; as w
+«os» in "Vosotros os levantáis tarde." ⇒ vosotros / PRON / second person plural / g:you all (informal; Spain) / 0.92 / C:vosotros,form:Case=Nom|Gender=Masc|Number=Plur|Person=2|PronType=Prs / S:subject of “levantáis” / D:you, you guys; second person plural personal pronoun
+    Variety: vosotros.
+«tiene» in "Usted tiene razón." ⇒ tener / VERB / third person singular, present indicative / g:He, she, or it has / 0.92 / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres / P:tener razón=to be right / S:the main word of the sentence / D:to have; to possess ; to have; to possess; to be (a condition or quali
+«está» in "¿Cómo está usted?" ⇒ estar / AUX / third person singular, present indicative / g:He, she, or it is (state / 0.92 / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres / P:cómo estás=how are you? / S:“to be” linking “usted” to its subject / D:to be (have a temporary or permanent location in space) ; to be presen
+«vienen» in "¿Ustedes vienen mañana?" ⇒ venir / VERB / third person plural, present indicative / g:They come / 0.9 / C:form:Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:Senses relating to literal movement. — to come (move closer to some lo
+«Ello» in "Ello no importa." ⇒ ellar / VERB / first person singular, present indicative / g:— / 0.35 UNCONF / also eller/VERB,ellir/VERB / D:it, neuter third-person subject and disjunctive pronoun ; (Freud's con
+«sí» in "Lo hizo por sí mismo." ⇒ sí / INTJ /  / g:yes / 0.92 / S:interjection with “hizo” / D:hello? (used when answering a phone call) ; yes, yeah, (used to respon
+«mío» in "Esto es mío." ⇒ mío / DET / masculine singular / g:mine, of mine / 0.92 / C:form:Gender=Masc|Number=Sing|Poss=Yes / D:mine, my; of mine ; mine; of mine
+«Aquel» in "Aquel hombre es mi tío." ⇒ aquel / PRON / masculine singular / g:that one / 0.92 / C:form:Gender=Masc|Number=Sing|PronType=Dem / S:article or determiner of “hombre” / D:alternative spelling of aquél ; that (over there; implying some distan
+«Aquella» in "Aquella casa es vieja." ⇒ aquel / PRON / feminine singular / g:that one / 0.92 / C:form:Gender=Fem|Number=Sing|PronType=Dem / S:article or determiner of “casa” / D:alternative spelling of aquél ; that (over there; implying some distan
+«Ése» in "Ése no es mi libro." ⇒ — / — /  / g:— / 0 / D:that one ; the former
+«cuyo» in "El hombre cuyo hijo conozco." ⇒ cuyo / DET / masculine singular / g:whose / 0.92 / C:form:Gender=Masc|Number=Sing|PronType=Rel / S:article or determiner of “hijo” / D:whose ; alternative form of cuy
+«que» in "Lo que quiero es dormir." ⇒ que / SCONJ /  / g:that / 0.92 / S:direct object of “quiero” / D:that ; than
+«nadie» in "No hay nadie." ⇒ nadie / PRON / singular / g:nobody / 0.92 / C:form:Number=Sing|Polarity=Neg / S:direct object of “hay” / D:no one; nobody (anyone or anybody) ; a nobody
+«suyo» in "Cada uno tiene lo suyo." ⇒ suyo / DET / masculine singular / g:his, hers, theirs, yours (formal) / 0.92 / C:form:Gender=Masc|Number=Sing|Poss=Yes / D:his, hers, its, to her ; theirs, their, to them
+«Cuál» in "¿Cuál prefieres?" ⇒ cuál / PRON / singular / g:which / 0.92 / C:form:Number=Sing|PronType=Int / S:direct object of “prefieres” / D:which one, what, which ; what; which
+«Cuanto» in "Cuanto más estudio, más aprendo." ⇒ cuanto / ADV /  / g:as much as / 0.92 / S:adverb of “aprendo” / D:as much; however much; in whatever quantity ; whatever quantity, as mu
+«dieciséis» in "Tengo dieciséis años." ⇒ dieciséis / NUM /  / g:sixteen / 0.92 / S:number of “años” / D:sixteen
+«veintiún» in "Tiene veintiún años." ⇒ veintiuno / NUM / masculine singular / g:twenty-one / 0.92 / C:form:Gender=Masc|Number=Sing / S:number of “años” / D:twenty-one
+«veintiuna» in "Hay veintiuna personas." ⇒ veintiuno / NUM / feminine singular / g:twenty-one / 0.92 / C:form:Gender=Fem|Number=Sing / S:number of “personas” / D:twenty-one
+«treinta» in "Tiene treinta y un años." ⇒ treinta / NUM /  / g:thirty / 0.92 / D:thirty
+«ciento» in "Son ciento cincuenta lempiras." ⇒ ciento / NUM /  / g:a hundred (before a smaller number) / 0.92 / S:number of “lempiras” / D:one hundred (100) (only in compounds followed by lower numerals) ; hun
+«quinientos» in "Cuesta quinientos pesos." ⇒ quinientos / NUM / masculine plural / g:five hundred / 0.92 / C:form:Gender=Masc|Number=Plur / S:number of “pesos” / D:five hundred
+«mil» in "Dos mil personas." ⇒ mil / NUM /  / g:a thousand / 0.92 / S:number of “personas” / D:thousand ; thousand (1000 units of something) (usually in an indefinit
+«millón» in "Un millón de personas." ⇒ millón / NUM /  / g:a million / 0.92 / S:the main word of the sentence / D:million (10⁶)
+«millones» in "Dos millones de personas." ⇒ millón / NOUN / plural / g:— / 0.35 UNCONF / also millón/ADJ,millonar/VERB,milloner/VERB / S:the main word of the sentence / D:million (10⁶)
+«sexto» in "Es el sexto día." ⇒ sextar / VERB / first person singular, present indicative / g:— / 0.35 UNCONF / also sexter/VERB,sextir/VERB / S:the main word of the sentence / D:sixth ; sixth, ¹⁄₆
+«décima» in "La décima vez." ⇒ décimo / ADJ / feminine singular / g:— / 0.35 UNCONF / also décimo/NOUN,décima/NOUN / S:adjective describing “vez” / D:a tenth ; a ten-line stanza
+«veintiuno» in "El siglo veintiuno." ⇒ veintiuno / NUM / masculine singular / g:twenty-one / 0.92 / C:form:Gender=Masc|Number=Sing / S:number of “siglo” / D:twenty-one
+«primero» in "Hoy es el primero de mayo." ⇒ primero / ADJ / masculine singular / g:first / 0.92 / C:form:Gender=Masc|Number=Sing / S:the main word of the sentence / D:first, first up ; top (head)
+«cuarto» in "Son las tres y cuarto." ⇒ cuarto / NOUN / masculine singular / g:room; quarter / 0.55 / also cuarto/ADJ / C:form:Gender=Masc|Number=Sing / S:joined with “tres” / D:fourth (in a series) ; fourth, quarter (one of four equal divisions of
+«una» in "Es la una y media." ⇒ una / DET / feminine singular / g:a, an / 0.92 / C:form:Definite=Ind|Gender=Fem|Number=Sing|PronType=Art / D:one (an indefinite plural pronoun using a singular feminine item, used
+«menos» in "Llegó a las ocho menos diez." ⇒ menos / ADV /  / g:less / 0.92 / S:adverb of “Llegó” / D:less ; least
+«septiembre» in "El quince de septiembre de 1821." ⇒ septiembre / NOUN / masculine singular / g:September / 0.92 / C:form:Gender=Masc|Number=Sing / D:September
+«docena» in "Compré una docena de huevos." ⇒ doceno / NOUN / feminine singular / g:— / 0.35 UNCONF / also docena/NOUN,doceno/ADJ,docenar/VERB / S:direct object of “Compré” / D:dozen
+«mitad» in "La mitad del pan." ⇒ mitad / NOUN / feminine singular / g:half / 0.92 / C:form:Gender=Fem|Number=Sing / S:the main word of the sentence / D:half
+«tercera» in "Es mi tercera vez." ⇒ tercero / ADJ / feminine singular / g:third / 0.85 / C:form:Gender=Fem|Number=Sing / S:adjective describing “vez” / D:third ; third party
+«Ambos» in "Ambos vinieron." ⇒ ambos / DET / masculine plural / g:both / 0.92 / C:form:Gender=Masc|Number=Plur / S:subject of “vinieron” / D:both ; both
+«Ud» in "¿Cómo está Ud. hoy?" ⇒ Ud / PROPN /  / g:— / 0.5 UNCONF / S:the main word of the sentence / D:alternative form of oud ; usted
+«Uds» in "Uds. son muy amables." ⇒ — / — /  / g:— / 0 / D:you (plural) ; ustedes
+«Sr» in "El Sr. López llegó." ⇒ Sr / PROPN /  / g:— / 0.5 UNCONF / S:subject of “llegó” / D:alternative form of Sr.
+«Sra» in "La Sra. Martínez es doctora." ⇒ Sra / PROPN /  / g:— / 0.5 UNCONF / S:subject of “doctora” / D:misspelling of Sra.
+«Dr» in "El Dr. Pérez no está." ⇒ Dr / PROPN /  / g:— / 0.5 UNCONF / S:subject of “está” / D:∅
+«ej» in "Frutas, p. ej. mangos." ⇒ — / — /  / g:— / 0 / D:∅
+«etc» in "Compré pan, leche, etc." ⇒ — / — /  / g:— / 0 / D:∅
+«EE» in "Vive en EE. UU. desde niño." ⇒ ear / VERB / first person singular, present subjunctive / g:— / 0.35 UNCONF / also ear/VERB,ear/VERB,eer/VERB / S:adverbial phrase of “Vive” / D:∅
+«Dónde» in "¿Dónde está el baño?" ⇒ dónde / ADV /  / g:where / 0.92 / C:form:PronType=Int / S:adverb of “baño” / D:where?; in what place? ; from where? whence?
+«Qué» in "¡Qué bueno!" ⇒ qué / PRON /  / g:what / 0.92 / C:form:PronType=Int / S:the main word of the sentence / D:what ; what; which
+«bueno» in "¡Qué bueno!" ⇒ bueno / ADJ / masculine singular / g:good / 0.92 / C:form:Gender=Masc|Number=Sing / D:good (of good quality) ; good (at/with something)
+«Guillermo» in "Mi amigo Guillermo vive en Tegucigalpa." ⇒ Guillermo / PROPN /  / g:— / 0.5 UNCONF / also guillermar/VERB,guillermer/VERB,guillermir/VERB / S:renames “amigo” / D:a surname originating as a patronymic, denomination from Guillaume ; a
+«Sula» in "Pedro y Juan Carlos fueron a San Pedro Sula." ⇒ Sula / PROPN /  / g:Sula (as in San Pedro Sula, a city in Honduras) / 0.92 / S:part of the name “San” / D:∅
+«Hernández» in "La señora Hernández llegó." ⇒ Hernández / PROPN /  / g:— / 0.5 UNCONF / S:part of the name “señora” / D:a surname originating as a patronymic
+«Dolores» in "Dolores vive en La Ceiba." ⇒ dolor / NOUN / plural / g:pain, ache / 0.85 / C:form:Number=Plur / S:direct object of “vive” / D:pain, ache, aching soreness, tenderness (physical) ; grief
+«Rosa» in "Rosa compró flores." ⇒ rosa / NOUN / feminine singular / g:rose / 0.92 / C:form:Gender=Fem|Number=Sing / S:subject of “compró” / D:rose (flower) ; pink (color/colour)
+«Ángel» in "Ángel no vino." ⇒ ángel / NOUN / masculine singular / g:angel / 0.92 / C:form:Gender=Masc|Number=Sing / S:subject of “vino” / D:angel (an incorporeal and sometimes divine messenger from a deity) ; a
+«Mercedes» in "Comieron en casa de Mercedes." ⇒ Mercedes / PROPN /  / g:Mercedes (name) / 0.92 / S:noun phrase that completes “casa” / D:a female given name, equivalent to English Mercy (Mary, Our Lady of Me
+«Bienvenidos» in "Bienvenidos a Honduras." ⇒ bienvenido / NOUN / plural / g:— / 0.35 UNCONF / also bienvenido/ADJ,bienvener/VERB,bienvenir/VERB / C:personal-a / S:the main word of the sentence / D:welcome ; welcome (when saying this to a male)
+«Cantaron» in "Cantaron todos." ⇒ cantar / VERB / third person plural, preterite indicative / g:They sang / 0.85 / C:form:Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to sing ; to stink
+«Voy» in "Voy a comer ahora." ⇒ ir / VERB / first person singular, present indicative / g:I go / 0.9 / C:ir-a-infinitive,form:Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / P:ir a …=to be going to (do something) / S:auxiliary of “comer” / D:to go (away from speaker and listener) ; to be suitable or apt for its
+«comer» in "Voy a comer ahora." ⇒ comer / VERB / infinitive / g:to eat / 0.92 / C:ir-a-infinitive,form:VerbForm=Inf / P:ir a …=to be going to (do something) / S:the main word of the sentence / D:to eat ; to have lunch
+«Acabo» in "Acabo de llegar." ⇒ acabar / VERB / first person singular, present indicative / g:I finish / 0.85 / C:acabar-de,form:Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / P:acabar de …=to have just (done something) / S:the main word of the sentence / D:to finish; to end ; to end up (eventually doing)
+«Tengo» in "Tengo que irme." ⇒ tener / VERB / first person singular, present indicative / g:I have / 0.92 / C:tener-que,form:Mood=Ind|Number=Sing|Person=1|Tense=Pres / P:tener que …=to have to (do something) / S:the main word of the sentence / D:to have; to possess ; to have; to possess; to be (a condition or quali
+«irme» in "Tengo que irme." ⇒ ir / VERB / infinitive / g:to go / 0.9 / C:enclitic-pronoun,tener-que,form:VerbForm=Inf / P:tener que …=to have to (do something) / S:verb that completes “Tengo” / D:to go (away from speaker and listener) ; to be suitable or apt for its
+    parts: ir: VERB ¦ me: object pronoun
+«que» in "Hay que trabajar." ⇒ que / SCONJ /  / g:that / 0.92 / C:tener-que / P:haber que …=one must (hay que) / S:word that introduces the clause of “trabajar” / D:that ; than
+«Estoy» in "Estoy comiendo." ⇒ estar / AUX / first person singular, present indicative / g:I am (state / 0.92 / C:estar-gerund,form:Mood=Ind|Number=Sing|Person=1|Tense=Pres / S:auxiliary of “comiendo” / D:to be (have a temporary or permanent location in space) ; to be presen
+«Volvió» in "Volvió a llamar." ⇒ volver / VERB / third person singular, preterite indicative / g:He, she, or it returned / 0.85 / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin / P:volver a …=to do (something) again / S:the main word of the sentence / D:to return, to revert, to get back ; to come back, go back
+«Suelo» in "Suelo levantarme temprano." ⇒ suelo / NOUN / masculine singular / g:floor, ground / 0.75 / also soler/VERB / C:form:Gender=Masc|Number=Sing / P:soler …=to usually (do something) / S:the main word of the sentence / D:dirt, earth, ground, soil ; floor, ground
+«Llevo» in "Llevo dos años estudiando español." ⇒ llevar / VERB / first person singular, present indicative / g:I carry / 0.85 / C:llevar-gerund,form:Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to take somewhere ; to take somewhere — to take away or take with ones
+«Dejó» in "Dejó de fumar." ⇒ dejar / VERB / third person singular, preterite indicative / g:He, she, or it left / 0.85 / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin / P:dejar de …=to stop (doing something) / S:the main word of the sentence / D:to leave (to place) ; to leave, to keep (to allow to continue)
+«puso» in "Se puso a llorar." ⇒ poner / VERB / third person singular, preterite indicative / g:He, she, or it put / 0.9 / C:se-impersonal,form:Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin / P:ponerse a …=to start (doing something) / S:the main word of the sentence / D:to put, to place (cause to assume a specified position) ; to write
+«mejor» in "A lo mejor viene." ⇒ mejor / ADJ / singular / g:better, best / 0.55 / also mejor/ADV / C:form:Number=Sing / P:a lo mejor=maybe, perhaps / S:adverbial phrase of “viene” / D:better ; better off
+«embargo» in "Sin embargo, no vino." ⇒ embargar / VERB / first person singular, present indicative / g:— / 0.35 UNCONF / also embarguir/VERB / P:sin embargo=however, nevertheless / S:adverbial phrase of “vino” / D:embargo ; trade embargo
+«supuesto» in "Por supuesto que sí." ⇒ suponer / VERB / past participle, masculine singular / g:supposing / 0.9 / C:form:Gender=Masc|Number=Sing|VerbForm=Part / P:por supuesto=of course / D:to suppose, to surmise, to assume, to guess, to imagine, to figure, to
+«vez» in "Voy de vez en cuando." ⇒ vez / NOUN / feminine singular / g:time (occasion) / 0.92 / C:form:Gender=Fem|Number=Sing / P:de vez en cuando=from time to time / S:adverbial phrase of “Voy” / D:time, instance ; place (in a queue)
+«hambre» in "Tengo hambre." ⇒ hambre / NOUN / feminine singular / g:hunger / 0.92 / C:form:Gender=Fem|Number=Sing / P:tener hambre=to be hungry / S:direct object of “Tengo” / D:hunger
+«Tiene» in "Tiene veinte años." ⇒ tener / VERB / third person singular, present indicative / g:He, she, or it has / 0.92 / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres / S:the main word of the sentence / D:to have; to possess ; to have; to possess; to be (a condition or quali
+«tal» in "¿Qué tal?" ⇒ tal / ADJ / singular / g:such / 0.92 / C:form:Number=Sing / P:qué tal=how are things? / D:such ; such
+«Buenos» in "Buenos días, doña Marta." ⇒ bueno / ADJ / masculine plural / g:good / 0.85 / C:form:Gender=Masc|Number=Plur / P:buenos días=good morning / S:adjective describing “días” / D:good (of good quality) ; good (at/with something)
+«Muchas» in "Muchas gracias." ⇒ mucho / DET / feminine plural / g:much, a lot of / 0.92 / C:form:Gender=Fem|Number=Plur / S:article or determiner of “gracias” / D:much, a lot of ; many, a lot of
+«nada» in "De nada." ⇒ nada / PRON / singular / g:nothing / 0.92 / C:form:Number=Sing|Polarity=Neg / P:de nada=you are welcome / S:the main word of the sentence / D:nothing, zero, zilch, not...anything ; nothingness, nothing
+«gusto» in "Mucho gusto." ⇒ gustar / VERB / first person singular, present indicative / g:I am pleasing / 0.85 / C:form:Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / P:mucho gusto=pleased to meet you / S:the main word of the sentence / D:translated as "to like", analyzable in structure as "to please" [with 
+«permiso» in "Con permiso." ⇒ permiso / NOUN / masculine singular / g:permission / 0.92 / C:form:Gender=Masc|Number=Sing / P:con permiso=excuse me (to pass, to enter) / S:the main word of the sentence / D:permission ; license
+«favor» in "Por favor, ayúdeme." ⇒ favor / NOUN / masculine singular / g:favour / 0.92 / C:form:Gender=Masc|Number=Sing / P:por favor=please / S:adverbial phrase of “ayúdeme” / D:favor/favour
+«siento» in "Lo siento." ⇒ sentir / VERB / first person singular, present indicative / g:I feel / 0.7 / also sentar/VERB / C:form:Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / P:lo siento=I am sorry / S:the main word of the sentence / D:to feel ; to regret, feel or be sorry
+«vez» in "Tal vez venga mañana." ⇒ vez / NOUN / feminine singular / g:time (occasion) / 0.92 / C:form:Gender=Fem|Number=Sing / P:tal vez=perhaps / S:subject of “venga” / D:time, instance ; place (in a queue)
+«cuenta» in "Me di cuenta de todo." ⇒ cuenta / NOUN / feminine singular / g:bill; account; count / 0.75 / also contar/VERB,contar/VERB / C:form:Gender=Fem|Number=Sing / P:darse cuenta de=to realize, to become aware of / S:direct object of “di” / D:count, tally ; operation
+«Echo» in "Echo de menos a mi familia." ⇒ echar / VERB / first person singular, present indicative / g:I throw / 0.85 / C:form:Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / P:echar de menos=to miss (someone or something) / S:the main word of the sentence / D:to throw, toss, cast, jettison (to release an object from one's grasp 
+«Cuántos» in "¿Cuántos años tenés?" ⇒ cuánto / DET / masculine plural / g:how much, how many / 0.92 / C:form:Gender=Masc|Number=Plur|PronType=Int / S:article or determiner of “años” / D:how much; how many ; how much; how many
+«bendiga» in "Dios le bendiga." ⇒ bendecir / VERB / first person singular, present subjunctive / g:to bless / 0.7 / also bendecir/VERB,bendecir/VERB / C:form:Mood=Sub|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to bless
+«Primero» in "Primero Dios." ⇒ primero / ADJ / masculine singular / g:first / 0.92 / C:form:Gender=Masc|Number=Sing / S:adjective describing “Dios” / D:first, first up ; top (head)
+«quiere» in "Si Dios quiere." ⇒ querer / VERB / third person singular, present indicative / g:He, she, or it wants / 0.92 / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres / S:the main word of the sentence / D:to desire, to want, to want to ; to love; to be fond of (usually used 
+«hora» in "¿Qué hora es?" ⇒ hora / NOUN / feminine singular / g:hour / 0.92 / C:form:Gender=Fem|Number=Sing / S:adverbial phrase of “es” / D:hour (a time period of sixty minutes) ; time (the moment, as indicated
+«Ya» in "Ya no vive aquí." ⇒ ya / ADV /  / g:already; now / 0.92 / S:adverb of “vive” / D:now, right now, (in the negative) anymore, no longer ; now, right now,
+«Todavía» in "Todavía no ha llegado." ⇒ todavía / ADV /  / g:still, yet / 0.92 / S:adverb of “llegado” / D:still, yet ; even, still
+«Así» in "Así que no vino." ⇒ así / ADV /  / g:like this, thus / 0.92 / P:así que=so, therefore / S:word that introduces the clause of “vino” / D:like this; like that; as such; thus; so; thereby; this way, that way ;
+«Debe» in "Debe de estar en casa." ⇒ deber / VERB / third person singular, present indicative / g:He, she, or it owes / 0.7 / also deber/VERB / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to owe ; must, need to, have to (indicates an obligation or requiremen
+«Sigue» in "Sigue lloviendo." ⇒ seguir / VERB / third person singular, present indicative / g:He, she, or it follows / 0.7 / also seguir/VERB / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin / P:seguir …=to keep on, to continue (doing / S:the main word of the sentence / D:to follow ; to continue (on); to keep, to keep on (can be combined wit
+«puse» in "Me puse nervioso." ⇒ poner / VERB / first person singular, preterite indicative / g:I put / 0.9 / C:form:Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to put, to place (cause to assume a specified position) ; to write
+«volvió» in "Se volvió loco." ⇒ volver / VERB / third person singular, preterite indicative / g:He, she, or it returned / 0.85 / C:se-impersonal,form:Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to return, to revert, to get back ; to come back, go back
+«Llegó» in "Llegó a ser presidente." ⇒ llegar / VERB / third person singular, preterite indicative / g:He, she, or it arrived / 0.85 / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin / P:llegar a …=to manage to, to come to (do s / S:the main word of the sentence / D:to arrive, get (to) ; to get up to, to go up to, to reach (+ a or + ha
+«Amaos» in "Amaos los unos a los otros." ⇒ amar / VERB / second person plural, imperative / g:Love! (plural) / 0.85 / C:enclitic-pronoun,vosotros,form:Mood=Imp|Number=Plur|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to love, have great affection for, care about ; to wish
+    parts: ama: from amar, VERB ¦ os: object pronoun
+    Variety: vosotros.
+«He» in "He aquí el Cordero de Dios." ⇒ haber / AUX / first person singular, present indicative / g:I have / 0.92 / C:form:Mood=Ind|Number=Sing|Person=1|Tense=Pres / S:the main word of the sentence / D:to have; forms the perfect aspect ; to hold, to possess
+«Hágase» in "Hágase tu voluntad." ⇒ hacer / VERB / third person singular, imperative (formal, usted) / g:Let him, her, or it do / 0.9 / C:enclitic-pronoun,form:Mood=Imp|Number=Sing|Person=3|Polite=Form|VerbForm=Fin / S:the main word of the sentence / D:to do, perform, execute, carry out ; to do, perform, execute, carry ou
+    parts: hága: from hacer, VERB ¦ se: reflexive
+«Venga» in "Venga tu reino." ⇒ venir / VERB / first person singular, present subjunctive / g:to come / 0.7 / also venir/VERB,venir/VERB / C:form:Mood=Sub|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:Senses relating to literal movement. — to come (move closer to some lo
+«Santificado» in "Santificado sea tu nombre." ⇒ santificar / VERB / past participle, masculine singular / g:— / 0.35 UNCONF / also santificadar/VERB,santificader/VERB,santificadir/VERB / D:sanctified, hallowed, made holy
+«sea» in "Santificado sea tu nombre." ⇒ ser / AUX / first person singular, present subjunctive / g:to be (essence) / 0.7 / also ser/AUX,ser/AUX / C:form:Mood=Sub|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / S:“to be” linking “nombre” to its subject / D:to be (essentially or identified as) ; to be (in the passive voice sen
+«dánoslo» in "El pan nuestro de cada día, dánoslo hoy." ⇒ dar / VERB / second person singular, imperative / g:Give! / 0.9 / C:enclitic-pronoun,double-object-pronouns,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin / S:the main word of the sentence / D:to give, to give out ; to hand over
+    parts: dá: from dar, VERB ¦ nos: indirect object pronoun ¦ lo: direct object pronoun
+«metas» in "No nos metas en tentación." ⇒ meter / VERB / second person singular, present subjunctive / g:to put in / 0.85 / C:form:Mood=Sub|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to put in, insert ; to score
+«Líbranos» in "Líbranos del mal." ⇒ líbrano / NOUN / plural / g:— / 0.35 UNCONF / also líbrano/ADJ,librar/VERB,librer/VERB / S:the main word of the sentence / D:to save, to rescue, to deliver, to preserve ; to free, to exempt
+«Bienaventurados» in "Bienaventurados los pobres en espíritu." ⇒ bienaventurado / NOUN / plural / g:— / 0.35 UNCONF / also bienaventurado/ADJ,bienaventurar/VERB / S:the main word of the sentence / D:blessed
+«digo» in "De cierto os digo." ⇒ decir / VERB / first person singular, present indicative / g:I say / 0.9 / C:form:Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to say, to tell, to name, to mention ; to pronounce, sound out
+«Arrepentíos» in "Arrepentíos y creed en el evangelio." ⇒ arrepentir / VERB / second person plural, imperative / g:Make sorry! (plural) / 0.85 / C:enclitic-pronoun,vosotros,form:Mood=Imp|Number=Plur|Person=2|VerbForm=Fin / S:the main word of the sentence / D:only used in se ... arrepentir, syntactic variant of arrepentirse
+    parts: arrepentí: from arrepentir, VERB ¦ os: object pronoun
+    Variety: vosotros.
+«aconteció» in "Y aconteció que murió." ⇒ acontecer / VERB / third person singular, preterite indicative / g:— / 0.35 UNCONF / also acontecir/VERB,aconteciar/VERB / D:to come to pass, to happen, to occur, to transpire, to come about, to 
+«pierda» in "El que cree en él no se pierda." ⇒ perder / VERB / third person singular / g:to lose, perish / 0.92 / C:se-impersonal,form:Mood=Sub|Number=Sing|Person=3 / S:the main word of the sentence / D:to lose ; to lose — to lose someone (experience the death of someone)
+«faltará» in "Jehová es mi pastor; nada me faltará." ⇒ faltar / VERB / third person singular, future indicative / g:He, she, or it will be missing / 0.85 / C:gustar-type,form:Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin / S:joined with “pastor” / D:to be lacking, to lack, to not have (of a quality or circumstance) ; t
+«amó» in "Porque de tal manera amó Dios al mundo." ⇒ amar / VERB / third person singular, preterite indicative / g:He, she, or it loved / 0.92 / C:preterite,form:Aspect=Perf|Mood=Ind|Number=Sing|Person=3|Tense=Past / S:the main word of the sentence / D:to love, have great affection for, care about ; to wish
+«Sed» in "Sed santos, porque yo soy santo." ⇒ sed / NOUN / feminine singular / g:thirst / 0.75 / also ser/AUX / C:ser-estar-adjective,form:Gender=Fem|Number=Sing / D:thirst
+«discípulos» in "Dijo Jesús a sus discípulos." ⇒ discípulo / NOUN / plural / g:disciple / 0.85 / C:form:Number=Plur / S:indirect object of “Dijo” / D:disciple (a person who learns from another, especially one who then te
+«creó» in "En el principio creó Dios los cielos y la tierra." ⇒ crear / VERB / third person singular, preterite indicative / g:— / 0.35 UNCONF / S:the main word of the sentence / D:to create
+«fue» in "Y dijo Dios: Sea la luz; y fue la luz." ⇒ ser / AUX / third person singular, preterite indicative / g:He, she, or it was / 0.7 / also ir/VERB / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin / S:“to be” linking “luz” to its subject / D:to be (essentially or identified as) ; to be (in the passive voice sen
+«alturas» in "Gloria a Dios en las alturas." ⇒ alturo / NOUN / feminine plural / g:— / 0.35 UNCONF / also altura/NOUN,alturo/ADJ,alturar/VERB / D:height ; altitude
+«Señor» in "Bendito el que viene en el nombre del Señor." ⇒ señor / NOUN / masculine singular / g:sir, Mr; lord / 0.92 / C:form:Gender=Masc|Number=Sing / S:noun phrase that completes “nombre” / D:mister, sir, lord (title conferred on a married or older male) ; gentl
+«Manana» in "Manana voy a la iglesia." ⇒ mananar / VERB / third person singular, present indicative / g:— / 0.35 UNCONF / also mananar/VERB,mananer/VERB,mananer/VERB / D:∅
+«estas» in "Como estas?" ⇒ este / DET / feminine plural / g:this / 0.92 / C:form:Gender=Fem|Number=Plur|PronType=Dem / S:the main word of the sentence / D:this ; alternative spelling of éste
+«nino» in "El nino esta en la escuela." ⇒ ninar / VERB / first person singular, present indicative / g:— / 0.35 UNCONF / also niner/VERB,ninir/VERB / S:the main word of the sentence / D:∅
+«esta» in "El nino esta en la escuela." ⇒ este / DET / feminine singular / g:this / 0.92 / C:form:Gender=Fem|Number=Sing|PronType=Dem / D:this ; alternative spelling of éste
+«paso» in "Que paso ayer?" ⇒ pasar / VERB / first person singular, present indicative / g:I pass / 0.7 / also paso/NOUN / C:form:Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to pass, to hand, to slip ; to happen
+«anos» in "Tengo veinte anos." ⇒ ano / NOUN / plural / g:— / 0.35 UNCONF / also ano/ADJ / S:direct object of “Tengo” / D:anus
+«estes» in "Dios te bendiga, hermano. Que estes bien." ⇒ ester / VERB / second person singular, present indicative / g:— / 0.35 UNCONF / also estir/VERB,este/NOUN,este/ADJ / D:Esther (biblical character) ; the book of Esther
+«tambien» in "Yo tambien quiero cafe." ⇒ tambiar / VERB / third person plural, present subjunctive / g:— / 0.35 UNCONF / also tambiar/VERB / D:misspelling of también ; obsolete spelling of también
+«cafe» in "Yo tambien quiero cafe." ⇒ cafar / VERB / first person singular, present subjunctive / g:— / 0.35 UNCONF / also cafar/VERB,cafar/VERB,cafer/VERB / D:∅
+«hablo» in "El hablo conmigo ayer." ⇒ hablar / VERB / first person singular, present indicative / g:I speak / 0.85 / C:form:Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to talk; to speak; to communicate using words ; to speak (a language)
+«senor» in "Si, senor." ⇒ — / — /  / g:— / 0 / D:∅
+«mama» in "Feliz cumpleanos, mama." ⇒ mamar / VERB / third person singular, present indicative / g:— / 0.35 UNCONF / also mamar/VERB,mamer/VERB,mamer/VERB / S:the main word of the sentence / D:mamma, breast ; mama, mom
+«despues» in "Adios, nos vemos despues." ⇒ despue / NOUN / plural / g:— / 0.35 UNCONF / also despue/ADJ / S:direct object of “vemos” / D:misspelling of después
+«corazon» in "Mi corazon es tuyo." ⇒ — / — /  / g:— / 0 / D:∅
+«bano» in "Donde esta el bano?" ⇒ banar / VERB / first person singular, present indicative / g:— / 0.35 UNCONF / also baner/VERB,banir/VERB / D:∅
+«se» in "No se que hacer." ⇒ se / PRON /  / g:oneself (reflexive clitic) / 0.92 / C:form:PronType=Prs / D:A reflexive or reciprocal pronoun: oneself, himself, herself, itself, 
+«ornitorrinco» in "El ornitorrinco nada." ⇒ ornitorrincar / VERB / first person singular, present indicative / g:— / 0.35 UNCONF / also ornitorrinquir/VERB / S:the main word of the sentence / D:platypus
+«smartphone» in "Compré un smartphone." ⇒ smartphonar / VERB / first person singular, present subjunctive / g:— / 0.35 UNCONF / also smartphonar/VERB,smartphonar/VERB,smartphoner/VERB / S:direct object of “Compré” / D:smartphone
+«burocratización» in "La burocratización del país." ⇒ — / — /  / g:— / 0 / D:bureaucratization
+«increíblemente» in "Es increíblemente difícil." ⇒ — / — /  / g:— / 0 / D:incredibly
+«desarrolladores» in "Los desarrolladores trabajan." ⇒ desarrollador / NOUN / plural / g:— / 0.35 UNCONF / also desarrollador/ADJ,desarrolladorar/VERB,desarrolladorer/VERB / S:subject of “trabajan” / D:developer (a software developer; a person who creates or modifies comp
+«felicidad» in "La felicidad es importante." ⇒ felicidad / NOUN / feminine singular / g:happiness / 0.92 / C:form:Gender=Fem|Number=Sing / S:subject of “importante” / D:happiness ; something that brings happiness
+«económica» in "Una situación económica difícil." ⇒ económico / NOUN / feminine singular / g:— / 0.35 UNCONF / also económica/NOUN,económico/ADJ / S:the main word of the sentence / D:economic ; economical
+«medidas» in "El gobierno anunció nuevas medidas." ⇒ medir / VERB / past participle, feminine plural / g:measuring / 0.85 / C:form:Gender=Fem|Number=Plur|VerbForm=Part / D:to measure ; to gauge
+«investigación» in "La investigación continúa." ⇒ — / — /  / g:— / 0 / D:investigation ; research

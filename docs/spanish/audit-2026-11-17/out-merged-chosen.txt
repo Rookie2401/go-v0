@@ -1,0 +1,162 @@
+== dar VERB: record true, dictionary table true; cells 68 {"verified":65,"generated":2,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   rules only (2): Fin.Ind.Pres.2.Sing.Voseo=dás | Fin.Sub.Pres.2.Sing.Voseo=dés
+   dictionary only (1): Part=dado
+== ir VERB: record true, dictionary table true; cells 69 {"verified":66,"generated":1,"supported":2}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   rules only (1): Fin.Ind.Pres.2.Sing.Voseo=ís
+   dictionary only (2): Part=ido | Fin.Imp.2.Sing.Voseo=andá
+== ver VERB: record true, dictionary table true; cells 68 {"verified":66,"generated":1,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   rules only (1): Fin.Ind.Pres.2.Sing.Voseo=vés
+   dictionary only (1): Part=visto
+== reír VERB: record true, dictionary table true; cells 69 {"verified":67,"conflicted":1,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   CONFLICT Fin.Imp.2.Sing.Voseo: shown reí; also réí, rei
+   dictionary only (1): Part=reído
+== sonreír VERB: record true, dictionary table true; cells 69 {"verified":67,"conflicted":1,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   CONFLICT Fin.Imp.2.Sing.Voseo: shown sonreí; also sonréi
+   dictionary only (1): Part=sonreído
+== freír VERB: record true, dictionary table true; cells 69 {"verified":67,"conflicted":1,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   CONFLICT Fin.Imp.2.Sing.Voseo: shown freí; also fréí, frei
+   dictionary only (1): Part=freído
+== huir VERB: record true, dictionary table true; cells 69 {"verified":64,"conflicted":4,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   CONFLICT Fin.Ind.Pres.2.Sing.Voseo: shown huis; also huís
+   CONFLICT Fin.Ind.Pres.2.Plur: shown huis; also huís
+   CONFLICT Fin.Ind.Past.1.Sing: shown hui; also huí
+   CONFLICT Fin.Imp.2.Sing.Voseo: shown hui; also huí
+   dictionary only (1): Part=huido
+== oír VERB: record true, dictionary table true; cells 69 {"verified":67,"supported":2}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   dictionary only (2): Part=oído | Fin.Imp.2.Sing.Voseo=oí
+== soler VERB: record true, dictionary table true; cells 68 {"verified":68}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+== llover VERB: record true, dictionary table true; cells 69 {"verified":15,"conflicted":53,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   CONFLICT Part.Fem.Sing: shown -; also llovida
+   CONFLICT Part.Masc.Plur: shown -; also llovidos
+   CONFLICT Part.Fem.Plur: shown -; also llovidas
+   CONFLICT Fin.Ind.Pres.1.Sing: shown -; also lluevo
+   CONFLICT Fin.Ind.Pres.1.Plur: shown -; also llovemos
+   CONFLICT Fin.Ind.Pres.2.Sing: shown -; also llueves
+   CONFLICT Fin.Ind.Pres.2.Plur: shown -; also llovéis
+   CONFLICT Fin.Ind.Pres.3.Plur: shown -; also llueven
+   CONFLICT Fin.Ind.Imp.1.Sing: shown -; also llovía
+   CONFLICT Fin.Ind.Imp.1.Plur: shown -; also llovíamos
+   CONFLICT Fin.Ind.Imp.2.Sing: shown -; also llovías
+   CONFLICT Fin.Ind.Imp.2.Plur: shown -; also llovíais
+   CONFLICT Fin.Ind.Imp.3.Plur: shown -; also llovían
+   CONFLICT Fin.Ind.Past.1.Sing: shown -; also lloví
+   CONFLICT Fin.Ind.Past.1.Plur: shown -; also llovimos
+   CONFLICT Fin.Ind.Past.2.Sing: shown -; also lloviste
+   CONFLICT Fin.Ind.Past.2.Plur: shown -; also llovisteis
+   CONFLICT Fin.Ind.Past.3.Plur: shown -; also llovieron
+   CONFLICT Fin.Ind.Fut.1.Sing: shown -; also lloveré
+   CONFLICT Fin.Ind.Fut.1.Plur: shown -; also lloveremos
+   CONFLICT Fin.Ind.Fut.2.Sing: shown -; also lloverás
+   CONFLICT Fin.Ind.Fut.2.Plur: shown -; also lloveréis
+   CONFLICT Fin.Ind.Fut.3.Plur: shown -; also lloverán
+   CONFLICT Fin.Cnd.1.Sing: shown -; also llovería
+   CONFLICT Fin.Cnd.1.Plur: shown -; also lloveríamos
+   CONFLICT Fin.Cnd.2.Sing: shown -; also lloverías
+   CONFLICT Fin.Cnd.2.Plur: shown -; also lloveríais
+   CONFLICT Fin.Cnd.3.Plur: shown -; also lloverían
+   CONFLICT Fin.Sub.Pres.1.Sing: shown -; also llueva
+   CONFLICT Fin.Sub.Pres.1.Plur: shown -; also llovamos
+   CONFLICT Fin.Sub.Pres.2.Sing: shown -; also lluevas
+   CONFLICT Fin.Sub.Pres.2.Plur: shown -; also llováis
+   CONFLICT Fin.Sub.Pres.3.Plur: shown -; also lluevan
+   CONFLICT Fin.Sub.Imp.1.Sing.Ra: shown -; also lloviera
+   CONFLICT Fin.Sub.Imp.1.Plur.Ra: shown -; also lloviéramos
+   CONFLICT Fin.Sub.Imp.2.Sing.Ra: shown -; also llovieras
+   CONFLICT Fin.Sub.Imp.2.Plur.Ra: shown -; also llovierais
+   CONFLICT Fin.Sub.Imp.3.Plur.Ra: shown -; also llovieran
+   CONFLICT Fin.Sub.Imp.1.Sing.Se: shown -; also lloviese
+   CONFLICT Fin.Sub.Imp.1.Plur.Se: shown -; also lloviésemos
+   CONFLICT Fin.Sub.Imp.2.Sing.Se: shown -; also llovieses
+   CONFLICT Fin.Sub.Imp.2.Plur.Se: shown -; also llovieseis
+   CONFLICT Fin.Sub.Imp.3.Plur.Se: shown -; also lloviesen
+   CONFLICT Fin.Sub.Fut.1.Sing: shown -; also lloviere
+   CONFLICT Fin.Sub.Fut.1.Plur: shown -; also lloviéremos
+   CONFLICT Fin.Sub.Fut.2.Sing: shown -; also llovieres
+   CONFLICT Fin.Sub.Fut.2.Plur: shown -; also lloviereis
+   CONFLICT Fin.Sub.Fut.3.Plur: shown -; also llovieren
+   CONFLICT Fin.Imp.2.Sing: shown -; also llueve
+   CONFLICT Fin.Imp.3.Sing.Form: shown -; also llueva
+   CONFLICT Fin.Imp.1.Plur: shown -; also llovamos
+   CONFLICT Fin.Imp.2.Plur: shown -; also lloved
+   CONFLICT Fin.Imp.3.Plur.Form: shown -; also lluevan
+   dictionary only (1): Part=llovido
+== colar VERB: record true, dictionary table true; cells 69 {"verified":57,"conflicted":11,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   CONFLICT Fin.Ind.Pres.1.Sing: shown cuelo; also colo
+   CONFLICT Fin.Ind.Pres.2.Sing: shown cuelas; also colas
+   CONFLICT Fin.Ind.Pres.3.Sing: shown cuela; also cola
+   CONFLICT Fin.Ind.Pres.3.Plur: shown cuelan; also colan
+   CONFLICT Fin.Sub.Pres.1.Sing: shown cuele; also cole
+   CONFLICT Fin.Sub.Pres.2.Sing: shown cueles; also coles
+   CONFLICT Fin.Sub.Pres.3.Sing: shown cuele; also cole
+   CONFLICT Fin.Sub.Pres.3.Plur: shown cuelen; also colen
+   CONFLICT Fin.Imp.2.Sing: shown cuela; also cola
+   CONFLICT Fin.Imp.3.Sing.Form: shown cuele; also cole
+   CONFLICT Fin.Imp.3.Plur.Form: shown cuelen; also colen
+   dictionary only (1): Part=colado
+== erguir VERB: record true, dictionary table true; cells 69 {"verified":32,"conflicted":36,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   CONFLICT Ger: shown irguiendo; also erguiendo
+   CONFLICT Fin.Ind.Pres.1.Sing: shown irgo; also ergo, yergo
+   CONFLICT Fin.Ind.Pres.2.Sing: shown irgues; also ergues, yergues
+   CONFLICT Fin.Ind.Pres.3.Sing: shown irgue; also ergue, yergue
+   CONFLICT Fin.Ind.Pres.3.Plur: shown irguen; also erguen, yerguen
+   CONFLICT Fin.Ind.Past.3.Sing: shown irguió; also erguió
+   CONFLICT Fin.Ind.Past.3.Plur: shown irguieron; also erguieron
+   CONFLICT Fin.Sub.Pres.1.Sing: shown irga; also erga, yerga
+   CONFLICT Fin.Sub.Pres.1.Plur: shown irgamos; also ergamos, yergamos
+   CONFLICT Fin.Sub.Pres.2.Sing: shown irgas; also ergas, yergas, irgás
+   CONFLICT Fin.Sub.Pres.2.Sing.Voseo: shown yergás; also ergás
+   CONFLICT Fin.Sub.Pres.2.Plur: shown irgáis; also ergáis, yergáis
+   CONFLICT Fin.Sub.Pres.3.Sing: shown irga; also erga, yerga
+   CONFLICT Fin.Sub.Pres.3.Plur: shown irgan; also ergan, yergan
+   CONFLICT Fin.Sub.Imp.1.Sing.Ra: shown irguiera; also erguiera
+   CONFLICT Fin.Sub.Imp.1.Plur.Ra: shown irguiéramos; also erguiéramos
+   CONFLICT Fin.Sub.Imp.2.Sing.Ra: shown irguieras; also erguieras
+   CONFLICT Fin.Sub.Imp.2.Plur.Ra: shown irguierais; also erguierais
+   CONFLICT Fin.Sub.Imp.3.Sing.Ra: shown irguiera; also erguiera
+   CONFLICT Fin.Sub.Imp.3.Plur.Ra: shown irguieran; also erguieran
+   CONFLICT Fin.Sub.Imp.1.Sing.Se: shown irguiese; also erguiese
+   CONFLICT Fin.Sub.Imp.1.Plur.Se: shown irguiésemos; also erguiésemos
+   CONFLICT Fin.Sub.Imp.2.Sing.Se: shown irguieses; also erguieses
+   CONFLICT Fin.Sub.Imp.2.Plur.Se: shown irguieseis; also erguieseis
+   CONFLICT Fin.Sub.Imp.3.Sing.Se: shown irguiese; also erguiese
+   CONFLICT Fin.Sub.Imp.3.Plur.Se: shown irguiesen; also erguiesen
+   CONFLICT Fin.Sub.Fut.1.Sing: shown irguiere; also erguiere
+   CONFLICT Fin.Sub.Fut.1.Plur: shown irguiéremos; also erguiéremos
+   CONFLICT Fin.Sub.Fut.2.Sing: shown irguieres; also erguieres
+   CONFLICT Fin.Sub.Fut.2.Plur: shown irguiereis; also erguiereis
+   CONFLICT Fin.Sub.Fut.3.Sing: shown irguiere; also erguiere
+   CONFLICT Fin.Sub.Fut.3.Plur: shown irguieren; also erguieren
+   CONFLICT Fin.Imp.2.Sing: shown irgue; also ergue, yergue
+   CONFLICT Fin.Imp.3.Sing.Form: shown irga; also erga, yerga
+   CONFLICT Fin.Imp.1.Plur: shown irgamos; also ergamos, yergamos
+   CONFLICT Fin.Imp.3.Plur.Form: shown irgan; also ergan, yergan
+   dictionary only (1): Part=erguido
+== rehacer VERB: record true, dictionary table true; cells 69 {"verified":66,"conflicted":2,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   CONFLICT Fin.Ind.Past.1.Sing: shown rehíce; also rehice
+   CONFLICT Fin.Ind.Past.3.Sing: shown rehízo; also rehizo
+   dictionary only (1): Part=rehecho
+== hablar VERB: record true, dictionary table true; cells 69 {"verified":68,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract), table es-conj
+   dictionary only (1): Part=hablado
+== marrón ADJ: record true, dictionary table true; cells 4 {"generated":4}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract)
+   rules only (4): Sing.Masc=marrón | Sing.Fem=marrona | Plur.Masc=marrones | Plur.Fem=marronas
+== cortés ADJ: record true, dictionary table true; cells 4 {"generated":4}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract)
+   rules only (4): Sing.Masc=cortés | Sing.Fem=cortesa | Plur.Masc=corteses | Plur.Fem=cortesas
+== guay ADJ: record true, dictionary table true; cells 2 {"generated":1,"conflicted":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract)
+   CONFLICT Plur: shown guay; also guayes, guais
+   rules only (1): Sing=guay
+== taxi NOUN: record true, dictionary table true; cells 2 {"generated":1,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract)
+   rules only (1): Sing=taxi
+   dictionary only (1): Plur=taxis
+== espíritu NOUN: record true, dictionary table true; cells 2 {"generated":1,"supported":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract)
+   rules only (1): Sing=espíritu
+   dictionary only (1): Plur=espíritus
+== régimen NOUN: record true, dictionary table true; cells 2 {"generated":1,"conflicted":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract)
+   CONFLICT Plur: shown regímenes; also régimenes
+   rules only (1): Sing=régimen
+== carácter NOUN: record true, dictionary table true; cells 2 {"generated":1,"conflicted":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract)
+   CONFLICT Plur: shown caracteres; also carácteres
+   rules only (1): Sing=carácter
+== club NOUN: record true, dictionary table true; cells 2 {"generated":1,"verified":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract)
+   rules only (1): Sing=club
+== estudiante NOUN: record true, dictionary table true; cells 2 {"generated":1,"verified":1}; sources Spanish analyser (rules and its irregular tables) + Wiktionary (kaikki.org extract)
+   rules only (1): Sing=estudiante

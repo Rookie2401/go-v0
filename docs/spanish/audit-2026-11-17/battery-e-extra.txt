@@ -1,0 +1,68 @@
+# E. Follow-ups
+es | Vosotros os levantáis tarde. | os#3
+es | Hay tres libros en la mesa. | Hay
+es | Había mucha gente en la plaza. | Había
+es | Idos de aquí. | Idos
+es | Éstos son mis hijos. | Éstos
+es | Aquél es mi hermano. | Aquél
+es | No quiero ésta. | ésta
+es | Me gusta el este del país. | este
+es | Ustedes son bienvenidos. | son
+es | ¿Cómo se llama usted? | llama
+es | ¿Cómo te llamás? | llamás
+es | Me llamo Marta. | llamo
+es | Ella se lava las manos. | se
+es | Se cayó el vaso. | Se
+es | El libro fue escrito en 1605. | fue
+es | La casa fue construida por mi abuelo. | construida
+es | Estamos aquí. | Estamos
+es | Él es médico. | es
+es | La fiesta es en mi casa. | es
+es | Está muerto. | Está
+es | Eran las tres de la tarde. | Eran
+es | Los vi ayer. | vi
+es | No la conozco. | la
+es | Quiero comprarlas. | comprarlas
+es | Vi a tu hermano. | a
+es | Hui de la casa. | Hui
+es | Él rio mucho. | rio
+es | Cruzamos el río. | río
+es | Yo río mucho. | río
+es | Se rieron de mí. | rieron
+es | Vos das mucho. | das
+es | Vos vas al mercado. | vas
+es | No lo satisfizo. | satisfizo
+es | Yo rehíce el trabajo. | rehíce
+es | Él previó el problema. | previó
+es | Mantén la calma. | Mantén
+es | Los niños se durmieron. | durmieron
+es | Durmámonos ya. | Durmámonos
+es | Póngase cómodo. | Póngase
+es | Díganme la verdad. | Díganme
+es | No me lo digas. | digas
+es | Quiero que me lo digas. | digas
+es | El perrito ladra. | perrito
+es | Una florecita roja. | florecita
+es | Mi papito lindo. | papito
+es | Dos cafecitos, por favor. | cafecitos
+es | Tengo un hermano mayor y dos hermanas menores. | hermanas
+es | Los lunes voy a la iglesia. | Los
+es | Trabajo de lunes a viernes. | viernes
+es | Somos hondureños. | hondureños
+es | Ella es hondureña. | hondureña
+es | Son las dos menos cuarto. | Son
+es | Nació el 3 de mayo de 1990. | Nació
+es | Vivo en la tercera calle. | calle
+es | El 50 % de la población. | población
+es | Tengo treinta y cinco años. | cinco
+es | Mil novecientos noventa y nueve. | novecientos
+es | Llegó primero. | primero
+es | Compré un quintal de maíz. | quintal
+es | Mi hermana está embarazada. | embarazada
+es | Estoy constipado. | constipado
+es | Asistí a la reunión. | Asistí
+es | Actualmente vivo en La Ceiba. | Actualmente
+es | La carpeta está en la mesa. | carpeta
+es | Tuvo éxito. | éxito
+es | Realizó su sueño. | Realizó
+es | Voy a la librería. | librería

@@ -1,0 +1,168 @@
+# A. Verb system
+# regular and ambiguous persons
+es | Hablamos con ella ayer. | Hablamos
+es | Mañana hablamos con el jefe. | hablamos
+es | Yo hablo español. | hablo
+es | Ella habló con el pastor. | habló
+es | Espero que hable más despacio. | hable
+es | Ayer hablé con mi madre. | hablé
+es | Cuando era niño, vivía en el campo. | vivía
+es | Yo vivía allí. | vivía
+es | Ellos comieron pollo. | comieron
+# stem changes
+es | Ella pidió un café. | pidió
+es | El niño durmió toda la noche. | durmió
+es | Si lo sintiera, lo diría. | sintiera
+es | Siempre pierdo las llaves. | pierdo
+es | ¿Cuánto cuesta? | cuesta
+es | Los niños juegan en el patio. | juegan
+es | No recuerdo su nombre. | recuerdo
+es | Ellos prefieren el té. | prefieren
+es | Te recomiendo este libro. | recomiendo
+es | El agua hierve. | hierve
+es | Se visten rápido. | visten
+es | Huele a pan. | Huele
+# yo-forms
+es | Tengo dos hermanos. | Tengo
+es | Hago la tarea. | Hago
+es | Pongo la mesa. | Pongo
+es | Salgo a las ocho. | Salgo
+es | No conozco a nadie aquí. | conozco
+es | Traigo buenas noticias. | Traigo
+es | No oigo nada. | oigo
+es | Me caigo siempre. | caigo
+es | No quepo en este asiento. | quepo
+es | No sé la respuesta. | sé
+es | Le doy las gracias. | doy
+es | Voy al mercado. | Voy
+es | Estoy cansado. | Estoy
+es | Soy de Honduras. | Soy
+# spelling changes
+es | Busqué las llaves por toda la casa. | Busqué
+es | Pagué la cuenta. | Pagué
+es | Empecé a trabajar. | Empecé
+es | Averigüé la verdad. | Averigüé
+es | Ella leyó la carta. | leyó
+es | El niño se cayó. | cayó
+es | Construyó una casa. | Construyó
+es | Sigo aquí. | Sigo
+es | Cojo el autobús. | Cojo
+es | Siempre venzo. | venzo
+es | Recojo a los niños a las tres. | Recojo
+es | Toqué la puerta. | Toqué
+# strong preterites
+es | Tuve un problema. | Tuve
+es | Estuve en Tegucigalpa. | Estuve
+es | No pude ir. | pude
+es | Puse el libro en la mesa. | Puse
+es | Lo supe ayer. | supe
+es | Hice la comida. | Hice
+es | No quise comer. | quise
+es | Vine en bus. | Vine
+es | Le dije la verdad. | dije
+es | Traje pan. | Traje
+es | Conduje toda la noche. | Conduje
+es | Anduve por el parque. | Anduve
+es | Fui al mercado ayer. | Fui
+es | Fui maestro durante diez años. | Fui
+es | Le di un regalo. | di
+es | Vi una película. | Vi
+es | Ella fue a la iglesia. | fue
+es | La fiesta fue muy bonita. | fue
+es | Hubo un accidente. | Hubo
+es | No cupo nada más. | cupo
+# futures and conditionals
+es | Mañana tendré tiempo. | tendré
+es | Te diré la verdad. | diré
+es | Lo haré mañana. | haré
+es | Podremos ir juntos. | Podremos
+es | Querrá venir. | Querrá
+es | Pronto lo sabrás. | sabrás
+es | Saldré temprano. | Saldré
+es | Vendrán mañana. | Vendrán
+es | Pondré la mesa. | Pondré
+es | Habrá mucha gente. | Habrá
+es | No cabrá en el carro. | cabrá
+es | Valdrá la pena. | Valdrá
+es | Me gustaría un café. | gustaría
+es | Yo hablaría con él. | hablaría
+es | Podría ayudarme, por favor. | Podría
+# subjunctives
+es | Quiero que vengas mañana. | vengas
+es | Ojalá que llueva. | llueva
+es | Si yo hablara mejor, trabajaría allí. | hablara
+es | Si yo hablase mejor, trabajaría allí. | hablase
+es | Si tuviera dinero, viajaría. | tuviera
+es | Si tuviese dinero, viajaría. | tuviese
+es | Si yo fuera rico, compraría una casa. | fuera
+es | Como si fuese fácil. | fuese
+es | Sea lo que fuere, iremos. | fuere
+es | Cuando llegues, llámame. | llegues
+es | Dudo que lo sepa. | sepa
+es | No creo que haya tiempo. | haya
+es | Espero que estés bien. | estés
+es | Que Dios te bendiga. | bendiga
+es | Donde fueres, haz lo que vieres. | vieres
+# imperatives
+es | Habla más despacio, por favor. | Habla
+es | Ten cuidado. | Ten
+es | Pon la mesa. | Pon
+es | Sal de aquí. | Sal
+es | Ven acá. | Ven
+es | Di la verdad. | Di
+es | Haz la tarea. | Haz
+es | Sé bueno. | Sé
+es | Ve a la tienda. | Ve
+es | No hables tan fuerte. | hables
+es | No digas eso. | digas
+es | Hable más despacio, por favor. | Hable
+es | Pasen adelante. | Pasen
+es | Siéntese, por favor. | Siéntese
+es | Vámonos. | Vámonos
+es | Sentémonos aquí. | Sentémonos
+es | Hablad más alto. | Hablad
+es | Sentaos. | Sentaos
+es | Hablá más despacio. | Hablá
+es | Tené cuidado. | Tené
+es | Vení acá. | Vení
+es | Comamos juntos. | Comamos
+es | ¡Oye! | Oye
+es | Mirá, vos. | Mirá
+# participles and gerunds
+es | He hecho la tarea. | hecho
+es | Me lo ha dicho. | dicho
+es | No lo he visto. | visto
+es | Lo he puesto en la mesa. | puesto
+es | Ha escrito una carta. | escrito
+es | La puerta está abierta. | abierta
+es | Ha vuelto a casa. | vuelto
+es | El vaso está roto. | roto
+es | Su abuelo ha muerto. | muerto
+es | El suelo está cubierto de hojas. | cubierto
+es | El problema está resuelto. | resuelto
+es | Me gustan las papas fritas. | fritas
+es | He freído los huevos. | freído
+es | El libro fue impreso en México. | impreso
+es | Han imprimido el documento. | imprimido
+es | Voy yendo. | yendo
+es | Estoy leyendo un libro. | leyendo
+es | El niño está durmiendo. | durmiendo
+es | Está pidiendo ayuda. | pidiendo
+es | Estaba diciendo la verdad. | diciendo
+es | No pudiendo ir, llamó. | pudiendo
+es | Ellos habían comido antes. | habían
+es | Ellos habían comido antes. | comido
+es | Cuando llegues, ya habré terminado. | habré
+es | Si hubiera sabido, habría venido. | hubiera
+es | Las cartas fueron escritas por María. | escritas
+es | Se venden casas. | venden
+es | Se habla español. | habla
+es | Aquí se come bien. | se
+es | Me gusta el café. | gusta
+es | Me gustan los libros. | gustan
+es | Le duele la cabeza. | duele
+es | Nos hace falta dinero. | hace
+es | Llueve mucho en junio. | Llueve
+es | Hay que estudiar. | Hay
+es | Hace calor. | Hace
+es | Hace dos años que vivo aquí. | Hace

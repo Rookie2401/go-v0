@@ -1,0 +1,172 @@
+# D. Function words, numbers, abbreviations, names, phrases, periphrases, church Spanish, text without accents
+# prepositions, por / para, personal a, contractions
+es | Voy al mercado. | al
+es | Vengo del trabajo. | del
+es | Veo a María todos los días. | a
+es | Busco a mi hermano. | a
+es | Gracias por la comida. | por
+es | Lo hice por ti. | por
+es | Este regalo es para ti. | para
+es | Estudio para aprender. | para
+es | Salimos para Tegucigalpa mañana. | para
+es | Pasamos por el parque. | por
+es | Fue escrito por Cervantes. | por
+es | Según el pastor, es verdad. | Según
+es | Vivo aquí desde 2010. | desde
+es | Lo hago sin ayuda. | sin
+es | Está detrás de la casa. | detrás
+es | A pesar de todo, vino. | pesar
+es | Además de eso, nada. | Además
+es | Vosotros os levantáis tarde. | os#2
+# pronouns
+es | Usted tiene razón. | tiene
+es | ¿Cómo está usted? | está
+es | ¿Ustedes vienen mañana? | vienen
+es | Ello no importa. | Ello
+es | Lo hizo por sí mismo. | sí
+es | Esto es mío. | mío
+es | Aquel hombre es mi tío. | Aquel
+es | Aquella casa es vieja. | Aquella
+es | Ése no es mi libro. | Ése
+es | El hombre cuyo hijo conozco. | cuyo
+es | Lo que quiero es dormir. | que
+es | No hay nadie. | nadie
+es | Cada uno tiene lo suyo. | suyo
+es | ¿Cuál prefieres? | Cuál
+es | Cuanto más estudio, más aprendo. | Cuanto
+# numbers, ordinals, dates, time
+es | Tengo dieciséis años. | dieciséis
+es | Tiene veintiún años. | veintiún
+es | Hay veintiuna personas. | veintiuna
+es | Tiene treinta y un años. | treinta
+es | Son ciento cincuenta lempiras. | ciento
+es | Cuesta quinientos pesos. | quinientos
+es | Dos mil personas. | mil
+es | Un millón de personas. | millón
+es | Dos millones de personas. | millones
+es | Es el sexto día. | sexto
+es | La décima vez. | décima
+es | El siglo veintiuno. | veintiuno
+es | Hoy es el primero de mayo. | primero
+es | Son las tres y cuarto. | cuarto
+es | Es la una y media. | una
+es | Llegó a las ocho menos diez. | menos
+es | El quince de septiembre de 1821. | septiembre
+es | Compré una docena de huevos. | docena
+es | La mitad del pan. | mitad
+es | Es mi tercera vez. | tercera
+es | Ambos vinieron. | Ambos
+# abbreviations, punctuation, names
+es | ¿Cómo está Ud. hoy? | Ud
+es | Uds. son muy amables. | Uds
+es | El Sr. López llegó. | Sr
+es | La Sra. Martínez es doctora. | Sra
+es | El Dr. Pérez no está. | Dr
+es | Frutas, p. ej. mangos. | ej
+es | Compré pan, leche, etc. | etc
+es | Vive en EE. UU. desde niño. | EE
+es | ¿Dónde está el baño? | Dónde
+es | ¡Qué bueno! | Qué
+es | ¡Qué bueno! | bueno
+es | Mi amigo Guillermo vive en Tegucigalpa. | Guillermo
+es | Pedro y Juan Carlos fueron a San Pedro Sula. | Sula
+es | La señora Hernández llegó. | Hernández
+es | Dolores vive en La Ceiba. | Dolores
+es | Rosa compró flores. | Rosa
+es | Ángel no vino. | Ángel
+es | Comieron en casa de Mercedes. | Mercedes
+es | Bienvenidos a Honduras. | Bienvenidos
+es | Cantaron todos. | Cantaron
+# fixed phrases and periphrases
+es | Voy a comer ahora. | Voy
+es | Voy a comer ahora. | comer
+es | Acabo de llegar. | Acabo
+es | Tengo que irme. | Tengo
+es | Tengo que irme. | irme
+es | Hay que trabajar. | que
+es | Estoy comiendo. | Estoy
+es | Volvió a llamar. | Volvió
+es | Suelo levantarme temprano. | Suelo
+es | Llevo dos años estudiando español. | Llevo
+es | Dejó de fumar. | Dejó
+es | Se puso a llorar. | puso
+es | A lo mejor viene. | mejor
+es | Sin embargo, no vino. | embargo
+es | Por supuesto que sí. | supuesto
+es | Voy de vez en cuando. | vez
+es | Tengo hambre. | hambre
+es | Tiene veinte años. | Tiene
+es | ¿Qué tal? | tal
+es | Buenos días, doña Marta. | Buenos
+es | Muchas gracias. | Muchas
+es | De nada. | nada
+es | Mucho gusto. | gusto
+es | Con permiso. | permiso
+es | Por favor, ayúdeme. | favor
+es | Lo siento. | siento
+es | Tal vez venga mañana. | vez
+es | Me di cuenta de todo. | cuenta
+es | Echo de menos a mi familia. | Echo
+es | ¿Cuántos años tenés? | Cuántos
+es | Dios le bendiga. | bendiga
+es | Primero Dios. | Primero
+es | Si Dios quiere. | quiere
+es | ¿Qué hora es? | hora
+es | Ya no vive aquí. | Ya
+es | Todavía no ha llegado. | Todavía
+es | Así que no vino. | Así
+es | Debe de estar en casa. | Debe
+es | Sigue lloviendo. | Sigue
+es | Me puse nervioso. | puse
+es | Se volvió loco. | volvió
+es | Llegó a ser presidente. | Llegó
+# church and Bible Spanish
+es | Amaos los unos a los otros. | Amaos
+es | He aquí el Cordero de Dios. | He
+es | Hágase tu voluntad. | Hágase
+es | Venga tu reino. | Venga
+es | Santificado sea tu nombre. | Santificado
+es | Santificado sea tu nombre. | sea
+es | El pan nuestro de cada día, dánoslo hoy. | dánoslo
+es | No nos metas en tentación. | metas
+es | Líbranos del mal. | Líbranos
+es | Bienaventurados los pobres en espíritu. | Bienaventurados
+es | De cierto os digo. | digo
+es | Arrepentíos y creed en el evangelio. | Arrepentíos
+es | Y aconteció que murió. | aconteció
+es | El que cree en él no se pierda. | pierda
+es | Jehová es mi pastor; nada me faltará. | faltará
+es | Porque de tal manera amó Dios al mundo. | amó
+es | Sed santos, porque yo soy santo. | Sed
+es | Dijo Jesús a sus discípulos. | discípulos
+es | En el principio creó Dios los cielos y la tierra. | creó
+es | Y dijo Dios: Sea la luz; y fue la luz. | fue
+es | Gloria a Dios en las alturas. | alturas
+es | Bendito el que viene en el nombre del Señor. | Señor
+# text typed without accents or ñ
+es | Manana voy a la iglesia. | Manana
+es | Como estas? | estas
+es | El nino esta en la escuela. | nino
+es | El nino esta en la escuela. | esta
+es | Que paso ayer? | paso
+es | Tengo veinte anos. | anos
+es | Dios te bendiga, hermano. Que estes bien. | estes
+es | Yo tambien quiero cafe. | tambien
+es | Yo tambien quiero cafe. | cafe
+es | El hablo conmigo ayer. | hablo
+es | Si, senor. | senor
+es | Feliz cumpleanos, mama. | mama
+es | Adios, nos vemos despues. | despues
+es | Mi corazon es tuyo. | corazon
+es | Donde esta el bano? | bano
+es | No se que hacer. | se
+# unknown and rare
+es | El ornitorrinco nada. | ornitorrinco
+es | Compré un smartphone. | smartphone
+es | La burocratización del país. | burocratización
+es | Es increíblemente difícil. | increíblemente
+es | Los desarrolladores trabajan. | desarrolladores
+es | La felicidad es importante. | felicidad
+es | Una situación económica difícil. | económica
+es | El gobierno anunció nuevas medidas. | medidas
+es | La investigación continúa. | investigación

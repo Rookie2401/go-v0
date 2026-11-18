@@ -1,0 +1,102 @@
+es | Hola.
+es | Hola. Me llamo Sam.
+es | Me llamo Ana.
+es | Mucho gusto, Ana.
+es | Mucho gusto, Sam.
+es | Él es Luis.
+es | Hola, Sam.
+es | Hola, Luis. Mucho gusto.
+es | Luis es mi hermano.
+es | Y Ana es mi hermana.
+es | Ana tiene agua.
+es | Luis tiene café.
+es | Ana bebe agua.
+es | Luis bebe café.
+es | Sam no tiene café.
+es | ¿Querés café, Sam?
+es | ¿Querés café, Sam?
+es | No, gracias. Quiero agua.
+es | Aquí tenés agua.
+es | Gracias, Luis.
+es | De nada.
+es | Yo quiero café.
+es | Ana está en la casa.
+es | Luis está en la escuela.
+es | Nico también está en la escuela.
+es | Sam no está en la casa.
+es | Sam está en el mercado.
+es | Ana trabaja en la clínica.
+es | Hoy Ana está cansada.
+es | Luis también está cansado.
+es | ¿Estás cansada, Ana?
+es | Sí, estoy cansada.
+es | ¿Dónde está mi llave?
+es | No sé, Nico.
+es | No está en la mesa.
+es | ¿Está en tu bolsa?
+es | ¡Sí! Aquí está.
+es | Muy bien.
+es | Yo vendo pan en el mercado.
+es | Me gusta el pan.
+es | A mí me gusta el café.
+es | A mí no me gusta el café.
+es | ¿Te gusta el agua, Sam?
+es | Sí, me gusta mucho.
+es | Buenos días, doña Marta.
+es | Buenos días, Sam. ¿Qué querés?
+es | Quiero pan, por favor.
+es | Aquí está el pan.
+es | Gracias, doña Marta.
+es | Hoy hay pan y arroz.
+es | ¿Cuánto cuesta el arroz?
+es | El arroz cuesta veinte lempiras.
+es | ¿Y el pan?
+es | El pan cuesta diez lempiras.
+es | Quiero pan y arroz, por favor.
+es | Mañana es domingo.
+es | El domingo doña Marta va a la iglesia.
+es | Ana y Luis también van a la iglesia.
+es | Sam, ¿vas con nosotros?
+es | Sí, voy con ustedes.
+es | Es domingo, pero hoy llueve mucho.
+es | Estoy cansada y llueve.
+es | Vamos a tomar café en la casa.
+es | Yo no tomo café. Voy a tomar agua.
+es | Yo voy a la iglesia, porque me gusta.
+es | Yo voy con mi abuela.
+es | Me llamo Sam.
+es | Vivo en Honduras.
+es | Mi amiga Ana trabaja en la clínica.
+es | Su hermano Luis trabaja en la escuela.
+es | El domingo vamos a la iglesia.
+es | Me gusta mucho Honduras.
+es | Luis es el maestro de Nico.
+es | Nico, ¿dónde está tu bolsa?
+es | No sé. No está en la mesa.
+es | Tu hermana tiene tu bolsa.
+es | ¡Muy bien! Gracias.
+es | De nada, Nico. ¿Te gusta la escuela?
+es | Sí, me gusta mucho.
+es | Hoy nosotros comemos en la casa de doña Marta.
+es | Ella vende pan, pero hoy hay arroz.
+es | ¿Qué quieren ustedes?
+es | Yo quiero arroz, porque me gusta mucho.
+es | Él es mi amigo Sam. Vive en Honduras.
+es | Mucho gusto, Sam. ¿Cuánto cuesta el pan hoy, abuela?
+es | Para vos no cuesta nada, Nico.
+es | Buenos días, Sam. ¿Vos vas a la iglesia mañana?
+es | Sí, mañana voy con ustedes.
+es | Doña Marta es mi amiga de la iglesia.
+es | ¿Y Sam es tu amigo?
+es | Sí. Él vive en Honduras con nosotros.
+es | ¡Qué bien! Mañana llueve, pero yo voy.
+es | Voy porque amo a Jesús.
+es | A mí también me gusta la iglesia.
+es | Doña Marta vende pan en el mercado.
+es | Ella vende pan para la clínica y para la escuela.
+es | Abuela, ¿te gusta vender pan?
+es | Sí, me gusta mucho. Y a vos, ¿qué te gusta comer?
+es | Me gusta comer arroz.
+es | El pan cuesta diez lempiras y el arroz veinte, pero para vos no cuesta nada.
+es | Luis es el maestro de Nico. Su hermana Ana trabaja en la clínica.
+es | Luis vive con su hermana.

@@ -1,0 +1,136 @@
+{
+ "VERB": {
+  "lemmas": 361,
+  "cells": 24902,
+  "verified": 24344,
+  "generated": 75,
+  "conflicted": 113,
+  "supported": 370,
+  "lemmasNoVerified": 1
+ },
+ "NOUN": {
+  "lemmas": 863,
+  "cells": 1966,
+  "verified": 879,
+  "generated": 883,
+  "conflicted": 10,
+  "supported": 194,
+  "lemmasNoVerified": 22
+ },
+ "ADJ": {
+  "lemmas": 210,
+  "cells": 729,
+  "verified": 506,
+  "generated": 212,
+  "conflicted": 6,
+  "supported": 5,
+  "lemmasNoVerified": 4
+ }
+}
+-- verbs, rules-only cells
+estar: Fin.Ind.Pres.2.Sing.Voseo=estás | Fin.Sub.Pres.2.Sing.Voseo=estés | Fin.Imp.2.Sing.Voseo=está
+dar: Fin.Ind.Pres.2.Sing.Voseo=dás | Fin.Sub.Pres.2.Sing.Voseo=dés
+arrepentir: Inf=arrepentir | Ger=arrepintiendo | Part.Masc.Sing=arrepentido | Part.Fem.Sing=arrepentida | Part.Masc.Plur=arrepentidos | Part.Fem.Plur=arrepentidas | Fin.Ind.Pres.1.Sing=arrepiento | Fin.Ind.Pres.1.Plur=arrepentimos | Fin.Ind.Pres.2.Sing=arrepientes | Fin.Ind.Pres.2.Sing.Voseo=arrepentís | Fin.Ind.Pres.2.Plur=arrepentís | Fin.Ind.Pres.3.Sing=arrepiente | Fin.Ind.Pres.3.Plur=arrepienten | Fin.Ind.Imp.1.Sing=arrepentía | Fin.Ind.Imp.1.Plur=arrepentíamos | Fin.Ind.Imp.2.Sing=arrepentías | Fin.Ind.Imp.2.Plur=arrepentíais | Fin.Ind.Imp.3.Sing=arrepentía | Fin.Ind.Imp.3.Plur=arrepentían | Fin.Ind.Past.1.Sing=arrepentí | Fin.Ind.Past.1.Plur=arrepentimos | Fin.Ind.Past.2.Sing=arrepentiste | Fin.Ind.Past.2.Plur=arrepentisteis | Fin.Ind.Past.3.Sing=arrepintió | Fin.Ind.Past.3.Plur=arrepintieron | Fin.Ind.Fut.1.Sing=arrepentiré | Fin.Ind.Fut.1.Plur=arrepentiremos | Fin.Ind.Fut.2.Sing=arrepentirás | Fin.Ind.Fut.2.Plur=arrepentiréis | Fin.Ind.Fut.3.Sing=arrepentirá | Fin.Ind.Fut.3.Plur=arrepentirán | Fin.Cnd.1.Sing=arrepentiría | Fin.Cnd.1.Plur=arrepentiríamos | Fin.Cnd.2.Sing=arrepentirías | Fin.Cnd.2.Plur=arrepentiríais | Fin.Cnd.3.Sing=arrepentiría | Fin.Cnd.3.Plur=arrepentirían | Fin.Sub.Pres.1.Sing=arrepienta | Fin.Sub.Pres.1.Plur=arrepintamos | Fin.Sub.Pres.2.Sing=arrepientas | Fin.Sub.Pres.2.Sing.Voseo=arrepintás | Fin.Sub.Pres.2.Plur=arrepintáis | Fin.Sub.Pres.3.Sing=arrepienta | Fin.Sub.Pres.3.Plur=arrepientan | Fin.Sub.Imp.1.Sing.Ra=arrepintiera | Fin.Sub.Imp.1.Plur.Ra=arrepintiéramos | Fin.Sub.Imp.2.Sing.Ra=arrepintieras | Fin.Sub.Imp.2.Plur.Ra=arrepintierais | Fin.Sub.Imp.3.Sing.Ra=arrepintiera | Fin.Sub.Imp.3.Plur.Ra=arrepintieran | Fin.Sub.Imp.1.Sing.Se=arrepintiese | Fin.Sub.Imp.1.Plur.Se=arrepintiésemos | Fin.Sub.Imp.2.Sing.Se=arrepintieses | Fin.Sub.Imp.2.Plur.Se=arrepintieseis | Fin.Sub.Imp.3.Sing.Se=arrepintiese | Fin.Sub.Imp.3.Plur.Se=arrepintiesen | Fin.Sub.Fut.1.Sing=arrepintiere | Fin.Sub.Fut.1.Plur=arrepintiéremos | Fin.Sub.Fut.2.Sing=arrepintieres | Fin.Sub.Fut.2.Plur=arrepintiereis | Fin.Sub.Fut.3.Sing=arrepintiere | Fin.Sub.Fut.3.Plur=arrepintieren | Fin.Imp.2.Sing=arrepiente | Fin.Imp.2.Sing.Voseo=arrepentí | Fin.Imp.3.Sing.Form=arrepienta | Fin.Imp.1.Plur=arrepintamos | Fin.Imp.2.Plur=arrepentid | Fin.Imp.3.Plur.Form=arrepientan
+ir: Fin.Ind.Pres.2.Sing.Voseo=ís
+ver: Fin.Ind.Pres.2.Sing.Voseo=vés
+-- adjectives with no verified cell
+marrón cortés peor guay
+-- nouns, dictionary-only cells
+hija: Masc.Sing=hijo | Masc.Plur=hijos
+madre: Masc.Sing=padre | Masc.Plur=padres
+mamá: Masc.Sing=papá | Masc.Plur=papás
+papá: Fem.Sing=mamá | Fem.Plur=mamás
+padre: Fem.Sing=madre | Fem.Plur=madres
+hermana: Masc.Sing=hermano | Masc.Plur=hermanos
+abuela: Masc.Sing=abuelo | Masc.Plur=abuelos
+tía: Masc.Sing=tío | Masc.Plur=tíos
+sobrina: Fem.Sing=sobrina | Fem.Plur=sobrinas
+nieta: Masc.Sing=nieto | Masc.Plur=nietos
+esposa: Masc.Sing=esposo | Masc.Plur=esposos
+niña: Masc.Sing=niño | Masc.Plur=niños
+señora: Masc.Sing=señor | Masc.Plur=señores
+señorita: Masc.Sing=señorito | Masc.Plur=señoritos
+don: Fem.Sing=doña | Fem.Plur=doñas
+doña: Masc.Sing=don | Masc.Plur=dones
+amiga: Fem.Sing=amiga | Fem.Plur=amigas
+vecina: Fem.Sing=vecina | Fem.Plur=vecinas
+ciudadano: Fem.Sing=ciudadana | Fem.Plur=ciudadanas
+suegra: Masc.Sing=suegro | Masc.Plur=suegros
+cuñado: Fem.Sing=cuñada | Fem.Plur=cuñadas
+padrino: Fem.Sing=madrina | Fem.Plur=madrinas
+huérfano: Fem.Sing=huérfana | Fem.Plur=huérfanas
+extranjero: Fem.Sing=extranjera | Fem.Plur=extranjeras
+enemigo: Fem.Sing=enemiga | Fem.Plur=enemigas
+rey: Fem.Sing=reina | Fem.Plur=reinas
+soldado: Fem.Sing=soldada | Fem.Plur=soldadas
+profesora: Fem.Sing=profesora | Fem.Plur=profesoras
+alumno: Fem.Sing=alumna | Fem.Plur=alumnas
+médico: Fem.Sing=médica | Fem.Plur=médicas
+doctor: Fem.Sing=doctora | Fem.Plur=doctoras
+enfermera: Fem.Sing=enfermera | Fem.Plur=enfermeras
+abogado: Fem.Sing=abogada | Fem.Plur=abogadas
+juez: Fem.Sing=juez | Fem.Plur=jueces
+campesino: Fem.Sing=campesina | Fem.Plur=campesinas
+pescador: Fem.Sing=pescadora | Fem.Plur=pescadoras
+panadero: Fem.Sing=panadera | Fem.Plur=panaderas
+carpintero: Fem.Sing=carpintera | Fem.Plur=carpinteras
+cocinero: Fem.Sing=cocinera | Fem.Plur=cocineras
+conductor: Fem.Sing=conductora | Fem.Plur=conductoras
+piloto: Fem.Sing=piloto | Fem.Plur=pilotos
+escritor: Fem.Sing=escritora | Fem.Plur=escritoras
+autor: Fem.Sing=autora | Fem.Plur=autoras
+poeta: Fem.Sing=poeta | Fem.Plur=poetas
+pintor: Fem.Sing=pintora | Fem.Plur=pintoras
+cliente: Fem.Sing=cliente | Fem.Plur=clientes
+obrero: Fem.Sing=obrera | Fem.Plur=obreras
+jefe: Fem.Sing=jefa | Fem.Plur=jefas
+patrón: Fem.Sing=patrona | Fem.Plur=patronas
+empleado: Fem.Sing=empleada | Fem.Plur=empleadas
+secretario: Fem.Sing=secretaria | Fem.Plur=secretarias
+director: Fem.Sing=directora | Fem.Plur=directoras
+ingeniero: Fem.Sing=ingeniera | Fem.Plur=ingenieras
+ladrón: Fem.Sing=ladrona | Fem.Plur=ladronas
+espíritu: Plur=espíritus
+mecánico: Fem.Sing=mecánica | Fem.Plur=mecánicas
+líder: Fem.Sing=líder | Fem.Plur=líderes
+taxi: Plur=taxis
+cerdo: Fem.Sing=cerda | Fem.Plur=cerdas
+perro: Fem.Sing=perra | Fem.Plur=perras
+gato: Fem.Sing=gata | Fem.Plur=gatas
+caballo: Fem.Sing=yegua | Fem.Plur=yeguas
+cabra: Masc.Sing=cabro | Masc.Plur=cabros
+gallina: Masc.Sing=gallo | Masc.Plur=gallos
+gallo: Fem.Sing=gallina | Fem.Plur=gallinas
+pato: Fem.Sing=pata | Fem.Plur=patas
+león: Fem.Sing=leona | Fem.Plur=leonas
+lobo: Fem.Sing=loba | Fem.Plur=lobas
+oso: Fem.Sing=osa | Fem.Plur=osas
+ratón: Fem.Sing=ratona | Fem.Plur=ratonas
+burro: Fem.Sing=burra | Fem.Plur=burras
+conejo: Fem.Sing=coneja | Fem.Plur=conejas
+zorro: Fem.Sing=zorra | Fem.Plur=zorras
+mono: Fem.Sing=mona | Fem.Plur=monas
+cocodrilo: Fem.Sing=cocodrila | Fem.Plur=cocodrilas
+presidente: Fem.Sing=presidenta | Fem.Plur=presidentas
+profeta: Fem.Sing=profetisa | Fem.Plur=profetisas
+discípulo: Fem.Sing=discípula | Fem.Plur=discípulas
+diablo: Fem.Sing=diabla | Fem.Plur=diablas
+salvador: Fem.Sing=salvadora | Fem.Plur=salvadoras
+pecador: Fem.Sing=pecadora | Fem.Plur=pecadoras
+predicador: Fem.Sing=predicadora | Fem.Plur=predicadoras
+pastor: Fem.Sing=pastora | Fem.Plur=pastoras
+sacerdote: Fem.Sing=sacerdotisa | Fem.Plur=sacerdotisas
+obispo: Fem.Sing=obispa | Fem.Plur=obispas
+monje: Fem.Sing=monja | Fem.Plur=monjas
+monja: Masc.Sing=monje | Masc.Plur=monjes
+misionero: Fem.Sing=misionera | Fem.Plur=misioneras
+cordero: Fem.Sing=cordera | Fem.Plur=corderas
+siervo: Fem.Sing=sierva | Fem.Plur=siervas
+esclavo: Fem.Sing=esclava | Fem.Plur=esclavas
+mija: Masc.Sing=mijo | Masc.Plur=mijos
+cipota: Masc.Sing=cipote | Masc.Plur=cipotes
+chamaco: Fem.Sing=chamaca | Fem.Plur=chamacas
+chaval: Fem.Sing=chavala | Fem.Plur=chavalas
+vendedora: Fem.Sing=vendedora | Fem.Plur=vendedoras
+agricultor: Fem.Sing=agricultora | Fem.Plur=agricultoras
+criado: Fem.Sing=criada | Fem.Plur=criadas

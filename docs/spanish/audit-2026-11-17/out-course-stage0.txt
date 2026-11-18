@@ -1,0 +1,225 @@
+ Hola=hola/INTJ"hello"
+
+ Hola=hola/INTJ"hello"
+ Me=me/PRON[1 sg]"me (object pronoun)" llamo=llamar/VERB[1 sg pres]"I call" Sam=Sam/PROPN"Sam (name)"
+
+ Me=me/PRON[1 sg]"me (object pronoun)" llamo=llamar/VERB[1 sg pres]"I call" Ana=Ana/PROPN"Ana (name)"
+
+ Mucho=mucho/ADV"a lot, much" gusto=gustar/VERB[1 sg pres]"I am pleasing" Ana=Ana/PROPN"Ana (name)"
+
+ Mucho=mucho/ADV"a lot, much" gusto=gustar/VERB[1 sg pres]"I am pleasing" Sam=Sam/PROPN"Sam (name)"
+
+ Él=él/PRON[3 sg]"he, him" es=ser/AUX[3 sg pres]"He, she, or it is" Luis=Luis/PROPN"Luis (name)"
+
+ Hola=hola/INTJ"hello" Sam=Sam/PROPN"Sam (name)"
+
+ Hola=hola/INTJ"hello" Luis=Luis/PROPN"Luis (name)"
+ Mucho=mucho/ADV"a lot, much" gusto=gustar/VERB[1 sg pres]"I am pleasing"
+
+ Luis=Luis/PROPN"Luis (name)" es=ser/AUX[3 sg pres]"He, she, or it is" mi=mi/DET[sg]"my" hermano=hermano/NOUN[m sg]"brother"
+
+ Y=y/CONJ"and" Ana=Ana/PROPN"Ana (name)" es=ser/AUX[3 sg pres]"He, she, or it is" mi=mi/DET[sg]"my" hermana=hermana/NOUN[f sg]"sister"
+
+ Ana=Ana/PROPN"Ana (name)" tiene=tener/VERB[3 sg pres]"He, she, or it has" agua=agua/NOUN[f sg]"water"
+
+ Luis=Luis/PROPN"Luis (name)" tiene=tener/VERB[3 sg pres]"He, she, or it has" café=café/NOUN[m sg]"coffee"
+
+ Ana=Ana/PROPN"Ana (name)" bebe=beber/VERB[3 sg pres]"He, she, or it drinks" agua=agua/NOUN[f sg]"water"
+
+ Luis=Luis/PROPN"Luis (name)" bebe=beber/VERB[3 sg pres]"He, she, or it drinks" café=café/NOUN[m sg]"coffee"
+
+ Sam=Sam/PROPN"Sam (name)" no=no/ADV"not" tiene=tener/VERB[3 sg pres]"He, she, or it has" café=café/NOUN[m sg]"coffee"
+
+ Querés=querer/VERB[2 sg pres]"You want" café=café/NOUN[m sg]"coffee" Sam=Sam/PROPN"Sam (name)"
+
+ Querés=querer/VERB[2 sg pres]"You want" café=café/NOUN[m sg]"coffee" Sam=Sam/PROPN"Sam (name)"
+
+ No=no/ADV"not" gracias=gracias/INTJ"thank you"
+ Quiero=querer/VERB[1 sg pres]"I want" agua=agua/NOUN[f sg]"water"
+
+ Aquí=aquí/ADV"here" tenés=tener/VERB[2 sg pres]"You have" agua=agua/NOUN[f sg]"water"
+
+ Gracias=gracias/INTJ"thank you" Luis=Luis/PROPN"Luis (name)"
+
+ De=de/ADP"of, from" nada=nada/PRON[sg]"nothing"
+
+ Yo=yo/PRON[1 sg]"I" quiero=querer/VERB[1 sg pres]"I want" café=café/NOUN[m sg]"coffee"
+
+ Ana=Ana/PROPN"Ana (name)" está=estar/AUX[3 sg pres]"He, she, or it is (sta" en=en/ADP"in, on" la=la/DET[f sg]"the" casa=casa/NOUN[f sg]"house"
+
+ Luis=Luis/PROPN"Luis (name)" está=estar/AUX[3 sg pres]"He, she, or it is (sta" en=en/ADP"in, on" la=la/DET[f sg]"the" escuela=escuela/NOUN[f sg]"school"
+
+ Nico=Nico/PROPN"Nico (name)" también=también/ADV"also" está=estar/AUX[3 sg pres]"He, she, or it is (sta" en=en/ADP"in, on" la=la/DET[f sg]"the" escuela=escuela/NOUN[f sg]"school"
+
+ Sam=Sam/PROPN"Sam (name)" no=no/ADV"not" está=estar/AUX[3 sg pres]"He, she, or it is (sta" en=en/ADP"in, on" la=la/DET[f sg]"the" casa=casa/NOUN[f sg]"house"
+
+ Sam=Sam/PROPN"Sam (name)" está=estar/AUX[3 sg pres]"He, she, or it is (sta" en=en/ADP"in, on" el=el/DET[m sg]"the" mercado=mercado/NOUN[m sg]"market"
+
+ Ana=Ana/PROPN"Ana (name)" trabaja=trabajar/VERB[3 sg pres]"He, she, or it works" en=en/ADP"in, on" la=la/DET[f sg]"the" clínica=clínica/NOUN[f sg]"clinic"
+
+ Hoy=hoy/ADV"today" Ana=Ana/PROPN"Ana (name)" está=estar/AUX[3 sg pres]"He, she, or it is (sta" cansada=cansado/ADJ[f sg]"tired"
+
+ Luis=Luis/PROPN"Luis (name)" también=también/ADV"also" está=estar/AUX[3 sg pres]"He, she, or it is (sta" cansado=cansado/ADJ[m sg]"tired"
+
+ Estás=estar/AUX[2 sg pres]"You are (state" cansada=cansado/ADJ[f sg]"tired" Ana=Ana/PROPN"Ana (name)"
+
+ Sí=sí/INTJ"yes" estoy=estar/AUX[1 sg pres]"I am (state" cansada=cansado/ADJ[f sg]"tired"
+
+ Dónde=dónde/ADV"where" está=estar/AUX[3 sg pres]"He, she, or it is (sta" mi=mi/DET[sg]"my" llave=llave/NOUN[f sg]"key; tap"
+
+ No=no/ADV"not" sé=saber/VERB[1 sg pres]"I know" Nico=Nico/PROPN"Nico (name)"
+
+ No=no/ADV"not" está=estar/AUX[3 sg pres]"He, she, or it is (sta" en=en/ADP"in, on" la=la/DET[f sg]"the" mesa=mesa/NOUN[f sg]"table"
+
+ Está=estar/AUX[3 sg pres]"He, she, or it is (sta" en=en/ADP"in, on" tu=tu/DET[sg]"your (informal)" bolsa=bolsa/NOUN[f sg]"bag"
+
+ Sí=sí/INTJ"yes"
+ Aquí=aquí/ADV"here" está=estar/AUX[3 sg pres]"He, she, or it is (sta"
+
+ Muy=muy/ADV"very" bien=bien/ADV"well"
+
+ Yo=yo/PRON[1 sg]"I" vendo=vender/VERB[1 sg pres]"I sell" pan=pan/NOUN[m sg]"bread" en=en/ADP"in, on" el=el/DET[m sg]"the" mercado=mercado/NOUN[m sg]"market"
+
+ Me=me/PRON[1 sg]"me (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" el=el/DET[m sg]"the" pan=pan/NOUN[m sg]"bread"
+
+ A=a/ADP"to, at (personal a)" mí=mí/PRON[1 sg]"me (after a prepositio" me=me/PRON[1 sg]"me (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" el=el/DET[m sg]"the" café=café/NOUN[m sg]"coffee"
+
+ A=a/ADP"to, at (personal a)" mí=mí/PRON[1 sg]"me (after a prepositio" no=no/ADV"not" me=me/PRON[1 sg]"me (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" el=el/DET[m sg]"the" café=café/NOUN[m sg]"coffee"
+
+ Te=te/PRON[2 sg]"you (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" el=el/DET[m sg]"the" agua=agua/NOUN[f sg]"water" Sam=Sam/PROPN"Sam (name)"
+
+ Sí=sí/INTJ"yes" me=me/PRON[1 sg]"me (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" mucho=mucho/ADV"a lot, much"
+
+ Buenos=bueno/ADJ[m pl]"good" días=día/NOUN[m pl]"day" doña=doña/NOUN[f sg]"Doña (title of respect" Marta=Marta/PROPN"Marta (name)"
+
+ Buenos=bueno/ADJ[m pl]"good" días=día/NOUN[m pl]"day" Sam=Sam/PROPN"Sam (name)"
+ Qué=qué/PRON"what" querés=querer/VERB[2 sg pres]"You want"
+
+ Quiero=querer/VERB[1 sg pres]"I want" pan=pan/NOUN[m sg]"bread" por=por/ADP"by, for" favor=favor/NOUN[m sg]"favour"
+
+ Aquí=aquí/ADV"here" está=estar/AUX[3 sg pres]"He, she, or it is (sta" el=el/DET[m sg]"the" pan=pan/NOUN[m sg]"bread"
+
+ Gracias=gracias/INTJ"thank you" doña=doña/NOUN[f sg]"Doña (title of respect" Marta=Marta/PROPN"Marta (name)"
+
+ Hoy=hoy/ADV"today" hay=haber/AUX[3 sg pres]"He, she, or it has" pan=pan/NOUN[m sg]"bread" y=y/CONJ"and" arroz=arroz/NOUN[m sg]"rice"
+
+ Cuánto=cuánto/DET[m sg]"how much, how many" cuesta=costar/VERB[3 sg pres]"He, she, or it costs" el=el/DET[m sg]"the" arroz=arroz/NOUN[m sg]"rice"
+
+ El=el/DET[m sg]"the" arroz=arroz/NOUN[m sg]"rice" cuesta=costar/VERB[3 sg pres]"He, she, or it costs" veinte=veinte/NUM"twenty" lempiras=lempira/NOUN[pl]"lempira, the currency "
+
+ Y=y/CONJ"and" el=el/DET[m sg]"the" pan=pan/NOUN[m sg]"bread"
+
+ El=el/DET[m sg]"the" pan=pan/NOUN[m sg]"bread" cuesta=costar/VERB[3 sg pres]"He, she, or it costs" diez=diez/NUM"ten" lempiras=lempira/NOUN[pl]"lempira, the currency "
+
+ Quiero=querer/VERB[1 sg pres]"I want" pan=pan/NOUN[m sg]"bread" y=y/CONJ"and" arroz=arroz/NOUN[m sg]"rice" por=por/ADP"by, for" favor=favor/NOUN[m sg]"favour"
+
+ Mañana=mañana/ADV"tomorrow" es=ser/AUX[3 sg pres]"He, she, or it is" domingo=domingo/NOUN[m sg]"Sunday"
+
+ El=el/DET[m sg]"the" domingo=domingo/NOUN[m sg]"Sunday" doña=doña/NOUN[f sg]"Doña (title of respect" Marta=Marta/PROPN"Marta (name)" va=ir/VERB[3 sg pres]"He, she, or it goes" a=a/ADP"to, at (personal a)" la=la/DET[f sg]"the" iglesia=iglesia/NOUN[f sg]"church"
+
+ Ana=Ana/PROPN"Ana (name)" y=y/CONJ"and" Luis=Luis/PROPN"Luis (name)" también=también/ADV"also" van=ir/VERB[3 pl pres]"They go" a=a/ADP"to, at (personal a)" la=la/DET[f sg]"the" iglesia=iglesia/NOUN[f sg]"church"
+
+ Sam=Sam/PROPN"Sam (name)" vas=ir/VERB[2 sg pres]"You go" con=con/ADP"with" nosotros=nosotros/PRON[1 pl]"we"
+
+ Sí=sí/INTJ"yes" voy=ir/VERB[1 sg pres]"I go" con=con/ADP"with" ustedes=ustedes/PRON[3 pl]"you (plural)"
+
+ Es=ser/AUX[3 sg pres]"He, she, or it is" domingo=domingo/NOUN[m sg]"Sunday" pero=pero/CONJ"but" hoy=hoy/ADV"today" llueve=llover/VERB[3 sg pres]"He, she, or it rains" mucho=mucho/ADV"a lot, much"
+
+ Estoy=estar/AUX[1 sg pres]"I am (state" cansada=cansado/ADJ[f sg]"tired" y=y/CONJ"and" llueve=llover/VERB[3 sg pres]"He, she, or it rains"
+
+ Vamos=ir/VERB[1 pl pres]"We go" a=a/ADP"to, at (personal a)" tomar=tomar/VERB[inf]"to take" café=café/NOUN[m sg]"coffee" en=en/ADP"in, on" la=la/DET[f sg]"the" casa=casa/NOUN[f sg]"house"
+
+ Yo=yo/PRON[1 sg]"I" no=no/ADV"not" tomo=tomar/VERB[1 sg pres]"I take" café=café/NOUN[m sg]"coffee"
+ Voy=ir/VERB[1 sg pres]"I go" a=a/ADP"to, at (personal a)" tomar=tomar/VERB[inf]"to take" agua=agua/NOUN[f sg]"water"
+
+ Yo=yo/PRON[1 sg]"I" voy=ir/VERB[1 sg pres]"I go" a=a/ADP"to, at (personal a)" la=la/DET[f sg]"the" iglesia=iglesia/NOUN[f sg]"church" porque=porque/SCONJ"because, for" me=me/PRON[1 sg]"me (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea"
+
+ Yo=yo/PRON[1 sg]"I" voy=ir/VERB[1 sg pres]"I go" con=con/ADP"with" mi=mi/DET[sg]"my" abuela=abuela/NOUN[f sg]"grandmother"
+
+ Me=me/PRON[1 sg]"me (object pronoun)" llamo=llamar/VERB[1 sg pres]"I call" Sam=Sam/PROPN"Sam (name)"
+
+ Vivo=vivo/ADJ[m sg]"alive; lively" en=en/ADP"in, on" Honduras=Honduras/PROPN"Honduras"
+
+ Mi=mi/DET[sg]"my" amiga=amiga/NOUN[f sg]"friend (female)" Ana=Ana/PROPN"Ana (name)" trabaja=trabajar/VERB[3 sg pres]"He, she, or it works" en=en/ADP"in, on" la=la/DET[f sg]"the" clínica=clínica/NOUN[f sg]"clinic"
+
+ Su=su/DET[sg]"his/her/their" hermano=hermano/NOUN[m sg]"brother" Luis=Luis/PROPN"Luis (name)" trabaja=trabajar/VERB[3 sg pres]"He, she, or it works" en=en/ADP"in, on" la=la/DET[f sg]"the" escuela=escuela/NOUN[f sg]"school"
+
+ El=el/DET[m sg]"the" domingo=domingo/NOUN[m sg]"Sunday" vamos=ir/VERB[1 pl pres]"We go" a=a/ADP"to, at (personal a)" la=la/DET[f sg]"the" iglesia=iglesia/NOUN[f sg]"church"
+
+ Me=me/PRON[1 sg]"me (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" mucho=mucho/DET[m sg]"much, a lot of" Honduras=Honduras/PROPN"Honduras"
+
+ Luis=Luis/PROPN"Luis (name)" es=ser/AUX[3 sg pres]"He, she, or it is" el=el/DET[m sg]"the" maestro=maestro/NOUN[m sg]"teacher (male); master" de=de/ADP"of, from" Nico=Nico/PROPN"Nico (name)"
+
+ Nico=Nico/PROPN"Nico (name)" dónde=dónde/ADV"where" está=estar/AUX[3 sg pres]"He, she, or it is (sta" tu=tu/DET[sg]"your (informal)" bolsa=bolsa/NOUN[f sg]"bag"
+
+ No=no/ADV"not" sé=saber/VERB[1 sg pres]"I know"
+ No=no/ADV"not" está=estar/AUX[3 sg pres]"He, she, or it is (sta" en=en/ADP"in, on" la=la/DET[f sg]"the" mesa=mesa/NOUN[f sg]"table"
+
+ Tu=tu/DET[sg]"your (informal)" hermana=hermana/NOUN[f sg]"sister" tiene=tener/VERB[3 sg pres]"He, she, or it has" tu=tu/DET[sg]"your (informal)" bolsa=bolsa/NOUN[f sg]"bag"
+
+ Muy=muy/ADV"very" bien=bien/ADV"well"
+ Gracias=gracias/INTJ"thank you"
+
+ De=de/ADP"of, from" nada=nada/PRON[sg]"nothing" Nico=Nico/PROPN"Nico (name)"
+ Te=te/PRON[2 sg]"you (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" la=la/DET[f sg]"the" escuela=escuela/NOUN[f sg]"school"
+
+ Sí=sí/INTJ"yes" me=me/PRON[1 sg]"me (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" mucho=mucho/ADV"a lot, much"
+
+ Hoy=hoy/ADV"today" nosotros=nosotros/PRON[1 pl]"we" comemos=comer/VERB[1 pl pres]"We eat" en=en/ADP"in, on" la=la/DET[f sg]"the" casa=casa/NOUN[f sg]"house" de=de/ADP"of, from" doña=doña/NOUN[f sg]"Doña (title of respect" Marta=Marta/PROPN"Marta (name)"
+
+ Ella=ella/PRON[3 sg]"she, her" vende=vender/VERB[3 sg pres]"He, she, or it sells" pan=pan/NOUN[m sg]"bread" pero=pero/CONJ"but" hoy=hoy/ADV"today" hay=haber/AUX[3 sg pres]"He, she, or it has" arroz=arroz/NOUN[m sg]"rice"
+
+ Qué=qué/PRON"what" quieren=querer/VERB[3 pl pres]"They want" ustedes=ustedes/PRON[3 pl]"you (plural)"
+
+ Yo=yo/PRON[1 sg]"I" quiero=querer/VERB[1 sg pres]"I want" arroz=arroz/NOUN[m sg]"rice" porque=porque/SCONJ"because, for" me=me/PRON[1 sg]"me (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" mucho=mucho/ADV"a lot, much"
+
+ Él=él/PRON[3 sg]"he, him" es=ser/AUX[3 sg pres]"He, she, or it is" mi=mi/DET[sg]"my" amigo=amigo/NOUN[m sg]"friend (male)" Sam=Sam/PROPN"Sam (name)"
+ Vive=vivir/VERB[3 sg pres]"He, she, or it lives" en=en/ADP"in, on" Honduras=Honduras/PROPN"Honduras"
+
+ Mucho=mucho/ADV"a lot, much" gusto=gustar/VERB[1 sg pres]"I am pleasing" Sam=Sam/PROPN"Sam (name)"
+ Cuánto=cuánto/DET[m sg]"how much, how many" cuesta=costar/VERB[3 sg pres]"He, she, or it costs" el=el/DET[m sg]"the" pan=pan/NOUN[m sg]"bread" hoy=hoy/ADV"today" abuela=abuela/NOUN[f sg]"grandmother"
+
+ Para=para/ADP"for, in order to" vos=vos/PRON[2 sg]"you (informal singular" no=no/ADV"not" cuesta=costar/VERB[3 sg pres]"He, she, or it costs" nada=nada/PRON[sg]"nothing" Nico=Nico/PROPN"Nico (name)"
+
+ Buenos=bueno/ADJ[m pl]"good" días=día/NOUN[m pl]"day" Sam=Sam/PROPN"Sam (name)"
+ Vos=vos/PRON[2 sg]"you (informal singular" vas=ir/VERB[2 sg pres]"You go" a=a/ADP"to, at (personal a)" la=la/DET[f sg]"the" iglesia=iglesia/NOUN[f sg]"church" mañana=mañana/ADV"tomorrow"
+
+ Sí=sí/INTJ"yes" mañana=mañana/ADV"tomorrow" voy=ir/VERB[1 sg pres]"I go" con=con/ADP"with" ustedes=ustedes/PRON[3 pl]"you (plural)"
+
+ Doña=doña/NOUN[f sg]"Doña (title of respect" Marta=Marta/PROPN"Marta (name)" es=ser/AUX[3 sg pres]"He, she, or it is" mi=mi/DET[sg]"my" amiga=amiga/NOUN[f sg]"friend (female)" de=de/ADP"of, from" la=la/DET[f sg]"the" iglesia=iglesia/NOUN[f sg]"church"
+
+ Y=y/CONJ"and" Sam=Sam/PROPN"Sam (name)" es=ser/AUX[3 sg pres]"He, she, or it is" tu=tu/DET[sg]"your (informal)" amigo=amigo/NOUN[m sg]"friend (male)"
+
+ Sí=sí/INTJ"yes"
+ Él=él/PRON[3 sg]"he, him" vive=vivir/VERB[3 sg pres]"He, she, or it lives" en=en/ADP"in, on" Honduras=Honduras/PROPN"Honduras" con=con/ADP"with" nosotros=nosotros/PRON[1 pl]"we"
+
+ Qué=qué/PRON"what" bien=bien/ADV"well"
+ Mañana=mañana/ADV"tomorrow" llueve=llover/VERB[3 sg pres]"He, she, or it rains" pero=pero/CONJ"but" yo=yo/PRON[1 sg]"I" voy=ir/VERB[1 sg pres]"I go"
+
+ Voy=ir/VERB[1 sg pres]"I go" porque=porque/SCONJ"because, for" amo=amar/VERB[1 sg pres]"I love" a=a/ADP"to, at (personal a)" Jesús=Jesús/PROPN"Jesus"
+
+ A=a/ADP"to, at (personal a)" mí=mí/PRON[1 sg]"me (after a prepositio" también=también/ADV"also" me=me/PRON[1 sg]"me (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" la=la/DET[f sg]"the" iglesia=iglesia/NOUN[f sg]"church"
+
+ Doña=doña/NOUN[f sg]"Doña (title of respect" Marta=Marta/PROPN"Marta (name)" vende=vender/VERB[3 sg pres]"He, she, or it sells" pan=pan/NOUN[m sg]"bread" en=en/ADP"in, on" el=el/DET[m sg]"the" mercado=mercado/NOUN[m sg]"market"
+
+ Ella=ella/PRON[3 sg]"she, her" vende=vender/VERB[3 sg pres]"He, she, or it sells" pan=pan/NOUN[m sg]"bread" para=para/ADP"for, in order to" la=la/DET[f sg]"the" clínica=clínica/NOUN[f sg]"clinic" y=y/CONJ"and" para=para/ADP"for, in order to" la=la/DET[f sg]"the" escuela=escuela/NOUN[f sg]"school"
+
+ Abuela=abuela/NOUN[f sg]"grandmother" te=te/PRON[2 sg]"you (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" vender=vender/VERB[inf]"to sell" pan=pan/NOUN[m sg]"bread"
+
+ Sí=sí/INTJ"yes" me=me/PRON[1 sg]"me (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" mucho=mucho/ADV"a lot, much"
+ Y=y/CONJ"and" a=a/ADP"to, at (personal a)" vos=vos/PRON[2 sg]"you (informal singular" qué=qué/PRON"what" te=te/PRON[2 sg]"you (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" comer=comer/VERB[inf]"to eat"
+
+ Me=me/PRON[1 sg]"me (object pronoun)" gusta=gustar/VERB[3 sg pres]"He, she, or it is plea" comer=comer/VERB[inf]"to eat" arroz=arroz/NOUN[m sg]"rice"
+
+ El=el/DET[m sg]"the" pan=pan/NOUN[m sg]"bread" cuesta=costar/VERB[3 sg pres]"He, she, or it costs" diez=diez/NUM"ten" lempiras=lempira/NOUN[pl]"lempira, the currency " y=y/CONJ"and" el=el/DET[m sg]"the" arroz=arroz/NOUN[m sg]"rice" veinte=veinte/NUM"twenty" pero=pero/CONJ"but" para=para/ADP"for, in order to" vos=vos/PRON[2 sg]"you (informal singular" no=no/ADV"not" cuesta=costar/VERB[3 sg pres]"He, she, or it costs" nada=nada/PRON[sg]"nothing"
+
+ Luis=Luis/PROPN"Luis (name)" es=ser/AUX[3 sg pres]"He, she, or it is" el=el/DET[m sg]"the" maestro=maestro/NOUN[m sg]"teacher (male); master" de=de/ADP"of, from" Nico=Nico/PROPN"Nico (name)"
+ Su=su/DET[sg]"his/her/their" hermana=hermana/NOUN[f sg]"sister" Ana=Ana/PROPN"Ana (name)" trabaja=trabajar/VERB[3 sg pres]"He, she, or it works" en=en/ADP"in, on" la=la/DET[f sg]"the" clínica=clínica/NOUN[f sg]"clinic"
+
+ Luis=Luis/PROPN"Luis (name)" vive=vivir/VERB[3 sg pres]"He, she, or it lives" con=con/ADP"with" su=su/DET[sg]"his/her/their" hermana=hermana/NOUN[f sg]"sister"
+
+
+== es: 519 words; no reading 0 (0.0 %); called a name 0 (0.0 %); compound guess 0 (0.0 %); with a confirmed reading 100.0 %
+no reading: 
+called a name: 
+compound guess: 

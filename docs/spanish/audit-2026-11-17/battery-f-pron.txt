@@ -1,0 +1,18 @@
+es | pan | pan
+es | sol | sol
+es | Tres. | Tres
+es | El día. | El
+es | guerra | guerra
+es | pingüino | pingüino
+es | México | México
+es | perro | perro
+es | vaca | vaca
+es | ciudad | ciudad
+es | reloj | reloj
+es | hablan | hablan
+es | joven | joven
+es | examen | examen
+es | Honduras | Honduras
+es | chico | chico
+es | país | país
+es | estoy | estoy

@@ -1,0 +1,863 @@
+Masc pecado	listed:pecado,pecados	PL pecados	DIM pecadito/pecadita	AUG pecadote/pecadota/pecadazo/pecadaza	sin
+Masc corazón	listed:corazón,corazones	PL corazones	DIM corazoncito/corazoncita	AUG 	heart
+Masc día	listed:día,días	PL días	DIM diito/diita	AUG diote/diota/diazo/diaza	day
+Masc año	listed:año,años	PL años	DIM añito/añita	AUG añote/añota/añazo/añaza	year
+Masc mundo	listed:mundo	PL mundos	DIM mundito/mundita	AUG mundote/mundota/mundazo/mundaza	world
+Fem paz	listed:paz	PL paces	DIM pacecito/pacecita	AUG 	peace
+Fem cosa	listed:cosa,cosas	PL cosas	DIM cosito/cosita	AUG cosote/cosota/cosazo/cosaza	thing
+Fem verdad	listed:verdad	PL verdades	DIM verdadito/verdadita	AUG 	truth
+Fem maldad	listed:maldad	PL maldades	DIM maldadito/maldadita	AUG 	wickedness
+Fem vida	listed:vida	PL vidas	DIM vidito/vidita	AUG vidote/vidota/vidazo/vidaza	life
+Fem manera	listed:manera	PL maneras	DIM manerito/manerita	AUG manerote/manerota/manerazo/maneraza	manner, way
+Masc hijo	listed:hijo,hijos	PL hijos	DIM hijito/hijita	AUG hijote/hijota/hijazo/hijaza	son
+Fem hija	listed:hija,hijas	PL hijas	DIM hijito/hijita	AUG hijote/hijota/hijazo/hijaza	daughter
+Fem casa	listed:casa,casas	PL casas	DIM casito/casita	AUG casote/casota/casazo/casaza	house
+Masc libro	listed:libro,libros	PL libros	DIM librito/librita	AUG librote/librota/librazo/libraza	book
+Masc regalo	listed:regalo	PL regalos	DIM regalito/regalita	AUG regalote/regalota/regalazo/regalaza	gift, present
+Masc canto	listed:canto	PL cantos	DIM cantito/cantita	AUG cantote/cantota/cantazo/cantaza	song; singing
+Masc saludo	listed:saludo	PL saludos	DIM saludito/saludita	AUG saludote/saludota/saludazo/saludaza	greeting
+Masc beso	listed:beso	PL besos	DIM besito/besita	AUG besote/besota/besazo/besaza	kiss
+Masc abrazo	listed:abrazo	PL abrazos	DIM abrazito/abrazita	AUG abrazote/abrazota/abrazazo/abrazaza	hug, embrace
+Masc paseo	listed:paseo	PL paseos	DIM paseito/paseita	AUG paseote/paseota/paseazo/paseaza	walk, stroll
+Fem llamada	listed:llamada	PL llamadas	DIM llamadito/llamadita	AUG llamadote/llamadota/llamadazo/llamadaza	call (telephone)
+Fem salida	listed:salida	PL salidas	DIM salidito/salidita	AUG salidote/salidota/salidazo/salidaza	exit; departure
+Fem llegada	listed:llegada	PL llegadas	DIM llegadito/llegadita	AUG llegadote/llegadota/llegadazo/llegadaza	arrival
+Fem vuelta	listed:vuelta	PL vueltas	DIM vueltito/vueltita/vueltecito/vueltecita	AUG vueltote/vueltota/vueltazo/vueltaza	return; turn
+Fem bebida	listed:bebida	PL bebidas	DIM bebidito/bebidita	AUG bebidote/bebidota/bebidazo/bebidaza	drink
+Fem espera	listed:espera	PL esperas	DIM esperito/esperita	AUG esperote/esperota/esperazo/esperaza	wait
+Fem falta	listed:falta	PL faltas	DIM faltito/faltita	AUG faltote/faltota/faltazo/faltaza	lack; fault
+Fem lucha	listed:lucha	PL luchas	DIM luchito/luchita	AUG luchote/luchota/luchazo/luchaza	struggle, fight
+Fem marcha	listed:marcha	PL marchas	DIM marchito/marchita	AUG marchote/marchota/marchazo/marchaza	march; departure
+Fem práctica	listed:práctica	PL prácticas	DIM practiquito/practiquita	AUG practicote/practicota/practicazo/practicaza	practice
+Fem prueba	listed:prueba	PL pruebas	DIM pruebito/pruebita/pruebecito/pruebecita	AUG pruebote/pruebota/pruebazo/pruebaza	test; proof
+Fem muestra	listed:muestra	PL muestras	DIM muestrito/muestrita/muestrecito/muestrecita	AUG muestrote/muestrota/muestrazo/muestraza	sample; sign
+Fem pesca	listed:pesca	PL pescas	DIM pesquito/pesquita	AUG pescote/pescota/pescazo/pescaza	fishing
+Fem carga	listed:carga	PL cargas	DIM carguito/carguita	AUG cargote/cargota/cargazo/cargaza	load, burden
+Fem cita	listed:cita	PL citas	DIM citito/citita	AUG citote/citota/citazo/citaza	appointment; quotation
+Fem firma	listed:firma	PL firmas	DIM firmito/firmita	AUG firmote/firmota/firmazo/firmaza	signature
+Masc grito	listed:grito	PL gritos	DIM gritito/gritita	AUG gritote/gritota/gritazo/gritaza	shout, cry
+Masc golpe	listed:golpe	PL golpes	DIM golpecito/golpecita/golpito/golpita	AUG golpote/golpota	blow, knock
+Masc corte	listed:corte	PL cortes	DIM cortecito/cortecita/cortito/cortita	AUG cortote/cortota	cut
+Masc peso	listed:peso	PL pesos	DIM pesito/pesita	AUG pesote/pesota/pesazo/pesaza	weight; peso (currency)
+Masc gasto	listed:gasto	PL gastos	DIM gastito/gastita	AUG gastote/gastota/gastazo/gastaza	expense
+Masc robo	listed:robo	PL robos	DIM robito/robita	AUG robote/robota/robazo/robaza	theft, robbery
+Masc uso	listed:uso	PL usos	DIM usito/usita	AUG usote/usota/usazo/usaza	use
+Masc apoyo	listed:apoyo	PL apoyos	DIM apoyito/apoyita	AUG apoyote/apoyota/apoyazo/apoyaza	support
+Masc olvido	listed:olvido	PL olvidos	DIM olvidito/olvidita	AUG olvidote/olvidota/olvidazo/olvidaza	forgetting, oblivion
+Masc consejo	listed:consejo	PL consejos	DIM consejito/consejita	AUG consejote/consejota/consejazo/consejaza	advice; council
+Masc anuncio	listed:anuncio	PL anuncios	DIM anunciito/anunciita	AUG anunciote/anunciota/anunciazo/anunciaza	announcement; advertisement
+Masc comienzo	listed:comienzo	PL comienzos	DIM comienzito/comienzita	AUG comienzote/comienzota/comienzazo/comienzaza	beginning
+Masc inicio	listed:inicio	PL inicios	DIM iniciito/iniciita	AUG iniciote/iniciota/iniciazo/iniciaza	start
+Masc vuelo	listed:vuelo	PL vuelos	DIM vuelito/vuelita/vuelecito/vuelecita	AUG vuelote/vuelota/vuelazo/vuelaza	flight
+Masc salto	listed:salto	PL saltos	DIM saltito/saltita	AUG saltote/saltota/saltazo/saltaza	jump
+Masc trato	listed:trato	PL tratos	DIM tratito/tratita	AUG tratote/tratota/tratazo/trataza	deal; treatment
+Masc pedido	listed:pedido	PL pedidos	DIM pedidito/pedidita	AUG pedidote/pedidota/pedidazo/pedidaza	order (of goods); request
+Masc aviso	listed:aviso	PL avisos	DIM avisito/avisita	AUG avisote/avisota/avisazo/avisaza	notice, warning
+Masc permiso	listed:permiso	PL permisos	DIM permisito/permisita	AUG permisote/permisota/permisazo/permisaza	permission
+Fem mirada	listed:mirada	PL miradas	DIM miradito/miradita	AUG miradote/miradota/miradazo/miradaza	look, gaze
+Fem risa	listed:risa	PL risas	DIM risito/risita	AUG risote/risota/risazo/risaza	laughter
+Fem vista	listed:vista	PL vistas	DIM vistito/vistita	AUG vistote/vistota/vistazo/vistaza	view; sight
+Fem oferta	listed:oferta	PL ofertas	DIM ofertito/ofertita	AUG ofertote/ofertota/ofertazo/ofertaza	offer
+Fem mezcla	listed:mezcla	PL mezclas	DIM mezclito/mezclita	AUG mezclote/mezclota/mezclazo/mezclaza	mixture
+Fem limpieza	listed:limpieza	PL limpiezas	DIM limpiezito/limpiezita	AUG limpiezote/limpiezota/limpiezazo/limpiezaza	cleaning; cleanliness
+Fem obra	listed:obra	PL obras	DIM obrito/obrita	AUG obrote/obrota/obrazo/obraza	work (a work of art, a building work)
+Fem misa	listed:misa	PL misas	DIM misito/misita	AUG misote/misota/misazo/misaza	mass (church service)
+Fem copia	listed:copia	PL copias	DIM copiito/copiita/copiecito/copiecita	AUG copiote/copiota/copiazo/copiaza	copy
+Fem cosecha	listed:cosecha	PL cosechas	DIM cosechito/cosechita	AUG cosechote/cosechota/cosechazo/cosechaza	harvest
+Masc traje	listed:traje	PL trajes	DIM trajecito/trajecita/trajito/trajita	AUG trajote/trajota	suit; costume
+Masc hecho	listed:hecho	PL hechos	DIM hechito/hechita	AUG hechote/hechota/hechazo/hechaza	fact; deed
+Masc puesto	listed:puesto	PL puestos	DIM puestito/puestita/puestecito/puestecita	AUG puestote/puestota/puestazo/puestaza	stall; post, position
+Fem madre	listed:madre	PL madres	DIM madrecito/madrecita/madrito/madrita	AUG madrote/madrota	mother
+Fem mamá	listed:mamá	PL mamás	DIM mamacito/mamacita	AUG 	mum, mom
+Masc papá	listed:papá	PL papás	DIM papacito/papacita	AUG 	dad
+Masc padre	listed:padre	PL padres	DIM padrecito/padrecita/padrito/padrita	AUG padrote/padrota	father; priest (Padre)
+Masc hermano	listed:hermano	PL hermanos	DIM hermanito/hermanita	AUG hermanote/hermanota/hermanazo/hermanaza	brother
+Fem hermana	listed:hermana	PL hermanas	DIM hermanito/hermanita	AUG hermanote/hermanota/hermanazo/hermanaza	sister
+Masc abuelo	listed:abuelo	PL abuelos	DIM abuelito/abuelita	AUG abuelote/abuelota/abuelazo/abuelaza	grandfather
+Fem abuela	listed:abuela	PL abuelas	DIM abuelito/abuelita	AUG abuelote/abuelota/abuelazo/abuelaza	grandmother
+Masc tío	listed:tío	PL tíos	DIM tiito/tiita	AUG tiote/tiota/tiazo/tiaza	uncle
+Fem tía	listed:tía	PL tías	DIM tiito/tiita	AUG tiote/tiota/tiazo/tiaza	aunt
+Masc primo	listed:primo	PL primos	DIM primito/primita	AUG primote/primota/primazo/primaza	cousin (male)
+Fem prima	listed:prima	PL primas	DIM primito/primita	AUG primote/primota/primazo/primaza	cousin (female)
+Masc sobrino	listed:sobrino	PL sobrinos	DIM sobrinito/sobrinita	AUG sobrinote/sobrinota/sobrinazo/sobrinaza	nephew
+Fem sobrina	listed:sobrina	PL sobrinas	DIM sobrinito/sobrinita	AUG sobrinote/sobrinota/sobrinazo/sobrinaza	niece
+Masc nieto	listed:nieto	PL nietos	DIM nietito/nietita/nietecito/nietecita	AUG nietote/nietota/nietazo/nietaza	grandson
+Fem nieta	listed:nieta	PL nietas	DIM nietito/nietita/nietecito/nietecita	AUG nietote/nietota/nietazo/nietaza	granddaughter
+Masc esposo	listed:esposo	PL esposos	DIM esposito/esposita	AUG esposote/esposota/esposazo/esposaza	husband
+Fem esposa	listed:esposa	PL esposas	DIM esposito/esposita	AUG esposote/esposota/esposazo/esposaza	wife
+Masc marido	listed:marido	PL maridos	DIM maridito/maridita	AUG maridote/maridota/maridazo/maridaza	husband
+Fem mujer	listed:mujer	PL mujeres	DIM mujercito/mujercita	AUG 	woman; wife
+Masc hombre	listed:hombre	PL hombres	DIM hombrecito/hombrecita/hombrito/hombrita	AUG hombrote/hombrota	man; mankind
+Masc niño	listed:niño	PL niños	DIM niñito/niñita	AUG niñote/niñota/niñazo/niñaza	boy; child
+Fem niña	listed:niña	PL niñas	DIM niñito/niñita	AUG niñote/niñota/niñazo/niñaza	girl
+Masc bebé	listed:bebé	PL bebés	DIM bebecito/bebecita	AUG 	baby
+Masc señor	listed:señor	PL señores	DIM señorcito/señorcita	AUG 	sir, Mr; lord
+Fem señora	listed:señora	PL señoras	DIM señorito/señorita	AUG señorote/señorota/señorazo/señoraza	madam, Mrs; lady
+Fem señorita	listed:señorita	PL señoritas	DIM señoritito/señoritita	AUG señoritote/señoritota/señoritazo/señoritaza	young lady, Miss
+Masc don	listed:don	PL dones	DIM donecito/donecita/doncito/doncita	AUG 	Don (title of respect before a man's first name)
+Fem doña	listed:doña	PL doñas	DIM doñito/doñita	AUG doñote/doñota/doñazo/doñaza	Doña (title of respect before a woman's first name)
+Masc amigo	listed:amigo	PL amigos	DIM amiguito/amiguita	AUG amigote/amigota/amigazo/amigaza	friend (male)
+Fem amiga	listed:amiga	PL amigas	DIM amiguito/amiguita	AUG amigote/amigota/amigazo/amigaza	friend (female)
+Masc vecino	listed:vecino	PL vecinos	DIM vecinito/vecinita	AUG vecinote/vecinota/vecinazo/vecinaza	neighbour (male)
+Fem vecina	listed:vecina	PL vecinas	DIM vecinito/vecinita	AUG vecinote/vecinota/vecinazo/vecinaza	neighbour (female)
+Fem familia	listed:familia	PL familias	DIM familiito/familiita	AUG familiote/familiota/familiazo/familiaza	family
+Fem gente	listed:gente	PL gentes	DIM gentecito/gentecita/gentito/gentita	AUG gentote/gentota	people
+Fem persona	listed:persona	PL personas	DIM personito/personita	AUG personote/personota/personazo/personaza	person
+Masc pueblo	listed:pueblo	PL pueblos	DIM pueblito/pueblita/pueblecito/pueblecita	AUG pueblote/pueblota/pueblazo/pueblaza	town, village; a people
+Masc ciudadano	listed:ciudadano	PL ciudadanos	DIM ciudadanito/ciudadanita	AUG ciudadanote/ciudadanota/ciudadanazo/ciudadanaza	citizen
+Masc suegro	listed:suegro	PL suegros	DIM suegrito/suegrita/suegrecito/suegrecita	AUG suegrote/suegrota/suegrazo/suegraza	father-in-law
+Fem suegra	listed:suegra	PL suegras	DIM suegrito/suegrita/suegrecito/suegrecita	AUG suegrote/suegrota/suegrazo/suegraza	mother-in-law
+Masc cuñado	listed:cuñado	PL cuñados	DIM cuñadito/cuñadita	AUG cuñadote/cuñadota/cuñadazo/cuñadaza	brother-in-law
+Masc padrino	listed:padrino	PL padrinos	DIM padrinito/padrinita	AUG padrinote/padrinota/padrinazo/padrinaza	godfather; best man
+Fem madrina	listed:madrina	PL madrinas	DIM madrinito/madrinita	AUG madrinote/madrinota/madrinazo/madrinaza	godmother
+Masc huérfano	listed:huérfano	PL huérfanos	DIM huerfanito/huerfanita	AUG huerfanote/huerfanota/huerfanazo/huerfanaza	orphan
+Masc extranjero	listed:extranjero	PL extranjeros	DIM extranjerito/extranjerita	AUG extranjerote/extranjerota/extranjerazo/extranjeraza	foreigner
+Masc enemigo	listed:enemigo	PL enemigos	DIM enemiguito/enemiguita	AUG enemigote/enemigota/enemigazo/enemigaza	enemy
+Masc rey	listed:rey	PL reyes	DIM reyecito/reyecita	AUG 	king
+Fem reina	listed:reina	PL reinas	DIM reinito/reinita	AUG reinote/reinota/reinazo/reinaza	queen
+Masc príncipe	listed:príncipe	PL príncipes	DIM principecito/principecita/principito/principita	AUG principote/principota	prince
+Fem princesa	listed:princesa	PL princesas	DIM princesito/princesita	AUG princesote/princesota/princesazo/princesaza	princess
+Masc soldado	listed:soldado	PL soldados	DIM soldadito/soldadita	AUG soldadote/soldadota/soldadazo/soldadaza	soldier
+Masc maestro	listed:maestro	PL maestros	DIM maestrito/maestrita	AUG maestrote/maestrota/maestrazo/maestraza	teacher (male); master
+Fem maestra	listed:maestra	PL maestras	DIM maestrito/maestrita	AUG maestrote/maestrota/maestrazo/maestraza	teacher (female)
+Masc profesor	listed:profesor	PL profesores	DIM profesorcito/profesorcita	AUG 	teacher, professor
+Fem profesora	listed:profesora	PL profesoras	DIM profesorito/profesorita	AUG profesorote/profesorota/profesorazo/profesoraza	teacher, professor (female)
+Fem,Masc estudiante	listed:estudiante	PL estudiantes	DIM estudiantecito/estudiantecita/estudiantito/estudiantita	AUG estudiantote/estudiantota	student
+Masc alumno	listed:alumno	PL alumnos	DIM alumnito/alumnita	AUG alumnote/alumnota/alumnazo/alumnaza	pupil, student
+Masc médico	listed:médico	PL médicos	DIM mediquito/mediquita	AUG medicote/medicota/medicazo/medicaza	doctor
+Masc doctor	listed:doctor	PL doctores	DIM doctorcito/doctorcita	AUG 	doctor
+Fem enfermera	listed:enfermera	PL enfermeras	DIM enfermerito/enfermerita	AUG enfermerote/enfermerota/enfermerazo/enfermeraza	nurse
+Masc abogado	listed:abogado	PL abogados	DIM abogadito/abogadita	AUG abogadote/abogadota/abogadazo/abogadaza	lawyer
+Fem,Masc juez	listed:juez	PL jueces	DIM juececito/juececita	AUG 	judge
+Fem,Masc policía	listed:policía	PL policías	DIM policiito/policiita	AUG policiote/policiota/policiazo/policiaza	police officer
+Masc campesino	listed:campesino	PL campesinos	DIM campesinito/campesinita	AUG campesinote/campesinota/campesinazo/campesinaza	farmer, peasant
+Masc pescador	listed:pescador	PL pescadores	DIM pescadorcito/pescadorcita	AUG 	fisherman
+Masc panadero	listed:panadero	PL panaderos	DIM panaderito/panaderita	AUG panaderote/panaderota/panaderazo/panaderaza	baker
+Masc carpintero	listed:carpintero	PL carpinteros	DIM carpinterito/carpinterita	AUG carpinterote/carpinterota/carpinterazo/carpinteraza	carpenter
+Masc cocinero	listed:cocinero	PL cocineros	DIM cocinerito/cocinerita	AUG cocinerote/cocinerota/cocinerazo/cocineraza	cook, chef
+Masc conductor	listed:conductor	PL conductores	DIM conductorcito/conductorcita	AUG 	driver
+Fem,Masc chofer	listed:chofer	PL choferes	DIM chofercito/chofercita	AUG 	driver (hired)
+Fem,Masc piloto	listed:piloto	PL pilotos	DIM pilotito/pilotita	AUG pilotote/pilotota/pilotazo/pilotaza	pilot
+Masc músico	listed:músico	PL músicos	DIM musiquito/musiquita	AUG musicote/musicota/musicazo/musicaza	musician
+Fem,Masc cantante	listed:cantante	PL cantantes	DIM cantantecito/cantantecita/cantantito/cantantita	AUG cantantote/cantantota	singer
+Masc escritor	listed:escritor	PL escritores	DIM escritorcito/escritorcita	AUG 	writer
+Masc autor	listed:autor	PL autores	DIM autorcito/autorcita	AUG 	author
+Fem,Masc poeta	listed:poeta	PL poetas	DIM poetito/poetita	AUG poetote/poetota/poetazo/poetaza	poet
+Fem,Masc artista	listed:artista	PL artistas	DIM artistito/artistita	AUG artistote/artistota/artistazo/artistaza	artist
+Masc pintor	listed:pintor	PL pintores	DIM pintorcito/pintorcita	AUG 	painter
+Masc vendedor	listed:vendedor	PL vendedores	DIM vendedorcito/vendedorcita	AUG 	seller, salesman
+Fem,Masc comerciante	listed:comerciante	PL comerciantes	DIM comerciantecito/comerciantecita/comerciantito/comerciantita	AUG comerciantote/comerciantota	merchant, trader
+Fem,Masc cliente	listed:cliente	PL clientes	DIM clientecito/clientecita/clientito/clientita	AUG clientote/clientota	customer
+Masc obrero	listed:obrero	PL obreros	DIM obrerito/obrerita	AUG obrerote/obrerota/obrerazo/obreraza	worker, labourer
+Masc jefe	listed:jefe	PL jefes	DIM jefecito/jefecita/jefito/jefita	AUG jefote/jefota	boss, chief
+Masc patrón	listed:patrón	PL patrones	DIM patroncito/patroncita	AUG 	boss; master
+Masc empleado	listed:empleado	PL empleados	DIM empleadito/empleadita	AUG empleadote/empleadota/empleadazo/empleadaza	employee
+Masc secretario	listed:secretario	PL secretarios	DIM secretariito/secretariita	AUG secretariote/secretariota/secretariazo/secretariaza	secretary
+Masc director	listed:director	PL directores	DIM directorcito/directorcita	AUG 	director, head
+Masc ingeniero	listed:ingeniero	PL ingenieros	DIM ingenierito/ingenierita	AUG ingenierote/ingenierota/ingenierazo/ingenieraza	engineer
+Masc ladrón	listed:ladrón	PL ladrones	DIM ladroncito/ladroncita	AUG 	thief
+Fem cabeza	listed:cabeza	PL cabezas	DIM cabezito/cabezita	AUG cabezote/cabezota/cabezazo/cabezaza	head
+Fem cara	listed:cara	PL caras	DIM carito/carita	AUG carote/carota/carazo/caraza	face
+Masc ojo	listed:ojo	PL ojos	DIM ojito/ojita	AUG ojote/ojota/ojazo/ojaza	eye
+Fem oreja	listed:oreja	PL orejas	DIM orejito/orejita	AUG orejote/orejota/orejazo/orejaza	ear (outer)
+Masc oído	listed:oído	PL oídos	DIM oidito/oidita	AUG oidote/oidota/oidazo/oidaza	hearing; inner ear
+Fem nariz	listed:nariz	PL narices	DIM naricito/naricita	AUG 	nose
+Fem boca	listed:boca	PL bocas	DIM boquito/boquita	AUG bocote/bocota/bocazo/bocaza	mouth
+Masc labio	listed:labio	PL labios	DIM labiito/labiita/labiecito/labiecita	AUG labiote/labiota/labiazo/labiaza	lip
+Masc diente	listed:diente	PL dientes	DIM dientecito/dientecita/dientito/dientita	AUG dientote/dientota	tooth
+Fem lengua	listed:lengua	PL lenguas	DIM lenguito/lenguita/lenguecito/lenguecita	AUG lenguote/lenguota/lenguazo/lenguaza	tongue; language
+Masc cuello	listed:cuello	PL cuellos	DIM cuellito/cuellita/cuellecito/cuellecita	AUG cuellote/cuellota/cuellazo/cuellaza	neck
+Fem garganta	listed:garganta	PL gargantas	DIM gargantito/gargantita	AUG gargantote/gargantota/gargantazo/gargantaza	throat
+Masc hombro	listed:hombro	PL hombros	DIM hombrito/hombrita	AUG hombrote/hombrota/hombrazo/hombraza	shoulder
+Masc brazo	listed:brazo	PL brazos	DIM brazito/brazita	AUG brazote/brazota/brazazo/brazaza	arm
+Fem mano	listed:mano	PL manos	DIM manito/manita	AUG manote/manota/manazo/manaza	hand
+Masc dedo	listed:dedo	PL dedos	DIM dedito/dedita	AUG dedote/dedota/dedazo/dedaza	finger, toe
+Fem uña	listed:uña	PL uñas	DIM uñito/uñita	AUG uñote/uñota/uñazo/uñaza	nail
+Masc pecho	listed:pecho	PL pechos	DIM pechito/pechita	AUG pechote/pechota/pechazo/pechaza	chest
+Fem espalda	listed:espalda	PL espaldas	DIM espaldito/espaldita	AUG espaldote/espaldota/espaldazo/espaldaza	back
+Masc estómago	listed:estómago	PL estómagos	DIM estomaguito/estomaguita	AUG estomagote/estomagota/estomagazo/estomagaza	stomach
+Fem pierna	listed:pierna	PL piernas	DIM piernito/piernita/piernecito/piernecita	AUG piernote/piernota/piernazo/piernaza	leg
+Fem rodilla	listed:rodilla	PL rodillas	DIM rodillito/rodillita	AUG rodillote/rodillota/rodillazo/rodillaza	knee
+Masc pie	listed:pie	PL pies	DIM piecito/piecita	AUG piote/piota	foot
+Fem piel	listed:piel	PL pieles	DIM pielecito/pielecita/pielcito/pielcita	AUG 	skin
+Masc pelo	listed:pelo	PL pelos	DIM pelito/pelita	AUG pelote/pelota/pelazo/pelaza	hair
+Masc cabello	listed:cabello	PL cabellos	DIM cabellito/cabellita	AUG cabellote/cabellota/cabellazo/cabellaza	hair (on the head)
+Fem barba	listed:barba	PL barbas	DIM barbito/barbita	AUG barbote/barbota/barbazo/barbaza	beard
+Fem sangre	listed:sangre	PL sangres	DIM sangrecito/sangrecita/sangrito/sangrita	AUG sangrote/sangrota	blood
+Masc hueso	listed:hueso	PL huesos	DIM huesito/huesita/huesecito/huesecita	AUG huesote/huesota/huesazo/huesaza	bone
+Masc cuerpo	listed:cuerpo	PL cuerpos	DIM cuerpito/cuerpita/cuerpecito/cuerpecita	AUG cuerpote/cuerpota/cuerpazo/cuerpaza	body
+Fem alma	listed:alma	PL almas	DIM almito/almita	AUG almote/almota/almazo/almaza	soul
+Masc espíritu	listed:espíritu	PL -	DIM espirituito/espirituita	AUG 	spirit
+Fem mente	listed:mente	PL mentes	DIM mentecito/mentecita/mentito/mentita	AUG mentote/mentota	mind
+Fem voz	listed:voz	PL voces	DIM vocecito/vocecita	AUG 	voice
+Masc cerebro	listed:cerebro	PL cerebros	DIM cerebrito/cerebrita	AUG cerebrote/cerebrota/cerebrazo/cerebraza	brain
+Fem mejilla	listed:mejilla	PL mejillas	DIM mejillito/mejillita	AUG mejillote/mejillota/mejillazo/mejillaza	cheek
+Fem sonrisa	listed:sonrisa	PL sonrisas	DIM sonrisito/sonrisita	AUG sonrisote/sonrisota/sonrisazo/sonrisaza	smile
+Fem lágrima	listed:lágrima	PL lágrimas	DIM lagrimito/lagrimita	AUG lagrimote/lagrimota/lagrimazo/lagrimaza	tear
+Masc aliento	listed:aliento	PL alientos	DIM alientito/alientita	AUG alientote/alientota/alientazo/alientaza	breath
+Fem salud	listed:salud	PL saludes	DIM saludito/saludita	AUG 	health
+Fem enfermedad	listed:enfermedad	PL enfermedades	DIM enfermedadito/enfermedadita	AUG 	illness
+Masc dolor	listed:dolor	PL dolores	DIM dolorcito/dolorcita	AUG 	pain, ache
+Fem fiebre	listed:fiebre	PL fiebres	DIM fiebrecito/fiebrecita/fiebrito/fiebrita	AUG fiebrote/fiebrota	fever
+Fem medicina	listed:medicina	PL medicinas	DIM medicinito/medicinita	AUG medicinote/medicinota/medicinazo/medicinaza	medicine
+Masc hospital	listed:hospital	PL hospitales	DIM hospitalito/hospitalita	AUG 	hospital
+Fem clínica	listed:clínica	PL clínicas	DIM cliniquito/cliniquita	AUG clinicote/clinicota/clinicazo/clinicaza	clinic
+Fem pastilla	listed:pastilla	PL pastillas	DIM pastillito/pastillita	AUG pastillote/pastillota/pastillazo/pastillaza	pill, tablet
+Fem receta	listed:receta	PL recetas	DIM recetito/recetita	AUG recetote/recetota/recetazo/recetaza	prescription; recipe
+Fem tos	listed:tos	PL toses	DIM tosecito/tosecita	AUG 	cough
+Fem vacuna	listed:vacuna	PL vacunas	DIM vacunito/vacunita	AUG vacunote/vacunota/vacunazo/vacunaza	vaccine
+Fem herida	listed:herida	PL heridas	DIM heridito/heridita	AUG heridote/heridota/heridazo/heridaza	wound, injury
+Masc dengue	listed:dengue	PL dengues	DIM denguecito/denguecita/denguito/denguita	AUG denguote/denguota	dengue fever
+Fem brigada	listed:brigada	PL brigadas	DIM brigadito/brigadita	AUG brigadote/brigadota/brigadazo/brigadaza	team of volunteers (brigada médica)
+Fem crema	listed:crema	PL cremas	DIM cremito/cremita	AUG cremote/cremota/cremazo/cremaza	cream
+Masc horario	listed:horario	PL horarios	DIM horariito/horariita	AUG horariote/horariota/horariazo/horariaza	timetable, schedule
+Masc mecánico	listed:mecánico	PL mecánicos	DIM mecaniquito/mecaniquita	AUG mecanicote/mecanicota/mecanicazo/mecanicaza	mechanic
+Masc correo	listed:correo	PL correos	DIM correito/correita	AUG correote/correota/correazo/correaza	mail; email
+Fem ducha	listed:ducha	PL duchas	DIM duchito/duchita	AUG duchote/duchota/duchazo/duchaza	shower
+Masc jabón	listed:jabón	PL jabones	DIM jaboncito/jaboncita	AUG 	soap
+Fem toalla	listed:toalla	PL toallas	DIM toallito/toallita	AUG toallote/toallota/toallazo/toallaza	towel
+Masc versículo	listed:versículo	PL versículos	DIM versiculito/versiculita	AUG versiculote/versiculota/versiculazo/versiculaza	verse (of the Bible)
+Masc capítulo	listed:capítulo	PL capítulos	DIM capitulito/capitulita	AUG capitulote/capitulota/capitulazo/capitulaza	chapter
+Masc taller	listed:taller	PL talleres	DIM tallercito/tallercita	AUG 	workshop, repair shop
+Masc ministerio	listed:ministerio	PL ministerios	DIM ministeriito/ministeriita	AUG ministeriote/ministeriota/ministeriazo/ministeriaza	ministry
+Fem,Masc líder	listed:líder	PL líderes	DIM lidercito/lidercita	AUG 	leader
+Fem petición	listed:petición	PL peticiones	DIM peticioncito/peticioncita	AUG 	request; prayer request
+Masc taxi	listed:taxi	PL -	DIM taxiito/taxiita	AUG 	taxi
+Masc hogar	listed:hogar	PL hogares	DIM hogarcito/hogarcita	AUG 	home, household
+Masc cuarto	listed:cuarto	PL cuartos	DIM cuartito/cuartita	AUG cuartote/cuartota/cuartazo/cuartaza	room; quarter
+Fem habitación	listed:habitación	PL habitaciones	DIM habitacioncito/habitacioncita	AUG 	room
+Fem cocina	listed:cocina	PL cocinas	DIM cocinito/cocinita	AUG cocinote/cocinota/cocinazo/cocinaza	kitchen
+Masc baño	listed:baño	PL baños	DIM bañito/bañita	AUG bañote/bañota/bañazo/bañaza	bathroom; bath
+Fem sala	listed:sala	PL salas	DIM salito/salita	AUG salote/salota/salazo/salaza	living room, hall
+Masc comedor	listed:comedor	PL comedores	DIM comedorcito/comedorcita	AUG 	dining room
+Masc dormitorio	listed:dormitorio	PL dormitorios	DIM dormitoriito/dormitoriita	AUG dormitoriote/dormitoriota/dormitoriazo/dormitoriaza	bedroom
+Masc patio	listed:patio	PL patios	DIM patiito/patiita/patiecito/patiecita	AUG patiote/patiota/patiazo/patiaza	yard, courtyard
+Masc jardín	listed:jardín	PL jardines	DIM jardincito/jardincita	AUG 	garden
+Fem puerta	listed:puerta	PL puertas	DIM puertito/puertita/puertecito/puertecita	AUG puertote/puertota/puertazo/puertaza	door
+Fem ventana	listed:ventana	PL ventanas	DIM ventanito/ventanita	AUG ventanote/ventanota/ventanazo/ventanaza	window
+Masc techo	listed:techo	PL techos	DIM techito/techita	AUG techote/techota/techazo/techaza	roof, ceiling
+Fem pared	listed:pared	PL paredes	DIM paredito/paredita	AUG 	wall
+Masc suelo	listed:suelo	PL suelos	DIM suelito/suelita/suelecito/suelecita	AUG suelote/suelota/suelazo/suelaza	floor, ground
+Masc piso	listed:piso	PL pisos	DIM pisito/pisita	AUG pisote/pisota/pisazo/pisaza	floor; flat
+Fem escalera	listed:escalera	PL escaleras	DIM escalerito/escalerita	AUG escalerote/escalerota/escalerazo/escaleraza	stairs, ladder
+Fem cama	listed:cama	PL camas	DIM camito/camita	AUG camote/camota/camazo/camaza	bed
+Fem mesa	listed:mesa	PL mesas	DIM mesito/mesita	AUG mesote/mesota/mesazo/mesaza	table
+Fem silla	listed:silla	PL sillas	DIM sillito/sillita	AUG sillote/sillota/sillazo/sillaza	chair
+Masc sofá	listed:sofá	PL sofás	DIM sofacito/sofacita	AUG 	sofa
+Masc armario	listed:armario	PL armarios	DIM armariito/armariita	AUG armariote/armariota/armariazo/armariaza	wardrobe, cupboard
+Masc estante	listed:estante	PL estantes	DIM estantecito/estantecita/estantito/estantita	AUG estantote/estantota	shelf
+Fem lámpara	listed:lámpara	PL lámparas	DIM lamparito/lamparita	AUG lamparote/lamparota/lamparazo/lamparaza	lamp
+Fem luz	listed:luz	PL luces	DIM lucecito/lucecita	AUG 	light
+Fem llave	listed:llave	PL llaves	DIM llavecito/llavecita/llavito/llavita	AUG llavote/llavota	key; tap
+Masc espejo	listed:espejo	PL espejos	DIM espejito/espejita	AUG espejote/espejota/espejazo/espejaza	mirror
+Fem cortina	listed:cortina	PL cortinas	DIM cortinito/cortinita	AUG cortinote/cortinota/cortinazo/cortinaza	curtain
+Fem alfombra	listed:alfombra	PL alfombras	DIM alfombrito/alfombrita	AUG alfombrote/alfombrota/alfombrazo/alfombraza	rug, carpet
+Fem almohada	listed:almohada	PL almohadas	DIM almohadito/almohadita	AUG almohadote/almohadota/almohadazo/almohadaza	pillow
+Fem manta	listed:manta	PL mantas	DIM mantito/mantita	AUG mantote/mantota/mantazo/mantaza	blanket
+Fem sábana	listed:sábana	PL sábanas	DIM sabanito/sabanita	AUG sabanote/sabanota/sabanazo/sabanaza	sheet
+Masc plato	listed:plato	PL platos	DIM platito/platita	AUG platote/platota/platazo/plataza	plate, dish
+Masc vaso	listed:vaso	PL vasos	DIM vasito/vasita	AUG vasote/vasota/vasazo/vasaza	glass
+Fem taza	listed:taza	PL tazas	DIM tazito/tazita	AUG tazote/tazota/tazazo/tazaza	cup
+Fem copa	listed:copa	PL copas	DIM copito/copita	AUG copote/copota/copazo/copaza	wine glass; cup (trophy)
+Masc cuchillo	listed:cuchillo	PL cuchillos	DIM cuchillito/cuchillita	AUG cuchillote/cuchillota/cuchillazo/cuchillaza	knife
+Masc tenedor	listed:tenedor	PL tenedores	DIM tenedorcito/tenedorcita	AUG 	fork
+Fem cuchara	listed:cuchara	PL cucharas	DIM cucharito/cucharita	AUG cucharote/cucharota/cucharazo/cucharaza	spoon
+Fem olla	listed:olla	PL ollas	DIM ollito/ollita	AUG ollote/ollota/ollazo/ollaza	pot
+Fem,Masc sartén	listed:sartén	PL sartenes	DIM sartencito/sartencita	AUG 	frying pan
+Fem botella	listed:botella	PL botellas	DIM botellito/botellita	AUG botellote/botellota/botellazo/botellaza	bottle
+Fem jarra	listed:jarra	PL jarras	DIM jarrito/jarrita	AUG jarrote/jarrota/jarrazo/jarraza	jug
+Masc cubo	listed:cubo	PL cubos	DIM cubito/cubita	AUG cubote/cubota/cubazo/cubaza	bucket
+Fem escoba	listed:escoba	PL escobas	DIM escobito/escobita	AUG escobote/escobota/escobazo/escobaza	broom
+Fem basura	listed:basura	PL basuras	DIM basurito/basurita	AUG basurote/basurota/basurazo/basuraza	rubbish
+Masc reloj	listed:reloj	PL relojes	DIM relojito/relojita	AUG 	clock, watch
+Fem televisión	listed:televisión	PL televisiones	DIM televisioncito/televisioncita	AUG 	television
+Masc teléfono	listed:teléfono	PL teléfonos	DIM telefonito/telefonita	AUG telefonote/telefonota/telefonazo/telefonaza	telephone
+Fem carta	listed:carta	PL cartas	DIM cartito/cartita	AUG cartote/cartota/cartazo/cartaza	letter; card; menu
+Masc papel	listed:papel	PL papeles	DIM papelito/papelita	AUG 	paper
+Masc lápiz	listed:lápiz	PL lápices	DIM lapicito/lapicita	AUG 	pencil
+Fem pluma	listed:pluma	PL plumas	DIM plumito/plumita	AUG plumote/plumota/plumazo/plumaza	pen; feather
+Masc cuaderno	listed:cuaderno	PL cuadernos	DIM cuadernito/cuadernita	AUG cuadernote/cuadernota/cuadernazo/cuadernaza	notebook
+Fem mochila	listed:mochila	PL mochilas	DIM mochilito/mochilita	AUG mochilote/mochilota/mochilazo/mochilaza	backpack
+Fem bolsa	listed:bolsa	PL bolsas	DIM bolsito/bolsita	AUG bolsote/bolsota/bolsazo/bolsaza	bag
+Fem maleta	listed:maleta	PL maletas	DIM maletito/maletita	AUG maletote/maletota/maletazo/maletaza	suitcase
+Fem caja	listed:caja	PL cajas	DIM cajito/cajita	AUG cajote/cajota/cajazo/cajaza	box
+Fem cuerda	listed:cuerda	PL cuerdas	DIM cuerdito/cuerdita/cuerdecito/cuerdecita	AUG cuerdote/cuerdota/cuerdazo/cuerdaza	rope, string
+Fem cadena	listed:cadena	PL cadenas	DIM cadenito/cadenita	AUG cadenote/cadenota/cadenazo/cadenaza	chain
+Masc martillo	listed:martillo	PL martillos	DIM martillito/martillita	AUG martillote/martillota/martillazo/martillaza	hammer
+Masc clavo	listed:clavo	PL clavos	DIM clavito/clavita	AUG clavote/clavota/clavazo/clavaza	nail
+Fem herramienta	listed:herramienta	PL herramientas	DIM herramientito/herramientita	AUG herramientote/herramientota/herramientazo/herramientaza	tool
+Fem ropa	listed:ropa	PL ropas	DIM ropito/ropita	AUG ropote/ropota/ropazo/ropaza	clothes
+Fem camisa	listed:camisa	PL camisas	DIM camisito/camisita	AUG camisote/camisota/camisazo/camisaza	shirt
+Fem camiseta	listed:camiseta	PL camisetas	DIM camisetito/camisetita	AUG camisetote/camisetota/camisetazo/camisetaza	T-shirt
+Masc pantalón	listed:pantalón	PL pantalones	DIM pantaloncito/pantaloncita	AUG 	trousers
+Fem falda	listed:falda	PL faldas	DIM faldito/faldita	AUG faldote/faldota/faldazo/faldaza	skirt
+Masc vestido	listed:vestido	PL vestidos	DIM vestidito/vestidita	AUG vestidote/vestidota/vestidazo/vestidaza	dress
+Masc zapato	listed:zapato	PL zapatos	DIM zapatito/zapatita	AUG zapatote/zapatota/zapatazo/zapataza	shoe
+Fem bota	listed:bota	PL botas	DIM botito/botita	AUG botote/botota/botazo/botaza	boot
+Masc sombrero	listed:sombrero	PL sombreros	DIM sombrerito/sombrerita	AUG sombrerote/sombrerota/sombrerazo/sombreraza	hat
+Fem gorra	listed:gorra	PL gorras	DIM gorrito/gorrita	AUG gorrote/gorrota/gorrazo/gorraza	cap
+Masc abrigo	listed:abrigo	PL abrigos	DIM abriguito/abriguita	AUG abrigote/abrigota/abrigazo/abrigaza	coat
+Fem chaqueta	listed:chaqueta	PL chaquetas	DIM chaquetito/chaquetita	AUG chaquetote/chaquetota/chaquetazo/chaquetaza	jacket
+Masc calcetín	listed:calcetín	PL calcetines	DIM calcetincito/calcetincita	AUG 	sock
+Masc cinturón	listed:cinturón	PL cinturones	DIM cinturoncito/cinturoncita	AUG 	belt
+Masc anillo	listed:anillo	PL anillos	DIM anillito/anillita	AUG anillote/anillota/anillazo/anillaza	ring
+Masc collar	listed:collar	PL collares	DIM collarcito/collarcita	AUG 	necklace
+Masc bolsillo	listed:bolsillo	PL bolsillos	DIM bolsillito/bolsillita	AUG bolsillote/bolsillota/bolsillazo/bolsillaza	pocket
+Masc botón	listed:botón	PL botones	DIM botoncito/botoncita	AUG 	button
+Fem tela	listed:tela	PL telas	DIM telito/telita	AUG telote/telota/telazo/telaza	cloth, fabric
+Fem comida	listed:comida	PL comidas	DIM comidito/comidita	AUG comidote/comidota/comidazo/comidaza	food; meal
+Masc desayuno	listed:desayuno	PL desayunos	DIM desayunito/desayunita	AUG desayunote/desayunota/desayunazo/desayunaza	breakfast
+Masc almuerzo	listed:almuerzo	PL almuerzos	DIM almuerzito/almuerzita	AUG almuerzote/almuerzota/almuerzazo/almuerzaza	lunch
+Fem cena	listed:cena	PL cenas	DIM cenito/cenita	AUG cenote/cenota/cenazo/cenaza	dinner, supper
+Masc pan	listed:pan	PL panes	DIM panecito/panecita/pancito/pancita	AUG 	bread
+Fem agua	listed:agua	PL aguas	DIM aguito/aguita/aguecito/aguecita	AUG aguote/aguota/aguazo/aguaza	water
+Fem leche	listed:leche	PL leches	DIM lechecito/lechecita/lechito/lechita	AUG lechote/lechota	milk
+Masc café	listed:café	PL cafés	DIM cafecito/cafecita	AUG 	coffee
+Masc té	listed:té	PL tés	DIM tecito/tecita	AUG 	tea
+Fem cerveza	listed:cerveza	PL cervezas	DIM cervezito/cervezita	AUG cervezote/cervezota/cervezazo/cervezaza	beer
+Masc vino	listed:vino	PL vinos	DIM vinito/vinita	AUG vinote/vinota/vinazo/vinaza	wine
+Fem sopa	listed:sopa	PL sopas	DIM sopito/sopita	AUG sopote/sopota/sopazo/sopaza	soup
+Masc arroz	listed:arroz	PL arroces	DIM arrocito/arrocita	AUG 	rice
+Fem tortilla	listed:tortilla	PL tortillas	DIM tortillito/tortillita	AUG tortillote/tortillota/tortillazo/tortillaza	tortilla
+Fem carne	listed:carne	PL carnes	DIM carnecito/carnecita/carnito/carnita	AUG carnote/carnota	meat
+Masc pollo	listed:pollo	PL pollos	DIM pollito/pollita	AUG pollote/pollota/pollazo/pollaza	chicken
+Masc pescado	listed:pescado	PL pescados	DIM pescadito/pescadita	AUG pescadote/pescadota/pescadazo/pescadaza	fish (as food)
+Masc cerdo	listed:cerdo	PL cerdos	DIM cerdito/cerdita	AUG cerdote/cerdota/cerdazo/cerdaza	pig; pork
+Masc huevo	listed:huevo	PL huevos	DIM huevito/huevita/huevecito/huevecita	AUG huevote/huevota/huevazo/huevaza	egg
+Masc queso	listed:queso	PL quesos	DIM quesito/quesita	AUG quesote/quesota/quesazo/quesaza	cheese
+Fem mantequilla	listed:mantequilla	PL mantequillas	DIM mantequillito/mantequillita	AUG mantequillote/mantequillota/mantequillazo/mantequillaza	butter
+Fem,Masc azúcar	listed:azúcar	PL azúcares	DIM azucarcito/azucarcita	AUG 	sugar
+Fem sal	listed:sal	PL sales	DIM salecito/salecita/salcito/salcita	AUG 	salt
+Masc aceite	listed:aceite	PL aceites	DIM aceitecito/aceitecita/aceitito/aceitita	AUG aceitote/aceitota	oil
+Fem fruta	listed:fruta	PL frutas	DIM frutito/frutita	AUG frutote/frutota/frutazo/frutaza	fruit
+Fem manzana	listed:manzana	PL manzanas	DIM manzanito/manzanita	AUG manzanote/manzanota/manzanazo/manzanaza	apple
+Fem naranja	listed:naranja	PL naranjas	DIM naranjito/naranjita	AUG naranjote/naranjota/naranjazo/naranjaza	orange
+Masc limón	listed:limón	PL limones	DIM limoncito/limoncita	AUG 	lemon
+Masc plátano	listed:plátano	PL plátanos	DIM platanito/platanita	AUG platanote/platanota/platanazo/platanaza	plantain; in Spain, banana
+Fem piña	listed:piña	PL piñas	DIM piñito/piñita	AUG piñote/piñota/piñazo/piñaza	pineapple
+Fem uva	listed:uva	PL uvas	DIM uvito/uvita	AUG uvote/uvota/uvazo/uvaza	grape
+Fem fresa	listed:fresa	PL fresas	DIM fresito/fresita	AUG fresote/fresota/fresazo/fresaza	strawberry
+Masc tomate	listed:tomate	PL tomates	DIM tomatecito/tomatecita/tomatito/tomatita	AUG tomatote/tomatota	tomato
+Fem cebolla	listed:cebolla	PL cebollas	DIM cebollito/cebollita	AUG cebollote/cebollota/cebollazo/cebollaza	onion
+Masc ajo	listed:ajo	PL ajos	DIM ajito/ajita	AUG ajote/ajota/ajazo/ajaza	garlic
+Fem lechuga	listed:lechuga	PL lechugas	DIM lechuguito/lechuguita	AUG lechugote/lechugota/lechugazo/lechugaza	lettuce
+Fem zanahoria	listed:zanahoria	PL zanahorias	DIM zanahoriito/zanahoriita	AUG zanahoriote/zanahoriota/zanahoriazo/zanahoriaza	carrot
+Masc maíz	listed:maíz	PL maíces	DIM maicito/maicita	AUG 	corn, maize
+Fem verdura	listed:verdura	PL verduras	DIM verdurito/verdurita	AUG verdurote/verdurota/verdurazo/verduraza	vegetable
+Fem ensalada	listed:ensalada	PL ensaladas	DIM ensaladito/ensaladita	AUG ensaladote/ensaladota/ensaladazo/ensaladaza	salad
+Masc postre	listed:postre	PL postres	DIM postrecito/postrecita/postrito/postrita	AUG postrote/postrota	dessert
+Masc helado	listed:helado	PL helados	DIM heladito/heladita	AUG heladote/heladota/heladazo/heladaza	ice cream
+Masc pastel	listed:pastel	PL pasteles	DIM pastelito/pastelita	AUG 	cake; pie
+Fem galleta	listed:galleta	PL galletas	DIM galletito/galletita	AUG galletote/galletota/galletazo/galletaza	biscuit, cookie
+Fem miel	listed:miel	PL mieles	DIM mielecito/mielecita/mielcito/mielcita	AUG 	honey
+Masc trigo	listed:trigo	PL trigos	DIM triguito/triguita	AUG trigote/trigota/trigazo/trigaza	wheat
+Fem cebada	listed:cebada	PL cebadas	DIM cebadito/cebadita	AUG cebadote/cebadota/cebadazo/cebadaza	barley
+Fem harina	listed:harina	PL harinas	DIM harinito/harinita	AUG harinote/harinota/harinazo/harinaza	flour
+Fem hambre	listed:hambre	PL hambres	DIM hambrecito/hambrecita/hambrito/hambrita	AUG hambrote/hambrota	hunger
+Fem sed	listed:sed	PL sedes	DIM sedecito/sedecita	AUG 	thirst
+Fem cuenta	listed:cuenta	PL cuentas	DIM cuentito/cuentita/cuentecito/cuentecita	AUG cuentote/cuentota/cuentazo/cuentaza	bill; account; count
+Fem ciudad	listed:ciudad	PL ciudades	DIM ciudadito/ciudadita	AUG 	city
+Fem aldea	listed:aldea	PL aldeas	DIM aldeito/aldeita	AUG aldeote/aldeota/aldeazo/aldeaza	village
+Masc país	listed:país	PL países	DIM paisito/paisita	AUG 	country
+Fem calle	listed:calle	PL calles	DIM callecito/callecita/callito/callita	AUG callote/callota	street
+Masc camino	listed:camino	PL caminos	DIM caminito/caminita	AUG caminote/caminota/caminazo/caminaza	road, path; way
+Fem carretera	listed:carretera	PL carreteras	DIM carreterito/carreterita	AUG carreterote/carreterota/carreterazo/carreteraza	highway, main road
+Fem avenida	listed:avenida	PL avenidas	DIM avenidito/avenidita	AUG avenidote/avenidota/avenidazo/avenidaza	avenue
+Fem plaza	listed:plaza	PL plazas	DIM plazito/plazita	AUG plazote/plazota/plazazo/plazaza	square
+Masc mercado	listed:mercado	PL mercados	DIM mercadito/mercadita	AUG mercadote/mercadota/mercadazo/mercadaza	market
+Fem tienda	listed:tienda	PL tiendas	DIM tiendito/tiendita/tiendecito/tiendecita	AUG tiendote/tiendota/tiendazo/tiendaza	shop; tent
+Masc supermercado	listed:supermercado	PL supermercados	DIM supermercadito/supermercadita	AUG supermercadote/supermercadota/supermercadazo/supermercadaza	supermarket
+Masc banco	listed:banco	PL bancos	DIM banquito/banquita	AUG bancote/bancota/bancazo/bancaza	bank; bench
+Fem iglesia	listed:iglesia	PL iglesias	DIM iglesiito/iglesiita	AUG iglesiote/iglesiota/iglesiazo/iglesiaza	church
+Fem escuela	listed:escuela	PL escuelas	DIM escuelito/escuelita	AUG escuelote/escuelota/escuelazo/escuelaza	school
+Masc colegio	listed:colegio	PL colegios	DIM colegiito/colegiita	AUG colegiote/colegiota/colegiazo/colegiaza	school (often secondary or private)
+Fem universidad	listed:universidad	PL universidades	DIM universidadito/universidadita	AUG 	university
+Fem biblioteca	listed:biblioteca	PL bibliotecas	DIM bibliotequito/bibliotequita	AUG bibliotecote/bibliotecota/bibliotecazo/bibliotecaza	library
+Fem farmacia	listed:farmacia	PL farmacias	DIM farmaciito/farmaciita	AUG farmaciote/farmaciota/farmaciazo/farmaciaza	pharmacy
+Masc hotel	listed:hotel	PL hoteles	DIM hotelito/hotelita	AUG 	hotel
+Masc restaurante	listed:restaurante	PL restaurantes	DIM restaurantecito/restaurantecita/restaurantito/restaurantita	AUG restaurantote/restaurantota	restaurant
+Fem oficina	listed:oficina	PL oficinas	DIM oficinito/oficinita	AUG oficinote/oficinota/oficinazo/oficinaza	office
+Fem fábrica	listed:fábrica	PL fábricas	DIM fabriquito/fabriquita	AUG fabricote/fabricota/fabricazo/fabricaza	factory
+Fem granja	listed:granja	PL granjas	DIM granjito/granjita	AUG granjote/granjota/granjazo/granjaza	farm (small)
+Fem finca	listed:finca	PL fincas	DIM finquito/finquita	AUG fincote/fincota/fincazo/fincaza	farm, estate
+Masc campo	listed:campo	PL campos	DIM campito/campita	AUG campote/campota/campazo/campaza	countryside; field
+Fem montaña	listed:montaña	PL montañas	DIM montañito/montañita	AUG montañote/montañota/montañazo/montañaza	mountain
+Masc monte	listed:monte	PL montes	DIM montecito/montecita/montito/montita	AUG montote/montota	mount, hill, woodland
+Masc cerro	listed:cerro	PL cerros	DIM cerrito/cerrita	AUG cerrote/cerrota/cerrazo/cerraza	hill
+Masc valle	listed:valle	PL valles	DIM vallecito/vallecita/vallito/vallita	AUG vallote/vallota	valley
+Masc río	listed:río	PL ríos	DIM riito/riita	AUG riote/riota/riazo/riaza	river
+Masc lago	listed:lago	PL lagos	DIM laguito/laguita	AUG lagote/lagota/lagazo/lagaza	lake
+Fem,Masc mar	listed:mar	PL mares	DIM marecito/marecita/marcito/marcita	AUG 	sea
+Fem playa	listed:playa	PL playas	DIM playito/playita	AUG playote/playota/playazo/playaza	beach
+Fem isla	listed:isla	PL islas	DIM islito/islita	AUG islote/islota/islazo/islaza	island
+Fem costa	listed:costa	PL costas	DIM costito/costita	AUG costote/costota/costazo/costaza	coast
+Masc bosque	listed:bosque	PL bosques	DIM bosquecito/bosquecita/bosquito/bosquita	AUG bosquote/bosquota	forest
+Fem selva	listed:selva	PL selvas	DIM selvito/selvita	AUG selvote/selvota/selvazo/selvaza	jungle
+Masc desierto	listed:desierto	PL desiertos	DIM desiertito/desiertita	AUG desiertote/desiertota/desiertazo/desiertaza	desert; wilderness
+Fem piedra	listed:piedra	PL piedras	DIM piedrito/piedrita/piedrecito/piedrecita	AUG piedrote/piedrota/piedrazo/piedraza	stone, rock
+Fem arena	listed:arena	PL arenas	DIM arenito/arenita	AUG arenote/arenota/arenazo/arenaza	sand
+Fem tierra	listed:tierra	PL tierras	DIM tierrito/tierrita/tierrecito/tierrecita	AUG tierrote/tierrota/tierrazo/tierraza	earth, land, soil
+Masc puente	listed:puente	PL puentes	DIM puentecito/puentecita/puentito/puentita	AUG puentote/puentota	bridge
+Fem frontera	listed:frontera	PL fronteras	DIM fronterito/fronterita	AUG fronterote/fronterota/fronterazo/fronteraza	border
+Masc aeropuerto	listed:aeropuerto	PL aeropuertos	DIM aeropuertito/aeropuertita	AUG aeropuertote/aeropuertota/aeropuertazo/aeropuertaza	airport
+Fem estación	listed:estación	PL estaciones	DIM estacioncito/estacioncita	AUG 	station; season
+Fem parada	listed:parada	PL paradas	DIM paradito/paradita	AUG paradote/paradota/paradazo/paradaza	stop
+Masc autobús	listed:autobús	PL autobuses	DIM autobusito/autobusita	AUG 	bus
+Masc tren	listed:tren	PL trenes	DIM trenecito/trenecita/trencito/trencita	AUG 	train
+Masc avión	listed:avión	PL aviones	DIM avioncito/avioncita	AUG 	aeroplane
+Masc barco	listed:barco	PL barcos	DIM barquito/barquita	AUG barcote/barcota/barcazo/barcaza	ship, boat
+Fem bicicleta	listed:bicicleta	PL bicicletas	DIM bicicletito/bicicletita	AUG bicicletote/bicicletota/bicicletazo/bicicletaza	bicycle
+Fem moto	listed:moto	PL motos	DIM motito/motita	AUG motote/motota/motazo/motaza	motorbike
+Fem motocicleta	listed:motocicleta	PL motocicletas	DIM motocicletito/motocicletita	AUG motocicletote/motocicletota/motocicletazo/motocicletaza	motorcycle
+Masc viaje	listed:viaje	PL viajes	DIM viajecito/viajecita/viajito/viajita	AUG viajote/viajota	trip, journey
+Fem entrada	listed:entrada	PL entradas	DIM entradito/entradita	AUG entradote/entradota/entradazo/entradaza	entrance; ticket
+Masc mapa	listed:mapa	PL mapas	DIM mapito/mapita	AUG mapote/mapota/mapazo/mapaza	map
+Masc pasaporte	listed:pasaporte	PL pasaportes	DIM pasaportecito/pasaportecita/pasaportito/pasaportita	AUG pasaportote/pasaportota	passport
+Fem dirección	listed:dirección	PL direcciones	DIM direccioncito/direccioncita	AUG 	address; direction
+Masc lugar	listed:lugar	PL lugares	DIM lugarcito/lugarcita	AUG 	place
+Masc sitio	listed:sitio	PL sitios	DIM sitiito/sitiita/sitiecito/sitiecita	AUG sitiote/sitiota/sitiazo/sitiaza	place, site
+Fem zona	listed:zona	PL zonas	DIM zonito/zonita	AUG zonote/zonota/zonazo/zonaza	area, zone
+Masc barrio	listed:barrio	PL barrios	DIM barriito/barriita/barriecito/barriecita	AUG barriote/barriota/barriazo/barriaza	neighbourhood
+Masc centro	listed:centro	PL centros	DIM centrito/centrita	AUG centrote/centrota/centrazo/centraza	centre
+Fem esquina	listed:esquina	PL esquinas	DIM esquinito/esquinita	AUG esquinote/esquinota/esquinazo/esquinaza	corner
+Masc parque	listed:parque	PL parques	DIM parquecito/parquecita/parquito/parquita	AUG parquote/parquota	park
+Fem cárcel	listed:cárcel	PL cárceles	DIM carcelito/carcelita	AUG 	prison
+Fem tumba	listed:tumba	PL tumbas	DIM tumbito/tumbita	AUG tumbote/tumbota/tumbazo/tumbaza	tomb, grave
+Masc cementerio	listed:cementerio	PL cementerios	DIM cementeriito/cementeriita	AUG cementeriote/cementeriota/cementeriazo/cementeriaza	cemetery
+Masc templo	listed:templo	PL templos	DIM templito/templita	AUG templote/templota/templazo/templaza	temple
+Masc castillo	listed:castillo	PL castillos	DIM castillito/castillita	AUG castillote/castillota/castillazo/castillaza	castle
+Masc palacio	listed:palacio	PL palacios	DIM palaciito/palaciita	AUG palaciote/palaciota/palaciazo/palaciaza	palace
+Fem torre	listed:torre	PL torres	DIM torrecito/torrecita/torrito/torrita	AUG torrote/torrota	tower
+Masc muro	listed:muro	PL muros	DIM murito/murita	AUG murote/murota/murazo/muraza	wall (free-standing)
+Masc norte	listed:norte	PL nortes	DIM nortecito/nortecita/nortito/nortita	AUG nortote/nortota	north
+Masc sur	listed:sur	PL sures	DIM surecito/surecita/surcito/surcita	AUG 	south
+Masc oeste	listed:oeste	PL oestes	DIM oestecito/oestecita/oestito/oestita	AUG oestote/oestota	west
+Masc tiempo	listed:tiempo	PL tiempos	DIM tiempito/tiempita/tiempecito/tiempecita	AUG tiempote/tiempota/tiempazo/tiempaza	time; weather
+Fem hora	listed:hora	PL horas	DIM horito/horita	AUG horote/horota/horazo/horaza	hour
+Masc minuto	listed:minuto	PL minutos	DIM minutito/minutita	AUG minutote/minutota/minutazo/minutaza	minute
+Fem semana	listed:semana	PL semanas	DIM semanito/semanita	AUG semanote/semanota/semanazo/semanaza	week
+Masc mes	listed:mes	PL meses	DIM mesecito/mesecita	AUG 	month
+Masc siglo	listed:siglo	PL siglos	DIM siglito/siglita	AUG siglote/siglota/siglazo/siglaza	century
+Fem época	listed:época	PL épocas	DIM epoquito/epoquita	AUG epocote/epocota/epocazo/epocaza	era, period
+Masc momento	listed:momento	PL momentos	DIM momentito/momentita	AUG momentote/momentota/momentazo/momentaza	moment
+Masc instante	listed:instante	PL instantes	DIM instantecito/instantecita/instantito/instantita	AUG instantote/instantota	instant
+Masc rato	listed:rato	PL ratos	DIM ratito/ratita	AUG ratote/ratota/ratazo/rataza	while, short time
+Fem noche	listed:noche	PL noches	DIM nochecito/nochecita/nochito/nochita	AUG nochote/nochota	night
+Fem tarde	listed:tarde	PL tardes	DIM tardecito/tardecita/tardito/tardita	AUG tardote/tardota	afternoon, evening
+Fem mañana	listed:mañana	PL mañanas	DIM mañanito/mañanita	AUG mañanote/mañanota/mañanazo/mañanaza	morning
+Fem madrugada	listed:madrugada	PL madrugadas	DIM madrugadito/madrugadita	AUG madrugadote/madrugadota/madrugadazo/madrugadaza	early morning
+Fem fecha	listed:fecha	PL fechas	DIM fechito/fechita	AUG fechote/fechota/fechazo/fechaza	date
+Masc calendario	listed:calendario	PL calendarios	DIM calendariito/calendariita	AUG calendariote/calendariota/calendariazo/calendariaza	calendar
+Masc lunes	listed:lunes,lunes	PL lunes	DIM lunesito/lunesita	AUG 	Monday
+Masc martes	listed:martes,martes	PL martes	DIM martesito/martesita	AUG 	Tuesday
+Masc miércoles	listed:miércoles,miércoles	PL miércoles	DIM miercolesito/miercolesita	AUG 	Wednesday
+Masc jueves	listed:jueves,jueves	PL jueves	DIM juevesito/juevesita	AUG 	Thursday
+Masc viernes	listed:viernes,viernes	PL viernes	DIM viernesito/viernesita	AUG 	Friday
+Masc sábado	listed:sábado	PL sábados	DIM sabadito/sabadita	AUG sabadote/sabadota/sabadazo/sabadaza	Saturday
+Masc domingo	listed:domingo	PL domingos	DIM dominguito/dominguita	AUG domingote/domingota/domingazo/domingaza	Sunday
+Masc enero	listed:enero	PL eneros	DIM enerito/enerita	AUG enerote/enerota/enerazo/eneraza	January
+Masc febrero	listed:febrero	PL febreros	DIM febrerito/febrerita	AUG febrerote/febrerota/febrerazo/febreraza	February
+Masc marzo	listed:marzo	PL marzos	DIM marzito/marzita	AUG marzote/marzota/marzazo/marzaza	March
+Masc abril	listed:abril	PL abriles	DIM abrilito/abrilita	AUG 	April
+Masc mayo	listed:mayo	PL mayos	DIM mayito/mayita	AUG mayote/mayota/mayazo/mayaza	May
+Masc junio	listed:junio	PL junios	DIM juniito/juniita/juniecito/juniecita	AUG juniote/juniota/juniazo/juniaza	June
+Masc julio	listed:julio	PL julios	DIM juliito/juliita/juliecito/juliecita	AUG juliote/juliota/juliazo/juliaza	July
+Masc agosto	listed:agosto	PL agostos	DIM agostito/agostita	AUG agostote/agostota/agostazo/agostaza	August
+Masc septiembre	listed:septiembre	PL septiembres	DIM septiembrecito/septiembrecita/septiembrito/septiembrita	AUG septiembrote/septiembrota	September
+Masc octubre	listed:octubre	PL octubres	DIM octubrecito/octubrecita/octubrito/octubrita	AUG octubrote/octubrota	October
+Masc noviembre	listed:noviembre	PL noviembres	DIM noviembrecito/noviembrecita/noviembrito/noviembrita	AUG noviembrote/noviembrota	November
+Masc diciembre	listed:diciembre	PL diciembres	DIM diciembrecito/diciembrecita/diciembrito/diciembrita	AUG diciembrote/diciembrota	December
+Fem primavera	listed:primavera	PL primaveras	DIM primaverito/primaverita	AUG primaverote/primaverota/primaverazo/primaveraza	spring
+Masc verano	listed:verano	PL veranos	DIM veranito/veranita	AUG veranote/veranota/veranazo/veranaza	summer
+Masc otoño	listed:otoño	PL otoños	DIM otoñito/otoñita	AUG otoñote/otoñota/otoñazo/otoñaza	autumn
+Masc invierno	listed:invierno	PL inviernos	DIM inviernito/inviernita	AUG inviernote/inviernota/inviernazo/inviernaza	winter
+Fem Navidad	listed:Navidad	PL navidades	DIM navidadito/navidadita	AUG 	Christmas
+Fem Pascua	listed:Pascua	PL pascuas	DIM pascuito/pascuita/pascuecito/pascuecita	AUG pascuote/pascuota/pascuazo/pascuaza	Easter; Passover
+Fem fiesta	listed:fiesta	PL fiestas	DIM fiestito/fiestita/fiestecito/fiestecita	AUG fiestote/fiestota/fiestazo/fiestaza	party, festival
+Masc cumpleaños	listed:cumpleaños,cumpleaños	PL cumpleaños	DIM cumpleañosito/cumpleañosita	AUG 	birthday
+Masc futuro	listed:futuro	PL futuros	DIM futurito/futurita	AUG futurote/futurota/futurazo/futuraza	future
+Masc pasado	listed:pasado	PL pasados	DIM pasadito/pasadita	AUG pasadote/pasadota/pasadazo/pasadaza	past
+Masc presente	listed:presente	PL presentes	DIM presentecito/presentecita/presentito/presentita	AUG presentote/presentota	present
+Fem edad	listed:edad	PL edades	DIM edadito/edadita	AUG 	age
+Fem juventud	listed:juventud	PL juventudes	DIM juventudito/juventudita	AUG 	youth
+Fem vejez	listed:vejez	PL vejeces	DIM vejecito/vejecita	AUG 	old age
+Fem infancia	listed:infancia	PL infancias	DIM infanciito/infanciita	AUG infanciote/infanciota/infanciazo/infanciaza	childhood
+Masc nacimiento	listed:nacimiento	PL nacimientos	DIM nacimientito/nacimientita	AUG nacimientote/nacimientota/nacimientazo/nacimientaza	birth
+Fem muerte	listed:muerte	PL muertes	DIM muertecito/muertecita/muertito/muertita	AUG muertote/muertota	death
+Masc principio	listed:principio	PL principios	DIM principiito/principiita	AUG principiote/principiota/principiazo/principiaza	beginning; principle
+Masc fin	listed:fin	PL fines	DIM finecito/finecita/fincito/fincita	AUG 	end
+Masc final	listed:final	PL finales	DIM finalito/finalita	AUG 	ending, end
+Fem mitad	listed:mitad	PL mitades	DIM mitadito/mitadita	AUG 	half
+Fem vez	listed:vez	PL veces	DIM vececito/vececita	AUG 	time (occasion)
+Fem naturaleza	listed:naturaleza	PL naturalezas	DIM naturalezito/naturalezita	AUG naturalezote/naturalezota/naturalezazo/naturalezaza	nature
+Masc sol	listed:sol	PL soles	DIM solecito/solecita/solcito/solcita	AUG 	sun
+Fem luna	listed:luna	PL lunas	DIM lunito/lunita	AUG lunote/lunota/lunazo/lunaza	moon
+Fem estrella	listed:estrella	PL estrellas	DIM estrellito/estrellita	AUG estrellote/estrellota/estrellazo/estrellaza	star
+Masc cielo	listed:cielo	PL cielos	DIM cielito/cielita/cielecito/cielecita	AUG cielote/cielota/cielazo/cielaza	sky; heaven
+Fem nube	listed:nube	PL nubes	DIM nubecito/nubecita/nubito/nubita	AUG nubote/nubota	cloud
+Fem lluvia	listed:lluvia	PL lluvias	DIM lluviito/lluviita/lluviecito/lluviecita	AUG lluviote/lluviota/lluviazo/lluviaza	rain
+Masc viento	listed:viento	PL vientos	DIM vientito/vientita/vientecito/vientecita	AUG vientote/vientota/vientazo/vientaza	wind
+Fem tormenta	listed:tormenta	PL tormentas	DIM tormentito/tormentita	AUG tormentote/tormentota/tormentazo/tormentaza	storm
+Masc trueno	listed:trueno	PL truenos	DIM truenito/truenita/truenecito/truenecita	AUG truenote/truenota/truenazo/truenaza	thunder
+Masc rayo	listed:rayo	PL rayos	DIM rayito/rayita	AUG rayote/rayota/rayazo/rayaza	lightning bolt; ray
+Fem nieve	listed:nieve	PL nieves	DIM nievecito/nievecita/nievito/nievita	AUG nievote/nievota	snow
+Masc hielo	listed:hielo	PL hielos	DIM hielito/hielita/hielecito/hielecita	AUG hielote/hielota/hielazo/hielaza	ice
+Masc fuego	listed:fuego	PL fuegos	DIM fueguito/fueguita/fueguecito/fueguecita	AUG fuegote/fuegota/fuegazo/fuegaza	fire
+Masc aire	listed:aire	PL aires	DIM airecito/airecita/airito/airita	AUG airote/airota	air
+Masc árbol	listed:árbol	PL árboles	DIM arbolito/arbolita	AUG 	tree
+Fem planta	listed:planta	PL plantas	DIM plantito/plantita	AUG plantote/plantota/plantazo/plantaza	plant
+Fem flor	listed:flor	PL flores	DIM florecito/florecita/florcito/florcita	AUG 	flower
+Fem hoja	listed:hoja	PL hojas	DIM hojito/hojita	AUG hojote/hojota/hojazo/hojaza	leaf; sheet
+Fem rama	listed:rama	PL ramas	DIM ramito/ramita	AUG ramote/ramota/ramazo/ramaza	branch
+Fem raíz	listed:raíz	PL raíces	DIM raicito/raicita	AUG 	root
+Fem semilla	listed:semilla	PL semillas	DIM semillito/semillita	AUG semillote/semillota/semillazo/semillaza	seed
+Fem hierba	listed:hierba	PL hierbas	DIM hierbito/hierbita/hierbecito/hierbecita	AUG hierbote/hierbota/hierbazo/hierbaza	grass, herb
+Fem rosa	listed:rosa	PL rosas	DIM rosito/rosita	AUG rosote/rosota/rosazo/rosaza	rose
+Masc animal	listed:animal	PL animales	DIM animalito/animalita	AUG 	animal
+Masc perro	listed:perro	PL perros	DIM perrito/perrita	AUG perrote/perrota/perrazo/perraza	dog
+Masc gato	listed:gato	PL gatos	DIM gatito/gatita	AUG gatote/gatota/gatazo/gataza	cat
+Masc caballo	listed:caballo	PL caballos	DIM caballito/caballita	AUG caballote/caballota/caballazo/caballaza	horse
+Fem vaca	listed:vaca	PL vacas	DIM vaquito/vaquita	AUG vacote/vacota/vacazo/vacaza	cow
+Masc toro	listed:toro	PL toros	DIM torito/torita	AUG torote/torota/torazo/toraza	bull
+Fem oveja	listed:oveja	PL ovejas	DIM ovejito/ovejita	AUG ovejote/ovejota/ovejazo/ovejaza	sheep
+Fem cabra	listed:cabra	PL cabras	DIM cabrito/cabrita	AUG cabrote/cabrota/cabrazo/cabraza	goat
+Fem gallina	listed:gallina	PL gallinas	DIM gallinito/gallinita	AUG gallinote/gallinota/gallinazo/gallinaza	hen
+Masc gallo	listed:gallo	PL gallos	DIM gallito/gallita	AUG gallote/gallota/gallazo/gallaza	rooster
+Masc pato	listed:pato	PL patos	DIM patito/patita	AUG patote/patota/patazo/pataza	duck
+Masc pájaro	listed:pájaro	PL pájaros	DIM pajarito/pajarita	AUG pajarote/pajarota/pajarazo/pajaraza	bird
+Fem ave	listed:ave	PL aves	DIM avecito/avecita/avito/avita	AUG avote/avota	bird
+Masc pez	listed:pez	PL peces	DIM pececito/pececita	AUG 	fish (living)
+Fem serpiente	listed:serpiente	PL serpientes	DIM serpientecito/serpientecita/serpientito/serpientita	AUG serpientote/serpientota	snake
+Fem culebra	listed:culebra	PL culebras	DIM culebrito/culebrita	AUG culebrote/culebrota/culebrazo/culebraza	snake
+Masc león	listed:león	PL leones	DIM leoncito/leoncita	AUG 	lion
+Masc lobo	listed:lobo	PL lobos	DIM lobito/lobita	AUG lobote/lobota/lobazo/lobaza	wolf
+Masc oso	listed:oso	PL osos	DIM osito/osita	AUG osote/osota/osazo/osaza	bear
+Masc ratón	listed:ratón	PL ratones	DIM ratoncito/ratoncita	AUG 	mouse
+Fem mosca	listed:mosca	PL moscas	DIM mosquito/mosquita	AUG moscote/moscota/moscazo/moscaza	fly
+Fem abeja	listed:abeja	PL abejas	DIM abejito/abejita	AUG abejote/abejota/abejazo/abejaza	bee
+Masc mosquito	listed:mosquito	PL mosquitos	DIM mosquitito/mosquitita	AUG mosquitote/mosquitota/mosquitazo/mosquitaza	mosquito
+Masc insecto	listed:insecto	PL insectos	DIM insectito/insectita	AUG insectote/insectota/insectazo/insectaza	insect
+Fem mariposa	listed:mariposa	PL mariposas	DIM mariposito/mariposita	AUG mariposote/mariposota/mariposazo/mariposaza	butterfly
+Fem hormiga	listed:hormiga	PL hormigas	DIM hormiguito/hormiguita	AUG hormigote/hormigota/hormigazo/hormigaza	ant
+Masc burro	listed:burro	PL burros	DIM burrito/burrita	AUG burrote/burrota/burrazo/burraza	donkey
+Fem mula	listed:mula	PL mulas	DIM mulito/mulita	AUG mulote/mulota/mulazo/mulaza	mule
+Masc conejo	listed:conejo	PL conejos	DIM conejito/conejita	AUG conejote/conejota/conejazo/conejaza	rabbit
+Masc zorro	listed:zorro	PL zorros	DIM zorrito/zorrita	AUG zorrote/zorrota/zorrazo/zorraza	fox
+Masc mono	listed:mono	PL monos	DIM monito/monita	AUG monote/monota/monazo/monaza	monkey
+Masc cocodrilo	listed:cocodrilo	PL cocodrilos	DIM cocodrilito/cocodrilita	AUG cocodrilote/cocodrilota/cocodrilazo/cocodrilaza	crocodile
+Fem ballena	listed:ballena	PL ballenas	DIM ballenito/ballenita	AUG ballenote/ballenota/ballenazo/ballenaza	whale
+Masc tiburón	listed:tiburón	PL tiburones	DIM tiburoncito/tiburoncita	AUG 	shark
+Masc clima	listed:clima	PL climas	DIM climito/climita	AUG climote/climota/climazo/climaza	climate
+Fem temperatura	listed:temperatura	PL temperaturas	DIM temperaturito/temperaturita	AUG temperaturote/temperaturota/temperaturazo/temperaturaza	temperature
+Masc calor	listed:calor	PL calores	DIM calorcito/calorcita	AUG 	heat
+Fem sombra	listed:sombra	PL sombras	DIM sombrito/sombrita	AUG sombrote/sombrota/sombrazo/sombraza	shadow, shade
+Fem oscuridad	listed:oscuridad	PL oscuridades	DIM oscuridadito/oscuridadita	AUG 	darkness
+Masc humo	listed:humo	PL humos	DIM humito/humita	AUG humote/humota/humazo/humaza	smoke
+Fem ceniza	listed:ceniza	PL cenizas	DIM cenizito/cenizita	AUG cenizote/cenizota/cenizazo/cenizaza	ash
+Masc polvo	listed:polvo	PL polvos	DIM polvito/polvita	AUG polvote/polvota/polvazo/polvaza	dust
+Masc barro	listed:barro	PL barros	DIM barrito/barrita	AUG barrote/barrota/barrazo/barraza	mud
+Fem ola	listed:ola	PL olas	DIM olito/olita	AUG olote/olota/olazo/olaza	wave
+Masc terremoto	listed:terremoto	PL terremotos	DIM terremotito/terremotita	AUG terremotote/terremotota/terremotazo/terremotaza	earthquake
+Masc huracán	listed:huracán	PL huracanes	DIM huracancito/huracancita	AUG 	hurricane
+Fem inundación	listed:inundación	PL inundaciones	DIM inundacioncito/inundacioncita	AUG 	flood
+Fem sequía	listed:sequía	PL sequías	DIM sequiito/sequiita	AUG sequiote/sequiota/sequiazo/sequiaza	drought
+Masc incendio	listed:incendio	PL incendios	DIM incendiito/incendiita	AUG incendiote/incendiota/incendiazo/incendiaza	fire (blaze)
+Masc trabajo	listed:trabajo	PL trabajos	DIM trabajito/trabajita	AUG trabajote/trabajota/trabajazo/trabajaza	work, job
+Masc empleo	listed:empleo	PL empleos	DIM empleito/empleita	AUG empleote/empleota/empleazo/empleaza	employment, job
+Masc oficio	listed:oficio	PL oficios	DIM oficiito/oficiita	AUG oficiote/oficiota/oficiazo/oficiaza	trade, occupation
+Masc negocio	listed:negocio	PL negocios	DIM negociito/negociita	AUG negociote/negociota/negociazo/negociaza	business
+Fem empresa	listed:empresa	PL empresas	DIM empresito/empresita	AUG empresote/empresota/empresazo/empresaza	company, enterprise
+Fem compañía	listed:compañía	PL compañías	DIM compañiito/compañiita	AUG compañiote/compañiota/compañiazo/compañiaza	company
+Masc dinero	listed:dinero	PL dineros	DIM dinerito/dinerita	AUG dinerote/dinerota/dinerazo/dineraza	money
+Masc precio	listed:precio	PL precios	DIM preciito/preciita/preciecito/preciecita	AUG preciote/preciota/preciazo/preciaza	price
+Masc costo	listed:costo	PL costos	DIM costito/costita	AUG costote/costota/costazo/costaza	cost
+Masc valor	listed:valor	PL valores	DIM valorcito/valorcita	AUG 	value; courage
+Masc pago	listed:pago	PL pagos	DIM paguito/paguita	AUG pagote/pagota/pagazo/pagaza	payment
+Fem deuda	listed:deuda	PL deudas	DIM deudito/deudita	AUG deudote/deudota/deudazo/deudaza	debt
+Masc sueldo	listed:sueldo	PL sueldos	DIM sueldito/sueldita/sueldecito/sueldecita	AUG sueldote/sueldota/sueldazo/sueldaza	salary
+Masc salario	listed:salario	PL salarios	DIM salariito/salariita	AUG salariote/salariota/salariazo/salariaza	wage
+Masc impuesto	listed:impuesto	PL impuestos	DIM impuestito/impuestita	AUG impuestote/impuestota/impuestazo/impuestaza	tax
+Fem ganancia	listed:ganancia	PL ganancias	DIM gananciito/gananciita	AUG gananciote/gananciota/gananciazo/gananciaza	profit, gain
+Fem pérdida	listed:pérdida	PL pérdidas	DIM perdidito/perdidita	AUG perdidote/perdidota/perdidazo/perdidaza	loss
+Fem moneda	listed:moneda	PL monedas	DIM monedito/monedita	AUG monedote/monedota/monedazo/monedaza	coin; currency
+Masc dólar	listed:dólar	PL dólares	DIM dolarcito/dolarcita	AUG 	dollar
+Masc centavo	listed:centavo	PL centavos	DIM centavito/centavita	AUG centavote/centavota/centavazo/centavaza	cent
+Fem tarjeta	listed:tarjeta	PL tarjetas	DIM tarjetito/tarjetita	AUG tarjetote/tarjetota/tarjetazo/tarjetaza	card
+Masc cheque	listed:cheque	PL cheques	DIM chequecito/chequecita/chequito/chequita	AUG chequote/chequota	cheque
+Fem compra	listed:compra	PL compras	DIM comprito/comprita	AUG comprote/comprota/comprazo/compraza	purchase
+Fem venta	listed:venta	PL ventas	DIM ventito/ventita	AUG ventote/ventota/ventazo/ventaza	sale
+Fem clase	listed:clase	PL clases	DIM clasecito/clasecita/clasito/clasita	AUG clasote/clasota	class; kind
+Fem lección	listed:lección	PL lecciones	DIM leccioncito/leccioncita	AUG 	lesson
+Fem tarea	listed:tarea	PL tareas	DIM tareito/tareita	AUG tareote/tareota/tareazo/tareaza	task; homework
+Masc examen	listed:examen	PL exámenes	DIM examencito/examencita	AUG 	exam
+Fem nota	listed:nota	PL notas	DIM notito/notita	AUG notote/notota/notazo/notaza	note; grade
+Fem pregunta	listed:pregunta	PL preguntas	DIM preguntito/preguntita	AUG preguntote/preguntota/preguntazo/preguntaza	question
+Fem respuesta	listed:respuesta	PL respuestas	DIM respuestito/respuestita	AUG respuestote/respuestota/respuestazo/respuestaza	answer
+Fem palabra	listed:palabra	PL palabras	DIM palabrito/palabrita	AUG palabrote/palabrota/palabrazo/palabraza	word
+Fem frase	listed:frase	PL frases	DIM frasecito/frasecita/frasito/frasita	AUG frasote/frasota	sentence, phrase
+Fem oración	listed:oración	PL oraciones	DIM oracioncito/oracioncita	AUG 	sentence; prayer
+Fem letra	listed:letra	PL letras	DIM letrito/letrita	AUG letrote/letrota/letrazo/letraza	letter (of the alphabet); lyrics
+Masc texto	listed:texto	PL textos	DIM textito/textita	AUG textote/textota/textazo/textaza	text
+Fem historia	listed:historia	PL historias	DIM historiito/historiita	AUG historiote/historiota/historiazo/historiaza	story; history
+Masc cuento	listed:cuento	PL cuentos	DIM cuentito/cuentita/cuentecito/cuentecita	AUG cuentote/cuentota/cuentazo/cuentaza	short story, tale
+Fem novela	listed:novela	PL novelas	DIM novelito/novelita	AUG novelote/novelota/novelazo/novelaza	novel
+Masc poema	listed:poema	PL poemas	DIM poemito/poemita	AUG poemote/poemota/poemazo/poemaza	poem
+Masc verso	listed:verso	PL versos	DIM versito/versita	AUG versote/versota/versazo/versaza	verse
+Fem canción	listed:canción	PL canciones	DIM cancioncito/cancioncita	AUG 	song
+Fem música	listed:música	PL músicas	DIM musiquito/musiquita	AUG musicote/musicota/musicazo/musicaza	music
+Masc idioma	listed:idioma	PL idiomas	DIM idiomito/idiomita	AUG idiomote/idiomota/idiomazo/idiomaza	language
+Masc nombre	listed:nombre	PL nombres	DIM nombrecito/nombrecita/nombrito/nombrita	AUG nombrote/nombrota	name; noun
+Masc apellido	listed:apellido	PL apellidos	DIM apellidito/apellidita	AUG apellidote/apellidota/apellidazo/apellidaza	surname
+Masc título	listed:título	PL títulos	DIM titulito/titulita	AUG titulote/titulota/titulazo/titulaza	title
+Fem idea	listed:idea	PL ideas	DIM ideito/ideita	AUG ideote/ideota/ideazo/ideaza	idea
+Masc tema	listed:tema	PL temas	DIM temito/temita	AUG temote/temota/temazo/temaza	topic, theme
+Masc problema	listed:problema	PL problemas	DIM problemito/problemita	AUG problemote/problemota/problemazo/problemaza	problem
+Fem solución	listed:solución	PL soluciones	DIM solucioncito/solucioncita	AUG 	solution
+Fem razón	listed:razón	PL razones	DIM razoncito/razoncita	AUG 	reason
+Fem causa	listed:causa	PL causas	DIM causito/causita	AUG causote/causota/causazo/causaza	cause
+Masc efecto	listed:efecto	PL efectos	DIM efectito/efectita	AUG efectote/efectota/efectazo/efectaza	effect
+Masc resultado	listed:resultado	PL resultados	DIM resultadito/resultadita	AUG resultadote/resultadota/resultadazo/resultadaza	result
+Masc ejemplo	listed:ejemplo	PL ejemplos	DIM ejemplito/ejemplita	AUG ejemplote/ejemplota/ejemplazo/ejemplaza	example
+Fem diferencia	listed:diferencia	PL diferencias	DIM diferenciito/diferenciita	AUG diferenciote/diferenciota/diferenciazo/diferenciaza	difference
+Fem parte	listed:parte	PL partes	DIM partecito/partecita/partito/partita	AUG partote/partota	part
+Masc lado	listed:lado	PL lados	DIM ladito/ladita	AUG ladote/ladota/ladazo/ladaza	side
+Fem forma	listed:forma	PL formas	DIM formito/formita	AUG formote/formota/formazo/formaza	form, shape; way
+Masc tipo	listed:tipo	PL tipos	DIM tipito/tipita	AUG tipote/tipota/tipazo/tipaza	type, kind
+Masc número	listed:número	PL números	DIM numerito/numerita	AUG numerote/numerota/numerazo/numeraza	number
+Fem cantidad	listed:cantidad	PL cantidades	DIM cantidadito/cantidadita	AUG 	quantity, amount
+Masc grupo	listed:grupo	PL grupos	DIM grupito/grupita	AUG grupote/grupota/grupazo/grupaza	group
+Masc equipo	listed:equipo	PL equipos	DIM equipito/equipita	AUG equipote/equipota/equipazo/equipaza	team; equipment
+Masc juego	listed:juego	PL juegos	DIM jueguito/jueguita/jueguecito/jueguecita	AUG juegote/juegota/juegazo/juegaza	game
+Masc deporte	listed:deporte	PL deportes	DIM deportecito/deportecita/deportito/deportita	AUG deportote/deportota	sport
+Masc fútbol	listed:fútbol	PL fútboles	DIM futbolito/futbolita	AUG 	football (soccer)
+Masc partido	listed:partido	PL partidos	DIM partidito/partidita	AUG partidote/partidota/partidazo/partidaza	match; party (political)
+Fem pelota	listed:pelota	PL pelotas	DIM pelotito/pelotita	AUG pelotote/pelotota/pelotazo/pelotaza	ball
+Masc balón	listed:balón	PL balones	DIM baloncito/baloncita	AUG 	ball (football)
+Masc gol	listed:gol	PL goles	DIM golecito/golecita/golcito/golcita	AUG 	goal (football)
+Masc premio	listed:premio	PL premios	DIM premiito/premiita/premiecito/premiecita	AUG premiote/premiota/premiazo/premiaza	prize
+Masc baile	listed:baile	PL bailes	DIM bailecito/bailecita/bailito/bailita	AUG bailote/bailota	dance
+Fem película	listed:película	PL películas	DIM peliculito/peliculita	AUG peliculote/peliculota/peliculazo/peliculaza	film
+Masc cine	listed:cine	PL cines	DIM cinecito/cinecita/cinito/cinita	AUG cinote/cinota	cinema
+Fem foto	listed:foto	PL fotos	DIM fotito/fotita	AUG fotote/fotota/fotazo/fotaza	photo
+Fem fotografía	listed:fotografía	PL fotografías	DIM fotografiito/fotografiita	AUG fotografiote/fotografiota/fotografiazo/fotografiaza	photograph
+Masc dibujo	listed:dibujo	PL dibujos	DIM dibujito/dibujita	AUG dibujote/dibujota/dibujazo/dibujaza	drawing
+Masc color	listed:color	PL colores	DIM colorcito/colorcita	AUG 	colour
+Masc amor	listed:amor	PL amores	DIM amorcito/amorcita	AUG 	love
+Masc odio	listed:odio	PL odios	DIM odiito/odiita/odiecito/odiecita	AUG odiote/odiota/odiazo/odiaza	hatred
+Masc miedo	listed:miedo	PL miedos	DIM miedito/miedita/miedecito/miedecita	AUG miedote/miedota/miedazo/miedaza	fear
+Fem alegría	listed:alegría	PL alegrías	DIM alegriito/alegriita	AUG alegriote/alegriota/alegriazo/alegriaza	joy
+Fem tristeza	listed:tristeza	PL tristezas	DIM tristezito/tristezita	AUG tristezote/tristezota/tristezazo/tristezaza	sadness
+Fem felicidad	listed:felicidad	PL felicidades	DIM felicidadito/felicidadita	AUG 	happiness
+Fem esperanza	listed:esperanza	PL esperanzas	DIM esperanzito/esperanzita	AUG esperanzote/esperanzota/esperanzazo/esperanzaza	hope
+Fem fe	listed:fe	PL fes	DIM fecito/fecita	AUG 	faith
+Masc deseo	listed:deseo	PL deseos	DIM deseito/deseita	AUG deseote/deseota/deseazo/deseaza	desire, wish
+Masc sueño	listed:sueño	PL sueños	DIM sueñito/sueñita/sueñecito/sueñecita	AUG sueñote/sueñota/sueñazo/sueñaza	dream; sleep
+Masc recuerdo	listed:recuerdo	PL recuerdos	DIM recuerdito/recuerdita	AUG recuerdote/recuerdota/recuerdazo/recuerdaza	memory; souvenir
+Fem memoria	listed:memoria	PL memorias	DIM memoriito/memoriita	AUG memoriote/memoriota/memoriazo/memoriaza	memory
+Masc pensamiento	listed:pensamiento	PL pensamientos	DIM pensamientito/pensamientita	AUG pensamientote/pensamientota/pensamientazo/pensamientaza	thought
+Fem opinión	listed:opinión	PL opiniones	DIM opinioncito/opinioncita	AUG 	opinion
+Fem duda	listed:duda	PL dudas	DIM dudito/dudita	AUG dudote/dudota/dudazo/dudaza	doubt
+Fem sorpresa	listed:sorpresa	PL sorpresas	DIM sorpresito/sorpresita	AUG sorpresote/sorpresota/sorpresazo/sorpresaza	surprise
+Fem ayuda	listed:ayuda	PL ayudas	DIM ayudito/ayudita	AUG ayudote/ayudota/ayudazo/ayudaza	help
+Fem guerra	listed:guerra	PL guerras	DIM guerrito/guerrita	AUG guerrote/guerrota/guerrazo/guerraza	war
+Fem fuerza	listed:fuerza	PL fuerzas	DIM fuerzito/fuerzita/fuercecito/fuercecita	AUG fuerzote/fuerzota/fuerzazo/fuerzaza	strength, force
+Fem ley	listed:ley	PL leyes	DIM leyecito/leyecita	AUG 	law
+Masc derecho	listed:derecho	PL derechos	DIM derechito/derechita	AUG derechote/derechota/derechazo/derechaza	right; law (the subject)
+Fem justicia	listed:justicia	PL justicias	DIM justiciito/justiciita	AUG justiciote/justiciota/justiciazo/justiciaza	justice
+Fem libertad	listed:libertad	PL libertades	DIM libertadito/libertadita	AUG 	freedom
+Fem mentira	listed:mentira	PL mentiras	DIM mentirito/mentirita	AUG mentirote/mentirota/mentirazo/mentiraza	lie
+Masc secreto	listed:secreto	PL secretos	DIM secretito/secretita	AUG secretote/secretota/secretazo/secretaza	secret
+Masc error	listed:error	PL errores	DIM errorcito/errorcita	AUG 	mistake, error
+Fem culpa	listed:culpa	PL culpas	DIM culpito/culpita	AUG culpote/culpota/culpazo/culpaza	guilt, blame
+Masc castigo	listed:castigo	PL castigos	DIM castiguito/castiguita	AUG castigote/castigota/castigazo/castigaza	punishment
+Masc cuidado	listed:cuidado	PL cuidados	DIM cuidadito/cuidadita	AUG cuidadote/cuidadota/cuidadazo/cuidadaza	care; caution
+Masc peligro	listed:peligro	PL peligros	DIM peligrito/peligrita	AUG peligrote/peligrota/peligrazo/peligraza	danger
+Masc riesgo	listed:riesgo	PL riesgos	DIM riesguito/riesguita/riesguecito/riesguecita	AUG riesgote/riesgota/riesgazo/riesgaza	risk
+Fem seguridad	listed:seguridad	PL seguridades	DIM seguridadito/seguridadita	AUG 	safety, security
+Masc accidente	listed:accidente	PL accidentes	DIM accidentecito/accidentecita/accidentito/accidentita	AUG accidentote/accidentota	accident
+Fem suerte	listed:suerte	PL suertes	DIM suertecito/suertecita/suertito/suertita	AUG suertote/suertota	luck
+Masc éxito	listed:éxito	PL éxitos	DIM exitito/exitita	AUG exitote/exitota/exitazo/exitaza	success
+Masc fracaso	listed:fracaso	PL fracasos	DIM fracasito/fracasita	AUG fracasote/fracasota/fracasazo/fracasaza	failure
+Masc esfuerzo	listed:esfuerzo	PL esfuerzos	DIM esfuerzito/esfuerzita	AUG esfuerzote/esfuerzota/esfuerzazo/esfuerzaza	effort
+Masc cambio	listed:cambio	PL cambios	DIM cambiito/cambiita/cambiecito/cambiecita	AUG cambiote/cambiota/cambiazo/cambiaza	change
+Masc movimiento	listed:movimiento	PL movimientos	DIM movimientito/movimientita	AUG movimientote/movimientota/movimientazo/movimientaza	movement
+Masc paso	listed:paso	PL pasos	DIM pasito/pasita	AUG pasote/pasota/pasazo/pasaza	step; pass
+Fem visita	listed:visita	PL visitas	DIM visitito/visitita	AUG visitote/visitota/visitazo/visitaza	visit
+Fem reunión	listed:reunión	PL reuniones	DIM reunioncito/reunioncita	AUG 	meeting
+Masc encuentro	listed:encuentro	PL encuentros	DIM encuentrito/encuentrita	AUG encuentrote/encuentrota/encuentrazo/encuentraza	meeting, encounter
+Fem conversación	listed:conversación	PL conversaciones	DIM conversacioncito/conversacioncita	AUG 	conversation
+Masc mensaje	listed:mensaje	PL mensajes	DIM mensajecito/mensajecita/mensajito/mensajita	AUG mensajote/mensajota	message
+Fem noticia	listed:noticia	PL noticias	DIM noticiito/noticiita	AUG noticiote/noticiota/noticiazo/noticiaza	piece of news
+Masc periódico	listed:periódico	PL periódicos	DIM periodiquito/periodiquita	AUG periodicote/periodicota/periodicazo/periodicaza	newspaper
+Fem revista	listed:revista	PL revistas	DIM revistito/revistita	AUG revistote/revistota/revistazo/revistaza	magazine
+Masc gobierno	listed:gobierno	PL gobiernos	DIM gobiernito/gobiernita	AUG gobiernote/gobiernota/gobiernazo/gobiernaza	government
+Masc presidente	listed:presidente	PL presidentes	DIM presidentecito/presidentecita/presidentito/presidentita	AUG presidentote/presidentota	president
+Fem nación	listed:nación	PL naciones	DIM nacioncito/nacioncita	AUG 	nation
+Fem patria	listed:patria	PL patrias	DIM patriito/patriita/patriecito/patriecita	AUG patriote/patriota/patriazo/patriaza	homeland
+Masc ejército	listed:ejército	PL ejércitos	DIM ejercitito/ejercitita	AUG ejercitote/ejercitota/ejercitazo/ejercitaza	army
+Fem política	listed:política	PL políticas	DIM politiquito/politiquita	AUG politicote/politicota/politicazo/politicaza	politics; policy
+Fem elección	listed:elección	PL elecciones	DIM eleccioncito/eleccioncita	AUG 	election; choice
+Masc voto	listed:voto	PL votos	DIM votito/votita	AUG votote/votota/votazo/votaza	vote
+Fem comunidad	listed:comunidad	PL comunidades	DIM comunidadito/comunidadita	AUG 	community
+Fem sociedad	listed:sociedad	PL sociedades	DIM sociedadito/sociedadita	AUG 	society
+Fem cultura	listed:cultura	PL culturas	DIM culturito/culturita	AUG culturote/culturota/culturazo/culturaza	culture
+Fem costumbre	listed:costumbre	PL costumbres	DIM costumbrecito/costumbrecita/costumbrito/costumbrita	AUG costumbrote/costumbrota	custom, habit
+Fem tradición	listed:tradición	PL tradiciones	DIM tradicioncito/tradicioncita	AUG 	tradition
+Fem religión	listed:religión	PL religiones	DIM religioncito/religioncita	AUG 	religion
+Fem creencia	listed:creencia	PL creencias	DIM creenciito/creenciita	AUG creenciote/creenciota/creenciazo/creenciaza	belief
+Fem Biblia	listed:Biblia	PL biblias	DIM bibliito/bibliita/bibliecito/bibliecita	AUG bibliote/bibliota/bibliazo/bibliaza	Bible
+Fem Escritura	listed:Escritura	PL escrituras	DIM escriturito/escriturita	AUG escriturote/escriturota/escriturazo/escrituraza	Scripture
+Masc evangelio	listed:evangelio	PL evangelios	DIM evangeliito/evangeliita	AUG evangeliote/evangeliota/evangeliazo/evangeliaza	gospel
+Masc apóstol	listed:apóstol	PL apóstoles	DIM apostolito/apostolita	AUG 	apostle
+Masc profeta	listed:profeta	PL profetas	DIM profetito/profetita	AUG profetote/profetota/profetazo/profetaza	prophet
+Masc salmo	listed:salmo	PL salmos	DIM salmito/salmita	AUG salmote/salmota/salmazo/salmaza	psalm
+Masc discípulo	listed:discípulo	PL discípulos	DIM discipulito/discipulita	AUG discipulote/discipulota/discipulazo/discipulaza	disciple
+Masc ángel	listed:ángel	PL ángeles	DIM angelito/angelita	AUG 	angel
+Masc demonio	listed:demonio	PL demonios	DIM demoniito/demoniita	AUG demoniote/demoniota/demoniazo/demoniaza	demon
+Masc diablo	listed:diablo	PL diablos	DIM diablito/diablita	AUG diablote/diablota/diablazo/diablaza	devil
+Masc infierno	listed:infierno	PL infiernos	DIM infiernito/infiernita	AUG infiernote/infiernota/infiernazo/infiernaza	hell
+Masc paraíso	listed:paraíso	PL paraísos	DIM paraisito/paraisita	AUG paraisote/paraisota/paraisazo/paraisaza	paradise
+Masc reino	listed:reino	PL reinos	DIM reinito/reinita	AUG reinote/reinota/reinazo/reinaza	kingdom
+Fem gloria	listed:gloria	PL glorias	DIM gloriito/gloriita/gloriecito/gloriecita	AUG gloriote/gloriota/gloriazo/gloriaza	glory
+Fem gracia	listed:gracia	PL gracias	DIM graciito/graciita/graciecito/graciecita	AUG graciote/graciota/graciazo/graciaza	grace; favour
+Fem misericordia	listed:misericordia	PL misericordias	DIM misericordiito/misericordiita	AUG misericordiote/misericordiota/misericordiazo/misericordiaza	mercy
+Masc perdón	listed:perdón	PL perdones	DIM perdoncito/perdoncita	AUG 	forgiveness, pardon
+Fem salvación	listed:salvación	PL salvaciones	DIM salvacioncito/salvacioncita	AUG 	salvation
+Masc salvador	listed:salvador	PL salvadores	DIM salvadorcito/salvadorcita	AUG 	saviour
+Fem redención	listed:redención	PL redenciones	DIM redencioncito/redencioncita	AUG 	redemption
+Masc arrepentimiento	listed:arrepentimiento	PL arrepentimientos	DIM arrepentimientito/arrepentimientita	AUG arrepentimientote/arrepentimientota/arrepentimientazo/arrepentimientaza	repentance
+Masc pecador	listed:pecador	PL pecadores	DIM pecadorcito/pecadorcita	AUG 	sinner
+Fem bendición	listed:bendición	PL bendiciones	DIM bendicioncito/bendicioncita	AUG 	blessing
+Fem maldición	listed:maldición	PL maldiciones	DIM maldicioncito/maldicioncita	AUG 	curse
+Fem alabanza	listed:alabanza	PL alabanzas	DIM alabanzito/alabanzita	AUG alabanzote/alabanzota/alabanzazo/alabanzaza	praise
+Fem adoración	listed:adoración	PL adoraciones	DIM adoracioncito/adoracioncita	AUG 	worship
+Masc culto	listed:culto	PL cultos	DIM cultito/cultita	AUG cultote/cultota/cultazo/cultaza	worship, church service
+Masc sermón	listed:sermón	PL sermones	DIM sermoncito/sermoncita	AUG 	sermon
+Masc predicador	listed:predicador	PL predicadores	DIM predicadorcito/predicadorcita	AUG 	preacher
+Masc pastor	listed:pastor	PL pastores	DIM pastorcito/pastorcita	AUG 	pastor; shepherd
+Masc sacerdote	listed:sacerdote	PL sacerdotes	DIM sacerdotecito/sacerdotecita/sacerdotito/sacerdotita	AUG sacerdotote/sacerdotota	priest
+Masc obispo	listed:obispo	PL obispos	DIM obispito/obispita	AUG obispote/obispota/obispazo/obispaza	bishop
+Masc monje	listed:monje	PL monjes	DIM monjecito/monjecita/monjito/monjita	AUG monjote/monjota	monk
+Fem monja	listed:monja	PL monjas	DIM monjito/monjita	AUG monjote/monjota/monjazo/monjaza	nun
+Masc altar	listed:altar	PL altares	DIM altarcito/altarcita	AUG 	altar
+Fem cruz	listed:cruz	PL cruces	DIM crucecito/crucecita	AUG 	cross
+Masc sacrificio	listed:sacrificio	PL sacrificios	DIM sacrificiito/sacrificiita	AUG sacrificiote/sacrificiota/sacrificiazo/sacrificiaza	sacrifice
+Masc mandamiento	listed:mandamiento	PL mandamientos	DIM mandamientito/mandamientita	AUG mandamientote/mandamientota/mandamientazo/mandamientaza	commandment
+Masc pacto	listed:pacto	PL pactos	DIM pactito/pactita	AUG pactote/pactota/pactazo/pactaza	covenant, pact
+Fem promesa	listed:promesa	PL promesas	DIM promesito/promesita	AUG promesote/promesota/promesazo/promesaza	promise
+Fem profecía	listed:profecía	PL profecías	DIM profeciito/profeciita	AUG profeciote/profeciota/profeciazo/profeciaza	prophecy
+Masc milagro	listed:milagro	PL milagros	DIM milagrito/milagrita	AUG milagrote/milagrota/milagrazo/milagraza	miracle
+Fem señal	listed:señal	PL señales	DIM señalito/señalita	AUG 	sign
+Fem resurrección	listed:resurrección	PL resurrecciones	DIM resurreccioncito/resurreccioncita	AUG 	resurrection
+Masc bautismo	listed:bautismo	PL bautismos	DIM bautismito/bautismita	AUG bautismote/bautismota/bautismazo/bautismaza	baptism
+Fem comunión	listed:comunión	PL comuniones	DIM comunioncito/comunioncita	AUG 	communion
+Fem ofrenda	listed:ofrenda	PL ofrendas	DIM ofrendito/ofrendita	AUG ofrendote/ofrendota/ofrendazo/ofrendaza	offering
+Masc diezmo	listed:diezmo	PL diezmos	DIM diezmito/diezmita/diezmecito/diezmecita	AUG diezmote/diezmota/diezmazo/diezmaza	tithe
+Fem congregación	listed:congregación	PL congregaciones	DIM congregacioncito/congregacioncita	AUG 	congregation
+Masc himno	listed:himno	PL himnos	DIM himnito/himnita	AUG himnote/himnota/himnazo/himnaza	hymn
+Fem misión	listed:misión	PL misiones	DIM misioncito/misioncita	AUG 	mission
+Masc misionero	listed:misionero	PL misioneros	DIM misionerito/misionerita	AUG misionerote/misionerota/misionerazo/misioneraza	missionary
+Masc testimonio	listed:testimonio	PL testimonios	DIM testimoniito/testimoniita	AUG testimoniote/testimoniota/testimoniazo/testimoniaza	testimony
+Fem,Masc testigo	listed:testigo	PL testigos	DIM testiguito/testiguita	AUG testigote/testigota/testigazo/testigaza	witness
+Fem,Masc creyente	listed:creyente	PL creyentes	DIM creyentecito/creyentecita/creyentito/creyentita	AUG creyentote/creyentota	believer
+Masc cordero	listed:cordero	PL corderos	DIM corderito/corderita	AUG corderote/corderota/corderazo/corderaza	lamb
+Fem viña	listed:viña	PL viñas	DIM viñito/viñita	AUG viñote/viñota/viñazo/viñaza	vineyard
+Masc siervo	listed:siervo	PL siervos	DIM siervito/siervita/siervecito/siervecita	AUG siervote/siervota/siervazo/siervaza	servant
+Masc esclavo	listed:esclavo	PL esclavos	DIM esclavito/esclavita	AUG esclavote/esclavota/esclavazo/esclavaza	slave
+Fem yuca	listed:yuca	PL yucas	DIM yuquito/yuquita	AUG yucote/yucota/yucazo/yucaza	yuca, cassava
+Masc chicharrón	listed:chicharrón	PL chicharrones	DIM chicharroncito/chicharroncita	AUG 	fried pork rind
+Masc fogón	listed:fogón	PL fogones	DIM fogoncito/fogoncita	AUG 	open hearth, wood stove
+Masc comal	listed:comal	PL comales	DIM comalito/comalita	AUG 	flat griddle for tortillas
+Fem cuajada	listed:cuajada	PL cuajadas	DIM cuajadito/cuajadita	AUG cuajadote/cuajadota/cuajadazo/cuajadaza	fresh curd cheese
+Masc aguacate	listed:aguacate	PL aguacates	DIM aguacatecito/aguacatecita/aguacatito/aguacatita	AUG aguacatote/aguacatota	avocado
+Fem leña	listed:leña	PL leñas	DIM leñito/leñita	AUG leñote/leñota/leñazo/leñaza	firewood
+Masc aserrín	listed:aserrín	PL aserrines	DIM aserrincito/aserrincita	AUG 	sawdust
+Masc zinc	listed:zinc	PL zincs	DIM zinquecito/zinquecita	AUG 	zinc; corrugated zinc roofing
+Fem minuta	listed:minuta	PL minutas	DIM minutito/minutita	AUG minutote/minutota/minutazo/minutaza	shaved ice with syrup
+Masc rapidito	listed:rapidito	PL rapiditos	DIM rapiditito/rapiditita	AUG rapiditote/rapiditota/rapiditazo/rapiditaza	small shared minibus
+Masc mijo	listed:mijo	PL mijos	DIM mijito/mijita	AUG mijote/mijota/mijazo/mijaza	my son, dear (from mi hijo)
+Fem mija	listed:mija	PL mijas	DIM mijito/mijita	AUG mijote/mijota/mijazo/mijaza	my daughter, dear (from mi hija)
+Masc atol	listed:atol	PL atoles	DIM atolito/atolita	AUG 	atole, a warm corn drink
+Masc nacatamal	listed:nacatamal	PL nacatamales	DIM nacatamalito/nacatamalita	AUG 	large Christmas tamale
+Fem guacamaya	listed:guacamaya	PL guacamayas	DIM guacamayito/guacamayita	AUG guacamayote/guacamayota/guacamayazo/guacamayaza	macaw
+Fem marimba	listed:marimba	PL marimbas	DIM marimbito/marimbita	AUG marimbote/marimbota/marimbazo/marimbaza	marimba
+Masc velorio	listed:velorio	PL velorios	DIM veloriito/veloriita	AUG veloriote/veloriota/veloriazo/veloriaza	wake, vigil for the dead
+Fem horchata	listed:horchata	PL horchatas	DIM horchatito/horchatita	AUG horchatote/horchatota/horchatazo/horchataza	horchata, a sweet drink
+Masc lempira	listed:lempira	PL lempiras	DIM lempirito/lempirita	AUG lempirote/lempirota/lempirazo/lempiraza	lempira, the currency of Honduras
+Masc cipote	listed:cipote	PL cipotes	DIM cipotecito/cipotecita/cipotito/cipotita	AUG cipotote/cipotota	boy, kid; a vulgar word in Spain
+Fem cipota	listed:cipota	PL cipotas	DIM cipotito/cipotita	AUG cipotote/cipotota/cipotazo/cipotaza	girl, kid; a vulgar word in Spain
+Masc catracho	listed:catracho	PL catrachos	DIM catrachito/catrachita	AUG catrachote/catrachota/catrachazo/catrachaza	Honduran man (friendly, informal)
+Fem catracha	listed:catracha	PL catrachas	DIM catrachito/catrachita	AUG catrachote/catrachota/catrachazo/catrachaza	Honduran woman (friendly, informal)
+Fem baleada	listed:baleada	PL baleadas	DIM baleadito/baleadita	AUG baleadote/baleadota/baleadazo/baleadaza	Honduran snack: a folded flour tortilla with beans, cheese and cream
+Fem pulpería	listed:pulpería	PL pulperías	DIM pulperiito/pulperiita	AUG pulperiote/pulperiota/pulperiazo/pulperiaza	small neighbourhood shop
+Masc pisto	listed:pisto	PL pistos	DIM pistito/pistita	AUG pistote/pistota/pistazo/pistaza	money (informal); in Spain, a vegetable stew
+Masc chele	listed:chele	PL cheles	DIM chelecito/chelecita/chelito/chelita	AUG chelote/chelota	fair-skinned or fair-haired person (informal)
+Masc lapicero	listed:lapicero	PL lapiceros	DIM lapicerito/lapicerita	AUG lapicerote/lapicerota/lapicerazo/lapiceraza	pen (ballpoint)
+Fem computadora	listed:computadora	PL computadoras	DIM computadorito/computadorita	AUG computadorote/computadorota/computadorazo/computadoraza	computer
+Masc ordenador	listed:ordenador	PL ordenadores	DIM ordenadorcito/ordenadorcita	AUG 	computer (Spain; Latin America says computadora)
+Masc carro	listed:carro	PL carros	DIM carrito/carrita	AUG carrote/carrota/carrazo/carraza	car (Latin America; in Spain, a cart)
+Masc coche	listed:coche	PL coches	DIM cochecito/cochecita/cochito/cochita	AUG cochote/cochota	car (the usual word in Spain; much of Latin America prefers carro)
+Masc jugo	listed:jugo	PL jugos	DIM juguito/juguita	AUG jugote/jugota/jugazo/jugaza	juice
+Masc zumo	listed:zumo	PL zumos	DIM zumito/zumita	AUG zumote/zumota/zumazo/zumaza	juice (Spain; Latin America says jugo)
+Masc celular	listed:celular	PL celulares	DIM celularcito/celularcita	AUG 	mobile phone
+Masc móvil	listed:móvil	PL móviles	DIM movilito/movilita	AUG 	mobile phone (Spain; Latin America says celular)
+Fem papa	listed:papa	PL papas	DIM papito/papita	AUG papote/papota/papazo/papaza	potato
+Fem patata	listed:patata	PL patatas	DIM patatito/patatita	AUG patatote/patatota/patatazo/patataza	potato (Spain; Latin America says papa)
+Masc lentes	listed:lentes	PL lentes	DIM lentesito/lentesita	AUG 	glasses (for the eyes)
+Fem gafas	listed:gafas	PL gafas	DIM gafasito/gafasita	AUG 	glasses (for the eyes; Latin America often says lentes)
+Masc durazno	listed:durazno	PL duraznos	DIM duraznito/duraznita	AUG duraznote/duraznota/duraznazo/duraznaza	peach
+Masc melocotón	listed:melocotón	PL melocotones	DIM melocotoncito/melocotoncita	AUG 	peach (Latin America often says durazno)
+Masc frijol	listed:frijol	PL frijoles	DIM frijolito/frijolita	AUG 	bean
+Fem alubia	listed:alubia	PL alubias	DIM alubiito/alubiita	AUG alubiote/alubiota/alubiazo/alubiaza	bean (Latin America often says frijol)
+Fem habichuela	listed:habichuela	PL habichuelas	DIM habichuelito/habichuelita	AUG habichuelote/habichuelota/habichuelazo/habichuelaza	bean (Caribbean)
+Masc elote	listed:elote	PL elotes	DIM elotecito/elotecita/elotito/elotita	AUG elotote/elotota	corn on the cob
+Masc tamal	listed:tamal	PL tamales	DIM tamalito/tamalita	AUG 	tamale
+Masc cacahuate	listed:cacahuate	PL cacahuates	DIM cacahuatecito/cacahuatecita/cacahuatito/cacahuatita	AUG cacahuatote/cacahuatota	peanut (Mexico)
+Masc cacahuete	listed:cacahuete	PL cacahuetes	DIM cacahuetecito/cacahuetecita/cacahuetito/cacahuetita	AUG cacahuetote/cacahuetota	peanut (Mexico says cacahuate)
+Fem gamba	listed:gamba	PL gambas	DIM gambito/gambita	AUG gambote/gambota/gambazo/gambaza	prawn, shrimp (Latin America often says camarón)
+Fem alberca	listed:alberca	PL albercas	DIM alberquito/alberquita	AUG albercote/albercota/albercazo/albercaza	swimming pool (Mexico)
+Fem pileta	listed:pileta	PL piletas	DIM piletito/piletita	AUG piletote/piletota/piletazo/piletaza	swimming pool (Argentina)
+Fem palta	listed:palta	PL paltas	DIM paltito/paltita	AUG paltote/paltota/paltazo/paltaza	avocado (Peru, Chile, Argentina)
+Fem frutilla	listed:frutilla	PL frutillas	DIM frutillito/frutillita	AUG frutillote/frutillota/frutillazo/frutillaza	strawberry (Argentina)
+Fem cobija	listed:cobija	PL cobijas	DIM cobijito/cobijita	AUG cobijote/cobijota/cobijazo/cobijaza	blanket
+Masc boleto	listed:boleto	PL boletos	DIM boletito/boletita	AUG boletote/boletota/boletazo/boletaza	ticket (travel, events)
+Fem chamba	listed:chamba	PL chambas	DIM chambito/chambita	AUG chambote/chambota/chambazo/chambaza	job, work (informal)
+Masc chamaco	listed:chamaco	PL chamacos	DIM chamaquito/chamaquita	AUG chamacote/chamacota/chamacazo/chamacaza	boy, kid (informal)
+Masc popote	listed:popote	PL popotes	DIM popotecito/popotecita/popotito/popotita	AUG popotote/popotota	drinking straw (Mexico)
+Fem pajita	listed:pajita	PL pajitas	DIM pajitito/pajitita	AUG pajitote/pajitota/pajitazo/pajitaza	drinking straw (the word differs by country: popote in Mexico)
+Masc chaval	listed:chaval	PL chavales	DIM chavalito/chavalita	AUG 	kid, lad (informal; heard mostly in Spain)
+Fem vendedora	listed:vendedora	PL vendedoras	DIM vendedorito/vendedorita	AUG vendedorote/vendedorota/vendedorazo/vendedoraza	seller (female)
+Masc agricultor	listed:agricultor	PL agricultores	DIM agricultorcito/agricultorcita	AUG 	farmer
+Masc enfermero	listed:enfermero	PL enfermeros	DIM enfermerito/enfermerita	AUG enfermerote/enfermerota/enfermerazo/enfermeraza	nurse (male)
+Masc favor	listed:favor	PL favores	DIM favorcito/favorcita	AUG 	favour
+Fem terminal	listed:terminal	PL terminales	DIM terminalito/terminalita	AUG 	terminal, station
+Masc asiento	listed:asiento	PL asientos	DIM asientito/asientita	AUG asientote/asientota/asientazo/asientaza	seat
+Masc globo	listed:globo	PL globos	DIM globito/globita	AUG globote/globota/globazo/globaza	balloon
+Fem lata	listed:lata	PL latas	DIM latito/latita	AUG latote/latota/latazo/lataza	tin, can
+Fem imaginación	listed:imaginación	PL imaginaciones	DIM imaginacioncito/imaginacioncita	AUG 	imagination
+Fem compasión	listed:compasión	PL compasiones	DIM compasioncito/compasioncita	AUG 	compassion
+Fem capital	listed:capital	PL capitales	DIM capitalito/capitalita	AUG 	capital city
+Fem tajada	listed:tajada	PL tajadas	DIM tajadito/tajadita	AUG tajadote/tajadota/tajadazo/tajadaza	slice
+Fem lástima	listed:lástima	PL lástimas	DIM lastimito/lastimita	AUG lastimote/lastimota/lastimazo/lastimaza	pity, shame
+Masc susto	listed:susto	PL sustos	DIM sustito/sustita	AUG sustote/sustota/sustazo/sustaza	fright
+Masc chocolate	listed:chocolate	PL chocolates	DIM chocolatecito/chocolatecita/chocolatito/chocolatita	AUG chocolatote/chocolatota	chocolate
+Masc juguete	listed:juguete	PL juguetes	DIM juguetecito/juguetecita/juguetito/juguetita	AUG juguetote/juguetota	toy
+Fem página	listed:página	PL páginas	DIM paginito/paginita	AUG paginote/paginota/paginazo/paginaza	page
+Fem calma	listed:calma	PL calmas	DIM calmito/calmita	AUG calmote/calmota/calmazo/calmaza	calm
+Masc cabo	listed:cabo	PL cabos	DIM cabito/cabita	AUG cabote/cabota/cabazo/cabaza	end; cape
+Masc estudio	listed:estudio	PL estudios	DIM estudiito/estudiita	AUG estudiote/estudiota/estudiazo/estudiaza	study
+Masc cariño	listed:cariño	PL cariños	DIM cariñito/cariñita	AUG cariñote/cariñota/cariñazo/cariñaza	affection, fondness
+Masc retraso	listed:retraso	PL retrasos	DIM retrasito/retrasita	AUG retrasote/retrasota/retrasazo/retrasaza	delay
+Fem linterna	listed:linterna	PL linternas	DIM linternito/linternita	AUG linternote/linternota/linternazo/linternaza	torch, flashlight
+Fem necesidad	listed:necesidad	PL necesidades	DIM necesidadito/necesidadita	AUG 	need
+Masc criado	listed:criado	PL criados	DIM criadito/criadita	AUG criadote/criadota/criadazo/criadaza	servant
+Masc pasaje	listed:pasaje	PL pasajes	DIM pasajecito/pasajecita/pasajito/pasajita	AUG pasajote/pasajota	fare, ticket; passage
+Masc servicio	listed:servicio	PL servicios	DIM serviciito/serviciita	AUG serviciote/serviciota/serviciazo/serviciaza	service
+Masc mediodía	listed:mediodía	PL mediodías	DIM mediodiito/mediodiita	AUG mediodiote/mediodiota/mediodiazo/mediodiaza	noon, midday
+Fem bienvenida	listed:bienvenida	PL bienvenidas	DIM bienvenidito/bienvenidita	AUG bienvenidote/bienvenidota/bienvenidazo/bienvenidaza	welcome
+Fem guitarra	listed:guitarra	PL guitarras	DIM guitarrito/guitarrita	AUG guitarrote/guitarrota/guitarrazo/guitarraza	guitar
+Fem matemáticas	listed:matemáticas	PL matemáticas	DIM matematicasito/matematicasita	AUG 	mathematics
+Fem,Masc frente	listed:frente	PL frentes	DIM frentecito/frentecita/frentito/frentita	AUG frentote/frentota	forehead; front
+Fem pena	listed:pena	PL penas	DIM penito/penita	AUG penote/penota/penazo/penaza	sorrow, pity; effort
+Masc repente	listed:repente	PL repentes	DIM repentecito/repentecita/repentito/repentita	AUG repentote/repentota	sudden movement
+Fem vacaciones	listed:vacaciones	PL vacaciones	DIM vacacionesito/vacacionesita	AUG 	holidays, vacation

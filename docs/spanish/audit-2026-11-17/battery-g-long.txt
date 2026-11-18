@@ -1,0 +1,8 @@
+es | Ellos prefieren el té. | prefieren
+es | Se llama Pedro. | llama
+es | Estoy cansado. | Estoy
+es | Asistí a la reunión. | Asistí
+es | Me gusta éste. | éste
+es | Tengo veinte anos. | anos
+es | Escucho la radio. | radio
+es | La vi ayer. | La

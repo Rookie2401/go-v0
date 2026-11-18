@@ -1,0 +1,210 @@
+mismo	listed:mismo,mismos	MS:mismo FS:misma MP:mismos FP:mismas	SUP mismísimo	DIM mismito/mismita	same, -self
+joven	listed:joven	S:joven P:jóvenes	SUP jovenísimo	DIM jovencito/jovencita	young
+fiel	listed:fiel	S:fiel P:fieles	SUP fielísimo	DIM fielecito/fielecita/fielcito/fielcita	faithful
+justo	listed:justo	MS:justo FS:justa MP:justos FP:justas	SUP justísimo	DIM justito/justita	righteous, just
+eterno	listed:eterno,eterna	MS:eterno FS:eterna MP:eternos FP:eternas	SUP eternísimo	DIM eternito/eternita	eternal
+unigénito	listed:unigénito	MS:unigénito FS:unigénita MP:unigénitos FP:unigénitas	SUP unigenitísimo	DIM unigenitito/unigenitita	only-begotten
+tal	listed:tal	S:tal P:tales	SUP talísimo	DIM talecito/talecita/talcito/talcita	such
+bueno	listed:bueno,buen	MS:bueno FS:buena MP:buenos FP:buenas	SUP buenísimo	DIM buenito/buenita/buenecito/buenecita	good
+malo	listed:malo	MS:malo FS:mala MP:malos FP:malas	SUP malísimo	DIM malito/malita	bad
+grande	listed:grande,gran	S:grande P:grandes	SUP grandísimo	DIM grandecito/grandecita/grandito/grandita	big, large; great
+pequeño	listed:pequeño	MS:pequeño FS:pequeña MP:pequeños FP:pequeñas	SUP pequeñísimo	DIM pequeñito/pequeñita	small, little
+nuevo	listed:nuevo	MS:nuevo FS:nueva MP:nuevos FP:nuevas	SUP nuevísimo	DIM nuevito/nuevita/nuevecito/nuevecita	new
+viejo	listed:viejo	MS:viejo FS:vieja MP:viejos FP:viejas	SUP viejísimo	DIM viejito/viejita/viejecito/viejecita	old
+alto	listed:alto	MS:alto FS:alta MP:altos FP:altas	SUP altísimo	DIM altito/altita	tall; high
+bajo	listed:bajo	MS:bajo FS:baja MP:bajos FP:bajas	SUP bajísimo	DIM bajito/bajita	short; low
+largo	listed:largo	MS:largo FS:larga MP:largos FP:largas	SUP larguísimo	DIM larguito/larguita	long
+corto	listed:corto	MS:corto FS:corta MP:cortos FP:cortas	SUP cortísimo	DIM cortito/cortita	short (length)
+ancho	listed:ancho	MS:ancho FS:ancha MP:anchos FP:anchas	SUP anchísimo	DIM anchito/anchita	wide
+estrecho	listed:estrecho	MS:estrecho FS:estrecha MP:estrechos FP:estrechas	SUP estrechísimo	DIM estrechito/estrechita	narrow
+gordo	listed:gordo	MS:gordo FS:gorda MP:gordos FP:gordas	SUP gordísimo	DIM gordito/gordita	fat
+delgado	listed:delgado	MS:delgado FS:delgada MP:delgados FP:delgadas	SUP delgadísimo	DIM delgadito/delgadita	thin
+fuerte	listed:fuerte	S:fuerte P:fuertes	SUP fuertísimo	DIM fuertecito/fuertecita/fuertito/fuertita	strong
+débil	listed:débil	S:débil P:débiles	SUP debilísimo	DIM debilito/debilita	weak
+rápido	listed:rápido	MS:rápido FS:rápida MP:rápidos FP:rápidas	SUP rapidísimo	DIM rapidito/rapidita	fast
+lento	listed:lento	MS:lento FS:lenta MP:lentos FP:lentas	SUP lentísimo	DIM lentito/lentita	slow
+pesado	listed:pesado	MS:pesado FS:pesada MP:pesados FP:pesadas	SUP pesadísimo	DIM pesadito/pesadita	heavy; tiresome
+ligero	listed:ligero	MS:ligero FS:ligera MP:ligeros FP:ligeras	SUP ligerísimo	DIM ligerito/ligerita	light (weight)
+duro	listed:duro	MS:duro FS:dura MP:duros FP:duras	SUP durísimo	DIM durito/durita	hard
+blando	listed:blando	MS:blando FS:blanda MP:blandos FP:blandas	SUP blandísimo	DIM blandito/blandita	soft
+suave	listed:suave	S:suave P:suaves	SUP suavísimo	DIM suavecito/suavecita/suavito/suavita	smooth, gentle
+caliente	listed:caliente	S:caliente P:calientes	SUP calientísimo	DIM calientecito/calientecita/calientito/calientita	hot, warm
+frío	listed:frío	MS:frío FS:fría MP:fríos FP:frías	SUP friísimo	DIM friito/friita	cold
+tibio	listed:tibio	MS:tibio FS:tibia MP:tibios FP:tibias	SUP tibísimo	DIM tibiito/tibiita/tibiecito/tibiecita	lukewarm
+fresco	listed:fresco	MS:fresco FS:fresca MP:frescos FP:frescas	SUP fresquísimo	DIM fresquito/fresquita	fresh; cool
+mojado	listed:mojado	MS:mojado FS:mojada MP:mojados FP:mojadas	SUP mojadísimo	DIM mojadito/mojadita	wet
+seco	listed:seco	MS:seco FS:seca MP:secos FP:secas	SUP sequísimo	DIM sequito/sequita	dry
+limpio	listed:limpio	MS:limpio FS:limpia MP:limpios FP:limpias	SUP limpísimo	DIM limpiito/limpiita/limpiecito/limpiecita	clean
+sucio	listed:sucio	MS:sucio FS:sucia MP:sucios FP:sucias	SUP suquísimo	DIM suciito/suciita/suciecito/suciecita	dirty
+lleno	listed:lleno	MS:lleno FS:llena MP:llenos FP:llenas	SUP llenísimo	DIM llenito/llenita	full
+vacío	listed:vacío	MS:vacío FS:vacía MP:vacíos FP:vacías	SUP vaciísimo	DIM vaciito/vaciita	empty
+abierto	listed:abierto	MS:abierto FS:abierta MP:abiertos FP:abiertas	SUP abiertísimo	DIM abiertito/abiertita	open
+cerrado	listed:cerrado	MS:cerrado FS:cerrada MP:cerrados FP:cerradas	SUP cerradísimo	DIM cerradito/cerradita	closed
+rico	listed:rico	MS:rico FS:rica MP:ricos FP:ricas	SUP riquísimo	DIM riquito/riquita	rich; tasty
+pobre	listed:pobre	S:pobre P:pobres	SUP pobrísimo	DIM pobrecito/pobrecita/pobrito/pobrita	poor
+caro	listed:caro	MS:caro FS:cara MP:caros FP:caras	SUP carísimo	DIM carito/carita	expensive
+barato	listed:barato	MS:barato FS:barata MP:baratos FP:baratas	SUP baratísimo	DIM baratito/baratita	cheap
+feliz	listed:feliz	S:feliz P:felices	SUP feliquísimo	DIM felicito/felicita	happy
+triste	listed:triste	S:triste P:tristes	SUP tristísimo	DIM tristecito/tristecita/tristito/tristita	sad
+contento	listed:contento	MS:contento FS:contenta MP:contentos FP:contentas	SUP contentísimo	DIM contentito/contentita	pleased, glad
+alegre	listed:alegre	S:alegre P:alegres	SUP alegrísimo	DIM alegrecito/alegrecita/alegrito/alegrita	cheerful, glad
+enfermo	listed:enfermo	MS:enfermo FS:enferma MP:enfermos FP:enfermas	SUP enfermísimo	DIM enfermito/enfermita	sick
+sano	listed:sano	MS:sano FS:sana MP:sanos FP:sanas	SUP sanísimo	DIM sanito/sanita	healthy
+cansado	listed:cansado	MS:cansado FS:cansada MP:cansados FP:cansadas	SUP cansadísimo	DIM cansadito/cansadita	tired
+ocupado	listed:ocupado	MS:ocupado FS:ocupada MP:ocupados FP:ocupadas	SUP ocupadísimo	DIM ocupadito/ocupadita	busy
+libre	listed:libre	S:libre P:libres	SUP librísimo	DIM librecito/librecita/librito/librita	free
+seguro	listed:seguro	MS:seguro FS:segura MP:seguros FP:seguras	SUP segurísimo	DIM segurito/segurita	sure; safe
+peligroso	listed:peligroso	MS:peligroso FS:peligrosa MP:peligrosos FP:peligrosas	SUP peligrosísimo	DIM peligrosito/peligrosita	dangerous
+fácil	listed:fácil	S:fácil P:fáciles	SUP facilísimo	DIM facilito/facilita	easy
+difícil	listed:difícil	S:difícil P:difíciles	SUP dificilísimo	DIM dificilito/dificilita	difficult
+posible	listed:posible	S:posible P:posibles	SUP posibilísimo	DIM posiblecito/posiblecita/posiblito/posiblita	possible
+imposible	listed:imposible	S:imposible P:imposibles	SUP imposibilísimo	DIM imposiblecito/imposiblecita/imposiblito/imposiblita	impossible
+importante	listed:importante	S:importante P:importantes	SUP importantísimo	DIM importantecito/importantecita/importantito/importantita	important
+necesario	listed:necesario	MS:necesario FS:necesaria MP:necesarios FP:necesarias	SUP necesarísimo	DIM necesariito/necesariita	necessary
+útil	listed:útil	S:útil P:útiles	SUP utilísimo	DIM utilito/utilita	useful
+inútil	listed:inútil	S:inútil P:inútiles	SUP inutilísimo	DIM inutilito/inutilita	useless
+claro	listed:claro	MS:claro FS:clara MP:claros FP:claras	SUP clarísimo	DIM clarito/clarita	clear; light (colour)
+oscuro	listed:oscuro	MS:oscuro FS:oscura MP:oscuros FP:oscuras	SUP oscurísimo	DIM oscurito/oscurita	dark
+blanco	listed:blanco	MS:blanco FS:blanca MP:blancos FP:blancas	SUP blanquísimo	DIM blanquito/blanquita	white
+negro	listed:negro	MS:negro FS:negra MP:negros FP:negras	SUP negrísimo	DIM negrito/negrita	black
+rojo	listed:rojo	MS:rojo FS:roja MP:rojos FP:rojas	SUP rojísimo	DIM rojito/rojita	red
+azul	listed:azul	S:azul P:azules	SUP azulísimo	DIM azulito/azulita	blue
+verde	listed:verde	S:verde P:verdes	SUP verdísimo	DIM verdecito/verdecita/verdito/verdita	green
+amarillo	listed:amarillo	MS:amarillo FS:amarilla MP:amarillos FP:amarillas	SUP amarillísimo	DIM amarillito/amarillita	yellow
+gris	listed:gris	S:gris P:grises	SUP grisísimo	DIM grisecito/grisecita	grey
+marrón	listed:marrón	MS:marrón FS:marrona MP:marrones FP:marronas	SUP marronísimo	DIM marroncito/marroncita	brown
+morado	listed:morado	MS:morado FS:morada MP:morados FP:moradas	SUP moradísimo	DIM moradito/moradita	purple
+dorado	listed:dorado	MS:dorado FS:dorada MP:dorados FP:doradas	SUP doradísimo	DIM doradito/doradita	golden
+bonito	listed:bonito	MS:bonito FS:bonita MP:bonitos FP:bonitas	SUP bonitísimo	DIM bonitito/bonitita	pretty, nice
+hermoso	listed:hermoso	MS:hermoso FS:hermosa MP:hermosos FP:hermosas	SUP hermosísimo	DIM hermosito/hermosita	beautiful
+feo	listed:feo	MS:feo FS:fea MP:feos FP:feas	SUP feísimo	DIM feito/feita	ugly
+guapo	listed:guapo	MS:guapo FS:guapa MP:guapos FP:guapas	SUP guapísimo	DIM guapito/guapita	good-looking
+simpático	listed:simpático	MS:simpático FS:simpática MP:simpáticos FP:simpáticas	SUP simpatiquísimo	DIM simpatiquito/simpatiquita	nice, likeable
+amable	listed:amable	S:amable P:amables	SUP amabilísimo	DIM amablecito/amablecita/amablito/amablita	kind
+inteligente	listed:inteligente	S:inteligente P:inteligentes	SUP inteligentísimo	DIM inteligentecito/inteligentecita/inteligentito/inteligentita	intelligent
+listo	listed:listo	MS:listo FS:lista MP:listos FP:listas	SUP listísimo	DIM listito/listita	ready; clever
+tonto	listed:tonto	MS:tonto FS:tonta MP:tontos FP:tontas	SUP tontísimo	DIM tontito/tontita	silly, foolish
+loco	listed:loco	MS:loco FS:loca MP:locos FP:locas	SUP loquísimo	DIM loquito/loquita	mad, crazy
+valiente	listed:valiente	S:valiente P:valientes	SUP valientísimo	DIM valientecito/valientecita/valientito/valientita	brave
+cortés	listed:cortés	MS:cortés FS:cortesa MP:corteses FP:cortesas	SUP cortesísimo	DIM cortesito/cortesita	polite
+honesto	listed:honesto	MS:honesto FS:honesta MP:honestos FP:honestas	SUP honestísimo	DIM honestito/honestita	honest
+sincero	listed:sincero	MS:sincero FS:sincera MP:sinceros FP:sinceras	SUP sincerísimo	DIM sincerito/sincerita	sincere
+humilde	listed:humilde	S:humilde P:humildes	SUP humildísimo	DIM humildecito/humildecita/humildito/humildita	humble
+orgulloso	listed:orgulloso	MS:orgulloso FS:orgullosa MP:orgullosos FP:orgullosas	SUP orgullosísimo	DIM orgullosito/orgullosita	proud
+perezoso	listed:perezoso	MS:perezoso FS:perezosa MP:perezosos FP:perezosas	SUP perezosísimo	DIM perezosito/perezosita	lazy
+trabajador	listed:trabajador	MS:trabajador FS:trabajadora MP:trabajadores FP:trabajadoras	SUP trabajadorísimo	DIM trabajadorcito/trabajadorcita	hard-working
+generoso	listed:generoso	MS:generoso FS:generosa MP:generosos FP:generosas	SUP generosísimo	DIM generosito/generosita	generous
+paciente	listed:paciente	S:paciente P:pacientes	SUP pacientísimo	DIM pacientecito/pacientecita/pacientito/pacientita	patient
+tranquilo	listed:tranquilo	MS:tranquilo FS:tranquila MP:tranquilos FP:tranquilas	SUP tranquilísimo	DIM tranquilito/tranquilita	calm, quiet
+nervioso	listed:nervioso	MS:nervioso FS:nerviosa MP:nerviosos FP:nerviosas	SUP nerviosísimo	DIM nerviosito/nerviosita	nervous
+preocupado	listed:preocupado	MS:preocupado FS:preocupada MP:preocupados FP:preocupadas	SUP preocupadísimo	DIM preocupadito/preocupadita	worried
+molesto	listed:molesto	MS:molesto FS:molesta MP:molestos FP:molestas	SUP molestísimo	DIM molestito/molestita	annoyed; annoying
+sorprendido	listed:sorprendido	MS:sorprendido FS:sorprendida MP:sorprendidos FP:sorprendidas	SUP sorprendidísimo	DIM sorprendidito/sorprendidita	surprised
+cierto	listed:cierto	MS:cierto FS:cierta MP:ciertos FP:ciertas	SUP ciertísimo	DIM ciertito/ciertita/ciertecito/ciertecita	certain, true
+falso	listed:falso	MS:falso FS:falsa MP:falsos FP:falsas	SUP falsísimo	DIM falsito/falsita	false
+verdadero	listed:verdadero	MS:verdadero FS:verdadera MP:verdaderos FP:verdaderas	SUP verdaderísimo	DIM verdaderito/verdaderita	true, real
+igual	listed:igual	S:igual P:iguales	SUP igualísimo	DIM igualito/igualita	equal, the same
+diferente	listed:diferente	S:diferente P:diferentes	SUP diferentísimo	DIM diferentecito/diferentecita/diferentito/diferentita	different
+propio	listed:propio	MS:propio FS:propia MP:propios FP:propias	SUP propísimo	DIM propiito/propiita/propiecito/propiecita	own
+solo	listed:solo	MS:solo FS:sola MP:solos FP:solas	SUP solísimo	DIM solito/solita	alone
+único	listed:único	MS:único FS:única MP:únicos FP:únicas	SUP uniquísimo	DIM uniquito/uniquita	only, unique
+primero	listed:primero,primer	MS:primero FS:primera MP:primeros FP:primeras	SUP primerísimo	DIM primerito/primerita	first
+segundo	listed:segundo	MS:segundo FS:segunda MP:segundos FP:segundas	SUP segundísimo	DIM segundito/segundita	second
+tercero	listed:tercero	MS:tercero FS:tercera MP:terceros FP:terceras	SUP tercerísimo	DIM tercerito/tercerita	third
+cuarto	listed:cuarto	MS:cuarto FS:cuarta MP:cuartos FP:cuartas	SUP cuartísimo	DIM cuartito/cuartita	fourth
+quinto	listed:quinto	MS:quinto FS:quinta MP:quintos FP:quintas	SUP quintísimo	DIM quintito/quintita	fifth
+último	listed:último	MS:último FS:última MP:últimos FP:últimas	SUP ultimísimo	DIM ultimito/ultimita	last
+siguiente	listed:siguiente	S:siguiente P:siguientes	SUP siguientísimo	DIM siguientecito/siguientecita/siguientito/siguientita	next, following
+anterior	listed:anterior	S:anterior P:anteriores	SUP anteriorísimo	DIM anteriorcito/anteriorcita	previous
+próximo	listed:próximo	MS:próximo FS:próxima MP:próximos FP:próximas	SUP proximísimo	DIM proximito/proximita	next; near
+mayor	listed:mayor	S:mayor P:mayores	SUP mayorísimo	DIM mayorcito/mayorcita	older, bigger; greater
+menor	listed:menor	S:menor P:menores	SUP menorísimo	DIM menorcito/menorcita	younger, smaller; lesser
+mejor	listed:mejor	S:mejor P:mejores	SUP mejorísimo	DIM mejorcito/mejorcita	better, best
+peor	listed:peor	S:peor P:peores	SUP peorísimo	DIM peorcito/peorcita	worse, worst
+principal	listed:principal	S:principal P:principales	SUP principalísimo	DIM principalito/principalita	main
+general	listed:general	S:general P:generales	SUP generalísimo	DIM generalito/generalita	general
+común	listed:común	S:común P:comunes	SUP comunísimo	DIM comuncito/comuncita	common
+normal	listed:normal	S:normal P:normales	SUP normalísimo	DIM normalito/normalita	normal
+especial	listed:especial	S:especial P:especiales	SUP especialísimo	DIM especialito/especialita	special
+particular	listed:particular	S:particular P:particulares	SUP particularísimo	DIM particularcito/particularcita	particular; private
+público	listed:público	MS:público FS:pública MP:públicos FP:públicas	SUP publiquísimo	DIM publiquito/publiquita	public
+privado	listed:privado	MS:privado FS:privada MP:privados FP:privadas	SUP privadísimo	DIM privadito/privadita	private
+social	listed:social	S:social P:sociales	SUP socialísimo	DIM socialito/socialita	social
+político	listed:político	MS:político FS:política MP:políticos FP:políticas	SUP politiquísimo	DIM politiquito/politiquita	political
+nacional	listed:nacional	S:nacional P:nacionales	SUP nacionalísimo	DIM nacionalito/nacionalita	national
+internacional	listed:internacional	S:internacional P:internacionales	SUP internacionalísimo	DIM internacionalito/internacionalita	international
+local	listed:local	S:local P:locales	SUP localísimo	DIM localito/localita	local
+popular	listed:popular	S:popular P:populares	SUP popularísimo	DIM popularcito/popularcita	popular
+natural	listed:natural	S:natural P:naturales	SUP naturalísimo	DIM naturalito/naturalita	natural
+humano	listed:humano	MS:humano FS:humana MP:humanos FP:humanas	SUP humanísimo	DIM humanito/humanita	human
+divino	listed:divino	MS:divino FS:divina MP:divinos FP:divinas	SUP divinísimo	DIM divinito/divinita	divine
+santo	listed:santo,san	MS:santo FS:santa MP:santos FP:santas	SUP santísimo	DIM santito/santita	holy; saint
+sagrado	listed:sagrado	MS:sagrado FS:sagrada MP:sagrados FP:sagradas	SUP sagradísimo	DIM sagradito/sagradita	sacred
+bendito	listed:bendito	MS:bendito FS:bendita MP:benditos FP:benditas	SUP benditísimo	DIM benditito/benditita	blessed
+malvado	listed:malvado	MS:malvado FS:malvada MP:malvados FP:malvadas	SUP malvadísimo	DIM malvadito/malvadita	wicked
+puro	listed:puro	MS:puro FS:pura MP:puros FP:puras	SUP purísimo	DIM purito/purita	pure
+vivo	listed:vivo	MS:vivo FS:viva MP:vivos FP:vivas	SUP vivísimo	DIM vivito/vivita	alive; lively
+muerto	listed:muerto	MS:muerto FS:muerta MP:muertos FP:muertas	SUP muertísimo	DIM muertito/muertita/muertecito/muertecita	dead
+ausente	listed:ausente	S:ausente P:ausentes	SUP ausentísimo	DIM ausentecito/ausentecita/ausentito/ausentita	absent
+preparado	listed:preparado	MS:preparado FS:preparada MP:preparados FP:preparadas	SUP preparadísimo	DIM preparadito/preparadita	prepared, ready
+maduro	listed:maduro	MS:maduro FS:madura MP:maduros FP:maduras	SUP madurísimo	DIM madurito/madurita	ripe, mature
+anciano	listed:anciano	MS:anciano FS:anciana MP:ancianos FP:ancianas	SUP ancianísimo	DIM ancianito/ancianita	elderly, aged
+injusto	listed:injusto	MS:injusto FS:injusta MP:injustos FP:injustas	SUP injustísimo	DIM injustito/injustita	unjust
+glorioso	listed:glorioso	MS:glorioso FS:gloriosa MP:gloriosos FP:gloriosas	SUP gloriosísimo	DIM gloriosito/gloriosita	glorious
+poderoso	listed:poderoso	MS:poderoso FS:poderosa MP:poderosos FP:poderosas	SUP poderosísimo	DIM poderosito/poderosita	powerful
+misericordioso	listed:misericordioso	MS:misericordioso FS:misericordiosa MP:misericordiosos FP:misericordiosas	SUP misericordiosísimo	DIM misericordiosito/misericordiosita	merciful
+pecaminoso	listed:pecaminoso	MS:pecaminoso FS:pecaminosa MP:pecaminosos FP:pecaminosas	SUP pecaminosísimo	DIM pecaminosito/pecaminosita	sinful
+espiritual	listed:espiritual	S:espiritual P:espirituales	SUP espiritualísimo	DIM espiritualito/espiritualita	spiritual
+celestial	listed:celestial	S:celestial P:celestiales	SUP celestialísimo	DIM celestialito/celestialita	heavenly
+terrenal	listed:terrenal	S:terrenal P:terrenales	SUP terrenalísimo	DIM terrenalito/terrenalita	earthly
+nacido	listed:nacido	MS:nacido FS:nacida MP:nacidos FP:nacidas	SUP nacidísimo	DIM nacidito/nacidita	born
+perdido	listed:perdido	MS:perdido FS:perdida MP:perdidos FP:perdidas	SUP perdidísimo	DIM perdidito/perdidita	lost
+salvo	listed:salvo	MS:salvo FS:salva MP:salvos FP:salvas	SUP salvísimo	DIM salvito/salvita	safe, saved
+cercano	listed:cercano	MS:cercano FS:cercana MP:cercanos FP:cercanas	SUP cercanísimo	DIM cercanito/cercanita	near, close
+lejano	listed:lejano	MS:lejano FS:lejana MP:lejanos FP:lejanas	SUP lejanísimo	DIM lejanito/lejanita	distant
+antiguo	listed:antiguo	MS:antiguo FS:antigua MP:antiguos FP:antiguas	SUP antiguísimo	DIM antiguito/antiguita	ancient, old
+moderno	listed:moderno	MS:moderno FS:moderna MP:modernos FP:modernas	SUP modernísimo	DIM modernito/modernita	modern
+actual	listed:actual	S:actual P:actuales	SUP actualísimo	DIM actualito/actualita	current, present-day
+entero	listed:entero	MS:entero FS:entera MP:enteros FP:enteras	SUP enterísimo	DIM enterito/enterita	whole, entire
+medio	listed:medio	MS:medio FS:media MP:medios FP:medias	SUP medísimo	DIM mediito/mediita/mediecito/mediecita	half, middle
+distinto	listed:distinto	MS:distinto FS:distinta MP:distintos FP:distintas	SUP distintísimo	DIM distintito/distintita	different, distinct
+hondureño	listed:hondureño	MS:hondureño FS:hondureña MP:hondureños FP:hondureñas	SUP hondureñísimo	DIM hondureñito/hondureñita	Honduran
+guatemalteco	listed:guatemalteco	MS:guatemalteco FS:guatemalteca MP:guatemaltecos FP:guatemaltecas	SUP guatemaltequísimo	DIM guatemaltequito/guatemaltequita	Guatemalan
+salvadoreño	listed:salvadoreño	MS:salvadoreño FS:salvadoreña MP:salvadoreños FP:salvadoreñas	SUP salvadoreñísimo	DIM salvadoreñito/salvadoreñita	Salvadoran
+nicaragüense	listed:nicaragüense	S:nicaragüense P:nicaragüenses	SUP nicaragüensísimo	DIM nicaragüensecito/nicaragüensecita/nicaragüensito/nicaragüensita	Nicaraguan
+costarricense	listed:costarricense	S:costarricense P:costarricenses	SUP costarricensísimo	DIM costarricensecito/costarricensecita/costarricensito/costarricensita	Costa Rican
+panameño	listed:panameño	MS:panameño FS:panameña MP:panameños FP:panameñas	SUP panameñísimo	DIM panameñito/panameñita	Panamanian
+mexicano	listed:mexicano	MS:mexicano FS:mexicana MP:mexicanos FP:mexicanas	SUP mexicanísimo	DIM mexicanito/mexicanita	Mexican
+colombiano	listed:colombiano	MS:colombiano FS:colombiana MP:colombianos FP:colombianas	SUP colombianísimo	DIM colombianito/colombianita	Colombian
+argentino	listed:argentino	MS:argentino FS:argentina MP:argentinos FP:argentinas	SUP argentinísimo	DIM argentinito/argentinita	Argentine
+cubano	listed:cubano	MS:cubano FS:cubana MP:cubanos FP:cubanas	SUP cubanísimo	DIM cubanito/cubanita	Cuban
+peruano	listed:peruano	MS:peruano FS:peruana MP:peruanos FP:peruanas	SUP peruanísimo	DIM peruanito/peruanita	Peruvian
+chileno	listed:chileno	MS:chileno FS:chilena MP:chilenos FP:chilenas	SUP chilenísimo	DIM chilenito/chilenita	Chilean
+venezolano	listed:venezolano	MS:venezolano FS:venezolana MP:venezolanos FP:venezolanas	SUP venezolanísimo	DIM venezolanito/venezolanita	Venezuelan
+ecuatoriano	listed:ecuatoriano	MS:ecuatoriano FS:ecuatoriana MP:ecuatorianos FP:ecuatorianas	SUP ecuatorianísimo	DIM ecuatorianito/ecuatorianita	Ecuadorian
+estadounidense	listed:estadounidense	S:estadounidense P:estadounidenses	SUP estadounidensísimo	DIM estadounidensecito/estadounidensecita/estadounidensito/estadounidensita	American (of the United States)
+español	listed:español	MS:español FS:española MP:españoles FP:españolas	SUP españolísimo	DIM españolito/españolita	Spanish
+inglés	listed:inglés	MS:inglés FS:inglesa MP:ingleses FP:inglesas	SUP inglesísimo	DIM inglesito/inglesita	English
+francés	listed:francés	MS:francés FS:francesa MP:franceses FP:francesas	SUP francesísimo	DIM francesito/francesita	French
+alemán	listed:alemán	MS:alemán FS:alemana MP:alemanes FP:alemanas	SUP alemanísimo	DIM alemancito/alemancita	German
+italiano	listed:italiano	MS:italiano FS:italiana MP:italianos FP:italianas	SUP italianísimo	DIM italianito/italianita	Italian
+griego	listed:griego	MS:griego FS:griega MP:griegos FP:griegas	SUP grieguísimo	DIM grieguito/grieguita/grieguecito/grieguecita	Greek
+hebreo	listed:hebreo	MS:hebreo FS:hebrea MP:hebreos FP:hebreas	SUP hebreísimo	DIM hebreito/hebreita	Hebrew
+romano	listed:romano	MS:romano FS:romana MP:romanos FP:romanas	SUP romanísimo	DIM romanito/romanita	Roman
+judío	listed:judío	MS:judío FS:judía MP:judíos FP:judías	SUP judiísimo	DIM judiito/judiita	Jewish
+latino	listed:latino	MS:latino FS:latina MP:latinos FP:latinas	SUP latinísimo	DIM latinito/latinita	Latin
+centroamericano	listed:centroamericano	MS:centroamericano FS:centroamericana MP:centroamericanos FP:centroamericanas	SUP centroamericanísimo	DIM centroamericanito/centroamericanita	Central American
+latinoamericano	listed:latinoamericano	MS:latinoamericano FS:latinoamericana MP:latinoamericanos FP:latinoamericanas	SUP latinoamericanísimo	DIM latinoamericanito/latinoamericanita	Latin American
+europeo	listed:europeo	MS:europeo FS:europea MP:europeos FP:europeas	SUP europeísimo	DIM europeito/europeita	European
+africano	listed:africano	MS:africano FS:africana MP:africanos FP:africanas	SUP africanísimo	DIM africanito/africanita	African
+asiático	listed:asiático	MS:asiático FS:asiática MP:asiáticos FP:asiáticas	SUP asiatiquísimo	DIM asiatiquito/asiatiquita	Asian
+cristiano	listed:cristiano	MS:cristiano FS:cristiana MP:cristianos FP:cristianas	SUP cristianísimo	DIM cristianito/cristianita	Christian
+católico	listed:católico	MS:católico FS:católica MP:católicos FP:católicas	SUP catoliquísimo	DIM catoliquito/catoliquita	Catholic
+evangélico	listed:evangélico	MS:evangélico FS:evangélica MP:evangélicos FP:evangélicas	SUP evangeliquísimo	DIM evangeliquito/evangeliquita	evangelical
+lindo	listed:lindo	MS:lindo FS:linda MP:lindos FP:lindas	SUP lindísimo	DIM lindito/lindita	pretty, nice
+enojado	listed:enojado	MS:enojado FS:enojada MP:enojados FP:enojadas	SUP enojadísimo	DIM enojadito/enojadita	angry
+enfadado	listed:enfadado	MS:enfadado FS:enfadada MP:enfadados FP:enfadadas	SUP enfadadísimo	DIM enfadadito/enfadadita	angry (Latin America often says enojado)
+guay	listed:guay	S:guay P:guayes	SUP guayísimo	DIM guayecito/guayecita	cool, great (informal; heard mostly in Spain)
+raro	listed:raro	MS:raro FS:rara MP:raros FP:raras	SUP rarísimo	DIM rarito/rarita	strange, odd
+terminal	listed:terminal	S:terminal P:terminales	SUP terminalísimo	DIM terminalito/terminalita	final, last
+junto	listed:junto,juntos,junta,juntas	MS:junto FS:junta MP:juntos FP:juntas	SUP juntísimo	DIM juntito/juntita	together, joined

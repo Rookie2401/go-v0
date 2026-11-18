@@ -1,0 +1,41 @@
+«prefieren» in "Ellos prefieren el té." ⇒ preferir / VERB / third person plural, present indicative / g:— / 0.5 UNCONF / also prefer/VERB,prefir/VERB,prefierar/VERB / C:future-subjunctive / S:the main word of the sentence / D:to prefer ; to rather (be or do)
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given. || 9 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: stem-changing -ir verb, third person plural, present indicative; the lemma preferir is not confirmed, this is the rule alone || after its subject "ellos": a verb
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Pres"},{"key":"Person","value":"3"},{"key":"Number","value":"Plur"}]
+    cons: Future subjunctive (older Spanish): Older Spanish has a future subjunctive: "si dijéremos" (if we say). Today ordinary speech uses the present subjunctive or the indicative instead.
+«llama» in "Se llama Pedro." ⇒ llamar / VERB / third person singular, present indicative / g:He, she, or it calls / 0.7 / also llamar/VERB / C:se-impersonal,form:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin / S:the main word of the sentence / D:to summon, to call ; to summon, to call — to call (on the telephone)
+    notes: 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+    basis: regular -ar verb, third person singular, present indicative || after the pronoun "se": a verb
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Pres"},{"key":"Person","value":"3"},{"key":"Number","value":"Sing"}]
+    cons: Se: impersonal or passive: Se + a third-person verb can mean "one does" or "is done": "Se habla español aquí". || third person singular, present indicative: The form shows these features; the pack has no separate explanation for this combination.
+«Estoy» in "Estoy cansado." ⇒ estar / AUX / first person singular, present indicative / g:I am (state / 0.92 / C:form:Mood=Ind|Number=Sing|Person=1|Tense=Pres / S:“to be” linking “cansado” to its subject / D:to be (have a temporary or permanent location in space) ; to be presen
+    notes: 
+    basis: 
+    feats: [{"key":"Person","value":"1"},{"key":"Number","value":"Sing"},{"key":"Tense","value":"Pres"},{"key":"Mood","value":"Ind"}]
+    cons: first person singular, present indicative: The form shows these features; the pack has no separate explanation for this combination.
+«Asistí» in "Asistí a la reunión." ⇒ asistir / VERB / first person singular, preterite indicative / g:I attended / 0.7 / also asistir/VERB / C:voseo,form:Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin / S:the main word of the sentence / D:to attend (an event) ; to assist
+    notes: 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+    basis: regular -ir verb, first person singular, preterite indicative
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Past"},{"key":"Person","value":"1"},{"key":"Number","value":"Sing"}]
+    cons: Voseo: vos and its verb forms: In Honduras and much of Central America "vos" replaces "tú" in everyday speech, with its own verb forms: "vos tenés", "vos hablás". || first person singular, preterite indicative: The form shows these features; the pack has no separate explanation for this combination.
+«éste» in "Me gusta éste." ⇒ ser / AUX / third person singular, present indicative / g:— / 0.6 UNCONF / C:enclitic-after-conjugated-verb / D:this one ; substitutes a noun one can't remember or can't remember the
+    parts: és: from ser, AUX ¦ te: object pronoun
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given.
+    basis: irregular verb ser, third person singular, present indicative; with the attached pronoun te after a conjugated verb, the order of older and literary Spanish; written with the accent of the older spelling
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Pres"},{"key":"Person","value":"3"},{"key":"Number","value":"Sing"}]
+    cons: A pronoun after a conjugated verb (older and literary Spanish): Older and literary Spanish may write the pronoun after a conjugated verb, as one word: le dijo → díjole, se hallaba → hallábase. Today the pronoun goes before the verb.
+«anos» in "Tengo veinte anos." ⇒ ano / NOUN / plural / g:— / 0.35 UNCONF / also ano/ADJ / S:direct object of “Tengo” / D:anus
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: plural of a noun or adjective ano (-s) || after "veinte": a noun
+    feats: [{"key":"Number","value":"Plur"}]
+    cons: 
+«radio» in "Escucho la radio." ⇒ radiar / VERB / first person singular, present indicative / g:— / 0.35 UNCONF / D:radio (device) ; radio (industry, signal)
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given.
+    basis: regular -ar verb, first person singular, present indicative; the lemma radiar is not confirmed, this is the rule alone
+    feats: [{"key":"VerbForm","value":"Fin"},{"key":"Mood","value":"Ind"},{"key":"Tense","value":"Pres"},{"key":"Person","value":"1"},{"key":"Number","value":"Sing"}]
+    cons: 
+«La» in "La vi ayer." ⇒ la / DET / feminine singular / g:the / 0.92 / C:form:Definite=Def|Gender=Fem|Number=Sing|PronType=Art / S:direct object of “vi” / D:feminine singular definite article; the ; impersonal neuter pronoun (a
+    notes: 
+    basis: 
+    feats: [{"key":"Gender","value":"Fem"},{"key":"Number","value":"Sing"},{"key":"Definite","value":"Def"},{"key":"PronType","value":"Art"}]
+    cons: feminine singular: The form shows these features; the pack has no separate explanation for this combination.

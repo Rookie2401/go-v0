@@ -1,0 +1,4 @@
+es | Dámelo ahora mismo. | Dámelo
+es | Vos tenés razón. | tenés
+es | No me lo dijo nunca. | dijo
+es | Ayer vino mi hermano. | vino

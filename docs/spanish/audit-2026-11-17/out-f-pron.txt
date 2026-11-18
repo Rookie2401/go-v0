@@ -1,0 +1,18 @@
+pan  R: No accent mark: stress is on the next-to-last syllable.
+sol  R: No accent mark: stress is on the last syllable.
+tres  R: No accent mark: stress is on the next-to-last syllable.
+el  R: No accent mark: stress is on the last syllable.
+guerra  R: No accent mark: stress is on the next-to-last syllable.
+pingüinar  R: No accent mark: stress is on the next-to-last syllable.
+México  R: Stress falls on the accented vowel.
+perro  R: No accent mark: stress is on the next-to-last syllable.
+vaca  R: No accent mark: stress is on the next-to-last syllable.
+ciudad  R: No accent mark: stress is on the last syllable. c (before e/i) and z are pronounced like s in Latin America.
+reloj  R: No accent mark: stress is on the last syllable. j and g (before e/i) are a breathy h-like sound.
+hablar  R: No accent mark: stress is on the next-to-last syllable. h is silent.
+joven  R: No accent mark: stress is on the next-to-last syllable. j and g (before e/i) are a breathy h-like sound.
+examen  R: No accent mark: stress is on the next-to-last syllable.
+Honduras  R: No accent mark: stress is on the next-to-last syllable. h is silent.
+chicar  R: No accent mark: stress is on the next-to-last syllable.
+país  R: Stress falls on the accented vowel.
+estar  R: No accent mark: stress is on the last syllable.

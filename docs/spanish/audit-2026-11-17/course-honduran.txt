@@ -1,0 +1,373 @@
+es | Son las seis de la mañana, y en la casa de doña Marta ya huele a café.
+es | Doña Marta está cerca del fogón.
+es | Sobre el comal hay unas tortillas, y toda la casa huele a maíz.
+es | Karla entra con una sonrisa grande.
+es | —Buenos días, doña Marta. ¿Cómo amaneció?
+es | —Muy bien, mi niña, gracias a Dios. ¿Y vos? ¿Cómo amaneciste?
+es | —Con hambre —dice Karla, y se ríe.
+es | —Entonces ayudame. Hoy vamos a hacer baleadas para todos.
+es | Sam todavía duerme. Es un chele grande, y en esta casa todos lo cuidan.
+es | Una baleada es una tortilla de harina, suave y caliente.
+es | Se cierra por la mitad y lleva frijoles fritos, queso y mantequilla.
+es | Si querés una baleada con todo, también lleva huevo y aguacate.
+es | La harina se hace con trigo, y por eso la tortilla es blanca.
+es | La tortilla de maíz es otra cosa, pero en Honduras a la gente le gustan las dos.
+es | —Mirá, Karla, así se hace —dice doña Marta—. Un poco de frijoles, un poco de queso, y ya.
+es | —Es muy fácil —dice Karla.
+es | —Parece fácil —contesta la señora—. Pero para hacerla bien hay que tener cuidado.
+es | Cuando Sam llega, ya hay de todo en la mesa.
+es | Hay baleadas, tajadas de plátano, huevos, cuajada y café con pan.
+es | —Buenos días, Sam. ¿Cómo amaneciste? —pregunta Karla.
+es | —Bien, gracias. Dormí muy bien.
+es | —Sentate, pues. Probá una baleada —dice doña Marta—. ¿Querés mantequilla?
+es | —Sí, por favor. Pasame también un poco de café.
+es | —¿Y tenés hambre?
+es | —Mucha. Todo huele muy rico.
+es | Sam come la primera baleada y se queda callado un momento.
+es | —¿Y te gustó? —pregunta Karla.
+es | —Está cheque —dice Sam, y todos se ríen.
+es | —¡Ya habla como un catracho! —dice doña Marta.
+es | Nico llega corriendo y se sienta a la mesa.
+es | —Buenos días, abuela. Hoy hay baleadas, ¿verdad?
+es | —Sí, cipote, pero primero lavate las manos.
+es | —Ahorita voy —dice él, y no se mueve.
+es | —Ahorita, ahorita —dice doña Marta—. Ahorita quiere decir "más tarde", y a veces quiere decir "mañana".
+es | Mientras comen, Karla le hace una pregunta a Nico.
+es | —Nico, ¿qué querés ser cuando seas grande?
+es | —Quiero ser piloto, para viajar por todo el mundo.
+es | —Yo quiero ser chofer —dice Sam, y todos se ríen.
+es | —No, Sam, vos sos amigo, no chofer —dice Nico—. Y vos, Karla, ¿qué querés estudiar en la universidad?
+es | —Quiero ser maestra, como mi mamá. Ella es profesora en la escuela de la aldea, y a mí me gusta enseñar.
+es | —Mi papá es profesor también —dice Sam—, y mi tío quiere ser abogado. Dice que el mundo necesita abogados honestos.
+es | —Yo de joven quería ser música —dice doña Marta—, pero mi papá me dijo que no había pisto para estudiar.
+es | —Mi hermano sí es músico, abuela —dice Nico—. Canta en la iglesia todos los domingos.
+es | Nico cambia de idea otra vez y dice que quiere ser cocinero, porque el cocinero come primero.
+es | —Esperá tu turno —dice Karla—. Los demás también tienen ideas.
+es | Sam saca su cuaderno y escribe unas notas sobre el desayuno.
+es | —¿Y vos qué escribís? —pregunta Nico.
+es | —Escribo que una baleada real es mejor que cualquier baleada del libro.
+es | Después del desayuno, Nico lleva a Sam al patio.
+es | —Mirá, Sam: estos son los patos, y estos son los conejos.
+es | Los patos comen maíz, y los conejos comen hierba fresca.
+es | La cebada es para el caballo de don Carlos, que trabaja en el campo.
+es | —¿Y no hay ratones? —pregunta Sam.
+es | —Sí hay, pero el perro es muy perezoso y no los mira.
+es | —Una vez vi una serpiente en la hierba —dice Nico—. Era larga y delgada.
+es | —¿Y qué hiciste?
+es | —Corrí y llamé a mi abuela. Ella no le tiene susto a nada.
+es | Doña Marta sale con agua para los animales y se ríe.
+es | —Quien madruga, Dios lo ayuda —dice—. Y quien tiene un patio, tiene trabajo.
+es | Su oficio es hacer baleadas para vender.
+es | Los sábados pone un puesto en la esquina, y la gente de toda la aldea viene a comprar.
+es | Una baleada con todo vale veinte lempiras.
+es | Con esa venta no hay mucha ganancia, pero tampoco hay pérdida.
+es | Don Carlos le trae la harina de trigo, y ella le paga con baleadas. Es un buen trato.
+es | —Don Carlos es muy cortés y muy trabajador —dice doña Marta—. Hizo su casa con sus manos. Esa casa es obra suya.
+es | Hizo sus estudios en la ciudad y volvió a la aldea. Eso es un hecho que no todos hacen.
+es | Sam se sorprende. No sabía que don Carlos había estudiado tanto.
+es | —Qué mañana tan hermosa —dice Sam—. Gracias por la compañía, doña Marta.
+es | —Gracias a vos, mi hijo. Llevate una copia de la receta, para que hagas baleadas en tu casa.
+es | Esa noche Sam abre su cuaderno y escribe las palabras nuevas de la mañana.
+es | Una pulpería es una tienda pequeña de la esquina, donde se compra de todo un poco.
+es | Un cipote es un niño, y una cipota es una niña.
+es | El pisto es el dinero, y un chele es una persona de piel clara, como él.
+es | Un catracho es un hondureño, y la gente lo dice con cariño.
+es | "Ahorita" no siempre quiere decir ahora mismo.
+es | "Cheque" quiere decir que todo está bien, y "vaya pues" quiere decir "está bien, entonces".
+es | Al final, Sam escribe una frase para no olvidar el día: «En Honduras, un desayuno no es solo comida; es compañía».
+es | Es domingo, y desde temprano se oye la música en la iglesia de la aldea.
+es | Anoche llovió, y el camino está lleno de agua.
+es | Nico llega a la casa de doña Marta con los zapatos mojados y llenos de polvo.
+es | —Vení, cipote —dice la abuela—. Así no podés ir a la iglesia.
+es | Antes, doña Marta limpió los zapatos de Nico con un trapo y le puso su camisa blanca.
+es | En el bolsillo, Nico lleva su ofrenda: dos lempiras.
+es | —¿Es mucho? —le pregunta a su abuela.
+es | —Para Dios no importa la cantidad —contesta ella—. Importa el corazón.
+es | Karla y Sam los esperan en la puerta, y los cuatro caminan juntos hasta la iglesia.
+es | La iglesia es pequeña, de madera y zinc, con bancas largas y una ventana abierta.
+es | Adentro hay unas cincuenta personas, y todos se saludan con un abrazo.
+es | —Buenos días, hermano Sam. ¿Cómo amaneció? —pregunta una señora.
+es | —Muy bien, hermana, gracias a Dios —contesta Sam.
+es | El hermano Wilmer toca la guitarra, y la hermana Rosa dirige el canto.
+es | Un canto es corto y el otro es largo, pero todos cantan con alegría.
+es | Sam no conoce las palabras, así que escucha y trata de seguir la música.
+es | —Cantá, Sam, cantá —le dice Nico—. Aquí nadie se ríe de vos.
+es | Cuando suena el último canto, la iglesia se queda callada.
+es | Pastor Mario abre su Biblia y lee la historia de Pedro y el agua.
+es | —Pedro quiso caminar hacia Jesús —dice el pastor—. Dio un paso, y luego otro.
+es | Algunos hermanos piensan que Pedro era un loco, y otros dicen que era valiente.
+es | —Pero después Pedro miró el viento, y empezó a tener dudas —sigue Pastor Mario.
+es | Su error no fue caminar; su error fue dejar de mirar a Jesús.
+es | Jesús no le dijo palabras duras. La respuesta de Jesús fue tomarle la mano.
+es | —Hermanos, a veces nos pasa lo mismo —dice el pastor—. Miramos el cielo y tenemos fe; miramos el viento y tenemos miedo.
+es | —Pero para empezar bastaba un poco de fe, y lo demás lo hace Dios.
+es | Karla escribe una frase en su cuaderno, y Sam siente una pequeña sorpresa: no esperaba entender tanto.
+es | Después del mensaje, la hermana Rosa lee los anuncios.
+es | —El primer jueves hay oración, el segundo hay grupo pequeño en casa de doña Marta, y el tercero hay visita a los enfermos.
+es | —La oficina de la iglesia abre los martes, de dos a cuatro de la tarde.
+es | La iglesia tiene gastos: la luz, el agua y el techo de zinc.
+es | Además, la familia de don Pedro tiene una necesidad grande, porque la lluvia rompió el techo de su casa.
+es | —Pedimos su apoyo, hermanos —dice la hermana Rosa—. Y no pierdan la esperanza.
+es | Todo está listo para la ofrenda.
+es | Pasan dos hermanos con una bolsa, y Nico pone sus dos lempiras con una sonrisa.
+es | Somos personas distintas, de edades distintas, pero esta mañana somos una sola familia.
+es | Cada primer domingo del mes, las hermanas preparan un almuerzo para todos.
+es | Desde la madrugada, doña Marta y la hermana Rosa cocinan en el patio, con el fogón y el comal.
+es | Hay pollo con tajadas, frijoles, arroz, aguacate y cuajada, y para los niños hay baleadas con mantequilla.
+es | —¿Cómo amaneció, hermana? —pregunta un hermano que llega tarde.
+es | —Cheque, hermano, gracias a Dios. ¿Y usted cómo amaneció? —contesta doña Marta.
+es | Cada familia trae un poco de comida o un poco de pisto para los gastos del almuerzo.
+es | Los niños llaman «el chele» a Sam, y le piden que les cuente cuentos de su país.
+es | Una cipota de cinco años le pregunta: —¿Vos sos chele porque te quemó el sol?
+es | —No —dice Sam, y se ríe—. Soy chele desde que nací.
+es | —Ahorita no quedan baleadas, pero ahorita mismo hago otra —dice doña Marta.
+es | Karla sirve cuajada con tajadas a un señor mayor, y él le da las gracias con la mano en el corazón.
+es | Afuera, la gente se queda a hablar bajo el árbol grande.
+es | Un misionero que visita la aldea llega con una maleta grande y una sorpresa para los niños.
+es | —Esperá, cipote, no abras la maleta todavía —le dice Karla a Nico.
+es | Dentro de la maleta hay libros, lápices y unas camisetas de colores.
+es | —¿De quién son estas camisetas? —pregunta Nico.
+es | —Son para ustedes, los niños que vienen los domingos —contesta el misionero.
+es | Sam mira la escena y piensa en su propia llegada a la aldea, hace unos meses.
+es | —¿Qué estás pensando? —le pregunta Karla.
+es | —Pienso que ya no soy un visitante, soy un hermano más —dice él.
+es | —Contame cuando sepás por qué —dice ella, y se ríe.
+es | Era una noche de julio, y llovía con tanta fuerza que el zinc del techo sonaba como un tambor.
+es | De pronto se fue la luz, como pasa muchas veces en la aldea cuando llueve fuerte.
+es | —¡Ay, otra vez! —dijo Nico—. Ahorita no hay ni luz ni juegos.
+es | Doña Marta encendió dos velas y puso una olla de café sobre el fogón.
+es | Karla, Sam y tres cipotes de los vecinos se sentaron en el suelo de la cocina, cerca del fuego, porque el aire de la noche era frío.
+es | Cerca del fuego se hizo un grupo formado por los vecinos, los niños y las velas.
+es | —Ahora sí, abuela —dijo Nico—. Contanos una leyenda.
+es | —Según los abuelos, las leyendas se cuentan con luz de vela y con lluvia afuera —contestó doña Marta—. Así que vaya pues.
+es | —Hace muchos años, cuando no había camino grande, la gente caminaba de noche entre los cerros —empezó ella—. Y a veces se encontraba con un perro muy grande, con ojos de fuego.
+es | —Ese perro es el Cadejo —dijo Nico, con voz baja.
+es | —Hay dos —siguió la abuela—. Como en todos los cuentos, hay personajes benévolos y personajes malévolos.
+es | El Cadejo blanco camina delante de la gente que anda de noche y la cuida hasta que llega a su casa.
+es | El Cadejo negro tiene las orejas largas, y le tiene rabia a quien anda solo.
+es | —¡Ah, entonces yo no salgo nunca de noche! —exclamó un cipote.
+es | —Tampoco hace falta, mijo —dijo doña Marta, y se rió—. Mi abuela decía que los fantasmas no mueren, y que nadie logró matar al Cadejo.
+es | —Cuanto más cuentan, más Cadejos hay —dijo Karla.
+es | —Antes, los señoritos de la ciudad no creían en el Cadejo —siguió la abuela—. Pero una noche se perdieron en el cerro, y el perro blanco los esperaba bajo un roble, entre las raíces.
+es | —¿Acaso el Cadejo blanco es de los genios buenos? —preguntó Sam.
+es | —Para algunos sí, para otros es un ángel con cuatro patas —contestó ella—. Cada quien lo cuenta a su manera, y esa es la gracia.
+es | —Y la Llorona —dijo otro cipote—. ¿Vos la has oído?
+es | —Dicen que llora junto al río, entre los peces y las piedras, buscando a sus hijos —contestó Karla—. Es una historia triste, y viene de la muerte.
+es | —Hay otra más fea —dijo doña Marta—. En el monte vive el Sisimite, un gigante que tiene los pies para atrás.
+es | —¿Y cómo se escapa uno de él? —preguntó Sam.
+es | —Mirá: si seguís sus pasos, vas hacia atrás, y él te espera enfrente.
+es | —Entonces no hay que seguirlas —dijo Nico—. Eso lo sabe cualquier cipote.
+es | Afuera, la lluvia cayó sobre el zinc con más fuerza, y por un instante nadie habló.
+es | —Yo les cuento una que leímos en la escuela —dijo Karla, para romper el silencio—. Es de un duque y su hija.
+es | —Vivían en un valle con mucha niebla. El duque le decía «mi chiquilla» a su hija Laura, aunque ya tenía veinte años.
+es | —La mamá de Laura estaba muerta, y en la casa nadie hablaba de ello.
+es | Había una criada, Juana, que solía tocar el piano por las tardes, y Laura la escuchaba desde el balcón.
+es | De noche, Juana le cantaba un arrullo del campo, dulce y lento.
+es | —Una tarde llegó un caballero con una carta del rey y una figura de oro —siguió Karla—. El duque dijo: «Este es tu novio».
+es | —Pero Laura replicó que no tenía novio, y que el corazón no cabía en un cargo del rey.
+es | —En el fondo, ella quería a Diego, un pastor enamorado de ella. Le hacía señas desde el balcón, y un día le tiró un hilo rojo.
+es | —«Guardalo, es tuyo —le dijo—. Y no me olvides.»
+es | —Los celos le dolieron al caballero en el pecho, y salió en su caballo una noche de niebla.
+es | —Se perdió, y no veía ni su propio rostro. De pronto oyó el piano de Juana.
+es | —Laura salió detrás de él, puso una cuerda en la puerta y gritó: «¡Eh, seguí la cuerda!». Así lo salvó.
+es | —El caballero se dio cuenta de que ella era más valiente que él. Entonces le dio el hilo a Diego y se fue a pie, sin su caballo y sin sus celos.
+es | —Al final el duque dio su acuerdo —añadió Karla—. Y desde ese instante, Laura dejó de ser infeliz.
+es | —Esa historia es de veras bonita —dijo Sam—. ¿Cómo era Laura? ¿Cómo era su rostro?
+es | —Triste, como el de una chiquilla que ve a su mamá muerta en el techo —contestó Nico—. Pero cuando la criada tocaba el piano, el rostro le cambiaba.
+es | —¿De veras? —preguntó otro cipote—. ¿Y la criada qué hacía?
+es | —Juana solía cantar bajito, y después se sentaba en el balcón con un café dulce.
+es | —¿Y el caballero? —preguntó Sam—. ¿Cómo era?
+es | —Un hombre de guerra, con una figura de oro y un pecho que le dolía de celos —replicó Karla—. Pero al final aprendió algo.
+es | —¿Y vos qué pensás de ello? —le preguntó Sam.
+es | —Que el amor no cabía en un cargo, ni en un acuerdo del rey —dijo Karla—. Y que el conocimiento de la gente humilde vale más.
+es | —Eh, no hablemos de ello ahorita —dijo doña Marta—. Mirá cómo se quedaron los cipotes: dormidos en el suelo, con el hilo de la historia en la cabeza.
+es | —¿Por qué las historias populares se parecen tanto en todas partes? —preguntó Sam—. Siempre hay un brujo, o una maga que sana a los enfermos.
+es | —Porque hablan de lo mismo: del amor, del miedo y de la muerte —contestó Karla—. Los grandes poetas añoran esas historias, y mucha gente dice que inspiraban a los amantes.
+es | —La señorita Elena empieza su clase a las siete en punto, y dice que cada cuento es una forma de conocimiento —añadió Nico.
+es | —Afortunadamente, unos estudiantes de la universidad tuvieron la oportunidad de colaborar con la escuela —dijo Karla—. Los integrantes del grupo querían investigar las leyendas, y la señorita Elena les ayudó.
+es | —Escribieron muchos datos personales y expresiones que una abuela utiliza sin pensar. Algunas de esas expresiones son idiomáticas, y requiere cierta paciencia entenderlas.
+es | —A mí me parecen interesantes —dijo Sam—. Tienen muchas facetas, y uno se siente suficientemente cómodo para preguntar.
+es | —Sus experiencias son invaluables —dijo la abuela—. No se compran, ni se encuentran en el fondo de una vasija. Se cogen con el tiempo, como el agua de lluvia.
+es | —La sabiduría se revelaba en las noches como esta, cuando uno no tenía nada más que su familia —dijo ella—. Hoy hay luz y hay celulares, pero se perdió algo.
+es | Poco antes de las diez, la luz volvió de golpe, y todos gritaron de alegría.
+es | —Cheque —dijo Nico—. Ahora sí podemos ver si hay un Cadejo en el patio.
+es | —Salí vos primero —dijo Karla, y los cipotes se rieron.
+es | Sam miró el grupo formado por los cipotes dormidos y pensó que esa noche había aprendido más español que en tres semanas de clase.
+es | Esa noche, antes de dormir, Sam escribió en su cuaderno: «En Honduras, las leyendas no están en los libros. Están en la cocina, con el café y la lluvia».
+es | Aquel sábado había tanta niebla que el rapidito salió del pueblo despacio, con las luces encendidas.
+es | Doña Marta iba sentada adelante, con una bolsa en las piernas, y Karla y Sam iban atrás.
+es | —Hoy vamos al mercado de la ciudad —le explicó Karla a Sam—. Mi abuela quiere comprar hilos, dulces para los cipotes y no sé cuántas cosas más.
+es | —Vaya pues —dijo Sam—. Pero decime una cosa: ¿cómo se avisa que uno quiere bajar?
+es | —Mirá, con señas —contestó ella, y golpeó el techo dos veces con la mano.
+es | En una esquina subió un hombre con una caja grande y empezó a gritar su pregón: —¡Pan dulce, pan dulce, a diez lempiras!
+es | Sam compró dos panes, y el hombre le dijo: —Gracias, chele. Que le vaya bien.
+es | El mercado empezaba en una calle grande y seguía por veredas y escondrijos, entre puestos azules.
+es | Cada puesto tenía su pregón: —¡Llévese la yuca con chicharrón! ¡Peces frescos del lago, mi reina!
+es | —Mirá qué ruido —dijo Sam—. Parece que todos hablan al mismo tiempo.
+es | —Así es —dijo Karla—. Y si querés comprar barato, tenés que hablar con paciencia, pero sin enojarte.
+es | En un puesto de hilos, doña Marta compró un hilo rojo, uno azul y una figura de madera para el cuarto de Nico.
+es | La señora del puesto no hablaba: era sorda, pero entendía todo por señas.
+es | Cuando doña Marta le mostró dos hilos, la señora le hizo una seña con el pecho levantado y una sonrisa dulce, como diciendo: «Este es el mejor».
+es | —¿De veras? —preguntó Sam—. ¿Y cómo sabe lo que usted quiere?
+es | —Después de tantos años de mercado, hay un conocimiento que no está en los libros —replicó doña Marta—. Ella me conoce, y yo la conozco.
+es | —Eh, mirá —añadió Karla—, una vez la señora tuvo una hija chiquilla, y la niña muerta ya tendría veinte años. Por mucho tiempo estuvo infeliz, pero ahora ayuda a todas las niñas del pueblo.
+es | —Mi mamá, que en paz descanse, solía decir que quien ayuda en la tristeza ya no está sola —dijo doña Marta.
+es | Cerca de ahí, una pareja joven miraba velas para su boda.
+es | —Es mi novio —dijo ella, colorada—. Nos casamos en diciembre, si Dios quiere.
+es | —Estamos de acuerdo en todo menos en los colores —dijo él, y los dos se rieron.
+es | Al fondo del mercado, sentado bajo un árbol, había un viejo con un sombrero blanco, y cerca de él había un grupo formado por niños.
+es | —Es don Chepe, el de las adivinanzas —dijo Karla—. Según la gente, es el hombre más sabio del mercado, aunque no sabe leer.
+es | —Venga, joven —le dijo don Chepe a Sam—. ¿Se atreve a descifrar una?
+es | —Me atrevo, pero no tengo muchas entendederas —contestó Sam—. Y menos en español.
+es | —Quiero que adivines esta —dijo el viejo—: «Oro parece, plata no es».
+es | —Un momento —dijo Sam, y se puso colorado—. ¿Oro parece, plata no es? ¿Dinero?
+es | —No, chele —se rió un niño—. ¡Es el plátano!
+es | —Muy bien, mijo —dijo don Chepe—. Ahora otra, que es para vos, Karla: «Soy agua, pero no me mojo; caigo de lo alto y hago ruido».
+es | —Eso es fácil —dijo ella—. La cascada.
+es | —Enseguida lo adivinaste —dijo el viejo—. Tenés buena cabeza.
+es | Una niña le preguntó a don Chepe si había una adivinanza para el rey y sus cortesanos.
+es | —Siempre la hay —contestó él—. Pero un hombre noble no siempre es sabio, y nadie es indigno de un buen enigma.
+es | —Los fantasmas no vienen al mercado —dijo don Chepe—, pero sí vienen los poetas. Cada pregón es una poesía, si uno sabe escuchar.
+es | Sam se rió, y sacó su cuaderno para escribir las adivinanzas.
+es | Antes de volver, doña Marta pasó por una oficina pequeña, donde se reúne una cooperativa de mujeres del mercado.
+es | —Afortunadamente, tenemos la oportunidad de colaborar entre todas —le explicó una señora—. Los integrantes de la cooperativa son cuarenta, casi todas mujeres.
+es | —El trabajo requiere paciencia —añadió—, y cada una debe sentirse suficientemente cómoda para decir lo que piensa.
+es | Hace poco, unos estudiantes de la capital pidieron que las señoras investigaran sus propios precios.
+es | —Querían datos personales, pero nadie quiso darlos —dijo la señora, y se rió—. Les contamos historias interesantes, y les dijimos que cada señora tiene muchas facetas.
+es | —Algunas expresiones que usamos son idiomáticas, y los estudiantes no las entendían —añadió—. Por ejemplo, «estar hecho un mar de dudas».
+es | A las doce en punto, los tres tomaron otra vez el rapidito, ahora sin niebla y con el sol fuerte.
+es | Doña Marta llevaba hilo, dulces y una figura de madera; Karla, un poco de yuca con chicharrón; y Sam, dos adivinanzas escritas en su cuaderno.
+es | —Contame otra vez la primera, vos —le dijo Karla.
+es | —«Oro parece, plata no es» —repitió Sam—. Y la respuesta es el plátano.
+es | —Ya casi hablás como un catracho —dijo ella.
+es | Una madrugada de octubre, don Chepe llegó a la casa de doña Marta con el sombrero en la mano.
+es | —Doña Marta, se me fue mi Chavela —dijo, con una voz que casi no se oía—. Anoche, en la cama, sin dolor.
+es | Doña Marta no dijo nada. Lo abrazó un largo rato, y después le sirvió un café.
+es | —Mi sentido pésame, don Chepe —dijo por fin—. Que Dios la tenga en su gloria.
+es | —Gracias. Ya estaba muy envejecida, pero uno nunca está listo —contestó él—. Se lo digo con toda la conciencia: no sé qué voy a hacer sin ella.
+es | A las ocho, Karla y Sam ya recorrían las casas de la aldea, para avisar a los vecinos.
+es | En Honduras, un velorio es de todos: nadie espera a que lo inviten.
+es | Cada familia lleva lo que puede: café, pan, azúcar, unas velas, o simplemente su compañía.
+es | Esa noche, la casa de don Chepe se llenó de gente.
+es | La cama estaba en la sala, con una sábana blanca, y a los lados ardían cuatro velas.
+es | Las mujeres hacían café en el fogón del patio, y los hombres hablaban bajito, con el sombrero entre las manos.
+es | Unos niños se durmieron en el suelo, junto a las sillas, y nadie los despertó.
+es | A las nueve, Pastor Mario abrió su Biblia y pidió silencio.
+es | —Hermanos, esta noche no vamos a dar un sermón largo —dijo—. Don Chepe me pidió que leyéramos la historia de Lázaro.
+es | Pastor Mario contó que Lázaro era amigo de Jesús, que murió, y que su hermana Marta salió a recibir al Maestro con una pregunta que dolía.
+es | —Si hubieras estado aquí, mi hermano no habría muerto —repitió el pastor, con la voz de ella.
+es | —Jesús no le dio una teoría —siguió—. Tampoco le dio un consejo para tener ánimo. Le dio una promesa: «Yo soy la resurrección y la vida».
+es | —Y lloró —añadió—. El que podía resucitar a un muerto, lloró primero. Esa es la humanidad de nuestro Dios.
+es | Recordó también que María, la hermana de Lázaro, ungió los pies del Señor con un ungüento caro, con la intención de honrarlo.
+es | Y recordó al hombre nacido ciego, que mendigaba a la puerta de la sinagoga. Sus vecinos dudaban de su nacimiento, los temerosos permanecían callados, y los jefes lo ultrajaron.
+es | —Pero el ciego, con el lodo todavía en los ojos, contestó con una maravillosa calma: «Antes no veía y ahora veo» —dijo el pastor—. No es un juicio de los hombres. Es Dios que quiere obrar y manifestarse, para que uno pueda oír.
+es | Don Chepe apretó el sombrero con las dos manos, y alguien, en el fondo, empezó a cantar bajito.
+es | Entonces cantaron todos, sin guitarra, sin tambor y sin prisa. Era una música de desahogo, y cada verso parecía un abrazo.
+es | A las doce, mientras los mayores rezaban, Sam, Karla y Wilmer salieron al patio con un vaso de café.
+es | La noche estaba húmeda, y el fogón todavía echaba un poco de humo.
+es | —Decime algo, profe —dijo Sam—. ¿Hay remedio para esto?
+es | —No lo hay, y precisamente por eso uno necesita la fe —contestó Wilmer—. La ciencia explica cómo se muere la gente, pero no sabe consolar.
+es | —Carmen Mejía fue una científica, y también una mujer de mucha fe —dijo Karla—. Pasaba noches enteras mirando el infinito y escribiendo en su cuaderno.
+es | —Tenía una virtud rara: sabía contemplar sin pretender explicarlo todo. Eso es una forma de humildad, y una forma de gratitud.
+es | —A mí me da vergüenza reconocerlo —dijo Sam—, pero hoy sentí algo íntimo, como si la muerte fuera un tema para hablar en voz baja.
+es | —No es una vergüenza —repuso Wilmer—. El carácter de una persona se ve en cómo acompaña a otra en su pena. Eso no se aprende en ningún curso.
+es | —Don Chepe dijo que ya estaba harto de la soledad, hace unos meses —recordó Karla—. Ahora la va a sentir de verdad.
+es | —Por eso estamos aquí —dijo Sam—. No para dar un discurso. Para estar.
+es | En los velorios de Honduras se cuentan historias para que la noche pase más ligera, y esa noche también las hubo.
+es | —Hagamos lo que le gustaba a doña Chavela —propuso Wilmer—. Que cada uno cuente un libro de este año.
+es | Karla contó la historia de Carmen Mejía.
+es | —Era una mujer soltera, una mujer solitaria, y los vecinos consideraban que su costumbre de pasear tras la lluvia era una rareza.
+es | —Ése fue el principio de su ciencia. Una rana saltó sobre su pie, y la mozuela soltó una carcajada.
+es | —Los perros ladraban y le enseñaban los dientes al paraguas, pero ella llevaba consigo su imaginación y un cuaderno, para no confundir lo que veía con lo que creía.
+es | Salía en las noches de invierno, entre árboles desnudos, y escribía todo lo que veía.
+es | —Por azar, o por algo más, se enamoró de un ingeniero, y experimentaba una alegría nueva y un sentimiento sin nombre.
+es | —Cuando él se fue, sintió el dolor en las entrañas, pero se lavó la cara y siguió. Los demás aseguraron que no sentía nada.
+es | —Su libro produjo muchas preguntas, y su esperanto confundió a más de un crítico. La noticia de su muerte sacudió el pueblo.
+es | —Esa fue la reseña —terminó Karla—. Una linda vida, sin cinismo y casi sin ruido.
+es | Nico contó la función del molino, aunque la había visto con un solo ojo, de cansancio.
+es | —Fue un disparate muy hermoso. El propósito era enseñar el arte de las ideas, y la función empezó con un filósofo y un soldado que se despreciaban.
+es | —Ambos eran vagos, pero uno insinuó una teoría y el otro lanzó un grito. Era el monólogo más fantástico que oí, con su odio, su horror y su fantasía.
+es | —Mi primo, que estaba en la fila de atrás, decía que el seductor representaba a un místico y que ésa era una hombrada.
+es | —Cada letra del cartón brillaba, y el empeño de todos vislumbraba una hermosura más grande. Yo pretendo emprender algo así algún día.
+es | —El molino ya no muele, pero la corriente del río sigue —dijo Nico—. Y me pareció una buena forma de referir la vida: con la mirada fija en lo que pasa.
+es | Sam contó las tres cartas, porque eran las más cortas.
+es | —Hay una carta de familia, llena de memoria y de cariño, donde alguien procuraba no llorar. Otra va al vicario y habla de una monja que dirigía una escuela.
+es | —Una carta empieza con «Estimado vicario», y el vicario, con atención, entregó su respuesta en un papel breve. Sobra decir que ya estaba harto de las cartas largas.
+es | —La tercera carta habla de una renta y de una dueña de casa admirada, que no quería que el diablo se metiera en su comedia.
+es | —Hay un epílogo con frialdad y destino, pero se va derritiendo, y al final el chico vencido acude a pedir perdón.
+es | —Me gustaron porque sus palabras eran estimadas y conformes con la verdad. Cuando ensayábamos, mi compañero decía que la práctica hace al maestro.
+es | Yesenia dijo que ella solo recordaba el sonido de la lluvia, un recio golpe sobre el zinc, y que prefería oír a don Chepe.
+es | —Cuénteme un banano de su finca, don Chepe —dijo ella—. Una banana de las que usted vendía.
+es | —La banana es como la vida —contestó él, con los ojos húmedos—. Uno la ve verde, crece, madura, y se la lleva la deriva del tiempo. Pero de cada una queda una simiente.
+es | Poco antes de las cinco, la hermana Rosa sirvió el último café con pan.
+es | La casa estaba en silencio, y solo se oía el ruido de la lluvia sobre el zinc.
+es | Don Chepe se acercó a Sam y le tomó la mano.
+es | —Gracias por quedarse, chele —le dijo—. Usted no es de aquí, pero esta noche fue de la familia.
+es | —Gracias a usted, don Chepe —contestó Sam—. Su Chavela se va con mucha gente que la quiere.
+es | Por la mañana, cuatro hombres cargaron el cajón hasta el cementerio, y el pastor dijo unas últimas palabras junto a la tumba.
+es | —No es un término, es una pausa —dijo—. Lo que hoy enterramos, Dios lo va a levantar.
+es | Esa noche empezaron los nueve días de rezos, y cada noche había café, pan y gente en la casa de don Chepe.
+es | Sam escribió en su cuaderno: «En Honduras aprendí que la compañía es la primera forma de la esperanza».
+es | El viernes por la mañana, el grupo del taller salió de La Ceiba rumbo a Roatán, en un barco blanco y azul.
+es | Eran doce: el profesor Wilmer, Karla, Sam, Nico, Yesenia y siete alumnos más.
+es | La cooperativa de mujeres del mercado les había pagado una parte del viaje, y todos se lo agradecían con gratitud sincera.
+es | —Estimadas señoras —había escrito Wilmer en su carta—, estos jóvenes van a ver el mar, y tal vez algunos lo vean por primera vez.
+es | El mar estaba tranquilo, y desde la cubierta se veía la costa verde, con las montañas al fondo.
+es | —Mirá, Sam: ahí atrás está Pico Bonito —dijo Nico—. Y allá adelante, una raya azul: esa es la isla.
+es | —Mirá qué distancia —dijo Sam—. Parece una isla de cuento.
+es | Una hora y media después, entre el sol y el viento, llegaron al puerto de Roatán.
+es | A la mañana siguiente, una señora llamada Mildred los llevó en un bote hasta el arrecife.
+es | —Buenas, muchachos —dijo—. Hoy hacemos buceo cerca de la orilla. No hace falta ser un experto: solo hay que respirar con calma.
+es | —Y recuerden que el arrecife es un ser vivo —añadió—. No toquen los corales, porque cualquier daño tarda años en curarse.
+es | Sam se puso las aletas, bajó al agua y, a los pocos segundos, olvidó cualquier miedo.
+es | Debajo del bote, a través del agua clara, había un jardín de colores: corales amarillos, plantas marinas y anémonas con los brazos abiertos.
+es | Un pez payaso se escondía entre los brazos de una anémona, y los budiones, que comen pasto marino, pasaban en grupo por la sombra de una roca.
+es | Más lejos, un pulpo caminaba por el fondo, y una tortuga carey se dejaba llevar por la corriente, con las aletas tendidas.
+es | —Tengan cuidado con esa criatura —dijo Mildred, desde el bote—. Es venenosa, aunque es semejante a otras que no lo son.
+es | Un pez aguja, largo y plateado, pasó muy cerca de la espalda de Yesenia, y ella soltó un grito debajo del agua.
+es | Cuando volvieron al bote, Mildred les explicó que los tiburones del arrecife casi nunca hacen daño, porque tienen bastante alimento.
+es | —Todos comen plancton, o comen a los que comen plancton —dijo—. Si desaparece uno, desaparece también el arrecife.
+es | Nico arrojó una cáscara de banana al agua, y Mildred lo miró sin decir nada. Él recogió la cáscara enseguida.
+es | Por la tarde, el grupo visitó una aldea garífuna, donde los recibió una señora llamada doña Eulalia.
+es | —Los garífunas llegamos a esta costa hace más de doscientos años —les contó—. Traemos una lengua, una música y una comida que son nuestras.
+es | En una olla de barro había una sopa de caracol con leche de coco, y sobre el fogón de leña se cocinaba un pez entero.
+es | —Esto es machuca, mijo —dijo doña Eulalia, y le sirvió un plato a Sam—. Plátano con pez y leche de coco.
+es | Sam probó el primer plato, cerró los ojos, y contestó con una sola palabra: —Cheque.
+es | Después, tres hombres sacaron los tambores, y las mujeres empezaron a bailar la punta, con los pies sin zapatos y las caderas rápidas.
+es | —No es solo un baile —dijo doña Eulalia—. Es una manera de recordar a los que ya no están.
+es | Karla y Yesenia aprendieron los pasos en pocos minutos. Sam, en cambio, seguía la música con la mirada fija en los pies de las demás.
+es | —Hay que sentirlo, chele, no pensarlo —le gritó Nico.
+es | Antes de dormir, los alumnos escribieron unas cartas para mandar desde el puerto.
+es | Yesenia le escribió a su mamá: «Te escribo desde la isla. El curso terminó, y aprendí que una práctica vale más que un discurso. Mi primo y yo, ambos, soñamos con volver.»
+es | «Hoy vi un tiburón, y no sentí miedo, sino una humildad rara, como si la conciencia me dijera que el mar no es mío. Simplemente lo miré con respeto.»
+es | Nico le mandó una carta a su abuela: «Abuela, aquí no hay velorio ni lluvia, pero extraño tus baleadas. Una científica de la isla dice que los corales son un ejemplo fantástico de paciencia.»
+es | «Estimadas hermanas de la iglesia: aquí hay un pan de coco tan rico que no lo muele ni la lengua más cansada. Esto es para ustedes.»
+es | Karla le escribió a una amiga: «Wilmer prefería no hacer discursos, pero esta noche dio uno corto sobre la vida de una monja que enseñaba a leer a los chicos de la isla.»
+es | «Contó que la monja ya estaba envejecida, pero que seguía recorriendo las casas con un libro breve, y que no quería honrarlo con palabras sino con trabajo. Su destino, decía ella, era enseñar.»
+es | Sam, por su parte, no escribió a nadie: leyó en voz baja lo que había anotado, mientras contemplaba el mar.
+es | «Un desahogo es lo que necesito», pensó. «Una comedia con final feliz, un epílogo corto y un café.»
+es | Esa noche, mientras las velas ardían en la mesa, alguien recordó el velorio de don Chepe, con su sábana blanca y sus cuatro velas.
+es | —Don Chepe era un hombre vencido por la pena —dijo Wilmer—. Pero repuso que la tristeza, mal que bien, también es una forma de amor.
+es | —Y que el diablo siempre dice que no hay consuelo —añadió Karla—, pero la gente está conforme con vivir un día más.
+es | —Eso es carácter —dijo Sam—. Hay quien se derrite por cualquier cosa, y hay quien sigue derritiéndose despacio, sin gritar.
+es | Mildred escuchaba desde la puerta. Era una mujer joven, de ánimo fuerte, que había enterrado a su padre en la isla.
+es | —Yo pretendía no llorar —dijo, y su voz se hizo baja—. Pero cuando mi chico nació, entendí que la renta de la vida se paga con amor.
+es | —¿Y cuál es su virtud, Mildred? —le preguntó Yesenia.
+es | —La virtud de una isla es la soledad compartida —contestó ella—. Aquí nadie está solo, aunque uno se sienta vago o perdido.
+es | —Ese empeño es una hombrada —dijo Nico, y se hizo el seductor.
+es | —Más bien es lo contrario —dijo Mildred—. Sobra decir que una madre no representaba un monólogo: vivía una vida entera.
+es | Todos se rieron, aunque nadie se atrevió a insinuar que ella estaba equivocada.
+es | Esa noche, cuando todos dormían, Sam salió a la playa con su cuaderno y una luz pequeña.
+es | «Querido diario: El mar de noche es húmedo y oscuro, pero también íntimo. Escribo con ánimo y con una intención sencilla: no olvidar esta semana.»
+es | «Hace un año, la idea de llegar a una isla me parecía una fantasía. Hoy estoy aquí, con mi memoria llena de colores.»
+es | «Procuraba no pensar en el pasado, pero precisamente aquí, frente al arrecife, entendí que todo tiene su término, y que ese término no es una frialdad: es una pausa.»
+es | «En el taller aprendí que un filósofo, un soldado y un místico pueden ser la misma persona en una sola función. Eso no es un disparate: es el arte de ver desde varios lados.»
+es | «Hoy, delante de un pulpo, sentí lo mismo que Carmen Mejía frente a su rana: la hermosura de lo pequeño y el horror de perderlo.»
+es | «Mi propósito para el año que viene es sencillo: emprender más, quejarme menos, y escuchar con atención a los que acuden a mí. En la corriente de los días, lo que vislumbraba de lejos ya se ve de cerca.»
+es | «Y quiero referir una cosa que dijo el profe: que el odio y el desprecio son vagos, pero la gratitud siempre llega a tiempo.»
+es | «Cierro el cuaderno. Detrás de mí, el mar sigue su corriente, y el cielo, lleno de estrellas, brilla como si no tuviera nada que explicar.»
+es | Al amanecer, Wilmer lo encontró dormido sobre la arena, con el cuaderno abierto en la mano.
+es | —Vení, Sam, que sale el barco —le dijo, sacudiéndole el hombro—. Y ahorita comemos una baleada en el puerto.
+es | En el puerto, un vago de la playa, sin oficio, vislumbraba el amanecer desde una banca.
+es | En la fila del puerto, una señora pretende comprar un pez, y Nico lanzó una broma que hizo reír a Mildred.
+es | —Es la vaga idea que tiene Nico del dinero —dijo Karla. El sol brillaba sobre el mar, y era una rareza ver el cielo tan limpio.

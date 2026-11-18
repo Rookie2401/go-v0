@@ -1,0 +1,17 @@
+// Second, neutral list: about 300 everyday Spanish lemmas by category, written without regard to the probe results.
+import { esLexicon } from 'C:/Users/CJWal/dev/go-v0-rc/src/adapters/es';
+const CATS: Record<string, string> = {
+  verbs: `ser estar tener haber hacer ir venir decir poder querer saber ver dar poner salir llegar pasar deber creer hablar llevar dejar seguir encontrar llamar pensar volver conocer vivir sentir tratar mirar contar empezar esperar buscar entrar trabajar escribir perder producir ocurrir entender pedir recibir recordar terminar permitir aparecer conseguir comenzar servir sacar necesitar mantener resultar leer caer cambiar presentar crear abrir considerar oír acabar convertir ganar formar traer partir morir aceptar realizar suponer comprender lograr explicar preguntar tocar reconocer estudiar alcanzar nacer dirigir correr utilizar pagar ayudar gustar jugar escuchar cumplir ofrecer descubrir levantar intentar usar decidir repetir olvidar comer beber dormir comprar vender preferir cocinar limpiar lavar caminar viajar cantar bailar nadar enseñar aprender descansar despertar duchar vestir conducir manejar`,
+  nouns: `tiempo año día cosa hombre mujer vida mano parte niño ojo vez casa país mundo trabajo lugar caso persona punto noche forma agua momento gobierno ciudad problema nombre familia historia palabra padre madre hijo amigo cabeza hora semana mes tarde mañana dinero libro calle puerta mesa coche carro escuela ciudad pueblo iglesia tienda mercado comida pan leche carne fruta café ropa zapato camisa cuerpo cara pie brazo corazón salud médico hospital enfermedad dolor número color música película juego fiesta viaje camino río mar montaña sol luna lluvia perro gato animal árbol flor campo tierra aire fuego luz pregunta respuesta idea razón verdad derecho guerra paz ley policía empresa negocio precio mercado clase profesor estudiante idioma lengua carta teléfono computadora radio televisión periódico noticia foto fin principio lado centro grupo tipo situación relación educación información condición sociedad cultura programa sistema proyecto servicio desarrollo`,
+  adjectives: `bueno malo grande pequeño nuevo viejo joven alto bajo largo corto fácil difícil importante posible necesario feliz triste contento cansado enfermo rico pobre caro barato bonito feo fuerte débil rápido lento caliente frío limpio sucio lleno vacío abierto cerrado seguro peligroso claro oscuro blanco negro rojo azul verde amarillo primero último mismo otro solo libre ocupado listo simple increíble terrible agradable amable simpático inteligente interesante aburrido divertido famoso serio tranquilo nervioso`,
+  others: `y o pero porque que si cuando como donde aunque mientras también tampoco muy más menos mucho poco bien mal aquí allí ahora hoy ayer mañana siempre nunca ya todavía casi solo sí no con sin para por de en a desde hasta entre sobre bajo contra hacia según durante antes después luego entonces quizás además incluso aun`,
+};
+let all = 0; let miss = 0;
+for (const [cat, list] of Object.entries(CATS)) {
+  const words = [...new Set(list.split(/\s+/).filter(Boolean))];
+  const has = (w: string) => esLexicon.lookup(w).length > 0 || !!esLexicon.find(w);
+  const missing = words.filter((w) => !has(w));
+  all += words.length; miss += missing.length;
+  console.log(`${cat}: ${words.length} checked; ${missing.length} missing (${(100 * missing.length / words.length).toFixed(0)} %): ${missing.join(' ')}`);
+}
+console.log(`TOTAL ${all} checked; ${miss} missing (${(100 * miss / all).toFixed(0)} %)`);

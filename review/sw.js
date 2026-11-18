@@ -20,15 +20,19 @@
  */
 'use strict';
 
-var BUILD_ID = '0adae5db72a7';
+var BUILD_ID = '552fb694b4dc';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
   "./THIRD-PARTY-NOTICES.md",
+  "./assets/arc-DZc9asID.js",
   "./assets/athens-CGnxwDV8.webp",
   "./assets/bangkok-r3GWRAT9.webp",
   "./assets/berat-CFdUV1uK.webp",
+  "./assets/de-CH6cNZth.js",
   "./assets/earth-C2ksqYf2.webp",
+  "./assets/el-HV8pgHwi.js",
+  "./assets/es-BQBFw-vS.js",
   "./assets/fonts/EB-Garamond-OFL.txt",
   "./assets/fonts/eb-garamond-latin-400-italic.woff2",
   "./assets/fonts/eb-garamond-latin-400.woff2",
@@ -37,18 +41,28 @@ var PRECACHE = [
   "./assets/go-globe-rim-CzbKbQV5.png",
   "./assets/go-globe-turn-Dop5YaWE.png",
   "./assets/go-logo-D1Qp-DDg.png",
-  "./assets/index-CGa-rwSh.js",
+  "./assets/he-CDT9jrOs.js",
+  "./assets/hebrew-script-CnsZhqS-.js",
+  "./assets/hi-DahJF875.js",
+  "./assets/index-BAy9rewP.js",
   "./assets/jerusalem-YWyJNBCG.webp",
-  "./assets/languageChoices-7AFJkDLn.js",
+  "./assets/la-CwaQG1iI.js",
+  "./assets/languageChoices-BHeQeLtm.js",
+  "./assets/nb-DD4vZ02j.js",
+  "./assets/nn-BFIvrq7f.js",
+  "./assets/norwegian-CE2nWb77.js",
   "./assets/oslo-CP39LCLT.webp",
-  "./assets/registry-Ckw02z84.js",
+  "./assets/registry-zAmngOzX.js",
   "./assets/rolldown-runtime-DK3Fl9T5.js",
   "./assets/roman-forum-BwyPrRQO.webp",
   "./assets/rothenburg-vv8nBX67.webp",
+  "./assets/segment-Bq1cMtpn.js",
   "./assets/shared-f3Tn5VdE.js",
-  "./assets/src-Be7uuN7L.js",
-  "./assets/style-C1vB5n_3.css",
+  "./assets/sq-BV_-FP7T.js",
+  "./assets/src-BdSvOU29.js",
+  "./assets/style-Bqfq_PEc.css",
   "./assets/syntax-CGmPxLTF.js",
+  "./assets/th-Cp-Ghu6g.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",
   "./config.json",
@@ -63,45 +77,54 @@ var PRECACHE = [
 ];
 var ASSET_BASE = '../';
 var LANG_CHUNKS = {
+  "albanian": [
+    "./assets/lang-albanian-BE5vTq3L.js"
+  ],
   "aramaic": [
     "./assets/lang-aramaic-B5WkUau3.js"
   ],
   "de": [
-    "./assets/lang-de-C_IHTs05.js"
+    "./assets/lang-de-BYtYku6J.js"
   ],
   "el": [
-    "./assets/lang-el-lx90B2t9.js"
+    "./assets/lang-el-DUfc6teU.js"
   ],
   "es": [
-    "./assets/lang-es-j0_8daRj.js"
+    "./assets/lang-es-DQQeB2lv.js"
   ],
   "he": [
-    "./assets/lang-he-uURHj8pF.js"
+    "./assets/lang-he-Be8o8q4D.js"
   ],
   "hebrew": [
     "./assets/lang-hebrew-Bsnip4qd.js",
     "./assets/lang-hebrew-apRjTzMX.js"
   ],
   "hi": [
-    "./assets/lang-hi-Dm-OlhJI.js"
+    "./assets/lang-hi-_EfHfB8r.js"
+  ],
+  "hindi": [
+    "./assets/lang-hindi-DyM6_O99.js"
   ],
   "la": [
-    "./assets/lang-la-JDHOIhG_.js"
+    "./assets/lang-la-DnmgY7BX.js"
   ],
   "nb": [
-    "./assets/lang-nb-uGPGKyNL.js"
+    "./assets/lang-nb-JOUyyumq.js"
   ],
   "nn": [
-    "./assets/lang-nn-DJMIrF2r.js"
+    "./assets/lang-nn-C_R-P6Il.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-DY6V3L_B.js"
+    "./assets/lang-norwegian-CANHsdYG.js"
   ],
   "sq": [
-    "./assets/lang-sq-CAHJZbuq.js"
+    "./assets/lang-sq-DZPX889s.js"
   ],
   "th": [
-    "./assets/lang-th-NmWvP-CH.js"
+    "./assets/lang-th-QSLCPu7R.js"
+  ],
+  "thai": [
+    "./assets/lang-thai-nIagJDQ-.js"
   ]
 };
 

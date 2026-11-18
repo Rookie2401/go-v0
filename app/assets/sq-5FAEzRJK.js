@@ -1,1 +1,0 @@
-import{p as e}from"./index-CFd-IOXW.js";export{e as adapter};

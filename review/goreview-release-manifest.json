@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "985c742b6642642d7dca4bc293e68ba0d86f809d",
-    "tree": "bd65e54590e2392675f37685909a9335f6c1bffb",
+    "commit": "22be2d7e7e91cb2595cfe1059de1b2e281e5fc0c",
+    "tree": "a9dce05bafad0ebb71634dc8278f4b35bcd15f1a",
     "dirty": false
   },
-  "sourceManifestSha256": "58e9ac304e53238a357d1808de723a44e56a381444ee9cbc5f52f5be2db7adce",
+  "sourceManifestSha256": "3dc0b55ff381b8295b4c8f4950a846e9cf95d492e39657a8c21c50879eb88d9e",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -373,19 +373,27 @@
     },
     {
       "path": "packages/goreview/app/alphabetDeck.ts",
-      "sha256": "bf04a956cdb8f004a423b52698b1469e6f19e5bc6dd5815796404b84fd869b7a"
+      "sha256": "f5cf73343ef26c8a04a03281f9de027c43e69481d1b0ca5a1405b54897b82c92"
     },
     {
       "path": "packages/goreview/app/alphabetLetters.thhi.ts",
-      "sha256": "554df995a4c868ef87edd37aadd446777c0152a1d9c6aeae048cb4c652a874e8"
+      "sha256": "fc734893f3f266ec27a90e7271d89d935aea10dd68dbff104ea35febeaccc019"
     },
     {
       "path": "packages/goreview/app/alphabetLetters.ts",
       "sha256": "2584d1856d1c4de26da3e65d761fe39716e54e2796620675e49089830fb3aa76"
     },
     {
+      "path": "packages/goreview/app/alphabetPage.ts",
+      "sha256": "d52bc2cb19643264c567c50e8df1f1d234775e032d7313e27d5a3fb03c9fde00"
+    },
+    {
+      "path": "packages/goreview/app/alphabetSprint.ts",
+      "sha256": "765f931d531d9dfa8c72b712176b5715b6832a90a729e1fc18c7cfa73575e577"
+    },
+    {
       "path": "packages/goreview/app/app.ts",
-      "sha256": "f9fad2e0d07561d5f80b7d723004c1e94f68cae45156f66bf85027672965abd9"
+      "sha256": "dfea27c02e410d5265eff8bd52783a18c3e7d89d2f1963266bd212a58b479e93"
     },
     {
       "path": "packages/goreview/app/audio.ts",
@@ -417,7 +425,11 @@
     },
     {
       "path": "packages/goreview/app/engine.ts",
-      "sha256": "dc1f707051ae3d0a7c76aea3e051e29b6080cff4345cf5a992561a3996dbfc60"
+      "sha256": "82453341368be9c0c7718868e519e431f66209bf1a53cbcda339ebe00f11d9cd"
+    },
+    {
+      "path": "packages/goreview/app/enrolmentName.ts",
+      "sha256": "a94d9c520078c43609276443b712c5e9c0e18427599cbee07bfedb299d23a8ce"
     },
     {
       "path": "packages/goreview/app/events.ts",
@@ -581,7 +593,7 @@
     },
     {
       "path": "packages/goreview/app/screens/account.ts",
-      "sha256": "f64ec2d88134cb115fcdb9a79f9c8c77f6f8030f795390c6d30a47de8230a64d"
+      "sha256": "bf3c915c4069fc66b4fc56332eeb8fcdf0870cd02bc74e95d8d0668d2ee5bbf0"
     },
     {
       "path": "packages/goreview/app/screens/accountSecurity.ts",
@@ -597,7 +609,7 @@
     },
     {
       "path": "packages/goreview/app/screens/decks.ts",
-      "sha256": "c7e24af62b9c4079ed5c36e9841799e4dbf5f41e2c777292177954347476fe89"
+      "sha256": "230ac0b1f882918e7f9fd2b98b9f44080432f14af054d7215725d2b4daf25050"
     },
     {
       "path": "packages/goreview/app/screens/developer.ts",
@@ -605,7 +617,7 @@
     },
     {
       "path": "packages/goreview/app/screens/help.ts",
-      "sha256": "e0ccc7af208e5ec6a0934e542dc76c935d1c13ebb8910d2db4b230d7bc5fd4d9"
+      "sha256": "5c31511c514ea7bdc8ae4af528d0f99277a91d5f5347c0bf40cc55edb3e57e76"
     },
     {
       "path": "packages/goreview/app/screens/history.ts",
@@ -637,7 +649,7 @@
     },
     {
       "path": "packages/goreview/app/screens/reviewDeck.ts",
-      "sha256": "9064d5e01c19ea904d60a7cd088c749149f1b4322ebe0eedb65a411d11a1c00c"
+      "sha256": "7bb49d905664fa8a9165144579a555e1885481bf0a61c20164608088f09fe974"
     },
     {
       "path": "packages/goreview/app/screens/reviewDetails.ts",
@@ -653,7 +665,7 @@
     },
     {
       "path": "packages/goreview/app/screens/setup.ts",
-      "sha256": "f65d601bd675efe19871082832cd37e01729a23ebcb6a0e4ecfb178135907bb7"
+      "sha256": "c0902aa389e68bc2f4ccd50cd2c53c83a843553747d416de34c68ab0d0f063a6"
     },
     {
       "path": "packages/goreview/app/screens/signin.ts",
@@ -749,7 +761,7 @@
     },
     {
       "path": "packages/goreview/app/styles.css",
-      "sha256": "1e227756e9dc688186783f5bf6014403320af3b1639522c4adaadb91beaab463"
+      "sha256": "1927a1ef8be8ad4264571dc3c048163ff8b6273750572412d7c198ddc12e2872"
     },
     {
       "path": "packages/goreview/app/tellEngine.ts",
@@ -1176,6 +1188,134 @@
       "sha256": "760601756c3f38bcc15dfe065665ef3bd2f92e4d0deaae4baca4893e3a76edc4"
     },
     {
+      "path": "packages/language-packs/src/alphabet-sprint/ids.ts",
+      "sha256": "4a60ff840f7a491f62ece5d01087a884270a9bbaa5bdfdb44f179dbf3cc35887"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/knowledge.ts",
+      "sha256": "db6818aa112130262985a79c7a8b3f740e866c997a5f57d223d39084ef67b56c"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/letters-thhi.ts",
+      "sha256": "554df995a4c868ef87edd37aadd446777c0152a1d9c6aeae048cb4c652a874e8"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/plan.ts",
+      "sha256": "4ca8eb8eab8f9d6c3fdb84c2c16c8055afeb5b828ba5e9f71fb50c4bd829a3a7"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/arc.ts",
+      "sha256": "1c9cfe2a8a3594fa80f1e0b20570831f363e1a37902766647a7f4a5d7ca1925f"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/de.ts",
+      "sha256": "9ece79aaa6fc37755fd5b5e42356295291997236fe2d1bdbf658d97fbcde79dd"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/el.ts",
+      "sha256": "8471a9cf51c6a975f7a9dabb45e9c480e5d21005db9597875450d2dce507d30d"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/es.ts",
+      "sha256": "bda5d233b7c5b149f1943bae024d058179e62de6e01dbac7a8d693adfbcc4063"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/he.ts",
+      "sha256": "d91edacb79ad9f4782201c967a611efdac31ceaf853ba9b83bac2307d06b4a68"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/hebrew-script.ts",
+      "sha256": "413cff16a1c2cd7809b0516e130533001bb18887ea9201c90b0f95c04f89fd56"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/hi.ts",
+      "sha256": "ed8dde53a4a4757ebd49eb18ddf7f32d0ceb701f20dd3cd570c2e7fedc27058f"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/index.ts",
+      "sha256": "aa81662be64adb7c58cb343733420f7516ce0d9b78225207a91fd1cc35ce6644"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/la.ts",
+      "sha256": "beeab6e3724d827eb629d22c2b99b0dcde0f63bd7dd736e65ef5020425972fd1"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/nb.ts",
+      "sha256": "03f53a177ac815dc5080d24c258eab60afc12d07c1373e2e36f61e18703c9323"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/nn.ts",
+      "sha256": "7dfdb94c7956f1519bca70caaca51e6588ef619f11875f8e863a9cec5cb8aad0"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/norwegian.ts",
+      "sha256": "964c8f3f2653845379e1aead651e5ee1b90b06361e8700509c0f0f7d6c2add30"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/sq.ts",
+      "sha256": "0a6b605b4a1fa829bf4bf6cf14dda172266fc6a52d477e2140c7fe07d820165c"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/th.ts",
+      "sha256": "899960402002c6546c67eb2e0690060ef5c64d475097cf1240a5058d5bb8efa7"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/segment.ts",
+      "sha256": "fc8db7f3fa741de5ca5985b77e58c2e14cf818b3ec46332a608eaf1df5b31c0b"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/select.ts",
+      "sha256": "f4d18f2b2385eca3692b059b933ea62309cde250e285a7e205ce54309660a786"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/arc.ts",
+      "sha256": "e06eed8a7b49b3f8eaa5db282fa985d77f10caebd9906822bdf76061d10c6021"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/de.ts",
+      "sha256": "b1d3870fd1c436ac1b31f647d480de3cade5efc49a92017c6cf1b7cb5701d93d"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/el-classical.ts",
+      "sha256": "f5270c998c41321078165ca4251c53f68b74b96f5f9eb88649cb5b11095a6b51"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/el.ts",
+      "sha256": "90bd715b0886257ab90a2b3a4c85ffdafaeb568e95e897d1800783862bf039c6"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/es.ts",
+      "sha256": "3ffe6618c448dfd747f0f282ce2a3db3aea1e193f82f175d9bbe742701e47000"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/he.ts",
+      "sha256": "b55e2913da3c0544ae337b3e41ef0f44b5562adbaf7ba017e98552b67b10c156"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/hi.ts",
+      "sha256": "53a90b00da32cc11d1b8ed4e2a461676b280b5b2c042cfee691ca6ed71b19c2d"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/la.ts",
+      "sha256": "cb7a5e8d9c4a9a9125bc187aa0f3aa4b495bb5718273090329253ebb4d8bb148"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/nb.ts",
+      "sha256": "10f92ae44ce6d1d0e71ae633cdf54748038ef214bf99528e6d2834ec9e4671fe"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/nn.ts",
+      "sha256": "840b9b5b23ca2e25a5832856777d33d5bd6a2fb45a5aa09b5aafa48d250ad4e6"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/sq.ts",
+      "sha256": "e3fdea171cd0f2a62f98e9f2dd5c3bec386c5112c71ca02e9fd7b9b6360d8d82"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/words/th.ts",
+      "sha256": "8a6ef3140f6f121e0abdd1a668237bb52a1e00ef149ca57be2a7f89dfd8c0277"
+    },
+    {
       "path": "packages/language-packs/src/analysis.ts",
       "sha256": "8ee9b7f24bb5ddf3d8b493bc0f35622491ed786c3e914901aefbdc3f74ebea1b"
     },
@@ -1321,7 +1461,7 @@
     },
     {
       "path": "packages/repository-contract/src/knowledge-levels.ts",
-      "sha256": "13645a84c1441be4d16add88ced4aea48909878c7ff854213d209554e0fd434f"
+      "sha256": "48dc59fa0983fa0c746fdd4ea71a20337fd5d379f843e6511e88204a8701029a"
     },
     {
       "path": "packages/repository-contract/src/learner.ts",
@@ -1397,7 +1537,7 @@
     },
     {
       "path": "packages/repository-local/src/proxy.ts",
-      "sha256": "f675031c8b73423d54964ee9dc39d6fe05b085491db6f67c785e5082bea1c35b"
+      "sha256": "105bca3d951948c5d735617ed65e5990778bf090182ffbf2a2cc54c8baf4749d"
     },
     {
       "path": "packages/repository-local/src/ranking.ts",
@@ -1409,7 +1549,7 @@
     },
     {
       "path": "packages/repository-service/src/api.ts",
-      "sha256": "d47139970d11c395bb6413298be307ee6c8c9146b7570d5da5f438d3c6998a48"
+      "sha256": "1bd45e21c46bb9a77eabd5415ef23b8ea8c36c85e5516d43cea5bb830c70e40f"
     },
     {
       "path": "packages/repository-service/src/backupHealth.ts",
@@ -1433,7 +1573,7 @@
     },
     {
       "path": "packages/repository-service/src/handler.ts",
-      "sha256": "c6735bc29f387a4a76a088900f68d95c3d171b1fb4de85332ce4cb2070180d3b"
+      "sha256": "7e339856f95407da54ddcc8512926d7175a147e0ae44f12def7642f24878c190"
     },
     {
       "path": "packages/repository-service/src/http.ts",
@@ -1513,11 +1653,11 @@
     },
     {
       "path": "packages/repository-store/src/indexeddb.ts",
-      "sha256": "0763cdf680014dcacea8d5be370960ada29ed7634e446a7f0ab65c548ae39472"
+      "sha256": "9f657bca896a25e3cb83f62d86c9a01983c62309d945ad14600fe530adda874f"
     },
     {
       "path": "packages/repository-store/src/memory.ts",
-      "sha256": "28ac165df7dc84cc75e5772419cc2ca4266f9521ae149a02028f2c1110fc97a9"
+      "sha256": "4f47ac7ea3ca92b1c75ab1baf6bd03072f7a92eded602563df05983da7f9cead"
     },
     {
       "path": "packages/repository-store/src/migrate.ts",
@@ -1537,7 +1677,7 @@
     },
     {
       "path": "packages/repository-store/src/postgres.ts",
-      "sha256": "9296069cb9dab88e1739ea87e83dbd99846bdeed6c49937b761cc6acd6c6398c"
+      "sha256": "8ab0ad33cc2f362b5605b364897e1ece0847b8ee4505589d26c870f3bd7b26e3"
     },
     {
       "path": "packages/repository-store/src/rules.ts",
@@ -1545,7 +1685,7 @@
     },
     {
       "path": "packages/repository-store/src/sqlite.ts",
-      "sha256": "daf068b5a7e8784c025459d84f20b6413ee488a8011570d602ba5277be782e40"
+      "sha256": "9a832147faea73116271556f1656132ef8e9be2f148639a4eb9bd1c61d187b22"
     },
     {
       "path": "packages/repository-sync/src/area.ts",
@@ -4055,8 +4195,9 @@
     "packages/goreview/app/accountClient.ts",
     "packages/goreview/app/admissionExplanation.ts",
     "packages/goreview/app/alphabetDeck.ts",
-    "packages/goreview/app/alphabetLetters.thhi.ts",
     "packages/goreview/app/alphabetLetters.ts",
+    "packages/goreview/app/alphabetPage.ts",
+    "packages/goreview/app/alphabetSprint.ts",
     "packages/goreview/app/app.ts",
     "packages/goreview/app/audio.ts",
     "packages/goreview/app/classEssentials.ts",
@@ -4065,6 +4206,7 @@
     "packages/goreview/app/deckModel.ts",
     "packages/goreview/app/dom.ts",
     "packages/goreview/app/engine.ts",
+    "packages/goreview/app/enrolmentName.ts",
     "packages/goreview/app/events.ts",
     "packages/goreview/app/format.ts",
     "packages/goreview/app/freshness.ts",
@@ -4216,6 +4358,38 @@
     "packages/gotell/src/workspace/profileSource.ts",
     "packages/gotell/src/workspace/writer.ts",
     "packages/language-packs/src/adapterLoadError.ts",
+    "packages/language-packs/src/alphabet-sprint/ids.ts",
+    "packages/language-packs/src/alphabet-sprint/knowledge.ts",
+    "packages/language-packs/src/alphabet-sprint/letters-thhi.ts",
+    "packages/language-packs/src/alphabet-sprint/plan.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/arc.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/de.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/el.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/es.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/he.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/hebrew-script.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/hi.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/index.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/la.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/nb.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/nn.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/norwegian.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/sq.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/th.ts",
+    "packages/language-packs/src/alphabet-sprint/segment.ts",
+    "packages/language-packs/src/alphabet-sprint/select.ts",
+    "packages/language-packs/src/alphabet-sprint/words/arc.ts",
+    "packages/language-packs/src/alphabet-sprint/words/de.ts",
+    "packages/language-packs/src/alphabet-sprint/words/el-classical.ts",
+    "packages/language-packs/src/alphabet-sprint/words/el.ts",
+    "packages/language-packs/src/alphabet-sprint/words/es.ts",
+    "packages/language-packs/src/alphabet-sprint/words/he.ts",
+    "packages/language-packs/src/alphabet-sprint/words/hi.ts",
+    "packages/language-packs/src/alphabet-sprint/words/la.ts",
+    "packages/language-packs/src/alphabet-sprint/words/nb.ts",
+    "packages/language-packs/src/alphabet-sprint/words/nn.ts",
+    "packages/language-packs/src/alphabet-sprint/words/sq.ts",
+    "packages/language-packs/src/alphabet-sprint/words/th.ts",
     "packages/language-packs/src/analysis.ts",
     "packages/language-packs/src/capabilities.ts",
     "packages/language-packs/src/catalogue.ts",
@@ -4623,7 +4797,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "c51a96a051f2bd129e7dcbb2602928cb7ab726557a21e72f4619f35fb080834f",
+  "artifactManifestSha256": "d873086c90bac40aee71e2bc68a3d5e902532c475e3de65488f38177a86a4265",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4632,6 +4806,10 @@
     {
       "path": "THIRD-PARTY-NOTICES.md",
       "sha256": "26c52e0111ed97c0a7f2374e6eace598d7bdc2a36a2fbf95c29f13f10e7bef30"
+    },
+    {
+      "path": "assets/arc-DZc9asID.js",
+      "sha256": "bc8744d2bcdf44451aaa98b757853e592d02acfc65d514e89ae688946a49ad65"
     },
     {
       "path": "assets/athens-CGnxwDV8.webp",
@@ -4646,8 +4824,20 @@
       "sha256": "2076b6a52d4c3db97df3b8bcaceeeb3cf87fcf4f99da7ebcad2f938cf97e6cbd"
     },
     {
+      "path": "assets/de-CH6cNZth.js",
+      "sha256": "264bdaca5c9009ad937b8e17ee09ba24d1ab8944c4efd6d9882226b09d31faf6"
+    },
+    {
       "path": "assets/earth-C2ksqYf2.webp",
       "sha256": "8734ecb3cd8102299a81399223f21ccc4ce3e86dd695322f858c94bb006c1392"
+    },
+    {
+      "path": "assets/el-HV8pgHwi.js",
+      "sha256": "2d715e9e68a06b110b898936bf3dd0cab652f79f66cd4159b1bfa3a7d0674598"
+    },
+    {
+      "path": "assets/es-BQBFw-vS.js",
+      "sha256": "7072d6d54293db0ebadc83216323b6143896f36dd63e0653c8ab01d57e0b56a0"
     },
     {
       "path": "assets/fonts/EB-Garamond-OFL.txt",
@@ -4682,32 +4872,52 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-CGa-rwSh.js",
-      "sha256": "e1b0bbe8c22cf37d8e175bbbbca94b7d5f4ed5d1df48fe7e3420df69f3cd306f"
+      "path": "assets/he-CDT9jrOs.js",
+      "sha256": "81f3d107aae4623b203003ff891a023476329c760bd82b1e00558567405bbcce"
+    },
+    {
+      "path": "assets/hebrew-script-CnsZhqS-.js",
+      "sha256": "d7d0f37f59e9f0aa8ca20aa51e0eac9bf13b10ac16f49b110821c6748edfeb18"
+    },
+    {
+      "path": "assets/hi-DahJF875.js",
+      "sha256": "d1940ad0216fb0cf1d4a01b60892734106d2e4ae35e21cfb695a57f04936a60d"
+    },
+    {
+      "path": "assets/index-BAy9rewP.js",
+      "sha256": "d9bac9452481cdcea07f89757054ded65d06ef3182aa03e552d800c155ae8259"
     },
     {
       "path": "assets/jerusalem-YWyJNBCG.webp",
       "sha256": "36c704fc57e2be69ac10118ef36f476414184c11e2613fa998fd54f6205bf02c"
     },
     {
+      "path": "assets/la-CwaQG1iI.js",
+      "sha256": "798335c996263e44f5d138c7d320dd4ea4b8d819eb968e37fa371c44b3d1772c"
+    },
+    {
+      "path": "assets/lang-albanian-BE5vTq3L.js",
+      "sha256": "3c89569476ea4d404faff5a14440b0cb581fdd7a07e475ecf81bfbda6794ba47"
+    },
+    {
       "path": "assets/lang-aramaic-B5WkUau3.js",
       "sha256": "c7324768bd26c74911f4d583d18cc3d0f62fcbbc14da15668ef4b4cb855bb868"
     },
     {
-      "path": "assets/lang-de-C_IHTs05.js",
-      "sha256": "bfc548d4eb09e321a8ff98f9d8770a86a59d3341e3b66955134c7265238f82d1"
+      "path": "assets/lang-de-BYtYku6J.js",
+      "sha256": "95f44ab60c3e8642fc54beec2bc3fab48e0378df6d380f17e2d666836b8a2bde"
     },
     {
-      "path": "assets/lang-el-lx90B2t9.js",
-      "sha256": "264d839cdf496513168804f47aecd20c870639544dcc0d708d225f68c8acdd12"
+      "path": "assets/lang-el-DUfc6teU.js",
+      "sha256": "ae427469f3a9c79a2d5a950ffd90c70246fa14b925436f666fbde9acc32110dd"
     },
     {
-      "path": "assets/lang-es-j0_8daRj.js",
-      "sha256": "1998cb78010dd7d28b423a73ab6fcb448eb0d7080a7362f0589db7a63536f8f8"
+      "path": "assets/lang-es-DQQeB2lv.js",
+      "sha256": "f69c0e294ec5281bda66c19def34fdac99dbe75d6a9f06a6c03bfeea8b2c1a6d"
     },
     {
-      "path": "assets/lang-he-uURHj8pF.js",
-      "sha256": "df37da4cb1947c7f9410546a92266541053a0601d3e80f6c327b5dbcfb724866"
+      "path": "assets/lang-he-Be8o8q4D.js",
+      "sha256": "e8e51eb8d6cce730d19e2209731a8a3e48cdcf3a0b31d81850f9e0a371b0beda"
     },
     {
       "path": "assets/lang-hebrew-Bsnip4qd.js",
@@ -4718,44 +4928,64 @@
       "sha256": "fa0a59464851c6d94c25e39cd9a1706bede329c8f8b6d856911a5a63912048a0"
     },
     {
-      "path": "assets/lang-hi-Dm-OlhJI.js",
-      "sha256": "179928b9b9f7e09d8a5e69839cb85e3930228fe7377b7e37342d9bc93ed36e17"
+      "path": "assets/lang-hi-_EfHfB8r.js",
+      "sha256": "a88259cfcfba44feed96b15e8ee00cc1e6f5805a9d31e5bbb12c9393dffe24d3"
     },
     {
-      "path": "assets/lang-la-JDHOIhG_.js",
-      "sha256": "7ff42b50d18843d68b73d4277d40ae258e2a2955a9482eb06f91e7e4281c1f43"
+      "path": "assets/lang-hindi-DyM6_O99.js",
+      "sha256": "1c7e6f34552d45229be3030177ba78df56300e64ccadf5f6e454c34b24b54548"
     },
     {
-      "path": "assets/lang-nb-uGPGKyNL.js",
-      "sha256": "7bcfa15535e7ea1e7046ae07b2767cd7e1cbd97519717540c691c1b63fefbbb4"
+      "path": "assets/lang-la-DnmgY7BX.js",
+      "sha256": "2c63878ffe36708d7b147fdb78c7b26698c5ff2348c418ec25e763c78af0a569"
     },
     {
-      "path": "assets/lang-nn-DJMIrF2r.js",
-      "sha256": "982f074d82e753386ce304ad6653f5ddd6a64b340c1945bccc115b63642dc610"
+      "path": "assets/lang-nb-JOUyyumq.js",
+      "sha256": "fda5cd3610e29f6277c103c1f2c98bd6478a4ec43aea2646cbe0becd98c39473"
     },
     {
-      "path": "assets/lang-norwegian-DY6V3L_B.js",
-      "sha256": "30dea42f722fb156d63356a07df03c894eb5c59ec1c01cd405f6a85d753e56b3"
+      "path": "assets/lang-nn-C_R-P6Il.js",
+      "sha256": "adf43252b27aef470de4236a956c529fad0564be3350d472ff2cbd02e561b6b3"
     },
     {
-      "path": "assets/lang-sq-CAHJZbuq.js",
-      "sha256": "c1abf22840e9ce8330ea22476d82588f2bfb48e887da0739a3b9a3a712e58dde"
+      "path": "assets/lang-norwegian-CANHsdYG.js",
+      "sha256": "9ef47eaed7a645d0fcbe3dc77f2b6217d0040b28785c787401d5609cb33a931f"
     },
     {
-      "path": "assets/lang-th-NmWvP-CH.js",
-      "sha256": "7deb79119077e8c483116fe7405b31d19a2888e468e671e09a8b0da72ceb0478"
+      "path": "assets/lang-sq-DZPX889s.js",
+      "sha256": "fc9206931f8b76dcf94160aa08b84ac28f843edb6542a2eadb44a063d25e8f91"
     },
     {
-      "path": "assets/languageChoices-7AFJkDLn.js",
-      "sha256": "30035d6638ae933bd8ea9d0e87d15123aade98aba89a808df02abd9d63f14aeb"
+      "path": "assets/lang-th-QSLCPu7R.js",
+      "sha256": "4b1c89dd1327b0ccc496a70b239e151c42333788dfa33ea726f6fcdda4448492"
+    },
+    {
+      "path": "assets/lang-thai-nIagJDQ-.js",
+      "sha256": "56a6f2a93f2a6677a715110c74adb6220e068ef34cd5c5e7d13072c9b9e84484"
+    },
+    {
+      "path": "assets/languageChoices-BHeQeLtm.js",
+      "sha256": "3afb49104b2653a9f4c1d07fa9c4c1941f59b34873229cba2fa596b23ffc41b5"
+    },
+    {
+      "path": "assets/nb-DD4vZ02j.js",
+      "sha256": "a97c36a58360db16479d12479af84d1e8b65932bdc9c199845358fe4951226c6"
+    },
+    {
+      "path": "assets/nn-BFIvrq7f.js",
+      "sha256": "e6caad7f40f8b55e0a80c850b7c198dfa9865a00e61e5c0fb90cb4ae421afff5"
+    },
+    {
+      "path": "assets/norwegian-CE2nWb77.js",
+      "sha256": "e78b73db407b23a119e2e884fe7b7a7add0fb5a11d3269ec449d7151b218a877"
     },
     {
       "path": "assets/oslo-CP39LCLT.webp",
       "sha256": "a53db013a29facfd504a69b9936a9f51738fb4db1a7cc7d6f7e013c3ecea1026"
     },
     {
-      "path": "assets/registry-Ckw02z84.js",
-      "sha256": "634d717d7dac627e2e209baa7547baf121fad6b626c23a4cf8695adb959831a2"
+      "path": "assets/registry-zAmngOzX.js",
+      "sha256": "d987b95710eaba9ebefd0c02d265c3c8fabc0bfdf9ab65a210c7d28149080552"
     },
     {
       "path": "assets/rolldown-runtime-DK3Fl9T5.js",
@@ -4770,20 +5000,32 @@
       "sha256": "ffb6630dd75baa82d3bd28fb64e7a767212cc5ee7110a7f2f69117c202340404"
     },
     {
+      "path": "assets/segment-Bq1cMtpn.js",
+      "sha256": "a07344accd9142e0b92bf0a30a5e8ddea95d62ebb98aea3988ed7cac659e9266"
+    },
+    {
       "path": "assets/shared-f3Tn5VdE.js",
       "sha256": "5f41989cd779c8eeb92e44d62fa858554ed7f1875a3f3800df8794086deb95d4"
     },
     {
-      "path": "assets/src-Be7uuN7L.js",
-      "sha256": "234244b9dc5b7557ba87b9477b6d3b66994aea361dbe517dbeb1e0ca9daf2190"
+      "path": "assets/sq-BV_-FP7T.js",
+      "sha256": "158dc559c11e245f247ef28c686c11fe16b92d4602c0bd0ed7304408d284fe65"
     },
     {
-      "path": "assets/style-C1vB5n_3.css",
-      "sha256": "a3308bf9d49eb6556b3b11f86632f6adda965cf5d81967cebff3919005bbd04e"
+      "path": "assets/src-BdSvOU29.js",
+      "sha256": "7d37cb6dd9575c320e8532462dd9bc68e937a9562503803aa3f842eab6460938"
+    },
+    {
+      "path": "assets/style-Bqfq_PEc.css",
+      "sha256": "c322ca279c4d03ccda470b1b863b7dbb64d21bfb4a55a405c4f2ae5b96f4d215"
     },
     {
       "path": "assets/syntax-CGmPxLTF.js",
       "sha256": "80fa8b92d9c1653a1a67c61db2bc76d90a4008a8368a2a9b7eae8aa043fc4cea"
+    },
+    {
+      "path": "assets/th-Cp-Ghu6g.js",
+      "sha256": "f670b4c01b31c454946922632eedf136a80e46d7abef3e5c1e8b928011eb7152"
     },
     {
       "path": "assets/valle-de-angeles-BxOTzEvC.webp",
@@ -4823,7 +5065,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "a03e9aa9ca841d5c4277f518c2bbc2f5888daf1977c9055e962018abe78fad3a"
+      "sha256": "4197bc8d76a82377c0c461d49eba719454b4e5a82a339b3dc1809c4d18d75ae9"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5767,7 +6009,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "dd86f7edc5c739d5e19bd138eaf88b65ec5ca0cc86237265347892cbf0b9eaad"
+      "sha256": "20b93197951bbb3006a5c858f993eb3132e29ea56a385cdf5d3e345e7b9fbece"
     }
   ]
 }

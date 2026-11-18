@@ -50,6 +50,16 @@ describe('message senders', () => {
     expect((await rig.page({ type: MSG.status })).connected).toBe(true);
   });
 
+  it('Alphabet Sprint letter counts: a content script may only add them; only an extension page reads them back', async () => {
+    const rig = createRig();
+    expect(await rig.content({ type: MSG.pageScript, op: 'add', languageId: 'he', counts: { 'ש': 3, 'שלום': 9 } })).toEqual({ ok: true });
+    expect(await rig.content({ type: MSG.pageScript, op: 'get', languageId: 'he' })).toEqual({ ok: false, error: 'forbidden' });
+    expect(await rig.content({ type: MSG.pageScript, languageId: 'he' })).toEqual({ ok: false, error: 'forbidden' });
+    expect(await rig.page({ type: MSG.pageScript, languageId: 'he' })).toEqual({ ok: true, counts: { 'ש': 3 }, pages: 1 });
+    await rig.page({ type: MSG.clearLocal });
+    expect(await rig.page({ type: MSG.pageScript, languageId: 'he' })).toEqual({ ok: true });
+  });
+
   it('an unknown golearn: message is refused, not executed; other messages are ignored', async () => {
     const rig = createRig();
     expect(await rig.page({ type: 'golearn:nonsense' })).toEqual({ ok: false, error: 'forbidden' }); // not in either allow-list

@@ -173,6 +173,8 @@ export const MSG = {
   activeProfile: 'golearn:active-profile',
   /** GoLearn Active's scan asks the dictionary's forms index which unconfirmed words it knows (2026-10-27): see `ConfirmFormsRequest` in protocol.ts. */
   confirmForms: 'golearn:confirm-forms',
+  /** Alphabet Sprint (2026-11-17): a content script adds the character counts of the words it read (op add); GoReview, an extension page, reads one language's totals (op get). Counts of single characters only: see background/pageScript.ts. */
+  pageScript: 'golearn:page-script',
   /** Explicit on-demand request for the local sentence translation service. */
   translateSentence: 'golearn:translate-sentence',
   // background -> content (GoLearn Active)

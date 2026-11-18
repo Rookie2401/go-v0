@@ -115,6 +115,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
     doc, controller, adapters, ui, adapterOf: getAnalyser, loadAnalyser,
     profile: bridge?.activeProfile ? (unitIds, languageId) => bridge.activeProfile!({ unitIds, languageId }) : undefined,
     confirmForms: bridge?.confirmForms ? (forms, languageId) => bridge.confirmForms!({ forms, languageId }) : undefined,
+    pageScript: bridge?.pageScript,
     recordEncounter: bridge?.events.append,
     buildEncounter: (ids, languageId, readerId) => buildEncounterEvent({
       languageId, itemIds: ids, readerId, identity, version: chromeApi?.runtime.getManifest?.().version ?? '0.0.0',

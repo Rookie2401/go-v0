@@ -61,7 +61,7 @@ export async function planAlphabetSprint(ctx: AppContext, model: ReviewModel, op
   const state = await sprintState(model, languageId, model.identity.varietyId);
   if (!state) return assemble(ctx, model, [], 0, { intent: { kind: 'explicit', reason: 'saved-deck', requestedAt: model.now }, origin: 'saved-deck' });
   const pageCounts = await opts.pageCounts?.(state.profile.languageId).catch(() => undefined);
-  const size = Math.max(1, model.prefs.cardsPerDeck);
+  const size = Math.max(1, model.prefs.cardsPerDeck ?? 10);
   const plan = planSprint({ profile: state.profile, knowledge: state.knowledge, cards: state.cards, now: model.now, size, ...(pageCounts ? { pageCounts } : {}) });
   const wanted: Wanted[] = plan.cards.map((c) => ({ unitId: c.unitId, unitKind: 'lexeme', dimension: 'written-recognition', family: 'written-recognition' }));
   const session = await assemble(ctx, model, wanted, wanted.length, { intent: { kind: 'explicit', reason: 'saved-deck', requestedAt: model.now }, origin: 'saved-deck' });

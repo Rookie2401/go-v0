@@ -11,6 +11,7 @@
 import {
   CONTRACT_VERSION, EVENT_KINDS, HASHED_PAGE_LOCATOR, KNOWLEDGE_LEVELS, MAX_CORRECTIONS, UNKNOWN_RESTRICTIONS, capRestrictions, MAX_FUTURE_SKEW_MS, MAX_SURFACE_CHARS, familyOf, provenanceOf, surfaceFromEncounterUnitId, validateCorrection, validateEvent, validationForPack,
 } from '../../repository-contract/src';
+import { isVocabularyUnitId } from '../../repository-contract/src';
 import type {
   SyncStatusReply, SyncWaitReply,
   Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFamily, EventKind, GoEvent, Learner,
@@ -856,7 +857,7 @@ route('GET', '/vocabulary', true, async (ctx) => {
   await engine.knowledge(learnerId, []); // ensure the projection and alias re-keying are current
   let catalog = store.getEncounteredKnowledgeStats ? await store.getEncounteredKnowledgeStats(learnerId, languageId) : undefined;
   if (!catalog) {
-    const rows = (await store.getKnowledge(learnerId)).filter((r) => r.languageId === languageId && r.encounters > 0);
+    const rows = (await store.getKnowledge(learnerId)).filter((r) => r.languageId === languageId && r.encounters > 0 && isVocabularyUnitId(r.unitId));
     const counts = { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 };
     for (const r of rows) counts[r.level]++;
     catalog = { total: rows.length, counts };
@@ -955,7 +956,8 @@ route('GET', '/vocabulary', true, async (ctx) => {
   const storePage = async (cursor: string, size: number): Promise<Knowledge[]> => store.getKnowledgePage
     ? await store.getKnowledgePage(learnerId, { languageId, after: cursor || undefined, limit: size, sourceRef })
     : (await store.getKnowledge(learnerId)).filter((r) => r.languageId === languageId && r.unitId > cursor).slice(0, size);
-  const encounteredOf = (rows: Knowledge[]): Knowledge[] => rows.filter((r) => r.encounters > 0 && (!level || r.level === level));
+  // a built-in deck's practice card (Class Essentials, Alphabet Sprint: a class: id) is not a word of the vocabulary
+  const encounteredOf = (rows: Knowledge[]): Knowledge[] => rows.filter((r) => r.encounters > 0 && isVocabularyUnitId(r.unitId) && (!level || r.level === level));
 
   if (light) {
     // Unit order and the unsorted listing's cursors (a unit id). Each store page is filtered and let go before the next is read, so the walk holds

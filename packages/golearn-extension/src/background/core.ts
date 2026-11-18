@@ -22,6 +22,7 @@ import { createGlossService, defaultPacks, SHARD_PREFIX, type PackProvider } fro
 import { createDictionaryStore } from './dictionaryStore';
 import { DOWNLOAD_KEY_PREFIX, createDictionaryDownload } from './dictionaryDownload';
 import { createFormsService } from './forms';
+import { createPageScriptStore } from './pageScript';
 import { levelOf } from '../../../language-packs/src/manifest';
 import { PACKS } from '../../../language-packs/src/registry';
 import { createLocalRepoService, createWorkerHold, type LocalRepoServiceOptions } from './localRepo';
@@ -81,6 +82,7 @@ const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
   MSG.activeProfile, // the scan's learner-model question: device rows only, and only while Active is on (below)
   MSG.confirmForms, // the scan's dictionary question: public dictionary data only, forms in, lemmas out
+  MSG.pageScript, // Alphabet Sprint: a content script may only ADD character counts; reading them back is for an extension page (below)
   MSG.translateSentence,
   MSG.speech,
 ]);
@@ -175,6 +177,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   const dictionaryStore = createDictionaryStore(bg.dictionary?.idb ?? (globalThis as { indexedDB?: IDBFactory }).indexedDB);
   const gloss = createGlossService({ area: local, session, fetch: doFetch, packs, now, getURL: (path) => chrome.runtime.getURL?.(path), ...(dictionaryStore.available ? { offline: dictionaryStore } : {}) });
   const forms = createFormsService({ gloss });
+  const pageScript = createPageScriptStore(local, now);
   const translation = createLocalTranslationService({
     fetch: doFetch,
     extensionId: chrome.runtime.id,
@@ -485,6 +488,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     const drop = [...events, ...metrics, ...queued, ...dictionaryRows];
     if (drop.length) await local.remove(drop);
     await profile.clear();
+    await pageScript.clear().catch(() => undefined);
     return { ok: true, events: events.length, metrics: metrics.length, queued: queued.length };
   }
 
@@ -530,6 +534,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       case MSG.gloss: return gloss.glossFor(m) satisfies Promise<GlossReply>;
       case MSG.entry: return gloss.entryFor(m);
       case MSG.confirmForms: return forms.confirm(m);
+      case MSG.pageScript: return m.op === 'add' ? pageScript.add(m.languageId, m.counts) : kind === 'page' ? pageScript.get(m.languageId) : { ok: false, error: 'forbidden' };
       case MSG.explain: return gloss.explainFor(m);
       case MSG.pronounceInfo: return pronounceInfo(m);
       case MSG.speechConfig: return kind === 'page' ? speech.configure(m) : { ok: false };

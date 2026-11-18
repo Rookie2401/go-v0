@@ -305,7 +305,9 @@ async function recoveryScan(ctx: AppContext, api: Awaited<ReturnType<AppContext[
     let fullKnowledge: UnitKnowledge[] = [];
     let fullKnowledgeRead = false;
     try {
-      const result = await api.knowledge();
+      // this language only (2026-11-17): the whole read carried every language (about 15 MB for the owner's eight) and a phone gave up after 8 s,
+      // so the recovery never completed there; a service older than that answers every language and the filter below keeps this one
+      const result = await api.knowledge(undefined, { languageId: identity.languageId });
       if (!result.ok) throw new Error(result.message || `the service answered ${result.status}`);
       fullKnowledge = result.data.knowledge.filter((row) => row.languageId === identity.languageId && typeof row.unitId === 'string');
       fullKnowledgeRead = true;

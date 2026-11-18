@@ -290,4 +290,19 @@ describe('enrolments, packs, units, knowledge, preferences', () => {
     expect((await raw(h, 'GET', `/knowledge?unitIds=${many}`, { token: s.token })).status).toBe(422);
     expect((await raw(h, 'GET', '/candidates', { token: s.token })).status).toBe(422);
   });
+
+  // 2026-11-17: GoReview's candidate recovery reads one language; the whole read of a learner of eight languages was about 15 MB
+  it('serves one language of the knowledge when asked, and every language otherwise', async () => {
+    const h = createHarness();
+    const s = await signUp(h, 'ana@example.com');
+    const row = (unitId: string, languageId: string) => ({ learnerId: s.learnerId, unitId, languageId, dimensions: {}, retention: { estimate: 0, halfLifeDays: 1, basedOn: 'none' }, uncertainty: 1, modelVersion: 'fake-1', basis: { events: 0 } }) as never;
+    await h.store.putKnowledge([row('form:hi:a', 'hi'), row('form:de:b', 'de'), row('form:hi:c', 'hi')]);
+    const hi = await s.api.knowledge(undefined, { languageId: 'hi' });
+    expect(hi.ok && hi.data.knowledge.map((k) => k.unitId).sort()).toEqual(['form:hi:a', 'form:hi:c']);
+    const all = await s.api.knowledge();
+    expect(all.ok && all.data.knowledge).toHaveLength(3);
+    const some = await raw(h, 'GET', '/knowledge?unitIds=form:hi:a,form:de:b&languageId=de', { token: s.token });
+    expect(some.body.knowledge.map((k: { unitId: string }) => k.unitId)).toEqual(['form:de:b']);
+    expect((await raw(h, 'GET', `/knowledge?languageId=${'x'.repeat(201)}`, { token: s.token })).status).toBe(422);
+  });
 });

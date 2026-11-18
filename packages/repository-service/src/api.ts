@@ -75,7 +75,8 @@ export interface RepositoryApi {
   lookup(input: LookupRequest): Promise<ApiResult<{ formId: string; units: LinguisticUnit[]; relations: UnitRelation[]; analysis: FormAnalysis | null; sentenceKey: string | null }>>;
   appendEvents(events: GoEvent[]): Promise<ApiResult<EventsResponse>>;
   listEvents(q?: EventsQuery): Promise<ApiResult<{ events: StoredEvent[]; head: number }>>;
-  knowledge(unitIds?: string[]): Promise<ApiResult<{ knowledge: UnitKnowledge[] }>>;
+  /** `languageId` (2026-11-17) limits a whole read to one language; a service older than that ignores it and answers every language. */
+  knowledge(unitIds?: string[], opts?: { languageId?: string }): Promise<ApiResult<{ knowledge: UnitKnowledge[] }>>;
   vocabulary(query: VocabularyQuery): Promise<ApiResult<VocabularyPage>>;
   candidates(enrolmentId: string, limit?: number, after?: string, objectiveDimensions?: Dimension[]): Promise<ApiResult<{ candidates: ReviewCandidate[]; nextCursor?: string }>>;
   preferences(languageId?: string): Promise<ApiResult<{ preferences: AssistancePreferences }>>;
@@ -156,7 +157,7 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
     lookup: (input) => call('POST', '/lookup', input),
     appendEvents: (events) => call('POST', '/events', { events }),
     listEvents: (q = {}) => call('GET', '/events', undefined, { afterSeq: q.afterSeq, kinds: q.kinds?.join(','), unitId: q.unitId, languageId: q.languageId, since: q.since, limit: q.limit }),
-    knowledge: (unitIds) => call('GET', '/knowledge', undefined, { unitIds: unitIds?.join(',') }),
+    knowledge: (unitIds, opts) => call('GET', '/knowledge', undefined, { unitIds: unitIds?.join(','), languageId: opts?.languageId }),
     vocabulary: (q) => call('GET', '/vocabulary', undefined, {
       languageId: q.languageId, level: q.level, search: q.search, after: q.after, limit: q.limit, minEncounters: q.minEncounters, sort: q.sort,
       firstEncounterFrom: q.firstEncounterFrom, firstEncounterTo: q.firstEncounterTo, lastEncounterFrom: q.lastEncounterFrom, lastEncounterTo: q.lastEncounterTo,

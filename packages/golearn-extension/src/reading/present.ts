@@ -42,6 +42,7 @@ function snapshotNotes(s: KnowledgeSnapshot): Presented['notes'] {
     timeout: 'Your account did not answer in time.',
     incomplete: 'Your account’s history could not be read to its end.',
     'refused-events': 'Part of your account’s history could not be stored on this device.',
+    'deletions-unknown': 'Your account could not say which records you have deleted, so this device may still count some of them.',
     'mixed-accounts': 'This device holds the history of more than one account, so the figure may include another account’s words. Clear this device’s data in GoLearn setup and sign in again to get your own figure.',
   };
   const reason = s.reason ? why[s.reason] : 'Your account could not be checked.';

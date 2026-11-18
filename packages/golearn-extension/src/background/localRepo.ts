@@ -14,7 +14,7 @@
  *  - Nothing here may break recording: any failure is swallowed and the event stays in the worker's own log and queue.
  */
 import type { Enrolment, GoEvent, LearningGoal, UnitKnowledge } from '../../../repository-contract/src';
-import { inspectLocal, markEventsOwned, openLocalRepository, pullPositionOf, storageModeOf, uploadWaiting, type LocalRepository, type OpenLocalOptions, type PullOutcome, type StorageInfo } from '../../../repository-local/src';
+import { accountsOfRepository, inspectLocal, markEventsOwned, openLocalRepository, pullPositionOf, storageModeOf, uploadWaiting, type LocalRepository, type OpenLocalOptions, type PullOutcome, type StorageInfo } from '../../../repository-local/src';
 import { adaptStorageArea, createLock } from '../../../repository-sync/src';
 import type { LanguageAdapter } from '../../../../src/core';
 import type { StorageArea } from '../platform';
@@ -67,7 +67,7 @@ export const KNOWLEDGE_CHUNK = 200;
 export type CatchUp =
   | { state: 'no-account' }
   | { state: 'level'; at: number; added: number; mixedAccounts: boolean }
-  | { state: 'behind'; reason: 'unreachable' | 'timeout' | 'incomplete' | 'refused-events' | 'unavailable' | 'needs-sign-in'; added: number; lastLevelAt?: number; mixedAccounts: boolean };
+  | { state: 'behind'; reason: 'unreachable' | 'timeout' | 'incomplete' | 'refused-events' | 'unavailable' | 'needs-sign-in' | 'deletions-unknown'; added: number; lastLevelAt?: number; mixedAccounts: boolean };
 
 /**
  * One 20 s extension-API touch shared by everything that runs long in the worker (the Repository's open, the upload-and-pull, a sync round): `hold()` starts it
@@ -146,19 +146,32 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
   const beginWrite = (): void => { writing += 1; };
   const endWrite = (): void => { changes += 1; writing = Math.max(0, writing - 1); };
   let accountsKnown: Set<string> | undefined;
+  /** The list in storage was read from the markers of the device's events at least once (true from then on, across workers: the row exists). */
+  let accountsSeeded = false;
 
   /** Remembers that this device's Repository holds (or has sent to) the history of the account `learnerId`. Returns every account so remembered. */
   async function noteAccount(learnerId: string | undefined, repo?: LocalRepository): Promise<Set<string>> {
     if (!accountsKnown) {
       let kept: unknown;
       try { kept = (await opts.area.get(ACCOUNTS_KEY))[ACCOUNTS_KEY]; } catch { kept = undefined; }
+      accountsSeeded = Array.isArray(kept);
       accountsKnown = new Set(Array.isArray(kept) ? kept.filter((x): x is string => typeof x === 'string' && !!x) : []);
     }
     const before = accountsKnown.size;
     if (learnerId) accountsKnown.add(learnerId);
-    // the account this device last pulled from, before this list was kept
-    if (repo) { try { const p = await pullPositionOf(repo); if (p) accountsKnown.add(p.remoteLearnerId); } catch { /* not a reason to fail */ } }
-    if (accountsKnown.size !== before) { try { await opts.area.set({ [ACCOUNTS_KEY]: [...accountsKnown] }); } catch { /* asked again next time */ } }
+    let write = accountsKnown.size !== before;
+    // A device from before this list was kept: its accounts are read ONCE from the markers of its own events (every event sent to an account or
+    // taken from one says which), so two accounts already mixed here are found. Until that read has succeeded the list is not written, and it is tried again.
+    if (!accountsSeeded && repo) {
+      try {
+        for (const id of await accountsOfRepository(repo)) accountsKnown.add(id);
+        const p = await pullPositionOf(repo);
+        if (p) accountsKnown.add(p.remoteLearnerId);
+        accountsSeeded = true;
+        write = true;
+      } catch { accountsKnown = undefined; return new Set(learnerId ? [learnerId] : []); }
+    } else if (!accountsSeeded) write = false; // nothing is kept yet and this call cannot read the markers: leave the list unwritten for a call that can
+    if (write) { try { await opts.area.set({ [ACCOUNTS_KEY]: [...accountsKnown] }); } catch { /* asked again next time */ } }
     return accountsKnown;
   }
 
@@ -348,7 +361,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
 
   /** A pull that reached the account's head with nothing refused: the device is level with the account as of now. */
   async function noteLevel(learnerId: string, p: PullOutcome): Promise<void> {
-    if (!p.complete || p.refused || p.remoteLearnerId !== learnerId) return;
+    if (!p.complete || p.refused || p.remoteLearnerId !== learnerId || p.deletions !== 'applied') return;
     try { await opts.area.set({ [LEVEL_KEY]: { learnerId, at: opts.now(), afterSeq: p.afterSeq ?? 0, ...(p.head !== undefined ? { head: p.head } : {}) } }); } catch { /* a convenience */ }
   }
 
@@ -391,6 +404,8 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
         if (p.remoteLearnerId !== learnerId) return { state: 'behind', reason: 'unreachable', added: p.added, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
         if (p.refused) return { state: 'behind', reason: 'refused-events', added: p.added, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
         if (!p.complete) return { state: 'behind', reason: 'incomplete', added: p.added, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
+        // every event is here, but the account could not say what the learner deleted: the device may hold more than the account does
+        if (p.deletions !== 'applied') return { state: 'behind', reason: 'deletions-unknown', added: p.added, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
         return { state: 'level', at: opts.now(), added: p.added, mixedAccounts };
       } catch {
         return { state: 'behind', reason: 'unreachable', added: 0, lastLevelAt: await lastLevelAt(learnerId), mixedAccounts };
@@ -404,7 +419,8 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
 
   /** When the device was last known to be level with the account now signed in; undefined when never, or when there is no account. */
   async function levelAt(): Promise<number | undefined> {
-    try { const a = await opts.session.authenticated(); return a ? await lastLevelAt(a.session.learnerId) : undefined; } catch { return undefined; }
+    // the stored sign-in, expired or not: a session the service no longer accepts is still this account's
+    try { const s = await opts.session.current(); return s ? await lastLevelAt(s.learnerId) : undefined; } catch { return undefined; }
   }
 
   /**
@@ -482,6 +498,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
     pendingHint = undefined;
     changes += 1;
     accountsKnown = undefined;
+    accountsSeeded = false;
     try { await opts.area.remove([ACTIVE_KEY, UPLOAD_STATUS_KEY, ENROLMENTS_KEY, PULL_OPEN_KEY, ACCOUNTS_KEY, LEVEL_KEY]); } catch { /* absent */ }
     if (repo) { await repo.clear(); return; }
     // The repository would not open (so it cannot clear itself): take the learner's data away by hand, both databases first, then the frozen rows. With no

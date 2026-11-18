@@ -51,6 +51,17 @@ export async function allEvents(store: ConcreteStore, learnerId: string): Promis
   }
 }
 
+/**
+ * Every account this device's history has been sent to or taken from: the learner ids on the markers of all its events. Reads the whole log and its
+ * markers (seconds on a large history): for a one-time question, not for a status line.
+ */
+export async function accountsOf(c: TransferContext): Promise<string[]> {
+  const events = await allEvents(c.store, c.learnerId);
+  const out = new Set<string>();
+  for (const m of (await markersOf(c, events.map((e) => e.id))).values()) { if (typeof m.to === 'string' && m.to) out.add(m.to); if (typeof m.from === 'string' && m.from) out.add(m.from); }
+  return [...out];
+}
+
 /** The marker rows of these event ids. */
 export async function markersOf(c: TransferContext, ids: string[]): Promise<Map<string, UploadMarker>> {
   const out = new Map<string, UploadMarker>();
@@ -212,8 +223,12 @@ async function localEnrolment(c: TransferContext, languageId: string, remoteEnro
  *   refused       account events this device's store will not take, counted over EVERY pull so far (they are remembered with the cursor and
  *                 tried again each time): while it is not 0 the device is not a whole copy of the account
  *   unauthorized  the account refused the sign-in (401): not a network failure
+ *   deletions     `applied`: the account's deletion instructions were read and every one this device had not yet carried out was carried out (events
+ *                 the learner deleted on another device are gone here too). `unknown`: the account could not be asked (a service from before
+ *                 2026-11-17 has no list of them): the device may still hold what the learner deleted
+ *   removed       events removed here by those instructions in this pull
  */
-export interface PullOutcome { added: number; complete: boolean; remoteLearnerId?: string; afterSeq?: number; head?: number; refused?: number; unauthorized?: boolean }
+export interface PullOutcome { added: number; complete: boolean; remoteLearnerId?: string; afterSeq?: number; head?: number; refused?: number; unauthorized?: boolean; deletions?: 'applied' | 'unknown'; removed?: number }
 
 export interface PullOptions {
   /** The number of events asked for per request (the default is PAGE; a test asks for small pages). */
@@ -224,7 +239,8 @@ export interface PullOptions {
   afterWrite?: () => void;
 }
 
-const REFUSED_MAX = 200;
+/** With this many remembered refusals or fewer, each is asked for by itself; with more, the range they lie in is read again page by page. */
+const REFUSED_SINGLY = 20;
 
 /** The account this device last pulled from and how far (the stored cursor), or undefined when it never pulled. Read-only. */
 export async function pullPosition(c: TransferContext): Promise<{ remoteLearnerId: string; afterSeq: number; refused: number } | undefined> {
@@ -285,24 +301,68 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
     }
     return { refused: notTaken, rows };
   };
-  const cursorRow = (): PullCursor => ({ learnerId: remoteLearner, afterSeq, ...(refusedSeqs.length ? { refused: refusedSeqs.slice(0, REFUSED_MAX) } : {}) });
+  // every refused sequence number is kept, however many: one left off this row would be forgotten for good, with the cursor already past it
+  const cursorRow = (): PullCursor => ({ learnerId: remoteLearner, afterSeq, ...(refusedSeqs.length ? { refused: refusedSeqs } : {}) });
 
-  // the events an earlier pull could not store are asked for again, one by one: a build that can store them now takes them
-  if (refusedSeqs.length) {
-    const still: number[] = [];
-    let reachable = true;
-    for (const seq of refusedSeqs) {
-      if (!reachable) { still.push(seq); continue; }
-      let r;
-      try { r = await remote.listEvents({ afterSeq: seq - 1, limit: 1 }); } catch { r = undefined; }
-      if (!r || !r.ok) { reachable = false; still.push(seq); continue; }
-      const e = r.data.events.find((x) => x.seq === seq);
-      if (!e) continue; // the account no longer holds it
-      const t = await take([e]);
-      if (t.refused.length) still.push(seq);
-      if (Object.keys(t.rows).length) await writeRows(c.io, t.rows);
+  // What the learner deleted on the account goes first: the event list only says what was added. Each instruction is carried out here once (the
+  // device's store keeps it, as the service's does), BEFORE the new events are read, so an event that reached the account after a deletion of its
+  // range, and so survived there, survives here too.
+  let deletions: 'applied' | 'unknown' = 'unknown';
+  let removed = 0;
+  {
+    let list;
+    try { list = await remote.listTombstones(); } catch { list = undefined; }
+    if (list?.ok && Array.isArray(list.data.tombstones)) {
+      try {
+        const done = new Set((await c.store.listTombstones(c.learnerId)).map((t) => t.tombstoneId));
+        for (const t of list.data.tombstones) {
+          if (!t || typeof t.tombstoneId !== 'string' || done.has(t.tombstoneId) || t.scope?.kind === 'learner') continue; // erasing a whole account is not a device's to repeat
+          try { opts.beforeWrite?.(); } catch { /* a listener must not break a pull */ }
+          try { removed += (await c.store.applyTombstone({ ...t, learnerId: c.learnerId })).events; } finally { try { opts.afterWrite?.(); } catch { /* as above */ } }
+        }
+        deletions = 'applied';
+      } catch { deletions = 'unknown'; }
     }
-    if (still.length !== refusedSeqs.length) { refusedSeqs = still; await writeRows(c.io, { [c.io.keys.pull]: cursorRow() }); }
+  }
+
+  // the events an earlier pull could not store are asked for again: a build that can store them now takes them
+  if (refusedSeqs.length) {
+    const sorted = [...new Set(refusedSeqs)].sort((x, y) => x - y);
+    const still = new Set(sorted);
+    if (sorted.length <= REFUSED_SINGLY) {
+      for (const seq of sorted) {
+        let r;
+        try { r = await remote.listEvents({ afterSeq: seq - 1, limit: 1 }); } catch { r = undefined; }
+        if (!r || !r.ok) break; // the rest stay on the list
+        const e = r.data.events.find((x) => x.seq === seq);
+        if (!e) { still.delete(seq); continue; } // the account no longer holds it
+        const t = await take([e]);
+        if (!t.refused.length) still.delete(seq);
+        if (Object.keys(t.rows).length) await writeRows(c.io, t.rows);
+      }
+    } else {
+      // many (a kind of event an app records often): the range they lie in is read again, a page at a time
+      const wanted = new Set(sorted);
+      const last = sorted[sorted.length - 1];
+      let at = sorted[0] - 1;
+      for (let guard = 0; guard < 10_000 && at < last; guard++) {
+        let r;
+        try { r = await remote.listEvents({ afterSeq: at, limit: pageSize }); } catch { r = undefined; }
+        if (!r || !r.ok) break; // what was not reached stays on the list
+        const got = r.data.events.filter((e) => e.seq > at).sort((x, y) => x.seq - y.seq);
+        if (!got.length) { for (const seq of sorted) if (seq > at) still.delete(seq); break; } // the account holds nothing more: those events are gone from it
+        const upTo = got[got.length - 1].seq;
+        const present = new Set(got.map((e) => e.seq));
+        const mineNow = got.filter((e) => wanted.has(e.seq));
+        const t = await take(mineNow);
+        const refusedAgain = new Set(t.refused);
+        for (const e of mineNow) if (!refusedAgain.has(e.seq)) still.delete(e.seq);
+        for (const seq of sorted) if (seq > at && seq <= upTo && !present.has(seq)) still.delete(seq); // no longer in the account
+        if (Object.keys(t.rows).length) await writeRows(c.io, t.rows);
+        at = upTo;
+      }
+    }
+    if (still.size !== refusedSeqs.length) { refusedSeqs = [...still].sort((x, y) => x - y); await writeRows(c.io, { [c.io.keys.pull]: cursorRow() }); }
   }
 
   let retried = -1; // the cursor position whose page was asked for a second time
@@ -321,8 +381,17 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
       break;
     }
     // A page that does not begin at the event after the cursor: an answer for another position (the events between would never be asked for
-    // again), or a range the account deleted. It is asked for once more; the same answer twice is taken as the account's own state.
-    if (events[0].seq !== afterSeq + 1 && retried !== afterSeq) { retried = afterSeq; continue; }
+    // again), or a range the account deleted. The page is asked for once more; if it still begins late, ONE event after the cursor is asked
+    // for by itself (another request, so not the same wrong answer again). An event before the page's first shows a hole: the page is not
+    // taken, the cursor stays, and the pull ends incomplete. The page's own first event again is the account's own state.
+    if (events[0].seq !== afterSeq + 1) {
+      if (retried !== afterSeq) { retried = afterSeq; continue; }
+      let probe;
+      try { probe = await remote.listEvents({ afterSeq, limit: 1 }); } catch { probe = undefined; }
+      if (!probe || !probe.ok) break;
+      const next = probe.data.events.filter((e) => e.seq > afterSeq).sort((a, b) => a.seq - b.seq)[0];
+      if (next && next.seq < events[0].seq) break; // events lie between the cursor and this page: not taken
+    }
     const t = await take(events);
     if (t.refused.length) refusedSeqs = [...new Set([...refusedSeqs, ...t.refused])];
     afterSeq = events[events.length - 1].seq;
@@ -332,7 +401,7 @@ export async function pull(c: TransferContext, remote: RepositoryApi, newId: () 
   }
   // Projection runs ONCE, after the last page (a page touches most of the learner's units, and projecting re-reads their events). The cursor and the markers above are written
   // per page, so a pull stopped after any page resumes from there; until it is projected, every read folds the events newer than the projection cursor, so knowledge is correct.
-  if (appended.length) await c.project();
+  if (appended.length || removed) await c.project();
   try { opts.onEnd?.(complete); } catch { /* a listener must not break a pull */ }
-  return { added, complete, remoteLearnerId: remoteLearner, afterSeq, ...(head !== undefined ? { head } : {}), ...(refusedSeqs.length ? { refused: refusedSeqs.length } : {}) };
+  return { added, complete, remoteLearnerId: remoteLearner, afterSeq, ...(head !== undefined ? { head } : {}), ...(refusedSeqs.length ? { refused: refusedSeqs.length } : {}), deletions, ...(removed ? { removed } : {}) };
 }

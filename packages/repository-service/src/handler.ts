@@ -1516,6 +1516,15 @@ function parseScope(raw: unknown): Tombstone['scope'] {
   }
 }
 
+/**
+ * The learner's deletion instructions (2026-11-17). A device that holds a copy of the account's history reads them to remove what the learner
+ * deleted on another device: the event list only ever says what was added (the device Repository's pull, repository-local/src/transfer.ts).
+ */
+route('GET', '/tombstones', true, async (ctx) => {
+  assertSelf(ctx, ctx.query.get('learnerId') ?? undefined);
+  return respond(200, { tombstones: await ctx.deps.store.listTombstones(ctx.session.learnerId) });
+});
+
 route('POST', '/tombstones', true, async (ctx) => {
   const b = await ctx.body();
   assertSelf(ctx, b.learnerId);

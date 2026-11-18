@@ -49,7 +49,7 @@ export interface KnowledgeSnapshot {
    * unverified  signed in, but the account could not be read to its head now (`reason`); the device's record as of `lastVerifiedAt` was used
    */
   state: 'verified' | 'unverified';
-  reason?: 'offline' | 'needs-sign-in' | 'unreachable' | 'timeout' | 'incomplete' | 'refused-events' | 'mixed-accounts';
+  reason?: 'offline' | 'needs-sign-in' | 'unreachable' | 'timeout' | 'incomplete' | 'refused-events' | 'deletions-unknown' | 'mixed-accounts';
   /** Epoch ms of the check that established `state`. */
   verifiedAt?: number;
   /** Epoch ms of the last time the device was known to be level with this account, when `state` is `unverified` (absent when it never was). */

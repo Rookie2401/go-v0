@@ -92,6 +92,8 @@ export interface RepositoryApi {
   syncPull(req: SyncPullRequest): Promise<ApiResult<SyncPullResponse>>;
   exportAll(): Promise<ApiResult<Record<string, unknown>>>;
   putTombstone(scope: Tombstone['scope'], reason?: string): Promise<ApiResult<{ tombstone: Tombstone; applied?: { events: number; knowledge: number } }>>;
+  /** The learner's deletion instructions (2026-11-17). A service older than that answers 404: the caller then does not know what was deleted. */
+  listTombstones(): Promise<ApiResult<{ tombstones: Tombstone[] }>>;
 }
 
 export interface ApiOptions { baseUrl: string; fetch: typeof fetch; token?: string }
@@ -179,6 +181,7 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
     syncPull: (req) => call('POST', '/sync/pull', req),
     exportAll: () => call('GET', '/export'),
     putTombstone: (scope, reason) => call('POST', '/tombstones', { scope, ...(reason !== undefined ? { reason } : {}) }),
+    listTombstones: () => call('GET', '/tombstones'),
   };
   return api;
 }

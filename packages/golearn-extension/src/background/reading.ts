@@ -85,9 +85,10 @@ export function createReadingService(o: ReadingServiceOptions) {
     if (!repo) return bad('repository-unavailable', 'The on-device Repository would not open.');
     const s = await o.session.status();
     const waiting = await unsent();
-    // The device's history would not open and a memory-only stand-in answers: with no account nothing can refill it, and every word would read
-    // as never met. That is a record that is unavailable, not a learner who knows nothing. (Signed in, the pull below refills it from the account.)
-    if (!s.connected && await o.local.standIn?.()) return bad('repository-unavailable', 'The vocabulary kept on this device could not be opened.');
+    // The device's history would not open and a memory-only stand-in answers. Every word would read as never met: a record that is unavailable,
+    // not a learner who knows nothing. Signed in, a pull could refill the stand-in from the account, but what this device recorded and has not
+    // sent yet lies in the history that would not open, so the stand-in would still not be the learner's record. No figure is given either way.
+    if (await o.local.standIn?.()) return bad('repository-unavailable', 'The vocabulary kept on this device could not be opened.');
     if (!s.connected) return { ok: true, op: 'snapshot', snapshot: { id: o.local.generation(), authority: 'device', state: 'verified', verifiedAt: o.now(), unsent: waiting } };
     const since = async (): Promise<{ lastVerifiedAt?: number }> => { const at = await o.local.levelAt?.(); return at !== undefined ? { lastVerifiedAt: at } : {}; };
     if (s.expired || await o.sync.needsSignIn()) {
@@ -97,6 +98,9 @@ export function createReadingService(o: ReadingServiceOptions) {
       return { ok: true, op: 'snapshot', snapshot: { id: o.local.generation(), authority: 'account', state: 'unverified', reason: 'offline', ...(await since()), unsent: waiting } };
     }
     const c = await o.local.catchUp({ timeoutMs: timeout });
+    // signed in, and yet there is no account to ask (no service address, a session that cannot be used): that is an account that could not be
+    // checked, never "this device is the whole record"
+    if (c.state === 'no-account') return { ok: true, op: 'snapshot', snapshot: { id: o.local.generation(), authority: 'account', state: 'unverified', reason: 'unreachable', ...(await since()), unsent: await unsent() } };
     // the id is read AFTER the pull: what it brought in is part of the state the batches will be checked against
     return { ok: true, op: 'snapshot', snapshot: fromCatchUp(c, o.local.generation(), await unsent()) };
   }

@@ -29,7 +29,7 @@ import { createLocalLinguistics } from './linguistics';
 import type { AdapterLike } from './linguistics';
 import { FORMAT, keysFor, loadInto, persistingStore, removeRows, writeRows } from './persist';
 import type { LoadReport, LocalMeta, PersistIO, PersistStats } from './persist';
-import { allEvents, markersOf, markOwned, pendingFor, pull, pullPosition, upload } from './transfer';
+import { accountsOf, allEvents, markersOf, markOwned, pendingFor, pull, pullPosition, upload } from './transfer';
 import type { PullOptions, PullOutcome } from './transfer';
 import { cowArea, deleteBothDatabases, migrationKey, readState, runMigration, writeState } from './migrate';
 import type { MigrationInject, MigrationState, Probe } from './migrate';
@@ -113,6 +113,14 @@ const owners = new WeakMap<LocalRepository, (ids: string[], remoteLearnerId: str
 const waitingOf = new WeakMap<LocalRepository, () => number>();
 const positions = new WeakMap<LocalRepository, () => Promise<{ remoteLearnerId: string; afterSeq: number; refused: number } | undefined>>();
 const modes = new WeakMap<LocalRepository, () => StorageInfo['mode']>();
+const accounts = new WeakMap<LocalRepository, () => Promise<string[]>>();
+
+/** The learner ids of every account this device's history was sent to or taken from, read from the markers of all its events (a whole-log read: ask once and keep the answer). */
+export async function accountsOfRepository(repo: LocalRepository): Promise<string[]> {
+  const f = accounts.get(repo);
+  if (!f) throw new Error('not a local repository');
+  return f();
+}
 
 /**
  * Where this repository keeps the history, read without touching it. `rows-frozen`: a device that moved to IndexedDB whose IndexedDB would not open this time; what is
@@ -483,6 +491,7 @@ async function openCore(opts: OpenLocalOptions, core: Core): Promise<LocalReposi
   waitingOf.set(repo, () => lastWaiting);
   positions.set(repo, () => pullPosition(context()));
   modes.set(repo, () => (core.mode === 'indexeddb' ? 'indexeddb' : core.frozen ? 'rows-frozen' : 'rows'));
+  accounts.set(repo, () => accountsOf(context()));
   inspectors.set(repo, async () => {
     const c = context();
     const events = await allEvents(state.store, state.meta.learnerId);

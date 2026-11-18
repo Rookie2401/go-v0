@@ -553,13 +553,14 @@ html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-rou
   -webkit-tap-highlight-color: transparent;
 }
 .signin-about > summary::-webkit-details-marker { display: none; }
-.signin-about > summary::after { content: "▾"; color: var(--accent); font-size: 1rem; letter-spacing: 0; transition: transform .2s; }
+.signin-about > summary::after { content: "▾"; color: var(--accent); font-size: 1rem; letter-spacing: 0; }
 .signin-about[open] > summary::after { transform: rotate(180deg); }
 .signin-about > summary:hover { color: var(--ink); }
 .signin-about > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
 .signin-about > p { margin: 0 clamp(.95rem, 4vw, 1.55rem) .7rem; }
 .signin-about > p:last-child { margin-bottom: 1.1rem; }
-@media (prefers-reduced-motion: reduce) { .signin-about > summary::after { transition: none; } }
+/* the caret turns only for a learner who has not asked for less motion (A-C04: every transition sits behind this gate) */
+@media (prefers-reduced-motion: no-preference) { .signin-about > summary::after { transition: transform .2s; } }
 @media (forced-colors: active) { .signin-about { border: 1px solid CanvasText; } }
 .signin-forgot { justify-self: center; width: 100%; text-align: center; }
 .signin-forgot > summary { list-style: none; margin-inline: auto; }

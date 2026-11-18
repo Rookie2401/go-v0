@@ -1,1 +1,0 @@
-import{t as e}from"./arc-C-i31TlI.js";export{e as adapter};

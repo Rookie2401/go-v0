@@ -87,6 +87,7 @@ to the viewport and overlays a gradient for legibility.
 
 | File | Source | Photographer | License |
 | --- | --- | --- | --- |
+| `earth.webp` | [The Earth seen from Apollo 17](https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg) ("The Blue Marble", 1972; the sign-in page) | NASA / the Apollo 17 crew | Public domain (a work of NASA, a US Government agency) |
 | `athens.webp` | [Acropolis of Athens at dusk](https://commons.wikimedia.org/wiki/File:Acropolis_of_Athens_at_dusk.jpg) | Stymphal | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 | `bangkok.webp` | [Temple of the Emerald Buddha](https://commons.wikimedia.org/wiki/File:Temple_of_the_Emerald_Buddha.jpg) | Nawit science | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 | `berat.webp` | [Berat – Mangalem houses](https://commons.wikimedia.org/wiki/File:Berat_-_Mangalem_4b_H%C3%A4user.jpg) | Wolfgang Sauber | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |

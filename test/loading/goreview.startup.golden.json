@@ -935,12 +935,12 @@
   {
    "text": "Elle lit un livre.",
    "summary": "elle=elle/PRON lit=lire/VERB un=un/DET livre=livre/NOUN",
-   "sha256": "2ff88f6750a296f04d10fd68f2c21a6154ac71e2af52dc8d70b3a48b89a4da4b"
+   "sha256": "ae7d03241ce27b148aa3ebd88bd8c457228f2162b33d36f0867d385bba062625"
   },
   {
    "text": "Elle lit un livre.",
    "summary": "elle=elle/PRON lit=lire/VERB un=un/DET livre=livre/NOUN",
-   "sha256": "2ff88f6750a296f04d10fd68f2c21a6154ac71e2af52dc8d70b3a48b89a4da4b"
+   "sha256": "ae7d03241ce27b148aa3ebd88bd8c457228f2162b33d36f0867d385bba062625"
   },
   {
    "text": "Il entra dans la maison.",
@@ -1000,12 +1000,12 @@
   {
    "text": "L'homme parle.",
    "summary": "l'=le/DET homme=homme/NOUN parle=parler/VERB",
-   "sha256": "d7cc960ac9dfdf55258ed91637f62e894018a97cb1e367ee0e44fac242aff3b7"
+   "sha256": "4ec41644ef82af7485808d0520b8487628a4b5d223efae68153c2570f1f207e0"
   },
   {
    "text": "L'homme parle.",
    "summary": "l'=le/DET homme=homme/NOUN parle=parler/VERB",
-   "sha256": "d7cc960ac9dfdf55258ed91637f62e894018a97cb1e367ee0e44fac242aff3b7"
+   "sha256": "4ec41644ef82af7485808d0520b8487628a4b5d223efae68153c2570f1f207e0"
   },
   {
    "text": "Elle va au marché.",
@@ -1015,17 +1015,17 @@
   {
    "text": "Je le vois.",
    "summary": "je=je/PRON le=le/PRON vois=voir/VERB",
-   "sha256": "d48acfce4dfc7e3546311af0781eb9cc43590ac6faf182679642e4344217c7a5"
+   "sha256": "8832929432cee4c1b33da3eb45d4a03e4a6de52b500bd1e565a86f545ef7d604"
   },
   {
    "text": "Je ne sais pas.",
    "summary": "je=je/PRON ne=ne/PART sais=savoir/VERB pas=pas/ADV",
-   "sha256": "a062c78b0a6331efe1f8aef7c51e076ba924c362d0118890fe4be823de373b59"
+   "sha256": "8bdc07144965ea0bcad0b1a863b34cfc93c8df424e76af2945725dd47fcdf6a6"
   },
   {
    "text": "Il fut surpris.",
    "summary": "il=il/PRON fut=être/AUX surpris=surprendre/VERB",
-   "sha256": "93e200296e33b652a3fa425c95381969d0b171dda511935afa9a449081091d47"
+   "sha256": "7ddcb860fd9440836f98bae571092c3eef34ab9d1e7c64b06644acf4e3e98547"
   },
   {
    "text": "Il viendra peut-être demain.",

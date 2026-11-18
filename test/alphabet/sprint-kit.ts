@@ -72,10 +72,16 @@ export function profileChecks(profile: ScriptProfile, opts: KitOptions = {}): vo
       expect(decodableAfter(profile, order, n)).toBeGreaterThan(decodableAfter(profile, alphabet, n));
     });
 
-    it('starts a beginner with a few letters and a real word within the first three cards, and never fills with repeats', () => {
+    it('starts a beginner with a few letters and a real word as soon as the script allows, and never fills with repeats', () => {
       const plan = planSprint({ profile, knowledge: scriptKnowledge(profile, []), cards: [], now: '2026-11-17T12:00:00.000Z', size: 20 });
       expect(plan.cards.length).toBeGreaterThan(0);
-      expect(plan.cards.slice(0, 3).some((c) => c.kind === 'word')).toBe(true);
+      // the first word comes no later than one unit after the fewest new units any starter word needs (an alphabet: 1–2; a pointed abjad or an
+      // abugida: letter, vowel, letter), whatever the script
+      const familiar = new Set(profile.units.filter((u) => u.familiar).map((u) => u.key));
+      const fewest = Math.min(...wordDependencies(profile).map(({ deps }) => deps.filter((d) => !familiar.has(d)).length));
+      const firstWord = plan.cards.findIndex((c) => c.kind === 'word');
+      expect(firstWord, 'a real word in the first sprint').toBeGreaterThan(0);
+      expect(plan.cards.slice(0, firstWord).filter((c) => c.kind === 'character' || c.kind === 'rule').length).toBeLessThanOrEqual(Math.max(2, fewest + 1));
       expect(new Set(plan.cards.map((c) => c.unitId)).size).toBe(plan.cards.length);
       const newUnits = plan.cards.filter((c) => c.kind === 'character' || c.kind === 'rule').length;
       expect(newUnits).toBeLessThanOrEqual(profile.firstBatch);

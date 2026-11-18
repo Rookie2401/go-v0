@@ -50,10 +50,11 @@ function utility(profile: ScriptProfile, words: readonly WordDeps[], ready: Read
     if (supplied) gain += W.PARTIAL * word.weight * (supplied / missing.length);
   }
   if (opts.pageCounts && opts.pageCounts.size) {
+    // the page's share is scaled to the size of the word list, so the learner's own pages weigh as much as the starter words do
     let total = 0;
     let covered = 0;
     for (const [key, n] of opts.pageCounts) { total += n; if (add.includes(key)) covered += n; }
-    if (total) gain += W.PAGE * (covered / total);
+    if (total) gain += W.PAGE * (covered / total) * Math.max(1, words.length / 10);
   }
   const unitOf = new Map(profile.units.map((u) => [u.key, u] as const));
   for (const key of add) {
@@ -80,6 +81,7 @@ export function selectNextUnits(profile: ScriptProfile, opts: SelectOptions, wor
     const single = left.map((k) => ({ add: [k], score: utility(profile, words, ready, [k], opts) }))
       .sort((a, b) => b.score - a.score || order.get(a.add[0])! - order.get(b.add[0])!);
     let best = single[0];
+    const unlocksAny = (add: readonly string[]) => words.some(({ deps }) => !decodableWith(deps, ready) && decodableWith(deps, new Set([...ready, ...add])));
     if (chosen.length + 2 <= opts.count) {
       const top = single.slice(0, 12).map((s) => s.add[0]);
       for (let i = 0; i < top.length; i++) {
@@ -89,6 +91,19 @@ export function selectNextUnits(profile: ScriptProfile, opts: SelectOptions, wor
           if (score > best.score / best.add.length + 1e-9) best = { add, score: score * 2 };
         }
       }
+    }
+    // a script whose shortest words need three new units (letter, vowel, letter in a pointed abjad): when no single unit or pair makes
+    // any word readable, look three units ahead, so the first word comes as early as the script allows
+    if (chosen.length + 3 <= opts.count && !unlocksAny(best.add)) {
+      const top = single.slice(0, 10).map((s) => s.add[0]);
+      let bestTriple: { add: string[]; score: number } | undefined;
+      for (let i = 0; i < top.length; i++) for (let j = i + 1; j < top.length; j++) for (let l = j + 1; l < top.length; l++) {
+        const add = [top[i], top[j], top[l]];
+        if (!unlocksAny(add)) continue;
+        const score = utility(profile, words, ready, add, opts);
+        if (!bestTriple || score > bestTriple.score + 1e-9) bestTriple = { add, score };
+      }
+      if (bestTriple) best = bestTriple;
     }
     // introduce a pair in the order that lets the first already appear in more words
     for (const k of best.add) chosen.push(k);

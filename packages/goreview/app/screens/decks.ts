@@ -12,6 +12,8 @@ import { languageName } from '../format';
 import { beginSession, currentReviewModel, PRESS_WAIT_MS } from '../workspace';
 import { icon } from '../icons';
 import { attachRipple } from '../ripple';
+import { alphabetProgress, isSprintUnitId, planAlphabetSprint, sprintCardStates } from '../alphabetSprint';
+import { pageCountsFor } from '../alphabetPage';
 import type { View } from './view';
 
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
@@ -34,7 +36,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   async function practise(saved: SavedDeck): Promise<void> {
     const model = await currentReviewModel(ctx, { waitMs: PRESS_WAIT_MS });
     if (!model) { setStatus(status, 'Choose a language first.', 'error'); return; }
-    const plan = await planFromSaved(ctx, model, saved);
+    // the Alphabet is Alphabet Sprint: planned afresh each time from the learner's own cards (alphabetSprint.ts), never the stored letter list
+    const plan = saved.builtin === 'alphabet' ? await planAlphabetSprint(ctx, model, { pageCounts: (lang) => pageCountsFor(ctx, lang) }) : await planFromSaved(ctx, model, saved);
     if (!plan.items.length) {
       const explanations = plan.skipped.slice(0, 3).map(skip => {
         const label = saved.items.find(item => item.itemId === skip.itemId)?.label ?? skip.itemId;
@@ -56,6 +59,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const decks = await listSavedDecks(ctx, id!.learnerId, id!.languageId, id!.varietyId);
     const removed = await removedBuiltins(ctx, id!.learnerId, id!.languageId);
     const dueLines = new Map<string, HTMLElement | null>();
+    const captions = new Map<string, string>();
+    for (const d of decks) if (d.builtin === 'alphabet') {
+      const model = await currentReviewModel(ctx, { noRefresh: true }).catch(() => undefined);
+      const progress = model ? await alphabetProgress(model, await pageCountsFor(ctx, d.languageId).catch(() => undefined)).catch(() => undefined) : undefined;
+      // practical progress, never a completion percentage; the page figure is letters only, kept apart from the words-known figure
+      if (progress) captions.set(d.id, progress.pageCoverage !== undefined ? `${progress.message} Letters on your pages you can read: ${Math.round(progress.pageCoverage * 100)} %.` : progress.message);
+    }
     for (const d of decks) if (d.builtin) dueLines.set(d.id, await builtinDueLine(d, quiet).catch(() => null));
     if (!view.alive()) return;
     clear(list); clear(restoreBox);
@@ -80,7 +90,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         h('span', { class: 'deck-label' },
           h('span', { class: 'deck-kicker' }, 'Saved deck'),
           h('span', { class: 'deck-title' }, when),
-          h('span', { class: 'deck-caption' }, `${plural(d.items.length, 'card', 'cards')} · ${language}`),
+          h('span', { class: 'deck-caption' }, captions.get(d.id) ?? `${plural(d.items.length, 'card', 'cards')} · ${language}`),
           !builtin && d.description ? h('span', { class: 'deckrow-note' }, d.description) : null,
           !builtin && d.notes ? h('span', { class: 'deckrow-note deckrow-fine' }, d.notes) : null),
         icon(ctx.deps.doc, 'arrow'), h('span', { class: 'sr' }, ', press to practise')) as HTMLButtonElement;
@@ -104,7 +114,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const model = await currentReviewModel(ctx, quiet ? { noRefresh: true } : {}); // this device's copy; the refresh repaints this list through ctx.onData
     if (!model || !deck.builtin) return null;
     const { name, slug } = BUILTIN[deck.builtin];
-    const units = new Set(deck.items.map((item) => item.unitId));
+    // the Alphabet's cards are whatever Sprint cards the learner has (letters, rules, words, phrases, contrasts), not the stored letter list
+    const units = new Set(deck.builtin === 'alphabet' ? sprintCardStates(model, model.identity.languageId).map((c) => c.unitId).filter(isSprintUnitId) : deck.items.map((item) => item.unitId));
     const due = await planClassEssentialsDue(ctx, model, units);
     const nextReturn = (model.classDeck ?? []).filter(item => units.has(item.unitId) && item.status === 'active' && !item.invalidatedAt && !item.suspendedReason
       && Date.parse(item.schedule.due) > Date.parse(model.now)).sort((a, b) => Date.parse(a.schedule.due) - Date.parse(b.schedule.due))[0];

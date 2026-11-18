@@ -31,6 +31,7 @@ import { SQ_LETTERS, sqLetters, sqNormalize, sqSearchNormalize } from './albania
 import { SQ_PHRASE_RULES } from './albanian/phrases';
 import { checkSqProduction } from './albanian/production';
 import { orderSqSentence } from './albanian/sentence';
+import { stampSqDialect } from './albanian/dialect';
 import { segmentSqSentences } from './albanian/sentences';
 import { sqSyntax } from './albanian/syntax';
 import { sqMorphFromTags } from './albanian/tags';
@@ -66,6 +67,7 @@ const SUPPORT: AdapterSupport = {
     'The very ambiguous little words e, i, të, së, u, më, do, po, pa keep every reading; none is presented as certain unless the sentence decides it.',
     'Fused short pronouns (ma, ta, ia, t\'i, m\'u …) are taken apart only into pairs the lists state; a cluster outside the lists has no reading.',
     'A Gheg or pre-standard form is related to its Standard equivalent without changing the text, and only when the Standard form is a word the list knows. Gheg is not analysed as a variety of its own.',
+    'Each sentence is told apart as Gheg or Standard from the forms the two write differently (asht / është, nji / një, tue / duke, nasal vowels, participle endings, me + participle, everyday spoken Gheg words). A sentence without enough of them is not assigned to either and is read as Standard by default, which the card says: on a treebank of spoken Kosovo Gheg about half the sentences are recognised as Gheg, and almost none is taken for Standard. Dialectal Tosk, Arbëresh and Arvanitika are not told apart. The rules are machine-drafted and unchecked by a speaker.',
     'Production checks are rules for the commonest learner errors; each fires only on its own unambiguous shape and says nothing when a fact is missing. There are no idiomaticity checks: they need native data that does not exist yet.',
   ],
 };
@@ -109,7 +111,7 @@ export const sqAdapter: LanguageAdapter = {
   refine: (tokens, analyzed, analyzers, given): AnalyzedToken[] => {
     const own = (i: number): boolean => analyzed[i].analyzer === ANALYZER && analyzers.has(ANALYZER) && !given?.has(i);
     const base = tokens.map((t, i) => (!t.isWord ? [] : own(i) ? sqCandidates(t.normalized) : analyzed[i].candidates));
-    const ordered = orderSqSentence(tokens, base);
+    const ordered = stampSqDialect(tokens, orderSqSentence(tokens, base));
     return tokens.map((t, i) => {
       if (!t.isWord || given?.has(i) || !analyzers.has(analyzed[i].analyzer)) return analyzed[i];
       return { ...analyzed[i], candidates: ordered[i] };

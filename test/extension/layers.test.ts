@@ -100,6 +100,12 @@ const encounters = (r: { ui: { root(): ShadowRoot | undefined } }): string => ro
 const pressed = (r: { ui: { root(): ShadowRoot | undefined } }): string[] => [...root(r).querySelectorAll('.rateBtn[aria-pressed="true"]')].map((b) => b.getAttribute('aria-label')!);
 const click = (r: { ui: { root(): ShadowRoot | undefined } }, sel: string): void => (root(r).querySelector(sel) as HTMLElement).click();
 const events = async (s: { list(): Promise<GoEvent[]> }, kind?: string): Promise<GoEvent[]> => (await s.list()).filter((e) => !kind || e.kind === kind);
+/**
+ * The fixture sentence is Standard Albanian on its own words (it has forms the Standard writes and Gheg writes otherwise), so every
+ * event of its card records that dialect (`payload.variety`). `bare` checks it and returns the rest of the payload for comparison.
+ */
+const STANDARD_ALBANIAN = { varietyId: 'sq-standard', basis: 'analysed' };
+const bare = (payload: Record<string, unknown>): Record<string, unknown> => { const { variety, ...rest } = payload; expect(variety).toEqual(STANDARD_ALBANIAN); return rest; };
 const lookup = async (r: ReturnType<typeof makeRig>, word = 'shtëpinë') => {
   selectText(document.getElementById('p')!, word);
   const out = await r.controller.lookup({ trigger: 'command' });
@@ -344,7 +350,7 @@ describe('Go deeper', () => {
     click(r, 'button.analysisBtn'); click(r, 'button.analysisBtn'); click(r, 'button.analysisBtn');
     click(r, 'button.sentenceBtn'); click(r, 'button.sentenceBtn'); click(r, 'button.sentenceBtn'); // opening it closes Go deeper; opened again, it is the same event
     await flush(5);
-    const got = (await events(r.store, 'AssistanceRequested')).map((e) => e.payload);
+    const got = (await events(r.store, 'AssistanceRequested')).map((e) => bare(e.payload));
     expect(got).toEqual([
       { assistance: 'morphology', layer: 'morphology' },
       { assistance: 'example', layer: 'phrase-syntax' },
@@ -363,7 +369,7 @@ describe('Go deeper', () => {
     // Layer 1 shown is an AnalysisShown, recorded with the lookup
     const shown = await events(r.store, 'AnalysisShown');
     expect(shown).toHaveLength(1);
-    expect(shown[0].payload).toEqual({ layers: ['identification'] });
+    expect(bare(shown[0].payload)).toEqual({ layers: ['identification'] });
     expect(shown[0].subject.itemIds).toEqual(['lemma:sq:shtëpi:NOUN']);
     expect(shown[0].subject.sentenceKey).toBeTruthy();
     expect(JSON.stringify(await r.store.list())).not.toContain('lexoj'); // no sentence anywhere
@@ -573,7 +579,7 @@ describe('pronunciation', () => {
     click(r, '.say'); await flush(5);
     expect(played).toEqual(['shtëpinë', 'shtëpinë']);
     const ev = await events(r.store, 'PronunciationPlayed');
-    expect(ev.map((e) => e.payload)).toEqual([
+    expect(ev.map((e) => bare(e.payload))).toEqual([
       { voice: 'synthetic', voiceId: 'device:sq-voice', repeated: false },
       { voice: 'synthetic', voiceId: 'device:sq-voice', repeated: true },
     ]);
@@ -588,7 +594,7 @@ describe('the rating row', () => {
     click(r, '.rateBtn[data-mark="familiar"]'); await flush(5);
     const marks = await events(r.store, 'ItemMarked');
     expect(marks).toHaveLength(1);
-    expect(marks[0].payload).toEqual({ mark: 'familiar' });
+    expect(bare(marks[0].payload)).toEqual({ mark: 'familiar' });
     expect(marks[0].subject.itemIds).toEqual(['lemma:sq:shtëpi:NOUN']);
     expect(validateEvent(marks[0])).toEqual([]);
     expect(root(r).querySelector('.feedback')!.textContent).toBe('Marked as familiar.');
@@ -650,7 +656,7 @@ describe('Report (the correction flow)', () => {
     const ev = await events(r.store, 'AnalysisCorrected');
     expect(ev).toHaveLength(1);
     expect(ev[0].correctionOf).toBe(sel.id);
-    expect(ev[0].payload).toEqual({ formId: 'form:sq:bukur', by: 'learner', correctedLexemeId: 'lemma:sq:i bukur', reason: 'typed the lemma' });
+    expect(bare(ev[0].payload)).toEqual({ formId: 'form:sq:bukur', by: 'learner', correctedLexemeId: 'lemma:sq:i bukur', reason: 'typed the lemma' });
     expect(ev[0].subject.sentenceKey).toBe(sel.subject.sentenceKey);
     expect(validateEvent(ev[0])).toEqual([]);
     expect(services.calls.correct).toBe(1);

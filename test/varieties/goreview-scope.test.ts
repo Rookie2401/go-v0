@@ -109,7 +109,7 @@ describe('which variety a card belongs to', () => {
     const old = greekDeck.find((i) => i.unitId === NOMOS)!;
     expect(varietyOfItem(old)).toEqual({ basis: 'unsettled' });
     expect(varietyOfItem({ ...old, varietyId: 'el-koi' })).toEqual({ varietyId: 'el-koi', basis: 'legacy' });
-    expect(varietyOfItem({ ...old, languageId: 'sq', itemId: itemIdFor('lemma:sq:a', WR), unitId: 'lemma:sq:a' })).toEqual({ basis: 'no-varieties' });
+    expect(varietyOfItem({ ...old, languageId: 'de', itemId: itemIdFor('lemma:de:a', WR), unitId: 'lemma:de:a' })).toEqual({ basis: 'no-varieties' });
   });
 
   it('counts by variety cover the whole deck, whatever scope is in force', () => {
@@ -119,7 +119,7 @@ describe('which variety a card belongs to', () => {
       { varietyId: 'el-mod', eligible: 2, due: 1, new: 1, suspended: 0 },
       { eligible: 1, due: 1, new: 0, suspended: 0 },
     ]);
-    expect(countByVariety({ languageId: 'sq', deck: greekDeck, scheduler: fsrs, now: NOW })).toEqual([]);
+    expect(countByVariety({ languageId: 'de', deck: greekDeck, scheduler: fsrs, now: NOW })).toEqual([]);
   });
 });
 
@@ -241,7 +241,7 @@ describe('the default is never a combination', () => {
     expect(resolveScope({ languageId: 'el', deck: [] })?.varietyIds).toEqual(['el-mod']);
     const biblicalOnly = deckOf([cardAdded('lemma:he:מלך:NOUN', { at: day(5), variety: 'he-bib' })], 'he');
     expect(resolveScope({ languageId: 'he', deck: biblicalOnly })?.varietyIds).toEqual(['he-bib']);
-    expect(resolveScope({ languageId: 'sq', deck: [] })).toBeUndefined();
+    expect(resolveScope({ languageId: 'de', deck: [] })).toBeUndefined();
   });
 
   it('a chosen scope is honoured, several varieties only when named', () => {

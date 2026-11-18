@@ -219,11 +219,15 @@ export function parseSelection(input: ParseInput): CardModel {
       if (c.orthography) notes.push(`Spelling differs from today's standard (${c.orthography.modern}).`);
       if (c.varieties?.length) notes.push(`Variety: ${c.varieties.join(', ')}.`); // the codes, as before; a period's plain-words label is on the period line
       // a language with period varieties: the period the analyser read the sentence in, and the word across the periods ("Variants")
-      // a period variety, or a heritage language read beside the language (Biblical Aramaic inside a Hebrew text)
-      if (typeof c.notes?.period === 'string' && ['period', 'heritage'].includes(L.adapter.varieties?.[c.notes.period]?.kind ?? '')) {
+      // a period variety, or a heritage language read beside the language (Biblical Aramaic inside a Hebrew text), or a dialect that is a
+      // learning variety of the language (Gheg and Standard Albanian: the adapter marks them `learning`)
+      const periodVariety = typeof c.notes?.period === 'string' ? L.adapter.varieties?.[c.notes.period] : undefined;
+      if (typeof c.notes?.period === 'string' && periodVariety && (['period', 'heritage'].includes(periodVariety.kind) || periodVariety.learning === true)) {
         period = { varietyId: c.notes.period, label: varietyLabel(c.notes.period), basis: typeof c.notes.periodBasis === 'string' ? c.notes.periodBasis : '',
           ...(c.notes.periodEvidence === 'text' || c.notes.periodEvidence === 'declared' || c.notes.periodEvidence === 'default' ? { evidence: c.notes.periodEvidence } : {}) };
       }
+      // a language with no Variants panel (Albanian) says on the card itself which dialect the sentence was read in, and why
+      if (period && !L.adapter.variants) notes.push(`This sentence is read as ${period.label}: ${period.basis}.`);
       if (L.adapter.variants && c.lemma) {
         try {
           const v = L.adapter.variants(c.lemma, c.pos, tokens[i].surface);

@@ -5,7 +5,8 @@ review queues are kept per variety: Homeric, Classical (Attic), Koine and Modern
 
 The rule in one line: **one language, shared lexical items, independent demonstrated mastery, queues scoped on purpose.**
 
-Nothing here changes a screen. Every language other than Greek and Hebrew behaves exactly as before.
+Nothing here changes a screen. Every language other than Greek and Hebrew behaves exactly as before; since 2026-11-18 Albanian
+is the third language with learning varieties, its dialects (section 10).
 
 ## 1. What was there before (the audit)
 
@@ -228,7 +229,63 @@ Nothing below needs a change to the scheduler.
 
 `model.varieties` is absent for a language without learning varieties.
 
-## 10. Not done, and known limits
+## 10. Albanian: dialects as learning varieties (2026-11-18)
+
+The owner asked for "a feature to Albanian that distinguishes dialect". Albanian is now the third language in the registry, and the
+first whose varieties are living dialects rather than periods.
+
+```
+Albanian (sq)
+  modern   sq-standard    Standard Albanian   (default; a learner may choose it)   aliases sq, sqi
+           sq-gheg        Gheg                (a learner may choose it)            aliases aln, aln-xk, aln-al
+           sq-tosk        Tosk as a dialect   (recognised, never chosen)           alias als
+           sq-arbereshe   Arbëresh            (recognised, never chosen)           alias aae
+           sq-arvanitika  Arvanitika          (recognised, never chosen)           alias aat
+```
+
+- The ids are the pack's own (`packages/language-packs/src/packs/sq.ts`); the adapter's codes (`sq`, `aln` …) are aliases. One
+  historical group: what is Known in Gheg is strong familiarity in Standard and the other way round (section 5), and never mastery.
+- **How a sentence gets its dialect** (`src/adapters/albanian/dialect.ts`, adapter-sq@10). Most words are written alike in both, so
+  the SENTENCE decides, on the forms the two write differently: asht / është, nji / një, tue / duke, a nasal vowel (â ê î ô û ŷ),
+  participles in -ue / -ye / -un against -uar / -yer / -ur, the Gheg infinitive me + participle, shpi / shtëpi, tash / tani,
+  çka / çfarë, and everyday spoken Gheg (ni, kom, jom, amo, aj, naj, gjo, veq, kqyr; participles cut short: punu, shku, kalua).
+  A form counts once, however often it recurs: two points for a form only one side writes, one for a form that leans. The sides
+  are not weighed alike: Gheg speakers use një, duke and tani freely, so on the Standard side only është is strong, një and duke
+  lean, and tani counts for nothing. Gheg: two or more Gheg points, and more than the Standard ones. Standard: three or more
+  Standard points and no Gheg form at all. Otherwise the sentence is not assigned: it is READ as Standard (the course's target)
+  and says that this is a default.
+- Every reading carries `notes.period` (`aln` or `sq`), `notes.periodBasis` and `notes.periodEvidence` (`text` or `default`), the
+  same three notes Greek and Hebrew write. The card says "This sentence is read as Gheg: …" with the forms that decided. Only
+  `text` is recorded on the reader's events (section 7), so a sentence that shows nothing stays unclassified and counts in both
+  dialects' views, exactly as an Albanian record did before.
+- From there everything is the framework's: knowledge per dialect (section 4), a card per dialect (section 3), a queue of one dialect
+  by default — the enrolment's, which for every existing Albanian learner is Standard (section 6). A word met only in Gheg text is
+  not proposed in the Standard queue; a learner who chooses Gheg, or both, gets it.
+- **Existing Albanian data**: no event is rewritten. No stored Albanian record states a dialect, so every existing row reads as
+  unsettled (as it was) and every existing card stays in the default queue with its id, history and schedule (section 8). The
+  projection version does not move: an Albanian row gains its per-dialect fields when the next event touches its word, because a
+  touched word is refolded from all its events.
+- Measured (2026-11-18, `adapter-sq@10`):
+
+  | Text | Sentences | Read as Gheg | Settled as Standard | Left unassigned |
+  |---|---|---|---|---|
+  | The repository's Albanian course texts (all Standard) | 10,923 | 0 | 586 | 10,337 |
+  | UD_Albanian-STAF dev + UD_Albanian-TSA test (Standard) | 80 | 0 | 11 | 69 |
+  | UD_Gheg-GPS test (transcribed spoken Kosovo Gheg) | 966 | 522 (54 %) | 2 | 442 |
+
+  The two Gheg-treebank sentences settled as Standard are Standard in form ("… është duke vjelur dardha"). The treebanks are
+  comparison data only (CC BY-SA 4.0, never bundled, never course text). **The Gheg figures are development figures, not
+  held-out ones**: the first version of the rule recognised 8 % of that treebank and settled 10 % of it as Standard, and the
+  rule was then changed after reading its sentences (the spoken forms, the short participles, the weaker Standard side). Written
+  literary Gheg (the Shkodër tradition) was not measured: the repository holds none. No speaker has checked the rules.
+- Not done: Gheg has no word list or grammar of its own (a Gheg form is still read through its Standard equivalent, when the list
+  knows it); dialectal Tosk, Arbëresh and Arvanitika are not detected, only labelled when a dictionary labels a word; a text that
+  mixes the two (a Kosovo newspaper with the odd Gheg word) is left unassigned sentence by sentence; nothing lets a learner say
+  "this page is Gheg" yet (the `override` path of section 7 already carries such a statement when a screen offers it).
+- Also fixed on the way: a passage that arrives through sharing (`packages/golearn-share`) records the variety of its sentence as a
+  browser lookup does. The mirrored builder had not been given the rule, for Greek and Hebrew either.
+
+## 11. Not done, and known limits
 
 1. **GoLearn's page underline and the word list in GoReview ("My vocab") still show a word's level across its
    varieties.** The rows they read carry the per-variety data; they do not yet read it. Biblia does, and so do

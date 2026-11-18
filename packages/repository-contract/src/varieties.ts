@@ -10,7 +10,8 @@
  *   review scope         the varieties one review queue draws from (`ReviewScope`)
  *
  * The registry below is DATA. A language absent from it has no learning varieties: its regional varieties (es-HN, de-AT …) are usage
- * labels, never separate learning tasks, and everything in this file leaves such a language exactly as it was.
+ * labels, never separate learning tasks, and everything in this file leaves such a language exactly as it was. Albanian is in it:
+ * Gheg and the Standard differ in forms a learner must learn separately, not only in usage.
  *
  * The ids are the ones the packs and the stored events already use (`el-koi`, `he-bib` …); the longer spellings some documents use
  * (`grc-koine`, `he-biblical` …) are accepted as aliases and never stored.
@@ -89,6 +90,21 @@ defineLanguageVarieties('he', 'he-mod', [
   { id: 'he-med', name: 'Medieval Hebrew', historicalGroup: 'medieval', period: { from: 500, to: 1800 }, aliases: ['he-medieval'] },
   { id: 'he-mod', name: 'Modern Hebrew', historicalGroup: 'modern', period: { from: 1880 }, aliases: ['he-modern', 'heb'], selectable: true },
   { id: 'arc-bib', name: 'Biblical Aramaic', historicalGroup: 'aramaic', aliases: [], heritage: true },
+]);
+
+/**
+ * Albanian: one language, its dialects as learning varieties (the owner, 2026-11-18). Standard Albanian and Gheg are the two a learner
+ * may choose; a sentence is assigned to one of them only on its own forms (src/adapters/albanian/dialect.ts). Tosk as a dialect,
+ * Arbëresh and Arvanitika are recognised from a dictionary's label on a word and kept apart, never chosen. They are living dialects
+ * of one time, so they form ONE group: what is Known in one is strong familiarity in another (transferEvidence), and still not mastery there.
+ * The ids are the pack's own (`sq-standard`, `sq-gheg`); the adapter's codes and the ISO codes are aliases.
+ */
+defineLanguageVarieties('sq', 'sq-standard', [
+  { id: 'sq-standard', name: 'Standard Albanian', historicalGroup: 'modern', period: { from: 1972 }, aliases: ['sq', 'sqi', 'standard'], selectable: true },
+  { id: 'sq-gheg', name: 'Gheg', historicalGroup: 'modern', aliases: ['aln', 'aln-xk', 'aln-al', 'gheg'], selectable: true },
+  { id: 'sq-tosk', name: 'Tosk (dialect)', historicalGroup: 'modern', aliases: ['als', 'tosk'] },
+  { id: 'sq-arbereshe', name: 'Arbëresh (Italy)', historicalGroup: 'modern', aliases: ['aae', 'arberesh', 'arbëresh'] },
+  { id: 'sq-arvanitika', name: 'Arvanitika (Greece)', historicalGroup: 'modern', aliases: ['aat', 'arvanitika'] },
 ]);
 
 // ───────────────────────────── the registry, read ─────────────────────────────

@@ -75,7 +75,8 @@ const MAX_SAMPLE_TOKENS = 150;
 
 /** The varieties a pack lists, by language (agrees with the manifests; test/reader-languages/resolve.test.ts compares). */
 export const PACK_VARIETIES: Readonly<Record<string, readonly string[]>> = {
-  sq: ['sq-standard'],
+  // Standard Albanian, and Gheg: a page that declares itself Gheg (lang="aln") is read as Gheg; every sentence is still told apart on its own forms
+  sq: ['sq-standard', 'sq-gheg'],
   es: ['es-HN', 'es-419', 'es-ES'],
   de: ['de-DE', 'de-AT', 'de-CH'],
   hi: ['hi-standard'],
@@ -150,10 +151,11 @@ export function mapLanguageTag(tag: string): TagMapping {
     return { kind: 'ambiguous', reason: `"${tag}" is ${primary} written in ${script.toUpperCase()} script; the ${languageId} pack analyses the ${PACK_SCRIPT[languageId].toUpperCase()} script only` };
   }
   const notes: string[] = [];
-  if (primary === 'aln') notes.push('Gheg is related to Standard Albanian, not analysed as a variety of its own');
+  let declaredDialect: string | undefined;
+  if (primary === 'aln') { declaredDialect = 'sq-gheg'; notes.push('aln is Gheg: a dialect of the Albanian pack. Its forms are read through their Standard equivalents, and each sentence is still told apart on its own forms'); }
   if (primary === 'als') notes.push('Tosk is the base of Standard Albanian');
 
-  let varietyId: string | undefined;
+  let varietyId: string | undefined = declaredDialect;
   if (languageId === 'es' && region) {
     if (region === 'hn') varietyId = 'es-HN';
     else if (region === 'es') varietyId = 'es-ES';

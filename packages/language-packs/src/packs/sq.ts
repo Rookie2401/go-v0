@@ -17,7 +17,7 @@ export const SQ_PACK_ID = 'pack:sq';
  * (GoReview loads each language's adapter on demand); test/language-packs/manifest.test.ts compares both with src/adapters/sq.ts
  * and fails on drift.
  */
-export const SQ_VERSION = '9';
+export const SQ_VERSION = '10';
 export const SQ_CAPABILITIES: readonly string[] = [
   'tokenization', 'sentence-segmentation', 'lemma', 'morphology', 'phrases', 'constructions', 'pronunciation-notes', 'production-checks',
 ];
@@ -58,7 +58,10 @@ export function albanianManifest(): PackManifest {
     identity: { name: 'Albanian', nativeName: 'shqip', direction: 'ltr' },
     varieties: [
       { varietyId: 'sq-standard', label: 'Standard Albanian', analysed: true },
-      { varietyId: 'sq-gheg', label: 'Gheg', analysed: false, note: 'A Gheg or pre-standard form is related to its Standard equivalent when the word list knows that equivalent; Gheg is not analysed as a variety of its own.' },
+      { varietyId: 'sq-gheg', label: 'Gheg', analysed: true, note: 'A sentence is told apart as Gheg from the forms Gheg writes differently (asht, nji, tue, nasal vowels, participles in -ue, me + participle), and a Gheg form is read through its Standard equivalent when the word list knows it. This is recognition, not a Gheg grammar: Gheg has no word list or rules of its own here, and nothing has been checked by a speaker.' },
+      { varietyId: 'sq-tosk', label: 'Tosk (dialect)', analysed: false, note: 'Recognised only from a dictionary’s own label on a word; dialectal Tosk is not the Standard.' },
+      { varietyId: 'sq-arbereshe', label: 'Arbëresh (Italy)', analysed: false, note: 'Recognised only from a dictionary’s own label on a word.' },
+      { varietyId: 'sq-arvanitika', label: 'Arvanitika (Greece)', analysed: false, note: 'Recognised only from a dictionary’s own label on a word.' },
     ],
     lexical: {
       handLexicon: {

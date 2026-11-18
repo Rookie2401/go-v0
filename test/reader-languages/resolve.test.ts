@@ -144,7 +144,17 @@ describe('BCP-47 tags map to pack languages', () => {
     expect(mapLanguageTag('de-LU')).toEqual({ kind: 'pack', languageId: 'de', notes: [] });
   });
 
-  it('the varieties the table names are the varieties the packs analyse (a related variety such as Gheg or Awadhi is never a hint)', () => {
+  it('a page that declares itself Gheg is read as Gheg; plain Albanian tags, and Tosk, name no dialect', () => {
+    expect(mapLanguageTag('aln')).toMatchObject({ kind: 'pack', languageId: 'sq', varietyId: 'sq-gheg' });
+    expect(mapLanguageTag('aln-XK')).toMatchObject({ kind: 'pack', languageId: 'sq', varietyId: 'sq-gheg' });
+    for (const tag of ['sq', 'sq-AL', 'sq-XK', 'als']) {
+      const r = mapLanguageTag(tag);
+      expect(r, tag).toMatchObject({ kind: 'pack', languageId: 'sq' });
+      expect(r.kind === 'pack' && r.varietyId, tag).toBeUndefined(); // a region is not a dialect: Kosovo writes the Standard too
+    }
+  });
+
+  it('the varieties the table names are the varieties the packs analyse (a related variety such as Awadhi, or Tosk as a dialect, is never a hint)', () => {
     for (const [lang, varieties] of Object.entries(PACK_VARIETIES)) {
       expect([...varieties].sort(), lang).toEqual(PACKS[lang].varieties.filter((v) => v.analysed).map((v) => v.varietyId).sort());
     }

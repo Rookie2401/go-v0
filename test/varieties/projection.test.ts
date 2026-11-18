@@ -172,12 +172,12 @@ describe('how a record gets its variety', () => {
   });
 
   it('a language without learning varieties gets no variety fields at all', () => {
-    const unit = 'lemma:sq:libër:NOUN';
+    const unit = 'lemma:de:Buch:NOUN';
     const row = fold([lookup(unit, { at: day(1), sentenceKey: 's1' }), mark(unit, 'known', { at: day(1, 11), sentenceKey: 's1' })]).get(unit)!;
     expect('varieties' in row).toBe(false);
     expect('unclassified' in row).toBe(false);
     expect('sources' in row).toBe(false);
-    expect(knowledgeInVariety(row, 'sq-standard')).toEqual({ basis: 'no-varieties', knowledge: row });
+    expect(knowledgeInVariety(row, 'de-DE')).toEqual({ basis: 'no-varieties', knowledge: row });
   });
 });
 

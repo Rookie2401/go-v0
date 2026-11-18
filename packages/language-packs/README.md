@@ -30,7 +30,7 @@ src/registry.ts       PACKS, packFor, installablePacks (TEAMS is kept for the ol
 
 | pack | language | level (`LEVEL_LABEL`) | validation | analyser | dictionary | cases | orientation |
 |---|---|---|---|---|---|---|---|
-| `pack:sq` | Albanian | installable | unreviewed | adapter-sq@9 | kaikki-sq, 91,271 | 14 | tutorial/sq (15 steps) |
+| `pack:sq` | Albanian | installable | unreviewed | adapter-sq@10 | kaikki-sq, 91,271 | 14 | tutorial/sq (15 steps) |
 | `pack:es` | Spanish (Honduras is a variety) | installable at a minimal level | unreviewed | adapter-es@12 | kaikki-es, 808,278 | 17 | tutorial/es (minimal) |
 | `pack:de` | German | experimental, seed-only lemmatisation, unreviewed | experimental | adapter-de@9 | kaikki-de, 357,750 | 14 | tutorial/de (7 steps) |
 | `pack:hi` | Hindi (Devanagari) | experimental | experimental | adapter-hi@6 | kaikki-hi, 38,635 | 14 | tutorial/hi (7 steps) |
@@ -103,7 +103,7 @@ counted in `validationFailures`. A planned pack is refused.
 
 ## Albanian (`pack:sq`) — what it contains
 
-- Analyser `adapter-sq@9` (version read from `sqAdapter.version`; agrees with `packages/repository-linguistics`'s
+- Analyser `adapter-sq@10` (version read from `sqAdapter.version`; agrees with `packages/repository-linguistics`'s
   `albanianPack()`): lemmas and morphology from a machine-drafted word list of about 1,350 words (the adapter's own statement) plus the closed classes and word-form rules,
   phrase units, constructions, per-letter pronunciation notes, production checks.
 - Dictionary `kaikki-sq@2026-09-28`, 91,271 entries, with a frequency list.

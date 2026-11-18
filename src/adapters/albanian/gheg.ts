@@ -159,3 +159,16 @@ export function correspondences(form: string, known: (form: string) => boolean, 
   }
   return out;
 }
+
+/** Listed Gheg forms that Standard Albanian also has or hears (tash beside tani, çka beside çfarë): they lean Gheg, no more. */
+const LISTED_WEAK: ReadonlySet<string> = new Set(['tash', 'çka']);
+
+/**
+ * Whether a written form is one of the listed Gheg forms, and how much it says about the text it stands in: 'strong' for a
+ * form only Gheg writes (asht, nji, tue, shpi …), 'weak' for one the Standard has too. Used by dialect.ts.
+ */
+export function ghegListing(form: string): 'strong' | 'weak' | undefined {
+  const f = sqNormalize(form).trim();
+  if (!LISTED_MAP.has(f)) return undefined;
+  return LISTED_WEAK.has(f) ? 'weak' : 'strong';
+}

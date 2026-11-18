@@ -191,3 +191,18 @@ two characters called Ana.
 3. Gold set: draft 100 sentences per category with `npm run sq:gold`, to be accepted by a reviewer.
 4. Word list growth from the "no reading" lists of `sq:eval-ud` (dev half only), each addition through `sq:agreement`.
 5. The Gheg bridge as texts with correspondences (the correspondences exist; no Gheg text is bundled).
+
+## Dialect: Gheg and Standard told apart (2026-11-18, adapter-sq@10)
+
+Asked for by the owner ("a feature to Albanian that distinguishes dialect"). Full account: `docs/ecosystem/LANGUAGE-VARIETIES.md` section 10.
+
+- **What it does.** Every sentence is read as Gheg or as Standard Albanian on the forms the two write differently
+  (`src/adapters/albanian/dialect.ts`), and the card says so with the forms that decided. A sentence that shows too little is not
+  assigned: it is read as Standard by default and says that. Albanian is now a language with learning varieties: what a learner
+  meets and reviews in Gheg text is kept apart from Standard (knowledge, cards, review queue), and the default queue stays Standard.
+- **Measured.** No sentence of the course's own 10,923 (all Standard) is read as Gheg; on the UD_Gheg-GPS treebank of spoken Kosovo
+  Gheg 54 % of sentences are recognised as Gheg and 0.2 % are settled as Standard. These Gheg figures are development figures: the
+  rule was changed after reading that treebank. Written literary Gheg was not measured.
+- **Not done.** No Gheg word list or grammar of its own (a Gheg form is still read through its Standard equivalent); dialectal Tosk,
+  Arbëresh and Arvanitika are labelled only when a dictionary labels a word; no screen yet lets a learner choose Gheg as the dialect
+  to review, or declare that a page is Gheg (the contract for both exists). Machine-drafted; no speaker has checked the rules.

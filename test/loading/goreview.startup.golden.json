@@ -3,77 +3,77 @@
   {
    "text": "Fëmijët lexojnë librin.",
    "summary": "fëmijët=fëmijë/NOUN lexojnë=lexoj/VERB librin=libër/NOUN",
-   "sha256": "c2b0beef520e2de333e04ed8bbd04fbd49b371b47d7d92f077c414a28e770c87"
+   "sha256": "ab3b105e7e2d48b71f89dbc52a3d0a20d08b35fc8f23feb8ed26702925bf0e90"
   },
   {
    "text": "Ana shkon në shkollë.",
    "summary": "ana=Ana/PROPN shkon=shkoj/VERB në=në/ADP shkollë=shkollë/NOUN",
-   "sha256": "96694c30d40873b6885e017fe62f2013a3cd569bb453b11da3b64744905f6359"
+   "sha256": "ae05f07cb34f1bb03d33df75fe15dc7dcf8138c50b402307c5649fc7ee39bd59"
   },
   {
    "text": "Fëmijët lexojnë librin.",
    "summary": "fëmijët=fëmijë/NOUN lexojnë=lexoj/VERB librin=libër/NOUN",
-   "sha256": "c2b0beef520e2de333e04ed8bbd04fbd49b371b47d7d92f077c414a28e770c87"
+   "sha256": "ab3b105e7e2d48b71f89dbc52a3d0a20d08b35fc8f23feb8ed26702925bf0e90"
   },
   {
    "text": "Fëmijët lexojnë librin.",
    "summary": "fëmijët=fëmijë/NOUN lexojnë=lexoj/VERB librin=libër/NOUN",
-   "sha256": "c2b0beef520e2de333e04ed8bbd04fbd49b371b47d7d92f077c414a28e770c87"
+   "sha256": "ab3b105e7e2d48b71f89dbc52a3d0a20d08b35fc8f23feb8ed26702925bf0e90"
   },
   {
    "text": "Nëna pi çajin.",
    "summary": "nëna=nënë/NOUN pi=pi/VERB çajin=çaj/NOUN",
-   "sha256": "0bb8e2071cd871185c04d3c183bac77cd8f354aba6996de8b31bfc28bfcc4f21"
+   "sha256": "d5b5e85c44164182c713f8f2c2861b022c6a5fe989f3a2b7fdb609ed1dbed159"
   },
   {
    "text": "Nëna pi çajin.",
    "summary": "nëna=nënë/NOUN pi=pi/VERB çajin=çaj/NOUN",
-   "sha256": "0bb8e2071cd871185c04d3c183bac77cd8f354aba6996de8b31bfc28bfcc4f21"
+   "sha256": "d5b5e85c44164182c713f8f2c2861b022c6a5fe989f3a2b7fdb609ed1dbed159"
   },
   {
    "text": "Ana ka një jetë të mirë.",
    "summary": "ana=Ana/PROPN ka=kam/VERB një=një/NUM jetë=jetë/NOUN të=i mirë/ADJ mirë=i mirë/ADJ",
-   "sha256": "cda100c81f1992e3684d42445f1f4bf9e0e6c63c15bcb34c024afc136c9bdfe0"
+   "sha256": "9eed75ec85d198d5627fe89a36e26474ed179c168536e05e975cc03853f34431"
   },
   {
    "text": "Shkolla është e bukur.",
    "summary": "shkolla=shkollë/NOUN është=jam/VERB e=i bukur/ADJ bukur=i bukur/ADJ",
-   "sha256": "028fa0abebb83288851c31e259fff932b0e64bfaf25d2a773d35b7e3ca5a93ef"
+   "sha256": "1ce098c738216e64146b48d97262f947e29302fd9097fd18613c8fa9e24e1e4d"
   },
   {
    "text": "Shkolla është e bukur.",
    "summary": "shkolla=shkollë/NOUN është=jam/VERB e=i bukur/ADJ bukur=i bukur/ADJ",
-   "sha256": "028fa0abebb83288851c31e259fff932b0e64bfaf25d2a773d35b7e3ca5a93ef"
+   "sha256": "1ce098c738216e64146b48d97262f947e29302fd9097fd18613c8fa9e24e1e4d"
   },
   {
    "text": "Unë quhem Sam.",
    "summary": "unë=unë/PRON quhem=quhem/VERB sam=Sam/PROPN",
-   "sha256": "384ddf1cd2e90ebe8349821d21b4396e575dd873b6eefd24cc09113beb96c6e3"
+   "sha256": "daa40d5795e35535bdf5fa065f4fdf6e4f6ee232fdec1c99620db7b65d2876dc"
   },
   {
    "text": "Burrat pinë çaj.",
    "summary": "burrat=burrë/NOUN pinë=pi/VERB çaj=çaj/NOUN",
-   "sha256": "064b39423fb5cc1ab7a2a8e643263a4d115ad0cce39111c33b1637e9ef1f4fd0"
+   "sha256": "fbe4b838622ddcb5ede6e0e1ba394feb4459e3f58d0ca589fc98cc430de2c57b"
   },
   {
    "text": "Burrat pinë çaj.",
    "summary": "burrat=burrë/NOUN pinë=pi/VERB çaj=çaj/NOUN",
-   "sha256": "064b39423fb5cc1ab7a2a8e643263a4d115ad0cce39111c33b1637e9ef1f4fd0"
+   "sha256": "fbe4b838622ddcb5ede6e0e1ba394feb4459e3f58d0ca589fc98cc430de2c57b"
   },
   {
    "text": "Ana shkon në shkollë.",
    "summary": "ana=Ana/PROPN shkon=shkoj/VERB në=në/ADP shkollë=shkollë/NOUN",
-   "sha256": "96694c30d40873b6885e017fe62f2013a3cd569bb453b11da3b64744905f6359"
+   "sha256": "ae05f07cb34f1bb03d33df75fe15dc7dcf8138c50b402307c5649fc7ee39bd59"
   },
   {
    "text": "Xyzqwk është këtu.",
    "summary": "xyzqwk=?/? është=jam/VERB këtu=këtu/ADV",
-   "sha256": "84d13549eae081920ec04d930aadbac92cdf9fba1953597548065711872b0ee4"
+   "sha256": "d253b06c9ca4229ef50107f9b298ea6f85e6dbb38c5706174c5ecad4fc88d226"
   },
   {
    "text": "Xyzqwk",
    "summary": "xyzqwk=?/?",
-   "sha256": "d12a680f0564d0176147c2fd8f05d370ad5006470aaaf8b49b2a65e14fb7c9cf"
+   "sha256": "bd0ab70b071f2bbbc230f559c7015a77537e1e6e54124a64e1c43d175462549a"
   }
  ],
  "es": [

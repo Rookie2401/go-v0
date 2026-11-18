@@ -9,8 +9,8 @@ import type { Variety } from '../../core';
 export const SQ_VARIETIES: Record<string, Variety> = {
   // The Standard is the official language of Albania and Kosovo (and has official status in North Macedonia), so it is not
   // the variety of one nation: 'supranational' is the nearest of the available kinds. It is the course's target.
-  sq: { code: 'sq', label: 'Standard Albanian', kind: 'supranational', note: 'The written standard of Albania and Kosovo (the 1972 norm), taught and used across Albanian schooling, news and books; the language this course aims at.' },
-  aln: { code: 'aln', label: 'Gheg', kind: 'regional', note: 'The dialect group of the north (northern Albania, Kosovo, North Macedonia, Montenegro) with no single written norm; recognise it, do not mix it into your Standard.' },
+  sq: { code: 'sq', label: 'Standard Albanian', kind: 'supranational', learning: true, note: 'The written standard of Albania and Kosovo (the 1972 norm), taught and used across Albanian schooling, news and books; the language this course aims at.' },
+  aln: { code: 'aln', label: 'Gheg', kind: 'regional', learning: true, note: 'The dialect group of the north (northern Albania, Kosovo, North Macedonia, Montenegro) with no single written norm; recognise it, do not mix it into your Standard.' },
   // narrower labels: a Kosovo label is never widened to all of Gheg, nor Gheg narrowed to Kosovo
   'aln-XK': { code: 'aln-XK', label: 'Gheg of Kosovo', kind: 'regional', parent: 'aln', note: 'The Gheg spoken in Kosovo; one part of Gheg, not all of it.' },
   'aln-AL': { code: 'aln-AL', label: 'Gheg of northern Albania', kind: 'regional', parent: 'aln', note: 'The Gheg spoken in northern Albania; one part of Gheg, not all of it.' },

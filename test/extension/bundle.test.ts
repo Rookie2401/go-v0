@@ -37,7 +37,10 @@ describe.skipIf(!have)('the built extension', () => {
     // and the orphaned-script guard adds 0.2 KB. A ceiling, not a target.
     // 2026-11-13: 560 -> 564 KB; the Greek sentence splitter now keeps an abbreviation's full stop inside the sentence (π.χ., δηλ.:
     // src/adapters/greek/abbreviations.ts, ~3 KB, merge dcffa49e), and the content script splits sentences; the build measured 560.3 KB.
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(564 * KB);
+    // 2026-11-18: 564 -> 570 KB; the Albanian analyser, which the content script carries, now tells each sentence apart as Gheg or Standard
+    // (src/adapters/albanian/dialect.ts, about 4.3 KB with its plain-words reasons and its list of spoken Gheg forms). The build measured
+    // 567.9 KB (581492 bytes; 577,201 before).
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(570 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.

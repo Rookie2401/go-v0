@@ -20,6 +20,12 @@ export interface Variety {
   kind: 'national' | 'regional' | 'supranational' | 'feature' | 'historical' | 'heritage' | 'period';
   /** The wider variety it belongs to ('es-HN' → 'es-CA' → 'es-419'). */
   parent?: string;
+  /**
+   * A dialect that is a LEARNING variety of the language (Gheg and Standard Albanian): what a learner shows in it is kept apart, as for a
+   * period. The analyser says which one a sentence was read in (`notes.period`), and the code is one the variety registry knows
+   * (packages/repository-contract/src/varieties.ts). A period or a heritage language needs no flag: its kind says it.
+   */
+  learning?: boolean;
   note?: string;
 }
 

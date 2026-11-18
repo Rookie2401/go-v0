@@ -29,7 +29,7 @@ describe('the pack bindings', () => {
     expect(sq).toMatchObject({ packId: 'pack:sq', status: 'installable', name: 'Albanian', scriptId: 'Latn', defaultVarietyId: 'sq-standard' });
     expect(sq.attribution).toEqual(['Wiktionary, via kaikki.org — CC BY-SA 4.0']);
     expect(sq.licences.length).toBeGreaterThan(0);
-    expect(sq.varieties.filter((v) => v.analysed).map((v) => v.varietyId)).toEqual(['sq-standard']);
+    expect(sq.varieties.filter((v) => v.analysed).map((v) => v.varietyId)).toEqual(['sq-standard', 'sq-gheg']); // told apart sentence by sentence since adapter-sq@10
     expect(sq.remoteVoiceProvider).toBeTruthy();
     for (const p of packs.filter((x) => ['de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc'].includes(x.languageId))) expect(p, p.packId).toMatchObject({ status: 'installable', level: 'experimental', levelLabel: 'experimental, unreviewed' });
     expect(sq).toMatchObject({ level: 'installable', levelLabel: 'installable' });

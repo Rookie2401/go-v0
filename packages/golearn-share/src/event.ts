@@ -10,7 +10,7 @@
  * words, as in the browser), a hash of the sentence or fragment, counts and the reader id. Not the passage, not the
  * sender's title beyond the source reference, not the link beyond its path.
  */
-import { CONTRACT_VERSION, type GoEvent, type LanguageEvidence, type SourceRef } from '../../repository-contract/src';
+import { CONTRACT_VERSION, canonicalVarietyId, hasLearningVarieties, type GoEvent, type LanguageEvidence, type SourceRef, type VarietyStatement } from '../../repository-contract/src';
 import { sharedSourceRef } from './source';
 import { shareReaderId, type SharedPassage } from './mechanism';
 import { wordCount } from './text';
@@ -34,6 +34,8 @@ export interface ShareCardView {
   morphology?: string;
   pronunciation: readonly unknown[];
   phrases: readonly unknown[];
+  /** The variety (a period, or a dialect) the analyser read the sentence in, and how it settled it; see `shareVariety`. */
+  period?: { varietyId: string; evidence?: 'text' | 'declared' | 'default' };
   context: {
     kind: 'sentence' | 'fragment' | 'none';
     confidence: number;
@@ -66,6 +68,21 @@ export function shareLanguagePayload(l: ShareLanguage | undefined, languageId: s
     ...(l.source ? { source: l.source } : {}),
     override: l.basis === 'override',
   };
+}
+
+/**
+ * The variety of the text a share's card was made from, mirrored from the extension's `encounterVariety`: the learner's own
+ * statement first; then the analyser's reading of the sentence when the sentence itself settled it (`evidence: 'text'`); then what
+ * the source declares. A default and a detection record nothing. Undefined for a language without learning varieties.
+ */
+export function shareVariety(languageId: string, period: ShareCardView['period'], language: ShareLanguage | undefined): VarietyStatement | undefined {
+  if (!hasLearningVarieties(languageId)) return undefined;
+  const declared = language && (language.languageId ?? languageId) === languageId && ['override', 'book-metadata', 'document-metadata'].includes(language.basis)
+    ? canonicalVarietyId(languageId, language.varietyId) : undefined;
+  if (declared && language!.basis === 'override') return { varietyId: declared, basis: 'declared' };
+  const analysed = period?.evidence === 'text' ? canonicalVarietyId(languageId, period.varietyId) : undefined;
+  if (analysed) return { varietyId: analysed, basis: 'analysed' };
+  return declared ? { varietyId: declared, basis: 'declared' } : undefined;
 }
 
 export interface ShareEventInput {
@@ -125,6 +142,8 @@ export function encounterFromShare(b: ShareEventInput): GoEvent {
   if (ctx.kind === 'fragment' && ctx.fragmentKey) payload.fragmentKey = ctx.fragmentKey;
   const language = shareLanguagePayload(b.language, card.languageId);
   if (language) payload.language = language;
+  const variety = shareVariety(card.languageId, card.period, b.language);
+  if (variety) payload.variety = variety;
   const itemKey = card.itemIds.join(',');
   return {
     id: b.id ?? newEventId(b.now),

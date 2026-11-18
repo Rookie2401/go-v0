@@ -65,7 +65,7 @@ describe('GoReview start-up: nothing of a language is built until it is asked fo
     const { loadedAdapterLanguages } = await import('../../packages/goreview/app/leanBuiltins');
     const { PACKS, albanianManifest } = await import('../../packages/language-packs/src');
     expect(Object.keys(PACKS).sort()).toEqual([...LANGS].sort());
-    expect(albanianManifest().analyzer.version).toBe('9');
+    expect(albanianManifest().analyzer.version).toBe('10');
     expect(loadedAdapterLanguages()).toEqual([]);
     expect(lexiconStats.constructed).toBe(0);
   });

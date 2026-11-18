@@ -56,7 +56,7 @@ describe('the registry', () => {
   });
 
   it('a language without learning varieties is left exactly as it was', () => {
-    for (const lang of ['sq', 'es', 'de', 'hi', 'th', 'la', 'nb', 'nn', 'arc']) {
+    for (const lang of ['es', 'de', 'hi', 'th', 'la', 'nb', 'nn', 'arc']) {
       expect(hasLearningVarieties(lang)).toBe(false);
       expect(learningVarietiesOf(lang)).toEqual([]);
       expect(canonicalVarietyId(lang, `${lang}-standard`)).toBeUndefined();
@@ -147,7 +147,7 @@ describe('what an event says of its variety', () => {
     expect(legacyStampOf(old)).toBe('el-koi');
     // a reader's event is never a legacy review record, and a language without varieties has none
     expect(isLegacyReviewRecord(base({}))).toBe(false);
-    expect(isLegacyReviewRecord({ ...old, languageId: 'sq' })).toBe(false);
+    expect(isLegacyReviewRecord({ ...old, languageId: 'de' })).toBe(false);
   });
 });
 
@@ -204,7 +204,7 @@ describe('spelling families', () => {
     expect(lexicalFamilyKey('el', 'lemma:el:ἄνθρωπος:NOUN')).toBe(lexicalFamilyKey('el', 'lemma:el:άνθρωπος:NOUN'));
     expect(lexicalFamilyKey('el', 'lemma:el:λόγος:NOUN')).not.toBe(lexicalFamilyKey('el', 'lemma:el:λόγος:VERB'));
     expect(lexicalFamilyKey('el', 'lemma:el:λόγος:NOUN')).not.toBe(lexicalFamilyKey('el', 'lemma:el:νόμος:NOUN'));
-    expect(lexicalFamilyKey('sq', 'lemma:sq:libër:NOUN')).toBeUndefined();
+    expect(lexicalFamilyKey('de', 'lemma:de:über:ADP')).toBeUndefined();
     expect(lexicalFamilyKey('el', 'morph:el:NOUN:x')).toBeUndefined();
   });
 });

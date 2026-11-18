@@ -14,11 +14,14 @@
  *   parts               the grammatical words inside one written token (ma = më + e)
  *   orthography         the Standard form a reading was made from, when the written form is not Standard spelling
  *   varieties           'aln', 'sq-pre1972', 'sq-ascii' … when the form is not Standard as it stands
+ *   notes.period        the dialect the SENTENCE was read in: 'aln' (Gheg) or 'sq' (Standard); with notes.periodBasis (why, in plain
+ *                       words) and notes.periodEvidence ('text' when the sentence's own forms decided, 'default' otherwise): dialect.ts
  * The lemma of an articulated adjective is its citation form with the article ("i mirë"), with or without a unit.
  */
 import type { AnalysisCandidate, AnalyzedToken, RawToken } from '../../core';
 import { SQ_DISPUTED, SQ_MAJORITY } from './disputed';
 import { analyzeSqForm } from './morphology';
+import { stampSqDialect } from './dialect';
 import { orderSqSentence } from './sentence';
 import { sqCitation, type SqReading } from './types';
 import { SQ_ANALYZER, SQ_SOURCE_IDS, SQ_VERSION } from './version';
@@ -65,6 +68,6 @@ export const sqCandidates = (form: string): AnalysisCandidate[] => analyzeSqForm
 /** The adapter's `analyze`: context-free readings of every word, then the sentence layer. */
 export function sqAnalyze(tokens: RawToken[]): AnalyzedToken[] {
   const base = tokens.map((t) => (t.isWord ? sqCandidates(t.normalized) : []));
-  const ordered = orderSqSentence(tokens, base);
+  const ordered = stampSqDialect(tokens, orderSqSentence(tokens, base));
   return tokens.map((t, i) => ({ token: t, candidates: t.isWord ? ordered[i] : [], analyzer: SQ_ANALYZER }));
 }

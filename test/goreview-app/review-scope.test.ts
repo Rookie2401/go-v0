@@ -180,13 +180,23 @@ describe('saved copies and saved decks respect the scope', () => {
   });
 });
 
-describe('a language without learning varieties is untouched', () => {
-  it('Albanian: no scope on the model, and a scope written to its preferences is not kept', async () => {
+// Albanian was this file's example of a language without learning varieties until 2026-11-18, when its dialects became learning
+// varieties (docs/ecosystem/LANGUAGE-VARIETIES.md section 10). A language without them is covered in test/varieties (German).
+describe('Albanian: one dialect per queue, Standard unless the learner chooses', () => {
+  it('a variety the language does not know is not kept; the model\'s scope is Standard alone; Gheg can be chosen, by the registry id or the adapter\'s code', async () => {
     const rig = await makeRig({ signedIn: true });
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { scope: { varietyIds: ['sq-AL'] } });
     expect((await rig.app.ctx.state.getPrefs('L1', 'sq')).scope).toBeUndefined();
     const model = (await loadReviewModel(rig.app.ctx))!;
-    expect(model.varieties).toBeUndefined();
-    expect(rig.service.candidateScopes.at(-1)).toBeUndefined();
+    expect(model.varieties?.scope.varietyIds).toEqual(['sq-standard']);
+    expect(model.varieties?.chosen).toBe(false);
+    expect(model.varieties?.available.filter((v) => v.selectable).map((v) => v.id)).toEqual(['sq-standard', 'sq-gheg']);
+    expect(rig.service.candidateScopes.at(-1)).toEqual(['sq-standard']);
+    await rig.app.ctx.state.updatePrefs('L1', 'sq', { scope: { varietyIds: ['aln'] } });
+    expect((await rig.app.ctx.state.getPrefs('L1', 'sq')).scope?.varietyIds).toEqual(['sq-gheg']);
+    const gheg = (await loadReviewModel(rig.app.ctx))!;
+    expect(gheg.varieties?.scope.varietyIds).toEqual(['sq-gheg']);
+    expect(gheg.varieties?.chosen).toBe(true);
+    expect(rig.service.candidateScopes.at(-1)).toEqual(['sq-gheg']);
   });
 });

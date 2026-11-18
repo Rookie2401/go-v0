@@ -1,0 +1,149 @@
+# verbs: tenses and irregulars
+sq | Unë punoj në Tiranë. | punoj
+sq | Ti punon shumë. | punon
+sq | Ne punojmë bashkë. | punojmë
+sq | Ata punonin çdo ditë. | punonin
+sq | Dje punova deri vonë. | punova
+sq | Ai punoi gjithë natën. | punoi
+sq | Kam punuar këtu dy vjet. | punuar
+sq | Kisha punuar atje. | Kisha
+sq | Do të punoj nesër. | Do
+sq | Do të punoj nesër. | punoj
+sq | Do të punoja po të kisha kohë. | punoja
+sq | Dua të punosh më shumë. | punosh
+sq | Ai duhet të punojë. | punojë
+sq | Puno më shpejt! | Puno
+sq | Punoni bashkë! | Punoni
+sq | Ai po punon tani. | po
+sq | Është duke punuar. | duke
+sq | Erdha për të punuar. | punuar
+sq | Doli pa ngrënë. | ngrënë
+sq | Paske punuar shumë! | Paske
+sq | Ai punuaka mirë! | punuaka
+sq | Qenka i sëmurë. | Qenka
+sq | Ai ditka shqip! | ditka
+sq | E paska blerë shtëpinë. | paska
+sq | Rroftë Shqipëria! | Rroftë
+sq | Qofsh i lumtur! | Qofsh
+sq | Të bëftë mirë! | bëftë
+sq | Zoti të ndihmoftë! | ndihmoftë
+sq | Mos vdeksh kurrë! | vdeksh
+sq | Unë isha i lodhur. | isha
+sq | Dje qeshë në Durrës. | qeshë
+sq | Ai pati fat. | pati
+sq | I dhashë një libër. | dhashë
+sq | Më dha dorën. | dha
+sq | I thashë të vërtetën. | thashë
+sq | Ai tha se do të vijë. | tha
+sq | E pashë dje. | pashë
+sq | Ai e pa filmin. | pa
+sq | Erdha me autobus. | Erdha
+sq | Ata erdhën vonë. | erdhën
+sq | Shkova në shkollë. | Shkova
+sq | Hëngra bukë me djathë. | Hëngra
+sq | Ai ra nga pema. | ra
+sq | Gjyshi vdiq vjet. | vdiq
+sq | Ai mori librin. | mori
+sq | Ajo bëri një tortë. | bëri
+sq | Ndenja në shtëpi. | Ndenja
+sq | Desha të vij por nuk munda. | Desha
+sq | Vura librin mbi tavolinë. | Vura
+sq | E gjeta çelësin. | gjeta
+sq | Fjeta mirë. | Fjeta
+sq | Dola nga shtëpia. | Dola
+sq | Solli ujë. | Solli
+sq | E lashë në shtëpi. | lashë
+sq | Hyri në dhomë. | Hyri
+sq | Zuri një peshk. | Zuri
+sq | Ai piu një kafe. | piu
+sq | U lava dhe u vesha. | lava
+sq | U lava dhe u vesha. | U
+sq | Ai u la me ujë të ftohtë. | la
+sq | Lahem çdo mëngjes. | Lahem
+sq | Dera u hap. | hap
+sq | Dyqani hapet në orën tetë. | hapet
+sq | Libri u shkrua në vitin 1990. | shkrua
+sq | Shtëpia është ndërtuar mirë. | ndërtuar
+sq | Si quhesh? | quhesh
+sq | Takohemi nesër. | Takohemi
+sq | Ky libër mësohet lehtë. | mësohet
+sq | Fëmija rritet shpejt. | rritet
+sq | Nuk dihet. | dihet
+sq | Si sillet ai? | sillet
+sq | U martuan vjet. | martuan
+sq | U ula në karrige. | ula
+sq | Ul zërin! | Ul
+sq | Kjo ndodh shpesh. | ndodh
+sq | Çfarë ndodhi? | ndodhi
+sq | Dielli lind në lindje. | lind
+sq | Filmi nis në orën tetë. | nis
+sq | Më duket e vështirë. | duket
+sq | Duke qeshur doli. | Duke
+sq | Dua një kafe. | Dua
+sq | Çfarë do? | do
+sq | Ai do të vijë. | do
+sq | Të dua shumë. | dua
+sq | Ai nuk do të hajë. | hajë
+sq | Dua që ai të dojë. | dojë
+sq | Ju bini në gjumë herët. | bini
+sq | Bie shi. | Bie
+sq | Më bie ndër mend. | bie
+sq | Ku i blini rrobat? | blini
+sq | Ai blinte gazetën çdo ditë. | blinte
+sq | Bli bukë! | Bli
+sq | Lëre! | Lëre
+sq | Lër derën hapur. | Lër
+sq | Vëre këtu. | Vëre
+sq | Ai linte derën hapur. | linte
+sq | Jepmë librin! | Jepmë
+sq | Më jep librin! | jep
+sq | Jepma! | Jepma
+sq | Merre! | Merre
+sq | Merrni frymë thellë. | Merrni
+sq | Ma jep mua. | Ma
+sq | Ta dhashë dje. | Ta
+sq | Dua ta shoh. | ta
+sq | Dua t'i shoh. | t'i
+sq | Ua thashë atyre. | Ua
+sq | Jua dhashë juve. | Jua
+sq | Na e dha neve. | Na
+sq | Më thuaj të vërtetën. | thuaj
+sq | Thuaji të vijë. | Thuaji
+sq | Shikoje! | Shikoje
+sq | Hapeni derën! | Hapeni
+sq | Ulu këtu! | Ulu
+sq | Uluni, ju lutem. | Uluni
+sq | Eja këtu! | Eja
+sq | Hajde me mua. | Hajde
+sq | Shko në shtëpi! | Shko
+sq | Mos shko! | Mos
+sq | Nuk e di. | di
+sq | S'e di. | S'e
+sq | S'kam kohë. | S'kam
+sq | Ç'është kjo? | Ç'është
+sq | Ai mund të vijë. | mund
+sq | Nuk mundem. | mundem
+sq | Duhet të shkoj. | Duhet
+sq | Më duhet një laps. | duhet
+sq | U desh të prisnim. | desh
+sq | Le të shkojmë. | Le
+sq | A flet shqip? | A
+sq | Po të vish, do të gëzohem. | vish
+sq | Sikur të kisha para! | kisha
+sq | Kur të vijë, më thuaj. | vijë
+sq | Zbrisni te stacioni tjetër. | Zbrisni
+sq | Nxirrni librat. | Nxirrni
+sq | Ai rriste dele. | rriste
+sq | E fiku dritën. | fiku
+sq | Dielli shkëlqeu. | shkëlqeu
+sq | E thirra në telefon. | thirra
+sq | Ai nisi të qajë. | nisi
+sq | Filloi të bjerë shi. | bjerë
+sq | Ka rënë borë. | rënë
+sq | Kam qenë në Itali. | qenë
+sq | Kam pasur fat. | pasur
+sq | Më ka thënë nëna. | thënë
+sq | E kam parë atë film. | parë
+sq | Ka ardhur pranvera. | ardhur
+sq | Më kanë dhënë një dhuratë. | dhënë
+sq | Ai ishte nisur herët. | nisur

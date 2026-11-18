@@ -1,0 +1,86 @@
+ADV shqip	in Albanian
+ADV tani	now
+ADV tashmë	already, by now
+ADV sot	today
+ADV dje	yesterday
+ADV pardje	the day before yesterday
+ADV nesër	tomorrow
+ADV pasnesër	the day after tomorrow
+ADV sonte	tonight
+ADV mbrëmë	last night, yesterday evening
+ADV atëherë	then
+ADV pastaj	afterwards, then
+ADV ende	still, yet
+ADV akoma	still, yet
+ADV dikur	once, formerly
+ADV herët	early
+ADV vonë	late
+ADV shpejt	quickly, soon
+ADV ngadalë	slowly
+ADV gjithmonë	always
+ADV gjithnjë	always, all the time
+ADV shpesh	often
+ADV rrallë	rarely, seldom
+ADV ndonjëherë	sometimes
+ADV kurrë	never, ever
+ADV përsëri	again
+ADV sërish	again
+ADV fillimisht	at first
+ADV mirë	well
+ADV keq	badly
+ADV bukur	beautifully, nicely
+ADV lehtë	easily, lightly
+ADV vështirë	with difficulty
+ADV fort	strongly, very much, loudly
+ADV shumë	very, much, a lot
+ADV pak	little, a little
+ADV mjaft	quite, enough
+ADV tepër	too, excessively
+ADV aq	so, that much
+ADV fare	at all
+ADV aspak	not at all
+ADV pothuajse	almost
+ADV thjesht	simply
+ADV pikërisht	exactly, precisely
+ADV sidomos	especially
+ADV veçanërisht	particularly
+ADV madje	even
+ADV vetëm	only; alone
+ADV bashkë	together
+ADV gjithashtu	also, likewise
+ADV larg	far
+ADV afër	near
+ADV lart	up, above
+ADV poshtë	down, below
+ADV brenda	inside
+ADV jashtë	outside
+ADV sigurisht	certainly, of course
+ADV ndoshta	perhaps
+ADV vërtet	really, truly
+ADV padyshim	undoubtedly
+ADV zakonisht	usually
+ADV djathtas	on the right
+ADV majtas	on the left
+ADV anglisht	in English
+ADV kryesisht	mainly
+ADV aktualisht	currently
+ADV ndërkohë	meanwhile
+ADV megjithatë	nevertheless, however
+ADV menjëherë	at once, immediately
+PRON gjithçka	everything
+ADV kurrë	never, ever
+ADV butë	gently, softly
+ADV as	not even; nor
+ADV kaq	so (much), that (much)
+ADV rregullisht	regularly
+ADV ngadalë	slowly
+ADV përsëri	again
+ADV mjaftueshëm	enough, sufficiently
+ADV kudo	everywhere
+ADV fort	strongly, hard, tightly
+ADV prapa	behind, at the back
+SCONJ sikur	as if; if only
+INTJ amen	amen
+ADV plotësisht	completely, fully
+ADV falas	free of charge
+ADV direkt	directly

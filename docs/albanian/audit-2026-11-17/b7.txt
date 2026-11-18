@@ -1,0 +1,30 @@
+sq | Shtëpia e re është e bukur. | re
+sq | Kam një makinë të re. | re
+sq | Vajza e re këndon. | re
+sq | Mësuesja e re quhet Elona. | re
+sq | Viti i Ri. | Ri
+sq | Ai është i ri. | ri
+sq | Buka e re. | re
+sq | Kjo këngë është e vjetër. | vjetër
+sq | Ai u kthye në shtëpi. | kthye
+sq | E ktheva librin. | ktheva
+sq | U ktheva vonë. | ktheva
+sq | Nëna e zgjoi djalin. | zgjoi
+sq | Ai ia dha librin Benit. | Benit
+sq | Dua një gotë ujë. | ujë
+sq | Ku është banja? | banja
+sq | Sa kushton kjo? | kushton
+sq | Unë nuk flas mirë shqip. | flas
+sq | A mund të më ndihmoni? | ndihmoni
+sq | Ku mund të gjej një taksi? | gjej
+sq | Jam i martuar. | martuar
+sq | Ajo është e martuar. | martuar
+sq | Ata kanë tre fëmijë. | fëmijë
+sq | Fëmijët janë në shkollë. | Fëmijët
+sq | Motra e Benit është mjeke. | mjeke
+sq | Ai punon natën. | natën
+sq | Të hënën kam provim. | hënën
+sq | Ditën e diel pushojmë. | diel
+sq | Sot është e martë. | martë
+sq | Jam lindur në Tiranë. | lindur
+sq | Linda në vitin 1990. | Linda

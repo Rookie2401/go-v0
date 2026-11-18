@@ -1,0 +1,6 @@
+sq | Djali lexon një libër. | Djali
+sq | Djali lexon një libër. | lexon
+sq | Djali lexon një libër. | libër
+sq | E pashë djalin në rrugë. | djalin
+sq | Ia dhashë librin djalit. | djalit
+sq | Ia dhashë librin djalit. | Ia

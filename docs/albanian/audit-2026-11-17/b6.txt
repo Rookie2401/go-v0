@@ -1,0 +1,43 @@
+# constructions and roles
+sq | Libri është shkruar nga një shkrimtar i njohur. | shkruar
+sq | Shtëpia u ndërtua nga gjyshi. | ndërtua
+sq | Vajza, e cila erdhi dje, është motra ime. | cila
+sq | Njerëzit të cilët punojnë këtu janë të lodhur. | cilët
+sq | Ky është djali të cilit i dhashë librin. | cilit
+sq | Kam për të shkuar në treg. | shkuar
+sq | Me të mbërritur, na telefonoi. | mbërritur
+sq | Nuk kam ç'të bëj. | ç'të
+sq | Sa më shumë punon, aq më shumë fiton. | aq
+sq | Ai është më i gjatë nga të gjithë. | gjatë
+sq | Jam duke lexuar një libër. | lexuar
+sq | Do të kisha ardhur po të më kishe ftuar. | ardhur
+sq | Do të kem mbaruar deri nesër. | kem
+sq | Paskësha harruar çelësat! | Paskësha
+sq | Mos e prek! | prek
+sq | Nuk ka asnjë problem. | ka
+sq | Ka shumë njerëz në rrugë. | Ka
+sq | Më dhemb koka. | dhemb
+sq | Atij i pëlqen muzika. | pëlqen
+sq | Më thanë se ishe sëmurë. | sëmurë
+sq | Dera është e hapur. | hapur
+sq | E hapi derën ngadalë. | hapi
+sq | Vajzës i dhanë një dhuratë. | Vajzës
+sq | Librin e lexova dje. | Librin
+sq | Mua më pëlqen kafja. | Mua
+sq | Ata i ndihmuan fqinjët. | fqinjët
+sq | Mësuesi u foli nxënësve. | nxënësve
+sq | Shkoi për të blerë bukë. | blerë
+sq | E di që ai e di. | di
+sq | Ky libër lexohet lehtë. | lexohet
+sq | Çfarë ore është? | ore
+sq | Ora është pesë e një çerek. | pesë
+sq | Jam njëzet e tre vjeç. | tre
+sq | Ne jemi shqiptarë. | shqiptarë
+sq | Sytë e saj janë të kaltër. | kaltër
+sq | Kjo është shtëpia ime e re. | re
+sq | Reja mbuloi diellin. | Reja
+sq | Vera e kuqe është e mirë. | Vera
+sq | Verën e kaloj në det. | Verën
+sq | Ata janë nga fshati. | janë
+sq | Ai punon si mësues në një shkollë fillore. | fillore
+sq | Dje bleva dy kilogramë mollë të kuqe. | kuqe

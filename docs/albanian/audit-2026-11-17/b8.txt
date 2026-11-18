@@ -1,0 +1,15 @@
+sq | Gjyshi im është plak. | Gjyshi
+sq | Njeriu është i lirë. | Njeriu
+sq | Çfarë ore është? | Çfarë
+sq | Ylli shkëlqen. | Ylli
+sq | Qeni leh. | Qeni
+sq | Cili libër? | Cili
+sq | Ai lexon. | lexon
+sq | Rruga është e gjatë. | Rruga
+sq | Kam një xhaketë. | xhaketë
+sq | Bukë dhe ujë. | Bukë
+sq | Faleminderit shumë. | Faleminderit
+sq | Ata janë meshkuj. | meshkuj
+sq | Ishulli është i vogël. | Ishulli
+sq | Kjo është një anije. | anije
+sq | Unë kam etje. | kam

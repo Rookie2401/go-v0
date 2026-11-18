@@ -1,0 +1,147 @@
+# typed without ë / ç
+sq | Une jam nga Shqiperia. | Une
+sq | Une jam nga Shqiperia. | Shqiperia
+sq | Cfare po ben? | Cfare
+sq | Cfare po ben? | ben
+sq | Eshte shume mire. | Eshte
+sq | Eshte shume mire. | shume
+sq | Eshte shume mire. | mire
+sq | Dua te shkoj ne shtepi. | te
+sq | Dua te shkoj ne shtepi. | ne
+sq | Dua te shkoj ne shtepi. | shtepi
+sq | Me pelqen shume. | Me
+sq | Me pelqen shume. | pelqen
+sq | Per mua eshte nje gje e bukur. | Per
+sq | Per mua eshte nje gje e bukur. | nje
+sq | Per mua eshte nje gje e bukur. | gje
+sq | Nuk e di se cfare te them. | them
+sq | Kur vjen ne shtepi? | ne
+sq | Kete e di. | Kete
+sq | Faleminderit shume, je i mire. | mire
+sq | Jam i lodhur dhe kam shume pune. | pune
+sq | Nena dhe babai jane ne shtepi. | Nena
+sq | Nena dhe babai jane ne shtepi. | jane
+sq | Çfare ke? | Çfare
+sq | Po behet vone. | behet
+sq | Si quhesh ti? Une quhem Arben. | quhem
+sq | Sa eshte ora? | ora
+sq | Ku eshte çelesi? | çelesi
+sq | S'kam kohe. | kohe
+sq | Flm shume. | Flm
+sq | Ckemi, si je? | Ckemi
+sq | Tung, a je mire? | Tung
+# Gheg and Kosovo
+sq | Due me shkue në shpi. | Due
+sq | Due me shkue në shpi. | me
+sq | Due me shkue në shpi. | shkue
+sq | Due me shkue në shpi. | shpi
+sq | Kam pas shumë punë. | pas
+sq | Ai asht nji djalë i mirë. | asht
+sq | Ai asht nji djalë i mirë. | nji
+sq | Çka po bân? | bân
+sq | Unë kam qenë tue punue. | tue
+sq | Unë kam qenë tue punue. | punue
+sq | Kam me ardhë nesër. | ardhë
+sq | Nuk muj me ardhë. | muj
+sq | A po vjen? Po vi. | vi
+sq | Ku je kanë? | kanë
+sq | Mirë jam, falemnderit. | falemnderit
+sq | Tash po shkoj. | Tash
+sq | Qysh je, a je mirë? | Qysh
+sq | Kqyre këtë. | Kqyre
+sq | Hajt, shihemi. | shihemi
+sq | Pe du shumë. | du
+sq | Nana jem. | Nana
+sq | Me fal, s'e kam ditë. | ditë
+sq | Vajza asht e bukur si zâna. | zâna
+sq | Kam shkrue nji letër. | shkrue
+sq | Grueja e tij. | Grueja
+# names
+sq | Arben Hoxha jeton në Vlorë. | Arben
+sq | Arben Hoxha jeton në Vlorë. | Hoxha
+sq | E takova Arbenin dje. | Arbenin
+sq | Shtëpia e Arbenit. | Arbenit
+sq | Fola me Dritën. | Dritën
+sq | Dritës i pëlqen kafja. | Dritës
+sq | Drita e diellit. | Drita
+sq | Mira është e mirë. | Mira
+sq | Luan me top. | Luan
+sq | Luani luan me top. | Luani
+sq | Shkova në Prizren dhe në Gjakovë. | Prizren
+sq | Banorët e Prizrenit. | Prizrenit
+sq | Skënderbeu ishte hero. | Skënderbeu
+sq | Ismail Kadare shkroi shumë romane. | Kadare
+sq | Romanet e Kadaresë. | Kadaresë
+sq | Nënë Tereza lindi në Shkup. | Tereza
+sq | Jam në Kosovë. | Kosovë
+sq | Qeveria e Kosovës. | Kosovës
+sq | Shqiptarët jetojnë në Ballkan. | Shqiptarët
+sq | Flas anglisht dhe italisht. | italisht
+sq | Ai është shqiptar. | shqiptar
+sq | Ajo është shqiptare. | shqiptare
+# sentence-initial capital on unknown and known words
+sq | Sot është ditë e bukur. | Sot
+sq | Misri rritet në fushë. | Misri
+sq | Kompjuteri im nuk punon. | Kompjuteri
+sq | Rrobat janë të lagura. | Rrobat
+sq | Televizioni është i ndezur. | Televizioni
+sq | Policia erdhi shpejt. | Policia
+sq | Kryeministri foli dje. | Kryeministri
+# unknown everyday words (guesser)
+sq | Bleva një biletë avioni. | avioni
+sq | Policia arrestoi dy persona. | arrestoi
+sq | Policia arrestoi dy persona. | persona
+sq | Qeveria miratoi buxhetin. | miratoi
+sq | Qeveria miratoi buxhetin. | buxhetin
+sq | Ai investoi shumë para. | investoi
+sq | Çmimet u rritën me pesë përqind. | përqind
+sq | Çmimet u rritën me pesë përqind. | rritën
+sq | Ata diskutuan për situatën. | diskutuan
+sq | Ata diskutuan për situatën. | situatën
+sq | Më pëlqen të vallëzoj. | vallëzoj
+sq | Ajo po gatuan darkën. | gatuan
+sq | Sot kam dhimbje koke. | koke
+sq | Rroj në një fshat të vogël. | Rroj
+sq | E dua shumë gjyshen. | gjyshen
+sq | Ai bërtiti fort. | bërtiti
+sq | Më dhembin këmbët. | dhembin
+sq | Kërceu nga gëzimi. | Kërceu
+sq | Ajo qeshi me zë të lartë. | qeshi
+sq | Ai vrapon çdo mëngjes. | vrapon
+sq | Më mungon shumë. | mungon
+sq | Shpresoj të shihemi së shpejti. | shpejti
+sq | Faleminderit për gjithçka. | Faleminderit
+sq | Urime ditëlindjen! | Urime
+sq | Gëzuar Vitin e Ri! | Gëzuar
+sq | Të fala nga unë. | fala
+sq | Natën e mirë! | Natën
+sq | Mirë se vini në Shqipëri! | vini
+sq | Ç'kemi? | Ç'kemi
+sq | Ditën e mirë! | Ditën
+sq | Me të vërtetë? | vërtetë
+sq | Më vjen keq. | vjen
+sq | S'ka gjë. | gjë
+sq | Ju lutem, një kafe. | lutem
+sq | Sa bën? | bën
+sq | Kam uri. | uri
+sq | Kam etje. | etje
+sq | Kam ftohtë. | ftohtë
+sq | Bën ftohtë sot. | ftohtë
+sq | Më merr malli për ty. | malli
+sq | Mbaj mend atë ditë. | mend
+sq | Ke të drejtë. | drejtë
+sq | Jam dakord. | dakord
+sq | Patjetër! | Patjetër
+sq | Sigurisht që po. | Sigurisht
+sq | Domethënë, nuk vjen. | Domethënë
+sq | Megjithatë, erdhi. | Megjithatë
+sq | Prandaj nuk erdha. | Prandaj
+sq | Edhe pse ishte vonë, doli. | pse
+sq | Sapo erdha. | Sapo
+sq | Meqë ra fjala. | Meqë
+sq | Kurse unë rri këtu. | Kurse
+sq | As unë as ti. | As
+sq | Ose sot ose nesër. | Ose
+sq | Bile edhe ai erdhi. | Bile
+sq | Vallë a do të vijë? | Vallë
+sq | Nuk mund ta bëj dot. | dot

@@ -1,0 +1,18 @@
+sq | Unë kisha një qen. | kisha
+sq | Nuk kisha kohë. | kisha
+sq | Kur isha i vogël, kisha një biçikletë. | kisha
+sq | Ajo është studente. | studente
+sq | Ajo është gazetare. | gazetare
+sq | Motra ime është këngëtare. | këngëtare
+sq | Ai flet mirë shqip. | mirë
+sq | Si e ke emrin? | emrin
+sq | Ai është më i vjetër se unë. | vjetër
+sq | Mos harro çelësat! | harro
+sq | Lexoje librin! | Lexoje
+sq | Dëgjomë! | Dëgjomë
+sq | Më trego rrugën. | trego
+sq | Ia tregova rrugën. | Ia
+sq | Mirë, shkojmë! | shkojmë
+sq | Vajzat janë të lodhura. | lodhura
+sq | Djemtë janë të lodhur. | lodhur
+sq | Shtëpia jonë është e vjetër. | jonë

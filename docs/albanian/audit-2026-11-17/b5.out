@@ -1,0 +1,48 @@
+sq «Eshte» in "Eshte shume mire." ⇒ jam / VERB / third person singular, present / g:He, she, or it is / 0.7 / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act / S:the verb 'to be' linking 'mire' to its subject / D:to be — Indicates a quality or identity. ; to be — Indicates location.
+    notes: Spelling differs from today's standard (është).
+    basis: present indicative, third person singular, of jam
+    feats: [{"key":"Person","value":"3"},{"key":"Number","value":"Sing"},{"key":"Tense","value":"Pres"},{"key":"Mood","value":"Ind"},{"key":"VerbForm","value":"Fin"},{"key":"Voice","value":"Act"}]
+sq «shkue» in "Due me shkue në shpi." ⇒ shkoj / VERB / participle / g:going / 0.55 / C:form:VerbForm=Part / S:adverbial clause of 'Due' / D:to go, pass
+    notes: Spelling differs from today's standard (shkuar). || Variety: aln.
+    basis: participle of shkoj
+    feats: [{"key":"VerbForm","value":"Part"}]
+sq «rriten» in "Fëmijët rriten shpejt." ⇒ rrit / VERB / third person plural, aorist (simple past) / g:They raised / 0.7 / C:form:Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:∅
+    notes: Spelling differs from today's standard (rritën).
+    basis: aorist, third person plural, of rrit
+    feats: [{"key":"Person","value":"3"},{"key":"Number","value":"Plur"},{"key":"Tense","value":"Past"},{"key":"Mood","value":"Ind"},{"key":"Voice","value":"Act"},{"key":"VerbForm","value":"Fin"}]
+sq «Koka» in "Koka më dhemb." ⇒ kokë / NOUN / definite feminine nominative singular / g:head / 0.55 / also kokë/NOUN / C:definite-noun-ending,definite-nominative-singular / S:subject of 'dhemb' / D:head ; heading
+    notes: Sources disagree: the sources consulted do not agree on this reading, or no other source knows it || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+    basis: definite nominative singular of kokë
+    feats: [{"key":"Case","value":"Nom"},{"key":"Number","value":"Sing"},{"key":"Definite","value":"Def"},{"key":"Gender","value":"Fem"}]
+sq «Takohemi» in "Takohemi nesër." ⇒ takoj / VERB / first person plural, present indicative or subjunctive (the form used after të), non-active / g:— / 0.4 UNCONF / C:non-active-present / S:the main word of the sentence / D:to meet; to encounter
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given.
+    basis: a guess: the ending -ohemi looks like the non-active present, first person plural of a verb in -oj (takoj); the word is not in the word list
+    feats: [{"key":"Person","value":"1"},{"key":"Number","value":"Plur"},{"key":"Tense","value":"Pres"},{"key":"Mood","value":"Ind,Sub"},{"key":"Voice","value":"Mid"},{"key":"VerbForm","value":"Fin"}]
+sq «mirë» in "Vajza e mirë punon." ⇒ i mirë / ADJ / feminine singular / g:good / 0.9 / also i mirë/ADJ,mirë/ADV / C:linking-article-adjective,form:Gender=Fem|Number=Sing / S:adjective describing 'Vajza' / D:good ; well
+    notes: Part of a unit with the neighbouring word: "i mirë". || 2 other readings possible even with the sentence; the one shown has the highest confidence.
+    basis: as listed || after the linking article "e": an adjective that goes with it, and the two words are one lexical unit
+    feats: [{"key":"Gender","value":"Fem"},{"key":"Number","value":"Sing"}]
+sq «Arbenin» in "E takova Arbenin dje." ⇒ Arbenin / PROPN /  / g:— / 0.4 UNCONF / also arben/NOUN / S:direct object of 'takova' / D:a male given name
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given. || 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: a word outside the list written with a capital letter inside the sentence: a name; the lemma is the written form (a guess) || written with a capital letter inside the sentence: a name
+    feats: []
+sq «ta» in "Dua ta shoh." ⇒ të / PART /  / g:the particle të, it / him / her / 0.55 / also ti/PRON / C:clitic-cluster,subjunctive-te / S:word that introduces the clause of 'shoh' / D:adjectival article for: — indefinite masculine and feminine singular a
+    notes: 1 other reading possible even with the sentence; the one shown has the highest confidence.
+    basis: të + e: the particle të, it / him / her || after the verb "dua", before a verb that has a subjunctive form: the subjunctive particle
+    feats: []
+sq «Jepma» in "Jepma!" ⇒ jap / VERB / second person singular, imperative / g:Give! / 0.6 / C:imperative-pronoun,form:Mood=Imp|Number=Sing|Person=2|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to give
+    notes: 
+    basis: jep + më + e: imperative, second person singular, of jap, with the attached pronouns to me, it / him / her
+    feats: [{"key":"Person","value":"2"},{"key":"Number","value":"Sing"},{"key":"Mood","value":"Imp"},{"key":"Voice","value":"Act"},{"key":"VerbForm","value":"Fin"}]
+sq «punoi» in "Ai punoi gjithë natën." ⇒ punoj / VERB / third person singular, aorist (simple past) / g:He, she, or it worked / 0.6 / also punoj/VERB / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to work
+    notes: 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+    basis: aorist, third person singular, of punoj || after the subject "Ai": third person singular
+    feats: [{"key":"Person","value":"3"},{"key":"Number","value":"Sing"},{"key":"Tense","value":"Past"},{"key":"Mood","value":"Ind"},{"key":"Voice","value":"Act"},{"key":"VerbForm","value":"Fin"}]
+sq «Televizioni» in "Televizioni është i ndezur." ⇒ televizioj / VERB / second person plural, present indicative or subjunctive (the form used after të) / g:— / 0.4 UNCONF / also televizioj/VERB / S:the main word of the sentence / D:∅
+    notes: Not in the word list: the lemma is a guess from the ending and no meaning is given. || 1 other form reading possible even with the sentence; the one shown has the highest confidence.
+    basis: a guess: the ending -oni looks like the present, second person plural of a verb in -oj (televizioj); the word is not in the word list
+    feats: [{"key":"Person","value":"2"},{"key":"Number","value":"Plur"},{"key":"Tense","value":"Pres"},{"key":"Mood","value":"Ind,Sub"},{"key":"Voice","value":"Act"},{"key":"VerbForm","value":"Fin"}]
+sq «dha» in "Më dha dorën." ⇒ jap / VERB / third person singular, aorist (simple past) / g:He, she, or it gave / 0.55 / C:object-pronoun-before-verb,form:Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to give
+    notes: Sources disagree: the sources consulted do not agree on this reading, or no other source knows it
+    basis: aorist, third person singular, of jap
+    feats: [{"key":"Person","value":"3"},{"key":"Number","value":"Sing"},{"key":"Tense","value":"Past"},{"key":"Mood","value":"Ind"},{"key":"Voice","value":"Act"},{"key":"VerbForm","value":"Fin"}]

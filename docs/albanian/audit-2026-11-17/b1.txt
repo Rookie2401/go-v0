@@ -1,0 +1,117 @@
+# nouns: case, definiteness, plurals
+sq | Vajza e vogël luan në oborr. | Vajza
+sq | E njoh vajzën. | vajzën
+sq | Libri i vajzës është i ri. | vajzës
+sq | Kjo është dhoma e një vajze. | vajze
+sq | Vajzat po këndojnë. | Vajzat
+sq | Ua dhashë lulet vajzave. | vajzave
+sq | Djemtë luajnë futboll. | Djemtë
+sq | Kam dy djem. | djem
+sq | Burrat punojnë në fushë. | Burrat
+sq | Gratë flasin shqip. | Gratë
+sq | Vëllezërit e mi janë në Tiranë. | Vëllezërit
+sq | Njerëzit e mirë ndihmojnë. | Njerëzit
+sq | Miqtë tanë erdhën dje. | Miqtë
+sq | Pleqtë e fshatit u mblodhën. | Pleqtë
+sq | Kuajt janë në fushë. | Kuajt
+sq | Lau duart me sapun. | duart
+sq | Net të gjata dimri. | Net
+sq | Kam jetuar pesë vjet në Shqipëri. | vjet
+sq | Ai është tridhjetë vjeç. | vjeç
+sq | Dy vite më parë. | vite
+sq | Shtëpitë janë të vjetra. | Shtëpitë
+sq | Në qytetet e mëdha ka shumë njerëz. | qytetet
+sq | Lumenjtë e Shqipërisë janë të shkurtër. | Lumenjtë
+sq | Ishte një grup zogjsh. | zogjsh
+sq | Një tufë dhensh. | dhensh
+sq | Dy desh dhe tri dhi. | desh
+sq | Nëna bleu sallatën. | sallatën
+sq | Njerëz të të gjitha moshave. | moshave
+sq | Fshiu lotët. | lotët
+sq | Bëri dy kekë. | kekë
+sq | Vajza e keqe qau. | keqe
+sq | Më pëlqejnë shakatë e tij. | shakatë
+sq | Tha arsyen e vërtetë. | arsyen
+sq | Babai erdhi vonë. | Babai
+sq | E pashë babanë tënd. | babanë
+sq | Shtëpia e babait. | babait
+sq | Uji është i ftohtë. | Uji
+sq | Piu ujët. | ujët
+sq | Të folurit e tij është i qartë. | folurit
+sq | Kryet e punës. | Kryet
+sq | Prej një familjeje të varfër. | familjeje
+sq | I dhashë një gruaje bukë. | gruaje
+sq | Vjen nga mali. | mali
+sq | Shkoj te mjeku. | mjeku
+sq | Doli prej shtëpisë. | shtëpisë
+sq | Jetoj afër detit. | detit
+sq | Para shtëpisë ka një pemë. | shtëpisë
+sq | Pas darkës dolëm. | darkës
+sq | Në Tiranë ka shumë makina. | Tiranë
+sq | Rrugët e Tiranës janë të gjera. | Tiranës
+sq | Kryeqyteti i Shqipërisë është Tirana. | Shqipërisë
+sq | Agimi e pa Agimin. | Agimin
+sq | Fola me Agimin. | Agimin
+sq | Libri i Skënderbeut. | Skënderbeut
+sq | Shkova në Durrës me Besnikun. | Besnikun
+sq | Mësuesja e re quhet Elona. | Mësuesja
+sq | Koka më dhemb. | Koka
+sq | Lufta mbaroi. | Lufta
+sq | Hartat janë në mur. | Hartat
+# adjectives and the linking article
+sq | Djali i mirë punon. | i
+sq | Djali i mirë punon. | mirë
+sq | Vajza e mirë punon. | e
+sq | Pashë një djalë të mirë. | të
+sq | Pashë djalin e mirë. | e
+sq | Ia dhashë vajzës së mirë. | së
+sq | Djemtë e mirë punojnë. | mirë
+sq | Vajzat e mira këndojnë. | mira
+sq | Burra të mëdhenj. | mëdhenj
+sq | Shtëpi të mëdha. | mëdha
+sq | Fëmijë të vegjël. | vegjël
+sq | Njerëz të këqij. | këqij
+sq | Ditë të këqija. | këqija
+sq | Djem të rinj dhe vajza të reja. | rinj
+sq | Djem të rinj dhe vajza të reja. | reja
+sq | Makina e zezë është e imja. | zezë
+sq | Sytë e zinj. | zinj
+sq | Ky libër është më i mirë se ai. | më
+sq | Ajo është vajza më e bukur e klasës. | bukur
+sq | Është shumë i sjellshëm. | sjellshëm
+sq | Një makinë blu. | blu
+sq | Qielli është gri. | gri
+sq | Një fustan rozë. | rozë
+sq | Një film interesant. | interesant
+sq | Është njeri serioz. | serioz
+sq | Jam krenar për ty. | krenar
+sq | Lule të verdha. | verdha
+sq | I pari erdhi Beni. | pari
+sq | E mira dhe e keqja. | keqja
+sq | Të rinjtë duan punë. | rinjtë
+sq | Të vdekurit nuk flasin. | vdekurit
+sq | Dita e dytë e javës. | dytë
+sq | Kati i njëmbëdhjetë. | njëmbëdhjetë
+sq | Viti i njëzetë. | njëzetë
+# genitive and possessives
+sq | Shtëpia e mjekut është e madhe. | e
+sq | Dera e shtëpisë së mjekut. | së
+sq | Libri im është këtu. | im
+sq | Motra ime është mjeke. | ime
+sq | E pashë vëllanë tim. | tim
+sq | Fola me motrën time. | time
+sq | Shtëpia e motrës sime. | sime
+sq | Libri i vëllait tënd. | tënd
+sq | Dhoma e motrës sate. | sate
+sq | Në shtëpinë tonë. | tonë
+sq | Dera e shtëpisë sonë. | sonë
+sq | Dera e shtëpisë suaj. | suaj
+sq | Librat e mi janë të rinj. | mi
+sq | Shoqet e mia erdhën. | mia
+sq | Prindërit e tu. | tu
+sq | Ai e do nënën e vet. | vet
+sq | Shtëpia e tij është larg. | tij
+sq | Mori librin e saj. | saj
+sq | Fëmijët e tyre. | tyre
+sq | I kujt është ky libër? | kujt
+sq | Ky libër është i imi. | imi

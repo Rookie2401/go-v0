@@ -1,0 +1,120 @@
+sq «ha» in "Ai ha bukë." ⇒ ha / VERB / third person singular, present / g:He, she, or it eats / 0.9 / also ha/VERB,ha/VERB / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to eat ; to gnaw, consume, wear out
+sq «pi» in "Ajo pi ujë." ⇒ pi / VERB / third person singular, present / g:He, she, or it drinks / 0.9 / also pi/VERB,pi/VERB / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to drink, to suck ; to smoke (in use with duhan (“tobacco, cigarettes”
+sq «fle» in "Fëmija fle." ⇒ fle / VERB / first person singular, present indicative or subjunctive (the form used after të) / g:I sleep / 0.9 / also fle/VERB / C:form:Mood=Ind,Sub|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to sleep
+sq «di» in "Ti di shumë." ⇒ di / VERB / second person singular, present / g:You know / 0.9 / also di/VERB / C:form:Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to know ; to dawn (daylight)
+sq «hap» in "Ai hap derën." ⇒ hap / VERB / third person singular, present / g:He, she, or it opens / 0.9 / also hap/VERB,hap/VERB,hap/VERB / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to open ; to rise (of the sun)
+sq «flet» in "Ajo flet shqip." ⇒ flas / VERB / third person singular, present / g:He, she, or it speaks / 0.85 / C:form:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to speak
+sq «flet» in "Ti flet shumë mirë." ⇒ flas / VERB / second person singular, present / g:You speak / 0.85 / C:form:Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to speak
+sq «lë» in "Ai e lë punën." ⇒ lë / VERB / third person singular, present / g:He, she, or it leaves / 0.9 / also lë/VERB / C:clitic-doubling,object-pronoun-before-verb,form:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to leave, to leave behind ; to let be
+sq «rriten» in "Fëmijët rriten shpejt." ⇒ rrit / VERB / third person plural, aorist (simple past) / g:They raised / 0.7 / C:form:Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:∅
+sq «rritem» in "Unë rritem në fshat." ⇒ rrit / VERB / first person plural, aorist (simple past) / g:We raised / 0.7 / C:form:Mood=Ind|Number=Plur|Person=1|Tense=Past|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to grow; to grow up ; to increase
+sq «kapet» in "Peshku kapet me rrjetë." ⇒ kap / VERB / second person plural, aorist (simple past) / g:You (plural) caught / 0.7 / C:form:Mood=Ind|Number=Plur|Person=2|Tense=Past|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:kap (aorist kapa, participle kapur) ; to grab, grip (someone or someth
+sq «ndalet» in "Treni ndalet këtu." ⇒ ndal / VERB / second person plural, aorist (simple past) / g:You (plural) stopped / 0.7 / C:form:Mood=Ind|Number=Plur|Person=2|Tense=Past|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to stop, hold up ; to keep something, someone
+sq «prishet» in "Buka prishet shpejt." ⇒ prish / VERB / second person plural, aorist (simple past) / g:You (plural) spoiled / 0.7 / C:form:Mood=Ind|Number=Plur|Person=2|Tense=Past|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to destroy
+sq «përmendet» in "Kjo fjalë përmendet shpesh." ⇒ përmend / NOUN / definite plural, nominative or accusative / g:— / 0.4 UNCONF / C:definite-noun-ending / D:∅
+sq «priten» in "Mysafirët priten mirë." ⇒ pres / VERB / third person plural, aorist (simple past) / g:They waited / 0.7 / C:form:Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to cut, carve, slice, hew ; to wait; to expect
+sq «merret» in "Vendimi merret nesër." ⇒ marr / VERB / third person singular, present indicative or subjunctive (the form used after të), non-active / g:to take, to get / 0.85 / C:non-active-present,form:Mood=Ind,Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid / S:the main word of the sentence / D:to take, grab (someone/something by hand) ; to hold, carry, pick up (s
+sq «merret» in "Ai merret me sport." ⇒ marr / VERB / third person singular, present indicative or subjunctive (the form used after të), non-active / g:to take, to get / 0.85 / C:non-active-present,form:Mood=Ind,Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Mid / S:the main word of the sentence / D:to take, grab (someone/something by hand) ; to hold, carry, pick up (s
+sq «të» in "Dua të shkoj." ⇒ të / PART /  / g:subjunctive particle / 0.6 / also ti/PRON,i/DET / C:subjunctive-te / S:word that introduces the clause of 'shkoj' / D:adjectival article for: — indefinite masculine and feminine singular a
+sq «Të» in "Të pashë dje." ⇒ ti / PRON / short (clitic) object pronoun, second person singular, accusative or dative / g:you (singular) / 0.55 / also të/PART,i/DET / C:object-pronoun-before-verb,form:Case=Acc,Dat|Clitic=Yes|Number=Sing|Person=2|PronType=Prs / S:direct object of 'pashë' / D:you (singular)
+sq «të» in "Një libër të ri." ⇒ i ri / ADJ / linking article (agrees with a masculine singular noun in the accusative) / g:— / 0.5 / also të/PART,ti/PRON / C:linking-article-adjective,form:Case=Acc|Gender=Masc|Number=Sing|PronType=Art / S:article / determiner of 'ri' / D:young ; new
+sq «Të» in "Të gjithë erdhën." ⇒ të / PART /  / g:subjunctive particle / 0.6 / also ti/PRON,i/DET / S:article / determiner of 'gjithë' / D:adjectival article for: — indefinite masculine and feminine singular a
+sq «të» in "Për të shkuar duhet kohë." ⇒ të / PART /  / g:subjunctive particle / 0.6 / also ti/PRON,i/DET / C:purpose-per-te / S:word that introduces the clause of 'shkuar' / D:adjectival article for: — indefinite masculine and feminine singular a
+sq «te» in "Shko te mjeku." ⇒ te / ADP /  / g:at, to (a person or a place) / 0.9 / C:nominative-after-preposition / P:shkoj te … / S:preposition of the phrase 'mjeku' / D:at ; to
+sq «të» in "Do të të ndihmoj." ⇒ ti / PRON / short (clitic) object pronoun, second person singular, accusative or dative / g:you (singular) / 0.55 / also të/PART,i/DET / C:object-pronoun-before-verb,form:Case=Acc,Dat|Clitic=Yes|Number=Sing|Person=2|PronType=Prs / S:direct object of 'ndihmoj' / D:you (singular)
+sq «E» in "E pashë Benin." ⇒ ai / PRON / short (clitic) object pronoun, third person singular, accusative / g:he, she, it, they; him, her, them / 0.6 / also i/DET,e/CONJ / C:object-pronoun-before-verb,form:Case=Acc|Clitic=Yes|Number=Sing|Person=3|PronType=Prs / S:short pronoun that repeats a noun of 'pashë' (clitic doubling) or marks the non-active / D:he ; that
+sq «e» in "Buka e misrit." ⇒ ai / PRON / short (clitic) object pronoun, third person singular, accusative / g:he, she, it, they; him, her, them / 0.6 / also i/DET,e/CONJ / C:form:Case=Acc|Clitic=Yes|Number=Sing|Person=3|PronType=Prs / S:article / determiner of 'misrit' / D:he ; that
+sq «e» in "Ti e unë." ⇒ e / CONJ /  / g:and / 0.5 / also ai/PRON,i/DET / S:'and' / 'but' joining 'unë' / D:and ; also
+sq «e» in "Nëna e babai." ⇒ ai / PRON / short (clitic) object pronoun, third person singular, accusative / g:he, she, it, they; him, her, them / 0.6 / also i/DET,e/CONJ / C:form:Case=Acc|Clitic=Yes|Number=Sing|Person=3|PronType=Prs / S:article / determiner of 'babai' / D:he ; that
+sq «një» in "Kam një libër." ⇒ një / NUM /  / g:one (1) / 0.6 / also një/DET / S:article / determiner of 'libër' / D:one ; the indefinite article; a, an
+sq «Një» in "Një e një bëjnë dy." ⇒ një / NUM /  / g:one (1) / 0.6 / also një/DET / S:direct object of 'bëjnë' / D:one ; the indefinite article; a, an
+sq «Si» in "Si je?" ⇒ si / ADV / interrogative / g:how / 0.6 / also si/SCONJ / C:form:PronType=Int / P:si je / si jeni / S:the main word of the sentence / D:how; in what way; in what state ; like, as
+sq «si» in "Punon si mjek." ⇒ si / ADV / interrogative / g:how / 0.6 / also si/SCONJ / C:form:PronType=Int / S:adverb of 'mjek' / D:how; in what way; in what state ; like, as
+sq «që» in "Libri që lexova." ⇒ që / PRON / relative / g:who, which, that (relative) / 0.6 / also që/SCONJ / C:relative-clause,form:PronType=Rel / S:word that introduces the clause of 'lexova' / D:who, whom, that, which ; when, where
+sq «që» in "Mendoj që ke të drejtë." ⇒ që / PRON / relative / g:who, which, that (relative) / 0.6 / also që/SCONJ / C:form:PronType=Rel / S:word that introduces the clause of 'ke' / D:who, whom, that, which ; when, where
+sq «Që» in "Që nga dje nuk ka ardhur." ⇒ që / PRON / relative / g:who, which, that (relative) / 0.6 / also që/SCONJ / C:form:PronType=Rel / S:word that introduces the clause of 'ardhur' / D:who, whom, that, which ; when, where
+sq «Po» in "Po, vij." ⇒ po / INTJ /  / g:yes / 0.55 / also po/PART / S:discourse word with 'vij' (yes, no, hello …) / D:yes ; Used with the present and imperfect tense of a verb to show a co
+sq «Po» in "Po të duash, eja." ⇒ po / PART /  / g:progressive particle / 0.6 / also po/INTJ / S:word that introduces the clause of 'duash' / D:yes ; Used with the present and imperfect tense of a verb to show a co
+sq «Po» in "Po shkoj." ⇒ po / PART /  / g:progressive particle / 0.6 / also po/INTJ / C:progressive-po / S:word that introduces the clause of 'shkoj' / D:yes ; Used with the present and imperfect tense of a verb to show a co
+sq «I» in "I thashë." ⇒ ai / PRON / short (clitic) object pronoun, third person singular, dative / g:he, she, it, they; him, her, them / 0.6 / also ai/PRON,i/DET / C:object-pronoun-before-verb,form:Case=Dat|Clitic=Yes|Number=Sing|Person=3|PronType=Prs / S:indirect object of 'thashë' (to whom / for whom) / D:he ; that
+sq «I» in "I pashë fëmijët." ⇒ ai / PRON / short (clitic) object pronoun, third person singular, dative / g:he, she, it, they; him, her, them / 0.6 / also ai/PRON,i/DET / C:clitic-doubling,object-pronoun-before-verb,form:Case=Dat|Clitic=Yes|Number=Sing|Person=3|PronType=Prs / S:short pronoun that repeats a noun of 'pashë' (clitic doubling) or marks the non-active / D:he ; that
+sq «U» in "U thashë të vijnë." ⇒ u / PART /  / g:non-active particle / 0.6 / also ai/PRON / C:non-active-u / S:short pronoun that repeats a noun of 'thashë' (clitic doubling) or marks the non-active / D:the reflexive pronoun
+sq «U» in "U nis herët." ⇒ u / PART /  / g:non-active particle / 0.6 / also ai/PRON / C:non-active-u / S:short pronoun that repeats a noun of 'nis' (clitic doubling) or marks the non-active / D:the reflexive pronoun
+sq «A» in "A e di?" ⇒ a / PART /  / g:question particle / 0.9 / C:question-a / S:discourse word with 'di' (yes, no, hello …) / D:a question particle ; probably, perhaps
+sq «a» in "Kafe a çaj?" ⇒ kafe / NOUN / indefinite feminine singular, nominative or accusative / g:coffee / 0.9 / also kafe/NOUN / C:form:Case=Nom,Acc|Definite=Ind|Gender=Fem|Number=Sing / S:the main word of the sentence / D:a plant of the genus Coffea, coffee bean ; Brown
+sq «më» in "Ai erdhi më 5 maj." ⇒ më / ADP /  / g:on (with a date) / 0.5 / also unë/PRON,më/ADV / S:adverb of 'erdhi' / D:indicates position in space or time. in, at, to, on ; indicates manner
+sq «Më» in "Më pëlqen muzika." ⇒ unë / PRON / short (clitic) object pronoun, first person singular, accusative or dative / g:I, me / 0.6 / also më/ADV,më/ADP / C:object-pronoun-before-verb,form:Case=Acc,Dat|Clitic=Yes|Number=Sing|Person=1|PronType=Prs / P:më pëlqen / S:direct object of 'pëlqen' / D:I ; potsherd
+sq «më» in "Nuk dua më." ⇒ unë / PRON / short (clitic) object pronoun, first person singular, accusative or dative / g:I, me / 0.6 / also më/ADV,më/ADP / C:form:Case=Acc,Dat|Clitic=Yes|Number=Sing|Person=1|PronType=Prs / S:direct object of 'dua' / D:I ; potsherd
+sq «Pa» in "Pa mua nuk shkon." ⇒ pa / ADP /  / g:without / 0.6 / also pa/PART,shoh/VERB / S:preposition of the phrase 'mua' / D:without, minus ; not counting, even without counting
+sq «Pa» in "Pa prit pak." ⇒ pa / ADP /  / g:without / 0.6 / also pa/PART,shoh/VERB / S:word that introduces the clause of 'prit' / D:without, minus ; not counting, even without counting
+sq «Para» in "Para dy ditësh." ⇒ para / ADP /  / g:before, in front of / 0.6 / also i parë/ADJ,para/NOUN,para/NOUN / C:ablative-after-preposition / S:preposition of the phrase 'ditësh' / D:before ; ago
+sq «para» in "Nuk kam para." ⇒ para / NOUN / indefinite feminine singular, nominative or accusative / g:money (plural in use) / 0.6 / also para/NOUN,para/ADP,i parë/ADJ / C:form:Case=Nom,Acc|Definite=Ind|Gender=Fem|Number=Sing / S:direct object of 'kam' / D:money ; before
+sq «para» in "Ditët e para." ⇒ i parë / ADJ / feminine plural / g:first / 0.6 / also i parë/ADJ,para/ADP,para/NOUN / C:linking-article-adjective,form:Gender=Fem|Number=Plur / S:adjective describing 'Ditët' / D:first ; main, principal, primary, chief
+sq «Dhe» in "Dhe ai erdhi." ⇒ dhe / CONJ /  / g:and / 0.6 / also jap/VERB / S:'and' / 'but' joining 'erdhi' / D:and (used to connect two similar words, phrases, et cetera) ; also
+sq «dhe» in "Mbuloi me dhe." ⇒ dhe / CONJ /  / g:and / 0.6 / also jap/VERB / S:'and' / 'but' joining 'Mbuloi' / D:and (used to connect two similar words, phrases, et cetera) ; also
+sq «Se» in "Se ç'ke?" ⇒ se / SCONJ /  / g:that; than / 0.9 / S:word that introduces the clause of 'ç'ke' / D:that, as, than
+sq «se» in "Është më i madh se unë." ⇒ se / SCONJ /  / g:that; than / 0.9 / C:comparative / S:word that introduces the clause of 'unë' / D:that, as, than
+sq «erdhe» in "Mirë se erdhe!" ⇒ vij / VERB / second person singular, aorist (simple past) / g:You came / 0.85 / C:form:Mood=Ind|Number=Sing|Person=2|Tense=Past|VerbForm=Fin|Voice=Act / P:mirë se vini / S:the main word of the sentence / D:to arrive ; to come
+sq «me» in "Shkoj në shkollë me autobus." ⇒ me / ADP /  / g:with, by means of / 0.9 / S:preposition of the phrase 'autobus' / D:with (accompanied by) ; with (possessing)
+sq «Tirana» in "Erdhi nga Tirana." ⇒ Tiranë / PROPN / definite feminine nominative singular / g:Tirana / 0.85 / C:nominative-after-preposition,form:Case=Nom|Definite=Def|Gender=Fem|Number=Sing / P:vij nga … / S:adverbial phrase of 'Erdhi' (place, time, manner, or an extra noun) / D:Tirana (a municipality, the capital and largest city of Albania, locat
+sq «tek» in "Është tek unë." ⇒ tek / ADP /  / g:at, to (a person or a place) / 0.9 / S:preposition of the phrase 'unë' / D:there, where
+sq «mbi» in "Libri është mbi tavolinë." ⇒ mbi / ADP /  / g:on, above, over / 0.9 / S:preposition of the phrase 'tavolinë' / D:on, onto, upon ; over, above
+sq «Brenda» in "Brenda shtëpisë është ngrohtë." ⇒ brenda / ADV /  / g:inside / 0.9 / S:adverb of 'ngrohtë' / D:inside, in
+sq «Jashtë» in "Jashtë qytetit." ⇒ jashtë / ADV /  / g:outside / 0.9 / S:adverb of 'qytetit' / D:out; outside, outdoors ; out of; outside
+sq «Përballë» in "Përballë shkollës." ⇒ — / — /  / g:— / 0 / D:in front, opposite, facing, against ; facing, countering something
+sq «ligjit» in "Sipas ligjit." ⇒ ligj / NOUN / definite masculine ablative singular / g:law / 0.85 / C:ablative-after-preposition,definite-noun-ending,form:Case=Abl|Definite=Def|Gender=Masc|Number=Sing / S:the main word of the sentence / D:law ; statute
+sq «tij» in "Ndaj tij." ⇒ ai / PRON / personal pronoun, third person singular masculine, ablative / g:he, she, it, they; him, her, them / 0.55 / also i tij/DET / C:form:Case=Abl|Gender=Masc|Number=Sing|Person=3|PronType=Prs / S:the main word of the sentence / D:he ; that
+sq «Deri» in "Deri në fund." ⇒ deri / ADP /  / g:until, up to, as far as / 0.9 / S:adverb of 'fund' / D:to ; until
+sq «Gjer» in "Gjer më sot." ⇒ — / — /  / g:— / 0 / D:dormouse
+sq «Falë» in "Falë ndihmës së tij." ⇒ fal / VERB / third person singular, present subjunctive (the form used after të) / g:to forgive / 0.85 / C:form:Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to forgive, pardon ; to forgive, pardon — to remit, grant amnesty
+sq «vend» in "Në vend të tij." ⇒ vend / NOUN / indefinite masculine accusative singular / g:place; country / 0.9 / C:form:Case=Acc|Definite=Ind|Gender=Masc|Number=Sing / P:në vend të / S:the main word of the sentence / D:place ; location
+sq «Përtej» in "Përtej lumit." ⇒ — / — /  / g:— / 0 / D:beyond, on the other side
+sq «Prapa» in "Prapa shtëpisë." ⇒ prapa / ADV /  / g:behind, at the back / 0.9 / S:adverb of 'shtëpisë' / D:behind ; after
+sq «Sipër» in "Sipër tavolinës." ⇒ — / — /  / g:— / 0 / D:over; above
+sq «Krahas» in "Krahas punës." ⇒ — / — /  / g:— / 0 / D:side by side; arm in arm ; beside, alongside
+sq «Kush» in "Kush është ai?" ⇒ kush / PRON / interrogative, nominative / g:who / 0.9 / C:form:Case=Nom|PronType=Int / S:the main word of the sentence / D:who (as an interrogative pronoun) ; nobody, noone (as an indefinite pr
+sq «Kë» in "Kë pe?" ⇒ kush / PRON / interrogative, accusative / g:who / 0.9 / C:form:Case=Acc|PronType=Int / S:adverbial phrase of 'pe' (place, time, manner, or an extra noun) / D:who (as an interrogative pronoun) ; nobody, noone (as an indefinite pr
+sq «Kujt» in "Kujt ia dhe?" ⇒ kush / PRON / interrogative, genitive, dative or ablative / g:who / 0.9 / C:form:Case=Gen,Dat,Abl|PronType=Int / S:adverbial phrase of 'dhe' (place, time, manner, or an extra noun) / D:who (as an interrogative pronoun) ; nobody, noone (as an indefinite pr
+sq «Çfarë» in "Çfarë bën?" ⇒ çfarë / PRON / interrogative / g:what / 0.9 / C:form:PronType=Int / S:direct object of 'bën' / D:what
+sq «Ç'bën» in "Ç'bën?" ⇒ bëj / VERB / second or third person singular, present / g:You do / 0.85 / C:form:Mood=Ind|Number=Sing|Person=2,3|Tense=Pres|VerbForm=Fin|Voice=Act / S:the main word of the sentence / D:to do, make ; to act as if (in use with si (“as if, like”) - appear me
+sq «Çka» in "Çka po bën?" ⇒ çfarë / PRON / interrogative / g:what / 0.8 / C:form:PronType=Int / S:direct object of 'bën' / D:what
+sq «Cili» in "Cili është emri yt?" ⇒ cili / PRON / interrogative or relative, masculine nominative singular / g:which, which one; who, which (relative) / 0.9 / C:form:Case=Nom|Gender=Masc|Number=Sing|PronType=Int,Rel / S:the main word of the sentence / D:which, who (also whom, which one, to whom, to which - for non-nominati
+sq «Ku» in "Ku jeton?" ⇒ ku / ADV / interrogative or relative / g:where / 0.9 / C:form:PronType=Int,Rel / S:adverb of 'jeton' / D:where (asking about a place, where or towards which direction) ; where
+sq «Nga» in "Nga je?" ⇒ nga / ADP /  / g:from, by, of / 0.9 / P:nga je / S:adverb of 'je' / D:at, from, to ; whence, where from
+sq «Kur» in "Kur vjen?" ⇒ kur / ADV / interrogative / g:when / 0.6 / also kur/SCONJ / C:form:PronType=Int / S:adverb of 'vjen' / D:when
+sq «Pse» in "Pse qan?" ⇒ pse / ADV / interrogative / g:why / 0.9 / C:form:PronType=Int / S:adverb of 'qan' / D:why
+sq «Sa» in "Sa kushton?" ⇒ sa / ADV / interrogative / g:how much, how many / 0.6 / also sa/SCONJ / C:form:PronType=Int / S:adverb of 'kushton' / D:how much
+sq «vjeç» in "Sa vjeç je?" ⇒ vjeç / ADJ / masculine singular / g:years old (after a number) / 0.55 / also vjeç/ADJ / C:form:Gender=Masc|Number=Sing / P:sa vjeç je / S:adverb of 'Sa' / D:years of age
+sq «Qysh» in "Qysh je?" ⇒ — / — /  / g:— / 0 / D:how? ; since
+sq «Ndonjë» in "Ndonjë pyetje?" ⇒ — / — /  / g:— / 0 / D:∅
+sq «askënd» in "Nuk pashë askënd." ⇒ — / — /  / g:— / 0 / D:∅
+sq «askujt» in "Nuk i thashë askujt." ⇒ — / — /  / g:— / 0 / D:∅
+sq «Dikë» in "Dikë kërkon." ⇒ — / — /  / g:— / 0 / D:great desire, lust, envy
+sq «Ca» in "Ca bukë." ⇒ — / — /  / g:— / 0 / D:some
+sq «dy» in "Të dy erdhën." ⇒ dy / NUM /  / g:two (2) / 0.9 / S:subject of 'erdhën' / D:two
+sq «dyja» in "Të dyja vajzat." ⇒ — / — /  / g:— / 0 / D:∅
+sq «Tjetri» in "Tjetri nuk erdhi." ⇒ — / — /  / g:— / 0 / D:∅
+sq «tjerët» in "Të tjerët ikën." ⇒ tjer / NOUN / definite plural, nominative or accusative / g:— / 0.4 UNCONF / C:definite-noun-ending / S:subject of 'ikën' / D:∅
+sq «Gjithçka» in "Gjithçka është gati." ⇒ gjithçka / PRON /  / g:everything / 0.9 / S:subject of 'gati' / D:everything
+sq «Kurrgjë» in "Kurrgjë nuk di." ⇒ — / — /  / g:— / 0 / D:nothin, anything
+sq «Secili» in "Secili ka të drejtë." ⇒ secili / PRON / indefinite, masculine nominative singular / g:each one, everyone / 0.9 / C:form:Case=Nom|Gender=Masc|Number=Sing|PronType=Ind / S:subject of 'ka' / D:∅
+sq «Njëri-tjetrin» in "Njëri-tjetrin e duan." ⇒ — / — /  / g:— / 0.4 / C:definite-noun-ending / D:∅
+sq «njëzet» in "Kam njëzet e një vjet." ⇒ njëzet / NUM /  / g:twenty (20) / 0.9 / S:direct object of 'Kam' / D:twenty
+sq «Dyzet» in "Dyzet ditë." ⇒ dyzet / NUM /  / g:forty (40) / 0.9 / S:number of 'ditë' / D:forty
+sq «Tridhjetë» in "Tridhjetë e pesë lekë." ⇒ tridhjetë / NUM /  / g:thirty (30) / 0.9 / S:the main word of the sentence / D:thirty
+sq «Dyqind» in "Dyqind euro." ⇒ — / — /  / g:— / 0 / D:∅
+sq «milion» in "Një milion banorë." ⇒ — / — /  / g:— / 0 / D:∅
+sq «Tri» in "Tri vajza dhe tre djem." ⇒ tre / NUM / feminine / g:three (3) / 0.9 / C:form:Gender=Fem / S:number of 'vajza' / D:three
+sq «Gjysmë» in "Gjysmë ore." ⇒ gjysmë / NOUN / indefinite feminine singular, nominative or accusative / g:half / 0.9 / C:form:Case=Nom,Acc|Definite=Ind|Gender=Fem|Number=Sing / S:the main word of the sentence / D:a half, ¹⁄₂ ; middle
+sq «çerek» in "Një çerek ore." ⇒ — / — /  / g:— / 0 / D:quarter, fourth, ¹⁄₄ ; synonym of çerekje
+sq «gjysmë» in "Ora është dy e gjysmë." ⇒ gjysmë / NOUN / indefinite feminine singular, nominative or accusative / g:half / 0.9 / C:form:Case=Nom,Acc|Definite=Ind|Gender=Fem|Number=Sing / S:direct object of 'dy' / D:a half, ¹⁄₂ ; middle
+sq «Nëntor» in "Më 28 Nëntor 1912." ⇒ nëntor / NOUN / indefinite masculine singular, nominative or accusative / g:November / 0.9 / C:form:Case=Nom,Acc|Definite=Ind|Gender=Masc|Number=Sing / S:the main word of the sentence / D:November
+sq «XX» in "Shekulli XX." ⇒ XX / NUM /  / g:Roman numeral 20 / 0.7 / D:∅
+sq «1990» in "Në vitin 1990." ⇒ — / — /  / g:— / 0 / D:∅
+sq «km» in "Rreth 3 km larg." ⇒ km / X /  / g:km, kilometre(s) / 0.9 / S:discourse word with 'Rreth' (yes, no, hello …) / D:∅
+sq «P.sh» in "P.sh. në Tiranë." ⇒ p.sh / X /  / g:p.sh., for example (për shembull) / 0.55 / S:discourse word with 'Tiranë' (yes, no, hello …) / D:∅
+sq «Dr» in "Dr. Arben Hoxha." ⇒ dr / X /  / g:Dr., doctor / 0.9 / S:discourse word with 'Hoxha' (yes, no, hello …) / D:∅
+sq «etj» in "Molla, dardha etj." ⇒ etj / X /  / g:etj., and so on (e të tjera) / 0.9 / S:discourse word with 'dardha' (yes, no, hello …) / D:∅
+sq «Zoti» in "Zoti Hoxha erdhi." ⇒ zot / NOUN / definite masculine nominative singular / g:Lord; God / 0.85 / also zot/NOUN / C:definite-noun-ending,definite-nominative-singular / S:subject of 'erdhi' / D:master, headman ; boss, head
+sq «Zonja» in "Zonja Drita." ⇒ zonjë / NOUN / definite feminine nominative singular / g:lady; Mrs., madam / 0.85 / also zonjë/NOUN / C:definite-noun-ending,definite-nominative-singular / S:the main word of the sentence / D:lady in a wealthy family with servants ; Mrs., ma'am
+sq «Zotëri» in "Zotëri, më falni." ⇒ — / — /  / g:— / 0 / D:mister, gentleman ; lord, sir

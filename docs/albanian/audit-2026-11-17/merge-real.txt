@@ -1,0 +1,82 @@
+gjysh (NOUN) Nom.Plur.Ind.Masc: gjyshër ≠ gjysha | Acc.Plur.Ind.Masc: gjyshër ≠ gjysha | Gen,Dat.Plur.Ind.Masc: gjyshërve ≠ gjyshave | Abl.Plur.Ind.Masc: gjyshërish ≠ gjyshash | Nom.Plur.Def.Masc: gjyshërit ≠ gjyshat | Acc.Plur.Def.Masc: gjyshërit ≠ gjyshat … [8]
+nip (NOUN) Abl.Plur.Ind.Masc: nipërish ≠ nipërsh
+teze (NOUN) Gen,Dat.Sing.Ind.Fem: tezeje ≠ tezje | Abl.Sing.Ind.Fem: tezeje ≠ tezje
+mikeshë (NOUN) Nom.Sing.Ind.Fem: mikeshë ≠ mik | Acc.Sing.Ind.Fem: mikeshë ≠ mik | Gen,Dat.Sing.Ind.Fem: mikeshe ≠ miku | Abl.Sing.Ind.Fem: mikeshe ≠ miku | Nom.Sing.Def.Fem: mikesha ≠ miku | Acc.Sing.Def.Fem: mikeshën ≠ mikun … [16]
+mësues (NOUN) Nom.Plur.Ind.Masc: mësues ≠ mësuës | Acc.Plur.Ind.Masc: mësues ≠ mësuës | Gen,Dat.Plur.Ind.Masc: mësuesve ≠ mësuësve | Abl.Plur.Ind.Masc: mësuesish ≠ mësuëssh | Gen,Dat.Plur.Def.Masc: mësuesve ≠ mësuësve | Abl.Plur.Def.Masc: mësuesve ≠ mësuësve
+shitës (NOUN) Abl.Plur.Ind.Masc: shitësish ≠ shitëssh
+kokë (NOUN) Nom.Plur.Ind.Fem: koka ≠ kokë | Acc.Plur.Ind.Fem: koka ≠ kokë | Gen,Dat.Plur.Ind.Fem: kokave ≠ kokëve | Abl.Plur.Ind.Fem: kokash ≠ kokësh | Nom.Plur.Def.Fem: kokat ≠ kokët | Acc.Plur.Def.Fem: kokat ≠ kokët … [8]
+hundë (NOUN) Nom.Plur.Ind.Fem: hunda ≠ hundë | Acc.Plur.Ind.Fem: hunda ≠ hundë | Gen,Dat.Plur.Ind.Fem: hundave ≠ hundëve | Abl.Plur.Ind.Fem: hundash ≠ hundësh | Nom.Plur.Def.Fem: hundat ≠ hundët | Acc.Plur.Def.Fem: hundat ≠ hundët … [8]
+lëkurë (NOUN) Nom.Plur.Ind.Fem: lëkura ≠ lëkurë | Acc.Plur.Ind.Fem: lëkura ≠ lëkurë | Gen,Dat.Plur.Ind.Fem: lëkurave ≠ lëkurëve | Abl.Plur.Ind.Fem: lëkurash ≠ lëkurësh | Nom.Plur.Def.Fem: lëkurat ≠ lëkurët | Acc.Plur.Def.Fem: lëkurat ≠ lëkurët … [8]
+shtrat (NOUN) Abl.Plur.Ind.Masc: shtretërish ≠ shtretërsh
+kompjuter (NOUN) Nom.Plur.Ind.Masc: kompjuterë ≠ kompjutera | Acc.Plur.Ind.Masc: kompjuterë ≠ kompjutera | Gen,Dat.Plur.Ind.Masc: kompjuterëve ≠ kompjuterave | Abl.Plur.Ind.Masc: kompjuterësh ≠ kompjuterash | Nom.Plur.Def.Masc: kompjuterët ≠ kompjuterat | Acc.Plur.Def.Masc: kompjuterët ≠ kompjuterat … [8]
+shishe (NOUN) Gen,Dat.Sing.Ind.Fem: shisheje ≠ shishe | Abl.Sing.Ind.Fem: shisheje ≠ shishe
+këmishë (NOUN) Nom.Plur.Ind.Fem: këmisha ≠ këmishë | Acc.Plur.Ind.Fem: këmisha ≠ këmishë | Gen,Dat.Plur.Ind.Fem: këmishave ≠ këmishëve | Abl.Plur.Ind.Fem: këmishash ≠ këmishësh | Nom.Plur.Def.Fem: këmishat ≠ këmishët | Acc.Plur.Def.Fem: këmishat ≠ këmishët … [8]
+çorape (NOUN) Nom.Sing.Ind.Fem: çorape ≠ çorap | Acc.Sing.Ind.Fem: çorape ≠ çorap | Gen,Dat.Sing.Ind.Fem: çorapeje ≠ çorapi | Abl.Sing.Ind.Fem: çorapeje ≠ çorapi | Nom.Sing.Def.Fem: çorapja ≠ çorapi | Acc.Sing.Def.Fem: çorapen ≠ çorapin … [8]
+spital (NOUN) Nom.Plur.Ind.Masc: spitale ≠ spitala | Acc.Plur.Ind.Masc: spitale ≠ spitala | Gen,Dat.Plur.Ind.Masc: spitaleve ≠ spitalave | Abl.Plur.Ind.Masc: spitalesh ≠ spitalash | Nom.Plur.Def.Masc: spitalet ≠ spitalat | Acc.Plur.Def.Masc: spitalet ≠ spitalat … [8]
+restorant (NOUN) Nom.Plur.Ind.Masc: restorante ≠ restorantë | Acc.Plur.Ind.Masc: restorante ≠ restorantë | Gen,Dat.Plur.Ind.Masc: restoranteve ≠ restorantëve | Abl.Plur.Ind.Masc: restorantesh ≠ restorantësh | Nom.Plur.Def.Masc: restorantet ≠ restorantët | Acc.Plur.Def.Masc: restorantet ≠ restorantët … [8]
+muze (NOUN) Nom.Plur.Ind.Masc: muzeume ≠ muze | Acc.Plur.Ind.Masc: muzeume ≠ muze | Gen,Dat.Plur.Ind.Masc: muzeumeve ≠ muzeve | Abl.Plur.Ind.Masc: muzeumesh ≠ muzesh | Nom.Plur.Def.Masc: muzeumet ≠ muzetë | Acc.Plur.Def.Masc: muzeumet ≠ muzetë … [8]
+hartë (NOUN) Nom.Plur.Ind.Fem: harta ≠ hartë | Acc.Plur.Ind.Fem: harta ≠ hartë | Gen,Dat.Plur.Ind.Fem: hartave ≠ hartëve | Abl.Plur.Ind.Fem: hartash ≠ hartësh | Nom.Plur.Def.Fem: hartat ≠ hartët | Acc.Plur.Def.Fem: hartat ≠ hartët … [8]
+luftë (NOUN) Nom.Plur.Ind.Fem: lufta ≠ luftëra | Acc.Plur.Ind.Fem: lufta ≠ luftëra | Gen,Dat.Plur.Ind.Fem: luftave ≠ luftërave | Abl.Plur.Ind.Fem: luftash ≠ luftërash | Nom.Plur.Def.Fem: luftat ≠ luftërat | Acc.Plur.Def.Fem: luftat ≠ luftërat … [8]
+natë (NOUN) Nom.Plur.Ind.Fem: net ≠ netë | Acc.Plur.Ind.Fem: net ≠ netë | Fem.Abl.Plur.Ind: netëve ≠ netësh
+muaj (NOUN) Nom.Plur.Def.Masc: muajt ≠ muajtë | Acc.Plur.Def.Masc: muajt ≠ muajtë
+martë (NOUN) Nom.Sing.Ind.Fem: martë ≠ e martë | Nom.Sing.Def.Fem: marta ≠ e marta | Gen,Dat.Sing.Def.Fem: martës ≠ së martës | Abl.Sing.Def.Fem: martës ≠ së martës
+enjte (NOUN) Nom.Sing.Ind.Fem: enjte ≠ e enjte | Nom.Sing.Def.Fem: enjtja ≠ e enjtja | Gen,Dat.Sing.Def.Fem: enjtes ≠ së enjtes | Abl.Sing.Def.Fem: enjtes ≠ së enjtes
+shkëmb (NOUN) Nom.Plur.Def.Masc: shkëmbinjtë ≠ shkëmbinjte | Acc.Plur.Def.Masc: shkëmbinjtë ≠ shkëmbinjte
+mace (NOUN) Gen,Dat.Sing.Ind.Fem: maceje ≠ mace | Abl.Sing.Ind.Fem: maceje ≠ mace
+atë (NOUN) Gen,Dat.Sing.Ind.Masc: ati ≠ eti | Abl.Sing.Ind.Masc: ati ≠ eti
+ungjill (NOUN) Nom.Plur.Def.Masc: ungjijtë ≠ ungjijt | Acc.Plur.Def.Masc: ungjijtë ≠ ungjijt
+meshë (NOUN) Nom.Plur.Ind.Fem: mesha ≠ meshë | Acc.Plur.Ind.Fem: mesha ≠ meshë | Gen,Dat.Plur.Ind.Fem: meshave ≠ meshëve | Abl.Plur.Ind.Fem: meshash ≠ meshësh | Nom.Plur.Def.Fem: meshat ≠ meshët | Acc.Plur.Def.Fem: meshat ≠ meshët … [8]
+murg (NOUN) Masc.Abl.Plur.Ind: murgjish ≠ murgjsh
+Ana (PROPN, record is NOUN) Nom.Sing.Def.Fem: Ana ≠ ana | Acc.Sing.Def.Fem: Anën ≠ anën | Gen,Dat.Sing.Def.Fem: Anës ≠ anës | Abl.Sing.Def.Fem: Anës ≠ anës
+peshk (NOUN) Abl.Plur.Ind.Masc: peshqsh ≠ peshqish
+bujk (NOUN) Abl.Plur.Ind.Masc: bujqsh ≠ bujqish
+moshë (NOUN) Nom.Plur.Ind.Fem: moshë ≠ mosha | Acc.Plur.Ind.Fem: moshë ≠ mosha | Gen,Dat.Plur.Ind.Fem: moshëve ≠ moshave | Abl.Plur.Ind.Fem: moshësh ≠ moshash | Nom.Plur.Def.Fem: moshët ≠ moshat | Acc.Plur.Def.Fem: moshët ≠ moshat … [8]
+radhë (NOUN) Nom.Plur.Ind.Fem: radha ≠ radhë | Acc.Plur.Ind.Fem: radha ≠ radhë | Gen,Dat.Plur.Ind.Fem: radhave ≠ radhëve | Abl.Plur.Ind.Fem: radhash ≠ radhësh | Nom.Plur.Def.Fem: radhat ≠ radhët | Acc.Plur.Def.Fem: radhat ≠ radhët … [8]
+trashëgimi (NOUN) Nom.Sing.Ind.Fem: trashëgimi ≠ trashëgim | Acc.Sing.Ind.Fem: trashëgimi ≠ trashëgim | Gen,Dat.Sing.Ind.Fem: trashëgimie ≠ trashëgimi | Abl.Sing.Ind.Fem: trashëgimie ≠ trashëgimi | Nom.Sing.Def.Fem: trashëgimia ≠ trashëgimi | Acc.Sing.Def.Fem: trashëgiminë ≠ trashëgimin … [8]
+kufi (NOUN) Nom.Plur.Ind.Masc: kufij ≠ kufijt | Acc.Plur.Ind.Masc: kufij ≠ kufijt | Gen,Dat.Plur.Ind.Masc: kufijve ≠ kufijtve | Abl.Plur.Ind.Masc: kufijsh ≠ kufijtsh | Gen,Dat.Plur.Def.Masc: kufijve ≠ kufijtve | Abl.Plur.Def.Masc: kufijve ≠ kufijtve
+komunë (NOUN) Acc.Sing.Def.Fem: komunën ≠ komunave | Gen,Dat.Sing.Def.Fem: komunës ≠ komunave | Abl.Sing.Def.Fem: komunës ≠ komunave | Gen,Dat.Plur.Ind.Fem: komunave ≠ komunës | Abl.Plur.Ind.Fem: komunash ≠ komunës | Gen,Dat.Plur.Def.Fem: komunave ≠ komunavet … [7]
+anë (NOUN) Nom.Plur.Ind.Fem: ana ≠ anë | Acc.Plur.Ind.Fem: ana ≠ anë | Gen,Dat.Plur.Ind.Fem: anave ≠ anëve | Abl.Plur.Ind.Fem: anash ≠ anësh | Nom.Plur.Def.Fem: anat ≠ anët | Acc.Plur.Def.Fem: anat ≠ anët … [8]
+krenari (NOUN, record is PROPN) Nom.Sing.Ind.Fem: krenari ≠ Krenar | Acc.Sing.Ind.Fem: krenari ≠ Krenar | Nom.Sing.Def.Fem: krenaria ≠ Krenari | Acc.Sing.Def.Fem: krenarinë ≠ Krenarin
+prind (NOUN) Abl.Plur.Ind.Masc: prindërish ≠ prindërsh
+lot (NOUN) Nom.Plur.Ind.Masc: lot ≠ lotë | Acc.Plur.Ind.Masc: lot ≠ lotë | Gen,Dat.Plur.Ind.Masc: lotve ≠ lotëve | Abl.Plur.Ind.Masc: lotsh ≠ lotësh | Nom.Plur.Def.Masc: lottë ≠ lotët | Acc.Plur.Def.Masc: lottë ≠ lotët … [8]
+fletë (NOUN) Nom.Plur.Ind.Fem: fleta ≠ fletë | Acc.Plur.Ind.Fem: fleta ≠ fletë | Gen,Dat.Plur.Ind.Fem: fletave ≠ fletëve | Abl.Plur.Ind.Fem: fletash ≠ fletësh | Nom.Plur.Def.Fem: fletat ≠ fletët | Acc.Plur.Def.Fem: fletat ≠ fletët … [8]
+kurriz (NOUN) Nom.Plur.Ind.Masc: kurriza ≠ kurrize | Acc.Plur.Ind.Masc: kurriza ≠ kurrize | Gen,Dat.Plur.Ind.Masc: kurrizave ≠ kurrizeve | Abl.Plur.Ind.Masc: kurrizash ≠ kurrizesh | Nom.Plur.Def.Masc: kurrizat ≠ kurrizet | Acc.Plur.Def.Masc: kurrizat ≠ kurrizet … [8]
+zëvendës (NOUN) Abl.Plur.Ind.Masc: zëvendësish ≠ zëvendëssh
+guxim (NOUN, record is PROPN) Nom.Sing.Ind.Masc: guxim ≠ Guxim | Acc.Sing.Ind.Masc: guxim ≠ Guxim | Nom.Sing.Def.Masc: guximi ≠ Guximi | Acc.Sing.Def.Masc: guximin ≠ Guximin
+barrë (NOUN) Nom.Plur.Ind.Fem: barra ≠ barrë | Acc.Plur.Ind.Fem: barra ≠ barrë | Gen,Dat.Plur.Ind.Fem: barrave ≠ barrëve | Abl.Plur.Ind.Fem: barrash ≠ barrësh | Nom.Plur.Def.Fem: barrat ≠ barrët | Acc.Plur.Def.Fem: barrat ≠ barrët … [8]
+shpatull (NOUN) Acc.Sing.Def.Fem: shpatullën ≠ shpatulln | Gen,Dat.Sing.Def.Fem: shpatullës ≠ shpatulls | Abl.Sing.Def.Fem: shpatullës ≠ shpatulls
+qëndrim (NOUN, record is PROPN) Nom.Sing.Ind.Masc: qëndrim ≠ Qëndrim | Acc.Sing.Ind.Masc: qëndrim ≠ Qëndrim | Nom.Sing.Def.Masc: qëndrimi ≠ Qëndrimi | Acc.Sing.Def.Masc: qëndrimin ≠ Qëndrimin
+i ulët (ADJ) Masc.Plur: të ulët ≠ të ulëta
+i hollë (ADJ) Masc.Plur: të hollë ≠ të hólla
+verior (ADJ) Masc.Plur: veriorë ≠ verióre
+jam (VERB) 2.Plur.Opt.Act: qofshi ≠ qofshit
+dua (VERB) 3.Sing.Pres.Sub.Act: dashë ≠ të dojë
+bie (VERB) 2.Plur.Pres.Ind.Act: bieni ≠ bini | 2.Plur.Pres.Sub.Act: bieni ≠ të bini
+iki (VERB) 1.Sing.Pres.Sub.Act: iki ≠ të ik
+ha (VERB) 3.Sing.Pres.Sub.Act: hajë ≠ të haje
+di (VERB) 2.Sing.Imp.Act: dije ≠ di | 2.Plur.Imp.Act: dijeni ≠ dini
+lë (VERB) 2.Plur.Pres.Ind.Act: lini/liheni ≠ lëni | 2.Sing.Pres.Sub.Act: lësh/të lihesh ≠ të lesh | 2.Plur.Pres.Sub.Act: lini/të liheni ≠ të lëni
+pres (VERB) 1.Sing.Pres.Ind.Act: pres ≠ pres (³prej, ³prëj) | 2.Sing.Pres.Ind.Act: pret ≠ pret (³pren) | 3.Sing.Pres.Ind.Act: pret ≠ pret (³pren) | 1.Plur.Pres.Ind.Act: presim ≠ presim (³prejm) | 2.Plur.Pres.Ind.Act: prisni ≠ prisni (³preni) | 3.Plur.Pres.Ind.Act: presin ≠ presin (³prejnë) … [19]
+vdes (VERB) 2.Plur.Pres.Ind.Act: vdisni ≠ vdesni | 3.Sing.Past.Ind.Act: vdiq ≠ vdiqi | 2.Sing.Pres.Sub.Act: vdesësh ≠ të vdësh | 2.Plur.Pres.Sub.Act: vdisni ≠ të vdesni | 3.Plur.Pres.Sub.Act: vdesin ≠ të vdesën
+hedh (VERB) 2.Plur.Pres.Ind.Act: hidhni ≠ hedhni | 2.Plur.Pres.Sub.Act: hidhni ≠ të hedhni
+mbledh (VERB) 2.Plur.Pres.Ind.Act: mblidhni ≠ mbledhni | 2.Plur.Pres.Sub.Act: mblidhni ≠ të mbledhni
+zgjedh (VERB) 2.Plur.Pres.Ind.Act: zgjidhni ≠ zgidhni | 1.Sing.Imp.Ind.Act: zgjidhja ≠ zgidhja | 2.Sing.Imp.Ind.Act: zgjidhje ≠ zgidhje | 3.Sing.Imp.Ind.Act: zgjidhte ≠ zgidhte | 1.Plur.Imp.Ind.Act: zgjidhnim ≠ zgidhnim | 2.Plur.Imp.Ind.Act: zgjidhnit ≠ zgidhnit … [16]
+vras (VERB) 2.Plur.Pres.Ind.Act: vrisni ≠ vritni | 1.Sing.Imp.Ind.Act: vrisja ≠ vritja | 2.Sing.Imp.Ind.Act: vrisje ≠ vritje | 1.Plur.Imp.Ind.Act: vrisnim ≠ vritnim | 2.Plur.Imp.Ind.Act: vrisnit ≠ vritnit | 3.Plur.Imp.Ind.Act: vrisnin ≠ vritnin … [8]
+vesh (VERB) 2.Plur.Pres.Ind.Act: vishni ≠ veshni | 1.Sing.Imp.Ind.Act: vishja ≠ veshja | 2.Sing.Imp.Ind.Act: vishje ≠ veshje | 3.Sing.Imp.Ind.Act: vishte ≠ veshte | 1.Plur.Imp.Ind.Act: vishnim ≠ veshnim | 2.Plur.Imp.Ind.Act: vishnit ≠ veshnit … [10]
+qesh (VERB) 3.Sing.Past.Ind.Act: qeshi ≠ qeshqesh
+humbas (VERB) 2.Plur.Pres.Ind.Act: humbisni ≠ humbitni (humbisni) | 1.Sing.Imp.Ind.Act: humbisja ≠ humbitja (humbisja) | 2.Sing.Imp.Ind.Act: humbisje ≠ humbitje (humbisje) | 1.Plur.Imp.Ind.Act: humbisnim ≠ humbitnim (humbisnim) | 2.Plur.Imp.Ind.Act: humbisnit ≠ humbitnit (humbisnit) | 3.Plur.Imp.Ind.Act: humbisnin ≠ humbitnin (humbisnin) … [8]
+mbyt (VERB) 1.Sing.Pres.Ind.Act: mbyt/mbytem ≠ mbyt (mbys) | 2.Sing.Pres.Ind.Act: mbyt/mbytesh ≠ mbyt (mbys) | 3.Sing.Pres.Ind.Act: mbyt/mbytet ≠ mbyt (mbys) | 1.Plur.Pres.Ind.Act: mbytim/mbytemi ≠ mbytim (mbysim) | 2.Plur.Pres.Ind.Act: mbytni/mbyteni ≠ mbytini (mbysini) | 3.Plur.Pres.Ind.Act: mbytin/mbyten ≠ mbytin (mbysin) … [13]
+zhduk (VERB) 3.Sing.Past.Ind.Act: zhduki ≠ zhduku
+vuaj (VERB) 1.Sing.Past.Ind.Act: vuajta ≠ vova | 2.Sing.Past.Ind.Act: vuajte ≠ vove | 3.Sing.Past.Ind.Act: vuajti ≠ voi | 1.Plur.Past.Ind.Act: vuajtëm ≠ vuam | 2.Plur.Past.Ind.Act: vuajtët ≠ vuat | 3.Plur.Past.Ind.Act: vuajtën ≠ vuan … [7]
+mbaj (VERB) 2.Sing.Imp.Act: mbaj ≠ Mbaj! | 2.Plur.Imp.Act: mbani ≠ Mbani!
+mbroj (VERB) 1.Sing.Past.Ind.Act: mbrojta ≠ mbrova | 2.Sing.Past.Ind.Act: mbrojte ≠ mbrove | 3.Sing.Past.Ind.Act: mbrojti ≠ mbroi | 1.Plur.Past.Ind.Act: mbrojtëm ≠ mbruam | 2.Plur.Past.Ind.Act: mbrojtët ≠ mbruat | 3.Plur.Past.Ind.Act: mbrojtën ≠ mbruan … [7]
+pajtohem (VERB) Ger: duke u pajtuar ≠ duke pajtuar
+rregulloj (VERB) 1.Sing.Pres.Ind.Act: rregulloj ≠ regulloj | 2.Sing.Pres.Ind.Act: rregullon ≠ regullon | 3.Sing.Pres.Ind.Act: rregullon ≠ regullon | 1.Plur.Pres.Ind.Act: rregullojmë ≠ regullojmë | 2.Plur.Pres.Ind.Act: rregulloni ≠ regulloni | 3.Plur.Pres.Ind.Act: rregullojnë ≠ regullojnë … [39]
+numëroj (VERB) 1.Sing.Pres.Ind.Act: numëroj ≠ numeroj | 2.Sing.Pres.Ind.Act: numëron ≠ numeron | 3.Sing.Pres.Ind.Act: numëron ≠ numeron | 1.Plur.Pres.Ind.Act: numërojmë ≠ numerojmë | 2.Plur.Pres.Ind.Act: numëroni ≠ numeroni | 3.Plur.Pres.Ind.Act: numërojnë ≠ numerojnë … [40]
+përfundoj (VERB) 2.Sing.Pres.Ind.Act: përfundon ≠ përfundoj | 3.Sing.Pres.Ind.Act: përfundon ≠ përfundoj | 1.Plur.Pres.Ind.Act: përfundojmë ≠ përfundojim | 2.Plur.Pres.Ind.Act: përfundoni ≠ përfundojni | 3.Plur.Pres.Ind.Act: përfundojnë ≠ përfundojin | 1.Sing.Imp.Ind.Act: përfundoja ≠ përfundojja … [36]
+bërtas (VERB) 3.Sing.Imp.Ind.Act: bërtitte ≠ bërtiste
+fik (VERB) 3.Sing.Past.Ind.Act: fiki ≠ fiku
+thërras (VERB) 3.Sing.Imp.Ind.Act: thërritte ≠ thërriste
+dridhem (VERB) Part: dridhur ≠ dredhur
+shkëlqej (VERB) 3.Sing.Past.Ind.Act: shkëlqei ≠ shkëlqeu
+udhëheq (VERB) 2.Plur.Pres.Ind.Act: udhëheqni ≠ udhëhiqni | 1.Sing.Imp.Ind.Act: udhëheqja ≠ udhëhiqja | 2.Sing.Imp.Ind.Act: udhëheqje ≠ udhëhiqje | 3.Sing.Imp.Ind.Act: udhëheqte ≠ udhëhiqte | 1.Plur.Imp.Ind.Act: udhëheqnim ≠ udhëhiqnim | 2.Plur.Imp.Ind.Act: udhëheqnit ≠ udhëhiqnit … [10]

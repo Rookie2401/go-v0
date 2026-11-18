@@ -1,0 +1,128 @@
+# person not narrowed / wrongly narrowed
+sq | Ai ha bukë. | ha
+sq | Ajo pi ujë. | pi
+sq | Fëmija fle. | fle
+sq | Ti di shumë. | di
+sq | Ai hap derën. | hap
+sq | Ajo flet shqip. | flet
+sq | Ti flet shumë mirë. | flet
+sq | Ai e lë punën. | lë
+# mediopassive read as aorist (restored ë)
+sq | Fëmijët rriten shpejt. | rriten
+sq | Unë rritem në fshat. | rritem
+sq | Peshku kapet me rrjetë. | kapet
+sq | Treni ndalet këtu. | ndalet
+sq | Buka prishet shpejt. | prishet
+sq | Kjo fjalë përmendet shpesh. | përmendet
+sq | Mysafirët priten mirë. | priten
+sq | Vendimi merret nesër. | merret
+sq | Ai merret me sport. | merret
+# homographs: të
+sq | Dua të shkoj. | të
+sq | Të pashë dje. | Të
+sq | Një libër të ri. | të
+sq | Të gjithë erdhën. | Të
+sq | Për të shkuar duhet kohë. | të
+sq | Shko te mjeku. | te
+sq | Do të të ndihmoj. | të#2
+# homographs: e
+sq | E pashë Benin. | E
+sq | Buka e misrit. | e
+sq | Ti e unë. | e
+sq | Nëna e babai. | e
+# një, do, si, që, po, u, i, a
+sq | Kam një libër. | një
+sq | Një e një bëjnë dy. | Një
+sq | Si je? | Si
+sq | Punon si mjek. | si
+sq | Libri që lexova. | që
+sq | Mendoj që ke të drejtë. | që
+sq | Që nga dje nuk ka ardhur. | Që
+sq | Po, vij. | Po
+sq | Po të duash, eja. | Po
+sq | Po shkoj. | Po
+sq | I thashë. | I
+sq | I pashë fëmijët. | I
+sq | U thashë të vijnë. | U
+sq | U nis herët. | U
+sq | A e di? | A
+sq | Kafe a çaj? | a
+sq | Ai erdhi më 5 maj. | më
+sq | Më pëlqen muzika. | Më
+sq | Nuk dua më. | më
+sq | Pa mua nuk shkon. | Pa
+sq | Pa prit pak. | Pa
+sq | Para dy ditësh. | Para
+sq | Nuk kam para. | para
+sq | Ditët e para. | para
+sq | Dhe ai erdhi. | Dhe
+sq | Mbuloi me dhe. | dhe
+sq | Se ç'ke? | Se
+sq | Është më i madh se unë. | se
+sq | Mirë se erdhe! | erdhe
+# prepositions and case
+sq | Shkoj në shkollë me autobus. | me
+sq | Erdhi nga Tirana. | Tirana
+sq | Është tek unë. | tek
+sq | Libri është mbi tavolinë. | mbi
+sq | Brenda shtëpisë është ngrohtë. | Brenda
+sq | Jashtë qytetit. | Jashtë
+sq | Përballë shkollës. | Përballë
+sq | Sipas ligjit. | ligjit
+sq | Ndaj tij. | tij
+sq | Deri në fund. | Deri
+sq | Gjer më sot. | Gjer
+sq | Falë ndihmës së tij. | Falë
+sq | Në vend të tij. | vend
+sq | Përtej lumit. | Përtej
+sq | Prapa shtëpisë. | Prapa
+sq | Sipër tavolinës. | Sipër
+sq | Krahas punës. | Krahas
+# question words and indefinites
+sq | Kush është ai? | Kush
+sq | Kë pe? | Kë
+sq | Kujt ia dhe? | Kujt
+sq | Çfarë bën? | Çfarë
+sq | Ç'bën? | Ç'bën
+sq | Çka po bën? | Çka
+sq | Cili është emri yt? | Cili
+sq | Ku jeton? | Ku
+sq | Nga je? | Nga
+sq | Kur vjen? | Kur
+sq | Pse qan? | Pse
+sq | Sa kushton? | Sa
+sq | Sa vjeç je? | vjeç
+sq | Qysh je? | Qysh
+sq | Ndonjë pyetje? | Ndonjë
+sq | Nuk pashë askënd. | askënd
+sq | Nuk i thashë askujt. | askujt
+sq | Dikë kërkon. | Dikë
+sq | Ca bukë. | Ca
+sq | Të dy erdhën. | dy
+sq | Të dyja vajzat. | dyja
+sq | Tjetri nuk erdhi. | Tjetri
+sq | Të tjerët ikën. | tjerët
+sq | Gjithçka është gati. | Gjithçka
+sq | Kurrgjë nuk di. | Kurrgjë
+sq | Secili ka të drejtë. | Secili
+sq | Njëri-tjetrin e duan. | Njëri-tjetrin
+# numbers
+sq | Kam njëzet e një vjet. | njëzet
+sq | Dyzet ditë. | Dyzet
+sq | Tridhjetë e pesë lekë. | Tridhjetë
+sq | Dyqind euro. | Dyqind
+sq | Një milion banorë. | milion
+sq | Tri vajza dhe tre djem. | Tri
+sq | Gjysmë ore. | Gjysmë
+sq | Një çerek ore. | çerek
+sq | Ora është dy e gjysmë. | gjysmë
+sq | Më 28 Nëntor 1912. | Nëntor
+sq | Shekulli XX. | XX
+sq | Në vitin 1990. | 1990
+sq | Rreth 3 km larg. | km
+sq | P.sh. në Tiranë. | P.sh
+sq | Dr. Arben Hoxha. | Dr
+sq | Molla, dardha etj. | etj
+sq | Zoti Hoxha erdhi. | Zoti
+sq | Zonja Drita. | Zonja
+sq | Zotëri, më falni. | Zotëri

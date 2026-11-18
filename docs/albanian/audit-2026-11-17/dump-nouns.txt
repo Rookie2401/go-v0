@@ -1,0 +1,819 @@
+m njeri	def njeriu	acc njeriun	gen njeriut	indGen njeriu	PL njerëz	PLdef njerëzit	PLgen njerëzve	PLabl njerëzish	person, human being
+m burrë	def burri	acc burrin	gen burrit	indGen burri	PL burra	PLdef burrat	PLgen burrave	PLabl burrash	man; husband
+f grua	def gruaja	acc gruan	gen gruas	indGen -	PL gra	PLdef gratë	PLgen grave	PLabl grash	woman; wife
+m djalë	def djali	acc djalin	gen djalit	indGen djali	PL djem	PLdef djemtë	PLgen djemve	PLabl djemsh	boy; son
+f vajzë	def vajza	acc vajzën	gen vajzës	indGen vajze	PL vajza	PLdef vajzat	PLgen vajzave	PLabl vajzash	girl; daughter
+m fëmijë	def fëmija	acc fëmijën	gen fëmijës	indGen fëmije	PL fëmijë	PLdef fëmijët	PLgen fëmijëve	PLabl fëmijësh	child
+f familje	def familja	acc familjen	gen familjes	indGen -	PL familje	PLdef familjet	PLgen familjeve	PLabl familjesh	family
+f nënë	def nëna	acc nënën	gen nënës	indGen nëne	PL nëna	PLdef nënat	PLgen nënave	PLabl nënash	mother
+f zonjë	def zonja	acc zonjën	gen zonjës	indGen zonje	PL zonja	PLdef zonjat	PLgen zonjave	PLabl zonjash	lady; Mrs., madam
+m baba	def babai	acc babanë	gen babait	indGen babai	PL baballarë	PLdef baballarët	PLgen baballarëve	PLabl baballarësh	father (family word)
+f motër	def motra	acc motrën	gen motrës	indGen motre	PL motra	PLdef motrat	PLgen motrave	PLabl motrash	sister
+m vëlla	def vëllai	acc vëllanë?	gen vëllait	indGen vëllai	PL vëllezër	PLdef vëllezërit	PLgen vëllezërve	PLabl vëllezërish	brother
+m bir	def biri	acc birin	gen birit	indGen biri	PL bij	PLdef bijtë	PLgen bijve	PLabl bijsh	son
+f bijë	def bija	acc bijën	gen bijës	indGen bije	PL bija	PLdef bijat	PLgen bijave	PLabl bijash	daughter
+m gjysh	def gjyshi	acc gjyshin	gen gjyshit	indGen gjyshi	PL gjyshër	PLdef gjyshërit	PLgen gjyshërve	PLabl gjyshërish	grandfather
+f gjyshe	def gjyshja	acc gjyshen	gen gjyshes	indGen gjysheje	PL gjyshe	PLdef gjyshet	PLgen gjysheve	PLabl gjyshesh	grandmother
+f mbesë	def mbesa	acc mbesën	gen mbesës	indGen mbese	PL mbesa	PLdef mbesat	PLgen mbesave	PLabl mbesash	niece; granddaughter
+m nip	def nipi	acc nipin	gen nipit	indGen nipi	PL nipër	PLdef nipërit	PLgen nipërve	PLabl nipërish?	nephew; grandson
+f hallë	def halla	acc hallën	gen hallës	indGen halle	PL halla	PLdef hallat	PLgen hallave	PLabl hallash	aunt (father's sister)
+f teze	def tezja	acc tezen	gen tezes	indGen tezeje?	PL teze	PLdef tezet	PLgen tezeve	PLabl tezesh	aunt (mother's sister)
+m kushëri	def kushëriri	acc kushëririn	gen kushëririt	indGen kushëriri	PL kushërinj	PLdef kushërinjtë	PLgen kushërinjve	PLabl kushërinjsh	cousin
+f nuse	def nusja	acc nusen	gen nuses	indGen nuseje	PL nuse	PLdef nuset	PLgen nuseve	PLabl nusesh	bride; daughter-in-law
+m shok	def shoku	acc shokun	gen shokut	indGen shoku	PL shokë	PLdef shokët	PLgen shokëve	PLabl shokësh	friend, comrade
+f shoqe	def shoqja	acc shoqen	gen shoqes	indGen shoqeje	PL shoqe	PLdef shoqet	PLgen shoqeve	PLabl shoqesh	female friend
+m mik	def miku	acc mikun	gen mikut	indGen miku	PL miq	PLdef miqtë	PLgen miqve	PLabl miqsh	friend; guest
+f mikeshë	def mikesha	acc mikeshën	gen mikeshës	indGen mikeshe	PL mikesha	PLdef mikeshat	PLgen mikeshave	PLabl mikeshash	female friend
+m fqinj	def fqinji	acc fqinjin	gen fqinjit	indGen fqinji	PL fqinjë	PLdef fqinjët	PLgen fqinjëve	PLabl fqinjësh	neighbour
+m mysafir	def mysafiri	acc mysafirin	gen mysafirit	indGen mysafiri	PL mysafirë	PLdef mysafirët	PLgen mysafirëve	PLabl mysafirësh	guest
+m vizitor	def vizitori	acc vizitorin	gen vizitorit	indGen vizitori	PL vizitorë	PLdef vizitorët	PLgen vizitorëve	PLabl vizitorësh	visitor
+m mjek	def mjeku	acc mjekun	gen mjekut	indGen mjeku	PL mjekë	PLdef mjekët	PLgen mjekëve	PLabl mjekësh	doctor
+m infermier	def infermieri	acc infermierin	gen infermierit	indGen infermieri	PL infermierë	PLdef infermierët	PLgen infermierëve	PLabl infermierësh	nurse (man)
+f infermiere	def infermierja	acc infermieren	gen infermieres	indGen infermiereje	PL infermiere	PLdef infermieret	PLgen infermiereve	PLabl infermieresh	nurse (woman)
+m mësues	def mësuesi	acc mësuesin	gen mësuesit	indGen mësuesi	PL mësues	PLdef mësuesit	PLgen mësuesve	PLabl mësuesish	teacher (man)
+f mësuese	def mësuesja	acc mësuesen	gen mësueses	indGen mësueseje	PL mësuese	PLdef mësueset	PLgen mësueseve	PLabl mësuesesh	teacher (woman)
+m nxënës	def nxënësi	acc nxënësin	gen nxënësit	indGen nxënësi	PL nxënës	PLdef nxënësit	PLgen nxënësve	PLabl nxënësish	pupil
+m student	def studenti	acc studentin	gen studentit	indGen studenti	PL studentë	PLdef studentët	PLgen studentëve	PLabl studentësh	student
+m profesor	def profesori	acc profesorin	gen profesorit	indGen profesori	PL profesorë	PLdef profesorët	PLgen profesorëve	PLabl profesorësh	professor
+m punëtor	def punëtori	acc punëtorin	gen punëtorit	indGen punëtori	PL punëtorë	PLdef punëtorët	PLgen punëtorëve	PLabl punëtorësh	worker
+m fshatar	def fshatari	acc fshatarin	gen fshatarit	indGen fshatari	PL fshatarë	PLdef fshatarët	PLgen fshatarëve	PLabl fshatarësh	villager, peasant
+m shitës	def shitësi	acc shitësin	gen shitësit	indGen shitësi	PL shitës	PLdef shitësit	PLgen shitësve	PLabl shitësish?	seller, shop assistant
+m kamarier	def kamarieri	acc kamarierin	gen kamarierit	indGen kamarieri	PL kamarierë	PLdef kamarierët	PLgen kamarierëve	PLabl kamarierësh	waiter
+m kuzhinier	def kuzhinieri	acc kuzhinierin	gen kuzhinierit	indGen kuzhinieri	PL kuzhinierë	PLdef kuzhinierët	PLgen kuzhinierëve	PLabl kuzhinierësh	cook
+m shofer	def shoferi	acc shoferin	gen shoferit	indGen shoferi	PL shoferë	PLdef shoferët	PLgen shoferëve	PLabl shoferësh	driver
+m ushtar	def ushtari	acc ushtarin	gen ushtarit	indGen ushtari	PL ushtarë	PLdef ushtarët	PLgen ushtarëve	PLabl ushtarësh	soldier
+m mbret	def mbreti	acc mbretin	gen mbretit	indGen mbreti	PL mbretër	PLdef mbretërit	PLgen mbretërve	PLabl mbretërish	king
+m president	def presidenti	acc presidentin	gen presidentit	indGen presidenti	PL presidentë	PLdef presidentët	PLgen presidentëve	PLabl presidentësh	president
+m ministër	def ministri	acc ministrin	gen ministrit	indGen ministri	PL ministra	PLdef ministrat	PLgen ministrave	PLabl ministrash	minister
+m kryetar	def kryetari	acc kryetarin	gen kryetarit	indGen kryetari	PL kryetarë	PLdef kryetarët	PLgen kryetarëve	PLabl kryetarësh	chairman, mayor
+m drejtor	def drejtori	acc drejtorin	gen drejtorit	indGen drejtori	PL drejtorë	PLdef drejtorët	PLgen drejtorëve	PLabl drejtorësh	director, headmaster
+m avokat	def avokati	acc avokatin	gen avokatit	indGen avokati	PL avokatë	PLdef avokatët	PLgen avokatëve	PLabl avokatësh	lawyer
+m gjyqtar	def gjyqtari	acc gjyqtarin	gen gjyqtarit	indGen gjyqtari	PL gjyqtarë	PLdef gjyqtarët	PLgen gjyqtarëve	PLabl gjyqtarësh	judge
+m inxhinier	def inxhinieri	acc inxhinierin	gen inxhinierit	indGen inxhinieri	PL inxhinierë	PLdef inxhinierët	PLgen inxhinierëve	PLabl inxhinierësh	engineer
+m artist	def artisti	acc artistin	gen artistit	indGen artisti	PL artistë	PLdef artistët	PLgen artistëve	PLabl artistësh	artist
+m shkrimtar	def shkrimtari	acc shkrimtarin	gen shkrimtarit	indGen shkrimtari	PL shkrimtarë	PLdef shkrimtarët	PLgen shkrimtarëve	PLabl shkrimtarësh	writer
+m poet	def poeti	acc poetin	gen poetit	indGen poeti	PL poetë	PLdef poetët	PLgen poetëve	PLabl poetësh	poet
+m piktor	def piktori	acc piktorin	gen piktorit	indGen piktori	PL piktorë	PLdef piktorët	PLgen piktorëve	PLabl piktorësh	painter
+m këngëtar	def këngëtari	acc këngëtarin	gen këngëtarit	indGen këngëtari	PL këngëtarë	PLdef këngëtarët	PLgen këngëtarëve	PLabl këngëtarësh	singer
+m gazetar	def gazetari	acc gazetarin	gen gazetarit	indGen gazetari	PL gazetarë	PLdef gazetarët	PLgen gazetarëve	PLabl gazetarësh	journalist
+m koleg	def kolegu	acc kolegun	gen kolegut	indGen kolegu	PL kolegë	PLdef kolegët	PLgen kolegëve	PLabl kolegësh	colleague
+m anëtar	def anëtari	acc anëtarin	gen anëtarit	indGen anëtari	PL anëtarë	PLdef anëtarët	PLgen anëtarëve	PLabl anëtarësh	member
+m turist	def turisti	acc turistin	gen turistit	indGen turisti	PL turistë	PLdef turistët	PLgen turistëve	PLabl turistësh	tourist
+m udhëtar	def udhëtari	acc udhëtarin	gen udhëtarit	indGen udhëtari	PL udhëtarë	PLdef udhëtarët	PLgen udhëtarëve	PLabl udhëtarësh	traveller
+m popull	def populli	acc popullin	gen popullit	indGen populli	PL popuj	PLdef popujt	PLgen popujve	PLabl popujsh	people, nation
+f kokë	def koka?	acc kokën	gen kokës	indGen koke	PL koka?	PLdef kokat~	PLgen kokave~	PLabl kokash?	head
+m sy	def syri	acc syrin	gen syrit	indGen syri	PL sy	PLdef sytë	PLgen syve	PLabl sysh	eye
+m vesh	def veshi	acc veshin	gen veshit	indGen veshi	PL veshë	PLdef veshët	PLgen veshëve	PLabl veshësh	ear
+f hundë	def hunda?	acc hundën	gen hundës	indGen hunde	PL hunda?	PLdef hundat?	PLgen hundave?	PLabl hundash?	nose
+f gojë	def goja	acc gojën	gen gojës	indGen goje	PL gojë	PLdef gojët	PLgen gojëve	PLabl gojësh	mouth
+f buzë	def buza	acc buzën	gen buzës	indGen buze	PL buzë	PLdef buzët	PLgen buzëve	PLabl buzësh	lip
+m dhëmb	def dhëmbi	acc dhëmbin	gen dhëmbit	indGen dhëmbi	PL dhëmbë	PLdef dhëmbët	PLgen dhëmbëve	PLabl dhëmbësh	tooth
+f gjuhë	def gjuha	acc gjuhën	gen gjuhës	indGen gjuhe	PL gjuhë	PLdef gjuhët	PLgen gjuhëve	PLabl gjuhësh	tongue; language
+m flok	def floku	acc flokun	gen flokut	indGen floku	PL flokë	PLdef flokët	PLgen flokëve	PLabl flokësh	hair
+f fytyrë	def fytyra	acc fytyrën	gen fytyrës	indGen fytyre	PL fytyra	PLdef fytyrat	PLgen fytyrave	PLabl fytyrash	face
+f qafë	def qafa	acc qafën	gen qafës	indGen qafe	PL qafa	PLdef qafat	PLgen qafave	PLabl qafash	neck
+m krah	def krahu	acc krahun	gen krahut	indGen krahu	PL krahë	PLdef krahët	PLgen krahëve	PLabl krahësh	arm; shoulder
+f dorë	def dora	acc dorën	gen dorës	indGen dore	PL duar	PLdef duart	PLgen duarve	PLabl duarsh	hand
+m gisht	def gishti	acc gishtin	gen gishtit	indGen gishti	PL gishta	PLdef gishtat	PLgen gishtave	PLabl gishtash	finger
+f këmbë	def këmba	acc këmbën	gen këmbës	indGen këmbe	PL këmbë	PLdef këmbët	PLgen këmbëve	PLabl këmbësh	foot; leg
+m gju	def gjuri	acc gjurin	gen gjurit	indGen gjuri	PL gjunjë	PLdef gjunjët	PLgen gjunjëve	PLabl gjunjësh	knee
+f zemër	def zemra	acc zemrën	gen zemrës	indGen zemre	PL zemra	PLdef zemrat	PLgen zemrave	PLabl zemrash	heart
+m trup	def trupi	acc trupin	gen trupit	indGen trupi	PL trupa	PLdef trupat	PLgen trupave	PLabl trupash	body
+f shpinë	def shpina	acc shpinën	gen shpinës	indGen shpine	PL shpina	PLdef shpinat	PLgen shpinave	PLabl shpinash	back
+f kockë	def kocka	acc kockën	gen kockës	indGen kocke	PL kocka	PLdef kockat	PLgen kockave	PLabl kockash	bone
+f lëkurë	def lëkura?	acc lëkurën	gen lëkurës	indGen lëkure	PL lëkura?	PLdef lëkurat?	PLgen lëkurave?	PLabl lëkurash?	skin
+m gjak	def gjaku	acc gjakun	gen gjakut	indGen gjaku	PL -	PLdef -	PLgen -	PLabl -	blood
+m zë	def zëri	acc zërin	gen zërit	indGen zëri	PL zëra	PLdef zërat	PLgen zërave	PLabl zërash	voice
+f mendje	def mendja	acc mendjen	gen mendjes	indGen -	PL mendje	PLdef mendjet	PLgen mendjeve	PLabl mendjesh	mind
+m shëndet	def shëndeti	acc shëndetin	gen shëndetit	indGen shëndeti	PL -	PLdef -	PLgen -	PLabl -	health
+f dhimbje	def dhimbja	acc dhimbjen	gen dhimbjes	indGen -	PL dhimbje	PLdef dhimbjet	PLgen dhimbjeve	PLabl dhimbjesh	pain
+f sëmundje	def sëmundja	acc sëmundjen	gen sëmundjes	indGen -	PL sëmundje	PLdef sëmundjet	PLgen sëmundjeve	PLabl sëmundjesh	illness
+m shpirt	def shpirti	acc shpirtin	gen shpirtit	indGen shpirti	PL shpirtra	PLdef shpirtrat	PLgen shpirtrave	PLabl shpirtrash	soul, spirit
+f shtëpi	def shtëpia	acc shtëpinë	gen shtëpisë	indGen shtëpie	PL shtëpi	PLdef shtëpitë	PLgen shtëpive	PLabl shtëpish	house, home
+f dhomë	def dhoma	acc dhomën	gen dhomës	indGen dhome	PL dhoma	PLdef dhomat	PLgen dhomave	PLabl dhomash	room
+f derë	def dera	acc derën	gen derës	indGen dere	PL dyer	PLdef dyert	PLgen dyerve	PLabl dyersh	door
+f dritare	def dritarja	acc dritaren	gen dritares	indGen dritareje	PL dritare	PLdef dritaret	PLgen dritareve	PLabl dritaresh	window
+m mur	def muri	acc murin	gen murit	indGen muri	PL mure	PLdef muret	PLgen mureve	PLabl muresh	wall
+f kuzhinë	def kuzhina	acc kuzhinën	gen kuzhinës	indGen kuzhine	PL kuzhina	PLdef kuzhinat	PLgen kuzhinave	PLabl kuzhinash	kitchen
+f banjë	def banja	acc banjën	gen banjës	indGen banje	PL banja	PLdef banjat	PLgen banjave	PLabl banjash	bathroom; bath
+f tavolinë	def tavolina	acc tavolinën	gen tavolinës	indGen tavoline	PL tavolina	PLdef tavolinat	PLgen tavolinave	PLabl tavolinash	table
+m shtrat	def shtrati	acc shtratin	gen shtratit	indGen shtrati	PL shtretër	PLdef shtretërit	PLgen shtretërve	PLabl shtretërish~	bed
+m çelës	def çelësi	acc çelësin	gen çelësit	indGen çelësi	PL çelësa	PLdef çelësat	PLgen çelësave	PLabl çelësash	key
+m kopsht	def kopshti	acc kopshtin	gen kopshtit	indGen kopshti	PL kopshte	PLdef kopshtet	PLgen kopshteve	PLabl kopshtesh	garden
+m oborr	def oborri	acc oborrin	gen oborrit	indGen oborri	PL oborre	PLdef oborret	PLgen oborreve	PLabl oborresh	yard, courtyard
+f portë	def porta	acc portën	gen portës	indGen porte	PL porta	PLdef portat	PLgen portave	PLabl portash	gate
+f shkallë	def shkalla	acc shkallën	gen shkallës	indGen shkalle	PL shkallë	PLdef shkallët	PLgen shkallëve	PLabl shkallësh	stairs; step
+f sobë	def soba	acc sobën	gen sobës	indGen sobe	PL soba	PLdef sobat	PLgen sobave	PLabl sobash	stove
+f llambë	def llamba	acc llambën	gen llambës	indGen llambe	PL llamba	PLdef llambat	PLgen llambave	PLabl llambash	lamp
+f dritë	def drita	acc dritën	gen dritës	indGen drite	PL drita	PLdef dritat	PLgen dritave	PLabl dritash	light
+f pasqyrë	def pasqyra	acc pasqyrën	gen pasqyrës	indGen pasqyre	PL pasqyra	PLdef pasqyrat	PLgen pasqyrave	PLabl pasqyrash	mirror
+m televizor	def televizori	acc televizorin	gen televizorit	indGen televizori	PL televizorë	PLdef televizorët	PLgen televizorëve	PLabl televizorësh	television set
+m kompjuter	def kompjuteri	acc kompjuterin	gen kompjuterit	indGen kompjuteri	PL kompjuterë?	PLdef kompjuterët?	PLgen kompjuterëve?	PLabl kompjuterësh?	computer
+m telefon	def telefoni	acc telefonin	gen telefonit	indGen telefoni	PL telefona	PLdef telefonat	PLgen telefonave	PLabl telefonash	telephone
+f makinë	def makina	acc makinën	gen makinës	indGen makine	PL makina	PLdef makinat	PLgen makinave	PLabl makinash	car; machine
+f thikë	def thika	acc thikën	gen thikës	indGen thike	PL thika	PLdef thikat	PLgen thikave	PLabl thikash	knife
+f lugë	def luga	acc lugën	gen lugës	indGen luge	PL lugë?	PLdef lugët?	PLgen lugëve	PLabl lugësh	spoon
+m pirun	def piruni	acc pirunin	gen pirunit	indGen piruni	PL pirunë	PLdef pirunët	PLgen pirunëve	PLabl pirunësh	fork
+f pjatë	def pjata	acc pjatën	gen pjatës	indGen pjate	PL pjata	PLdef pjatat	PLgen pjatave	PLabl pjatash	plate
+f gotë	def gota	acc gotën	gen gotës	indGen gote	PL gota	PLdef gotat	PLgen gotave	PLabl gotash	glass
+m filxhan	def filxhani	acc filxhanin	gen filxhanit	indGen filxhani	PL filxhanë	PLdef filxhanët	PLgen filxhanëve	PLabl filxhanësh	cup
+f shishe	def shishja	acc shishen	gen shishes	indGen shisheje?	PL shishe	PLdef shishet	PLgen shisheve	PLabl shishesh	bottle
+f tenxhere	def tenxherja	acc tenxheren	gen tenxheres	indGen tenxhereje	PL tenxhere	PLdef tenxheret	PLgen tenxhereve	PLabl tenxheresh	pot
+f çantë	def çanta	acc çantën	gen çantës	indGen çante	PL çanta	PLdef çantat	PLgen çantave	PLabl çantash	bag
+m xhep	def xhepi	acc xhepin	gen xhepit	indGen xhepi	PL xhepa	PLdef xhepat	PLgen xhepave	PLabl xhepash	pocket
+f orë	def ora	acc orën	gen orës	indGen ore	PL orë	PLdef orët	PLgen orëve	PLabl orësh	hour; clock, watch
+f këmishë	def këmisha?	acc këmishën	gen këmishës	indGen këmishe	PL këmisha?	PLdef këmishat?	PLgen këmishave?	PLabl këmishash?	shirt
+m fustan	def fustani	acc fustanin	gen fustanit	indGen fustani	PL fustane	PLdef fustanet	PLgen fustaneve	PLabl fustanesh	dress
+f këpucë	def këpuca	acc këpucën	gen këpucës	indGen këpuce	PL këpucë	PLdef këpucët	PLgen këpucëve	PLabl këpucësh	shoe
+f kapelë	def kapela	acc kapelën	gen kapelës	indGen kapele	PL kapela	PLdef kapelat	PLgen kapelave	PLabl kapelash	hat
+f xhaketë	def xhaketa	acc xhaketën	gen xhaketës	indGen xhakete	PL xhaketa	PLdef xhaketat	PLgen xhaketave	PLabl xhaketash	jacket
+f çorape	def çorapja?	acc çorapen?	gen çorapes?	indGen çorapeje?	PL çorape?	PLdef çorapet?	PLgen çorapeve?	PLabl çorapesh?	sock, stocking
+m send	def sendi	acc sendin	gen sendit	indGen sendi	PL sende	PLdef sendet	PLgen sendeve	PLabl sendesh	thing, object
+m ushqim	def ushqimi	acc ushqimin	gen ushqimit	indGen ushqimi	PL ushqime	PLdef ushqimet	PLgen ushqimeve	PLabl ushqimesh	food
+m ujë	def uji	acc ujin	gen ujit	indGen uji	PL ujëra	PLdef ujërat	PLgen ujërave	PLabl ujërash	water
+f bukë	def buka	acc bukën	gen bukës	indGen buke	PL -	PLdef -	PLgen -	PLabl -	bread
+m mish	def mishi	acc mishin	gen mishit	indGen mishi	PL -	PLdef -	PLgen -	PLabl -	meat
+m djathë	def djathi	acc djathin	gen djathit	indGen djathi	PL -	PLdef -	PLgen -	PLabl -	cheese
+f vezë	def veza	acc vezën	gen vezës	indGen veze	PL vezë	PLdef vezët	PLgen vezëve	PLabl vezësh	egg
+m qumësht	def qumështi	acc qumështin	gen qumështit	indGen qumështi	PL -	PLdef -	PLgen -	PLabl -	milk
+f verë	def vera	acc verën	gen verës	indGen vere	PL -	PLdef -	PLgen -	PLabl -	summer (also: wine)
+f kafe	def kafeja	acc kafenë	gen kafesë	indGen kafeje	PL kafe	PLdef kafetë	PLgen kafeve	PLabl kafesh	coffee
+m çaj	def çaji	acc çajin	gen çajit	indGen çaji	PL -	PLdef -	PLgen -	PLabl -	tea
+f birrë	def birra	acc birrën	gen birrës	indGen birre	PL birra	PLdef birrat	PLgen birrave	PLabl birrash	beer
+m lëng	def lëngu	acc lëngun	gen lëngut	indGen lëngu	PL lëngje	PLdef lëngjet	PLgen lëngjeve	PLabl lëngjesh	juice; liquid
+m sheqer	def sheqeri	acc sheqerin	gen sheqerit	indGen sheqeri	PL -	PLdef -	PLgen -	PLabl -	sugar
+f kripë	def kripa	acc kripën	gen kripës	indGen kripe	PL -	PLdef -	PLgen -	PLabl -	salt
+m vaj	def vaji	acc vajin	gen vajit	indGen vaji	PL -	PLdef -	PLgen -	PLabl -	oil
+m gjalpë	def gjalpi	acc gjalpin	gen gjalpit	indGen gjalpi	PL -	PLdef -	PLgen -	PLabl -	butter
+m mëngjes	def mëngjesi	acc mëngjesin	gen mëngjesit	indGen mëngjesi	PL -	PLdef -	PLgen -	PLabl -	morning; breakfast
+f drekë	def dreka	acc drekën	gen drekës	indGen dreke	PL dreka	PLdef drekat	PLgen drekave	PLabl drekash	lunch
+f darkë	def darka	acc darkën	gen darkës	indGen darke	PL darka	PLdef darkat	PLgen darkave	PLabl darkash	dinner, supper
+f ëmbëlsirë	def ëmbëlsira	acc ëmbëlsirën	gen ëmbëlsirës	indGen ëmbëlsire	PL ëmbëlsira	PLdef ëmbëlsirat	PLgen ëmbëlsirave	PLabl ëmbëlsirash	sweet, dessert
+f mollë	def molla	acc mollën	gen mollës	indGen molle	PL mollë	PLdef mollët	PLgen mollëve	PLabl mollësh	apple
+f dardhë	def dardha	acc dardhën	gen dardhës	indGen dardhe	PL dardha	PLdef dardhat	PLgen dardhave	PLabl dardhash	pear
+m rrush	def rrushi	acc rrushin	gen rrushit	indGen rrushi	PL -	PLdef -	PLgen -	PLabl -	grapes
+f frutë	def fruta	acc frutën	gen frutës	indGen frute	PL fruta	PLdef frutat	PLgen frutave	PLabl frutash	fruit
+f domate	def domatja	acc domaten	gen domates	indGen domateje	PL domate	PLdef domatet	PLgen domateve	PLabl domatesh	tomato
+f patate	def patatja	acc pataten	gen patates	indGen patateje	PL patate	PLdef patatet	PLgen patateve	PLabl patatesh	potato
+f qepë	def qepa	acc qepën	gen qepës	indGen qepe	PL qepë?	PLdef qepët?	PLgen qepëve	PLabl qepësh?	onion
+f hudhër	def hudhra?	acc hudhrën	gen hudhrës	indGen hudhre	PL hudhra?	PLdef hudhrat	PLgen hudhrave?	PLabl hudhrash?	garlic
+f sallatë	def salata?	acc salatën?	gen salatës?	indGen salate?	PL salata?	PLdef salatat?	PLgen salatave?	PLabl salatash?	salad
+f supë	def supa	acc supën	gen supës	indGen supe	PL supa	PLdef supat	PLgen supave	PLabl supash	soup
+m oriz	def orizi	acc orizin	gen orizit	indGen orizi	PL -	PLdef -	PLgen -	PLabl -	rice
+m mjaltë	def mjalti	acc mjaltin	gen mjaltit	indGen mjalti	PL -	PLdef -	PLgen -	PLabl -	honey
+m byrek	def byreku	acc byrekun	gen byrekut	indGen byreku	PL byrekë	PLdef byrekët	PLgen byrekëve	PLabl byrekësh	byrek (savoury pie)
+f pije	def pija	acc pijen	gen pijes	indGen -	PL pije	PLdef pijet	PLgen pijeve	PLabl pijesh	drink
+f tortë	def torta	acc tortën	gen tortës	indGen torte	PL torta	PLdef tortat	PLgen tortave	PLabl tortash	cake
+f akullore	def akullorja	acc akulloren	gen akullores	indGen akulloreje	PL akullore	PLdef akulloret	PLgen akulloreve	PLabl akulloresh	ice cream
+f çokollatë	def çokollata	acc çokollatën	gen çokollatës	indGen çokollate	PL çokollata	PLdef çokollatat	PLgen çokollatave	PLabl çokollatash	chocolate
+f perime	def perimja	acc perimen	gen perimes	indGen perimeje	PL perime?	PLdef perimet	PLgen perimeve	PLabl perimesh	vegetable
+f pulë	def pula	acc pulën	gen pulës	indGen pule	PL pula	PLdef pulat	PLgen pulave	PLabl pulash	hen, chicken
+f gjellë	def gjella	acc gjellën	gen gjellës	indGen gjelle	PL gjellë?	PLdef gjellët	PLgen gjellëve	PLabl gjellësh	dish, meal
+m qytet	def qyteti	acc qytetin	gen qytetit	indGen qyteti	PL qytete	PLdef qytetet	PLgen qyteteve	PLabl qytetesh	town, city
+m kryeqytet	def kryeqyteti	acc kryeqytetin	gen kryeqytetit	indGen kryeqyteti	PL kryeqytete	PLdef kryeqytetet	PLgen kryeqyteteve	PLabl kryeqytetesh	capital city
+m fshat	def fshati	acc fshatin	gen fshatit	indGen fshati	PL fshatra	PLdef fshatrat	PLgen fshatrave	PLabl fshatrash	village
+f rrugë	def rruga	acc rrugën	gen rrugës	indGen rruge	PL rrugë	PLdef rrugët	PLgen rrugëve	PLabl rrugësh	road, street
+m shesh	def sheshi	acc sheshin	gen sheshit	indGen sheshi	PL sheshe	PLdef sheshet	PLgen shesheve	PLabl sheshesh	square
+m shtet	def shteti	acc shtetin	gen shtetit	indGen shteti	PL shtete	PLdef shtetet	PLgen shteteve	PLabl shtetesh	state
+m vend	def vendi	acc vendin	gen vendit	indGen vendi	PL vende	PLdef vendet	PLgen vendeve	PLabl vendesh	place; country
+f shkollë	def shkolla	acc shkollën	gen shkollës	indGen shkolle	PL shkolla	PLdef shkollat	PLgen shkollave	PLabl shkollash	school
+m universitet	def universiteti	acc universitetin	gen universitetit	indGen universiteti	PL universitete	PLdef universitetet	PLgen universiteteve	PLabl universitetesh	university
+m spital	def spitali	acc spitalin	gen spitalit	indGen spitali	PL spitale~	PLdef spitalet~	PLgen spitaleve~	PLabl spitalesh~	hospital
+f klinikë	def klinika	acc klinikën	gen klinikës	indGen klinike	PL klinika	PLdef klinikat	PLgen klinikave	PLabl klinikash	clinic
+f kishë	def kisha	acc kishën	gen kishës	indGen kishe	PL kisha	PLdef kishat	PLgen kishave	PLabl kishash	church
+f xhami	def xhamia	acc xhaminë	gen xhamisë	indGen xhamie	PL xhami	PLdef xhamitë	PLgen xhamive	PLabl xhamish	mosque
+m dyqan	def dyqani	acc dyqanin	gen dyqanit	indGen dyqani	PL dyqane	PLdef dyqanet	PLgen dyqaneve	PLabl dyqanesh	shop
+m treg	def tregu	acc tregun	gen tregut	indGen tregu	PL tregje	PLdef tregjet	PLgen tregjeve	PLabl tregjesh	market
+f bankë	def banka	acc bankën	gen bankës	indGen banke	PL banka	PLdef bankat	PLgen bankave	PLabl bankash	bank
+f postë	def posta	acc postën	gen postës	indGen poste	PL -	PLdef -	PLgen -	PLabl -	post, mail
+f farmaci	def farmacia	acc farmacinë	gen farmacisë	indGen farmacie	PL farmaci	PLdef farmacitë	PLgen farmacive	PLabl farmacish	pharmacy
+m hotel	def hoteli	acc hotelin	gen hotelit	indGen hoteli	PL hotele	PLdef hotelet	PLgen hoteleve	PLabl hotelesh	hotel
+m restorant	def restoranti	acc restorantin	gen restorantit	indGen restoranti	PL restorante~	PLdef restorantet~	PLgen restoranteve~	PLabl restorantesh~	restaurant
+f bibliotekë	def biblioteka	acc bibliotekën	gen bibliotekës	indGen biblioteke	PL biblioteka	PLdef bibliotekat	PLgen bibliotekave	PLabl bibliotekash	library
+m muze	def muzeu	acc muzeun	gen muzeut	indGen muzeu	PL muzeume?	PLdef muzeumet?	PLgen muzeumeve?	PLabl muzeumesh?	museum
+m stacion	def stacioni	acc stacionin	gen stacionit	indGen stacioni	PL stacione	PLdef stacionet	PLgen stacioneve	PLabl stacionesh	station
+m aeroport	def aeroporti	acc aeroportin	gen aeroportit	indGen aeroporti	PL aeroporte	PLdef aeroportet	PLgen aeroporteve	PLabl aeroportesh	airport
+f urë	def ura	acc urën	gen urës	indGen ure	PL ura	PLdef urat	PLgen urave	PLabl urash	bridge
+m park	def parku	acc parkun	gen parkut	indGen parku	PL parqe	PLdef parqet	PLgen parqeve	PLabl parqesh	park
+m bulevard	def bulevardi	acc bulevardin	gen bulevardit	indGen bulevardi	PL bulevarde	PLdef bulevardet	PLgen bulevardeve	PLabl bulevardesh	boulevard
+f adresë	def adresa	acc adresën	gen adresës	indGen adrese	PL adresa	PLdef adresat	PLgen adresave	PLabl adresash	address
+f hartë	def harta?	acc hartën	gen hartës	indGen harte	PL harta?	PLdef hartat~	PLgen hartave~	PLabl hartash?	map
+f qendër	def qendra	acc qendrën	gen qendrës	indGen qendre	PL qendra	PLdef qendrat	PLgen qendrave	PLabl qendrash	centre
+f ndërtesë	def ndërtesa	acc ndërtesën	gen ndërtesës	indGen ndërtese	PL ndërtesa	PLdef ndërtesat	PLgen ndërtesave	PLabl ndërtesash	building
+f fabrikë	def fabrika	acc fabrikën	gen fabrikës	indGen fabrike	PL fabrika	PLdef fabrikat	PLgen fabrikave	PLabl fabrikash	factory
+f zyrë	def zyra	acc zyrën	gen zyrës	indGen zyre	PL zyra	PLdef zyrat	PLgen zyrave	PLabl zyrash	office
+m komb	def kombi	acc kombin	gen kombit	indGen kombi	PL kombe	PLdef kombet	PLgen kombeve	PLabl kombesh	nation
+f qeveri	def qeveria	acc qeverinë	gen qeverisë	indGen qeverie	PL qeveri	PLdef qeveritë	PLgen qeverive	PLabl qeverish	government
+f ushtri	def ushtria	acc ushtrinë	gen ushtrisë	indGen ushtrie	PL ushtri	PLdef ushtritë	PLgen ushtrive	PLabl ushtrish	army
+f republikë	def republika	acc republikën	gen republikës	indGen republike	PL republika	PLdef republikat	PLgen republikave	PLabl republikash	republic
+m ligj	def ligji	acc ligjin	gen ligjit	indGen ligji	PL ligje	PLdef ligjet	PLgen ligjeve	PLabl ligjesh	law
+f luftë	def lufta?	acc luftën	gen luftës	indGen lufte	PL lufta?	PLdef luftat?	PLgen luftave?	PLabl luftash?	war; struggle
+m udhëtim	def udhëtimi	acc udhëtimin	gen udhëtimit	indGen udhëtimi	PL udhëtime	PLdef udhëtimet	PLgen udhëtimeve	PLabl udhëtimesh	journey, trip
+m autobus	def autobusi	acc autobusin	gen autobusit	indGen autobusi	PL autobusë	PLdef autobusët	PLgen autobusëve	PLabl autobusësh	bus
+m tren	def treni	acc trenin	gen trenit	indGen treni	PL trena	PLdef trenat	PLgen trenave	PLabl trenash	train
+m avion	def avioni	acc avionin	gen avionit	indGen avioni	PL avionë	PLdef avionët	PLgen avionëve	PLabl avionësh	aeroplane
+f anije	def anija	acc anijen	gen anijes	indGen -	PL anije	PLdef anijet	PLgen anijeve	PLabl anijesh	ship
+f varkë	def varka	acc varkën	gen varkës	indGen varke	PL varka	PLdef varkat	PLgen varkave	PLabl varkash	boat
+f biçikletë	def biçikleta	acc biçikletën	gen biçikletës	indGen biçiklete	PL biçikleta	PLdef biçikletat	PLgen biçikletave	PLabl biçikletash	bicycle
+f biletë	def bileta	acc biletën	gen biletës	indGen bilete	PL bileta	PLdef biletat	PLgen biletave	PLabl biletash	ticket
+f valixhe	def valixhja	acc valixhen	gen valixhes	indGen valixheje	PL valixhe	PLdef valixhet	PLgen valixheve	PLabl valixhesh	suitcase
+f pasaportë	def pasaporta	acc pasaportën	gen pasaportës	indGen pasaporte	PL pasaporta	PLdef pasaportat	PLgen pasaportave	PLabl pasaportash	passport
+m liman	def limani	acc limanin	gen limanit	indGen limani	PL limane	PLdef limanet	PLgen limaneve	PLabl limanesh	harbour, port
+m plazh	def plazhi	acc plazhin	gen plazhit	indGen plazhi	PL plazhe	PLdef plazhet	PLgen plazheve	PLabl plazhesh	beach
+m pushim	def pushimi	acc pushimin	gen pushimit	indGen pushimi	PL pushime	PLdef pushimet	PLgen pushimeve	PLabl pushimesh	rest; holiday
+m drejtim	def drejtimi	acc drejtimin	gen drejtimit	indGen drejtimi	PL drejtime	PLdef drejtimet	PLgen drejtimeve	PLabl drejtimesh	direction
+f klasë	def klasa	acc klasën	gen klasës	indGen klase	PL klasa	PLdef klasat	PLgen klasave	PLabl klasash	class, classroom
+m mësim	def mësimi	acc mësimin	gen mësimit	indGen mësimi	PL mësime	PLdef mësimet	PLgen mësimeve	PLabl mësimesh	lesson
+m libër	def libri	acc librin	gen librit	indGen libri	PL libra	PLdef librat	PLgen librave	PLabl librash	book
+f fletore	def fletorja	acc fletoren	gen fletores	indGen fletoreje	PL fletore	PLdef fletoret	PLgen fletoreve	PLabl fletoresh	notebook
+m laps	def lapsi	acc lapsin	gen lapsit	indGen lapsi	PL lapsa	PLdef lapsat	PLgen lapsave	PLabl lapsash	pencil
+m stilolaps	def stilolapsi	acc stilolapsin	gen stilolapsit	indGen stilolapsi	PL stilolapsa	PLdef stilolapsat	PLgen stilolapsave	PLabl stilolapsash	pen
+f letër	def letra	acc letrën	gen letrës	indGen letre	PL letra	PLdef letrat	PLgen letrave	PLabl letrash	paper; letter
+f faqe	def faqja	acc faqen	gen faqes	indGen faqeje	PL faqe	PLdef faqet	PLgen faqeve	PLabl faqesh	page; cheek
+m provim	def provimi	acc provimin	gen provimit	indGen provimi	PL provime	PLdef provimet	PLgen provimeve	PLabl provimesh	exam
+f pyetje	def pyetja	acc pyetjen	gen pyetjes	indGen -	PL pyetje	PLdef pyetjet	PLgen pyetjeve	PLabl pyetjesh	question
+f detyrë	def detyra	acc detyrën	gen detyrës	indGen detyre	PL detyra	PLdef detyrat	PLgen detyrave	PLabl detyrash	task; homework
+f tabelë	def tabela	acc tabelën	gen tabelës	indGen tabele	PL tabela	PLdef tabelat	PLgen tabelave	PLabl tabelash	board, table (chart)
+m fjalor	def fjalori	acc fjalorin	gen fjalorit	indGen fjalori	PL fjalorë	PLdef fjalorët	PLgen fjalorëve	PLabl fjalorësh	dictionary
+f fjali	def fjalia	acc fjalinë	gen fjalisë	indGen fjalie	PL fjali	PLdef fjalitë	PLgen fjalive	PLabl fjalish	sentence
+f fjalë	def fjala	acc fjalën	gen fjalës	indGen fjale	PL fjalë	PLdef fjalët	PLgen fjalëve	PLabl fjalësh	word
+f shkronjë	def shkronja	acc shkronjën	gen shkronjës	indGen shkronje	PL shkronja	PLdef shkronjat	PLgen shkronjave	PLabl shkronjash	letter (of the alphabet)
+m numër	def numri	acc numrin	gen numrit	indGen numri	PL numra	PLdef numrat	PLgen numrave	PLabl numrash	number
+f notë	def nota	acc notën	gen notës	indGen note	PL nota	PLdef notat	PLgen notave	PLabl notash	mark, grade; note
+f diplomë	def diploma	acc diplomën	gen diplomës	indGen diplome	PL diploma	PLdef diplomat	PLgen diplomave	PLabl diplomash	diploma
+m orar	def orari	acc orarin	gen orarit	indGen orari	PL orare	PLdef oraret	PLgen orareve	PLabl oraresh	timetable
+f shkencë	def shkenca	acc shkencën	gen shkencës	indGen shkence	PL shkenca	PLdef shkencat	PLgen shkencave	PLabl shkencash	science
+f histori	def historia	acc historinë	gen historisë	indGen historie	PL histori	PLdef historitë	PLgen historive	PLabl historish	history; story
+m problem	def problemi	acc problemin	gen problemit	indGen problemi	PL probleme	PLdef problemet	PLgen problemeve	PLabl problemesh	problem
+m shembull	def shembulli	acc shembullin	gen shembullit	indGen shembulli	PL shembuj	PLdef shembujt	PLgen shembujve	PLabl shembujsh	example
+m kurs	def kursi	acc kursin	gen kursit	indGen kursi	PL kurse	PLdef kurset	PLgen kurseve	PLabl kursesh	course
+m tekst	def teksti	acc tekstin	gen tekstit	indGen teksti	PL tekste	PLdef tekstet	PLgen teksteve	PLabl tekstesh	text
+m emër	def emri	acc emrin	gen emrit	indGen emri	PL emra	PLdef emrat	PLgen emrave	PLabl emrash	name; noun
+m mbiemër	def mbiemri	acc mbiemrin	gen mbiemrit	indGen mbiemri	PL mbiemra	PLdef mbiemrat	PLgen mbiemrave	PLabl mbiemrash	surname; adjective
+m shkrim	def shkrimi	acc shkrimin	gen shkrimit	indGen shkrimi	PL shkrime	PLdef shkrimet	PLgen shkrimeve	PLabl shkrimesh	writing
+m arsim	def arsimi	acc arsimin	gen arsimit	indGen arsimi	PL -	PLdef -	PLgen -	PLabl -	education
+f matematikë	def matematika	acc matematikën	gen matematikës	indGen matematike	PL -	PLdef -	PLgen -	PLabl -	mathematics
+f punë	def puna	acc punën	gen punës	indGen pune	PL punë	PLdef punët	PLgen punëve	PLabl punësh	work, job
+m profesion	def profesioni	acc profesionin	gen profesionit	indGen profesioni	PL profesione	PLdef profesionet	PLgen profesioneve	PLabl profesionesh	profession
+f kompani	def kompania	acc kompaninë	gen kompanisë	indGen kompanie	PL kompani	PLdef kompanitë	PLgen kompanive	PLabl kompanish	company
+m biznes	def biznesi	acc biznesin	gen biznesit	indGen biznesi	PL biznese	PLdef bizneset	PLgen bizneseve	PLabl biznesesh	business
+f pagë	def paga	acc pagën	gen pagës	indGen page	PL paga	PLdef pagat	PLgen pagave	PLabl pagash	wage, pay
+f kontratë	def kontrata	acc kontratën	gen kontratës	indGen kontrate	PL kontrata	PLdef kontratat	PLgen kontratave	PLabl kontratash	contract
+m takim	def takimi	acc takimin	gen takimit	indGen takimi	PL takime	PLdef takimet	PLgen takimeve	PLabl takimesh	meeting
+m projekt	def projekti	acc projektin	gen projektit	indGen projekti	PL projekte	PLdef projektet	PLgen projekteve	PLabl projektesh	project
+m çmim	def çmimi	acc çmimin	gen çmimit	indGen çmimi	PL çmime	PLdef çmimet	PLgen çmimeve	PLabl çmimesh	price; prize
+f shitje	def shitja	acc shitjen	gen shitjes	indGen -	PL shitje	PLdef shitjet	PLgen shitjeve	PLabl shitjesh	sale
+f blerje	def blerja	acc blerjen	gen blerjes	indGen -	PL blerje	PLdef blerjet	PLgen blerjeve	PLabl blerjesh	purchase
+f kërkesë	def kërkesa	acc kërkesën	gen kërkesës	indGen kërkese	PL kërkesa	PLdef kërkesat	PLgen kërkesave	PLabl kërkesash	request
+f ndihmë	def ndihma	acc ndihmën	gen ndihmës	indGen ndihme	PL -	PLdef -	PLgen -	PLabl -	help
+m mjet	def mjeti	acc mjetin	gen mjetit	indGen mjeti	PL mjete	PLdef mjetet	PLgen mjeteve	PLabl mjetesh	tool, means
+m ekip	def ekipi	acc ekipin	gen ekipit	indGen ekipi	PL ekipe	PLdef ekipet	PLgen ekipeve	PLabl ekipesh	team
+m grup	def grupi	acc grupin	gen grupit	indGen grupi	PL grupe	PLdef grupet	PLgen grupeve	PLabl grupesh	group
+m lek	def leku	acc lekun	gen lekut	indGen leku	PL lekë	PLdef lekët	PLgen lekëve	PLabl lekësh	lek (money)
+f kartë	def karta	acc kartën	gen kartës	indGen karte	PL karta	PLdef kartat	PLgen kartave	PLabl kartash	card
+f arkë	def arka	acc arkën	gen arkës	indGen arke	PL arka	PLdef arkat	PLgen arkave	PLabl arkash	cash desk; chest
+f kohë	def koha	acc kohën	gen kohës	indGen kohe	PL kohë	PLdef kohët	PLgen kohëve	PLabl kohësh	time; weather
+f ditë	def dita	acc ditën	gen ditës	indGen dite	PL ditë	PLdef ditët	PLgen ditëve	PLabl ditësh	day
+f natë	def nata	acc natën	gen natës	indGen nate	PL net	PLdef netët	PLgen netëve	PLabl -	night
+f javë	def java	acc javën	gen javës	indGen jave	PL javë	PLdef javët	PLgen javëve	PLabl javësh	week
+m muaj	def muaji	acc muajin	gen muajit	indGen muaji	PL muaj	PLdef muajt~	PLgen muajve	PLabl muajsh	month
+m vit	def viti	acc vitin	gen vitit	indGen viti	PL vite	PLdef vitet	PLgen viteve	PLabl vitesh	year
+f minutë	def minuta	acc minutën	gen minutës	indGen minute	PL minuta	PLdef minutat	PLgen minutave	PLabl minutash	minute
+f sekondë	def sekonda	acc sekondën	gen sekondës	indGen sekonde	PL sekonda	PLdef sekondat	PLgen sekondave	PLabl sekondash	second
+f mesditë	def mesdita	acc mesditën	gen mesditës	indGen mesdite	PL -	PLdef -	PLgen -	PLabl -	midday
+f pasdite	def pasdita?	acc pasditen	gen pasdites	indGen pasdite?	PL pasdite?	PLdef pasditet	PLgen pasditeve	PLabl pasditesh	afternoon
+f mbrëmje	def mbrëmja	acc mbrëmjen	gen mbrëmjes	indGen -	PL mbrëmje	PLdef mbrëmjet	PLgen mbrëmjeve	PLabl mbrëmjesh	evening
+f ditëlindje	def ditëlindja	acc ditëlindjen	gen ditëlindjes	indGen -	PL ditëlindje	PLdef ditëlindjet	PLgen ditëlindjeve	PLabl ditëlindjesh	birthday
+f fundjavë	def fundjava	acc fundjavën	gen fundjavës	indGen fundjave	PL fundjavë	PLdef fundjavët	PLgen fundjavëve	PLabl fundjavësh	weekend
+f festë	def festa	acc festën	gen festës	indGen feste	PL festa	PLdef festat	PLgen festave	PLabl festash	feast, holiday, party
+f dasmë	def dasma	acc dasmën	gen dasmës	indGen dasme	PL dasma	PLdef dasmat	PLgen dasmave	PLabl dasmash	wedding
+m moment	def momenti	acc momentin	gen momentit	indGen momenti	PL momente	PLdef momentet	PLgen momenteve	PLabl momentesh	moment
+m çast	def çasti	acc çastin	gen çastit	indGen çasti	PL çaste	PLdef çastet	PLgen çasteve	PLabl çastesh	instant
+m fillim	def fillimi	acc fillimin	gen fillimit	indGen fillimi	PL fillime	PLdef fillimet	PLgen fillimeve	PLabl fillimesh	beginning
+m fund	def fundi	acc fundin	gen fundit	indGen fundi	PL funde	PLdef fundet	PLgen fundeve	PLabl fundesh	end
+f epokë	def epoka	acc epokën	gen epokës	indGen epoke	PL epoka	PLdef epokat	PLgen epokave	PLabl epokash	era
+m shekull	def shekulli	acc shekullin	gen shekullit	indGen shekulli	PL shekuj	PLdef shekujt	PLgen shekujve	PLabl shekujsh	century
+f hënë	def hëna	acc hënën	gen hënës	indGen hëne	PL -	PLdef -	PLgen -	PLabl -	moon; Monday (e hënë)
+f martë	def marta	acc martën	gen martës	indGen marte	PL -	PLdef -	PLgen -	PLabl -	Tuesday (e martë)
+f mërkurë	def mërkura	acc mërkurën	gen mërkurës	indGen mërkure	PL -	PLdef -	PLgen -	PLabl -	Wednesday (e mërkurë)
+f enjte	def enjtja	acc enjten	gen enjtes	indGen enjteje	PL -	PLdef -	PLgen -	PLabl -	Thursday (e enjte)
+f premte	def premtja	acc premten	gen premtes	indGen premteje	PL -	PLdef -	PLgen -	PLabl -	Friday (e premte)
+f shtunë	def shtuna	acc shtunën	gen shtunës	indGen shtune	PL -	PLdef -	PLgen -	PLabl -	Saturday (e shtunë)
+f diel	def diela	acc dielën	gen dielës	indGen diele	PL -	PLdef -	PLgen -	PLabl -	Sunday (e diel)
+m janar	def janari	acc janarin	gen janarit	indGen janari	PL -	PLdef -	PLgen -	PLabl -	January
+m shkurt	def shkurti	acc shkurtin	gen shkurtit	indGen shkurti	PL -	PLdef -	PLgen -	PLabl -	February
+m mars	def marsi	acc marsin	gen marsit	indGen marsi	PL -	PLdef -	PLgen -	PLabl -	March
+m prill	def prilli	acc prillin	gen prillit	indGen prilli	PL -	PLdef -	PLgen -	PLabl -	April
+m maj	def maji	acc majin	gen majit	indGen maji	PL -	PLdef -	PLgen -	PLabl -	May
+m qershor	def qershori	acc qershorin	gen qershorit	indGen qershori	PL -	PLdef -	PLgen -	PLabl -	June
+m korrik	def korriku	acc korrikun	gen korrikut	indGen korriku	PL -	PLdef -	PLgen -	PLabl -	July
+m gusht	def gushti	acc gushtin	gen gushtit	indGen gushti	PL -	PLdef -	PLgen -	PLabl -	August
+m shtator	def shtatori	acc shtatorin	gen shtatorit	indGen shtatori	PL -	PLdef -	PLgen -	PLabl -	September
+m tetor	def tetori	acc tetorin	gen tetorit	indGen tetori	PL -	PLdef -	PLgen -	PLabl -	October
+m nëntor	def nëntori	acc nëntorin	gen nëntorit	indGen nëntori	PL -	PLdef -	PLgen -	PLabl -	November
+m dhjetor	def dhjetori	acc dhjetorin	gen dhjetorit	indGen dhjetori	PL -	PLdef -	PLgen -	PLabl -	December
+f pranverë	def pranvera	acc pranverën	gen pranverës	indGen pranvere	PL -	PLdef -	PLgen -	PLabl -	spring
+f vjeshtë	def vjeshta	acc vjeshtën	gen vjeshtës	indGen vjeshte	PL -	PLdef -	PLgen -	PLabl -	autumn
+m dimër	def dimri	acc dimrin	gen dimrit	indGen dimri	PL -	PLdef -	PLgen -	PLabl -	winter
+m shi	def shiu	acc shiun	gen shiut	indGen shiu	PL shira	PLdef shirat	PLgen shirave	PLabl shirash	rain
+f borë	def bora	acc borën	gen borës	indGen bore	PL -	PLdef -	PLgen -	PLabl -	snow
+f erë	def era	acc erën	gen erës	indGen ere	PL erëra	PLdef erërat	PLgen erërave	PLabl erërash	wind; smell
+f re	def reja	acc renë	gen resë	indGen reje	PL re	PLdef retë	PLgen reve	PLabl resh	cloud
+m diell	def dielli	acc diellin	gen diellit	indGen dielli	PL -	PLdef -	PLgen -	PLabl -	sun
+m yll	def ylli	acc yllin	gen yllit	indGen ylli	PL yje	PLdef yjet	PLgen yjeve	PLabl yjesh	star
+m qiell	def qielli	acc qiellin	gen qiellit	indGen qielli	PL -	PLdef -	PLgen -	PLabl -	sky
+f tokë	def toka	acc tokën	gen tokës	indGen toke	PL toka	PLdef tokat	PLgen tokave	PLabl tokash	earth, land, soil
+f botë	def bota	acc botën	gen botës	indGen bote	PL botë	PLdef botët	PLgen botëve	PLabl botësh	world
+m det	def deti	acc detin	gen detit	indGen deti	PL dete	PLdef detet	PLgen deteve	PLabl detesh	sea
+m liqen	def liqeni	acc liqenin	gen liqenit	indGen liqeni	PL liqene	PLdef liqenet	PLgen liqeneve	PLabl liqenesh	lake
+m lumë	def lumi	acc lumin	gen lumit	indGen lumi	PL lumenj	PLdef lumenjtë	PLgen lumenjve	PLabl lumenjsh	river
+m mal	def mali	acc malin	gen malit	indGen mali	PL male	PLdef malet	PLgen maleve	PLabl malesh	mountain
+f kodër	def kodra	acc kodrën	gen kodrës	indGen kodre	PL kodra	PLdef kodrat	PLgen kodrave	PLabl kodrash	hill
+f fushë	def fusha	acc fushën	gen fushës	indGen fushe	PL fusha	PLdef fushat	PLgen fushave	PLabl fushash	plain, field
+m pyll	def pylli	acc pyllin	gen pyllit	indGen pylli	PL pyje	PLdef pyjet	PLgen pyjeve	PLabl pyjesh	forest
+f pemë	def pema	acc pemën	gen pemës	indGen peme	PL pemë	PLdef pemët	PLgen pemëve	PLabl pemësh	tree; fruit tree
+f lule	def lulja	acc lulen	gen lules	indGen luleje	PL lule	PLdef lulet	PLgen luleve	PLabl lulesh	flower
+m gur	def guri	acc gurin	gen gurit	indGen guri	PL gurë	PLdef gurët	PLgen gurëve	PLabl gurësh	stone
+f rërë	def rëra	acc rërën	gen rërës	indGen rëre	PL -	PLdef -	PLgen -	PLabl -	sand
+m breg	def bregu	acc bregun	gen bregut	indGen bregu	PL brigje	PLdef brigjet	PLgen brigjeve	PLabl brigjesh	shore, bank
+m ishull	def ishulli	acc ishullin	gen ishullit	indGen ishulli	PL ishuj	PLdef ishujt	PLgen ishujve	PLabl ishujsh	island
+f shpellë	def shpella	acc shpellën	gen shpellës	indGen shpelle	PL shpella	PLdef shpellat	PLgen shpellave	PLabl shpellash	cave
+m shkëmb	def shkëmbi	acc shkëmbin	gen shkëmbit	indGen shkëmbi	PL shkëmbinj	PLdef shkëmbinjtë	PLgen shkëmbinjve	PLabl shkëmbinjsh	rock, cliff
+f natyrë	def natyra	acc natyrën	gen natyrës	indGen natyre	PL -	PLdef -	PLgen -	PLabl -	nature
+m ajër	def ajri	acc ajrin	gen ajrit	indGen ajri	PL -	PLdef -	PLgen -	PLabl -	air
+m zjarr	def zjarri	acc zjarrin	gen zjarrit	indGen zjarri	PL zjarre	PLdef zjarret	PLgen zjarreve	PLabl zjarresh	fire
+f hije	def hija	acc hijen	gen hijes	indGen -	PL hije	PLdef hijet	PLgen hijeve	PLabl hijesh	shadow
+f mjegull	def mjegulla	acc mjegullën	gen mjegullës	indGen mjegulle	PL mjegulla	PLdef mjegullat	PLgen mjegullave	PLabl mjegullash	fog
+f stuhi	def stuhia	acc stuhinë	gen stuhisë	indGen stuhie	PL stuhi	PLdef stuhitë	PLgen stuhive	PLabl stuhish	storm
+f kafshë	def kafsha	acc kafshën	gen kafshës	indGen kafshe	PL kafshë	PLdef kafshët	PLgen kafshëve	PLabl kafshësh	animal
+m qen	def qeni	acc qenin	gen qenit	indGen qeni	PL qen	PLdef qentë	PLgen qenve	PLabl qensh	dog
+f mace	def macja	acc macen	gen maces	indGen maceje?	PL mace	PLdef macet	PLgen maceve	PLabl macesh	cat
+m kalë	def kali	acc kalin	gen kalit	indGen kali	PL kuaj	PLdef kuajt	PLgen kuajve	PLabl kuajsh	horse
+f dele	def delja	acc delen	gen deles	indGen deleje	PL dele	PLdef delet	PLgen deleve	PLabl delesh	sheep
+f lopë	def lopa	acc lopën	gen lopës	indGen lope	PL lopë	PLdef lopët	PLgen lopëve	PLabl lopësh	cow
+m derr	def derri	acc derrin	gen derrit	indGen derri	PL derra	PLdef derrat	PLgen derrave	PLabl derrash	pig
+f dhi	def dhia	acc dhinë	gen dhisë	indGen dhie	PL dhi	PLdef dhitë	PLgen dhive	PLabl dhish	goat
+m zog	def zogu	acc zogun	gen zogut	indGen zogu	PL zogj	PLdef zogjtë	PLgen zogjve	PLabl zogjsh	bird
+m gjel	def gjeli	acc gjelin	gen gjelit	indGen gjeli	PL gjela	PLdef gjelat	PLgen gjelave	PLabl gjelash	cock, rooster
+m mi	def miu	acc miun	gen miut	indGen miu	PL minj	PLdef minjtë	PLgen minjve	PLabl minjsh	mouse
+m lepur	def lepuri	acc lepurin	gen lepurit	indGen lepuri	PL lepuj	PLdef lepujt	PLgen lepujve	PLabl lepujsh	rabbit, hare
+m gjarpër	def gjarpri	acc gjarprin	gen gjarprit	indGen gjarpri	PL gjarpërinj	PLdef gjarpërinjtë	PLgen gjarpërinjve	PLabl gjarpërinjsh	snake
+f bletë	def bleta	acc bletën	gen bletës	indGen blete	PL bletë	PLdef bletët	PLgen bletëve	PLabl bletësh	bee
+f flutur	def flutura	acc fluturën	gen fluturës	indGen fluture	PL flutura	PLdef fluturat	PLgen fluturave	PLabl fluturash	butterfly
+m insekt	def insekti	acc insektin	gen insektit	indGen insekti	PL insekte	PLdef insektet	PLgen insekteve	PLabl insektesh	insect
+f mushkonjë	def mushkonja	acc mushkonjën	gen mushkonjës	indGen mushkonje	PL mushkonja	PLdef mushkonjat	PLgen mushkonjave	PLabl mushkonjash	mosquito
+f gjë	def gjëja	acc gjënë	gen gjësë	indGen gjëje	PL gjëra	PLdef gjërat	PLgen gjërave	PLabl gjërash	thing
+f jetë	def jeta	acc jetën	gen jetës	indGen jete	PL jetë	PLdef jetët	PLgen jetëve	PLabl jetësh	life
+f vdekje	def vdekja	acc vdekjen	gen vdekjes	indGen -	PL vdekje	PLdef vdekjet	PLgen vdekjeve	PLabl vdekjesh	death
+f dashuri	def dashuria	acc dashurinë	gen dashurisë	indGen dashurie	PL dashuri	PLdef dashuritë	PLgen dashurive	PLabl dashurish	love
+f paqe	def paqja	acc paqen	gen paqes	indGen paqeje	PL -	PLdef -	PLgen -	PLabl -	peace
+f liri	def liria	acc lirinë	gen lirisë	indGen lirie	PL -	PLdef -	PLgen -	PLabl -	freedom
+m gëzim	def gëzimi	acc gëzimin	gen gëzimit	indGen gëzimi	PL gëzime	PLdef gëzimet	PLgen gëzimeve	PLabl gëzimesh	joy
+f frikë	def frika	acc frikën	gen frikës	indGen frike	PL -	PLdef -	PLgen -	PLabl -	fear
+f shpresë	def shpresa	acc shpresën	gen shpresës	indGen shprese	PL shpresa	PLdef shpresat	PLgen shpresave	PLabl shpresash	hope
+f dëshirë	def dëshira	acc dëshirën	gen dëshirës	indGen dëshire	PL dëshira	PLdef dëshirat	PLgen dëshirave	PLabl dëshirash	wish, desire
+m mendim	def mendimi	acc mendimin	gen mendimit	indGen mendimi	PL mendime	PLdef mendimet	PLgen mendimeve	PLabl mendimesh	thought, opinion
+m kujtim	def kujtimi	acc kujtimin	gen kujtimit	indGen kujtimi	PL kujtime	PLdef kujtimet	PLgen kujtimeve	PLabl kujtimesh	memory, recollection
+f ëndërr	def ëndrra	acc ëndrrën	gen ëndrrës	indGen ëndrre	PL ëndrra	PLdef ëndrrat	PLgen ëndrrave	PLabl ëndrrash	dream
+m kuptim	def kuptimi	acc kuptimin	gen kuptimit	indGen kuptimi	PL kuptime	PLdef kuptimet	PLgen kuptimeve	PLabl kuptimesh	meaning
+f vlerë	def vlera	acc vlerën	gen vlerës	indGen vlere	PL vlera	PLdef vlerat	PLgen vlerave	PLabl vlerash	value
+f fuqi	def fuqia	acc fuqinë	gen fuqisë	indGen fuqie	PL fuqi	PLdef fuqitë	PLgen fuqive	PLabl fuqish	power, strength
+f forcë	def forca	acc forcën	gen forcës	indGen force	PL forca	PLdef forcat	PLgen forcave	PLabl forcash	force, strength
+m shkak	def shkaku	acc shkakun	gen shkakut	indGen shkaku	PL shkaqe	PLdef shkaqet	PLgen shkaqeve	PLabl shkaqesh	cause
+m rezultat	def rezultati	acc rezultatin	gen rezultatit	indGen rezultati	PL rezultate	PLdef rezultatet	PLgen rezultateve	PLabl rezultatesh	result
+m ndryshim	def ndryshimi	acc ndryshimin	gen ndryshimit	indGen ndryshimi	PL ndryshime	PLdef ndryshimet	PLgen ndryshimeve	PLabl ndryshimesh	change, difference
+f mundësi	def mundësia	acc mundësinë	gen mundësisë	indGen mundësie	PL mundësi	PLdef mundësitë	PLgen mundësive	PLabl mundësish	possibility, chance
+f mënyrë	def mënyra	acc mënyrën	gen mënyrës	indGen mënyre	PL mënyra	PLdef mënyrat	PLgen mënyrave	PLabl mënyrash	way, manner
+m lloj	def lloji	acc llojin	gen llojit	indGen lloji	PL lloje	PLdef llojet	PLgen llojeve	PLabl llojesh	kind, sort
+f pjesë	def pjesa	acc pjesën	gen pjesës	indGen pjese	PL pjesë	PLdef pjesët	PLgen pjesëve	PLabl pjesësh	part
+f çështje	def çështja	acc çështjen	gen çështjes	indGen -	PL çështje	PLdef çështjet	PLgen çështjeve	PLabl çështjesh	matter, issue
+f përvojë	def përvoja	acc përvojën	gen përvojës	indGen përvoje	PL përvoja	PLdef përvojat	PLgen përvojave	PLabl përvojash	experience
+m zakon	def zakoni	acc zakonin	gen zakonit	indGen zakoni	PL zakone	PLdef zakonet	PLgen zakoneve	PLabl zakonesh	custom, habit
+f traditë	def tradita	acc traditën	gen traditës	indGen tradite	PL tradita	PLdef traditat	PLgen traditave	PLabl traditash	tradition
+f kulturë	def kultura	acc kulturën	gen kulturës	indGen kulture	PL kultura	PLdef kulturat	PLgen kulturave	PLabl kulturash	culture
+m kërkim	def kërkimi	acc kërkimin	gen kërkimit	indGen kërkimi	PL kërkime	PLdef kërkimet	PLgen kërkimeve	PLabl kërkimesh	search; research
+f mbretëri	def mbretëria	acc mbretërinë	gen mbretërisë	indGen mbretërie	PL mbretëri	PLdef mbretëritë	PLgen mbretërive	PLabl mbretërish	kingdom
+f perandori	def perandoria	acc perandorinë	gen perandorisë	indGen perandorie	PL perandori	PLdef perandoritë	PLgen perandorive	PLabl perandorish	empire
+m mesazh	def mesazhi	acc mesazhin	gen mesazhit	indGen mesazhi	PL mesazhe	PLdef mesazhet	PLgen mesazheve	PLabl mesazhesh	message
+f telefonatë	def telefonata	acc telefonatën	gen telefonatës	indGen telefonate	PL telefonata	PLdef telefonatat	PLgen telefonatave	PLabl telefonatash	telephone call
+f gazetë	def gazeta	acc gazetën	gen gazetës	indGen gazete	PL gazeta	PLdef gazetat	PLgen gazetave	PLabl gazetash	newspaper
+f revistë	def revista	acc revistën	gen revistës	indGen reviste	PL revista	PLdef revistat	PLgen revistave	PLabl revistash	magazine
+m film	def filmi	acc filmin	gen filmit	indGen filmi	PL filma	PLdef filmat	PLgen filmave	PLabl filmash	film
+f këngë	def kënga	acc këngën	gen këngës	indGen kënge	PL këngë	PLdef këngët	PLgen këngëve	PLabl këngësh	song
+f muzikë	def muzika	acc muzikën	gen muzikës	indGen muzike	PL -	PLdef -	PLgen -	PLabl -	music
+f poezi	def poezia	acc poezinë	gen poezisë	indGen poezie	PL poezi	PLdef poezitë	PLgen poezive	PLabl poezish	poem, poetry
+m roman	def romani	acc romanin	gen romanit	indGen romani	PL romane?	PLdef romanet?	PLgen romaneve?	PLabl romanesh?	novel
+m tregim	def tregimi	acc tregimin	gen tregimit	indGen tregimi	PL tregime	PLdef tregimet	PLgen tregimeve	PLabl tregimesh	story, tale
+m lajm	def lajmi	acc lajmin	gen lajmit	indGen lajmi	PL lajme	PLdef lajmet	PLgen lajmeve	PLabl lajmesh	news item
+f fotografi	def fotografia	acc fotografinë	gen fotografisë	indGen fotografie	PL fotografi	PLdef fotografitë	PLgen fotografive	PLabl fotografish	photograph
+f lojë	def loja	acc lojën	gen lojës	indGen loje	PL lojëra	PLdef lojërat	PLgen lojërave	PLabl lojërash	game, play
+m futboll	def futbolli	acc futbollin	gen futbollit	indGen futbolli	PL -	PLdef -	PLgen -	PLabl -	football
+f ndeshje	def ndeshja	acc ndeshjen	gen ndeshjes	indGen -	PL ndeshje	PLdef ndeshjet	PLgen ndeshjeve	PLabl ndeshjesh	match, game
+f skuadër	def skuadra	acc skuadrën	gen skuadrës	indGen skuadre	PL skuadra	PLdef skuadrat	PLgen skuadrave	PLabl skuadrash	team, squad
+m zot	def zoti	acc zotin	gen zotit	indGen zoti	PL -	PLdef -	PLgen -	PLabl -	Lord; God
+f perëndi	def perëndia	acc perëndinë	gen perëndisë	indGen perëndie	PL perëndi	PLdef perënditë	PLgen perëndive	PLabl perëndish	God; god
+m atë	def ati?	acc atin	gen atit	indGen ati?	PL etër	PLdef etërit	PLgen etërve	PLabl etërish	father (Church), the Father
+f bibël	def bibla	acc biblën	gen biblës	indGen bible	PL -	PLdef -	PLgen -	PLabl -	Bible
+m ungjill	def ungjilli	acc ungjillin	gen ungjillit	indGen ungjilli	PL ungjij	PLdef ungjijtë?	PLgen ungjijve	PLabl ungjijsh	gospel
+m psalm	def psalmi	acc psalmin	gen psalmit	indGen psalmi	PL psalme	PLdef psalmet	PLgen psalmeve	PLabl psalmesh	psalm
+f fe	def feja	acc fenë	gen fesë	indGen feje	PL fe	PLdef fetë	PLgen feve	PLabl fesh	faith; religion
+m besim	def besimi	acc besimin	gen besimit	indGen besimi	PL besime	PLdef besimet	PLgen besimeve	PLabl besimesh	belief, faith, trust
+f lutje	def lutja	acc lutjen	gen lutjes	indGen -	PL lutje	PLdef lutjet	PLgen lutjeve	PLabl lutjesh	prayer
+m mëkat	def mëkati	acc mëkatin	gen mëkatit	indGen mëkati	PL mëkate	PLdef mëkatet	PLgen mëkateve	PLabl mëkatesh	sin
+f falje	def falja	acc faljen	gen faljes	indGen -	PL -	PLdef -	PLgen -	PLabl -	forgiveness
+m hir	def hiri	acc hirin	gen hirit	indGen hiri	PL -	PLdef -	PLgen -	PLabl -	grace
+m shpëtim	def shpëtimi	acc shpëtimin	gen shpëtimit	indGen shpëtimi	PL shpëtime	PLdef shpëtimet	PLgen shpëtimeve	PLabl shpëtimesh	salvation
+m kryq	def kryqi	acc kryqin	gen kryqit	indGen kryqi	PL kryqe	PLdef kryqet	PLgen kryqeve	PLabl kryqesh	cross
+f ringjallje	def ringjallja	acc ringjalljen	gen ringjalljes	indGen -	PL -	PLdef -	PLgen -	PLabl -	resurrection
+f dëshmi	def dëshmia	acc dëshminë	gen dëshmisë	indGen dëshmie	PL dëshmi	PLdef dëshmitë	PLgen dëshmive	PLabl dëshmish	testimony, witness
+f mëshirë	def mëshira	acc mëshirën	gen mëshirës	indGen mëshire	PL -	PLdef -	PLgen -	PLabl -	mercy
+f lavdi	def lavdia	acc lavdinë	gen lavdisë	indGen lavdie	PL -	PLdef -	PLgen -	PLabl -	glory
+f urtësi	def urtësia	acc urtësinë	gen urtësisë	indGen urtësie	PL -	PLdef -	PLgen -	PLabl -	wisdom
+f parajsë	def parajsa	acc parajsën	gen parajsës	indGen parajse	PL -	PLdef -	PLgen -	PLabl -	paradise
+m ferr	def ferri	acc ferrin	gen ferrit	indGen ferri	PL -	PLdef -	PLgen -	PLabl -	hell
+m pendim	def pendimi	acc pendimin	gen pendimit	indGen pendimi	PL -	PLdef -	PLgen -	PLabl -	repentance
+m bekim	def bekimi	acc bekimin	gen bekimit	indGen bekimi	PL bekime	PLdef bekimet	PLgen bekimeve	PLabl bekimesh	blessing
+m adhurim	def adhurimi	acc adhurimin	gen adhurimit	indGen adhurimi	PL -	PLdef -	PLgen -	PLabl -	worship
+m flijim	def flijimi	acc flijimin	gen flijimit	indGen flijimi	PL flijime	PLdef flijimet	PLgen flijimeve	PLabl flijimesh	sacrifice
+f mrekulli	def mrekullia	acc mrekullinë	gen mrekullisë	indGen mrekullie	PL mrekulli	PLdef mrekullitë	PLgen mrekullive	PLabl mrekullish	miracle
+f besëlidhje	def besëlidhja	acc besëlidhjen	gen besëlidhjes	indGen -	PL besëlidhje	PLdef besëlidhjet	PLgen besëlidhjeve	PLabl besëlidhjesh	covenant
+m shërbim	def shërbimi	acc shërbimin	gen shërbimit	indGen shërbimi	PL shërbime	PLdef shërbimet	PLgen shërbimeve	PLabl shërbimesh	service
+m predikim	def predikimi	acc predikimin	gen predikimit	indGen predikimi	PL predikime	PLdef predikimet	PLgen predikimeve	PLabl predikimesh	sermon
+m predikues	def predikuesi	acc predikuesin	gen predikuesit	indGen predikuesi	PL predikues	PLdef predikuesit	PLgen predikuesve	PLabl predikuesish	preacher
+f meshë	def mesha?	acc meshën	gen meshës	indGen meshe	PL mesha?	PLdef meshat?	PLgen meshave?	PLabl meshash?	Mass
+f kambanë	def kambana	acc kambanën	gen kambanës	indGen kambane	PL kambana	PLdef kambanat	PLgen kambanave	PLabl kambanash	bell
+f ikonë	def ikona	acc ikonën	gen ikonës	indGen ikone	PL ikona	PLdef ikonat	PLgen ikonave	PLabl ikonash	icon
+m altar	def altari	acc altarin	gen altarit	indGen altari	PL altarë	PLdef altarët	PLgen altarëve	PLabl altarësh	altar
+m tempull	def tempulli	acc tempullin	gen tempullit	indGen tempulli	PL tempuj	PLdef tempujt	PLgen tempujve	PLabl tempujsh	temple
+f frymë	def fryma	acc frymën	gen frymës	indGen fryme	PL -	PLdef -	PLgen -	PLabl -	breath; spirit
+f dhuratë	def dhurata	acc dhuratën	gen dhuratës	indGen dhurate	PL dhurata	PLdef dhuratat	PLgen dhuratave	PLabl dhuratash	gift
+m pagëzim	def pagëzimi	acc pagëzimin	gen pagëzimit	indGen pagëzimi	PL pagëzime	PLdef pagëzimet	PLgen pagëzimeve	PLabl pagëzimesh	baptism
+m urdhërim	def urdhërimi	acc urdhërimin	gen urdhërimit	indGen urdhërimi	PL urdhërime	PLdef urdhërimet	PLgen urdhërimeve	PLabl urdhërimesh	commandment, order
+f padrejtësi	def padrejtësia	acc padrejtësinë	gen padrejtësisë	indGen padrejtësie	PL padrejtësi	PLdef padrejtësitë	PLgen padrejtësive	PLabl padrejtësish	injustice, unrighteousness
+m prift	def prifti	acc priftin	gen priftit	indGen prifti	PL priftërinj	PLdef priftërinjtë	PLgen priftërinjve	PLabl priftërinjsh	priest
+m pastor	def pastori?	acc pastorin?	gen pastorit?	indGen pastori?	PL pastorë?	PLdef pastorët?	PLgen pastorëve?	PLabl pastorësh?	pastor
+m murg	def murgu	acc murgun	gen murgut	indGen murgu	PL murgj	PLdef murgjit	PLgen murgjve	PLabl murgjish?	monk
+m apostull	def apostulli	acc apostullin	gen apostullit	indGen apostulli	PL apostuj	PLdef apostujt	PLgen apostujve	PLabl apostujsh	apostle
+m dishepull	def dishepulli	acc dishepullin	gen dishepullit	indGen dishepulli	PL dishepuj	PLdef dishepujt	PLgen dishepujve	PLabl dishepujsh	disciple
+m profet	def profeti	acc profetin	gen profetit	indGen profeti	PL profetë	PLdef profetët	PLgen profetëve	PLabl profetësh	prophet
+m engjëll	def engjëlli	acc engjëllin	gen engjëllit	indGen engjëlli	PL engjëj	PLdef engjëjt	PLgen engjëjve	PLabl engjëjsh	angel
+m shenjtor	def shenjtori	acc shenjtorin	gen shenjtorit	indGen shenjtori	PL shenjtorë	PLdef shenjtorët	PLgen shenjtorëve	PLabl shenjtorësh	saint
+m besimtar	def besimtari	acc besimtarin	gen besimtarit	indGen besimtari	PL besimtarë	PLdef besimtarët	PLgen besimtarëve	PLabl besimtarësh	believer
+m mëkatar	def mëkatari	acc mëkatarin	gen mëkatarit	indGen mëkatari	PL mëkatarë	PLdef mëkatarët	PLgen mëkatarëve	PLabl mëkatarësh	sinner
+m shpëtimtar	def shpëtimtari	acc shpëtimtarin	gen shpëtimtarit	indGen shpëtimtari	PL shpëtimtarë	PLdef shpëtimtarët	PLgen shpëtimtarëve	PLabl shpëtimtarësh	saviour
+Pm Beni	def Beni	acc Benin	gen Benit	indGen -	PL -	PLdef -	PLgen -	PLabl -	Beni (man's name)
+Pm Ardi	def Ardi	acc Ardin	gen Ardit	indGen -	PL -	PLdef -	PLgen -	PLabl -	Ardi (man's name)
+Pm Sam	def Sami	acc Samin	gen Samit	indGen Sami	PL -	PLdef -	PLgen -	PLabl -	Sam (man's name)
+Pm Luan	def Luani	acc Luanin	gen Luanit	indGen Luani	PL -	PLdef -	PLgen -	PLabl -	Luan (man's name)
+Pf Drita	def Drita	acc Dritën	gen Dritës	indGen -	PL -	PLdef -	PLgen -	PLabl -	Drita (woman's name)
+Pf Ana	def Ana	acc Anën	gen Anës	indGen -	PL -	PLdef -	PLgen -	PLabl -	Ana (woman's name)
+Pf Arta	def Arta	acc Artën	gen Artës	indGen -	PL -	PLdef -	PLgen -	PLabl -	Arta (woman's name)
+Pm Dritan	def Dritani	acc Dritanin	gen Dritanit	indGen Dritani	PL -	PLdef -	PLgen -	PLabl -	Dritan (man's name)
+Pf Mira	def Mira	acc Mirën	gen Mirës	indGen -	PL -	PLdef -	PLgen -	PLabl -	Mira (woman's name)
+Pm Gjergj	def Gjergji	acc Gjergjin	gen Gjergjit	indGen Gjergji	PL -	PLdef -	PLgen -	PLabl -	Gjergj, George (man's name)
+Pf Elira	def Elira	acc Elirën	gen Elirës	indGen -	PL -	PLdef -	PLgen -	PLabl -	Elira (woman's name)
+Pm Mark	def Marku	acc Markun	gen Markut	indGen Marku	PL -	PLdef -	PLgen -	PLabl -	Mark (man's name)
+Pm Gjon	def Gjoni	acc Gjonin	gen Gjonit	indGen Gjoni	PL -	PLdef -	PLgen -	PLabl -	John (man's name)
+Pm Pjetër	def Pjetri	acc Pjetrin	gen Pjetrit	indGen Pjetri	PL -	PLdef -	PLgen -	PLabl -	Peter (man's name)
+Pm Pal	def Pali	acc Palin	gen Palit	indGen Pali	PL -	PLdef -	PLgen -	PLabl -	Paul (man's name)
+Pm Pavli	def Pavli	acc Pavlin	gen Pavlit	indGen -	PL -	PLdef -	PLgen -	PLabl -	Paul (man's name, the form used in Bible translations)
+Pf Mari	def Maria	acc Marinë	gen Marisë	indGen Marie	PL -	PLdef -	PLgen -	PLabl -	Mary (woman's name)
+Pm Abraham	def Abrahami	acc Abrahamin	gen Abrahamit	indGen Abrahami	PL -	PLdef -	PLgen -	PLabl -	Abraham
+Pm David	def Davidi	acc Davidin	gen Davidit	indGen Davidi	PL -	PLdef -	PLgen -	PLabl -	David
+Pm Jezus	def Jezusi	acc Jezusin	gen Jezusit	indGen Jezusi	PL -	PLdef -	PLgen -	PLabl -	Jesus
+Pm Krisht	def Krishti	acc Krishtin	gen Krishtit	indGen Krishti	PL -	PLdef -	PLgen -	PLabl -	Christ
+Pf Shqipëri	def Shqipëria	acc Shqipërinë	gen Shqipërisë	indGen Shqipërie	PL -	PLdef -	PLgen -	PLabl -	Albania
+Pf Tiranë	def Tirana	acc Tiranën	gen Tiranës	indGen Tirane	PL -	PLdef -	PLgen -	PLabl -	Tirana
+Pm Durrës	def Durrësi	acc Durrësin	gen Durrësit	indGen Durrësi	PL -	PLdef -	PLgen -	PLabl -	Durrës (city)
+Pf Shkodër	def Shkodra	acc Shkodrën	gen Shkodrës	indGen Shkodre	PL -	PLdef -	PLgen -	PLabl -	Shkodër (city)
+Pf Korçë	def Korça	acc Korçën	gen Korçës	indGen Korçe	PL -	PLdef -	PLgen -	PLabl -	Korçë (city)
+Pf Vlorë	def Vlora	acc Vlorën	gen Vlorës	indGen Vlore	PL -	PLdef -	PLgen -	PLabl -	Vlorë (city)
+Pm Elbasan	def Elbasani	acc Elbasanin	gen Elbasanit	indGen Elbasani	PL -	PLdef -	PLgen -	PLabl -	Elbasan (city)
+Pm Berat	def Berati	acc Beratin	gen Beratit	indGen Berati	PL -	PLdef -	PLgen -	PLabl -	Berat (city)
+Pf Gjirokastër	def Gjirokastra	acc Gjirokastrën	gen Gjirokastrës	indGen Gjirokastre	PL -	PLdef -	PLgen -	PLabl -	Gjirokastër (city)
+Pf Sarandë	def Saranda	acc Sarandën	gen Sarandës	indGen Sarande	PL -	PLdef -	PLgen -	PLabl -	Sarandë (city)
+Pf Kosovë	def Kosova	acc Kosovën	gen Kosovës	indGen Kosove	PL -	PLdef -	PLgen -	PLabl -	Kosovo
+Pf Prishtinë	def Prishtina	acc Prishtinën	gen Prishtinës	indGen Prishtine	PL -	PLdef -	PLgen -	PLabl -	Pristina
+Pf Maqedoni	def Maqedonia	acc Maqedoninë	gen Maqedonisë	indGen Maqedonie	PL -	PLdef -	PLgen -	PLabl -	Macedonia
+Pf Greqi	def Greqia	acc Greqinë	gen Greqisë	indGen Greqie	PL -	PLdef -	PLgen -	PLabl -	Greece
+Pf Itali	def Italia	acc Italinë	gen Italisë	indGen Italie	PL -	PLdef -	PLgen -	PLabl -	Italy
+Pf Gjermani	def Gjermania	acc Gjermaninë	gen Gjermanisë?	indGen Gjermanie?	PL -	PLdef -	PLgen -	PLabl -	Germany
+Pf Angli	def Anglia	acc Anglinë	gen Anglisë	indGen Anglie	PL -	PLdef -	PLgen -	PLabl -	England
+Pf Francë	def Franca	acc Francën	gen Francës	indGen France	PL -	PLdef -	PLgen -	PLabl -	France
+Pf Amerikë	def Amerika	acc Amerikën	gen Amerikës	indGen Amerike	PL -	PLdef -	PLgen -	PLabl -	America
+Pf Evropë	def Evropa	acc Evropën	gen Evropës	indGen Evrope	PL -	PLdef -	PLgen -	PLabl -	Europe
+Pm Izrael	def Izraeli	acc Izraelin	gen Izraelit	indGen Izraeli	PL -	PLdef -	PLgen -	PLabl -	Israel
+Pm Jeruzalem	def Jeruzalemi	acc Jeruzalemin	gen Jeruzalemit	indGen Jeruzalemi	PL -	PLdef -	PLgen -	PLabl -	Jerusalem
+Pf Romë	def Roma	acc Romën	gen Romës	indGen Rome	PL -	PLdef -	PLgen -	PLabl -	Rome
+Pf Athinë	def Athina	acc Athinën	gen Athinës	indGen Athine	PL -	PLdef -	PLgen -	PLabl -	Athens
+f herë	def hera	acc herën	gen herës	indGen here	PL herë	PLdef herët	PLgen herëve	PLabl herësh	time, occasion (një herë, dy herë)
+f karrige	def karrigia	acc karrigen	gen karriges	indGen karrigeje	PL karrige	PLdef karriget	PLgen karrigeve	PLabl karrigesh	chair
+m dollap	def dollapi	acc dollapin	gen dollapit	indGen dollapi	PL dollapë	PLdef dollapët	PLgen dollapëve	PLabl dollapësh	cupboard, wardrobe
+f pallto	def palltoja	acc palltonë?	gen palltosë?	indGen -	PL pallto	PLdef palltot	PLgen palltove	PLabl palltosh	coat
+f ngjyrë	def ngjyra	acc ngjyrën	gen ngjyrës	indGen ngjyre	PL ngjyra	PLdef ngjyrat	PLgen ngjyrave	PLabl ngjyrash	colour
+f madhësi	def madhësia	acc madhësinë	gen madhësisë	indGen madhësie	PL madhësi	PLdef madhësitë	PLgen madhësive	PLabl madhësish	size
+f zbritje	def zbritja	acc zbritjen	gen zbritjes	indGen -	PL zbritje	PLdef zbritjet	PLgen zbritjeve	PLabl zbritjesh	discount
+f para	def paraja	acc paranë	gen parasë	indGen -	PL para	PLdef paratë	PLgen parave	PLabl parash	money (plural in use)
+f euro	def euroja	acc euron	gen eurosë?	indGen -	PL euro	PLdef eurot	PLgen eurove	PLabl eurosh	euro
+m kusur	def kusuri	acc kusurin	gen kusurit	indGen kusuri	PL -	PLdef -	PLgen -	PLabl -	change (money)
+m peshk	def peshku	acc peshkun	gen peshkut	indGen peshku	PL peshq	PLdef peshqit	PLgen peshqve	PLabl peshqsh?	fish
+f faturë	def fatura	acc faturën	gen faturës	indGen fature	PL fatura	PLdef faturat	PLgen faturave	PLabl faturash	bill
+f porosi	def porosia	acc porosinë	gen porosisë	indGen porosie	PL porosi	PLdef porositë	PLgen porosive	PLabl porosish	order (in a restaurant)
+m furgon	def furgoni	acc furgonin	gen furgonit	indGen furgoni	PL furgonë	PLdef furgonët	PLgen furgonëve	PLabl furgonësh	minibus
+f linjë	def linja	acc linjën	gen linjës	indGen linje	PL linja	PLdef linjat	PLgen linjave	PLabl linjash	line, bus route
+f ndalesë	def ndalesa	acc ndalesën	gen ndalesës	indGen ndalese	PL ndalesa	PLdef ndalesat	PLgen ndalesave	PLabl ndalesash	stop
+f vonesë	def vonesa	acc vonesën	gen vonesës	indGen vonese	PL vonesa	PLdef vonesat	PLgen vonesave	PLabl vonesash	delay
+m kryqëzim	def kryqëzimi	acc kryqëzimin	gen kryqëzimit	indGen kryqëzimi	PL kryqëzime	PLdef kryqëzimet	PLgen kryqëzimeve	PLabl kryqëzimesh	crossroads
+f kthesë	def kthesa	acc kthesën	gen kthesës	indGen kthese	PL kthesa	PLdef kthesat	PLgen kthesave	PLabl kthesash	turn, bend
+f stinë	def stina	acc stinën	gen stinës	indGen stine	PL stinë	PLdef stinët	PLgen stinëve	PLabl stinësh	season
+m stomak	def stomaku	acc stomakun	gen stomakut	indGen stomaku	PL stomakë	PLdef stomakët	PLgen stomakëve	PLabl stomakësh	stomach
+m gjoks	def gjoksi	acc gjoksin	gen gjoksit	indGen gjoksi	PL gjokse	PLdef gjokset	PLgen gjokseve	PLabl gjoksesh	chest
+m ilaç	def ilaçi	acc ilaçin	gen ilaçit	indGen ilaçi	PL ilaçe	PLdef ilaçet	PLgen ilaçeve	PLabl ilaçesh	medicine
+f temperaturë	def temperatura	acc temperaturën	gen temperaturës	indGen temperature	PL temperatura	PLdef temperaturat	PLgen temperaturave	PLabl temperaturash	temperature; fever
+f recetë	def receta	acc recetën	gen recetës	indGen recete	PL receta	PLdef recetat	PLgen recetave	PLabl recetash	prescription; recipe
+f kollë	def kolla	acc kollën	gen kollës	indGen kolle	PL -	PLdef -	PLgen -	PLabl -	cough
+f ftohje	def ftohja?	acc ftohjen?	gen ftohjes?	indGen -	PL ftohje?	PLdef ftohjet?	PLgen ftohjeve?	PLabl ftohjesh?	cold (illness)
+m gjumë	def gjumi	acc gjumin	gen gjumit	indGen gjumi	PL -	PLdef -	PLgen -	PLabl -	sleep
+f ftesë	def ftesa	acc ftesën	gen ftesës	indGen ftese	PL ftesa	PLdef ftesat	PLgen ftesave	PLabl ftesash	invitation
+m urim	def urimi	acc urimin	gen urimit	indGen urimi	PL urime	PLdef urimet	PLgen urimeve	PLabl urimesh	good wish, greeting
+m celular	def celulari	acc celularin	gen celularit	indGen celulari	PL celularë	PLdef celularët	PLgen celularëve	PLabl celularësh	mobile phone
+m bujk	def bujku	acc bujkun	gen bujkut	indGen bujku	PL bujq	PLdef bujqit	PLgen bujqve	PLabl bujqsh?	farmer, peasant
+f përgjigje	def përgjigjja	acc përgjigjen	gen përgjigjes	indGen -	PL përgjigje	PLdef përgjigjet	PLgen përgjigjeve	PLabl përgjigjesh	answer
+f kartolinë	def kartolina	acc kartolinën	gen kartolinës	indGen kartoline	PL kartolina	PLdef kartolinat	PLgen kartolinave	PLabl kartolinash	postcard
+m zarf	def zarfi	acc zarfin	gen zarfit	indGen zarfi	PL zarfe	PLdef zarfet	PLgen zarfeve	PLabl zarfesh	envelope
+m shënim	def shënimi	acc shënimin	gen shënimit	indGen shënimi	PL shënime	PLdef shënimet	PLgen shënimeve	PLabl shënimesh	note
+f ofertë	def oferta	acc ofertën	gen ofertës	indGen oferte	PL oferta	PLdef ofertat	PLgen ofertave	PLabl ofertash	offer; offering
+f bashkësi	def bashkësia	acc bashkësinë	gen bashkësisë	indGen bashkësie	PL bashkësi	PLdef bashkësitë	PLgen bashkësive	PLabl bashkësish	community, fellowship
+f mbledhje	def mbledhja	acc mbledhjen	gen mbledhjes	indGen -	PL mbledhje	PLdef mbledhjet	PLgen mbledhjeve	PLabl mbledhjesh	meeting, gathering
+m kor	def kori	acc korin	gen korit	indGen kori	PL kore	PLdef koret	PLgen koreve	PLabl koresh	choir
+f moshë	def mosha	acc moshën	gen moshës	indGen moshe	PL moshë?	PLdef moshët?	PLgen moshëve?	PLabl moshësh?	age
+f fëmijëri	def fëmijëria	acc fëmijërinë	gen fëmijërisë	indGen fëmijërie	PL -	PLdef -	PLgen -	PLabl -	childhood
+f rini	def rinia	acc rininë	gen rinisë	indGen rinie	PL -	PLdef -	PLgen -	PLabl -	youth
+m kos	def kosi	acc kosin	gen kosit	indGen kosi	PL -	PLdef -	PLgen -	PLabl -	yoghurt
+m miell	def mielli	acc miellin	gen miellit	indGen mielli	PL -	PLdef -	PLgen -	PLabl -	flour
+m spinaq	def spinaqi	acc spinaqin	gen spinaqit	indGen spinaqi	PL -	PLdef -	PLgen -	PLabl -	spinach
+f furrë	def furra	acc furrën	gen furrës	indGen furre	PL furra	PLdef furrat	PLgen furrave	PLabl furrash	oven; bakery
+f çati	def çatia	acc çatinë	gen çatisë	indGen çatie	PL çati	PLdef çatitë	PLgen çative	PLabl çatish	roof
+m banor	def banori	acc banorin	gen banorit	indGen banori	PL banorë	PLdef banorët	PLgen banorëve	PLabl banorësh	inhabitant
+f bujqësi	def bujqësia	acc bujqësinë	gen bujqësisë	indGen bujqësie	PL -	PLdef -	PLgen -	PLabl -	agriculture
+f pasuri	def pasuria	acc pasurinë	gen pasurisë	indGen pasurie	PL pasuri	PLdef pasuritë	PLgen pasurive	PLabl pasurish	wealth
+f shumicë	def shumica	acc shumicën	gen shumicës	indGen shumice	PL -	PLdef -	PLgen -	PLabl -	majority
+f pakicë	def pakica	acc pakicën	gen pakicës	indGen pakice	PL pakica	PLdef pakicat	PLgen pakicave	PLabl pakicash	minority
+m rrezik	def rreziku	acc rrezikun	gen rrezikut	indGen rreziku	PL rreziqe	PLdef rreziqet	PLgen rreziqeve	PLabl rreziqesh	danger, risk
+f bubullimë	def bubullima	acc bubullimën	gen bubullimës	indGen bubullime	PL bubullima	PLdef bubullimat	PLgen bubullimave	PLabl bubullimash	thunder
+f vetëtimë	def vetëtima	acc vetëtimën	gen vetëtimës	indGen vetëtime	PL vetëtima	PLdef vetëtimat	PLgen vetëtimave	PLabl vetëtimash	lightning
+f nevojë	def nevoja	acc nevojën	gen nevojës	indGen nevoje	PL nevoja	PLdef nevojat	PLgen nevojave	PLabl nevojash	need
+f sasi	def sasia	acc sasinë	gen sasisë	indGen sasie	PL sasi	PLdef sasitë	PLgen sasive	PLabl sasish	quantity
+m dokument	def dokumenti	acc dokumentin	gen dokumentit	indGen dokumenti	PL dokumente?	PLdef dokumentet?	PLgen dokumenteve?	PLabl dokumentesh?	document
+m formular	def formulari	acc formularin	gen formularit	indGen formulari	PL formularë	PLdef formularët	PLgen formularëve	PLabl formularësh	form (to fill in)
+f llogari	def llogaria	acc llogarinë	gen llogarisë	indGen llogarie	PL llogari	PLdef llogaritë	PLgen llogarive	PLabl llogarish	account; calculation
+f radhë	def radha?	acc radhën	gen radhës	indGen radhe	PL radha?	PLdef radhat?	PLgen radhave?	PLabl radhash?	queue; turn
+m email	def emaili?	acc emailin?	gen emailit?	indGen emaili?	PL emaile?	PLdef emailet?	PLgen emaileve?	PLabl emailesh?	email
+m internet	def interneti	acc internetin	gen internetit	indGen interneti	PL -	PLdef -	PLgen -	PLabl -	the internet
+f lidhje	def lidhja	acc lidhjen	gen lidhjes	indGen -	PL lidhje	PLdef lidhjet	PLgen lidhjeve	PLabl lidhjesh	connection, link
+m njoftim	def njoftimi	acc njoftimin	gen njoftimit	indGen njoftimi	PL njoftime	PLdef njoftimet	PLgen njoftimeve	PLabl njoftimesh	notice, announcement
+f bashki	def bashkia	acc bashkinë	gen bashkisë	indGen bashkie	PL bashki	PLdef bashkitë	PLgen bashkive	PLabl bashkish	municipality, town hall
+f popullsi	def popullsia	acc popullsinë	gen popullsisë	indGen popullsie	PL popullsi	PLdef popullsitë	PLgen popullsive	PLabl popullsish	population
+f gjeografi	def gjeografia	acc gjeografinë	gen gjeografisë	indGen gjeografie	PL -	PLdef -	PLgen -	PLabl -	geography
+m shef	def shefi	acc shefin	gen shefit	indGen shefi	PL shefa	PLdef shefat	PLgen shefave	PLabl shefash	boss, chief
+f intervistë	def intervista	acc intervistën	gen intervistës	indGen interviste	PL intervista	PLdef intervistat	PLgen intervistave	PLabl intervistash	interview
+m qëllim	def qëllimi	acc qëllimin	gen qëllimit	indGen qëllimi	PL qëllime	PLdef qëllimet	PLgen qëllimeve	PLabl qëllimesh	aim, purpose
+f vizitë	def vizita	acc vizitën	gen vizitës	indGen vizite	PL vizita	PLdef vizitat	PLgen vizitave	PLabl vizitash	visit; medical appointment
+m pacient	def pacienti	acc pacientin	gen pacientit	indGen pacienti	PL pacientë	PLdef pacientët	PLgen pacientëve	PLabl pacientësh	patient
+m mjekim	def mjekimi	acc mjekimin	gen mjekimit	indGen mjekimi	PL mjekime	PLdef mjekimet	PLgen mjekimeve	PLabl mjekimesh	treatment
+f këshillë	def këshilla	acc këshillën	gen këshillës	indGen këshille	PL këshilla	PLdef këshillat	PLgen këshillave	PLabl këshillash	advice
+m lexim	def leximi	acc leximin	gen leximit	indGen leximi	PL -	PLdef -	PLgen -	PLabl -	reading
+m ushtrim	def ushtrimi	acc ushtrimin	gen ushtrimit	indGen ushtrimi	PL ushtrime	PLdef ushtrimet	PLgen ushtrimeve	PLabl ushtrimesh	exercise
+m fakultet	def fakulteti	acc fakultetin	gen fakultetit	indGen fakulteti	PL fakultete	PLdef fakultetet	PLgen fakulteteve	PLabl fakultetesh	faculty (of a university)
+m studim	def studimi	acc studimin	gen studimit	indGen studimi	PL studime	PLdef studimet	PLgen studimeve	PLabl studimesh	study
+m bregdet	def bregdeti	acc bregdetin	gen bregdetit	indGen bregdeti	PL bregdete	PLdef bregdetet	PLgen bregdeteve	PLabl bregdetesh	coast
+m monument	def monumenti	acc monumentin	gen monumentit	indGen monumenti	PL monumente	PLdef monumentet	PLgen monumenteve	PLabl monumentesh	monument
+f kala	def kalaja	acc kalanë	gen kalasë	indGen -	PL kala	PLdef kalatë?	PLgen kalave	PLabl kalash	castle, fortress
+f kështjellë	def kështjella	acc kështjellën	gen kështjellës	indGen kështjelle	PL kështjella	PLdef kështjellat	PLgen kështjellave	PLabl kështjellash	castle
+f zonë	def zona	acc zonën	gen zonës	indGen zone	PL zona	PLdef zonat	PLgen zonave	PLabl zonash	zone, area
+f trashëgimi	def trashëgimia	acc trashëgiminë	gen trashëgimisë	indGen trashëgimie	PL -	PLdef -	PLgen -	PLabl -	heritage
+f periudhë	def periudha	acc periudhën	gen periudhës	indGen periudhe	PL periudha	PLdef periudhat	PLgen periudhave	PLabl periudhash	period
+m rajon	def rajoni	acc rajonin	gen rajonit	indGen rajoni	PL rajone	PLdef rajonet	PLgen rajoneve	PLabl rajonesh	region
+m mision	def misioni	acc misionin	gen misionit	indGen misioni	PL misione	PLdef misionet	PLgen misioneve	PLabl misionesh	mission
+m misionar	def misionari	acc misionarin	gen misionarit	indGen misionari	PL misionarë	PLdef misionarët	PLgen misionarëve	PLabl misionarësh	missionary
+m vullnetar	def vullnetari	acc vullnetarin	gen vullnetarit	indGen vullnetari	PL vullnetarë	PLdef vullnetarët	PLgen vullnetarëve	PLabl vullnetarësh	volunteer
+m rol	def roli	acc rolin	gen rolit	indGen roli	PL role	PLdef rolet	PLgen roleve	PLabl rolesh	role
+f ndjenjë	def ndjenja	acc ndjenjën	gen ndjenjës	indGen ndjenje	PL ndjenja	PLdef ndjenjat	PLgen ndjenjave	PLabl ndjenjash	feeling
+m vendim	def vendimi	acc vendimin	gen vendimit	indGen vendimi	PL vendime	PLdef vendimet	PLgen vendimeve	PLabl vendimesh	decision
+m kapitull	def kapitulli	acc kapitullin	gen kapitullit	indGen kapitulli	PL kapituj	PLdef kapitujt	PLgen kapitujve	PLabl kapitujsh	chapter
+m varg	def vargu	acc vargun	gen vargut	indGen vargu	PL vargje	PLdef vargjet	PLgen vargjeve	PLabl vargjesh	verse (of a poem or the Bible)
+m çift	def çifti	acc çiftin	gen çiftit	indGen çifti	PL çifte	PLdef çiftet	PLgen çifteve	PLabl çiftesh	couple, pair
+f Krishtlindje	def Krishtlindja	acc Krishtlindjen	gen Krishtlindjes	indGen -	PL -	PLdef -	PLgen -	PLabl -	Christmas
+f Pashkë	def Pashka	acc Pashkën	gen Pashkës	indGen Pashke	PL -	PLdef -	PLgen -	PLabl -	Easter
+f vallë	def vallja?	acc -	gen -	indGen -	PL valle?	PLdef vallet?	PLgen valleve?	PLabl vallesh?	folk dance
+m kufi	def kufiri	acc kufirin	gen kufirit	indGen kufiri	PL kufij?	PLdef kufijtë	PLgen kufijve~	PLabl kufijsh~	border
+f luginë	def lugina	acc luginën	gen luginës	indGen lugine	PL lugina	PLdef luginat	PLgen luginave	PLabl luginash	valley
+f klimë	def klima	acc klimën	gen klimës	indGen klime	PL klima	PLdef klimat	PLgen klimave	PLabl klimash	climate
+f reshje	def reshja	acc reshjen	gen reshjes	indGen -	PL reshje	PLdef reshjet	PLgen reshjeve	PLabl reshjesh	rainfall, precipitation
+f vapë	def vapa	acc vapën	gen vapës	indGen vape	PL vapa	PLdef vapat	PLgen vapave	PLabl vapash	heat (hot weather)
+f gradë	def grada	acc gradën	gen gradës	indGen grade	PL gradë	PLdef gradët	PLgen gradëve	PLabl gradësh	degree
+f bimë	def bima	acc bimën	gen bimës	indGen bime	PL bimë	PLdef bimët	PLgen bimëve	PLabl bimësh	plant
+m burim	def burimi	acc burimin	gen burimit	indGen burimi	PL burime	PLdef burimet	PLgen burimeve	PLabl burimesh	spring, source
+m përrua	def përroi	acc përroin	gen përroit	indGen përroi	PL përrenj	PLdef përrenjtë	PLgen përrenjve	PLabl përrenjsh	stream
+f sipërfaqe	def sipërfaqja	acc sipërfaqen	gen sipërfaqes	indGen sipërfaqeje	PL sipërfaqe	PLdef sipërfaqet	PLgen sipërfaqeve	PLabl sipërfaqesh	surface, area
+f lartësi	def lartësia	acc lartësinë	gen lartësisë	indGen lartësie	PL lartësi	PLdef lartësitë	PLgen lartësive	PLabl lartësish	height
+f gjatësi	def gjatësia	acc gjatësinë	gen gjatësisë	indGen gjatësie	PL gjatësi	PLdef gjatësitë	PLgen gjatësive	PLabl gjatësish	length
+m veri	def veriu	acc veriun	gen veriut	indGen veriu	PL -	PLdef -	PLgen -	PLabl -	north
+m jug	def jugu	acc jugun	gen jugut	indGen jugu	PL -	PLdef -	PLgen -	PLabl -	south
+f lindje	def lindja	acc lindjen	gen lindjes	indGen -	PL -	PLdef -	PLgen -	PLabl -	east; birth
+m perëndim	def perëndimi	acc perëndimin	gen perëndimit	indGen perëndimi	PL -	PLdef -	PLgen -	PLabl -	west
+m metër	def metri	acc metrin	gen metrit	indGen metri	PL metra	PLdef metrat	PLgen metrave	PLabl metrash	metre
+m kilometër	def kilometri	acc kilometrin	gen kilometrit	indGen kilometri	PL kilometra	PLdef kilometrat	PLgen kilometrave	PLabl kilometrash	kilometre
+m kat	def kati	acc katin	gen katit	indGen kati	PL kate	PLdef katet	PLgen kateve	PLabl katesh	floor, storey
+f banesë	def banesa	acc banesën	gen banesës	indGen banese	PL banesa	PLdef banesat	PLgen banesave	PLabl banesash	home, flat
+f qira	def qiraja	acc qiranë	gen qirasë	indGen -	PL qira	PLdef qiratë	PLgen qirave	PLabl qirash	rent
+m apartament	def apartamenti	acc apartamentin	gen apartamentit	indGen apartamenti	PL apartamente	PLdef apartamentet	PLgen apartamenteve	PLabl apartamentesh	apartment
+f dysheme	def dyshemeja	acc dyshemenë	gen dyshemesë	indGen dyshemeje	PL dysheme	PLdef dyshemetë	PLgen dyshemeve	PLabl dyshemesh	floor
+m peshqir	def peshqiri	acc peshqirin	gen peshqirit	indGen peshqiri	PL peshqirë	PLdef peshqirët	PLgen peshqirëve	PLabl peshqirësh	towel
+m sapun	def sapuni	acc sapunin	gen sapunit	indGen sapuni	PL sapunë	PLdef sapunët	PLgen sapunëve	PLabl sapunësh	soap
+m frigorifer	def frigoriferi	acc frigoriferin	gen frigoriferit	indGen frigoriferi	PL frigoriferë	PLdef frigoriferët	PLgen frigoriferëve	PLabl frigoriferësh	refrigerator
+m ballkon	def ballkoni	acc ballkonin	gen ballkonit	indGen ballkoni	PL ballkone	PLdef ballkonet	PLgen ballkoneve	PLabl ballkonesh	balcony
+f lagje	def lagjja	acc lagjen	gen lagjes	indGen -	PL lagje	PLdef lagjet	PLgen lagjeve	PLabl lagjesh	neighbourhood
+m pronar	def pronari	acc pronarin	gen pronarit	indGen pronari	PL pronarë	PLdef pronarët	PLgen pronarëve	PLabl pronarësh	owner
+f rrymë	def rryma	acc rrymën	gen rrymës	indGen rryme	PL rryma	PLdef rrymat	PLgen rrymave	PLabl rrymash	current; electricity
+f ngrohje	def ngrohja	acc ngrohjen	gen ngrohjes	indGen -	PL -	PLdef -	PLgen -	PLabl -	heating
+f taksi	def taksia	acc taksinë	gen taksisë	indGen taksie	PL taksi	PLdef taksitë	PLgen taksive	PLabl taksish	taxi
+f ecje	def ecja	acc ecjen	gen ecjes	indGen -	PL ecje	PLdef ecjet	PLgen ecjeve	PLabl ecjesh	walk, hike
+m udhëzues	def udhëzuesi	acc udhëzuesin	gen udhëzuesit	indGen udhëzuesi	PL udhëzues	PLdef udhëzuesit	PLgen udhëzuesve	PLabl udhëzuesish	guide
+m peizazh	def peizazhi	acc peizazhin	gen peizazhit	indGen peizazhi	PL peizazhe	PLdef peizazhet	PLgen peizazheve	PLabl peizazhesh	landscape
+m fermer	def fermeri	acc fermerin	gen fermerit	indGen fermeri	PL fermerë	PLdef fermerët	PLgen fermerëve	PLabl fermerësh	farmer
+f ekonomi	def ekonomia	acc ekonominë	gen ekonomisë	indGen ekonomie	PL -	PLdef -	PLgen -	PLabl -	economy
+f industri	def industria	acc industrinë	gen industrisë	indGen industrie	PL -	PLdef -	PLgen -	PLabl -	industry
+m turizëm	def turizmi	acc turizmin	gen turizmit	indGen turizmi	PL -	PLdef -	PLgen -	PLabl -	tourism
+f tregti	def tregtia	acc tregtinë	gen tregtisë	indGen tregtie	PL -	PLdef -	PLgen -	PLabl -	trade, commerce
+m prodhim	def prodhimi	acc prodhimin	gen prodhimit	indGen prodhimi	PL prodhime	PLdef prodhimet	PLgen prodhimeve	PLabl prodhimesh	production; product
+f arsye	def arsyeja	acc arsyenë?	gen arsyesë?	indGen arsyeje	PL arsye	PLdef arsyet	PLgen arsyeve	PLabl arsyesh	reason
+f rëndësi	def rëndësia	acc rëndësinë	gen rëndësisë	indGen rëndësie	PL -	PLdef -	PLgen -	PLabl -	importance
+f gjendje	def gjendja	acc gjendjen	gen gjendjes	indGen -	PL gjendje	PLdef gjendjet	PLgen gjendjeve	PLabl gjendjesh	state, condition
+m kusht	def kushti	acc kushtin	gen kushtit	indGen kushti	PL kushte	PLdef kushtet	PLgen kushteve	PLabl kushtesh	condition
+f ide	def ideja	acc idenë	gen idesë	indGen ideje	PL ide	PLdef idetë	PLgen ideve	PLabl idesh	idea
+m plan	def plani	acc planin	gen planit	indGen plani	PL plane	PLdef planet	PLgen planeve	PLabl planesh	plan
+m gabim	def gabimi	acc gabimin	gen gabimit	indGen gabimi	PL gabime	PLdef gabimet	PLgen gabimeve	PLabl gabimesh	mistake
+m sukses	def suksesi	acc suksesin	gen suksesit	indGen suksesi	PL -	PLdef -	PLgen -	PLabl -	success
+f mbretëreshë	def mbretëresha	acc mbretëreshën	gen mbretëreshës	indGen mbretëreshe	PL mbretëresha	PLdef mbretëreshat	PLgen mbretëreshave	PLabl mbretëreshash	queen
+m nektar	def nektari	acc nektarin	gen nektarit	indGen nektari	PL -	PLdef -	PLgen -	PLabl -	nectar
+f larvë	def larva	acc larvën	gen larvës	indGen larve	PL larva	PLdef larvat	PLgen larvave	PLabl larvash	larva
+m thumb	def thumbi	acc thumbin	gen thumbit	indGen thumbi	PL thumba	PLdef thumbat	PLgen thumbave	PLabl thumbash	sting; thorn
+m mashkull	def mashkulli	acc mashkullin	gen mashkullit	indGen mashkulli	PL meshkuj	PLdef meshkujt	PLgen meshkujve	PLabl meshkujsh	male (animal)
+f femër	def femra	acc femrën	gen femrës	indGen femre	PL femra	PLdef femrat	PLgen femrave	PLabl femrash	female
+f fasule	def fasulja	acc fasulen	gen fasules	indGen fasuleje	PL fasule	PLdef fasulet	PLgen fasuleve	PLabl fasulesh	beans
+m limon	def limoni	acc limonin	gen limonit	indGen limoni	PL limonë	PLdef limonët	PLgen limonëve	PLabl limonësh	lemon
+f vitaminë	def vitamina	acc vitaminën	gen vitaminës	indGen vitamine	PL vitamina	PLdef vitaminat	PLgen vitaminave	PLabl vitaminash	vitamin
+f substancë	def substanca	acc substancën	gen substancës	indGen substance	PL substanca	PLdef substancat	PLgen substancave	PLabl substancash	substance
+f energji	def energjia	acc energjinë	gen energjisë	indGen energjie	PL -	PLdef -	PLgen -	PLabl -	energy
+m dëm	def dëmi	acc dëmin	gen dëmit	indGen dëmi	PL dëme	PLdef dëmet	PLgen dëmeve	PLabl dëmesh	harm, damage
+f masë	def masa	acc masën	gen masës	indGen mase	PL masa	PLdef masat	PLgen masave	PLabl masash	measure; mass
+m produkt	def produkti	acc produktin	gen produktit	indGen produkti	PL produkte	PLdef produktet	PLgen produkteve	PLabl produktesh	product
+f çadër	def çadra	acc çadrën	gen çadrës	indGen çadre	PL çadra	PLdef çadrat	PLgen çadrave	PLabl çadrash	umbrella
+f murgeshë	def murgesha	acc murgeshën	gen murgeshës	indGen murgeshe	PL murgesha	PLdef murgeshat	PLgen murgeshave	PLabl murgeshash	nun
+m urdhër	def urdhri	acc urdhrin	gen urdhrit	indGen urdhri	PL urdhra	PLdef urdhrat	PLgen urdhrave	PLabl urdhrash	order (command; religious order)
+f varfëri	def varfëria	acc varfërinë	gen varfërisë	indGen varfërie	PL -	PLdef -	PLgen -	PLabl -	poverty
+m shpërblim	def shpërblimi	acc shpërblimin	gen shpërblimit	indGen shpërblimi	PL shpërblime	PLdef shpërblimet	PLgen shpërblimeve	PLabl shpërblimesh	reward, prize
+f aftësi	def aftësia	acc aftësinë	gen aftësisë	indGen aftësie	PL aftësi	PLdef aftësitë	PLgen aftësive	PLabl aftësish	ability, skill
+m kandidat	def kandidati	acc kandidatin	gen kandidatit	indGen kandidati	PL kandidatë	PLdef kandidatët	PLgen kandidatëve	PLabl kandidatësh	candidate, applicant
+f pamje	def pamja	acc pamjen	gen pamjes	indGen -	PL pamje	PLdef pamjet	PLgen pamjeve	PLabl pamjesh	view, sight
+m teatër	def teatri	acc teatrin	gen teatrit	indGen teatri	PL teatro	PLdef teatrot	PLgen teatrove	PLabl teatrosh	theatre
+f kullë	def kulla	acc kullën	gen kullës	indGen kulle	PL kulla	PLdef kullat	PLgen kullave	PLabl kullash	tower
+m pallat	def pallati	acc pallatin	gen pallatit	indGen pallati	PL pallate	PLdef pallatet	PLgen pallateve	PLabl pallatesh	apartment block, large building
+f komunë	def komuna	acc komunën?	gen komunës?	indGen komune	PL komuna	PLdef komunat	PLgen komunave?	PLabl komunash?	commune
+f pikë	def pika	acc pikën	gen pikës	indGen pike	PL pika	PLdef pikat	PLgen pikave	PLabl pikash	point; drop
+f anë	def ana?	acc anën	gen anës	indGen ane	PL ana?	PLdef anat?	PLgen anave?	PLabl anash?	side
+m vendas	def vendasi	acc vendasin	gen vendasit	indGen vendasi	PL vendas	PLdef vendasit	PLgen vendasve	PLabl vendasish	local, native (person)
+m territor	def territori	acc territorin	gen territorit	indGen territori	PL territore	PLdef territoret	PLgen territoreve	PLabl territoresh	territory
+m sundim	def sundimi	acc sundimin	gen sundimit	indGen sundimi	PL sundime	PLdef sundimet	PLgen sundimeve	PLabl sundimesh	rule (period of rule)
+f pavarësi	def pavarësia	acc pavarësinë	gen pavarësisë	indGen pavarësie	PL -	PLdef -	PLgen -	PLabl -	independence
+f lëvizje	def lëvizja	acc lëvizjen	gen lëvizjes	indGen -	PL lëvizje	PLdef lëvizjet	PLgen lëvizjeve	PLabl lëvizjesh	movement
+f zgjedhje	def zgjedhja	acc zgjedhjen	gen zgjedhjes	indGen -	PL zgjedhje	PLdef zgjedhjet	PLgen zgjedhjeve	PLabl zgjedhjesh	election; choice
+f parti	def partia	acc partinë	gen partisë	indGen partie	PL parti	PLdef partitë	PLgen partive	PLabl partish	political party
+m kuvend	def kuvendi	acc kuvendin	gen kuvendit	indGen kuvendi	PL kuvende	PLdef kuvendet	PLgen kuvendeve	PLabl kuvendesh	assembly, parliament
+f kushtetutë	def kushtetuta	acc kushtetutën	gen kushtetutës	indGen kushtetute	PL kushtetuta	PLdef kushtetutat	PLgen kushtetutave	PLabl kushtetutash	constitution
+m transport	def transporti	acc transportin	gen transportit	indGen transporti	PL -	PLdef -	PLgen -	PLabl -	transport
+m institucion	def institucioni	acc institucionin	gen institucionit	indGen institucioni	PL institucione	PLdef institucionet	PLgen institucioneve	PLabl institucionesh	institution
+m sektor	def sektori	acc sektorin	gen sektorit	indGen sektori	PL sektorë	PLdef sektorët	PLgen sektorëve	PLabl sektorësh	sector
+m zhvillim	def zhvillimi	acc zhvillimin	gen zhvillimit	indGen zhvillimi	PL zhvillime	PLdef zhvillimet	PLgen zhvillimeve	PLabl zhvillimesh	development
+m ndërtim	def ndërtimi	acc ndërtimin	gen ndërtimit	indGen ndërtimi	PL ndërtime	PLdef ndërtimet	PLgen ndërtimeve	PLabl ndërtimesh	construction, building
+m nivel	def niveli	acc nivelin	gen nivelit	indGen niveli	PL nivele	PLdef nivelet	PLgen niveleve	PLabl nivelesh	level
+f formë	def forma	acc formën	gen formës	indGen forme	PL forma	PLdef format	PLgen formave	PLabl formash	shape, form
+m sistem	def sistemi	acc sistemin	gen sistemit	indGen sistemi	PL sisteme	PLdef sistemet	PLgen sistemeve	PLabl sistemesh	system
+f krahinë	def krahina	acc krahinën	gen krahinës	indGen krahine	PL krahina	PLdef krahinat	PLgen krahinave	PLabl krahinash	region, province
+m rast	def rasti	acc rastin	gen rastit	indGen rasti	PL raste	PLdef rastet	PLgen rasteve	PLabl rastesh	case, occasion
+f listë	def lista	acc listën	gen listës	indGen liste	PL lista	PLdef listat	PLgen listave	PLabl listash	list
+m shkumës	def shkumësi	acc shkumësin	gen shkumësit	indGen shkumësi	PL -	PLdef -	PLgen -	PLabl -	chalk
+f figurë	def figura	acc figurën	gen figurës	indGen figure	PL figura	PLdef figurat	PLgen figurave	PLabl figurash	picture, figure
+m klub	def klubi	acc klubin	gen klubit	indGen klubi	PL klube	PLdef klubet	PLgen klubeve	PLabl klubesh	club
+m durim	def durimi	acc durimin	gen durimit	indGen durimi	PL -	PLdef -	PLgen -	PLabl -	patience
+f dërrasë	def dërrasa	acc dërrasën	gen dërrasës	indGen dërrase	PL dërrasa	PLdef dërrasat	PLgen dërrasave	PLabl dërrasash	board; blackboard
+f copë	def copa	acc copën	gen copës	indGen cope	PL copa	PLdef copat	PLgen copave	PLabl copash	piece
+f krenari	def krenaria	acc krenarinë	gen krenarisë	indGen krenarie	PL -	PLdef -	PLgen -	PLabl -	pride
+f kënaqësi	def kënaqësia	acc kënaqësinë	gen kënaqësisë	indGen kënaqësie	PL -	PLdef -	PLgen -	PLabl -	pleasure
+m shkëmbim	def shkëmbimi	acc shkëmbimin	gen shkëmbimit	indGen shkëmbimi	PL shkëmbime	PLdef shkëmbimet	PLgen shkëmbimeve	PLabl shkëmbimesh	exchange
+m seriozitet	def serioziteti	acc seriozitetin	gen seriozitetit	indGen serioziteti	PL -	PLdef -	PLgen -	PLabl -	seriousness
+m ekran	def ekrani	acc ekranin	gen ekranit	indGen ekrani	PL ekrane	PLdef ekranet	PLgen ekraneve	PLabl ekranesh	screen
+m kursim	def kursimi	acc kursimin	gen kursimit	indGen kursimi	PL kursime	PLdef kursimet	PLgen kursimeve	PLabl kursimesh	saving (kursime: savings)
+m borxh	def borxhi	acc borxhin	gen borxhit	indGen borxhi	PL borxhe	PLdef borxhet	PLgen borxheve	PLabl borxhesh	debt
+m çast	def çasti	acc çastin	gen çastit	indGen çasti	PL çaste	PLdef çastet	PLgen çasteve	PLabl çastesh	moment, instant
+m prind	def prindi	acc prindin	gen prindit	indGen prindi	PL prindër	PLdef prindërit	PLgen prindërve	PLabl prindërish	parent
+f zhurmë	def zhurma	acc zhurmën	gen zhurmës	indGen zhurme	PL zhurma	PLdef zhurmat	PLgen zhurmave	PLabl zhurmash	noise
+f zile	def zilja	acc zilen	gen ziles	indGen zileje	PL zile	PLdef zilet	PLgen zileve	PLabl zilesh	bell, doorbell
+m tas	def tasi	acc tasin	gen tasit	indGen tasi	PL tasa	PLdef tasat	PLgen tasave	PLabl tasash	bowl
+f pagesë	def pagesa	acc pagesën	gen pagesës	indGen pagese	PL pagesa	PLdef pagesat	PLgen pagesave	PLabl pagesash	payment
+m turp	def turpi	acc turpin	gen turpit	indGen turpi	PL -	PLdef -	PLgen -	PLabl -	shame
+f njollë	def njolla	acc njollën	gen njollës	indGen njolle	PL njolla	PLdef njollat	PLgen njollave	PLabl njollash	stain, spot
+m rregull	def rregulli	acc rregullin	gen rregullit	indGen rregulli	PL rregulla	PLdef rregullat	PLgen rregullave	PLabl rregullash	order; rule (në rregull: in order, all right)
+f patentë	def patenta	acc patentën	gen patentës	indGen patente	PL patenta	PLdef patentat	PLgen patentave	PLabl patentash	licence (patentë shoferi: driving licence)
+f vozitje	def vozitja	acc vozitjen	gen vozitjes	indGen -	PL -	PLdef -	PLgen -	PLabl -	driving
+m aksident	def aksidenti	acc aksidentin	gen aksidentit	indGen aksidenti	PL aksidente	PLdef aksidentet	PLgen aksidenteve	PLabl aksidentesh	accident
+m respekt	def respekti	acc respektin	gen respektit	indGen respekti	PL -	PLdef -	PLgen -	PLabl -	respect
+f sallë	def salla	acc sallën	gen sallës	indGen salle	PL salla	PLdef sallat	PLgen sallave	PLabl sallash	hall, large room (salla e pritjes: waiting room)
+m plak	def plaku	acc plakun	gen plakut	indGen plaku	PL pleq	PLdef pleqtë	PLgen pleqve	PLabl pleqsh	old man
+m tension	def tensioni	acc tensionin	gen tensionit	indGen tensioni	PL -	PLdef -	PLgen -	PLabl -	tension; blood pressure
+m puls	def pulsi	acc pulsin	gen pulsit	indGen pulsi	PL -	PLdef -	PLgen -	PLabl -	pulse
+f doktoreshë	def doktoresha	acc doktoreshën	gen doktoreshës	indGen doktoreshe	PL doktoresha	PLdef doktoreshat	PLgen doktoreshave	PLabl doktoreshash	woman doctor
+m lot	def loti	acc lotin	gen lotit	indGen loti	PL lot	PLdef lottë	PLgen lotve	PLabl lotsh	tear
+f shtresë	def shtresa	acc shtresën	gen shtresës	indGen shtrese	PL shtresa	PLdef shtresat	PLgen shtresave	PLabl shtresash	layer
+f arrë	def arra	acc arrën	gen arrës	indGen arre	PL arra	PLdef arrat	PLgen arrave	PLabl arrash	walnut
+m kavanoz	def kavanozi	acc kavanozin	gen kavanozit	indGen kavanozi	PL kavanozë	PLdef kavanozët	PLgen kavanozëve	PLabl kavanozësh	jar
+m pellg	def pellgu	acc pellgun	gen pellgut	indGen pellgu	PL pellgje	PLdef pellgjet	PLgen pellgjeve	PLabl pellgjesh	puddle; basin
+m rrip	def rripi	acc rripin	gen rripit	indGen rripi	PL rripa	PLdef rripat	PLgen rripave	PLabl rripash	belt, strap, collar
+f qafë	def qafa	acc qafën	gen qafës	indGen qafe	PL qafa	PLdef qafat	PLgen qafave	PLabl qafash	neck
+m bisht	def bishti	acc bishtin	gen bishtit	indGen bishti	PL bishta	PLdef bishtat	PLgen bishtave	PLabl bishtash	tail
+f gjysmë	def gjysma	acc gjysmën	gen gjysmës	indGen gjysme	PL gjysma	PLdef gjysmat	PLgen gjysmave	PLabl gjysmash	half
+f batanije	def batanija	acc batanijen	gen batanijes	indGen -	PL batanije	PLdef batanijet	PLgen batanijeve	PLabl batanijesh	blanket
+f fletë	def fleta	acc fletën	gen fletës	indGen flete	PL fleta	PLdef fletat	PLgen fletave	PLabl fletash	sheet (of paper), leaf
+m titull	def titulli	acc titullin	gen titullit	indGen titulli	PL tituj	PLdef titujt	PLgen titujve	PLabl titujsh	title
+m përshkrim	def përshkrimi	acc përshkrimin	gen përshkrimit	indGen përshkrimi	PL përshkrime	PLdef përshkrimet	PLgen përshkrimeve	PLabl përshkrimesh	description
+f shenjë	def shenja	acc shenjën	gen shenjës	indGen shenje	PL shenja	PLdef shenjat	PLgen shenjave	PLabl shenjash	sign, mark
+f habi	def habia	acc habinë	gen habisë	indGen habie	PL -	PLdef -	PLgen -	PLabl -	surprise, astonishment (për habi: to one's surprise)
+m shirit	def shiriti	acc shiritin	gen shiritit	indGen shiriti	PL shirita	PLdef shiritat	PLgen shiritave	PLabl shiritash	ribbon, tape
+m veterinar	def veterinari	acc veterinarin	gen veterinarit	indGen veterinari	PL veterinarë	PLdef veterinarët	PLgen veterinarëve	PLabl veterinarësh	vet, veterinarian
+m kurriz	def kurrizi	acc kurrizin	gen kurrizit	indGen kurrizi	PL kurriza	PLdef kurrizat	PLgen kurrizave	PLabl kurrizash	back (of the body)
+m çip	def çipi	acc çipin	gen çipit	indGen çipi	PL çipa	PLdef çipat	PLgen çipave	PLabl çipash	chip
+m aparat	def aparati	acc aparatin	gen aparatit	indGen aparati	PL aparate	PLdef aparatet	PLgen aparateve	PLabl aparatesh	device, apparatus
+m pazar	def pazari	acc pazarin	gen pazarit	indGen pazari	PL pazare	PLdef pazaret	PLgen pazareve	PLabl pazaresh	bazaar, market
+f shaka	def shakaja	acc -	gen -	indGen -	PL shaka	PLdef shakat	PLgen shakave	PLabl shakash	joke
+m kek	def keku	acc kekun	gen kekut	indGen keku	PL keqe	PLdef keqet	PLgen keqeve	PLabl keqesh	cake
+f benzinë	def benzina	acc benzinën	gen benzinës	indGen benzine	PL -	PLdef -	PLgen -	PLabl -	petrol
+m zëvendës	def zëvendësi	acc zëvendësin	gen zëvendësit	indGen zëvendësi	PL zëvendës	PLdef zëvendësit	PLgen zëvendësve	PLabl zëvendësish	substitute, deputy
+m divan	def divani	acc divanin	gen divanit	indGen divani	PL divane	PLdef divanet	PLgen divaneve	PLabl divanesh	sofa, couch
+f shefe	def shefja	acc shefen	gen shefes	indGen shefeje	PL shefe	PLdef shefet	PLgen shefeve	PLabl shefesh	woman boss, manager
+m gjeth	def gjethi	acc gjethin	gen gjethit	indGen gjethi	PL gjethe	PLdef gjethet	PLgen gjetheve	PLabl gjethesh	leaf
+f kafene	def kafeneja	acc kafenenë	gen kafenesë	indGen kafeneje	PL kafene	PLdef kafenetë	PLgen kafeneve	PLabl kafenesh	café
+f lëndinë	def lëndina	acc lëndinën	gen lëndinës	indGen lëndine	PL lëndina	PLdef lëndinat	PLgen lëndinave	PLabl lëndinash	meadow, lawn
+f serenatë	def serenata	acc serenatën	gen serenatës	indGen serenate	PL serenata	PLdef serenatat	PLgen serenatave	PLabl serenatash	serenade
+m hekur	def hekuri	acc hekurin	gen hekurit	indGen hekuri	PL -	PLdef -	PLgen -	PLabl -	iron
+f rrugicë	def rrugica	acc rrugicën	gen rrugicës	indGen rrugice	PL rrugica	PLdef rrugicat	PLgen rrugicave	PLabl rrugicash	alley, lane
+f kukull	def kukulla	acc kukullën	gen kukullës	indGen kukulle	PL kukulla	PLdef kukullat	PLgen kukullave	PLabl kukullash	doll
+m guxim	def guximi	acc guximin	gen guximit	indGen guximi	PL -	PLdef -	PLgen -	PLabl -	courage, daring
+Pm Bardhi	def Bardhi	acc Bardhin	gen Bardhit	indGen -	PL -	PLdef -	PLgen -	PLabl -	Bardhi (a dog's name; also a man's name)
+Pm Agim	def Agimi	acc Agimin	gen Agimit	indGen Agimi	PL -	PLdef -	PLgen -	PLabl -	Agim (man's name; also "dawn")
+Pf Teuta	def Teuta	acc Teutën	gen Teutës	indGen -	PL -	PLdef -	PLgen -	PLabl -	Teuta (woman's name)
+f shami	def shamia	acc shaminë	gen shamisë	indGen shamie	PL shami	PLdef shamitë	PLgen shamive	PLabl shamish	cloth, kerchief
+m rresht	def rreshti	acc rreshtin	gen rreshtit	indGen rreshti	PL rreshta	PLdef rreshtat	PLgen rreshtave	PLabl rreshtash	row, line
+f qoshe	def qoshja	acc qoshen	gen qoshes	indGen qosheje	PL qoshe	PLdef qoshet	PLgen qosheve	PLabl qoshesh	corner
+f arsye	def arsyeja	acc arsyen	gen arsyes	indGen arsyeje	PL arsye	PLdef arsyetë	PLgen arsyeve	PLabl arsyesh	reason
+m turn	def turni	acc turnin	gen turnit	indGen turni	PL turne	PLdef turnet	PLgen turneve	PLabl turnesh	shift, turn
+m raft	def rafti	acc raftin	gen raftit	indGen rafti	PL rafte	PLdef raftet	PLgen rafteve	PLabl raftesh	shelf
+m pluhur	def pluhuri	acc pluhurin	gen pluhurit	indGen pluhuri	PL -	PLdef -	PLgen -	PLabl -	dust
+f leckë	def lecka	acc leckën	gen leckës	indGen lecke	PL lecka	PLdef leckat	PLgen leckave	PLabl leckash	rag, cloth
+f barrë	def barra	acc barrën	gen barrës	indGen barre	PL barra	PLdef barrat	PLgen barrave	PLabl barrash	burden, load
+f shpatull	def shpatulla	acc shpatullën	gen shpatullës	indGen shpatulle	PL shpatulla	PLdef shpatullat	PLgen shpatullave	PLabl shpatullash	shoulder
+f qetësi	def qetësia	acc qetësinë	gen qetësisë	indGen qetësie	PL -	PLdef -	PLgen -	PLabl -	calm, quiet
+m kostum	def kostumi	acc kostumin	gen kostumit	indGen kostumi	PL kostume	PLdef kostumet	PLgen kostumeve	PLabl kostumesh	suit
+m shall	def shalli	acc shallin	gen shallit	indGen shalli	PL shalle	PLdef shallet	PLgen shalleve	PLabl shallesh	shawl, scarf
+f shportë	def shporta	acc shportën	gen shportës	indGen shporte	PL shporta	PLdef shportat	PLgen shportave	PLabl shportash	basket
+m kthim	def kthimi	acc kthimin	gen kthimit	indGen kthimi	PL kthime	PLdef kthimet	PLgen kthimeve	PLabl kthimesh	return
+f errësirë	def errësira	acc errësirën	gen errësirës	indGen errësire	PL -	PLdef -	PLgen -	PLabl -	darkness
+m ritëm	def ritmi	acc ritmin	gen ritmit	indGen ritmi	PL ritme	PLdef ritmet	PLgen ritmeve	PLabl ritmesh	rhythm
+m kilogram	def kilogrami	acc kilogramin	gen kilogramit	indGen kilogrami	PL kilogramë	PLdef kilogramët	PLgen kilogramëve	PLabl kilogramësh	kilogram
+m rezultat	def rezultati	acc rezultatin	gen rezultatit	indGen rezultati	PL rezultate	PLdef rezultatet	PLgen rezultateve	PLabl rezultatesh	result
+m dështim	def dështimi	acc dështimin	gen dështimit	indGen dështimi	PL dështime	PLdef dështimet	PLgen dështimeve	PLabl dështimesh	failure
+f shëtitje	def shëtitja	acc shëtitjen	gen shëtitjes	indGen -	PL shëtitje	PLdef shëtitjet	PLgen shëtitjeve	PLabl shëtitjesh	walk, stroll
+f redaktore	def redaktorja	acc redaktoren	gen redaktores	indGen redaktoreje	PL redaktore	PLdef redaktoret	PLgen redaktoreve	PLabl redaktoresh	woman editor
+f redaksi	def redaksia	acc redaksinë	gen redaksisë	indGen redaksie	PL redaksi	PLdef redaksitë	PLgen redaksive	PLabl redaksish	editorial office, the editors
+m lexues	def lexuesi	acc lexuesin	gen lexuesit	indGen lexuesi	PL lexues	PLdef lexuesit	PLgen lexuesve	PLabl lexuesish	reader
+m material	def materiali	acc materialin	gen materialit	indGen materiali	PL materiale	PLdef materialet	PLgen materialeve	PLabl materialesh	material
+f vëmendje	def vëmendja	acc vëmendjen	gen vëmendjes	indGen -	PL -	PLdef -	PLgen -	PLabl -	attention
+f vështirësi	def vështirësia	acc vështirësinë	gen vështirësisë	indGen vështirësie	PL vështirësi	PLdef vështirësitë	PLgen vështirësive	PLabl vështirësish	difficulty
+m rend	def rendi	acc rendin	gen rendit	indGen rendi	PL rende	PLdef rendet	PLgen rendeve	PLabl rendesh	order, sequence
+f leje	def leja	acc lejen	gen lejes	indGen leje	PL leje	PLdef lejetë	PLgen lejeve	PLabl lejesh	permission; permit
+m qëndrim	def qëndrimi	acc qëndrimin	gen qëndrimit	indGen qëndrimi	PL qëndrime	PLdef qëndrimet	PLgen qëndrimeve	PLabl qëndrimesh	stay; attitude
+m sigurim	def sigurimi	acc sigurimin	gen sigurimit	indGen sigurimi	PL sigurime	PLdef sigurimet	PLgen sigurimeve	PLabl sigurimesh	insurance
+f provë	def prova	acc provën	gen provës	indGen prove	PL prova	PLdef provat	PLgen provave	PLabl provash	test, trial; proof
+m stol	def stoli	acc stolin	gen stolit	indGen stoli	PL stola	PLdef stolat	PLgen stolave	PLabl stolash	bench
+m ditar	def ditari	acc ditarin	gen ditarit	indGen ditari	PL ditarë	PLdef ditarët	PLgen ditarëve	PLabl ditarësh	diary
+f degë	def dega	acc degën	gen degës	indGen dege	PL degë	PLdef degët	PLgen degëve	PLabl degësh	branch
+f daulle	def daullja	acc daullen	gen daulles	indGen daulleje	PL daulle	PLdef daullet	PLgen daulleve	PLabl daullesh	drum
+f nuse	def nusja	acc nusen	gen nuses	indGen nuseje	PL nuse	PLdef nuset	PLgen nuseve	PLabl nusesh	bride; daughter-in-law
+m dhëndër	def dhëndri	acc dhëndrin	gen dhëndrit	indGen dhëndri	PL dhëndurë	PLdef dhëndurët	PLgen dhëndurëve	PLabl dhëndurësh	bridegroom; son-in-law
+f ceremoni	def ceremonia	acc ceremoninë	gen ceremonisë	indGen ceremonie	PL ceremoni	PLdef ceremonitë	PLgen ceremonive	PLabl ceremonish	ceremony
+f shfaqje	def shfaqja	acc shfaqjen	gen shfaqjes	indGen -	PL shfaqje	PLdef shfaqjet	PLgen shfaqjeve	PLabl shfaqjesh	show, performance
+m vizatim	def vizatimi	acc vizatimin	gen vizatimit	indGen vizatimi	PL vizatime	PLdef vizatimet	PLgen vizatimeve	PLabl vizatimesh	drawing
+f ndrojtje	def ndrojtja	acc ndrojtjen	gen ndrojtjes	indGen -	PL -	PLdef -	PLgen -	PLabl -	shyness
+m publik	def publiku	acc publikun	gen publikut	indGen publiku	PL -	PLdef -	PLgen -	PLabl -	audience, public
+m aksent	def aksenti	acc aksentin	gen aksentit	indGen aksenti	PL aksente	PLdef aksentet	PLgen aksenteve	PLabl aksentesh	accent
+m fjalim	def fjalimi	acc fjalimin	gen fjalimit	indGen fjalimi	PL fjalime	PLdef fjalimet	PLgen fjalimeve	PLabl fjalimesh	speech

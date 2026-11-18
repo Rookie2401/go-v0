@@ -1,0 +1,3679 @@
+jam (irr) to be
+  pres  jam[1s] je[2s] është[3s] jemi[1p] jeni[2p] janë[3p]
+  subj  jem[1s] jesh[2s] jetë[3s] jenë[3p]
+  impf  isha[1s] ishe[2s] ishte[3s] ishim[1p] ishit[2p] ishin[3p]
+  aor   qeshë[1s] qe[2,3s] qemë[1p] qetë[2p] qenë[3p]
+  imper ji[2s] jini[2p]
+  opt   qofsha[1s] qofsh[2s] qoftë[3s] qofshim[1p] qofshi[2p] qofshin[3p]
+  adm   qenkam[1s] qenke[2s] qenka[3s] qenkemi[1p] qenkeni[2p] qenkan[3p]
+  ptcp  qenë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+kam (irr) to have
+  pres  kam[1s] ke[2s] ka[3s] kemi[1p] keni[2p] kanë[3p]
+  subj  kem[1s] kesh[2s] ketë[3s] kenë[3p]
+  impf  kisha[1s] kishe[2s] kishte[3s] kishim[1p] kishit[2p] kishin[3p]
+  aor   pata[1s] pate[2s] pati[3s] patëm[1p] patët[2p] patën[3p]
+  imper ki[2s] kini[2p]
+  opt   paça[1s] paç[2s] pastë[3s] paçim[1p] paçi[2p] paçin[3p]
+  adm   paskam[1s] paske[2s] paska[3s] paskemi[1p] paskeni[2p] paskan[3p]
+  ptcp  pasur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+dua (irr, NA=true) to want, to love
+  pres  dua[1s] do[2,3s] duam[1p] doni[2p] duan[3p]
+  subj  duash[2s] dashë?[3s]
+  impf  doja[1s] doje[2s] donte[3s] donim[1p] donit[2p] donin[3p]
+  aor   desha[1s] deshe[2s] deshi[3s] deshëm[1p] deshët[2p] deshën[3p]
+  imper -
+  opt   -
+  adm   -
+  ptcp  dashur
+  NApres duhesh[2s] duhet[3s] duhemi[1p] duheni[2p] duhen[3p] duhem[1s]
+  NAimpf duhesha[1s] duheshe[2s] duhej[3s] duheshim[1p] duheshit[2p] duheshin[3p]
+  NAaor  -
+  NAimper -
+them (irr, NA=true) to say
+  pres  them[1s] thua[2s] thotë[3s] themi[1p] thoni[2p] thonë[3p]
+  subj  thuash[2s]
+  impf  thosha[1s] thoshe[2s] thoshte[3s] thoshim[1p] thoshit[2p] thoshin[3p]
+  aor   thashë[1s] the[2s] tha~[3s] thamë[1p] thatë[2p] thanë[3p]
+  imper thuaj[2s] thoni[2p]
+  opt   -
+  adm   -
+  ptcp  thënë
+  NApres thuhesh[2s] thuhet[3s] thuhemi[1p] thuheni[2p] thuhen[3p] thuhem[1s]
+  NAimpf thuhesha[1s] thuheshe[2s] thuhej[3s] thuheshim[1p] thuheshit[2p] thuheshin[3p]
+  NAaor  -
+  NAimper -
+vij (irr) to come
+  pres  vij[1s] vjen[2,3s] vijmë[1p] vini[2p] vijnë[3p]
+  subj  vish[2s] vijë[3s]
+  impf  vija[1s] vije[2s] vinte[3s] vinim[1p] vinit[2p] vinin[3p]
+  aor   erdha[1s] erdhe[2s] erdhi[3s] erdhëm[1p] erdhët[2p] erdhën[3p]
+  imper eja[2s] ejani[2p]
+  opt   -
+  adm   -
+  ptcp  ardhur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+bie (irr) to fall
+  pres  bie[1s] bie[2,3s] biem[1p] bieni?[2p] bien[3p]
+  subj  biesh[2s] bjerë[3s]
+  impf  bija[1s] bije[2s] binte[3s] binim[1p] binit[2p] binin[3p]
+  aor   rashë[1s] re[2s] ra~[3s] ramë[1p] ratë[2p] ranë[3p]
+  imper -
+  opt   -
+  adm   -
+  ptcp  rënë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+iki (irr) to leave, to flee
+  pres  iki[1s] ikën[2,3s] ikim[1p] ikni[2p] ikin[3p]
+  subj  ikësh[2s] ikë[3s]
+  impf  ikja[1s] ikje[2s] ikte[3s] iknim[1p] iknit[2p] iknin[3p]
+  aor   ika[1s] ike[2s] iku?[3s] ikëm[1p] ikët[2p] ikën[3p]
+  imper ik[2s] ikni[2p]
+  opt   -
+  adm   -
+  ptcp  ikur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ha (vowel) to eat
+  pres  ha[1s] ha[2,3s] hamë[1p] hani[2p] hanë[3p]
+  subj  hash[2s] hajë?[3s]
+  impf  haja[1s] haje[2s] hante[3s] hanim[1p] hanit[2p] hanin[3p]
+  aor   hëngra[1s] hëngre[2s] hëngri[3s] hëngrëm[1p] hëngrët[2p] hëngrën[3p]
+  imper hani[2p] ha[2s]
+  opt   -
+  adm   -
+  ptcp  ngrënë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+pi (vowel) to drink
+  pres  pi[1s] pi[2,3s] pimë[1p] pini[2p] pinë[3p]
+  subj  pish[2s] pijë[3s]
+  impf  pija[1s] pije[2s] pinte[3s] pinim[1p] pinit[2p] pinin[3p]
+  aor   piva[1s] pive[2s] piu[3s] pimë[1p] pitë[2p] pinë[3p]
+  imper pini[2p] pi[2s]
+  opt   -
+  adm   -
+  ptcp  pirë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+fle (vowel) to sleep
+  pres  fle[1s] fle[2,3s] flemë[1p] flini[2p] flenë[3p]
+  subj  flesh[2s] flejë[3s]
+  impf  flija[1s] flije[2s] flinte[3s] flinim[1p] flinit[2p] flinin[3p]
+  aor   fjeta[1s] fjete[2s] fjeti[3s] fjetëm[1p] fjetët[2p] fjetën[3p]
+  imper flini[2p] fli[2s]
+  opt   -
+  adm   -
+  ptcp  fjetur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+di (vowel) to know (a fact)
+  pres  di[1s] di[2,3s] dimë[1p] dini[2p] dinë[3p]
+  subj  dish[2s] dijë[3s]
+  impf  dija[1s] dije?[2s] dinte[3s] dinim[1p] dinit[2p] dinin[3p]
+  aor   dita[1s] dite[2s] diti[3s] ditëm[1p] ditët[2p] ditën[3p]
+  imper dije?[2s] dijeni?[2p]
+  opt   -
+  adm   -
+  ptcp  ditur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+rri (vowel) to stay, to sit
+  pres  rri[1s] rri[2,3s] rrimë[1p] rrini[2p] rrinë[3p]
+  subj  rrish[2s] rrijë[3s]
+  impf  rrija[1s] rrije[2s] rrinte[3s] rrinim[1p] rrinit[2p] rrinin[3p]
+  aor   ndenja[1s] ndenje[2s] ndenji[3s] ndenjëm[1p] ndenjët[2p] ndenjën[3p]
+  imper rrini[2p] rri[2s]
+  opt   -
+  adm   -
+  ptcp  ndenjur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+lë (vowel) to leave, to let
+  pres  lë[1s] lë[2,3s] lëmë[1p] lini~[2p] lënë[3p]
+  subj  lësh?[2s] lërë[3s]
+  impf  -
+  aor   lashë[1s] le[2s] la?[3s] lamë[1p] latë[2p] lanë[3p]
+  imper lini~[2p]
+  opt   -
+  adm   -
+  ptcp  lënë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vë (vowel) to put, to place
+  pres  vë[1s] vë[2,3s] vëmë[1p] vini[2p] vënë[3p]
+  subj  vësh[2s] vërë[3s]
+  impf  -
+  aor   vura[1s] vure[2s] vuri[3s] vumë[1p] vutë[2p] vunë[3p]
+  imper vini[2p]
+  opt   -
+  adm   -
+  ptcp  vënë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+zë (vowel) to catch, to seize
+  pres  zë[1s] zë[2,3s] zëmë[1p] zini[2p] zënë[3p]
+  subj  zësh[2s] zërë[3s]
+  impf  -
+  aor   zura[1s] zure[2s] zuri[3s] zumë[1p] zutë[2p] zunë[3p]
+  imper zini[2p]
+  opt   -
+  adm   -
+  ptcp  zënë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ngre (vowel, NA=true) to raise, to lift
+  pres  ngre[1s] ngre[2,3s] ngremë[1p] ngrini[2p] ngrenë[3p]
+  subj  ngresh[2s] ngrejë[3s]
+  impf  ngrija[1s] ngrije[2s] ngrinte[3s] ngrinim[1p] ngrinit[2p] ngrinin[3p]
+  aor   ngrita[1s] ngrite[2s] ngriti[3s] ngritëm[1p] ngritët[2p] ngritën[3p]
+  imper ngrini[2p] ngri[2s]
+  opt   -
+  adm   -
+  ptcp  ngritur
+  NApres ngrihem[1s] ngrihesh[2s] ngrihet[3s] ngrihemi[1p] ngriheni[2p] ngrihen[3p]
+  NAimpf ngrihesha[1s] ngriheshe[2s] ngrihej[3s] ngriheshim[1p] ngriheshit[2p] ngriheshin[3p]
+  NAaor  ngrit[3s]
+  NAimper ngrihu[2s] ngrihuni[2p]
+hap (cons, NA=true) to open
+  pres  hap[1s] hap[2,3s] hapim[1p] hapni[2p] hapin[3p]
+  subj  hapësh[2s] hapë[3s]
+  impf  hapja[1s] hapje[2s] hapte[3s] hapnim[1p] hapnit[2p] hapnin[3p]
+  aor   hapa[1s] hape[2s] hapi[3s] hapëm[1p] hapët[2p] hapën[3p]
+  imper hap[2s] hapni[2p]
+  opt   -
+  adm   -
+  ptcp  hapur
+  NApres hapem[1s] hapesh[2s] hapet[3s] hapemi[1p] hapeni[2p] hapen[3p]
+  NAimpf hapesha[1s] hapeshe[2s] hapej[3s] hapeshim[1p] hapeshit[2p] hapeshin[3p]
+  NAaor  hap[3s]
+  NAimper hapu[2s] hapuni[2p]
+mbyll (cons, NA=true) to close
+  pres  mbyll[1s] mbyll[2,3s] mbyllim[1p] mbyllni[2p] mbyllin[3p]
+  subj  mbyllësh[2s] mbyllë[3s]
+  impf  mbyllja[1s] mbyllje[2s] mbyllte[3s] mbyllnim[1p] mbyllnit[2p] mbyllnin[3p]
+  aor   mbylla[1s] mbylle[2s] mbylli[3s] mbyllëm[1p] mbyllët[2p] mbyllën[3p]
+  imper mbyll[2s] mbyllni[2p]
+  opt   -
+  adm   -
+  ptcp  mbyllur
+  NApres mbyllem[1s] mbyllesh[2s] mbyllet[3s] mbyllemi[1p] mbylleni[2p] mbyllen[3p]
+  NAimpf mbyllesha[1s] mbylleshe[2s] mbyllej[3s] mbylleshim[1p] mbylleshit[2p] mbylleshin[3p]
+  NAaor  mbyll[3s]
+  NAimper mbyllu[2s] mbylluni[2p]
+marr (cons, NA=true) to take, to get
+  pres  marr[1s] merr[2,3s] marrim[1p] merrni[2p] marrin[3p]
+  subj  marrësh[2s] marrë[3s]
+  impf  merrja[1s] merrje[2s] merrte[3s] merrnim[1p] merrnit[2p] merrnin[3p]
+  aor   mora[1s] more[2s] mori[3s] morëm[1p] morët[2p] morën[3p]
+  imper merr[2s] merrni[2p]
+  opt   -
+  adm   -
+  ptcp  marrë
+  NApres merrem[1s] merresh[2s] merret[3s] merremi[1p] merreni[2p] merren[3p]
+  NAimpf merresha[1s] merreshe[2s] merrej[3s] merreshim[1p] merreshit[2p] merreshin[3p]
+  NAaor  mor[3s]
+  NAimper merru[2s] merruni[2p]
+jap (cons, NA=true) to give
+  pres  jap[1s] jep[2,3s] japim[1p] jepni[2p] japin[3p]
+  subj  japësh[2s] japë[3s]
+  impf  jepja[1s] jepje[2s] jepte[3s] jepnim[1p] jepnit[2p] jepnin[3p]
+  aor   dhashë[1s] dhe[2s] dha?[3s] dhamë[1p] dhatë[2p] dhanë[3p]
+  imper jep[2s] jepni[2p]
+  opt   -
+  adm   -
+  ptcp  dhënë
+  NApres jepem[1s] jepesh[2s] jepet[3s] jepemi[1p] jepeni[2p] jepen[3p]
+  NAimpf jepesha[1s] jepeshe[2s] jepej[3s] jepeshim[1p] jepeshit[2p] jepeshin[3p]
+  NAaor  -
+  NAimper jepu?[2s] jepuni?[2p]
+shoh (cons, NA=true) to see
+  pres  shoh[1s] sheh[2,3s] shohim[1p] shohin[3p] shihni[2p]
+  subj  shohësh[2s] shohë[3s]
+  impf  shihja[1s] shihje[2s] shihte[3s] shihnim[1p] shihnit[2p] shihnin[3p]
+  aor   pashë[1s] pe[2s] pa?[3s] pamë[1p] patë[2p] panë[3p]
+  imper shihni[2p] shih[2s]
+  opt   -
+  adm   -
+  ptcp  parë
+  NApres shihem[1s] shihesh[2s] shihet[3s] shihemi[1p] shiheni[2p] shihen[3p]
+  NAimpf shihesha[1s] shiheshe[2s] shihej[3s] shiheshim[1p] shiheshit[2p] shiheshin[3p]
+  NAaor  -
+  NAimper shihu?[2s] shihuni?[2p]
+dal (cons) to go out
+  pres  dal[1s] del[2,3s] dalim[1p] dalin[3p] dilni[2p]
+  subj  dalësh[2s] dalë[3s]
+  impf  dilja[1s] dilje[2s] dilte[3s] dilnim[1p] dilnit[2p] dilnin[3p]
+  aor   dola[1s] dole[2s] doli[3s] dolëm[1p] dolët[2p] dolën[3p]
+  imper dilni[2p] dil[2s]
+  opt   -
+  adm   -
+  ptcp  dalë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+flas (cons, NA=true) to speak
+  pres  flas[1s] flet[2,3s] flasim[1p] flasin[3p] flisni[2p]
+  subj  flasësh[2s] flasë[3s]
+  impf  flisja[1s] flisje[2s] fliste[3s] flisnim[1p] flisnit[2p] flisnin[3p]
+  aor   fola[1s] fole[2s] foli[3s] folëm[1p] folët[2p] folën[3p]
+  imper flisni[2p] fol[2s]
+  opt   -
+  adm   -
+  ptcp  folur
+  NApres flitesh[2s] flitet[3s] flitemi[1p] fliteni[2p] fliten[3p] flitem[1s]
+  NAimpf flitesha[1s] fliteshe[2s] flitej[3s] fliteshim[1p] fliteshit[2p] fliteshin[3p]
+  NAaor  fol[3s]
+  NAimper flitu?[2s] flituni?[2p]
+sjell (cons) to bring
+  pres  sjell[1s] sjell[2,3s] sjellim[1p] sjellin[3p] sillni[2p]
+  subj  sjellësh[2s] sjellë[3s]
+  impf  sillja[1s] sillje[2s] sillte[3s] sillnim[1p] sillnit[2p] sillnin[3p]
+  aor   solla[1s] solle[2s] solli[3s] sollëm[1p] sollët[2p] sollën[3p]
+  imper sillni[2p] sill[2s]
+  opt   -
+  adm   -
+  ptcp  sjellë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+njoh (cons, NA=true) to know (a person), to recognise
+  pres  njoh[1s] njeh[2,3s] njohim[1p] njohin[3p] njihni[2p]
+  subj  njohësh[2s] njohë[3s]
+  impf  njihja[1s] njihje[2s] njihte[3s] njihnim[1p] njihnit[2p] njihnin[3p]
+  aor   njoha[1s] njohe[2s] njohu[3s] njohëm[1p] njohët[2p] njohën[3p]
+  imper njihni[2p] njih[2s]
+  opt   -
+  adm   -
+  ptcp  njohur
+  NApres njihem[1s] njihesh[2s] njihet[3s] njihemi[1p] njiheni[2p] njihen[3p]
+  NAimpf njihesha[1s] njiheshe[2s] njihej[3s] njiheshim[1p] njiheshit[2p] njiheshin[3p]
+  NAaor  njoh[3s]
+  NAimper njihu[2s] njihuni[2p]
+pres (cons) to wait (for)
+  pres  pres[1s] pret[2,3s] presim[1p] presin[3p] prisni?[2p]
+  subj  presësh[2s] presë[3s]
+  impf  prisja[1s] prisje[2s] priste[3s] prisnim[1p] prisnit[2p] prisnin[3p]
+  aor   prita[1s] prite[2s] priti[3s] pritëm~[1p] pritët[2p] pritën[3p]
+  imper prisni?[2p] prit[2s]
+  opt   -
+  adm   -
+  ptcp  pritur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+pyes (cons) to ask
+  pres  pyes[1s] pyet[2,3s] pyesim[1p] pyesin[3p] pyesni[2p]
+  subj  pyesësh[2s] pyesë[3s]
+  impf  pyesja[1s] pyesje[2s] pyeste[3s] pyesnim[1p] pyesnit[2p] pyesnin[3p]
+  aor   pyeta[1s] pyete[2s] pyeti[3s] pyetëm[1p] pyetët[2p] pyetën[3p]
+  imper pyesni[2p] pyet[2s]
+  opt   -
+  adm   -
+  ptcp  pyetur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vdes (cons) to die
+  pres  vdes[1s] vdes[2,3s] vdesim[1p] vdesin[3p] vdisni[2p]
+  subj  vdesësh~[2s] vdesë[3s]
+  impf  vdisja[1s] vdisje[2s] vdiste[3s] vdisnim[1p] vdisnit[2p] vdisnin[3p]
+  aor   vdiqa[1s] vdiqe[2s] vdiq?[3s] vdiqëm[1p] vdiqët[2p] vdiqën[3p]
+  imper vdisni[2p]
+  opt   -
+  adm   -
+  ptcp  vdekur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+hedh (cons, NA=true) to throw
+  pres  hedh[1s] hedh[2,3s] hedhim[1p] hedhin[3p] hidhni~[2p]
+  subj  hedhësh[2s] hedhë[3s]
+  impf  hidhja[1s] hidhje[2s] hidhte[3s] hidhnim[1p] hidhnit[2p] hidhnin[3p]
+  aor   hodha[1s] hodhe[2s] hodhi[3s] hodhëm[1p] hodhët[2p] hodhën[3p]
+  imper hidhni~[2p] hidh[2s]
+  opt   -
+  adm   -
+  ptcp  hedhur
+  NApres hidhem[1s] hidhesh[2s] hidhet[3s] hidhemi[1p] hidheni[2p] hidhen[3p]
+  NAimpf hidhesha[1s] hidheshe[2s] hidhej[3s] hidheshim[1p] hidheshit[2p] hidheshin[3p]
+  NAaor  hodh[3s]
+  NAimper hidhu[2s] hidhuni[2p]
+shes (cons, NA=true) to sell
+  pres  shes[1s] shet[2,3s] shesim[1p] shesin[3p] shisni[2p]
+  subj  shesësh[2s] shesë[3s]
+  impf  shisja[1s] shisje[2s] shiste[3s] shisnim[1p] shisnit[2p] shisnin[3p]
+  aor   shita[1s] shite[2s] shiti[3s] shitëm[1p] shitët[2p] shitën[3p]
+  imper shisni[2p] shit[2s]
+  opt   -
+  adm   -
+  ptcp  shitur
+  NApres shitesh[2s] shitet[3s] shitemi[1p] shiteni[2p] shiten[3p] shitem[1s]
+  NAimpf shitesha[1s] shiteshe[2s] shitej[3s] shiteshim[1p] shiteshit[2p] shiteshin[3p]
+  NAaor  shit[3s]
+  NAimper shitu[2s] shituni[2p]
+ndjek (cons, NA=true) to follow, to pursue
+  pres  ndjek[1s] ndjek[2,3s] ndjekim[1p] ndjekin[3p] ndiqni[2p]
+  subj  ndjekësh[2s] ndjekë[3s]
+  impf  ndiqja[1s] ndiqje[2s] ndiqte[3s] ndiqnim[1p] ndiqnit[2p] ndiqnin[3p]
+  aor   ndoqa[1s] ndoqe[2s] ndoqi[3s] ndoqëm[1p] ndoqët[2p] ndoqën[3p]
+  imper ndiqni[2p] ndiq[2s]
+  opt   -
+  adm   -
+  ptcp  ndjekur
+  NApres ndiqem[1s] ndiqesh[2s] ndiqet[3s] ndiqemi[1p] ndiqeni[2p] ndiqen[3p]
+  NAimpf ndiqesha[1s] ndiqeshe[2s] ndiqej[3s] ndiqeshim[1p] ndiqeshit[2p] ndiqeshin[3p]
+  NAaor  ndoq[3s]
+  NAimper ndiqu[2s] ndiquni[2p]
+mbledh (cons, NA=true) to gather
+  pres  mbledh[1s] mbledh[2,3s] mbledhim[1p] mbledhin[3p] mblidhni~[2p]
+  subj  mbledhësh[2s] mbledhë[3s]
+  impf  mblidhja[1s] mblidhje[2s] mblidhte[3s] mblidhnim[1p] mblidhnit[2p] mblidhnin[3p]
+  aor   mblodha[1s] mblodhe[2s] mblodhi[3s] mblodhëm[1p] mblodhët[2p] mblodhën[3p]
+  imper mblidhni~[2p] mblidh[2s]
+  opt   -
+  adm   -
+  ptcp  mbledhur
+  NApres mblidhem[1s] mblidhesh[2s] mblidhet[3s] mblidhemi[1p] mblidheni[2p] mblidhen[3p]
+  NAimpf mblidhesha[1s] mblidheshe[2s] mblidhej[3s] mblidheshim[1p] mblidheshit[2p] mblidheshin[3p]
+  NAaor  mblodh[3s]
+  NAimper mblidhu[2s] mblidhuni[2p]
+zgjedh (cons) to choose
+  pres  zgjedh[1s] zgjedh[2,3s] zgjedhim[1p] zgjedhin[3p] zgjidhni[2p]
+  subj  zgjedhësh[2s] zgjedhë[3s]
+  impf  zgjidhja[1s] zgjidhje[2s] zgjidhte[3s] zgjidhnim[1p] zgjidhnit[2p] zgjidhnin[3p]
+  aor   zgjodha[1s] zgjodhe[2s] zgjodhi[3s] zgjodhëm[1p] zgjodhët[2p] zgjodhën[3p]
+  imper zgjidhni[2p] zgjidh[2s]
+  opt   -
+  adm   -
+  ptcp  zgjedhur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vjedh (cons) to steal
+  pres  vjedh[1s] vjedh[2,3s] vjedhim[1p] vjedhin[3p] vidhni[2p]
+  subj  vjedhësh[2s] vjedhë[3s]
+  impf  vidhja[1s] vidhje[2s] vidhte[3s] vidhnim[1p] vidhnit[2p] vidhnin[3p]
+  aor   vodha[1s] vodhe[2s] vodhi[3s] vodhëm[1p] vodhët[2p] vodhën[3p]
+  imper vidhni[2p] vidh[2s]
+  opt   -
+  adm   -
+  ptcp  vjedhur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+heq (cons, NA=true) to remove, to take away
+  pres  heq[1s] heq[2,3s] heqim[1p] heqin[3p] hiqni[2p]
+  subj  heqësh[2s] heqë[3s]
+  impf  hiqja[1s] hiqje[2s] hiqte[3s] hiqnim[1p] hiqnit[2p] hiqnin[3p]
+  aor   hoqa[1s] hoqe[2s] hoqi[3s] hoqëm[1p] hoqët[2p] hoqën[3p]
+  imper hiqni[2p] hiq[2s]
+  opt   -
+  adm   -
+  ptcp  hequr
+  NApres hiqem[1s] hiqesh[2s] hiqet[3s] hiqemi[1p] hiqeni[2p] hiqen[3p]
+  NAimpf hiqesha[1s] hiqeshe[2s] hiqej[3s] hiqeshim[1p] hiqeshit[2p] hiqeshin[3p]
+  NAaor  hoq[3s]
+  NAimper hiqu[2s] hiquni[2p]
+vras (cons, NA=true) to kill
+  pres  vras[1s] vret[2,3s] vrasim[1p] vrasin[3p] vrisni?[2p]
+  subj  vrasësh[2s] vrasë[3s]
+  impf  vrisja[1s] vrisje[2s] vriste[3s] vrisnim[1p] vrisnit[2p] vrisnin[3p]
+  aor   vrava[1s] vrave[2s] vrau[3s] vramë[1p] vratë[2p] vranë[3p]
+  imper vrisni?[2p] vrit[2s]
+  opt   -
+  adm   -
+  ptcp  vrarë
+  NApres vritesh[2s] vritet[3s] vritemi[1p] vriteni[2p] vriten[3p] vritem[1s]
+  NAimpf vritesha[1s] vriteshe[2s] vritej[3s] vriteshim[1p] vriteshit[2p] vriteshin[3p]
+  NAaor  vra[3s]
+  NAimper vritu?[2s] vrituni?[2p]
+mbjell (cons) to sow
+  pres  mbjell[1s] mbjell[2,3s] mbjellim[1p] mbjellin[3p] mbillni[2p]
+  subj  mbjellësh[2s] mbjellë[3s]
+  impf  mbillja[1s] mbillje[2s] mbillte[3s] mbillnim[1p] mbillnit[2p] mbillnin[3p]
+  aor   mbolla[1s] mbolle[2s] mbolli[3s] mbollëm[1p] mbollët[2p] mbollën[3p]
+  imper mbillni[2p] mbill[2s]
+  opt   -
+  adm   -
+  ptcp  mbjellë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vesh (cons, NA=true) to dress, to put on
+  pres  vesh[1s] vesh[2,3s] veshim[1p] veshin[3p] vishni~[2p]
+  subj  veshësh[2s] veshë[3s]
+  impf  vishja[1s] vishje?[2s] vishte[3s] vishnim?[1p] vishnit?[2p] vishnin~[3p]
+  aor   vesha[1s] veshe[2s] veshi[3s] veshëm[1p] veshët[2p] veshën[3p]
+  imper vishni~[2p] vish?[2s]
+  opt   -
+  adm   -
+  ptcp  veshur
+  NApres vishem[1s] vishesh[2s] vishet[3s] vishemi[1p] visheni[2p] vishen[3p]
+  NAimpf vishesha[1s] visheshe[2s] vishej[3s] visheshim[1p] visheshit[2p] visheshin[3p]
+  NAaor  vesh[3s]
+  NAimper vishu[2s] vishuni[2p]
+shëtis (cons) to walk, to stroll
+  pres  shëtis?[1s] shëtit?[2,3s] shëtisim?[1p] shëtisin?[3p] shëtisni?[2p]
+  subj  shëtisësh?[2s] shëtisë?[3s]
+  impf  shëtisja?[1s] shëtisje?[2s] shëtiste?[3s] shëtisnim?[1p] shëtisnit?[2p] shëtisnin?[3p]
+  aor   shëtita?[1s] shëtite?[2s] shëtiti?[3s] shëtitëm?[1p] shëtitët?[2p] shëtitën?[3p]
+  imper shëtisni?[2p] shëtit?[2s]
+  opt   -
+  adm   -
+  ptcp  shëtitur?
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+përgatis (cons) to prepare
+  pres  përgatis[1s] përgatit[2,3s] përgatisim[1p] përgatisin[3p] përgatisni[2p]
+  subj  përgatisësh[2s] përgatisë[3s]
+  impf  përgatisja[1s] përgatisje[2s] përgatiste[3s] përgatisnim[1p] përgatisnit[2p] përgatisnin[3p]
+  aor   përgatita[1s] përgatite[2s] përgatiti[3s] përgatitëm[1p] përgatitët[2p] përgatitën[3p]
+  imper përgatisni[2p] përgatit[2s]
+  opt   -
+  adm   -
+  ptcp  përgatitur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+lidh (cons, NA=true) to tie, to connect
+  pres  lidh[1s] lidh[2,3s] lidhim[1p] lidhni[2p] lidhin[3p]
+  subj  lidhësh[2s] lidhë[3s]
+  impf  lidhja[1s] lidhje[2s] lidhte[3s] lidhnim[1p] lidhnit[2p] lidhnin[3p]
+  aor   lidha[1s] lidhe[2s] lidhi[3s] lidhëm[1p] lidhët[2p] lidhën[3p]
+  imper lidh[2s] lidhni[2p]
+  opt   -
+  adm   -
+  ptcp  lidhur
+  NApres lidhem[1s] lidhesh[2s] lidhet[3s] lidhemi[1p] lidheni[2p] lidhen[3p]
+  NAimpf lidhesha[1s] lidheshe[2s] lidhej[3s] lidheshim[1p] lidheshit[2p] lidheshin[3p]
+  NAaor  lidh[3s]
+  NAimper lidhu[2s] lidhuni[2p]
+fal (cons) to forgive
+  pres  fal[1s] fal[2,3s] falim[1p] falni[2p] falin[3p]
+  subj  falësh[2s] falë[3s]
+  impf  falja[1s] falje[2s] falte[3s] falnim[1p] falnit[2p] falnin[3p]
+  aor   fala[1s] fale[2s] fali[3s] falëm[1p] falët[2p] falën[3p]
+  imper fal[2s] falni[2p]
+  opt   -
+  adm   -
+  ptcp  falur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+fut (cons) to put in, to insert
+  pres  fut[1s] fut[2,3s] futim[1p] futni[2p] futin[3p]
+  subj  futësh[2s] futë[3s]
+  impf  futja[1s] futje[2s] futte[3s] futnim[1p] futnit[2p] futnin[3p]
+  aor   futa[1s] fute[2s] futi[3s] futëm[1p] futët[2p] futën[3p]
+  imper fut[2s] futni[2p]
+  opt   -
+  adm   -
+  ptcp  futur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+qesh (cons) to laugh
+  pres  qesh[1s] qesh[2,3s] qeshim[1p] qeshni[2p] qeshin[3p]
+  subj  qeshësh[2s] qeshë[3s]
+  impf  qeshja[1s] qeshje[2s] qeshte[3s] qeshnim[1p] qeshnit[2p] qeshnin[3p]
+  aor   qesha[1s] qeshe[2s] qeshi~[3s] qeshëm[1p] qeshët[2p] qeshën[3p]
+  imper qesh[2s] qeshni[2p]
+  opt   -
+  adm   -
+  ptcp  qeshur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+buzëqesh (cons) to smile
+  pres  buzëqesh[1s] buzëqesh[2,3s] buzëqeshim[1p] buzëqeshni[2p] buzëqeshin[3p]
+  subj  buzëqeshësh[2s] buzëqeshë[3s]
+  impf  buzëqeshja[1s] buzëqeshje[2s] buzëqeshte[3s] buzëqeshnim[1p] buzëqeshnit[2p] buzëqeshnin[3p]
+  aor   buzëqesha[1s] buzëqeshe[2s] buzëqeshi[3s] buzëqeshëm[1p] buzëqeshët[2p] buzëqeshën[3p]
+  imper buzëqesh[2s] buzëqeshni[2p]
+  opt   -
+  adm   -
+  ptcp  buzëqeshur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+hip (cons) to climb, to mount
+  pres  hip?[1s] hip?[2,3s] hipim?[1p] hipni?[2p] hipin?[3p]
+  subj  hipësh?[2s] hipë?[3s]
+  impf  hipja?[1s] hipje?[2s] hipte?[3s] hipnim?[1p] hipnit?[2p] hipnin?[3p]
+  aor   hipa?[1s] hipe?[2s] hipi?[3s] hipëm?[1p] hipët?[2p] hipën?[3p]
+  imper hip?[2s] hipni?[2p]
+  opt   -
+  adm   -
+  ptcp  hipur?
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+korr (cons) to reap
+  pres  korr[1s] korr[2,3s] korrim[1p] korrni[2p] korrin[3p]
+  subj  korrësh[2s] korrë[3s]
+  impf  korrja[1s] korrje[2s] korrte[3s] korrnim[1p] korrnit[2p] korrnin[3p]
+  aor   korra[1s] korre[2s] korri[3s] korrëm[1p] korrët[2p] korrën[3p]
+  imper korr[2s] korrni[2p]
+  opt   -
+  adm   -
+  ptcp  korrur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+kap (cons) to catch, to grab
+  pres  kap[1s] kap[2,3s] kapim[1p] kapni[2p] kapin[3p]
+  subj  kapësh[2s] kapë[3s]
+  impf  kapja[1s] kapje[2s] kapte[3s] kapnim[1p] kapnit[2p] kapnin[3p]
+  aor   kapa[1s] kape[2s] kapi[3s] kapëm[1p] kapët[2p] kapën[3p]
+  imper kap[2s] kapni[2p]
+  opt   -
+  adm   -
+  ptcp  kapur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+rrit (cons) to raise, to grow (something)
+  pres  rrit[1s] rrit[2,3s] rritim[1p] rritni[2p] rritin[3p]
+  subj  rritësh[2s] rritë[3s]
+  impf  rritja[1s] rritje[2s] rritte[3s] rritnim[1p] rritnit[2p] rritnin[3p]
+  aor   rrita[1s] rrite[2s] rriti[3s] rritëm[1p] rritët[2p] rritën[3p]
+  imper rrit[2s] rritni[2p]
+  opt   -
+  adm   -
+  ptcp  rritur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ndal (cons) to stop (something)
+  pres  ndal[1s] ndal[2,3s] ndalim[1p] ndalni[2p] ndalin[3p]
+  subj  ndalësh[2s] ndalë[3s]
+  impf  ndalja[1s] ndalje[2s] ndalte[3s] ndalnim[1p] ndalnit[2p] ndalnin[3p]
+  aor   ndala[1s] ndale[2s] ndali[3s] ndalëm[1p] ndalët[2p] ndalën[3p]
+  imper ndal[2s] ndalni[2p]
+  opt   -
+  adm   -
+  ptcp  ndalur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+puth (cons) to kiss
+  pres  puth[1s] puth[2,3s] puthim[1p] puthni[2p] puthin[3p]
+  subj  puthësh[2s] puthë[3s]
+  impf  puthja[1s] puthje[2s] puthte[3s] puthnim[1p] puthnit[2p] puthnin[3p]
+  aor   putha[1s] puthe[2s] puthi[3s] puthëm[1p] puthët[2p] puthën[3p]
+  imper puth[2s] puthni[2p]
+  opt   -
+  adm   -
+  ptcp  puthur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+humb (cons) to lose
+  pres  humb[1s] humb[2,3s] humbim[1p] humbni[2p] humbin[3p]
+  subj  humbësh[2s] humbë[3s]
+  impf  humbja[1s] humbje[2s] humbte[3s] humbnim[1p] humbnit[2p] humbnin[3p]
+  aor   humba[1s] humbe[2s] humbi[3s] humbëm[1p] humbët[2p] humbën[3p]
+  imper humb[2s] humbni[2p]
+  opt   -
+  adm   -
+  ptcp  humbur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+humbas (cons) to lose; to be lost, to perish
+  pres  humbas[1s] humbet[2,3s] humbasim[1p] humbasin[3p] humbisni[2p]
+  subj  humbasësh[2s] humbasë[3s]
+  impf  humbisja[1s] humbisje[2s] humbiste[3s] humbisnim[1p] humbisnit[2p] humbisnin[3p]
+  aor   humba[1s] humbe[2s] humbi[3s] humbëm[1p] humbët[2p] humbën[3p]
+  imper humbisni[2p]
+  opt   -
+  adm   -
+  ptcp  humbur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+lëviz (cons) to move
+  pres  lëviz[1s] lëviz[2,3s] lëvizim[1p] lëvizni[2p] lëvizin[3p]
+  subj  lëvizësh[2s] lëvizë[3s]
+  impf  lëvizja[1s] lëvizje[2s] lëvizte[3s] lëviznim[1p] lëviznit[2p] lëviznin[3p]
+  aor   lëviza[1s] lëvize[2s] lëvizi[3s] lëvizëm[1p] lëvizët[2p] lëvizën[3p]
+  imper lëviz[2s] lëvizni[2p]
+  opt   -
+  adm   -
+  ptcp  lëvizur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+prish (cons) to spoil, to ruin
+  pres  prish[1s] prish[2,3s] prishim[1p] prishni[2p] prishin[3p]
+  subj  prishësh[2s] prishë[3s]
+  impf  prishja[1s] prishje[2s] prishte[3s] prishnim[1p] prishnit[2p] prishnin[3p]
+  aor   prisha[1s] prishe[2s] prishi[3s] prishëm[1p] prishët[2p] prishën[3p]
+  imper prish[2s] prishni[2p]
+  opt   -
+  adm   -
+  ptcp  prishur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ndez (cons) to light, to switch on
+  pres  ndez[1s] ndez[2,3s] ndezim[1p] ndezin[3p] ndizni[2p]
+  subj  ndezësh[2s] ndezë[3s]
+  impf  ndizja[1s] ndizje[2s] ndizte[3s] ndiznim[1p] ndiznit[2p] ndiznin[3p]
+  aor   ndeza[1s] ndeze[2s] ndezi[3s] ndezëm[1p] ndezët[2p] ndezën[3p]
+  imper ndizni[2p] ndiz[2s]
+  opt   -
+  adm   -
+  ptcp  ndezur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vendos (cons) to decide, to place
+  pres  vendos[1s] vendos[2,3s] vendosim[1p] vendosni[2p] vendosin[3p]
+  subj  vendosësh[2s] vendosë[3s]
+  impf  vendosja[1s] vendosje[2s] vendoste[3s] vendosnim[1p] vendosnit[2p] vendosnin[3p]
+  aor   vendosa[1s] vendose[2s] vendosi[3s] vendosëm[1p] vendosët[2p] vendosën[3p]
+  imper vendos[2s] vendosni[2p]
+  opt   -
+  adm   -
+  ptcp  vendosur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+përdor (cons, NA=true) to use
+  pres  përdor[1s] përdor[2,3s] përdorim[1p] përdorni[2p] përdorin[3p]
+  subj  përdorësh[2s] përdorë[3s]
+  impf  përdorja[1s] përdorje[2s] përdorte[3s] përdornim[1p] përdornit[2p] përdornin[3p]
+  aor   përdora[1s] përdore[2s] përdori[3s] përdorëm[1p] përdorët[2p] përdorën[3p]
+  imper përdor[2s] përdorni[2p]
+  opt   -
+  adm   -
+  ptcp  përdorur
+  NApres përdorem[1s] përdoresh[2s] përdoret[3s] përdoremi[1p] përdoreni[2p] përdoren[3p]
+  NAimpf përdoresha[1s] përdoreshe[2s] përdorej[3s] përdoreshim[1p] përdoreshit[2p] përdoreshin[3p]
+  NAaor  përdor[3s]
+  NAimper përdoru[2s] përdoruni[2p]
+shpall (cons) to declare, to proclaim
+  pres  shpall[1s] shpall[2,3s] shpallim[1p] shpallni[2p] shpallin[3p]
+  subj  shpallësh[2s] shpallë[3s]
+  impf  shpallja[1s] shpallje[2s] shpallte[3s] shpallnim[1p] shpallnit[2p] shpallnin[3p]
+  aor   shpalla[1s] shpalle[2s] shpalli[3s] shpallëm[1p] shpallët[2p] shpallën[3p]
+  imper shpall[2s] shpallni[2p]
+  opt   -
+  adm   -
+  ptcp  shpallur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+hesht (cons) to be silent
+  pres  hesht[1s] hesht[2,3s] heshtim[1p] heshtni[2p] heshtin[3p]
+  subj  heshtësh[2s] heshtë[3s]
+  impf  heshtja[1s] heshtje[2s] heshtte[3s] heshtnim[1p] heshtnit[2p] heshtnin[3p]
+  aor   heshta[1s] heshte[2s] heshti[3s] heshtëm[1p] heshtët[2p] heshtën[3p]
+  imper hesht[2s] heshtni[2p]
+  opt   -
+  adm   -
+  ptcp  heshtur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shtyp (cons) to press, to print
+  pres  shtyp[1s] shtyp[2,3s] shtypim[1p] shtypni[2p] shtypin[3p]
+  subj  shtypësh[2s] shtypë[3s]
+  impf  shtypja[1s] shtypje[2s] shtypte[3s] shtypnim[1p] shtypnit[2p] shtypnin[3p]
+  aor   shtypa[1s] shtype[2s] shtypi[3s] shtypëm[1p] shtypët[2p] shtypën[3p]
+  imper shtyp[2s] shtypni[2p]
+  opt   -
+  adm   -
+  ptcp  shtypur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+mbyt (cons) to drown, to choke
+  pres  mbyt[1s] mbyt[2,3s] mbytim?[1p] mbytni?[2p] mbytin?[3p]
+  subj  mbytësh?[2s] mbytë?[3s]
+  impf  mbytja[1s] mbytje[2s] mbytte?[3s] mbytnim[1p] mbytnit[2p] mbytnin[3p]
+  aor   mbyta[1s] mbyte[2s] mbyti[3s] mbytëm[1p] mbytët[2p] mbytën[3p]
+  imper mbyt[2s] mbytni?[2p]
+  opt   -
+  adm   -
+  ptcp  mbytur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+zhduk (cons) to make disappear, to destroy
+  pres  zhduk[1s] zhduk[2,3s] zhdukim[1p] zhdukni[2p] zhdukin[3p]
+  subj  zhdukësh[2s] zhdukë[3s]
+  impf  zhdukja[1s] zhdukje[2s] zhdukte[3s] zhduknim[1p] zhduknit[2p] zhduknin[3p]
+  aor   zhduka[1s] zhduke[2s] zhduki?[3s] zhdukëm[1p] zhdukët[2p] zhdukën[3p]
+  imper zhduk[2s] zhdukni[2p]
+  opt   -
+  adm   -
+  ptcp  zhdukur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+porosit (cons) to order
+  pres  porosit[1s] porosit[2,3s] porositim[1p] porositni[2p] porositin[3p]
+  subj  porositësh[2s] porositë[3s]
+  impf  porositja[1s] porositje[2s] porositte[3s] porositnim[1p] porositnit[2p] porositnin[3p]
+  aor   porosita[1s] porosite[2s] porositi[3s] porositëm[1p] porositët[2p] porositën[3p]
+  imper porosit[2s] porositni[2p]
+  opt   -
+  adm   -
+  ptcp  porositur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+mbështet (cons, NA=true) to support, to lean; non-active: to lean on, to rely on
+  pres  mbështet[1s] mbështet[2,3s] mbështetim[1p] mbështetni[2p] mbështetin[3p]
+  subj  mbështetësh[2s] mbështetë[3s]
+  impf  mbështetja[1s] mbështetje[2s] mbështette[3s] mbështetnim[1p] mbështetnit[2p] mbështetnin[3p]
+  aor   mbështeta[1s] mbështete[2s] mbështeti[3s] mbështetëm[1p] mbështetët[2p] mbështetën[3p]
+  imper mbështet[2s] mbështetni[2p]
+  opt   -
+  adm   -
+  ptcp  mbështetur
+  NApres mbështetem[1s] mbështetesh[2s] mbështetet[3s] mbështetemi[1p] mbështeteni[2p] mbështeten[3p]
+  NAimpf mbështetesha[1s] mbështeteshe[2s] mbështetej[3s] mbështeteshim[1p] mbështeteshit[2p] mbështeteshin[3p]
+  NAaor  mbështet[3s]
+  NAimper mbështetu[2s] mbështetuni[2p]
+përmend (cons) to mention
+  pres  përmend[1s] përmend[2,3s] përmendim[1p] përmendni[2p] përmendin[3p]
+  subj  përmendësh[2s] përmendë[3s]
+  impf  përmendja[1s] përmendje[2s] përmendte[3s] përmendnim[1p] përmendnit[2p] përmendnin[3p]
+  aor   përmenda[1s] përmende[2s] përmendi[3s] përmendëm[1p] përmendët[2p] përmendën[3p]
+  imper përmend[2s] përmendni[2p]
+  opt   -
+  adm   -
+  ptcp  përmendur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+përmbush (cons) to fulfil
+  pres  përmbush[1s] përmbush[2,3s] përmbushim[1p] përmbushni[2p] përmbushin[3p]
+  subj  përmbushësh[2s] përmbushë[3s]
+  impf  përmbushja[1s] përmbushje[2s] përmbushte[3s] përmbushnim[1p] përmbushnit[2p] përmbushnin[3p]
+  aor   përmbusha[1s] përmbushe[2s] përmbushi[3s] përmbushëm[1p] përmbushët[2p] përmbushën[3p]
+  imper përmbush[2s] përmbushni[2p]
+  opt   -
+  adm   -
+  ptcp  përmbushur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shkruaj (oj, NA=true) to write
+  pres  shkruaj[1s] shkruan[2,3s] shkruajmë[1p] shkruani[2p] shkruajnë[3p]
+  subj  shkruash[2s] shkruajë[3s]
+  impf  shkruaja[1s] shkruaje[2s] shkruante[3s] shkruanim[1p] shkruanit[2p] shkruanin[3p]
+  aor   shkrova[1s] shkrove[2s] shkroi[3s] shkruam[1p] shkruat[2p] shkruan[3p]
+  imper shkruaj[2s] shkruani[2p]
+  opt   -
+  adm   -
+  ptcp  shkruar
+  NApres shkruhem[1s] shkruhesh[2s] shkruhet[3s] shkruhemi[1p] shkruheni[2p] shkruhen[3p]
+  NAimpf shkruhesha[1s] shkruheshe[2s] shkruhej[3s] shkruheshim[1p] shkruheshit[2p] shkruheshin[3p]
+  NAaor  shkrua[3s]
+  NAimper shkruhu[2s] shkruhuni[2p]
+luaj (oj, NA=true) to play
+  pres  luaj[1s] luan[2,3s] luajmë[1p] luani[2p] luajnë[3p]
+  subj  luash[2s] luajë[3s]
+  impf  luaja[1s] luaje[2s] luante[3s] luanim[1p] luanit[2p] luanin[3p]
+  aor   luajta[1s] luajte[2s] luajti[3s] luajtëm?[1p] luajtët?[2p] luajtën?[3p]
+  imper luaj[2s] luani[2p]
+  opt   -
+  adm   -
+  ptcp  luajtur
+  NApres luhem[1s] luhesh[2s] luhet[3s] luhemi[1p] luheni[2p] luhen[3p]
+  NAimpf luhesha[1s] luheshe[2s] luhej[3s] luheshim[1p] luheshit[2p] luheshin[3p]
+  NAaor  luajt[3s]
+  NAimper luhu[2s] luhuni[2p]
+ruaj (oj) to guard, to keep
+  pres  ruaj[1s] ruan[2,3s] ruajmë[1p] ruani[2p] ruajnë[3p]
+  subj  ruash[2s] ruajë[3s]
+  impf  ruaja[1s] ruaje[2s] ruante[3s] ruanim[1p] ruanit[2p] ruanin[3p]
+  aor   ruajta[1s] ruajte[2s] ruajti[3s] ruajtëm[1p] ruajtët[2p] ruajtën[3p]
+  imper ruaj[2s] ruani[2p]
+  opt   -
+  adm   -
+  ptcp  ruajtur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vuaj (oj) to suffer
+  pres  vuaj[1s] vuan[2,3s] vuajmë[1p] vuani[2p] vuajnë[3p]
+  subj  vuash[2s] vuajë[3s]
+  impf  vuaja[1s] vuaje[2s] vuante[3s] vuanim[1p] vuanit[2p] vuanin[3p]
+  aor   vuajta[1s] vuajte[2s] vuajti[3s] vuajtëm?[1p] vuajtët?[2p] vuajtën?[3p]
+  imper vuaj[2s] vuani[2p]
+  opt   -
+  adm   -
+  ptcp  vuajtur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+mbaj (oj, NA=true) to hold, to keep
+  pres  mbaj[1s] mban[2,3s] mbajmë[1p] mbani[2p] mbajnë[3p]
+  subj  mbash[2s] mbajë[3s]
+  impf  mbaja[1s] mbaje[2s] mbante[3s] mbanim[1p] mbanit[2p] mbanin[3p]
+  aor   mbajta[1s] mbajte[2s] mbajti[3s] mbajtëm[1p] mbajtët[2p] mbajtën[3p]
+  imper mbaj[2s] mbani[2p]
+  opt   -
+  adm   -
+  ptcp  mbajtur
+  NApres mbahem[1s] mbahesh[2s] mbahet[3s] mbahemi[1p] mbaheni[2p] mbahen[3p]
+  NAimpf mbahesha[1s] mbaheshe[2s] mbahej[3s] mbaheshim[1p] mbaheshit[2p] mbaheshin[3p]
+  NAaor  mbajt[3s]
+  NAimper mbahu[2s] mbahuni[2p]
+quaj (oj) to call, to name
+  pres  quaj[1s] quan[2,3s] quajmë[1p] quani[2p] quajnë[3p]
+  subj  quash[2s] quajë[3s]
+  impf  quaja[1s] quaje[2s] quante[3s] quanim[1p] quanit[2p] quanin[3p]
+  aor   quajta[1s] quajte[2s] quajti[3s] quajtëm[1p] quajtët[2p] quajtën[3p]
+  imper quaj[2s] quani[2p]
+  opt   -
+  adm   -
+  ptcp  quajtur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+paguaj (oj) to pay
+  pres  paguaj[1s] paguan[2,3s] paguajmë[1p] paguani[2p] paguajnë[3p]
+  subj  paguash[2s] paguajë[3s]
+  impf  paguaja[1s] paguaje[2s] paguante[3s] paguanim[1p] paguanit[2p] paguanin[3p]
+  aor   pagova[1s] pagove[2s] pagoi[3s] paguam[1p] paguat[2p] paguan[3p]
+  imper paguaj[2s] paguani[2p]
+  opt   -
+  adm   -
+  ptcp  paguar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+gatuaj (oj) to cook
+  pres  gatuaj[1s] gatuan[2,3s] gatuajmë[1p] gatuani[2p] gatuajnë[3p]
+  subj  gatuash[2s] gatuajë[3s]
+  impf  gatuaja[1s] gatuaje[2s] gatuante[3s] gatuanim[1p] gatuanit[2p] gatuanin[3p]
+  aor   gatova[1s] gatove[2s] gatoi[3s] gatuam[1p] gatuat[2p] gatuan[3p]
+  imper gatuaj[2s] gatuani[2p]
+  opt   -
+  adm   -
+  ptcp  gatuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+laj (oj, NA=true) to wash
+  pres  laj[1s] lan[2,3s] lajmë[1p] lani[2p] lajnë[3p]
+  subj  lash[2s] lajë[3s]
+  impf  laja[1s] laje[2s] lante[3s] lanim[1p] lanit[2p] lanin[3p]
+  aor   lava[1s] lave[2s] lau[3s] lamë[1p] latë[2p] lanë[3p]
+  imper laj[2s] lani[2p]
+  opt   -
+  adm   -
+  ptcp  larë
+  NApres lahem[1s] lahesh[2s] lahet[3s] lahemi[1p] laheni[2p] lahen[3p]
+  NAimpf lahesha[1s] laheshe[2s] lahej[3s] laheshim[1p] laheshit[2p] laheshin[3p]
+  NAaor  la[3s]
+  NAimper lahu[2s] lahuni[2p]
+blej (oj, NA=true) to buy
+  pres  blej[1s] blen[2,3s] blejmë[1p] bleni[2p] blejnë[3p]
+  subj  blesh[2s] blejë[3s]
+  impf  bleja[1s] bleje[2s] blente[3s] blenim[1p] blenit[2p] blenin[3p]
+  aor   bleva[1s] bleve[2s] bleu[3s] blemë[1p] bletë[2p] blenë[3p]
+  imper bleni[2p]
+  opt   -
+  adm   -
+  ptcp  blerë
+  NApres blihesh[2s] blihet[3s] blihemi[1p] bliheni[2p] blihen[3p] blihem[1s]
+  NAimpf blihesha[1s] bliheshe[2s] blihej[3s] bliheshim[1p] bliheshit[2p] bliheshin[3p]
+  NAaor  ble[3s]
+  NAimper blihu[2s] blihuni[2p]
+fshij (oj, NA=true) to wipe, to sweep
+  pres  fshij[1s] fshin[2,3s] fshijmë[1p] fshini[2p] fshijnë[3p]
+  subj  fshish[2s] fshijë[3s]
+  impf  fshija[1s] fshije[2s] fshinte[3s] fshinim[1p] fshinit[2p] fshinin[3p]
+  aor   fshiva[1s] fshive[2s] fshiu[3s] fshimë[1p] fshitë[2p] fshinë[3p]
+  imper fshini[2p]
+  opt   -
+  adm   -
+  ptcp  fshirë
+  NApres fshihem[1s] fshihesh[2s] fshihet[3s] fshihemi[1p] fshiheni[2p] fshihen[3p]
+  NAimpf fshihesha[1s] fshiheshe[2s] fshihej[3s] fshiheshim[1p] fshiheshit[2p] fshiheshin[3p]
+  NAaor  fshi[3s]
+  NAimper fshihu[2s] fshihuni[2p]
+qaj (oj) to cry, to weep
+  pres  qaj[1s] qan[2,3s] qajmë[1p] qani[2p] qajnë[3p]
+  subj  qash[2s] qajë[3s]
+  impf  qaja[1s] qaje[2s] qante[3s] qanim[1p] qanit[2p] qanin[3p]
+  aor   qava[1s] qave[2s] qau[3s] qamë[1p] qatë[2p] qanë[3p]
+  imper qaj[2s] qani[2p]
+  opt   -
+  adm   -
+  ptcp  qarë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ndaj (oj, NA=true) to divide, to share
+  pres  ndaj[1s] ndan[2,3s] ndajmë[1p] ndani[2p] ndajnë[3p]
+  subj  ndash[2s] ndajë[3s]
+  impf  ndaja[1s] ndaje[2s] ndante[3s] ndanim[1p] ndanit[2p] ndanin[3p]
+  aor   ndava[1s] ndave[2s] ndau[3s] ndamë[1p] ndatë[2p] ndanë[3p]
+  imper ndaj[2s] ndani[2p]
+  opt   -
+  adm   -
+  ptcp  ndarë
+  NApres ndahem[1s] ndahesh[2s] ndahet[3s] ndahemi[1p] ndaheni[2p] ndahen[3p]
+  NAimpf ndahesha[1s] ndaheshe[2s] ndahej[3s] ndaheshim[1p] ndaheshit[2p] ndaheshin[3p]
+  NAaor  nda[3s]
+  NAimper ndahu[2s] ndahuni[2p]
+shpërndaj (oj) to distribute, to scatter
+  pres  shpërndaj[1s] shpërndan[2,3s] shpërndajmë[1p] shpërndani[2p] shpërndajnë[3p]
+  subj  shpërndash[2s] shpërndajë[3s]
+  impf  shpërndaja[1s] shpërndaje[2s] shpërndante[3s] shpërndanim[1p] shpërndanit[2p] shpërndanin[3p]
+  aor   shpërndava[1s] shpërndave[2s] shpërndau[3s] shpërndamë[1p] shpërndatë[2p] shpërndanë[3p]
+  imper shpërndaj[2s] shpërndani[2p]
+  opt   -
+  adm   -
+  ptcp  shpërndarë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+bëj (oj, NA=true) to do, to make
+  pres  bëj[1s] bën[2,3s] bëjmë[1p] bëni[2p] bëjnë[3p]
+  subj  bësh[2s] bëjë[3s]
+  impf  bëja[1s] bëje[2s] bënte[3s] bënim[1p] bënit[2p] bënin[3p]
+  aor   bëra[1s] bëre[2s] bëri[3s] bëmë[1p] bëtë[2p] bënë[3p]
+  imper bëj[2s] bëni[2p]
+  opt   -
+  adm   -
+  ptcp  bërë
+  NApres bëhem[1s] bëhesh[2s] bëhet[3s] bëhemi[1p] bëheni[2p] bëhen[3p]
+  NAimpf bëhesha[1s] bëheshe[2s] bëhej[3s] bëheshim[1p] bëheshit[2p] bëheshin[3p]
+  NAaor  bë[3s]
+  NAimper bëhu[2s] bëhuni[2p]
+gjej (oj) to find
+  pres  gjej[1s] gjen[2,3s] gjejmë[1p] gjeni[2p] gjejnë[3p]
+  subj  gjesh[2s] gjejë[3s]
+  impf  gjeja[1s] gjeje[2s] gjente[3s] gjenim[1p] gjenit[2p] gjenin[3p]
+  aor   gjeta[1s] gjete[2s] gjeti[3s] gjetëm[1p] gjetët[2p] gjetën[3p]
+  imper gjeni[2p] gjej[2s]
+  opt   -
+  adm   -
+  ptcp  gjetur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+hyj (oj) to enter
+  pres  hyj[1s] hyn[2,3s] hyjmë[1p] hyni[2p] hyjnë[3p]
+  subj  hysh[2s] hyjë[3s]
+  impf  hyja[1s] hyje[2s] hynte[3s] hynim[1p] hynit[2p] hynin[3p]
+  aor   hyra[1s] hyre[2s] hyri[3s] hymë[1p] hytë[2p] hynë[3p]
+  imper hyni[2p] hyr[2s]
+  opt   -
+  adm   -
+  ptcp  hyrë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+kthej (oj) to return (something), to give back
+  pres  kthej[1s] kthen[2,3s] kthejmë[1p] ktheni[2p] kthejnë[3p]
+  subj  kthesh[2s] kthejë[3s]
+  impf  ktheja[1s] ktheje[2s] kthente[3s] kthenim[1p] kthenit[2p] kthenin[3p]
+  aor   ktheva[1s] ktheve[2s] ktheu[3s] kthyem[1p] kthyet[2p] kthyen[3p]
+  imper ktheni[2p]
+  opt   -
+  adm   -
+  ptcp  kthyer
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+pëlqej (oj) to like, to please
+  pres  pëlqej[1s] pëlqen[2,3s] pëlqejmë[1p] pëlqeni[2p] pëlqejnë[3p]
+  subj  pëlqesh[2s] pëlqejë[3s]
+  impf  pëlqeja[1s] pëlqeje[2s] pëlqente[3s] pëlqenim[1p] pëlqenit[2p] pëlqenin[3p]
+  aor   pëlqeva[1s] pëlqeve[2s] pëlqeu[3s] pëlqyem[1p] pëlqyet[2p] pëlqyen[3p]
+  imper pëlqeni[2p]
+  opt   -
+  adm   -
+  ptcp  pëlqyer
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+gënjej (oj) to lie to, to deceive
+  pres  gënjej[1s] gënjen[2,3s] gënjejmë[1p] gënjeni[2p] gënjejnë[3p]
+  subj  gënjesh[2s] gënjejë[3s]
+  impf  gënjeja[1s] gënjeje[2s] gënjente[3s] gënjenim[1p] gënjenit[2p] gënjenin[3p]
+  aor   gënjeva[1s] gënjeve[2s] gënjeu[3s] gënjyem[1p] gënjyet[2p] gënjyen[3p]
+  imper gënjeni[2p]
+  opt   -
+  adm   -
+  ptcp  gënjyer
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+thyej (oj) to break
+  pres  thyej[1s] thyen[2,3s] thyejmë[1p] thyeni[2p] thyejnë[3p]
+  subj  thyesh[2s] thyejë[3s]
+  impf  thyeja[1s] thyeje[2s] thyente[3s] thyenim[1p] thyenit[2p] thyenin[3p]
+  aor   thyeva?[1s] thyeve?[2s] thyeu?[3s] thyem[1p] thyet[2p] thyen[3p]
+  imper thyeni[2p]
+  opt   -
+  adm   -
+  ptcp  thyer
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+përkthej (oj) to translate
+  pres  përkthej[1s] përkthen[2,3s] përkthejmë[1p] përktheni[2p] përkthejnë[3p]
+  subj  përkthesh[2s] përkthejë[3s]
+  impf  përktheja[1s] përktheje[2s] përkthente[3s] përkthenim[1p] përkthenit[2p] përkthenin[3p]
+  aor   përktheva[1s] përktheve[2s] përktheu[3s] përkthyem[1p] përkthyet[2p] përkthyen[3p]
+  imper përktheni[2p]
+  opt   -
+  adm   -
+  ptcp  përkthyer
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shërbej (oj) to serve
+  pres  shërbej[1s] shërben[2,3s] shërbejmë[1p] shërbeni[2p] shërbejnë[3p]
+  subj  shërbesh[2s] shërbejë[3s]
+  impf  shërbeja[1s] shërbeje[2s] shërbente[3s] shërbenim[1p] shërbenit[2p] shërbenin[3p]
+  aor   shërbeva[1s] shërbeve[2s] shërbeu[3s] shërbyem[1p] shërbyet[2p] shërbyen[3p]
+  imper shërbeni[2p]
+  opt   -
+  adm   -
+  ptcp  shërbyer
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+rrëfej (oj) to confess, to tell
+  pres  rrëfej[1s] rrëfen[2,3s] rrëfejmë[1p] rrëfeni[2p] rrëfejnë[3p]
+  subj  rrëfesh[2s] rrëfejë[3s]
+  impf  rrëfeja[1s] rrëfeje[2s] rrëfente[3s] rrëfenim[1p] rrëfenit[2p] rrëfenin[3p]
+  aor   rrëfeva[1s] rrëfeve[2s] rrëfeu[3s] rrëfyem[1p] rrëfyet[2p] rrëfyen[3p]
+  imper rrëfeni[2p]
+  opt   -
+  adm   -
+  ptcp  rrëfyer
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+arrij (oj) to arrive, to reach
+  pres  arrij[1s] arrin[2,3s] arrijmë[1p] arrini[2p] arrijnë[3p]
+  subj  arrish[2s] arrijë[3s]
+  impf  arrija[1s] arrije[2s] arrinte[3s] arrinim[1p] arrinit[2p] arrinin[3p]
+  aor   arrita[1s] arrite[2s] arriti[3s] arritëm[1p] arritët[2p] arritën[3p]
+  imper arrini[2p]
+  opt   -
+  adm   -
+  ptcp  arritur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+mbërrij (oj) to arrive
+  pres  mbërrij[1s] mbërrin[2,3s] mbërrijmë[1p] mbërrini[2p] mbërrijnë[3p]
+  subj  mbërrish[2s] mbërrijë[3s]
+  impf  mbërrija[1s] mbërrije[2s] mbërrinte[3s] mbërrinim[1p] mbërrinit[2p] mbërrinin[3p]
+  aor   mbërrita[1s] mbërrite[2s] mbërriti[3s] mbërritëm[1p] mbërritët[2p] mbërritën[3p]
+  imper mbërrini[2p]
+  opt   -
+  adm   -
+  ptcp  mbërritur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+mbroj (oj, NA=true) to defend, to protect
+  pres  mbroj[1s] mbron[2,3s] mbrojmë[1p] mbroni[2p] mbrojnë[3p]
+  subj  mbrosh[2s] mbrojë[3s]
+  impf  mbroja[1s] mbroje[2s] mbronte[3s] mbronim[1p] mbronit[2p] mbronin[3p]
+  aor   mbrojta[1s] mbrojte[2s] mbrojti[3s] mbrojtëm[1p] mbrojtët[2p] mbrojtën[3p]
+  imper mbro[2s] mbroni[2p]
+  opt   mbrofsha[1s] mbrofsh[2s] mbroftë[3s] mbrofshim[1p] mbrofshi[2p] mbrofshin[3p]
+  adm   -
+  ptcp  mbrojtur
+  NApres mbrohem[1s] mbrohesh[2s] mbrohet[3s] mbrohemi[1p] mbroheni[2p] mbrohen[3p]
+  NAimpf mbrohesha[1s] mbroheshe[2s] mbrohej[3s] mbroheshim[1p] mbroheshit[2p] mbroheshin[3p]
+  NAaor  mbrojt[3s]
+  NAimper mbrohu[2s] mbrohuni[2p]
+nënshkruaj (oj) to sign
+  pres  nënshkruaj[1s] nënshkruan[2,3s] nënshkruajmë[1p] nënshkruani[2p] nënshkruajnë[3p]
+  subj  nënshkruash[2s] nënshkruajë[3s]
+  impf  nënshkruaja[1s] nënshkruaje[2s] nënshkruante[3s] nënshkruanim[1p] nënshkruanit[2p] nënshkruanin[3p]
+  aor   nënshkrova[1s] nënshkrove[2s] nënshkroi[3s] nënshkruam[1p] nënshkruat[2p] nënshkruan[3p]
+  imper nënshkruaj[2s] nënshkruani[2p]
+  opt   -
+  adm   -
+  ptcp  nënshkruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+lutem (cons, NA=only) to pray
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  lutur
+  NApres lutem[1s] lutesh[2s] lutet[3s] lutemi[1p] luteni[2p] luten[3p]
+  NAimpf lutesha[1s] luteshe[2s] lutej[3s] luteshim[1p] luteshit[2p] luteshin[3p]
+  NAaor  luta?[1s] lute?[2s] lutëm?[1p] lutët?[2p] lutën?[3p] lut[3s]
+  NAimper lutu[2s] lutuni[2p]
+pendohem (cons, NA=only) to repent
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  penduar
+  NApres pendohem[1s] pendohesh[2s] pendohet[3s] pendohemi[1p] pendoheni[2p] pendohen[3p]
+  NAimpf pendohesha[1s] pendoheshe[2s] pendohej[3s] pendoheshim[1p] pendoheshit[2p] pendoheshin[3p]
+  NAaor  pendova[1s] pendove[2s] penduam[1p] penduat[2p] penduan[3p] pendua[3s]
+  NAimper pendohu[2s] pendohuni[2p]
+përgjigjem (cons, NA=only) to answer
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  përgjigjur
+  NApres përgjigjem[1s] përgjigjesh[2s] përgjigjet[3s] përgjigjemi[1p] përgjigjeni[2p] përgjigjen[3p]
+  NAimpf përgjigjesha[1s] përgjigjeshe[2s] përgjigjej[3s] përgjigjeshim[1p] përgjigjeshit[2p] përgjigjeshin[3p]
+  NAaor  përgjigja[1s] përgjigje[2s] përgjigjëm[1p] përgjigjët[2p] përgjigjën[3p] përgjigj[3s]
+  NAimper përgjigju[2s] përgjigjuni[2p]
+kujdesem (cons, NA=only) to take care
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  kujdesur
+  NApres kujdesem[1s] kujdesesh[2s] kujdeset[3s] kujdesemi[1p] kujdeseni[2p] kujdesen[3p]
+  NAimpf kujdesesha[1s] kujdeseshe[2s] kujdesej[3s] kujdeseshim[1p] kujdeseshit[2p] kujdeseshin[3p]
+  NAaor  kujdesa[1s] kujdese[2s] kujdesëm[1p] kujdesët[2p] kujdesën[3p] kujdes[3s]
+  NAimper kujdesu[2s] kujdesuni[2p]
+ulem (cons, NA=only) to sit down
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  ulur
+  NApres ulem[1s] ulesh[2s] ulet[3s] ulemi[1p] uleni[2p] ulen[3p]
+  NAimpf ulesha[1s] uleshe[2s] ulej[3s] uleshim[1p] uleshit[2p] uleshin[3p]
+  NAaor  ula?[1s] ule?[2s] ulëm?[1p] ulët?[2p] ulën?[3p] ul[3s]
+  NAimper ulu[2s] uluni[2p]
+kthehem (cons, NA=only) to come back, to turn round
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  kthyer
+  NApres kthehem[1s] kthehesh[2s] kthehet[3s] kthehemi[1p] ktheheni[2p] kthehen[3p]
+  NAimpf kthehesha[1s] ktheheshe[2s] kthehej[3s] ktheheshim[1p] ktheheshit[2p] ktheheshin[3p]
+  NAaor  ktheva?[1s] ktheve?[2s] kthyem?[1p] kthyet?[2p] kthyen?[3p] kthye[3s]
+  NAimper kthehu[2s] kthehuni[2p]
+bindem (cons, NA=only) to obey
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  bindur
+  NApres bindem[1s] bindesh[2s] bindet[3s] bindemi[1p] bindeni[2p] binden[3p]
+  NAimpf bindesha[1s] bindeshe[2s] bindej[3s] bindeshim[1p] bindeshit[2p] bindeshin[3p]
+  NAaor  binda?[1s] binde?[2s] bindëm?[1p] bindët?[2p] bindën?[3p] bind[3s]
+  NAimper bindu[2s] binduni[2p]
+përulem (cons, NA=only) to humble oneself
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  përulur
+  NApres përulem[1s] përulesh[2s] përulet[3s] përulemi[1p] përuleni[2p] përulen[3p]
+  NAimpf përulesha[1s] përuleshe[2s] përulej[3s] përuleshim[1p] përuleshit[2p] përuleshin[3p]
+  NAaor  përula?[1s] përule?[2s] përulëm?[1p] përulët?[2p] përulën?[3p] përul[3s]
+  NAimper përulu[2s] përuluni[2p]
+ringjallem (cons, NA=only) to rise again
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  ringjallur
+  NApres ringjallem[1s] ringjallesh[2s] ringjallet[3s] ringjallemi[1p] ringjalleni[2p] ringjallen[3p]
+  NAimpf ringjallesha[1s] ringjalleshe[2s] ringjallej[3s] ringjalleshim[1p] ringjalleshit[2p] ringjalleshin[3p]
+  NAaor  ringjalla?[1s] ringjalle?[2s] ringjallëm?[1p] ringjallët?[2p] ringjallën?[3p] ringjall[3s]
+  NAimper ringjallu[2s] ringjalluni[2p]
+lindem (cons, NA=only) to be born
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  lindur
+  NApres lindem[1s] lindesh[2s] lindet[3s] lindemi[1p] lindeni[2p] linden[3p]
+  NAimpf lindesha[1s] lindeshe[2s] lindej[3s] lindeshim[1p] lindeshit[2p] lindeshin[3p]
+  NAaor  linda?[1s] linde?[2s] lindi?[3s] lindëm?[1p] lindët?[2p] lindën?[3p] lind[3s]
+  NAimper lindu[2s] linduni[2p]
+quhem (cons, NA=only) to be called
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  quajtur
+  NApres quhem[1s] quhesh[2s] quhet[3s] quhemi[1p] quheni[2p] quhen[3p]
+  NAimpf quhesha[1s] quheshe[2s] quhej[3s] quheshim[1p] quheshit[2p] quheshin[3p]
+  NAaor  quajta[1s] quajte[2s] quajtëm[1p] quajtët[2p] quajtën[3p] quajt[3s]
+  NAimper quhu[2s] quhuni[2p]
+martohem (cons, NA=only) to marry, to get married
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  martuar
+  NApres martohem[1s] martohesh[2s] martohet[3s] martohemi[1p] martoheni[2p] martohen[3p]
+  NAimpf martohesha[1s] martoheshe[2s] martohej[3s] martoheshim[1p] martoheshit[2p] martoheshin[3p]
+  NAaor  martova?[1s] martove?[2s] martuam?[1p] martuat?[2p] martuan?[3p] martua[3s]
+  NAimper martohu[2s] martohuni[2p]
+lodhem (cons, NA=only) to get tired
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  lodhur
+  NApres lodhem[1s] lodhesh[2s] lodhet[3s] lodhemi[1p] lodheni[2p] lodhen[3p]
+  NAimpf lodhesha[1s] lodheshe[2s] lodhej[3s] lodheshim[1p] lodheshit[2p] lodheshin[3p]
+  NAaor  lodha?[1s] lodhe?[2s] lodhëm?[1p] lodhët?[2p] lodhën?[3p] lodh[3s]
+  NAimper lodhu[2s] lodhuni[2p]
+gëzohem (cons, NA=only) to rejoice, to be glad
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  gëzuar
+  NApres gëzohem[1s] gëzohesh[2s] gëzohet[3s] gëzohemi[1p] gëzoheni[2p] gëzohen[3p]
+  NAimpf gëzohesha[1s] gëzoheshe[2s] gëzohej[3s] gëzoheshim[1p] gëzoheshit[2p] gëzoheshin[3p]
+  NAaor  gëzova?[1s] gëzove?[2s] gëzuam?[1p] gëzuat?[2p] gëzuan?[3p] gëzua[3s]
+  NAimper gëzohu[2s] gëzohuni[2p]
+ankohem (cons, NA=only) to complain
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  ankuar
+  NApres ankohem[1s] ankohesh[2s] ankohet[3s] ankohemi[1p] ankoheni[2p] ankohen[3p]
+  NAimpf ankohesha[1s] ankoheshe[2s] ankohej[3s] ankoheshim[1p] ankoheshit[2p] ankoheshin[3p]
+  NAaor  ankova?[1s] ankove?[2s] ankuam?[1p] ankuat?[2p] ankuan?[3p] ankua[3s]
+  NAimper ankohu[2s] ankohuni[2p]
+afrohem (cons, NA=only) to come near
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  afruar
+  NApres afrohem[1s] afrohesh[2s] afrohet[3s] afrohemi[1p] afroheni[2p] afrohen[3p]
+  NAimpf afrohesha[1s] afroheshe[2s] afrohej[3s] afroheshim[1p] afroheshit[2p] afroheshin[3p]
+  NAaor  afrova?[1s] afrove?[2s] afruam?[1p] afruat?[2p] afruan?[3p] afrua[3s]
+  NAimper afrohu[2s] afrohuni[2p]
+largohem (cons, NA=only) to go away, to withdraw
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  larguar
+  NApres largohem[1s] largohesh[2s] largohet[3s] largohemi[1p] largoheni[2p] largohen[3p]
+  NAimpf largohesha[1s] largoheshe[2s] largohej[3s] largoheshim[1p] largoheshit[2p] largoheshin[3p]
+  NAaor  largova?[1s] largove?[2s] larguam?[1p] larguat?[2p] larguan?[3p] largua[3s]
+  NAimper largohu[2s] largohuni[2p]
+pajtohem (cons, NA=only) to agree, to be reconciled
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  pajtuar
+  NApres pajtohem[1s] pajtohesh[2s] pajtohet[3s] pajtohemi[1p] pajtoheni[2p] pajtohen[3p]
+  NAimpf pajtohesha[1s] pajtoheshe[2s] pajtohej[3s] pajtoheshim[1p] pajtoheshit[2p] pajtoheshin[3p]
+  NAaor  pajtova?[1s] pajtove?[2s] pajtuam?[1p] pajtuat?[2p] pajtuan?[3p] pajtua[3s]
+  NAimper pajtohu[2s] pajtohuni[2p]
+ndodhem (cons, NA=only) to be (located); to happen
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  ndodhur
+  NApres ndodhem[1s] ndodhesh[2s] ndodhet[3s] ndodhemi[1p] ndodheni[2p] ndodhen[3p]
+  NAimpf ndodhesha[1s] ndodheshe[2s] ndodhej[3s] ndodheshim[1p] ndodheshit[2p] ndodheshin[3p]
+  NAaor  ndodha?[1s] ndodhe?[2s] ndodhi?[3s] ndodhëm?[1p] ndodhët?[2p] ndodhën?[3p] ndodh[3s]
+  NAimper ndodhu[2s] ndodhuni[2p]
+gjendem (cons, NA=only) to be found, to find oneself
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  gjendur
+  NApres gjendem[1s] gjendesh[2s] gjendet[3s] gjendemi[1p] gjendeni[2p] gjenden[3p]
+  NAimpf gjendesha[1s] gjendeshe[2s] gjendej[3s] gjendeshim[1p] gjendeshit[2p] gjendeshin[3p]
+  NAaor  gjenda?[1s] gjende?[2s] gjendëm?[1p] gjendët?[2p] gjendën?[3p] gjend[3s]
+  NAimper gjendu[2s] gjenduni[2p]
+nisem (cons, NA=only) to set out
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  nisur
+  NApres nisem[1s] nisesh[2s] niset[3s] nisemi[1p] niseni[2p] nisen[3p]
+  NAimpf nisesha[1s] niseshe[2s] nisej[3s] niseshim[1p] niseshit[2p] niseshin[3p]
+  NAaor  nisa?[1s] nise?[2s] nisëm?[1p] nisët?[2p] nisën?[3p] nis[3s]
+  NAimper nisu[2s] nisuni[2p]
+mbetem (cons, NA=only) to remain
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  mbetur
+  NApres mbetem[1s] mbetesh[2s] mbetet[3s] mbetemi[1p] mbeteni[2p] mbeten[3p]
+  NAimpf mbetesha[1s] mbeteshe[2s] mbetej[3s] mbeteshim[1p] mbeteshit[2p] mbeteshin[3p]
+  NAaor  mbeta?[1s] mbete?[2s] mbeti?[3s] mbetëm?[1p] mbetët?[2p] mbetën?[3p] mbet[3s]
+  NAimper mbetu[2s] mbetuni[2p]
+dukem (cons, NA=only) to seem, to appear
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  dukur
+  NApres dukem[1s] dukesh[2s] duket[3s] dukemi[1p] dukeni[2p] duken[3p]
+  NAimpf dukesha[1s] dukeshe[2s] dukej[3s] dukeshim[1p] dukeshit[2p] dukeshin[3p]
+  NAaor  duka[1s] duke[2s] dukëm[1p] dukët[2p] dukën[3p] duk[3s]
+  NAimper duku[2s] dukuni[2p]
+kënaqem (cons, NA=only) to be pleased, to enjoy
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  kënaqur
+  NApres kënaqem[1s] kënaqesh[2s] kënaqet[3s] kënaqemi[1p] kënaqeni[2p] kënaqen[3p]
+  NAimpf kënaqesha[1s] kënaqeshe[2s] kënaqej[3s] kënaqeshim[1p] kënaqeshit[2p] kënaqeshin[3p]
+  NAaor  kënaqa?[1s] kënaqe?[2s] kënaqëm?[1p] kënaqët?[2p] kënaqën?[3p] kënaq[3s]
+  NAimper kënaqu[2s] kënaquni[2p]
+habitem (cons, NA=only) to be surprised
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  habitur
+  NApres habitem[1s] habitesh[2s] habitet[3s] habitemi[1p] habiteni[2p] habiten[3p]
+  NAimpf habitesha[1s] habiteshe[2s] habitej[3s] habiteshim[1p] habiteshit[2p] habiteshin[3p]
+  NAaor  habita?[1s] habite?[2s] habitëm?[1p] habitët?[2p] habitën?[3p] habit[3s]
+  NAimper habitu[2s] habituni[2p]
+shfaqem (cons, NA=only) to appear, to show oneself
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  shfaqur
+  NApres shfaqem[1s] shfaqesh[2s] shfaqet[3s] shfaqemi[1p] shfaqeni[2p] shfaqen[3p]
+  NAimpf shfaqesha[1s] shfaqeshe[2s] shfaqej[3s] shfaqeshim[1p] shfaqeshit[2p] shfaqeshin[3p]
+  NAaor  shfaqa?[1s] shfaqe?[2s] shfaqëm?[1p] shfaqët?[2p] shfaqën?[3p] shfaq[3s]
+  NAimper shfaqu[2s] shfaquni[2p]
+përpiqem (cons, NA=only) to try, to strive
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  përpjekur
+  NApres përpiqem[1s] përpiqesh[2s] përpiqet[3s] përpiqemi[1p] përpiqeni[2p] përpiqen[3p]
+  NAimpf përpiqesha[1s] përpiqeshe[2s] përpiqej[3s] përpiqeshim[1p] përpiqeshit[2p] përpiqeshin[3p]
+  NAaor  përpoqa[1s] përpoqe[2s] përpoqëm[1p] përpoqët[2p] përpoqën[3p] përpoq[3s]
+  NAimper përpiqu[2s] përpiquni[2p]
+mundem (cons, NA=only) to be able, can
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  mundur
+  NApres mundem[1s] mundesh[2s] mundet[3s] mundemi[1p] mundeni[2p] munden[3p]
+  NAimpf mundesha[1s] mundeshe[2s] mundej[3s] mundeshim[1p] mundeshit[2p] mundeshin[3p]
+  NAaor  munda?[1s] munde?[2s] mundëm?[1p] mundët?[2p] mundën?[3p] mund[3s]
+  NAimper mundu[2s] munduni[2p]
+punoj (oj, NA=true) to work
+  pres  punoj[1s] punon[2,3s] punojmë[1p] punoni[2p] punojnë[3p]
+  subj  punosh[2s] punojë[3s]
+  impf  punoja[1s] punoje[2s] punonte[3s] punonim[1p] punonit[2p] punonin[3p]
+  aor   punova[1s] punove[2s] punoi[3s] punuam[1p] punuat[2p] punuan[3p]
+  imper puno[2s] punoni[2p]
+  opt   punofsha[1s] punofsh[2s] punoftë[3s] punofshim[1p] punofshi[2p] punofshin[3p]
+  adm   punuakam[1s] punuake[2s] punuaka[3s] punuakemi[1p] punuakeni[2p] punuakan[3p]
+  ptcp  punuar
+  NApres punohem[1s] punohesh[2s] punohet[3s] punohemi[1p] punoheni[2p] punohen[3p]
+  NAimpf punohesha[1s] punoheshe[2s] punohej[3s] punoheshim[1p] punoheshit[2p] punoheshin[3p]
+  NAaor  punua[3s]
+  NAimper punohu[2s] punohuni[2p]
+mësoj (oj) to learn, to teach
+  pres  mësoj[1s] mëson[2,3s] mësojmë[1p] mësoni[2p] mësojnë[3p]
+  subj  mësosh[2s] mësojë[3s]
+  impf  mësoja[1s] mësoje[2s] mësonte[3s] mësonim[1p] mësonit[2p] mësonin[3p]
+  aor   mësova[1s] mësove[2s] mësoi[3s] mësuam[1p] mësuat[2p] mësuan[3p]
+  imper mëso[2s] mësoni[2p]
+  opt   mësofsha[1s] mësofsh[2s] mësoftë[3s] mësofshim[1p] mësofshi[2p] mësofshin[3p]
+  adm   mësuakam[1s] mësuake[2s] mësuaka[3s] mësuakemi[1p] mësuakeni[2p] mësuakan[3p]
+  ptcp  mësuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+lexoj (oj, NA=true) to read
+  pres  lexoj[1s] lexon[2,3s] lexojmë[1p] lexoni[2p] lexojnë[3p]
+  subj  lexosh[2s] lexojë[3s]
+  impf  lexoja[1s] lexoje[2s] lexonte[3s] lexonim[1p] lexonit[2p] lexonin[3p]
+  aor   lexova[1s] lexove[2s] lexoi[3s] lexuam[1p] lexuat[2p] lexuan[3p]
+  imper lexo[2s] lexoni[2p]
+  opt   lexofsha[1s] lexofsh[2s] lexoftë[3s] lexofshim[1p] lexofshi[2p] lexofshin[3p]
+  adm   lexuakam[1s] lexuake[2s] lexuaka[3s] lexuakemi[1p] lexuakeni[2p] lexuakan[3p]
+  ptcp  lexuar
+  NApres lexohem[1s] lexohesh[2s] lexohet[3s] lexohemi[1p] lexoheni[2p] lexohen[3p]
+  NAimpf lexohesha[1s] lexoheshe[2s] lexohej[3s] lexoheshim[1p] lexoheshit[2p] lexoheshin[3p]
+  NAaor  lexua[3s]
+  NAimper lexohu[2s] lexohuni[2p]
+dëgjoj (oj, NA=true) to hear, to listen
+  pres  dëgjoj[1s] dëgjon[2,3s] dëgjojmë[1p] dëgjoni[2p] dëgjojnë[3p]
+  subj  dëgjosh[2s] dëgjojë[3s]
+  impf  dëgjoja[1s] dëgjoje[2s] dëgjonte[3s] dëgjonim[1p] dëgjonit[2p] dëgjonin[3p]
+  aor   dëgjova[1s] dëgjove[2s] dëgjoi[3s] dëgjuam[1p] dëgjuat[2p] dëgjuan[3p]
+  imper dëgjo[2s] dëgjoni[2p]
+  opt   dëgjofsha[1s] dëgjofsh[2s] dëgjoftë[3s] dëgjofshim[1p] dëgjofshi[2p] dëgjofshin[3p]
+  adm   dëgjuakam[1s] dëgjuake[2s] dëgjuaka[3s] dëgjuakemi[1p] dëgjuakeni[2p] dëgjuakan[3p]
+  ptcp  dëgjuar
+  NApres dëgjohem[1s] dëgjohesh[2s] dëgjohet[3s] dëgjohemi[1p] dëgjoheni[2p] dëgjohen[3p]
+  NAimpf dëgjohesha[1s] dëgjoheshe[2s] dëgjohej[3s] dëgjoheshim[1p] dëgjoheshit[2p] dëgjoheshin[3p]
+  NAaor  dëgjua[3s]
+  NAimper dëgjohu[2s] dëgjohuni[2p]
+kuptoj (oj, NA=true) to understand
+  pres  kuptoj[1s] kupton[2,3s] kuptojmë[1p] kuptoni[2p] kuptojnë[3p]
+  subj  kuptosh[2s] kuptojë[3s]
+  impf  kuptoja[1s] kuptoje[2s] kuptonte[3s] kuptonim[1p] kuptonit[2p] kuptonin[3p]
+  aor   kuptova[1s] kuptove[2s] kuptoi[3s] kuptuam[1p] kuptuat[2p] kuptuan[3p]
+  imper kupto[2s] kuptoni[2p]
+  opt   kuptofsha[1s] kuptofsh[2s] kuptoftë[3s] kuptofshim[1p] kuptofshi[2p] kuptofshin[3p]
+  adm   kuptuakam[1s] kuptuake[2s] kuptuaka[3s] kuptuakemi[1p] kuptuakeni[2p] kuptuakan[3p]
+  ptcp  kuptuar
+  NApres kuptohem[1s] kuptohesh[2s] kuptohet[3s] kuptohemi[1p] kuptoheni[2p] kuptohen[3p]
+  NAimpf kuptohesha[1s] kuptoheshe[2s] kuptohej[3s] kuptoheshim[1p] kuptoheshit[2p] kuptoheshin[3p]
+  NAaor  kuptua[3s]
+  NAimper kuptohu[2s] kuptohuni[2p]
+mendoj (oj) to think
+  pres  mendoj[1s] mendon[2,3s] mendojmë[1p] mendoni[2p] mendojnë[3p]
+  subj  mendosh[2s] mendojë[3s]
+  impf  mendoja[1s] mendoje[2s] mendonte[3s] mendonim[1p] mendonit[2p] mendonin[3p]
+  aor   mendova[1s] mendove[2s] mendoi[3s] menduam[1p] menduat[2p] menduan[3p]
+  imper mendo[2s] mendoni[2p]
+  opt   mendofsha[1s] mendofsh[2s] mendoftë[3s] mendofshim[1p] mendofshi[2p] mendofshin[3p]
+  adm   menduakam[1s] menduake[2s] menduaka[3s] menduakemi[1p] menduakeni[2p] menduakan[3p]
+  ptcp  menduar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+kujtoj (oj) to remember
+  pres  kujtoj[1s] kujton[2,3s] kujtojmë[1p] kujtoni[2p] kujtojnë[3p]
+  subj  kujtosh[2s] kujtojë[3s]
+  impf  kujtoja[1s] kujtoje[2s] kujtonte[3s] kujtonim[1p] kujtonit[2p] kujtonin[3p]
+  aor   kujtova[1s] kujtove[2s] kujtoi[3s] kujtuam[1p] kujtuat[2p] kujtuan[3p]
+  imper kujto[2s] kujtoni[2p]
+  opt   kujtofsha[1s] kujtofsh[2s] kujtoftë[3s] kujtofshim[1p] kujtofshi[2p] kujtofshin[3p]
+  adm   kujtuakam[1s] kujtuake[2s] kujtuaka[3s] kujtuakemi[1p] kujtuakeni[2p] kujtuakan[3p]
+  ptcp  kujtuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+harroj (oj) to forget
+  pres  harroj[1s] harron[2,3s] harrojmë[1p] harroni[2p] harrojnë[3p]
+  subj  harrosh[2s] harrojë[3s]
+  impf  harroja[1s] harroje[2s] harronte[3s] harronim[1p] harronit[2p] harronin[3p]
+  aor   harrova[1s] harrove[2s] harroi[3s] harruam[1p] harruat[2p] harruan[3p]
+  imper harro[2s] harroni[2p]
+  opt   harrofsha[1s] harrofsh[2s] harroftë[3s] harrofshim[1p] harrofshi[2p] harrofshin[3p]
+  adm   harruakam[1s] harruake[2s] harruaka[3s] harruakemi[1p] harruakeni[2p] harruakan[3p]
+  ptcp  harruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+filloj (oj) to begin
+  pres  filloj[1s] fillon[2,3s] fillojmë[1p] filloni[2p] fillojnë[3p]
+  subj  fillosh[2s] fillojë[3s]
+  impf  filloja[1s] filloje[2s] fillonte[3s] fillonim[1p] fillonit[2p] fillonin[3p]
+  aor   fillova[1s] fillove[2s] filloi[3s] filluam[1p] filluat[2p] filluan[3p]
+  imper fillo[2s] filloni[2p]
+  opt   fillofsha[1s] fillofsh[2s] filloftë[3s] fillofshim[1p] fillofshi[2p] fillofshin[3p]
+  adm   filluakam[1s] filluake[2s] filluaka[3s] filluakemi[1p] filluakeni[2p] filluakan[3p]
+  ptcp  filluar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+mbaroj (oj) to finish
+  pres  mbaroj[1s] mbaron[2,3s] mbarojmë[1p] mbaroni[2p] mbarojnë[3p]
+  subj  mbarosh[2s] mbarojë[3s]
+  impf  mbaroja[1s] mbaroje[2s] mbaronte[3s] mbaronim[1p] mbaronit[2p] mbaronin[3p]
+  aor   mbarova[1s] mbarove[2s] mbaroi[3s] mbaruam[1p] mbaruat[2p] mbaruan[3p]
+  imper mbaro[2s] mbaroni[2p]
+  opt   mbarofsha[1s] mbarofsh[2s] mbaroftë[3s] mbarofshim[1p] mbarofshi[2p] mbarofshin[3p]
+  adm   mbaruakam[1s] mbaruake[2s] mbaruaka[3s] mbaruakemi[1p] mbaruakeni[2p] mbaruakan[3p]
+  ptcp  mbaruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+jetoj (oj) to live
+  pres  jetoj[1s] jeton[2,3s] jetojmë[1p] jetoni[2p] jetojnë[3p]
+  subj  jetosh[2s] jetojë[3s]
+  impf  jetoja[1s] jetoje[2s] jetonte[3s] jetonim[1p] jetonit[2p] jetonin[3p]
+  aor   jetova[1s] jetove[2s] jetoi[3s] jetuam[1p] jetuat[2p] jetuan[3p]
+  imper jeto[2s] jetoni[2p]
+  opt   jetofsha[1s] jetofsh[2s] jetoftë[3s] jetofshim[1p] jetofshi[2p] jetofshin[3p]
+  adm   jetuakam[1s] jetuake[2s] jetuaka[3s] jetuakemi[1p] jetuakeni[2p] jetuakan[3p]
+  ptcp  jetuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ndihmoj (oj) to help
+  pres  ndihmoj[1s] ndihmon[2,3s] ndihmojmë[1p] ndihmoni[2p] ndihmojnë[3p]
+  subj  ndihmosh[2s] ndihmojë[3s]
+  impf  ndihmoja[1s] ndihmoje[2s] ndihmonte[3s] ndihmonim[1p] ndihmonit[2p] ndihmonin[3p]
+  aor   ndihmova[1s] ndihmove[2s] ndihmoi[3s] ndihmuam[1p] ndihmuat[2p] ndihmuan[3p]
+  imper ndihmo[2s] ndihmoni[2p]
+  opt   ndihmofsha[1s] ndihmofsh[2s] ndihmoftë[3s] ndihmofshim[1p] ndihmofshi[2p] ndihmofshin[3p]
+  adm   ndihmuakam[1s] ndihmuake[2s] ndihmuaka[3s] ndihmuakemi[1p] ndihmuakeni[2p] ndihmuakan[3p]
+  ptcp  ndihmuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shkoj (oj) to go
+  pres  shkoj[1s] shkon[2,3s] shkojmë[1p] shkoni[2p] shkojnë[3p]
+  subj  shkosh[2s] shkojë[3s]
+  impf  shkoja[1s] shkoje[2s] shkonte[3s] shkonim[1p] shkonit[2p] shkonin[3p]
+  aor   shkova[1s] shkove[2s] shkoi[3s] shkuam[1p] shkuat[2p] shkuan[3p]
+  imper shko[2s] shkoni[2p]
+  opt   shkofsha[1s] shkofsh[2s] shkoftë[3s] shkofshim[1p] shkofshi[2p] shkofshin[3p]
+  adm   shkuakam[1s] shkuake[2s] shkuaka[3s] shkuakemi[1p] shkuakeni[2p] shkuakan[3p]
+  ptcp  shkuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+kërkoj (oj, NA=true) to look for, to ask for
+  pres  kërkoj[1s] kërkon[2,3s] kërkojmë[1p] kërkoni[2p] kërkojnë[3p]
+  subj  kërkosh[2s] kërkojë[3s]
+  impf  kërkoja[1s] kërkoje[2s] kërkonte[3s] kërkonim[1p] kërkonit[2p] kërkonin[3p]
+  aor   kërkova[1s] kërkove[2s] kërkoi[3s] kërkuam[1p] kërkuat[2p] kërkuan[3p]
+  imper kërko[2s] kërkoni[2p]
+  opt   kërkofsha[1s] kërkofsh[2s] kërkoftë[3s] kërkofshim[1p] kërkofshi[2p] kërkofshin[3p]
+  adm   kërkuakam[1s] kërkuake[2s] kërkuaka[3s] kërkuakemi[1p] kërkuakeni[2p] kërkuakan[3p]
+  ptcp  kërkuar
+  NApres kërkohem[1s] kërkohesh[2s] kërkohet[3s] kërkohemi[1p] kërkoheni[2p] kërkohen[3p]
+  NAimpf kërkohesha[1s] kërkoheshe[2s] kërkohej[3s] kërkoheshim[1p] kërkoheshit[2p] kërkoheshin[3p]
+  NAaor  kërkua[3s]
+  NAimper kërkohu[2s] kërkohuni[2p]
+pranoj (oj) to accept
+  pres  pranoj[1s] pranon[2,3s] pranojmë[1p] pranoni[2p] pranojnë[3p]
+  subj  pranosh[2s] pranojë[3s]
+  impf  pranoja[1s] pranoje[2s] pranonte[3s] pranonim[1p] pranonit[2p] pranonin[3p]
+  aor   pranova[1s] pranove[2s] pranoi[3s] pranuam[1p] pranuat[2p] pranuan[3p]
+  imper prano[2s] pranoni[2p]
+  opt   pranofsha[1s] pranofsh[2s] pranoftë[3s] pranofshim[1p] pranofshi[2p] pranofshin[3p]
+  adm   pranuakam[1s] pranuake[2s] pranuaka[3s] pranuakemi[1p] pranuakeni[2p] pranuakan[3p]
+  ptcp  pranuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shtoj (oj) to add
+  pres  shtoj[1s] shton[2,3s] shtojmë[1p] shtoni[2p] shtojnë[3p]
+  subj  shtosh[2s] shtojë[3s]
+  impf  shtoja[1s] shtoje[2s] shtonte[3s] shtonim[1p] shtonit[2p] shtonin[3p]
+  aor   shtova[1s] shtove[2s] shtoi[3s] shtuam[1p] shtuat[2p] shtuan[3p]
+  imper shto[2s] shtoni[2p]
+  opt   shtofsha[1s] shtofsh[2s] shtoftë[3s] shtofshim[1p] shtofshi[2p] shtofshin[3p]
+  adm   shtuakam[1s] shtuake[2s] shtuaka[3s] shtuakemi[1p] shtuakeni[2p] shtuakan[3p]
+  ptcp  shtuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ndryshoj (oj) to change
+  pres  ndryshoj[1s] ndryshon[2,3s] ndryshojmë[1p] ndryshoni[2p] ndryshojnë[3p]
+  subj  ndryshosh[2s] ndryshojë[3s]
+  impf  ndryshoja[1s] ndryshoje[2s] ndryshonte[3s] ndryshonim[1p] ndryshonit[2p] ndryshonin[3p]
+  aor   ndryshova[1s] ndryshove[2s] ndryshoi[3s] ndryshuam[1p] ndryshuat[2p] ndryshuan[3p]
+  imper ndrysho[2s] ndryshoni[2p]
+  opt   ndryshofsha[1s] ndryshofsh[2s] ndryshoftë[3s] ndryshofshim[1p] ndryshofshi[2p] ndryshofshin[3p]
+  adm   ndryshuakam[1s] ndryshuake[2s] ndryshuaka[3s] ndryshuakemi[1p] ndryshuakeni[2p] ndryshuakan[3p]
+  ptcp  ndryshuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ndërroj (oj) to change, to swap
+  pres  ndërroj[1s] ndërron[2,3s] ndërrojmë[1p] ndërroni[2p] ndërrojnë[3p]
+  subj  ndërrosh[2s] ndërrojë[3s]
+  impf  ndërroja[1s] ndërroje[2s] ndërronte[3s] ndërronim[1p] ndërronit[2p] ndërronin[3p]
+  aor   ndërrova[1s] ndërrove[2s] ndërroi[3s] ndërruam[1p] ndërruat[2p] ndërruan[3p]
+  imper ndërro[2s] ndërroni[2p]
+  opt   ndërrofsha[1s] ndërrofsh[2s] ndërroftë[3s] ndërrofshim[1p] ndërrofshi[2p] ndërrofshin[3p]
+  adm   ndërruakam[1s] ndërruake[2s] ndërruaka[3s] ndërruakemi[1p] ndërruakeni[2p] ndërruakan[3p]
+  ptcp  ndërruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+pushoj (oj) to rest
+  pres  pushoj[1s] pushon[2,3s] pushojmë[1p] pushoni[2p] pushojnë[3p]
+  subj  pushosh[2s] pushojë[3s]
+  impf  pushoja[1s] pushoje[2s] pushonte[3s] pushonim[1p] pushonit[2p] pushonin[3p]
+  aor   pushova[1s] pushove[2s] pushoi[3s] pushuam[1p] pushuat[2p] pushuan[3p]
+  imper pusho[2s] pushoni[2p]
+  opt   pushofsha[1s] pushofsh[2s] pushoftë[3s] pushofshim[1p] pushofshi[2p] pushofshin[3p]
+  adm   pushuakam[1s] pushuake[2s] pushuaka[3s] pushuakemi[1p] pushuakeni[2p] pushuakan[3p]
+  ptcp  pushuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shikoj (oj) to look at, to watch
+  pres  shikoj[1s] shikon[2,3s] shikojmë[1p] shikoni[2p] shikojnë[3p]
+  subj  shikosh[2s] shikojë[3s]
+  impf  shikoja[1s] shikoje[2s] shikonte[3s] shikonim[1p] shikonit[2p] shikonin[3p]
+  aor   shikova[1s] shikove[2s] shikoi[3s] shikuam[1p] shikuat[2p] shikuan[3p]
+  imper shiko[2s] shikoni[2p]
+  opt   shikofsha[1s] shikofsh[2s] shikoftë[3s] shikofshim[1p] shikofshi[2p] shikofshin[3p]
+  adm   shikuakam[1s] shikuake[2s] shikuaka[3s] shikuakemi[1p] shikuakeni[2p] shikuakan[3p]
+  ptcp  shikuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+pastroj (oj) to clean
+  pres  pastroj[1s] pastron[2,3s] pastrojmë[1p] pastroni[2p] pastrojnë[3p]
+  subj  pastrosh[2s] pastrojë[3s]
+  impf  pastroja[1s] pastroje[2s] pastronte[3s] pastronim[1p] pastronit[2p] pastronin[3p]
+  aor   pastrova[1s] pastrove[2s] pastroi[3s] pastruam[1p] pastruat[2p] pastruan[3p]
+  imper pastro[2s] pastroni[2p]
+  opt   pastrofsha[1s] pastrofsh[2s] pastroftë[3s] pastrofshim[1p] pastrofshi[2p] pastrofshin[3p]
+  adm   pastruakam[1s] pastruake[2s] pastruaka[3s] pastruakemi[1p] pastruakeni[2p] pastruakan[3p]
+  ptcp  pastruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+notoj (oj) to swim
+  pres  notoj[1s] noton[2,3s] notojmë[1p] notoni[2p] notojnë[3p]
+  subj  notosh[2s] notojë[3s]
+  impf  notoja[1s] notoje[2s] notonte[3s] notonim[1p] notonit[2p] notonin[3p]
+  aor   notova[1s] notove[2s] notoi[3s] notuam[1p] notuat[2p] notuan[3p]
+  imper noto[2s] notoni[2p]
+  opt   notofsha[1s] notofsh[2s] notoftë[3s] notofshim[1p] notofshi[2p] notofshin[3p]
+  adm   notuakam[1s] notuake[2s] notuaka[3s] notuakemi[1p] notuakeni[2p] notuakan[3p]
+  ptcp  notuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+këndoj (oj) to sing
+  pres  këndoj[1s] këndon[2,3s] këndojmë[1p] këndoni[2p] këndojnë[3p]
+  subj  këndosh[2s] këndojë[3s]
+  impf  këndoja[1s] këndoje[2s] këndonte[3s] këndonim[1p] këndonit[2p] këndonin[3p]
+  aor   këndova[1s] këndove[2s] këndoi[3s] kënduam[1p] kënduat[2p] kënduan[3p]
+  imper këndo[2s] këndoni[2p]
+  opt   këndofsha[1s] këndofsh[2s] këndoftë[3s] këndofshim[1p] këndofshi[2p] këndofshin[3p]
+  adm   kënduakam[1s] kënduake[2s] kënduaka[3s] kënduakemi[1p] kënduakeni[2p] kënduakan[3p]
+  ptcp  kënduar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shpresoj (oj) to hope
+  pres  shpresoj[1s] shpreson[2,3s] shpresojmë[1p] shpresoni[2p] shpresojnë[3p]
+  subj  shpresosh[2s] shpresojë[3s]
+  impf  shpresoja[1s] shpresoje[2s] shpresonte[3s] shpresonim[1p] shpresonit[2p] shpresonin[3p]
+  aor   shpresova[1s] shpresove[2s] shpresoi[3s] shpresuam[1p] shpresuat[2p] shpresuan[3p]
+  imper shpreso[2s] shpresoni[2p]
+  opt   shpresofsha[1s] shpresofsh[2s] shpresoftë[3s] shpresofshim[1p] shpresofshi[2p] shpresofshin[3p]
+  adm   shpresuakam[1s] shpresuake[2s] shpresuaka[3s] shpresuakemi[1p] shpresuakeni[2p] shpresuakan[3p]
+  ptcp  shpresuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+dëshiroj (oj) to wish, to desire
+  pres  dëshiroj[1s] dëshiron[2,3s] dëshirojmë[1p] dëshironi[2p] dëshirojnë[3p]
+  subj  dëshirosh[2s] dëshirojë[3s]
+  impf  dëshiroja[1s] dëshiroje[2s] dëshironte[3s] dëshironim[1p] dëshironit[2p] dëshironin[3p]
+  aor   dëshirova[1s] dëshirove[2s] dëshiroi[3s] dëshiruam[1p] dëshiruat[2p] dëshiruan[3p]
+  imper dëshiro[2s] dëshironi[2p]
+  opt   dëshirofsha[1s] dëshirofsh[2s] dëshiroftë[3s] dëshirofshim[1p] dëshirofshi[2p] dëshirofshin[3p]
+  adm   dëshiruakam[1s] dëshiruake[2s] dëshiruaka[3s] dëshiruakemi[1p] dëshiruakeni[2p] dëshiruakan[3p]
+  ptcp  dëshiruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+telefonoj (oj) to telephone
+  pres  telefonoj[1s] telefonon[2,3s] telefonojmë[1p] telefononi[2p] telefonojnë[3p]
+  subj  telefonosh[2s] telefonojë[3s]
+  impf  telefonoja[1s] telefonoje[2s] telefononte[3s] telefononim[1p] telefononit[2p] telefononin[3p]
+  aor   telefonova[1s] telefonove[2s] telefonoi[3s] telefonuam[1p] telefonuat[2p] telefonuan[3p]
+  imper telefono[2s] telefononi[2p]
+  opt   telefonofsha[1s] telefonofsh[2s] telefonoftë[3s] telefonofshim[1p] telefonofshi[2p] telefonofshin[3p]
+  adm   telefonuakam[1s] telefonuake[2s] telefonuaka[3s] telefonuakemi[1p] telefonuakeni[2p] telefonuakan[3p]
+  ptcp  telefonuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shpjegoj (oj) to explain
+  pres  shpjegoj[1s] shpjegon[2,3s] shpjegojmë[1p] shpjegoni[2p] shpjegojnë[3p]
+  subj  shpjegosh[2s] shpjegojë[3s]
+  impf  shpjegoja[1s] shpjegoje[2s] shpjegonte[3s] shpjegonim[1p] shpjegonit[2p] shpjegonin[3p]
+  aor   shpjegova[1s] shpjegove[2s] shpjegoi[3s] shpjeguam[1p] shpjeguat[2p] shpjeguan[3p]
+  imper shpjego[2s] shpjegoni[2p]
+  opt   shpjegofsha[1s] shpjegofsh[2s] shpjegoftë[3s] shpjegofshim[1p] shpjegofshi[2p] shpjegofshin[3p]
+  adm   shpjeguakam[1s] shpjeguake[2s] shpjeguaka[3s] shpjeguakemi[1p] shpjeguakeni[2p] shpjeguakan[3p]
+  ptcp  shpjeguar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ndërtoj (oj, NA=true) to build
+  pres  ndërtoj[1s] ndërton[2,3s] ndërtojmë[1p] ndërtoni[2p] ndërtojnë[3p]
+  subj  ndërtosh[2s] ndërtojë[3s]
+  impf  ndërtoja[1s] ndërtoje[2s] ndërtonte[3s] ndërtonim[1p] ndërtonit[2p] ndërtonin[3p]
+  aor   ndërtova[1s] ndërtove[2s] ndërtoi[3s] ndërtuam[1p] ndërtuat[2p] ndërtuan[3p]
+  imper ndërto[2s] ndërtoni[2p]
+  opt   ndërtofsha[1s] ndërtofsh[2s] ndërtoftë[3s] ndërtofshim[1p] ndërtofshi[2p] ndërtofshin[3p]
+  adm   ndërtuakam[1s] ndërtuake[2s] ndërtuaka[3s] ndërtuakemi[1p] ndërtuakeni[2p] ndërtuakan[3p]
+  ptcp  ndërtuar
+  NApres ndërtohem[1s] ndërtohesh[2s] ndërtohet[3s] ndërtohemi[1p] ndërtoheni[2p] ndërtohen[3p]
+  NAimpf ndërtohesha[1s] ndërtoheshe[2s] ndërtohej[3s] ndërtoheshim[1p] ndërtoheshit[2p] ndërtoheshin[3p]
+  NAaor  ndërtua[3s]
+  NAimper ndërtohu[2s] ndërtohuni[2p]
+organizoj (oj, NA=true) to organise
+  pres  organizoj[1s] organizon[2,3s] organizojmë[1p] organizoni[2p] organizojnë[3p]
+  subj  organizosh[2s] organizojë[3s]
+  impf  organizoja[1s] organizoje[2s] organizonte[3s] organizonim[1p] organizonit[2p] organizonin[3p]
+  aor   organizova[1s] organizove[2s] organizoi[3s] organizuam[1p] organizuat[2p] organizuan[3p]
+  imper organizo[2s] organizoni[2p]
+  opt   organizofsha[1s] organizofsh[2s] organizoftë[3s] organizofshim[1p] organizofshi[2p] organizofshin[3p]
+  adm   organizuakam[1s] organizuake[2s] organizuaka[3s] organizuakemi[1p] organizuakeni[2p] organizuakan[3p]
+  ptcp  organizuar
+  NApres organizohem[1s] organizohesh[2s] organizohet[3s] organizohemi[1p] organizoheni[2p] organizohen[3p]
+  NAimpf organizohesha[1s] organizoheshe[2s] organizohej[3s] organizoheshim[1p] organizoheshit[2p] organizoheshin[3p]
+  NAaor  organizua[3s]
+  NAimper organizohu[2s] organizohuni[2p]
+dërgoj (oj, NA=true) to send
+  pres  dërgoj[1s] dërgon[2,3s] dërgojmë[1p] dërgoni[2p] dërgojnë[3p]
+  subj  dërgosh[2s] dërgojë[3s]
+  impf  dërgoja[1s] dërgoje[2s] dërgonte[3s] dërgonim[1p] dërgonit[2p] dërgonin[3p]
+  aor   dërgova[1s] dërgove[2s] dërgoi[3s] dërguam[1p] dërguat[2p] dërguan[3p]
+  imper dërgo[2s] dërgoni[2p]
+  opt   dërgofsha[1s] dërgofsh[2s] dërgoftë[3s] dërgofshim[1p] dërgofshi[2p] dërgofshin[3p]
+  adm   dërguakam[1s] dërguake[2s] dërguaka[3s] dërguakemi[1p] dërguakeni[2p] dërguakan[3p]
+  ptcp  dërguar
+  NApres dërgohem[1s] dërgohesh[2s] dërgohet[3s] dërgohemi[1p] dërgoheni[2p] dërgohen[3p]
+  NAimpf dërgohesha[1s] dërgoheshe[2s] dërgohej[3s] dërgoheshim[1p] dërgoheshit[2p] dërgoheshin[3p]
+  NAaor  dërgua[3s]
+  NAimper dërgohu[2s] dërgohuni[2p]
+çoj (oj) to take, to send
+  pres  çoj[1s] çon[2,3s] çojmë[1p] çoni[2p] çojnë[3p]
+  subj  çosh[2s] çojë[3s]
+  impf  çoja[1s] çoje[2s] çonte[3s] çonim[1p] çonit[2p] çonin[3p]
+  aor   çova[1s] çove[2s] çoi[3s] çuam[1p] çuat[2p] çuan[3p]
+  imper ço[2s] çoni[2p]
+  opt   çofsha[1s] çofsh[2s] çoftë[3s] çofshim[1p] çofshi[2p] çofshin[3p]
+  adm   çuakam[1s] çuake[2s] çuaka[3s] çuakemi[1p] çuakeni[2p] çuakan[3p]
+  ptcp  çuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+tregoj (oj) to show, to tell
+  pres  tregoj[1s] tregon[2,3s] tregojmë[1p] tregoni[2p] tregojnë[3p]
+  subj  tregosh[2s] tregojë[3s]
+  impf  tregoja[1s] tregoje[2s] tregonte[3s] tregonim[1p] tregonit[2p] tregonin[3p]
+  aor   tregova[1s] tregove[2s] tregoi[3s] treguam[1p] treguat[2p] treguan[3p]
+  imper trego[2s] tregoni[2p]
+  opt   tregofsha[1s] tregofsh[2s] tregoftë[3s] tregofshim[1p] tregofshi[2p] tregofshin[3p]
+  adm   treguakam[1s] treguake[2s] treguaka[3s] treguakemi[1p] treguakeni[2p] treguakan[3p]
+  ptcp  treguar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+bisedoj (oj) to talk, to converse
+  pres  bisedoj[1s] bisedon[2,3s] bisedojmë[1p] bisedoni[2p] bisedojnë[3p]
+  subj  bisedosh[2s] bisedojë[3s]
+  impf  bisedoja[1s] bisedoje[2s] bisedonte[3s] bisedonim[1p] bisedonit[2p] bisedonin[3p]
+  aor   bisedova[1s] bisedove[2s] bisedoi[3s] biseduam[1p] biseduat[2p] biseduan[3p]
+  imper bisedo[2s] bisedoni[2p]
+  opt   bisedofsha[1s] bisedofsh[2s] bisedoftë[3s] bisedofshim[1p] bisedofshi[2p] bisedofshin[3p]
+  adm   biseduakam[1s] biseduake[2s] biseduaka[3s] biseduakemi[1p] biseduakeni[2p] biseduakan[3p]
+  ptcp  biseduar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vizitoj (oj) to visit
+  pres  vizitoj[1s] viziton[2,3s] vizitojmë[1p] vizitoni[2p] vizitojnë[3p]
+  subj  vizitosh[2s] vizitojë[3s]
+  impf  vizitoja[1s] vizitoje[2s] vizitonte[3s] vizitonim[1p] vizitonit[2p] vizitonin[3p]
+  aor   vizitova[1s] vizitove[2s] vizitoi[3s] vizituam[1p] vizituat[2p] vizituan[3p]
+  imper vizito[2s] vizitoni[2p]
+  opt   vizitofsha[1s] vizitofsh[2s] vizitoftë[3s] vizitofshim[1p] vizitofshi[2p] vizitofshin[3p]
+  adm   vizituakam[1s] vizituake[2s] vizituaka[3s] vizituakemi[1p] vizituakeni[2p] vizituakan[3p]
+  ptcp  vizituar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+udhëtoj (oj) to travel
+  pres  udhëtoj[1s] udhëton[2,3s] udhëtojmë[1p] udhëtoni[2p] udhëtojnë[3p]
+  subj  udhëtosh[2s] udhëtojë[3s]
+  impf  udhëtoja[1s] udhëtoje[2s] udhëtonte[3s] udhëtonim[1p] udhëtonit[2p] udhëtonin[3p]
+  aor   udhëtova[1s] udhëtove[2s] udhëtoi[3s] udhëtuam[1p] udhëtuat[2p] udhëtuan[3p]
+  imper udhëto[2s] udhëtoni[2p]
+  opt   udhëtofsha[1s] udhëtofsh[2s] udhëtoftë[3s] udhëtofshim[1p] udhëtofshi[2p] udhëtofshin[3p]
+  adm   udhëtuakam[1s] udhëtuake[2s] udhëtuaka[3s] udhëtuakemi[1p] udhëtuakeni[2p] udhëtuakan[3p]
+  ptcp  udhëtuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+festoj (oj) to celebrate
+  pres  festoj[1s] feston[2,3s] festojmë[1p] festoni[2p] festojnë[3p]
+  subj  festosh[2s] festojë[3s]
+  impf  festoja[1s] festoje[2s] festonte[3s] festonim[1p] festonit[2p] festonin[3p]
+  aor   festova[1s] festove[2s] festoi[3s] festuam[1p] festuat[2p] festuan[3p]
+  imper festo[2s] festoni[2p]
+  opt   festofsha[1s] festofsh[2s] festoftë[3s] festofshim[1p] festofshi[2p] festofshin[3p]
+  adm   festuakam[1s] festuake[2s] festuaka[3s] festuakemi[1p] festuakeni[2p] festuakan[3p]
+  ptcp  festuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ftoj (oj) to invite
+  pres  ftoj[1s] fton[2,3s] ftojmë[1p] ftoni[2p] ftojnë[3p]
+  subj  ftosh[2s] ftojë[3s]
+  impf  ftoja[1s] ftoje[2s] ftonte[3s] ftonim[1p] ftonit[2p] ftonin[3p]
+  aor   ftova[1s] ftove[2s] ftoi[3s] ftuam[1p] ftuat[2p] ftuan[3p]
+  imper fto[2s] ftoni[2p]
+  opt   ftofsha[1s] ftofsh[2s] ftoftë[3s] ftofshim[1p] ftofshi[2p] ftofshin[3p]
+  adm   ftuakam[1s] ftuake[2s] ftuaka[3s] ftuakemi[1p] ftuakeni[2p] ftuakan[3p]
+  ptcp  ftuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+takoj (oj) to meet
+  pres  takoj[1s] takon[2,3s] takojmë[1p] takoni[2p] takojnë[3p]
+  subj  takosh[2s] takojë[3s]
+  impf  takoja[1s] takoje[2s] takonte[3s] takonim[1p] takonit[2p] takonin[3p]
+  aor   takova[1s] takove[2s] takoi[3s] takuam[1p] takuat[2p] takuan[3p]
+  imper tako[2s] takoni[2p]
+  opt   takofsha[1s] takofsh[2s] takoftë[3s] takofshim[1p] takofshi[2p] takofshin[3p]
+  adm   takuakam[1s] takuake[2s] takuaka[3s] takuakemi[1p] takuakeni[2p] takuakan[3p]
+  ptcp  takuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+dashuroj (oj) to love
+  pres  dashuroj[1s] dashuron[2,3s] dashurojmë[1p] dashuroni[2p] dashurojnë[3p]
+  subj  dashurosh[2s] dashurojë[3s]
+  impf  dashuroja[1s] dashuroje[2s] dashuronte[3s] dashuronim[1p] dashuronit[2p] dashuronin[3p]
+  aor   dashurova[1s] dashurove[2s] dashuroi[3s] dashuruam[1p] dashuruat[2p] dashuruan[3p]
+  imper dashuro[2s] dashuroni[2p]
+  opt   dashurofsha[1s] dashurofsh[2s] dashuroftë[3s] dashurofshim[1p] dashurofshi[2p] dashurofshin[3p]
+  adm   dashuruakam[1s] dashuruake[2s] dashuruaka[3s] dashuruakemi[1p] dashuruakeni[2p] dashuruakan[3p]
+  ptcp  dashuruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ëndërroj (oj) to dream
+  pres  ëndërroj[1s] ëndërron[2,3s] ëndërrojmë[1p] ëndërroni[2p] ëndërrojnë[3p]
+  subj  ëndërrosh[2s] ëndërrojë[3s]
+  impf  ëndërroja[1s] ëndërroje[2s] ëndërronte[3s] ëndërronim[1p] ëndërronit[2p] ëndërronin[3p]
+  aor   ëndërrova[1s] ëndërrove[2s] ëndërroi[3s] ëndërruam[1p] ëndërruat[2p] ëndërruan[3p]
+  imper ëndërro[2s] ëndërroni[2p]
+  opt   ëndërrofsha[1s] ëndërrofsh[2s] ëndërroftë[3s] ëndërrofshim[1p] ëndërrofshi[2p] ëndërrofshin[3p]
+  adm   ëndërruakam[1s] ëndërruake[2s] ëndërruaka[3s] ëndërruakemi[1p] ëndërruakeni[2p] ëndërruakan[3p]
+  ptcp  ëndërruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+këshilloj (oj) to advise
+  pres  këshilloj[1s] këshillon[2,3s] këshillojmë[1p] këshilloni[2p] këshillojnë[3p]
+  subj  këshillosh[2s] këshillojë[3s]
+  impf  këshilloja[1s] këshilloje[2s] këshillonte[3s] këshillonim[1p] këshillonit[2p] këshillonin[3p]
+  aor   këshillova[1s] këshillove[2s] këshilloi[3s] këshilluam[1p] këshilluat[2p] këshilluan[3p]
+  imper këshillo[2s] këshilloni[2p]
+  opt   këshillofsha[1s] këshillofsh[2s] këshilloftë[3s] këshillofshim[1p] këshillofshi[2p] këshillofshin[3p]
+  adm   këshilluakam[1s] këshilluake[2s] këshilluaka[3s] këshilluakemi[1p] këshilluakeni[2p] këshilluakan[3p]
+  ptcp  këshilluar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+studioj (oj) to study
+  pres  studioj[1s] studion[2,3s] studiojmë[1p] studioni[2p] studiojnë[3p]
+  subj  studiosh[2s] studiojë[3s]
+  impf  studioja[1s] studioje[2s] studionte[3s] studionim[1p] studionit[2p] studionin[3p]
+  aor   studiova[1s] studiove[2s] studioi[3s] studiuam[1p] studiuat[2p] studiuan[3p]
+  imper studio[2s] studioni[2p]
+  opt   studiofsha[1s] studiofsh[2s] studioftë[3s] studiofshim[1p] studiofshi[2p] studiofshin[3p]
+  adm   studiuakam[1s] studiuake[2s] studiuaka[3s] studiuakemi[1p] studiuakeni[2p] studiuakan[3p]
+  ptcp  studiuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vizatoj (oj) to draw
+  pres  vizatoj[1s] vizaton[2,3s] vizatojmë[1p] vizatoni[2p] vizatojnë[3p]
+  subj  vizatosh[2s] vizatojë[3s]
+  impf  vizatoja[1s] vizatoje[2s] vizatonte[3s] vizatonim[1p] vizatonit[2p] vizatonin[3p]
+  aor   vizatova[1s] vizatove[2s] vizatoi[3s] vizatuam[1p] vizatuat[2p] vizatuan[3p]
+  imper vizato[2s] vizatoni[2p]
+  opt   vizatofsha[1s] vizatofsh[2s] vizatoftë[3s] vizatofshim[1p] vizatofshi[2p] vizatofshin[3p]
+  adm   vizatuakam[1s] vizatuake[2s] vizatuaka[3s] vizatuakemi[1p] vizatuakeni[2p] vizatuakan[3p]
+  ptcp  vizatuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+qëndroj (oj) to stay, to stand
+  pres  qëndroj[1s] qëndron[2,3s] qëndrojmë[1p] qëndroni[2p] qëndrojnë[3p]
+  subj  qëndrosh[2s] qëndrojë[3s]
+  impf  qëndroja[1s] qëndroje[2s] qëndronte[3s] qëndronim[1p] qëndronit[2p] qëndronin[3p]
+  aor   qëndrova[1s] qëndrove[2s] qëndroi[3s] qëndruam[1p] qëndruat[2p] qëndruan[3p]
+  imper qëndro[2s] qëndroni[2p]
+  opt   qëndrofsha[1s] qëndrofsh[2s] qëndroftë[3s] qëndrofshim[1p] qëndrofshi[2p] qëndrofshin[3p]
+  adm   qëndruakam[1s] qëndruake[2s] qëndruaka[3s] qëndruakemi[1p] qëndruakeni[2p] qëndruakan[3p]
+  ptcp  qëndruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+mohoj (oj) to deny
+  pres  mohoj[1s] mohon[2,3s] mohojmë[1p] mohoni[2p] mohojnë[3p]
+  subj  mohosh[2s] mohojë[3s]
+  impf  mohoja[1s] mohoje[2s] mohonte[3s] mohonim[1p] mohonit[2p] mohonin[3p]
+  aor   mohova[1s] mohove[2s] mohoi[3s] mohuam[1p] mohuat[2p] mohuan[3p]
+  imper moho[2s] mohoni[2p]
+  opt   mohofsha[1s] mohofsh[2s] mohoftë[3s] mohofshim[1p] mohofshi[2p] mohofshin[3p]
+  adm   mohuakam[1s] mohuake[2s] mohuaka[3s] mohuakemi[1p] mohuakeni[2p] mohuakan[3p]
+  ptcp  mohuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ofroj (oj) to offer
+  pres  ofroj[1s] ofron[2,3s] ofrojmë[1p] ofroni[2p] ofrojnë[3p]
+  subj  ofrosh[2s] ofrojë[3s]
+  impf  ofroja[1s] ofroje[2s] ofronte[3s] ofronim[1p] ofronit[2p] ofronin[3p]
+  aor   ofrova[1s] ofrove[2s] ofroi[3s] ofruam[1p] ofruat[2p] ofruan[3p]
+  imper ofro[2s] ofroni[2p]
+  opt   ofrofsha[1s] ofrofsh[2s] ofroftë[3s] ofrofshim[1p] ofrofshi[2p] ofrofshin[3p]
+  adm   ofruakam[1s] ofruake[2s] ofruaka[3s] ofruakemi[1p] ofruakeni[2p] ofruakan[3p]
+  ptcp  ofruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ndaloj (oj) to forbid, to stop
+  pres  ndaloj[1s] ndalon[2,3s] ndalojmë[1p] ndaloni[2p] ndalojnë[3p]
+  subj  ndalosh[2s] ndalojë[3s]
+  impf  ndaloja[1s] ndaloje[2s] ndalonte[3s] ndalonim[1p] ndalonit[2p] ndalonin[3p]
+  aor   ndalova[1s] ndalove[2s] ndaloi[3s] ndaluam[1p] ndaluat[2p] ndaluan[3p]
+  imper ndalo[2s] ndaloni[2p]
+  opt   ndalofsha[1s] ndalofsh[2s] ndaloftë[3s] ndalofshim[1p] ndalofshi[2p] ndalofshin[3p]
+  adm   ndaluakam[1s] ndaluake[2s] ndaluaka[3s] ndaluakemi[1p] ndaluakeni[2p] ndaluakan[3p]
+  ptcp  ndaluar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+lejoj (oj) to allow
+  pres  lejoj[1s] lejon[2,3s] lejojmë[1p] lejoni[2p] lejojnë[3p]
+  subj  lejosh[2s] lejojë[3s]
+  impf  lejoja[1s] lejoje[2s] lejonte[3s] lejonim[1p] lejonit[2p] lejonin[3p]
+  aor   lejova[1s] lejove[2s] lejoi[3s] lejuam[1p] lejuat[2p] lejuan[3p]
+  imper lejo[2s] lejoni[2p]
+  opt   lejofsha[1s] lejofsh[2s] lejoftë[3s] lejofshim[1p] lejofshi[2p] lejofshin[3p]
+  adm   lejuakam[1s] lejuake[2s] lejuaka[3s] lejuakemi[1p] lejuakeni[2p] lejuakan[3p]
+  ptcp  lejuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+provoj (oj) to try, to test
+  pres  provoj[1s] provon[2,3s] provojmë[1p] provoni[2p] provojnë[3p]
+  subj  provosh[2s] provojë[3s]
+  impf  provoja[1s] provoje[2s] provonte[3s] provonim[1p] provonit[2p] provonin[3p]
+  aor   provova[1s] provove[2s] provoi[3s] provuam[1p] provuat[2p] provuan[3p]
+  imper provo[2s] provoni[2p]
+  opt   provofsha[1s] provofsh[2s] provoftë[3s] provofshim[1p] provofshi[2p] provofshin[3p]
+  adm   provuakam[1s] provuake[2s] provuaka[3s] provuakemi[1p] provuakeni[2p] provuakan[3p]
+  ptcp  provuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+krijoj (oj) to create
+  pres  krijoj[1s] krijon[2,3s] krijojmë[1p] krijoni[2p] krijojnë[3p]
+  subj  krijosh[2s] krijojë[3s]
+  impf  krijoja[1s] krijoje[2s] krijonte[3s] krijonim[1p] krijonit[2p] krijonin[3p]
+  aor   krijova[1s] krijove[2s] krijoi[3s] krijuam[1p] krijuat[2p] krijuan[3p]
+  imper krijo[2s] krijoni[2p]
+  opt   krijofsha[1s] krijofsh[2s] krijoftë[3s] krijofshim[1p] krijofshi[2p] krijofshin[3p]
+  adm   krijuakam[1s] krijuake[2s] krijuaka[3s] krijuakemi[1p] krijuakeni[2p] krijuakan[3p]
+  ptcp  krijuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+zhvilloj (oj) to develop
+  pres  zhvilloj[1s] zhvillon[2,3s] zhvillojmë[1p] zhvilloni[2p] zhvillojnë[3p]
+  subj  zhvillosh[2s] zhvillojë[3s]
+  impf  zhvilloja[1s] zhvilloje[2s] zhvillonte[3s] zhvillonim[1p] zhvillonit[2p] zhvillonin[3p]
+  aor   zhvillova[1s] zhvillove[2s] zhvilloi[3s] zhvilluam[1p] zhvilluat[2p] zhvilluan[3p]
+  imper zhvillo[2s] zhvilloni[2p]
+  opt   zhvillofsha[1s] zhvillofsh[2s] zhvilloftë[3s] zhvillofshim[1p] zhvillofshi[2p] zhvillofshin[3p]
+  adm   zhvilluakam[1s] zhvilluake[2s] zhvilluaka[3s] zhvilluakemi[1p] zhvilluakeni[2p] zhvilluakan[3p]
+  ptcp  zhvilluar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+dyshoj (oj) to doubt
+  pres  dyshoj[1s] dyshon[2,3s] dyshojmë[1p] dyshoni[2p] dyshojnë[3p]
+  subj  dyshosh[2s] dyshojë[3s]
+  impf  dyshoja[1s] dyshoje[2s] dyshonte[3s] dyshonim[1p] dyshonit[2p] dyshonin[3p]
+  aor   dyshova[1s] dyshove[2s] dyshoi[3s] dyshuam[1p] dyshuat[2p] dyshuan[3p]
+  imper dysho[2s] dyshoni[2p]
+  opt   dyshofsha[1s] dyshofsh[2s] dyshoftë[3s] dyshofshim[1p] dyshofshi[2p] dyshofshin[3p]
+  adm   dyshuakam[1s] dyshuake[2s] dyshuaka[3s] dyshuakemi[1p] dyshuakeni[2p] dyshuakan[3p]
+  ptcp  dyshuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ngatërroj (oj) to confuse, to mix up
+  pres  ngatërroj[1s] ngatërron[2,3s] ngatërrojmë[1p] ngatërroni[2p] ngatërrojnë[3p]
+  subj  ngatërrosh[2s] ngatërrojë[3s]
+  impf  ngatërroja[1s] ngatërroje[2s] ngatërronte[3s] ngatërronim[1p] ngatërronit[2p] ngatërronin[3p]
+  aor   ngatërrova[1s] ngatërrove[2s] ngatërroi[3s] ngatërruam[1p] ngatërruat[2p] ngatërruan[3p]
+  imper ngatërro[2s] ngatërroni[2p]
+  opt   ngatërrofsha[1s] ngatërrofsh[2s] ngatërroftë[3s] ngatërrofshim[1p] ngatërrofshi[2p] ngatërrofshin[3p]
+  adm   ngatërruakam[1s] ngatërruake[2s] ngatërruaka[3s] ngatërruakemi[1p] ngatërruakeni[2p] ngatërruakan[3p]
+  ptcp  ngatërruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+rregulloj (oj) to arrange, to fix
+  pres  rregulloj[1s] rregullon[2,3s] rregullojmë[1p] rregulloni[2p] rregullojnë[3p]
+  subj  rregullosh[2s] rregullojë[3s]
+  impf  rregulloja[1s] rregulloje[2s] rregullonte[3s] rregullonim[1p] rregullonit[2p] rregullonin[3p]
+  aor   rregullova[1s] rregullove[2s] rregulloi[3s] rregulluam[1p] rregulluat[2p] rregulluan[3p]
+  imper rregullo[2s] rregulloni[2p]
+  opt   rregullofsha[1s] rregullofsh[2s] rregulloftë[3s] rregullofshim[1p] rregullofshi[2p] rregullofshin[3p]
+  adm   rregulluakam[1s] rregulluake[2s] rregulluaka[3s] rregulluakemi[1p] rregulluakeni[2p] rregulluakan[3p]
+  ptcp  rregulluar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+çmoj (oj) to value, to esteem
+  pres  çmoj[1s] çmon[2,3s] çmojmë[1p] çmoni[2p] çmojnë[3p]
+  subj  çmosh[2s] çmojë[3s]
+  impf  çmoja[1s] çmoje[2s] çmonte[3s] çmonim[1p] çmonit[2p] çmonin[3p]
+  aor   çmova[1s] çmove[2s] çmoi[3s] çmuam[1p] çmuat[2p] çmuan[3p]
+  imper çmo[2s] çmoni[2p]
+  opt   çmofsha[1s] çmofsh[2s] çmoftë[3s] çmofshim[1p] çmofshi[2p] çmofshin[3p]
+  adm   çmuakam[1s] çmuake[2s] çmuaka[3s] çmuakemi[1p] çmuakeni[2p] çmuakan[3p]
+  ptcp  çmuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+fitoj (oj) to win, to earn
+  pres  fitoj[1s] fiton[2,3s] fitojmë[1p] fitoni[2p] fitojnë[3p]
+  subj  fitosh[2s] fitojë[3s]
+  impf  fitoja[1s] fitoje[2s] fitonte[3s] fitonim[1p] fitonit[2p] fitonin[3p]
+  aor   fitova[1s] fitove[2s] fitoi[3s] fituam[1p] fituat[2p] fituan[3p]
+  imper fito[2s] fitoni[2p]
+  opt   fitofsha[1s] fitofsh[2s] fitoftë[3s] fitofshim[1p] fitofshi[2p] fitofshin[3p]
+  adm   fituakam[1s] fituake[2s] fituaka[3s] fituakemi[1p] fituakeni[2p] fituakan[3p]
+  ptcp  fituar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+numëroj (oj) to count
+  pres  numëroj[1s] numëron~[2,3s] numërojmë~[1p] numëroni~[2p] numërojnë~[3p]
+  subj  numërosh~[2s] numërojë~[3s]
+  impf  numëroja?[1s] numëroje?[2s] numëronte~[3s] numëronim?[1p] numëronit?[2p] numëronin~[3p]
+  aor   numërova?[1s] numërove?[2s] numëroi~[3s] numëruam?[1p] numëruat?[2p] numëruan~[3p]
+  imper numëro~[2s] numëroni~[2p]
+  opt   numërofsha?[1s] numërofsh?[2s] numëroftë?[3s] numërofshim?[1p] numërofshi?[2p] numërofshin?[3p]
+  adm   numëruakam?[1s] numëruake?[2s] numëruaka?[3s] numëruakemi?[1p] numëruakeni?[2p] numëruakan?[3p]
+  ptcp  numëruar~
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+lëshoj (oj) to release, to let go
+  pres  lëshoj[1s] lëshon[2,3s] lëshojmë[1p] lëshoni[2p] lëshojnë[3p]
+  subj  lëshosh[2s] lëshojë[3s]
+  impf  lëshoja[1s] lëshoje[2s] lëshonte[3s] lëshonim[1p] lëshonit[2p] lëshonin[3p]
+  aor   lëshova[1s] lëshove[2s] lëshoi[3s] lëshuam[1p] lëshuat[2p] lëshuan[3p]
+  imper lësho[2s] lëshoni[2p]
+  opt   lëshofsha[1s] lëshofsh[2s] lëshoftë[3s] lëshofshim[1p] lëshofshi[2p] lëshofshin[3p]
+  adm   lëshuakam[1s] lëshuake[2s] lëshuaka[3s] lëshuakemi[1p] lëshuakeni[2p] lëshuakan[3p]
+  ptcp  lëshuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+sulmoj (oj) to attack
+  pres  sulmoj[1s] sulmon[2,3s] sulmojmë[1p] sulmoni[2p] sulmojnë[3p]
+  subj  sulmosh[2s] sulmojë[3s]
+  impf  sulmoja[1s] sulmoje[2s] sulmonte[3s] sulmonim[1p] sulmonit[2p] sulmonin[3p]
+  aor   sulmova[1s] sulmove[2s] sulmoi[3s] sulmuam[1p] sulmuat[2p] sulmuan[3p]
+  imper sulmo[2s] sulmoni[2p]
+  opt   sulmofsha[1s] sulmofsh[2s] sulmoftë[3s] sulmofshim[1p] sulmofshi[2p] sulmofshin[3p]
+  adm   sulmuakam[1s] sulmuake[2s] sulmuaka[3s] sulmuakemi[1p] sulmuakeni[2p] sulmuakan[3p]
+  ptcp  sulmuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+veproj (oj) to act
+  pres  veproj[1s] vepron[2,3s] veprojmë[1p] veproni[2p] veprojnë[3p]
+  subj  veprosh[2s] veprojë[3s]
+  impf  veproja[1s] veproje[2s] vepronte[3s] vepronim[1p] vepronit[2p] vepronin[3p]
+  aor   veprova[1s] veprove[2s] veproi[3s] vepruam[1p] vepruat[2p] vepruan[3p]
+  imper vepro[2s] veproni[2p]
+  opt   veprofsha[1s] veprofsh[2s] veproftë[3s] veprofshim[1p] veprofshi[2p] veprofshin[3p]
+  adm   vepruakam[1s] vepruake[2s] vepruaka[3s] vepruakemi[1p] vepruakeni[2p] vepruakan[3p]
+  ptcp  vepruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+respektoj (oj) to respect
+  pres  respektoj[1s] respekton[2,3s] respektojmë[1p] respektoni[2p] respektojnë[3p]
+  subj  respektosh[2s] respektojë[3s]
+  impf  respektoja[1s] respektoje[2s] respektonte[3s] respektonim[1p] respektonit[2p] respektonin[3p]
+  aor   respektova[1s] respektove[2s] respektoi[3s] respektuam[1p] respektuat[2p] respektuan[3p]
+  imper respekto[2s] respektoni[2p]
+  opt   respektofsha[1s] respektofsh[2s] respektoftë[3s] respektofshim[1p] respektofshi[2p] respektofshin[3p]
+  adm   respektuakam[1s] respektuake[2s] respektuaka[3s] respektuakemi[1p] respektuakeni[2p] respektuakan[3p]
+  ptcp  respektuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+gjykoj (oj) to judge
+  pres  gjykoj[1s] gjykon[2,3s] gjykojmë[1p] gjykoni[2p] gjykojnë[3p]
+  subj  gjykosh[2s] gjykojë[3s]
+  impf  gjykoja[1s] gjykoje[2s] gjykonte[3s] gjykonim[1p] gjykonit[2p] gjykonin[3p]
+  aor   gjykova[1s] gjykove[2s] gjykoi[3s] gjykuam[1p] gjykuat[2p] gjykuan[3p]
+  imper gjyko[2s] gjykoni[2p]
+  opt   gjykofsha[1s] gjykofsh[2s] gjykoftë[3s] gjykofshim[1p] gjykofshi[2p] gjykofshin[3p]
+  adm   gjykuakam[1s] gjykuake[2s] gjykuaka[3s] gjykuakemi[1p] gjykuakeni[2p] gjykuakan[3p]
+  ptcp  gjykuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+dënoj (oj) to punish, to condemn
+  pres  dënoj[1s] dënon[2,3s] dënojmë[1p] dënoni[2p] dënojnë[3p]
+  subj  dënosh[2s] dënojë[3s]
+  impf  dënoja[1s] dënoje[2s] dënonte[3s] dënonim[1p] dënonit[2p] dënonin[3p]
+  aor   dënova[1s] dënove[2s] dënoi[3s] dënuam[1p] dënuat[2p] dënuan[3p]
+  imper dëno[2s] dënoni[2p]
+  opt   dënofsha[1s] dënofsh[2s] dënoftë[3s] dënofshim[1p] dënofshi[2p] dënofshin[3p]
+  adm   dënuakam[1s] dënuake[2s] dënuaka[3s] dënuakemi[1p] dënuakeni[2p] dënuakan[3p]
+  ptcp  dënuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+zbuloj (oj) to reveal, to discover
+  pres  zbuloj[1s] zbulon[2,3s] zbulojmë[1p] zbuloni[2p] zbulojnë[3p]
+  subj  zbulosh[2s] zbulojë[3s]
+  impf  zbuloja[1s] zbuloje[2s] zbulonte[3s] zbulonim[1p] zbulonit[2p] zbulonin[3p]
+  aor   zbulova[1s] zbulove[2s] zbuloi[3s] zbuluam[1p] zbuluat[2p] zbuluan[3p]
+  imper zbulo[2s] zbuloni[2p]
+  opt   zbulofsha[1s] zbulofsh[2s] zbuloftë[3s] zbulofshim[1p] zbulofshi[2p] zbulofshin[3p]
+  adm   zbuluakam[1s] zbuluake[2s] zbuluaka[3s] zbuluakemi[1p] zbuluakeni[2p] zbuluakan[3p]
+  ptcp  zbuluar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+dhuroj (oj) to give (as a gift)
+  pres  dhuroj[1s] dhuron[2,3s] dhurojmë[1p] dhuroni[2p] dhurojnë[3p]
+  subj  dhurosh[2s] dhurojë[3s]
+  impf  dhuroja[1s] dhuroje[2s] dhuronte[3s] dhuronim[1p] dhuronit[2p] dhuronin[3p]
+  aor   dhurova[1s] dhurove[2s] dhuroi[3s] dhuruam[1p] dhuruat[2p] dhuruan[3p]
+  imper dhuro[2s] dhuroni[2p]
+  opt   dhurofsha[1s] dhurofsh[2s] dhuroftë[3s] dhurofshim[1p] dhurofshi[2p] dhurofshin[3p]
+  adm   dhuruakam[1s] dhuruake[2s] dhuruaka[3s] dhuruakemi[1p] dhuruakeni[2p] dhuruakan[3p]
+  ptcp  dhuruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+zgjoj (oj, NA=true) to wake (someone)
+  pres  zgjoj[1s] zgjon[2,3s] zgjojmë[1p] zgjoni[2p] zgjojnë[3p]
+  subj  zgjosh[2s] zgjojë[3s]
+  impf  zgjoja[1s] zgjoje[2s] zgjonte[3s] zgjonim[1p] zgjonit[2p] zgjonin[3p]
+  aor   zgjova[1s] zgjove[2s] zgjoi[3s] zgjuam[1p] zgjuat[2p] zgjuan[3p]
+  imper zgjo[2s] zgjoni[2p]
+  opt   zgjofsha[1s] zgjofsh[2s] zgjoftë[3s] zgjofshim[1p] zgjofshi[2p] zgjofshin[3p]
+  adm   zgjuakam[1s] zgjuake[2s] zgjuaka[3s] zgjuakemi[1p] zgjuakeni[2p] zgjuakan[3p]
+  ptcp  zgjuar
+  NApres zgjohem[1s] zgjohesh[2s] zgjohet[3s] zgjohemi[1p] zgjoheni[2p] zgjohen[3p]
+  NAimpf zgjohesha[1s] zgjoheshe[2s] zgjohej[3s] zgjoheshim[1p] zgjoheshit[2p] zgjoheshin[3p]
+  NAaor  zgjua[3s]
+  NAimper zgjohu[2s] zgjohuni[2p]
+rrëzoj (oj) to knock down
+  pres  rrëzoj[1s] rrëzon[2,3s] rrëzojmë[1p] rrëzoni[2p] rrëzojnë[3p]
+  subj  rrëzosh[2s] rrëzojë[3s]
+  impf  rrëzoja[1s] rrëzoje[2s] rrëzonte[3s] rrëzonim[1p] rrëzonit[2p] rrëzonin[3p]
+  aor   rrëzova[1s] rrëzove[2s] rrëzoi[3s] rrëzuam[1p] rrëzuat[2p] rrëzuan[3p]
+  imper rrëzo[2s] rrëzoni[2p]
+  opt   rrëzofsha[1s] rrëzofsh[2s] rrëzoftë[3s] rrëzofshim[1p] rrëzofshi[2p] rrëzofshin[3p]
+  adm   rrëzuakam[1s] rrëzuake[2s] rrëzuaka[3s] rrëzuakemi[1p] rrëzuakeni[2p] rrëzuakan[3p]
+  ptcp  rrëzuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+dëmtoj (oj) to damage
+  pres  dëmtoj[1s] dëmton[2,3s] dëmtojmë[1p] dëmtoni[2p] dëmtojnë[3p]
+  subj  dëmtosh[2s] dëmtojë[3s]
+  impf  dëmtoja[1s] dëmtoje[2s] dëmtonte[3s] dëmtonim[1p] dëmtonit[2p] dëmtonin[3p]
+  aor   dëmtova[1s] dëmtove[2s] dëmtoi[3s] dëmtuam[1p] dëmtuat[2p] dëmtuan[3p]
+  imper dëmto[2s] dëmtoni[2p]
+  opt   dëmtofsha[1s] dëmtofsh[2s] dëmtoftë[3s] dëmtofshim[1p] dëmtofshi[2p] dëmtofshin[3p]
+  adm   dëmtuakam[1s] dëmtuake[2s] dëmtuaka[3s] dëmtuakemi[1p] dëmtuakeni[2p] dëmtuakan[3p]
+  ptcp  dëmtuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+plotësoj (oj) to complete, to fulfil
+  pres  plotësoj[1s] plotëson[2,3s] plotësojmë[1p] plotësoni[2p] plotësojnë[3p]
+  subj  plotësosh[2s] plotësojë[3s]
+  impf  plotësoja[1s] plotësoje[2s] plotësonte[3s] plotësonim[1p] plotësonit[2p] plotësonin[3p]
+  aor   plotësova[1s] plotësove[2s] plotësoi[3s] plotësuam[1p] plotësuat[2p] plotësuan[3p]
+  imper plotëso[2s] plotësoni[2p]
+  opt   plotësofsha[1s] plotësofsh[2s] plotësoftë[3s] plotësofshim[1p] plotësofshi[2p] plotësofshin[3p]
+  adm   plotësuakam[1s] plotësuake[2s] plotësuaka[3s] plotësuakemi[1p] plotësuakeni[2p] plotësuakan[3p]
+  ptcp  plotësuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shkatërroj (oj) to destroy
+  pres  shkatërroj[1s] shkatërron[2,3s] shkatërrojmë[1p] shkatërroni[2p] shkatërrojnë[3p]
+  subj  shkatërrosh[2s] shkatërrojë[3s]
+  impf  shkatërroja[1s] shkatërroje[2s] shkatërronte[3s] shkatërronim[1p] shkatërronit[2p] shkatërronin[3p]
+  aor   shkatërrova[1s] shkatërrove[2s] shkatërroi[3s] shkatërruam[1p] shkatërruat[2p] shkatërruan[3p]
+  imper shkatërro[2s] shkatërroni[2p]
+  opt   shkatërrofsha[1s] shkatërrofsh[2s] shkatërroftë[3s] shkatërrofshim[1p] shkatërrofshi[2p] shkatërrofshin[3p]
+  adm   shkatërruakam[1s] shkatërruake[2s] shkatërruaka[3s] shkatërruakemi[1p] shkatërruakeni[2p] shkatërruakan[3p]
+  ptcp  shkatërruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+hartoj (oj) to compose, to draw up
+  pres  hartoj[1s] harton[2,3s] hartojmë[1p] hartoni[2p] hartojnë[3p]
+  subj  hartosh[2s] hartojë[3s]
+  impf  hartoja[1s] hartoje[2s] hartonte[3s] hartonim[1p] hartonit[2p] hartonin[3p]
+  aor   hartova[1s] hartove[2s] hartoi[3s] hartuam[1p] hartuat[2p] hartuan[3p]
+  imper harto[2s] hartoni[2p]
+  opt   hartofsha[1s] hartofsh[2s] hartoftë[3s] hartofshim[1p] hartofshi[2p] hartofshin[3p]
+  adm   hartuakam[1s] hartuake[2s] hartuaka[3s] hartuakemi[1p] hartuakeni[2p] hartuakan[3p]
+  ptcp  hartuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+përfundoj (oj) to conclude, to end
+  pres  përfundoj[1s] përfundon[2,3s] përfundojmë[1p] përfundoni[2p] përfundojnë[3p]
+  subj  përfundosh[2s] përfundojë[3s]
+  impf  përfundoja[1s] përfundoje[2s] përfundonte[3s] përfundonim[1p] përfundonit[2p] përfundonin[3p]
+  aor   përfundova[1s] përfundove[2s] përfundoi[3s] përfunduam[1p] përfunduat[2p] përfunduan[3p]
+  imper përfundo[2s] përfundoni[2p]
+  opt   përfundofsha[1s] përfundofsh[2s] përfundoftë[3s] përfundofshim[1p] përfundofshi[2p] përfundofshin[3p]
+  adm   përfunduakam[1s] përfunduake[2s] përfunduaka[3s] përfunduakemi[1p] përfunduakeni[2p] përfunduakan[3p]
+  ptcp  përfunduar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vazhdoj (oj) to continue
+  pres  vazhdoj[1s] vazhdon[2,3s] vazhdojmë[1p] vazhdoni[2p] vazhdojnë[3p]
+  subj  vazhdosh[2s] vazhdojë[3s]
+  impf  vazhdoja[1s] vazhdoje[2s] vazhdonte[3s] vazhdonim[1p] vazhdonit[2p] vazhdonin[3p]
+  aor   vazhdova[1s] vazhdove[2s] vazhdoi[3s] vazhduam[1p] vazhduat[2p] vazhduan[3p]
+  imper vazhdo[2s] vazhdoni[2p]
+  opt   vazhdofsha[1s] vazhdofsh[2s] vazhdoftë[3s] vazhdofshim[1p] vazhdofshi[2p] vazhdofshin[3p]
+  adm   vazhduakam[1s] vazhduake[2s] vazhduaka[3s] vazhduakemi[1p] vazhduakeni[2p] vazhduakan[3p]
+  ptcp  vazhduar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+kontrolloj (oj) to check, to control
+  pres  kontrolloj[1s] kontrollon[2,3s] kontrollojmë[1p] kontrolloni[2p] kontrollojnë[3p]
+  subj  kontrollosh[2s] kontrollojë[3s]
+  impf  kontrolloja[1s] kontrolloje[2s] kontrollonte[3s] kontrollonim[1p] kontrollonit[2p] kontrollonin[3p]
+  aor   kontrollova[1s] kontrollove[2s] kontrolloi[3s] kontrolluam[1p] kontrolluat[2p] kontrolluan[3p]
+  imper kontrollo[2s] kontrolloni[2p]
+  opt   kontrollofsha[1s] kontrollofsh[2s] kontrolloftë[3s] kontrollofshim[1p] kontrollofshi[2p] kontrollofshin[3p]
+  adm   kontrolluakam[1s] kontrolluake[2s] kontrolluaka[3s] kontrolluakemi[1p] kontrolluakeni[2p] kontrolluakan[3p]
+  ptcp  kontrolluar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+pohoj (oj) to affirm
+  pres  pohoj[1s] pohon[2,3s] pohojmë[1p] pohoni[2p] pohojnë[3p]
+  subj  pohosh[2s] pohojë[3s]
+  impf  pohoja[1s] pohoje[2s] pohonte[3s] pohonim[1p] pohonit[2p] pohonin[3p]
+  aor   pohova[1s] pohove[2s] pohoi[3s] pohuam[1p] pohuat[2p] pohuan[3p]
+  imper poho[2s] pohoni[2p]
+  opt   pohofsha[1s] pohofsh[2s] pohoftë[3s] pohofshim[1p] pohofshi[2p] pohofshin[3p]
+  adm   pohuakam[1s] pohuake[2s] pohuaka[3s] pohuakemi[1p] pohuakeni[2p] pohuakan[3p]
+  ptcp  pohuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+dorëzoj (oj) to hand over
+  pres  dorëzoj[1s] dorëzon[2,3s] dorëzojmë[1p] dorëzoni[2p] dorëzojnë[3p]
+  subj  dorëzosh[2s] dorëzojë[3s]
+  impf  dorëzoja[1s] dorëzoje[2s] dorëzonte[3s] dorëzonim[1p] dorëzonit[2p] dorëzonin[3p]
+  aor   dorëzova[1s] dorëzove[2s] dorëzoi[3s] dorëzuam[1p] dorëzuat[2p] dorëzuan[3p]
+  imper dorëzo[2s] dorëzoni[2p]
+  opt   dorëzofsha[1s] dorëzofsh[2s] dorëzoftë[3s] dorëzofshim[1p] dorëzofshi[2p] dorëzofshin[3p]
+  adm   dorëzuakam[1s] dorëzuake[2s] dorëzuaka[3s] dorëzuakemi[1p] dorëzuakeni[2p] dorëzuakan[3p]
+  ptcp  dorëzuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ngushëlloj (oj) to comfort
+  pres  ngushëlloj[1s] ngushëllon[2,3s] ngushëllojmë[1p] ngushëlloni[2p] ngushëllojnë[3p]
+  subj  ngushëllosh[2s] ngushëllojë[3s]
+  impf  ngushëlloja[1s] ngushëlloje[2s] ngushëllonte[3s] ngushëllonim[1p] ngushëllonit[2p] ngushëllonin[3p]
+  aor   ngushëllova[1s] ngushëllove[2s] ngushëlloi[3s] ngushëlluam[1p] ngushëlluat[2p] ngushëlluan[3p]
+  imper ngushëllo[2s] ngushëlloni[2p]
+  opt   ngushëllofsha[1s] ngushëllofsh[2s] ngushëlloftë[3s] ngushëllofshim[1p] ngushëllofshi[2p] ngushëllofshin[3p]
+  adm   ngushëlluakam[1s] ngushëlluake[2s] ngushëlluaka[3s] ngushëlluakemi[1p] ngushëlluakeni[2p] ngushëlluakan[3p]
+  ptcp  ngushëlluar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vlerësoj (oj) to value, to assess
+  pres  vlerësoj[1s] vlerëson[2,3s] vlerësojmë[1p] vlerësoni[2p] vlerësojnë[3p]
+  subj  vlerësosh[2s] vlerësojë[3s]
+  impf  vlerësoja[1s] vlerësoje[2s] vlerësonte[3s] vlerësonim[1p] vlerësonit[2p] vlerësonin[3p]
+  aor   vlerësova[1s] vlerësove[2s] vlerësoi[3s] vlerësuam[1p] vlerësuat[2p] vlerësuan[3p]
+  imper vlerëso[2s] vlerësoni[2p]
+  opt   vlerësofsha[1s] vlerësofsh[2s] vlerësoftë[3s] vlerësofshim[1p] vlerësofshi[2p] vlerësofshin[3p]
+  adm   vlerësuakam[1s] vlerësuake[2s] vlerësuaka[3s] vlerësuakemi[1p] vlerësuakeni[2p] vlerësuakan[3p]
+  ptcp  vlerësuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shqiptoj (oj) to pronounce
+  pres  shqiptoj[1s] shqipton[2,3s] shqiptojmë[1p] shqiptoni[2p] shqiptojnë[3p]
+  subj  shqiptosh[2s] shqiptojë[3s]
+  impf  shqiptoja[1s] shqiptoje[2s] shqiptonte[3s] shqiptonim[1p] shqiptonit[2p] shqiptonin[3p]
+  aor   shqiptova[1s] shqiptove[2s] shqiptoi[3s] shqiptuam[1p] shqiptuat[2p] shqiptuan[3p]
+  imper shqipto[2s] shqiptoni[2p]
+  opt   shqiptofsha[1s] shqiptofsh[2s] shqiptoftë[3s] shqiptofshim[1p] shqiptofshi[2p] shqiptofshin[3p]
+  adm   shqiptuakam[1s] shqiptuake[2s] shqiptuaka[3s] shqiptuakemi[1p] shqiptuakeni[2p] shqiptuakan[3p]
+  ptcp  shqiptuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+bashkëpunoj (oj) to cooperate
+  pres  bashkëpunoj[1s] bashkëpunon[2,3s] bashkëpunojmë[1p] bashkëpunoni[2p] bashkëpunojnë[3p]
+  subj  bashkëpunosh[2s] bashkëpunojë[3s]
+  impf  bashkëpunoja[1s] bashkëpunoje[2s] bashkëpunonte[3s] bashkëpunonim[1p] bashkëpunonit[2p] bashkëpunonin[3p]
+  aor   bashkëpunova[1s] bashkëpunove[2s] bashkëpunoi[3s] bashkëpunuam[1p] bashkëpunuat[2p] bashkëpunuan[3p]
+  imper bashkëpuno[2s] bashkëpunoni[2p]
+  opt   bashkëpunofsha[1s] bashkëpunofsh[2s] bashkëpunoftë[3s] bashkëpunofshim[1p] bashkëpunofshi[2p] bashkëpunofshin[3p]
+  adm   bashkëpunuakam[1s] bashkëpunuake[2s] bashkëpunuaka[3s] bashkëpunuakemi[1p] bashkëpunuakeni[2p] bashkëpunuakan[3p]
+  ptcp  bashkëpunuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+besoj (oj) to believe
+  pres  besoj[1s] beson[2,3s] besojmë[1p] besoni[2p] besojnë[3p]
+  subj  besosh[2s] besojë[3s]
+  impf  besoja[1s] besoje[2s] besonte[3s] besonim[1p] besonit[2p] besonin[3p]
+  aor   besova[1s] besove[2s] besoi[3s] besuam[1p] besuat[2p] besuan[3p]
+  imper beso[2s] besoni[2p]
+  opt   besofsha[1s] besofsh[2s] besoftë[3s] besofshim[1p] besofshi[2p] besofshin[3p]
+  adm   besuakam[1s] besuake[2s] besuaka[3s] besuakemi[1p] besuakeni[2p] besuakan[3p]
+  ptcp  besuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shpëtoj (oj) to save
+  pres  shpëtoj[1s] shpëton[2,3s] shpëtojmë[1p] shpëtoni[2p] shpëtojnë[3p]
+  subj  shpëtosh[2s] shpëtojë[3s]
+  impf  shpëtoja[1s] shpëtoje[2s] shpëtonte[3s] shpëtonim[1p] shpëtonit[2p] shpëtonin[3p]
+  aor   shpëtova[1s] shpëtove[2s] shpëtoi[3s] shpëtuam[1p] shpëtuat[2p] shpëtuan[3p]
+  imper shpëto[2s] shpëtoni[2p]
+  opt   shpëtofsha[1s] shpëtofsh[2s] shpëtoftë[3s] shpëtofshim[1p] shpëtofshi[2p] shpëtofshin[3p]
+  adm   shpëtuakam[1s] shpëtuake[2s] shpëtuaka[3s] shpëtuakemi[1p] shpëtuakeni[2p] shpëtuakan[3p]
+  ptcp  shpëtuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+adhuroj (oj) to worship
+  pres  adhuroj[1s] adhuron[2,3s] adhurojmë[1p] adhuroni[2p] adhurojnë[3p]
+  subj  adhurosh[2s] adhurojë[3s]
+  impf  adhuroja[1s] adhuroje[2s] adhuronte[3s] adhuronim[1p] adhuronit[2p] adhuronin[3p]
+  aor   adhurova[1s] adhurove[2s] adhuroi[3s] adhuruam[1p] adhuruat[2p] adhuruan[3p]
+  imper adhuro[2s] adhuroni[2p]
+  opt   adhurofsha[1s] adhurofsh[2s] adhuroftë[3s] adhurofshim[1p] adhurofshi[2p] adhurofshin[3p]
+  adm   adhuruakam[1s] adhuruake[2s] adhuruaka[3s] adhuruakemi[1p] adhuruakeni[2p] adhuruakan[3p]
+  ptcp  adhuruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+bekoj (oj) to bless
+  pres  bekoj[1s] bekon[2,3s] bekojmë[1p] bekoni[2p] bekojnë[3p]
+  subj  bekosh[2s] bekojë[3s]
+  impf  bekoja[1s] bekoje[2s] bekonte[3s] bekonim[1p] bekonit[2p] bekonin[3p]
+  aor   bekova[1s] bekove[2s] bekoi[3s] bekuam[1p] bekuat[2p] bekuan[3p]
+  imper beko[2s] bekoni[2p]
+  opt   bekofsha[1s] bekofsh[2s] bekoftë[3s] bekofshim[1p] bekofshi[2p] bekofshin[3p]
+  adm   bekuakam[1s] bekuake[2s] bekuaka[3s] bekuakemi[1p] bekuakeni[2p] bekuakan[3p]
+  ptcp  bekuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+predikoj (oj) to preach
+  pres  predikoj[1s] predikon[2,3s] predikojmë[1p] predikoni[2p] predikojnë[3p]
+  subj  predikosh[2s] predikojë[3s]
+  impf  predikoja[1s] predikoje[2s] predikonte[3s] predikonim[1p] predikonit[2p] predikonin[3p]
+  aor   predikova[1s] predikove[2s] predikoi[3s] predikuam[1p] predikuat[2p] predikuan[3p]
+  imper prediko[2s] predikoni[2p]
+  opt   predikofsha[1s] predikofsh[2s] predikoftë[3s] predikofshim[1p] predikofshi[2p] predikofshin[3p]
+  adm   predikuakam[1s] predikuake[2s] predikuaka[3s] predikuakemi[1p] predikuakeni[2p] predikuakan[3p]
+  ptcp  predikuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+dëshmoj (oj) to testify
+  pres  dëshmoj[1s] dëshmon[2,3s] dëshmojmë[1p] dëshmoni[2p] dëshmojnë[3p]
+  subj  dëshmosh[2s] dëshmojë[3s]
+  impf  dëshmoja[1s] dëshmoje[2s] dëshmonte[3s] dëshmonim[1p] dëshmonit[2p] dëshmonin[3p]
+  aor   dëshmova[1s] dëshmove[2s] dëshmoi[3s] dëshmuam[1p] dëshmuat[2p] dëshmuan[3p]
+  imper dëshmo[2s] dëshmoni[2p]
+  opt   dëshmofsha[1s] dëshmofsh[2s] dëshmoftë[3s] dëshmofshim[1p] dëshmofshi[2p] dëshmofshin[3p]
+  adm   dëshmuakam[1s] dëshmuake[2s] dëshmuaka[3s] dëshmuakemi[1p] dëshmuakeni[2p] dëshmuakan[3p]
+  ptcp  dëshmuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+kryqëzoj (oj) to crucify
+  pres  kryqëzoj[1s] kryqëzon[2,3s] kryqëzojmë[1p] kryqëzoni[2p] kryqëzojnë[3p]
+  subj  kryqëzosh[2s] kryqëzojë[3s]
+  impf  kryqëzoja[1s] kryqëzoje[2s] kryqëzonte[3s] kryqëzonim[1p] kryqëzonit[2p] kryqëzonin[3p]
+  aor   kryqëzova[1s] kryqëzove[2s] kryqëzoi[3s] kryqëzuam[1p] kryqëzuat[2p] kryqëzuan[3p]
+  imper kryqëzo[2s] kryqëzoni[2p]
+  opt   kryqëzofsha[1s] kryqëzofsh[2s] kryqëzoftë[3s] kryqëzofshim[1p] kryqëzofshi[2p] kryqëzofshin[3p]
+  adm   kryqëzuakam[1s] kryqëzuake[2s] kryqëzuaka[3s] kryqëzuakemi[1p] kryqëzuakeni[2p] kryqëzuakan[3p]
+  ptcp  kryqëzuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vrapoj (oj) to run
+  pres  vrapoj[1s] vrapon[2,3s] vrapojmë[1p] vraponi[2p] vrapojnë[3p]
+  subj  vraposh[2s] vrapojë[3s]
+  impf  vrapoja[1s] vrapoje[2s] vraponte[3s] vraponim[1p] vraponit[2p] vraponin[3p]
+  aor   vrapova[1s] vrapove[2s] vrapoi[3s] vrapuam[1p] vrapuat[2p] vrapuan[3p]
+  imper vrapo[2s] vraponi[2p]
+  opt   vrapofsha[1s] vrapofsh[2s] vrapoftë[3s] vrapofshim[1p] vrapofshi[2p] vrapofshin[3p]
+  adm   vrapuakam[1s] vrapuake[2s] vrapuaka[3s] vrapuakemi[1p] vrapuakeni[2p] vrapuakan[3p]
+  ptcp  vrapuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+falënderoj (oj) to thank
+  pres  falënderoj[1s] falënderon[2,3s] falënderojmë[1p] falënderoni[2p] falënderojnë[3p]
+  subj  falënderosh[2s] falënderojë[3s]
+  impf  falënderoja[1s] falënderoje[2s] falënderonte[3s] falënderonim[1p] falënderonit[2p] falënderonin[3p]
+  aor   falënderova[1s] falënderove[2s] falënderoi[3s] falënderuam[1p] falënderuat[2p] falënderuan[3p]
+  imper falëndero[2s] falënderoni[2p]
+  opt   falënderofsha[1s] falënderofsh[2s] falënderoftë[3s] falënderofshim[1p] falënderofshi[2p] falënderofshin[3p]
+  adm   falënderuakam[1s] falënderuake[2s] falënderuaka[3s] falënderuakemi[1p] falënderuakeni[2p] falënderuakan[3p]
+  ptcp  falënderuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+lavdëroj (oj) to praise
+  pres  lavdëroj[1s] lavdëron[2,3s] lavdërojmë[1p] lavdëroni[2p] lavdërojnë[3p]
+  subj  lavdërosh[2s] lavdërojë[3s]
+  impf  lavdëroja[1s] lavdëroje[2s] lavdëronte[3s] lavdëronim[1p] lavdëronit[2p] lavdëronin[3p]
+  aor   lavdërova[1s] lavdërove[2s] lavdëroi[3s] lavdëruam[1p] lavdëruat[2p] lavdëruan[3p]
+  imper lavdëro[2s] lavdëroni[2p]
+  opt   lavdërofsha[1s] lavdërofsh[2s] lavdëroftë[3s] lavdërofshim[1p] lavdërofshi[2p] lavdërofshin[3p]
+  adm   lavdëruakam[1s] lavdëruake[2s] lavdëruaka[3s] lavdëruakemi[1p] lavdëruakeni[2p] lavdëruakan[3p]
+  ptcp  lavdëruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+pagëzoj (oj) to baptise
+  pres  pagëzoj[1s] pagëzon[2,3s] pagëzojmë[1p] pagëzoni[2p] pagëzojnë[3p]
+  subj  pagëzosh[2s] pagëzojë[3s]
+  impf  pagëzoja[1s] pagëzoje[2s] pagëzonte[3s] pagëzonim[1p] pagëzonit[2p] pagëzonin[3p]
+  aor   pagëzova[1s] pagëzove[2s] pagëzoi[3s] pagëzuam[1p] pagëzuat[2p] pagëzuan[3p]
+  imper pagëzo[2s] pagëzoni[2p]
+  opt   pagëzofsha[1s] pagëzofsh[2s] pagëzoftë[3s] pagëzofshim[1p] pagëzofshi[2p] pagëzofshin[3p]
+  adm   pagëzuakam[1s] pagëzuake[2s] pagëzuaka[3s] pagëzuakemi[1p] pagëzuakeni[2p] pagëzuakan[3p]
+  ptcp  pagëzuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+urdhëroj (oj) to order, to command; urdhëro / urdhëroni: here you are, please, go ahead
+  pres  urdhëroj[1s] urdhëron[2,3s] urdhërojmë[1p] urdhëroni[2p] urdhërojnë[3p]
+  subj  urdhërosh[2s] urdhërojë[3s]
+  impf  urdhëroja[1s] urdhëroje[2s] urdhëronte[3s] urdhëronim[1p] urdhëronit[2p] urdhëronin[3p]
+  aor   urdhërova[1s] urdhërove[2s] urdhëroi[3s] urdhëruam[1p] urdhëruat[2p] urdhëruan[3p]
+  imper urdhëro[2s] urdhëroni[2p]
+  opt   urdhërofsha[1s] urdhërofsh[2s] urdhëroftë[3s] urdhërofshim[1p] urdhërofshi[2p] urdhërofshin[3p]
+  adm   urdhëruakam[1s] urdhëruake[2s] urdhëruaka[3s] urdhëruakemi[1p] urdhëruakeni[2p] urdhëruakan[3p]
+  ptcp  urdhëruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+mashtroj (oj) to deceive
+  pres  mashtroj[1s] mashtron[2,3s] mashtrojmë[1p] mashtroni[2p] mashtrojnë[3p]
+  subj  mashtrosh[2s] mashtrojë[3s]
+  impf  mashtroja[1s] mashtroje[2s] mashtronte[3s] mashtronim[1p] mashtronit[2p] mashtronin[3p]
+  aor   mashtrova[1s] mashtrove[2s] mashtroi[3s] mashtruam[1p] mashtruat[2p] mashtruan[3p]
+  imper mashtro[2s] mashtroni[2p]
+  opt   mashtrofsha[1s] mashtrofsh[2s] mashtroftë[3s] mashtrofshim[1p] mashtrofshi[2p] mashtrofshin[3p]
+  adm   mashtruakam[1s] mashtruake[2s] mashtruaka[3s] mashtruakemi[1p] mashtruakeni[2p] mashtruakan[3p]
+  ptcp  mashtruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+kushtoj (oj) to cost; to dedicate
+  pres  kushtoj[1s] kushton[2,3s] kushtojmë[1p] kushtoni[2p] kushtojnë[3p]
+  subj  kushtosh[2s] kushtojë[3s]
+  impf  kushtoja[1s] kushtoje[2s] kushtonte[3s] kushtonim[1p] kushtonit[2p] kushtonin[3p]
+  aor   kushtova[1s] kushtove[2s] kushtoi[3s] kushtuam[1p] kushtuat[2p] kushtuan[3p]
+  imper kushto[2s] kushtoni[2p]
+  opt   kushtofsha[1s] kushtofsh[2s] kushtoftë[3s] kushtofshim[1p] kushtofshi[2p] kushtofshin[3p]
+  adm   kushtuakam[1s] kushtuake[2s] kushtuaka[3s] kushtuakemi[1p] kushtuakeni[2p] kushtuakan[3p]
+  ptcp  kushtuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shenjtëroj (oj) to make holy, to sanctify
+  pres  shenjtëroj[1s] shenjtëron[2,3s] shenjtërojmë[1p] shenjtëroni[2p] shenjtërojnë[3p]
+  subj  shenjtërosh[2s] shenjtërojë[3s]
+  impf  shenjtëroja[1s] shenjtëroje[2s] shenjtëronte[3s] shenjtëronim[1p] shenjtëronit[2p] shenjtëronin[3p]
+  aor   shenjtërova[1s] shenjtërove[2s] shenjtëroi[3s] shenjtëruam[1p] shenjtëruat[2p] shenjtëruan[3p]
+  imper shenjtëro[2s] shenjtëroni[2p]
+  opt   shenjtërofsha[1s] shenjtërofsh[2s] shenjtëroftë[3s] shenjtërofshim[1p] shenjtërofshi[2p] shenjtërofshin[3p]
+  adm   shenjtëruakam[1s] shenjtëruake[2s] shenjtëruaka[3s] shenjtëruakemi[1p] shenjtëruakeni[2p] shenjtëruakan[3p]
+  ptcp  shenjtëruar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+mëkatoj (oj) to sin
+  pres  mëkatoj[1s] mëkaton[2,3s] mëkatojmë[1p] mëkatoni[2p] mëkatojnë[3p]
+  subj  mëkatosh[2s] mëkatojë[3s]
+  impf  mëkatoja[1s] mëkatoje[2s] mëkatonte[3s] mëkatonim[1p] mëkatonit[2p] mëkatonin[3p]
+  aor   mëkatova[1s] mëkatove[2s] mëkatoi[3s] mëkatuam[1p] mëkatuat[2p] mëkatuan[3p]
+  imper mëkato[2s] mëkatoni[2p]
+  opt   mëkatofsha[1s] mëkatofsh[2s] mëkatoftë[3s] mëkatofshim[1p] mëkatofshi[2p] mëkatofshin[3p]
+  adm   mëkatuakam[1s] mëkatuake[2s] mëkatuaka[3s] mëkatuakemi[1p] mëkatuakeni[2p] mëkatuakan[3p]
+  ptcp  mëkatuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+premtoj (oj) to promise
+  pres  premtoj[1s] premton[2,3s] premtojmë[1p] premtoni[2p] premtojnë[3p]
+  subj  premtosh[2s] premtojë[3s]
+  impf  premtoja[1s] premtoje[2s] premtonte[3s] premtonim[1p] premtonit[2p] premtonin[3p]
+  aor   premtova[1s] premtove[2s] premtoi[3s] premtuam[1p] premtuat[2p] premtuan[3p]
+  imper premto[2s] premtoni[2p]
+  opt   premtofsha[1s] premtofsh[2s] premtoftë[3s] premtofshim[1p] premtofshi[2p] premtofshin[3p]
+  adm   premtuakam[1s] premtuake[2s] premtuaka[3s] premtuakemi[1p] premtuakeni[2p] premtuakan[3p]
+  ptcp  premtuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+ndëshkoj (oj) to punish
+  pres  ndëshkoj[1s] ndëshkon[2,3s] ndëshkojmë[1p] ndëshkoni[2p] ndëshkojnë[3p]
+  subj  ndëshkosh[2s] ndëshkojë[3s]
+  impf  ndëshkoja[1s] ndëshkoje[2s] ndëshkonte[3s] ndëshkonim[1p] ndëshkonit[2p] ndëshkonin[3p]
+  aor   ndëshkova[1s] ndëshkove[2s] ndëshkoi[3s] ndëshkuam[1p] ndëshkuat[2p] ndëshkuan[3p]
+  imper ndëshko[2s] ndëshkoni[2p]
+  opt   ndëshkofsha[1s] ndëshkofsh[2s] ndëshkoftë[3s] ndëshkofshim[1p] ndëshkofshi[2p] ndëshkofshin[3p]
+  adm   ndëshkuakam[1s] ndëshkuake[2s] ndëshkuaka[3s] ndëshkuakemi[1p] ndëshkuakeni[2p] ndëshkuakan[3p]
+  ptcp  ndëshkuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+bashkoj (oj) to unite, to join
+  pres  bashkoj[1s] bashkon[2,3s] bashkojmë[1p] bashkoni[2p] bashkojnë[3p]
+  subj  bashkosh[2s] bashkojë[3s]
+  impf  bashkoja[1s] bashkoje[2s] bashkonte[3s] bashkonim[1p] bashkonit[2p] bashkonin[3p]
+  aor   bashkova[1s] bashkove[2s] bashkoi[3s] bashkuam[1p] bashkuat[2p] bashkuan[3p]
+  imper bashko[2s] bashkoni[2p]
+  opt   bashkofsha[1s] bashkofsh[2s] bashkoftë[3s] bashkofshim[1p] bashkofshi[2p] bashkofshin[3p]
+  adm   bashkuakam[1s] bashkuake[2s] bashkuaka[3s] bashkuakemi[1p] bashkuakeni[2p] bashkuakan[3p]
+  ptcp  bashkuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+tradhtoj (oj) to betray
+  pres  tradhtoj[1s] tradhton[2,3s] tradhtojmë[1p] tradhtoni[2p] tradhtojnë[3p]
+  subj  tradhtosh[2s] tradhtojë[3s]
+  impf  tradhtoja[1s] tradhtoje[2s] tradhtonte[3s] tradhtonim[1p] tradhtonit[2p] tradhtonin[3p]
+  aor   tradhtova[1s] tradhtove[2s] tradhtoi[3s] tradhtuam[1p] tradhtuat[2p] tradhtuan[3p]
+  imper tradhto[2s] tradhtoni[2p]
+  opt   tradhtofsha[1s] tradhtofsh[2s] tradhtoftë[3s] tradhtofshim[1p] tradhtofshi[2p] tradhtofshin[3p]
+  adm   tradhtuakam[1s] tradhtuake[2s] tradhtuaka[3s] tradhtuakemi[1p] tradhtuakeni[2p] tradhtuakan[3p]
+  ptcp  tradhtuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+sakrifikoj (oj) to sacrifice
+  pres  sakrifikoj[1s] sakrifikon[2,3s] sakrifikojmë[1p] sakrifikoni[2p] sakrifikojnë[3p]
+  subj  sakrifikosh[2s] sakrifikojë[3s]
+  impf  sakrifikoja[1s] sakrifikoje[2s] sakrifikonte[3s] sakrifikonim[1p] sakrifikonit[2p] sakrifikonin[3p]
+  aor   sakrifikova[1s] sakrifikove[2s] sakrifikoi[3s] sakrifikuam[1p] sakrifikuat[2p] sakrifikuan[3p]
+  imper sakrifiko[2s] sakrifikoni[2p]
+  opt   sakrifikofsha[1s] sakrifikofsh[2s] sakrifikoftë[3s] sakrifikofshim[1p] sakrifikofshi[2p] sakrifikofshin[3p]
+  adm   sakrifikuakam[1s] sakrifikuake[2s] sakrifikuaka[3s] sakrifikuakemi[1p] sakrifikuakeni[2p] sakrifikuakan[3p]
+  ptcp  sakrifikuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+zbres (cons) to go down, to get off
+  pres  zbres[1s] zbret[2,3s] zbresim[1p] zbresin[3p] zbritni[2p]
+  subj  zbresësh[2s] zbresë[3s]
+  impf  zbritja[1s] zbritje[2s] zbritte[3s] zbritnim[1p] zbritnit[2p] zbritnin[3p]
+  aor   zbrita[1s] zbrite[2s] zbriti[3s] zbritëm[1p] zbritët[2p] zbritën[3p]
+  imper zbritni[2p] zbrit[2s]
+  opt   -
+  adm   -
+  ptcp  zbritur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+dhemb (cons) to hurt, to ache (më dhemb koka: my head hurts)
+  pres  dhemb[1s] dhemb[2,3s] dhembim[1p] dhembni[2p] dhembin[3p]
+  subj  dhembësh[2s] dhembë[3s]
+  impf  dhembja[1s] dhembje[2s] dhembte[3s] dhembnim[1p] dhembnit[2p] dhembnin[3p]
+  aor   dhemba[1s] dhembe[2s] dhembi[3s] dhembëm[1p] dhembët[2p] dhembën[3p]
+  imper dhemb[2s] dhembni[2p]
+  opt   -
+  adm   -
+  ptcp  dhembur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shëroj (oj, NA=true) to cure, to heal (shërohem: to get well)
+  pres  shëroj[1s] shëron[2,3s] shërojmë[1p] shëroni[2p] shërojnë[3p]
+  subj  shërosh[2s] shërojë[3s]
+  impf  shëroja[1s] shëroje[2s] shëronte[3s] shëronim[1p] shëronit[2p] shëronin[3p]
+  aor   shërova[1s] shërove[2s] shëroi[3s] shëruam[1p] shëruat[2p] shëruan[3p]
+  imper shëro[2s] shëroni[2p]
+  opt   shërofsha[1s] shërofsh[2s] shëroftë[3s] shërofshim[1p] shërofshi[2p] shërofshin[3p]
+  adm   shëruakam[1s] shëruake[2s] shëruaka[3s] shëruakemi[1p] shëruakeni[2p] shëruakan[3p]
+  ptcp  shëruar
+  NApres shërohem[1s] shërohesh[2s] shërohet[3s] shërohemi[1p] shëroheni[2p] shërohen[3p]
+  NAimpf shërohesha[1s] shëroheshe[2s] shërohej[3s] shëroheshim[1p] shëroheshit[2p] shëroheshin[3p]
+  NAaor  shërua[3s]
+  NAimper shërohu[2s] shërohuni[2p]
+ec (cons) to walk
+  pres  ecën?[2,3s] ecim?[1p] ecin?[3p] ec?[1s] eci?[1s] ecni?[2p]
+  subj  ecësh?[2s] ecë?[3s]
+  impf  ecja?[1s] ecje?[2s] ecte?[3s] ecnim?[1p] ecnit?[2p] ecnin?[3p]
+  aor   eca?[1s] ece?[2s] eci?[3s] ecëm?[1p] ecët?[2p] ecën?[3p]
+  imper ecni?[2p] ec?[2s]
+  opt   -
+  adm   -
+  ptcp  ecur?
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+kaloj (oj) to pass; to spend (time)
+  pres  kaloj[1s] kalon[2,3s] kalojmë[1p] kaloni[2p] kalojnë[3p]
+  subj  kalosh[2s] kalojë[3s]
+  impf  kaloja[1s] kaloje[2s] kalonte[3s] kalonim[1p] kalonit[2p] kalonin[3p]
+  aor   kalova[1s] kalove[2s] kaloi[3s] kaluam[1p] kaluat[2p] kaluan[3p]
+  imper kalo[2s] kaloni[2p]
+  opt   kalofsha[1s] kalofsh[2s] kaloftë[3s] kalofshim[1p] kalofshi[2p] kalofshin[3p]
+  adm   kaluakam[1s] kaluake[2s] kaluaka[3s] kaluakemi[1p] kaluakeni[2p] kaluakan[3p]
+  ptcp  kaluar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+pjek (cons, NA=true) to bake, to roast
+  pres  pjek[1s] pjek[2,3s] pjekim[1p] pjekin[3p] piqni[2p]
+  subj  pjekësh[2s] pjekë[3s]
+  impf  piqja[1s] piqje[2s] piqte[3s] piqnim[1p] piqnit[2p] piqnin[3p]
+  aor   poqa[1s] poqe[2s] poqi[3s] poqëm[1p] poqët[2p] poqën[3p] pjeka?[1s] pjeke?[2s] pjeki?[3s] pjekëm?[1p] pjekët?[2p] pjekën?[3p]
+  imper piqni[2p] piq[2s]
+  opt   -
+  adm   -
+  ptcp  pjekur
+  NApres piqem[1s] piqesh[2s] piqet[3s] piqemi[1p] piqeni[2p] piqen[3p]
+  NAimpf piqesha[1s] piqeshe[2s] piqej[3s] piqeshim[1p] piqeshit[2p] piqeshin[3p]
+  NAaor  poq[3s]
+  NAimper piqu[2s] piquni[2p]
+përziej (oj, NA=true) to mix, to stir
+  pres  përziej[1s] përzien[2,3s] përziejmë[1p] përzieni[2p] përziejnë[3p]
+  subj  përziesh[2s] përziejë[3s]
+  impf  përzieja[1s] përzieje[2s] përziente[3s] përzienim[1p] përzienit[2p] përzienin[3p]
+  aor   përzjeva[1s] përzjeve[2s] përzjeu[3s] përzjemë?[1p] përzjetë?[2p] përzjenë?[3p]
+  imper përzieni[2p]
+  opt   -
+  adm   -
+  ptcp  përzier
+  NApres përziehem?[1s] përziehesh?[2s] përziehet?[3s] përziehemi?[1p] përzieheni?[2p] përziehen?[3p]
+  NAimpf përziehesha?[1s] përzieheshe?[2s] përziehej?[3s] përzieheshim?[1p] përzieheshit?[2p] përzieheshin?[3p]
+  NAaor  përzje[3s]
+  NAimper përziehu?[2s] përziehuni?[2p]
+ngjit (cons, NA=true) to climb up, to go up (ngjitem: I climb)
+  pres  ngjit[1s] ngjit[2,3s] ngjitim[1p] ngjitni[2p] ngjitin[3p]
+  subj  ngjitësh[2s] ngjitë[3s]
+  impf  ngjitja[1s] ngjitje[2s] ngjitte[3s] ngjitnim[1p] ngjitnit[2p] ngjitnin[3p]
+  aor   ngjita[1s] ngjite[2s] ngjiti[3s] ngjitëm[1p] ngjitët[2p] ngjitën[3p]
+  imper ngjit[2s] ngjitni[2p]
+  opt   -
+  adm   -
+  ptcp  ngjitur
+  NApres ngjitem[1s] ngjitesh[2s] ngjitet[3s] ngjitemi[1p] ngjiteni[2p] ngjiten[3p]
+  NAimpf ngjitesha[1s] ngjiteshe[2s] ngjitej[3s] ngjiteshim[1p] ngjiteshit[2p] ngjiteshin[3p]
+  NAaor  ngjit[3s]
+  NAimper ngjitu[2s] ngjituni[2p]
+bërtas (cons) to shout
+  pres  bërtas[1s] bërtet[2,3s] bërtasim[1p] bërtasin[3p] bërtitni[2p]
+  subj  bërtasësh[2s] bërtasë[3s]
+  impf  bërtitja[1s] bërtitje[2s] bërtitte?[3s] bërtitnim[1p] bërtitnit[2p] bërtitnin[3p]
+  aor   bërtita[1s] bërtite[2s] bërtiti[3s] bërtitëm[1p] bërtitët[2p] bërtitën[3p]
+  imper bërtitni[2p] bërtit[2s]
+  opt   -
+  adm   -
+  ptcp  bërtitur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vërej (oj) to notice
+  pres  vërej[1s] vëren[2,3s] vërejmë[1p] vëreni[2p] vërejnë[3p]
+  subj  vëresh[2s] vërejë[3s]
+  impf  vëreja[1s] vëreje[2s] vërente[3s] vërenim[1p] vërenit[2p] vërenin[3p]
+  aor   vërejta[1s] vërejte[2s] vërejti[3s] vërejtëm[1p] vërejtët[2p] vërejtën[3p]
+  imper vëreni[2p]
+  opt   -
+  adm   -
+  ptcp  vërejtur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+fik (cons, NA=true) to switch off, to put out
+  pres  fik[1s] fik[2,3s] fikim[1p] fikni[2p] fikin[3p]
+  subj  fikësh[2s] fikë[3s]
+  impf  fikja[1s] fikje[2s] fikte[3s] fiknim[1p] fiknit[2p] fiknin[3p]
+  aor   fika[1s] fike[2s] fiki?[3s] fikëm[1p] fikët[2p] fikën[3p]
+  imper fik[2s] fikni[2p]
+  opt   -
+  adm   -
+  ptcp  fikur
+  NApres fikem[1s] fikesh[2s] fiket[3s] fikemi[1p] fikeni[2p] fiken[3p]
+  NAimpf fikesha[1s] fikeshe[2s] fikej[3s] fikeshim[1p] fikeshit[2p] fikeshin[3p]
+  NAaor  fik[3s]
+  NAimper fiku[2s] fikuni[2p]
+regjistroj (oj, NA=true) to register, to record
+  pres  regjistroj[1s] regjistron[2,3s] regjistrojmë[1p] regjistroni[2p] regjistrojnë[3p]
+  subj  regjistrosh[2s] regjistrojë[3s]
+  impf  regjistroja[1s] regjistroje[2s] regjistronte[3s] regjistronim[1p] regjistronit[2p] regjistronin[3p]
+  aor   regjistrova[1s] regjistrove[2s] regjistroi[3s] regjistruam[1p] regjistruat[2p] regjistruan[3p]
+  imper regjistro[2s] regjistroni[2p]
+  opt   regjistrofsha[1s] regjistrofsh[2s] regjistroftë[3s] regjistrofshim[1p] regjistrofshi[2p] regjistrofshin[3p]
+  adm   regjistruakam[1s] regjistruake[2s] regjistruaka[3s] regjistruakemi[1p] regjistruakeni[2p] regjistruakan[3p]
+  ptcp  regjistruar
+  NApres regjistrohem[1s] regjistrohesh[2s] regjistrohet[3s] regjistrohemi[1p] regjistroheni[2p] regjistrohen[3p]
+  NAimpf regjistrohesha[1s] regjistroheshe[2s] regjistrohej[3s] regjistroheshim[1p] regjistroheshit[2p] regjistroheshin[3p]
+  NAaor  regjistrua[3s]
+  NAimper regjistrohu[2s] regjistrohuni[2p]
+pushtoj (oj, NA=true) to conquer, to occupy
+  pres  pushtoj[1s] pushton[2,3s] pushtojmë[1p] pushtoni[2p] pushtojnë[3p]
+  subj  pushtosh[2s] pushtojë[3s]
+  impf  pushtoja[1s] pushtoje[2s] pushtonte[3s] pushtonim[1p] pushtonit[2p] pushtonin[3p]
+  aor   pushtova[1s] pushtove[2s] pushtoi[3s] pushtuam[1p] pushtuat[2p] pushtuan[3p]
+  imper pushto[2s] pushtoni[2p]
+  opt   pushtofsha[1s] pushtofsh[2s] pushtoftë[3s] pushtofshim[1p] pushtofshi[2p] pushtofshin[3p]
+  adm   pushtuakam[1s] pushtuake[2s] pushtuaka[3s] pushtuakemi[1p] pushtuakeni[2p] pushtuakan[3p]
+  ptcp  pushtuar
+  NApres pushtohem[1s] pushtohesh[2s] pushtohet[3s] pushtohemi[1p] pushtoheni[2p] pushtohen[3p]
+  NAimpf pushtohesha[1s] pushtoheshe[2s] pushtohej[3s] pushtoheshim[1p] pushtoheshit[2p] pushtoheshin[3p]
+  NAaor  pushtua[3s]
+  NAimper pushtohu[2s] pushtohuni[2p]
+themeloj (oj, NA=true) to found, to establish
+  pres  themeloj[1s] themelon[2,3s] themelojmë[1p] themeloni[2p] themelojnë[3p]
+  subj  themelosh[2s] themelojë[3s]
+  impf  themeloja[1s] themeloje[2s] themelonte[3s] themelonim[1p] themelonit[2p] themelonin[3p]
+  aor   themelova[1s] themelove[2s] themeloi[3s] themeluam[1p] themeluat[2p] themeluan[3p]
+  imper themelo[2s] themeloni[2p]
+  opt   themelofsha[1s] themelofsh[2s] themeloftë[3s] themelofshim[1p] themelofshi[2p] themelofshin[3p]
+  adm   themeluakam[1s] themeluake[2s] themeluaka[3s] themeluakemi[1p] themeluakeni[2p] themeluakan[3p]
+  ptcp  themeluar
+  NApres themelohem[1s] themelohesh[2s] themelohet[3s] themelohemi[1p] themeloheni[2p] themelohen[3p]
+  NAimpf themelohesha[1s] themeloheshe[2s] themelohej[3s] themeloheshim[1p] themeloheshit[2p] themeloheshin[3p]
+  NAaor  themelua[3s]
+  NAimper themelohu[2s] themelohuni[2p]
+shtrij (oj, NA=true) to stretch out (shtrihet: it lies, it extends)
+  pres  shtrij[1s] shtrin[2,3s] shtrijmë[1p] shtrini[2p] shtrijnë[3p]
+  subj  shtrish[2s] shtrijë[3s]
+  impf  shtrija[1s] shtrije[2s] shtrinte[3s] shtrinim[1p] shtrinit[2p] shtrinin[3p]
+  aor   shtriva[1s] shtrive[2s] shtriu[3s] shtrimë[1p] shtritë[2p] shtrinë[3p]
+  imper shtrini[2p]
+  opt   -
+  adm   -
+  ptcp  shtrirë
+  NApres shtrihem[1s] shtrihesh[2s] shtrihet[3s] shtrihemi[1p] shtriheni[2p] shtrihen[3p]
+  NAimpf shtrihesha[1s] shtriheshe[2s] shtrihej[3s] shtriheshim[1p] shtriheshit[2p] shtriheshin[3p]
+  NAaor  shtri[3s]
+  NAimper shtrihu[2s] shtrihuni[2p]
+përfshij (oj, NA=true) to include
+  pres  përfshij[1s] përfshin[2,3s] përfshijmë[1p] përfshini[2p] përfshijnë[3p]
+  subj  përfshish[2s] përfshijë[3s]
+  impf  përfshija[1s] përfshije[2s] përfshinte[3s] përfshinim[1p] përfshinit[2p] përfshinin[3p]
+  aor   përfshiva[1s] përfshive[2s] përfshiu[3s] përfshimë[1p] përfshitë[2p] përfshinë[3p]
+  imper përfshini[2p]
+  opt   -
+  adm   -
+  ptcp  përfshirë
+  NApres përfshihem[1s] përfshihesh[2s] përfshihet[3s] përfshihemi[1p] përfshiheni[2p] përfshihen[3p]
+  NAimpf përfshihesha[1s] përfshiheshe[2s] përfshihej[3s] përfshiheshim[1p] përfshiheshit[2p] përfshiheshin[3p]
+  NAaor  përfshi[3s]
+  NAimper përfshihu[2s] përfshihuni[2p]
+ndjej (oj, NA=true) to feel (ndihem: I feel)
+  pres  ndjej[1s] ndjen[2,3s] ndjejmë[1p] ndjeni[2p] ndjejnë[3p]
+  subj  ndjesh[2s] ndjejë[3s]
+  impf  ndjeja[1s] ndjeje[2s] ndjente[3s] ndjenim[1p] ndjenit[2p] ndjenin[3p]
+  aor   ndjeva[1s] ndjeve[2s] ndjeu[3s] ndjemë[1p] ndjetë[2p] ndjenë[3p]
+  imper ndjeni[2p]
+  opt   -
+  adm   -
+  ptcp  ndjerë
+  NApres ndihesh?[2s] ndihet?[3s] ndihemi?[1p] ndiheni?[2p] ndihen?[3p] ndihem?[1s]
+  NAimpf ndihesha?[1s] ndiheshe?[2s] ndihej?[3s] ndiheshim?[1p] ndiheshit?[2p] ndiheshin?[3p]
+  NAaor  ndje[3s]
+  NAimper ndihu?[2s] ndihuni?[2p]
+ngas (cons) to drive (a vehicle)
+  pres  ngas[1s] nget[2,3s] ngasim[1p] ngasin[3p] ngisni[2p]
+  subj  ngasësh[2s] ngasë[3s]
+  impf  ngisja[1s] ngisje[2s] ngiste[3s] ngisnim[1p] ngisnit[2p] ngisnin[3p]
+  aor   ngava[1s] ngave[2s] ngau[3s] ngamë[1p] ngatë[2p] nganë[3p] ngita?[1s] ngite?[2s] ngiti?[3s] ngitëm?[1p] ngitët?[2p] ngitën?[3p]
+  imper ngisni[2p] ngit[2s]
+  opt   -
+  adm   -
+  ptcp  ngarë ngitur?
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+thërras (cons) to call, to shout for
+  pres  thërras[1s] thërret[2,3s] thërrasim[1p] thërrasin[3p] thërritni[2p]
+  subj  thërrasësh[2s] thërrasë[3s]
+  impf  thërritja[1s] thërritje[2s] thërritte?[3s] thërritnim[1p] thërritnit[2p] thërritnin[3p]
+  aor   thërrita[1s] thërrite[2s] thërriti[3s] thërritëm[1p] thërritët[2p] thërritën[3p] thirra~[1s] thirre~[2s] thirri?[3s] thirrëm~[1p] thirrët?[2p] thirrën~[3p]
+  imper thërritni[2p] thërrit?[2s] thirr?[2s]
+  opt   -
+  adm   -
+  ptcp  thërritur thirrur?
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+rezervoj (oj, NA=true) to reserve, to book
+  pres  rezervoj[1s] rezervon[2,3s] rezervojmë[1p] rezervoni[2p] rezervojnë[3p]
+  subj  rezervosh[2s] rezervojë[3s]
+  impf  rezervoja[1s] rezervoje[2s] rezervonte[3s] rezervonim[1p] rezervonit[2p] rezervonin[3p]
+  aor   rezervova[1s] rezervove[2s] rezervoi[3s] rezervuam[1p] rezervuat[2p] rezervuan[3p]
+  imper rezervo[2s] rezervoni[2p]
+  opt   rezervofsha[1s] rezervofsh[2s] rezervoftë[3s] rezervofshim[1p] rezervofshi[2p] rezervofshin[3p]
+  adm   rezervuakam[1s] rezervuake[2s] rezervuaka[3s] rezervuakemi[1p] rezervuakeni[2p] rezervuakan[3p]
+  ptcp  rezervuar
+  NApres rezervohem[1s] rezervohesh[2s] rezervohet[3s] rezervohemi[1p] rezervoheni[2p] rezervohen[3p]
+  NAimpf rezervohesha[1s] rezervoheshe[2s] rezervohej[3s] rezervoheshim[1p] rezervoheshit[2p] rezervoheshin[3p]
+  NAaor  rezervua[3s]
+  NAimper rezervohu[2s] rezervohuni[2p]
+prodhoj (oj, NA=true) to produce
+  pres  prodhoj[1s] prodhon[2,3s] prodhojmë[1p] prodhoni[2p] prodhojnë[3p]
+  subj  prodhosh[2s] prodhojë[3s]
+  impf  prodhoja[1s] prodhoje[2s] prodhonte[3s] prodhonim[1p] prodhonit[2p] prodhonin[3p]
+  aor   prodhova[1s] prodhove[2s] prodhoi[3s] prodhuam[1p] prodhuat[2p] prodhuan[3p]
+  imper prodho[2s] prodhoni[2p]
+  opt   prodhofsha[1s] prodhofsh[2s] prodhoftë[3s] prodhofshim[1p] prodhofshi[2p] prodhofshin[3p]
+  adm   prodhuakam[1s] prodhuake[2s] prodhuaka[3s] prodhuakemi[1p] prodhuakeni[2p] prodhuakan[3p]
+  ptcp  prodhuar
+  NApres prodhohem[1s] prodhohesh[2s] prodhohet[3s] prodhohemi[1p] prodhoheni[2p] prodhohen[3p]
+  NAimpf prodhohesha[1s] prodhoheshe[2s] prodhohej[3s] prodhoheshim[1p] prodhoheshit[2p] prodhoheshin[3p]
+  NAaor  prodhua[3s]
+  NAimper prodhohu[2s] prodhohuni[2p]
+punësoj (oj, NA=true) to employ
+  pres  punësoj[1s] punëson[2,3s] punësojmë[1p] punësoni[2p] punësojnë[3p]
+  subj  punësosh[2s] punësojë[3s]
+  impf  punësoja[1s] punësoje[2s] punësonte[3s] punësonim[1p] punësonit[2p] punësonin[3p]
+  aor   punësova[1s] punësove[2s] punësoi[3s] punësuam[1p] punësuat[2p] punësuan[3p]
+  imper punëso[2s] punësoni[2p]
+  opt   punësofsha[1s] punësofsh[2s] punësoftë[3s] punësofshim[1p] punësofshi[2p] punësofshin[3p]
+  adm   punësuakam[1s] punësuake[2s] punësuaka[3s] punësuakemi[1p] punësuakeni[2p] punësuakan[3p]
+  ptcp  punësuar
+  NApres punësohem[1s] punësohesh[2s] punësohet[3s] punësohemi[1p] punësoheni[2p] punësohen[3p]
+  NAimpf punësohesha[1s] punësoheshe[2s] punësohej[3s] punësoheshim[1p] punësoheshit[2p] punësoheshin[3p]
+  NAaor  punësua[3s]
+  NAimper punësohu[2s] punësohuni[2p]
+shqiptoj (oj, NA=true) to pronounce
+  pres  shqiptoj[1s] shqipton[2,3s] shqiptojmë[1p] shqiptoni[2p] shqiptojnë[3p]
+  subj  shqiptosh[2s] shqiptojë[3s]
+  impf  shqiptoja[1s] shqiptoje[2s] shqiptonte[3s] shqiptonim[1p] shqiptonit[2p] shqiptonin[3p]
+  aor   shqiptova[1s] shqiptove[2s] shqiptoi[3s] shqiptuam[1p] shqiptuat[2p] shqiptuan[3p]
+  imper shqipto[2s] shqiptoni[2p]
+  opt   shqiptofsha[1s] shqiptofsh[2s] shqiptoftë[3s] shqiptofshim[1p] shqiptofshi[2p] shqiptofshin[3p]
+  adm   shqiptuakam[1s] shqiptuake[2s] shqiptuaka[3s] shqiptuakemi[1p] shqiptuakeni[2p] shqiptuakan[3p]
+  ptcp  shqiptuar
+  NApres shqiptohem[1s] shqiptohesh[2s] shqiptohet[3s] shqiptohemi[1p] shqiptoheni[2p] shqiptohen[3p]
+  NAimpf shqiptohesha[1s] shqiptoheshe[2s] shqiptohej[3s] shqiptoheshim[1p] shqiptoheshit[2p] shqiptoheshin[3p]
+  NAaor  shqiptua[3s]
+  NAimper shqiptohu[2s] shqiptohuni[2p]
+korrigjoj (oj, NA=true) to correct
+  pres  korrigjoj[1s] korrigjon[2,3s] korrigjojmë[1p] korrigjoni[2p] korrigjojnë[3p]
+  subj  korrigjosh[2s] korrigjojë[3s]
+  impf  korrigjoja[1s] korrigjoje[2s] korrigjonte[3s] korrigjonim[1p] korrigjonit[2p] korrigjonin[3p]
+  aor   korrigjova[1s] korrigjove[2s] korrigjoi[3s] korrigjuam[1p] korrigjuat[2p] korrigjuan[3p]
+  imper korrigjo[2s] korrigjoni[2p]
+  opt   korrigjofsha[1s] korrigjofsh[2s] korrigjoftë[3s] korrigjofshim[1p] korrigjofshi[2p] korrigjofshin[3p]
+  adm   korrigjuakam[1s] korrigjuake[2s] korrigjuaka[3s] korrigjuakemi[1p] korrigjuakeni[2p] korrigjuakan[3p]
+  ptcp  korrigjuar
+  NApres korrigjohem[1s] korrigjohesh[2s] korrigjohet[3s] korrigjohemi[1p] korrigjoheni[2p] korrigjohen[3p]
+  NAimpf korrigjohesha[1s] korrigjoheshe[2s] korrigjohej[3s] korrigjoheshim[1p] korrigjoheshit[2p] korrigjoheshin[3p]
+  NAaor  korrigjua[3s]
+  NAimper korrigjohu[2s] korrigjohuni[2p]
+prek (cons, NA=true) to touch
+  pres  prek[1s] prek[2,3s] prekim[1p] prekni[2p] prekin[3p]
+  subj  prekësh[2s] prekë[3s]
+  impf  prekja[1s] prekje[2s] prekte[3s] preknim[1p] preknit[2p] preknin[3p]
+  aor   preka[1s] preke[2s] preku[3s] prekëm[1p] prekët[2p] prekën[3p]
+  imper prek[2s] prekni[2p]
+  opt   -
+  adm   -
+  ptcp  prekur
+  NApres prekem[1s] prekesh[2s] preket[3s] prekemi[1p] prekeni[2p] preken[3p]
+  NAimpf prekesha[1s] prekeshe[2s] prekej[3s] prekeshim[1p] prekeshit[2p] prekeshin[3p]
+  NAaor  prek[3s]
+  NAimper preku[2s] prekuni[2p]
+përsëris (cons) to repeat
+  pres  përsëris[1s] përsërit[2,3s] përsërisim[1p] përsërisin[3p] përsërisni[2p]
+  subj  përsërisësh[2s] përsërisë[3s]
+  impf  përsërisja[1s] përsërisje[2s] përsëriste[3s] përsërisnim[1p] përsërisnit[2p] përsërisnin[3p]
+  aor   përsërita[1s] përsërite[2s] përsëriti[3s] përsëritëm[1p] përsëritët[2p] përsëritën[3p]
+  imper përsërisni[2p] përsërit[2s]
+  opt   -
+  adm   -
+  ptcp  përsëritur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+leh (cons) to bark
+  pres  leh[1s] leh[2,3s] lehim[1p] lehni[2p] lehin[3p]
+  subj  lehësh[2s] lehë[3s]
+  impf  lehja[1s] lehje[2s] lehte[3s] lehnim[1p] lehnit[2p] lehnin[3p]
+  aor   leha[1s] lehe[2s] lehu[3s] lehëm[1p] lehët[2p] lehën[3p]
+  imper leh[2s] lehni[2p]
+  opt   -
+  adm   -
+  ptcp  lehur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shqetësoj (oj, NA=true) to worry, to disturb (shqetësohem: to worry)
+  pres  shqetësoj[1s] shqetëson[2,3s] shqetësojmë[1p] shqetësoni[2p] shqetësojnë[3p]
+  subj  shqetësosh[2s] shqetësojë[3s]
+  impf  shqetësoja[1s] shqetësoje[2s] shqetësonte[3s] shqetësonim[1p] shqetësonit[2p] shqetësonin[3p]
+  aor   shqetësova[1s] shqetësove[2s] shqetësoi[3s] shqetësuam[1p] shqetësuat[2p] shqetësuan[3p]
+  imper shqetëso[2s] shqetësoni[2p]
+  opt   shqetësofsha[1s] shqetësofsh[2s] shqetësoftë[3s] shqetësofshim[1p] shqetësofshi[2p] shqetësofshin[3p]
+  adm   shqetësuakam[1s] shqetësuake[2s] shqetësuaka[3s] shqetësuakemi[1p] shqetësuakeni[2p] shqetësuakan[3p]
+  ptcp  shqetësuar
+  NApres shqetësohem[1s] shqetësohesh[2s] shqetësohet[3s] shqetësohemi[1p] shqetësoheni[2p] shqetësohen[3p]
+  NAimpf shqetësohesha[1s] shqetësoheshe[2s] shqetësohej[3s] shqetësoheshim[1p] shqetësoheshit[2p] shqetësoheshin[3p]
+  NAaor  shqetësua[3s]
+  NAimper shqetësohu[2s] shqetësohuni[2p]
+humb (cons) to lose
+  pres  humb[1s] humb[2,3s] humbim[1p] humbni[2p] humbin[3p]
+  subj  humbësh[2s] humbë[3s]
+  impf  humbja[1s] humbje[2s] humbte[3s] humbnim[1p] humbnit[2p] humbnin[3p]
+  aor   humba[1s] humbe[2s] humbi[3s] humbëm[1p] humbët[2p] humbën[3p]
+  imper humb[2s] humbni[2p]
+  opt   -
+  adm   -
+  ptcp  humbur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+gaboj (oj, NA=true) to make a mistake, to be wrong
+  pres  gaboj[1s] gabon[2,3s] gabojmë[1p] gaboni[2p] gabojnë[3p]
+  subj  gabosh[2s] gabojë[3s]
+  impf  gaboja[1s] gaboje[2s] gabonte[3s] gabonim[1p] gabonit[2p] gabonin[3p]
+  aor   gabova[1s] gabove[2s] gaboi[3s] gabuam[1p] gabuat[2p] gabuan[3p]
+  imper gabo[2s] gaboni[2p]
+  opt   gabofsha[1s] gabofsh[2s] gaboftë[3s] gabofshim[1p] gabofshi[2p] gabofshin[3p]
+  adm   gabuakam[1s] gabuake[2s] gabuaka[3s] gabuakemi[1p] gabuakeni[2p] gabuakan[3p]
+  ptcp  gabuar
+  NApres gabohem[1s] gabohesh[2s] gabohet[3s] gabohemi[1p] gaboheni[2p] gabohen[3p]
+  NAimpf gabohesha[1s] gaboheshe[2s] gabohej[3s] gaboheshim[1p] gaboheshit[2p] gaboheshin[3p]
+  NAaor  gabua[3s]
+  NAimper gabohu[2s] gabohuni[2p]
+frikësoj (oj, NA=true) to frighten (frikësohem: to be afraid)
+  pres  frikësoj[1s] frikëson[2,3s] frikësojmë[1p] frikësoni[2p] frikësojnë[3p]
+  subj  frikësosh[2s] frikësojë[3s]
+  impf  frikësoja[1s] frikësoje[2s] frikësonte[3s] frikësonim[1p] frikësonit[2p] frikësonin[3p]
+  aor   frikësova[1s] frikësove[2s] frikësoi[3s] frikësuam[1p] frikësuat[2p] frikësuan[3p]
+  imper frikëso[2s] frikësoni[2p]
+  opt   frikësofsha[1s] frikësofsh[2s] frikësoftë[3s] frikësofshim[1p] frikësofshi[2p] frikësofshin[3p]
+  adm   frikësuakam[1s] frikësuake[2s] frikësuaka[3s] frikësuakemi[1p] frikësuakeni[2p] frikësuakan[3p]
+  ptcp  frikësuar
+  NApres frikësohem[1s] frikësohesh[2s] frikësohet[3s] frikësohemi[1p] frikësoheni[2p] frikësohen[3p]
+  NAimpf frikësohesha[1s] frikësoheshe[2s] frikësohej[3s] frikësoheshim[1p] frikësoheshit[2p] frikësoheshin[3p]
+  NAaor  frikësua[3s]
+  NAimper frikësohu[2s] frikësohuni[2p]
+rrotulloj (oj, NA=true) to turn round, to stir
+  pres  rrotulloj[1s] rrotullon[2,3s] rrotullojmë[1p] rrotulloni[2p] rrotullojnë[3p]
+  subj  rrotullosh[2s] rrotullojë[3s]
+  impf  rrotulloja[1s] rrotulloje[2s] rrotullonte[3s] rrotullonim[1p] rrotullonit[2p] rrotullonin[3p]
+  aor   rrotullova[1s] rrotullove[2s] rrotulloi[3s] rrotulluam[1p] rrotulluat[2p] rrotulluan[3p]
+  imper rrotullo[2s] rrotulloni[2p]
+  opt   rrotullofsha[1s] rrotullofsh[2s] rrotulloftë[3s] rrotullofshim[1p] rrotullofshi[2p] rrotullofshin[3p]
+  adm   rrotulluakam[1s] rrotulluake[2s] rrotulluaka[3s] rrotulluakemi[1p] rrotulluakeni[2p] rrotulluakan[3p]
+  ptcp  rrotulluar
+  NApres rrotullohem[1s] rrotullohesh[2s] rrotullohet[3s] rrotullohemi[1p] rrotulloheni[2p] rrotullohen[3p]
+  NAimpf rrotullohesha[1s] rrotulloheshe[2s] rrotullohej[3s] rrotulloheshim[1p] rrotulloheshit[2p] rrotulloheshin[3p]
+  NAaor  rrotullua[3s]
+  NAimper rrotullohu[2s] rrotullohuni[2p]
+rregulloj (oj, NA=true) to fix, to repair, to arrange
+  pres  rregulloj[1s] rregullon[2,3s] rregullojmë[1p] rregulloni[2p] rregullojnë[3p]
+  subj  rregullosh[2s] rregullojë[3s]
+  impf  rregulloja[1s] rregulloje[2s] rregullonte[3s] rregullonim[1p] rregullonit[2p] rregullonin[3p]
+  aor   rregullova[1s] rregullove[2s] rregulloi[3s] rregulluam[1p] rregulluat[2p] rregulluan[3p]
+  imper rregullo[2s] rregulloni[2p]
+  opt   rregullofsha[1s] rregullofsh[2s] rregulloftë[3s] rregullofshim[1p] rregullofshi[2p] rregullofshin[3p]
+  adm   rregulluakam[1s] rregulluake[2s] rregulluaka[3s] rregulluakemi[1p] rregulluakeni[2p] rregulluakan[3p]
+  ptcp  rregulluar
+  NApres rregullohem[1s] rregullohesh[2s] rregullohet[3s] rregullohemi[1p] rregulloheni[2p] rregullohen[3p]
+  NAimpf rregullohesha[1s] rregulloheshe[2s] rregullohej[3s] rregulloheshim[1p] rregulloheshit[2p] rregulloheshin[3p]
+  NAaor  rregullua[3s]
+  NAimper rregullohu[2s] rregullohuni[2p]
+turpëroj (oj, NA=true) to embarrass, to shame (turpërohem: to be embarrassed)
+  pres  turpëroj[1s] turpëron[2,3s] turpërojmë[1p] turpëroni[2p] turpërojnë[3p]
+  subj  turpërosh[2s] turpërojë[3s]
+  impf  turpëroja[1s] turpëroje[2s] turpëronte[3s] turpëronim[1p] turpëronit[2p] turpëronin[3p]
+  aor   turpërova[1s] turpërove[2s] turpëroi[3s] turpëruam[1p] turpëruat[2p] turpëruan[3p]
+  imper turpëro[2s] turpëroni[2p]
+  opt   turpërofsha[1s] turpërofsh[2s] turpëroftë[3s] turpërofshim[1p] turpërofshi[2p] turpërofshin[3p]
+  adm   turpëruakam[1s] turpëruake[2s] turpëruaka[3s] turpëruakemi[1p] turpëruakeni[2p] turpëruakan[3p]
+  ptcp  turpëruar
+  NApres turpërohem[1s] turpërohesh[2s] turpërohet[3s] turpërohemi[1p] turpëroheni[2p] turpërohen[3p]
+  NAimpf turpërohesha[1s] turpëroheshe[2s] turpërohej[3s] turpëroheshim[1p] turpëroheshit[2p] turpëroheshin[3p]
+  NAaor  turpërua[3s]
+  NAimper turpërohu[2s] turpërohuni[2p]
+lag (cons) to wet
+  pres  lag[1s] lag[2,3s] lagim[1p] lagni[2p] lagin[3p]
+  subj  lagësh[2s] lagë[3s]
+  impf  lagja[1s] lagje[2s] lagte[3s] lagnim[1p] lagnit[2p] lagnin[3p]
+  aor   laga[1s] lage[2s] lagi[3s] lagëm[1p] lagët[2p] lagën[3p]
+  imper lag[2s] lagni[2p]
+  opt   -
+  adm   -
+  ptcp  lagur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+pëshpëris (cons) to whisper
+  pres  pëshpëris[1s] pëshpërit[2,3s] pëshpërisim[1p] pëshpërisin[3p] pëshpërisni[2p]
+  subj  pëshpërisësh[2s] pëshpërisë[3s]
+  impf  pëshpërisja[1s] pëshpërisje[2s] pëshpëriste[3s] pëshpërisnim[1p] pëshpërisnit[2p] pëshpërisnin[3p]
+  aor   pëshpërita[1s] pëshpërite[2s] pëshpëriti[3s] pëshpëritëm[1p] pëshpëritët[2p] pëshpëritën[3p]
+  imper pëshpërisni[2p] pëshpërit[2s]
+  opt   -
+  adm   -
+  ptcp  pëshpëritur
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+drejtoj (oj, NA=true) to lead, to direct, to steer
+  pres  drejtoj[1s] drejton[2,3s] drejtojmë[1p] drejtoni[2p] drejtojnë[3p]
+  subj  drejtosh[2s] drejtojë[3s]
+  impf  drejtoja[1s] drejtoje[2s] drejtonte[3s] drejtonim[1p] drejtonit[2p] drejtonin[3p]
+  aor   drejtova[1s] drejtove[2s] drejtoi[3s] drejtuam[1p] drejtuat[2p] drejtuan[3p]
+  imper drejto[2s] drejtoni[2p]
+  opt   drejtofsha[1s] drejtofsh[2s] drejtoftë[3s] drejtofshim[1p] drejtofshi[2p] drejtofshin[3p]
+  adm   drejtuakam[1s] drejtuake[2s] drejtuaka[3s] drejtuakemi[1p] drejtuakeni[2p] drejtuakan[3p]
+  ptcp  drejtuar
+  NApres drejtohem[1s] drejtohesh[2s] drejtohet[3s] drejtohemi[1p] drejtoheni[2p] drejtohen[3p]
+  NAimpf drejtohesha[1s] drejtoheshe[2s] drejtohej[3s] drejtoheshim[1p] drejtoheshit[2p] drejtoheshin[3p]
+  NAaor  drejtua[3s]
+  NAimper drejtohu[2s] drejtohuni[2p]
+mat (cons, NA=true) to measure
+  pres  mat[1s] mat[2,3s] matim[1p] matni[2p] matin[3p]
+  subj  matësh[2s] matë[3s]
+  impf  matja[1s] matje[2s] matte[3s] matnim[1p] matnit[2p] matnin[3p]
+  aor   mata[1s] mate[2s] mati[3s] matëm[1p] matët[2p] matën[3p]
+  imper mat[2s] matni[2p]
+  opt   -
+  adm   -
+  ptcp  matur
+  NApres matem[1s] matesh[2s] matet[3s] matemi[1p] mateni[2p] maten[3p]
+  NAimpf matesha[1s] mateshe[2s] matej[3s] mateshim[1p] mateshit[2p] mateshin[3p]
+  NAaor  mat[3s]
+  NAimper matu[2s] matuni[2p]
+fitoj (oj) to earn, to win, to gain
+  pres  fitoj[1s] fiton[2,3s] fitojmë[1p] fitoni[2p] fitojnë[3p]
+  subj  fitosh[2s] fitojë[3s]
+  impf  fitoja[1s] fitoje[2s] fitonte[3s] fitonim[1p] fitonit[2p] fitonin[3p]
+  aor   fitova[1s] fitove[2s] fitoi[3s] fituam[1p] fituat[2p] fituan[3p]
+  imper fito[2s] fitoni[2p]
+  opt   fitofsha[1s] fitofsh[2s] fitoftë[3s] fitofshim[1p] fitofshi[2p] fitofshin[3p]
+  adm   fituakam[1s] fituake[2s] fituaka[3s] fituakemi[1p] fituakeni[2p] fituakan[3p]
+  ptcp  fituar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+copëtoj (oj, NA=true) to break into pieces, to cut up
+  pres  copëtoj[1s] copëton[2,3s] copëtojmë[1p] copëtoni[2p] copëtojnë[3p]
+  subj  copëtosh[2s] copëtojë[3s]
+  impf  copëtoja[1s] copëtoje[2s] copëtonte[3s] copëtonim[1p] copëtonit[2p] copëtonin[3p]
+  aor   copëtova[1s] copëtove[2s] copëtoi[3s] copëtuam[1p] copëtuat[2p] copëtuan[3p]
+  imper copëto[2s] copëtoni[2p]
+  opt   copëtofsha[1s] copëtofsh[2s] copëtoftë[3s] copëtofshim[1p] copëtofshi[2p] copëtofshin[3p]
+  adm   copëtuakam[1s] copëtuake[2s] copëtuaka[3s] copëtuakemi[1p] copëtuakeni[2p] copëtuakan[3p]
+  ptcp  copëtuar
+  NApres copëtohem[1s] copëtohesh[2s] copëtohet[3s] copëtohemi[1p] copëtoheni[2p] copëtohen[3p]
+  NAimpf copëtohesha[1s] copëtoheshe[2s] copëtohej[3s] copëtoheshim[1p] copëtoheshit[2p] copëtoheshin[3p]
+  NAaor  copëtua[3s]
+  NAimper copëtohu[2s] copëtohuni[2p]
+nxjerr (cons) to take out, to draw out
+  pres  nxjerr[1s] nxjerr[2,3s] nxjerrim[1p] nxjerrin[3p] nxirni[2p]
+  subj  nxjerrësh[2s] nxjerrë[3s]
+  impf  nxirja[1s] nxirje[2s] nxirte[3s] nxirnim[1p] nxirnit[2p] nxirnin[3p]
+  aor   nxora[1s] nxore[2s] nxori[3s] nxorëm[1p] nxorët[2p] nxorën[3p]
+  imper nxirni[2p] nxirr[2s]
+  opt   -
+  adm   -
+  ptcp  nxjerrë
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+dridhem (cons, NA=only) to tremble, to shiver
+  pres  -
+  subj  -
+  impf  -
+  aor   -
+  imper -
+  opt   -
+  adm   -
+  ptcp  dridhur
+  NApres dridhem[1s] dridhesh[2s] dridhet[3s] dridhemi[1p] dridheni[2p] dridhen[3p]
+  NAimpf dridhesha[1s] dridheshe[2s] dridhej[3s] dridheshim[1p] dridheshit[2p] dridheshin[3p]
+  NAaor  dridha[1s] dridhe[2s] dridhëm[1p] dridhët[2p] dridhën[3p] dridh[3s]
+  NAimper dridhu[2s] dridhuni[2p]
+qetësoj (oj, NA=true) to calm (qetësohem: to calm down)
+  pres  qetësoj[1s] qetëson[2,3s] qetësojmë[1p] qetësoni[2p] qetësojnë[3p]
+  subj  qetësosh[2s] qetësojë[3s]
+  impf  qetësoja[1s] qetësoje[2s] qetësonte[3s] qetësonim[1p] qetësonit[2p] qetësonin[3p]
+  aor   qetësova[1s] qetësove[2s] qetësoi[3s] qetësuam[1p] qetësuat[2p] qetësuan[3p]
+  imper qetëso[2s] qetësoni[2p]
+  opt   qetësofsha[1s] qetësofsh[2s] qetësoftë[3s] qetësofshim[1p] qetësofshi[2p] qetësofshin[3p]
+  adm   qetësuakam[1s] qetësuake[2s] qetësuaka[3s] qetësuakemi[1p] qetësuakeni[2p] qetësuakan[3p]
+  ptcp  qetësuar
+  NApres qetësohem[1s] qetësohesh[2s] qetësohet[3s] qetësohemi[1p] qetësoheni[2p] qetësohen[3p]
+  NAimpf qetësohesha[1s] qetësoheshe[2s] qetësohej[3s] qetësoheshim[1p] qetësoheshit[2p] qetësoheshin[3p]
+  NAaor  qetësua[3s]
+  NAimper qetësohu[2s] qetësohuni[2p]
+përkul (cons, NA=true) to bend (përkulem: to bend down)
+  pres  përkul[1s] përkul[2,3s] përkulim[1p] përkulni[2p] përkulin[3p]
+  subj  përkulësh[2s] përkulë[3s]
+  impf  përkulja[1s] përkulje[2s] përkulte[3s] përkulnim[1p] përkulnit[2p] përkulnin[3p]
+  aor   përkula[1s] përkule[2s] përkuli[3s] përkulëm[1p] përkulët[2p] përkulën[3p]
+  imper përkul[2s] përkulni[2p]
+  opt   -
+  adm   -
+  ptcp  përkulur
+  NApres përkulem[1s] përkulesh[2s] përkulet[3s] përkulemi[1p] përkuleni[2p] përkulen[3p]
+  NAimpf përkulesha[1s] përkuleshe[2s] përkulej[3s] përkuleshim[1p] përkuleshit[2p] përkuleshin[3p]
+  NAaor  përkul[3s]
+  NAimper përkulu[2s] përkuluni[2p]
+printoj (oj) to print
+  pres  printoj[1s] printon[2,3s] printojmë[1p] printoni[2p] printojnë[3p]
+  subj  printosh[2s] printojë[3s]
+  impf  printoja[1s] printoje[2s] printonte[3s] printonim[1p] printonit[2p] printonin[3p]
+  aor   printova[1s] printove[2s] printoi[3s] printuam[1p] printuat[2p] printuan[3p]
+  imper printo[2s] printoni[2p]
+  opt   printofsha[1s] printofsh[2s] printoftë[3s] printofshim[1p] printofshi[2p] printofshin[3p]
+  adm   printuakam[1s] printuake[2s] printuaka[3s] printuakemi[1p] printuakeni[2p] printuakan[3p]
+  ptcp  printuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+trishtoj (oj, NA=true) to sadden (trishtohem: to become sad)
+  pres  trishtoj[1s] trishton[2,3s] trishtojmë[1p] trishtoni[2p] trishtojnë[3p]
+  subj  trishtosh[2s] trishtojë[3s]
+  impf  trishtoja[1s] trishtoje[2s] trishtonte[3s] trishtonim[1p] trishtonit[2p] trishtonin[3p]
+  aor   trishtova[1s] trishtove[2s] trishtoi[3s] trishtuam[1p] trishtuat[2p] trishtuan[3p]
+  imper trishto[2s] trishtoni[2p]
+  opt   trishtofsha[1s] trishtofsh[2s] trishtoftë[3s] trishtofshim[1p] trishtofshi[2p] trishtofshin[3p]
+  adm   trishtuakam[1s] trishtuake[2s] trishtuaka[3s] trishtuakemi[1p] trishtuakeni[2p] trishtuakan[3p]
+  ptcp  trishtuar
+  NApres trishtohem[1s] trishtohesh[2s] trishtohet[3s] trishtohemi[1p] trishtoheni[2p] trishtohen[3p]
+  NAimpf trishtohesha[1s] trishtoheshe[2s] trishtohej[3s] trishtoheshim[1p] trishtoheshit[2p] trishtoheshin[3p]
+  NAaor  trishtua[3s]
+  NAimper trishtohu[2s] trishtohuni[2p]
+përqafoj (oj, NA=true) to hug, to embrace
+  pres  përqafoj[1s] përqafon[2,3s] përqafojmë[1p] përqafoni[2p] përqafojnë[3p]
+  subj  përqafosh[2s] përqafojë[3s]
+  impf  përqafoja[1s] përqafoje[2s] përqafonte[3s] përqafonim[1p] përqafonit[2p] përqafonin[3p]
+  aor   përqafova[1s] përqafove[2s] përqafoi[3s] përqafuam[1p] përqafuat[2p] përqafuan[3p]
+  imper përqafo[2s] përqafoni[2p]
+  opt   përqafofsha[1s] përqafofsh[2s] përqafoftë[3s] përqafofshim[1p] përqafofshi[2p] përqafofshin[3p]
+  adm   përqafuakam[1s] përqafuake[2s] përqafuaka[3s] përqafuakemi[1p] përqafuakeni[2p] përqafuakan[3p]
+  ptcp  përqafuar
+  NApres përqafohem[1s] përqafohesh[2s] përqafohet[3s] përqafohemi[1p] përqafoheni[2p] përqafohen[3p]
+  NAimpf përqafohesha[1s] përqafoheshe[2s] përqafohej[3s] përqafoheshim[1p] përqafoheshit[2p] përqafoheshin[3p]
+  NAaor  përqafua[3s]
+  NAimper përqafohu[2s] përqafohuni[2p]
+mungoj (oj) to be absent, to be missing
+  pres  mungoj[1s] mungon[2,3s] mungojmë[1p] mungoni[2p] mungojnë[3p]
+  subj  mungosh[2s] mungojë[3s]
+  impf  mungoja[1s] mungoje[2s] mungonte[3s] mungonim[1p] mungonit[2p] mungonin[3p]
+  aor   mungova[1s] mungove[2s] mungoi[3s] munguam[1p] munguat[2p] munguan[3p]
+  imper mungo[2s] mungoni[2p]
+  opt   mungofsha[1s] mungofsh[2s] mungoftë[3s] mungofshim[1p] mungofshi[2p] mungofshin[3p]
+  adm   munguakam[1s] munguake[2s] munguaka[3s] munguakemi[1p] munguakeni[2p] munguakan[3p]
+  ptcp  munguar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+nënvizoj (oj) to underline
+  pres  nënvizoj[1s] nënvizon[2,3s] nënvizojmë[1p] nënvizoni[2p] nënvizojnë[3p]
+  subj  nënvizosh[2s] nënvizojë[3s]
+  impf  nënvizoja[1s] nënvizoje[2s] nënvizonte[3s] nënvizonim[1p] nënvizonit[2p] nënvizonin[3p]
+  aor   nënvizova[1s] nënvizove[2s] nënvizoi[3s] nënvizuam[1p] nënvizuat[2p] nënvizuan[3p]
+  imper nënvizo[2s] nënvizoni[2p]
+  opt   nënvizofsha[1s] nënvizofsh[2s] nënvizoftë[3s] nënvizofshim[1p] nënvizofshi[2p] nënvizofshin[3p]
+  adm   nënvizuakam[1s] nënvizuake[2s] nënvizuaka[3s] nënvizuakemi[1p] nënvizuakeni[2p] nënvizuakan[3p]
+  ptcp  nënvizuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+peshoj (oj) to weigh
+  pres  peshoj[1s] peshon[2,3s] peshojmë[1p] peshoni[2p] peshojnë[3p]
+  subj  peshosh[2s] peshojë[3s]
+  impf  peshoja[1s] peshoje[2s] peshonte[3s] peshonim[1p] peshonit[2p] peshonin[3p]
+  aor   peshova[1s] peshove[2s] peshoi[3s] peshuam[1p] peshuat[2p] peshuan[3p]
+  imper pesho[2s] peshoni[2p]
+  opt   peshofsha[1s] peshofsh[2s] peshoftë[3s] peshofshim[1p] peshofshi[2p] peshofshin[3p]
+  adm   peshuakam[1s] peshuake[2s] peshuaka[3s] peshuakemi[1p] peshuakeni[2p] peshuakan[3p]
+  ptcp  peshuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+bisedoj (oj) to talk, to converse
+  pres  bisedoj[1s] bisedon[2,3s] bisedojmë[1p] bisedoni[2p] bisedojnë[3p]
+  subj  bisedosh[2s] bisedojë[3s]
+  impf  bisedoja[1s] bisedoje[2s] bisedonte[3s] bisedonim[1p] bisedonit[2p] bisedonin[3p]
+  aor   bisedova[1s] bisedove[2s] bisedoi[3s] biseduam[1p] biseduat[2p] biseduan[3p]
+  imper bisedo[2s] bisedoni[2p]
+  opt   bisedofsha[1s] bisedofsh[2s] bisedoftë[3s] bisedofshim[1p] bisedofshi[2p] bisedofshin[3p]
+  adm   biseduakam[1s] biseduake[2s] biseduaka[3s] biseduakemi[1p] biseduakeni[2p] biseduakan[3p]
+  ptcp  biseduar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+shkëlqej (oj) to shine, to sparkle
+  pres  shkëlqej[1s] shkëlqen[2,3s] shkëlqejmë[1p] shkëlqeni[2p] shkëlqejnë[3p]
+  subj  shkëlqesh[2s] shkëlqejë[3s]
+  impf  shkëlqeja[1s] shkëlqeje[2s] shkëlqente[3s] shkëlqenim[1p] shkëlqenit[2p] shkëlqenin[3p]
+  aor   shkëlqeva[1s] shkëlqeve[2s] shkëlqei[3s] shkëlqyem[1p] shkëlqyet[2p] shkëlqyen[3p]
+  imper shkëlqeni[2p]
+  opt   -
+  adm   -
+  ptcp  shkëlqyer
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+dështoj (oj) to fail
+  pres  dështoj[1s] dështon[2,3s] dështojmë[1p] dështoni[2p] dështojnë[3p]
+  subj  dështosh[2s] dështojë[3s]
+  impf  dështoja[1s] dështoje[2s] dështonte[3s] dështonim[1p] dështonit[2p] dështonin[3p]
+  aor   dështova[1s] dështove[2s] dështoi[3s] dështuam[1p] dështuat[2p] dështuan[3p]
+  imper dështo[2s] dështoni[2p]
+  opt   dështofsha[1s] dështofsh[2s] dështoftë[3s] dështofshim[1p] dështofshi[2p] dështofshin[3p]
+  adm   dështuakam[1s] dështuake[2s] dështuaka[3s] dështuakemi[1p] dështuakeni[2p] dështuakan[3p]
+  ptcp  dështuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+njoftoj (oj, NA=true) to inform, to announce
+  pres  njoftoj[1s] njofton[2,3s] njoftojmë[1p] njoftoni[2p] njoftojnë[3p]
+  subj  njoftosh[2s] njoftojë[3s]
+  impf  njoftoja[1s] njoftoje[2s] njoftonte[3s] njoftonim[1p] njoftonit[2p] njoftonin[3p]
+  aor   njoftova[1s] njoftove[2s] njoftoi[3s] njoftuam[1p] njoftuat[2p] njoftuan[3p]
+  imper njofto[2s] njoftoni[2p]
+  opt   njoftofsha[1s] njoftofsh[2s] njoftoftë[3s] njoftofshim[1p] njoftofshi[2p] njoftofshin[3p]
+  adm   njoftuakam[1s] njoftuake[2s] njoftuaka[3s] njoftuakemi[1p] njoftuakeni[2p] njoftuakan[3p]
+  ptcp  njoftuar
+  NApres njoftohem[1s] njoftohesh[2s] njoftohet[3s] njoftohemi[1p] njoftoheni[2p] njoftohen[3p]
+  NAimpf njoftohesha[1s] njoftoheshe[2s] njoftohej[3s] njoftoheshim[1p] njoftoheshit[2p] njoftoheshin[3p]
+  NAaor  njoftua[3s]
+  NAimper njoftohu[2s] njoftohuni[2p]
+planifikoj (oj) to plan
+  pres  planifikoj[1s] planifikon[2,3s] planifikojmë[1p] planifikoni[2p] planifikojnë[3p]
+  subj  planifikosh[2s] planifikojë[3s]
+  impf  planifikoja[1s] planifikoje[2s] planifikonte[3s] planifikonim[1p] planifikonit[2p] planifikonin[3p]
+  aor   planifikova[1s] planifikove[2s] planifikoi[3s] planifikuam[1p] planifikuat[2p] planifikuan[3p]
+  imper planifiko[2s] planifikoni[2p]
+  opt   planifikofsha[1s] planifikofsh[2s] planifikoftë[3s] planifikofshim[1p] planifikofshi[2p] planifikofshin[3p]
+  adm   planifikuakam[1s] planifikuake[2s] planifikuaka[3s] planifikuakemi[1p] planifikuakeni[2p] planifikuakan[3p]
+  ptcp  planifikuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+udhëheq (cons) to lead, to guide
+  pres  udhëheq[1s] udhëheq[2,3s] udhëheqim[1p] udhëheqni[2p] udhëheqin[3p]
+  subj  udhëheqësh[2s] udhëheqë[3s]
+  impf  udhëheqja[1s] udhëheqje[2s] udhëheqte[3s] udhëheqnim[1p] udhëheqnit[2p] udhëheqnin[3p]
+  aor   udhëhoqa[1s] udhëhoqe[2s] udhëhoqi[3s] udhëhoqëm[1p] udhëhoqët[2p] udhëhoqën[3p]
+  imper udhëheq[2s] udhëheqni[2p]
+  opt   -
+  adm   -
+  ptcp  udhëhequr
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+rinovoj (oj, NA=true) to renew
+  pres  rinovoj[1s] rinovon[2,3s] rinovojmë[1p] rinovoni[2p] rinovojnë[3p]
+  subj  rinovosh[2s] rinovojë[3s]
+  impf  rinovoja[1s] rinovoje[2s] rinovonte[3s] rinovonim[1p] rinovonit[2p] rinovonin[3p]
+  aor   rinovova[1s] rinovove[2s] rinovoi[3s] rinovuam[1p] rinovuat[2p] rinovuan[3p]
+  imper rinovo[2s] rinovoni[2p]
+  opt   rinovofsha[1s] rinovofsh[2s] rinovoftë[3s] rinovofshim[1p] rinovofshi[2p] rinovofshin[3p]
+  adm   rinovuakam[1s] rinovuake[2s] rinovuaka[3s] rinovuakemi[1p] rinovuakeni[2p] rinovuakan[3p]
+  ptcp  rinovuar
+  NApres rinovohem[1s] rinovohesh[2s] rinovohet[3s] rinovohemi[1p] rinovoheni[2p] rinovohen[3p]
+  NAimpf rinovohesha[1s] rinovoheshe[2s] rinovohej[3s] rinovoheshim[1p] rinovoheshit[2p] rinovoheshin[3p]
+  NAaor  rinovua[3s]
+  NAimper rinovohu[2s] rinovohuni[2p]
+kopjoj (oj) to copy
+  pres  kopjoj[1s] kopjon[2,3s] kopjojmë[1p] kopjoni[2p] kopjojnë[3p]
+  subj  kopjosh[2s] kopjojë[3s]
+  impf  kopjoja[1s] kopjoje[2s] kopjonte[3s] kopjonim[1p] kopjonit[2p] kopjonin[3p]
+  aor   kopjova[1s] kopjove[2s] kopjoi[3s] kopjuam[1p] kopjuat[2p] kopjuan[3p]
+  imper kopjo[2s] kopjoni[2p]
+  opt   kopjofsha[1s] kopjofsh[2s] kopjoftë[3s] kopjofshim[1p] kopjofshi[2p] kopjofshin[3p]
+  adm   kopjuakam[1s] kopjuake[2s] kopjuaka[3s] kopjuakemi[1p] kopjuakeni[2p] kopjuakan[3p]
+  ptcp  kopjuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -
+vallëzoj (oj) to dance (a folk dance)
+  pres  vallëzoj[1s] vallëzon[2,3s] vallëzojmë[1p] vallëzoni[2p] vallëzojnë[3p]
+  subj  vallëzosh[2s] vallëzojë[3s]
+  impf  vallëzoja[1s] vallëzoje[2s] vallëzonte[3s] vallëzonim[1p] vallëzonit[2p] vallëzonin[3p]
+  aor   vallëzova[1s] vallëzove[2s] vallëzoi[3s] vallëzuam[1p] vallëzuat[2p] vallëzuan[3p]
+  imper vallëzo[2s] vallëzoni[2p]
+  opt   vallëzofsha[1s] vallëzofsh[2s] vallëzoftë[3s] vallëzofshim[1p] vallëzofshi[2p] vallëzofshin[3p]
+  adm   vallëzuakam[1s] vallëzuake[2s] vallëzuaka[3s] vallëzuakemi[1p] vallëzuakeni[2p] vallëzuakan[3p]
+  ptcp  vallëzuar
+  NApres -
+  NAimpf -
+  NAaor  -
+  NAimper -

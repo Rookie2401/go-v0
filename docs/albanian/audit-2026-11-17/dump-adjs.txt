@@ -1,0 +1,164 @@
+i mirë	mirë[Masc,Fem Sing]  mirë[Masc Plur]  mira[Fem Plur]	good
+i keq	keq[Masc Sing]  keqe[Fem Sing]  këqij[Masc Plur]  këqija[Fem Plur]	bad
+i madh	madh[Masc Sing]  madhe[Fem Sing]  mëdhenj[Masc Plur]  mëdha[Fem Plur]	big, great
+i vogël	vogël[Masc,Fem Sing]  vegjël[Masc Plur]  vogla[Fem Plur]	small, little
+i ri	ri[Masc Sing]  re[Fem Sing]  rinj[Masc Plur]  reja[Fem Plur]	young, new
+i vjetër	vjetër[Masc,Fem Sing]  vjetër[Masc Plur]  vjetra[Fem Plur]	old
+i bukur	bukur[Masc,Fem Sing]  bukur[Masc Plur]  bukura[Fem Plur]	beautiful, nice
+i gjatë	gjatë[Masc,Fem Sing]  gjatë[Masc Plur]  gjata[Fem Plur]	tall, long
+i shkurtër	shkurtër[Masc,Fem Sing]  shkurtër[Masc Plur]  shkurtra[Fem Plur]	short
+i lartë	lartë[Masc,Fem Sing]  lartë[Masc Plur]  larta[Fem Plur]	high, tall
+i ulët	ulët[Masc,Fem Sing]  ulët[Masc Plur]  ulëta[Fem Plur]	low
+i gjerë	gjerë[Masc,Fem Sing]  gjerë[Masc Plur]  gjera[Fem Plur]	wide
+i ngushtë	ngushtë[Masc,Fem Sing]  ngushtë[Masc Plur]  ngushta[Fem Plur]	narrow, tight
+i thellë	thellë[Masc,Fem Sing]  thellë[Masc Plur]  thella[Fem Plur]	deep
+i hollë	hollë[Masc,Fem Sing]  hollë[Masc Plur]  holla[Fem Plur]	thin, fine
+i trashë	trashë[Masc,Fem Sing]  trashë[Masc Plur]  trasha[Fem Plur]	thick, fat
+i fortë	fortë[Masc,Fem Sing]  fortë[Masc Plur]  forta[Fem Plur]	strong, loud
+i dobët	dobët[Masc,Fem Sing]  dobët[Masc Plur]  dobëta[Fem Plur]	weak
+i shpejtë	shpejtë[Masc,Fem Sing]  shpejtë[Masc Plur]  shpejta[Fem Plur]	fast, quick
+i lehtë	lehtë[Masc,Fem Sing]  lehtë[Masc Plur]  lehta[Fem Plur]	light, easy
+i rëndë	rëndë[Masc,Fem Sing]  rëndë[Masc Plur]  rënda[Fem Plur]	heavy
+i vështirë	vështirë[Masc,Fem Sing]  vështirë[Masc Plur]  vështira[Fem Plur]	difficult
+i thjeshtë	thjeshtë[Masc,Fem Sing]  thjeshtë[Masc Plur]  thjeshta[Fem Plur]	simple
+i pastër	pastër[Masc,Fem Sing]  pastër[Masc Plur]  pastra[Fem Plur]	clean, pure
+i plotë	plotë[Masc,Fem Sing]  plotë[Masc Plur]  plota[Fem Plur]	full, whole
+i tërë	tërë[Masc,Fem Sing]  tërë[Masc Plur]  tëra[Fem Plur]	whole, entire
+i hapur	hapur[Masc,Fem Sing]  hapur[Masc Plur]  hapura[Fem Plur]	open
+i mbyllur	mbyllur[Masc,Fem Sing]  mbyllur[Masc Plur]  mbyllura[Fem Plur]	closed
+i afërt	afërt[Masc,Fem Sing]  afërt[Masc Plur]  afërta[Fem Plur]	near, close
+i largët	largët[Masc,Fem Sing]  largët[Masc Plur]  largëta[Fem Plur]	far, distant
+i lirë	lirë[Masc,Fem Sing]  lirë[Masc Plur]  lira[Fem Plur]	free; cheap
+i shtrenjtë	shtrenjtë[Masc,Fem Sing]  shtrenjtë[Masc Plur]  shtrenjta[Fem Plur]	expensive
+i ngrohtë	ngrohtë[Masc,Fem Sing]  ngrohtë[Masc Plur]  ngrohta[Fem Plur]	warm
+i ftohtë	ftohtë[Masc,Fem Sing]  ftohtë[Masc Plur]  ftohta[Fem Plur]	cold
+i nxehtë	nxehtë[Masc,Fem Sing]  nxehtë[Masc Plur]  nxehta[Fem Plur]	hot
+i thatë	thatë[Masc,Fem Sing]  thatë[Masc Plur]  thata[Fem Plur]	dry
+i ëmbël	ëmbël[Masc,Fem Sing]  ëmbël[Masc Plur]  ëmbla[Fem Plur]	sweet
+i hidhur	hidhur[Masc,Fem Sing]  hidhur[Masc Plur]  hidhura[Fem Plur]	bitter
+i bardhë	bardhë[Masc,Fem Sing]  bardhë[Masc Plur]  bardha[Fem Plur]	white
+i zi	zi[Masc Sing]  zezë[Fem Sing]  zinj[Masc Plur]  zeza[Fem Plur]	black
+i kuq	kuq[Masc Sing,Plur]  kuqe[Fem Sing,Plur]	red
+i kaltër	kaltër[Masc,Fem Sing]  kaltër[Masc Plur]  kaltra[Fem Plur]	blue
+i verdhë	verdhë[Masc,Fem Sing]  verdhë[Masc Plur]  verdha[Fem Plur]	yellow
+i gjelbër	gjelbër[Masc,Fem Sing]  gjelbër[Masc Plur]  gjelbra[Fem Plur]	green
+i lumtur	lumtur[Masc,Fem Sing]  lumtur[Masc Plur]  lumtura[Fem Plur]	happy
+i trishtuar	trishtuar[Masc,Fem Sing]  trishtuar[Masc Plur]  trishtuara[Fem Plur]	sad
+i lodhur	lodhur[Masc,Fem Sing]  lodhur[Masc Plur]  lodhura[Fem Plur]	tired
+i vuajtur	vuajtur[Masc,Fem Sing]  vuajtur[Masc Plur]  vuajtura[Fem Plur]	suffering
+i kënaqur	kënaqur[Masc,Fem Sing]  kënaqur[Masc Plur]  kënaqura[Fem Plur]	satisfied, pleased
+i uritur	uritur[Masc,Fem Sing]  uritur[Masc Plur]  uritura[Fem Plur]	hungry
+i ngopur	ngopur[Masc,Fem Sing]  ngopur[Masc Plur]  ngopura[Fem Plur]	full (of food)
+i mërzitur	mërzitur[Masc,Fem Sing]  mërzitur[Masc Plur]  mërzitura[Fem Plur]	bored, upset
+i zemëruar	zemëruar[Masc,Fem Sing]  zemëruar[Masc Plur]  zemëruara[Fem Plur]	angry
+i shqetësuar	shqetësuar[Masc,Fem Sing]  shqetësuar[Masc Plur]  shqetësuara[Fem Plur]	worried, troubled
+i dëshpëruar	dëshpëruar[Masc,Fem Sing]  dëshpëruar[Masc Plur]  dëshpëruara[Fem Plur]	in despair, desperate
+i gëzuar	gëzuar[Masc,Fem Sing]  gëzuar[Masc Plur]  gëzuara[Fem Plur]	glad, cheerful
+i sëmurë	sëmurë[Masc,Fem Sing]  sëmurë[Masc Plur]  sëmura[Fem Plur]	ill, sick
+i vdekur	vdekur[Masc,Fem Sing]  vdekur[Masc Plur]  vdekura[Fem Plur]	dead
+i gjallë	gjallë[Masc,Fem Sing]  gjallë[Masc Plur]  gjalla[Fem Plur]	alive, living
+i pasur	pasur[Masc,Fem Sing]  pasur[Masc Plur]  pasura[Fem Plur]	rich
+i varfër	varfër[Masc,Fem Sing]  varfër[Masc Plur]  varfra[Fem Plur]	poor
+i mençur	mençur[Masc,Fem Sing]  mençur[Masc Plur]  mençura[Fem Plur]	wise, sensible
+i zgjuar	zgjuar[Masc,Fem Sing]  zgjuar[Masc Plur]  zgjuara[Fem Plur]	clever, bright
+i dashur	dashur[Masc,Fem Sing]  dashur[Masc Plur]  dashura[Fem Plur]	dear, beloved
+i nderuar	nderuar[Masc,Fem Sing]  nderuar[Masc Plur]  nderuara[Fem Plur]	honoured, esteemed
+i njohur	njohur[Masc,Fem Sing]  njohur[Masc Plur]  njohura[Fem Plur]	known, famous
+i vetëm	vetëm[Masc Sing,Plur]  vetme[Fem Sing,Plur]	alone, only
+i marrë	marrë[Masc,Fem Sing]  marrë[Masc Plur]  marra[Fem Plur]	foolish, mad
+i qetë	qetë[Masc,Fem Sing]  qetë[Masc Plur]  qeta[Fem Plur]	calm, quiet
+i vërtetë	vërtetë[Masc,Fem Sing]  vërtetë[Masc Plur]  vërteta[Fem Plur]	true, real
+i drejtë	drejtë[Masc,Fem Sing]  drejtë[Masc Plur]  drejta[Fem Plur]	right, straight, just
+i saktë	saktë[Masc,Fem Sing]  saktë[Masc Plur]  sakta[Fem Plur]	exact, correct
+i qartë	qartë[Masc,Fem Sing]  qartë[Masc Plur]  qarta[Fem Plur]	clear
+i gabuar	gabuar[Masc,Fem Sing]  gabuar[Masc Plur]  gabuara[Fem Plur]	wrong, mistaken
+i njëjtë	njëjtë[Masc,Fem Sing]  njëjtë[Masc Plur]  njëjta[Fem Plur]	same
+i veçantë	veçantë[Masc,Fem Sing]  veçantë[Masc Plur]  veçanta[Fem Plur]	special, particular
+i përbashkët	përbashkët[Masc,Fem Sing]  përbashkët[Masc Plur]  përbashkëta[Fem Plur]	common, shared
+i fshehtë	fshehtë[Masc,Fem Sing]  fshehtë[Masc Plur]  fshehta[Fem Plur]	secret, hidden
+i tjetër	tjetër[Masc,Fem Sing]  tjerë[Masc Plur]  tjera[Fem Plur]	other, another
+i huaj	huaj[Masc,Fem Sing]  huaj[Masc Plur]  huaja[Fem Plur]	foreign, strange
+i ndryshëm	ndryshëm[Masc Sing,Plur]  ndryshme[Fem Sing,Plur]	different
+i ngjashëm	ngjashëm[Masc Sing,Plur]  ngjashme[Fem Sing,Plur]	similar
+i rëndësishëm	rëndësishëm[Masc Sing,Plur]  rëndësishme[Fem Sing,Plur]	important
+i shëndetshëm	shëndetshëm[Masc Sing,Plur]  shëndetshme[Fem Sing,Plur]	healthy
+i rrezikshëm	rrezikshëm[Masc Sing,Plur]  rrezikshme[Fem Sing,Plur]	dangerous
+i fuqishëm	fuqishëm[Masc Sing,Plur]  fuqishme[Fem Sing,Plur]	powerful
+i mrekullueshëm	mrekullueshëm[Masc Sing,Plur]  mrekullueshme[Fem Sing,Plur]	wonderful
+i pafajshëm	pafajshëm[Masc Sing,Plur]  pafajshme[Fem Sing,Plur]	innocent
+i shenjtë	shenjtë[Masc,Fem Sing]  shenjtë[Masc Plur]  shenjta[Fem Plur]	holy, sacred
+i bekuar	bekuar[Masc,Fem Sing]  bekuar[Masc Plur]  bekuara[Fem Plur]	blessed
+i urtë	urtë[Masc,Fem Sing]  urtë[Masc Plur]  urta[Fem Plur]	wise, gentle
+i përulur	përulur[Masc,Fem Sing]  përulur[Masc Plur]  përulura[Fem Plur]	humble
+i krishterë	krishterë[Masc,Fem Sing]  krishterë[Masc Plur]  krishtera[Fem Plur]	Christian
+i përjetshëm	përjetshëm[Masc Sing,Plur]  përjetshme[Fem Sing,Plur]	eternal
+i vetëmlindur	vetëmlindur[Masc,Fem Sing,Plur]	only-begotten
+i parë	parë[Masc,Fem Sing]  parë[Masc Plur]  para[Fem Plur]	first
+i fundit	fundit[Masc,Fem Sing,Plur]	last
+besnik	besnik[Masc Sing]  besnike[Fem Sing,Plur]  besnikë[Masc Plur]	faithful, loyal
+trim	trim[Masc Sing]  trime[Fem Sing,Plur]  trima[Masc Plur]	brave
+bujar	bujar[Masc Sing]  bujare[Fem Sing,Plur]  bujarë[Masc Plur]	generous
+kryesor	kryesor[Masc Sing]  kryesore[Fem Sing,Plur]  kryesorë[Masc Plur]	main, chief
+shqiptar	shqiptar[Masc Sing]  shqiptare[Fem Sing,Plur]  shqiptarë[Masc Plur]	Albanian
+kosovar	kosovar[Masc Sing]  kosovare[Fem Sing,Plur]  kosovarë[Masc Plur]	Kosovar
+grek	grek[Masc Sing]  greke[Fem Sing,Plur]  grekë[Masc Plur]	Greek
+anglez	anglez[Masc Sing]  angleze[Fem Sing,Plur]  anglezë[Masc Plur]	English
+gjerman	gjerman[Masc Sing]  gjermane[Fem Sing,Plur]  gjermanë[Masc Plur]	German
+francez	francez[Masc Sing]  franceze[Fem Sing,Plur]  francezë[Masc Plur]	French
+italian	italian[Masc Sing]  italiane[Fem Sing,Plur]  italianë[Masc Plur]	Italian
+rus	rus[Masc Sing]  ruse[Fem Sing,Plur]  rusë[Masc Plur]	Russian
+serb	serb[Masc Sing]  serbe[Fem Sing,Plur]  serbë[Masc Plur]	Serbian
+spanjoll	spanjoll[Masc Sing]  spanjolle[Fem Sing,Plur]  spanjollë[Masc Plur]	Spanish
+amerikan	amerikan[Masc Sing]  amerikane[Fem Sing,Plur]  amerikanë[Masc Plur]	American
+evropian	evropian[Masc Sing]  evropiane[Fem Sing,Plur]  evropianë[Masc Plur]	European
+gati	gati[Masc,Fem Sing,Plur]	ready
+bosh	bosh[Masc,Fem Sing,Plur]	empty
+vjeç	vjeç[Masc Sing]  vjeç[Masc,Fem Plur]  vjeçe[Fem Sing]	years old (after a number)
+kombëtar	kombëtar[Masc Sing]  kombëtare[Fem Sing,Plur]  kombëtarë[Masc Plur]	national
+kulturor	kulturor[Masc Sing]  kulturore[Fem Sing,Plur]  kulturorë[Masc Plur]	cultural
+historik	historik[Masc Sing]  historike[Fem Sing,Plur]  historikë[Masc Plur]	historical
+ndërkombëtar	ndërkombëtar[Masc Sing]  ndërkombëtare[Fem Sing,Plur]  ndërkombëtarë[Masc Plur]	international
+mesatar	mesatar[Masc Sing]  mesatare[Fem Sing,Plur]  mesatarë[Masc Plur]	average
+antik	antik[Masc Sing]  antike[Fem Sing,Plur]  antikë[Masc Plur]	ancient
+tradicional	tradicional[Masc Sing]  tradicionale[Fem Sing,Plur]  tradicionalë[Masc Plur]	traditional
+malor	malor[Masc Sing]  malore[Fem Sing,Plur]  malorë[Masc Plur]	mountainous, of the mountains
+ekonomik	ekonomik[Masc Sing]  ekonomike[Fem Sing,Plur]  ekonomikë[Masc Plur]	economic
+popullor	popullor[Masc Sing]  popullore[Fem Sing,Plur]  popullorë[Masc Plur]	popular, of the people
+tregtar	tregtar[Masc Sing]  tregtare[Fem Sing,Plur]  tregtarë[Masc Plur]	commercial, trade (adj.)
+industrial	industrial[Masc Sing]  industriale[Fem Sing,Plur]  industrialë[Masc Plur]	industrial
+natyror	natyror[Masc Sing]  natyrore[Fem Sing,Plur]  natyrorë[Masc Plur]	natural
+i dëmshëm	dëmshëm[Masc Sing,Plur]  dëmshme[Fem Sing,Plur]	harmful
+i aftë	aftë[Masc,Fem Sing]  aftë[Masc Plur]  afta[Fem Plur]	able, capable
+turistik	turistik[Masc Sing]  turistike[Fem Sing,Plur]  turistikë[Masc Plur]	tourist (adj.)
+jugor	jugor[Masc Sing]  jugore[Fem Sing,Plur]  jugorë[Masc Plur]	southern
+verior	verior[Masc Sing]  veriore[Fem Sing,Plur]  veriorë[Masc Plur]	northern
+detar	detar[Masc Sing]  detare[Fem Sing,Plur]  detarë[Masc Plur]	sea (adj.), maritime
+bregdetar	bregdetar[Masc Sing]  bregdetare[Fem Sing,Plur]  bregdetarë[Masc Plur]	coastal
+arkeologjik	arkeologjik[Masc Sing]  arkeologjike[Fem Sing,Plur]  arkeologjikë[Masc Plur]	archaeological
+mesdhetar	mesdhetar[Masc Sing]  mesdhetare[Fem Sing,Plur]  mesdhetarë[Masc Plur]	Mediterranean
+lindor	lindor[Masc Sing]  lindore[Fem Sing,Plur]  lindorë[Masc Plur]	eastern
+perëndimor	perëndimor[Masc Sing]  perëndimore[Fem Sing,Plur]  perëndimorë[Masc Plur]	western
+osman	osman[Masc Sing]  osmane[Fem Sing,Plur]  osmanë[Masc Plur]	Ottoman
+ilir	ilir[Masc Sing]  ilire[Fem Sing,Plur]  ilirë[Masc Plur]	Illyrian
+bizantin	bizantin[Masc Sing]  bizantine[Fem Sing,Plur]  bizantinë[Masc Plur]	Byzantine
+turk	turk[Masc Sing]  turke[Fem Sing,Plur]  turq[Masc Plur]	Turkish
+mesjetar	mesjetar[Masc Sing]  mesjetare[Fem Sing,Plur]  mesjetarë[Masc Plur]	medieval
+qendror	qendror[Masc Sing]  qendrore[Fem Sing,Plur]  qendrorë[Masc Plur]	central
+botëror	botëror[Masc Sing]  botërore[Fem Sing,Plur]  botërorë[Masc Plur]	world (adj.), global
+urban	urban[Masc Sing]  urbane[Fem Sing,Plur]  urbanë[Masc Plur]	urban
+lokal	lokal[Masc Sing]  lokale[Fem Sing,Plur]  lokalë[Masc Plur]	local
+administrativ	administrativ[Masc Sing]  administrative[Fem Sing,Plur]  administrativë[Masc Plur]	administrative
+karakteristik	karakteristik[Masc Sing]  karakteristike[Fem Sing,Plur]  karakteristikë[Masc Plur]	characteristic
+i serioz	serioz[Masc Sing]  serioze[Fem Sing,Plur]  seriozë[Masc Plur]	serious
+i krenar	krenar[Masc Sing]  krenare[Fem Sing,Plur]  krenarë[Masc Plur]	proud
+i përhershëm	përhershëm[Masc Sing,Plur]  përhershme[Fem Sing,Plur]	permanent
+i nevojshëm	nevojshëm[Masc Sing,Plur]  nevojshme[Fem Sing,Plur]	necessary
+i mençur	mençur[Masc,Fem Sing]  mençur[Masc Plur]  mençura[Fem Plur]	wise, sensible
+plot	plot[Masc,Fem Sing,Plur]	full (plot me: full of)
+i gatshëm	gatshëm[Masc Sing,Plur]  gatshme[Fem Sing,Plur]	ready, willing
+ngjitës	ngjitës[Masc Sing,Plur]  ngjitëse[Fem Sing,Plur]	sticky, adhesive
+i panjohur	panjohur[Masc,Fem Sing]  panjohur[Masc Plur]  panjohura[Fem Plur]	unknown, unfamiliar
+i verdhë	verdhë[Masc,Fem Sing,Plur]	yellow
+i çuditshëm	çuditshëm[Masc Sing,Plur]  çuditshme[Fem Sing,Plur]	strange, odd
+i ndershëm	ndershëm[Masc Sing,Plur]  ndershme[Fem Sing,Plur]	honest
+i rëndësishëm	rëndësishëm[Masc Sing,Plur]  rëndësishme[Fem Sing,Plur]	important

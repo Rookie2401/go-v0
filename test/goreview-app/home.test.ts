@@ -18,7 +18,7 @@ const savedDecks = async (rig: Rig): Promise<SavedDeck[]> => {
 };
 
 describe('the GoReview home', () => {
-  it('shows a plain Biblia link, when the app ships Biblia beside it (the iPhone edition, the extension), linking to it', async () => {
+  it('shows a plain Biblia link, when the app ships Biblia beside it (the iPhone edition; not the extension since 2026-11-19), linking to it', async () => {
     const rig = await makeRig({ signedIn: true, links: { biblia: './biblia/index.html' } });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form')]);
     await reopen(rig);

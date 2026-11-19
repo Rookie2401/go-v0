@@ -50,7 +50,7 @@ Morphalou (LGPL-LR; the extract's own form-of data made a second morphological l
 | phrase units (284), shallow syntax, older spelling, checks on learner writing | done, unit-tested; not measured on running text | their own tests |
 | pronunciation | written notes on spelling, liaison (required / optional / forbidden), h aspiré; the dictionary's IPA passed through, never generated | unit tests; the shared card does not display notes or IPA yet |
 | regional varieties | fr-FR, fr-CA, fr-BE, fr-CH as labels on words the dictionary labels; one learning identity | resolve tests |
-| Decoding Sprint | optional, six stages in the orientation, 69 Alphabet-deck cards | structure tests; unreviewed |
+| Decoding Sprint | optional, six stages in the orientation, 69 Alphabet-deck cards; the Alphabet Sprint profile (`alphabet-sprint/profiles/fr.ts`: 72 units, 369 starter words, 24 phrases) | `test/alphabet/sprint-fr.test.ts`; after 10 units 77 starter words readable (alphabet order 17); unreviewed |
 
 ## Contextual accuracy
 
@@ -70,10 +70,7 @@ All six states use the shared controls. Knowing a lemma does not credit its form
 ## GoReview
 
 French is offered, its dictionary is in the default list, the Alphabet deck has its cards, and the analyser loads on demand.
-**Not verified end to end:** GoReview inside the extension builds no card for any language at present, because its candidates call
-reaches the device Repository with a null cursor and is refused with 422 (`packages/repository-service/src/api.ts`: only `undefined`
-and `''` are dropped from a query; extension messaging turns `undefined` into `null`). Albanian fails identically. Reported to the
-release manager; not fixed here because it is shared code another session owns. Until it is fixed a French review has not been seen.
+**Verified end to end (2026-11-19, BROWSER-RUN.md "Re-run on the merged tree"):** in the built extension GoReview offered French, built a card from the learner's reading (front «chevaux», back "horse"), took the grade Good and moved to the next card; the device Repository recorded `CardAdded` and `CardReviewed` for `lemma:fr:cheval:NOUN`, and both reached the test account. The earlier blocker (the candidates call refused with 422 because of a null cursor) was fixed on master by 22be2d7e, which this branch has merged in.
 GoReview's home has no photograph for French (the owner has not chosen one); the home draws none.
 
 ## Performance
@@ -98,16 +95,14 @@ Left failing and not French: `test/audit/a11y.css.test.ts` A-C04 (a sign-in styl
 ## Release
 
 Committed on `feat/french-pack`. Merging, publishing `public/dict/fr` to the hosted site and rebuilding the extension and GoReview
-go through the release manager session, on the owner's word. Before that: rebase onto the new master (Reading Analysis, the Alphabet
-Sprint and the Russian and Albanian-dialect branches touch the same language lists; French adds one line at the end of each).
+go through the release manager session, on the owner's word. Master 22be2d7e (Reading Analysis, the Alphabet Sprint, the null-query fix) is merged in (7a3828cd). The Russian branch (PR #18) touches the same language lists: French adds one line at the end of each, and whichever lands second joins them (the GoReview home test's `NO_PHOTO_YET` list among them).
 
 ## Limitations
 
 Missing: a frequency list for the French dictionary; a native speaker's review of anything; a photograph for GoReview's home;
-display of IPA and pronunciation notes on the card (shared); the Decoding Sprint inside the Alphabet Sprint mechanism (that work is
-not on master yet); recordings.
+display of IPA and pronunciation notes on the card (shared); recordings.
 
-Unverified: a French card reviewed in GoReview (blocked by the shared bug above); real device voices (the rig's browser has none);
+Unverified: real device voices (the rig's browser has none);
 French on a phone.
 
 Known weak spots: an adjective read by rule alone when its lemma is in no list (88 %); homographs that need meaning; Spanish text on

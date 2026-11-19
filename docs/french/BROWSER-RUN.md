@@ -279,3 +279,19 @@ Card findings of the first run and what became of them:
   where a script needs one). The French analyser supplies notes and passes the dictionary's IPA through; nothing displays them yet.
 - An English or Spanish word selected on a page that declares no language gets a card in the learner's reading language, with a
   reading marked as a guess, and is recorded: that is the shared fallback (`team-default`) for every language, not a French rule.
+
+## Re-run on the merged tree (2026-11-19)
+
+Branch tip 7a3828cd (master 22be2d7e merged in, with its null-query fix) plus the uncommitted Alphabet Sprint files; build
+`7a3828cde235-dirty` built 2026-11-19T23:01Z by this run: extension (`npm run ext:build`), setup page (`--mode options`,
+`GOLEARN_APP_DICT=sq,fr`), GoReview (`--mode extension`, `GOREVIEW_DICT=fr,sq`). Command as above with `FR_NO_WEB=1` (step 12, the live
+websites, skipped).
+
+| step | result |
+|---|---|
+| 1 to 11, 13, 14, 16, 17, 8c | PASS |
+| 12 real sites | not run (`FR_NO_WEB=1`) |
+| **15 GoReview** | **PASS.** Home offers French ("Current Deck … 10 cards", My Vocabulary 40 words). Start gave "Review 1 of 10", front «chevaux» (`lang="fr-FR"`); Flip showed "Answer: horse" with Again / Hard / Good / Easy; Good moved to "Review 2 of 10", «acheter». The device Repository has `CardAdded` (addedBy intake, "provisional analysis; shown with caveats") and `CardReviewed` for `lemma:fr:cheval:NOUN`; the local service's account has both. Screenshot `browser-run/goreview.png`. |
+| 8b extension's own reload | FAIL as before (the unpacked extension does not come back in headless Brave; not French) |
+
+Console: one error, the setup page asking for `app/dict/es/manifest.json`, which this build deliberately left out (`GOLEARN_APP_DICT=sq,fr`).

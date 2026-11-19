@@ -220,7 +220,12 @@ function wordListShare(adapter: LanguageAdapter, sample: string): { hits: number
   return { hits, words, share: hits / words };
 }
 
-interface Detection { languageId?: string; confidence: number; reasons: string[] }
+/**
+ * `against`: the sample is positively ANOTHER language (letters Russian does not use name it: Ukrainian, Bulgarian …). That is evidence,
+ * like a declaration of a language no pack covers, so the team default is not used against it. A sample that is merely not recognised
+ * (too few word-list hits) carries no `against`: it may still be the learner's language outside the word list.
+ */
+interface Detection { languageId?: string; confidence: number; reasons: string[]; against?: string }
 
 const r2 = (n: number): number => Math.round(n * 100) / 100;
 
@@ -272,7 +277,7 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
   if (share(sh.cyrillic) >= MIN_SCRIPT_SHARE) {
     if (!installed.has('ru')) return { confidence: 0, reasons: ['the sample is in Cyrillic script, but the Russian pack is not installed'] };
     const other = notRussianCyrillic(sample.slice(0, MAX_SAMPLE_CHARS));
-    if (other) return { confidence: 0, reasons: [`the sample is in Cyrillic script, but it looks like ${other.language}, not Russian as the pack reads it (${other.evidence})`] };
+    if (other) return { confidence: 0, against: other.language, reasons: [`the sample is in Cyrillic script, but it looks like ${other.language}, not Russian as the pack reads it (${other.evidence})`] };
     const ru = adapterOf('ru');
     if (!ru) return { confidence: 0, reasons: ['the sample is in Cyrillic script, which Russian shares with Ukrainian, Belarusian, Bulgarian and Serbian, and no Russian word list is available (it is not loaded) to tell them apart'] };
     const w = wordListShare(ru, sample);
@@ -435,6 +440,9 @@ export function createLanguageResolver(options: ResolverOptions = {}): ResolveLa
       const d = detect(evidence.sample, installed, adapterOf);
       if (d.languageId) return { languageId: d.languageId, confidence: d.confidence, basis: 'detection', reasons: [...reasons, ...d.reasons] };
       reasons.push(...d.reasons);
+      // the text names another language outright (a Ukrainian paragraph on a page with no lang): reading it with the learner's language
+      // would record a Ukrainian word as a Russian encounter. The learner's own choice (step 1) still overrides this.
+      if (d.against) return undetermined([...reasons, `the text is ${d.against}, which no installed pack reads; the team default is not used against it — choose a language if this is wrong`]);
     } else {
       reasons.push('no sample was given to detect a language from');
     }

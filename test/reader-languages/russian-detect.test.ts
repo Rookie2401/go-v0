@@ -101,6 +101,18 @@ describe('resolving the language of a Cyrillic page', () => {
     }
   });
 
+  it('does not fall back to the learner’s Russian when a page declares nothing but the text names another Cyrillic language', () => {
+    // a word selected in a Ukrainian paragraph of a page with no lang (found by the browser rig: столицею got a Russian card and a Russian encounter)
+    for (const sample of [UKRAINIAN, BELARUSIAN, SERBIAN, KAZAKH, PRE_REFORM]) {
+      const r = resolve({ installed: ['ru'], sample, teamDefault: 'ru' });
+      expect(r.languageId, sample).toBeUndefined();
+      expect(r.basis, sample).toBe('undetermined');
+      expect(r.reasons.join(' '), sample).toMatch(/team default is not used against it/);
+    }
+    // text the word list merely does not recognise is not evidence against Russian: the default still applies
+    expect(resolve({ installed: ['ru'], sample: 'Абвгд ежзий клмноп рсту фхцч шщыэ юяаб вгде', teamDefault: 'ru' })).toMatchObject({ languageId: 'ru', basis: 'team-default' });
+  });
+
   it('believes a page that declares Russian, and the learner’s own choice', () => {
     expect(resolve({ installed: ['ru'], documentLanguage: { languageId: 'ru', source: 'html-lang', confidence: 0.9 }, sample: 'Привет' })).toMatchObject({ languageId: 'ru', basis: 'document-metadata' });
     expect(resolve({ installed: ['ru'], override: 'ru', sample: UKRAINIAN })).toMatchObject({ languageId: 'ru', basis: 'override' });

@@ -69,7 +69,11 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.
     // 2026-11-13: 800 -> 840 KB; master's build of 24bdc6b3 already measured 820 KB (unnoticed: this test needs a local build), and the
     // packs' self-report (evidence.ts, merge 467d2b6c) adds 8 KB so the setup page can say what stands behind each language: 828 KB.
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(840 * KB);
+    // 2026-11-19 (Russian pack): 840 -> 870 KB. The setup page lists every pack with its manifest, evidence and orientation, and Russian's
+    // (thirteen features and twenty-six sentence patterns with their explanations, twenty-eight validation cases, the tutorial) reaches it
+    // the same way it reaches the worker. app.js measured 887,822 bytes = 867.0 KB on this branch (master 22be2d7e merged in), built with
+    // GOLEARN_APP_DICT=sq,ru. This ceiling is checked only when the setup page has been built (npm run ext:build alone does not).
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(870 * KB);
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 

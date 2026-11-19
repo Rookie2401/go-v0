@@ -58,19 +58,19 @@ On the three held-out test sets the strict lemma figure is 88.4 % (GSD), 89.4 % 
 
 The exact-features figure is low for two stated reasons: the treebanks mark voice on every verb and the pack does not, and a union ("nominative or accusative") counts as wrong.
 
-Sense selection: the card shows the dictionary's senses in the dictionary's order; nothing chooses a sense by context. Multiword expressions: 123 phrases, 120 of them dictionary headwords with the dictionary's gloss; the single words stay readable.
+Sense selection: the card shows the dictionary's senses in the dictionary's order; nothing chooses a sense by context. So «стали дешевле» reads correctly as стать, but the card's first meaning is Wiktionary's first, "to stand", not "to become". Multiword expressions: 123 phrases, 120 of them dictionary headwords with the dictionary's gloss; the single words stay readable.
 
 ## 5. Repository integration
 
 Russian units use the existing ids: `lemma:ru:<headword>:<POS>` when the reading is confident, else `form:ru:<form>`. The six states, the marks, the rules for New and Seen and the sync path are the shared ones; no Russian-specific rule exists. Checked by the shared tests that every pack passes (start-up, status, bindings, varieties) and, in a real browser with a stand-in worker, by a lookup turning a word from New to Seen.
 
-Not verified: a real account, sync between devices, and persistence across a browser restart with the unpacked extension. These need the owner's browser and account.
+Verified in a real browser (2026-11-19, `scripts/loadcheck/golearn/ru.mjs`: the built extension in headless Brave, a throw-away local service and a generated test account): marks made on Russian cards are `ItemMarked` on `lemma:ru:книга:NOUN` and `lemma:ru:школа:NOUN`, survive a page reload and a stopped worker, and reach the account with `ru` ids. Not verified: a second device, a browser restart, a phone, the owner's real account.
 
 ## 6. GoReview integration
 
 GoReview loads the Russian analyser as its own chunk, loads the form-index shards for a card's words before its facts are built, ships the Russian dictionary and index in its build, and has the 33 letters in its Alphabet deck. The deck is an Alphabet Sprint (`packages/language-packs/src/alphabet-sprint/profiles/ru.ts`): the same 33 letter cards, five of them (а к м о т) treated as already readable, five reading rules applied by spelling (stress and weaker vowels, the last consonant of a word, г said v in -ого and -его, -тся and -ться, жи ши ци), 300 real starter words and 4 phrases (`words/ru.ts`, built by `scripts/alphabet-sprint/ru.mts`). The Sprint cards are script practice and never count as vocabulary, as for every language. Scheduling is the existing FSRS; nothing was changed. A card gets lemma, meaning, morphology and the dictionary's table through the same provider as the other packs.
 
-Not verified end to end: a Russian card reviewed in the real GoReview app. One GoReview test fails until a photo exists (section 10).
+Verified end to end in the same rig: GoReview in the built extension offered Russian, built a card from the learner's reading (front «дом», `lang="ru-RU"`; back "house"), took the grade Good and moved to the next card («школа»); `CardAdded` and `CardReviewed` (fsrs@v5.4.2, rating 3) for `lemma:ru:дом:NOUN` are on the device and in the account. GoReview's home shows no photograph for Russian until one is supplied (section 10).
 
 ## 7. Runtime performance
 
@@ -91,6 +91,9 @@ A lookup loads only the shards of the sentence's words. In the browser run, nine
 - The shared tests that pin the language list were updated to include Russian; the GoReview start-up golden gained a Russian entry and no other language's entry changed.
 - Type check: clean.
 - Real browser: the real content script, analyser and shards on `packages/golearn-extension/harness/active-ru.html` (no `lang` attribute). Detected as Russian from its text; a Ukrainian and an English paragraph left untouched; cards for прочитала, стали (as the noun, after из), шел (ё restored), a word outside the core (its shard loaded), a participle, a verb of motion; no console errors.
+
+- Browser rig (`scripts/loadcheck/golearn/ru.mjs`, fixtures `ru-pages/`): install, reading language, the page resolved from its `lang`, lookups (12 of 12 with a lemma; 11 checked against an expected lemma, none wrong: прочитала → прочитать, стали after из → сталь, шел → идти with ё restored in the transliteration), marks and their persistence, Active (50 words), a page with no `lang` (only the Russian paragraph read; Ukrainian and English untouched), sync to the account, GoReview. No console errors.
+- The rig found one defect, now fixed: a word SELECTED in a Ukrainian paragraph of a page with no `lang` fell through to the learner's language and was recorded as a Russian encounter. When the text's letters name another Cyrillic language, the resolver now refuses and asks the learner to choose (`language/resolve.ts`, `against`); a test covers it, and the rig's re-run shows the refusal. An English word selected on such a page still gets a Russian card as a guess: that is the shared fallback for every language.
 
 Unverified: see sections 5, 6, 7.
 

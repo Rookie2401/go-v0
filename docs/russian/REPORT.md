@@ -68,19 +68,19 @@ Not verified: a real account, sync between devices, and persistence across a bro
 
 ## 6. GoReview integration
 
-GoReview loads the Russian analyser as its own chunk, loads the form-index shards for a card's words before its facts are built, ships the Russian dictionary and index in its build, and has the 33 letters in its Alphabet deck. Scheduling is the existing FSRS; nothing was changed. A card gets lemma, meaning, morphology and the dictionary's table through the same provider as the other packs.
+GoReview loads the Russian analyser as its own chunk, loads the form-index shards for a card's words before its facts are built, ships the Russian dictionary and index in its build, and has the 33 letters in its Alphabet deck. The deck is an Alphabet Sprint (`packages/language-packs/src/alphabet-sprint/profiles/ru.ts`): the same 33 letter cards, five of them (а к м о т) treated as already readable, five reading rules applied by spelling (stress and weaker vowels, the last consonant of a word, г said v in -ого and -его, -тся and -ться, жи ши ци), 300 real starter words and 4 phrases (`words/ru.ts`, built by `scripts/alphabet-sprint/ru.mts`). The Sprint cards are script practice and never count as vocabulary, as for every language. Scheduling is the existing FSRS; nothing was changed. A card gets lemma, meaning, morphology and the dictionary's table through the same provider as the other packs.
 
 Not verified end to end: a Russian card reviewed in the real GoReview app. One GoReview test fails until a photo exists (section 10).
 
 ## 7. Runtime performance
 
-Measured on the built extension:
+Measured on the built extension, with master 22be2d7e merged in (Reading Analysis and Alphabet Sprint are in both figures):
 
 | Item | Size |
 |---|---|
 | Russian analyser chunk (loaded when a Russian word is first read) | 850 KB |
-| content script | 569.5 KB (563.7 KB before Russian) |
-| background worker | 1,208.5 KB (1,181.2 KB before Russian) |
+| content script | 581.4 KB (575.5 KB on master without Russian) |
+| background worker | 1,225.4 KB (1,195.8 KB on master without Russian) |
 | form-index shards shipped with the extension | 9.6 MB in 467 files; largest 0.28 MB compressed |
 
 A lookup loads only the shards of the sentence's words. In the browser run, nine lookups over three paragraphs fetched 39 shards; GoLearn Active scanned an 89-word page in 0.4 ms. Not measured: memory in the browser, first-lookup time on a slow device, a very long page.
@@ -101,10 +101,10 @@ See the lead's hand-over message for the commit and branch. Nothing is deployed.
 ## 10. Remaining work
 
 Incomplete implementation:
-- The Alphabet Sprint profile for Russian: its framework is in a pull request that has not landed; the letter data, the learning order, the confusable pairs and sixty first words are ready in `src/adapters/russian/alphabet.ts`.
 - GoReview's home photo for Russian: every pack needs a credited photo. A candidate is identified on Wikimedia Commons (St Basil's Cathedral, by Юрий Д.К., CC BY 4.0); the file must be supplied by the owner.
 
 Unverified linguistic accuracy:
+- The Alphabet Sprint's sound hints, rules and starter-word meanings. A starter word from the core list carries the first Wiktionary sense; nineteen common words whose first sense is not their usual meaning were left out by hand, and others may remain.
 - No native speaker or Russianist has reviewed anything. The grammar explanations, the preposition table, the verbs-of-motion table and the pronunciation notes are AI-drafted.
 - Sense choice in context is not attempted.
 

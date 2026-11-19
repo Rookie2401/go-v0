@@ -55,13 +55,20 @@ describe.skipIf(!have)('the built extension', () => {
     // what keeps the device's Repository level with the account (localRepo catchUp, the accounts a device has taken in, a pull that knows whether it
     // reached the account's head, remembers the events it could not store and carries out the account's deletions: repository-local/src/transfer.ts).
     // background.js measured 1,195.8 KB (1,224,510 bytes; 1,181.2 KB before).
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1200 * KB);
+    // 2026-11-19 (French pack, after merging master 22be2d7e): 1,200 -> 1,240 KB. French adds the text the worker serves to the card and the
+    // setup page: the pack manifest with its ten feature explanations and honest limits (about 9 KB), the 43 construction explanations the
+    // card's "why this form" asks the worker for (about 14 KB), and the orientation, which the catalogue reaches like every other language's
+    // (about 12 KB). Measured 1,263,600 bytes = 1,234.0 KB on the merged tree (1,195.8 KB on 22be2d7e). No French analyser, word list or
+    // lemma list is in the worker.
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1240 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.
     // 2026-11-13: 800 -> 840 KB; master's build of 24bdc6b3 already measured 820 KB (unnoticed: this test needs a local build), and the
     // packs' self-report (evidence.ts, merge 467d2b6c) adds 8 KB so the setup page can say what stands behind each language: 828 KB.
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(840 * KB);
+    // 2026-11-19 (French pack, after merging master 22be2d7e): 840 -> 880 KB. The same French text reaches the setup page (manifest,
+    // construction explanations, orientation: 37.6 KB on 985c742b). Measured 896,583 bytes = 875.6 KB on the merged tree.
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(880 * KB);
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 

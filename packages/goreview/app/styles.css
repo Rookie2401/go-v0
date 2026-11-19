@@ -1171,7 +1171,7 @@ img, svg, video, canvas { max-width: 100%; }
 .account-language-row:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
 .account-language-row .ec-icon { width: 1rem; height: 1rem; flex: none; color: var(--accent); }
 .account-language-name { overflow-wrap: anywhere; }
-.account-language-name small { display: block; color: var(--ink-soft); }
+.account-language-name small { color: var(--ink-soft); }
 .account-language-current { flex: none; font-size: .9rem; color: var(--ink-soft); }
 .account-page > .home-link, .account-group > .home-link { margin-top: .2rem; }
 .deck-tile[data-deck="danger"] .deck-title { color: var(--bad); }

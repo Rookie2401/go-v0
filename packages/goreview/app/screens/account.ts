@@ -50,7 +50,7 @@ async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElemen
     const native = nativeOf(e.languageId);
     row.append(
       h('span', { class: 'account-language-name' }, name,
-        native ? h('small', { lang: e.languageId, dir: 'auto' }, native) : null),
+        native ? h('small', { lang: e.languageId, dir: 'auto' }, ` (${native})`) : null),
       current ? h('span', { class: 'account-language-current' }, 'Reviewing now') : icon(ctx.deps.doc, 'arrow'),
     );
     return h('li', {}, row);

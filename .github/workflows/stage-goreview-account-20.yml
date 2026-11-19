@@ -1,0 +1,14 @@
+name: Inspect GoReview release inputs
+on:
+  push:
+    branches: [codex/build-goreview-account-20]
+permissions:
+  contents: read
+jobs:
+  inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          git ls-files public/lexicon
+          git grep -n biblical-index.json -- scripts packages/goreview/app

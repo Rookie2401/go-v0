@@ -80,6 +80,32 @@ describe('the account page', () => {
     expect(rig.q('#account-name-edit').textContent).toBe('Edit');
   });
 
+  it('a pending deletion’s banner leads the page and the languages close it, once (PR #20, kept by the owner 2026-11-19: "Keep codex\'s redesign")', async () => {
+    const acct = new FakeAccountService();
+    acct.scheduledPurgeAt = acct.purgeAt;
+    const rig = await makeRig({ signedIn: true, fetch: acct.fetch });
+    await rig.go('account');
+    await until(() => !!rig.root.querySelector('#deletion-banner') && !!rig.root.querySelector('#account-languages'), 'the banner and the languages');
+    await flush(8);
+    const parts = [...rig.q('#account-card').children].filter((c) => !c.classList.contains('sr'));
+    expect(parts[0]!.id).toBe('deletion-slot');
+    expect(parts[0]!.querySelector('#deletion-banner')).not.toBeNull();
+    expect(parts.at(-1)!.id).toBe('account-languages');
+    expect(rig.qa('#account-languages')).toHaveLength(1);
+    expect(rig.q('#account-languages h3').textContent).toBe('Your Account Settings');
+  });
+
+  it('on a device-only copy the languages close the page too, after the offer to keep progress', async () => {
+    const rig = await makeRig({ local: {} });
+    await rig.go('account');
+    await until(() => !!rig.root.querySelector('#account-languages'), 'the languages');
+    await flush(8);
+    const parts = [...rig.q('#account-card').children].filter((c) => !c.classList.contains('sr'));
+    expect(parts.length).toBeGreaterThan(1);
+    expect(parts.at(-1)!.id).toBe('account-languages');
+    expect(rig.qa('#account-languages')).toHaveLength(1);
+  });
+
   it('Delete account opens the guided step: what happens, how to restore within 14 days, the password; Keep my account closes it', async () => {
     const acct = new FakeAccountService();
     acct.password = 'correct-horse-battery';

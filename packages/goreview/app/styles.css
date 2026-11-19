@@ -1150,6 +1150,29 @@ img, svg, video, canvas { max-width: 100%; }
 }
 [data-home-photo] .account-page, [data-home-photo] .setup-page { margin-top: -1.25rem; }
 .account-group { display: grid; gap: .8rem; }
+#account-settings-h { margin-bottom: .5rem; }
+.account-language-list { list-style: none; padding: 0; margin: 0; }
+.account-language-list li { border-bottom: 1px solid var(--control-line); }
+.account-language-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem 1rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: .45rem .25rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 1.15rem/1.25 var(--serif);
+  text-align: start;
+  cursor: pointer;
+}
+.account-language-row:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.account-language-row .ec-icon { width: 1rem; height: 1rem; flex: none; color: var(--accent); }
+.account-language-name { overflow-wrap: anywhere; }
+.account-language-name small { display: block; color: var(--ink-soft); }
+.account-language-current { flex: none; font-size: .9rem; color: var(--ink-soft); }
 .account-page > .home-link, .account-group > .home-link { margin-top: .2rem; }
 .deck-tile[data-deck="danger"] .deck-title { color: var(--bad); }
 .deck-tile[data-deck="danger"] .deck-face .ec-icon { color: var(--bad); }

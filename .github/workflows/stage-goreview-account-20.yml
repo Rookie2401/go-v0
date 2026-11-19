@@ -1,14 +1,53 @@
-name: Inspect GoReview release inputs
+name: Stage GoReview account release
 on:
   push:
     branches: [codex/build-goreview-account-20]
 permissions:
-  contents: read
+  contents: write
 jobs:
-  inputs:
+  stage:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-      - run: |
-          git ls-files public/lexicon
-          git grep -n biblical-index.json -- scripts packages/goreview/app
+        with:
+          ref: 34fb5a42b1aab4c2a2de7031aa1be32292b0500c
+          path: source
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: pages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: source/package-lock.json
+      - name: Restore published lexicon inputs
+        run: |
+          set -euo pipefail
+          mkdir -p source/public/lexicon
+          cp -a pages/review/lexicon/{he,el} source/public/lexicon/
+          gzip -dc pages/review/lexicon/el/koine-index.json.gz > source/public/lexicon/el/koine-index.json
+          curl --fail --silent --show-error --retry 3 https://raw.githubusercontent.com/Rookie2401/biblia/gh-pages/lexicon/he/biblical-index.json -o source/public/lexicon/he/biblical-index.json
+      - run: npm ci
+        working-directory: source
+      - name: Build GoReview
+        working-directory: source
+        env:
+          GOREVIEW_OUT: ${{ runner.temp }}/goreview
+          GOREVIEW_ASSET_BASE: ../
+          GOREVIEW_SERVICE_URL: https://go-v0.onrender.com
+          GOREVIEW_DICT: ''
+        run: npx vite build -c packages/goreview/app/vite.config.ts --mode review
+      - name: Stage Pages commit
+        working-directory: pages
+        run: |
+          set -euo pipefail
+          cmp review/config.json "$RUNNER_TEMP/goreview/config.json" || node -e 'const assert = require("node:assert/strict"); assert.deepEqual(require("./review/config.json"), require(process.argv[1]));' "$RUNNER_TEMP/goreview/config.json"
+          grep -l 'Your Account Settings' "$RUNNER_TEMP"/goreview/assets/*.js
+          rsync -a --delete "$RUNNER_TEMP/goreview/" review/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- review
+          git commit -m 'Deploy GoReview Account language settings (#20)' -m 'Source: 34fb5a42b1aab4c2a2de7031aa1be32292b0500c'
+          git push origin HEAD:refs/heads/codex/staged-goreview-account-20

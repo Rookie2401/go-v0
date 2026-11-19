@@ -20,7 +20,7 @@
  */
 'use strict';
 
-var BUILD_ID = 'e721c73f85be';
+var BUILD_ID = '64ef1f53ebee';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -44,10 +44,10 @@ var PRECACHE = [
   "./assets/he-CDT9jrOs.js",
   "./assets/hebrew-script-CnsZhqS-.js",
   "./assets/hi-DahJF875.js",
-  "./assets/index-DGGA9dGg.js",
+  "./assets/index-LL-UbpGh.js",
   "./assets/jerusalem-YWyJNBCG.webp",
   "./assets/la-CwaQG1iI.js",
-  "./assets/languageChoices-D_GnU2A-.js",
+  "./assets/languageChoices-CBAZ36eU.js",
   "./assets/nb-DD4vZ02j.js",
   "./assets/nn-BFIvrq7f.js",
   "./assets/norwegian-CE2nWb77.js",
@@ -60,9 +60,9 @@ var PRECACHE = [
   "./assets/shared-f3Tn5VdE.js",
   "./assets/sq-BV_-FP7T.js",
   "./assets/src-BdSvOU29.js",
-  "./assets/style-BGNqFT4w.css",
+  "./assets/style-B8pkkofB.css",
   "./assets/syntax-CGmPxLTF.js",
-  "./assets/th-53a6qru2.js",
+  "./assets/th-D23YAogR.js",
   "./assets/valle-de-angeles-BxOTzEvC.webp",
   "./assets/varanasi-D-p-TlCF.webp",
   "./config.json",
@@ -84,41 +84,41 @@ var LANG_CHUNKS = {
     "./assets/lang-aramaic-B5WkUau3.js"
   ],
   "de": [
-    "./assets/lang-de-BKcIXV2A.js"
+    "./assets/lang-de-DOuKx87S.js"
   ],
   "el": [
-    "./assets/lang-el-BOMXYR6E.js"
+    "./assets/lang-el-B5U1Dsmk.js"
   ],
   "es": [
-    "./assets/lang-es-C0rcfysP.js"
+    "./assets/lang-es-BTxRT3UT.js"
   ],
   "he": [
-    "./assets/lang-he-Bs8Kpxu0.js"
+    "./assets/lang-he-CwabLzmf.js"
   ],
   "hebrew": [
     "./assets/lang-hebrew-Bsnip4qd.js",
     "./assets/lang-hebrew-apRjTzMX.js"
   ],
   "hi": [
-    "./assets/lang-hi-CaW2lkl8.js"
+    "./assets/lang-hi-DqxYK-8Q.js"
   ],
   "hindi": [
     "./assets/lang-hindi-DyM6_O99.js"
   ],
   "la": [
-    "./assets/lang-la-DDaiqABx.js"
+    "./assets/lang-la-O1NS64Iq.js"
   ],
   "nb": [
-    "./assets/lang-nb-CLUNQvnl.js"
+    "./assets/lang-nb-D8s8MLV-.js"
   ],
   "nn": [
-    "./assets/lang-nn-xpr7aKYW.js"
+    "./assets/lang-nn-Bh5sCUOD.js"
   ],
   "norwegian": [
-    "./assets/lang-norwegian-COn-U0XE.js"
+    "./assets/lang-norwegian-CY0Z7gSq.js"
   ],
   "sq": [
-    "./assets/lang-sq-CzLRO6u5.js"
+    "./assets/lang-sq-DNeRht_y.js"
   ],
   "th": [
     "./assets/lang-th-QSLCPu7R.js"

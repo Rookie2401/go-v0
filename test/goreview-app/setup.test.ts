@@ -5,7 +5,7 @@
  * enrolment is made on the account; inside the extension with no account, on the device's Repository.
  */
 import { afterEach, describe, expect, it } from 'vitest';
-import { FakeService, destroyRigs, makeRig, until } from './helpers';
+import { FakeService, destroyRigs, languageRowName, makeRig, until } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -43,7 +43,7 @@ describe('GoReview setup, signed in to an account with no language', () => {
     await rig.go('account');
     await until(() => !!rig.root.querySelector('#add-language'), 'the Account page');
     expect(rig.q<HTMLAnchorElement>('#add-language').getAttribute('href')).toBe('#/setup');
-    expect(rig.q('#account-languages [data-deck="current"] .deck-title').textContent).toBe('Albanian');
+    expect(languageRowName(rig.q('#account-languages .account-language-row[aria-current="true"]'))).toBe('Albanian');
   });
 
   it('Norwegian asks for the written standard and guesses nothing; the choice is the enrolment', async () => {

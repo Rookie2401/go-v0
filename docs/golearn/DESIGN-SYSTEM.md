@@ -78,7 +78,8 @@ its own forms.
   the title in the home's large serif with a kicker and a short gold rule; each group a kicker between rules; each language a warm tile
   with no outline, the one read in lighter; Download the gold pill; Details and quiet row actions gold links). The rules are the last
   block of `app/styles.css`, scoped to `.screen[data-route="languages"]`; the markup is unchanged. GoReview's own language list
-  (`#/setup`) and Account page use the same look (`packages/goreview/app/styles.css`).
+  (`#/setup`) and Account page use the same look (`packages/goreview/app/styles.css`); on Account the languages are compact rows in a
+  "Your Account Settings" panel at the foot (PR #20, 2026-11-19, kept by the owner: "Keep codex's redesign").
 - **State in a word** (`.tag`): small capitals on a hairline ("Reading now").
 - **Notice** (`.notice`): a rule in the accent at the start of the line; `.notice.warn` adds the warning ground.
 - **Status line** (`.status`, popup `.status-line`): `role="status"`; takes no room when empty; the warning colour only for a warning.

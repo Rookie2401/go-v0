@@ -3,18 +3,16 @@
  * hero (app.ts: "Your account" between gold rules, the title, the photo of the language being reviewed), then the home's column of warm tiles
  * with no outline.
  *
- *   Your languages   one tile per language the learner has; the one being reviewed says so, any other switches to it at a press. Under them,
- *                    "Add a language" opens #/setup. (The home's language dropdown moved here: "move the Choose your language from the
- *                    dropdown to the Your Account option".)
  *   Name, Email      one tile of facts: the name, editable in place; the address, and only while it is unconfirmed, the note and "send again"
  *   Sign out, Download my data, Delete account   a tile each, like the home's Review Deck; Delete opens the guided deletion below it
- *   Devices signed in   a closed dropdown at the foot
+ *   Devices signed in   a closed dropdown
+ *   Your Account Settings   the language list and setup link at the foot
  *
  * The deletion walks through what happens (nothing for 14 days), how to restore the account in that time (sign in and press Cancel), then asks
  * for the password and deletes. While a deletion is pending the banner with its Cancel sits at the top. Nothing here says learner ids, session
  * expiries or security events: those are the developer's (#/developer).
  *
- * Without an account: on a device-only copy, the languages, then the offer to keep progress across devices and "Clear local data"; on the
+ * Without an account: on a device-only copy, the offer to keep progress across devices and "Clear local data", followed by the languages; on the
  * hosted copy, the way to sign in.
  */
 import { icon, type IconName } from '../icons';
@@ -32,36 +30,35 @@ const tileLabel = (kicker: string | null, title: string, caption?: string, capti
     h('span', { class: 'deck-title' }, title),
     caption ? h('span', { class: 'deck-caption', ...(captionLang ? { lang: captionLang } : {}) }, caption) : null);
 
-/**
- * The learner's languages as tiles, the one being reviewed first and saying so; a press on another makes it the language being reviewed and
- * opens its home. Then "Add a language". Empty (and only the link) when there is none yet.
- */
-async function languageTiles(ctx: AppContext, view: View): Promise<HTMLElement[]> {
+async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElement | undefined> {
   const [list, id, { languagesOf }] = await Promise.all([ctx.enrolments().catch(() => []), ctx.identity().catch(() => undefined), import('../languageChoices')]);
-  if (!view.alive()) return [];
+  if (!view.alive()) return;
   const catalogue = languagesOf();
   const nativeOf = (languageId: string): string | undefined =>
     catalogue.find((l) => l.languageId === languageId || l.choice?.options.some((o) => o.languageId === languageId))?.nativeName;
   const active = list.find((e) => e.enrolmentId === id?.enrolmentId) ?? list[0];
   const ordered = active ? [active, ...list.filter((e) => e !== active)] : [];
-  const tiles = ordered.map((e) => {
+  const rows = ordered.map((e) => {
     const current = e === active;
     const name = enrolmentName(e, list);
-    const face = button('', () => {
+    const row = button('', () => {
       void (async () => {
         if (!current && !(await ctx.setLanguage(e.enrolmentId))) return;
         ctx.go('review');
       })();
-    }, { class: 'deck-face', 'aria-label': current ? `${name}: being reviewed now. Open its home` : `Review ${name} instead` , ...(current ? { 'aria-current': 'true' } : {}) });
-    face.append(tileLabel(current ? 'Reviewing now' : 'Your language', name, nativeOf(e.languageId), e.languageId), icon(ctx.deps.doc, 'arrow'));
-    const tile = h('div', { class: 'deck-tile account-language', 'data-deck': current ? 'current' : 'language', 'data-enrolment': e.enrolmentId }, face);
-    attachRipple(tile);
-    return tile;
+    }, { class: 'account-language-row', 'data-enrolment': e.enrolmentId, ...(current ? { 'aria-current': 'true' } : {}) });
+    const native = nativeOf(e.languageId);
+    row.append(
+      h('span', { class: 'account-language-name' }, name,
+        native ? h('small', { lang: e.languageId, dir: 'auto' }, native) : null),
+      current ? h('span', { class: 'account-language-current' }, 'Reviewing now') : icon(ctx.deps.doc, 'arrow'),
+    );
+    return h('li', {}, row);
   });
-  return [
-    h('div', { class: 'account-group', id: 'account-languages', 'aria-label': 'Your languages' }, ...tiles,
-      h('a', { class: 'home-link account-add-language', id: 'add-language', href: '#/setup' }, list.length ? 'Add a language' : 'Choose your language')),
-  ];
+  return h('section', { class: 'deck-tile account-panel', id: 'account-languages', 'aria-labelledby': 'account-settings-h' },
+    h('h3', { class: 'deck-kicker', id: 'account-settings-h' }, 'Your Account Settings'),
+    rows.length ? h('ul', { class: 'account-language-list', 'aria-label': 'Your languages' }, ...rows) : null,
+    h('a', { class: 'account-link', id: 'add-language', href: '#/setup' }, list.length ? 'Add a language' : 'Choose your language'));
 }
 
 /** One of the account's actions as a tile, like the home's Review Deck: an icon, a title and its caption, the arrow. Keeps the button (and its id). */
@@ -77,11 +74,11 @@ function actionTile(ctx: AppContext, action: HTMLButtonElement, glyph: IconName,
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const session = await ctx.state.getSession();
   const mode = await ctx.mode();
+  if (!view.alive()) return;
   // the home's column: tiles with no outline, one under the other (styles.css, "#/account in the home's look")
   const card = h('section', { class: 'home account-page', id: 'account-card', 'aria-labelledby': 'account-h' }, h('h2', { id: 'account-h', class: 'sr' }, 'Account'));
   el.append(card);
-  if (mode !== 'none') append(card, await languageTiles(ctx, view));
-  if (!view.alive()) return;
+  const settings = mode !== 'none' ? languageSettings(ctx, view) : undefined;
 
   if (!session) {
     if (mode === 'device') {
@@ -116,6 +113,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         h('p', { class: 'deck-kicker' }, 'Not signed in'),
         h('div', { class: 'account-panel-actions' }, h('a', { class: 'account-pill', href: '#/signin' }, 'Sign in')))]);
     }
+    const languages = await settings;
+    if (languages && view.alive()) card.append(languages);
     return;
   }
 
@@ -276,8 +275,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   // a closed dropdown at the foot, like the sign-in page's welcome: a tile's kicker with a gold caret
   const devices = h('details', { class: 'signin-about account-devices', id: 'acct-devices' }, h('summary', {}, 'Devices signed in'), sessionsBlock(ctx, view));
 
-  // a pending deletion's banner leads the page, above the languages
-  card.insertBefore(banner, card.children[1] ?? null);
+  card.append(banner);
   append(card, [
     h('div', { class: 'deck-tile account-panel' },
       h('dl', { class: 'account-facts account-profile', 'aria-label': 'Account profile' },
@@ -307,7 +305,11 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       verifyNote.hidden = true; resend.hidden = true;
     }
   }
-  await paintState();
+  await Promise.all([
+    settings?.then((languages) => { if (languages && view.alive()) card.append(languages); }),
+    paintState(),
+  ]);
+  if (!view.alive()) return;
   const onChange = (): void => { if (view.alive()) void paintState(); };
   ctx.deps.doc.addEventListener(ACCOUNT_CHANGED, onChange);
   view.onDispose(() => ctx.deps.doc.removeEventListener(ACCOUNT_CHANGED, onChange));

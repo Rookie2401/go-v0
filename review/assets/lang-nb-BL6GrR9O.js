@@ -1,1 +1,0 @@
-import{t as e}from"./lang-norwegian-DeJoGcMn.js";var t=e(`nb`);export{t as nbAdapter};

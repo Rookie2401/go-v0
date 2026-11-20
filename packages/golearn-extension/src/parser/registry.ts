@@ -35,6 +35,7 @@ export const LANGUAGE_META: Readonly<Record<string, LanguageMeta>> = {
   he: { lang: 'he', name: 'Hebrew', pageTag: /^(he|iw|hbo)(-|$)/, experimental: 'The Hebrew pack is experimental: readings come from the Open Scriptures morphology of the Bible and the Wiktionary tables; only the commonest Biblical words are compiled in, the rest needs the installed indexes; nothing has been reviewed by a Hebrew scholar or a native speaker.' },
   el: { lang: 'el', name: 'Greek', pageTag: /^(el|grc)(-|$)/, experimental: 'The Greek pack is experimental: readings come from MorphGNT over the New Testament and the Wiktionary Ancient and Modern tables; only the commonest New Testament words are compiled in, the rest needs the installed indexes; nothing has been reviewed by a classicist or a native speaker.' },
   arc: { lang: 'arc', name: 'Biblical Aramaic', pageTag: /^arc(-|$)/, experimental: 'The Aramaic pack is experimental: only its declared Biblical Aramaic excerpt forms have source-backed analyses. Other dialects and unlisted forms are unresolved.' },
+  ru: { lang: 'ru', name: 'Russian', pageTag: /^ru(-|$)/, experimental: 'The Russian pack is experimental: readings come from the Wiktionary inflection tables (via kaikki.org); only the commonest words are compiled in, the rest needs the installed index; a form with several readings keeps them all; nothing has been reviewed by a native speaker.' },
 };
 
 /** The languages the parser CAN read (an analyser exists for them, loaded or not). */

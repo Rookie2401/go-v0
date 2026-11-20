@@ -82,10 +82,10 @@ utility(S) = Σ words S makes decodable (UNLOCK + USE·weight)
 
 Measured against the traditional alphabet order (starter words decodable after 10 units; `test/alphabet/sprint-*.test.ts`):
 
-| | es | sq | de | nb | nn | la | el | el classical | he | arc | th | hi |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Sprint | 215 | 233 | 156 | 220 | 263 | 244 | 16 | 22 | 17 | 12 | 18 | 22 |
-| alphabet order | 86 | 143 | 45 | 210 | 252 | 219 | 2 | 5 | 0 | 0 | 0 | 0 |
+| | es | sq | de | nb | nn | la | el | el classical | he | arc | th | hi | ru |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Sprint | 215 | 233 | 156 | 220 | 263 | 244 | 16 | 22 | 17 | 12 | 18 | 22 | 86 |
+| alphabet order | 86 | 143 | 45 | 210 | 252 | 219 | 2 | 5 | 0 | 0 | 0 | 0 | 25 |
 
 ## C. Languages
 
@@ -102,6 +102,7 @@ Measured against the traditional alphabet order (starter words decodable after 1
 | arc | `profiles/arc.ts` | 300 / 0 | 100 % | none (the pack has no Aramaic transliteration) | its own words from ARAMAIC_SEED; never Hebrew words |
 | th | `profiles/th.ts` | 288 / 0 | 91 % | decoder romanisation and tone ("khao (rising)") | tone is shown on every word; the tone rule is a dependency only where a mark's tone depends on class; shapes alone never give the tone, and the notes say so |
 | hi | `profiles/hi.ts` | 297 / 0 | 100 % | `transliterateHindi` (ISO 15919) | taught as syllables: inherent a, vowel signs, virama, conjuncts, schwa deletion (as the pack's decoder decides it) |
+| ru | `profiles/ru.ts` | 300 / 4 | 100 % | the pack's `ruPronunciation` transliteration with the source's stress | а к м о т are familiar; five rules applied by spelling (stress and weaker vowels, final devoicing, г as v in -ого/-его, -тся/-ться, жи ши ци); which vowel is stressed and a printed е standing for ё are not modelled |
 
 **Hebrew rules:**
 - Only pointed forms are decoding exercises.

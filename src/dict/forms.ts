@@ -205,6 +205,7 @@ const GRAMMATICAL_TAGS: ReadonlySet<string> = new Set([
   'present', 'past', 'preterite', 'perfect', 'imperfect', 'pluperfect', 'future', 'aorist', 'infinitive', 'participle', 'gerund', 'supine', 'imperative',
   'subjunctive', 'indicative', 'conditional', 'comparative', 'superlative', 'first-person', 'second-person', 'third-person', 'masculine', 'feminine',
   'neuter', 'definite', 'indefinite', 'admirative', 'optative', 'infinitive-zu', 'perfective', 'habitual', 'presumptive', 'counterfactual',
+  'instrumental', 'prepositional', 'partitive', // Russian: a noun row may carry its case alone ("instrumental" = instrumental singular)
 ]);
 /** Tags that make a row something other than a plain inflected form: the source's own errors, a class label, an auxiliary, a misspelling ... */
 const NOT_A_FORM_TAGS: ReadonlySet<string> = new Set([

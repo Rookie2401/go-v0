@@ -84,7 +84,7 @@ export async function prepareDevice(req: Req, registry: VoiceRegistry, env: GoLi
     }
     if (!entry.supports.includes(req.kind)) return fail('unsupported-kind', `Device voices here do not speak a ${req.kind}.`);
     const found = await matchDeviceVoices(entry, env);
-    const standardAlias = req.varietyId && ['sq-standard', 'hi-standard', 'th-standard', 'nb', 'nn', 'he-mod', 'el-mod', 'he-bib', 'he-mish', 'he-med', 'arc-bib', 'el-koi', 'el-att', 'el-hom', 'el-med', 'la-ecclesiastical', 'la-classical'].includes(normalizeLocale(req.varietyId));
+    const standardAlias = req.varietyId && ['sq-standard', 'hi-standard', 'th-standard', 'nb', 'nn', 'he-mod', 'el-mod', 'he-bib', 'he-mish', 'he-med', 'arc-bib', 'el-koi', 'el-att', 'el-hom', 'el-med', 'la-ecclesiastical', 'la-classical', 'ru-ru'].includes(normalizeLocale(req.varietyId));
     const matches = req.varietyId
       ? found.matches.filter((m) => standardAlias || normalizeLocale(m.voice.lang) === speechVarietyLocale(req.languageId, req.varietyId))
       : found.matches;

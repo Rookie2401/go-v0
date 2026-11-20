@@ -14,8 +14,8 @@
  */
 import type { PronunciationKind, PhoneticDetail, VoiceDescriptor } from './contracts';
 import { albanianPhonetics } from './phonetics';
-import { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS } from './deviceTags';
-export { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS } from './deviceTags';
+import { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, RUSSIAN_DEVICE_TAGS } from './deviceTags';
+export { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, RUSSIAN_DEVICE_TAGS } from './deviceTags';
 
 export type VoiceSource =
   | { kind: 'device'; langTags: string[] }
@@ -266,6 +266,15 @@ export function pronunciationRegistries(): VoiceRegistry[] {
         azureEntry('it-IT-ElsaNeural', 'Elsa', 'female', { languageId: 'la', locale: 'it-IT', name: 'Italian stand-in for Ecclesiastical Latin' }),
       ],
       gaps: ['No Latin recordings are registered; nothing is claimed.', 'No Latin voice exists: these remote Italian voices are stand-ins for the Ecclesiastical (Church) reading only; they do not pronounce Classical Latin or preserve vowel length.'],
+    },
+    {
+      ...deviceRegistry('ru', [...RUSSIAN_DEVICE_TAGS], 'Russian'),
+      entries: [
+        ...deviceRegistry('ru', [...RUSSIAN_DEVICE_TAGS], 'Russian').entries,
+        azureEntry('ru-RU-SvetlanaNeural', 'Svetlana', 'female', { languageId: 'ru', locale: 'ru-RU', name: 'Russian (Russia)' }),
+        azureEntry('ru-RU-DmitryNeural', 'Dmitry', 'male', { languageId: 'ru', locale: 'ru-RU', name: 'Russian (Russia)' }),
+      ],
+      gaps: ['No Russian recordings are registered; nothing is claimed.', 'A synthetic voice places the stress by its own rules; it is not evidence of the stress the dictionary gives.'],
     },
   ];
 }

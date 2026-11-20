@@ -18,6 +18,7 @@ import { DEVICE_TAGS, hasDeviceVoice } from '../../src/content/voiceTags';
 const VOICE_LANGUAGES: ReadonlyArray<{ id: string; note?: string }> = [
   { id: 'nb', note: 'Azure offers Bokmål; it is never used for Nynorsk' }, { id: 'nn', note: 'no Azure Nynorsk voice; only an exact Nynorsk device voice is accepted' }, { id: 'de' }, { id: 'sq', note: 'few devices ship one; Azure has Albanian voices' }, { id: 'hi' }, { id: 'th' }, { id: 'es' }, { id: 'he' }, { id: 'el' },
   { id: 'la', note: 'Azure Italian is only an Ecclesiastical Latin stand-in; it is not Classical Latin' },
+  { id: 'ru' },
 ];
 
 /** What this browser can speak right now, by the same strict rule the word card uses (an English voice is never "close enough"). */

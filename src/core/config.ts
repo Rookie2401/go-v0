@@ -17,6 +17,7 @@ export const LANGUAGE_ROWS: Language[] = [
   { id: 'el', name: 'Greek', endonym: 'Ελληνικά', script: 'Grek', direction: 'ltr', whitespaceDelimited: true },
   { id: 'la', name: 'Latin', endonym: 'Latina', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
   { id: 'arc', name: 'Aramaic (Biblical)', endonym: 'אֲרָמִית', script: 'Hebr', direction: 'rtl', whitespaceDelimited: true },
+  { id: 'ru', name: 'Russian', endonym: 'Русский', script: 'Cyrl', direction: 'ltr', whitespaceDelimited: true },
 ];
 
 export const COURSES: Course[] = [
@@ -72,6 +73,12 @@ export const COURSES: Course[] = [
     // No variety policy yet: Classical Latin is the working target; the Vulgate and later Latin are read as Latin of their period.
   },
   { id: 'aramaic-arc', lang: 'arc', country: 'Aramaic', title: 'Biblical Aramaic', primaryReadingKinds: ['scripture'], preferredLocales: [], variety: { target: 'arc-bib', within: [] } },
+  {
+    id: 'russia-ru', lang: 'ru', country: 'Russia', title: 'Russian', preferredLocales: ['ru-RU', 'ru'],
+    // Active target: Modern Standard Russian in today's spelling. Pre-1918 spelling (ѣ, і, a final ъ), Church Slavonic and the other
+    // Cyrillic-script languages (Ukrainian, Belarusian, Bulgarian, Serbian) are not Russian here: they are neither analysed nor credited.
+    variety: { target: 'ru-RU', within: [] },
+  },
 ];
 
 /** The course for a language: the course whose own language it is; for a companion language (Nynorsk) the course that reads it. */

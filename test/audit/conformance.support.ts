@@ -235,6 +235,8 @@ export const SALVAGE_ALLOW_LIST: ReadonlyArray<{ prefix: string; status: 'salvag
   { prefix: 'src/adapters/norwegian/', status: 'salvaged', why: 'Norwegian lexicon and rules' },
   { prefix: 'src/adapters/la.ts', status: 'salvaged', why: 'Latin analyser (ported from the Romance app)' },
   { prefix: 'src/adapters/latin/', status: 'salvaged', why: 'Latin lexicon, morphology and rules' },
+  { prefix: 'src/adapters/ru.ts', status: 'salvaged', why: 'Russian analyser (attested forms, kaikki-ru dictionary forms, rules)' },
+  { prefix: 'src/adapters/russian/', status: 'salvaged', why: 'Russian lexicon, morphology and rules' },
   { prefix: 'src/adapters/he.ts', status: 'salvaged', why: 'Hebrew analyser' },
   { prefix: 'src/adapters/hebrew/', status: 'salvaged', why: 'Hebrew lexicon, morphology and rules' },
   { prefix: 'src/adapters/el.ts', status: 'salvaged', why: 'Greek analyser' },

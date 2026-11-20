@@ -38,6 +38,7 @@
 import type { LanguageAdapter } from '../../../../src/core';
 import type { LanguageEvidence, LanguageResolution, ResolveLanguage } from '../contract/language';
 import { parserAdapter } from '../parser';
+import { notRussianCyrillic } from './cyrillic';
 
 export type { LanguageEvidence, LanguageResolution, ResolveLanguage } from '../contract/language';
 
@@ -59,6 +60,8 @@ export const MIN_MARGIN = 0.25;
 export const MIN_SCRIPT_SHARE = 0.6;
 /** Devanagari is accepted as Hindi when the Hindi word list recognises at least this share of the words. */
 export const MIN_HINDI_SHARE = 0.5;
+/** Cyrillic is accepted as Russian when its letters name no other language and the Russian word list recognises at least this share of the words. */
+export const MIN_RUSSIAN_SHARE = 0.5;
 /** Confidence given to the team default: a default, not evidence. */
 export const TEAM_DEFAULT_CONFIDENCE = 0.3;
 /**
@@ -87,9 +90,10 @@ export const PACK_VARIETIES: Readonly<Record<string, readonly string[]>> = {
   he: ['he-mod', 'he-bib', 'arc-bib'],
   el: ['el-mod', 'el-koi', 'el-att', 'el-hom'],
   arc: ['arc-bib'],
+  ru: ['ru-RU'],
 };
 /** The script each pack's language is written in; a tag that states another script (hi-Latn) names something no pack analyses. */
-const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', arc: 'hebr', el: 'grek' };
+const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', arc: 'hebr', el: 'grek', ru: 'cyrl' };
 
 const PRIMARY: Readonly<Record<string, string>> = {
   sq: 'sq', sqi: 'sq', als: 'sq', aln: 'sq',
@@ -104,6 +108,9 @@ const PRIMARY: Readonly<Record<string, string>> = {
   // Biblical Hebrew (hbo) and Ancient Greek (grc) are periods of the same packs, not other languages
   he: 'he', heb: 'he', iw: 'he', hbo: 'he',
   el: 'el', ell: 'el', gre: 'el', grc: 'el',
+  // Ukrainian (uk), Belarusian (be), Bulgarian (bg), Serbian (sr) and Macedonian (mk) are other languages in the same script: they
+  // are NOT listed, so a page that declares one of them is a page no pack covers
+  ru: 'ru', rus: 'ru',
 };
 /** Tags that look like a pack language but are not the pack's language. */
 const NOT_THE_PACK: Readonly<Record<string, string>> = {
@@ -188,9 +195,9 @@ function sampleWords(sample: string): string[] {
   return out;
 }
 
-interface ScriptShare { latin: number; thai: number; devanagari: number; hebrew: number; greek: number; letters: number }
+interface ScriptShare { latin: number; thai: number; devanagari: number; hebrew: number; greek: number; cyrillic: number; letters: number }
 function scriptShare(sample: string): ScriptShare {
-  const r: ScriptShare = { latin: 0, thai: 0, devanagari: 0, hebrew: 0, greek: 0, letters: 0 };
+  const r: ScriptShare = { latin: 0, thai: 0, devanagari: 0, hebrew: 0, greek: 0, cyrillic: 0, letters: 0 };
   for (const ch of sample.slice(0, MAX_SAMPLE_CHARS)) {
     if (!/\p{L}/u.test(ch)) continue;
     r.letters++;
@@ -199,6 +206,7 @@ function scriptShare(sample: string): ScriptShare {
     else if (/\p{Script=Devanagari}/u.test(ch)) r.devanagari++;
     else if (/\p{Script=Hebrew}/u.test(ch)) r.hebrew++;
     else if (/\p{Script=Greek}/u.test(ch)) r.greek++;
+    else if (/\p{Script=Cyrillic}/u.test(ch)) r.cyrillic++;
   }
   return r;
 }
@@ -212,7 +220,12 @@ function wordListShare(adapter: LanguageAdapter, sample: string): { hits: number
   return { hits, words, share: hits / words };
 }
 
-interface Detection { languageId?: string; confidence: number; reasons: string[] }
+/**
+ * `against`: the sample is positively ANOTHER language (letters Russian does not use name it: Ukrainian, Bulgarian …). That is evidence,
+ * like a declaration of a language no pack covers, so the team default is not used against it. A sample that is merely not recognised
+ * (too few word-list hits) carries no `against`: it may still be the learner's language outside the word list.
+ */
+interface Detection { languageId?: string; confidence: number; reasons: string[]; against?: string }
 
 const r2 = (n: number): number => Math.round(n * 100) / 100;
 
@@ -259,8 +272,22 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
     if (!installed.has('el')) return { confidence: 0, reasons: ['the sample is in Greek script, but the Greek pack is not installed'] };
     return { languageId: 'el', confidence: 0.9, reasons: ['the sample is in Greek script, which no other pack uses (the analyser decides the period, Homeric to Modern, sentence by sentence)'] };
   }
+  // Cyrillic is shared by Russian, Ukrainian, Belarusian, Bulgarian, Serbian, Macedonian and more. Letters Russian does not use name
+  // another language outright (language/cyrillic.ts); without them, only the Russian word list can show that the text is Russian.
+  if (share(sh.cyrillic) >= MIN_SCRIPT_SHARE) {
+    if (!installed.has('ru')) return { confidence: 0, reasons: ['the sample is in Cyrillic script, but the Russian pack is not installed'] };
+    const other = notRussianCyrillic(sample.slice(0, MAX_SAMPLE_CHARS));
+    if (other) return { confidence: 0, against: other.language, reasons: [`the sample is in Cyrillic script, but it looks like ${other.language}, not Russian as the pack reads it (${other.evidence})`] };
+    const ru = adapterOf('ru');
+    if (!ru) return { confidence: 0, reasons: ['the sample is in Cyrillic script, which Russian shares with Ukrainian, Belarusian, Bulgarian and Serbian, and no Russian word list is available (it is not loaded) to tell them apart'] };
+    const w = wordListShare(ru, sample);
+    if (w.share >= MIN_RUSSIAN_SHARE && w.hits >= MIN_HITS) {
+      return { languageId: 'ru', confidence: r2(Math.min(0.8, 0.5 + w.share / 2)), reasons: [`the sample is in Cyrillic script, has no letter of another Cyrillic alphabet, and the Russian word list recognises ${w.hits} of ${w.words} words (the script is shared with other languages, so the word list decides)`] };
+    }
+    return { confidence: 0, reasons: [`the sample is in Cyrillic script, but the Russian word list recognises only ${w.hits} of ${w.words} words: it may be Bulgarian, Ukrainian, Serbian or another language, or Russian outside the word list`] };
+  }
   if (share(sh.latin) < MIN_SCRIPT_SHARE) {
-    return { confidence: 0, reasons: ['the sample is not mainly in one script this resolver can compare (Latin, Thai, Devanagari, Hebrew or Greek)'] };
+    return { confidence: 0, reasons: ['the sample is not mainly in one script this resolver can compare (Latin, Thai, Devanagari, Hebrew, Greek or Cyrillic)'] };
   }
 
   // Latin script: a lexicon-hit comparison across the installed packs that have a word list.
@@ -301,6 +328,9 @@ function defaultCompatibility(tag: string, sample: string, installed: ReadonlySe
   if (!adapter) return { ok: false, reason: `the ${m.languageId} word list is not loaded, so the text could not be checked against the chosen language` };
   const words = sampleWords(sample);
   if (words.length < MIN_TOKENS) return { ok: false, reason: `the text around the selection has ${words.length} word${words.length === 1 ? '' : 's'}; fewer than ${MIN_TOKENS} cannot show that it is ${m.languageId}` };
+  // a Ukrainian or Bulgarian page shares many short words with Russian: its own letters rule Russian out before the word list is asked
+  const other = m.languageId === 'ru' ? notRussianCyrillic(sample.slice(0, MAX_SAMPLE_CHARS)) : undefined;
+  if (other) return { ok: false, reason: `the text around the selection looks like ${other.language}, not Russian (${other.evidence})` };
   const w = wordListShare(adapter, sample);
   const need = Math.round(DEFAULT_COMPATIBLE_SHARE * 100);
   if (w.share >= DEFAULT_COMPATIBLE_SHARE && w.hits >= MIN_HITS) {
@@ -410,6 +440,9 @@ export function createLanguageResolver(options: ResolverOptions = {}): ResolveLa
       const d = detect(evidence.sample, installed, adapterOf);
       if (d.languageId) return { languageId: d.languageId, confidence: d.confidence, basis: 'detection', reasons: [...reasons, ...d.reasons] };
       reasons.push(...d.reasons);
+      // the text names another language outright (a Ukrainian paragraph on a page with no lang): reading it with the learner's language
+      // would record a Ukrainian word as a Russian encounter. The learner's own choice (step 1) still overrides this.
+      if (d.against) return undetermined([...reasons, `the text is ${d.against}, which no installed pack reads; the team default is not used against it — choose a language if this is wrong`]);
     } else {
       reasons.push('no sample was given to detect a language from');
     }

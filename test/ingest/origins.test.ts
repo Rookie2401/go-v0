@@ -260,7 +260,7 @@ describe('the other languages retain analysis facts and persist source descripto
       }
       kinds.add(`${a.lang}:${a.origin}`);
     }
-    for (const lang of LANGUAGES.filter((l) => !EXTERNAL_INSIDE_ADAPTER.has(l))) expect([...kinds].some((k) => k.startsWith(`${lang}:`)), lang).toBe(true);
+    for (const lang of LANGUAGES.filter((l) => !EXTERNAL_INSIDE_ADAPTER.has(l) && l !== 'ru' /* no bundled Russian corpus */)) expect([...kinds].some((k) => k.startsWith(`${lang}:`)), lang).toBe(true);
   });
 
   it('a Spanish text imports identically with and without an installed (here empty) dictionary for another language', async () => {

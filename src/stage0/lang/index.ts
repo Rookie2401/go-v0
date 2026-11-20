@@ -277,6 +277,18 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
     exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 }, decoding: { minCorrect: 0.75 } },
     intro: 'Thai has its own letters, no spaces between words, and tones. You will learn them inside real Thai, step by step; romanization helps at first and then steps aside.',
   },
+
+  // Russian: only the facts are stated. No Stage 0 course content exists (no scenes, no validated audio), as for Biblical Aramaic.
+  ru: {
+    lang: 'ru', name: 'Russian', voiceLangs: ['ru-RU', 'ru'],
+    script: { kind: 'cyrillic', features: 'spelling', spelling: [
+      { id: 'ru:soft-sign', label: 'ь — softens the consonant before it and has no sound of its own', pattern: /ь/ },
+      { id: 'ru:hard-sign', label: 'ъ — a rare hard sign: a small break between a prefix and the vowel after it', pattern: /ъ/ },
+    ] },
+    bands: { earlyScenes: 4, earlyMaxNew: 5, laterMaxNew: 7, laterMinCoverage: 0.6, exitMinCoverage: 0.95 },
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
+    intro: 'Russian is written in the Cyrillic alphabet, left to right, with spaces between words. A complete Stage 0 course and validated audio are not yet available.',
+  },
 };
 
 export function stage0Config(lang: LanguageCode): Stage0LanguageConfig {

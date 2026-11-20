@@ -31,6 +31,7 @@ const UNIT_ROLES: Record<string, string> = {
 
 /** How the source continues a form-of target that describes a verb with attached pronouns, after the verb itself. */
 const COMBINED_WITH = ' combined with';
+const RU_ASPECT_LABEL = / (?:pf|impf)$/u;
 
 /** The part of speech a Wiktionary heading maps to (units that are not single words are X); undefined when the heading is not listed. */
 export function partOfSpeechOf(heading: string): PartOfSpeech | undefined {
@@ -215,7 +216,9 @@ export function mapKaikkiLine(line: unknown, normalize: (surface: string) => str
         // a verb with attached pronouns names its lemma as a description ("decir combined with indirect object le/les and
         // direct object lo"): the lemma is the first word; the description is not a headword and nothing is put in its place
         const at = target.indexOf(COMBINED_WITH);
-        const w = at > 0 && !/\s/.test(target.slice(0, at)) ? target.slice(0, at) : target;
+        let w = at > 0 && !/\s/.test(target.slice(0, at)) ? target.slice(0, at) : target;
+        // Russian: a verb form names its lemma with an aspect label when two verbs are written alike ("стать pf"): the label is not the headword's
+        if (lang === 'ru') w = w.replace(RU_ASPECT_LABEL, '');
         let lemma = w;
         try { lemma = normalize(w) || w; } catch { /* keep the source's spelling */ }
         if (!formOf.some((f) => f.lemma === lemma && sameList(f.tags, tags))) formOf.push({ lemma, tags });

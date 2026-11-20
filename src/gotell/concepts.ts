@@ -292,6 +292,7 @@ const TABLES: Record<LanguageCode, LangTable> = {
     now: { forms: ['nunc', 'hodie', 'iam', 'jam', 'cotidie', 'quotidie'], lexemes: ['nunc'] },
     share: { stems: ['communic', 'narr', 'particip', 'annunti', 'nunti'], lexemes: ['communico'] },
   },
+  ru: {}, // No Russian production curriculum is claimed.
 };
 
 /** Negation markers (per language). Used to keep negation outside a recombined phrase and flag it. */
@@ -309,6 +310,7 @@ export const NEGATORS: Record<LanguageCode, string[]> = {
   he: ['לא', 'אין', 'אינו', 'אינה', 'אינם', 'אינן', 'בלי', 'מעולם'],
   el: ['δεν', 'μη', 'μην', 'όχι', 'ούτε', 'ποτέ', 'κανένας', 'καμία', 'κανένα'],
   la: ['non', 'ne', 'nec', 'neque', 'nemo', 'nihil', 'nil', 'nullus', 'nulla', 'nullum', 'numquam', 'nunquam', 'haud', 'minime'],
+  ru: [],
 };
 
 /**
@@ -330,6 +332,7 @@ export const CHRONOLOGY: Record<LanguageCode, string[]> = {
   he: ['כאשר', 'אחרי', 'לפני', 'אז', 'עכשיו', 'כעת', 'עתה', 'היום', 'אתמול', 'מחר', 'כבר', 'עדיין', 'תמיד', 'מעולם', 'קודם', 'לבסוף', 'בינתיים', 'מאז', 'עד'],
   el: ['όταν', 'πριν', 'μετά', 'τότε', 'τώρα', 'σήμερα', 'χθες', 'αύριο', 'ήδη', 'ακόμα', 'ακόμη', 'πάντα', 'ποτέ', 'πρώτα', 'τελικά', 'ενώ', 'μέχρι', 'σύντομα', 'πια', 'πλέον'],
   la: ['cum', 'quando', 'ante', 'antea', 'post', 'postea', 'postquam', 'deinde', 'tum', 'tunc', 'nunc', 'hodie', 'heri', 'cras', 'iam', 'jam', 'adhuc', 'semper', 'numquam', 'nunquam', 'primum', 'primo', 'denique', 'tandem', 'dum', 'donec', 'usque', 'mox', 'statim', 'olim', 'cotidie', 'quotidie'],
+  ru: [],
 };
 
 /** Subject pronouns: a slot filler that extends backwards stops here (the subject is not part of a phrase slot). */
@@ -348,6 +351,7 @@ export const SUBJECT_PRONOUNS: Record<LanguageCode, string[]> = {
   he: ['אני', 'אתה', 'הוא', 'היא', 'אנחנו', 'אתם', 'אתן', 'הם', 'הן'],
   el: ['εγώ', 'εσύ', 'αυτός', 'αυτή', 'αυτό', 'εμείς', 'εσείς', 'αυτοί', 'αυτές', 'αυτά'],
   la: ['ego', 'tu', 'is', 'ea', 'id', 'ille', 'illa', 'illud', 'hic', 'haec', 'hoc', 'nos', 'vos', 'ei', 'ii', 'eae', 'illi', 'illae'],
+  ru: [], // No Russian production curriculum is claimed.
 };
 
 // ───────────────────────── compiled matchers ─────────────────────────

@@ -111,9 +111,10 @@ const SPECS: readonly Spec[] = [
     varieties: [{ id: 'el-mod', label: 'Modern Greek (default)' }, { id: 'el-koi', label: 'Koine Greek' }, { id: 'el-att', label: 'Attic Greek' }, { id: 'el-hom', label: 'Homeric Greek' }],
   },
   { packIds: ['pack:arc'] },
+  { packIds: ['pack:ru'] },
 ];
 
-const SCRIPT_NAME: Readonly<Record<string, string>> = { Latn: 'Latin', Deva: 'Devanagari', Thai: 'Thai script', Hebr: 'Hebrew script', Grek: 'Greek alphabet' };
+const SCRIPT_NAME: Readonly<Record<string, string>> = { Latn: 'Latin', Deva: 'Devanagari', Thai: 'Thai script', Hebr: 'Hebrew script', Grek: 'Greek alphabet', Cyrl: 'Cyrillic' };
 
 const LEVEL_RANK: Readonly<Record<PackLevel, number>> = { planned: 0, experimental: 1, installable: 2 };
 const VALIDATION_ORDER: readonly ValidationLevel[] = ['unsupported', 'experimental', 'unreviewed', 'incomplete', 'production-validated'];

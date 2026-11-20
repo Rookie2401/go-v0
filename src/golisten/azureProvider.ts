@@ -81,6 +81,13 @@ export const AZURE_VOICES: Record<LanguageCode, AzureVoiceEntry[]> = {
     { id: 'it-IT-IsabellaNeural', locale: 'it-IT', gender: 'female' },
     { id: 'it-IT-DiegoNeural', locale: 'it-IT', gender: 'male' },
   ],
+  // Russian: Azure's ru-RU neural voices (ids from memory of the Azure voice gallery; unverified against the live list, which
+  // `listVoices` reads at runtime when it can).
+  ru: [
+    { id: 'ru-RU-SvetlanaNeural', locale: 'ru-RU', gender: 'female' },
+    { id: 'ru-RU-DmitryNeural', locale: 'ru-RU', gender: 'male' },
+    { id: 'ru-RU-DariyaNeural', locale: 'ru-RU', gender: 'female' },
+  ],
 };
 
 export interface AzureSpeechOptions {

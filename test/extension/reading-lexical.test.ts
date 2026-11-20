@@ -20,7 +20,7 @@ import type { ConfirmFormsReply } from '../../packages/golearn-extension/src/pro
 
 registerAllAnalysers();
 
-const LANGS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc'] as const;
+const LANGS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru'] as const;
 const VARIETY: Record<string, string> = { he: 'he-bib', el: 'el-koi' };
 const CORPUS = resolve(process.cwd(), 'data/corpus');
 
@@ -30,18 +30,31 @@ const SAMPLE_FILES: Record<string, string[]> = {
   la: ['ladder-caesar-bg-1'], he: ['bible-gen-1'], el: ['bible-1john-1'], arc: ['daniel-2-10', 'daniel-2-11', 'daniel-2-12'],
 };
 
+/**
+ * A language with no bundled corpus (Russian) is sampled from sentences written for this test: everyday words, forms of one lemma
+ * (книга, книгу, книги), words written alike (стали, мой, три), ё printed as е (шел), a hyphenated word.
+ */
+const INLINE_SAMPLE: Record<string, string[]> = {
+  ru: [
+    'Она прочитала книгу.', 'У меня есть два года и пять лет, но нет книги.', 'В этом году он жил в лесу.', 'Они стали читать по-русски каждый день.',
+    'Это новый дом, а это мой брат.', 'Я знаю, что он шел домой.', 'Все знают его, и он знает всех.', 'Книга лежит на столе, а книги стоят там.',
+    'Мы говорим и думаем о жизни.', 'Три дня она ждала письмо из города.', 'Кто-то пришёл домой вечером.', 'Дети идут в школу, а мать работает дома.',
+  ],
+};
+
 function sentencesOf(lang: string, file: string): string[] {
   const j = JSON.parse(readFileSync(resolve(CORPUS, lang, file + '.json'), 'utf8')) as { sections?: Array<{ paragraphs?: Array<{ sentences?: Array<{ text?: unknown }> }> }> };
   const out: string[] = [];
   for (const s of j.sections ?? []) for (const p of s.paragraphs ?? []) for (const x of p.sentences ?? []) if (typeof x.text === 'string' && x.text.trim()) out.push(x.text);
   return out;
 }
-const sampleOf = (lang: string, n = 12): string[] => SAMPLE_FILES[lang]!.flatMap((f) => sentencesOf(lang, f)).slice(0, n);
+const sampleOf = (lang: string, n = 12): string[] => (INLINE_SAMPLE[lang] ?? SAMPLE_FILES[lang]!.flatMap((f) => sentencesOf(lang, f))).slice(0, n);
 /** Distinct words of up to `files` corpus files of a language (by whitespace; punctuation trimmed). */
 function vocabularyOf(lang: string, files = 12, cap = 500): string[] {
-  const names = readdirSync(resolve(CORPUS, lang)).filter((f) => f.endsWith('.json')).slice(0, files).map((f) => f.replace(/\.json$/, ''));
+  const inline = INLINE_SAMPLE[lang];
+  const names = inline ? [] : readdirSync(resolve(CORPUS, lang)).filter((f) => f.endsWith('.json')).slice(0, files).map((f) => f.replace(/\.json$/, ''));
   const seen = new Set<string>();
-  for (const f of names) for (const s of sentencesOf(lang, f)) for (const raw of s.split(/\s+/)) {
+  for (const s of inline ?? names.flatMap((f) => sentencesOf(lang, f))) for (const raw of s.split(/\s+/)) {
     const w = raw.replace(/^[^\p{L}\p{M}]+|[^\p{L}\p{M}]+$/gu, '');
     if (w && /^[\p{L}\p{M}]+$/u.test(w) && wordInScript(w, lang)) seen.add(w);
     if (seen.size >= cap) return [...seen];
@@ -69,6 +82,7 @@ const MADE_UP: Record<string, string> = {
   sq: 'zqxvkjw', es: 'zqxvkjw', de: 'zqxvkjw', nb: 'zqxvkjw', nn: 'zqxvkjw', la: 'zqxvkjw',
   he: cp(0x5D6, 0x5D7, 0x5D8, 0x5E1, 0x5E6, 0x5E7), arc: cp(0x5D6, 0x5D7, 0x5D8, 0x5E1, 0x5E6, 0x5E7),
   el: cp(0x3B6, 0x3BE, 0x3C8, 0x3C7, 0x3B8), th: cp(0xE0E, 0xE0F, 0xE10), hi: cp(0x91F, 0x920, 0x921, 0x922, 0x923),
+  ru: cp(0x437, 0x449, 0x445, 0x446, 0x43A, 0x436),
 };
 
 const stats: Array<{ lang: string; tokens: number; withReading: number; multi: number; rows: number }> = [];
@@ -79,7 +93,7 @@ afterAll(() => {
 });
 
 describe('the registry', () => {
-  it('lists exactly the eleven languages these tests cover', () => {
+  it('lists exactly the twelve languages these tests cover', () => {
     expect([...PARSER_LANGUAGES].sort()).toEqual([...LANGS].sort());
     for (const l of LANGS) expect(getAnalyser(l), l).toBeDefined();
   });

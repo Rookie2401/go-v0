@@ -87,7 +87,7 @@ export function createSpeechService(opts: {
     if (typeof req.requestId !== 'string' || !/^[\w:.-]{1,100}$/.test(req.requestId)) return refused(400, 'Invalid speech request.');
     const key = `${owner}:${req.requestId}`;
     if (req.op === 'cancel') { pending.get(key)?.abort(); return { ok: true, status: 200 }; }
-    if (!['status', 'voices', 'synthesize'].includes(req.op) || !['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'he', 'el', 'la'].includes(req.languageId)) return refused(400, 'Unsupported speech request.');
+    if (!['status', 'voices', 'synthesize'].includes(req.op) || !['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'he', 'el', 'la', 'ru'].includes(req.languageId)) return refused(400, 'Unsupported speech request.');
     if (pending.size >= 8) return refused(429, 'Too many speech requests are pending.');
     pending.get(key)?.abort();
     const ctl = new AbortController(); pending.set(key, ctl);

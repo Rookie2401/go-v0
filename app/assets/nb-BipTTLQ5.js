@@ -1,0 +1,1 @@
+import{t as e}from"./engine-DgP-D7kR.js";var t=e(`nb`);export{t as adapter};

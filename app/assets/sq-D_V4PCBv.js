@@ -1,0 +1,1 @@
+import{p as e}from"./index-i3e_7IPb.js";export{e as adapter};

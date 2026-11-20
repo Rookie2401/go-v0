@@ -8,7 +8,7 @@
  * home's warm tiles with no outline, YOUR LANGUAGES first and ADD A LANGUAGE after. A language that asks nothing is one tile, pressed like the
  * home's Review Deck: its level as the kicker, its name, its native name. A language that asks a question holds the question and the gold pill.
  *
- * The home opens this page by itself when the learner has no language yet; Account's "Add a language" opens it to add another. No pack is
+ * The home opens this page by itself when the learner has no language yet; after enrolment, the Languages tab manages additions. No pack is
  * installed here: GoReview reads each language's dictionary and analyser when it needs them, as it always has.
  */
 import type { AppContext } from '../context';
@@ -50,7 +50,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   append(el, [
     h('section', { class: 'home setup-page', id: 'setup', 'aria-label': 'Choose your language' },
       p(first
-        ? 'Choose the language you want to review. You can add more later, under your Account.'
+        ? 'Choose the language you want to review. You can add more later, under Languages.'
         : 'Add another language, or go back to one you have.', 'setup-lede'),
       p('GoReview brings back the words you meet: what you look up while reading with GoLearn or Biblia, and words you add yourself under My Vocabulary.', 'setup-note'),
       list,
@@ -63,7 +63,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
 }
 
-/** The same enrollment control is used in first-run setup and in Account's language catalogue. */
+/** The same enrollment control is used in first-run setup and in the Languages catalogue. */
 export function languageRow(l: LanguageView, mine: ReadonlySet<string>, ctx: AppContext, view: View, compact = false): HTMLElement {
     const status = statusLine();
     const choice = l.choice;

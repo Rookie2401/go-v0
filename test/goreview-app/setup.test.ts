@@ -38,17 +38,17 @@ describe('GoReview setup, signed in to an account with no language', () => {
     expect(service.enrolments.get('L9')?.map((e) => [e.languageId, e.varietyId, e.packId])).toEqual([['sq', 'sq-standard', 'pack:sq']]);
     await until(() => !!rig.root.querySelector('#language-name'), 'the language in the header');
     expect(rig.q('#language-name').textContent).toContain('Albanian');
-    // All other languages are available on Account without another page.
+    // All other languages are available on the Languages tab.
     expect(rig.root.querySelector('#add-language, #language-select')).toBeNull();
-    await rig.go('account');
-    await until(() => !!rig.root.querySelector('#account-languages [data-language="de"]'), 'the Account language catalogue');
+    await rig.go('languages');
+    await until(() => !!rig.root.querySelector('#account-languages [data-language="de"]'), 'the Languages catalogue');
     expect(rig.root.querySelector('#add-language')).toBeNull();
     expect(rig.q('#account-languages .account-language[data-deck="current"]').textContent).toContain('Albanian');
     press(rig.q('#account-languages [data-language="de"]'));
     await until(() => rig.app.current() === 'review', 'German review home');
     expect(service.calls).toContain('enrol:de:de-DE');
     await rig.go('setup');
-    await until(() => rig.app.current() === 'account', 'old setup link opens Account for an enrolled learner');
+    await until(() => rig.app.current() === 'languages', 'old setup link opens Languages for an enrolled learner');
     expect(rig.root.querySelector('#setup')).toBeNull();
   });
 
@@ -70,13 +70,13 @@ describe('GoReview setup, signed in to an account with no language', () => {
     expect(service.enrolments.get('L9')?.map((e) => [e.languageId, e.varietyId])).toEqual([['nn', 'nn']]);
   });
 
-  it('an enrolled Norwegian can choose the other written standard and review within Account', async () => {
+  it('an enrolled Norwegian can choose the other written standard and review within Languages', async () => {
     const service = newcomer();
     const rig = await makeRig({ service });
     await rig.signIn('new@example.org');
     expect(await rig.app.ctx.chooseLanguage({ languageId: 'nb', varietyId: 'nb' })).toMatchObject({ ok: true });
-    await rig.go('account');
-    await until(() => !!rig.root.querySelector('.account-standard'), 'Norwegian Account card');
+    await rig.go('languages');
+    await until(() => !!rig.root.querySelector('.account-standard'), 'Norwegian language card');
     const card = rig.q<HTMLDetailsElement>('.account-standard');
     expect(card.querySelector<HTMLInputElement>('input[value="nb"]')?.checked).toBe(true);
     card.open = true;

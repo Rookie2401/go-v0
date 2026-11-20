@@ -6,13 +6,12 @@
  *   Name, Email      one tile of facts: the name, editable in place; the address, and only while it is unconfirmed, the note and "send again"
  *   Sign out, Download my data, Delete account   a tile each, like the home's Review Deck; Delete opens the guided deletion below it
  *   Devices signed in   a closed dropdown
- *   Your Account Settings   the language list and setup link at the foot
  *
  * The deletion walks through what happens (nothing for 14 days), how to restore the account in that time (sign in and press Cancel), then asks
  * for the password and deletes. While a deletion is pending the banner with its Cancel sits at the top. Nothing here says learner ids, session
  * expiries or security events: those are the developer's (#/developer).
  *
- * Without an account: on a device-only copy, the offer to keep progress across devices and "Clear local data", followed by the languages; on the
+ * Without an account: on a device-only copy, the offer to keep progress across devices and "Clear local data"; on the
  * hosted copy, the way to sign in.
  */
 import { icon, type IconName } from '../icons';
@@ -31,7 +30,7 @@ const tileLabel = (kicker: string | null, title: string, caption?: string, capti
     h('span', { class: 'deck-title' }, title),
     caption ? h('span', { class: 'deck-caption', ...(captionLang ? { lang: captionLang } : {}) }, caption) : null);
 
-async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElement | undefined> {
+export async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElement | undefined> {
   const [list, id, { languagesOf }, { packFor }] = await Promise.all([
     ctx.enrolments().catch((): Awaited<ReturnType<AppContext['enrolments']>> => []), ctx.identity().catch(() => undefined),
     import('../languageChoices'), import('../../../language-packs/src/registry'),
@@ -171,8 +170,7 @@ async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElemen
   const available = catalogue.filter((language) =>
     language.packIds.some((id) => packFor(id.replace(/^pack:/, '').split(':')[0])?.status === 'installable') &&
     !groups.has(language.languageId));
-  return h('section', { class: 'account-group', id: 'account-languages', 'aria-labelledby': 'account-settings-h' },
-    h('h3', { class: 'tiles-heading', id: 'account-settings-h' }, 'Your Account Settings'),
+  return h('section', { class: 'account-group', id: 'account-languages', 'aria-label': 'Your languages' },
     ...boxes,
     ...(available.length ? [h('h3', { class: 'tiles-heading account-catalogue-heading' }, 'More languages'),
       h('ul', { class: 'account-catalogue-list', 'aria-label': 'More languages' },
@@ -196,7 +194,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   // the home's column: tiles with no outline, one under the other (styles.css, "#/account in the home's look")
   const card = h('section', { class: 'home account-page', id: 'account-card', 'aria-labelledby': 'account-h' }, h('h2', { id: 'account-h', class: 'sr' }, 'Account'));
   el.append(card);
-  const settings = mode !== 'none' ? languageSettings(ctx, view) : undefined;
 
   if (!session) {
     if (mode === 'device') {
@@ -231,8 +228,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         h('p', { class: 'deck-kicker' }, 'Not signed in'),
         h('div', { class: 'account-panel-actions' }, h('a', { class: 'account-pill', href: '#/signin' }, 'Sign in')))]);
     }
-    const languages = await settings;
-    if (languages && view.alive()) card.append(languages);
     return;
   }
 
@@ -423,10 +418,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       verifyNote.hidden = true; resend.hidden = true;
     }
   }
-  await Promise.all([
-    settings?.then((languages) => { if (languages && view.alive()) card.append(languages); }),
-    paintState(),
-  ]);
+  await paintState();
   if (!view.alive()) return;
   const onChange = (): void => { if (view.alive()) void paintState(); };
   ctx.deps.doc.addEventListener(ACCOUNT_CHANGED, onChange);

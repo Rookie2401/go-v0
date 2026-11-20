@@ -20,6 +20,7 @@ describe('the account page', () => {
     expect(link.getAttribute('href')).toBe('#/account');
     expect(link.getAttribute('aria-label')).toBe('Account');
     expect(link.querySelector('svg circle')).not.toBeNull(); // the person: a head over shoulders, like Biblia's
+    expect(link.previousElementSibling?.id).toBe('header-languages');
     expect(link.nextElementSibling?.id).toBe('settings-link');
     await rig.go('account');
     expect(rig.q('main h1').textContent).toBe('Account');
@@ -80,29 +81,35 @@ describe('the account page', () => {
     expect(rig.q('#account-name-edit').textContent).toBe('Edit');
   });
 
-  it('a pending deletion’s banner leads the page and the languages close it, once (PR #20, kept by the owner 2026-11-19: "Keep codex\'s redesign")', async () => {
+  it('a pending deletion’s banner leads the account page, with languages in their own tab', async () => {
     const acct = new FakeAccountService();
     acct.scheduledPurgeAt = acct.purgeAt;
     const rig = await makeRig({ signedIn: true, fetch: acct.fetch });
     await rig.go('account');
-    await until(() => !!rig.root.querySelector('#deletion-banner') && !!rig.root.querySelector('#account-languages'), 'the banner and the languages');
+    await until(() => !!rig.root.querySelector('#deletion-banner'), 'the banner');
     await flush(8);
     const parts = [...rig.q('#account-card').children].filter((c) => !c.classList.contains('sr'));
     expect(parts[0]!.id).toBe('deletion-slot');
     expect(parts[0]!.querySelector('#deletion-banner')).not.toBeNull();
-    expect(parts.at(-1)!.id).toBe('account-languages');
-    expect(rig.qa('#account-languages')).toHaveLength(1);
-    expect(rig.q('#account-languages h3').textContent).toBe('Your Account Settings');
+    expect(rig.root.querySelector('#account-languages')).toBeNull();
+    expect(rig.q('#header-languages').getAttribute('href')).toBe('#/languages');
+    await rig.go('languages');
+    await until(() => !!rig.root.querySelector('#account-languages'), 'the languages');
+    expect(rig.q('main h1').textContent).toBe('Languages');
+    expect(rig.q('#header-languages').getAttribute('aria-current')).toBe('page');
+    expect(rig.root.querySelector('#deletion-banner')).toBeNull();
   });
 
-  it('on a device-only copy the languages close the page too, after the offer to keep progress', async () => {
+  it('on a device-only copy the account offer and language list stay on separate tabs', async () => {
     const rig = await makeRig({ local: {} });
     await rig.go('account');
-    await until(() => !!rig.root.querySelector('#account-languages'), 'the languages');
+    await until(() => !!rig.root.querySelector('#account-device'), 'the account offer');
     await flush(8);
     const parts = [...rig.q('#account-card').children].filter((c) => !c.classList.contains('sr'));
-    expect(parts.length).toBeGreaterThan(1);
-    expect(parts.at(-1)!.id).toBe('account-languages');
+    expect(parts.length).toBeGreaterThan(0);
+    expect(rig.root.querySelector('#account-languages')).toBeNull();
+    await rig.go('languages');
+    await until(() => !!rig.root.querySelector('#account-languages'), 'the languages');
     expect(rig.qa('#account-languages')).toHaveLength(1);
   });
 

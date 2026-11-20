@@ -78,6 +78,9 @@ select.language-kicker:hover { color: var(--ink); }
 .cog { display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 999px; color: var(--ink-soft); }
 .cog:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 5%, transparent); text-decoration: none; }
 .cog[aria-current="page"] { color: var(--accent); }
+.header-languages { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: 0 .4rem; color: var(--ink-soft); font: 600 .8rem/1 var(--serif); letter-spacing: .09em; text-decoration: none; text-transform: uppercase; white-space: nowrap; }
+.header-languages:hover, .header-languages[aria-current="page"] { color: var(--accent); text-decoration: none; }
+.header-languages[aria-current="page"] { box-shadow: inset 0 -2px var(--accent); }
 
 /* page */
 .screen { width: 100%; padding: 1.75rem clamp(1rem, 4vw, 3rem) 4rem; max-width: 52rem; margin: 0 auto; overflow-wrap: anywhere; }
@@ -256,7 +259,7 @@ table.paradigm td.sel > span:first-child, .forms-list li.sel > span:first-child 
 }
 
 /* The review home uses the colors of stone, leather and brass. The photograph is bundled with the app. */
-body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"], [data-route="setup"])) {
+body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="languages"], [data-route="signin"], [data-route="setup"])) {
   color-scheme: dark;
   --paper: #211a15;
   --paper-raised: #30251c;
@@ -280,9 +283,9 @@ body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-
   --focus: var(--accent);
   background: var(--paper);
 }
-body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"], [data-route="setup"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
-html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"], [data-route="setup"]))::before { background: var(--paper); }
-.screen:is([data-route="review"], [data-route="review/session"], [data-route="signin"], [data-route="account"], [data-route="setup"]) {
+body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="languages"], [data-route="signin"], [data-route="setup"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
+html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="languages"], [data-route="signin"], [data-route="setup"]))::before { background: var(--paper); }
+.screen:is([data-route="review"], [data-route="review/session"], [data-route="signin"], [data-route="account"], [data-route="languages"], [data-route="setup"]) {
   --home-gutter: clamp(1.125rem, 5vw, 2rem);
   max-width: none;
   padding: 0 0 calc(1.25rem + env(safe-area-inset-bottom, 0px));

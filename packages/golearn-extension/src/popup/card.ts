@@ -660,6 +660,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       panel.append(h('div', { class: 'note' }, m.tokenCount > 1 ? 'Select one word to see its form.' : 'The analyser gave no features for this word.'));
       return;
     }
+    panel.append(h('h4', {}, 'Grammatical features'));
     const grouped = new Map<string, string[]>();
     for (const f of m.features) {
       const values = f.value.split(',').map((x) => x.trim()).filter(Boolean);
@@ -691,8 +692,9 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     h('div', { class: 'row', 'data-row': rowId }, h('span', { class: 'k' }, key), h('span', { class: 'v', ...(lang ? { lang } : {}) }, value));
 
   /**
-   * Form: the lemma and part of speech, the essential morphology line, and under it the quiet toggle "analysis" (a disclosure, closed by default).
-   * It opens GRAMMAR (the constructions the form realizes) and then one dropdown per feature. No table, no evidence chips.
+   * Form: the lemma and part of speech, the morphology line, and visible feature summaries after Go deeper opens. Each summary is
+   * its own disclosure for the longer explanation; the quiet "analysis" toggle keeps grammar constructions closed until asked.
+   * No table, no evidence chips.
    */
   /** How the form is built, where the adapter can read it: the root, the pieces of the word, and what the stem, conjugation and agreement contribute. Inside "analysis", so the compact card stays compact. */
   function fillFormAnalysis(panel: HTMLElement, m: CardModel): void {
@@ -725,7 +727,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const grammar = h('div', { class: 'more layer l4', 'data-layer': 'grammar' }, h('span', { class: 'label' }, 'Grammar'));
     fillGrammar(grammar, m, v);
     box.append(grammar);
-    fillFeatures(box, m, v);
+    const features = h('div', { class: 'more featureList', 'data-row': 'features' });
+    fillFeatures(features, m, v);
     btn.addEventListener('click', () => {
       analysisOpen = box.hasAttribute('hidden');
       if (analysisOpen) box.removeAttribute('hidden'); else box.setAttribute('hidden', '');
@@ -734,8 +737,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       // the Repository still sees that the grammar was consulted: one event, on the first opening
       if (analysisOpen && !analysisReported) { analysisReported = true; try { actions.onLayer?.('grammar'); } catch { /* reporting never blocks */ } }
     });
-    // under the form text, in the value column (an empty key cell holds the kicker column's width), as quiet as "view sources"
-    panel.append(h('div', { class: 'row analysisRow' }, h('span', { class: 'k kpad', 'aria-hidden': 'true', 'data-pad': lastKey }), h('span', { class: 'v' }, btn)), box);
+    // The analysis link stays a subscript of the form row; feature summaries remain visible without opening it.
+    panel.append(h('div', { class: 'row analysisRow' }, h('span', { class: 'k kpad', 'aria-hidden': 'true', 'data-pad': lastKey }), h('span', { class: 'v' }, btn)), box, features);
   }
 
   function fillSyntax(panel: HTMLElement, m: CardModel): void {

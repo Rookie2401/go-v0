@@ -137,7 +137,7 @@ export const FR_TUTORIAL: Tutorial = orientation({
   practice: { instruction: 'Select the word that means book.', sentence: 'Elle lit un livre.', target: 'livre' },
   cardFeatureNote: 'A French card shows the gender (Masc, Fem) and number (Sing, Plur) of a noun or adjective, and the person, number, tense and mood of a verb form, where the analyser knows them. A contraction such as au or du is shown as its two parts (à + le, de + le), and an elided word such as l\' as its own card.',
   thin: [
-    'Its word list holds about 2,500 lemmas, plus the dictionary; a word outside both gets a marked guess or nothing.',
+    'Its word list holds about 3,400 lemmas, plus the dictionary; a word outside both gets a marked guess or nothing.',
     'Many French forms are written alike (parle, parles, parlent; a and à; la as article and pronoun) and its rules for choosing from the sentence are shallow, so a form often keeps several readings.',
     'The pronunciation notes and the liaison rules are drafted by an AI model, are not checked by a native speaker, and describe the common pronunciation of France; Québec, Belgium, Switzerland and Africa differ. Liaison is described, not heard.',
     'It has no recordings.',

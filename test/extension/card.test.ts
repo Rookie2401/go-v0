@@ -4,7 +4,8 @@ import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { computePosition, createCardUI, localSpeechPronouncer, type CardUI, type DismissReason, type SpeechLike } from '../../packages/golearn-extension/src/popup/card';
 import { DEVICE_TAGS } from '../../packages/golearn-extension/src/content/voiceTags';
-import { parseSelection, type CardModel } from '../../packages/golearn-extension/src/parser';
+import { getAnalyser, parseSelection, registerAnalyser, type CardModel } from '../../packages/golearn-extension/src/parser';
+import { sqAdapter } from '../../src/adapters/sq';
 import { GOLEARN_HOST_ATTR, type PopupAnchor } from '../../packages/golearn-extension/src/contract/readerAdapter';
 import { setBody, stubLayout } from './dom';
 
@@ -76,6 +77,22 @@ describe('placement', () => {
 });
 
 describe('the card in the page', () => {
+  it.each([
+    ['missing', undefined],
+    ['throwing', () => { throw new Error('description failed'); }],
+  ] as const)('shows a generic form line when the pack description is %s', (_kind, describeMorph) => {
+    const original = getAnalyser('sq')!;
+    try {
+      registerAnalyser('sq', { ...sqAdapter, describeMorph });
+      ui.show(cardFor(), anchor());
+      click(ui.root(), '.deeperBtn');
+      const row = ui.root()!.querySelector('[data-row="form"] .v');
+      expect(row?.textContent).toContain('noun · fem · acc · def · sg');
+    } finally {
+      registerAnalyser('sq', original);
+    }
+  });
+
   it('is a fixed host with a closed shadow root appended to body, and holds word, lemma, meaning, form and confidence (the last three in "Go deeper")', () => {
     const placement = ui.show(cardFor(), anchor());
     const host = document.body.querySelector(`[${GOLEARN_HOST_ATTR}]`) as HTMLElement;
@@ -119,6 +136,7 @@ describe('the card in the page', () => {
     expect(v).toContain('house, home');
     expect(v).toContain('view sources');
     expect(v).toContain('Go deeper');
+    expect(v).not.toContain('Grammatical features'); // summaries appear only after the learner opens Go deeper
     expect(v).not.toMatch(/confidence/i);
     expect(v).toContain('Meaning · Lemma meaning');
     expect(v).toMatch(/shtëpi.*lemma/); // the lemma line, only because the lemma differs from the word

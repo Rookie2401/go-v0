@@ -39,8 +39,9 @@ export async function languageSettings(ctx: AppContext, view: View): Promise<HTM
   const catalogue = languagesOf();
   const mine = new Set(list.map((e) => e.languageId));
   const active = list.find((e) => e.enrolmentId === id?.enrolmentId) ?? list[0];
-  const ordered = active ? [active, ...list.filter((e) => e !== active)] : [];
-  const groups = new Map<string, typeof list>();
+  type Enrolment = (typeof list)[number];
+  const ordered: Enrolment[] = active ? [active, ...list.filter((e) => e !== active)] : [];
+  const groups = new Map<string, Enrolment[]>();
   for (const e of ordered) {
     const parent = catalogue.find((l) => l.languageId === e.languageId || l.choice?.options.some((o) => o.languageId === e.languageId));
     const key = parent?.languageId ?? e.languageId;
@@ -49,7 +50,6 @@ export async function languageSettings(ctx: AppContext, view: View): Promise<HTM
     else groups.set(key, [e]);
   }
 
-  type Enrolment = (typeof list)[number];
   const activate = async (e: Enrolment): Promise<boolean> => e === active || await ctx.setLanguage(e.enrolmentId);
   const boxes = Array.from(groups, ([key, members]) => {
     const language = catalogue.find((l) => l.languageId === key);

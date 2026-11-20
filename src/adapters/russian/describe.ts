@@ -47,12 +47,13 @@ export function describeRuMorph(morph: Record<string, string>, pos?: PartOfSpeec
   const join = (...xs: string[]): string => xs.filter(Boolean).join(' ');
   const short = morph.Variant === 'Short' ? 'short form' : '';
   const voice = words(VOICE, morph.Voice);
+  const withReflex = (): string => [...out, ...(morph.Reflex === 'Yes' ? ['reflexive'] : [])].filter(Boolean).join(', ');
 
   if (morph.VerbForm === 'Conv') {
     const note = morph.Tense === 'Past' ? ' (having …)' : morph.Tense === 'Pres' ? ' (while …)' : '';
     out.push(`${join(tense, 'adverbial participle')}${note}`);
     if (aspect) out.push(aspect);
-    return out.join(', ');
+    return withReflex();
   }
   if (morph.VerbForm === 'Part') {
     out.push(join(tense, voice, 'participle'));
@@ -61,12 +62,12 @@ export function describeRuMorph(morph: Record<string, string>, pos?: PartOfSpeec
     if (agr) out.push(agr);
     if (animacy && !short) out.push(animacy);
     if (aspect) out.push(aspect);
-    return out.join(', ');
+    return withReflex();
   }
   if (morph.VerbForm === 'Inf') {
     out.push('infinitive');
     if (aspect) out.push(aspect);
-    return out.join(', ');
+    return withReflex();
   }
   if (morph.VerbForm === 'Fin' || morph.Mood) {
     if (morph.Mood === 'Imp') {
@@ -83,7 +84,7 @@ export function describeRuMorph(morph: Record<string, string>, pos?: PartOfSpeec
     }
     if (voice) out.push(voice);
     if (aspect) out.push(aspect);
-    return out.filter(Boolean).join(', ');
+    return withReflex();
   }
 
   const nounish = pos === 'NOUN' || pos === 'PROPN';

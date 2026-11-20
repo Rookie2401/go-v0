@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 8807b3a1e57f02ea57f04120086ea200f5eb0fd0
+          ref: 3d92b2643df3496e127bde4455f8c99f0b10823b
           path: source
       - uses: actions/checkout@v4
         with:
@@ -49,5 +49,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- review
-          git commit -m 'Deploy GoReview Account language boxes (#22)' -m 'Source: 8807b3a1e57f02ea57f04120086ea200f5eb0fd0'
-          git push origin HEAD:refs/heads/codex/staged-goreview-account-22
+          git commit -m 'Deploy GoReview Account supported language tracks (#23)' -m 'Source: 3d92b2643df3496e127bde4455f8c99f0b10823b'
+          git push origin HEAD:refs/heads/codex/staged-goreview-account-23

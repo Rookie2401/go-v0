@@ -1150,9 +1150,8 @@ img, svg, video, canvas { max-width: 100%; }
 }
 [data-home-photo] .account-page, [data-home-photo] .setup-page { margin-top: -1.25rem; }
 .account-group { display: grid; gap: .8rem; }
-#account-settings-h { margin-bottom: .5rem; }
-.account-language-list { list-style: none; padding: 0; margin: 0; }
-.account-language-list li { border-bottom: 1px solid var(--control-line); }
+.account-language-list { list-style: none; padding: 0 var(--deck-inset) .65rem; margin: 0; }
+.account-language-list li { border-top: 1px solid var(--control-line); }
 .account-language-row {
   display: flex;
   align-items: center;
@@ -1168,11 +1167,15 @@ img, svg, video, canvas { max-width: 100%; }
   text-align: start;
   cursor: pointer;
 }
-.account-language-row:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
-.account-language-row .ec-icon { width: 1rem; height: 1rem; flex: none; color: var(--accent); }
+.account-language-row:hover:not(:disabled) { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.account-language-row:disabled { cursor: default; color: var(--ink-soft); }
+.account-language-row small { color: var(--ink-soft); text-align: end; }
+.account-language-disclosure summary { list-style: none; cursor: pointer; }
+.account-language-disclosure summary::-webkit-details-marker { display: none; }
+.account-language-caret { color: var(--accent); }
+.account-language-disclosure[open] .account-language-caret { transform: rotate(180deg); }
 .account-language-name { overflow-wrap: anywhere; }
 .account-language-name small { color: var(--ink-soft); }
-.account-language-current { flex: none; font-size: .9rem; color: var(--ink-soft); }
 .account-page > .home-link, .account-group > .home-link { margin-top: .2rem; }
 .deck-tile[data-deck="danger"] .deck-title { color: var(--bad); }
 .deck-tile[data-deck="danger"] .deck-face .ec-icon { color: var(--bad); }

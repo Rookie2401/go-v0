@@ -398,8 +398,8 @@ describe('Go deeper', () => {
     expect(btn.getAttribute('aria-controls')).toBe(box.id);
     expect(box.hasAttribute('hidden')).toBe(true);
     // summaries are visible after Go deeper; detailed explanations stay inside each summary's disclosure
-    expect(form.querySelector('[data-row="form"]')!.compareDocumentPosition(featureBox) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(featureBox.compareDocumentPosition(btn) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(form.querySelector('[data-row="form"]')!.compareDocumentPosition(btn) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(box.compareDocumentPosition(featureBox) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(box.querySelectorAll('details.feat')).toHaveLength(0);
     btn.click();
     expect(box.hasAttribute('hidden')).toBe(false);

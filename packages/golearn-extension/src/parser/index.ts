@@ -11,7 +11,7 @@ import type { AnalysisCandidate, AnalyzedToken, LanguageAdapter, PatternCandidat
 import { unitIds } from '../../../repository-contract/src';
 import { sentenceKeyOf, fnv1a64 } from '../text';
 import { wordAnalysisFor } from '../../../../src/adapters/word-analysis';
-import { morphologyLine } from '../../../../src/golearn/analysis';
+import { fallbackMorphologyLine } from './morphology';
 import type { Alternative, CardModel, SyntaxNote, CardProvenance, ConstructionNote, ContextReport, EvidenceLabel, FeatureItem, LabelledField, PhraseNote, SentenceWord, WordLine } from './cardModel';
 import { AnalyserNotLoaded, LANGUAGE_META, PARSER_LANGUAGES, clearAnalysers, getAnalyser, hasAnalyser, languageMeta, registerAnalyser, type LanguageMeta } from './registry';
 
@@ -370,7 +370,7 @@ function describe(L: Lang, c: AnalysisCandidate): string | undefined {
     const line = L.adapter.describeMorph?.(c.morph, c.pos);
     if (line) return line;
   } catch { /* a pack's prose must not suppress the analyser's available feature bundle */ }
-  return morphologyLine({ pos: c.pos, morph: c.morph });
+  return fallbackMorphologyLine(c.pos, c.morph);
 }
 
 function lineOf(t: RawToken, c: AnalysisCandidate | undefined): WordLine {

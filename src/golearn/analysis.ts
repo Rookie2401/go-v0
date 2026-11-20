@@ -79,7 +79,7 @@ const NUMBER_SHORT: Record<string, string> = { Sing: 'sg', Plur: 'pl' };
 const FEATURE_ORDER = ['Gender', 'Case', 'Definite', 'Tense', 'Aspect', 'Mood', 'VerbForm', 'Voice', 'Degree'];
 
 /** e.g. "verb · 1sg · past". Undefined when there is nothing to say. */
-export function morphologyLine(a: Pick<TokenAnalysis, 'pos' | 'morph'> | undefined): string | undefined {
+export function morphologyLine(a: TokenAnalysis | undefined): string | undefined {
   if (!a) return undefined;
   const parts: string[] = [];
   if (a.pos) parts.push(POS_LABEL[a.pos]);

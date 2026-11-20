@@ -737,8 +737,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       // the Repository still sees that the grammar was consulted: one event, on the first opening
       if (analysisOpen && !analysisReported) { analysisReported = true; try { actions.onLayer?.('grammar'); } catch { /* reporting never blocks */ } }
     });
-    // Keep the feature summaries before the optional construction analysis so they remain visible even when it is opened.
-    panel.append(features, h('div', { class: 'row analysisRow' }, h('span', { class: 'k kpad', 'aria-hidden': 'true', 'data-pad': lastKey }), h('span', { class: 'v' }, btn)), box);
+    // The analysis link stays a subscript of the form row; feature summaries remain visible without opening it.
+    panel.append(h('div', { class: 'row analysisRow' }, h('span', { class: 'k kpad', 'aria-hidden': 'true', 'data-pad': lastKey }), h('span', { class: 'v' }, btn)), box, features);
   }
 
   function fillSyntax(panel: HTMLElement, m: CardModel): void {

@@ -20,7 +20,7 @@ import type { ConfirmFormsReply } from '../../packages/golearn-extension/src/pro
 
 registerAllAnalysers();
 
-const LANGS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru'] as const;
+const LANGS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru', 'fr'] as const;
 const VARIETY: Record<string, string> = { he: 'he-bib', el: 'el-koi' };
 const CORPUS = resolve(process.cwd(), 'data/corpus');
 
@@ -31,14 +31,21 @@ const SAMPLE_FILES: Record<string, string[]> = {
 };
 
 /**
- * A language with no bundled corpus (Russian) is sampled from sentences written for this test: everyday words, forms of one lemma
- * (книга, книгу, книги), words written alike (стали, мой, три), ё printed as е (шел), a hyphenated word.
+ * The languages with no bundled corpus are sampled from sentences written for this test.
+ * Russian: everyday words, forms of one lemma (книга, книгу, книги), words written alike (стали, мой, три), ё printed as е (шел), a hyphenated word.
+ * French (the pack reads web pages): ordinary prose with the present, the passé composé, a passé simple, a negation, pronouns, elision, a
+ * contraction, a hyphenated clitic and compound.
  */
 const INLINE_SAMPLE: Record<string, string[]> = {
   ru: [
     'Она прочитала книгу.', 'У меня есть два года и пять лет, но нет книги.', 'В этом году он жил в лесу.', 'Они стали читать по-русски каждый день.',
     'Это новый дом, а это мой брат.', 'Я знаю, что он шел домой.', 'Все знают его, и он знает всех.', 'Книга лежит на столе, а книги стоят там.',
     'Мы говорим и думаем о жизни.', 'Три дня она ждала письмо из города.', 'Кто-то пришёл домой вечером.', 'Дети идут в школу, а мать работает дома.',
+  ],
+  fr: [
+    'Elle est ici avec un ami.', 'Ils parlent de l’école.', 'C’est un petit livre.', 'Je veux le livre du garçon.', 'Nous avons deux enfants.',
+    'Les enfants vont au marché.', 'Elle est arrivée hier et nous avons mangé ensemble.', 'Je ne sais pas si les chevaux sont dans le jardin.',
+    'Il entra dans la maison et vit sa mère.', 'Donne-le-moi, s’il te plaît.', 'Aujourd’hui il fait beau, peut-être.', 'Les lettres que j’ai écrites sont sur la table.',
   ],
 };
 
@@ -79,7 +86,7 @@ const expectedWords = (lang: string, texts: readonly string[], variety?: string)
 /** A nonsense word per script, built from code points (never typed). */
 const cp = (...c: number[]): string => String.fromCodePoint(...c);
 const MADE_UP: Record<string, string> = {
-  sq: 'zqxvkjw', es: 'zqxvkjw', de: 'zqxvkjw', nb: 'zqxvkjw', nn: 'zqxvkjw', la: 'zqxvkjw',
+  sq: 'zqxvkjw', es: 'zqxvkjw', de: 'zqxvkjw', nb: 'zqxvkjw', nn: 'zqxvkjw', la: 'zqxvkjw', fr: 'zqxvkjw',
   he: cp(0x5D6, 0x5D7, 0x5D8, 0x5E1, 0x5E6, 0x5E7), arc: cp(0x5D6, 0x5D7, 0x5D8, 0x5E1, 0x5E6, 0x5E7),
   el: cp(0x3B6, 0x3BE, 0x3C8, 0x3C7, 0x3B8), th: cp(0xE0E, 0xE0F, 0xE10), hi: cp(0x91F, 0x920, 0x921, 0x922, 0x923),
   ru: cp(0x437, 0x449, 0x445, 0x446, 0x43A, 0x436),
@@ -93,7 +100,7 @@ afterAll(() => {
 });
 
 describe('the registry', () => {
-  it('lists exactly the twelve languages these tests cover', () => {
+  it('lists exactly the thirteen languages these tests cover', () => {
     expect([...PARSER_LANGUAGES].sort()).toEqual([...LANGS].sort());
     for (const l of LANGS) expect(getAnalyser(l), l).toBeDefined();
   });

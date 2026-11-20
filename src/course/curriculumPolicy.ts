@@ -57,6 +57,8 @@ const constructions: Record<LanguageCode, readonly string[][]> = {
   th: [['Consonant classes, vowels and tone decoding', 'Basic Thai word order'], ['Negation and questions', 'Common classifiers'], ['Aspect markers and serial verbs'], ['Pronoun omission', 'Dialogue/discourse particles'], ['Connected clauses and narrative reference'], ['Embedded explanation', 'Register-dependent pronouns'], ['Implicit reference and literary economy'], ['Regional/historical recognition and contextual inference']],
   // Russian: no construction ladder or Stage contract is written (empty on purpose, not a claim that there is nothing to teach)
   ru: [],
+  // French: machine-draft ladder of constructions for reading (docs/french); no native review yet
+  fr: [['Sound/spelling correspondence (ou, oi, eau, nasal vowels, silent final letters)', 'Elision and the contracted articles (au, du, des)'], ['Gender and number agreement', 'Present tense, questions and negation (ne … pas)'], ['Passé composé with avoir and être', 'Imparfait', 'Object pronouns, y and en'], ['Relative clauses (qui, que, dont, où)', 'Future and conditional'], ['Subjunctive', 'Participle agreement'], ['Passé simple and the literary tenses', 'Literary negation and inversion']],
 };
 const bandFor = (i: number, size: number) => Math.min(7, Math.floor(i * 8 / size));
 const editorialLengths = [{ min: 5, max: 80 }, { min: 50, max: 250 }, { min: 150, max: 600 }, { min: 400, max: 1500 }, { min: 800, max: 3000 }, { min: 1200, max: 5000 }, { min: 1500, max: 8000 }, { min: 2000, max: 12000 }];

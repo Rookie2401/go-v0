@@ -91,9 +91,10 @@ export const PACK_VARIETIES: Readonly<Record<string, readonly string[]>> = {
   el: ['el-mod', 'el-koi', 'el-att', 'el-hom'],
   arc: ['arc-bib'],
   ru: ['ru-RU'],
+  fr: ['fr-FR', 'fr-CA', 'fr-BE', 'fr-CH'],
 };
 /** The script each pack's language is written in; a tag that states another script (hi-Latn) names something no pack analyses. */
-const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', arc: 'hebr', el: 'grek', ru: 'cyrl' };
+const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', arc: 'hebr', el: 'grek', ru: 'cyrl', fr: 'latn' };
 
 const PRIMARY: Readonly<Record<string, string>> = {
   sq: 'sq', sqi: 'sq', als: 'sq', aln: 'sq',
@@ -111,6 +112,7 @@ const PRIMARY: Readonly<Record<string, string>> = {
   // Ukrainian (uk), Belarusian (be), Bulgarian (bg), Serbian (sr) and Macedonian (mk) are other languages in the same script: they
   // are NOT listed, so a page that declares one of them is a page no pack covers
   ru: 'ru', rus: 'ru',
+  fr: 'fr', fra: 'fr', fre: 'fr',
 };
 /** Tags that look like a pack language but are not the pack's language. */
 const NOT_THE_PACK: Readonly<Record<string, string>> = {
@@ -168,6 +170,10 @@ export function mapLanguageTag(tag: string): TagMapping {
   } else if (languageId === 'de' && region) {
     const v = `de-${region.toUpperCase()}`;
     if (PACK_VARIETIES.de.includes(v)) varietyId = v;
+  } else if (languageId === 'fr' && region) {
+    // a region the pack labels (France, Canada, Belgium, Switzerland) is its variety; any other French-speaking region is read as French with no variety claimed
+    const v = `fr-${region.toUpperCase()}`;
+    if (PACK_VARIETIES.fr.includes(v)) varietyId = v;
   } else if (primary === 'arc') {
     if (rest.some((p) => ['targum', 'targumic', 'onkelos', 'syriac', 'imperial', 'qumran'].includes(p))) return { kind: 'no-pack', reason: 'Only the Biblical Aramaic slice is implemented; the declared variety has no validated pack' };
     varietyId = 'arc-bib'; notes.push('The Aramaic pack currently analyses Biblical Aramaic only');

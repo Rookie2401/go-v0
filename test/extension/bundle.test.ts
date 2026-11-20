@@ -63,7 +63,13 @@ describe.skipIf(!have)('the built extension', () => {
     // "explain" from them), and Russian's has thirteen features and twenty-six sentence patterns with their explanations (14 KB), twenty-eight
     // validation cases and the tutorial; plus the Russian voice registry. background.js measured 1,225.4 KB (1,195.8 KB on master
     // 22be2d7e, which this branch has merged in).
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1230 * KB);
+    // 2026-11-19 (French pack, after merging master 22be2d7e): 1,200 -> 1,240 KB. French adds the text the worker serves to the card and the
+    // setup page: the pack manifest with its ten feature explanations and honest limits (about 9 KB), the 43 construction explanations the
+    // card's "why this form" asks the worker for (about 14 KB), and the orientation, which the catalogue reaches like every other language's
+    // (about 12 KB). Measured 1,263,600 bytes = 1,234.0 KB on the merged tree (1,195.8 KB on 22be2d7e). No French analyser, word list or
+    // lemma list is in the worker.
+    // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 1,240 -> 1,270 KB. background.js measured 1,291,753 bytes = 1,261.5 KB with Russian and French.
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1270 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.
@@ -73,8 +79,11 @@ describe.skipIf(!have)('the built extension', () => {
     // (thirteen features and twenty-six sentence patterns with their explanations, twenty-eight validation cases, the tutorial) reaches it
     // the same way it reaches the worker. app.js measured 887,822 bytes = 867.0 KB on this branch (master 22be2d7e merged in), built with
     // GOLEARN_APP_DICT=sq,ru. This ceiling is checked only when the setup page has been built (npm run ext:build alone does not).
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(870 * KB);
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
+    // 2026-11-19 (French pack, after merging master 22be2d7e): 840 -> 880 KB. The same French text reaches the setup page (manifest,
+    // construction explanations, orientation: 37.6 KB on 985c742b). Measured 896,583 bytes = 875.6 KB on the merged tree.
+    // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 880 -> 910 KB. app.js measured 926,340 bytes = 904.6 KB with Russian and French (setup page built with GOLEARN_APP_DICT=sq,ru,fr).
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(910 * KB);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 
   it('each analyser chunk is an ES module that exports the adapter, and the manifest makes the chunks readable from the page', () => {

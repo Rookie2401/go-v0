@@ -76,7 +76,7 @@ function writeBuildJson(): Plugin {
 }
 
 /** The analysers: one entry per language (`src/analysers/<id>.ts` exports the adapter as `adapter`). */
-const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru'] as const;
+const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru', 'fr'] as const;
 
 /** Copy the static files once, in the first (content) build. */
 function copyStatic(): Plugin {

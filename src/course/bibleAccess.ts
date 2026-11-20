@@ -118,6 +118,14 @@ export const BIBLE_ACCESS: Readonly<Record<LanguageCode, BibleAccessRecord>> = {
     importMethod: 'An entitled personal .txt or unprotected .epub can be imported for ordinary reading on this device. The general importer does not create a verse-addressed Scripture edition.',
     rights: 'Not verified: no edition is bundled and no rights claim is made for any Russian translation.',
   },
+  fr: {
+    lang: 'fr', translation: 'Louis Segond 1910', edition: 'not bundled', status: 'not-bundled',
+    sourceUrl: 'https://ebible.org/fraLSG/',
+    method: 'No French Bible text is bundled. The French pack reads a French Bible on an ordinary web page through the GoLearn extension, like any other page.',
+    importMethod: 'Nothing is imported. An edition would be bundled only after its rights and its wording were checked against the printing.',
+    rights: 'Not verified by this project: the Louis Segond 1910 is widely distributed as public domain, but no edition has been checked here.',
+    historicalVarieties: ['Early twentieth-century literary French (passé simple, formal negation)'],
+  },
 };
 
 export function bibleAccessFor(lang: LanguageCode): BibleAccessRecord {

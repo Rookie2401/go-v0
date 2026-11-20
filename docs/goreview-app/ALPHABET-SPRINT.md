@@ -82,10 +82,10 @@ utility(S) = Σ words S makes decodable (UNLOCK + USE·weight)
 
 Measured against the traditional alphabet order (starter words decodable after 10 units; `test/alphabet/sprint-*.test.ts`):
 
-| | es | sq | de | nb | nn | la | el | el classical | he | arc | th | hi | ru |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Sprint | 215 | 233 | 156 | 220 | 263 | 244 | 16 | 22 | 17 | 12 | 18 | 22 | 86 |
-| alphabet order | 86 | 143 | 45 | 210 | 252 | 219 | 2 | 5 | 0 | 0 | 0 | 0 | 25 |
+| | es | sq | de | nb | nn | la | el | el classical | he | arc | th | hi | ru | fr |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Sprint | 215 | 233 | 156 | 220 | 263 | 244 | 16 | 22 | 17 | 12 | 18 | 22 | 86 | 77 |
+| alphabet order | 86 | 143 | 45 | 210 | 252 | 219 | 2 | 5 | 0 | 0 | 0 | 0 | 25 | 17 |
 
 ## C. Languages
 
@@ -103,6 +103,7 @@ Measured against the traditional alphabet order (starter words decodable after 1
 | th | `profiles/th.ts` | 288 / 0 | 91 % | decoder romanisation and tone ("khao (rising)") | tone is shown on every word; the tone rule is a dependency only where a mark's tone depends on class; shapes alone never give the tone, and the notes say so |
 | hi | `profiles/hi.ts` | 297 / 0 | 100 % | `transliterateHindi` (ISO 15919) | taught as syllables: inherent a, vowel signs, virama, conjuncts, schwa deletion (as the pack's decoder decides it) |
 | ru | `profiles/ru.ts` | 300 / 4 | 100 % | the pack's `ruPronunciation` transliteration with the source's stress | а к м о т are familiar; five rules applied by spelling (stress and weaker vowels, final devoicing, г as v in -ого/-его, -тся/-ться, жи ши ци); which vowel is stressed and a printed е standing for ё are not modelled |
+| fr | `profiles/fr.ts` | 369 / 24 | 98.6 % | none (the pack generates no pronunciation; the dictionary's IPA is not shown here) | orthographic, not an alphabet course: vowel and consonant spellings, nasal vowels and eight rules (final consonants, final -e, -er/-ez, verb -ent, nasal before n/m, s between vowels, elision, liaison on listed phrases); docs/french/DECODING-SPRINT.md |
 
 **Hebrew rules:**
 - Only pointed forms are decoding exercises.

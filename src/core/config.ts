@@ -18,6 +18,7 @@ export const LANGUAGE_ROWS: Language[] = [
   { id: 'la', name: 'Latin', endonym: 'Latina', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
   { id: 'arc', name: 'Aramaic (Biblical)', endonym: 'אֲרָמִית', script: 'Hebr', direction: 'rtl', whitespaceDelimited: true },
   { id: 'ru', name: 'Russian', endonym: 'Русский', script: 'Cyrl', direction: 'ltr', whitespaceDelimited: true },
+  { id: 'fr', name: 'French', endonym: 'Français', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
 ];
 
 export const COURSES: Course[] = [
@@ -78,6 +79,12 @@ export const COURSES: Course[] = [
     // Active target: Modern Standard Russian in today's spelling. Pre-1918 spelling (ѣ, і, a final ъ), Church Slavonic and the other
     // Cyrillic-script languages (Ukrainian, Belarusian, Bulgarian, Serbian) are not Russian here: they are neither analysed nor credited.
     variety: { target: 'ru-RU', within: [] },
+  },
+  {
+    id: 'french-fr', lang: 'fr', country: 'France', title: 'French', preferredLocales: ['fr-FR', 'fr-CA', 'fr-BE', 'fr-CH', 'fr'],
+    // Active target: contemporary standard written French. Regional words (Québec, Belgium, Switzerland, Africa) are labelled where the
+    // sources label them; older spelling and the literary tenses are recognised and explained, never suppressed.
+    variety: { target: 'fr-FR', within: [] },
   },
 ];
 

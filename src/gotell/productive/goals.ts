@@ -248,6 +248,7 @@ const MODELS: Record<LanguageCode, Record<string, string | { text: string; note:
     'goal:d.understand-now': 'ตอนนี้ฉันเข้าใจแล้ว',
   },
   ru: {}, // No Russian production curriculum is claimed.
+  fr: {},
 };
 
 /** The catalog's model wording for a goal in a language, if there is one. */

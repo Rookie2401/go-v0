@@ -61,11 +61,12 @@ describe('the GoReview home', () => {
   });
 
   it('has a bundled, credited photograph for every language pack', () => {
-    // Russian has no photograph yet: the owner has not supplied one (Wikimedia Commons refuses a scripted download). The home draws no hero
-    // photograph and no credit for a language without one (app.ts: `photo` stays undefined), and the assertion below makes this exemption
-    // fail loudly as soon as a Russian photograph is added. (The French branch exempts 'fr' the same way; the second to land joins the lists.)
-    const NO_PHOTO_YET = ['ru'];
+    // Russian and French have no photograph yet: the owner has not supplied them (Wikimedia Commons refuses a scripted download). The home
+    // draws no hero photograph and no credit for a language without one (app.ts: `photo` stays undefined), and the assertions below make
+    // this exemption fail loudly as soon as a photograph is added for either.
+    const NO_PHOTO_YET = ['ru', 'fr'];
     expect(homePhoto('ru')).toBeUndefined();
+    expect(homePhoto('fr')).toBeUndefined();
     for (const language of Object.keys(PACKS).filter((l) => !NO_PHOTO_YET.includes(l))) {
       const photo = homePhoto(language);
       expect(photo?.image, language).toMatch(/\.webp$/);

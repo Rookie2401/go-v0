@@ -3,7 +3,9 @@ import { BIBLE_ACCESS, bibleAccessFor } from '../../src/course/bibleAccess';
 
 describe('Bible access registry', () => {
   it('covers the course languages with one explicit route each', () => {
-    expect(Object.keys(BIBLE_ACCESS).sort()).toEqual(['arc', 'de', 'el', 'es', 'he', 'hi', 'la', 'nb', 'nn', 'ru', 'sq', 'th']);
+    expect(Object.keys(BIBLE_ACCESS).sort()).toEqual(['arc', 'de', 'el', 'es', 'fr', 'he', 'hi', 'la', 'nb', 'nn', 'ru', 'sq', 'th']);
+    // French bundles no Bible text (its pack reads a French Bible on an ordinary web page), and says so
+    expect(bibleAccessFor('fr')).toMatchObject({ lang: 'fr', status: 'not-bundled' });
     for (const access of Object.values(BIBLE_ACCESS)) {
       expect(access.sourceUrl).toMatch(/^https:\/\//);
       expect(access.method.length).toBeGreaterThan(20);

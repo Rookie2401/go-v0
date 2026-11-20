@@ -293,6 +293,7 @@ const TABLES: Record<LanguageCode, LangTable> = {
     share: { stems: ['communic', 'narr', 'particip', 'annunti', 'nunti'], lexemes: ['communico'] },
   },
   ru: {}, // No Russian production curriculum is claimed.
+  fr: {}, // No French production curriculum is claimed (GoTell is not part of the French pack).
 };
 
 /** Negation markers (per language). Used to keep negation outside a recombined phrase and flag it. */
@@ -311,6 +312,7 @@ export const NEGATORS: Record<LanguageCode, string[]> = {
   el: ['δεν', 'μη', 'μην', 'όχι', 'ούτε', 'ποτέ', 'κανένας', 'καμία', 'κανένα'],
   la: ['non', 'ne', 'nec', 'neque', 'nemo', 'nihil', 'nil', 'nullus', 'nulla', 'nullum', 'numquam', 'nunquam', 'haud', 'minime'],
   ru: [],
+  fr: ['ne', "n'", 'pas', 'non', 'jamais', 'rien', 'personne', 'plus', 'aucun', 'aucune', 'ni', 'point', 'guère'],
 };
 
 /**
@@ -333,6 +335,7 @@ export const CHRONOLOGY: Record<LanguageCode, string[]> = {
   el: ['όταν', 'πριν', 'μετά', 'τότε', 'τώρα', 'σήμερα', 'χθες', 'αύριο', 'ήδη', 'ακόμα', 'ακόμη', 'πάντα', 'ποτέ', 'πρώτα', 'τελικά', 'ενώ', 'μέχρι', 'σύντομα', 'πια', 'πλέον'],
   la: ['cum', 'quando', 'ante', 'antea', 'post', 'postea', 'postquam', 'deinde', 'tum', 'tunc', 'nunc', 'hodie', 'heri', 'cras', 'iam', 'jam', 'adhuc', 'semper', 'numquam', 'nunquam', 'primum', 'primo', 'denique', 'tandem', 'dum', 'donec', 'usque', 'mox', 'statim', 'olim', 'cotidie', 'quotidie'],
   ru: [],
+  fr: ['quand', 'avant', 'après', 'puis', 'ensuite', 'alors', 'maintenant', "aujourd'hui", 'hier', 'demain', 'déjà', 'encore', 'toujours', 'jamais', "d'abord", 'enfin', 'pendant', 'depuis', 'bientôt'],
 };
 
 /** Subject pronouns: a slot filler that extends backwards stops here (the subject is not part of a phrase slot). */
@@ -352,6 +355,7 @@ export const SUBJECT_PRONOUNS: Record<LanguageCode, string[]> = {
   el: ['εγώ', 'εσύ', 'αυτός', 'αυτή', 'αυτό', 'εμείς', 'εσείς', 'αυτοί', 'αυτές', 'αυτά'],
   la: ['ego', 'tu', 'is', 'ea', 'id', 'ille', 'illa', 'illud', 'hic', 'haec', 'hoc', 'nos', 'vos', 'ei', 'ii', 'eae', 'illi', 'illae'],
   ru: [], // No Russian production curriculum is claimed.
+  fr: ['je', 'tu', 'il', 'elle', 'on', 'nous', 'vous', 'ils', 'elles'],
 };
 
 // ───────────────────────── compiled matchers ─────────────────────────

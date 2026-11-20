@@ -26,9 +26,9 @@ const NEW = ['de', 'hi', 'th', 'nb', 'nn', 'ru'];
 const wordsOf = (a: LanguageAdapter, text: string) => a.analyze(a.tokenize(text)).filter((x) => x.token.isWord);
 
 describe('the tutorial registry', () => {
-  it('has one tutorial for each of the twelve languages, in the pack registry’s order, and none for another language or an inherited key', () => {
+  it('has one tutorial for each of the thirteen languages (French is the last; its own test is french-tutorial.test.ts), in the pack registry’s order, and none for another language or an inherited key', () => {
     expect(Object.keys(TUTORIALS)).toEqual(Object.keys(PACKS));
-    expect(Object.keys(TUTORIALS)).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru']);
+    expect(Object.keys(TUTORIALS)).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru', 'fr']);
     for (const [id, t] of Object.entries(TUTORIALS)) {
       expect(tutorialFor(id), id).toBe(t);
       expect(t.languageId, id).toBe(id);

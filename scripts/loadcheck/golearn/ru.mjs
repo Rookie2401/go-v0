@@ -25,6 +25,8 @@ const TMP = process.env.LOADCHECK_TMP || path.join(os.tmpdir(), 'loadcheck-golea
 const OUT = path.resolve(process.argv[3] || path.join(TMP, 'out'));
 const BRAVE = need('LOADCHECK_BRAVE', 'path of brave.exe (the Brave Browser application binary)');
 const PORT = 9371, PORT2 = 9372, WEB = 8793, SVC = 8809;
+/** HOSTED_DICT=1: the dictionaries come from this rig's web server as the hosted fallback (public/dict served at /hosted/dict/), as on gh-pages. */
+const HOSTED = process.env.HOSTED_DICT === '1';
 const PAGES = path.join(HERE, 'ru-pages');
 const SHOTS = path.join(OUT, 'shots');
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -64,6 +66,7 @@ const copyPageDir = (name, bigDirs) => {
   if (fs.existsSync(cfgPath)) {
     const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
     cfg.serviceUrl = `http://127.0.0.1:${SVC}`; // the LOCAL throw-away service, never the hosted one
+    if (HOSTED) cfg.dictionaryFallbackUrl = `http://127.0.0.1:${WEB}/hosted/`; // the stand-in for https://rookie2401.github.io/go-v0/
     fs.writeFileSync(cfgPath, JSON.stringify(cfg));
   }
   return true;
@@ -85,6 +88,15 @@ const server = createServer((req, res) => {
   const u = new URL(req.url, 'http://x');
   const file = path.join(PAGES, path.basename(u.pathname));
   if (u.pathname === '/favicon.ico') { res.writeHead(204); res.end(); return; }
+  if (HOSTED && u.pathname.startsWith('/hosted/dict/')) {
+    const root = path.join(ROOT, 'public', 'dict');
+    const f = path.join(root, decodeURIComponent(u.pathname.slice('/hosted/dict/'.length)));
+    res.setHeader('access-control-allow-origin', '*');
+    if (!f.startsWith(root + path.sep) || !fs.existsSync(f) || !fs.statSync(f).isFile()) { res.writeHead(404); res.end('not found'); return; }
+    res.setHeader('content-type', f.endsWith('.json') ? 'application/json' : 'application/octet-stream');
+    res.end(fs.readFileSync(f));
+    return;
+  }
   if (!file.endsWith('.html') || !fs.existsSync(file)) { res.writeHead(404); res.end('not found'); return; }
   res.setHeader('content-type', 'text/html; charset=utf-8');
   res.end(fs.readFileSync(file));
@@ -335,7 +347,7 @@ async function main() {
     packVersion = ruRec?.version;
     const failures = (ruRec?.verified?.validation ?? []).filter((v) => !v.pass);
     report.install = { row, clicked, state, feedback, records: Object.keys(rec ?? {}), ruRecord: ruRec && { version: ruRec.version, installedAt: ruRec.installedAt, dictionaryManifest: ruRec.verified?.dictionaryManifest, sampleShard: ruRec.verified?.sampleShard, cases: ruRec.verified?.validation?.length, failures } };
-    step(1, 'install Russian on the setup page', /ready/i.test(state) && !!ruRec ? 'PASS' : 'FAIL', { row: row?.name ?? row, level: row?.level, clicked, state, feedback: feedback?.slice(0, 300), seconds: Math.round((Date.now() - t0) / 1000), recordKey: Object.keys(rec ?? {}), version: ruRec?.version, dictionaryManifest: ruRec?.verified?.dictionaryManifest, sampleShard: ruRec?.verified?.sampleShard, validationCases: ruRec?.verified?.validation?.length, validationFailures: failures });
+    step(1, 'install Russian on the setup page', /ready/i.test(state) && !!ruRec && (!HOSTED || /hosted copy/i.test(feedback ?? '')) ? 'PASS' : 'FAIL', { row: row?.name ?? row, level: row?.level, clicked, state, feedback: feedback?.slice(0, 300), seconds: Math.round((Date.now() - t0) / 1000), recordKey: Object.keys(rec ?? {}), version: ruRec?.version, dictionaryManifest: ruRec?.verified?.dictionaryManifest, sampleShard: ruRec?.verified?.sampleShard, validationCases: ruRec?.verified?.validation?.length, validationFailures: failures });
   }
 
   // 2. Russian as the reading language, through the popup

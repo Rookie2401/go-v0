@@ -69,6 +69,7 @@ const GOLD_REPORT = 'docs/ecosystem/linguistics/GOLD-REPORT-2026-10-10.json';
 const LATIN_REPORT = 'data/review/latin-eval/report.json';
 const THAI_BENCHMARKS = 'docs/thai/BENCHMARKS.md';
 const RUSSIAN_REPORT = 'docs/russian/eval.json';
+const FRENCH_REPORT = 'docs/french/EVALUATION.json';
 
 /** The form index of a pack's declared dictionary: form → lemma and part of speech, for the words the hand list does not hold. */
 const formsIndex = (lang: string, id: string): LemmaSource => ({
@@ -175,6 +176,26 @@ export const PACK_EVIDENCE: Readonly<Record<string, PackEvidence>> = Object.free
       { id: 'ud-gsd-test', corpus: 'Russian Wikipedia, blog and news sentences', gold: 'the UD Russian-GSD treebank (test split)', goldKind: 'human-treebank', heldOut: true, items: 8578, lemmaAccuracy: 88.39, analyser: 'adapter-ru@1', measuredOn: '2026-11-18', source: RUSSIAN_REPORT },
       { id: 'ud-taiga-test', corpus: 'Russian social media, poetry and fiction', gold: 'the UD Russian-Taiga treebank (test split)', goldKind: 'human-treebank', heldOut: true, items: 11302, lemmaAccuracy: 89.36, analyser: 'adapter-ru@1', measuredOn: '2026-11-18', source: RUSSIAN_REPORT },
       { id: 'ud-pud', corpus: 'a thousand translated news and Wikipedia sentences', gold: 'the UD Russian-PUD treebank', goldKind: 'human-treebank', heldOut: true, items: 15714, lemmaAccuracy: 90.76, analyser: 'adapter-ru@1', measuredOn: '2026-11-18', source: RUSSIAN_REPORT },
+    ],
+  },
+  // French: the analyser reads the lemmas of the pack's own dictionary (lemma, part of speech, gender; no meanings) beside its hand word
+  // list, and the form index answers for the rest. Measured against a treebank annotated by people, with that lemma list loaded as it is in
+  // the extension: the test part was run once, at the end, and not looked into; the dev part was looked at while the context rules were
+  // written, so it is not held out. Pronouns are counted against the treebank's own convention (il under lui), which costs about 2.7 points.
+  fr: {
+    lemmaSources: [
+      { kind: 'analyser-lexicon', id: 'kaikki-fr@2026-10-30', label: 'the lemmas of the pack’s Wiktionary dictionary, which the analyser reads itself', size: { count: 78650, unit: 'entries' }, source: 'src/adapters/french/lexicon-full-data.ts' },
+      formsIndex('fr', 'kaikki-fr@2026-10-30'),
+    ],
+    lemmaMeasurements: [
+      {
+        id: 'ud-gsd-test', corpus: 'French news, encyclopedia and web sentences (the test part of UD French GSD)', gold: 'the Universal Dependencies French GSD treebank', goldKind: 'human-treebank', heldOut: true,
+        items: 8018, lemmaAccuracy: 92.3, analyser: 'adapter-fr@1', measuredOn: '2026-11-17', source: FRENCH_REPORT,
+      },
+      {
+        id: 'ud-gsd-dev', corpus: 'French news, encyclopedia and web sentences (the dev part of UD French GSD)', gold: 'the Universal Dependencies French GSD treebank', goldKind: 'human-treebank', heldOut: false,
+        items: 28889, lemmaAccuracy: 92.43, analyser: 'adapter-fr@1', measuredOn: '2026-11-17', source: FRENCH_REPORT,
+      },
     ],
   },
 });

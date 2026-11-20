@@ -1,0 +1,9 @@
+{
+  "limits": [
+    { "id": "amb-014", "failed": ["first"], "reason": "un ton ferme: both the noun ferme (farm) and the adjective are listed and the adjective reading is given, but the rules do not yet put an adjective first after a noun whose own first reading had to be decided by context (ton: your / tone)." },
+    { "id": "amb-031", "failed": ["first"], "reason": "Je te suis partout: suis is être or suivre and both readings are given; an object pronoun before it does not decide (je te suis reconnaissant is être), only the meaning does." },
+    { "id": "amb-055", "failed": ["first"], "reason": "Les vers mangent la terre: vers is verse(s) or the plural of ver (worm); both readings are given and only the meaning of the sentence decides." },
+    { "id": "amb-072", "failed": ["first"], "reason": "Elle coupe les fils: fils is son(s) or the plural of fil (thread); both readings are given and only the meaning of the sentence decides." },
+    { "id": "lit-012", "failed": ["first"], "reason": "Il vit la mer et sourit: vit is the present of vivre or the passé simple of voir, and sourit is ambiguous in the same way, so the sentence has no verb that is plainly past; both readings are given." }
+  ]
+}

@@ -4,11 +4,11 @@
  * audio import, so the popup can say which chosen languages this browser can speak without reaching the audio code
  * (only the content script may reach GoListen's playback code: test/audit/conformance.structure.test.ts).
  */
-import { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, RUSSIAN_DEVICE_TAGS } from '../../../golisten/src/deviceTags';
+import { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, RUSSIAN_DEVICE_TAGS, FRENCH_DEVICE_TAGS } from '../../../golisten/src/deviceTags';
 
 export const DEVICE_TAGS: Readonly<Record<string, readonly string[]>> = {
   sq: ALBANIAN_DEVICE_TAGS,
-  de: GERMAN_DEVICE_TAGS, es: SPANISH_DEVICE_TAGS, hi: HINDI_DEVICE_TAGS, th: THAI_DEVICE_TAGS, nb: BOKMAL_DEVICE_TAGS, nn: NYNORSK_DEVICE_TAGS, he: HEBREW_DEVICE_TAGS, el: GREEK_DEVICE_TAGS, la: LATIN_DEVICE_TAGS, ru: RUSSIAN_DEVICE_TAGS,
+  de: GERMAN_DEVICE_TAGS, es: SPANISH_DEVICE_TAGS, hi: HINDI_DEVICE_TAGS, th: THAI_DEVICE_TAGS, nb: BOKMAL_DEVICE_TAGS, nn: NYNORSK_DEVICE_TAGS, he: HEBREW_DEVICE_TAGS, el: GREEK_DEVICE_TAGS, la: LATIN_DEVICE_TAGS, ru: RUSSIAN_DEVICE_TAGS, fr: FRENCH_DEVICE_TAGS,
 };
 
 /** Does any of these voices (the browser's `speechSynthesis.getVoices()`) serve the language, by the same strict tag rule? */

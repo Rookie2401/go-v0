@@ -28,7 +28,7 @@ const SCRIPT_RE: Readonly<Record<string, RegExp>> = {
   Cyrl: /\p{Script=Cyrillic}/u,
 };
 /** The script each pack's words are written in. */
-export const LANGUAGE_SCRIPT: Readonly<Record<string, string>> = { sq: 'Latn', es: 'Latn', de: 'Latn', nb: 'Latn', nn: 'Latn', la: 'Latn', he: 'Hebr', arc: 'Hebr', el: 'Grek', th: 'Thai', hi: 'Deva', ru: 'Cyrl' };
+export const LANGUAGE_SCRIPT: Readonly<Record<string, string>> = { sq: 'Latn', es: 'Latn', de: 'Latn', nb: 'Latn', nn: 'Latn', la: 'Latn', he: 'Hebr', arc: 'Hebr', el: 'Grek', th: 'Thai', hi: 'Deva', ru: 'Cyrl', fr: 'Latn' };
 
 /** A block whose words a pack's word list recognises at this share (and MIN_HITS) is compatible with it (resolve.ts DEFAULT_COMPATIBLE_SHARE, measured: own prose 70-100 %, foreign at most 38 %). */
 export const COMPATIBLE_SHARE = 0.45;

@@ -112,6 +112,8 @@ const SPECS: readonly Spec[] = [
   },
   { packIds: ['pack:arc'] },
   { packIds: ['pack:ru'] },
+  // French: one language; the regions are labels on words, not a choice the learner must make before reading
+  { packIds: ['pack:fr'] },
 ];
 
 const SCRIPT_NAME: Readonly<Record<string, string>> = { Latn: 'Latin', Deva: 'Devanagari', Thai: 'Thai script', Hebr: 'Hebrew script', Grek: 'Greek alphabet', Cyrl: 'Cyrillic' };

@@ -11,6 +11,15 @@ const sentencesOf = (d: CorpusDocument) => d.sections.flatMap((s) => s.paragraph
 /** The bundled text the span checks run on: the seed story, or for Latin (course texts only, no seed trio) the first Ritchie fable. */
 const SAMPLE = (lang: string): string => (lang === 'arc' ? 'daniel-2-4b' : lang === 'la' ? 'ladder-ritchie-perseus' : 'story-01');
 
+/**
+ * Languages with no bundled text at all: French bundles no course texts (its pack reads web pages; there is no data/corpus/fr). The
+ * grapheme check runs on their own sample sentences instead; the author-span tests below need a bundled document to import and skip them.
+ */
+const OWN_SAMPLES: Readonly<Record<string, readonly string[]>> = {
+  fr: ["L'homme est ici.", 'L’homme dit : « Bonjour », puis Dis-le-moi, ma grand-mère.', 'Un café noir ? Je n’ai pas d’argent.', 'Nous avons deux enfants. Il entra dans la maison.'],
+};
+const hasBundled = (lang: string): boolean => bundled.some((x) => x.lang === lang);
+
 describe('span and grapheme integrity — all five languages', () => {
   for (const lang of LANGUAGES) {
     if (lang === 'ru') continue; // Russian has no bundled corpus yet: nothing to check
@@ -18,7 +27,9 @@ describe('span and grapheme integrity — all five languages', () => {
 
     it(`${lang}: no token or sentence span of any bundled text starts or ends inside a grapheme cluster`, () => {
       let checked = 0;
-      for (const d of bundled.filter((x) => x.lang === lang)) for (const s of sentencesOf(d)) {
+      if (lang in OWN_SAMPLES) expect(hasBundled(lang), `${lang} now bundles a text: drop it from OWN_SAMPLES`).toBe(false);
+      const groups: Array<Array<{ text: string }>> = lang in OWN_SAMPLES ? [OWN_SAMPLES[lang].map((text) => ({ text }))] : bundled.filter((x) => x.lang === lang).map(sentencesOf);
+      for (const sentences of groups) for (const s of sentences) {
         const b = boundaries(s.text);
         for (const t of adapter.tokenize(s.text)) {
           expect(b.has(t.start), `${s.text} / ${t.surface}`).toBe(true);
@@ -27,10 +38,10 @@ describe('span and grapheme integrity — all five languages', () => {
         }
         for (const sp of adapter.segmentSentences(s.text)) { expect(b.has(sp.start)).toBe(true); expect(b.has(sp.end)).toBe(true); }
       }
-      expect(checked).toBeGreaterThan(lang === 'arc' ? 25 : 150); // full two-excerpt slice, not an invented seed trio
+      expect(checked).toBeGreaterThan(lang === 'arc' ? 25 : lang in OWN_SAMPLES ? 20 : 150); // full two-excerpt slice, not an invented seed trio
     });
 
-    it(`${lang}: author spans on every word of a bundled sentence validate, import and are stored at the exact offsets`, async () => {
+    it.skipIf(lang in OWN_SAMPLES)(`${lang}: author spans on every word of a bundled sentence validate, import and are stored at the exact offsets`, async () => {
       const d = structuredClone(bundled.find((x) => x.lang === lang && x.id === SAMPLE(lang))!);
       const first = sentencesOf(d)[0] as { text: string; spans?: unknown[] };
       const words = adapter.tokenize(first.text).filter((t) => t.isWord);
@@ -53,7 +64,7 @@ describe('span and grapheme integrity — all five languages', () => {
   }
 
   it('a span that cuts a token, joins two, or cuts a grapheme is rejected for every language', () => {
-    for (const lang of LANGUAGES) {
+    for (const lang of LANGUAGES.filter((l) => !(l in OWN_SAMPLES))) { // no bundled document to cut a span in for French (see OWN_SAMPLES)
       if (lang === 'ru') continue; // no bundled Russian text to cut
       const d = structuredClone(bundled.find((x) => x.lang === lang && x.id === SAMPLE(lang))!);
       const first = sentencesOf(d)[0] as { text: string; spans?: unknown[] };

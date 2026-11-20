@@ -25,6 +25,7 @@ import * as helpScreen from './screens/help';
 import * as reviewScreen from './screens/review';
 import * as settingsScreen from './screens/settings';
 import * as accountScreen from './screens/account';
+import * as languagesScreen from './screens/languages';
 import * as developerScreen from './screens/developer';
 import * as signinScreen from './screens/signin';
 import * as setupScreen from './screens/setup';
@@ -39,7 +40,7 @@ import { loadingMark } from './loading';
 import { homePhoto, welcomePhoto } from './homePhotos';
 
 export interface RouteDef {
-  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'developer' | 'signin' | 'setup' | 'privacy' | 'terms' | 'help';
+  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'languages' | 'developer' | 'signin' | 'setup' | 'privacy' | 'terms' | 'help';
   title: string;
   render(el: HTMLElement, ctx: AppContext, view: View, params: string[]): void | Promise<void>;
 }
@@ -50,6 +51,7 @@ export const ROUTES: readonly RouteDef[] = [
   { id: 'vocabulary', title: 'My Vocabulary', render: vocabularyScreen.render },
   { id: 'settings', title: 'Settings', render: settingsScreen.render },
   { id: 'account', title: 'Account', render: accountScreen.render },
+  { id: 'languages', title: 'Languages', render: languagesScreen.render },
   { id: 'developer', title: 'Developer', render: developerScreen.render },
   { id: 'signin', title: 'Sign in', render: signinScreen.render },
   { id: 'setup', title: 'Choose your language', render: setupScreen.render },
@@ -236,7 +238,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     if (id) void flushTermsAcceptance(ctx);
     clear(langWrap);
     if (list.length) {
-      // a quiet kicker: the language's name only. Choosing, switching and adding a language live on the Account page, beside the Settings cog
+      // a quiet kicker: the language's name only. Choosing, switching and adding a language live on the Languages page
       // (the owner, 2026-11-18: "move the Choose your language from the dropdown to the Your Account option"); the home only says which it is
       const current = list.find((e) => e.enrolmentId === id?.enrolmentId) ?? list[0];
       const tip = id?.chosenBy === 'recent-reading' ? `${languageName(current.languageId)}: the language you read most recently` : `${languageName(current.languageId)}${current.varietyId ? ` (${current.varietyId})` : ''}`;
@@ -245,13 +247,12 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     paintSync(await ctx.syncView(), mode);
     // the account is offered any time, never required
     if (mode !== 'none') {
-      // the account (the person) beside the Settings cog: the account page handles every state, signed in or not
+      // Languages is its own top-right tab alongside Account and Settings.
+      const languages = h('a', { href: '#/languages', id: 'header-languages', class: 'header-languages', ...(route === 'languages' ? { 'aria-current': 'page' } : {}) }, 'Languages');
       const who = h('a', { href: '#/account', id: 'header-account', class: 'cog', 'aria-label': 'Account', title: 'Account', ...(route === 'account' ? { 'aria-current': 'page' } : {}) });
       who.append(personIcon(deps.doc));
       updateCog();
-      acctEl.querySelector('#header-account')?.remove();
-      acctEl.prepend(who);
-      if (cog.parentElement !== acctEl) acctEl.append(cog);
+      acctEl.replaceChildren(languages, who, cog);
     } else clear(acctEl);
   }
 
@@ -300,10 +301,10 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     // the hosted copy needs an account for anything but the sign-in page; inside the extension nothing is behind it
     if (mode === 'none' && target !== 'signin' && target !== 'privacy' && target !== 'terms' && target !== 'help') { target = 'signin'; subs = []; if (win.location.hash !== '#/signin') win.location.hash = '#/signin'; }
     // Setup remains a first-run entry point. Once enrolled, all language
-    // additions and choices live on the Account page, including old #/setup links.
+    // additions and choices live on the Languages page, including old #/setup links.
     if (target === 'setup' && (await ctx.enrolments().catch(() => [])).length) {
-      target = 'account'; subs = [];
-      if (win.location.hash !== '#/account') win.location.hash = '#/account';
+      target = 'languages'; subs = [];
+      if (win.location.hash !== '#/languages') win.location.hash = '#/languages';
     }
     if (my !== seq) return;
     const def = ROUTES.find((r) => r.id === target)!;
@@ -320,8 +321,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const welcome = def.id === 'signin';
     // Account and the language list wear it too (the owner, 2026-11-18: "in line with the design philosophy of the homescreen"): a kicker between
     // gold rules (what the page is for), the title, the photo of the language being reviewed (the Earth when there is none yet)
-    const hub = def.id === 'account' || def.id === 'setup';
-    const hubKicker = def.id === 'account' ? 'Your account' : 'Choose your language';
+    const hub = def.id === 'account' || def.id === 'setup' || def.id === 'languages';
+    const hubKicker = def.id === 'account' ? 'Your account' : def.id === 'languages' ? 'Your languages' : 'Choose your language';
     const hubTitle = def.id === 'account' ? 'Account' : 'Languages';
     const hero = home || session || welcome || hub
       ? h('div', { class: 'home-hero' },

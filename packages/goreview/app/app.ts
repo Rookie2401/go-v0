@@ -299,6 +299,12 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     let subs = params;
     // the hosted copy needs an account for anything but the sign-in page; inside the extension nothing is behind it
     if (mode === 'none' && target !== 'signin' && target !== 'privacy' && target !== 'terms' && target !== 'help') { target = 'signin'; subs = []; if (win.location.hash !== '#/signin') win.location.hash = '#/signin'; }
+    // Setup remains a first-run entry point. Once enrolled, all language
+    // additions and choices live on the Account page, including old #/setup links.
+    if (target === 'setup' && (await ctx.enrolments().catch(() => [])).length) {
+      target = 'account'; subs = [];
+      if (win.location.hash !== '#/account') win.location.hash = '#/account';
+    }
     if (my !== seq) return;
     const def = ROUTES.find((r) => r.id === target)!;
     route = [def.id, ...subs].join('/');

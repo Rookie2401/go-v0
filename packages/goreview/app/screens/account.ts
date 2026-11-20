@@ -21,6 +21,7 @@ import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } 
 import { enrolmentName } from '../enrolmentName';
 import { attachRipple } from '../ripple';
 import { ACCOUNT_CHANGED, dataFilename, explainAccountFailure, GRACE_DAYS, mountDeletionBanner, saveFile, sessionsBlock } from './accountSecurity';
+import { languageRow } from './setup';
 import type { View } from './view';
 
 /** A label in the home's manner: the kicker, the title, the caption under it. */
@@ -32,11 +33,12 @@ const tileLabel = (kicker: string | null, title: string, caption?: string, capti
 
 async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElement | undefined> {
   const [list, id, { languagesOf }, { packFor }] = await Promise.all([
-    ctx.enrolments().catch(() => []), ctx.identity().catch(() => undefined),
+    ctx.enrolments().catch((): Awaited<ReturnType<AppContext['enrolments']>> => []), ctx.identity().catch(() => undefined),
     import('../languageChoices'), import('../../../language-packs/src/registry'),
   ]);
   if (!view.alive()) return;
   const catalogue = languagesOf();
+  const mine = new Set(list.map((e) => e.languageId));
   const active = list.find((e) => e.enrolmentId === id?.enrolmentId) ?? list[0];
   const ordered = active ? [active, ...list.filter((e) => e !== active)] : [];
   const groups = new Map<string, typeof list>();
@@ -67,6 +69,42 @@ async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElemen
     });
     if (key === 'he' || key === 'el') options.reverse();
     const deck = reviewing ? 'current' : 'language';
+    // Norwegian's written standard is an explicit choice on the account card itself.
+    // Keep both enrolled standards available; selecting an unowned one adds it here.
+    if (choice?.kind === 'standard') {
+      const status = statusLine();
+      const chosen = members.find((e) => e === active) ?? members[0];
+      const radios = choice.options.map((o) => h('label', { class: 'setup-option' },
+        h('input', { type: 'radio', name: `account-standard-${key}`, value: o.id,
+          ...(chosen?.languageId === o.languageId ? { checked: true } : {}) }), h('span', {}, o.label)));
+      const picker = h('fieldset', { class: 'setup-choice', 'data-choice': 'standard' },
+        h('legend', {}, choice.label), ...radios);
+      const review = button(`Review ${language?.name ?? key}`, () => {
+        const selected = picker.querySelector<HTMLInputElement>('input:checked');
+        const option = choice.options.find((o) => o.id === selected?.value);
+        if (!option) { setStatus(status, 'Choose the written standard you will read.', 'error'); return; }
+        void (async () => {
+          review.disabled = true;
+          try {
+            const existing = members.find((e) => e.languageId === option.languageId &&
+              (!option.varietyId || (e.varietyId ?? packFor(e.languageId)?.varietyId) === option.varietyId));
+            if (existing) {
+              if (!(await activate(existing))) { if (view.alive()) setStatus(status, 'This track could not be opened. Try again.', 'error'); return; }
+            } else {
+              const result = await ctx.chooseLanguage({ languageId: option.languageId,
+                ...(option.varietyId ? { varietyId: option.varietyId } : {}), keepOtherVarieties: true });
+              if (!result.ok) { if (view.alive()) setStatus(status, result.message, 'error'); return; }
+            }
+            if (view.alive()) ctx.go('review');
+          } finally { review.disabled = false; }
+        })();
+      }, { class: 'account-pill', 'data-action': 'review-language' });
+      const summary = h('summary', { class: 'deck-face' }, label(language?.name ?? key, reviewing ? 'Reviewing now' : undefined),
+        h('span', { class: 'account-language-caret', 'aria-hidden': 'true' }, '▾'));
+      return h('details', { class: 'deck-tile account-language account-language-disclosure account-standard', 'data-deck': deck },
+        summary, h('div', { class: 'account-language-options' }, picker,
+          h('div', { class: 'account-panel-actions' }, review), status));
+    }
     if (options.length < 2 && members.length === 1) {
       const e = members[0]!;
       const face = button('', () => { void activate(e).then((ok) => { if (ok && view.alive()) ctx.go('review'); }); },
@@ -130,10 +168,15 @@ async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElemen
     return h('details', { class: 'deck-tile account-language account-language-disclosure', 'data-deck': deck },
       summary, h('ul', { class: 'account-language-list', 'aria-label': `${parentName} tracks` }, ...rows), status);
   });
+  const available = catalogue.filter((language) =>
+    language.packIds.some((id) => packFor(id.replace(/^pack:/, '').split(':')[0])?.status === 'installable') &&
+    !groups.has(language.languageId));
   return h('section', { class: 'account-group', id: 'account-languages', 'aria-labelledby': 'account-settings-h' },
     h('h3', { class: 'tiles-heading', id: 'account-settings-h' }, 'Your Account Settings'),
     ...boxes,
-    h('a', { class: 'home-link', id: 'add-language', href: '#/setup' }, list.length ? 'Add a language' : 'Choose your language'));
+    ...(available.length ? [h('h3', { class: 'tiles-heading account-catalogue-heading' }, 'More languages'),
+      h('ul', { class: 'account-catalogue-list', 'aria-label': 'More languages' },
+        ...available.map((language) => languageRow(language, mine, ctx, view, true)))] : []));
 }
 
 /** One of the account's actions as a tile, like the home's Review Deck: an icon, a title and its caption, the arrow. Keeps the button (and its id). */

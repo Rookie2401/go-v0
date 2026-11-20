@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 13930ef9cdf272fde2b668880297b1563193b137
+          ref: 8807b3a1e57f02ea57f04120086ea200f5eb0fd0
           path: source
       - uses: actions/checkout@v4
         with:
@@ -44,10 +44,10 @@ jobs:
         run: |
           set -euo pipefail
           cmp review/config.json "$RUNNER_TEMP/goreview/config.json" || node -e 'const assert = require("node:assert/strict"); assert.deepEqual(require("./review/config.json"), require(process.argv[1]));' "$RUNNER_TEMP/goreview/config.json"
-          grep -l 'account-language-name' "$RUNNER_TEMP"/goreview/assets/*.js
+          grep -l 'account-language-disclosure' "$RUNNER_TEMP"/goreview/assets/*.js
           rsync -a --delete "$RUNNER_TEMP/goreview/" review/
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- review
-          git commit -m 'Deploy GoReview Account inline language names (#21)' -m 'Source: 13930ef9cdf272fde2b668880297b1563193b137'
-          git push origin HEAD:refs/heads/codex/staged-goreview-account-21
+          git commit -m 'Deploy GoReview Account language boxes (#22)' -m 'Source: 8807b3a1e57f02ea57f04120086ea200f5eb0fd0'
+          git push origin HEAD:refs/heads/codex/staged-goreview-account-22

@@ -31,34 +31,105 @@ const tileLabel = (kicker: string | null, title: string, caption?: string, capti
     caption ? h('span', { class: 'deck-caption', ...(captionLang ? { lang: captionLang } : {}) }, caption) : null);
 
 async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElement | undefined> {
-  const [list, id, { languagesOf }] = await Promise.all([ctx.enrolments().catch(() => []), ctx.identity().catch(() => undefined), import('../languageChoices')]);
+  const [list, id, { languagesOf }, { packFor }] = await Promise.all([
+    ctx.enrolments().catch(() => []), ctx.identity().catch(() => undefined),
+    import('../languageChoices'), import('../../../language-packs/src/registry'),
+  ]);
   if (!view.alive()) return;
   const catalogue = languagesOf();
-  const nativeOf = (languageId: string): string | undefined =>
-    catalogue.find((l) => l.languageId === languageId || l.choice?.options.some((o) => o.languageId === languageId))?.nativeName;
   const active = list.find((e) => e.enrolmentId === id?.enrolmentId) ?? list[0];
   const ordered = active ? [active, ...list.filter((e) => e !== active)] : [];
-  const rows = ordered.map((e) => {
-    const current = e === active;
-    const name = enrolmentName(e, list);
-    const row = button('', () => {
-      void (async () => {
-        if (!current && !(await ctx.setLanguage(e.enrolmentId))) return;
-        ctx.go('review');
-      })();
-    }, { class: 'account-language-row', 'data-enrolment': e.enrolmentId, ...(current ? { 'aria-current': 'true' } : {}) });
-    const native = nativeOf(e.languageId);
-    row.append(
-      h('span', { class: 'account-language-name' }, name,
-        native ? h('small', { lang: e.languageId, dir: 'auto' }, ` (${native})`) : null),
-      current ? h('span', { class: 'account-language-current' }, 'Reviewing now') : icon(ctx.deps.doc, 'arrow'),
-    );
-    return h('li', {}, row);
+  const groups = new Map<string, typeof list>();
+  for (const e of ordered) {
+    const parent = catalogue.find((l) => l.languageId === e.languageId || l.choice?.options.some((o) => o.languageId === e.languageId));
+    const key = parent?.languageId ?? e.languageId;
+    const group = groups.get(key);
+    if (group) group.push(e);
+    else groups.set(key, [e]);
+  }
+
+  type Enrolment = (typeof list)[number];
+  const activate = async (e: Enrolment): Promise<boolean> => e === active || await ctx.setLanguage(e.enrolmentId);
+  const boxes = Array.from(groups, ([key, members]) => {
+    const language = catalogue.find((l) => l.languageId === key);
+    const reviewing = members.some((e) => e === active);
+    const label = (name: string, status?: string): HTMLElement => h('span', { class: 'deck-label' },
+      status ? h('span', { class: 'deck-kicker' }, status) : null,
+      h('span', { class: 'deck-title account-language-name' }, name,
+        language?.nativeName ? h('small', { lang: key, dir: 'auto' }, ` (${language.nativeName})`) : null));
+    const choice = language?.choice;
+    const deck = reviewing ? 'current' : 'language';
+    if (!language || !choice) {
+      const e = members[0]!;
+      const face = button('', () => { void activate(e).then((ok) => { if (ok && view.alive()) ctx.go('review'); }); },
+        { class: 'deck-face', 'data-enrolment': e.enrolmentId, ...(reviewing ? { 'aria-current': 'true' } : {}) });
+      face.append(label(language?.name ?? enrolmentName(e, list), reviewing ? 'Reviewing now' : undefined), icon(ctx.deps.doc, 'arrow'));
+      const tile = h('div', { class: 'deck-tile account-language', 'data-deck': deck }, face);
+      attachRipple(tile);
+      return tile;
+    }
+
+    const status = statusLine();
+    const rows: HTMLElement[] = [];
+    const matched = new Set<Enrolment>();
+    let selecting = false;
+    function track(name: string, existing?: Enrolment, target?: { languageId: string; varietyId: string }): HTMLElement {
+      const current = existing === active && !!existing;
+      const control = button('', () => {
+        void (async () => {
+          if (selecting) return;
+          selecting = true;
+          control.disabled = true;
+          try {
+            if (existing) {
+              if (!(await activate(existing))) {
+                if (view.alive()) setStatus(status, 'This track could not be opened. Try again.', 'error');
+                return;
+              }
+            } else if (target) {
+              const result = await ctx.chooseLanguage({ ...target, keepOtherVarieties: true });
+              if (!result.ok) {
+                if (view.alive()) setStatus(status, result.message, 'error');
+                return;
+              }
+            }
+            if (view.alive()) ctx.go('review');
+          } finally {
+            selecting = false;
+            control.disabled = false;
+          }
+        })();
+      }, { class: 'account-language-row', disabled: !existing && !target,
+        'data-enrolment': existing?.enrolmentId, ...(current ? { 'aria-current': 'true' } : {}) });
+      control.append(h('span', {}, name), h('small', {}, current ? 'Reviewing now' : existing ? '' : target ? 'Add track' : 'Unavailable'));
+      return h('li', {}, control);
+    }
+
+    const options = key === 'he' || key === 'el' ? [...choice.options].reverse() : choice.options;
+    for (const option of options) {
+      const pack = packFor(option.languageId);
+      const existing = members.find((e) => e.languageId === option.languageId &&
+        (choice.kind === 'standard' || (e.varietyId ?? pack?.varietyId) === option.varietyId));
+      if (existing) matched.add(existing);
+      const name = option.label.replace(/\s*\(default\)$/u, '');
+      const title = name.endsWith(` ${language.name}`) ? name.slice(0, -language.name.length - 1) : name;
+      const target = option.varietyId && pack?.status === 'installable' && pack.varieties.some((v) => v.varietyId === option.varietyId && v.analysed)
+        ? { languageId: option.languageId, varietyId: option.varietyId } : undefined;
+      if (existing || target) rows.push(track(title, existing, target));
+      if (key === 'he' && option.id === 'he-bib' && !choice.options.some((o) => /medieval/i.test(o.label))) rows.push(track('Medieval'));
+    }
+    for (const e of members) {
+      if (!matched.has(e)) rows.push(track(enrolmentName(e, list), e));
+    }
+    const summary = h('summary', { class: 'deck-face' }, label(language.name, reviewing ? 'Reviewing now' : undefined),
+      h('span', { class: 'account-language-caret', 'aria-hidden': 'true' }, '▾'));
+    return h('details', { class: 'deck-tile account-language account-language-disclosure', 'data-deck': deck },
+      summary, h('ul', { class: 'account-language-list', 'aria-label': `${language.name} tracks` }, ...rows), status);
   });
-  return h('section', { class: 'deck-tile account-panel', id: 'account-languages', 'aria-labelledby': 'account-settings-h' },
-    h('h3', { class: 'deck-kicker', id: 'account-settings-h' }, 'Your Account Settings'),
-    rows.length ? h('ul', { class: 'account-language-list', 'aria-label': 'Your languages' }, ...rows) : null,
-    h('a', { class: 'account-link', id: 'add-language', href: '#/setup' }, list.length ? 'Add a language' : 'Choose your language'));
+  return h('section', { class: 'account-group', id: 'account-languages', 'aria-labelledby': 'account-settings-h' },
+    h('h3', { class: 'tiles-heading', id: 'account-settings-h' }, 'Your Account Settings'),
+    ...boxes,
+    h('a', { class: 'home-link', id: 'add-language', href: '#/setup' }, list.length ? 'Add a language' : 'Choose your language'));
 }
 
 /** One of the account's actions as a tile, like the home's Review Deck: an icon, a title and its caption, the arrow. Keeps the button (and its id). */

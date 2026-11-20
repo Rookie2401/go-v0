@@ -58,6 +58,7 @@ type EnrolRow = Pick<Enrolment, 'enrolmentId' | 'languageId'> & Partial<Pick<Enr
 
 interface RowRefs {
   lang: LanguageView;
+  reading: HTMLElement;
   row: HTMLElement;
   variety: HTMLSelectElement | undefined;
   /** The one-line “what this pack is” text, in Details and in the Download menu. */
@@ -82,7 +83,27 @@ interface RowRefs {
 const attempted = new WeakMap<AppContext, Set<string>>();
 
 export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, view: View, slots: { next?: HTMLElement; onCount?: (chosen: number) => void } = {}): Promise<LanguageSection> {
-  const languages = ctx.deps.packs.languages();
+  const languages = ctx.deps.packs.languages().map((language): LanguageView => {
+    const choice = language.choice;
+    const ids = choice?.kind === 'standard' ? [...new Set(choice.options.map((o) => o.languageId))] : [language.languageId];
+    const options = ids.flatMap((languageId) => {
+      const pack = ctx.deps.packs.packFor(languageId);
+      if (pack?.status !== 'installable') return [];
+      return pack.varieties.filter((v) => v.analysed && (v.varietyId === languageId || v.varietyId.startsWith(`${languageId}-`)))
+        .map((v) => ({
+          id: choice?.options.find((o) => o.languageId === languageId && o.varietyId === v.varietyId)?.id ?? v.varietyId,
+          languageId, varietyId: v.varietyId, label: v.label.replace(/\s*\([^)]*\)\s*$/u, ''),
+        }));
+    });
+    if (language.languageId === 'he' || language.languageId === 'el') options.reverse();
+    else if (choice && choice.kind !== 'standard') {
+      const first = options.findIndex((option) => option.id === choice.options[0]?.id);
+      if (first > 0) options.unshift(...options.splice(first, 1));
+    }
+    return { ...language, choice: options.length > 1
+      ? { kind: choice?.kind ?? 'variety', required: choice?.required ?? true, label: choice?.label ?? 'Choose a track', options }
+      : undefined };
+  });
   // what to do next: at the top of the page when the page gives it a place, else above the rows
   const next = slots.next ?? h('div', { id: 'next-steps' });
   // one list, two groups, each under its label: the rows are moved between them as languages are downloaded and removed
@@ -121,17 +142,17 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
     const pack = selectedPack(c);
     if (!pack) return false;
     const option = optionOf(c);
-    return enrolledNow.some((r) => r.languageId === pack.languageId && (c.lang.choice?.kind !== 'variety' || !option?.varietyId || (r.varietyId ?? '') === option.varietyId));
+    return enrolledNow.some((r) => r.languageId === pack.languageId && (!option?.varietyId || (r.varietyId ?? pack.defaultVarietyId) === option.varietyId));
   };
 
   function describe(c: RowRefs): void {
     const l = c.lang;
     const pack = selectedPack(c);
     let text = '';
-    if (l.choice?.required && !c.variety?.value) text = STANDARD_MESSAGE;
+    if (l.choice?.kind === 'standard' && !c.variety?.value) text = STANDARD_MESSAGE;
     else if (pack) text = pack.status === 'installable' ? `${l.name}: ${l.level}. ${reviewLine(pack)}` : `${l.name}: planned, not installable yet, so it cannot be downloaded.`;
     c.info.textContent = text;
-    c.note.textContent = text;
+    c.note.textContent = l.choice?.kind === 'standard' && !c.variety?.value ? STANDARD_MESSAGE : '';
     // the row names the language: a language with nothing to ask says “Download”; inside an opened question the button names what it will fetch
     const label = isEnrolled(c) ? `Use ${l.name}` : `Download ${l.name}`;
     c.choose.textContent = l.choice ? label : 'Download';
@@ -193,13 +214,12 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
     const l = c.lang;
     const ch = l.choice;
     let option = ch?.options.find((o) => o.id === c.variety?.value);
-    if (ch?.required && !option) { setStatus(c.status, STANDARD_MESSAGE, 'error'); return; }
+    if (ch?.required && !option) { setStatus(c.status, ch.kind === 'standard' ? STANDARD_MESSAGE : 'Choose a track first.', 'error'); return; }
     if (ch && !option) option = ch.options[0];
     const pack = ctx.deps.packs.packFor(option?.languageId ?? l.languageId);
     if (!pack) { setStatus(c.status, `GoLearn has no pack for ${l.name} yet.`, 'error'); return; }
     if (pack.status !== 'installable') { setStatus(c.status, `${pack.name} is planned, not installable yet, so it cannot be downloaded.`, 'error'); return; }
-    const standard = ch?.kind === 'standard' && (option?.id === 'nb' || option?.id === 'nn') ? option.id : undefined;
-    if (c.menu instanceof HTMLDetailsElement) c.menu.open = false;
+    const standard = option?.languageId === 'nb' || option?.languageId === 'nn' ? option.languageId : undefined;
     busy++;
     describeAll();
     setStatus(c.status, 'Saving your choice…', 'info');
@@ -234,6 +254,7 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
       c.row.classList.toggle('chosen', enrolled.length > 0);
       c.row.setAttribute('data-state', ready ? 'ready' : enrolled.length ? 'chosen' : 'new');
       c.row.setAttribute('data-active', String(!!active && ids.has(active.languageId)));
+      c.reading.hidden = !active || !ids.has(active.languageId);
       c.installed.textContent = records.map(({ pk, rec }) => `Installed here: ${pk.name} version ${rec!.version}, ${rec!.ok ? 'verified' : 'verification failed'} on ${shortDate(rec!.verifiedAt)}.`).join(' ');
 
       // the downloaded languages of this row: state, Reading now / Use for reading, Remove
@@ -243,8 +264,9 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
         const pk = ctx.deps.packs.packFor(e.languageId);
         const rec = pk ? progress.packs[pk.packId] : undefined;
         const label = languageLabel(ctx, e.languageId, e.varietyId);
+        const track = c.lang.choice?.options.find((o) => o.languageId === e.languageId && o.varietyId === (e.varietyId ?? pk?.defaultVarietyId));
         c.mine.append(h('li', { class: 'mine', 'data-enrolment': e.enrolmentId, 'data-language': e.languageId, 'data-variety': e.varietyId ?? '', 'data-pack-ok': String(rec?.ok === true) },
-          enrolled.length > 1 || label !== c.lang.name ? h('strong', {}, `${label} `) : null,
+          enrolled.length > 1 || label !== c.lang.name ? h('strong', {}, `${track?.label ?? label} `) : null,
           // a ready language says so by where it stands (Your languages); the words stay for a screen reader. A problem is said in sight.
           h('span', { class: rec?.ok ? 'dl-state ok sr' : 'dl-state error' }, rec ? (rec.ok ? 'Downloaded · ready' : 'Downloaded · did not verify') : 'Download not finished'),
           isActive
@@ -266,8 +288,6 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
 
       // the Download control: always for a language with a choice (it then adds another standard or period); for the others only until they are downloaded
       c.menu.hidden = !c.lang.choice && enrolled.length > 0;
-      const summary = c.menu.querySelector('summary');
-      if (summary) summary.textContent = enrolled.length ? 'Add another' : 'Download';
 
       clear(c.more);
       const have = records.find((x) => x.pk === selectedPack(c));
@@ -342,32 +362,32 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
     const opt = (value: string, text: string): HTMLOptionElement => h('option', { value }, text) as HTMLOptionElement;
     if (l.choice) {
       variety = h('select', { id: `variety-${l.languageId}`, name: 'variety', class: 'variety' }) as HTMLSelectElement;
-      if (l.choice.required) variety.append(opt('', 'Choose the written standard…'));
+      if (l.choice.required) variety.append(opt('', l.choice.kind === 'standard' ? 'Choose the written standard…' : 'Choose a track…'));
       for (const o of l.choice.options) variety.append(opt(o.id, o.label));
       if (!l.choice.required && l.choice.options[0]) variety.value = l.choice.options[0].id;
       varietyField = h('label', { class: 'field' },
-        h('span', { class: 'cap' }, l.choice.kind === 'standard' ? 'Written standard' : 'Regional preference (optional)'), variety);
+        h('span', { class: 'cap' }, l.choice.kind === 'standard' ? 'Written standard' : l.languageId === 'es' ? 'Regional preference' : 'Track'), variety);
     }
     const choose = button(l.choice ? `Download ${l.name}` : 'Download', () => { void chooseOnRow(c); }, { class: l.choice ? 'btn primary' : 'btn', 'data-action': 'choose', 'aria-label': `Download ${l.name}` });
-    // nothing to ask: the button is the control. A question first (a written standard, a regional preference, a period): it opens in the row.
-    const menu = l.choice
-      ? h('details', { class: 'download', id: `download-${l.languageId}` },
-        h('summary', { 'aria-label': `Download ${l.name}: choose first` }, 'Download'),
-        h('div', { class: 'dl-panel' }, varietyField, note, h('div', { class: 'row' }, choose)))
-      : h('div', { class: 'download-one', id: `download-${l.languageId}` }, choose);
-
-    const row = h('li', { class: 'lang lang-row', 'data-language': l.languageId, 'data-script': l.scriptId, 'aria-labelledby': `lang-h-${l.languageId}` },
-      h('div', { class: 'lang-main' },
-        h('h3', { id: `lang-h-${l.languageId}`, class: 'lang-name' }, l.name, l.nativeName && l.nativeName !== l.name ? h('span', { class: 'native', lang: l.languageId }, ` ${l.nativeName}`) : null),
-        h('p', { class: 'muted lang-level' }, `${l.level}${l.choice?.kind === 'standard' ? ' · you choose the written standard' : ''}`)),
-      h('div', { class: 'lang-actions' }, mine, menu),
-      h('div', { class: 'lang-feedback' }, progress, status, results, offline),
-      h('details', { class: 'about' }, h('summary', {}, 'Details'),
-        info,
-        h('h4', {}, 'What works'), works, h('h4', {}, 'What does not'), not,
-        h('p', { class: 'audio' }, h('strong', {}, 'Audio: '), l.audio),
-        installed, h('div', { class: 'row' }, more)));
-    const c: RowRefs = { lang: l, row, variety, info, note, choose, menu, mine, offline, more, progress, status, results, installed, installing: false };
+    const menu = h('div', { class: 'download-one', id: `download-${l.languageId}` },
+      l.choice ? h('div', { class: 'dl-panel' }, varietyField, note, h('div', { class: 'row' }, choose)) : choose);
+    const reading = h('span', { class: 'lang-reading', hidden: true }, 'Reading now');
+    const controls = h('details', { class: 'language-box' },
+      h('summary', { class: 'language-box-face' },
+        h('span', {}, reading,
+          h('span', { id: `lang-h-${l.languageId}`, class: 'lang-name' }, l.name,
+            l.nativeName && l.nativeName !== l.name ? h('small', { class: 'native', lang: l.languageId, dir: 'auto' }, ` (${l.nativeName})`) : null)),
+        h('span', { class: 'language-box-caret', 'aria-hidden': 'true' }, '▾')),
+      h('div', { class: 'language-box-body' },
+        h('div', { class: 'lang-actions' }, mine, menu),
+        h('div', { class: 'lang-feedback' }, progress, status, results, offline),
+        h('details', { class: 'about' }, h('summary', {}, 'Details'),
+          h('p', { class: 'muted lang-level' }, l.level), info,
+          h('h4', {}, 'What works'), works, h('h4', {}, 'What does not'), not,
+          h('p', { class: 'audio' }, h('strong', {}, 'Audio: '), l.audio),
+          installed, h('div', { class: 'row' }, more))));
+    const row = h('li', { class: 'lang lang-row', 'data-language': l.languageId, 'data-script': l.scriptId, 'aria-labelledby': `lang-h-${l.languageId}` }, controls);
+    const c: RowRefs = { lang: l, row, reading, variety, info, note, choose, menu, mine, offline, more, progress, status, results, installed, installing: false };
     rowsOf.push(c);
     variety?.addEventListener('change', () => { describe(c); });
     cardsBox.append(row);

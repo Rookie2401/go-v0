@@ -1,0 +1,1 @@
+import{t as e}from"./es-D4AoSoKe.js";export{e as adapter};

@@ -5,15 +5,15 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "3d92b2643df3496e127bde4455f8c99f0b10823b",
-    "tree": "8fa0e9c6d30b8337390f2e12d3801e992225351e",
+    "commit": "b5aa3630a2279581c1b3671d45027773dd430116",
+    "tree": "32b73f1495b69669c479ab07affd811f5f7920c7",
     "dirty": false
   },
-  "sourceManifestSha256": "119acde83dfbd9b927be7fb741b04045bb909223949ec8b79f0f5cb53a8d3aba",
+  "sourceManifestSha256": "c813025f3157021b5438f398ff3f20bc1c7ead5ac07e76e0b2f25d51634855f9",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
-      "sha256": "26c52e0111ed97c0a7f2374e6eace598d7bdc2a36a2fbf95c29f13f10e7bef30"
+      "sha256": "52a60a3639038af3918d3609e0ad913ba10b20e6490e254ceb990de80b6ae28c"
     },
     {
       "path": "docs/legal/PRIVACY-POLICY.md",
@@ -29,7 +29,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "2b64a4f778e948c1d0d138702b77883f286a2d4679f20a056ac1c94cef28546c"
+      "sha256": "18310735d5f29854abd34e99de8b5d6b809efd9da9c5223590035d980a0e5dec"
     },
     {
       "path": "packages/biblia-ios/package-lock.json",
@@ -189,7 +189,7 @@
     },
     {
       "path": "packages/golisten/src/deviceTags.ts",
-      "sha256": "378f36a810782e94c3b7aa89c091fa2b9fc4c7202392662116786c9d51e9aa07"
+      "sha256": "530ba07fc188448cd89fd22505c7fba677f64598fb21e2ce4c045ec22d835c10"
     },
     {
       "path": "packages/golisten/src/environment.ts",
@@ -225,7 +225,7 @@
     },
     {
       "path": "packages/golisten/src/providers/device.ts",
-      "sha256": "db9d9c05a5c1752fa9cd0eb1d7779ed10dbb181d887a3351a7d5af214cca96a9"
+      "sha256": "120fddd2e7e574a9d0dd1e7657a10ce574403b2e67d941e0dc60e9e721544f79"
     },
     {
       "path": "packages/golisten/src/providers/recorded.ts",
@@ -241,7 +241,7 @@
     },
     {
       "path": "packages/golisten/src/registry.ts",
-      "sha256": "5928c8ffb31f25e6f39fc2b211d44f36f6439e428b18351272ae38f61382294e"
+      "sha256": "e29d427355132ea476349f9e0126fe242a311ce52db558b90f51a6307dbd6a5c"
     },
     {
       "path": "packages/golisten/src/resolve.ts",
@@ -373,7 +373,7 @@
     },
     {
       "path": "packages/goreview/app/alphabetDeck.ts",
-      "sha256": "f5cf73343ef26c8a04a03281f9de027c43e69481d1b0ca5a1405b54897b82c92"
+      "sha256": "5f7167b278cb211a6eec60689d7792e3ff609477e2b1201bfba414b26876ccb4"
     },
     {
       "path": "packages/goreview/app/alphabetLetters.thhi.ts",
@@ -381,7 +381,7 @@
     },
     {
       "path": "packages/goreview/app/alphabetLetters.ts",
-      "sha256": "2584d1856d1c4de26da3e65d761fe39716e54e2796620675e49089830fb3aa76"
+      "sha256": "fa2fde9226a0adf87ad2443e5030341f9e55393c4f19e7a808303b6cb6509677"
     },
     {
       "path": "packages/goreview/app/alphabetPage.ts",
@@ -465,7 +465,7 @@
     },
     {
       "path": "packages/goreview/app/leanBuiltins.ts",
-      "sha256": "7e798b44ed40915bb9bcd8c5aedb5fc61fe369ac75096f28bb4e694671afbe3b"
+      "sha256": "fb2854a407668df0f83f8fcde3a2c1dd65dc8eab8f55b89d6d4e07de732500ce"
     },
     {
       "path": "packages/goreview/app/legal.ts",
@@ -497,7 +497,7 @@
     },
     {
       "path": "packages/goreview/app/packFacts.ts",
-      "sha256": "387889706bb5cec3019e5f65c41e8cc58f9cb2eb5b38a2088d3bc67860155c11"
+      "sha256": "e712e6023b6bba3eb4f42aeacbf76d88d96c436e96114fc54013c26e35173057"
     },
     {
       "path": "packages/goreview/app/photos/athens.webp",
@@ -773,7 +773,7 @@
     },
     {
       "path": "packages/goreview/app/vite.config.ts",
-      "sha256": "02eb6ae5a3d146ab571ae426f101d5aa9783e85806e3482f3d24561150c01889"
+      "sha256": "19343252b9b378923e3db03ef84f224c2e2419c5adf277dc44c049b024c7b277"
     },
     {
       "path": "packages/goreview/app/workspace.ts",
@@ -1220,6 +1220,10 @@
       "sha256": "bda5d233b7c5b149f1943bae024d058179e62de6e01dbac7a8d693adfbcc4063"
     },
     {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/fr.ts",
+      "sha256": "ec8c6a1baa6a67186984ad5b05898c87c9dcdb80bad76f473905b62ccf3db8d5"
+    },
+    {
       "path": "packages/language-packs/src/alphabet-sprint/profiles/he.ts",
       "sha256": "d91edacb79ad9f4782201c967a611efdac31ceaf853ba9b83bac2307d06b4a68"
     },
@@ -1233,7 +1237,7 @@
     },
     {
       "path": "packages/language-packs/src/alphabet-sprint/profiles/index.ts",
-      "sha256": "aa81662be64adb7c58cb343733420f7516ce0d9b78225207a91fd1cc35ce6644"
+      "sha256": "ed2d0da0618b068dfeaf9e4e929473b1c3a48b07f04e22cf54c7f0cd64bfe73f"
     },
     {
       "path": "packages/language-packs/src/alphabet-sprint/profiles/la.ts",
@@ -1250,6 +1254,10 @@
     {
       "path": "packages/language-packs/src/alphabet-sprint/profiles/norwegian.ts",
       "sha256": "964c8f3f2653845379e1aead651e5ee1b90b06361e8700509c0f0f7d6c2add30"
+    },
+    {
+      "path": "packages/language-packs/src/alphabet-sprint/profiles/ru.ts",
+      "sha256": "508fd8b252e01846c1e6a8e8a3f3136feb44c7de8a273a59a57d0bc8f6d40943"
     },
     {
       "path": "packages/language-packs/src/alphabet-sprint/profiles/sq.ts",
@@ -1288,6 +1296,10 @@
       "sha256": "3ffe6618c448dfd747f0f282ce2a3db3aea1e193f82f175d9bbe742701e47000"
     },
     {
+      "path": "packages/language-packs/src/alphabet-sprint/words/fr.ts",
+      "sha256": "d2b1fe22655c654526a507a8b2f0ac7d63545f37985f6c1e77e1b7b927d731d1"
+    },
+    {
       "path": "packages/language-packs/src/alphabet-sprint/words/he.ts",
       "sha256": "b55e2913da3c0544ae337b3e41ef0f44b5562adbaf7ba017e98552b67b10c156"
     },
@@ -1308,6 +1320,10 @@
       "sha256": "840b9b5b23ca2e25a5832856777d33d5bd6a2fb45a5aa09b5aafa48d250ad4e6"
     },
     {
+      "path": "packages/language-packs/src/alphabet-sprint/words/ru.ts",
+      "sha256": "ec7d209a1b4ec2554a25513f844ad56fcf30338c4317d935312a57347956081e"
+    },
+    {
       "path": "packages/language-packs/src/alphabet-sprint/words/sq.ts",
       "sha256": "e3fdea171cd0f2a62f98e9f2dd5c3bec386c5112c71ca02e9fd7b9b6360d8d82"
     },
@@ -1325,15 +1341,15 @@
     },
     {
       "path": "packages/language-packs/src/catalogue.ts",
-      "sha256": "acde3404ca59eaf2296ee8107b476ca9e03dee4b09e2015b81c8d487c1092955"
+      "sha256": "fc63c9855d78f45e24aebf7832f58a0b0a988d57311eb1592c2000929c46fb1a"
     },
     {
       "path": "packages/language-packs/src/evidence.ts",
-      "sha256": "2cae67c96ca5a5429adf3ef83ac217e7a5b313e889a8c3e324f8a3992ecbf38a"
+      "sha256": "d2e4ededd18e011ca7b0f9adb7b0d42ec1bdecf59d6bce8e25618bf95d6bdb3f"
     },
     {
       "path": "packages/language-packs/src/index.ts",
-      "sha256": "271b05475707214c02d12fcdf6fcc7cde936a47f398c714c0ca7e0966fc6e153"
+      "sha256": "ae7aaed77f9575d16268b284bc6bd2518728f80f3680999772f6f105c0cfa296"
     },
     {
       "path": "packages/language-packs/src/manifest.ts",
@@ -1360,6 +1376,10 @@
       "sha256": "301ffcb991b7b5914b3e1f420819dd85d83ce07bc3233465323b081077951970"
     },
     {
+      "path": "packages/language-packs/src/packs/fr.ts",
+      "sha256": "1db795a4e90c2242d6d41d411149b3bca281fb29af31837c16832d2f3aaf98a9"
+    },
+    {
       "path": "packages/language-packs/src/packs/he.ts",
       "sha256": "3b14f77233267ad616eb049d20b98dcf9a85ebaaaaa9a0b79114235065bdff59"
     },
@@ -1384,6 +1404,14 @@
       "sha256": "8ce66dcf25db002403ac71fc2e4005ca912ebfe7302e61da60a3f61e7773f028"
     },
     {
+      "path": "packages/language-packs/src/packs/ru-grammar.ts",
+      "sha256": "8d02629d0cb1e265b360cdbf1bbff846ea57f77bfc2cbd15a763ac01b3ec336c"
+    },
+    {
+      "path": "packages/language-packs/src/packs/ru.ts",
+      "sha256": "c8eb52e7adeb00ba76172aba97ed83bd724d3d7f6032b4db8e7c4d525522c8c6"
+    },
+    {
       "path": "packages/language-packs/src/packs/sq.ts",
       "sha256": "78a46a21457f4ba8522a7a58bb209008a4ad61353549291ffbbde962013811db"
     },
@@ -1393,7 +1421,7 @@
     },
     {
       "path": "packages/language-packs/src/registry.ts",
-      "sha256": "47970daea7d703f52ee9a6c7378bdae841dab940ec846cfe9cbb3c179acf1f91"
+      "sha256": "175dfa272f6227a242e979061905b0884cc169cc25d16215e8219546f197d035"
     },
     {
       "path": "packages/language-packs/src/runtime.ts",
@@ -1416,6 +1444,10 @@
       "sha256": "a4241da30d74272382a4e9e961cc6646ed09e3695c524a6b935dfe10984170dc"
     },
     {
+      "path": "packages/language-packs/src/tutorial/fr.ts",
+      "sha256": "2eddddbc24e114596b1f22ec6e242d279b99066e103d5157735ab160e2846f4e"
+    },
+    {
       "path": "packages/language-packs/src/tutorial/he.ts",
       "sha256": "8e0188bbf8030ef4c600af15c6abd0c15451182aa689b2e14d4805f211acea2c"
     },
@@ -1425,7 +1457,7 @@
     },
     {
       "path": "packages/language-packs/src/tutorial/index.ts",
-      "sha256": "191bc6464376754d235437e4a7649c9434dc591ba29cd637b785a75638fb5dd9"
+      "sha256": "342575c3b4f0c1d5f2cc3164adcafe674eab828b6cf3288d89d73ff4e125d03e"
     },
     {
       "path": "packages/language-packs/src/tutorial/la.ts",
@@ -1442,6 +1474,10 @@
     {
       "path": "packages/language-packs/src/tutorial/orientation.ts",
       "sha256": "a15e663fb494c83cf913e84fd82d5bff8e4683164df0457ce6e862a90e5acef9"
+    },
+    {
+      "path": "packages/language-packs/src/tutorial/ru.ts",
+      "sha256": "53efdddfee6f74ee6234b5aca07cb3484c186f88e6c696f3052fbf77934f7e21"
     },
     {
       "path": "packages/language-packs/src/tutorial/sq.ts",
@@ -2704,12 +2740,1884 @@
       "sha256": "f5b81ed8b2ac5d3c709e8c3fdfc8b9393ed77ec148c8ba146220463637f615ca"
     },
     {
+      "path": "public/lexicon/ru/standard/manifest.json",
+      "sha256": "b069253ca8485a2802a3cebc7369c481b30b3b2a6c7d7488bf947e79685bbf19"
+    },
+    {
+      "path": "public/lexicon/ru/standard/а.json.gz",
+      "sha256": "7c6987e29e3b3b0d73921547db0e23fc9e1382c21f68c211dcbe6a39515f5856"
+    },
+    {
+      "path": "public/lexicon/ru/standard/аа.json.gz",
+      "sha256": "2631b8c2e954a8b95b310f2c723e592dff5e322f6c4c581baf3fefedf37c13df"
+    },
+    {
+      "path": "public/lexicon/ru/standard/аб.json.gz",
+      "sha256": "af6ec8cad9d7567a18c101a1fe7d263ba290ff37641c44557758edd679632945"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ав.json.gz",
+      "sha256": "42e4077b2414be2b29c88ccb9010aef130972d38d000863f0e9c6e3d058915b9"
+    },
+    {
+      "path": "public/lexicon/ru/standard/аг.json.gz",
+      "sha256": "03ff631bc197f73e17dcf5da30ef2be817d6bd019fe14b46512e2503ea9de61d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ад.json.gz",
+      "sha256": "5544283378102aad892072cec36160562134ef5b21f529d1fa2758467692793f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/аж.json.gz",
+      "sha256": "e21bbe0b524fa2b759ff97523898bcc160e667cb76f81e6572a46aad21d94e15"
+    },
+    {
+      "path": "public/lexicon/ru/standard/аз.json.gz",
+      "sha256": "d6185d3694dd6d5fdc2cbab9381da7949ddac922d58e40684b45ebdbd8cd2050"
+    },
+    {
+      "path": "public/lexicon/ru/standard/аи.json.gz",
+      "sha256": "febab7b825e9b8f9ab17a9eb9f762ce06b588dc3a348863fa9eefd682e5d2abd"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ай.json.gz",
+      "sha256": "35025517f635ff3a92b74ec794ead83284b2fdc625f1392616334501862cb394"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ак.json.gz",
+      "sha256": "3b8646337f58e602f68356795f0e3333c38aaa719581a2908654834149b3b9e3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ал.json.gz",
+      "sha256": "254731e1ca7f6eeefd9e052d240b7c61ea298e51ec997c27d6ebaec58c090506"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ам.json.gz",
+      "sha256": "435d54c093fce58b2bbfa4a2d62b08760bf854cd84b92df57a375be23650ab08"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ан.json.gz",
+      "sha256": "f2102f2a77fec495c673e003f1cd8d6432fc2b71140584f4254d396a0c2f960e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ао.json.gz",
+      "sha256": "df4582562df6136ce0fa8a92a1d60a64f4abe17154de0f03be81cb65c0f1212e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ап.json.gz",
+      "sha256": "6084875ae399697f44182275455c2b05bfa1fe356daa8821467d0fcd1f395e7b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ар.json.gz",
+      "sha256": "0295dea7d1f9fc25f4b3d04825f65730ff5d99eaf2aa837a3b0e9ff8382fcf76"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ас.json.gz",
+      "sha256": "f24e7cce1151908ebbfb8f894d55c9bea94b029cddad8b4ce32f361c4ae4c733"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ат.json.gz",
+      "sha256": "1c77f18ec3ae65cf30b213501999dba2c79a87dacd0295078d25492e764569c1"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ау.json.gz",
+      "sha256": "d291a7fbf88e060d4bd0f92cd89b2cd27ebf745a2b4e2f70916e9916226bb668"
+    },
+    {
+      "path": "public/lexicon/ru/standard/аф.json.gz",
+      "sha256": "6db57dd81cfeae5cd7ab72c7553067a309ecd10eeec8bc220fa7cdc4958f51cc"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ах.json.gz",
+      "sha256": "96be4d2d96d3e9bce68c2ffcf0e6ed3f86882816f87475688929bcb9b7ffb426"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ац.json.gz",
+      "sha256": "5a34eae626fc45ba256e93dded08caa9c097406e50001bec3d005273a680d68f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/аш.json.gz",
+      "sha256": "9a07e2b6520c8ba0d315f7ccbee10504c7cfdeb723d0d50820d3ae75008eefdf"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ащ.json.gz",
+      "sha256": "7bc6f131be36d9968d1dc81d1626b66d30b524f876d3e075a04fdbd591d00ed0"
+    },
+    {
+      "path": "public/lexicon/ru/standard/аэ.json.gz",
+      "sha256": "caa8e7721574a588eaa2faeb885639e66858417db883b1e14ac34a15c361a31a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/аю.json.gz",
+      "sha256": "80d8ed448b4185809b09c2d8aa9470149cf02c25466f7e4f5febeaed3faa8124"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ая.json.gz",
+      "sha256": "3974d3847468fec534a7088b7529d5a1d3d3afdcbd994c118322b6d7130603dc"
+    },
+    {
+      "path": "public/lexicon/ru/standard/б.json.gz",
+      "sha256": "7a9a97291ee3a9b64845b2f6c720fa7395e8513c88501eded4cb34b6adc3c44f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ба.json.gz",
+      "sha256": "173fec582f5c118574954e074c0bcf708e289e8ac50bd97e18d836ffd237a279"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бг.json.gz",
+      "sha256": "8d1f0d64f2eb910bef79dbdf6ea376565ef22dbf32b08956d6b37000b52c2466"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бд.json.gz",
+      "sha256": "70f8b58978edf492cc3c77c97d3eaf7a33719087faf23664a9a9f3dc93b302ee"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бе.json.gz",
+      "sha256": "8b1b1b2203100fc083b00351446ac0f97ee2c0ec39e4aa7cb7d27fb544870f7c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бж.json.gz",
+      "sha256": "34115068fa5ab8a5721dca34c7d706559c3a54da7a10b243d74884a4c9410a0e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бз.json.gz",
+      "sha256": "69c9d79e39cd4b2a9203f0bbb77ec252ea02267faf9f0d2e5e345c04220cecb6"
+    },
+    {
+      "path": "public/lexicon/ru/standard/би.json.gz",
+      "sha256": "f4919a2e6271af86e40ba69283a4cbd898c4fb8e21420238a99a42e937986b90"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бл.json.gz",
+      "sha256": "43f768448a965b9f6cae88af4605ceab5a5851db076bb82590402b91b71eaf20"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бн.json.gz",
+      "sha256": "d58bfd145d672b0ffa4b4c499686311d6611beb7bcdaebde319f54531f6ba6b5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бо.json.gz",
+      "sha256": "42c0f6c7bab5549f3c70071145dc39c41ce829614e7dbf555e76f63369787625"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бп.json.gz",
+      "sha256": "ee7def22c610bced5c9aaab03230ebcf1f20fdaa9e073f699ac38ea3fd7fbddf"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бр.json.gz",
+      "sha256": "5713678890879914ba86a5a91da7f93cb3fe6c024f1c4335c2f3024357b82ad6"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бс.json.gz",
+      "sha256": "e34d41179a89808af332198cb1390a7b909255f66fa607e4d5193cde748407b7"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бт.json.gz",
+      "sha256": "beca0bc139a8461389da5c2e9380aa4fd7783526129487c5f0431ea3a0d7aab0"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бу.json.gz",
+      "sha256": "55ed40e6a7079b94f6828d6bdd82305c8d6e20c4fd1a69b6c7b36cc5c72a25f7"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бц.json.gz",
+      "sha256": "5b211748b691b83b6681ce88897eedf5ab9c110db4d30b4ca9abc7ebc4f04e48"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бы.json.gz",
+      "sha256": "89331571f6f333ac840310c1aaa2f97ccdd4830d605a6f799196cbd003743bc5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бь.json.gz",
+      "sha256": "3f4fd5d8e2656e3eb0c6b3072b9486d7ed377f9e013d60ac10e36d4696f03325"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бэ.json.gz",
+      "sha256": "b39dea1c7c9834a9dfb9985b357ffd03dc8bae318d1f12783b8299de8fe0f519"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бю.json.gz",
+      "sha256": "bde5e875b2948d28306931f1b507d137c1d2f6461161b99c826dfdff536a06b9"
+    },
+    {
+      "path": "public/lexicon/ru/standard/бя.json.gz",
+      "sha256": "5b34f9b9d671e89fcb33736acd80d9f5a08e6ef2466e8367b603d4b83c4c1748"
+    },
+    {
+      "path": "public/lexicon/ru/standard/в.json.gz",
+      "sha256": "94211d0d52c3bbdf18b979c997b22028490eb3bf7f3294fe3589ee3cdf76fe44"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ва.json.gz",
+      "sha256": "9d2bab10858c1e212a6b44467c509bc254debd6d83e8bbc0423cd3d04ad52d29"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вб.json.gz",
+      "sha256": "0d0f51a3069c245a6bdf4989e4582ac4390530a9b24c3c6c40bda1da2e0bae77"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вв.json.gz",
+      "sha256": "3ddf415b0a3065fb0d3d03671fca2d6cc50ceee90bbb1a3746431307f8523aee"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вг.json.gz",
+      "sha256": "5c4011b586ba105087ee0923cb22d8486e3a1ec262b7dd131cfc45e8ab7786cf"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вд.json.gz",
+      "sha256": "a4638916f1f6193ccc8f40505bdd5ab8fb3b9381d6cbbb035a0f60576109aea8"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ве.json.gz",
+      "sha256": "96ba11c79f8173cadd93c18585dc2c09ae244e2e1967027c62c6db22bf5b0b67"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вж.json.gz",
+      "sha256": "7c7b0cae1b2f2e0158938f58bb953eca6dfd4fb157a3e35d9ef43324a5394efa"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вз.json.gz",
+      "sha256": "533a40051202c1e74f235a1f9a356be87bedbc66b1c884c93929b4dc3cde7c1a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ви.json.gz",
+      "sha256": "10a4f97b1663526283091d4da70cc620732da9097052e035c7ad9b4474bdc398"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вк.json.gz",
+      "sha256": "734764998564293a3fdb2ce7f9b2b9feb31e2ce32ac27c127b43fe25d117a22b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вл.json.gz",
+      "sha256": "b47ef6ff9702b3d6e18d4cdef6ac3862fe1f9811f02511bf73fd3c4ca84fcd5d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вм.json.gz",
+      "sha256": "c357d4de20d863227cd8cacb6b35065248c0e26cc9db3458af18f756a2c7b40f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вн.json.gz",
+      "sha256": "dc8b52c89615de5349e684a4fb8bea98c459df3d37363bea9d431e53687307da"
+    },
+    {
+      "path": "public/lexicon/ru/standard/во.json.gz",
+      "sha256": "47865dc61f09fb19ef22b9c5528fa5e0284cd26038ccde9abfb3d5932c3d1bcf"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вп.json.gz",
+      "sha256": "eb5f86f6de745281943073af7ac7057aa6d19bca5cbeb1a4c4b9f860cdcb750d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вр.json.gz",
+      "sha256": "7926fe850fd447ce8aea35ea8773ea8bbd3d7b254714fee47587a70ad938814c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вс.json.gz",
+      "sha256": "c9c21397a7b53aeb1e06118ec30cf66e5dd9edfb28cfe0e72f51cd5c6b928275"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вт.json.gz",
+      "sha256": "bd9b0397c7eee0430fb7bd57764d156f9694065779190e82b95aa2f4a55c7ef5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ву.json.gz",
+      "sha256": "b7d88b5a57b5311c7ec7d9f393fa656844f40304cd5e4d04a2f70a14e8ad5666"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вх.json.gz",
+      "sha256": "c29beb349b0c6d1b320fd4d742bf31b52366c571b595aa8212c6f28f00a3133c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вц.json.gz",
+      "sha256": "eda37d6fbae900f28cb9a1ce45faa1e0ae7913f51e3a40bb70121f402aaf0d80"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вч.json.gz",
+      "sha256": "413bead89ffe6c09c5f1cf0691d0dea9cffec7177bbb7435d66c95d6b119379e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вш.json.gz",
+      "sha256": "b2070f72fbec4f9f882e76f6bc20e53fb5482e5938d7f29b1827a6e2a2bfee7f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/въ.json.gz",
+      "sha256": "28d6117b35582ff58f54409675d18ddde918959cf1b61462a08b8573a76f744f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вы.json.gz",
+      "sha256": "16da6ed9202a974fcc5d69b7a9a8f64f5ccfb2989ab5a3fa7b0dfe6312995a9a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вь.json.gz",
+      "sha256": "00ff657de4123818623f9f21c02ab25b3400648b5427db18d1ed9a2d22af5e54"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вэ.json.gz",
+      "sha256": "aae66eb9d9e3bcf795091afa4a77fee23bf8bdc85b7ae6d69512c5988ccfee9a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/вя.json.gz",
+      "sha256": "5dab7efd03e597f3b82d7846a7bce2e1f84da38761ac3bbc1dac72e2c543d850"
+    },
+    {
+      "path": "public/lexicon/ru/standard/г.json.gz",
+      "sha256": "599d99db280304e77a165d018b1a8338299014593639f7c42b1a5bc7a7d3d4a2"
+    },
+    {
+      "path": "public/lexicon/ru/standard/д.json.gz",
+      "sha256": "119f1e44d56594f160741f5f34ba3cc650fd55e48d79f4220a4bb704b55ea3ca"
+    },
+    {
+      "path": "public/lexicon/ru/standard/да.json.gz",
+      "sha256": "552c1af4622f6b1d33466c432ef4fb905a14b749a402f1eb047322db29bf956a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дб.json.gz",
+      "sha256": "87620df02018481e19e273eef295da3b894b994518d848d18a9b32fac0fd9b1c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дв.json.gz",
+      "sha256": "86cf24b0c3cc35bb2079fb9316b2578a59b8eb65a6bce079997294ea06c80ba2"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дг.json.gz",
+      "sha256": "e0df30572d8476c99c1e52de85e807ac25cd67a981ae43652e07ca25fb34f76e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/де.json.gz",
+      "sha256": "5fed41479e2e2e5bc10fc36779588fc7c610aee812dd9bf51a812fd05ed7a431"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дж.json.gz",
+      "sha256": "4965c49eaee1d492c7fbfe744b3da7992ec85ae8f3390c9f219b49af051a692b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дз.json.gz",
+      "sha256": "38e3dd801f491cabfdda90afc0192226de6fcb003365a37c3f1de7d61ffd9bf6"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ди.json.gz",
+      "sha256": "c35eca3ce4f6aab4e0a76c7cd361bafe8b1f818ea23871e7cee07243376c96aa"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дл.json.gz",
+      "sha256": "88ef77334c69fcfc35164f3f6ed52a154129ba5d7f77ab8ce3ac8236775a822f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дм.json.gz",
+      "sha256": "ebd26bc5a58d767895270d054587b347819b053394bf47a4ba99c7461cc690ec"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дн.json.gz",
+      "sha256": "d1294b650308113cded66d82b3c163633caa50f8bfd488e12ba6bb29363206c7"
+    },
+    {
+      "path": "public/lexicon/ru/standard/до.json.gz",
+      "sha256": "8f635c03efcc3d0343be78151a1a89cfeeea090a6b79a786b0796da14047fc3b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/др.json.gz",
+      "sha256": "16985cdadb4980fc5ee019c252b07237625415e3ff07ee38a8f3fa5a9302f8ed"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дт.json.gz",
+      "sha256": "3c4186943177b746cac36d94b7abf17ef0a5a2152aaf35ddcc7c337420787dfe"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ду.json.gz",
+      "sha256": "6e9106c605cb07e09dfaae848920a47422ee1b4ba0aafa30b8b069fbb500b578"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дх.json.gz",
+      "sha256": "2b2cfb3eb357310a9bd67d84dd1f21d9b5d208c5aef8aa1f237ee5d227a824a3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дщ.json.gz",
+      "sha256": "97e9faab857cbafb191a7e26d35a6a2698a0a3ea9b8c49edc6797a8804535ad3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ды.json.gz",
+      "sha256": "00b2ada2a28c75781d912ac3b99b562262d8f3a151a2c616e159da63759d5260"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дь.json.gz",
+      "sha256": "199cc0932b11fc7275342f9536f83ae016212871b5e2de8033049f5efff1737b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дэ.json.gz",
+      "sha256": "91277347eb787331c53f443a0463405e91dac3a3989f3b9fec6fe01b9259f419"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дю.json.gz",
+      "sha256": "b4c97a44b5559fe843e3ce6f90136e0fd1151d87f09c9d8633bb1882d55aca1f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/дя.json.gz",
+      "sha256": "c4a6b09d7d3cf1424eac23698602c1e67a4aa0320277a7cefadba1c893c7437c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/е.json.gz",
+      "sha256": "2a46e2c64440761e19325a838086c8ad4a905513ef081f8e36fbfdce444967dc"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ж.json.gz",
+      "sha256": "cba1020ced1d1939a3ba687bed99ca322e766d4f1b26778ee6bb5d3edd7d1c06"
+    },
+    {
+      "path": "public/lexicon/ru/standard/з.json.gz",
+      "sha256": "a36756ca89bfe95a7b0559f0b1da5de582b3eb0a4064f25b40777ea3756d51a7"
+    },
+    {
+      "path": "public/lexicon/ru/standard/за.json.gz",
+      "sha256": "83c05366067039e628dcd899a752d016e957c395dcd86d95f8813513e3b0164f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/заа.json.gz",
+      "sha256": "0b0db179468cd65a995a0e50168ea98226e5c7753be2a04260c037b53acfff5b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/заб.json.gz",
+      "sha256": "f780319c58bb58f89a0aecd0383bb9b6d2ab82ebedaced352f2cf07db112bd09"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зав.json.gz",
+      "sha256": "ceb8ecddd73da228c3a4a419c4575daeb3ee87a043fe249beef90bc012bdb12a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/заг.json.gz",
+      "sha256": "e38a74948b3652bfc094150990680ae75b3b10458d0289a134f6fa065cbfda16"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зад.json.gz",
+      "sha256": "4019feee29a8d1bf8c6dd6ab5a58421e76afe423d76c1b3f7e3750763fd6f1c0"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зае.json.gz",
+      "sha256": "ac4a47bb53894e9452ce063c6f13d22979a6f623541d6e7c9c6fd925aece187a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/заж.json.gz",
+      "sha256": "4a0929899686bd485dda304ecd2a5c27e390d8ecb25546fcdc6c15f081fcc7cf"
+    },
+    {
+      "path": "public/lexicon/ru/standard/заз.json.gz",
+      "sha256": "5bbbcfcc225f5fd4f83de98d1bff6f2b1a599aa1f8c84fda6deff3e309ea6841"
+    },
+    {
+      "path": "public/lexicon/ru/standard/заи.json.gz",
+      "sha256": "a146962e4e5d42462aba5d786a3ee9b56cbe6078afcf102828872789b64a1e05"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зай.json.gz",
+      "sha256": "eed3bebb645bda728553cc73f2c6ea72a1c618583a8d8e40bc51369b5d54b4bf"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зак.json.gz",
+      "sha256": "a9e0c19dbf984f10551f7631c77ee46a57ce9eaef3696e46873d3ee7163d1797"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зал.json.gz",
+      "sha256": "bbf927759e61c3a911563260b600de540f71874f8071c2e43fe1eab3253e4f73"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зам.json.gz",
+      "sha256": "01ea8dc7db864ea110a0ad39cc5bd0ede14f6ced66bcaf04fc6e7190288b33c5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зан.json.gz",
+      "sha256": "72367affb900097e25efa4fbab9b69f7363dcf243917d3f9fe67bd71135aa844"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зао.json.gz",
+      "sha256": "ff605eb9bbd07c12d342f5e9af98ada4568a16aedf7e7658f0c3a9dadc273704"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зап.json.gz",
+      "sha256": "a5a64381aa1c34ffaf97790c0df5d180f2c0023df65bf958774b6da1211f92d7"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зар.json.gz",
+      "sha256": "85b514dff6dac22e76f999b387f2235d90729bc792608faacadec082d4674e95"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зас.json.gz",
+      "sha256": "27cce4cdc91f021eb6c34b775621c10686a52fd64cfbb1756f6f1818a63a7680"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зат.json.gz",
+      "sha256": "56aa655f069946a207112e04cfeb4f64ad8305c213fe48fb4dfef89cd3a63a56"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зау.json.gz",
+      "sha256": "9706f987d1f91d549607cfc5843d993c707bf9bdec0dc3fceeeeffe31b7dbab7"
+    },
+    {
+      "path": "public/lexicon/ru/standard/заф.json.gz",
+      "sha256": "739e8c9b1f360025bb17c2e97aa171f10addc41f5635c0430309b50c6c9256a5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зах.json.gz",
+      "sha256": "8ccf6f784b9e26bc874fb6e55ddc79b7335e5e6bd6d47369370b08b4cbc55a49"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зац.json.gz",
+      "sha256": "ec852050546946f02794c5f86f11df9c47801eaa0aac7b50d232acb1a5361cad"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зач.json.gz",
+      "sha256": "46770d43ab5f08d6e627f484dde36be280a5aae21be57c5ff05a453201e9724c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/заш.json.gz",
+      "sha256": "e1694b5dfe19b2fa1113c2fd8e4312cebd819f5f08b21d77d0af1168a97ce4f0"
+    },
+    {
+      "path": "public/lexicon/ru/standard/защ.json.gz",
+      "sha256": "92964b8f96e4d55c65b004c70315c8b9b0bc971390cfb620a9c29c381bb144d3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/заю.json.gz",
+      "sha256": "66bc41a2f20a44a95af21d3190720f47657fd6e214ec7d8a17a26afe958555c3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зая.json.gz",
+      "sha256": "c6010256ea9bdc1b0ef68c291f855dc40f949632c351f75f2acb9f24f89ff426"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зб.json.gz",
+      "sha256": "177f3e871f20ffbe817235066d619919e7e54b538811b10bc2d218be027a1226"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зв.json.gz",
+      "sha256": "66f9b15e7385e9878aded9d14c49d8157221c2e85ccf8e6e418640a2d45aade3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зд.json.gz",
+      "sha256": "61b1dca9440fba4b9a2f274d41b18eb4f92ef0acec558c490ab88e82a2f9934f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зе.json.gz",
+      "sha256": "36a7e3a50282215a659335231892e630a2044e8694259edd21b96f5f7de98428"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зи.json.gz",
+      "sha256": "ce31ec57c94ccdb52005f7bf65dc6393034202639919f13998922f31ec405b7e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зл.json.gz",
+      "sha256": "0cab35f7cc08dd5ced20f2eea676eca831dbf9e3ed34383c92edbf32409c23bf"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зм.json.gz",
+      "sha256": "5e4952c470a7fbe91b5f303e9d06fcbd6a32cd49641352bd72e0b45cdd3b4bc5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зн.json.gz",
+      "sha256": "7289b8bad2219e7975bc3f2eaba55b9cbd0529abfebc47c95fcaad29370ffb58"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зо.json.gz",
+      "sha256": "f2d943faaca21b72562940089641ca5884681c9afdd6306ca06013a58baebc80"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зп.json.gz",
+      "sha256": "f397dc8a1871c8d9d823415d49953b8de12c1752422b12090bebf25fe1ced2a4"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зр.json.gz",
+      "sha256": "a2df6baddda45841d98080c038e862f45e371f43f4477b299a5afc6cfaf3be92"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зс.json.gz",
+      "sha256": "614125cc5f19a00bfe88d3dc2c5ad8a7d6281a9bfab0db1133d36e46773447e5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зу.json.gz",
+      "sha256": "90696ccd137da0c57dff19a5a636494f18da195d2aa84bcaed2db0cf54017b9c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зы.json.gz",
+      "sha256": "97d2099c2434aa5396ea85e0a2d2df9f0f7d6038bab25d9f751722b7dead23ba"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зэ.json.gz",
+      "sha256": "d0e556f8c0b0b28ecf4658b5709b6c9365cbe75011a25abf524e38dacdbe2efe"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зю.json.gz",
+      "sha256": "f7453611ae55a023e5253982904d6f098629de8d42569f267da0a054b227254c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/зя.json.gz",
+      "sha256": "2cd4f9fc8e659edf0c2ab495549ad42451ecfac46ea2b7bc50d3849f0bec5236"
+    },
+    {
+      "path": "public/lexicon/ru/standard/и.json.gz",
+      "sha256": "77ec56f4f795919a438a8d28f7ca122d5f8d93655cf6ed4c9f856c5d4e2b773b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/й.json.gz",
+      "sha256": "dd2260abaec8aa491b4fd2df55d2bed60d72cd1a88768584d8897aa553aca405"
+    },
+    {
+      "path": "public/lexicon/ru/standard/к.json.gz",
+      "sha256": "e8379fbc8c61ad1593965422aadce794d367c7a53592ec03aa22a4065fd93726"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ка.json.gz",
+      "sha256": "442521b8cda714f31a61b049209e46c756c2a0328afea540f3314a79ee388989"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кв.json.gz",
+      "sha256": "464e2dc3365ae9dd77ddf2f436ccf3874069189255828c6be75824a2195f9aba"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кг.json.gz",
+      "sha256": "e7f43c02b6f1f38e91748dfc2d2ac9ddd8a0da4ebc899fc5b47c11fe2812fa7b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кд.json.gz",
+      "sha256": "d603dc64089a4cee9a39f6276c275edef0f410a8bf9320be020abb6a6a6ca48e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ке.json.gz",
+      "sha256": "1d90feb6266f105ce1710e03d94ea20354dd9f3efa71f430062443fc1d61cb35"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кз.json.gz",
+      "sha256": "37074c1d51b754f54a73de779c8aa0033c9774af159d23a6418f20b82e1648ab"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ки.json.gz",
+      "sha256": "e8f506d83f5554e1060f51427ea24eb02314021c5579ce0bd4a639140650e0be"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кл.json.gz",
+      "sha256": "ad39327f37b548ebe7e86bbb06df0ea7dd032650ae119c8fac40f10e169b956b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/км.json.gz",
+      "sha256": "6d91a24744e6e40c8271a087ef17c94efdffd76a360346045b03a446a49bbe5f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кн.json.gz",
+      "sha256": "af071b0a65bcaf7881da4ef48872cdf5603fab2bbb8e7064cc4e2ec1c8464f6b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ко.json.gz",
+      "sha256": "c4443be790b951f23f5fa91217631e53cee44cd545171864c1e4876c0c29541f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кп.json.gz",
+      "sha256": "0d49095d9dea30cbd3234a55659267360dbe4c0957e561be75296b03cf57508a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кр.json.gz",
+      "sha256": "46621675af7bb510d99884506c6e332643a6343e8fbdcccf05b2d04f499b5e4b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кс.json.gz",
+      "sha256": "b744c740aa96088861593172c126cb2efc9c122d001a0aaac5357003d54a3764"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кт.json.gz",
+      "sha256": "c5a9dc5e936ed4cfbadb40145be57c419f670ddb767dc877e3cb20194631ee4f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ку.json.gz",
+      "sha256": "44c4d86e2a81a47ee818c0c1e61f56bd92fd37883d208b2d29eb24481d203069"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кф.json.gz",
+      "sha256": "09c79a6cb322b3fc77e84b0eb5fa115fbf3dce9f00062ab612e673e464d9adb7"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кх.json.gz",
+      "sha256": "dbf051249265cafa32dd9e310d627ae490e37cea04c3ea94a129ff08a5ce538b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кш.json.gz",
+      "sha256": "4f4665da30056950352f5f5ceae7fc4b664eaa5235a09edbc20da2b3792668b9"
+    },
+    {
+      "path": "public/lexicon/ru/standard/къ.json.gz",
+      "sha256": "5d473797eb970a6d3a6911a1078fa1d65ff404a554cc6ca2381bd681cfecb4ee"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кы.json.gz",
+      "sha256": "6d80aaff0facbc99373f474beb8a1edbca9ffb5670665fa8f4050a8de3dc92b5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кь.json.gz",
+      "sha256": "c26aee917ded516b977d28b4d0c025e6e806305b62b9b5ffac29125d93b078b5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кэ.json.gz",
+      "sha256": "a80b018a89f736035d86996f9fe39a7318722a8cfe4b3510531c708998918ffa"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кю.json.gz",
+      "sha256": "9e95c0ee70d27222e88ca0f40964ece77a2e58815fec63572f8b0a0caca0b2c9"
+    },
+    {
+      "path": "public/lexicon/ru/standard/кя.json.gz",
+      "sha256": "a4c30506e2129d26574f1bfd218fb619e7cb953b0a2a6a795bcca2dc26736353"
+    },
+    {
+      "path": "public/lexicon/ru/standard/л.json.gz",
+      "sha256": "e43bf18efaed61839a2dd75001b3c7303a73f6f5fe4dbfb35f09e8d8c00feef1"
+    },
+    {
+      "path": "public/lexicon/ru/standard/м.json.gz",
+      "sha256": "3471c957f7d0b038544bcfdfb4e84fcde8ef22882b1552ad9214b324048e9172"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ма.json.gz",
+      "sha256": "537e951d63a6e89670cb63b2a19dfd8ed4c119cf551758edfd57d7d79491d457"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мб.json.gz",
+      "sha256": "e00a2633e6dbabd71037e19ef0a86e16efc8ebcc024c1afc732c45ad6f6d9353"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мв.json.gz",
+      "sha256": "6725c9d6ebca796377e9133dc3a449546c04bd97b40fea2ccc6e25b63a16b703"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мг.json.gz",
+      "sha256": "02c81215738b3cd89eeab35e9494267dc197a5a2a2305f63b0bd84ff628296f2"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мд.json.gz",
+      "sha256": "b21289799b8013b93fa91b160e14edef359fa74a27d1c8e1d6ddfbbd99afb08a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ме.json.gz",
+      "sha256": "c078343be9337c252e0ff4036c525798d58f731a92ceeb11114980ae8a0078e8"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мз.json.gz",
+      "sha256": "e8e95c134efc453a8e97f5448b9f488d583fce0e4c95cb75e2f642e05818199d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ми.json.gz",
+      "sha256": "0f4dbe71b9db6fc2a0c13e82592950f970b34300ed8ea2074a5e15b043f7a3a0"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мк.json.gz",
+      "sha256": "9a5912e3253ff4c9020828390f1581c97013928a9d0a1ff17d93b0937e1ee756"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мл.json.gz",
+      "sha256": "b791a3b6441042ffc7722b360136073ac310cb1aef5e1ebbcaff52ea51ee5821"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мм.json.gz",
+      "sha256": "c79e949ad61ff7f0dd0ed7126e7776554d5bdf9480ba28ec54d97427613e4ee0"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мн.json.gz",
+      "sha256": "201969c9e4db3f79cc1746b171ccd668683a35fb25e594abaa82798f5e96536a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мо.json.gz",
+      "sha256": "0ae89db036b6faa23ccd0d75232d0f3cd532f48197077f219792a863def5924b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мр.json.gz",
+      "sha256": "3a6b25a0a552b470d9d3ef2dfc04d6cb2072e3abf214b2e65c4d1204d763bbbc"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мс.json.gz",
+      "sha256": "b5fbb1a48b7143b242b632113a0f75a1fe603c42f1692e9decd3dd990ce580b1"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мт.json.gz",
+      "sha256": "d0968373993d65128c4f7632a0e94a25c6ea24e003e49305fe3bd27583e4ec2d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/му.json.gz",
+      "sha256": "31b87eccd071f000be3e2f3261441f0b6f0a8ff2719b813988e6f06b5a25b919"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мф.json.gz",
+      "sha256": "363d121549371325aac5a733cb3e96e1d9d7b74cbf8841d25a2cef5e4f35ba83"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мх.json.gz",
+      "sha256": "6236feaf3b62d6a46613825ae081ee48865b5bc480d834a528d22d94ffc9d981"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мч.json.gz",
+      "sha256": "c9054a7f2939703882082a3e64d0491611c3f12c2e38b9a6af0241006c283c00"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мш.json.gz",
+      "sha256": "d7cb18805581356f92ecb615c4493a19b17e0819dc3e9204799e4e60ec069d33"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мщ.json.gz",
+      "sha256": "bc85ef60cfb61221ff57f2a47e5d9118a64f443eac734ce0753ae9aca2583ba5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мы.json.gz",
+      "sha256": "0b83b5be55f17f36b9d287517357c378b236811cd237a582f996bf6fc0c78833"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мь.json.gz",
+      "sha256": "7f74238602d7579c90fd8b96833305d5cf98d180f7d8f066ec884d1a5f6b3718"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мэ.json.gz",
+      "sha256": "e9b9fb7a0a8cd104ebe7a7dea02326ebde1a5f06e3b3136f0f3ab75c1e6e6f10"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мю.json.gz",
+      "sha256": "866cf318d8b12db73c5ae751f96592416a6217d9a392ca6965de722a01412a08"
+    },
+    {
+      "path": "public/lexicon/ru/standard/мя.json.gz",
+      "sha256": "ccdda3ea3ccd4f9de888cee660b0cc9b32bd67bb803c26bf097c408887bced93"
+    },
+    {
+      "path": "public/lexicon/ru/standard/на.json.gz",
+      "sha256": "7a2146196cb3bf34e641d4e3a853196bfd46448974b32cd61107511cc5664f52"
+    },
+    {
+      "path": "public/lexicon/ru/standard/наб.json.gz",
+      "sha256": "eff61b9c58d95d82973f1203d970a62c2eef0761a5a61abf2764b9f23d937c78"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нав.json.gz",
+      "sha256": "8685bb8cf80340268bb9635a6701afdd1546d4b39d647cb0b1f77f83b2f9384e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/наг.json.gz",
+      "sha256": "202b1f25a92b40195fb396c22c0921ca3cd376e2a7c2dc8da01a78d2ba37e7ef"
+    },
+    {
+      "path": "public/lexicon/ru/standard/над.json.gz",
+      "sha256": "b5a4ff772f8b252af54d25a6c39f9de1c4ccc8325d5ba3a4ccabb01154da0f15"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нае.json.gz",
+      "sha256": "eb410402843e40121fd6663621e80636837b1496a71d4bf96e298a7b8a791d93"
+    },
+    {
+      "path": "public/lexicon/ru/standard/наж.json.gz",
+      "sha256": "f6c21b4ba5340780c887543ea73fdc1bdf51d6d41c0c5488cbeba24483a74172"
+    },
+    {
+      "path": "public/lexicon/ru/standard/наз.json.gz",
+      "sha256": "7824a22d04c70433756cf2935d022c6f316f3384053e4951610cf257a16b53be"
+    },
+    {
+      "path": "public/lexicon/ru/standard/наи.json.gz",
+      "sha256": "f0f6cf79cbfc1e0224c949f6f73db61bdba157ec5b56b6e529d4c5b6cf51e14e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/най.json.gz",
+      "sha256": "fe960c6d5f9c4ff645eab0ae2d6d6b36b85ae97981e8f9daef7a05e3fb41de7a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нак.json.gz",
+      "sha256": "67b2cc73a6bc53525ccab1abd5785c31fe3c32dd683d26f7a2cb889033ac3799"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нал.json.gz",
+      "sha256": "de292f07fb3c67e24e6cda9c87bfc68217e7e7d95e4587e6ce5687b41a3a8a2d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нам.json.gz",
+      "sha256": "e277bd5be37949dc499f56ade3e4547b5fee51eeb7c5f37ad77897fcd3c32453"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нан.json.gz",
+      "sha256": "7d892563e646fcb8d74deeef3afcfb789b2db9418f3ffae0b34271c4f36022cc"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нао.json.gz",
+      "sha256": "e6f05ef92cb70a83f45940e1c10a6d0259f20106b76c90ac8d0f5690d20d66ff"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нап.json.gz",
+      "sha256": "251b095fa7f3835c6523e66156ef51a7bce0fe36c62520aa0962adbb2b170a68"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нар.json.gz",
+      "sha256": "812a8ed9b2d6d2ba671b2f9b46229faadd8a5a57a7ca2c72ab605f93b9148a27"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нас.json.gz",
+      "sha256": "fc37371d94ab58b5baedff2026435a6c8c4bcd0d29c5f91e722f92e3aefeeb6b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нат.json.gz",
+      "sha256": "fa53a963634e134281d1fafdfd10fdee03319fd9704805c820e6f0f18ece4f28"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нау.json.gz",
+      "sha256": "92817fa9417fa909b648cdf6ea2e49bb33ff3951347db8dbb0283880515ae03f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/наф.json.gz",
+      "sha256": "00975b2e2b80cb63cfaade11b51ec3cb93bca5891dcca8e9918c231c9b3c165a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нах.json.gz",
+      "sha256": "4a5e7a14602bb3adf83f75d9c4dac5c782469fc78aa0fe053dfc4d21f289c710"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нац.json.gz",
+      "sha256": "92550a901e872c1b562d9f05f1243c8bf919836c43f06e49a09bf9c38788a48c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нач.json.gz",
+      "sha256": "d2d1559aa723c04f47430a526e7dec434559fee9323550b94591eaf62d92e598"
+    },
+    {
+      "path": "public/lexicon/ru/standard/наш.json.gz",
+      "sha256": "7077f211ad16570b9666a3169c4d385bdb16d277c7d03905817f87390e02b403"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нащ.json.gz",
+      "sha256": "6252b996d292ef75b9db402a0f015d6b20aa19f59e583dddb478999fd14dcb62"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ная.json.gz",
+      "sha256": "ca66b2ecf082eb477f648755538d41e760bfc3839de1d2f3e30bd8530810a1cb"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нг.json.gz",
+      "sha256": "e74eb6317f4751934c17d412c21a3f9f375b7607bc4d1b654ee12ad9b62ac25b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нд.json.gz",
+      "sha256": "8b504133eaed61b12e449603920dea310c683558f8a305e7d3ec81329a7236c9"
+    },
+    {
+      "path": "public/lexicon/ru/standard/не.json.gz",
+      "sha256": "49699c754ceeda109610f44354db6c76feca531ea97578fb03a757fac039bc04"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ни.json.gz",
+      "sha256": "863928d665bf88e920010bedb8f1655332c0d5d19c262879844cf013fe007323"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нк.json.gz",
+      "sha256": "78d159e3d3a761f5a54826224fac7f7af854aae5c8a5d856179dd7c69acf4789"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нл.json.gz",
+      "sha256": "e849721318ed2b524ff93fe5a0f70b2eff4a70f4737c32b55d67ab8b16aca564"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нн.json.gz",
+      "sha256": "9839575b18a7582d9116a7bbba08241ba63fd1ded972e9f8ba5b0f567fe4810e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/но.json.gz",
+      "sha256": "6d1c5e33bc12ddbcec19ad357878ba5c8d2820a3714d145fdefae0731914e826"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нп.json.gz",
+      "sha256": "b4c618db4843dc3bd8c5cf163c920edf318f2042d0658500f2707e67ba0ff06a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нр.json.gz",
+      "sha256": "b4d0cba31f1ed8411843c20ce3e1ffb026d094ffed1e9862861935b047f58928"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нт.json.gz",
+      "sha256": "30497757306cea07c0d8fc6640da886cbc48d560d50c0a6fa3dc14e63e175c70"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ну.json.gz",
+      "sha256": "f454ee62762656eb7e592fbf225e3d0b4f238b93aa5625eba63f64efded960b3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ны.json.gz",
+      "sha256": "adc53351c36dd9a999a636c281fd4dfa87d987802ea0e8076866285ff7e99cbd"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нь.json.gz",
+      "sha256": "40d9a6505b48b0f9ebf6962ec378c1797c94969ddbbe0abe0e2e265554f264d9"
+    },
+    {
+      "path": "public/lexicon/ru/standard/нэ.json.gz",
+      "sha256": "50e02c16f87c81d49f4c1cfc0ef794d92bfde9d892402284d541bb0eff64127d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ню.json.gz",
+      "sha256": "20d51c75e98c4c694729fb4eaaa58301d6c281162e031e56db476236b2411fd6"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ня.json.gz",
+      "sha256": "a9c63a5dddbadca146ed031882a7616fcd8b631876af8f66e6cf78d7822f80d7"
+    },
+    {
+      "path": "public/lexicon/ru/standard/о.json.gz",
+      "sha256": "ed7032529e149dcafaf873d829df9939d4d77f6c8d3d1a683487cd50c05d8982"
+    },
+    {
+      "path": "public/lexicon/ru/standard/оа.json.gz",
+      "sha256": "1d4d3a18da128f7a59e7b52eb1ef75e076a0be944a115dbbf0d2052c9d5bcded"
+    },
+    {
+      "path": "public/lexicon/ru/standard/об.json.gz",
+      "sha256": "23917cd4c34ef629a7a617a5b2dc385f93a0916734f444f4f76798feb290e25e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ов.json.gz",
+      "sha256": "e51333121d1cd8769f69fe73447c977d3dc1235c3bfe6002d85bbfb5a23341e4"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ог.json.gz",
+      "sha256": "51ff11209a3b0d4006873d5acc3c8e0326a27fe57eb1f07c963b2a3ee65860eb"
+    },
+    {
+      "path": "public/lexicon/ru/standard/од.json.gz",
+      "sha256": "a733e3140ad99f05d1c86b5fb77428ac4d38c888c932bfe089676d27d2dce817"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ое.json.gz",
+      "sha256": "f7285220a3d95b64e982e6fc1dc7c57e953f8589e454a760c6ea4fd9f55d640d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ож.json.gz",
+      "sha256": "da0c54158cb120a433ef12f0ab5e40a2a1357ed49d2d5b9eb75ca71faf1b45c5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/оз.json.gz",
+      "sha256": "94a75d03648aa403a0138b1206c84fd9cd5ad2cc31859f354693c9f98d2b711f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ои.json.gz",
+      "sha256": "8a67aeb445927a1e7abbf535b2fae9555e24abab59dc9eaa3ef3ad33aa7d07ae"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ой.json.gz",
+      "sha256": "8c40cbfad6e8a3a89c5d9ecb471360f299e9e01223851367e0f44aafe8a3cc48"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ок.json.gz",
+      "sha256": "f86f2f4eabc42d5018564007cea915fd6846f282381c43c39ad227942aadd628"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ол.json.gz",
+      "sha256": "07b72281388240faf56d1dd5d929c9fa06e617cb9c8b4e912b6e91eb0e32a07e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ом.json.gz",
+      "sha256": "a80e71e9aa5cd6104473838b681339aa552ac480c45afbd29032ce7d1ad90327"
+    },
+    {
+      "path": "public/lexicon/ru/standard/он.json.gz",
+      "sha256": "fa29a80cb139abda78969c074edf1a82e89d090d314329c707630d5e3e9947bc"
+    },
+    {
+      "path": "public/lexicon/ru/standard/оо.json.gz",
+      "sha256": "f4f07c7cc5ff3e87b21d27b5c3ee272100804e1f6a901ea0352276a0d2b50d49"
+    },
+    {
+      "path": "public/lexicon/ru/standard/оп.json.gz",
+      "sha256": "ad0eb79b107880674983fc1542a9b955ade6ca5b6d606b904a6e6eef8f2da591"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ор.json.gz",
+      "sha256": "75db4491b6a50340dd53fe9ba37300e507754e81d4a4347667e9bea5e78eb8a5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ос.json.gz",
+      "sha256": "1789d9af6b152b597645518a4d108cbd0985fd4b887a90a023ff44c255f1a37c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/от.json.gz",
+      "sha256": "583477ed6c3ff1de493f969625ced43d3f7ff75e166b8c92a7ee57fe3535e891"
+    },
+    {
+      "path": "public/lexicon/ru/standard/оу.json.gz",
+      "sha256": "c50f5bf24889f85f984c063ed2509c6ed6f37ea85d33066acb2d3d0ab42b479b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/оф.json.gz",
+      "sha256": "8e7e8d21a26603ef26d5faba7e565d0f9e3111ff010566abb6e8aeff8c7aeeef"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ох.json.gz",
+      "sha256": "99d03029bb211c1cc6095581a8656bb061957a37b88a87be6c10dbd9fab9da3b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/оц.json.gz",
+      "sha256": "8ee26804e5ba73e6a83e74acd6b5c2ab80937590661e216a6ad94c719adcb67b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/оч.json.gz",
+      "sha256": "4d97bd9cc3387edc623fc9a407b502cbf193c7692e6b03f057c3f29d7af77915"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ош.json.gz",
+      "sha256": "1c2643da6a9256e6d74ed253c194a151983057c0f6373466d1bd1c996f5e3060"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ощ.json.gz",
+      "sha256": "0519fca7d5a074b416ea4bcbfb37567350dff6f1d411eeca7c2f3d08461fc2d5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/оэ.json.gz",
+      "sha256": "857c1bb09d0a3964a77fb43805b243ec8b8b3d50effa48299cd8d3a76e20430b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ою.json.gz",
+      "sha256": "4ff8379e55fc88ba65ddd6c6b879aee1b32820ef7e0961665aff7be7ead03374"
+    },
+    {
+      "path": "public/lexicon/ru/standard/п.json.gz",
+      "sha256": "ceec1e2b10334bb3dc49bd8225853e63080b9457ade34f4179a2d76099ea51ee"
+    },
+    {
+      "path": "public/lexicon/ru/standard/па.json.gz",
+      "sha256": "cf28e7d37700bc0b99c38dd7f1336febb184288188079985b04813a2e5de26f4"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пв.json.gz",
+      "sha256": "e4bd0baab7d7266204da43cf0458706e9fc8ffe872f98063ed90b906949bf3f1"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пг.json.gz",
+      "sha256": "b9e77f60e1b7e265a88711e2958794b1fb22d6f9a36bd60aecb02dfc3b75d704"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пе.json.gz",
+      "sha256": "c34566e10f7fbe4c084d116eba33a602e503ac91abb33cfefd987445291eced4"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пж.json.gz",
+      "sha256": "84657d59b14e48d851f5abe8c07faa1d61475e5a0cb27e8b50c779f59d1c7bb1"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пз.json.gz",
+      "sha256": "2d0bdab4dd1f7864e1485fc7a301281b0c18bb4ee635020c507a95cb5cd41ff1"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пи.json.gz",
+      "sha256": "9d6c0e1c2cfe228cfa4476ca66ab4f5ddd2e0d467a878a93b9b83fbd798d40db"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пл.json.gz",
+      "sha256": "6e13294e5932114d1c68cec45336edbf77137a834c56b45e08818b6842038659"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пм.json.gz",
+      "sha256": "8059611503290ceb394e533aefb764fed12e0408de5a44a73ec7ba6d1aa28c71"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пн.json.gz",
+      "sha256": "84e5f875cd4d49f6a9f6a94861e5e7cd9d551ff88f78dcc6aef7f2d4c1d269f6"
+    },
+    {
+      "path": "public/lexicon/ru/standard/по.json.gz",
+      "sha256": "b3c466746638690330c418d190396cc5d25ce7f618dc333ff0ba341caf506743"
+    },
+    {
+      "path": "public/lexicon/ru/standard/поа.json.gz",
+      "sha256": "ecb99ad6cd1c9905eacd38e0858c2959cab0a28c4949d2a2831d52179147d9f1"
+    },
+    {
+      "path": "public/lexicon/ru/standard/поб.json.gz",
+      "sha256": "b87f9bce3605e1f6faae75b1c85c4a977840fba483d2c1775ea01f95cbbe9f5c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пов.json.gz",
+      "sha256": "19a96334de9325ec6639bd701bb74cb52d887456071ea5c96ce18e2db31976f3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пог.json.gz",
+      "sha256": "84c6f41f9efabfcf9cd80fe9051683724c5ee014da11e9ed13cb4b15384c4e43"
+    },
+    {
+      "path": "public/lexicon/ru/standard/под.json.gz",
+      "sha256": "c139ca24bf57b02aedae35697aa8e17b0ac272a620975d6f300225823ac2469a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пое.json.gz",
+      "sha256": "dce899391d503e2229338b81e42f0b37d4fd5d4fe5115b3a213a28be9abe91e3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пож.json.gz",
+      "sha256": "cc2f60bc1b79d2a8497c6d9c37acb9cac6e7016c4ff019f916fc40741e5f65fc"
+    },
+    {
+      "path": "public/lexicon/ru/standard/поз.json.gz",
+      "sha256": "08a1b53e8bd0bd5acbe44741f0dfb7bf9808151f75d1ae626a1e2fe791271a92"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пои.json.gz",
+      "sha256": "cb0f1e01a561ee5013f4f617a684cf612bb37c14649b31609807675800461979"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пой.json.gz",
+      "sha256": "9620ef95d9a14fb56f81aed325fa58efed54538072bf38dce7af2914170e50e6"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пок.json.gz",
+      "sha256": "fdac217706853db97040596dbaab36594ace882a16a65c3fe7ca5602bb270e83"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пол.json.gz",
+      "sha256": "f715712c48ab18b3dba931662bfaf7b83cd3da9252aa86f9ba0269a0b6840517"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пом.json.gz",
+      "sha256": "e60cc9954ff83641e60f104dac3708dcad9660abc349b289f4d75695bb231524"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пон.json.gz",
+      "sha256": "f6863020a577e4e5daf2f1837ce65b492e95d9844d1fe5c9d1b9b114af854b09"
+    },
+    {
+      "path": "public/lexicon/ru/standard/поо.json.gz",
+      "sha256": "d55c53daa46a911267ef155af2cb6af21c060e956f84664e8fc425bc5a131a65"
+    },
+    {
+      "path": "public/lexicon/ru/standard/поп.json.gz",
+      "sha256": "3495373226be5c43238b589a352e0511f77a016876770583d14439efe658c31d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пор.json.gz",
+      "sha256": "f1702dbca9116bd7b1e36350491fb02b21e03d102d66516221461e88f5938b69"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пос.json.gz",
+      "sha256": "63ab9cdfd07040b522531ccb8f97b3f152405280eabfd5bcf4af84a786482960"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пот.json.gz",
+      "sha256": "74e6ca4822557df905640e1fa02bc838c201edcbc65b6604ac89d07987296c59"
+    },
+    {
+      "path": "public/lexicon/ru/standard/поу.json.gz",
+      "sha256": "dbb17b3655de8a728b75b6694b6a0f243eca618df19fb2e4427fcd2adf14e3fb"
+    },
+    {
+      "path": "public/lexicon/ru/standard/поф.json.gz",
+      "sha256": "9912e6e37f41462427ab36fc21ccaf863ec73983662a24e2fa863b2d3a2a0479"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пох.json.gz",
+      "sha256": "03e19d27feb9b4522e10320da026285664287bc072f13af35d8c08bcfb8f618e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/поц.json.gz",
+      "sha256": "231fa17307800289028c2d2361a38247320496206d45b87dd468a24417eac709"
+    },
+    {
+      "path": "public/lexicon/ru/standard/поч.json.gz",
+      "sha256": "7cf718046c8659ef09a4fc732f0141fda4413aa43dd699f9122740a7b2bd6332"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пош.json.gz",
+      "sha256": "1634c113843b851de38f8b17cd99465cfc648396bbe1f3666f87e2a462ff3f01"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пощ.json.gz",
+      "sha256": "fa80b5cbbe4ded53108e9ffcea53b6f5293f2afdffe5b9b45afa36640ad6c560"
+    },
+    {
+      "path": "public/lexicon/ru/standard/поэ.json.gz",
+      "sha256": "73a72afc7e280ce17a3a0ce47064babfdb7fc5684a087a63a78588505eaf6f51"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пою.json.gz",
+      "sha256": "888fe7efe0f1b0dbf4e4f7ec6ffe4bae88d623cfefea6cb09a8d6a814dd78c3b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/поя.json.gz",
+      "sha256": "f6ab6c2c6ca3733f0112341edad96fcae11ec90d102544cbef375ace2b054c50"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пп.json.gz",
+      "sha256": "161ea1ea6568a7f2c0d288c89d6c1105a23ac2a15fd68f79b2718c0c91ed88c6"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пр.json.gz",
+      "sha256": "cad3b7a0f987e7a9b3e2e9db7997dfd725dcacb6bab9ed9708af212537c0db76"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пра.json.gz",
+      "sha256": "2c5f4d2eff1319c70b0a813cf7878c93d23af76f7f90d57c8a518b22fe149f6e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/прб.json.gz",
+      "sha256": "26502159145ed465ce9c3889e7e7523705c3ddce28aba4b1d8384e4a5736167e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пре.json.gz",
+      "sha256": "79969e0f8f5d745332d7e5b6c2df52a5b344adc3e4b1453a65d1d810c23b5efe"
+    },
+    {
+      "path": "public/lexicon/ru/standard/при.json.gz",
+      "sha256": "a8473196348d798412644b075f5dc4acf14a5b969ad1604cf9fcde9af9a2784c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/прк.json.gz",
+      "sha256": "bc27c1b64bd3e82d932f3d1a1fa209ce364eb5ef60e415c95dca117eef196631"
+    },
+    {
+      "path": "public/lexicon/ru/standard/про.json.gz",
+      "sha256": "8dd5ab64f7955f0ca8dde67a45e94054434bfe75580adc1eec4b26339f365bd3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/прп.json.gz",
+      "sha256": "66a655325013f172a75b4861d3df41193f6013d8b5b487d57e6e28574b6c3c1a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пру.json.gz",
+      "sha256": "231b04a8ae9e9a4a3d701b199048d77cf2f156dd4222a230995cf3df061d8dd8"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пры.json.gz",
+      "sha256": "06e6c5915b3040faf6cd768a2d296446e037943a26e9edbde6686712c8821eb3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пря.json.gz",
+      "sha256": "fe7c01e005fb4034863c5a4ae53e77be6265436054813859ba672310102a9fb1"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пс.json.gz",
+      "sha256": "894c22886bd3960ac2d6ec19682ceacd55ae5b90e15610ed0ce9e5487f35676b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пт.json.gz",
+      "sha256": "24c39bf8b7ccee7a34c8381e261bb22be3f06566d1e51c80e1be946d0e252130"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пу.json.gz",
+      "sha256": "42516f472480a2bf8956cb8b2ecab562f3ff9dba0a6e60d4e0540315b639f566"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пх.json.gz",
+      "sha256": "24d02380fed8e76de87d6c459a210a5c29e445a2fa954b72791323acad4e13f3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пц.json.gz",
+      "sha256": "b96ce708e45ab173a4f1fa435645c607eb067ce6c1470b54c7de6fbb6750299c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пч.json.gz",
+      "sha256": "29c6d9891bf8aefa5969f65b5aae4804203cae51b150eb9b934c6e7d004a2919"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пш.json.gz",
+      "sha256": "afd83e3bf032f60cfbcf2ae8624cb8b2fd303ff2d10da78333f0ee7e8940b83e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пы.json.gz",
+      "sha256": "41351ed2e19c1a42e1f77c49ce557170c1d77ee51ee8cd4dd427fc671179ee8a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пь.json.gz",
+      "sha256": "e7df5d33230ab7966d6db16a4029387d37507c03bb8a4e7690367e0a69397897"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пэ.json.gz",
+      "sha256": "458c5179fb66a4dcbea6b34366411b998bc563e986f6284051a1ca45fdb2bfb7"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пю.json.gz",
+      "sha256": "3f0c4d7ded621937c511cdd5d978af3eaeb224bab9378c1b28aebe1d8f309805"
+    },
+    {
+      "path": "public/lexicon/ru/standard/пя.json.gz",
+      "sha256": "6707dd910841d945f1f9c2a3b11634f8501989d7d2072e068db294f7dba71bbd"
+    },
+    {
+      "path": "public/lexicon/ru/standard/р.json.gz",
+      "sha256": "12bde410332187cfd20ce97e414a7aa24656f1e6c498c8fef1cedc2593d127aa"
+    },
+    {
+      "path": "public/lexicon/ru/standard/раб.json.gz",
+      "sha256": "5485a503aa4e81bb5d6c54ea07b74502fac8c1391715c4493cba2b29d0ad900d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рав.json.gz",
+      "sha256": "9a5919936f5298443f2a3c5254b070bef0c9fe1eb26f49b151f3a87188e14adb"
+    },
+    {
+      "path": "public/lexicon/ru/standard/раг.json.gz",
+      "sha256": "9a1f34f9f1be6f712d398c3a558cc8981e765b74f1310602fce9091cbfd44519"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рад.json.gz",
+      "sha256": "dbe1eb2d96db98ea04cc0b7771fde06693744263242ab088455e7d1a5b12c518"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рае.json.gz",
+      "sha256": "3668fb55426153c51fc3ffd0c2ea1da0aa6340e95df563ae20d015675fdda58d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/раж.json.gz",
+      "sha256": "f1994075e3965aba7685beac7457e1d8d58100977bc0bcef6444414164c79169"
+    },
+    {
+      "path": "public/lexicon/ru/standard/раз.json.gz",
+      "sha256": "7658e7324fb6090ee89e3470e888b9c0161daf7a4e472621f2b1aee47c7442d0"
+    },
+    {
+      "path": "public/lexicon/ru/standard/раи.json.gz",
+      "sha256": "86170498f2278200f56062761952bc4d85ce07788f83e8f034a976ae9aaefd54"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рай.json.gz",
+      "sha256": "21161b11c47d214669d155e3a2439493146045c15c2557667fba3fce109f6c9a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рак.json.gz",
+      "sha256": "0dd1485082e91490a284cab57e87690e16d46fb91219cb988570d7791870aea5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рал.json.gz",
+      "sha256": "c2076ace41f7e0d7da0571bd21335e1e7a49ba4742f227235a3dc5aa37349805"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рам.json.gz",
+      "sha256": "3cce1baf085f37f92b5433033e51f68c1eedbdc4d7dcaa191d2fdd633ba5c8a6"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ран.json.gz",
+      "sha256": "a6182514471af14ba6e6c9fb370907dc65aff1305fd845998aa80d9930d6787a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рап.json.gz",
+      "sha256": "496ccfa5a427dc9a4ad4883ae7e1fd7313849efbab0939bca29d69524f3b8d0c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рар.json.gz",
+      "sha256": "296120fd4f70180408d8fb45efa000590de7eb63a188549958887ac7a354c64f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рас.json.gz",
+      "sha256": "76537cbfc4c37ab06d54f269e01cecc22a71ddeb8dbb1bf23cf7cc22dfd71ad3"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рат.json.gz",
+      "sha256": "85bd200845f06ab6e50ad540c9efefd62c3c1281d2b849affbf0de4c9ff7ff9b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рау.json.gz",
+      "sha256": "f8bd58332115b1375be3004ff51c3a23706018b6aa5c70109d6d10d89cadd766"
+    },
+    {
+      "path": "public/lexicon/ru/standard/раф.json.gz",
+      "sha256": "2ece67d831eb8ac53636ef78843ed83d2724532bd24c3486f8a050661df06b78"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рах.json.gz",
+      "sha256": "c18f11a6feebee7eee47454ee7d99bb4be448af31eb1bd1f041d1123180a232c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рац.json.gz",
+      "sha256": "3da1a238c649fb486a1b74622537bb6a2affe3edb97e178b19b4e44d97150c7b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рач.json.gz",
+      "sha256": "1768546d9591a055ebddab2203b7fe79bc32eaaea1e395a986765d7185d6ba07"
+    },
+    {
+      "path": "public/lexicon/ru/standard/раш.json.gz",
+      "sha256": "9a451fec8f35160d299b8b793e0ca65447a7abb4172fa76cec6e0fa36df9630b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ращ.json.gz",
+      "sha256": "6ab3da99d0c9a9fae08dec1020d9200401323d62faee3defe586f6aa49dff8bb"
+    },
+    {
+      "path": "public/lexicon/ru/standard/раю.json.gz",
+      "sha256": "e6742604a8ea9cd1e317ad3427ce862c3bd9be210268b5f0af4375fe02145893"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рая.json.gz",
+      "sha256": "6830effdaff59601b7dc78d76e1e4ce3410884c7d016dedecb628a211b760d88"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рб.json.gz",
+      "sha256": "e1db3a50c725705a9ced14bd59c911fcd9794db7cd3cc784a24598cdb2372308"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рв.json.gz",
+      "sha256": "54b01c16e7e405474136db641b3eea0a00184ef3027793cb7d314f1b8bc8bd14"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рд.json.gz",
+      "sha256": "4971420514f341036398c2b8bcb256f698196b42e2ab973d57b1e9d06634c704"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ре.json.gz",
+      "sha256": "6fbf552ff9cda9400ae6ee10d544ca4962e218de6da0000ded62204c9c8d7c0f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рж.json.gz",
+      "sha256": "4b12cacc9db2617c9cf9001bbe6d77d7222dd0651e9bc4ad87b10fd747d3dd6e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ри.json.gz",
+      "sha256": "7972ad6b1d06cbb7b82ca467910d6140d4402393d9b258af51af8387752c1d50"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рк.json.gz",
+      "sha256": "bce71d323671be67e9402370df2ea6bb260dead9c017f7b8736128d04d722116"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рн.json.gz",
+      "sha256": "35fe37ee2dfd70e0cb5a7287059d025197517910464529e5fccb7fbf62b27b3a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ро.json.gz",
+      "sha256": "d5cde64990247aede3ed719931a1280893f68b3515e79a5f5aead6033bf04b73"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рп.json.gz",
+      "sha256": "b53132bb766794432862b4cda0a017453aa484661b97f5cd2e30d7addc1912ab"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рр.json.gz",
+      "sha256": "3d2bc94a21b2d4b08e976a7cb4d5bb4faef4fc9299aacaf5fcea5e6ca58530c4"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рс.json.gz",
+      "sha256": "bd147bd3fce41fca6c2d4ccfec91e210dfb6fb095e41439b8ea5abd5dcf81016"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рт.json.gz",
+      "sha256": "89d6294f1258f32357920464bf6d5ed09b1d0b8e5c6f7026879a52d9c6115dc8"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ру.json.gz",
+      "sha256": "a7d7f41798339f0a6dab0618c51c2d83d11c03ded9a731b72fefbe5bd454a535"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рф.json.gz",
+      "sha256": "2a96ebee31ee862f52028352dd4f05ef36a3e6b7ebfad43aa5ba57b1237d1160"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ры.json.gz",
+      "sha256": "c963a0584cb18fef0426235bf1c50d1898271a61abca8c0e59173d3d7b015efa"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рь.json.gz",
+      "sha256": "786d13b9424a2f407140dd727de01da91b2241c72dadc716fa044070eae07332"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рэ.json.gz",
+      "sha256": "c603b795f5a16fa48ee2d144e37bbd1deb2108cb8bb48599d2a8bd5c848e9f1d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/рю.json.gz",
+      "sha256": "983206fb2166aba67b2a3070f0d76ee9aa71c8b48a77476c517fa6e451ce641d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ря.json.gz",
+      "sha256": "a3d025343d120451a167c688e39352ad23c78d5b83315d9c90c677aa7cf8eff8"
+    },
+    {
+      "path": "public/lexicon/ru/standard/с.json.gz",
+      "sha256": "aa3134fae9feb9d7c79e9396f11fbf31ca8b7baece44617b188361bf1beec6db"
+    },
+    {
+      "path": "public/lexicon/ru/standard/са.json.gz",
+      "sha256": "ae168f87134247176eb5a1634701f082fba13dbd08e65d5748b62a77797cbe64"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сб.json.gz",
+      "sha256": "5730a7bb4b6888c31b385084be09fa3b5aa76927ff720cc6a5745df939568f45"
+    },
+    {
+      "path": "public/lexicon/ru/standard/св.json.gz",
+      "sha256": "017927b672bfddf549c534f7a6cf3b526056043e54c799e49ae9b5492fa28f64"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сг.json.gz",
+      "sha256": "0581577afaf6fba9137cfb23139427795576f4d4cd2c66e2bfb96490560c6d34"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сд.json.gz",
+      "sha256": "60a9cb35c6ed54cc75b4d3082dc5c9a8f502922a2f6fd737c981ae69029c00bf"
+    },
+    {
+      "path": "public/lexicon/ru/standard/се.json.gz",
+      "sha256": "69021abc3b8ed334083313b815caeb812fdcd91213886db53aee0a5472e8be5e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сж.json.gz",
+      "sha256": "d9cc0c5631648ed1e8f98ff2cb8a5aeb6f77b694c994c335bd1d0b285f1b56ca"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сз.json.gz",
+      "sha256": "fd7b0a75a209e4df19b17c239dc4a6ef3f33ed8245768262d39b9612d201df9e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/си.json.gz",
+      "sha256": "e6d7bac5a8f0ac64d0d80a30d1a6729d2b2dc870c04b5a1eb873a1ab7d8b4de1"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ск.json.gz",
+      "sha256": "44dabec6cb3d7a15b0f19db2dc4324690c6e37c1b2ea4b0bc5f37551a804f932"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сл.json.gz",
+      "sha256": "16b0979d2674e13c2ab472f6cbc0b6f92b57d90efd97e2fe0436343cf62b0403"
+    },
+    {
+      "path": "public/lexicon/ru/standard/см.json.gz",
+      "sha256": "82a80c19e37a6f439577a8ce64459e00f157e6071901500c6dadbb051051d9ca"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сн.json.gz",
+      "sha256": "2fe3c845e2ad09996ce5de2901a7f8e806b2de6c20b94766c95e5eac2f4cad74"
+    },
+    {
+      "path": "public/lexicon/ru/standard/со.json.gz",
+      "sha256": "859663c9e0d19a73341bad6a60066819d605be5e1ba65621b185f5e51e256fc7"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сп.json.gz",
+      "sha256": "5a7a05983d3cc466c450ba6a5c4ec298b7f448efeb950dc9c73a3817134e6abd"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ср.json.gz",
+      "sha256": "618799629ff146ccd4a099db0353bd2474161003c1b294411c35d748462e29cd"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сс.json.gz",
+      "sha256": "1a5002baa935c3fa4c57dbb53e44ae44c097fb070759fcaa732cd4dd8046a8de"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ст.json.gz",
+      "sha256": "6c471025ae5db017a89e83ff080f192372eadeaaa854fc808044edc517eedafa"
+    },
+    {
+      "path": "public/lexicon/ru/standard/су.json.gz",
+      "sha256": "097be871825a907d2cfb089136dc31ec25834236143df56c9dd6d98b33dc6bfd"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сф.json.gz",
+      "sha256": "007230badbc5474b5a9b3d2569daa059908fb2c60c10c1c2062163378381eb5c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сх.json.gz",
+      "sha256": "b5761bb5ed6f03a168a1125d1f2ffdc67ee518ae984cccb08899fde60246bf22"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сц.json.gz",
+      "sha256": "b1f5208e29c742d3a7b9fcebbf6a2a65ddb26fb8258f83e796060070d72465c4"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сч.json.gz",
+      "sha256": "41ab9388793de4009455572f5df0abccde37b1c9b126b7b1b9d24dc0220fb363"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сш.json.gz",
+      "sha256": "036ff0cf1ab95e2c98c1524ecff0a65b9ac3ac00d5194ffb25b30ad9af3d6ae2"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сщ.json.gz",
+      "sha256": "3a6a887579aadb51b14a41b239f5866e0a2fbeb10a234e161698ecf0c9d60e9a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/съ.json.gz",
+      "sha256": "8037dc581431e2edb03a6da8357a24ff3a85fafc6df5b082858353adea1086c5"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сы.json.gz",
+      "sha256": "b82e40a345d0ceafff842c623b8c7b2d84b658829de836e105280830128ab88a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сь.json.gz",
+      "sha256": "26b0b60a588eee09c67bf1f9f2192042713e0a99a2ece95b5064ccc24dadd491"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сэ.json.gz",
+      "sha256": "08554fba39181c8eacc4c758c37e5c61a8b146cadb8b3949dc47eacc11a30f91"
+    },
+    {
+      "path": "public/lexicon/ru/standard/сю.json.gz",
+      "sha256": "ef1148eeb8c33d4de311e4f5197c4fe546a7607372581fd805660845f3a66597"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ся.json.gz",
+      "sha256": "08b67e15dab808ff9040efb3780ff75b40bd4aa2b1ef542122d8ad98f15934bc"
+    },
+    {
+      "path": "public/lexicon/ru/standard/т.json.gz",
+      "sha256": "db756df6662b57087e297ddce5686987cf8dc570f2fc96db9a39bb84af149e38"
+    },
+    {
+      "path": "public/lexicon/ru/standard/у.json.gz",
+      "sha256": "74ddbf791d5b2c417ea37e24e0252d2d7e9cc3bddbcf05c0ef28b86f8ef02a3a"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уа.json.gz",
+      "sha256": "0757c3d522fcb827bd19dc239e4307c060ddaf8ff4c06090c20a791b7f81a53c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уб.json.gz",
+      "sha256": "4393082e818cb63baa79a8879afac7125af240a10946630018f1bf7b751e0530"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ув.json.gz",
+      "sha256": "4de457d54dde348bb3255b1a8f3049f54382eb1bd294b92bf52b1bb222fd88ea"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уг.json.gz",
+      "sha256": "bd95b33ec84a8387f4d16141766be5ed596c44ef7b3a6b65f18e5f5e02d7bfdd"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уд.json.gz",
+      "sha256": "af20552054ca1f40e021550e7e5c23c27aa5845f178f2dbaa6e2985bf2fd98f8"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уе.json.gz",
+      "sha256": "a65d87b94c2555759ca3d5eb78347a9671b98bd58abe5f305b53d24219a10e54"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уж.json.gz",
+      "sha256": "33ed2bc740e92f7b4073f966322f0c455551f94c3d68556023e3ea6cb88240a8"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уз.json.gz",
+      "sha256": "ec6ca2339200323b88346e23c9d80ea956eadd439b201795384126ee203be63b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уи.json.gz",
+      "sha256": "2b6d34f3eaee610f5c8de601c7f8f3b501b5c85300214d6911128540c080d518"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уй.json.gz",
+      "sha256": "aa1f8194e1119570ff5e9d13b0ce28a82c84fc751578db4784ad59c502c5d101"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ук.json.gz",
+      "sha256": "342d07e15d2a3d7c3885d4341b5d696d081b848c223ae1024967732a0f531172"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ул.json.gz",
+      "sha256": "26098132577f39c30e474790c2251284465739aca4763fff261de668a9f98e24"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ум.json.gz",
+      "sha256": "b1e518ae5ba6aa0e4e0e32402d730efd9873eae0f4446c5c14c98febc7896bbc"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ун.json.gz",
+      "sha256": "3a687ad8756948edd61425465e623590b1a6119d1c91e0fc32d7918f2bb40fd6"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уо.json.gz",
+      "sha256": "68c01c890f31ad91922a94374388bab6844309f5cfd8d37adc5c7a65caf8158f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уп.json.gz",
+      "sha256": "27cb447950e1086585939562857fae7e671a80402d0df612cd4b18df99a20639"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ур.json.gz",
+      "sha256": "10ec9ba70b60936a52081845894b737f0e7f57b134a5cddcc1d93564fca53c9c"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ус.json.gz",
+      "sha256": "869252e6bad99acd4b5d94aec5f6c377998d7edda279ff8d1913b0ed39268551"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ут.json.gz",
+      "sha256": "685e8ff035a195b297250b4c09349608609c74c478adc285bd7d7e39e0311d73"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уф.json.gz",
+      "sha256": "afd1583bcffcae3598c422c6f61c70713032a33bfe59037c8ba5d6a8e76f2a32"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ух.json.gz",
+      "sha256": "98abbf59919ce05faddc038e415852dfbd927654b9d722d87e7986e02572e505"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уц.json.gz",
+      "sha256": "f9764aa1f6295fb47c21fe5c528d7fb10a44e358bbe46967c42ba0e5478f266f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уч.json.gz",
+      "sha256": "c158e0166f6170a3fc23b70581efd2866fd7af811024118883f1f972238faab9"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уш.json.gz",
+      "sha256": "ded1ed66dd0bef6130e27081ffce09f8fb987570eb7a20fc152246941f024c2f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ущ.json.gz",
+      "sha256": "3152e67449a96c1ea6d318e6a6ba3d6194ef0527e0691a771af8cfb40df633b6"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уэ.json.gz",
+      "sha256": "73d269a1f4cdf2a956b7be2d31c5a59c343b9a55f586a8ac24ebf5b080ec6780"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ую.json.gz",
+      "sha256": "e40f4f23383ebf2ebe4c1ecac76a99c66e25cd0b12e060a2a1ef14add1682dca"
+    },
+    {
+      "path": "public/lexicon/ru/standard/уя.json.gz",
+      "sha256": "b3468e9dfab82989e0594330dbce4ac1ecdece35e7851b5193afe8002dd64c27"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ф.json.gz",
+      "sha256": "419b434d84f7b77b31c7acf2dcbc807f371ca5b904df885e12ba1321c3a2199b"
+    },
+    {
+      "path": "public/lexicon/ru/standard/х.json.gz",
+      "sha256": "639a2d1ce18f909faefecb6f3e4631e7851cbf14f87f9dae3101150787a42587"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ц.json.gz",
+      "sha256": "9ec24bafeb2a46d5e3a1e08b4090f550c7fec62962cebf099e17c586a308281e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ч.json.gz",
+      "sha256": "a6003bfb14486392d5808b5feb3d9996d96689679b7e3677d9829b3b82a15b5e"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ш.json.gz",
+      "sha256": "ffd6dc056dbea28f3db6a3934e1143a63f2f90f0ff0ff1d39184e07e28802c4d"
+    },
+    {
+      "path": "public/lexicon/ru/standard/щ.json.gz",
+      "sha256": "87ac7e8f843db4bd941f97b66645626a191c537c3be2e2c23833cb9ccf9d816f"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ы.json.gz",
+      "sha256": "cea147abda70428c1959e01a45e43e888d8555235eb78f10890be4d09a1835c0"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ь.json.gz",
+      "sha256": "6cdf2df4fffe949e3557d94d223404f29f4f6422b5024b03a6ca9054046d46a6"
+    },
+    {
+      "path": "public/lexicon/ru/standard/э.json.gz",
+      "sha256": "65c95d5f4ccb43965d3e3224d8c5a5810afe5655b34dfcff19d9c7f5c6d09b29"
+    },
+    {
+      "path": "public/lexicon/ru/standard/ю.json.gz",
+      "sha256": "c8baf48939c59d2ab90ecbfccda170bf54e8953c015691c45ac5a331e1d092c8"
+    },
+    {
+      "path": "public/lexicon/ru/standard/я.json.gz",
+      "sha256": "a6a7093f66e3db8bc043288a3f9a8e65b44d42afd5fe0030aed79222c3906cd1"
+    },
+    {
       "path": "scripts/goreview-release.d.mts",
       "sha256": "15ed3293cf316de8735898d1cda0e4350ff22937b61982ed28dbdfcff0148330"
     },
     {
       "path": "scripts/goreview-release.mjs",
-      "sha256": "4632e620b4778146c62b0f44fe46986b1dc5ac989c7345278ec6a6b539ef536e"
+      "sha256": "60f1bead7d4b643a6596aaff78a6ac5edd582369cdba26da7a410df75b2611cb"
     },
     {
       "path": "scripts/vite.config.ts",
@@ -2902,6 +4810,130 @@
     {
       "path": "src/adapters/es.ts",
       "sha256": "a2361d121a445e952711a375d076c3d0caa961fb0ff6297ccc7179166fe8ef60"
+    },
+    {
+      "path": "src/adapters/fr.ts",
+      "sha256": "fc3d82fa260f4fee026cc2be7a521e4d97c4ddaaa2a93e7c45251a1e4bfaf0db"
+    },
+    {
+      "path": "src/adapters/french/construction-texts.ts",
+      "sha256": "b81089cd3e6a3d02a6bd5f4407319d253d1578133c89ae10c6ec08c3e3f617aa"
+    },
+    {
+      "path": "src/adapters/french/constructions.ts",
+      "sha256": "87e1965e3d03a167775f0c0f42db34f2997bce040b385db37551a79f638d2ccd"
+    },
+    {
+      "path": "src/adapters/french/context-shared.ts",
+      "sha256": "c41673ead1196807be1afb325cbe9ad1f748d868c573087bd5dec1c589cd48dd"
+    },
+    {
+      "path": "src/adapters/french/disambiguate.ts",
+      "sha256": "e0e853c39d7f7230ea0ac5cb72f0cc91366160417347f142a69c11d3890e251b"
+    },
+    {
+      "path": "src/adapters/french/entries.ts",
+      "sha256": "1e5cb80e6649a2fca751736fba48a114d141e95d227cee4edca2f03be333cbe0"
+    },
+    {
+      "path": "src/adapters/french/function-words.ts",
+      "sha256": "dcf3edca8071c1049da0aad6851330b2986f89c24f25d56ef3245e48b995de6b"
+    },
+    {
+      "path": "src/adapters/french/graphemes.ts",
+      "sha256": "ff5679fc9dceb6b761964285ea2b8df15b6dde988429e58c571f6b9083b11702"
+    },
+    {
+      "path": "src/adapters/french/historical.ts",
+      "sha256": "35b963d46ba3f6d94eece87de4361a3faf2db10927e581efb5752bda67ba8526"
+    },
+    {
+      "path": "src/adapters/french/lexicon-full-data.ts",
+      "sha256": "17a52e9374645510109c852d42989201ab10c315d495bc32402adba09573cc78"
+    },
+    {
+      "path": "src/adapters/french/lexicon-full.ts",
+      "sha256": "30411668aa3d946e1f29c33506eb634ffa4517554086d0d5512fb4e24bcbae02"
+    },
+    {
+      "path": "src/adapters/french/lexicon-modifiers.ts",
+      "sha256": "2fd44ca4f5e3057145e168a0d81a48fe2a11ba9f227a898e5d1fc93d99615b9e"
+    },
+    {
+      "path": "src/adapters/french/lexicon-nouns.ts",
+      "sha256": "e1b18c58fa7d8573c2b4b11d2a31e0caaa5ce7194ea02b024876377f36e5828c"
+    },
+    {
+      "path": "src/adapters/french/lexicon-verbs.ts",
+      "sha256": "65adeefc7f5df912e225b3ffdbb1578c9be148fb59dc86f841eb2585ac24fa7d"
+    },
+    {
+      "path": "src/adapters/french/morph-nominal.ts",
+      "sha256": "1389e3ed7d9c9d223793d17a6357fd6bb13b140cc48442c308facfb8389af3bd"
+    },
+    {
+      "path": "src/adapters/french/morphology.ts",
+      "sha256": "21db2a97b0960b79545c8c351bc7a50e9a7cab9ea11c33aaa2bef601bda082a3"
+    },
+    {
+      "path": "src/adapters/french/orth.ts",
+      "sha256": "3f81aadc853dca72e1aa3485695e553d7695ebc25d414dd1b56ace7bd93cbe3a"
+    },
+    {
+      "path": "src/adapters/french/paradigm.ts",
+      "sha256": "38f0050c3e2ba43da9e1cbdd3f84ad5df29970abd22a6fff33c96e32cba46313"
+    },
+    {
+      "path": "src/adapters/french/phrases.ts",
+      "sha256": "40af011d032334aa01f914132c991c4a22ad5465f6d916c8024fcfae052e2bb7"
+    },
+    {
+      "path": "src/adapters/french/production.ts",
+      "sha256": "1a2ca5edabb6a84abefc8ebdda55e94dd85de691400249de2f056e5a9342c33d"
+    },
+    {
+      "path": "src/adapters/french/pronunciation.ts",
+      "sha256": "7cb0fba5a27ac591c0f427854d9763b4c8cc57447b9d7d049f1fd974f37c77b9"
+    },
+    {
+      "path": "src/adapters/french/sentences.ts",
+      "sha256": "52011bb8d5d18f039a82caa1fe781214b9dceec821cf16f6511330a7d4c3655b"
+    },
+    {
+      "path": "src/adapters/french/speech.ts",
+      "sha256": "e2389ee2981b9a11c0bb177edc038069e0f6769bb2ca68eed4f88b3b75239e5b"
+    },
+    {
+      "path": "src/adapters/french/syntax.ts",
+      "sha256": "42694f148796727f014ff963c04de3eda0258da99b3577b6aad035265253a344"
+    },
+    {
+      "path": "src/adapters/french/table-tags.ts",
+      "sha256": "92934baa7d4cd545bf81b7f718e43d72568d720212af7f1f21817ac32488ef63"
+    },
+    {
+      "path": "src/adapters/french/tokenize.ts",
+      "sha256": "8279eaeff03051176a38b7859b0e2feb29cc899b967a7e86349bee5aabb6e106"
+    },
+    {
+      "path": "src/adapters/french/types.ts",
+      "sha256": "d61b2dfd315462cc7faa2ffa20d50408dcc45d7dbc47e66d44a2d8e6d52be681"
+    },
+    {
+      "path": "src/adapters/french/varieties.ts",
+      "sha256": "6c1b9f28cc628dd9244b5ea18765d09083426c8ecc1e36705bc7939e016482ec"
+    },
+    {
+      "path": "src/adapters/french/verb-irregular.ts",
+      "sha256": "909ef65ed856257be787b3d3577610120381fbc9bd74e989b118f3f002fa80ea"
+    },
+    {
+      "path": "src/adapters/french/verb-regular.ts",
+      "sha256": "0f24cd44fc813bdec9e99cefb0701b206b5d178425280bc020999c15d78da02e"
+    },
+    {
+      "path": "src/adapters/french/verbs.ts",
+      "sha256": "1b2c0370631eccabfa65185dc684928e50d0398a88cd099ed6315bffb0f8e42f"
     },
     {
       "path": "src/adapters/german/agreement.ts",
@@ -3652,6 +5684,114 @@
       "sha256": "c27ec46d51cca74ce8b0d5a23279b0921368e8fcd13827e77f862f598d5cb313"
     },
     {
+      "path": "src/adapters/ru.ts",
+      "sha256": "62a255058a1b8df0177c268f9923b5975f512afc3adc24c420ac5cbc104a7ca9"
+    },
+    {
+      "path": "src/adapters/russian/alphabet.ts",
+      "sha256": "d24629cf9afb9a65a0cfe0a497b2a11ff993d7ce8224f24a8a4f1bdb02f6dd23"
+    },
+    {
+      "path": "src/adapters/russian/analyze.ts",
+      "sha256": "937d9d298e6c09acb022b03750394e7a12c77f160b4bf9ab0236e9943d57962e"
+    },
+    {
+      "path": "src/adapters/russian/aspect.ts",
+      "sha256": "1b07f30f250815be1f1849ee2daf53c0e5fdd21a2a7c21fb01a3c684bd2ab181"
+    },
+    {
+      "path": "src/adapters/russian/closed.ts",
+      "sha256": "55d000fd6ad8fe9c3a2fe4921d895a0cf32a72c8557e86f5eeb177f1cd1c2269"
+    },
+    {
+      "path": "src/adapters/russian/constructions.ts",
+      "sha256": "84915a797e30ba3978218f485ad8f914089a07d17db9a3f9a92975b3a084ff74"
+    },
+    {
+      "path": "src/adapters/russian/describe.ts",
+      "sha256": "e0b8abd2178f03cfcc8a9beab6dbe1c8b93b80b9171372f5ff2e3ddc7ca62e67"
+    },
+    {
+      "path": "src/adapters/russian/generated/core.ts",
+      "sha256": "bf64b7a167c50e9c5c635578e5f24e4e3e53613a34b576e027f0ac3796ed69c2"
+    },
+    {
+      "path": "src/adapters/russian/generated/form-priors.ts",
+      "sha256": "b16fb6c426699a6bfdc99bc79ff8a7022c3f6203beaaf44445e2b7250a0bde61"
+    },
+    {
+      "path": "src/adapters/russian/generated/priors.ts",
+      "sha256": "4e0852fe3876f1261ec16801898dc54f736afd0e07de8584c027fe36c0b45952"
+    },
+    {
+      "path": "src/adapters/russian/government.ts",
+      "sha256": "745de9fe4119818cbe14a1543caba935f667f3db9f7812f4ccfc336a809e2008"
+    },
+    {
+      "path": "src/adapters/russian/guess.ts",
+      "sha256": "0215c280a51be29be831deb5c7fbb195b7b22b152af8a588219ff21c93e407ca"
+    },
+    {
+      "path": "src/adapters/russian/index-store.ts",
+      "sha256": "141b2508fb0ecd82b09bb68e32fbe17809e259a791baa9886df377aa19aaf0b2"
+    },
+    {
+      "path": "src/adapters/russian/motion.ts",
+      "sha256": "9228425b073e163e673f2fdeab12fed44723f3140e1a390b801e78fe1b6aa912"
+    },
+    {
+      "path": "src/adapters/russian/numbers.ts",
+      "sha256": "42ae4941a7ebd80759a0a855d314db71d9de65f2a8840f45b63de050e58fcbd2"
+    },
+    {
+      "path": "src/adapters/russian/paradigm.ts",
+      "sha256": "6d6d5c168f145633ed8added5de520a0fb55fb16bf946f6c8a9daac649e5837e"
+    },
+    {
+      "path": "src/adapters/russian/phrases.ts",
+      "sha256": "4c4e5588b9e6fc01a44ff70cd1504823a50e76442915f132eb2a59270ee47014"
+    },
+    {
+      "path": "src/adapters/russian/production.ts",
+      "sha256": "1046b7be6ce99c0a4fb355704274daf30d6174f34419f779c087db4ea9a85007"
+    },
+    {
+      "path": "src/adapters/russian/pronunciation.ts",
+      "sha256": "957a2ff14329a725ee26fa37a7dbd1b1918e900273f11f283f3825a9687adc7c"
+    },
+    {
+      "path": "src/adapters/russian/sentence.ts",
+      "sha256": "6ff40d846dfee80ca0a2536ceebdf30a6749c3ab7f6e15053e4d8045e92aef8d"
+    },
+    {
+      "path": "src/adapters/russian/shards.ts",
+      "sha256": "e074dbad64ff34e3d90a4c783a3da41287fbe62c877f917e8429a1976bd74120"
+    },
+    {
+      "path": "src/adapters/russian/speech.ts",
+      "sha256": "52c138dba71a65421044ca8ca44e363aca32c2ffe7c4da6b3c8b10054c2e0f7e"
+    },
+    {
+      "path": "src/adapters/russian/syntax.ts",
+      "sha256": "716bdbee9a232504f131c096854396da6a8b2c40507a19443bc3a1fe7610e3f0"
+    },
+    {
+      "path": "src/adapters/russian/tags.ts",
+      "sha256": "1f2d8c0fafa7d82a7bd05d0d67b6bdd4663ac50eb2b328838ad97a82167a41d0"
+    },
+    {
+      "path": "src/adapters/russian/text.ts",
+      "sha256": "66e37492e3a4c711f4c64ac5fafcda97a4a24f3cde2b6819af7cac466598d255"
+    },
+    {
+      "path": "src/adapters/russian/translit.ts",
+      "sha256": "dafe901c2219dbf8deba11cfe30ac043e5bb3afddb9ea157040111c3958f8154"
+    },
+    {
+      "path": "src/adapters/russian/version.ts",
+      "sha256": "1a448b17932e8ed240066f4ee488c4f4a37074038146a52de5e59568b2ba2e29"
+    },
+    {
       "path": "src/adapters/shared.ts",
       "sha256": "883b0cc6199955a1fdea8552cce3214ad5929895642d9a6e771a3a212e122a19"
     },
@@ -3877,7 +6017,7 @@
     },
     {
       "path": "src/dict/forms.ts",
-      "sha256": "497ae8624255127ec4ad4ea72d1ce855c069bcf4d6417617aed147cc3c2716db"
+      "sha256": "3c8cf59804b4e5d710abc7ba7da5a99514cbfcc5c0207c3f47501acee925aea3"
     },
     {
       "path": "src/dict/frequency.ts",
@@ -3885,7 +6025,7 @@
     },
     {
       "path": "src/dict/full-format.ts",
-      "sha256": "d305eb47c0bf980a26363208f20feacfb479e19d5252b5f855f6db69c62a53f0"
+      "sha256": "514ababe23d5834f41d284bace2f2e0cc9cbfbe5d04b67042b14f8e94fadfac0"
     },
     {
       "path": "src/dict/full.ts",
@@ -3909,7 +6049,7 @@
     },
     {
       "path": "src/dict/map.ts",
-      "sha256": "a778039d06f52e26239a76bf6a966608767938e7adb31243a7d3cce0d23f9299"
+      "sha256": "a72855bdb4c77eec2544bbf309575b698e671d99a958347546360d2cf3ec00f2"
     },
     {
       "path": "src/dict/sharded.ts",
@@ -4159,7 +6299,475 @@
     "public/lexicon/he/modern/ק.json.gz",
     "public/lexicon/he/modern/ר.json.gz",
     "public/lexicon/he/modern/ש.json.gz",
-    "public/lexicon/he/modern/ת.json.gz"
+    "public/lexicon/he/modern/ת.json.gz",
+    "public/lexicon/ru/standard/manifest.json",
+    "public/lexicon/ru/standard/а.json.gz",
+    "public/lexicon/ru/standard/аа.json.gz",
+    "public/lexicon/ru/standard/аб.json.gz",
+    "public/lexicon/ru/standard/ав.json.gz",
+    "public/lexicon/ru/standard/аг.json.gz",
+    "public/lexicon/ru/standard/ад.json.gz",
+    "public/lexicon/ru/standard/аж.json.gz",
+    "public/lexicon/ru/standard/аз.json.gz",
+    "public/lexicon/ru/standard/аи.json.gz",
+    "public/lexicon/ru/standard/ай.json.gz",
+    "public/lexicon/ru/standard/ак.json.gz",
+    "public/lexicon/ru/standard/ал.json.gz",
+    "public/lexicon/ru/standard/ам.json.gz",
+    "public/lexicon/ru/standard/ан.json.gz",
+    "public/lexicon/ru/standard/ао.json.gz",
+    "public/lexicon/ru/standard/ап.json.gz",
+    "public/lexicon/ru/standard/ар.json.gz",
+    "public/lexicon/ru/standard/ас.json.gz",
+    "public/lexicon/ru/standard/ат.json.gz",
+    "public/lexicon/ru/standard/ау.json.gz",
+    "public/lexicon/ru/standard/аф.json.gz",
+    "public/lexicon/ru/standard/ах.json.gz",
+    "public/lexicon/ru/standard/ац.json.gz",
+    "public/lexicon/ru/standard/аш.json.gz",
+    "public/lexicon/ru/standard/ащ.json.gz",
+    "public/lexicon/ru/standard/аэ.json.gz",
+    "public/lexicon/ru/standard/аю.json.gz",
+    "public/lexicon/ru/standard/ая.json.gz",
+    "public/lexicon/ru/standard/б.json.gz",
+    "public/lexicon/ru/standard/ба.json.gz",
+    "public/lexicon/ru/standard/бг.json.gz",
+    "public/lexicon/ru/standard/бд.json.gz",
+    "public/lexicon/ru/standard/бе.json.gz",
+    "public/lexicon/ru/standard/бж.json.gz",
+    "public/lexicon/ru/standard/бз.json.gz",
+    "public/lexicon/ru/standard/би.json.gz",
+    "public/lexicon/ru/standard/бл.json.gz",
+    "public/lexicon/ru/standard/бн.json.gz",
+    "public/lexicon/ru/standard/бо.json.gz",
+    "public/lexicon/ru/standard/бп.json.gz",
+    "public/lexicon/ru/standard/бр.json.gz",
+    "public/lexicon/ru/standard/бс.json.gz",
+    "public/lexicon/ru/standard/бт.json.gz",
+    "public/lexicon/ru/standard/бу.json.gz",
+    "public/lexicon/ru/standard/бц.json.gz",
+    "public/lexicon/ru/standard/бы.json.gz",
+    "public/lexicon/ru/standard/бь.json.gz",
+    "public/lexicon/ru/standard/бэ.json.gz",
+    "public/lexicon/ru/standard/бю.json.gz",
+    "public/lexicon/ru/standard/бя.json.gz",
+    "public/lexicon/ru/standard/в.json.gz",
+    "public/lexicon/ru/standard/ва.json.gz",
+    "public/lexicon/ru/standard/вб.json.gz",
+    "public/lexicon/ru/standard/вв.json.gz",
+    "public/lexicon/ru/standard/вг.json.gz",
+    "public/lexicon/ru/standard/вд.json.gz",
+    "public/lexicon/ru/standard/ве.json.gz",
+    "public/lexicon/ru/standard/вж.json.gz",
+    "public/lexicon/ru/standard/вз.json.gz",
+    "public/lexicon/ru/standard/ви.json.gz",
+    "public/lexicon/ru/standard/вк.json.gz",
+    "public/lexicon/ru/standard/вл.json.gz",
+    "public/lexicon/ru/standard/вм.json.gz",
+    "public/lexicon/ru/standard/вн.json.gz",
+    "public/lexicon/ru/standard/во.json.gz",
+    "public/lexicon/ru/standard/вп.json.gz",
+    "public/lexicon/ru/standard/вр.json.gz",
+    "public/lexicon/ru/standard/вс.json.gz",
+    "public/lexicon/ru/standard/вт.json.gz",
+    "public/lexicon/ru/standard/ву.json.gz",
+    "public/lexicon/ru/standard/вх.json.gz",
+    "public/lexicon/ru/standard/вц.json.gz",
+    "public/lexicon/ru/standard/вч.json.gz",
+    "public/lexicon/ru/standard/вш.json.gz",
+    "public/lexicon/ru/standard/въ.json.gz",
+    "public/lexicon/ru/standard/вы.json.gz",
+    "public/lexicon/ru/standard/вь.json.gz",
+    "public/lexicon/ru/standard/вэ.json.gz",
+    "public/lexicon/ru/standard/вя.json.gz",
+    "public/lexicon/ru/standard/г.json.gz",
+    "public/lexicon/ru/standard/д.json.gz",
+    "public/lexicon/ru/standard/да.json.gz",
+    "public/lexicon/ru/standard/дб.json.gz",
+    "public/lexicon/ru/standard/дв.json.gz",
+    "public/lexicon/ru/standard/дг.json.gz",
+    "public/lexicon/ru/standard/де.json.gz",
+    "public/lexicon/ru/standard/дж.json.gz",
+    "public/lexicon/ru/standard/дз.json.gz",
+    "public/lexicon/ru/standard/ди.json.gz",
+    "public/lexicon/ru/standard/дл.json.gz",
+    "public/lexicon/ru/standard/дм.json.gz",
+    "public/lexicon/ru/standard/дн.json.gz",
+    "public/lexicon/ru/standard/до.json.gz",
+    "public/lexicon/ru/standard/др.json.gz",
+    "public/lexicon/ru/standard/дт.json.gz",
+    "public/lexicon/ru/standard/ду.json.gz",
+    "public/lexicon/ru/standard/дх.json.gz",
+    "public/lexicon/ru/standard/дщ.json.gz",
+    "public/lexicon/ru/standard/ды.json.gz",
+    "public/lexicon/ru/standard/дь.json.gz",
+    "public/lexicon/ru/standard/дэ.json.gz",
+    "public/lexicon/ru/standard/дю.json.gz",
+    "public/lexicon/ru/standard/дя.json.gz",
+    "public/lexicon/ru/standard/е.json.gz",
+    "public/lexicon/ru/standard/ж.json.gz",
+    "public/lexicon/ru/standard/з.json.gz",
+    "public/lexicon/ru/standard/за.json.gz",
+    "public/lexicon/ru/standard/заа.json.gz",
+    "public/lexicon/ru/standard/заб.json.gz",
+    "public/lexicon/ru/standard/зав.json.gz",
+    "public/lexicon/ru/standard/заг.json.gz",
+    "public/lexicon/ru/standard/зад.json.gz",
+    "public/lexicon/ru/standard/зае.json.gz",
+    "public/lexicon/ru/standard/заж.json.gz",
+    "public/lexicon/ru/standard/заз.json.gz",
+    "public/lexicon/ru/standard/заи.json.gz",
+    "public/lexicon/ru/standard/зай.json.gz",
+    "public/lexicon/ru/standard/зак.json.gz",
+    "public/lexicon/ru/standard/зал.json.gz",
+    "public/lexicon/ru/standard/зам.json.gz",
+    "public/lexicon/ru/standard/зан.json.gz",
+    "public/lexicon/ru/standard/зао.json.gz",
+    "public/lexicon/ru/standard/зап.json.gz",
+    "public/lexicon/ru/standard/зар.json.gz",
+    "public/lexicon/ru/standard/зас.json.gz",
+    "public/lexicon/ru/standard/зат.json.gz",
+    "public/lexicon/ru/standard/зау.json.gz",
+    "public/lexicon/ru/standard/заф.json.gz",
+    "public/lexicon/ru/standard/зах.json.gz",
+    "public/lexicon/ru/standard/зац.json.gz",
+    "public/lexicon/ru/standard/зач.json.gz",
+    "public/lexicon/ru/standard/заш.json.gz",
+    "public/lexicon/ru/standard/защ.json.gz",
+    "public/lexicon/ru/standard/заю.json.gz",
+    "public/lexicon/ru/standard/зая.json.gz",
+    "public/lexicon/ru/standard/зб.json.gz",
+    "public/lexicon/ru/standard/зв.json.gz",
+    "public/lexicon/ru/standard/зд.json.gz",
+    "public/lexicon/ru/standard/зе.json.gz",
+    "public/lexicon/ru/standard/зи.json.gz",
+    "public/lexicon/ru/standard/зл.json.gz",
+    "public/lexicon/ru/standard/зм.json.gz",
+    "public/lexicon/ru/standard/зн.json.gz",
+    "public/lexicon/ru/standard/зо.json.gz",
+    "public/lexicon/ru/standard/зп.json.gz",
+    "public/lexicon/ru/standard/зр.json.gz",
+    "public/lexicon/ru/standard/зс.json.gz",
+    "public/lexicon/ru/standard/зу.json.gz",
+    "public/lexicon/ru/standard/зы.json.gz",
+    "public/lexicon/ru/standard/зэ.json.gz",
+    "public/lexicon/ru/standard/зю.json.gz",
+    "public/lexicon/ru/standard/зя.json.gz",
+    "public/lexicon/ru/standard/и.json.gz",
+    "public/lexicon/ru/standard/й.json.gz",
+    "public/lexicon/ru/standard/к.json.gz",
+    "public/lexicon/ru/standard/ка.json.gz",
+    "public/lexicon/ru/standard/кв.json.gz",
+    "public/lexicon/ru/standard/кг.json.gz",
+    "public/lexicon/ru/standard/кд.json.gz",
+    "public/lexicon/ru/standard/ке.json.gz",
+    "public/lexicon/ru/standard/кз.json.gz",
+    "public/lexicon/ru/standard/ки.json.gz",
+    "public/lexicon/ru/standard/кл.json.gz",
+    "public/lexicon/ru/standard/км.json.gz",
+    "public/lexicon/ru/standard/кн.json.gz",
+    "public/lexicon/ru/standard/ко.json.gz",
+    "public/lexicon/ru/standard/кп.json.gz",
+    "public/lexicon/ru/standard/кр.json.gz",
+    "public/lexicon/ru/standard/кс.json.gz",
+    "public/lexicon/ru/standard/кт.json.gz",
+    "public/lexicon/ru/standard/ку.json.gz",
+    "public/lexicon/ru/standard/кф.json.gz",
+    "public/lexicon/ru/standard/кх.json.gz",
+    "public/lexicon/ru/standard/кш.json.gz",
+    "public/lexicon/ru/standard/къ.json.gz",
+    "public/lexicon/ru/standard/кы.json.gz",
+    "public/lexicon/ru/standard/кь.json.gz",
+    "public/lexicon/ru/standard/кэ.json.gz",
+    "public/lexicon/ru/standard/кю.json.gz",
+    "public/lexicon/ru/standard/кя.json.gz",
+    "public/lexicon/ru/standard/л.json.gz",
+    "public/lexicon/ru/standard/м.json.gz",
+    "public/lexicon/ru/standard/ма.json.gz",
+    "public/lexicon/ru/standard/мб.json.gz",
+    "public/lexicon/ru/standard/мв.json.gz",
+    "public/lexicon/ru/standard/мг.json.gz",
+    "public/lexicon/ru/standard/мд.json.gz",
+    "public/lexicon/ru/standard/ме.json.gz",
+    "public/lexicon/ru/standard/мз.json.gz",
+    "public/lexicon/ru/standard/ми.json.gz",
+    "public/lexicon/ru/standard/мк.json.gz",
+    "public/lexicon/ru/standard/мл.json.gz",
+    "public/lexicon/ru/standard/мм.json.gz",
+    "public/lexicon/ru/standard/мн.json.gz",
+    "public/lexicon/ru/standard/мо.json.gz",
+    "public/lexicon/ru/standard/мр.json.gz",
+    "public/lexicon/ru/standard/мс.json.gz",
+    "public/lexicon/ru/standard/мт.json.gz",
+    "public/lexicon/ru/standard/му.json.gz",
+    "public/lexicon/ru/standard/мф.json.gz",
+    "public/lexicon/ru/standard/мх.json.gz",
+    "public/lexicon/ru/standard/мч.json.gz",
+    "public/lexicon/ru/standard/мш.json.gz",
+    "public/lexicon/ru/standard/мщ.json.gz",
+    "public/lexicon/ru/standard/мы.json.gz",
+    "public/lexicon/ru/standard/мь.json.gz",
+    "public/lexicon/ru/standard/мэ.json.gz",
+    "public/lexicon/ru/standard/мю.json.gz",
+    "public/lexicon/ru/standard/мя.json.gz",
+    "public/lexicon/ru/standard/на.json.gz",
+    "public/lexicon/ru/standard/наб.json.gz",
+    "public/lexicon/ru/standard/нав.json.gz",
+    "public/lexicon/ru/standard/наг.json.gz",
+    "public/lexicon/ru/standard/над.json.gz",
+    "public/lexicon/ru/standard/нае.json.gz",
+    "public/lexicon/ru/standard/наж.json.gz",
+    "public/lexicon/ru/standard/наз.json.gz",
+    "public/lexicon/ru/standard/наи.json.gz",
+    "public/lexicon/ru/standard/най.json.gz",
+    "public/lexicon/ru/standard/нак.json.gz",
+    "public/lexicon/ru/standard/нал.json.gz",
+    "public/lexicon/ru/standard/нам.json.gz",
+    "public/lexicon/ru/standard/нан.json.gz",
+    "public/lexicon/ru/standard/нао.json.gz",
+    "public/lexicon/ru/standard/нап.json.gz",
+    "public/lexicon/ru/standard/нар.json.gz",
+    "public/lexicon/ru/standard/нас.json.gz",
+    "public/lexicon/ru/standard/нат.json.gz",
+    "public/lexicon/ru/standard/нау.json.gz",
+    "public/lexicon/ru/standard/наф.json.gz",
+    "public/lexicon/ru/standard/нах.json.gz",
+    "public/lexicon/ru/standard/нац.json.gz",
+    "public/lexicon/ru/standard/нач.json.gz",
+    "public/lexicon/ru/standard/наш.json.gz",
+    "public/lexicon/ru/standard/нащ.json.gz",
+    "public/lexicon/ru/standard/ная.json.gz",
+    "public/lexicon/ru/standard/нг.json.gz",
+    "public/lexicon/ru/standard/нд.json.gz",
+    "public/lexicon/ru/standard/не.json.gz",
+    "public/lexicon/ru/standard/ни.json.gz",
+    "public/lexicon/ru/standard/нк.json.gz",
+    "public/lexicon/ru/standard/нл.json.gz",
+    "public/lexicon/ru/standard/нн.json.gz",
+    "public/lexicon/ru/standard/но.json.gz",
+    "public/lexicon/ru/standard/нп.json.gz",
+    "public/lexicon/ru/standard/нр.json.gz",
+    "public/lexicon/ru/standard/нт.json.gz",
+    "public/lexicon/ru/standard/ну.json.gz",
+    "public/lexicon/ru/standard/ны.json.gz",
+    "public/lexicon/ru/standard/нь.json.gz",
+    "public/lexicon/ru/standard/нэ.json.gz",
+    "public/lexicon/ru/standard/ню.json.gz",
+    "public/lexicon/ru/standard/ня.json.gz",
+    "public/lexicon/ru/standard/о.json.gz",
+    "public/lexicon/ru/standard/оа.json.gz",
+    "public/lexicon/ru/standard/об.json.gz",
+    "public/lexicon/ru/standard/ов.json.gz",
+    "public/lexicon/ru/standard/ог.json.gz",
+    "public/lexicon/ru/standard/од.json.gz",
+    "public/lexicon/ru/standard/ое.json.gz",
+    "public/lexicon/ru/standard/ож.json.gz",
+    "public/lexicon/ru/standard/оз.json.gz",
+    "public/lexicon/ru/standard/ои.json.gz",
+    "public/lexicon/ru/standard/ой.json.gz",
+    "public/lexicon/ru/standard/ок.json.gz",
+    "public/lexicon/ru/standard/ол.json.gz",
+    "public/lexicon/ru/standard/ом.json.gz",
+    "public/lexicon/ru/standard/он.json.gz",
+    "public/lexicon/ru/standard/оо.json.gz",
+    "public/lexicon/ru/standard/оп.json.gz",
+    "public/lexicon/ru/standard/ор.json.gz",
+    "public/lexicon/ru/standard/ос.json.gz",
+    "public/lexicon/ru/standard/от.json.gz",
+    "public/lexicon/ru/standard/оу.json.gz",
+    "public/lexicon/ru/standard/оф.json.gz",
+    "public/lexicon/ru/standard/ох.json.gz",
+    "public/lexicon/ru/standard/оц.json.gz",
+    "public/lexicon/ru/standard/оч.json.gz",
+    "public/lexicon/ru/standard/ош.json.gz",
+    "public/lexicon/ru/standard/ощ.json.gz",
+    "public/lexicon/ru/standard/оэ.json.gz",
+    "public/lexicon/ru/standard/ою.json.gz",
+    "public/lexicon/ru/standard/п.json.gz",
+    "public/lexicon/ru/standard/па.json.gz",
+    "public/lexicon/ru/standard/пв.json.gz",
+    "public/lexicon/ru/standard/пг.json.gz",
+    "public/lexicon/ru/standard/пе.json.gz",
+    "public/lexicon/ru/standard/пж.json.gz",
+    "public/lexicon/ru/standard/пз.json.gz",
+    "public/lexicon/ru/standard/пи.json.gz",
+    "public/lexicon/ru/standard/пл.json.gz",
+    "public/lexicon/ru/standard/пм.json.gz",
+    "public/lexicon/ru/standard/пн.json.gz",
+    "public/lexicon/ru/standard/по.json.gz",
+    "public/lexicon/ru/standard/поа.json.gz",
+    "public/lexicon/ru/standard/поб.json.gz",
+    "public/lexicon/ru/standard/пов.json.gz",
+    "public/lexicon/ru/standard/пог.json.gz",
+    "public/lexicon/ru/standard/под.json.gz",
+    "public/lexicon/ru/standard/пое.json.gz",
+    "public/lexicon/ru/standard/пож.json.gz",
+    "public/lexicon/ru/standard/поз.json.gz",
+    "public/lexicon/ru/standard/пои.json.gz",
+    "public/lexicon/ru/standard/пой.json.gz",
+    "public/lexicon/ru/standard/пок.json.gz",
+    "public/lexicon/ru/standard/пол.json.gz",
+    "public/lexicon/ru/standard/пом.json.gz",
+    "public/lexicon/ru/standard/пон.json.gz",
+    "public/lexicon/ru/standard/поо.json.gz",
+    "public/lexicon/ru/standard/поп.json.gz",
+    "public/lexicon/ru/standard/пор.json.gz",
+    "public/lexicon/ru/standard/пос.json.gz",
+    "public/lexicon/ru/standard/пот.json.gz",
+    "public/lexicon/ru/standard/поу.json.gz",
+    "public/lexicon/ru/standard/поф.json.gz",
+    "public/lexicon/ru/standard/пох.json.gz",
+    "public/lexicon/ru/standard/поц.json.gz",
+    "public/lexicon/ru/standard/поч.json.gz",
+    "public/lexicon/ru/standard/пош.json.gz",
+    "public/lexicon/ru/standard/пощ.json.gz",
+    "public/lexicon/ru/standard/поэ.json.gz",
+    "public/lexicon/ru/standard/пою.json.gz",
+    "public/lexicon/ru/standard/поя.json.gz",
+    "public/lexicon/ru/standard/пп.json.gz",
+    "public/lexicon/ru/standard/пр.json.gz",
+    "public/lexicon/ru/standard/пра.json.gz",
+    "public/lexicon/ru/standard/прб.json.gz",
+    "public/lexicon/ru/standard/пре.json.gz",
+    "public/lexicon/ru/standard/при.json.gz",
+    "public/lexicon/ru/standard/прк.json.gz",
+    "public/lexicon/ru/standard/про.json.gz",
+    "public/lexicon/ru/standard/прп.json.gz",
+    "public/lexicon/ru/standard/пру.json.gz",
+    "public/lexicon/ru/standard/пры.json.gz",
+    "public/lexicon/ru/standard/пря.json.gz",
+    "public/lexicon/ru/standard/пс.json.gz",
+    "public/lexicon/ru/standard/пт.json.gz",
+    "public/lexicon/ru/standard/пу.json.gz",
+    "public/lexicon/ru/standard/пх.json.gz",
+    "public/lexicon/ru/standard/пц.json.gz",
+    "public/lexicon/ru/standard/пч.json.gz",
+    "public/lexicon/ru/standard/пш.json.gz",
+    "public/lexicon/ru/standard/пы.json.gz",
+    "public/lexicon/ru/standard/пь.json.gz",
+    "public/lexicon/ru/standard/пэ.json.gz",
+    "public/lexicon/ru/standard/пю.json.gz",
+    "public/lexicon/ru/standard/пя.json.gz",
+    "public/lexicon/ru/standard/р.json.gz",
+    "public/lexicon/ru/standard/раб.json.gz",
+    "public/lexicon/ru/standard/рав.json.gz",
+    "public/lexicon/ru/standard/раг.json.gz",
+    "public/lexicon/ru/standard/рад.json.gz",
+    "public/lexicon/ru/standard/рае.json.gz",
+    "public/lexicon/ru/standard/раж.json.gz",
+    "public/lexicon/ru/standard/раз.json.gz",
+    "public/lexicon/ru/standard/раи.json.gz",
+    "public/lexicon/ru/standard/рай.json.gz",
+    "public/lexicon/ru/standard/рак.json.gz",
+    "public/lexicon/ru/standard/рал.json.gz",
+    "public/lexicon/ru/standard/рам.json.gz",
+    "public/lexicon/ru/standard/ран.json.gz",
+    "public/lexicon/ru/standard/рап.json.gz",
+    "public/lexicon/ru/standard/рар.json.gz",
+    "public/lexicon/ru/standard/рас.json.gz",
+    "public/lexicon/ru/standard/рат.json.gz",
+    "public/lexicon/ru/standard/рау.json.gz",
+    "public/lexicon/ru/standard/раф.json.gz",
+    "public/lexicon/ru/standard/рах.json.gz",
+    "public/lexicon/ru/standard/рац.json.gz",
+    "public/lexicon/ru/standard/рач.json.gz",
+    "public/lexicon/ru/standard/раш.json.gz",
+    "public/lexicon/ru/standard/ращ.json.gz",
+    "public/lexicon/ru/standard/раю.json.gz",
+    "public/lexicon/ru/standard/рая.json.gz",
+    "public/lexicon/ru/standard/рб.json.gz",
+    "public/lexicon/ru/standard/рв.json.gz",
+    "public/lexicon/ru/standard/рд.json.gz",
+    "public/lexicon/ru/standard/ре.json.gz",
+    "public/lexicon/ru/standard/рж.json.gz",
+    "public/lexicon/ru/standard/ри.json.gz",
+    "public/lexicon/ru/standard/рк.json.gz",
+    "public/lexicon/ru/standard/рн.json.gz",
+    "public/lexicon/ru/standard/ро.json.gz",
+    "public/lexicon/ru/standard/рп.json.gz",
+    "public/lexicon/ru/standard/рр.json.gz",
+    "public/lexicon/ru/standard/рс.json.gz",
+    "public/lexicon/ru/standard/рт.json.gz",
+    "public/lexicon/ru/standard/ру.json.gz",
+    "public/lexicon/ru/standard/рф.json.gz",
+    "public/lexicon/ru/standard/ры.json.gz",
+    "public/lexicon/ru/standard/рь.json.gz",
+    "public/lexicon/ru/standard/рэ.json.gz",
+    "public/lexicon/ru/standard/рю.json.gz",
+    "public/lexicon/ru/standard/ря.json.gz",
+    "public/lexicon/ru/standard/с.json.gz",
+    "public/lexicon/ru/standard/са.json.gz",
+    "public/lexicon/ru/standard/сб.json.gz",
+    "public/lexicon/ru/standard/св.json.gz",
+    "public/lexicon/ru/standard/сг.json.gz",
+    "public/lexicon/ru/standard/сд.json.gz",
+    "public/lexicon/ru/standard/се.json.gz",
+    "public/lexicon/ru/standard/сж.json.gz",
+    "public/lexicon/ru/standard/сз.json.gz",
+    "public/lexicon/ru/standard/си.json.gz",
+    "public/lexicon/ru/standard/ск.json.gz",
+    "public/lexicon/ru/standard/сл.json.gz",
+    "public/lexicon/ru/standard/см.json.gz",
+    "public/lexicon/ru/standard/сн.json.gz",
+    "public/lexicon/ru/standard/со.json.gz",
+    "public/lexicon/ru/standard/сп.json.gz",
+    "public/lexicon/ru/standard/ср.json.gz",
+    "public/lexicon/ru/standard/сс.json.gz",
+    "public/lexicon/ru/standard/ст.json.gz",
+    "public/lexicon/ru/standard/су.json.gz",
+    "public/lexicon/ru/standard/сф.json.gz",
+    "public/lexicon/ru/standard/сх.json.gz",
+    "public/lexicon/ru/standard/сц.json.gz",
+    "public/lexicon/ru/standard/сч.json.gz",
+    "public/lexicon/ru/standard/сш.json.gz",
+    "public/lexicon/ru/standard/сщ.json.gz",
+    "public/lexicon/ru/standard/съ.json.gz",
+    "public/lexicon/ru/standard/сы.json.gz",
+    "public/lexicon/ru/standard/сь.json.gz",
+    "public/lexicon/ru/standard/сэ.json.gz",
+    "public/lexicon/ru/standard/сю.json.gz",
+    "public/lexicon/ru/standard/ся.json.gz",
+    "public/lexicon/ru/standard/т.json.gz",
+    "public/lexicon/ru/standard/у.json.gz",
+    "public/lexicon/ru/standard/уа.json.gz",
+    "public/lexicon/ru/standard/уб.json.gz",
+    "public/lexicon/ru/standard/ув.json.gz",
+    "public/lexicon/ru/standard/уг.json.gz",
+    "public/lexicon/ru/standard/уд.json.gz",
+    "public/lexicon/ru/standard/уе.json.gz",
+    "public/lexicon/ru/standard/уж.json.gz",
+    "public/lexicon/ru/standard/уз.json.gz",
+    "public/lexicon/ru/standard/уи.json.gz",
+    "public/lexicon/ru/standard/уй.json.gz",
+    "public/lexicon/ru/standard/ук.json.gz",
+    "public/lexicon/ru/standard/ул.json.gz",
+    "public/lexicon/ru/standard/ум.json.gz",
+    "public/lexicon/ru/standard/ун.json.gz",
+    "public/lexicon/ru/standard/уо.json.gz",
+    "public/lexicon/ru/standard/уп.json.gz",
+    "public/lexicon/ru/standard/ур.json.gz",
+    "public/lexicon/ru/standard/ус.json.gz",
+    "public/lexicon/ru/standard/ут.json.gz",
+    "public/lexicon/ru/standard/уф.json.gz",
+    "public/lexicon/ru/standard/ух.json.gz",
+    "public/lexicon/ru/standard/уц.json.gz",
+    "public/lexicon/ru/standard/уч.json.gz",
+    "public/lexicon/ru/standard/уш.json.gz",
+    "public/lexicon/ru/standard/ущ.json.gz",
+    "public/lexicon/ru/standard/уэ.json.gz",
+    "public/lexicon/ru/standard/ую.json.gz",
+    "public/lexicon/ru/standard/уя.json.gz",
+    "public/lexicon/ru/standard/ф.json.gz",
+    "public/lexicon/ru/standard/х.json.gz",
+    "public/lexicon/ru/standard/ц.json.gz",
+    "public/lexicon/ru/standard/ч.json.gz",
+    "public/lexicon/ru/standard/ш.json.gz",
+    "public/lexicon/ru/standard/щ.json.gz",
+    "public/lexicon/ru/standard/ы.json.gz",
+    "public/lexicon/ru/standard/ь.json.gz",
+    "public/lexicon/ru/standard/э.json.gz",
+    "public/lexicon/ru/standard/ю.json.gz",
+    "public/lexicon/ru/standard/я.json.gz"
   ],
   "requiredCapabilities": [
     "packages/goreview/src/scheduler/deck.ts",
@@ -4366,6 +6974,7 @@
     "packages/language-packs/src/alphabet-sprint/profiles/de.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/el.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/es.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/fr.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/he.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/hebrew-script.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/hi.ts",
@@ -4374,6 +6983,7 @@
     "packages/language-packs/src/alphabet-sprint/profiles/nb.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/nn.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/norwegian.ts",
+    "packages/language-packs/src/alphabet-sprint/profiles/ru.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/sq.ts",
     "packages/language-packs/src/alphabet-sprint/profiles/th.ts",
     "packages/language-packs/src/alphabet-sprint/segment.ts",
@@ -4383,11 +6993,13 @@
     "packages/language-packs/src/alphabet-sprint/words/el-classical.ts",
     "packages/language-packs/src/alphabet-sprint/words/el.ts",
     "packages/language-packs/src/alphabet-sprint/words/es.ts",
+    "packages/language-packs/src/alphabet-sprint/words/fr.ts",
     "packages/language-packs/src/alphabet-sprint/words/he.ts",
     "packages/language-packs/src/alphabet-sprint/words/hi.ts",
     "packages/language-packs/src/alphabet-sprint/words/la.ts",
     "packages/language-packs/src/alphabet-sprint/words/nb.ts",
     "packages/language-packs/src/alphabet-sprint/words/nn.ts",
+    "packages/language-packs/src/alphabet-sprint/words/ru.ts",
     "packages/language-packs/src/alphabet-sprint/words/sq.ts",
     "packages/language-packs/src/alphabet-sprint/words/th.ts",
     "packages/language-packs/src/analysis.ts",
@@ -4401,12 +7013,15 @@
     "packages/language-packs/src/packs/el.ts",
     "packages/language-packs/src/packs/es.ts",
     "packages/language-packs/src/packs/experimental.ts",
+    "packages/language-packs/src/packs/fr.ts",
     "packages/language-packs/src/packs/he.ts",
     "packages/language-packs/src/packs/hi.ts",
     "packages/language-packs/src/packs/la.ts",
     "packages/language-packs/src/packs/nb.ts",
     "packages/language-packs/src/packs/nn.ts",
     "packages/language-packs/src/packs/planned.ts",
+    "packages/language-packs/src/packs/ru-grammar.ts",
+    "packages/language-packs/src/packs/ru.ts",
     "packages/language-packs/src/packs/sq.ts",
     "packages/language-packs/src/packs/th.ts",
     "packages/language-packs/src/registry.ts",
@@ -4415,6 +7030,7 @@
     "packages/language-packs/src/tutorial/de.ts",
     "packages/language-packs/src/tutorial/el.ts",
     "packages/language-packs/src/tutorial/es.ts",
+    "packages/language-packs/src/tutorial/fr.ts",
     "packages/language-packs/src/tutorial/he.ts",
     "packages/language-packs/src/tutorial/hi.ts",
     "packages/language-packs/src/tutorial/index.ts",
@@ -4422,6 +7038,7 @@
     "packages/language-packs/src/tutorial/nb.ts",
     "packages/language-packs/src/tutorial/nn.ts",
     "packages/language-packs/src/tutorial/orientation.ts",
+    "packages/language-packs/src/tutorial/ru.ts",
     "packages/language-packs/src/tutorial/sq.ts",
     "packages/language-packs/src/tutorial/th.ts",
     "packages/repository-contract/src/index.ts",
@@ -4509,6 +7126,37 @@
     "src/adapters/de.ts",
     "src/adapters/el.ts",
     "src/adapters/es.ts",
+    "src/adapters/fr.ts",
+    "src/adapters/french/construction-texts.ts",
+    "src/adapters/french/constructions.ts",
+    "src/adapters/french/context-shared.ts",
+    "src/adapters/french/disambiguate.ts",
+    "src/adapters/french/entries.ts",
+    "src/adapters/french/function-words.ts",
+    "src/adapters/french/graphemes.ts",
+    "src/adapters/french/historical.ts",
+    "src/adapters/french/lexicon-full-data.ts",
+    "src/adapters/french/lexicon-full.ts",
+    "src/adapters/french/lexicon-modifiers.ts",
+    "src/adapters/french/lexicon-nouns.ts",
+    "src/adapters/french/lexicon-verbs.ts",
+    "src/adapters/french/morph-nominal.ts",
+    "src/adapters/french/morphology.ts",
+    "src/adapters/french/orth.ts",
+    "src/adapters/french/paradigm.ts",
+    "src/adapters/french/phrases.ts",
+    "src/adapters/french/production.ts",
+    "src/adapters/french/pronunciation.ts",
+    "src/adapters/french/sentences.ts",
+    "src/adapters/french/speech.ts",
+    "src/adapters/french/syntax.ts",
+    "src/adapters/french/table-tags.ts",
+    "src/adapters/french/tokenize.ts",
+    "src/adapters/french/types.ts",
+    "src/adapters/french/varieties.ts",
+    "src/adapters/french/verb-irregular.ts",
+    "src/adapters/french/verb-regular.ts",
+    "src/adapters/french/verbs.ts",
     "src/adapters/german/agreement.ts",
     "src/adapters/german/compounds.ts",
     "src/adapters/german/constructions.ts",
@@ -4696,6 +7344,33 @@
     "src/adapters/norwegian/units.ts",
     "src/adapters/norwegian/varieties.ts",
     "src/adapters/norwegian/verbs.ts",
+    "src/adapters/ru.ts",
+    "src/adapters/russian/alphabet.ts",
+    "src/adapters/russian/analyze.ts",
+    "src/adapters/russian/aspect.ts",
+    "src/adapters/russian/closed.ts",
+    "src/adapters/russian/constructions.ts",
+    "src/adapters/russian/describe.ts",
+    "src/adapters/russian/generated/core.ts",
+    "src/adapters/russian/generated/form-priors.ts",
+    "src/adapters/russian/generated/priors.ts",
+    "src/adapters/russian/government.ts",
+    "src/adapters/russian/guess.ts",
+    "src/adapters/russian/index-store.ts",
+    "src/adapters/russian/motion.ts",
+    "src/adapters/russian/numbers.ts",
+    "src/adapters/russian/paradigm.ts",
+    "src/adapters/russian/phrases.ts",
+    "src/adapters/russian/production.ts",
+    "src/adapters/russian/pronunciation.ts",
+    "src/adapters/russian/sentence.ts",
+    "src/adapters/russian/shards.ts",
+    "src/adapters/russian/speech.ts",
+    "src/adapters/russian/syntax.ts",
+    "src/adapters/russian/tags.ts",
+    "src/adapters/russian/text.ts",
+    "src/adapters/russian/translit.ts",
+    "src/adapters/russian/version.ts",
     "src/adapters/shared.ts",
     "src/adapters/shared/shards.ts",
     "src/adapters/spanish/constructions.ts",
@@ -4797,7 +7472,7 @@
     "algorithm": "FSRS-6.0",
     "sha256": "4968e995b7b7c3356cf843fc73c6f75cd5f2e1595315bde7caec9d2dd10bb287"
   },
-  "artifactManifestSha256": "b56e6d14acdcfe7ba24bfd089d96eb68356526f502aa6a4f7ed532a2173f6a01",
+  "artifactManifestSha256": "c3b38cb905f92e42bf2888a97936737c6d956632d12b4a2b060a024772ea0f75",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -4805,7 +7480,7 @@
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
-      "sha256": "26c52e0111ed97c0a7f2374e6eace598d7bdc2a36a2fbf95c29f13f10e7bef30"
+      "sha256": "52a60a3639038af3918d3609e0ad913ba10b20e6490e254ceb990de80b6ae28c"
     },
     {
       "path": "assets/arc-DZc9asID.js",
@@ -4856,6 +7531,10 @@
       "sha256": "6a195b7e4f518d53813581f415d7956e02049dd2762b4b9a3af80d56b4257e28"
     },
     {
+      "path": "assets/fr-bMcXCsxG.js",
+      "sha256": "ba64f47d3bf8fdaa12fcdf9b4cccaeb1c267622efb51a1a729c5d81e4026a864"
+    },
+    {
       "path": "assets/go-globe-frame-D8kaNpyf.png",
       "sha256": "9e849a83d7f526eeb0a09d3260647f76c47ca6fbbe186b4a68918c5f8ed250c6"
     },
@@ -4884,8 +7563,8 @@
       "sha256": "d1940ad0216fb0cf1d4a01b60892734106d2e4ae35e21cfb695a57f04936a60d"
     },
     {
-      "path": "assets/index-C2BK3CRj.js",
-      "sha256": "9403b0b46734ded436958a9707ee8636538ef16e91538ce46c88d9bbe9a18544"
+      "path": "assets/index-DtlgWIjP.js",
+      "sha256": "4c950bc5f507239b7d981047ac012e511930de49a96a0a5ee5ed3a9873326256"
     },
     {
       "path": "assets/jerusalem-YWyJNBCG.webp",
@@ -4904,20 +7583,32 @@
       "sha256": "c7324768bd26c74911f4d583d18cc3d0f62fcbbc14da15668ef4b4cb855bb868"
     },
     {
-      "path": "assets/lang-de-jeyPZ5_4.js",
-      "sha256": "bb5a1d0f4181082eb658ebd00ab69f7f9bee19556b1786c4c894cd34293d337b"
+      "path": "assets/lang-de-B8WBdYLx.js",
+      "sha256": "89c5c42c6f928c558a61d8172f3c02fe790695ffed5067234b1ec2a15f24cfa0"
     },
     {
-      "path": "assets/lang-el-CjX7PjZ_.js",
-      "sha256": "d20d8e6dc2691435e6deecb159262db41052cbbd2070d0912578df41bb4a2cca"
+      "path": "assets/lang-el-DExNKH5c.js",
+      "sha256": "c4431363c6bfe17687aaefd34a8b8c33845cbaf2c05b7ae6808c6f95d3656563"
     },
     {
-      "path": "assets/lang-es-CmjEpMng.js",
-      "sha256": "6b48f979a8704bd94f8b3f000edf0779589257818415d9a1fa6ddf7a0ba55490"
+      "path": "assets/lang-es-LAyht1-v.js",
+      "sha256": "89dbab44d82af694ae1875c3ea3607f072b87b1cc1f3ee4c83462d13af208505"
     },
     {
-      "path": "assets/lang-he-B2dHLpWf.js",
-      "sha256": "28572b42b76fed3cbb23a928f1db24efa9051ec07b367701e58ce67e5792288e"
+      "path": "assets/lang-fr-C7pe9Mhm.js",
+      "sha256": "6575def4f73ad72e9c96bb8d5e70894d61d7c2c53cf1289eb2a5af0656e5dc42"
+    },
+    {
+      "path": "assets/lang-french-CIGjcOcX.js",
+      "sha256": "8ad37af9753e94a9782703ab29ac743ecd6a8b4b429b36ffbe0720da18d0d7eb"
+    },
+    {
+      "path": "assets/lang-french-LVX0gXcx.js",
+      "sha256": "cacf110d70dd5bd5150466097d9412286d6cc2dbbbb96f617ea9a5754af36c82"
+    },
+    {
+      "path": "assets/lang-he-CkZUdIxJ.js",
+      "sha256": "898a96306772ff77f190ed83284173d8313a51a86069869cd4ba30128a93fe70"
     },
     {
       "path": "assets/lang-hebrew-Bsnip4qd.js",
@@ -4928,32 +7619,36 @@
       "sha256": "fa0a59464851c6d94c25e39cd9a1706bede329c8f8b6d856911a5a63912048a0"
     },
     {
-      "path": "assets/lang-hi-BLwVhXw6.js",
-      "sha256": "03e0fc60ea6173a269b0c6a7b42be7417c8f95fc947de691847bfeb9cb06482d"
+      "path": "assets/lang-hi-tIFGb1qW.js",
+      "sha256": "41ff002197f901f2ad5373f6725bc8b1513ac2bb7fce67e934f07472a3c3dc5d"
     },
     {
       "path": "assets/lang-hindi-DyM6_O99.js",
       "sha256": "1c7e6f34552d45229be3030177ba78df56300e64ccadf5f6e454c34b24b54548"
     },
     {
-      "path": "assets/lang-la-JcoH4jgO.js",
-      "sha256": "e4024e9ffc2dafa64921e411d14f1ec9e4b851e4b8dacdb6228c08a3691ad53f"
+      "path": "assets/lang-la-CAj8E1kP.js",
+      "sha256": "90cc65cbd9c556366e4b51fc2400b1c08af7dd811289076caffd71c9d9def0b1"
     },
     {
-      "path": "assets/lang-nb-B8sc4798.js",
-      "sha256": "804b6e2d9d8608e97e7543660e8bd2448fd857597682f6d6ad40d4745543c237"
+      "path": "assets/lang-nb-BL6GrR9O.js",
+      "sha256": "92457a34b9321eb7fae6268a1990106cfec58bef869f62bff20063bcf8582295"
     },
     {
-      "path": "assets/lang-nn-BmGEUpIU.js",
-      "sha256": "c59915050b96f161dfdebf557bfa2476765a3df7a2bf2c30b07d90b341917d00"
+      "path": "assets/lang-nn-RB5ENXEx.js",
+      "sha256": "fc1219004071d3a9e50732e6d88628f18f69dc7e170d7d6e060f65210d281782"
     },
     {
-      "path": "assets/lang-norwegian-CwZBxoca.js",
-      "sha256": "c49aceee62bfefca8781f3262a93949ef056bf8f77a1cf82ba2fd60859e87c6d"
+      "path": "assets/lang-norwegian-DeJoGcMn.js",
+      "sha256": "e5295bb8fed8e74e1fe1e10210d492c138b20537ed1f0d8c199fb394b1944bfb"
     },
     {
-      "path": "assets/lang-sq-B-9LkSqT.js",
-      "sha256": "d467823d05b569479da44d7dd68de47980ac4c36661ca68773de3bffcf457390"
+      "path": "assets/lang-ru-Bx_7RaIC.js",
+      "sha256": "fab5968b7eba55571d2cd13be0c90b2bc4f668a74230467900fd4209f4ccb246"
+    },
+    {
+      "path": "assets/lang-sq-BpArd3il.js",
+      "sha256": "4d537ceea326c35f706b23724342ba0f92da1a3dc5ddc60bf35bdcaa9c34b100"
     },
     {
       "path": "assets/lang-th-QSLCPu7R.js",
@@ -4964,8 +7659,8 @@
       "sha256": "56a6f2a93f2a6677a715110c74adb6220e068ef34cd5c5e7d13072c9b9e84484"
     },
     {
-      "path": "assets/languageChoices-IYZ_PhX_.js",
-      "sha256": "f2a64dba95127ae948cf617ed79189c6e3e20ac64386b6066831742bf989b613"
+      "path": "assets/languageChoices-jPltDWTH.js",
+      "sha256": "26adc55e5435ad82351722a5f72c7811841c30db2d0afc4c9ff15678f20a5ae1"
     },
     {
       "path": "assets/nb-DD4vZ02j.js",
@@ -4984,8 +7679,8 @@
       "sha256": "a53db013a29facfd504a69b9936a9f51738fb4db1a7cc7d6f7e013c3ecea1026"
     },
     {
-      "path": "assets/registry-zAmngOzX.js",
-      "sha256": "d987b95710eaba9ebefd0c02d265c3c8fabc0bfdf9ab65a210c7d28149080552"
+      "path": "assets/registry-BgX4JhTB.js",
+      "sha256": "0be75d853848969fef9f8b9930b54abc8d59e1246389b84ef7ca1f2b4eaee6e8"
     },
     {
       "path": "assets/rolldown-runtime-DK3Fl9T5.js",
@@ -4998,6 +7693,10 @@
     {
       "path": "assets/rothenburg-vv8nBX67.webp",
       "sha256": "ffb6630dd75baa82d3bd28fb64e7a767212cc5ee7110a7f2f69117c202340404"
+    },
+    {
+      "path": "assets/ru-DxlqbZCR.js",
+      "sha256": "0a38baa8b0fde02728ee4d78089566d6187b1905531fdf9d17fdd16a4fe35f5e"
     },
     {
       "path": "assets/segment-Bq1cMtpn.js",
@@ -5024,8 +7723,8 @@
       "sha256": "80fa8b92d9c1653a1a67c61db2bc76d90a4008a8368a2a9b7eae8aa043fc4cea"
     },
     {
-      "path": "assets/th-BwCFsQkz.js",
-      "sha256": "940bf37a3363173b27c74dd5a4179ddc9c7c29ca63b86b8bc97ba4bc5d918d4d"
+      "path": "assets/th-CvUtwjhK.js",
+      "sha256": "75c96588935565ff492e376ed1cbf366257d2d3cf4daf786b303ccb265ea227f"
     },
     {
       "path": "assets/valle-de-angeles-BxOTzEvC.webp",
@@ -5065,7 +7764,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "f3a2618571aa39709cb42b61547950caa137c5e84c1493baf8f728ebd994a3f3"
+      "sha256": "f2456dbdac1eea8b9baa87ea90db1b5b71a428a821dcdda73c7099a57e7d4596"
     },
     {
       "path": "lexicon/el/ancient/_.json.gz",
@@ -5593,7 +8292,7 @@
     },
     {
       "path": "lexicon/el/koine-index.json.gz",
-      "sha256": "98dd97cb4e08d479bbbfb8e4e81638a281f31be88d39977123f605f157a8f239"
+      "sha256": "0d4ab25684395fd07a97ac96091a88a1f64f60e2ee6ad7a35ca5003358d36af9"
     },
     {
       "path": "lexicon/el/modern/_.json.gz",
@@ -5813,7 +8512,7 @@
     },
     {
       "path": "lexicon/he/biblical/form-frequency.json.gz",
-      "sha256": "f651bddcb52c66c64eb734c9861921a8a2aa5f66d04fc9754ed9513ba04388e3"
+      "sha256": "567be7be4f519c8beeec068a5fb98a7ef8cc028575fb12cc9ae2ca6a9ffcd9e3"
     },
     {
       "path": "lexicon/he/biblical/manifest.json",
@@ -6004,12 +8703,1884 @@
       "sha256": "f5b81ed8b2ac5d3c709e8c3fdfc8b9393ed77ec148c8ba146220463637f615ca"
     },
     {
+      "path": "lexicon/ru/standard/manifest.json",
+      "sha256": "b069253ca8485a2802a3cebc7369c481b30b3b2a6c7d7488bf947e79685bbf19"
+    },
+    {
+      "path": "lexicon/ru/standard/а.json.gz",
+      "sha256": "7c6987e29e3b3b0d73921547db0e23fc9e1382c21f68c211dcbe6a39515f5856"
+    },
+    {
+      "path": "lexicon/ru/standard/аа.json.gz",
+      "sha256": "2631b8c2e954a8b95b310f2c723e592dff5e322f6c4c581baf3fefedf37c13df"
+    },
+    {
+      "path": "lexicon/ru/standard/аб.json.gz",
+      "sha256": "af6ec8cad9d7567a18c101a1fe7d263ba290ff37641c44557758edd679632945"
+    },
+    {
+      "path": "lexicon/ru/standard/ав.json.gz",
+      "sha256": "42e4077b2414be2b29c88ccb9010aef130972d38d000863f0e9c6e3d058915b9"
+    },
+    {
+      "path": "lexicon/ru/standard/аг.json.gz",
+      "sha256": "03ff631bc197f73e17dcf5da30ef2be817d6bd019fe14b46512e2503ea9de61d"
+    },
+    {
+      "path": "lexicon/ru/standard/ад.json.gz",
+      "sha256": "5544283378102aad892072cec36160562134ef5b21f529d1fa2758467692793f"
+    },
+    {
+      "path": "lexicon/ru/standard/аж.json.gz",
+      "sha256": "e21bbe0b524fa2b759ff97523898bcc160e667cb76f81e6572a46aad21d94e15"
+    },
+    {
+      "path": "lexicon/ru/standard/аз.json.gz",
+      "sha256": "d6185d3694dd6d5fdc2cbab9381da7949ddac922d58e40684b45ebdbd8cd2050"
+    },
+    {
+      "path": "lexicon/ru/standard/аи.json.gz",
+      "sha256": "febab7b825e9b8f9ab17a9eb9f762ce06b588dc3a348863fa9eefd682e5d2abd"
+    },
+    {
+      "path": "lexicon/ru/standard/ай.json.gz",
+      "sha256": "35025517f635ff3a92b74ec794ead83284b2fdc625f1392616334501862cb394"
+    },
+    {
+      "path": "lexicon/ru/standard/ак.json.gz",
+      "sha256": "3b8646337f58e602f68356795f0e3333c38aaa719581a2908654834149b3b9e3"
+    },
+    {
+      "path": "lexicon/ru/standard/ал.json.gz",
+      "sha256": "254731e1ca7f6eeefd9e052d240b7c61ea298e51ec997c27d6ebaec58c090506"
+    },
+    {
+      "path": "lexicon/ru/standard/ам.json.gz",
+      "sha256": "435d54c093fce58b2bbfa4a2d62b08760bf854cd84b92df57a375be23650ab08"
+    },
+    {
+      "path": "lexicon/ru/standard/ан.json.gz",
+      "sha256": "f2102f2a77fec495c673e003f1cd8d6432fc2b71140584f4254d396a0c2f960e"
+    },
+    {
+      "path": "lexicon/ru/standard/ао.json.gz",
+      "sha256": "df4582562df6136ce0fa8a92a1d60a64f4abe17154de0f03be81cb65c0f1212e"
+    },
+    {
+      "path": "lexicon/ru/standard/ап.json.gz",
+      "sha256": "6084875ae399697f44182275455c2b05bfa1fe356daa8821467d0fcd1f395e7b"
+    },
+    {
+      "path": "lexicon/ru/standard/ар.json.gz",
+      "sha256": "0295dea7d1f9fc25f4b3d04825f65730ff5d99eaf2aa837a3b0e9ff8382fcf76"
+    },
+    {
+      "path": "lexicon/ru/standard/ас.json.gz",
+      "sha256": "f24e7cce1151908ebbfb8f894d55c9bea94b029cddad8b4ce32f361c4ae4c733"
+    },
+    {
+      "path": "lexicon/ru/standard/ат.json.gz",
+      "sha256": "1c77f18ec3ae65cf30b213501999dba2c79a87dacd0295078d25492e764569c1"
+    },
+    {
+      "path": "lexicon/ru/standard/ау.json.gz",
+      "sha256": "d291a7fbf88e060d4bd0f92cd89b2cd27ebf745a2b4e2f70916e9916226bb668"
+    },
+    {
+      "path": "lexicon/ru/standard/аф.json.gz",
+      "sha256": "6db57dd81cfeae5cd7ab72c7553067a309ecd10eeec8bc220fa7cdc4958f51cc"
+    },
+    {
+      "path": "lexicon/ru/standard/ах.json.gz",
+      "sha256": "96be4d2d96d3e9bce68c2ffcf0e6ed3f86882816f87475688929bcb9b7ffb426"
+    },
+    {
+      "path": "lexicon/ru/standard/ац.json.gz",
+      "sha256": "5a34eae626fc45ba256e93dded08caa9c097406e50001bec3d005273a680d68f"
+    },
+    {
+      "path": "lexicon/ru/standard/аш.json.gz",
+      "sha256": "9a07e2b6520c8ba0d315f7ccbee10504c7cfdeb723d0d50820d3ae75008eefdf"
+    },
+    {
+      "path": "lexicon/ru/standard/ащ.json.gz",
+      "sha256": "7bc6f131be36d9968d1dc81d1626b66d30b524f876d3e075a04fdbd591d00ed0"
+    },
+    {
+      "path": "lexicon/ru/standard/аэ.json.gz",
+      "sha256": "caa8e7721574a588eaa2faeb885639e66858417db883b1e14ac34a15c361a31a"
+    },
+    {
+      "path": "lexicon/ru/standard/аю.json.gz",
+      "sha256": "80d8ed448b4185809b09c2d8aa9470149cf02c25466f7e4f5febeaed3faa8124"
+    },
+    {
+      "path": "lexicon/ru/standard/ая.json.gz",
+      "sha256": "3974d3847468fec534a7088b7529d5a1d3d3afdcbd994c118322b6d7130603dc"
+    },
+    {
+      "path": "lexicon/ru/standard/б.json.gz",
+      "sha256": "7a9a97291ee3a9b64845b2f6c720fa7395e8513c88501eded4cb34b6adc3c44f"
+    },
+    {
+      "path": "lexicon/ru/standard/ба.json.gz",
+      "sha256": "173fec582f5c118574954e074c0bcf708e289e8ac50bd97e18d836ffd237a279"
+    },
+    {
+      "path": "lexicon/ru/standard/бг.json.gz",
+      "sha256": "8d1f0d64f2eb910bef79dbdf6ea376565ef22dbf32b08956d6b37000b52c2466"
+    },
+    {
+      "path": "lexicon/ru/standard/бд.json.gz",
+      "sha256": "70f8b58978edf492cc3c77c97d3eaf7a33719087faf23664a9a9f3dc93b302ee"
+    },
+    {
+      "path": "lexicon/ru/standard/бе.json.gz",
+      "sha256": "8b1b1b2203100fc083b00351446ac0f97ee2c0ec39e4aa7cb7d27fb544870f7c"
+    },
+    {
+      "path": "lexicon/ru/standard/бж.json.gz",
+      "sha256": "34115068fa5ab8a5721dca34c7d706559c3a54da7a10b243d74884a4c9410a0e"
+    },
+    {
+      "path": "lexicon/ru/standard/бз.json.gz",
+      "sha256": "69c9d79e39cd4b2a9203f0bbb77ec252ea02267faf9f0d2e5e345c04220cecb6"
+    },
+    {
+      "path": "lexicon/ru/standard/би.json.gz",
+      "sha256": "f4919a2e6271af86e40ba69283a4cbd898c4fb8e21420238a99a42e937986b90"
+    },
+    {
+      "path": "lexicon/ru/standard/бл.json.gz",
+      "sha256": "43f768448a965b9f6cae88af4605ceab5a5851db076bb82590402b91b71eaf20"
+    },
+    {
+      "path": "lexicon/ru/standard/бн.json.gz",
+      "sha256": "d58bfd145d672b0ffa4b4c499686311d6611beb7bcdaebde319f54531f6ba6b5"
+    },
+    {
+      "path": "lexicon/ru/standard/бо.json.gz",
+      "sha256": "42c0f6c7bab5549f3c70071145dc39c41ce829614e7dbf555e76f63369787625"
+    },
+    {
+      "path": "lexicon/ru/standard/бп.json.gz",
+      "sha256": "ee7def22c610bced5c9aaab03230ebcf1f20fdaa9e073f699ac38ea3fd7fbddf"
+    },
+    {
+      "path": "lexicon/ru/standard/бр.json.gz",
+      "sha256": "5713678890879914ba86a5a91da7f93cb3fe6c024f1c4335c2f3024357b82ad6"
+    },
+    {
+      "path": "lexicon/ru/standard/бс.json.gz",
+      "sha256": "e34d41179a89808af332198cb1390a7b909255f66fa607e4d5193cde748407b7"
+    },
+    {
+      "path": "lexicon/ru/standard/бт.json.gz",
+      "sha256": "beca0bc139a8461389da5c2e9380aa4fd7783526129487c5f0431ea3a0d7aab0"
+    },
+    {
+      "path": "lexicon/ru/standard/бу.json.gz",
+      "sha256": "55ed40e6a7079b94f6828d6bdd82305c8d6e20c4fd1a69b6c7b36cc5c72a25f7"
+    },
+    {
+      "path": "lexicon/ru/standard/бц.json.gz",
+      "sha256": "5b211748b691b83b6681ce88897eedf5ab9c110db4d30b4ca9abc7ebc4f04e48"
+    },
+    {
+      "path": "lexicon/ru/standard/бы.json.gz",
+      "sha256": "89331571f6f333ac840310c1aaa2f97ccdd4830d605a6f799196cbd003743bc5"
+    },
+    {
+      "path": "lexicon/ru/standard/бь.json.gz",
+      "sha256": "3f4fd5d8e2656e3eb0c6b3072b9486d7ed377f9e013d60ac10e36d4696f03325"
+    },
+    {
+      "path": "lexicon/ru/standard/бэ.json.gz",
+      "sha256": "b39dea1c7c9834a9dfb9985b357ffd03dc8bae318d1f12783b8299de8fe0f519"
+    },
+    {
+      "path": "lexicon/ru/standard/бю.json.gz",
+      "sha256": "bde5e875b2948d28306931f1b507d137c1d2f6461161b99c826dfdff536a06b9"
+    },
+    {
+      "path": "lexicon/ru/standard/бя.json.gz",
+      "sha256": "5b34f9b9d671e89fcb33736acd80d9f5a08e6ef2466e8367b603d4b83c4c1748"
+    },
+    {
+      "path": "lexicon/ru/standard/в.json.gz",
+      "sha256": "94211d0d52c3bbdf18b979c997b22028490eb3bf7f3294fe3589ee3cdf76fe44"
+    },
+    {
+      "path": "lexicon/ru/standard/ва.json.gz",
+      "sha256": "9d2bab10858c1e212a6b44467c509bc254debd6d83e8bbc0423cd3d04ad52d29"
+    },
+    {
+      "path": "lexicon/ru/standard/вб.json.gz",
+      "sha256": "0d0f51a3069c245a6bdf4989e4582ac4390530a9b24c3c6c40bda1da2e0bae77"
+    },
+    {
+      "path": "lexicon/ru/standard/вв.json.gz",
+      "sha256": "3ddf415b0a3065fb0d3d03671fca2d6cc50ceee90bbb1a3746431307f8523aee"
+    },
+    {
+      "path": "lexicon/ru/standard/вг.json.gz",
+      "sha256": "5c4011b586ba105087ee0923cb22d8486e3a1ec262b7dd131cfc45e8ab7786cf"
+    },
+    {
+      "path": "lexicon/ru/standard/вд.json.gz",
+      "sha256": "a4638916f1f6193ccc8f40505bdd5ab8fb3b9381d6cbbb035a0f60576109aea8"
+    },
+    {
+      "path": "lexicon/ru/standard/ве.json.gz",
+      "sha256": "96ba11c79f8173cadd93c18585dc2c09ae244e2e1967027c62c6db22bf5b0b67"
+    },
+    {
+      "path": "lexicon/ru/standard/вж.json.gz",
+      "sha256": "7c7b0cae1b2f2e0158938f58bb953eca6dfd4fb157a3e35d9ef43324a5394efa"
+    },
+    {
+      "path": "lexicon/ru/standard/вз.json.gz",
+      "sha256": "533a40051202c1e74f235a1f9a356be87bedbc66b1c884c93929b4dc3cde7c1a"
+    },
+    {
+      "path": "lexicon/ru/standard/ви.json.gz",
+      "sha256": "10a4f97b1663526283091d4da70cc620732da9097052e035c7ad9b4474bdc398"
+    },
+    {
+      "path": "lexicon/ru/standard/вк.json.gz",
+      "sha256": "734764998564293a3fdb2ce7f9b2b9feb31e2ce32ac27c127b43fe25d117a22b"
+    },
+    {
+      "path": "lexicon/ru/standard/вл.json.gz",
+      "sha256": "b47ef6ff9702b3d6e18d4cdef6ac3862fe1f9811f02511bf73fd3c4ca84fcd5d"
+    },
+    {
+      "path": "lexicon/ru/standard/вм.json.gz",
+      "sha256": "c357d4de20d863227cd8cacb6b35065248c0e26cc9db3458af18f756a2c7b40f"
+    },
+    {
+      "path": "lexicon/ru/standard/вн.json.gz",
+      "sha256": "dc8b52c89615de5349e684a4fb8bea98c459df3d37363bea9d431e53687307da"
+    },
+    {
+      "path": "lexicon/ru/standard/во.json.gz",
+      "sha256": "47865dc61f09fb19ef22b9c5528fa5e0284cd26038ccde9abfb3d5932c3d1bcf"
+    },
+    {
+      "path": "lexicon/ru/standard/вп.json.gz",
+      "sha256": "eb5f86f6de745281943073af7ac7057aa6d19bca5cbeb1a4c4b9f860cdcb750d"
+    },
+    {
+      "path": "lexicon/ru/standard/вр.json.gz",
+      "sha256": "7926fe850fd447ce8aea35ea8773ea8bbd3d7b254714fee47587a70ad938814c"
+    },
+    {
+      "path": "lexicon/ru/standard/вс.json.gz",
+      "sha256": "c9c21397a7b53aeb1e06118ec30cf66e5dd9edfb28cfe0e72f51cd5c6b928275"
+    },
+    {
+      "path": "lexicon/ru/standard/вт.json.gz",
+      "sha256": "bd9b0397c7eee0430fb7bd57764d156f9694065779190e82b95aa2f4a55c7ef5"
+    },
+    {
+      "path": "lexicon/ru/standard/ву.json.gz",
+      "sha256": "b7d88b5a57b5311c7ec7d9f393fa656844f40304cd5e4d04a2f70a14e8ad5666"
+    },
+    {
+      "path": "lexicon/ru/standard/вх.json.gz",
+      "sha256": "c29beb349b0c6d1b320fd4d742bf31b52366c571b595aa8212c6f28f00a3133c"
+    },
+    {
+      "path": "lexicon/ru/standard/вц.json.gz",
+      "sha256": "eda37d6fbae900f28cb9a1ce45faa1e0ae7913f51e3a40bb70121f402aaf0d80"
+    },
+    {
+      "path": "lexicon/ru/standard/вч.json.gz",
+      "sha256": "413bead89ffe6c09c5f1cf0691d0dea9cffec7177bbb7435d66c95d6b119379e"
+    },
+    {
+      "path": "lexicon/ru/standard/вш.json.gz",
+      "sha256": "b2070f72fbec4f9f882e76f6bc20e53fb5482e5938d7f29b1827a6e2a2bfee7f"
+    },
+    {
+      "path": "lexicon/ru/standard/въ.json.gz",
+      "sha256": "28d6117b35582ff58f54409675d18ddde918959cf1b61462a08b8573a76f744f"
+    },
+    {
+      "path": "lexicon/ru/standard/вы.json.gz",
+      "sha256": "16da6ed9202a974fcc5d69b7a9a8f64f5ccfb2989ab5a3fa7b0dfe6312995a9a"
+    },
+    {
+      "path": "lexicon/ru/standard/вь.json.gz",
+      "sha256": "00ff657de4123818623f9f21c02ab25b3400648b5427db18d1ed9a2d22af5e54"
+    },
+    {
+      "path": "lexicon/ru/standard/вэ.json.gz",
+      "sha256": "aae66eb9d9e3bcf795091afa4a77fee23bf8bdc85b7ae6d69512c5988ccfee9a"
+    },
+    {
+      "path": "lexicon/ru/standard/вя.json.gz",
+      "sha256": "5dab7efd03e597f3b82d7846a7bce2e1f84da38761ac3bbc1dac72e2c543d850"
+    },
+    {
+      "path": "lexicon/ru/standard/г.json.gz",
+      "sha256": "599d99db280304e77a165d018b1a8338299014593639f7c42b1a5bc7a7d3d4a2"
+    },
+    {
+      "path": "lexicon/ru/standard/д.json.gz",
+      "sha256": "119f1e44d56594f160741f5f34ba3cc650fd55e48d79f4220a4bb704b55ea3ca"
+    },
+    {
+      "path": "lexicon/ru/standard/да.json.gz",
+      "sha256": "552c1af4622f6b1d33466c432ef4fb905a14b749a402f1eb047322db29bf956a"
+    },
+    {
+      "path": "lexicon/ru/standard/дб.json.gz",
+      "sha256": "87620df02018481e19e273eef295da3b894b994518d848d18a9b32fac0fd9b1c"
+    },
+    {
+      "path": "lexicon/ru/standard/дв.json.gz",
+      "sha256": "86cf24b0c3cc35bb2079fb9316b2578a59b8eb65a6bce079997294ea06c80ba2"
+    },
+    {
+      "path": "lexicon/ru/standard/дг.json.gz",
+      "sha256": "e0df30572d8476c99c1e52de85e807ac25cd67a981ae43652e07ca25fb34f76e"
+    },
+    {
+      "path": "lexicon/ru/standard/де.json.gz",
+      "sha256": "5fed41479e2e2e5bc10fc36779588fc7c610aee812dd9bf51a812fd05ed7a431"
+    },
+    {
+      "path": "lexicon/ru/standard/дж.json.gz",
+      "sha256": "4965c49eaee1d492c7fbfe744b3da7992ec85ae8f3390c9f219b49af051a692b"
+    },
+    {
+      "path": "lexicon/ru/standard/дз.json.gz",
+      "sha256": "38e3dd801f491cabfdda90afc0192226de6fcb003365a37c3f1de7d61ffd9bf6"
+    },
+    {
+      "path": "lexicon/ru/standard/ди.json.gz",
+      "sha256": "c35eca3ce4f6aab4e0a76c7cd361bafe8b1f818ea23871e7cee07243376c96aa"
+    },
+    {
+      "path": "lexicon/ru/standard/дл.json.gz",
+      "sha256": "88ef77334c69fcfc35164f3f6ed52a154129ba5d7f77ab8ce3ac8236775a822f"
+    },
+    {
+      "path": "lexicon/ru/standard/дм.json.gz",
+      "sha256": "ebd26bc5a58d767895270d054587b347819b053394bf47a4ba99c7461cc690ec"
+    },
+    {
+      "path": "lexicon/ru/standard/дн.json.gz",
+      "sha256": "d1294b650308113cded66d82b3c163633caa50f8bfd488e12ba6bb29363206c7"
+    },
+    {
+      "path": "lexicon/ru/standard/до.json.gz",
+      "sha256": "8f635c03efcc3d0343be78151a1a89cfeeea090a6b79a786b0796da14047fc3b"
+    },
+    {
+      "path": "lexicon/ru/standard/др.json.gz",
+      "sha256": "16985cdadb4980fc5ee019c252b07237625415e3ff07ee38a8f3fa5a9302f8ed"
+    },
+    {
+      "path": "lexicon/ru/standard/дт.json.gz",
+      "sha256": "3c4186943177b746cac36d94b7abf17ef0a5a2152aaf35ddcc7c337420787dfe"
+    },
+    {
+      "path": "lexicon/ru/standard/ду.json.gz",
+      "sha256": "6e9106c605cb07e09dfaae848920a47422ee1b4ba0aafa30b8b069fbb500b578"
+    },
+    {
+      "path": "lexicon/ru/standard/дх.json.gz",
+      "sha256": "2b2cfb3eb357310a9bd67d84dd1f21d9b5d208c5aef8aa1f237ee5d227a824a3"
+    },
+    {
+      "path": "lexicon/ru/standard/дщ.json.gz",
+      "sha256": "97e9faab857cbafb191a7e26d35a6a2698a0a3ea9b8c49edc6797a8804535ad3"
+    },
+    {
+      "path": "lexicon/ru/standard/ды.json.gz",
+      "sha256": "00b2ada2a28c75781d912ac3b99b562262d8f3a151a2c616e159da63759d5260"
+    },
+    {
+      "path": "lexicon/ru/standard/дь.json.gz",
+      "sha256": "199cc0932b11fc7275342f9536f83ae016212871b5e2de8033049f5efff1737b"
+    },
+    {
+      "path": "lexicon/ru/standard/дэ.json.gz",
+      "sha256": "91277347eb787331c53f443a0463405e91dac3a3989f3b9fec6fe01b9259f419"
+    },
+    {
+      "path": "lexicon/ru/standard/дю.json.gz",
+      "sha256": "b4c97a44b5559fe843e3ce6f90136e0fd1151d87f09c9d8633bb1882d55aca1f"
+    },
+    {
+      "path": "lexicon/ru/standard/дя.json.gz",
+      "sha256": "c4a6b09d7d3cf1424eac23698602c1e67a4aa0320277a7cefadba1c893c7437c"
+    },
+    {
+      "path": "lexicon/ru/standard/е.json.gz",
+      "sha256": "2a46e2c64440761e19325a838086c8ad4a905513ef081f8e36fbfdce444967dc"
+    },
+    {
+      "path": "lexicon/ru/standard/ж.json.gz",
+      "sha256": "cba1020ced1d1939a3ba687bed99ca322e766d4f1b26778ee6bb5d3edd7d1c06"
+    },
+    {
+      "path": "lexicon/ru/standard/з.json.gz",
+      "sha256": "a36756ca89bfe95a7b0559f0b1da5de582b3eb0a4064f25b40777ea3756d51a7"
+    },
+    {
+      "path": "lexicon/ru/standard/за.json.gz",
+      "sha256": "83c05366067039e628dcd899a752d016e957c395dcd86d95f8813513e3b0164f"
+    },
+    {
+      "path": "lexicon/ru/standard/заа.json.gz",
+      "sha256": "0b0db179468cd65a995a0e50168ea98226e5c7753be2a04260c037b53acfff5b"
+    },
+    {
+      "path": "lexicon/ru/standard/заб.json.gz",
+      "sha256": "f780319c58bb58f89a0aecd0383bb9b6d2ab82ebedaced352f2cf07db112bd09"
+    },
+    {
+      "path": "lexicon/ru/standard/зав.json.gz",
+      "sha256": "ceb8ecddd73da228c3a4a419c4575daeb3ee87a043fe249beef90bc012bdb12a"
+    },
+    {
+      "path": "lexicon/ru/standard/заг.json.gz",
+      "sha256": "e38a74948b3652bfc094150990680ae75b3b10458d0289a134f6fa065cbfda16"
+    },
+    {
+      "path": "lexicon/ru/standard/зад.json.gz",
+      "sha256": "4019feee29a8d1bf8c6dd6ab5a58421e76afe423d76c1b3f7e3750763fd6f1c0"
+    },
+    {
+      "path": "lexicon/ru/standard/зае.json.gz",
+      "sha256": "ac4a47bb53894e9452ce063c6f13d22979a6f623541d6e7c9c6fd925aece187a"
+    },
+    {
+      "path": "lexicon/ru/standard/заж.json.gz",
+      "sha256": "4a0929899686bd485dda304ecd2a5c27e390d8ecb25546fcdc6c15f081fcc7cf"
+    },
+    {
+      "path": "lexicon/ru/standard/заз.json.gz",
+      "sha256": "5bbbcfcc225f5fd4f83de98d1bff6f2b1a599aa1f8c84fda6deff3e309ea6841"
+    },
+    {
+      "path": "lexicon/ru/standard/заи.json.gz",
+      "sha256": "a146962e4e5d42462aba5d786a3ee9b56cbe6078afcf102828872789b64a1e05"
+    },
+    {
+      "path": "lexicon/ru/standard/зай.json.gz",
+      "sha256": "eed3bebb645bda728553cc73f2c6ea72a1c618583a8d8e40bc51369b5d54b4bf"
+    },
+    {
+      "path": "lexicon/ru/standard/зак.json.gz",
+      "sha256": "a9e0c19dbf984f10551f7631c77ee46a57ce9eaef3696e46873d3ee7163d1797"
+    },
+    {
+      "path": "lexicon/ru/standard/зал.json.gz",
+      "sha256": "bbf927759e61c3a911563260b600de540f71874f8071c2e43fe1eab3253e4f73"
+    },
+    {
+      "path": "lexicon/ru/standard/зам.json.gz",
+      "sha256": "01ea8dc7db864ea110a0ad39cc5bd0ede14f6ced66bcaf04fc6e7190288b33c5"
+    },
+    {
+      "path": "lexicon/ru/standard/зан.json.gz",
+      "sha256": "72367affb900097e25efa4fbab9b69f7363dcf243917d3f9fe67bd71135aa844"
+    },
+    {
+      "path": "lexicon/ru/standard/зао.json.gz",
+      "sha256": "ff605eb9bbd07c12d342f5e9af98ada4568a16aedf7e7658f0c3a9dadc273704"
+    },
+    {
+      "path": "lexicon/ru/standard/зап.json.gz",
+      "sha256": "a5a64381aa1c34ffaf97790c0df5d180f2c0023df65bf958774b6da1211f92d7"
+    },
+    {
+      "path": "lexicon/ru/standard/зар.json.gz",
+      "sha256": "85b514dff6dac22e76f999b387f2235d90729bc792608faacadec082d4674e95"
+    },
+    {
+      "path": "lexicon/ru/standard/зас.json.gz",
+      "sha256": "27cce4cdc91f021eb6c34b775621c10686a52fd64cfbb1756f6f1818a63a7680"
+    },
+    {
+      "path": "lexicon/ru/standard/зат.json.gz",
+      "sha256": "56aa655f069946a207112e04cfeb4f64ad8305c213fe48fb4dfef89cd3a63a56"
+    },
+    {
+      "path": "lexicon/ru/standard/зау.json.gz",
+      "sha256": "9706f987d1f91d549607cfc5843d993c707bf9bdec0dc3fceeeeffe31b7dbab7"
+    },
+    {
+      "path": "lexicon/ru/standard/заф.json.gz",
+      "sha256": "739e8c9b1f360025bb17c2e97aa171f10addc41f5635c0430309b50c6c9256a5"
+    },
+    {
+      "path": "lexicon/ru/standard/зах.json.gz",
+      "sha256": "8ccf6f784b9e26bc874fb6e55ddc79b7335e5e6bd6d47369370b08b4cbc55a49"
+    },
+    {
+      "path": "lexicon/ru/standard/зац.json.gz",
+      "sha256": "ec852050546946f02794c5f86f11df9c47801eaa0aac7b50d232acb1a5361cad"
+    },
+    {
+      "path": "lexicon/ru/standard/зач.json.gz",
+      "sha256": "46770d43ab5f08d6e627f484dde36be280a5aae21be57c5ff05a453201e9724c"
+    },
+    {
+      "path": "lexicon/ru/standard/заш.json.gz",
+      "sha256": "e1694b5dfe19b2fa1113c2fd8e4312cebd819f5f08b21d77d0af1168a97ce4f0"
+    },
+    {
+      "path": "lexicon/ru/standard/защ.json.gz",
+      "sha256": "92964b8f96e4d55c65b004c70315c8b9b0bc971390cfb620a9c29c381bb144d3"
+    },
+    {
+      "path": "lexicon/ru/standard/заю.json.gz",
+      "sha256": "66bc41a2f20a44a95af21d3190720f47657fd6e214ec7d8a17a26afe958555c3"
+    },
+    {
+      "path": "lexicon/ru/standard/зая.json.gz",
+      "sha256": "c6010256ea9bdc1b0ef68c291f855dc40f949632c351f75f2acb9f24f89ff426"
+    },
+    {
+      "path": "lexicon/ru/standard/зб.json.gz",
+      "sha256": "177f3e871f20ffbe817235066d619919e7e54b538811b10bc2d218be027a1226"
+    },
+    {
+      "path": "lexicon/ru/standard/зв.json.gz",
+      "sha256": "66f9b15e7385e9878aded9d14c49d8157221c2e85ccf8e6e418640a2d45aade3"
+    },
+    {
+      "path": "lexicon/ru/standard/зд.json.gz",
+      "sha256": "61b1dca9440fba4b9a2f274d41b18eb4f92ef0acec558c490ab88e82a2f9934f"
+    },
+    {
+      "path": "lexicon/ru/standard/зе.json.gz",
+      "sha256": "36a7e3a50282215a659335231892e630a2044e8694259edd21b96f5f7de98428"
+    },
+    {
+      "path": "lexicon/ru/standard/зи.json.gz",
+      "sha256": "ce31ec57c94ccdb52005f7bf65dc6393034202639919f13998922f31ec405b7e"
+    },
+    {
+      "path": "lexicon/ru/standard/зл.json.gz",
+      "sha256": "0cab35f7cc08dd5ced20f2eea676eca831dbf9e3ed34383c92edbf32409c23bf"
+    },
+    {
+      "path": "lexicon/ru/standard/зм.json.gz",
+      "sha256": "5e4952c470a7fbe91b5f303e9d06fcbd6a32cd49641352bd72e0b45cdd3b4bc5"
+    },
+    {
+      "path": "lexicon/ru/standard/зн.json.gz",
+      "sha256": "7289b8bad2219e7975bc3f2eaba55b9cbd0529abfebc47c95fcaad29370ffb58"
+    },
+    {
+      "path": "lexicon/ru/standard/зо.json.gz",
+      "sha256": "f2d943faaca21b72562940089641ca5884681c9afdd6306ca06013a58baebc80"
+    },
+    {
+      "path": "lexicon/ru/standard/зп.json.gz",
+      "sha256": "f397dc8a1871c8d9d823415d49953b8de12c1752422b12090bebf25fe1ced2a4"
+    },
+    {
+      "path": "lexicon/ru/standard/зр.json.gz",
+      "sha256": "a2df6baddda45841d98080c038e862f45e371f43f4477b299a5afc6cfaf3be92"
+    },
+    {
+      "path": "lexicon/ru/standard/зс.json.gz",
+      "sha256": "614125cc5f19a00bfe88d3dc2c5ad8a7d6281a9bfab0db1133d36e46773447e5"
+    },
+    {
+      "path": "lexicon/ru/standard/зу.json.gz",
+      "sha256": "90696ccd137da0c57dff19a5a636494f18da195d2aa84bcaed2db0cf54017b9c"
+    },
+    {
+      "path": "lexicon/ru/standard/зы.json.gz",
+      "sha256": "97d2099c2434aa5396ea85e0a2d2df9f0f7d6038bab25d9f751722b7dead23ba"
+    },
+    {
+      "path": "lexicon/ru/standard/зэ.json.gz",
+      "sha256": "d0e556f8c0b0b28ecf4658b5709b6c9365cbe75011a25abf524e38dacdbe2efe"
+    },
+    {
+      "path": "lexicon/ru/standard/зю.json.gz",
+      "sha256": "f7453611ae55a023e5253982904d6f098629de8d42569f267da0a054b227254c"
+    },
+    {
+      "path": "lexicon/ru/standard/зя.json.gz",
+      "sha256": "2cd4f9fc8e659edf0c2ab495549ad42451ecfac46ea2b7bc50d3849f0bec5236"
+    },
+    {
+      "path": "lexicon/ru/standard/и.json.gz",
+      "sha256": "77ec56f4f795919a438a8d28f7ca122d5f8d93655cf6ed4c9f856c5d4e2b773b"
+    },
+    {
+      "path": "lexicon/ru/standard/й.json.gz",
+      "sha256": "dd2260abaec8aa491b4fd2df55d2bed60d72cd1a88768584d8897aa553aca405"
+    },
+    {
+      "path": "lexicon/ru/standard/к.json.gz",
+      "sha256": "e8379fbc8c61ad1593965422aadce794d367c7a53592ec03aa22a4065fd93726"
+    },
+    {
+      "path": "lexicon/ru/standard/ка.json.gz",
+      "sha256": "442521b8cda714f31a61b049209e46c756c2a0328afea540f3314a79ee388989"
+    },
+    {
+      "path": "lexicon/ru/standard/кв.json.gz",
+      "sha256": "464e2dc3365ae9dd77ddf2f436ccf3874069189255828c6be75824a2195f9aba"
+    },
+    {
+      "path": "lexicon/ru/standard/кг.json.gz",
+      "sha256": "e7f43c02b6f1f38e91748dfc2d2ac9ddd8a0da4ebc899fc5b47c11fe2812fa7b"
+    },
+    {
+      "path": "lexicon/ru/standard/кд.json.gz",
+      "sha256": "d603dc64089a4cee9a39f6276c275edef0f410a8bf9320be020abb6a6a6ca48e"
+    },
+    {
+      "path": "lexicon/ru/standard/ке.json.gz",
+      "sha256": "1d90feb6266f105ce1710e03d94ea20354dd9f3efa71f430062443fc1d61cb35"
+    },
+    {
+      "path": "lexicon/ru/standard/кз.json.gz",
+      "sha256": "37074c1d51b754f54a73de779c8aa0033c9774af159d23a6418f20b82e1648ab"
+    },
+    {
+      "path": "lexicon/ru/standard/ки.json.gz",
+      "sha256": "e8f506d83f5554e1060f51427ea24eb02314021c5579ce0bd4a639140650e0be"
+    },
+    {
+      "path": "lexicon/ru/standard/кл.json.gz",
+      "sha256": "ad39327f37b548ebe7e86bbb06df0ea7dd032650ae119c8fac40f10e169b956b"
+    },
+    {
+      "path": "lexicon/ru/standard/км.json.gz",
+      "sha256": "6d91a24744e6e40c8271a087ef17c94efdffd76a360346045b03a446a49bbe5f"
+    },
+    {
+      "path": "lexicon/ru/standard/кн.json.gz",
+      "sha256": "af071b0a65bcaf7881da4ef48872cdf5603fab2bbb8e7064cc4e2ec1c8464f6b"
+    },
+    {
+      "path": "lexicon/ru/standard/ко.json.gz",
+      "sha256": "c4443be790b951f23f5fa91217631e53cee44cd545171864c1e4876c0c29541f"
+    },
+    {
+      "path": "lexicon/ru/standard/кп.json.gz",
+      "sha256": "0d49095d9dea30cbd3234a55659267360dbe4c0957e561be75296b03cf57508a"
+    },
+    {
+      "path": "lexicon/ru/standard/кр.json.gz",
+      "sha256": "46621675af7bb510d99884506c6e332643a6343e8fbdcccf05b2d04f499b5e4b"
+    },
+    {
+      "path": "lexicon/ru/standard/кс.json.gz",
+      "sha256": "b744c740aa96088861593172c126cb2efc9c122d001a0aaac5357003d54a3764"
+    },
+    {
+      "path": "lexicon/ru/standard/кт.json.gz",
+      "sha256": "c5a9dc5e936ed4cfbadb40145be57c419f670ddb767dc877e3cb20194631ee4f"
+    },
+    {
+      "path": "lexicon/ru/standard/ку.json.gz",
+      "sha256": "44c4d86e2a81a47ee818c0c1e61f56bd92fd37883d208b2d29eb24481d203069"
+    },
+    {
+      "path": "lexicon/ru/standard/кф.json.gz",
+      "sha256": "09c79a6cb322b3fc77e84b0eb5fa115fbf3dce9f00062ab612e673e464d9adb7"
+    },
+    {
+      "path": "lexicon/ru/standard/кх.json.gz",
+      "sha256": "dbf051249265cafa32dd9e310d627ae490e37cea04c3ea94a129ff08a5ce538b"
+    },
+    {
+      "path": "lexicon/ru/standard/кш.json.gz",
+      "sha256": "4f4665da30056950352f5f5ceae7fc4b664eaa5235a09edbc20da2b3792668b9"
+    },
+    {
+      "path": "lexicon/ru/standard/къ.json.gz",
+      "sha256": "5d473797eb970a6d3a6911a1078fa1d65ff404a554cc6ca2381bd681cfecb4ee"
+    },
+    {
+      "path": "lexicon/ru/standard/кы.json.gz",
+      "sha256": "6d80aaff0facbc99373f474beb8a1edbca9ffb5670665fa8f4050a8de3dc92b5"
+    },
+    {
+      "path": "lexicon/ru/standard/кь.json.gz",
+      "sha256": "c26aee917ded516b977d28b4d0c025e6e806305b62b9b5ffac29125d93b078b5"
+    },
+    {
+      "path": "lexicon/ru/standard/кэ.json.gz",
+      "sha256": "a80b018a89f736035d86996f9fe39a7318722a8cfe4b3510531c708998918ffa"
+    },
+    {
+      "path": "lexicon/ru/standard/кю.json.gz",
+      "sha256": "9e95c0ee70d27222e88ca0f40964ece77a2e58815fec63572f8b0a0caca0b2c9"
+    },
+    {
+      "path": "lexicon/ru/standard/кя.json.gz",
+      "sha256": "a4c30506e2129d26574f1bfd218fb619e7cb953b0a2a6a795bcca2dc26736353"
+    },
+    {
+      "path": "lexicon/ru/standard/л.json.gz",
+      "sha256": "e43bf18efaed61839a2dd75001b3c7303a73f6f5fe4dbfb35f09e8d8c00feef1"
+    },
+    {
+      "path": "lexicon/ru/standard/м.json.gz",
+      "sha256": "3471c957f7d0b038544bcfdfb4e84fcde8ef22882b1552ad9214b324048e9172"
+    },
+    {
+      "path": "lexicon/ru/standard/ма.json.gz",
+      "sha256": "537e951d63a6e89670cb63b2a19dfd8ed4c119cf551758edfd57d7d79491d457"
+    },
+    {
+      "path": "lexicon/ru/standard/мб.json.gz",
+      "sha256": "e00a2633e6dbabd71037e19ef0a86e16efc8ebcc024c1afc732c45ad6f6d9353"
+    },
+    {
+      "path": "lexicon/ru/standard/мв.json.gz",
+      "sha256": "6725c9d6ebca796377e9133dc3a449546c04bd97b40fea2ccc6e25b63a16b703"
+    },
+    {
+      "path": "lexicon/ru/standard/мг.json.gz",
+      "sha256": "02c81215738b3cd89eeab35e9494267dc197a5a2a2305f63b0bd84ff628296f2"
+    },
+    {
+      "path": "lexicon/ru/standard/мд.json.gz",
+      "sha256": "b21289799b8013b93fa91b160e14edef359fa74a27d1c8e1d6ddfbbd99afb08a"
+    },
+    {
+      "path": "lexicon/ru/standard/ме.json.gz",
+      "sha256": "c078343be9337c252e0ff4036c525798d58f731a92ceeb11114980ae8a0078e8"
+    },
+    {
+      "path": "lexicon/ru/standard/мз.json.gz",
+      "sha256": "e8e95c134efc453a8e97f5448b9f488d583fce0e4c95cb75e2f642e05818199d"
+    },
+    {
+      "path": "lexicon/ru/standard/ми.json.gz",
+      "sha256": "0f4dbe71b9db6fc2a0c13e82592950f970b34300ed8ea2074a5e15b043f7a3a0"
+    },
+    {
+      "path": "lexicon/ru/standard/мк.json.gz",
+      "sha256": "9a5912e3253ff4c9020828390f1581c97013928a9d0a1ff17d93b0937e1ee756"
+    },
+    {
+      "path": "lexicon/ru/standard/мл.json.gz",
+      "sha256": "b791a3b6441042ffc7722b360136073ac310cb1aef5e1ebbcaff52ea51ee5821"
+    },
+    {
+      "path": "lexicon/ru/standard/мм.json.gz",
+      "sha256": "c79e949ad61ff7f0dd0ed7126e7776554d5bdf9480ba28ec54d97427613e4ee0"
+    },
+    {
+      "path": "lexicon/ru/standard/мн.json.gz",
+      "sha256": "201969c9e4db3f79cc1746b171ccd668683a35fb25e594abaa82798f5e96536a"
+    },
+    {
+      "path": "lexicon/ru/standard/мо.json.gz",
+      "sha256": "0ae89db036b6faa23ccd0d75232d0f3cd532f48197077f219792a863def5924b"
+    },
+    {
+      "path": "lexicon/ru/standard/мр.json.gz",
+      "sha256": "3a6b25a0a552b470d9d3ef2dfc04d6cb2072e3abf214b2e65c4d1204d763bbbc"
+    },
+    {
+      "path": "lexicon/ru/standard/мс.json.gz",
+      "sha256": "b5fbb1a48b7143b242b632113a0f75a1fe603c42f1692e9decd3dd990ce580b1"
+    },
+    {
+      "path": "lexicon/ru/standard/мт.json.gz",
+      "sha256": "d0968373993d65128c4f7632a0e94a25c6ea24e003e49305fe3bd27583e4ec2d"
+    },
+    {
+      "path": "lexicon/ru/standard/му.json.gz",
+      "sha256": "31b87eccd071f000be3e2f3261441f0b6f0a8ff2719b813988e6f06b5a25b919"
+    },
+    {
+      "path": "lexicon/ru/standard/мф.json.gz",
+      "sha256": "363d121549371325aac5a733cb3e96e1d9d7b74cbf8841d25a2cef5e4f35ba83"
+    },
+    {
+      "path": "lexicon/ru/standard/мх.json.gz",
+      "sha256": "6236feaf3b62d6a46613825ae081ee48865b5bc480d834a528d22d94ffc9d981"
+    },
+    {
+      "path": "lexicon/ru/standard/мч.json.gz",
+      "sha256": "c9054a7f2939703882082a3e64d0491611c3f12c2e38b9a6af0241006c283c00"
+    },
+    {
+      "path": "lexicon/ru/standard/мш.json.gz",
+      "sha256": "d7cb18805581356f92ecb615c4493a19b17e0819dc3e9204799e4e60ec069d33"
+    },
+    {
+      "path": "lexicon/ru/standard/мщ.json.gz",
+      "sha256": "bc85ef60cfb61221ff57f2a47e5d9118a64f443eac734ce0753ae9aca2583ba5"
+    },
+    {
+      "path": "lexicon/ru/standard/мы.json.gz",
+      "sha256": "0b83b5be55f17f36b9d287517357c378b236811cd237a582f996bf6fc0c78833"
+    },
+    {
+      "path": "lexicon/ru/standard/мь.json.gz",
+      "sha256": "7f74238602d7579c90fd8b96833305d5cf98d180f7d8f066ec884d1a5f6b3718"
+    },
+    {
+      "path": "lexicon/ru/standard/мэ.json.gz",
+      "sha256": "e9b9fb7a0a8cd104ebe7a7dea02326ebde1a5f06e3b3136f0f3ab75c1e6e6f10"
+    },
+    {
+      "path": "lexicon/ru/standard/мю.json.gz",
+      "sha256": "866cf318d8b12db73c5ae751f96592416a6217d9a392ca6965de722a01412a08"
+    },
+    {
+      "path": "lexicon/ru/standard/мя.json.gz",
+      "sha256": "ccdda3ea3ccd4f9de888cee660b0cc9b32bd67bb803c26bf097c408887bced93"
+    },
+    {
+      "path": "lexicon/ru/standard/на.json.gz",
+      "sha256": "7a2146196cb3bf34e641d4e3a853196bfd46448974b32cd61107511cc5664f52"
+    },
+    {
+      "path": "lexicon/ru/standard/наб.json.gz",
+      "sha256": "eff61b9c58d95d82973f1203d970a62c2eef0761a5a61abf2764b9f23d937c78"
+    },
+    {
+      "path": "lexicon/ru/standard/нав.json.gz",
+      "sha256": "8685bb8cf80340268bb9635a6701afdd1546d4b39d647cb0b1f77f83b2f9384e"
+    },
+    {
+      "path": "lexicon/ru/standard/наг.json.gz",
+      "sha256": "202b1f25a92b40195fb396c22c0921ca3cd376e2a7c2dc8da01a78d2ba37e7ef"
+    },
+    {
+      "path": "lexicon/ru/standard/над.json.gz",
+      "sha256": "b5a4ff772f8b252af54d25a6c39f9de1c4ccc8325d5ba3a4ccabb01154da0f15"
+    },
+    {
+      "path": "lexicon/ru/standard/нае.json.gz",
+      "sha256": "eb410402843e40121fd6663621e80636837b1496a71d4bf96e298a7b8a791d93"
+    },
+    {
+      "path": "lexicon/ru/standard/наж.json.gz",
+      "sha256": "f6c21b4ba5340780c887543ea73fdc1bdf51d6d41c0c5488cbeba24483a74172"
+    },
+    {
+      "path": "lexicon/ru/standard/наз.json.gz",
+      "sha256": "7824a22d04c70433756cf2935d022c6f316f3384053e4951610cf257a16b53be"
+    },
+    {
+      "path": "lexicon/ru/standard/наи.json.gz",
+      "sha256": "f0f6cf79cbfc1e0224c949f6f73db61bdba157ec5b56b6e529d4c5b6cf51e14e"
+    },
+    {
+      "path": "lexicon/ru/standard/най.json.gz",
+      "sha256": "fe960c6d5f9c4ff645eab0ae2d6d6b36b85ae97981e8f9daef7a05e3fb41de7a"
+    },
+    {
+      "path": "lexicon/ru/standard/нак.json.gz",
+      "sha256": "67b2cc73a6bc53525ccab1abd5785c31fe3c32dd683d26f7a2cb889033ac3799"
+    },
+    {
+      "path": "lexicon/ru/standard/нал.json.gz",
+      "sha256": "de292f07fb3c67e24e6cda9c87bfc68217e7e7d95e4587e6ce5687b41a3a8a2d"
+    },
+    {
+      "path": "lexicon/ru/standard/нам.json.gz",
+      "sha256": "e277bd5be37949dc499f56ade3e4547b5fee51eeb7c5f37ad77897fcd3c32453"
+    },
+    {
+      "path": "lexicon/ru/standard/нан.json.gz",
+      "sha256": "7d892563e646fcb8d74deeef3afcfb789b2db9418f3ffae0b34271c4f36022cc"
+    },
+    {
+      "path": "lexicon/ru/standard/нао.json.gz",
+      "sha256": "e6f05ef92cb70a83f45940e1c10a6d0259f20106b76c90ac8d0f5690d20d66ff"
+    },
+    {
+      "path": "lexicon/ru/standard/нап.json.gz",
+      "sha256": "251b095fa7f3835c6523e66156ef51a7bce0fe36c62520aa0962adbb2b170a68"
+    },
+    {
+      "path": "lexicon/ru/standard/нар.json.gz",
+      "sha256": "812a8ed9b2d6d2ba671b2f9b46229faadd8a5a57a7ca2c72ab605f93b9148a27"
+    },
+    {
+      "path": "lexicon/ru/standard/нас.json.gz",
+      "sha256": "fc37371d94ab58b5baedff2026435a6c8c4bcd0d29c5f91e722f92e3aefeeb6b"
+    },
+    {
+      "path": "lexicon/ru/standard/нат.json.gz",
+      "sha256": "fa53a963634e134281d1fafdfd10fdee03319fd9704805c820e6f0f18ece4f28"
+    },
+    {
+      "path": "lexicon/ru/standard/нау.json.gz",
+      "sha256": "92817fa9417fa909b648cdf6ea2e49bb33ff3951347db8dbb0283880515ae03f"
+    },
+    {
+      "path": "lexicon/ru/standard/наф.json.gz",
+      "sha256": "00975b2e2b80cb63cfaade11b51ec3cb93bca5891dcca8e9918c231c9b3c165a"
+    },
+    {
+      "path": "lexicon/ru/standard/нах.json.gz",
+      "sha256": "4a5e7a14602bb3adf83f75d9c4dac5c782469fc78aa0fe053dfc4d21f289c710"
+    },
+    {
+      "path": "lexicon/ru/standard/нац.json.gz",
+      "sha256": "92550a901e872c1b562d9f05f1243c8bf919836c43f06e49a09bf9c38788a48c"
+    },
+    {
+      "path": "lexicon/ru/standard/нач.json.gz",
+      "sha256": "d2d1559aa723c04f47430a526e7dec434559fee9323550b94591eaf62d92e598"
+    },
+    {
+      "path": "lexicon/ru/standard/наш.json.gz",
+      "sha256": "7077f211ad16570b9666a3169c4d385bdb16d277c7d03905817f87390e02b403"
+    },
+    {
+      "path": "lexicon/ru/standard/нащ.json.gz",
+      "sha256": "6252b996d292ef75b9db402a0f015d6b20aa19f59e583dddb478999fd14dcb62"
+    },
+    {
+      "path": "lexicon/ru/standard/ная.json.gz",
+      "sha256": "ca66b2ecf082eb477f648755538d41e760bfc3839de1d2f3e30bd8530810a1cb"
+    },
+    {
+      "path": "lexicon/ru/standard/нг.json.gz",
+      "sha256": "e74eb6317f4751934c17d412c21a3f9f375b7607bc4d1b654ee12ad9b62ac25b"
+    },
+    {
+      "path": "lexicon/ru/standard/нд.json.gz",
+      "sha256": "8b504133eaed61b12e449603920dea310c683558f8a305e7d3ec81329a7236c9"
+    },
+    {
+      "path": "lexicon/ru/standard/не.json.gz",
+      "sha256": "49699c754ceeda109610f44354db6c76feca531ea97578fb03a757fac039bc04"
+    },
+    {
+      "path": "lexicon/ru/standard/ни.json.gz",
+      "sha256": "863928d665bf88e920010bedb8f1655332c0d5d19c262879844cf013fe007323"
+    },
+    {
+      "path": "lexicon/ru/standard/нк.json.gz",
+      "sha256": "78d159e3d3a761f5a54826224fac7f7af854aae5c8a5d856179dd7c69acf4789"
+    },
+    {
+      "path": "lexicon/ru/standard/нл.json.gz",
+      "sha256": "e849721318ed2b524ff93fe5a0f70b2eff4a70f4737c32b55d67ab8b16aca564"
+    },
+    {
+      "path": "lexicon/ru/standard/нн.json.gz",
+      "sha256": "9839575b18a7582d9116a7bbba08241ba63fd1ded972e9f8ba5b0f567fe4810e"
+    },
+    {
+      "path": "lexicon/ru/standard/но.json.gz",
+      "sha256": "6d1c5e33bc12ddbcec19ad357878ba5c8d2820a3714d145fdefae0731914e826"
+    },
+    {
+      "path": "lexicon/ru/standard/нп.json.gz",
+      "sha256": "b4c618db4843dc3bd8c5cf163c920edf318f2042d0658500f2707e67ba0ff06a"
+    },
+    {
+      "path": "lexicon/ru/standard/нр.json.gz",
+      "sha256": "b4d0cba31f1ed8411843c20ce3e1ffb026d094ffed1e9862861935b047f58928"
+    },
+    {
+      "path": "lexicon/ru/standard/нт.json.gz",
+      "sha256": "30497757306cea07c0d8fc6640da886cbc48d560d50c0a6fa3dc14e63e175c70"
+    },
+    {
+      "path": "lexicon/ru/standard/ну.json.gz",
+      "sha256": "f454ee62762656eb7e592fbf225e3d0b4f238b93aa5625eba63f64efded960b3"
+    },
+    {
+      "path": "lexicon/ru/standard/ны.json.gz",
+      "sha256": "adc53351c36dd9a999a636c281fd4dfa87d987802ea0e8076866285ff7e99cbd"
+    },
+    {
+      "path": "lexicon/ru/standard/нь.json.gz",
+      "sha256": "40d9a6505b48b0f9ebf6962ec378c1797c94969ddbbe0abe0e2e265554f264d9"
+    },
+    {
+      "path": "lexicon/ru/standard/нэ.json.gz",
+      "sha256": "50e02c16f87c81d49f4c1cfc0ef794d92bfde9d892402284d541bb0eff64127d"
+    },
+    {
+      "path": "lexicon/ru/standard/ню.json.gz",
+      "sha256": "20d51c75e98c4c694729fb4eaaa58301d6c281162e031e56db476236b2411fd6"
+    },
+    {
+      "path": "lexicon/ru/standard/ня.json.gz",
+      "sha256": "a9c63a5dddbadca146ed031882a7616fcd8b631876af8f66e6cf78d7822f80d7"
+    },
+    {
+      "path": "lexicon/ru/standard/о.json.gz",
+      "sha256": "ed7032529e149dcafaf873d829df9939d4d77f6c8d3d1a683487cd50c05d8982"
+    },
+    {
+      "path": "lexicon/ru/standard/оа.json.gz",
+      "sha256": "1d4d3a18da128f7a59e7b52eb1ef75e076a0be944a115dbbf0d2052c9d5bcded"
+    },
+    {
+      "path": "lexicon/ru/standard/об.json.gz",
+      "sha256": "23917cd4c34ef629a7a617a5b2dc385f93a0916734f444f4f76798feb290e25e"
+    },
+    {
+      "path": "lexicon/ru/standard/ов.json.gz",
+      "sha256": "e51333121d1cd8769f69fe73447c977d3dc1235c3bfe6002d85bbfb5a23341e4"
+    },
+    {
+      "path": "lexicon/ru/standard/ог.json.gz",
+      "sha256": "51ff11209a3b0d4006873d5acc3c8e0326a27fe57eb1f07c963b2a3ee65860eb"
+    },
+    {
+      "path": "lexicon/ru/standard/од.json.gz",
+      "sha256": "a733e3140ad99f05d1c86b5fb77428ac4d38c888c932bfe089676d27d2dce817"
+    },
+    {
+      "path": "lexicon/ru/standard/ое.json.gz",
+      "sha256": "f7285220a3d95b64e982e6fc1dc7c57e953f8589e454a760c6ea4fd9f55d640d"
+    },
+    {
+      "path": "lexicon/ru/standard/ож.json.gz",
+      "sha256": "da0c54158cb120a433ef12f0ab5e40a2a1357ed49d2d5b9eb75ca71faf1b45c5"
+    },
+    {
+      "path": "lexicon/ru/standard/оз.json.gz",
+      "sha256": "94a75d03648aa403a0138b1206c84fd9cd5ad2cc31859f354693c9f98d2b711f"
+    },
+    {
+      "path": "lexicon/ru/standard/ои.json.gz",
+      "sha256": "8a67aeb445927a1e7abbf535b2fae9555e24abab59dc9eaa3ef3ad33aa7d07ae"
+    },
+    {
+      "path": "lexicon/ru/standard/ой.json.gz",
+      "sha256": "8c40cbfad6e8a3a89c5d9ecb471360f299e9e01223851367e0f44aafe8a3cc48"
+    },
+    {
+      "path": "lexicon/ru/standard/ок.json.gz",
+      "sha256": "f86f2f4eabc42d5018564007cea915fd6846f282381c43c39ad227942aadd628"
+    },
+    {
+      "path": "lexicon/ru/standard/ол.json.gz",
+      "sha256": "07b72281388240faf56d1dd5d929c9fa06e617cb9c8b4e912b6e91eb0e32a07e"
+    },
+    {
+      "path": "lexicon/ru/standard/ом.json.gz",
+      "sha256": "a80e71e9aa5cd6104473838b681339aa552ac480c45afbd29032ce7d1ad90327"
+    },
+    {
+      "path": "lexicon/ru/standard/он.json.gz",
+      "sha256": "fa29a80cb139abda78969c074edf1a82e89d090d314329c707630d5e3e9947bc"
+    },
+    {
+      "path": "lexicon/ru/standard/оо.json.gz",
+      "sha256": "f4f07c7cc5ff3e87b21d27b5c3ee272100804e1f6a901ea0352276a0d2b50d49"
+    },
+    {
+      "path": "lexicon/ru/standard/оп.json.gz",
+      "sha256": "ad0eb79b107880674983fc1542a9b955ade6ca5b6d606b904a6e6eef8f2da591"
+    },
+    {
+      "path": "lexicon/ru/standard/ор.json.gz",
+      "sha256": "75db4491b6a50340dd53fe9ba37300e507754e81d4a4347667e9bea5e78eb8a5"
+    },
+    {
+      "path": "lexicon/ru/standard/ос.json.gz",
+      "sha256": "1789d9af6b152b597645518a4d108cbd0985fd4b887a90a023ff44c255f1a37c"
+    },
+    {
+      "path": "lexicon/ru/standard/от.json.gz",
+      "sha256": "583477ed6c3ff1de493f969625ced43d3f7ff75e166b8c92a7ee57fe3535e891"
+    },
+    {
+      "path": "lexicon/ru/standard/оу.json.gz",
+      "sha256": "c50f5bf24889f85f984c063ed2509c6ed6f37ea85d33066acb2d3d0ab42b479b"
+    },
+    {
+      "path": "lexicon/ru/standard/оф.json.gz",
+      "sha256": "8e7e8d21a26603ef26d5faba7e565d0f9e3111ff010566abb6e8aeff8c7aeeef"
+    },
+    {
+      "path": "lexicon/ru/standard/ох.json.gz",
+      "sha256": "99d03029bb211c1cc6095581a8656bb061957a37b88a87be6c10dbd9fab9da3b"
+    },
+    {
+      "path": "lexicon/ru/standard/оц.json.gz",
+      "sha256": "8ee26804e5ba73e6a83e74acd6b5c2ab80937590661e216a6ad94c719adcb67b"
+    },
+    {
+      "path": "lexicon/ru/standard/оч.json.gz",
+      "sha256": "4d97bd9cc3387edc623fc9a407b502cbf193c7692e6b03f057c3f29d7af77915"
+    },
+    {
+      "path": "lexicon/ru/standard/ош.json.gz",
+      "sha256": "1c2643da6a9256e6d74ed253c194a151983057c0f6373466d1bd1c996f5e3060"
+    },
+    {
+      "path": "lexicon/ru/standard/ощ.json.gz",
+      "sha256": "0519fca7d5a074b416ea4bcbfb37567350dff6f1d411eeca7c2f3d08461fc2d5"
+    },
+    {
+      "path": "lexicon/ru/standard/оэ.json.gz",
+      "sha256": "857c1bb09d0a3964a77fb43805b243ec8b8b3d50effa48299cd8d3a76e20430b"
+    },
+    {
+      "path": "lexicon/ru/standard/ою.json.gz",
+      "sha256": "4ff8379e55fc88ba65ddd6c6b879aee1b32820ef7e0961665aff7be7ead03374"
+    },
+    {
+      "path": "lexicon/ru/standard/п.json.gz",
+      "sha256": "ceec1e2b10334bb3dc49bd8225853e63080b9457ade34f4179a2d76099ea51ee"
+    },
+    {
+      "path": "lexicon/ru/standard/па.json.gz",
+      "sha256": "cf28e7d37700bc0b99c38dd7f1336febb184288188079985b04813a2e5de26f4"
+    },
+    {
+      "path": "lexicon/ru/standard/пв.json.gz",
+      "sha256": "e4bd0baab7d7266204da43cf0458706e9fc8ffe872f98063ed90b906949bf3f1"
+    },
+    {
+      "path": "lexicon/ru/standard/пг.json.gz",
+      "sha256": "b9e77f60e1b7e265a88711e2958794b1fb22d6f9a36bd60aecb02dfc3b75d704"
+    },
+    {
+      "path": "lexicon/ru/standard/пе.json.gz",
+      "sha256": "c34566e10f7fbe4c084d116eba33a602e503ac91abb33cfefd987445291eced4"
+    },
+    {
+      "path": "lexicon/ru/standard/пж.json.gz",
+      "sha256": "84657d59b14e48d851f5abe8c07faa1d61475e5a0cb27e8b50c779f59d1c7bb1"
+    },
+    {
+      "path": "lexicon/ru/standard/пз.json.gz",
+      "sha256": "2d0bdab4dd1f7864e1485fc7a301281b0c18bb4ee635020c507a95cb5cd41ff1"
+    },
+    {
+      "path": "lexicon/ru/standard/пи.json.gz",
+      "sha256": "9d6c0e1c2cfe228cfa4476ca66ab4f5ddd2e0d467a878a93b9b83fbd798d40db"
+    },
+    {
+      "path": "lexicon/ru/standard/пл.json.gz",
+      "sha256": "6e13294e5932114d1c68cec45336edbf77137a834c56b45e08818b6842038659"
+    },
+    {
+      "path": "lexicon/ru/standard/пм.json.gz",
+      "sha256": "8059611503290ceb394e533aefb764fed12e0408de5a44a73ec7ba6d1aa28c71"
+    },
+    {
+      "path": "lexicon/ru/standard/пн.json.gz",
+      "sha256": "84e5f875cd4d49f6a9f6a94861e5e7cd9d551ff88f78dcc6aef7f2d4c1d269f6"
+    },
+    {
+      "path": "lexicon/ru/standard/по.json.gz",
+      "sha256": "b3c466746638690330c418d190396cc5d25ce7f618dc333ff0ba341caf506743"
+    },
+    {
+      "path": "lexicon/ru/standard/поа.json.gz",
+      "sha256": "ecb99ad6cd1c9905eacd38e0858c2959cab0a28c4949d2a2831d52179147d9f1"
+    },
+    {
+      "path": "lexicon/ru/standard/поб.json.gz",
+      "sha256": "b87f9bce3605e1f6faae75b1c85c4a977840fba483d2c1775ea01f95cbbe9f5c"
+    },
+    {
+      "path": "lexicon/ru/standard/пов.json.gz",
+      "sha256": "19a96334de9325ec6639bd701bb74cb52d887456071ea5c96ce18e2db31976f3"
+    },
+    {
+      "path": "lexicon/ru/standard/пог.json.gz",
+      "sha256": "84c6f41f9efabfcf9cd80fe9051683724c5ee014da11e9ed13cb4b15384c4e43"
+    },
+    {
+      "path": "lexicon/ru/standard/под.json.gz",
+      "sha256": "c139ca24bf57b02aedae35697aa8e17b0ac272a620975d6f300225823ac2469a"
+    },
+    {
+      "path": "lexicon/ru/standard/пое.json.gz",
+      "sha256": "dce899391d503e2229338b81e42f0b37d4fd5d4fe5115b3a213a28be9abe91e3"
+    },
+    {
+      "path": "lexicon/ru/standard/пож.json.gz",
+      "sha256": "cc2f60bc1b79d2a8497c6d9c37acb9cac6e7016c4ff019f916fc40741e5f65fc"
+    },
+    {
+      "path": "lexicon/ru/standard/поз.json.gz",
+      "sha256": "08a1b53e8bd0bd5acbe44741f0dfb7bf9808151f75d1ae626a1e2fe791271a92"
+    },
+    {
+      "path": "lexicon/ru/standard/пои.json.gz",
+      "sha256": "cb0f1e01a561ee5013f4f617a684cf612bb37c14649b31609807675800461979"
+    },
+    {
+      "path": "lexicon/ru/standard/пой.json.gz",
+      "sha256": "9620ef95d9a14fb56f81aed325fa58efed54538072bf38dce7af2914170e50e6"
+    },
+    {
+      "path": "lexicon/ru/standard/пок.json.gz",
+      "sha256": "fdac217706853db97040596dbaab36594ace882a16a65c3fe7ca5602bb270e83"
+    },
+    {
+      "path": "lexicon/ru/standard/пол.json.gz",
+      "sha256": "f715712c48ab18b3dba931662bfaf7b83cd3da9252aa86f9ba0269a0b6840517"
+    },
+    {
+      "path": "lexicon/ru/standard/пом.json.gz",
+      "sha256": "e60cc9954ff83641e60f104dac3708dcad9660abc349b289f4d75695bb231524"
+    },
+    {
+      "path": "lexicon/ru/standard/пон.json.gz",
+      "sha256": "f6863020a577e4e5daf2f1837ce65b492e95d9844d1fe5c9d1b9b114af854b09"
+    },
+    {
+      "path": "lexicon/ru/standard/поо.json.gz",
+      "sha256": "d55c53daa46a911267ef155af2cb6af21c060e956f84664e8fc425bc5a131a65"
+    },
+    {
+      "path": "lexicon/ru/standard/поп.json.gz",
+      "sha256": "3495373226be5c43238b589a352e0511f77a016876770583d14439efe658c31d"
+    },
+    {
+      "path": "lexicon/ru/standard/пор.json.gz",
+      "sha256": "f1702dbca9116bd7b1e36350491fb02b21e03d102d66516221461e88f5938b69"
+    },
+    {
+      "path": "lexicon/ru/standard/пос.json.gz",
+      "sha256": "63ab9cdfd07040b522531ccb8f97b3f152405280eabfd5bcf4af84a786482960"
+    },
+    {
+      "path": "lexicon/ru/standard/пот.json.gz",
+      "sha256": "74e6ca4822557df905640e1fa02bc838c201edcbc65b6604ac89d07987296c59"
+    },
+    {
+      "path": "lexicon/ru/standard/поу.json.gz",
+      "sha256": "dbb17b3655de8a728b75b6694b6a0f243eca618df19fb2e4427fcd2adf14e3fb"
+    },
+    {
+      "path": "lexicon/ru/standard/поф.json.gz",
+      "sha256": "9912e6e37f41462427ab36fc21ccaf863ec73983662a24e2fa863b2d3a2a0479"
+    },
+    {
+      "path": "lexicon/ru/standard/пох.json.gz",
+      "sha256": "03e19d27feb9b4522e10320da026285664287bc072f13af35d8c08bcfb8f618e"
+    },
+    {
+      "path": "lexicon/ru/standard/поц.json.gz",
+      "sha256": "231fa17307800289028c2d2361a38247320496206d45b87dd468a24417eac709"
+    },
+    {
+      "path": "lexicon/ru/standard/поч.json.gz",
+      "sha256": "7cf718046c8659ef09a4fc732f0141fda4413aa43dd699f9122740a7b2bd6332"
+    },
+    {
+      "path": "lexicon/ru/standard/пош.json.gz",
+      "sha256": "1634c113843b851de38f8b17cd99465cfc648396bbe1f3666f87e2a462ff3f01"
+    },
+    {
+      "path": "lexicon/ru/standard/пощ.json.gz",
+      "sha256": "fa80b5cbbe4ded53108e9ffcea53b6f5293f2afdffe5b9b45afa36640ad6c560"
+    },
+    {
+      "path": "lexicon/ru/standard/поэ.json.gz",
+      "sha256": "73a72afc7e280ce17a3a0ce47064babfdb7fc5684a087a63a78588505eaf6f51"
+    },
+    {
+      "path": "lexicon/ru/standard/пою.json.gz",
+      "sha256": "888fe7efe0f1b0dbf4e4f7ec6ffe4bae88d623cfefea6cb09a8d6a814dd78c3b"
+    },
+    {
+      "path": "lexicon/ru/standard/поя.json.gz",
+      "sha256": "f6ab6c2c6ca3733f0112341edad96fcae11ec90d102544cbef375ace2b054c50"
+    },
+    {
+      "path": "lexicon/ru/standard/пп.json.gz",
+      "sha256": "161ea1ea6568a7f2c0d288c89d6c1105a23ac2a15fd68f79b2718c0c91ed88c6"
+    },
+    {
+      "path": "lexicon/ru/standard/пр.json.gz",
+      "sha256": "cad3b7a0f987e7a9b3e2e9db7997dfd725dcacb6bab9ed9708af212537c0db76"
+    },
+    {
+      "path": "lexicon/ru/standard/пра.json.gz",
+      "sha256": "2c5f4d2eff1319c70b0a813cf7878c93d23af76f7f90d57c8a518b22fe149f6e"
+    },
+    {
+      "path": "lexicon/ru/standard/прб.json.gz",
+      "sha256": "26502159145ed465ce9c3889e7e7523705c3ddce28aba4b1d8384e4a5736167e"
+    },
+    {
+      "path": "lexicon/ru/standard/пре.json.gz",
+      "sha256": "79969e0f8f5d745332d7e5b6c2df52a5b344adc3e4b1453a65d1d810c23b5efe"
+    },
+    {
+      "path": "lexicon/ru/standard/при.json.gz",
+      "sha256": "a8473196348d798412644b075f5dc4acf14a5b969ad1604cf9fcde9af9a2784c"
+    },
+    {
+      "path": "lexicon/ru/standard/прк.json.gz",
+      "sha256": "bc27c1b64bd3e82d932f3d1a1fa209ce364eb5ef60e415c95dca117eef196631"
+    },
+    {
+      "path": "lexicon/ru/standard/про.json.gz",
+      "sha256": "8dd5ab64f7955f0ca8dde67a45e94054434bfe75580adc1eec4b26339f365bd3"
+    },
+    {
+      "path": "lexicon/ru/standard/прп.json.gz",
+      "sha256": "66a655325013f172a75b4861d3df41193f6013d8b5b487d57e6e28574b6c3c1a"
+    },
+    {
+      "path": "lexicon/ru/standard/пру.json.gz",
+      "sha256": "231b04a8ae9e9a4a3d701b199048d77cf2f156dd4222a230995cf3df061d8dd8"
+    },
+    {
+      "path": "lexicon/ru/standard/пры.json.gz",
+      "sha256": "06e6c5915b3040faf6cd768a2d296446e037943a26e9edbde6686712c8821eb3"
+    },
+    {
+      "path": "lexicon/ru/standard/пря.json.gz",
+      "sha256": "fe7c01e005fb4034863c5a4ae53e77be6265436054813859ba672310102a9fb1"
+    },
+    {
+      "path": "lexicon/ru/standard/пс.json.gz",
+      "sha256": "894c22886bd3960ac2d6ec19682ceacd55ae5b90e15610ed0ce9e5487f35676b"
+    },
+    {
+      "path": "lexicon/ru/standard/пт.json.gz",
+      "sha256": "24c39bf8b7ccee7a34c8381e261bb22be3f06566d1e51c80e1be946d0e252130"
+    },
+    {
+      "path": "lexicon/ru/standard/пу.json.gz",
+      "sha256": "42516f472480a2bf8956cb8b2ecab562f3ff9dba0a6e60d4e0540315b639f566"
+    },
+    {
+      "path": "lexicon/ru/standard/пх.json.gz",
+      "sha256": "24d02380fed8e76de87d6c459a210a5c29e445a2fa954b72791323acad4e13f3"
+    },
+    {
+      "path": "lexicon/ru/standard/пц.json.gz",
+      "sha256": "b96ce708e45ab173a4f1fa435645c607eb067ce6c1470b54c7de6fbb6750299c"
+    },
+    {
+      "path": "lexicon/ru/standard/пч.json.gz",
+      "sha256": "29c6d9891bf8aefa5969f65b5aae4804203cae51b150eb9b934c6e7d004a2919"
+    },
+    {
+      "path": "lexicon/ru/standard/пш.json.gz",
+      "sha256": "afd83e3bf032f60cfbcf2ae8624cb8b2fd303ff2d10da78333f0ee7e8940b83e"
+    },
+    {
+      "path": "lexicon/ru/standard/пы.json.gz",
+      "sha256": "41351ed2e19c1a42e1f77c49ce557170c1d77ee51ee8cd4dd427fc671179ee8a"
+    },
+    {
+      "path": "lexicon/ru/standard/пь.json.gz",
+      "sha256": "e7df5d33230ab7966d6db16a4029387d37507c03bb8a4e7690367e0a69397897"
+    },
+    {
+      "path": "lexicon/ru/standard/пэ.json.gz",
+      "sha256": "458c5179fb66a4dcbea6b34366411b998bc563e986f6284051a1ca45fdb2bfb7"
+    },
+    {
+      "path": "lexicon/ru/standard/пю.json.gz",
+      "sha256": "3f0c4d7ded621937c511cdd5d978af3eaeb224bab9378c1b28aebe1d8f309805"
+    },
+    {
+      "path": "lexicon/ru/standard/пя.json.gz",
+      "sha256": "6707dd910841d945f1f9c2a3b11634f8501989d7d2072e068db294f7dba71bbd"
+    },
+    {
+      "path": "lexicon/ru/standard/р.json.gz",
+      "sha256": "12bde410332187cfd20ce97e414a7aa24656f1e6c498c8fef1cedc2593d127aa"
+    },
+    {
+      "path": "lexicon/ru/standard/раб.json.gz",
+      "sha256": "5485a503aa4e81bb5d6c54ea07b74502fac8c1391715c4493cba2b29d0ad900d"
+    },
+    {
+      "path": "lexicon/ru/standard/рав.json.gz",
+      "sha256": "9a5919936f5298443f2a3c5254b070bef0c9fe1eb26f49b151f3a87188e14adb"
+    },
+    {
+      "path": "lexicon/ru/standard/раг.json.gz",
+      "sha256": "9a1f34f9f1be6f712d398c3a558cc8981e765b74f1310602fce9091cbfd44519"
+    },
+    {
+      "path": "lexicon/ru/standard/рад.json.gz",
+      "sha256": "dbe1eb2d96db98ea04cc0b7771fde06693744263242ab088455e7d1a5b12c518"
+    },
+    {
+      "path": "lexicon/ru/standard/рае.json.gz",
+      "sha256": "3668fb55426153c51fc3ffd0c2ea1da0aa6340e95df563ae20d015675fdda58d"
+    },
+    {
+      "path": "lexicon/ru/standard/раж.json.gz",
+      "sha256": "f1994075e3965aba7685beac7457e1d8d58100977bc0bcef6444414164c79169"
+    },
+    {
+      "path": "lexicon/ru/standard/раз.json.gz",
+      "sha256": "7658e7324fb6090ee89e3470e888b9c0161daf7a4e472621f2b1aee47c7442d0"
+    },
+    {
+      "path": "lexicon/ru/standard/раи.json.gz",
+      "sha256": "86170498f2278200f56062761952bc4d85ce07788f83e8f034a976ae9aaefd54"
+    },
+    {
+      "path": "lexicon/ru/standard/рай.json.gz",
+      "sha256": "21161b11c47d214669d155e3a2439493146045c15c2557667fba3fce109f6c9a"
+    },
+    {
+      "path": "lexicon/ru/standard/рак.json.gz",
+      "sha256": "0dd1485082e91490a284cab57e87690e16d46fb91219cb988570d7791870aea5"
+    },
+    {
+      "path": "lexicon/ru/standard/рал.json.gz",
+      "sha256": "c2076ace41f7e0d7da0571bd21335e1e7a49ba4742f227235a3dc5aa37349805"
+    },
+    {
+      "path": "lexicon/ru/standard/рам.json.gz",
+      "sha256": "3cce1baf085f37f92b5433033e51f68c1eedbdc4d7dcaa191d2fdd633ba5c8a6"
+    },
+    {
+      "path": "lexicon/ru/standard/ран.json.gz",
+      "sha256": "a6182514471af14ba6e6c9fb370907dc65aff1305fd845998aa80d9930d6787a"
+    },
+    {
+      "path": "lexicon/ru/standard/рап.json.gz",
+      "sha256": "496ccfa5a427dc9a4ad4883ae7e1fd7313849efbab0939bca29d69524f3b8d0c"
+    },
+    {
+      "path": "lexicon/ru/standard/рар.json.gz",
+      "sha256": "296120fd4f70180408d8fb45efa000590de7eb63a188549958887ac7a354c64f"
+    },
+    {
+      "path": "lexicon/ru/standard/рас.json.gz",
+      "sha256": "76537cbfc4c37ab06d54f269e01cecc22a71ddeb8dbb1bf23cf7cc22dfd71ad3"
+    },
+    {
+      "path": "lexicon/ru/standard/рат.json.gz",
+      "sha256": "85bd200845f06ab6e50ad540c9efefd62c3c1281d2b849affbf0de4c9ff7ff9b"
+    },
+    {
+      "path": "lexicon/ru/standard/рау.json.gz",
+      "sha256": "f8bd58332115b1375be3004ff51c3a23706018b6aa5c70109d6d10d89cadd766"
+    },
+    {
+      "path": "lexicon/ru/standard/раф.json.gz",
+      "sha256": "2ece67d831eb8ac53636ef78843ed83d2724532bd24c3486f8a050661df06b78"
+    },
+    {
+      "path": "lexicon/ru/standard/рах.json.gz",
+      "sha256": "c18f11a6feebee7eee47454ee7d99bb4be448af31eb1bd1f041d1123180a232c"
+    },
+    {
+      "path": "lexicon/ru/standard/рац.json.gz",
+      "sha256": "3da1a238c649fb486a1b74622537bb6a2affe3edb97e178b19b4e44d97150c7b"
+    },
+    {
+      "path": "lexicon/ru/standard/рач.json.gz",
+      "sha256": "1768546d9591a055ebddab2203b7fe79bc32eaaea1e395a986765d7185d6ba07"
+    },
+    {
+      "path": "lexicon/ru/standard/раш.json.gz",
+      "sha256": "9a451fec8f35160d299b8b793e0ca65447a7abb4172fa76cec6e0fa36df9630b"
+    },
+    {
+      "path": "lexicon/ru/standard/ращ.json.gz",
+      "sha256": "6ab3da99d0c9a9fae08dec1020d9200401323d62faee3defe586f6aa49dff8bb"
+    },
+    {
+      "path": "lexicon/ru/standard/раю.json.gz",
+      "sha256": "e6742604a8ea9cd1e317ad3427ce862c3bd9be210268b5f0af4375fe02145893"
+    },
+    {
+      "path": "lexicon/ru/standard/рая.json.gz",
+      "sha256": "6830effdaff59601b7dc78d76e1e4ce3410884c7d016dedecb628a211b760d88"
+    },
+    {
+      "path": "lexicon/ru/standard/рб.json.gz",
+      "sha256": "e1db3a50c725705a9ced14bd59c911fcd9794db7cd3cc784a24598cdb2372308"
+    },
+    {
+      "path": "lexicon/ru/standard/рв.json.gz",
+      "sha256": "54b01c16e7e405474136db641b3eea0a00184ef3027793cb7d314f1b8bc8bd14"
+    },
+    {
+      "path": "lexicon/ru/standard/рд.json.gz",
+      "sha256": "4971420514f341036398c2b8bcb256f698196b42e2ab973d57b1e9d06634c704"
+    },
+    {
+      "path": "lexicon/ru/standard/ре.json.gz",
+      "sha256": "6fbf552ff9cda9400ae6ee10d544ca4962e218de6da0000ded62204c9c8d7c0f"
+    },
+    {
+      "path": "lexicon/ru/standard/рж.json.gz",
+      "sha256": "4b12cacc9db2617c9cf9001bbe6d77d7222dd0651e9bc4ad87b10fd747d3dd6e"
+    },
+    {
+      "path": "lexicon/ru/standard/ри.json.gz",
+      "sha256": "7972ad6b1d06cbb7b82ca467910d6140d4402393d9b258af51af8387752c1d50"
+    },
+    {
+      "path": "lexicon/ru/standard/рк.json.gz",
+      "sha256": "bce71d323671be67e9402370df2ea6bb260dead9c017f7b8736128d04d722116"
+    },
+    {
+      "path": "lexicon/ru/standard/рн.json.gz",
+      "sha256": "35fe37ee2dfd70e0cb5a7287059d025197517910464529e5fccb7fbf62b27b3a"
+    },
+    {
+      "path": "lexicon/ru/standard/ро.json.gz",
+      "sha256": "d5cde64990247aede3ed719931a1280893f68b3515e79a5f5aead6033bf04b73"
+    },
+    {
+      "path": "lexicon/ru/standard/рп.json.gz",
+      "sha256": "b53132bb766794432862b4cda0a017453aa484661b97f5cd2e30d7addc1912ab"
+    },
+    {
+      "path": "lexicon/ru/standard/рр.json.gz",
+      "sha256": "3d2bc94a21b2d4b08e976a7cb4d5bb4faef4fc9299aacaf5fcea5e6ca58530c4"
+    },
+    {
+      "path": "lexicon/ru/standard/рс.json.gz",
+      "sha256": "bd147bd3fce41fca6c2d4ccfec91e210dfb6fb095e41439b8ea5abd5dcf81016"
+    },
+    {
+      "path": "lexicon/ru/standard/рт.json.gz",
+      "sha256": "89d6294f1258f32357920464bf6d5ed09b1d0b8e5c6f7026879a52d9c6115dc8"
+    },
+    {
+      "path": "lexicon/ru/standard/ру.json.gz",
+      "sha256": "a7d7f41798339f0a6dab0618c51c2d83d11c03ded9a731b72fefbe5bd454a535"
+    },
+    {
+      "path": "lexicon/ru/standard/рф.json.gz",
+      "sha256": "2a96ebee31ee862f52028352dd4f05ef36a3e6b7ebfad43aa5ba57b1237d1160"
+    },
+    {
+      "path": "lexicon/ru/standard/ры.json.gz",
+      "sha256": "c963a0584cb18fef0426235bf1c50d1898271a61abca8c0e59173d3d7b015efa"
+    },
+    {
+      "path": "lexicon/ru/standard/рь.json.gz",
+      "sha256": "786d13b9424a2f407140dd727de01da91b2241c72dadc716fa044070eae07332"
+    },
+    {
+      "path": "lexicon/ru/standard/рэ.json.gz",
+      "sha256": "c603b795f5a16fa48ee2d144e37bbd1deb2108cb8bb48599d2a8bd5c848e9f1d"
+    },
+    {
+      "path": "lexicon/ru/standard/рю.json.gz",
+      "sha256": "983206fb2166aba67b2a3070f0d76ee9aa71c8b48a77476c517fa6e451ce641d"
+    },
+    {
+      "path": "lexicon/ru/standard/ря.json.gz",
+      "sha256": "a3d025343d120451a167c688e39352ad23c78d5b83315d9c90c677aa7cf8eff8"
+    },
+    {
+      "path": "lexicon/ru/standard/с.json.gz",
+      "sha256": "aa3134fae9feb9d7c79e9396f11fbf31ca8b7baece44617b188361bf1beec6db"
+    },
+    {
+      "path": "lexicon/ru/standard/са.json.gz",
+      "sha256": "ae168f87134247176eb5a1634701f082fba13dbd08e65d5748b62a77797cbe64"
+    },
+    {
+      "path": "lexicon/ru/standard/сб.json.gz",
+      "sha256": "5730a7bb4b6888c31b385084be09fa3b5aa76927ff720cc6a5745df939568f45"
+    },
+    {
+      "path": "lexicon/ru/standard/св.json.gz",
+      "sha256": "017927b672bfddf549c534f7a6cf3b526056043e54c799e49ae9b5492fa28f64"
+    },
+    {
+      "path": "lexicon/ru/standard/сг.json.gz",
+      "sha256": "0581577afaf6fba9137cfb23139427795576f4d4cd2c66e2bfb96490560c6d34"
+    },
+    {
+      "path": "lexicon/ru/standard/сд.json.gz",
+      "sha256": "60a9cb35c6ed54cc75b4d3082dc5c9a8f502922a2f6fd737c981ae69029c00bf"
+    },
+    {
+      "path": "lexicon/ru/standard/се.json.gz",
+      "sha256": "69021abc3b8ed334083313b815caeb812fdcd91213886db53aee0a5472e8be5e"
+    },
+    {
+      "path": "lexicon/ru/standard/сж.json.gz",
+      "sha256": "d9cc0c5631648ed1e8f98ff2cb8a5aeb6f77b694c994c335bd1d0b285f1b56ca"
+    },
+    {
+      "path": "lexicon/ru/standard/сз.json.gz",
+      "sha256": "fd7b0a75a209e4df19b17c239dc4a6ef3f33ed8245768262d39b9612d201df9e"
+    },
+    {
+      "path": "lexicon/ru/standard/си.json.gz",
+      "sha256": "e6d7bac5a8f0ac64d0d80a30d1a6729d2b2dc870c04b5a1eb873a1ab7d8b4de1"
+    },
+    {
+      "path": "lexicon/ru/standard/ск.json.gz",
+      "sha256": "44dabec6cb3d7a15b0f19db2dc4324690c6e37c1b2ea4b0bc5f37551a804f932"
+    },
+    {
+      "path": "lexicon/ru/standard/сл.json.gz",
+      "sha256": "16b0979d2674e13c2ab472f6cbc0b6f92b57d90efd97e2fe0436343cf62b0403"
+    },
+    {
+      "path": "lexicon/ru/standard/см.json.gz",
+      "sha256": "82a80c19e37a6f439577a8ce64459e00f157e6071901500c6dadbb051051d9ca"
+    },
+    {
+      "path": "lexicon/ru/standard/сн.json.gz",
+      "sha256": "2fe3c845e2ad09996ce5de2901a7f8e806b2de6c20b94766c95e5eac2f4cad74"
+    },
+    {
+      "path": "lexicon/ru/standard/со.json.gz",
+      "sha256": "859663c9e0d19a73341bad6a60066819d605be5e1ba65621b185f5e51e256fc7"
+    },
+    {
+      "path": "lexicon/ru/standard/сп.json.gz",
+      "sha256": "5a7a05983d3cc466c450ba6a5c4ec298b7f448efeb950dc9c73a3817134e6abd"
+    },
+    {
+      "path": "lexicon/ru/standard/ср.json.gz",
+      "sha256": "618799629ff146ccd4a099db0353bd2474161003c1b294411c35d748462e29cd"
+    },
+    {
+      "path": "lexicon/ru/standard/сс.json.gz",
+      "sha256": "1a5002baa935c3fa4c57dbb53e44ae44c097fb070759fcaa732cd4dd8046a8de"
+    },
+    {
+      "path": "lexicon/ru/standard/ст.json.gz",
+      "sha256": "6c471025ae5db017a89e83ff080f192372eadeaaa854fc808044edc517eedafa"
+    },
+    {
+      "path": "lexicon/ru/standard/су.json.gz",
+      "sha256": "097be871825a907d2cfb089136dc31ec25834236143df56c9dd6d98b33dc6bfd"
+    },
+    {
+      "path": "lexicon/ru/standard/сф.json.gz",
+      "sha256": "007230badbc5474b5a9b3d2569daa059908fb2c60c10c1c2062163378381eb5c"
+    },
+    {
+      "path": "lexicon/ru/standard/сх.json.gz",
+      "sha256": "b5761bb5ed6f03a168a1125d1f2ffdc67ee518ae984cccb08899fde60246bf22"
+    },
+    {
+      "path": "lexicon/ru/standard/сц.json.gz",
+      "sha256": "b1f5208e29c742d3a7b9fcebbf6a2a65ddb26fb8258f83e796060070d72465c4"
+    },
+    {
+      "path": "lexicon/ru/standard/сч.json.gz",
+      "sha256": "41ab9388793de4009455572f5df0abccde37b1c9b126b7b1b9d24dc0220fb363"
+    },
+    {
+      "path": "lexicon/ru/standard/сш.json.gz",
+      "sha256": "036ff0cf1ab95e2c98c1524ecff0a65b9ac3ac00d5194ffb25b30ad9af3d6ae2"
+    },
+    {
+      "path": "lexicon/ru/standard/сщ.json.gz",
+      "sha256": "3a6a887579aadb51b14a41b239f5866e0a2fbeb10a234e161698ecf0c9d60e9a"
+    },
+    {
+      "path": "lexicon/ru/standard/съ.json.gz",
+      "sha256": "8037dc581431e2edb03a6da8357a24ff3a85fafc6df5b082858353adea1086c5"
+    },
+    {
+      "path": "lexicon/ru/standard/сы.json.gz",
+      "sha256": "b82e40a345d0ceafff842c623b8c7b2d84b658829de836e105280830128ab88a"
+    },
+    {
+      "path": "lexicon/ru/standard/сь.json.gz",
+      "sha256": "26b0b60a588eee09c67bf1f9f2192042713e0a99a2ece95b5064ccc24dadd491"
+    },
+    {
+      "path": "lexicon/ru/standard/сэ.json.gz",
+      "sha256": "08554fba39181c8eacc4c758c37e5c61a8b146cadb8b3949dc47eacc11a30f91"
+    },
+    {
+      "path": "lexicon/ru/standard/сю.json.gz",
+      "sha256": "ef1148eeb8c33d4de311e4f5197c4fe546a7607372581fd805660845f3a66597"
+    },
+    {
+      "path": "lexicon/ru/standard/ся.json.gz",
+      "sha256": "08b67e15dab808ff9040efb3780ff75b40bd4aa2b1ef542122d8ad98f15934bc"
+    },
+    {
+      "path": "lexicon/ru/standard/т.json.gz",
+      "sha256": "db756df6662b57087e297ddce5686987cf8dc570f2fc96db9a39bb84af149e38"
+    },
+    {
+      "path": "lexicon/ru/standard/у.json.gz",
+      "sha256": "74ddbf791d5b2c417ea37e24e0252d2d7e9cc3bddbcf05c0ef28b86f8ef02a3a"
+    },
+    {
+      "path": "lexicon/ru/standard/уа.json.gz",
+      "sha256": "0757c3d522fcb827bd19dc239e4307c060ddaf8ff4c06090c20a791b7f81a53c"
+    },
+    {
+      "path": "lexicon/ru/standard/уб.json.gz",
+      "sha256": "4393082e818cb63baa79a8879afac7125af240a10946630018f1bf7b751e0530"
+    },
+    {
+      "path": "lexicon/ru/standard/ув.json.gz",
+      "sha256": "4de457d54dde348bb3255b1a8f3049f54382eb1bd294b92bf52b1bb222fd88ea"
+    },
+    {
+      "path": "lexicon/ru/standard/уг.json.gz",
+      "sha256": "bd95b33ec84a8387f4d16141766be5ed596c44ef7b3a6b65f18e5f5e02d7bfdd"
+    },
+    {
+      "path": "lexicon/ru/standard/уд.json.gz",
+      "sha256": "af20552054ca1f40e021550e7e5c23c27aa5845f178f2dbaa6e2985bf2fd98f8"
+    },
+    {
+      "path": "lexicon/ru/standard/уе.json.gz",
+      "sha256": "a65d87b94c2555759ca3d5eb78347a9671b98bd58abe5f305b53d24219a10e54"
+    },
+    {
+      "path": "lexicon/ru/standard/уж.json.gz",
+      "sha256": "33ed2bc740e92f7b4073f966322f0c455551f94c3d68556023e3ea6cb88240a8"
+    },
+    {
+      "path": "lexicon/ru/standard/уз.json.gz",
+      "sha256": "ec6ca2339200323b88346e23c9d80ea956eadd439b201795384126ee203be63b"
+    },
+    {
+      "path": "lexicon/ru/standard/уи.json.gz",
+      "sha256": "2b6d34f3eaee610f5c8de601c7f8f3b501b5c85300214d6911128540c080d518"
+    },
+    {
+      "path": "lexicon/ru/standard/уй.json.gz",
+      "sha256": "aa1f8194e1119570ff5e9d13b0ce28a82c84fc751578db4784ad59c502c5d101"
+    },
+    {
+      "path": "lexicon/ru/standard/ук.json.gz",
+      "sha256": "342d07e15d2a3d7c3885d4341b5d696d081b848c223ae1024967732a0f531172"
+    },
+    {
+      "path": "lexicon/ru/standard/ул.json.gz",
+      "sha256": "26098132577f39c30e474790c2251284465739aca4763fff261de668a9f98e24"
+    },
+    {
+      "path": "lexicon/ru/standard/ум.json.gz",
+      "sha256": "b1e518ae5ba6aa0e4e0e32402d730efd9873eae0f4446c5c14c98febc7896bbc"
+    },
+    {
+      "path": "lexicon/ru/standard/ун.json.gz",
+      "sha256": "3a687ad8756948edd61425465e623590b1a6119d1c91e0fc32d7918f2bb40fd6"
+    },
+    {
+      "path": "lexicon/ru/standard/уо.json.gz",
+      "sha256": "68c01c890f31ad91922a94374388bab6844309f5cfd8d37adc5c7a65caf8158f"
+    },
+    {
+      "path": "lexicon/ru/standard/уп.json.gz",
+      "sha256": "27cb447950e1086585939562857fae7e671a80402d0df612cd4b18df99a20639"
+    },
+    {
+      "path": "lexicon/ru/standard/ур.json.gz",
+      "sha256": "10ec9ba70b60936a52081845894b737f0e7f57b134a5cddcc1d93564fca53c9c"
+    },
+    {
+      "path": "lexicon/ru/standard/ус.json.gz",
+      "sha256": "869252e6bad99acd4b5d94aec5f6c377998d7edda279ff8d1913b0ed39268551"
+    },
+    {
+      "path": "lexicon/ru/standard/ут.json.gz",
+      "sha256": "685e8ff035a195b297250b4c09349608609c74c478adc285bd7d7e39e0311d73"
+    },
+    {
+      "path": "lexicon/ru/standard/уф.json.gz",
+      "sha256": "afd1583bcffcae3598c422c6f61c70713032a33bfe59037c8ba5d6a8e76f2a32"
+    },
+    {
+      "path": "lexicon/ru/standard/ух.json.gz",
+      "sha256": "98abbf59919ce05faddc038e415852dfbd927654b9d722d87e7986e02572e505"
+    },
+    {
+      "path": "lexicon/ru/standard/уц.json.gz",
+      "sha256": "f9764aa1f6295fb47c21fe5c528d7fb10a44e358bbe46967c42ba0e5478f266f"
+    },
+    {
+      "path": "lexicon/ru/standard/уч.json.gz",
+      "sha256": "c158e0166f6170a3fc23b70581efd2866fd7af811024118883f1f972238faab9"
+    },
+    {
+      "path": "lexicon/ru/standard/уш.json.gz",
+      "sha256": "ded1ed66dd0bef6130e27081ffce09f8fb987570eb7a20fc152246941f024c2f"
+    },
+    {
+      "path": "lexicon/ru/standard/ущ.json.gz",
+      "sha256": "3152e67449a96c1ea6d318e6a6ba3d6194ef0527e0691a771af8cfb40df633b6"
+    },
+    {
+      "path": "lexicon/ru/standard/уэ.json.gz",
+      "sha256": "73d269a1f4cdf2a956b7be2d31c5a59c343b9a55f586a8ac24ebf5b080ec6780"
+    },
+    {
+      "path": "lexicon/ru/standard/ую.json.gz",
+      "sha256": "e40f4f23383ebf2ebe4c1ecac76a99c66e25cd0b12e060a2a1ef14add1682dca"
+    },
+    {
+      "path": "lexicon/ru/standard/уя.json.gz",
+      "sha256": "b3468e9dfab82989e0594330dbce4ac1ecdece35e7851b5193afe8002dd64c27"
+    },
+    {
+      "path": "lexicon/ru/standard/ф.json.gz",
+      "sha256": "419b434d84f7b77b31c7acf2dcbc807f371ca5b904df885e12ba1321c3a2199b"
+    },
+    {
+      "path": "lexicon/ru/standard/х.json.gz",
+      "sha256": "639a2d1ce18f909faefecb6f3e4631e7851cbf14f87f9dae3101150787a42587"
+    },
+    {
+      "path": "lexicon/ru/standard/ц.json.gz",
+      "sha256": "9ec24bafeb2a46d5e3a1e08b4090f550c7fec62962cebf099e17c586a308281e"
+    },
+    {
+      "path": "lexicon/ru/standard/ч.json.gz",
+      "sha256": "a6003bfb14486392d5808b5feb3d9996d96689679b7e3677d9829b3b82a15b5e"
+    },
+    {
+      "path": "lexicon/ru/standard/ш.json.gz",
+      "sha256": "ffd6dc056dbea28f3db6a3934e1143a63f2f90f0ff0ff1d39184e07e28802c4d"
+    },
+    {
+      "path": "lexicon/ru/standard/щ.json.gz",
+      "sha256": "87ac7e8f843db4bd941f97b66645626a191c537c3be2e2c23833cb9ccf9d816f"
+    },
+    {
+      "path": "lexicon/ru/standard/ы.json.gz",
+      "sha256": "cea147abda70428c1959e01a45e43e888d8555235eb78f10890be4d09a1835c0"
+    },
+    {
+      "path": "lexicon/ru/standard/ь.json.gz",
+      "sha256": "6cdf2df4fffe949e3557d94d223404f29f4f6422b5024b03a6ca9054046d46a6"
+    },
+    {
+      "path": "lexicon/ru/standard/э.json.gz",
+      "sha256": "65c95d5f4ccb43965d3e3224d8c5a5810afe5655b34dfcff19d9c7f5c6d09b29"
+    },
+    {
+      "path": "lexicon/ru/standard/ю.json.gz",
+      "sha256": "c8baf48939c59d2ab90ecbfccda170bf54e8953c015691c45ac5a331e1d092c8"
+    },
+    {
+      "path": "lexicon/ru/standard/я.json.gz",
+      "sha256": "a6a7093f66e3db8bc043288a3f9a8e65b44d42afd5fe0030aed79222c3906cd1"
+    },
+    {
       "path": "manifest.webmanifest",
       "sha256": "96854337abab518cb1b7a85e89991536974037798ff2fa3c0d2131677ce8a5ea"
     },
     {
       "path": "sw.js",
-      "sha256": "8cb8e0249ee9f54c7585d754271d6d6ef31c529fde614864743066aab38a725c"
+      "sha256": "2a97a1639f05c92d9b9de13623b95ebaf6c37e852fd0939b0da064b1a6313499"
     }
   ]
 }

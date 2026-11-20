@@ -1176,6 +1176,12 @@ img, svg, video, canvas { max-width: 100%; }
 .account-language-disclosure[open] .account-language-caret { transform: rotate(180deg); }
 .account-language-name { overflow-wrap: anywhere; }
 .account-language-name small { color: var(--ink-soft); }
+.account-language-options { padding: 0 var(--deck-inset) 1.15rem; }
+.account-language-options .setup-choice { margin: .3rem 0 0; }
+.account-language-options .account-panel-actions { margin-top: 1rem; }
+.account-catalogue-heading { margin-top: 1rem; }
+.account-catalogue-list { display: grid; gap: .8rem; list-style: none; margin: 0; padding: 0; }
+.account-catalogue-list > .setup-language { display: grid; gap: .3rem; }
 .account-page > .home-link, .account-group > .home-link { margin-top: .2rem; }
 .deck-tile[data-deck="danger"] .deck-title { color: var(--bad); }
 .deck-tile[data-deck="danger"] .deck-face .ec-icon { color: var(--bad); }

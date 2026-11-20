@@ -1,0 +1,1 @@
+import{t as e}from"./lang-norwegian-CZ_RfDsu.js";var t=e(`nb`);export{t as nbAdapter};

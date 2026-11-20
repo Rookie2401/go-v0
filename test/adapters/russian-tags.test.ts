@@ -534,6 +534,16 @@ describe('describeRuMorph', () => {
     expect(describeRuMorph({ Mood: 'Imp', Person: '2', Number: 'Plur', VerbForm: 'Fin', Aspect: 'Imp' }, 'VERB')).toBe('imperative, 2nd person plural, imperfective');
     expect(describeRuMorph({ VerbForm: 'Inf', Aspect: 'Perf' }, 'VERB')).toBe('infinitive, perfective');
   });
+  it('keeps reflexive on verb forms even when the description returns early', () => {
+    expect(describeRuMorph({ VerbForm: 'Fin', Person: '3', Number: 'Sing', Tense: 'Pres', Aspect: 'Imp', Reflex: 'Yes' }, 'VERB'))
+      .toBe('3rd person singular, present, imperfective, reflexive');
+    expect(describeRuMorph({ VerbForm: 'Inf', Aspect: 'Imp', Reflex: 'Yes' }, 'VERB'))
+      .toBe('infinitive, imperfective, reflexive');
+    expect(describeRuMorph({ VerbForm: 'Part', Tense: 'Past', Voice: 'Act', Reflex: 'Yes' }, 'VERB'))
+      .toBe('past active participle, reflexive');
+    expect(describeRuMorph({ VerbForm: 'Conv', Tense: 'Pres', Reflex: 'Yes' }, 'VERB'))
+      .toBe('present adverbial participle (while …), reflexive');
+  });
   it('participles and adverbial participles', () => {
     expect(describeRuMorph({ VerbForm: 'Part', Voice: 'Act', Tense: 'Pres', Case: 'Gen', Number: 'Sing', Gender: 'Masc' }, 'VERB')).toBe('present active participle, genitive singular masculine');
     expect(describeRuMorph({ VerbForm: 'Conv', Tense: 'Past', Aspect: 'Perf' }, 'VERB')).toBe('past adverbial participle (having …), perfective');

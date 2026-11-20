@@ -38,7 +38,7 @@ An optional, short course for an English speaker with no French: the least a beg
 - The standard described is the common pronunciation of France. Un and in are one sound for many speakers in France and two elsewhere; the stage says so and tells the learner not to worry about it at first.
 - Liaison is described, not heard. Which optional liaisons are made differs by speaker, region and register.
 - A rule is "usually". Where the spelling cannot decide (-ent on a verb or not, final consonants of plus, tous, six, huit), the grapheme is marked `context` or `uncertain` and the card says so.
-- The word list holds about 2,500 lemmas plus the dictionary; the sprint's example words are checked against the real analyser by the pack-wide tests, not by this document.
+- The word list holds about 3,400 lemmas plus the dictionary; the sprint's example words are checked against the real analyser by the pack-wide tests, not by this document.
 
 ## Checks
 

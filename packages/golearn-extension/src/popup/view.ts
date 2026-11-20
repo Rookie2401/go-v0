@@ -9,7 +9,7 @@ import type { KnowledgeLevel } from '../../../repository-contract/src/knowledge-
 import type { ConstructionExplanation, ExplanationDepth, FeatureExplanation, SelfMark, SourceLink } from '../protocol';
 
 /**
- * The sections "Go deeper" opens, all at once, in this order: Form (`morphology`; its ANALYSIS dropdown holds Grammar, recorded as `grammar` on its first opening), Syntax (`phrase-syntax`), All forms (the paradigm),
+ * The sections "Go deeper" opens, all at once, in this order: Form (`morphology`; feature summaries show here, and its ANALYSIS dropdown holds Grammar, recorded as `grammar` on its first opening), Syntax (`phrase-syntax`), All forms (the paradigm),
  * Meanings, Origin, Word structure, Sentence (the word-by-word English rescue). "About this analysis" follows them and is not a layer: it records nothing.
  * There is no Sound layer any more: the speaker beside the word replaces it.
  * `variants` is the "Variants" pill of a language with period varieties (Hebrew, Greek): the word across the periods, its own panel to the

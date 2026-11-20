@@ -35,7 +35,7 @@ describe('FR_TUTORIAL', () => {
     const ids = FR_TUTORIAL.steps.map((s) => s.id);
     expect(ids).toContain('honesty-experimental');
     expect(ids[ids.length - 1]).toBe('sound-and-audio');
-    expect(step('honesty-experimental').body).toMatch(/2,500 lemmas/);
+    expect(step('honesty-experimental').body).toMatch(/3,400 lemmas/);
     expect(step('honesty-experimental').body).toMatch(/not checked by a native speaker/);
     expect(step('sound-and-audio').body).toMatch(/no recordings/);
   });

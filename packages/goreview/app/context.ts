@@ -75,7 +75,7 @@ export interface AppContext {
    * this device's Repository (inside the extension, where GoLearn sees it too), and it becomes the active language. A language already chosen in the
    * same variety is reused; another variety of the same language replaces the earlier one (its events stay under it), as GoLearn setup does.
    */
-  chooseLanguage(input: { languageId: string; varietyId?: string }): Promise<{ ok: true; enrolmentId: string; where: 'account' | 'device' } | { ok: false; message: string }>;
+  chooseLanguage(input: { languageId: string; varietyId?: string; keepOtherVarieties?: boolean }): Promise<{ ok: true; enrolmentId: string; where: 'account' | 'device' } | { ok: false; message: string }>;
   signIn(input: { email: string; password: string; /** Make the account first (the hosted copy and the iPhone app, which have no setup page to do it). */ create?: boolean; displayName?: string }): Promise<SignInResult>;
   signOut(opts?: { forget?: boolean }): Promise<{ pendingLeft: number }>;
   /** Deliberately removes this device's own data: the on-device Repository and the learner's local queue, log and preferences. Never a side effect of signing out. */
@@ -514,7 +514,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     },
     session: () => state.getSession(),
     enrolments, refreshProfile, identity,
-    async chooseLanguage({ languageId, varietyId }) {
+    async chooseLanguage({ languageId, varietyId, keepOtherVarieties = false }) {
       const pack = packFor(languageId);
       if (!pack) return { ok: false, message: 'GoReview has no pack for this language yet.' };
       if (pack.status !== 'installable') return { ok: false, message: `${pack.identity.name} is planned, not ready yet, so it cannot be chosen.` };
@@ -533,7 +533,9 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
         const same = open.find((e) => (e.varietyId ?? '') === variety);
         if (same) enrolmentId = same.enrolmentId;
         else {
-          for (const other of open) await client.endEnrolment(other.enrolmentId);
+          if (!keepOtherVarieties) {
+            for (const other of open) await client.endEnrolment(other.enrolmentId);
+          }
           const made = await client.enrol(input);
           if (!made.ok) return { ok: false, message: made.message || `The language could not be saved (${made.status}). Try again.` };
           enrolmentId = made.data.enrolment.enrolmentId;

@@ -5,7 +5,7 @@
  * enrolment is made on the account; inside the extension with no account, on the device's Repository.
  */
 import { afterEach, describe, expect, it } from 'vitest';
-import { FakeService, destroyRigs, languageRowName, makeRig, until } from './helpers';
+import { FakeService, destroyRigs, makeRig, until } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -38,12 +38,18 @@ describe('GoReview setup, signed in to an account with no language', () => {
     expect(service.enrolments.get('L9')?.map((e) => [e.languageId, e.varietyId, e.packId])).toEqual([['sq', 'sq-standard', 'pack:sq']]);
     await until(() => !!rig.root.querySelector('#language-name'), 'the language in the header');
     expect(rig.q('#language-name').textContent).toContain('Albanian');
-    // another language is added from the Account page (2026-11-18: the home has no + and no dropdown)
+    // All other languages are available on Account without another page.
     expect(rig.root.querySelector('#add-language, #language-select')).toBeNull();
     await rig.go('account');
-    await until(() => !!rig.root.querySelector('#add-language'), 'the Account page');
-    expect(rig.q<HTMLAnchorElement>('#add-language').getAttribute('href')).toBe('#/setup');
-    expect(languageRowName(rig.q('#account-languages .account-language-row[aria-current="true"]'))).toBe('Albanian');
+    await until(() => !!rig.root.querySelector('#account-languages [data-language="de"]'), 'the Account language catalogue');
+    expect(rig.root.querySelector('#add-language')).toBeNull();
+    expect(rig.q('#account-languages .account-language[data-deck="current"]').textContent).toContain('Albanian');
+    press(rig.q('#account-languages [data-language="de"]'));
+    await until(() => rig.app.current() === 'review', 'German review home');
+    expect(service.calls).toContain('enrol:de:de-DE');
+    await rig.go('setup');
+    await until(() => rig.app.current() === 'account', 'old setup link opens Account for an enrolled learner');
+    expect(rig.root.querySelector('#setup')).toBeNull();
   });
 
   it('Norwegian asks for the written standard and guesses nothing; the choice is the enrolment', async () => {
@@ -62,6 +68,24 @@ describe('GoReview setup, signed in to an account with no language', () => {
     press(no);
     await until(() => rig.app.current() === 'review', 'the home');
     expect(service.enrolments.get('L9')?.map((e) => [e.languageId, e.varietyId])).toEqual([['nn', 'nn']]);
+  });
+
+  it('an enrolled Norwegian can choose the other written standard and review within Account', async () => {
+    const service = newcomer();
+    const rig = await makeRig({ service });
+    await rig.signIn('new@example.org');
+    expect(await rig.app.ctx.chooseLanguage({ languageId: 'nb', varietyId: 'nb' })).toMatchObject({ ok: true });
+    await rig.go('account');
+    await until(() => !!rig.root.querySelector('.account-standard'), 'Norwegian Account card');
+    const card = rig.q<HTMLDetailsElement>('.account-standard');
+    expect(card.querySelector<HTMLInputElement>('input[value="nb"]')?.checked).toBe(true);
+    card.open = true;
+    const nynorsk = card.querySelector<HTMLInputElement>('input[value="nn"]')!;
+    nynorsk.click();
+    (card.querySelector<HTMLButtonElement>('[data-action="review-language"]')!).click();
+    await until(() => rig.app.current() === 'review', 'Nynorsk review home');
+    expect((await rig.app.ctx.identity())?.languageId).toBe('nn');
+    expect((service.enrolments.get('L9') ?? []).filter((e) => !e.endedAt).map((e) => e.languageId)).toEqual(['nb', 'nn']);
   });
 
   it('a language already chosen is reused, and another variety of it replaces the earlier one', async () => {

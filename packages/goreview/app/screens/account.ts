@@ -58,8 +58,16 @@ async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElemen
       h('span', { class: 'deck-title account-language-name' }, name,
         language?.nativeName ? h('small', { lang: key, dir: 'auto' }, ` (${language.nativeName})`) : null));
     const choice = language?.choice;
+    const languageIds = choice?.kind === 'standard' ? choice.options.map((o) => o.languageId) : [key];
+    const options = languageIds.flatMap((languageId) => {
+      const pack = packFor(languageId);
+      if (pack?.status !== 'installable') return [];
+      return pack.varieties.filter((v) => v.analysed && (v.varietyId === languageId || v.varietyId.startsWith(`${languageId}-`)))
+        .map((v) => ({ languageId, varietyId: v.varietyId, label: v.label }));
+    });
+    if (key === 'he' || key === 'el') options.reverse();
     const deck = reviewing ? 'current' : 'language';
-    if (!language || !choice) {
+    if (options.length < 2 && members.length === 1) {
       const e = members[0]!;
       const face = button('', () => { void activate(e).then((ok) => { if (ok && view.alive()) ctx.go('review'); }); },
         { class: 'deck-face', 'data-enrolment': e.enrolmentId, ...(reviewing ? { 'aria-current': 'true' } : {}) });
@@ -87,7 +95,7 @@ async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElemen
                 return;
               }
             } else if (target) {
-              const result = await ctx.chooseLanguage({ ...target, keepOtherVarieties: true });
+              const result = await ctx.chooseLanguage({ languageId: target.languageId, varietyId: target.varietyId, keepOtherVarieties: true });
               if (!result.ok) {
                 if (view.alive()) setStatus(status, result.message, 'error');
                 return;
@@ -99,32 +107,28 @@ async function languageSettings(ctx: AppContext, view: View): Promise<HTMLElemen
             control.disabled = false;
           }
         })();
-      }, { class: 'account-language-row', disabled: !existing && !target,
+      }, { class: 'account-language-row', 
         'data-enrolment': existing?.enrolmentId, ...(current ? { 'aria-current': 'true' } : {}) });
-      control.append(h('span', {}, name), h('small', {}, current ? 'Reviewing now' : existing ? '' : target ? 'Add track' : 'Unavailable'));
+      control.append(h('span', {}, name), h('small', {}, current ? 'Reviewing now' : existing ? '' : 'Add track'));
       return h('li', {}, control);
     }
 
-    const options = key === 'he' || key === 'el' ? [...choice.options].reverse() : choice.options;
+    const parentName = language?.name ?? enrolmentName(members[0]!, list);
     for (const option of options) {
-      const pack = packFor(option.languageId);
       const existing = members.find((e) => e.languageId === option.languageId &&
-        (choice.kind === 'standard' || (e.varietyId ?? pack?.varietyId) === option.varietyId));
+        (e.varietyId ?? packFor(e.languageId)?.varietyId) === option.varietyId);
       if (existing) matched.add(existing);
-      const name = option.label.replace(/\s*\(default\)$/u, '');
-      const title = name.endsWith(` ${language.name}`) ? name.slice(0, -language.name.length - 1) : name;
-      const target = option.varietyId && pack?.status === 'installable' && pack.varieties.some((v) => v.varietyId === option.varietyId && v.analysed)
-        ? { languageId: option.languageId, varietyId: option.varietyId } : undefined;
-      if (existing || target) rows.push(track(title, existing, target));
-      if (key === 'he' && option.id === 'he-bib' && !choice.options.some((o) => /medieval/i.test(o.label))) rows.push(track('Medieval'));
+      const name = option.label.replace(/\s*\([^)]*\)\s*$/u, '');
+      const title = name.endsWith(` ${parentName}`) ? name.slice(0, -parentName.length - 1) : name;
+      rows.push(track(title, existing, option));
     }
     for (const e of members) {
-      if (!matched.has(e)) rows.push(track(enrolmentName(e, list), e));
+      if (!matched.has(e) && !e.varietyId) rows.push(track(enrolmentName(e, list), e));
     }
-    const summary = h('summary', { class: 'deck-face' }, label(language.name, reviewing ? 'Reviewing now' : undefined),
+    const summary = h('summary', { class: 'deck-face' }, label(parentName, reviewing ? 'Reviewing now' : undefined),
       h('span', { class: 'account-language-caret', 'aria-hidden': 'true' }, '▾'));
     return h('details', { class: 'deck-tile account-language account-language-disclosure', 'data-deck': deck },
-      summary, h('ul', { class: 'account-language-list', 'aria-label': `${language.name} tracks` }, ...rows), status);
+      summary, h('ul', { class: 'account-language-list', 'aria-label': `${parentName} tracks` }, ...rows), status);
   });
   return h('section', { class: 'account-group', id: 'account-languages', 'aria-labelledby': 'account-settings-h' },
     h('h3', { class: 'tiles-heading', id: 'account-settings-h' }, 'Your Account Settings'),

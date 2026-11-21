@@ -1,0 +1,1 @@
+import{t as e}from"./es-DwD69prD.js";export{e as adapter};

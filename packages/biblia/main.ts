@@ -3,7 +3,7 @@
  * when this page is bundled in the iPhone app, the Repository service named in config.json when this is the standalone web edition) for `createBibliaApp`.
  */
 import { createBibliaApp } from './src/app';
-import { editionOf } from './src/edition';
+import { editionOf, namespacedStorage } from './src/edition';
 import { fetchJsonWith } from './src/data';
 import { accountRecorder, extensionSend, makeRecorder, noRecorder, type AccountRecorder, type Recorder } from './src/repo';
 import { createAccountService, type AccountService } from './src/account';
@@ -38,7 +38,8 @@ const isStandalone = (): boolean => document.querySelector('meta[name="biblia-ed
 declare const __BIBLIA_EDITION__: string;
 const edition = editionOf(typeof __BIBLIA_EDITION__ === 'string' ? __BIBLIA_EDITION__ : undefined);
 
-const storage = ((): Storage | undefined => { try { const s = window.localStorage; s.getItem('biblia:probe'); return s; } catch { return undefined; } })();
+// Biblia: localStorage itself, as always. The Hindi edition: the same storage under its own prefix, so it never touches Biblia's sign-in, queue or settings.
+const storage = ((): Storage | undefined => { try { const s = window.localStorage; s.getItem('biblia:probe'); return namespacedStorage(s, edition.storageNamespace); } catch { return undefined; } })();
 
 /** The account (sign-in state, the screen) and its recorder, over the Repository service config.json names. Without an address the page stays a reader and says so. */
 /** Until 2026-10-28 a learner could keep another address in place of config.json's under this key (the "Service address" field, 2026-10-25); the field is gone and a kept value is dropped. */

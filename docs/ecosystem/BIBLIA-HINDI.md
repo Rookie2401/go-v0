@@ -1,8 +1,10 @@
 # Biblia — the Hindi edition
 
-Built 2026-11-21. The same Biblia (packages/biblia) over the Hindi Bible: the same design, navigation, type scale, animations, card, account
-and events, with only what Hindi and Devanagari require changed. Not yet published: publishing goes through the release manager and needs the
-owner's yes (see "Hosting" below).
+Built 2026-11-21. A separate system that works exactly as Biblia does: the same design, navigation, type scale, animations, card and events,
+with only what Hindi and Devanagari require changed. Biblia itself stays as it is (owner, 2026-11-21: "Make sure that Biblia remains the same
+as is, this is another system that just so happens to work in the same way"): its live site is not rebuilt for this, its build's worker code
+and storage are unchanged, and the Hindi edition keeps its own site, sign-in, device id, offline queue, settings and caches.
+Site: https://rookie2401.github.io/biblia-hindi/ (repository Rookie2401/biblia-hindi, built site only; see "Hosting").
 
 ## The text and its licence
 
@@ -43,19 +45,23 @@ Differs, because of the language and script:
 - Settings: "Hindi text size" (16–40 px, default 22) in place of the Hebrew and Greek sizes, no "Hebrew text" row; verse numbers default to
   1, 2, 3 as the IRV prints them, with Devanagari digits (१, २, ३) as the other choice; the prose is set ragged-right (justified Devanagari
   left wide gaps in a phone column);
-- preferences are kept under `biblia-hi:` (place, open library levels, reading settings), so the two editions on one site keep their own.
+- storage: everything the page keeps (sign-in session, device id, offline queue, enrolment ids, place, settings) is kept under the prefix
+  `biblia-hindi/` (`namespacedStorage`, `edition.storageNamespace`), so on the shared github.io origin it never reads, overwrites or clears
+  Biblia's keys; the learner signs in to it separately, with the same GoLearn account; its worker's caches are `biblia-hindi-shell-*` /
+  `biblia-hindi-data-*`, which Biblia's worker never deletes (and the reverse).
 
-The same: the reader, the card (`createCardUI`, not restyled), lookups (`parseSelection` with the verse as context and `biblia:<Book>.<ch>.<v>`
-as the source), the events (SelectionLookedUp, one EncounterRecorded per verse read, ItemMarked, assistance), level marks from
-`GET /knowledge`, the account screen, the sync status, the offline queue, speech, the service worker's behaviour.
+The same code: the reader, the card (`createCardUI`, not restyled), lookups (`parseSelection` with the verse as context and
+`biblia:<Book>.<ch>.<v>` as the source), the events (SelectionLookedUp, one EncounterRecorded per verse read, ItemMarked, assistance), level
+marks from `GET /knowledge`, the account screen, the sync status, speech, the service worker's behaviour. For Biblia's own build the shared
+code behaves exactly as before (all of Biblia's tests pass unchanged; its built worker code is byte-identical apart from its header comment).
 
 ## GoLearn, the Repository, GoReview
 
 - GoLearn: every Devanagari word is a button parsed by the hi analyser. The language evidence is `{ languageId: 'hi', basis: 'override' }`
   with no `varietyId`: Modern Standard Hindi has no variety in the registry (the Hindi varieties there are heritage Awadhi, Braj and Sant
   Bhasha), exactly as GoLearn records a Hindi web page.
-- Repository: the recorder enrols (or reuses) the learner's Hindi enrolment, script `Deva`, pack version 1. Events go through the same
-  queue and the same account as the original edition; nothing in the Repository service changed.
+- Repository: the recorder enrols (or reuses) the learner's Hindi enrolment, script `Deva`, pack version 1, through the same Repository
+  service (go-v0.onrender.com) and the same GoLearn account, from its own queue; nothing in the Repository service changed.
 - GoReview: nothing changed there. It takes `languageId: 'hi'` events from producer surface `biblia-reading` like any other, and its
   reading-relevance keys (`biblia:<Book>.<ch>.<v>`) are language-neutral, so eligible Hindi words enter the existing Hindi queue with the
   existing scheduling.
@@ -72,18 +78,17 @@ npx vitest run test/biblia
 The build assembles its public folder in `packages/biblia/.edition-hi/` (git-ignored): `public/` without the original texts, the Hindi
 manifest, stylesheet and face, and `data/hi/` (66 books, `canon.json`, `SOURCES.json`). A USFM book that does not parse stops the build.
 
-## Hosting (proposed, not done)
+## Hosting
 
-As a sub-folder of the published Biblia: `https://rookie2401.github.io/biblia/hi/` (the `gh-pages` branch of Rookie2401/biblia, folder `hi/`),
-so it shares the origin, and with it the sign-in, of the original edition.
+Its own repository, Rookie2401/biblia-hindi (branch `main`, root, with `.nojekyll`), served at https://rookie2401.github.io/biblia-hindi/.
+The owner chose (2026-11-21) to have this session publish it directly rather than through the release manager, as it is a new target no
+other session touches. The repository holds only the built site, a README with the licences, and a commit message naming the go-v0 source
+commit and the build id.
 
-- Its service worker is scoped to `hi/` and names its caches `biblia-hi-shell-*` / `biblia-hi-data-*`; the original worker's are
-  `biblia-shell-*` / `biblia-data-*`. Neither deletes the other's.
-- The original edition's worker (scope `/biblia/`) used to answer every navigation under its scope with its own `index.html`, which would
-  have shown the original Biblia at `/biblia/hi/`. It now answers only its own page (`''` or `index.html`). The original edition must be
-  rebuilt and republished with this change BEFORE the Hindi edition is published, and a device that already has the original installed
-  picks the new worker up on its next visit to /biblia/ (the worker checks for updates on every return to the foreground).
-- Both rebuilds go to the release manager (session 40f57fca) as a REBUILD REQUEST; publishing needs the owner's yes.
+- `/biblia-hindi/` is outside Biblia's worker scope (`/biblia/`), so Biblia's worker never answers its pages, and Biblia needs no rebuild.
+- To update it: build with `BIBLIA_SERVICE_URL=https://go-v0.onrender.com npm run biblia:build-standalone-hi`, mirror
+  `packages/biblia/dist-standalone-hi` into a checkout of the repository (keep `.git`, `.nojekyll`, `README.md`), commit with the source
+  commit and build id, push.
 
 ## Limits
 
@@ -93,5 +98,4 @@ so it shares the origin, and with it the sign-in, of the original edition.
   पत्रियाँ · प्रकाशितवाक्य) were written for this app and await a Hindi speaker's review; the book names are the IRV's own (`\toc1`).
 - No dictionary panel, search or vocabulary list (as in the original edition: GoReview shows the vocabulary).
 - Not part of the GoReview iPhone app or Biblia's own iPhone shell; not an extension page.
-- The two editions share the offline queue: with both open in two tabs, both may send the same queued events; the Repository keeps one copy of
-  an event by its id.
+- Signing in to Biblia does not sign the learner in here (separate storage, by design); the account is the same.

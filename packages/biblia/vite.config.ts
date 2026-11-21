@@ -255,7 +255,7 @@ export default defineConfig(({ mode }) => {
     define: { __BIBLIA_EDITION__: JSON.stringify(hindi ? 'hi' : 'original') },
     plugins: [
       ...(hindi ? [hindiHtml()] : [devLexicon(), copyIndexes(outDir)]),
-      ...(standalone ? [standaloneFiles(outDir, publicDir, hindi ? 'biblia-hi-' : 'biblia-'), standaloneHtml(hindi ? 'Biblia हिंदी' : 'Biblia')] : [withoutStandaloneFiles(outDir)]),
+      ...(standalone ? [standaloneFiles(outDir, publicDir, hindi ? 'biblia-hindi-' : 'biblia-'), standaloneHtml(hindi ? 'Biblia हिंदी' : 'Biblia')] : [withoutStandaloneFiles(outDir)]),
     ],
     build: { outDir, emptyOutDir: true, target: 'es2022', sourcemap: false, rollupOptions: { input: path.join(here, 'index.html') } },
     server: { port: 5199, strictPort: true, host: '127.0.0.1', fs: { allow: [repoRoot] } },

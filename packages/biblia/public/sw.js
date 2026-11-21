@@ -1,7 +1,8 @@
 /* Biblia service worker (classic script). Built into dist-standalone/sw.js by packages/biblia/vite.config.ts --mode standalone,
  * which replaces the four tokens used below: the shell's build id (a hash of every shell file), the data id (a hash of the
- * texts and lexicon files), the list of shell files to precache and the prefix of its caches ("biblia-"; the Hindi edition's
- * worker, built with BIBLIA_EDITION=hi into dist-standalone-hi, has "biblia-hi-", so neither ever deletes the other's caches).
+ * texts and lexicon files), the list of shell files to precache and the prefix of its caches ("biblia-", as Biblia's caches
+ * have always been named; the Hindi edition, a separate site built with --mode standalone-hi, has "biblia-hindi-", so neither
+ * ever deletes the other's caches on the shared github.io origin).
  *
  *   shell        index.html, the hashed assets, styles, manifest, icons and config.json are precached at install under
  *                "biblia-shell-<build id>" and served cache-first (the cached index and its hashed assets are one consistent
@@ -13,9 +14,6 @@
  *   everything else  untouched. Responses of the Repository service are NEVER cached: another origin is not handled at all, and
  *                a request carrying an Authorization header, or a path that is neither in the shell nor under data/ or
  *                lexicon/, goes straight to the network.
- *
- * Navigations are answered from the shell only for the app's own page (the folder itself or index.html): a page in a sub-folder of the
- * scope (the Hindi edition at hi/, which has its own worker) is left to the network or to that worker.
  *
  * A new build installs, takes over at once (skipWaiting + clients.claim) and deletes the old caches; register.js reloads the page
  * once when that happens. The old Biblia app's caches (Workbox precache, "biblia-data-<hash>") are deleted the same way. Only
@@ -109,7 +107,6 @@ self.addEventListener('fetch', function (event) {
   var bare = url.origin + url.pathname;
 
   if (request.mode === 'navigate') {
-    if (rel !== '' && rel !== 'index.html') return;                // another page under this scope (the Hindi edition at hi/): not ours
     event.respondWith(fromShell(INDEX_URL).then(function (r) { return r || fetch(request); }));
     return;
   }

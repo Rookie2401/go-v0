@@ -11,7 +11,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { afterAll, afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createBibliaApp, HOME_OPEN_KEY, type BibliaApp } from '../../packages/biblia/src/app';
-import { HINDI_EDITION, ORIGINAL_EDITION, editionOf } from '../../packages/biblia/src/edition';
+import { HINDI_EDITION, ORIGINAL_EDITION, editionOf, namespacedStorage } from '../../packages/biblia/src/edition';
 import { IRV_BOOKS, buildIrv, cleanIrv, parseIrvBook, type HiBook } from '../../packages/biblia/src/irv';
 import { devanagariNumeral, numeral } from '../../packages/biblia/src/canon';
 import type { DataSource } from '../../packages/biblia/src/data';
@@ -240,6 +240,27 @@ describe('the Hindi edition of the app', () => {
     expect([...storage.map.keys()].filter((k) => k.startsWith('biblia:')).sort()).toEqual(['biblia:home-open', 'biblia:last']);
   });
 
+  it('is a separate system on the same site: everything it keeps is under biblia-hindi/, and Biblia\'s sign-in, queue and settings are never read, written or cleared', async () => {
+    const page = memoryStorage();
+    const biblia = { 'biblia:session': '{"token":"T","learnerId":"L1"}', 'biblia:queue': '[{"id":"e1"}]', 'biblia:device': 'biblia:web:abc', 'biblia:last': 'John/3', 'biblia:theme': 'dark' };
+    for (const [k, v] of Object.entries(biblia)) page.setItem(k, v);
+    expect(namespacedStorage(page, ORIGINAL_EDITION.storageNamespace)).toBe(page); // Biblia's storage is the page's own, untouched
+    const hindi = namespacedStorage(page, HINDI_EDITION.storageNamespace);
+    expect(hindi.getItem('biblia:session')).toBeNull(); // not signed in through Biblia's session
+    app = await createBibliaApp({ win: window, doc: document, edition: HINDI_EDITION, source: hindiSource, recorder: fakeRecorder(), storage: hindi, now: () => new Date() });
+    await app.go('#/read/Gen/2');
+    await app.go('#/settings');
+    (document.querySelector('#settings-reset, button[data-action="reset"]') as HTMLButtonElement | null)?.click();
+    hindi.setItem('biblia:queue', '[{"id":"h1"}]');
+    hindi.clear();
+    for (const [k, v] of Object.entries(biblia)) expect(page.getItem(k), k).toBe(v);
+    expect([...page.map.keys()].filter((k) => !(k in biblia)).every((k) => k.startsWith('biblia-hindi/'))).toBe(true);
+    hindi.setItem('biblia:queue', '[{"id":"h2"}]');
+    expect(page.getItem('biblia-hindi/biblia:queue')).toBe('[{"id":"h2"}]');
+    expect(hindi.length).toBe(1);
+    expect(hindi.key(0)).toBe('biblia:queue');
+  });
+
   it('the Sources page names the IRV, its licence and the changes, and the limits', async () => {
     app = await createBibliaApp({ win: window, doc: document, edition: HINDI_EDITION, source: hindiSource, recorder: fakeRecorder(), now: () => new Date() });
     await app.go('#/sources');
@@ -284,8 +305,8 @@ describe('the Hindi edition build', () => {
     // the worker: its own cache names, the shell precached, the texts not
     const sw = read('sw.js');
     expect(sw).not.toMatch(/__[A-Z_]+__/);
-    expect(sw).toContain("var SHELL_PREFIX = 'biblia-hi-shell-';");
-    expect(sw).toContain("var DATA_PREFIX = 'biblia-hi-data-';");
+    expect(sw).toContain("var SHELL_PREFIX = 'biblia-hindi-shell-';");
+    expect(sw).toContain("var DATA_PREFIX = 'biblia-hindi-data-';");
     const list = JSON.parse(/var PRECACHE = (\[[\s\S]*?\n\]);/.exec(sw)?.[1] ?? 'null') as string[];
     expect(list).toContain('./edition-hi.css');
     expect(list.filter((f) => f.startsWith('./data/'))).toEqual([]);

@@ -83,11 +83,9 @@ describe('Biblia standalone build', () => {
     expect(list.filter((f) => f !== './').every((f) => fs.existsSync(path.join(out, f)))).toBe(true);
     // the texts really are in the build (so the exclusion above is meaningful) and are far larger than the shell
     expect(fs.existsSync(path.join(out, 'data'))).toBe(true);
-    // the original edition's caches keep their names; the Hindi edition (dist-standalone-hi, at hi/ beneath it) has its own, never deleted by this worker
+    // Biblia's caches keep the names they have always had (the Hindi edition, a separate site, has biblia-hindi-*)
     expect(sw).toContain("var SHELL_PREFIX = 'biblia-shell-';");
     expect(sw).toContain("var DATA_PREFIX = 'biblia-data-';");
-    // a navigation to a page beneath the app's folder (the Hindi edition) is not answered with this app's index.html
-    expect(sw).toContain("if (rel !== '' && rel !== 'index.html') return;");
     // and none of the Hindi edition's files are in this build
     expect(list.filter((f) => /edition-hi|tiro-devanagari/.test(f))).toEqual([]);
   });

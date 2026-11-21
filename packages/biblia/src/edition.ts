@@ -1,9 +1,11 @@
 /**
- * Biblia's editions: the same app, design and account, over a different text. The original-languages edition (the Tanakh in Hebrew and the
- * New Testament in Greek) and the Hindi edition (the Indian Revised Version, 2019). An edition decides only what its text requires: the
- * library tree, the languages read, the numerals, the masthead, the reading-size setting and the place its preferences are kept. Everything
- * else — the reader, the GoLearn card, the events, the levels, the account, the settings page — is shared. The build picks the edition
- * (BIBLIA_EDITION=hi; vite.config.ts) and passes it to the app.
+ * Biblia's editions: the same app and design over a different text. The original-languages edition (Biblia itself: the Tanakh in Hebrew and
+ * the New Testament in Greek) and the Hindi edition (the Indian Revised Version, 2019), which is a separate system that works the same way:
+ * its own site (rookie2401.github.io/biblia-hindi), its own browser storage (`storageNamespace`: sign-in, device id, offline queue and
+ * preferences all apart from Biblia's), the same GoLearn account and Repository. An edition decides only what its text requires: the library
+ * tree, the languages read, the numerals, the masthead, the reading-size setting and where it keeps its data. The reader, the GoLearn card,
+ * the events, the levels and the settings page are the same code. The build picks the edition (--mode hi; vite.config.ts) and passes it to
+ * the app; Biblia's own build is unchanged by it.
  */
 import { TREE, type BibliaLang, type Testament } from './canon';
 
@@ -29,6 +31,30 @@ export interface Edition {
   nativeNumeralsLabel: string;
   /** the letters on the level swatches of the legend */
   swatch: string;
+  /** '' for Biblia (its storage as it has always been); otherwise every key the page stores is kept under this prefix (namespacedStorage) */
+  storageNamespace: string;
+}
+
+/**
+ * The page's storage seen through a prefix: every key the app, the account, the session, the recorder and the queue write is kept as
+ * `<ns><key>`, so a second system on the same site (rookie2401.github.io) never reads, overwrites or clears what Biblia keeps. With '' it is
+ * the storage itself, untouched.
+ */
+export function namespacedStorage(storage: Storage, ns: string): Storage {
+  if (!ns) return storage;
+  const own = (): string[] => {
+    const keys: string[] = [];
+    for (let i = 0; i < storage.length; i++) { const k = storage.key(i); if (k !== null && k.startsWith(ns)) keys.push(k.slice(ns.length)); }
+    return keys;
+  };
+  return {
+    get length() { return own().length; },
+    key: (i: number) => own()[i] ?? null,
+    getItem: (k: string) => storage.getItem(ns + k),
+    setItem: (k: string, v: string) => storage.setItem(ns + k, v),
+    removeItem: (k: string) => storage.removeItem(ns + k),
+    clear: () => { for (const k of own()) storage.removeItem(ns + k); },
+  };
 }
 
 export const ORIGINAL_EDITION: Edition = {
@@ -43,6 +69,7 @@ export const ORIGINAL_EDITION: Edition = {
   verseNumbers: 'native',
   nativeNumeralsLabel: 'Hebrew / Greek',
   swatch: 'אα',
+  storageNamespace: '',
 };
 
 /**
@@ -82,6 +109,7 @@ export const HINDI_EDITION: Edition = {
   verseNumbers: 'decimal',
   nativeNumeralsLabel: '१, २, ३',
   swatch: 'अ',
+  storageNamespace: 'biblia-hindi/',
 };
 
 export function editionOf(id: string | undefined): Edition {

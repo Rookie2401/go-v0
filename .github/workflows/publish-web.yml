@@ -5,6 +5,10 @@ on:
     branches: [master]
     paths:
       - .github/workflows/publish-web.yml
+      - packages/goreview/**
+      - packages/language-packs/src/packs/el.ts
+      - src/adapters/greek/**
+      - src/core/english-verb.ts
   workflow_dispatch:
 
 permissions:

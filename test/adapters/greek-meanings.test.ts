@@ -117,10 +117,26 @@ describe('Greek verb English realization', () => {
     expect(read('ἵνα πιστεύητε', 'πιστεύητε').meaning).toBe('You (plural) may believe');
     expect(read('σωθήσεται', 'σωθήσεται').meaning).toBe('He, she, or it will be saved');
     expect(read('ἐλήλυθεν ἡ ὥρα', 'ἐλήλυθεν').meaning).toBe('He, she, or it has come');
+    expect(read('καὶ ἦλθεν πρὸς αὐτόν', 'ἦλθεν')).toMatchObject({ meaning: 'He, she, or it came', lexical: 'to come, go' });
     expect(read('οἴδαμεν', 'οἴδαμεν').meaning).toBe('We know');
     expect(read('ἀκούσας δέ', 'ἀκούσας').meaning).toBe('having heard');
     // a form the index reads two ways: the other reading is realized beside it
     expect(read('ἔλεγον', 'ἔλεγον')).toMatchObject({ meaning: 'They were saying', ambiguity: ['They were saying', 'I was saying'] });
+  });
+
+  it('realizes the compiled Koine readings of εἰμί and ἔχω as verbs across persons', () => {
+    const be: Array<[string, string, string]> = [
+      ['ἐγώ εἰμι', 'εἰμι', 'I am'], ['σὺ εἶ', 'εἶ', 'You are'], ['ἔστιν', 'ἔστιν', 'He, she, or it is'],
+      ['ἡμεῖς ἐσμέν', 'ἐσμέν', 'We are'], ['ὑμεῖς ἐστέ', 'ἐστέ', 'You (plural) are'], ['εἰσίν', 'εἰσίν', 'They are'],
+      ['ἦν', 'ἦν', 'He, she, or it was'], ['ἦσαν', 'ἦσαν', 'They were'],
+    ];
+    for (const [sentence, word, meaning] of be) expect(read(sentence, word).meaning, `${word} should be realized as a verb`).toBe(meaning);
+
+    const have: Array<[string, string, string]> = [
+      ['ἔχω βιβλίον', 'ἔχω', 'I have'], ['ἔχεις βιβλίον', 'ἔχεις', 'You have'], ['ἔχει βιβλίον', 'ἔχει', 'He, she, or it has'],
+      ['ἔχομεν βιβλίον', 'ἔχομεν', 'We have'], ['ἔχετε βιβλίον', 'ἔχετε', 'You (plural) have'], ['ἔχουσιν', 'ἔχουσιν', 'They have'],
+    ];
+    for (const [sentence, word, meaning] of have) expect(read(sentence, word).meaning, `${word} should be realized as a verb`).toBe(meaning);
   });
 
   it.skipIf(!hasFullIndex)('realizes readings from the full index, with the citation as the lemma meaning', () => {

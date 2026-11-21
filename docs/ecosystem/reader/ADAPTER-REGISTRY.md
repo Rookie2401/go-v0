@@ -60,6 +60,7 @@ learner), `reviewExamples` (use them as example sentences in review).
 |---|---|---|---|---|---|---|---|
 | `web-generic` | unknown | unknown | unknown | unknown | unknown | unknown | any page; nobody has read its terms |
 | `epub-local` | unknown | unknown | unknown | **allowed** | unknown | unknown | the owner's own DRM-free files; the owner may export what they own; the rest awaits the owner's confirmation |
+| `euclid-elements` | unknown | unknown | unknown | unknown | unknown | unknown | the standalone Euclid reader sends Greek word events to the shared account; rights for its transcribed text remain unreviewed here |
 | `play-books` | unknown | unknown | unknown | unknown | unknown | unknown | commercial reader, terms unreviewed |
 | `kobo-web` | forbidden | forbidden | forbidden | forbidden | forbidden | forbidden | refuses; the Terms of Sale restrict reproduction |
 | `kindle-web` | forbidden | forbidden | forbidden | forbidden | forbidden | forbidden | refuses; pages are drawn as bitmaps, no text may be taken |

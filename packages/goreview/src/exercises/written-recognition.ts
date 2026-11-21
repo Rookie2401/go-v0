@@ -103,6 +103,7 @@ function plan(target: Parameters<typeof precheck>[1], facts: UnitFacts, ctx: Bui
         },
       hiddenBeforeAnswer: [],
       responseMode: choice ? 'choice' : 'typed-or-self',
+      ...(isForm && f.morphDescription ? { formParsing: f.morphDescription } : {}),
       eligibility,
       builtFrom: { facts: [...new Set(tags)], ...(!lexical && occurrence ? { sentenceSource: occurrence.example.source } : {}) },
       ...(!lexical && occurrence ? { context } : {}),

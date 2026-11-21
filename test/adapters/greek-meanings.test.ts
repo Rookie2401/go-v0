@@ -20,6 +20,15 @@ const read = (sentence: string, word: string): { meaning?: string; lexical?: str
 };
 
 describe('Greek verb English realization', () => {
+  it('keeps the MorphGNT dative plural features on ὑμῖν', () => {
+    const tokens = elAdapter.tokenize('χάρις ὑμῖν');
+    const analyses = elAdapter.analyze(tokens);
+    const i = tokens.findIndex((t) => t.surface === 'ὑμῖν');
+    expect(analyses[i].candidates[0]).toMatchObject({
+      lemma: 'σύ', pos: 'PRON', morph: { Case: 'Dat', Number: 'Plur', PronType: 'Prs' }, sourceId: 'morphgnt-sblgnt',
+    });
+  });
+
   it('uses the analyzer features and the citation gloss, keeping the citation as an infinitive lemma meaning', () => {
     const result = greekWordAnalysis({ surface: 'Ἀγαπήσεις', lemma: 'ἀγαπάω', lemmaGloss: 'I love', morph: morph('Fut', '2') });
     expect(result.inflectedMeaning?.text).toBe('You will love');

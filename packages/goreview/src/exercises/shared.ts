@@ -27,6 +27,8 @@ export interface ExerciseContext {
 /** The exercise GoReview stores: a contract `Exercise` whose key and context carry the extra fields grading and evidence read. */
 export interface ReviewExercise extends Exercise {
   answerKey: GradingKey;
+  /** The attested form's parsing, shown on the back of a written-recognition card. */
+  formParsing?: string;
   /** Which form of the family this is ('feature' | 'lemma' | 'choice' | 'typed' …). */
   variant?: string;
   context?: ExerciseContext;

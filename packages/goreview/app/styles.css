@@ -1032,6 +1032,7 @@ img, svg, video, canvas { max-width: 100%; }
 }
 .flashcard-back .stimulus { font-size: clamp(1.65rem, 6vw, 2.35rem); color: var(--ink-soft); }
 .flashcard-back .reference { margin: 0; font-size: clamp(1.75rem, 6.5vw, 2.65rem); line-height: 1.15; }
+.flashcard-back .flashcard-parsing { margin: .2rem 0 0; color: var(--ink-soft); font-size: clamp(.95rem, 3.5vw, 1.15rem); line-height: 1.35; }
 .flashcard .pronunciation { top: .55rem; right: .65rem; }
 .flashcard .icon-btn { width: 2.75rem; height: 2.75rem; }
 .flashcard .icon-btn svg { width: 1.45rem; height: 1.45rem; }

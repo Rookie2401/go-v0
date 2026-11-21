@@ -4,6 +4,7 @@
   "readers": {
     "web-generic":         { "textRetention": "unknown",   "remoteProcessing": "unknown",   "audioRetention": "unknown",   "export": "unknown",   "sharing": "unknown",   "reviewExamples": "unknown" },
     "epub-local":          { "textRetention": "unknown",   "remoteProcessing": "unknown",   "audioRetention": "unknown",   "export": "allowed",   "sharing": "forbidden", "reviewExamples": "unknown" },
+    "euclid-elements":     { "textRetention": "unknown",   "remoteProcessing": "unknown",   "audioRetention": "unknown",   "export": "unknown",   "sharing": "unknown",   "reviewExamples": "unknown" },
     "play-books":          { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "unknown",   "sharing": "forbidden", "reviewExamples": "forbidden" },
     "libroteka":           { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "unknown",   "sharing": "forbidden", "reviewExamples": "forbidden" },
     "kanah":               { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "unknown",   "sharing": "forbidden", "reviewExamples": "forbidden" },

@@ -15,7 +15,8 @@ import { QUEUE_CAP, type EventQueue } from './queue';
 const MSG_LOCAL_REPO = 'golearn:local-repo';
 export const READER_ID = 'biblia';
 export const APP_VERSION = '0.1.0';
-const PACK_VERSION: Record<BibliaLang, string> = { he: '1', el: '1' };
+const PACK_VERSION: Record<BibliaLang, string> = { he: '1', el: '1', hi: '1' };
+const SCRIPT: Record<BibliaLang, string> = { he: 'Hebr', el: 'Grek', hi: 'Deva' };
 
 export interface Identity { learnerId: string; enrolmentId: string; deviceId: string }
 /** `ok` = the events are safe (sent, or kept in the offline queue: then `queued`); `message` is for the learner either way (a refusal, a full queue, the offline note). */
@@ -64,7 +65,8 @@ export function apiRecorder(api: RepositoryApi, learner: () => Promise<{ learner
         const live = list.data.enrolments.filter((e) => e.languageId === lang && !e.endedAt);
         const exact = live.find((e) => e.varietyId === varietyId) ?? live[0];
         if (exact) return exact;
-        const made = await api.enrol({ languageId: lang, varietyId, scriptId: lang === 'he' ? 'Hebr' : 'Grek', packId: `pack:${lang}`, packVersion: PACK_VERSION[lang], goals: [] });
+        // Modern Standard Hindi carries no variety (the Hindi edition passes ''): the enrolment is made without one
+        const made = await api.enrol({ languageId: lang, ...(varietyId ? { varietyId } : {}), scriptId: SCRIPT[lang], packId: `pack:${lang}`, packVersion: PACK_VERSION[lang], goals: [] });
         return made.ok ? made.data.enrolment : undefined;
       })();
       enrolments.set(key, p);

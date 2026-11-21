@@ -46,3 +46,8 @@ packages/biblia/public/data/
 
 # Biblia standalone edition build (npm run biblia:build-standalone; 49 MB)
 packages/biblia/dist-standalone/
+
+# Biblia Hindi edition: the assembled public folder and the builds (BIBLIA_EDITION=hi; packages/biblia/vite.config.ts)
+packages/biblia/.edition-hi/
+packages/biblia/dist-hi/
+packages/biblia/dist-standalone-hi/

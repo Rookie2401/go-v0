@@ -3,6 +3,7 @@
  * when this page is bundled in the iPhone app, the Repository service named in config.json when this is the standalone web edition) for `createBibliaApp`.
  */
 import { createBibliaApp } from './src/app';
+import { editionOf } from './src/edition';
 import { fetchJsonWith } from './src/data';
 import { accountRecorder, extensionSend, makeRecorder, noRecorder, type AccountRecorder, type Recorder } from './src/repo';
 import { createAccountService, type AccountService } from './src/account';
@@ -32,6 +33,10 @@ async function inApp(): Promise<{ api: ReturnType<typeof createRepositoryApi>; l
 
 /** The standalone web edition: the build injects <meta name="biblia-edition" content="standalone">; then the page connects to the service in config.json. */
 const isStandalone = (): boolean => document.querySelector('meta[name="biblia-edition"]')?.getAttribute('content') === 'standalone';
+
+/** Which edition this build is (vite.config.ts defines it: "hi" for BIBLIA_EDITION=hi, else "original"). */
+declare const __BIBLIA_EDITION__: string;
+const edition = editionOf(typeof __BIBLIA_EDITION__ === 'string' ? __BIBLIA_EDITION__ : undefined);
 
 const storage = ((): Storage | undefined => { try { const s = window.localStorage; s.getItem('biblia:probe'); return s; } catch { return undefined; } })();
 
@@ -74,6 +79,7 @@ const started = (async () => {
   const syncStatus = own?.account ? createSyncStatus({ doc: document, account: own.account, recorder: own.recorder }) : undefined;
   const running = await createBibliaApp({
     win: window, doc: document,
+    edition,
     source: fetchJsonWith((input, init) => globalThis.fetch(input, init), './'),
     recorder,
     ...(speechAccount ? { createPronouncer: (consent: () => boolean, consentOwner: () => string | undefined) => createBibliaPronouncer({

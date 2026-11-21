@@ -12,12 +12,19 @@
  *          shell's precache list) and its registration, inlined into index.html. The texts and lexicon are not precached: the worker keeps each file once read.
  *   BIBLIA_OUT=<folder> puts any of the builds in that folder instead; BIBLIA_SERVICE_URL=https://repo.example.org sets the standalone edition's service address.
  *   vite -c packages/biblia/vite.config.ts   serves the app for development (port 5199) with the repository's public/lexicon.
+ *
+ *   BIBLIA_EDITION=hi before any of these builds or serves the Hindi edition (src/edition.ts; docs/ecosystem/BIBLIA-HINDI.md) into dist-hi/ or
+ *          dist-standalone-hi/: the same app over the Indian Revised Version. Its public folder is assembled in packages/biblia/.edition-hi/ (git-ignored)
+ *          from public/ without the original texts (data/), the Hindi files of editions/hi/ (manifest, Devanagari face) and data/hi/ — the 66 books,
+ *          canon.json and SOURCES.json — read from the committed USFM of data/sources/hi/usfm by src/irv.ts at every build and serve. No lexicon
+ *          is copied: the Hindi analyser carries its word list in the bundle, as in the GoLearn extension.
  */
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, type Plugin } from 'vite';
+import { IRV_ATTRIBUTION, buildIrv } from './src/irv';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '../..');
@@ -110,8 +117,9 @@ function hashFiles(outDir: string, files: string[]): string {
   return hash.digest('hex').slice(0, 12);
 }
 
-/** Standalone build only: config.json (with the service address), the manifest and icons, and sw.js stamped with the shell's build id, the data id and the precache list. */
-function writeStandalone(outDir: string): void {
+/** Standalone build only: config.json (with the service address), the manifest and icons, and sw.js stamped with the shell's build id, the data id, the precache list and the
+ * prefix of its caches (the Hindi edition's worker keeps its own caches, so the two editions on one site never delete each other's). */
+function writeStandalone(outDir: string, pwaSource: string, cachePrefix: string): void {
   const config = JSON.parse(fs.readFileSync(path.join(here, 'config.json'), 'utf8')) as { serviceUrl: string; assetBaseUrl: string };
   const serviceUrl = resolveServiceUrl(process.env.BIBLIA_SERVICE_URL, config.serviceUrl);
   if (!process.env.BIBLIA_SERVICE_URL) console.warn(`[biblia] BIBLIA_SERVICE_URL is not set: config.json keeps ${config.serviceUrl}, an address only this computer can reach (set it to the https address of the Repository service to publish)`);
@@ -125,15 +133,16 @@ function writeStandalone(outDir: string): void {
   const worker = fs.readFileSync(path.join(pwaSource, 'sw.js'), 'utf8')
     .split('__BUILD_ID__').join(buildId)
     .split('__DATA_ID__').join(dataId)
-    .split('__PRECACHE__').join(JSON.stringify(list, null, 2));
+    .split('__PRECACHE__').join(JSON.stringify(list, null, 2))
+    .split('__CACHE_PREFIX__').join(cachePrefix);
   fs.writeFileSync(path.join(outDir, 'sw.js'), worker);
   // register.js is inlined into index.html; the copy Vite made from public/ is not needed
   fs.rmSync(path.join(outDir, 'register.js'), { force: true });
 }
 
 /** Runs after copyIndexes (plugin order), so the lexicon files are already in the output when the data id is computed. */
-function standaloneFiles(outDir: string): Plugin {
-  return { name: 'biblia-standalone-files', apply: 'build', closeBundle() { writeStandalone(outDir); } };
+function standaloneFiles(outDir: string, pwaSource: string, cachePrefix: string): Plugin {
+  return { name: 'biblia-standalone-files', apply: 'build', closeBundle() { writeStandalone(outDir, pwaSource, cachePrefix); } };
 }
 
 /** The default and extension builds: public/ also holds the standalone edition's files (manifest, worker, icons); they stay out of those outputs. */
@@ -142,7 +151,7 @@ function withoutStandaloneFiles(outDir: string): Plugin {
 }
 
 /** Standalone build only: the edition marker the app reads, the manifest and iOS tags, and the worker's registration (inline, runs after load). */
-function standaloneHtml(): Plugin {
+function standaloneHtml(appTitle: string): Plugin {
   const register = fs.readFileSync(path.join(pwaSource, 'register.js'), 'utf8');
   return {
     name: 'biblia-standalone-html',
@@ -155,7 +164,7 @@ function standaloneHtml(): Plugin {
           '<meta name="apple-mobile-web-app-capable" content="yes">',
           '<meta name="mobile-web-app-capable" content="yes">',
           '<meta name="apple-mobile-web-app-status-bar-style" content="default">',
-          '<meta name="apple-mobile-web-app-title" content="Biblia">',
+          `<meta name="apple-mobile-web-app-title" content="${appTitle}">`,
           '<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">',
           '<link rel="icon" type="image/svg+xml" href="./icons/icon.svg">',
         ].join('\n');
@@ -171,19 +180,83 @@ function standaloneHtml(): Plugin {
   };
 }
 
+// ---- the Hindi edition ----------------------------------------------------------------------------------------------------------------------
+
+const hindiSource = path.join(here, 'editions', 'hi');
+const hindiPublic = path.join(here, '.edition-hi');
+const usfmDir = path.join(repoRoot, 'data', 'sources', 'hi', 'usfm');
+
+/**
+ * The Hindi edition's public folder, assembled afresh: public/ without the original texts, the Hindi manifest, stylesheet and face, and the IRV as
+ * Biblia's JSON (data/hi/<Book>.json, canon.json, SOURCES.json with the licence and the changes, as CC BY-SA 4.0 asks). Throws when the USFM is
+ * missing or a book does not parse, so a broken text cannot ship.
+ */
+export function assembleHindiPublic(out: string = hindiPublic): { books: number; verses: number } {
+  fs.rmSync(out, { recursive: true, force: true });
+  fs.mkdirSync(out, { recursive: true });
+  for (const e of fs.readdirSync(pwaSource, { withFileTypes: true })) {
+    if (e.name === 'data' || e.name === 'manifest.webmanifest') continue;
+    fs.cpSync(path.join(pwaSource, e.name), path.join(out, e.name), { recursive: true });
+  }
+  fs.copyFileSync(path.join(hindiSource, 'manifest.webmanifest'), path.join(out, 'manifest.webmanifest'));
+  fs.copyFileSync(path.join(hindiSource, 'edition-hi.css'), path.join(out, 'edition-hi.css'));
+  fs.cpSync(path.join(hindiSource, 'fonts'), path.join(out, 'fonts'), { recursive: true });
+  const files = new Map<string, string>();
+  for (const f of fs.readdirSync(usfmDir)) {
+    const m = /^\d\d-([0-9A-Z]{3})hin2017\.usfm$/.exec(f);
+    if (m) files.set(m[1], fs.readFileSync(path.join(usfmDir, f), 'utf8'));
+  }
+  const { canon, books } = buildIrv(files);
+  const data = path.join(out, 'data', 'hi');
+  fs.mkdirSync(data, { recursive: true });
+  for (const b of books) fs.writeFileSync(path.join(data, `${b.book}.json`), JSON.stringify({ lang: 'hi', ...b }));
+  fs.writeFileSync(path.join(data, 'canon.json'), JSON.stringify(canon));
+  fs.writeFileSync(path.join(data, 'SOURCES.json'), JSON.stringify({ text: IRV_ATTRIBUTION, files: 'The JSON files of this folder are the IRV verses as Biblia reads them, shared under the same licence (CC BY-SA 4.0).' }, null, 2) + '\n');
+  return { books: books.length, verses: canon.reduce((n, r) => n + r.verses.reduce((a, b) => a + b, 0), 0) };
+}
+
+/** The Hindi edition's page: its stylesheet after styles.css, and its name in the tab. */
+function hindiHtml(): Plugin {
+  return {
+    name: 'biblia-hindi-html',
+    transformIndexHtml: {
+      // after Vite's own pass: edition-hi.css is a public file, copied as it is, not a module to bundle
+      order: 'post',
+      handler(html) {
+        return html
+          .replace('<title>Biblia</title>', () => '<title>Biblia — हिंदी</title>')
+          // last in <head>, after the bundled styles.css
+          .replace('</head>', () => '<link rel="stylesheet" href="./edition-hi.css">\n</head>');
+      },
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => {
-  const standalone = mode === 'standalone';
+  // --mode hi / standalone-hi (the npm scripts) or BIBLIA_EDITION=hi: the Hindi edition
+  const standalone = mode === 'standalone' || mode === 'standalone-hi';
+  const hindi = process.env.BIBLIA_EDITION === 'hi' || mode === 'hi' || mode === 'standalone-hi';
+  if (process.env.BIBLIA_EDITION && !hindi) throw new Error(`BIBLIA_EDITION must be "hi" or unset: ${process.env.BIBLIA_EDITION}`);
   // BIBLIA_OUT=<folder> puts the build there instead (the GoReview iPhone stage builds Biblia into its web/biblia/)
   const outDir = process.env.BIBLIA_OUT ? path.resolve(repoRoot, process.env.BIBLIA_OUT)
-    : mode === 'extension' ? path.join(repoRoot, 'packages', 'golearn-extension', 'dist', 'biblia')
-    : path.join(here, standalone ? 'dist-standalone' : 'dist');
+    : mode === 'extension' ? path.join(repoRoot, 'packages', 'golearn-extension', 'dist', hindi ? 'biblia-hi' : 'biblia')
+    : path.join(here, `${standalone ? 'dist-standalone' : 'dist'}${hindi ? '-hi' : ''}`);
   // a bad BIBLIA_SERVICE_URL stops the build before anything is bundled
   if (standalone) resolveServiceUrl(process.env.BIBLIA_SERVICE_URL, '');
+  if (hindi) {
+    const { books, verses } = assembleHindiPublic();
+    console.log(`[biblia] Hindi edition: ${books} books, ${verses} verses of the IRV in ${path.relative(repoRoot, hindiPublic)}`);
+  }
+  const publicDir = hindi ? hindiPublic : pwaSource;
   return {
     root: here,
     base: './',
-    publicDir: path.join(here, 'public'),
-    plugins: [devLexicon(), copyIndexes(outDir), ...(standalone ? [standaloneFiles(outDir), standaloneHtml()] : [withoutStandaloneFiles(outDir)])],
+    publicDir,
+    define: { __BIBLIA_EDITION__: JSON.stringify(hindi ? 'hi' : 'original') },
+    plugins: [
+      ...(hindi ? [hindiHtml()] : [devLexicon(), copyIndexes(outDir)]),
+      ...(standalone ? [standaloneFiles(outDir, publicDir, hindi ? 'biblia-hi-' : 'biblia-'), standaloneHtml(hindi ? 'Biblia हिंदी' : 'Biblia')] : [withoutStandaloneFiles(outDir)]),
+    ],
     build: { outDir, emptyOutDir: true, target: 'es2022', sourcemap: false, rollupOptions: { input: path.join(here, 'index.html') } },
     server: { port: 5199, strictPort: true, host: '127.0.0.1', fs: { allow: [repoRoot] } },
   };

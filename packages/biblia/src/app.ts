@@ -406,16 +406,36 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
 
   /** The words of a translation's line as buttons (the edition's spacing and punctuation kept between them), cut by the language's analyser. */
   function editionWords(el: HTMLElement, info: BookInfo, ch: number, v: number, text: string, sites: LevelSite[], part?: 'title'): void {
-    let at = 0;
     const lang = info.lang;
+    // A word button is an atomic box to the browser, which may break a line on either side of it: a line could begin with the comma after a
+    // word or end with the quotation mark before one. So a word and the punctuation touching it are kept together (span.wg, no break inside);
+    // lines break only where the text has a space (or, in Thai, the zero-width space between words).
+    let group: Node[] = [];
+    const flush = (): void => {
+      if (group.length > 1) el.append(h('span', { class: 'wg' }, ...group));
+      else if (group.length === 1) el.append(group[0]);
+      group = [];
+    };
+    const between = (s: string): void => {
+      if (!s) return;
+      const first = s.search(/[\s​]/);
+      if (first < 0) { group.push(doc.createTextNode(s)); return; } // "अलग-अलग": the hyphen joins the two words
+      let last = s.length - 1;
+      while (!/[\s​]/.test(s[last])) last--;
+      if (first > 0) group.push(doc.createTextNode(s.slice(0, first)));
+      flush();
+      el.append(doc.createTextNode(s.slice(first, last + 1)));
+      if (last + 1 < s.length) group.push(doc.createTextNode(s.slice(last + 1)));
+    };
+    let at = 0;
     for (const t of ADAPTERS[lang].tokenize(text)) {
-      if (t.start > at) el.append(doc.createTextNode(text.slice(at, t.start)));
-      const piece = text.slice(t.start, t.end);
-      if (t.isWord) el.append(wordButton({ lang, book: info.id, ch, v, sentence: text, start: t.start, end: t.end, surface: piece, varietyId: '', ...(part ? { part } : {}) }, sites));
-      else el.append(doc.createTextNode(piece));
+      if (!t.isWord) continue; // what lies between the words is kept as the text has it
+      between(text.slice(at, t.start));
+      group.push(wordButton({ lang, book: info.id, ch, v, sentence: text, start: t.start, end: t.end, surface: text.slice(t.start, t.end), varietyId: '', ...(part ? { part } : {}) }, sites));
       at = t.end;
     }
-    if (at < text.length) el.append(doc.createTextNode(text.slice(at)));
+    between(text.slice(at));
+    flush();
   }
 
   /** A translation's verse: its superscription first when it has one (a Psalm title, a letter of Psalm 119), then the verse with its number. */

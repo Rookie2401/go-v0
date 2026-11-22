@@ -159,6 +159,21 @@ describe('the Hindi edition of the app', () => {
     expect(document.querySelector('.verse[data-v="3"]')!.previousElementSibling?.classList.contains('para-break')).toBe(true);
   });
 
+  it('a word keeps the punctuation touching it (span.wg): a line never begins with a comma or ends with an opening quote', async () => {
+    app = await createBibliaApp({ win: window, doc: document, edition: HINDI_EDITION, source: hindiSource, recorder: fakeRecorder(), now: () => new Date() });
+    await app.go('#/read/Gen/1');
+    const verse3 = document.querySelector('.verse[data-v="3"]')!;
+    expect(verse3.textContent!.replace(/^3/, '')).toBe(bookOf('Gen').chapters[0].verses[2].t);
+    const groups = [...verse3.querySelectorAll('.wg')].map((g) => g.textContent);
+    expect(groups).toContain('कहा,');
+    expect(groups).toContain('“उजियाला');
+    expect(groups).toContain('हो,”');
+    // everywhere in the chapter: what stands outside a group between two boxes is only space, so a break can fall only there
+    for (const n of document.querySelectorAll('.reader .prose .verse')) {
+      for (const c of n.childNodes) if (c.nodeType === 3 && c.previousSibling && c.nextSibling) expect(c.textContent, n.getAttribute('data-v') ?? '').toMatch(/^[\s​]+$/);
+    }
+  });
+
   it('a Psalm title stands on its own line before verse 1, its words tappable; Psalms are set as poetry', async () => {
     app = await createBibliaApp({ win: window, doc: document, edition: HINDI_EDITION, source: hindiSource, recorder: fakeRecorder(), now: () => new Date() });
     await app.go('#/read/Ps/3');

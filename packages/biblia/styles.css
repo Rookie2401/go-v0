@@ -215,8 +215,8 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 .reader .prose[lang='he'] { font-family: var(--heb); font-size: var(--reading-font-size); direction: rtl; text-align: right; }
 /* Greek has no hyphenation dictionary and runs as one paragraph; justifying closes the ragged gap on a narrow phone column */
 .reader .prose[lang='el'] { font-family: var(--serif); font-size: var(--greek-font-size); direction: ltr; text-align: justify; text-justify: inter-word; line-height: calc(var(--reading-line-height) - 0.15); }
-/* Hindi runs left to right as Greek does, but ragged: its long words leave wide gaps in a justified phone column */
-.reader .prose[lang='hi'] { font-family: var(--deva); font-size: var(--hindi-font-size); direction: ltr; text-align: left; }
+/* Hindi is set as Biblia sets Greek: justified to both margins, the space shared out between words (a ragged right edge left an uneven gap) */
+.reader .prose[lang='hi'] { font-family: var(--deva); font-size: var(--hindi-font-size); direction: ltr; text-align: justify; text-justify: inter-word; }
 /* Thai has no spaces between words (the OTCV marks them with zero-width spaces, where lines may break): ragged, like Hindi */
 .reader .prose[lang='th'] { font-family: var(--thai); font-size: var(--thai-font-size); direction: ltr; text-align: left; line-break: normal; word-break: normal; }
 /* German and Spanish are set as Biblia sets Greek: EB Garamond, justified, hyphenated by the language of the page */
@@ -233,6 +233,8 @@ html[data-verse-numbers='hidden'] .reader .vn { display: none; }
 .reader .poetry .verse { display: block; margin: 0.2em 0; }
 .reader .aramaic { border-inline-start: 3px solid var(--accent); padding-inline-start: 0.6em; }
 .reader .word { all: unset; cursor: pointer; border-radius: 3px; padding: 0 0.04em; transition: background-color 0.12s; }
+/* a translation edition's word with the punctuation touching it (app.ts editionWords): the line never breaks inside */
+.reader .wg { white-space: nowrap; }
 .reader .word:hover, .reader .word:focus-visible { background: color-mix(in srgb, var(--accent) 10%, transparent); outline: none; }
 .reader .word:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .reader .word.sel { background: var(--selection); }

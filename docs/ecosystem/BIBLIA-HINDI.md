@@ -19,7 +19,7 @@ The Indian Revised Version (IRV) Hindi, 2019, from eBible.org (translation id `h
     licence (linked) and eBible.org; `data/hi/SOURCES.json` travels with the text files;
   - changes indicated, not endorsed: `IRV_ATTRIBUTION.changes` in `src/irv.ts`, shown on the Sources page and in `SOURCES.json`;
   - share-alike: Biblia's JSON copy of the text is offered under the same licence (said in `SOURCES.json` and on the Sources page).
-- Fidelity: `src/irv.ts` reads the USFM of `data/sources/hi/usfm` (committed) at every build and every dev serve. All 66 books and
+- Fidelity: `src/irv.ts` (since the Thai, German and Spanish editions, through the general reader `src/usfm.ts`; BIBLIA-EDITIONS.md) reads the USFM of `data/sources/hi/usfm` (committed) at every build and every dev serve. All 66 books and
   31,104 verses come out identical to the verified copy of the same edition (`data/verified/scripture.json`, read from eBible.org's
   published pages); `test/biblia/hindi.test.ts` compares every verse.
 - What is left out: the book introductions, the section headings, the study notes (`\f`) and the cross-references the edition sets apart

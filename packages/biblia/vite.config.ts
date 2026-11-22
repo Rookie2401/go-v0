@@ -13,18 +13,20 @@
  *   BIBLIA_OUT=<folder> puts any of the builds in that folder instead; BIBLIA_SERVICE_URL=https://repo.example.org sets the standalone edition's service address.
  *   vite -c packages/biblia/vite.config.ts   serves the app for development (port 5199) with the repository's public/lexicon.
  *
- *   BIBLIA_EDITION=hi before any of these builds or serves the Hindi edition (src/edition.ts; docs/ecosystem/BIBLIA-HINDI.md) into dist-hi/ or
- *          dist-standalone-hi/: the same app over the Indian Revised Version. Its public folder is assembled in packages/biblia/.edition-hi/ (git-ignored)
- *          from public/ without the original texts (data/), the Hindi files of editions/hi/ (manifest, Devanagari face) and data/hi/ — the 66 books,
- *          canon.json and SOURCES.json — read from the committed USFM of data/sources/hi/usfm by src/irv.ts at every build and serve. No lexicon
- *          is copied: the Hindi analyser carries its word list in the bundle, as in the GoLearn extension.
+ *   --mode <id> / --mode standalone-<id> (or BIBLIA_EDITION=<id>), id one of hi, th, de, es: a translation edition (src/edition.ts;
+ *          docs/ecosystem/BIBLIA-EDITIONS.md) into dist-<id>/ or dist-standalone-<id>/: the same app over that Bible, a separate system on its own
+ *          site. Its public folder is assembled in packages/biblia/.edition-<id>/ (git-ignored) from public/ without the original texts (data/),
+ *          its own manifest (from edition.site), what editions/<id>/ holds (a stylesheet edition-<id>.css with its face, fonts/) and data/<id>/ —
+ *          the 66 books, canon.json and SOURCES.json — read from the committed USFM (edition.translation.usfm) by src/usfm.ts at every build
+ *          and serve. No lexicon is copied: the language's analyser carries its word list in the bundle, as in the GoLearn extension.
  */
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, type Plugin } from 'vite';
-import { IRV_ATTRIBUTION, buildIrv } from './src/irv';
+import { TRANSLATION_EDITIONS, editionOf, type Edition } from './src/edition';
+import { buildEditionText } from './src/usfm';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '../..');
@@ -180,82 +182,96 @@ function standaloneHtml(appTitle: string): Plugin {
   };
 }
 
-// ---- the Hindi edition ----------------------------------------------------------------------------------------------------------------------
+// ---- the translation editions -----------------------------------------------------------------------------------------------------------
 
-const hindiSource = path.join(here, 'editions', 'hi');
-const hindiPublic = path.join(here, '.edition-hi');
-const usfmDir = path.join(repoRoot, 'data', 'sources', 'hi', 'usfm');
+const editionPublic = (e: Edition): string => path.join(here, `.edition-${e.id}`);
 
 /**
- * The Hindi edition's public folder, assembled afresh: public/ without the original texts, the Hindi manifest, stylesheet and face, and the IRV as
- * Biblia's JSON (data/hi/<Book>.json, canon.json, SOURCES.json with the licence and the changes, as CC BY-SA 4.0 asks). Throws when the USFM is
- * missing or a book does not parse, so a broken text cannot ship.
+ * A translation edition's public folder, assembled afresh: public/ without the original texts, its manifest, what editions/<id>/ holds
+ * (stylesheet, face) and its text as Biblia's JSON (data/<id>/<Book>.json, canon.json, SOURCES.json with the attribution, the licence and the
+ * changes, as the licence asks). Throws when the USFM is missing or a book does not parse, so a broken text cannot ship.
  */
-export function assembleHindiPublic(out: string = hindiPublic): { books: number; verses: number } {
+export function assembleEditionPublic(e: Edition, out: string = editionPublic(e)): { books: number; verses: number } {
+  const tr = e.translation;
+  if (!tr) throw new Error(`${e.id} is not a translation edition`);
   fs.rmSync(out, { recursive: true, force: true });
   fs.mkdirSync(out, { recursive: true });
-  for (const e of fs.readdirSync(pwaSource, { withFileTypes: true })) {
-    if (e.name === 'data' || e.name === 'manifest.webmanifest') continue;
-    fs.cpSync(path.join(pwaSource, e.name), path.join(out, e.name), { recursive: true });
+  for (const d of fs.readdirSync(pwaSource, { withFileTypes: true })) {
+    if (d.name === 'data' || d.name === 'manifest.webmanifest') continue;
+    fs.cpSync(path.join(pwaSource, d.name), path.join(out, d.name), { recursive: true });
   }
-  fs.copyFileSync(path.join(hindiSource, 'manifest.webmanifest'), path.join(out, 'manifest.webmanifest'));
-  fs.copyFileSync(path.join(hindiSource, 'edition-hi.css'), path.join(out, 'edition-hi.css'));
-  fs.cpSync(path.join(hindiSource, 'fonts'), path.join(out, 'fonts'), { recursive: true });
+  const manifest = JSON.parse(fs.readFileSync(path.join(pwaSource, 'manifest.webmanifest'), 'utf8')) as Record<string, unknown>;
+  fs.writeFileSync(path.join(out, 'manifest.webmanifest'), JSON.stringify({ ...manifest, name: e.site.title, short_name: e.site.appName, description: e.site.description }, null, 2) + '\n');
+  const own = path.join(here, 'editions', e.id);
+  if (fs.existsSync(own)) {
+    for (const d of fs.readdirSync(own, { withFileTypes: true })) {
+      if (d.isDirectory()) fs.cpSync(path.join(own, d.name), path.join(out, d.name), { recursive: true });
+      else if (d.name.endsWith('.css')) fs.copyFileSync(path.join(own, d.name), path.join(out, d.name));
+    }
+  }
+  const dir = path.join(repoRoot, tr.usfm.dir);
   const files = new Map<string, string>();
-  for (const f of fs.readdirSync(usfmDir)) {
-    const m = /^\d\d-([0-9A-Z]{3})hin2017\.usfm$/.exec(f);
-    if (m) files.set(m[1], fs.readFileSync(path.join(usfmDir, f), 'utf8'));
+  for (const f of fs.readdirSync(dir)) {
+    const m = tr.usfm.file.exec(f);
+    if (m) files.set(m[1], fs.readFileSync(path.join(dir, f), 'utf8'));
   }
-  const { canon, books } = buildIrv(files);
-  const data = path.join(out, 'data', 'hi');
+  const { canon, books } = buildEditionText(files, tr.lang, tr.usfm.options);
+  const data = path.join(out, 'data', tr.lang);
   fs.mkdirSync(data, { recursive: true });
-  for (const b of books) fs.writeFileSync(path.join(data, `${b.book}.json`), JSON.stringify({ lang: 'hi', ...b }));
+  for (const b of books) fs.writeFileSync(path.join(data, `${b.book}.json`), JSON.stringify({ lang: tr.lang, ...b }));
   fs.writeFileSync(path.join(data, 'canon.json'), JSON.stringify(canon));
-  fs.writeFileSync(path.join(data, 'SOURCES.json'), JSON.stringify({ text: IRV_ATTRIBUTION, files: 'The JSON files of this folder are the IRV verses as Biblia reads them, shared under the same licence (CC BY-SA 4.0).' }, null, 2) + '\n');
+  const { shareAlike, ...text } = tr.attribution;
+  const filesNote = shareAlike ? `The JSON files of this folder are the verses as Biblia reads them, shared under the same licence (${tr.attribution.licence}).`
+    : tr.attribution.licenceUrl ? `The JSON files of this folder are the verses as Biblia reads them, under the licence of the text (${tr.attribution.licence}).`
+    : 'The JSON files of this folder are the verses as Biblia reads them; the text is in the public domain.';
+  fs.writeFileSync(path.join(data, 'SOURCES.json'), JSON.stringify({ text, files: filesNote }, null, 2) + '\n');
   return { books: books.length, verses: canon.reduce((n, r) => n + r.verses.reduce((a, b) => a + b, 0), 0) };
 }
 
-/** The Hindi edition's page: its stylesheet after styles.css, and its name in the tab. */
-function hindiHtml(): Plugin {
+/** A translation edition's page: its name in the tab, and its own stylesheet (when editions/<id>/ has one) after styles.css. */
+function editionHtml(e: Edition): Plugin {
+  const css = fs.existsSync(path.join(here, 'editions', e.id, `edition-${e.id}.css`));
   return {
-    name: 'biblia-hindi-html',
+    name: 'biblia-edition-html',
     transformIndexHtml: {
-      // after Vite's own pass: edition-hi.css is a public file, copied as it is, not a module to bundle
+      // after Vite's own pass: the stylesheet is a public file, copied as it is, not a module to bundle
       order: 'post',
       handler(html) {
-        return html
-          .replace('<title>Biblia</title>', () => '<title>Biblia — हिंदी</title>')
-          // last in <head>, after the bundled styles.css
-          .replace('</head>', () => '<link rel="stylesheet" href="./edition-hi.css">\n</head>');
+        const titled = html.replace('<title>Biblia</title>', () => `<title>${e.site.title}</title>`);
+        // last in <head>, after the bundled styles.css
+        return css ? titled.replace('</head>', () => `<link rel="stylesheet" href="./edition-${e.id}.css">\n</head>`) : titled;
       },
     },
   };
 }
 
 export default defineConfig(({ mode }) => {
-  // --mode hi / standalone-hi (the npm scripts) or BIBLIA_EDITION=hi: the Hindi edition
-  const standalone = mode === 'standalone' || mode === 'standalone-hi';
-  const hindi = process.env.BIBLIA_EDITION === 'hi' || mode === 'hi' || mode === 'standalone-hi';
-  if (process.env.BIBLIA_EDITION && !hindi) throw new Error(`BIBLIA_EDITION must be "hi" or unset: ${process.env.BIBLIA_EDITION}`);
+  // --mode <id> / standalone-<id> (the npm scripts) or BIBLIA_EDITION=<id>: a translation edition
+  const ids = TRANSLATION_EDITIONS.map((e) => e.id as string);
+  const modeId = mode.replace(/^standalone-/, '');
+  const id = process.env.BIBLIA_EDITION || (ids.includes(modeId) ? modeId : '');
+  if (id && !ids.includes(id)) throw new Error(`BIBLIA_EDITION must be one of ${ids.join(', ')} or unset: ${id}`);
+  const edition = id ? editionOf(id) : undefined;
+  const standalone = mode === 'standalone' || (mode.startsWith('standalone-') && !!edition);
   // BIBLIA_OUT=<folder> puts the build there instead (the GoReview iPhone stage builds Biblia into its web/biblia/)
   const outDir = process.env.BIBLIA_OUT ? path.resolve(repoRoot, process.env.BIBLIA_OUT)
-    : mode === 'extension' ? path.join(repoRoot, 'packages', 'golearn-extension', 'dist', hindi ? 'biblia-hi' : 'biblia')
-    : path.join(here, `${standalone ? 'dist-standalone' : 'dist'}${hindi ? '-hi' : ''}`);
+    : mode === 'extension' ? path.join(repoRoot, 'packages', 'golearn-extension', 'dist', edition ? `biblia-${edition.id}` : 'biblia')
+    : path.join(here, `${standalone ? 'dist-standalone' : 'dist'}${edition ? `-${edition.id}` : ''}`);
   // a bad BIBLIA_SERVICE_URL stops the build before anything is bundled
   if (standalone) resolveServiceUrl(process.env.BIBLIA_SERVICE_URL, '');
-  if (hindi) {
-    const { books, verses } = assembleHindiPublic();
-    console.log(`[biblia] Hindi edition: ${books} books, ${verses} verses of the IRV in ${path.relative(repoRoot, hindiPublic)}`);
+  if (edition) {
+    const { books, verses } = assembleEditionPublic(edition);
+    console.log(`[biblia] ${edition.translation!.languageName} edition: ${books} books, ${verses} verses in ${path.relative(repoRoot, editionPublic(edition))}`);
   }
-  const publicDir = hindi ? hindiPublic : pwaSource;
+  const publicDir = edition ? editionPublic(edition) : pwaSource;
   return {
     root: here,
     base: './',
     publicDir,
-    define: { __BIBLIA_EDITION__: JSON.stringify(hindi ? 'hi' : 'original') },
+    define: { __BIBLIA_EDITION__: JSON.stringify(edition ? edition.id : 'original') },
     plugins: [
-      ...(hindi ? [hindiHtml()] : [devLexicon(), copyIndexes(outDir)]),
-      ...(standalone ? [standaloneFiles(outDir, publicDir, hindi ? 'biblia-hindi-' : 'biblia-'), standaloneHtml(hindi ? 'Biblia हिंदी' : 'Biblia')] : [withoutStandaloneFiles(outDir)]),
+      ...(edition ? [editionHtml(edition)] : [devLexicon(), copyIndexes(outDir)]),
+      ...(standalone ? [standaloneFiles(outDir, publicDir, edition ? `${edition.site.slug}-` : 'biblia-'), standaloneHtml(edition ? edition.site.appName : 'Biblia')] : [withoutStandaloneFiles(outDir)]),
     ],
     build: { outDir, emptyOutDir: true, target: 'es2022', sourcemap: false, rollupOptions: { input: path.join(here, 'index.html') } },
     server: { port: 5199, strictPort: true, host: '127.0.0.1', fs: { allow: [repoRoot] } },

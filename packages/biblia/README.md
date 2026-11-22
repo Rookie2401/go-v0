@@ -73,4 +73,10 @@ npm run biblia:dev-hi                                                           
 BIBLIA_SERVICE_URL=https://go-v0.onrender.com npm run biblia:build-standalone-hi   # packages/biblia/dist-standalone-hi (13 MB)
 ```
 
+Thai, German and Spanish editions (2026-11-21; docs/ecosystem/BIBLIA-EDITIONS.md): the same way, each its own system and site
+(rookie2401.github.io/biblia-thai, /biblia-german, /biblia-spanish): the Biblica Open Thai Common Version 2025 (CC BY-SA 4.0), the Schlachter
+Bible 1951 (CC BY 4.0) and the Reina-Valera 1909 (public domain), read by the general USFM reader `src/usfm.ts` (which the Hindi edition now uses
+too) and described in `src/edition.ts`. `npm run biblia:dev-<id>` / `biblia:build-standalone-<id>` with id th, de or es. Test:
+`test/biblia/editions.test.ts`.
+
 Tests: `npx vitest run test/biblia`.

@@ -3,9 +3,9 @@
  * settings, over a hash router. Routes: #/ (library) · #/read/<book>/<chapter> · #/settings · #/sources.
  *
  * Parsing is GoLearn's: a tapped word is parsed by `parseSelection` with the he / el analyser, in the period the reader declares for the text
- * (he-bib for the Tanakh, arc-bib for its Aramaic chapters, el-koi for the New Testament); the card is `createCardUI`'s. The Hindi edition
- * (edition.ts; the Indian Revised Version) reads with the hi analyser, the same one the GoLearn extension uses on Hindi pages, with no variety
- * (Modern Standard Hindi carries none), so its unit ids are GoLearn's and GoReview takes them in like any other Hindi lookup. Every lookup and mark is
+ * (he-bib for the Tanakh, arc-bib for its Aramaic chapters, el-koi for the New Testament); the card is `createCardUI`'s. A translation
+ * edition (edition.ts: Hindi, Thai, German, Spanish) reads with that language's analyser, the same one the GoLearn extension uses on web pages
+ * in it, with no variety (as GoLearn records a page), so its unit ids are GoLearn's and GoReview takes them in like any other lookup. Every lookup and mark is
  * a Repository event through the Recorder (repo.ts) when one exists. A tap in a verse also records, once per verse per session, one
  * `EncounterRecorded` (surface 'biblia-reading') for the unit ids of the verse's other words, so the Repository learns what was read without a tap.
  */
@@ -23,11 +23,13 @@ import type { KnowledgeLevel } from '../../repository-contract/src/knowledge-lev
 import { heAdapter } from '../../../src/adapters/he';
 import { elAdapter } from '../../../src/adapters/el';
 import { hiAdapter } from '../../../src/adapters/hi';
+import { thAdapter } from '../../../src/adapters/th';
+import { deAdapter } from '../../../src/adapters/de';
+import { esAdapter } from '../../../src/adapters/es';
 import { consonantal } from '../../../src/adapters/hebrew/text';
-import { Canon, numeral, parseCanon, type BibliaLang, type BookInfo } from './canon';
-import { Texts, greekVerseText, installFullIndexes, verseIsAramaic, type AnyBook, type DataSource, type GrVerse, type HeVerse, type HiVerse, type IndexLoad } from './data';
+import { Canon, isTranslationLang, numeral, parseCanon, type BibliaLang, type BookInfo } from './canon';
+import { Texts, greekVerseText, installFullIndexes, verseIsAramaic, type AnyBook, type DataSource, type GrVerse, type HeVerse, type IndexLoad, type TextVerse } from './data';
 import { CHAPTER_WORD, LANGUAGE_NAME, ORIGINAL_EDITION, type Edition } from './edition';
-import { IRV_ATTRIBUTION } from './irv';
 import { APP_VERSION, READER_ID, type Identity, type Recorder } from './repo';
 import { renderAccountScreen, renderLegalScreen, type AccountService } from './account';
 import { createLevels, unitIdsOfSite, type LevelSite } from './levels';
@@ -46,7 +48,7 @@ export interface BibliaDeps {
   /** With the account: the live sync notice (src/syncStatus.ts), shown in the Settings page's Account card and nowhere else (2026-10-27: it used to be a bar above every page). */
   syncStatus?: HTMLElement;
   storage?: Storage;
-  /** Which Biblia: the original languages (the default) or the Hindi edition (edition.ts). The build chooses it. */
+  /** Which Biblia: the original languages (the default) or a translation edition (edition.ts). The build chooses it. */
   edition?: Edition;
   /** Where "GoReview" at the top leads when Biblia is a page of the GoReview app (the iPhone edition); absent elsewhere. */
   backUrl?: string;
@@ -55,17 +57,17 @@ export interface BibliaDeps {
 
 export type HebrewDisplay = 'full' | 'niqqud' | 'consonants';
 const POETRY = new Set(['Ps', 'Prov', 'Job', 'Lam', 'Song']);
-const ADAPTERS: Record<BibliaLang, LanguageAdapter> = { he: heAdapter, el: elAdapter, hi: hiAdapter };
+const ADAPTERS: Record<BibliaLang, LanguageAdapter> = { he: heAdapter, el: elAdapter, hi: hiAdapter, th: thAdapter, de: deAdapter, es: esAdapter };
 /** Which levels of the library tree are open (a JSON list of ids), remembered on the device; the two testaments are open until the learner closes them. The original edition's key; another edition keeps its own (`<prefix>home-open`). */
 export const HOME_OPEN_KEY = 'biblia:home-open';
 export type Theme = 'auto' | 'light' | 'dark';
 export type VerseNumberMode = 'native' | 'decimal' | 'hidden';
 const verseNumberText = (lang: BibliaLang, verse: number, mode: VerseNumberMode): string =>
   mode === 'native' ? numeral(lang, verse) : mode === 'decimal' ? String(verse) : '';
-/** The reading type as the Biblia app shipped it: Hebrew 26 px, Greek 22 px, line height 1.85; the Hindi edition's Devanagari 22 px. */
-export const READING_DEFAULTS = { hebrewSize: 26, greekSize: 22, hindiSize: 22, lineHeight: 1.85 } as const;
+/** The reading type as the Biblia app shipped it: Hebrew 26 px, Greek 22 px, line height 1.85; a translation edition's own size is its `translation.size`. */
+export const READING_DEFAULTS = { hebrewSize: 26, greekSize: 22, lineHeight: 1.85 } as const;
 /** Every preference the settings page keeps (`<edition prefix><name>`, e.g. `biblia:theme`); "Reset settings" removes exactly these. */
-const PREF_NAMES = ['hebrewDisplay', 'theme', 'hebrewSize', 'greekSize', 'hindiSize', 'lineHeight', 'verseNumbers', 'levelMarks'] as const;
+const PREF_NAMES = ['hebrewDisplay', 'theme', 'hebrewSize', 'greekSize', 'lineHeight', 'verseNumbers', 'levelMarks'] as const;
 const SHORT_DISPLAY: Record<HebrewDisplay, string> = { full: 'with accents', niqqud: 'niqqud', consonants: 'consonants' };
 
 /** The icon set (the Biblia app's: 24 px grid, 1.6 stroke). Static markup of this file only, never built from data. */
@@ -98,7 +100,12 @@ export interface BibliaApp {
 export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   const { doc, win } = deps;
   const edition = deps.edition ?? ORIGINAL_EDITION;
-  const hindi = edition.id === 'hi';
+  /** a translation edition's text and language; undefined on Biblia itself */
+  const tr = edition.translation;
+  /** its reading size: the setting's name (hindiSize, thaiSize …), the slider's id and the custom property (--hindi-font-size …) */
+  const trName = tr ? tr.languageName.toLowerCase() : '';
+  const sizePref = `${trName}Size`;
+  const sizeVar = `--${trName}-font-size`;
   const key = (name: string): string => `${edition.prefix}${name}`;
   const root = doc.getElementById('app') ?? doc.body.appendChild(doc.createElement('div'));
   const h = (tag: string, attrs: Record<string, string | undefined> = {}, ...children: Child[]): HTMLElement => {
@@ -129,7 +136,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     if (languageMeta(lang)) registerAnalyser(lang, adapter);
     else analyserNotes.push(`The GoLearn parser does not list ${LANGUAGE_NAME[lang]} yet, so ${LANGUAGE_NAME[lang]} words cannot be looked up on this build.`);
   }
-  // the Hindi analyser carries its own word list (as in the GoLearn extension): the Hebrew / Greek indexes and tables belong to the original edition
+  // a translation edition's analyser carries its own word list (as in the GoLearn extension): the Hebrew / Greek indexes and tables belong to the original edition
   const indexes: IndexLoad = edition.fullIndexes ? await installFullIndexes(deps.source) : { he: false, el: false, notes: [] };
   const canon: Canon = parseCanon(await deps.source.fetchJson(edition.canonPath));
   const texts = new Texts(deps.source);
@@ -139,7 +146,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   let theme = pref<Theme>('theme', 'auto', ['auto', 'light', 'dark']);
   let hebrewSize = numPref('hebrewSize', READING_DEFAULTS.hebrewSize, 18, 44);
   let greekSize = numPref('greekSize', READING_DEFAULTS.greekSize, 16, 36);
-  let hindiSize = numPref('hindiSize', READING_DEFAULTS.hindiSize, 16, 40);
+  let textSize = tr ? numPref(sizePref, tr.size, 16, 40) : 0;
   let lineHeight = numPref('lineHeight', READING_DEFAULTS.lineHeight, 1.4, 2.6);
   let verseNumberMode: VerseNumberMode = (() => {
     try {
@@ -159,7 +166,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       docEl.setAttribute('data-level-marks', levelMarks ? 'on' : 'off');
       docEl.style.setProperty('--reading-font-size', `${hebrewSize}px`);
       docEl.style.setProperty('--greek-font-size', `${greekSize}px`);
-      docEl.style.setProperty('--hindi-font-size', `${hindiSize}px`);
+      if (tr) docEl.style.setProperty(sizeVar, `${textSize}px`);
       docEl.style.setProperty('--reading-line-height', String(lineHeight));
     } catch { /* a document without styles */ }
   }
@@ -177,10 +184,11 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   /** Where lookups and marks go, per mode (read live: the standalone edition changes mode when the learner signs in or out). */
   function recordingNotice(): string {
     const mode = deps.recorder.mode;
-    if (hindi) {
-      if (mode === 'app') return 'Your lookups and marks are recorded in your GoReview account, under your Hindi enrolment; they reach your review on this phone and everywhere you sign in.';
-      if (mode === 'extension') return 'Your lookups and marks are recorded in the GoLearn extension’s on-device Repository, under your Hindi enrolment; GoReview reads them from there.';
-      if (mode === 'account') return `Your lookups and marks are recorded in your GoLearn account${account?.state().email ? ` (${account.state().email})` : ''}, under your Hindi enrolment, the same one GoLearn uses on Hindi web pages; GoReview reads them there. The words you have met anywhere are marked on the page by how well you know them.`;
+    if (tr) {
+      const ln = tr.languageName;
+      if (mode === 'app') return `Your lookups and marks are recorded in your GoReview account, under your ${ln} enrolment; they reach your review on this phone and everywhere you sign in.`;
+      if (mode === 'extension') return `Your lookups and marks are recorded in the GoLearn extension’s on-device Repository, under your ${ln} enrolment; GoReview reads them from there.`;
+      if (mode === 'account') return `Your lookups and marks are recorded in your GoLearn account${account?.state().email ? ` (${account.state().email})` : ''}, under your ${ln} enrolment, the same one GoLearn uses on ${ln} web pages; GoReview reads them there. The words you have met anywhere are marked on the page by how well you know them.`;
       return deps.recorder.reason ?? 'Nothing is recorded here.';
     }
     if (mode === 'app') return 'Your lookups and marks are recorded in your GoReview account, under a Hebrew or Greek enrolment whose variety is the period of the text; they reach your review on this phone and everywhere you sign in.';
@@ -327,13 +335,15 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   }
 
   function sourcesNote(): HTMLElement {
-    if (hindi) {
+    if (tr) {
+      const a = tr.attribution;
       return h('div', { class: 'sources' },
-        `Text: ${IRV_ATTRIBUTION.title}, ${IRV_ATTRIBUTION.copyright}, `,
-        h('a', { href: IRV_ATTRIBUTION.licenceUrl, target: '_blank', rel: 'noopener license' }, IRV_ATTRIBUTION.licence),
-        ', from ', h('a', { href: IRV_ATTRIBUTION.source, target: '_blank', rel: 'noopener' }, 'eBible.org'), '. ',
-        'The verse wording is unchanged; the edition’s introductions, headings and study notes are not shown. ',
-        'Every word is read by the Go analyser for Hindi; nothing here has been reviewed by a Hindi scholar or a native speaker. ',
+        `Text: ${a.title}, ${a.copyright}${a.licenceUrl ? ', ' : '. '}`,
+        a.licenceUrl ? h('a', { href: a.licenceUrl, target: '_blank', rel: 'noopener license' }, a.licence) : null, a.licenceUrl ? ', from ' : 'From ',
+        h('a', { href: a.source, target: '_blank', rel: 'noopener' }, a.sourceLabel.replace(/ \(.*\)$/, '')), '. ',
+        a.notice ? `${a.notice} ` : '',
+        'The verse wording is unchanged; the edition’s headings and notes are not shown. ',
+        `Every word is read by the Go analyser for ${tr.languageName}; nothing here has been reviewed by a ${tr.languageName} scholar or a native speaker. `,
         h('a', { href: '#/sources' }, 'Sources and limits'));
     }
     return h('div', { class: 'sources' },
@@ -394,29 +404,30 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     return el;
   }
 
-  /** The words of a Hindi line as buttons (the IRV's spacing and punctuation kept between them) into the given element. */
-  function hindiWords(el: HTMLElement, info: BookInfo, ch: number, v: number, text: string, sites: LevelSite[], part?: 'title'): void {
+  /** The words of a translation's line as buttons (the edition's spacing and punctuation kept between them), cut by the language's analyser. */
+  function editionWords(el: HTMLElement, info: BookInfo, ch: number, v: number, text: string, sites: LevelSite[], part?: 'title'): void {
     let at = 0;
-    for (const t of hiAdapter.tokenize(text)) {
+    const lang = info.lang;
+    for (const t of ADAPTERS[lang].tokenize(text)) {
       if (t.start > at) el.append(doc.createTextNode(text.slice(at, t.start)));
       const piece = text.slice(t.start, t.end);
-      if (t.isWord) el.append(wordButton({ lang: 'hi', book: info.id, ch, v, sentence: text, start: t.start, end: t.end, surface: piece, varietyId: '', ...(part ? { part } : {}) }, sites));
+      if (t.isWord) el.append(wordButton({ lang, book: info.id, ch, v, sentence: text, start: t.start, end: t.end, surface: piece, varietyId: '', ...(part ? { part } : {}) }, sites));
       else el.append(doc.createTextNode(piece));
       at = t.end;
     }
     if (at < text.length) el.append(doc.createTextNode(text.slice(at)));
   }
 
-  /** A Hindi verse: its superscription first when it has one (a Psalm title, a letter of Psalm 119), then the verse with its number. */
-  function renderHindiVerse(info: BookInfo, ch: number, v: HiVerse, sites: LevelSite[]): HTMLElement[] {
+  /** A translation's verse: its superscription first when it has one (a Psalm title, a letter of Psalm 119), then the verse with its number. */
+  function renderEditionVerse(info: BookInfo, ch: number, v: TextVerse, sites: LevelSite[]): HTMLElement[] {
     const out: HTMLElement[] = [];
     if (v.d) {
       const title = h('span', { class: 'verse superscription', 'data-v': String(v.n), 'data-part': 'title' });
-      hindiWords(title, info, ch, v.n, v.d, sites, 'title');
+      editionWords(title, info, ch, v.n, v.d, sites, 'title');
       out.push(title);
     }
-    const el = h('span', { class: 'verse', 'data-v': String(v.n) }, h('span', { class: 'vn' }, verseNumberText('hi', v.n, verseNumberMode)));
-    hindiWords(el, info, ch, v.n, v.t, sites);
+    const el = h('span', { class: 'verse', 'data-v': String(v.n) }, h('span', { class: 'vn' }, verseNumberText(info.lang, v.n, verseNumberMode)));
+    editionWords(el, info, ch, v.n, v.t, sites);
     out.push(el);
     return out;
   }
@@ -575,11 +586,11 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         if (r.failed.length) chapterNotes.push(`${r.failed.length} of the Modern Hebrew shards this chapter needs could not be loaded (${r.failed[0][1]}); the Variants tab shows less for those words.`);
       }
       for (const v of verses) { const ar = verseIsAramaic(v); if (ar) aramaicVerses++; prose.append(renderHebrewVerse(info, ch, v, ar, sites), doc.createTextNode(' ')); if (v.pe) prose.append(h('span', { class: 'para-break', 'aria-hidden': 'true' })); }
-    } else if (book.lang === 'hi') {
-      // the IRV's paragraphs as Biblia shows the Masoretic ones: a break before the verse that begins one
-      for (const v of (chapter as { verses: HiVerse[] }).verses) {
+    } else if (isTranslationLang(book.lang)) {
+      // the edition's paragraphs as Biblia shows the Masoretic ones: a break before the verse that begins one
+      for (const v of (chapter as { verses: TextVerse[] }).verses) {
         if (v.p) prose.append(h('span', { class: 'para-break', 'aria-hidden': 'true' }));
-        prose.append(...renderHindiVerse(info, ch, v, sites), doc.createTextNode(' '));
+        prose.append(...renderEditionVerse(info, ch, v, sites), doc.createTextNode(' '));
       }
     } else {
       const verses = (chapter as { verses: GrVerse[] }).verses;
@@ -593,8 +604,8 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       }
       for (const v of verses) prose.append(renderGreekVerse(info, ch, v, sites), doc.createTextNode(' '));
     }
-    const period = info.lang === 'hi'
-      ? 'Read as Modern Standard Hindi (the Indian Revised Version, 2019), with the analyser GoLearn uses for Hindi.'
+    const period = tr && info.lang === tr.lang
+      ? tr.readAs
       : info.lang === 'he'
       ? (aramaicVerses ? `Read as Biblical Hebrew; ${aramaicVerses} verse${aramaicVerses === 1 ? '' : 's'} of this chapter are Biblical Aramaic (marked) and are read as Aramaic.` : 'Read as Biblical Hebrew (the Masoretic text, with its cantillation).')
       : `Read as Koine Greek (the Greek New Testament)${indexes.ancient ? `; the Attic and Homeric tables are loaded for this chapter's words (${indexes.ancient.loaded().length} shards in memory)` : ''}.`;
@@ -660,19 +671,19 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       h('div', { class: 'settings-reading__intro' }, icon('book'),
         h('h2', { class: 'settings-reading__heading', id: 'settings-reading-heading' }, 'Reading')),
       h('div', { class: 'settings-row' }, labelled('Theme', pills<Theme>('Theme', [['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']], theme, (v) => { theme = v; setPref('theme', v); applyPrefs(); }))),
-      ...(hindi
-        ? [h('div', { class: 'settings-row settings-row--slider' }, slider('set-hindi-size', 'Hindi text size', 16, 40, 1, hindiSize, (n) => `${n} px`, (n) => { hindiSize = n; setPref('hindiSize', String(n)); applyPrefs(); }))]
+      ...(tr
+        ? [h('div', { class: 'settings-row settings-row--slider' }, slider(`set-${trName}-size`, `${tr.languageName} text size`, 16, 40, 1, textSize, (n) => `${n} px`, (n) => { textSize = n; setPref(sizePref, String(n)); applyPrefs(); }))]
         : [h('div', { class: 'settings-row settings-row--slider' }, slider('set-hebrew-size', 'Hebrew text size', 18, 44, 1, hebrewSize, (n) => `${n} px`, (n) => { hebrewSize = n; setPref('hebrewSize', String(n)); applyPrefs(); })),
           h('div', { class: 'settings-row settings-row--slider' }, slider('set-greek-size', 'Greek text size', 16, 36, 1, greekSize, (n) => `${n} px`, (n) => { greekSize = n; setPref('greekSize', String(n)); applyPrefs(); }))]),
       h('div', { class: 'settings-row settings-row--slider' }, slider('set-line-height', 'Line spacing', 1.4, 2.6, 0.05, lineHeight, (n) => n.toFixed(2), (n) => { lineHeight = n; setPref('lineHeight', String(n)); applyPrefs(); })),
-      hindi ? null : h('div', { class: 'settings-row' }, labelled('Hebrew text', pills<HebrewDisplay>('Hebrew text', (['full', 'niqqud', 'consonants'] as HebrewDisplay[]).map((d) => [d, d === 'full' ? 'Accents' : SHORT_DISPLAY[d][0].toUpperCase() + SHORT_DISPLAY[d].slice(1)] as const), hebrewDisplay, (d) => { hebrewDisplay = d; setPref('hebrewDisplay', d); })),
+      tr ? null : h('div', { class: 'settings-row' }, labelled('Hebrew text', pills<HebrewDisplay>('Hebrew text', (['full', 'niqqud', 'consonants'] as HebrewDisplay[]).map((d) => [d, d === 'full' ? 'Accents' : SHORT_DISPLAY[d][0].toUpperCase() + SHORT_DISPLAY[d].slice(1)] as const), hebrewDisplay, (d) => { hebrewDisplay = d; setPref('hebrewDisplay', d); })),
         para('This choice takes effect the next time you open a chapter.', 'muted hint')),
-      h('div', { class: 'settings-row' }, labelled('Verse numbers', pills<VerseNumberMode>('Verse numbers', [['native', edition.nativeNumeralsLabel], ['decimal', '1, 2, 3'], ['hidden', 'None']], verseNumberMode, (mode) => { verseNumberMode = mode; setPref('verseNumbers', mode); applyPrefs(); }))),
+      h('div', { class: 'settings-row' }, labelled('Verse numbers', pills<VerseNumberMode>('Verse numbers', [...(edition.nativeNumeralsLabel ? [['native', edition.nativeNumeralsLabel] as const] : []), ['decimal', '1, 2, 3'], ['hidden', 'None']], verseNumberMode, (mode) => { verseNumberMode = mode; setPref('verseNumbers', mode); applyPrefs(); }))),
       h('div', { class: 'settings-reader-footer' }, toggle('set-level-marks', 'Mark words by familiarity', 'Available when signed in.', levelMarks, (on) => { levelMarks = on; setPref('levelMarks', on ? 'on' : 'off'); applyPrefs(); }), (() => {
         const reset = h('button', { type: 'button', class: 'btn', id: 'settings-reset' }, icon('reset'), 'Reset settings');
         reset.addEventListener('click', () => {
-          for (const name of PREF_NAMES) { try { deps.storage?.removeItem(key(name)); } catch { /* storage blocked */ } }
-          hebrewDisplay = 'full'; theme = 'auto'; hebrewSize = READING_DEFAULTS.hebrewSize; greekSize = READING_DEFAULTS.greekSize; hindiSize = READING_DEFAULTS.hindiSize; lineHeight = READING_DEFAULTS.lineHeight; verseNumberMode = edition.verseNumbers; levelMarks = true;
+          for (const name of [...PREF_NAMES, ...(tr ? [sizePref] : [])]) { try { deps.storage?.removeItem(key(name)); } catch { /* storage blocked */ } }
+          hebrewDisplay = 'full'; theme = 'auto'; hebrewSize = READING_DEFAULTS.hebrewSize; greekSize = READING_DEFAULTS.greekSize; textSize = tr?.size ?? 0; lineHeight = READING_DEFAULTS.lineHeight; verseNumberMode = edition.verseNumbers; levelMarks = true;
           applyPrefs();
           void render();
         });
@@ -696,12 +707,12 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         h('span', { class: 'settings-disclosure__title' }, 'Sources & Licences'),
         h('span', { class: 'settings-disclosure__subtitle' }, 'Text editions, morphology, and typography.')), h('span', { class: 'settings-disclosure__arrow' }, icon('chevronRight'))),
       h('div', { class: 'settings-disclosure__body' }, sourcesNote(),
-        para(hindi ? 'Type: EB Garamond (Latin) and Tiro Devanagari Hindi (Devanagari), under the SIL Open Font License 1.1, copied with their licences.' : 'Type: EB Garamond (Latin and Greek) and Frank Ruhl Libre (Hebrew), under the SIL Open Font License 1.1, copied with their licences.', 'muted'),
+        para(tr ? `Type: ${tr.typeNote}` : 'Type: EB Garamond (Latin and Greek) and Frank Ruhl Libre (Hebrew), under the SIL Open Font License 1.1, copied with their licences.', 'muted'),
         h('p', { class: 'muted' },
-          h('a', { href: './fonts/EB-Garamond-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-garamond' }, 'EB Garamond licence'), ' · ',
-          hindi
-            ? h('a', { href: './fonts/tiro-devanagari-hindi-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-tiro' }, 'Tiro Devanagari Hindi licence')
-            : h('a', { href: './fonts/frank-ruhl-libre-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-frank' }, 'Frank Ruhl Libre licence'))));
+          h('a', { href: './fonts/EB-Garamond-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-garamond' }, 'EB Garamond licence'),
+          ...(tr
+            ? (tr.fontLicence ? [' · ', h('a', { href: tr.fontLicence.href, target: '_blank', rel: 'noopener', id: 'link-ofl-edition' }, tr.fontLicence.label)] : [])
+            : [' · ', h('a', { href: './fonts/frank-ruhl-libre-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-frank' }, 'Frank Ruhl Libre licence')]))));
 
     const footer = h('footer', { class: 'settings-legal-footer' },
       h('nav', { class: 'settings-links', 'aria-label': 'Information and legal pages' },
@@ -711,19 +722,24 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       h('div', { class: 'screen' }, h('h1', {}, 'Settings'), reading, offline, sources, footer));
   }
   function renderSources(): HTMLElement {
-    if (hindi) {
+    if (tr) {
+      const a = tr.attribution;
+      const ln = tr.languageName;
       return h('div', {}, plainBar('Biblia'), h('div', { class: 'screen' }, h('h1', {}, 'Sources and limits'),
         kickerCard('sources-list', 'Text and analysis',
           h('ul', {},
-            h('li', {}, `${IRV_ATTRIBUTION.title} — ${IRV_ATTRIBUTION.english}. ${IRV_ATTRIBUTION.copyright}. Licence: `,
-              h('a', { href: IRV_ATTRIBUTION.licenceUrl, target: '_blank', rel: 'noopener license' }, IRV_ATTRIBUTION.licence), '. Source: ',
-              h('a', { href: IRV_ATTRIBUTION.source, target: '_blank', rel: 'noopener' }, 'eBible.org (hin2017)'), `, ${IRV_ATTRIBUTION.sourceDate}.`),
-            h('li', {}, `Changes: ${IRV_ATTRIBUTION.changes} Biblia's text files are shared under the same licence.`),
-            h('li', {}, 'Every word is read by the Go analyser for Hindi (adapter-hi), the same one GoLearn uses on Hindi web pages, with its word list and rules; lookups and marks go to your Hindi enrolment, where GoReview finds them.'))),
+            h('li', {}, `${a.title} — ${a.english}. ${a.copyright}. Licence: `,
+              a.licenceUrl ? h('a', { href: a.licenceUrl, target: '_blank', rel: 'noopener license' }, a.licence) : a.licence, '. Source: ',
+              h('a', { href: a.source, target: '_blank', rel: 'noopener' }, a.sourceLabel), `, ${a.sourceDate}.`),
+            a.notice ? h('li', {}, a.notice) : null,
+            h('li', {}, `Changes: ${a.changes}${a.shareAlike ? " Biblia's text files are shared under the same licence." : ''}`),
+            h('li', {}, `Every word is read by the Go analyser for ${ln} (adapter-${tr.lang}), the same one GoLearn uses on ${ln} web pages, with its word list and rules; lookups and marks go to your ${ln} enrolment, where GoReview finds them.`))),
         kickerCard('sources-limits', 'Limits',
-          para('The analyser’s word list is machine-drafted and nothing here has been reviewed by a Hindi scholar or a native speaker; a word it does not know shows no meaning. No dictionary panel, no search and no vocabulary list (GoReview shows the vocabulary). The Hindi names of the library’s divisions were written for this app and await review. The Psalm titles stand before verse 1, as the IRV prints them.')),
+          // GoLearn's own word on its analyser for this language, when it marks it experimental (Thai and German, 2026-11)
+          languageMeta(tr.lang)?.experimental ? para(languageMeta(tr.lang)!.experimental!) : null,
+          para(`Nothing here has been reviewed by a ${ln} scholar or a native speaker; a word the analyser does not know shows no meaning. No dictionary panel, no search and no vocabulary list (GoReview shows the vocabulary). The ${ln} names of the library’s divisions were written for this app and await review; the book names are the edition’s own.${edition.id === 'hi' || edition.id === 'th' ? ' The Psalm titles stand before verse 1, as the edition prints them.' : ''}`)),
         kickerCard('sources-type', 'Type',
-          para('EB Garamond (Latin) and Tiro Devanagari Hindi (Devanagari), SIL Open Font License 1.1.', 'muted')),
+          para(tr.typeNote, 'muted')),
         h('p', {}, h('a', { class: 'btn', href: '#/' }, 'Library'))));
     }
     return h('div', {}, plainBar('Biblia'), h('div', { class: 'screen' }, h('h1', {}, 'Sources and limits'),
@@ -781,7 +797,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     destroy() {
       win.removeEventListener('hashchange', onHash);
       for (const a of ['data-theme', 'data-verse-numbers', 'data-level-marks']) docEl.removeAttribute(a);
-      for (const p of ['--reading-font-size', '--greek-font-size', '--hindi-font-size', '--reading-line-height']) { try { docEl.style.removeProperty(p); } catch { /* no styles */ } }
+      for (const p of ['--reading-font-size', '--greek-font-size', ...(tr ? [sizeVar] : []), '--reading-line-height']) { try { docEl.style.removeProperty(p); } catch { /* no styles */ } }
       offAppended?.(); offAccount?.(); levels?.destroy(); deps.recorder.destroy?.();
       card.destroy();
     },

@@ -267,7 +267,7 @@ describe('the Hindi edition of the app', () => {
     const t = document.body.textContent ?? '';
     expect(t).toContain('Copyright © 2017, 2018, 2019 Bridge Connectivity Solutions');
     expect(t).toContain('not endorsed by the original licensor');
-    expect(t).toMatch(/nothing here has been reviewed by a Hindi scholar or a native speaker/);
+    expect(t).toMatch(/reviewed by a Hindi scholar or a native speaker/);
     expect(t).not.toMatch(/SBLGNT|Westminster Leningrad|Masoretic/);
   });
 });

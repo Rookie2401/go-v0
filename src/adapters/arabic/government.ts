@@ -110,7 +110,7 @@ export const AR_PREPOSITIONS: ReadonlyMap<string, ArPreposition> = buildPreposit
  * Nouns that stand in construct before a genitive, so the word after them is a noun and never a verb (كُلّ بَعْض جَمِيع …). `غَيْر` is left
  * out of the certain list: غَيَّرَ "he changed" is spelled like it and is followed by a subject. Lemma keys.
  */
-export const AR_CONSTRUCT_HEADS: ReadonlySet<string> = new Set(['كل', 'بعض', 'جميع', 'معظم', 'أحد', 'إحدى', 'نفس', 'عدة']);
+export const AR_CONSTRUCT_HEADS: ReadonlySet<string> = new Set(['كل', 'بعض', 'جميع', 'معظم', 'أحد', 'إحدى', 'نفس', 'عدة', 'أي']);
 
 // ───────────────────────────── inna and kāna, and their sisters ─────────────────────────────
 

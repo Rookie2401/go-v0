@@ -70,7 +70,7 @@ describe('stem spellings the clitics hide', () => {
     expect(stems('رآه', [], ['ه'])).toContain('رأى');
     expect(stems('أبوه', [], ['ه'])).toContain('أب');
   });
-  it('without a pronoun nothing is undone', () => { expect(arSegmentations('مدرسة')[0].stemKeys).toEqual(['مدرسة']); });
+  it('without a pronoun the stem itself comes first (the bare cells of a tanwīn alif or a feminine ة follow, for derived participles only)', () => { expect(arSegmentations('مدرسة')[0].stemKeys[0]).toBe('مدرسة'); });
   it('arStemKeys is every stem of every cut (the shard loader reads it)', () => {
     const keys = arStemKeys('وبالكتاب');
     expect(keys).toContain('وبالكتاب');

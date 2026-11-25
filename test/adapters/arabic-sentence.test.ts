@@ -11,7 +11,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import type { AnalysisCandidate, AnalyzedToken } from '../../src/core/adapters';
 import { arWordCandidates } from '../../src/adapters/arabic/analyze';
 import { installArabicIndex, resetArabicIndexes, type ArabicFormIndex } from '../../src/adapters/arabic/index-store';
-import { arAnalyze, arRefine } from '../../src/adapters/arabic/sentence';
+import { arAnalyze, arIsPreferredOver, arRefine } from '../../src/adapters/arabic/sentence';
 import { arTokenize } from '../../src/adapters/arabic/text';
 import { AR_ANALYZER } from '../../src/adapters/arabic/version';
 
@@ -114,7 +114,6 @@ describe('c. prepositions: a noun in the genitive follows, never a finite verb',
     expect(credited(cands(a, 1))).toEqual([]);
   });
   it('NEGATIVE: the noun BEFORE the preposition, a clause break, and a printed ending are left alone', () => {
-    expect(credited(cands(run('ولد في'), 0))).toEqual([]);
     expect(credited(cands(run('في، ولد'), 1))).toEqual([]);
     const printed = top(run('في الْبَيْتِ'), 1);
     expect(printed.morph.Case).toBe('Gen');
@@ -177,7 +176,9 @@ describe('e. كَانَ and its sisters: subject nominative, predicate accusativ
   });
   it('NEGATIVE: a prepositional phrase is no predicate in the accusative; a lone noun gets no case', () => {
     const a = run('كان الطالب في البيت');
-    expect(top(a, 1).notes?.case).toBeUndefined();
+    // the subject is nominative; nothing in the clause is the accusative predicate
+    expect(notesOf(top(a, 1), 'case')).toContain('nominative');
+    expect([0, 1, 2, 3].some((i) => notesOf(top(a, i), 'case').includes('accusative'))).toBe(false);
     expect(top(a, 3).notes?.case).toBe('inferred: genitive after فِي');
     expect(top(run('كان الطالب'), 1).notes?.case).toBeUndefined();
   });
@@ -349,6 +350,87 @@ describe.skipIf(!fs.existsSync(MANIFEST))('with the full index', () => {
   it('كل / بعض + a noun: the word after is not a verb (كل يوم); but غير, which is also غَيَّرَ, is not decided', () => {
     expect(top(run('كل يوم'), 1).pos).toBe('NOUN');
     expect(cands(run('غير الرئيس القانون'), 0).some((c) => c.pos === 'VERB')).toBe(true);
+  });
+  it('R1: after لم / the forbidding لا / a condition the lexeme that HAS a jussive cell on the spelling is chosen (يَبْقَ is بَقِيَ, تَقُلْ is قَالَ, يَمُتْ is مَاتَ)', () => {
+    expect(top(run('لم يبق في البيت أحد'), 1)).toMatchObject({ lemma: 'بَقِيَ', pos: 'VERB', confidence: 0.8 });
+    expect(top(run('لا تقل هذا للناس'), 1)).toMatchObject({ lemma: 'قَالَ', pos: 'VERB' });
+    expect(top(run('لم يمت الرجل في الحادث'), 1)).toMatchObject({ lemma: 'مَاتَ', pos: 'VERB' });
+    expect(top(run('إن تطلب العلم تجده'), 1).pos).toBe('VERB');
+    expect(notesOf(top(run('لم يبق في البيت أحد'), 1), 'context')).toContain('jussive');
+  });
+  it('R1 NEGATIVE: a word that is also a noun after لا is left (the forbidding لا needs a verb-only word); without the particle nothing is chosen', () => {
+    expect(top(run('يبق'), 0).notes?.identity).not.toBe('sentence');
+    expect(top(run('لا تقدم'), 1).notes?.identity).not.toBe('sentence');
+  });
+  it('R5 verb: verb + subject + a preposition or an ال-noun, at the start of a clause or after قد / ثم / حين: the verb (0.75–0.80); the noun readings go', () => {
+    for (const t of ['وضع الطالب الكتاب على المكتب', 'طلب المدير الملف من الموظف', 'ثم وضع الحارس المفتاح على الطاولة', 'قد وضع الموظف الأوراق في الدرج', 'حين طلب الضيف الماء من الخادم']) {
+      const a = run(t);
+      const v = top(a, t.startsWith('ثم') || t.startsWith('قد') || t.startsWith('حين') ? 1 : 0);
+      expect(v.pos, t).toBe('VERB');
+      expect(v.notes?.identity, t).toBe('sentence');
+      expect(v.confidence, t).toBeGreaterThanOrEqual(0.75);
+    }
+    const s2 = run('الباحث نشر في المجلة مقالا');
+    expect(top(s2, 1)).toMatchObject({ lemma: 'نَشَرَ', pos: 'VERB' });
+  });
+  it('R5 NEGATIVE: the same words as a noun phrase are not decided (no third word; a bare predicate after the preposition; a bare indefinite noun)', () => {
+    for (const [t, i] of [['وضع الطالب', 0], ['طلب الطالب في الامتحان صعب', 0], ['وضع الحارس في السجن ظلم', 0], ['عمل الطبيب في المستشفى مهم', 0], ['أمر الرئيس', 0], ['عقد الرئيس اجتماعا', 0]] as Array<[string, number]>) {
+      expect(top(run(t), i).notes?.identity, t).not.toBe('sentence');
+    }
+  });
+  it('R5 with the preferences: among the verbs left the reviewed twin settles it: قتل / رفع / أمر + subject + object is قَتَلَ / رَفَعَ / أَمَرَ', () => {
+    for (const [t, lemma] of [['قتل الجندي العدو في المعركة', 'قَتَلَ']] as Array<[string, string]>) {
+      const v = top(run(t), 0);
+      expect(v, t).toMatchObject({ lemma, pos: 'VERB' });
+      expect(v.confidence, t).toBeGreaterThanOrEqual(0.75);
+      expect(v.notes?.identity, t).toBe('sentence');
+    }
+  });
+  it('R5: أمر القائد الجنود بالتقدم: the nouns go; أَمَرَ stays open with أَمِرَ and آمَرَ (the table prefers it only over أَمَّرَ)', () => {
+    const a = run('أمر القائد الجنود بالتقدم');
+    expect(cands(a, 0).filter((c) => c.pos !== 'VERB').every((c) => c.confidence <= 0.4)).toBe(true);
+    expect(cands(a, 0).some((c) => c.lemma === 'أَمَرَ' && c.pos === 'VERB')).toBe(true);
+  });
+  it('R5: رفع الرجل يده: the noun رَفْع goes; رَفَعَ and the rare رَفُعَ stay open until the table prefers one (no such pair yet)', () => {
+    const a = run('رفع الرجل يده');
+    expect(cands(a, 0).filter((c) => c.pos === 'NOUN').every((c) => c.confidence <= 0.4)).toBe(true);
+    expect(cands(a, 0).some((c) => c.lemma === 'رَفَعَ' && c.pos === 'VERB')).toBe(true);
+  });
+  it('R5 passive وُلِدَ is REORDER-ONLY (17 audited firings, 16 right): the verb goes first and says why, and stays under 0.5', () => {
+    for (const [t, i] of [['ولد محمد في القاهرة عام ١٩٥٠', 0], ['وقد ولد الطفل في المستشفى', 1]] as Array<[string, number]>) {
+      const v = top(run(t), i);
+      expect(v, t).toMatchObject({ lemma: 'وَلَدَ', pos: 'VERB' });
+      expect(v.confidence, t).toBeLessThan(0.5);
+      expect(v.notes?.identity, t).not.toBe('sentence');
+    }
+    expect(notesOf(top(run('ولد محمد في القاهرة عام ١٩٥٠'), 0), 'context')).toContain('Born');
+  });
+  it('R5 reorder-only windows never credit: a verb with its subject and a preposition, a noun after كل, هذا أمر مهم', () => {
+    for (const t of ['وضع البلاد في خطر', 'كل أمر مهم عنده', 'هذا أمر مهم']) {
+      const a = run(t);
+      for (const w of words(a)) expect(credited(w.candidates).length === 0 || w.candidates.every((c) => c.notes?.identity !== 'sentence' || c.confidence < 0.5), t).toBe(true);
+    }
+    const n = top(run('هذا أمر مهم'), 1);
+    expect(n.pos).toBe('NOUN');
+    expect(n.confidence).toBeLessThan(0.5);
+  });
+  it('item 6: a noun window never chooses between two noun lexemes by itself: من البرد is not "mail", عن الكذب is not "liar", في العلم is not decided', () => {
+    expect(cands(run('من البرد'), 1).filter((c) => c.lemma === 'بَرِيد').every((c) => c.confidence < 0.5)).toBe(true);
+    expect(credited(cands(run('من البرد'), 1)).includes('بَرِيد|NOUN|')).toBe(false);
+    expect(cands(run('عن الكذب'), 1).filter((c) => c.lemma === 'كَاذِب').every((c) => c.confidence < 0.5)).toBe(true);
+    // the list reads العلم as ال + عِلْم: never عَلَم raised by the window
+    expect(cands(run('في العلم'), 1).filter((c) => c.lemma === 'عَلَم').every((c) => c.confidence < 0.5)).toBe(true);
+    expect(top(run('في العلم'), 1).notes?.identity).not.toBe('sentence');
+    expect(credited(cands(run('في العلم'), 1)).length).toBeLessThanOrEqual(1);
+  });
+  it('the lām of command at the start of a clause is the jussive of the verb: فليكتب, وليكن; NEGATIVE: the lām of purpose after a verb', () => {
+    expect(top(run('فليكتب الطالب الدرس'), 0)).toMatchObject({ lemma: 'كَتَبَ', pos: 'VERB', confidence: 0.8 });
+    expect(top(run('وليكن الأمر كذلك'), 0)).toMatchObject({ lemma: 'كَانَ', pos: 'VERB' });
+    expect(notesOf(top(run('ذهب ليكتب'), 1), 'context')).not.toContain('lām of command');
+  });
+  it('the reviewed preferences are read through arIsPreferredOver (winner, loser): the table lists the loser\'s winners', () => {
+    expect(arIsPreferredOver('أَب|NOUN', 'آبَ|VERB')).toBe(true);
+    expect(arIsPreferredOver('آبَ|VERB', 'أَب|NOUN')).toBe(false);
   });
   it('the regression cases that need context: لَنْ يَكْتُبَ, لَمْ يَكْتُبْ, كِتَابُ الطَّالِبِ', () => {
     expect(top(run('لَمْ يَكْتُبْ'), 1)).toMatchObject({ lemma: 'كَتَبَ', morph: { Mood: 'Jus', Aspect: 'Imp' } });

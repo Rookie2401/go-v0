@@ -10,7 +10,7 @@ import { arGroupPos, arWordCandidates, useArPreferences } from '../../src/adapte
 import { useArIdentities } from '../../src/adapters/arabic/identities';
 import { describeArMorph } from '../../src/adapters/arabic/describe';
 import { installArabicIndex, resetArabicIndexes, uninstallArabicIndex, type ArabicFormIndex } from '../../src/adapters/arabic/index-store';
-import { arKey } from '../../src/adapters/arabic/text';
+import { arKey, tashkilLevel } from '../../src/adapters/arabic/text';
 
 const fixture = JSON.parse(fs.readFileSync(new URL('./arabic-mini-index.json', import.meta.url), 'utf8')) as ArabicFormIndex;
 // the structural and undecided rules are tested WITHOUT the reviewed list (a listed key would hide the rule under test); the shipped list has its own tests below
@@ -781,5 +781,231 @@ describe('batch 3 over the real index (identities and preferences as noted; skip
     expect(f[0].lemma).toBe('فِي');
     expect(f.some((c) => c.lemma === 'فَم')).toBe(true);
     restore();
+  });
+});
+
+// ───────────────────────────── fix batch 4 ─────────────────────────────
+
+describe('batch 4 (fixture): printed vowels, roots', () => {
+  it('وَلَدٌ with its tanwīn printed is the noun at 0.90 (the verb\'s ending contradicts the page)', () => {
+    const cs = cands('وَلَدٌ');
+    expect(cs[0]).toMatchObject({ lemma: 'وَلَد', pos: 'NOUN', confidence: 0.9 });
+    expect(cs.filter((c) => c.confidence >= 0.5).every((c) => c.lemma === 'وَلَد')).toBe(true);
+  });
+  it('مَدَّ printed is the verb (its citation form), not the construct accusative of the noun مَدّ', () => {
+    expect(top('مَدَّ')).toMatchObject({ lemma: 'مَدَّ', pos: 'VERB' });
+    expect(top('مَدَّ').confidence).toBeGreaterThanOrEqual(0.5);
+  });
+  it('o09: the root of قَالَ is the root of the entry that reads the word, never a join of two roots', () => {
+    const r = top('قَالَ').notes?.root;
+    expect(typeof r).toBe('string');
+    expect(String(r)).not.toContain('/');
+  });
+});
+
+describe('batch 4 over the real index (skipped when the shards are absent)', () => {
+  const dir = new URL('../../public/lexicon/ar/standard/', import.meta.url);
+  const have = fs.existsSync(new URL('manifest.json', dir));
+  const install = async (): Promise<void> => {
+    const zlib = await import('node:zlib');
+    const { AR_CORE } = await import('../../src/adapters/arabic/generated/core');
+    resetArabicIndexes();
+    installArabicIndex(AR_CORE);
+    for (const fn of fs.readdirSync(dir)) if (fn.endsWith('.json.gz')) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL(fn, dir))).toString('utf8')));
+    useArIdentities({});
+    useArPreferences({});
+  };
+  const restore = (): void => { resetArabicIndexes(); installArabicIndex(fixture); };
+  it.skipIf(!have)('R1: a hollow or defective verb\'s jussive is not marginal against a rarer geminate: تخف يبق يقل ينم يدع are undecided, never the rare verb at 0.60', async () => {
+    await install();
+    for (const w of ['تخف', 'يبق', 'يقل', 'ينم', 'يدع']) expect(cands(w).every((c) => c.confidence <= 0.45), w).toBe(true);
+    restore();
+  });
+  it.skipIf(!have)('R4: المنتجة is the feminine participle مُنْتِج (derived from a counted verb), not the verbal-noun entry مَنْتَجَ', async () => {
+    await install();
+    expect(top('المنتجة')).toMatchObject({ lemma: 'مُنْتِج' });
+    expect(top('المنتجة').morph).toMatchObject({ Gender: 'Fem' });
+    restore();
+  });
+  it.skipIf(!have)('o09: قَالَ has ONE root on the real index (ق و ل)', async () => {
+    await install();
+    expect(top('قَالَ').notes?.root).toBe('ق و ل');
+    restore();
+  });
+});
+
+// ───────────────────────────── fix batch 5: no verb may vanish ─────────────────────────────
+
+describe('batch 5 over the real index: the Form I verb is always offered (skipped when the shards are absent)', () => {
+  const dir = new URL('../../public/lexicon/ar/standard/', import.meta.url);
+  const have = fs.existsSync(new URL('manifest.json', dir));
+  const install = async (): Promise<void> => {
+    const zlib = await import('node:zlib');
+    const { AR_CORE } = await import('../../src/adapters/arabic/generated/core');
+    resetArabicIndexes();
+    installArabicIndex(AR_CORE);
+    for (const fn of fs.readdirSync(dir)) if (fn.endsWith('.json.gz')) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL(fn, dir))).toString('utf8')));
+  };
+  it.skipIf(!have)('قتل رفع نشر حمل جمع قطع ضرب each offer their Form I verb with its perfect cell, and the Form II twin is listed below it (variant heads never fold two verbs together)', async () => {
+    await install();
+    useArIdentities();
+    useArPreferences();
+    const want: Record<string, [string, string]> = { قتل: ['قَتَلَ', 'قَتَّلَ'], رفع: ['رَفَعَ', 'رَفَّعَ'], نشر: ['نَشَرَ', 'نَشَّرَ'], حمل: ['حَمَلَ', 'حَمَّلَ'], جمع: ['جَمَعَ', 'جَمَّعَ'], قطع: ['قَطَعَ', 'قَطَّعَ'], ضرب: ['ضَرَبَ', 'ضَرَّبَ'] };
+    for (const [w, [one, two]] of Object.entries(want)) {
+      const cs = cands(w);
+      const i = cs.findIndex((c) => c.lemma === one && c.morph.Aspect === 'Perf' && c.morph.Person?.includes('3'));
+      expect(i, w).toBeGreaterThanOrEqual(0);
+      const j = cs.findIndex((c) => c.lemma === two);
+      if (j >= 0) expect(cs[i].confidence, w).toBeGreaterThanOrEqual(cs[j].confidence);
+    }
+    useArIdentities({});
+    useArPreferences({});
+    resetArabicIndexes();
+    installArabicIndex(fixture);
+  });
+  it.skipIf(!have)('the invariant: every WINNER of the reviewed twin list is offered by the analyser on its own citation key', async () => {
+    await install();
+    useArIdentities();
+    useArPreferences();
+    const reviewed = JSON.parse(fs.readFileSync(new URL('../../src/adapters/arabic/preferences-reviewed.json', import.meta.url), 'utf8')) as { prefer: Record<string, string[]> };
+    const winners = new Set(Object.values(reviewed.prefer).flat());
+    const { lookupArabicLemma } = await import('../../src/adapters/arabic/index-store');
+    const { arCanon } = await import('../../src/adapters/arabic/text');
+    const missing: string[] = [];
+    let checked = 0;
+    for (const id of winners) {
+      if (!lookupArabicLemma(id)) continue;
+      const head = id.split('|')[0];
+      checked++;
+      const cs = cands(arKey(head));
+      if (!cs.some((c) => arCanon(c.lemma ?? '') === arCanon(head) || (c.lemma ?? '') === head)) missing.push(id);
+    }
+    expect(checked).toBeGreaterThan(20);
+    expect(missing).toEqual([]);
+    useArIdentities({});
+    useArPreferences({});
+    resetArabicIndexes();
+    installArabicIndex(fixture);
+  });
+});
+
+describe('batch 5: a rare head does not beat a common plural; hamza-seat variants are one lexeme', () => {
+  it('V2: مسئول and مسؤول (and شئون and شؤون) credit ONE lemma, the head that follows the seat rule, whichever spelling the page prints', () => {
+    const idx = synth('ar-test-seat', undefined, {
+      'مَسْؤُول|NOUN': ['مَسْؤُول', 'responsible', 'NOUN', '', 9], 'مَسْئُول|NOUN': ['مَسْئُول', 'responsible', 'NOUN', '', 4],
+      'شُؤُون|NOUN': ['شُؤُون', 'affairs', 'NOUN', '', 9], 'شُئُون|NOUN': ['شُئُون', 'affairs', 'NOUN', '', 4],
+    }, { مسؤول: [[0, 0, '143'], [1, 0, '143']], مسئول: [[0, 0, '143'], [1, 0, '143']], شؤون: [[2, 0, '333'], [3, 0, '333']], شئون: [[2, 0, '333'], [3, 0, '333']] });
+    installArabicIndex(idx);
+    for (const w of ['مسئول', 'مسؤول']) {
+      const cs = cands(w);
+      expect(new Set(cs.map((c) => c.lemma)), w).toEqual(new Set(['مَسْؤُول']));
+      expect(cs[0].confidence, w).toBeGreaterThanOrEqual(0.5);
+    }
+    for (const w of ['شئون', 'شؤون']) expect(new Set(cands(w).map((c) => c.lemma)), w).toEqual(new Set(['شُؤُون']));
+    uninstallArabicIndex('ar-test-seat');
+  });
+});
+
+describe('batch 5 V1 over the real index (skipped when the shards are absent)', () => {
+  const dir = new URL('../../public/lexicon/ar/standard/', import.meta.url);
+  const have = fs.existsSync(new URL('manifest.json', dir));
+  it.skipIf(!have)('الكلاب is the dogs (the reviewed list decides; the plural of a commoner noun is never beaten by a head of unknown frequency), not كُلَّاب "hooks"; الكتاب keeps كِتَاب by the preference; الرجال رَجُل; العلوم عُلُوم (the plural that is an entry of its own is credited as such); الدول دَوْلَة', async () => {
+    const zlib = await import('node:zlib');
+    const { AR_CORE } = await import('../../src/adapters/arabic/generated/core');
+    resetArabicIndexes();
+    installArabicIndex(AR_CORE);
+    for (const fn of fs.readdirSync(dir)) if (fn.endsWith('.json.gz')) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL(fn, dir))).toString('utf8')));
+    useArIdentities({});
+    useArPreferences();
+    // decided by the reviewed list (a count of 0 is unknown, not rare, so the structural rule alone leaves it open); never the rare head
+    // with identities empty a count of 0 is UNKNOWN: the word is undecided or كَلْب, never كُلَّاب leading
+    expect(cands('الكلاب').filter((c) => c.confidence >= 0.5).every((c) => c.lemma === 'كَلْب')).toBe(true);
+    useArIdentities();
+    expect(top('الكلاب')).toMatchObject({ lemma: 'كَلْب', confidence: 0.7 });
+    expect(top('الكلاب').notes?.identity).toBe('main');
+    for (const [w, lemma] of [['الكتاب', 'كِتَاب'], ['الرجال', 'رَجُل'], ['العلوم', 'عُلُوم'], ['الدول', 'دَوْلَة']] as const) expect(top(w).lemma, w).toBe(lemma);
+    useArIdentities({});
+    useArPreferences({});
+    resetArabicIndexes();
+    installArabicIndex(fixture);
+  });
+});
+
+describe('batch 6: a plural that is also an entry is the same word; a count of 0 is unknown', () => {
+  it('a broken plural that is its own entry (وَسَائِل of وَسِيلَة) is ONE lexeme: the own entry is credited (the singular only when the reviewed list names it), the other head is a variant, notes.pluralEntry = yes', () => {
+    const idx = synth('ar-test-pl', undefined, {
+      'وَسِيلَة|NOUN': ['وَسِيلَة', 'means', 'NOUN', '', 5], 'وَسَائِل|NOUN': ['وَسَائِل', 'means (pl.)', 'NOUN', '', 0],
+    }, { وسائل: [[0, 1, '1102'], [1, 0, '1102']] });
+    idx.codes = ['', 'broken-form|indefinite|plural|triptote'];
+    installArabicIndex(idx);
+    const c = top('وسائل');
+    // the CREDITED lemma is the own entry (the word as the dictionary heads it), unless the reviewed list names the singular
+    expect(c.lemma).toBe('وَسَائِل');
+    expect(c.notes?.pluralEntry).toBe('yes');
+    expect(c.notes?.variants).toBe('وَسِيلَة');
+    expect(new Set(cands('وسائل').filter((x) => !x.parts).map((x) => x.lemma))).toEqual(new Set(['وَسَائِل']));
+    useArIdentities({ وسائل: 'وَسِيلَة|NOUN' });
+    expect(top('وسائل').lemma).toBe('وَسِيلَة');
+    useArIdentities({});
+    uninstallArabicIndex('ar-test-pl');
+  });
+  it('a head of unknown frequency (count 0) against a plural: the rule decides nothing, nothing leads', () => {
+    const idx = synth('ar-test-zero', undefined, {
+      'بَرْد|NOUN': ['بَرْد', 'cold', 'NOUN', '', 0], 'بَرِيد|NOUN': ['بَرِيد', 'mail', 'NOUN', '', 50],
+    }, { برد: [[0, 0, '14'], [1, 1, '1']] });
+    idx.codes = ['', 'broken-form|indefinite|plural|triptote'];
+    installArabicIndex(idx);
+    expect(cands('برد').every((c) => c.confidence <= 0.45)).toBe(true);
+    uninstallArabicIndex('ar-test-zero');
+  });
+});
+
+// ───────────────────────────── the starter-word invariant (batch 7) ─────────────────────────────
+
+describe('every vocalized starter word of the Alphabet Sprint reads as itself (real shards; skipped when absent)', () => {
+  const dir = new URL('../../public/lexicon/ar/standard/', import.meta.url);
+  const have = fs.existsSync(new URL('manifest.json', dir));
+  /** Words the SOURCE itself leaves ambiguous or files under another head; each with its reason. */
+  const ALLOW: Record<string, string> = {};
+  it.skipIf(!have)('(a) the vocalized word: its own lemma leads at 0.50 or more; (b) the bare key offers it; (c) ال + the bare key offers it (nouns and adjectives)', async () => {
+    const zlib = await import('node:zlib');
+    const { AR_CORE } = await import('../../src/adapters/arabic/generated/core');
+    const { AR_PROFILE } = await import('../../packages/language-packs/src/alphabet-sprint/profiles/ar');
+    const { arHeadForm, arCanon: canon } = await import('../../src/adapters/arabic/text');
+    resetArabicIndexes();
+    installArabicIndex(AR_CORE);
+    for (const fn of fs.readdirSync(dir)) if (fn.endsWith('.json.gz')) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL(fn, dir))).toString('utf8')));
+    useArIdentities({});
+    useArPreferences();
+    const heads = (w: string): Set<string> => new Set(['NOUN', 'VERB', 'ADJ', 'ADV', 'ADP', 'PRON', 'PART', 'CONJ', 'DET', 'PROPN'].map((p) => canon(arHeadForm(w, p))).concat(canon(w)));
+    // compared without the last letter's vowel (a lemma head may carry a final vowel the printed citation form leaves bare)
+    const endless = (x: string): string => canon(x).replace(/[\u064B-\u0650\u0652]+$/, '');
+    const reads = (c: AnalysisCandidate, h: Set<string>): boolean => h.has(canon(c.lemma ?? '')) || [...h].some((x) => endless(x) === endless(c.lemma ?? '')) || (c.notes?.variants ? String(c.notes.variants).split(', ').some((v) => h.has(canon(v))) : false);
+    const violations: string[] = [];
+    let checked = 0;
+    let undecided = 0;
+    for (const w of AR_PROFILE.words) {
+      const form = w.form.normalize('NFC');
+      // a form that is not one fully vocalized word in its citation shape (unvocalized, or an inflected example with a tanwīn) is not a lemma form
+      if (/\s/.test(form) || arKey(form).startsWith('ال') || ALLOW[form] || tashkilLevel(form) !== 'full' || /[\u064B-\u064D][^\u064B-\u0652]*$/.test(form)) continue;
+      const h = heads(form);
+      checked++;
+      const a = cands(form);
+      const top1 = a[0];
+      if (!top1 || !reads(top1, h)) { violations.push(`${form} (a) top ${top1?.lemma}|${top1?.pos} ${top1?.confidence}`); continue; }
+      if (top1.confidence < 0.5) undecided++;
+      if (!cands(arKey(form)).some((c) => reads(c, h))) violations.push(`${form} (b) bare key does not offer it`);
+      if ((top1.pos === 'NOUN' || top1.pos === 'ADJ') && !cands(`ال${arKey(form)}`).some((c) => reads(c, h))) violations.push(`${form} (c) ال + key does not offer it`);
+    }
+    if (violations.length) console.log(`starter-word violations (${violations.length} of ${checked}):\n${violations.slice(0, 30).join('\n')}`);
+    console.log(`starter words: ${checked} checked, ${undecided} read correctly but undecided`);
+    expect(checked).toBeGreaterThan(150);
+    // a fully vocalized lemma form is read as itself by the FIRST reading; a genuine pair of plain readings (a balanced entry of the reviewed list) may leave it undecided, but only a minority
+    expect(undecided).toBeLessThan(checked * 0.15);
+    expect(violations).toEqual([]);
+    useArIdentities({});
+    useArPreferences({});
+    resetArabicIndexes();
+    installArabicIndex(fixture);
   });
 });

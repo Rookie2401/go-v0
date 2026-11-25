@@ -54,6 +54,12 @@ export interface ArabicFormIndex {
   forms: Record<string, ArFormRow[]>;
   /** loose key → the keys of this index that it may stand for (only keys that differ from their own loose fold are listed). */
   loose: Record<string, string[]>;
+  /**
+   * The compiled core only: its keys for which the FULL index holds lexemes the core does not. The core is a selection, so a reading
+   * of such a key is not known to be the only one: nothing may be credited from it until the key's shard has been installed
+   * (`arKeyIsPartial`), unless the reviewed identities list names its main reading.
+   */
+  partial?: string[];
   stats?: Record<string, number>;
 }
 
@@ -115,6 +121,26 @@ export function lookupArabicForm(key: string): ArIndexHit[] {
   for (const index of INSTALLED.values()) for (const k of index.loose[folded] ?? []) if (k !== key) rowsOf(index, k, true, restored, seen);
   const byCount = (a: ArIndexHit, b: ArIndexHit): number => b.lemma[4] - a.lemma[4];
   return [...direct.sort(byCount), ...restored.sort(byCount)];
+}
+
+const PARTIAL_SETS = new WeakMap<ArabicFormIndex, Set<string>>();
+function flaggedPartial(index: ArabicFormIndex, key: string): boolean {
+  if (!index.partial?.length) return false;
+  let set = PARTIAL_SETS.get(index);
+  if (!set) { set = new Set(index.partial); PARTIAL_SETS.set(index, set); }
+  return set.has(key);
+}
+
+/**
+ * True when the installed indexes are known NOT to hold every lexeme of the key: the core flags it and no other index (the key's
+ * shard) holds the key yet. The analyser then credits no lexeme from the key by "it is the only reading".
+ */
+export function arKeyIsPartial(key: string): boolean {
+  let flagged = false;
+  for (const index of INSTALLED.values()) if (flaggedPartial(index, key)) { flagged = true; break; }
+  if (!flagged) return false;
+  for (const index of INSTALLED.values()) if (!flaggedPartial(index, key) && index.forms[key]?.length) return false;
+  return true;
 }
 
 /** True when some installed index has the key as written. */

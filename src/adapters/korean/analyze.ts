@@ -127,7 +127,7 @@ function predOk(e: KoEnding, st: St): boolean {
     if ((e.slot ?? 0) <= st.slot) return false;
     if (e.id === 'p-pass' && st.slot !== 0) return false;
   }
-  let ok = e.pred.includes(k) || (k === 'X' && (e.pred.includes('V') || e.pred.includes('A'))) || (!!e.exist && st.exist && (k === 'A' || k === 'X'));
+  let ok = (e.id === 'hae' && k === 'C' && st.hon) || e.pred.includes(k) || (k === 'X' && (e.pred.includes('V') || e.pred.includes('A'))) || (!!e.exist && st.exist && (k === 'A' || k === 'X'));
   if (e.noHon && st.hon) ok = false;
   if (e.noFut && st.fut) ok = false;
   return ok;
@@ -733,7 +733,9 @@ function rankAdjust(readings: Reading[]): void {
   const maxPredN = Math.max(0, ...readings.filter((r) => isPred(r) || (nounish(r) && r.parts.length === 1)).map((r) => r.entry?.n ?? 0));
   const auxBuilt = (r: Reading) => r.parts.some((p) => (p.tag === 'VX' && p.kind === 'component') || p.ending?.id === 'p-pass');
   const anyNoun = readings.some(nounish);
-  const anyHaSplit = readings.some((r) => !r.notes.derived && r.parts.some((p) => p.tag === 'XSV' && p.lemma === '하다'));
+  // a 하다-verb the lexicon holds (its own …하다 headword, or a noun row flagged `hada` by the build)
+  const hadaNoun = (r: Reading) => !!r.notes.derived && !!(r.parts[0] && lookupKoreanStem(r.parts[0].text).some((h) => (h.entry as { hada?: boolean }).hada));
+  const anyHaSplit = readings.some((r) => (!r.notes.derived || hadaNoun(r)) && r.parts.some((p) => p.tag === 'XSV' && p.lemma === '하다'));
   const anyListedWhole = readings.some((r) => !r.unconfirmed && !r.notes.derived && r.entry && r.cap >= CAP.assumed && r.sourceId !== KO_SOURCE_IDS.rules);
   const anyNonLit = readings.some((r) => !r.parts.some((p) => p.ending?.lit));
   for (const r of readings) {
@@ -757,8 +759,11 @@ function rankAdjust(readings: Reading[]): void {
       r.cap = Math.min(r.cap, CAP.assumed); r.score -= 2.5; r.notes.context = 'a listed word reads the token whole; the verb + auxiliary written together is kept below it';
     }
     if (r.parts.some((p) => p.copula && p.je <= p.js) && readings.some((o) => isPred(o) && o.cap >= CAP.full)) { r.cap = Math.min(r.cap, CAP.assumed); r.score -= 1; }
+    if (r.stemTag === 'VCN' && r.parts.some((p) => p.ending && p.text.startsWith('-예'))) { r.cap = Math.min(r.cap, CAP.nonStandard); r.notes.spelling = 'standard: 아니에요'; }
     if (isQuoteContraction(r)) r.score -= readings.some((o) => o !== r && isPred(o) && !isQuoteContraction(o) && o.lemma !== r.lemma && o.parts.some((p) => p.ending?.tag === 'EF')) ? 3 : 0.3;
-    if (r.notes.derived && r.stemTag === 'VV' && anyListedWhole && r.sourceId !== KO_SOURCE_IDS.rules) r.score -= 1.5;
+    if (r.notes.derived && r.stemTag === 'VV' && anyListedWhole && r.sourceId !== KO_SOURCE_IDS.rules && !hadaNoun(r)) r.score -= 1.5;
+    // a whole listed noun over a bare -아/어 form of a predicate (밤새 "overnight" over 밤새다 + -어)
+    if (whole && (r.stemTag === 'NNG' || r.stemTag === 'NNB') && readings.some((o) => isPred(o) && o.parts.length === 2 && (o.parts[1].ending?.id === 'hae' || o.parts[1].ending?.id === 'inf'))) r.score += 1;
   }
   function c1(r: Reading): boolean { return [...r.stemKey].length === 1; }
   function isQuoteContraction(r: Reading): boolean { return r.parts.some((p) => p.ending && QUOTE_CONTRACTIONS.has(p.ending.id)); }
@@ -890,7 +895,8 @@ function finish(c: Ctx, readings: Reading[]): AnalysisCandidate[] {
     }
     list = list.sort(order);
   }
-  list = list.slice(0, 10);
+  // keep the copula's own readings even below many words of the same spelling (이니, 이야 standing alone)
+  list = [...list.slice(0, 16), ...list.slice(16).filter((x) => x.r.stemTag === 'VCP' || x.r.stemTag === 'VCN').slice(0, 3)];
   // confidences: strictly falling; nothing ≥ 0.85 while a different lemma is within 0.15
   const conf = (top: number) => {
     const cs: number[] = [];

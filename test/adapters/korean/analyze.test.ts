@@ -598,3 +598,31 @@ describe.skipIf(!fs.existsSync(path.join(SHARD_DIR, 'manifest.json')))('listed c
     expect(misses.length / (2 * n)).toBeLessThan(0.02);
   }, 300000);
 });
+
+describe('fix batch 4: 말다 and the copulas after a noun', () => {
+  it('말다: 마 only bare and before -라 / -요; never 맜', () => {
+    expect(koGenerate('말', 'R', [koEnding('p-past'), koEnding('decl-da')])).toEqual(['말았다']);
+    expect(koGenerate('말', 'R', [koEnding('hae')]).sort()).toEqual(['마', '말아']);
+    expect(koGenerate('말', 'R', [koEnding('haeyo')]).sort()).toEqual(['마요', '말아요']);
+    expect(koGenerate('말', 'R', [koEnding('imp-ara')]).sort()).toEqual(['마라', '말아라']);
+  });
+  it('the copula after a noun: 이야, 이셔, 이세요, 이니, 이에요 / 예요, 이었 / 였', () => {
+    const cop = (w: string, noun: string) => an(w).some((c) => c.lemma === noun && (c.parts ?? []).some((p) => p.lemma === '이다'));
+    for (const w of ['학생이야', '학생이셔', '학생이세요', '학생이니', '의사니', '학생이에요', '의사예요', '학생이었어요', '의사였어요']) expect(cop(w, w.startsWith('학생') ? '학생' : '의사'), w).toBe(true);
+    expect(an('학생이니').some((c) => c.morph.Connective === 'since')).toBe(true);
+    expect(an('학생이니').some((c) => c.morph.Mood === 'Int')).toBe(true);
+    expect(first('학생이셔').morph).toMatchObject({ Honorific: 'Subj', SpeechLevel: 'Hae' });
+  });
+  it('the honorific adnominal of the copula is present: 학생이신', () => expect(first('학생이신').morph).toMatchObject({ Tense: 'Pres', Honorific: 'Subj', VerbForm: 'Adn' }));
+  it('아니다: 아니셔, 아녜요, 아니에요; 아니예요 read with the standard spelling noted', () => {
+    expect(first('아니셔')).toMatchObject({ lemma: '아니다' });
+    expect(first('아녜요').lemma).toBe('아니다');
+    expect(first('아니에요').lemma).toBe('아니다');
+    const m = an('아니예요').find((c) => c.lemma === '아니다')!;
+    expect(m.notes?.spelling).toBe('standard: 아니에요');
+    expect(m.confidence).toBeLessThanOrEqual(0.6);
+  });
+  it('the copula standing alone keeps its readings below the many words spelled 이', () => {
+    for (const w of ['이니', '이야', '이셔']) expect(an(w).some((c) => c.lemma === '이다'), w).toBe(true);
+  });
+});

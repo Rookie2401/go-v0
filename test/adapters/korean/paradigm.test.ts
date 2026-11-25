@@ -14,7 +14,7 @@ import { featureKey, paradigmSummary } from '../../../src/core/paradigm';
 import { koAdapter } from '../../../src/adapters/ko';
 import { koAnalyzeToken } from '../../../src/adapters/korean/analyze';
 import { koBareLemma } from '../../../src/adapters/korean/index-store';
-import { koParadigm, koFeaturesFromTableTags, koPredicateRows } from '../../../src/adapters/korean/paradigm';
+import { koFeaturesFromTableTags, koPredicateRows } from '../../../src/adapters/korean/paradigm';
 import { koCellCompatible, koCellsFor, koMorphFromTags, koTableSlot, koFeaturesFromTableTagsPlain } from '../../../src/adapters/korean/tags';
 import { createFullRecordSource } from '../../../src/dict/full';
 import { buildParadigm, pickRecord, type LexicalRecord } from '../../../packages/golearn-extension/src/content/enrich';
@@ -30,7 +30,6 @@ const para = (lemma: string, pos: PartOfSpeech): GeneratedParadigm => {
 };
 /** The form of a slot in the plain or honorific column (the first form is the one shown). */
 const form = (p: GeneratedParadigm, slot: string, hon = false): string | undefined => p.cells.find((c) => c.features.Slot === slot && c.features.Honorific === (hon ? 'Subj' : 'No'))?.form;
-const forms = (p: GeneratedParadigm, slot: string, hon = false): string[] => p.cells.filter((c) => c.features.Slot === slot && c.features.Honorific === (hon ? 'Subj' : 'No')).map((c) => c.form);
 /** A noun cell by slot and number (the noun table has no honorific column). */
 const nform = (p: GeneratedParadigm, slot: string, number = 'Sing'): string | undefined => p.cells.find((c) => c.features.Slot === slot && c.features.Number === number)?.form;
 const nforms = (p: GeneratedParadigm, slot: string): string[] => p.cells.filter((c) => c.features.Slot === slot && c.features.Number === 'Sing').map((c) => c.form);
@@ -265,10 +264,7 @@ describe('homonyms', () => {
  * Cells whose first form the analyser does not read back to the lemma, or reads with other features: each one a real gap of the
  * MORPHOLOGY package, not of the paradigm. Listed so that a fix there is noticed (the test fails when an entry stops failing).
  */
-const ANALYSER_GAPS: readonly string[] = [
-  // the copulas stand alone here (no noun before them): the analyser reads 이야 only after a noun, and has no honorific 해체 of 아니다
-  '이다|fin:Ind:Hae:Pres', '이다|fin:Int:Hae:Pres', '이다|fin:Ind:Hae:Pres hon', '이다|fin:Int:Hae:Pres hon', '이다|conn:since', '아니다|fin:Ind:Hae:Pres hon', '아니다|fin:Int:Hae:Pres hon',
-];
+const ANALYSER_GAPS: readonly string[] = []; // none left: the copula alone (이야, 이셔, 이니, 아니셔) reads back since the morphology package's fourth round
 
 function readBack(lemma: string, p: GeneratedParadigm, host = ''): string[] {
   const bad: string[] = [];

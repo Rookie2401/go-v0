@@ -200,8 +200,6 @@ export function koPredicateSlots(): string[] {
 const gen = (row: KoRow, chains: readonly string[][], vowelNoun = false): string[] => {
   const out: string[] = [];
   for (const ch of chains) for (const f of koGenerate(row.stem, row.cls, ch.map(koEnding), { honSi: row.honSi, ...(vowelNoun ? { vowelNoun: true } : {}) })) {
-    // the engine contracts 말 + 았 to 맜 (it means 마 only before 라 / 요); 말았다 is the only past of 말다
-    if (row.stem === '말' && f.includes('맜')) continue;
     if (!out.includes(f)) out.push(f);
   }
   return out;

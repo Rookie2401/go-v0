@@ -162,6 +162,7 @@ function aeoBases(stem: readonly KoSyl[], cls: KoConjClass, tail: KoTail, vowelN
       out.push(fuse(withLast(stem, { v: 'ㅕ' }), '어'));
       if (beforeYo) out.push(fuse(withLast(stem, { v: 'ㅖ' }), '에'));
     }
+    if (cls === 'Neg' && beforeYo) out.push(plus('ㅖ', '예'));
     return out;
   }
   if (cls === 'Ha' && last.l === 'ㅎ' && last.v === 'ㅏ' && last.t === '') {
@@ -208,7 +209,10 @@ function aeoBases(stem: readonly KoSyl[], cls: KoConjClass, tail: KoTail, vowelN
   }
   // regular
   if (last.t === 'ㅎ' && last.l === 'ㄴ' && last.v === 'ㅗ') return [plus('ㅏ', '아'), fuse(withLast(stem, { v: 'ㅘ', t: '' }), '아')]; // 놓아 / 놔
-  if (koSylsText(stem) === '말') return [plus('ㅏ', '아'), fuse(withLast(stem, { t: '' }), '아')]; // 말다: 말아 / 마 (마, 마라, 마요)
+  if (koSylsText(stem) === '말') {
+    const short = !tail.head && (tail.syls.length === 0 || ((tail.syls[0].l === 'ㄹ' && tail.syls[0].v === 'ㅏ') || (tail.syls[0].l === 'ㅇ' && tail.syls[0].v === 'ㅛ')) && tail.syls[0].t === '');
+    return short ? [plus('ㅏ', '아'), fuse(withLast(stem, { t: '' }), '아')] : [plus('ㅏ', '아')]; // 말다: 말아 / 마 (마, 마라, 마요); 말았다 only
+  }
   if (last.t) { const h = koHarmony(last.v); return [plus(h, h === 'ㅏ' ? '아' : '어')]; }
   switch (last.v) {
     case 'ㅏ': return [fuse(stem.map((x) => ({ ...x })), '아')];

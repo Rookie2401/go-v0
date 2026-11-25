@@ -57,6 +57,7 @@ export function candidateStems(key: string): string[] {
     if (t === '' || t === 'ㅆ') {
       for (const sv of CONTRACTED[v] ?? []) push(q + syl(l, sv, ''));
       if (v === 'ㅔ' && l === 'ㅅ') push(q + syl(l, 'ㅣ', '')); // 계세요 → 계시
+      if (v === 'ㅖ' && l === 'ㄴ') push(q + syl(l, 'ㅣ', '')); // 아녜요 → 아니
       if (v === 'ㅘ' && l === 'ㄴ') push(q + syl(l, 'ㅗ', 'ㅎ')); // 놔 → 놓
       for (const sv of H_AEO[v] ?? []) push(q + syl(l, sv, 'ㅎ'));
     }

@@ -347,7 +347,12 @@ export function surfaceFromEncounterUnitId(id: unknown, languageId: string): str
   const prefix = id.startsWith(`form:${languageId}:`) ? `form:${languageId}:` : id.startsWith(`lemma:${languageId}:`) ? `lemma:${languageId}:` : undefined;
   if (!prefix) return undefined;
   let surface = id.slice(prefix.length);
-  if (prefix.startsWith('lemma:')) surface = surface.replace(/:(?:NOUN|VERB|AUX|ADJ|ADV|PRON|DET|ADP|CCONJ|SCONJ|PART|NUM|INTJ|X)$/u, '');
+  // every part of speech a reader writes on a lemma id (src/core/model.ts PartOfSpeech). Until 2026-11-25 PROPN, CONJ and CLF were missing,
+  // so a name (lemma:ko:서울:PROPN), a conjunction (lemma:nb:og:CONJ) and a Thai classifier (lemma:th:คน:CLF) gave no word at all.
+  if (prefix.startsWith('lemma:')) surface = surface.replace(/:(?:NOUN|PROPN|VERB|AUX|ADJ|ADV|PRON|DET|ADP|CONJ|CCONJ|SCONJ|PART|NUM|INTJ|CLF|PUNCT|X)$/u, '');
   if (!surface || surface.length > 120 || /\s|:/u.test(surface)) return undefined;
+  // A Korean homonym's lemma carries the dictionary's number as superscript digits after the headword (눈², 묻다¹: docs/korean/PLAN.md).
+  // The number is identity, not spelling: the WORD is the headword. Only after a Hangul syllable, so m² and km² keep their exponent.
+  if (prefix.startsWith('lemma:')) surface = surface.replace(/(?<=[가-힣])[⁰¹²³⁴-⁹]+$/u, '');
   return surface.normalize('NFC');
 }

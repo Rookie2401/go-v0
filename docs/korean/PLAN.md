@@ -1,0 +1,322 @@
+# Korean pack: build plan and contract
+
+Branch `feat/korean-pack`, worktree `C:\Users\CJWal\dev\go-v0-korean` (never under OneDrive), from master `7f08e85e`.
+The audit behind this plan is `docs/korean/AUDIT.md`. The owner's brief (2026-11-25) asks for Korean as a first-class
+language of the existing ecosystem: no separate app, reader or vocabulary store, and no dependence on Reading Analysis.
+
+This file is the contract every package builds to. A package changes only the files it owns. A change to this file is
+the coordinator's.
+
+## Design in one page
+
+Korean is agglutinative: one written unit (an 어절, the text between spaces) is a stem plus a chain of particles or
+endings, and the number of possible written forms of one word is not bounded. A form index (the Russian and Greek model:
+every table row as a key) cannot hold them. Korean therefore follows a **stem lexicon plus rules** model:
+
+1. **Compiled core** `src/adapters/korean/generated/core.ts` (`ko-core`): every particle and ending (closed, hand-written
+   tables), the closed-class words, and the commonest open-class headwords with their part of speech, irregular class
+   and first gloss. A host with no assets still reads ordinary prose.
+2. **Sharded full lexicon** `public/lexicon/ko/standard/` (`ko-lexicon`): every headword of the dictionary source,
+   gzip shards by the first syllable's jamo, loaded on demand before a lookup (`korean/shards.ts`, the shared loader).
+   Keys are HEADWORD STEMS, not written forms.
+3. **Dictionary** `public/dict/ko/` built by the existing pipeline (`dict:build`, `dict:build-full`,
+   `dict:build-forms`, `dict:build-reverse`): senses, pronunciation, Hanja, the records behind the card.
+4. **Analyser** `src/adapters/ko.ts` + `src/adapters/korean/**`, written in TypeScript like every other adapter:
+   Hangul arithmetic → candidate stems → lexicon lookup → generation of the stem's junction forms and matching of the
+   particle or ending chain → sentence-level ordering → constructions, phrases, shallow syntax, pronunciation.
+
+Why not Kiwi inside the product: see `AUDIT.md` (size of the model against the extension's bundle ceilings, the
+512 MB service that runs the same analysers, and the one analyser contract every host shares). Kiwi and the Universal
+Dependencies treebanks are used to MEASURE this analyser, never to produce a learner's reading.
+
+Nothing is invented. A lemma, its part of speech, its irregular class, its Hanja and its gloss are the dictionary
+source's. A reading the lexicon does not vouch for is marked `unconfirmed` and explains the form only.
+
+## Decisions that bind every package
+
+### Text and keys (`korean/hangul.ts`, `korean/text.ts`)
+
+- **The page's text is never changed.** Tokens carry offsets into the ORIGINAL string. Every normalisation below
+  produces a key, never a replacement text.
+- **Key** = `koKey(form)`: NFC; conjoining jamo (U+1100–11FF, the canonically decomposed form) therefore compose to
+  precomposed syllables (U+AC00–D7A3). Compatibility jamo (U+3130–318F: ㄱ, ㅏ standing alone) are KEPT as they are
+  (a lone ㅋㅋ or a jamo named in a grammar text is not a syllable and is not folded into one). Halfwidth jamo
+  (U+FFA0–FFDC) are mapped to compatibility jamo. Nothing else is folded: no romanisation, no Hanja-to-Hangul.
+- **Offset map.** `koNormalize(text)` returns `{ key, map }` where `map[i]` is the offset in the original text of the
+  key's i-th UTF-16 unit, and `map[key.length]` the end. A span of the key maps back to a span of the original that
+  covers whole original characters. Every part span the analyser reports is in ORIGINAL offsets relative to the token.
+- **Token** = one 어절 piece: a maximal run of Hangul syllables and Hanja (with an inner apostrophe-free join). Digits
+  are their own token, Latin letters their own token, punctuation its own token. `2024년에는` is `2024` + `년에는`;
+  `KBS가` is `KBS` + `가` (the particle attaches to the Latin token: `가` is analysed alone as a particle whose host is
+  the token before it). Whitespace is never a token.
+- **Invisible characters inside a word never split it**: the soft hyphen (U+00AD), zero-width space and joiners (U+200B–200D),
+  the word joiner (U+2060) and the byte-order mark (U+FEFF) between two Hangul letters stay inside the token (its surface keeps
+  them, its key drops them, the offset map covers them).
+- **Sentences** end at `.` `!` `?` `…` `。` and their runs, followed by closing quotes or brackets; a number's decimal
+  point and an abbreviation's full stop inside a token do not end one.
+- **Hanja on the page.** A token may be written in Hanja or mix Hanja and Hangul (學校에서, 韓國語를). The key keeps the Hanja
+  (nothing is converted). The lexicon files an entry ALSO under its Hanja spelling, so the analyser reaches the Hangul headword
+  through the dictionary's own Hanja field; the reading's lemma is the Hangul headword and `notes.hanja` the Hanja as written.
+  A Hanja string the lexicon does not hold is an unconfirmed word; no reading is invented from the characters.
+- **Jamo arithmetic** is the Unicode algorithm, not a table of 11,172 strings: `decompose(syllable) → [L, V, T]`
+  indexes (19 × 21 × 28), `compose(L, V, T)`. All 11,172 syllables round-trip (a test walks them).
+
+### Identities
+
+- **Lemma string** = the dictionary headword: a predicate in its `-다` form (`먹다`, `예쁘다`, `이다`), anything else
+  as the dictionary writes it (`학생`, `학교`). Repository id `lemma:ko:<lemma>:<POS>` as for every language.
+- **Homonyms are separate items** (decided 2026-11-25 on the linguistic audit's advice, which the owner told this
+  build to follow: splitting them after learners have review history is far harder). Two headwords spelled alike with
+  different parts of speech already differ by the id rule (`쓰다:VERB`, `쓰다:ADJ`). Two spelled alike with the SAME
+  part of speech (`눈` eye / snow; `배` stomach / pear / boat; `묻다` ask, ㄷ-irregular / `묻다` bury, regular) each
+  carry the dictionary's homonym number in the lemma string, written as dictionaries print it, with superscript
+  digits: `눈¹`, `눈²`, `묻다¹`, `묻다²` (`koHomonymLemma(lemma, n)`, `koBareLemma(lemma)` in `korean/index-store.ts`).
+  The Repository ids are therefore `lemma:ko:눈¹:NOUN` and `lemma:ko:눈²:NOUN`. A headword that is alone in its part
+  of speech carries no number.
+  - **The number is the SOURCE's**: the entry's `etymology_number` on its Wiktionary page (the one stable number the
+    source gives a homonym), never a position in a file or in a lexicon. The compiled core and every shard read it
+    from the same field, so they cannot disagree. `docs/korean/homonyms.json` records every numbered headword with
+    its class, first gloss and Hanja; a rebuild from a newer extract compares against it and REFUSES to finish when a
+    number now means another word (that needs an alias in the Repository, a decision, not a silent re-key).
+  - **Which homonym a sentence means** is often not known from the word, and crediting the first one would record a
+    false fact. Three cases:
+    1. The FORM decides (물어요 can only be 묻다¹ "ask", ㄷ-irregular; 묻어요 only 묻다² "bury"): the reading's lemma is the
+       numbered one.
+    2. A rule in `sentence.ts` decides (눈 before 오다 / 내리다 is snow) and says why in `notes.context`: the numbered one.
+    3. Nothing decides (눈이 예뻐요, 묻고): the FIRST reading is the **undecided reading**: lemma = the BARE headword
+       (`눈`), `notes.homonym = 'undecided'`, `notes.homonyms` listing the candidates, the gloss naming every
+       candidate's meaning; the numbered readings follow it at lower confidence. The encounter, and a mark the learner
+       makes on that card, go to `lemma:ko:눈:NOUN`: "met the word 눈, which one not settled". It is an item of its own,
+       never merged into a numbered one by the Repository. A reader shows the level of the reading it chose.
+    The first reading's confidence is always strictly the highest (the card takes the highest), and no reading is
+    high-confidence while another homonym is as likely.
+  - **Granularity**: one etymology of the source is one headword. Two entries of the same class under ONE etymology
+    are merged into one row; only entries of different etymologies are numbered apart.
+  - **Where the number is never shown or looked up as a spelling**: a card's headline, GoReview's card front, a
+    vocabulary list, speech and search show and use the bare headword (`koBareLemma`); the number is identity, and
+    may be shown beside the meaning as a dictionary does. `surfaceFromEncounterUnitId` (repository-contract) returns
+    the bare headword for a numbered Korean lemma id.
+  - **The dictionary** files each homonym's entry under its numbered headword as well as under the bare one
+    (`src/dict/korean.ts`, as `src/dict/hebrew.ts` files a pointed spelling), so `눈²` finds snow alone and `눈`
+    finds both. Speech and search strip the number (`koBareLemma`).
+- **A written form is never an item of its own when its lemma is known**: `먹어요`, `먹었습니다`, `먹으면`, `먹는`
+  all record `lemma:ko:먹다:VERB`. The form's grammar is recorded apart, as below.
+- **Grammar items** use the two kinds the Repository already has:
+  - `morph:ko:<POS>:<feature key>` for what one written form shows (the card's form construction; built by the
+    extension's parser from `candidate.morph`, nothing new);
+  - `syntax:ko:<pattern key>` for a construction of several morphemes or words (`detectPatterns`): `ko-progressive`
+    (-고 있다), `ko-want` (-고 싶다) … the full list is in "Constructions".
+  - A particle or an ending is a `WordPart` with `lemma` = its family headword (`은/는`, `이/가`, `을/를`, `-았/었-`,
+    `-(으)시-`, `-습니다`) and `pos` ADP (particle) or PART (ending). Selecting a particle alone (a token that is only
+    a particle, after a Latin or digit token) records `lemma:ko:<family>:ADP`.
+- Knowing `먹다` says nothing about `-(으)시-`: lexical and grammatical knowledge live in different unit ids.
+
+### Parts of speech
+
+`candidate.pos` is the repository's shared set; the Korean class is kept beside it in `candidate.notes.koPos` (the
+Sejong-style tag) and `candidate.notes.koClass` (the Korean name), so nothing is lost in the mapping:
+
+| Korean class | Tag | `pos` | Note |
+|---|---|---|---|
+| 일반 명사 common noun | NNG | NOUN | |
+| 고유 명사 proper noun | NNP | PROPN | |
+| 의존 명사 bound noun | NNB | NOUN | `morph.NounType=Bound` |
+| 대명사 pronoun | NP | PRON | |
+| 수사 numeral | NR | NUM | |
+| 동사 action verb | VV | VERB | |
+| 형용사 descriptive verb | VA | ADJ | `morph.VerbType=Descriptive`; it conjugates, and the card says "descriptive verb" |
+| 보조 용언 auxiliary predicate | VX | AUX | |
+| 긍정 지정사 affirmative copula 이다 | VCP | AUX | `morph.VerbType=Cop`, `Polarity=Pos` |
+| 부정 지정사 negative copula 아니다 | VCN | AUX | `morph.VerbType=Cop`, `Polarity=Neg` |
+| 관형사 determiner | MM | DET | |
+| 일반 부사 adverb | MAG | ADV | |
+| 접속 부사 conjunctive adverb | MAJ | CONJ | the shared model has `CONJ` and `SCONJ`, no `CCONJ` |
+| 단위 명사 counter | NNB | CLF | the shared classifier code; `morph.NounType=Clf` |
+| 감탄사 interjection | IC | INTJ | |
+| 조사 particle | JKS JKC JKG JKO JKB JKV JKQ JX JC | ADP | on a `WordPart`. 이/가 is JKS (subject) at the token; before 아니다 or 되다 the sentence layer makes it JKC (complement): the part keeps `Case=Nom`, gains `morph.Complement=Yes` and the role "complement particle", and `notes.koPos` says JKC |
+| 어미 ending | EP EF EC ETN ETM | PART | on a `WordPart` |
+| 접두사 prefix | XPN | — | on a `WordPart`, `kind: 'prefix'` |
+| 접미사 suffix | XSN XSV XSA | — | on a `WordPart`, `kind: 'suffix'` |
+
+### Features (`candidate.morph`; UD-style keys, values comma-joined and sorted when several hold)
+
+Nominal side (never `Gender`; `Number` only when marked):
+
+- `Number=Plur` when 들 is present. Absent otherwise: an unmarked noun is unspecified, never singular.
+- `Case`: Nom (이/가, 께서), Acc (을/를), Gen (의), Dat (에게, 한테, 께), Loc (에, 에서), Abl (에서, 에게서, 한테서, 부터),
+  Ins (로/으로), Com (와/과, 하고, 랑/이랑), Cmp (보다), Voc (아/야). A particle with several functions keeps ONE case
+  value and names the functions in its part's `role` (`에`: `Case=Loc`, "place, time or destination").
+- `Particle`: the family ids of every particle in the chain, in order, joined with `+`: `Particle=at+also`
+  (학교에서도). The family ids are the keys of `PARTICLES` in `korean/particles.ts`.
+- `Topic=Yes` (은/는), `Focus=Also|Only|Even|Each|…` for the delimiters (도, 만, 조차, 마저, 마다, 밖에, 까지, 부터).
+- `Polite=Hon` for the honorific particles (께, 께서).
+
+Predicate side, each an independent dimension:
+
+- `VerbForm`: Fin (a sentence-final ending), Conn (a connective ending), Adn (an adnominal ending -는, -(으)ㄴ,
+  -(으)ㄹ, -던), Nmlz (a nominalising ending -기, -(으)ㅁ).
+- `Tense`: Past (-았/었/였-), `Tense=Past` with `Aspect=Pqp` for -았었-; nothing when unmarked (the plain present is
+  unmarked and is not asserted). Adnominal: `Tense=Pres` (-는), `Past` (-(으)ㄴ on a verb), and for -(으)ㄹ `Aspect=Prosp` (prospective: what is yet to be or is
+  supposed; it is not called future).
+- `Mood`: Ind, Imp, Int (interrogative ending), Prop (propositive -자, -ㅂ시다), Excl (-네, -군, -구나).
+- `Modality`: `Presumptive` for -겠- (intention or conjecture; never "future"), `Retrospective` for -더-.
+- `Honorific=Subj` for -(으)시- (honours the subject). Independent of the next one.
+- `SpeechLevel`: Hae (해체), Haeyo (해요체), Hasipsio (하십시오체), Haera (해라체), Hage (하게체), Hao (하오체);
+  `SpeechLevel=Lit` for a historical or literary ending (하나이다, 하옵소서, -노라, -느니라), which is named and not
+  given a modern conversational reading.
+- `Polarity=Neg` only for a negative the form itself carries (안 as its own token is an adverb; -지 않다 is a construction).
+- `Connective`: the ending's id for a connective form (`and`, `but`, `if`, `because`, `while`, `so-that`, `although` …).
+- `VerbType`: Descriptive, Cop (see the table above).
+- `Voice`: Pass or Caus for a derived verb the LEXICON marks so (보이다 from 보다, 먹이다 from 먹다, 잡히다, 들리다: the source's
+  own verb sets and "passive of" / "causative of" senses; `notes.base` names the base verb), and for the forms the analysis itself
+  shows: -아/어지다 (`Voice=Pass`, written as one word), a 하다-noun with 되다 / 받다 / 당하다 (`Voice=Pass`) or 시키다 (`Voice=Caus`).
+  -게 하다 / -게 만들다 are constructions. A derived verb is its own lemma; nothing is decomposed that the source does not relate.
+- `Irregular`: the class the LEXICON gives the lemma (`D` ㄷ, `B` ㅂ, `S` ㅅ, `H` ㅎ, `Reu` 르, `Reo` 러, `U` 우,
+  `Eu` ㅡ deletion, `L` ㄹ deletion, `Ha` 하다/여). Present only when the form in hand shows the alternation.
+- `Contracted=Yes` when the written form fuses the stem's last vowel with the ending (봐요, 줘요, 돼요, 해요, 마셔요).
+
+### Word parts (`candidate.parts`)
+
+One `WordPart` per morpheme, in order. `text` is the morpheme's citation form (`먹`, `-었-`, `-습니다`, `은/는` is the
+family in `lemma`, `text` is the allomorph as realised: `는`). `start`/`end` are offsets into the token's ORIGINAL
+surface covering the syllables in which the morpheme is realised. **Where two morphemes fuse inside one syllable
+(갔 = 가 + 았, 해 = 하 + 여, 삽니다 = 살 + ㅂ니다) their spans overlap on that syllable; no span ever splits a
+syllable, and `morph.Fused=Yes` is set on both parts.** `kind`: `'stem'` for the lexical stem, `'suffix'` for
+particles, endings and derivational suffixes, `'component'`/`'head'` for the nouns of a compound read through its
+parts, `'prefix'` for a prefix. `role` is the plain-words function ("topic particle", "past", "formal polite
+declarative ending").
+
+### Confidence and honesty
+
+- 0.92: a lexicon stem with a chain every step of which is licensed, and no other reading within 0.15.
+- 0.80–0.88: several licensed readings (all are kept, best first; the reasons for the order are in `notes.context`).
+- 0.60: a reading that needs a non-standard allomorph (는 after a consonant) or a spacing the standard does not allow.
+- ≤ 0.45 and `unconfirmed: true`: the stem is not in the lexicon (a name, a new word): the particle or ending chain
+  is explained, the stem is offered as written, no gloss.
+- `support`: tokenization `dependable`; lemmatization `seed-only` (the compiled core) with the measured figures in the
+  limitations; morphology `limited`; nothing claims review by a native speaker.
+- An irregular class is the lexicon's. When the lexicon has no class for a stem whose shape allows two (걷다 walk /
+  걷다 gather), both readings are produced and none is presented as certain.
+
+### Pronunciation
+
+`korean/pronunciation.ts` gives (a) the standard pronunciation as a Hangul respelling in brackets (`[한구거]`), by
+rule: final-consonant neutralisation, liaison, nasal and liquid assimilation, tensification after an obstruent,
+aspiration with ㅎ, palatalisation, compound finals; the dictionary's own pronunciation wins when it has one;
+the tensing after the prospective ending inside a word (갈게 [갈께], 할 수 [할 쑤] when the next word is given); 져 쪄 쳐 said 저 쩌 처
+(가져 [가저]);
+(b) Revised Romanization of that pronunciation, as `transliteration` (a noun keeps the h after ㄱ ㄷ ㅂ: 집현전 jiphyeonjeon;
+a predicate's aspiration is written: 좋고 joko); supplemental, never an identity, and shown only
+where the existing preference shows transliterations. Spelling, pronunciation and romanisation are three things and
+are labelled as such. Audio is the existing GoListen path with `ko-KR` voices.
+
+## Lexicon (`korean/index-store.ts`, built by `scripts/ko-build-lexicon.mts`)
+
+```ts
+export interface KoLexEntry {
+  /** Headword as the dictionary writes it: 먹다, 학생. */
+  lemma: string;
+  /** The source's own homonym number (the entry's etymology number on its page); set only when the headword has two or more entries of this class. */
+  hom?: number;
+  /** A derived passive or causative verb, as the source relates it: its voice and its base verb's headword. */
+  voice?: 'Pass' | 'Caus';
+  base?: string;
+  /** Sejong-style class: NNG NNP NNB NP NR VV VA VX VCP VCN MM MAG MAJ IC, or XPN XSN XSV XSA for affixes. */
+  tag: string;
+  /** Irregular class of a predicate, from the source's own conjugation table (see Features); 'R' = regular, verified by the table. Absent = the source gives no table. */
+  irr?: 'R' | 'D' | 'B' | 'S' | 'H' | 'Reu' | 'Reo' | 'U' | 'Ha';
+  /** First gloss of the first sense, at most 80 characters. */
+  gloss?: string;
+  /** Hanja of a Sino-Korean word, when the source states it. */
+  hanja?: string;
+  /** The source's own pronunciation respelling, when it differs from the rule's. */
+  pron?: string;
+  /** Occurrences in the frequency source; 0 when unseen. */
+  n?: number;
+}
+export interface KoLexicon { id: string; shard?: string; built: string; source: { id: string; label: string; licence: string; version: string }; entries: Record<string /* stem key */, KoLexEntry[]>; stats?: Record<string, number> }
+export function installKoreanLexicon(x: KoLexicon): void;
+export function uninstallKoreanLexicon(id: string, shard?: string): void;
+/** Entries filed under this stem key: a predicate under its stem (먹, 예쁘, 하), anything else under its headword. */
+export function lookupKoreanStem(stemKey: string): readonly KoLexEntry[];
+```
+
+Stem key of a predicate = the headword without its final 다. An entry with a Hanja spelling is filed under that spelling too.
+The shard prefix of a key is `koLexiconShardLetters(key)` (index-store.ts): the jamo of a first Hangul syllable (lead, vowel,
+final), or `H` + the high bits of a first Hanja's code point. The build and the loader use this one function.
+The compiled core and the shards hold the SAME row for a word they both hold (same `hom`, `irr`, `voice`), a whole homonym
+set or none of it is in the core, and `lookupKoreanStem` returns a row held twice once (a test compares every core row with its
+shard row, and a card before and after its shard loads).
+
+## Analysis (`korean/analyze.ts`)
+
+`koAnalyzeToken(surfaceKey) → AnalysisCandidate[]`, best first, synchronous, over the installed lexicon.
+
+1. `candidateStems(key)` (exported: the shard loader's `expand` uses it): every syllable prefix of the key, and for
+   each prefix the stems its LAST syllable may hide: the final consonant removed (갔 → 가, 한 → 하, 삽 → 사 and 살);
+   the contractions undone (봐 → 보, 줘 → 주, 돼 → 되, 해 → 하, 셔 → 시, 져 → 지, 켜 → 키, 워 → 우 …); the irregular
+   alternations undone (들 → 듣, prefix + ㅂ for 워/와/우 (추워 → 춥), prefix + ㅅ before a vowel (지어 → 짓), 몰라 →
+   모르, 불러 → 부르, 하얘 → 하얗, 써 → 쓰, 커 → 크, 이르러 → 이르). Bounded: at most 40 stems for one 어절.
+2. For each stem found in the lexicon: the stem's three junction bases, built from its class (`korean/conjugate.ts`):
+   the bare stem (before -고, -지, -다, -는), the 으-base (before -(으)면, -(으)시-, -(으)ㄴ, -(으)ㄹ, -ㅂ니다) and
+   the 아/어-base (before -아/어, -았/었-). The rest of the 어절 must parse as a chain of `ENDINGS` (`korean/endings.ts`:
+   pre-final then final, each with the base it attaches to and its own allomorphs).
+3. A nominal: EVERY lexicon headword that is a prefix of the 어절 is tried, not only the longest (나도 is 나 + 도 "I too" as well
+   as whatever longer headword the lexicon holds; 이사는 is 이사 + 는 and 이 + 사는 …): each licensed split is a reading and the
+   order comes from the scores below. After the headword: optional 들, then a chain of `PARTICLES`
+   (`korean/particles.ts`, with the stacking order the grammar allows), or the copula 이다 with its endings
+   (학생입니다, 학생이에요, 의사예요), or a derivational suffix the lexicon lists.
+4. A noun the lexicon lists followed by 하다 / 되다 forms is read as the dictionary's own `…하다` headword when the
+   lexicon has it (공부하다), else as the noun plus the light verb, both parts named.
+5. Fused pronoun forms are a closed hand table (`korean/particles.ts` `FUSED`): 내가 (나 + 가), 네가, 제가, 누가, 난, 넌, 전, 날, 널,
+   이건 (이것 + 은), 그건, 저건, 이게, 그게, 저게, 뭘, 뭐가, 여긴, 거긴 … each read as its pronoun plus its particle.
+6. No lexicon stem: the chain is still explained and the rest is offered as an unconfirmed word (see Confidence).
+
+**Order of readings.** Score = the lexicon count of the stem (log-scaled) + a bonus for a longer stem + a bonus when every
+allomorph agrees with its host (은 after a final consonant, 는 after a vowel) − a cost per morpheme. Ties keep the source's order.
+The first reading's confidence is strictly above the second's.
+
+**The ending inventory** (`korean/endings.ts`) is a closed table and must hold at least: pre-final -(으)시-, -았/었/였-, -았었-,
+-겠-, -더-, humble -(으)옵-/-사옵-; final endings of the six speech levels in declarative, interrogative, imperative, propositive
+and exclamatory (-다, -ㄴ다/-는다, -냐, -니, -자, -아라/-어라, -아/-어, -지, -네, -군(요), -구나, -거든(요), -잖아(요),
+-(으)ㄹ게(요), -(으)ㄹ까(요), -(으)ㄹ래(요), -아요/-어요, -(으)세요, -(으)십시오, -ㅂ니다/-습니다, -ㅂ니까/-습니까, -(으)ㅂ시다,
+-게, -네, -(으)오, -소, -구려); connectives (-고, -(으)며, -(으)면서, -지만, -(으)나, -아서/-어서, -(으)니, -(으)니까, -(으)면,
+-(으)려고, -(으)러, -아도/-어도, -아야/-어야, -는데/-(으)ㄴ데, -다가, -자마자, -도록, -게, -듯이, -거나, -든지, -(으)므로, -느라고,
+-(으)ㄹ수록, -더니, -더라도); adnominal -는, -(으)ㄴ, -(으)ㄹ, -던, -았던/-었던; nominalising -기, -(으)ㅁ; indirect quotation
+(-다고, -ㄴ다고/-는다고, -(이)라고, -냐고, -자고, -(으)라고, and the contracted -대(요), -ㄴ대(요)/-는대(요), -래(요), -냬(요), -재(요));
+literary and Bible endings (-느니라, -(으)니라, -노라, -도다, -(으)리라, -(으)리니, -(으)소서, -나이다, -(으)ㅂ나이다, -더라, -(이)로다,
+-거늘, -(으)매, -(으)되, -(으)ㄹ지라, -(으)ㄹ지어다, -(으)ㄹ진대, -건대, -(으)사), each marked `SpeechLevel=Lit` and named, never given a
+modern conversational reading.
+
+`koAnalyze(tokens)` runs the token analysis and then `sentence.ts`, which only REORDERS readings and names its reason:
+auxiliary after a connective form (-고 있다, -아/어 보다: 보다 stays "to see" unless it follows an -아/어 form),
+듣다 / 들다 and the other irregular–regular look-alikes by their objects, the copula after a noun, a particle token
+after a Latin or digit token.
+
+## Constructions (`korean/constructions.ts`, `detectPatterns`)
+
+Keys (each `syntax:ko:<key>`): `ko-progressive` -고 있다, `ko-resultative` -아/어 있다, `ko-want` -고 싶다,
+`ko-must` -아/어야 하다/되다, `ko-can` -(으)ㄹ 수 있다, `ko-cannot` -(으)ㄹ 수 없다, `ko-neg-long` -지 않다,
+`ko-neg-unable` -지 못하다, `ko-try` -아/어 보다, `ko-completive` -아/어 버리다, `ko-benefactive` -아/어 주다,
+`ko-become` -게 되다, `ko-decide` -기로 하다, `ko-experience` -(으)ㄴ 적이 있다/없다, `ko-seem` -(으)ㄹ 것 같다,
+`ko-because` -기 때문에, `ko-if` -(으)면, `ko-but` -지만, `ko-background` -는데/-(으)ㄴ데, `ko-intend` -(으)려고,
+`ko-neg-short` 안 + predicate, `ko-neg-copula` 이/가 아니다, `ko-exist` 이/가 있다/없다, `ko-passive-jida` -아/어지다,
+`ko-passive-light` 되다 / 받다 / 당하다 on a 하다-noun, `ko-causative-ge` -게 하다 / -게 만들다, `ko-causative-light` 시키다,
+`ko-quote` an indirect quotation ending before 하다 / 말하다 / 생각하다, `ko-since` -(으)ㄴ 지, `ko-while` -는 동안, `ko-after` -(으)ㄴ 후에 / 다음에,
+`ko-before` -기 전에, `ko-in-order` -기 위해(서). A construction is reported
+only when its morphemes are found by the analysis in the required order; 보다 / 주다 / 있다 as ordinary verbs report none.
+
+## Packages and file ownership
+
+| Package | Owns | Depends on |
+|---|---|---|
+| **H** Hangul | `src/adapters/korean/{hangul,text,pronunciation,translit}.ts`, `test/adapters/korean/{hangul,text,pronunciation}.test.ts` | nothing |
+| **L** Lexicon | `scripts/ko-build-lexicon.mts`, `src/adapters/korean/{index-store,shards,version}.ts`, `src/adapters/korean/generated/**`, `docs/korean/INDEX.md`, the `dict:*` runs for `ko`, `src/dict/*` one-line additions, `test/adapters/korean/lexicon.test.ts` | H (`koKey`, `koShardLetters`) |
+| **M** Morphology | `src/adapters/korean/{particles,endings,conjugate,analyze,describe,tags,paradigm}.ts`, `test/adapters/korean/{conjugate,particles,analyze}.test.ts` | H, L (interfaces above) |
+| **S** Sentence | `src/adapters/korean/{sentence,constructions,phrases,syntax,production,speech}.ts`, `src/adapters/ko.ts`, `test/adapters/korean/{sentence,constructions}.test.ts`, `test/adapters/korean/regression.test.ts` (the brief's table) | H, L, M |
+| **R** Registration | `packages/language-packs/src/{packs/ko.ts,tutorial/ko.ts,alphabet-sprint/**ko**}`, every shared list a language is added to (see AUDIT.md "Where a language is registered"), `packages/golearn-extension/src/analysers/ko.ts`, the page-language detection for Hangul, GoReview's alphabet letters, voices, `THIRD-PARTY-NOTICES.md`, the list-pinning tests | the adapter's public names |
+| **E** Evaluation | `scripts/ko-eval.mts`, `docs/korean/EVAL.md`, `test/fixtures/korean/**` | everything |
+
+A package never edits another package's file; it reports what it needs in its final message and the coordinator
+decides. Tests are `// @vitest-environment node` unless they need a DOM. No Hangul string in a test is typed in a
+decomposed form by accident: a test that needs NFD builds it with `.normalize('NFD')`.

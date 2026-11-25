@@ -99,8 +99,10 @@ source's. A reading the lexicon does not vouch for is marked `unconfirmed` and e
     number now means another word (that needs an alias in the Repository, a decision, not a silent re-key).
   - **Which homonym a sentence means** is often not known from the word, and crediting the first one would record a
     false fact. Three cases:
-    1. The FORM decides (물어요 can only be 묻다¹ "ask", ㄷ-irregular; 묻어요 only 묻다² "bury"): the reading's lemma is the
-       numbered one.
+    1. The FORM decides (물어요 can only be 묻다 "ask", the ㄷ-irregular one): the reading's lemma is the numbered one.
+       "Decides" is DERIVED from the rows: the entries of the set whose class and conjugation class can produce the
+       written form; never a hand-written pair. 묻어요 excludes only "ask": "bury" and "stick" (both regular) remain, so
+       it is still case 3 between those two.
     2. A rule in `sentence.ts` decides (눈 before 오다 / 내리다 is snow) and says why in `notes.context`: the numbered one.
     3. Nothing decides, in a BALANCED set (눈이 예뻐요, 묻고): the FIRST reading is the **undecided reading**: lemma = the BARE headword
        (`눈`), `notes.homonym = 'undecided'`, `notes.homonyms` listing the candidates, the gloss naming every
@@ -116,7 +118,12 @@ source's. A reading the lexicon does not vouch for is marked `unconfirmed` and e
   - **The meaning shown first** for the commonest words is not left to the source's sense order (위하다 "to help", 자신
     "one's body", 나다 "to be born"): `docs/korean/gloss-overrides.json` holds a reviewed short gloss for the commonest
     entries, each line reviewable; the build uses it for the row's `gloss`, and a gloss that is only a cross-reference
-    ("synonym of …", "See the entry at …") is resolved or left empty, never shown.
+    ("synonym of …", "See the entry at …") is resolved or left empty, never shown. An override SELECTS or shortens
+    senses the source entry already has and records which (`senses`: their positions in the entry); the build checks
+    it. Wording no source sense supports is allowed only with `own: true`, and the row then carries `glossOwn`, so a
+    card's source line says the meaning is this product's wording, not the dictionary's. Nothing is invented unmarked.
+  - **A row's count** (`n`) is the count of the SPELLING in the priors corpus. In a balanced set every entry carries
+    it, so counts must never be summed over rows; it orders stems and never chooses between homonyms.
   - **Where the number is never shown or looked up as a spelling**: a card's headline, GoReview's card front, a
     vocabulary list, speech and search show and use the bare headword (`koBareLemma`); the number is identity, and
     may be shown beside the meaning as a dictionary does. `surfaceFromEncounterUnitId` (repository-contract) returns

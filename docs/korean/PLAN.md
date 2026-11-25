@@ -229,9 +229,14 @@ declarative ending").
 - **Doubt between homonyms never lowers the spelling against other analyses.** A balanced set is ranked as ONE reading
   (the undecided one) at the strength any single word would have (의사가 is 의사 + 가 at the same band as 학교가, not below
   의 + 사 + 가); the numbered readings of that set follow it, each lower. The doubt is shown inside the reading.
-- **A whole headword outranks a split of it.** A noun + derivational suffix, or a shorter stem + more endings, is offered
-  only where the lexicon has no headword for the whole stem, and never above a predicate analysis whose every step is
-  licensed (물어요 is 묻다 / 물다, not 물 + 어; 하여 is 하다).
+- **A whole headword outranks a DERIVATIONAL split of it.** A noun + derivational suffix (의 + 사, 다 + 리) is offered only
+  where the lexicon has no headword for the whole stem, and never above a predicate analysis whose every step is
+  licensed (물어요 is 묻다 / 물다, not 물 + 어; 하여 is 하다). A stem + particle or inflectional ending stays a candidate beside a
+  whole headword and is RANKED, never removed: 가지 is "branch" and 가 + -지 (않다), 사고 "accident" and 사 + -고, 나도 is 나 + 도.
+- **A whole function word outranks its own etymology.** 그래서, 하지만, 그럼, 그러나, 그리고 are headwords (conjunctive adverbs,
+  interjections); their reading as 그렇다 / 하다 + ending is kept below them.
+- **An unlisted compound keeps its head and its particle.** 예산안을 is the built, unconfirmed compound 예산안 + 을 (parts 예산 + 안),
+  never its first part alone with the rest dropped.
 - **A reading consumes the whole token.** No reading is confident about a prefix of the token with the rest unexplained.
 - **No comma-joined sentence type.** Where the ending alone does not say statement, question, command or suggestion
   (해요체 -아/어요, 해체 -아/어), the token carries no `Mood`; `notes.sentenceType` lists what the form allows, and the

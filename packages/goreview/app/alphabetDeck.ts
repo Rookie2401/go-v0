@@ -30,6 +30,7 @@ const NOTES: Readonly<Record<string, string>> = {
   he: 'Written for this deck and not yet reviewed by a native speaker or a Hebraist. The names and sounds are those of Modern Hebrew; the five final shapes are cards of their own.',
   arc: 'Written for this deck and not yet reviewed by an Aramaist. The names identify the letters and the back gives the conventional transliteration; neither is a recording of how Aramaic was spoken.',
   ru: 'Written for this deck and not yet reviewed by a native speaker. Each back gives the letter’s Russian name, an approximate sound for an English speaker, and what it is easily mistaken for; several letters that look Latin sound different (В, Н, Р, С, У, Х).',
+  ko: 'Written for this deck and not yet reviewed by a Korean teacher or native speaker. The 40 letters of Hangul in the order of the Alphabet Sprint’s stages (consonants, vowels, the four with a puff of air, the four with a y glide, the tense consonants, the compound vowels): each back gives the letter’s Korean name, an approximate sound for an English speaker and Revised Romanization, which is an aid and never the spelling. Blocks, final consonants and sound changes are Alphabet Sprint cards.',
   fr: 'Written for this deck and not yet reviewed by a native speaker. The letters with their French names, the accented letters, then the spelling patterns of the optional Decoding Sprint (ou, oi, eau, the nasal vowels, the silent endings): each sound is the usual one in the French of France, and regional French differs.',
 };
 

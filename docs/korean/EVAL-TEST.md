@@ -52,3 +52,30 @@ For comparison, the development part on the same code: 90.77 % strict, 93.98 % l
 - An unconfirmed first reading is not an error the card hides: the card says the word is not in the word list, or
   is built from listed parts, and credits no lemma. Most unconfirmed first readings are unlisted compounds and names.
 - No Korean speaker has reviewed the analyser, its lexicon decisions or its explanations.
+
+## After the run (dated note, 2026-11-25)
+
+The independent linguistic audit's list of faults reached the builders only after the run above had been made. So the measured
+code (`93a3a31c`) still held these analysis faults, found on the audit's own blind sentences and not on this treebank:
+
+- an unlisted personal name was read as a confirmed verb once the full lexicon was loaded (박지성이 as 박다 …);
+- 목자시니 and 의사시다 were read as a noun with a suffix, not as the honorific copula;
+- some verbs' bare -아/어 forms were read as nouns (불 켜! 여기 서!);
+- 공부를 한 사람 read 한 as the numeral.
+
+They were fixed afterwards (commits `6dfc31dc` to `b83785fa`), from the audit's sentences only. The test part was NOT run again:
+it is run once. What the fixes did to the DEVELOPMENT part, the only comparison that is fair to make:
+
+| Development part, adapter mode | Measured code | After the fixes |
+|---|---|---|
+| Right dictionary word, strict / lenient | 90.77 % / 93.98 % | 90.74 % / 93.94 % |
+| Forms not in train, strict / lenient | 86.16 % / 89.79 % | 86.20 % / 89.83 % |
+| Part of speech | 87.35 % | 87.35 % |
+| Chain exact | 89.29 % | 89.27 % |
+| Unconfirmed | 13.66 % | 13.67 % |
+| Confident and wrong | 4.93 % | 4.98 % |
+
+So on this kind of text the fixes change almost nothing (they concern names, commands and Bible forms, which the treebank
+barely has), and the held-out figures above stand as a fair description of the code as it lands, within a few hundredths of a point.
+Two of the small losses are choices: a bare 내 is read as 나 with the possessive and a bare 서 as the verb 서다, where the treebank has 내
+and a noun 서 (five 어절 each in the development part).

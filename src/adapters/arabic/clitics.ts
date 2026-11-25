@@ -101,6 +101,8 @@ const MIN_STEM = 2;
 /** The dictionary spellings a stem may hide when a pronoun (or a clitic) follows it. */
 function stemSpellings(stem: string, hasEnclitic: boolean): string[] {
   const out = new Set<string>([stem]);
+  // the tanwīn alif of an accusative indefinite (مُخْرِجًا): the bare cell is also a spelling (the analyser keeps it for derived cells only)
+  if (stem.endsWith('ا') && stem.length >= 4) out.add(stem.slice(0, -1));
   if (hasEnclitic) {
     const last = stem[stem.length - 1];
     const body = stem.slice(0, -1);
@@ -202,6 +204,9 @@ export function arStemKeys(key: string): string[] {
 
 // ───────────────────────────── what the clitics allow ─────────────────────────────
 
+/** The particles a preposition may be written onto (بأن, لأن, كأن, بما, لما, كما). */
+const PARTICLE_STEMS: ReadonlySet<string> = new Set(['أن', 'أن\u0651', 'ما']);
+
 /** The shape of a reading the clitics are checked against. */
 export interface CliticTarget { pos: string; morph: Readonly<Record<string, string>>; lemmaKey?: string }
 
@@ -228,9 +233,11 @@ export function arProcliticAllows(c: Clitic, t: CliticTarget): CliticVerdict {
       if (t.morph.Definite && !has(t.morph.Definite, 'Def') && !has(t.morph.Definite, 'Ind') && !has(t.morph.Definite, 'Cons')) return { ok: false };
       return { ok: true, patch: { Definite: 'Def' }, role: c.role };
     case 'bi': case 'ka':
-      return NOMINAL.has(t.pos) && !(t.pos === 'PRON' && c.id === 'ka' && false) ? { ok: true, role: c.role } : { ok: false };
+      if (PARTICLE_STEMS.has(t.lemmaKey ?? '') && (t.pos === 'PART' || t.pos === 'SCONJ' || t.pos === 'CONJ')) return { ok: true, role: c.role };
+      return NOMINAL.has(t.pos) ? { ok: true, role: c.role } : { ok: false };
     case 'li':
       if (NOMINAL.has(t.pos)) return { ok: true, role: c.role };
+      if (PARTICLE_STEMS.has(t.lemmaKey ?? '') && (t.pos === 'PART' || t.pos === 'SCONJ' || t.pos === 'CONJ')) return { ok: true, role: c.role };
       if (isImperfect(t)) {
         const m = t.morph.Mood ?? '';
         const sj = has(m, 'Sub'), js = has(m, 'Jus');

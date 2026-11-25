@@ -712,10 +712,115 @@ for (const [k, v] of Object.entries(identities)) {
   if (n !== undefined) { mainByKey.set(k, n); if (stem !== k && !mainByKey.has(stem) && !(stem in identities)) mainByKey.set(stem, n); }
 }
 const counts = new Array<number>(lemmaIds.length).fill(0);
+const second = new Array<number>(lemmaIds.length).fill(0);
 const shareCounts = new Array<number>(lemmaIds.length).fill(0); // the old definition (frequency / holders): used only to admit closed classes to the core
 let identityApplied = 0;
 let identityUnknown = 0;
 const identityFailures: string[] = [];
+
+// ───────────── the reviewed identities, generalised: lexeme preferences ─────────────
+const lexOfId = (id: string): string => id.split('|').slice(0, 2).join('|');
+const lexPos = (lex: string): string => lex.split('|')[1];
+const lexHead = (lex: string): string => lex.split('|')[0];
+const CLOSED_POS = new Set(['PRON', 'ADP', 'PART', 'CONJ', 'SCONJ', 'DET', 'INTJ', 'ADV']);
+/** Nouns, adjectives and names of one head are one lexeme; so are the closed-class entries of one head. */
+const posGroup = (pos: string): string => (pos === 'NOUN' || pos === 'ADJ' || pos === 'PROPN' ? 'N' : CLOSED_POS.has(pos) ? 'C' : pos);
+const lexemesOnCache = new Map<string, Map<string, number[]>>();
+function lexemesOn(k: string): Map<string, number[]> {
+  let m = lexemesOnCache.get(k);
+  if (!m) {
+    m = new Map();
+    for (const r of forms.get(k) ?? []) { const lx = lexOfId(lemmaIds[r[0]]); const a = m.get(lx) ?? m.set(lx, []).get(lx)!; if (!a.includes(r[0])) a.push(r[0]); }
+    lexemesOnCache.set(k, m);
+  }
+  return m;
+}
+const looseKeys = new Map<string, string[]>();
+for (const k of keys) { const f = arLoose(k); (looseKeys.get(f) ?? looseKeys.set(f, []).get(f)!).push(k); }
+const lexKeyCount = new Map<string, number>(); // lexeme → number of keys it has rows on
+for (const k of keys) for (const lx of lexemesOn(k).keys()) lexKeyCount.set(lx, (lexKeyCount.get(lx) ?? 0) + 1);
+const prefStats = { candidates: 0, sameLexeme: 0, conflictPairs: 0, balancedRemoved: 0, closedDropped: 0, pairs: 0, losers: 0, winners: 0, idCleanSibling: 0, idCleanLoose: 0, prefKeys: 0 };
+const finalPrefs = new Map<string, Set<string>>(); // loser lexeme → winner lexemes
+const prefConflictLines: string[] = [];
+{
+  const lines: string[] = [];
+  const support = new Map<string, Set<string>>(); // "loser\twinner" → listed keys that gave the pair (where the loser's own citation row shows)
+  const balanced = new Set<string>();
+  const sortedIds = Object.entries(identities).sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0));
+  for (const [k, v] of sortedIds) {
+    if (!v) {
+      // reviewed and balanced: every pair of lexemes on the key is balanced
+      const lx = [...lexemesOn(k).keys()];
+      for (const a of lx) for (const b of lx) if (a !== b) balanced.add(`${a}\t${b}`);
+      continue;
+    }
+    const p = parseIdentity(v);
+    const info = idInfo.get(k)!;
+    const here = [...lexemesOn(k).keys()];
+    if (!p || info.n === undefined) { identityUnknown++; stats.idFail++; lines.push(`${k}\t${v}\tlemma id not in the index\t${here.join(' ')}`); continue; }
+    const wl = lexOfId(p.id);
+    const cand = [k, info.stem];
+    let found: string[] = [];
+    if (cand.some((c) => (forms.get(c) ?? []).some((r) => lemmaIds[r[0]] === p.id))) { stats.idClean++; found = cand.filter((c) => lexemesOn(c).has(wl)).slice(0, 1); }
+    else {
+      const sib = cand.filter((c) => lexemesOn(c).has(wl));
+      if (sib.length) { prefStats.idCleanSibling++; found = sib.slice(0, 1); }
+      else {
+        const lk = [...new Set(cand.flatMap((c) => (looseKeys.get(arLoose(c)) ?? []).filter((k2) => k2 !== c && lexemesOn(k2).has(wl))))];
+        if (lk.length) { prefStats.idCleanLoose++; found = lk; }
+      }
+    }
+    if (!found.length) {
+      stats.idFail++;
+      lines.push(`${k}\t${v}\tno row of ${p.id} (or a numbered sibling, or through the loose fold) on ${k} or ${info.stem}\ton ${k}: ${here.join(' ') || '-'}; on ${info.stem}: ${[...lexemesOn(info.stem).keys()].join(' ') || '-'}`);
+      continue;
+    }
+    prefStats.prefKeys++;
+    for (const fk of found) {
+      for (const [lx, nums] of lexemesOn(fk)) {
+        if (lx === wl) continue;
+        prefStats.candidates++;
+        // (a) the same head in the same group of parts of speech is one lexeme, not a rival
+        if (lexHead(lx) === lexHead(wl) && posGroup(lexPos(lx)) === posGroup(lexPos(wl))) { prefStats.sameLexeme++; continue; }
+        const pk = `${lx}\t${wl}`;
+        const citation = nums.some((l) => (forms.get(fk) ?? []).some((r) => r[0] === l && tagsOf(r[1]).includes('canonical')));
+        const s = support.get(pk) ?? support.set(pk, new Set()).get(pk)!;
+        if (citation) s.add(k); else s.add('');
+      }
+    }
+  }
+  // (b) a pair that wins on one key and loses on another is dropped both ways
+  const conflicts = new Set<string>();
+  for (const pk of support.keys()) {
+    const [lo, wi] = pk.split('\t');
+    if (support.has(`${wi}\t${lo}`)) { conflicts.add(pk); if (lo < wi) prefConflictLines.push(`${lo}\t${wi}\tboth directions`); }
+  }
+  prefStats.conflictPairs = prefConflictLines.length;
+  for (const pk of [...support.keys()].sort()) {
+    if (conflicts.has(pk)) continue;
+    const [lo, wi] = pk.split('\t');
+    // (c) two lexemes that are balanced somewhere have no preference
+    if (balanced.has(pk)) { prefStats.balancedRemoved++; continue; }
+    // (d) a closed-class loser to an open-class winner stands only where the loser's own citation row shows on a key the winner is main of
+    if (CLOSED_POS.has(lexPos(lo)) && !CLOSED_POS.has(lexPos(wi)) && ![...support.get(pk)!].some((x) => x !== '')) { prefStats.closedDropped++; continue; }
+    (finalPrefs.get(lo) ?? finalPrefs.set(lo, new Set()).get(lo)!).add(wi);
+    prefStats.pairs++;
+  }
+  prefStats.losers = finalPrefs.size;
+  prefStats.winners = new Set([...finalPrefs.values()].flatMap((s) => [...s])).size;
+  if (opt['identities-check']) fs.writeFileSync(opt['identities-check'], `${lines.join('\n')}\n`);
+  if (opt['preference-conflicts']) fs.writeFileSync(opt['preference-conflicts'], `${prefConflictLines.sort().join('\n')}\n`);
+  identityFailures.push(...lines.slice(0, 30));
+}
+
+// ───────────── count ─────────────
+// first term: the frequency of the keys only this lemma has rows on, and of the keys the reviewed list gives it; second, weaker term (a quarter): the frequency of a
+// shared key goes to the one lexeme that every other lexeme on the key loses to (a generated preference), nothing otherwise
+const SECOND_WEIGHT = 0.25;
+const decisive = (lx: Map<string, number[]>): string | undefined => {
+  const win = [...lx.keys()].filter((a) => [...lx.keys()].every((b) => b === a || finalPrefs.get(b)?.has(a)));
+  return win.length === 1 ? win[0] : undefined;
+};
 for (const k of keys) {
   const f = freq.get(k) ?? 0;
   const rs = forms.get(k)!;
@@ -723,27 +828,13 @@ for (const k of keys) {
   for (const l of ls) shareCounts[l] += f / ls.length;
   if (!f) continue;
   if (idInfo.get(k)?.n !== undefined) continue; // a listed key is credited to its main lemma below
-  if (ls.length === 1) counts[ls[0]] += f;
+  if (ls.length === 1) { counts[ls[0]] += f; continue; }
+  const lx = lexemesOn(k);
+  if (lx.size > 1) { const w = decisive(lx); if (w) for (const l of lx.get(w)!) second[l] += f / lx.get(w)!.length; }
 }
 for (const [k, ip] of idInfo) if (ip.n !== undefined) { const f = freq.get(k) ?? 0; if (f) { counts[ip.n] += f; identityApplied++; } }
-// the check for the lead: every listed key whose lemma is missing or has no row on the key or its stem key
-{
-  const lines: string[] = [];
-  for (const [k, v] of Object.entries(identities)) {
-    if (!v) continue;
-    const p = parseIdentity(v);
-    const info = idInfo.get(k)!;
-    const here = new Set((forms.get(k) ?? []).map((r) => lemmaIds[r[0]]));
-    const there = new Set((forms.get(info.stem) ?? []).map((r) => lemmaIds[r[0]]));
-    if (!p || info.n === undefined) { identityUnknown++; stats.idFail++; lines.push(`${k}	${v}	lemma id not in the index	${[...here].join(' ')}`); continue; }
-    if (here.has(p.id) || there.has(p.id)) { stats.idClean++; continue; }
-    stats.idFail++;
-    lines.push(`${k}	${v}	no row of ${p.id} on ${k} or ${info.stem}	on ${k}: ${[...here].join(' ') || '-'}; on ${info.stem}: ${[...there].join(' ') || '-'}`);
-  }
-  if (opt['identities-check']) fs.writeFileSync(opt['identities-check'], `${lines.join('\n')}\n`);
-  identityFailures.push(...lines.slice(0, 30));
-}
-for (let l = 0; l < lemmaRows.length; l++) lemmaRows[l][4] = Math.round(counts[l]);
+for (let l = 0; l < lemmaRows.length; l++) lemmaRows[l][4] = Math.round(counts[l] + SECOND_WEIGHT * second[l]);
+const zeroCount = lemmaRows.filter((r) => r[4] === 0).length;
 // share of running words by number of lemma ids of the key
 const shareBy: Record<string, number> = { '0': 0, '1': 0, '2': 0, '3': 0, '4+': 0 };
 for (const [k, f] of freq) { const n = holders.get(k) ?? 0; shareBy[n >= 4 ? '4+' : String(n)] += f; }
@@ -1039,6 +1130,10 @@ Lemma string convention: \`arHeadForm\` of \`arabic/text.ts\`.
 | core ranking | ${CORE_RANK} (own = weight of a lemma's own keys per byte; marginal = frequency of the keys it adds to those already covered, per byte) |
 | core | ${core.lemmaIds.length} lemmas (${Math.min(closed.length, lo)} of closed classes, ${seedIds.length} seeded), ${core.stats.keys} keys, ${coreRows} rows, ${fmt(coreBytes)} bytes of JSON (budget ${fmt(CORE_BUDGET)}) |
 | core token coverage on ar_50k (running words whose key is a core key) | ${(tokenCoverage * 100).toFixed(2)} % of ${fmt(freqTotal)} (clitic forms are not keys) |
+| identity checks accepted through a numbered sibling of the main id / through the loose fold | ${fmt(prefStats.idCleanSibling)} / ${fmt(prefStats.idCleanLoose)} (counted apart from the clean ones above) |
+| lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | ${fmt(prefStats.candidates)} / ${fmt(prefStats.sameLexeme)} / ${fmt(prefStats.conflictPairs)} / ${fmt(prefStats.balancedRemoved)} / ${fmt(prefStats.closedDropped)} |
+| preferences emitted: pairs / distinct losers / distinct winners | ${fmt(prefStats.pairs)} / ${fmt(prefStats.losers)} / ${fmt(prefStats.winners)} |
+| lemma ids with count 0 (after the own-key term and the weaker decided-key term, weight ${SECOND_WEIGHT}) | ${fmt(zeroCount)} of ${fmt(lemmaIds.length)} |
 | identities file | ${IDENTITIES ? `${IDENTITIES}: ${fmt(identityApplied)} keys credited to their main lemma; checked clean ${fmt(stats.idClean)}, failed ${fmt(stats.idFail)} (${fmt(identityUnknown)} naming a lemma id not in the index)` : 'none given'} |
 
 ## Count (order of readings)
@@ -1097,6 +1192,19 @@ export const AR_CORE: ArabicFormIndex = `;
   fs.writeFileSync(CORE_OUT, `${header}${coreJson};\n`);
   fs.mkdirSync(path.dirname(DOC_OUT), { recursive: true });
   fs.writeFileSync(DOC_OUT, doc);
+  if (IDENTITIES) {
+    const prefOut = opt['preferences-out'] ?? 'src/adapters/arabic/generated/preferences.ts';
+    const obj: Record<string, string[]> = {};
+    for (const lo of [...finalPrefs.keys()].sort()) obj[lo] = [...finalPrefs.get(lo)!].sort();
+    const body = `/* GENERATED by scripts/ar-build-index.mts on ${TODAY} from ${path.basename(IDENTITIES)} — do not edit. Lexeme preferences: a lexeme ("<vocalized head>|<POS>") that loses to others wherever the reviewed identities list decided a key it shares with them. ${prefStats.pairs} pairs, ${prefStats.losers} losers, ${prefStats.winners} winners. */
+export const AR_PREFERRED: Readonly<Record<string, readonly string[]>> = ${JSON.stringify(obj)};
+`;
+    fs.mkdirSync(path.dirname(prefOut), { recursive: true });
+    fs.writeFileSync(prefOut, body);
+    const slim: Record<string, string[]> = {};
+    for (const lo of Object.keys(obj)) if ((lexKeyCount.get(lo) ?? 0) >= 5) slim[lo] = obj[lo];
+    console.log(`preferences: ${prefStats.pairs} pairs, ${prefStats.losers} losers, ${prefStats.winners} winners, ${fmt(Buffer.byteLength(body))} bytes; only losers with at least 5 keys: ${Object.keys(slim).length} losers, ${fmt(Buffer.byteLength(JSON.stringify(slim)) + 140)} bytes`);
+  }
 }
 console.log(`reg: Cla ${stats.regCla}, Msa ${stats.regMsa}; participles dropped ${stats.participleDropped}, kept ${stats.participleKept}; merged ids ${stats.mergedIds}; rules ${ruleLine}`);
 console.log(`definite (${DEFINITE}): stripped ${stats.definiteStripped}; rows: table ${fmt(stats.rowsTable)}, page table ${fmt(stats.rowsPageTable)}, citation ${fmt(stats.rowsCitation)}, page ${fmt(stats.rowsPage)}, verb page ${fmt(stats.rowsVerbPage)}, headline ${fmt(stats.rowsHeadline)}`);

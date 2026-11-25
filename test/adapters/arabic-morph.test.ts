@@ -6,7 +6,7 @@
 import fs from 'node:fs';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import type { AnalysisCandidate, RawToken } from '../../src/core';
-import { arGroupPos, arWordCandidates } from '../../src/adapters/arabic/analyze';
+import { arGroupPos, arWordCandidates, useArPreferences } from '../../src/adapters/arabic/analyze';
 import { useArIdentities } from '../../src/adapters/arabic/identities';
 import { describeArMorph } from '../../src/adapters/arabic/describe';
 import { installArabicIndex, resetArabicIndexes, uninstallArabicIndex, type ArabicFormIndex } from '../../src/adapters/arabic/index-store';
@@ -14,8 +14,8 @@ import { arKey } from '../../src/adapters/arabic/text';
 
 const fixture = JSON.parse(fs.readFileSync(new URL('./arabic-mini-index.json', import.meta.url), 'utf8')) as ArabicFormIndex;
 // the structural and undecided rules are tested WITHOUT the reviewed list (a listed key would hide the rule under test); the shipped list has its own tests below
-beforeAll(() => { resetArabicIndexes(); installArabicIndex(fixture); useArIdentities({}); });
-afterAll(() => { resetArabicIndexes(); useArIdentities(); });
+beforeAll(() => { resetArabicIndexes(); installArabicIndex(fixture); useArIdentities({}); useArPreferences({}); });
+afterAll(() => { resetArabicIndexes(); useArIdentities(); useArPreferences(); });
 
 const token = (surface: string): RawToken => ({ surface, start: 0, end: surface.length, isWord: true, normalized: arKey(surface) });
 const cands = (surface: string): AnalysisCandidate[] => arWordCandidates(token(surface));
@@ -252,12 +252,13 @@ describe('closed-class words, hand priors and clitic chains', () => {
     expect(partTexts(c)).toEqual(['ف', 'س', 'يكتبون', 'ها']);
     expect(c.parts?.map((p) => p.kind)).toEqual(['prefix', 'prefix', 'stem', 'suffix']);
   });
-  it('وبالكتاب: four parts و + ب + ال + كتاب on every reading; the lexemes كِتَاب and كُتَّاب (the plural of كَاتِب) share the key, so neither is credited', () => {
+  it('وبالكتاب: four parts و + ب + ال + كتاب on every reading; كِتَاب leads (its own citation form against the broken plural of كَاتِب, which stays below 0.5)', () => {
     const cs = cands('وبالكتاب');
     expect(cs.length).toBeGreaterThan(0);
     for (const c of cs) expect(partTexts(c)).toEqual(['و', 'ب', 'ال', 'كتاب']);
-    expect(lemmas(cs)).toContain('كِتَاب');
-    expect(cs.every((c) => c.confidence <= 0.45)).toBe(true);
+    expect(cs[0]).toMatchObject({ lemma: 'كِتَاب' });
+    expect(cs[0].confidence).toBeGreaterThanOrEqual(0.5);
+    expect(cs.slice(1).every((c) => c.confidence < 0.5)).toBe(true);
   });
   it('وهم: the function-word chain و + هُمْ is a reading (the lead\'s reviewed identity, when listed, may promote it)', () => {
     const c = cands('وهم').find((x) => x.parts?.[0]?.text === 'و');
@@ -472,7 +473,7 @@ describe('closed-class chains lead (N3) and the particles with pronouns (L3)', (
       expect(cs[0], w).toMatchObject({ lemma, pos: 'ADP' });
       expect(cs[0].confidence, w).toBeGreaterThanOrEqual(0.8);
       expect(partTexts(cs[0]).slice(-1)[0], w).toBe(enc);
-      expect(cs.slice(1).every((c) => c.confidence < 0.5), w).toBe(true);
+      expect(cs.filter((c) => c.lemma !== cs[0].lemma).every((c) => c.confidence < 0.5), w).toBe(true);
     }
   });
   it('فقد and وقد: ف / و + قَدْ lead; هو chains: وهو is و + هُوَ', () => {
@@ -550,5 +551,235 @@ describe('N2: ال + a sound plural or dual in -ين (real shards, when present)
     }
     resetArabicIndexes();
     installArabicIndex(fixture);
+  });
+});
+
+// ───────────────────────────── fix batch 2 ─────────────────────────────
+
+describe('batch 2: preferences, the one-credit invariant, grouped heads', () => {
+  it('the preferences generated from the reviewed list: of the plain lexemes the preferred one leads at 0.65 (identity preferred, preferredOver named); a null whole-key entry still means undecided', () => {
+    useArPreferences({ 'كَاتِب|NOUN': ['كِتَاب|NOUN'], 'كَاتِب|ADJ': ['كِتَاب|NOUN'] });
+    // كِتَاب and the plural of كَاتِب share كتاب; بالكتاب has the cut for both
+    const c = top('كتابه');
+    const cs = cands('كتابه');
+    expect(cs.some((x) => x.lemma === 'كَاتِب')).toBe(true);
+    expect(c.lemma).toBe('كِتَاب');
+    expect(c.confidence).toBeGreaterThanOrEqual(0.5);
+    useArIdentities({ كتابه: null });
+    expect(cands('كتابه').every((x) => x.confidence <= 0.45)).toBe(true);
+    useArIdentities({});
+    useArPreferences({});
+  });
+  it('a preferred lexeme is led by the table only among PLAIN readings and never on a partial key', () => {
+    resetArabicIndexes();
+    const two = synth('ar-core', undefined, { 'ذَحْم|NOUN': ['ذَحْم', 'x', 'NOUN', '', 50], 'ذَحَمَ|VERB': ['ذَحَمَ', 'y', 'VERB', '', 40] }, { ذحم: [[0, 0], [1, 0]] }, ['ذحم']);
+    installArabicIndex(two);
+    useArPreferences({ 'ذَحَمَ|VERB': ['ذَحْم|NOUN'] });
+    expect(cands('ذحم').every((c) => c.confidence <= 0.45)).toBe(true);
+    useArPreferences({});
+    resetArabicIndexes();
+    installArabicIndex(fixture);
+  });
+  it('grouped closed heads: مِمَّا as PRON and as PART is one lexeme (one candidate, 0.90)', () => {
+    const idx = synth('ar-test-closed', undefined, { 'مِمَّا|PRON': ['مِمَّا', 'a', 'PRON', '', 5], 'مِمَّا|PART': ['مِمَّا', 'b', 'PART', '', 3] }, { مما: [[0, 0], [1, 0]] });
+    installArabicIndex(idx);
+    const cs = cands('مما');
+    expect(cs.filter((c) => c.lemma === 'مِمَّا')).toHaveLength(1);
+    expect(cs[0].confidence).toBeGreaterThanOrEqual(0.5);
+    uninstallArabicIndex('ar-test-closed');
+  });
+  it('an ADP whose head is the accusative of a NOUN (وَفْقَ / وَفْق) is the lexeme of that noun: the NOUN on a bare word, the ADP when the page prints the accusative ending (batch 3 item 6)', () => {
+    const idx = synth('ar-test-adp', undefined, {
+      'وَفْق|NOUN': ['وَفْق', 'conformity', 'NOUN', '', 5], 'وَفْقَ|ADP': ['وَفْقَ', 'in accordance with', 'ADP', '', 3],
+    }, { وفق: [[0, 0, '14'], [1, 0, '141']] });
+    installArabicIndex(idx);
+    const bare = cands('وفق');
+    expect(new Set(bare.map((c) => c.lemma)).size).toBe(1);
+    expect(bare[0]).toMatchObject({ lemma: 'وَفْق', pos: 'NOUN' });
+    expect(bare[0].confidence).toBeGreaterThanOrEqual(0.5);
+    expect(top('وَفْقَ')).toMatchObject({ lemma: 'وَفْقَ', pos: 'ADP' });
+    uninstallArabicIndex('ar-test-adp');
+  });
+  it('variant heads: ثَانٍ and ثَانِي (same part of speech, same first gloss) are ONE lexeme whose lemma is the tanwīn head, notes.variants the other', () => {
+    const idx = synth('ar-test-var', undefined, { 'ثَانِي|ADJ': ['ثَانِي', 'second', 'ADJ', '', 5], 'ثَانٍ|ADJ': ['ثَانٍ', 'second', 'ADJ', '', 4] }, { ثاني: [[0, 0], [1, 0]] });
+    installArabicIndex(idx);
+    const c = cands('ثاني').filter((x) => x.lemma);
+    expect(new Set(c.map((x) => x.lemma))).toEqual(new Set(['ثَانٍ']));
+    expect(c.some((x) => x.notes?.variants === 'ثَانِي')).toBe(true);
+    uninstallArabicIndex('ar-test-var');
+  });
+  it('a defective فَاعِل adjective has ONE lemma string whatever is installed: the tanwīn head (مَاضِي → مَاضٍ)', () => {
+    const idx = synth('ar-test-def', undefined, { 'مَاضِي|ADJ': ['مَاضِي', 'past', 'ADJ', '', 5] }, { ماضي: [[0, 0]] });
+    installArabicIndex(idx);
+    expect(top('ماضي').lemma).toBe('مَاضٍ');
+    expect(top('الماضية').lemma).toBe('مَاضٍ');
+    uninstallArabicIndex('ar-test-def');
+  });
+});
+
+describe('batch 2 over the real index (compiled core, shards, shipped list and generated preferences; skipped when the shards are absent)', () => {
+  const dir = new URL('../../public/lexicon/ar/standard/', import.meta.url);
+  const have = fs.existsSync(new URL('manifest.json', dir));
+  const install = async (): Promise<void> => {
+    const zlib = await import('node:zlib');
+    const { AR_CORE } = await import('../../src/adapters/arabic/generated/core');
+    resetArabicIndexes();
+    installArabicIndex(AR_CORE);
+    for (const fn of fs.readdirSync(dir)) if (fn.endsWith('.json.gz')) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL(fn, dir))).toString('utf8')));
+  };
+  const restore = (): void => { resetArabicIndexes(); installArabicIndex(fixture); };
+  it.skipIf(!have)('P1: the hamza seat decides: إنه إنها فإن وإن وإنه are إِنَّ / إِنْ, never أَنَّ; أنها وأن بأن بأنه are أَنَّ with the preposition and conjunction as parts', async () => {
+    await install();
+    useArIdentities();
+    for (const w of ['إنه', 'إنها', 'فإن', 'وإن', 'وإنه']) {
+      const c = top(w);
+      expect(c.lemma, w).toMatch(/^إِن/);
+      expect(c.pos, w).not.toBe('VERB');
+    }
+    for (const w of ['أنها', 'وأن', 'بأن', 'بأنه']) {
+      const c = top(w);
+      expect(c.lemma, w).toMatch(/^أَن/);
+      expect(c.pos, w).not.toBe('VERB');
+    }
+    useArIdentities({});
+    restore();
+  });
+  it.skipIf(!have)('N4 / batch 2 item 4: الناس is نَاس (its own citation form beats the broken plural of إِنْسِيّ); the alternative-spelling row of العلم is marked variant and marginal', async () => {
+    await install();
+    useArPreferences({});
+    const c = cands('الناس');
+    expect(c.find((x) => x.lemma === 'نَاس')).toBeDefined();
+    expect(c[0].lemma).toBe('نَاس');
+    expect(c.some((x) => x.notes?.spelling === 'quranic')).toBe(false);
+    useArPreferences();
+    restore();
+  });
+  it.skipIf(!have)('the invariant: every key of the reviewed list reads with at most ONE lexeme group at or above 0.5 (تم is the verb at 0.70, the verbal noun stays below)', async () => {
+    await install();
+    const { AR_IDENTITIES } = await import('../../src/adapters/arabic/identities');
+    useArIdentities();
+    useArPreferences();
+    let read = 0;
+    for (const key of Object.keys(AR_IDENTITIES)) {
+      const cs = cands(key);
+      if (!cs.length) continue;
+      read++;
+      const groups = new Set(cs.filter((c) => c.confidence >= 0.5 && c.lemma).map((c) => `${c.lemma}|${c.pos === 'ADJ' ? 'NOUN' : c.pos}`));
+      expect(groups.size, key).toBeLessThanOrEqual(1);
+    }
+    expect(read).toBeGreaterThan(300);
+    const tam = cands('تم').filter((c) => c.confidence >= 0.5);
+    expect(new Set(tam.map((c) => c.lemma)).size).toBeLessThanOrEqual(1);
+    useArIdentities({});
+    useArPreferences({});
+    restore();
+  });
+  it.skipIf(!have)('P2: a defective adjective has one lemma string with the core alone and with the shards (الماضية كافية عالية خالية → مَاضٍ كَافٍ عَالٍ خَالٍ)', async () => {
+    const { AR_CORE } = await import('../../src/adapters/arabic/generated/core');
+    const want: Record<string, string> = { الماضية: 'مَاضٍ', كافية: 'كَافٍ', عالية: 'عَالٍ', خالية: 'خَالٍ' };
+    resetArabicIndexes();
+    installArabicIndex(AR_CORE);
+    const alone = Object.keys(want).map((w) => top(w).lemma);
+    await install();
+    const full = Object.keys(want).map((w) => top(w).lemma);
+    expect(alone).toEqual(Object.values(want));
+    expect(full).toEqual(Object.values(want));
+    restore();
+  });
+});
+
+// ───────────────────────────── fix batch 3: decide less boldly ─────────────────────────────
+
+describe('batch 3 (fixture): a preference follows the whole paradigm; derived cells; guesses', () => {
+  it('Q2: a preference خَرَجَ over أَخْرَجَ decides يخرج, تخرج and the true ambiguity أخرج alike (0.65, identity preferred)', () => {
+    useArPreferences({ 'أَخْرَجَ|VERB': ['خَرَجَ|VERB'] });
+    for (const w of ['يخرج', 'تخرج', 'أخرج']) {
+      const c = top(w);
+      expect(c.lemma, w).toBe('خَرَجَ');
+      expect(c.confidence, w).toBe(0.65);
+      expect(c.notes?.identity, w).toBe('preferred');
+    }
+    useArPreferences({});
+  });
+  it('without a preference أخرج stays a true ambiguity (form I 1st person, form IV perfect): nothing credited', () => {
+    expect(cands('أخرج').every((c) => c.confidence <= 0.45)).toBe(true);
+  });
+  it('Q4: the feminine perfect of form V reads (تَعَلَّمَتْ), and an accusative indefinite participle of form IV (مُخْرِجًا) is the bare participle cell + ـًا', () => {
+    expect(top('تَعَلَّمَتْ')).toMatchObject({ lemma: 'تَعَلَّمَ', morph: { Person: '3', Gender: 'Fem', Aspect: 'Perf' } });
+    const c = top('مُخْرِجًا');
+    expect(c).toMatchObject({ lemma: 'مُخْرِج', morph: { Case: 'Acc', Definite: 'Ind' } });
+    expect(c.notes?.derivedFrom).toBe('أَخْرَجَ');
+  });
+  it('Q4: a nisba in -اوي of a known noun is a marked guess (unconfirmed, no gloss)', () => {
+    const idx = synth('ar-test-awi', undefined, { 'مَصْر|NOUN': ['مَصْر', 'country', 'NOUN', '', 50] }, { مصر: [[0, 0]] });
+    installArabicIndex(idx);
+    const g = cands('مصراوي');
+    expect(g).toHaveLength(1);
+    expect(g[0]).toMatchObject({ pos: 'ADJ', unconfirmed: true });
+    expect(g[0].confidence).toBeLessThanOrEqual(0.35);
+    expect(g[0].gloss).toBeUndefined();
+    uninstallArabicIndex('ar-test-awi');
+  });
+  it('Q5: أَيْ "that is" stays among the readings of أي', () => {
+    expect(cands('أي').map((c) => c.lemma)).toContain('أَيْ');
+  });
+});
+
+describe('batch 3 over the real index (identities and preferences as noted; skipped when the shards are absent)', () => {
+  const dir = new URL('../../public/lexicon/ar/standard/', import.meta.url);
+  const have = fs.existsSync(new URL('manifest.json', dir));
+  const install = async (): Promise<void> => {
+    const zlib = await import('node:zlib');
+    const { AR_CORE } = await import('../../src/adapters/arabic/generated/core');
+    resetArabicIndexes();
+    installArabicIndex(AR_CORE);
+    for (const fn of fs.readdirSync(dir)) if (fn.endsWith('.json.gz')) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL(fn, dir))).toString('utf8')));
+    useArIdentities({});
+    useArPreferences();
+  };
+  const restore = (): void => { resetArabicIndexes(); installArabicIndex(fixture); useArPreferences({}); };
+  it.skipIf(!have)('items 1–3: وسائل is led by the whole word; باسم is undecided; فتحت is the verb; فهي لكم فيه منه إنه are led by the closed chain', async () => {
+    await install();
+    const w = cands('وسائل');
+    expect(w[0].parts).toBeUndefined();
+    expect(w[0].confidence).toBeGreaterThanOrEqual(0.5);
+    expect(w.filter((c) => c.parts).every((c) => c.confidence < 0.5)).toBe(true);
+    expect(cands('باسم').every((c) => c.confidence <= 0.45)).toBe(true);
+    expect(top('فتحت')).toMatchObject({ lemma: 'فَتَحَ', pos: 'VERB' });
+    for (const x of ['فهي', 'لكم', 'فيه', 'منه', 'إنه']) {
+      const c = top(x);
+      expect(c.notes?.identity, x).toBe('closed');
+      expect(c.confidence, x).toBe(0.8);
+      expect(c.pos, x).not.toBe('VERB');
+    }
+    restore();
+  });
+  it.skipIf(!have)('item 4: a preference never drops an own citation form (البنت is not اِبْن over بِنْت); item 8: زلنا follows the preference زَالَ over زَلَّ', async () => {
+    await install();
+    expect(cands('البنت').some((c) => c.notes?.identity === 'preferred' && c.lemma === 'اِبْن')).toBe(false);
+    const z = top('زلنا');
+    expect(z.lemma).toBe('زَالَ');
+    expect(z.notes?.identity).toBe('preferred');
+    restore();
+  });
+  it.skipIf(!have)('item 5: an entry cited with the article (الجَامِعَة) does not lead ال + جَامِعَة (undecided unless the common noun has a count)', async () => {
+    await install();
+    const cs = cands('الجامعة');
+    expect(cs.find((c) => c.lemma === 'الجَامِعَة')?.confidence ?? 0).toBeLessThanOrEqual(0.45);
+    restore();
+  });
+  it.skipIf(!have)('item 6: a noun and its adverbial accusative: نسبة is the NOUN, نسبةً (printed accusative) the adverb; عادةً likewise', async () => {
+    await install();
+    expect(top('نسبة').pos).toBe('NOUN');
+    expect(top('نِسْبَةً').pos).toBe('ADV');
+    restore();
+  });
+  it.skipIf(!have)('Q4 / Q5: تعلمت and استخدمت read (feminine perfect, forms V and X); فيه keeps the noun فَم below the preposition', async () => {
+    await install();
+    for (const x of ['تعلمت', 'استخدمت', 'تَعَلَّمَتْ', 'اِسْتَخْدَمَتْ']) expect(cands(x).length, x).toBeGreaterThan(0);
+    const f = cands('فيه');
+    expect(f[0].lemma).toBe('فِي');
+    expect(f.some((c) => c.lemma === 'فَم')).toBe(true);
+    restore();
   });
 });

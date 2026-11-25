@@ -182,6 +182,7 @@ put('كَلَّا', 'INTJ', 'no, never', { role: 'particle of answer' });
 put('يَا', 'PART', 'O (calls a person)', { role: 'vocative particle' });
 put('اللّٰه', 'PROPN', 'God', { role: 'the name of God (lām-prefixed and oath forms: لله, بالله, والله)' });
 put('تَاللّٰهِ', 'PROPN', 'by God (oath)', { lemma: 'اللّٰه', fusedOf: 'تَـ + اللّٰه', role: 'oath' });
+put('أَيْ', 'PART', 'that is, namely', { role: 'explanatory particle' });
 put('أَيْضًا', 'ADV', 'also, too', { role: 'adverb' });
 put('جِدًّا', 'ADV', 'very', { role: 'adverb' });
 put('فَقَطْ', 'ADV', 'only', { role: 'adverb' });

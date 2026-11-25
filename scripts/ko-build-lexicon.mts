@@ -588,7 +588,7 @@ if (WRITE) {
 import { koStemKey, type KoLexEntry, type KoLexicon, type KoIrregular, type KoTag } from '../index-store';
 import { koKey } from '../hangul';
 
-/** [lemma, tag, hom, irr, gloss, hanja, pron, n, voice, base, clf, set, glossOwn, own, bound, related, hada], trailing empty fields left off. */
+/** [lemma, tag, flags, hom, irr, gloss, hanja, pron, n, voice, base, related], trailing empty fields left off. flags: 1 clf, 2 own, 4 glossOwn, 8 bound, 16 hada, bits 5-6 the state of the set (1 main, 2 other, 3 balanced), decoded below in one place. */
 const ROWS: Array<Array<string | number>> = [
 `;
   const footer = `];
@@ -600,20 +600,21 @@ function expand(): Record<string, KoLexEntry[]> {
   const put = (k: string, e: KoLexEntry): void => { (entries[k] ??= []).push(e); };
   for (const r of ROWS) {
     const e: KoLexEntry = { lemma: String(r[0]), tag: String(r[1]) as KoTag };
-    if (r[2]) e.hom = Number(r[2]);
-    if (r[11]) e.set = String(r[11]) as 'main' | 'other' | 'balanced';
-    if (r[10]) e.clf = true;
-    if (r[8]) { e.voice = r[8] as 'Pass' | 'Caus'; e.base = String(r[9] ?? ''); }
-    if (r[3]) e.irr = r[3] as KoIrregular;
-    if (r[4]) e.gloss = String(r[4]);
-    if (r[12]) e.glossOwn = true;
-    if (r[13]) e.own = true;
-    if (r[14]) e.bound = true;
-    if (r[15]) e.related = String(r[15]);
-    if (r[16]) e.hada = true;
-    if (r[5]) e.hanja = String(r[5]);
-    if (r[6]) e.pron = String(r[6]);
-    if (r[7]) e.n = Number(r[7]);
+    const flags = Number(r[2] ?? 0);
+    if (flags & 1) e.clf = true;
+    if (flags & 2) e.own = true;
+    if (flags & 4) e.glossOwn = true;
+    if (flags & 8) e.bound = true;
+    if (flags & 16) e.hada = true;
+    if (flags >> 5) e.set = (['', 'main', 'other', 'balanced'] as const)[flags >> 5] as 'main' | 'other' | 'balanced';
+    if (r[3]) e.hom = Number(r[3]);
+    if (r[8]) e.n = Number(r[8]);
+    if (r[9]) { e.voice = r[9] as 'Pass' | 'Caus'; e.base = String(r[10] ?? ''); }
+    if (r[4]) e.irr = r[4] as KoIrregular;
+    if (r[5]) e.gloss = String(r[5]);
+    if (r[6]) e.hanja = String(r[6]);
+    if (r[7]) e.pron = String(r[7]);
+    if (r[11]) e.related = String(r[11]);
     const key = koStemKey(e.lemma, e.tag);
     put(key, e);
     if (e.hanja && PURE_HANJA.test(e.hanja)) { const hk = koKey(e.hanja); if (hk !== key) put(hk, e); }

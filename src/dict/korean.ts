@@ -1024,10 +1024,21 @@ export function koSupplementEntries(docs: KoDocs = koLoadDocs()): DictionaryEntr
 export const KO_CLOSED_TAGS: ReadonlySet<string> = new Set(['NP', 'NR', 'MM', 'MAJ', 'NNB', 'XPN', 'XSN', 'XSV', 'XSA']);
 
 /** One core row as a compact tuple. */
-export type KoCoreTuple = [lemma: string, tag: string, hom: number, irr: string, gloss: string, hanja: string, pron: string, n: number, voice: string, base: string, clf: number, set: string, glossOwn: number, own: number, bound: number, related: string, hada: number];
+/**
+ * Flag bits of a core row (ONE small number instead of one field per flag, so a row with no other optional field pays only that number):
+ * 1 clf, 2 own, 4 glossOwn, 8 bound, 16 hada, and the state of its set in bits 5 and 6 (32 main, 64 other, 96 balanced). Decoded in one place: the generated core.
+ */
+export const KO_CORE_FLAG = { clf: 1, own: 2, glossOwn: 4, bound: 8, hada: 16, setShift: 5 } as const;
+export const KO_CORE_SET_CODE: Readonly<Record<string, number>> = { main: 1, other: 2, balanced: 3 };
+export function koCoreFlags(e: KoLexEntry): number {
+  return (e.clf ? KO_CORE_FLAG.clf : 0) | (e.own ? KO_CORE_FLAG.own : 0) | (e.glossOwn ? KO_CORE_FLAG.glossOwn : 0) | (e.bound ? KO_CORE_FLAG.bound : 0) | (e.hada ? KO_CORE_FLAG.hada : 0) | ((e.set ? KO_CORE_SET_CODE[e.set] : 0) << KO_CORE_FLAG.setShift);
+}
+
+/** One core row as a compact tuple: lemma, tag, flags, hom, irr, gloss, hanja, pron, n, voice, base, related (trailing empty fields left off). */
+export type KoCoreTuple = [lemma: string, tag: string, flags: number, hom: number, irr: string, gloss: string, hanja: string, pron: string, n: number, voice: string, base: string, related: string];
 
 export function koCoreTuple(e: KoLexEntry): KoCoreTuple {
-  return [e.lemma, e.tag, e.hom ?? 0, e.irr ?? '', e.gloss ?? '', e.hanja ?? '', e.pron ?? '', e.n ?? 0, e.voice ?? '', e.base ?? '', e.clf ? 1 : 0, e.set ?? '', e.glossOwn ? 1 : 0, e.own ? 1 : 0, e.bound ? 1 : 0, e.related ?? '', e.hada ? 1 : 0];
+  return [e.lemma, e.tag, koCoreFlags(e), e.hom ?? 0, e.irr ?? '', e.gloss ?? '', e.hanja ?? '', e.pron ?? '', e.n ?? 0, e.voice ?? '', e.base ?? '', e.related ?? ''];
 }
 export function koCoreTupleJson(t: KoCoreTuple): string {
   const a: unknown[] = [...t];

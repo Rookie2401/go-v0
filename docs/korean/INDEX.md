@@ -1489,6 +1489,6 @@ Hand-written rows for common words the SOURCE LACKS, read by the build and never
 | shards | 26 (prefixes of up to 3 letters by koLexiconShardLetters; limit 600,000 bytes of JSON) |
 | shard bytes | 1.32 MB gzip, 5.4 MB plain |
 | largest shard | `ㅇ` 0.58 MB plain, 0.14 MB gzip |
-| core entries | 6,414 in 5,022 sets (3,890 also under a Hanja key); closed classes NP NR MM MAJ NNB XPN XSN XSV XSA and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
-| core bytes | 416,661 of rows, the file at most 420,000 bytes; forced by core-extra.json: 662 rows, 39,221 bytes (9.3 % of the budget); every field of a shard row is in the core row, `pron` included |
-| running words in the core | 73.4 % of the 308,335 counted morphemes of the classes the lexicon builds (94.0 % of the 240,739 the lexicon covers) have their headword in the core |
+| core entries | 7,239 in 5,680 sets (4,423 also under a Hanja key); closed classes NP NR MM MAJ NNB XPN XSN XSV XSA and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
+| core bytes | 416,506 of rows, the file at most 420,000 bytes; forced by core-extra.json: 662 rows, 35,343 bytes (8.4 % of the budget); every field of a shard row is in the core row, `pron` included |
+| running words in the core | 74.5 % of the 308,335 counted morphemes of the classes the lexicon builds (95.4 % of the 240,739 the lexicon covers) have their headword in the core |

@@ -75,6 +75,8 @@ export function useArPreferences(table?: Readonly<Record<string, readonly string
 interface LemmaInfo { head: string; gloss: string; pos: string; lex: string; count: number; root?: string }
 
 interface Reading {
+  /** The word is a broken plural that is also an entry of its own (see unifyPluralEntries). */
+  pluralEntry?: boolean;
   /** The other heads of the same word folded into this one (ثَانِي into ثَانٍ). */
   variants?: string[];
   segIx: number;
@@ -172,14 +174,78 @@ function lexemeBase(head: string, pos: string): { head: string; pos: string } {
 }
 const lexemeKey = (r: Reading): string => { const b = lexemeBase(r.head, r.pos); return `${r.derived ? 'd:' : ''}${arCanon(b.head)}|${groupId(b.pos)}`; };
 
+const SEAT_RE = /[ؤئ]/;
+/** How many hamza seats of a vocalized head break the standard rule (ئ after a kasra, ؤ after a ḍamma; the stronger vowel of the hamza and of the letter before it decides). */
+function seatViolations(head: string): number {
+  const { key, marks } = splitVocal(head);
+  let bad = 0;
+  for (let i = 0; i < key.length; i++) {
+    if (!SEAT_RE.test(key[i])) continue;
+    const vs = [marks[i]?.vowel, marks[i - 1]?.vowel ?? ''];
+    const strongest = vs.some((v) => v === '\u0650' || v === '\u064D') ? 'k' : vs.some((v) => v === '\u064F' || v === '\u064C') ? 'd' : vs.some((v) => v === '\u064E' || v === '\u064B') ? 'f' : '';
+    if (!((key[i] === 'ئ' && strongest === 'k') || (key[i] === 'ؤ' && strongest === 'd'))) bad++;
+  }
+  return bad;
+}
+/** The same word spelled with the other seat (مَسْئُول / مَسْؤُول, شُئُون / شُؤُون): the standard head when the index holds it with the same part of speech and first gloss. */
+function standardSeatHead(head: string, pos: string, gloss: string): string {
+  if (!SEAT_RE.test(head) || !gloss) return head;
+  const mine = seatViolations(head);
+  if (mine === 0) return head;
+  const swapped = head.replace(/[ؤئ]/g, (c) => (c === 'ؤ' ? 'ئ' : 'ؤ'));
+  const variants = new Set<string>([swapped]);
+  for (let i = 0; i < head.length; i++) if (SEAT_RE.test(head[i])) variants.add(head.slice(0, i) + (head[i] === 'ؤ' ? 'ئ' : 'ؤ') + head.slice(i + 1));
+  for (const v of variants) {
+    const row = lookupArabicLemma(`${v}|${pos}`);
+    if (row && row[1] === gloss && seatViolations(v) < mine) return v;
+  }
+  return head;
+}
+
+/**
+ * A broken plural that is also an entry of its own (وَسَائِل of وَسِيلَة, آثَار of أَثَر, سُكَّان of سَاكِن, أَعْمَال of عَمَل) is the SAME word as the
+ * singular: when lexeme A reads the stem as its own citation form and lexeme B reads it as a plural cell whose vocalized form equals A's head,
+ * they are one lexeme for deciding, so as not to be rivals. The credited lemma is the OWN ENTRY A (the word as the dictionary heads it), unless the
+ * reviewed list names the singular B for the key; notes.variants holds the other head and notes.pluralEntry = 'yes'. Never across segmentations,
+ * never a loose-fold row.
+ */
+function unifyPluralEntries(readings: Reading[], key: string): void {
+  const listed = arMainOf(key);
+  for (const rA of readings) {
+    if (!rA.citation || rA.derived || rA.hand || rA.viaLoose || (rA.pos !== 'NOUN' && rA.pos !== 'ADJ')) continue;
+    for (const rB of readings) {
+      if (rB === rA || rB.segIx !== rA.segIx || rB.derived || rB.hand || rB.viaLoose || arCanon(rB.head) === arCanon(rA.head) || (rB.pos !== 'NOUN' && rB.pos !== 'ADJ')) continue;
+      if (!(rB.morph.PluralType ?? '').split(',').includes('Broken') || rB.citation) continue;
+      if (!sameHead(rA.head, bareHead(applyVocal(rB.stemKey, rB.stemVocal)), rA.pos)) continue;
+      const names = (r: Reading): boolean => !!listed && arKey(listed.lemmaId.split('|')[0]) === arKey(r.head) && sameHead(r.head, listed.lemmaId.split('|')[0], r.pos);
+      // the CREDITED lemma is the own entry A (قِطَار, وَسَائِل), unless the reviewed list names the singular B for the key
+      const keepA = !(names(rB) && !names(rA));
+      const win = keepA ? rA : rB;
+      const lose = keepA ? rB : rA;
+      const loseHead = lose.head;
+      const loseKey = lexemeKey(lose);
+      for (const r of readings) {
+        if (lexemeKey(r) !== loseKey || r.segIx !== rA.segIx) continue;
+        r.variants = [...(r.variants ?? []), loseHead];
+        r.pluralEntry = true;
+        r.head = win.head;
+        r.pos = win.pos;
+      }
+      win.pluralEntry = true;
+      for (const r of readings) if (lexemeKey(r) === lexemeKey(win) && r.segIx === rA.segIx) r.pluralEntry = true;
+    }
+  }
+}
+
 /** Two entries of one part of speech with the same first gloss and keys that differ only by a final ي (ثَانٍ / ثَانِي, مَيِّت / مَيْت) are ONE lexeme: the tanwīn head, else the one with more rows, else the shorter. */
 function unifyVariantHeads(readings: Reading[]): void {
   const groups = new Map<string, Reading[]>();
   for (const r of readings) {
-    if (r.derived || r.hand || r.viaLoose) continue;
+    // verbs are never variants of each other (قَتَلَ form I and قَتَّلَ form II share a key and a gloss and are two lexemes)
+    if (r.derived || r.hand || r.viaLoose || r.pos === 'VERB' || r.pos === 'AUX') continue;
     const gloss = r.info.gloss.trim();
     if (!gloss) continue;
-    const key = `${r.segIx}|${groupId(r.pos)}|${gloss}|${arKey(r.head).replace(/ي$/, '')}`;
+    const key = `${r.segIx}|${groupId(r.pos)}|${gloss}|${arKey(r.head).replace(/[ؤئأإ]/g, 'ء').replace(/ي$/, '')}`;
     const g = groups.get(key);
     if (g) g.push(r); else groups.set(key, [r]);
   }
@@ -282,7 +348,7 @@ function readingsFromHit(env: Env, segIx: number, _stk: string, hit: ArIndexHit,
     if (morph.VerbForm === 'Vnoun') delete morph.Voice;
   }
   if (derived && hasOwnEntry(head)) return [];
-  if (!derived) pos = arGroupPos(head, [pos]);
+  if (!derived) { pos = arGroupPos(head, [pos]); head = standardSeatHead(head, info.pos, info.gloss); }
   // a page that prints vowels writes a hamza where it means one: a bare initial alif is hamzat al-waṣl, so a hamza restored by the fold is contradicted
   if (hit.viaLoose && env.printed.level !== 'none' && /^[أإآ]/.test(hit.key.slice(viaArticle ? 2 : 0)) && seg.stemKey[0] === 'ا') return [];
   const cmp = compareStem(env.printed, seg, hit.key.slice(viaArticle ? 2 : 0), stemVocal, seg.proclitics[seg.proclitics.length - 1]?.id === 'al');
@@ -459,11 +525,16 @@ function marginalByCell(m: Merged): boolean {
 }
 
 let PAGE_FULL = false;
+/** The page is fully vocalized and its LAST letter is printed bare: a citation or pausal form (دَار, قَمَر), never a verb's or a case's ending. */
+let PAGE_BARE_END = false;
+/** Does the stem's last letter carry no vowel in this reading (a citation or pausal form)? */
+const endsBare = (m: Merged): boolean => m.rows.some((r) => { const k = r.stemKey; const v = unpackVocal(k, r.stemVocal)[k.length - 1]; return !v.vowel || v.vowel === 'ْ'; });
 let PAGE_ANY = false;
 function isMarginal(m: Merged, all: Merged[]): boolean {
   const others = all.filter((o) => o.lexeme !== m.lexeme);
   // the page's own vowels selected this cell: a short form of a hollow verb (قُمْ, مُتْ) is not marginal where the marks print it
-  if (marginalByCell(m) && !(PAGE_FULL && m.agreed > 0)) {
+  // (only where no plain rival is supported as well by the printed marks: طَالِب and the imperative طَالِبْ are told apart by the noun, not by the marks)
+  if (marginalByCell(m) && !(PAGE_FULL && m.agreed > 0 && others.filter((o) => !marginalByCell(o)).every((o) => o.agreed < m.agreed))) {
     const mo = m.morph;
     const jussiveLike = (only(mo.Mood, 'Imp') || only(mo.Mood, 'Jus')) && !only(mo.Voice, 'Pass') && !only(mo.Number, 'Dual');
     const passivePerfect3 = only(mo.Voice, 'Pass') && has(mo.Aspect, 'Perf') && only(mo.Person, '3') && only(mo.Number, 'Sing') && only(mo.Gender, 'Masc');
@@ -474,28 +545,40 @@ function isMarginal(m: Merged, all: Merged[]): boolean {
     else if (passivePerfect3 && countOf(m) > 0 && rivals.length && rivals.every((o) => !noClitics(o) && countOf(o) < countOf(m))) { /* not marginal */ }
     else return true;
   }
+  // a fully vocalized page whose last letter is printed bare is a citation or pausal form: a reading that needs a final vowel is marginal beside one that does not
+  if (PAGE_BARE_END && noClitics(m) && !endsBare(m) && others.some((o) => noClitics(o) && endsBare(o) && !o.rows.every((r) => r.viaLoose))) return true;
+  // ... and a pronoun ـهُ / ـكَ whose vowel the vocalized page does not print is not there (سَفِيه is the adjective, not سَفِيَ + ـهُ)
+  if (PAGE_BARE_END && m.seg.enclitics.length > 0 && ['ه', 'ك'].includes(m.seg.enclitics[m.seg.enclitics.length - 1].text) && others.some((o) => noClitics(o) && endsBare(o) && !o.rows.every((r) => r.viaLoose))) return true;
   // a fully vocalized page: a noun's case cell against a finite verb's own citation form (مَدَّ is the verb, not the construct accusative of مَدّ)
   if (PAGE_FULL && (m.pos === 'NOUN' || m.pos === 'ADJ') && m.morph.Case && noClitics(m) && !m.citation
     && others.some((o) => noClitics(o) && o.citation && o.pos === 'VERB' && o.agreed >= m.agreed)) return true;
   // a verbal-noun cell of an entry against the participle derived from a counted verb (المنتجة)
   if (m.morph.VerbForm === 'Vnoun' && !m.rows.every((r) => r.derived)
-    && others.some((o) => o.rows.every((r) => r.derived) && o.morph.VerbForm === 'Part' && countOf(o) > 0 && countOf(m) < 2 * countOf(o))) return true;
+    && others.some((o) => o.rows.every((r) => r.derived) && o.morph.VerbForm === 'Part' && countOf(m) > 0 && countOf(o) > 0 && countOf(m) < 2 * countOf(o))) return true;
   if (!others.length) return false;
   // a reading reached only through the loose fold (a hamza, ى for ي, ة for ه restored) against a reading of the spelling as written
   if (m.rows.every((r) => r.viaLoose) && others.some((o) => o.rows.some((r) => !r.viaLoose))) return true;
   // an alternative-spelling row is marginal against a reading of the spelling as written
   if (m.rows.every((r) => r.usage.includes('alternative')) && others.some((o) => !o.rows.every((r) => r.usage.includes('alternative')))) return true;
   // a broken-plural cell of one noun against another noun's own citation form (الناس: نَاس, not the plural of إِنْسِيّ)
-  if (has(m.morph.PluralType, 'Broken') && !m.citation && (m.pos === 'NOUN' || m.pos === 'ADJ')
-    && others.some((o) => o.citation && (o.pos === 'NOUN' || o.pos === 'ADJ') && o.seg.proclitics.map((c) => c.id).join() === m.seg.proclitics.map((c) => c.id).join())) return true;
+  const sameProcl = (o: Merged): boolean => o.seg.proclitics.map((c) => c.id).join() === m.seg.proclitics.map((c) => c.id).join();
+  const nominal = (x: Merged): boolean => x.pos === 'NOUN' || x.pos === 'ADJ';
+  // (a head read in its own form does not beat the plural of a noun five times commoner; a head whose count is 0 is of UNKNOWN frequency,
+  // not rare, so nothing is decided by this rule there: البرد is not بَرِيد's plural, and الكلاب is settled by the reviewed list)
+  if (has(m.morph.PluralType, 'Broken') && !m.citation && nominal(m)
+    && countOf(m) > 0 && others.some((o) => o.citation && nominal(o) && sameProcl(o) && countOf(o) > 0 && countOf(o) >= countOf(m))) return true;
+  if (all.some((x) => x.lexeme === m.lexeme && x.citation) && nominal(m) && !has(m.morph.PluralType, 'Broken')
+    && countOf(m) > 0 && others.some((o) => !o.citation && has(o.morph.PluralType, 'Broken') && nominal(o) && sameProcl(o) && countOf(o) >= 5 * countOf(m))) return true;
   // a verbal noun or participle that has no entry of its own is marginal against any reading of a real lemma (its own verb included)
   if (m.rows.every((r) => r.derived) && others.some((o) => o.rows.every((r) => !r.derived) && !(m.morph.VerbForm === 'Part' && o.morph.VerbForm === 'Vnoun'))) return true;
   // a proper name against a common word (a name the source cites with the article, اَلمَلِك, الرُّوم: the common noun under ال, مَلِك, leads and the name is listed below it)
   if (m.pos === 'PROPN' && others.some((o) => o.pos !== 'PROPN' && !o.rows.every((r) => r.viaLoose))) return true;
   // a cut against a whole word that is a lemma's own citation form (unless that word has no frequency evidence at all)
   // (a whole word at least twenty times rarer than the lexeme under the cut does not make the cut marginal: باسم is not decided by بَاسِم)
-  if (m.seg.proclitics.length > 0 && others.some((o) => noClitics(o) && countOf(o) * 20 >= countOf(m) && !marginalByCell(o) && !o.rows.every((r) => r.derived)
-    && ((o.citation && !isOpenZero(o)) || ((o.pos === 'NOUN' || o.pos === 'ADJ' || o.pos === 'VERB' || o.pos === 'ADV') && countOf(o) > 0)))) return true;
+  if (m.seg.proclitics.length > 0 && others.some((o) => noClitics(o) && countOf(o) * 20 >= countOf(m) && !marginalByCell(o) && !o.rows.every((r) => r.derived || r.viaLoose)
+    && ((o.citation && !isOpenZero(o)) || ((o.pos === 'NOUN' || o.pos === 'ADJ' || o.pos === 'VERB' || o.pos === 'ADV') && countOf(o) > 0 && countOf(m) > 0)))) return true;
+  // a cut against a whole-word closed-class entry of the same written word (لِأَنَّ is its own entry, not لِ + أَنَّ)
+  if (m.seg.proclitics.length > 0 && others.some((o) => noClitics(o) && CLOSED_POS.has(o.pos) && !o.rows.every((r) => r.viaLoose || r.derived) && !isClosedChain(o))) return true;
   // two or more proclitics, or the question أ, against a whole word that is a finite verb or a nominal cell of a real lemma
   if ((m.seg.proclitics.length >= 2 || m.seg.proclitics.some((c) => c.id === 'a'))
     && others.some((o) => noClitics(o) && !o.rows.every((r) => r.derived) && (o.pos === 'NOUN' || o.pos === 'ADJ' || o.pos === 'PROPN' || (o.pos === 'VERB' && o.morph.VerbForm === 'Fin')))) return true;
@@ -596,7 +679,9 @@ function decide(key: string, merged: Merged[], printed: Printed, partial = false
   }
   // a chain made only of closed-class words (و / ف + a particle or pronoun, a preposition with its pronoun, إنه, كلانا) leads any open-class whole word
   if (!CHAIN_EXCEPTIONS.has(key)) {
-    const closedChains = merged.filter(isClosedChain);
+    // (a written word that is a closed-class entry of its own, لِأَنَّ, is not led by a cut of it)
+    const wholeClosed = merged.some((m) => noClitics(m) && CLOSED_POS.has(m.pos) && !m.rows.some((r) => r.viaLoose || r.derived || r.hand?.suffix) && !isClosedChain(m));
+    const closedChains = merged.filter(isClosedChain).filter((m) => !(wholeClosed && m.seg.proclitics.length > 0));
     const wholePlain = merged.some((m) => noClitics(m) && !isClosedChain(m) && OPEN_ZERO_POS.has(m.pos) && !m.rows.some((r) => r.derived || r.hand || r.viaLoose) && countOf(m) > 0 && !marginalByCell(m));
     if (closedChains.length && !(wholePlain && closedChains.every((m) => m.seg.proclitics.length > 0))) {
       const lex = new Set(closedChains.map((m) => m.lexeme));
@@ -746,6 +831,7 @@ function toCandidate(m: Merged, p: Printed, confidence: number, identity: string
   if (!notes.spelling && m.rows.every((r) => r.usage.includes('alternative'))) notes.spelling = 'variant';
   const variants = [...new Set(m.rows.flatMap((r) => r.variants ?? []))];
   if (variants.length) notes.variants = variants.join(', ');
+  if (m.rows.some((r) => r.pluralEntry)) notes.pluralEntry = 'yes';
   if (identity) notes.identity = identity;
   const closedInfo = arClosedFor(m.stemKey).find((e) => arKey(e.lemma) === arKey(m.head) && e.pos === m.pos && !e.suffix) ?? arClosedFor(m.stemKey).find((e) => arKey(e.lemma) === arKey(m.head) && !e.suffix);
   const governs = row0.governs ?? closedInfo?.governs;
@@ -930,6 +1016,7 @@ function readSurface(token: RawToken, text: string, at: number[] | undefined, qu
   const level = tashkilLevel(text);
   const printed: Printed = { map, surface: text, orig: token.surface, ...(at ? { at } : {}), level, any: level !== 'none', ...(restored ? { restored: true } : {}) };
   PAGE_FULL = level === 'full';
+  PAGE_BARE_END = level === 'full' && !/[ً-ِْٰ]/.test(printedSlice(map, text, map.key.length - 1, map.key.length));
   PAGE_ANY = level !== 'none';
   const keys: Array<{ key: string }> = [{ key: surfaceKey }];
   if (T.endsInFarsiYeh(text)) { const alt = surfaceKey.replace(/ي$/, 'ى'); if (alt !== surfaceKey) keys.push({ key: alt }); }
@@ -939,8 +1026,9 @@ function readSurface(token: RawToken, text: string, at: number[] | undefined, qu
     const env: Env = { printed, surfaceKey: k.key, quranic, segs };
     const readings = dropDerivedDuplicates(dropShadowedCuts(gatherReadings(env)));
     unifyVariantHeads(readings);
+    unifyPluralEntries(readings, k.key);
     // is the last letter's vowel printed? (then rows with another ending are told apart)
-    const lastMarked = /[ً-ْ]/.test(printedSlice(map, text, k.key.length - 1, k.key.length));
+    const lastMarked = /[ً-ِْ]/.test(printedSlice(map, text, k.key.length - 1, k.key.length));
     const accusative = /[\u064B\u064E]/.test(printedSlice(map, text, k.key.length - 1, k.key.length));
     for (const m of prune(mergeReadings(readings, lastMarked, accusative), lastMarked)) merged.push(m);
   }
@@ -983,10 +1071,12 @@ function readSurface(token: RawToken, text: string, at: number[] | undefined, qu
     return { m, c, identity, top: topLexeme, marginal: merged.length > 1 && isMarginal(m, merged) };
   });
 
+  // one part of speech per lexeme: a NOUN / ADJ head is credited under the one arGroupPos names, whatever cell or row a reading came from
+  for (const sc of scored) if (!sc.m.rows[0].derived && groupId(sc.m.pos) === 'NOUN/ADJ') sc.m.pos = arGroupPos(sc.m.head, [sc.m.pos]);
   const forms = new Set(scored.map((s) => vocalizedWord(s.m)));
   const count = (s: { m: Merged }): number => Math.max(...s.m.rows.map((r) => r.info.count));
   const derivedCut = (s: { m: Merged }): number => (s.m.rows[0].derived ? (noClitics(s.m) ? 1 : 2) : 0);
-  scored.sort((a, b) => (b.c - a.c) || (Number(b.top) - Number(a.top)) || (Number(a.marginal) - Number(b.marginal)) || (derivedCut(a) - derivedCut(b)) || (count(b) - count(a))
+  scored.sort((a, b) => (b.c - a.c) || (Number(b.top) - Number(a.top)) || (PAGE_FULL ? Number(b.m.citation) - Number(a.m.citation) : 0) || (Number(a.marginal) - Number(b.marginal)) || (derivedCut(a) - derivedCut(b)) || (count(b) - count(a))
     || ((a.m.seg.proclitics.length + a.m.seg.enclitics.length) - (b.m.seg.proclitics.length + b.m.seg.enclitics.length)) || a.m.lexeme.localeCompare(b.m.lexeme));
 
   // cap: the best of each lexeme first, then the rest in order

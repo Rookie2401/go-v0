@@ -55,11 +55,11 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | core | 1731 lemmas (255 of closed classes, 2 seeded), 2686 keys, 13237 rows, 499,652 bytes of JSON (budget 500,000) |
 | core token coverage on ar_50k (running words whose key is a core key) | 56.27 % of 149,102,962 (clitic forms are not keys) |
 | identity checks accepted through a numbered sibling of the main id / through the loose fold | 2 / 2 (counted apart from the clean ones above) |
-| lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | 1,888 / 74 / 7 / 110 / 2 |
-| reviewed preferences (preferences-reviewed.json) merged / derived pairs they overrode / pairs removed by its balanced list / lexemes not in the index (skipped); derived pairs before the merge | 93 / 0 / 0 / 0; 1,279 |
-| preferences emitted: pairs / distinct losers / distinct winners | 1,363 / 1,209 / 592 |
-| lemma ids with count 0 (counts by lexeme group: own keys of the group, plus the weaker decided-key term, weight 0.25; before the group rule 22,516) | 21,102 of 27,089 |
-| identities file | src/adapters/arabic/identities.json: 862 keys credited to their main lemma; checked clean 861, failed 7 (7 naming a lemma id not in the index) |
+| lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | 1,903 / 74 / 7 / 110 / 2 |
+| reviewed preferences (preferences-reviewed.json) merged / derived pairs they overrode / pairs removed by its balanced list / lexemes not in the index (skipped); derived pairs before the merge | 93 / 0 / 0 / 0; 1,293 |
+| preferences emitted: pairs / distinct losers / distinct winners | 1,377 / 1,223 / 594 |
+| lemma ids with count 0 (counts by lexeme group: own keys of the group, plus the weaker decided-key term, weight 0.25; before the group rule 22,516) | 21,101 of 27,089 |
+| identities file | src/adapters/arabic/identities.json: 866 keys credited to their main lemma; checked clean 865, failed 7 (7 naming a lemma id not in the index) |
 
 ## Count (order of readings)
 

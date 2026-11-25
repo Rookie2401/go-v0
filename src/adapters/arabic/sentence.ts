@@ -48,8 +48,6 @@ let CURRENT_RULE = '';
 export function arRuleLogging(on: boolean): void { LOGGING = on; if (on) AR_RULE_LOG.length = 0; }
 
 const SHADDA = '\u0651';
-/** A three-letter verb with a doubled middle letter: where the word level reads a spelling ONLY as such a verb, the plain verb is missing from its readings (قتل is read as قَتَّلَ alone), and the lone lexeme is not raised. */
-const suspectShadow = (c: Cand): boolean => G.isPos(c, 'VERB') && !!c.lemma && c.lemma.includes(SHADDA) && arKey(c.lemma).length === 3;
 /** The id of a reading's lexeme as the index and the preference table write it ("كَتَبَ|VERB"). */
 const lexemeId = (c: Cand): string => `${c.lemma ?? ''}|${c.pos ?? ''}`;
 /** Is lexeme `winner` reviewed as preferred over lexeme `loser` (generated/preferences.ts: the loser's row lists the winners)? */
@@ -96,6 +94,9 @@ function settleLexemes(cs: Cand[], surfaceKey: string): { lexeme: string; by: 'p
  *   citationForm        two nouns left: the one in its own citation form (من البرد)       aggregate on the dev set: 10 decisions, 2 wrong   reorders
  */
 const WINDOW_DECIDES = { verbSubjectObject: true, subjectVerbPrep: true, verbSubjectOther: false, passiveWulida: false, boyWithAdjective: false, constructHeads: false, demonstrativeNoun: false, afterConstructFirst: false, citationForm: false } as const;
+
+/** A noun with a possessive pronoun written onto it (يَدَهُ): definite by its owner. */
+const possessed = (c: Cand): boolean => !!c.parts?.some((q) => q.kind === 'suffix' && /possessive/.test(q.role ?? ''));
 
 /** What the sentence layer lowers an excluded reading to: below the 0.5 that credits a lexeme. */
 const EXCLUDED = 0.4;
@@ -258,8 +259,18 @@ export class ArSentence {
       ctx(c, `Set aside: ${why}.`);
       changed = true;
     }
-    const shadow = lex.size === 1 && base.every((c) => suspectShadow(c));
-    if (lex.size === 1 && this.raise[i] && !shadow) {
+    // a noun window says "a noun", not which: a noun lexeme the word level leads with that is read ONLY as a plural cell (البرد as بَرِيد, the plural بُرُد) while another noun is
+    // in its own citation form (بَرْد) does not stay credited
+    if (lex.size > 1 && base.every((c) => G.isPos(c, 'NOUN', 'ADJ')) && this.raise[i]) {
+      const stem = (c: Cand): string => { const pre = (c.parts ?? []).filter((q) => q.kind === 'prefix').reduce((n, q) => n + arKey(q.text).length, 0); const suf = (c.parts ?? []).filter((q) => q.kind === 'suffix').reduce((n, q) => n + arKey(q.text).length, 0); return this.keys[i].slice(pre, this.keys[i].length - suf); };
+      const own = (c: Cand): boolean => !!c.lemma && arLoose(arKey(c.lemma)) === arLoose(stem(c)) && !G.hasVal(c, 'Number', 'Plur') && c.morph.PluralType !== 'Broken';
+      const pluralOnly = (k: string): boolean => base.filter((c) => G.lexemeOf(c) === k).every((c) => G.hasVal(c, 'Number', 'Plur') && !G.hasVal(c, 'Number', 'Sing') && !own(c));
+      for (const k of lex) {
+        if (!pluralOnly(k) || ![...lex].some((o) => o !== k && base.some((c) => G.lexemeOf(c) === o && own(c)))) continue;
+        for (const c of base) if (G.lexemeOf(c) === k && c.confidence >= 0.5) { c.confidence = UNDECIDED; ctx(c, 'A noun is expected here; a plural cell does not decide which noun.'); changed = true; }
+      }
+    }
+    if (lex.size === 1 && this.raise[i]) {
       const only = [...lex][0];
       const group = base.filter((c) => G.lexemeOf(c) === only);
       const best = Math.max(...group.map((c) => c.confidence));
@@ -936,7 +947,7 @@ function afterSubjectOk(s: ArSentence, k: number): boolean {
   if (PREP_LOOSE.has(arLoose(key)) && s.any(k, (c) => G.isPos(c, 'ADP'))) return true;
   if (['ان', 'أن', 'إن', 'بان', 'بأن', 'لان', 'لأن', 'ان'].includes(key) || ['ان'].includes(arLoose(key))) return true;
   if (ADVERBS_AFTER.has(key)) return true;
-  return s.effAll(k, (c) => G.isPos(c, 'NOUN') && G.isDefinite(c)) && !s.any(k, G.isFiniteVerb);
+  return s.effAll(k, (c) => G.isPos(c, 'NOUN') && (G.isDefinite(c) || possessed(c)));
 }
 
 /**
@@ -970,7 +981,7 @@ function ruleVerbSubjectObject(s: ArSentence): void {
       const m = s.next(k), n = m >= 0 ? s.next(m) : -1;
       if (n >= 0 && s.any(n, (c) => G.isNominal(c) && !G.isDefinite(c)) && !s.any(n, (c) => G.isPos(c, 'ADP', 'ADV', 'PART', 'CONJ', 'SCONJ')) && !/[\u0627\u064B]$/.test(s.surface(n).replace(/[\u064B-\u0652]+$/, (x) => (x.includes('\u064B') ? '\u064B' : ''))) ) continue;
     }
-    const objectNoun = s.effAll(k, (c) => G.isPos(c, 'NOUN') && G.isDefinite(c)) && s.effAll(j, (c) => G.isPos(c, 'NOUN') && G.isDefinite(c)) && !PREP_LOOSE.has(arLoose(s.keys[k]));
+    const objectNoun = s.effAll(k, (c) => G.isPos(c, 'NOUN') && (G.isDefinite(c) || possessed(c))) && s.effAll(j, (c) => G.isPos(c, 'NOUN') && G.isDefinite(c)) && !PREP_LOOSE.has(arLoose(s.keys[k]));
     const whyA = `a verb, then the subject «${s.surface(j)}» and «${s.surface(k)}», which a construct phrase cannot continue with: the first word is the verb`;
     if (objectNoun ? WINDOW_DECIDES.verbSubjectObject : WINDOW_DECIDES.verbSubjectOther) decideVerb(s, i, verb3, whyA, objectNoun ? DECIDED : 0.75);
     else s.prefer(i, verb3, whyA.replace('is the verb', 'is likely the verb'));

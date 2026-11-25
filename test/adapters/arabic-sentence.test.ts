@@ -378,10 +378,23 @@ describe.skipIf(!fs.existsSync(MANIFEST))('with the full index', () => {
       expect(top(run(t), i).notes?.identity, t).not.toBe('sentence');
     }
   });
-  it('R5: a form II verb on a three-letter spelling is never raised alone (the plain verb may be missing from the index): قتل الجندي العدو في المعركة', () => {
-    const a = run('قتل الجندي العدو في المعركة');
-    expect(cands(a, 0).some((c) => c.notes?.identity === 'sentence' && c.pos === 'VERB')).toBe(false);
-    expect(credited(cands(a, 0))).toEqual([]);
+  it('R5 with the preferences: among the verbs left the reviewed twin settles it: قتل / رفع / أمر + subject + object is قَتَلَ / رَفَعَ / أَمَرَ', () => {
+    for (const [t, lemma] of [['قتل الجندي العدو في المعركة', 'قَتَلَ']] as Array<[string, string]>) {
+      const v = top(run(t), 0);
+      expect(v, t).toMatchObject({ lemma, pos: 'VERB' });
+      expect(v.confidence, t).toBeGreaterThanOrEqual(0.75);
+      expect(v.notes?.identity, t).toBe('sentence');
+    }
+  });
+  it('R5: أمر القائد الجنود بالتقدم: the nouns go; أَمَرَ stays open with أَمِرَ and آمَرَ (the table prefers it only over أَمَّرَ)', () => {
+    const a = run('أمر القائد الجنود بالتقدم');
+    expect(cands(a, 0).filter((c) => c.pos !== 'VERB').every((c) => c.confidence <= 0.4)).toBe(true);
+    expect(cands(a, 0).some((c) => c.lemma === 'أَمَرَ' && c.pos === 'VERB')).toBe(true);
+  });
+  it('R5: رفع الرجل يده: the noun رَفْع goes; رَفَعَ and the rare رَفُعَ stay open until the table prefers one (no such pair yet)', () => {
+    const a = run('رفع الرجل يده');
+    expect(cands(a, 0).filter((c) => c.pos === 'NOUN').every((c) => c.confidence <= 0.4)).toBe(true);
+    expect(cands(a, 0).some((c) => c.lemma === 'رَفَعَ' && c.pos === 'VERB')).toBe(true);
   });
   it('R5 passive وُلِدَ is REORDER-ONLY (17 audited firings, 16 right): the verb goes first and says why, and stays under 0.5', () => {
     for (const [t, i] of [['ولد محمد في القاهرة عام ١٩٥٠', 0], ['وقد ولد الطفل في المستشفى', 1]] as Array<[string, number]>) {
@@ -403,7 +416,10 @@ describe.skipIf(!fs.existsSync(MANIFEST))('with the full index', () => {
   });
   it('item 6: a noun window never chooses between two noun lexemes by itself: من البرد is not "mail", عن الكذب is not "liar", في العلم is not decided', () => {
     expect(cands(run('من البرد'), 1).filter((c) => c.lemma === 'بَرِيد').every((c) => c.confidence < 0.5)).toBe(true);
+    expect(credited(cands(run('من البرد'), 1)).includes('بَرِيد|NOUN|')).toBe(false);
     expect(cands(run('عن الكذب'), 1).filter((c) => c.lemma === 'كَاذِب').every((c) => c.confidence < 0.5)).toBe(true);
+    // the list reads العلم as ال + عِلْم: never عَلَم raised by the window
+    expect(cands(run('في العلم'), 1).filter((c) => c.lemma === 'عَلَم').every((c) => c.confidence < 0.5)).toBe(true);
     expect(top(run('في العلم'), 1).notes?.identity).not.toBe('sentence');
     expect(credited(cands(run('في العلم'), 1)).length).toBeLessThanOrEqual(1);
   });

@@ -172,11 +172,12 @@ const stats = {
   headTrimmed: 0, headFromExpansion: 0, headUnvocalized: 0, headKeyMismatch: 0, noCanonical: 0,
   ruleChanged: {} as Record<string, number>, mergedIds: 0, homonymPairs: 0, homonymExtra: 0,
   participleDropped: 0, participleKept: 0,
-  rootEntries: 0, rootMalformed: 0, rootTemplate: 0, rootCategory: 0, rootBoth: 0, rootDisagree: 0, rootCategoryAmbiguous: 0, multiHeadEntries: 0, extraHeads: 0, multiCanonUnsplit: 0, aliasUncontracted: 0, vfFormFromRows: 0, firstPersonGender: 0, firstPersonMerged: 0, vfRowDisagree: 0, vfSubLines: 0, oneTableSplit: 0, oneTableUnmatched: 0, vfFormFromHead: 0, unvocRows: {} as Record<string, number>, genderTag: 0, genderHead: 0, declUniform: 0, declMixed: 0,
+  rootEntries: 0, rootMalformed: 0, rootTemplate: 0, rootCategory: 0, rootBoth: 0, rootDisagree: 0, rootCategoryAmbiguous: 0, multiHeadEntries: 0, extraHeads: 0, multiCanonUnsplit: 0, aliasUncontracted: 0, vfFormFromRows: 0, firstPersonGender: 0, firstPersonMerged: 0, vfRowDisagree: 0, vfSubLines: 0, oneTableSplit: 0, participleEntries: 0, participleOf: 0, idClean: 0, idFail: 0, cliticExcluded: 0, noTableLemmas: 0, noTableWithRow: 0, noTableSpace: 0, adjFemPages: 0, adjFemPagesNew: 0, adjFemLemmas: 0, adjLemmas: 0, coreCompleted: 0, corePartial: 0, corePartialShare: 0, oneTableUnmatched: 0, vfFormFromHead: 0, unvocRows: {} as Record<string, number>, genderTag: 0, genderHead: 0, declUniform: 0, declMixed: 0,
   regCla: 0, regMsa: 0, resolvedByTier: { samePos: 0, nominal: 0, any: 0 } as Record<string, number>,
 };
 const invalidExamples: string[] = [];
 const invalidHeadExamples: string[] = [];
+const cliticExamples: string[] = [];
 const noteInvalid = (s: string): void => { const l = s.startsWith('head of ') ? invalidHeadExamples : invalidExamples; if (l.length < 20) l.push(s); };
 const registerTags: Record<string, number> = {};
 const unresolved = new Map<string, number>();
@@ -377,9 +378,21 @@ const EXP_BARE = /^#\s*([a-z][a-z/ -]*?)\s+of\s+(\S+)\s*\(/u;
       for (const s of real) for (const t of strs(s.tags)) if (/^(Classical|archaic|obsolete|pre-Classical|post-Classical|dated|poetic|literary|rare|historical|dialectal|colloquial|Modern|modern|Standard|slang|vulgar|nonstandard|proscribed|regional|uncommon|formal|informal|Egypt|Levantine|Morocco|Yemen|Iraq|Kuwait|Palestine|Mauritania|al-Andalus)$/.test(t)) inc(registerTags, t);
       const isCla = real.length > 0 && real.every((s) => strs(s.tags).some((t) => CLA_MARKS.has(t)));
       const isMsa = !isCla && real.length > 0 && real.every((s) => strs(s.tags).some((t) => MSA_MARKS.has(t)));
+      // A participle (an entry of the verb class in the extract whose head is "active / passive participle of X", with no verb head template) is an adjective to the learner:
+      // ADJ, VerbForm=Part, Voice, and the verb it comes from (Of=) as the sense's own text names it.
+      const partForm = formSenses.find((s2) => strs(s2.tags).includes('participle') && list(s2.form_of).length > 0);
+      const partGloss = partForm ? 'participle' : real.map((s2) => strs(s2.glosses)[0] ?? '').find((g) => /(active|passive) participle of \S+/.test(g));
+      const partSense = pos === 'VERB' && heads[0]?.name !== 'ar-verb' && (real.some((s2) => strs(s2.tags).includes('participle')) || !!partGloss);
+      const lpos = partSense ? 'ADJ' : pos;
       for (const grp of grps) {
         const h = headOf(e, word, key, grp.canon ? [grp.canon] : formRows, grp.exp, !!grp.canon);
         if (!h) { stats.skip.headRejected++; noteInvalid(`head of ${word}: ${(grp.canon ? [grp.canon] : formRows.filter((f) => strs(f.tags).includes('canonical'))).map((f) => f.form).join(' / ').slice(0, 60)}`); continue; }
+        // a closed-class clitic (بِـ, ـهَا, وَ, أَ: written with a tatweel at an edge or as one bare letter) is no word of the index: the analyser has its own clitic table
+        if (['PRON', 'DET', 'ADP', 'CONJ', 'PART'].includes(pos) && (/^\u0640|\u0640$/.test(h.head) || arKey(h.head).length === 1)) {
+          stats.cliticExcluded++;
+          if (cliticExamples.length < 40) cliticExamples.push(`${h.head} (${pos})`);
+          continue;
+        }
         if (h.how === 'expansion') stats.headFromExpansion++;
         if (h.how === 'word') stats.noCanonical++;
         if (arKey(h.head) !== key) stats.headKeyMismatch++;
@@ -403,6 +416,19 @@ const EXP_BARE = /^#\s*([a-z][a-z/ -]*?)\s+of\s+(\S+)\s*\(/u;
           const ft = canonTags.find((t) => /^form-/.test(t)) ?? (grp.canon ? undefined : formRows.flatMap((f) => strs(f.tags)).find((t) => /^form-/.test(t)));
           if (ft) { const f = ft.slice(5); lex.Form = f.endsWith('q') ? `${f.slice(0, -1).toUpperCase()}q` : f.toUpperCase(); }
         }
+        if (partSense) {
+          stats.participleEntries++;
+          lex.VerbForm = 'Part';
+          const sg = real.flatMap((s2) => strs(s2.tags));
+          const ofWord = partForm ? str((list(partForm.form_of).filter(isObj)[0] as Record<string, unknown> | undefined)?.word)?.normalize('NFC') : undefined;
+          const pt = partForm ? strs(partForm.tags) : [];
+          const m: string[] | null = ofWord ? ['', pt.includes('passive') ? 'passive' : pt.includes('active') ? 'active' : '', ofWord] : null;
+          const voice = m && m[1] ? (m[1] === 'active' ? 'Act' : 'Pass') : sg.includes('active') ? 'Act' : sg.includes('passive') ? 'Pass' : undefined;
+          if (voice) lex.Voice = voice;
+          if (m && validWord(m[2].normalize('NFC'))) { lex.Of = arHeadForm(m[2].normalize('NFC'), 'VERB'); stats.participleOf++; }
+          const ft = sg.find((t) => /^form-/.test(t));
+          if (ft) { const f = ft.slice(5); lex.Form = f.endsWith('q') ? `${f.slice(0, -1).toUpperCase()}q` : f.toUpperCase(); }
+        }
         const tableCells = cellsOf(grp.table, false);
         // Decl: uniform over every row that carries a declension class
         const decls = new Set<string>();
@@ -410,7 +436,7 @@ const EXP_BARE = /^#\s*([a-z][a-z/ -]*?)\s+of\s+(\S+)\s*\(/u;
         if (decls.size === 1) { lex.Decl = [...decls][0]; stats.declUniform++; } else if (decls.size > 1) stats.declMixed++;
         if (isCla) { lex.Reg = 'Cla'; stats.regCla++; } else if (isMsa) { lex.Reg = 'Msa'; stats.regMsa++; }
         const citeTags = canonTags.length ? canonTags : ['canonical'];
-        ents.push({ pos, word, head: h.head, headRaw: h.head, etym: Number.isFinite(en) ? en : 9999, gloss, order, lex, root, table: tableCells, headline: cellsOf(grp.headline, true), citation: intern(citeTags), lemma: -1 });
+        ents.push({ pos: lpos, word, head: h.head, headRaw: h.head, etym: Number.isFinite(en) ? en : 9999, gloss, order, lex, root, table: tableCells, headline: cellsOf(grp.headline, true), citation: intern(citeTags), lemma: -1 });
       }
     }
 
@@ -627,8 +653,10 @@ for (let i = 0; i < pages.length; i++) {
     const tags = t.tags.length ? t.tags : ['form-of'];
     const pr = prepare(form, tags);
     if (!pr) continue;
-    if (hasFormUnder(pr.key, l, pr.vocal) || (!pr.vocal && hasFormUnder(pr.key, l, '', true))) { stats.skip.pageBlockedByRow++; continue; }
-    if (addRaw(pr.key, l, intern(tags), pr.vocal)) { if (p.vf) stats.rowsVerbPage++; else stats.rowsPage++; }
+    if (hasFormUnder(pr.key, l, pr.vocal) || (!pr.vocal && hasFormUnder(pr.key, l, '', true))) { stats.skip.pageBlockedByRow++; if (lemmaRows[l][2] === 'ADJ' && tags.includes('feminine')) stats.adjFemPages++; continue; }
+    const newRow = addRaw(pr.key, l, intern(tags), pr.vocal);
+    if (lemmaRows[l][2] === 'ADJ' && tags.includes('feminine')) { stats.adjFemPages++; if (newRow) stats.adjFemPagesNew++; }
+    if (newRow) { if (p.vf) stats.rowsVerbPage++; else stats.rowsPage++; }
   }
 }
 origin = 'headline';
@@ -645,6 +673,13 @@ for (const en of ents) {
 
 // ───────────────────────────── derived figures, counts ─────────────────────────────
 
+for (const en of ents) if (!en.table.length) { stats.noTableLemmas++; if (lemmaKeys[en.lemma].length) stats.noTableWithRow++; else if (en.head.includes(' ')) stats.noTableSpace++; }
+{
+  const hasFem = new Set<number>();
+  for (const rows of forms.values()) for (const r of rows) if (lemmaRows[r[0]][2] === 'ADJ' && tagsOf(r[1]).includes('feminine')) hasFem.add(r[0]);
+  stats.adjFemLemmas = hasFem.size;
+  stats.adjLemmas = lemmaRows.filter((r) => r[2] === 'ADJ').length;
+}
 const keys = [...forms.keys()].sort();
 let rowTotal = 0;
 const holders = new Map<string, number>(); // key → number of distinct lemma ids
@@ -654,19 +689,59 @@ const multiLemmaKeys = [...holders.values()].filter((n) => n > 1).length;
 
 // count: own keys' frequency + keys an identities file names this lemma for; shared undecided keys add nothing
 const idNum = new Map(lemmaIds.map((id, i) => [id, i]));
+// an identities value is a lemma id, optionally with proclitic letters before it and enclitic letters after it ("و+<id>", "<id>+ي"): the stem key is the key with those letters removed
+function parseIdentity(v: string): { id: string; pre: string[]; post: string[] } | undefined {
+  const parts = v.split('+');
+  const i = parts.findIndex((p) => p.includes('|'));
+  return i < 0 ? undefined : { id: parts[i], pre: parts.slice(0, i), post: parts.slice(i + 1) };
+}
+function stemKeyOf(key: string, pre: string[], post: string[]): string {
+  let k = key;
+  for (const p of pre) { const pk = arKey(p); if (pk && k.startsWith(pk) && k.length > pk.length) k = k.slice(pk.length); }
+  for (const p of [...post].reverse()) { const pk = arKey(p); if (pk && k.endsWith(pk) && k.length > pk.length) k = k.slice(0, k.length - pk.length); }
+  return k;
+}
+const idInfo = new Map<string, { n: number | undefined; stem: string; raw: string }>();
+const mainByKey = new Map<string, number>(); // a key (whole or stem) → the lemma the reviewed list names as its main reading
+for (const [k, v] of Object.entries(identities)) {
+  if (!v) continue;
+  const p = parseIdentity(v);
+  const n = p ? idNum.get(p.id) : undefined;
+  const stem = p ? stemKeyOf(k, p.pre, p.post) : k;
+  idInfo.set(k, { n, stem, raw: v });
+  if (n !== undefined) { mainByKey.set(k, n); if (stem !== k && !mainByKey.has(stem) && !(stem in identities)) mainByKey.set(stem, n); }
+}
 const counts = new Array<number>(lemmaIds.length).fill(0);
 const shareCounts = new Array<number>(lemmaIds.length).fill(0); // the old definition (frequency / holders): used only to admit closed classes to the core
 let identityApplied = 0;
 let identityUnknown = 0;
+const identityFailures: string[] = [];
 for (const k of keys) {
   const f = freq.get(k) ?? 0;
   const rs = forms.get(k)!;
   const ls = [...new Set(rs.map((r) => r[0]))];
   for (const l of ls) shareCounts[l] += f / ls.length;
   if (!f) continue;
-  const named = identities[k];
-  if (named) { const n = idNum.get(named); if (n === undefined || !ls.includes(n)) identityUnknown++; else { counts[n] += f; identityApplied++; continue; } }
+  if (idInfo.get(k)?.n !== undefined) continue; // a listed key is credited to its main lemma below
   if (ls.length === 1) counts[ls[0]] += f;
+}
+for (const [k, ip] of idInfo) if (ip.n !== undefined) { const f = freq.get(k) ?? 0; if (f) { counts[ip.n] += f; identityApplied++; } }
+// the check for the lead: every listed key whose lemma is missing or has no row on the key or its stem key
+{
+  const lines: string[] = [];
+  for (const [k, v] of Object.entries(identities)) {
+    if (!v) continue;
+    const p = parseIdentity(v);
+    const info = idInfo.get(k)!;
+    const here = new Set((forms.get(k) ?? []).map((r) => lemmaIds[r[0]]));
+    const there = new Set((forms.get(info.stem) ?? []).map((r) => lemmaIds[r[0]]));
+    if (!p || info.n === undefined) { identityUnknown++; stats.idFail++; lines.push(`${k}	${v}	lemma id not in the index	${[...here].join(' ')}`); continue; }
+    if (here.has(p.id) || there.has(p.id)) { stats.idClean++; continue; }
+    stats.idFail++;
+    lines.push(`${k}	${v}	no row of ${p.id} on ${k} or ${info.stem}	on ${k}: ${[...here].join(' ') || '-'}; on ${info.stem}: ${[...there].join(' ') || '-'}`);
+  }
+  if (opt['identities-check']) fs.writeFileSync(opt['identities-check'], `${lines.join('\n')}\n`);
+  identityFailures.push(...lines.slice(0, 30));
 }
 for (let l = 0; l < lemmaRows.length; l++) lemmaRows[l][4] = Math.round(counts[l]);
 // share of running words by number of lemma ids of the key
@@ -837,12 +912,33 @@ function marginalOrder(first: number[]): number[] {
 const ranked = CORE_RANK === 'own' ? [...closed, ...seedIds, ...open.filter((l) => !seeded.has(l))] : [...closed, ...seedIds, ...marginalOrder([...closed, ...seedIds])];
 const fixedCount = closed.length + seedIds.length;
 
-function coreWith(n: number): ArabicFormIndex {
+/** A key the core holds for only some of the lexemes the full index has for it is COMPLETED (the missing lexemes' rows added, when few) or listed in `partial`. */
+const COMPLETE_ROWS = Number(opt['complete-rows'] ?? 8);
+const COMPLETE_LEMMAS = Number(opt['complete-lemmas'] ?? 3);
+function coreWith(n: number): ArabicFormIndex & { completed: number } {
   const chosen = new Set(ranked.slice(0, n));
   const theKeys = [...new Set(ranked.slice(0, n).flatMap((l) => lemmaKeys[l].filter((k) => inCore(l, k))))].sort();
-  const idx = buildIndex('ar-core', undefined, theKeys, (l, k) => chosen.has(l) && inCore(l, k));
-  idx.stats = { lemmas: 99999, closedLemmas: 99999, keys: 999999, rows: 999999, tokenCoverage: 0.9999, tokens: 99999999, seedLemmas: 9999 };
-  return idx;
+  const extra = new Map<string, Set<number>>();
+  const partial: string[] = [];
+  let completed = 0;
+  for (const k of theKeys) {
+    const miss = new Map<number, number>();
+    for (const r of forms.get(k)!) if (!(chosen.has(r[0]) && inCore(r[0], k))) miss.set(r[0], (miss.get(r[0]) ?? 0) + 1);
+    if (!miss.size) continue;
+    const add = new Set<number>();
+    const main = mainByKey.get(k);
+    // the reviewed identities list decides a key even when it stays partial: its main lemma always has its rows
+    if (main !== undefined && miss.has(main)) { add.add(main); miss.delete(main); }
+    if (miss.size) {
+      const total = [...miss.values()].reduce((a, b) => a + b, 0);
+      if (total <= COMPLETE_ROWS && miss.size <= COMPLETE_LEMMAS) { for (const l of miss.keys()) add.add(l); completed++; } else partial.push(k);
+    } else if (add.size) completed++;
+    if (add.size) extra.set(k, add);
+  }
+  const idx = buildIndex('ar-core', undefined, theKeys, (l, k) => (chosen.has(l) && inCore(l, k)) || !!extra.get(k)?.has(l));
+  if (partial.length) idx.partial = partial.sort();
+  idx.stats = { lemmas: 99999, closedLemmas: 99999, keys: 999999, rows: 999999, tokenCoverage: 0.9999, tokens: 99999999, seedLemmas: 9999, completedKeys: 99999, partialKeys: 99999, partialShare: 0.9999 };
+  return Object.assign(idx, { completed });
 }
 const coreSize = (n: number): number => Buffer.byteLength(JSON.stringify(coreWith(n)));
 function fitCore(budget: number): number {
@@ -857,10 +953,15 @@ const projections: string[] = [];
 for (const b of [350_000, 500_000, 800_000]) { const n = fitCore(b); projections.push(`${fmt(b)} bytes: ${n} lemmas, tokenCoverage ${coverageOf(coreWith(n))}`); }
 console.log(`core budget projections (nothing stored): ${projections.join('; ')}`);
 const lo = fitCore(CORE_BUDGET);
-const core = coreWith(lo);
+const { completed: completedKeys, ...core } = coreWith(lo);
 const tokenCoverage = coverageOf(core);
+const partialSet = new Set(core.partial ?? []);
+let partialMass = 0;
+for (const [k, n] of freq) if (partialSet.has(k)) partialMass += n;
+const partialShare = Math.round((partialMass / freqTotal) * 10000) / 10000;
+stats.coreCompleted = completedKeys; stats.corePartial = partialSet.size; stats.corePartialShare = partialShare;
 const coreRows = Object.values(core.forms).reduce((s, r) => s + r.length, 0);
-core.stats = { lemmas: core.lemmaIds.length, closedLemmas: Math.min(closed.length, lo), seedLemmas: seedIds.length, keys: Object.keys(core.forms).length, rows: coreRows, tokenCoverage, tokens: freqTotal };
+core.stats = { lemmas: core.lemmaIds.length, closedLemmas: Math.min(closed.length, lo), seedLemmas: seedIds.length, keys: Object.keys(core.forms).length, rows: coreRows, tokenCoverage, tokens: freqTotal, completedKeys, partialKeys: partialSet.size, partialShare };
 const coreJson = JSON.stringify(core);
 const coreBytes = Buffer.byteLength(coreJson);
 console.log(`core: ${core.lemmaIds.length} lemmas (${Math.min(closed.length, lo)} closed-class), ${core.stats.keys} keys, ${coreRows} rows, ${fmt(coreBytes)} bytes of JSON, tokenCoverage ${tokenCoverage} over ${fmt(freqTotal)} running words`);
@@ -896,6 +997,7 @@ Lemma string convention: \`arHeadForm\` of \`arabic/text.ts\`.
 | kinds of entry skipped | ${skippedLine} |
 | lemma entries / form pages (of which "ar-verb form" pages) / lemma entries that also hold form-of senses | ${fmt(stats.lemmaEntries)} / ${fmt(stats.formPages)} (${fmt(stats.vfPages)}) / ${fmt(stats.mixedEntries)} |
 | pages that are only alternative spellings (alt-of) | ${fmt(stats.altOnlyEntries)} |
+| participle entries (verb class in the extract, head "active / passive participle of X"; made ADJ with VerbForm=Part, Voice, Of=verb) / of those with Of | ${fmt(stats.participleEntries)} / ${fmt(stats.participleOf)} |
 | lemma ids by part of speech | ${Object.entries(lemmaByPos).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${fmt(v)}`).join(', ')} |
 | lemma ids (with at least one row) | ${fmt(lemmaIds.length)} (${fmt(lemmasWithRows)}) |
 | head + POS pairs with more than one entry (extra ids \`|2\`, \`|3\` … ordered by etymology number, then first gloss) | ${fmt(stats.homonymPairs)} (${fmt(stats.homonymExtra)} extra ids) |
@@ -930,10 +1032,14 @@ Lemma string convention: \`arHeadForm\` of \`arabic/text.ts\`.
 | largest shard | \`${largest.prefix}\` ${(largest.plain / 1e6).toFixed(2)} MB plain, ${(largest.gz / 1e6).toFixed(2)} MB gzip (largest gzip: \`${largestGz.prefix}\` ${(largestGz.gz / 1e6).toFixed(2)} MB) |
 | merging experiment (upper bound of rows storable once: same key, lemma, labels but case, vowels but the last letter's) | ${fmt(mergeable)} rows, ${fmt(mergeableBytes)} bytes of JSON |
 | core rows | ${CORE_ROWS} (seen = a chosen lemma's rows under keys that occur in ar_50k and under its own written form; all = every row) |
+| core keys: completed (the missing lexemes' rows added; at most ${COMPLETE_ROWS} rows and ${COMPLETE_LEMMAS} lexemes) / flagged \`partial\` (the full index has lexemes the core lacks) / share of ar_50k running words on flagged keys | ${fmt(completedKeys)} / ${fmt(partialSet.size)} / ${(partialShare * 100).toFixed(2)} % |
+| closed-class clitic entries kept out of the word keys (tatweel at an edge, or one bare letter: بِـ, ـهَا, وَ, أَ …) | ${fmt(stats.cliticExcluded)}: ${cliticExamples.join(', ')} |
+| lemma entries with no table at all / of those with a row under their written form (the source's canonical row, code \`canonical…\`) | ${fmt(stats.noTableLemmas)} / ${fmt(stats.noTableWithRow)} (without: ${fmt(stats.noTableLemmas - stats.noTableWithRow)}, of which multi-word heads ${fmt(stats.noTableSpace)}) |
+| adjective lemmas with a feminine row (any origin) / of all adjective lemma ids; "feminine … of X" form pages of adjectives resolved (rows new, the rest already in the adjective's table) | ${fmt(stats.adjFemLemmas)} / ${fmt(stats.adjLemmas)}; ${fmt(stats.adjFemPages)} (${fmt(stats.adjFemPagesNew)} new) |
 | core ranking | ${CORE_RANK} (own = weight of a lemma's own keys per byte; marginal = frequency of the keys it adds to those already covered, per byte) |
 | core | ${core.lemmaIds.length} lemmas (${Math.min(closed.length, lo)} of closed classes, ${seedIds.length} seeded), ${core.stats.keys} keys, ${coreRows} rows, ${fmt(coreBytes)} bytes of JSON (budget ${fmt(CORE_BUDGET)}) |
 | core token coverage on ar_50k (running words whose key is a core key) | ${(tokenCoverage * 100).toFixed(2)} % of ${fmt(freqTotal)} (clitic forms are not keys) |
-| identities file | ${IDENTITIES ? `${IDENTITIES}: ${fmt(identityApplied)} keys applied, ${fmt(identityUnknown)} naming a lemma that does not hold the key` : 'none given'} |
+| identities file | ${IDENTITIES ? `${IDENTITIES}: ${fmt(identityApplied)} keys credited to their main lemma; checked clean ${fmt(stats.idClean)}, failed ${fmt(stats.idFail)} (${fmt(identityUnknown)} naming a lemma id not in the index)` : 'none given'} |
 
 ## Count (order of readings)
 

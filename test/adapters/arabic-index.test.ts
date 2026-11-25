@@ -164,3 +164,36 @@ describe.skipIf(!fs.existsSync(MANIFEST))('the sharded index on disk', () => {
     expect(hits.some((h) => h.vocalized === KATABA)).toBe(true);
   });
 });
+
+describe.skipIf(!fs.existsSync(MANIFEST))('the core against the full index (partial keys)', () => {
+  const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) as { shards: Record<string, { file: string }> };
+  const dir = path.dirname(MANIFEST);
+  const shardFor = (key: string): string => {
+    const letters = arShardLetters(key);
+    for (let n = Math.min(3, letters.length); n >= 1; n--) if (manifest.shards[letters.slice(0, n)]) return letters.slice(0, n);
+    return '_';
+  };
+  const cache = new Map<string, ArabicFormIndex>();
+  const full = (key: string): Set<string> => {
+    const p = shardFor(key);
+    let idx = cache.get(p);
+    if (!idx) { idx = JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(dir, manifest.shards[p].file))).toString('utf8')) as ArabicFormIndex; cache.set(p, idx); }
+    return new Set((idx.forms[key] ?? []).map((r) => idx!.lemmaIds[r[0]]));
+  };
+
+  it('holds, for every core key, every lexeme the full index has, or lists the key in partial; and lists no key needlessly', () => {
+    const partial = new Set(AR_CORE.partial ?? []);
+    expect([...partial]).toEqual([...(AR_CORE.partial ?? [])].sort());
+    const bad: string[] = [];
+    for (const [key, rows] of Object.entries(AR_CORE.forms)) {
+      const inCore = new Set(rows.map((r) => AR_CORE.lemmaIds[r[0]]));
+      const inFull = full(key);
+      const same = inCore.size === inFull.size && [...inFull].every((id) => inCore.has(id));
+      if (!same && !partial.has(key)) bad.push(`${key}: core lacks ${[...inFull].filter((id) => !inCore.has(id)).join(', ')} and does not flag it`);
+      if (same && partial.has(key)) bad.push(`${key}: flagged partial although complete`);
+      if (bad.length > 15) break;
+    }
+    for (const k of partial) if (!AR_CORE.forms[k]) bad.push(`${k}: flagged partial but not a core key`);
+    expect(bad).toEqual([]);
+  });
+});

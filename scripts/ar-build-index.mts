@@ -30,7 +30,7 @@ const opt: Record<string, string> = {};
 const flags = new Set<string>();
 for (let i = 0; i < args.length; i++) {
   if (!args[i].startsWith('--')) { console.error(`bad argument ${args[i]}`); process.exit(1); }
-  if (args[i] === '--no-write') { flags.add('no-write'); continue; }
+  if (args[i] === '--no-write' || args[i] === '--no-preferences-reviewed') { flags.add(args[i].slice(2)); continue; }
   if (args[i + 1] === undefined) { console.error(`${args[i]} needs a value`); process.exit(1); }
   opt[args[i].slice(2)] = args[i + 1]; i++;
 }
@@ -737,7 +737,7 @@ const looseKeys = new Map<string, string[]>();
 for (const k of keys) { const f = arLoose(k); (looseKeys.get(f) ?? looseKeys.set(f, []).get(f)!).push(k); }
 const lexKeyCount = new Map<string, number>(); // lexeme → number of keys it has rows on
 for (const k of keys) for (const lx of lexemesOn(k).keys()) lexKeyCount.set(lx, (lexKeyCount.get(lx) ?? 0) + 1);
-const prefStats = { candidates: 0, sameLexeme: 0, conflictPairs: 0, balancedRemoved: 0, closedDropped: 0, pairs: 0, losers: 0, winners: 0, idCleanSibling: 0, idCleanLoose: 0, prefKeys: 0 };
+const prefStats = { candidates: 0, sameLexeme: 0, conflictPairs: 0, balancedRemoved: 0, closedDropped: 0, pairs: 0, losers: 0, winners: 0, idCleanSibling: 0, pairsDerived: 0, revMerged: 0, revOverridden: 0, revBalancedRemoved: 0, revSkipped: 0, idCleanLoose: 0, prefKeys: 0 };
 const finalPrefs = new Map<string, Set<string>>(); // loser lexeme → winner lexemes
 const prefConflictLines: string[] = [];
 {
@@ -758,6 +758,8 @@ const prefConflictLines: string[] = [];
     if (!p || info.n === undefined) { identityUnknown++; stats.idFail++; lines.push(`${k}\t${v}\tlemma id not in the index\t${here.join(' ')}`); continue; }
     const wl = lexOfId(p.id);
     const cand = [k, info.stem];
+    // a stem that ends in ت before an attached pronoun may be a ة (حياته → حَيَاة)
+    if (info.stem.endsWith('\u062A')) cand.push(`${info.stem.slice(0, -1)}\u0629`);
     let found: string[] = [];
     if (cand.some((c) => (forms.get(c) ?? []).some((r) => lemmaIds[r[0]] === p.id))) { stats.idClean++; found = cand.filter((c) => lexemesOn(c).has(wl)).slice(0, 1); }
     else {
@@ -803,6 +805,29 @@ const prefConflictLines: string[] = [];
     if (CLOSED_POS.has(lexPos(lo)) && !CLOSED_POS.has(lexPos(wi)) && ![...support.get(pk)!].some((x) => x !== '')) { prefStats.closedDropped++; continue; }
     (finalPrefs.get(lo) ?? finalPrefs.set(lo, new Set()).get(lo)!).add(wi);
     prefStats.pairs++;
+  }
+  prefStats.pairsDerived = prefStats.pairs;
+  // the hand-reviewed pairs, merged after the derived ones: a reviewed pair overrides a derived pair that says the opposite; a balanced pair removes any preference between its two lexemes
+  const reviewedPath = opt['preferences-reviewed'] ?? 'src/adapters/arabic/preferences-reviewed.json';
+  if (!flags.has('no-preferences-reviewed') && fs.existsSync(reviewedPath)) {
+    const rev = JSON.parse(fs.readFileSync(reviewedPath, 'utf8')) as { prefer?: Record<string, string[]>; balanced?: string[][] };
+    const held = new Set(lemmaIds.map(lexOfId));
+    const skip = (x: string): boolean => { if (held.has(x)) return false; prefStats.revSkipped++; prefConflictLines.push(`${x}\t\tnot in the index (source = reviewed)`); return true; };
+    for (const lo of Object.keys(rev.prefer ?? {}).sort()) {
+      for (const wi of [...rev.prefer![lo]].sort()) {
+        if (skip(lo) || skip(wi)) continue;
+        if (finalPrefs.get(wi)?.delete(lo)) { prefStats.revOverridden++; prefConflictLines.push(`${wi}\t${lo}\tderived pair overridden (source = reviewed)`); }
+        (finalPrefs.get(lo) ?? finalPrefs.set(lo, new Set()).get(lo)!).add(wi);
+        prefStats.revMerged++;
+      }
+    }
+    for (const [a, b] of rev.balanced ?? []) {
+      if (skip(a) || skip(b)) continue;
+      if (finalPrefs.get(a)?.delete(b)) prefStats.revBalancedRemoved++;
+      if (finalPrefs.get(b)?.delete(a)) prefStats.revBalancedRemoved++;
+    }
+    for (const [lo, set] of [...finalPrefs]) if (!set.size) finalPrefs.delete(lo);
+    prefStats.pairs = [...finalPrefs.values()].reduce((a, x) => a + x.size, 0);
   }
   prefStats.losers = finalPrefs.size;
   prefStats.winners = new Set([...finalPrefs.values()].flatMap((s) => [...s])).size;
@@ -1168,6 +1193,7 @@ Lemma string convention: \`arHeadForm\` of \`arabic/text.ts\`.
 | core token coverage on ar_50k (running words whose key is a core key) | ${(tokenCoverage * 100).toFixed(2)} % of ${fmt(freqTotal)} (clitic forms are not keys) |
 | identity checks accepted through a numbered sibling of the main id / through the loose fold | ${fmt(prefStats.idCleanSibling)} / ${fmt(prefStats.idCleanLoose)} (counted apart from the clean ones above) |
 | lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | ${fmt(prefStats.candidates)} / ${fmt(prefStats.sameLexeme)} / ${fmt(prefStats.conflictPairs)} / ${fmt(prefStats.balancedRemoved)} / ${fmt(prefStats.closedDropped)} |
+| reviewed preferences (preferences-reviewed.json) merged / derived pairs they overrode / pairs removed by its balanced list / lexemes not in the index (skipped); derived pairs before the merge | ${fmt(prefStats.revMerged)} / ${fmt(prefStats.revOverridden)} / ${fmt(prefStats.revBalancedRemoved)} / ${fmt(prefStats.revSkipped)}; ${fmt(prefStats.pairsDerived)} |
 | preferences emitted: pairs / distinct losers / distinct winners | ${fmt(prefStats.pairs)} / ${fmt(prefStats.losers)} / ${fmt(prefStats.winners)} |
 | lemma ids with count 0 (counts by lexeme group: own keys of the group, plus the weaker decided-key term, weight ${SECOND_WEIGHT}; before the group rule 22,516) | ${fmt(zeroCount)} of ${fmt(lemmaIds.length)} |
 | identities file | ${IDENTITIES ? `${IDENTITIES}: ${fmt(identityApplied)} keys credited to their main lemma; checked clean ${fmt(stats.idClean)}, failed ${fmt(stats.idFail)} (${fmt(identityUnknown)} naming a lemma id not in the index)` : 'none given'} |

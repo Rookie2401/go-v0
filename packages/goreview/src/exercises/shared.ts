@@ -3,6 +3,7 @@
  * plus what validation, grading and evidence need), eligibility, the gap convention and a few pure helpers.
  */
 import { STATUS_RANK } from '../../../repository-contract/src';
+import { answerVariants } from '../../../../src/core/english-verb';
 import type { AnalysisStatus, Dimension, ReviewEligibility } from '../../../repository-contract/src';
 import { glossParts, normalizeAnswer } from '../grading/normalize';
 import type { GradingKey } from '../grading/grade';
@@ -26,6 +27,8 @@ export interface ExerciseContext {
 /** The exercise GoReview stores: a contract `Exercise` whose key and context carry the extra fields grading and evidence read. */
 export interface ReviewExercise extends Exercise {
   answerKey: GradingKey;
+  /** The attested form's parsing, shown on the back of a written-recognition card. */
+  formParsing?: string;
   /** Which form of the family this is ('feature' | 'lemma' | 'choice' | 'typed' …). */
   variant?: string;
   context?: ExerciseContext;
@@ -225,6 +228,11 @@ function senseReference(sense: string): string | undefined {
  * six words, else the leading items of its first list of meanings that fit in six words.
  */
 export function referenceGloss(facts: UnitFacts): string | undefined {
+  // Greek finite verb renderings contain a coordinated subject ("He, she, or it came").
+  // The comma is grammatical here, not a separator between dictionary senses.
+  const inflected = reviewFacts(facts).wordAnalysis?.inflectedMeaning?.text;
+  if (facts.unit?.kind === 'form' && facts.unit.languageId === 'el' && inflected)
+    return inflected;
   const { lexicon, dictionary } = glossSplit(facts);
   if (lexicon[0] !== undefined) return lexicon[0];
   for (const sense of dictionary) {
@@ -239,6 +247,11 @@ export function referenceGloss(facts: UnitFacts): string | undefined {
  * sense of at most four words with no bracket (a short sense whole and its parts; a long sense split as described above).
  */
 export function acceptedMeanings(facts: UnitFacts): string[] {
+  // Keep the realized verb intact, and accept subject variants without ever accepting
+  // a bare pronoun such as "He" as the meaning of ἦλθεν or ἦν.
+  const inflected = reviewFacts(facts).wordAnalysis?.inflectedMeaning?.text;
+  if (facts.unit?.kind === 'form' && facts.unit.languageId === 'el' && inflected)
+    return answerVariants(inflected);
   const { lexicon, dictionary } = glossSplit(facts);
   const out: string[] = [];
   const add = (p: string): void => { if (!out.includes(p)) out.push(p); };

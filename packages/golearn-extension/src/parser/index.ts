@@ -11,6 +11,7 @@ import type { AnalysisCandidate, AnalyzedToken, LanguageAdapter, PatternCandidat
 import { unitIds } from '../../../repository-contract/src';
 import { sentenceKeyOf, fnv1a64 } from '../text';
 import { wordAnalysisFor } from '../../../../src/adapters/word-analysis';
+import { fallbackMorphologyLine } from './morphology';
 import type { Alternative, CardModel, SyntaxNote, CardProvenance, ConstructionNote, ContextReport, EvidenceLabel, FeatureItem, LabelledField, PhraseNote, SentenceWord, WordLine } from './cardModel';
 import { AnalyserNotLoaded, LANGUAGE_META, PARSER_LANGUAGES, clearAnalysers, getAnalyser, hasAnalyser, languageMeta, registerAnalyser, type LanguageMeta } from './registry';
 
@@ -345,6 +346,7 @@ const SCRIPT_TEST: Record<string, { name: string; re: RegExp }> = {
   Thai: { name: 'Thai', re: /\p{Script=Thai}/u },
   Hebr: { name: 'Hebrew', re: /\p{Script=Hebrew}/u },
   Grek: { name: 'Greek', re: /\p{Script=Greek}/u },
+  Cyrl: { name: 'Cyrillic', re: /\p{Script=Cyrillic}/u },
 };
 const scriptName = (L: Lang): string => (SCRIPT_TEST[L.adapter.script] ?? SCRIPT_TEST.Latn).name;
 const hasScriptLetter = (L: Lang, s: string): boolean => (SCRIPT_TEST[L.adapter.script] ?? SCRIPT_TEST.Latn).re.test(s);
@@ -370,8 +372,9 @@ function provenanceOf(c: AnalysisCandidate): CardProvenance {
 function describe(L: Lang, c: AnalysisCandidate): string | undefined {
   try {
     const line = L.adapter.describeMorph?.(c.morph, c.pos);
-    return line ? line : undefined;
-  } catch { return undefined; }
+    if (line) return line;
+  } catch { /* a pack's prose must not suppress the analyser's available feature bundle */ }
+  return fallbackMorphologyLine(c.pos, c.morph);
 }
 
 function lineOf(t: RawToken, c: AnalysisCandidate | undefined): WordLine {

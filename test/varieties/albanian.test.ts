@@ -46,12 +46,14 @@ describe('the registry: Albanian has learning varieties', () => {
     expect(canonicalVarietyId('sq', 'sq-pre1972')).toBeUndefined(); // nor is an older spelling
     expect(canonicalVarietyId('sq', 'el-koi')).toBeUndefined();
   });
-  it('agrees with what the Albanian pack declares (same ids, same default, what it tells apart is what may be chosen)', () => {
+  it('agrees with what the Albanian pack declares (same ids, same default); Gheg may be chosen for review without being a track to enrol in', () => {
     const manifest = albanianManifest();
     const known = new Set(learningVarietiesOf('sq').map((v) => v.id));
     for (const v of manifest.varieties) expect(known.has(v.varietyId), v.varietyId).toBe(true);
     expect(defaultVarietyOf('sq')).toBe(manifest.varietyId);
-    expect(selectableVarietiesOf('sq').map((v) => v.id).sort()).toEqual(manifest.varieties.filter((v) => v.analysed).map((v) => v.varietyId).sort());
+    // the pack analyses, and the setup page offers as a track, the Standard alone: a learner is never asked to choose a track for Albanian
+    expect(manifest.varieties.filter((v) => v.analysed).map((v) => v.varietyId)).toEqual(['sq-standard']);
+    for (const v of manifest.varieties.filter((x) => x.analysed)) expect(selectableVarietiesOf('sq').map((s) => s.id)).toContain(v.varietyId);
     expect(manifest.version).toBe(sqAdapter.version);
     // the adapter's own varieties marked as learning varieties are exactly the ones the registry lets a learner choose
     const learning = Object.values(sqAdapter.varieties ?? {}).filter((v) => v.learning).map((v) => canonicalVarietyId('sq', v.code)).sort();

@@ -109,6 +109,23 @@ export const BIBLE_ACCESS: Readonly<Record<LanguageCode, BibleAccessRecord>> = {
     rights: 'Copyright and permission to bundle or redistribute are not established. No approved Albanian Bible text is available in GoLearn’s Scripture library.',
     historicalVarieties: ['Gheg (Kristoforidhi)', 'Tosk (Kristoforidhi)'],
   },
+  // Russian: no Bible is bundled and no edition has been rights-checked. The Russian Synodal Bible is the usual candidate, but it is not
+  // imported here and its rights are not claimed.
+  ru: {
+    lang: 'ru', translation: 'Russian Synodal Bible', edition: 'none', status: 'not-bundled',
+    sourceUrl: 'https://ebible.org/', // a general directory of public Bible releases, not a chosen Russian edition
+    method: 'No Bible text is bundled for Russian. No edition has been chosen or checked against its source in this repository.',
+    importMethod: 'An entitled personal .txt or unprotected .epub can be imported for ordinary reading on this device. The general importer does not create a verse-addressed Scripture edition.',
+    rights: 'Not verified: no edition is bundled and no rights claim is made for any Russian translation.',
+  },
+  fr: {
+    lang: 'fr', translation: 'Louis Segond 1910', edition: 'not bundled', status: 'not-bundled',
+    sourceUrl: 'https://ebible.org/fraLSG/',
+    method: 'No French Bible text is bundled. The French pack reads a French Bible on an ordinary web page through the GoLearn extension, like any other page.',
+    importMethod: 'Nothing is imported. An edition would be bundled only after its rights and its wording were checked against the printing.',
+    rights: 'Not verified by this project: the Louis Segond 1910 is widely distributed as public domain, but no edition has been checked here.',
+    historicalVarieties: ['Early twentieth-century literary French (passé simple, formal negation)'],
+  },
 };
 
 export function bibleAccessFor(lang: LanguageCode): BibleAccessRecord {

@@ -15,6 +15,8 @@ const WITH_MARKERS: Record<string, string> = {
   he: 'כי [16] אלוהים ¹⁶ אהב את העולם.',
   el: 'Διότι [16] ο Θεός ¹⁶ αγάπησε τον κόσμο.',
   la: 'Sic [16] enim Deus ¹⁶ dilexit mundum.',
+  ru: 'Ибо [16] так возлюбил Бог ¹⁶ мир.',
+  fr: 'Car [16] Dieu a tant ¹⁶ aimé le monde.',
 };
 
 describe('speechNormalize (all languages)', () => {
@@ -54,7 +56,7 @@ describe('speechNormalize (all languages)', () => {
     });
 
     it(`${lang}: never transliterates: script of the words is unchanged`, () => {
-      const script = { arc: /^[\p{Script=Hebrew}\s.,:;!?'"“”()…–—-]+$/u, es: /^[\p{Script=Latin}\s.,:;!?¿¡'«»"“”()…-]+$/u, sq: /^[\p{Script=Latin}\s.,:;!?'«»—-]+$/u, de: /^[\p{Script=Latin}\s.,:;!?'„“‚‘»«()…–—-]+$/u, th: /^[\p{Script=Thai}\s]+$/u, nb: /^[\p{Script=Latin}\s.,:;!?'«»"“”()…–—-]+$/u, nn: /^[\p{Script=Latin}\s.,:;!?'«»"“”()…–—-]+$/u, hi: /^[\p{Script=Devanagari}\s।,.?!:;'"“”‘’()…–—-]+$/u, he: /^[\p{Script=Hebrew}\s.,:;!?'"“”()…–—-]+$/u, el: /^[\p{Script=Greek}\s.,:;!?;·'’«»"“”()…–—-]+$/u, la: /^[\p{Script=Latin}\s.,:;!?'«»“”„"()\[\]…–—-]+$/u }[lang];
+      const script = { arc: /^[\p{Script=Hebrew}\s.,:;!?'"“”()…–—-]+$/u, es: /^[\p{Script=Latin}\s.,:;!?¿¡'«»"“”()…-]+$/u, sq: /^[\p{Script=Latin}\s.,:;!?'«»—-]+$/u, de: /^[\p{Script=Latin}\s.,:;!?'„“‚‘»«()…–—-]+$/u, th: /^[\p{Script=Thai}\s]+$/u, nb: /^[\p{Script=Latin}\s.,:;!?'«»"“”()…–—-]+$/u, nn: /^[\p{Script=Latin}\s.,:;!?'«»"“”()…–—-]+$/u, hi: /^[\p{Script=Devanagari}\s।,.?!:;'"“”‘’()…–—-]+$/u, he: /^[\p{Script=Hebrew}\s.,:;!?'"“”()…–—-]+$/u, el: /^[\p{Script=Greek}\s.,:;!?;·'’«»"“”()…–—-]+$/u, la: /^[\p{Script=Latin}\s.,:;!?'«»“”„"()\[\]…–—-]+$/u, ru: /^[\p{Script=Cyrillic}\s.,:;!?'«»“”„"()\[\]…–—-]+$/u, fr: /^[p{Script=Latin}s.,:;!?'’«»"“”()…–—-]+$/u }[lang];
       for (const doc of loadBundledCorpus().filter((d) => d.lang === lang && d.contentType !== 'scripture')) {
         for (const sec of doc.sections) for (const par of sec.paragraphs) {
           if (!('sentences' in par)) continue;

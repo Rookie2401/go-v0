@@ -211,7 +211,23 @@ describe('BCP-47 tags map to pack languages', () => {
   });
 
   it('rubbish and languages with no pack: no-pack, never a crash', () => {
-    for (const tag of ['', '  ', 'xx-', '123', 'x', 'english', 'fr', 'ja-JP', 'en']) expect(['no-pack']).toContain(mapLanguageTag(tag).kind);
+    for (const tag of ['', '  ', 'xx-', '123', 'x', 'english', 'it', 'pt-BR', 'ja-JP', 'en']) expect(['no-pack']).toContain(mapLanguageTag(tag).kind);
+  });
+
+  it('French: the pack covers fr, fra and fre; fr-FR, fr-CA, fr-BE and fr-CH are its varieties; any other French-speaking region is French with no variety claimed', () => {
+    expect(mapLanguageTag('fr')).toEqual({ kind: 'pack', languageId: 'fr', notes: [] });
+    for (const tag of ['fra', 'fre', 'FR', 'fr-Latn']) expect(mapLanguageTag(tag), tag).toEqual({ kind: 'pack', languageId: 'fr', notes: [] });
+    for (const v of ['fr-FR', 'fr-CA', 'fr-BE', 'fr-CH']) expect(mapLanguageTag(v), v).toMatchObject({ kind: 'pack', languageId: 'fr', varietyId: v });
+    expect(mapLanguageTag('fr_CA')).toMatchObject({ languageId: 'fr', varietyId: 'fr-CA' });
+    expect(mapLanguageTag('fr-SN')).toEqual({ kind: 'pack', languageId: 'fr', notes: [] });
+    expect(PACK_VARIETIES.fr).toEqual(['fr-FR', 'fr-CA', 'fr-BE', 'fr-CH']);
+    expect(resolveLanguage(ev({ installed: [...ALL, 'fr'], documentLanguage: doc('fr-CA', 'element-lang', 0.9) }))).toMatchObject({ languageId: 'fr', varietyId: 'fr-CA', basis: 'document-metadata' });
+  });
+
+  it('French in another script is ambiguous, as for the other packs: the pack analyses the Latin script only', () => {
+    const r = mapLanguageTag('fr-Cyrl');
+    expect(r.kind).toBe('ambiguous');
+    expect(r.kind === 'ambiguous' && r.reason).toMatch(/written in CYRL script; the fr pack analyses the LATN script only/);
   });
 });
 

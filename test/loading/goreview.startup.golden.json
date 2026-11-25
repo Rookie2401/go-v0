@@ -844,6 +844,46 @@
    "sha256": "0326d831751192553171fa71eed2af54422b3dfc97650cae02e04516943ec5bb"
   },
   {
+   "text": "σὺ εἶ ἀγαθός.",
+   "summary": "σύ=σύ/PRON εἶ=εἰμί/VERB ἀγαθός=ἀγαθός/ADJ",
+   "sha256": "0c91dc27c6615860a8f02b0ee750cd3b38b3883a911e0ce3042baa0df8e97197"
+  },
+  {
+   "text": "ἡμεῖς ἐσμὲν φίλοι.",
+   "summary": "ἡμεῖς=ἐγώ/PRON ἐσμέν=εἰμί/VERB φίλοι=?/?",
+   "sha256": "95ea57d55095a479cc1af09e9ee96a64035359ffdf4d2eca0785f73405a397b2"
+  },
+  {
+   "text": "ὑμεῖς ἐστὲ φίλοι.",
+   "summary": "ὑμεῖς=σύ/PRON ἐστέ=εἰμί/VERB φίλοι=?/?",
+   "sha256": "007ab8ddca91f2cc5266c0eb418ce782438ecd2bc6e7a51afd7d0929e9e5a2b9"
+  },
+  {
+   "text": "αὐτοὶ εἰσὶν φίλοι.",
+   "summary": "αὐτοί=αὐτός/PRON εἰσίν=εἰμί/VERB φίλοι=?/?",
+   "sha256": "570520d5ae2dbce8698a46c8234a8c35c62855ea443cf4b9978aaef6f83d700d"
+  },
+  {
+   "text": "ἔχω βιβλίον.",
+   "summary": "ἔχω=ἔχω/VERB βιβλίον=?/?",
+   "sha256": "296649ea9650e6521106707ab5b485c8ce836cc611515cce6af219b4e1ffd73a"
+  },
+  {
+   "text": "ἔχεις βιβλίον.",
+   "summary": "ἔχεις=ἔχω/VERB βιβλίον=?/?",
+   "sha256": "14915358c48aa81b59fb487f4b49e2e1f905a03c9d9c45daa1dae34fdba8d30e"
+  },
+  {
+   "text": "ἔχει βιβλίον.",
+   "summary": "ἔχει=ἔχω/VERB βιβλίον=?/?",
+   "sha256": "514818f818ba76d2202455891acff62550dedb7cf14188465ea90fef06c05bb4"
+  },
+  {
+   "text": "καὶ ἦλθεν πρὸς αὐτόν.",
+   "summary": "καί=καί/CONJ ἦλθεν=ἔρχομαι/VERB πρός=πρός/ADP αὐτόν=αὐτός/PRON",
+   "sha256": "bc68e944b5422adc2665ef6c75709a8c0402f0d06a7d6a177a3bb02c2560a923"
+  },
+  {
    "text": "Ο λόγος είναι ελεύθερος.",
    "summary": "ο=ὁ/DET λόγος=λόγος/NOUN είναι=εἰμί/VERB ελεύθερος=?/?",
    "sha256": "f90fcc836fe3acf3b6001565e3f0f9d30c27afe3884b9cb5fd97b53b6b3631de"
@@ -929,6 +969,265 @@
    "text": "Xyzqwk",
    "summary": "Xyzqwk=?/?",
    "sha256": "557dc9891b0616905d70397e5127b5b06f9eae9ab9100a59e328d402a23e501a"
+  }
+ ],
+ "ru": [
+  {
+   "text": "Она прочитала книгу.",
+   "summary": "она=она/PRON прочитала=прочитать/VERB книгу=книга/NOUN",
+   "sha256": "41e959221d3c4e3a0966beb4dac5bdf9674b1103c0f2eab041ba64c9187a2559"
+  },
+  {
+   "text": "Она прочитала книгу.",
+   "summary": "она=она/PRON прочитала=прочитать/VERB книгу=книга/NOUN",
+   "sha256": "41e959221d3c4e3a0966beb4dac5bdf9674b1103c0f2eab041ba64c9187a2559"
+  },
+  {
+   "text": "Она прочитала книгу.",
+   "summary": "она=она/PRON прочитала=прочитать/VERB книгу=книга/NOUN",
+   "sha256": "41e959221d3c4e3a0966beb4dac5bdf9674b1103c0f2eab041ba64c9187a2559"
+  },
+  {
+   "text": "Она читает книгу.",
+   "summary": "она=она/PRON читает=читать/VERB книгу=книга/NOUN",
+   "sha256": "0477085625839aef403e4fe9acbe974bccb6e647917f7a4f30048f95fd1283ca"
+  },
+  {
+   "text": "У меня есть два года и пять лет, но нет книги.",
+   "summary": "у=у/ADP меня=я/PRON есть=быть/VERB два=два/NUM года=год/NOUN и=и/CONJ пять=пять/NUM лет=год/NOUN но=но/CONJ нет=нет/PART книги=книга/NOUN",
+   "sha256": "415e776404a4de0a55eba980297de1ea2d22c05b732082dd1334a2fed5715664"
+  },
+  {
+   "text": "У меня есть два года и пять лет, но нет книги.",
+   "summary": "у=у/ADP меня=я/PRON есть=быть/VERB два=два/NUM года=год/NOUN и=и/CONJ пять=пять/NUM лет=год/NOUN но=но/CONJ нет=нет/PART книги=книга/NOUN",
+   "sha256": "415e776404a4de0a55eba980297de1ea2d22c05b732082dd1334a2fed5715664"
+  },
+  {
+   "text": "У меня есть два года и пять лет, но нет книги.",
+   "summary": "у=у/ADP меня=я/PRON есть=быть/VERB два=два/NUM года=год/NOUN и=и/CONJ пять=пять/NUM лет=год/NOUN но=но/CONJ нет=нет/PART книги=книга/NOUN",
+   "sha256": "415e776404a4de0a55eba980297de1ea2d22c05b732082dd1334a2fed5715664"
+  },
+  {
+   "text": "У меня есть два года и пять лет, но нет книги.",
+   "summary": "у=у/ADP меня=я/PRON есть=быть/VERB два=два/NUM года=год/NOUN и=и/CONJ пять=пять/NUM лет=год/NOUN но=но/CONJ нет=нет/PART книги=книга/NOUN",
+   "sha256": "415e776404a4de0a55eba980297de1ea2d22c05b732082dd1334a2fed5715664"
+  },
+  {
+   "text": "У меня есть два года и пять лет, но нет книги.",
+   "summary": "у=у/ADP меня=я/PRON есть=быть/VERB два=два/NUM года=год/NOUN и=и/CONJ пять=пять/NUM лет=год/NOUN но=но/CONJ нет=нет/PART книги=книга/NOUN",
+   "sha256": "415e776404a4de0a55eba980297de1ea2d22c05b732082dd1334a2fed5715664"
+  },
+  {
+   "text": "У меня есть два года и пять лет, но нет книги.",
+   "summary": "у=у/ADP меня=я/PRON есть=быть/VERB два=два/NUM года=год/NOUN и=и/CONJ пять=пять/NUM лет=год/NOUN но=но/CONJ нет=нет/PART книги=книга/NOUN",
+   "sha256": "415e776404a4de0a55eba980297de1ea2d22c05b732082dd1334a2fed5715664"
+  },
+  {
+   "text": "У меня есть два года и пять лет, но нет книги.",
+   "summary": "у=у/ADP меня=я/PRON есть=быть/VERB два=два/NUM года=год/NOUN и=и/CONJ пять=пять/NUM лет=год/NOUN но=но/CONJ нет=нет/PART книги=книга/NOUN",
+   "sha256": "415e776404a4de0a55eba980297de1ea2d22c05b732082dd1334a2fed5715664"
+  },
+  {
+   "text": "В этом году он жил в лесу.",
+   "summary": "в=в/ADP этом=этот/DET году=год/NOUN он=он/PRON жил=жить/VERB в=в/ADP лесу=лес/NOUN",
+   "sha256": "1dd0937824372a223b4afc81474b775fcdb1d87207c58e134b3bbaff3ae672cc"
+  },
+  {
+   "text": "В этом году он жил в лесу.",
+   "summary": "в=в/ADP этом=этот/DET году=год/NOUN он=он/PRON жил=жить/VERB в=в/ADP лесу=лес/NOUN",
+   "sha256": "1dd0937824372a223b4afc81474b775fcdb1d87207c58e134b3bbaff3ae672cc"
+  },
+  {
+   "text": "В этом году он жил в лесу.",
+   "summary": "в=в/ADP этом=этот/DET году=год/NOUN он=он/PRON жил=жить/VERB в=в/ADP лесу=лес/NOUN",
+   "sha256": "1dd0937824372a223b4afc81474b775fcdb1d87207c58e134b3bbaff3ae672cc"
+  },
+  {
+   "text": "В этом году он жил в лесу.",
+   "summary": "в=в/ADP этом=этот/DET году=год/NOUN он=он/PRON жил=жить/VERB в=в/ADP лесу=лес/NOUN",
+   "sha256": "1dd0937824372a223b4afc81474b775fcdb1d87207c58e134b3bbaff3ae672cc"
+  },
+  {
+   "text": "Они стали читать по-русски.",
+   "summary": "они=они/PRON стали=стать/VERB читать=читать/VERB по-русски=по-русски/ADV",
+   "sha256": "9c96eed80fa43d9c11235a491429dcc81a22336f1fec88c2454141a7917fedac"
+  },
+  {
+   "text": "Они стали читать по-русски.",
+   "summary": "они=они/PRON стали=стать/VERB читать=читать/VERB по-русски=по-русски/ADV",
+   "sha256": "9c96eed80fa43d9c11235a491429dcc81a22336f1fec88c2454141a7917fedac"
+  },
+  {
+   "text": "Они стали читать по-русски.",
+   "summary": "они=они/PRON стали=стать/VERB читать=читать/VERB по-русски=по-русски/ADV",
+   "sha256": "9c96eed80fa43d9c11235a491429dcc81a22336f1fec88c2454141a7917fedac"
+  },
+  {
+   "text": "Это новый дом.",
+   "summary": "это=это/PRON новый=новый/ADJ дом=дом/NOUN",
+   "sha256": "ed18db72b42df1609bdf9927fdd88f3f5f6161edf1e40ef82738a7dc85b73395"
+  },
+  {
+   "text": "Это новый дом.",
+   "summary": "это=это/PRON новый=новый/ADJ дом=дом/NOUN",
+   "sha256": "ed18db72b42df1609bdf9927fdd88f3f5f6161edf1e40ef82738a7dc85b73395"
+  },
+  {
+   "text": "Это новый дом.",
+   "summary": "это=это/PRON новый=новый/ADJ дом=дом/NOUN",
+   "sha256": "ed18db72b42df1609bdf9927fdd88f3f5f6161edf1e40ef82738a7dc85b73395"
+  },
+  {
+   "text": "Я знаю, что он шел домой.",
+   "summary": "я=я/PRON знаю=знать/VERB что=что/SCONJ он=он/PRON шел=идти/VERB домой=домой/ADV",
+   "sha256": "ce9553c311118bb3a924041f659f97c76bd0c63713107a8aa59bddd8923c659c"
+  },
+  {
+   "text": "Я знаю, что он шел домой.",
+   "summary": "я=я/PRON знаю=знать/VERB что=что/SCONJ он=он/PRON шел=идти/VERB домой=домой/ADV",
+   "sha256": "ce9553c311118bb3a924041f659f97c76bd0c63713107a8aa59bddd8923c659c"
+  },
+  {
+   "text": "Самовар стоит на столе.",
+   "summary": "самовар=?/? стоит=стоять/VERB на=на/ADP столе=стол/NOUN",
+   "sha256": "8643830ad79c0796954a543eca3cb0fb37c6ce2548bc85b9383541cb7941ac2a"
+  },
+  {
+   "text": "Самовар стоит на столе.",
+   "summary": "самовар=?/? стоит=стоять/VERB на=на/ADP столе=стол/NOUN",
+   "sha256": "8643830ad79c0796954a543eca3cb0fb37c6ce2548bc85b9383541cb7941ac2a"
+  },
+  {
+   "text": "Самовар стоит на столе.",
+   "summary": "самовар=?/? стоит=стоять/VERB на=на/ADP столе=стол/NOUN",
+   "sha256": "8643830ad79c0796954a543eca3cb0fb37c6ce2548bc85b9383541cb7941ac2a"
+  },
+  {
+   "text": "Глокая куздра штеко будланула бокра.",
+   "summary": "глокая=?/ADJ куздра=?/? штеко=?/? будланула=?/? бокра=?/?",
+   "sha256": "ffc3376228bbc4f3e0bb4e8d096bf0267daa01dbfad47df157ed70e005ec6172"
+  },
+  {
+   "text": "Глокая куздра штеко будланула бокра.",
+   "summary": "глокая=?/ADJ куздра=?/? штеко=?/? будланула=?/? бокра=?/?",
+   "sha256": "ffc3376228bbc4f3e0bb4e8d096bf0267daa01dbfad47df157ed70e005ec6172"
+  },
+  {
+   "text": "Xyzqwk",
+   "summary": "xyzqwk=?/?",
+   "sha256": "55ee9d5fb6acf27b7ae65605ecad140307a77e81063965ad90d241e8d62d771e"
+  }
+ ],
+ "fr": [
+  {
+   "text": "Elle lit un livre.",
+   "summary": "elle=elle/PRON lit=lire/VERB un=un/DET livre=livre/NOUN",
+   "sha256": "ae7d03241ce27b148aa3ebd88bd8c457228f2162b33d36f0867d385bba062625"
+  },
+  {
+   "text": "Elle lit un livre.",
+   "summary": "elle=elle/PRON lit=lire/VERB un=un/DET livre=livre/NOUN",
+   "sha256": "ae7d03241ce27b148aa3ebd88bd8c457228f2162b33d36f0867d385bba062625"
+  },
+  {
+   "text": "Il entra dans la maison.",
+   "summary": "il=il/PRON entra=entrer/VERB dans=dans/ADP la=le/DET maison=maison/NOUN",
+   "sha256": "c964661427d654c5ed5581ed5d12b14a894c1a6e57dfe5e3ead20987529aafe2"
+  },
+  {
+   "text": "Il entra dans la maison.",
+   "summary": "il=il/PRON entra=entrer/VERB dans=dans/ADP la=le/DET maison=maison/NOUN",
+   "sha256": "c964661427d654c5ed5581ed5d12b14a894c1a6e57dfe5e3ead20987529aafe2"
+  },
+  {
+   "text": "Il entra dans la maison.",
+   "summary": "il=il/PRON entra=entrer/VERB dans=dans/ADP la=le/DET maison=maison/NOUN",
+   "sha256": "c964661427d654c5ed5581ed5d12b14a894c1a6e57dfe5e3ead20987529aafe2"
+  },
+  {
+   "text": "Il entra dans la maison.",
+   "summary": "il=il/PRON entra=entrer/VERB dans=dans/ADP la=le/DET maison=maison/NOUN",
+   "sha256": "c964661427d654c5ed5581ed5d12b14a894c1a6e57dfe5e3ead20987529aafe2"
+  },
+  {
+   "text": "Nous faisons un gâteau.",
+   "summary": "nous=nous/PRON faisons=faire/VERB un=un/DET gâteau=gâteau/NOUN",
+   "sha256": "c9022aab95fbc1d3153f99b3d3b129409fa049881756327fe698332f15784061"
+  },
+  {
+   "text": "Les chevaux sont beaux.",
+   "summary": "les=le/DET chevaux=cheval/NOUN sont=être/AUX beaux=beau/ADJ",
+   "sha256": "750900342b6a5febbc96668fa68f3061235a55dc7fbbec271ec0761fd5a361d0"
+  },
+  {
+   "text": "Les chevaux sont beaux.",
+   "summary": "les=le/DET chevaux=cheval/NOUN sont=être/AUX beaux=beau/ADJ",
+   "sha256": "750900342b6a5febbc96668fa68f3061235a55dc7fbbec271ec0761fd5a361d0"
+  },
+  {
+   "text": "Les chevaux sont beaux.",
+   "summary": "les=le/DET chevaux=cheval/NOUN sont=être/AUX beaux=beau/ADJ",
+   "sha256": "750900342b6a5febbc96668fa68f3061235a55dc7fbbec271ec0761fd5a361d0"
+  },
+  {
+   "text": "Elle est arrivée hier.",
+   "summary": "elle=elle/PRON est=être/AUX arrivée=arriver/VERB hier=hier/ADV",
+   "sha256": "a7784c42bf3c44c3e28f8b075f18e1166ff491e92bf5bd0e38df8ad7f867d510"
+  },
+  {
+   "text": "Elle est arrivée hier.",
+   "summary": "elle=elle/PRON est=être/AUX arrivée=arriver/VERB hier=hier/ADV",
+   "sha256": "a7784c42bf3c44c3e28f8b075f18e1166ff491e92bf5bd0e38df8ad7f867d510"
+  },
+  {
+   "text": "Les lettres que j'ai écrites.",
+   "summary": "les=le/DET lettres=lettre/NOUN que=que/PRON j'=je/PRON ai=avoir/AUX écrites=écrire/VERB",
+   "sha256": "ff70548d2191f7a24c65dce5902d4eba4ca57322aed9f0d2a1b5d3d62cde0f2a"
+  },
+  {
+   "text": "L'homme parle.",
+   "summary": "l'=le/DET homme=homme/NOUN parle=parler/VERB",
+   "sha256": "4ec41644ef82af7485808d0520b8487628a4b5d223efae68153c2570f1f207e0"
+  },
+  {
+   "text": "L'homme parle.",
+   "summary": "l'=le/DET homme=homme/NOUN parle=parler/VERB",
+   "sha256": "4ec41644ef82af7485808d0520b8487628a4b5d223efae68153c2570f1f207e0"
+  },
+  {
+   "text": "Elle va au marché.",
+   "summary": "elle=elle/PRON va=aller/VERB au=au/ADP marché=marché/NOUN",
+   "sha256": "1f4a592183ed3994e3cacdf82f022af4c68a518477a1f2c5e0f986fd86b5fd79"
+  },
+  {
+   "text": "Je le vois.",
+   "summary": "je=je/PRON le=le/PRON vois=voir/VERB",
+   "sha256": "8832929432cee4c1b33da3eb45d4a03e4a6de52b500bd1e565a86f545ef7d604"
+  },
+  {
+   "text": "Je ne sais pas.",
+   "summary": "je=je/PRON ne=ne/PART sais=savoir/VERB pas=pas/ADV",
+   "sha256": "8bdc07144965ea0bcad0b1a863b34cfc93c8df424e76af2945725dd47fcdf6a6"
+  },
+  {
+   "text": "Il fut surpris.",
+   "summary": "il=il/PRON fut=être/AUX surpris=surprendre/VERB",
+   "sha256": "7ddcb860fd9440836f98bae571092c3eef34ab9d1e7c64b06644acf4e3e98547"
+  },
+  {
+   "text": "Il viendra peut-être demain.",
+   "summary": "il=il/PRON viendra=venir/VERB peut-être=peut-être/ADV demain=demain/ADV",
+   "sha256": "5f9db42bf763af471a706641736e541078e2c7dbbdf02ec5ea6ce55ba3458f6f"
+  },
+  {
+   "text": "Xyzqwk est ici.",
+   "summary": "xyzqwk=?/? est=être/AUX ici=ici/ADV",
+   "sha256": "0c5146dc8139f0620c18ad5ceb9c02ea0096c740ab97f4b65e721595aa70821b"
+  },
+  {
+   "text": "Xyzqwk",
+   "summary": "xyzqwk=?/?",
+   "sha256": "03de4ef8bf1136073af87faeb84281e23adcc46952014d010018f4ccdc590f4c"
   }
  ]
 }

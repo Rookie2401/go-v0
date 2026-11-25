@@ -58,7 +58,9 @@ export function albanianManifest(): PackManifest {
     identity: { name: 'Albanian', nativeName: 'shqip', direction: 'ltr' },
     varieties: [
       { varietyId: 'sq-standard', label: 'Standard Albanian', analysed: true },
-      { varietyId: 'sq-gheg', label: 'Gheg', analysed: true, note: 'A sentence is told apart as Gheg from the forms Gheg writes differently (asht, nji, tue, nasal vowels, participles in -ue, me + participle), and a Gheg form is read through its Standard equivalent when the word list knows it. This is recognition, not a Gheg grammar: Gheg has no word list or rules of its own here, and nothing has been checked by a speaker.' },
+      // NOT analysed: an analysed variety is a track the setup page asks a learner to choose and enrol in, and there is no Gheg course. Gheg
+      // is recognised in what a learner reads, and may be chosen as the dialect to REVIEW (repository-contract/src/varieties.ts).
+      { varietyId: 'sq-gheg', label: 'Gheg', analysed: false, note: 'A sentence is told apart as Gheg from the forms Gheg writes differently (asht, nji, tue, nasal vowels, participles in -ue, me + participle, everyday spoken forms), and a Gheg form is read through its Standard equivalent when the word list knows it. This is recognition, not a Gheg grammar or course: Gheg has no word list or rules of its own here, and nothing has been checked by a speaker.' },
       { varietyId: 'sq-tosk', label: 'Tosk (dialect)', analysed: false, note: 'Recognised only from a dictionary’s own label on a word; dialectal Tosk is not the Standard.' },
       { varietyId: 'sq-arbereshe', label: 'Arbëresh (Italy)', analysed: false, note: 'Recognised only from a dictionary’s own label on a word.' },
       { varietyId: 'sq-arvanitika', label: 'Arvanitika (Greece)', analysed: false, note: 'Recognised only from a dictionary’s own label on a word.' },

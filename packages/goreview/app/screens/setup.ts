@@ -8,7 +8,7 @@
  * home's warm tiles with no outline, YOUR LANGUAGES first and ADD A LANGUAGE after. A language that asks nothing is one tile, pressed like the
  * home's Review Deck: its level as the kicker, its name, its native name. A language that asks a question holds the question and the gold pill.
  *
- * The home opens this page by itself when the learner has no language yet; Account's "Add a language" opens it to add another. No pack is
+ * The home opens this page by itself when the learner has no language yet; after enrolment, the Languages tab manages additions. No pack is
  * installed here: GoReview reads each language's dictionary and analyser when it needs them, as it always has.
  */
 import type { AppContext } from '../context';
@@ -44,13 +44,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const list = h('ul', { class: 'setup-list', id: 'setup-languages' });
   const own = languages.filter(haveOf);
   const rest = languages.filter((l) => !haveOf(l));
-  if (own.length) list.append(h('li', { class: 'setup-group' }, h('h2', { class: 'tiles-heading' }, 'Your languages')), ...own.map(row));
-  if (rest.length) list.append(h('li', { class: 'setup-group' }, h('h2', { class: 'tiles-heading' }, own.length ? 'Add a language' : 'Languages')), ...rest.map(row));
+  if (own.length) list.append(h('li', { class: 'setup-group' }, h('h2', { class: 'tiles-heading' }, 'Your languages')), ...own.map((l) => languageRow(l, mine, ctx, view)));
+  if (rest.length) list.append(h('li', { class: 'setup-group' }, h('h2', { class: 'tiles-heading' }, own.length ? 'Add a language' : 'Languages')), ...rest.map((l) => languageRow(l, mine, ctx, view)));
 
   append(el, [
     h('section', { class: 'home setup-page', id: 'setup', 'aria-label': 'Choose your language' },
       p(first
-        ? 'Choose the language you want to review. You can add more later, under your Account.'
+        ? 'Choose the language you want to review. You can add more later, under Languages.'
         : 'Add another language, or go back to one you have.', 'setup-lede'),
       p('GoReview brings back the words you meet: what you look up while reading with GoLearn or Biblia, and words you add yourself under My Vocabulary.', 'setup-note'),
       list,
@@ -61,10 +61,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         button('Check again', () => { void (async () => { await ctx.refreshProfile(); if ((await ctx.enrolments()).length) ctx.go('review'); })(); }, { id: 'setup-recheck', class: 'account-link' })) : null),
   ]);
 
-  function row(l: LanguageView): HTMLElement {
+}
+
+/** The same enrollment control is used in first-run setup and in the Languages catalogue. */
+export function languageRow(l: LanguageView, mine: ReadonlySet<string>, ctx: AppContext, view: View, compact = false): HTMLElement {
     const status = statusLine();
     const choice = l.choice;
-    const have = haveOf(l);
+    const have = choice?.kind === 'standard' ? choice.options.some((o) => mine.has(o.languageId)) : mine.has(l.languageId);
     let read: () => { languageId: string; varietyId?: string } | undefined = () => ({ languageId: l.languageId });
     let control: HTMLElement | null = null;
     if (choice?.kind === 'standard') {
@@ -88,9 +91,10 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     }
     const action = have ? `Review ${l.name}` : `Start ${l.name}`;
     const label = h('span', { class: 'deck-label' },
-      h('span', { class: 'deck-kicker' }, have ? 'Yours' : l.level),
-      h('span', { class: 'deck-title' }, l.name),
-      h('span', { class: 'deck-caption', lang: l.languageId }, l.nativeName));
+      compact ? null : h('span', { class: 'deck-kicker' }, have ? 'Yours' : l.level),
+      h('span', { class: compact ? 'deck-title account-language-name' : 'deck-title' }, l.name,
+        compact ? h('small', { class: 'account-native-name', lang: l.languageId, dir: 'auto' }, ` (${l.nativeName})`) : null),
+      compact ? null : h('span', { class: 'deck-caption', lang: l.languageId }, l.nativeName));
     async function choose(start: HTMLButtonElement): Promise<void> {
       const picked = read();
       if (!picked) { setStatus(status, STANDARD_MESSAGE, 'error'); return; }
@@ -111,13 +115,21 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       // nothing to ask: the tile is the button, pressed like the home's tiles
       const face: HTMLButtonElement = button('', () => { void choose(face); }, { class: 'deck-face', 'data-action': 'start', 'aria-label': action });
       face.append(label, icon(ctx.deps.doc, 'arrow'));
-      tile = h('div', { class: 'deck-tile', 'data-deck': have ? 'current' : 'language' }, face);
+      tile = h('div', { class: compact ? 'deck-tile account-language' : 'deck-tile', 'data-deck': have ? 'current' : 'language' }, face);
       attachRipple(tile);
+    } else if (compact) {
+      // Account keeps the same compact card face as an enrolled language. Its setup
+      // question and action open inside that card rather than on a separate page.
+      const start: HTMLButtonElement = button(action, () => { void choose(start); }, { class: 'account-pill', 'data-action': 'start' });
+      tile = h('details', { class: 'deck-tile account-language account-language-disclosure', 'data-deck': have ? 'current' : 'language' },
+        h('summary', { class: 'deck-face' }, label,
+          h('span', { class: 'account-language-caret', 'aria-hidden': 'true' }, '▾')),
+        h('div', { class: 'account-language-options' }, control,
+          h('div', { class: 'account-panel-actions' }, start)));
     } else {
       // a question first: the tile holds it, and the gold pill acts
       const start: HTMLButtonElement = button(action, () => { void choose(start); }, { class: 'account-pill', 'data-action': 'start' });
       tile = h('div', { class: 'deck-tile account-panel setup-asks', 'data-deck': have ? 'current' : 'language' }, label, control, h('div', { class: 'account-panel-actions' }, start));
     }
     return h('li', { class: 'setup-language', 'data-language': l.languageId, 'data-state': have ? 'chosen' : 'new' }, tile, status);
-  }
 }

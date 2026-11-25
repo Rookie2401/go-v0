@@ -29,7 +29,7 @@ describe('Languages: download your languages', () => {
     expect(rig.q('#my-languages').hidden).toBe(true);
     const cards = [...rig.root.querySelectorAll('#language-cards > .lang')];
     expect(cards.map((c) => c.getAttribute('data-language'))).toEqual(LANGUAGES_FAKE.map((l) => l.languageId));
-    expect(cards.map((c) => c.querySelector('h3')!.firstChild!.textContent)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin']);
+    expect(cards.map((c) => c.querySelector('.lang-name')!.firstChild!.textContent)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin']);
     const albanian = rig.q('[data-language="sq"]');
     expect(albanian.querySelector('.native')!.textContent).toContain('shqip');
     // the level of the pack, in the pack's own words; the script's code (Latn, Deva) is engineering and is not shown
@@ -53,11 +53,9 @@ describe('Languages: download your languages', () => {
     expect(rig.root.querySelector('#enrol-form, #language, #pack-info')).toBeNull();
     expect(rig.text()).not.toMatch(/Install the pack|Orientation/);
     expect(rig.root.querySelectorAll('[data-action="choose"]')).toHaveLength(7);
-    // each is a compact row with its Download at the right; one that asks a question first (a written standard, a regional preference)
-    // opens it in the row; what works and what does not sit under a collapsed Details
     expect(cards.every((c) => c.tagName === 'LI')).toBe(true);
-    expect(cards.filter((c) => c.querySelector('details.download')).map((c) => c.getAttribute('data-language'))).toEqual(LANGUAGES_FAKE.filter((l) => l.choice).map((l) => l.languageId));
-    for (const c of cards.filter((x) => x.querySelector('details.download'))) expect(c.querySelector('details.download > summary')!.textContent).toBe('Download');
+    expect(cards.every((c) => c.querySelector('details.language-box > summary'))).toBe(true);
+    expect(cards.every((c) => !(c.querySelector('details.language-box') as HTMLDetailsElement).open)).toBe(true);
     expect(cards.every((c) => !(c.querySelector('details.about') as HTMLDetailsElement).open)).toBe(true);
     expect(albanian.querySelector('details.about > summary')!.textContent).toBe('Details');
     expect(albanian.querySelector('details.about')!.contains(albanian.querySelector('.works'))).toBe(true);
@@ -206,16 +204,16 @@ describe('Languages: download your languages', () => {
     const said = await downloadLanguage(rig, 'es', 'es-HN');
     expect(rig.local.enrolCalls[0]).toMatchObject({ languageId: 'es', varietyId: 'es-HN', packId: 'pack:es' });
     expect(said).toContain('Spanish is ready');
-    await until(() => /Spanish \(Honduras\)/.test(rowsOf(rig, 'es')[0]?.textContent ?? ''));
-    // a different preference for the same language replaces the earlier one (its events stay under it); picking the same one twice adds nothing
+    await until(() => /Honduras/.test(rowsOf(rig, 'es')[0]?.textContent ?? ''));
+    // The selected track does not close another track. Picking the same track twice adds nothing.
     await downloadLanguage(rig, 'es', 'es-standard');
     await until(() => rig.local.enrolments.length === 2);
-    await until(() => rowsOf(rig, 'es').length === 1 && !/Honduras/.test(rowsOf(rig, 'es')[0].textContent ?? ''));
-    expect(rig.local.enrolments.map((e) => [e.varietyId, !!e.endedAt])).toEqual([['es-HN', true], ['es-419', false]]);
+    await until(() => rowsOf(rig, 'es').length === 2);
+    expect(rig.local.enrolments.map((e) => [e.varietyId, !!e.endedAt])).toEqual([['es-HN', false], ['es-419', false]]);
     expect(rig.local.enrolCalls[1]).toMatchObject({ languageId: 'es', varietyId: 'es-419' }); // “General” is recorded as the pack’s general variety
     await downloadLanguage(rig, 'es', 'es-standard');
     expect(rig.local.enrolments).toHaveLength(2);
-    expect(rowsOf(rig, 'es')).toHaveLength(1);
+    expect(rowsOf(rig, 'es')).toHaveLength(2);
     expect(rig.packs.installs).toHaveLength(1); // the Spanish pack is installed once
   });
 

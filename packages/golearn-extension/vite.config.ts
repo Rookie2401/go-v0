@@ -76,7 +76,7 @@ function writeBuildJson(): Plugin {
 }
 
 /** The analysers: one entry per language (`src/analysers/<id>.ts` exports the adapter as `adapter`). */
-const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc'] as const;
+const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru', 'fr'] as const;
 
 /** Copy the static files once, in the first (content) build. */
 function copyStatic(): Plugin {
@@ -97,7 +97,7 @@ function copyStatic(): Plugin {
       if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(dist, 'THIRD-PARTY-NOTICES.md'));
       fs.cpSync(path.join(here, 'icons'), path.join(dist, 'icons'), { recursive: true });
       // the sharded form indexes (npm run lexicon:shard): gzip shards + manifest per set, loaded by the content script before a lookup
-      for (const set of ['el/ancient', 'el/modern', 'he/biblical', 'he/modern']) {
+      for (const set of ['el/ancient', 'el/modern', 'he/biblical', 'he/modern', 'ru/standard']) {
         const from = path.join(here, '..', '..', 'public', 'lexicon', set);
         if (fs.existsSync(path.join(from, 'manifest.json'))) fs.cpSync(from, path.join(dist, 'lexicon', set), { recursive: true });
         else console.warn(`[golearn] public/lexicon/${set} is not built (npm run lexicon:shard): the extension will read ${set.split('/')[0]} with its compiled core only`);

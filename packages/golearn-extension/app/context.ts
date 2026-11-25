@@ -236,8 +236,6 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
           const same = open.find((e) => (e.varietyId ?? '') === variety);
           if (same) { enrolmentId = same.enrolmentId; await local.select?.(same.enrolmentId); }
           else {
-            // a different preference for the same language replaces the earlier one (its events stay under it)
-            for (const other of open) await local.api.endEnrolment(other.enrolmentId);
             if (local.enrol) enrolmentId = (await local.enrol(input)).enrolmentId; // the worker makes it the active one
             else {
               const made = await local.api.enrol(input);

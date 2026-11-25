@@ -14,5 +14,7 @@ export async function loadAdapterNormalizer(lang: LanguageCode): Promise<(surfac
     case 'el': return (await import('../adapters/el')).elAdapter.normalize;
     case 'arc': return (await import('../adapters/arc')).arcAdapter.normalize;
     case 'la': return (await import('../adapters/la')).laAdapter.normalize;
+    case 'ru': return (await import('../adapters/russian/text')).ruKey;
+    case 'fr': return (await import('../adapters/fr')).frAdapter.normalize;
   }
 }

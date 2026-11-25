@@ -59,4 +59,24 @@ https://rookie2401.github.io/biblia/, published that day), where the learner sig
 build and the `'extension'` recorder mode still exist and work when built by hand; the GoReview iPhone app keeps its own bundled copy
 (`BIBLIA_OUT`, recorder mode `'app'`).
 
+Hindi edition (2026-11-21; docs/ecosystem/BIBLIA-HINDI.md): a separate system that works the same way (Biblia's own build is unchanged by it),
+published at https://rookie2401.github.io/biblia-hindi/, over the Indian Revised Version (2019, CC BY-SA 4.0), built with
+`--mode hi` / `--mode standalone-hi` (or `BIBLIA_EDITION=hi`) into `dist-hi/` / `dist-standalone-hi/`. `src/edition.ts` holds the only
+differences (library tree, analyser, numerals, masthead, reading-size setting, preference prefix `biblia-hi:`); `src/irv.ts` reads the
+committed USFM (`data/sources/hi/usfm`) at every build and serve, so there is no import step. Words are read by the hi analyser the GoLearn
+extension uses on Hindi pages and recorded under the learner's Hindi enrolment (no variety). Everything it stores (sign-in, device id,
+offline queue, settings) is kept under `biblia-hindi/` and its caches are `biblia-hindi-*`, so it never touches Biblia's on the shared
+github.io origin. Test: `test/biblia/hindi.test.ts`.
+
+```
+npm run biblia:dev-hi                                                              # development server of the Hindi edition (port 5199)
+BIBLIA_SERVICE_URL=https://go-v0.onrender.com npm run biblia:build-standalone-hi   # packages/biblia/dist-standalone-hi (13 MB)
+```
+
+Thai, German and Spanish editions (2026-11-21; docs/ecosystem/BIBLIA-EDITIONS.md): the same way, each its own system and site
+(rookie2401.github.io/biblia-thai, /biblia-german, /biblia-spanish): the Biblica Open Thai Common Version 2025 (CC BY-SA 4.0), the Schlachter
+Bible 1951 (CC BY 4.0) and the Reina-Valera 1909 (public domain), read by the general USFM reader `src/usfm.ts` (which the Hindi edition now uses
+too) and described in `src/edition.ts`. `npm run biblia:dev-<id>` / `biblia:build-standalone-<id>` with id th, de or es. Test:
+`test/biblia/editions.test.ts`.
+
 Tests: `npx vitest run test/biblia`.

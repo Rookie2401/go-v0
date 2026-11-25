@@ -100,7 +100,7 @@ describe('live updates in the app', () => {
     const svc = liveService(service);
     const rig = await makeRig({ service, fetch: svc.fetchFn, live, signedIn: true });
     await ready(rig, svc);
-    expect(rig.root.querySelectorAll('#account-languages .account-language')).toHaveLength(0);
+    expect(rig.root.querySelectorAll('#account-languages .account-language-row')).toHaveLength(0);
     service.enrolments.get('L1')!.push({ enrolmentId: 'L1-e2', learnerId: 'L1', packId: 'pack-de', packVersion: '1', goals: [], startedAt: '2026-10-01T00:00:00.000Z', languageId: 'de' });
     service.inject('L1', cardAdded(A, 'mace', 'meaning-to-form', '2026-10-08T09:00:00.000Z'));
     svc.push();

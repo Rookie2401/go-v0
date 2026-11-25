@@ -145,6 +145,11 @@ export interface ScannerOptions {
   ignore?: string[];
   /** 'visible' scans only text within the viewport plus one screen of margin; 'all' scans the whole document (tests, measurement). */
   viewport?: 'visible' | 'all';
+  /**
+   * Controls whose own text IS the page's text (a reader that renders each word as a button): an element of SKIPPED that matches one of
+   * these is descended into instead of left out. Empty by default; Reading Analysis passes its list (READING_TEXT_CONTROLS), GoLearn Active none.
+   */
+  textControls?: string[];
 }
 
 export interface Scanner {
@@ -171,11 +176,13 @@ export function createScanner(opts: ScannerOptions): Scanner {
     ...CHROME_SELECTORS,
   ].join(', ');
   const containerSel = (opts.containers ?? []).join(', ');
+  const textControlSel = (opts.textControls ?? []).join(', ');
+  const isTextControl = (el: Element): boolean => { if (!textControlSel) return false; try { return el.matches(textControlSel); } catch { return false; } };
   // per node and per language: a page read in several languages tokenises a mixed-script node in each of them (2026-11-09)
   const cache = new WeakMap<Text, Map<string, { data: string; tokens: ScanToken[] }>>();
 
   const skippedElement = (el: Element): boolean => {
-    if (SKIPPED.has(el.tagName.toUpperCase())) return true;
+    if (SKIPPED.has(el.tagName.toUpperCase()) && !isTextControl(el)) return true;
     if ((el as HTMLElement).hidden) return true;
     const st = (el as HTMLElement).style;
     if (st && (st.display === 'none' || st.visibility === 'hidden')) return true;

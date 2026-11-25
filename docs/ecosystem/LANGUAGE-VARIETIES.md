@@ -243,6 +243,9 @@ Albanian (sq)
            sq-arvanitika  Arvanitika          (recognised, never chosen)           alias aat
 ```
 
+- **A dialect to review, not a track to enrol in.** In the pack manifest Gheg stays `analysed: false`: the setup page turns every
+  analysed variety into a track a new learner must choose, and there is no Gheg course. Enrolment is in Albanian, as before, with
+  nothing asked. The registry alone makes Gheg selectable, as a review scope.
 - The ids are the pack's own (`packages/language-packs/src/packs/sq.ts`); the adapter's codes (`sq`, `aln` …) are aliases. One
   historical group: what is Known in Gheg is strong familiarity in Standard and the other way round (section 5), and never mastery.
 - **How a sentence gets its dialect** (`src/adapters/albanian/dialect.ts`, adapter-sq@10). Most words are written alike in both, so

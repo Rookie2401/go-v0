@@ -40,10 +40,14 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-17: 564 -> 580 KB for Reading Analysis (docs/ecosystem/READING-ANALYSIS.md): the page reads its whole text, names and counts its words and
     // runs the analysis (src/reading/{extract,lexical,session,coverage}.ts), and needs the variety registry to know which languages must state a
     // variety. content.js measured 575.5 KB (589,359 bytes; 560.3 KB before).
-    // 2026-11-18: 580 -> 584 KB; the Albanian analyser, which the content script carries, now tells each sentence apart as Gheg or Standard
-    // (src/adapters/albanian/dialect.ts, about 4.3 KB with its plain-words reasons and its list of spoken Gheg forms). content.js measured
-    // 580.1 KB (593,987 bytes; 589,359 before) on master 22be2d7e with the feature merged in.
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(584 * KB);
+    // 2026-11-18: 580 -> 585 KB for Russian: Cyrillic is shared by several languages, so the content script now tells Russian from Ukrainian,
+    // Belarusian, Bulgarian and Serbian text (language/cyrillic.ts, the Cyrillic branches of language/resolve.ts and active/pageLanguages.ts)
+    // and loads the Russian form index's shards before a lookup (russian/shards.ts with its text helpers). content.js measured 581.4 KB
+    // (575.5 KB on master 22be2d7e, which this branch has merged in).
+    // 2026-11-24: 585 -> 592 KB for Albanian dialects: the Albanian analyser, which the content script carries, now tells each sentence
+    // apart as Gheg or Standard (src/adapters/albanian/dialect.ts, about 4.5 KB with its plain-words reasons and its list of spoken Gheg
+    // forms). content.js measured 588.2 KB (602,361 bytes) with the feature merged into master 531831c1.
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(592 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
@@ -58,20 +62,37 @@ describe.skipIf(!have)('the built extension', () => {
     // what keeps the device's Repository level with the account (localRepo catchUp, the accounts a device has taken in, a pull that knows whether it
     // reached the account's head, remembers the events it could not store and carries out the account's deletions: repository-local/src/transfer.ts).
     // background.js measured 1,195.8 KB (1,224,510 bytes; 1,181.2 KB before).
-    // 2026-11-18: 1,200 -> 1,206 KB for Albanian dialects: the worker carries the Albanian analyser too (the same dialect.ts) and the
-    // Albanian entry of the variety registry. background.js measured 1,202.1 KB (1,230,989 bytes; 1,224,510 before).
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1206 * KB);
+    // 2026-11-18: 1,200 -> 1,230 KB for the Russian pack: every pack's manifest and orientation tutorial is in the worker (it answers the card's
+    // "explain" from them), and Russian's has thirteen features and twenty-six sentence patterns with their explanations (14 KB), twenty-eight
+    // validation cases and the tutorial; plus the Russian voice registry. background.js measured 1,225.4 KB (1,195.8 KB on master
+    // 22be2d7e, which this branch has merged in).
+    // 2026-11-19 (French pack, after merging master 22be2d7e): 1,200 -> 1,240 KB. French adds the text the worker serves to the card and the
+    // setup page: the pack manifest with its ten feature explanations and honest limits (about 9 KB), the 43 construction explanations the
+    // card's "why this form" asks the worker for (about 14 KB), and the orientation, which the catalogue reaches like every other language's
+    // (about 12 KB). Measured 1,263,600 bytes = 1,234.0 KB on the merged tree (1,195.8 KB on 22be2d7e). No French analyser, word list or
+    // lemma list is in the worker.
+    // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 1,240 -> 1,270 KB. background.js measured 1,291,753 bytes = 1,261.5 KB with Russian and French.
+    // 2026-11-24: 1,270 -> 1,275 KB for Albanian dialects: the worker carries the Albanian analyser too (the same dialect.ts) and the
+    // Albanian entry of the variety registry (about 6 KB). background.js measured 1,267.4 KB (1,297,808 bytes; 1,291,753 before).
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1275 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.
     // 2026-11-13: 800 -> 840 KB; master's build of 24bdc6b3 already measured 820 KB (unnoticed: this test needs a local build), and the
     // packs' self-report (evidence.ts, merge 467d2b6c) adds 8 KB so the setup page can say what stands behind each language: 828 KB.
-    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(840 * KB);
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
+    // 2026-11-19 (Russian pack): 840 -> 870 KB. The setup page lists every pack with its manifest, evidence and orientation, and Russian's
+    // (thirteen features and twenty-six sentence patterns with their explanations, twenty-eight validation cases, the tutorial) reaches it
+    // the same way it reaches the worker. app.js measured 887,822 bytes = 867.0 KB on this branch (master 22be2d7e merged in), built with
+    // GOLEARN_APP_DICT=sq,ru. This ceiling is checked only when the setup page has been built (npm run ext:build alone does not).
+    // 2026-11-19 (French pack, after merging master 22be2d7e): 840 -> 880 KB. The same French text reaches the setup page (manifest,
+    // construction explanations, orientation: 37.6 KB on 985c742b). Measured 896,583 bytes = 875.6 KB on the merged tree.
+    // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 880 -> 910 KB. app.js measured 926,340 bytes = 904.6 KB with Russian and French (setup page built with GOLEARN_APP_DICT=sq,ru,fr).
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(910 * KB);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 
   it('each analyser chunk is an ES module that exports the adapter, and the manifest makes the chunks readable from the page', () => {
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) {
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru']) {
       const code = read(`analysers/${id}.js`);
       expect(code, id).toMatch(/\bexport\s*\{[^}]*\bas adapter\b[^}]*\}|\bexport\s*\{\s*adapter\b/);
       expect(code, id).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|StoredSourceRef|importScripts/);
@@ -81,7 +102,7 @@ describe.skipIf(!have)('the built extension', () => {
     // lexicon/* (2026-10-22): the sharded Hebrew and Greek form indexes the content script loads before a lookup
     expect(m.web_accessible_resources).toEqual([{ resources: ['analysers/*.js', 'lexicon/*'], matches: ['<all_urls>'] }]);
     // every shared chunk the analysers import sits in analysers/ too, so the one pattern covers it
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
   });
 
   it('keeps Hindi out of the content script and unrelated analysers out of both scripts', () => {
@@ -89,11 +110,14 @@ describe.skipIf(!have)('the built extension', () => {
       const code = read(f);
       expect(code, f).not.toContain('adapter-de@');
       expect(code, f).not.toContain('adapter-th@');
+      expect(code, f).not.toContain('adapter-ru@'); // nor the Russian analyser and its 760 KB core: a chunk of its own
+      expect(code, f).not.toContain('kaikki-ru-tables');
       expect(code, f).not.toContain('Reference realisation of East Norwegian speech'); // the Norwegian engine (its ids are built at run time, so a literal from its text is checked)
     }
     expect(read('content.js')).not.toContain('adapter-hi@');
     expect(read('background.js')).toContain('adapter-hi@');
     expect(read('analysers/de.js')).toContain('adapter-de@');
+    expect(read('analysers/ru.js')).toContain('adapter-ru@');
     // Bokmål and Nynorsk share one engine, so the chunk that holds it (imported by both nb.js and nn.js) is the only place its text appears
     const shared = fs.readdirSync(path.join(dist, 'analysers')).filter((n) => /^shared-.*\.js$/.test(n)).map((n) => read(`analysers/${n}`)).join('\n');
     expect(shared).toContain('Reference realisation of East Norwegian speech');

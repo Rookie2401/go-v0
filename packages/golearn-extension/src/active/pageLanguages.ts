@@ -11,19 +11,24 @@
  *     COMPATIBLE_SHARE of them (and MIN_HITS) reads the block; the page's own language wins a near tie, another pack must lead clearly.
  *     A block with fewer than MIN_TOKENS words is too short to tell: it takes the page's language, but only when that language rests on
  *     evidence (the page declares it, the learner chose it for this page, the text shows it), never on the selected language alone.
+ *   - Cyrillic text is decided per block too, because the script is shared: a block is Russian when it declares so, or when its letters
+ *     name no other Cyrillic language (language/cyrillic.ts: Ukrainian, Belarusian, Serbian, Bulgarian ...) AND the Russian word list
+ *     recognises it, or (for a block the word list does not settle) the page itself is Russian on evidence. Otherwise it is left alone.
  *   - text that no installed pack recognises (English, French ...) is in no language: nothing in it is underlined or recorded.
  * Pure apart from reading elements' tag names and lang attributes; no layout, no network.
  */
 import type { LanguageAdapter } from '../../../../src/core';
 import { mapLanguageTag } from '../language/resolve';
+import { notRussianCyrillic } from '../language/cyrillic';
 
 /** Scripts read by exactly one pack: the script is the language. */
 export const SCRIPT_LANGUAGE: Readonly<Record<string, string>> = { Hebr: 'he', Grek: 'el', Thai: 'th', Deva: 'hi' };
 const SCRIPT_RE: Readonly<Record<string, RegExp>> = {
   Latn: /\p{Script=Latin}/u, Hebr: /\p{Script=Hebrew}/u, Grek: /\p{Script=Greek}/u, Thai: /\p{Script=Thai}/u, Deva: /\p{Script=Devanagari}/u,
+  Cyrl: /\p{Script=Cyrillic}/u,
 };
 /** The script each pack's words are written in. */
-export const LANGUAGE_SCRIPT: Readonly<Record<string, string>> = { sq: 'Latn', es: 'Latn', de: 'Latn', nb: 'Latn', nn: 'Latn', la: 'Latn', he: 'Hebr', arc: 'Hebr', el: 'Grek', th: 'Thai', hi: 'Deva' };
+export const LANGUAGE_SCRIPT: Readonly<Record<string, string>> = { sq: 'Latn', es: 'Latn', de: 'Latn', nb: 'Latn', nn: 'Latn', la: 'Latn', he: 'Hebr', arc: 'Hebr', el: 'Grek', th: 'Thai', hi: 'Deva', ru: 'Cyrl', fr: 'Latn' };
 
 /** A block whose words a pack's word list recognises at this share (and MIN_HITS) is compatible with it (resolve.ts DEFAULT_COMPATIBLE_SHARE, measured: own prose 70-100 %, foreign at most 38 %). */
 export const COMPATIBLE_SHARE = 0.45;
@@ -104,12 +109,33 @@ export function latinLanguageOf(text: string, latin: ReadonlyArray<{ id: string;
   return { why: 'none' }; // two packs read it about as well: not guessed
 }
 
+/**
+ * The language of a block's Cyrillic text: Russian, or none. `ru` is the Russian analyser when loaded; `page` is 'ru' when the page's
+ * Cyrillic text is Russian on evidence (declared, chosen for this page, or shown by its text). Cyrillic is never Russian by default.
+ */
+export function cyrillicLanguageOf(text: string, ru: LanguageAdapter | undefined, page: string | undefined): LatinVerdict {
+  const cyr = (text.match(/[\p{Script=Cyrillic}\u0301\u0300'’-]+/gu) ?? []).filter((w) => /\p{Script=Cyrillic}/u.test(w));
+  if (!cyr.length || !ru) return { why: 'none' };
+  const own = cyr.join(' ');
+  if (notRussianCyrillic(own)) return { why: 'none' }; // its own letters say Ukrainian, Belarusian, Serbian, Bulgarian, pre-1918 spelling ...
+  const s = wordListShare(ru, own);
+  if (cyr.length < MIN_TOKENS) {
+    // too short to compare: the page's language reads it; with no such evidence, only words the Russian word list knows, every one of them
+    if (page === 'ru') return { languageId: 'ru', why: 'page' };
+    return s.words > 0 && s.hits === s.words ? { languageId: 'ru', why: 'detected' } : { why: 'short' };
+  }
+  if (s.hits >= MIN_HITS && s.share >= COMPATIBLE_SHARE) return { languageId: 'ru', why: 'detected' };
+  return page === 'ru' ? { languageId: 'ru', why: 'page' } : { why: 'none' };
+}
+
 export interface PagePlanOptions {
   /** The installed pack languages this build can analyse. */
   installed: readonly string[];
   adapterOf(languageId: string): LanguageAdapter | undefined;
   /** The page's Latin-script language when it rests on evidence (declared, chosen for this page, detected); undefined otherwise. */
   pageLatin?: string;
+  /** 'ru' when the page's Cyrillic text is Russian on evidence (declared, chosen for this page, detected); undefined otherwise. */
+  pageCyrillic?: string;
 }
 
 export interface PagePlan {
@@ -122,7 +148,7 @@ export interface PagePlan {
 }
 
 /** Which language(s) each text node is read in. Block decisions are cached in `cache` (keyed by the block element, checked against its text). */
-export function planPage(nodes: readonly Text[], opts: PagePlanOptions, cache: WeakMap<Element, { text: string; verdict: LatinVerdict }> = new WeakMap()): PagePlan {
+export function planPage(nodes: readonly Text[], opts: PagePlanOptions, cache: WeakMap<Element, { text: string; verdict: LatinVerdict; cyrillic?: { text: string; verdict: LatinVerdict } }> = new WeakMap()): PagePlan {
   const installed = new Set(opts.installed);
   const byLanguage = new Map<string, Text[]>();
   const nodeLanguages = new WeakMap<Text, string[]>();
@@ -159,11 +185,39 @@ export function planPage(nodes: readonly Text[], opts: PagePlanOptions, cache: W
     if (hit && hit.text === text) { verdicts.set(b, hit.verdict); continue; }
     const v = latinLanguageOf(text, latinLoaded, opts.pageLatin);
     verdicts.set(b, v);
-    if (b) cache.set(b, { text, verdict: v });
+    if (b) cache.set(b, { ...(cache.get(b) ?? {}), text, verdict: v });
   }
   for (const n of latinNodes) {
     const v = verdicts.get(blockOf(n));
     if (v?.languageId && opts.adapterOf(v.languageId)) add(v.languageId, n);
+  }
+
+  // Cyrillic: one pack (Russian) reads it, but the script is not the language, so each block is decided on its own text
+  if (installed.has('ru')) {
+    const cyrText = new Map<Element | undefined, string>();
+    const cyrNodes: Text[] = [];
+    for (const n of nodes) {
+      if (!hasScript(n.data, 'Cyrl')) continue;
+      cyrNodes.push(n);
+      const b = blockOf(n);
+      cyrText.set(b, (cyrText.get(b) ?? '') + ' ' + n.data);
+    }
+    const ru = opts.adapterOf('ru');
+    if (cyrNodes.length && !ru) missing.add('ru');
+    const cyrVerdicts = new Map<Element | undefined, LatinVerdict>();
+    for (const [b, raw] of cyrText) {
+      const text = raw.replace(/\s+/gu, ' ').trim();
+      const declared = declaredOn(b);
+      if (declared === null) { cyrVerdicts.set(b, { why: 'none' }); continue; } // lang="uk", lang="bg" ...: a language no pack reads
+      if (declared === 'ru') { cyrVerdicts.set(b, { languageId: 'ru', why: 'declared' }); continue; }
+      const hit = b ? cache.get(b)?.cyrillic : undefined;
+      if (hit && hit.text === text) { cyrVerdicts.set(b, hit.verdict); continue; }
+      const v = cyrillicLanguageOf(text, ru, opts.pageCyrillic);
+      cyrVerdicts.set(b, v);
+      // a verdict reached without the analyser is not remembered: it is decided again once the analyser has loaded
+      if (b && ru) cache.set(b, { ...(cache.get(b) ?? { text: '', verdict: { why: 'none' } }), cyrillic: { text, verdict: v } });
+    }
+    if (ru) for (const n of cyrNodes) if (cyrVerdicts.get(blockOf(n))?.languageId === 'ru') add('ru', n);
   }
   return { byLanguage, nodeLanguages, missing };
 }

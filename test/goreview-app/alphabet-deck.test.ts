@@ -33,7 +33,7 @@ const glyphs = (lang: string): string[] => alphabetCards(lang).map((c) => c.glyp
 describe('Alphabet: the cards', () => {
   it('every language that has a pack has its alphabet, with the letters it should have', () => {
     expect([...ALPHABET_LANGUAGES].sort()).toEqual(Object.keys(PACKS).sort());
-    const count: Record<string, number> = { es: 30, sq: 36, de: 30, nb: 29, nn: 29, la: 25, el: 24, he: 27, arc: 27, th: 77, hi: 71 };
+    const count: Record<string, number> = { es: 30, sq: 36, de: 30, nb: 29, nn: 29, la: 25, el: 24, he: 27, arc: 27, th: 77, hi: 71, ru: 33, fr: 69 };
     for (const lang of Object.keys(PACKS)) {
       const cards = alphabetCards(lang);
       expect(cards, lang).toHaveLength(count[lang]);

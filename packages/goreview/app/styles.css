@@ -78,6 +78,9 @@ select.language-kicker:hover { color: var(--ink); }
 .cog { display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 999px; color: var(--ink-soft); }
 .cog:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 5%, transparent); text-decoration: none; }
 .cog[aria-current="page"] { color: var(--accent); }
+.header-languages { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: 0 .4rem; color: var(--ink-soft); font: 600 .8rem/1 var(--serif); letter-spacing: .09em; text-decoration: none; text-transform: uppercase; white-space: nowrap; }
+.header-languages:hover, .header-languages[aria-current="page"] { color: var(--accent); text-decoration: none; }
+.header-languages[aria-current="page"] { box-shadow: inset 0 -2px var(--accent); }
 
 /* page */
 .screen { width: 100%; padding: 1.75rem clamp(1rem, 4vw, 3rem) 4rem; max-width: 52rem; margin: 0 auto; overflow-wrap: anywhere; }
@@ -256,7 +259,7 @@ table.paradigm td.sel > span:first-child, .forms-list li.sel > span:first-child 
 }
 
 /* The review home uses the colors of stone, leather and brass. The photograph is bundled with the app. */
-body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"], [data-route="setup"])) {
+body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="languages"], [data-route="signin"], [data-route="setup"])) {
   color-scheme: dark;
   --paper: #211a15;
   --paper-raised: #30251c;
@@ -280,9 +283,9 @@ body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-
   --focus: var(--accent);
   background: var(--paper);
 }
-body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"], [data-route="setup"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
-html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="signin"], [data-route="setup"]))::before { background: var(--paper); }
-.screen:is([data-route="review"], [data-route="review/session"], [data-route="signin"], [data-route="account"], [data-route="setup"]) {
+body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="languages"], [data-route="signin"], [data-route="setup"])) .topbar { background: #211a15; border-bottom-color: var(--rule); }
+html[data-edition="review"] body:has(#screen:is([data-route="review"], [data-route="review/session"], [data-route="review/decks"], [data-route="settings"], [data-route="account"], [data-route="languages"], [data-route="signin"], [data-route="setup"]))::before { background: var(--paper); }
+.screen:is([data-route="review"], [data-route="review/session"], [data-route="signin"], [data-route="account"], [data-route="languages"], [data-route="setup"]) {
   --home-gutter: clamp(1.125rem, 5vw, 2rem);
   max-width: none;
   padding: 0 0 calc(1.25rem + env(safe-area-inset-bottom, 0px));
@@ -1029,6 +1032,7 @@ img, svg, video, canvas { max-width: 100%; }
 }
 .flashcard-back .stimulus { font-size: clamp(1.65rem, 6vw, 2.35rem); color: var(--ink-soft); }
 .flashcard-back .reference { margin: 0; font-size: clamp(1.75rem, 6.5vw, 2.65rem); line-height: 1.15; }
+.flashcard-back .flashcard-parsing { margin: .2rem 0 0; color: var(--ink-soft); font-size: clamp(.95rem, 3.5vw, 1.15rem); line-height: 1.35; }
 .flashcard .pronunciation { top: .55rem; right: .65rem; }
 .flashcard .icon-btn { width: 2.75rem; height: 2.75rem; }
 .flashcard .icon-btn svg { width: 1.45rem; height: 1.45rem; }
@@ -1150,6 +1154,38 @@ img, svg, video, canvas { max-width: 100%; }
 }
 [data-home-photo] .account-page, [data-home-photo] .setup-page { margin-top: -1.25rem; }
 .account-group { display: grid; gap: .8rem; }
+.account-language-list { list-style: none; padding: 0 var(--deck-inset) .65rem; margin: 0; }
+.account-language-list li { border-top: 1px solid var(--control-line); }
+.account-language-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem 1rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: .45rem .25rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 1.15rem/1.25 var(--serif);
+  text-align: start;
+  cursor: pointer;
+}
+.account-language-row:hover:not(:disabled) { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.account-language-row:disabled { cursor: default; color: var(--ink-soft); }
+.account-language-row small { color: var(--ink-soft); text-align: end; }
+.account-language-disclosure summary { list-style: none; cursor: pointer; }
+.account-language-disclosure summary::-webkit-details-marker { display: none; }
+.account-language-caret { color: var(--accent); }
+.account-language-disclosure[open] .account-language-caret { transform: rotate(180deg); }
+.account-language-name { overflow-wrap: anywhere; }
+.account-language-name small { color: var(--ink-soft); }
+.account-language-options { padding: 0 var(--deck-inset) 1.15rem; }
+.account-language-options .setup-choice { margin: .3rem 0 0; }
+.account-language-options .account-panel-actions { margin-top: 1rem; }
+.account-catalogue-heading { margin-top: 1rem; }
+.account-catalogue-list { display: grid; gap: .8rem; list-style: none; margin: 0; padding: 0; }
+.account-catalogue-list > .setup-language { display: grid; gap: .3rem; }
 .account-page > .home-link, .account-group > .home-link { margin-top: .2rem; }
 .deck-tile[data-deck="danger"] .deck-title { color: var(--bad); }
 .deck-tile[data-deck="danger"] .deck-face .ec-icon { color: var(--bad); }

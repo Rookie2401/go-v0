@@ -1,0 +1,96 @@
+name: Publish GoReview and GoLearn web
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/publish-web.yml
+      - packages/goreview/**
+      - packages/language-packs/src/packs/el.ts
+      - src/adapters/greek/**
+      - src/core/english-verb.ts
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: go-web-pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out shared source
+        uses: actions/checkout@v4
+        with:
+          path: source
+
+      - name: Check out existing Pages assets
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: published
+          sparse-checkout: |
+            app
+            review
+
+      - name: Check out pinned Biblia indexes
+        uses: actions/checkout@v4
+        with:
+          repository: Rookie2401/biblia
+          ref: 253f865b15f9760327b61f2da9002a3b691acf1b
+          path: biblia-assets
+          sparse-checkout: |
+            lexicon/he/biblical-index.json
+            lexicon/el/koine-index.json
+          sparse-checkout-cone-mode: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: source/package-lock.json
+
+      - name: Install dependencies
+        working-directory: source
+        run: npm ci
+
+      - name: Supply existing verified indexes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p source/public/lexicon/el source/public/lexicon/he
+          cp -a published/review/lexicon/. source/public/lexicon/
+          cp biblia-assets/lexicon/he/biblical-index.json source/public/lexicon/he/biblical-index.json
+          cp biblia-assets/lexicon/el/koine-index.json source/public/lexicon/el/koine-index.json
+
+      - name: Build GoReview web
+        working-directory: source
+        env:
+          GOREVIEW_SERVICE_URL: https://go-v0.onrender.com
+          GOREVIEW_DICT: ''
+        run: npx vite build -c packages/goreview/app/vite.config.ts --mode review
+
+      - name: Build GoLearn setup web
+        working-directory: source
+        env:
+          GOLEARN_APP_DICT: ''
+        run: npx vite build -c packages/golearn-extension/app/vite.config.ts --mode web
+
+      - name: Publish both while retaining hosted dictionaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp -a source/packages/goreview/app/dist-review/. published/review/
+          cp -a source/packages/golearn-extension/dist-web/. published/app/
+          git -C published config user.name 'github-actions[bot]'
+          git -C published config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C published add -- review app
+          if ! git -C published diff --cached --quiet; then
+            git -C published commit -m "Publish GoReview and GoLearn from ${GITHUB_SHA}"
+            git -C published push origin HEAD:gh-pages
+          fi

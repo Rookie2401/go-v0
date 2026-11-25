@@ -30,8 +30,8 @@ describe('courseReads / courseLangs', () => {
     }
   });
 
-  it('the courses keep their positions as new ones are appended (Norway, then Hebrew, Greek and Latin in October 2026), and no language has two courses', () => {
-    expect(COURSES.map((c) => c.id)).toEqual(['honduras-es', 'albania-sq', 'thailand-th', 'india-hi', 'germany-de', 'norway-nb', 'hebrew', 'greek', 'latin-la', 'aramaic-arc']);
+  it('the courses keep their positions as new ones are appended (Norway, then Hebrew, Greek and Latin in October 2026, Russian and French in November 2026), and no language has two courses', () => {
+    expect(COURSES.map((c) => c.id)).toEqual(['honduras-es', 'albania-sq', 'thailand-th', 'india-hi', 'germany-de', 'norway-nb', 'hebrew', 'greek', 'latin-la', 'aramaic-arc', 'russia-ru', 'french-fr']);
     expect(courseForLang('nb').id).toBe('norway-nb');
     expect(new Set(COURSES.map((c) => c.lang)).size).toBe(COURSES.length);
   });

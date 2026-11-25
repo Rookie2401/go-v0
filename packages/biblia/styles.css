@@ -21,6 +21,10 @@
 :root {
   --serif: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
   --heb: 'Frank Ruhl Libre', 'David Libre', 'David', 'SBL Hebrew', 'Ezra SIL', 'Times New Roman', serif;
+  /* the Hindi edition: Tiro Devanagari Hindi is declared in its own edition-hi.css (the original edition never loads it) */
+  --deva: 'Tiro Devanagari Hindi', 'Noto Serif Devanagari', 'Kohinoor Devanagari', 'Nirmala UI', 'Mangal', serif;
+  /* the Thai edition: the device's own Thai face (Thonburi on Apple, Leelawadee on Windows, Noto on Android); the Latin around it stays EB Garamond */
+  --thai: 'Noto Serif Thai', 'Thonburi', 'Leelawadee UI', 'Leelawadee', 'Noto Sans Thai', 'Tahoma', sans-serif;
   --paper: #f7f2e8;
   --paper-raised: #fdfaf3;
   --ink: #2b2620;
@@ -41,6 +45,10 @@
   --mark-familiar: #8a6b4030;
   --reading-font-size: 26px;
   --greek-font-size: 22px;
+  --hindi-font-size: 22px;
+  --thai-font-size: 22px;
+  --german-font-size: 22px;
+  --spanish-font-size: 22px;
   --reading-line-height: 1.85;
   --measure: 38rem;
   --shadow-raised: 0 1px 2px #2b26200f, 0 6px 20px #2b262012;
@@ -83,6 +91,9 @@ h1, h2, h3, h4, p { margin: 0; }
 .error { color: var(--wine); }
 .he { font-family: var(--heb); direction: rtl; unicode-bidi: isolate; }
 .gr, .el { font-family: var(--serif); direction: ltr; unicode-bidi: isolate; }
+.hi { font-family: var(--deva); direction: ltr; unicode-bidi: isolate; }
+.th { font-family: var(--thai); direction: ltr; unicode-bidi: isolate; }
+.de, .es { font-family: var(--serif); direction: ltr; unicode-bidi: isolate; }
 
 @keyframes screen-in { from { opacity: 0; } to { opacity: 1; } }
 .route-fade { animation: 0.22s ease-out both screen-in; }
@@ -110,6 +121,9 @@ a.topbar__title:hover { text-decoration: none; color: var(--ink); }
 .home__title { letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); margin-top: 1.75rem; font-size: clamp(1.9rem, 6vw, 2.7rem); font-weight: 600; line-height: 1.25; }
 .home__title .he { letter-spacing: 0; text-transform: none; font-weight: 400; display: block; font-size: 1.15em; margin-bottom: 0.1em; }
 .home__title .gr { display: block; text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 0.9em; margin-bottom: 0.3em; }
+.home__title .hi { display: block; text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 1.05em; line-height: 1.5; margin-bottom: 0.15em; }
+.home__title .th { display: block; text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 1em; line-height: 1.6; margin-bottom: 0.15em; }
+.home__title .de, .home__title .es { display: block; text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 0.95em; margin-bottom: 0.25em; }
 .home__subtitle { color: var(--ink-soft); margin-top: 0.4rem; font-size: 1.1rem; font-style: italic; }
 .home__rule { background: var(--rule-strong); width: 3rem; height: 1px; margin: 2rem auto; }
 .accountline { color: var(--ink-soft); font-size: 0.95rem; margin: -0.6rem auto 1.6rem; max-width: 30rem; }
@@ -121,6 +135,8 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 .home__continue-ref { margin-top: 0.2rem; font-size: 1.02rem; }
 .home__continue-sub { color: var(--ink-soft); font-size: 0.95rem; font-style: italic; }
 .home__continue-sub[lang='he'] { font-family: var(--heb); font-style: normal; }
+.home__continue-sub[lang='hi'] { font-family: var(--deva); font-style: normal; }
+.home__continue-sub[lang='th'] { font-family: var(--thai); font-style: normal; }
 .home__about { color: var(--ink-faint); margin: 2.5rem auto 0; max-width: 30rem; font-size: 0.9rem; text-align: left; }
 .home__about p { margin: 0 0 0.7rem; }
 
@@ -148,6 +164,8 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 .lib__group--current > .lib__head .lib__title { color: var(--accent); }
 .lib__native { margin-left: auto; color: var(--ink-soft); font-size: 1.05rem; white-space: nowrap; min-width: 0; overflow: hidden; text-overflow: ellipsis; flex: 0 1 auto; }
 .lib__native.he { font-size: 1.15rem; }
+.lib__native.hi { font-family: var(--deva); font-size: 1.05rem; }
+.lib__native.th { font-family: var(--thai); font-size: 1rem; }
 .lib__group--1 > .lib__head .lib__native { font-size: 1.2rem; }
 .lib__meta { color: var(--ink-faint); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; flex: none; min-width: 3.4rem; text-align: right; }
 .lib__children { margin-left: 0.9rem; padding-left: 1.1rem; border-left: 1px solid var(--rule-strong); margin-bottom: 0.4rem; }
@@ -163,6 +181,8 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 .entry__num { flex: none; font-size: 1.05rem; color: var(--ink); }
 .entry__native { margin-left: auto; font-size: 1.15rem; color: var(--ink-soft); white-space: nowrap; }
 .entry__native.he { font-family: var(--heb); font-size: 1.25rem; }
+.entry__native.hi { font-family: var(--deva); font-size: 1.1rem; }
+.entry__native.th { font-family: var(--thai); font-size: 1.05rem; }
 .entry__preview { flex-basis: 100%; color: var(--ink-faint); font-style: italic; font-size: 0.85rem; }
 .entry--at .entry__num, .entry--at .entry__native { color: var(--accent); }
 .entry--at .entry__num { font-weight: 600; }
@@ -181,6 +201,8 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 .reader__crumb { display: block; max-width: 100%; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-faint); font-size: 0.72rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .reader__chapter { display: block; max-width: 100%; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: var(--heb); direction: rtl; text-align: left; }
 .reader__chapter--ltr { direction: ltr; font-family: var(--serif); }
+.reader__chapter[lang='hi'] { font-family: var(--deva); }
+.reader__chapter[lang='th'] { font-family: var(--thai); }
 .reader__progress { height: 1px; background: transparent; position: relative; }
 .reader__progress > span { position: absolute; left: 0; top: 0; height: 1px; background: var(--accent); opacity: 0.6; }
 .reader__col { max-width: calc(var(--measure) + 2.7rem); margin: 0 auto; padding: 2.4rem 1.35rem calc(7rem + var(--safe-bottom)); animation: 0.22s ease-out both screen-in; }
@@ -193,7 +215,16 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 .reader .prose[lang='he'] { font-family: var(--heb); font-size: var(--reading-font-size); direction: rtl; text-align: right; }
 /* Greek has no hyphenation dictionary and runs as one paragraph; justifying closes the ragged gap on a narrow phone column */
 .reader .prose[lang='el'] { font-family: var(--serif); font-size: var(--greek-font-size); direction: ltr; text-align: justify; text-justify: inter-word; line-height: calc(var(--reading-line-height) - 0.15); }
+/* Hindi is set as Biblia sets Greek: justified to both margins, the space shared out between words (a ragged right edge left an uneven gap) */
+.reader .prose[lang='hi'] { font-family: var(--deva); font-size: var(--hindi-font-size); direction: ltr; text-align: justify; text-justify: inter-word; }
+/* Thai has no spaces between words (the OTCV marks them with zero-width spaces, where lines may break): ragged, like Hindi */
+.reader .prose[lang='th'] { font-family: var(--thai); font-size: var(--thai-font-size); direction: ltr; text-align: left; line-break: normal; word-break: normal; }
+/* German and Spanish are set as Biblia sets Greek: EB Garamond, justified, hyphenated by the language of the page */
+.reader .prose[lang='de'] { font-family: var(--serif); font-size: var(--german-font-size); direction: ltr; text-align: justify; text-justify: inter-word; hyphens: auto; line-height: calc(var(--reading-line-height) - 0.15); }
+.reader .prose[lang='es'] { font-family: var(--serif); font-size: var(--spanish-font-size); direction: ltr; text-align: justify; text-justify: inter-word; hyphens: auto; line-height: calc(var(--reading-line-height) - 0.15); }
 .reader .verse { display: inline; }
+/* a Psalm title (and the letters of Psalm 119) as the IRV prints it: its own line, quieter, before verse 1 */
+.reader .verse.superscription { display: block; white-space: pre-line; font-size: 0.86em; color: var(--ink-soft); font-style: normal; margin: 0 0 0.5em; text-align: left; }
 .reader .vn { font-family: var(--serif); font-size: 0.6em; color: var(--accent); vertical-align: super; line-height: 0; margin: 0 0.25em; letter-spacing: 0.02em; user-select: none; direction: ltr; unicode-bidi: isolate; }
 .reader .prose[lang='he'] .vn { font-family: var(--heb); font-size: 0.62em; }
 html[data-verse-numbers='hidden'] .reader .vn { display: none; }
@@ -202,6 +233,8 @@ html[data-verse-numbers='hidden'] .reader .vn { display: none; }
 .reader .poetry .verse { display: block; margin: 0.2em 0; }
 .reader .aramaic { border-inline-start: 3px solid var(--accent); padding-inline-start: 0.6em; }
 .reader .word { all: unset; cursor: pointer; border-radius: 3px; padding: 0 0.04em; transition: background-color 0.12s; }
+/* a translation edition's word with the punctuation touching it (app.ts editionWords): the line never breaks inside */
+.reader .wg { white-space: nowrap; }
 .reader .word:hover, .reader .word:focus-visible { background: color-mix(in srgb, var(--accent) 10%, transparent); outline: none; }
 .reader .word:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .reader .word.sel { background: var(--selection); }

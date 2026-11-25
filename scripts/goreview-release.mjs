@@ -163,7 +163,7 @@ function walkFiles(root, directory) {
 
 /** Source fingerprint captured before local preflight commands run, including expected copied static inputs. */
 export function captureReleaseSourceFingerprint(projectRoot = ROOT) {
-  const languages = (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th,la,he,nb,nn').split(',').map(value => value.trim()).filter(Boolean);
+  const languages = (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th,la,he,nb,nn,ru,fr').split(',').map(value => value.trim()).filter(Boolean);
   const staticInputs = [
     ...languages.flatMap(language => walkFiles(projectRoot, `public/dict/${language}`).filter(file => path.basename(file) !== 'frequency.json')),
     ...walkFiles(projectRoot, 'public/lexicon'),
@@ -254,6 +254,8 @@ function staticSourceInputs(artifactList) {
     const greekLexicon = file.match(/^lexicon\/el\/(ancient|modern)\/(.+)$/);
     if (greekLexicon) inputs.push(`public/lexicon/el/${greekLexicon[1]}/${greekLexicon[2]}`);
     if (file === 'lexicon/el/koine-index.json.gz') inputs.push('public/lexicon/el/koine-index.json');
+    const russianLexicon = file.match(/^lexicon\/ru\/standard\/(.+)$/);
+    if (russianLexicon) inputs.push(`public/lexicon/ru/standard/${russianLexicon[1]}`);
     // Generated from this licensed public index during the app build; the generated file itself is not a public source input.
     if (file === 'lexicon/he/biblical/form-frequency.json.gz') inputs.push('public/lexicon/he/biblical-index.json');
   }

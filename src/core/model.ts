@@ -18,12 +18,12 @@
  * Koine, Medieval and Modern Greek) are period varieties of it (core/variety.ts, kind 'period'), not separate codes: an
  * item id is shared across the periods and the period travels on the reading and the enrolment (`varietyId`).
  */
-export type LanguageCode = 'es' | 'sq' | 'th' | 'hi' | 'de' | 'nb' | 'nn' | 'he' | 'el' | 'la' | 'arc';
+export type LanguageCode = 'es' | 'sq' | 'th' | 'hi' | 'de' | 'nb' | 'nn' | 'he' | 'el' | 'la' | 'arc' | 'ru' | 'fr';
 import type { CurriculumMetadata } from '../course/curriculumPolicy';
 import type { TextAssist } from './assist';
-export const LANGUAGES: readonly LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de', 'nb', 'nn', 'he', 'el', 'la', 'arc'] as const;
+export const LANGUAGES: readonly LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de', 'nb', 'nn', 'he', 'el', 'la', 'arc', 'ru', 'fr'] as const;
 
-export type Script = 'Latn' | 'Deva' | 'Thai' | 'Hebr' | 'Grek';
+export type Script = 'Latn' | 'Deva' | 'Thai' | 'Hebr' | 'Grek' | 'Cyrl';
 
 export interface Language {
   id: LanguageCode;

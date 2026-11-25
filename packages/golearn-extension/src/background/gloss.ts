@@ -375,7 +375,14 @@ export function createGlossService(opts: GlossServiceOptions) {
     for (const [key, value] of Object.entries(feats)) {
       const f = manifest.grammar.features.find((x) => x.key === key);
       if (!f) { features.push({ key, value, label: key }); continue; }
-      const names = value.split(',').map((v) => v.trim()).filter(Boolean).map((v) => f.values[v]).filter((n): n is string => !!n);
+      const rawValues = value.split(',').map((v) => v.trim()).filter(Boolean);
+      // French uses Tense=Past/Pres on participles to distinguish past/present participles, not the passé simple/present finite tense.
+      // The pack's general Tense glossary has to cover both uses; tailor the short card label to the feature bundle so learners do not
+      // see the finite-verb explanation as the name of a participle's form.
+      const frenchParticipleTense = r.languageId === 'fr' && (r.pos === 'VERB' || r.pos === 'AUX') && key === 'Tense' && feats.VerbForm === 'Part';
+      const names = rawValues.map((v) => frenchParticipleTense
+        ? ({ Past: 'past participle', Pres: 'present participle' } as Record<string, string>)[v]
+        : f.values[v]).filter((n): n is string => !!n);
       features.push({ key, value, label: f.label, ...(names.length ? { brief: `${names.join(' or ')}` } : {}), explanation: f.explain });
     }
     const ids = Array.isArray(r.constructionIds) ? r.constructionIds.filter((i): i is string => typeof i === 'string' && /^[a-z0-9-]{1,60}$/.test(i)).slice(0, 12) : [];

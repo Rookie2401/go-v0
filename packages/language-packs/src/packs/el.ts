@@ -33,6 +33,14 @@ export const EL_VALIDATION: ValidationCase[] = [
   { id: 'v-ego', surface: 'Ἐγώ', sentence: JOHN_14_6, expect: { lemma: 'ἐγώ', pos: 'PRON', features: { Case: 'Nom', Number: 'Sing', PronType: 'Prs' }, status: 'high-confidence' } },
   { id: 'v-pisteuo', surface: 'Πιστεύω', sentence: 'Πιστεύω εἰς τὸν θεόν.', expect: { lemma: 'πιστεύω', pos: 'VERB', features: { Person: '1', Tense: 'Pres', Voice: 'Act', Mood: 'Ind', Number: 'Sing' }, status: 'high-confidence' } },
   { id: 'v-estin', surface: 'ἔστιν', sentence: 'οὐκ ἔστιν ὧδε', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '3', Tense: 'Pres', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-eimi-2sg', surface: 'εἶ', sentence: 'σὺ εἶ ἀγαθός.', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '2', Tense: 'Pres', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-eimi-1pl', surface: 'ἐσμέν', sentence: 'ἡμεῖς ἐσμὲν φίλοι.', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '1', Tense: 'Pres', Number: 'Plur' }, status: 'high-confidence' } },
+  { id: 'v-eimi-2pl', surface: 'ἐστέ', sentence: 'ὑμεῖς ἐστὲ φίλοι.', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '2', Tense: 'Pres', Number: 'Plur' }, status: 'high-confidence' } },
+  { id: 'v-eimi-3pl', surface: 'εἰσίν', sentence: 'αὐτοὶ εἰσὶν φίλοι.', expect: { lemma: 'εἰμί', pos: 'VERB', features: { Person: '3', Tense: 'Pres', Number: 'Plur' }, status: 'high-confidence' } },
+  { id: 'v-have-1sg', surface: 'ἔχω', sentence: 'ἔχω βιβλίον.', expect: { lemma: 'ἔχω', pos: 'VERB', features: { Person: '1', Tense: 'Pres', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-have-2sg', surface: 'ἔχεις', sentence: 'ἔχεις βιβλίον.', expect: { lemma: 'ἔχω', pos: 'VERB', features: { Person: '2', Tense: 'Pres', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-have-3sg', surface: 'ἔχει', sentence: 'ἔχει βιβλίον.', expect: { lemma: 'ἔχω', pos: 'VERB', features: { Person: '3', Tense: 'Pres', Number: 'Sing' }, status: 'high-confidence' } },
+  { id: 'v-come-aorist-3sg', surface: 'ἦλθεν', sentence: 'καὶ ἦλθεν πρὸς αὐτόν.', expect: { lemma: 'ἔρχομαι', pos: 'VERB', features: { Person: '3', Tense: 'Aor', Voice: 'Act', Mood: 'Ind', Number: 'Sing' }, status: 'high-confidence' } },
   // the core's limits, stated: without the Modern index a Modern form reaches a New Testament form through its bare letters only (είναι “is” →
   // the Koine infinitive εἶναι, accents inferred, provisional); a Homeric word has no reading at all
   { id: 'v-core-limit-modern', surface: 'είναι', sentence: 'Ο λόγος είναι ελεύθερος.', expect: { lemma: 'εἰμί', pos: 'VERB', features: { VerbForm: 'Inf' }, status: 'provisional' } },

@@ -642,7 +642,9 @@ class Controller {
     if (flashcard) {
       const face = this.root.querySelector('#flip-card');
       const word = face?.querySelector('#stimulus');
-      const back = h('div', { class: 'flashcard-face flashcard-back', tabindex: '-1' }, word, reference);
+      const parsing = (exercise as ReviewExercise).formParsing;
+      const back = h('div', { class: 'flashcard-face flashcard-back', tabindex: '-1' }, word, reference,
+        parsing ? h('p', { class: 'flashcard-parsing', id: 'flashcard-parsing' }, parsing) : null);
       face?.replaceWith(back);
       back.closest('.flashcard')?.setAttribute('data-side', 'back');
       back.closest('.flashcard')?.setAttribute('aria-label', 'Flashcard back');

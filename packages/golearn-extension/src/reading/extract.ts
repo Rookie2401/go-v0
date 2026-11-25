@@ -31,7 +31,16 @@ import type { ReadingScope } from './protocol';
 export const READING_IGNORE: readonly string[] = [
   'aside', 'form', '[inert]', 'details:not([open])', '[role="complementary"]', '[role="search"]', '[role="form"]', '[role="alert"]', '[role="status"]',
   'ins.adsbygoogle', '[aria-label="Advertisement" i]', '[data-ad]', '[data-ad-slot]', '.advertisement',
+  // a Scripture reader's verse numbers, paragraph marks and colour-legend samples are not words of the text
+  // (Biblia: span.vn א׳ ב׳ …, span.mark פ / ס, the legend's "אα" swatches)
+  '.verse > .vn', '.verse > .mark', '.legend .swatch',
 ];
+/**
+ * Buttons whose text is the text to be read: a reader that renders each word as a control (Biblia: <button class="word" lang="he">).
+ * The scanner leaves every other button out (a label is not text); these it reads. A word button declares its language, so a word of
+ * another language is left out as foreign like any other block.
+ */
+export const READING_TEXT_CONTROLS: readonly string[] = ['button.word[lang]'];
 /** The main content of a page with no site reading area. */
 export const MAIN_SELECTOR = 'main, article, [role="main"], [data-reader-content], [data-chapter]';
 /** The main content is the scope when it holds at least this share of the page's readable letters. */
@@ -136,7 +145,7 @@ export function extractReadingText(o: ExtractOptions): Extraction | ExtractionFa
     return { ok: false, code: 'unsupported-page', message: entry?.refusal ?? 'GoLearn does not read this page.' };
   }
   const containers = entry.site?.containers ?? [];
-  const scanner = createScanner({ doc, adapterOf: o.adapterOf, containers, ignore: [...(entry.site?.ignore ?? []), ...READING_IGNORE], viewport: 'all' });
+  const scanner = createScanner({ doc, adapterOf: o.adapterOf, containers, ignore: [...(entry.site?.ignore ?? []), ...READING_IGNORE], viewport: 'all', textControls: [...READING_TEXT_CONTROLS] });
 
   const roots: Document[] = [doc];
   const frames = entry.site?.frames;

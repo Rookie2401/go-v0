@@ -9,11 +9,13 @@ import { describe, expect, it } from 'vitest';
 import { deAdapter } from '../../src/adapters/de';
 import { elAdapter } from '../../src/adapters/el';
 import { esAdapter } from '../../src/adapters/es';
+import { frAdapter } from '../../src/adapters/fr';
 import { hiAdapter } from '../../src/adapters/hi';
 import { heAdapter } from '../../src/adapters/he';
 import { laAdapter } from '../../src/adapters/la';
 import { nbAdapter } from '../../src/adapters/nb';
 import { nnAdapter } from '../../src/adapters/nn';
+import { ruAdapter } from '../../src/adapters/ru';
 import { arcAdapter } from '../../src/adapters/arc';
 import { ARC_SOURCE_ID } from '../../src/adapters/aramaic/meta';
 import { ARAMAIC_SEED } from '../../src/adapters/aramaic/seed';
@@ -27,7 +29,7 @@ import {
 import type { LemmaMeasurement, PackEvidence } from '../../packages/language-packs/src';
 import type { SupportLevel } from '../../src/core';
 
-const ADAPTERS: Record<string, LanguageAdapter> = { arc: arcAdapter, sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter };
+const ADAPTERS: Record<string, LanguageAdapter> = { arc: arcAdapter, sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter, ru: ruAdapter, fr: frAdapter };
 const q = (l: SupportLevel): string => (l === 'dependable' ? 'dependable' : l === 'limited' ? 'limited' : 'none');
 
 describe('every pack’s report matches its manifest and its adapter', () => {
@@ -149,12 +151,15 @@ describe('lemma quality is derived from the evidence, by one stated rule', () =>
 
   it('each language gets the level its evidence gives it: Norwegian seed-only, every language with a dictionary or form index limited, none dependable', () => {
     const level = Object.fromEntries(allPackCapabilities().map((c) => [c.languageId, c.lemma.quality]));
-    expect(level).toEqual({ sq: 'limited', es: 'limited', de: 'limited', hi: 'limited', th: 'limited', nb: 'seed-only', nn: 'seed-only', la: 'limited', he: 'limited', el: 'limited', arc: 'limited' });
+    expect(level).toEqual({ sq: 'limited', es: 'limited', de: 'limited', hi: 'limited', th: 'limited', nb: 'seed-only', nn: 'seed-only', la: 'limited', he: 'limited', el: 'limited', arc: 'limited', ru: 'limited',
+      // French is measured on a human treebank (92 % of first-reading lemmas on the held-out part): below the 95 % bar, so limited
+      fr: 'limited' });
     // Latin is measured at the bar on the Vulgate New Testament and below it on the classical authors: the rule asks for every corpus
     const la = packCapabilities('la')!.lemma;
     expect(la.measured.map((m) => [m.id, m.goldKind, m.lemmaAccuracy >= DEPENDABLE_ACCURACY])).toEqual([['proiel-nt', 'human-treebank', true], ['perseus-agldt', 'human-treebank', false]]);
-    // every analyser still states seed-only for its own word list, and the report keeps that beside the derived level
-    for (const c of allPackCapabilities()) expect(c.lemma.analyserLevel, c.languageId).toBe('seed-only');
+    // every analyser still states seed-only for its own word list, and the report keeps that beside the derived level;
+    // French states 'limited' itself (a hand list of about 3,400 lemmas plus a 78,650-lemma list taken from the dictionary), so its own statement is kept
+    for (const c of allPackCapabilities()) expect(c.lemma.analyserLevel, c.languageId).toBe(c.languageId === 'fr' ? 'limited' : 'seed-only');
   });
 
   it('the note says where a lemma comes from and what was measured against what, and calls AI-labelled agreement what it is', () => {
@@ -273,6 +278,20 @@ describe('the evidence table states only what the committed reports state', () =
     // the analyser's own lexicon is a source because it confirms nearly every word of running text, as the same report shows
     expect(PACK_EVIDENCE.la.lemmaSources[0]).toMatchObject({ kind: 'analyser-lexicon', id: report.adapter.id, source: 'data/review/latin-eval/report.json' });
     expect(report.corpora.vulgate.lexiconConfirmedPct).toBeGreaterThan(95);
+  });
+
+  it('the Russian figures are the evaluation report’s own (docs/russian/eval.json): the strict lemma rate of the three human treebanks, held out', () => {
+    const report = read('docs/russian/eval.json');
+    const rows = PACK_EVIDENCE.ru.lemmaMeasurements;
+    expect(rows.map((m) => m.id)).toEqual(['ud-gsd-test', 'ud-taiga-test', 'ud-pud']);
+    for (const [row, key] of rows.map((m, i) => [m, ['gsd-test', 'taiga-test', 'pud'][i]] as const)) {
+      const t = report.treebanks[key].tally;
+      expect([row.items, row.lemmaAccuracy], key).toEqual([t.n, Math.round((t.lemma1Strict / t.n) * 10000) / 100]);
+      expect(row.goldKind, key).toBe('human-treebank');
+      expect(row.heldOut, key).toBe(true);
+      expect(row.source, key).toBe('docs/russian/eval.json');
+    }
+    expect(PACK_EVIDENCE.ru.lemmaSources.map((s) => s.id)).toEqual(['kaikki-ru-tables', 'kaikki-ru@2026-10-30']);
   });
 
   // the dictionaries and form indexes are generated and not tracked (test/needs-local-data.txt): checked where they are present

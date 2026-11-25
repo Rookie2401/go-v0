@@ -173,7 +173,8 @@ export function createReadingSession(d: ReadingSessionDeps) {
       languageId, ...(varietyId ? { varietyId } : {}), coverage,
       scope: { ...x.scope, complete: t.complete, analysedCharacters: t.analysedCharacters },
       snapshot: k.snapshot, lookups: { asked: k.asked, answered: k.answered },
-      dictionary: t.dictionary === 'asked' ? 'asked' : t.dictionary === 'not-needed' ? 'not-needed' : 'unavailable',
+      // `no-index`: the language has no forms index at all (Hebrew today), so there was nothing to ask; that is not "offline or not downloaded"
+      dictionary: t.dictionary === 'asked' ? 'asked' : t.dictionary === 'not-needed' || t.dictionary === 'no-index' ? 'not-needed' : 'unavailable',
       reusedText, at: now(),
     };
     resultFingerprint = x.fingerprint;

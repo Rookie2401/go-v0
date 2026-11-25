@@ -25,6 +25,25 @@ const CREDO = [
   'to lend, to loan',
 ];
 
+describe('Greek realized verb answers', () => {
+  it.each([
+    ['ἦλθεν', 'He, she, or it came', 'he came'],
+    ['ἦν', 'He, she, or it was', 'it was'],
+    ['ἔχει', 'He, she, or it has', 'she has'],
+  ])('keeps the verb on the back of %s and in every accepted subject variant', (_form, meaning, variant) => {
+    const facts = {
+      unit: { kind: 'form', languageId: 'el' },
+      glosses: [meaning, variant], lexiconGlossCount: 0,
+      wordAnalysis: { inflectedMeaning: { text: meaning } },
+    } as unknown as UnitFacts;
+    expect(referenceGloss(facts)).toBe(meaning);
+    expect(acceptedMeanings(facts)).toEqual(expect.arrayContaining([meaning, variant]));
+    expect(acceptedMeanings(facts)).not.toContain('He');
+    expect(acceptedMeanings(facts)).not.toContain('she');
+    expect(acceptedMeanings(facts)).not.toContain('or it came');
+  });
+});
+
 describe('dictionary senses are split before their length is judged', () => {
   it('credo (la): the main sense "to believe" is accepted, ahead of the tail sense "to lend"', () => {
     const accepted = acceptedMeanings(dictionaryFacts(CREDO));

@@ -21,7 +21,7 @@ async function firstRun() {
 }
 
 describe('Team onboarding', () => {
-  it('opens on one choice, "Select your team"; then lists the nine countries (Honduras to Rome), each with the language its team learns', async () => {
+  it('opens on one choice, "Select your team"; then lists the eleven countries (Honduras to Russia; Aramaic and Russia are courses with no team of their own), each with the language its team learns', async () => {
     const { h, app } = await firstRun();
     mounted = await h.mount(app);
     expect(q(mounted.container, 'h1.home__title')!.textContent).toBe('Go');
@@ -29,8 +29,8 @@ describe('Team onboarding', () => {
     expect(qa(mounted.container, '.onboarding__team')).toHaveLength(0);
     await click(button(mounted.container, 'Select your team'));
     expect(mounted.container.textContent).toContain('Which team are you on?');
-    expect(qa(mounted.container, '.onboarding__country').map((o) => o.textContent)).toEqual(['Honduras', 'Albania', 'Thailand', 'India', 'Germany', 'Norway', 'Israel', 'Greece', 'Rome', 'Aramaic']); // Norway e915c8ae; Israel/Greece c436e6bb (Hebrew, Greek); Rome (Latin) c436e6bb
-    expect(qa(mounted.container, '.onboarding__lang').map((o) => o.textContent)).toEqual(['Spanish', 'Albanian', 'Thai', 'Hindi', 'German', 'Norwegian (Bokmål)', 'Hebrew', 'Greek', 'Latin', 'Aramaic (Biblical)']);
+    expect(qa(mounted.container, '.onboarding__country').map((o) => o.textContent)).toEqual(['Honduras', 'Albania', 'Thailand', 'India', 'Germany', 'Norway', 'Israel', 'Greece', 'Rome', 'Aramaic', 'Russia', 'France']); // Norway e915c8ae; Israel/Greece c436e6bb (Hebrew, Greek); Rome (Latin) c436e6bb
+    expect(qa(mounted.container, '.onboarding__lang').map((o) => o.textContent)).toEqual(['Spanish', 'Albanian', 'Thai', 'Hindi', 'German', 'Norwegian (Bokmål)', 'Hebrew', 'Greek', 'Latin', 'Aramaic (Biblical)', 'Russian', 'French']); // French: a course row exists because every language code needs one (core/config.ts); the French pack itself reads web pages in the extension and bundles no course texts
     expect(q(mounted.container, 'nav')).toBeNull(); // not Home yet
     // Back returns to the first screen
     await click(button(mounted.container, 'Back'));

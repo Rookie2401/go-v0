@@ -23,10 +23,18 @@ describe('AdapterSupport — honest, on every adapter', () => {
     }
   });
 
-  it('lemmatization is seed-only everywhere, and every adapter says so in its limitations', () => {
+  // French is the one adapter that is not seed-only: it states 'limited' lemmatization (a hand list of about 3,400 lemmas plus a 78,650-lemma
+  // list taken from the dictionary). It bundles no corpus, so its limitations cannot say "seed corpus"; instead they must say what the
+  // honesty check is for: that the list is machine-drafted and that no native speaker has checked it.
+  const NOT_SEED_ONLY: Record<string, SupportLevel> = { fr: 'limited' };
+
+  it('lemmatization is seed-only everywhere except where an adapter states more, and every adapter says honestly where its lemmas come from in its limitations', () => {
     for (const l of LANGUAGES) {
-      expect(adapter(l).support.lemmatization, l).toBe('seed-only');
-      expect(adapter(l).support.limitations.join(' '), l).toMatch(/seed-only|seed corpus|bundled corpus/i);
+      expect(adapter(l).support.lemmatization, l).toBe(NOT_SEED_ONLY[l] ?? 'seed-only');
+      if (l in NOT_SEED_ONLY) {
+        expect(adapter(l).support.limitations.join(' '), l).toMatch(/machine-drafted/);
+        expect(adapter(l).support.limitations.join(' '), l).toMatch(/no native speaker has checked it/);
+      } else expect(adapter(l).support.limitations.join(' '), l).toMatch(/seed-only|seed corpus|bundled corpus/i);
       expect(adapter(l).support.productionChecks, l).not.toBe('dependable'); // a few rules are not a grammar checker
     }
   });

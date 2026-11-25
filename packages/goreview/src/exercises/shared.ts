@@ -2,7 +2,7 @@
  * Shared machinery of the exercise builders: the exercise shape GoReview really stores (the contract's `Exercise`
  * plus what validation, grading and evidence need), eligibility, the gap convention and a few pure helpers.
  */
-import { STATUS_RANK, displayLemma } from '../../../repository-contract/src';
+import { STATUS_RANK, displayLemma, entryGlossPieces, stripEntryLabel } from '../../../repository-contract/src';
 import { answerVariants } from '../../../../src/core/english-verb';
 import type { AnalysisStatus, Dimension, ReviewEligibility } from '../../../repository-contract/src';
 import { glossParts, normalizeAnswer } from '../grading/normalize';
@@ -257,8 +257,10 @@ export function acceptedMeanings(facts: UnitFacts): string[] {
   const { lexicon, dictionary } = glossSplit(facts);
   const out: string[] = [];
   const add = (p: string): void => { if (!out.includes(p)) out.push(p); };
-  for (const g of lexicon) glossParts(g).forEach(add);
-  for (const sense of dictionary) senseAnswers(sense).forEach(add);
+  // a bare Korean homonym (눈, undecided) is every entry of its spelling: the answers are the senses of each entry, labels ("(noun, entry 2)") removed
+  const lang = facts.unit?.languageId;
+  for (const g of lexicon) { glossParts(g).forEach(add); for (const piece of entryGlossPieces(lang, g)) glossParts(piece).forEach(add); }
+  for (const sense of dictionary) senseAnswers(stripEntryLabel(lang, sense)).forEach(add);
   return out;
 }
 

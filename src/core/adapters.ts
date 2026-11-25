@@ -92,6 +92,10 @@ export interface PatternCandidate {
 export interface PronunciationSupport {
   /** Romanization / phonetic aid for display in the support panel (never sent to TTS). */
   transliteration?: string;
+  /** The pronunciation written in the language's own script, when the adapter has one (Korean: [머걷씀니다]); shown first on the card, before the romanization. */
+  respelling?: string;
+  /** The name of the romanization scheme `transliteration` follows (Revised Romanization (2000)); the card labels the romanization with it. */
+  romanizationScheme?: string;
   ipa?: string;
   /**
    * Who produced `ipa` when it is the adapter's own (rule-based, e.g. Norwegian 'rules'): the word sheet then shows it, labelled

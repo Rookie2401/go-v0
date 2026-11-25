@@ -124,6 +124,13 @@ export interface CardModel {
   pronunciation: string[];
   /** The adapter's rule-based romanization of the selected word, only when the adapter is sure of every unit of it (Hindi, Thai); absent for Latin scripts. Never invented. */
   transliteration?: string;
+  /** The pronunciation in the language's own script and the romanization scheme, when the adapter states them (Korean). */
+  respelling?: string;
+  /** The language's sharded word list could not be loaded for this lookup, so an unconfirmed reading is not evidence that the word is missing from it. */
+  lexiconNotLoaded?: boolean;
+  /** The analyser could not tell which of several dictionary entries of this spelling the word is (an undecided homonym): no one entry's record is the word's. */
+  entryUndecided?: boolean;
+  romanizationScheme?: string;
   /** The same for the lemma, when it differs from the selection and the adapter can romanize it on its own. */
   lemmaTransliteration?: string;
   context: ContextReport;

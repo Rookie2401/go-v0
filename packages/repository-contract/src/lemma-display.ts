@@ -68,3 +68,20 @@ export function unitIdLabel(unitId: string): string {
   if (parts.length >= 3 && parts[2]) return parts[0] === 'lemma' ? displayLemma(parts[1], parts[2]) : parts[2];
   return unitId;
 }
+
+const ENTRY_LABEL = /^\s*\(\s*(?:[a-z][a-z ]*,\s*)?entry\s+[0-9a-z]+\s*\)\s*|^\s*\(\s*(?:noun|verb|adjective|adverb|pronoun|numeral|determiner|interjection|particle|conjunction|counter|suffix|prefix|name|proper noun)[^()]*\)\s*/iu;
+
+/** A dictionary line's label ("(noun, entry 2) snow", "(verb) to ask") removed: what is left is the meaning, which is all an answer may be matched on. Other languages: unchanged. */
+export function stripEntryLabel(language: string | undefined, gloss: string): string {
+  return isKorean(language) ? gloss.replace(ENTRY_LABEL, '') : gloss;
+}
+
+/**
+ * The meanings of EVERY entry of a bare Korean headword's merged dictionary line ("eye; eyesight / snow / scale / bud": the entries are separated by " / "),
+ * labels removed, one string per entry. Any other language, or a line of one entry: the line itself.
+ */
+export function entryGlossPieces(language: string | undefined, gloss: string): string[] {
+  if (!isKorean(language)) return [gloss];
+  const pieces = gloss.split(/\s+\/\s+/u).map((p) => stripEntryLabel(language, p).trim()).filter(Boolean);
+  return pieces.length ? pieces : [gloss];
+}

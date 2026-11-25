@@ -495,8 +495,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (dict.state === 'ready' && dict.senses.length) return { text: dict.senses.slice(0, 3).join('; '), ...(dict.attribution ? { attr: dict.attribution } : {}), muted: false, from: 'Wiktionary' };
     if (dict.state === 'loading') return { text: 'looking up…', muted: true };
     // the reason the dictionary gave nothing is shown ("no dictionary location", "could not be reached" and "not in the dictionary" must not look alike)
-    if (dict.state === 'none' || dict.state === 'error') return { text: `${m.provenance === 'none' ? 'Not in the word list' : 'No meaning in the word list'}; ${dict.message ? dict.message.replace(/\.$/, '') : dict.state === 'error' ? 'the dictionary could not be asked' : 'not in the dictionary either'}.`, muted: true };
-    return { text: m.provenance === 'none' ? 'Not in the word list.' : 'No meaning given.', muted: true };
+    if (dict.state === 'none' || dict.state === 'error') return { text: `${m.lexiconNotLoaded ? 'The full word list could not be loaded' : m.provenance === 'none' ? 'Not in the word list' : 'No meaning in the word list'}; ${dict.message ? dict.message.replace(/\.$/, '') : dict.state === 'error' ? 'the dictionary could not be asked' : 'not in the dictionary either'}.`, muted: true };
+    return { text: m.lexiconNotLoaded ? 'The full word list could not be loaded.' : m.provenance === 'none' ? 'Not in the word list.' : 'No meaning given.', muted: true };
   }
 
   /**
@@ -514,7 +514,9 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const wordRom = m.transliteration ?? (sameWord && m.tokenCount === 1 ? dictRom : undefined);
     const wordRomSource = m.transliteration ? 'Romanization by the analyser\'s rules' : 'Wiktionary romanization';
     const rows: HTMLElement[] = [];
-    if (wordRom) rows.push(h('div', { class: 'translit wordTranslit', role: 'note', 'aria-label': 'transliteration', title: wordRomSource, 'data-row': 'transliteration' }, wordRom));
+    // the sound, in the language's own script first (Korean [머걷씀니다]), then the romanization, labelled with its scheme when the analyser names one
+    if (m.respelling && m.tokenCount === 1) rows.push(h('div', { class: 'translit wordTranslit', role: 'note', 'aria-label': 'pronunciation', title: 'Pronunciation, in the language’s own script', 'data-row': 'sound', lang: m.languageId }, m.respelling));
+    if (wordRom) rows.push(h('div', { class: 'translit wordTranslit', role: 'note', 'aria-label': m.romanizationScheme && m.transliteration ? `transliteration: ${m.romanizationScheme}` : 'transliteration', title: m.romanizationScheme && m.transliteration ? m.romanizationScheme : wordRomSource, 'data-row': 'transliteration' }, wordRom));
     rows.push(gloss);
     if (from) rows.push(h('div', { class: 'kicker' }, `Meaning · ${from}`));
     const lexicalMeaning = m.wordAnalysis?.lexicalMeaning;
@@ -732,6 +734,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const grammar = h('div', { class: 'more layer l4', 'data-layer': 'grammar' }, h('span', { class: 'label' }, 'Grammar'));
     fillGrammar(grammar, m, v);
     box.append(grammar);
+    // the sound rules and the romanization scheme the analyser states (every language that has notes)
+    section(box, 'Pronunciation', m.pronunciation);
     const features = h('div', { class: 'more featureList', 'data-row': 'features' });
     fillFeatures(features, m, v);
     btn.addEventListener('click', () => {
@@ -1007,7 +1011,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       panel.append(h('div', { class: 'note' }, 'No documented parts for this word.'));
     }
     if (STRUCTURE_STATUS[w.status]) panel.append(h('div', { class: 'note' }, STRUCTURE_STATUS[w.status]));
-    if (w.derivedFrom) section(panel, 'Derived from', [h('span', {}, h('span', { lang: m.languageId }, w.derivedFrom.lemma), ` — ${w.derivedFrom.relation} (${w.derivedFrom.source})`)]);
+    if (w.derivedFrom) section(panel, 'Derived from', [h('span', {}, h('span', { lang: m.languageId }, displayLemma(m.languageId, w.derivedFrom.lemma)), ` — ${w.derivedFrom.relation} (${w.derivedFrom.source})`)]);
     section(panel, 'Word family: derived words', w.family.derived);
     section(panel, 'Word family: related words', w.family.related);
     for (const n of w.notes) panel.append(h('div', { class: 'note' }, n));

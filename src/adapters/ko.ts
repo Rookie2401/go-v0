@@ -155,7 +155,7 @@ function koPronunciationOf(token: RawToken, analysis: AnalyzedToken | undefined)
     if (here !== alone) notes.splice(1, 0, `After ${nb.prev} (the prospective -(으)ㄹ) it is said [${here}]: the first consonant is tensed across the space.`);
   }
   if (!notes.some((n) => n.includes(KO_ROMANIZATION_SCHEME))) notes.push(`Romanization: ${KO_ROMANIZATION_SCHEME}.`);
-  return { ...out, notes };
+  return { ...out, notes, respelling: `[${said}]`, romanizationScheme: KO_ROMANIZATION_SCHEME };
 }
 
 // ───────────────────────────── the adapter ─────────────────────────────

@@ -237,7 +237,7 @@ describe.skipIf(!DATA_PRESENT)('Korean journey', () => {
 
   // FAULT (the card never shows the Hangul respelling): packages/golearn-extension/src/popup/card.ts renders `model.transliteration` but nothing renders
   // `CardModel.pronunciation` (the notes: "Pronounced [머걷씀니다] …", the sound rules). PLAN.md "Pronunciation" and brief XVI ask for the pronunciation on the card.
-  it.fails('7b. the card shows the pronunciation note "[머걷씀니다]" (the model has it, the card does not)', () => {
+  it('7b. the card shows the pronunciation note "[머걷씀니다]" (the model has it, the card does not)', () => {
     expect(card.text()).toContain('머걷씀니다');
   });
 

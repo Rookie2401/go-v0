@@ -69,8 +69,16 @@ const str = (v: unknown, max = 400): string | undefined => (typeof v === 'string
 const strs = (v: unknown, max = 40): string[] => (Array.isArray(v) ? v.map((x) => str(x, 120)).filter((x): x is string => !!x).slice(0, max) : []);
 
 /** The record that matches the part of speech best (the dictionary's POS vocabulary is the parser's), else the first. */
-export function pickRecord(records: LexicalRecord[] | undefined, pos?: string): LexicalRecord | undefined {
+/**
+ * When the reading names no single dictionary entry (`ambiguous`: an undecided homonym, whose analyser says so) and the lookup returned several records of
+ * the part of speech that are DIFFERENT entries (different etymology numbers), no record is the word's: undefined, never the first one presented as its own.
+ */
+export function pickRecord(records: LexicalRecord[] | undefined, pos?: string, opts?: { ambiguous?: boolean }): LexicalRecord | undefined {
   if (!records?.length) return undefined;
+  if (opts?.ambiguous) {
+    const same = records.filter((r) => !pos || r.p === pos);
+    if (new Set(same.map((r) => r.e ?? r.w)).size > 1 || same.length > 1) return undefined;
+  }
   return (pos && records.find((r) => r.p === pos)) || records[0];
 }
 

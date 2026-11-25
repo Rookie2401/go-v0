@@ -13,7 +13,7 @@ import { unitIds } from '../../../repository-contract/src';
 import { reviewFacts } from '../facts/review-facts';
 import { normalizeAnswer } from '../grading/normalize';
 import { defineBuilder } from './builders';
-import { assemble, contextOf, eligibilityOf, exerciseIdOf, occurrences, precheck, quote, referenceGloss, refuse, trusted, withGap } from './shared';
+import { assemble, contextOf, eligibilityOf, exerciseIdOf, occurrences, precheck, quote, referenceGloss, refuse, shownLemma, trusted, withGap } from './shared';
 import type { Planned } from './shared';
 import type { BuildContext, ReviewTarget, UnitFacts } from '../types';
 import { validateExercise } from './validate';
@@ -65,7 +65,7 @@ function plan(target: ReviewTarget, facts: UnitFacts, _ctx: BuildContext): Plann
       },
       answerKey: {
         accepted, normalization: 'loose', articles: ['i', 'e', 'të', 'së'],
-        explanation: `The missing word is ${quote(answer)}${answerNorm !== normalizeAnswer(lemma, 'exact') ? `, a form of ${quote(lemma)} (${gloss})` : ` (${gloss})`}.`,
+        explanation: `The missing word is ${quote(answer)}${answerNorm !== normalizeAnswer(lemma, 'exact') ? `, a form of ${quote(shownLemma(facts, lemma))} (${gloss})` : ` (${gloss})`}.`,
         ...(partial ? { partial, partialExplanation: `${quote(partial[0])} is the dictionary form; this gap needs the form that fits the sentence: ${quote(answer)}.` } : {}),
         ...(facts.constructionExplanation ? { deeper: facts.constructionExplanation } : {}),
       },

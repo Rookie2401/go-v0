@@ -18,6 +18,7 @@ import { unitIds } from '../../../repository-contract/src';
 import { defineBuilder } from './builders';
 import {
   assemble, codesOf, contextOf, eligibilityOf, exerciseIdOf, occurrences, precheck, PROVISIONAL_EXCEPTION, quote, referenceGloss, refuse, rnd, shuffle, trusted,
+  shownLemma,
 } from './shared';
 import type { Occurrence, Planned } from './shared';
 import type { BuildContext, ReviewTarget, UnitFacts } from '../types';
@@ -93,7 +94,7 @@ function plan(target: ReviewTarget, facts: UnitFacts, ctx: BuildContext): Planne
         prompt: { instruction: `In this sentence, which ${def.label.toLowerCase()} is the word ${quote(surface)} in?`, stimulusText: occ.example.text, options },
         answerKey: {
           accepted: [correct], normalization: 'exact', features: { [key]: code },
-          explanation: `In this sentence ${quote(surface)}${lemma ? `, a form of ${quote(lemma)}${gloss ? ` (${gloss})` : ''},` : ''} has ${def.label.toLowerCase()}: ${correct}. ${explain}`,
+          explanation: `In this sentence ${quote(surface)}${lemma ? `, a form of ${quote(shownLemma(facts, lemma))}${gloss ? ` (${gloss})` : ''},` : ''} has ${def.label.toLowerCase()}: ${correct}. ${explain}`,
           ...(facts.constructionExplanation ? { deeper: facts.constructionExplanation } : f.morphDescription ? { deeper: `As a whole: ${f.morphDescription}.` } : {}),
         },
         hiddenBeforeAnswer: [],
@@ -119,8 +120,8 @@ function plan(target: ReviewTarget, facts: UnitFacts, ctx: BuildContext): Planne
       target: { ...target },
       prompt: { instruction: `Type the dictionary form (lemma) of the word ${quote(surface)} in this sentence.`, stimulusText: occ.example.text },
       answerKey: {
-        accepted: [lemma as string], normalization: 'loose', articles: ['i', 'e', 'të', 'së'],
-        explanation: `The dictionary form of ${quote(surface)} is ${quote(lemma as string)}${gloss ? ` (${gloss})` : ''}.${asFull && f.morphDescription ? ` ${quote(surface)} is the ${f.morphDescription}.` : ''}`,
+        accepted: [shownLemma(facts, lemma as string)], normalization: 'loose', articles: ['i', 'e', 'të', 'së'],
+        explanation: `The dictionary form of ${quote(surface)} is ${quote(shownLemma(facts, lemma as string))}${gloss ? ` (${gloss})` : ''}.${asFull && f.morphDescription ? ` ${quote(surface)} is the ${f.morphDescription}.` : ''}`,
         ...(asFull && facts.constructionExplanation ? { deeper: facts.constructionExplanation } : {}),
       },
       hiddenBeforeAnswer: [],

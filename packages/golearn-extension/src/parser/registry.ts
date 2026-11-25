@@ -87,3 +87,11 @@ export const getAnalyser = (languageId: string): LanguageAdapter | undefined => 
 export function clearAnalysers(keep: readonly string[] = []): void {
   for (const id of [...loaded.keys()]) if (!keep.includes(id)) loaded.delete(id);
 }
+
+/**
+ * Languages whose sharded word list could not be loaded on the last lookup (lexicon/prepare.ts sets and clears it). A word only that list holds
+ * is then unconfirmed for a reason that is NOT "not in the word list", and the card must not say so.
+ */
+const lexiconFailed = new Set<string>();
+export function setLexiconNotLoaded(languageId: string, failed: boolean): void { if (failed) lexiconFailed.add(languageId); else lexiconFailed.delete(languageId); }
+export const lexiconNotLoaded = (languageId: string): boolean => lexiconFailed.has(languageId);

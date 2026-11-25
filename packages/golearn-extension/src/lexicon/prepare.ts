@@ -13,7 +13,7 @@ import { createGreekShardLoader } from '../../../../src/adapters/greek/shards';
 import { createHebrewShardLoader } from '../../../../src/adapters/hebrew/shards';
 import { createRussianShardLoader } from '../../../../src/adapters/russian/shards';
 import type { UrlLoaderApi } from '../analysers/urlLoader';
-import { analyserExtras, getAnalyser } from '../parser/registry';
+import { analyserExtras, getAnalyser, setLexiconNotLoaded } from '../parser/registry';
 
 /** The sets per language, in the order they are loaded. */
 export const LEXICON_SETS: Readonly<Record<string, readonly string[]>> = { el: ['el/ancient', 'el/modern'], he: ['he/biblical', 'he/modern'], ru: ['ru/standard'], ko: ['ko/standard'] };
@@ -69,6 +69,7 @@ export function createLexiconPreparer(chromeApi: UrlLoaderApi | undefined, fetch
         used.push(set);
         if (r.failed.length) failed.push(`${set}: ${r.failed.length} shard${r.failed.length === 1 ? '' : 's'} (${r.failed[0][1]})`);
       }));
+      setLexiconNotLoaded(languageId, failed.length > 0); // the card says "could not be loaded", not "not in the word list"
       return { sets: used, failed };
     },
   };

@@ -127,7 +127,7 @@ describe('B. a homonym on the card', () => {
   // FAULT (the Analysis panel shows the number): the "Units and parts" line reads "눈: from 눈², stem" (parser/index.ts, `syntaxNotes` from `c.parts[].lemma` as the
   // analyser wrote it: the numbered lemma string) and the panel's "Other possible readings" lists 눈¹ (NOUN; Case=Nom, …) with the raised number and no meaning.
   // The number is identity, never spelling (repository-contract lemma-display.ts displayLemma); popup/card.ts shows the headline through it and these two lines not.
-  it.fails('눈이 와요: no part of the card, the Analysis panel included, shows a raised number', () => {
+  it('눈이 와요: no part of the card, the Analysis panel included, shows a raised number', () => {
     ui.show(cardIn('눈이 와요.', '눈이'), anchor);
     (ui.root()!.querySelector('.deeperBtn') as HTMLElement | null)?.click();
     expect(cardText()).not.toMatch(SUPERSCRIPT);
@@ -135,7 +135,7 @@ describe('B. a homonym on the card', () => {
 
   // FAULT (the same leak on the undecided card): the Analysis panel's "Other possible readings: 눈¹ (NOUN; Case=Nom, Particle=subject); 눈² …" lists the numbered lemma
   // strings as written, with no meaning to tell them apart (popup/card.ts, from `card.alternatives`).
-  it.fails('눈이 예뻐요 (no cue): the undecided card names every candidate meaning, and no part of it, the Analysis panel included, shows a raised number', () => {
+  it('눈이 예뻐요 (no cue): the undecided card names every candidate meaning, and no part of it, the Analysis panel included, shows a raised number', () => {
     const card = cardIn('눈이 예뻐요.', '눈이');
     expect(card.lemma, 'undecided: the bare lemma').toBe('눈');
     ui.show(card, anchor);
@@ -194,11 +194,12 @@ describe('B. a homonym on the card', () => {
     // part of speech. For the bare 눈 the dictionary answers four records (eye, snow, scale, bud); the card's "full entry" sections (pronunciation, etymology,
     // the form table, the structure) are then entry 1's, presented as the word's own. It cannot tell a homonym number, and an undecided reading has none
     // to give (the auditor's shared fault 2; controller.ts:557 and the same call in GoReview's paradigm-table.ts).
-    it.fails('an undecided word does not get one entry\'s record presented as its own', async () => {
+    it('an undecided word does not get one entry\'s record presented as its own', async () => {
       const entry = await runtime().entry('눈', 'NOUN', ['눈']);
       const records = entry!.records as unknown as LexicalRecord[];
       expect(records.length).toBeGreaterThan(1);
-      expect(pickRecord(records, 'NOUN'), 'with four entries and no number, no single record may be chosen').toBeUndefined();
+      expect(pickRecord(records, 'NOUN', { ambiguous: true }), 'with four entries and no number, no single record may be chosen').toBeUndefined();
+      expect(pickRecord(records, 'NOUN'), 'a reading that does not say it is undecided keeps the old rule').toBeDefined();
     });
   });
 });
@@ -240,7 +241,7 @@ describe.skipIf(!SHARDS_PRESENT)('C. the card before the stem lexicon\'s shards 
   // core alone and a LOWER one once the shards are in, because the shards add other readings within the 0.15 band (저는 0.88 -> 0.84; 와요 0.92 -> 0.84;
   // 學校에서 0.92 -> 0.84 with a second reading 학괴 "Chungcheong" at 0.83). The first reading and its meaning are unchanged; the number the card shows and the
   // underline's certainty are not. (Seen in the probe of 2026-11-25 against uncommitted work of other sessions; they may settle it.)
-  it.fails('the confidence of a core word is the same before and after the shards load', async () => {
+  it('the confidence of a core word is the same before and after the shards load', async () => {
     uninstallKoreanLexicon('kaikki-ko-lexicon'); koClearAnalysisCache();
     const words = CORE_WORDS();
     const before = words.map(([s, w]) => cardIn(s, w).confidence);
@@ -290,7 +291,7 @@ describe.skipIf(!SHARDS_PRESENT)('C. the card before the stem lexicon\'s shards 
   // and nothing on the card says so for Korean. The card reads with the compiled core alone, and a word that only a shard holds shows the shared sentence
   // "Not in the word list: the lemma is a guess from the ending and no meaning is given" (parser/index.ts:217), which is false of Korean: the word IS in
   // the lexicon, it has not been loaded. (The auditor's shared fault 7: what a card shows before the model is ready.)
-  it.fails('when the stem lexicon cannot be loaded, the card says it is not loaded rather than that the word is not in the word list', async () => {
+  it('when the stem lexicon cannot be loaded, the card says it is not loaded rather than that the word is not in the word list', async () => {
     const { sentence, surface } = await shardOnlyWord();
     const dead = (async () => new Response('gone', { status: 503 })) as typeof fetch;
     const preparer = createLexiconPreparer({ runtime: { getURL: (p: string) => `http://assets.local/${p}` } } as never, dead, 'http://assets.local/');

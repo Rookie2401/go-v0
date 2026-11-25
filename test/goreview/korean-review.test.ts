@@ -116,7 +116,7 @@ describe.skipIf(!DATA)('Korean exercises: the bare headword on the front, the ri
   // entry's senses and the analyser's merged line ("eye; eyesight / snow / scale / bud"): "snow", "scale" and "bud" ALONE are not accepted. A learner who
   // answers "snow" to the undecided card is marked wrong although the card's own explanation says 눈 means snow among other things.
   // (packages/goreview/src/exercises/written-recognition.ts and shared.ts, the accepted-answer assembly; the label prefix "(noun, entry N)" hides later entries.)
-  it.fails('(iii) the undecided item accepts "snow" and "eye" and "scale" each as a correct answer, not only the first entry\'s senses', async () => {
+  it('(iii) the undecided item accepts "snow" and "eye" and "scale" each as a correct answer, not only the first entry\'s senses', async () => {
     const e = (await build(UNDECIDED, 'written-recognition')) as Exercise;
     for (const meaning of ['eye', 'snow', 'scale']) expect(e.answerKey.accepted, meaning).toContain(meaning);
   });

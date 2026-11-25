@@ -90,7 +90,8 @@ export interface CandidateMeaningInput {
   morph?: Readonly<Record<string, string>>; source?: string; confidence?: number;
   /** The word's parts as the analyser cut them (a conjunction, the stem, an object suffix), where it did. */
   parts?: readonly CandidateWordPart[];
-  alternatives?: Array<{ lemma?: string; pos?: string; morph: Readonly<Record<string, string>>; confidence?: number }>;
+  /** `label`: how a person reads this lemma (the caller's display form, a Korean homonym number as a small "entry N"); `gloss`: its meaning, which tells two same-spelled readings apart. Identity comparisons use `lemma`. */
+  alternatives?: Array<{ lemma?: string; pos?: string; morph: Readonly<Record<string, string>>; confidence?: number; label?: string; gloss?: string }>;
   sentence?: string; sentenceConfidence?: number; sentenceSource?: string;
   /** Reference ids (a verse: "GAL.5.14"); `labelReference` turns one into a label and a source. */
   references?: string[];
@@ -146,7 +147,7 @@ export function candidateWordAnalysis(input: CandidateMeaningInput, opts: Candid
     seen.add(key);
     return true;
   }).map((a) => {
-    if ((a.lemma && a.lemma !== input.lemma) || (a.pos && a.pos !== input.pos)) return `${a.lemma ?? 'another lexeme'} (${a.pos ?? 'unclassified'}; ${featureList(a.morph)})`;
+    if ((a.lemma && a.lemma !== input.lemma) || (a.pos && a.pos !== input.pos)) return `${a.label ?? a.lemma ?? 'another lexeme'} (${a.pos ?? 'unclassified'}; ${featureList(a.morph)})${a.gloss ? ` – ${a.gloss}` : ''}`;
     const meaning = VERBAL(a.pos ?? input.pos) ? opts.realize(input.lemma, a.pos ?? input.pos, a.morph, input.lemmaGloss) : undefined;
     if (meaning && meaning === inflectedText) return '';
     return meaning ?? `Alternative reading (${featureList(a.morph)})`;

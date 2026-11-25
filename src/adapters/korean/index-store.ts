@@ -76,17 +76,21 @@ export interface KoLexicon {
 export interface KoLexHit { lexicon: KoLexicon; key: string; entry: KoLexEntry }
 
 const installed: KoLexicon[] = [];
+let generation = 0;
+/** A number that changes whenever a lexicon or shard is installed, replaced or removed: what a cache of analyses is valid for. */
+export const koLexiconGeneration = (): number => generation;
 const idOf = (x: { id: string; shard?: string }): string => `${x.id}\u0000${x.shard ?? ''}`;
 
 /** Installs (or replaces) a lexicon or a shard of one. Later lookups see it at once. */
 export function installKoreanLexicon(lexicon: KoLexicon): void {
   const at = installed.findIndex((x) => idOf(x) === idOf(lexicon));
   if (at >= 0) installed[at] = lexicon; else installed.push(lexicon);
+  generation++;
 }
 
 /** Removes a lexicon (every shard of it when `shard` is undefined and it has shards). */
 export function uninstallKoreanLexicon(id: string, shard?: string): void {
-  for (let i = installed.length - 1; i >= 0; i--) if (installed[i].id === id && (shard === undefined || installed[i].shard === shard)) installed.splice(i, 1);
+  for (let i = installed.length - 1; i >= 0; i--) if (installed[i].id === id && (shard === undefined || installed[i].shard === shard)) { installed.splice(i, 1); generation++; }
 }
 
 /** The ids of what is installed (a shard as `id#shard`), for diagnostics and tests. */

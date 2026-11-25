@@ -884,6 +884,9 @@ function finish(c: Ctx, readings: Reading[]): AnalysisCandidate[] {
     const prev = best.get(k);
     if (!prev || r.parts.length < prev.r.parts.length || (r.parts.length === prev.r.parts.length && (r.cap > prev.r.cap || (r.cap === prev.r.cap && r.score > prev.r.score)))) best.set(k, { r, morph });
   }
+  // a rival whose row the priors corpus never saw (no count) does not lower the band of a counted first reading: it follows at 0.60 or below
+  const counted = (r: Reading) => r.sourceId === KO_SOURCE_IDS.closed || (r.entry?.n ?? 0) > 0;
+  const rareRow = (r: Reading) => !!r.entry && !counted(r) && !r.unconfirmed && r.sourceId !== KO_SOURCE_IDS.rules;
   const order = (a: { r: Reading }, b: { r: Reading }) => b.r.cap - a.r.cap || b.r.score - a.r.score || a.r.order - b.r.order;
   let list = [...best.values()].sort(order);
   const top = list[0]?.r;
@@ -896,6 +899,13 @@ function finish(c: Ctx, readings: Reading[]): AnalysisCandidate[] {
     list = list.sort(order);
   }
   // keep the copula's own readings even below many words of the same spelling (이니, 이야 standing alone)
+  if (list[0] && counted(list[0].r) && !list[0].r.unconfirmed) {
+    // also a row the counts saw almost never beside a first reading they saw fifty times as often (와 "the jamo name", n 1, beside 오다)
+    const topN = list[0].r.entry?.n ?? 0;
+    const faint = (r: Reading) => !!r.entry && r.sourceId !== KO_SOURCE_IDS.closed && !r.unconfirmed && (r.entry.n ?? 0) > 0 && (r.entry.n ?? 0) * 50 < topN;
+    for (const x of list.slice(1)) if (rareRow(x.r) || faint(x.r)) { x.r.cap = Math.min(x.r.cap, CAP.nonStandard); x.r.notes.rare = 'not seen in the counts'; }
+    list = [list[0], ...list.slice(1).sort(order)];
+  }
   list = [...list.slice(0, 16), ...list.slice(16).filter((x) => x.r.stemTag === 'VCP' || x.r.stemTag === 'VCN').slice(0, 3)];
   // confidences: strictly falling; nothing ≥ 0.85 while a different lemma is within 0.15
   const conf = (top: number) => {

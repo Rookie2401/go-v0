@@ -626,3 +626,29 @@ describe('fix batch 4: 말다 and the copulas after a noun', () => {
     for (const w of ['이니', '이야', '이셔']) expect(an(w).some((c) => c.lemma === '이다'), w).toBe(true);
   });
 });
+
+describe.skipIf(!fs.existsSync(path.join(SHARD_DIR, 'manifest.json')))('fix batch 5: the confidence does not depend on what has loaded', () => {
+  const WORDS = ['저는', '와요', '學校에서', '학생이', '먹었습니다', '친구에게', '좋아요', '사람들이', '공부했어요', '읽으셨습니다'];
+  const ids: string[] = [];
+  let coreOnly: string[] = [];
+  beforeAll(async () => {
+    const { KO_CORE } = await import('../../../src/adapters/korean/generated/core');
+    const { installKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+    uninstallFixtureLexicon();
+    installKoreanLexicon(KO_CORE);
+    koClearAnalysisCache();
+    coreOnly = WORDS.map((w) => { const c = koAnalyzeToken(w)[0]; return `${c.lemma}/${c.pos} ${c.confidence}`; });
+    for (const f of fs.readdirSync(SHARD_DIR)) if (f.endsWith('.json.gz')) { const x = JSON.parse(gunzipSync(fs.readFileSync(path.join(SHARD_DIR, f))).toString('utf8')); installKoreanLexicon(x); ids.push(x.id); }
+    koClearAnalysisCache();
+  });
+  afterAll(async () => {
+    const { uninstallKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+    uninstallKoreanLexicon('ko-core'); for (const id of new Set(ids)) uninstallKoreanLexicon(id);
+    installFixtureLexicon();
+  });
+  it('first reading, class and confidence identical core-only and with every shard; unseen rivals marked rare at 0.60 or below', () => {
+    expect(WORDS.map((w) => { const c = koAnalyzeToken(w)[0]; return `${c.lemma}/${c.pos} ${c.confidence}`; })).toEqual(coreOnly);
+    for (const c of koAnalyzeToken('學校에서').slice(1)) if (c.notes?.rare) expect(c.confidence).toBeLessThanOrEqual(0.6);
+    expect(koAnalyzeToken('學校에서')[0]).toMatchObject({ lemma: '학교', confidence: 0.92 });
+  });
+});

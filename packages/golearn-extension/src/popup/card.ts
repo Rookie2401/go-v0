@@ -21,6 +21,7 @@ import { cellOf, cellsWithForm, featureKey, type ParadigmCell, type Segmentation
 import { contextLine, type CardModel, type EvidenceLabel } from '../parser/cardModel';
 import { noVoiceNote, type SelfMark } from '../protocol';
 import { KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_WORDS } from '../../../repository-contract/src/knowledge-levels';
+import { displayLemma, lemmaHomonymNumber } from '../../../repository-contract/src/lemma-display';
 import { cognateText, etymologyStepText, type StructurePart } from '../content/enrich';
 import {
   initialView, LAYER_ORDER, type CardActions, type CardView, type LayerName, type PlayResult, type PronounceAvailability, type Pronouncer,
@@ -282,6 +283,8 @@ const LAYER_TITLES: Record<LayerName, string> = { morphology: 'Form', grammar: '
 const PANEL_LAYERS: readonly LayerName[] = [...LAYER_ORDER, 'sentence', 'variants'];
 const LAYER_CLASS: Record<LayerName, string> = { morphology: 'l2', 'phrase-syntax': 'l3', grammar: 'l4', sentence: 'l5', forms: 'l6', meaning: 'l7', origin: 'l8', structure: 'l10', variants: 'l11' };
 /** The "Variants" rows in plain words. */
+/** A small label for a Korean homonym number (눈² gives ' · entry 2'), for lists of readings where two entries share a headword; empty for everything else. */
+const entryTag = (language: string, lemma: string | undefined): string => { const n = lemma ? lemmaHomonymNumber(language, lemma) : undefined; return n ? ` · entry ${n}` : ''; };
 const VARIANT_STATUS: Record<string, string> = { attested: 'attested', 'same-as-lemma': 'the same form', 'not-in-sources': 'not in our sources', 'not-yet-existing': 'not yet in the language', obsolete: 'no longer used' };
 const STRUCTURE_STATUS: Record<string, string> = { 'supported-by-source': 'From the dictionary: its etymology template names these parts.', provisional: "Provisional: from the analyser's rules only; no dictionary template confirms it." };
 const STATUS_MARK: Record<string, string> = { verified: '✓', supported: '◌', generated: '~', conflicted: '‼' };
@@ -506,7 +509,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const { text, attr, muted, from } = meaningText(m, v);
     const gloss = h('div', { class: muted ? 'meaning card__gloss muted' : 'meaning card__gloss', 'data-row': 'meaning' }, h('span', { class: muted ? '' : 'card__gloss--quote' }, text), attr ? ' ' : null, attr ? h('span', { class: 'kicker attr' }, `(${attr})`) : null);
     const dictRom = v.enrichment.pronunciation?.romanization;
-    const sameWord = !m.lemma || m.lemma.normalize('NFC').toLowerCase() === m.surface.normalize('NFC').trim().toLowerCase();
+    const sameWord = !m.lemma || displayLemma(m.languageId, m.lemma).normalize('NFC').toLowerCase() === m.surface.normalize('NFC').trim().toLowerCase();
     // the transliteration: the adapter's rule-based romanization first; the dictionary's romanization of the lemma (Level 2) when the adapter has none
     const wordRom = m.transliteration ?? (sameWord && m.tokenCount === 1 ? dictRom : undefined);
     const wordRomSource = m.transliteration ? 'Romanization by the analyser\'s rules' : 'Wiktionary romanization';
@@ -515,11 +518,13 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     rows.push(gloss);
     if (from) rows.push(h('div', { class: 'kicker' }, `Meaning · ${from}`));
     const lexicalMeaning = m.wordAnalysis?.lexicalMeaning;
-    const same = !m.lemma || m.lemma.normalize('NFC').toLowerCase() === m.surface.normalize('NFC').trim().toLowerCase();
-    if (!same && m.lemma && m.tokenCount === 1) {
+    const entryNo = m.lemma ? lemmaHomonymNumber(m.languageId, m.lemma) : undefined;
+    const same = !m.lemma || displayLemma(m.languageId, m.lemma).normalize('NFC').toLowerCase() === m.surface.normalize('NFC').trim().toLowerCase();
+    // the headline is the headword; a Korean homonym number (눈²) is identity, so it stands only as a small label beside the meaning
+    if ((!same || entryNo) && m.lemma && m.tokenCount === 1) {
       const lemmaRom = m.lemmaTransliteration ?? dictRom;
       const lemmaRomSource = m.lemmaTransliteration ? 'Romanization by the analyser\'s rules' : 'Wiktionary romanization';
-      rows.push(h('div', { class: 'lemmaLine' }, h('span', { class: 'lv', lang: m.languageId }, m.lemma, m.pos ? h('span', { class: 'pos' }, m.pos) : null), lexicalMeaning ? h('span', { class: 'lemmaMeaning', 'data-row': 'lemma-gloss' }, `— ${lexicalMeaning.text}`) : null, lemmaRom ? h('span', { class: 'translit', role: 'note', 'aria-label': 'lemma transliteration', title: lemmaRomSource }, lemmaRom) : null, h('span', { class: 'kicker' }, m.unconfirmed ? 'lemma (guess)' : 'lemma')));
+      rows.push(h('div', { class: 'lemmaLine' }, h('span', { class: 'lv', lang: m.languageId }, displayLemma(m.languageId, m.lemma), m.pos ? h('span', { class: 'pos' }, m.pos) : null), entryNo ? h('span', { class: 'kicker', 'data-row': 'homonym' }, `entry ${entryNo}`) : null, lexicalMeaning ? h('span', { class: 'lemmaMeaning', 'data-row': 'lemma-gloss' }, `— ${lexicalMeaning.text}`) : null, lemmaRom ? h('span', { class: 'translit', role: 'note', 'aria-label': 'lemma transliteration', title: lemmaRomSource }, lemmaRom) : null, h('span', { class: 'kicker' }, m.unconfirmed ? 'lemma (guess)' : 'lemma')));
     }
     if (m.unconfirmed && m.tokenCount === 1) rows.push(h('div', { class: 'card__text', 'data-row': 'lemma-note' }, 'The lemma is inferred from the ending.'));
     // a language with period varieties: which period this text was read in, and why (the analyser's own basis)
@@ -714,7 +719,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
   function fillForm(panel: HTMLElement, m: CardModel, v: CardView): void {
     const lines: HTMLElement[] = [];
-    if (m.lemma) lines.push(plainRow('lemma', m.unconfirmed ? 'lemma (guess)' : 'lemma', m.pos ? `${m.lemma} (${m.pos})` : m.lemma, m.languageId));
+    if (m.lemma) lines.push(plainRow('lemma', m.unconfirmed ? 'lemma (guess)' : 'lemma', m.pos ? `${displayLemma(m.languageId, m.lemma)} (${m.pos})` : displayLemma(m.languageId, m.lemma), m.languageId));
     if (m.morphology) lines.push(plainRow('form', 'form', m.morphology));
     // the toggle is a subscript of the last line: no rule between them (the rule after the whole Form block is the next section's)
     lines.at(-1)?.classList.add('noRule');
@@ -829,7 +834,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const ul = h('ul', {});
     for (const w of m.sentenceWords) {
       const rest = `${w.pos ? ` (${w.pos})` : ''}${w.gloss ? ` – ${w.gloss}` : ''}`;
-      ul.append(h('li', w.selected ? { class: 'sel' } : {}, h('span', { lang: m.languageId }, w.surface), w.transliteration ? h('span', { class: 'sentenceRom' }, ` (${w.transliteration})`) : null, ': ', w.lemma ? h('span', { lang: m.languageId }, w.lemma) : 'unknown', w.lemma ? rest : ''));
+      ul.append(h('li', w.selected ? { class: 'sel' } : {}, h('span', { lang: m.languageId }, w.surface), w.transliteration ? h('span', { class: 'sentenceRom' }, ` (${w.transliteration})`) : null, ': ', w.lemma ? h('span', { lang: m.languageId }, displayLemma(m.languageId, w.lemma)) : 'unknown', w.lemma ? rest : ''));
     }
     panel.append(ul);
   }
@@ -978,7 +983,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (o.text) panel.append(h('div', { class: 'ety', lang: 'en' }, o.text));
     if (o.chain.length) section(panel, 'Steps the source names', o.chain.map((c) => etymologyStepText(c, o.languageNames ?? {})));
     if (o.cognates?.length) section(panel, 'Cognates the source lists', o.cognates.map((c) => cognateText(c, o.languageNames ?? {})));
-    if (o.source) panel.append(h('div', { class: 'note' }, `Source: ${o.source.label} (${o.source.licence}). Lemma: ${m.lemma ?? m.surface}.`));
+    if (o.source) panel.append(h('div', { class: 'note' }, `Source: ${o.source.label} (${o.source.licence}). Lemma: ${m.lemma ? displayLemma(m.languageId, m.lemma) : m.surface}.`));
   }
 
   function fillStructure(panel: HTMLElement, m: CardModel, v: CardView): void {
@@ -1007,7 +1012,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     section(panel, 'Word family: related words', w.family.related);
     for (const n of w.notes) panel.append(h('div', { class: 'note' }, n));
     const sources = [...new Set([...w.parts.map((p) => p.source), ...(w.derivedFrom ? [w.derivedFrom.source] : []), ...(w.family.source ? [`${w.family.source}, CC BY-SA 4.0`] : [])])];
-    if (sources.length) panel.append(h('div', { class: 'note' }, `Sources: ${sources.join('; ')}. Lemma: ${m.lemma ?? m.surface}.`));
+    if (sources.length) panel.append(h('div', { class: 'note' }, `Sources: ${sources.join('; ')}. Lemma: ${m.lemma ? displayLemma(m.languageId, m.lemma) : m.surface}.`));
   }
 
   function renderPanels(): void {
@@ -1108,7 +1113,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       ));
     }
     panel.append(table);
-    panel.append(h('div', { class: 'note' }, `Lemma: ${v.lemma}. Every row states what a source attests for that period; a period with no row in the sources is left empty, not guessed.`));
+    panel.append(h('div', { class: 'note' }, `Lemma: ${displayLemma(m.languageId, v.lemma)}. Every row states what a source attests for that period; a period with no row in the sources is left empty, not guessed.`));
   }
 
   function buildCorrectionForm(m: CardModel): HTMLFormElement {
@@ -1120,7 +1125,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     alts.forEach((a, i) => {
       const id = `alt-${i}`;
       const input = h('input', { type: 'radio', name: 'reading', id, value: String(i) });
-      group.append(h('label', { for: id }, input, ' ', h('span', { lang: m.languageId }, a.lemma ?? ''), `${a.pos ? ` (${a.pos})` : ''}${a.gloss ? ` – ${a.gloss}` : ''}`));
+      group.append(h('label', { for: id }, input, ' ', h('span', { lang: m.languageId }, displayLemma(m.languageId, a.lemma ?? '')), `${entryTag(m.languageId, a.lemma)}${a.pos ? ` (${a.pos})` : ''}${a.gloss ? ` – ${a.gloss}` : ''}`));
     });
     const typed = h('input', { type: 'radio', name: 'reading', id: 'alt-typed', value: 'typed' });
     const text = h('input', { type: 'text', name: 'lemma', id: 'typed-lemma', 'aria-label': 'The correct lemma', maxlength: '60', autocomplete: 'off' });
@@ -1363,7 +1368,7 @@ function fillAbout(about: HTMLElement, m: CardModel): void {
   const src = m.source ? ` · ${m.source.label} (${m.source.reviewStatus})` : '';
   section('Confidence', [`${m.confidence.toFixed(2)} · ${m.provenance}${src}`]);
   section('Why this reading', m.basis);
-  section('Other readings', m.alternatives.map((a) => `${a.lemma ?? '?'}${a.pos ? ` (${a.pos})` : ''}${a.gloss ? ` – ${a.gloss}` : ''} · ${a.confidence.toFixed(2)}`));
+  section('Other readings', m.alternatives.map((a) => `${a.lemma ? displayLemma(m.languageId, a.lemma) : '?'}${entryTag(m.languageId, a.lemma)}${a.pos ? ` (${a.pos})` : ''}${a.gloss ? ` – ${a.gloss}` : ''} · ${a.confidence.toFixed(2)}`));
   section('Notes', m.notes);
   section('Limits', m.limits);
   section('Labels', ['fact: what you selected and how the context was got', 'analysis: the reading, machine-drafted, unchecked', 'inference: an estimate about you from your own learning history']);

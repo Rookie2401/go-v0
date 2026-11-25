@@ -37,6 +37,7 @@ export const LANGUAGE_META: Readonly<Record<string, LanguageMeta>> = {
   arc: { lang: 'arc', name: 'Biblical Aramaic', pageTag: /^arc(-|$)/, experimental: 'The Aramaic pack is experimental: only its declared Biblical Aramaic excerpt forms have source-backed analyses. Other dialects and unlisted forms are unresolved.' },
   ru: { lang: 'ru', name: 'Russian', pageTag: /^ru(-|$)/, experimental: 'The Russian pack is experimental: readings come from the Wiktionary inflection tables (via kaikki.org); only the commonest words are compiled in, the rest needs the installed index; a form with several readings keeps them all; nothing has been reviewed by a native speaker.' },
   fr: { lang: 'fr', name: 'French', pageTag: /^fr(-|$)/i, experimental: 'The French pack is new and machine-drafted: its word list, rules and grammar notes have not been checked by a native speaker; readings of words outside the word list come from the rules and the Wiktionary-derived dictionary.' },
+  ko: { lang: 'ko', name: 'Korean', pageTag: /^ko(-|$)/i, experimental: 'The Korean pack is new and machine-drafted: readings come from rules and a stem lexicon taken from Wiktionary (via kaikki.org); a word the lexicon does not hold is shown as written, with no meaning; nothing has been reviewed by a native speaker.' },
 };
 
 /** The languages the parser CAN read (an analyser exists for them, loaded or not). */

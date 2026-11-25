@@ -343,7 +343,9 @@ describe.each(DISTS)('$id', (dist) => {
     // verse travels in them); gzip keeps the four sets at 23 MB instead of about 70. Each shard must sit beside its set's manifest.json.
     // 2026-11-19: the Russian form index (lexicon/ru/standard/, 467 shards beside its manifest; Wiktionary via kaikki.org, CC BY-SA 4.0) is the
     // same kind of table: word forms -> lemma, features and stress, no running text.
-    const shards = files.filter((f) => /^lexicon\/(he|el|ru)\/[a-z]+\/[^/]+\.json\.gz$/.test(f));
+    // 2026-11-25: the Korean stem lexicon (lexicon/ko/standard/, shards named by the first syllable's jamo: H4 .. or letters; Wiktionary via kaikki.org,
+    // CC BY-SA 4.0) is the same kind of table: headword stems -> class, conjugation class, first gloss and Hanja, no running text.
+    const shards = files.filter((f) => /^lexicon\/(he|el|ru|ko)\/[a-z]+\/[^/]+\.json\.gz$/.test(f));
     for (const sh of shards) expect(files, `manifest beside ${sh}`).toContain(path.posix.join(path.posix.dirname(sh), 'manifest.json'));
     const rest = files.filter((f) => !shards.includes(f));
     expect(rest.filter((f) => /\.(epub|usfm|usx|sfm|wav|oga|ogg|mp3|m4a|zip|gz|tgz|map|sqlite|db|jsonl|pdf|docx?)$/i.test(f))).toEqual([]);

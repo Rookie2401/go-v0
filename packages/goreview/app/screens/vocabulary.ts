@@ -1,4 +1,5 @@
 /** My Vocabulary is a read-only view of the Repository's encounter projection, not a second deck or word store. */
+import { displayLemma } from '../../../repository-contract/src';
 import type { KnowledgeLevel } from '../../../repository-contract/src';
 import type { VocabularyItem, VocabularyQuery } from '../../../repository-service/src/api';
 import { sourceTitle } from '../../../repository-contract/src/sources';
@@ -120,7 +121,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   function itemRow(item: VocabularyItem): HTMLElement {
     const unitId = item.knowledge.unitId;
-    const title = item.unit?.label || unitId;
+    // a Korean homonym number (눈²) is identity, not spelling: the title is the headword
+    const title = displayLemma(item.unit?.languageId ?? activeIdentity.languageId, item.unit?.label || unitId);
     const kind = item.unit?.kind ?? unitId.split(':', 1)[0];
     const kindLabel = UNIT_KIND_LABEL[kind] ?? kind;
     const variants = [...new Set(item.surfaceForms.filter((x) => x && x !== title))].slice(0, 25);
@@ -196,7 +198,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
             const featureExplanations = Object.entries(packFacts?.featureExplanations ?? {}).slice(0, 12);
             const facts: Array<[string, string]> = [
               ['Kind', unit.kind], ['Analysis status', unit.status], ['Part of speech', packFacts?.pos ?? unit.pos ?? 'Not supplied'],
-              ['Lemma', packFacts?.lemma ?? 'Not supplied'],
+              ['Lemma', packFacts?.lemma ? displayLemma(unit.languageId, packFacts.lemma) : 'Not supplied'],
               ['Meaning', meanings.length ? meanings.join('; ') : 'No meaning supplied by this language pack'],
               ['Features', unit.features ? Object.entries(unit.features).map(([key, value]) => `${key}: ${value}`).join('; ') : 'None recorded'],
               ['Last review', card?.history.at(-1)?.at ?? 'Not reviewed'], ['Next review', card?.schedule.due ?? 'Not scheduled'],

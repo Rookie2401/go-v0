@@ -5,7 +5,7 @@
  */
 import type { ScriptProfile } from '../types';
 
-export const SPRINT_LANGUAGES = ['es', 'sq', 'de', 'nb', 'nn', 'la', 'el', 'he', 'arc', 'th', 'hi', 'ru', 'fr'] as const;
+export const SPRINT_LANGUAGES = ['es', 'sq', 'de', 'nb', 'nn', 'la', 'el', 'he', 'arc', 'th', 'hi', 'ru', 'fr', 'ko'] as const;
 
 const ALIASES: Readonly<Record<string, string>> = { no: 'nb', nob: 'nb', nno: 'nn', grc: 'el', hbo: 'he' };
 
@@ -23,6 +23,7 @@ const LOADERS: Readonly<Record<string, () => Promise<ScriptProfile[]>>> = {
   hi: () => import('./hi').then((m) => [m.HI_PROFILE]),
   ru: () => import('./ru').then((m) => [m.RU_PROFILE]),
   fr: () => import('./fr').then((m) => [m.FR_PROFILE]),
+  ko: () => import('./ko').then((m) => [m.KO_PROFILE]),
 };
 
 /** The Sprint language of a language id (`el-koi` → el, `no` → nb), or undefined when none has a profile. */

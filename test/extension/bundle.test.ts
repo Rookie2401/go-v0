@@ -83,11 +83,11 @@ describe.skipIf(!have)('the built extension', () => {
     // construction explanations, orientation: 37.6 KB on 985c742b). Measured 896,583 bytes = 875.6 KB on the merged tree.
     // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 880 -> 910 KB. app.js measured 926,340 bytes = 904.6 KB with Russian and French (setup page built with GOLEARN_APP_DICT=sq,ru,fr).
     if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(910 * KB);
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr', 'ko']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 
   it('each analyser chunk is an ES module that exports the adapter, and the manifest makes the chunks readable from the page', () => {
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru']) {
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'ko']) {
       const code = read(`analysers/${id}.js`);
       expect(code, id).toMatch(/\bexport\s*\{[^}]*\bas adapter\b[^}]*\}|\bexport\s*\{\s*adapter\b/);
       expect(code, id).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|StoredSourceRef|importScripts/);
@@ -97,7 +97,7 @@ describe.skipIf(!have)('the built extension', () => {
     // lexicon/* (2026-10-22): the sharded Hebrew and Greek form indexes the content script loads before a lookup
     expect(m.web_accessible_resources).toEqual([{ resources: ['analysers/*.js', 'lexicon/*'], matches: ['<all_urls>'] }]);
     // every shared chunk the analysers import sits in analysers/ too, so the one pattern covers it
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'ko']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
   });
 
   it('keeps Hindi out of the content script and unrelated analysers out of both scripts', () => {
@@ -107,12 +107,15 @@ describe.skipIf(!have)('the built extension', () => {
       expect(code, f).not.toContain('adapter-th@');
       expect(code, f).not.toContain('adapter-ru@'); // nor the Russian analyser and its 760 KB core: a chunk of its own
       expect(code, f).not.toContain('kaikki-ru-tables');
+      expect(code, f).not.toContain('adapter-ko@'); // nor the Korean analyser (Hangul tables, particles, endings, conjugation): a chunk of its own
+      expect(code, f).not.toContain('kaikki-ko-lexicon');
       expect(code, f).not.toContain('Reference realisation of East Norwegian speech'); // the Norwegian engine (its ids are built at run time, so a literal from its text is checked)
     }
     expect(read('content.js')).not.toContain('adapter-hi@');
     expect(read('background.js')).toContain('adapter-hi@');
     expect(read('analysers/de.js')).toContain('adapter-de@');
     expect(read('analysers/ru.js')).toContain('adapter-ru@');
+    expect(read('analysers/ko.js')).toContain('adapter-ko@');
     // Bokmål and Nynorsk share one engine, so the chunk that holds it (imported by both nb.js and nn.js) is the only place its text appears
     const shared = fs.readdirSync(path.join(dist, 'analysers')).filter((n) => /^shared-.*\.js$/.test(n)).map((n) => read(`analysers/${n}`)).join('\n');
     expect(shared).toContain('Reference realisation of East Norwegian speech');

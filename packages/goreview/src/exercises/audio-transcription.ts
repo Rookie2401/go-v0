@@ -8,7 +8,7 @@
  * The written form is hidden before the response (`hiddenBeforeAnswer`).
  */
 import { defineAudioBuilder } from './audio-common';
-import { assemble, eligibilityOf, exerciseIdOf, precheck, quote, referenceGloss, refuse } from './shared';
+import { assemble, eligibilityOf, exerciseIdOf, precheck, quote, referenceGloss, refuse, shownLemma } from './shared';
 import type { Planned } from './shared';
 import type { BuildContext, ReviewTarget, UnitFacts } from '../types';
 
@@ -17,7 +17,7 @@ function plan(target: ReviewTarget, facts: UnitFacts, _ctx: BuildContext): Plann
   if (why) return refuse(why);
   const eligibility = eligibilityOf('audio-transcription', facts);
   if (!eligibility.eligible) return refuse(eligibility.reason);
-  const text = facts.unit.kind === 'form' ? facts.unit.label : facts.lemma ?? facts.unit.label;
+  const text = facts.unit.kind === 'form' ? facts.unit.label : shownLemma(facts, facts.lemma ?? facts.unit.label);
   if (!text.trim()) return refuse('there is no written form to transcribe');
   const gloss = referenceGloss(facts);
   return {

@@ -12,11 +12,14 @@ import type { ShardLoader, ShardSource } from '../../../../src/adapters/shared/s
 import { createGreekShardLoader } from '../../../../src/adapters/greek/shards';
 import { createHebrewShardLoader } from '../../../../src/adapters/hebrew/shards';
 import { createRussianShardLoader } from '../../../../src/adapters/russian/shards';
+import { createKoreanShardLoader } from '../../../../src/adapters/korean/shards';
 import type { UrlLoaderApi } from '../analysers/urlLoader';
 import { analyserExtras, getAnalyser } from '../parser/registry';
 
 /** The sets per language, in the order they are loaded. */
-export const LEXICON_SETS: Readonly<Record<string, readonly string[]>> = { el: ['el/ancient', 'el/modern'], he: ['he/biblical', 'he/modern'], ru: ['ru/standard'] };
+export const LEXICON_SETS: Readonly<Record<string, readonly string[]>> = { el: ['el/ancient', 'el/modern'], he: ['he/biblical', 'he/modern'], ru: ['ru/standard'], ko: ['ko/standard'] };
+/** Korean's whole stem lexicon is about 1.3 MB gzip in some forty-five shards and a page loads most of it: it may keep more of them than the other sets. */
+const MAX_LOADED: Readonly<Record<string, number>> = { ko: 64 };
 
 export function lexiconUrl(chromeApi: UrlLoaderApi | undefined, base: string | undefined, path: string): string {
   return chromeApi?.runtime.getURL ? chromeApi.runtime.getURL(`lexicon/${path}`) : new URL(`/dist/lexicon/${path}`, base).href;
@@ -40,9 +43,9 @@ export function createLexiconPreparer(chromeApi: UrlLoaderApi | undefined, fetch
     let p = loaders.get(set);
     if (!p) {
       // the analyser chunk's own factory installs into the chunk's index store; the src factories serve only an analyser registered from src (tests)
-      const make = analyserExtras(set.slice(0, 2))?.createShardLoader ?? (set.startsWith('el/') ? createGreekShardLoader : set.startsWith('ru/') ? createRussianShardLoader : createHebrewShardLoader);
+      const make = analyserExtras(set.slice(0, 2))?.createShardLoader ?? (set.startsWith('el/') ? createGreekShardLoader : set.startsWith('ru/') ? createRussianShardLoader : set.startsWith('ko/') ? createKoreanShardLoader : createHebrewShardLoader);
       // the content script logs nothing (test/audit/security.bundle.test.ts): a missing set is remembered here and shows on the card as "not loaded"
-      p = make(source, { base: set, maxLoaded }).then((l) => l as ShardLoader, () => { unavailable.add(set); return undefined; });
+      p = make(source, { base: set, maxLoaded: Math.max(maxLoaded, MAX_LOADED[set.slice(0, 2)] ?? 0) }).then((l) => l as ShardLoader, () => { unavailable.add(set); return undefined; });
       loaders.set(set, p);
     }
     return p;

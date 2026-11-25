@@ -20,6 +20,7 @@ const VOICE_LANGUAGES: ReadonlyArray<{ id: string; note?: string }> = [
   { id: 'la', note: 'Azure Italian is only an Ecclesiastical Latin stand-in; it is not Classical Latin' },
   { id: 'ru' },
   { id: 'fr' },
+  { id: 'ko' },
 ];
 
 /** What this browser can speak right now, by the same strict rule the word card uses (an English voice is never "close enough"). */

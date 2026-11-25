@@ -14,3 +14,5 @@ export const LATIN_DEVICE_TAGS = ['la', 'la-VA', 'it-IT', 'it'] as const;
 export const RUSSIAN_DEVICE_TAGS = ['ru-RU', 'ru'] as const;
 // French: a device voice of any French locale is French (the variety asked for is still matched strictly when one is asked for).
 export const FRENCH_DEVICE_TAGS = ['fr-FR', 'fr-CA', 'fr-BE', 'fr-CH', 'fr'] as const;
+// Korean: a device voice of ko-KR (or plain ko) is Korean. The tag says nothing of North Korean speech; none is claimed.
+export const KOREAN_DEVICE_TAGS = ['ko-KR', 'ko'] as const;

@@ -2,7 +2,7 @@
  * Shared machinery of the exercise builders: the exercise shape GoReview really stores (the contract's `Exercise`
  * plus what validation, grading and evidence need), eligibility, the gap convention and a few pure helpers.
  */
-import { STATUS_RANK } from '../../../repository-contract/src';
+import { STATUS_RANK, displayLemma } from '../../../repository-contract/src';
 import { answerVariants } from '../../../../src/core/english-verb';
 import type { AnalysisStatus, Dimension, ReviewEligibility } from '../../../repository-contract/src';
 import { glossParts, normalizeAnswer } from '../grading/normalize';
@@ -136,6 +136,8 @@ export function matchCase(form: string, template: string): string {
 export const withGap = (c: Pick<ExerciseContext, 'sentence' | 'start' | 'end'>): string => `${c.sentence.slice(0, c.start)}${GAP}${c.sentence.slice(c.end)}`;
 
 export const quote = (s: string): string => `“${s}”`;
+/** A lemma as a person reads, hears and types it: a Korean homonym number (눈²) is identity, never part of the spelling (repository-contract lemma-display.ts). */
+export const shownLemma = (facts: UnitFacts, lemma: string): string => displayLemma(facts.unit.languageId, lemma);
 
 const wordCount = (s: string): number => s.trim().split(/\s+/u).filter(Boolean).length;
 

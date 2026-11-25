@@ -97,6 +97,19 @@ export const AZURE_VOICES: Record<LanguageCode, AzureVoiceEntry[]> = {
     { id: 'fr-BE-CharlineNeural', locale: 'fr-BE', gender: 'female' },
     { id: 'fr-CH-ArianeNeural', locale: 'fr-CH', gender: 'female' },
   ],
+  // Korean: Azure's ko-KR neural voices (names from the Azure voice gallery as read on 2026-11-25; ids unverified against the live list,
+  // which `listVoices` reads at runtime when it can).
+  ko: [
+    { id: 'ko-KR-SunHiNeural', locale: 'ko-KR', gender: 'female' },
+    { id: 'ko-KR-InJoonNeural', locale: 'ko-KR', gender: 'male' },
+    { id: 'ko-KR-JiMinNeural', locale: 'ko-KR', gender: 'female' },
+    { id: 'ko-KR-BongJinNeural', locale: 'ko-KR', gender: 'male' },
+    { id: 'ko-KR-GookMinNeural', locale: 'ko-KR', gender: 'male' },
+    { id: 'ko-KR-SeoHyeonNeural', locale: 'ko-KR', gender: 'female' },
+    { id: 'ko-KR-SoonBokNeural', locale: 'ko-KR', gender: 'female' },
+    { id: 'ko-KR-YuJinNeural', locale: 'ko-KR', gender: 'female' },
+    { id: 'ko-KR-HyunsuNeural', locale: 'ko-KR', gender: 'male' },
+  ],
 };
 
 export interface AzureSpeechOptions {

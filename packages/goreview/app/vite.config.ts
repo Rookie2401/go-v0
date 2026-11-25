@@ -4,7 +4,7 @@
  *   vite build -c packages/goreview/app/vite.config.ts
  *       -> packages/goreview/app/dist/   a static site with relative URLs (base './'), any host or sub-path:
  *          index.html, assets/*.js, styles.css, config.json, and dict/<lang>/ for the languages in GOREVIEW_DICT
- *          (default "sq,es,de,hi,th,la,he,nb,nn,fr", the packs declaring dictionaries: Hebrew, Bokmål and Nynorsk since 2026-11-13, French since 2026-11-17; set it empty when using a shared dictionary tree). Review exercises read
+ *          (default "sq,es,de,hi,th,la,he,nb,nn,ru,fr,ko", the packs declaring dictionaries: Hebrew, Bokmål and Nynorsk since 2026-11-13, French since 2026-11-17, Korean as it is built; set it empty when using a shared dictionary tree). Review exercises read
  *          glosses from there, lazily, shard by shard.
  *   vite build -c packages/goreview/app/vite.config.ts --mode extension
  *       -> packages/golearn-extension/dist/review/   the same app as a page of the GoLearn extension (chrome-extension://<id>/review/index.html).
@@ -31,7 +31,7 @@ import { gzipHebrewFormFrequency } from './hebrewFrequencyAssets.ts';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '../../..');
 
-const dictLanguages = (): string[] => (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th,la,he,nb,nn,ru,fr').split(',').map((s) => s.trim()).filter(Boolean);
+const dictLanguages = (): string[] => (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th,la,he,nb,nn,ru,fr,ko').split(',').map((s) => s.trim()).filter(Boolean);
 
 const fontsSource = path.join(repoRoot, 'packages', 'shared-fonts');
 
@@ -126,6 +126,29 @@ function copyRussianLexicon(outDir: string): void {
     if (!fs.existsSync(from) || !fs.statSync(from).isFile()) throw new Error(`The Russian lexicon shard ${name} is missing; refusing an incomplete build.`);
     const bytes = fs.readFileSync(from);
     if (bytes.length < 2 || bytes[0] !== 0x1f || bytes[1] !== 0x8b) throw new Error(`The Russian lexicon shard ${name} is not a valid gzip file; refusing an incomplete build.`);
+    fs.copyFileSync(from, path.join(target, name));
+  }
+  fs.copyFileSync(manifestPath, path.join(target, 'manifest.json'));
+}
+
+/** Korean's stem lexicon (every headword of the Wiktionary Korean entries, sharded by first syllable) is loaded for the words of a card. */
+function copyKoreanLexicon(outDir: string): void {
+  const source = path.join(repoRoot, 'public', 'lexicon', 'ko', 'standard');
+  const manifestPath = path.join(source, 'manifest.json');
+  if (!fs.existsSync(manifestPath)) throw new Error('The Korean lexicon is missing its manifest (npm run ko:build-lexicon); refusing an incomplete build.');
+  let manifest: { shards?: Record<string, { file?: string }> };
+  try { manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8')); }
+  catch { throw new Error('The Korean lexicon manifest is invalid JSON; refusing an incomplete build.'); }
+  if (!manifest.shards || typeof manifest.shards !== 'object' || !Object.keys(manifest.shards).length) throw new Error('The Korean lexicon manifest has no shards; refusing an incomplete build.');
+  const target = path.join(outDir, 'lexicon', 'ko', 'standard');
+  fs.mkdirSync(target, { recursive: true });
+  for (const shard of Object.values(manifest.shards)) {
+    const name = shard?.file;
+    if (typeof name !== 'string' || path.basename(name) !== name || !name.endsWith('.json.gz')) throw new Error('The Korean lexicon manifest contains an invalid shard path; refusing an incomplete build.');
+    const from = path.join(source, name);
+    if (!fs.existsSync(from) || !fs.statSync(from).isFile()) throw new Error(`The Korean lexicon shard ${name} is missing; refusing an incomplete build.`);
+    const bytes = fs.readFileSync(from);
+    if (bytes.length < 2 || bytes[0] !== 0x1f || bytes[1] !== 0x8b) throw new Error(`The Korean lexicon shard ${name} is not a valid gzip file; refusing an incomplete build.`);
     fs.copyFileSync(from, path.join(target, name));
   }
   fs.copyFileSync(manifestPath, path.join(target, 'manifest.json'));
@@ -250,6 +273,7 @@ function staticFiles(outDir: string, pwa = false): Plugin {
       copyHebrewLexicons(outDir);
       copyGreekLexicons(outDir);
       copyRussianLexicon(outDir);
+      copyKoreanLexicon(outDir);
       const notices = path.join(repoRoot, 'THIRD-PARTY-NOTICES.md');
       if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(outDir, 'THIRD-PARTY-NOTICES.md'));
       // the stylesheet is bundled into assets/, so its ./fonts/ URLs resolve to assets/fonts/

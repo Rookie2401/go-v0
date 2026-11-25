@@ -31,7 +31,7 @@ export interface StageContract {
   language: LanguageCode;
   entryCapabilities: string[];
   targetCapabilities: string[];
-  orthography: { script: 'Latin' | 'Devanagari' | 'Thai' | 'Cyrillic'; expectation: string };
+  orthography: { script: 'Latin' | 'Devanagari' | 'Thai' | 'Cyrillic' | 'Hangul'; expectation: string };
   lexicalProfile: { basis: string; intendedKnownCoverage: { min: number; max: number }; frequencyBandTargets: string[] };
   grammarProfile: { expectedKnown: string[]; introduced: string[]; toleratedWithSupport: string[] };
   textProfile: { genres: string[]; registers: RegisterTag[]; typicalLengthRange: { min: number; max: number }; lengthUnit: string; lengthPolicy: string };
@@ -57,6 +57,8 @@ const constructions: Record<LanguageCode, readonly string[][]> = {
   th: [['Consonant classes, vowels and tone decoding', 'Basic Thai word order'], ['Negation and questions', 'Common classifiers'], ['Aspect markers and serial verbs'], ['Pronoun omission', 'Dialogue/discourse particles'], ['Connected clauses and narrative reference'], ['Embedded explanation', 'Register-dependent pronouns'], ['Implicit reference and literary economy'], ['Regional/historical recognition and contextual inference']],
   // Russian: no construction ladder or Stage contract is written (empty on purpose, not a claim that there is nothing to teach)
   ru: [],
+  // Korean: no construction ladder or Stage contract is written (empty on purpose, not a claim that there is nothing to teach)
+  ko: [],
   // French: machine-draft ladder of constructions for reading (docs/french); no native review yet
   fr: [['Sound/spelling correspondence (ou, oi, eau, nasal vowels, silent final letters)', 'Elision and the contracted articles (au, du, des)'], ['Gender and number agreement', 'Present tense, questions and negation (ne … pas)'], ['Passé composé with avoir and être', 'Imparfait', 'Object pronouns, y and en'], ['Relative clauses (qui, que, dont, où)', 'Future and conditional'], ['Subjunctive', 'Participle agreement'], ['Passé simple and the literary tenses', 'Literary negation and inversion']],
 };
@@ -69,7 +71,7 @@ export const STAGE_CONTRACTS: readonly StageContract[] = ladders.flatMap(stages 
   entryCapabilities: i ? [...stages[i - 1].purpose] : ['No prior reading proficiency required; script support remains available'],
   targetCapabilities: [...stage.purpose],
   orthography: {
-    script: stage.lang === 'th' ? 'Thai' as const : stage.lang === 'hi' ? 'Devanagari' as const : stage.lang === 'ru' ? 'Cyrillic' as const : 'Latin' as const,
+    script: stage.lang === 'th' ? 'Thai' as const : stage.lang === 'hi' ? 'Devanagari' as const : stage.lang === 'ru' ? 'Cyrillic' as const : stage.lang === 'ko' ? 'Hangul' as const : 'Latin' as const,
     expectation: stage.lang === 'th' ? 'Read Thai script; segmentation and tone decoding remain available; romanization is rescue only' : stage.lang === 'hi' ? 'Read Devanagari; support vowel signs, conjuncts and orthographic decoding' : stage.lang === 'sq' ? 'Contemporary Standard Albanian for production; label Gheg and historical spelling for recognition' : 'Read contemporary spelling; label historical or regional forms for recognition',
   },
   lexicalProfile: { basis: 'Editorial target for supported acquisition, not measured corpus coverage; compare personalized demonstrated coverage and unfamiliar phrases', intendedKnownCoverage: { min: .9, max: .98 }, frequencyBandTargets: i < 3 ? ['frequent everyday language'] : ['everyday language', 'genre and domain vocabulary'] },

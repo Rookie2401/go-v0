@@ -48,11 +48,13 @@ const NEG_SETS: Record<LanguageCode, Set<string>> = {
   arc: new Set(),
   es: setOf(NEGATORS.es), sq: setOf(NEGATORS.sq), th: setOf(NEGATORS.th), hi: setOf(NEGATORS.hi), de: setOf(NEGATORS.de), nb: setOf(NEGATORS.nb), nn: setOf(NEGATORS.nn), he: setOf(NEGATORS.he), el: setOf(NEGATORS.el), la: setOf(NEGATORS.la), fr: setOf(NEGATORS.fr),
   ru: new Set(), // No Russian production curriculum is claimed.
+  ko: new Set(), // No Korean production curriculum is claimed.
 };
 const SUBJ_SETS: Record<LanguageCode, Set<string>> = {
   arc: new Set(),
   es: setOf(SUBJECT_PRONOUNS.es), sq: setOf(SUBJECT_PRONOUNS.sq), th: setOf(SUBJECT_PRONOUNS.th), hi: setOf(SUBJECT_PRONOUNS.hi), de: setOf(SUBJECT_PRONOUNS.de), nb: setOf(SUBJECT_PRONOUNS.nb), nn: setOf(SUBJECT_PRONOUNS.nn), he: setOf(SUBJECT_PRONOUNS.he), el: setOf(SUBJECT_PRONOUNS.el), la: setOf(SUBJECT_PRONOUNS.la), fr: setOf(SUBJECT_PRONOUNS.fr),
   ru: new Set(), // No Russian production curriculum is claimed.
+  ko: new Set(), // No Korean production curriculum is claimed.
 };
 
 export interface RuleBasedProviderDeps { adapters: AdapterRegistry }

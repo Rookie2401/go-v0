@@ -126,6 +126,14 @@ export const BIBLE_ACCESS: Readonly<Record<LanguageCode, BibleAccessRecord>> = {
     rights: 'Not verified by this project: the Louis Segond 1910 is widely distributed as public domain, but no edition has been checked here.',
     historicalVarieties: ['Early twentieth-century literary French (passé simple, formal negation)'],
   },
+  // Korean: no Bible is bundled and no edition has been chosen or rights-checked. Nothing is claimed.
+  ko: {
+    lang: 'ko', translation: 'none chosen', edition: 'none', status: 'not-bundled',
+    sourceUrl: 'https://ebible.org/', // a general directory of public Bible releases, not a chosen Korean edition
+    method: 'No Korean Bible text is bundled. No edition has been chosen or checked against its source in this repository. A Korean Bible on an ordinary web page is read through the GoLearn extension like any other page.',
+    importMethod: 'Nothing is imported. An entitled personal .txt or unprotected .epub can be imported for ordinary reading on this device; the general importer does not create a verse-addressed Scripture edition.',
+    rights: 'Not verified: no edition is bundled and no rights claim is made for any Korean translation.',
+  },
 };
 
 export function bibleAccessFor(lang: LanguageCode): BibleAccessRecord {

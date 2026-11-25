@@ -114,9 +114,11 @@ const SPECS: readonly Spec[] = [
   { packIds: ['pack:ru'] },
   // French: one language; the regions are labels on words, not a choice the learner must make before reading
   { packIds: ['pack:fr'] },
+  // Korean: one language; Modern Standard Korean is its only variety (North Korean orthography, historical Korean and the dialects are not implemented)
+  { packIds: ['pack:ko'] },
 ];
 
-const SCRIPT_NAME: Readonly<Record<string, string>> = { Latn: 'Latin', Deva: 'Devanagari', Thai: 'Thai script', Hebr: 'Hebrew script', Grek: 'Greek alphabet', Cyrl: 'Cyrillic' };
+const SCRIPT_NAME: Readonly<Record<string, string>> = { Latn: 'Latin', Deva: 'Devanagari', Thai: 'Thai script', Hebr: 'Hebrew script', Grek: 'Greek alphabet', Cyrl: 'Cyrillic', Hang: 'Hangul' };
 
 const LEVEL_RANK: Readonly<Record<PackLevel, number>> = { planned: 0, experimental: 1, installable: 2 };
 const VALIDATION_ORDER: readonly ValidationLevel[] = ['unsupported', 'experimental', 'unreviewed', 'incomplete', 'production-validated'];

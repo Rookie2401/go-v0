@@ -23,6 +23,7 @@ const hasBundled = (lang: string): boolean => bundled.some((x) => x.lang === lan
 describe('span and grapheme integrity — all five languages', () => {
   for (const lang of LANGUAGES) {
     if (lang === 'ru') continue; // Russian has no bundled corpus yet: nothing to check
+    if (lang === 'ko') continue; // nor has Korean (the pack reads web pages): its own sample sentences are checked by test/adapters/korean/text.test.ts
     const adapter = registry.get(lang);
 
     it(`${lang}: no token or sentence span of any bundled text starts or ends inside a grapheme cluster`, () => {
@@ -65,7 +66,7 @@ describe('span and grapheme integrity — all five languages', () => {
 
   it('a span that cuts a token, joins two, or cuts a grapheme is rejected for every language', () => {
     for (const lang of LANGUAGES.filter((l) => !(l in OWN_SAMPLES))) { // no bundled document to cut a span in for French (see OWN_SAMPLES)
-      if (lang === 'ru') continue; // no bundled Russian text to cut
+      if (lang === 'ru' || lang === 'ko') continue; // no bundled Russian or Korean text to cut
       const d = structuredClone(bundled.find((x) => x.lang === lang && x.id === SAMPLE(lang))!);
       const first = sentencesOf(d)[0] as { text: string; spans?: unknown[] };
       const words = registry.get(lang).tokenize(first.text).filter((t) => t.isWord);

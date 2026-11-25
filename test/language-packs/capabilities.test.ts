@@ -11,6 +11,7 @@ import { elAdapter } from '../../src/adapters/el';
 import { esAdapter } from '../../src/adapters/es';
 import { frAdapter } from '../../src/adapters/fr';
 import { hiAdapter } from '../../src/adapters/hi';
+import { koAdapter } from '../../src/adapters/ko';
 import { heAdapter } from '../../src/adapters/he';
 import { laAdapter } from '../../src/adapters/la';
 import { nbAdapter } from '../../src/adapters/nb';
@@ -29,7 +30,7 @@ import {
 import type { LemmaMeasurement, PackEvidence } from '../../packages/language-packs/src';
 import type { SupportLevel } from '../../src/core';
 
-const ADAPTERS: Record<string, LanguageAdapter> = { arc: arcAdapter, sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter, ru: ruAdapter, fr: frAdapter };
+const ADAPTERS: Record<string, LanguageAdapter> = { arc: arcAdapter, sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter, ru: ruAdapter, fr: frAdapter, ko: koAdapter };
 const q = (l: SupportLevel): string => (l === 'dependable' ? 'dependable' : l === 'limited' ? 'limited' : 'none');
 
 describe('every pack’s report matches its manifest and its adapter', () => {
@@ -153,7 +154,9 @@ describe('lemma quality is derived from the evidence, by one stated rule', () =>
     const level = Object.fromEntries(allPackCapabilities().map((c) => [c.languageId, c.lemma.quality]));
     expect(level).toEqual({ sq: 'limited', es: 'limited', de: 'limited', hi: 'limited', th: 'limited', nb: 'seed-only', nn: 'seed-only', la: 'limited', he: 'limited', el: 'limited', arc: 'limited', ru: 'limited',
       // French is measured on a human treebank (92 % of first-reading lemmas on the held-out part): below the 95 % bar, so limited
-      fr: 'limited' });
+      fr: 'limited',
+      // Korean has no committed measurement and no form index of the dictionary's: its analyser's own statement (seed-only: a compiled core of the commonest words over a sharded stem lexicon) stands
+      ko: 'seed-only' });
     // Latin is measured at the bar on the Vulgate New Testament and below it on the classical authors: the rule asks for every corpus
     const la = packCapabilities('la')!.lemma;
     expect(la.measured.map((m) => [m.id, m.goldKind, m.lemmaAccuracy >= DEPENDABLE_ACCURACY])).toEqual([['proiel-nt', 'human-treebank', true], ['perseus-agldt', 'human-treebank', false]]);

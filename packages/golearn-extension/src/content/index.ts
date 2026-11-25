@@ -15,6 +15,7 @@ import { createLexiconPreparer } from '../lexicon/prepare';
 import { createAdapters } from '../adapters';
 import { resolveLanguage } from '../language/resolve';
 import { createMemoryMetricsStore } from '../metrics';
+import { lemmaLookupKeys } from '../../../repository-contract/src/lemma-display';
 import { PARSER_LANGUAGES, getAnalyser, hasAnalyser, parseSelection } from '../parser';
 import { MSG, getContentChrome, type ContentChromeApi, type LookupMessage } from '../platform';
 import { createCardUI, type CardUI } from '../popup/card';
@@ -88,7 +89,8 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
     glossForms: (lemma, pos, languageId) => {
       const a = getAnalyser(languageId);
       if (!a || languageId === 'sq') return []; // the worker carries Albanian
-      return [...new Set([a.normalize(lemma), ...(a.lemmaVariants?.(lemma, pos as Parameters<NonNullable<typeof a.lemmaVariants>>[1]) ?? []).map((v) => a.normalize(v))])].slice(0, 8);
+      // a Korean homonym (눈²) is filed in the dictionary under its numbered headword AND the bare one: the numbered key finds that entry alone, the bare one is the fallback
+      return [...new Set([...lemmaLookupKeys(languageId, lemma).map((k) => a.normalize(k)), ...(a.lemmaVariants?.(lemma, pos as Parameters<NonNullable<typeof a.lemmaVariants>>[1]) ?? []).map((v) => a.normalize(v))])].slice(0, 8);
     },
     loadAnalyser,
     prepareLexicon: (languageId, text) => lexicon.prepare(languageId, text),

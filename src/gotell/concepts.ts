@@ -294,6 +294,7 @@ const TABLES: Record<LanguageCode, LangTable> = {
   },
   ru: {}, // No Russian production curriculum is claimed.
   fr: {}, // No French production curriculum is claimed (GoTell is not part of the French pack).
+  ko: {}, // No Korean production curriculum is claimed.
 };
 
 /** Negation markers (per language). Used to keep negation outside a recombined phrase and flag it. */
@@ -313,6 +314,7 @@ export const NEGATORS: Record<LanguageCode, string[]> = {
   la: ['non', 'ne', 'nec', 'neque', 'nemo', 'nihil', 'nil', 'nullus', 'nulla', 'nullum', 'numquam', 'nunquam', 'haud', 'minime'],
   ru: [],
   fr: ['ne', "n'", 'pas', 'non', 'jamais', 'rien', 'personne', 'plus', 'aucun', 'aucune', 'ni', 'point', 'guère'],
+  ko: [], // No Korean production curriculum is claimed.
 };
 
 /**
@@ -336,6 +338,7 @@ export const CHRONOLOGY: Record<LanguageCode, string[]> = {
   la: ['cum', 'quando', 'ante', 'antea', 'post', 'postea', 'postquam', 'deinde', 'tum', 'tunc', 'nunc', 'hodie', 'heri', 'cras', 'iam', 'jam', 'adhuc', 'semper', 'numquam', 'nunquam', 'primum', 'primo', 'denique', 'tandem', 'dum', 'donec', 'usque', 'mox', 'statim', 'olim', 'cotidie', 'quotidie'],
   ru: [],
   fr: ['quand', 'avant', 'après', 'puis', 'ensuite', 'alors', 'maintenant', "aujourd'hui", 'hier', 'demain', 'déjà', 'encore', 'toujours', 'jamais', "d'abord", 'enfin', 'pendant', 'depuis', 'bientôt'],
+  ko: [], // No Korean production curriculum is claimed.
 };
 
 /** Subject pronouns: a slot filler that extends backwards stops here (the subject is not part of a phrase slot). */
@@ -356,6 +359,7 @@ export const SUBJECT_PRONOUNS: Record<LanguageCode, string[]> = {
   la: ['ego', 'tu', 'is', 'ea', 'id', 'ille', 'illa', 'illud', 'hic', 'haec', 'hoc', 'nos', 'vos', 'ei', 'ii', 'eae', 'illi', 'illae'],
   ru: [], // No Russian production curriculum is claimed.
   fr: ['je', 'tu', 'il', 'elle', 'on', 'nous', 'vous', 'ils', 'elles'],
+  ko: [], // No Korean production curriculum is claimed.
 };
 
 // ───────────────────────── compiled matchers ─────────────────────────

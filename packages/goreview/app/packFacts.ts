@@ -19,6 +19,8 @@ import { createHebrewShardLoader } from '../../../src/adapters/hebrew/shards';
 import type { HebrewShardLoader } from '../../../src/adapters/hebrew/shards';
 import { createGreekShardLoader } from '../../../src/adapters/greek/shards';
 import { createRussianShardLoader, type RussianShardLoader } from '../../../src/adapters/russian/shards';
+import { displayLemma } from '../../repository-contract/src';
+import { createKoreanShardLoader, type KoreanShardLoader } from '../../../src/adapters/korean/shards';
 import { installGreekIndex, installedGreekIndexes, type GreekFormIndex } from '../../../src/adapters/greek/index-store';
 import { installedHebrewIndexes } from '../../../src/adapters/hebrew/index-store';
 import type { GreekShardLoader } from '../../../src/adapters/greek/shards';
@@ -91,6 +93,7 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
   const hebrewLoaders = new Map<string, Promise<HebrewShardLoader>>();
   const greekLoaders = new Map<string, Promise<GreekShardLoader>>();
   let russianLoader: Promise<RussianShardLoader> | undefined;
+  let koreanLoader: Promise<KoreanShardLoader> | undefined;
   let koineIndex: Promise<void> | undefined;
   let hebrewFrequency: Promise<HebrewFormFrequencyIndex> | undefined;
   const lexiconBase = opts.lexiconBaseUrl ?? opts.baseUrl;
@@ -216,6 +219,30 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
     }
     return changed;
   };
+  /** Korean: the sharded stem lexicon (lexicon/ko/standard); the loader takes tokens as written and expands them to stems itself. */
+  const ensureKoreanKeys = async (keys: string[]): Promise<boolean> => {
+    if (!keys.length) return false;
+    let job = koreanLoader;
+    if (!job) {
+      job = createKoreanShardLoader(source, { base: 'lexicon/ko/standard', maxLoaded: 64 });
+      koreanLoader = job;
+      job.catch(() => { if (koreanLoader === job) koreanLoader = undefined; });
+    }
+    const loader = await job;
+    let changed = false;
+    for (let i = 0; i < keys.length; i += 8) {
+      const result = await loader.ensure(keys.slice(i, i + 8));
+      if (result.failed.length) throw new Error(`lexicon/ko/standard: ${result.failed.map((x) => x[1]).join(', ')}`);
+      if (result.loaded.length) changed = true;
+    }
+    return changed;
+  };
+  /** The words of a Korean unit id as a person writes them: a homonym number (눈²) is identity, never spelling. */
+  const koreanUnitKeys = (unitId: string): string[] => {
+    const body = unitId.startsWith('form:ko:') ? unitId.slice('form:ko:'.length)
+      : unitId.startsWith('lemma:ko:') ? displayLemma('ko', unitId.slice('lemma:ko:'.length).replace(/:[A-Z]+$/u, '')) : '';
+    return body ? builtInAdapter('ko')!.tokenize(body).filter((t) => t.isWord).map((t) => t.normalized) : [];
+  };
   const russianUnitKeys = (unitId: string): string[] => {
     const body = unitId.startsWith('form:ru:') ? unitId.slice('form:ru:'.length)
       : unitId.startsWith('lemma:ru:') ? unitId.slice('lemma:ru:'.length).replace(/:[A-Z]+$/u, '') : '';
@@ -302,6 +329,9 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
         if (languageId === 'ru') {
           if (await ensureRussianKeys(unitIds.flatMap(russianUnitKeys))) clearGreekSentenceCaches();
         }
+        if (languageId === 'ko') {
+          if (await ensureKoreanKeys(unitIds.flatMap(koreanUnitKeys))) clearGreekSentenceCaches();
+        }
         // Start the Repository snapshot's consume window after remote pack assets load.
         await plain.prime(unitIds);
       },
@@ -323,6 +353,11 @@ export function packFactsFor(opts: { fetch: typeof fetch; baseUrl: string; lexic
         if (languageId === 'ru' && requestedLanguage === 'ru') {
           try {
             if (await ensureRussianKeys(russianUnitKeys(unitId))) clearGreekSentenceCaches();
+          } catch { return undefined; }
+        }
+        if (languageId === 'ko' && requestedLanguage === 'ko') {
+          try {
+            if (await ensureKoreanKeys(koreanUnitKeys(unitId))) clearGreekSentenceCaches();
           } catch { return undefined; }
         }
         const facts = await forVariety(varietyId).factsFor(unitId, requestedLanguage, varietyId);

@@ -20,6 +20,7 @@ import { greekManifest } from './packs/el';
 import { aramaicManifest } from './packs/arc';
 import { russianManifest } from './packs/ru';
 import { frenchManifest } from './packs/fr';
+import { koreanManifest } from './packs/ko';
 
 export const PACKS: Readonly<Record<string, PackManifest>> = Object.freeze({
   sq: albanianManifest(),
@@ -35,6 +36,7 @@ export const PACKS: Readonly<Record<string, PackManifest>> = Object.freeze({
   arc: aramaicManifest(),
   ru: russianManifest(),
   fr: frenchManifest(),
+  ko: koreanManifest(),
 });
 
 export function packFor(languageId: string): PackManifest | undefined {

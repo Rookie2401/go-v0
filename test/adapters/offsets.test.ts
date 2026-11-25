@@ -19,9 +19,11 @@ const SAMPLES: Record<string, string[]> = {
   ru: ['Она читает книгу.', 'Что это? Ничего: «ну да» (или нет).', 'Я знаю, что ты сказал — и понял всё.'],
   // French: elision with both apostrophes, a hyphenated clitic and a compound, guillemets with no-break spaces, an NFD accent (e + U+0301)
   fr: ["L'homme est ici. Je n'ai pas d'argent.", 'L’homme dit : « Bonjour », puis Dis-le-moi, ma grand-mère (peut-être) !', 'Un café noir ? Nous avons deux enfants.'],
+  // Korean: a word with its particle, Hanja inside a word, Latin and a number with a particle, quotation marks, and a sentence written in conjoining jamo (NFD: built, never typed)
+  ko: ['학생들이 학교에서 공부했습니다.', 'KBS가 2024년에 發表했다. 學校에서 만났어요!', '“한국어를 공부해요.” (정말요?)', '한국어를 공부해요.'.normalize('NFD')],
 };
 
-const NO_BUNDLED_CORPUS = ['fr'];
+const NO_BUNDLED_CORPUS = ['fr', 'ko'];
 
 describe('token offsets round-trip (every language)', () => {
   for (const lang of LANGUAGES) {

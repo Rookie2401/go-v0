@@ -330,6 +330,69 @@ for (const state of ['core', 'shards'] as const) {
     it.fails('WW3: 노래를 한 곡 불렀어요 → 한 "one" (fails: the lexicon lacks the counter 곡)', () => {
       expect(readIn('노래를 한 곡 불렀어요.', '한').top.pos).toBe('NUM');
     });
+    describe('YY (addendum): noun + particle stays; numerals before counters', () => {
+      for (const [s, w, lemma] of [
+        ['물을 마셔요.', '물을', '물'], ['남자는 커요.', '남자는', '남자'], ['차는 비싸요.', '차는', '차'], ['신을 신어요.', '신을', '신'], ['약을 먹었어요.', '약을', '약'],
+        ['생일 선물을 샀어요.', '생일', '생일'], ['생일 축하해요.', '생일', '생일'],
+      ] as const) {
+        // the SENTENCE layer never puts a predicate or a copula reading above the noun the token layer offers; which is first at token
+        // level is the morphology package's (it is making noun + particle first: until then the token order shows through unchanged)
+        it(`${s}: the sentence layer does not promote a predicate over the noun ${lemma}`, () => {
+          const r = readIn(s, w);
+          const tokenTop = koAnalyzeTokens(r.tokens)[r.i].candidates[0];
+          const noun = (c: AnalysisCandidate) => c.pos === 'NOUN' && (c.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, '') === lemma && !c.morph.VerbType;
+          if (noun(tokenTop)) expect(noun(r.top), `${s}: ${r.top.lemma} ${r.top.pos}`).toBe(true);
+          else expect(`${r.top.lemma}|${r.top.pos}`).toBe(`${tokenTop.lemma}|${tokenTop.pos}`);
+          expect(String(r.top.notes?.context ?? '')).toBe(String(tokenTop.notes?.context ?? ''));
+        });
+      }
+      for (const [s, w, gloss] of [
+        ['네 명이 왔어요.', '네', /four/], ['네 시예요.', '네', /four/], ['네 개 주세요.', '네', /four/], ['네 살이에요.', '네', /four/],
+        ['세 명이 왔어요.', '세', /three/], ['두 개 주세요.', '두', /two/], ['열 명이 왔어요.', '열', /ten/], ['이 층에 있어요.', '이', /two/],
+      ] as const) it(`${s}: ${w} is the numeral`, () => { const t = readIn(s, w).top; expect(['NUM', 'DET']).toContain(t.pos); expect(t.gloss ?? '').toMatch(gloss); });
+      it('네 이름, 네 거야 stay "your"; 이 사람 stays the determiner "this"; 이 개는 is "this dog"', () => {
+        expect(readIn('네 이름이 뭐야?', '네').top.pos).toBe('PRON');
+        expect(readIn('이건 네 거야.', '네').top.pos).toBe('PRON');
+        expect(readIn('이 사람이 왔어요.', '이').top.pos).toBe('DET');
+        expect(readIn('이 개는 귀여워요.', '개는').top.pos).not.toBe('CLF');
+      });
+    });
+    describe('XX1: fused forms against their look-alikes', () => {
+      const fused = (c: AnalysisCandidate, pron: string, particle: string) => c.pos === 'PRON' && (c.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, '') === pron && (c.morph.Particle ?? '').split('+').pop() === particle;
+      const bound내 = (c: AnalysisCandidate) => c.morph.NounType === 'Bound' && /inside|within/u.test(c.gloss ?? '');
+      for (const s of ['내 친구가 왔어요.', '이것은 내 가방이다.', '내 이름은 민수야.', '이것은 내 책이에요.', '이건 내 거야.', '내 동생은 학생이야.', '그건 내 잘못이야.', '내 생각은 달라요.']) {
+        it(`${s}: 내 is 나 + 의 "my"`, () => expect(fused(readIn(s, '내').top, '나', 'of'), JSON.stringify(readIn(s, '내').top.lemma)).toBe(true));
+      }
+      for (const s of ['기간 내 신청하세요.', '건물 내 금연', '3일 내 답장 주세요.', '예산 내 지출', '학교 내 시설', '한 시간 내 도착해요.']) {
+        it(`${s}: 내 is "within"`, () => expect(bound내(readIn(s, '내').top)).toBe(true));
+      }
+      for (const s of ['전 괜찮아요.', '전 학생이에요.', '전 그렇게 생각해요.', '전 밥을 먹었어요.', '전 아직 몰라요.', '전 정말 좋아요.']) {
+        it(`${s}: 전 is 저 + 는`, () => expect(fused(readIn(s, '전').top, '저', 'topic')).toBe(true));
+      }
+      for (const s of ['십 년 전 일이에요.', '조금 전 왔어요.', '얼마 전 만났어요.', ...(state === 'shards' ? ['사흘 전 소식이에요.'] : []), '오래 전 이야기예요.', '식사 전 손을 씻어요.']) {
+        it(`${s}: 전 is "before, ago"`, () => expect(readIn(s, '전').top.gloss ?? '').toMatch(/before|ago/));
+      }
+      for (const s of ['전 세계가 알아요.', '전 국민이 투표했어요.', ...(state === 'shards' ? ['전 직원이 모였어요.'] : []), '전 대통령이 왔어요.', '인쇄술은 전 유럽으로 퍼졌다.', '전 지역에 비가 와요.']) {
+        it(`${s}: 전 is the determiner`, () => expect(readIn(s, '전').top.pos).toBe('DET'));
+      }
+      for (const s of ['네 명이 왔어요.', '네 시에 만나요.', '사과 네 개를 샀어요.', '고양이 네 마리가 있어요.', '책 네 권을 샀어요.', '커피 네 잔을 마셨어요.']) {
+        it(`${s}: 네 is "four"`, () => expect(readIn(s, '네').top.gloss ?? '').toMatch(/four/));
+      }
+      for (const s of ['네 책이 어디 있어?', '네 이름이 뭐야?', '네 친구가 왔어.', '네 가방은 커.', '네 생각은 어때?', '네 말이 맞아.']) {
+        it(`${s}: 네 is "your"`, () => expect(fused(readIn(s, '네').top, '너', 'of')).toBe(true));
+      }
+      for (const s of ['그 날 비가 왔어요.', '좋은 날 만나요.', '어느 날 친구가 왔어요.', '이 날 처음 봤어요.', '다른 날 와요.', '첫 날 늦었어요.']) {
+        it(`${s}: 날 is "day"`, () => expect(readIn(s, '날').top.pos).toBe('NOUN'));
+      }
+      for (const s of ['날 사랑해요?', '날 봐.', '날 도와줘.', '날 기다려.', '날 믿어요.', '날 잊지 마.']) {
+        it(`${s}: 날 is 나 + 를`, () => expect(fused(readIn(s, '날').top, '나', 'object')).toBe(true));
+      }
+      it('난 / 넌 at the head of a clause are 나 + 는 / 너 + 는 (token order); 제 before a number is left alone', () => {
+        expect(fused(readIn('난 학생이야.', '난').top, '나', 'topic')).toBe(true);
+        expect(fused(readIn('넌 누구야?', '넌').top, '너', 'topic')).toBe(true);
+        expect(String(readIn('제 1 장', '제').top.notes?.context ?? '')).not.toMatch(/저 \+ 의|I \(polite\)/);
+      });
+    });
     it('WW4: 이 / 그 / 저 before an adnominal and its noun is the determiner', () => {
       for (const [s, w] of [['저 높은 산을 봐요.', '저'], ['그 작은 집에 살아요.', '그'], ['이 예쁜 꽃을 샀어요.', '이'], ['저 큰 나무가 있어요.', '저'], ['그 좋은 책을 읽었어요.', '그'], ['이 맛있는 음식을 먹어요.', '이']] as const) {
         expect(readIn(s, w).top.pos, s).toBe('DET');

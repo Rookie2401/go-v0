@@ -21,7 +21,7 @@ import { cellOf, cellsWithForm, featureKey, type ParadigmCell, type Segmentation
 import { contextLine, type CardModel, type EvidenceLabel } from '../parser/cardModel';
 import { noVoiceNote, type SelfMark } from '../protocol';
 import { KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_WORDS } from '../../../repository-contract/src/knowledge-levels';
-import { displayLemma, lemmaHomonymNumber } from '../../../repository-contract/src/lemma-display';
+import { displayLemma, lemmaEntryLabel } from '../../../repository-contract/src/lemma-display';
 import { cognateText, etymologyStepText, type StructurePart } from '../content/enrich';
 import {
   initialView, LAYER_ORDER, type CardActions, type CardView, type LayerName, type PlayResult, type PronounceAvailability, type Pronouncer,
@@ -284,7 +284,7 @@ const PANEL_LAYERS: readonly LayerName[] = [...LAYER_ORDER, 'sentence', 'variant
 const LAYER_CLASS: Record<LayerName, string> = { morphology: 'l2', 'phrase-syntax': 'l3', grammar: 'l4', sentence: 'l5', forms: 'l6', meaning: 'l7', origin: 'l8', structure: 'l10', variants: 'l11' };
 /** The "Variants" rows in plain words. */
 /** A small label for a Korean homonym number (눈² gives ' · entry 2'), for lists of readings where two entries share a headword; empty for everything else. */
-const entryTag = (language: string, lemma: string | undefined): string => { const n = lemma ? lemmaHomonymNumber(language, lemma) : undefined; return n ? ` · entry ${n}` : ''; };
+const entryTag = (language: string, lemma: string | undefined): string => { const n = lemma ? lemmaEntryLabel(language, lemma) : undefined; return n ? ` · entry ${n}` : ''; };
 const VARIANT_STATUS: Record<string, string> = { attested: 'attested', 'same-as-lemma': 'the same form', 'not-in-sources': 'not in our sources', 'not-yet-existing': 'not yet in the language', obsolete: 'no longer used' };
 const STRUCTURE_STATUS: Record<string, string> = { 'supported-by-source': 'From the dictionary: its etymology template names these parts.', provisional: "Provisional: from the analyser's rules only; no dictionary template confirms it." };
 const STATUS_MARK: Record<string, string> = { verified: '✓', supported: '◌', generated: '~', conflicted: '‼' };
@@ -518,7 +518,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     rows.push(gloss);
     if (from) rows.push(h('div', { class: 'kicker' }, `Meaning · ${from}`));
     const lexicalMeaning = m.wordAnalysis?.lexicalMeaning;
-    const entryNo = m.lemma ? lemmaHomonymNumber(m.languageId, m.lemma) : undefined;
+    const entryNo = m.lemma ? lemmaEntryLabel(m.languageId, m.lemma) : undefined;
     const same = !m.lemma || displayLemma(m.languageId, m.lemma).normalize('NFC').toLowerCase() === m.surface.normalize('NFC').trim().toLowerCase();
     // the headline is the headword; a Korean homonym number (눈²) is identity, so it stands only as a small label beside the meaning
     if ((!same || entryNo) && m.lemma && m.tokenCount === 1) {

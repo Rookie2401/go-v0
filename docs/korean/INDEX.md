@@ -12,11 +12,11 @@ Reviewed inputs read by the build (hand-written, never written by it): docs/kore
 | | |
 |---|---|
 | lines read | 64,457 |
-| entries kept (rows) | 37,009 |
-| spellings (spelling and shared part of speech) | 33,037 |
-| skipped | 27,433 |
+| entries kept (rows) | 37,006 |
+| spellings (spelling and shared part of speech) | 33,034 |
+| skipped | 27,436 |
 | entries merged into another (one etymology, or one word: see Granularity) | 47 |
-| stem keys (including Hanja keys) | 49,062 |
+| stem keys (including Hanja keys) | 49,059 |
 
 ### Kept, by Wiktionary part of speech → class
 
@@ -26,7 +26,7 @@ Reviewed inputs read by the build (hand-written, never written by it): docs/kore
 - det: MM 125
 - intj: IC 198
 - name: NNP 2,513
-- noun: NNB 65, NNG 27,589
+- noun: NNB 65, NNG 27,586
 - num: NR 136
 - prefix: XPN 101
 - pron: NP 122
@@ -36,7 +36,7 @@ Reviewed inputs read by the build (hand-written, never written by it): docs/kore
 
 ### Rows by class
 
-NNG 27,598, VV 3,602, NNP 2,512, VA 1,321, MAG 847, IC 199, NNB 147, XSN 144, NR 136, MM 126, XR 124, NP 120, XPN 98, MAJ 23, XSV 6, XSA 6 (counters are NNB with `clf`: 100)
+NNG 27,595, VV 3,602, NNP 2,512, VA 1,321, MAG 847, IC 199, NNB 147, XSN 144, NR 136, MM 126, XR 124, NP 120, XPN 98, MAJ 23, XSV 6, XSA 6 (counters are NNB with `clf`: 100)
 
 ### Skipped
 
@@ -58,6 +58,9 @@ NNG 27,598, VV 3,602, NNP 2,512, VA 1,321, MAG 847, IC 199, NNB 147, XSN 144, NR
 - pos affix: 6
 - pos conj: 2
 - pos interfix: 2
+- action noun of a verb (action noun): 1
+- action noun of a verb (nominalization): 1
+- action noun of a verb (verbal noun): 1
 - pos postp: 1
 
 Particles and suffixes that are endings are the hand tables of the morphology package (korean/particles.ts, korean/endings.ts), so they are counted here and not read.
@@ -1243,13 +1246,22 @@ Why each: 제 (allomorph of 저 (jeo, first-person singular polite pronoun) befo
 - 구: NNG² [balanced] "sphere"; NNG⁴ [balanced] "ward"; NNB clf⁵ [main] "counter for corpses"; NNB clf⁶ [other] "Used to count family members."
 - 분: NNB clf¹ [balanced] "minute; unit of length"; NNG² [main] "person"; NNB clf² [balanced] "counter for people (honorific)"; NNG³ [other] "feces"
 
+## Dictionary labels (the card's short line)
+
+The card's short line is one flat list over the entries of the bare key. For a set with a MAIN entry the bare key holds only the main entry. For a BALANCED set each entry's first sense is prefixed (entry L), where L is the entry's homonym number through koEntryLabel (index-store.ts), the same rule the card uses: the source's number below 50, a letter for a number this product assigned (50 = a, 51 = b), x1, x2 for a supplement row (91 = x1). It is the identity number, not a position. When the bare key holds entries of more than one class (전 as noun, prefix, name, determiner) every entry's first sense also names its class: (noun), (prefix), (noun, entry 2).
+
+### Noun and root rows with hada
+2788 rows (nouns and roots) have a verb or adjective X하다 built on them; 591 of them have no X하다 row of their own (the source's derived terms list it): 박치기, 역사, 역사, 역사, 역사, 숨바꼭질, 우물우물, 우물쭈물, 약혼, 시합, 복, 탓, 부산, 삼성, 벼슬, 사이, 글, 시기, 방학, 정류, 불굴, 진취, 창제, 목적, 특징, 전통, 전통, 시인, 감염, 암흑, 판결, 짓, 사정, 사정, 상대, 오염, 비밀, 싸움, 짝, 우려, 예산, 불만, 응시, 응시, 세모, 선교, 가발, 탈, 멀미, 이발, 멸종, 선전, 선전, 면접, 토착, 부패, 인수, 떠세, 구상, 여장.
+
 ## Voice
 
-Note: in the real data a ko-verb-set names the causative as its 2nd argument and the passive as its 3rd (먹다 → 먹이다, 먹히다); the brief had them the other way round, and the data is followed.
+A row has a voice (and its base) when the entry itself says so in a sense (a gloss "causative of X" / "passive of X", or a form-of sense tagged causative or passive), or when a reviewed line of docs/korean/voice-decisions.json says Pass or Caus for a verb the source's ko-verb-set relates to a base. The set alone is etymological (지내다 "to spend (time), to get along" is related to 지나다, it is not called a causative), so a verb the review marks null, or leaves undecided, keeps only the field related, with no voice.
 
-- passive or causative verbs related by the source (own first sense, else a base verb's ko-verb-set when the target is the single kept verb of its spelling): 144 (19 by own sense, 125 by verb set)
-- named both passive and causative of the same base (recorded as Pass): 들리다 (1), 발리다 (1), 발리다 (2), 끌리다 (verb set), 홀리다 (verb set), 쓰이다 (verb set), 풀리다 (verb set), 실리다 (verb set), 벗기다 (verb set), 적히다 (verb set), 빗기다 (verb set), 싸이다 (verb set), 그을리다 (verb set), 흩날리다 (verb set), 매이다 (verb set), 깎이다 (verb set)
-- examples: 비우다 Caus of 비다; 굴리다 Caus of 구르다; 밝히다 Caus of 밝다; 놓이다 Pass of 놓다; 지내다 Caus of 지나다; 걸리다 Pass of 걸다; 피우다 Caus of 피다; 기울이다 Caus of 기울다; 끓이다 Caus of 끓다; 끌리다 Pass of 끌다; 깨뜨리다 Caus of 깨다; 남기다 Caus of 남다; 날리다 Caus of 날다; 깨우다 Caus of 깨다; 넘기다 Caus of 넘다; 내다 Caus of 나다; 웃기다 Caus of 웃다; 어울리다 Pass of 어우르다; 막히다 Pass of 막다; 돌리다 Caus of 돌다; 열리다 Pass of 열다; 올리다 Caus of 오르다; 모이다 Pass of 모으다; 패다 Caus of 파다; 홀리다 Pass of 호리다
+- rows with a voice: 125 (105 of them settled by docs/korean/voice-decisions.json, the rest state it in their own senses): 비우다 Caus of 비다; 굴리다 Caus of 구르다; 밝히다 Caus of 밝다; 놓이다 Pass of 놓다; 걸리다 Pass of 걸다; 피우다 Caus of 피다; 기울이다 Caus of 기울다; 끓이다 Caus of 끓다; 끌리다 Pass of 끌다; 남기다 Caus of 남다; 날리다 Caus of 날다; 깨우다 Caus of 깨다; 넘기다 Caus of 넘다; 웃기다 Caus of 웃다; 막히다 Pass of 막다; 돌리다 Caus of 돌다; 열리다 Pass of 열다; 올리다 Caus of 오르다; 모이다 Pass of 모으다; 나타내다 Caus of 나타나다
+- rows related only (voice decided null by the review, `related` kept): 19: 지내다 ~ 지나다; 깨뜨리다 ~ 깨다; 내다 ~ 나다; 어울리다 ~ 어우르다; 패다 ~ 파다; 홀리다 ~ 호리다; 튀기다 ~ 튀다; 성내다 ~ 성나다; 다스리다 ~ 다슬다; 나수다 ~ 낫다; 걸우다 ~ 걸다; 달이다 ~ 달다; 아물리다 ~ 아물다; 띠우다 ~ 띠다; 뻥치다 ~ 뻥치다; 욱이다 ~ 욱다; 하이다 ~ 하다; 겁내다 ~ 겁나다; 옥이다 ~ 옥다
+- related rows with NO decision line (undecided): 0
+- named both passive and causative of the same base (recorded as Pass): 들리다 (1), 발리다 (1), 발리다 (2)
+- 먹이다 / 보이다 / 열리다 / 끓이다 / 지내다: 먹이다 voice Caus; 보이다 none/none; 열리다 voice Pass; 끓이다 voice Caus; 지내다 related 지나다
 
 ## Glosses
 
@@ -1269,7 +1281,7 @@ Note: in the real data a ko-verb-set names the causative as its 2nd argument and
 
 ## Hanja, pronunciation, Hanja keys
 
-- entries with Hanja: 18,064 of 37,009
+- entries with Hanja: 18,064 of 37,006
 - entries with the source's own pronunciation respelling (differing from the headword): 10,462 (the core carries the same `pron` as the shards)
 - entries ALSO filed under a Hanja key (their Hanja is pure Hanja): 17,752; Hanja keys: 17,397; Hanja keys holding more than one entry: 335
 
@@ -1475,8 +1487,8 @@ Hand-written rows for common words the SOURCE LACKS, read by the build and never
 | | |
 |---|---|
 | shards | 26 (prefixes of up to 3 letters by koLexiconShardLetters; limit 600,000 bytes of JSON) |
-| shard bytes | 1.31 MB gzip, 5.4 MB plain |
-| largest shard | `ㅇ` 0.57 MB plain, 0.14 MB gzip |
-| core entries | 6,752 in 5,304 sets (4,110 also under a Hanja key); closed classes NP NR MM MAJ NNB XPN XSN XSV XSA and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
-| core bytes | 416,604 of rows, the file at most 420,000 bytes; forced by core-extra.json: 662 rows, 38,421 bytes (9.1 % of the budget); every field of a shard row is in the core row, `pron` included |
-| running words in the core | 73.9 % of the 308,335 counted morphemes of the classes the lexicon builds (94.6 % of the 240,739 the lexicon covers) have their headword in the core |
+| shard bytes | 1.32 MB gzip, 5.4 MB plain |
+| largest shard | `ㅇ` 0.58 MB plain, 0.14 MB gzip |
+| core entries | 6,414 in 5,022 sets (3,890 also under a Hanja key); closed classes NP NR MM MAJ NNB XPN XSN XSV XSA and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
+| core bytes | 416,661 of rows, the file at most 420,000 bytes; forced by core-extra.json: 662 rows, 39,221 bytes (9.3 % of the budget); every field of a shard row is in the core row, `pron` included |
+| running words in the core | 73.4 % of the 308,335 counted morphemes of the classes the lexicon builds (94.0 % of the 240,739 the lexicon covers) have their headword in the core |

@@ -139,6 +139,8 @@ const spellingCount = new Map<string, number>();
     if (r.glossOwn) e.glossOwn = true;
     if (r.own) e.own = true;
     if (r.bound) e.bound = true;
+    if (r.related) e.related = r.related;
+    if (r.hada) e.hada = true;
     if (r.hanja) e.hanja = r.hanja;
     if (r.pron) e.pron = r.pron;
     // the count is of the SPELLING: a main set gives it to the main entry only; a balanced set to EVERY entry (it orders stems, it does not choose
@@ -496,13 +498,23 @@ ${['그래서', '그러나', '그리고', '하지만', '그런데', '그러면',
 
 ${['그', '구', '분'].map((w) => `- ${w}: ${lexEntries.filter((e) => e.lemma === w && (e.tag === 'NP' || e.tag === 'NNB' || e.tag === 'NNG' || e.clf)).map((e) => `${e.tag}${e.clf ? ' clf' : ''}${e.hom ? sup(e.hom) : ''}${e.set ? ` [${e.set}]` : ''} "${e.gloss ?? ''}"`).join('; ')}`).join('\n')}
 
+## Dictionary labels (the card's short line)
+
+The card's short line is one flat list over the entries of the bare key. For a set with a MAIN entry the bare key holds only the main entry. For a BALANCED set each entry's first sense is prefixed (entry L), where L is the entry's homonym number through koEntryLabel (index-store.ts), the same rule the card uses: the source's number below 50, a letter for a number this product assigned (50 = a, 51 = b), x1, x2 for a supplement row (91 = x1). It is the identity number, not a position. When the bare key holds entries of more than one class (전 as noun, prefix, name, determiner) every entry's first sense also names its class: (noun), (prefix), (noun, entry 2).
+
+### Noun and root rows with \hada\
+
+${report.hada.total} rows (nouns and roots) have a verb or adjective X하다 built on them; ${report.hada.listedOnly.length} of them have no X하다 row of their own (the source's derived terms list it): ${report.hada.listedOnly.slice(0, 60).join(', ')}.
+
 ## Voice
 
-Note: in the real data a ko-verb-set names the causative as its 2nd argument and the passive as its 3rd (먹다 → 먹이다, 먹히다); the brief had them the other way round, and the data is followed.
+A row has a voice (and its base) when the entry itself says so in a sense (a gloss "causative of X" / "passive of X", or a form-of sense tagged causative or passive), or when a reviewed line of docs/korean/voice-decisions.json says Pass or Caus for a verb the source's ko-verb-set relates to a base. The set alone is etymological (지내다 "to spend (time), to get along" is related to 지나다, it is not called a causative), so a verb the review marks null, or leaves undecided, keeps only the field related, with no voice.
 
-- passive or causative verbs related by the source (own first sense, else a base verb's ko-verb-set when the target is the single kept verb of its spelling): ${report.voicePairs.length} (${report.voicePairs.filter((v) => v.via === 'own sense').length} by own sense, ${report.voicePairs.filter((v) => v.via === 'ko-verb-set').length} by verb set)
+- rows with a voice: ${lexEntries.filter((e) => e.voice).length} (${lexEntries.filter((e) => e.voice && !report.voicePairs.length).length ? '' : ''}${report.voiceDecided} of them settled by docs/korean/voice-decisions.json, the rest state it in their own senses): ${lexEntries.filter((e) => e.voice).slice(0, 20).map((e) => `${e.lemma}${e.hom ? sup(e.hom) : ''} ${e.voice} of ${e.base}`).join('; ')}
+- rows related only (voice decided null by the review, \`related\` kept): ${lexEntries.filter((e) => e.related && !e.voice).length}: ${lexEntries.filter((e) => e.related && !e.voice).slice(0, 20).map((e) => `${e.lemma}${e.hom ? sup(e.hom) : ''} ~ ${e.related}`).join('; ')}
+- related rows with NO decision line (undecided): ${report.voiceUndecided.length}${report.voiceUndecided.length ? ': ' + report.voiceUndecided.join('; ') : ''}
 - named both passive and causative of the same base (recorded as Pass): ${report.voiceBoth.join(', ') || '(none)'}
-- examples: ${report.voicePairs.slice(0, 25).map((v) => `${v.lemma} ${v.voice} of ${v.base}`).join('; ')}
+- 먹이다 / 보이다 / 열리다 / 끓이다 / 지내다: ${['먹이다', '보이다', '열리다', '끓이다', '지내다'].map((w) => `${w} ${lexEntries.filter((e) => e.lemma === w).map((e) => e.voice ? `voice ${e.voice}` : e.related ? `related ${e.related}` : 'none').join('/')}`).join('; ')}
 
 ## Glosses
 
@@ -576,7 +588,7 @@ if (WRITE) {
 import { koStemKey, type KoLexEntry, type KoLexicon, type KoIrregular, type KoTag } from '../index-store';
 import { koKey } from '../hangul';
 
-/** [lemma, tag, hom, irr, gloss, hanja, pron, n, voice, base, clf, set, glossOwn, own, bound], trailing empty fields left off. */
+/** [lemma, tag, hom, irr, gloss, hanja, pron, n, voice, base, clf, set, glossOwn, own, bound, related, hada], trailing empty fields left off. */
 const ROWS: Array<Array<string | number>> = [
 `;
   const footer = `];
@@ -597,6 +609,8 @@ function expand(): Record<string, KoLexEntry[]> {
     if (r[12]) e.glossOwn = true;
     if (r[13]) e.own = true;
     if (r[14]) e.bound = true;
+    if (r[15]) e.related = String(r[15]);
+    if (r[16]) e.hada = true;
     if (r[5]) e.hanja = String(r[5]);
     if (r[6]) e.pron = String(r[6]);
     if (r[7]) e.n = Number(r[7]);

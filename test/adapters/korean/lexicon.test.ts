@@ -8,10 +8,10 @@ import {
   koBuildRows, koCheckCoreExtra, koCompareRegistry, koDictionaryPlan, koPoliteBases, koSupplementEntries, koEntryGloss, koHomonymAliases, koIrregularClass, koNumberHomonyms, koRegularByShape, koSelectCore, koShortGloss, koSenseIsForm,
   type KoRaw, type KoRegistryRecord,
 } from '../../../src/dict/korean';
-import { koEntryLemma, koHomonymSetKey, koSharedPos } from '../../../src/adapters/korean/index-store';
+import { koEntryLabel, koEntryLemma, koHomonymSetKey, koSharedPos } from '../../../src/adapters/korean/index-store';
 
 const mk = (word: string, pos: string, over: Partial<KoRaw> = {}): KoRaw => ({
-  no: 1, word, pos, hanjaForms: [], infinitives: [], hangeul: [], senses: [{ glosses: ['x'], tags: [], formOf: [], altOf: [] }], suffixed: [], counterCat: false, depCat: false, ...over,
+  no: 1, word, pos, hanjaForms: [], infinitives: [], hangeul: [], relatedWords: [], senses: [{ glosses: ['x'], tags: [], formOf: [], altOf: [] }], suffixed: [], counterCat: false, depCat: false, ...over,
 });
 const sense = (g: string, extra: Partial<KoRaw['senses'][number]> = {}): KoRaw['senses'][number] => ({ glosses: [g], tags: [], formOf: [], altOf: [], ...extra });
 
@@ -295,8 +295,46 @@ describe('inflected forms, roots, bound allomorphs, tables', () => {
   });
 });
 
+describe('voice decisions', () => {
+  const src = [mk('열리다', 'verb', { no: 1, senses: [sense('to open')] }), mk('열다', 'verb', { no: 2, verbSet: ['열다', '', '열리다'], senses: [sense('to open (it)')] })];
+  const dec = (verbs: object[]) => ({ voiceDecisions: { verbs: verbs as never } });
+  it('sets voice and base from a reviewed line, and keeps related for a null', () => {
+    expect(koBuildRows(src).rows[0]).toMatchObject({ related: '열다' });
+    const a = koBuildRows(src, dec([{ lemma: '열리다', voice: 'Pass', base: '열다' }])).rows[0];
+    expect(a).toMatchObject({ voice: 'Pass', base: '열다' });
+    expect(a.related).toBeUndefined();
+    const b = koBuildRows(src, dec([{ lemma: '열리다', voice: null, base: '열다' }])).rows[0];
+    expect(b).toMatchObject({ related: '열다' });
+    expect(b.voice).toBeUndefined();
+    expect(koBuildRows(src).report.voiceUndecided).toEqual(['열리다 ~ 열다']);
+  });
+  it('fails, naming the line, on an unknown verb, a base the set does not give, a verb with no base, or a verb decided twice', () => {
+    expect(() => koBuildRows(src, dec([{ lemma: '닫히다', voice: 'Pass', base: '닫다' }]))).toThrow('verbs[0] (닫히다): no such verb row');
+    expect(() => koBuildRows(src, dec([{ lemma: '열리다', voice: 'Pass', base: '닫다' }]))).toThrow(/differs from the source's set/);
+    expect(() => koBuildRows(src, dec([{ lemma: '열다', voice: 'Caus', base: '열다' }]))).toThrow(/gives this verb no base/);
+    expect(() => koBuildRows(src, dec([{ lemma: '열리다', voice: 'Pass', base: '열다' }, { lemma: '열리다', voice: 'Pass', base: '열다' }]))).toThrow(/decided twice/);
+  });
+});
+
+describe('hada and entry labels', () => {
+  it('marks a noun or root with a 하다 verb of its own or one its entry lists', () => {
+    const { rows, report } = koBuildRows([
+      mk('공부', 'noun', { no: 1, senses: [sense('study')] }),
+      mk('공부하다', 'verb', { no: 2, senses: [sense('to study')] }),
+      mk('참고', 'noun', { no: 3, relatedWords: ['참고하다'], senses: [sense('reference')] }),
+      mk('책', 'noun', { no: 4, senses: [sense('book')] }),
+      mk('복잡', 'root', { no: 5, relatedWords: ['복잡하다'], senses: [sense('Root of 복잡하다')] }),
+    ]);
+    expect(rows.filter((r) => r.hada).map((r) => r.lemma)).toEqual(['공부', '참고', '복잡']);
+    expect(report.hada).toEqual({ total: 3, listedOnly: ['참고', '복잡'] });
+  });
+  it('labels an entry through koEntryLabel: the number below 50, a letter for an assigned one, x1 for a supplement', () => {
+    expect([1, 7, 49, 50, 51, 91, 92].map(koEntryLabel)).toEqual(['1', '7', '49', 'a', 'b', 'x1', 'x2']);
+  });
+});
+
 describe('the dictionary plan', () => {
-  it('puts a main entry first and labels the others; labels a balanced set; moves the overridden senses first', async () => {
+  it('keeps ONLY the main entry in the bare line of a main set; labels each entry of a balanced set; moves the overridden senses first', async () => {
     const dir = path.join(process.env.TEMP ?? '.', 'ko-plan-test');
     fs.mkdirSync(dir, { recursive: true });
     const line = (word: string, pos: string, etym: number, glosses: string[][]): string => JSON.stringify({ word, pos, lang_code: 'ko', etymology_number: String(etym), senses: glosses.map((g) => ({ glosses: g })) });
@@ -306,12 +344,13 @@ describe('the dictionary plan', () => {
     const plan = await koDictionaryPlan(file, docs);
     const mkE = (form: string, etymology: number | undefined, gloss: string[]) => ({ form, lang: 'ko' as never, pos: form === '위하다' ? ('VERB' as const) : form === '저' ? ('PRON' as const) : ('NOUN' as const), glosses: gloss, senses: gloss.map((g) => ({ gloss: g })), ...(etymology ? { etymology } : {}) });
     const out = plan.arrange([mkE('시간', 2, ['hardship']), mkE('시간', 1, ['time']), mkE('저', 2, ['I (polite)']), mkE('저', 1, ['that']), mkE('위하다', 1, ['to help', 'to do for the sake of'])]);
-    expect(out.map((e) => [e.form, e.etymology])).toEqual([['시간', 1], ['시간', 2], ['저', 1], ['저', 2], ['위하다', 1]]);
+    expect(out.map((e) => [e.form, e.etymology])).toEqual([['시간', 1], ['저', 1], ['저', 2], ['위하다', 1]]);
     expect(out[0].role).toBeUndefined();
-    expect(out[1].role).toMatch(/another entry of this spelling \(number 2\)/);
-    expect(out[2].role).toMatch(/one of several entries/);
-    expect(out[4].glosses[0]).toBe('to do for the sake of');
-    expect(out[4].senses![0].gloss).toBe('to do for the sake of');
+    expect(out[1].role).toMatch(/one of several entries/);
+    expect(out[1].glosses[0]).toBe('(entry 1) that');
+    expect(out[2].glosses[0]).toBe('(entry 2) I (polite)');
+    expect(out[3].glosses[0]).toBe('to do for the sake of');
+    expect(out[3].senses![0].gloss).toBe('to do for the sake of');
     expect(plan.homByLine.get(1)).toBe(1);
   });
 });
@@ -346,8 +385,10 @@ describe('voice', () => {
       mk('들리다', 'verb', { no: 5, etym: '3', senses: [sense('to be haunted')] }),
     ]);
     const by = (l: string, h?: number) => rows.find((r) => r.lemma === l && r.hom === h)!;
-    expect(by('먹이다')).toMatchObject({ voice: 'Caus', base: '먹다' });
-    expect(by('먹히다')).toMatchObject({ voice: 'Pass', base: '먹다' });
+    expect(by('먹이다')).toMatchObject({ related: '먹다' });
+    expect(by('먹이다').voice).toBeUndefined();
+    expect(by('먹히다')).toMatchObject({ related: '먹다' });
+    expect(by('먹히다').voice).toBeUndefined();
     expect(by('들리다', 1)).toMatchObject({ voice: 'Pass', base: '듣다', gloss: 'to be heard' });
     expect(by('들리다', 3).voice).toBeUndefined();
   });
@@ -536,7 +577,7 @@ describe.skipIf(!built)('the real lexicon', () => {
 
   it('holds every member of a homonym set of the core, or none', () => {
     const sets = new Map<string, number>();
-    for (const [key, rows] of Object.entries(KO_CORE_REAL.entries)) for (const e of rows) if (koStemKey(e.lemma, e.tag) === key) sets.set(`${e.lemma} ${e.tag}`, (sets.get(`${e.lemma} ${e.tag}`) ?? 0) + 1);
+    for (const [key, rows] of Object.entries(KO_CORE_REAL.entries)) for (const e of rows) if (koStemKey(e.lemma, e.tag) === key) sets.set(`${e.lemma}\u0000${e.tag}`, (sets.get(`${e.lemma}\u0000${e.tag}`) ?? 0) + 1);
     for (const [k, n] of sets) {
       const [lemma, tag] = k.split('\u0000');
       const full = (byKey.get(koStemKey(lemma, tag)) ?? []).filter((x) => x.lemma === lemma && x.tag === tag).length;
@@ -563,6 +604,33 @@ describe.skipIf(!built)('the real lexicon', () => {
     }
     for (const id of installedKoreanLexicons()) uninstallKoreanLexicon(id.split('#')[0]);
   });
+});
+
+describe.skipIf(!fs.existsSync(DICT) || !built)('the real dictionary: the bare line of a main set', () => {
+  it('holds no sense of an other entry of the set, which stays reachable under its numbered key', async () => {
+    const { bucketOf, shardName } = await import('../../../src/dict/format');
+    const { koHomonymLemma } = await import('../../../src/adapters/korean/index-store');
+    const dir = path.dirname(DICT);
+    const m = JSON.parse(fs.readFileSync(DICT, 'utf8')) as { buckets: number };
+    const cache = new Map<string, Record<string, Array<{ p?: string; s?: Array<{ g: string }> }>>>();
+    const get = (form: string) => { const file = path.join(dir, shardName(bucketOf(form, m.buckets), m.buckets)); let j = cache.get(file); if (!j) { j = JSON.parse(fs.readFileSync(file, 'utf8')) as never; cache.set(file, j!); } return j![form] ?? []; };
+    const others = [...byKey.values()].flat().filter((e) => e.set === 'other' && e.hom !== undefined && !e.own);
+    expect(others.length).toBeGreaterThan(300);
+    let leaks = 0; let checked = 0;
+    for (const o of others) {
+      const pos = koSharedPos(o);
+      const own = get(koHomonymLemma(o.lemma, o.hom)).filter((e) => e.p === pos).flatMap((e) => (e.s ?? []).map((x) => x.g));
+      if (!own.length) continue; // a numbered entry the mapper gives another part of speech
+      checked++;
+      const bare = get(o.lemma).filter((e) => e.p === pos).flatMap((e) => (e.s ?? []).map((x) => x.g));
+      if (own.some((g) => bare.includes(g))) leaks++;
+    }
+    expect(leaks).toBe(0);
+    expect(checked).toBeGreaterThan(300);
+    const eye = get('눈').filter((e) => e.p === 'NOUN').map((e) => e.s?.[0]?.g ?? '');
+    expect(eye.some((g) => /^\((?:noun, )?entry 1\) /.test(g))).toBe(true);
+    expect(eye.some((g) => /^\((?:noun, )?entry 2\) /.test(g))).toBe(true);
+  }, 120_000);
 });
 
 describe.skipIf(!fs.existsSync(path.resolve('public/dict/ko/full/manifest.json')) || !built)('the real full dictionary', () => {

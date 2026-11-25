@@ -38,6 +38,20 @@ export function lemmaHomonymNumber(language: string | undefined, lemma: string):
 }
 
 /**
+ * The label to show for a Korean homonym ("entry 2"), or undefined when the lemma carries no number. A number the dictionary source gives
+ * (below 50) is shown as it is; one this product assigned (50 to 89) as a letter, a supplement row's (90 and up) as x1, x2 …: the same rule
+ * as the dictionary line's own labels (src/adapters/korean/index-store.ts `koEntryLabel`; a test keeps the two equal), so the card and the
+ * dictionary never name one entry two ways and an internal number is never printed.
+ */
+export function lemmaEntryLabel(language: string | undefined, lemma: string): string | undefined {
+  const n = lemmaHomonymNumber(language, lemma);
+  if (n === undefined) return undefined;
+  if (n < 50) return String(n);
+  if (n < 90) return String.fromCharCode(97 + ((n - 50) % 26));
+  return `x${n - 90}`;
+}
+
+/**
  * The key to ask a dictionary for a lemma: the lemma as it is. A Korean homonym is filed under its numbered headword as well as under
  * the bare one, so 눈² finds snow ALONE; the bare headword is deliberately NOT a fallback for a numbered lemma, because it holds every
  * homonym and a reader taking the first record would show another word's meaning (the fault the numbering exists to prevent). A bare

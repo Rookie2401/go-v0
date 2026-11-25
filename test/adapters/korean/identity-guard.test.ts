@@ -8,7 +8,8 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { koBareLemma, koEntryLemma, koHomonymLemma, koHomonymNumber } from '../../../src/adapters/korean/index-store';
+import { koBareLemma, koEntryLabel, koEntryLemma, koHomonymLemma, koHomonymNumber } from '../../../src/adapters/korean/index-store';
+import { lemmaEntryLabel } from '../../../packages/repository-contract/src';
 
 const ROOT = join(__dirname, '..', '..', '..');
 const ALLOWED = new Set(['packages/repository-service/src/crypto-node.ts']);
@@ -41,6 +42,16 @@ describe('a homonym number survives every path a lemma takes', () => {
     expect(koEntryLemma({ lemma: '시간', hom: 3, set: 'other' })).toBe('시간³');
     expect(koEntryLemma({ lemma: '눈', hom: 2, set: 'balanced' })).toBe('눈²');
     expect(koEntryLemma({ lemma: '학교' })).toBe('학교');
+  });
+
+  it('the card and the dictionary line label one entry the same way, and never print an internal number', () => {
+    for (let n = 1; n <= 120; n++) expect(lemmaEntryLabel('ko', koHomonymLemma('가락', n)), String(n)).toBe(koEntryLabel(n));
+    expect(koEntryLabel(2)).toBe('2');
+    expect(koEntryLabel(50)).toBe('a');
+    expect(koEntryLabel(51)).toBe('b');
+    expect(koEntryLabel(91)).toBe('x1');
+    expect(lemmaEntryLabel('ko', '눈')).toBeUndefined();
+    expect(lemmaEntryLabel('de', 'm²')).toBeUndefined();
   });
 
   it('no source file but the password hash uses compatibility normalisation', () => {

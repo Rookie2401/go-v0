@@ -46,6 +46,10 @@ export interface KoLexEntry {
   /** A derived passive or causative verb, as the source relates it (보이다 from 보다): its voice and its base verb's headword. */
   voice?: 'Pass' | 'Caus';
   base?: string;
+  /** A verb the source's set relates this one to, historically; not a statement that it is its passive or causative. */
+  related?: string;
+  /** The lexicon holds, or the source's entry names, the verb or adjective X하다 built on this noun: the analyser may read X + 하고 as that predicate. */
+  hada?: true;
   /** Conjugation class of a predicate. Absent: the source gives no conjugation table for it (the analyser then tries what the stem's shape allows and says so). */
   irr?: KoIrregular;
   /** First gloss of the first sense, at most 80 characters. */
@@ -147,6 +151,18 @@ const SUPERSCRIPT_RUN = /[⁰¹²³⁴-⁹]+$/u;
 export function koHomonymLemma(lemma: string, n: number | undefined): string {
   if (!n || n < 1 || !Number.isInteger(n)) return lemma;
   return lemma + String(n).split('').map((d) => SUPERSCRIPT[Number(d)]).join('');
+}
+
+/**
+ * The label a person sees for a homonym number ("entry 2"). A number the SOURCE gives (below 50) is shown as it is, as dictionaries print
+ * it; a number this product assigned because the source gives none (50 to 89) is shown as a letter (50 = a), and a supplement row's
+ * (90 and up) as x1, x2 …, so an internal number such as 51 or 91 is never printed. The card (repository-contract lemma-display.ts
+ * `lemmaEntryLabel`) and the dictionary line (src/dict/korean.ts) both use this rule; a test keeps the two functions equal.
+ */
+export function koEntryLabel(n: number): string {
+  if (n < 50) return String(n);
+  if (n < 90) return String.fromCharCode(97 + ((n - 50) % 26));
+  return `x${n - 90}`;
 }
 
 /** The headword as written, without a homonym number: what is spoken, searched and looked up as a spelling. */

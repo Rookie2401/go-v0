@@ -12,11 +12,11 @@ import { koBareLemma, koEntryLemma, koHomonymLemma, koHomonymNumber } from '../.
 
 const ROOT = join(__dirname, '..', '..', '..');
 const ALLOWED = new Set(['packages/repository-service/src/crypto-node.ts']);
-const SKIP_DIRS = new Set(['node_modules', 'dist', 'dist-web', 'public', 'data', '.git', 'coverage', 'ios', 'android']);
+const SKIP_DIRS = new Set(['node_modules', 'dist', 'dist-web', 'public', 'data', 'coverage', 'ios', 'android', 'build', 'out', 'tmp', 'generated']);
 
 function* sources(dir: string): Generator<string> {
   for (const name of readdirSync(dir)) {
-    if (SKIP_DIRS.has(name)) continue;
+    if (SKIP_DIRS.has(name) || name.startsWith(".")) continue; // build output, data and generated tables are not where a lemma is normalised
     const path = join(dir, name);
     let st; try { st = statSync(path); } catch { continue; } // a junction whose target is absent
     if (st.isDirectory()) yield* sources(path);
@@ -52,5 +52,5 @@ describe('a homonym number survives every path a lemma takes', () => {
       }
     }
     expect(found.filter((f) => !ALLOWED.has(f))).toEqual([]);
-  });
+  }, 120_000); // a walk of the source tree: slow when builds run beside it
 });

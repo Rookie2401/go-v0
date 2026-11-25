@@ -27,6 +27,7 @@ import {
 } from './build';
 import { latinNormalize } from './latin-normalize';
 import { hebrewAliases, hebrewSpellingEntry } from './hebrew';
+import { koHomonymAliases, koHomonymLines, koSupplementEntries } from './korean';
 import { loadAdapterNormalizer } from './adapter-normalize-node';
 import { SHARD_FILE, bucketOf, shardName, type DictionaryManifest } from './format';
 
@@ -103,6 +104,8 @@ export async function buildDictionaryFile(opts: BuildFileOptions): Promise<Build
   const stats = newBuildStats();
   const labelSets = createLabelSetRegistry();
   const drop = dropsFormPronunciations({ lang: opts.lang, dropFormPronunciations: opts.dropFormPronunciations });
+  // a Korean homonym (눈¹ 눈² 눈³) is also filed under its numbered headword, the numbers being the lexicon's (korean.ts)
+  const koHom = opts.lang === ('ko' as LanguageCode) ? await koHomonymLines(opts.input) : undefined;
   const ingest = createLineIngestor({ lang: opts.lang, normalize, dropFormPronunciations: opts.dropFormPronunciations }, stats, labelSets);
   const spillDir = fs.mkdtempSync(path.join(opts.tmpDir ?? os.tmpdir(), 'go-dict-spill-'));
   const spill = createSpill(spillDir);
@@ -123,13 +126,17 @@ export async function buildDictionaryFile(opts: BuildFileOptions): Promise<Build
       // a Latin headword also gets its other printed spellings; a Hebrew one its pointed spelling and headword-line forms (hebrew.ts)
       const hebrew = opts.lang === ('he' as LanguageCode) ? hebrewAliases(line, mapped, normalize) : [];
       if (hebrew.length) stats.aliases = (stats.aliases ?? 0) + hebrew.length;
-      for (const entry of [...withAliases(mapped, opts, stats), ...hebrew]) {
+      const korean = koHom ? koHomonymAliases(koHom, lines, mapped) : [];
+      if (korean.length) stats.aliases = (stats.aliases ?? 0) + korean.length;
+      for (const entry of [...withAliases(mapped, opts, stats), ...hebrew, ...korean]) {
         for (const f of entry.formOf ?? []) if (entry !== mapped) labelSets.note(f.tags);
         estimate += estimateBytes(entry, entryJson(shardShape(entry, drop), labelSets.provisional));
         // The spill is this process's own temporary file: the mapped entry as it is, read back with JSON.parse.
         spill.add(bucketOf(entry.form, SPILL_PARTITIONS), JSON.stringify(entry));
       }
     }
+    // the hand-written Korean supplement: the meanings of common words the source lacks, labelled as this product's wording (korean.ts)
+    if (opts.lang === ('ko' as LanguageCode)) for (const entry of koSupplementEntries()) { estimate += estimateBytes(entry, entryJson(shardShape(entry, drop), labelSets.provisional)); spill.add(bucketOf(entry.form, SPILL_PARTITIONS), JSON.stringify(entry)); }
     spill.close();
     const source: NonNullable<DictionaryInfo['source']> = {
       ...(opts.source?.url ? { url: opts.source.url } : {}),

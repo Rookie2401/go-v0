@@ -49,11 +49,15 @@ export interface KoLexEntry {
   irr?: KoIrregular;
   /** First gloss of the first sense, at most 80 characters. */
   gloss?: string;
+  /** The gloss is this product's wording, not the source's. */
+  glossOwn?: true;
+  /** The whole entry is this product's (docs/korean/lexicon-supplement.json), not the source's; a card's source line says so. */
+  own?: true;
   /** Hanja of a Sino-Korean word, when the source states it. */
   hanja?: string;
   /** The source's own pronunciation respelling in Hangul, when it gives one (먹따). */
   pron?: string;
-  /** Occurrences in the priors corpus (KO_SOURCE_IDS.priors); absent or 0 when unseen. */
+  /** Count of the SPELLING in the priors corpus (KO_SOURCE_IDS.priors); absent or 0 when unseen. Every entry of a balanced set carries the spelling's count, so it is never summed over rows. */
   n?: number;
 }
 

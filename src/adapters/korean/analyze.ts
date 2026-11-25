@@ -820,6 +820,11 @@ function computeMorph(r: Reading): Record<string, string> {
   return out;
 }
 
+/** Does this reading need two or more words written as one (an adnominal + a bound noun, a verb + an auxiliary, the unspaced fallback)? */
+function koNeedsSpacing(r: Reading): boolean {
+  return !!r.notes.spacing || r.remarks.some((x) => /written as one word|without the spaces/u.test(x)) || r.parts.some((p) => p.tag === 'VX' && p.kind === 'component');
+}
+
 // ───────────────────────────── homonyms ─────────────────────────────
 
 const sig = (r: Reading): string => r.parts.slice(1).map((p) => `${p.ending?.id ?? p.particle?.id ?? p.lemma}:${p.text}:${p.js}:${p.je}`).join('|') + `#${r.parts[0]?.je ?? 0}`;
@@ -865,7 +870,8 @@ function resolveHomonyms(readings: Reading[]): Reading[] {
           notes: { ...best.notes, homonym: 'undecided', homonyms: byNumber.map((e) => `${koEntryLemma(e)} ${e.gloss ?? ''}`.trim()).join(' | ') },
           parts: best.parts.map((p, i) => (i === 0 && p.kind === 'stem' ? { ...p, lemma: best.entry!.lemma } : p)),
         });
-        // numbered readings, in the lexicon's order (count, then number)
+        // numbered readings, in the lexicon's order (count, then number); a spacing reading keeps only the undecided one
+        if (rs.every(koNeedsSpacing)) continue;
         for (const r of rs) { const idx = entries.findIndex((e) => e.hom === r.entry!.hom); out.push({ ...r, cap: Math.min(r.cap, CAP.numbered - 0.01 * idx), score: r.score - 100 }); }
       }
     }
@@ -1060,6 +1066,10 @@ function analyzeUncached(surface: string, ctx: { prevKey?: string; prevIsLatinOr
   const hasXsn = (r: Reading) => r.parts.some((x) => x.tag === 'XSN' && !x.particle);
   if (readings.some((r) => !hasXsn(r) && !r.unconfirmed && r.cap >= CAP.assumed)) for (let i = readings.length - 1; i >= 0; i--) if (hasXsn(readings[i])) readings.splice(i, 1);
   if (!readings.length) readings.push(...spacingReadings(c));
+  // a reading that needs nonstandard spacing (adnominal + bound noun, verb + auxiliary written together, the unspaced fallback) is offered
+  // only when no ordinary confirmed analysis reads the token (a name does not count as one against verb + auxiliary: 해주는)
+  const ordinary = readings.some((r) => !koNeedsSpacing(r) && !r.unconfirmed && r.cap >= CAP.assumed && r.stemTag !== 'NNP');
+  if (ordinary) for (let i = readings.length - 1; i >= 0; i--) if (koNeedsSpacing(readings[i])) readings.splice(i, 1);
   const resolved = resolveHomonyms(readings);
   // an auxiliary reading stands below its main verb (the sentence layer promotes it after -아/어, -고, -지 …)
   for (const r of resolved) if (r.stemTag === 'VX' && resolved.some((o) => o.stemTag !== 'VX' && !o.unconfirmed && (o.entry || o.parts.some((x) => x.particle)))) r.cap = Math.min(r.cap, 0.7);

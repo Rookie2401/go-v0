@@ -92,6 +92,8 @@ export interface RepositoryApi {
   syncPull(req: SyncPullRequest): Promise<ApiResult<SyncPullResponse>>;
   exportAll(): Promise<ApiResult<Record<string, unknown>>>;
   putTombstone(scope: Tombstone['scope'], reason?: string): Promise<ApiResult<{ tombstone: Tombstone; applied?: { events: number; knowledge: number } }>>;
+  /** The learner's deletion instructions (2026-11-17). A service older than that answers 404: the caller then does not know what was deleted. */
+  listTombstones(): Promise<ApiResult<{ tombstones: Tombstone[] }>>;
 }
 
 export interface ApiOptions { baseUrl: string; fetch: typeof fetch; token?: string }
@@ -105,7 +107,9 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
   const VALIDATED_MAX = 32;
 
   async function call<T>(method: string, path: string, body?: unknown, query?: Record<string, string | number | undefined>): Promise<ApiResult<T>> {
-    const qs = query ? Object.entries(query).filter(([, v]) => v !== undefined && v !== '').map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`).join('&') : '';
+    // null is left out as undefined is (2026-11-18): an argument that crossed extension messaging (JSON) arrives as null, and GoReview inside
+    // the extension asked for /candidates?after=null, which the service refused (422), so no card was ever built there
+    const qs = query ? Object.entries(query).filter(([, v]) => v !== undefined && v !== null && v !== '').map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`).join('&') : '';
     const headers: Record<string, string> = {};
     if (self.token) headers.Authorization = `Bearer ${self.token}`;
     if (body !== undefined) headers['Content-Type'] = 'application/json';
@@ -179,6 +183,7 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
     syncPull: (req) => call('POST', '/sync/pull', req),
     exportAll: () => call('GET', '/export'),
     putTombstone: (scope, reason) => call('POST', '/tombstones', { scope, ...(reason !== undefined ? { reason } : {}) }),
+    listTombstones: () => call('GET', '/tombstones'),
   };
   return api;
 }

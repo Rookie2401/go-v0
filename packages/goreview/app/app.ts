@@ -17,6 +17,7 @@
  */
 import { append, clear, h, p } from './dom';
 import { languageName } from './format';
+import { enrolmentName } from './enrolmentName';
 import { createContext, type AppContext, type Mode, type SyncView } from './context';
 import type { Deps } from './ports';
 import * as legalScreen from './screens/legal';
@@ -235,24 +236,11 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     if (id) void flushTermsAcceptance(ctx);
     clear(langWrap);
     if (list.length) {
-      // a quiet kicker: the language's name only; a select (same quiet style, a tiny arrow) only when there is more than one to choose from
-      const nameOf = (e: (typeof list)[number]): string => {
-        const sameLanguage = list.filter((x) => x.languageId === e.languageId).length > 1;
-        return languageName(e.languageId) + (sameLanguage && e.varietyId ? ` (${e.varietyId})` : '');
-      };
+      // a quiet kicker: the language's name only. Choosing, switching and adding a language live on the Account page, beside the Settings cog
+      // (the owner, 2026-11-18: "move the Choose your language from the dropdown to the Your Account option"); the home only says which it is
       const current = list.find((e) => e.enrolmentId === id?.enrolmentId) ?? list[0];
       const tip = id?.chosenBy === 'recent-reading' ? `${languageName(current.languageId)}: the language you read most recently` : `${languageName(current.languageId)}${current.varietyId ? ` (${current.varietyId})` : ''}`;
-      if (list.length > 1) {
-        const select = h('select', { id: 'language-select', name: 'language', class: 'language-kicker', 'aria-label': 'Language', title: tip },
-          ...list.map((e) => h('option', { value: e.enrolmentId, ...(id?.enrolmentId === e.enrolmentId ? { selected: true } : {}) }, nameOf(e)))) as HTMLSelectElement;
-        select.value = id?.enrolmentId ?? list[0].enrolmentId;
-        select.addEventListener('change', () => { void switchLanguage(select.value); });
-        langWrap.append(h('span', { class: 'language-picker' }, select, h('span', { class: 'language-caret', 'aria-hidden': 'true' }, '▾')));
-      } else {
-        langWrap.append(h('span', { id: 'language-name', class: 'language-kicker', title: tip }, nameOf(current)));
-      }
-      // another language is started here too, without GoLearn (2026-11-17)
-      langWrap.append(h('a', { href: '#/setup', id: 'add-language', class: 'language-add', 'aria-label': 'Add a language', title: 'Add a language' }, '+'));
+      langWrap.append(h('span', { id: 'language-name', class: 'language-kicker', title: tip, 'data-enrolment': current.enrolmentId }, enrolmentName(current, list)));
     }
     paintSync(await ctx.syncView(), mode);
     // the account is offered any time, never required
@@ -272,18 +260,6 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     catch {
       if (!destroyed) { syncEl.textContent = 'Account status could not be loaded'; syncEl.setAttribute('data-kind', 'error'); syncEl.classList.remove('sr'); }
     }
-  }
-
-  async function switchLanguage(enrolmentId: string): Promise<void> {
-    const ok = await ctx.setLanguage(enrolmentId);
-    if (!ok) return;
-    // the deck of the other language is folded afresh from the same local log
-    const top = route.split('/')[0];
-    if (top === 'review' || top === 'tell' || top === 'vocabulary') {
-      if (win.location.hash !== `#/${top}`) win.location.hash = `#/${top}`;
-      renderDone = show(top, []);
-      await renderDone;
-    } else await safeRefreshHeader();
   }
 
   const offSync = ctx.onSync((v) => { void ctx.mode().then((m) => { if (!destroyed) paintSync(v, m); }); });
@@ -336,11 +312,17 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const session = review && subs[0] === 'session';
     // the sign-in page wears the home's hero (the owner, 2026-11-17): the Earth (welcomePhoto), "Welcome" between gold rules, the GoReview title
     const welcome = def.id === 'signin';
-    const hero = home || session || welcome
+    // Account and the language list wear it too (the owner, 2026-11-18: "in line with the design philosophy of the homescreen"): a kicker between
+    // gold rules (what the page is for), the title, the photo of the language being reviewed (the Earth when there is none yet)
+    const hub = def.id === 'account' || def.id === 'setup';
+    const hubKicker = def.id === 'account' ? 'Your account' : 'Choose your language';
+    const hubTitle = def.id === 'account' ? 'Account' : 'Languages';
+    const hero = home || session || welcome || hub
       ? h('div', { class: 'home-hero' },
           home ? h('div', { class: 'home-language', id: 'home-language' }) : null,
           welcome ? h('div', { class: 'home-language', id: 'signin-welcome' }, h('div', { class: 'language' }, h('span', { class: 'language-kicker' }, 'Welcome'))) : null,
-          h('h1', { class: 'home-title' }, welcome ? brand : def.title))
+          hub ? h('div', { class: 'home-language', id: `${def.id}-kicker` }, h('div', { class: 'language' }, h('span', { class: 'language-kicker' }, hubKicker))) : null,
+          h('h1', { class: 'home-title' }, welcome ? brand : hub ? hubTitle : def.title))
       : undefined;
     main.append(hero ?? h('h1', { class: review ? 'sr' : def.id === 'settings' ? 'settings-title' : undefined }, def.title), body);
     placeLanguage();
@@ -357,7 +339,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     if (my !== seq) return;
     if (idn) main.setAttribute('data-language', idn.varietyId ?? idn.languageId); else main.removeAttribute('data-language');
     const photoLanguage = (session ? ctx.run.active?.ctx.languageId : undefined) ?? idn?.languageId;
-    const photo = hero && welcome ? welcomePhoto() : hero && photoLanguage ? homePhoto(photoLanguage) : undefined;
+    const photo = hero && welcome ? welcomePhoto() : hero && photoLanguage ? homePhoto(photoLanguage) ?? (hub ? welcomePhoto() : undefined) : hero && hub ? welcomePhoto() : undefined;
     if (hero && photo) {
       main.dataset.homePhoto = photo.id;
       hero.style.setProperty('--home-photo-image', `url("${photo.image}")`);

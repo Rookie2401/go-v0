@@ -18,6 +18,7 @@ import type { RepositoryApi } from '../../repository-service/src/api';
 import type { DeckItem } from '../src/types';
 import type { ExerciseReadiness, ExerciseReadinessRequest, ItemControl, RecoveryRequest, ReviewEngine } from './ports';
 import { alphabetFacts } from './alphabetDeck';
+import { sprintFacts } from './alphabetSprint';
 import { classFacts, isClassUnit } from './classEssentials';
 import { recoverCandidates } from './recoveredCandidates';
 import { createReviewEligibilityContext } from '../src/planner/eligibility';
@@ -182,7 +183,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   const warmFacts = new WeakMap<RepositoryApi, Map<string, { at: number; facts: Awaited<ReturnType<FactsProvider['factsFor']>> }>>();
   const stagedFacts = new WeakMap<RepositoryApi, Map<string, { at: number; facts: Awaited<ReturnType<FactsProvider['factsFor']>> }>>();
   /** Class Essentials phrases and Alphabet letters are answered from their decks' own tables; every other unit goes to the pack, as before. */
-  const withClass = (base: FactsProvider): FactsProvider => ({ ...base, factsFor: async (unitId, languageId, varietyId) => (isClassUnit(unitId) ? classFacts(unitId, languageId) ?? alphabetFacts(unitId, languageId) : base.factsFor(unitId, languageId, varietyId)) });
+  const withClass = (base: FactsProvider): FactsProvider => ({ ...base, factsFor: async (unitId, languageId, varietyId) => (isClassUnit(unitId) ? classFacts(unitId, languageId) ?? (await sprintFacts(unitId, languageId).catch(() => undefined)) ?? alphabetFacts(unitId, languageId) : base.factsFor(unitId, languageId, varietyId)) });
   const factsOf = (languageId: string, api: RepositoryApi): FactsProvider => withClass(packFactsOf(languageId, api));
   const packFactsOf = (languageId: string, api: RepositoryApi): FactsProvider => {
     let byLanguage = providers.get(api);

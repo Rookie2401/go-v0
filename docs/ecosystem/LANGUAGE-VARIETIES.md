@@ -261,6 +261,15 @@ Albanian (sq)
 - From there everything is the framework's: knowledge per dialect (section 4), a card per dialect (section 3), a queue of one dialect
   by default — the enrolment's, which for every existing Albanian learner is Standard (section 6). A word met only in Gheg text is
   not proposed in the Standard queue; a learner who chooses Gheg, or both, gets it.
+- **Dialects with a shared core** (`LanguageVarieties.sharedCore`, set for Albanian only; `hasSharedCore`, `textVarietyOf`). Greek
+  and Hebrew varieties are periods: an unclassified record there is a record of UNKNOWN variety. An unclassified Albanian record is
+  different in kind: its sentence held no form that differs, so its words were met as both dialects write them. Two consequences,
+  both in Reading Analysis (`docs/ecosystem/READING-ANALYSIS.md`), which is the one reader that treats an unclassified record as
+  uncredited: an Albanian page nobody stated a dialect for is read in the default, Standard (Greek and Hebrew still require the
+  variety to be said), and a word Known on unassigned records is credited as Known. The popup asks nothing for Albanian and its
+  figure reads as before ("62% Known"); a page read as Gheg says "Known in Gheg". A word Known only from sentences recognised as
+  Gheg is not counted on a Standard page. Without this rule Reading Analysis would have refused every ordinary Albanian page and
+  credited none of an Albanian learner's existing words (found when this branch met master 22be2d7e).
 - **Existing Albanian data**: no event is rewritten. No stored Albanian record states a dialect, so every existing row reads as
   unsettled (as it was) and every existing card stays in the default queue with its id, history and schedule (section 8). The
   projection version does not move: an Albanian row gains its per-dialect fields when the next event touches its word, because a

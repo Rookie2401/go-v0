@@ -47,20 +47,35 @@ export interface SyncServiceOptions {
   session: SessionManager;
   deviceId: () => Promise<string>;
   now?: () => number;
-  /** Called after a successful sync round (the profile cache refresh). */
-  onSynced?: () => Promise<void> | void;
+  /** Called after a successful sync round (the profile cache refresh). `pulled`: how many events recorded by the learner's OTHER devices the round's pull received. */
+  onSynced?: (round: { pulled: number }) => Promise<void> | void;
   timers?: { set(fn: () => void, ms: number): unknown; clear(handle: unknown): void };
   /** The worker's shared keep-alive hold (localRepo.ts `createWorkerHold`): held for the length of a round, so a long first pull is not cut off by the browser's 30 s idle limit. */
   hold?: () => () => void;
 }
 
-/** The extension keeps no copy of other devices' events (knowledge comes from the Repository's projection); pulled events are counted and dropped. */
-const discardLog: EventLog = {
-  append: async (_learnerId, events: GoEvent[]) => events.map((e) => ({ id: e.id, stored: true as const })) as Awaited<ReturnType<EventLog['append']>>,
-  list: async () => [],
-  get: async () => undefined,
-  head: async () => 0,
-};
+/**
+ * The sync client keeps no copy of pulled events: they are counted and dropped. The service's pull returns this device's own events too, so the
+ * count that matters is of the events ANOTHER device recorded (`foreign`): those are what the device's own Repository does not hold yet, and the
+ * worker brings them in with its own pull when there are any (core.ts `onSynced`, localRepo `catchUp`).
+ */
+function createDiscardLog(mine: () => string | undefined): { log: EventLog; takeForeign(): number } {
+  let foreign = 0;
+  return {
+    log: {
+      append: async (_learnerId, events: GoEvent[]) => {
+        const me = mine();
+        // the service's own events (an enrolment it made) are not the learner's history and are never pulled into the device's Repository
+        foreign += events.filter((e) => e.producer?.app !== 'repository' && (!me || e.producer?.deviceId !== me)).length;
+        return events.map((e) => ({ id: e.id, stored: true as const })) as Awaited<ReturnType<EventLog['append']>>;
+      },
+      list: async () => [],
+      get: async () => undefined,
+      head: async () => 0,
+    },
+    takeForeign: () => { const n = foreign; foreign = 0; return n; },
+  };
+}
 
 export function createSyncService(opts: SyncServiceOptions) {
   const now = opts.now ?? Date.now;
@@ -74,6 +89,8 @@ export function createSyncService(opts: SyncServiceOptions) {
   };
 
   let client: SyncClient | undefined;
+  let myDevice: string | undefined;
+  const discard = createDiscardLog(() => myDevice);
   let persisted: Persisted | undefined;
   let debounce: unknown;
   let online = true;
@@ -113,7 +130,8 @@ export function createSyncService(opts: SyncServiceOptions) {
   async function getClient(): Promise<SyncClient> {
     if (client) return client;
     const deviceId = await opts.deviceId();
-    client = createSyncClient({ queue: syncable, local: discardLog, transport, deviceId, now, pullLimit: PULL_PAGE, backoff: { baseMs: 2_000, maxMs: RETRY_MAX_MS, factor: 2, jitter: 0.5 } });
+    myDevice = deviceId;
+    client = createSyncClient({ queue: syncable, local: discard.log, transport, deviceId, now, pullLimit: PULL_PAGE, backoff: { baseMs: 2_000, maxMs: RETRY_MAX_MS, factor: 2, jitter: 0.5 } });
     client.setOnline(online);
     return client;
   }
@@ -163,7 +181,7 @@ export function createSyncService(opts: SyncServiceOptions) {
       if (r.ok) {
         failureStreak = 0;
         await save({ lastPushAt: st.lastPushAt ?? now(), lastError: undefined });
-        try { await opts.onSynced?.(); } catch { /* a cache refresh must not fail a sync */ }
+        try { await opts.onSynced?.({ pulled: discard.takeForeign() }); } catch { /* a cache refresh must not fail a sync */ }
         return { ok: true };
       }
       // the transport throws UnauthorizedError; the client keeps only its message

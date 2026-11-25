@@ -14,6 +14,9 @@ import { buildSelectionEvent, encounterVariety, PENDING_IDENTITY } from '../../p
 import { parseSelection, registerAnalyser } from '../../packages/golearn-extension/src/parser';
 import { sqAdapter } from '../../src/adapters/sq';
 import { resolveScope } from '../../packages/goreview/src/scheduler/scope';
+import { classifyWord } from '../../packages/golearn-extension/src/reading/classify';
+import { presentResult } from '../../packages/golearn-extension/src/reading/present';
+import { hasSharedCore, textVarietyOf } from '../../packages/repository-contract/src';
 import { cardAdded, cardReviewed, day, knowledgeOf, lookup, mark, met } from './helpers';
 
 const LIBER = 'lemma:sq:libër:NOUN';
@@ -142,5 +145,51 @@ describe('review identity and scope', () => {
     expect(resolveScope({ languageId: 'sq', enrolmentVarietyId: 'sq-standard' })).toMatchObject({ varietyIds: ['sq-standard'] });
     expect(resolveScope({ languageId: 'sq', chosen: { varietyIds: ['aln'] } })).toMatchObject({ varietyIds: ['sq-gheg'] });
     expect(resolveScope({ languageId: 'sq', chosen: { varietyIds: ['sq-standard', 'sq-gheg'] } })?.varietyIds).toEqual(['sq-standard', 'sq-gheg']);
+  });
+});
+
+describe('dialects with a shared core: what nobody assigned still counts, and an undeclared text is read in the standard', () => {
+  const LOGOS = 'lemma:el:λόγος:NOUN';
+  const rowsOf = (events: ReturnType<typeof met>) => { const rows = new Map(knowledgeOf(events).map((r) => [r.unitId, r])); return (id: string) => rows.get(id); };
+  /** Known on a record no variety claims: a lookup with only the enrolment's default behind it, then the learner's own mark. */
+  const unassigned = (unit: string, weak: string) => [lookup(unit, { at: day(1), sentenceKey: 's1', weak }), mark(unit, 'known', { at: day(1, 11), sentenceKey: 's1' })];
+
+  it('Albanian has a shared core; Greek and Hebrew, whose varieties are periods, do not', () => {
+    expect(hasSharedCore('sq')).toBe(true);
+    expect(hasSharedCore('el')).toBe(false);
+    expect(hasSharedCore('he')).toBe(false);
+    expect(hasSharedCore('de')).toBe(false);
+    expect(textVarietyOf('sq', undefined)).toBe('sq-standard');
+    expect(textVarietyOf('sq', 'aln')).toBe('sq-gheg');
+    expect(textVarietyOf('el', undefined)).toBeUndefined(); // a Greek text must say which Greek
+    expect(textVarietyOf('el', 'grc-koine')).toBe('el-koi');
+    expect(textVarietyOf('de', undefined)).toBeUndefined();
+  });
+
+  it('Reading Analysis credits an Albanian word Known on unassigned records, with or without a stated variety; a Greek one stays unsettled', () => {
+    const sq = rowsOf(unassigned(LIBER, 'sq-standard'));
+    expect(classifyWord(['form:sq:libër', LIBER], sq, 'sq')).toEqual(['known', 'known']);
+    expect(classifyWord(['form:sq:libër', LIBER], sq, 'sq', 'sq-standard')).toEqual(['known', 'known']);
+    expect(classifyWord(['form:sq:libër', LIBER], sq, 'sq', 'sq-gheg')).toEqual(['known', 'known']); // written alike in both: it counts in Gheg too
+    const el = rowsOf(unassigned(LOGOS, 'el-mod'));
+    expect(classifyWord(['form:el:λόγος', LOGOS], el, 'el', 'el-koi')).toEqual(['unsettled', 'known']);
+  });
+
+  it('a word Known only from Gheg sentences is not counted on a Standard page, and is on a Gheg one', () => {
+    const rows = rowsOf(met(LIBER, 'sq-gheg', 1, 'known', 'analysed'));
+    expect(classifyWord(['form:sq:libër', LIBER], rows, 'sq')[0]).toBe('below');
+    expect(classifyWord(['form:sq:libër', LIBER], rows, 'sq', 'sq-gheg')).toEqual(['known', 'known']);
+  });
+
+  it('the figure of an ordinary Albanian page reads as it always did; a page read as Gheg says so', () => {
+    const result = (varietyId: string | undefined) => ({
+      languageId: 'sq', ...(varietyId ? { varietyId } : {}), snapshot: { state: 'verified' }, scope: { kind: 'main' },
+      coverage: { knownOccurrences: 5, counts: { total: 10 } },
+    }) as never;
+    const figureOf = (varietyId: string | undefined): string => { try { return presentResult(result(varietyId)).figure; } catch { return 'unavailable'; } };
+    const standard = figureOf('sq-standard'), gheg = figureOf('sq-gheg');
+    expect(standard).not.toBe('unavailable');
+    expect(standard).not.toMatch(/Standard Albanian/);
+    expect(gheg).toMatch(/Known in Gheg/);
   });
 });

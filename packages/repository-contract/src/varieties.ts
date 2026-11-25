@@ -48,6 +48,14 @@ export interface LanguageVarieties {
   /** The variety an enrolment gets when nothing was chosen (the pack's default target). A stamp of it on a legacy record is not evidence. */
   defaultVarietyId: VarietyId;
   varieties: readonly LanguageVariety[];
+  /**
+   * The varieties are dialects of one time that write most words ALIKE (Standard Albanian and Gheg). Two things follow, and only for
+   * such a language. A text nobody stated a variety for may be read in the default variety: it is the written standard, and the
+   * analyser still assigns each sentence that shows otherwise. And a record no variety claims is not a record of unknown variety (as an
+   * unclassified Greek or Hebrew record is): its sentence held no form that differs, so the word was met as every variety writes it, and
+   * what it shows counts in the variety a text is read in. Absent for periods (Greek, Hebrew), where neither holds.
+   */
+  sharedCore?: boolean;
 }
 
 type Seed = Omit<LanguageVariety, 'parentLanguage' | 'relatedVarieties' | 'aliases' | 'selectable'> & { aliases?: string[]; selectable?: boolean };
@@ -66,9 +74,9 @@ function build(languageId: LanguageId, defaultVarietyId: VarietyId, seeds: Seed[
 const REGISTRY = new Map<LanguageId, LanguageVarieties>();
 
 /** Adds or replaces the learning varieties of a language. The built-in ones are Greek and Hebrew; a pack may add its own. */
-export function defineLanguageVarieties(languageId: LanguageId, defaultVarietyId: VarietyId, seeds: Seed[]): LanguageVarieties {
+export function defineLanguageVarieties(languageId: LanguageId, defaultVarietyId: VarietyId, seeds: Seed[], opts: { sharedCore?: boolean } = {}): LanguageVarieties {
   if (!seeds.some((s) => s.id === defaultVarietyId)) throw new RangeError(`the default variety ${defaultVarietyId} is not among the varieties of ${languageId}`);
-  const made = build(languageId, defaultVarietyId, seeds);
+  const made: LanguageVarieties = { ...build(languageId, defaultVarietyId, seeds), ...(opts.sharedCore ? { sharedCore: true } : {}) };
   REGISTRY.set(languageId, made);
   return made;
 }
@@ -105,7 +113,7 @@ defineLanguageVarieties('sq', 'sq-standard', [
   { id: 'sq-tosk', name: 'Tosk (dialect)', historicalGroup: 'modern', aliases: ['als', 'tosk'] },
   { id: 'sq-arbereshe', name: 'Arbëresh (Italy)', historicalGroup: 'modern', aliases: ['aae', 'arberesh', 'arbëresh'] },
   { id: 'sq-arvanitika', name: 'Arvanitika (Greece)', historicalGroup: 'modern', aliases: ['aat', 'arvanitika'] },
-]);
+], { sharedCore: true });
 
 // ───────────────────────────── the registry, read ─────────────────────────────
 
@@ -116,6 +124,15 @@ export const learningVarietiesOf = (languageId: LanguageId): readonly LanguageVa
 /** The varieties a learner may choose to review, in registry order. */
 export const selectableVarietiesOf = (languageId: LanguageId): readonly LanguageVariety[] => learningVarietiesOf(languageId).filter((v) => v.selectable);
 export const defaultVarietyOf = (languageId: LanguageId): VarietyId | undefined => REGISTRY.get(languageId)?.defaultVarietyId;
+/** The language's varieties are dialects with a shared core (`LanguageVarieties.sharedCore`): Albanian. */
+export const hasSharedCore = (languageId: LanguageId): boolean => REGISTRY.get(languageId)?.sharedCore === true;
+/**
+ * The variety a whole TEXT is read in: the one stated for it; else, for a language whose varieties share a core, the default one. Undefined
+ * for a language of periods when nothing is stated (the caller must ask), and for a language without learning varieties.
+ */
+export function textVarietyOf(languageId: LanguageId, stated: unknown): VarietyId | undefined {
+  return canonicalVarietyId(languageId, stated) ?? (hasSharedCore(languageId) ? defaultVarietyOf(languageId) : undefined);
+}
 
 /** The registry id a variety id or alias names in this language; undefined when the language has no learning varieties or does not know it. */
 export function canonicalVarietyId(languageId: LanguageId, id: unknown): VarietyId | undefined {

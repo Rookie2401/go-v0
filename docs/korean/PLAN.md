@@ -122,6 +122,10 @@ source's. A reading the lexicon does not vouch for is marked `unconfirmed` and e
     senses the source entry already has and records which (`senses`: their positions in the entry); the build checks
     it. Wording no source sense supports is allowed only with `own: true`, and the row then carries `glossOwn`, so a
     card's source line says the meaning is this product's wording, not the dictionary's. Nothing is invented unmarked.
+  - **Words the source lacks** (자 "person" as a bound noun, 파악, 당연, 한편) are hand-written rows in
+    `docs/korean/lexicon-supplement.json`, one reviewable line each, read by the build. Such a row is marked `own` and
+    a card's source line says it is this product's entry, not the dictionary's. It never shadows a source entry; when
+    it joins a source spelling's set it carries a hand-fixed number of 90 or more, identity like the source's.
   - **A row's count** (`n`) is the count of the SPELLING in the priors corpus. In a balanced set every entry carries
     it, so counts must never be summed over rows; it orders stems and never chooses between homonyms.
   - **Where the number is never shown or looked up as a spelling**: a card's headline, GoReview's card front, a

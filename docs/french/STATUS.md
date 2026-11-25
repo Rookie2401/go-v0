@@ -1,7 +1,7 @@
 # French pack (`fr`): status of record
 
-Branch `feat/french-pack` (worktree `C:\Users\CJWal\dev\go-v0-french`), from master 985c742b. Built 2026-11-17 from the owner's
-brief "Build and Integrate the Complete French Language Pack for GoLearn". **Not merged, not deployed.** Experimental and
+Built 2026-11-17 on branch `feat/french-pack` from the owner's brief "Build and Integrate the Complete French Language Pack for
+GoLearn". **Merged and published 2026-11-19** (master b5aa3630, PR #19; see Release below). Experimental and
 unreviewed: every word list, rule, explanation and test judgement in it is AI-drafted, and no native speaker has checked any of it.
 
 Other documents: `PLAN.md` (the contract the packages were built against), `EVALUATION.md` and `EVALUATION.json` (what was
@@ -70,7 +70,7 @@ All six states use the shared controls. Knowing a lemma does not credit its form
 ## GoReview
 
 French is offered, its dictionary is in the default list, the Alphabet deck has its cards, and the analyser loads on demand.
-**Verified end to end (2026-11-19, BROWSER-RUN.md "Re-run on the merged tree"):** in the built extension GoReview offered French, built a card from the learner's reading (front «chevaux», back "horse"), took the grade Good and moved to the next card; the device Repository recorded `CardAdded` and `CardReviewed` for `lemma:fr:cheval:NOUN`, and both reached the test account. The earlier blocker (the candidates call refused with 422 because of a null cursor) was fixed on master by 22be2d7e, which this branch has merged in.
+**Verified end to end (2026-11-19, BROWSER-RUN.md "Re-run on the merged tree"):** in the built extension GoReview offered French, built a card from the learner's reading (front «chevaux», back "horse"), took the grade Good and moved to the next card; the device Repository recorded `CardAdded` and `CardReviewed` for `lemma:fr:cheval:NOUN`, and both reached the test account. The earlier blocker (the candidates call refused with 422 because of a null cursor) was fixed on master by 22be2d7e, which the French branch merged in before it landed.
 GoReview's home has no photograph for French (the owner has not chosen one); the home draws none.
 
 ## Performance
@@ -94,8 +94,19 @@ Left failing and not French: `test/audit/a11y.css.test.ts` A-C04 (a sign-in styl
 
 ## Release
 
-Committed on `feat/french-pack`. Merging, publishing `public/dict/fr` to the hosted site and rebuilding the extension and GoReview
-go through the release manager session, on the owner's word. Master 22be2d7e (Reading Analysis, the Alphabet Sprint, the null-query fix) is merged in (7a3828cd). The Russian branch (PR #18) touches the same language lists: French adds one line at the end of each, and whichever lands second joins them (the GoReview home test's `NO_PHOTO_YET` list among them).
+Released on the owner's word ("Please publish French and Russian"), 2026-11-19, by the release manager session.
+
+- **Source:** `feat/french-pack` (tip bf1d280e) and the Russian branch (PR #18) were joined on `release/ru-fr` and landed on
+  master as b5aa3630. The shared language lists carry both languages; the GoReview home test's `NO_PHOTO_YET` list names both.
+- **Dictionary:** `public/dict/fr` is on the hosted site (`gh-pages` `dict/fr`: shards, forms index, full records).
+- **GoReview and the web app:** rebuilt and published under `review/` and `app/`.
+- **Extension:** `packages/golearn-extension/dist` rebuilt as build b5aa3630a227; it holds `analysers/fr.js`.
+
+Checked again on 2026-11-24 against the live site: `dict/fr/manifest.json` answers with `kaikki-fr@2026-10-30` and 401,953 entries,
+a dictionary shard is served, and the live GoReview build (from master dcf1b0ad) carries the French analyser chunks and names the
+French dictionary. Not checked on the live site: French on screen in the hosted GoReview (it asks for a sign-in first, and no
+account was used for this check), a French card opened by a person in the installed extension (the rig's run in
+`BROWSER-RUN.md` used a local build), and French on a phone.
 
 ## Limitations
 

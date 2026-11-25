@@ -144,6 +144,7 @@ function parseChain(c: Ctx, p: number, host: KoHost, st: St, depth = 0): Tail[] 
   if (depth > 6 || p >= c.K.length) return out;
   for (const e of ENDINGS) {
     if (!predOk(e, st)) continue;
+    if (e.hostCls && !(host.kind === 'stem' && host.cls === e.hostCls)) continue;
     for (const f of e.forms) {
       for (const r of koRealize(host, f)) {
         const syls = e.pending ? r.syls.slice(0, -1) : r.syls;
@@ -152,7 +153,7 @@ function parseChain(c: Ctx, p: number, host: KoHost, st: St, depth = 0): Tail[] 
         const q = p + seq.length;
         const stemShows = host.kind === 'stem' && depth === 0 ? r.shows : undefined;
         if (e.tag === 'EP') {
-          if (r.copulaDrop) continue;
+          if (r.copulaDrop && !(e.id === 'p-hon' && q - p > 0 && c.sylOf[p] >= 2)) continue; // 목자시니: the honorific copula after a noun of two syllables or more
           const nextHost: KoHost = e.pending ? { kind: 'stem', syls: [r.syls[r.syls.length - 1]], cls: 'R' } : { kind: 'fixed', noEu: e.id === 'p-humble' };
           const nst: St = {
             slot: e.slot ?? st.slot,
@@ -402,7 +403,8 @@ function nominalReadings(c: Ctx, prefixUnits: number, stemKey: string, entry: Ko
   const q = c.units[prefixUnits - 1].j1;
   const tag = entry.tag;
   if (tag.startsWith('X') && tag !== 'XR') return [];
-  if (tag === 'NP' && (KO_BOUND_CONTRACTIONS.has(entry.lemma) || (entry as { bound?: boolean }).bound) && (entry.lemma === '누' || q !== c.K.length)) return [];
+  const bound = (entry as { bound?: boolean }).bound ?? (tag === 'NP' && KO_BOUND_CONTRACTIONS.has(entry.lemma));
+  if (bound && !(q === c.K.length && ['제', '내', '네'].includes(entry.lemma))) return [];
   const isHanja = !isHangulSyllable(stemKey[0]);
   const soundOverride = isHanja ? soundOfWord(entry.lemma) : undefined;
   let conts: Tail[];
@@ -425,7 +427,8 @@ function nominalReadings(c: Ctx, prefixUnits: number, stemKey: string, entry: Ko
     let score = baseScore(entry, prefixUnits, t.parts.length + 1, t.violations);
     if (t.copulaDrop) score -= 0.2;
     const notes: Record<string, string | string[]> = isHanja ? { hanja: stemKey } : {};
-    if (!t.parts.length && CLOSED_TAGS.has(tag)) { score += 1.2; notes.context = 'a closed-class word written alone: commoner than a predicate form of the same spelling'; }
+    if (bound) score -= 1.5; // the fused reading (저 + 의) is the learner's item
+    if (!t.parts.length && CLOSED_TAGS.has(tag) && !bound) { score += 1.2; notes.context = 'a closed-class word written alone: commoner than a predicate form of the same spelling'; }
     if (light) {
       // noun + 하다 / 되다 / 받다 / 당하다 / 시키다 the dictionary does not list (or a root + 하다 / 스럽다): the derived verb, both parts from the lexicon
       const derived = entry.lemma + light.lemma;
@@ -541,7 +544,7 @@ function spacingReadings(c: Ctx): Reading[] {
   const sub = (a: number, b: number) => c.surface.slice(c.units[a].start, c.units[b - 1].end);
   const best = (a: number, b: number): AnalysisCandidate | undefined => {
     const all = koAnalyzeToken(sub(a, b));
-    if (b - a === 1) return all.find((x) => !x.unconfirmed && String(x.notes?.koPos ?? '').startsWith('NNB'));
+    if (b - a === 1) return a === 0 ? undefined : all.find((x) => !x.unconfirmed && String(x.notes?.koPos ?? '').startsWith('NNB'));
     const r = all[0];
     return r && !r.unconfirmed && r.pos !== 'ADP' && r.confidence >= 0.8 ? r : undefined;
   };
@@ -721,12 +724,14 @@ function derivedAdverbReadings(c: Ctx): Reading[] {
  * noun + particle; a 하다-verb over noun + the particle 하고; literary and contracted-quotation endings below ordinary ones; a derived
  * verb below a listed headword.
  */
+const QUOTE_CONTRACTIONS = new Set(['quote-rae', 'quote-dae', 'quote-eurae', 'quote-nyae', 'quote-jae', 'quote-neundae']);
 function rankAdjust(readings: Reading[]): void {
   const isPred = (r: Reading) => KO_PREDICATE_TAGS.has(r.stemTag) && !r.unconfirmed;
   const hasEtn = (r: Reading) => r.parts.some((p) => p.ending?.tag === 'ETN');
   const nounish = (r: Reading) => (r.stemTag === 'NNG' || r.stemTag === 'NNB' || r.stemTag === 'NNP') && !r.unconfirmed && !r.notes.derived;
   const anyPredFull = readings.some((r) => isPred(r) && !hasEtn(r) && r.cap >= CAP.full);
-  const maxPredN = Math.max(0, ...readings.filter(isPred).map((r) => r.entry?.n ?? 0));
+  const maxPredN = Math.max(0, ...readings.filter((r) => isPred(r) || (nounish(r) && r.parts.length === 1)).map((r) => r.entry?.n ?? 0));
+  const auxBuilt = (r: Reading) => r.parts.some((p) => (p.tag === 'VX' && p.kind === 'component') || p.ending?.id === 'p-pass');
   const anyNoun = readings.some(nounish);
   const anyHaSplit = readings.some((r) => !r.notes.derived && r.parts.some((p) => p.tag === 'XSV' && p.lemma === '하다'));
   const anyListedWhole = readings.some((r) => !r.unconfirmed && !r.notes.derived && r.entry && r.cap >= CAP.assumed && r.sourceId !== KO_SOURCE_IDS.rules);
@@ -736,7 +741,9 @@ function rankAdjust(readings: Reading[]): void {
     const yoOnly = r.parts.length === 2 && r.parts[1].particle?.id === 'polite';
     // a closed conjunctive adverb always; a lexicon adverb or interjection when the priors do not make it the rarer word by far (보다 "relatively")
     const fw = r.stemTag === 'MAJ' || ((r.stemTag === 'MAG' || (r.stemTag === 'IC' && !/(니다|요)$/u.test(r.lemma))) && !anyNominalOther(r) && (r.entry?.n ?? 0) * 10 >= maxPredN);
-    if (fw && (whole || (r.stemTag === 'MAJ' && yoOnly))) {
+    const greeting = r.stemTag === 'IC' && whole && readings.some((o) => isPred(o) && o.cap >= CAP.full && o.parts.some((p) => p.ending?.tag === 'EF'));
+    if (greeting) { r.score -= 4; r.notes.phrase = 'fixed greeting'; }
+    if (fw && !greeting && (whole || (r.stemTag === 'MAJ' && yoOnly))) {
       r.score += 3; r.notes.context = 'a whole function word outranks its own etymology (a predicate form of the same spelling)';
     }
     if (isPred(r) && hasEtn(r) && anyNoun) { r.score -= 3; r.notes.context = 'a listed noun outranks a nominalised predicate of the same spelling'; }
@@ -746,10 +753,15 @@ function rankAdjust(readings: Reading[]): void {
     if (r.stemTag === 'NNP' && anyPredFull) r.score -= 1;
     if (anyNonLit && r.parts.some((p) => p.ending?.lit)) r.score -= 0.7;
     if (r.parts.some((p) => p.ending?.id === 'hage-ge')) r.score -= 0.5; // the 하게체 command is rare beside the adverbial -게
-    if (r.parts.some((p) => p.ending && ['quote-rae', 'quote-dae', 'quote-eurae', 'quote-nyae', 'quote-jae', 'quote-neundae'].includes(p.ending.id))) r.score -= 0.3;
+    if (auxBuilt(r) && readings.some((o) => o !== r && !auxBuilt(o) && !o.unconfirmed && o.cap >= CAP.assumed && ((isPred(o) && [...o.stemKey].length > [...r.stemKey].length) || ((o.stemTag === 'NNG' || o.stemTag === 'NNB') && !o.notes.derived)))) {
+      r.cap = Math.min(r.cap, CAP.assumed); r.score -= 2.5; r.notes.context = 'a listed word reads the token whole; the verb + auxiliary written together is kept below it';
+    }
+    if (r.parts.some((p) => p.copula && p.je <= p.js) && readings.some((o) => isPred(o) && o.cap >= CAP.full)) { r.cap = Math.min(r.cap, CAP.assumed); r.score -= 1; }
+    if (isQuoteContraction(r)) r.score -= readings.some((o) => o !== r && isPred(o) && !isQuoteContraction(o) && o.lemma !== r.lemma && o.parts.some((p) => p.ending?.tag === 'EF')) ? 3 : 0.3;
     if (r.notes.derived && r.stemTag === 'VV' && anyListedWhole && r.sourceId !== KO_SOURCE_IDS.rules) r.score -= 1.5;
   }
   function c1(r: Reading): boolean { return [...r.stemKey].length === 1; }
+  function isQuoteContraction(r: Reading): boolean { return r.parts.some((p) => p.ending && QUOTE_CONTRACTIONS.has(p.ending.id)); }
   /** Another reading of the token as a listed noun or determiner (때문 + 에, 이런 DET): a whole adverb or interjection is then no function word over it. */
   function anyNominalOther(r: Reading): boolean { return readings.some((o) => o !== r && !o.unconfirmed && (o.stemTag === 'MM' || (['NNG', 'NNB'].includes(o.stemTag) && o.parts.length >= 2))); }
 }
@@ -867,7 +879,18 @@ function finish(c: Ctx, readings: Reading[]): AnalysisCandidate[] {
     const prev = best.get(k);
     if (!prev || r.parts.length < prev.r.parts.length || (r.parts.length === prev.r.parts.length && (r.cap > prev.r.cap || (r.cap === prev.r.cap && r.score > prev.r.score)))) best.set(k, { r, morph });
   }
-  const list = [...best.values()].sort((a, b) => b.r.cap - a.r.cap || b.r.score - a.r.score || a.r.order - b.r.order).slice(0, 10);
+  const order = (a: { r: Reading }, b: { r: Reading }) => b.r.cap - a.r.cap || b.r.score - a.r.score || a.r.order - b.r.order;
+  let list = [...best.values()].sort(order);
+  const top = list[0]?.r;
+  if (top && (top.sourceId === KO_SOURCE_IDS.closed || top.notes.fused !== undefined)) {
+    for (const x of list.slice(1)) {
+      const dropped = x.r.parts.some((p) => p.copula && p.je <= p.js) && [...x.r.stemKey].length === 1;
+      const rare = x.morph.SpeechLevel === 'Hage' || x.morph.SpeechLevel === 'Hao';
+      if (dropped || rare) x.r.cap = Math.min(x.r.cap, 0.7);
+    }
+    list = list.sort(order);
+  }
+  list = list.slice(0, 10);
   // confidences: strictly falling; nothing ≥ 0.85 while a different lemma is within 0.15
   const conf = (top: number) => {
     const cs: number[] = [];
@@ -930,7 +953,7 @@ function toCandidate(c: Ctx, r: Reading, morph: Record<string, string>, confiden
  */
 export function koPredicateGloss(entry: Pick<KoLexEntry, 'tag' | 'gloss' | 'glossOwn'>): string | undefined {
   const g = entry.gloss;
-  if (!g || entry.tag !== 'VA' || entry.glossOwn || /^tos/iu.test(g)) return g;
+  if (!g || entry.tag !== 'VA' || entry.glossOwn || /^to\s/iu.test(g.trim())) return g;
   return 'to be ' + g;
 }
 

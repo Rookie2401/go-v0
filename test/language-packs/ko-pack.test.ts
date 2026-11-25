@@ -39,7 +39,7 @@ const PLAN_FEATURES: Record<string, string[]> = {
   SpeechLevel: ['Hae', 'Haeyo', 'Hasipsio', 'Haera', 'Hage', 'Hao', 'Lit'],
   Register: ['Lit'],
   Quote: ['Ind'],
-  Connective: ['and', 'and-while', 'while', 'but', 'so', 'since', 'because', 'if', 'intend', 'purpose', 'even-if', 'only-if', 'background', 'then', 'as-soon-as', 'so-that', 'adverbial', 'as-if', 'or', 'whether', 'because-busy', 'the-more', 'and-then', 'neg', 'inf', 'after', 'saying', 'although', 'as-i', 'not-but', 'besides', 'habit', 'as-you-know'],
+  Connective: ['and', 'and-while', 'while', 'but', 'so', 'since', 'because', 'if', 'intend', 'purpose', 'even-if', 'only-if', 'background', 'then', 'as-soon-as', 'so-that', 'adverbial', 'as-if', 'or', 'whether', 'because-busy', 'the-more', 'and-then', 'neg', 'inf', 'after', 'saying', 'although', 'as-i', 'for-lit', 'not-but', 'besides', 'habit', 'as-you-know'],
   VerbType: ['Descriptive', 'Cop', 'Exist'],
   Polarity: ['Pos', 'Neg'],
   Voice: ['Pass', 'Caus'],

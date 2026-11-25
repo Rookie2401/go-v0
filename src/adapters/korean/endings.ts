@@ -49,6 +49,8 @@ export interface KoEnding {
   after?: readonly string[] | 'nominal';
   /** The sentence types the ending allows when it alone does not decide (해요체 -아/어요): NO Mood is set; the sentence layer sets it from the punctuation. */
   moods?: readonly string[];
+  /** Only after this copula: 'Neg' (아니다) or 'Cop' (이다). */
+  hostCls?: 'Neg' | 'Cop';
   /** Connective id (`morph.Connective`). */
   conn?: string;
   lit?: boolean;
@@ -171,7 +173,8 @@ export const ENDINGS: readonly KoEnding[] = [
   ec({ id: 'quote-ramyeo', cite: '-(이)라며', forms: [B('라며')], pred: 'CR', morph: { Quote: 'Ind', Mood: 'Ind' }, role: 'saying that it is …, and' }),
   ec({ id: 'quote-jamyeo', cite: '-자며', forms: [B('자며')], pred: 'V', morph: { Quote: 'Ind', Mood: 'Prop' }, role: 'suggesting that we …, and' }),
   ec({ id: 'quote-nyamyeo', cite: '-냐며', forms: [B('냐며')], pred: 'VACP', morph: { Quote: 'Ind', Mood: 'Int' }, role: 'asking whether …, and' }),
-  ec({ id: 'ra-conn', conn: 'not-but', cite: '-(이)라', forms: [B('라')], pred: 'C', morph: {}, role: 'connective of the copula: (not A) but … (아니라)' }),
+  ec({ id: 'ra-conn', conn: 'not-but', cite: '-(이)라', forms: [B('라')], pred: 'C', hostCls: 'Neg', morph: {}, role: 'connective of 아니다: (not A) but … (아니라)' }),
+  ec({ id: 'for-lit', conn: 'for-lit', cite: '-(이)라', forms: [B('라')], pred: 'C', hostCls: 'Cop', lit: true, morph: {}, role: 'literary: for it is …, because it is … (-(이)라 after a clause: 하심이라)' }),
   ec({ id: 'and', conn: 'and', cite: '-고', forms: [B('고')], pred: 'VACPL', yo: true, after: EC_AFTER, morph: {}, role: 'and; and then' }),
   ec({ id: 'and-while', conn: 'and-while', cite: '-(으)며', forms: [E('며')], pred: 'VACPL', morph: {}, role: 'and; while (written)' }),
   ec({ id: 'while', conn: 'while', cite: '-(으)면서', forms: [E('면서')], pred: 'VACP', after: ['also'], morph: {}, role: 'while; although' }),

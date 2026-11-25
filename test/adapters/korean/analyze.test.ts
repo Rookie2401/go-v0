@@ -1,7 +1,10 @@
 // @vitest-environment node
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import type { AnalysisCandidate } from '../../../src/core';
-import { koAnalyzeToken, koAnalyzeTokens, koMoodFromPunctuation } from '../../../src/adapters/korean/analyze';
+import fs from 'node:fs';
+import path from 'node:path';
+import { gunzipSync } from 'node:zlib';
+import { koAnalyzeToken, koAnalyzeTokens, koClearAnalysisCache, koMoodFromPunctuation, koPredicateGloss } from '../../../src/adapters/korean/analyze';
 import { describeKoMorph } from '../../../src/adapters/korean/describe';
 import { koGenerate } from '../../../src/adapters/korean/conjugate';
 import { ENDINGS, koEnding } from '../../../src/adapters/korean/endings';
@@ -464,4 +467,134 @@ describe('fix batch 2: the sentence package and the feature vocabulary', () => {
     expect(first('먹던').morph).toMatchObject({ Tense: 'Past', Modality: 'Retrospective' }); expect(first('먹던').morph.Aspect).toBeUndefined();
     expect(first('하시되').morph).toMatchObject({ Register: 'Lit', Connective: 'saying' });
   });
+});
+
+describe('fix batch 3, on the real compiled core', () => {
+  beforeAll(async () => {
+    const { KO_CORE } = await import('../../../src/adapters/korean/generated/core');
+    const { installKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+    uninstallFixtureLexicon();
+    installKoreanLexicon(KO_CORE);
+    koClearAnalysisCache();
+  });
+  afterAll(async () => {
+    const { uninstallKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+    uninstallKoreanLexicon('ko-core');
+    installFixtureLexicon();
+  });
+  it('no reading of any VA row of the core has a doubled "to be to"', async () => {
+    const { KO_CORE } = await import('../../../src/adapters/korean/generated/core');
+    const bad: string[] = [];
+    for (const rows of Object.values(KO_CORE.entries)) for (const e of rows) {
+      if (e.tag !== 'VA') continue;
+      const g = koPredicateGloss(e);
+      if (g && /^to be to /iu.test(g)) bad.push(`${e.lemma}: ${g}`);
+    }
+    expect(bad).toEqual([]);
+    expect(koPredicateGloss({ tag: 'VA', gloss: 'cold; chilly' })).toBe('to be cold; chilly');
+    expect(koPredicateGloss({ tag: 'VA', gloss: 'cold', glossOwn: true })).toBe('cold');
+  });
+  it('파래요 → 파랗다 above the contracted quotation of 파다', () => { const cs = an('파래요'); expect(cs[0].lemma).toBe('파랗다'); expect(cs.some((c) => c.lemma === '파다')).toBe(true); });
+  it('bound rows are no reading of their own: 네가 → 너 only; bare 제 → 저 + 의 first', () => {
+    expect(an('네가').map((c) => c.lemma)).toEqual(['너']);
+    expect(an('내가').every((c) => c.lemma !== '내가')).toBe(true);
+    expect((first('제').lemma ?? '').replace(/[⁰-⁹¹²³]+$/u, '')).toBe('저'); // the core numbers its 저 entries
+    expect(first('제').notes?.fused).toBe('제 = 저 + 의');
+  });
+  it('a greeting that is a polite form: the predicate first, the greeting second', () => {
+    for (const [w, l] of [['감사합니다', '감사하다'], ['안녕하세요', '안녕하다'], ['고맙습니다', '고맙다']]) {
+      const cs = an(w);
+      expect(cs[0].lemma, w).toBe(l);
+      const g = cs.find((c) => c.pos === 'INTJ');
+      expect(g?.notes?.phrase, w).toBe('fixed greeting');
+    }
+    expect(first('그래서').pos).toBe('CONJ');
+  });
+  it('below a closed-table first reading, silly readings start at 0.70', () => {
+    for (const w of ['하지만', '그러나']) {
+      const cs = an(w);
+      expect(cs[0].pos, w).toBe('CONJ');
+      for (const c of cs.slice(1)) if (c.morph.SpeechLevel === 'Hage' || c.morph.SpeechLevel === 'Hao' || (c.parts ?? []).some((p) => p.lemma === '이다' && p.start === p.end)) expect(c.confidence, `${w} ${c.lemma}`).toBeLessThanOrEqual(0.7);
+    }
+  });
+});
+
+describe('fix batch 3 addendum, on the real core', () => {
+  beforeAll(async () => {
+    const { KO_CORE } = await import('../../../src/adapters/korean/generated/core');
+    const { installKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+    uninstallFixtureLexicon();
+    installKoreanLexicon(KO_CORE);
+    koClearAnalysisCache();
+  });
+  afterAll(async () => {
+    const { uninstallKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+    uninstallKoreanLexicon('ko-core');
+    installFixtureLexicon();
+  });
+  it('a dropped copula and an infinitive + case particle do not beat a plain verb form or a noun: 오기, 해가', () => {
+    expect(first('오기').lemma).toBe('오다');
+    expect(first('해가').pos).not.toBe('VERB');
+    expect(first('하심이라')).toMatchObject({ lemma: '하다' });
+    expect(first('하심이라').morph.Connective ?? 'none').not.toBe('not-but');
+  });
+  it('an unlisted name + particle is the unconfirmed whole stem + the particle, never a listed one-syllable word + the rest', () => {
+    for (const w of ['김민수는', '박지성이', '최영희를', '강동원에게', '정우성은']) {
+      const c = first(w);
+      expect(c.unconfirmed, w).toBe(true);
+      expect([...(c.lemma ?? '')].length, w).toBeGreaterThanOrEqual(2);
+      expect(c.parts?.at(-1)?.pos, w).toBe('ADP');
+    }
+  });
+  it('a common noun above a rare adverb of the same spelling: 죄', () => expect(first('죄').pos).toBe('NOUN'));
+});
+
+const SHARD_DIR = path.resolve('public/lexicon/ko/standard');
+describe.skipIf(!fs.existsSync(path.join(SHARD_DIR, 'manifest.json')))('listed compound verbs, over the core and every shard', () => {
+  let installed: string[] = [];
+  beforeAll(async () => {
+    const { KO_CORE } = await import('../../../src/adapters/korean/generated/core');
+    const { installKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+    uninstallFixtureLexicon();
+    installKoreanLexicon(KO_CORE);
+    for (const f of fs.readdirSync(SHARD_DIR)) if (f.endsWith('.json.gz')) { const x = JSON.parse(gunzipSync(fs.readFileSync(path.join(SHARD_DIR, f))).toString('utf8')); installKoreanLexicon(x); installed.push(x.id); }
+    koClearAnalysisCache();
+  });
+  afterAll(async () => {
+    const { uninstallKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+    uninstallKoreanLexicon('ko-core'); for (const id of new Set(installed)) uninstallKoreanLexicon(id);
+    installFixtureLexicon();
+  });
+  it('a listed verb + -아/어 + another listed verb reads back to the WHOLE lemma first, citation and -았/었습니다 forms', async () => {
+    const { lookupKoreanStem } = await import('../../../src/adapters/korean/index-store');
+    const seen = new Set<string>();
+    const misses: string[] = [];
+    let n = 0;
+    const all = new Map<string, { lemma: string; irr?: string }>();
+    const { KO_CORE } = await import('../../../src/adapters/korean/generated/core');
+    for (const f of [null, ...fs.readdirSync(SHARD_DIR).filter((x) => x.endsWith('.json.gz'))]) {
+      const lex = f ? JSON.parse(gunzipSync(fs.readFileSync(path.join(SHARD_DIR, f))).toString('utf8')) : KO_CORE;
+      for (const rows of Object.values(lex.entries) as Array<Array<{ lemma: string; tag: string; irr?: string }>>) for (const e of rows) if (e.tag === 'VV' && e.irr) all.set(e.lemma, e);
+    }
+    const isVerbStem = (s: string) => lookupKoreanStem(s).some((h) => h.entry.tag === 'VV' || h.entry.tag === 'VX');
+    for (const e of all.values()) {
+      const stem = e.lemma.slice(0, -1);
+      const chars = [...stem];
+      let compound = false;
+      for (let i = 1; i < chars.length && !compound; i++) {
+        const left = chars.slice(0, i).join(''), right = chars.slice(i).join('');
+        if (!isVerbStem(right)) continue;
+        // the left part must be the -아/어 form of a listed verb
+        if (koAnalyzeToken(left).some((c) => c.pos === 'VERB' && c.parts?.some((p) => p.lemma === '-아/-어'))) compound = true;
+      }
+      if (!compound || seen.has(e.lemma)) continue;
+      seen.add(e.lemma);
+      n++;
+      const forms = [e.lemma, ...koGenerate(stem, e.irr as never, [koEnding('p-past'), koEnding('hasipsio-decl')])];
+      for (const f of forms) { const c = koAnalyzeToken(f)[0]; if (c?.lemma !== e.lemma) misses.push(`${f} → ${c?.lemma}`); }
+    }
+    console.log(`listed compound verbs checked: ${n}; forms not read back to the whole lemma first: ${misses.length}${misses.length ? ' e.g. ' + misses.slice(0, 8).join(', ') : ''}`);
+    expect(n).toBeGreaterThan(50);
+    expect(misses.length / (2 * n)).toBeLessThan(0.02);
+  }, 300000);
 });

@@ -711,8 +711,6 @@ for (const [k, v] of Object.entries(identities)) {
   idInfo.set(k, { n, stem, raw: v });
   if (n !== undefined) { mainByKey.set(k, n); if (stem !== k && !mainByKey.has(stem) && !(stem in identities)) mainByKey.set(stem, n); }
 }
-const counts = new Array<number>(lemmaIds.length).fill(0);
-const second = new Array<number>(lemmaIds.length).fill(0);
 const shareCounts = new Array<number>(lemmaIds.length).fill(0); // the old definition (frequency / holders): used only to admit closed classes to the core
 let identityApplied = 0;
 let identityUnknown = 0;
@@ -821,20 +819,58 @@ const decisive = (lx: Map<string, number[]>): string | undefined => {
   const win = [...lx.keys()].filter((a) => [...lx.keys()].every((b) => b === a || finalPrefs.get(b)?.has(a)));
   return win.length === 1 ? win[0] : undefined;
 };
+// A LEXEME GROUP is every lemma id of one vocalized head whose parts of speech are in one class: {NOUN, ADJ, PROPN}, {VERB}, the closed classes {PRON DET ADP PART CONJ SCONJ ADV INTJ NUM};
+// heads that differ only as …ٍ against …ِي (مَاضٍ / مَاضِي) are one head. A key is own to a group when every lemma id with a row on it is in that group; its frequency goes to the group
+// and every member id carries the group's count (homonym siblings agree). A verb's noun-from-verb or participle cell does not make a key shared when a nominal entry of that very form exists.
+const KASRATAN = 'ٍ';
+const groupHead = (h: string): string => h.replace(new RegExp(`${KASRATAN}$`), 'ِي');
+const classOfPos = (pos: string): string => (pos === 'NOUN' || pos === 'ADJ' || pos === 'PROPN' ? 'N' : pos === 'VERB' ? 'V' : CLOSED_POS.has(pos) || pos === 'NUM' ? 'C' : pos);
+const groupOf = new Array<number>(lemmaIds.length);
+{
+  const gnum = new Map<string, number>();
+  for (let l = 0; l < lemmaIds.length; l++) {
+    const g = `${groupHead(lemmaRows[l][0])}|${classOfPos(lemmaRows[l][2])}`;
+    let n = gnum.get(g);
+    if (n === undefined) { n = gnum.size; gnum.set(g, n); }
+    groupOf[l] = n;
+  }
+}
+const groupCount = new Map<number, number>();
+const groupSecond = new Map<number, number>();
+const addTo = (m: Map<number, number>, g: number, f: number): void => { m.set(g, (m.get(g) ?? 0) + f); };
+const isDerivedCell = (k: string, r: ArFormRow): boolean => {
+  if (lemmaRows[r[0]][2] !== 'VERB') return false;
+  const t = tagsOf(r[1]);
+  if (!t.includes('noun-from-verb') && !t.includes('participle')) return false;
+  return !!nominalSigs.get(k)?.has(sigIgnoringEnding(arHeadForm(TEXT.applyVocal(k, r[2]), 'NOUN')));
+};
 for (const k of keys) {
   const f = freq.get(k) ?? 0;
   const rs = forms.get(k)!;
   const ls = [...new Set(rs.map((r) => r[0]))];
   for (const l of ls) shareCounts[l] += f / ls.length;
   if (!f) continue;
-  if (idInfo.get(k)?.n !== undefined) continue; // a listed key is credited to its main lemma below
-  if (ls.length === 1) { counts[ls[0]] += f; continue; }
+  const ip = idInfo.get(k);
+  if (ip?.n !== undefined) continue; // a listed key is credited to its main lemma's group below
+  const gs = new Set<number>();
+  for (const r of rs) if (!isDerivedCell(k, r)) gs.add(groupOf[r[0]]);
+  if (gs.size === 1) { addTo(groupCount, [...gs][0], f); continue; }
+  if (gs.size === 0) continue;
   const lx = lexemesOn(k);
-  if (lx.size > 1) { const w = decisive(lx); if (w) for (const l of lx.get(w)!) second[l] += f / lx.get(w)!.length; }
+  if (lx.size > 1) { const w = decisive(lx); if (w) addTo(groupSecond, groupOf[lx.get(w)![0]], f); }
 }
-for (const [k, ip] of idInfo) if (ip.n !== undefined) { const f = freq.get(k) ?? 0; if (f) { counts[ip.n] += f; identityApplied++; } }
-for (let l = 0; l < lemmaRows.length; l++) lemmaRows[l][4] = Math.round(counts[l] + SECOND_WEIGHT * second[l]);
+for (const [k, ip] of idInfo) if (ip.n !== undefined) { const f = freq.get(k) ?? 0; if (f) { addTo(groupCount, groupOf[ip.n], f); identityApplied++; } }
+for (let l = 0; l < lemmaRows.length; l++) lemmaRows[l][4] = Math.round((groupCount.get(groupOf[l]) ?? 0) + SECOND_WEIGHT * (groupSecond.get(groupOf[l]) ?? 0));
 const zeroCount = lemmaRows.filter((r) => r[4] === 0).length;
+if (opt['counts-of-file']) {
+  const heads = fs.readFileSync(opt['counts-of-file'], 'utf8').split(/\s+/).filter(Boolean);
+  for (const h of heads) {
+    const hn = arHeadForm(h, 'NOUN');
+    const hv = arHeadForm(h, 'VERB');
+    const hits = lemmaIds.map((id, l) => ({ id, l })).filter((x) => lemmaRows[x.l][0] === hn || lemmaRows[x.l][0] === hv);
+    console.log(`count ${h}: ${hits.map((x) => `${x.id}=${lemmaRows[x.l][4]}`).join(' ') || '(none)'}`);
+  }
+}
 // share of running words by number of lemma ids of the key
 const shareBy: Record<string, number> = { '0': 0, '1': 0, '2': 0, '3': 0, '4+': 0 };
 for (const [k, f] of freq) { const n = holders.get(k) ?? 0; shareBy[n >= 4 ? '4+' : String(n)] += f; }
@@ -1133,7 +1169,7 @@ Lemma string convention: \`arHeadForm\` of \`arabic/text.ts\`.
 | identity checks accepted through a numbered sibling of the main id / through the loose fold | ${fmt(prefStats.idCleanSibling)} / ${fmt(prefStats.idCleanLoose)} (counted apart from the clean ones above) |
 | lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | ${fmt(prefStats.candidates)} / ${fmt(prefStats.sameLexeme)} / ${fmt(prefStats.conflictPairs)} / ${fmt(prefStats.balancedRemoved)} / ${fmt(prefStats.closedDropped)} |
 | preferences emitted: pairs / distinct losers / distinct winners | ${fmt(prefStats.pairs)} / ${fmt(prefStats.losers)} / ${fmt(prefStats.winners)} |
-| lemma ids with count 0 (after the own-key term and the weaker decided-key term, weight ${SECOND_WEIGHT}) | ${fmt(zeroCount)} of ${fmt(lemmaIds.length)} |
+| lemma ids with count 0 (counts by lexeme group: own keys of the group, plus the weaker decided-key term, weight ${SECOND_WEIGHT}; before the group rule 22,516) | ${fmt(zeroCount)} of ${fmt(lemmaIds.length)} |
 | identities file | ${IDENTITIES ? `${IDENTITIES}: ${fmt(identityApplied)} keys credited to their main lemma; checked clean ${fmt(stats.idClean)}, failed ${fmt(stats.idFail)} (${fmt(identityUnknown)} naming a lemma id not in the index)` : 'none given'} |
 
 ## Count (order of readings)

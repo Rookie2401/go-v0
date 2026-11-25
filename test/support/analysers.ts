@@ -3,6 +3,8 @@
  * carries Albanian itself; Spanish, German, Hindi, Thai and Norwegian (nb, nn) are separate chunks in the real extension, so a test that parses
  * in one of them (or resolves a language by word lists) calls this first. Synchronous: the adapters are imported statically here.
  */
+import { arAdapter } from '../../src/adapters/ar';
+import { createArabicShardLoader } from '../../src/adapters/arabic/shards';
 import { arcAdapter } from '../../src/adapters/arc';
 import { deAdapter } from '../../src/adapters/de';
 import { esAdapter } from '../../src/adapters/es';
@@ -34,5 +36,6 @@ export function registerAllAnalysers(): void {
   if (languageMeta('el')) registerAnalyser('el', elAdapter, { createShardLoader: createGreekShardLoader });
   if (languageMeta('la')) registerAnalyser('la', laAdapter); // once the adapter lane's parser entry exists
   if (languageMeta('ru')) registerAnalyser('ru', ruAdapter, { createShardLoader: createRussianShardLoader });
+  registerAnalyser('ar', arAdapter, { createShardLoader: createArabicShardLoader });
   registerAnalyser('fr', frAdapter); // the hand word list alone: the lemma list is a lazy module a test loads itself when it wants it
 }

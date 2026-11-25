@@ -114,9 +114,15 @@ const SPECS: readonly Spec[] = [
   { packIds: ['pack:ru'] },
   // French: one language; the regions are labels on words, not a choice the learner must make before reading
   { packIds: ['pack:fr'] },
+  // Arabic: Modern Standard is the default, Classical Arabic a second learning variety of the same pack; the dialects are recognised, not analysed
+  {
+    packIds: ['pack:ar'],
+    varieties: [{ id: 'ar-msa', label: 'Modern Standard Arabic (default)' }, { id: 'ar-cla', label: 'Classical Arabic' }],
+  },
 ];
 
-const SCRIPT_NAME: Readonly<Record<string, string>> = { Latn: 'Latin', Deva: 'Devanagari', Thai: 'Thai script', Hebr: 'Hebrew script', Grek: 'Greek alphabet', Cyrl: 'Cyrillic' };
+const SCRIPT_NAME: Readonly<Record<string, string>> = { Latn: 'Latin', Deva: 'Devanagari', Thai: 'Thai script', Hebr: 'Hebrew script', Grek: 'Greek alphabet', Cyrl: 'Cyrillic',
+  Arab: 'Arabic' };
 
 const LEVEL_RANK: Readonly<Record<PackLevel, number>> = { planned: 0, experimental: 1, installable: 2 };
 const VALIDATION_ORDER: readonly ValidationLevel[] = ['unsupported', 'experimental', 'unreviewed', 'incomplete', 'production-validated'];

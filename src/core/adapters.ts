@@ -263,6 +263,14 @@ export interface LanguageAdapter {
    * own; the reading keeps the adapter's lemma. Empty or absent = none.
    */
   lemmaVariants?(lemma: string, pos?: PartOfSpeech): string[];
+  /**
+   * For a language whose dictionary files SEVERAL words under one key (Arabic: عِلْم knowledge, عَلَم flag and عَلِمَ to know are all "علم"):
+   * whether a dictionary record is THIS lemma. `head` is what the record carries: its vocalized headword (a full record) or its
+   * romanization (a level-1 entry). true = this lemma, false = another word written alike, undefined = cannot tell (the lemma has no
+   * vowels, or the record has no head to compare). A caller keeps only the records that answer true, and ALL of them when none does.
+   * Absent for every language but those that need it.
+   */
+  headMatches?(lemma: string, head: { vocalized?: string; romanization?: string }, pos?: PartOfSpeech): boolean | undefined;
   /** A plain-words line for a feature bundle ("first person plural, imperfect subjunctive"), for the word sheet. */
   describeMorph?(morph: Record<string, string>, pos?: PartOfSpeech): string;
   /** The varieties this adapter can label, keyed by code. */

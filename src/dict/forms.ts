@@ -207,6 +207,14 @@ const GRAMMATICAL_TAGS: ReadonlySet<string> = new Set([
   'neuter', 'definite', 'indefinite', 'admirative', 'optative', 'infinitive-zu', 'perfective', 'habitual', 'presumptive', 'counterfactual',
   'instrumental', 'prepositional', 'partitive', // Russian: a noun row may carry its case alone ("instrumental" = instrumental singular)
 ]);
+/**
+ * Arabic's table tags that no other language's tables use in this sense (voice, the jussive and energetic moods, the dual, the construct
+ * state, the imperfective aspect, the paucal / collective / singulative numbers, the elative degree). Read only for Arabic (`isTableForm`'s
+ * `lang`), so the forms index of every other language keeps exactly the rows it kept.
+ */
+const ARABIC_GRAMMATICAL_TAGS: ReadonlySet<string> = new Set([
+  'dual', 'jussive', 'energetic', 'active', 'passive', 'construct', 'long-construct', 'imperfective', 'non-past', 'paucal', 'collective', 'singulative', 'elative',
+]);
 /** Tags that make a row something other than a plain inflected form: the source's own errors, a class label, an auxiliary, a misspelling ... */
 const NOT_A_FORM_TAGS: ReadonlySet<string> = new Set([
   'error-unrecognized-form', 'error-unknown-tag', 'error-exponential-tagsets', 'class', 'auxiliary', 'canonical', 'romanization', 'stem',
@@ -217,12 +225,12 @@ const NOT_A_FORM_TAGS: ReadonlySet<string> = new Set([
  * Is this row of a full record's `f` list a single inflected word? It needs a grammatical tag and no "not a form" tag, and it
  * must be one token (a row such as "hat gegangen" or "der Kampf" is a phrase the scanner never asks for).
  */
-export function isTableForm(form: FullForm): boolean {
+export function isTableForm(form: FullForm, lang?: LanguageCode): boolean {
   if (!form.f || /\s/.test(form.f) || form.f === '-' || form.f === '–' || form.f === '—') return false;
   let grammatical = false;
   for (const t of form.t) {
     if (NOT_A_FORM_TAGS.has(t)) return false;
-    if (GRAMMATICAL_TAGS.has(t)) grammatical = true;
+    if (GRAMMATICAL_TAGS.has(t) || (lang === 'ar' && ARABIC_GRAMMATICAL_TAGS.has(t))) grammatical = true;
   }
   return grammatical;
 }

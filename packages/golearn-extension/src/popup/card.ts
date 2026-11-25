@@ -118,6 +118,10 @@ const CSS = `
 * { box-sizing: border-box; }
 .card [lang] { unicode-bidi: isolate; }
 .card .word[dir="rtl"] { text-align: left; }
+/* Arabic: a naskh face, with room above and below for the vowel marks. No web font is downloaded: the stack names faces a system may have. The headword
+   (a larger size, and more room for a shadda under a kasra) and every Arabic run in the card; an English gloss beside Arabic keeps its own order (isolate, above). */
+.card [lang|="ar"] { font-family: "Noto Naskh Arabic", "Amiri", "Scheherazade New", "Traditional Arabic", serif; line-height: 1.8; }
+.card .word[lang|="ar"] { line-height: 2; }
 /* The lookup card, in the look of Biblia's word card (the dark Western Canon theme): paper, hairline rules, tracked small kickers, gold accent.
    Tokens are Biblia's (src/index.css): paper #16130f, raised #1e1a15, ink #d9cfbe, ink-soft #a89c86, ink-faint #7d7059 (borders and decoration only: it is
    below 4.5:1 on paper, so no text uses it), rule #322b22, rule-strong #453c2f, accent #c8a06a, accent-soft #b98f57. No font file is shipped: the stack

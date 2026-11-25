@@ -19,9 +19,11 @@ const SAMPLES: Record<string, string[]> = {
   ru: ['Она читает книгу.', 'Что это? Ничего: «ну да» (или нет).', 'Я знаю, что ты сказал — и понял всё.'],
   // French: elision with both apostrophes, a hyphenated clitic and a compound, guillemets with no-break spaces, an NFD accent (e + U+0301)
   fr: ["L'homme est ici. Je n'ai pas d'argent.", 'L’homme dit : « Bonjour », puis Dis-le-moi, ma grand-mère (peut-être) !', 'Un café noir ? Nous avons deux enfants.'],
+  // Arabic: vowel marks and shadda on letters, an attached article and conjunction, Arabic punctuation, guillemets, a digit, a Latin word and a tatweel
+  ar: ['كَتَبَ الْوَلَدُ الدَّرْسَ.', 'وَلَكِنْ هَلْ ذَهَبَ إِلَى الْمَدْرَسَةِ؟ نَعَمْ، وَكَتَبَ الدَّرْسَ؛ ثُمَّ نَامَ.', 'قال «هذا كتاب» (3 كتب) في الـbayt كـــتاب.'],
 };
 
-const NO_BUNDLED_CORPUS = ['fr'];
+const NO_BUNDLED_CORPUS = ['fr', 'ar'];
 
 describe('token offsets round-trip (every language)', () => {
   for (const lang of LANGUAGES) {

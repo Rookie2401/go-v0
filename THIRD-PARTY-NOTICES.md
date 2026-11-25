@@ -121,6 +121,37 @@ others, with the licence each requires us to state. The full inventory and the o
   `scripts/fr-build-lexicon.mts`; offered under the same licence, CC BY-SA 4.0. The analyser names this source as
   "French lemma list (Wiktionary, via kaikki.org — CC BY-SA 4.0)".
 
+- **Arabic dictionary** — Wiktionary, via kaikki.org (`kaikki-ar@2026-09-22`, 33,142 entries, sharded, with the full records, the
+  forms index and the English-to-Arabic index built from the same file).
+  Licence: Creative Commons Attribution-ShareAlike 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).
+  Contributors: the Wiktionary contributors (https://en.wiktionary.org). Processing: kaikki.org (Tatu Ylonen, "Wiktextract").
+  Source: https://kaikki.org/dictionary/Arabic/ (`kaikki-arabic.jsonl`, 78,135 lines, 519,071,935 bytes). The file's last-modified
+  date is 2026-09-22; the shards were built on 2026-11-25 (SHA-256 of the file:
+  `143c0e0bc33eddcc3684cec51b04fbb493bf601e0ab79f051fc6318549b3e3dc`). The Wiktionary revision the extract was taken from is not
+  recorded.
+  Changes: the shards are an adaptation of the kaikki file, made by the same scripts as the other dictionaries: reformatted into
+  JSON shards keyed by the headword without its vowel marks (so several words written alike share a key), repeated entries merged,
+  at most six glosses an entry in the first level, example sentences not shipped in it. The shards are offered under the same licence,
+  CC BY-SA 4.0.
+  Shown in the product as "Wiktionary, via kaikki.org — CC BY-SA 4.0" wherever a dictionary meaning appears.
+
+- **Arabic forms, vowels and roots** (the Arabic analyser's form index: the compiled core `src/adapters/arabic/generated/core.ts` and
+  the sharded index `kaikki-ar-tables` under `lexicon/ar/standard/`) — Wiktionary entries, conjugation and declension tables
+  and form-of pages, via kaikki.org; the same file, edition and licence as the Arabic dictionary above (CC BY-SA 4.0, Wiktionary
+  contributors). Changes: every table row, head-line form and form-of page becomes a reading of its written form (the lemma it
+  belongs to, the source's own labels, the vowels, the root where the entry names one); the rules and counts are in
+  `docs/arabic/INDEX.md`. No reading is added that the source does not give. The core, the shards and their manifest are an
+  adaptation under CC BY-SA 4.0.
+
+- **Arabic word frequencies** (inside the Arabic analyser: `src/adapters/arabic/generated/`) — hermitdave/FrequencyWords, the
+  Arabic list `ar_50k.txt` (https://github.com/hermitdave/FrequencyWords; word counts from subtitles, CC BY-SA 4.0). Used ONLY to
+  order the readings of a spelling that several words share; a count is never evidence that a spelling is correct. The count
+  tables are an adaptation under CC BY-SA 4.0.
+
+- **What is not in the Arabic pack**: the Quranic Arabic Corpus morphology file is NOT shipped and is read only for local
+  measurement on the builder's machine. CAMeL Tools data, the Universal Dependencies Arabic PADT treebank and Lane's Lexicon are not
+  used.
+
 ## Code bundled into the applications
 
 - **ts-fsrs** 5.4.2 — MIT License, Copyright (c) Open Spaced Repetition (https://github.com/open-spaced-repetition/ts-fsrs).

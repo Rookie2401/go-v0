@@ -11,7 +11,8 @@
  */
 
 /** What a script unit is. `rule` is a decoding regularity that is not a written symbol of its own (inherent vowel, dagesh, final -e silent …). */
-export type ScriptUnitKind = 'letter' | 'final-form' | 'vowel-sign' | 'mark' | 'digraph' | 'cluster' | 'tone-mark' | 'rule';
+/** `positional-form`: a letter's joined shape at one position in a word (Arabic: the start-and-middle shape of ب ت ث ن ي), shown to the learner as a "joined shape". */
+export type ScriptUnitKind = 'letter' | 'final-form' | 'vowel-sign' | 'mark' | 'digraph' | 'cluster' | 'positional-form' | 'tone-mark' | 'rule';
 
 export interface ScriptUnit {
   /** Stable key inside the profile (and inside its card id). Usually the glyph as written (`б`, `ש׳`, `ch`, `ि`), or a short rule name (`rule-dagesh`). */

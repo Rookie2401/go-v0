@@ -343,6 +343,8 @@ const SCRIPT_TEST: Record<string, { name: string; re: RegExp }> = {
   Hebr: { name: 'Hebrew', re: /\p{Script=Hebrew}/u },
   Grek: { name: 'Greek', re: /\p{Script=Greek}/u },
   Cyrl: { name: 'Cyrillic', re: /\p{Script=Cyrillic}/u },
+  // the letters and the presentation forms (U+FB50-U+FDFF, U+FE70-U+FEFF) a copied page may carry
+  Arab: { name: 'Arabic', re: /\p{Script=Arabic}/u },
 };
 const scriptName = (L: Lang): string => (SCRIPT_TEST[L.adapter.script] ?? SCRIPT_TEST.Latn).name;
 const hasScriptLetter = (L: Lang, s: string): boolean => (SCRIPT_TEST[L.adapter.script] ?? SCRIPT_TEST.Latn).re.test(s);

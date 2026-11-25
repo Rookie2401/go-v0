@@ -31,6 +31,7 @@ const NOTES: Readonly<Record<string, string>> = {
   arc: 'Written for this deck and not yet reviewed by an Aramaist. The names identify the letters and the back gives the conventional transliteration; neither is a recording of how Aramaic was spoken.',
   ru: 'Written for this deck and not yet reviewed by a native speaker. Each back gives the letter’s Russian name, an approximate sound for an English speaker, and what it is easily mistaken for; several letters that look Latin sound different (В, Н, Р, С, У, Х).',
   fr: 'Written for this deck and not yet reviewed by a native speaker. The letters with their French names, the accented letters, then the spelling patterns of the optional Decoding Sprint (ou, oi, eau, the nasal vowels, the silent endings): each sound is the usual one in the French of France, and regional French differs.',
+  ar: 'Written for this deck and not yet reviewed by a native speaker or an Arabist. The 28 letters of the Arabic alphabet in order, each with its name, an approximate sound for an English speaker, how it is transliterated, its dots and its four shapes (alone, at the start, in the middle, at the end of a word), and what it is easily mistaken for. The sounds are one usual value of Modern Standard Arabic; regional speech differs.',
 };
 
 const ALIASES: Readonly<Record<string, string>> = { no: 'nb', nob: 'nb', nno: 'nn', grc: 'el' };

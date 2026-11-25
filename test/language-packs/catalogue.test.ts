@@ -10,15 +10,15 @@ import {
   LANGUAGE_CATALOGUE, LEVEL_LABEL, PACKS, TUTORIALS, audioLine, buildCatalogue, catalogueEntry, levelOf, packCapabilities, validationOf,
 } from '../../packages/language-packs/src';
 
-describe('LANGUAGE_CATALOGUE: exactly twelve languages, in order (Latin, Hebrew and Greek were added 2026-10-17, Russian and French 2026-11-17)', () => {
-  it('Norwegian, German, Albanian, Hindi, Thai, Spanish, Latin, Hebrew, Greek, Aramaic, Russian, French', () => {
-    expect(LANGUAGE_CATALOGUE).toHaveLength(12);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.languageId)).toEqual(['nb', 'de', 'sq', 'hi', 'th', 'es', 'la', 'he', 'el', 'arc', 'ru', 'fr']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.name)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin', 'Hebrew', 'Greek', 'Aramaic', 'Russian', 'French']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.nativeName)).toEqual(['norsk', 'Deutsch', 'shqip', 'हिन्दी', 'ไทย', 'español', 'Latina', 'עברית', 'Ελληνικά', 'אֲרָמִית', 'Русский', 'français']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptId)).toEqual(['Latn', 'Latn', 'Latn', 'Deva', 'Thai', 'Latn', 'Latn', 'Hebr', 'Grek', 'Hebr', 'Cyrl', 'Latn']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptName)).toEqual(['Latin', 'Latin', 'Latin', 'Devanagari', 'Thai script', 'Latin', 'Latin', 'Hebrew script', 'Greek alphabet', 'Hebrew script', 'Cyrillic', 'Latin']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.packIds)).toEqual([['pack:nb', 'pack:nn'], ['pack:de'], ['pack:sq'], ['pack:hi'], ['pack:th'], ['pack:es'], ['pack:la'], ['pack:he'], ['pack:el'], ['pack:arc'], ['pack:ru'], ['pack:fr']]);
+describe('LANGUAGE_CATALOGUE: exactly thirteen languages, in order (Latin, Hebrew and Greek were added 2026-10-17, Russian and French 2026-11-17, Arabic 2026-11-25)', () => {
+  it('Norwegian, German, Albanian, Hindi, Thai, Spanish, Latin, Hebrew, Greek, Aramaic, Russian, French, Arabic', () => {
+    expect(LANGUAGE_CATALOGUE).toHaveLength(13);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.languageId)).toEqual(['nb', 'de', 'sq', 'hi', 'th', 'es', 'la', 'he', 'el', 'arc', 'ru', 'fr', 'ar']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.name)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin', 'Hebrew', 'Greek', 'Aramaic', 'Russian', 'French', 'Arabic']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.nativeName)).toEqual(['norsk', 'Deutsch', 'shqip', 'हिन्दी', 'ไทย', 'español', 'Latina', 'עברית', 'Ελληνικά', 'אֲרָמִית', 'Русский', 'français', 'العربية']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptId)).toEqual(['Latn', 'Latn', 'Latn', 'Deva', 'Thai', 'Latn', 'Latn', 'Hebr', 'Grek', 'Hebr', 'Cyrl', 'Latn', 'Arab']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptName)).toEqual(['Latin', 'Latin', 'Latin', 'Devanagari', 'Thai script', 'Latin', 'Latin', 'Hebrew script', 'Greek alphabet', 'Hebrew script', 'Cyrillic', 'Latin', 'Arabic']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.packIds)).toEqual([['pack:nb', 'pack:nn'], ['pack:de'], ['pack:sq'], ['pack:hi'], ['pack:th'], ['pack:es'], ['pack:la'], ['pack:he'], ['pack:el'], ['pack:arc'], ['pack:ru'], ['pack:fr'], ['pack:ar']]);
   });
 
   it('is frozen and has no team in it: a language is chosen freely, never by team', () => {
@@ -160,7 +160,7 @@ describe('audio, whatWorks and whatDoesNot', () => {
 
   it('where the analyser is not loaded (a lazy build) the entry says so instead of claiming anything', () => {
     const lazy = buildCatalogue({ adapterOf: () => undefined });
-    expect(lazy).toHaveLength(12);
+    expect(lazy).toHaveLength(13);
     for (const e of lazy) {
       expect(e.whatWorks, e.languageId).toBe('The analyser is not loaded in this build, so no card capability is claimed here until it is.');
       expect(e.whatDoesNot, e.languageId).toMatch(/^Nothing is lemmatised or analysed until the analyser is loaded/);

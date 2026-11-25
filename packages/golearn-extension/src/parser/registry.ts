@@ -37,6 +37,8 @@ export const LANGUAGE_META: Readonly<Record<string, LanguageMeta>> = {
   arc: { lang: 'arc', name: 'Biblical Aramaic', pageTag: /^arc(-|$)/, experimental: 'The Aramaic pack is experimental: only its declared Biblical Aramaic excerpt forms have source-backed analyses. Other dialects and unlisted forms are unresolved.' },
   ru: { lang: 'ru', name: 'Russian', pageTag: /^ru(-|$)/, experimental: 'The Russian pack is experimental: readings come from the Wiktionary inflection tables (via kaikki.org); only the commonest words are compiled in, the rest needs the installed index; a form with several readings keeps them all; nothing has been reviewed by a native speaker.' },
   fr: { lang: 'fr', name: 'French', pageTag: /^fr(-|$)/i, experimental: 'The French pack is new and machine-drafted: its word list, rules and grammar notes have not been checked by a native speaker; readings of words outside the word list come from the rules and the Wiktionary-derived dictionary.' },
+  // `ar` must not match `arc` (Biblical Aramaic): the tag ends or continues with a hyphen
+  ar: { lang: 'ar', name: 'Arabic', pageTag: /^ar(-|$)/i, experimental: 'The Arabic pack is experimental: readings come from the Wiktionary conjugation and declension tables (via kaikki.org); only the commonest words are compiled in, the rest needs the installed index; a printed word usually has no short vowels, so a spelling with several readings keeps them all and credits no word until the page or the sentence decides; nothing has been reviewed by a native speaker or an Arabist.' },
 };
 
 /** The languages the parser CAN read (an analyser exists for them, loaded or not). */

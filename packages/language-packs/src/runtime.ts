@@ -122,6 +122,9 @@ export interface PackRuntime {
 
 const MAX_SENSES = 12;
 
+/** The vocalized headword of a full record: the form the source tags canonical. */
+const canonicalOf = (r: FullRecord): string | undefined => r.f?.find((f) => f.t.includes('canonical'))?.f;
+
 export function createPackRuntime(manifest: PackManifest, deps: PackRuntimeDeps): PackRuntime {
   let analyzerCache: PackAnalyzer | undefined;
   const analyzer = (): PackAnalyzer => {
@@ -167,11 +170,14 @@ export function createPackRuntime(manifest: PackManifest, deps: PackRuntimeDeps)
   const byPos = <T extends { pos?: string }>(list: T[], pos: string | undefined): T[] => (pos ? [...list.filter((e) => e.pos === pos), ...list.filter((e) => e.pos !== pos)] : list);
 
   /** The senses (and best frequency rank) of the first of `keys` whose entries have any. */
-  const sensesFrom = (keys: readonly string[], found: Map<string, DictionaryEntry[]>, pos: string | undefined): { senses: GlossSense[]; rank?: number } => {
+  const sensesFrom = (keys: readonly string[], found: Map<string, DictionaryEntry[]>, pos: string | undefined, lemma?: string): { senses: GlossSense[]; rank?: number } => {
     const senses: GlossSense[] = [];
     let rank: number | undefined;
     for (const form of keys) {
-      for (const e of byPos((found.get(form) ?? []).filter(hasOwnSenses), pos)) {
+      const own = byPos((found.get(form) ?? []).filter(hasOwnSenses), pos);
+      // one key may hold several words written alike (Arabic): where the adapter can say which is this lemma, only that word's senses are shown
+      const mine = lemma && analyzer().adapter?.headMatches ? own.filter((e) => analyzer().adapter!.headMatches!(lemma, { ...(e.romanization ? { romanization: e.romanization } : {}) }, e.pos) === true) : [];
+      for (const e of mine.length ? mine : own) {
         if (e.frequencyRank !== undefined) rank = rank === undefined ? e.frequencyRank : Math.min(rank, e.frequencyRank);
         const list = e.senses?.length ? e.senses : e.glosses.map((gloss) => ({ gloss }));
         for (const s of list) {
@@ -212,7 +218,7 @@ export function createPackRuntime(manifest: PackManifest, deps: PackRuntimeDeps)
         // `given`: the dictionary forms a caller that holds the analyser already worked out (the extension worker has no German, Hindi, Thai or Spanish analyser of its own)
         const forms = formsFor(lemma, given);
         const found = await src.lookup(forms);
-        let { senses, rank } = sensesFrom(forms, found, pos);
+        let { senses, rank } = sensesFrom(forms, found, pos, lemma);
         let via: FormOfVia | undefined;
         if (!senses.length) {
           // the forms hit only inflected-form entries (or nothing): follow the form-of relation one hop to the headword
@@ -220,7 +226,7 @@ export function createPackRuntime(manifest: PackManifest, deps: PackRuntimeDeps)
           if (candidates.length) {
             const headwords = await src.lookup(candidates.map((c) => c.lemma));
             for (const c of candidates) {
-              const hit = sensesFrom([c.lemma], headwords, pos);
+              const hit = sensesFrom([c.lemma], headwords, pos, c.lemma);
               if (hit.senses.length) { senses = hit.senses; rank = hit.rank; via = c; break; }
             }
           }
@@ -246,6 +252,12 @@ export function createPackRuntime(manifest: PackManifest, deps: PackRuntimeDeps)
         let records: FullRecord[] = [];
         let via: FormOfVia | undefined;
         for (const k of forms) { records = await full.lookup(k, pos); if (records.length) break; }
+        // one key may hold several words written alike (Arabic): where the adapter can say which is this lemma, that word's records come first and alone
+        const headMatches = analyzer().adapter?.headMatches;
+        if (headMatches && records.length > 1) {
+          const mine = records.filter((r) => headMatches(lemma, { ...(canonicalOf(r) ? { vocalized: canonicalOf(r)! } : {}) }, r.p) === true);
+          if (mine.length) records = mine;
+        }
         if (!records.length) {
           // an inflected form has no record of its own: follow the Level-1 form-of relation one hop and read the headword's record
           const src = source();

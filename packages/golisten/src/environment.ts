@@ -26,7 +26,9 @@ export function speechVarietyLocale(languageId: string, varietyId: string | unde
   if (!varietyId) return undefined;
   const v = normalizeTag(varietyId);
   if (v.includes('gheg')) return '__unsupported_gheg__';
-  const map: Record<string, string> = { 'sq-standard': 'sq-al', 'hi-standard': 'hi-in', 'th-standard': 'th-th', nb: 'nb-no', nn: 'nn-no', 'he-mod': 'he-il', 'el-mod': 'el-gr', 'la-ecclesiastical': 'it-it', 'la-classical': 'it-it' };
+  const map: Record<string, string> = { 'sq-standard': 'sq-al', 'hi-standard': 'hi-in', 'th-standard': 'th-th', nb: 'nb-no', nn: 'nn-no', 'he-mod': 'he-il', 'el-mod': 'el-gr', 'la-ecclesiastical': 'it-it', 'la-classical': 'it-it',
+    // Arabic: both learning varieties play through the registered Modern Standard voice (ar-SA); a synthetic voice is not a Classical recitation (registry gaps say so)
+    'ar-msa': 'ar-sa', 'ar-cla': 'ar-sa' };
   // Ancient and historical periods fall back to the Modern voice (the packs say so); they are not refused like Gheg.
   for (const id of ['he-bib', 'he-mish', 'he-med', 'arc-bib']) map[id] = 'he-il';
   for (const id of ['el-koi', 'el-att', 'el-hom', 'el-med']) map[id] = 'el-gr';

@@ -3,6 +3,7 @@
  * The language-pack capability report (packages/language-packs/src/capabilities.ts): every pack's report must match its
  * manifest and its adapter, and must never claim what the adapter does not do.
  */
+import { arAdapter } from '../../src/adapters/ar';
 import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -29,7 +30,7 @@ import {
 import type { LemmaMeasurement, PackEvidence } from '../../packages/language-packs/src';
 import type { SupportLevel } from '../../src/core';
 
-const ADAPTERS: Record<string, LanguageAdapter> = { arc: arcAdapter, sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter, ru: ruAdapter, fr: frAdapter };
+const ADAPTERS: Record<string, LanguageAdapter> = { arc: arcAdapter, sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter, ru: ruAdapter, fr: frAdapter, ar: arAdapter };
 const q = (l: SupportLevel): string => (l === 'dependable' ? 'dependable' : l === 'limited' ? 'limited' : 'none');
 
 describe('every pack’s report matches its manifest and its adapter', () => {
@@ -153,7 +154,9 @@ describe('lemma quality is derived from the evidence, by one stated rule', () =>
     const level = Object.fromEntries(allPackCapabilities().map((c) => [c.languageId, c.lemma.quality]));
     expect(level).toEqual({ sq: 'limited', es: 'limited', de: 'limited', hi: 'limited', th: 'limited', nb: 'seed-only', nn: 'seed-only', la: 'limited', he: 'limited', el: 'limited', arc: 'limited', ru: 'limited',
       // French is measured on a human treebank (92 % of first-reading lemmas on the held-out part): below the 95 % bar, so limited
-      fr: 'limited' });
+      fr: 'limited',
+      // Arabic: no human-annotated gold exists, so the figures are the machine's own development sets (never held out): they do not raise the level
+      ar: 'limited' });
     // Latin is measured at the bar on the Vulgate New Testament and below it on the classical authors: the rule asks for every corpus
     const la = packCapabilities('la')!.lemma;
     expect(la.measured.map((m) => [m.id, m.goldKind, m.lemmaAccuracy >= DEPENDABLE_ACCURACY])).toEqual([['proiel-nt', 'human-treebank', true], ['perseus-agldt', 'human-treebank', false]]);

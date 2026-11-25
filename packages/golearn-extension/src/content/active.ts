@@ -113,6 +113,7 @@ export class ActiveMode {
   private installed: string[] = [];
   private pageLatin: string | undefined;
   private pageCyrillic: string | undefined;
+  private pageArabic: string | undefined;
   private languages: string[] = [];
   private ready = false;
   private planCache = new WeakMap<Element, { text: string; verdict: LatinVerdict }>();
@@ -199,6 +200,15 @@ export class ActiveMode {
         if (res.languageId === 'ru' && res.basis !== 'team-default') this.pageCyrillic = 'ru';
       }
     }
+    // Arabic script is shared by Persian, Urdu, Pashto, Kurdish and Uyghur: the page's Arabic-script text is Arabic only on evidence too
+    if (this.installed.includes('ar')) {
+      const arabicSample = this.scriptSample(/[\p{Script=Arabic}]+/gu);
+      if (arabicSample) {
+        const res = await this.d.controller.resolvePageLanguage(arabicSample);
+        if (!this.on) return this.state;
+        if (res.languageId === 'ar' && res.basis !== 'team-default') this.pageArabic = 'ar';
+      }
+    }
     this.ready = true;
     this.attachClick();
     this.attachWatchers();
@@ -237,6 +247,7 @@ export class ActiveMode {
     this.installed = [];
     this.pageLatin = undefined;
     this.pageCyrillic = undefined;
+    this.pageArabic = undefined;
     this.ready = false;
     this.planCache = new WeakMap();
     this.nodeLanguages = new WeakMap();
@@ -293,7 +304,7 @@ export class ActiveMode {
     const t0 = clock.now();
     const rootsNodes = this.roots().map((root) => [root, scanner.textNodes(root)] as const);
     const allNodes = rootsNodes.flatMap(([, nodes]) => nodes);
-    const planOpts = { installed: this.installed, adapterOf: (l: string) => this.d.adapterOf(l), pageLatin: this.pageLatin, pageCyrillic: this.pageCyrillic };
+    const planOpts = { installed: this.installed, adapterOf: (l: string) => this.d.adapterOf(l), pageLatin: this.pageLatin, pageCyrillic: this.pageCyrillic, pageArabic: this.pageArabic };
     let plan = planPage(allNodes, planOpts, this.planCache);
     if (plan.missing.size && this.d.loadAnalyser) {
       // a language of the learner's appears on the page and its analyser is not loaded yet: load it, then decide again

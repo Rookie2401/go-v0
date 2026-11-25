@@ -22,9 +22,18 @@ const WIKTIONARY = { label: 'Wiktionary (kaikki.org extract)', licence: 'CC BY-S
 const str = (v: unknown, max = 400): string | undefined => (typeof v === 'string' && v.trim() ? v.replace(/[\u0000-\u001f\u007f]/g, '').trim().slice(0, max) : undefined);
 
 /** The record that matches the part of speech best (the dictionary's POS vocabulary is the parser's), else the first. */
-export function pickRecord(records: LexicalRecord[] | undefined, pos?: string): LexicalRecord | undefined {
+export function pickRecord(records: LexicalRecord[] | undefined, pos?: string, isLemma?: (r: LexicalRecord) => boolean | undefined): LexicalRecord | undefined {
   if (!records?.length) return undefined;
-  return (pos && records.find((r) => r.p === pos)) || records[0];
+  // a key may hold several words written alike (Arabic): the adapter's `headMatches` says which record is the lemma; only then are the others set aside
+  const mine = isLemma ? records.filter((r) => isLemma(r) === true) : [];
+  const from = mine.length ? mine : records;
+  return (pos && from.find((r) => r.p === pos)) || from[0];
+}
+
+/** The `isLemma` of `pickRecord` for an analyser that can tell the words of one key apart (its `headMatches`); undefined for every other language. */
+export function headTest(adapter: { headMatches?: (lemma: string, head: { vocalized?: string }, pos?: never) => boolean | undefined } | undefined, lemma: string | undefined): ((r: LexicalRecord) => boolean | undefined) | undefined {
+  if (!adapter?.headMatches || !lemma) return undefined;
+  return (r) => { const v = r.f?.find((f) => f.t.includes('canonical'))?.f; return adapter.headMatches!(lemma, v ? { vocalized: v } : {}, r.p as never); };
 }
 
 /** The paradigm: the analyser's generated cells merged with the dictionary's table. Undefined when neither side has anything for this lemma. */

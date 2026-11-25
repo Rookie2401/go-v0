@@ -302,6 +302,18 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
     exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
     intro: 'French is read in the Latin alphabet, but its spelling does not sound the way an English reader expects. The pack orientation (the optional Decoding Sprint) introduces the spelling patterns; a Stage 0 course is not part of the French pack.',
   },
+  // Arabic: only the facts are stated. No Stage 0 course content exists (no scenes, no validated audio), as for Russian and French.
+  // The marks are built from code points so that no invisible character sits in the source.
+  ar: {
+    lang: 'ar', name: 'Arabic', voiceLangs: ['ar-SA', 'ar-EG', 'ar'],
+    script: { kind: 'arabic', features: 'spelling', spelling: [
+      { id: 'ar:short-vowels', label: 'fatha, damma, kasra: short vowels written as small marks, usually left out of a printed text', pattern: new RegExp('[' + String.fromCharCode(0x64e, 0x64f, 0x650) + ']') },
+      { id: 'ar:shadda', label: 'shadda: the consonant it stands on is doubled', pattern: new RegExp(String.fromCharCode(0x651)) },
+    ] },
+    bands: { earlyScenes: 4, earlyMaxNew: 5, laterMaxNew: 7, laterMinCoverage: 0.6, exitMinCoverage: 0.95 },
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
+    intro: 'Arabic is written in its own alphabet, from right to left, and the letters join. A complete Stage 0 course and validated audio are not yet available.',
+  },
 };
 
 export function stage0Config(lang: LanguageCode): Stage0LanguageConfig {

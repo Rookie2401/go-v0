@@ -8,6 +8,7 @@
  * looks at the same clues from the other side) still reports what it sees.
  */
 import type { LanguageCode } from '../core';
+import { NOT_ARABIC_LETTERS } from '../adapters/arabic/text';
 
 /** A language the guesser can name: those of the courses, and the neighbours a learner might hand in by mistake (Danish for Norwegian). */
 export type GuessableLanguage = LanguageCode | 'da' | 'en' | 'pt' | 'fr' | 'it' | 'zh' | 'ru' | 'ar' | 'he' | 'el' | 'ko' | 'ja';
@@ -90,6 +91,16 @@ export interface LanguageGuess {
 
 const MIN_WORDS = 40;
 
+/**
+ * Whether Arabic-script text carries letters Arabic does not use (پ چ ژ گ ٹ ں ے ...): one stray name in a long text does not decide, so the
+ * foreign letters must be at least 1 % of the Arabic letters and at least two, or, in a text of under 40 letters, at least one.
+ */
+export function looksNotArabic(text: string): boolean {
+  let letters = 0, foreign = 0;
+  for (const ch of text) { if (!/\p{Script=Arabic}/u.test(ch) || !/\p{L}/u.test(ch)) continue; letters++; if (NOT_ARABIC_LETTERS.test(ch)) foreign++; }
+  return foreign >= 1 && (letters < 40 || (foreign >= 2 && foreign / letters >= 0.01));
+}
+
 /** The language a text looks to be in. Sure only on a clear script or a clear lead in common words. */
 export function guessLanguage(text: string): LanguageGuess {
   const letters = text.match(/\p{L}/gu) ?? [];
@@ -99,6 +110,8 @@ export function guessLanguage(text: string): LanguageGuess {
   const [script, n] = [...counts].sort((a, b) => b[1] - a[1])[0];
   const words = (text.match(/\p{L}[\p{L}\p{M}'’]*/gu) ?? []).map((w) => w.toLowerCase());
   // a script that belongs to one language settles it, once it is most of the letters (a Thai book may quote Latin)
+  // the Arabic script is also Persian, Urdu, Pashto, Kurdish and Uyghur: letters only those use (counted on the printed text, before any folding) mean it is not Arabic
+  if (script === 'ar' && looksNotArabic(text)) return { script, words: words.length, shares: [] };
   if (script !== 'latin' && script !== 'other') return n / letters.length >= 0.5 ? { lang: script as GuessableLanguage, script, words: words.length, shares: [] } : { script, words: words.length, shares: [] };
   if (script === 'other') return { script, words: words.length, shares: [] };
   const shareOf = (set: ReadonlySet<string>) => (words.length ? words.filter((w) => set.has(w)).length / words.length : 0);
@@ -154,6 +167,8 @@ export function fitsTeamLanguage(text: string, team: { lang: LanguageCode; count
     const name = (LANGUAGE_NAMES as Record<string, string>)[guess.script];
     return turnAway(name ? `is written in the ${name} script` : 'is written in another script');
   }
+  // an Arabic team given text in the Arabic script that is another language of it (Persian, Urdu, Pashto, Kurdish, Uyghur: their own letters name them)
+  if (team.lang === 'ar' && guess.script === 'ar' && looksNotArabic(text)) return turnAway('is written in the Arabic script but with letters Arabic does not use (it looks like Persian, Urdu, Pashto or Kurdish)');
   // a Thai or Hindi team given a Latin-script text of some length: not their language
   if ((team.lang === 'th' || team.lang === 'hi') && guess.script === 'latin' && guess.words >= MIN_WORDS) return turnAway('is written in the Latin alphabet');
   return { ok: true, guess };

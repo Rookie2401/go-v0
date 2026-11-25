@@ -34,7 +34,7 @@ import { unitIds } from '../../../repository-contract/src';
 import type { ContentServices, EventSink, MetricSink } from './services';
 import type { GoEvent } from '../../../repository-contract/src';
 import type { LanguageAdapter, PartOfSpeech } from '../../../../src/core';
-import { buildParadigm, etymologyOf, formRomanOf, pickRecord, pronunciationOf, relationsOf, segmentationsOf, selectedCellKeys, sensesOf, structureOf, type LexicalRecord } from './enrich';
+import { buildParadigm, etymologyOf, formRomanOf, headTest, pickRecord, pronunciationOf, relationsOf, segmentationsOf, selectedCellKeys, sensesOf, structureOf, type LexicalRecord } from './enrich';
 import type { TranslationRequest, TranslationResult } from '../translation/provider';
 
 export interface TranslationEngine {
@@ -557,7 +557,7 @@ export class LookupController {
               if (!live()) return;
               if (!reply || !reply.ok) { this.d.ui.update({ enrichment: { state: 'unavailable', message: reply?.message ?? 'The dictionary could not be asked for the full entry.' } }); return; }
               const adapter = this.d.analyserOf?.(languageId);
-              const record = pickRecord(reply.found ? (reply.records as LexicalRecord[]) : [], card.pos);
+              const record = pickRecord(reply.found ? (reply.records as LexicalRecord[]) : [], card.pos, headTest(adapter, card.lemma));
               const hint = { features: Object.fromEntries(card.features.map((f) => [f.key, f.value])), surface: card.surface };
               const paradigm = card.lemma && card.pos ? buildParadigm(adapter, languageId, card.lemma, card.pos as PartOfSpeech, record, hint) : undefined;
               const selected = selectedCellKeys(adapter, paradigm, hint.features, card.surface);

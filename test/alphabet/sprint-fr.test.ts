@@ -284,8 +284,9 @@ describe('French sprint: planning', () => {
 });
 
 describe('French sprint: registration', () => {
-  it('is the last sprint language and loads for fr and its varieties', async () => {
-    expect(SPRINT_LANGUAGES.at(-1)).toBe('fr');
+  it('is a sprint language (Arabic follows it) and loads for fr and its varieties', async () => {
+    expect(SPRINT_LANGUAGES).toContain('fr'); // Arabic was registered after it (test/alphabet/sprint-ar.test.ts)
+    expect(SPRINT_LANGUAGES.at(-1)).toBe('ar');
     expect(sprintLanguageOf('fr')).toBe('fr');
     expect(sprintLanguageOf('fr-CA')).toBe('fr');
     expect(sprintLanguageOf('fr-BE')).toBe('fr');

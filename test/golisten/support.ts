@@ -140,6 +140,7 @@ export const STORY: Record<LanguageCode, FixtureSentence[]> = {
     { tokens: ['Dieu', 'me', 'pardonne'].map(w).concat(dot()) },
     { tokens: ['Je', 'comprends', 'mon', 'cœur'].map(w).concat(dot()) },
   ],
+  ar: [{ tokens: ['كَتَبَ', 'الْوَلَدُ', 'الدَّرْسَ'].map(w).concat(dot()) }],
 };
 
 /** Scripture: verse numbers are metadata (verseRefs), never in the sentence text. */
@@ -193,6 +194,7 @@ export const SCRIPTURE: Record<LanguageCode, FixtureSentence[]> = {
     { tokens: ['Car', 'Dieu', 'a', 'tant', 'aimé', 'le', 'monde'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
     { tokens: ['Si', 'nous', 'confessons', 'nos', 'péchés'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
   ],
+  ar: [{ tokens: ['كَتَبَ', 'الْوَلَدُ', 'الدَّرْسَ'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] }],
 };
 
 /** Rewrites one sentence like the v2 importer: the old sentence is retired, a new one (new key) takes its place; bumps contentVersion. */

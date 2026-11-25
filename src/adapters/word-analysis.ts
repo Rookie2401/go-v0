@@ -9,6 +9,7 @@ import { realizeFromCitation, type VerbShape } from '../core/english-verb';
 import { greekWordAnalysis } from './greek/word-analysis';
 import { hebrewWordAnalysis } from './hebrew/word-analysis';
 import { latinWordAnalysis } from './latin/word-analysis';
+import { arabicWordAnalysis } from './arabic/word-analysis';
 
 const TIME: Record<string, VerbShape['time']> = { Pres: 'present', Past: 'past', Imp: 'progressive-past', Fut: 'future', Pqp: 'pluperfect' };
 const single = (v: string | undefined): string | undefined => (v && !v.includes(',') ? v : undefined);
@@ -46,6 +47,7 @@ export function wordAnalysisFor(input: CandidateMeaningInput): WordAnalysis {
     case 'el': return greekWordAnalysis(input);
     case 'he': return hebrewWordAnalysis(input);
     case 'la': return latinWordAnalysis(input);
+    case 'ar': return arabicWordAnalysis(input);
     default: return candidateWordAnalysis(input, { realize: (_lemma, _pos, m, gloss) => genericInflectedMeaning(m, gloss) });
   }
 }

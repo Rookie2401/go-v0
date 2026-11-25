@@ -19,6 +19,7 @@ export const LANGUAGE_ROWS: Language[] = [
   { id: 'arc', name: 'Aramaic (Biblical)', endonym: 'אֲרָמִית', script: 'Hebr', direction: 'rtl', whitespaceDelimited: true },
   { id: 'ru', name: 'Russian', endonym: 'Русский', script: 'Cyrl', direction: 'ltr', whitespaceDelimited: true },
   { id: 'fr', name: 'French', endonym: 'Français', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
+  { id: 'ar', name: 'Arabic', endonym: 'العربية', script: 'Arab', direction: 'rtl', whitespaceDelimited: true },
 ];
 
 export const COURSES: Course[] = [
@@ -85,6 +86,12 @@ export const COURSES: Course[] = [
     // Active target: contemporary standard written French. Regional words (Québec, Belgium, Switzerland, Africa) are labelled where the
     // sources label them; older spelling and the literary tenses are recognised and explained, never suppressed.
     variety: { target: 'fr-FR', within: [] },
+  },
+  {
+    id: 'arabic-ar', lang: 'ar', country: 'Arabic', title: 'Arabic', preferredLocales: ['ar', 'ar-SA', 'ar-EG'],
+    // Active target: Modern Standard Arabic; Classical Arabic (ar-cla) is a second learning variety of the same language (the varieties registry).
+    // The spoken dialects are recognised and kept apart, never read as Standard Arabic.
+    variety: { target: 'ar-msa', within: [] },
   },
 ];
 

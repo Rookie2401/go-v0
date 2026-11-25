@@ -36,6 +36,8 @@
     "lexicon:shard": "vite-node --config scripts/vite.config.ts scripts/lexicon-shard.mts --set all",
     "ru:build-index": "vite-node --config scripts/vite.config.ts scripts/ru-build-index.mts",
     "ru:eval": "vite-node --config scripts/vite.config.ts scripts/ru-eval-ud.mts",
+    "ar:build-index": "vite-node --config scripts/vite.config.ts scripts/ar-build-index.mts --",
+    "ar:eval": "vite-node --config scripts/vite.config.ts scripts/ar-eval.mts --",
     "el:shard-ancient": "vite-node --config scripts/vite.config.ts scripts/lexicon-shard.mts --set el/ancient",
     "el:shard-modern": "vite-node --config scripts/vite.config.ts scripts/lexicon-shard.mts --set el/modern",
     "he:shard-biblical": "vite-node --config scripts/vite.config.ts scripts/lexicon-shard.mts --set he/biblical",

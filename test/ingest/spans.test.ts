@@ -17,6 +17,8 @@ const SAMPLE = (lang: string): string => (lang === 'arc' ? 'daniel-2-4b' : lang 
  */
 const OWN_SAMPLES: Readonly<Record<string, readonly string[]>> = {
   fr: ["L'homme est ici.", 'L’homme dit : « Bonjour », puis Dis-le-moi, ma grand-mère.', 'Un café noir ? Je n’ai pas d’argent.', 'Nous avons deux enfants. Il entra dans la maison.'],
+  // Arabic bundles no course texts either (the pack reads web pages); the sentences are written for this test
+  ar: ['كَتَبَ الْوَلَدُ الدَّرْسَ.', 'ذَهَبَ الطَّالِبُ إِلَى الْمَدْرَسَةِ.', 'قال الرجل: «هذا كتاب جديد» (في البيت).', 'وَلَكِنْ هَلْ ذَهَبَ إِلَى الْمَدْرَسَةِ؟ نَعَمْ، وَكَتَبَ الدَّرْسَ.'],
 };
 const hasBundled = (lang: string): boolean => bundled.some((x) => x.lang === lang);
 

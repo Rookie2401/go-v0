@@ -84,7 +84,7 @@ function build(lang: LanguageCode): boolean {
           for (const r of records) {
             if (!r.f?.length) continue;
             tableRecords++;
-            for (const form of r.f) if (isTableForm(form)) builder.addTable(normalize(form.f), r.w, r.p ?? null);
+            for (const form of r.f) if (isTableForm(form, lang)) builder.addTable(normalize(form.f), r.w, r.p ?? null);
           }
         }
         sample();

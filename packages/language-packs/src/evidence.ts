@@ -70,6 +70,7 @@ const LATIN_REPORT = 'data/review/latin-eval/report.json';
 const THAI_BENCHMARKS = 'docs/thai/BENCHMARKS.md';
 const RUSSIAN_REPORT = 'docs/russian/eval.json';
 const FRENCH_REPORT = 'docs/french/EVALUATION.json';
+const ARABIC_EVAL = 'docs/arabic/EVAL.md';
 
 /** The form index of a pack's declared dictionary: form → lemma and part of speech, for the words the hand list does not hold. */
 const formsIndex = (lang: string, id: string): LemmaSource => ({
@@ -196,6 +197,20 @@ export const PACK_EVIDENCE: Readonly<Record<string, PackEvidence>> = Object.free
         id: 'ud-gsd-dev', corpus: 'French news, encyclopedia and web sentences (the dev part of UD French GSD)', gold: 'the Universal Dependencies French GSD treebank', goldKind: 'human-treebank', heldOut: false,
         items: 28889, lemmaAccuracy: 92.43, analyser: 'adapter-fr@1', measuredOn: '2026-11-17', source: FRENCH_REPORT,
       },
+    ],
+  },
+  // Arabic: every reading is a row of Wiktionary's Arabic tables or form-of pages (docs/arabic/INDEX.md). There is NO human-annotated Arabic
+  // gold here: the two figures are the adapter measured on development sets that were written AND annotated by the machine that built the
+  // analyser (docs/arabic/EVAL.md, "Read this first"), not held out and not a treebank. They are printed there with the undecided share
+  // (15.5 % of the unvocalized set) and the confident-and-wrong share (2.1 %) beside them, because the lemma figure alone rewards a guess.
+  ar: {
+    lemmaSources: [
+      { kind: 'attested-form-index', id: 'kaikki-ar-tables', label: 'Wiktionary’s Arabic conjugation and declension tables and form-of pages', size: { count: 239260, unit: 'forms' }, source: 'public/lexicon/ar/standard/manifest.json' },
+      formsIndex('ar', 'kaikki-ar@2026-09-22'),
+    ],
+    lemmaMeasurements: [
+      { id: 'msa-dev', corpus: 'eighty Modern Standard Arabic sentences without vowels, written for development', gold: 'labels written by the machine that built the analyser, checked by nobody', goldKind: 'ai-labelled', heldOut: false, items: 670, lemmaAccuracy: 91.5, analyser: 'adapter-ar@1', measuredOn: '2026-11-25', source: ARABIC_EVAL },
+      { id: 'msa-dev-vocalized', corpus: 'fifteen of the same sentences with their vowels printed', gold: 'labels written by the machine that built the analyser, checked by nobody', goldKind: 'ai-labelled', heldOut: false, items: 87, lemmaAccuracy: 96.6, analyser: 'adapter-ar@1', measuredOn: '2026-11-25', source: ARABIC_EVAL },
     ],
   },
 });

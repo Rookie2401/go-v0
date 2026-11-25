@@ -243,6 +243,8 @@ export const SALVAGE_ALLOW_LIST: ReadonlyArray<{ prefix: string; status: 'salvag
   { prefix: 'src/adapters/greek/', status: 'salvaged', why: 'Greek lexicon, morphology and rules' },
   { prefix: 'src/adapters/fr.ts', status: 'salvaged', why: 'French analyser (experimental; reads web pages, bundles no course texts)' },
   { prefix: 'src/adapters/french/', status: 'salvaged', why: 'French lexicon, morphology and rules' },
+  { prefix: 'src/adapters/ar.ts', status: 'salvaged', why: 'Arabic analyser (experimental; Wiktionary readings, reads web pages, bundles no course texts)' },
+  { prefix: 'src/adapters/arabic/', status: 'salvaged', why: 'Arabic text views, form index, clitics, sentence rules and notes' },
   { prefix: 'src/adapters/word-analysis.ts', status: 'salvaged', why: 'the word analysis of a reading in any language (the English of a verb form, from its citation and features)' },
   { prefix: 'src/core/', status: 'salvaged', why: 'adapter contract, token/analysis types, item ids (pure)' },
   { prefix: 'src/dict/', status: 'salvaged', why: 'dictionary format, sharded loader, mapper (browser-safe, licence-labelled)' },

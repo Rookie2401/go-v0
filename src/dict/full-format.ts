@@ -33,7 +33,7 @@ export const ETYMOLOGY_TEMPLATES: readonly string[] = [
   'inh', 'bor', 'der', 'cog', 'lbor', 'slbor', 'clq', 'calque', 'af', 'affix', 'suffix', 'prefix', 'com', 'compound', 'blend', 'uder', 'unc', 'onom',
 ];
 /** Languages whose `romanization` form rows go to `rom` instead of the forms list. */
-export const ROMANIZATION_LANGS: readonly string[] = ['hi', 'th', 'ru'];
+export const ROMANIZATION_LANGS: readonly string[] = ['hi', 'th', 'ru', 'ar'];
 
 export interface FullSense { g: string; t?: string[]; x?: string[] }
 /** One tagged form: `f` the form, `t` the source's tags verbatim (sorted), `s` the source's `source` ('conjugation', 'declension' ...), `r` its romanization (Hindi tables). */

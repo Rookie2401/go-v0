@@ -6,11 +6,14 @@ import { AR_BRIEF_WORDS, AR_PROFILE, arLetterPositions, AR_SHAPE_WORDS, AR_STAGE
 import { decodableAfter, sprintOrder, wordDependencies } from '../../packages/language-packs/src/alphabet-sprint/select';
 import { READ_AS } from '../../packages/language-packs/src/alphabet-sprint/words/ar';
 import { ARABIC_ALPHABET } from '../../src/adapters/arabic/text';
+import { AR_ALPHABET } from '../../src/adapters/arabic/alphabet';
 import { profileChecks } from './sprint-kit';
+import { loadSprintProfiles, SPRINT_LANGUAGES, sprintLanguageOf } from '../../packages/language-packs/src/alphabet-sprint/profiles';
 
-// there is no Arabic table in the old Alphabet deck yet (packages/goreview/app/alphabetLetters.ts), so every non-rule key is new here; once
-// HAND_LETTERS.ar exists with the bare letter as its glyph, the letters carry over and this list may shrink to the non-letter units.
-const newKeys = AR_PROFILE.units.filter((u) => u.kind !== 'rule').map((u) => u.key);
+// the old Alphabet deck (packages/goreview/app/alphabetLetters.ts, HAND_LETTERS.ar) holds the 28 bare letters of the analyser's alphabet table, so those
+// carry over; everything else (hamza on its own, the spellings, marks and shapes) is new to the Sprint.
+const DECK_LETTERS = new Set(AR_ALPHABET.map((l) => l.letter));
+const newKeys = AR_PROFILE.units.filter((u) => u.kind !== 'rule' && !DECK_LETTERS.has(u.key)).map((u) => u.key);
 profileChecks(AR_PROFILE, { newKeys });
 
 const deps = (f: string) => arabicDependencies(f); // the HONEST list; course lists are tested in the stages block
@@ -164,7 +167,7 @@ describe('Arabic positional shapes (G1)', () => {
     for (const k of SHAPE_KEYS) {
       const u = AR_PROFILE.units.find((x) => x.key === k)!;
       expect(u.display, k).toMatch(/ـ/);
-      expect(['cluster', 'final-form']).toContain(u.kind);
+      expect(['positional-form', 'final-form']).toContain(u.kind);
       expect(u.kind === 'final-form', k).toBe(/-end$/.test(k));
     }
   });
@@ -431,5 +434,22 @@ describe('Arabic letter positions and shape units (K4–K7)', () => {
       expect(w.pronunciation, f).toBeTruthy();
       expect(w.gloss.split(' — ')[1], f).toBeTruthy();
     }
+  });
+});
+
+describe('Arabic sprint: registration', () => {
+  it('is the last sprint language, and loads for ar and its varieties', async () => {
+    expect(SPRINT_LANGUAGES.at(-1)).toBe('ar');
+    expect(sprintLanguageOf('ar')).toBe('ar');
+    expect(sprintLanguageOf('ar-msa')).toBe('ar');
+    expect(sprintLanguageOf('ar-cla')).toBe('ar');
+    expect(await loadSprintProfiles('ar')).toEqual([AR_PROFILE]);
+    expect(await loadSprintProfiles('ar-cla')).toEqual([AR_PROFILE]);
+  });
+
+  it('has its own kind for the joined shape of a letter, and every other unit keeps its old kind', () => {
+    const kinds = new Set(AR_PROFILE.units.map((u) => u.kind));
+    expect(kinds.has('positional-form')).toBe(true);
+    expect(kinds.has('cluster')).toBe(false);
   });
 });

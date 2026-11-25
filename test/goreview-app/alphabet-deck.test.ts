@@ -33,7 +33,7 @@ const glyphs = (lang: string): string[] => alphabetCards(lang).map((c) => c.glyp
 describe('Alphabet: the cards', () => {
   it('every language that has a pack has its alphabet, with the letters it should have', () => {
     expect([...ALPHABET_LANGUAGES].sort()).toEqual(Object.keys(PACKS).sort());
-    const count: Record<string, number> = { es: 30, sq: 36, de: 30, nb: 29, nn: 29, la: 25, el: 24, he: 27, arc: 27, th: 77, hi: 71, ru: 33, fr: 69 };
+    const count: Record<string, number> = { es: 30, sq: 36, de: 30, nb: 29, nn: 29, la: 25, el: 24, he: 27, arc: 27, th: 77, hi: 71, ru: 33, fr: 69, ar: 28 };
     for (const lang of Object.keys(PACKS)) {
       const cards = alphabetCards(lang);
       expect(cards, lang).toHaveLength(count[lang]);
@@ -66,6 +66,8 @@ describe('Alphabet: the cards', () => {
     expect(glyphs('arc')).toEqual(glyphs('he')); // the same square script
     expect(glyphs('th')[0]).toBe('ก');
     expect(glyphs('hi')[0]).toBe('अ');
+    expect(glyphs('ar')[0]).toBe('ا'); // the 28 bare letters of the Arabic alphabet, in order
+    expect(glyphs('ar').at(-1)).toBe('ي');
   });
 
   it('says a letter\'s name and then its sound, and nothing a learner cannot use', () => {

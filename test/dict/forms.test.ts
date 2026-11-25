@@ -83,6 +83,21 @@ describe('forms builder', () => {
     expect(isTableForm(row('-', 'plural'))).toBe(false);
     expect(isTableForm(row('ความรัก', 'abstract-noun'))).toBe(false); // derived word, not an inflection
   });
+  it('reads the Arabic table tags (dual, jussive, voice, construct ...) only for Arabic, so no other language keeps a row it did not keep', () => {
+    const row = (f: string, ...t: string[]) => ({ f, t });
+    // a row that carries ONLY the Arabic tags was dropped before; it is a form of the lemma for Arabic and still nothing for the others
+    for (const tag of ['dual', 'jussive', 'active', 'passive', 'construct', 'imperfective', 'non-past', 'paucal', 'collective', 'singulative', 'elative', 'energetic']) {
+      expect(isTableForm(row('كتابان', tag), 'ar'), tag).toBe(true);
+      expect(isTableForm(row('Kampf', tag), 'de'), tag).toBe(false);
+      expect(isTableForm(row('Kampf', tag)), tag).toBe(false);
+    }
+    // the tags every language reads are unchanged, and an Arabic row marked as an error or as the citation form is still left out
+    expect(isTableForm(row('كَتَبَ', 'masculine', 'singular'), 'ar')).toBe(true);
+    expect(isTableForm(row('كَتَبَ', 'canonical', 'form-i'), 'ar')).toBe(false);
+    expect(isTableForm(row('ʔana', 'romanization'), 'ar')).toBe(false);
+    expect(isTableForm(row('كتابان', 'error-unrecognized-form', 'dual'), 'ar')).toBe(false);
+    expect(isTableForm(row('ٱلْكِتَابُ الْجَدِيدُ', 'definite', 'singular'), 'ar')).toBe(false); // a phrase
+  });
   it('is independent of the order entries arrive in, and sorts its keys', () => {
     const list = [inflected('b', 'B', 'NOUN'), inflected('a', 'A', 'NOUN'), inflected('c', 'C', 'NOUN')];
     const build = (l: DictionaryEntry[]) => { const b = createFormsBuilder(); for (const e of l) b.add(e); return JSON.stringify([...b.finish(2).shards].sort((x, y) => x[0] - y[0])); };

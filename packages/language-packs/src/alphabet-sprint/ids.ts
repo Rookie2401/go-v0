@@ -4,7 +4,7 @@
  * views skip `class:` ids too). A character card keeps the id the Alphabet deck has used since 2026-11-14, so a learner's letters
  * carry over:
  *
- *   class:<lang>-alphabet:<key>                     a character (letter, final form, vowel sign, mark, digraph, cluster, tone mark)
+ *   class:<lang>-alphabet:<key>                     a character (letter, final form, vowel sign, mark, digraph, cluster, positional form, tone mark)
  *   class:<lang>-alphabet-rule:<key>                a decoding rule
  *   class:<lang>-alphabet-word:<form>               a word to decode
  *   class:<lang>-alphabet-phrase:<form>             a phrase to read

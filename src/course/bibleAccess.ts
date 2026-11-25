@@ -126,6 +126,14 @@ export const BIBLE_ACCESS: Readonly<Record<LanguageCode, BibleAccessRecord>> = {
     rights: 'Not verified by this project: the Louis Segond 1910 is widely distributed as public domain, but no edition has been checked here.',
     historicalVarieties: ['Early twentieth-century literary French (passé simple, formal negation)'],
   },
+  ar: {
+    lang: 'ar', translation: 'Arabic Bible (no edition chosen)', edition: 'not bundled', status: 'not-bundled',
+    sourceUrl: 'https://ebible.org/find/',
+    method: 'No Arabic Bible text is bundled. The Arabic pack reads an Arabic Bible (or the Quran) on an ordinary web page through the GoLearn extension, like any other page.',
+    importMethod: 'Nothing is imported. An edition would be bundled only after its rights and its wording were checked against the printing.',
+    rights: 'Not verified by this project: no Arabic Bible edition has been checked for rights or against its printing.',
+    historicalVarieties: ['Classical Arabic (the Quran, classical literature), recognised with Quranic spelling understood'],
+  },
 };
 
 export function bibleAccessFor(lang: LanguageCode): BibleAccessRecord {

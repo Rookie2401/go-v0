@@ -22,6 +22,7 @@ import { heAdapter } from '../../../src/adapters/he';
 import { elAdapter } from '../../../src/adapters/el';
 import { ruAdapter } from '../../../src/adapters/ru';
 import { frAdapter, loadFrenchLexicon } from '../../../src/adapters/fr';
+import { arAdapter } from '../../../src/adapters/ar';
 import type { LanguageAdapter } from '../../../src/core';
 
 /**
@@ -29,7 +30,8 @@ import type { LanguageAdapter } from '../../../src/core';
  * packs (German, Hindi, Thai, Norwegian Bokmål and Nynorsk, Hebrew, Greek). A language outside this set falls back to the
  * tokenize-only analyser.
  */
-const BUILT_IN: Readonly<Record<string, LanguageAdapter>> = Object.freeze({ sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter, arc: arcAdapter, ru: ruAdapter, fr: frAdapter });
+const BUILT_IN: Readonly<Record<string, LanguageAdapter>> = Object.freeze({ sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter, arc: arcAdapter, ru: ruAdapter, fr: frAdapter,
+  ar: arAdapter });
 
 /** The analyser the runtime bundles for a language, if any. */
 export function builtInAdapter(languageId: string): LanguageAdapter | undefined {

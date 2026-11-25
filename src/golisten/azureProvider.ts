@@ -97,6 +97,14 @@ export const AZURE_VOICES: Record<LanguageCode, AzureVoiceEntry[]> = {
     { id: 'fr-BE-CharlineNeural', locale: 'fr-BE', gender: 'female' },
     { id: 'fr-CH-ArianeNeural', locale: 'fr-CH', gender: 'female' },
   ],
+  // Arabic: Azure's neural voices (ids from memory of the Azure voice gallery; unverified against the live list, which `listVoices` reads at runtime when it can).
+  // A synthetic Modern Standard voice is not a Classical (Quranic) recitation.
+  ar: [
+    { id: 'ar-SA-ZariyahNeural', locale: 'ar-SA', gender: 'female' },
+    { id: 'ar-SA-HamedNeural', locale: 'ar-SA', gender: 'male' },
+    { id: 'ar-EG-SalmaNeural', locale: 'ar-EG', gender: 'female' },
+    { id: 'ar-EG-ShakirNeural', locale: 'ar-EG', gender: 'male' },
+  ],
 };
 
 export interface AzureSpeechOptions {

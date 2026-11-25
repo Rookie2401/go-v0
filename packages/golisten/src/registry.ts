@@ -14,8 +14,8 @@
  */
 import type { PronunciationKind, PhoneticDetail, VoiceDescriptor } from './contracts';
 import { albanianPhonetics } from './phonetics';
-import { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, RUSSIAN_DEVICE_TAGS, FRENCH_DEVICE_TAGS } from './deviceTags';
-export { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, RUSSIAN_DEVICE_TAGS, FRENCH_DEVICE_TAGS } from './deviceTags';
+import { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, RUSSIAN_DEVICE_TAGS, FRENCH_DEVICE_TAGS, ARABIC_DEVICE_TAGS } from './deviceTags';
+export { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS, RUSSIAN_DEVICE_TAGS, FRENCH_DEVICE_TAGS, ARABIC_DEVICE_TAGS } from './deviceTags';
 
 export type VoiceSource =
   | { kind: 'device'; langTags: string[] }
@@ -285,6 +285,15 @@ export function pronunciationRegistries(): VoiceRegistry[] {
         azureEntry('fr-CA-SylvieNeural', 'Sylvie', 'female', { languageId: 'fr', locale: 'fr-CA', name: 'French (Canada)' }),
       ],
       gaps: ['No French recordings are registered; nothing is claimed.', 'A synthetic voice decides liaison and the silent letters by its own rules; it is not a reference for either.'],
+    },
+    {
+      ...deviceRegistry('ar', [...ARABIC_DEVICE_TAGS], 'Arabic'),
+      entries: [
+        ...deviceRegistry('ar', [...ARABIC_DEVICE_TAGS], 'Arabic').entries,
+        azureEntry('ar-SA-ZariyahNeural', 'Zariyah', 'female', { languageId: 'ar', locale: 'ar-SA', name: 'Arabic (Saudi Arabia)' }),
+        azureEntry('ar-SA-HamedNeural', 'Hamed', 'male', { languageId: 'ar', locale: 'ar-SA', name: 'Arabic (Saudi Arabia)' }),
+      ],
+      gaps: ['No Arabic recordings are registered; nothing is claimed.', 'A synthetic Modern Standard voice is not a Classical (Quranic) recitation: it may leave out or change vowels the page printed and does not follow tajwid; the Arabic of a recording from one country is not the Arabic of the page.'],
     },
   ];
 }

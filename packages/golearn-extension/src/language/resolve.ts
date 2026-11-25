@@ -39,6 +39,7 @@ import type { LanguageAdapter } from '../../../../src/core';
 import type { LanguageEvidence, LanguageResolution, ResolveLanguage } from '../contract/language';
 import { parserAdapter } from '../parser';
 import { notRussianCyrillic } from './cyrillic';
+import { ARABIC_MIN_HITS, ARABIC_MIN_SHARE, arabicFunctionShare, notArabicScript } from './arabic';
 
 export type { LanguageEvidence, LanguageResolution, ResolveLanguage } from '../contract/language';
 
@@ -92,9 +93,12 @@ export const PACK_VARIETIES: Readonly<Record<string, readonly string[]>> = {
   arc: ['arc-bib'],
   ru: ['ru-RU'],
   fr: ['fr-FR', 'fr-CA', 'fr-BE', 'fr-CH'],
+  // the learning varieties; the spoken dialects are recognised and kept apart (NOT_THE_PACK), never chosen
+  ar: ['ar-msa', 'ar-cla'],
 };
 /** The script each pack's language is written in; a tag that states another script (hi-Latn) names something no pack analyses. */
-const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', arc: 'hebr', el: 'grek', ru: 'cyrl', fr: 'latn' };
+const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', arc: 'hebr', el: 'grek', ru: 'cyrl', fr: 'latn',
+  ar: 'arab' };
 
 const PRIMARY: Readonly<Record<string, string>> = {
   sq: 'sq', sqi: 'sq', als: 'sq', aln: 'sq',
@@ -113,6 +117,9 @@ const PRIMARY: Readonly<Record<string, string>> = {
   // are NOT listed, so a page that declares one of them is a page no pack covers
   ru: 'ru', rus: 'ru',
   fr: 'fr', fra: 'fr', fre: 'fr',
+  // Arabic (ar), Standard Arabic (arb) and the ISO 639-2 code (ara). Persian (fa), Urdu (ur), Pashto (ps), Sorani Kurdish (ckb), Uyghur (ug) and Sindhi (sd)
+  // share the script and are NOT listed: a page that declares one of them is a page no pack covers. `arc` (Aramaic) is another language: tags match whole.
+  ar: 'ar', ara: 'ar', arb: 'ar',
 };
 /** Tags that look like a pack language but are not the pack's language. */
 const NOT_THE_PACK: Readonly<Record<string, string>> = {
@@ -127,6 +134,15 @@ const NOT_THE_PACK: Readonly<Record<string, string>> = {
   sa: 'Sanskrit is not Hindi (it shares the script)',
   awa: 'Awadhi is its own language, read beside Hindi, not analysed as Hindi',
   bra: 'Braj is its own language, read beside Hindi, not analysed as Hindi',
+  // the spoken dialects: recognised and kept apart, never read as Standard Arabic
+  arz: 'Egyptian Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  apc: 'Levantine Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  ajp: 'South Levantine Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  afb: 'Gulf Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  acm: 'Iraqi Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  ary: 'Moroccan Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  aeb: 'Tunisian Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
+  apd: 'Sudanese Arabic is a spoken dialect, recognised beside Arabic and not analysed as Standard Arabic',
 };
 const NORWEGIAN_UNSPECIFIED = new Set(['no', 'nor']);
 /** Confidence given to a bare "no" that the learner's single installed Norwegian pack settles: below what a declared nb or nn gets. */
@@ -201,9 +217,9 @@ function sampleWords(sample: string): string[] {
   return out;
 }
 
-interface ScriptShare { latin: number; thai: number; devanagari: number; hebrew: number; greek: number; cyrillic: number; letters: number }
+interface ScriptShare { latin: number; thai: number; devanagari: number; hebrew: number; greek: number; cyrillic: number; arabic: number; letters: number }
 function scriptShare(sample: string): ScriptShare {
-  const r: ScriptShare = { latin: 0, thai: 0, devanagari: 0, hebrew: 0, greek: 0, cyrillic: 0, letters: 0 };
+  const r: ScriptShare = { latin: 0, thai: 0, devanagari: 0, hebrew: 0, greek: 0, cyrillic: 0, arabic: 0, letters: 0 };
   for (const ch of sample.slice(0, MAX_SAMPLE_CHARS)) {
     if (!/\p{L}/u.test(ch)) continue;
     r.letters++;
@@ -213,6 +229,7 @@ function scriptShare(sample: string): ScriptShare {
     else if (/\p{Script=Hebrew}/u.test(ch)) r.hebrew++;
     else if (/\p{Script=Greek}/u.test(ch)) r.greek++;
     else if (/\p{Script=Cyrillic}/u.test(ch)) r.cyrillic++;
+    else if (/\p{Script=Arabic}/u.test(ch)) r.arabic++;
   }
   return r;
 }
@@ -292,8 +309,20 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
     }
     return { confidence: 0, reasons: [`the sample is in Cyrillic script, but the Russian word list recognises only ${w.hits} of ${w.words} words: it may be Bulgarian, Ukrainian, Serbian or another language, or Russian outside the word list`] };
   }
+  // Arabic script is shared by Arabic, Persian, Urdu, Pashto, Kurdish and Uyghur. Letters Arabic does not use name another language outright
+  // (language/arabic.ts, on the printed text); without them, only the commonest Arabic function words can show that the text is Arabic.
+  if (share(sh.arabic) >= MIN_SCRIPT_SHARE) {
+    if (!installed.has('ar')) return { confidence: 0, reasons: ['the sample is in Arabic script, but the Arabic pack is not installed'] };
+    const other = notArabicScript(sample.slice(0, MAX_SAMPLE_CHARS));
+    if (other) return { confidence: 0, against: other.language, reasons: [`the sample is in Arabic script, but it looks like ${other.language}, not Arabic as the pack reads it (${other.evidence})`] };
+    const f = arabicFunctionShare(sample.slice(0, MAX_SAMPLE_CHARS));
+    if (f.hits >= ARABIC_MIN_HITS && f.share >= ARABIC_MIN_SHARE) {
+      return { languageId: 'ar', confidence: r2(Math.min(0.8, 0.5 + f.share / 2)), reasons: [`the sample is in Arabic script, has no letter of another Arabic-script alphabet, and ${f.hits} of its ${f.words} words are common Arabic function words (the script is shared with Persian, Urdu, Pashto, Kurdish and Uyghur)`] };
+    }
+    return { confidence: 0, reasons: [`the sample is in Arabic script, but only ${f.hits} of its ${f.words} words are common Arabic function words: it may be Persian, Urdu, Pashto or Kurdish without their own letters, or Arabic in a short passage`] };
+  }
   if (share(sh.latin) < MIN_SCRIPT_SHARE) {
-    return { confidence: 0, reasons: ['the sample is not mainly in one script this resolver can compare (Latin, Thai, Devanagari, Hebrew, Greek or Cyrillic)'] };
+    return { confidence: 0, reasons: ['the sample is not mainly in one script this resolver can compare (Latin, Thai, Devanagari, Hebrew, Greek, Cyrillic or Arabic)'] };
   }
 
   // Latin script: a lexicon-hit comparison across the installed packs that have a word list.
@@ -337,6 +366,9 @@ function defaultCompatibility(tag: string, sample: string, installed: ReadonlySe
   // a Ukrainian or Bulgarian page shares many short words with Russian: its own letters rule Russian out before the word list is asked
   const other = m.languageId === 'ru' ? notRussianCyrillic(sample.slice(0, MAX_SAMPLE_CHARS)) : undefined;
   if (other) return { ok: false, reason: `the text around the selection looks like ${other.language}, not Russian (${other.evidence})` };
+  // a Persian or Urdu page shares the script and many letters with Arabic: its own letters rule Arabic out before the word list is asked
+  const otherArabic = m.languageId === 'ar' ? notArabicScript(sample.slice(0, MAX_SAMPLE_CHARS)) : undefined;
+  if (otherArabic) return { ok: false, reason: `the text around the selection looks like ${otherArabic.language}, not Arabic (${otherArabic.evidence})` };
   const w = wordListShare(adapter, sample);
   const need = Math.round(DEFAULT_COMPATIBLE_SHARE * 100);
   if (w.share >= DEFAULT_COMPATIBLE_SHARE && w.hits >= MIN_HITS) {

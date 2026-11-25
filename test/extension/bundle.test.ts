@@ -44,7 +44,11 @@ describe.skipIf(!have)('the built extension', () => {
     // Belarusian, Bulgarian and Serbian text (language/cyrillic.ts, the Cyrillic branches of language/resolve.ts and active/pageLanguages.ts)
     // and loads the Russian form index's shards before a lookup (russian/shards.ts with its text helpers). content.js measured 581.4 KB
     // (575.5 KB on master 22be2d7e, which this branch has merged in).
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(585 * KB);
+    // 2026-11-25 (Arabic pack): 585 -> 605 KB. The Arabic script is shared by Persian, Urdu, Pashto, Kurdish and Uyghur, so the content script tells Arabic
+    // from them by the printed letters and the commonest Arabic function words (language/arabic.ts, the Arabic branches of language/resolve.ts and
+    // active/pageLanguages.ts, with arabic/text.ts for the letters) and loads the Arabic form index's shards before a lookup (arabic/shards.ts with its
+    // clitic rules). Measured by `npm run ext:build`: content.js 618,659 bytes = 604.2 KB (597,766 bytes = 583.8 KB at the same tree without the pack).
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(605 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
@@ -69,7 +73,11 @@ describe.skipIf(!have)('the built extension', () => {
     // (about 12 KB). Measured 1,263,600 bytes = 1,234.0 KB on the merged tree (1,195.8 KB on 22be2d7e). No French analyser, word list or
     // lemma list is in the worker.
     // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 1,240 -> 1,270 KB. background.js measured 1,291,753 bytes = 1,261.5 KB with Russian and French.
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1270 * KB);
+    // 2026-11-25 (Arabic pack): 1,270 -> 1,295 KB. Like every pack the worker holds the manifest with its thirteen feature and 27 pattern explanations,
+    // the validation cases and the orientation, and the Arabic voice registry; the adapter registry reaches arabic/text.ts for the headword check
+    // (`headMatches`) and the language ladder for the letters. No Arabic analyser, core or word list is in the worker. Measured by `npm run ext:build`:
+    // background.js 1,324,066 bytes = 1,293.0 KB (1,293,470 bytes = 1,263.1 KB at the same tree without the pack).
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1295 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.
@@ -83,11 +91,11 @@ describe.skipIf(!have)('the built extension', () => {
     // construction explanations, orientation: 37.6 KB on 985c742b). Measured 896,583 bytes = 875.6 KB on the merged tree.
     // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 880 -> 910 KB. app.js measured 926,340 bytes = 904.6 KB with Russian and French (setup page built with GOLEARN_APP_DICT=sq,ru,fr).
     if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(910 * KB);
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'fr', 'ar']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 
   it('each analyser chunk is an ES module that exports the adapter, and the manifest makes the chunks readable from the page', () => {
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru']) {
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'ar']) {
       const code = read(`analysers/${id}.js`);
       expect(code, id).toMatch(/\bexport\s*\{[^}]*\bas adapter\b[^}]*\}|\bexport\s*\{\s*adapter\b/);
       expect(code, id).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|StoredSourceRef|importScripts/);
@@ -97,7 +105,7 @@ describe.skipIf(!have)('the built extension', () => {
     // lexicon/* (2026-10-22): the sharded Hebrew and Greek form indexes the content script loads before a lookup
     expect(m.web_accessible_resources).toEqual([{ resources: ['analysers/*.js', 'lexicon/*'], matches: ['<all_urls>'] }]);
     // every shared chunk the analysers import sits in analysers/ too, so the one pattern covers it
-    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'ru', 'ar']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
   });
 
   it('keeps Hindi out of the content script and unrelated analysers out of both scripts', () => {
@@ -107,12 +115,15 @@ describe.skipIf(!have)('the built extension', () => {
       expect(code, f).not.toContain('adapter-th@');
       expect(code, f).not.toContain('adapter-ru@'); // nor the Russian analyser and its 760 KB core: a chunk of its own
       expect(code, f).not.toContain('kaikki-ru-tables');
+      expect(code, f).not.toContain('adapter-ar@'); // nor the Arabic analyser and its core: a chunk of its own (the content script holds only the letters that tell Arabic from Persian, from arabic/text.ts)
+      expect(code, f).not.toContain('kaikki-ar-tables');
       expect(code, f).not.toContain('Reference realisation of East Norwegian speech'); // the Norwegian engine (its ids are built at run time, so a literal from its text is checked)
     }
     expect(read('content.js')).not.toContain('adapter-hi@');
     expect(read('background.js')).toContain('adapter-hi@');
     expect(read('analysers/de.js')).toContain('adapter-de@');
     expect(read('analysers/ru.js')).toContain('adapter-ru@');
+    expect(read('analysers/ar.js')).toContain('adapter-ar@');
     // Bokmål and Nynorsk share one engine, so the chunk that holds it (imported by both nb.js and nn.js) is the only place its text appears
     const shared = fs.readdirSync(path.join(dist, 'analysers')).filter((n) => /^shared-.*\.js$/.test(n)).map((n) => read(`analysers/${n}`)).join('\n');
     expect(shared).toContain('Reference realisation of East Norwegian speech');

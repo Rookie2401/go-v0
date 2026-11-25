@@ -20,7 +20,7 @@ import type { ConfirmFormsReply } from '../../packages/golearn-extension/src/pro
 
 registerAllAnalysers();
 
-const LANGS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru', 'fr'] as const;
+const LANGS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el', 'arc', 'ru', 'fr', 'ar'] as const;
 const VARIETY: Record<string, string> = { he: 'he-bib', el: 'el-koi' };
 const CORPUS = resolve(process.cwd(), 'data/corpus');
 
@@ -46,6 +46,11 @@ const INLINE_SAMPLE: Record<string, string[]> = {
     'Elle est ici avec un ami.', 'Ils parlent de l’école.', 'C’est un petit livre.', 'Je veux le livre du garçon.', 'Nous avons deux enfants.',
     'Les enfants vont au marché.', 'Elle est arrivée hier et nous avons mangé ensemble.', 'Je ne sais pas si les chevaux sont dans le jardin.',
     'Il entra dans la maison et vit sa mère.', 'Donne-le-moi, s’il te plaît.', 'Aujourd’hui il fait beau, peut-être.', 'Les lettres que j’ai écrites sont sur la table.',
+  ],
+  // Arabic (the pack reads web pages): vowelled and unvowelled print, an attached article, conjunction and pronoun, spellings shared by several words (علم, كتب, ذهب), a verb form with a prefix
+  ar: [
+    'كَتَبَ الْوَلَدُ الدَّرْسَ.', 'ذهب الطالب إلى المدرسة.', 'قال الرجل في البيت.', 'هذا كتاب جديد على الطاولة.', 'هو لا يعرف أين ذهبت أمي مع أخيها.',
+    'كان الرجل في الغرفة مع ابنه.', 'لم يذهب إلى المدرسة لأنه مريض.', 'وكتب الدرس ثم نام.', 'العلم نور والجهل ظلام.', 'يكتبون الرسائل كل يوم.', 'الكتب على الطاولة.', 'أحب هذه المدينة.',
   ],
 };
 
@@ -89,7 +94,7 @@ const MADE_UP: Record<string, string> = {
   sq: 'zqxvkjw', es: 'zqxvkjw', de: 'zqxvkjw', nb: 'zqxvkjw', nn: 'zqxvkjw', la: 'zqxvkjw', fr: 'zqxvkjw',
   he: cp(0x5D6, 0x5D7, 0x5D8, 0x5E1, 0x5E6, 0x5E7), arc: cp(0x5D6, 0x5D7, 0x5D8, 0x5E1, 0x5E6, 0x5E7),
   el: cp(0x3B6, 0x3BE, 0x3C8, 0x3C7, 0x3B8), th: cp(0xE0E, 0xE0F, 0xE10), hi: cp(0x91F, 0x920, 0x921, 0x922, 0x923),
-  ru: cp(0x437, 0x449, 0x445, 0x446, 0x43A, 0x436),
+  ru: cp(0x437, 0x449, 0x445, 0x446, 0x43A, 0x436), ar: cp(0x638, 0x636, 0x62B, 0x630, 0x63A),
 };
 
 const stats: Array<{ lang: string; tokens: number; withReading: number; multi: number; rows: number }> = [];

@@ -12,10 +12,10 @@ import { FR_VERSION, LEVEL_LABEL, PACKS, TEAMS, installablePacks, languagesOf, l
 import type { TeamId } from '../../packages/language-packs/src';
 
 describe('PACKS and packFor', () => {
-  it('lists thirteen packs (Latin, Hebrew and Greek were added 2026-10-17, Russian and French 2026-11-17); Albanian and Spanish are installable, German, Hindi, Thai, Latin, Russian, French and both Norwegian packs experimental (installable)', () => {
-    expect(Object.keys(PACKS).sort()).toEqual(['arc', 'de', 'el', 'es', 'fr', 'he', 'hi', 'la', 'nb', 'nn', 'ru', 'sq', 'th']);
-    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es', 'pack:de', 'pack:hi', 'pack:th', 'pack:nb', 'pack:nn', 'pack:la', 'pack:he', 'pack:el', 'pack:arc', 'pack:ru', 'pack:fr']);
-    const level = { sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'experimental', nn: 'experimental', la: 'experimental', he: 'experimental', el: 'experimental', arc: 'experimental', ru: 'experimental', fr: 'experimental' } as const;
+  it('lists fourteen packs (Arabic 2026-11-25, Latin, Hebrew and Greek were added 2026-10-17, Russian and French 2026-11-17); Albanian and Spanish are installable, German, Hindi, Thai, Latin, Russian, French and both Norwegian packs experimental (installable)', () => {
+    expect(Object.keys(PACKS).sort()).toEqual(['ar', 'arc', 'de', 'el', 'es', 'fr', 'he', 'hi', 'la', 'nb', 'nn', 'ru', 'sq', 'th']);
+    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es', 'pack:de', 'pack:hi', 'pack:th', 'pack:nb', 'pack:nn', 'pack:la', 'pack:he', 'pack:el', 'pack:arc', 'pack:ru', 'pack:fr', 'pack:ar']);
+    const level = { sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'experimental', nn: 'experimental', la: 'experimental', he: 'experimental', el: 'experimental', arc: 'experimental', ru: 'experimental', fr: 'experimental', ar: 'experimental' } as const;
     for (const [lang, m] of Object.entries(PACKS)) {
       expect(m.languageId).toBe(lang);
       expect(m.packId).toBe(`pack:${lang}`);

@@ -24,9 +24,9 @@
  * Nothing has been reviewed by a native speaker or an Arabist.
  */
 import type { AdapterSupport, AnalysisSourceInfo, AnalyzedToken, LanguageAdapter, PronunciationSupport, RawToken, Variety } from '../core';
-import type { LanguageCode, Script } from '../core/model';
 import { AR_ANALYZER, AR_ANALYZER_VERSION, AR_SOURCE_IDS, AR_VARIETIES } from './arabic/version';
-import { arKey, arSearchNormalize, arSegmentSentences, arTokenize, hasTashkil } from './arabic/text';
+import { arHeadForm, arKey, arSearchNormalize, arSegmentSentences, arTokenize, hasTashkil } from './arabic/text';
+import { transliterateArabic } from './arabic/translit';
 import { installArabicIndex, lookupArabicForm } from './arabic/index-store';
 import { AR_CORE } from './arabic/generated/core';
 import { arIdentityCounts } from './arabic/identities';
@@ -71,6 +71,19 @@ export const AR_VARIETY_INFO: Record<string, Variety> = {
   },
 };
 
+/** The vowels of a romanization, long (ā ī ū) and short (a i u) kept apart: what is left when the consonants and every other mark are taken away. */
+const vowelsOf = (roman: string): string => roman.toLowerCase().normalize('NFC').replace(/[^aiuāīū]/g, '');
+
+function headMatchesLemma(lemma: string, head: { vocalized?: string; romanization?: string }, pos?: string): boolean | undefined {
+  if (!hasTashkil(lemma)) return undefined;
+  if (head.vocalized && hasTashkil(head.vocalized)) return arHeadForm(head.vocalized, pos ?? 'X') === arHeadForm(lemma, pos ?? 'X');
+  if (head.romanization) {
+    const ours = transliterateArabic(lemma)?.text;
+    return ours ? vowelsOf(ours) === vowelsOf(head.romanization) : undefined;
+  }
+  return undefined;
+}
+
 const identities = arIdentityCounts();
 
 const SUPPORT: AdapterSupport = {
@@ -108,10 +121,9 @@ function lemmasOf(form: string): Set<string> {
 }
 
 export const arAdapter: LanguageAdapter = {
-  // `ar` and `Arab` join the shared language lists when the pack is registered (docs/arabic/PLAN.md, landing order)
-  lang: 'ar' as LanguageCode,
+  lang: 'ar',
   name: 'Arabic',
-  script: 'Arab' as Script,
+  script: 'Arab',
   version: AR_ANALYZER_VERSION,
   support: SUPPORT,
   sources: SOURCES,
@@ -154,4 +166,11 @@ export const arAdapter: LanguageAdapter = {
 
   /** The dictionary is keyed by the unvocalized headword: the vocalized lemma is looked up by its key. */
   lemmaVariants: (lemma) => { const k = arKey(lemma); return k && k !== lemma ? [k] : []; },
+
+  /**
+   * Which of the words the dictionary files under one bare key a vocalized lemma is. A full record is compared by its vocalized head
+   * (the form the source tags canonical); a level-1 entry has only its romanization (the source's, whose letters differ from ours: ʕ for ʿ),
+   * so the VOWELS of the two are compared (ʕilm: i; ʕalam: a-a; ʕalima: a-i-a). A lemma printed without vowels cannot be told apart: undefined.
+   */
+  headMatches: (lemma, head, pos) => headMatchesLemma(lemma, head, pos),
 };

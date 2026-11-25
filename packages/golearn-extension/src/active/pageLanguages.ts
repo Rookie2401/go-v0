@@ -20,15 +20,16 @@
 import type { LanguageAdapter } from '../../../../src/core';
 import { mapLanguageTag } from '../language/resolve';
 import { notRussianCyrillic } from '../language/cyrillic';
+import { arabicLanguageOf } from '../language/arabic';
 
 /** Scripts read by exactly one pack: the script is the language. */
 export const SCRIPT_LANGUAGE: Readonly<Record<string, string>> = { Hebr: 'he', Grek: 'el', Thai: 'th', Deva: 'hi' };
 const SCRIPT_RE: Readonly<Record<string, RegExp>> = {
   Latn: /\p{Script=Latin}/u, Hebr: /\p{Script=Hebrew}/u, Grek: /\p{Script=Greek}/u, Thai: /\p{Script=Thai}/u, Deva: /\p{Script=Devanagari}/u,
-  Cyrl: /\p{Script=Cyrillic}/u,
+  Cyrl: /\p{Script=Cyrillic}/u, Arab: /\p{Script=Arabic}/u,
 };
 /** The script each pack's words are written in. */
-export const LANGUAGE_SCRIPT: Readonly<Record<string, string>> = { sq: 'Latn', es: 'Latn', de: 'Latn', nb: 'Latn', nn: 'Latn', la: 'Latn', he: 'Hebr', arc: 'Hebr', el: 'Grek', th: 'Thai', hi: 'Deva', ru: 'Cyrl', fr: 'Latn' };
+export const LANGUAGE_SCRIPT: Readonly<Record<string, string>> = { sq: 'Latn', es: 'Latn', de: 'Latn', nb: 'Latn', nn: 'Latn', la: 'Latn', he: 'Hebr', arc: 'Hebr', el: 'Grek', th: 'Thai', hi: 'Deva', ru: 'Cyrl', fr: 'Latn', ar: 'Arab' };
 
 /** A block whose words a pack's word list recognises at this share (and MIN_HITS) is compatible with it (resolve.ts DEFAULT_COMPATIBLE_SHARE, measured: own prose 70-100 %, foreign at most 38 %). */
 export const COMPATIBLE_SHARE = 0.45;
@@ -128,6 +129,13 @@ export function cyrillicLanguageOf(text: string, ru: LanguageAdapter | undefined
   return page === 'ru' ? { languageId: 'ru', why: 'page' } : { why: 'none' };
 }
 
+/**
+ * The language of a block's Arabic-script text: Arabic, or none. Arabic script is shared (Persian, Urdu, Pashto, Kurdish, Uyghur), so a block is
+ * Arabic only when it declares so (the caller), or its own letters name no other Arabic-script language AND the commonest Arabic function words
+ * show it, or (for a block those do not settle) the page itself is Arabic on evidence. The decision is language/arabic.ts `arabicLanguageOf`.
+ */
+export const arabicBlockLanguage = arabicLanguageOf;
+
 export interface PagePlanOptions {
   /** The installed pack languages this build can analyse. */
   installed: readonly string[];
@@ -136,6 +144,8 @@ export interface PagePlanOptions {
   pageLatin?: string;
   /** 'ru' when the page's Cyrillic text is Russian on evidence (declared, chosen for this page, detected); undefined otherwise. */
   pageCyrillic?: string;
+  /** 'ar' when the page's Arabic-script text is Arabic on evidence (declared, chosen for this page, detected); undefined otherwise. */
+  pageArabic?: string;
 }
 
 export interface PagePlan {
@@ -148,7 +158,7 @@ export interface PagePlan {
 }
 
 /** Which language(s) each text node is read in. Block decisions are cached in `cache` (keyed by the block element, checked against its text). */
-export function planPage(nodes: readonly Text[], opts: PagePlanOptions, cache: WeakMap<Element, { text: string; verdict: LatinVerdict; cyrillic?: { text: string; verdict: LatinVerdict } }> = new WeakMap()): PagePlan {
+export function planPage(nodes: readonly Text[], opts: PagePlanOptions, cache: WeakMap<Element, { text: string; verdict: LatinVerdict; cyrillic?: { text: string; verdict: LatinVerdict }; arabic?: { text: string; verdict: LatinVerdict } }> = new WeakMap()): PagePlan {
   const installed = new Set(opts.installed);
   const byLanguage = new Map<string, Text[]>();
   const nodeLanguages = new WeakMap<Text, string[]>();
@@ -218,6 +228,33 @@ export function planPage(nodes: readonly Text[], opts: PagePlanOptions, cache: W
       if (b && ru) cache.set(b, { ...(cache.get(b) ?? { text: '', verdict: { why: 'none' } }), cyrillic: { text, verdict: v } });
     }
     if (ru) for (const n of cyrNodes) if (cyrVerdicts.get(blockOf(n))?.languageId === 'ru') add('ru', n);
+  }
+
+  // Arabic script: one pack (Arabic) reads it, but the script is not the language (Persian, Urdu, Pashto, Kurdish, Uyghur share it), so each block is decided on its own text
+  if (installed.has('ar')) {
+    const arText = new Map<Element | undefined, string>();
+    const arNodes: Text[] = [];
+    for (const n of nodes) {
+      if (!hasScript(n.data, 'Arab')) continue;
+      arNodes.push(n);
+      const b = blockOf(n);
+      arText.set(b, (arText.get(b) ?? '') + ' ' + n.data);
+    }
+    const ar = opts.adapterOf('ar');
+    if (arNodes.length && !ar) missing.add('ar');
+    const arVerdicts = new Map<Element | undefined, LatinVerdict>();
+    for (const [b, raw] of arText) {
+      const text = raw.replace(/\s+/gu, ' ').trim();
+      const declared = declaredOn(b);
+      if (declared === null) { arVerdicts.set(b, { why: 'none' }); continue; } // lang="fa", lang="ur", lang="ps" ...: a language no pack reads
+      if (declared === 'ar') { arVerdicts.set(b, { languageId: 'ar', why: 'declared' }); continue; }
+      const hit = b ? cache.get(b)?.arabic : undefined;
+      if (hit && hit.text === text) { arVerdicts.set(b, hit.verdict); continue; }
+      const v = arabicBlockLanguage(text, opts.pageArabic);
+      arVerdicts.set(b, v);
+      if (b && ar) cache.set(b, { ...(cache.get(b) ?? { text: '', verdict: { why: 'none' } }), arabic: { text, verdict: v } });
+    }
+    if (ar) for (const n of arNodes) if (arVerdicts.get(blockOf(n))?.languageId === 'ar') add('ar', n);
   }
   return { byLanguage, nodeLanguages, missing };
 }

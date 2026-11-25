@@ -91,6 +91,18 @@ defineLanguageVarieties('he', 'he-mod', [
   { id: 'arc-bib', name: 'Biblical Aramaic', historicalGroup: 'aramaic', aliases: [], heritage: true },
 ]);
 
+defineLanguageVarieties('ar', 'ar-msa', [
+  { id: 'ar-msa', name: 'Modern Standard Arabic', historicalGroup: 'modern-standard', aliases: ['ar-modern', 'arb'], selectable: true },
+  { id: 'ar-cla', name: 'Classical Arabic', historicalGroup: 'classical', aliases: ['ar-classical', 'classical-arabic'], selectable: true },
+  // the spoken dialects: recognised and kept apart, never read as Standard Arabic (the pack does not analyse them)
+  { id: 'arz', name: 'Egyptian Arabic', historicalGroup: 'dialect', heritage: true },
+  { id: 'apc', name: 'Levantine Arabic', historicalGroup: 'dialect', heritage: true },
+  { id: 'afb', name: 'Gulf Arabic', historicalGroup: 'dialect', heritage: true },
+  { id: 'acm', name: 'Iraqi Arabic', historicalGroup: 'dialect', heritage: true },
+  { id: 'ary', name: 'Moroccan (Maghrebi) Arabic', historicalGroup: 'dialect', heritage: true },
+  { id: 'apd', name: 'Sudanese Arabic', historicalGroup: 'dialect', heritage: true },
+]);
+
 // ───────────────────────────── the registry, read ─────────────────────────────
 
 /** The learning varieties of a language, in registry order; undefined for a language that has none. */
@@ -424,6 +436,9 @@ export function transferPriority(evidence: readonly TransferEvidence[]): 0 | 1 |
   return evidence.some((e) => e.strength === 'moderate') ? 1 : 0;
 }
 
+/** Arabic marks a spelling family ignores: short-vowel signs, shadda, sukun (U+064B-U+065F), the dagger alif (U+0670) and the tatweel (U+0640). */
+const ARABIC_MARKS = new RegExp('[' + String.fromCharCode(0x64b) + '-' + String.fromCharCode(0x65f) + String.fromCharCode(0x670) + String.fromCharCode(0x640) + ']', 'gu');
+
 /**
  * A key that two unit ids share when they are the same letters under the spelling conventions of different periods: Hebrew without its
  * points and accents, Greek without breathings and accents, lower case, final sigma folded. `lemma:he:מֶלֶךְ:NOUN` and `lemma:he:מלך:NOUN`
@@ -437,6 +452,8 @@ export function lexicalFamilyKey(languageId: LanguageId, unitId: string): string
   let rest = m[3];
   let pos = '';
   if (m[1] === 'lemma') { const p = /:([A-Z]+)$/u.exec(rest); if (p) { pos = p[1]; rest = rest.slice(0, -p[0].length); } }
+  // Arabic only: the short-vowel marks, shadda, sukun, the dagger alif (U+064B-U+065F, U+0670) and the tatweel (U+0640)
+  if (languageId === 'ar') rest = rest.normalize('NFC').replace(ARABIC_MARKS, ''); // composed first: a hamza seat (أ إ ؤ) keeps its hamza
   const bare = rest.normalize('NFD').replace(/[̀-֑ͯ-ׇֽֿׁׂׅׄ]/gu, '').replace(/ς/gu, 'σ').toLowerCase().normalize('NFC');
   return bare ? `${languageId}:${bare}${pos ? `:${pos}` : ''}` : undefined;
 }

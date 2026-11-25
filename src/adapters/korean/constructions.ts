@@ -50,6 +50,8 @@ export const KO_CONSTRUCTIONS: readonly KoConstruction[] = [
   { id: 'ko-after', title: 'After: -(으)ㄴ 후에 / 다음에', explain: 'after' },
   { id: 'ko-before', title: 'Before: -기 전에', explain: 'before' },
   { id: 'ko-in-order', title: 'Purpose: -기 위해(서)', explain: 'in order to' },
+  { id: 'ko-prohibit', title: 'Prohibition: -지 말다', explain: 'do not … (a request or command not to do; 말다 is the auxiliary)' },
+  { id: 'ko-neg-short-unable', title: 'Cannot: 못 + verb', explain: 'cannot (the adverb 못 before the predicate)' },
 ];
 const BY_ID = new Map(KO_CONSTRUCTIONS.map((c) => [c.id, c]));
 
@@ -164,6 +166,7 @@ export function koDetectConstructions(tokens: RawToken[], analyses: AnalyzedToke
     if (a.conn === 'neg') {
       if (bl === '않다') pair('ko-neg-long', '-지', '않다');
       if (bl === '못하다') pair('ko-neg-unable', '-지', '못하다');
+      if (bl === '말다') pair('ko-prohibit', '-지', '말다');
     }
     if (a.conn === 'adverbial' && a.ending === '-게') {
       if (bl === '되다') pair('ko-become', '-게', '되다');
@@ -179,6 +182,7 @@ export function koDetectConstructions(tokens: RawToken[], analyses: AnalyzedToke
     if (quoteVerb && a.c.morph.Quote === 'Ind' && a.form === 'Conn') pair('ko-quote', a.ending ?? 'quotation ending', bl);
     if (quoteVerb && (lastParticle(a) === 'quote-direct' || lastParticle(a) === 'quote-go')) pair('ko-quote', 'the quotative particle', bl);
     if (a.lemma === '안' && a.pos === 'ADV' && isPred(b)) pair('ko-neg-short', '안 "not"', b.lemma);
+    if (a.lemma === '못' && a.pos === 'ADV' && isPred(b)) pair('ko-neg-short-unable', '못 "cannot"', b.lemma);
     if (lastParticle(a) === 'subject' && bl === '아니다') pair('ko-neg-copula', '이/가', '아니다');
     if (lastParticle(a) === 'subject') {
       const v = nextOf(tokens, ws, i, true);

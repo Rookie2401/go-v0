@@ -188,7 +188,9 @@ function ruleCounters(s: KoSentence): void {
     const top0 = s.top(i);
     if (top0?.pos === 'CLF' && !(s.prev(i) === p && (s.isDigits(p) || QUANTITY_WORDS.has(s.key(p)) || (s.isWord(p) && s.cands[p].some((c) => c.pos === 'NUM') && (TRIGGER_NATIVE.has(s.key(p)) || TRIGGER_SINO.has(s.key(p)) || s.top(p)?.pos === 'NUM'))))) {
       const before = s.prev(i) === p && s.isWord(p) ? s.surface(p) : '';
-      koPromote(s, i, (c) => c.pos !== 'CLF' && isNominal(c), `No number stands before ${s.surface(i)}${before ? ` (${before} is not one)` : ''}: it is not the counter here.`, (c) => c.pos === 'CLF');
+      // the same cut as an ordinary noun first (개가: 개 "dog" + 가, not a rarer headword 개가), any other nominal only when there is none
+      const sameCut = s.cands[i].find((c) => c.pos !== 'CLF' && isNominal(c) && !c.unconfirmed && bare(c) === bare(top0) && c.morph.Particle === top0.morph.Particle);
+      koPromote(s, i, (c) => (sameCut ? c === sameCut : c.pos !== 'CLF' && isNominal(c)), `No number stands before ${s.surface(i)}${before ? ` (${before} is not one)` : ''}: it is not the counter here.`, (c) => c.pos === 'CLF');
     }
     if (p < 0 || s.prev(i) !== p) continue;
     const digits = s.isDigits(p);

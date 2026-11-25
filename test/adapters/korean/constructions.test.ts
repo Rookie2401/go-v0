@@ -53,6 +53,8 @@ const CASES: Array<[string, string, string[]]> = [
   ['ko-before', '밥을 먹기 전에 손을 씻어요.', ['먹기', '전에']],
   ['ko-in-order', '건강을 위해 운동해요. 살기 위해서 먹어요.', ['살기', '위해서']],
   ['ko-causative-ge', '아이를 웃게 만들었어요.', ['웃게', '만들었어요']],
+  ['ko-prohibit', '여기서 담배를 피우지 마세요.', ['피우지', '마세요']],
+  ['ko-neg-short-unable', '저는 수영을 못 해요.', ['못', '해요']],
 ];
 /** Need words outside the core (the light-verb nouns). */
 const SHARD_CASES: Array<[string, string, string[]]> = [
@@ -85,8 +87,16 @@ describe('constructions over the analysed readings (core only)', () => {
     const aux = ['ko-try', 'ko-benefactive', 'ko-progressive', 'ko-resultative'];
     for (const s of ['영화를 봐요.', '친구에게 책을 줘요.', '책이 있어요.', '밥을 먹고 학교에 가요.']) expect(run(s).hits.map((h) => h.id).filter((x) => aux.includes(x)), s).toEqual([]);
   });
+  it('-지 말다 in its forms (마세요, 마, 말고, 마십시오, 맙시다) is the prohibition; 못 + verb is "cannot"', () => {
+    for (const s of ['가지 마세요.', '가지 마.', '울지 말고 웃어요.', '들어오지 마십시오.', '싸우지 맙시다.']) expect(run(s).hits.map((h) => h.id), s).toContain('ko-prohibit');
+    expect(run('어제 못 갔어요.').hits.map((h) => h.id)).toContain('ko-neg-short-unable');
+    expect(run('어제 못 갔어요.').hits.map((h) => h.id)).not.toContain('ko-neg-short');
+    expect(run('벽에 못을 박았어요.').hits.map((h) => h.id)).not.toContain('ko-neg-short-unable');
+  });
   it('every id is a key of the pack’s grammar copy, and every key of the copy is detected', () => {
     const keys = new Set(KO_GRAMMAR_CONSTRUCTIONS.map((c) => c.id));
+    // WAITING (coordinator, batch 2): ko-prohibit and ko-neg-short-unable are in PLAN.md but not yet keys of ko-grammar.ts (the pack-copy
+    // package adds them); until it does, this assertion fails with exactly those two ids. Do not delete it.
     expect(KO_CONSTRUCTIONS.map((c) => c.id).filter((id) => !keys.has(id))).toEqual([]);
     const covered = new Set([...CASES, ...SHARD_CASES].map(([id]) => id));
     expect([...keys].filter((k) => !covered.has(k))).toEqual([]);

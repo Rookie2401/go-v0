@@ -119,7 +119,12 @@ describe('the 40 sentences, core only', () => {
     const n = koAdapter.pronunciation(analyse('읽고').tokens[0], analyse('읽고').analyses[0]);
     expect(n.notes!.join(' ')).toMatch(/Revised Romanization \(2000\)/);
     // the prospective -(으)ㄹ of the word before tenses this one across the space: 할 수 [할 쑤]
-    expect(said('할 수 있어요.', '수').note + JSON.stringify(koAdapter.pronunciation(analyse('할 수 있어요.').tokens[1], analyse('할 수 있어요.').analyses[1]).notes)).toContain('[쑤]');
+    // (koPronunciation's prevProspective option): 할 수 [할 쑤], 올 것 [올 껃]; without the -(으)ㄹ before it, 수 stays [수]
+    const all = (s: string, w: string): string => { const { analyses } = analyse(s); const a = analyses.find((x) => x.token.surface === w)!; return (koAdapter.pronunciation(a.token, a).notes ?? []).join(' '); };
+    expect(all('할 수 있어요.', '수')).toContain('[쑤]');
+    expect(all('할 수 있어요.', '수')).toMatch(/tensed across the space/);
+    expect(all('비가 올 것 같아요.', '것')).toContain('[껃]');
+    expect(all('학생 수가 많아요.', '수가')).not.toMatch(/tensed across the space/);
   });
 
   it('the English a card shows is the gloss unchanged: no person, no -ing, no conjugated meaning (meaning lines below)', () => {
@@ -244,8 +249,8 @@ describe.skipIf(!HAVE_SHARDS)('core only against every shard loaded (through the
     // the rules alone, given the noun, keep the h (the 체언 exception)
     expect(koPronunciation('집현전', { nominal: true }).transliteration).toBe('jiphyeonjeon');
   });
-  // koPronunciation (H's) romanizes the DICTIONARY's respelling when one is given, and that path ignores `nominal`: 국화 [구콰] → gukwa
-  it.fails('국화 is romanized gukhwa on the card (fails: the dictionary-respelling path of koPronunciation drops the noun exception; reported to H)', async () => {
+  // with the dictionary's respelling AND nominal, koPronunciation romanizes from the spelling (Hangul round 4): the noun keeps its h
+  it('국화 is romanized gukhwa on the card, though the dictionary respells it [구콰]', async () => {
     await loader.ensure(['국화']);
     const { tokens, analyses } = analyse('국화');
     expect(koAdapter.pronunciation(tokens[0], analyses[0]).transliteration).toBe('gukhwa');

@@ -31,7 +31,7 @@ import { detectKoPhrases } from './korean/phrases';
 import { koSyntax } from './korean/syntax';
 import { checkKoProduction } from './korean/production';
 import { koSpeechNormalize } from './korean/speech';
-import { koPronounce, koPronouncePhrase, koPronunciation, KO_ROMANIZATION_SCHEME } from './korean/pronunciation';
+import { koPronunciation, koStandardPronunciation, KO_ROMANIZATION_SCHEME } from './korean/pronunciation';
 
 installKoreanLexicon(KO_CORE);
 
@@ -54,9 +54,10 @@ const SUPPORT: AdapterSupport = {
   phraseDetection: 'seed-only',
   productionChecks: 'seed-only',
   limitations: [
-    `Lemmatization is seed-only in the compiled analyser: it carries a compact core of the Wiktionary stem lexicon (${(KO_CORE.stats?.entries ?? 0).toLocaleString('en')} entries in ${(KO_CORE.stats?.sets ?? 0).toLocaleString('en')} spellings: the closed classes and the commonest words). The full lexicon (36,894 rows) is an asset a host loads in shards for the words about to be read; until then a word outside the core is unconfirmed: its particles and endings are explained and the stem is offered as written, with no meaning.`,
+    // figures: docs/korean/INDEX.md as built on 2026-11-25 ("Shards and core"); the core's own counts are read from the compiled core
+    `Lemmatization is seed-only in the compiled analyser: it carries a compact CORE of the Wiktionary stem lexicon (${(KO_CORE.stats?.entries ?? 0).toLocaleString('en')} entries in ${(KO_CORE.stats?.sets ?? 0).toLocaleString('en')} spellings: every closed-class word, a reviewed list of everyday spellings, then the commonest open-class headwords; its headwords cover 73.8 % of the running words of the priors treebank, 94.6 % of those the full lexicon covers). The SHARDS add the rest of the lexicon (37,007 rows in all: rarer words, most names, Sino-Korean compounds), an asset a host loads for the words about to be read; until a word's shard has loaded, a word outside the core is unconfirmed: its particles and endings are explained and the stem is offered as written, with no meaning.`,
     'Korean is read by rules written for this product over that lexicon, not by a statistical analyser: candidate stems, the stem’s conjugation class from the source’s own table, and closed tables of particles and endings read as a chain. A stem with no conjugation table is read in every class its shape allows and none is presented as certain. Nothing has been reviewed by a native speaker or a Korean linguist.',
-    'Homonyms are separate words numbered as the dictionary numbers them (눈¹ eye, 눈² snow). Of the 2,492 spellings with two or more entries, 466 have a main entry (405 reviewed by line, 61 automatic) and 2,026 are balanced (362 by a reviewed line, 1,664 by default, unreviewed): a balanced word the sentence does not decide is shown as UNDECIDED with every candidate named, and a few sure cue words decide (눈이 와요: snow).',
+    'Homonyms are separate words numbered as the dictionary numbers them (눈¹ eye, 눈² snow). Of the 2,496 spellings with two or more entries, 466 have a main entry (405 reviewed by line, 61 automatic) and 2,030 are balanced (362 by a reviewed line, 1,668 by default, unreviewed): a balanced word the sentence does not decide is shown as UNDECIDED with every candidate named, and a few sure cue words decide (눈이 와요: snow).',
     'The sentence layer is local rules, not a parser: auxiliaries after a connective form, counters after numbers, homonyms by a cue word, the complement particle before 되다 / 아니다, a question mark. A form whose ending leaves the sentence type open (해요체 -아/어요) is a question only before a question mark; otherwise no sentence type is asserted.',
     'Spellings are counted from one treebank of 1990s expository prose (UD Korean-Kaist, train): the counts order readings and never decide between homonyms; they are not a frequency list of the language.',
     'Proper names are the weakest part (about 44 % covered); numerals written in digits are read as digits (whether a number is said with native or Sino-Korean numerals is noted for the commonest counters only).',
@@ -137,16 +138,19 @@ function koPronunciationOf(token: RawToken, analysis: AnalyzedToken | undefined)
   const c = analysis?.candidates[0];
   const nb = NEIGHBOURS.get(token) ?? (analysis ? NEIGHBOURS.get(analysis.token) : undefined) ?? {};
   const o = koPronunciationOptions(token, c);
-  const opts = { ...o, ...(nb.next ? { nextWord: nb.next } : {}) };
+  // after the prospective -(으)ㄹ of the word before, the plain first consonant is tensed across the space (할 수 [할 쑤], 갈 것 [갈 껃])
+  const prevProspective = !!(nb.prev && nb.prevProspective);
+  const opts = { ...o, ...(nb.next ? { nextWord: nb.next } : {}), ...(prevProspective ? { prevProspective: true } : {}) };
   const out = koPronunciation(token.surface, opts);
   if (!out.transliteration) return out;
   const notes = [...(out.notes ?? [])];
-  const said = o.dictionary ? koKey(o.dictionary).replace(/[[\]\s]/gu, '') : koPronounce(token.surface, opts).text;
+  const said = o.dictionary ? koKey(o.dictionary).replace(/[[\]\s]/gu, '') : koStandardPronunciation(token.surface, opts);
   notes.unshift(`Pronounced [${said}] (the standard pronunciation${o.dictionary ? ', as the dictionary gives it' : ', by rule'}); spelling, pronunciation and romanization are three different things.`);
-  // after the prospective -(으)ㄹ of the word before: its plain first consonant is tensed across the space (할 수 [할 쑤])
-  if (nb.prev && nb.prevProspective) {
-    const [, here] = koPronouncePhrase([nb.prev, token.surface], { prospective: [true, undefined] });
-    if (here && here !== said) notes.splice(1, 0, `After ${nb.prev} (the prospective -(으)ㄹ) it is said [${here}]: the first consonant is tensed across the space.`);
+  if (prevProspective) {
+    const { dictionary: _d, ...ruleOpts } = opts;
+    const here = koStandardPronunciation(token.surface, ruleOpts);
+    const alone = koStandardPronunciation(token.surface, { ...ruleOpts, prevProspective: false });
+    if (here !== alone) notes.splice(1, 0, `After ${nb.prev} (the prospective -(으)ㄹ) it is said [${here}]: the first consonant is tensed across the space.`);
   }
   if (!notes.some((n) => n.includes(KO_ROMANIZATION_SCHEME))) notes.push(`Romanization: ${KO_ROMANIZATION_SCHEME}.`);
   return { ...out, notes };

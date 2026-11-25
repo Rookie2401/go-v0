@@ -220,4 +220,5 @@ export const koAdapter: LanguageAdapter = {
   featuresFromTableTags: (tags, pos, form) => koFeaturesFromTableTags(tags, pos, form),
   morphFromTags: koMorphFromTags,
   cellsFor: (paradigm, features, surface) => koCellsFor(paradigm, features, surface),
+  cellsForIsExact: true, // an empty list is an answer: the reader's ending is not one of the table's rows
 };

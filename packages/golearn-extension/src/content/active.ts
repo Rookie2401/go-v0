@@ -44,6 +44,8 @@ export interface ActiveDeps {
   buildEncounter?: (ids: string[], languageId: string, readerId: string) => GoEvent;
   adapterOf(languageId: string): LanguageAdapter | undefined;
   loadAnalyser?(languageId: string): Promise<void>;
+  /** Loads the language's sharded word list for the text about to be analysed (once per scan pass and language; a failure is remembered by the preparer and the scan goes on with the compiled core). */
+  prepareLexicon?(languageId: string, text: string): Promise<unknown>;
   /** The background answers at most this many ids per request (profile.ts MAX_IDS_PER_REQUEST). */
   batchSize?: number;
   debounceMs?: number;
@@ -302,6 +304,11 @@ export class ActiveMode {
       plan = planPage(allNodes, planOpts, this.planCache);
     }
     this.nodeLanguages = plan.nodeLanguages;
+    // the full word list for the words of THIS pass, before any of them is analysed: the scan, the card and Reading Analysis then name one lemma for a word
+    if (this.d.prepareLexicon) {
+      await Promise.allSettled([...plan.byLanguage].map(([lang, ns]) => this.d.prepareLexicon!(lang, ns.map((n) => n.data).join('\n'))));
+      if (!this.on) return;
+    }
     const byDoc = new Map<Document, ScanToken[]>();
     for (const [root, nodes] of rootsNodes) {
       const here = new Set(nodes);

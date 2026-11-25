@@ -238,6 +238,11 @@ export interface LanguageAdapter {
    */
   cellsFor?(paradigm: Pick<Paradigm, 'cells' | 'kind' | 'pos'>, features: Record<string, string>, surface?: string): ParadigmCell[];
   /**
+   * True when `cellsFor` is EXACT: an empty list means no cell of the table is the reader's form (its ending is not one of the table's rows), and
+   * the card must light none. Without it an empty list means "I do not know", and the card falls back to its loose match (`cellsForSelection`).
+   */
+  cellsForIsExact?: boolean;
+  /**
    * Alternative ways of cutting a selection into words, for a script without word spaces (Thai): the chosen cut first,
    * then the others the word list allows, each with its confidence share and basis. Optional.
    */

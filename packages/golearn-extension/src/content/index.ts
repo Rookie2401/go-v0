@@ -116,7 +116,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   // GoLearn Active: reads the page only when the background says the switch is on (below, or on `activate`)
   // its learner-model question goes through the scan's own message (device rows only, honoured only while the switch is on), not the card's
   const active = new ActiveMode({
-    doc, controller, adapters, ui, adapterOf: getAnalyser, loadAnalyser,
+    doc, controller, adapters, ui, adapterOf: getAnalyser, loadAnalyser, prepareLexicon: (languageId, text) => lexicon.prepare(languageId, text),
     profile: bridge?.activeProfile ? (unitIds, languageId) => bridge.activeProfile!({ unitIds, languageId }) : undefined,
     confirmForms: bridge?.confirmForms ? (forms, languageId) => bridge.confirmForms!({ forms, languageId }) : undefined,
     recordEncounter: bridge?.events.append,
@@ -131,7 +131,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
 
   // Reading Analysis: nothing is read until the popup starts a run in this tab (src/reading/session.ts)
   const reading = bridge?.readingKnowledge ? createReadingSession({
-    doc, adapters, languages: PARSER_LANGUAGES, adapterOf: getAnalyser, loadAnalyser,
+    doc, adapters, languages: PARSER_LANGUAGES, adapterOf: getAnalyser, loadAnalyser, prepareLexicon: (languageId, text) => lexicon.prepare(languageId, text),
     defaultLanguage: async () => (await bridge.status())?.languageId,
     ...(bridge.confirmForms ? { confirmForms: (forms: string[], languageId: string) => bridge.confirmForms!({ forms, languageId }) } : {}),
     knowledge: (req) => bridge.readingKnowledge!(req),

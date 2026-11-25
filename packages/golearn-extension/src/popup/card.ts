@@ -735,7 +735,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     fillGrammar(grammar, m, v);
     box.append(grammar);
     // the sound rules and the romanization scheme the analyser states (every language that has notes)
-    section(box, 'Pronunciation', m.pronunciation);
+    if (m.respelling) section(box, 'Pronunciation', m.pronunciation);
     const features = h('div', { class: 'more featureList', 'data-row': 'features' });
     fillFeatures(features, m, v);
     btn.addEventListener('click', () => {

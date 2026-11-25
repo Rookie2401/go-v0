@@ -26,7 +26,7 @@ export function pickRecord(records: LexicalRecord[] | undefined, pos?: string, o
   if (!records?.length) return undefined;
   if (opts?.ambiguous) {
     const same = records.filter((r) => !pos || r.p === pos);
-    if (new Set(same.map((r) => r.e ?? r.w)).size > 1 || same.length > 1) return undefined;
+    if (new Set(same.map((r) => r.e ?? r.w)).size > 1) return undefined;
   }
   return (pos && records.find((r) => r.p === pos)) || records[0];
 }
@@ -94,7 +94,8 @@ export function formRomanOf(record: LexicalRecord | undefined): Record<string, s
 export function selectedCellKeys(adapter: LanguageAdapter | undefined, paradigm: Paradigm | undefined, features: Record<string, string>, surface?: string): string[] {
   if (!paradigm || paradigm.kind === 'none' || !paradigm.cells.length) return [];
   const own = adapter?.cellsFor ? safe(() => adapter.cellsFor!(paradigm, features, surface)) : undefined;
-  const cells = own?.length ? own : cellsForSelection(paradigm, features, surface);
+  // an adapter whose cellsFor is exact (LanguageAdapter.cellsForIsExact) may answer with an empty list: no cell is the reader's form
+  const cells = own?.length || (own && adapter?.cellsForIsExact) ? own : cellsForSelection(paradigm, features, surface);
   return [...new Set(cells.map((c) => featureKey(c.features)))];
 }
 

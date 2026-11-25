@@ -8,9 +8,9 @@
  * idempotent: a loaded language resolves at once.
  */
 import type { LanguageAdapter } from '../../../../src/core';
-import { getAnalyser, hasAnalyser, languageMeta, registerAnalyser } from '../parser/registry';
+import { getAnalyser, hasAnalyser, languageMeta, registerAnalyser, type AnalyserExtras } from '../parser/registry';
 
-type AnalyserModule = { adapter: LanguageAdapter; /** More data the chunk loads for itself (French: the lemma list); it settles either way. */ ready?: Promise<unknown> };
+type AnalyserModule = { adapter: LanguageAdapter; createShardLoader?: AnalyserExtras['createShardLoader']; /** More data the chunk loads for itself (French: the lemma list); it settles either way. */ ready?: Promise<unknown> };
 
 const IMPORTS: Readonly<Record<string, () => Promise<AnalyserModule>>> = {
   sq: () => import('./sq'),
@@ -35,8 +35,8 @@ export async function loadAnalyser(languageId: string): Promise<LanguageAdapter 
   if (hasAnalyser(languageId)) return getAnalyser(languageId);
   const load = Object.prototype.hasOwnProperty.call(IMPORTS, languageId) ? IMPORTS[languageId] : undefined;
   if (!load) return undefined;
-  const { adapter, ready } = await load();
+  const { adapter, ready, createShardLoader } = await load();
   if (ready) await ready.catch(() => undefined);
-  registerAnalyser(languageId, adapter);
+  registerAnalyser(languageId, adapter, createShardLoader ? { createShardLoader } : undefined);
   return adapter;
 }

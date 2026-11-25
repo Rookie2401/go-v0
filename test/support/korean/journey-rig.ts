@@ -154,7 +154,6 @@ export function createJourneyRig() {
   const factsFor = packFactsFor({ fetch: fileFetch, baseUrl: 'http://assets.local/' });
   async function openPractice(opts: { fresh?: boolean; deviceId?: string } = {}): Promise<AppHandle> {
     if (opts.fresh) practiceArea = createMemoryArea();
-    if (practice) await flush(300); // let the previous shell's pending reads settle before it is destroyed (a destroyed shell's late work would throw into the next test)
     practice?.destroy();
     document.body.innerHTML = '';
     practiceRoot = document.createElement('div');

@@ -85,6 +85,15 @@ export const hasBorrowedLetter = (key: string): boolean => /[\u06A4\u067E\u0686\
 /** True when the printed word ends in the Persian yeh ی: in Arabic text it stands for ي and, as often, for ى (علی is على). */
 export const endsInFarsiYeh = (surface: string): boolean => new RegExp(`\u06CC[${MARK_CLASS}${FILLER_CLASS}]*$`).test(surface);
 
+/**
+ * Other keys a typing habit may stand for (tried when the key itself finds nothing): a hamza typed after a dotless yāʾ is either a
+ * hamza on its seat (قارىء for قارئ) or, where ى is typed for every final ي, the letters ي and ء (شىء for شيء).
+ */
+export function arTypingVariants(key: string): string[] {
+  if (!key.includes('ىء')) return [];
+  return [key.replace(/ىء/g, 'ئ'), key.replace(/ىء/g, 'يء')];
+}
+
 /** What a search box matches on. */
 export const arSearchNormalize = (q: string): string => arLoose(arKey(q)).trim();
 
@@ -230,7 +239,7 @@ export interface VocalMatch {
  * `afterArticle`: the candidate is a stem printed after ال, whose first letter print doubles when it is a sun letter (الشَّمْس):
  * that shadda belongs to the article and is not compared.
  */
-export function vocalMatch(printed: string, candidateKey: string, candidatePacked: string | undefined, opts?: { afterArticle?: boolean }): VocalMatch {
+export function vocalMatch(printed: string, candidateKey: string, candidatePacked: string | undefined, opts?: { afterArticle?: boolean; fullyVocalized?: boolean }): VocalMatch {
   const p = splitVocal(printed);
   if (p.key.length !== candidateKey.length) return { compatible: false, agreed: 0 };
   if (!candidatePacked) return { compatible: true, agreed: 0 };
@@ -253,6 +262,9 @@ export function vocalMatch(printed: string, candidateKey: string, candidatePacke
     } else if (a.dagger && (b.dagger || said.vowel === FATHA)) agreed++;
     const articleShadda = opts?.afterArticle && i === 0 && SUN_LETTERS.has(candidateKey[0]);
     if (a.shadda && !articleShadda) { if (b.shadda) agreed++; else bad = bad ?? SHADDA; }
+    // a doubled letter never carries a sukūn; and a text that prints its vowels prints its shaddas, so a vowel printed without one
+    // on a letter the candidate doubles contradicts it (قُمْ is not قَمَّ)
+    if (!a.shadda && b.shadda && (a.vowel === SUKUN || (opts?.fullyVocalized && !!a.vowel))) bad = bad ?? a.vowel;
     if (bad !== undefined) {
       conflicts++;
       if (i !== p.key.length - 1) lastOnly = false;

@@ -158,7 +158,7 @@
     {"lemma":"제기","pos":"NOUN","state":"main","main":2,"why":"raising (an issue); other: jegi, a shuttlecock game"},
     {"lemma":"기관","pos":"NOUN","state":"balanced","why":"agency / institution, organ of the body and engine are all common; other: windpipe"},
     {"lemma":"시인","pos":"NOUN","state":"main","main":1,"why":"poet; other: admission (시인하다)"},
-    {"lemma":"저","pos":"PRON","state":"balanced","why":"I (polite, 저는) and that (저 사람 is DET; as a pronoun rarer) - a reader must choose; 저 #1 is 'that'"},
+    {"lemma":"저","pos":"PRON","state":"balanced","first":2,"why":"I (polite, 저는) and that (저 사람 is DET; as a pronoun rarer) - a reader must choose; 저 #1 is 'that'"},
     {"lemma":"진정","pos":"NOUN","state":"balanced","why":"calm (진정하다) and true heart / sincerity (진정으로) are both common; other: petition"},
     {"lemma":"주","pos":"NOUN","state":"balanced","why":"week and 主 the Lord (constant in church Korean: 주님, 주께서) are both everyday; others: state, stock, notes, continent"},
     {"lemma":"분","pos":"NOUN","state":"main","main":2,"why":"person (honorific bound: 이 분); other: feces (rare); the minute and the share are CLF / other entries"},

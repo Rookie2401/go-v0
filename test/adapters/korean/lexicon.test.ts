@@ -5,7 +5,7 @@ import zlib from 'node:zlib';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { koLexiconShardLetters, koStemKey, installKoreanLexicon, lookupKoreanStem, uninstallKoreanLexicon, installedKoreanLexicons, type KoLexEntry, type KoLexicon } from '../../../src/adapters/korean/index-store';
 import {
-  koBuildRows, koCheckCoreExtra, koCompareRegistry, koDictionaryPlan, koPoliteBases, koSupplementEntries, koEntryGloss, koHomonymAliases, koIrregularClass, koNumberHomonyms, koRegularByShape, koSelectCore, koShortGloss, koSenseIsForm,
+  koBuildRows, koCheckCoreExtra, koSentenceGloss, koIsPageText, koCompareRegistry, koDictionaryPlan, koPoliteBases, koSupplementEntries, koEntryGloss, koHomonymAliases, koIrregularClass, koNumberHomonyms, koRegularByShape, koSelectCore, koShortGloss, koSenseIsForm,
   type KoRaw, type KoRegistryRecord,
 } from '../../../src/dict/korean';
 import { koEntryLabel, koEntryLemma, koHomonymSetKey, koSharedPos } from '../../../src/adapters/korean/index-store';
@@ -186,7 +186,7 @@ describe('granularity, glosses, contractions, counters, shape', () => {
       mk('것', 'noun', { no: 2, senses: [{ glosses: ['thing'], tags: ['dependent'], formOf: [], altOf: [] }] }),
       mk('가다', 'verb', { no: 3 }), mk('하다', 'verb', { no: 4 }), mk('듣다', 'verb', { no: 5 }),
     ]);
-    expect(rows.map((r) => [r.tag, r.clf, r.irr])).toEqual([['NNB', true, undefined], ['NNB', undefined, undefined], ['VV', undefined, 'R'], ['VV', undefined, undefined], ['VV', undefined, undefined]]);
+    expect(rows.map((r) => [r.tag, r.clf, r.irr])).toEqual([['NNB', true, undefined], ['NNB', undefined, undefined], ['VV', undefined, 'R'], ['VV', undefined, 'Ha'], ['VV', undefined, undefined]]);
     expect(koRegularByShape('먹다')).toBe(true);
     expect(koRegularByShape('쓰다')).toBe(false);
     expect(koSharedPos({ tag: 'NNB', clf: true })).toBe('CLF');
@@ -313,6 +313,67 @@ describe('voice decisions', () => {
     expect(() => koBuildRows(src, dec([{ lemma: '열리다', voice: 'Pass', base: '닫다' }]))).toThrow(/differs from the source's set/);
     expect(() => koBuildRows(src, dec([{ lemma: '열다', voice: 'Caus', base: '열다' }]))).toThrow(/gives this verb no base/);
     expect(() => koBuildRows(src, dec([{ lemma: '열리다', voice: 'Pass', base: '열다' }, { lemma: '열리다', voice: 'Pass', base: '열다' }]))).toThrow(/decided twice/);
+  });
+});
+
+describe('batch 14: sentence glosses, 하다 predicates, supplement voice, first', () => {
+  it('normalises a gloss written as a sentence, keeping names and I', () => {
+    expect(koSentenceGloss('To be untied.')).toBe('to be untied');
+    expect(koSentenceGloss('The interior or inside.')).toBe('the interior or inside');
+    expect(koSentenceGloss('Japanese occupation period of Korea.')).toBe('Japanese occupation period of Korea');
+    expect(koSentenceGloss('Nanping (a city of Fujian).')).toBe('Nanping (a city of Fujian)');
+    expect(koSentenceGloss('I, me.')).toBe('I, me');
+    expect(koSentenceGloss('to be untied')).toBeUndefined();
+    expect(koSentenceGloss('Mr. Kim, etc.')).toBeUndefined();
+  });
+  it('matches the page text of a Hanja syllable', () => {
+    expect(koIsPageText('More information(MC reading: 且 (MC tshjaeX))')).toBe(true);
+    expect(koIsPageText('eumhun reading: 또 차')).toBe(true);
+    expect(koIsPageText('a tea')).toBe(false);
+    expect(koIsPageText('仔, 做, 兹, 刺, 呰')).toBe(true);
+    expect(koIsPageText('10²⁴')).toBe(false);
+    expect(koIsPageText('礼: alternative form of 禮')).toBe(true);
+    expect(koIsPageText('莢: pod (of soybean)')).toBe(true);
+    expect(koIsPageText('學校 school')).toBe(false);
+  });
+  it('gives every predicate spelled …하다 the class Ha when the source has no table, and lists a table that says otherwise', () => {
+    const { rows, report } = koBuildRows([
+      mk('묵직하다', 'adj', { no: 1, senses: [sense('heavy')] }),
+      mk('하다', 'verb', { no: 2, senses: [sense('to do')] }),
+      mk('이상하다', 'adj', { no: 3, infinitives: ['이상해'], senses: [sense('strange')] }),
+      mk('먹다', 'verb', { no: 4, senses: [sense('to eat')] }),
+    ]);
+    expect(rows.map((r) => r.irr)).toEqual(['Ha', 'Ha', 'Ha', 'R']);
+    expect(report.haGained).toBe(3 - 1);
+    expect(report.haOther).toEqual([]);
+  });
+  it('accepts voice and base on a supplement verb, the base being a lexicon row', () => {
+    const base = [mk('누르다', 'verb', { no: 1, infinitives: ['눌러'], senses: [sense('to press')] })];
+    const ok = koBuildRows(base, { supplement: { entries: [{ lemma: '눌리다', tag: 'VV', irr: 'R', gloss: 'to be pressed', voice: 'Pass', base: '누르다' }] } });
+    expect(ok.rows.find((r) => r.lemma === '눌리다')).toMatchObject({ voice: 'Pass', base: '누르다', own: true });
+    expect(() => koBuildRows(base, { supplement: { entries: [{ lemma: '눌리다', tag: 'VV', irr: 'R', gloss: 'x', voice: 'Pass', base: '없다' }] } })).toThrow(/is not a row of the lexicon/);
+    expect(() => koBuildRows(base, { supplement: { entries: [{ lemma: '눌리다', tag: 'VV', irr: 'R', gloss: 'x', voice: 'Pass' }] } })).toThrow(/needs its base/);
+  });
+  it('lets an own voice decision name a verb the source does not relate, its base being a lexicon row', () => {
+    const src = [mk('잡다', 'verb', { no: 1, infinitives: ['잡아'], senses: [sense('to catch')] }), mk('잡히다', 'verb', { no: 2, infinitives: ['잡혀'], senses: [sense('to be caught')] })];
+    const dec = (own: boolean, base = '잡다') => ({ voiceDecisions: { verbs: [{ lemma: '잡히다', voice: 'Pass' as const, base, ...(own ? { own: true } : {}) }] } });
+    expect(koBuildRows(src, dec(true)).rows[1]).toMatchObject({ voice: 'Pass', base: '잡다' });
+    expect(() => koBuildRows(src, dec(false))).toThrow(/gives this verb no base/);
+    expect(() => koBuildRows(src, dec(true, '없다'))).toThrow(/is not a row of the lexicon/);
+  });
+  it('puts the balanced entry named by first at the head of the bare line, and fails when the number is not in the set', async () => {
+    const dir = path.join(process.env.TEMP ?? '.', 'ko-first-test');
+    fs.mkdirSync(dir, { recursive: true });
+    const line = (word: string, etym: number, g: string): string => JSON.stringify({ word, pos: 'pron', lang_code: 'ko', etymology_number: String(etym), senses: [{ glosses: [g] }] });
+    const file = path.join(dir, 'x.jsonl');
+    fs.writeFileSync(file, [line('저', 1, 'that'), line('저', 2, 'I (polite)')].join('\n'));
+    const docs = (first: number) => ({ decisions: { sets: [{ lemma: '저', pos: 'PRON', state: 'balanced' as const, first }] } });
+    const plan = await koDictionaryPlan(file, docs(2));
+    const mkE = (etymology: number, gloss: string) => ({ form: '저', lang: 'ko' as never, pos: 'PRON' as const, glosses: [gloss], senses: [{ gloss }], etymology });
+    const out = plan.arrange([mkE(1, 'that'), mkE(2, 'I (polite)')]);
+    expect(out.map((e) => e.etymology)).toEqual([2, 1]);
+    expect(out[0].glosses[0]).toBe('(entry 2) I (polite)');
+    await expect(koDictionaryPlan(file, docs(7))).rejects.toThrow(/"first" 7 must be a number of this BALANCED set/);
   });
 });
 
@@ -604,6 +665,43 @@ describe.skipIf(!built)('the real lexicon', () => {
     }
     for (const id of installedKoreanLexicons()) uninstallKoreanLexicon(id.split('#')[0]);
   });
+});
+
+describe.skipIf(!fs.existsSync(DICT))('the real dictionary: no page text as a sense', () => {
+  it('holds no MC reading / eumhun reading / More information sense in any short entry or full record', async () => {
+    const dir = path.dirname(DICT);
+    const { parseFullShard2 } = await import('../../../src/dict/full2');
+    let senses = 0; let bad = 0; let fullBad = 0; let fullRecords = 0;
+    for (const n of fs.readdirSync(dir)) {
+      if (!/^s-.*\.json$/.test(n)) continue;
+      const j = JSON.parse(fs.readFileSync(path.join(dir, n), 'utf8')) as Record<string, Array<{ s?: Array<{ g: string }>; g?: string[] }>>;
+      for (const list of Object.values(j)) for (const e of list) { for (const x of e.s ?? []) { senses++; if (koIsPageText(x.g)) bad++; } for (const g of e.g ?? []) if (koIsPageText(g)) bad++; }
+    }
+    expect(senses).toBeGreaterThan(50000);
+    expect(bad).toBe(0);
+    // every entry written is an entry the index builders read: none is left with no meaning
+    const { parseManifest, parseShard } = await import('../../../src/dict/format');
+    const dm = parseManifest(JSON.parse(fs.readFileSync(DICT, 'utf8')) as unknown, 'ko' as never)!;
+    let written = 0; let read = 0; let empty = 0;
+    for (const name of dm.shardFiles) {
+      const j = JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8')) as Record<string, Array<{ s?: unknown[]; g?: unknown[]; m?: unknown[]; a?: unknown[] }>>;
+      for (const list of Object.values(j)) for (const e of list) { written++; if (!(e.s ?? []).length && !(e.g ?? []).length && !(e.m ?? []).length && !(e.a ?? []).length) empty++; }
+      for (const list of parseShard(j, 'ko' as never, dm).values()) read += list.length;
+    }
+    expect(empty).toBe(0);
+    expect(read).toBe(written);
+    expect(written).toBe((JSON.parse(fs.readFileSync(DICT, 'utf8')) as { entries: number }).entries);
+    const fdir = path.join(dir, 'full');
+    if (fs.existsSync(path.join(fdir, 'manifest.json'))) {
+      const strings = (JSON.parse(fs.readFileSync(path.join(fdir, 'manifest.json'), 'utf8')) as { strings?: string[] }).strings ?? [];
+      for (const n of fs.readdirSync(fdir)) {
+        if (!/^f-.*\.json$/.test(n)) continue;
+        for (const recs of parseFullShard2(JSON.parse(fs.readFileSync(path.join(fdir, n), 'utf8')), strings).values()) for (const r of recs) { fullRecords++; for (const x of r.s) if (koIsPageText(x.g)) fullBad++; }
+      }
+      expect(fullRecords).toBeGreaterThan(30000);
+      expect(fullBad).toBe(0);
+    }
+  }, 120_000);
 });
 
 describe.skipIf(!fs.existsSync(DICT) || !built)('the real dictionary: the bare line of a main set', () => {

@@ -125,6 +125,13 @@
     {"lemma":"안녕하세요","tag":"IC","gloss":"hello (polite greeting)","why":"the everyday greeting, a fixed phrase (from 안녕하다 + -세요); the source files no interjection for it"},
     {"lemma":"고맙습니다","tag":"IC","gloss":"thank you","why":"fixed phrase of thanks (from 고맙다 + -습니다); the source files it only as a verb form"},
     {"lemma":"누이다","tag":"VV","irr":"R","gloss":"to lay (someone) down","why":"causative of 눕다 (누이시며 in Bible prose); absent from the source"},
-    {"lemma":"예수님","tag":"NNP","gloss":"Jesus (with the honorific 님)","why":"the everyday form in church Korean; the source has 예수 only"}
+    {"lemma":"예수님","tag":"NNP","gloss":"Jesus (with the honorific 님)","why":"the everyday form in church Korean; the source has 예수 only"},
+    {"lemma":"눌리다","tag":"VV","irr":"R","voice":"Pass","base":"누르다","gloss":"to be pressed","why":"passive of 누르다; absent from the source"},
+    {"lemma":"앉히다","tag":"VV","irr":"R","voice":"Caus","base":"앉다","gloss":"to seat (someone), to make sit","why":"causative of 앉다; absent from the source"},
+    {"lemma":"눕히다","tag":"VV","irr":"R","voice":"Caus","base":"눕다","gloss":"to lay (someone) down","why":"causative of 눕다; absent from the source"},
+    {"lemma":"밟히다","tag":"VV","irr":"R","voice":"Pass","base":"밟다","gloss":"to be stepped on","why":"passive of 밟다; absent from the source"},
+    {"lemma":"찢기다","tag":"VV","irr":"R","voice":"Pass","base":"찢다","gloss":"to be torn","why":"passive of 찢다; absent from the source"},
+    {"lemma":"신기다","tag":"VV","irr":"R","voice":"Caus","base":"신다","gloss":"to put (shoes, socks) on someone","why":"causative of 신다; absent from the source"},
+    {"lemma":"두들기다","tag":"VV","irr":"R","gloss":"to beat, to knock on","why":"두들겨; absent from the source"}
   ]
 }

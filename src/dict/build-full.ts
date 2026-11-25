@@ -24,7 +24,7 @@ import readline from 'node:readline';
 import zlib from 'node:zlib';
 import { LANGUAGES, type LanguageCode } from '../core';
 import { koHomonymLemma } from '../adapters/korean/index-store';
-import { koDictionaryPlan } from './korean';
+import { koDictionaryPlan, koIsPageText } from './korean';
 import { createAdapterRegistry } from '../adapters';
 import { KAIKKI_ATTRIBUTION } from './build';
 import {
@@ -169,6 +169,8 @@ export async function buildFullFile(opts: BuildFullOptions): Promise<BuildFullRe
       try { json = JSON.parse(text); } catch { stats.malformed++; continue; }
       const { key, record, skipped } = mapFullLine(json, normalize, opts.lang);
       if (!record || key === undefined) { stats.skipped[skipped!]++; continue; }
+      // a Hanja-syllable page's text is not a meaning: left out of the full record too
+      if (koHom) { record.s = record.s.filter((x) => !koIsPageText(x.g)); if (!record.s.length && !record.f?.length && !record.p) { stats.skipped['no-senses']++; continue; } }
       tallyFullRecord(stats.counts, record);
       if (v2) internCandidates(record, countIntern);
       const rec = JSON.stringify(record);

@@ -125,6 +125,8 @@
     {"lemma":"옥이다","voice":null,"base":"옥다","why":"rare"},
     {"lemma":"욱이다","voice":null,"base":"욱다","why":"rare"},
     {"lemma":"하이다","voice":null,"base":"하다","why":"archaic"},
-    {"lemma":"아물리다","voice":null,"base":"아물다","why":"rare"}
+    {"lemma":"아물리다","voice":null,"base":"아물다","why":"rare"},
+    {"lemma":"잡히다","voice":"Pass","base":"잡다","own":true,"why":"to be caught: the passive of 잡다; the source gives no verb set for it"},
+    {"lemma":"알리다","voice":"Caus","base":"알다","own":true,"why":"to let know, to inform: the causative of 알다; the source gives no verb set for it"}
   ]
 }

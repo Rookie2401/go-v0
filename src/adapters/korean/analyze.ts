@@ -669,6 +669,7 @@ function compoundReading(c: Ctx, pieces: Piece[], t: Tail): Reading {
 function numeralReadings(c: Ctx): Reading[] {
   const out: Reading[] = [];
   for (const num of koParseNumerals(c.key)) {
+    if (num.kind === 'sino' && num.pieces.length >= 2 && ['이', '일', '오'].includes(num.pieces[num.pieces.length - 1]) && num.length === c.units.length) continue;
     const q = c.units[num.length - 1].j1;
     for (const t of nounCont(c, q, { allowCopula: true })) {
       let at = 0;
@@ -784,10 +785,69 @@ function rankAdjust(readings: Reading[]): void {
         const timeWord = /\b(overnight|night|morning|evening|today|yesterday|tomorrow)\b/iu.test(r.gloss ?? '');
         const verbFirst = vN >= 4 * nN && nN < 30 && vN > 0 && !timeWord;
         if (verbFirst) r.score -= 3;
-        else if (nN > 0 || timeWord) { r.score += 3; r.notes.context = 'a noun the counts know at least as well as the verb form of the same spelling'; }
+        else if ((nN > 0 || timeWord) && !readings.some(fusedOrClosed)) { r.score += 3; r.notes.context = 'a noun the counts know at least as well as the verb form of the same spelling'; }
       }
     }
   }
+  // A LISTED NOUN + PARTICLE against a predicate whose ending is an adnominal (-(으)ㄹ, -(으)ㄴ, -는, -던, a quoted -자는 / -다는 …), -아/어도,
+  // or an ending written like the particle (물을: 물 + 을 / 묻다 + -을; 남자는: 남자 + 는 / 남다 + -자는; 새도: 새 + 도 / 새다 + -어도): the noun
+  // reading is first whatever the counts, and the predicate is creditable only when its count is at least the noun's. An adnominal needs a
+  // nominal after it, which only the sentence layer sees (신을 신발). Not for a noun with no count, a bound noun, a name: those stay by count.
+  // 도와 (돕다 + -아; 도 + 와) is untouched: its ending is neither an adnominal nor -아/어도 nor written like the particle.
+  for (const r of readings) {
+    if (r.unconfirmed || !['NNG', 'NNB', 'NP', 'NR'].includes(r.stemTag) || !((r.entry?.n ?? 0) > 0) || r.parts.length < 2) continue;
+    const tail = r.parts.slice(1);
+    if (!tail.every((p) => p.particle && p.particle.cls !== 'plural')) continue;
+    const tailText = tail.map((p) => p.text).join('');
+    const nN = r.entry!.n!;
+    const rivals = readings.filter((o) => {
+      if (!isPred(o)) return false;
+      const last = [...o.parts].reverse().find((p) => p.ending);
+      if (!last?.ending) return false;
+      const e = last.ending;
+      const trailing = o.parts.slice(o.parts.indexOf(last) + 1).filter((p) => p.particle).map((p) => p.text).join('');
+      return e.tag === 'ETM' || e.id === 'even-if' || last.text.replace(/^-/u, '') === tailText || (trailing !== '' && tailText.endsWith(trailing));
+    });
+    // a bound noun (바, 것, 수) or a one-syllable Sino-Korean bound form (하 下, 사 社, 주 週) is first only where the counts know it at least as
+    // well as the predicate; any noun yields to a predicate the counts know five times as well (먹 "ink" + 을 / 먹다 + -을)
+    const sinoOne = [...r.stemKey].length === 1 && (!!r.entry?.hanja || lookupKoreanStem(r.stemKey).some((h) => h.entry.lemma === r.stemKey && !!h.entry.hanja && !KO_PREDICATE_TAGS.has(h.entry.tag)));
+    if ((r.stemTag === 'NNB' || sinoOne) && rivals.some((o) => (o.entry?.n ?? 0) > nN)) continue;
+    if (rivals.some((o) => (o.entry?.n ?? 0) >= 5 * nN)) continue;
+    if (tail.some((p) => p.particle?.id === 'and-hago')) continue; // noun + 하고 against the 하다 verb is decided above
+    if (!rivals.length) continue;
+    // a whole listed word of the token itself (파도, 하나, 차도 "roadway") is not split into a noun + particle: it is the one raised over the
+    // predicate instead, so that a noun reading still leads (차도: not 차다 + -아도)
+    const wholeWord = readings.find((o) => o !== r && !o.unconfirmed && o.parts.length === 1 && o.entry && !KO_PREDICATE_TAGS.has(o.stemTag));
+    if (wholeWord) {
+      if (!wholeWord.notes.nounOverPredicate) { wholeWord.score += 5; wholeWord.notes.nounOverPredicate = 'yes'; }
+      continue;
+    }
+    r.score += 5;
+    r.notes.context = 'a listed noun and its particle, over a predicate form spelled the same (an adnominal needs the noun after it)';
+    for (const o of rivals) if ((o.entry?.n ?? 0) < nN) { o.cap = Math.min(o.cap, CAP.floor); o.notes.credit = 'not a live rival'; }
+  }
+  const nounPlusParticles = (r: Reading) => !r.unconfirmed && ['NNG', 'NNB', 'NP', 'NR'].includes(r.stemTag) && !r.notes.derived && r.parts.slice(1).every((p) => !!p.particle);
+  const longestNoun = Math.max(0, ...readings.filter((r) => nounPlusParticles(r) && r.parts.length >= 2 && (r.entry?.n ?? 0) > 0).map((r) => [...r.stemKey].length));
+  for (const r of readings) if (nounPlusParticles(r) && r.parts.length >= 2 && [...r.stemKey].length < longestNoun) r.score -= 3;
+  // a whole listed noun (any length), or a longer listed noun + its particles, is never outranked by a shorter noun + copula + ending (생일: not
+  // 생 + 이다 + -ㄹ; 신임을: not 신 + 이 + -ㅁ + 을)
+  if (readings.some((r) => nounPlusParticles(r) && (r.parts.length === 1 || (r.entry?.n ?? 0) > 0))) {
+    const best = Math.max(0, ...readings.filter(nounPlusParticles).map((r) => [...r.stemKey].length));
+    for (const r of readings) if (r.parts.some((p) => p.copula) && (r.parts.length === 1 || [...r.stemKey].length < best || readings.some((o) => nounPlusParticles(o) && o.parts.length === 1))) { r.cap = Math.min(r.cap, CAP.assumed); r.score -= 3; }
+  }
+  // a fused form (내 = 나 + 의, 전 = 저 + 는) or a closed-table item (copula, existential, conjunctive adverb) comes first over a same-spelled
+  // listed noun, bound noun, determiner or name, unless that word's own count is at least ten times the base word's. The rival stays a live
+  // reading for the sentence layer (기간 내, 십 년 전, 전 세계).
+  for (const r of readings) {
+    if (!fusedOrClosed(r)) continue;
+    const baseN = Math.max(1, r.entry?.n ?? 0);
+    const rivals = readings.filter((o) => o !== r && !o.unconfirmed && !fusedOrClosed(o) && (['NNG', 'NNB', 'MM', 'NNP', 'NP', 'NR', 'MAG', 'IC'].includes(o.stemTag) || (r.notes.fused !== undefined && KO_PREDICATE_TAGS.has(o.stemTag))));
+    if (!rivals.length) continue;
+    if (rivals.some((o) => (o.entry?.n ?? 0) >= 10 * baseN)) { r.notes.context = 'a same-spelled word the counts know ten times as well comes first'; continue; }
+    r.score += 6;
+    r.notes.context = r.notes.fused !== undefined ? 'the fused form of a pronoun and its particle, over a same-spelled word' : 'a closed-class word, over a same-spelled word';
+  }
+  function fusedOrClosed(r: Reading): boolean { return r.notes.fused !== undefined || (r.sourceId === KO_SOURCE_IDS.closed && ['MAJ', 'VCP', 'VCN', 'VA'].includes(r.stemTag) && r.cap >= CAP.full); }
   function c1(r: Reading): boolean { return [...r.stemKey].length === 1; }
   function isQuoteContraction(r: Reading): boolean { return r.parts.some((p) => p.ending && QUOTE_CONTRACTIONS.has(p.ending.id)); }
   /** Another reading of the token as a listed noun or determiner (때문 + 에, 이런 DET): a whole adverb or interjection is then no function word over it. */

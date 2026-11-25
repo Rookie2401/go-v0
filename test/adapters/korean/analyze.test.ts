@@ -11,6 +11,9 @@ import { ENDINGS, koEnding } from '../../../src/adapters/korean/endings';
 import { koTokenize } from '../../../src/adapters/korean/text';
 import { koStemKey } from '../../../src/adapters/korean/index-store';
 import { FIXTURE_ROWS, installFixtureLexicon, uninstallFixtureLexicon } from './fixture-lexicon';
+import { FUSED as KO_FUSED_PRONOUNS_T, PARTICLES as PARTICLES_T, koResolveFused as koResolveFusedT } from '../../../src/adapters/korean/particles';
+import { koBareLemma as koBareLemmaT, lookupKoreanStem as lookupT } from '../../../src/adapters/korean/index-store';
+import { KO_CORE as KO_CORE_T } from '../../../src/adapters/korean/generated/core';
 
 /** The card takes the reading with the highest confidence: confidences never rise down the list, and the first is strictly the highest. */
 function assertOrder(w: string, cs: AnalysisCandidate[]): void {
@@ -769,4 +772,51 @@ underBothStates('fix batch 9: bare one-syllable nouns against bare -아/어 form
     expect(first(w).lemma, w).toBe(l);
   }
   if (koAnalyzeToken('밤새').some((c) => c.pos === 'NOUN')) expect(first('밤새').pos).not.toBe('VERB');
+});
+
+underBothStates('fix batch 10: every row of the fused table reads first, its pronoun by meaning (core; core + shards)', () => {
+  // (the import is at the top of the file; FUSED and koResolveFused come from particles.ts)
+  for (const [form, f] of Object.entries(KO_FUSED_PRONOUNS_T)) {
+    const cs = koAnalyzeToken(form);
+    const c = cs[0];
+    expect(c.notes?.fused, form).toBeDefined();
+    expect(koBareLemmaT(c.lemma ?? ''), form).toBe(f.pron);
+    const pt = PARTICLES_T[f.particle];
+    expect(c.parts?.[1]?.lemma, form).toBe(pt.family);
+    const resolved = koResolveFusedT(f, lookupT);
+    if (resolved) expect(resolved.gloss ?? '', form).toMatch(f.fp);
+  }
+});
+
+underBothStates('fix batch 10 (YY): a listed noun + particle over a predicate form spelled the same (core; core + shards)', () => {
+  for (const [w, n] of [['물을', '물'], ['물은', '물'], ['남자는', '남자'], ['차는', '차'], ['신을', '신'], ['약을', '약'], ['안을', '안'], ['숨을', '숨'], ['새는', '새'], ['피는', '피'], ['비는', '비'], ['무는', '무'], ['적은', '적'], ['새도', '새'], ['생일', '생일']] as const) {
+    const c = koAnalyzeToken(w)[0];
+    expect(['NOUN', 'PRON', 'NUM'], w).toContain(c.pos);
+    expect(koBareLemmaT(c.lemma ?? '').startsWith(n), w).toBe(true);
+  }
+  expect(['NOUN'], '차도').toContain(koAnalyzeToken('차도')[0].pos);
+  expect(koAnalyzeToken('도와')[0].lemma).toBe('돕다'); // 도 "province" + 와 is no rival: the ending -아 is neither an adnominal nor -아/어도 nor written like 와
+});
+
+/** The commonest 400 nouns of the compiled core in six particle frames: the noun first, except the justified exceptions below (with why). */
+const FRAME_EXCEPTIONS: Record<string, string> = {
+  내는: 'bound 내 (I / my) is no free noun; 내다 + -는 (count 438 vs 326)', 내도: 'bound 내; 내다 + -아도 (438 vs 326)', 내가: 'the fused 나 + 가',
+  시도: 'the listed word 시도 itself', 거의: 'the listed adverb 거의 itself', 별도: 'the listed word 별도 itself', 인도: 'the listed word 인도 itself', 대가: 'the listed word 대가 itself',
+  해도: 'the listed word 해도 (chart); with the core alone 하다 + -여도 (4576 vs 75)', 채도: 'the listed word 채도 itself',
+  모두는: 'the same headword read as the adverb 모두', 모두도: 'the same headword read as the adverb 모두',
+  도는: 'one-syllable Sino-Korean 도 (道) against 돌다 + -는, which the counts know better (80 vs 71)',
+};
+underBothStates('fix batch 10 (YY): the commonest 400 nouns in six particle frames read as the noun (core; core + shards)', () => {
+  const nouns = new Map<string, number>();
+  for (const rows of Object.values(KO_CORE_T.entries)) for (const e of rows) if (['NNG', 'NNB', 'NP', 'NR'].includes(e.tag) && (e.n ?? 0) >= 4 && /^[가-힣]+$/u.test(e.lemma)) nouns.set(e.lemma, Math.max(nouns.get(e.lemma) ?? 0, e.n ?? 0));
+  const top = [...nouns].sort((a, b) => b[1] - a[1]).slice(0, 400).map(([w]) => w);
+  const fin = (w: string) => /[가-힣]/u.test(w.slice(-1)) && (w.charCodeAt(w.length - 1) - 0xac00) % 28 !== 0;
+  const bad: string[] = [];
+  for (const w of top) for (const form of [w + (fin(w) ? '을' : '를'), w + (fin(w) ? '은' : '는'), w + (fin(w) ? '이' : '가'), w + '도', w + '에', w + '의']) {
+    const c = koAnalyzeToken(form)[0];
+    const ok = !!c && koBareLemmaT(c.lemma ?? '') === w && ['NOUN', 'PRON', 'NUM', 'CLF', 'PROPN'].includes(c.pos ?? '');
+    const homograph = !!c && koBareLemmaT(c.lemma ?? '') === form && ['NOUN', 'PRON', 'NUM', 'CLF', 'PROPN', 'ADV'].includes(c.pos ?? ''); // the frame form is itself a listed word (시도, 길이, 전도)
+    if (!ok && !homograph && !FRAME_EXCEPTIONS[form]) bad.push(`${form} → ${c?.lemma}/${c?.pos}`);
+  }
+  expect(bad).toEqual([]);
 });

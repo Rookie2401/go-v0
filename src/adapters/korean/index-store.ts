@@ -18,7 +18,8 @@
 export type KoIrregular = 'R' | 'D' | 'B' | 'S' | 'H' | 'Reu' | 'Reo' | 'U' | 'Ha';
 
 /** Sejong-style class of a headword. */
-export type KoTag = 'NNG' | 'NNP' | 'NNB' | 'NP' | 'NR' | 'VV' | 'VA' | 'VX' | 'VCP' | 'VCN' | 'MM' | 'MAG' | 'MAJ' | 'IC' | 'XPN' | 'XSN' | 'XSV' | 'XSA';
+/** XR is a root (어근: 복잡, 당연): read only before 하다, 히 or 스럽다, never a word by itself. */
+export type KoTag = 'NNG' | 'NNP' | 'NNB' | 'NP' | 'NR' | 'VV' | 'VA' | 'VX' | 'VCP' | 'VCN' | 'MM' | 'MAG' | 'MAJ' | 'IC' | 'XPN' | 'XSN' | 'XSV' | 'XSA' | 'XR';
 
 export const KO_PREDICATE_TAGS: ReadonlySet<string> = new Set(['VV', 'VA', 'VX', 'VCP', 'VCN']);
 
@@ -53,6 +54,8 @@ export interface KoLexEntry {
   glossOwn?: true;
   /** The whole entry is this product's (docs/korean/lexicon-supplement.json), not the source's; a card's source line says so. */
   own?: true;
+  /** An allomorph read only in the morphology package's fused forms OR as a bare token before a noun (제 이름, 내 친구, 네 말: the genitive use); never with a copula, an ending or any particle outside the fused table. */
+  bound?: true;
   /** Hanja of a Sino-Korean word, when the source states it. */
   hanja?: string;
   /** The source's own pronunciation respelling in Hangul, when it gives one (먹따). */

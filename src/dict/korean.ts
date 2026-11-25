@@ -14,7 +14,7 @@ import fs from 'node:fs';
 import readline from 'node:readline';
 import type { DictionaryEntry } from '../core';
 import { FINALS, VOWELS, compose, decompose, finalOf, isHangulSyllable, koKey, withFinal } from '../adapters/korean/hangul';
-import { koHomonymLemma, koHomonymSetKey, koSharedPos, type KoIrregular, type KoLexEntry, type KoTag } from '../adapters/korean/index-store';
+import { koBareLemma, koHomonymLemma, koHomonymSetKey, koSharedPos, type KoIrregular, type KoLexEntry, type KoTag } from '../adapters/korean/index-store';
 
 // ───────────────────────────── the slim record ─────────────────────────────
 
@@ -29,6 +29,8 @@ export interface KoRaw {
   hanjaArg?: string;
   verbSet?: string[]; // [base, passive, causative] of a ko-verb-set head template
   infinitives: string[];
+  /** The informal non-past indicative of the conjugation TABLE (the 아/어 form the table actually shows). */
+  tableInf?: string;
   hangeul: string[];
   senses: KoRawSense[];
   /** `Korean terms suffixed with -X` categories (X without hyphen and without the parenthetical). */
@@ -59,6 +61,7 @@ export function koSlim(line: string, no: number): KoRaw | undefined {
     if (typeof f.form !== 'string') continue;
     if (tags.includes('hanja')) r.hanjaForms.push(f.form.trim());
     else if (tags.includes('infinitive') && !f.source) r.infinitives.push(koKey(f.form.trim()));
+    else if (f.source === 'conjugation' && r.tableInf === undefined && tags.includes('informal') && tags.includes('non-past') && tags.includes('indicative') && !tags.includes('polite') && !tags.includes('honorific')) r.tableInf = koKey(f.form.trim());
   }
   for (const s of Array.isArray(e.sounds) ? e.sounds.filter(isObj) : []) if (typeof s.hangeul === 'string' && s.hangeul.trim()) r.hangeul.push(s.hangeul.trim());
   const cats = [...catNames(e.categories)];
@@ -113,6 +116,25 @@ export function koShortGloss(g: string): string {
 }
 
 /** A gloss that only points at another word: "synonym of X", "See the entry at X". */
+const POLITE_OF = /(?:polite|formal|honorific|deferential)[^,;]*\b(?:form|style|speech)\b[^,;]*\bof\b|^(?:polite|formal) /i;
+/** The headwords a polite or inflected form may belong to (감사합니다 → 감사하다, 가세요 → 가다 / 가시다). */
+export function koPoliteBases(lemma: string): string[] {
+  const out: string[] = [];
+  const m = (re: RegExp, f: (p: string) => string[]): void => { const x = re.exec(lemma); if (x && x[1]) out.push(...f(x[1])); };
+  m(/^(.+)합니다$/, (p) => [`${p}하다`]);
+  m(/^(.+)습니다$/, (p) => [`${p}다`]);
+  m(/^(.+)습니까$/, (p) => [`${p}다`]);
+  m(/^(.+)(?:으)?세요$/, (p) => [`${p}다`, `${p}시다`]);
+  m(/^(.+)십시오$/, (p) => [`${p}다`, `${p}시다`]);
+  m(/^(.+)해요$/, (p) => [`${p}하다`]);
+  m(/^(.+)[아어여]요$/, (p) => [`${p}다`]);
+  const x = /^(.*)(.)니(?:다|까)$/.exec(lemma);
+  if (x) { const d = decompose(x[2]); if (d && FINALS[d.t] === 'ㅂ') out.push(`${x[1]}${compose(d.l, d.v, 0)}다`); }
+  return out;
+}
+
+/** A pronoun allomorph that occurs only before particular particles (제 for 저 before 가), never a free word. */
+const BOUND_GLOSS = /^(?:allomorph of\b|Form of\b.*:?\s*$|only used in\b)/i;
 const XSYN_RE = /^synonym of\s+([^(,;:]+?)\s*(?:[(,;:]|$)/i;
 const SEE_RE = /^(?:see|for the verb|for the)\b/i;
 
@@ -207,7 +229,7 @@ export function koSuffixEvidence(raws: readonly KoRaw[]): KoSuffixEvidence {
   return { noun, verb, adj };
 }
 
-const SKIP_POS = new Set(['character', 'syllable', 'symbol', 'punct', 'romanization', 'root', 'phrase', 'proverb', 'contraction', 'affix', 'interfix', 'conj', 'postp']);
+const SKIP_POS = new Set(['character', 'syllable', 'symbol', 'punct', 'romanization', 'phrase', 'proverb', 'contraction', 'affix', 'interfix', 'conj', 'postp']);
 /** Hyphenated suffixes that are verbal or case endings although nouns are "suffixed" with them (nominalisers, the vocative). */
 const ENDING_LIKE_SUFFIX = new Set(['ㅁ', '음', '기', '아', '야', '이여', '는', '은', '을', '를', '다']);
 const ENDING_GLOSS = /\b(?:ending|marker|allomorph|allomorphic|post-vowel|post-vocalic|post-consonant|post-liquid|speech level|interrogative|declarative|hortative|imperative|adnominal|connective|sentence-final|verb stem|politeness|honorific|intimate|plain style|polite style|formal style|indirect question|quotation|conjunction)\b|^See\b|^For the\b|^contraction of/i;
@@ -290,6 +312,7 @@ export function koClassify(r: KoRaw, ev: KoSuffixEvidence): KoClass {
       case 'adv': return { tag: conjunctionOnly(r.senses) ? 'MAJ' : 'MAG' };
       case 'intj': return { tag: 'IC' };
       case 'prefix': return { tag: 'XPN' };
+      case 'root': return { tag: 'XR' };
       case 'suffix': {
         const hyphen = r.word.trim().startsWith('-');
         const gl = r.senses.filter((s) => !koSenseIsForm(s)).map((s) => s.glosses.join(' ')).join(' | ');
@@ -380,13 +403,21 @@ export function koNumberHomonyms(items: readonly KoNumberInput[], frozen?: KoFro
 export interface KoDecision { lemma: string; pos: string; state: 'main' | 'balanced'; main?: number; why?: string }
 export interface KoOverride { lemma: string; pos: string; hom?: number; gloss: string; senses?: number[]; was?: string; own?: boolean }
 /** A hand-written row for a common word the SOURCE LACKS (docs/korean/lexicon-supplement.json). */
-export interface KoSupplement { lemma: string; tag: string; hom?: number; gloss: string; hanja?: string; irr?: string; clf?: boolean; pron?: string; why?: string }
-export interface KoDocs { decisions?: { sets: KoDecision[] }; overrides?: { entries: KoOverride[] }; supplement?: { entries: KoSupplement[] }; registry?: { entries: KoRegistryRecord[] } }
+export interface KoSupplement { lemma: string; tag: string; hom?: number; gloss: string; hanja?: string; irr?: string; clf?: boolean; pron?: string; bound?: boolean; why?: string }
+export interface KoDocs { decisions?: { sets: KoDecision[] }; overrides?: { entries: KoOverride[] }; supplement?: { entries: KoSupplement[] }; registry?: { entries: KoRegistryRecord[] }; coreExtra?: { lemmas: string[] } }
+
+/** docs/korean/core-extra.json: { lemmas: [...] }, the spellings the compiled core must hold; a malformed file fails the build. */
+export function koCheckCoreExtra(x: unknown): { lemmas: string[] } | undefined {
+  if (x === undefined) return undefined;
+  const l = (x as { lemmas?: unknown } | null)?.lemmas;
+  if (!isObj(x) || !Array.isArray(l) || !l.every((v) => typeof v === 'string' && v.trim().length > 0)) throw new Error('core-extra.json: expected { "lemmas": [non-empty strings] }');
+  return { lemmas: l.map((v) => koKey(String(v).trim())) };
+}
 
 /** docs/korean/homonym-decisions.json and docs/korean/gloss-overrides.json, hand-written by the review; absent files are fine. */
-export function koLoadDocs(dir = 'docs/korean'): KoDocs {
+export function koLoadDocs(dir = process.env.KO_DOCS_DIR ?? 'docs/korean'): KoDocs {
   const read = <T,>(f: string): T | undefined => (fs.existsSync(`${dir}/${f}`) ? (JSON.parse(fs.readFileSync(`${dir}/${f}`, 'utf8')) as T) : undefined);
-  return { decisions: read('homonym-decisions.json'), overrides: read('gloss-overrides.json'), supplement: read('lexicon-supplement.json'), registry: read('homonyms.json') };
+  return { decisions: read('homonym-decisions.json'), overrides: read('gloss-overrides.json'), supplement: read('lexicon-supplement.json'), registry: read('homonyms.json'), coreExtra: koCheckCoreExtra(read<unknown>('core-extra.json')) };
 }
 
 // ───────────────────────────── building the rows ─────────────────────────────
@@ -401,6 +432,14 @@ export interface KoRow extends KoLexEntry {
   xref?: string;
   contraction?: string;
   byShape?: true;
+  /** The extract's own part of speech. */
+  rawPos?: string;
+  /** Every raw sense of the entry in file order (merged entries concatenated), as the dictionary writes it, for the override positions. */
+  senseTexts: Array<{ full: string; short: string }>;
+  /** The overridden senses the dictionary shows first, in the override's order. */
+  prefer?: Array<{ full: string; short: string }>;
+  /** The wording of an own override, shown first and labelled own-wording. */
+  ownText?: string;
   /** Fingerprint (Hanja, first gloss, class) that freezes an assigned homonym number. */
   fp?: string;
   /** The homonym number is assigned by the build (from 50), not the source's. */
@@ -438,6 +477,12 @@ export interface KoReport {
   xrefResolved: number;
   xrefEmpty: number;
   glossOverrides: number;
+  tableDisagree: Array<{ lemma: string; etym?: string; head: string; table: string }>;
+  politeDropped: string[];
+  politeKept: string[];
+  rootsKept: number;
+  rootsAsNoun: string[];
+  bound: Array<{ lemma: string; tag: string; why: string }>;
   supplement: Array<{ lemma: string; tag: string; hom?: number; gloss: string; hanja?: string }>;
   glossOwn: Array<{ lemma: string; pos: string; hom: number; gloss: string }>;
 }
@@ -467,7 +512,7 @@ const normGlossKey = (g: string | undefined): string => (g ?? '').toLowerCase().
 export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: KoRow[]; report: KoReport } {
   const report: KoReport = {
     read: raws.length, kept: 0, keptByPos: {}, skipped: {}, skippedByTag: {}, merges: 0, mergedSameEtym: [], assignedRows: [], mergedSameWord: [], orderSets: [], irrDisagree: [], noTable: 0, noClass: [], byShape: 0,
-    voiceBoth: [], voicePairs: [], mixedDependent: 0, maj: [], majFirstOnly: [], sets: [], contractionPos: [], contractionKept: [], contractionFused: [], xrefResolved: 0, xrefEmpty: 0, glossOverrides: 0, supplement: [], glossOwn: [],
+    voiceBoth: [], voicePairs: [], mixedDependent: 0, maj: [], majFirstOnly: [], sets: [], contractionPos: [], contractionKept: [], contractionFused: [], xrefResolved: 0, xrefEmpty: 0, glossOverrides: 0, tableDisagree: [], politeDropped: [], politeKept: [], rootsKept: 0, rootsAsNoun: [], bound: [], supplement: [], glossOwn: [],
   };
   const ev = koSuffixEvidence(raws);
   // the passive and causative verbs that a base verb's ko-verb-set names
@@ -485,7 +530,8 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
     const c = koClassify(r, ev);
     if (!c.tag) { inc(report.skipped, c.skip ?? 'other'); continue; }
     const h = koHeadword(r) as { lemma: string };
-    const row: KoRow = { lemma: h.lemma, tag: c.tag, lines: [r.no], senseCount: r.senses.length };
+    if (c.contraction && /\+\s*-/.test(r.senses[0]?.glosses[0] ?? '')) { report.contractionFused.push({ word: h.lemma, target: `${c.contraction} + particle` }); continue; }
+    const row: KoRow = { lemma: h.lemma, tag: c.tag, lines: [r.no], senseCount: r.senses.length, rawPos: r.pos, senseTexts: r.senses.map((x) => ({ full: x.glosses.join(' — '), short: x.glosses.length > 1 && x.glosses[0].endsWith(':') ? `${x.glosses[0]} ${x.glosses[1]}` : x.glosses[0] ?? '' })) };
     if (c.clf) row.clf = true;
     if (r.etym !== undefined) row.etym = r.etym;
     if (c.contraction) {
@@ -516,6 +562,15 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
         else report.noClass.push({ lemma: h.lemma, ...(r.etym ? { hom: Number(r.etym) } : {}), reason: `the infinitive (${r.infinitives[0]}) fits no class and is not regular`, doubt: 'the stem shape allows more than one class' });
         if (new Set(classes).size > 1) report.irrDisagree.push(`${h.lemma} (${r.etym ?? '-'}): ${classes.map((x) => x ?? '?').join('/')}`);
       }
+      // the conjugation TABLE wins over the head line when they disagree (기다랗다: a regular head line, a ㅎ-irregular table)
+      if (r.tableInf) {
+        const tc = koIrregularClass(stem, r.tableInf);
+        if (tc && tc !== row.irr) {
+          if (row.irr && !row.byShape) report.tableDisagree.push({ lemma: h.lemma, ...(r.etym ? { etym: r.etym } : {}), head: row.irr, table: tc });
+          if (row.byShape) { delete row.byShape; report.byShape--; }
+          row.irr = tc;
+        }
+      }
       // voice: the entry's own first sense, else a base verb's ko-verb-set
       const own = r.senses[0]?.glosses[0] ?? '';
       const m = /^(passive|causative) of\s+([^\s(,;:]+)/i.exec(own);
@@ -527,6 +582,7 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
         if (other) report.voiceBoth.push(`${h.lemma} (${r.etym ?? '-'})`);
       }
     }
+    if (c.tag === 'NP' && live.length && live.every((x) => BOUND_GLOSS.test(x.glosses[0] ?? ''))) { row.bound = true; report.bound.push({ lemma: h.lemma, tag: 'NP', why: (live[0].glosses[0] ?? '').slice(0, 90) }); }
     if (c.tag === 'NNB' && r.pos === 'noun') { if (live.some((s) => !s.tags.includes('dependent'))) report.mixedDependent++; }
     if (c.tag === 'MAJ') report.maj.push(h.lemma);
     if (c.tag === 'MAG') { const f = firstNonForm(r.senses); if (f && conjunctionOnly([f])) report.majFirstOnly.push(h.lemma); }
@@ -543,8 +599,33 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
       const t = ts?.find((x) => x.tag === c.tag) ?? ts?.[0];
       if (!t) { report.contractionFused.push({ word: c.lemma, target: c.contraction }); return false; }
       c.tag = t.tag; if (t.clf) c.clf = true; else delete c.clf;
+      // an allomorph of a pronoun that occurs only in fused forms: 누 of 누구, 제 / 내 / 네 as genitives of 저 / 나 / 너
+      const base = c.contraction.endsWith('의') ? lemmas.get(c.contraction.slice(0, -1))?.find((x) => x.tag === 'NP') : undefined;
+      if (base) { c.bound = true; report.bound.push({ lemma: c.lemma, tag: c.tag, why: `contraction of ${c.contraction}` }); }
       report.contractionKept.push({ word: c.lemma, target: c.contraction, tag: c.tag });
       return true;
+    });
+  }
+  // pass A3: a headword that is an INFLECTED FORM of another kept headword (감사합니다 of 감사하다) is not a word of its own, unless the source files it as
+  // an interjection with a meaning of its own (안녕하세요, 고맙습니다: greetings a learner needs as phrases)
+  {
+    const preds = new Set(cands.filter((c) => c.tag === 'VV' || c.tag === 'VA').map((c) => c.lemma));
+    cands = cands.filter((c) => {
+      const base = koPoliteBases(c.lemma).find((b) => preds.has(b));
+      if (!base || c.own) return true;
+      if (c.tag === 'VV' || c.tag === 'VA') { report.politeDropped.push(`${c.lemma} (${c.rawPos}) of ${base}`); return false; }
+      if (c.tag === 'IC') {
+        if (c.gloss && POLITE_OF.test(c.gloss)) { report.politeDropped.push(`${c.lemma} (IC "${c.gloss}") of ${base}`); return false; }
+        report.politeKept.push(`${c.lemma} IC "${c.gloss ?? ''}" (base ${base})`); return true;
+      }
+      return true;
+    });
+    // a root (어근) that is also a noun entry stays the noun
+    const nouns = new Set(cands.filter((c) => koSharedPos(c) === 'NOUN').map((c) => c.lemma));
+    cands = cands.filter((c) => {
+      if (c.tag !== 'XR') return true;
+      if (nouns.has(c.lemma)) { report.rootsAsNoun.push(c.lemma); return false; }
+      report.rootsKept++; return true;
     });
   }
   // pass B1: entries of one SET and ONE etymology number are ONE headword and ONE row, always (the source's own judgement: one etymology is one
@@ -552,6 +633,7 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
   const fill = (to: KoRow, from: KoRow): void => {
     to.lines.push(...from.lines);
     to.senseCount += from.senseCount;
+    to.senseTexts.push(...from.senseTexts);
     for (const f of ['gloss', 'hanja', 'pron', 'irr', 'voice', 'base', 'xref'] as const) if (to[f] === undefined && from[f] !== undefined) (to as unknown as Record<string, unknown>)[f] = from[f];
     if (to.gloss !== undefined) delete to.xref;
     if (to.tag === 'NNB' && from.tag === 'NNG') to.tag = 'NNG';
@@ -622,7 +704,7 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
   // a line that joins a set of the source needs a hand-fixed number from 90; a line that makes a new spelling has none.
   const supplementHom = new Map<KoRow, number>();
   {
-    const SUP_TAGS = new Set(['NNG', 'NNP', 'NNB', 'NP', 'NR', 'VV', 'VA', 'MM', 'MAG', 'MAJ', 'IC', 'XPN', 'XSN', 'XSV', 'XSA']);
+    const SUP_TAGS = new Set(['NNG', 'NNP', 'NNB', 'NP', 'NR', 'VV', 'VA', 'MM', 'MAG', 'MAJ', 'IC', 'XPN', 'XSN', 'XSV', 'XSA', 'XR']);
     const IRR = new Set(['R', 'D', 'B', 'S', 'H', 'Reu', 'Reo', 'U', 'Ha']);
     const sourceRows = rows.slice();
     const added: KoRow[] = [];
@@ -636,11 +718,12 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
       if (pred && !(e.irr && IRR.has(e.irr))) throw new Error(`${where}: a predicate needs irr (one of ${[...IRR].join(' ')})`);
       if (pred && !lemma.endsWith('다')) throw new Error(`${where}: a predicate lemma ends in 다`);
       if (e.hom !== undefined && (!Number.isInteger(e.hom))) throw new Error(`${where}: hom must be an integer`);
-      const row: KoRow = { lemma, tag: e.tag as KoTag, lines: [], senseCount: 0, gloss: String(e.gloss).trim(), glossOwn: true, own: true };
+      const row: KoRow = { lemma, tag: e.tag as KoTag, lines: [], senseCount: 0, senseTexts: [], gloss: String(e.gloss).trim(), glossOwn: true, own: true };
       if (e.clf) row.clf = true;
       if (e.hanja) row.hanja = e.hanja;
       if (e.irr) row.irr = e.irr as KoIrregular;
       if (e.pron) row.pron = e.pron;
+      if (e.bound) row.bound = true;
       const key = setKeyOf(row);
       const inSource = sourceRows.filter((r) => setKeyOf(r) === key);
       for (const r of inSource) {
@@ -726,6 +809,9 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
       if (bad.length) throw new Error(`gloss-overrides.json entries[${i}] (${o.lemma} ${o.pos} hom ${o.hom ?? 0}): sense position(s) ${bad.join(', ')} do not exist (the entry has ${hits[0].senseCount} senses)`);
       if (!o.own && !pos.length) throw new Error(`gloss-overrides.json entries[${i}] (${o.lemma} ${o.pos} hom ${o.hom ?? 0}): a line without "own" must name at least one sense`);
       hits[0].gloss = o.gloss; report.glossOverrides++;
+      const seen = new Set<number>();
+      hits[0].prefer = pos.filter((p) => !seen.has(p) && seen.add(p)).map((p) => hits[0].senseTexts[p - 1]).filter((x): x is { full: string; short: string } => !!x && !!x.full);
+      if (o.own) hits[0].ownText = o.gloss;
       if (o.own) { hits[0].glossOwn = true; report.glossOwn.push({ lemma: o.lemma, pos: o.pos, hom: o.hom ?? 0, gloss: o.gloss }); } else delete hits[0].glossOwn;
     });
   }
@@ -735,17 +821,89 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
 
 // ───────────────────────────── the dictionary hook ─────────────────────────────
 
+/** How a dictionary entry of the extract relates to the lexicon rows: its homonym number and state, and the senses an override puts first. */
+export interface KoDictInfo { hom?: number; state?: 'main' | 'other' | 'balanced'; prefer?: Array<{ full: string; short: string }>; ownText?: string }
+
+export interface KoDictPlan {
+  /** Extract line → homonym number, for the lines that belong to a numbered entry (the SAME rows the lexicon builds). */
+  homByLine: Map<number, number>;
+  /** (headword, etymology number as the dictionary entry carries it) → what the lexicon knows of it. */
+  info: Map<string, KoDictInfo>;
+  /** The entries of one partition in their final order: a main entry first, the entries of a balanced set in registry order, overridden senses first. */
+  arrange(entries: DictionaryEntry[]): DictionaryEntry[];
+}
+
+const infoKey = (lemma: string, pos: string | undefined, etym: number | undefined): string => `${lemma} ${pos ?? ''} ${etym ?? 0}`;
+
+/** The plan of the dictionary build, from the same rows (and the same reviewed inputs) as the lexicon. */
+export async function koDictionaryPlan(file: string, docs: KoDocs = koLoadDocs()): Promise<KoDictPlan> {
+  const { rows } = koBuildRows(await koReadSlim(file), docs);
+  const homByLine = new Map<number, number>();
+  const info = new Map<string, KoDictInfo>();
+  for (const r of rows) {
+    if (r.hom !== undefined) for (const l of r.lines) homByLine.set(l, r.hom);
+    const etym = r.hom ?? (r.etym !== undefined ? Number(r.etym) : undefined);
+    const i: KoDictInfo = {};
+    if (r.hom !== undefined) { i.hom = r.hom; if (r.set) i.state = r.set; }
+    if (r.prefer?.length) i.prefer = r.prefer;
+    if (r.ownText) i.ownText = r.ownText;
+    if (i.state || i.prefer || i.ownText) { const pos = koSharedPos(r) ?? 'X'; info.set(infoKey(r.lemma, pos, etym), i); if (pos === 'CLF') { info.set(infoKey(r.lemma, 'NOUN', etym), i); info.set(infoKey(r.lemma, 'X', etym), i); } }
+  }
+  const reorder = (e: DictionaryEntry, i: KoDictInfo): void => {
+    if (i.prefer?.length && e.senses?.length) {
+      const first: NonNullable<DictionaryEntry['senses']> = [];
+      for (const p of i.prefer) { const at = e.senses.findIndex((x) => x.gloss === p.full && !first.includes(x)); if (at >= 0) first.push(e.senses[at]); }
+      if (first.length) e.senses = [...first, ...e.senses.filter((x) => !first.includes(x))];
+      const g: string[] = [];
+      for (const p of i.prefer) if (e.glosses.includes(p.short) && !g.includes(p.short)) g.push(p.short);
+      if (g.length) e.glosses = [...g, ...e.glosses.filter((x) => !g.includes(x))];
+    }
+    if (i.ownText) {
+      e.senses = [{ gloss: i.ownText, tags: ['own-wording'] }, ...(e.senses ?? [])];
+      e.glosses = [i.ownText, ...e.glosses];
+    }
+  };
+  const arrange = (entries: DictionaryEntry[]): DictionaryEntry[] => {
+    const groups = new Map<string, DictionaryEntry[]>();
+    for (const e of entries) (groups.get(e.form) ?? groups.set(e.form, []).get(e.form)!).push(e);
+    const out: DictionaryEntry[] = [];
+    for (const [form, g] of groups) {
+      const bare = koBareLemma(form) === form;
+      const ranked = g.map((e, at) => {
+        const i = info.get(infoKey(koBareLemma(form), e.pos ?? 'X', e.etymology));
+        if (i) reorder(e, i);
+        if (bare && i?.state === 'other') e.role = e.role ? `${e.role}; another entry of this spelling (number ${i.hom})` : `another entry of this spelling (number ${i.hom})`;
+        if (bare && i?.state === 'balanced') e.role = e.role ? `${e.role}; one of several entries of this spelling (number ${i.hom})` : `one of several entries of this spelling (number ${i.hom})`;
+        return { e, at, rank: bare && i?.state === 'other' ? 1 : 0, hom: i?.hom ?? e.etymology ?? 0 };
+      });
+      // a main entry first, the others after it; a balanced set in registry (number) order; anything else as the file has it
+      if (bare && ranked.some((x) => x.rank === 1 || x.e.role?.includes('several'))) ranked.sort((a, b) => a.rank - b.rank || a.hom - b.hom || a.at - b.at);
+      out.push(...ranked.map((x) => x.e));
+    }
+    return out;
+  };
+  return { homByLine, info, arrange };
+}
+
 /** Extract line number → homonym number, for the lines that belong to a numbered entry (the SAME rows the lexicon builds). */
 export async function koHomonymLines(file: string): Promise<Map<number, number>> {
-  const { rows } = koBuildRows(await koReadSlim(file), koLoadDocs());
-  const out = new Map<number, number>();
-  for (const r of rows) if (r.hom !== undefined) for (const l of r.lines) out.set(l, r.hom);
-  return out;
+  return (await koDictionaryPlan(file)).homByLine;
+}
+
+/**
+ * The entry again under its numbered headword (눈²): the same record, another form, carrying its homonym number as its etymology number.
+ * The entry itself is stamped with the same number (the dictionary's own merge keeps the etymologies apart). Nothing for an entry with no number.
+ */
+export function koHomonymAliases(homByLine: ReadonlyMap<number, number>, lineNo: number, entry: DictionaryEntry): DictionaryEntry[] {
+  const hom = homByLine.get(lineNo);
+  if (hom === undefined) return [];
+  entry.etymology = hom;
+  return [{ ...entry, form: koHomonymLemma(entry.form, hom) }];
 }
 
 /**
  * The dictionary entries of the supplement rows (docs/korean/lexicon-supplement.json): the meaning of a word the source lacks, under its
- * headword (and its numbered headword), its one sense labelled `own-wording` so that a reader sees it is this product's wording, not Wiktionary's.
+ * headword (and its numbered headword), its one sense labelled \`own-wording\` so that a reader sees it is this product's wording, not Wiktionary's.
  * The dictionary has no per-entry source field; a sense's labels are the place the contract gives for the source's own labels.
  */
 export function koSupplementEntries(docs: KoDocs = koLoadDocs()): DictionaryEntry[] {
@@ -764,21 +922,15 @@ export function koSupplementEntries(docs: KoDocs = koLoadDocs()): DictionaryEntr
   return out;
 }
 
-/** The entry again under its numbered headword (눈²): the same record, another form. Nothing for an entry with no number. */
-export function koHomonymAliases(homByLine: ReadonlyMap<number, number>, lineNo: number, entry: DictionaryEntry): DictionaryEntry[] {
-  const hom = homByLine.get(lineNo);
-  return hom === undefined ? [] : [{ ...entry, form: koHomonymLemma(entry.form, hom) }];
-}
-
 // ───────────────────────────── the compiled core ─────────────────────────────
 
 export const KO_CLOSED_TAGS: ReadonlySet<string> = new Set(['NP', 'NR', 'MM', 'MAJ', 'NNB', 'XPN', 'XSN', 'XSV', 'XSA']);
 
 /** One core row as a compact tuple. */
-export type KoCoreTuple = [lemma: string, tag: string, hom: number, irr: string, gloss: string, hanja: string, pron: string, n: number, voice: string, base: string, clf: number, set: string, glossOwn: number, own: number];
+export type KoCoreTuple = [lemma: string, tag: string, hom: number, irr: string, gloss: string, hanja: string, pron: string, n: number, voice: string, base: string, clf: number, set: string, glossOwn: number, own: number, bound: number];
 
 export function koCoreTuple(e: KoLexEntry): KoCoreTuple {
-  return [e.lemma, e.tag, e.hom ?? 0, e.irr ?? '', e.gloss ?? '', e.hanja ?? '', e.pron ?? '', e.n ?? 0, e.voice ?? '', e.base ?? '', e.clf ? 1 : 0, e.set ?? '', e.glossOwn ? 1 : 0, e.own ? 1 : 0];
+  return [e.lemma, e.tag, e.hom ?? 0, e.irr ?? '', e.gloss ?? '', e.hanja ?? '', e.pron ?? '', e.n ?? 0, e.voice ?? '', e.base ?? '', e.clf ? 1 : 0, e.set ?? '', e.glossOwn ? 1 : 0, e.own ? 1 : 0, e.bound ? 1 : 0];
 }
 export function koCoreTupleJson(t: KoCoreTuple): string {
   const a: unknown[] = [...t];
@@ -791,22 +943,26 @@ export function koCoreTupleJson(t: KoCoreTuple): string {
  * corpus, then open-class sets by descending count, until `budget` bytes of tuples. A set goes in WHOLE or not at all, each member with the
  * number and state it has in the shards.
  */
-export function koSelectCore(entries: readonly KoLexEntry[], budget: number): { chosen: KoLexEntry[]; bytes: number } {
+export function koSelectCore(entries: readonly KoLexEntry[], budget: number, extra: ReadonlySet<string> = new Set()): { chosen: KoLexEntry[]; bytes: number; forcedBytes: number; forcedRows: number } {
   const sets = new Map<string, KoLexEntry[]>();
   for (const e of entries) { const k = koHomonymSetKey(e); (sets.get(k) ?? sets.set(k, []).get(k)!).push(e); }
   const cost = (s: KoLexEntry[]): number => s.reduce((t, e) => t + Buffer.byteLength(koCoreTupleJson(koCoreTuple(e))) + 4, 0);
   // a balanced set repeats its count on every member: the count of the SPELLING is the largest, not the sum
   const total = (s: KoLexEntry[]): number => s.reduce((t, e) => Math.max(t, e.n ?? 0), 0);
-  const closed: KoLexEntry[][] = []; const open: KoLexEntry[][] = [];
+  const forced: KoLexEntry[][] = []; const closed: KoLexEntry[][] = []; const open: KoLexEntry[][] = [];
   for (const s of sets.values()) {
-    if (s.some((e) => KO_CLOSED_TAGS.has(e.tag)) || (s[0].tag === 'IC' && total(s) >= 1)) closed.push(s);
+    if (extra.has(s[0].lemma)) forced.push(s); // every set of a listed spelling, across classes
+    else if (s.some((e) => KO_CLOSED_TAGS.has(e.tag)) || (s[0].tag === 'IC' && total(s) >= 1)) closed.push(s);
     else if (total(s) >= 1) open.push(s);
   }
-  open.sort((a, b) => total(b) - total(a) || (a[0].lemma < b[0].lemma ? -1 : a[0].lemma > b[0].lemma ? 1 : a[0].tag < b[0].tag ? -1 : 1));
+  const byLemma = (a: KoLexEntry[], b: KoLexEntry[]): number => (a[0].lemma < b[0].lemma ? -1 : a[0].lemma > b[0].lemma ? 1 : a[0].tag < b[0].tag ? -1 : 1);
+  open.sort((a, b) => total(b) - total(a) || byLemma(a, b));
   const chosen: KoLexEntry[] = []; let bytes = 0;
+  for (const s of forced) { chosen.push(...s); bytes += cost(s); }
+  const forcedBytes = bytes; const forcedRows = chosen.length;
   for (const s of closed) { chosen.push(...s); bytes += cost(s); }
   for (const s of open) { const c = cost(s); if (bytes + c > budget) break; chosen.push(...s); bytes += c; }
-  return { chosen, bytes };
+  return { chosen, bytes, forcedBytes, forcedRows };
 }
 
 // ───────────────────────────── the homonym registry ─────────────────────────────

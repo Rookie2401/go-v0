@@ -23,6 +23,8 @@ import path from 'node:path';
 import readline from 'node:readline';
 import zlib from 'node:zlib';
 import { LANGUAGES, type LanguageCode } from '../core';
+import { koHomonymLemma } from '../adapters/korean/index-store';
+import { koDictionaryPlan } from './korean';
 import { createAdapterRegistry } from '../adapters';
 import { KAIKKI_ATTRIBUTION } from './build';
 import {
@@ -147,6 +149,8 @@ export async function buildFullFile(opts: BuildFullOptions): Promise<BuildFullRe
   const gzip = v2 && opts.gzip === true;
   const internCounts = new Map<string, number>();
   const countIntern = (str: string) => internCounts.set(str, (internCounts.get(str) ?? 0) + 1);
+  // a Korean homonym (눈² 묻다¹) also has its FULL record under its numbered headword, holding only its own entry (korean.ts)
+  const koHom = opts.lang === ('ko' as LanguageCode) ? (await koDictionaryPlan(opts.input)).homByLine : undefined;
   const spillDir = fs.mkdtempSync(path.join(opts.tmpDir ?? os.tmpdir(), 'go-dict-full-spill-'));
   const spill = createSpill(spillDir);
   try {
@@ -170,6 +174,8 @@ export async function buildFullFile(opts: BuildFullOptions): Promise<BuildFullRe
       const rec = JSON.stringify(record);
       estimate += byteLength(rec) + byteLength(key) + 6;
       spill.add(bucketOf(key, FULL_SPILL_PARTITIONS), JSON.stringify([key, rec]));
+      const homNo = koHom?.get(stats.lines);
+      if (homNo !== undefined) { const nk = koHomonymLemma(key, homNo); estimate += byteLength(rec) + byteLength(nk) + 6; spill.add(bucketOf(nk, FULL_SPILL_PARTITIONS), JSON.stringify([nk, rec])); }
     }
     spill.close();
     if (stats.counts.records === 0) throw new Error('no usable entries in the input (nothing written)');

@@ -6,7 +6,6 @@
     {"lemma":"있다","pos":"VERB","hom":0,"gloss":"to stay, remain; to be (in a state)","senses":[1,5],"was":"to stay"},
     {"lemma":"수","pos":"NOUN","hom":1,"gloss":"possibility, means; ability","senses":[1,3],"was":"way"},
     {"lemma":"되다","pos":"VERB","hom":1,"gloss":"to become; to be permissible","senses":[1,3],"was":"to become"},
-    {"lemma":"그","pos":"PRON","hom":0,"gloss":"he, she","senses":[1],"was":"he"},
     {"lemma":"그","pos":"DET","hom":0,"gloss":"that","senses":[1],"was":"that (of what has been already said or known)"},
     {"lemma":"없다","pos":"ADJ","hom":0,"gloss":"to be nonexistent; to have none; to be lacking","senses":[1],"was":"to have none"},
     {"lemma":"않다","pos":"VERB","hom":0,"gloss":"to not do; to negate (the verb before it)","senses":[2,1],"was":"used to negate the clause to which the main verb belongs"},

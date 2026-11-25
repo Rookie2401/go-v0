@@ -4971,6 +4971,24 @@
    "hanja": "公海"
   },
   {
+   "lemma": "공활",
+   "tag": "XR",
+   "hom": 1,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "Root of 공활하다 (gonghwalhada, “(of the sky) empty, high and clear”). Rarely used…",
+   "hanja": "空豁"
+  },
+  {
+   "lemma": "공활",
+   "tag": "XR",
+   "hom": 2,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "Root of 공활하다 (gonghwalhada, “spacious, broad, wide, empty, clear”). Rarely used…",
+   "hanja": "空闊"
+  },
+  {
    "lemma": "과",
    "tag": "NNG",
    "hom": 1,
@@ -14279,6 +14297,23 @@
    "by": "default",
    "gloss": "a ten thousand year",
    "hanja": "萬年"
+  },
+  {
+   "lemma": "만만",
+   "tag": "XR",
+   "hom": 1,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "Root of 만만하다 (manmanhada, “to be weak, easy to manipulate, easily giving in”) /…"
+  },
+  {
+   "lemma": "만만",
+   "tag": "XR",
+   "hom": 2,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "Root of 만만하다 (manmanhada, “to be full of”) / 만만히 (manmanhi). Rarely used alone.",
+   "hanja": "滿滿"
   },
   {
    "lemma": "만신",
@@ -29743,6 +29778,24 @@
    "hanja": "辛"
   },
   {
+   "lemma": "신기",
+   "tag": "XR",
+   "hom": 1,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "Root of 신기하다 (sin'gihada, “to be strange and amazing”). Rarely used alone.",
+   "hanja": "神奇"
+  },
+  {
+   "lemma": "신기",
+   "tag": "XR",
+   "hom": 2,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "Root of 신기하다 (sin'gihada, “to be novel”). Rarely used alone.",
+   "hanja": "新奇"
+  },
+  {
    "lemma": "신기하다",
    "tag": "VA",
    "hom": 1,
@@ -37551,6 +37604,24 @@
    "by": "default",
    "gloss": "slang",
    "hanja": "隱語"
+  },
+  {
+   "lemma": "은은",
+   "tag": "XR",
+   "hom": 1,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "Root of 은은하다 (euneunhada, “to be faint, to be indistinct, to be subtle”).…",
+   "hanja": "隱隱"
+  },
+  {
+   "lemma": "은은",
+   "tag": "XR",
+   "hom": 2,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "Root of 은은하다 (euneunhada, “to be loud, to be roaring”). Rarely used alone.",
+   "hanja": "殷殷"
   },
   {
    "lemma": "은은하다",

@@ -27,7 +27,7 @@ import {
 } from './build';
 import { latinNormalize } from './latin-normalize';
 import { hebrewAliases, hebrewSpellingEntry } from './hebrew';
-import { koHomonymAliases, koHomonymLines, koSupplementEntries } from './korean';
+import { koDictionaryPlan, koHomonymAliases, koSupplementEntries } from './korean';
 import { loadAdapterNormalizer } from './adapter-normalize-node';
 import { SHARD_FILE, bucketOf, shardName, type DictionaryManifest } from './format';
 
@@ -105,7 +105,7 @@ export async function buildDictionaryFile(opts: BuildFileOptions): Promise<Build
   const labelSets = createLabelSetRegistry();
   const drop = dropsFormPronunciations({ lang: opts.lang, dropFormPronunciations: opts.dropFormPronunciations });
   // a Korean homonym (눈¹ 눈² 눈³) is also filed under its numbered headword, the numbers being the lexicon's (korean.ts)
-  const koHom = opts.lang === ('ko' as LanguageCode) ? await koHomonymLines(opts.input) : undefined;
+  const koPlan = opts.lang === ('ko' as LanguageCode) ? await koDictionaryPlan(opts.input) : undefined;
   const ingest = createLineIngestor({ lang: opts.lang, normalize, dropFormPronunciations: opts.dropFormPronunciations }, stats, labelSets);
   const spillDir = fs.mkdtempSync(path.join(opts.tmpDir ?? os.tmpdir(), 'go-dict-spill-'));
   const spill = createSpill(spillDir);
@@ -126,7 +126,7 @@ export async function buildDictionaryFile(opts: BuildFileOptions): Promise<Build
       // a Latin headword also gets its other printed spellings; a Hebrew one its pointed spelling and headword-line forms (hebrew.ts)
       const hebrew = opts.lang === ('he' as LanguageCode) ? hebrewAliases(line, mapped, normalize) : [];
       if (hebrew.length) stats.aliases = (stats.aliases ?? 0) + hebrew.length;
-      const korean = koHom ? koHomonymAliases(koHom, lines, mapped) : [];
+      const korean = koPlan ? koHomonymAliases(koPlan.homByLine, lines, mapped) : [];
       if (korean.length) stats.aliases = (stats.aliases ?? 0) + korean.length;
       for (const entry of [...withAliases(mapped, opts, stats), ...hebrew, ...korean]) {
         for (const f of entry.formOf ?? []) if (entry !== mapped) labelSets.note(f.tags);
@@ -169,7 +169,7 @@ export async function buildDictionaryFile(opts: BuildFileOptions): Promise<Build
       }
       const grouped = new Map<number, Map<string, string[]>>();
       const forms = new Set<string>();
-      for (const e of settleEntries(merged.values(), drop, stats)) { // insertion order = input order within the partition
+      for (const e of settleEntries(koPlan ? koPlan.arrange([...merged.values()]) : merged.values(), drop, stats)) { // insertion order = input order within the partition
         tallyEntry(stats, e);
         forms.add(e.form);
         const b = bucketOf(e.form, buckets);

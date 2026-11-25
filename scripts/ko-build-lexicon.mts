@@ -138,11 +138,12 @@ const spellingCount = new Map<string, number>();
     if (r.gloss) e.gloss = r.gloss;
     if (r.glossOwn) e.glossOwn = true;
     if (r.own) e.own = true;
+    if (r.bound) e.bound = true;
     if (r.hanja) e.hanja = r.hanja;
     if (r.pron) e.pron = r.pron;
     // the count is of the SPELLING: a main set gives it to the main entry only; a balanced set to EVERY entry (it orders stems, it does not choose
     // between homonyms); an entry that is alone has it
-    const n = r.set === 'other' ? 0 : spellingCount.get(`${r.lemma}\u0000${posOf(r)}`) ?? 0;
+    const n = r.set === 'other' ? 0 : r.tag === 'XR' ? priorCount.get(`${r.lemma}\u0000NOUN`) ?? 0 : spellingCount.get(`${r.lemma}\u0000${posOf(r)}`) ?? 0;
     if (n > 0) e.n = n;
     rowOfEntry.set(e, r);
     lexEntries.push(e);
@@ -204,7 +205,11 @@ console.log(`${shardOuts.length} shards, ${(gzTotal / 1e6).toFixed(2)} MB gzip (
 
 // ───────────────────────────── core ─────────────────────────────
 
-const core = koSelectCore(lexEntries, CORE_BUDGET - 2800);
+const extraSet = new Set(docs.coreExtra?.lemmas ?? []);
+const lexLemmas = new Set(lexEntries.map((e) => e.lemma));
+const extraLacking = [...extraSet].filter((l) => !lexLemmas.has(l));
+// the FILE (header and footer included) stays within the budget: the rows get the budget less the fixed text
+const core = koSelectCore(lexEntries, CORE_BUDGET - 3300, extraSet);
 const coreRows = [...core.chosen].sort((a, b) => cmp(a.lemma, b.lemma) || cmp(a.tag, b.tag) || (a.hom ?? 0) - (b.hom ?? 0));
 const coreTuples = coreRows.map((e) => koCoreTupleJson(koCoreTuple(e)));
 const coreSetCount = new Set(coreRows.map((e) => koHomonymSetKey(e))).size;
@@ -459,6 +464,38 @@ ${Object.entries(irrCount).sort((a, b) => b[1] - a[1]).map(([k, n]) => `### ${k}
 
 ${report.noClass.map((x) => `- ${x.lemma}${x.hom ? sup(x.hom) : ''}: ${x.reason}; ${x.doubt}`).join('\n')}
 
+## Polite forms, roots, bound allomorphs, conjunctions
+
+### Inflected forms dropped (an inflected form of another kept headword is not a word of its own): ${report.politeDropped.length}
+
+${report.politeDropped.map((x) => `- ${x}`).join('\n') || '(none)'}
+
+Kept as interjections (greetings a learner needs as phrases, the source files them as intj with a meaning of their own): ${report.politeKept.length}
+
+${report.politeKept.map((x) => `- ${x}`).join('\n') || '(none)'}
+
+### Roots (어근, XR)
+
+The extract's pos "root" entries are filed as XR rows, read only before 하다, 히 or 스럽다 (a shared part of speech of their own: none). ${fmt(report.rootsKept)} filed; ${report.rootsAsNoun.length} left out because the same spelling is a noun entry (the noun stays): ${report.rootsAsNoun.slice(0, 80).join(', ')}${report.rootsAsNoun.length > 80 ? ', …' : ''}. The supplement's roots: ${suppEntries.filter((e) => e.tag === 'XR').map((e) => e.lemma).join(', ') || '(none)'}. An XR row's count is the count of its spelling as a noun in the priors corpus.
+
+### Bound allomorphs (\`bound: true\`: occur only in the fused forms of the morphology package's table, never a free word)
+
+${lexEntries.filter((e) => e.bound).map((e) => `- ${e.lemma}${e.hom ? sup(e.hom) : ''} ${e.tag}${e.own ? ' (supplement)' : ''}: "${e.gloss ?? ''}"`).join('\n') || '(none)'}
+
+Why each: ${report.bound.map((b) => `${b.lemma} (${b.why})`).join('; ') || '(none)'}. The free pronouns 뭐, 걔, 얘, 쟤 and 거 are not bound.
+
+### Conjugation: the head line and the table disagree (the TABLE wins): ${report.tableDisagree.length}
+
+${report.tableDisagree.map((x) => `- ${x.lemma}${x.etym ? ` (etymology ${x.etym})` : ''}: head line ${x.head}, table ${x.table}`).join('\n') || '(none)'}
+
+### Conjunctive adverbs the lexicon holds
+
+${['그래서', '그러나', '그리고', '하지만', '그런데', '그러면', '그럼', '그러니까', '그래도', '따라서', '또한', '즉', '그러므로', '혹은', '또는', '및'].map((w) => { const r = lexEntries.filter((e) => e.lemma === w); return `- ${w}: ${r.map((e) => `${e.tag}${e.hom ? sup(e.hom) : ''} "${e.gloss ?? ''}"`).join('; ') || 'MISSING'}`; }).join('\n')}
+
+### First meanings the audit questioned (as the rows say now)
+
+${['그', '구', '분'].map((w) => `- ${w}: ${lexEntries.filter((e) => e.lemma === w && (e.tag === 'NP' || e.tag === 'NNB' || e.tag === 'NNG' || e.clf)).map((e) => `${e.tag}${e.clf ? ' clf' : ''}${e.hom ? sup(e.hom) : ''}${e.set ? ` [${e.set}]` : ''} "${e.gloss ?? ''}"`).join('; ')}`).join('\n')}
+
 ## Voice
 
 Note: in the real data a ko-verb-set names the causative as its 2nd argument and the passive as its 3rd (먹다 → 먹이다, 먹히다); the brief had them the other way round, and the data is followed.
@@ -500,6 +537,14 @@ Hand-written rows for common words the SOURCE LACKS, read by the build and never
 - the rows:
 ${suppEntries.map((e) => `  - ${e.lemma}${e.hom ? sup(e.hom) : ''} ${e.tag}${e.clf ? ' clf' : ''}${e.irr ? ` ${e.irr}` : ''}${e.hanja ? ` ${e.hanja}` : ''}${e.set ? ` [${e.set}]` : ''}${e.n ? ` count ${fmt(e.n)}` : ''}: ${e.gloss}`).join('\n') || '  (none)'}
 
+## Core extras (docs/korean/core-extra.json)
+
+${docs.coreExtra ? `${extraSet.size} spellings the compiled core holds whatever their count; each brings its whole homonym set across classes, first in the budget.` : 'absent'}
+
+### core-extra spellings the lexicon lacks (${extraLacking.length}; supplement candidates)
+
+${extraLacking.join(', ') || '(none)'}
+
 ## Shards and core
 
 | | |
@@ -508,7 +553,7 @@ ${suppEntries.map((e) => `  - ${e.lemma}${e.hom ? sup(e.hom) : ''} ${e.tag}${e.c
 | shard bytes | ${(gzTotal / 1e6).toFixed(2)} MB gzip, ${(plainTotal / 1e6).toFixed(1)} MB plain |
 | largest shard | \`${largest.prefix}\` ${(largest.plain / 1e6).toFixed(2)} MB plain, ${(largest.gz / 1e6).toFixed(2)} MB gzip |
 | core entries | ${fmt(coreRows.length)} in ${fmt(coreSetCount)} sets (${fmt(coreHanjaKeys)} also under a Hanja key); closed classes ${[...KO_CLOSED_TAGS].join(' ')} and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
-| core bytes | ${fmt(core.bytes)} of rows (budget ${fmt(CORE_BUDGET)}); every field of a shard row is in the core row, \`pron\` included |
+| core bytes | ${fmt(core.bytes)} of rows, the file at most ${fmt(CORE_BUDGET)} bytes; forced by core-extra.json: ${fmt(core.forcedRows)} rows, ${fmt(core.forcedBytes)} bytes (${pct(core.forcedBytes, CORE_BUDGET)} of the budget); every field of a shard row is in the core row, \`pron\` included |
 | running words in the core | ${pct(coreTokens, kaistTotal)} of the ${fmt(kaistTotal)} counted morphemes of the classes the lexicon builds (${pct(coreTokens, lexTokens)} of the ${fmt(lexTokens)} the lexicon covers) have their headword in the core |
 `;
 
@@ -530,7 +575,7 @@ if (WRITE) {
 import { koStemKey, type KoLexEntry, type KoLexicon, type KoIrregular, type KoTag } from '../index-store';
 import { koKey } from '../hangul';
 
-/** [lemma, tag, hom, irr, gloss, hanja, pron, n, voice, base, clf, set, glossOwn, own], trailing empty fields left off. */
+/** [lemma, tag, hom, irr, gloss, hanja, pron, n, voice, base, clf, set, glossOwn, own, bound], trailing empty fields left off. */
 const ROWS: Array<Array<string | number>> = [
 `;
   const footer = `];
@@ -550,6 +595,7 @@ function expand(): Record<string, KoLexEntry[]> {
     if (r[4]) e.gloss = String(r[4]);
     if (r[12]) e.glossOwn = true;
     if (r[13]) e.own = true;
+    if (r[14]) e.bound = true;
     if (r[5]) e.hanja = String(r[5]);
     if (r[6]) e.pron = String(r[6]);
     if (r[7]) e.n = Number(r[7]);
@@ -571,7 +617,9 @@ export const KO_CORE: KoLexicon = {
 };
 `;
   fs.mkdirSync(path.dirname(CORE_OUT), { recursive: true });
-  fs.writeFileSync(CORE_OUT, `${header}${coreTuples.map((t) => `  ${t},`).join('\n')}\n${footer}`);
+  const coreText = `${header}${coreTuples.map((t) => `  ${t},`).join('\n')}\n${footer}`;
+  if (Buffer.byteLength(coreText) > CORE_BUDGET) { console.error(`the core file is ${Buffer.byteLength(coreText)} bytes, over the budget of ${CORE_BUDGET}`); process.exit(1); }
+  fs.writeFileSync(CORE_OUT, coreText);
   fs.mkdirSync(path.dirname(DOC_OUT), { recursive: true });
   fs.writeFileSync(DOC_OUT, doc);
   fs.writeFileSync(REGISTRY, `${JSON.stringify({ note: 'Registry of numbered homonyms (generated by scripts/ko-build-lexicon.mts). The number is the etymology number of the source; set is the state (main, other, balanced) and by how it was settled (decision, only-current, default). A rebuild fails when a number now means another word: fingerprint {hanja, irr, voice} changed, glosses permuted, a number replaced, or a state changed (except default to decision); pass --accept-homonym-changes after deciding on a Repository alias.', built: TODAY, entries: registry }, null, 1)}\n`);

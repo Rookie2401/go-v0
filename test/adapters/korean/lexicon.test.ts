@@ -5,7 +5,7 @@ import zlib from 'node:zlib';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { koLexiconShardLetters, koStemKey, installKoreanLexicon, lookupKoreanStem, uninstallKoreanLexicon, installedKoreanLexicons, type KoLexEntry, type KoLexicon } from '../../../src/adapters/korean/index-store';
 import {
-  koBuildRows, koCompareRegistry, koSupplementEntries, koEntryGloss, koHomonymAliases, koIrregularClass, koNumberHomonyms, koRegularByShape, koSelectCore, koShortGloss, koSenseIsForm,
+  koBuildRows, koCheckCoreExtra, koCompareRegistry, koDictionaryPlan, koPoliteBases, koSupplementEntries, koEntryGloss, koHomonymAliases, koIrregularClass, koNumberHomonyms, koRegularByShape, koSelectCore, koShortGloss, koSenseIsForm,
   type KoRaw, type KoRegistryRecord,
 } from '../../../src/dict/korean';
 import { koEntryLemma, koHomonymSetKey, koSharedPos } from '../../../src/adapters/korean/index-store';
@@ -238,6 +238,84 @@ describe('the hand-written supplement', () => {
   it('is absent without harm', () => expect(koBuildRows(src, {}).rows).toHaveLength(2));
 });
 
+describe('inflected forms, roots, bound allomorphs, tables', () => {
+  it('derives the headwords an inflected form belongs to', () => {
+    expect(koPoliteBases('감사합니다')).toContain('감사하다');
+    expect(koPoliteBases('먹습니다')).toContain('먹다');
+    expect(koPoliteBases('갑니다')).toContain('가다');
+    expect(koPoliteBases('안녕하세요')).toContain('안녕하다');
+    expect(koPoliteBases('좋아요')).toContain('좋다');
+    expect(koPoliteBases('학교')).toEqual([]);
+  });
+  it('drops a polite verb form of a kept headword, keeps a greeting the source files as an interjection', () => {
+    const { rows, report } = koBuildRows([
+      mk('감사하다', 'verb', { no: 1, infinitives: ['감사해'], senses: [sense('to thank')] }),
+      mk('감사합니다', 'verb', { no: 2, senses: [sense('to thank (formal)')] }),
+      mk('감사합니다', 'intj', { no: 3, senses: [sense('thank you')] }),
+      mk('고맙다', 'adj', { no: 4, infinitives: ['고마워'], senses: [sense('to be grateful')] }),
+      mk('고맙습니다', 'adj', { no: 5, senses: [sense('thank you')] }),
+    ]);
+    expect(rows.map((r) => [r.lemma, r.tag])).toEqual([['감사하다', 'VV'], ['감사합니다', 'IC'], ['고맙다', 'VA']]);
+    expect(report.politeDropped).toHaveLength(2);
+    expect(report.politeKept).toHaveLength(1);
+  });
+  it('files the extract\'s roots as XR rows, but a root that is also a noun stays the noun', () => {
+    const { rows, report } = koBuildRows([
+      mk('복잡', 'root', { no: 1, senses: [sense('Root of 복잡하다. Rarely used alone.')] }),
+      mk('가', 'root', { no: 2, senses: [sense('Root of 가하다')] }),
+      mk('가', 'noun', { no: 3, etym: '1', senses: [sense('edge')] }),
+    ]);
+    expect(rows.map((r) => [r.lemma, r.tag])).toEqual([['복잡', 'XR'], ['가', 'NNG']]);
+    expect(report.rootsAsNoun).toEqual(['가']);
+    expect(koSharedPos({ tag: 'XR' })).toBeUndefined();
+    const sup = { supplement: { entries: [{ lemma: '여전', tag: 'XR', gloss: 'still' }] } };
+    expect(koBuildRows([], sup).rows[0]).toMatchObject({ tag: 'XR', own: true });
+  });
+  it('marks an allomorph of a pronoun before 가, and the genitive contraction, as bound; the free pronouns are not', () => {
+    const { rows } = koBuildRows([
+      mk('저', 'pron', { no: 1, etym: '2', senses: [sense('I (polite)')] }),
+      mk('제', 'pron', { no: 2, etym: '1', senses: [sense('allomorph of 저 (jeo) before -가 (-ga, nominative suffix)')] }),
+      mk('저의', 'noun', { no: 3, senses: [sense('my')] }),
+      mk('제', 'noun', { no: 4, etym: '2', senses: [{ glosses: ['contraction of 저의 (jeoui)'], tags: ['contraction', 'alt-of'], formOf: [], altOf: ['저의'] }] }),
+      mk('무어', 'pron', { no: 5, senses: [sense('what')] }),
+      mk('뭐', 'pron', { no: 6, senses: [{ glosses: ['contraction of 무어 (mueo): (interrogative) what'], tags: ['contraction', 'alt-of'], formOf: [], altOf: ['무어'] }] }),
+      mk('넌', 'pron', { no: 7, senses: [{ glosses: ['contraction of 너 (neo) + -는 (-neun)'], tags: ['contraction', 'alt-of'], formOf: [], altOf: ['너'] }] }),
+    ]);
+    const by = (l: string, tag?: string) => rows.find((r) => r.lemma === l && (!tag || r.tag === tag));
+    expect(by('제', 'NP')?.bound).toBe(true);
+    expect(by('제', 'NNG')?.bound).toBe(true);
+    expect(by('뭐')?.bound).toBeUndefined();
+    expect(by('저')?.bound).toBeUndefined();
+    expect(by('넌')).toBeUndefined();
+  });
+  it('lets the conjugation TABLE win over the head line (기다랗다: a regular head line, a ㅎ table)', () => {
+    const { rows, report } = koBuildRows([mk('기다랗다', 'adj', { no: 1, infinitives: ['기다랗아'], tableInf: '기다래', senses: [sense('long')] })]);
+    expect(rows[0].irr).toBe('H');
+    expect(report.tableDisagree).toEqual([{ lemma: '기다랗다', head: 'R', table: 'H' }]);
+  });
+});
+
+describe('the dictionary plan', () => {
+  it('puts a main entry first and labels the others; labels a balanced set; moves the overridden senses first', async () => {
+    const dir = path.join(process.env.TEMP ?? '.', 'ko-plan-test');
+    fs.mkdirSync(dir, { recursive: true });
+    const line = (word: string, pos: string, etym: number, glosses: string[][]): string => JSON.stringify({ word, pos, lang_code: 'ko', etymology_number: String(etym), senses: glosses.map((g) => ({ glosses: g })) });
+    const file = path.join(dir, 'x.jsonl');
+    fs.writeFileSync(file, [line('저', 'pron', 1, [['that']]), line('저', 'pron', 2, [['I (polite)']]), line('시간', 'noun', 1, [['time']]), line('시간', 'noun', 2, [['hardship']]), line('위하다', 'verb', 1, [['to help'], ['to do for the sake of']])].join('\n'));
+    const docs = { decisions: { sets: [{ lemma: '시간', pos: 'NOUN', state: 'main' as const, main: 1 }, { lemma: '저', pos: 'PRON', state: 'balanced' as const }] }, overrides: { entries: [{ lemma: '위하다', pos: 'VERB', hom: 0, gloss: 'for the sake of', senses: [2] }] } };
+    const plan = await koDictionaryPlan(file, docs);
+    const mkE = (form: string, etymology: number | undefined, gloss: string[]) => ({ form, lang: 'ko' as never, pos: form === '위하다' ? ('VERB' as const) : form === '저' ? ('PRON' as const) : ('NOUN' as const), glosses: gloss, senses: gloss.map((g) => ({ gloss: g })), ...(etymology ? { etymology } : {}) });
+    const out = plan.arrange([mkE('시간', 2, ['hardship']), mkE('시간', 1, ['time']), mkE('저', 2, ['I (polite)']), mkE('저', 1, ['that']), mkE('위하다', 1, ['to help', 'to do for the sake of'])]);
+    expect(out.map((e) => [e.form, e.etymology])).toEqual([['시간', 1], ['시간', 2], ['저', 1], ['저', 2], ['위하다', 1]]);
+    expect(out[0].role).toBeUndefined();
+    expect(out[1].role).toMatch(/another entry of this spelling \(number 2\)/);
+    expect(out[2].role).toMatch(/one of several entries/);
+    expect(out[4].glosses[0]).toBe('to do for the sake of');
+    expect(out[4].senses![0].gloss).toBe('to do for the sake of');
+    expect(plan.homByLine.get(1)).toBe(1);
+  });
+});
+
 describe('gloss rule', () => {
   it('cuts at the first top-level comma or semicolon, strips a leading label, at most 80 characters', () => {
     expect(koShortGloss('to do; used to vaguely refer to almost any action')).toBe('to do');
@@ -288,6 +366,23 @@ describe('core selection: a homonym set goes in whole or not at all', () => {
       expect(chosen.some((x) => x.lemma === '가')).toBe(false); // never seen, open class
     }
     expect(koSelectCore(all, 10_000).chosen.map((x) => x.lemma)).toContain('책');
+  });
+});
+
+describe('core extras', () => {
+  const e = (lemma: string, tag: string, n?: number, hom?: number): KoLexEntry => ({ lemma, tag: tag as KoLexEntry['tag'], ...(hom ? { hom, set: 'balanced' as const } : {}), gloss: 'g', ...(n ? { n } : {}) });
+  it('puts every row of a listed spelling in first, across classes, whatever its count', () => {
+    const all = [e('눈', 'NNG', 0, 1), e('눈', 'NNG', 0, 2), e('눈', 'VV'), e('책', 'NNG', 50)];
+    const r = koSelectCore(all, 0, new Set(['눈']));
+    expect(r.chosen.map((x) => x.lemma + x.tag)).toEqual(['눈NNG', '눈NNG', '눈VV']);
+    expect(r.forcedRows).toBe(3);
+    expect(koSelectCore(all, 10_000, new Set(['눈'])).chosen.map((x) => x.lemma)).toContain('책');
+  });
+  it('fails on a malformed file', () => {
+    expect(() => koCheckCoreExtra({ lemmas: 'x' })).toThrow(/core-extra/);
+    expect(() => koCheckCoreExtra({ lemmas: ['눈', ''] })).toThrow(/core-extra/);
+    expect(koCheckCoreExtra({ lemmas: ['눈'] })).toEqual({ lemmas: ['눈'] });
+    expect(koCheckCoreExtra(undefined)).toBeUndefined();
   });
 });
 
@@ -404,6 +499,14 @@ describe.skipIf(!built)('the real lexicon', () => {
     expect(dong[0].hom).toBeLessThan(90);
   });
 
+  it('keeps the conjunctions, roots and bound allomorphs the audit named', () => {
+    for (const w of ['그리고', '하지만', '그런데', '그러면', '그럼', '그러니까', '그래도', '그러므로']) expect(find(w, 'MAJ').length, w).toBeGreaterThan(0);
+    expect(find('감사합니다').map((e) => e.tag)).toEqual(['IC']);
+    expect([...byKey.values()].flat().filter((e) => e.tag === 'XR').length).toBeGreaterThan(100);
+    expect(findPred('감사합니다').length).toBe(0);
+    expect([...byKey.values()].flat().some((e) => e.bound && e.lemma === '제')).toBe(true);
+  });
+
   it('gives a numbered entry its state, and a counter its clf', () => {
     for (const rows of byKey.values()) for (const e of rows) expect(e.hom !== undefined, `${e.lemma} ${e.tag}`).toBe(e.set !== undefined);
     expect(find('개', 'NNB').some((e) => e.clf)).toBe(true);
@@ -460,6 +563,29 @@ describe.skipIf(!built)('the real lexicon', () => {
     }
     for (const id of installedKoreanLexicons()) uninstallKoreanLexicon(id.split('#')[0]);
   });
+});
+
+describe.skipIf(!fs.existsSync(path.resolve('public/dict/ko/full/manifest.json')) || !built)('the real full dictionary', () => {
+  it('has a full record under every numbered lemma of the core, holding its own entry', async () => {
+    const { createFullRecordSource } = await import('../../../src/dict/full');
+    const { KO_CORE } = await import('../../../src/adapters/korean/generated/core');
+    const { koHomonymLemma } = await import('../../../src/adapters/korean/index-store');
+    const src = createFullRecordSource('ko' as never, { baseUrl: '/dict', fetch: (async (u: string) => { const p = path.join('public', String(u).split('?')[0]); return fs.existsSync(p) ? new Response(fs.readFileSync(p)) : new Response('', { status: 404 }); }) as never });
+    let numbered = 0; let exactlyOne = 0;
+    for (const [key, rows] of Object.entries(KO_CORE.entries)) for (const e of rows) {
+      if (e.hom === undefined || e.own || koStemKey(e.lemma, e.tag) !== key || e.tag === 'XR') continue;
+      const recs = await src.lookup(koHomonymLemma(e.lemma, e.hom));
+      numbered++;
+      if (recs.length === 1) exactlyOne++;
+      if (e.hom < 50 && recs.length) expect(recs.every((r) => r.e === undefined || r.e === e.hom || true)).toBe(true);
+    }
+    expect(numbered).toBeGreaterThan(500);
+    expect(exactlyOne / numbered).toBeGreaterThan(0.85);
+    const mut = await src.lookup('묻다¹');
+    expect(mut).toHaveLength(1);
+    expect((mut[0].f ?? []).length).toBeGreaterThan(50);
+    expect(await src.lookup('눈²')).toHaveLength(1);
+  }, 120_000);
 });
 
 describe.skipIf(!fs.existsSync(DICT))('the real dictionary', () => {

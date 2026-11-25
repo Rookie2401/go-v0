@@ -1,6 +1,6 @@
 /**
  * The standalone Biblia's account: the sign-in state (`createAccountService`) and the screen where the learner signs in, creates an account or
- * asks for a password reset (`renderAccountScreen`), at #/account. Email and password go to the Repository service named in config.json and
+ * asks for a password reset, and, signed in, sees and manages the account (`renderAccountScreen`), at #/account, in GoReview's look. Email and password go to the Repository service named in config.json and
  * nowhere else; the password is read from its field, passed to the request and the field is emptied: it is never stored, logged or shown again.
  * What the page keeps is the session the service gave (session.ts).
  */
@@ -36,8 +36,8 @@ export interface AccountService {
   /** Confirms a kept session with the service (`GET /me`): 401 ends it; an unreachable service leaves it (offline). */
   start(): Promise<void>;
   signIn(email: string, password: string): Promise<AccountOutcome>;
-  /** Creates the account, then signs in. `verificationSent` is the service's own word on the confirmation email, when it says. */
-  signUp(email: string, password: string): Promise<AccountOutcome>;
+  /** Creates the account (with the name to show on it, when given), then signs in. `verificationSent` is the service's own word on the confirmation email, when it says. */
+  signUp(email: string, password: string, displayName?: string): Promise<AccountOutcome>;
   /** Asks for a reset link. Whether the address has an account is never revealed. */
   forgot(email: string): Promise<AccountOutcome>;
   resendVerification(email: string): Promise<AccountOutcome>;
@@ -121,9 +121,10 @@ export function createAccountService(o: AccountServiceOptions): AccountService {
       notify();
     },
     signIn,
-    async signUp(email, password) {
+    async signUp(email, password, displayName) {
       try {
-        const made = await apiFor().createAccount({ email: email.trim(), password });
+        const name = displayName?.trim();
+        const made = await apiFor().createAccount({ email: email.trim(), password, ...(name ? { displayName: name } : {}) });
         if (!made.ok) return { ok: false, message: signInMessage(made), code: made.error };
         const said = (made.data as { verificationSent?: unknown } | null)?.verificationSent;
         const entered = await signIn(email, password);
@@ -175,10 +176,18 @@ export interface AccountScreenDeps {
 
 type Child = Node | string | null | undefined | false;
 
+/** The days the service keeps a deleted account before erasing it. GoReview's accountSecurity.ts says the same (account.test.ts compares them). */
+export const GRACE_DAYS = 14;
+
 /**
- * The account screen, in GoReview's design (packages/goreview/app/screens/signin.ts): a title with its rule, a WELCOME card that says what the
- * account is for, the SIGN IN card with its EMAIL and PASSWORD labels and the gold Sign in button, the "Forgot password?" disclosure, the
- * note about email links and the line to the drafts. Signed in, the page shows the profile and account controls.
+ * The account screen, in GoReview's look (the owner, 2026-11-25; packages/goreview/app/screens/signin.ts and account.ts): the hero, a kicker
+ * between gold rules over a large title, with no photograph (the owner's word), then a column of warm tiles with no outline.
+ *   signed out   WELCOME / Biblia; the YOUR ACCOUNT / Sign in tile (Your name for a new account, Email and Password as single lines, the gold
+ *                pill, "Create an account" as a link); the closed "Welcome to Biblia" tile; "Forgot password?"; the email-links note; the drafts
+ *   signed in    YOUR ACCOUNT / the name; the facts tile (Name, editable in place; Email, with the confirmation note only while it is needed);
+ *                THIS DEVICE (the sync notice, when there is one); a tile each for Sign out, Download my data and Delete account; the guided
+ *                deletion (what happens over the days of grace, then the password); the closed "Devices signed in" tile
+ * While a deletion is pending, its notice with Cancel is the first tile.
  */
 export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
   const { doc, account } = d;
@@ -190,7 +199,17 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
   };
   const status = (cls = ''): HTMLElement => h('p', { class: `status${cls ? ` ${cls}` : ''}`, role: 'status', 'aria-live': 'polite' });
   const say = (el: HTMLElement, text: string, kind: 'ok' | 'error' | 'info'): void => { el.textContent = text; el.className = `status ${kind}`; el.setAttribute('data-kind', kind); };
-  const field = (caption: string, control: HTMLElement): HTMLElement => h('label', { class: 'field' }, h('span', { class: 'cap' }, caption), control);
+  const field = (caption: string, control: HTMLElement, help?: string): HTMLElement =>
+    h('label', { class: 'field' }, h('span', { class: 'cap' }, caption), control, help ? h('span', { class: 'help' }, help) : null);
+  const link = (id: string, title: string): HTMLButtonElement => h('button', { id, type: 'button', class: 'acct-link' }, title) as HTMLButtonElement;
+  /** The hero: the kicker between its gold rules (drawn by the stylesheet), the title under it. */
+  const hero = (kicker: string, title: string): { el: HTMLElement; title: HTMLElement } => {
+    const t = h('h1', { class: 'acct-hero__title' }, title);
+    return { el: h('header', { class: 'acct-hero' }, h('p', { class: 'acct-hero__kicker' }, h('span', {}, kicker)), t), title: t };
+  };
+  /** A closed tile that opens: its kicker with a gold caret, the words under it. */
+  const fold = (cls: string, id: string | undefined, title: string, ...children: Child[]): HTMLDetailsElement =>
+    h('details', { class: `acct-fold${cls ? ` ${cls}` : ''}`, id }, h('summary', {}, h('span', { class: 'acct-kicker' }, title)), h('div', { class: 'acct-fold__body' }, ...children)) as HTMLDetailsElement;
   const legal = h('p', { class: 'muted legal-links' }, h('a', { href: '#/terms' }, 'Terms'), ' · ', h('a', { href: '#/privacy' }, 'Privacy Policy'), ' (drafts)');
   const box = h('div', { class: 'account' }, d.topbar);
   const screen = h('div', { class: 'screen' });
@@ -212,51 +231,60 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
       return svg;
     };
     const arrow = 'M4 12h15m-6-6 6 6-6 6';
-    const btn = (id: string, title: string): HTMLButtonElement => h('button', { id, type: 'button', class: 'btn' }, title) as HTMLButtonElement;
-    const tile = (id: string, title: string, subtitle: string, path: string, danger = false): HTMLButtonElement => h('button', {
+    /** One of the account's actions as a tile, like GoReview's: its icon, its title over an italic caption, the arrow. */
+    const tile = (id: string, title: string, caption: string, path: string, danger = false): HTMLButtonElement => h('button', {
       id, type: 'button', class: `account-tile${danger ? ' account-tile--danger' : ''}`, 'aria-labelledby': `${id}-label`, 'aria-describedby': `${id}-hint`,
-    }, h('span', { class: 'account-symbol' }, icon(path)),
-    h('span', { class: 'account-tile__copy' }, h('span', { id: `${id}-label`, class: 'account-tile__title' }, title), h('span', { id: `${id}-hint` }, subtitle)),
+    }, h('span', { class: 'account-tile__icon' }, icon(path)),
+    h('span', { class: 'account-tile__copy' }, h('span', { id: `${id}-label`, class: 'account-tile__title' }, title), h('span', { id: `${id}-hint`, class: 'account-tile__caption' }, caption)),
     h('span', { class: 'account-tile__arrow' }, icon(arrow))) as HTMLButtonElement;
+    const head = hero('Your account', 'Account');
     const out = status('account-feedback');
     const name = h('span', { id: 'account-name' }, 'Loading…');
-    const edit = btn('account-name-edit', 'Add a name');
+    const edit = link('account-name-edit', 'Add a name');
     edit.hidden = true;
     const emailText = h('bdi', { id: 'account-who' }, st.email ?? 'Unavailable');
     const nameInput = h('input', { id: 'account-name-input', type: 'text', autocomplete: 'name', maxlength: '100', required: '' }) as HTMLInputElement;
-    const save = h('button', { type: 'submit', class: 'btn primary' }, 'Save') as HTMLButtonElement;
-    const cancel = btn('account-name-cancel', 'Cancel');
+    const save = h('button', { type: 'submit', class: 'acct-pill acct-pill--small' }, 'Save') as HTMLButtonElement;
+    const cancel = link('account-name-cancel', 'Cancel');
     const editor = h('form', { class: 'account-editor', hidden: '' },
-      field('Display name', nameInput), h('div', { class: 'row' }, save, cancel));
-    const signOut = tile('account-signout', 'Sign out', 'End this session on this device.', 'M9 5h9v14H9m-1-7H3m1-4 4 4-4 4');
-    const download = tile('account-export', 'Download my data', 'Export your learning data.', 'M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4');
-    const remove = tile('account-delete', 'Delete account', 'Schedule deletion of your account and data.', 'M4 6h16M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7m4-7v7', true);
-    const pending = h('p', { class: 'account-pending', role: 'status', hidden: '' });
-    const keep = btn('account-cancel-deletion', 'Cancel the deletion');
-    keep.hidden = true;
+      field('Display name', nameInput), h('div', { class: 'acct-actions' }, save, cancel));
+    const signOut = tile('account-signout', 'Sign out', 'Your reading stays on your account', 'M9 5h9v14H9m-1-7H3m1-4 4 4-4 4');
+    const download = tile('account-export', 'Download my data', 'Everything held about you, as one file', 'M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4');
+    const remove = tile('account-delete', 'Delete account', `Erased after ${GRACE_DAYS} days; you can cancel until then`, 'M4 6h16M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7m4-7v7', true);
+    // the notice of a pending deletion, the first tile while there is one
+    const pending = h('p', { class: 'account-pending', role: 'status' });
+    const keep = link('account-cancel-deletion', 'Cancel the deletion');
+    const banner = h('section', { class: 'acct-tile account-banner', id: 'account-deletion-notice', 'aria-label': 'Deletion scheduled', hidden: '' },
+      h('p', { class: 'acct-kicker' }, 'Deletion scheduled'), pending, keep);
+    // the guided deletion (GoReview's three steps), shown only once asked for
     const password = h('input', { id: 'account-delete-password', type: 'password', autocomplete: 'current-password', required: '' }) as HTMLInputElement;
-    const confirm = h('button', { type: 'submit', class: 'btn account-danger' }, 'Schedule deletion') as HTMLButtonElement;
-    const close = btn('account-close-deletion', 'Keep my account');
+    const confirm = h('button', { type: 'submit', class: 'acct-pill acct-pill--danger' }, 'Delete my account') as HTMLButtonElement;
+    const close = link('account-close-deletion', 'Keep my account');
     const deletionOut = status('account-feedback');
-    const deletion = h('form', { id: 'account-deletion', class: 'card account-editor', hidden: '' },
-      h('h2', {}, 'Delete your account'),
-      h('p', {}, 'This schedules deletion of your shared GoLearn account and its learning data. You can cancel from this screen until the scheduled date.'),
-      field('Confirm with your password', password), h('div', { class: 'row' }, confirm, close), deletionOut);
+    const deletion = h('form', { id: 'account-deletion', class: 'acct-tile account-editor', hidden: '' },
+      h('h2', { class: 'acct-kicker' }, 'Delete your account'),
+      h('ol', { class: 'acct-steps' },
+        h('li', {}, h('strong', {}, 'Nothing happens today. '), `After you confirm, your account is scheduled for deletion ${GRACE_DAYS} days from now, and everything stays as it is until then.`),
+        h('li', {}, h('strong', {}, `To get it back within the ${GRACE_DAYS} days: `), 'sign in as usual and press ', h('em', {}, 'Cancel the deletion'), ' on the notice at the top of this page. Your account then stays exactly as it was.'),
+        h('li', {}, h('strong', {}, `After the ${GRACE_DAYS} days: `), 'the account and everything the service holds about you are erased and cannot be recovered. Download your data first if you want a copy. It is the account you also use in GoLearn and GoReview. Your place and your settings, kept on this device, are not touched.')),
+      field('Your password', password, 'Needed to confirm. It is sent to the service and never stored here.'),
+      h('div', { class: 'acct-actions' }, confirm, close), deletionOut);
     const list = h('ul', { class: 'account-devices__list', hidden: '' });
     const deviceStatus = status('account-feedback');
-    const devices = h('details', { class: 'account-devices' },
-      h('summary', {}, 'Devices signed in'), deviceStatus, list) as HTMLDetailsElement;
+    const devices = fold('account-devices', undefined, 'Devices signed in', deviceStatus, list);
     const day = (date: string): string => new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
     let profile: RepositoryAccountState = {};
     function paintDeletion(scheduled: boolean): void {
       remove.hidden = scheduled;
-      pending.hidden = keep.hidden = !scheduled;
+      banner.hidden = !scheduled;
       pending.textContent = !scheduled ? '' : profile.scheduledPurgeAt
-        ? `Your account is scheduled for deletion on ${day(profile.scheduledPurgeAt)}.`
+        ? `Your account is scheduled for deletion on ${day(profile.scheduledPurgeAt)}. Until then nothing has been removed.`
         : 'Your account is scheduled for deletion.';
     }
     function paintName(): void {
       name.textContent = profile.name || 'No name yet';
+      name.classList.toggle('muted', !profile.name);
+      head.title.textContent = profile.name || 'Account';
       edit.textContent = profile.name ? 'Edit' : 'Add a name';
       edit.hidden = false;
     }
@@ -264,8 +292,8 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
     edit.addEventListener('click', () => { edit.hidden = true; editor.hidden = false; nameInput.value = profile.name ?? ''; nameInput.focus(); });
     cancel.addEventListener('click', closeEditor);
     signOut.addEventListener('click', () => { signOut.disabled = true; void account.signOut().then(() => d.done()); });
-    const resend = btn('account-resend-verification', 'Resend confirmation email');
-    const verification = h('div', { class: 'account-verification', hidden: '' }, h('p', {}, 'Confirm your email address.'), resend);
+    const resend = link('account-resend-verification', 'Send the confirmation email again');
+    const verification = h('div', { class: 'account-verification', hidden: '' }, h('p', { class: 'help' }, 'This address is not confirmed yet.'), resend);
     resend.addEventListener('click', async () => {
       resend.disabled = true;
       const r = await account.resendVerification(profile.email ?? st.email ?? '');
@@ -273,18 +301,17 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
       say(out, r.ok ? 'If confirmation is still needed, a new email is on its way.' : r.message, r.ok ? 'ok' : 'error');
     });
     screen.append(
-      h('h1', {}, 'Account'),
-      h('section', { class: 'account-identity', id: 'account-signed-in', 'aria-label': 'Account profile' },
-        h('dl', {},
-          h('div', { class: 'account-identity__row' },
-            h('dt', {}, h('span', { class: 'account-symbol' }, icon('M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 21a8 7 0 0 1 16 0')), 'Name'),
-            h('dd', {}, name, edit, editor)),
-          h('div', { class: 'account-identity__row' },
-            h('dt', {}, h('span', { class: 'account-symbol' }, icon('M3 5h18v14H3ZM3 6l9 7 9-7')), 'Email'),
-            h('dd', {}, emailText))),
-        verification),
-      h('div', { class: 'account-actions' }, pending, keep, signOut, download, remove, deletion),
-      out, devices, ...(d.syncStatus ? [d.syncStatus] : []), legal);
+      head.el,
+      h('div', { class: 'acct-tiles' },
+        banner,
+        h('section', { class: 'acct-tile account-identity', id: 'account-signed-in', 'aria-label': 'Account profile' },
+          h('dl', {},
+            h('div', { class: 'account-identity__row' }, h('dt', { class: 'acct-kicker' }, 'Name'), h('dd', {}, name, edit, editor)),
+            h('div', { class: 'account-identity__row' }, h('dt', { class: 'acct-kicker' }, 'Email'), h('dd', {}, emailText, verification)))),
+        d.syncStatus ? h('section', { class: 'acct-tile account-device', id: 'account-device', 'aria-label': 'This device' }, h('p', { class: 'acct-kicker' }, 'This device'), d.syncStatus) : null,
+        h('div', { class: 'account-actions' }, signOut, download, remove, deletion),
+        out, devices),
+      legal);
 
     if (!client) {
       name.textContent = 'Unavailable';
@@ -327,10 +354,10 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
       const filename = `biblia-data-${new Date().toISOString().slice(0, 10)}.json`;
       try {
         const url = URL.createObjectURL(new Blob([r.data], { type: 'application/json' }));
-        const link = h('a', { href: url, download: filename });
-        doc.body.append(link);
-        link.click();
-        link.remove();
+        const a = h('a', { href: url, download: filename });
+        doc.body.append(a);
+        a.click();
+        a.remove();
         setTimeout(() => URL.revokeObjectURL(url), 10_000);
         say(out, 'Your data is ready to download.', 'ok');
       } catch { say(out, 'The file could not be saved on this device.', 'error'); }
@@ -343,18 +370,19 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
       event.preventDefault();
       const secret = password.value;
       password.value = '';
-      if (!secret) { password.focus(); return; }
+      if (!secret) { say(deletionOut, 'Enter your password to confirm.', 'error'); password.focus(); return; }
       confirm.disabled = close.disabled = true;
-      say(deletionOut, 'Scheduling deletion…', 'info');
+      say(deletionOut, 'Scheduling the deletion…', 'info');
       const r = await client.deleteAccount(secret);
       confirm.disabled = close.disabled = false;
       if (!active()) return;
       if (!r.ok) {
-        say(deletionOut, r.status === 403 || r.error === 'bad-credentials' ? 'The password was not accepted.' : explainAccountFailure(r), 'error');
+        say(deletionOut, r.status === 401 || r.status === 403 || r.error === 'bad-credentials' ? 'That password was not accepted. Nothing was scheduled.' : `${explainAccountFailure(r)} Nothing was scheduled.`, 'error');
         password.focus();
         return;
       }
       profile.scheduledPurgeAt = r.data?.scheduledPurgeAt;
+      deletionOut.textContent = '';
       deletion.hidden = true;
       paintDeletion(true);
       keep.focus();
@@ -364,11 +392,11 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
       const r = await client.cancelDeletion();
       keep.disabled = false;
       if (!active()) return;
-      if (!r.ok) { say(out, explainAccountFailure(r), 'error'); return; }
+      if (!r.ok) { say(out, `${explainAccountFailure(r)} The deletion is still scheduled.`, 'error'); return; }
       profile.scheduledPurgeAt = undefined;
       paintDeletion(false);
       remove.focus();
-      say(out, 'Account deletion cancelled.', 'ok');
+      say(out, 'The deletion is cancelled. Your account stays as it was.', 'ok');
     });
     let loadingDevices = false;
     devices.addEventListener('toggle', async () => {
@@ -390,18 +418,20 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
     return box;
   }
 
+  const newName = h('input', { type: 'text', id: 'account-new-name', name: 'name', autocomplete: 'name', maxlength: '100' }) as HTMLInputElement;
   const email = h('input', { type: 'email', id: 'account-email', name: 'email', autocomplete: 'email', required: '', spellcheck: 'false' }) as HTMLInputElement;
   const password = h('input', { type: 'password', id: 'account-password', name: 'password', autocomplete: 'current-password', required: '' }) as HTMLInputElement;
   const out = status();
-  const signInBtn = h('button', { type: 'submit', id: 'account-signin', class: 'btn primary' }, 'Sign in') as HTMLButtonElement;
-  const createBtn = h('button', { type: 'button', id: 'account-create', class: 'btn' }, 'Create account') as HTMLButtonElement;
+  const signInBtn = h('button', { type: 'submit', id: 'account-signin', class: 'acct-pill' }, 'Sign in') as HTMLButtonElement;
+  const createBtn = link('account-create', 'Create an account');
   const more = h('div', { id: 'account-more' });
-  const form = h('form', { id: 'account-form', class: 'card', novalidate: '' },
-    h('h2', {}, 'Sign in'),
+  const form = h('form', { id: 'account-form', class: 'acct-tile acct-signin', novalidate: '', 'aria-labelledby': 'account-form-h' },
+    h('p', { class: 'acct-kicker' }, 'Your account'),
+    h('h2', { class: 'acct-title', id: 'account-form-h' }, 'Sign in'),
+    field('Your name', newName, 'For a new account only: the name shown on your account in GoLearn, GoReview and Biblia.'),
     field('Email', email),
-    field('Password', password),
-    h('p', { class: 'hint muted' }, `A new password needs at least ${MIN_PASSWORD} characters. It is sent to the service and nowhere else; it is never kept here.`),
-    h('div', { class: 'row' }, signInBtn, createBtn),
+    field('Password', password, `A new password needs at least ${MIN_PASSWORD} characters. It is sent to the service and nowhere else; it is never kept here.`),
+    h('div', { class: 'acct-actions' }, signInBtn, createBtn),
     out, more);
   if (st.expired) say(out, 'Your sign-in has ended. Sign in again; anything you did meanwhile is kept on this device and sent after.', 'error');
   if (st.expired && d.syncStatus) form.append(d.syncStatus);
@@ -417,7 +447,7 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
   };
   const unverified = (addr: string): void => {
     const again = status();
-    const btn = h('button', { type: 'button', id: 'account-resend', class: 'btn' }, 'Send the confirmation email again') as HTMLButtonElement;
+    const btn = link('account-resend', 'Send the confirmation email again');
     btn.addEventListener('click', () => {
       void (async () => {
         say(again, 'Sending…', 'info');
@@ -425,7 +455,7 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
         say(again, r.ok ? `If ${addr} still needs confirming, a new email is on its way.` : r.message, r.ok ? 'ok' : 'error');
       })();
     });
-    more.replaceChildren(h('div', { class: 'row' }, btn), again);
+    more.replaceChildren(h('div', { class: 'acct-actions' }, btn), again);
   };
 
   form.addEventListener('submit', (ev) => {
@@ -446,25 +476,29 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
     void (async () => {
       const v = read(true);
       if (!v) return;
+      // a new account carries a name, as it does when made in GoReview
+      const who = newName.value.trim();
+      if (!who) { say(out, 'Enter your name.', 'error'); newName.focus(); return; }
       busy(true); more.replaceChildren(); say(out, 'Creating the account…', 'info');
       try {
-        const r = await account.signUp(v.addr, v.secret);
+        const r = await account.signUp(v.addr, v.secret, who);
         if (!r.ok) { say(out, r.message, 'error'); return; }
         const sent = r.verificationSent === true ? ` Check your email: a link to confirm ${v.addr} is on its way.` : r.verificationSent === false ? ' The confirmation email could not be sent; ask for it again when you sign in.' : '';
         say(out, `Account created and signed in as ${v.addr}.${sent}`, 'ok');
         // the learner reads the "check your email" line before leaving this screen: no automatic redirect after a sign-up
-        more.replaceChildren(h('p', {}, h('a', { class: 'btn primary', href: '#/' }, 'Continue to the library')));
+        more.replaceChildren(h('p', {}, h('a', { class: 'acct-pill', href: '#/' }, 'Continue to the library')));
       } finally { password.value = ''; busy(false); }
     })();
   });
 
   const fEmail = h('input', { type: 'email', id: 'forgot-email', name: 'forgot-email', autocomplete: 'email', spellcheck: 'false' }) as HTMLInputElement;
   const fOut = status();
-  const fBtn = h('button', { type: 'button', id: 'forgot-submit', class: 'btn' }, 'Email me a reset link') as HTMLButtonElement;
-  const forgot = h('details', { id: 'forgot', class: 'card forgot' },
+  const fBtn = h('button', { type: 'button', id: 'forgot-submit', class: 'acct-pill acct-pill--small' }, 'Email me a reset link') as HTMLButtonElement;
+  const forgot = h('details', { id: 'forgot', class: 'acct-forgot' },
     h('summary', {}, 'Forgot password?'),
-    h('p', { class: 'hint muted' }, 'Enter the email address of your account and the service will send a link to choose a new password.'),
-    field('Email', fEmail), h('div', { class: 'row' }, fBtn), fOut);
+    h('div', { class: 'acct-tile' },
+      h('p', { class: 'help' }, 'Enter the email address of your account and the service will send a link to choose a new password.'),
+      field('Email', fEmail), h('div', { class: 'acct-actions' }, fBtn), fOut));
   forgot.addEventListener('toggle', () => { if ((forgot as HTMLDetailsElement).open && !fEmail.value) fEmail.value = email.value.trim(); });
   fBtn.addEventListener('click', () => {
     void (async () => {
@@ -477,13 +511,15 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
   });
 
   // no Service address field: the address is config.json's and nothing on the page changes it (2026-10-28; the field existed 2026-10-25 to 28)
+  const head = hero('Welcome', 'Biblia');
   screen.append(
-    h('h1', {}, 'Sign in'),
-    h('section', { class: 'card', id: 'account-welcome', 'aria-labelledby': 'account-welcome-h' },
-      h('h2', { id: 'account-welcome-h' }, 'Welcome to Biblia'),
-      h('p', {}, 'Biblia records what you read with GoLearn on the same account. Sign in with the account you use in GoLearn: what you look up and mark here is kept in it, GoReview and the GoLearn extension see it too, and the words you have met anywhere are marked on the page by how well you know them.'),
-      h('p', { class: 'muted' }, 'Without an account Biblia is a reader only: every word can be looked up, but nothing is recorded and nothing is marked.')),
-    form, forgot,
+    head.el,
+    h('div', { class: 'acct-tiles' },
+      form,
+      fold('', 'account-welcome', 'Welcome to Biblia',
+        h('p', {}, 'Biblia records what you read with GoLearn on the same account. Sign in with the account you use in GoLearn: what you look up and mark here is kept in it, GoReview and the GoLearn extension see it too, and the words you have met anywhere are marked on the page by how well you know them.'),
+        h('p', { class: 'muted' }, 'Without an account Biblia is a reader only: every word can be looked up, but nothing is recorded and nothing is marked.'))),
+    forgot,
     h('p', { class: 'muted', id: 'email-links-note' }, 'Links in confirmation and password-reset emails open GoLearn setup.'),
     legal);
   return box;

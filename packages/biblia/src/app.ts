@@ -1,6 +1,6 @@
 /**
  * Biblia: the library (testament → division → book → chapters), the reader (one chapter, every word tappable, the shared GoLearn card) and the
- * settings, over a hash router. Routes: #/ (library) · #/read/<book>/<chapter> · #/settings · #/sources.
+ * settings, over a hash router. Routes: #/ (library) · #/read/<book>/<chapter> · #/settings · #/about · #/sources.
  *
  * Parsing is GoLearn's: a tapped word is parsed by `parseSelection` with the he / el analyser, in the period the reader declares for the text
  * (he-bib for the Tanakh, arc-bib for its Aramaic chapters, el-koi for the New Testament); the card is `createCardUI`'s. A translation
@@ -32,6 +32,7 @@ import { Texts, greekVerseText, installFullIndexes, verseIsAramaic, type AnyBook
 import { CHAPTER_WORD, LANGUAGE_NAME, ORIGINAL_EDITION, type Edition } from './edition';
 import { APP_VERSION, READER_ID, type Identity, type Recorder } from './repo';
 import { renderAccountScreen, renderLegalScreen, type AccountService } from './account';
+import { SAMPLE_VERSE } from './sample';
 import { createLevels, unitIdsOfSite, type LevelSite } from './levels';
 import { bookMark } from './loading';
 import type { GoEvent } from '../../repository-contract/src';
@@ -68,16 +69,11 @@ const verseNumberText = (lang: BibliaLang, verse: number, mode: VerseNumberMode)
 export const READING_DEFAULTS = { hebrewSize: 26, greekSize: 22, lineHeight: 1.85 } as const;
 /** Every preference the settings page keeps (`<edition prefix><name>`, e.g. `biblia:theme`); "Reset settings" removes exactly these. */
 const PREF_NAMES = ['hebrewDisplay', 'theme', 'hebrewSize', 'greekSize', 'lineHeight', 'verseNumbers', 'levelMarks'] as const;
-const SHORT_DISPLAY: Record<HebrewDisplay, string> = { full: 'with accents', niqqud: 'niqqud', consonants: 'consonants' };
 
 /** The icon set (the Biblia app's: 24 px grid, 1.6 stroke). Static markup of this file only, never built from data. */
 const ICONS = {
   back: '<path d="M15 6l-6 6 6 6" />',
   chevronRight: '<path d="M9 6l6 6-6 6" />',
-  book: '<path d="M3 5.5c3.2-.9 6.2-.2 9 1.8v14c-2.8-2-5.8-2.7-9-1.8zM21 5.5c-3.2-.9-6.2-.2-9 1.8v14c2.8-2 5.8-2.7 9-1.8z" />',
-  layers: '<path d="m12 3 9 5-9 5-9-5 9-5zm-9 9 9 5 9-5M3 16l9 5 9-5" />',
-  licences: '<path d="M6 3h9l4 4v14H6zM15 3v5h4M9 12h7M9 16h7" />',
-  reset: '<path d="M3 12a9 9 0 1 0 2.6-6.4L3 8m0-5v5h5" />',
   settings: '<path d="M4 7h10M18 7h2M4 12h2M10 12h10M4 17h8M16 17h4" /><circle cx="16" cy="7" r="2" /><circle cx="8" cy="12" r="2" /><circle cx="14" cy="17" r="2" />',
   type: '<path d="M4 19l5-14 5 14M6.5 14h5M15 12l3-6 3 6M16 10h4" />',
   account: '<circle cx="12" cy="8.5" r="3.5" /><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" />',
@@ -210,7 +206,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   const offAccount = account?.subscribe(() => {
     const st = account.state();
     if (!st.signedIn) levels?.clear();
-    if (route === 'library' || route === 'account' || route === 'settings') void render();
+    if (route === 'library' || route === 'account' || route === 'settings' || route === 'about') void render();
     else if (!st.signedIn && st.expired) showNotice('Your sign-in has ended, so the levels are no longer shown. Sign in again from the library; what you did since is kept on this device and sent after.');
   });
 
@@ -357,8 +353,11 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     /** 'title': a word of the superscription that stands before verse v (a Psalm title), not of the verse itself */
     part?: 'title' }
 
+  /** A Hebrew verse as the learner chose to see it: with everything, without the accents, or as consonants alone. The reader and the sample in Settings share it. */
+  const shownHebrew = (t: string): string => hebrewDisplay === 'full' ? t : hebrewDisplay === 'niqqud' ? t.replace(/[֑-ֽֿ֯׀ׅׄ]/g, '') : consonantal(t).replace(/־/g, ' ');
+
   function renderHebrewVerse(info: BookInfo, ch: number, v: HeVerse, aramaic: boolean, sites: LevelSite[]): HTMLElement {
-    const text = hebrewDisplay === 'full' ? v.t : hebrewDisplay === 'niqqud' ? v.t.replace(/[֑-ֽֿ֯׀ׅׄ]/g, '') : consonantal(v.t).replace(/־/g, ' ');
+    const text = shownHebrew(v.t);
     const el = h('span', { class: `verse${aramaic ? ' aramaic' : ''}`, 'data-v': String(v.n) }, h('span', { class: 'vn' }, verseNumberText('he', v.n, verseNumberMode)));
     if (v.absent) { el.append(h('span', { class: 'mark' }, '(absent from this edition)')); return el; }
     const varietyId = aramaic ? 'arc-bib' : 'he-bib';
@@ -680,66 +679,92 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     return h('div', { class: 'field field--slider' }, h('label', { class: 'cap', for: id }, caption, out), input);
   }
   function toggle(id: string, text: string, help: string | undefined, checked: boolean, onChange: (on: boolean) => void): HTMLElement {
-    const input = h('input', { type: 'checkbox', id }) as HTMLInputElement;
+    const input = h('input', { type: 'checkbox', id, role: 'switch' }) as HTMLInputElement;
     input.checked = checked;
     input.addEventListener('change', () => onChange(input.checked));
     return h('label', { class: 'toggle' }, input, h('span', {}, text, help ? h('span', { class: 'help' }, ` ${help}`) : null));
   }
 
+  /**
+   * #/settings, simpler (the owner, 2026-11-25): a live sample of the reading text at the top, then plain groups with no box inside a box.
+   *   Text      the reading sizes and the line spacing, as sliders with their values (kept as they were: the owner likes their accessibility), and the theme
+   *   Verses    the Hebrew marks (the original edition only) and the verse numbers
+   *   the familiarity marks, a switch shown only while signed in (they exist only then)
+   *   About Biblia, one row to #/about (offline reading, sources and licences, the legal pages); Reset to defaults, a quiet link
+   * Every choice shows in the sample at once, so nothing needs a "takes effect the next time you open a chapter".
+   */
   function renderSettings(): HTMLElement {
-    const reading = h('section', { class: 'card settings-reading', id: 'settings-reading', 'aria-labelledby': 'settings-reading-heading' },
-      h('div', { class: 'settings-reading__intro' }, icon('book'),
-        h('h2', { class: 'settings-reading__heading', id: 'settings-reading-heading' }, 'Reading')),
-      h('div', { class: 'settings-row' }, labelled('Theme', pills<Theme>('Theme', [['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']], theme, (v) => { theme = v; setPref('theme', v); applyPrefs(); }))),
-      ...(tr
-        ? [h('div', { class: 'settings-row settings-row--slider' }, slider(`set-${trName}-size`, `${tr.languageName} text size`, 16, 40, 1, textSize, (n) => `${n} px`, (n) => { textSize = n; setPref(sizePref, String(n)); applyPrefs(); }))]
-        : [h('div', { class: 'settings-row settings-row--slider' }, slider('set-hebrew-size', 'Hebrew text size', 18, 44, 1, hebrewSize, (n) => `${n} px`, (n) => { hebrewSize = n; setPref('hebrewSize', String(n)); applyPrefs(); })),
-          h('div', { class: 'settings-row settings-row--slider' }, slider('set-greek-size', 'Greek text size', 16, 36, 1, greekSize, (n) => `${n} px`, (n) => { greekSize = n; setPref('greekSize', String(n)); applyPrefs(); }))]),
-      h('div', { class: 'settings-row settings-row--slider' }, slider('set-line-height', 'Line spacing', 1.4, 2.6, 0.05, lineHeight, (n) => n.toFixed(2), (n) => { lineHeight = n; setPref('lineHeight', String(n)); applyPrefs(); })),
-      tr ? null : h('div', { class: 'settings-row' }, labelled('Hebrew text', pills<HebrewDisplay>('Hebrew text', (['full', 'niqqud', 'consonants'] as HebrewDisplay[]).map((d) => [d, d === 'full' ? 'Accents' : SHORT_DISPLAY[d][0].toUpperCase() + SHORT_DISPLAY[d].slice(1)] as const), hebrewDisplay, (d) => { hebrewDisplay = d; setPref('hebrewDisplay', d); })),
-        para('This choice takes effect the next time you open a chapter.', 'muted hint')),
-      h('div', { class: 'settings-row' }, labelled('Verse numbers', pills<VerseNumberMode>('Verse numbers', [...(edition.nativeNumeralsLabel ? [['native', edition.nativeNumeralsLabel] as const] : []), ['decimal', '1, 2, 3'], ['hidden', 'None']], verseNumberMode, (mode) => { verseNumberMode = mode; setPref('verseNumbers', mode); applyPrefs(); }))),
-      h('div', { class: 'settings-reader-footer' }, toggle('set-level-marks', 'Mark words by familiarity', 'Available when signed in.', levelMarks, (on) => { levelMarks = on; setPref('levelMarks', on ? 'on' : 'off'); applyPrefs(); }), (() => {
-        const reset = h('button', { type: 'button', class: 'btn', id: 'settings-reset' }, icon('reset'), 'Reset settings');
-        reset.addEventListener('click', () => {
-          for (const name of [...PREF_NAMES, ...(tr ? [sizePref] : [])]) { try { deps.storage?.removeItem(key(name)); } catch { /* storage blocked */ } }
-          hebrewDisplay = 'full'; theme = 'auto'; hebrewSize = READING_DEFAULTS.hebrewSize; greekSize = READING_DEFAULTS.greekSize; textSize = tr?.size ?? 0; lineHeight = READING_DEFAULTS.lineHeight; verseNumberMode = edition.verseNumbers; levelMarks = true;
-          applyPrefs();
-          void render();
-        });
-        return reset;
-      })()));
+    // the sample: the first verse of each language this edition reads, set as the reader sets it (the same classes, so the same sizes, spacing and numerals)
+    const sample = h('div', { class: 'reader settings-sample', id: 'settings-sample', role: 'group', 'aria-label': 'Sample of the reading text' });
+    const paintSample = (): void => {
+      sample.replaceChildren(...edition.langs.map((lang) => h('div', { class: 'prose', lang, dir: lang === 'he' ? 'rtl' : 'ltr' },
+        h('span', { class: 'verse', 'data-v': '1' }, h('span', { class: 'vn' }, verseNumberText(lang, 1, verseNumberMode)), lang === 'he' ? shownHebrew(SAMPLE_VERSE.he) : SAMPLE_VERSE[lang]))));
+    };
+    paintSample();
 
+    const group = (id: string, title: string, ...rows: Child[]): HTMLElement =>
+      h('section', { class: 'settings-group', id, 'aria-labelledby': `${id}-h` }, h('h2', { id: `${id}-h` }, title), ...rows);
+    const row = (...children: Child[]): HTMLElement => h('div', { class: 'settings-row' }, ...children);
+    const sliderRow = (...children: Child[]): HTMLElement => h('div', { class: 'settings-row settings-row--slider' }, ...children);
+
+    const text = group('settings-text', 'Text',
+      ...(tr
+        ? [sliderRow(slider(`set-${trName}-size`, `${tr.languageName} text size`, 16, 40, 1, textSize, (n) => `${n} px`, (n) => { textSize = n; setPref(sizePref, String(n)); applyPrefs(); }))]
+        : [sliderRow(slider('set-hebrew-size', 'Hebrew text size', 18, 44, 1, hebrewSize, (n) => `${n} px`, (n) => { hebrewSize = n; setPref('hebrewSize', String(n)); applyPrefs(); })),
+          sliderRow(slider('set-greek-size', 'Greek text size', 16, 36, 1, greekSize, (n) => `${n} px`, (n) => { greekSize = n; setPref('greekSize', String(n)); applyPrefs(); }))]),
+      sliderRow(slider('set-line-height', 'Line spacing', 1.4, 2.6, 0.05, lineHeight, (n) => n.toFixed(2), (n) => { lineHeight = n; setPref('lineHeight', String(n)); applyPrefs(); })),
+      row(labelled('Theme', pills<Theme>('Theme', [['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']], theme, (v) => { theme = v; setPref('theme', v); applyPrefs(); }))));
+
+    const verses = group('settings-verses', tr ? 'Verses' : 'Hebrew and verses',
+      tr ? null : row(labelled('Hebrew marks', pills<HebrewDisplay>('Hebrew marks', [['full', 'All'], ['niqqud', 'Vowels'], ['consonants', 'None']], hebrewDisplay, (d) => { hebrewDisplay = d; setPref('hebrewDisplay', d); paintSample(); }))),
+      row(labelled('Verse numbers', pills<VerseNumberMode>('Verse numbers', [...(edition.nativeNumeralsLabel ? [['native', edition.nativeNumeralsLabel] as const] : []), ['decimal', '1, 2, 3'], ['hidden', 'None']], verseNumberMode, (mode) => { verseNumberMode = mode; setPref('verseNumbers', mode); applyPrefs(); paintSample(); }))));
+
+    // the marks of how well a word is known exist only with an account and only while signed in: the switch is shown only then
+    const marks = account?.state().signedIn
+      ? group('settings-marks', 'Your words', row(toggle('set-level-marks', 'Mark words by familiarity', undefined, levelMarks, (on) => { levelMarks = on; setPref('levelMarks', on ? 'on' : 'off'); applyPrefs(); })))
+      : null;
+
+    const about = h('a', { class: 'settings-about', id: 'settings-about', href: '#/about' },
+      h('span', { class: 'settings-about__copy' },
+        h('span', { class: 'settings-about__title' }, 'About Biblia'),
+        h('span', { class: 'settings-about__subtitle' }, 'Offline reading, sources and licences')),
+      h('span', { class: 'settings-about__arrow' }, icon('chevronRight')));
+
+    const reset = h('button', { type: 'button', class: 'linklike', id: 'settings-reset' }, 'Reset to defaults');
+    reset.addEventListener('click', () => {
+      for (const name of [...PREF_NAMES, ...(tr ? [sizePref] : [])]) { try { deps.storage?.removeItem(key(name)); } catch { /* storage blocked */ } }
+      hebrewDisplay = 'full'; theme = 'auto'; hebrewSize = READING_DEFAULTS.hebrewSize; greekSize = READING_DEFAULTS.greekSize; textSize = tr?.size ?? 0; lineHeight = READING_DEFAULTS.lineHeight; verseNumberMode = edition.verseNumbers; levelMarks = true;
+      applyPrefs();
+      void render();
+    });
+
+    return h('div', { class: 'settings' }, plainBar('Biblia', 'settings'),
+      h('div', { class: 'screen' }, h('h1', {}, 'Settings'), sample, text, verses, marks, about, h('p', { class: 'settings-reset' }, reset)));
+  }
+
+  /** #/about: what Settings used to carry in two drop-downs and a footer, on one page: offline reading, the sources and licences, the legal pages. */
+  function renderAbout(): HTMLElement {
     const installed = !!doc.querySelector('meta[name="biblia-edition"]');
     const waiting = deps.recorder.pending?.() ?? 0;
-    const offline = h('details', { class: 'card settings-disclosure', id: 'settings-offline' },
-      h('summary', {}, h('span', { class: 'settings-disclosure__icon' }, icon('layers')), h('span', { class: 'settings-disclosure__copy' },
-        h('span', { class: 'settings-disclosure__title' }, 'Offline reading'),
-        h('span', { class: 'settings-disclosure__subtitle' }, installed ? 'Previously opened chapters are available offline.' : 'Chapters open from the current connection.')), h('span', { class: 'settings-disclosure__arrow' }, icon('chevronRight'))),
-      h('div', { class: 'settings-disclosure__body' },
-        para(installed
-          ? 'This installed edition keeps the app itself after your first visit. Each chapter, lexicon file, and dictionary shard is available offline after you open it once. Chapters you have not opened yet need a connection.'
-          : 'This edition loads each chapter from the connection where it was opened. It is not installed for offline use.'),
-        para(`Also kept on this device by this page: your place (the last chapter you read), which parts of the library are open, and these settings${account ? `, and the sign-in${waiting ? `, with ${waiting} lookup${waiting === 1 ? '' : 's'} and mark${waiting === 1 ? '' : 's'} not yet sent` : ''}` : ''}.`, 'muted')));
-
-    const sources = h('details', { class: 'card settings-disclosure', id: 'settings-sources' },
-      h('summary', {}, h('span', { class: 'settings-disclosure__icon' }, icon('licences')), h('span', { class: 'settings-disclosure__copy' },
-        h('span', { class: 'settings-disclosure__title' }, 'Sources & Licences'),
-        h('span', { class: 'settings-disclosure__subtitle' }, 'Text editions, morphology, and typography.')), h('span', { class: 'settings-disclosure__arrow' }, icon('chevronRight'))),
-      h('div', { class: 'settings-disclosure__body' }, sourcesNote(),
-        para(tr ? `Type: ${tr.typeNote}` : 'Type: EB Garamond (Latin and Greek) and Frank Ruhl Libre (Hebrew), under the SIL Open Font License 1.1, copied with their licences.', 'muted'),
-        h('p', { class: 'muted' },
-          h('a', { href: './fonts/EB-Garamond-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-garamond' }, 'EB Garamond licence'),
-          ...(tr
-            ? (tr.fontLicence ? [' · ', h('a', { href: tr.fontLicence.href, target: '_blank', rel: 'noopener', id: 'link-ofl-edition' }, tr.fontLicence.label)] : [])
-            : [' · ', h('a', { href: './fonts/frank-ruhl-libre-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-frank' }, 'Frank Ruhl Libre licence')]))));
-
-    const footer = h('footer', { class: 'settings-legal-footer' },
-      h('nav', { class: 'settings-links', 'aria-label': 'Information and legal pages' },
-        h('a', { href: '#/sources' }, 'Sources & limits'),
-        ...(account ? [' · ', h('a', { href: '#/terms/settings' }, 'Terms'), ' · ', h('a', { href: '#/privacy/settings' }, 'Privacy')] : [])));
-    return h('div', { class: 'settings' }, plainBar('Biblia', 'settings'),
-      h('div', { class: 'screen' }, h('h1', {}, 'Settings'), reading, offline, sources, footer));
+    const section = (id: string, title: string, ...children: Child[]): HTMLElement =>
+      h('section', { class: 'settings-group', id, 'aria-labelledby': `${id}-h` }, h('h2', { id: `${id}-h` }, title), ...children);
+    const offline = section('about-offline', 'Offline reading',
+      para(installed
+        ? 'This installed edition keeps the app itself after your first visit. Each chapter, lexicon file, and dictionary shard is available offline after you open it once. Chapters you have not opened yet need a connection.'
+        : 'This edition loads each chapter from the connection where it was opened. It is not installed for offline use.'),
+      para(`Also kept on this device by this page: your place (the last chapter you read), which parts of the library are open, and your settings${account ? `, and the sign-in${waiting ? `, with ${waiting} lookup${waiting === 1 ? '' : 's'} and mark${waiting === 1 ? '' : 's'} not yet sent` : ''}` : ''}.`, 'muted'));
+    const sources = section('about-sources', 'Sources and licences', sourcesNote(),
+      para(tr ? `Type: ${tr.typeNote}` : 'Type: EB Garamond (Latin and Greek) and Frank Ruhl Libre (Hebrew), under the SIL Open Font License 1.1, copied with their licences.', 'muted'),
+      h('p', { class: 'muted' },
+        h('a', { href: './fonts/EB-Garamond-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-garamond' }, 'EB Garamond licence'),
+        ...(tr
+          ? (tr.fontLicence ? [' · ', h('a', { href: tr.fontLicence.href, target: '_blank', rel: 'noopener', id: 'link-ofl-edition' }, tr.fontLicence.label)] : [])
+          : [' · ', h('a', { href: './fonts/frank-ruhl-libre-OFL.txt', target: '_blank', rel: 'noopener', id: 'link-ofl-frank' }, 'Frank Ruhl Libre licence')])));
+    // the sources note above already leads to "Sources and limits"; the foot holds the legal pages, which exist only with an account
+    const links = account ? h('nav', { class: 'settings-links', 'aria-label': 'Legal pages' },
+      h('a', { href: '#/terms/about' }, 'Terms'), ' · ', h('a', { href: '#/privacy/about' }, 'Privacy')) : null;
+    return h('div', { class: 'settings about' }, plainBar('Biblia', undefined, '#/settings'),
+      h('div', { class: 'screen' }, h('h1', {}, 'About'), offline, sources, links));
   }
   function renderSources(): HTMLElement {
     if (tr) {
@@ -794,12 +819,14 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       try { view = await renderReader(decodeURIComponent(m[2]), Number(m[3] ?? '1')); } finally { win.clearTimeout(waiting); }
     }
     else if (id === 'settings') { route = 'settings'; view = renderSettings(); }
+    else if (id === 'about') { route = 'about'; view = renderAbout(); }
     else if (id === 'sources') { route = 'sources'; view = renderSources(); }
     else if (id === 'account' && account) { route = 'account'; view = renderAccountScreen({ doc, account, topbar: plainBar('Biblia', 'account'), done: () => { void api.go('#/'); }, syncStatus: deps.syncStatus }); }
     else if ((id === 'privacy' || id === 'terms') && account) {
       route = id;
-      const fromSettings = m?.[2] === 'settings';
-      view = renderLegalScreen({ doc, which: id, fromSettings, topbar: plainBar('Biblia', undefined, fromSettings ? '#/settings' : '#/account') });
+      // where the page was opened from decides the way back: About (under Settings), or the account
+      const from = m?.[2] === 'about' || m?.[2] === 'settings' ? 'about' : 'account';
+      view = renderLegalScreen({ doc, which: id, from, topbar: plainBar('Biblia', undefined, from === 'about' ? '#/about' : '#/account') });
     }
     else { route = 'library'; view = renderLibrary(); }
     root.replaceChildren(view);

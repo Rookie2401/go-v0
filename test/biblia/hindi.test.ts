@@ -16,6 +16,7 @@ import { IRV_BOOKS, buildIrv, cleanIrv, parseIrvBook, type HiBook } from '../../
 import { devanagariNumeral, numeral } from '../../packages/biblia/src/canon';
 import type { DataSource } from '../../packages/biblia/src/data';
 import type { Recorder } from '../../packages/biblia/src/repo';
+import { SAMPLE_VERSE } from '../../packages/biblia/src/sample';
 import { formUnitId } from '../../packages/biblia/src/levels';
 import { adapter as extensionHindi } from '../../packages/golearn-extension/src/analysers/hi';
 import { hiAdapter } from '../../src/adapters/hi';
@@ -243,8 +244,15 @@ describe('the Hindi edition of the app', () => {
     await app.go('#/settings');
     expect(document.querySelector('#set-hindi-size')).not.toBeNull();
     expect(document.querySelector('#set-hebrew-size')).toBeNull();
-    expect(document.body.textContent).not.toContain('Hebrew text');
+    expect(document.body.textContent).not.toContain('Hebrew');
+    // the sample is this edition's own first verse, in Hindi alone
+    expect([...document.querySelectorAll<HTMLElement>('#settings-sample .prose')].map((p) => p.lang)).toEqual(['hi']);
+    expect(document.querySelector('#settings-sample .verse')?.textContent).toContain(SAMPLE_VERSE.hi);
+    expect([...document.querySelectorAll('.settings-group > h2')].map((x) => x.textContent)).toEqual(['Text', 'Verses']);
+    // the type and its licence moved to About with the rest of the sources
+    await app.go('#/about');
     expect(document.body.textContent).toContain('Tiro Devanagari Hindi');
+    await app.go('#/settings');
     const slider = document.querySelector('#set-hindi-size') as HTMLInputElement;
     slider.value = '30';
     slider.dispatchEvent(new Event('input', { bubbles: true }));

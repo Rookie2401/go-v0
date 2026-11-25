@@ -56,6 +56,7 @@ export interface KoEnding {
 
 const B = (tail: string, onlyAfter?: 'C' | 'V'): KoEndingForm => (onlyAfter ? { attach: 'bare', tail, onlyAfter } : { attach: 'bare', tail });
 const E = (tail: string): KoEndingForm => ({ attach: 'eu', tail });
+const E2 = E;
 const A = (tail: string): KoEndingForm => ({ attach: 'aeo', tail });
 const CV = (c: string, v: string): KoEndingForm => ({ attach: 'cv', c: [c], v });
 
@@ -64,7 +65,11 @@ const LIT = { SpeechLevel: 'Lit' } as const;
 type Def = Omit<KoEnding, 'tag'>;
 const ep = (d: Def): KoEnding => ({ ...d, tag: 'EP' });
 const ef = (d: Def): KoEnding => ({ ...d, tag: 'EF', morph: { VerbForm: 'Fin', ...d.morph } });
-const ec = (d: Def): KoEnding => ({ ...d, tag: 'EC', morph: { VerbForm: 'Conn', ...(d.conn ? { Connective: d.conn } : {}), ...d.morph } });
+const ec = (d: Def): KoEnding => {
+  const { SpeechLevel, ...rest } = d.morph as Record<string, string>;
+  const lit = d.lit || SpeechLevel === 'Lit';
+  return { ...d, tag: 'EC', morph: { VerbForm: 'Conn', ...(d.conn ? { Connective: d.conn } : {}), ...rest, ...(lit ? { Register: 'Lit' } : SpeechLevel ? { SpeechLevel } : {}) } };
+};
 const etm = (d: Def): KoEnding => ({ ...d, tag: 'ETM', morph: { VerbForm: 'Adn', ...d.morph } });
 const etn = (d: Def): KoEnding => ({ ...d, tag: 'ETN', morph: { VerbForm: 'Nmlz', ...d.morph } });
 
@@ -76,6 +81,7 @@ export const ENDINGS: readonly KoEnding[] = [
   ep({ id: 'p-pass', cite: '-아/어지-', forms: [A('지')], pred: 'VA', slot: 0.5, pending: true, morph: {}, role: 'become; be done (-아/어지다, written as one word)' }),
   ep({ id: 'p-hon', cite: '-(으)시-', forms: [E('시')], pred: 'VAC', slot: 1, pending: true, morph: { Honorific: 'Subj' }, role: 'honorific (honours the subject)' }),
   ep({ id: 'p-humble', cite: '-(으)옵-/-사옵-', forms: [{ attach: 'cv', c: ['사옵'], v: '옵' }], pred: 'VAC', slot: 1.5, morph: { ...LIT }, role: 'humble (prayer and old letters)', lit: true }),
+  ep({ id: 'p-humble-hon', cite: '-(으)옵시-', forms: [{ attach: 'cv', c: ['사옵시'], v: '옵시' }], pred: 'VAC', slot: 1, pending: true, lit: true, morph: { Honorific: 'Subj', SpeechLevel: 'Lit' }, role: 'humble honorific (prayer: 임하옵시며)' }),
   ep({ id: 'p-past', cite: '-았/었-', forms: [A('ㅆ')], pred: 'VAC', slot: 2, morph: { Tense: 'Past' }, role: 'past' }),
   ep({ id: 'p-pqp', cite: '-았었-/-었었-', forms: [A('ㅆ었')], pred: 'VAC', slot: 2, morph: { Tense: 'Past', Aspect: 'Pqp' }, role: 'past perfect (had …; was once …)' }),
   ep({ id: 'p-must', cite: '-아/어야겠-', forms: [A('야겠')], pred: 'VAC', slot: 4, morph: { Modality: 'Necessitative' }, role: 'must, I had better (contraction of -아/어야 하겠-)' }),
@@ -114,6 +120,10 @@ export const ENDINGS: readonly KoEnding[] = [
   ef({ id: 'hae-llae', cite: '-(으)ㄹ래', forms: [E('ㄹ래')], pred: 'V', yo: true, moods: ['Ind', 'Int'], morph: { SpeechLevel: 'Hae' }, role: 'want to; will you …?' }),
   ef({ id: 'hae-lgeol', cite: '-(으)ㄹ걸', forms: [E('ㄹ걸')], pred: 'VACP', yo: true, noFut: true, morph: { Mood: 'Ind', SpeechLevel: 'Hae' }, role: 'I guess …; I should have … (regret)' }),
   ef({ id: 'lit-riroda', cite: '-(으)리로다', forms: [E('리로다')], pred: 'VACP', lit: true, morph: { Mood: 'Excl', SpeechLevel: 'Lit' }, role: 'literary: will surely … (-(으)리로다)' }),
+  ef({ id: 'lit-jiida', cite: '-지이다', forms: [A('지이다')], pred: 'VA', lit: true, morph: { Mood: 'Ind', SpeechLevel: 'Lit' }, role: 'literary wish: may it … (-지이다)' }),
+  ef({ id: 'quote-danida', cite: '-답니다', forms: [B('답니다')], pred: 'AP', morph: { Quote: 'Ind', Mood: 'Ind', SpeechLevel: 'Hasipsio' }, role: 'formal reported or friendly statement (contraction of -다고 합니다)' }),
+  ef({ id: 'quote-neundanida', cite: '-ㄴ답니다/-는답니다', forms: [CV('는답니다', 'ㄴ답니다')], pred: 'V', morph: { Quote: 'Ind', Mood: 'Ind', SpeechLevel: 'Hasipsio' }, role: 'formal reported or friendly statement (contraction of -ㄴ다고 합니다)' }),
+  ef({ id: 'quote-ranida', cite: '-(이)랍니다', forms: [B('랍니다')], pred: 'CR', morph: { Quote: 'Ind', Mood: 'Ind', SpeechLevel: 'Hasipsio' }, role: 'formal reported statement (contraction of -(이)라고 합니다)' }),
   ef({ id: 'hage-na', cite: '-나', forms: [B('나')], pred: 'VAP', yo: true, morph: { Mood: 'Int', SpeechLevel: 'Hage' }, role: 'question (soft; with 요 polite)' }),
   ef({ id: 'hage-neunga', cite: '-는가', forms: [B('는가')], pred: 'VP', exist: true, yo: true, morph: { Mood: 'Int', SpeechLevel: 'Hage' }, role: 'question (written or 하게체)' }),
   ef({ id: 'hage-eunga', cite: '-(으)ㄴ가', forms: [E('ㄴ가')], pred: 'AC', yo: true, morph: { Mood: 'Int', SpeechLevel: 'Hage' }, role: 'question (written or 하게체)' }),
@@ -150,6 +160,18 @@ export const ENDINGS: readonly KoEnding[] = [
   ec({ id: 'as-you-know', conn: 'as-you-know', cite: '-다시피', forms: [B('다시피')], pred: 'VP', morph: {}, role: 'as (you know, you see) …' }),
   ec({ id: 'lit-nani', conn: 'since', cite: '-나니', forms: [B('나니')], pred: 'VACP', lit: true, morph: { SpeechLevel: 'Lit' }, role: 'literary: since, as (-나니)' }),
   ec({ id: 'lit-sioemyeo', conn: 'and', cite: '-(으)시오며', forms: [E('시오며')], pred: 'V', noHon: true, lit: true, morph: { Honorific: 'Subj', SpeechLevel: 'Lit' }, role: 'literary honorific: and (-(으)시오며)' }),
+  ec({ id: 'intend-short', conn: 'intend', cite: '-(으)려', forms: [E2('려')], pred: 'V', morph: {}, role: 'in order to, intending to (before 하다)' }),
+  ec({ id: 'intend-if', conn: 'if', cite: '-(으)려면', forms: [E2('려면')], pred: 'V', yo: true, morph: {}, role: 'if (one) means to' }),
+  ec({ id: 'besides', conn: 'besides', cite: '-거니와', forms: [B('거니와')], pred: 'VACP', morph: {}, role: 'not only … but also; besides' }),
+  ec({ id: 'habit', conn: 'habit', cite: '-곤', forms: [B('곤')], pred: 'V', morph: {}, role: 'habitually (-곤 하다: used to)' }),
+  ec({ id: 'quote-rirago', cite: '-(으)리라고', forms: [E2('리라고')], pred: 'VACP', morph: { Quote: 'Ind' }, role: 'that (it) would (indirect quotation of a conjecture)' }),
+  ec({ id: 'would-but', conn: 'background', cite: '-(으)ㄹ텐데', forms: [E2('ㄹ텐데')], pred: 'VACP', yo: true, morph: {}, role: '(it) would …, but (-(으)ㄹ 터인데 written as one word)' }),
+  ec({ id: 'quote-damyeo', cite: '-다며', forms: [B('다며')], pred: 'AP', morph: { Quote: 'Ind', Mood: 'Ind' }, role: 'saying that …, and; (you) said …?' }),
+  ec({ id: 'quote-neundamyeo', cite: '-ㄴ다며/-는다며', forms: [CV('는다며', 'ㄴ다며')], pred: 'V', morph: { Quote: 'Ind', Mood: 'Ind' }, role: 'saying that …, and' }),
+  ec({ id: 'quote-ramyeo', cite: '-(이)라며', forms: [B('라며')], pred: 'CR', morph: { Quote: 'Ind', Mood: 'Ind' }, role: 'saying that it is …, and' }),
+  ec({ id: 'quote-jamyeo', cite: '-자며', forms: [B('자며')], pred: 'V', morph: { Quote: 'Ind', Mood: 'Prop' }, role: 'suggesting that we …, and' }),
+  ec({ id: 'quote-nyamyeo', cite: '-냐며', forms: [B('냐며')], pred: 'VACP', morph: { Quote: 'Ind', Mood: 'Int' }, role: 'asking whether …, and' }),
+  ec({ id: 'ra-conn', conn: 'not-but', cite: '-(이)라', forms: [B('라')], pred: 'C', morph: {}, role: 'connective of the copula: (not A) but … (아니라)' }),
   ec({ id: 'and', conn: 'and', cite: '-고', forms: [B('고')], pred: 'VACPL', yo: true, after: EC_AFTER, morph: {}, role: 'and; and then' }),
   ec({ id: 'and-while', conn: 'and-while', cite: '-(으)며', forms: [E('며')], pred: 'VACPL', morph: {}, role: 'and; while (written)' }),
   ec({ id: 'while', conn: 'while', cite: '-(으)면서', forms: [E('면서')], pred: 'VACP', after: ['also'], morph: {}, role: 'while; although' }),
@@ -182,8 +204,8 @@ export const ENDINGS: readonly KoEnding[] = [
   ec({ id: 'the-more', conn: 'the-more', cite: '-(으)ㄹ수록', forms: [E('ㄹ수록')], pred: 'VAC', morph: {}, role: 'the more …, the more' }),
   ec({ id: 'deoni', conn: 'and-then', cite: '-더니', forms: [B('더니')], pred: 'VACP', morph: { Modality: 'Retrospective' }, role: 'and then (as the speaker saw); since' }),
   ec({ id: 'deorado', conn: 'even-if', cite: '-더라도', forms: [B('더라도')], pred: 'VACP', morph: {}, role: 'even if' }),
-  ec({ id: 'neg', conn: 'neg', cite: '-지', forms: [B('지')], pred: 'VA', after: EC_AFTER, morph: {}, role: 'before 않다, 못하다, 말다 (negation)' }),
-  ec({ id: 'inf', conn: 'inf', cite: '-아/-어', forms: [A('')], pred: 'VA', morph: {}, role: 'infinitive connective (before an auxiliary: -아/어 보다, 주다, 있다 …)' }),
+  ec({ id: 'neg', conn: 'neg', cite: '-지', forms: [B('지')], pred: 'VA', after: EC_AFTER, morph: {}, role: '-지 (before 않다 / 못하다 / 말다: negation)' }),
+  ec({ id: 'inf', conn: 'inf', cite: '-아/-어', forms: [A('')], pred: 'VA', morph: {}, role: '-아/어 (links to the next verb)' }),
   ec({ id: 'after', conn: 'after', cite: '-고서', forms: [B('고서')], pred: 'V', morph: {}, role: 'after (doing)' }),
   ec({ id: 'whether', conn: 'whether', cite: '-는지', forms: [B('는지')], pred: 'VP', exist: true, yo: true, morph: {}, role: 'whether; (I wonder) if' }),
   ec({ id: 'whether-adj', conn: 'whether', cite: '-(으)ㄴ지', forms: [E('ㄴ지')], pred: 'AC', yo: true, morph: {}, role: 'whether; (with time) since' }),
@@ -200,13 +222,13 @@ export const ENDINGS: readonly KoEnding[] = [
   ec({ id: 'lit-sa', conn: 'and', cite: '-(으)사', forms: [E('사')], pred: 'V', lit: true, morph: { ...LIT, Honorific: 'Subj' }, role: 'literary honorific: and, having (-(으)사)' }),
 
   // ───────── indirect quotation (간접 인용) ─────────
-  ec({ id: 'quote-da', conn: 'quote', cite: '-다고', forms: [B('다고')], pred: 'AP', yo: true, after: EC_AFTER, morph: { Quote: 'Ind', Mood: 'Ind' }, role: 'indirect quotation of a statement (that …)' }),
-  ec({ id: 'quote-neunda', conn: 'quote', cite: '-ㄴ다고/-는다고', forms: [CV('는다고', 'ㄴ다고')], pred: 'V', yo: true, after: EC_AFTER, morph: { Quote: 'Ind', Mood: 'Ind' }, role: 'indirect quotation of a statement (that …)' }),
-  ec({ id: 'quote-ra', conn: 'quote', cite: '-(이)라고', forms: [B('라고')], pred: 'CR', yo: true, after: EC_AFTER, morph: { Quote: 'Ind', Mood: 'Ind' }, role: 'indirect quotation of a statement (that … is)' }),
-  ec({ id: 'quote-imp', conn: 'quote', cite: '-(으)라고', forms: [E('라고')], pred: 'V', yo: true, morph: { Quote: 'Ind', Mood: 'Imp' }, role: 'indirect quotation of a command (told to …)' }),
-  ec({ id: 'quote-nya', conn: 'quote', cite: '-냐고', forms: [B('냐고')], pred: 'VACP', yo: true, morph: { Quote: 'Ind', Mood: 'Int' }, role: 'indirect quotation of a question (asked whether …)' }),
-  ec({ id: 'quote-neunya', conn: 'quote', cite: '-느냐고', forms: [B('느냐고')], pred: 'VP', exist: true, yo: true, morph: { Quote: 'Ind', Mood: 'Int' }, role: 'indirect quotation of a question (asked whether …)' }),
-  ec({ id: 'quote-ja', conn: 'quote', cite: '-자고', forms: [B('자고')], pred: 'V', yo: true, morph: { Quote: 'Ind', Mood: 'Prop' }, role: "indirect quotation of a suggestion (suggested that we …)" }),
+  ec({ id: 'quote-da', cite: '-다고', forms: [B('다고')], pred: 'AP', yo: true, after: EC_AFTER, morph: { Quote: 'Ind', Mood: 'Ind' }, role: 'indirect quotation of a statement (that …)' }),
+  ec({ id: 'quote-neunda', cite: '-ㄴ다고/-는다고', forms: [CV('는다고', 'ㄴ다고')], pred: 'V', yo: true, after: EC_AFTER, morph: { Quote: 'Ind', Mood: 'Ind' }, role: 'indirect quotation of a statement (that …)' }),
+  ec({ id: 'quote-ra', cite: '-(이)라고', forms: [B('라고')], pred: 'CR', yo: true, after: EC_AFTER, morph: { Quote: 'Ind', Mood: 'Ind' }, role: 'indirect quotation of a statement (that … is)' }),
+  ec({ id: 'quote-imp', cite: '-(으)라고', forms: [E('라고')], pred: 'V', yo: true, morph: { Quote: 'Ind', Mood: 'Imp' }, role: 'indirect quotation of a command (told to …)' }),
+  ec({ id: 'quote-nya', cite: '-냐고', forms: [B('냐고')], pred: 'VACP', yo: true, morph: { Quote: 'Ind', Mood: 'Int' }, role: 'indirect quotation of a question (asked whether …)' }),
+  ec({ id: 'quote-neunya', cite: '-느냐고', forms: [B('느냐고')], pred: 'VP', exist: true, yo: true, morph: { Quote: 'Ind', Mood: 'Int' }, role: 'indirect quotation of a question (asked whether …)' }),
+  ec({ id: 'quote-ja', cite: '-자고', forms: [B('자고')], pred: 'V', yo: true, morph: { Quote: 'Ind', Mood: 'Prop' }, role: "indirect quotation of a suggestion (suggested that we …)" }),
   ef({ id: 'quote-dae', cite: '-대', forms: [B('대')], pred: 'AP', yo: true, morph: { Quote: 'Ind', Mood: 'Ind', SpeechLevel: 'Hae' }, role: 'reported statement (they say …; contraction of -다고 해)' }),
   ef({ id: 'quote-neundae', cite: '-ㄴ대/-는대', forms: [CV('는대', 'ㄴ대')], pred: 'V', yo: true, morph: { Quote: 'Ind', Mood: 'Ind', SpeechLevel: 'Hae' }, role: 'reported statement (they say …; contraction of -ㄴ다고 해)' }),
   ef({ id: 'quote-rae', cite: '-(이)래', forms: [B('래')], pred: 'CR', yo: true, morph: { Quote: 'Ind', Mood: 'Ind', SpeechLevel: 'Hae' }, role: 'reported statement (they say it is …; contraction of -(이)라고 해)' }),
@@ -221,14 +243,15 @@ export const ENDINGS: readonly KoEnding[] = [
   etm({ id: 'quote-janeun', cite: '-자는', forms: [B('자는')], pred: 'V', morph: { Quote: 'Ind', Mood: 'Prop' }, role: "suggesting that we … (before a noun)" }),
   ec({ id: 'quote-damyeon', conn: 'if', cite: '-다면', forms: [B('다면')], pred: 'AP', morph: { Quote: 'Ind' }, role: 'if (it is so that) …' }),
   ec({ id: 'quote-neundamyeon', conn: 'if', cite: '-ㄴ다면/-는다면', forms: [CV('는다면', 'ㄴ다면')], pred: 'V', morph: { Quote: 'Ind' }, role: 'if (it is so that) …' }),
-  ec({ id: 'quote-ramyeon', conn: 'if', cite: '-(이)라면', forms: [B('라면')], pred: 'C', morph: { Quote: 'Ind' }, role: 'if it is …' }),
+  ec({ id: 'quote-ramyeon', conn: 'if', cite: '-(이)라면', forms: [B('라면')], pred: 'CR', morph: { Quote: 'Ind' }, role: 'if it is …' }),
 
   // ───────── adnominal (관형사형 전성 어미) and nominalising (명사형 전성 어미) ─────────
   etm({ id: 'adn-neun', cite: '-는', forms: [B('는')], pred: 'V', exist: true, morph: { Tense: 'Pres' }, role: 'present adnominal (that does …, before a noun)' }),
   etm({ id: 'adn-n', cite: '-(으)ㄴ', forms: [E('ㄴ')], pred: 'VAC', morph: {}, role: 'adnominal (past on an action verb; present on a descriptive verb or the copula)' }),
   etm({ id: 'adn-l', cite: '-(으)ㄹ', forms: [E('ㄹ')], pred: 'VACP', noFut: true, morph: { Aspect: 'Prosp' }, role: 'prospective adnominal (that is to …, before a noun)' }),
-  etm({ id: 'adn-ryeodeon', cite: '-(으)려던', forms: [E('려던')], pred: 'V', morph: { Tense: 'Past', Aspect: 'Imp' }, role: 'that (one) meant to … (before a noun)' }),
-  etm({ id: 'adn-deon', cite: '-던', forms: [B('던')], pred: 'VACP', noFut: true, morph: { Tense: 'Past', Aspect: 'Imp' }, role: 'retrospective adnominal (that used to …, before a noun)' }),
+  etm({ id: 'adn-ryeodeon', cite: '-(으)려던', forms: [E('려던')], pred: 'V', morph: { Tense: 'Past', Modality: 'Retrospective' }, role: 'that (one) meant to, was going to … (before a noun)' }),
+  etm({ id: 'adn-ryeoneun', cite: '-(으)려는', forms: [E2('려는')], pred: 'V', morph: { Tense: 'Pres' }, role: 'that means to … (before a noun)' }),
+  etm({ id: 'adn-deon', cite: '-던', forms: [B('던')], pred: 'VACP', noFut: true, morph: { Tense: 'Past', Modality: 'Retrospective' }, role: 'retrospective adnominal (that was …, that used to …; recalled, before a noun)' }),
   etn({ id: 'nmlz-gi', cite: '-기', forms: [B('기')], pred: 'VACP', after: 'nominal', morph: {}, role: 'nominaliser -기 (doing, to do)' }),
   etn({ id: 'nmlz-m', cite: '-(으)ㅁ', forms: [E('ㅁ')], pred: 'VACP', after: 'nominal', morph: {}, role: 'nominaliser -(으)ㅁ (the fact of …)' }),
 ];

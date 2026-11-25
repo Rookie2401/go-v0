@@ -21,6 +21,8 @@ export interface KoParticle {
   cls: KoParticleClass;
   morph: Readonly<Record<string, string>>;
   role: string;
+  /** Only after these words (서 for 에서 after 여기, 거기, 저기, 어디). */
+  hosts?: readonly string[];
 }
 
 const P = (id: string, family: string, forms: Array<[string, KoHostSound]>, tag: KoParticle['tag'], cls: KoParticleClass, morph: Record<string, string>, role: string): KoParticle => ({
@@ -36,6 +38,7 @@ export const PARTICLES: Readonly<Record<string, KoParticle>> = Object.fromEntrie
   P('object', '을/를', CV('을', '를'), 'JKO', 'struct', { Case: 'Acc' }, 'object particle'),
   P('to', '에', ANY('에'), 'JKB', 'adv', { Case: 'Loc' }, 'at, in, on (place or time); to (a destination); per'),
   P('at', '에서', ANY('에서'), 'JKB', 'adv', { Case: 'Loc' }, 'at, in (where something happens); from (a place)'),
+  { ...P('at-short', '에서', ANY('서'), 'JKB', 'adv', { Case: 'Loc' }, 'at, in; from (에서 shortened after 여기, 거기, 저기, 어디)'), hosts: ['여기', '거기', '저기', '어디', '이리', '그리', '저리', '데'] },
   P('of', '의', ANY('의'), 'JKG', 'gen', { Case: 'Gen' }, "of, 's (possession or relation)"),
   P('and', '와/과', CV('과', '와'), 'JKB', 'adv', { Case: 'Com' }, 'and (between nouns); with'),
   P('and-hago', '하고', ANY('하고'), 'JKB', 'adv', { Case: 'Com' }, 'and (between nouns); with (spoken)'),
@@ -49,8 +52,8 @@ export const PARTICLES: Readonly<Record<string, KoParticle>> = Object.fromEntrie
   P('by', '로/으로', RO('로'), 'JKB', 'adv', { Case: 'Ins' }, 'to, toward (a direction); by, with (a means); as (a role); into (a change)'),
   P('also', '도', ANY('도'), 'JX', 'lim', { Focus: 'Also' }, 'also, too; even; (with a negative) not … either'),
   P('only', '만', ANY('만'), 'JX', 'lim', { Focus: 'Only' }, 'only, just'),
-  P('from', '부터', ANY('부터'), 'JX', 'lim', { Case: 'Abl', Focus: 'Start' }, 'from (a starting point in time or order); starting with'),
-  P('until', '까지', ANY('까지'), 'JX', 'lim', { Focus: 'Limit' }, 'until, up to, as far as; even'),
+  P('from', '부터', ANY('부터'), 'JX', 'lim', { Case: 'Abl', Focus: 'From' }, 'from (a starting point in time or order); starting with'),
+  P('until', '까지', ANY('까지'), 'JX', 'lim', { Focus: 'UpTo' }, 'until, up to, as far as; even'),
   P('than', '보다', ANY('보다'), 'JKB', 'adv', { Case: 'Cmp' }, 'than (in a comparison)'),
   P('like', '처럼', ANY('처럼'), 'JKB', 'adv', { Case: 'Equ' }, 'like, as (in the same way as)'),
   P('like-gati', '같이', ANY('같이'), 'JKB', 'adv', { Case: 'Equ' }, 'like, as (in the same way as)'),
@@ -67,6 +70,8 @@ export const PARTICLES: Readonly<Record<string, KoParticle>> = Object.fromEntrie
   P('polite', '요', ANY('요'), 'JX', 'pol', {}, 'polite marker 요'),
   P('plural', '들', ANY('들'), 'XSN', 'plural', { Number: 'Plur' }, 'plural marker'),
   P('among', '끼리', ANY('끼리'), 'XSN', 'plural', {}, 'among themselves, (just) together'),
+  P('about', '쯤', ANY('쯤'), 'XSN', 'plural', {}, 'about, around (an amount, a time or a place)'),
+  P('each-ssik', '씩', ANY('씩'), 'XSN', 'plural', { Focus: 'Each' }, 'each, apiece; at a time'),
   P('only-ppun', '뿐', ANY('뿐'), 'JX', 'lim', { Focus: 'Only' }, 'only, alone'),
   P('as', '대로', ANY('대로'), 'JX', 'lim', { Focus: 'Accord' }, 'as, in accordance with'),
   P('as-much', '만큼', ANY('만큼'), 'JX', 'lim', { Case: 'Equ' }, 'as much as, as … as'),
@@ -170,6 +175,8 @@ export const FUSED: Readonly<Record<string, KoFused>> = {
   여긴: F('여기', HERE, 'topic', 'ㄴ', [0, 2], [1, 2]), 거긴: F('거기', THERE, 'topic', 'ㄴ', [0, 2], [1, 2]), 저긴: F('저기', THERE, 'topic', 'ㄴ', [0, 2], [1, 2]),
   걘: F('걔', KID, 'topic', 'ㄴ', [0, 1], [0, 1]), 얜: F('얘', KID, 'topic', 'ㄴ', [0, 1], [0, 1]), 쟨: F('쟤', KID, 'topic', 'ㄴ', [0, 1], [0, 1]),
   걜: F('걔', KID, 'object', 'ㄹ', [0, 1], [0, 1]), 얠: F('얘', KID, 'object', 'ㄹ', [0, 1], [0, 1]),
+  게: { ...F('거', /\bthing\b/u, 'subject', '이', [0, 1], [0, 1]), tag: 'NNB' }, 건: { ...F('거', /\bthing\b/u, 'topic', 'ㄴ', [0, 1], [0, 1]), tag: 'NNB' },
+  걸: { ...F('거', /\bthing\b/u, 'object', 'ㄹ', [0, 1], [0, 1]), tag: 'NNB' },
   내: F('나', I, 'of', '의', [0, 1], [0, 1]), 네: F('너', YOU, 'of', '의', [0, 1], [0, 1]), 제: F('저', I, 'of', '의', [0, 1], [0, 1]),
 };
 
@@ -186,14 +193,14 @@ export function koResolveFused(f: KoFused, lookup: (key: string) => ReadonlyArra
  * morph.VerbType=Exist, and the 는-forms of a verb (있는, 없는, 있는데). Honorific: 계시다 (be, of a person), 있으시다 (have).
  */
 export const KO_EXISTENTIALS: readonly KoLexEntry[] = [
-  { lemma: '있다', tag: 'VA', irr: 'R', gloss: 'to be (somewhere), to exist; to have', glossOwn: true },
-  { lemma: '없다', tag: 'VA', irr: 'R', gloss: 'not to be, not to exist; not to have', glossOwn: true },
+  { lemma: '있다', tag: 'VA', irr: 'R', gloss: 'to be (somewhere), to exist; to have', glossOwn: true, n: 5000 },
+  { lemma: '없다', tag: 'VA', irr: 'R', gloss: 'not to be, not to exist; not to have', glossOwn: true, n: 2000 },
 ];
 export const KO_EXISTENTIAL_LEMMAS: ReadonlySet<string> = new Set(KO_EXISTENTIALS.map((e) => e.lemma));
 
 /** The copula entries (the lexicon holds no VCP / VCN rows). */
-export const KO_COPULA: KoLexEntry = { lemma: '이다', tag: 'VCP', irr: 'R', gloss: 'to be (copula)', glossOwn: true };
-export const KO_NEG_COPULA: KoLexEntry = { lemma: '아니다', tag: 'VCN', irr: 'R', gloss: 'not to be', glossOwn: true };
+export const KO_COPULA: KoLexEntry = { lemma: '이다', tag: 'VCP', irr: 'R', gloss: 'to be (copula)', glossOwn: true, n: 5000 };
+export const KO_NEG_COPULA: KoLexEntry = { lemma: '아니다', tag: 'VCN', irr: 'R', gloss: 'not to be', glossOwn: true, n: 1200 };
 
 const VX = (lemma: string, irr: KoIrregular, gloss: string): KoLexEntry => ({ lemma, tag: 'VX', irr, gloss, glossOwn: true });
 /**
@@ -215,13 +222,65 @@ export const KO_AUXILIARIES: readonly KoLexEntry[] = [
   VX('계시다', 'R', 'be (doing), honorific (-고 계시다)'), VX('보이다', 'R', 'look, seem (-아/어 보이다)'),
   VX('듯하다', 'Ha', 'seem (-(으)ㄴ/는 듯하다)'), VX('만하다', 'Ha', 'be worth (-(으)ㄹ 만하다)'), VX('법하다', 'Ha', 'be likely (-(으)ㄹ 법하다)'),
   VX('뻔하다', 'Ha', 'nearly (-(으)ㄹ 뻔하다)'), VX('척하다', 'Ha', 'pretend (-(으)ㄴ/는 척하다)'), VX('체하다', 'Ha', 'pretend (-(으)ㄴ/는 체하다)'),
-  VX('양하다', 'Ha', 'pretend (-(으)ㄴ/는 양하다)'),
+  VX('양하다', 'Ha', 'pretend (-(으)ㄴ/는 양하다)'), VX('아니하다', 'Ha', 'not (-지 아니하다, the older and written -지 않다)'),
 ];
+
+/** The long negation's own main verbs (아니하다 = 않다, constant in Bible Korean). */
+export const KO_NEGATION_VERBS: readonly KoLexEntry[] = [{ lemma: '아니하다', tag: 'VV', irr: 'Ha', gloss: 'not to do (older and written form of 않다)', glossOwn: true }];
+
+/**
+ * Conjunctive adverbs (접속 부사, class MAJ → CONJ) read whole, whatever class the lexicon gives them: a whole function word outranks its
+ * own etymology (그래서 is not read first as 그렇다 + -어서). The lexicon's own MAG / MAJ rows of these spellings are suppressed.
+ */
+const MAJ = (lemma: string, gloss: string): KoLexEntry => ({ lemma, tag: 'MAJ', gloss, glossOwn: true, n: 300 });
+export const KO_CONJUNCTIVE_ADVERBS: readonly KoLexEntry[] = [
+  MAJ('그래서', 'so, therefore'), MAJ('그러나', 'but, however'), MAJ('그리고', 'and'), MAJ('하지만', 'but'), MAJ('그런데', 'but, by the way'),
+  MAJ('그러면', 'then, if so'), MAJ('그럼', 'then, well then'), MAJ('그러니까', 'so, that is why'), MAJ('그래도', 'even so, still'), MAJ('따라서', 'therefore'),
+  MAJ('또한', 'also, moreover'), MAJ('즉', 'that is, namely'), MAJ('그러므로', 'therefore'), MAJ('게다가', 'besides, moreover'), MAJ('그렇지만', 'but, however'),
+  MAJ('또는', 'or'), MAJ('혹은', 'or'), MAJ('및', 'and'), MAJ('왜냐하면', 'because'), MAJ('그러자', 'thereupon'), MAJ('그리하여', 'and so'),
+  MAJ('더구나', 'moreover'), MAJ('하물며', 'much less'), MAJ('그러니', 'so'), MAJ('아니면', 'or else'), MAJ('그러다가', 'and then'), MAJ('그럼에도', 'nevertheless'),
+];
+export const KO_CONJUNCTIVE_LEMMAS: ReadonlySet<string> = new Set(KO_CONJUNCTIVE_ADVERBS.map((e) => e.lemma));
+
+/** Contractions bound to particular particles (누 before 가, 내 / 제 / 네 as subject or genitive forms): never free nouns taking other endings. */
+export const KO_BOUND_CONTRACTIONS: ReadonlySet<string> = new Set(['누', '내', '제', '네']);
+
+// ───────────────────────────── numerals ─────────────────────────────
+
+const SINO_DIGIT: Readonly<Record<string, number>> = { 일: 1, 이: 2, 삼: 3, 사: 4, 오: 5, 육: 6, 륙: 6, 칠: 7, 팔: 8, 구: 9 };
+const SINO_SMALL: Readonly<Record<string, number>> = { 십: 10, 백: 100, 천: 1000 };
+const SINO_BIG: Readonly<Record<string, number>> = { 만: 1e4, 억: 1e8, 조: 1e12 };
+const NATIVE_TENS: Readonly<Record<string, number>> = { 열: 10, 스물: 20, 스무: 20, 서른: 30, 마흔: 40, 쉰: 50, 예순: 60, 일흔: 70, 여든: 80, 아흔: 90 };
+const NATIVE_UNITS: Readonly<Record<string, number>> = { 하나: 1, 한: 1, 둘: 2, 두: 2, 셋: 3, 세: 3, 석: 3, 넷: 4, 네: 4, 넉: 4, 다섯: 5, 여섯: 6, 일곱: 7, 여덟: 8, 아홉: 9 };
+
+/** A numeral written in Hangul at the start of s: its pieces, its value and its length in syllables. Only compositions of two pieces or more. */
+export interface KoNumeral { pieces: string[]; value: number; length: number; kind: 'sino' | 'native' }
+export function koParseNumerals(s: string): KoNumeral[] {
+  const out: KoNumeral[] = [];
+  // Sino-Korean: ( [digit]? (십|백|천) | digit )+ grouped under 만 / 억 / 조
+  const chars = [...s];
+  let i = 0, total = 0, group = 0, pending = 0;
+  const pieces: string[] = [];
+  const push = () => { const v = total + group + pending; if (pieces.length >= 2) out.push({ pieces: [...pieces], value: v, length: i, kind: 'sino' }); };
+  while (i < chars.length) {
+    const ch = chars[i];
+    if (SINO_DIGIT[ch] !== undefined && pending === 0) { pending = SINO_DIGIT[ch]; pieces.push(ch); i++; push(); continue; }
+    if (SINO_SMALL[ch] !== undefined) { group += (pending || 1) * SINO_SMALL[ch]; pending = 0; pieces.push(ch); i++; push(); continue; }
+    if (SINO_BIG[ch] !== undefined && (group || pending || total === 0)) { total += (group + pending || 1) * SINO_BIG[ch]; group = 0; pending = 0; pieces.push(ch); i++; push(); continue; }
+    break;
+  }
+  // native: tens + units
+  for (const [t, tv] of Object.entries(NATIVE_TENS)) {
+    if (!s.startsWith(t)) continue;
+    for (const [u, uv] of Object.entries(NATIVE_UNITS)) if (s.startsWith(t + u)) out.push({ pieces: [t, u], value: tv + uv, length: [...t + u].length, kind: 'native' });
+  }
+  return out.sort((a, b) => b.length - a.length);
+}
 
 /** The closed predicates by stem key (이, 아니, 있, 보 …). */
 export const KO_CLOSED_PREDICATES: ReadonlyMap<string, readonly KoLexEntry[]> = (() => {
   const m = new Map<string, KoLexEntry[]>();
-  for (const e of [KO_COPULA, KO_NEG_COPULA, ...KO_EXISTENTIALS, ...KO_AUXILIARIES]) {
+  for (const e of [KO_COPULA, KO_NEG_COPULA, ...KO_EXISTENTIALS, ...KO_NEGATION_VERBS, ...KO_AUXILIARIES]) {
     const k = e.lemma.slice(0, -1);
     m.set(k, [...(m.get(k) ?? []), e]);
   }

@@ -208,6 +208,7 @@ function aeoBases(stem: readonly KoSyl[], cls: KoConjClass, tail: KoTail, vowelN
   }
   // regular
   if (last.t === 'ㅎ' && last.l === 'ㄴ' && last.v === 'ㅗ') return [plus('ㅏ', '아'), fuse(withLast(stem, { v: 'ㅘ', t: '' }), '아')]; // 놓아 / 놔
+  if (koSylsText(stem) === '말') return [plus('ㅏ', '아'), fuse(withLast(stem, { t: '' }), '아')]; // 말다: 말아 / 마 (마, 마라, 마요)
   if (last.t) { const h = koHarmony(last.v); return [plus(h, h === 'ㅏ' ? '아' : '어')]; }
   switch (last.v) {
     case 'ㅏ': return [fuse(stem.map((x) => ({ ...x })), '아')];

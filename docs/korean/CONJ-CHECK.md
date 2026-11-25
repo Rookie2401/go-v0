@@ -3,7 +3,7 @@
 Generated 2026-11-25 by `scripts/ko-conj-check.mts` from `data/raw/kaikki-ko/kaikki.org-dictionary-Korean.jsonl`
 (Wiktionary via kaikki.org, CC BY-SA 4.0). 4729 verb and adjective entries with an infinitive, a sequential form and a
 conjugation table; 8+ without a class the engine can derive; 23 skipped (the copulas, non-Hangul
-headwords); 47 table cells whose tags map to no ending chain (rare cells: bare `indicative`, `connective` …). 101 s.
+headwords); 47 table cells whose tags map to no ending chain (rare cells: bare `indicative`, `connective` …). 115 s.
 
 The class of each entry is derived from its infinitive and sequential forms with `koDeriveClass` (conjugate.ts), the same
 derivation the lexicon build can use.

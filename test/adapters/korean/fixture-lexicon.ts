@@ -82,7 +82,12 @@ export const FIXTURE_ROWS: readonly Row[] = [
   ['가지다', 'VV', 'R', 'to have, take', { n: 2500 }], ['내다', 'VV', 'R', 'to put out; to pay', { n: 2000 }], ['끝나다', 'VV', 'R', 'to end', { n: 800 }], ['쉬다', 'VV', 'R', 'to rest', { n: 600 }],
   ['깨닫다', 'VV', 'D', 'to realise', { n: 400 }], ['싣다', 'VV', 'D', 'to load', { n: 200 }], ['젓다', 'VV', 'S', 'to stir', { n: 100 }],
   ['보다', 'VV', 'R', 'to see', { n: 9000 }], ['놓이다', 'VV', 'R', 'to be placed', { n: 100, voice: 'Pass', base: '놓다' }], ['떨어지다', 'VV', 'R', 'to fall', { n: 800 }],
-  ['긷다', 'VV', '', 'to draw (water)', { n: 10 }], ['체포', 'NNG', '', 'arrest', { n: 100 }], ['존경', 'NNG', '', 'respect', { n: 100 }], ['걱정', 'NNG', '', 'worry', { n: 500 }],
+  ['긷다', 'VV', '', 'to draw (water)', { n: 10 }], ['체포', 'NNG', '', 'arrest', { n: 100 }],
+  ['도', 'NNG', '', 'province', { n: 300, hanja: '道' }], ['봄', 'NNG', '', 'spring', { n: 800 }], ['미세', 'NNG', '', 'tininess', { n: 50, hanja: '微細' }], ['밀다', 'VV', 'R', 'to push', { n: 600 }],
+  ['계속', 'NNG', '', 'continuation', { n: 900, hanja: '繼續' }], ['계속하다', 'VV', 'Ha', 'to continue', { n: 600 }], ['예산', 'NNG', '', 'budget', { n: 200, hanja: '豫算' }], ['상승', 'NNG', '', 'rise', { n: 200, hanja: '上昇' }],
+  ['형제', 'NNG', '', 'brothers', { n: 300, hanja: '兄弟' }], ['애', 'XSN', '', '-philia, love of', { hanja: '愛' }], ['들르다', 'VV', 'R', 'to stop by', { n: 100 }], ['거룩하다', 'VA', 'Ha', 'holy', { n: 100 }],
+  ['이루다', 'VV', 'R', 'to achieve', { n: 800 }], ['임하다', 'VV', 'Ha', 'to come upon, descend', { n: 50 }], ['복잡', 'XR', '', 'complexity (root)', { n: 100 }], ['그러나', 'MAG', '', 'but', { n: 3000 }],
+  ['때문', 'NNB', '', 'reason', { n: 3000 }], ['같다', 'VA', 'R', 'same', { n: 3000 }], ['같이', 'MAG', '', 'together; like', { n: 1500 }], ['높다', 'VA', 'R', 'high', { n: 600 }], ['삶', 'NNG', '', 'life', { n: 600 }], ['존경', 'NNG', '', 'respect', { n: 100 }], ['걱정', 'NNG', '', 'worry', { n: 500 }],
   ['드리다', 'VV', 'R', 'to give (humble)', { n: 1500 }], ['주무시다', 'VV', 'R', 'to sleep (honorific)', { n: 100 }], ['누이', 'NNG', '', 'sister', { n: 50 }], ['하', 'NNG', '', 'last; below', { n: 50 }], ['만들어지다', 'VV', 'R', 'to be made', { n: 300 }],
 ];
 

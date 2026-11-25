@@ -52,7 +52,7 @@ export function describeKoMorph(morph: Readonly<Record<string, string>>, pos?: P
     for (const id of m.Particle.split('+')) {
       const p = PARTICLES[id];
       if (!p || id === 'plural') continue;
-      out.push(id === 'topic' ? 'topic particle' : id === 'subject' ? 'subject particle' : id === 'object' ? 'object particle' : `${p.family} (${p.role})`);
+      out.push(id === 'topic' ? 'topic particle' : id === 'subject' ? (m.Complement === 'Yes' ? 'complement particle' : 'subject particle') : id === 'object' ? 'object particle' : `${p.family} (${p.role})`);
     }
   } else if (m.Case) out.push(m.Case.split(',').map((c) => CASE[c] ?? c).join(', '));
   if (!out.length) return pos === 'VERB' || pos === 'ADJ' ? 'dictionary form' : undefined;

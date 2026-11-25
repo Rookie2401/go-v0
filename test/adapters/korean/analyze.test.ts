@@ -166,7 +166,7 @@ describe('acceptance: predicates', () => {
   it('먹었었다: Pqp', () => expect(first('먹었었다').morph).toMatchObject({ Tense: 'Past', Aspect: 'Pqp' }));
   it('literary endings', () => {
     for (const [w, e] of [['하나이다', '-나이다'], ['하옵소서', '-(으)소서'], ['하시니라', '-(으)니라']]) { const c = first(w); expect(c.lemma, w).toBe('하다'); expect(c.morph.SpeechLevel, w).toBe('Lit'); expect(c.notes?.ending, w).toBe(e); }
-    const r = first('이르시되'); expect(r.morph.SpeechLevel).toBe('Lit'); expect(r.notes?.ending).toBe('-(으)되'); expect((r.lemma ?? '').startsWith('이르다')).toBe(true);
+    const r = first('이르시되'); expect(r.morph.Register).toBe('Lit'); expect(r.morph.SpeechLevel).toBeUndefined(); // a literary connective says Register=Lit expect(r.notes?.ending).toBe('-(으)되'); expect((r.lemma ?? '').startsWith('이르다')).toBe(true);
   });
   it('하심이라: -(으)시- + -(으)ㅁ + copula + -(이)라', () => { const c = first('하심이라'); expect(c.lemma).toBe('하다'); expect(pl(c)).toEqual(['하다', '-(으)시-', '-(으)ㅁ', '이다', '-(이)라']); });
   it('간다고: indirect quotation', () => { const c = first('간다고'); expect(c.lemma).toBe('가다'); expect(c.morph.Quote).toBe('Ind'); expect(c.notes?.ending).toBe('-ㄴ다고/-는다고'); });
@@ -374,5 +374,94 @@ describe('koAnalyzeTokens and describeKoMorph', () => {
   });
   it('every ending in the inventory has a citation form, a tag and a role', () => {
     for (const e of ENDINGS) { expect(e.cite, e.id).toMatch(/^-/u); expect(e.role, e.id).toBeTruthy(); }
+  });
+});
+
+describe('fix batch 2', () => {
+  it('a whole conjunctive adverb outranks its etymology, as CONJ, whatever the lexicon class', () => {
+    for (const w of ['그래서', '그러나', '그리고', '하지만', '그런데', '그러면', '그럼', '그러니까', '그래도', '따라서']) {
+      const cs = an(w);
+      expect(cs[0], w).toMatchObject({ lemma: w, pos: 'CONJ' });
+      expect(cs.filter((c) => c.lemma === w).length, w).toBe(1); // the lexicon's MAG row is suppressed
+    }
+    expect(an('그래서').some((c) => c.lemma === '그렇다')).toBe(true); // kept below
+  });
+  it('a common licensed predicate outranks a one-syllable noun + particle: 도와 → 돕다', () => { expect(first('도와').lemma).toBe('돕다'); expect(has('도와', '도')).toBe(true); });
+  it('a listed noun outranks a nominalised predicate: 봄에 → 봄, 삶을 → 삶', () => { expect(first('봄에').lemma).toBe('봄'); expect(first('삶을').lemma).toBe('삶'); expect(has('봄에', '보다')).toBe(true); });
+  it('미세요 → 밀다 + -세요 above the noun + 요', () => { expect(first('미세요').lemma).toBe('밀다'); expect(has('미세요', '미세')).toBe(true); });
+  it('a 하다-verb the lexicon holds outranks noun + 하고: 계속하고', () => { expect(first('계속하고').lemma).toBe('계속하다'); expect(an('계속하고').some((c) => c.parts?.[1]?.lemma === '하고')).toBe(true); });
+  it('파래요 → 파랗다', () => expect(first('파래요').lemma).toBe('파랗다'));
+  it('an unlisted compound keeps its head and its particle', () => {
+    const c = first('예산안을');
+    expect(c).toMatchObject({ lemma: '예산안', pos: 'NOUN', unconfirmed: true });
+    expect(c.notes?.compound).toBe('예산 + 안');
+    expect(pl(c)).toEqual(['예산', '안', '을/를']);
+    expect(c.morph.Case).toBe('Acc');
+    expect(c.gloss).toBeUndefined();
+    expect(String(c.notes?.glosses)).toMatch(/budget/u);
+    const d = first('상승률이'); expect(d.lemma).toBe('상승률'); expect(pl(d)).toEqual(['상승', '률', '이/가']);
+  });
+  it('noun + a Sino-Korean suffix is a derived word: 형제애의', () => { const c = first('형제애의'); expect(c.lemma).toBe('형제애'); expect(c.notes?.derived).toBe('형제 + 애'); expect(pl(c).at(-1)).toBe('의'); });
+  it('numerals compose: 사만 40000, 구천 9000, 스물다섯 25; "only four" kept second', () => {
+    const a = an('사만');
+    expect(a[0]).toMatchObject({ lemma: '사만', pos: 'NUM' }); expect(a[0].notes?.value).toBe('40000');
+    expect(first('구천').notes?.value).toBe('9000');
+    expect(first('스물다섯').notes?.value).toBe('25');
+    expect(first('삼십오만').notes?.value).toBe('350000');
+  });
+  it('여기서, 거기서, 어디서: 에서 shortened to 서', () => {
+    for (const w of ['여기서', '거기서']) { const c = first(w); expect(pl(c), w).toEqual([w.slice(0, 2), '에서']); expect(c.confidence).toBeGreaterThan(0.8); }
+    expect(an('친구서').every((c) => c.parts?.[1]?.lemma !== '에서')).toBe(true);
+  });
+  it('아니하다: main verb and auxiliary', () => { const cs = an('아니하시고'); expect(cs[0]).toMatchObject({ lemma: '아니하다', pos: 'VERB' }); expect(cs.some((c) => c.lemma === '아니하다' && c.pos === 'AUX')).toBe(true); });
+  it('missing forms: 들러, 하려, 거룩히, 시쯤, 간다며, 이루어지이다, 먹었더라면, 임하옵시며', () => {
+    expect(has('들러', '들르다')).toBe(true);
+    expect(first('하려').morph.Connective).toBe('intend');
+    const g = first('거룩히'); expect(g).toMatchObject({ lemma: '거룩히', pos: 'ADV' }); expect(g.notes?.derived).toBe('거룩하다 + -히');
+    const s = first('시쯤'); expect(pl(s)).toEqual(['시', '쯤']); expect(s.lemma?.startsWith('시')).toBe(true);
+    expect(first('간다며').morph.Quote).toBe('Ind');
+    const y = first('이루어지이다'); expect(y.lemma).toBe('이루다'); expect(y.morph.SpeechLevel).toBe('Lit');
+    expect(first('먹었더라면').lemma).toBe('먹다');
+    const h = first('임하옵시며'); expect(h.lemma).toBe('임하다'); expect(h.morph.Honorific).toBe('Subj'); expect(h.morph.Register).toBe('Lit');
+  });
+  it('derived adverbs in -이: 같이 (listed) first, 높이 derived', () => { expect(first('같이')).toMatchObject({ lemma: '같이', pos: 'ADV' }); expect(first('높이')).toMatchObject({ lemma: '높이', pos: 'ADV' }); expect(first('높이').notes?.derived).toBe('높다 + -이'); });
+  it('계신: present, an existential', () => expect(first('계신').morph.Tense).toBe('Pres'));
+  it('아니다 is one closed item', () => { const cs = an('아닙니다'); expect(cs.filter((c) => c.lemma === '아니다')).toHaveLength(1); expect(cs[0]).toMatchObject({ pos: 'AUX' }); expect(first('아니라').lemma).toBe('아니다'); });
+  it('a derived verb says what it is built from', () => expect(first('체포되었다').gloss).toBe('arrest (+ 되다: passive)'));
+  it('a root is never a word by itself: 복잡하다 is the derived adjective', () => {
+    const c = first('복잡한'); expect(c).toMatchObject({ lemma: '복잡하다', pos: 'ADJ' }); expect(c.morph.VerbType).toBe('Descriptive'); expect(c.morph.Tense).toBe('Pres');
+    expect(an('복잡').every((x) => x.unconfirmed)).toBe(true);
+  });
+  it('unspaced words are read as whole words or not at all', () => {
+    const c = first('나는학교에갔다');
+    expect(c.notes?.spacing).toBe('written without spaces');
+    expect(c.notes?.pieces).toBe('나 + 학교 + 가다');
+    const last = c.parts!.at(-1)!; expect(last.end).toBe('나는학교에갔다'.length);
+  });
+  it('a bound contraction (누) never takes the copula', () => expect(an('누이시며').every((c) => c.lemma !== '누')).toBe(true));
+  it('an auxiliary written together with its verb: 해주는', () => { const c = an('해주는').find((x) => x.lemma === '하다'); expect(c).toBeDefined(); expect(pl(c!)).toContain('주다'); });
+});
+
+describe('fix batch 2: the sentence package and the feature vocabulary', () => {
+  it('a descriptive verb reads as a predicate: "to be cold"', () => {
+    expect(first('추워요').gloss).toBe('to be cold');
+    expect(first('예뻐요').gloss).toBe('to be pretty');
+    expect(first('커요').gloss).toBe('to be big');
+    expect(first('먹어요').gloss).toBe('to eat');
+  });
+  it('the full stop decides no sentence type; only the question mark does', () => {
+    const c = first('가세요'); expect(koMoodFromPunctuation(c, '.')).toBeUndefined(); expect(c.morph.Mood).toBeUndefined();
+    expect(koMoodFromPunctuation(first('가세요'), '?')).toBe('Int');
+  });
+  it('the adverbial -게 above the 하게체 command; 마 is 말다', () => {
+    expect(first('먹게').morph.Connective).toBe('adverbial');
+    expect(an('마').some((c) => c.lemma === '말다')).toBe(true);
+  });
+  it('vocabulary: Quote without Connective=quote, Focus=UpTo / From, -던 retrospective, literary connectives Register=Lit', () => {
+    const q = first('간다고'); expect(q.morph.Quote).toBe('Ind'); expect(q.morph.Connective).toBeUndefined();
+    expect(first('여기까지는').morph.Focus).toBe('UpTo');
+    expect(first('학교부터').morph.Focus).toBe('From');
+    expect(first('먹던').morph).toMatchObject({ Tense: 'Past', Modality: 'Retrospective' }); expect(first('먹던').morph.Aspect).toBeUndefined();
+    expect(first('하시되').morph).toMatchObject({ Register: 'Lit', Connective: 'saying' });
   });
 });

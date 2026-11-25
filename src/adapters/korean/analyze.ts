@@ -20,10 +20,10 @@ import {
   type KoLexEntry, KO_PREDICATE_TAGS, koEntryLemma, koHomonymSetKey, koLexiconGeneration, koSharedPos, lookupKoreanStem,
 } from './index-store';
 import { KO_ANALYZER, KO_SOURCE_IDS } from './version';
-import { type KoConjClass, type KoHost, type KoRealization, koRealize, koSeq, koSeqOfText, koShapeClasses, koSyls } from './conjugate';
+import { type KoConjClass, type KoHost, type KoRealization, koRealize, koSeq, koSeqOfText, koShapeClasses, koSyls, koSylsText } from './conjugate';
 import { ENDINGS, type KoEnding } from './endings';
 import { candidateStems } from './stems';
-import { CHAIN_PARTICLES, FUSED, KO_CLOSED_PREDICATES, KO_COPULA, KO_EXISTENTIAL_LEMMAS, PARTICLES, type KoParticle, koAllomorphAgrees, koParticleMayFollow, koResolveFused } from './particles';
+import { CHAIN_PARTICLES, FUSED, KO_BOUND_CONTRACTIONS, KO_CLOSED_PREDICATES, KO_CONJUNCTIVE_ADVERBS, KO_CONJUNCTIVE_LEMMAS, KO_COPULA, KO_EXISTENTIAL_LEMMAS, PARTICLES, koParseNumerals, type KoParticle, koAllomorphAgrees, koParticleMayFollow, koResolveFused } from './particles';
 
 // ───────────────────────────── tables ─────────────────────────────
 
@@ -42,7 +42,15 @@ const IRREGULAR_NOTES: Readonly<Record<string, string>> = {
 const LIGHT_VERBS: ReadonlyArray<{ lv: string; cls: KoConjClass; voice?: 'Pass' | 'Caus' }> = [
   { lv: '하', cls: 'Ha' }, { lv: '되', cls: 'R', voice: 'Pass' }, { lv: '시키', cls: 'R', voice: 'Caus' }, { lv: '받', cls: 'R', voice: 'Pass' }, { lv: '당하', cls: 'Ha', voice: 'Pass' },
 ];
+const ROOT_VERBS: ReadonlyArray<{ lv: string; cls: KoConjClass; voice?: 'Pass' | 'Caus' }> = [{ lv: '하', cls: 'Ha' }, { lv: '스럽', cls: 'B' }];
 const ADJ_LIKE_AUX = new Set(['싶', '듯하', '만하', '법하']);
+/** Auxiliaries that may be written together with the main verb (보조 용언 붙여 쓰기): after -아/어, and 싶다 / 있다 / 않다 after -고 or -지. */
+const ATTACHABLE_AUX: ReadonlyArray<{ stem: string; cls: KoConjClass }> = [
+  { stem: '주', cls: 'R' }, { stem: '드리', cls: 'R' }, { stem: '보', cls: 'R' }, { stem: '있', cls: 'R' }, { stem: '버리', cls: 'R' }, { stem: '놓', cls: 'R' },
+  { stem: '두', cls: 'R' }, { stem: '내', cls: 'R' }, { stem: '가', cls: 'R' }, { stem: '오', cls: 'R' }, { stem: '대', cls: 'R' }, { stem: '치우', cls: 'R' }, { stem: '싶', cls: 'R' },
+];
+const AUX_AFTER_GO = new Set(['싶', '있']);
+const LIGHT_GLOSS: Readonly<Record<string, string>> = { 하다: '+ 하다: to do', 되다: '+ 되다: passive', 받다: '+ 받다: to receive', 당하다: '+ 당하다: to suffer', 시키다: '+ 시키다: to cause', 스럽다: '+ 스럽다: -ish, -like' };
 const VOWEL_SET = new Set(VOWELS);
 const CLOSED_TAGS = new Set(['MM', 'MAG', 'NP', 'NR', 'IC', 'MAJ']);
 const INVISIBLE = new Set(['­', '​', '‌', '‍', '⁠', '﻿']);
@@ -181,6 +189,19 @@ function yoPart(js: number, je: number): PartRec {
 function afterFinal(c: Ctx, q: number, e: KoEnding): Array<{ parts: PartRec[]; violations: number; spacing: boolean }> {
   const out: Array<{ parts: PartRec[]; violations: number; spacing: boolean }> = [];
   if (q === c.K.length) { out.push({ parts: [], violations: 0, spacing: false }); return out; }
+  if (e.id === 'inf' || e.id === 'and') {
+    // an auxiliary verb written together with the main verb (해주는, 돼있는, 먹고싶어요): spacing the standard allows for -아/어 + auxiliary
+    for (const aux of ATTACHABLE_AUX) {
+      if (e.id === 'and' && !AUX_AFTER_GO.has(aux.stem)) continue;
+      if (e.id === 'inf' && AUX_AFTER_GO.has(aux.stem) && aux.stem !== '있') continue;
+      const syls = koSyls(aux.stem)!;
+      if (c.K[q] !== syls[0].l) continue;
+      for (const t of parseChain(c, q, { kind: 'stem', syls, cls: aux.cls }, { slot: 0, kind: 'X', exist: false, hon: false, fut: false })) {
+        const part: PartRec = { js: q, je: t.hostEnd, text: aux.stem, lemma: aux.stem + '다', pos: 'AUX', tag: 'VX', role: `auxiliary ${aux.stem}다 written together with the verb`, kind: 'component' };
+        out.push({ parts: [part, ...t.parts], violations: t.violations, spacing: false });
+      }
+    }
+  }
   if (e.yo) {
     const yo = koSeqOfText('요');
     if (matchAt(c, q, yo) && q + yo.length === c.K.length) out.push({ parts: [yoPart(q, q + yo.length)], violations: 0, spacing: false });
@@ -225,8 +246,8 @@ function particlePart(pt: KoParticle, text: string, js: number, je: number, viol
   };
 }
 
-function parseParticles(c: Ctx, q: number, prev: KoParticle | undefined, sound: 'V' | 'L' | 'C' | undefined, depth = 0): Array<{ parts: PartRec[]; violations: number }> {
-  const mk = `${q}|${prev?.id ?? ''}|${sound ?? ''}`;
+function parseParticles(c: Ctx, q: number, prev: KoParticle | undefined, sound: 'V' | 'L' | 'C' | undefined, depth = 0, host?: string): Array<{ parts: PartRec[]; violations: number }> {
+  const mk = `${q}|${prev?.id ?? ''}|${sound ?? ''}|${depth === 0 ? host ?? '' : ''}`;
   const hit = c.pmemo.get(mk);
   if (hit) return hit;
   const out: Array<{ parts: PartRec[]; violations: number }> = [];
@@ -234,6 +255,7 @@ function parseParticles(c: Ctx, q: number, prev: KoParticle | undefined, sound: 
   if (depth > 4 || q >= c.K.length) return out;
   for (const pt of CHAIN_PARTICLES) {
     if (!koParticleMayFollow(prev, pt)) continue;
+    if (pt.hosts && !(depth === 0 && host && pt.hosts.includes(host))) continue;
     for (const f of pt.forms) {
       const seq = koSeqOfText(f.text);
       if (!matchAt(c, q, seq)) continue;
@@ -247,7 +269,7 @@ function parseParticles(c: Ctx, q: number, prev: KoParticle | undefined, sound: 
   return out;
 }
 
-interface NounOpts { soundOverride?: 'V' | 'L' | 'C'; allowCopula: boolean; allowXSN?: string; lightNoun?: string; magOnly?: boolean }
+interface NounOpts { soundOverride?: 'V' | 'L' | 'C'; allowCopula: boolean; allowXSN?: string; lightNoun?: string; magOnly?: boolean; hostText?: string; rootOnly?: boolean }
 /** Derivational noun suffixes productive enough to be read as a split (선생 + 님, 김 + 씨, 문화 + 적); any other lexicon suffix is not offered as a split. */
 const PRODUCTIVE_XSN = new Set(['님', '씨', '적', '화', '성', '짜리', '째', '씩', '쯤', '별', '용', '꾼', '측', '상', '간', '분', '께서', '네', '님들']);
 
@@ -257,7 +279,7 @@ function nounCont(c: Ctx, q: number, o: NounOpts): Tail[] {
   const blank = (parts: PartRec[], violations = 0): Tail => ({ hostEnd: q, parts, violations, contracted: false, copulaDrop: false, spacing: false });
   if (q === c.K.length) { out.push(blank([])); return out; }
   const sound = o.soundOverride ?? soundBefore(c, q);
-  for (const ch of parseParticles(c, q, undefined, sound)) {
+  if (!o.rootOnly) for (const ch of parseParticles(c, q, undefined, sound, 0, o.hostText)) {
     if (o.magOnly && !ch.parts.every((x) => x.particle && MAG_PARTICLES.has(x.particle.id))) continue;
     out.push(blank(ch.parts, ch.violations));
   }
@@ -267,7 +289,8 @@ function nounCont(c: Ctx, q: number, o: NounOpts): Tail[] {
     for (let n = 1; n <= 2 && u0 + n <= c.units.length; n++) {
       const s = c.units.slice(u0, u0 + n).map((u) => u.ch).join('');
       for (const hit of lookupKoreanStem(s)) {
-        if (hit.entry.tag !== 'XSN' || !PRODUCTIVE_XSN.has(s)) continue;
+        // a productive suffix after any noun; another lexicon suffix only between Sino-Korean pieces (형제 + 애, 중요 + 시)
+        if (hit.entry.tag !== 'XSN' || (!PRODUCTIVE_XSN.has(s) && !([...o.allowXSN].length >= 2 && hit.entry.hanja && lookupKoreanStem(o.allowXSN).some((h) => !!h.entry.hanja)))) continue;
         if (lookupKoreanStem(o.allowXSN + s).some((h) => !KO_PREDICATE_TAGS.has(h.entry.tag))) continue; // the whole is a headword: no split
         const q2 = c.units[u0 + n - 1].j1;
         const part: PartRec = { js: q, je: q2, text: s, lemma: hit.entry.lemma, pos: 'PART', tag: 'XSN', role: hit.entry.gloss ?? 'noun suffix', kind: 'suffix' };
@@ -275,7 +298,7 @@ function nounCont(c: Ctx, q: number, o: NounOpts): Tail[] {
       }
     }
   }
-  if (o.allowCopula) {
+  if (o.allowCopula && !o.rootOnly) {
     const host: KoHost = { kind: 'stem', syls: koSyls('이')!, cls: 'Cop', vowelNoun: sound === 'V' };
     for (const t of parseChain(c, q, host, { slot: 0, kind: 'C', exist: false, hon: false, fut: false })) {
       const cop: PartRec = { js: q, je: t.hostEnd, text: '이', lemma: KO_COPULA.lemma, pos: 'AUX', tag: 'VCP', role: t.copulaDrop ? 'copula 이다 (is), its 이 left out after a vowel' : 'copula 이다 (is)', kind: 'clitic', copula: true };
@@ -283,12 +306,12 @@ function nounCont(c: Ctx, q: number, o: NounOpts): Tail[] {
     }
   }
   if (o.lightNoun) {
-    for (const { lv, cls, voice } of LIGHT_VERBS) {
+    for (const { lv, cls, voice } of o.rootOnly ? ROOT_VERBS : LIGHT_VERBS) {
       if (lookupKoreanStem(o.lightNoun + lv).some((h) => KO_PREDICATE_TAGS.has(h.entry.tag))) continue; // the dictionary's own …하다 headword reads it
       const syls = koSyls(lv)!;
       if (c.K[q] !== syls[0].l) continue;
-      for (const t of parseChain(c, q, { kind: 'stem', syls, cls }, { slot: 0, kind: 'V', exist: false, hon: false, fut: false })) {
-        const part: PartRec = { js: q, je: t.hostEnd, text: lv, lemma: lv + '다', pos: 'VERB', tag: 'XSV', role: voice === 'Pass' ? `${lv}다: makes a passive verb of the noun` : voice === 'Caus' ? `${lv}다: makes a causative verb of the noun` : `${lv}다: makes a verb of the noun`, kind: 'suffix', light: voice ?? 'none' };
+      for (const t of parseChain(c, q, { kind: 'stem', syls, cls }, { slot: 0, kind: o.rootOnly ? 'A' : 'V', exist: false, hon: false, fut: false })) {
+        const part: PartRec = { js: q, je: t.hostEnd, text: lv, lemma: lv + '다', pos: o.rootOnly ? 'ADJ' : 'VERB', tag: o.rootOnly ? 'XSA' : 'XSV', role: voice === 'Pass' ? `${lv}다: makes a passive verb of the noun` : voice === 'Caus' ? `${lv}다: makes a causative verb of the noun` : `${lv}다: makes a verb of the noun`, kind: 'suffix', light: voice ?? 'none' };
         out.push({ ...t, parts: [part, ...t.parts] });
       }
     }
@@ -367,7 +390,7 @@ function predicateReadings(c: Ctx, stem: string, entry: KoLexEntry, sourceId: st
       if (t.parts.some((x) => x.ending?.id === 'p-pass')) score -= 0.5;
       if (standaloneCopula) { if (ctx.prevIsLatinOrDigit) score += 3; else { cap = Math.min(cap, CAP.nonStandard); score -= 1; remarks.push('the copula written apart from its noun'); } }
       out.push({
-        entry, lemma, pos, gloss: entry.gloss, parts, stemKey: stem, stemTag: tag, baseKind: kind, cap, score, sourceId, origin,
+        entry, lemma, pos, gloss: koPredicateGloss(entry), parts, stemKey: stem, stemTag: tag, baseKind: kind, cap, score, sourceId, origin,
         notes: {}, remarks, contracted: t.contracted, stemShows: t.stemShows, extra: {}, order: orderSeq++,
       });
     }
@@ -378,18 +401,21 @@ function predicateReadings(c: Ctx, stem: string, entry: KoLexEntry, sourceId: st
 function nominalReadings(c: Ctx, prefixUnits: number, stemKey: string, entry: KoLexEntry, sourceId: string, origin: AnalysisOrigin): Reading[] {
   const q = c.units[prefixUnits - 1].j1;
   const tag = entry.tag;
-  if (tag.startsWith('X')) return [];
+  if (tag.startsWith('X') && tag !== 'XR') return [];
+  if (tag === 'NP' && (KO_BOUND_CONTRACTIONS.has(entry.lemma) || (entry as { bound?: boolean }).bound) && (entry.lemma === '누' || q !== c.K.length)) return [];
   const isHanja = !isHangulSyllable(stemKey[0]);
   const soundOverride = isHanja ? soundOfWord(entry.lemma) : undefined;
   let conts: Tail[];
-  if (tag === 'MM' || tag === 'IC' || tag === 'MAJ') conts = q === c.K.length ? [{ hostEnd: q, parts: [], violations: 0, contracted: false, copulaDrop: false, spacing: false }] : [];
+  if (tag === 'XR') conts = nounCont(c, q, { allowCopula: false, lightNoun: stemKey, rootOnly: true });
+  else if (tag === 'MM' || tag === 'IC') conts = q === c.K.length ? [{ hostEnd: q, parts: [], violations: 0, contracted: false, copulaDrop: false, spacing: false }] : [];
+  else if (tag === 'MAJ') conts = q === c.K.length ? [{ hostEnd: q, parts: [], violations: 0, contracted: false, copulaDrop: false, spacing: false }] : nounCont(c, q, { allowCopula: false, magOnly: true }).filter((t) => t.parts.length === 1 && t.parts[0].particle?.id === 'polite');
   else if (tag === 'MAG') conts = nounCont(c, q, { allowCopula: false, magOnly: true, soundOverride });
-  else conts = nounCont(c, q, { allowCopula: true, allowXSN: isHanja ? undefined : stemKey, lightNoun: tag === 'NNG' && !isHanja ? stemKey : undefined, soundOverride });
+  else conts = nounCont(c, q, { allowCopula: true, allowXSN: isHanja ? undefined : stemKey, lightNoun: tag === 'NNG' && !isHanja ? stemKey : undefined, soundOverride, hostText: entry.lemma });
   const out: Reading[] = [];
   const lemma = koEntryLemma(entry);
   const pos = koSharedPos(entry);
   for (const t of conts) {
-    const parts: PartRec[] = [{ js: 0, je: q, text: stemKey, lemma, pos, tag, role: 'stem', kind: 'stem' }, ...t.parts];
+    const parts: PartRec[] = [{ js: 0, je: q, text: stemKey, lemma, pos: pos ?? 'X', tag, role: tag === 'XR' ? 'root' : 'stem', kind: 'stem' }, ...t.parts];
     const remarks: string[] = [];
     let cap: number = t.violations ? CAP.nonStandard : CAP.full;
     if (t.parts.some((x) => x.particle?.cls === 'voc') && prefixUnits === 1) cap = Math.min(cap, CAP.nonStandard);
@@ -399,14 +425,29 @@ function nominalReadings(c: Ctx, prefixUnits: number, stemKey: string, entry: Ko
     let score = baseScore(entry, prefixUnits, t.parts.length + 1, t.violations);
     if (t.copulaDrop) score -= 0.2;
     const notes: Record<string, string | string[]> = isHanja ? { hanja: stemKey } : {};
-    if (!t.parts.length && CLOSED_TAGS.has(tag)) { score += 0.6; notes.context = 'a closed-class word written alone: commoner than a predicate form of the same spelling'; }
+    if (!t.parts.length && CLOSED_TAGS.has(tag)) { score += 1.2; notes.context = 'a closed-class word written alone: commoner than a predicate form of the same spelling'; }
     if (light) {
-      // noun + 하다 / 되다 / 받다 / 당하다 / 시키다 the dictionary does not list: the derived verb, both parts from the lexicon
+      // noun + 하다 / 되다 / 받다 / 당하다 / 시키다 the dictionary does not list (or a root + 하다 / 스럽다): the derived verb, both parts from the lexicon
       const derived = entry.lemma + light.lemma;
-      const dEntry: KoLexEntry = { lemma: derived, tag: 'VV', n: entry.n };
+      const adj = tag === 'XR';
+      const dEntry: KoLexEntry = { lemma: derived, tag: adj ? 'VA' : 'VV', n: entry.n };
       out.push({
-        entry: dEntry, lemma: derived, pos: 'VERB', parts, stemKey: stemKey + light.text, stemTag: 'VV', baseKind: 'V', cap, score: score - 0.3, sourceId, origin,
+        entry: dEntry, lemma: derived, pos: adj ? 'ADJ' : 'VERB', gloss: entry.gloss ? `${entry.gloss} (${LIGHT_GLOSS[light.lemma] ?? '+ ' + light.lemma})` : undefined, parts,
+        stemKey: stemKey + light.text, stemTag: adj ? 'VA' : 'VV', baseKind: adj ? 'A' : 'V', cap, score: score - 0.3, sourceId, origin,
         notes: { ...notes, derived: `${entry.lemma} + ${light.lemma}` }, remarks, contracted: t.contracted, extra: {}, order: orderSeq++,
+      });
+      continue;
+    }
+    if (tag === 'XR') continue; // a root is never a word by itself
+    const xsn = t.parts[0]?.tag === 'XSN' && !t.parts[0].particle ? t.parts[0] : undefined;
+    if (xsn && !KEEP_NOUN_XSN.has(xsn.text)) {
+      // noun + derivational suffix (사회 + 적): a derived word of its own
+      const derived = entry.lemma + xsn.text;
+      const det = xsn.text === '적' && t.parts.length === 1;
+      out.push({
+        entry: { lemma: derived, tag: det ? 'MM' : 'NNG', n: entry.n }, lemma: derived, pos: det ? 'DET' : 'NOUN', gloss: entry.gloss ? `${entry.gloss} (+ ${xsn.text}: ${xsn.role})` : undefined,
+        parts: parts.map((p) => (p === xsn ? { ...p, kind: 'suffix' as const } : p)), stemKey: derived, stemTag: det ? 'MM' : 'NNG', baseKind: t.parts.some((x) => x.copula) ? 'C' : undefined,
+        cap: Math.min(cap, CAP.assumed), score: score - 0.2, sourceId, origin, notes: { ...notes, derived: `${entry.lemma} + ${xsn.text}` }, remarks, contracted: t.contracted, extra: {}, order: orderSeq++,
       });
       continue;
     }
@@ -431,7 +472,7 @@ function fusedReadings(c: Ctx): Reading[] {
   const any = lookupKoreanStem(f.pron).some((h) => h.entry.lemma === f.pron && h.entry.tag === f.tag);
   if (!resolved && any) return out; // the lexicon has the word but no entry with this meaning: never guess a homonym
   const lexHit = resolved;
-  const entry: KoLexEntry = resolved ?? { lemma: f.pron, tag: 'NP' };
+  const entry: KoLexEntry = resolved ?? { lemma: f.pron, tag: f.tag as KoLexEntry['tag'] };
   const span = (a: number, b: number): [number, number] => [c.units[a].j0, c.units[b - 1].j1];
   const [p0, p1] = span(f.pronSpan[0], f.pronSpan[1]);
   const [q0, q1] = span(f.partSpan[0], f.partSpan[1]);
@@ -442,7 +483,7 @@ function fusedReadings(c: Ctx): Reading[] {
   if (withYo) { const j = c.units[c.units.length - 1]; parts.push(yoPart(j.j0, j.j1)); }
   out.push({
     entry, lemma: koEntryLemma(entry), pos: koSharedPos(entry) ?? 'PRON', gloss: entry.gloss, parts, stemKey: f.pron, stemTag: entry.tag, cap: CAP.full,
-    score: baseScore(entry, 1, parts.length, 0) + 2, sourceId: lexHit ? KO_SOURCE_IDS.lexicon : KO_SOURCE_IDS.closed, origin: lexHit ? 'dictionary' : 'hand',
+    score: baseScore(entry, 1, parts.length, 0) + ([...form].length > 1 ? 2 : 0.3), sourceId: lexHit ? KO_SOURCE_IDS.lexicon : KO_SOURCE_IDS.closed, origin: lexHit ? 'dictionary' : 'hand',
     notes: { fused: `${form} = ${f.pron} + ${pt.family}` }, remarks: [], contracted: true, extra: {}, order: orderSeq++,
   });
   return out;
@@ -537,6 +578,182 @@ function spacingReadings(c: Ctx): Reading[] {
   }];
 }
 
+// ───────────────────────────── compounds, derived words, numerals, derived adverbs ─────────────────────────────
+
+/** One-syllable Sino-Korean heads that build compounds and derived nouns (예산 + 안, 상승 + 률, 저소득 + 층, 통계 + 청). */
+const SINO_HEADS = new Set(['안', '률', '율', '층', '청', '애', '권', '성', '화', '적', '자', '가', '식', '용', '비', '료', '원', '장', '부', '소', '실', '학', '론', '계',
+  '국', '품', '법', '제', '대', '감', '력', '사', '인', '선', '기', '관', '형', '상', '생', '회', '금', '점', '액', '량', '단', '차', '판', '표', '도', '수', '세', '군', '시', '구', '동', '면', '서', '처', '팀', '업', '난', '주의', '자들']);
+/** Suffixes after which the NOUN stays the lemma (사람 + 들, 시 + 쯤, 한 개 + 씩): inflection-like, not a new word. */
+/** One-syllable spellings that are particles: never the head of a built compound (상승률 + 이 is a particle, not 이 "tooth"). */
+const PARTICLE_LIKE = new Set(['이', '가', '을', '를', '은', '는', '도', '만', '의', '에', '와', '과', '로', '요', '나', '야', '아']);
+const KEEP_NOUN_XSN = new Set(['들', '씩', '쯤', '끼리', '님', '씨', '네', '분', '째', '짜리', '별', '마다', '님들', '께서']);
+
+interface Piece { text: string; entry?: KoLexEntry; u0: number; u1: number }
+
+/** The lexicon nominal entries of a span of the token (Hangul or Hanja key). */
+function nominalEntries(c: Ctx, u0: number, u1: number): KoLexEntry[] {
+  const s = c.units.slice(u0, u1).map((u) => u.ch).join('');
+  return lookupKoreanStem(s).map((h) => h.entry).filter((e) => e.tag === 'NNG' || e.tag === 'NNP' || e.tag === 'XSN' || e.tag === 'NNB' || e.tag === 'XR');
+}
+
+/**
+ * An unlisted compound or derived noun: two or three listed pieces (a noun of two syllables or more, then nouns or one-syllable
+ * Sino-Korean heads / lexicon suffixes) and then the usual particle chain, copula or light verb. ONE reading: lemma = the whole compound,
+ * `unconfirmed` (the lexicon does not hold it), `notes.compound` naming the pieces, each piece a part, the particle chain kept.
+ */
+function compoundReadings(c: Ctx): Reading[] {
+  const n = c.units.length;
+  if (n < 2 || !isHangulSyllable(c.units[0].ch)) return [];
+  const out: Reading[] = [];
+  const walk = (u0: number, pieces: Piece[]) => {
+    if (pieces.length >= 2) {
+      const text = pieces.map((p) => p.text).join('');
+      const q = c.units[pieces[pieces.length - 1].u1 - 1].j1;
+      for (const t of nounCont(c, q, { allowCopula: true, lightNoun: text, hostText: text })) {
+        if (out.length >= 4) return;
+        out.push(compoundReading(c, pieces, t));
+      }
+    }
+    if (pieces.length >= 3) return;
+    for (let u1 = n; u1 > u0; u1--) {
+      const len = u1 - u0;
+      const s = c.units.slice(u0, u1).map((u) => u.ch).join('');
+      const es = nominalEntries(c, u0, u1);
+      const first = pieces.length === 0;
+      if (first && (len < 2 || u1 === n)) continue;
+      const ok = first ? es.some((e) => e.tag === 'NNG' || e.tag === 'NNP' || e.tag === 'XR')
+        : len >= 2 ? es.some((e) => e.tag === 'NNG' || e.tag === 'XSN') : PARTICLE_LIKE.has(s) ? false : SINO_HEADS.has(s) || es.some((e) => (e.tag === 'XSN' || e.tag === 'NNG') && !!e.hanja && !KEEP_NOUN_XSN.has(s));
+      if (!ok) continue;
+      walk(u1, [...pieces, { text: s, entry: es.find((e) => e.tag === 'NNG') ?? es[0], u0, u1 }]);
+      if (out.length) return;
+    }
+  };
+  walk(0, []);
+  return out;
+}
+
+function compoundReading(c: Ctx, pieces: Piece[], t: Tail): Reading {
+  const text = pieces.map((p) => p.text).join('');
+  const parts: PartRec[] = pieces.map((p, i) => ({
+    js: c.units[p.u0].j0, je: c.units[p.u1 - 1].j1, text: p.text, lemma: p.entry ? koEntryLemma(p.entry) : p.text, pos: 'NOUN',
+    tag: p.entry?.tag === 'XSN' ? 'XSN' : 'NNG', role: p.entry?.gloss ?? 'noun', kind: i === pieces.length - 1 ? 'head' : 'component',
+  }));
+  const light = t.parts.find((x) => x.light);
+  const glosses = pieces.map((p) => `${p.text} ${p.entry?.gloss ?? '?'}`).join(' | ');
+  const base = {
+    stemKey: text, cap: Math.min(CAP.unknown, t.violations ? CAP.unknown - 0.05 : CAP.unknown), score: -4 - pieces.length * 0.2 - t.parts.length * 0.1, unconfirmed: true,
+    sourceId: KO_SOURCE_IDS.rules, origin: 'rule' as AnalysisOrigin, remarks: ['a compound the lexicon does not list, read through its listed parts'], contracted: t.contracted, extra: {}, order: orderSeq++,
+  };
+  if (light) {
+    const derived = text + light.lemma;
+    return { ...base, lemma: derived, pos: light.lemma === '하다' && pieces[0].entry?.tag === 'XR' ? 'ADJ' : 'VERB', parts: [...parts, ...t.parts], stemTag: 'VV', baseKind: 'V',
+      notes: { source: 'rule', compound: pieces.map((p) => p.text).join(' + '), derived: `${text} + ${light.lemma}`, glosses } };
+  }
+  return { ...base, lemma: text, pos: 'NOUN', parts: [...parts, ...t.parts], stemTag: 'NNG', baseKind: t.parts.some((x) => x.copula) ? 'C' : undefined,
+    notes: { source: 'rule', compound: pieces.map((p) => p.text).join(' + '), glosses } };
+}
+
+/** A Sino-Korean or native numeral of two pieces or more (사만 40,000; 스물다섯 25), then particles. */
+function numeralReadings(c: Ctx): Reading[] {
+  const out: Reading[] = [];
+  for (const num of koParseNumerals(c.key)) {
+    const q = c.units[num.length - 1].j1;
+    for (const t of nounCont(c, q, { allowCopula: true })) {
+      let at = 0;
+      const parts: PartRec[] = num.pieces.map((p, i) => {
+        const l = [...p].length;
+        const r: PartRec = { js: c.units[at].j0, je: c.units[at + l - 1].j1, text: p, lemma: p, pos: 'NUM', tag: 'NR', role: 'numeral', kind: i === num.pieces.length - 1 ? 'head' : 'component' };
+        at += l;
+        return r;
+      });
+      const text = num.pieces.join('');
+      out.push({
+        lemma: text, pos: 'NUM', parts: [...parts, ...t.parts], stemKey: text, stemTag: 'NR', cap: t.violations ? CAP.nonStandard : CAP.full, score: 6 + num.length * 0.1,
+        sourceId: KO_SOURCE_IDS.rules, origin: 'rule', notes: { value: String(num.value), numeral: num.kind === 'sino' ? 'Sino-Korean' : 'native Korean' },
+        remarks: [], contracted: false, extra: {}, order: orderSeq++, baseKind: t.parts.some((x) => x.copula) ? 'C' : undefined,
+      });
+      if (out.length >= 2) return out;
+    }
+  }
+  return out;
+}
+
+/**
+ * An adverb in -이 / -히 the lexicon does not list, derived from its predicate (같다 + -이 → 같이, 거룩하다 + -히 → 거룩히, 빠르다 → 빨리,
+ * 가깝다 → 가까이) or from a root (분명 + -히). Below a listed adverb of the same spelling.
+ */
+function derivedAdverbReadings(c: Ctx): Reading[] {
+  const key = c.key;
+  const out: Reading[] = [];
+  if (key.length < 2 || !/[이히]$/u.test(key)) return out;
+  const stemPart = key.slice(0, -1);
+  const tries: Array<{ stem: string; via: string }> = [];
+  if (key.endsWith('히')) tries.push({ stem: stemPart + '하', via: '-히' }, { stem: stemPart, via: '-히' });
+  else {
+    tries.push({ stem: stemPart, via: '-이' }, { stem: stemPart + '하', via: '-이' });
+    const prev = koSyls(stemPart.slice(-1));
+    if (prev && prev[0].t === '') { const s = koSyls(stemPart)!; s[s.length - 1] = { ...s[s.length - 1], t: 'ㅂ' }; tries.push({ stem: koSylsText(s), via: '-이' }); }
+  }
+  if (key.endsWith('리') && key.length >= 2) {
+    const s = koSyls(stemPart);
+    if (s && s[s.length - 1].t === 'ㄹ') { s[s.length - 1] = { ...s[s.length - 1], t: '' }; tries.push({ stem: koSylsText(s) + '르', via: '-이' }); }
+  }
+  for (const { stem, via } of tries) {
+    for (const h of lookupKoreanStem(stem)) {
+      const e = h.entry;
+      if (!(e.tag === 'VA' || (e.tag === 'XR' && stem === stemPart))) continue;
+      const base = e.tag === 'XR' ? `${e.lemma}하다` : e.lemma;
+      out.push({
+        lemma: key, pos: 'ADV', gloss: e.gloss ? `${e.gloss} (adverb in ${via})` : undefined,
+        parts: [{ js: 0, je: c.K.length, text: key, lemma: key, pos: 'ADV', tag: 'MAG', role: `adverb from ${base}`, kind: 'stem' }],
+        stemKey: key, stemTag: 'MAG', cap: CAP.assumed, score: Math.log10(1 + (e.n ?? 0)) - 0.5, sourceId: KO_SOURCE_IDS.lexicon, origin: 'dictionary',
+        notes: { derived: `${base} + ${via}` }, remarks: [], contracted: false, extra: {}, order: orderSeq++,
+      });
+      return out;
+    }
+  }
+  return out;
+}
+
+/**
+ * Ranking rules over the whole list (docs/korean/PLAN.md "Confidence and honesty"), applied as score changes so that nothing is removed:
+ * a whole function word over its etymology; a listed noun over a nominalised predicate; a common licensed predicate over a one-syllable
+ * noun + particle; a 하다-verb over noun + the particle 하고; literary and contracted-quotation endings below ordinary ones; a derived
+ * verb below a listed headword.
+ */
+function rankAdjust(readings: Reading[]): void {
+  const isPred = (r: Reading) => KO_PREDICATE_TAGS.has(r.stemTag) && !r.unconfirmed;
+  const hasEtn = (r: Reading) => r.parts.some((p) => p.ending?.tag === 'ETN');
+  const nounish = (r: Reading) => (r.stemTag === 'NNG' || r.stemTag === 'NNB' || r.stemTag === 'NNP') && !r.unconfirmed && !r.notes.derived;
+  const anyPredFull = readings.some((r) => isPred(r) && !hasEtn(r) && r.cap >= CAP.full);
+  const maxPredN = Math.max(0, ...readings.filter(isPred).map((r) => r.entry?.n ?? 0));
+  const anyNoun = readings.some(nounish);
+  const anyHaSplit = readings.some((r) => !r.notes.derived && r.parts.some((p) => p.tag === 'XSV' && p.lemma === '하다'));
+  const anyListedWhole = readings.some((r) => !r.unconfirmed && !r.notes.derived && r.entry && r.cap >= CAP.assumed && r.sourceId !== KO_SOURCE_IDS.rules);
+  const anyNonLit = readings.some((r) => !r.parts.some((p) => p.ending?.lit));
+  for (const r of readings) {
+    const whole = r.parts.length === 1 && r.parts[0].kind === 'stem';
+    const yoOnly = r.parts.length === 2 && r.parts[1].particle?.id === 'polite';
+    // a closed conjunctive adverb always; a lexicon adverb or interjection when the priors do not make it the rarer word by far (보다 "relatively")
+    const fw = r.stemTag === 'MAJ' || ((r.stemTag === 'MAG' || (r.stemTag === 'IC' && !/(니다|요)$/u.test(r.lemma))) && !anyNominalOther(r) && (r.entry?.n ?? 0) * 10 >= maxPredN);
+    if (fw && (whole || (r.stemTag === 'MAJ' && yoOnly))) {
+      r.score += 3; r.notes.context = 'a whole function word outranks its own etymology (a predicate form of the same spelling)';
+    }
+    if (isPred(r) && hasEtn(r) && anyNoun) { r.score -= 3; r.notes.context = 'a listed noun outranks a nominalised predicate of the same spelling'; }
+    if (nounish(r) && r.parts[0].je > 0 && c1(r) && r.parts.length >= 2 && anyPredFull) r.score -= 1;
+    if (nounish(r) && yoOnly && anyPredFull) r.score -= 1;
+    if (anyHaSplit && r.parts.some((p) => p.particle?.id === 'and-hago')) r.score -= 3;
+    if (r.stemTag === 'NNP' && anyPredFull) r.score -= 1;
+    if (anyNonLit && r.parts.some((p) => p.ending?.lit)) r.score -= 0.7;
+    if (r.parts.some((p) => p.ending?.id === 'hage-ge')) r.score -= 0.5; // the 하게체 command is rare beside the adverbial -게
+    if (r.parts.some((p) => p.ending && ['quote-rae', 'quote-dae', 'quote-eurae', 'quote-nyae', 'quote-jae', 'quote-neundae'].includes(p.ending.id))) r.score -= 0.3;
+    if (r.notes.derived && r.stemTag === 'VV' && anyListedWhole && r.sourceId !== KO_SOURCE_IDS.rules) r.score -= 1.5;
+  }
+  function c1(r: Reading): boolean { return [...r.stemKey].length === 1; }
+  /** Another reading of the token as a listed noun or determiner (때문 + 에, 이런 DET): a whole adverb or interjection is then no function word over it. */
+  function anyNominalOther(r: Reading): boolean { return readings.some((o) => o !== r && !o.unconfirmed && (o.stemTag === 'MM' || (['NNG', 'NNB'].includes(o.stemTag) && o.parts.length >= 2))); }
+}
+
 // ───────────────────────────── features ─────────────────────────────
 
 function computeMorph(r: Reading): Record<string, string> {
@@ -562,7 +779,7 @@ function computeMorph(r: Reading): Record<string, string> {
       for (const [k, v] of Object.entries(e.morph)) (OVERRIDE_KEYS.has(k) ? set : add)(k, v);
       if (e.id === 'adn-n') {
         const k = p.kindAt;
-        const verbish = k === 'V' || (k === 'X' && !ADJ_LIKE_AUX.has(r.stemKey));
+        const verbish = (k === 'V' || (k === 'X' && !ADJ_LIKE_AUX.has(r.stemKey))) && !isExist(r.stemKey);
         add('Tense', verbish ? 'Past' : 'Pres');
       }
     } else if (p.particle) {
@@ -572,7 +789,8 @@ function computeMorph(r: Reading): Record<string, string> {
       for (const [k, v] of Object.entries(p.particle.morph)) add(k, v);
     }
   }
-  if (lit) set('SpeechLevel', 'Lit');
+  // a literary final says SpeechLevel=Lit; a literary connective or pre-final before a modern final says Register=Lit
+  if (lit) { if (lastEnding?.ending?.tag === 'EF') set('SpeechLevel', 'Lit'); else { set('Register', 'Lit'); if (m.get('SpeechLevel')?.has('Lit')) m.delete('SpeechLevel'); } }
   if (pids.length) set('Particle', pids.join('+'));
   if (r.stemShows) add('Irregular', r.stemShows);
   if (r.contracted) add('Contracted', 'Yes');
@@ -706,6 +924,16 @@ function toCandidate(c: Ctx, r: Reading, morph: Record<string, string>, confiden
   return cand;
 }
 
+/**
+ * The gloss of a predicate reading as the card shows it: a descriptive verb's gloss reads as a predicate (춥다 "cold" → "to be cold"),
+ * unless it already starts with "to " or the row's gloss is this product's own wording. The one place this is decided.
+ */
+export function koPredicateGloss(entry: Pick<KoLexEntry, 'tag' | 'gloss' | 'glossOwn'>): string | undefined {
+  const g = entry.gloss;
+  if (!g || entry.tag !== 'VA' || entry.glossOwn || /^tos/iu.test(g)) return g;
+  return 'to be ' + g;
+}
+
 // ───────────────────────────── sentence type ─────────────────────────────
 
 const MOOD_WORDS: Readonly<Record<string, string>> = { Ind: 'statement', Int: 'question', Imp: 'command', Prop: 'suggestion' };
@@ -723,7 +951,8 @@ export function koSentenceTypeWords(moods: readonly string[]): string {
 export function koMoodFromPunctuation(candidate: AnalysisCandidate, finalPunctuation: string | undefined): string | undefined {
   const moods = candidate.notes?.moods;
   if (!Array.isArray(moods) || !moods.length || candidate.morph.Mood) return undefined;
-  const pick = finalPunctuation && /[?？]/u.test(finalPunctuation) ? 'Int' : finalPunctuation && /[.!。！]/u.test(finalPunctuation) ? 'Ind' : undefined;
+  // only a question mark decides: a full stop ends requests (-(으)세요, -아/어요) as well as statements
+  const pick = finalPunctuation && /[?？]/u.test(finalPunctuation) ? 'Int' : undefined;
   if (!pick || !moods.includes(pick)) return undefined;
   candidate.morph.Mood = pick;
   return pick;
@@ -767,7 +996,8 @@ function analyzeUncached(surface: string, ctx: { prevKey?: string; prevIsLatinOr
     const plainUnits = c.key.startsWith(s) ? [...s].length : 0;
     const hits = lookupKoreanStem(s);
     for (const h of hits) {
-      if (KO_PREDICATE_TAGS.has(h.entry.tag) && KO_EXISTENTIAL_LEMMAS.has(h.entry.lemma)) continue;
+      if (KO_PREDICATE_TAGS.has(h.entry.tag) && (KO_EXISTENTIAL_LEMMAS.has(h.entry.lemma) || h.entry.lemma === '아니다')) continue; // closed items
+      if ((h.entry.tag === 'MAG' || h.entry.tag === 'MAJ') && KO_CONJUNCTIVE_LEMMAS.has(h.entry.lemma)) continue;
       const k = `${s}|${h.entry.lemma}|${h.entry.tag}|${h.entry.hom ?? 0}|${h.entry.clf ? 1 : 0}`;
       if (seen.has(k)) continue;
       seen.add(k);
@@ -776,11 +1006,17 @@ function analyzeUncached(surface: string, ctx: { prevKey?: string; prevIsLatinOr
     }
     for (const e of KO_CLOSED_PREDICATES.get(s) ?? []) readings.push(...predicateReadings(c, s, e, KO_SOURCE_IDS.closed, 'hand', ctx, true));
   }
+  for (const e of KO_CONJUNCTIVE_ADVERBS) if (c.key === e.lemma || c.key === e.lemma + '요') readings.push(...nominalReadings(c, [...e.lemma].length, e.lemma, e, KO_SOURCE_IDS.closed, 'hand'));
   readings.push(...fusedReadings(c));
+  readings.push(...numeralReadings(c));
+  if (!readings.some((r) => r.stemTag === 'MAG' && r.parts.length === 1)) readings.push(...derivedAdverbReadings(c));
+  // an unlisted compound when nothing licensed reads the token whole (a derivational split or spacing does not count)
+  if (!readings.some((r) => !r.unconfirmed && r.cap >= CAP.full && !r.notes.derived)) readings.push(...compoundReadings(c));
   const lexical = readings.length > 0;
   readings.push(...particleOnlyReadings(c, ctx));
   if (!lexical && !readings.length) readings.push(...spacingReadings(c));
   if (!readings.length) readings.push(...unknownReadings(c));
+  rankAdjust(readings);
   // a noun + derivational suffix split is offered only when nothing reads the token whole
   const hasXsn = (r: Reading) => r.parts.some((x) => x.tag === 'XSN' && !x.particle);
   if (readings.some((r) => !hasXsn(r) && !r.unconfirmed && r.cap >= CAP.assumed)) for (let i = readings.length - 1; i >= 0; i--) if (hasXsn(readings[i])) readings.splice(i, 1);

@@ -94,7 +94,7 @@ describe('particle chains in context', () => {
 describe('fused pronoun table', () => {
   it('every row names its word by headword, class and fingerprint, never a homonym number', () => {
     for (const [form, f] of Object.entries(FUSED)) {
-      expect(f.tag, form).toBe('NP');
+      expect(['NP', 'NNB'], form).toContain(f.tag);
       expect(f.fp, form).toBeInstanceOf(RegExp);
       expect(P[f.particle], form).toBeDefined();
     }

@@ -291,6 +291,9 @@ export function arHeadForm(head: string, pos: string): string {
       const second = marks[1];
       if (pos === 'VERB' || (nominal && key[1] !== LAM && (second.vowel === SUKUN || second.shadda))) marks[0].vowel = KASRA;
     }
+    // the article is written bare (no fatḥa on its alif), and a final alif maqṣūra carries no dagger alif
+    if (key[0] === ALIF && key[1] === LAM && marks[0].vowel === FATHA && n > 2 && (marks[1].vowel === SUKUN || marks[1].shadda || (!marks[1].vowel && marks[2].shadda))) marks[0].vowel = '';
+    if (key[n - 1] === ALIF_MAQSURA && marks[n - 1].dagger && !marks[n - 1].vowel) marks[n - 1].dagger = false;
     if (nominal && words.length === 1 && (marks[n - 1].vowel === DAMMA || marks[n - 1].vowel === DAMMATAN)) marks[n - 1].vowel = '';
     return applyVocal(key, packMarks(marks));
   }).join(' ');
@@ -305,7 +308,8 @@ export function arHeadForm(head: string, pos: string): string {
  * analyser tries both and lets the printed vowels decide. Limited: the small waw and yāʾ of the Quran text and its pause signs are
  * simply marks here.
  */
-export function arQuranicSpelling(surface: string): { text: string; at: number[] } | undefined {
+export function arQuranicSpelling(surface: string, opts?: { daggers?: boolean }): { text: string; at: number[] } | undefined {
+  const daggers = opts?.daggers !== false;
   type Cluster = { base: string; marks: string; at: number };
   const clusters: Cluster[] = [];
   let i = 0;
@@ -328,7 +332,7 @@ export function arQuranicSpelling(surface: string): { text: string; at: number[]
     const rest = cl.marks.replace(new RegExp(`[${DAGGER_ALIF}${MADDA_ABOVE}]`, 'g'), '');
     // ـٰ : a dagger alif carried by a tatweel is a written ā
     if (cl.base === TATWEEL) {
-      if (dagger) { put(ALIF, cl.at); changed = true; }
+      if (dagger && daggers) { put(ALIF, cl.at); changed = true; }
       else put(cl.base + cl.marks, cl.at);
       continue;
     }
@@ -340,11 +344,16 @@ export function arQuranicSpelling(surface: string): { text: string; at: number[]
     if (!startOfWord && (cl.base === ALIF_MADDA || (cl.base === ALIF && cl.marks.includes(MADDA_ABOVE))) && isLetter(prev)) {
       put(ALIF + rest, cl.at); changed = true; continue;
     }
-    if (dagger && isLetter(cl)) {
+    if (dagger && daggers && isLetter(cl)) {
       const wordFinal = !isLetter(next) && next?.base !== TATWEEL;
       // و or ى under a dagger alif is the seat of an ā (الصلوٰة, التورىٰة); a final ىٰ is the ordinary alif maqṣūra
       if ((cl.base === WAW || cl.base === ALIF_MAQSURA || cl.base === '\u06CC') && !/[\u064B-\u0652]/.test(rest)) {
-        if (cl.base === WAW || !wordFinal) { put(ALIF + rest, cl.at); changed = true; continue; }
+        if (cl.base === WAW || !wordFinal) {
+          put(ALIF + rest, cl.at); changed = true;
+          // the silent alif after such a wāw (ٱلرِّبَوٰاْ) is not written in the ordinary spelling
+          if (cl.base === WAW && next?.base === ALIF && !isLetter(clusters[c + 2])) c++;
+          continue;
+        }
         put(cl.base + cl.marks, cl.at); continue;
       }
       // any other letter: the ā is written after it, unless an alif already follows
@@ -354,6 +363,24 @@ export function arQuranicSpelling(surface: string): { text: string; at: number[]
   }
   at.push(surface.length);
   return changed ? { text, at } : undefined;
+}
+
+/**
+ * Every ordinary spelling a Quranic spelling may stand for, most thorough first: with the dagger alifs written as alifs, and with
+ * only the lengthening maddas removed (the demonstratives keep their dagger in ordinary print too: هَـٰٓؤُلَآءِ is هؤلاء, not هاؤلاء).
+ * Empty when the word has nothing Quranic about it. The analyser tries the word as it stands first, then these.
+ */
+export function arQuranicSpellings(surface: string): Array<{ text: string; at: number[] }> {
+  const out: Array<{ text: string; at: number[] }> = [];
+  const seen = new Set<string>([arKey(surface)]);
+  for (const v of [arQuranicSpelling(surface), arQuranicSpelling(surface, { daggers: false })]) {
+    if (!v) continue;
+    const k = arKey(v.text);
+    if (seen.has(k)) continue;
+    seen.add(k);
+    out.push(v);
+  }
+  return out;
 }
 
 /**

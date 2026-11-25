@@ -8,6 +8,8 @@
  *                                readings are still listed on the card, below it.
  *   "<key>": "ف+<lemma id>"      the main reading is a chain of attached function words (فقد → ف+قَدْ|PART): proclitic letters,
  *                                then the lemma id of what follows.
+ *   "<key>": "<lemma id>+ي"      the main reading carries an attached pronoun: the letters after the lemma id (أمي is "my mother",
+ *                                the noun with ي, not the adjective "illiterate"). Proclitics and a pronoun may both be named.
  *   "<key>": null                reviewed and BALANCED: a reader really has to choose (علم, كتب, ذهب). Nothing is credited until
  *                                the sentence or printed vowels decide.
  * A key that is not listed is decided by the analyser's structural rules alone (analyze.ts), or left undecided.
@@ -26,18 +28,30 @@ export interface ArMainReading {
   proclitics: string[];
   /** The lemma id of the main reading ("قَالَ|VERB"). */
   lemmaId: string;
+  /** Attached pronoun letters written after the word, in order ("ي", "ه", "ها", "نا" …); empty when the main reading has none. */
+  enclitics: string[];
 }
 
 /**
  * The reviewed decision for a key: a main reading, `null` when the key is reviewed and balanced, `undefined` when it was never
  * reviewed.
  */
+let ACTIVE: Readonly<Record<string, string | null>> = AR_IDENTITIES;
+/**
+ * Replaces the table the analyser consults (tests of the structural rules run with an empty one, so that a listed key does not
+ * hide the rule under test); called with nothing, restores the shipped list.
+ */
+export function useArIdentities(table?: Readonly<Record<string, string | null>>): void { ACTIVE = table ?? AR_IDENTITIES; }
+
 export function arMainOf(key: string): ArMainReading | null | undefined {
-  if (!Object.prototype.hasOwnProperty.call(AR_IDENTITIES, key)) return undefined;
-  const v = AR_IDENTITIES[key];
+  if (!Object.prototype.hasOwnProperty.call(ACTIVE, key)) return undefined;
+  const v = ACTIVE[key];
   if (v === null) return null;
+  // the part that holds "|" is the lemma id; what stands before it is proclitics, what stands after it attached pronouns
   const parts = v.split('+');
-  return { proclitics: parts.slice(0, -1), lemmaId: parts[parts.length - 1] };
+  const at = parts.findIndex((p) => p.includes('|'));
+  if (at < 0) return undefined;
+  return { proclitics: parts.slice(0, at), lemmaId: parts[at], enclitics: parts.slice(at + 1) };
 }
 
 /**

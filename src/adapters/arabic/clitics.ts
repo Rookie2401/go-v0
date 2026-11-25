@@ -76,7 +76,7 @@ const PRONOUN_BY_TEXT = new Map(AR_PRONOUNS.map((p) => [p.text, p]));
 const PRONOUN_TEXTS = [...PRONOUN_BY_TEXT.keys()].sort((a, b) => b.length - a.length);
 
 /** The particles that take an attached pronoun as their subject or complement (إنه, أنني, لكنه, ليتني, لعله, كأنه). */
-export const ENCLITIC_PARTICLES: ReadonlySet<string> = new Set(['إن', 'أن', 'كأن', 'لكن', 'ليت', 'لعل']);
+export const ENCLITIC_PARTICLES: ReadonlySet<string> = new Set(['إن\u0651', 'أن\u0651', 'كأن\u0651', 'لكن\u0651', 'ليت', 'لعل\u0651', 'لأن\u0651']);
 
 // ───────────────────────────── segmentation ─────────────────────────────
 
@@ -181,7 +181,9 @@ export function arSegmentations(key: string): ArSegmentation[] {
       if (seen.has(sig)) continue;
       seen.add(sig);
       out.push({
-        proclitics: ch.clitics, proclSpans: ch.spans, stemKey, stemSpan: [ch.end, o.stemEnd], stemKeys: stemSpellings(stemKey, o.list.length > 0),
+        proclitics: ch.clitics, proclSpans: ch.spans, stemKey, stemSpan: [ch.end, o.stemEnd],
+        // لله is ل + الله (the alif of the name is not written after the preposition)
+        stemKeys: [...stemSpellings(stemKey, o.list.length > 0), ...(stemKey === 'له' && ch.clitics[ch.clitics.length - 1]?.id === 'li' && o.list.length === 0 ? ['الله'] : [])],
         enclitics: o.list, enclitic: o.list[o.list.length - 1], encliticSpans: o.spans,
       });
     }
@@ -259,7 +261,9 @@ export function arEncliticAllows(p: Pronoun, t: CliticTarget, inner = false): Cl
   if (t.pos === 'PART' || t.pos === 'CONJ' || t.pos === 'SCONJ') {
     return t.lemmaKey && ENCLITIC_PARTICLES.has(t.lemmaKey) ? { ok: true, role: 'subject of the particle (إِنَّ and its sisters)' } : { ok: false };
   }
-  if (NOMINAL.has(t.pos) && t.pos !== 'PRON') {
+  // كِلَا / كِلْتَا "both" are pronoun-like nouns that take a possessive in construct state; other pronouns do not
+  if (t.pos === 'PRON') return p.possessive && has(t.morph.Definite, 'Cons') ? { ok: true, patch: { Definite: 'Cons' }, role: 'possessive pronoun' } : { ok: false };
+  if (NOMINAL.has(t.pos)) {
     if (!p.possessive) return { ok: false };
     // the noun is in construct state: tanwīn and the article are not written before a possessor
     if (t.morph.Definite && !has(t.morph.Definite, 'Cons')) return { ok: false };

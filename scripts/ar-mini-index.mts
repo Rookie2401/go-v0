@@ -34,10 +34,10 @@ const OUT = opt.out ?? 'test/adapters/arabic-mini-index.json';
 /** Open-class lexemes: chosen by key AND vowels (the brief's list, plus a few the edge cases need). */
 const OPEN = ('كَتَبَ كِتَاب كَاتِب مَكْتَبَة مَكْتُوب قَالَ بَاعَ وَعَدَ وَجَدَ دَعَا رَمَى مَدَّ أَخَذَ أَكَلَ رَأَى عَلِمَ عَلَّمَ تَعَلَّمَ عِلْم عَلَم عَالَم ' +
   'اِسْتَغْفَرَ أَخْرَجَ قَاتَلَ تَعَاوَنَ اِنْكَسَرَ اِجْتَمَعَ اِحْمَرَّ كَانَ لَيْسَ ذَهَبَ قَرَأَ مُعَلِّم مُعَلِّمَة طَالِب بَيْت بَاب رَجُل قَلْب مَدِينَة مَدْرَسَة ' +
-  'شَمْس قَمَر كَبِير جَمِيل جَدِيد أَب أَخ جَدّ وَلَد وَلَدَ كُلّ كَاتَبَ كَتَّبَ عَلِيّ يَد مَاء اِبْن').split(' ');
+  'ذَهَب إِنَّ لَيْسَ قَامَ مَاتَ عَادَ دَوْلَة اِسْتَطَاعَ أَطَاعَ خَرَجَ أَذْهَبَ اِسْم اِسْمِيّ كِلَا كُلْيَة أَعْطَى لِأَنَّ كَأَنَّ شَمْس قَمَر كَبِير جَمِيل جَدِيد أَب أَخ جَدّ وَلَد وَلَدَ كُلّ كَاتَبَ كَتَّبَ عَلِيّ يَد مَاء اِبْن').split(' ');
 /** Closed-class words: chosen by key and part of speech (any vowels), only the non-open parts of speech. */
 const CLOSED_KEYS = new Set(('و ف ثم أو بل في من إلى على عن ب ل ك إن أن لن لم لا ما قد س سوف هل إذا لو حتى كي لكن ' +
-  'هو هي هم هن هما نحن أنا أنت أنتم هذا هذه ذلك الذي التي الذين ماذا لماذا كيف أين متى مع عند بعد قبل بين لدى كل ها ي ني نا').split(' '));
+  'لأن كأن هو هي هم هن هما نحن أنا أنت أنتم هذا هذه ذلك الذي التي الذين ماذا لماذا كيف أين متى مع عند بعد قبل بين لدى كل ها ي ني نا').split(' '));
 const CLOSED_POS = new Set(['prep', 'conj', 'particle', 'pron', 'det', 'article', 'adv', 'intj', 'num']);
 const OPEN_KV = new Set(OPEN.map((w) => `${arKey(w)}\t${packVocal(w)}`));
 
@@ -85,7 +85,7 @@ async function main(): Promise<void> {
     const n = (seen.get(`${head}|${pos}`) ?? 0) + 1;
     seen.set(`${head}|${pos}`, n);
     const fp = isFormPage(e);
-    const pick = fp ? false : (OPEN_KV.has(`${k}\t${packVocal(head)}`) && ['noun', 'verb', 'adj', 'name'].includes(e.pos))
+    const pick = fp ? false : OPEN_KV.has(`${k}\t${packVocal(head)}`)
       || (CLOSED_KEYS.has(k) && CLOSED_POS.has(e.pos));
     if (pick) chosen.push({ entry: e, head, pos, id: n === 1 ? `${head}|${pos}` : `${head}|${pos}|${n}` });
     else if (fp && e.senses?.some((s) => s.form_of?.some((t) => OPEN_KV.has(`${arKey(t.word)}\t${packVocal(t.word)}`) || CLOSED_KEYS.has(arKey(t.word))))) pages.push(e);

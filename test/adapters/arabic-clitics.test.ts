@@ -117,7 +117,7 @@ describe('what the clitics allow', () => {
     expect(arEncliticAllows(pron('ي'), noun).ok).toBe(true);
   });
   it('إِنَّ and its sisters take a pronoun as their subject (إنني لكنه ليتني); other particles do not', () => {
-    expect(arEncliticAllows(pron('ني'), { pos: 'PART', morph: {}, lemmaKey: 'إن' }).ok).toBe(true);
+    expect(arEncliticAllows(pron('ني'), { pos: 'PART', morph: {}, lemmaKey: 'إنّ' }).ok).toBe(true);
     expect(arEncliticAllows(pron('ه'), { pos: 'PART', morph: {}, lemmaKey: 'هل' }).ok).toBe(false);
   });
   it('two pronouns after a verb: the inner one must be an object pronoun, a noun takes only one', () => {

@@ -25,11 +25,11 @@
  *  5. a word no source has gets a marked guess (guess.ts) or nothing.
  */
 import type { AnalysisCandidate, PartOfSpeech, RawToken, WordPart } from '../../core';
-import { arMainOf } from './identities';
+import { AR_IDENTITIES, arMainOf, arMainOfVocalized } from './identities';
 import { arSegmentations, arProcliticAllows, arEncliticAllows, type ArSegmentation, type Clitic } from './clitics';
-import { arClosedFor, AR_PRIORS, type ArClosedEntry } from './closed';
+import { arClosedFor, arClosedLooseFor, AR_PRIORS, type ArClosedEntry } from './closed';
 import { arGuess } from './guess';
-import { lookupArabicForm, lookupArabicLemma, lemmaOfId, lexOf, type ArIndexHit, type ArLemmaRow } from './index-store';
+import { arKeyIsPartial, lookupArabicForm, lookupArabicLemma, lemmaOfId, lexOf, type ArIndexHit, type ArLemmaRow } from './index-store';
 import { rootClass } from './roots';
 import { AR_LOWERED_USAGE, arFeaturesOfCode } from './tags';
 import * as T from './text';
@@ -53,6 +53,11 @@ const CONF_MAIN = 0.7;
 const CONF_STRUCTURAL = 0.6;
 const CONF_UNDECIDED = 0.45;
 const CONF_PRINTED = 0.75;
+const CONF_VOCALIZED = 0.8;
+const CONF_CLOSED = 0.8;
+const CONF_RESTORED_MAIN = 0.65;
+/** Chains of function words that are also, unvocalized, a very common open-class word: not led by the closed table (فهم "understood", ولد "boy"). */
+const CHAIN_EXCEPTIONS: ReadonlySet<string> = new Set(['فهم', 'ولد', 'وجد', 'وصل', 'وقف', 'فتح', 'وعد', 'وهب']);
 const CONF_GUESS = 0.35;
 const MAX_CANDIDATES = 12;
 const round2 = (x: number): number => Math.round(x * 100) / 100;
@@ -92,7 +97,64 @@ interface Reading {
   agreed: number;
 }
 
-const lexemeKey = (r: Reading): string => `${r.derived ? 'd:' : ''}${arCanon(r.head)}|${r.pos}`;
+/**
+ * Entries with the same vocalized head under NOUN and ADJ (كَاتِب), or under the closed-class parts of speech PART / ADP / CONJ / ADV /
+ * SCONJ (إِنَّ, لَيْسَ-type heads filed twice), are ONE lexeme for deciding: they are not rivals of each other.
+ */
+const NOUN_GROUP: readonly string[] = ['NOUN', 'ADJ'];
+const CLOSED_GROUP: readonly string[] = ['PART', 'ADP', 'CONJ', 'ADV', 'SCONJ'];
+const groupOf = (pos: string): readonly string[] | undefined => (NOUN_GROUP.includes(pos) ? NOUN_GROUP : CLOSED_GROUP.includes(pos) ? CLOSED_GROUP : undefined);
+const groupId = (pos: string): string => (NOUN_GROUP.includes(pos) ? 'NOUN/ADJ' : CLOSED_GROUP.includes(pos) ? 'CLOSED' : pos);
+
+function countOfHead(head: string, pos: string): number | undefined {
+  let best: number | undefined;
+  for (const id of [`${head}|${pos}`, `${head}|${pos}|2`, `${head}|${pos}|3`]) { const row = lookupArabicLemma(id); if (row) best = Math.max(best ?? 0, row[4]); }
+  return best;
+}
+
+let LISTED_POS: Map<string, string> | undefined;
+/** head → part of speech, from the values of the reviewed identities list (a head named with two parts of speech is left out: the stable rule decides). */
+function listedPos(): Map<string, string> {
+  if (LISTED_POS) return LISTED_POS;
+  const out = new Map<string, string>();
+  const dropped = new Set<string>();
+  for (const v of Object.values(AR_IDENTITIES)) {
+    if (!v) continue;
+    const id = v.split('+').find((p) => p.includes('|'));
+    if (!id) continue;
+    const [h, p] = id.split('|');
+    const key = arCanon(h);
+    if (dropped.has(key)) continue;
+    const have = out.get(key);
+    if (have && have !== p) { out.delete(key); dropped.add(key); } else out.set(key, p);
+  }
+  return (LISTED_POS = out);
+}
+
+/**
+ * The ONE part of speech a grouped head is credited under, a pure function of the head and the INDEX (never of the cell, the clitics or
+ * the confidence): among the group's parts of speech that the index holds for this head, the higher lemma count (the count of the first
+ * installed index that holds the id); a tie goes NOUN, ADJ; PART, ADP, CONJ, ADV, SCONJ. `members` are the parts of speech seen on the
+ * rows, used when the index holds none of them under this head (a hand entry). The other part of speech goes to notes.alsoPos.
+ */
+export function arGroupPos(head: string, members: readonly string[]): PartOfSpeech {
+  const first = members[0];
+  const group = groupOf(first);
+  if (!group) return first as PartOfSpeech;
+  const listed = listedPos().get(arCanon(head));
+  if (listed && group.includes(listed)) return listed as PartOfSpeech;
+  let best: { pos: string; count: number } | undefined;
+  for (const p of group) {
+    const c = countOfHead(head, p) ?? countOfHead(headForm(head, p), p);
+    if (c === undefined) continue;
+    if (!best || c > best.count) best = { pos: p, count: c };
+  }
+  if (best) return best.pos as PartOfSpeech;
+  const seen = group.filter((p) => members.includes(p));
+  return (seen[0] ?? first) as PartOfSpeech;
+}
+
+const lexemeKey = (r: Reading): string => `${r.derived ? 'd:' : ''}${arCanon(r.head)}|${groupId(r.pos)}`;
 const infoOf = (h: ArIndexHit): LemmaInfo => ({ head: h.lemma[0], gloss: h.lemma[1], pos: h.lemma[2], lex: h.lemma[3], count: h.lemma[4], ...(h.lemma[5] ? { root: h.lemma[5] } : {}) });
 
 /** The printed slice of the key letters [a, b) of the word, with its vowels. */
@@ -184,6 +246,7 @@ function readingsFromHit(env: Env, segIx: number, _stk: string, hit: ArIndexHit,
     if (morph.VerbForm === 'Vnoun') delete morph.Voice;
   }
   if (derived && hasOwnEntry(head)) return [];
+  if (!derived) pos = arGroupPos(head, [pos]);
   // a page that prints vowels writes a hamza where it means one: a bare initial alif is hamzat al-waṣl, so a hamza restored by the fold is contradicted
   if (hit.viaLoose && env.printed.level !== 'none' && /^[أإآ]/.test(hit.key.slice(viaArticle ? 2 : 0)) && seg.stemKey[0] === 'ا') return [];
   const cmp = compareStem(env.printed, seg, hit.key.slice(viaArticle ? 2 : 0), stemVocal, seg.proclitics[seg.proclitics.length - 1]?.id === 'al');
@@ -202,16 +265,16 @@ function readingFromClosed(env: Env, segIx: number, stk: string, e: ArClosedEntr
   if (!cmp.compatible && !cmp.endingOnly) return undefined;
   const info: LemmaInfo = { head: e.lemma, gloss: e.gloss, pos: e.pos, lex: '', count: 0 };
   return {
-    segIx, seg, stemKey: stk, stemVocal: packVocal(form), lemmaId: `${e.lemma}|${e.pos}`, info, head: e.lemma, pos: e.pos, morph: { ...e.morph }, usage: [],
+    segIx, seg, stemKey: stk, stemVocal: packVocal(form), lemmaId: `${e.lemma}|${e.pos}`, info, head: e.lemma, pos: arGroupPos(e.lemma, [e.pos]), morph: { ...e.morph }, usage: [],
     viaLoose: false, hand: e, endingConflict: !cmp.compatible, quranic: env.quranic, citation: arKey(e.lemma) === arKey(e.form) && !e.suffix, roleNotes: [],
     governs: e.governs, role: e.role, agreed: cmp.agreed,
   };
 }
 
-const targetOf = (r: Reading): { pos: string; morph: Morph; lemmaKey: string } => ({ pos: r.pos, morph: r.morph, lemmaKey: arKey(r.head) });
+const targetOf = (r: Reading): { pos: string; morph: Morph; lemmaKey: string } => ({ pos: r.pos, morph: r.morph, lemmaKey: arKey(r.head) + (/\u0651/.test(r.head) ? '\u0651' : '') });
 
 /** Applies the clitics of the cut to a reading; undefined when one of them does not allow it. */
-function withClitics(r: Reading): Reading | undefined {
+function withClitics(r: Reading, env: Env): Reading | undefined {
   const seg = r.seg;
   const out: Reading = { ...r, morph: { ...r.morph }, roleNotes: [] };
   const t = (): { pos: string; morph: Morph; lemmaKey: string } => targetOf(out);
@@ -222,6 +285,13 @@ function withClitics(r: Reading): Reading | undefined {
     if (!v.ok) return undefined;
     if (v.patch) for (const [k, val] of Object.entries(v.patch)) out.morph[k] = val;
     if (v.role) out.roleNotes[i] = v.role;
+    // the vowels the page printed on the clitic count as printed support for this cut (so a chain is compared fairly with a whole word)
+    const sp = seg.proclSpans[i];
+    const cl = arKey(c.vocalized);
+    if (cl.length === sp[1] - sp[0]) {
+      const letters = printedSlice(env.printed.map, env.printed.surface, sp[0], sp[1]);
+      if (letters) { const vm = vocalMatch(letters, cl, packVocal(c.vocalized)); if (vm.compatible) out.agreed += vm.agreed; }
+    }
   }
   const ens = seg.enclitics;
   for (let i = 0; i < ens.length; i++) {
@@ -317,6 +387,11 @@ function mergeReadings(readings: Reading[], printedEnding: boolean): Merged[] {
 // ───────────────────────────── identity: the credit rule ─────────────────────────────
 
 const noClitics = (m: Merged): boolean => m.seg.proclitics.length === 0 && m.seg.enclitics.length === 0;
+const CLOSED_POS = new Set(['PRON', 'ADP', 'PART', 'DET', 'CONJ', 'SCONJ', 'INTJ']);
+const OPEN_ZERO_POS = new Set(['NOUN', 'ADJ', 'VERB', 'PROPN', 'ADV']);
+const countOf = (m: Merged): number => Math.max(...m.rows.map((r) => r.info.count));
+/** An open-class whole word the index gives no frequency evidence at all (count 0). */
+const isOpenZero = (m: Merged): boolean => OPEN_ZERO_POS.has(m.pos) && m.rows.every((r) => !r.hand && !r.derived && r.info.count === 0);
 
 /** Marginal for what it is by itself: a cell that rarely is the intended reading of a bare written word. */
 function marginalByCell(m: Merged): boolean {
@@ -337,36 +412,101 @@ function isMarginal(m: Merged, all: Merged[]): boolean {
   if (!others.length) return false;
   // a reading reached only through the loose fold (a hamza, ى for ي, ة for ه restored) against a reading of the spelling as written
   if (m.rows.every((r) => r.viaLoose) && others.some((o) => o.rows.some((r) => !r.viaLoose))) return true;
-  // a proper name against a common word
-  if (m.pos === 'PROPN' && others.some((o) => o.pos !== 'PROPN')) return true;
-  // a cut against a whole word that is a lemma's own citation form
-  if (!noClitics(m) && others.some((o) => noClitics(o) && o.citation)) return true;
-  // 1st / 2nd person against a 3rd person plain reading of another lexeme
+  // a verbal noun or participle that has no entry of its own is marginal against any reading of a real lemma (its own verb included)
+  if (m.rows.every((r) => r.derived) && others.some((o) => o.rows.every((r) => !r.derived))) return true;
+  // a proper name against a common word (a name the source cites with the article, اَلمَلِك, الرُّوم: the common noun under ال, مَلِك, leads and the name is listed below it)
+  if (m.pos === 'PROPN' && others.some((o) => o.pos !== 'PROPN' && !o.rows.every((r) => r.viaLoose))) return true;
+  // a cut against a whole word that is a lemma's own citation form (unless that word has no frequency evidence at all)
+  if (m.seg.proclitics.length > 0 && others.some((o) => noClitics(o) && o.citation && !isOpenZero(o))) return true;
+  // two or more proclitics, or the question أ, against a whole word that is a finite verb or a nominal cell of a real lemma
+  if ((m.seg.proclitics.length >= 2 || m.seg.proclitics.some((c) => c.id === 'a'))
+    && others.some((o) => noClitics(o) && !o.rows.every((r) => r.derived) && (o.pos === 'NOUN' || o.pos === 'ADJ' || o.pos === 'PROPN' || (o.pos === 'VERB' && o.morph.VerbForm === 'Fin')))) return true;
+  // an open-class word of count 0 against a closed-class word (with or without a pronoun or a chain) or against a cut onto a counted lexeme
+  // (counts are estimates and 0 is common in the index, so a zero count is weak evidence: it only decides against a closed-class word, or for a cut onto a counted lexeme against a whole word)
+  if (isOpenZero(m) && others.some((o) => (CLOSED_POS.has(o.pos) && o.rows.some((r) => !r.viaLoose)) || (noClitics(m) && !noClitics(o) && !o.rows.every((r) => r.derived) && countOf(o) > 0))) return true;
+  // 1st / 2nd person against a 3rd person plain reading of another lexeme (a 1st person singular imperfect أَفْعَلُ is not marginal)
   const pm = m.morph.Person;
-  if ((pm === '1' || pm === '2') && others.some((o) => o.morph.Person && has(o.morph.Person, '3') && !marginalByCell(o))) return true;
+  const firstImperfect = pm === '1' && has(m.morph.Aspect, 'Imp') && only(m.morph.Number, 'Sing');
+  if ((pm === '1' || pm === '2') && (m.pos === 'VERB' || m.pos === 'AUX') && !firstImperfect && others.some((o) => (o.pos === 'VERB' || o.pos === 'AUX') && o.morph.Person && has(o.morph.Person, '3') && !marginalByCell(o))) return true;
   return false;
 }
 
-interface Verdict { identity?: 'main' | 'structural' | 'undecided' | 'printed' | 'rare'; capMain?: string; top: Set<string>; cap: Map<string, number> }
+interface Verdict { identity?: 'main' | 'structural' | 'undecided' | 'printed' | 'rare' | 'closed'; topCap?: number; reviewed?: boolean; top: Set<string>; cap: Map<string, number> }
 
-function matchesMain(m: Merged, main: { proclitics: string[]; lemmaId: string }): boolean {
-  const [head, pos] = main.lemmaId.split('|');
-  if (m.seg.proclitics.map((c) => c.text).join('') !== main.proclitics.join('') || m.seg.enclitics.length) return false;
-  return arKey(m.head) === arKey(head) && m.pos === (pos as PartOfSpeech);
+/** The attached pronoun letters of a reading: the cut's, or the suffix of a closed-table entry (لَهُ is لِ + ه). */
+const encliticLetters = (m: Merged): string => m.seg.enclitics.length ? m.seg.enclitics.map((p) => p.text).join('') : m.rows[0]?.hand?.suffix ?? '';
+
+const sameHead = (a: string, b: string, pos: string): boolean => arKey(a) === arKey(b) && (arCanon(a) === arCanon(b) || headForm(a, pos) === headForm(b, pos));
+
+/**
+ * A reviewed main reading names a head and a part of speech (a lemma id, with or without its "|2" number), the proclitic letters
+ * before it and the attached pronoun letters after it. It matches the candidate whose LEXEME GROUP contains that id, whatever part of
+ * speech the group settled on. One without pronoun letters also matches a whole word the index lists (علينا filed under عَلَى) but
+ * not a reading that needs a cut the main does not name.
+ */
+const CHAIN_PROCLITICS: ReadonlySet<string> = new Set(['wa', 'fa']);
+/** A reading made of closed-class words only: a stem of a closed class, behind و / ف at most, with or without an attached pronoun (a pronoun only where the grammar allows one). */
+function isClosedChain(m: Merged): boolean {
+  if (!CLOSED_POS.has(m.pos) || m.rows.every((r) => r.viaLoose || r.derived)) return false;
+  // a preposition the index lists WITH its pronoun as one word (عَلَيْنَا) is a chain too
+  if (m.seg.proclitics.length === 0 && m.seg.enclitics.length === 0 && !m.rows[0].hand?.suffix && !(m.pos === 'ADP' && m.morph.Person !== undefined)) return false;
+  return m.seg.proclitics.every((c) => CHAIN_PROCLITICS.has(c.id));
 }
 
-function decide(key: string, merged: Merged[]): Verdict {
+function matchesMain(m: Merged, main: { proclitics: string[]; lemmaId: string; enclitics?: string[] }): boolean {
+  const [head, pos] = main.lemmaId.split('|');
+  if (m.seg.proclitics.map((c) => c.text).join('') !== main.proclitics.join('')) return false;
+  if (encliticLetters(m) !== (main.enclitics ?? []).join('')) return false;
+  return sameHead(m.head, head, pos) && (m.pos === pos || groupId(m.pos) === groupId(pos) || m.rows.some((r) => r.info.pos === pos));
+}
+
+function decide(key: string, merged: Merged[], printed: Printed): Verdict {
   const lexemes = [...new Set(merged.map((m) => m.lexeme))];
   const v: Verdict = { top: new Set(), cap: new Map() };
   if (lexemes.length <= 1) return v;
+  // readings reached only through the loose fold are not rivals of a lexeme read as written: one direct lexeme is the word
+  const directLexemes = new Set(merged.filter((m) => m.rows.some((r) => !r.viaLoose)).map((m) => m.lexeme));
+  if (directLexemes.size === 1 && arMainOf(key) !== null && !(arMainOf(key) && arMainOf(key) !== undefined)) return v;
+  // a vocalized entry of the reviewed list (a word that carries marks), for the whole word and for the printed stem of a cut
+  if (printed.any) {
+    const whole = arMainOfVocalized(printed.surface);
+    if (whole === null) { v.identity = 'undecided'; return v; }
+    const hits = new Set<string>();
+    if (whole) for (const m of merged) if (matchesMain(m, whole)) hits.add(m.lexeme);
+    for (const m of merged) {
+      if (noClitics(m)) continue;
+      const slice = printedSlice(printed.map, printed.surface, m.seg.stemSpan[0], m.seg.stemSpan[1]);
+      const r = slice ? arMainOfVocalized(slice) : undefined;
+      if (r && r.proclitics.length === 0 && (r.enclitics ?? []).length === 0) {
+        const [h, p] = r.lemmaId.split('|');
+        if (sameHead(m.head, h, p) && (m.pos === p || groupId(m.pos) === groupId(p))) hits.add(m.lexeme);
+      }
+    }
+    if (hits.size) { v.identity = 'main'; v.topCap = CONF_VOCALIZED; v.reviewed = true; v.top = hits; return v; }
+  }
   const reviewed = arMainOf(key);
   if (reviewed === null) { v.identity = 'undecided'; return v; }
   const prior = reviewed === undefined ? AR_PRIORS[key] : undefined;
   if (reviewed || prior) {
     const directExists = merged.some((m) => m.rows.some((r) => !r.viaLoose));
-    const hit = merged.filter((m) => (reviewed ? matchesMain(m, reviewed) : arKey(m.head) === arKey(prior!.lemma) && prior!.pos.includes(m.pos) && noClitics(m))
-      && !(directExists && m.rows.every((r) => r.viaLoose)));
-    if (hit.length) { v.identity = 'main'; for (const m of hit) v.top.add(m.lexeme); return v; }
+    const hit = merged.filter((m) => (reviewed ? matchesMain(m, reviewed) : arKey(m.head) === arKey(prior!.lemma) && prior!.pos.some((p) => groupId(p) === groupId(m.pos)) && noClitics(m))
+      && !(!reviewed && directExists && m.rows.every((r) => r.viaLoose)));
+    if (hit.length) { v.identity = 'main'; v.reviewed = !!reviewed; for (const m of hit) v.top.add(m.lexeme); return v; }
+  }
+  // a chain made only of closed-class words (و / ف + a particle or pronoun, a preposition with its pronoun, إنه, كلانا) leads any open-class whole word
+  if (!CHAIN_EXCEPTIONS.has(key)) {
+    const closedChains = merged.filter(isClosedChain);
+    if (closedChains.length) {
+      const lex = new Set(closedChains.map((m) => m.lexeme));
+      const bestClosed = Math.max(...closedChains.map((m) => m.agreed));
+      const openBetter = printed.any && merged.some((m) => !isClosedChain(m) && m.agreed > bestClosed);
+      if (!openBetter) {
+        // several closed lexemes (إِنَّ / أَنَّ, هِيَ / هِيَهْ): the one with at least twice the count of the next leads
+        const byCount = [...lex].map((l) => [l, Math.max(...closedChains.filter((m) => m.lexeme === l).map(countOf))] as const).sort((a, b) => b[1] - a[1]);
+        if (lex.size === 1 || (byCount[0][1] > 0 && byCount[0][1] >= 2 * byCount[1][1])) { v.identity = 'closed'; v.topCap = CONF_CLOSED; v.top = new Set([byCount[0][0]]); } else v.identity = 'undecided';
+        return v;
+      }
+    }
   }
   // the page's printed vowels decide before the structural layer: one lexeme with strictly more agreeing marks than any other
   if (PAGE_ANY) {
@@ -412,10 +552,10 @@ function partsOf(m: Merged, p: Printed, c: AnalysisCandidate, roles: string[]): 
     if (t) parts.push({ ...t, lemma: cl.lemma, pos: cl.pos, morph: cl.id === 'al' ? { Definite: 'Def' } : {}, role: roles[i] || cl.role, kind: 'prefix' });
   });
   const hs = m.rows[0].hand?.suffix;
-  if (hs && noClitics(m)) {
+  if (hs && seg.enclitics.length === 0) {
     // a preposition with its pronoun suffix, listed whole: the base, then the pronoun
-    const n = p.map.key.length - hs.length;
-    const a = text(0, n), b = text(n, p.map.key.length);
+    const n = seg.stemSpan[1] - hs.length;
+    const a = text(seg.stemSpan[0], n), b = text(n, seg.stemSpan[1]);
     if (a && b) {
       parts.push({ ...a, lemma: c.lemma, pos: 'ADP', morph: {}, role: 'preposition', kind: 'stem' });
       const slot = m.rows[0].hand!.morph;
@@ -455,15 +595,20 @@ function toCandidate(m: Merged, p: Printed, confidence: number, identity: string
   let gloss = info.gloss;
   let root = info.root;
   if (!m.rows[0].derived && !m.rows[0].hand) {
-    const ids = lexemeIds(m.head, m.pos);
+    const cls = groupOf(m.pos) ?? [m.pos];
+    const memberPos = cls.filter((p) => lexemeIds(m.head, p).length > 0);
+    const ids = memberPos.flatMap((p) => lexemeIds(m.head, p));
     if (ids.length > 1) {
       const rows = ids.map((id) => lookupArabicLemma(id)).filter((r): r is ArLemmaRow => !!r);
       const glosses = [...new Set(rows.map((r) => r[1]).filter(Boolean))];
       gloss = glosses.length > 1 ? glosses.map((g, i) => `${i + 1}. ${g}`).join(' ') : glosses[0] ?? '';
       const roots = [...new Set(rows.map((r) => r[5]).filter((x): x is string => !!x))];
       root = roots.length ? roots.join(' / ') : undefined;
-      notes.homonyms = String(ids.length);
+      const perPos = Math.max(...memberPos.map((p) => lexemeIds(m.head, p).length));
+      if (perPos > 1) notes.homonyms = String(perPos);
     }
+    const alsoPos = memberPos.filter((p) => p !== m.pos);
+    if (alsoPos.length) notes.alsoPos = alsoPos.join(',');
   }
   if (row0.derived) {
     gloss = '';
@@ -517,10 +662,9 @@ function gatherReadings(env: Env): Reading[] {
       for (const h of hits) {
         // the definite rows of a word are keyed with the article: read through the cut instead, never twice
         if (h.key.startsWith('ال') && h.code.includes('definite') && !arKey(lemmaOfId(h.lemmaId)).startsWith('ال')) continue;
-        if (viaArticle && h.code.includes('definite')) continue;
         for (const r of readingsFromHit(env, segIx, stk, h, false)) {
           // after the article a plain row is read only as the construct state (the article's own rows are the definite ones, below)
-          if (viaArticle && r.morph.Definite !== undefined && !has(r.morph.Definite, 'Cons')) continue;
+          if (viaArticle && r.morph.Definite !== undefined && !has(r.morph.Definite, 'Cons') && !has(r.morph.Definite, 'Def')) continue;
           rows.push(r);
         }
       }
@@ -532,14 +676,22 @@ function gatherReadings(env: Env): Reading[] {
         for (let i = rows.length - 1; i >= 0; i--) if (rows[i].morph.Definite !== 'Def' && withDef.has(rows[i].lemmaId)) rows.splice(i, 1);
       }
       // the closed-class table: whole words (with a pronoun suffix or fused) only uncut; plain entries also as stems
+      const conjChain = seg.enclitics.length === 0 && seg.proclitics.every((c) => c.id === 'wa' || c.id === 'fa' || c.id === 'a');
       for (const e of arClosedFor(stk)) {
-        if ((e.suffix || e.fusedOf) && cut) continue;
-        if (rows.some((r) => !r.hand && arKey(r.head) === arKey(e.lemma) && r.pos === e.pos && (!e.suffix || r.morph.Person === e.morph.Person))) continue;
+        if ((e.suffix || e.fusedOf) && cut && !conjChain) continue;
+        if (rows.some((r) => !r.hand && arKey(r.head) === arKey(e.lemma) && /ّ/.test(r.head) === /ّ/.test(e.lemma) && groupId(r.pos) === groupId(e.pos) && (!e.suffix || r.morph.Person === e.morph.Person))) continue;
         const r = readingFromClosed(env, segIx, stk, e);
         if (r) rows.push(r);
       }
+      // a closed-class word spelled loosely (الى for إلى): restored, flagged, below any direct reading
+      for (const e of arClosedLooseFor(stk)) {
+        if ((e.suffix || e.fusedOf) && cut && !conjChain) continue;
+        if (rows.some((r) => arKey(r.head) === arKey(e.lemma) && groupId(r.pos) === groupId(e.pos))) continue;
+        const r = readingFromClosed(env, segIx, stk, e);
+        if (r) { r.viaLoose = true; rows.push(r); }
+      }
       for (const r of rows) {
-        const w = cut ? withClitics(r) : r;
+        const w = cut ? withClitics(r, env) : r;
         if (w) all.push(w);
       }
     }
@@ -575,7 +727,7 @@ export function arWordCandidates(token: RawToken): AnalysisCandidate[] {
   if (!own.key || !T.ARABIC_LETTER.test(own.key)) return [];
   // the word as it stands first; only when nothing reads it, the ordinary spellings of a Quranic one (text.ts arQuranicSpellings)
   const tries: Array<{ text: string; at?: number[]; quranic: boolean }> = [{ text: token.surface, quranic: false }];
-  const quranic = typeof T.arQuranicSpellings === 'function' ? T.arQuranicSpellings(token.surface) : [];
+  const quranic = typeof T.arQuranicSpellings === 'function' && /[\u0670\u0653\u0671\u06D6-\u06ED]/.test(token.surface) ? T.arQuranicSpellings(token.surface) : [];
   for (const q of quranic) tries.push({ text: q.text, at: q.at, quranic: true });
   for (const t of tries) {
     const out = readSurface(token, t.text, t.at, t.quranic);
@@ -600,6 +752,16 @@ function nisbaGuess(key: string): AnalysisCandidate[] {
   let def = false;
   if (body.startsWith('ال') && body.length > 6) { body = body.slice(2); def = true; }
   if (body.length < 5 || !body.endsWith('ية')) return [];
+  // the feminine of a nisba adjective the index holds (إِسْلَامِيّ → الإسلامية) is a direct reading from the lemma, not a guess
+  const mascKey = body.slice(0, -1);
+  const masc = lookupArabicForm(mascKey).find((h) => h.lemma[2] === 'ADJ' && arKey(lemmaOfId(h.lemmaId)) === arKey(mascKey));
+  if (masc) {
+    return [{
+      lemma: headForm(lemmaOfId(masc.lemmaId), 'ADJ'), pos: 'ADJ', morph: { Gender: 'Fem', Number: 'Sing', ...(def ? { Definite: 'Def' } : {}) }, confidence: masc.viaLoose ? 0.6 : 0.7,
+      origin: 'rule', sourceId: AR_SOURCE_IDS.rules, ...(masc.lemma[1] ? { gloss: masc.lemma[1] } : {}),
+      notes: { source: 'rule', pattern: 'feminine of a nisba adjective', ...(masc.viaLoose ? { spelling: 'restored' } : {}) },
+    }];
+  }
   const stem = body.slice(0, -2);
   for (const base of [`${stem}ة`, stem]) {
     const hit = lookupArabicForm(base).find((h) => !h.viaLoose && (h.lemma[2] === 'NOUN' || h.lemma[2] === 'PROPN') && h.lemma[4] > 0);
@@ -633,7 +795,7 @@ function readSurface(token: RawToken, text: string, at: number[] | undefined, qu
   }
   if (!merged.length) return [];
 
-  const verdict = decide(surfaceKey, merged);
+  const verdict = decide(surfaceKey, merged, printed);
   const base = (m: Merged): number => {
     const clitics = m.seg.proclitics.length + m.seg.enclitics.length;
     let c = CONF_OWN - CONF_CLITIC * clitics;
@@ -644,23 +806,35 @@ function readSurface(token: RawToken, text: string, at: number[] | undefined, qu
     if (m.rows.every((r) => r.hand?.suffix && arKey(r.head) === m.stemKey)) c -= 0.4;
     return c;
   };
+  // a key the compiled core flags as holding only some of its lexemes, and whose shard is not installed: nothing is credited from "it is the only reading"
+  const partial = arKeyIsPartial(surfaceKey) || merged.some((m) => m.rows.some((r) => !r.hand && arKeyIsPartial(r.stemKey)));
+  const directExists = merged.some((m) => m.rows.some((r) => !r.viaLoose));
   const scored = merged.map((m) => {
     let c = base(m);
     const topLexeme = verdict.top.has(m.lexeme);
-    if (verdict.identity === 'main') c = topLexeme ? Math.min(c, CONF_MAIN) : Math.min(c, CONF_UNDECIDED);
+    if (verdict.identity === 'main' || verdict.identity === 'closed') c = topLexeme ? Math.min(c, verdict.topCap ?? CONF_MAIN) : Math.min(c, CONF_UNDECIDED);
     else if (verdict.identity === 'structural') c = topLexeme ? Math.min(c, CONF_STRUCTURAL) : Math.min(c, CONF_UNDECIDED);
     else if (verdict.identity === 'printed') c = topLexeme ? Math.min(c, CONF_PRINTED) : Math.min(c, CONF_UNDECIDED);
     else if (verdict.identity === 'undecided') c = Math.min(c, CONF_UNDECIDED);
     let identity: string | undefined = verdict.identity;
     // a lone lexeme with no evidence of its own on a very short key reads as a rare word, not a confident one (dialect and Persian words)
     if (!verdict.identity && surfaceKey.length <= 3 && level === 'none' && m.agreed === 0 && ['NOUN', 'VERB', 'ADJ', 'PROPN'].includes(m.pos) && m.rows.every((r) => !r.hand && !r.derived && r.info.count === 0)) { c = Math.min(c, CONF_UNDECIDED); identity = 'rare'; }
-    return { m, c, identity, marginal: merged.length > 1 && isMarginal(m, merged) };
+    // a reading reached only through the loose fold stays below any direct reading; alone, a closed-class word may be credited up to 0.60
+    if (m.rows.every((r) => r.viaLoose)) {
+      // the one case where a restored reading is creditable beside a direct one: the reviewed list names it (اكثر → أَكْثَر)
+      if (verdict.identity === 'main' && verdict.reviewed && topLexeme) c = Math.min(c, CONF_RESTORED_MAIN);
+      else c = directExists ? Math.min(c, CONF_UNDECIDED) : CLOSED_POS.has(m.pos) ? Math.min(c, CONF_STRUCTURAL) : Math.min(c, CONF_UNDECIDED);
+      if (!identity) identity = 'restored';
+    }
+    if (partial && !(verdict.identity === 'main' && verdict.reviewed && topLexeme)) { c = Math.min(c, CONF_UNDECIDED); identity = 'partial'; }
+    if (verdict.identity === 'closed' && partial && topLexeme) { c = Math.min(base(m), CONF_CLOSED); identity = 'closed'; }
+    return { m, c, identity, top: topLexeme, marginal: merged.length > 1 && isMarginal(m, merged) };
   });
 
   const forms = new Set(scored.map((s) => vocalizedWord(s.m)));
   const count = (s: { m: Merged }): number => Math.max(...s.m.rows.map((r) => r.info.count));
   const derivedCut = (s: { m: Merged }): number => (s.m.rows[0].derived ? (noClitics(s.m) ? 1 : 2) : 0);
-  scored.sort((a, b) => (b.c - a.c) || (Number(a.marginal) - Number(b.marginal)) || (derivedCut(a) - derivedCut(b)) || (count(b) - count(a))
+  scored.sort((a, b) => (b.c - a.c) || (Number(b.top) - Number(a.top)) || (Number(a.marginal) - Number(b.marginal)) || (derivedCut(a) - derivedCut(b)) || (count(b) - count(a))
     || ((a.m.seg.proclitics.length + a.m.seg.enclitics.length) - (b.m.seg.proclitics.length + b.m.seg.enclitics.length)) || a.m.lexeme.localeCompare(b.m.lexeme));
 
   // cap: the best of each lexeme first, then the rest in order
@@ -676,6 +850,7 @@ function readSurface(token: RawToken, text: string, at: number[] | undefined, qu
   for (const s of picked) {
     const c = toCandidate(s.m, printed, s.c, s.identity, surfaceKey, undefined);
     if (!c.notes) c.notes = {};
+    if (s.identity === 'partial') c.notes.lexicon = 'not loaded';
     if (level !== 'full' && forms.size > 1) c.notes.vowels = 'unresolved';
     // two readings with one lemma, one vocalized form and the same features are one reading (rows that differ only in a tag's order or a gender tag)
     const closedPos = c.pos === 'PRON' || c.pos === 'ADP' || c.pos === 'PART' || c.pos === 'CONJ' || c.pos === 'SCONJ' || c.pos === 'ADV' || c.pos === 'DET';

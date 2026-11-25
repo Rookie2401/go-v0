@@ -12,7 +12,7 @@
  *   AR_DIALECT_*    not here: the closed list of dialect markers belongs to the sentence package
  */
 import type { PartOfSpeech } from '../../core';
-import { arKey } from './text';
+import { arKey, arLoose } from './text';
 
 export interface ArClosedEntry {
   /** The word as written, with its vowels (what the printed vowels are compared with). */
@@ -159,6 +159,7 @@ put('لِكَيْ', 'SCONJ', 'so that, in order to (+ subjunctive)', { role: 'su
 put('إِذَنْ', 'ADV', 'then, in that case', { role: 'adverb', governs: 'subjunctive' });
 put('إِنَّ', 'PART', 'indeed, truly (inna: its subject is accusative)', { role: 'particle of emphasis', governs: 'accusative subject' });
 put('أَنَّ', 'SCONJ', 'that (anna: its subject is accusative)', { role: 'subordinator', governs: 'accusative subject' });
+put('لِأَنَّ', 'SCONJ', 'because (+ accusative subject)', { role: 'subordinator', governs: 'accusative subject' });
 put('كَأَنَّ', 'PART', 'as if (+ accusative subject)', { role: 'particle', governs: 'accusative subject' });
 put('لٰكِنَّ', 'CONJ', 'but (+ accusative subject)', { role: 'conjunction', governs: 'accusative subject' });
 put('لَيْتَ', 'PART', 'if only (+ accusative subject)', { role: 'particle', governs: 'accusative subject' });
@@ -179,6 +180,8 @@ put('نَعَمْ', 'INTJ', 'yes', { role: 'particle of answer' });
 put('بَلَى', 'INTJ', 'yes (answering a negative question)', { role: 'particle of answer' });
 put('كَلَّا', 'INTJ', 'no, never', { role: 'particle of answer' });
 put('يَا', 'PART', 'O (calls a person)', { role: 'vocative particle' });
+put('اللّٰه', 'PROPN', 'God', { role: 'the name of God (lām-prefixed and oath forms: لله, بالله, والله)' });
+put('تَاللّٰهِ', 'PROPN', 'by God (oath)', { lemma: 'اللّٰه', fusedOf: 'تَـ + اللّٰه', role: 'oath' });
 put('أَيْضًا', 'ADV', 'also, too', { role: 'adverb' });
 put('جِدًّا', 'ADV', 'very', { role: 'adverb' });
 put('فَقَطْ', 'ADV', 'only', { role: 'adverb' });
@@ -200,6 +203,16 @@ put('يَاأَيُّهَا', 'PART', 'O (you who …)', { fusedOf: 'يَا + أ
 AR_CLOSED[arKey('يَأَيُّهَا')] = AR_CLOSED[arKey('يَاأَيُّهَا')];
 
 export const arClosedFor = (key: string): readonly ArClosedEntry[] => AR_CLOSED[key] ?? [];
+
+let LOOSE: Map<string, string[]> | undefined;
+/** The entries whose key differs from `key` only by the loose fold (hamza seat, ى / ي, ة / ه): the readings of a loosely spelled closed-class word (الى for إلى). */
+export function arClosedLooseFor(key: string): readonly ArClosedEntry[] {
+  if (!LOOSE) {
+    LOOSE = new Map();
+    for (const k of Object.keys(AR_CLOSED)) { const l = arLoose(k); const x = LOOSE.get(l); if (x) x.push(k); else LOOSE.set(l, [k]); }
+  }
+  return (LOOSE.get(arLoose(key)) ?? []).filter((k) => k !== key).flatMap((k) => AR_CLOSED[k]);
+}
 
 // ───────────────────────────── hand priors ─────────────────────────────
 

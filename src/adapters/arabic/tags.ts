@@ -52,8 +52,8 @@ export const AR_LOWERED_USAGE: ReadonlySet<string> = new Set([
 /** Known labels that name no feature of the contract (markers of the extract, class markers, kinds of word). */
 const NON_FEATURE: ReadonlySet<string> = new Set([
   'canonical', 'romanization', 'table-tags', 'inflection-template', 'form-of', 'alt-of', 'error-unrecognized-form', 'error-unknown-tag', 'enclitic',
-  'ar-infl-a', 'ar-infl-in', 'ar-infl-an', 'ar-infl-u', 'ar-infl-ay', 'ar-infl-aw', 'ar-infl-iyy', 'ar-infl-ī', 'ar-infl-ā', 'ar-infl-i', 'ar-infl-ū',
-  'noun', 'verb', 'adjective', 'adverb', 'name', 'pronoun', 'relative', 'demonstrative', 'personal', 'transitive', 'intransitive', 'causative', 'reflexive',
+
+  'possessive', 'noun', 'verb', 'adjective', 'adverb', 'name', 'pronoun', 'relative', 'demonstrative', 'personal', 'transitive', 'intransitive', 'causative', 'reflexive',
   'no-gloss', 'Arabic', 'sound-masculine', 'sound-feminine', 'animate', 'inanimate', 'abstract', 'diminutive', 'relational', 'ellipsis',
   'form-i', 'form-ii', 'form-iii', 'form-iv', 'form-v', 'form-vi', 'form-vii', 'form-viii', 'form-ix', 'form-x', 'form-iq', 'form-iiq', 'form-iiiq', 'form-ivq',
   'non-past', 'past', 'perfective', 'imperfective', 'participle', 'noun-from-verb', 'singulative', 'elative', 'usually', 'sometimes', 'often', 'also',
@@ -95,7 +95,7 @@ function read(tags: readonly string[], pos: string | undefined, lex: string, cou
     const hit = LABELS[t];
     if (hit) { put(hit[0], hit[1]); continue; }
     if (AR_USAGE_LABELS.has(t)) { if (!usage.includes(t)) usage.push(t); continue; }
-    if (NON_FEATURE.has(t)) continue;
+    if (NON_FEATURE.has(t) || t.startsWith('ar-infl')) continue;
     if (countUnknown) UNKNOWN.set(t, (UNKNOWN.get(t) ?? 0) + 1);
   }
   const P = normPos(pos);

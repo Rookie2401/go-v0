@@ -1,0 +1,999 @@
+/// <reference types="node" />
+/**
+ * npm run ar:build-index -- [--in <kaikki-arabic.jsonl>] [--freq <ar_50k.txt>] [--out public/lexicon/ar/standard]
+ *                           [--core-out src/adapters/arabic/generated/core.ts] [--doc-out docs/arabic/INDEX.md]
+ *                           [--limit 1500000] [--core-budget 500000] [--date YYYY-MM-DD] [--definite strip|keep|drop]
+ *                           [--identities file.json] [--ambiguous-out file.tsv] [--probe word[,word…]] [--no-write]
+ *
+ * Builds the Arabic form index from the Wiktionary extract of kaikki.org (CC BY-SA 4.0): every conjugation and declension row, every
+ * head-line form without a page of its own and every form-of page of the extract becomes a reading of its written form (docs/arabic/PLAN.md,
+ * "The index build", and the lead's amendments of 2026-11-25). The lemma, the tags (kept verbatim, sorted, joined with "|"), the vowels and
+ * the root are the source's; nothing is analysed here, and every row, entry or form left out is counted. Writes
+ *   - the SHARDS (gzip, by prefix of the letters of the key, loose fold) and manifest.json under --out (git-ignored),
+ *   - the compiled CORE src/adapters/arabic/generated/core.ts (closed classes + the commonest lemmas, with every form),
+ *   - docs/arabic/INDEX.md (the figures).
+ * ar_50k.txt (subtitle text, CC BY-SA 4.0) is used for ORDER only (count, core selection, coverage): a spelling in it is never evidence
+ * that a form exists. Deterministic: same inputs and --date, same bytes.
+ */
+import crypto from 'node:crypto';
+import fs from 'node:fs';
+import path from 'node:path';
+import readline from 'node:readline';
+import zlib from 'node:zlib';
+import * as TEXT from '../src/adapters/arabic/text';
+import { ARABIC_LETTER, DAMMA, DAMMATAN, DAGGER_ALIF, FATHA, KASRA, SHADDA, arCanon, arKey, arLoose, arShardLetters, hasTashkil, packVocal, splitVocal, type LetterMarks } from '../src/adapters/arabic/text';
+import type { ArFormRow, ArLemmaRow, ArabicFormIndex } from '../src/adapters/arabic/index-store';
+
+const started = Date.now();
+const args = process.argv.slice(2).filter((a) => a !== '--');
+const opt: Record<string, string> = {};
+const flags = new Set<string>();
+for (let i = 0; i < args.length; i++) {
+  if (!args[i].startsWith('--')) { console.error(`bad argument ${args[i]}`); process.exit(1); }
+  if (args[i] === '--no-write') { flags.add('no-write'); continue; }
+  if (args[i + 1] === undefined) { console.error(`${args[i]} needs a value`); process.exit(1); }
+  opt[args[i].slice(2)] = args[i + 1]; i++;
+}
+const INPUT = opt.in ?? 'C:/Users/CJWal/dev/lisan-v0/data/dict/kaikki-arabic.jsonl';
+const FREQ = opt.freq ?? 'C:/Users/CJWal/dev/lisan-v0/data/dict/ar_50k.txt';
+const OUT = opt.out ?? 'public/lexicon/ar/standard';
+const CORE_OUT = opt['core-out'] ?? 'src/adapters/arabic/generated/core.ts';
+const DOC_OUT = opt['doc-out'] ?? 'docs/arabic/INDEX.md';
+const LIMIT = Number(opt.limit ?? 1_500_000);
+const CORE_BUDGET = Number(opt['core-budget'] ?? 500_000);
+const TODAY = opt.date ?? new Date().toISOString().slice(0, 10);
+const WRITE = !flags.has('no-write');
+const DEFINITE = (opt.definite ?? 'strip') as 'strip' | 'keep' | 'drop';
+const PROBES = (opt.probe ?? '').split(',').map((s) => s.trim()).filter(Boolean);
+const IDENTITIES = opt.identities;
+const AMBIGUOUS_OUT = opt['ambiguous-out'];
+const MAX_PREFIX = 3;
+for (const f of [INPUT, FREQ]) if (!fs.existsSync(f)) { console.error(`cannot read ${f}`); process.exit(1); }
+if (!['strip', 'keep', 'drop'].includes(DEFINITE)) { console.error('--definite must be strip, keep or drop'); process.exit(1); }
+
+// ───────────────────────────── source ─────────────────────────────
+
+const inStat = fs.statSync(INPUT);
+const sha256 = await new Promise<string>((resolve, reject) => {
+  const h = crypto.createHash('sha256');
+  fs.createReadStream(INPUT).on('data', (c) => h.update(c)).on('end', () => resolve(h.digest('hex'))).on('error', reject);
+});
+const SOURCE: ArabicFormIndex['source'] = {
+  label: 'Wiktionary Arabic entries, via kaikki.org',
+  licence: 'CC BY-SA 4.0',
+  url: 'https://kaikki.org/dictionary/Arabic/',
+  lastModified: inStat.mtime.toISOString().slice(0, 10),
+  retrieved: TODAY,
+  sha256,
+  note: `Every row is a conjugation or declension row, a head-line form or a "form of" page of Wiktionary; the labels, vowels and roots are the source's, kept as written. Input ${path.basename(INPUT)}: ${inStat.size} bytes, modified ${inStat.mtime.toISOString()}. Word frequencies (order only) from hermitdave FrequencyWords ar_50k (CC BY-SA 4.0). Nothing was analysed here.`,
+};
+
+// ───────────────────────────── helpers ─────────────────────────────
+
+const POS: Record<string, string> = { noun: 'NOUN', name: 'PROPN', verb: 'VERB', adj: 'ADJ', adv: 'ADV', pron: 'PRON', det: 'DET', article: 'DET', prep: 'ADP', conj: 'CONJ', particle: 'PART', num: 'NUM', intj: 'INTJ' };
+const CLOSED = new Set(['PRON', 'DET', 'ADP', 'CONJ', 'SCONJ', 'PART', 'NUM']);
+const NOMINAL = new Set(['NOUN', 'ADJ', 'PROPN', 'NUM']);
+const META_TAGS = new Set(['table-tags', 'inflection-template', 'romanization', 'canonical']);
+const TABLE_SOURCES = new Set(['declension', 'conjugation', 'inflection']);
+const CASE_TAGS = new Set(['nominative', 'accusative', 'genitive']);
+/** Labels a form-of sense carries that describe the FORM (kept on a page row); the rest of a sense's tags describe the page's use or head line. */
+const SENSE_FORM_TAGS = new Set(['plural', 'singular', 'dual', 'feminine', 'masculine', 'noun-from-verb', 'participle', 'active', 'passive', 'collective', 'singulative', 'construct', 'definite', 'indefinite', 'nominative', 'accusative', 'genitive', 'oblique', 'past', 'non-past', 'imperative', 'jussive', 'subjunctive', 'indicative', 'first-person', 'second-person', 'third-person', 'imperfective', 'perfective', 'comparative', 'superlative', 'elative', 'diminutive', 'paucal', 'relational', 'Classical', 'archaic', 'obsolete', 'dated', 'dialectal', 'colloquial', 'rare', 'uncommon', 'nonstandard', 'proscribed', 'misspelling', 'poetic', 'literary', 'pre-Classical', 'post-Classical']);
+const CLA_MARKS = new Set(['Classical', 'archaic', 'obsolete']);
+const MSA_MARKS = new Set(['Modern', 'modern']);
+const isObj = (x: unknown): x is Record<string, unknown> => typeof x === 'object' && x !== null && !Array.isArray(x);
+const str = (x: unknown): string | undefined => (typeof x === 'string' && x.trim() ? x.trim() : undefined);
+const list = (x: unknown): unknown[] => (Array.isArray(x) ? x : []);
+const strs = (x: unknown): string[] => list(x).map(str).filter((t): t is string => !!t);
+const inc = (m: Record<string, number>, k: string, n = 1): void => { m[k] = (m[k] ?? 0) + n; };
+const fmt = (n: number): string => n.toLocaleString('en');
+const pct = (a: number, b: number): string => (b ? `${((a / b) * 100).toFixed(1)} %` : '–');
+
+/** What a written form (or a multi-word head) may consist of: Arabic letters, marks, tatweel, ZWJ / ZWNJ (and single spaces between words of a head). */
+const WORD_RE = /^[\u0621-\u063A\u0641-\u064A\u0671\u06A9\u06CC\u0640\u200C\u200D\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED]+$/;
+const validWord = (s: string): boolean => WORD_RE.test(s);
+const validHead = (s: string): boolean => s.split(' ').every((w) => w.length > 0 && validWord(w));
+/** A head with its non-Arabic leading / trailing words removed ("قَبْلَ Audio:" → "قَبْلَ"). */
+function trimHead(s: string): string { const w = s.trim().split(/\s+/); while (w.length && !validWord(w[w.length - 1])) w.pop(); while (w.length && !validWord(w[0])) w.shift(); return w.join(' '); }
+const hasLetter = (s: string): boolean => ARABIC_LETTER.test(s);
+
+/** The source's first gloss cut at its first top-level "," or ";" (commas inside brackets stay), at most 80 characters. */
+function shortGloss(g: string): string {
+  let depth = 0;
+  let cut = g.length;
+  for (let i = 0; i < g.length; i++) {
+    const ch = g[i];
+    if (ch === '(' || ch === '[') depth++;
+    else if (ch === ')' || ch === ']') depth = Math.max(0, depth - 1);
+    else if ((ch === ',' || ch === ';') && depth === 0) { cut = i; break; }
+  }
+  let s = g.slice(0, cut).trim();
+  if (s.length > 80) { const sp = s.lastIndexOf(' ', 79); s = `${s.slice(0, sp > 20 ? sp : 79).trim()}…`; }
+  return s;
+}
+
+// ───────────────────────────── the lemma string convention (arHeadForm) ─────────────────────────────
+
+const buildForm = (key: string, marks: LetterMarks[]): string => {
+  let out = '';
+  for (let i = 0; i < key.length; i++) out += key[i] + marks[i].vowel + (marks[i].shadda ? SHADDA : '') + (marks[i].dagger ? DAGGER_ALIF : '');
+  return out.normalize('NFC');
+};
+/** Which rules of the convention (text.ts arHeadForm) changed a head, read off the difference of the marks before and after. */
+function ruleDiff(before: string, after: string): string[] {
+  const x = splitVocal(before), y = splitVocal(after);
+  const rules = new Set<string>();
+  if (x.key !== y.key) return ['key-changed'];
+  for (let i = 0; i < x.key.length; i++) {
+    const p = x.marks[i], q = y.marks[i];
+    if (p.vowel === q.vowel) continue;
+    if (!p.vowel && q.vowel === FATHA) rules.add('fatha-before-alif');
+    else if (p.vowel === FATHA && p.dagger && !q.vowel) rules.add('dagger-fatha');
+    else if (!p.vowel && q.vowel === KASRA && i === 0) rules.add('initial-kasra');
+    else if ((p.vowel === DAMMA || p.vowel === DAMMATAN) && !q.vowel && i === x.key.length - 1) rules.add('final-damma');
+    else rules.add('other');
+  }
+  return [...rules];
+}
+const arHeadForm = TEXT.arHeadForm;
+
+// ───────────────────────────── frequencies (order only) ─────────────────────────────
+
+const freq = new Map<string, number>();
+let freqTotal = 0;
+for (const line of fs.readFileSync(FREQ, 'utf8').split(/\r?\n/)) {
+  const i = line.lastIndexOf(' ');
+  if (i <= 0) continue;
+  const n = Number(line.slice(i + 1));
+  const w = line.slice(0, i).trim();
+  if (!(n > 0) || !hasLetter(w)) continue;
+  const k = arKey(w);
+  freq.set(k, (freq.get(k) ?? 0) + n);
+  freqTotal += n;
+}
+const identities: Record<string, string | null> = IDENTITIES ? (JSON.parse(fs.readFileSync(IDENTITIES, 'utf8')) as Record<string, string | null>) : {};
+
+// ───────────────────────────── the store being built ─────────────────────────────
+
+const codes: string[] = [];
+const codeNum = new Map<string, number>();
+function intern(tags: Iterable<string>): number {
+  const code = [...new Set(tags)].sort().join('|');
+  let n = codeNum.get(code);
+  if (n === undefined) { n = codes.length; codes.push(code); codeNum.set(code, n); }
+  return n;
+}
+
+const stats = {
+  lines: 0, vfBareLines: 0, headChanged: 0, entries: 0, lemmaEntries: 0, formPages: 0, vfPages: 0, mixedEntries: 0, altOnlyEntries: 0,
+  byPos: {} as Record<string, number>, skippedKinds: {} as Record<string, number>,
+  rowsTable: 0, rowsPageTable: 0, rowsHeadline: 0, rowsCitation: 0, rowsPage: 0, rowsVerbPage: 0,
+  skip: { dash: 0, noLetter: 0, space: 0, invalidChars: 0, errorTag: 0, emptyCode: 0, duplicate: 0, pageBlockedByRow: 0, headlineNotNew: 0, unresolvedTargets: 0, ambiguousTargets: 0, targetNoWord: 0, vfLineMismatch: 0, vfLineUnparsed: 0, pageTableMixed: 0, definiteDropped: 0, emptyTags: 0, headRejected: 0, pageNoForm: 0 },
+  definiteStripped: 0, definiteNoArticle: 0, shaddaCleared: 0,
+  headTrimmed: 0, headFromExpansion: 0, headUnvocalized: 0, headKeyMismatch: 0, noCanonical: 0,
+  ruleChanged: {} as Record<string, number>, mergedIds: 0, homonymPairs: 0, homonymExtra: 0,
+  participleDropped: 0, participleKept: 0,
+  rootEntries: 0, rootMalformed: 0, rootTemplate: 0, rootCategory: 0, rootBoth: 0, rootDisagree: 0, rootCategoryAmbiguous: 0, multiHeadEntries: 0, extraHeads: 0, multiCanonUnsplit: 0, aliasUncontracted: 0, vfFormFromRows: 0, firstPersonGender: 0, firstPersonMerged: 0, vfRowDisagree: 0, vfSubLines: 0, oneTableSplit: 0, oneTableUnmatched: 0, vfFormFromHead: 0, unvocRows: {} as Record<string, number>, genderTag: 0, genderHead: 0, declUniform: 0, declMixed: 0,
+  regCla: 0, regMsa: 0, resolvedByTier: { samePos: 0, nominal: 0, any: 0 } as Record<string, number>,
+};
+const invalidExamples: string[] = [];
+const invalidHeadExamples: string[] = [];
+const noteInvalid = (s: string): void => { const l = s.startsWith('head of ') ? invalidHeadExamples : invalidExamples; if (l.length < 20) l.push(s); };
+const registerTags: Record<string, number> = {};
+const unresolved = new Map<string, number>();
+
+type Cell = [form: string, code: number];
+interface Ent {
+  pos: string; word: string; head: string; headRaw: string; etym: number; gloss: string; order: number;
+  lex: Record<string, string>; root?: string; table: Cell[]; headline: Cell[]; citation?: number; lemma: number;
+}
+interface PageTarget { target: string; tags: string[]; form?: string }
+interface Page { key: string; pos: string; form: string; vf: boolean; targets: PageTarget[]; table: Cell[]; order: number }
+const ents: Ent[] = [];
+const pages: Page[] = [];
+
+// ───────────────────────────── pass 1: the extract ─────────────────────────────
+
+function headOf(e: Record<string, unknown>, word: string, key: string, forms: Record<string, unknown>[], expText?: string, explicit = false): { head: string; how: string } | undefined {
+  const cands: Array<{ s: string; how: string }> = [];
+  for (const f of forms) if (strs(f.tags).includes('canonical') && str(f.form)) cands.push({ s: String(f.form).normalize('NFC'), how: 'canonical' });
+  const exp = explicit ? expText : (expText ?? str(list(e.head_templates).filter(isObj)[0]?.expansion));
+  if (exp) { const t = exp.split('•')[0].trim(); if (t) cands.push({ s: t.normalize('NFC'), how: 'expansion' }); }
+  for (const c of cands) {
+    if (validHead(c.s) && hasLetter(c.s)) return { head: c.s, how: c.how };
+    const t = trimHead(c.s);
+    if (t && validHead(t) && hasLetter(t) && arKey(t) === key) { stats.headTrimmed++; return { head: t, how: c.how }; }
+  }
+  if (!cands.length && validHead(word) && hasLetter(word)) return { head: word, how: 'word' };
+  return undefined;
+}
+
+const ROOT_RE = /^[ء-يٱ](?: [ء-يٱ]){2,4}$/;
+const ROOT_CAT = /^Arabic terms belonging to the root (.+)$/;
+/** The entry's own root: the ar-root / ar-rootbox template, else the category "Arabic terms belonging to the root X" of its senses (when they all name one root). Never derived. */
+function rootOf(e: Record<string, unknown>): string | undefined {
+  let tmpl: string | undefined;
+  for (const t of list(e.etymology_templates).filter(isObj)) {
+    if (t.name !== 'ar-root' && t.name !== 'ar-rootbox') continue;
+    const r = str((t.args as Record<string, unknown> | undefined)?.['1']);
+    if (!r) continue;
+    if (ROOT_RE.test(r)) { tmpl = r; break; }
+    stats.rootMalformed++;
+  }
+  const cats = new Set<string>();
+  const catName = (c: unknown): string => (typeof c === 'string' ? c : isObj(c) ? String(c.name ?? '') : '');
+  for (const c of list(e.categories)) { const m = ROOT_CAT.exec(catName(c)); if (m && ROOT_RE.test(m[1].trim())) cats.add(m[1].trim()); }
+  for (const s of list(e.senses).filter(isObj)) for (const c of list(s.categories)) { const m = ROOT_CAT.exec(catName(c)); if (m && ROOT_RE.test(m[1].trim())) cats.add(m[1].trim()); }
+  if (tmpl) { stats.rootTemplate++; if (cats.size) { stats.rootBoth++; if (!cats.has(tmpl)) stats.rootDisagree++; } return tmpl; }
+  if (cats.size === 1) { stats.rootCategory++; return [...cats][0]; }
+  if (cats.size > 1) stats.rootCategoryAmbiguous++;
+  return undefined;
+}
+
+function cellsOf(forms: Record<string, unknown>[], wantHeadline: boolean): Cell[] {
+  const out: Cell[] = [];
+  for (const f of forms) {
+    const form = str(f.form);
+    if (!form) continue;
+    const tags = strs(f.tags);
+    if (wantHeadline ? f.source !== undefined : !TABLE_SOURCES.has(String(f.source))) continue;
+    if (tags.some((t) => META_TAGS.has(t))) continue;
+    if (tags.some((t) => t.startsWith('error-'))) { stats.skip.errorTag++; continue; }
+    if (!tags.length) { stats.skip.emptyTags++; continue; }
+    out.push([form.normalize('NFC'), intern(tags)]);
+  }
+  return out;
+}
+
+const EXP_LINE = /^#\s*(\S+)\s*\([^)]*\)(?:\s*\/[^/]*\/)?\s*:\s*(.+?)\s+of\s+(\S+)\s*\(/u;
+
+const EXP_INFL = /^#\s*(\S+)\s*\([^)]*\)(?:\s*\/[^/]*\/)?\s*:\s*inflection of\s+(\S+)\s*\(/u;
+const EXP_INFL_BARE = /^#\s*inflection of\s+(\S+)\s*\(/u;
+const EXP_BARE = /^#\s*([a-z][a-z/ -]*?)\s+of\s+(\S+)\s*\(/u;
+{
+  const rl = readline.createInterface({ input: fs.createReadStream(INPUT) });
+  let order = 0;
+  for await (const line of rl) {
+    if (!line.trim()) continue;
+    stats.lines++;
+    let e: unknown;
+    try { e = JSON.parse(line); } catch { continue; }
+    if (!isObj(e)) continue;
+    const posName = str(e.pos) ?? '';
+    const pos = POS[posName];
+    const word = str(e.word)?.normalize('NFC');
+    if (!pos || !word) { inc(stats.skippedKinds, posName || '(none)'); continue; }
+    stats.entries++;
+    inc(stats.byPos, pos);
+    const key = arKey(word);
+    const formRows = list(e.forms).filter(isObj);
+    const senses = list(e.senses).filter(isObj);
+    const isFormSense = (s: Record<string, unknown>): boolean => list(s.form_of).length > 0 || list(s.alt_of).length > 0;
+    const formSenses = senses.filter(isFormSense);
+    const lemmaSenses = senses.filter((s) => !isFormSense(s));
+    const vf = str(list(e.head_templates).filter(isObj)[0]?.name) === 'ar-verb form';
+    order++;
+
+    if (vf) {
+      // the page of an inflected verb form: the analysis is the text of the head line ("# form (translit) /ipa/: tags of target (translit)")
+      stats.formPages++; stats.vfPages++;
+      const exp = str(list(e.head_templates).filter(isObj)[0]?.expansion) ?? '';
+      const targets: PageTarget[] = [];
+            // the canonical rows of the page repeat the head line cut at "#" ("بنت # بِنْتُ", ipa, ": third-person … of X # بَنَيْتُ", …): the text after "#" of row i is the
+      // vocalized form of line i, which the head-line text itself leaves out for some lines
+      const rowForms: string[] = [];
+      for (const f of formRows) {
+        const t = str(f.form);
+        if (!t || f.source !== undefined || !strs(f.tags).includes('canonical') || !hasLetter(t)) continue;
+        const i = t.lastIndexOf('# ');
+        rowForms.push(i >= 0 ? t.slice(i + 2).trim().normalize('NFC') : '');
+      }
+      const firstHeadText = (exp.split('\n')[0] ?? '').split('•')[0].trim().normalize('NFC');
+      const firstHead = validWord(firstHeadText) && arKey(firstHeadText) === key ? firstHeadText : undefined;
+      const rawLines = exp.split('\n').slice(1).map((l) => l.trim()).filter((l) => l.startsWith('#'));
+      let hi = -1;
+      let cur: { form: string; target: string } | undefined;
+      const slashAlts = (tags: string[]): string[][] => tags.reduce<string[][]>((acc, t) => { const alts = t.split('/'); return acc.flatMap((a) => alts.map((x) => [...a, x])); }, [[]]);
+      for (const ln of rawLines) {
+        if (ln.startsWith('##')) {
+          // a reading listed under an "inflection of X:" header: "## second-person masculine singular non-past active indicative"
+          if (!cur) { stats.skip.vfLineUnparsed++; continue; }
+          const words = ln.replace(/^#+/, '').trim().split(/\s+/).filter(Boolean);
+          if (!words.length) { stats.skip.vfLineUnparsed++; continue; }
+          for (const tags of slashAlts(words)) targets.push({ target: cur.target, tags, form: cur.form });
+          stats.vfSubLines++;
+          continue;
+        }
+        hi++;
+        cur = undefined;
+        const fromRow = rowForms[hi] && validWord(rowForms[hi]) && arKey(rowForms[hi]) === key ? rowForms[hi] : undefined;
+        const infl = EXP_INFL.exec(ln);
+        if (infl) {
+          const form = infl[1].normalize('NFC');
+          if (validWord(form) && arKey(form) === key) cur = { form, target: infl[2].normalize('NFC') };
+          else stats.skip.vfLineMismatch++;
+          continue;
+        }
+        const m = EXP_LINE.exec(ln);
+        if (m) {
+          const form = m[1].normalize('NFC');
+          if (!validWord(form)) { stats.skip.invalidChars++; noteInvalid(`${word}: ${form}`); continue; }
+          if (arKey(form) !== key) { stats.skip.vfLineMismatch++; continue; }
+          if (fromRow && fromRow !== form) stats.vfRowDisagree++;
+          for (const tags of slashAlts(m[2].trim().split(/\s+/).filter(Boolean))) targets.push({ target: m[3].normalize('NFC'), tags, form });
+          continue;
+        }
+        const inflBare = EXP_INFL_BARE.exec(ln);
+        if (inflBare) { if (fromRow) stats.vfFormFromRows++; else stats.vfBareLines++; cur = { form: fromRow ?? word, target: inflBare[1].normalize('NFC') }; continue; }
+        const bare = EXP_BARE.exec(ln);
+        if (!bare) { stats.skip.vfLineUnparsed++; continue; }
+        // no vocalized form in the line: the one of the canonical row, else the page's word printed without vowels
+        const useForm = fromRow ?? (firstHead && rawLines.filter((l) => !l.startsWith('##')).length === 1 ? firstHead : undefined);
+        if (fromRow) stats.vfFormFromRows++; else if (useForm) stats.vfFormFromHead++; else stats.vfBareLines++;
+        for (const tags of slashAlts(bare[1].trim().split(/\s+/).filter(Boolean))) targets.push({ target: bare[2].normalize('NFC'), tags, form: useForm ?? word });
+      }
+      if (targets.length) pages.push({ key, pos, form: word, vf: true, targets, table: [], order });
+      continue;
+    }
+
+    // a lemma entry holds a sense that is not a form of something
+    if (lemmaSenses.length) {
+      // An entry may hold several head lines (رشد: رَشَدَ and رَشِدَ), each with its own table. The extract lists the canonical rows of the
+      // heads in order, then opens each table with a "table-tags" row: the n-th table belongs to the n-th canonical row. The entry is split
+      // only when the two counts agree; otherwise (one table, several canonical rows: a masculine and a feminine citation form) it stays one lexeme.
+      const isCanon = (f: Record<string, unknown>): boolean => f.source === undefined && strs(f.tags).includes('canonical') && !!str(f.form);
+      const isHeadRow = (f: Record<string, unknown>): boolean => isCanon(f) && (pos !== 'VERB' || strs(f.tags).every((t) => t === 'canonical' || /^form-/.test(t)));
+      const canonRows = formRows.filter(isHeadRow);
+      const tableMarks = formRows.filter((f) => TABLE_SOURCES.has(String(f.source)) && strs(f.tags).includes('table-tags')).length;
+      // one table and several verb heads (لعب: لَعَبَ and لَعِبَ): the table belongs to the head whose citation form is the table's own third person masculine singular past
+      const oneTable = pos === 'VERB' && canonRows.length >= 2 && tableMarks === 1;
+      const split = canonRows.length >= 2 && (tableMarks === canonRows.length || oneTable);
+      if (canonRows.length >= 2) { if (split) { stats.multiHeadEntries++; stats.extraHeads += canonRows.length - 1; if (oneTable) stats.oneTableSplit++; } else stats.multiCanonUnsplit++; }
+      let owner = 0;
+      if (oneTable) {
+        const cit = formRows.find((f) => TABLE_SOURCES.has(String(f.source)) && ['active', 'third-person', 'masculine', 'singular', 'past'].every((t) => strs(f.tags).includes(t)) && !strs(f.tags).includes('dual') && str(f.form));
+        const g = cit ? canonRows.findIndex((r) => arHeadForm(String(r.form).normalize('NFC'), 'VERB') === arHeadForm(String(cit.form).normalize('NFC'), 'VERB')) : -1;
+        if (g >= 0) owner = g; else stats.oneTableUnmatched++;
+      }
+      interface Grp { canon?: Record<string, unknown>; table: Record<string, unknown>[]; headline: Record<string, unknown>[]; exp?: string }
+      const heads = list(e.head_templates).filter(isObj).filter((h) => /^ar-(?!verb form)/.test(String(h.name)));
+      const grps: Grp[] = [];
+      if (split) {
+        for (let g = 0; g < canonRows.length; g++) grps.push({ canon: canonRows[g], table: [], headline: [], exp: heads.length === canonRows.length ? str(heads[g].expansion) : undefined });
+        let hi = -1, seg = -1;
+        for (const f of formRows) {
+          if (isCanon(f)) { hi++; continue; }
+          const tags = strs(f.tags);
+          if (TABLE_SOURCES.has(String(f.source))) { if (tags.includes('table-tags')) seg++; grps[oneTable ? owner : Math.min(Math.max(seg, 0), grps.length - 1)].table.push(f); }
+          else if (f.source === undefined) grps[Math.min(Math.max(hi, 0), grps.length - 1)].headline.push(f);
+        }
+      } else grps.push({ table: formRows, headline: formRows, exp: str(heads[0]?.expansion) });
+      const root = rootOf(e);
+      if (root) stats.rootEntries++;
+      const en = Number(e.etymology_number);
+      const glossSense = lemmaSenses.find((s) => strs(s.glosses).length && !strs(s.tags).includes('no-gloss'));
+      const gloss = shortGloss(strs(glossSense?.glosses)[0] ?? '');
+      // register: every sense carries a Classical / archaic / obsolete label → Cla; every sense carries Modern → Msa
+      const real = lemmaSenses.filter((s) => !strs(s.tags).includes('no-gloss') || strs(s.glosses).length);
+      for (const s of real) for (const t of strs(s.tags)) if (/^(Classical|archaic|obsolete|pre-Classical|post-Classical|dated|poetic|literary|rare|historical|dialectal|colloquial|Modern|modern|Standard|slang|vulgar|nonstandard|proscribed|regional|uncommon|formal|informal|Egypt|Levantine|Morocco|Yemen|Iraq|Kuwait|Palestine|Mauritania|al-Andalus)$/.test(t)) inc(registerTags, t);
+      const isCla = real.length > 0 && real.every((s) => strs(s.tags).some((t) => CLA_MARKS.has(t)));
+      const isMsa = !isCla && real.length > 0 && real.every((s) => strs(s.tags).some((t) => MSA_MARKS.has(t)));
+      for (const grp of grps) {
+        const h = headOf(e, word, key, grp.canon ? [grp.canon] : formRows, grp.exp, !!grp.canon);
+        if (!h) { stats.skip.headRejected++; noteInvalid(`head of ${word}: ${(grp.canon ? [grp.canon] : formRows.filter((f) => strs(f.tags).includes('canonical'))).map((f) => f.form).join(' / ').slice(0, 60)}`); continue; }
+        if (h.how === 'expansion') stats.headFromExpansion++;
+        if (h.how === 'word') stats.noCanonical++;
+        if (arKey(h.head) !== key) stats.headKeyMismatch++;
+        if (!hasTashkil(h.head)) stats.headUnvocalized++;
+        stats.lemmaEntries++;
+        if (formSenses.length) stats.mixedEntries++;
+        const canonRow = grp.canon ?? formRows.find((f) => strs(f.tags).includes('canonical') && str(f.form) && String(f.form).normalize('NFC') === h.head) ?? formRows.find((f) => strs(f.tags).includes('canonical'));
+        const canonTags = strs(canonRow?.tags);
+        const lex: Record<string, string> = {};
+        if (pos === 'NOUN' || pos === 'PROPN') {
+          const g = new Set<string>();
+          for (const t of canonTags) { if (t === 'masculine') g.add('Masc'); else if (t === 'feminine') g.add('Fem'); }
+          if (g.size) stats.genderTag++;
+          else {
+            const a = str((heads[0]?.args as Record<string, unknown> | undefined)?.['2']);
+            if (a) { for (const tok of a.split(/[-,\s/]/)) { if (tok === 'm') g.add('Masc'); else if (tok === 'f') g.add('Fem'); else if (tok === 'c') { g.add('Masc'); g.add('Fem'); } } if (g.size) stats.genderHead++; }
+          }
+          if (g.size) lex.Gender = [...g].sort().join(',');
+        }
+        if (pos === 'VERB') {
+          const ft = canonTags.find((t) => /^form-/.test(t)) ?? (grp.canon ? undefined : formRows.flatMap((f) => strs(f.tags)).find((t) => /^form-/.test(t)));
+          if (ft) { const f = ft.slice(5); lex.Form = f.endsWith('q') ? `${f.slice(0, -1).toUpperCase()}q` : f.toUpperCase(); }
+        }
+        const tableCells = cellsOf(grp.table, false);
+        // Decl: uniform over every row that carries a declension class
+        const decls = new Set<string>();
+        for (const f of grp.table) if (TABLE_SOURCES.has(String(f.source))) for (const t of strs(f.tags)) { if (t === 'triptote') decls.add('Trip'); else if (t === 'diptote') decls.add('Dip'); else if (t === 'invariable') decls.add('Indecl'); }
+        if (decls.size === 1) { lex.Decl = [...decls][0]; stats.declUniform++; } else if (decls.size > 1) stats.declMixed++;
+        if (isCla) { lex.Reg = 'Cla'; stats.regCla++; } else if (isMsa) { lex.Reg = 'Msa'; stats.regMsa++; }
+        const citeTags = canonTags.length ? canonTags : ['canonical'];
+        ents.push({ pos, word, head: h.head, headRaw: h.head, etym: Number.isFinite(en) ? en : 9999, gloss, order, lex, root, table: tableCells, headline: cellsOf(grp.headline, true), citation: intern(citeTags), lemma: -1 });
+      }
+    }
+
+    // a form page: every sense a form of something (or an alternative spelling of it); a lemma entry that also holds such senses has both
+    if (formSenses.length) {
+      const targets: PageTarget[] = [];
+      for (const s of formSenses) {
+        const base = strs(s.tags).filter((t) => SENSE_FORM_TAGS.has(t));
+        for (const fo of list(s.form_of).filter(isObj)) { const t = str(fo.word)?.normalize('NFC'); if (t) targets.push({ target: t, tags: base }); else stats.skip.targetNoWord++; }
+        for (const ao of list(s.alt_of).filter(isObj)) { const t = str(ao.word)?.normalize('NFC'); if (t) targets.push({ target: t, tags: [...base, 'alternative'] }); else stats.skip.targetNoWord++; }
+      }
+      if (targets.length) {
+        if (!lemmaSenses.length) { stats.formPages++; if (!formSenses.some((s) => list(s.form_of).length)) stats.altOnlyEntries++; }
+        const h = headOf(e, word, key, formRows);
+        const form = h?.head ?? word;
+        if (!h && !(validHead(word) && hasLetter(word))) { stats.skip.pageNoForm++; continue; }
+        pages.push({ key, pos, form, vf: false, targets, table: lemmaSenses.length ? [] : cellsOf(formRows, false), order });
+      }
+    }
+  }
+}
+console.log(`read ${fmt(stats.lines)} lines: ${fmt(stats.lemmaEntries)} lemma entries, ${fmt(stats.formPages)} form pages (${fmt(stats.vfPages)} verb-form pages), ${fmt(stats.mixedEntries)} lemma entries that also hold form-of senses`);
+
+// ───────────────────────────── lemma ids ─────────────────────────────
+
+const lemmaIds: string[] = [];
+const lemmaRows: ArLemmaRow[] = [];
+const lemmaKeys: string[][] = [];
+const lemmaOfEnt: number[] = [];
+const byKey = new Map<string, number[]>(); // key of a head → lemma numbers
+{
+  for (const en of ents) { en.head = arHeadForm(en.headRaw, en.pos); if (en.head !== arCanon(en.headRaw)) { stats.headChanged++; for (const x of ruleDiff(arCanon(en.headRaw), en.head)) inc(stats.ruleChanged, x); } }
+  const groups = new Map<string, Ent[]>();
+  for (const en of ents) { const g = `${en.head}|${en.pos}`; (groups.get(g) ?? groups.set(g, []).get(g)!).push(en); }
+  const cmp = (a: Ent, b: Ent): number => a.etym - b.etym || (a.gloss < b.gloss ? -1 : a.gloss > b.gloss ? 1 : 0) || a.order - b.order;
+  const make = (en: Ent, id: string): number => {
+    const n = lemmaIds.length;
+    lemmaIds.push(id);
+    const lexStr = Object.keys(en.lex).sort().map((k) => `${k}=${en.lex[k]}`).join('|');
+    lemmaRows.push(en.root ? [en.head, en.gloss, en.pos, lexStr, 0, en.root] : [en.head, en.gloss, en.pos, lexStr, 0]);
+    lemmaKeys.push([]);
+    const k = arKey(en.head);
+    (byKey.get(k) ?? byKey.set(k, []).get(k)!).push(n);
+    return n;
+  };
+  for (const [g, members] of [...groups.entries()].sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0))) {
+    members.sort(cmp);
+    // entries whose source spelling the convention CHANGED are other spellings of the entry spelled as the convention has it (when there is one): one id
+    const exact = members.filter((m) => m.headRaw === m.head);
+    const changed = members.filter((m) => m.headRaw !== m.head);
+    const idOf: number[] = [];
+    let nth = 0;
+    const next = (m: Ent): number => { nth++; return make(m, nth === 1 ? g : `${g}|${nth}`); };
+    for (const m of exact) m.lemma = next(m);
+    for (const m of changed) { if (exact.length) { m.lemma = exact[0].lemma; stats.mergedIds++; } else m.lemma = next(m); }
+    void idOf;
+    if (nth > 1) { stats.homonymPairs++; stats.homonymExtra += nth - 1; }
+    for (const m of members) lemmaOfEnt.push(m.lemma);
+  }
+}
+// the root of a merged entry fills a gap of the entry it merged into
+for (const en of ents) if (en.root && !lemmaRows[en.lemma][5]) lemmaRows[en.lemma][5] = en.root;
+console.log(`${fmt(lemmaIds.length)} lemma ids (${fmt(stats.mergedIds)} merged by the head convention, ${fmt(stats.homonymPairs)} head+POS pairs with several entries)`);
+
+// ───────────────────────────── rows ─────────────────────────────
+
+const forms = new Map<string, ArFormRow[]>();
+let origin = 'table';
+function addRaw(key: string, lemma: number, codeIn: number, vocal: string): boolean {
+  // the first person has no gender: a first-person cell is one row, whichever gender block of the table it came from
+  let code = codeIn;
+  let stripped = false;
+  const tg = tagsOf(codeIn);
+  if (tg.includes('first-person') && (tg.includes('masculine') || tg.includes('feminine'))) { code = intern(tg.filter((t) => t !== 'masculine' && t !== 'feminine')); stripped = true; stats.firstPersonGender++; }
+  let rows = forms.get(key);
+  if (!rows) { rows = []; forms.set(key, rows); }
+  for (const r of rows) if (r[0] === lemma && r[1] === code && (r[2] ?? '') === vocal) { stats.skip.duplicate++; if (stripped) stats.firstPersonMerged++; return false; }
+  if (!vocal) inc(stats.unvocRows, origin);
+  rows.push(vocal ? [lemma, code, vocal] : [lemma, code]);
+  const lk = lemmaKeys[lemma];
+  if (lk[lk.length - 1] !== key && !lk.includes(key)) lk.push(key);
+  return true;
+}
+const hasFormUnder = (key: string, lemma: number, vocal: string, any = false): boolean => (forms.get(key) ?? []).some((r) => r[0] === lemma && (any || (r[2] ?? '') === vocal));
+
+interface Prepared { key: string; vocal: string }
+/** A form as its key and packed vowels, or undefined (counted) when a rule leaves it out. `definite` rows lose their article (see --definite). */
+function prepare(form: string, tags: string[]): Prepared | undefined {
+  if (form === '-') { stats.skip.dash++; return undefined; }
+  if (/\s/.test(form)) { stats.skip.space++; return undefined; }
+  if (!validWord(form)) { stats.skip.invalidChars++; noteInvalid(form); return undefined; }
+  if (!hasLetter(form)) { stats.skip.noLetter++; return undefined; }
+  const f = arCanon(form);
+  if (tags.includes('definite')) {
+    const sp = splitVocal(f);
+    if (sp.key.startsWith('\u0627\u0644') && sp.key.length >= 4) {
+      if (DEFINITE === 'drop') { stats.skip.definiteDropped++; return undefined; }
+      if (DEFINITE === 'strip') {
+        const m = sp.marks.slice(2).map((x) => ({ ...x }));
+        if (m[0].shadda) { m[0].shadda = false; stats.shaddaCleared++; }
+        stats.definiteStripped++;
+        const key = sp.key.slice(2);
+        return { key, vocal: packVocal(buildForm(key, m)) };
+      }
+    } else stats.definiteNoArticle++;
+  }
+  return { key: arKey(f), vocal: packVocal(f) };
+}
+/** The sorted tags of a code, as an array. */
+const tagsOf = (code: number): string[] => codes[code].split('|');
+/** A vocalization with the last letter's vowel left out, for comparing a head with a participle cell. */
+function sigIgnoringEnding(form: string): string {
+  const { key, marks } = splitVocal(form);
+  const m = marks.map((x) => ({ ...x }));
+  if (m.length) m[m.length - 1].vowel = '';
+  return key + '\t' + packVocal(buildForm(key, m));
+}
+
+// the lemmas that could be a verb's participle or verbal noun: nominal lemmas by key
+const nominalSigs = new Map<string, Set<string>>();
+for (const en of ents) {
+  if (!NOMINAL.has(en.pos)) continue;
+  const k = arKey(en.head);
+  (nominalSigs.get(k) ?? nominalSigs.set(k, new Set()).get(k)!).add(sigIgnoringEnding(en.head));
+}
+
+origin = 'table';
+for (const en of ents) {
+  const lemma = en.lemma;
+  const isVerb = en.pos === 'VERB';
+  for (const [form, code] of en.table) {
+    const tags = tagsOf(code);
+    const p = prepare(form, tags);
+    if (!p) continue;
+    if (isVerb && (tags.includes('noun-from-verb') || tags.includes('participle'))) {
+      // a participle or verbal noun that has an entry of its own is that entry's lexeme, not the verb's reading
+      if (nominalSigs.get(p.key)?.has(sigIgnoringEnding(arHeadForm(form, 'NOUN')))) { stats.participleDropped++; continue; }
+      stats.participleKept++;
+    }
+    if (addRaw(p.key, lemma, code, p.vocal)) stats.rowsTable++;
+  }
+}
+origin = 'citation';
+// a lemma with no row under its own written form is read through its headword: the source's canonical row
+for (const en of ents) {
+  const p = prepare(en.headRaw, []);
+  if (!p) continue;
+  if (!hasFormUnder(p.key, en.lemma, packVocal(en.headRaw), true) && addRaw(p.key, en.lemma, en.citation!, p.vocal)) stats.rowsCitation++;
+}
+
+// ───────────────────────────── resolution of form pages ─────────────────────────────
+
+/** The lemma a target word names: same key and vowels, same part of speech first, then nominal, then any; undefined (counted) when none or several. */
+/** An uncontracted spelling of a doubled-consonant verb (ضَادَدَ) as the contracted one (ضَادَّ): the first of two identical letters, vowelled, folded into the second. */
+function contractDoubled(t: string): string | undefined {
+  const { key, marks } = splitVocal(t);
+  const m: LetterMarks[] = [];
+  const k: string[] = [];
+  let changed = false;
+  for (let i = 0; i < key.length; i++) {
+    const p = marks[i];
+    if (i + 1 < key.length && key[i] === key[i + 1] && (p.vowel === FATHA || p.vowel === DAMMA || p.vowel === KASRA) && !p.shadda && !marks[i + 1].shadda) {
+      k.push(key[i + 1]); m.push({ ...marks[i + 1], shadda: true }); i++; changed = true;
+    } else { k.push(key[i]); m.push({ ...p }); }
+  }
+  return changed ? buildForm(k.join(''), m) : undefined;
+}
+function resolve(target0: string, pagePos: string, vf: boolean): number | undefined {
+  let target = target0;
+  if (!byKey.get(arKey(target))?.length) { const c = contractDoubled(target); if (c && byKey.get(arKey(c))?.length) { target = c; stats.aliasUncontracted++; } }
+  const key = arKey(target);
+  const cands = byKey.get(key) ?? [];
+  const vocalized = hasTashkil(target);
+  const fits = (l: number): boolean => !vocalized || arHeadForm(target, lemmaRows[l][2]) === lemmaRows[l][0];
+  const tiers: Array<[string, number[]]> = vf
+    ? [['samePos', cands.filter((l) => lemmaRows[l][2] === 'VERB' && fits(l))]]
+    : [['samePos', cands.filter((l) => lemmaRows[l][2] === pagePos && fits(l))], ['nominal', cands.filter((l) => NOMINAL.has(lemmaRows[l][2]) && fits(l))], ['any', cands.filter(fits)]];
+  for (const [tier, list2] of tiers) {
+    const uniq = [...new Set(list2)];
+    if (uniq.length === 1) { stats.resolvedByTier[tier]++; return uniq[0]; }
+    if (uniq.length > 1) { stats.skip.ambiguousTargets++; return undefined; }
+  }
+  stats.skip.unresolvedTargets++;
+  unresolved.set(target, (unresolved.get(target) ?? 0) + 1);
+  return undefined;
+}
+
+const sameTags = (a: string[], b: string[]): boolean => [...a].sort().join('|') === [...b].sort().join('|');
+origin = 'page-table';
+const pageResolved: Array<Array<number | undefined>> = pages.map((p) => p.targets.map((t) => resolve(t.target, p.pos, p.vf)));
+// pages that own a table (a plural or feminine page with its declension): their rows filed under the target with the page's own labels added
+for (let i = 0; i < pages.length; i++) {
+  const p = pages[i];
+  if (!p.table.length) continue;
+  const ts = p.targets.map((t, j) => ({ t, l: pageResolved[i][j] })).filter((x) => x.l !== undefined);
+  if (!ts.length) continue;
+  if (ts.some((x) => !sameTags(x.t.tags, ts[0].t.tags) || x.l !== ts[0].l)) { stats.skip.pageTableMixed++; continue; }
+  for (const [form, code] of p.table) {
+    const tags = [...tagsOf(code), ...ts[0].t.tags];
+    const pr = prepare(form, tags);
+    if (!pr) continue;
+    if (addRaw(pr.key, ts[0].l!, intern(tags), pr.vocal)) stats.rowsPageTable++;
+  }
+}
+origin = 'page';
+// the page's own row, only where the lemma has no row for that key and vowels yet
+for (let i = 0; i < pages.length; i++) {
+  const p = pages[i];
+  for (let j = 0; j < p.targets.length; j++) {
+    const l = pageResolved[i][j];
+    if (l === undefined) continue;
+    const t = p.targets[j];
+    const form = t.form ?? p.form;
+    const tags = t.tags.length ? t.tags : ['form-of'];
+    const pr = prepare(form, tags);
+    if (!pr) continue;
+    if (hasFormUnder(pr.key, l, pr.vocal) || (!pr.vocal && hasFormUnder(pr.key, l, '', true))) { stats.skip.pageBlockedByRow++; continue; }
+    if (addRaw(pr.key, l, intern(tags), pr.vocal)) { if (p.vf) stats.rowsVerbPage++; else stats.rowsPage++; }
+  }
+}
+origin = 'headline';
+// head-line forms (plural, feminine, elative, non-past, verbal noun …) of a lemma entry, where the lemma has no row for that key and vowels yet
+for (const en of ents) {
+  for (const [form, code] of en.headline) {
+    const tags = tagsOf(code);
+    const pr = prepare(form, tags);
+    if (!pr) continue;
+    if (hasFormUnder(pr.key, en.lemma, pr.vocal) || (!pr.vocal && hasFormUnder(pr.key, en.lemma, '', true))) { stats.skip.headlineNotNew++; continue; }
+    if (addRaw(pr.key, en.lemma, code, pr.vocal)) stats.rowsHeadline++;
+  }
+}
+
+// ───────────────────────────── derived figures, counts ─────────────────────────────
+
+const keys = [...forms.keys()].sort();
+let rowTotal = 0;
+const holders = new Map<string, number>(); // key → number of distinct lemma ids
+for (const k of keys) { const rs = forms.get(k)!; rowTotal += rs.length; holders.set(k, new Set(rs.map((r) => r[0])).size); }
+const lemmasWithRows = lemmaKeys.filter((l) => l.length).length;
+const multiLemmaKeys = [...holders.values()].filter((n) => n > 1).length;
+
+// count: own keys' frequency + keys an identities file names this lemma for; shared undecided keys add nothing
+const idNum = new Map(lemmaIds.map((id, i) => [id, i]));
+const counts = new Array<number>(lemmaIds.length).fill(0);
+const shareCounts = new Array<number>(lemmaIds.length).fill(0); // the old definition (frequency / holders): used only to admit closed classes to the core
+let identityApplied = 0;
+let identityUnknown = 0;
+for (const k of keys) {
+  const f = freq.get(k) ?? 0;
+  const rs = forms.get(k)!;
+  const ls = [...new Set(rs.map((r) => r[0]))];
+  for (const l of ls) shareCounts[l] += f / ls.length;
+  if (!f) continue;
+  const named = identities[k];
+  if (named) { const n = idNum.get(named); if (n === undefined || !ls.includes(n)) identityUnknown++; else { counts[n] += f; identityApplied++; continue; } }
+  if (ls.length === 1) counts[ls[0]] += f;
+}
+for (let l = 0; l < lemmaRows.length; l++) lemmaRows[l][4] = Math.round(counts[l]);
+// share of running words by number of lemma ids of the key
+const shareBy: Record<string, number> = { '0': 0, '1': 0, '2': 0, '3': 0, '4+': 0 };
+for (const [k, f] of freq) { const n = holders.get(k) ?? 0; shareBy[n >= 4 ? '4+' : String(n)] += f; }
+console.log(`${fmt(keys.length)} keys, ${fmt(rowTotal)} rows, ${fmt(lemmaIds.length)} lemma ids (${fmt(lemmasWithRows)} with rows), ${fmt(codes.length)} distinct codes`);
+
+// ───────────────────────────── probes ─────────────────────────────
+
+const lineOf = (key: string, r: ArFormRow): string => `  ${TEXT.applyVocal(key, r[2])}  →  ${lemmaIds[r[0]]}  [${lemmaRows[r[0]][1]} ${lemmaRows[r[0]][3] || '-'} n=${lemmaRows[r[0]][4]}${lemmaRows[r[0]][5] ? ` root=${lemmaRows[r[0]][5]}` : ''}]  ${codes[r[1]]}`;
+for (const w of PROBES) {
+  const key = arKey(w);
+  console.log(`probe ${w} (key ${key})`);
+  for (const r of forms.get(key) ?? []) console.log(lineOf(key, r));
+  if (!forms.has(key)) console.log('  (no reading)');
+}
+
+// ───────────────────────────── ambiguous keys (a scratch report for the lead) ─────────────────────────────
+
+if (AMBIGUOUS_OUT) {
+  const amb = [...freq].filter(([k]) => (holders.get(k) ?? 0) >= 2).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)).slice(0, 1500);
+  const lines = amb.map(([k, f]) => {
+    const byLemma = new Map<number, string[]>();
+    for (const r of forms.get(k)!) (byLemma.get(r[0]) ?? byLemma.set(r[0], []).get(r[0])!).push(codes[r[1]]);
+    const parts = [...byLemma].map(([l, cs]) => `${lemmaIds[l]}\t${lemmaRows[l][2]}\t${lemmaRows[l][1].slice(0, 40)}\t${[...new Set(cs)].slice(0, 3).map((c) => c.slice(0, 60)).join(' ; ')}`);
+    return `${k}\t${f}\t${parts.join('\t')}`;
+  });
+  fs.mkdirSync(path.dirname(AMBIGUOUS_OUT), { recursive: true });
+  fs.writeFileSync(AMBIGUOUS_OUT, `${lines.join('\n')}\n`);
+  console.log(`ambiguous report: ${lines.length} keys → ${AMBIGUOUS_OUT}`);
+}
+
+// ───────────────────────────── shards ─────────────────────────────
+
+function buildIndex(id: string, shard: string | undefined, theKeys: string[], rowFilter?: (lemma: number, key: string) => boolean): ArabicFormIndex {
+  const lcodes: string[] = [];
+  const lcode = new Map<number, number>();
+  const lids: string[] = [];
+  const llemma = new Map<number, number>();
+  const lemmas: Record<string, ArLemmaRow> = {};
+  const out: Record<string, ArFormRow[]> = {};
+  const loose: Record<string, string[]> = {};
+  for (const k of theKeys) {
+    const rows: ArFormRow[] = [];
+    for (const r of forms.get(k)!) {
+      if (rowFilter && !rowFilter(r[0], k)) continue;
+      let li = llemma.get(r[0]);
+      if (li === undefined) { li = lids.length; lids.push(lemmaIds[r[0]]); llemma.set(r[0], li); lemmas[lemmaIds[r[0]]] = lemmaRows[r[0]]; }
+      let ci = lcode.get(r[1]);
+      if (ci === undefined) { ci = lcodes.length; lcodes.push(codes[r[1]]); lcode.set(r[1], ci); }
+      rows.push(r[2] === undefined ? [li, ci] : [li, ci, r[2]]);
+    }
+    if (!rows.length) continue;
+    out[k] = rows;
+    const lf = arLoose(k);
+    if (lf !== k) (loose[lf] ??= []).push(k);
+  }
+  return { schema: 1, id, ...(shard !== undefined ? { shard } : {}), source: SOURCE, built: TODAY, codes: lcodes, lemmaIds: lids, lemmas, forms: out, loose };
+}
+
+interface ShardOut { prefix: string; file: string; plain: number; gz: number; keys: number; buf: Buffer }
+const shardOuts: ShardOut[] = [];
+const lettersOf = new Map<string, string>();
+for (const k of keys) lettersOf.set(k, arShardLetters(k));
+const fileOf = (prefix: string): string => `${prefix === '_' ? '_' : [...prefix].map((c) => (c.codePointAt(0) as number).toString(16)).join('-')}.json.gz`;
+
+function emitShard(prefix: string, theKeys: string[]): void {
+  const idx = buildIndex('kaikki-ar-tables', prefix, theKeys);
+  const plain = JSON.stringify(idx);
+  const buf = zlib.gzipSync(plain, { level: 9 });
+  shardOuts.push({ prefix, file: fileOf(prefix), plain: Buffer.byteLength(plain), gz: buf.length, keys: Object.keys(idx.forms).length, buf });
+}
+function split(prefix: string, theKeys: string[], depth: number): void {
+  const size = Buffer.byteLength(JSON.stringify(buildIndex('kaikki-ar-tables', prefix, theKeys)));
+  if (size <= LIMIT || depth >= MAX_PREFIX) { emitShard(prefix, theKeys); return; }
+  const own: string[] = [];
+  const kids = new Map<string, string[]>();
+  for (const k of theKeys) { const l = lettersOf.get(k)!; if (l.length <= depth) own.push(k); else { const p = l.slice(0, depth + 1); (kids.get(p) ?? kids.set(p, []).get(p)!).push(k); } }
+  if (own.length) emitShard(prefix, own);
+  for (const p of [...kids.keys()].sort()) split(p, kids.get(p)!, depth + 1);
+}
+{
+  const noLetter: string[] = [];
+  const first = new Map<string, string[]>();
+  for (const k of keys) { const l = lettersOf.get(k)!; if (!l) noLetter.push(k); else (first.get(l[0]) ?? first.set(l[0], []).get(l[0])!).push(k); }
+  if (noLetter.length) emitShard('_', noLetter);
+  for (const p of [...first.keys()].sort()) split(p, first.get(p)!, 1);
+}
+shardOuts.sort((a, b) => (a.prefix < b.prefix ? -1 : a.prefix > b.prefix ? 1 : 0));
+const gzTotal = shardOuts.reduce((s, x) => s + x.gz, 0);
+const plainTotal = shardOuts.reduce((s, x) => s + x.plain, 0);
+const largest = shardOuts.reduce((m, x) => (x.plain > m.plain ? x : m), shardOuts[0]);
+const largestGz = shardOuts.reduce((m, x) => (x.gz > m.gz ? x : m), shardOuts[0]);
+console.log(`${shardOuts.length} shards, ${(gzTotal / 1e6).toFixed(2)} MB gzip (${(plainTotal / 1e6).toFixed(1)} MB plain); largest ${largest.prefix} ${(largest.plain / 1e6).toFixed(2)} MB plain; largest gzip ${largestGz.prefix} ${(largestGz.gz / 1e6).toFixed(2)} MB`);
+
+// the merging experiment: rows of one (key, lemma) whose vowels differ only on the last letter and whose labels differ only in the case
+// (an upper bound of what storing them once would save; a merged row could not say WHICH case, so nothing is merged unless size forces it)
+let mergeable = 0;
+let mergeableBytes = 0;
+for (const k of keys) {
+  const seen = new Set<string>();
+  for (const r of forms.get(k)!) {
+    const code = tagsOf(r[1]).filter((t) => !CASE_TAGS.has(t)).join('|');
+    const v = r[2] ?? '';
+    const sig = `${r[0]}\t${code}\t${v.slice(0, Math.max(0, k.length - 1))}`;
+    if (seen.has(sig)) { mergeable++; mergeableBytes += JSON.stringify(r).length + 1; } else seen.add(sig);
+  }
+}
+console.log(`merging experiment: ${fmt(mergeable)} rows (${fmt(mergeableBytes)} bytes of JSON) would be saved by storing one row per (key, lemma, labels without case, vowels without the last letter's)`);
+
+// ───────────────────────────── core ─────────────────────────────
+
+const eligible = new Uint8Array(lemmaIds.length);
+for (const rows of forms.values()) for (const r of rows) eligible[r[0]] = 1;
+const lemmaOrder: number[] = [];
+for (let l = 0; l < lemmaIds.length; l++) if (eligible[l]) lemmaOrder.push(l);
+const idCmp = (a: number, b: number): number => (lemmaIds[a] < lemmaIds[b] ? -1 : lemmaIds[a] > lemmaIds[b] ? 1 : 0);
+const byShare = (a: number, b: number): number => shareCounts[b] - shareCounts[a] || idCmp(a, b);
+// closed classes whose written form occurs in the frequency list (by any key), then the seed, then the open classes by count
+const closed = lemmaOrder.filter((l) => CLOSED.has(lemmaRows[l][2]) && shareCounts[l] >= 1).sort(byShare);
+// The core holds, of a chosen lemma, the rows under the keys that occur in ar_50k and under the lemma's own written form (--core-rows seen, default), or every row (all).
+// A row is never made up: the frequency list only decides which of the source's rows the bootstrap core carries; the shards hold the rest.
+const CORE_ROWS = opt['core-rows'] ?? 'seen';
+const headKeyOf = (l: number): string => arKey(lemmaRows[l][0]);
+const inCore = (l: number, k: string): boolean => CORE_ROWS === 'all' || freq.has(k) || k === headKeyOf(l);
+// open classes by the ar_50k weight of their OWN keys per byte they would take in the core (a verb's hundred forms cost more than a noun's nine)
+const estBytes = new Float64Array(lemmaIds.length);
+for (const [k, rows] of forms) {
+  const h = holders.get(k) ?? 1;
+  for (const r of rows) if (inCore(r[0], k)) estBytes[r[0]] += 8 + (r[2]?.length ?? 0);
+  for (const l of new Set(rows.map((r) => r[0]))) if (inCore(l, k)) estBytes[l] += (2 * k.length + 6) / h;
+}
+const density = (l: number): number => (lemmaRows[l][4] + 0.001 * shareCounts[l]) / Math.max(1, estBytes[l]);
+const open = lemmaOrder.filter((l) => !CLOSED.has(lemmaRows[l][2]) && lemmaRows[l][4] >= 1).sort((a, b) => density(b) - density(a) || idCmp(a, b));
+const SEED = ['\u0643\u064E\u062A\u064E\u0628\u064E', '\u0643\u0650\u062A\u064E\u0627\u0628']; // كَتَبَ, كِتَاب: the examples of the tests and of the documentation
+const seedIds: number[] = [];
+{
+  const taken = new Set(closed);
+  for (const s of SEED) for (const l of lemmaOrder) if (lemmaIds[l].startsWith(`${arHeadForm(s, lemmaRows[l][2])}|`) && !taken.has(l)) { taken.add(l); seedIds.push(l); }
+}
+const seeded = new Set(seedIds);
+// ranking of the open classes: --core-rank own (the weight of a lemma's OWN keys per byte, as above) or marginal (default: the frequency of the keys
+// it would ADD to the keys already covered, per byte: a verb whose forms are all shared with others still counts for what nobody else covers)
+const CORE_RANK = opt['core-rank'] ?? 'marginal';
+function marginalOrder(first: number[]): number[] {
+  const covered = new Set<string>();
+  for (const l of first) for (const k of lemmaKeys[l]) covered.add(k);
+  const gain = (l: number): number => { let v = 0; for (const k of lemmaKeys[l]) if (!covered.has(k)) v += freq.get(k) ?? 0; return v; };
+  const cands = lemmaOrder.filter((l) => !CLOSED.has(lemmaRows[l][2]) && !first.includes(l));
+  const heap: Array<[number, number]> = []; // [density, lemma]
+  const less = (a: [number, number], b: [number, number]): boolean => a[0] < b[0] || (a[0] === b[0] && idCmp(a[1], b[1]) > 0);
+  const push = (x: [number, number]): void => { heap.push(x); let i = heap.length - 1; while (i > 0) { const p = (i - 1) >> 1; if (less(heap[p], heap[i])) { [heap[p], heap[i]] = [heap[i], heap[p]]; i = p; } else break; } };
+  const pop = (): [number, number] => { const top = heap[0]; const last = heap.pop()!; if (heap.length) { heap[0] = last; let i = 0; for (;;) { const l = 2 * i + 1, r = l + 1; let m = i; if (l < heap.length && less(heap[m], heap[l])) m = l; if (r < heap.length && less(heap[m], heap[r])) m = r; if (m === i) break; [heap[m], heap[i]] = [heap[i], heap[m]]; i = m; } } return top; };
+  for (const l of cands) { const g = gain(l); if (g > 0) push([g / Math.max(1, estBytes[l]), l]); }
+  const out: number[] = [];
+  let bytes = 0;
+  while (heap.length && bytes < CORE_BUDGET * 3) {
+    const [d, l] = pop();
+    const g = gain(l);
+    const nd = g / Math.max(1, estBytes[l]);
+    if (g <= 0) continue;
+    if (nd < d - 1e-12) { push([nd, l]); continue; }
+    out.push(l); bytes += estBytes[l];
+    for (const k of lemmaKeys[l]) covered.add(k);
+  }
+  return out;
+}
+const ranked = CORE_RANK === 'own' ? [...closed, ...seedIds, ...open.filter((l) => !seeded.has(l))] : [...closed, ...seedIds, ...marginalOrder([...closed, ...seedIds])];
+const fixedCount = closed.length + seedIds.length;
+
+function coreWith(n: number): ArabicFormIndex {
+  const chosen = new Set(ranked.slice(0, n));
+  const theKeys = [...new Set(ranked.slice(0, n).flatMap((l) => lemmaKeys[l].filter((k) => inCore(l, k))))].sort();
+  const idx = buildIndex('ar-core', undefined, theKeys, (l, k) => chosen.has(l) && inCore(l, k));
+  idx.stats = { lemmas: 99999, closedLemmas: 99999, keys: 999999, rows: 999999, tokenCoverage: 0.9999, tokens: 99999999, seedLemmas: 9999 };
+  return idx;
+}
+const coreSize = (n: number): number => Buffer.byteLength(JSON.stringify(coreWith(n)));
+function fitCore(budget: number): number {
+  let lo = Math.min(fixedCount, ranked.length);
+  let hi = ranked.length;
+  if (coreSize(lo) > budget) console.warn(`warning: the closed classes plus the seed exceed a core budget of ${budget} bytes; they are kept`);
+  while (lo < hi) { const mid = Math.ceil((lo + hi) / 2); if (coreSize(mid) <= budget) lo = mid; else hi = mid - 1; }
+  return lo;
+}
+const coverageOf = (c: ArabicFormIndex): number => { let covered = 0; for (const [k, n] of freq) if (c.forms[k]) covered += n; return Math.round((covered / freqTotal) * 10000) / 10000; };
+const projections: string[] = [];
+for (const b of [350_000, 500_000, 800_000]) { const n = fitCore(b); projections.push(`${fmt(b)} bytes: ${n} lemmas, tokenCoverage ${coverageOf(coreWith(n))}`); }
+console.log(`core budget projections (nothing stored): ${projections.join('; ')}`);
+const lo = fitCore(CORE_BUDGET);
+const core = coreWith(lo);
+const tokenCoverage = coverageOf(core);
+const coreRows = Object.values(core.forms).reduce((s, r) => s + r.length, 0);
+core.stats = { lemmas: core.lemmaIds.length, closedLemmas: Math.min(closed.length, lo), seedLemmas: seedIds.length, keys: Object.keys(core.forms).length, rows: coreRows, tokenCoverage, tokens: freqTotal };
+const coreJson = JSON.stringify(core);
+const coreBytes = Buffer.byteLength(coreJson);
+console.log(`core: ${core.lemmaIds.length} lemmas (${Math.min(closed.length, lo)} closed-class), ${core.stats.keys} keys, ${coreRows} rows, ${fmt(coreBytes)} bytes of JSON, tokenCoverage ${tokenCoverage} over ${fmt(freqTotal)} running words`);
+
+// ───────────────────────────── output ─────────────────────────────
+
+const codeUse = new Map<string, number>();
+for (const rows of forms.values()) for (const r of rows) codeUse.set(codes[r[1]], (codeUse.get(codes[r[1]]) ?? 0) + 1);
+const topCodes = [...codeUse].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1));
+const tagCount = new Map<string, number>();
+for (const [c, n] of codeUse) for (const t of c.split('|')) tagCount.set(t, (tagCount.get(t) ?? 0) + n);
+const posLine = Object.entries(stats.byPos).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${fmt(v)}`).join(', ');
+const skippedLine = Object.entries(stats.skippedKinds).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${fmt(v)}`).join(', ');
+const topUnresolved = [...unresolved].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1));
+const lemmaByPos: Record<string, number> = {};
+const rootByPos: Record<string, [number, number]> = {};
+for (let l = 0; l < lemmaIds.length; l++) { const p = lemmaRows[l][2]; inc(lemmaByPos, p); (rootByPos[p] ??= [0, 0])[0]++; if (lemmaRows[l][5]) rootByPos[p][1]++; }
+const lexCount: Record<string, number> = {};
+for (const r of lemmaRows) for (const kv of r[3].split('|')) if (kv) inc(lexCount, kv);
+const ruleLine = Object.entries(stats.ruleChanged).map(([k, v]) => `${k} ${fmt(v)}`).join(', ');
+const s = stats.skip;
+const doc = `# Arabic form index: build of ${TODAY}
+
+Built by \`npm run ar:build-index\` (\`scripts/ar-build-index.mts\`) from \`${path.basename(INPUT)}\` (Wiktionary via kaikki.org, CC BY-SA 4.0; ${fmt(inStat.size)} bytes, modified ${inStat.mtime.toISOString()}, sha256 \`${sha256}\`)
+with word frequencies from \`${path.basename(FREQ)}\` (hermitdave FrequencyWords, subtitle text, CC BY-SA 4.0: used for order only, never as evidence that a form exists). Every row is a
+Wiktionary table row, a head-line form or a "form of" page; the tag bundles, vowels and roots are the source's, verbatim. Nothing was analysed here. Definite rows: \`--definite ${DEFINITE}\`.
+Lemma string convention: \`arHeadForm\` of \`arabic/text.ts\`.
+
+| measure | value |
+|---|---|
+| input lines | ${fmt(stats.lines)} |
+| entries read (mapped parts of speech) | ${fmt(stats.entries)} (${posLine}) |
+| kinds of entry skipped | ${skippedLine} |
+| lemma entries / form pages (of which "ar-verb form" pages) / lemma entries that also hold form-of senses | ${fmt(stats.lemmaEntries)} / ${fmt(stats.formPages)} (${fmt(stats.vfPages)}) / ${fmt(stats.mixedEntries)} |
+| pages that are only alternative spellings (alt-of) | ${fmt(stats.altOnlyEntries)} |
+| lemma ids by part of speech | ${Object.entries(lemmaByPos).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${fmt(v)}`).join(', ')} |
+| lemma ids (with at least one row) | ${fmt(lemmaIds.length)} (${fmt(lemmasWithRows)}) |
+| head + POS pairs with more than one entry (extra ids \`|2\`, \`|3\` … ordered by etymology number, then first gloss) | ${fmt(stats.homonymPairs)} (${fmt(stats.homonymExtra)} extra ids) |
+| lemma ids merged because the head convention made two source spellings one | ${fmt(stats.mergedIds)} |
+| heads changed by each rule of the convention (an entry can count under several) | ${ruleLine || 'none'} (heads changed in all: ${fmt(stats.headChanged)}, attributed by the marks that differ) |
+| form keys | ${fmt(keys.length)} |
+| readings (rows) | ${fmt(rowTotal)} |
+| rows by origin: lemma table / form-page table / headword with no row under its form (canonical) / form-of page / verb-form page / head-line form | ${fmt(stats.rowsTable)} / ${fmt(stats.rowsPageTable)} / ${fmt(stats.rowsCitation)} / ${fmt(stats.rowsPage)} / ${fmt(stats.rowsVerbPage)} / ${fmt(stats.rowsHeadline)} |
+| keys with more than one lemma id | ${fmt(multiLemmaKeys)} |
+| distinct tag bundles (codes) | ${fmt(codes.length)} |
+| definite rows (\`${DEFINITE}\`): article stripped from the key / without an article / dropped / shadda of an assimilated article cleared | ${fmt(stats.definiteStripped)} / ${fmt(stats.definiteNoArticle)} / ${fmt(s.definiteDropped)} / ${fmt(stats.shaddaCleared)} |
+| entries with several head lines and as many tables, split into one lemma per head (extra lemmas gained) / entries with several canonical rows but one table, kept as one lexeme | ${fmt(stats.multiHeadEntries)} (${fmt(stats.extraHeads)}) / ${fmt(stats.multiCanonUnsplit)} |
+| of those split with ONE table and several verb heads (the table goes to the head whose citation form is the table's own 3ms past) / such tables matching no head (go to the first) | ${fmt(stats.oneTableSplit)} / ${fmt(stats.oneTableUnmatched)} |
+| uncontracted spellings of a doubled verb resolved to the contracted lemma (ضَادَدَ → ضَادَّ), uses | ${fmt(stats.aliasUncontracted)} |
+| first-person rows whose gender label was removed / of those, merged into a row already there | ${fmt(stats.firstPersonGender)} / ${fmt(stats.firstPersonMerged)} |
+| rows with no vowels (empty vocal) by origin | ${Object.entries(stats.unvocRows).map(([k, v]) => `${k} ${fmt(v)}`).join(', ') || 'none'} |
+| verb-form lines whose vocalized form came from the canonical rows of the page / whose canonical row disagreed with the head-line text / vocalized form taken from the page's own single head line / readings listed as "##" sub-lines under an "inflection of" header | ${fmt(stats.vfFormFromRows)} / ${fmt(stats.vfRowDisagree)} / ${fmt(stats.vfFormFromHead)} / ${fmt(stats.vfSubLines)} |
+| roots by source: template only / category only / template and category (of which different) / category with several roots (left out) | ${fmt(stats.rootTemplate - stats.rootBoth)} / ${fmt(stats.rootCategory)} / ${fmt(stats.rootBoth)} (${fmt(stats.rootDisagree)}) / ${fmt(stats.rootCategoryAmbiguous)} |
+| verb cells for a participle or verbal noun: dropped because a lemma entry of its own has that form / kept under the verb | ${fmt(stats.participleDropped)} / ${fmt(stats.participleKept)} |
+| rows left out: "-" cells / no letter / with a space / invalid characters / template error labels / empty label list / exact duplicates | ${fmt(s.dash)} / ${fmt(s.noLetter)} / ${fmt(s.space)} / ${fmt(s.invalidChars)} / ${fmt(s.errorTag)} / ${fmt(s.emptyTags)} / ${fmt(s.duplicate)} |
+| lemma heads rejected as invalid (entry left out) / trimmed to a valid head / taken from the head-line text / unvocalized / canonical key differs from the page word / no canonical row, page word used | ${fmt(s.headRejected)} / ${fmt(stats.headTrimmed)} / ${fmt(stats.headFromExpansion)} / ${fmt(stats.headUnvocalized)} / ${fmt(stats.headKeyMismatch)} / ${fmt(stats.noCanonical)} |
+| form-page rows not added because the lemma already has a row for the key and vowels / head-line forms not added for the same reason | ${fmt(s.pageBlockedByRow)} / ${fmt(s.headlineNotNew)} |
+| form-of targets with no lemma entry / with several equally good ones (no row added) / resolved through the same POS, the nominal group, any POS | ${fmt(s.unresolvedTargets)} (${fmt(unresolved.size)} distinct) / ${fmt(s.ambiguousTargets)} / ${fmt(stats.resolvedByTier.samePos)}, ${fmt(stats.resolvedByTier.nominal)}, ${fmt(stats.resolvedByTier.any)} |
+| verb-form lines that gave no vocalized form (page word used) / form-of senses with no target word / verb-form lines that did not parse / whose form is another key / pages without a form / form pages whose own table mixed senses | ${fmt(stats.vfBareLines)} / ${fmt(s.targetNoWord)} / ${fmt(s.vfLineUnparsed)} / ${fmt(s.vfLineMismatch)} / ${fmt(s.pageNoForm)} / ${fmt(s.pageTableMixed)} |
+| Gender of nouns: from the canonical row's labels / from the head template | ${fmt(stats.genderTag)} / ${fmt(stats.genderHead)} |
+| Decl: lemmas whose rows agree on one class / that mix classes (no Decl) | ${fmt(stats.declUniform)} / ${fmt(stats.declMixed)} |
+| lex features on lemma ids | ${Object.entries(lexCount).sort((a, b) => b[1] - a[1]).slice(0, 40).map(([k, v]) => `${k} ${fmt(v)}`).join(', ')} |
+| Reg=Cla (every sense Classical, archaic or obsolete) / Reg=Msa (every sense Modern) — lemma entries | ${fmt(stats.regCla)} / ${fmt(stats.regMsa)} |
+| roots (the ar-root / ar-rootbox template, else the root category of the senses; malformed templates ignored: ${stats.rootMalformed}) | ${Object.entries(rootByPos).sort((a, b) => b[1][0] - a[1][0]).map(([p, [n, r]]) => `${p} ${fmt(r)}/${fmt(n)} (${pct(r, n)})`).join(', ')} |
+| shards | ${shardOuts.length} (prefixes of up to ${MAX_PREFIX} letters; limit ${fmt(LIMIT)} bytes of JSON) |
+| shard bytes | ${(gzTotal / 1e6).toFixed(2)} MB gzip, ${(plainTotal / 1e6).toFixed(1)} MB plain |
+| largest shard | \`${largest.prefix}\` ${(largest.plain / 1e6).toFixed(2)} MB plain, ${(largest.gz / 1e6).toFixed(2)} MB gzip (largest gzip: \`${largestGz.prefix}\` ${(largestGz.gz / 1e6).toFixed(2)} MB) |
+| merging experiment (upper bound of rows storable once: same key, lemma, labels but case, vowels but the last letter's) | ${fmt(mergeable)} rows, ${fmt(mergeableBytes)} bytes of JSON |
+| core rows | ${CORE_ROWS} (seen = a chosen lemma's rows under keys that occur in ar_50k and under its own written form; all = every row) |
+| core ranking | ${CORE_RANK} (own = weight of a lemma's own keys per byte; marginal = frequency of the keys it adds to those already covered, per byte) |
+| core | ${core.lemmaIds.length} lemmas (${Math.min(closed.length, lo)} of closed classes, ${seedIds.length} seeded), ${core.stats.keys} keys, ${coreRows} rows, ${fmt(coreBytes)} bytes of JSON (budget ${fmt(CORE_BUDGET)}) |
+| core token coverage on ar_50k (running words whose key is a core key) | ${(tokenCoverage * 100).toFixed(2)} % of ${fmt(freqTotal)} (clitic forms are not keys) |
+| identities file | ${IDENTITIES ? `${IDENTITIES}: ${fmt(identityApplied)} keys applied, ${fmt(identityUnknown)} naming a lemma that does not hold the key` : 'none given'} |
+
+## Count (order of readings)
+
+\`count\` = the summed ar_50k frequency of the keys that no other lemma id has a row for, plus the keys an identities file names the lemma for. Shared keys add nothing.
+Share of ar_50k running words by the number of lemma ids their key has in this index: 0 ids ${pct(shareBy['0'], freqTotal)}, 1 id ${pct(shareBy['1'], freqTotal)}, 2 ids ${pct(shareBy['2'], freqTotal)}, 3 ids ${pct(shareBy['3'], freqTotal)}, 4 or more ${pct(shareBy['4+'], freqTotal)}
+(the lead's audit measured 18.6 / 28.5 / 19.3 / 10.0 / 23.6 % on its own build). Closed classes are admitted to the core by the old share (frequency / holders) because their keys are often shared.
+
+## Core budget projections (not stored)
+
+${projections.map((p) => `- ${p}`).join('\n')}
+
+## Register and period labels found on senses (counts of senses)
+
+${Object.entries(registerTags).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${fmt(v)}`).join(', ')}
+
+\`Reg=Cla\` needs every sense to carry Classical, archaic or obsolete; \`Reg=Msa\` every sense to carry Modern or modern. Other labels (dated, poetic, literary, rare, historical, pre-/post-Classical, dialect and country names) are not turned into a Reg value.
+
+## Rejected forms (first 20)
+
+${invalidExamples.map((x) => `- ${x}`).join('\n') || 'none'}
+
+## Rejected heads (first 20; the extract also holds entries of the Arabic section written in Hebrew script (Judeo-Arabic) and a few English glosses)
+
+${invalidHeadExamples.map((x) => `- ${x}`).join('\n') || 'none'}
+
+## Unresolved form-of targets (top 50)
+
+${topUnresolved.slice(0, 50).map(([w, n]) => `- ${w} (${n})`).join('\n')}
+
+## The 40 commonest tag bundles
+
+${topCodes.slice(0, 40).map(([c, n]) => `- \`${c}\` ${fmt(n)}`).join('\n')}
+
+## Every tag that occurs in a bundle
+
+${[...tagCount].sort((a, b) => (a[0] < b[0] ? -1 : 1)).map(([t, n]) => `${t} ${fmt(n)}`).join(', ')}
+`;
+
+if (WRITE) {
+  fs.rmSync(OUT, { recursive: true, force: true });
+  fs.mkdirSync(OUT, { recursive: true });
+  for (const o of shardOuts) fs.writeFileSync(path.join(OUT, o.file), o.buf);
+  const manifest = {
+    schema: 1 as const, id: 'kaikki-ar-tables', built: TODAY, source: SOURCE,
+    shards: Object.fromEntries(shardOuts.map((o) => [o.prefix, { file: o.file, bytes: o.gz, keys: o.keys }])),
+    stats: { shards: shardOuts.length, keys: keys.length, rows: rowTotal, lemmas: lemmasWithRows, plainBytes: plainTotal, bytes: gzTotal, largestPlainBytes: largest.plain },
+  };
+  fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify(manifest));
+  const header = `/* GENERATED by scripts/ar-build-index.mts on ${TODAY} — do not edit. The compact core of the Arabic form index: every lemma of the closed classes (pronouns, determiners, prepositions, conjunctions, particles, numerals) seen in the frequency list and then the commonest open-class lemmas, each with every form of its table, ${core.lemmaIds.length} lemmas, ${core.stats.keys} forms, ${coreRows} readings, ${fmt(coreBytes)} bytes of JSON, covering ${(tokenCoverage * 100).toFixed(1)} % of the running words of the ar_50k list. Full index: public/lexicon/ar/standard/ (npm run ar:build-index).
+ * Sources: Wiktionary via kaikki.org (${SOURCE.licence}; extract modified ${SOURCE.lastModified}); word frequencies (order only) from hermitdave FrequencyWords ar_50k (CC BY-SA 4.0). */
+import type { ArabicFormIndex } from '../index-store';
+
+export const AR_CORE: ArabicFormIndex = `;
+  fs.mkdirSync(path.dirname(CORE_OUT), { recursive: true });
+  fs.writeFileSync(CORE_OUT, `${header}${coreJson};\n`);
+  fs.mkdirSync(path.dirname(DOC_OUT), { recursive: true });
+  fs.writeFileSync(DOC_OUT, doc);
+}
+console.log(`reg: Cla ${stats.regCla}, Msa ${stats.regMsa}; participles dropped ${stats.participleDropped}, kept ${stats.participleKept}; merged ids ${stats.mergedIds}; rules ${ruleLine}`);
+console.log(`definite (${DEFINITE}): stripped ${stats.definiteStripped}; rows: table ${fmt(stats.rowsTable)}, page table ${fmt(stats.rowsPageTable)}, citation ${fmt(stats.rowsCitation)}, page ${fmt(stats.rowsPage)}, verb page ${fmt(stats.rowsVerbPage)}, headline ${fmt(stats.rowsHeadline)}`);
+console.log(`skipped: ${JSON.stringify(s)}; kinds: ${skippedLine}`);
+console.log(`share by lemma-id count: ${JSON.stringify(Object.fromEntries(Object.entries(shareBy).map(([k, v]) => [k, pct(v, freqTotal)])))}`);
+console.log(`wall time ${((Date.now() - started) / 1000).toFixed(1)} s${WRITE ? '' : ' (nothing written)'}`);

@@ -502,6 +502,10 @@ ${['그', '구', '분'].map((w) => `- ${w}: ${lexEntries.filter((e) => e.lemma =
 
 The card's short line is one flat list over the entries of the bare key. For a set with a MAIN entry the bare key holds only the main entry. For a BALANCED set each entry's first sense is prefixed (entry L), where L is the entry's homonym number through koEntryLabel (index-store.ts), the same rule the card uses: the source's number below 50, a letter for a number this product assigned (50 = a, 51 = b), x1, x2 for a supplement row (91 = x1). It is the identity number, not a position. When the bare key holds entries of more than one class (전 as noun, prefix, name, determiner) every entry's first sense also names its class: (noun), (prefix), (noun, entry 2).
 
+### Nouns whose source entry carries a counter category (kept as NOUN rows)
+
+A noun entry is an NNG row whatever counter category or later counter sense it has (入 mouth, 잔 cup): a counter is its own entry (the source's pos counter), a separate item with clf, never a homonym of the noun. Nouns the source files with a counter category: ${report.counterNouns.length}: ${[...new Set(report.counterNouns)].sort().join(', ')}. Before this rule 9 spellings had ONLY a clf row although the source has a noun entry: 가락, 꼭지, 두름, 바닥, 번, 쌍, 입, 잔, 편.
+
 ### Noun and root rows with \hada\
 
 ${report.hada.total} rows (nouns and roots) have a verb or adjective X하다 built on them; ${report.hada.listedOnly.length} of them have no X하다 row of their own (the source's derived terms list it): ${report.hada.listedOnly.slice(0, 60).join(', ')}.

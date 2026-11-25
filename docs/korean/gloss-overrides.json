@@ -301,7 +301,6 @@
     {"lemma":"살","pos":"CLF","hom":0,"gloss":"years of age (native numerals)","senses":[1],"was":"years of age (of a person) (takes native numerals)"},
     {"lemma":"개월","pos":"CLF","hom":0,"gloss":"months (counter)","senses":[1],"was":"months"},
     {"lemma":"마리","pos":"CLF","hom":0,"gloss":"counter for animals","senses":[1],"was":"animals"},
-    {"lemma":"잔","pos":"CLF","hom":0,"gloss":"cup; glass (of a drink)","senses":[1,2],"was":"a drinking cup"},
     {"lemma":"무어","pos":"PRON","hom":0,"gloss":"what","senses":[1],"was":"What."},
     {"lemma":"어찌","pos":"ADV","hom":0,"gloss":"how, in what way","senses":[1],"was":"How"},
     {"lemma":"분명히","pos":"ADV","hom":0,"gloss":"obviously, clearly","senses":[1],"was":"In an obvious manner."},
@@ -310,6 +309,8 @@
     {"lemma":"제","pos":"PRON","hom":1,"gloss":"I; my (polite)","senses":[1,2],"was":"allomorph of 저 (jeo, first-person singular polite pronoun) before -가 (-ga,…","own":true},
     {"lemma":"지","pos":"NOUN","hom":1,"gloss":"since (a time)","senses":[1],"was":"only used in -은 지 (-eun ji, “since”)."},
     {"lemma":"도","pos":"CLF","hom":0,"gloss":"degree (temperature); degree (angle)","senses":[2,3],"was":"bound"},
-    {"lemma":"풀리다","pos":"VERB","hom":0,"gloss":"to come untied; to be solved; to ease off","senses":[1],"was":"To be untied.","own":true}
+    {"lemma":"풀리다","pos":"VERB","hom":0,"gloss":"to come untied; to be solved; to ease off","senses":[1],"was":"To be untied.","own":true},
+    {"lemma":"달","pos":"NOUN","hom":1,"gloss":"moon; month","senses":[1],"was":"moon","own":true},
+    {"lemma":"반","pos":"NOUN","hom":2,"gloss":"class (at a school); group, party","senses":[2,1],"was":"party"}
   ]
 }

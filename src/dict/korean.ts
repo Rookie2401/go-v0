@@ -286,7 +286,7 @@ export function koHeadword(r: KoRaw): { lemma: string } | { skip: string } {
   return { lemma: w };
 }
 
-export interface KoClass { tag?: KoTag; clf?: true; skip?: string; /** the word this entry is a contraction of */ contraction?: string }
+export interface KoClass { counterNoun?: true; tag?: KoTag; clf?: true; skip?: string; /** the word this entry is a contraction of */ contraction?: string }
 
 const CONTRACTION_GLOSS = /^(?:an?\s+)?(?:[\p{L}'’-]+\s+){0,3}?contraction of\b/iu;
 const CONTENT_POS = new Set(['noun', 'name', 'pron', 'num', 'verb', 'adj', 'det', 'adv', 'intj']);
@@ -326,7 +326,7 @@ export function koClassify(r: KoRaw, ev: KoSuffixEvidence): KoClass {
   const out = ((): KoClass => {
     switch (r.pos) {
       case 'noun':
-        if (r.counterCat) return { tag: 'NNB', clf: true };
+        // a noun entry stays a NOUN row whatever counter category or later counter sense it has: a counter is its own entry (pos counter), another item
         return { tag: (live?.tags.includes('dependent') || r.depCat) ? 'NNB' : 'NNG' };
       case 'counter': return { tag: 'NNB', clf: true };
       case 'name': return { tag: 'NNP' };
@@ -359,6 +359,7 @@ export function koClassify(r: KoRaw, ev: KoSuffixEvidence): KoClass {
     }
   })();
   if (ct && out.tag) out.contraction = ct;
+  if (r.pos === 'noun' && r.counterCat && out.tag) out.counterNoun = true;
   return out;
 }
 
@@ -509,6 +510,7 @@ export interface KoReport {
   xrefResolved: number;
   xrefEmpty: number;
   glossOverrides: number;
+  counterNouns: string[];
   sentenceGlosses: number;
   haGained: number;
   haOther: string[];
@@ -553,7 +555,7 @@ const normGlossKey = (g: string | undefined): string => (g ?? '').toLowerCase().
 export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: KoRow[]; report: KoReport } {
   const report: KoReport = {
     read: raws.length, kept: 0, keptByPos: {}, skipped: {}, skippedByTag: {}, merges: 0, mergedSameEtym: [], assignedRows: [], mergedSameWord: [], orderSets: [], irrDisagree: [], noTable: 0, noClass: [], byShape: 0,
-    voiceBoth: [], voicePairs: [], mixedDependent: 0, maj: [], majFirstOnly: [], sets: [], contractionPos: [], contractionKept: [], contractionFused: [], xrefResolved: 0, xrefEmpty: 0, glossOverrides: 0, sentenceGlosses: 0, haGained: 0, haOther: [], relatedPairs: [], voiceDecided: 0, hada: { total: 0, listedOnly: [] }, voiceUndecided: [], actionNouns: {}, xrefStart: {}, tableDisagree: [], politeDropped: [], politeKept: [], rootsKept: 0, rootsAsNoun: [], bound: [], supplement: [], glossOwn: [],
+    voiceBoth: [], voicePairs: [], mixedDependent: 0, maj: [], majFirstOnly: [], sets: [], contractionPos: [], contractionKept: [], contractionFused: [], xrefResolved: 0, xrefEmpty: 0, glossOverrides: 0, counterNouns: [], sentenceGlosses: 0, haGained: 0, haOther: [], relatedPairs: [], voiceDecided: 0, hada: { total: 0, listedOnly: [] }, voiceUndecided: [], actionNouns: {}, xrefStart: {}, tableDisagree: [], politeDropped: [], politeKept: [], rootsKept: 0, rootsAsNoun: [], bound: [], supplement: [], glossOwn: [],
   };
   const ev = koSuffixEvidence(raws);
   // the passive and causative verbs that a base verb's ko-verb-set names
@@ -574,6 +576,7 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
     if (c.contraction && /\+\s*-/.test(r.senses[0]?.glosses[0] ?? '')) { report.contractionFused.push({ word: h.lemma, target: `${c.contraction} + particle` }); continue; }
     const row: KoRow = { lemma: h.lemma, tag: c.tag, lines: [r.no], senseCount: r.senses.length, rawPos: r.pos, relWords: r.relatedWords, senseTexts: r.senses.map((x) => ({ full: x.glosses.join(' — '), short: x.glosses.length > 1 && x.glosses[0].endsWith(':') ? `${x.glosses[0]} ${x.glosses[1]}` : x.glosses[0] ?? '' })) };
     if (c.clf) row.clf = true;
+    if (c.counterNoun) report.counterNouns.push(h.lemma);
     if (r.etym !== undefined) row.etym = r.etym;
     if (c.contraction) {
       row.contraction = c.contraction;
@@ -946,6 +949,8 @@ export async function koDictionaryPlan(file: string, docs: KoDocs = koLoadDocs()
   const { rows } = koBuildRows(await koReadSlim(file), docs);
   const homByLine = new Map<number, number>();
   const info = new Map<string, KoDictInfo>();
+  // a counter row answers to the keys of a noun or an unclassed entry only when no noun row of the same spelling and number holds them
+  const clfLate: Array<[string, KoDictInfo]> = [];
   for (const r of rows) {
     if (r.hom !== undefined) for (const l of r.lines) homByLine.set(l, r.hom);
     const etym = r.hom ?? (r.etym !== undefined ? Number(r.etym) : undefined);
@@ -955,8 +960,9 @@ export async function koDictionaryPlan(file: string, docs: KoDocs = koLoadDocs()
     if (r.ownText) i.ownText = r.ownText;
     if (koSharedPos(r) === 'CLF') i.cls = 'counter';
     { const d = docs.decisions?.sets.find((x) => x.lemma === r.lemma && x.pos === (koSharedPos(r) ?? r.tag) && x.state === 'balanced' && x.first !== undefined); if (d && d.first === r.hom) i.first = true; }
-    if (i.state || i.prefer || i.ownText || i.cls || i.first) { const pos = koSharedPos(r) ?? 'X'; info.set(infoKey(r.lemma, pos, etym), i); if (pos === 'CLF') { info.set(infoKey(r.lemma, 'NOUN', etym), i); info.set(infoKey(r.lemma, 'X', etym), i); } }
+    if (i.state || i.prefer || i.ownText || i.cls || i.first) { const pos = koSharedPos(r) ?? 'X'; info.set(infoKey(r.lemma, pos, etym), i); if (pos === 'CLF') { clfLate.push([infoKey(r.lemma, 'NOUN', etym), i], [infoKey(r.lemma, 'X', etym), i]); } }
   }
+  for (const [k, i] of clfLate) if (!info.has(k)) info.set(k, i);
   const reorder = (e: DictionaryEntry, i: KoDictInfo): void => {
     if (i.prefer?.length && e.senses?.length) {
       const first: NonNullable<DictionaryEntry['senses']> = [];

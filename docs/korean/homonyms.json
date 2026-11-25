@@ -134,28 +134,6 @@
    "hanja": "假道"
   },
   {
-   "lemma": "가락",
-   "tag": "NNB",
-   "clf": true,
-   "hom": 50,
-   "assigned": true,
-   "fp": "[\"\",\"spindle\",\"NNB\",1]",
-   "set": "balanced",
-   "by": "decision",
-   "gloss": "spindle"
-  },
-  {
-   "lemma": "가락",
-   "tag": "NNB",
-   "clf": true,
-   "hom": 51,
-   "assigned": true,
-   "fp": "[\"\",\"counter for any long\",\"NNB\",1]",
-   "set": "balanced",
-   "by": "decision",
-   "gloss": "counter for any long"
-  },
-  {
    "lemma": "가람",
    "tag": "NNG",
    "hom": 1,
@@ -1266,6 +1244,15 @@
    "set": "balanced",
    "by": "default",
    "gloss": "armor"
+  },
+  {
+   "lemma": "갑",
+   "tag": "NNG",
+   "hom": 2,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "box",
+   "hanja": "匣"
   },
   {
    "lemma": "갑",
@@ -4199,7 +4186,7 @@
    "lemma": "공",
    "tag": "NNG",
    "hom": 1,
-   "set": "balanced",
+   "set": "main",
    "by": "decision",
    "gloss": "ball"
   },
@@ -4207,7 +4194,7 @@
    "lemma": "공",
    "tag": "NNG",
    "hom": 3,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "merits",
    "hanja": "功"
@@ -4216,7 +4203,7 @@
    "lemma": "공",
    "tag": "NNG",
    "hom": 4,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "gong"
   },
@@ -4224,7 +4211,7 @@
    "lemma": "공",
    "tag": "NNG",
    "hom": 5,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "public affairs"
   },
@@ -4232,7 +4219,7 @@
    "lemma": "공",
    "tag": "NNG",
    "hom": 6,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "seme"
   },
@@ -8237,28 +8224,6 @@
    "gloss": "grasping tightly"
   },
   {
-   "lemma": "꼭지",
-   "tag": "NNB",
-   "clf": true,
-   "hom": 50,
-   "assigned": true,
-   "fp": "[\"\",\"knob\",\"NNB\",1]",
-   "set": "balanced",
-   "by": "default",
-   "gloss": "knob"
-  },
-  {
-   "lemma": "꼭지",
-   "tag": "NNB",
-   "clf": true,
-   "hom": 51,
-   "assigned": true,
-   "fp": "[\"\",\"bunches\",\"NNB\",1]",
-   "set": "balanced",
-   "by": "default",
-   "gloss": "bunches"
-  },
-  {
    "lemma": "꼴",
    "tag": "NNG",
    "hom": 1,
@@ -8935,6 +8900,23 @@
    "by": "decision",
    "own": true,
    "gloss": "you; your"
+  },
+  {
+   "lemma": "년",
+   "tag": "NNG",
+   "hom": 1,
+   "set": "main",
+   "by": "only-current",
+   "gloss": "bitch"
+  },
+  {
+   "lemma": "년",
+   "tag": "NNG",
+   "hom": 2,
+   "set": "other",
+   "by": "only-current",
+   "gloss": "year",
+   "hanja": "年"
   },
   {
    "lemma": "노",
@@ -10464,7 +10446,7 @@
    "hom": 1,
    "set": "main",
    "by": "decision",
-   "gloss": "moon"
+   "gloss": "moon; month"
   },
   {
    "lemma": "달",
@@ -11937,6 +11919,15 @@
   {
    "lemma": "도",
    "tag": "NNG",
+   "hom": 2,
+   "set": "balanced",
+   "by": "decision",
+   "gloss": "bound",
+   "hanja": "度"
+  },
+  {
+   "lemma": "도",
+   "tag": "NNG",
    "hom": 3,
    "set": "balanced",
    "by": "decision",
@@ -13122,28 +13113,6 @@
    "gloss": "= 두루미: A crane"
   },
   {
-   "lemma": "두름",
-   "tag": "NNB",
-   "clf": true,
-   "hom": 50,
-   "assigned": true,
-   "fp": "[\"\",\"long bundle of fish\",\"NNB\",1]",
-   "set": "balanced",
-   "by": "default",
-   "gloss": "long bundle of fish"
-  },
-  {
-   "lemma": "두름",
-   "tag": "NNB",
-   "clf": true,
-   "hom": 51,
-   "assigned": true,
-   "fp": "[\"\",\"a unit of counting 20 fish in two braids of 10 fish per single braid\",\"NNB\",1]",
-   "set": "balanced",
-   "by": "default",
-   "gloss": "a unit of counting 20 fish in two braids of 10 fish per single braid"
-  },
-  {
    "lemma": "두시",
    "tag": "NNG",
    "hom": 1,
@@ -13454,16 +13423,16 @@
    "lemma": "떡",
    "tag": "NNG",
    "hom": 1,
-   "set": "balanced",
-   "by": "default",
+   "set": "main",
+   "by": "decision",
    "gloss": "rice cake"
   },
   {
    "lemma": "떡",
    "tag": "NNG",
    "hom": 2,
-   "set": "balanced",
-   "by": "default",
+   "set": "other",
+   "by": "decision",
    "gloss": "wide"
   },
   {
@@ -13922,6 +13891,15 @@
    "by": "decision",
    "gloss": "way",
    "hanja": "理"
+  },
+  {
+   "lemma": "리",
+   "tag": "NNG",
+   "hom": 2,
+   "set": "balanced",
+   "by": "decision",
+   "gloss": "village",
+   "hanja": "里"
   },
   {
    "lemma": "리",
@@ -17160,6 +17138,14 @@
   {
    "lemma": "바",
    "tag": "NNG",
+   "hom": 3,
+   "set": "other",
+   "by": "decision",
+   "gloss": "bar"
+  },
+  {
+   "lemma": "바",
+   "tag": "NNG",
    "hom": 4,
    "set": "other",
    "by": "decision",
@@ -17326,7 +17312,7 @@
    "hom": 6,
    "set": "other",
    "by": "decision",
-   "gloss": "being the banker or dealer in gambling"
+   "gloss": "unit of money spent during a round of gambling"
   },
   {
    "lemma": "박",
@@ -17352,6 +17338,14 @@
    "set": "balanced",
    "by": "default",
    "gloss": "conveys the sound of scratching"
+  },
+  {
+   "lemma": "박",
+   "tag": "NNG",
+   "hom": 6,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "being the banker or dealer in gambling"
   },
   {
    "lemma": "박",
@@ -17478,7 +17472,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "decision",
-   "gloss": "party",
+   "gloss": "class (at a school); group, party",
    "hanja": "班"
   },
   {
@@ -22410,6 +22404,14 @@
   {
    "lemma": "사리",
    "tag": "NNG",
+   "hom": 1,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "mass of noodles"
+  },
+  {
+   "lemma": "사리",
+   "tag": "NNG",
    "hom": 2,
    "set": "balanced",
    "by": "default",
@@ -25310,7 +25312,7 @@
    "lemma": "선",
    "tag": "NNG",
    "hom": 1,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "judging the quality of a person or thing in advance (especially for an arranged…"
   },
@@ -25318,7 +25320,7 @@
    "lemma": "선",
    "tag": "NNG",
    "hom": 2,
-   "set": "balanced",
+   "set": "main",
    "by": "decision",
    "gloss": "line"
   },
@@ -25326,7 +25328,7 @@
    "lemma": "선",
    "tag": "NNG",
    "hom": 3,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "goodness"
   },
@@ -28759,8 +28761,25 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "times (used in multiplication)",
+   "gloss": "counter for exponents in mathematical power",
    "hanja": "乘"
+  },
+  {
+   "lemma": "승",
+   "tag": "NNG",
+   "hom": 1,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "victory",
+   "hanja": "勝"
+  },
+  {
+   "lemma": "승",
+   "tag": "NNG",
+   "hom": 2,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "times (used in multiplication)"
   },
   {
    "lemma": "승방",
@@ -30195,7 +30214,7 @@
    "lemma": "실",
    "tag": "NNG",
    "hom": 1,
-   "set": "balanced",
+   "set": "main",
    "by": "decision",
    "gloss": "thread"
   },
@@ -30203,7 +30222,7 @@
    "lemma": "실",
    "tag": "NNG",
    "hom": 2,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "loss",
    "hanja": "失"
@@ -30212,7 +30231,7 @@
    "lemma": "실",
    "tag": "NNG",
    "hom": 3,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "work division",
    "hanja": "室"
@@ -30221,7 +30240,7 @@
    "lemma": "실",
    "tag": "NNG",
    "hom": 4,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "paper seal"
   },
@@ -33047,7 +33066,7 @@
    "lemma": "역사",
    "tag": "NNG",
    "hom": 1,
-   "set": "balanced",
+   "set": "main",
    "by": "decision",
    "gloss": "history",
    "hanja": "歷史"
@@ -33056,7 +33075,7 @@
    "lemma": "역사",
    "tag": "NNG",
    "hom": 2,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "station building",
    "hanja": "驛舍"
@@ -33065,7 +33084,7 @@
    "lemma": "역사",
    "tag": "NNG",
    "hom": 3,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "construction project; divine work",
    "hanja": "役事"
@@ -33074,7 +33093,7 @@
    "lemma": "역사",
    "tag": "NNG",
    "hom": 4,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "strongman (a person who possesses extraordinary physical strength, an…",
    "hanja": "力士"
@@ -33083,7 +33102,7 @@
    "lemma": "역사",
    "tag": "NNG",
    "hom": 5,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "being run over (death resulting from being struck by a vehicle)",
    "hanja": "轢死"
@@ -33092,7 +33111,7 @@
    "lemma": "역사",
    "tag": "NNG",
    "hom": 6,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "translated lyrics (the process of translating the lyrics of foreign songs, or…",
    "hanja": "譯詞"
@@ -33101,7 +33120,7 @@
    "lemma": "역사",
    "tag": "NNG",
    "hom": 7,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "interpreter envoy (a diplomatic envoy assigned to perform interpretation duties…",
    "hanja": "譯使"
@@ -33110,7 +33129,7 @@
    "lemma": "역사",
    "tag": "NNG",
    "hom": 8,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "service under successive kings (the act of serving multiple kings in…",
    "hanja": "歷事 and 歷仕"
@@ -33119,7 +33138,7 @@
    "lemma": "역사",
    "tag": "NNG",
    "hom": 9,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "yeoksa (a practice in the Joseon Dynasty whereby a newly appointed official was…",
    "hanja": "歷辭"
@@ -33128,7 +33147,7 @@
    "lemma": "역사",
    "tag": "NNG",
    "hom": 10,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "yeoksa (a minor or subordinate official belonging to the Jungseomunhaseong…",
    "hanja": "譯史"
@@ -34445,8 +34464,8 @@
    "lemma": "영어",
    "tag": "NNG",
    "hom": 1,
-   "set": "balanced",
-   "by": "default",
+   "set": "main",
+   "by": "decision",
    "gloss": "the English language",
    "hanja": "英語"
   },
@@ -34454,8 +34473,8 @@
    "lemma": "영어",
    "tag": "NNG",
    "hom": 2,
-   "set": "balanced",
-   "by": "default",
+   "set": "other",
+   "by": "decision",
    "gloss": "prison",
    "hanja": "囹圄"
   },
@@ -36496,6 +36515,15 @@
    "hanja": "胃"
   },
   {
+   "lemma": "위",
+   "tag": "NNG",
+   "hom": 3,
+   "set": "other",
+   "by": "decision",
+   "gloss": "status",
+   "hanja": "位"
+  },
+  {
    "lemma": "위선",
    "tag": "NNG",
    "hom": 1,
@@ -37970,7 +37998,7 @@
    "lemma": "의사",
    "tag": "NNG",
    "hom": 1,
-   "set": "balanced",
+   "set": "main",
    "by": "decision",
    "gloss": "doctor",
    "hanja": "醫師"
@@ -37979,7 +38007,7 @@
    "lemma": "의사",
    "tag": "NNG",
    "hom": 2,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "intent",
    "hanja": "意思"
@@ -37988,7 +38016,7 @@
    "lemma": "의사",
    "tag": "NNG",
    "hom": 3,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "a righteous patriot",
    "hanja": "義士"
@@ -41624,7 +41652,7 @@
    "lemma": "저",
    "tag": "NP",
    "hom": 1,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "that"
   },
@@ -41632,7 +41660,7 @@
    "lemma": "저",
    "tag": "NP",
    "hom": 2,
-   "set": "balanced",
+   "set": "main",
    "by": "decision",
    "gloss": "I, me (polite)"
   },
@@ -46712,6 +46740,25 @@
    "irr": "Ha"
   },
   {
+   "lemma": "지구",
+   "tag": "NNG",
+   "hom": 2,
+   "set": "other",
+   "by": "decision",
+   "gloss": "district",
+   "hanja": "地區"
+  },
+  {
+   "lemma": "지구",
+   "tag": "NNG",
+   "hom": 91,
+   "set": "main",
+   "by": "decision",
+   "own": true,
+   "gloss": "the Earth; the globe",
+   "hanja": "地球"
+  },
+  {
    "lemma": "지금",
    "tag": "NNG",
    "hom": 1,
@@ -48528,7 +48575,7 @@
    "lemma": "창",
    "tag": "NNG",
    "hom": 1,
-   "set": "balanced",
+   "set": "main",
    "by": "decision",
    "gloss": "window",
    "hanja": "窓"
@@ -48537,7 +48584,7 @@
    "lemma": "창",
    "tag": "NNG",
    "hom": 2,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "spear",
    "hanja": "槍"
@@ -48546,7 +48593,7 @@
    "lemma": "창",
    "tag": "NNG",
    "hom": 3,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "prosperity",
    "hanja": "昌"
@@ -48555,7 +48602,7 @@
    "lemma": "창",
    "tag": "NNG",
    "hom": 4,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "chant",
    "hanja": "唱"
@@ -48564,7 +48611,7 @@
    "lemma": "창",
    "tag": "NNG",
    "hom": 5,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "intestines"
   },
@@ -48726,6 +48773,22 @@
    "by": "default",
    "gloss": "decapitation",
    "hanja": "處斬"
+  },
+  {
+   "lemma": "척",
+   "tag": "NNB",
+   "hom": 1,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "pretense"
+  },
+  {
+   "lemma": "척",
+   "tag": "NNG",
+   "hom": 3,
+   "set": "balanced",
+   "by": "default",
+   "gloss": "隻: (counter) boat"
   },
   {
    "lemma": "척량",
@@ -51905,24 +51968,24 @@
    "lemma": "파",
    "tag": "NNG",
    "hom": 1,
-   "set": "balanced",
-   "by": "default",
+   "set": "main",
+   "by": "decision",
    "gloss": "spring onion"
   },
   {
    "lemma": "파",
    "tag": "NNG",
    "hom": 2,
-   "set": "balanced",
-   "by": "default",
+   "set": "other",
+   "by": "decision",
    "hanja": "破"
   },
   {
    "lemma": "파",
    "tag": "NNG",
    "hom": 3,
-   "set": "balanced",
-   "by": "default",
+   "set": "other",
+   "by": "decision",
    "gloss": "fa (fourth note in the solfège major scale)"
   },
   {
@@ -52046,6 +52109,15 @@
    "by": "default",
    "gloss": "limping",
    "hanja": "跛行"
+  },
+  {
+   "lemma": "판",
+   "tag": "NNG",
+   "hom": 1,
+   "set": "balanced",
+   "by": "decision",
+   "gloss": "board",
+   "hanja": "板"
   },
   {
    "lemma": "판",
@@ -52366,26 +52438,6 @@
    "set": "balanced",
    "by": "default",
    "gloss": "page"
-  },
-  {
-   "lemma": "편",
-   "tag": "NNB",
-   "clf": true,
-   "hom": 1,
-   "set": "balanced",
-   "by": "decision",
-   "gloss": "side",
-   "hanja": "便"
-  },
-  {
-   "lemma": "편",
-   "tag": "NNB",
-   "clf": true,
-   "hom": 2,
-   "set": "balanced",
-   "by": "decision",
-   "gloss": "part",
-   "hanja": "篇"
   },
   {
    "lemma": "편도",
@@ -54970,7 +55022,7 @@
    "lemma": "형",
    "tag": "NNG",
    "hom": 1,
-   "set": "balanced",
+   "set": "main",
    "by": "decision",
    "gloss": "older brother of a male",
    "hanja": "兄"
@@ -54979,7 +55031,7 @@
    "lemma": "형",
    "tag": "NNG",
    "hom": 2,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "punishment",
    "hanja": "刑"
@@ -54988,7 +55040,7 @@
    "lemma": "형",
    "tag": "NNG",
    "hom": 3,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "type",
    "hanja": "型"
@@ -54997,7 +55049,7 @@
    "lemma": "형",
    "tag": "NNG",
    "hom": 4,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "form",
    "hanja": "形"
@@ -55006,7 +55058,7 @@
    "lemma": "형",
    "tag": "NNG",
    "hom": 5,
-   "set": "balanced",
+   "set": "other",
    "by": "decision",
    "gloss": "firefly",
    "hanja": "螢"

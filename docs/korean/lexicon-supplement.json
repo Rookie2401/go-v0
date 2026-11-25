@@ -134,6 +134,9 @@
     {"lemma":"신기다","tag":"VV","irr":"R","voice":"Caus","base":"신다","gloss":"to put (shoes, socks) on someone","why":"causative of 신다; absent from the source"},
     {"lemma":"두들기다","tag":"VV","irr":"R","gloss":"to beat, to knock on","why":"두들겨; absent from the source"},
     {"lemma":"부여","tag":"NNG","gloss":"granting, bestowal","hanja":"附與","why":"부여하다, 부여받다, 부여되다; the source has only the place name 부여"},
-    {"lemma":"들어보다","tag":"VV","irr":"R","gloss":"to listen to, to hear (and see)","why":"잘 들어보세요; written as one word; absent from the source"}
+    {"lemma":"들어보다","tag":"VV","irr":"R","gloss":"to listen to, to hear (and see)","why":"잘 들어보세요; written as one word; absent from the source"},
+    {"lemma":"지구","tag":"NNG","hom":91,"gloss":"the Earth; the globe","hanja":"地球","why":"지구는 둥글어요; the source files the Earth only as a proper noun and the noun row is \"district\""},
+    {"lemma":"곡","tag":"NNB","clf":true,"gloss":"counter for pieces of music; a piece, a song","hanja":"曲","why":"노래를 한 곡 불렀어요; the source has 곡 only as \"valley\""},
+    {"lemma":"주최","tag":"NNG","gloss":"hosting, sponsorship (of an event)","hanja":"主催","why":"주최하다, 주최 측; absent from the source"}
   ]
 }

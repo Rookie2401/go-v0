@@ -114,7 +114,6 @@ describe('c. prepositions: a noun in the genitive follows, never a finite verb',
     expect(credited(cands(a, 1))).toEqual([]);
   });
   it('NEGATIVE: the noun BEFORE the preposition, a clause break, and a printed ending are left alone', () => {
-    expect(credited(cands(run('ولد في'), 0))).toEqual([]);
     expect(credited(cands(run('في، ولد'), 1))).toEqual([]);
     const printed = top(run('في الْبَيْتِ'), 1);
     expect(printed.morph.Case).toBe('Gen');
@@ -177,7 +176,9 @@ describe('e. كَانَ and its sisters: subject nominative, predicate accusativ
   });
   it('NEGATIVE: a prepositional phrase is no predicate in the accusative; a lone noun gets no case', () => {
     const a = run('كان الطالب في البيت');
-    expect(top(a, 1).notes?.case).toBeUndefined();
+    // the subject is nominative; nothing in the clause is the accusative predicate
+    expect(notesOf(top(a, 1), 'case')).toContain('nominative');
+    expect([0, 1, 2, 3].some((i) => notesOf(top(a, i), 'case').includes('accusative'))).toBe(false);
     expect(top(a, 3).notes?.case).toBe('inferred: genitive after فِي');
     expect(top(run('كان الطالب'), 1).notes?.case).toBeUndefined();
   });
@@ -349,6 +350,44 @@ describe.skipIf(!fs.existsSync(MANIFEST))('with the full index', () => {
   it('كل / بعض + a noun: the word after is not a verb (كل يوم); but غير, which is also غَيَّرَ, is not decided', () => {
     expect(top(run('كل يوم'), 1).pos).toBe('NOUN');
     expect(cands(run('غير الرئيس القانون'), 0).some((c) => c.pos === 'VERB')).toBe(true);
+  });
+  it('R1: after لم / the forbidding لا / a condition the lexeme that HAS a jussive cell on the spelling is chosen (يَبْقَ is بَقِيَ, تَقُلْ is قَالَ, يَمُتْ is مَاتَ)', () => {
+    expect(top(run('لم يبق في البيت أحد'), 1)).toMatchObject({ lemma: 'بَقِيَ', pos: 'VERB', confidence: 0.8 });
+    expect(top(run('لا تقل هذا للناس'), 1)).toMatchObject({ lemma: 'قَالَ', pos: 'VERB' });
+    expect(top(run('لم يمت الرجل في الحادث'), 1)).toMatchObject({ lemma: 'مَاتَ', pos: 'VERB' });
+    expect(top(run('إن تطلب العلم تجده'), 1).pos).toBe('VERB');
+    expect(notesOf(top(run('لم يبق في البيت أحد'), 1), 'context')).toContain('jussive');
+  });
+  it('R1 NEGATIVE: a word that is also a noun after لا is left (the forbidding لا needs a verb-only word); without the particle nothing is chosen', () => {
+    expect(top(run('يبق'), 0).notes?.identity).not.toBe('sentence');
+    expect(top(run('لا تقدم'), 1).notes?.identity).not.toBe('sentence');
+  });
+  it('R5 verb: verb + subject + a preposition or an ال-noun, at the start of a clause or after قد / ثم / حين: the verb (0.75–0.80); the noun readings go', () => {
+    for (const t of ['وضع الطالب الكتاب على المكتب', 'طلب المدير الملف من الموظف', 'ثم وضع الحارس المفتاح على الطاولة', 'قد وضع الموظف الأوراق في الدرج', 'حين طلب الضيف الماء من الخادم']) {
+      const a = run(t);
+      const v = top(a, t.startsWith('ثم') || t.startsWith('قد') || t.startsWith('حين') ? 1 : 0);
+      expect(v.pos, t).toBe('VERB');
+      expect(v.notes?.identity, t).toBe('sentence');
+      expect(v.confidence, t).toBeGreaterThanOrEqual(0.75);
+    }
+    const s2 = run('الباحث نشر في المجلة مقالا');
+    expect(top(s2, 1)).toMatchObject({ lemma: 'نَشَرَ', pos: 'VERB' });
+  });
+  it('R5 NEGATIVE: the same words as a noun phrase are not decided (no third word; a bare predicate after the preposition; a bare indefinite noun)', () => {
+    for (const [t, i] of [['وضع الطالب', 0], ['طلب الطالب في الامتحان صعب', 0], ['وضع الحارس في السجن ظلم', 0], ['عمل الطبيب في المستشفى مهم', 0], ['أمر الرئيس', 0], ['عقد الرئيس اجتماعا', 0]] as Array<[string, number]>) {
+      expect(top(run(t), i).notes?.identity, t).not.toBe('sentence');
+    }
+  });
+  it('R5: a form II verb on a three-letter spelling is never raised alone (the plain verb may be missing from the index): قتل الجندي العدو في المعركة', () => {
+    const a = run('قتل الجندي العدو في المعركة');
+    expect(cands(a, 0).some((c) => c.notes?.identity === 'sentence' && c.pos === 'VERB')).toBe(false);
+    expect(credited(cands(a, 0))).toEqual([]);
+  });
+  it('R5 passive وُلِدَ: at the start of a clause or after وقد, before a name, an ال-noun with a preposition after it, في, عام: the verb وَلَدَ; a bare adjective after: the noun', () => {
+    expect(top(run('ولد محمد في القاهرة عام ١٩٥٠'), 0)).toMatchObject({ lemma: 'وَلَدَ', pos: 'VERB', confidence: 0.75 });
+    expect(top(run('وقد ولد الطفل في المستشفى'), 1)).toMatchObject({ lemma: 'وَلَدَ', pos: 'VERB' });
+    expect(credited(cands(run('ولد صغير يلعب في الحديقة'), 0)).filter((l) => l.includes('VERB'))).toEqual([]);
+    expect(top(run('ولد'), 0).notes?.identity).not.toBe('sentence');
   });
   it('the regression cases that need context: لَنْ يَكْتُبَ, لَمْ يَكْتُبْ, كِتَابُ الطَّالِبِ', () => {
     expect(top(run('لَمْ يَكْتُبْ'), 1)).toMatchObject({ lemma: 'كَتَبَ', morph: { Mood: 'Jus', Aspect: 'Imp' } });

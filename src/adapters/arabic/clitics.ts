@@ -103,6 +103,8 @@ function stemSpellings(stem: string, hasEnclitic: boolean): string[] {
   const out = new Set<string>([stem]);
   // the tanwīn alif of an accusative indefinite (مُخْرِجًا): the bare cell is also a spelling (the analyser keeps it for derived cells only)
   if (stem.endsWith('ا') && stem.length >= 4) out.add(stem.slice(0, -1));
+  // the feminine of a derived participle (المنتجة): the bare cell is also a spelling (kept for derived participles only)
+  if (stem.endsWith('ة') && stem.length >= 4) out.add(stem.slice(0, -1));
   if (hasEnclitic) {
     const last = stem[stem.length - 1];
     const body = stem.slice(0, -1);

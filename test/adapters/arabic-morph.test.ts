@@ -783,3 +783,53 @@ describe('batch 3 over the real index (identities and preferences as noted; skip
     restore();
   });
 });
+
+// ───────────────────────────── fix batch 4 ─────────────────────────────
+
+describe('batch 4 (fixture): printed vowels, roots', () => {
+  it('وَلَدٌ with its tanwīn printed is the noun at 0.90 (the verb\'s ending contradicts the page)', () => {
+    const cs = cands('وَلَدٌ');
+    expect(cs[0]).toMatchObject({ lemma: 'وَلَد', pos: 'NOUN', confidence: 0.9 });
+    expect(cs.filter((c) => c.confidence >= 0.5).every((c) => c.lemma === 'وَلَد')).toBe(true);
+  });
+  it('مَدَّ printed is the verb (its citation form), not the construct accusative of the noun مَدّ', () => {
+    expect(top('مَدَّ')).toMatchObject({ lemma: 'مَدَّ', pos: 'VERB' });
+    expect(top('مَدَّ').confidence).toBeGreaterThanOrEqual(0.5);
+  });
+  it('o09: the root of قَالَ is the root of the entry that reads the word, never a join of two roots', () => {
+    const r = top('قَالَ').notes?.root;
+    expect(typeof r).toBe('string');
+    expect(String(r)).not.toContain('/');
+  });
+});
+
+describe('batch 4 over the real index (skipped when the shards are absent)', () => {
+  const dir = new URL('../../public/lexicon/ar/standard/', import.meta.url);
+  const have = fs.existsSync(new URL('manifest.json', dir));
+  const install = async (): Promise<void> => {
+    const zlib = await import('node:zlib');
+    const { AR_CORE } = await import('../../src/adapters/arabic/generated/core');
+    resetArabicIndexes();
+    installArabicIndex(AR_CORE);
+    for (const fn of fs.readdirSync(dir)) if (fn.endsWith('.json.gz')) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL(fn, dir))).toString('utf8')));
+    useArIdentities({});
+    useArPreferences({});
+  };
+  const restore = (): void => { resetArabicIndexes(); installArabicIndex(fixture); };
+  it.skipIf(!have)('R1: a hollow or defective verb\'s jussive is not marginal against a rarer geminate: تخف يبق يقل ينم يدع are undecided, never the rare verb at 0.60', async () => {
+    await install();
+    for (const w of ['تخف', 'يبق', 'يقل', 'ينم', 'يدع']) expect(cands(w).every((c) => c.confidence <= 0.45), w).toBe(true);
+    restore();
+  });
+  it.skipIf(!have)('R4: المنتجة is the feminine participle مُنْتِج (derived from a counted verb), not the verbal-noun entry مَنْتَجَ', async () => {
+    await install();
+    expect(top('المنتجة')).toMatchObject({ lemma: 'مُنْتِج' });
+    expect(top('المنتجة').morph).toMatchObject({ Gender: 'Fem' });
+    restore();
+  });
+  it.skipIf(!have)('o09: قَالَ has ONE root on the real index (ق و ل)', async () => {
+    await install();
+    expect(top('قَالَ').notes?.root).toBe('ق و ل');
+    restore();
+  });
+});

@@ -370,7 +370,9 @@ function withoutEnding(key: string, vocal: string): string {
 /** Drops what the page's own ending makes redundant: lowered readings beside a reading of the same lexeme that agrees; pausal rows when an ending is printed; readings another covers. */
 function prune(list: Merged[], lastMarked: boolean): Merged[] {
   const agrees = (m: Merged): boolean => !m.rows.every((r) => r.endingConflict);
-  let out = list.filter((m) => agrees(m) || !list.some((o) => o !== m && o.segIx === m.segIx && o.lexeme === m.lexeme && agrees(o)));
+  const anyAgrees = PAGE_FULL && list.some(agrees);
+  let out = list.filter((m) => agrees(m) || (anyAgrees ? false : false) || !list.some((o) => o !== m && o.segIx === m.segIx && o.lexeme === m.lexeme && agrees(o)));
+  if (anyAgrees) out = out.filter(agrees);
   if (lastMarked) out = out.filter((m) => m.morph.Pausal !== 'Yes' || !out.some((o) => o !== m && o.segIx === m.segIx && o.lexeme === m.lexeme && o.morph.Pausal !== 'Yes'));
   const covers = (big: Morph, small: Morph): boolean => Object.entries(small).every(([k, v]) => k === 'Pausal' || (k in big && v.split(',').every((x) => big[k].split(',').includes(x))));
   return out.filter((m) => !out.some((o) => o !== m && o.segIx === m.segIx && o.lexeme === m.lexeme && vocalizedWord(o) === vocalizedWord(m)
@@ -459,9 +461,25 @@ function marginalByCell(m: Merged): boolean {
 let PAGE_FULL = false;
 let PAGE_ANY = false;
 function isMarginal(m: Merged, all: Merged[]): boolean {
-  // the page's own vowels selected this cell: a short form of a hollow verb (قُمْ, مُتْ) is not marginal where the marks print it
-  if (marginalByCell(m) && !(PAGE_FULL && m.agreed > 0)) return true;
   const others = all.filter((o) => o.lexeme !== m.lexeme);
+  // the page's own vowels selected this cell: a short form of a hollow verb (قُمْ, مُتْ) is not marginal where the marks print it
+  if (marginalByCell(m) && !(PAGE_FULL && m.agreed > 0)) {
+    const mo = m.morph;
+    const jussiveLike = (only(mo.Mood, 'Imp') || only(mo.Mood, 'Jus')) && !only(mo.Voice, 'Pass') && !only(mo.Number, 'Dual');
+    const passivePerfect3 = only(mo.Voice, 'Pass') && has(mo.Aspect, 'Perf') && only(mo.Person, '3') && only(mo.Number, 'Sing') && only(mo.Gender, 'Masc');
+    const rivals = others.filter((o) => !marginalByCell(o));
+    // hollow and defective verbs shorten in the jussive (لا تخف, لم يبق): against a RARER plain reading (خَفَّ, بَقَّ) the common verb's jussive is no marginal cell, and neither leads
+    if (jussiveLike && countOf(m) > 0 && rivals.length && rivals.every((o) => countOf(m) >= 5 * countOf(o))) { /* not marginal: the word stays undecided */ }
+    // a passive perfect of a counted verb (حُكِيَ, رُوِيَ) is not marginal against a noun + pronoun cut of a rarer noun
+    else if (passivePerfect3 && countOf(m) > 0 && rivals.length && rivals.every((o) => !noClitics(o) && countOf(o) < countOf(m))) { /* not marginal */ }
+    else return true;
+  }
+  // a fully vocalized page: a noun's case cell against a finite verb's own citation form (مَدَّ is the verb, not the construct accusative of مَدّ)
+  if (PAGE_FULL && (m.pos === 'NOUN' || m.pos === 'ADJ') && m.morph.Case && noClitics(m) && !m.citation
+    && others.some((o) => noClitics(o) && o.citation && o.pos === 'VERB' && o.agreed >= m.agreed)) return true;
+  // a verbal-noun cell of an entry against the participle derived from a counted verb (المنتجة)
+  if (m.morph.VerbForm === 'Vnoun' && !m.rows.every((r) => r.derived)
+    && others.some((o) => o.rows.every((r) => r.derived) && o.morph.VerbForm === 'Part' && countOf(o) > 0 && countOf(m) < 2 * countOf(o))) return true;
   if (!others.length) return false;
   // a reading reached only through the loose fold (a hamza, ى for ي, ة for ه restored) against a reading of the spelling as written
   if (m.rows.every((r) => r.viaLoose) && others.some((o) => o.rows.some((r) => !r.viaLoose))) return true;
@@ -471,7 +489,7 @@ function isMarginal(m: Merged, all: Merged[]): boolean {
   if (has(m.morph.PluralType, 'Broken') && !m.citation && (m.pos === 'NOUN' || m.pos === 'ADJ')
     && others.some((o) => o.citation && (o.pos === 'NOUN' || o.pos === 'ADJ') && o.seg.proclitics.map((c) => c.id).join() === m.seg.proclitics.map((c) => c.id).join())) return true;
   // a verbal noun or participle that has no entry of its own is marginal against any reading of a real lemma (its own verb included)
-  if (m.rows.every((r) => r.derived) && others.some((o) => o.rows.every((r) => !r.derived))) return true;
+  if (m.rows.every((r) => r.derived) && others.some((o) => o.rows.every((r) => !r.derived) && !(m.morph.VerbForm === 'Part' && o.morph.VerbForm === 'Vnoun'))) return true;
   // a proper name against a common word (a name the source cites with the article, اَلمَلِك, الرُّوم: the common noun under ال, مَلِك, leads and the name is listed below it)
   if (m.pos === 'PROPN' && others.some((o) => o.pos !== 'PROPN' && !o.rows.every((r) => r.viaLoose))) return true;
   // a cut against a whole word that is a lemma's own citation form (unless that word has no frequency evidence at all)
@@ -706,8 +724,9 @@ function toCandidate(m: Merged, p: Printed, confidence: number, identity: string
       const rows = ids.map((id) => lookupArabicLemma(id)).filter((r): r is ArLemmaRow => !!r);
       const glosses = [...new Set(rows.map((r) => r[1]).filter(Boolean))];
       gloss = glosses.length > 1 ? glosses.map((g, i) => `${i + 1}. ${g}`).join(' ') : glosses[0] ?? '';
-      const roots = [...new Set(rows.map((r) => r[5]).filter((x): x is string => !!x))];
-      root = roots.length ? roots.join(' / ') : undefined;
+      const reading = [...new Set(m.rows.map((r) => r.info.root).filter((x): x is string => !!x))];
+      const all = [...new Set(rows.map((r) => r[5]).filter((x): x is string => !!x))];
+      root = reading[0] ?? all[0];
       const perPos = Math.max(...memberPos.map((p) => lexemeIds(m.head, p).length));
       if (perPos > 1) notes.homonyms = String(perPos);
     }
@@ -768,11 +787,16 @@ function gatherReadings(env: Env): Reading[] {
       const hits = lookupArabicForm(stk);
       // the tanwīn alif: مُخْرِجًا is the bare participle cell + ـًا (derived cells only; a verb or a noun with a table has its own accusative row)
       const tanwinAlif = stk === seg.stemKey.slice(0, -1) && seg.stemKey.endsWith('ا') && seg.stemKey.length >= 4;
+      const feminineEnding = stk === seg.stemKey.slice(0, -1) && seg.stemKey.endsWith('ة') && seg.stemKey.length >= 4;
       for (const h of hits) {
         // the definite rows of a word are keyed with the article: read through the cut instead, never twice
         if (h.key.startsWith('ال') && h.code.includes('definite') && !arKey(lemmaOfId(h.lemmaId)).startsWith('ال')) continue;
         for (const r0 of readingsFromHit(env, segIx, stk, h, false)) {
           let r = r0;
+          if (feminineEnding) {
+            if (!r.derived || r.morph.VerbForm !== 'Part') continue;
+            r = { ...r, morph: { ...r.morph, Gender: 'Fem', Number: 'Sing' } };
+          }
           if (tanwinAlif) {
             if (!r.derived) continue;
             r = { ...r, morph: { ...r.morph, Case: 'Acc', Definite: 'Ind' } };

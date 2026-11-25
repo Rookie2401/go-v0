@@ -33,7 +33,7 @@ import type { AnalysisCandidate, AnalyzedToken, RawToken } from '../../core/adap
 import { arWordCandidates } from './analyze';
 import { arDialectSignals, arForeignScript } from './dialect';
 import * as G from './government';
-import { arKeyIsPartial, lookupArabicForm } from './index-store';
+import { arKeyIsPartial, lookupArabicForm, lookupArabicLemma } from './index-store';
 import { arFeaturesOfCode } from './tags';
 import { arKey, arLoose, packVocal, tashkilLevel, vocalMatch } from './text';
 import { AR_ANALYZER, AR_SOURCE_IDS } from './version';
@@ -46,6 +46,9 @@ let LOGGING = false;
 let CURRENT_RULE = '';
 export function arRuleLogging(on: boolean): void { LOGGING = on; if (on) AR_RULE_LOG.length = 0; }
 
+const SHADDA = '\u0651';
+const suspectShadow = (c: Cand): boolean => G.isPos(c, 'VERB') && !!c.lemma && c.lemma.includes(SHADDA) && arKey(c.lemma).length === 3;
+
 /** What the sentence layer lowers an excluded reading to: below the 0.5 that credits a lexeme. */
 const EXCLUDED = 0.4;
 /** What a lexeme the sentence decides is raised to (the contract allows 0.75–0.85). */
@@ -53,7 +56,6 @@ const DECIDED = 0.8;
 /** An undecided word's readings stay at or under this. */
 const UNDECIDED = 0.45;
 const round2 = (x: number): number => Math.round(x * 100) / 100;
-const SHADDA = '\u0651';
 const TANWIN = /[\u064B\u064C\u064D]/;
 const CASE_WORD: Record<string, string> = { Nom: 'nominative', Acc: 'accusative', Gen: 'genitive' };
 const MOOD_WORD: Record<string, string> = { Ind: 'indicative', Sub: 'subjunctive', Jus: 'jussive' };
@@ -179,7 +181,7 @@ export class ArSentence {
    * lexeme is left it is raised to 0.80 with notes.identity = 'sentence'. A partial word is only reordered; a word whose list was
    * handed in by the dictionary is lowered but never raised. Returns whether anything changed.
    */
-  decide(i: number, keep: (c: Cand) => boolean, why: string): boolean {
+  decide(i: number, keep: (c: Cand) => boolean, why: string, level = DECIDED): boolean {
     if (!this.edit[i]) return false;
     if (this.partial(i)) return this.prefer(i, keep, why);
     const all = this.cands[i];
@@ -187,6 +189,7 @@ export class ArSentence {
     if (!S.length) return false;
     // a reading reached through a spelling fold (a hamza restored) is the weaker side of a tie with one spelled as written
     const exact = S.filter((c) => c.notes?.spelling !== 'restored');
+    // a doubled-middle (form II) verb on a three-letter spelling is the usual shadow of a plain form I verb the index may lack for this tense (قَتَّلَ for قَتَلَ): never raised
     const base = exact.length ? exact : S;
     const lex = new Set(base.filter((c) => !c.unconfirmed && !!c.lemma).map(G.lexemeOf));
     if (!lex.size) return false;
@@ -197,18 +200,20 @@ export class ArSentence {
       ctx(c, `Set aside: ${why}.`);
       changed = true;
     }
-    if (lex.size === 1 && this.raise[i]) {
+    // the one lexeme left is such a shadow: it is not raised (the plain verb may be missing from the index)
+    const shadow = lex.size === 1 && base.every((c) => suspectShadow(c));
+    if (lex.size === 1 && this.raise[i] && !shadow) {
       const only = [...lex][0];
       const group = base.filter((c) => G.lexemeOf(c) === only);
       const best = Math.max(...group.map((c) => c.confidence));
       const sure = group.filter((c) => this.pageOk(i, c) === true);
-      if (best < DECIDED && sure.length) {
-        const delta = DECIDED - Math.max(...sure.map((c) => c.confidence));
+      if (best < level && sure.length) {
+        const delta = level - Math.max(...sure.map((c) => c.confidence));
         for (const c of sure) c.confidence = round2(Math.min(0.85, c.confidence + delta));
         changed = true;
       }
-      if (best < DECIDED) for (const c of sure) if (c.confidence >= 0.5) c.notes = { ...c.notes, identity: 'sentence' };
-      if (best < DECIDED && sure.length && LOGGING) AR_RULE_LOG.push({ rule: CURRENT_RULE, surface: this.tokens[i].surface, lemma: sure[0].lemma ?? '', pos: sure[0].pos ?? '' });
+      if (best < level) for (const c of sure) if (c.confidence >= 0.5) c.notes = { ...c.notes, identity: 'sentence' };
+      if (best < level && sure.length && LOGGING) AR_RULE_LOG.push({ rule: CURRENT_RULE, surface: this.tokens[i].surface, lemma: sure[0].lemma ?? '', pos: sure[0].pos ?? '' });
       const first = (sure.length ? sure : group).sort((a, b) => b.confidence - a.confidence)[0];
       ctx(first, `${why[0].toUpperCase()}${why.slice(1)}.`);
     } else {
@@ -316,6 +321,27 @@ export class ArSentence {
 
 const vocalizedName = (c: Cand | undefined, fallback: string): string => (c?.lemma ? c.lemma : fallback);
 
+// ───────────────────────────── the jussive: which lexeme has this cell ─────────────────────────────
+
+const countOf = (c: Cand): number => (c.lemma && c.pos ? lookupArabicLemma(`${c.lemma}|${c.pos}`)?.[4] ?? 0 : 0);
+
+/**
+ * After a particle that puts the verb in the jussive (لَمْ, a prohibition لَا + 2nd person, a condition إِنْ): hollow and defective verbs SHORTEN in the
+ * jussive (تَخَفْ from خَافَ, يَبْقَ from بَقِيَ), so the spelling is the jussive of one verb and the indicative of a rarer, geminate one (خَفَّ, بَقَّ).
+ * Among the verb readings of word `j`, the lexeme that has a jussive cell on this spelling is chosen when it is the only one (0.80), or when it is at
+ * least five times as frequent as every other that has one; otherwise nothing is decided (the order stays).
+ */
+function chooseJussive(s: ArSentence, j: number, name: string): void {
+  const imp = s.cands[j].filter((c) => G.isImperfect(c) && G.hasVal(c, 'Mood', 'Jus') && s.pageOk(j, c) !== false);
+  const lex = new Map<string, number>();
+  for (const c of imp) lex.set(G.lexemeOf(c), Math.max(lex.get(G.lexemeOf(c)) ?? 0, countOf(c)));
+  if (!lex.size) return;
+  const ranked = [...lex.entries()].sort((a, b) => b[1] - a[1]);
+  if (ranked.length === 1) { s.decide(j, (c) => G.isImperfect(c) && G.hasVal(c, 'Mood', 'Jus'), `after ${name}: jussive, and only this verb has a jussive cell on this spelling`); return; }
+  const [first, second] = ranked;
+  if (first[1] > 0 && first[1] >= 5 * Math.max(second[1], 1)) s.decide(j, (c) => G.isImperfect(c) && G.hasVal(c, 'Mood', 'Jus') && G.lexemeOf(c) === first[0], `after ${name}: jussive, and this is by far the commonest verb with a jussive cell on this spelling`);
+}
+
 // ───────────────────────────── rule a: particles that govern a mood ─────────────────────────────
 
 /** The reading is the particle of the table (a spelling with a shadda is another particle: أَنْ against أَنَّ, لَمَّا against لِمَا). */
@@ -349,6 +375,7 @@ function ruleMoodParticles(s: ArSentence): void {
     } else if (!verbOnly) continue;
     else s.prefer(j, G.isImperfect, `after ${name} a verb stands`);
     s.noteMood(j, spec.mood, `after ${name}`);
+    if (spec.mood === 'Jus' && spec.certain && t.certain) chooseJussive(s, j, name);
     // the particle itself: followed by a verb-only word it is the particle (and not the verb or noun it is also spelled like)
     if (verbOnly) s.decide(i, (c) => !!c.lemma && !G.isPos(c, 'NOUN', 'ADJ', 'PROPN', 'NUM', 'VERB') && isMoodParticle(G.lemmaKeyOf(c), c) && !G.hasSuffix(c), `a verb follows, so this is the particle ${name}`);
   }
@@ -366,6 +393,8 @@ function ruleLa(s: ArSentence): void {
     const j = s.next(i);
     if (j < 0) continue;
     if (!s.edit[j]) continue;
+    // a prohibition: لَا + a 2nd person verb that is nothing but a verb (لَا تَخَفْ); a word that is also a noun is left
+    if (s.any(j, (c) => G.isImperfect(c) && G.valsOf(c, 'Person').includes('2')) && s.effAll(j, (c) => G.isFiniteVerb(c)) && (t.certain || s.keys[i] === 'لا')) chooseJussive(s, j, 'the forbidding لَا');
     for (const c of s.cands[j]) {
       if (!G.isImperfect(c)) continue;
       const persons = G.valsOf(c, 'Person');
@@ -505,7 +534,10 @@ function ruleAnInna(s: ArSentence): void {
       const bare = base === 'ان';
       if (saying) s.decide(i, heavy('إن'), 'after a verb of saying, إِنَّ ("indeed") opens the quotation');
       else if (p < 0 && nominalOnly && definite) s.decide(i, heavy('إن'), 'a noun, pronoun or ال-word follows at the head of the clause, so this is إِنَّ ("indeed")');
-      else if (verbOnly && !bare) s.decide(i, light('إن'), 'a verb follows directly, so this is إِنْ ("if"), not إِنَّ');
+      else if (verbOnly && !bare) {
+        s.decide(i, light('إن'), 'a verb follows directly, so this is إِنْ ("if"), not إِنَّ');
+        if (impOnly) chooseJussive(s, j, 'the condition إِنْ');
+      }
     } else if (base === 'أن' || base === 'ان') {
       const bare = base === 'ان';
       const afterLight = p >= 0 && BEFORE_LIGHT_AN.has(pk) && j >= 0 && s.any(j, G.isFiniteVerb);
@@ -775,27 +807,123 @@ function ruleSubjectBeforeVerb(s: ArSentence): void {
 }
 
 /**
- * verb + subject + object: كَتَبَ الطَّالِبُ الدَّرْسَ. Window: three words, the second and third definite nouns (not adjectives), nothing
- * between. CERTAIN for the first word: it is a verb (a noun + two definite nouns is not a sentence), so its noun readings go. The verb is
- * singular and 3rd person whatever the number of the subject; the subject's gender is the verb's.
+ * A third person masculine singular perfect is the citation form of its verb: when the reading's lemma is spelled otherwise than the word (سَكَنَ read as
+ * a short form of سَاكَ), the index lacks the plain verb for this tense and the reading is a shadow of it. Such a reading is not part of a decision.
+ * When several lexemes remain among the verbs (عَلِمَ / عَلَّمَ spell alike) nothing is raised: counts do not tell them apart, since keys they share
+ * count for neither. The noun readings go all the same.
+ */
+function decideVerb(s: ArSentence, i: number, keep: (c: Cand) => boolean, why: string, level: number): void {
+  const surfaceKey = (c: Cand): string => { const cut = (c.parts ?? []).filter((q) => q.kind === 'prefix').reduce((n, q) => n + arKey(q.text).length, 0); return s.keys[i].slice(cut); };
+  const shadowOfCitation = (c: Cand): boolean => G.isPerfect(c) && c.morph.Person === '3' && c.morph.Gender === 'Masc' && c.morph.Number === 'Sing' && !G.hasSuffix(c) && !!c.lemma && arKey(c.lemma) !== surfaceKey(c);
+  s.decide(i, (c) => keep(c) && !shadowOfCitation(c), why, level);
+}
+
+/** Words after which a clause (so a verb) can begin: a conjunction or particle written as a word of its own. */
+const CLAUSE_OPENERS = new Set(['ثم', 'قد', 'لقد', 'اذا', 'إذا', 'لما', 'حين', 'عندما', 'حيث', 'لكن', 'بينما', 'فقد', 'وقد']);
+const PREP_LOOSE: ReadonlySet<string> = new Set([...G.AR_PREPOSITIONS.keys()].map((k) => arLoose(k)));
+const ADVERBS_AFTER = new Set(['اليوم', 'غدا', 'أمس', 'امس', 'الان', 'الآن', 'أيضا', 'ايضا', 'هناك', 'هنا', 'جدا', 'دائما']);
+/** A clause can begin at word `i`: the start of the clause, a clause opener before it, or أَنْ after بَعْدَ / قَبْلَ / مُنْذُ. */
+function clauseStartsAt(s: ArSentence, i: number): boolean {
+  const p = s.prev(i);
+  if (p < 0) return true;
+  const pk = s.keys[p];
+  if (CLAUSE_OPENERS.has(pk) || CLAUSE_OPENERS.has(arLoose(pk))) return true;
+  const pp = s.prev(p);
+  return pp >= 0 && ['ان', 'أن'].includes(arLoose(pk)) === true && ['بعد', 'قبل', 'منذ', 'مذ'].includes(s.keys[pp]);
+}
+/** What a construct phrase cannot continue with: a preposition, أَنْ / إِنْ / بِأَنْ, a definite noun with ال (an object), an adverb. */
+function afterSubjectOk(s: ArSentence, k: number): boolean {
+  if (k < 0) return false;
+  const key = s.keys[k];
+  if (PREP_LOOSE.has(arLoose(key)) && s.any(k, (c) => G.isPos(c, 'ADP'))) return true;
+  if (['ان', 'أن', 'إن', 'بان', 'بأن', 'لان', 'لأن', 'ان'].includes(key) || ['ان'].includes(arLoose(key))) return true;
+  if (ADVERBS_AFTER.has(key)) return true;
+  return s.effAll(k, (c) => G.isPos(c, 'NOUN') && G.isDefinite(c)) && !s.any(k, G.isFiniteVerb);
+}
+
+/**
+ * verb + subject + something a construct phrase cannot continue with: كَتَبَ الطَّالِبُ الدَّرْسَ, ذَهَبَ الرَّجُلُ إِلَى …, أَمَرَ الرَّئِيسُ بِـ …
+ * Window: a word at the start of a clause (or after قَدْ, ثُمَّ, إِذَا, لَمَّا, حِينَ, عِنْدَمَا, or أَنْ after بَعْدَ), a definite noun or a name, and then a
+ * preposition, أَنْ / إِنْ, an ال-noun, or an adverb. CERTAIN for the first word: it is a verb (0.80 when the third word is another ال-noun, 0.75 for
+ * the others), so its noun readings go. Also a verb right after a definite subject noun at the start of the clause (اَلرَّجُلُ ذَهَبَ إِلَى …).
+ * NOT decided: the same words without a third (أَمْرُ الرَّئِيسِ can be "the president's order") or with a bare indefinite noun or an adjective.
+ * The verb is singular and 3rd person whatever the number of the subject; the subject's gender is the verb's.
  */
 function ruleVerbSubjectObject(s: ArSentence): void {
+  const verb3 = (c: Cand): boolean => G.isFiniteVerb(c) && personOf(c).includes('3');
+  const word = (c: Cand): boolean => G.isPos(c, 'NOUN', 'ADJ') && G.isDefinite(c);
+  const subjectLike = (x: number): boolean => x >= 0 && !s.any(x, G.isFiniteVerb) && (s.effAll(x, word) || s.effAll(x, (c) => G.isPos(c, 'PROPN')));
   for (let i = 0; i < s.n; i++) {
-    if (!s.word[i] || !s.firstInClause(i)) continue;
-    if (!s.any(i, (c) => G.isFiniteVerb(c) && personOf(c).includes('3'))) continue;
+    if (!s.word[i] || !s.any(i, verb3)) continue;
     const j = s.next(i);
     const k = j >= 0 ? s.next(j) : -1;
-    if (j < 0 || k < 0) continue;
-    const plainNoun = (x: number): boolean => s.effAll(x, (c) => G.isPos(c, 'NOUN') && G.isDefinite(c)) && !s.any(x, (c) => G.isFiniteVerb(c));
-    if (!plainNoun(j) || !plainNoun(k)) continue;
-    s.decide(i, (c) => G.isFiniteVerb(c) && personOf(c).includes('3'), `a verb, then the subject «${s.surface(j)}» and the object «${s.surface(k)}»: the first word is the verb`);
+    // S V + a preposition: the subject noun came first
+    const p = s.prev(i);
+    if (p >= 0 && s.firstInClause(p) && s.effAll(p, word) && !s.any(p, G.isFiniteVerb) && j >= 0 && PREP_LOOSE.has(arLoose(s.keys[j])) && s.any(j, (c) => G.isPos(c, 'ADP'))) {
+      decideVerb(s, i, verb3, `a definite subject «${s.surface(p)}» before it and a preposition after it: this is its verb`, 0.75);
+      s.narrow(i, G.isFiniteVerb, 'Person', ['3'], 'the verb after its subject is 3rd person');
+      continue;
+    }
+    if (!clauseStartsAt(s, i) || !subjectLike(j) || !afterSubjectOk(s, k)) continue;
+    // verb + subject + preposition + noun + a bare predicate (طَلَبُ الطَّالِبِ فِي الِامْتِحَانِ صَعْبٌ): a noun phrase with its predicate, not a verb; a bare noun in the
+    // accusative (written with its alif: كِتَابًا) would be an object and leaves the verb
+    if (PREP_LOOSE.has(arLoose(s.keys[k]))) {
+      const m = s.next(k), n = m >= 0 ? s.next(m) : -1;
+      if (n >= 0 && s.any(n, (c) => G.isNominal(c) && !G.isDefinite(c)) && !s.any(n, (c) => G.isPos(c, 'ADP', 'ADV', 'PART', 'CONJ', 'SCONJ')) && !/[\u0627\u064B]$/.test(s.surface(n).replace(/[\u064B-\u0652]+$/, (x) => (x.includes('\u064B') ? '\u064B' : ''))) ) continue;
+    }
+    const objectNoun = s.effAll(k, (c) => G.isPos(c, 'NOUN') && G.isDefinite(c)) && s.effAll(j, (c) => G.isPos(c, 'NOUN') && G.isDefinite(c)) && !PREP_LOOSE.has(arLoose(s.keys[k]));
+    decideVerb(s, i, verb3, `a verb, then the subject «${s.surface(j)}» and «${s.surface(k)}», which a construct phrase cannot continue with: the first word is the verb`, objectNoun ? DECIDED : 0.75);
     const subj = s.eff(j)[0];
     const ng = subj?.morph.Gender;
     const why = `the verb before its subject «${s.surface(j)}» is singular`;
     s.narrow(i, G.isFiniteVerb, 'Person', ['3'], why);
-    s.preferCell(i, (c) => G.isFiniteVerb(c) && personOf(c).includes('3') && (!G.valsOf(c, 'Number').length || G.hasVal(c, 'Number', 'Sing')) && (!ng || ng.includes(',') || !G.valsOf(c, 'Gender').length || G.hasVal(c, 'Gender', ng)), why);
+    s.preferCell(i, (c) => verb3(c) && (!G.valsOf(c, 'Number').length || G.hasVal(c, 'Number', 'Sing')) && (!ng || ng.includes(',') || !G.valsOf(c, 'Gender').length || G.hasVal(c, 'Gender', ng)), why);
     s.gov.set(j, { code: 'Nom', why: `as the subject of «${s.surface(i)}»` });
-    s.gov.set(k, { code: 'Acc', why: `as the object of «${s.surface(i)}»` });
+    if (objectNoun) s.gov.set(k, { code: 'Acc', why: `as the object of «${s.surface(i)}»` });
+  }
+}
+
+/**
+ * The first term of a construct that the page itself shows (a ḍamma and no tanwīn printed, Definite=Cons): the word after it is its genitive, a
+ * noun, never a verb. Window: the next word. CERTAIN, 0.75. A noun with a pronoun suffix is not a first term (كِتَابُهُ وَضَعَ …).
+ */
+function ruleAfterConstructFirst(s: ArSentence): void {
+  for (let i = 0; i < s.n; i++) {
+    if (!s.word[i] || tashkilLevel(s.surface(i)) === 'none' || TANWIN.test(s.surface(i))) continue;
+    const t = s.top(i);
+    if (!t || t.confidence < 0.5 || !G.isNounLike(t) || t.morph.Definite !== 'Cons' || G.hasSuffix(t) || G.hasArticle(t) || s.pageOk(i, t) !== true) continue;
+    const j = s.next(i);
+    if (j < 0 || !s.any(j, (c) => G.isNounLike(c)) || !s.any(j, G.isFiniteVerb)) continue;
+    s.decide(j, (c) => !G.isFiniteVerb(c) && !G.isPos(c, 'PART', 'SCONJ', 'CONJ'), `after the first term of a construct («${s.surface(i)}») stands a noun in the genitive, not a verb`, 0.75);
+    s.gov.set(j, { code: 'Gen', why: `as the second term of a construct after «${s.surface(i)}»` });
+  }
+}
+
+/**
+ * وُلِدَ: "was born", the passive of وَلَدَ, spelled like وَلَد "a boy". Window: the word and the one after it. CERTAIN (0.75) as the verb at the start of
+ * a clause, or after وَقَدْ / حَيْثُ / a name, when a name, an ال-noun, فِي, عَامَ or سَنَةَ follows: "born in …". As the noun (not decided here) after a
+ * number or before a bare adjective: that is the number rule and the adjective rule's; a bare adjective after it takes the NOUN (ولد صغير).
+ */
+function ruleWulida(s: ArSentence): void {
+  for (let i = 0; i < s.n; i++) {
+    if (!s.word[i] || s.keys[i] !== 'ولد') continue;
+    const j = s.next(i);
+    if (j < 0) continue;
+    // وَلَدَ (not وَلَّدَ "generated"): the passive وُلِدَ is the verb of birth
+    const verbs = (c: Cand): boolean => !!c.lemma && G.lemmaKeyOf(c) === 'ولد' && G.isPos(c, 'VERB') && !c.lemma.includes(SHADDA);
+    if (!s.any(i, verbs)) continue;
+    // the noun: a bare adjective follows (a small boy)
+    if (s.effAll(j, (c) => G.isPos(c, 'ADJ') && !G.isDefinite(c)) && !s.any(j, (c) => G.isFiniteVerb(c) || G.isPos(c, 'PROPN')) && !TANWIN.test(s.surface(j))) {
+      s.decide(i, (c) => !G.isFiniteVerb(c), 'a bare adjective follows: this is the noun "boy" with its adjective', 0.75);
+      continue;
+    }
+    const p = s.prev(i);
+    const pk = p >= 0 ? s.keys[p] : '';
+    const startsOk = p < 0 || pk === 'حيث' || pk === 'وقد' || pk === 'قد' || s.effAll(p, (c) => G.isPos(c, 'PROPN'));
+    const k = s.next(j);
+    const nextOk = ['في', 'عام', 'سنة'].includes(s.keys[j]) || (s.any(j, (c) => G.isPos(c, 'PROPN')) && !s.any(j, G.isFiniteVerb)) || (s.effAll(j, (c) => G.isPos(c, 'NOUN', 'ADJ') && G.isDefinite(c)) && afterSubjectOk(s, k));
+    if (!startsOk || !nextOk) continue;
+    if (s.decide(i, verbs, 'born: a passive perfect', 0.75)) s.preferCell(i, (c) => G.hasVal(c, 'Voice', 'Pass'), 'born: a passive perfect');
   }
 }
 
@@ -932,6 +1060,8 @@ export function orderArSentence(tokens: readonly RawToken[], base: readonly Cand
   CURRENT_RULE = 'ruleKana'; ruleKana(s);
   CURRENT_RULE = 'ruleNumbers'; ruleNumbers(s);
   CURRENT_RULE = 'ruleVerbSubjectObject'; ruleVerbSubjectObject(s);
+  CURRENT_RULE = 'ruleAfterConstructFirst'; ruleAfterConstructFirst(s);
+  CURRENT_RULE = 'ruleWulida'; ruleWulida(s);
   CURRENT_RULE = 'ruleDemonstrative'; ruleDemonstrative(s);
   CURRENT_RULE = 'ruleNounAdjective'; ruleNounAdjective(s);
   CURRENT_RULE = 'ruleConstruct'; ruleConstruct(s);

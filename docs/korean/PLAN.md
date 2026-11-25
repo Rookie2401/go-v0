@@ -241,6 +241,10 @@ declarative ending").
 - **No comma-joined sentence type.** Where the ending alone does not say statement, question, command or suggestion
   (해요체 -아/어요, 해체 -아/어), the token carries no `Mood`; `notes.sentenceType` lists what the form allows, and the
   sentence layer sets `Mood` from the punctuation (`?` → `Int`). (The card splits a listed Mood into separate readings.)
+- **A reading the sentence promotes** takes the lower of the token's top confidence and 0.88; a reading a sure rule sets aside
+  is lowered by 0.20, never below 0.30; the list stays strictly falling. Every such change says why in `notes.context`, in words
+  a person reads (the bare headword and its meaning, never a raised number).
+- **A full stop sets no Mood.** Only a question mark does (`Int`): 앉으세요. is a request and 가요. may be a statement or a suggestion.
 - 0.60: a reading that needs a non-standard allomorph (는 after a consonant) or a spacing the standard does not allow.
 - ≤ 0.45 and `unconfirmed: true`: the stem is not in the lexicon (a name, a new word): the particle or ending chain
   is explained, the stem is offered as written, no gloss.
@@ -354,7 +358,7 @@ Keys (each `syntax:ko:<key>`): `ko-progressive` -고 있다, `ko-resultative` -�
 `ko-neg-short` 안 + predicate, `ko-neg-copula` 이/가 아니다, `ko-exist` 이/가 있다/없다, `ko-passive-jida` -아/어지다,
 `ko-passive-light` 되다 / 받다 / 당하다 on a 하다-noun, `ko-causative-ge` -게 하다 / -게 만들다, `ko-causative-light` 시키다,
 `ko-quote` an indirect quotation ending before 하다 / 말하다 / 생각하다, `ko-since` -(으)ㄴ 지, `ko-while` -는 동안, `ko-after` -(으)ㄴ 후에 / 다음에,
-`ko-before` -기 전에, `ko-in-order` -기 위해(서). A construction is reported
+`ko-before` -기 전에, `ko-in-order` -기 위해(서), `ko-prohibit` -지 말다 (-지 마세요, -지 마, -지 말고), `ko-neg-short-unable` 못 + predicate. A construction is reported
 only when its morphemes are found by the analysis in the required order; 보다 / 주다 / 있다 as ordinary verbs report none.
 
 ## Packages and file ownership

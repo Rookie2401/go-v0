@@ -73,6 +73,25 @@ source's. A reading the lexicon does not vouch for is marked `unconfirmed` and e
   digits: `눈¹`, `눈²`, `묻다¹`, `묻다²` (`koHomonymLemma(lemma, n)`, `koBareLemma(lemma)` in `korean/index-store.ts`).
   The Repository ids are therefore `lemma:ko:눈¹:NOUN` and `lemma:ko:눈²:NOUN`. A headword that is alone in its part
   of speech carries no number.
+  - **A homonym set** is the entries of different etymologies that share a spelling and a SHARED part of speech
+    (`koHomonymSetKey`), because that pair is the item id: 자 "ruler" (NNG) and 자 "person" (NNB) are both NOUN and are
+    one set. No two entries of different etymologies may ever yield the same lemma string and part of speech (a test).
+  - **Three states of a set** (measured by the audit on 2026-11-25: a fifth of running content words, 32,783 of
+    159,254 in the Kaist train file, have a second etymology in their class, and for most of them no reader hesitates:
+    시간, 사회, 지금, 되다). The state is a reviewable line in `docs/korean/homonym-decisions.json` (hand-written, each with
+    its reason), copied into the generated registry `docs/korean/homonyms.json` and onto every row (`KoLexEntry.set`):
+    - **alone**: one entry; no number.
+    - **main**: one entry is what the spelling means in ordinary prose. It KEEPS THE BARE LEMMA (`lemma:ko:시간:NOUN` is
+      "time") at full confidence. The other entries are numbered (`set: 'other'`); they are a reading only when a form
+      or a rule proves them, or are listed last and low as "another entry of this spelling" on the card.
+    - **balanced**: a real choice for a reader (눈, 배, 말, 밤, 차, 다리, 쓰다, 들다, 걷다, 묻다, 이르다): every entry is numbered,
+      and an occurrence nothing decides is the undecided reading below.
+    A set NOBODY has reviewed is never "main" by a guess: the order of sections on a wiki page is not commonness (저 #1
+    is "that", 쓰다 #1 "to wear", 제도 #1 "archipelago"). The only automatic "main" is the entry left when every other
+    entry of the set has all its senses tagged obsolete, archaic, rare, dated or dialectal (`by: 'only-current'`); every
+    other unreviewed set is balanced (`by: 'default'`). INDEX.md states how many running words each state covers.
+    Moving a set from balanced to main later sends the bare item's history to the main entry, which is what an
+    undecided encounter most likely was; the registry refuses any other silent change.
   - **The number is the SOURCE's**: the entry's `etymology_number` on its Wiktionary page (the one stable number the
     source gives a homonym), never a position in a file or in a lexicon. The compiled core and every shard read it
     from the same field, so they cannot disagree. `docs/korean/homonyms.json` records every numbered headword with
@@ -83,7 +102,7 @@ source's. A reading the lexicon does not vouch for is marked `unconfirmed` and e
     1. The FORM decides (물어요 can only be 묻다¹ "ask", ㄷ-irregular; 묻어요 only 묻다² "bury"): the reading's lemma is the
        numbered one.
     2. A rule in `sentence.ts` decides (눈 before 오다 / 내리다 is snow) and says why in `notes.context`: the numbered one.
-    3. Nothing decides (눈이 예뻐요, 묻고): the FIRST reading is the **undecided reading**: lemma = the BARE headword
+    3. Nothing decides, in a BALANCED set (눈이 예뻐요, 묻고): the FIRST reading is the **undecided reading**: lemma = the BARE headword
        (`눈`), `notes.homonym = 'undecided'`, `notes.homonyms` listing the candidates, the gloss naming every
        candidate's meaning; the numbered readings follow it at lower confidence. The encounter, and a mark the learner
        makes on that card, go to `lemma:ko:눈:NOUN`: "met the word 눈, which one not settled". It is an item of its own,
@@ -92,6 +111,12 @@ source's. A reading the lexicon does not vouch for is marked `unconfirmed` and e
     high-confidence while another homonym is as likely.
   - **Granularity**: one etymology of the source is one headword. Two entries of the same class under ONE etymology
     are merged into one row; only entries of different etymologies are numbered apart.
+  - **The number is the source's, not a rank**: 이르다 arrives as 2 and 3, 되다 as 1 and 3. It is never printed as "1 of
+    2", and an entry left alone in its set after filtering carries no number.
+  - **The meaning shown first** for the commonest words is not left to the source's sense order (위하다 "to help", 자신
+    "one's body", 나다 "to be born"): `docs/korean/gloss-overrides.json` holds a reviewed short gloss for the commonest
+    entries, each line reviewable; the build uses it for the row's `gloss`, and a gloss that is only a cross-reference
+    ("synonym of …", "See the entry at …") is resolved or left empty, never shown.
   - **Where the number is never shown or looked up as a spelling**: a card's headline, GoReview's card front, a
     vocabulary list, speech and search show and use the bare headword (`koBareLemma`); the number is identity, and
     may be shown beside the meaning as a dictionary does. `surfaceFromEncounterUnitId` (repository-contract) returns

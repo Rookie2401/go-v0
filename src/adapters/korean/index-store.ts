@@ -30,7 +30,18 @@ export interface KoLexEntry {
    * this class. Never a position in a file: the core and every shard read the same field, so the same word has the same number everywhere.
    */
   hom?: number;
+  /**
+   * How this entry's homonym set is read (docs/korean/homonym-decisions.json, written into docs/korean/homonyms.json by the build). Set
+   * exactly when `hom` is:
+   *   'main'      this entry IS what the spelling means in ordinary prose (시간 time): its lemma string is the BARE headword, at full confidence;
+   *   'other'     another entry of a set that has a main one (시간 "necrophilia"): numbered; read only when a form or a rule proves it, or
+   *               listed last and low as "another entry of this spelling";
+   *   'balanced'  a set a reader really chooses in (눈 eye / snow): numbered; unproven, the first reading is the undecided one (bare lemma).
+   */
+  set?: 'main' | 'other' | 'balanced';
   tag: KoTag;
+  /** A counter (단위 명사: 개, 명, 마리), which the source files as its own part of speech: shared part of speech CLF, not NOUN. */
+  clf?: true;
   /** A derived passive or causative verb, as the source relates it (보이다 from 보다): its voice and its base verb's headword. */
   voice?: 'Pass' | 'Caus';
   base?: string;
@@ -86,7 +97,7 @@ export function lookupKoreanStem(stemKey: string): KoLexHit[] {
   for (const lexicon of installed) {
     const rows = lexicon.entries[stemKey];
     if (!rows) continue;
-    for (const entry of rows) seen.set(`${entry.lemma}\u0000${entry.tag}\u0000${entry.hom ?? 0}`, { lexicon, key: stemKey, entry });
+    for (const entry of rows) seen.set(`${entry.lemma}\u0000${entry.tag}\u0000${entry.clf ? 1 : 0}\u0000${entry.hom ?? 0}`, { lexicon, key: stemKey, entry });
   }
   return [...seen.values()].sort((a, b) => (b.entry.n ?? 0) - (a.entry.n ?? 0) || (a.entry.hom ?? 0) - (b.entry.hom ?? 0) || (a.entry.tag < b.entry.tag ? -1 : a.entry.tag > b.entry.tag ? 1 : 0));
 }
@@ -137,8 +148,37 @@ export function koHomonymNumber(lemma: string): number | undefined {
   return Number([...m[0]].map((c) => SUPERSCRIPT.indexOf(c)).join(''));
 }
 
-/** The lemma string of a lexicon entry: numbered when the entry has a homonym number. */
-export const koEntryLemma = (entry: Pick<KoLexEntry, 'lemma' | 'hom'>): string => koHomonymLemma(entry.lemma, entry.hom);
+/**
+ * The lemma string of a lexicon entry: the bare headword when it is alone or the MAIN entry of its set, numbered otherwise. The one place
+ * that decides it, for the build, the analyser and the dictionary alike.
+ */
+export const koEntryLemma = (entry: Pick<KoLexEntry, 'lemma' | 'hom' | 'set'>): string => (entry.set === 'main' ? entry.lemma : koHomonymLemma(entry.lemma, entry.hom));
+
+/** The shared part of speech of a lexicon entry (docs/korean/PLAN.md, the table); undefined for an affix, which is only ever a word part. */
+export function koSharedPos(entry: Pick<KoLexEntry, 'tag' | 'clf'>): 'NOUN' | 'PROPN' | 'PRON' | 'NUM' | 'VERB' | 'ADJ' | 'AUX' | 'DET' | 'ADV' | 'CONJ' | 'INTJ' | 'CLF' | undefined {
+  switch (entry.tag) {
+    case 'NNG': return 'NOUN';
+    case 'NNB': return entry.clf ? 'CLF' : 'NOUN';
+    case 'NNP': return 'PROPN';
+    case 'NP': return 'PRON';
+    case 'NR': return 'NUM';
+    case 'VV': return 'VERB';
+    case 'VA': return 'ADJ';
+    case 'VX': case 'VCP': case 'VCN': return 'AUX';
+    case 'MM': return 'DET';
+    case 'MAG': return 'ADV';
+    case 'MAJ': return 'CONJ';
+    case 'IC': return 'INTJ';
+    default: return undefined;
+  }
+}
+
+/**
+ * The key of a HOMONYM SET: the spelling and the SHARED part of speech, because that pair is the learner's item id (`lemma:ko:자:NOUN`).
+ * Two entries of different etymologies that share it must not both be bare: 자 "ruler" (NNG) and 자 "person" (NNB) are both NOUN, so they
+ * are one set although their Korean classes differ. An affix is keyed by its tag.
+ */
+export const koHomonymSetKey = (entry: Pick<KoLexEntry, 'lemma' | 'tag' | 'clf'>): string => `${entry.lemma}\u0000${koSharedPos(entry) ?? entry.tag}`;
 
 /** The stem key of a headword of a given class: a predicate loses its final 다. */
 export function koStemKey(lemma: string, tag: string): string {

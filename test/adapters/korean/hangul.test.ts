@@ -249,7 +249,7 @@ describe('koNormalize and originalSpan', () => {
     expect(map).toEqual([0, 2, 3]);
   });
   it('keeps a base letter and its combining mark in one run', () => {
-    const t = 'éx';
+    const t = 'e\u0301x';
     const { key, map } = koNormalize(t);
     expect(key).toBe('éx');
     expect(map).toEqual([0, 2, 3]);

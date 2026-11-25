@@ -412,3 +412,27 @@ describe('fix batch 2: syllable rules read plainly', () => {
     expect(syllablesOf('값')[0].rule).toContain('ㅂ and ㅅ');
   });
 });
+
+describe('fix batch 4', () => {
+  it('a nominal with a dictionary respelling is romanised from the spelling (국화 gukhwa)', () => {
+    expect(koPronunciation('국화', { dictionary: '[구콰]', nominal: true }).transliteration).toBe('gukhwa');
+    expect(koPronunciation('국화', { dictionary: '[구콰]' }).transliteration).toBe('gukwa');
+    expect(koPronunciation('집현전', { dictionary: '[지편전]', nominal: true }).transliteration).toBe('jiphyeonjeon');
+    expect(koPronunciation('국화', { dictionary: '[구콰]', nominal: true }).notes?.[0]).toContain("dictionary's");
+  });
+  it('prevProspective tenses the first lead after a word in -(으)ㄹ (제27항)', () => {
+    expect(P('수', { prevProspective: true })).toBe('쑤');
+    expect(P('데', { prevProspective: true })).toBe('떼');
+    expect(P('것', { prevProspective: true })).toBe('껃');
+    expect(P('사람', { prevProspective: true })).toBe('싸람');
+    expect(P('바', { prevProspective: true })).toBe('빠');
+    expect(P('적에', { prevProspective: true })).toBe('쩌게');
+    expect(P('곳', { prevProspective: true })).toBe('꼳');
+    expect(P('나', { prevProspective: true })).toBe('나');
+    expect(P('수')).toBe('수');
+    expect(koRomanizeWord('수', { prevProspective: true } as never)).toBe('su');
+    const s = koPronunciation('수', { prevProspective: true });
+    expect(s.notes?.some((n) => n.includes('prospective') && n.includes('tensification'))).toBe(true);
+    expect(koPronouncePhrase(['할', '수'])).toEqual(['할', '쑤']);
+  });
+});

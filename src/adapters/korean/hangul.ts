@@ -215,10 +215,17 @@ export function scriptOf(ch: string): 'hangul' | 'hanja' | 'latin' | 'digit' | '
 
 // ───────────────────────────── keys and offsets ─────────────────────────────
 
-/** Invisible characters that never belong to a word: soft hyphen, zero-width space and joiners, word joiner, byte-order mark. */
-export const isInvisible = (ch: string): boolean => /^[­​-‍⁠﻿]$/.test(ch);
-const INVISIBLE_G = /[­​-‍⁠﻿]/g;
-const HALFWIDTH = /[ﾠ-ￜ]/g;
+/**
+ * Invisible characters that never belong to a word, written as escapes on purpose (an editor may drop a literal one):
+ * U+00AD soft hyphen, U+200B zero-width space, U+200C zero-width non-joiner, U+200D zero-width joiner, U+2060 word joiner,
+ * U+FEFF byte-order mark (zero-width no-break space).
+ */
+const INVISIBLE_CLASS = '[\\u00ad\\u200b\\u200c\\u200d\\u2060\\ufeff]';
+const INVISIBLE_ONE = new RegExp(`^${INVISIBLE_CLASS}$`);
+const INVISIBLE_G = new RegExp(INVISIBLE_CLASS, 'g');
+export const isInvisible = (ch: string): boolean => INVISIBLE_ONE.test(ch);
+/** Halfwidth jamo, written as escapes (U+FFA0 is an invisible filler). */
+const HALFWIDTH = /[\uffa0-\uffdc]/g;
 /** Halfwidth jamo (U+FFA0–FFDC) run in the same order as the compatibility jamo (U+3164, 3131–314E, 314F–3163) with gaps. */
 const HALF_BLOCKS: ReadonlyArray<readonly [number, number, number]> = [
   [0xffa0, 0xffa0, 0x3164], [0xffa1, 0xffbe, 0x3131], [0xffc2, 0xffc7, 0x314f], [0xffca, 0xffcf, 0x3155], [0xffd2, 0xffd7, 0x315b], [0xffda, 0xffdc, 0x3161],

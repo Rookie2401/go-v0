@@ -76,6 +76,11 @@ export interface PronounceOptions {
    */
   boundaries?: number[];
   /**
+   * The word BEFORE this one is an adnominal in -(으)ㄹ (할, 갈, 먹을, 올): this word's first syllable, if it begins with ㄱ ㄷ ㅂ ㅅ ㅈ, is
+   * tensed (제27항: 할 수 [할 쑤], 갈 데 [갈 떼], 먹을 것 [머글 껃], 올 사람 [올 싸람]). Not applied in romanization mode.
+   */
+  prevProspective?: boolean;
+  /**
    * Revised Romanization only: the word is a nominal (noun, proper noun, pronoun, numeral). Default false = the GENERAL rule: a ㅎ merges
    * (좋고 joko, 놓다 nota, 잡혀 japyeo, 낳지 nachi, 않다 anta) and 닫히다 dachida, 굳히다 guchida, 붙이다 buchida, 같이 gachi. Only `nominal: true`
    * applies the 체언 exception of 제3장 제1항, which keeps the h after ㄱ ㄷ ㅂ (묵호 mukho, 집현전 jiphyeonjeon, 국화 gukhwa). The caller
@@ -264,6 +269,13 @@ function prepare(key: string, o: PronounceOptions, note: (s: string) => void): I
     const nx = items[1];
     if (nx !== undefined && typeof nx !== 'string' && nx.l !== 'ㅇ' && nx.l !== 'ㅎ') { items[0].t = 'ㅂ'; note('ㅂ of 밟- / 넓죽- / 넓둥글- is said before a consonant: listed in the standard'); }
   }
+  if (o.prevProspective && !o.romanization) {
+    const f = items[0];
+    if (f !== undefined && typeof f !== 'string' && !f.fixed && TENSE[f.l]) {
+      note(`${f.l} after a word ending in the prospective -(으)ㄹ is said ${TENSE[f.l]}: tensification (제27항)`);
+      f.l = TENSE[f.l];
+    }
+  }
   const bounds = new Set<number>(o.boundaries ?? []);
   if (/^(맛|멋)없/.test(key)) bounds.add(1);
   for (const i of bounds) { const it = items[i]; if (it && typeof it !== 'string') it.bound = true; }
@@ -378,12 +390,12 @@ export function koPronouncePhrase(words: readonly string[], o: PhraseOptions = {
 }
 
 /** The standard pronunciation of a word as a Hangul respelling (no brackets). */
-export function koStandardPronunciation(word: string, opts?: { nextWord?: string; verbStem?: boolean | number; tenseAfter?: number[]; boundaries?: number[] }): string {
+export function koStandardPronunciation(word: string, opts?: { nextWord?: string; verbStem?: boolean | number; tenseAfter?: number[]; boundaries?: number[]; prevProspective?: boolean }): string {
   return koPronounce(word, opts).text;
 }
 
 /** The respelling Revised Romanization is read from: the same rules without tensification and without ㅢ → ㅣ. */
-export function koRomanizationRespelling(word: string, opts?: { nextWord?: string; verbStem?: boolean | number; nominal?: boolean; boundaries?: number[] }): string {
+export function koRomanizationRespelling(word: string, opts?: { nextWord?: string; verbStem?: boolean | number; nominal?: boolean; boundaries?: number[]; prevProspective?: boolean }): string {
   return koPronounce(word, { ...opts, romanization: true }).text;
 }
 
@@ -411,7 +423,7 @@ export function untenseLike(spelling: string, respelling: string): string {
  * Pronunciation support for the word sheet: the respelling's notes and the Revised Romanization OF THE PRONUNCIATION. A dictionary's
  * own respelling (with or without brackets) wins over the rules; when it differs, the note says so.
  */
-export function koPronunciation(surface: string, opts?: { dictionary?: string; nextWord?: string; verbStem?: boolean | number; tenseAfter?: number[]; nominal?: boolean; boundaries?: number[] }): PronunciationSupport {
+export function koPronunciation(surface: string, opts?: { dictionary?: string; nextWord?: string; verbStem?: boolean | number; tenseAfter?: number[]; nominal?: boolean; boundaries?: number[]; prevProspective?: boolean }): PronunciationSupport {
   const key = koKey(surface);
   if (![...key].some(isHangulSyllable)) return {};
   const rule = koPronounce(key, opts);
@@ -423,7 +435,8 @@ export function koPronunciation(surface: string, opts?: { dictionary?: string; n
     notes.push(`Pronunciation [${dict}] is the dictionary's.`);
     if (dict === rule.text) notes.push(...rule.notes);
     else notes.push(`Said differently from what the spelling rules give (dictionary): the rules alone give [${rule.text}].`);
-    transliteration = romanizeRespelling(untenseLike(key, dict));
+    // a nominal keeps its h after ㄱ ㄷ ㅂ (국화 gukhwa): that needs the spelling, so it is romanised from the spelling-aware path
+    transliteration = opts?.nominal === true ? romanizeRespelling(koRomanizationRespelling(key, opts)) : romanizeRespelling(untenseLike(key, dict));
   } else {
     transliteration = romanizeRespelling(koRomanizationRespelling(key, opts));
   }

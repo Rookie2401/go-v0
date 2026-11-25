@@ -70,7 +70,7 @@ describe('koTokenize', () => {
   it('offsets slice the original text exactly, for mixed text', () => {
     for (const t of [
       '2024년에는 KBS가 學校에서 😀 "왜?" 그가 물었다… 3.14!',
-      '한국어'.normalize('NFD') + ' 한국어 é x',
+      '한국어'.normalize('NFD') + ' 한국어 e\u0301 x',
       '  앞뒤 공백  ',
       "It's a K-pop 노래입니다.",
       '一二三 가나다',
@@ -131,7 +131,7 @@ describe('koSearchNormalize', () => {
 });
 
 describe('fix batch 1: invisible characters', () => {
-  const INV = ['­', '​', '‌', '‍', '⁠', '﻿'];
+  const INV = ['\u00ad', '\u200b', '\u200c', '\u200d', '\u2060', '\ufeff'];
   it('stay inside a word between two Hangul or Hanja letters', () => {
     for (const c of INV) {
       const t = `한${c}국어`;

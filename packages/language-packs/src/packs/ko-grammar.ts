@@ -16,7 +16,7 @@ export const KO_GRAMMAR_FEATURES: GrammarFeature[] = [
   },
   {
     key: 'Case', label: 'Case (the job a particle gives a noun)',
-    values: { Nom: 'subject or complement (이/가, 께서)', Acc: 'object (을/를)', Gen: 'possessor (의)', Dat: 'to a person (에게, 한테, 께)', Loc: 'place, time, destination (에, 에서)', Abl: 'from, source (에서, 에게서, 한테서, 부터)', Ins: 'means, direction, role (로/으로)', Com: 'with, and (와/과, 하고, 랑/이랑)', Cmp: 'than (보다)', Voc: 'calling someone (아/야)' },
+    values: { Nom: 'subject or complement (이/가, 께서)', Acc: 'object (을/를)', Gen: 'possessor (의)', Dat: 'to a person (에게, 한테, 께)', Loc: 'place, time, destination (에, 에서)', Abl: 'from, source (에서, 에게서, 한테서, 부터)', Ins: 'means, direction, role (로/으로)', Com: 'with, and (와/과, 하고, 랑/이랑)', Cmp: 'than (보다)', Voc: 'calling someone (아/야)', Equ: 'like, as much as (처럼, 같이, 만큼)', Ess: 'as, in the role of (로서/으로서)' },
     explain: 'A Korean noun never changes shape; a small particle written right after it says its job in the sentence. In 학생이 책을 읽어요 (“the student reads a book”) 이 marks who does it and 을 marks what is read. A particle with more than one job keeps one case on the card, and its role line lists the jobs: 에 is place, time or destination (학교에 가요 “I go to school”).',
   },
   {
@@ -28,8 +28,8 @@ export const KO_GRAMMAR_FEATURES: GrammarFeature[] = [
     explain: '은/는 says what the sentence is about, or sets one thing against another; it is not the subject marker. 저는 학생이에요 is “as for me, I am a student”, and a topic can also be set against another thing: the contrast is read from the situation. 은 follows a consonant (학생은) and 는 a vowel (친구는).',
   },
   {
-    key: 'Focus', label: 'Emphasis particle', values: { Also: 'also, even (도)', Only: 'only (만)', Even: 'even (조차, 마저)', Each: 'each, every (마다)' },
-    explain: 'A few particles add a nuance to the noun and can stand after or in place of a case particle: 도 “also”, 만 “only”, 조차 and 마저 “even”, 마다 “each”. 친구에게만 is “only to a friend”; 날마다 is “every day”.',
+    key: 'Focus', label: 'Emphasis particle', values: { Also: 'also, even (도)', Only: 'only (만)', Even: 'even (조차, 마저)', Each: 'each, every (마다)', Limit: 'up to, as far as (까지)', Start: 'from, starting at (부터)', Except: 'nothing but, only (밖에, used with a negative)', Alt: 'or, or so (이나/나)', Any: 'any, whichever (이든지/든지)', AtLeast: 'even just, at least (이라도/라도)', Accord: 'as, according to (대로)', LetAlone: 'far from, let alone (커녕)', Emph: 'above all, indeed (이야/야, 이야말로/야말로)' },
+    explain: 'A few particles add a nuance to the noun and can stand after or in place of a case particle: 도 “also”, 만 “only”, 조차 and 마저 “even”, 마다 “each”. 친구에게만 is “only to a friend”; 날마다 is “every day”. Others: 까지 “up to”, 부터 “from”, 밖에 “nothing but” (with a negative), 이나 “or”, 이라도 “even just”, 이든지 “any”, 대로 “as”, 커녕 “far from”, 이야말로 “above all”.',
   },
   {
     key: 'Polite', label: 'Honorific particle', values: { Hon: 'honorific (께, 께서)' },
@@ -45,16 +45,16 @@ export const KO_GRAMMAR_FEATURES: GrammarFeature[] = [
     explain: '-았/었- marks the past: 먹었어요 “ate”. A plain sentence has no present marker, so the card does not assert “present” for it: 먹어요 can be “eat”, “am eating” or a near future. Only the modifier -는 (먹는 사람) marks a present-time action. -겠- and -(으)ㄹ are not tenses (see Modality and Aspect).',
   },
   {
-    key: 'Aspect', label: 'Aspect', values: { Pqp: 'past of the past (-았었/었었-)', Prosp: 'prospective, not yet realised (-(으)ㄹ)' },
-    explain: '-았었/었었- is the past of the past, often implying that what happened no longer holds: 갔었어요 “I went (there once, and am no longer there)”. -(으)ㄹ before a noun or in a set pattern marks what is not yet real, only supposed or possible; it is not a future tense: 갈 때 “when (I) go”, 할 수 있다 “can do”.',
+    key: 'Aspect', label: 'Aspect', values: { Imp: 'ongoing or habitual in the past (-던)', Pqp: 'past of the past (-았었/었었-)', Prosp: 'prospective, not yet realised (-(으)ㄹ)' },
+    explain: '-았었/었었- is the past of the past, often implying that what happened no longer holds: 갔었어요 “I went (there once, and am no longer there)”. -던 recalls what was going on or used to happen: 먹던 밥 “the rice (I) was eating”. -(으)ㄹ before a noun or in a set pattern marks what is not yet real, only supposed or possible; it is not a future tense: 갈 때 “when (I) go”, 할 수 있다 “can do”.',
   },
   {
     key: 'Mood', label: 'Sentence type', values: { Ind: 'statement', Imp: 'command', Int: 'question', Prop: 'suggestion (let us)', Excl: 'exclamation or realisation' },
-    explain: 'The last ending also says what kind of sentence it is: 먹는다 (statement), 먹어라 (command), 먹니? (question), 먹자 (let us eat), 먹네 (“oh, he is eating”). In the polite 해요 style one ending, -아요/-어요, serves for statements, questions, commands and suggestions alike, and the situation and the intonation tell which.',
+    explain: 'The last ending also says what kind of sentence it is: 먹는다 (statement), 먹어라 (command), 먹니? (question), 먹자 (let us eat), 먹네 (“oh, he is eating”). In the polite 해요 style one ending, -아요/-어요, serves for statements, questions, commands and suggestions alike, and the situation and the intonation tell which; for such an ending the card gives no Mood and says in words which sentence types it can be.',
   },
   {
-    key: 'Modality', label: 'Modality', values: { Presumptive: 'intention, supposition or softening (-겠-)', Retrospective: 'recalled from experience (-더-)' },
-    explain: '-겠- is not a future tense. It says the speaker intends something (내일 가겠습니다 “I will go tomorrow”), supposes something (비가 오겠네요 “it looks like rain”), or softens a statement politely (알겠습니다 “understood”). -더- recalls something the speaker saw or experienced, and is found inside endings such as -더라 and -던: 그 사람이 참 착하더라 “(I saw that) he was very kind”.',
+    key: 'Modality', label: 'Modality', values: { Presumptive: 'intention, supposition or softening (-겠-)', Retrospective: 'recalled from experience (-더-)', Necessitative: 'must, had better (-아/어야겠-)' },
+    explain: '-겠- is not a future tense. It says the speaker intends something (내일 가겠습니다 “I will go tomorrow”), supposes something (비가 오겠네요 “it looks like rain”), or softens a statement politely (알겠습니다 “understood”). -더- recalls something the speaker saw or experienced, and is found inside endings such as -더라 and -던: 그 사람이 참 착하더라 “(I saw that) he was very kind”. -아/어야겠- says one must or had better: 가야겠어요 “I think I must go”.',
   },
   {
     key: 'Honorific', label: 'Honorific', values: { Subj: 'honours the subject (-(으)시-)' },
@@ -71,12 +71,24 @@ export const KO_GRAMMAR_FEATURES: GrammarFeature[] = [
   },
   {
     key: 'Connective', label: 'Connective',
-    values: { and: 'and, then', but: 'but', if: 'if, when', because: 'because, so', while: 'while', 'so-that': 'so that, to the point that', although: 'although, even if' },
-    explain: 'A connective ending joins a clause to the next one and says how the two relate. 먹고 “eat, and …”; 먹지만 “eat, but …”; 먹으면 “if (I) eat”; 먹으면서 “while eating”. The same ending can have more than one sense: -(으)면 can be “if” or “whenever”, and the card gives the sense the sentence supports.',
+    values: {
+      and: 'and, then (-고; literary -(으)시오며, -(으)사)', but: 'but (-지만, -(으)나)', if: 'if, when (-(으)면, -거든, -다면)', because: 'because, since (-(으)니까, -(으)므로)', while: 'while (-(으)면서)',
+      'so-that': 'so that, until (-도록)', although: 'although (literary -거늘)', so: 'so, and then (-아서/-어서, -(이)라서)', 'even-if': 'even if, may (-아도/-어도, -더라도)',
+      'only-if': 'only if, must (-아야/-어야)', or: 'or (-거나)', whether: 'whether (-든지, -는지, -(으)ㄹ지)', purpose: 'in order to, with go or come (-(으)러)', intend: 'intending to (-(으)려고, -고자)',
+      then: 'and then, switching to something else (-다가)', 'and-then': 'and then, but then (-더니)', 'and-while': 'and, while (-(으)며)', after: 'after doing (-고서)', 'as-soon-as': 'as soon as (-자마자)',
+      'the-more': 'the more (-(으)ㄹ수록)', 'as-if': 'as if, just as (-듯이)', 'as-you-know': 'as you know (-다시피)', 'because-busy': 'because of being busy doing (-느라고)', background: 'scene-setting or contrast (-는데, -(으)ㄴ데)',
+      adverbial: 'in the manner of (-게)', inf: 'the bare link -아/-어 before an auxiliary or the next verb', neg: 'the -지 of -지 않다 and -지 못하다', quote: 'an indirect-quotation ending (-다고, -(으)라고, -자고)',
+      besides: 'not only … but also, besides (-거니와)', habit: 'habitually, used to (-곤 하다)', 'not-but': 'not A but B, after the copula (아니라)', saying: 'literary: yet, with the proviso (-(으)되)', since: 'literary: since, as (-(으)니, -나니, -(으)리니)', 'as-i': 'literary: as I (think, see) (-건대)',
+    },
+    explain: 'A connective ending joins a clause to the next one and says how the two relate. 먹고 “eat, and …”; 먹지만 “eat, but …”; 먹으면 “if (I) eat”; 먹으면서 “while eating”. Others: 먹어서 “because (I) ate, and so”; 먹어도 “even if (I) eat”; 먹거나 “eat or …”; 먹으러 가요 “I go to eat”; 가다가 “on the way”; 보자마자 “as soon as (I) saw”; 갈수록 “the more (I) go”. The same ending can have more than one sense: -(으)면 can be “if” or “whenever”, and the card gives the sense the sentence supports.',
   },
   {
-    key: 'VerbType', label: 'Kind of predicate', values: { Descriptive: 'descriptive verb (a state or quality)', Cop: 'copula (이다, 아니다)' },
-    explain: 'What English calls an adjective is a verb in Korean, so it conjugates: 예쁘다 “to be pretty”, 예뻐요 “is pretty”, 예뻤어요 “was pretty”. The card calls it a descriptive verb. The copula 이다 “to be” attaches to a noun (학생이다 “is a student”, 의사예요 “is a doctor”), and its partner 아니다 “to not be” follows a noun marked with 이/가 (학생이 아니에요).',
+    key: 'Quote', label: 'Quotation', values: { Ind: 'indirect quotation (-다고, -(으)라고, -자고, -냐고, -(이)라고)' },
+    explain: 'An ending that reports what someone said or thought, in the speaker’s own sentence: 비가 온다고 해요 “they say it is raining”, 학생이라고 말했어요 “said (that he) is a student”, 가자고 했어요 “said let us go”. The quotation ending depends on the kind of sentence quoted. Contracted forms such as 온대요 and 가래요 are the same construction.',
+  },
+  {
+    key: 'VerbType', label: 'Kind of predicate', values: { Descriptive: 'descriptive verb (a state or quality)', Cop: 'copula (이다, 아니다)', Exist: 'existential (있다, 없다, 계시다)' },
+    explain: 'What English calls an adjective is a verb in Korean, so it conjugates: 예쁘다 “to be pretty”, 예뻐요 “is pretty”, 예뻤어요 “was pretty”. The card calls it a descriptive verb. The copula 이다 “to be” attaches to a noun (학생이다 “is a student”, 의사예요 “is a doctor”), and its partner 아니다 “to not be” follows a noun marked with 이/가 (학생이 아니에요). 있다 “to be, to exist, to have” and 없다 “to not exist, to not have” are the existential verbs, and the honorific 계시다 “to be (of a person)” joins them: 책이 있어요 “there is a book”, 선생님이 계세요 “the teacher is here”. The card marks each as existential, and for them -는 is the present modifier even though they are not action verbs (있는 사람).',
   },
   {
     key: 'Complement', label: 'Complement', values: { Yes: 'the noun before 아니다 or 되다 (marked 이/가)' },
@@ -89,7 +101,7 @@ export const KO_GRAMMAR_FEATURES: GrammarFeature[] = [
   {
     key: 'Irregular', label: 'Irregular conjugation',
     values: { D: 'ㄷ irregular', B: 'ㅂ irregular', S: 'ㅅ irregular', H: 'ㅎ irregular', Reu: '르 irregular', Reo: '러 irregular', U: '우 irregular (푸다)', Eu: 'ㅡ deletion', L: 'ㄹ deletion', Ha: '하다 verbs (해, 하여)' },
-    explain: 'Some stems change when an ending follows, and the CLASS BELONGS TO THE WORD, not to its spelling: 묻다 “to ask” is ㄷ-irregular (물어요) but 묻다 “to bury” is regular (묻어요); 닫다, 잡다, 웃다 and 좋다 look like irregular verbs and are regular (닫아요, 잡아요, 웃어요, 좋아요). ㄷ → ㄹ before a vowel: 듣다 → 들어요. ㅂ → 우/오: 춥다 → 추워요, 돕다 → 도와요. ㅅ drops: 짓다 → 지어요. ㅎ drops and the vowel changes: 하얗다 → 하얘요. 르 doubles the ㄹ: 모르다 → 몰라요. 러: 이르다 “to reach” → 이르러 (but 이르다 “to be early” is 르: 일러요). 우: 푸다 → 퍼요. ㅡ drops before 아/어: 쓰다 → 써요. ㄹ drops before ㄴ, ㅂ, ㅅ and -오: 살다 → 삽니다, 사는, 사세요; a stem in ㄹ takes no 으 before -(으)면 or -(으)ㄹ: 살면, 살 때. 하다 → 해요 or 하여.',
+    explain: 'Some stems change when an ending follows, and the CLASS BELONGS TO THE WORD, not to its spelling: 묻다 “to ask” is ㄷ-irregular (물어요) but 묻다 “to bury” is regular (묻어요; the dictionary has a third 묻다, “to stick, to get on”, also regular, and 물어요 can also be 물다 “to bite”, so the spelling of a form can rule a word out but does not always name one); 닫다, 잡다, 웃다 and 좋다 look like irregular verbs and are regular (닫아요, 잡아요, 웃어요, 좋아요). ㄷ → ㄹ before a vowel: 듣다 → 들어요. ㅂ → 우/오: 춥다 → 추워요, 돕다 → 도와요. ㅅ drops: 짓다 → 지어요. ㅎ drops and the vowel changes: 하얗다 → 하얘요. 르 doubles the ㄹ: 모르다 → 몰라요. 러: 이르다 “to reach” → 이르러 (but 이르다 “to be early” is 르: 일러요). 우: 푸다 → 퍼요. ㅡ drops before 아/어: 쓰다 → 써요. ㄹ drops before ㄴ, ㅂ, ㅅ and -오: 살다 → 삽니다, 사는, 사세요; a stem in ㄹ takes no 으 before -(으)면 or -(으)ㄹ: 살면, 살 때. 하다 → 해요 or 하여.',
   },
   {
     key: 'Contracted', label: 'Contraction', values: { Yes: 'the stem and the ending are fused in the spelling' },

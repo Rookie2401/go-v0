@@ -18,7 +18,7 @@ export const KO_TUTORIAL_STEPS_OWN: TutorialStep[] = [
     body:
       'Korean is written in Hangul, read from left to right. It is a true alphabet of 19 consonant and 21 vowel letters, but the letters of one syllable are stacked into a single square block: ㅎ + ㅏ + ㄴ make 한, with the vowel to the right of the consonant (가) or below it (고) and a final consonant at the bottom. A block is one syllable, so the page is a row of blocks, and a word is a few of them. The letter ㅇ is silent at the start of a block and sounds ng at the end. Spaces separate units of several syllables (an 어절), not single words: a noun and its particle, or a verb with its endings, are written together. Some Sino-Korean words are also printed in Hanja on some pages; the card shows Hanja only where the dictionary states them. If you want to learn the letters first, the optional Alphabet Sprint in GoReview teaches them in seven short stages; reading with the card needs none of it.',
     examples: [
-      { surface: '한국어', gloss: 'the Korean language', note: 'three blocks: 한 + 국 + 어; said hangugeo (the final ㄱ of 국 is carried onto the silent ㅇ of 어)' },
+      { surface: '음악', gloss: 'music', note: 'two blocks: 음 + 악; said eumak: the final ㅁ of 음 is carried onto the silent ㅇ of 악' },
       { surface: '가', gloss: 'a syllable: ㄱ + ㅏ', note: 'the vowel ㅏ stands to the right of the consonant' },
       { surface: '고', gloss: 'a syllable: ㄱ + ㅗ', note: 'the vowel ㅗ stands below the consonant' },
       { surface: '학교', gloss: 'school', note: 'written hakgyo, said [학꾜]: spelling and sound can differ' },
@@ -62,7 +62,7 @@ export const KO_TUTORIAL_STEPS_OWN: TutorialStep[] = [
       { surface: '먹어요', gloss: 'eat, eats', note: '먹다, polite everyday style' },
       { surface: '먹었어요', gloss: 'ate', note: '먹 + 었 + 어요' },
       { surface: '추워요', gloss: 'is cold', note: '춥다 (ㅂ changes to 우); a descriptive verb' },
-      { surface: '들어요', gloss: 'listens', note: '듣다 (ㄷ changes to ㄹ before a vowel); 들다 “to hold; to enter” is spelled the same, so the sentence decides' },
+      { surface: '들어요', gloss: 'listens', note: '듣다 (ㄷ changes to ㄹ before a vowel); 들다 “to hold; to enter” is spelled the same, so the sentence helps to choose' },
       { surface: '해요', gloss: 'does', note: '하다; the ending and the stem are fused (하 + 여)' },
     ],
   },
@@ -98,14 +98,15 @@ export const KO_TUTORIAL_STEPS_OWN: TutorialStep[] = [
   {
     id: 'homonyms',
     kind: 'concept',
-    title: 'Words spelled alike: 눈¹ and 눈²',
+    title: 'Words spelled alike: 눈 (eye) and 눈 (snow)',
     estimatedMinutes: 2,
     body:
-      'Korean has many words that are spelled alike but are different words with different origins: 눈 “eye” and 눈 “snow”, 배 “stomach”, 배 “pear” and 배 “boat”, 말 “horse” and 말 “speech”. The dictionary gives each its own entry, and the card keeps them apart, with a small raised number after the headword (눈¹, 눈²): that number is the dictionary’s entry number and is identity, not a ranking. For most words the plain spelling means the common word and the others are rare; for a real choice (눈, 배, 말) the card does not guess. When a word cannot be told apart from the sentence (눈이 예뻐요: pretty eyes or pretty snow?) the card says the reading is undecided, names the candidates, and keeps what you mark on it as “the word 눈, which one not settled”. When the form itself or a neighbouring word decides (눈이 와요, with 오다, is snow), the card names the one entry.',
+      'Korean has many words that are spelled alike but are different words with different origins: 눈 “eye” and 눈 “snow”, 배 “stomach”, “pear” and “boat”, 말 “speech” and “horse”. The dictionary gives each its own entry, and the card keeps them apart. The card shows the plain headword; when it shows one of several entries of a spelling, a small label such as “entry 2” stands beside the meaning. That number is the dictionary’s own entry number: it says which word, not how common it is. For most spelled-alike words one is the ordinary word and the card simply shows it (시간 is “time”; the dictionary’s other 시간 entries come last, if at all). Only where a reader really has to choose (눈, 배, 말) does the card say it could not tell which: it names every candidate, and what you mark on it is kept as “the word 눈, which one not settled”. A clue can settle it: in 눈이 와요 the verb 오다 makes 눈 “snow”, and the shape of a form can rule entries out (물어요 cannot be 묻다 “to bury”). When more than one entry still fits, the card says so.',
     examples: [
-      { surface: '눈', gloss: 'eye; snow', note: 'two entries (눈¹ eye, 눈² snow) spelled alike' },
+      { surface: '눈', gloss: 'eye; snow', note: 'two entries spelled alike; the card names both when the sentence does not choose' },
       { surface: '배', gloss: 'stomach; pear; boat', note: 'three entries' },
-      { surface: '묻어요', gloss: 'buries', note: '묻다 “to bury”, regular; 물어요 is 묻다 “to ask” (ㄷ changes to ㄹ): the shape of the form decides which' },
+      { surface: '물어요', gloss: 'asks; or bites', note: '묻다 “to ask” (ㄷ changes to ㄹ) or 물다 “to bite”; it cannot be 묻다 “to bury”' },
+      { surface: '묻어요', gloss: 'buries; or sticks on', note: '묻다 “to bury” or another 묻다 “to stick, to get on”, both regular; it cannot be “to ask”' },
     ],
   },
   {
@@ -128,7 +129,7 @@ export const KO_TUTORIAL: Tutorial = orientation({
   cardFeatureNote: 'For a Korean word the card shows the dictionary form (a verb ends in 다), its class (a descriptive verb conjugates like any verb), the word in parts (a noun with its particles; a stem with its endings, each with its job), the grammar features of the exact form (the plural 들, the topic particle, the past, the honorific -(으)시-, the speech level, the irregular class the form shows), a construction such as -고 있다 when the words make one, the pronunciation as the standard rules give it (with Revised Romanization only as an aid, if you have turned transliteration on), and the Hanja when the dictionary states them. A word that could be one of several entries spelled alike says so.',
   thin: [
     'Korean is read by rules over a Wiktionary stem lexicon, not by a statistical analyser; a stem the lexicon does not hold gets an unconfirmed reading with no meaning.',
-    'There is no curated frequency list; homonyms are numbered from the source and many sets have not been reviewed, so an undecided word is shown as undecided.',
+    'There is no curated frequency list; homonyms carry the dictionary’s own entry numbers and many sets have not been reviewed, so a word the sentence cannot settle is shown as undecided.',
     'Proper names are the weakest part (about 44 % are covered) and numerals are thin; an irregular verb is known as irregular only where the source has its conjugation table.',
     'No Bible text is bundled with the pack, and its literary endings are named but not taught in depth.',
     'Nothing has been reviewed by a native speaker or a Korean teacher.',

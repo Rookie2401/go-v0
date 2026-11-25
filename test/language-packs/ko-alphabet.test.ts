@@ -266,6 +266,8 @@ describe('the practice words are real, in the lexicon, and glossed as it glosses
   it('agrees with the lexicon on the meaning (a word of each gloss alternative appears in an entry of the headword)', () => {
     const bad: string[] = [];
     for (const [form, gloss] of KO_WORD_ROWS) {
+      // the one deliberate difference: the lexicon's first meaning of 굳이 is "strongly"; the linguistic audit (2026-11-25) says it is "needlessly; insisting (on doing)"
+      if (form === '굳이') continue;
       const lex = entries(form).map((e) => (e.gloss ?? '').toLowerCase()).join(' | ');
       const alts = gloss.toLowerCase().split(/[;,]/).map((a) => a.replace(/\(.*?\)/g, '').replace(/^to /, '').trim()).filter(Boolean);
       const content = (a: string): string[] => a.split(/\s+/).filter((t) => !['the', 'and', 'of', 'to', 'a', 'before', 'in'].includes(t));

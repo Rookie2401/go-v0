@@ -15,6 +15,8 @@ import { KO_ANALYZER_VERSION } from '../../src/adapters/korean/version';
 import { fromJamo, toJamo } from '../../src/adapters/korean/hangul';
 import { koStandardPronunciation } from '../../src/adapters/korean/pronunciation';
 import { koAdapter } from '../../src/adapters/ko';
+import { ENDINGS } from '../../src/adapters/korean/endings';
+import { FUSED, PARTICLES } from '../../src/adapters/korean/particles';
 import { installKoreanLexicon } from '../../src/adapters/korean/index-store';
 import { KO_CORE } from '../../src/adapters/korean/generated/core';
 
@@ -28,21 +30,22 @@ const ko = koreanManifest();
  */
 const PLAN_FEATURES: Record<string, string[]> = {
   Number: ['Plur'],
-  Case: ['Nom', 'Acc', 'Gen', 'Dat', 'Loc', 'Abl', 'Ins', 'Com', 'Cmp', 'Voc'],
+  Case: ['Nom', 'Acc', 'Gen', 'Dat', 'Loc', 'Abl', 'Ins', 'Com', 'Cmp', 'Voc', 'Equ', 'Ess'],
   Particle: [],
   Topic: ['Yes'],
   Focus: ['Also', 'Only', 'Even', 'Each'],
+  Quote: ['Ind'],
   Polite: ['Hon'],
   VerbForm: ['Fin', 'Conn', 'Adn', 'Nmlz'],
   Tense: ['Past', 'Pres'],
-  Aspect: ['Pqp', 'Prosp'],
+  Aspect: ['Pqp', 'Prosp', 'Imp'],
   Mood: ['Ind', 'Imp', 'Int', 'Prop', 'Excl'],
-  Modality: ['Presumptive', 'Retrospective'],
+  Modality: ['Presumptive', 'Retrospective', 'Necessitative'],
   Honorific: ['Subj'],
   SpeechLevel: ['Hae', 'Haeyo', 'Hasipsio', 'Haera', 'Hage', 'Hao', 'Lit'],
   Polarity: ['Neg', 'Pos'],
   Connective: ['and', 'but', 'if', 'because', 'while', 'so-that', 'although'],
-  VerbType: ['Descriptive', 'Cop'],
+  VerbType: ['Descriptive', 'Cop', 'Exist'],
   Complement: ['Yes'],
   Voice: ['Pass', 'Caus'],
   Irregular: ['D', 'B', 'S', 'H', 'Reu', 'Reo', 'U', 'Eu', 'L', 'Ha'],
@@ -135,6 +138,18 @@ describe('the grammar copy covers everything the analyser writes (PLAN.md)', () 
     expect(missing).toEqual([]);
     expect(ko.grammar.features).toEqual(KO_GRAMMAR_FEATURES);
   });
+  it('has copy for every morph key=value the engine’s own tables can emit (endings, particles, fused pronouns), plus the values analyze.ts and the lexicon produce', () => {
+    const emitted = new Set<string>();
+    const take = (m: Readonly<Record<string, string>> | undefined): void => { for (const [k, v] of Object.entries(m ?? {})) for (const x of String(v).split(',')) emitted.add(`${k}=${x}`); };
+    for (const e of ENDINGS) take(e.morph);
+    for (const p of Object.values(PARTICLES)) take(p.morph);
+    for (const f of Object.values(FUSED)) take((f as { morph?: Record<string, string> }).morph);
+    // produced in code, not in a table (analyze.ts, sentence.ts, the lexicon's own marks); listed by hand: when the code gains a value, add it here
+    for (const x of ['VerbType=Descriptive', 'VerbType=Cop', 'VerbType=Exist', 'Voice=Pass', 'Voice=Caus', 'Contracted=Yes', 'Fused=Yes', 'NounType=Bound', 'NounType=Clf', 'Complement=Yes', 'Polarity=Neg', 'Polarity=Pos', 'Tense=Pres', 'Number=Plur', 'Quote=Ind', ...PLAN_FEATURES.Irregular.map((v) => `Irregular=${v}`)]) emitted.add(x);
+    const missing = [...emitted].filter((kv) => { const [k, v] = kv.split('='); return !byKey.get(k)?.values[v]; });
+    expect(missing).toEqual([]);
+    expect(emitted.size).toBeGreaterThan(90);
+  });
   it('has an entry for every construction id PLAN lists, and none that PLAN does not', () => {
     const ids = KO_GRAMMAR_CONSTRUCTIONS.map((c) => c.id);
     expect(PLAN_CONSTRUCTIONS.filter((id) => !ids.includes(id))).toEqual([]);
@@ -199,7 +214,8 @@ describe('the grammar copy covers everything the analyser writes (PLAN.md)', () 
     const irr = byKey.get('Irregular')!;
     for (const needle of ['듣다 → 들어요', '춥다 → 추워요', '짓다 → 지어요', '하얗다 → 하얘요', '모르다 → 몰라요', '이르다 “to reach” → 이르러', '푸다 → 퍼요', '쓰다 → 써요', '살다 → 삽니다', '하다 → 해요']) expect(irr.explain, needle).toContain(needle);
     expect(irr.explain).toMatch(/CLASS BELONGS TO THE WORD, not to its spelling/);
-    expect(irr.explain).toMatch(/묻다 “to ask” is ㄷ-irregular \(물어요\) but 묻다 “to bury” is regular \(묻어요\)/);
+    expect(irr.explain).toMatch(/묻다 “to ask” is ㄷ-irregular \(물어요\) but 묻다 “to bury” is regular \(묻어요; /);
+    expect(irr.explain).toMatch(/rule a word out but does not always name one/);
     for (const regular of ['닫아요', '잡아요', '웃어요', '좋아요']) expect(irr.explain).toContain(regular);
     expect(Object.keys(irr.values)).toHaveLength(10);
   });
@@ -259,7 +275,8 @@ describe('the orientation', () => {
     expect(koStandardPronunciation('한국어')).toBe('한구거');
     expect(koStandardPronunciation('학교')).toBe('학꾜');
     const own = KO_TUTORIAL.steps.map((s) => s.body + ' ' + (s.examples ?? []).map((e) => e.note ?? '').join(' ')).join('\n');
-    expect(own).toContain('said hangugeo');
+    expect(own).toContain('said eumak');
+    expect(koStandardPronunciation('음악')).toBe('으막');
     expect(own).toContain('said [학꾜]');
     expect(own).not.toMatch(/\bhe\/she\b|\bgrammatical gender of\b/);
     const sound = KO_TUTORIAL.steps.find((s) => s.id === 'sound-and-audio')!;
@@ -283,9 +300,13 @@ describe('the orientation', () => {
   });
   it('explains the homonym number and "unconfirmed" in the learner\'s words', () => {
     const hom = KO_TUTORIAL.steps.find((s) => s.id === 'homonyms')!;
-    expect(hom.body).toMatch(/눈¹, 눈²/);
-    expect(hom.body).toMatch(/dictionary’s entry number and is identity, not a ranking/);
-    expect(hom.body).toMatch(/undecided/);
+    expect(hom.body).toMatch(/“entry 2”/);
+    expect(hom.body).not.toMatch(/눈¹|눈²/);
+    expect(hom.body).toMatch(/which word, not how common it is/);
+    expect(hom.body).toMatch(/시간 is “time”/);
+    expect(hom.body).toMatch(/could not tell which/);
+    expect(hom.body).toMatch(/can rule entries out/);
+    expect(hom.body).not.toMatch(/decides which/);
     const unc = KO_TUTORIAL.steps.find((s) => s.id === 'unconfirmed')!;
     expect(unc.body).toMatch(/not counted as a word you know/);
     const speech = KO_TUTORIAL.steps.find((s) => s.id === 'speech-levels')!;

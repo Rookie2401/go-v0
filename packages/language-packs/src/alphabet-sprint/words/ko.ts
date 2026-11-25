@@ -22,7 +22,7 @@ const SOURCE = 'written for this deck; headword and meaning checked against src/
 
 export const KO_WORD_ROWS: readonly KoWordRow[] = [
   // the brief's stage 5 and stage 7 words
-  ['한', 'one (before a noun)', 1], ['국', 'soup', 1], ['문', 'door', 1], ['말', 'horse; speech', 1], ['집', 'house, home', 1], ['밥', 'cooked rice; a meal', 1], ['책', 'book', 1],
+  ['한', 'one (before a noun)', 1], ['국', 'soup', 1], ['문', 'door', 1], ['말', 'speech, word; horse', 1], ['집', 'house, home', 1], ['밥', 'cooked rice; a meal', 1], ['책', 'book', 1],
   ['사람', 'person, human being', 1], ['한국', 'Korea', 1], ['학교', 'school', 1], ['나라', 'country', 1], ['친구', 'friend', 1], ['사랑', 'love', 1], ['하나님', 'God', 1],
   // pronouns, numbers, question words and the commonest small words
   ['나', 'I, me', 1], ['우리', 'we', 0.95], ['이', 'this', 0.95], ['그', 'that; he', 0.9], ['저', 'I (humble); that over there', 0.85], ['너', 'you (informal)', 0.7], ['하나', 'one', 0.95], ['두', 'two (before a noun)', 0.8],
@@ -31,7 +31,7 @@ export const KO_WORD_ROWS: readonly KoWordRow[] = [
   // family and people
   ['아이', 'child', 0.95], ['어머니', 'mother', 0.9], ['아버지', 'father', 0.9], ['아기', 'baby', 0.75], ['아들', 'son', 0.8], ['딸', 'daughter', 0.8], ['아내', 'wife', 0.7], ['남편', 'husband', 0.7], ['부모', 'parents', 0.7], ['형', 'older brother (of a man)', 0.6],
   ['동생', 'younger sibling', 0.65], ['형제', 'brothers', 0.55], ['할머니', 'grandmother', 0.65], ['가족', 'family, household', 0.8], ['여자', 'woman', 0.8], ['남자', 'man', 0.8], ['어른', 'adult, grownup', 0.6], ['주인', 'owner, master', 0.5],
-  ['학생', 'student', 0.85], ['선생', 'teacher', 0.8], ['의사', 'doctor', 0.7],
+  ['학생', 'student', 0.85], ['선생님', 'teacher', 0.8], ['의사', 'doctor', 0.7],
   // nature, place and things
   ['나무', 'tree', 0.9], ['바다', 'sea', 0.85], ['하늘', 'sky', 0.85], ['물', 'water', 0.95], ['불', 'fire', 0.75], ['산', 'mountain', 0.8], ['강', 'river', 0.75], ['달', 'moon', 0.7], ['별', 'star', 0.7], ['해', 'sun', 0.7], ['비', 'rain', 0.7],
   ['바람', 'wind', 0.7], ['구름', 'cloud', 0.55], ['꽃', 'flower', 0.8], ['땅', 'earth, ground', 0.7], ['빛', 'light', 0.65], ['눈', 'eye; snow', 0.75], ['눈물', 'tears', 0.5], ['새', 'bird; new', 0.7], ['개', 'dog', 0.65], ['닭', 'chicken', 0.55],
@@ -55,7 +55,7 @@ export const KO_WORD_ROWS: readonly KoWordRow[] = [
   ['읽다', 'to read', 0.8], ['쓰다', 'to write; to wear; to spend', 0.8], ['알다', 'to know', 0.8], ['모르다', 'to not know', 0.8], ['살다', 'to live', 0.8], ['만나다', 'to meet', 0.75], ['배우다', 'to learn', 0.7], ['가르치다', 'to teach', 0.65],
   ['있다', 'to be, to exist; to have', 0.9], ['없다', 'to have none, to not exist', 0.9], ['아니다', 'to not be', 0.9], ['크다', 'to be big', 0.8], ['작다', 'to be small', 0.75], ['많다', 'to be many, to be much', 0.8], ['좋다', 'to be good', 0.9], ['같다', 'to be the same, to be like', 0.7],
   ['아프다', 'to be painful, to hurt', 0.7], ['다르다', 'to be different', 0.65], ['높다', 'to be high', 0.6], ['낮다', 'to be low', 0.55], ['길다', 'to be long', 0.55], ['짧다', 'to be short', 0.5], ['넓다', 'to be wide', 0.5], ['믿다', 'to trust, to believe', 0.55],
-  ['같이', 'together with', 0.6], ['굳이', 'strongly, insistently', 0.3], ['붙이다', 'to attach, to stick', 0.35],
+  ['같이', 'together with', 0.6], ['굳이', 'needlessly; insisting (on doing)', 0.3], ['붙이다', 'to attach, to stick', 0.35],
 ];
 
 const isNominal = (form: string): boolean => !(form.length > 1 && form.endsWith('다'));
@@ -77,7 +77,7 @@ const PHRASE_ROWS: ReadonlyArray<readonly [string, string]> = [
   ['이름이 뭐예요?', 'What is your name?'],
   ['한국 사람이에요', 'I am / he is / she is a Korean person'],
   ['사랑해요', 'I love you (polite)'],
-  ['하나님은 사랑이에요', 'God is love'],
+  ['하나님은 사랑이십니다', 'God is love (honorific, formal)'],
   ['책이 있어요', 'There is a book; I have a book'],
   ['물 주세요', 'Please give me water'],
   ['어디예요?', 'Where is it?'],

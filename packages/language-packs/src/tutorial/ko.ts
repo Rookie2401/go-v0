@@ -115,7 +115,7 @@ export const KO_TUTORIAL_STEPS_OWN: TutorialStep[] = [
     title: 'What “unconfirmed” means',
     estimatedMinutes: 2,
     body:
-      'The pack reads a word by finding its stem in its dictionary and checking that the particles or endings after it fit. When the stem is not in the dictionary (a name, a new word, a rare word, a typing slip), the card still explains the particles and endings it can recognise, offers the stem as written with no meaning, and marks the reading unconfirmed. An unconfirmed reading is a hint about the shape of the word: it is not counted as a word you know, and you should check it. A word the pack does not know at all gets no reading, and the card says so.',
+      'The pack reads a word by finding its stem in its dictionary and checking that the particles or endings after it fit. When the stem is not in the dictionary (a name, a new word, a rare word, a compound the dictionary does not list, a typing slip; a compound is shown as built from its parts, as 예산안 is 예산 + 안, and marked unconfirmed), the card still explains the particles and endings it can recognise, offers the stem as written with no meaning, and marks the reading unconfirmed. An unconfirmed reading is a hint about the shape of the word: it is not counted as a word you know, and you should check it. A word the pack does not know at all gets no reading, and the card says so.',
     examples: [
       { surface: '학생', gloss: 'student', note: 'in the dictionary: a confirmed reading' },
     ],
@@ -129,7 +129,7 @@ export const KO_TUTORIAL: Tutorial = orientation({
   cardFeatureNote: 'For a Korean word the card shows the dictionary form (a verb ends in 다), its class (a descriptive verb conjugates like any verb), the word in parts (a noun with its particles; a stem with its endings, each with its job), the grammar features of the exact form (the plural 들, the topic particle, the past, the honorific -(으)시-, the speech level, the irregular class the form shows), a construction such as -고 있다 when the words make one, the pronunciation as the standard rules give it (with Revised Romanization only as an aid, if you have turned transliteration on), and the Hanja when the dictionary states them. A word that could be one of several entries spelled alike says so.',
   thin: [
     'Korean is read by rules over a Wiktionary stem lexicon, not by a statistical analyser; a stem the lexicon does not hold gets an unconfirmed reading with no meaning.',
-    'There is no curated frequency list; homonyms carry the dictionary’s own entry numbers and many sets have not been reviewed, so a word the sentence cannot settle is shown as undecided.',
+    'There is no curated frequency list; homonyms carry the dictionary’s own entry numbers and 767 of the 2,496 sets of spelled-alike words have been reviewed, so a word the sentence cannot settle is shown as undecided.',
     'Proper names are the weakest part (about 44 % are covered) and numerals are thin; an irregular verb is known as irregular only where the source has its conjugation table.',
     'No Bible text is bundled with the pack, and its literary endings are named but not taught in depth.',
     'Nothing has been reviewed by a native speaker or a Korean teacher.',

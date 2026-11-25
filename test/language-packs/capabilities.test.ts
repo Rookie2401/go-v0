@@ -155,8 +155,8 @@ describe('lemma quality is derived from the evidence, by one stated rule', () =>
     expect(level).toEqual({ sq: 'limited', es: 'limited', de: 'limited', hi: 'limited', th: 'limited', nb: 'seed-only', nn: 'seed-only', la: 'limited', he: 'limited', el: 'limited', arc: 'limited', ru: 'limited',
       // French is measured on a human treebank (92 % of first-reading lemmas on the held-out part): below the 95 % bar, so limited
       fr: 'limited',
-      // Korean has no committed measurement and no form index of the dictionary's: its analyser's own statement (seed-only: a compiled core of the commonest words over a sharded stem lexicon) stands
-      ko: 'seed-only' });
+      // Korean reads a stem lexicon of the dictionary's headwords (a source); no held-out measurement is committed yet: limited
+      ko: 'limited' });
     // Latin is measured at the bar on the Vulgate New Testament and below it on the classical authors: the rule asks for every corpus
     const la = packCapabilities('la')!.lemma;
     expect(la.measured.map((m) => [m.id, m.goldKind, m.lemmaAccuracy >= DEPENDABLE_ACCURACY])).toEqual([['proiel-nt', 'human-treebank', true], ['perseus-agldt', 'human-treebank', false]]);

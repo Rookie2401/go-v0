@@ -251,11 +251,15 @@ A SET is the spelling and the SHARED part of speech (koHomonymSetKey): 자 "rule
 ### Numbered rows with no gloss (an undecided reading cannot name their meaning)
 
 - 요⁷ NNP 堯 [balanced]
+- 날⁴ NNG [other]
+- 치³ NNG [balanced]
 - 태아² NNG 胎芽 [balanced]
 - 태아³ NNG 太阿 [balanced]
 - 파² NNG 破 [balanced]
+- 뉘⁴ NNG [balanced]
 - 옴³ NNG [balanced]
 - 구경⁵ NNG 九卿 [balanced]
+- 포² NNG 布 [balanced]
 - 소식⁷ NNG 所食 [other]
 - 소식⁸ NNG 蘇息 [other]
 - 소식⁹ NNG 掃拭 [other]
@@ -293,6 +297,7 @@ A SET is the spelling and the SHARED part of speech (koHomonymSetKey): 자 "rule
 - 편모³ NNG 片貌 [balanced]
 - 방종² NNG 傍腫 [balanced]
 - 좌식¹ NNG 坐式 [balanced]
+- 지³ XSN [balanced]
 - 사령³ NNG 辭令 [balanced]
 - 사령⁴ NNG 使令 [balanced]
 - 사령⁵ NNG 死靈 [balanced]
@@ -519,6 +524,8 @@ A SET is the spelling and the SHARED part of speech (koHomonymSetKey): 자 "rule
 - 우기² NNG 右旗 [balanced]
 - 호접² NNG 呼接 [balanced]
 - 공적⁴ NNG 空寂 [balanced]
+- 공활¹ XR 空豁 [balanced]
+- 공활² XR 空闊 [balanced]
 - 초청² NNG 草廳 [other]
 - 화교² NNG 化敎 [balanced]
 - 사화¹¹ NNG 賜花 [balanced]
@@ -562,6 +569,7 @@ A SET is the spelling and the SHARED part of speech (koHomonymSetKey): 자 "rule
 - 참호³ NNG 僭號 [balanced]
 - 과세² NNG 過歲 [balanced]
 - 과세³ NNG 過稅 [balanced]
+- 타래² NNG 他來 [balanced]
 - 소방² NNG 疏放 [balanced]
 - 불치² NNG 不齒 [balanced]
 - 문형³ NNG 紋形 [balanced]
@@ -1223,7 +1231,7 @@ Why each: 제 (allomorph of 저 (jeo, first-person singular polite pronoun) befo
 - 그래도: MAJ "nevertheless"
 - 따라서: MAG "therefore"
 - 또한: MAG "also"
-- 즉: MAG "that is to say"; XR "Root of 즉하다 (jeukhada, “to be based on (formal)”). Rarely used alone."
+- 즉: MAG "that is to say"; XR ""
 - 그러므로: MAJ "accordingly"
 - 혹은: MAG "or (if not)"
 - 또는: MAG "if not"
@@ -1245,8 +1253,9 @@ Note: in the real data a ko-verb-set names the causative as its 2nd argument and
 
 ## Glosses
 
-- rows with no gloss: 601
+- rows with no gloss: 627
 - a cross-reference is never a gloss: "See the entry at …" senses are skipped; a "synonym of X" sense is resolved to X's own gloss, marked "= X: …" (389 resolved), else the gloss is left empty (41)
+- glosses that began with a cross-reference pattern (Root of, Combining form of, Only used in, Used only in), resolved to the named word's own gloss or left empty, by pattern and class: only used in|NNB 0 resolved / 1 empty; only used in|NNG 0 resolved / 5 empty; only used in|VV 0 resolved / 1 empty; only used in|XSN 0 resolved / 1 empty; root|NNG 9 resolved / 2 empty; root|XR 102 resolved / 17 empty
 - reviewed overrides (docs/korean/gloss-overrides.json): 308 applied, of which 9 are this product's own wording (`glossOwn`, not the source's):
   - 때문 NOUN: because of; cause
   - 내 PRON: I; my
@@ -1466,8 +1475,8 @@ Hand-written rows for common words the SOURCE LACKS, read by the build and never
 | | |
 |---|---|
 | shards | 26 (prefixes of up to 3 letters by koLexiconShardLetters; limit 600,000 bytes of JSON) |
-| shard bytes | 1.32 MB gzip, 5.4 MB plain |
+| shard bytes | 1.31 MB gzip, 5.4 MB plain |
 | largest shard | `ㅇ` 0.57 MB plain, 0.14 MB gzip |
-| core entries | 6,717 in 5,269 sets (4,104 also under a Hanja key); closed classes NP NR MM MAJ NNB XPN XSN XSV XSA and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
-| core bytes | 416,663 of rows, the file at most 420,000 bytes; forced by core-extra.json: 662 rows, 38,500 bytes (9.2 % of the budget); every field of a shard row is in the core row, `pron` included |
-| running words in the core | 73.8 % of the 308,335 counted morphemes of the classes the lexicon builds (94.6 % of the 240,739 the lexicon covers) have their headword in the core |
+| core entries | 6,752 in 5,304 sets (4,110 also under a Hanja key); closed classes NP NR MM MAJ NNB XPN XSN XSV XSA and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
+| core bytes | 416,604 of rows, the file at most 420,000 bytes; forced by core-extra.json: 662 rows, 38,421 bytes (9.1 % of the budget); every field of a shard row is in the core row, `pron` included |
+| running words in the core | 73.9 % of the 308,335 counted morphemes of the classes the lexicon builds (94.6 % of the 240,739 the lexicon covers) have their headword in the core |

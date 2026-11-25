@@ -178,6 +178,17 @@ export const PACK_EVIDENCE: Readonly<Record<string, PackEvidence>> = Object.free
       { id: 'ud-pud', corpus: 'a thousand translated news and Wikipedia sentences', gold: 'the UD Russian-PUD treebank', goldKind: 'human-treebank', heldOut: true, items: 15714, lemmaAccuracy: 90.76, analyser: 'adapter-ru@1', measuredOn: '2026-11-18', source: RUSSIAN_REPORT },
     ],
   },
+  // Korean: an 어절 is a stem and a chain of particles or endings, so the analyser reads a STEM lexicon (the headwords of the pack's
+  // Wiktionary dictionary and this product's marked supplement rows, filed by stem with their conjugation class): a compiled core of it,
+  // the rest in shards. The measurement row is added when the treebank's test part has been run, once, at the end; the development part
+  // was looked at while the rules were written, so it is not evidence.
+  ko: {
+    lemmaSources: [
+      { kind: 'analyser-lexicon', id: 'kaikki-ko-lexicon', label: 'the headwords of the pack’s Wiktionary dictionary, filed by stem, which the analyser reads itself', size: { count: 37009, unit: 'entries' }, source: 'docs/korean/INDEX.md' },
+      formsIndex('ko', 'kaikki-ko@2026-10-30'),
+    ],
+    lemmaMeasurements: [],
+  },
   // French: the analyser reads the lemmas of the pack's own dictionary (lemma, part of speech, gender; no meanings) beside its hand word
   // list, and the form index answers for the rest. Measured against a treebank annotated by people, with that lemma list loaded as it is in
   // the extension: the test part was run once, at the end, and not looked into; the dev part was looked at while the context rules were

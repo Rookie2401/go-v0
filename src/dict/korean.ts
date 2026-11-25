@@ -477,6 +477,7 @@ export interface KoReport {
   xrefResolved: number;
   xrefEmpty: number;
   glossOverrides: number;
+  xrefStart: Record<string, { resolved: number; empty: number }>;
   tableDisagree: Array<{ lemma: string; etym?: string; head: string; table: string }>;
   politeDropped: string[];
   politeKept: string[];
@@ -512,7 +513,7 @@ const normGlossKey = (g: string | undefined): string => (g ?? '').toLowerCase().
 export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: KoRow[]; report: KoReport } {
   const report: KoReport = {
     read: raws.length, kept: 0, keptByPos: {}, skipped: {}, skippedByTag: {}, merges: 0, mergedSameEtym: [], assignedRows: [], mergedSameWord: [], orderSets: [], irrDisagree: [], noTable: 0, noClass: [], byShape: 0,
-    voiceBoth: [], voicePairs: [], mixedDependent: 0, maj: [], majFirstOnly: [], sets: [], contractionPos: [], contractionKept: [], contractionFused: [], xrefResolved: 0, xrefEmpty: 0, glossOverrides: 0, tableDisagree: [], politeDropped: [], politeKept: [], rootsKept: 0, rootsAsNoun: [], bound: [], supplement: [], glossOwn: [],
+    voiceBoth: [], voicePairs: [], mixedDependent: 0, maj: [], majFirstOnly: [], sets: [], contractionPos: [], contractionKept: [], contractionFused: [], xrefResolved: 0, xrefEmpty: 0, glossOverrides: 0, xrefStart: {}, tableDisagree: [], politeDropped: [], politeKept: [], rootsKept: 0, rootsAsNoun: [], bound: [], supplement: [], glossOwn: [],
   };
   const ev = koSuffixEvidence(raws);
   // the passive and causative verbs that a base verb's ko-verb-set names
@@ -801,6 +802,25 @@ export function koBuildRows(raws: readonly KoRaw[], docs: KoDocs = {}): { rows: 
       if (t) { r.gloss = koShortGloss(`= ${t.lemma}: ${t.gloss}`); report.xrefResolved++; } else report.xrefEmpty++;
       delete r.xref;
     }
+    // a gloss that still begins with a cross-reference pattern is never shown: "Root of X" becomes X's gloss without the predicate wording, else nothing
+    const XREF_START = /^(Root of|Combining form of|Only used in|Used only in)\b/i;
+    const plain = (g: string): string => g.replace(/^= [^:]+: /, '').replace(/^to be\s+/i, '').replace(/^to\s+/i, '').trim();
+    for (const r of rows) {
+      const m = r.gloss ? XREF_START.exec(r.gloss) : null;
+      if (!m || r.own) continue;
+      const kind = m[1].toLowerCase().replace(/ of$/, '');
+      const key = `${kind}|${r.tag}`;
+      const names = [...(r.gloss ?? '').matchAll(/[가-힣]+/g)].map((x) => koKey(x[0]));
+      let resolved: string | undefined;
+      if (/^root/i.test(m[1]) || /^combining/i.test(m[1])) {
+        for (const nm of names) {
+          const t = (byLemma.get(nm) ?? []).find((x) => x !== r && x.gloss && !XREF_START.test(x.gloss) && (x.tag === 'VV' || x.tag === 'VA' || /^root/i.test(m[1]) === false));
+          if (t) { resolved = /^root/i.test(m[1]) ? plain(t.gloss!) : koShortGloss(`= ${t.lemma}: ${t.gloss}`); break; }
+        }
+      }
+      report.xrefStart[key] = report.xrefStart[key] ?? { resolved: 0, empty: 0 };
+      if (resolved) { r.gloss = koShortGloss(resolved); report.xrefStart[key].resolved++; } else { delete r.gloss; report.xrefStart[key].empty++; }
+    }
     (docs.overrides?.entries ?? []).forEach((o, i) => {
       const hits = rows.filter((r) => r.lemma === o.lemma && (koSharedPos(r) ?? r.tag) === o.pos && (r.hom ?? 0) === (o.hom ?? 0));
       if (hits.length !== 1) throw new Error(`gloss-overrides.json entries[${i}] (${o.lemma} ${o.pos} hom ${o.hom ?? 0}): ${hits.length ? 'names more than one entry' : 'names no entry'}`);
@@ -946,6 +966,8 @@ export function koCoreTupleJson(t: KoCoreTuple): string {
 export function koSelectCore(entries: readonly KoLexEntry[], budget: number, extra: ReadonlySet<string> = new Set()): { chosen: KoLexEntry[]; bytes: number; forcedBytes: number; forcedRows: number } {
   const sets = new Map<string, KoLexEntry[]>();
   for (const e of entries) { const k = koHomonymSetKey(e); (sets.get(k) ?? sets.set(k, []).get(k)!).push(e); }
+  const setsOfLemma = new Map<string, KoLexEntry[][]>();
+  for (const st of sets.values()) (setsOfLemma.get(st[0].lemma) ?? setsOfLemma.set(st[0].lemma, []).get(st[0].lemma)!).push(st);
   const cost = (s: KoLexEntry[]): number => s.reduce((t, e) => t + Buffer.byteLength(koCoreTupleJson(koCoreTuple(e))) + 4, 0);
   // a balanced set repeats its count on every member: the count of the SPELLING is the largest, not the sum
   const total = (s: KoLexEntry[]): number => s.reduce((t, e) => Math.max(t, e.n ?? 0), 0);
@@ -958,10 +980,23 @@ export function koSelectCore(entries: readonly KoLexEntry[], budget: number, ext
   const byLemma = (a: KoLexEntry[], b: KoLexEntry[]): number => (a[0].lemma < b[0].lemma ? -1 : a[0].lemma > b[0].lemma ? 1 : a[0].tag < b[0].tag ? -1 : 1);
   open.sort((a, b) => total(b) - total(a) || byLemma(a, b));
   const chosen: KoLexEntry[] = []; let bytes = 0;
-  for (const s of forced) { chosen.push(...s); bytes += cost(s); }
+  const have = new Set<KoLexEntry[]>();
+  /** The set, and for a root the predicates built on it (복잡 brings 복잡하다), so a card shows the dictionary's own entry, not a derivation. */
+  const withCompanions = (s: KoLexEntry[]): KoLexEntry[][] => {
+    const out = [s];
+    if (s[0].tag === 'XR') for (const suf of ['하다', '스럽다', '롭다', '되다']) for (const c of setsOfLemma.get(s[0].lemma + suf) ?? []) if (c[0].tag === 'VV' || c[0].tag === 'VA') out.push(c);
+    return out.filter((x) => !have.has(x));
+  };
+  const take = (s: KoLexEntry[]): void => { for (const x of withCompanions(s)) { have.add(x); chosen.push(...x); bytes += cost(x); } };
+  for (const s of forced) take(s);
   const forcedBytes = bytes; const forcedRows = chosen.length;
-  for (const s of closed) { chosen.push(...s); bytes += cost(s); }
-  for (const s of open) { const c = cost(s); if (bytes + c > budget) break; chosen.push(...s); bytes += c; }
+  for (const s of closed) take(s);
+  for (const s of open) {
+    if (have.has(s)) continue;
+    const c = withCompanions(s).reduce((t, x) => t + cost(x), 0);
+    if (bytes + c > budget) break;
+    take(s);
+  }
   return { chosen, bytes, forcedBytes, forcedRows };
 }
 

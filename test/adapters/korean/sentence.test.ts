@@ -131,7 +131,7 @@ describe('with the compiled core only', () => {
     });
     // WAITING on M: the token order puts 파다 + the reported command -(으)래요 above 파랗다; no sure sentence cue separates them, so the order is
     // the token analysis's to fix (a whole licensed descriptive verb against a quotation contraction)
-    it.fails('하늘이 파래요 → 파랗다 first', () => {
+    it('하늘이 파래요 → 파랗다 first', () => {
       expect(readIn('하늘이 파래요.', '파래요').top).toMatchObject({ lemma: '파랗다', pos: 'ADJ' });
     });
   });

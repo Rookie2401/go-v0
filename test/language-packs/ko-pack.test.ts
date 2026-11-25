@@ -29,33 +29,35 @@ const ko = koreanManifest();
  * values PLAN names.
  */
 const PLAN_FEATURES: Record<string, string[]> = {
-  Number: ['Plur'],
-  Case: ['Nom', 'Acc', 'Gen', 'Dat', 'Loc', 'Abl', 'Ins', 'Com', 'Cmp', 'Voc', 'Equ', 'Ess'],
-  Particle: [],
-  Topic: ['Yes'],
-  Focus: ['Also', 'Only', 'Even', 'Each'],
-  Quote: ['Ind'],
-  Polite: ['Hon'],
+  // from the morphology package's hand-back, 2026-11-25 (the engine's final vocabulary); Particle's values are the family ids of PARTICLES, checked separately below
   VerbForm: ['Fin', 'Conn', 'Adn', 'Nmlz'],
   Tense: ['Past', 'Pres'],
-  Aspect: ['Pqp', 'Prosp', 'Imp'],
-  Mood: ['Ind', 'Imp', 'Int', 'Prop', 'Excl'],
+  Aspect: ['Pqp', 'Prosp'],
+  Mood: ['Ind', 'Int', 'Imp', 'Prop', 'Excl'],
   Modality: ['Presumptive', 'Retrospective', 'Necessitative'],
   Honorific: ['Subj'],
   SpeechLevel: ['Hae', 'Haeyo', 'Hasipsio', 'Haera', 'Hage', 'Hao', 'Lit'],
-  Polarity: ['Neg', 'Pos'],
-  Connective: ['and', 'but', 'if', 'because', 'while', 'so-that', 'although'],
+  Register: ['Lit'],
+  Quote: ['Ind'],
+  Connective: ['and', 'and-while', 'while', 'but', 'so', 'since', 'because', 'if', 'intend', 'purpose', 'even-if', 'only-if', 'background', 'then', 'as-soon-as', 'so-that', 'adverbial', 'as-if', 'or', 'whether', 'because-busy', 'the-more', 'and-then', 'neg', 'inf', 'after', 'saying', 'although', 'as-i', 'not-but', 'besides', 'habit', 'as-you-know'],
   VerbType: ['Descriptive', 'Cop', 'Exist'],
-  Complement: ['Yes'],
+  Polarity: ['Pos', 'Neg'],
   Voice: ['Pass', 'Caus'],
-  Irregular: ['D', 'B', 'S', 'H', 'Reu', 'Reo', 'U', 'Eu', 'L', 'Ha'],
+  Irregular: ['D', 'B', 'S', 'H', 'Reu', 'Reo', 'U', 'Ha', 'L', 'Eu'],
   Contracted: ['Yes'],
   Fused: ['Yes'],
   NounType: ['Bound', 'Clf'],
+  Number: ['Plur'],
+  Case: ['Nom', 'Acc', 'Gen', 'Dat', 'Loc', 'Abl', 'Ins', 'Com', 'Cmp', 'Equ', 'Ess', 'Voc'],
+  Topic: ['Yes'],
+  Focus: ['Also', 'Only', 'From', 'UpTo', 'Each', 'Even', 'Except', 'Alt', 'Any', 'AtLeast', 'Emph', 'Accord', 'LetAlone'],
+  Polite: ['Hon'],
+  Complement: ['Yes'],
+  Particle: [],
 };
 const PLAN_CONSTRUCTIONS = [
   'ko-progressive', 'ko-resultative', 'ko-want', 'ko-must', 'ko-can', 'ko-cannot', 'ko-neg-long', 'ko-neg-unable', 'ko-try', 'ko-completive', 'ko-benefactive',
-  'ko-become', 'ko-decide', 'ko-experience', 'ko-seem', 'ko-because', 'ko-if', 'ko-but', 'ko-background', 'ko-intend', 'ko-neg-short', 'ko-neg-copula', 'ko-exist',
+  'ko-become', 'ko-decide', 'ko-experience', 'ko-seem', 'ko-because', 'ko-if', 'ko-but', 'ko-background', 'ko-intend', 'ko-neg-short', 'ko-neg-short-unable', 'ko-prohibit', 'ko-neg-copula', 'ko-exist',
   'ko-passive-jida', 'ko-passive-light', 'ko-causative-ge', 'ko-causative-light', 'ko-quote', 'ko-since', 'ko-while', 'ko-after', 'ko-before', 'ko-in-order',
 ];
 
@@ -145,10 +147,19 @@ describe('the grammar copy covers everything the analyser writes (PLAN.md)', () 
     for (const p of Object.values(PARTICLES)) take(p.morph);
     for (const f of Object.values(FUSED)) take((f as { morph?: Record<string, string> }).morph);
     // produced in code, not in a table (analyze.ts, sentence.ts, the lexicon's own marks); listed by hand: when the code gains a value, add it here
-    for (const x of ['VerbType=Descriptive', 'VerbType=Cop', 'VerbType=Exist', 'Voice=Pass', 'Voice=Caus', 'Contracted=Yes', 'Fused=Yes', 'NounType=Bound', 'NounType=Clf', 'Complement=Yes', 'Polarity=Neg', 'Polarity=Pos', 'Tense=Pres', 'Number=Plur', 'Quote=Ind', ...PLAN_FEATURES.Irregular.map((v) => `Irregular=${v}`)]) emitted.add(x);
+    for (const x of ['VerbType=Descriptive', 'VerbType=Cop', 'VerbType=Exist', 'Voice=Pass', 'Voice=Caus', 'Contracted=Yes', 'Fused=Yes', 'NounType=Bound', 'NounType=Clf', 'Complement=Yes', 'Polarity=Neg', 'Polarity=Pos', 'Tense=Pres', 'Number=Plur', 'Quote=Ind', 'Register=Lit', ...PLAN_FEATURES.Irregular.map((v) => `Irregular=${v}`)]) emitted.add(x);
     const missing = [...emitted].filter((kv) => { const [k, v] = kv.split('='); return !byKey.get(k)?.values[v]; });
     expect(missing).toEqual([]);
     expect(emitted.size).toBeGreaterThan(90);
+  });
+  it('has a Particle value for every particle family id of PARTICLES, and none for a family that is gone', () => {
+    const values = Object.keys(byKey.get('Particle')!.values).sort();
+    expect(values).toEqual(Object.values(PARTICLES).map((p) => p.id).sort());
+  });
+  it('has no copy for a value the engine no longer emits (the tables and the hand list)', () => {
+    const final = new Set(Object.entries(PLAN_FEATURES).flatMap(([k, vs]) => vs.map((v) => `${k}=${v}`)));
+    const stale = KO_GRAMMAR_FEATURES.filter((f) => f.key !== 'Particle').flatMap((f) => Object.keys(f.values).map((v) => `${f.key}=${v}`)).filter((kv) => !final.has(kv));
+    expect(stale).toEqual([]);
   });
   it('has an entry for every construction id PLAN lists, and none that PLAN does not', () => {
     const ids = KO_GRAMMAR_CONSTRUCTIONS.map((c) => c.id);
@@ -174,6 +185,7 @@ describe('the grammar copy covers everything the analyser writes (PLAN.md)', () 
     expect(byKey.has('Gender')).toBe(false);
     expect(byKey.has('Person')).toBe(false);
     expect(Object.keys(byKey.get('Number')!.values)).toEqual(['Plur']);
+    expect(byKey.get('Register')!.explain).toMatch(/not something to imitate in speech/);
     expect(byKey.get('Number')!.explain).toMatch(/does not say it is singular/);
     expect(byKey.get('Number')!.explain).toMatch(/never calls it singular/);
     expect(Object.keys(byKey.get('Tense')!.values)).not.toContain('Fut');

@@ -508,6 +508,7 @@ Note: in the real data a ko-verb-set names the causative as its 2nd argument and
 
 - rows with no gloss: ${fmt(noGloss)}
 - a cross-reference is never a gloss: "See the entry at …" senses are skipped; a "synonym of X" sense is resolved to X's own gloss, marked "= X: …" (${fmt(report.xrefResolved)} resolved), else the gloss is left empty (${fmt(report.xrefEmpty)})
+- glosses that began with a cross-reference pattern (Root of, Combining form of, Only used in, Used only in), resolved to the named word's own gloss or left empty, by pattern and class: ${Object.entries(report.xrefStart).sort((a, b) => cmp(a[0], b[0])).map(([k, v]) => `${k} ${v.resolved} resolved / ${v.empty} empty`).join('; ') || '(none)'}
 - reviewed overrides (docs/korean/gloss-overrides.json): ${fmt(report.glossOverrides)} applied, of which ${fmt(report.glossOwn.length)} are this product's own wording (\`glossOwn\`, not the source's)${report.glossOwn.length ? `:\n${report.glossOwn.map((g) => `  - ${g.lemma}${g.hom ? sup(g.hom) : ''} ${g.pos}: ${g.gloss}`).join('\n')}` : ''}
 
 ## Hanja, pronunciation, Hanja keys

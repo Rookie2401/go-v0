@@ -4976,7 +4976,6 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "Root of 공활하다 (gonghwalhada, “(of the sky) empty, high and clear”). Rarely used…",
    "hanja": "空豁"
   },
   {
@@ -4985,7 +4984,6 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "Root of 공활하다 (gonghwalhada, “spacious, broad, wide, empty, clear”). Rarely used…",
    "hanja": "空闊"
   },
   {
@@ -8701,8 +8699,7 @@
    "tag": "NNG",
    "hom": 4,
    "set": "other",
-   "by": "decision",
-   "gloss": "only used in 날로 (nallo, “as something raw, as something uncooked”)"
+   "by": "decision"
   },
   {
    "lemma": "날로",
@@ -9941,8 +9938,7 @@
    "tag": "NNG",
    "hom": 4,
    "set": "balanced",
-   "by": "default",
-   "gloss": "only used in 뉘를 보다 (nwireul boda, “(archaic) to receive gratitude from children…"
+   "by": "default"
   },
   {
    "lemma": "뉘",
@@ -14304,7 +14300,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "Root of 만만하다 (manmanhada, “to be weak, easy to manipulate, easily giving in”) /…"
+   "gloss": "weak"
   },
   {
    "lemma": "만만",
@@ -14312,7 +14308,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "Root of 만만하다 (manmanhada, “to be full of”) / 만만히 (manmanhi). Rarely used alone.",
+   "gloss": "weak",
    "hanja": "滿滿"
   },
   {
@@ -29783,7 +29779,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "Root of 신기하다 (sin'gihada, “to be strange and amazing”). Rarely used alone.",
+   "gloss": "strange and amazing",
    "hanja": "神奇"
   },
   {
@@ -29792,7 +29788,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "Root of 신기하다 (sin'gihada, “to be novel”). Rarely used alone.",
+   "gloss": "strange and amazing",
    "hanja": "新奇"
   },
   {
@@ -37611,7 +37607,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "Root of 은은하다 (euneunhada, “to be faint, to be indistinct, to be subtle”).…",
+   "gloss": "faint",
    "hanja": "隱隱"
   },
   {
@@ -37620,7 +37616,7 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "Root of 은은하다 (euneunhada, “to be loud, to be roaring”). Rarely used alone.",
+   "gloss": "faint",
    "hanja": "殷殷"
   },
   {
@@ -46668,8 +46664,7 @@
    "tag": "XSN",
    "hom": 3,
    "set": "balanced",
-   "by": "default",
-   "gloss": "only used in -는지 (-neunji)"
+   "by": "default"
   },
   {
    "lemma": "지각",
@@ -47626,7 +47621,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "root of 진부하다 (jinbuhada)",
+   "gloss": "hackneyed",
    "hanja": "陳腐"
   },
   {
@@ -48281,7 +48276,7 @@
    "hom": 1,
    "set": "balanced",
    "by": "default",
-   "gloss": "Root of 차분하다 (chabunhada, “calm, quiet, composed”) / 차분히 (chabunhi, “quietly,…"
+   "gloss": "calm"
   },
   {
    "lemma": "차분",
@@ -50434,8 +50429,7 @@
    "tag": "NNG",
    "hom": 3,
    "set": "balanced",
-   "by": "default",
-   "gloss": "only used in 치를 떨다 (chi-reul tteolda) and 치가 떨리다 (chi-ga tteollida)."
+   "by": "default"
   },
   {
    "lemma": "치",
@@ -51162,7 +51156,6 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "Root of 타래하다 (taraehada). Rarely used alone.",
    "hanja": "他來"
   },
   {
@@ -52684,7 +52677,6 @@
    "hom": 2,
    "set": "balanced",
    "by": "default",
-   "gloss": "Only used in various hanja compounds.",
    "hanja": "布"
   },
   {

@@ -84,11 +84,13 @@ export function koreanManifest(): PackManifest {
     thin: [
       'Korean is read by rules written for this product over a Wiktionary stem lexicon, not by a statistical analyser; the compiled core holds only the commonest words and the closed classes, and a stem the lexicon does not hold gets a reading marked unconfirmed that explains its particles and endings and offers the stem as written, with no meaning;',
       'there is no curated frequency list: the order of readings and the choice of the compiled core come from the lemma counts of one treebank (UD Korean-Kaist, train split), which is news and literary prose;',
-      'homonyms are numbered from the source (눈¹, 눈²) and many sets have not been reviewed by a person: an unreviewed set is kept open, and a word the sentence cannot decide is shown as undecided, with every candidate named, instead of being credited to one;',
+      'homonyms are numbered from the source (눈¹, 눈²) and 767 of the 2,496 sets of spelled-alike words have been reviewed by a person: an unreviewed set is kept open, and a word the sentence cannot decide is shown as undecided, with every candidate named, instead of being credited to one;',
       'proper names are the weakest part: about 44 % of them are covered; numerals are thin;',
       'an irregular verb is recognised as irregular only where the source has a conjugation table for it; a stem with no table is read in every class its shape allows, and none is presented as certain;',
       'there is no audio of its own: a Korean device voice, if the browser has one, is synthetic practice only; pronunciation help is written, from rules and from the dictionary’s own respelling where it has one;',
       'no Bible text is bundled with the pack; Scripture is met on pages and in other apps, and the literary and archaic endings of Korean Bible translations are named as such and given no conversational reading;',
+      'a compound the lexicon does not list is shown as built from its parts and marked unconfirmed (예산안 as 예산 + 안), a root such as 복잡 is never a word alone, and numerals are composed (사만 is 40,000);',
+      'On a treebank of 1990s written prose (UD Korean-Kaist, development split) the first reading named the right dictionary word for 90 % of words; text of other kinds will score lower, and no Korean speaker has reviewed the pack.',
       'nothing has been reviewed by a native speaker, a Korean teacher or a linguist.',
     ],
     extraProvenance: [

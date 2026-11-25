@@ -299,7 +299,8 @@ describe('same spelling, noun or predicate: both kinds of reading', () => {
     expect(has('들은', '듣다')).toBe(true); expect(has('들은', '들다')).toBe(false);
     expect(has('든', '들다')).toBe(true);
   });
-  it('누이시며 (누이다 not in the lexicon): no confident reading', () => expect(first('누이시며').confidence).toBeLessThanOrEqual(0.45));
+  // fix batch 7 (FF2): noun + (이)시 + ending is the honorific copula with its 이 dropped; with 누이다 absent, 누이시며 is 누이 + 이 + -시- + -며
+  it('누이시며 (누이다 not in the lexicon): the honorific copula, never the bound 누', () => { const c = first('누이시며'); expect(c.lemma).toBe('누이'); expect(pl(c)).toEqual(['누이', '이다', '-(으)시-', '-(으)며']); });
 });
 
 describe('Hanja on the page', () => {
@@ -651,4 +652,106 @@ describe.skipIf(!fs.existsSync(path.join(SHARD_DIR, 'manifest.json')))('fix batc
     for (const c of koAnalyzeToken('學校에서').slice(1)) if (c.notes?.rare) expect(c.confidence).toBeLessThanOrEqual(0.6);
     expect(koAnalyzeToken('學校에서')[0]).toMatchObject({ lemma: '학교', confidence: 0.92 });
   });
+});
+
+/** Run a block of assertions with the compiled core alone, then with the core and every shard installed (what a reader has). */
+function underBothStates(title: string, body: () => void): void {
+  describe(title, () => {
+    const ids: string[] = [];
+    beforeAll(async () => {
+      const { KO_CORE } = await import('../../../src/adapters/korean/generated/core');
+      const { installKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+      uninstallFixtureLexicon();
+      installKoreanLexicon(KO_CORE);
+      koClearAnalysisCache();
+    });
+    afterAll(async () => {
+      const { uninstallKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+      uninstallKoreanLexicon('ko-core'); for (const id of new Set(ids)) uninstallKoreanLexicon(id);
+      installFixtureLexicon();
+    });
+    it('with the compiled core alone', () => body());
+    it.skipIf(!fs.existsSync(path.join(SHARD_DIR, 'manifest.json')))('with the core and every shard', async () => {
+      const { installKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+      for (const f of fs.readdirSync(SHARD_DIR)) if (f.endsWith('.json.gz')) { const x = JSON.parse(gunzipSync(fs.readFileSync(path.join(SHARD_DIR, f))).toString('utf8')); installKoreanLexicon(x); ids.push(x.id); }
+      koClearAnalysisCache();
+      body();
+    }, 120000);
+  });
+}
+
+underBothStates('fix batch 7: names, the honorific copula, greetings, -러, bare -아/어 forms (core; core + shards)', () => {
+  // an unlisted name + particle: the unconfirmed whole name, never a listed first syllable or a verb
+  for (const w of ['박지성이', '한지민이', '김민수는', '최영희를', '정우성은', '강동원에게']) {
+    const c = koAnalyzeToken(w)[0];
+    expect(c.unconfirmed, w).toBe(true);
+    expect(c.pos, w).not.toBe('VERB');
+    expect([...(c.lemma ?? '')].length, w).toBeGreaterThanOrEqual(2);
+  }
+  // 부여받았다 is not 부여 "Buyeo" + an unexplained rest
+  expect(koAnalyzeToken('부여받았다').every((c) => !(c.lemma === '부여' && c.pos === 'PROPN')), '부여받았다').toBe(true);
+  // the honorific copula with its 이 dropped is a candidate, and no noun + suffix 시 reading leads
+  for (const [w, n] of [['목자시니', '목자'], ['의사시다', '의사']] as const) {
+    const cs = koAnalyzeToken(w);
+    if (!cs.some((c) => c.lemma?.startsWith(n))) continue; // the noun is not in this lexicon state
+    expect(cs.some((c) => (c.parts ?? []).some((p) => p.lemma === '이다') && c.morph.Honorific === 'Subj'), w).toBe(true);
+    expect((cs[0].parts ?? []).some((p) => p.text === '시' && p.kind === 'suffix'), w).toBe(false);
+  }
+  // greetings: the predicate first
+  for (const [w, l] of [['감사합니다', '감사하다'], ['안녕하세요', '안녕하다'], ['고맙습니다', '고맙다']] as const) expect(koAnalyzeToken(w)[0].lemma, w).toBe(l);
+  // a one-syllable or rare noun never outranks a common verb's bare -아/어 form
+  for (const [w, l] of [['서', '서다'], ['켜', '켜다'], ['퍼', '푸다'], ['건너', '건너다'], ['밀어', '밀다'], ['자라', '자라다']] as const) if (koAnalyzeToken(w).some((c) => c.lemma === l)) expect(koAnalyzeToken(w)[0].lemma, w).toBe(l);
+  // 들러: 들르다 within the first two readings
+  expect(koAnalyzeToken('들러').slice(0, 2).some((c) => c.lemma === '들르다')).toBe(true);
+  // a final ending takes no case particle
+  for (const c of koAnalyzeToken('친구에게만')) expect(String(c.notes?.koPos ?? '')).not.toMatch(/EF+JK/u);
+  // creditable readings: never more than six
+  for (const w of ['한', '이', '수', '달', '모든', '친구에게만', '눈이', '배를', '저는']) expect(koAnalyzeToken(w).filter((c) => c.confidence >= 0.5 && !c.unconfirmed).length, w).toBeLessThanOrEqual(6);
+  // the listed compound verb of the optative
+  if (koAnalyzeToken('이루어지다')[0].lemma === '이루어지다') expect(koAnalyzeToken('이루어지이다')[0].lemma).toBe('이루어지다');
+});
+
+describe.skipIf(!fs.existsSync(path.join(SHARD_DIR, 'manifest.json')))('fix batch 7: what is creditable, over ordinary sentences (core and shards, through the adapter)', () => {
+  const ids: string[] = [];
+  beforeAll(async () => {
+    const { KO_CORE } = await import('../../../src/adapters/korean/generated/core');
+    const { installKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+    uninstallFixtureLexicon();
+    installKoreanLexicon(KO_CORE);
+    for (const f of fs.readdirSync(SHARD_DIR)) if (f.endsWith('.json.gz')) { const x = JSON.parse(gunzipSync(fs.readFileSync(path.join(SHARD_DIR, f))).toString('utf8')); installKoreanLexicon(x); ids.push(x.id); }
+    koClearAnalysisCache();
+  });
+  afterAll(async () => {
+    const { uninstallKoreanLexicon } = await import('../../../src/adapters/korean/index-store');
+    uninstallKoreanLexicon('ko-core'); for (const id of new Set(ids)) uninstallKoreanLexicon(id);
+    installFixtureLexicon();
+  });
+  it('no word has more than six creditable readings, and under 25 % of words have more than one (measured 23.2 %)', async () => {
+    const { koAdapter } = await import('../../../src/adapters/ko');
+    const { KO_VALIDATION } = await import('../../../packages/language-packs/src/packs/ko');
+    const reg = fs.readFileSync(path.resolve('test/adapters/korean/regression.test.ts'), 'utf8');
+    const sents = new Set<string>([...reg.matchAll(/'([^']*[가-힣][^']*[.?!])'/gu)].map((m) => m[1]));
+    for (const v of KO_VALIDATION) if (v.sentence) sents.add(v.sentence);
+    let words = 0, multi = 0;
+    const over: string[] = [];
+    for (const s of sents) for (const a of koAdapter.analyze(koAdapter.tokenize(s))) {
+      if (!a.token.isWord || !/[가-힣]/u.test(a.token.surface)) continue;
+      words++;
+      const n = a.candidates.filter((c) => c.confidence >= 0.5 && !c.unconfirmed).length;
+      if (n > 1) multi++;
+      if (n > 6) over.push(`${a.token.surface}:${n}`);
+    }
+    expect(over).toEqual([]);
+    expect(words).toBeGreaterThan(80);
+    expect(multi / words).toBeLessThan(0.25);
+  }, 120000);
+});
+
+underBothStates('fix batch 8: a name only where the unspaced reading would make it a verb (core; core + shards)', () => {
+  // the whole name, unconfirmed: PROPN with the name note where an unspaced reading would have made it a verb, else the noun-like unknown stem
+  for (const w of ['박지성이', '한지민이']) { const c = koAnalyzeToken(w)[0]; expect(c.unconfirmed, w).toBe(true); expect(c.lemma, w).toBe(w.slice(0, 3)); expect(['PROPN', 'NOUN'], w).toContain(c.pos); if (c.pos === 'PROPN') { expect(c.confidence, w).toBeLessThanOrEqual(0.4); expect(String(c.notes?.name)).toMatch(/shaped like a personal name/u); } }
+  expect(koAnalyzeToken('김민수는')[0].pos).not.toBe('VERB');
+  // unlisted compounds that begin with a surname syllable stay nouns
+  for (const w of ['정부안을', '강변공원에', '김장철이', '정치개혁을', '한국학계는', '이사회비를']) { const c = koAnalyzeToken(w)[0]; expect(c.pos, w).toBe('NOUN'); expect(c.notes?.name, w).toBeUndefined(); }
+  expect(koAnalyzeToken('주면서부터')[0].lemma).toBe('주다');
 });

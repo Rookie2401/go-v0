@@ -49,6 +49,8 @@ export interface KoEnding {
   after?: readonly string[] | 'nominal';
   /** The sentence types the ending allows when it alone does not decide (해요체 -아/어요): NO Mood is set; the sentence layer sets it from the punctuation. */
   moods?: readonly string[];
+  /** Only after a host whose last syllable is this one. */
+  afterSyl?: string;
   /** Only after this copula: 'Neg' (아니다) or 'Cop' (이다). */
   hostCls?: 'Neg' | 'Cop';
   /** Connective id (`morph.Connective`). */
@@ -122,6 +124,7 @@ export const ENDINGS: readonly KoEnding[] = [
   ef({ id: 'hae-llae', cite: '-(으)ㄹ래', forms: [E('ㄹ래')], pred: 'V', yo: true, moods: ['Ind', 'Int'], morph: { SpeechLevel: 'Hae' }, role: 'want to; will you …?' }),
   ef({ id: 'hae-lgeol', cite: '-(으)ㄹ걸', forms: [E('ㄹ걸')], pred: 'VACP', yo: true, noFut: true, morph: { Mood: 'Ind', SpeechLevel: 'Hae' }, role: 'I guess …; I should have … (regret)' }),
   ef({ id: 'lit-riroda', cite: '-(으)리로다', forms: [E('리로다')], pred: 'VACP', lit: true, morph: { Mood: 'Excl', SpeechLevel: 'Lit' }, role: 'literary: will surely … (-(으)리로다)' }),
+  ef({ id: 'lit-ida-opt', cite: '-이다', forms: [B('이다')], pred: 'V', afterSyl: '지', lit: true, morph: { Mood: 'Ind', SpeechLevel: 'Lit' }, role: 'literary wish after 지: may it be … (이루어지이다)' }),
   ef({ id: 'lit-jiida', cite: '-지이다', forms: [A('지이다')], pred: 'VA', lit: true, morph: { Mood: 'Ind', SpeechLevel: 'Lit' }, role: 'literary wish: may it … (-지이다)' }),
   ef({ id: 'quote-danida', cite: '-답니다', forms: [B('답니다')], pred: 'AP', morph: { Quote: 'Ind', Mood: 'Ind', SpeechLevel: 'Hasipsio' }, role: 'formal reported or friendly statement (contraction of -다고 합니다)' }),
   ef({ id: 'quote-neundanida', cite: '-ㄴ답니다/-는답니다', forms: [CV('는답니다', 'ㄴ답니다')], pred: 'V', morph: { Quote: 'Ind', Mood: 'Ind', SpeechLevel: 'Hasipsio' }, role: 'formal reported or friendly statement (contraction of -ㄴ다고 합니다)' }),
@@ -177,7 +180,7 @@ export const ENDINGS: readonly KoEnding[] = [
   ec({ id: 'for-lit', conn: 'for-lit', cite: '-(이)라', forms: [B('라')], pred: 'C', hostCls: 'Cop', lit: true, morph: {}, role: 'literary: for it is …, because it is … (-(이)라 after a clause: 하심이라)' }),
   ec({ id: 'and', conn: 'and', cite: '-고', forms: [B('고')], pred: 'VACPL', yo: true, after: EC_AFTER, morph: {}, role: 'and; and then' }),
   ec({ id: 'and-while', conn: 'and-while', cite: '-(으)며', forms: [E('며')], pred: 'VACPL', morph: {}, role: 'and; while (written)' }),
-  ec({ id: 'while', conn: 'while', cite: '-(으)면서', forms: [E('면서')], pred: 'VACP', after: ['also'], morph: {}, role: 'while; although' }),
+  ec({ id: 'while', conn: 'while', cite: '-(으)면서', forms: [E('면서')], pred: 'VACP', after: ['also', 'from'], morph: {}, role: 'while; although (-(으)면서부터: since …ing)' }),
   ec({ id: 'but', conn: 'but', cite: '-지만', forms: [B('지만')], pred: 'VACP', morph: {}, role: 'but' }),
   ec({ id: 'but-lit', conn: 'but', cite: '-(으)나', forms: [E('나')], pred: 'VACP', morph: {}, role: 'but (written)' }),
   ec({ id: 'so', conn: 'so', cite: '-아서/-어서', forms: [A('서')], pred: 'VAC', yo: true, after: EC_AFTER, morph: {}, role: 'so, because; and then' }),

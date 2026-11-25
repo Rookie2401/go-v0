@@ -17,7 +17,7 @@
 import type { AnalysisCandidate, AnalysisOrigin, AnalyzedToken, PartOfSpeech, RawToken, WordPart } from '../../core';
 import { VOWELS, isHangulSyllable, koNormalize, originalSpan, scriptOf, syllablesOf } from './hangul';
 import {
-  type KoLexEntry, KO_PREDICATE_TAGS, koEntryLemma, koHomonymSetKey, koLexiconGeneration, koSharedPos, lookupKoreanStem,
+  type KoLexEntry, KO_PREDICATE_TAGS, koBareLemma, koEntryLemma, koHomonymSetKey, koLexiconGeneration, koSharedPos, lookupKoreanStem,
 } from './index-store';
 import { KO_ANALYZER, KO_SOURCE_IDS } from './version';
 import { type KoConjClass, type KoHost, type KoRealization, koRealize, koSeq, koSeqOfText, koShapeClasses, koSyls, koSylsText } from './conjugate';
@@ -56,7 +56,7 @@ const CLOSED_TAGS = new Set(['MM', 'MAG', 'NP', 'NR', 'IC', 'MAJ']);
 const INVISIBLE = new Set(['­', '​', '‌', '‍', '⁠', '﻿']);
 const MAG_PARTICLES = new Set(['also', 'only', 'topic', 'polite', 'until']);
 const OVERRIDE_KEYS = new Set(['VerbForm', 'Mood', 'SpeechLevel', 'Connective']);
-const CAP = { full: 0.92, assumed: 0.8, nonStandard: 0.6, unknown: 0.45, unknownPred: 0.3, undecided: 0.8, numbered: 0.62 } as const;
+const CAP = { floor: 0.45, full: 0.92, assumed: 0.8, nonStandard: 0.6, unknown: 0.45, unknownPred: 0.3, undecided: 0.8, numbered: 0.62 } as const;
 
 type Kind = 'V' | 'A' | 'C' | 'X' | 'P' | 'R' | 'L';
 interface St { slot: number; kind: Kind; exist: boolean; hon: boolean; fut: boolean }
@@ -145,6 +145,7 @@ function parseChain(c: Ctx, p: number, host: KoHost, st: St, depth = 0): Tail[] 
   for (const e of ENDINGS) {
     if (!predOk(e, st)) continue;
     if (e.hostCls && !(host.kind === 'stem' && host.cls === e.hostCls)) continue;
+    if (e.afterSyl && !(host.kind === 'stem' && host.syls.length && koSylsText(host.syls.slice(-1)) === e.afterSyl)) continue;
     for (const f of e.forms) {
       for (const r of koRealize(host, f)) {
         const syls = e.pending ? r.syls.slice(0, -1) : r.syls;
@@ -153,7 +154,7 @@ function parseChain(c: Ctx, p: number, host: KoHost, st: St, depth = 0): Tail[] 
         const q = p + seq.length;
         const stemShows = host.kind === 'stem' && depth === 0 ? r.shows : undefined;
         if (e.tag === 'EP') {
-          if (r.copulaDrop && !(e.id === 'p-hon' && q - p > 0 && c.sylOf[p] >= 2)) continue; // 목자시니: the honorific copula after a noun of two syllables or more
+          if (r.copulaDrop && !(e.id === 'p-hon' && (c.sylOf[p] ?? 0) >= 2)) continue; // 목자시니: the honorific copula after a noun of two syllables or more
           const nextHost: KoHost = e.pending ? { kind: 'stem', syls: [r.syls[r.syls.length - 1]], cls: 'R' } : { kind: 'fixed', noEu: e.id === 'p-humble' };
           const nst: St = {
             slot: e.slot ?? st.slot,
@@ -417,6 +418,12 @@ function nominalReadings(c: Ctx, prefixUnits: number, stemKey: string, entry: Ko
   const lemma = koEntryLemma(entry);
   const pos = koSharedPos(entry);
   for (const t of conts) {
+    // the honorific copula with its 이 dropped (목자시니) only before a finite ending or -(으)니 / -(으)며 / -고 / -어, never before -(으)ㅁ or -(으)나
+    const dropAt = t.parts.findIndex((x) => x.copula && x.je <= x.js);
+    if (dropAt >= 0 && t.parts[dropAt + 1]?.ending?.id === 'p-hon') {
+      const nx = t.parts[dropAt + 2]?.ending;
+      if (!nx || !(nx.tag === 'EF' || ['since', 'because', 'and-while', 'and', 'inf'].includes(nx.id))) continue;
+    }
     const parts: PartRec[] = [{ js: 0, je: q, text: stemKey, lemma, pos: pos ?? 'X', tag, role: tag === 'XR' ? 'root' : 'stem', kind: 'stem' }, ...t.parts];
     const remarks: string[] = [];
     let cap: number = t.violations ? CAP.nonStandard : CAP.full;
@@ -501,7 +508,8 @@ function particleOnlyReadings(c: Ctx, ctx: { prevKey?: string; prevIsLatinOrDigi
     const after = !!ctx.prevIsLatinOrDigit;
     out.push({
       lemma: first.family, pos: 'ADP', parts: ch.parts, stemKey: '', stemTag: first.tag,
-      cap: after && !ch.violations ? CAP.full : CAP.nonStandard, score: (after ? 8 : -2) - 0.35 * ch.parts.length,
+      // a particle written apart from its word is no live rival of a word
+      cap: after && !ch.violations ? CAP.full : CAP.floor, score: (after ? 8 : -2) - 0.35 * ch.parts.length,
       sourceId: KO_SOURCE_IDS.closed, origin: 'hand', notes: { host: 'the token before' },
       remarks: after ? [] : ['a particle written apart from the word it belongs to'], contracted: false, extra: {}, order: orderSeq++,
     });
@@ -546,6 +554,7 @@ function spacingReadings(c: Ctx): Reading[] {
     const all = koAnalyzeToken(sub(a, b));
     if (b - a === 1) return a === 0 ? undefined : all.find((x) => !x.unconfirmed && String(x.notes?.koPos ?? '').startsWith('NNB'));
     const r = all[0];
+    if (a === 0 && r?.pos === 'PROPN') return undefined;
     return r && !r.unconfirmed && r.pos !== 'ADP' && r.confidence >= 0.8 ? r : undefined;
   };
   const splits = (a: number, depth: number): Array<Array<{ a: number; b: number; r: AnalysisCandidate }>> => {
@@ -731,7 +740,7 @@ function rankAdjust(readings: Reading[]): void {
   const nounish = (r: Reading) => (r.stemTag === 'NNG' || r.stemTag === 'NNB' || r.stemTag === 'NNP') && !r.unconfirmed && !r.notes.derived;
   const anyPredFull = readings.some((r) => isPred(r) && !hasEtn(r) && r.cap >= CAP.full);
   const maxPredN = Math.max(0, ...readings.filter((r) => isPred(r) || (nounish(r) && r.parts.length === 1)).map((r) => r.entry?.n ?? 0));
-  const auxBuilt = (r: Reading) => r.parts.some((p) => (p.tag === 'VX' && p.kind === 'component') || p.ending?.id === 'p-pass');
+  const auxBuilt = (r: Reading) => r.parts.some((p) => (p.tag === 'VX' && p.kind === 'component') || p.ending?.id === 'p-pass' || p.ending?.id === 'lit-jiida');
   const anyNoun = readings.some(nounish);
   // a 하다-verb the lexicon holds (its own …하다 headword, or a noun row flagged `hada` by the build)
   const hadaNoun = (r: Reading) => !!r.notes.derived && !!(r.parts[0] && lookupKoreanStem(r.parts[0].text).some((h) => (h.entry as { hada?: boolean }).hada));
@@ -763,7 +772,13 @@ function rankAdjust(readings: Reading[]): void {
     if (isQuoteContraction(r)) r.score -= readings.some((o) => o !== r && isPred(o) && !isQuoteContraction(o) && o.lemma !== r.lemma && o.parts.some((p) => p.ending?.tag === 'EF')) ? 3 : 0.3;
     if (r.notes.derived && r.stemTag === 'VV' && anyListedWhole && r.sourceId !== KO_SOURCE_IDS.rules && !hadaNoun(r)) r.score -= 1.5;
     // a whole listed noun over a bare -아/어 form of a predicate (밤새 "overnight" over 밤새다 + -어)
-    if (whole && (r.stemTag === 'NNG' || r.stemTag === 'NNB') && readings.some((o) => isPred(o) && o.parts.length === 2 && (o.parts[1].ending?.id === 'hae' || o.parts[1].ending?.id === 'inf'))) r.score += 1;
+    // a one-syllable noun never outranks a common verb's bare -아/어 form (켜 "layer", 서 "west" below 켜다, 서다: 불 켜!, 여기 서!)
+    if (whole && r.stemTag === 'NNG' && [...r.stemKey].length === 1 && readings.some((o) => isPred(o) && (o.entry?.n ?? 0) > 0 && o.parts.length === 2 && (o.parts[1].ending?.id === 'hae' || o.parts[1].ending?.id === 'inf'))) r.score -= 2;
+    if (whole && (r.stemTag === 'NNG' || r.stemTag === 'NNB') && [...r.stemKey].length >= 2) {
+      const inf = readings.filter((o) => isPred(o) && o.parts.length === 2 && (o.parts[1].ending?.id === 'hae' || o.parts[1].ending?.id === 'inf'));
+      const timeWord = /\b(overnight|night|day|morning|evening|today|yesterday|tomorrow|time|year|week|month|while)\b/iu.test(r.gloss ?? '');
+      if (inf.length && (timeWord || ((r.entry?.n ?? 0) > 0 && inf.every((o) => !(o.entry?.n ?? 0))))) r.score += 1;
+    }
   }
   function c1(r: Reading): boolean { return [...r.stemKey].length === 1; }
   function isQuoteContraction(r: Reading): boolean { return r.parts.some((p) => p.ending && QUOTE_CONTRACTIONS.has(p.ending.id)); }
@@ -818,6 +833,40 @@ function computeMorph(r: Reading): Record<string, string> {
     if (vals.length) out[k] = k === 'Particle' ? vals.join('+') : vals.sort().join(',');
   }
   return out;
+}
+
+const SURNAMES = new Set([...'김이박최정강조윤장임한오서신권황안송류전홍고문양손배백허유남심노하곽성차주우구민진지엄채원천방공현함변염여추도소석선설마길연위표명기반왕금옥육인맹제모탁국어은편용']);
+/** An unlisted Korean name (a surname and a given name of one or two syllables) and the particles after it: the whole name, unconfirmed. */
+function nameReadings(c: Ctx): Reading[] {
+  if (c.units.length < 3 || !SURNAMES.has(c.units[0].ch)) return [];
+  for (const n of [3, 2, 4]) {
+    if (n >= c.units.length) continue;
+    const q = c.units[n - 1].j1;
+    const ch = parseParticles(c, q, undefined, soundBefore(c, q)).filter((x) => !x.violations);
+    if (!ch.length) continue;
+    const stem = c.units.slice(0, n).map((u) => u.ch).join('');
+    const t = ch.sort((a, b) => a.parts.length - b.parts.length)[0];
+    return [{
+      lemma: stem, pos: 'PROPN', parts: [{ js: 0, je: q, text: stem, lemma: stem, pos: 'PROPN', tag: 'NNP', role: 'a name (not in the lexicon)', kind: 'stem' }, ...t.parts],
+      stemKey: stem, stemTag: 'NNP', cap: 0.4, score: -9, unconfirmed: true, sourceId: KO_SOURCE_IDS.rules, origin: 'rule', notes: { source: 'rule', name: 'shaped like a personal name (surname + given name); not in the word list' },
+      remarks: ['read as a name the lexicon does not hold: the particles after it are explained'], contracted: false, extra: {}, order: orderSeq++,
+    }];
+  }
+  return [];
+}
+
+/**
+ * The unspaced fallback, except where it would read a name as a verb: a surname-shaped token (surname + given name + particles) whose unspaced
+ * reading begins with a one-syllable verb stem spelled as the surname (박지성이 → 박다 + …, 한지민이 → 하다 + …) is the name, unconfirmed. Any
+ * other token keeps its unspaced reading, or (with none) the unconfirmed noun-like reading of the whole stem.
+ */
+function spacingOrName(c: Ctx): Reading[] {
+  const sp = spacingReadings(c);
+  if (!sp.length) return [];
+  const p0 = sp[0].parts[0];
+  const verbFirst = !!p0 && (p0.pos === 'VERB' || p0.pos === 'ADJ' || p0.pos === 'AUX') && p0.je <= (c.units[0]?.j1 ?? 0);
+  if (verbFirst) { const nm = nameReadings(c); if (nm.length) return nm; }
+  return sp;
 }
 
 /** Does this reading need two or more words written as one (an adnominal + a bound noun, a verb + an auxiliary, the unspaced fallback)? */
@@ -908,8 +957,21 @@ function finish(c: Ctx, readings: Reading[]): AnalysisCandidate[] {
   if (list[0] && counted(list[0].r) && !list[0].r.unconfirmed) {
     // also a row the counts saw almost never beside a first reading they saw fifty times as often (와 "the jamo name", n 1, beside 오다)
     const topN = list[0].r.entry?.n ?? 0;
-    const faint = (r: Reading) => !!r.entry && r.sourceId !== KO_SOURCE_IDS.closed && !r.unconfirmed && (r.entry.n ?? 0) > 0 && (r.entry.n ?? 0) * 50 < topN;
-    for (const x of list.slice(1)) if (rareRow(x.r) || faint(x.r)) { x.r.cap = Math.min(x.r.cap, CAP.nonStandard); x.r.notes.rare = 'not seen in the counts'; }
+    const faint = (r: Reading) => !!r.entry && r.sourceId !== KO_SOURCE_IDS.closed && !r.unconfirmed && (r.entry.n ?? 0) > 0 && (r.entry.n ?? 0) <= 2 && (r.entry.n ?? 0) * 50 < topN;
+    for (const x of list.slice(1)) if (rareRow(x.r) || faint(x.r)) { x.r.cap = Math.min(x.r.cap, CAP.floor); x.r.notes.rare = 'not seen in the counts'; }
+    list = [list[0], ...list.slice(1).sort(order)];
+  }
+  if (list.length > 1) {
+    const undecided = new Set(list.filter((x) => x.r.notes.homonym === 'undecided').map((x) => `${x.r.lemma}|${x.r.pos}`));
+    for (const x of list.slice(1)) {
+      const r = x.r;
+      const numberedAfterUndecided = !!r.entry?.hom && r.entry.set === 'balanced' && r.notes.homonym !== 'undecided' && undecided.has(`${koBareLemma(r.lemma)}|${r.pos}`);
+      const droppedCopula = r.parts.some((p) => p.copula && p.je <= p.js);
+      const shortName = r.stemTag === 'NNP' && [...r.stemKey].length === 1;
+      // an auxiliary reading is a rival only after a connective form, which the sentence layer sees (it raises the one it promotes)
+      const auxRival = r.stemTag === 'VX' && list[0].r.stemTag !== 'VX';
+      if (numberedAfterUndecided || droppedCopula || shortName || auxRival || koNeedsSpacing(r)) { r.cap = Math.min(r.cap, CAP.floor); r.notes.credit = 'not a live rival'; }
+    }
     list = [list[0], ...list.slice(1).sort(order)];
   }
   list = [...list.slice(0, 16), ...list.slice(16).filter((x) => x.r.stemTag === 'VCP' || x.r.stemTag === 'VCN').slice(0, 3)];
@@ -1059,13 +1121,13 @@ function analyzeUncached(surface: string, ctx: { prevKey?: string; prevIsLatinOr
   if (!readings.some((r) => !r.unconfirmed && r.cap >= CAP.full && !r.notes.derived)) readings.push(...compoundReadings(c));
   const lexical = readings.length > 0;
   readings.push(...particleOnlyReadings(c, ctx));
-  if (!lexical && !readings.length) readings.push(...spacingReadings(c));
+  if (!lexical && !readings.length) readings.push(...spacingOrName(c));
   if (!readings.length) readings.push(...unknownReadings(c));
   rankAdjust(readings);
   // a noun + derivational suffix split is offered only when nothing reads the token whole
   const hasXsn = (r: Reading) => r.parts.some((x) => x.tag === 'XSN' && !x.particle);
   if (readings.some((r) => !hasXsn(r) && !r.unconfirmed && r.cap >= CAP.assumed)) for (let i = readings.length - 1; i >= 0; i--) if (hasXsn(readings[i])) readings.splice(i, 1);
-  if (!readings.length) readings.push(...spacingReadings(c));
+  if (!readings.length) readings.push(...spacingOrName(c));
   // a reading that needs nonstandard spacing (adnominal + bound noun, verb + auxiliary written together, the unspaced fallback) is offered
   // only when no ordinary confirmed analysis reads the token (a name does not count as one against verb + auxiliary: 해주는)
   const ordinary = readings.some((r) => !koNeedsSpacing(r) && !r.unconfirmed && r.cap >= CAP.assumed && r.stemTag !== 'NNP');

@@ -20,6 +20,14 @@ export const LEXICON_SETS: Readonly<Record<string, readonly string[]>> = { el: [
 /** Korean's whole stem lexicon is about 1.3 MB gzip in some forty-five shards and a page loads most of it: it may keep more of them than the other sets. */
 const MAX_LOADED: Readonly<Record<string, number>> = { ko: 64 };
 
+/**
+ * The languages whose word list is loaded BEFORE a scan of Active or Reading Analysis analyses a page (the card has always prepared its own text).
+ * Korean: its compiled core holds about a fifth of the lexicon and names other lemmas than the full lexicon does (감자 → 감다), so a scan on the core
+ * alone would name one item and the card another, and a page's answer would change after any lookup. Greek, Hebrew and Russian keep loading on the
+ * first lookup, as they did, until their own measurement says otherwise (their shard sets are far larger).
+ */
+export const PREPARE_BEFORE_SCAN: ReadonlySet<string> = new Set(['ko']);
+
 export function lexiconUrl(chromeApi: UrlLoaderApi | undefined, base: string | undefined, path: string): string {
   return chromeApi?.runtime.getURL ? chromeApi.runtime.getURL(`lexicon/${path}`) : new URL(`/dist/lexicon/${path}`, base).href;
 }

@@ -18,6 +18,7 @@ import type { ConfirmFormsReply } from '../protocol';
 import { coverageOf, type CountedVerdict } from './coverage';
 import { declaredVariety, extractReadingText } from './extract';
 import { buildLexicalTable, type LexicalTable } from './lexical';
+import { PREPARE_BEFORE_SCAN } from '../lexicon/prepare';
 import {
   MAX_WORDS_PER_MESSAGE, type KnowledgeSnapshot, type ReadingErrorCode, type ReadingKnowledgeReply, type ReadingRequest, type ReadingResult, type ReadingStage, type ReadingStatus, type WireVerdict, type WireWord,
 } from './protocol';
@@ -152,7 +153,7 @@ export function createReadingSession(d: ReadingSessionDeps) {
       progress = { done: 0, total: x.scope.characters };
       table = undefined;
       // the same word list the card reads, loaded for this text once, before its words are analysed
-      if (d.prepareLexicon) { try { await d.prepareLexicon(languageId, x.nodes.map((n) => n.data).join('\n')); } catch { /* the table is made with what is loaded */ } signal.throwIfAborted(); }
+      if (d.prepareLexicon && PREPARE_BEFORE_SCAN.has(languageId)) { try { await d.prepareLexicon(languageId, x.nodes.map((n) => n.data).join('\n')); } catch { /* the table is made with what is loaded */ } signal.throwIfAborted(); }
       table = await buildLexicalTable({
         nodes: x.nodes, fingerprint: x.fingerprint, adapter, languageId, ...(varietyId ? { varietyId } : {}), signal,
         onProgress: (done, total) => { progress = { done, total }; }, ...(d.confirmForms ? { confirmForms: d.confirmForms } : {}),

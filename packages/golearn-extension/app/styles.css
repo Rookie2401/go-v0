@@ -393,7 +393,7 @@ body:has(.screen[data-route="languages"]) .topbar { background: #211a15; border-
 .screen[data-route="languages"] .lang-row .native { display: inline; font-size: .65em; letter-spacing: 0; color: var(--ink-soft); }
 .language-box-face { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 5rem; padding: .7rem var(--tile-inset); list-style: none; cursor: pointer; }
 .language-box-face::-webkit-details-marker { display: none; }
-.language-box-face > span:first-child { min-width: 0; overflow-wrap: anywhere; }
+.language-box-face > div:first-child { min-width: 0; overflow-wrap: anywhere; }
 .lang-reading { display: block; margin-bottom: .2rem; color: var(--accent); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; }
 .lang-reading[hidden] { display: none; }
 .language-box-caret { color: var(--accent); }

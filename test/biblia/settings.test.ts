@@ -1,11 +1,16 @@
 // @vitest-environment jsdom
-/** Biblia's Settings (#/settings): reading controls, offline/source disclosures, and edition-aware footer links. */
+/**
+ * Biblia's Settings (#/settings), simpler since 2026-11-25 (the owner): a live sample of the reading text, plain groups of controls (the sliders kept
+ * with their values), the familiarity switch only while signed in, one row to About (#/about: offline reading, sources and licences, the legal pages)
+ * and Reset as a quiet link.
+ */
 import fs from 'node:fs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { createAccountService, type AccountService } from '../../packages/biblia/src/account';
 import { createBibliaApp, READING_DEFAULTS, type BibliaApp } from '../../packages/biblia/src/app';
 import type { DataSource } from '../../packages/biblia/src/data';
 import type { Recorder } from '../../packages/biblia/src/repo';
+import { SAMPLE_VERSE } from '../../packages/biblia/src/sample';
 import { setBody, stubLayout } from '../extension/dom';
 
 const DATA = 'packages/biblia/public/data';
@@ -63,26 +68,75 @@ const pill = (group: string, value: string): HTMLButtonElement => q<HTMLButtonEl
 const setSlider = (id: string, value: number): void => { const el = q<HTMLInputElement>(`#${id}`); el.value = String(value); el.dispatchEvent(new Event('input', { bubbles: true })); };
 
 describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia settings', () => {
-  it('shows the reading card and disclosures without Speech, Account, or Service sections', async () => {
+  it('is one short page: the sample, two plain groups, one row to About and Reset; no box in a box, no drop-downs, no Speech, Account or Service', async () => {
     const a = await open({ storage: memoryStorage() });
     await a.go('#/settings');
     expect(a.route).toBe('settings');
     expect(text(q('.screen > h1'))).toBe('Settings');
-    expect([...document.querySelectorAll('.screen > section.card')].map((s) => s.id)).toEqual(['settings-reading']);
-    expect([...document.querySelectorAll('.settings-disclosure')].map((s) => s.id)).toEqual(['settings-offline', 'settings-sources']);
+    expect([...q('.screen').children].map((c) => c.id || c.tagName.toLowerCase())).toEqual(['h1', 'settings-sample', 'settings-text', 'settings-verses', 'settings-about', 'p']);
+    expect([...document.querySelectorAll('.settings-group > h2')].map(text)).toEqual(['Text', 'Hebrew and verses']);
+    expect(document.querySelector('.screen .card, .screen details, .settings-disclosure')).toBeNull();
     expect(document.querySelector('#settings-speech, #settings-account, #settings-service, #settings-remote-speech, #settings-svc-url')).toBeNull();
-    expect(q('#settings-reading').classList.contains('settings-reading')).toBe(true);
-    expect(q('#settings-reading .settings-reading__heading').textContent).toBe('Reading');
-    expect(q('#settings-offline summary .settings-disclosure__copy')).not.toBeNull();
+    // the sliders stay as they were, each with its caption and its value (the owner: "I like the accessibility this provides")
+    expect([...document.querySelectorAll('#settings-text .field--slider label')].map(text)).toEqual(['Hebrew text size26 px', 'Greek text size22 px', 'Line spacing1.85']);
+    expect([...document.querySelectorAll('#settings-text input[type="range"]')].map((i) => i.id)).toEqual(['set-hebrew-size', 'set-greek-size', 'set-line-height']);
+    // signed out (here: no account at all) there is no familiarity switch, and nothing says "available when signed in"
+    expect(document.querySelector('#set-level-marks, #settings-marks')).toBeNull();
+    expect(text(q('.screen'))).not.toMatch(/signed in/i);
     // the bar: back to the library, the wordmark, the settings icon marked as the current page
     expect(q('.topbar a.iconbtn[aria-label="Library"]').getAttribute('href')).toBe('#/');
     expect(q('.topbar a.iconbtn[aria-label="Settings"]').getAttribute('aria-current')).toBe('page');
-    // the attribution and the fonts, with the licences of the fonts
-    expect(text(q('#settings-sources'))).toContain('Miqra according to the Masorah');
-    expect(text(q('#settings-sources'))).toContain('SIL Open Font License');
+    // one row leads to About; Reset is a quiet link, not a button beside a checkbox
+    expect(q('#settings-about').getAttribute('href')).toBe('#/about');
+    expect(text(q('#settings-about'))).toBe('About BibliaOffline reading, sources and licences');
+    expect(q('#settings-reset').classList.contains('linklike')).toBe(true);
+    expect(text(q('#settings-reset'))).toBe('Reset to defaults');
+  });
+
+  it('shows a live sample: the first verse in Hebrew and in Greek, following the Hebrew marks and the verse numbers at once', async () => {
+    const a = await open({ storage: memoryStorage() });
+    await a.go('#/settings');
+    const lines = (): HTMLElement[] => [...document.querySelectorAll<HTMLElement>('#settings-sample .prose')];
+    const words = (el: HTMLElement): string => text(el.querySelector('.verse')).slice(text(el.querySelector('.vn')).length);
+    expect(lines().map((l) => [l.lang, l.dir])).toEqual([['he', 'rtl'], ['el', 'ltr']]);
+    // set by the reader's own classes, so the sizes, the spacing and the theme reach it through the same custom properties
+    expect(q('#settings-sample').classList.contains('reader')).toBe(true);
+    expect(words(lines()[0])).toBe(SAMPLE_VERSE.he);
+    expect(words(lines()[1])).toBe(SAMPLE_VERSE.el);
+    expect(lines().map((l) => text(l.querySelector('.vn')))).toEqual(['א׳', 'αʹ']);
+    pill('Verse numbers', 'decimal').click();
+    expect(lines().map((l) => text(l.querySelector('.vn')))).toEqual(['1', '1']);
+    pill('Hebrew marks', 'niqqud').click();
+    expect(words(lines()[0])).not.toMatch(/[֑-֯]/u); // the accents are gone
+    expect(words(lines()[0])).toMatch(/[ְ-ֻ]/u);      // the vowels stay
+    pill('Hebrew marks', 'consonants').click();
+    expect(words(lines()[0])).not.toMatch(/[֑-ׇ]/u);
+    expect(words(lines()[1])).toBe(SAMPLE_VERSE.el);    // the Greek is not touched by a Hebrew choice
+    // nothing on the page has to say that a choice waits for the next chapter
+    expect(text(q('.screen'))).not.toMatch(/next time you open/i);
+  });
+
+  it('the sample verses are the data’s own first verses, mark for mark', () => {
+    const he = JSON.parse(fs.readFileSync(`${DATA}/he/Gen.json`, 'utf8')) as { chapters: Array<{ verses: Array<{ t: string }> }> };
+    const el = JSON.parse(fs.readFileSync(`${DATA}/el/John.json`, 'utf8')) as { chapters: Array<{ verses: Array<{ w: string[][] }> }> };
+    expect(SAMPLE_VERSE.he).toBe(he.chapters[0].verses[0].t);
+    expect(SAMPLE_VERSE.el).toBe(el.chapters[0].verses[0].w.map((t) => t[0]).join(' '));
+  });
+
+  it('About (#/about) holds what Settings carried in two drop-downs: offline reading, the sources and the font licences', async () => {
+    const a = await open({ storage: memoryStorage() });
+    await a.go('#/about');
+    expect(a.route).toBe('about');
+    expect(text(q('.screen > h1'))).toBe('About');
+    expect([...document.querySelectorAll('.settings-group')].map((s) => s.id)).toEqual(['about-offline', 'about-sources']);
+    expect(q('.topbar a.iconbtn[aria-label="Back"]').getAttribute('href')).toBe('#/settings');
+    expect(text(q('#about-sources'))).toContain('Miqra according to the Masorah');
+    expect(text(q('#about-sources'))).toContain('SIL Open Font License');
     expect(q('#link-ofl-garamond').getAttribute('href')).toBe('./fonts/EB-Garamond-OFL.txt');
     expect(q('#link-ofl-frank').getAttribute('href')).toBe('./fonts/frank-ruhl-libre-OFL.txt');
-    expect([...document.querySelectorAll('.settings-links a')].map((x) => x.getAttribute('href'))).toEqual(['#/sources']);
+    // "Sources and limits" is linked once, from the sources note; the legal pages exist only with an account
+    expect([...document.querySelectorAll('.screen a[href="#/sources"]')]).toHaveLength(1);
+    expect(document.querySelector('.settings-links')).toBeNull();
   });
 
   it('keeps each reading preference under biblia:<name> and applies it to the page at once', async () => {
@@ -120,17 +174,15 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia settings', () => {
     pill('Verse numbers', 'hidden').click();
     expect(storage.getItem('biblia:verseNumbers')).toBe('hidden');
     expect(root.getAttribute('data-verse-numbers')).toBe('hidden');
-    q<HTMLInputElement>('#set-level-marks').click();
-    expect(storage.getItem('biblia:levelMarks')).toBe('off');
-    expect(root.getAttribute('data-level-marks')).toBe('off');
   });
 
-  it('the Hebrew text choice (the preference the app always had) changes what the next chapter shows', async () => {
+  it('the Hebrew marks choice (the preference the app always had, in plainer words) changes what the next chapter shows', async () => {
     const storage = memoryStorage();
     const a = await open({ storage });
     await a.go('#/settings');
-    expect(pill('Hebrew text', 'full').getAttribute('aria-pressed')).toBe('true');
-    pill('Hebrew text', 'consonants').click();
+    expect([...document.querySelectorAll('.pills[aria-label="Hebrew marks"] button')].map(text)).toEqual(['All', 'Vowels', 'None']);
+    expect(pill('Hebrew marks', 'full').getAttribute('aria-pressed')).toBe('true');
+    pill('Hebrew marks', 'consonants').click();
     expect(storage.getItem('biblia:hebrewDisplay')).toBe('consonants');
     await a.go('#/read/Gen/1');
     const first = q('.reader .prose button.word').textContent ?? '';
@@ -150,14 +202,14 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia settings', () => {
     expect(document.querySelectorAll('.verse[data-v="1"] button.word').length).toBeGreaterThan(0);
     expect(document.querySelector('.verse[data-v="1"]')?.getAttribute('data-v')).toBe('1');
     await a.go('#/settings');
-    expect(pill('Hebrew text', 'niqqud').getAttribute('aria-pressed')).toBe('true');
+    expect(pill('Hebrew marks', 'niqqud').getAttribute('aria-pressed')).toBe('true');
     q<HTMLButtonElement>('#settings-reset').click();
     await vi.waitFor(() => expect(pill('Theme', 'auto').getAttribute('aria-pressed')).toBe('true'));
     expect([...storage.data.keys()].filter((k) => k.startsWith('biblia:') && k !== 'biblia:last')).toEqual([]);
     expect(root.hasAttribute('data-theme')).toBe(false);
     expect(root.getAttribute('data-verse-numbers')).toBe('native');
     expect(root.style.getPropertyValue('--reading-font-size')).toBe(`${READING_DEFAULTS.hebrewSize}px`);
-    expect(pill('Hebrew text', 'full').getAttribute('aria-pressed')).toBe('true');
+    expect(pill('Hebrew marks', 'full').getAttribute('aria-pressed')).toBe('true');
     await a.go('#/read/John/1');
     expect(document.querySelector('.verse[data-v="1"] .vn')?.textContent).toBe('αʹ');
   });
@@ -177,16 +229,17 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia settings', () => {
 
   it('says what the device keeps: the installed edition keeps what is read; another copy does not install itself', async () => {
     const a = await open({ storage: memoryStorage() });
-    await a.go('#/settings');
-    expect(text(q('#settings-offline summary'))).toContain('Chapters open from the current connection.');
-    expect(text(q('#settings-offline'))).toContain('It is not installed for offline use.');
+    await a.go('#/about');
+    expect(text(q('#about-offline > h2'))).toBe('Offline reading');
+    expect(text(q('#about-offline'))).toContain('It is not installed for offline use.');
     const meta = document.createElement('meta');
     meta.name = 'biblia-edition'; meta.content = 'standalone';
     document.head.append(meta);
     await a.go('#/settings');
-    expect(text(q('#settings-offline summary'))).toContain('Previously opened chapters are available offline.');
-    expect(text(q('#settings-offline'))).toContain('This installed edition keeps the app itself');
-    expect(text(q('#settings-offline'))).toContain('your place');
+    await a.go('#/about');
+    expect(text(q('#about-offline'))).toContain('This installed edition keeps the app itself');
+    expect(text(q('#about-offline'))).toContain('available offline after you open it once');
+    expect(text(q('#about-offline'))).toContain('your place');
   });
 
   describe('account integration', () => {
@@ -201,13 +254,38 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia settings', () => {
       await a.go('#/settings');
       expect(document.querySelector('#settings-account, #settings-service, #settings-svc-url')).toBeNull();
       expect([...document.querySelectorAll('.topbar .iconbtn')].map((x) => x.getAttribute('aria-label'))).toEqual(['Library', 'Account', 'Settings']);
-      expect([...document.querySelectorAll('.settings-links a')].map((x) => x.getAttribute('href'))).toEqual(['#/sources', '#/terms/settings', '#/privacy/settings']);
-      await a.go('#/terms/settings');
+      // Settings itself carries no legal links; About does, and each legal page opened from there leads back to it
+      expect(document.querySelector('.settings-links')).toBeNull();
+      await a.go('#/about');
+      expect([...document.querySelectorAll('.settings-links a')].map((x) => x.getAttribute('href'))).toEqual(['#/terms/about', '#/privacy/about']);
+      await a.go('#/terms/about');
       expect(a.route).toBe('terms');
-      expect(q('.legal .screen > p a').getAttribute('href')).toBe('#/settings');
+      expect(q('.legal .screen > p a').getAttribute('href')).toBe('#/about');
+      expect(q('.topbar a.iconbtn[aria-label="Back"]').getAttribute('href')).toBe('#/about');
+      // a link kept from the former page (#/terms/settings) still opens the page, with the same way back
+      await a.go('#/privacy/settings');
+      expect(a.route).toBe('privacy');
+      expect(q('.legal .screen > p a').getAttribute('href')).toBe('#/about');
       await a.go('#/account');
       expect(a.route).toBe('account');
       expect(document.querySelector('.account')).not.toBeNull();
+    });
+
+    it('shows the familiarity switch only to a signed-in reader; it is a switch, and it keeps and applies its choice', async () => {
+      const { account, storage } = make();
+      const a = await open({ storage, account });
+      await a.go('#/settings');
+      expect(document.querySelector('#settings-marks, #set-level-marks')).toBeNull(); // signed out: not shown at all
+      expect(await account.signIn('ana@example.org', PASSWORD)).toEqual({ ok: true });
+      await vi.waitFor(() => expect(document.querySelector('#set-level-marks')).not.toBeNull()); // signing in redraws the page
+      expect(text(q('#settings-marks > h2'))).toBe('Your words');
+      const marks = q<HTMLInputElement>('#set-level-marks');
+      expect(marks.getAttribute('role')).toBe('switch');
+      expect(marks.checked).toBe(true);
+      expect(text(marks.closest('label'))).not.toBe('');
+      marks.click();
+      expect(storage.getItem('biblia:levelMarks')).toBe('off');
+      expect(root.getAttribute('data-level-marks')).toBe('off');
     });
 
     it('signs out from the account screen', async () => {

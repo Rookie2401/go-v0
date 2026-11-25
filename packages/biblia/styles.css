@@ -364,7 +364,7 @@ button.pill[aria-pressed='true'] { background: var(--accent); border-color: var(
 }
 .account--signed-in .topbar__title, .settings .topbar__title { color: var(--ink); }
 
-.account-identity, .account-tile, .account-devices, .settings-reading, .settings-disclosure {
+.account-identity, .account-tile, .account-devices {
   border: 1px solid var(--folio-line);
   border-radius: 12px;
   background: var(--folio-surface);
@@ -383,7 +383,7 @@ button.pill[aria-pressed='true'] { background: var(--accent); border-color: var(
 .account-editor .field { max-width: none; }
 .account-verification { padding: 0.7rem 0; border-top: 1px solid var(--rule); }
 .account-actions { display: grid; gap: 0.65rem; margin-top: 1.2rem; }
-.account-symbol, .settings-disclosure__icon {
+.account-symbol {
   display: grid;
   place-items: center;
   width: clamp(2.35rem, 8vw, 3.1rem);
@@ -401,7 +401,7 @@ button.pill[aria-pressed='true'] { background: var(--accent); border-color: var(
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.account-tile, .settings-disclosure > summary {
+.account-tile {
   width: 100%;
   min-height: 4.15rem;
   display: grid;
@@ -412,14 +412,14 @@ button.pill[aria-pressed='true'] { background: var(--accent); border-color: var(
   text-align: start;
   line-height: 1.25;
 }
-.account-tile:hover:not(:disabled), .settings-disclosure > summary:hover {
+.account-tile:hover:not(:disabled) {
   background: color-mix(in srgb, var(--accent) 6%, transparent);
   border-color: var(--accent);
 }
 .account-tile:disabled { cursor: default; opacity: 0.72; }
-.account-tile__copy, .settings-disclosure__copy { display: grid; gap: 0.15rem; }
-.account-tile__copy > :last-child, .settings-disclosure__subtitle { color: var(--ink-soft); font-size: 0.98rem; font-style: italic; }
-.account-tile__title, .settings-disclosure__title { font-size: clamp(1.2rem, 4.6vw, 1.45rem); color: var(--ink); }
+.account-tile__copy { display: grid; gap: 0.15rem; }
+.account-tile__copy > :last-child { color: var(--ink-soft); font-size: 0.98rem; font-style: italic; }
+.account-tile__title { font-size: clamp(1.2rem, 4.6vw, 1.45rem); color: var(--ink); }
 .account-tile__arrow { display: flex; color: var(--accent); }
 .account-tile--danger :is(.account-symbol, .account-tile__title),
 .account--signed-in button.account-danger { color: var(--wine); }
@@ -442,12 +442,17 @@ button.pill[aria-pressed='true'] { background: var(--accent); border-color: var(
 .account--signed-in .screen .sync-status { font-size: 0.95rem; margin-inline: 0.2rem; }
 .account--signed-in .legal-links, .settings-links { text-align: center; padding-top: 0.7rem; }
 
+/* Settings, simpler (the owner, 2026-11-25): a live sample of the reading text, then plain groups (a small-capital heading on a hairline, its rows
+   under it) with no box inside a box; one row to About, and Reset as a quiet link. The sliders keep their caption and value (the owner likes
+   their accessibility). #/about uses the same groups for what Settings used to carry in two drop-downs. */
 .settings .screen h1 { letter-spacing: 0.01em; text-transform: none; }
-.settings-reading { margin: 0 0 0.9rem; padding: 0.9rem clamp(0.8rem, 4vw, 1.4rem) 0.35rem; }
-.settings-reading__intro { display: flex; align-items: center; gap: 0.75rem; padding-bottom: 0.4rem; color: var(--accent); }
-.screen .settings-reading__heading { margin: 0; color: var(--ink); font-size: 1.08rem; letter-spacing: 0.19em; }
-.settings-row { padding: 0.6rem 0; }
-.settings-row + .settings-row, .settings-row + .settings-reader-footer { border-top: 1px solid var(--folio-line); }
+.settings-sample { min-height: 0; margin: 0 0 0.4rem; padding: 0.9rem clamp(0.9rem, 4vw, 1.4rem); border-radius: 12px; background: var(--folio-fill); }
+.reader.settings-sample .prose[lang] { max-width: none; margin: 0; text-align: start; }
+.reader.settings-sample .prose + .prose { margin-top: 0.35rem; }
+.settings-group { margin: 1.5rem 0 0; }
+.screen .settings-group > h2 { margin: 0; padding-bottom: 0.45rem; border-bottom: 1px solid var(--folio-line); color: var(--ink-soft); font-size: 0.8rem; letter-spacing: 0.18em; }
+.settings-row { padding: 0.7rem 0; }
+.settings-row + .settings-row { border-top: 1px solid var(--rule); }
 .settings-row .field {
   max-width: none;
   grid-template-columns: minmax(5.3rem, 0.65fr) minmax(0, 1.35fr);
@@ -468,21 +473,34 @@ button.pill[aria-pressed='true'] { background: var(--accent); border-color: var(
 .settings-row .field--slider label { display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; }
 .settings-row .slider__value { color: var(--accent); white-space: nowrap; }
 .settings-row input[type='range'] { margin: 0; min-height: 1.5rem; cursor: pointer; }
-.settings-row .hint { font-style: italic; }
-.settings-reader-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.55rem 0.65rem; padding: 0.65rem 0 0.3rem; }
-.settings-reader-footer .toggle { margin: 0; min-height: 2.75rem; align-items: center; font-size: 1.05rem; line-height: 1.2; }
-.settings-reader-footer .toggle input { margin: 0 0.32rem 0 0.16rem; }
-.settings-reader-footer .help { display: block; margin-top: 0.12rem; }
-.settings-reader-footer .btn { gap: 0.4rem; padding-inline: 0.65rem; }
-.settings-reader-footer .btn svg { color: var(--accent); width: 1.18rem; height: 1.18rem; }
-.settings-disclosure { padding: 0; margin: 0.65rem 0; }
-.settings-disclosure > summary { color: var(--ink); list-style: none; border-radius: inherit; }
-.settings-disclosure > summary::-webkit-details-marker { display: none; }
-.settings-disclosure[open] > summary { margin-bottom: 0; }
-.settings-disclosure__arrow { color: var(--accent); display: flex; }
-.settings-disclosure[open] .settings-disclosure__arrow { transform: rotate(90deg); }
-.settings-disclosure__body { border-top: 1px solid var(--folio-line); padding: 0.35rem clamp(0.8rem, 4vw, 1.4rem) 0.7rem; }
-.settings-links { width: 100%; font-size: 1rem; }
+/* the familiarity marks: its name at the start of the row, a switch at the end */
+.settings-row .toggle { margin: 0; min-height: 2.75rem; flex-direction: row-reverse; justify-content: space-between; align-items: center; gap: 0.8rem; font-size: 1.15rem; line-height: 1.2; }
+.settings-row .toggle input[role='switch'] {
+  appearance: none; -webkit-appearance: none; transform: none; flex: none; position: relative;
+  width: 2.9rem; height: 1.65rem; margin: 0; border: 1px solid var(--control-line); border-radius: 999px; background: transparent; cursor: pointer;
+}
+.settings-row .toggle input[role='switch']::before {
+  content: ''; position: absolute; top: 50%; inset-inline-start: 0.16rem; width: 1.2rem; height: 1.2rem; margin-top: -0.6rem; border-radius: 50%; background: var(--ink-soft);
+}
+.settings-row .toggle input[role='switch']:checked { background: var(--accent); border-color: var(--accent); }
+.settings-row .toggle input[role='switch']:checked::before { inset-inline-start: calc(100% - 1.36rem); background: var(--accent-ink); }
+.settings-row .toggle input[role='switch']:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* one row to About */
+.settings-about {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0.8rem;
+  margin-top: 1.6rem; padding: 0.8rem 0; min-height: 3.5rem;
+  border-top: 1px solid var(--folio-line); border-bottom: 1px solid var(--folio-line);
+  color: var(--ink); text-decoration: none; line-height: 1.25;
+}
+.settings-about:hover { text-decoration: none; background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.settings-about__copy { display: grid; gap: 0.15rem; }
+.settings-about__title { font-size: 1.15rem; }
+.settings-about__subtitle { color: var(--ink-soft); font-size: 0.98rem; font-style: italic; }
+.settings-about__arrow { display: flex; color: var(--accent); }
+.screen .settings-reset { margin: 1rem 0 0; max-width: none; text-align: center; }
+.settings-reset button.linklike { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 0.5rem; }
+.about .settings-group .sources { margin: 0.6rem 0; font-size: 1rem; color: var(--ink-soft); } /* on its own page the note is read, not glanced at */
+.settings-links { width: 100%; margin-top: 1.4rem; font-size: 1rem; }
 .settings-links a { display: inline-block; padding: 0.45rem 0.4rem; text-decoration: underline; text-underline-offset: 0.18em; }
 @media (max-width: 360px) {
   .settings-row .field:not(.field--slider) { grid-template-columns: minmax(0, 1fr); row-gap: 0.3rem; }

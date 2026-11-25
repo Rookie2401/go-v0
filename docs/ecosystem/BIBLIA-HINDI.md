@@ -42,7 +42,7 @@ Differs, because of the language and script:
 - no full Hebrew/Greek indexes or lexicon shards are loaded or shipped;
 - Devanagari type: Tiro Devanagari Hindi (SIL OFL 1.1, the Devanagari subset Fontsource publishes, v5.3.0), in `editions/hi/fonts` with its
   licence, declared in `editions/hi/edition-hi.css`, which only the Hindi build links (the original edition's files are unchanged);
-- Settings: "Hindi text size" (16–40 px, default 22) in place of the Hebrew and Greek sizes, no "Hebrew text" row; verse numbers default to
+- Settings: "Hindi text size" (16–40 px, default 22) in place of the Hebrew and Greek sizes, no "Hebrew marks" row, a sample verse in Hindi, the sources on #/about; verse numbers default to
   1, 2, 3 as the IRV prints them, with Devanagari digits (१, २, ३) as the other choice; the prose is set ragged-right (justified Devanagari
   left wide gaps in a phone column);
 - storage: everything the page keeps (sign-in session, device id, offline queue, enrolment ids, place, settings) is kept under the prefix

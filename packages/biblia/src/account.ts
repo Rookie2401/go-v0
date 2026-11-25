@@ -489,8 +489,8 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
   return box;
 }
 
-/** #/privacy and #/terms: the legal drafts of the repository (docs/legal), rendered safely. */
-export function renderLegalScreen(d: { doc: Document; topbar: HTMLElement; which: 'privacy' | 'terms'; fromSettings?: boolean }): HTMLElement {
+/** #/privacy and #/terms: the legal drafts of the repository (docs/legal), rendered safely. `from` is where the way back leads: About (under Settings) or the account. */
+export function renderLegalScreen(d: { doc: Document; topbar: HTMLElement; which: 'privacy' | 'terms'; from?: 'about' | 'account' }): HTMLElement {
   const el = (tag: string, cls?: string): HTMLElement => { const e = d.doc.createElement(tag); if (cls) e.className = cls; return e; };
   const wrap = el('div', 'legal');
   const screen = el('div', 'screen');
@@ -501,8 +501,8 @@ export function renderLegalScreen(d: { doc: Document; topbar: HTMLElement; which
   body.append(renderMarkdown(d.which === 'privacy' ? PRIVACY_POLICY_MD : TERMS_MD_TEXT, 2));
   const back = el('p', 'muted');
   const a = d.doc.createElement('a');
-  a.href = d.fromSettings ? '#/settings' : '#/account';
-  a.textContent = d.fromSettings ? 'Back to Settings' : 'Back to the account';
+  a.href = d.from === 'about' ? '#/about' : '#/account';
+  a.textContent = d.from === 'about' ? 'Back to About' : 'Back to the account';
   back.append(a);
   screen.append(title, body, back);
   wrap.append(d.topbar, screen);

@@ -374,8 +374,9 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
     const reading = h('span', { class: 'lang-reading', hidden: true }, 'Reading now');
     const controls = h('details', { class: 'language-box' },
       h('summary', { class: 'language-box-face' },
-        h('span', {}, reading,
-          h('span', { id: `lang-h-${l.languageId}`, class: 'lang-name' }, l.name,
+        // the language's name is its row's heading: the h4s inside the box would otherwise follow the list's h2 directly
+        h('div', {}, reading,
+          h('h3', { id: `lang-h-${l.languageId}`, class: 'lang-name' }, l.name,
             l.nativeName && l.nativeName !== l.name ? h('small', { class: 'native', lang: l.languageId, dir: 'auto' }, ` (${l.nativeName})`) : null)),
         h('span', { class: 'language-box-caret', 'aria-hidden': 'true' }, '▾')),
       h('div', { class: 'language-box-body' },

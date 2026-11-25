@@ -62,6 +62,9 @@ analyser change and replace this table; do not edit the numbers by hand.
 | 2026-11-25, arWordCandidates per token, no sentence layer, no identities list, full index | regression (decided cases with a lemma) | 85 | 85.9% | 90.6% | 89.4% | 21.2% | **2.4%** | 98.8% | 0.0% | 72.2% of 18 | 0.0% of 67 |
 | same | msa-dev (unvocalized) | 670 | 76.6% | 82.2% | 82.2% | 42.2% | **3.3%** | 93.1% (letters 94.3%) | 4.6% | 90.3% of 278 | 0.6% of 361 |
 | same | msa-dev-vocalized | 87 | 90.8% | 90.8% | 90.8% | 14.9% | **1.1%** | 95.4% | 3.4% | 94.3% of 35 | 2.0% of 49 |
+| 2026-11-25 (evening), the adapter (`src/adapters/ar.ts`: word level + reviewed list of 1,072 spellings + generated preferences + sentence layer), full index | regression (decided cases with a lemma) | 85 | 92.9% | 96.5% | – | 9.4% | **2.4%** | 98.8% | 0.0% | – | – |
+| same | msa-dev (unvocalized) | 670 | 91.5% | 94.0% | – | 15.5% | **2.1%** (1.0% by letters) | – | 0.6% | – | – |
+| same | msa-dev-vocalized | 87 | 96.6% | 96.6% | – | 3.4% | **1.1%** | – | 0.0% | – | – |
 
 Regression cases passed (every expectation of the case, not only the lemma): **65 of 96** (owner's table 29 of 38, builder's own 36 of 58).
 
@@ -134,6 +137,16 @@ For the lead to check; the analyser's answer on these may be the right one.
 - **w-dialect-***: both need the sentence analyser (two markers each); a per-token analyser cannot pass them.
 - **POS of participles** (كَاتِب, مَكْتُوب, مُعَلِّم, طَالِب): NOUN with ADJ allowed; the source lists both.
 - In `msa-dev.json`: annotation choices that may differ from the source's headwords: نَفْط (the source may head نِفْط), مَحَلِّيّ, شَمْسِيّ, بَلَدِيَّة (skipped), التكنولوجيا (skipped), عِشْرُون, ثَلَاثُون, إِنْهَاء, تَحَسُّن, مُقْبِل, حَاوَلَ vs forms; هٰذَا, الَّذِي and the numerals are the likeliest to differ in POS.
+
+### How far the development set can still be trusted (2026-11-25)
+
+The lead read this set's confident-and-wrong cases once, after the list and the preferences first ran (confident-and-wrong had risen
+to 4.8 %), to find which rules decided too boldly. Six classes of rule were then tightened in the analyser, and six spellings from
+those cases were added to the reviewed list (وسائل, باسم, الجامعة, البنت, بنت, فتحت). So the set is no longer unseen: for those
+words it measures a fix, not a prediction. The remaining strict "errors" include vowel differences between the annotator and the
+source (نَفْط / نِفْط, خُطْوَة / خَطْوَة, دَوْلِيّ / دُوَلِيّ, عِشْرُون / عِشْرُونَ), which is why "by letters" stands beside "strict".
+The independent auditor's hidden texts, which the builder never sees, are the better measure: on a fresh hidden text of 325 words in
+ten registers (auditor's section R, same day) the pack left 22.2 % of words undecided and credited about 1.5 % wrongly.
 
 ## What is not done
 

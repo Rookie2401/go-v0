@@ -433,9 +433,22 @@ const NOMINAL_POS = new Set(['NOUN', 'PROPN', 'PRON', 'NUM', 'CLF']);
 const NOUN_TAGS: Readonly<Record<string, readonly string[]>> = { NOUN: ['NNG', 'NNB'], PROPN: ['NNP'], PRON: ['NP'], NUM: ['NR'], CLF: ['NNB'] };
 
 /** The particles of the noun table, with the row's plain label. */
+/** Personal pronouns (besides those whose gloss is I / you / who): the persons that 에게 / 한테 take. */
+const PERSONAL_PRONOUNS: ReadonlySet<string> = new Set(['우리', '저희', '너희', '그', '그녀', '당신', '자네', '자기', '걔', '얘', '쟤', '누구']);
+/** The head word of a gloss that shows a person or an animal (the last word of its first clause: "older sister" → sister). */
+const PERSON_OR_ANIMAL: ReadonlySet<string> = new Set([
+  'person', 'people', 'man', 'woman', 'child', 'children', 'boy', 'girl', 'baby', 'student', 'teacher', 'friend', 'doctor', 'mother', 'father', 'parent', 'parents', 'brother', 'sister',
+  'son', 'daughter', 'husband', 'wife', 'grandmother', 'grandfather', 'uncle', 'aunt', 'king', 'queen', 'god', 'lord', 'neighbor', 'neighbour', 'guest', 'customer', 'patient', 'nurse',
+  'president', 'soldier', 'priest', 'pastor', 'professor', 'worker', 'human', 'animal', 'dog', 'cat', 'horse', 'bird', 'cow', 'ox', 'pig', 'sheep', 'goat', 'chicken', 'rabbit', 'tiger', 'bear', 'monkey', 'mouse', 'rat', 'fish',
+]);
+export function koGlossIsPersonOrAnimal(gloss: string | undefined): boolean {
+  const first = (gloss ?? '').toLowerCase().split(/[;,]/u)[0].replace(/\([^)]*\)/gu, ' ').trim().split(/\s+/u).filter(Boolean);
+  return first.length > 0 && PERSON_OR_ANIMAL.has(first[first.length - 1]);
+}
 const NOUN_PARTICLES: ReadonlyArray<readonly [id: string, label: string]> = [
   ['subject', 'subject 이/가'], ['topic', 'topic 은/는'], ['object', 'object 을/를'], ['of', 'of 의'], ['to', 'to, at (a place, a time) 에'],
-  ['to-person', 'to (a person) 에게'], ['to-person-hante', 'to (a person, spoken) 한테'], ['to-person-hon', 'to (a person one honours) 께'],
+  ['to-person', 'to (a person or animal) 에게'], ['to-person-hante', 'to (a person, spoken) 한테'], ['to-person-hon', 'to (a person one honours) 께'],
+  ['from-person', 'from (a person) 에게서'], ['from-person-hante', 'from (a person, spoken) 한테서'],
   ['at', 'at, from (a place) 에서'], ['by', 'by, toward 로/으로'], ['and', 'and, with 와/과'], ['also', 'also 도'], ['only', 'only 만'],
   ['from', 'from (a starting point) 부터'], ['until', 'until, up to 까지'], ['than', 'than 보다'], ['like', 'like, as 처럼'],
 ];
@@ -483,7 +496,9 @@ function nominalParadigm(lemma: string, pos: PartOfSpeech): GeneratedParadigm | 
   const fused = entries.some(fusing) ? FUSED_NOMINAL[bare] ?? {} : {};
   const fusedFirst = entries.every(fusing);
   // a person takes 에게 / 한테 / 께, not 에: a pronoun for a person (나, 너, 저, 누구) has no 에 row; 께 is for a person one honours, so not for 나 and 저
-  const person = entries.some(fusing);
+  const personal = pos === 'PRON' && (entries.some(fusing) || PERSONAL_PRONOUNS.has(bare));
+  const honoured = pos === 'NOUN' && (bare.endsWith('님') || entries.some((e) => /honorific/iu.test(e.gloss ?? '')));
+  const person = personal || (pos === 'NOUN' && (honoured || bare.endsWith('씨') || entries.some((e) => koGlossIsPersonOrAnimal(e.gloss))));
   const countable = pos === 'NOUN';
   const plural = `${bare}들`;
   const sound = hostSound(bare);
@@ -496,9 +511,11 @@ function nominalParadigm(lemma: string, pos: PartOfSpeech): GeneratedParadigm | 
     const f = particleForm(id, sound);
     const fp = particleForm(id, 'L');
     if (!f || !fp) continue;
+    // the person rows only for what is known to be a person or an animal; a place, a thing or a name (unknown) keeps 에 alone
     if (id === 'to' && person) continue;
-    if (id === 'to-person-hon' && (pos === 'NUM' || bare === '나' || bare === '저')) continue;
-    if (id.startsWith('to-person') && pos === 'NUM') continue;
+    if ((id.startsWith('to-person') || id.startsWith('from-person')) && !person) continue;
+    if (id === 'to-person-hon' && !honoured) continue;
+    if (id === 'at' && personal) continue;
     rowLabels.push([`p:${id}`, label]);
     // the fused subject (내가, 제가, 네가, 누가) is the only subject form of the pronoun it is for; the plain 나가 / 저가 / 너가 is not used
     const forms = fused[id] ? (fusedFirst && id === 'subject' ? [fused[id]] : fusedFirst ? [fused[id], bare + f] : [bare + f, fused[id]]) : [bare + f];

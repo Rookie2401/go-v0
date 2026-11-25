@@ -14,7 +14,7 @@ import { featureKey, paradigmSummary } from '../../../src/core/paradigm';
 import { koAdapter } from '../../../src/adapters/ko';
 import { koAnalyzeToken } from '../../../src/adapters/korean/analyze';
 import { koBareLemma } from '../../../src/adapters/korean/index-store';
-import { koFeaturesFromTableTags, koPredicateRows } from '../../../src/adapters/korean/paradigm';
+import { koFeaturesFromTableTags, koGlossIsPersonOrAnimal, koPredicateRows } from '../../../src/adapters/korean/paradigm';
 import { koCellCompatible, koCellsFor, koMorphFromTags, koTableSlot, koFeaturesFromTableTagsPlain } from '../../../src/adapters/korean/tags';
 import { createFullRecordSource } from '../../../src/dict/full';
 import { buildParadigm, pickRecord, type LexicalRecord } from '../../../packages/golearn-extension/src/content/enrich';
@@ -231,7 +231,7 @@ describe('homonyms', () => {
   it('a noun with and without a final consonant; a balanced noun gives one table', () => {
     const c = para('학생', 'NOUN');
     const cells = Object.fromEntries(c.cells.filter((x) => x.features.Number === 'Sing' && x.features.Particle).map((x) => [x.features.Particle, x.form]));
-    expect(cells).toMatchObject({ none: '학생', subject: '학생이', topic: '학생은', object: '학생을', of: '학생의', to: '학생에', at: '학생에서', by: '학생으로', and: '학생과', also: '학생도', only: '학생만' });
+    expect(cells).toMatchObject({ none: '학생', subject: '학생이', topic: '학생은', object: '학생을', of: '학생의', 'to-person': '학생에게', at: '학생에서', by: '학생으로', and: '학생과', also: '학생도', only: '학생만' });
     const v = para('의사', 'NOUN');
     const vcells = Object.fromEntries(v.cells.filter((x) => x.features.Number === 'Sing' && x.features.Particle).map((x) => [x.features.Particle, x.form]));
     expect(vcells).toMatchObject({ subject: '의사가', topic: '의사는', object: '의사를', by: '의사로', and: '의사와' });
@@ -579,16 +579,18 @@ describe('GG3, GG4: nominal tables', () => {
   });
   it('a person takes 에게 / 한테 / 께: the noun has both 에 and 에게, the pronoun for a person only the person rows', () => {
     const n = para('학생', 'NOUN');
-    expect(nform(n, 'p:to')).toBe('학생에');
+    expect(slots(n)).not.toContain('p:to'); // a student is a person: 학생에게, not 학생에
+    expect(nform(para('책', 'NOUN'), 'p:to')).toBe('책에');
     expect(nform(n, 'p:to-person')).toBe('학생에게');
     expect(nform(n, 'p:to-person-hante')).toBe('학생한테');
-    expect(nform(n, 'p:to-person-hon')).toBe('학생께');
+    expect(slots(n)).not.toContain('p:to-person-hon');
+    expect(nform(para('선생님', 'NOUN'), 'p:to-person-hon')).toBe('선생님께');
     expect([nform(n, 'p:until'), nform(n, 'p:from'), nform(n, 'p:than'), nform(n, 'p:like')]).toEqual(['학생까지', '학생부터', '학생보다', '학생처럼']);
     const i = para('나', 'PRON');
     expect(slots(i)).not.toContain('p:to');
     expect(nform(i, 'p:to-person')).toBe('나에게');
     expect(slots(i)).not.toContain('p:to-person-hon');
-    expect(slots(para('누구', 'PRON'))).toContain('p:to-person-hon');
+    expect(slots(para('누구', 'PRON'))).not.toContain('p:to-person-hon'); // 께 is never for a pronoun
   });
   it('the particle in the word is its row: 학생에게 lights 에게, 서울까지 lights 까지, a chain that is not a row (서울에서는) lights none, never the word itself', () => {
     const lit = (lemma: string, pos: PartOfSpeech, surface: string) => {
@@ -625,5 +627,53 @@ describe('GG7, GG2, GG6: honorific verbs, questions, 하다 without a class, the
     const notes = para('먹다', 'VERB').notes.join(' ');
     expect(notes).not.toMatch(/read back through the analyser/);
     expect(notes).toMatch(/a sample of words is checked in our tests/);
+  });
+});
+
+describe('UU3: the person rows only for what is known to be a person or an animal', () => {
+  const has = (lemma: string, pos: PartOfSpeech) => {
+    const s = slots(para(lemma, pos));
+    return Object.fromEntries(['to', 'to-person', 'to-person-hante', 'to-person-hon', 'at'].map((id) => [id, s.includes(`p:${id}`)]));
+  };
+  const rows = (e: boolean, g: boolean, h: boolean, k: boolean, at: boolean) => ({ to: e, 'to-person': g, 'to-person-hante': h, 'to-person-hon': k, at });
+  it('what each word has: 에 / 에게 / 한테 / 께 / 에서', () => {
+    expect(has('책', 'NOUN')).toEqual(rows(true, false, false, false, true));
+    expect(has('서울', 'PROPN')).toEqual(rows(true, false, false, false, true));
+    expect(has('나라', 'NOUN')).toEqual(rows(true, false, false, false, true));
+    expect(has('개', 'NOUN')).toEqual(rows(false, true, true, false, true)); // an animal
+    expect(has('학생', 'NOUN')).toEqual(rows(false, true, true, false, true));
+    expect(has('어머니', 'NOUN')).toEqual(rows(false, true, true, false, true));
+    expect(has('선생님', 'NOUN')).toEqual(rows(false, true, true, true, true)); // 님: honoured
+    expect(has('나', 'PRON')).toEqual(rows(false, true, true, false, false));
+    expect(has('너', 'PRON')).toEqual(rows(false, true, true, false, false));
+    expect(has('누구', 'PRON')).toEqual(rows(false, true, true, false, false));
+  });
+  it('none of 책에게, 책께, 서울에게, 서울께, 너께, 누구께, 나에서, 학생에 appears', () => {
+    const f = (l: string, p: PartOfSpeech) => para(l, p).cells.map((c) => c.form);
+    expect(f('책', 'NOUN')).not.toEqual(expect.arrayContaining(['책에게']));
+    for (const [l, p, bad] of [['책', 'NOUN', ['책에게', '책께', '책한테']], ['서울', 'PROPN', ['서울에게', '서울께', '서울한테']], ['너', 'PRON', ['너께', '너에서', '너에']], ['누구', 'PRON', ['누구께', '누구에서']], ['나', 'PRON', ['나에서', '나께']], ['학생', 'NOUN', ['학생에', '학생께']]] as Array<[string, PartOfSpeech, string[]]>) {
+      for (const b of bad) expect(f(l, p), b).not.toContain(b);
+    }
+  });
+  it('a person also has "from a person" (에게서 / 한테서); a thing does not', () => {
+    expect(nform(para('학생', 'NOUN'), 'p:from-person')).toBe('학생에게서');
+    expect(slots(para('책', 'NOUN'))).not.toContain('p:from-person');
+  });
+  it('the gloss test is the stated word list: the last word of the first clause', () => {
+    expect(koGlossIsPersonOrAnimal('older sister')).toBe(true);
+    expect(koGlossIsPersonOrAnimal('dog; (derogatory) a lowlife')).toBe(true);
+    expect(koGlossIsPersonOrAnimal('book')).toBe(false);
+    expect(koGlossIsPersonOrAnimal(undefined)).toBe(false);
+  });
+  it('a form whose particle has no row lights none (학생께 for a non-님 noun)', () => {
+    const cells = para('학생', 'NOUN').cells.map((c) => ({ form: c.form, features: c.features, sources: ['generated' as const], status: 'generated' as const }));
+    const r = koAnalyzeToken('학생께').find((x) => x.lemma && koBareLemma(x.lemma) === '학생');
+    expect(koCellsFor({ cells }, r?.morph ?? {}, '학생께')).toEqual([]);
+    // through the real adapter and the shared selection: an empty list is none for Korean
+    return import('../../../packages/golearn-extension/src/content/enrich').then(({ selectedCellKeys }) => {
+      const pk = { languageId: 'ko', lemma: '학생', pos: 'NOUN' as const, kind: 'noun-declension' as const, cells, notes: [], sources: [], status: 'generated' as const };
+      expect(koAdapter.cellsForIsExact).toBe(true);
+      expect(selectedCellKeys(koAdapter, pk, r?.morph ?? {}, '학생께')).toEqual([]);
+    });
   });
 });

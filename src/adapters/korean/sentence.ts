@@ -184,6 +184,19 @@ const SINO_COUNTERS = new Set(['년', '월', '일', '분', '초', '원', '층', 
 const TRIGGER_NATIVE = new Set(['한', '두', '세', '네', '다섯', '여섯', '일곱', '여덟', '아홉', '열', '스무', '서른', '마흔', '쉰', '예순', '일흔', '여든', '아흔']);
 const TRIGGER_SINO = new Set(['일', '삼', '사', '오', '육', '칠', '팔', '구', '십', '백', '천', '만']);
 
+/**
+ * A counter reading: the lexicon's counter class (CLF), or a bound noun or noun whose own gloss says it counts or measures ("counter for
+ * songs", "unit of …", "piece"): 곡, 편, 통, 벌, 채, 그루, 척 … may be filed either way (audit WW3).
+ */
+const NOUN_FILED_COUNTERS = new Set(['곡', '편', '통', '벌', '켤레', '채', '그루', '송이', '척', '대', '쌍', '단', '포기', '자루', '그릇']);
+function isCounterReading(c: Cand): boolean {
+  if (c.unconfirmed) return false;
+  if (c.pos === 'CLF') return true;
+  // only spellings that count, filed as nouns: a gloss alone is not enough (말³ "a unit of volume" is no counter in 한 말은)
+  if (c.pos !== 'NOUN' || c.notes?.homonym === 'undecided' || !NOUN_FILED_COUNTERS.has(bare(c))) return false;
+  return /\bcounter\b|\bunit of\b|\bmeasure word\b|^(a )?(piece|pair)\b/iu.test(c.gloss ?? '');
+}
+
 /** Words of quantity a counter follows besides a numeral (몇 개, 여러 명, 한두 번). */
 const QUANTITY_WORDS = new Set(['몇', '여러', '수십', '수백', '수천', '서너', '두세', '한두', '두어', '대여섯', '예닐곱', '너덧', '댓']);
 
@@ -199,7 +212,7 @@ function hanIsDid(s: KoSentence, p: number, i: number): boolean {
   const pv = s.prev(p);
   const pt = pv >= 0 ? s.top(pv) : undefined;
   if (!pt || !(lastParticle(pt) === 'object' || isAdverb(pt))) return false;
-  const clf = s.cands[i].find((c) => c.pos === 'CLF' && !c.unconfirmed);
+  const clf = s.cands[i].find(isCounterReading);
   if (clf && !NOUN_LIKE_COUNTERS.has(bare(clf))) return false;
   const ct = s.top(i);
   if (ct && particlesOf(ct).length) return true;
@@ -228,7 +241,7 @@ function ruleCounters(s: KoSentence): void {
     const pk = s.key(p);
     const numWord = s.isWord(p) && s.cands[p].some((c) => c.pos === 'NUM' && !c.unconfirmed && (c.parts?.length ?? 1) <= 1);
     if (!digits && !numWord) continue;
-    const clf = s.cands[i].find((c) => c.pos === 'CLF' && !c.unconfirmed);
+    const clf = s.cands[i].find(isCounterReading);
     if (!clf) continue;
     const counter = bare(clf);
     // a numeral WORD decides only where it is not also an everyday other word before this counter: 이 개 is "this dog" (Sino-Korean 이
@@ -289,7 +302,7 @@ function ruleBareWords(s: KoSentence): void {
     }
     if (k === '한') {
       // 한 + a counter: "one"; after an object or an adverb: 하다 + -(으)ㄴ (숙제를 한 학생, 열심히 한)
-      const counterNext = nx >= 0 && s.cands[nx]?.some((c) => c.pos === 'CLF' && !c.unconfirmed);
+      const counterNext = nx >= 0 && s.cands[nx]?.some(isCounterReading);
       if (counterNext && !hanIsDid(s, i, nx)) continue; // the counter rule decided "one"
       if (prevTop && (lastParticle(prevTop) === 'object' || isAdverb(prevTop))) {
         koPromote(s, i, (c) => bare(c) === '하다' && c.pos === 'VERB' && isAdn(c), `After ${s.surface(pv)} (${isAdverb(prevTop) ? 'an adverb' : 'an object'}), 한 is 하다 with the adnominal -(으)ㄴ ("that did").`);
@@ -478,6 +491,11 @@ function ruleDeterminers(s: KoSentence): void {
     const t = nx >= 0 ? s.top(nx) : undefined;
     if (t && isNominal(t) && t.pos !== 'PRON' && t.pos !== 'NUM' && !t.morph.VerbType && !t.unconfirmed) {
       koPromote(s, i, (c) => c.pos === 'DET', `${s.key(i)} straight before the noun ${s.surface(nx)} is the determiner "${word}".`, (c) => c.pos !== 'DET');
+    } else if (t && isAdn(t) && isPredicate(t)) {
+      // 저 높은 산: before an adnominal and the noun it describes, the determiner (audit WW4)
+      const n2 = s.next(nx);
+      const t2 = n2 >= 0 ? s.top(n2) : undefined;
+      if (t2 && isNominal(t2) && t2.pos !== 'PRON' && !t2.unconfirmed) koPromote(s, i, (c) => c.pos === 'DET', `${s.key(i)} before ${s.surface(nx)} ${s.surface(n2)} (an adnominal and its noun) is the determiner "${word}".`, (c) => c.pos !== 'DET');
     }
   }
 }
@@ -511,7 +529,7 @@ function ruleObjectPredicate(s: KoSentence): void {
     const t = s.top(i);
     if (!t || isPredicate(t) || !isNominal(t) || particlesOf(t).length) continue;
     // a numeral before a counter belongs to the object (책을 한 권, 운동장을 한 바퀴): it is not the verb
-    if (t.pos === 'NUM' && s.next(i) >= 0 && s.cands[s.next(i)].some((c) => c.pos === 'CLF' && !c.unconfirmed)) continue;
+    if (t.pos === 'NUM' && s.next(i) >= 0 && s.cands[s.next(i)].some(isCounterReading)) continue;
     koPromote(s, i, (c) => isPredicate(c) && c.pos === 'VERB', `After the object ${s.surface(pv)}, ${s.surface(i)} is a verb: a noun takes no object.`, (c) => !isPredicate(c));
   }
 }
@@ -526,7 +544,14 @@ function ruleAfterAdnominal(s: KoSentence): void {
     if (!s.isWord(i)) continue;
     const pv = s.prev(i);
     if (pv < 0 || !isAdn(s.top(pv))) continue;
+    // an adnominal last in its clause before another adnominal reading (높은 산.: 산 "mountain", not 살다 + -(으)ㄴ): nothing follows for that
+    // second adnominal to describe, so the word is the noun the first one describes
+    const top = s.top(i);
     const bound = s.cands[i].filter((c) => c.morph.NounType === 'Bound' && !c.unconfirmed && c.notes?.homonym !== 'undecided');
+    if (!bound.length && top && isAdn(top) && isPredicate(top) && !(s.next(i) >= 0 && isNominal(s.top(s.next(i))))) {
+      koPromote(s, i, (c) => isNominal(c) && !c.unconfirmed && bareNominal(c), `After the adnominal ${s.surface(pv)}, with no noun after it, ${s.surface(i)} is the noun it describes.`, (c) => isPredicate(c));
+      continue;
+    }
     if (!bound.length || new Set(bound.map((c) => c.lemma)).size > 1) continue;
     const b = bound[0];
     if (s.top(i) === b) continue;
@@ -647,16 +672,25 @@ function ruleComplement(s: KoSentence): void {
  * The last word of a sentence with no other predicate, after an object or a place or before "!", is the predicate when it has a licensed
  * predicate reading (불 켜!, 여기 서!, 문을 닫아.): a sentence needs its verb. Audit HH1.
  */
+/** Words that modify the noun after them (determiners, the fused 내 / 제 / 네 "my, your"): what follows one is a nominal. */
+const MODIFIER_WORDS = new Set(['이', '그', '저', '우리', '저희', '내', '제', '네', '한', '온', '새', '모든', '각', '옛', '헌', '첫', '무슨', '어느', '어떤', '이런', '그런', '저런', '몇', '여러', '두', '세', '이번', '다른']);
 function ruleLastPredicate(s: KoSentence, finalPunct: string | undefined): void {
   let last = -1;
   for (let i = s.n - 1; i >= 0; i--) if (s.isWord(i)) { last = i; break; }
   if (last < 0) return;
-  if (s.cands.some((cs, i) => i !== last && s.isWord(i) && isPredicate(cs[0]))) return;
+  // the sentence has no other FINAL predicate (a connective form before it is the cue, not a rival: 밥 먹고 자!)
+  if (s.cands.some((cs, i) => i !== last && s.isWord(i) && isPredicate(cs[0]) && cs[0].morph.VerbForm !== 'Conn')) return;
   const t = s.top(last);
   if (!t || isPredicate(t)) return;
   const pv = s.prev(last);
   const pTop = pv >= 0 ? s.top(pv) : undefined;
-  const cue = finalPunct && /[!！]/u.test(finalPunct) ? 'before "!"' : pTop && ['object', 'to', 'at'].includes(lastParticle(pTop) ?? '') ? `after ${s.surface(pv)}` : pTop && bareNominal(pTop) && pTop.pos !== 'NUM' ? `after ${s.surface(pv)}` : '';
+  // a modifier straight before it forbids the predicate: 우리 나라, 한국의 배, 온 배, 높은 산 (audit WW1)
+  if (pTop && (isAdn(pTop) || lastParticle(pTop) === 'of' || pTop.pos === 'DET' || MODIFIER_WORDS.has(s.key(pv)))) return;
+  const p = pTop ? lastParticle(pTop) ?? '' : '';
+  const cue = pTop && ['object', 'to', 'at', 'by'].includes(p) ? `after ${s.surface(pv)}`
+    : pTop && isAdverb(pTop) ? `after the adverb ${s.surface(pv)}`
+    : pTop && isPredicate(pTop) && pTop.morph.VerbForm === 'Conn' ? `after the connective form ${s.surface(pv)}`
+    : finalPunct && /[!！]/u.test(finalPunct) ? 'before "!"' : '';
   if (!cue) return;
   koPromote(s, last, (c) => isPredicate(c) && c.pos !== 'AUX' && c.morph.VerbForm === 'Fin', `${s.surface(last)} ends a sentence that has no other predicate (${cue}): it is the predicate.`, (c) => !isPredicate(c));
 }

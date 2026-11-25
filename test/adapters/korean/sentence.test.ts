@@ -299,6 +299,46 @@ describe.skipIf(!HAVE_SHARDS)('with every shard installed', () => {
   });
 });
 
+/** Batch 6 (audit WW), with the core only and with every shard. */
+for (const state of ['core', 'shards'] as const) {
+  describe.skipIf(state === 'shards' && !HAVE_SHARDS)(`batch 6 (audit WW), ${state}`, () => {
+    beforeAll(() => { uninstallKoreanLexicon('kaikki-ko-lexicon'); installKoreanLexicon(KO_CORE); if (state === 'shards') installShards(); });
+    afterAll(() => { uninstallKoreanLexicon('kaikki-ko-lexicon'); });
+    const isPred = (c: AnalysisCandidate) => ['VERB', 'ADJ', 'AUX'].includes(c.pos ?? '');
+    it('WW1: a modifier before the last word forbids the predicate reading', () => {
+      for (const [s, w] of [['우리 나라.', '나라'], ['한국의 배.', '배'], ['온 배.', '배'], ['그 배.', '배'], ['높은 산.', '산'], ['새 차.', '차'], ['모든 사람.', '사람']] as const) expect(isPred(readIn(s, w).top), s).toBe(false);
+    });
+    it('WW1: the cues that stay (an object, a place, an adverb, a connective form, "!")', () => {
+      // 켜다 is not in the compiled core (the core-only state reads 켜 as an unknown word): 불 켜! is checked with the shards only
+      for (const [s, w] of [...(state === 'shards' ? [['불 켜!', '켜']] as const : []), ['여기 서!', '서'], ['밥 먹고 자!', '자'], ['문을 닫아.', '닫아'], ['빨리 와.', '와'], ['집에 가.', '가']] as const) expect(isPred(readIn(s, w).top), s).toBe(true);
+    });
+    it('WW2: bare one-syllable nouns in a noun slot stay nouns, in a verb slot verbs (24 sentences)', () => {
+      const cases: Array<[string, string, boolean]> = [
+        ['배 아파요.', '배', false], ['배 타고 갔어요.', '배', false], ['사과와 배를 샀어요.', '배를', false], ['차 한 잔 주세요.', '차', false], ['파 두 단 샀어요.', '파', false], ['배 고파요.', '배', false],
+        ['차 마실래요?', '차', false], ['파 좀 사 와.', '파', false], ['배와 사과', '배와', false], ['서 있어요.', '서', true], ['일어서 봐요.', '일어서', true], ['땅을 파 봐요.', '파', true],
+        ['줄을 서 주세요.', '서', true], ['공을 차 봐요.', '차', true], ['여기 서 봐.', '서', true], ['깊이 파.', '파', true], ['문 앞에 서!', '서', true], ['공 차!', '차', true],
+        ['한국의 차', '차', false], ['내 배', '배', false], ['새 파', '파', false], ['그 차를 탔어요.', '차를', false], ['배가 커요.', '배가', false], ['차가 와요.', '차가', false],
+      ];
+      const wrong = cases.filter(([s, w, pred]) => isPred(readIn(s, w).top) !== pred).map(([s, w, pred]) => `${s} ${w}: wanted ${pred ? 'predicate' : 'noun'}`);
+      console.log(`WW2 bare one-syllable words (${state}): ${cases.length - wrong.length} of ${cases.length} right${wrong.length ? `; wrong: ${wrong.join('; ')}` : ''}`);
+      expect(wrong.length).toBeLessThanOrEqual(3);
+    });
+    it('WW3: 한 before a counter the gloss calls one (노래를 한 곡, 시를 한 편 …) is "one"', () => {
+      for (const s of ['시를 한 편 썼어요.', '전화를 한 통 했어요.', '옷을 한 벌 샀어요.', '집을 한 채 지었어요.', '나무를 한 그루 심었어요.', '꽃을 한 송이 샀어요.', ...(state === 'shards' ? ['신발을 한 켤레 샀어요.'] : [])]) expect(readIn(s, '한').top.pos, s).toBe('NUM');
+    });
+    // WAITING on the lexicon: 곡 "piece (of music), counter for songs" (曲) has no row; the lexicon holds only 곡 "valley", so nothing says it counts
+    it.fails('WW3: 노래를 한 곡 불렀어요 → 한 "one" (fails: the lexicon lacks the counter 곡)', () => {
+      expect(readIn('노래를 한 곡 불렀어요.', '한').top.pos).toBe('NUM');
+    });
+    it('WW4: 이 / 그 / 저 before an adnominal and its noun is the determiner', () => {
+      for (const [s, w] of [['저 높은 산을 봐요.', '저'], ['그 작은 집에 살아요.', '그'], ['이 예쁜 꽃을 샀어요.', '이'], ['저 큰 나무가 있어요.', '저'], ['그 좋은 책을 읽었어요.', '그'], ['이 맛있는 음식을 먹어요.', '이']] as const) {
+        expect(readIn(s, w).top.pos, s).toBe('DET');
+      }
+      expect(readIn('저는 학생이에요.', '저는').top.pos).toBe('PRON');
+    });
+  });
+}
+
 describe('the confidence helpers', () => {
   it('koStrictlyFalling only lowers, and leaves a strictly falling list', () => {
     const cs = [0.8, 0.8, 0.9, 0.2].map((confidence) => ({ morph: {}, confidence }));

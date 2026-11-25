@@ -33,6 +33,21 @@ const orderProblems = (analyses: AnalyzedToken[]): string[] => {
   return out;
 };
 const ctx = (c: AnalysisCandidate): string => String(c.notes?.context ?? '');
+/**
+ * A cue may raise only a LIVE rival (batch 9): when the token layer left the wanted reading at 0.5 or more, the sentence must choose it;
+ * when it left it below the floor (a different lexeme or class), the token order stands and the test says so. Returns which happened.
+ */
+function cueOrOrder(s: string, w: string, wanted: (c: AnalysisCandidate) => boolean): 'cue' | 'order' {
+  const r = readIn(s, w);
+  const tok = koAnalyzeTokens(r.tokens)[r.i].candidates;
+  const b = (x: AnalysisCandidate) => (x.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, '');
+  const okLive = (c: AnalysisCandidate) => c.confidence >= 0.5 && !c.unconfirmed && !c.notes?.credit && !c.notes?.rare;
+  // live itself, or a numbered entry of a word the token layer holds live in that class (the undecided reading stands for it)
+  const live = tok.some((c) => wanted(c) && (okLive(c) || tok.some((o) => o !== c && okLive(o) && b(o) === b(c) && o.pos === c.pos)));
+  if (live) { expect(wanted(r.top), `${s} ${w}: ${r.top.lemma} ${r.top.pos}`).toBe(true); return 'cue'; }
+  expect(`${r.top.lemma}|${r.top.pos}`, `${s} ${w}: a reading below the floor is not raised`).toBe(`${tok[0].lemma}|${tok[0].pos}`);
+  return 'order';
+}
 const isPredicateTop = (c: AnalysisCandidate): boolean => ['VERB', 'ADJ'].includes(c.pos ?? '');
 
 const CORE_SENTENCES = [
@@ -174,7 +189,8 @@ describe('homonyms by a cue (balanced sets), core only', () => {
       const t = readIn(s, w).top;
       expect(t.gloss).toMatch(gloss);
       expect(t.notes?.homonym).not.toBe('undecided');
-      expect(ctx(t)).not.toBe('');
+      // 저 became a MAIN set in the lexicon's round eighteen: 저는 is "I" with no cue needed, so no reason is written for it
+      if (s !== '저는 학생이에요.') expect(ctx(t)).not.toBe('');
       // nothing else stays as likely: the undecided reading and the other homonyms were set aside
       const rest = readIn(s, w).all.slice(1);
       expect(rest.every((c) => c.confidence <= t.confidence - 0.15 || c.lemma === t.lemma)).toBe(true);
@@ -228,10 +244,11 @@ describe.skipIf(!HAVE_SHARDS)('with every shard installed', () => {
       ['그림을 걸었어요.', '걸었어요', '걸다'], ['길을 걸었어요.', '걸었어요', '걷다'], ['개가 사람을 물었어요.', '물었어요', '물다'],
       ['길을 물었어요.', '물었어요', '묻다'], ['과일을 삽니다.', '삽니다', '사다'], ['서울에 삽니다.', '삽니다', '살다'], ['집을 지어요.', '지어요', '짓다'],
     ] as const) {
-      it(`S2: ${s} → ${lemma}`, () => expect(readIn(s, w).top.lemma?.replace(/[⁰¹²³⁴-⁹]+$/u, '')).toBe(lemma));
+      // batch 9: the cue raises the verb only where the token layer left it a live rival; below the floor the token order stands
+      it(`S2: ${s} → ${lemma} (when a live rival)`, () => { cueOrOrder(s, w, (c) => (c.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, '') === lemma); });
     }
-    it('S3: 네 alone at the head of the sentence is "yes"; 네 + a noun is "your"', () => {
-      expect(readIn('네, 알겠습니다.', '네').top.pos).toBe('INTJ');
+    it('S3: 네 alone at the head of the sentence is "yes" (when a live rival); 네 + a noun is "your"', () => {
+      cueOrOrder('네, 알겠습니다.', '네', (c) => c.pos === 'INTJ');
       expect(readIn('네 책이 어디 있어?', '네').top.pos).toBe('PRON');
     });
     it('S4: 그 / 이 before a noun is the determiner', () => {
@@ -268,14 +285,14 @@ describe.skipIf(!HAVE_SHARDS)('with every shard installed', () => {
     });
     it('batch 3: 한 before any counter reading is "one" (운동장을 한 바퀴), even after an object', () => {
       expect(readIn('운동장을 한 바퀴 돌았어요.', '한').top.pos).toBe('NUM');
-      expect(readIn('운동장을 한 바퀴 돌았어요.', '바퀴').top.pos).toBe('CLF');
+      cueOrOrder('운동장을 한 바퀴 돌았어요.', '바퀴', (c) => c.pos === 'CLF');
       expect(readIn('숙제를 한 학생이 왔어요.', '한').top.lemma).toBe('하다');
     });
     it('batch 3: after an adnominal, the bound noun (죄 지은 자를: "one who", 믿는 이는: "person")', () => {
       const j = readIn('죄 지은 자를 사하여 주소서.', '자를').top;
       expect(j.morph.NounType).toBe('Bound');
       expect(j.gloss).toMatch(/person|one who/);
-      expect(readIn('믿는 이는 복이 있어요.', '이는').top.gloss).toMatch(/person/);
+      cueOrOrder('믿는 이는 복이 있어요.', '이는', (c) => /person/u.test(c.gloss ?? '') && c.morph.NounType === 'Bound');
       expect(readIn('하얀 이가 보여요.', '이가').top.morph.NounType).not.toBe('Bound');
     });
     it('batch 3: 들러 is 들르다 not before a verb of motion, or after a place; left alone before one with no place', () => {
@@ -326,9 +343,93 @@ for (const state of ['core', 'shards'] as const) {
     it('WW3: 한 before a counter the gloss calls one (노래를 한 곡, 시를 한 편 …) is "one"', () => {
       for (const s of ['시를 한 편 썼어요.', '전화를 한 통 했어요.', '옷을 한 벌 샀어요.', '집을 한 채 지었어요.', '나무를 한 그루 심었어요.', '꽃을 한 송이 샀어요.', ...(state === 'shards' ? ['신발을 한 켤레 샀어요.'] : [])]) expect(readIn(s, '한').top.pos, s).toBe('NUM');
     });
-    // WAITING on the lexicon: 곡 "piece (of music), counter for songs" (曲) has no row; the lexicon holds only 곡 "valley", so nothing says it counts
-    it.fails('WW3: 노래를 한 곡 불렀어요 → 한 "one" (fails: the lexicon lacks the counter 곡)', () => {
+    // the lexicon's round eighteen added the counter 곡 (曲): it now counts
+    it('WW3: 노래를 한 곡 불렀어요 → 한 "one"', () => {
       expect(readIn('노래를 한 곡 불렀어요.', '한').top.pos).toBe('NUM');
+    });
+    describe('batch 9: a one-word sentence keeps the token order; a reading below the floor is never raised', () => {
+      const WORDS = ['먹는', '읽는', '가는', '하는', '사는', '주는', '보는', '오는', '있는', '없는', '좋은', '작은', '큰', '많은', '같은', '먹을', '갈', '할', '볼'];
+      for (const w of WORDS) {
+        it(`${w} alone keeps the token layer's first reading`, () => {
+          const r = readIn(w, w);
+          const tok = koAnalyzeTokens(r.tokens)[r.i].candidates[0];
+          expect(`${r.top.lemma}|${r.top.pos}`).toBe(`${tok.lemma}|${tok.pos}`);
+          expect(r.top.notes?.context ?? '').toBe(tok.notes?.context ?? '');
+        });
+      }
+      for (const [s, w, lemma] of [['제가 먹는 밥', '먹는', '먹다'], ['밥을 먹는 사람', '먹는', '먹다'], ['제가 읽는 책', '읽는', '읽다'], ['밥을 먹을 시간', '먹을', '먹다']] as const) {
+        it(`${s}: ${w} is the adnominal of ${lemma}`, () => expect(readIn(s, w).top).toMatchObject({ lemma, morph: { VerbForm: 'Adn' } }));
+      }
+      it('no reading the token layer left below 0.5 is put first by the sentence, except an auxiliary or a numbered entry of the same word', () => {
+        const bad: string[] = [];
+        for (const s of [...CORE_SENTENCES, '먹는.', '밥 먹는 거 좋아요.', '그 사람은 먹는 걸 좋아해요.', '빚은 좋아요.', '가을 감은 맛있어요.']) {
+          const tokens = koAdapter.tokenize(s);
+          const plain = koAnalyzeTokens(tokens);
+          koAdapter.analyze(tokens).forEach((a, i) => {
+            const t = a.candidates[0];
+            if (!t || !a.token.isWord) return;
+            const before = plain[i].candidates.find((c) => c.lemma === t.lemma && c.pos === t.pos && JSON.stringify(c.morph) === JSON.stringify(t.morph));
+            const p0 = plain[i].candidates[0];
+            if (!before || before === p0 || before.confidence >= 0.5) return;
+            const aux = t.pos === 'AUX' && String(t.notes?.koPos ?? '').startsWith('VX');
+            // a numbered entry of a word whose undecided (or other) reading the token layer holds creditable is the same word
+            const b = (x: AnalysisCandidate) => (x.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, '');
+            const same = plain[i].candidates.some((c) => c.confidence >= 0.5 && b(c) === b(t) && c.pos === t.pos);
+            if (!aux && !same) bad.push(`${s} ${a.token.surface}: ${t.lemma} ${t.pos} was ${before.confidence}`);
+          });
+        }
+        expect(bad).toEqual([]);
+      });
+    });
+    describe('batch 8: cues by pattern (sweep cause b) and the misfires fixed (cause c)', () => {
+      const shardsOnly = state === 'shards';
+      for (const [s, w, check] of [
+        ['열이 나요.', '열이', /fever|heat/], ['해가 떴어요.', '해가', /\bsun\b/], ['키가 커요.', '키가', /height|stature/], ['종을 쳤어요.', '종을', /\bbell\b/],
+        ['못을 박았어요.', '못을', /\bnail\b/], ['상을 받았어요.', '상을', /prize|award/], ['원을 그리세요.', '원을', /circle/], ['줄을 서요.', '줄을', /string|line|rope/],
+        ['표를 샀어요.', '표를', /ticket/], ['병에 걸렸어요.', '병에', /disease|illness|sickness/], ['자기 전에 이를 닦아요.', '이를', /tooth|teeth/],
+        ['버스를 타요.', '타요', /ride|get on/], ['커피가 써요.', '써요', /bitter/],
+      ] as const) {
+        // the cue raises the entry when it is a live rival or a numbered entry of the same word; another class below the floor (이 "tooth"
+        // under the pronoun 이, 쓰다 "bitter" under the verb) is not raised (batch 9)
+        it(`${s}: ${w} ${check}`, () => {
+          if (!shardsOnly && readIn(s, w).top.unconfirmed) return;
+          const r = readIn(s, w);
+          const tok = koAnalyzeTokens(r.tokens)[r.i].candidates;
+          const target = tok.find((c) => check.test(c.gloss ?? ''));
+          const raisable = !!target && (target.confidence >= 0.5 || ((target.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, '') === (tok[0].lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, '') && target.pos === tok[0].pos));
+          if (raisable) expect(r.top.gloss ?? '').toMatch(check);
+          else expect(`${r.top.lemma}|${r.top.pos}`).toBe(`${tok[0].lemma}|${tok[0].pos}`);
+        });
+      }
+      it('cause c: 두 개 주세요 keeps the counter; 지금 어디 가요? the pronoun; 커피 아니면 차? the conjunction; 새 차 the determiner', () => {
+        expect(readIn('두 개 주세요.', '개').top.pos).toBe('CLF');
+        expect(readIn('지금 어디 가요?', '어디').top.pos).not.toBe('INTJ');
+        expect(readIn('새 차를 샀어요.', '새').top.pos).toBe('DET');
+        const a = readIn('커피 아니면 차?', '아니면').top;
+        expect(a.lemma === '아니면' || a.pos === 'CONJ' || a.pos === 'ADV' || a.morph.VerbType === 'Cop').toBe(true);
+      });
+      it('the reverse direction (rule 2): before a predicate or an adverb and a predicate, the noun + particle', () => {
+        for (const [s, w, lemma] of [['빚을 다 갚았어요.', '빚을', '빚'], ['빚은 좋아요.', '빚은', '빚'], ['가을 감은 맛있어요.', '감은', '감']] as const) {
+          const t = readIn(s, w).top;
+          expect(t.pos, s).toBe('NOUN');
+          expect((t.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, ''), s).toBe(lemma);
+        }
+      });
+    });
+    describe('ZZ: noun + 은/는/을 against the adnominal, by what stands before and after', () => {
+      // 산 is 사다 or 살다 + -(으)ㄴ: the rule chooses the adnominal over 산 "mountain"; between the two verbs the token order stands (no sure cue)
+      const adnOf = (c: AnalysisCandidate, lemma: string) => c.morph.VerbForm === 'Adn' && (lemma === '사다' ? ['사다', '살다'] : [lemma]).includes((c.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, ''));
+      for (const [s, w, lemma] of [
+        ['꽃이 피는 계절이에요.', '피는', '피다'], ...(state === 'shards' ? [['물이 새는 지붕을 고쳤어요.', '새는', '새다'] as const] : []), ['공을 차는 아이가 있어요.', '차는', '차다'], ['어제 산 책을 읽었어요.', '산', '사다'],
+        ['내가 본 영화는 재미있었어요.', '본', '보다'], ['집에 가는 길이에요.', '가는', '가다'], ['학교에 가는 학생이 많아요.', '가는', '가다'], ['밥을 먹는 사람이 있어요.', '먹는', '먹다'],
+        ['비가 오는 날에 만났어요.', '오는', '오다'], ['빨리 가는 차를 봤어요.', '가는', '가다'], ['책을 읽는 동생이 있어요.', '읽는', '읽다'], ['친구에게 준 선물이에요.', '준', '주다'],
+      ] as const) it(`${s}: ${w} is the adnominal of ${lemma}`, () => expect(adnOf(readIn(s, w).top, lemma), `${readIn(s, w).top.lemma} ${readIn(s, w).top.pos}`).toBe(true));
+      const nounOf = (c: AnalysisCandidate, lemma: string) => (c.pos === 'NOUN' || c.pos === 'PRON') && (c.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, '') === lemma && !c.morph.VerbForm;
+      for (const [s, w, lemma] of [
+        ['물은 차가워요.', '물은', '물'], ['차는 비싸요.', '차는', '차'], ['차는 값이 비싸요.', '차는', '차'], ['물은 온도가 높아요.', '물은', '물'], ['나는 학생이에요.', '나는', '나'],
+        ['꽃은 예뻐요.', '꽃은', '꽃'], ['공을 찼어요.', '공을', '공'], ['저는 의사예요.', '저는', '저'], ['밥은 맛있어요.', '밥은', '밥'], ['책은 책상 위에 있어요.', '책은', '책'],
+        ['길이 막혀요.', '길이', '길'], ['불도 꺼요.', '불도', '불'],
+      ] as const) it(`${s}: ${w} stays the noun ${lemma}`, () => expect(nounOf(readIn(s, w).top, lemma), `${readIn(s, w).top.lemma} ${readIn(s, w).top.pos}`).toBe(true));
     });
     describe('YY (addendum): noun + particle stays; numerals before counters', () => {
       for (const [s, w, lemma] of [

@@ -248,7 +248,7 @@ describe('homonyms', () => {
     expect(nform(para('나', 'PRON'), 'p:of')).toBe('내');
     expect(nform(para('누구', 'PRON'), 'p:subject')).toBe('누가');
     // 저 names "that" and "I" in the real lexicon: only the entry that is the pronoun takes the fused 제가
-    expect(nforms(para('저²', 'PRON'), 'p:subject')).toEqual(['제가']);
+    expect(nforms(para('저', 'PRON'), 'p:subject')).toEqual(['제가']);
     expect(nforms(para('저¹', 'PRON'), 'p:subject')).toEqual(['저가']);
   });
 
@@ -300,7 +300,7 @@ describe('every generated cell analyses back to its lemma with compatible featur
 
   it('every noun, pronoun and numeral cell (the particles and the copula), through the analyser', () => {
     const bad: string[] = [];
-    for (const [lemma, pos] of [['학생', 'NOUN'], ['의사', 'NOUN'], ['물', 'NOUN'], ['눈', 'NOUN'], ['나', 'PRON'], ['너', 'PRON'], ['저²', 'PRON'], ['누구', 'PRON'], ['하나', 'NUM'], ['서울', 'PROPN'], ['한국어', 'NOUN']] as Array<[string, PartOfSpeech]>) {
+    for (const [lemma, pos] of [['학생', 'NOUN'], ['의사', 'NOUN'], ['물', 'NOUN'], ['눈', 'NOUN'], ['나', 'PRON'], ['너', 'PRON'], ['저', 'PRON'], ['누구', 'PRON'], ['하나', 'NUM'], ['서울', 'PROPN'], ['한국어', 'NOUN']] as Array<[string, PartOfSpeech]>) {
       bad.push(...readBack(lemma, para(lemma, pos)));
     }
     expect(bad).toEqual([]);
@@ -564,7 +564,7 @@ describe('GG1: an ending that is not a row of the table lights no wrong cell', (
 describe('GG3, GG4: nominal tables', () => {
   const all = (p: GeneratedParadigm) => p.cells.map((c) => c.form);
   it('no pronoun table holds 나들 / 너들 / 저들 / 누구들 / 나가 / 저가 / 너가 / 누구가; no plural column for a pronoun, name or numeral', () => {
-    for (const [w, pos] of [['나', 'PRON'], ['너', 'PRON'], ['저²', 'PRON'], ['누구', 'PRON'], ['서울', 'PROPN'], ['하나', 'NUM']] as Array<[string, PartOfSpeech]>) {
+    for (const [w, pos] of [['나', 'PRON'], ['너', 'PRON'], ['저', 'PRON'], ['누구', 'PRON'], ['서울', 'PROPN'], ['하나', 'NUM']] as Array<[string, PartOfSpeech]>) {
       const p = para(w, pos);
       const f = all(p);
       for (const bad of ['나들', '너들', '저들', '누구들', '나가', '저가', '너가', '누구가', '서울들', '하나들']) expect(f, `${w}: ${bad}`).not.toContain(bad);
@@ -572,7 +572,7 @@ describe('GG3, GG4: nominal tables', () => {
       expect(p.layout!.columns.values.map(([v]) => v)).toEqual(['Sing']);
     }
     expect(nforms(para('나', 'PRON'), 'p:subject')).toEqual(['내가']);
-    expect(nforms(para('저²', 'PRON'), 'p:subject')).toEqual(['제가']);
+    expect(nforms(para('저', 'PRON'), 'p:subject')).toEqual(['제가']);
     expect(nforms(para('너', 'PRON'), 'p:subject')).toEqual(['네가']);
     expect(nforms(para('누구', 'PRON'), 'p:subject')).toEqual(['누가']);
     expect(para('학생', 'NOUN').cells.map((c) => c.form)).toContain('학생들이');

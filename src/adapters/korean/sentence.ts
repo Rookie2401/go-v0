@@ -144,6 +144,16 @@ export function koPromote(s: KoSentence, i: number, want: (c: Cand) => boolean, 
   const k = cs.findIndex((c) => want(c) && !c.unconfirmed);
   if (k < 0) return false;
   const chosen = cs[k];
+  // ONLY A LIVE RIVAL may be raised (batch 9): a reading the token layer left at 0.5 or more with no credit or rarity mark. Below the floor
+  // it is never raised by context, with two exceptions by design: an AUXILIARY reading after its connective form (the token layer keeps
+  // it low for this layer to raise), and a numbered entry of the SAME word and class as the first reading (the undecided reading stands
+  // for it: 눈 → 눈² "snow"). Another lexeme or class below the floor (먹 "ink stick" under 먹다) stays where it is.
+  if (k > 0) {
+    const live = chosen.confidence >= 0.5 && !chosen.notes?.credit && !chosen.notes?.rare;
+    // the same word: a live reading of this spelling and class stands for it (the undecided 물다 for 물다¹ "bite", 이 for 이³ "tooth")
+    const sameWord = cs.some((c) => c !== chosen && bare(c) === bare(chosen) && c.pos === chosen.pos && c.confidence >= 0.5 && !c.notes?.credit && !c.unconfirmed);
+    if (!live && !isAuxReading(chosen) && !sameWord) return false;
+  }
   const aside = setAside ?? ((c: Cand, ch: Cand) => c.lemma !== ch.lemma || c.pos !== ch.pos);
   const top = Math.max(...cs.map((c) => c.confidence));
   const others = cs.filter((_, j) => j !== k);
@@ -179,7 +189,7 @@ export const KO_SINO_NUMERALS: ReadonlySet<string> = new Set(['일', '이', '삼
  * seconds, money, floors, school years.
  */
 const NATIVE_COUNTERS = new Set(['명', '개', '마리', '권', '잔', '병', '장', '대', '살', '시', '그릇', '켤레', '송이', '사람']);
-const SINO_COUNTERS = new Set(['년', '월', '일', '분', '초', '원', '층', '학년', '주일', '개월', '세']);
+const SINO_COUNTERS = new Set(['년', '월', '일', '분', '초', '원', '층', '학년', '주일', '개월', '세', '주']);
 /** Numeral words that trigger the counter rule (the rare forms 서 석 너 넉 and the ambiguous 이 "this" are left out). */
 const TRIGGER_NATIVE = new Set(['한', '두', '세', '네', '다섯', '여섯', '일곱', '여덟', '아홉', '열', '스무', '서른', '마흔', '쉰', '예순', '일흔', '여든', '아흔']);
 // 이 counts only before a SINO-KOREAN counter (이 층, 이 년: two; the condition below), never before 개 / 명 (이 개 is "this dog")
@@ -189,13 +199,13 @@ const TRIGGER_SINO = new Set(['일', '이', '삼', '사', '오', '육', '칠', '
  * A counter reading: the lexicon's counter class (CLF), or a bound noun or noun whose own gloss says it counts or measures ("counter for
  * songs", "unit of …", "piece"): 곡, 편, 통, 벌, 채, 그루, 척 … may be filed either way (audit WW3).
  */
-const NOUN_FILED_COUNTERS = new Set(['곡', '편', '통', '벌', '켤레', '채', '그루', '송이', '척', '대', '쌍', '단', '포기', '자루', '그릇', '시', '층']);
+const NOUN_FILED_COUNTERS = new Set(['곡', '편', '통', '벌', '켤레', '채', '그루', '송이', '척', '대', '쌍', '단', '포기', '자루', '그릇', '시', '층', '주']);
 function isCounterReading(c: Cand): boolean {
   if (c.unconfirmed) return false;
   if (c.pos === 'CLF') return true;
   // only spellings that count, filed as nouns: a gloss alone is not enough (말³ "a unit of volume" is no counter in 한 말은)
   if (c.pos !== 'NOUN' || c.notes?.homonym === 'undecided' || !NOUN_FILED_COUNTERS.has(bare(c))) return false;
-  return /\bcounter\b|\bunit of\b|\bmeasure word\b|^(a )?(piece|pair)\b|^hour \(time\)|^storey\b|^floor\b/iu.test(c.gloss ?? '');
+  return /\bcounter\b|\bunit of\b|\bmeasure word\b|^(a )?(piece|pair)\b|^hour \(time\)|^storey\b|^floor\b|^week\b/iu.test(c.gloss ?? '');
 }
 /** A numeral reading: the class NUM, or a determiner the dictionary glosses as a number (네 "four (of something)", 두, 세 …). */
 const NUMBER_WORDS = /^(one|two|three|four|five|six|seven|eight|nine|ten|twenty)\b/u;
@@ -319,6 +329,8 @@ function ruleCounters(s: KoSentence): void {
     // a numeral WORD decides only where it is not also an everyday other word before this counter: 이 개 is "this dog" (Sino-Korean 이
     // does not count things), 너 is "you"; a Sino-Korean numeral counts only with a Sino-Korean counter (삼 년, 오 분)
     if (!digits && !(TRIGGER_NATIVE.has(pk) || (TRIGGER_SINO.has(pk) && SINO_COUNTERS.has(counter)))) continue;
+    // 주 "week" counts after a Sino-Korean numeral (삼 주); after 이 only before 동안 / 간 (이 주 동안: two weeks; 이 주에 is "this week")
+    if (counter === '주' && pk === '이' && !(s.next(i) >= 0 && ['동안', '간'].includes(bare(s.top(s.next(i)))))) continue;
     if (!digits && pk === '한' && hanIsDid(s, p, i)) {
       // 공부를 한 사람: 하다 + -(으)ㄴ "that did"; the word after it is the ordinary noun the clause describes
       koPromote(s, i, (c) => c.pos !== 'CLF' && isNominal(c) && !c.unconfirmed && bare(c) === counter, `After 한 "that did" (${s.surface(p - 1 >= 0 ? p - 1 : p)} is its object), ${s.surface(i)} is the noun it describes, not a counter.`, (c) => c.pos === 'CLF');
@@ -441,6 +453,8 @@ function ruleAuxiliaries(s: KoSentence): void {
     if (!s.isWord(i)) continue;
     const pv = s.prev(i);
     if (pv < 0 || !s.isWord(pv)) continue;
+    // a counter after a numeral is never an auxiliary's host (두 개 주세요: 개 counts, it is not 개다 + -어)
+    if (s.cands[pv].some(isCounterReading) && pv >= 1 && (s.isDigits(pv - 1) || s.cands[pv - 1]?.some(isNumeralReading))) continue;
     const auxes = s.cands[i].filter(isAuxReading);
     if (!auxes.length) continue;
     for (const rule of AUX_AFTER) {
@@ -533,7 +547,71 @@ export const KO_HOMONYM_RULES: readonly HomonymRule[] = [
   { spelling: '듣다', pos: 'VERB', meaning: /\bhear\b|\blisten\b/u, says: 'to hear, listen', cue: objectIs(['음악', '소리', '말', '이야기', '얘기', '노래', '강의', '수업', '뉴스', '라디오', '설명']) },
   { spelling: '들다', pos: 'VERB', meaning: /\bhold\b|\blift\b/u, says: 'to hold, lift', cue: objectIs(['가방', '손', '짐']) },
   { spelling: '들다', pos: 'VERB', meaning: /\benter\b/u, says: 'to enter (마음에 들다: to be to one’s liking)', cue: (s, i) => { const p = s.prev(i); const t = p >= 0 ? s.top(p) : undefined; return t && bare(t) === '마음' && lastParticle(t) === 'to' ? 'after 마음에 (마음에 들다)' : undefined; } },
+  // ── batch 8 (sweep cause b), by pattern: a subject and the predicate only one entry can be the subject of ──
+  { spelling: '열', pos: 'NOUN', meaning: /\bfever\b|\bheat\b/u, says: 'fever, heat', cue: subjWith(['나다', '내리다', '오르다']) },
+  { spelling: '해', pos: 'NOUN', meaning: /\bsun\b/u, says: 'the sun', cue: subjWith(['뜨다', '지다', '비치다']) },
+  { spelling: '키', pos: 'NOUN', meaning: /\bheight\b|\bstature\b/u, says: 'height', cue: subjWith(['크다', '작다']) },
+  { spelling: '배', pos: 'NOUN', meaning: /\bpear\b/u, says: 'pear', cue: subjWith(['달다', '맛있다']) },
+  { spelling: '감', pos: 'NOUN', meaning: /\bpersimmon\b/u, says: 'persimmon', cue: any(subjWith(['달다', '맛있다', '익다']), objWith(['먹다', '따다', '깎다'])) },
+  { spelling: '간', pos: 'NOUN', meaning: /\bseasoning\b|\bsaltiness\b|\bsalt\b/u, says: 'seasoning', cue: any(subjWith(['싱겁다', '짜다', '맞다']), objWith(['보다', '맞추다'])) },
+  { spelling: '이', pos: 'NOUN', meaning: /\btooth\b|\bteeth\b/u, says: 'tooth', cue: any(objWith(['닦다', '뽑다', '빼다']), subjWith(['아프다', '빠지다', '썩다'])) },
+  // ── an object and its verb ──
+  { spelling: '시', pos: 'NOUN', meaning: /\bpoem\b|\bpoetry\b/u, says: 'poem', cue: objWith(['쓰다', '짓다', '읽다', '외우다']) },
+  { spelling: '종', pos: 'NOUN', meaning: /\bbell\b/u, says: 'bell', cue: objWith(['치다', '울리다']) },
+  { spelling: '북', pos: 'NOUN', meaning: /\bdrum\b/u, says: 'drum', cue: objWith(['치다', '두드리다']) },
+  { spelling: '북', pos: 'NOUN', meaning: /\bnorth\b/u, says: 'north', cue: (s, i) => (['by', 'to', 'at'].includes(lastParticle(s.top(i)) ?? '') ? 'with a particle of direction or place (북으로, 북에)' : undefined) },
+  { spelling: '못', pos: 'NOUN', meaning: /\bnail\b/u, says: 'nail', cue: objWith(['박다', '뽑다']) },
+  { spelling: '상', pos: 'NOUN', meaning: /\bprize\b|\baward\b/u, says: 'prize', cue: objWith(['받다', '타다', '주다']) },
+  { spelling: '벌', pos: 'NOUN', meaning: /\bpunishment\b|\bpenalty\b/u, says: 'punishment', cue: objWith(['받다', '주다', '내리다']) },
+  { spelling: '벌', pos: 'NOUN', meaning: /\bbee\b/u, says: 'bee', cue: (s, i) => (lastParticle(s.top(i)) === 'to' && govIs(s, i, ['쏘이다', '물리다']) ? 'with 에 쏘이다 (stung by)' : undefined) },
+  { spelling: '원', pos: 'NOUN', meaning: /\bcircle\b/u, says: 'circle', cue: objWith(['그리다']) },
+  { spelling: '풀', pos: 'NOUN', meaning: /\bherbaceous\b|\bgrass\b/u, says: 'grass, plants', cue: objWith(['먹다', '뜯다', '베다']) },
+  { spelling: '회', pos: 'NOUN', meaning: /raw meat or fish|\braw fish\b/u, says: 'raw fish', cue: objWith(['먹다']) },
+  { spelling: '밤', pos: 'NOUN', meaning: /\bchestnut\b/u, says: 'chestnut', cue: objWith(['굽다', '까다', '줍다']) },
+  { spelling: '밤', pos: 'NOUN', meaning: /\bnight\b/u, says: 'night', cue: (s, i) => (lastParticle(s.top(i)) === 'to' && particlesOf(s.top(i)).length === 1 ? 'with 에 (at night)' : undefined) },
+  { spelling: '줄', pos: 'NOUN', meaning: /\bstring\b|\bline\b|\brope\b/u, says: 'line, string', cue: objWith(['서다', '당기다', '잡다']) },
+  { spelling: '표', pos: 'NOUN', meaning: /\bticket\b/u, says: 'ticket', cue: objWith(['사다', '끊다', '예매하다', '팔다']) },
+  // ── a place, time or direction particle that fits one entry ──
+  { spelling: '병', pos: 'NOUN', meaning: /\bdisease\b|\billness\b|\bsickness\b/u, says: 'illness', cue: (s, i) => (lastParticle(s.top(i)) === 'to' && govIs(s, i, ['걸리다']) ? 'with 에 걸리다 (fall ill)' : undefined) },
+  { spelling: '반', pos: 'NOUN', meaning: /\bhalf\b/u, says: 'half', cue: (s, i) => (lastParticle(s.top(i)) === 'by' && govIs(s, i, ['나누다', '자르다', '접다']) ? 'with (으)로 나누다 (into halves)' : undefined) },
+  // ── a list, a name, a number ──
+  { spelling: '등', pos: 'NOUN', meaning: /et cetera|\betc\b|\band so on\b/u, says: 'etc.', cue: (s, i) => { const p = s.prev(i); return p >= 0 && bareNominal(s.top(p)) && s.tokens.slice(0, p).some((t) => t.surface === ',') ? 'at the end of a list (A, B 등)' : undefined; } },
+  { spelling: '씨', pos: 'NOUN', meaning: /\bsir\b|\bmadam\b|\bMr\b|\bMs\b/u, says: 'Mr / Ms (after a name)', cue: (s, i) => { const p = s.prev(i); return p >= 0 && s.top(p)?.pos === 'PROPN' ? `after the name ${s.surface(p)}` : undefined; } },
+  { spelling: '원', pos: 'NOUN', meaning: /\bwon\b|currency/u, says: 'won (money)', cue: (s, i) => afterNumber(s, i) },
+  { spelling: '일', pos: 'NOUN', meaning: /\bday\b/u, says: 'day', cue: (s, i) => afterNumber(s, i, true) },
+  { spelling: '주', pos: 'NOUN', meaning: /\bweek\b/u, says: 'week', cue: (s, i) => afterNumber(s, i, true) },
+  { spelling: '초', pos: 'NOUN', meaning: /unit of time|\bsecond\b/u, says: 'second (of time)', cue: (s, i) => afterNumber(s, i) },
+  // ── balanced verb sets by their argument ──
+  { spelling: '따르다', pos: 'VERB', meaning: /\bpour\b/u, says: 'to pour', cue: objectIs(['물', '술', '차', '커피', '우유', '주스']) },
+  { spelling: '들다', pos: 'VERB', meaning: /\bcost\b/u, says: 'to cost, take', cue: (s, i) => { const t = subjBeforeLemma(s, i, ['돈', '시간', '비용', '힘', '돈이']); return t ? `with the subject ${t}` : undefined; } },
+  { spelling: '들다', pos: 'VERB', meaning: /\bhold\b|\blift\b/u, says: 'to hold, lift', cue: objectIs(['상자', '컵', '책', '우산']) },
+  { spelling: '타다', pos: 'VERB', meaning: /\bride\b|\bget on\b/u, says: 'to ride, get on', cue: objectIs(['버스', '택시', '기차', '지하철', '자전거', '비행기', '배', '말', '차']) },
+  { spelling: '지다', pos: 'VERB', meaning: /\bset\b/u, says: '(of the sun) to set', cue: (s, i) => { const t = subjBeforeLemma(s, i, ['해', '달', '노을']); return t ? `with the subject ${t}` : undefined; } },
+  { spelling: '지다', pos: 'VERB', meaning: /\blose\b|\bdefeated\b/u, says: 'to lose (a game)', cue: (s, i) => { const p = s.prev(i); const t = p >= 0 ? s.top(p) : undefined; return t && lastParticle(t) === 'at' && ['경기', '게임', '시합', '선거', '싸움', '전쟁'].includes(bare(t)) ? `after ${s.surface(p)}` : undefined; } },
+  { spelling: '쓰다', pos: 'VERB', meaning: /\bwrite\b/u, says: 'to write', cue: objectIs(['일기', '소설', '시', '보고서', '숙제', '답장']) },
 ];
+
+/** A number straight before a unit noun (천 원, 십 분, 삼 일, 이 주, 오 초): digits, or a Sino-Korean numeral word (and native ones too unless `sino`). */
+function afterNumber(s: KoSentence, i: number, sinoOnly = false): string | undefined {
+  const p = s.prev(i);
+  if (p < 0) return undefined;
+  if (s.isDigits(p)) return `after the number ${s.surface(p)}`;
+  if (!s.isWord(p) || !s.cands[p].some(isNumeralReading)) return undefined;
+  const k = s.key(p);
+  if (KO_SINO_NUMERALS.has(k) || (!sinoOnly && TRIGGER_NATIVE.has(k))) return `after the number ${s.surface(p)}`;
+  return undefined;
+}
+/** The surface of a subject of token i in its clause with one of these lemmas (the nearest word before with 이/가), or undefined. */
+function subjBeforeLemma(s: KoSentence, i: number, lemmas: readonly string[]): string | undefined {
+  for (let j = i - 1; j >= 0; j--) {
+    if (s.isPunct(j)) return undefined;
+    const t = s.top(j);
+    if (!t) continue;
+    if (isPredicate(t)) return undefined;
+    if (lastParticle(t) === 'subject') return lemmas.includes(bare(t)) ? s.surface(j) : undefined;
+  }
+  return undefined;
+}
 
 /** Does the reading belong to the rule's spelling (any homonym of it, or the undecided bare reading)? */
 const ofSpelling = (c: Cand, r: HomonymRule): boolean => bare(c) === r.spelling;
@@ -578,7 +656,66 @@ function ruleDeterminers(s: KoSentence): void {
       if (t2 && isNominal(t2) && t2.pos !== 'PRON' && !t2.unconfirmed) koPromote(s, i, (c) => c.pos === 'DET', `${s.key(i)} before ${s.surface(nx)} ${s.surface(n2)} (an adnominal and its noun) is the determiner "${word}".`, (c) => c.pos !== 'DET');
     }
   }
+  // any other word written alone with a DETERMINER reading, straight before a noun (아무 말도, 저런 옷, 새 차를, 무슨 일, 어떤 사람): the
+  // determiner, over a pronoun, an interjection or a noun of the same spelling (sweep cause c5, c6)
+  for (let i = 0; i < s.n; i++) {
+    if (!s.isWord(i) || DET_WORDS[s.key(i)] || s.key(i) === '전') continue;
+    const cs = s.cands[i];
+    const top = cs[0];
+    const det = cs.find((c) => c.pos === 'DET' && !c.unconfirmed && (c.parts?.length ?? 1) <= 1);
+    if (!top || !det || top === det || isNumeralReading(det) || isPredicate(top)) continue;
+    // over a pronoun or an interjection any determiner; over a bare NOUN only the words that are determiners first of all (새 차, 헌 책, 옛
+    //친구): 성 주위, 주 가치 keep their noun reading as the token layer gives it
+    if (!(top.pos === 'PRON' || top.pos === 'INTJ' || (top.pos === 'NOUN' && DET_FIRST.has(s.key(i)) && !particlesOf(top).length && (top.parts?.length ?? 1) <= 1))) continue;
+    const nx = s.next(i);
+    const t = nx >= 0 ? s.top(nx) : undefined;
+    if (!t || !isNominal(t) || t.pos === 'PRON' || t.unconfirmed || t.morph.VerbType) continue;
+    if (cs.some(isNumeralReading) && s.cands[nx].some(isCounterReading)) continue;
+    koPromote(s, i, (c) => c === det, `${s.surface(i)} written alone straight before the noun ${s.surface(nx)} is the determiner "${det.gloss ?? ''}".`, (c) => c !== det);
+  }
 }
+
+const DET_FIRST = new Set(['새', '헌', '옛', '첫', '온', '각', '매', '모든', '아무', '저런', '이런', '그런', '어떤', '무슨', '어느', '다른', '여러', '몇']);
+
+/** Question words and place words before a predicate are the pronoun or adverb, not the interjection (어디 가요?, 저기 버스가 와요). */
+const QUESTION_PLACE = new Set(['어디', '저기', '여기', '거기', '뭐', '왜', '언제', '누구', '어떻게', '얼마나']);
+/** Words that are interjections when they open a sentence before a comma (예, / 그럼, / 네, as replies). */
+const REPLY_WORDS = new Set(['예', '그럼', '응', '아니', '아니요', '아뇨']);
+function ruleInterjections(s: KoSentence): void {
+  for (let i = 0; i < s.n; i++) {
+    if (!s.isWord(i)) continue;
+    const k = s.key(i);
+    const top = s.top(i);
+    if (!top) continue;
+    const nx = s.next(i);
+    if (QUESTION_PLACE.has(k) && top.pos === 'INTJ' && nx >= 0) {
+      koPromote(s, i, (c) => c.pos === 'PRON' || c.pos === 'ADV', `${k} before ${s.surface(nx)} is the ${k === '왜' || k === '어떻게' || k === '얼마나' ? 'adverb' : 'pronoun'}, not an interjection.`, (c) => c.pos === 'INTJ');
+    }
+    const first = !s.tokens.slice(0, i).some((t) => t.isWord);
+    if (REPLY_WORDS.has(k) && first && i + 1 < s.n && /^[,，]/u.test(s.tokens[i + 1].surface)) {
+      koPromote(s, i, (c) => c.pos === 'INTJ', `${k} opening the sentence before a comma is the reply word (an interjection).`, (c) => c.pos !== 'INTJ');
+    }
+    // 아니면 between two nominals is the conjunction "or" (커피 아니면 차?, 지금 아니면 내일), not the copula 아니다 + -(으)면
+    if (k === '아니면') {
+      const pv = s.prev(i);
+      const pTop = pv >= 0 ? s.top(pv) : undefined;
+      const nTop = nx >= 0 ? s.top(nx) : undefined;
+      if (pTop && isNominal(pTop) && !particlesOf(pTop).length && nTop && isNominal(nTop)) koPromote(s, i, (c) => bare(c) === '아니면' && (c.pos === 'CONJ' || c.pos === 'ADV'), `아니면 between ${s.surface(pv)} and ${s.surface(nx)} is the conjunction "or".`);
+    }
+    // a noun spelled like a connective -아/어 before 오다 / 가다 (빵 좀 사 와): the verb in the connective form (buy and come)
+    if (nx >= 0 && ['오다', '가다'].includes(bare(s.top(nx))) && isNominal(top) && !particlesOf(top).length && s.cands[i].some((c) => c.pos === 'VERB' && c.morph.Connective === 'inf')) {
+      koPromote(s, i, (c) => c.pos === 'VERB' && c.morph.Connective === 'inf', `${s.surface(i)} before ${s.surface(nx)}: a verb in the connective -아/어 (do and ${bare(s.top(nx)) === '오다' ? 'come' : 'go'}).`, (c) => !isPredicate(c));
+    }
+    // 전 before a noun: "former" before a title, "whole" before a place or group (전 대통령; 전 세계, 전 국민)
+    if (k === '전' && top.pos === 'DET' && nx >= 0) {
+      const n = bare(s.top(nx));
+      if (TITLE_NOUNS.has(n)) koPromote(s, i, (c) => c.pos === 'DET' && /\bex-|former/u.test(glossOf(c)) && c.notes?.homonym !== 'undecided', `전 before the title ${s.surface(nx)} is "former, ex-".`);
+      else if (WHOLE_NOUNS.has(n)) koPromote(s, i, (c) => c.pos === 'DET' && /\bwhole\b|\ball\b|entire/u.test(glossOf(c)) && c.notes?.homonym !== 'undecided', `전 before ${s.surface(nx)} is "whole, all".`);
+    }
+  }
+}
+const TITLE_NOUNS = new Set(['대통령', '장관', '회장', '총리', '의원', '국회의원', '대표', '사장', '감독', '위원장', '총장', '시장', '대사', '선수', '남편', '부인', '왕']);
+const WHOLE_NOUNS = new Set(['세계', '국민', '국가', '유럽', '지역', '직원', '인류', '국토', '시민', '학생', '과정', '생애', '세대', '사원', '재산', '영역', '분야', '기간', '구간']);
 
 /**
  * 네 "yes": alone, or first in its sentence before a comma or the end (네, 알겠습니다.), it is the interjection; 네 + a noun is "your"
@@ -611,10 +748,74 @@ function ruleObjectPredicate(s: KoSentence): void {
     const pTop = pv >= 0 ? s.top(pv) : undefined;
     if (!pTop || lastParticle(pTop) !== 'object') continue;
     const t = s.top(i);
-    if (!t || isPredicate(t) || !isNominal(t) || particlesOf(t).length) continue;
+    if (!t) continue;
+    // an adjective and a verb of one spelling (적다 "few" / "to write"): the object selects the verb (이름을 적을 종이)
+    if (isPredicate(t) && t.pos === 'ADJ') {
+      // only a verb reading the token layer holds as a live rival (먼 / 진정한 after an object stay adjectives: their verb rows are rare)
+      koPromote(s, i, (c) => c.pos === 'VERB' && bare(c) === bare(t) && c.morph.VerbForm === t.morph.VerbForm && c.confidence >= 0.5, `After the object ${s.surface(pv)}, ${s.surface(i)} is the verb ${bare(t)}: an adjective takes no object.`, (c) => c.pos === 'ADJ' && bare(c) === bare(t));
+      continue;
+    }
+    // a noun bare or with only a delimiter (은/는, 도: 옷을 사고는, 선물을 사고도) after an object, when a verb reading exists: the verb
+    const delimitersOnly = particlesOf(t).every((p) => p === 'topic' || p === 'also');
+    if (isPredicate(t) || !isNominal(t) || !delimitersOnly) continue;
     // a numeral before a counter belongs to the object (책을 한 권, 운동장을 한 바퀴): it is not the verb
     if (t.pos === 'NUM' && s.next(i) >= 0 && s.cands[s.next(i)].some(isCounterReading)) continue;
-    koPromote(s, i, (c) => isPredicate(c) && c.pos === 'VERB', `After the object ${s.surface(pv)}, ${s.surface(i)} is a verb: a noun takes no object.`, (c) => !isPredicate(c));
+    const withDelimiter = particlesOf(t).length > 0;
+    koPromote(s, i, (c) => isPredicate(c) && c.pos === 'VERB' && (!withDelimiter || c.morph.VerbForm === 'Conn'), `After the object ${s.surface(pv)}, ${s.surface(i)} is a verb: a noun takes no object.`, (c) => !isPredicate(c));
+  }
+}
+
+/**
+ * A whole noun written with NO particle straight before a predicate (or before 안 / 못 and a predicate), when the same token also reads as a
+ * shorter listed noun + 이/가, 을/를, 은/는 or 도: the noun + particle (길이 막혀요: 길 + 이, not 길이 "length"; 불도 꺼요, 별도 많아요, 정도 많아요).
+ * A noun that is an argument of that predicate carries its particle in writing; the whole word would carry its own (길이가). A whole word
+ * followed by its own particle is a different token and is not touched. Sweep block T, audit ZZ.
+ */
+function ruleSplitBeforePredicate(s: KoSentence): void {
+  for (let i = 0; i < s.n; i++) {
+    if (!s.isWord(i)) continue;
+    const cs = s.cands[i];
+    const top = cs[0];
+    if (!top || top.unconfirmed || top.pos !== 'NOUN' || particlesOf(top).length || (top.parts?.length ?? 1) > 1 || top.morph.VerbType) continue;
+    // after a number, a counter or a determiner the whole noun stands bare as an adverbial (삼십 분 정도 걸려요, 어느 정도 알아요)
+    const pv0 = s.prev(i);
+    const pT = pv0 >= 0 ? s.top(pv0) : undefined;
+    if (pv0 >= 0 && (s.isDigits(pv0) || (pT && !particlesOf(pT).length && (pT.pos === 'NUM' || pT.pos === 'DET' || s.cands[pv0].some(isCounterReading) || MODIFIER_WORDS.has(s.key(pv0)))))) continue;
+    let nx = s.next(i);
+    // one adverb may stand between (길이 너무 막혀요, 반도 안 먹었어요)
+    if (nx >= 0 && (s.key(nx) === '안' || s.key(nx) === '못' || isAdverb(s.top(nx))) && s.next(nx) >= 0) nx = s.next(nx);
+    const nTop = nx >= 0 ? s.top(nx) : undefined;
+    if (!nTop || !isPredicate(nTop)) continue;
+    const split = cs.find((c) => isNominal(c) && c.pos !== 'PRON' && !c.unconfirmed && particlesOf(c).length === 1 && ['subject', 'object', 'topic', 'also', 'only'].includes(lastParticle(c) ?? '') && c.confidence >= 0.4);
+    if (!split) continue;
+    koPromote(s, i, (c) => c === split, `${s.surface(i)} straight before the predicate ${s.surface(nx)}, with no particle of its own: ${bare(split)} with the particle ${split.parts?.[split.parts.length - 1]?.text ?? ''} (an argument of ${s.surface(nx)}).`, (c) => c === top);
+  }
+}
+
+/**
+ * A noun + 도 against the connective -아/어도 "even if" (차도, 새도, 자도, 기대도, 피해도, 파도): the verb when an object or an adverb stands
+ * before it (a place does not decide: 나무에 새도 있어요 is "a bird too"), or when 되다 / 괜찮다 / 좋다 follows (-아/어도 되다: may), or after a subject when another predicate of the clause follows
+ * (지붕이 새도 고칠 돈이 없다). Otherwise noun + 도 (불도 꺼요, 문도 닫아요: an object with 도).
+ */
+function ruleEvenIf(s: KoSentence): void {
+  for (let i = 0; i < s.n; i++) {
+    if (!s.isWord(i)) continue;
+    const cs = s.cands[i];
+    const top = cs[0];
+    const noun = cs.find((c) => isNominal(c) && lastParticle(c) === 'also' && particlesOf(c).length === 1);
+    const conn = cs.find((c) => isPredicate(c) && c.morph.Connective === 'even-if' && c.pos !== 'AUX');
+    if (!top || !noun || !conn || top === conn) continue;
+    const pv = s.prev(i);
+    const nx = s.next(i);
+    const pTop = pv >= 0 ? s.top(pv) : undefined;
+    const nTop = nx >= 0 ? s.top(nx) : undefined;
+    const p = pTop ? lastParticle(pTop) : undefined;
+    const permit = !!nTop && ['되다', '괜찮다', '좋다'].includes(bare(nTop));
+    const argBefore = !!pTop && (p === 'object' || isAdverb(pTop));
+    const subjThenPred = !!pTop && p === 'subject' && !!nTop && isPredicate(nTop) && nTop.morph.VerbForm !== 'Fin';
+    if (!(permit || argBefore || subjThenPred)) continue;
+    const why = permit ? `before ${s.surface(nx)} (-아/어도 ${bare(nTop)}: may)` : `after ${s.surface(pv)}`;
+    koPromote(s, i, (c) => c === conn, `${s.surface(i)} ${why}: ${bare(conn)} with the connective -아/어도 "even if", not a noun + 도.`, (c) => c !== conn && !(isPredicate(c) && bare(c) === bare(conn) && c.morph.Connective === 'even-if'));
   }
 }
 
@@ -623,6 +824,132 @@ function ruleObjectPredicate(s: KoSentence): void {
  * "one who", 이 "person", 분, 것, 데, 바, 줄, 뿐 …: the lexicon's own bound nouns), that reading comes before a verb or another noun of the
  * same spelling (죄 지은 자를: the one who sinned, not 자르다). The entry is the one the lexicon marks bound, never a number.
  */
+/**
+ * A token that is both a noun + 은/는/을/ㄹ and a predicate's adnominal (피는, 새는, 차는, 산): the ADNOMINAL when a nominal follows it directly
+ * AND something the predicate governs or is governed by stands directly before it (a noun in 이/가, 을/를, 에, 에서, (으)로, 에게, an adverb,
+ * a time noun used as an adverb, a connective form): 꽃이 피는 꽃, 공을 차는 아이, 어제 산 책, 집에 가는 길. It stays the noun + particle
+ * when a predicate, a comma or the end follows (물은 차가워요), and when it is the first word of its clause (차는 값이 비싸요: topic, then
+ * subject). A pronoun (나는, 저는) is never made an adnominal. Audit ZZ.
+ */
+const GOVERNED_BEFORE = new Set(['subject', 'subject-hon', 'object', 'to', 'at', 'by', 'to-person', 'to-person-hante', 'to-person-hon', 'from-person', 'and', 'and-hago']);
+function ruleAdnominalOrNoun(s: KoSentence): void {
+  for (let i = 0; i < s.n; i++) {
+    if (!s.isWord(i)) continue;
+    const cs = s.cands[i];
+    const top = cs[0];
+    if (!top) continue;
+    // the noun reading: with 은/는 or 을/를 (피 + 는, 공 + 을; a pronoun too, see below), or a bare ONE-syllable noun whose last sound is the
+    // adnominal's ㄴ / ㄹ (산 "mountain" against 사다 + -(으)ㄴ in 어제 산 책); a longer bare noun is a noun before a noun (겨울 옷)
+    const oneSyllable = [...s.key(i)].length === 1;
+    const nounP = cs.find((c) => isNominal(c) && !c.unconfirmed && !c.morph.VerbType
+      && ((['topic', 'object'].includes(lastParticle(c) ?? '') && particlesOf(c).length === 1) || (c.pos !== 'PRON' && oneSyllable && !particlesOf(c).length && (c.parts?.length ?? 1) <= 1)));
+    // the adnominal reading: after an object, a verb's before an adjective's of one spelling (이름을 적을: 적다 "write", not "few")
+    const objBefore = s.prev(i) >= 0 && lastParticle(s.top(s.prev(i))) === 'object';
+    const adn = (objBefore ? cs.find((c) => c.pos === 'VERB' && isAdn(c)) : undefined) ?? cs.find((c) => isPredicate(c) && isAdn(c) && c.pos !== 'AUX');
+    if (!nounP || !adn) continue;
+    // an earlier sure rule already decided this word (전 after 오래: "before"; 그 날): it is not reopened. The counter rule's "no number before
+    // it" only demoted a counter reading and decides nothing between the noun and the verb
+    const decided = cs.some((c) => c.notes?.credit === 'set aside by the sentence') && !String(top.notes?.context ?? '').startsWith('No number stands before');
+    if (decided) continue;
+    // a numeral or determiner first (한 권, 그 날): the counter and determiner rules decide it, not this one
+    if (top.pos === 'NUM' || top.pos === 'DET' || top.pos === 'CLF' || (s.next(i) >= 0 && cs.some(isNumeralReading) && s.cands[s.next(i)].some(isCounterReading))) continue;
+    const nx = s.next(i);
+    const nTop = nx >= 0 ? s.top(nx) : undefined;
+    const nominalNext = !!nTop && (isNominal(nTop) || nTop.pos === 'NUM') && !nTop.unconfirmed;
+    const pv = s.prev(i);
+    const pTop = pv >= 0 ? s.top(pv) : undefined;
+    // a place or a person with 에 / 에서 / 에게 … governs too when a delimiter follows it (여기에는 숨을 곳, 집에서도 먹는 밥)
+    const governed = !!pTop && (GOVERNED_BEFORE.has(lastParticle(pTop) ?? '') || particlesOf(pTop).slice(0, -1).some((p) => GOVERNED_BEFORE.has(p) && p !== 'subject' && p !== 'object') || isAdverb(pTop) || (isPredicate(pTop) && pTop.morph.VerbForm === 'Conn') || (TIME_ADVERB_NOUNS.has(s.key(pv)) && !particlesOf(pTop).length));
+    // a bare one-syllable noun before a noun is usually its modifier (신 중심, 술 문화): the adnominal only after an object, a place, an
+    // adverb or a time noun (어제 산 책, 시장에서 산 사과), never on a subject alone
+    const bareNoun = !particlesOf(nounP).length;
+    const strong = governed && !(bareNoun && pTop && ['subject', 'subject-hon'].includes(lastParticle(pTop) ?? ''));
+    // the next word is a noun with no creditable predicate reading of its own (빚을 다 갚았어요: 다 is "all", and 빚을 stays the object)
+    const plainNominalNext = nominalNext && !s.cands[nx].some((c) => (isPredicate(c) || isAdverb(c)) && c.confidence >= 0.5);
+    // a pronoun (나는, 이를) becomes an adnominal only after a subject, a place or an adverb, before a noun (냄새가 나는 음식, 목적지에 이를 때):
+    // a pronoun with its particle cannot stand there; after an object or first in its clause it stays the pronoun (나는 학생이에요)
+    const pronoun = nounP.pos === 'PRON' || cs.some((c) => c.pos === 'PRON' && c.confidence >= 0.5);
+    // only 나는 (나다 / 날다) and 이를 (이르다): 우리는, 그를, 이는 after an adverb are the pronouns (특별히 이는, 선생들이 그를 격려)
+    const pronLemma = bare(nounP.pos === 'PRON' ? nounP : cs.find((c) => c.pos === 'PRON') ?? nounP);
+    const pronounOk = !pronoun || ((pronLemma === '나' || pronLemma === '이') && !!pTop
+      && (lastParticle(pTop) === 'subject' || (pronLemma === '나' && ['높이', '낮게', '멀리'].includes(s.key(pv))) || (pronLemma === '이' && lastParticle(pTop) === 'to')));
+    // (first word of its clause, a nominal after it: 식은 밥을 against 새는 하늘을 is the same shape with opposite answers, so the token order
+    // stands there; no tie-breaker is invented)
+    if (plainNominalNext && pronounOk && strong) {
+      koPromote(s, i, (c) => c === adn, `${s.surface(i)} between ${s.surface(pv)} and the noun ${s.surface(nx)}: the adnominal of ${bare(adn)} (it describes ${s.surface(nx)}).`, (c) => c !== adn && !(isPredicate(c) && isAdn(c) && bare(c) === bare(adn)));
+      continue;
+    }
+    if (pronoun || top !== adn || bareNoun) continue;
+    // the reverse (audit ZZ): the adnominal first, but nothing for it to describe or nothing to govern:
+    //   a predicate, a comma or the end straight after it (여는 좋아요, 가을 감은 맛있어요, 공연이 막을 올렸어요): an adnominal must describe a
+    //   noun, whatever stands before it;
+    //   after a determiner or a modifier word (이 도는, 그 가게는): what follows a determiner is a nominal;
+    //   first in its clause with no argument before it, a nominal after it (차는 값이 비싸요, 남은 신경 쓰지 마세요, 실을 바늘에 꿰었어요): the topic
+    //   or object, the commonest pattern of the language (audit ZZ: a first word is not made an adnominal);
+    //   after a bare noun (가을 감은, 나무 가지도): the second noun of the two.
+    // Before another adnominal or a word that can be a bound noun (삼는 데) the order stands.
+    // the next word must have NO nominal reading at all (먹는 겁니다: 거 + 입니다; 삼는 데) for "a predicate follows" to decide; the end is
+    // the end of the SENTENCE (a comma or a bracket may stand after an adnominal in prose: 인상을 주는, 어디서고 …; 이라 불리는 <대부>)
+    const anyNominalNext = nx >= 0 && s.cands[nx].some((c) => (isNominal(c) && !c.unconfirmed && c.confidence >= 0.5) || c.morph.NounType === 'Bound');
+    let lastWord = true;
+    for (let j = i + 1; j < s.n; j++) if (s.isWord(j) || s.isDigits(j)) { lastWord = false; break; }
+    // an adverb and then the predicate count as "a predicate follows" (빚을 다 갚았어요: an adnominal never describes an adverb)
+    const n2 = nx >= 0 ? s.next(nx) : -1;
+    const advThenPred = !!nTop && nTop.pos === 'ADV' && n2 >= 0 && isPredicate(s.top(n2)) && s.top(n2)!.morph.VerbForm !== 'Adn';
+    const endOrPred = nx < 0 ? lastWord : (!!nTop && isPredicate(nTop) && nTop.morph.VerbForm !== 'Adn' && !anyNominalNext) || advThenPred;
+    const afterDet = !!pTop && (pTop.pos === 'DET' || MODIFIER_WORDS.has(s.key(pv)));
+    // first in its clause, the next nominal with a particle of its own, and the token layer holding the two as equals (within 0.02): the
+    // topic or object (실을 바늘에 꿰었어요, 차는 값이 비싸요); where the counts put the adnominal clearly first (지은 죄가 너무 크면) it stays
+    const firstWord = pv < 0 && !!nTop && isNominal(nTop) && !nTop.unconfirmed && particlesOf(nTop).length > 0 && Math.abs(nounP.confidence - adn.confidence) <= 0.02;
+    if (endOrPred || (!strong && nounP.confidence >= 0.5 && (afterDet || firstWord))) {
+      const why = endOrPred ? (nx >= 0 ? `straight before the predicate ${s.surface(nx)}` : 'at the end of its clause') : afterDet ? `after ${s.surface(pv)}` : firstWord ? `first in its clause, before ${s.surface(nx)}` : `after the noun ${s.surface(pv)}`;
+      koPromote(s, i, (c) => c === nounP, `${s.surface(i)} ${why}: the noun ${bare(nounP)} with its particle (an adnominal must describe a noun after it).`, (c) => isPredicate(c) && isAdn(c));
+    }
+  }
+}
+
+/**
+ * A word that reads as a listed noun (bare or with a particle) and as a predicate's CONNECTIVE or final form, followed directly by a noun:
+ * the noun (가게 앞에서, 사고 소식을, 나무 가지도, 해도 달도): a -고 / -게 / -아/어도 form is not followed by a noun of its own clause, and the
+ * listed noun is. After an object the predicate stays (밥을 먹고 학교에): an argument decides for the verb.
+ */
+function ruleNounBeforeNoun(s: KoSentence): void {
+  for (let i = 0; i < s.n; i++) {
+    if (!s.isWord(i)) continue;
+    const cs = s.cands[i];
+    const top = cs[0];
+    if (!top || !isPredicate(top) || !['Conn', 'Fin'].includes(top.morph.VerbForm ?? '')) continue;
+    const noun = cs.find((c) => (c.pos === 'NOUN' || c.pos === 'PROPN') && !c.unconfirmed && !c.morph.VerbType && particlesOf(c).every((p) => ['topic', 'also', 'only', 'subject', 'object', 'of'].includes(p)) && particlesOf(c).length <= 1 && c.confidence >= 0.5);
+    if (!noun) continue;
+    const nx = s.next(i);
+    const nTop = nx >= 0 ? s.top(nx) : undefined;
+    const pv = s.prev(i);
+    const pTop = pv >= 0 ? s.top(pv) : undefined;
+    // after a bare noun, a noun with its particle (나무 가지도 잘랐어요: the second noun of the two), whatever follows
+    if (pTop && isNominal(pTop) && pTop.pos !== 'PRON' && !particlesOf(pTop).length && !pTop.morph.VerbType && !TIME_ADVERB_NOUNS.has(s.key(pv))
+      && particlesOf(noun).length === 1 && top.morph.VerbForm === 'Conn') {
+      koPromote(s, i, (c) => c === noun, `${s.surface(i)} after the noun ${s.surface(pv)}: the second noun of the two (${bare(noun)}), not a verb form.`, (c) => isPredicate(c));
+      continue;
+    }
+    // after a determiner or a modifier word (그 가게는, 그 보고는, 그 사서는): a nominal
+    if (pTop && (pTop.pos === 'DET' || MODIFIER_WORDS.has(s.key(pv)))) {
+      koPromote(s, i, (c) => c === noun, `${s.surface(i)} after ${s.surface(pv)}: what follows a determiner is a noun (${bare(noun)}).`, (c) => isPredicate(c));
+      continue;
+    }
+    // -아/어도 before a final predicate that is no permission, after a topic or subject (이 문장은 주어도 없어요): the noun + 도
+    if (top.morph.Connective === 'even-if' && lastParticle(noun) === 'also' && nTop && isPredicate(nTop) && nTop.morph.VerbForm === 'Fin' && !['되다', '괜찮다', '좋다'].includes(bare(nTop))
+      && pTop && ['topic', 'subject'].includes(lastParticle(pTop) ?? '')) {
+      koPromote(s, i, (c) => c === noun, `${s.surface(i)} between ${s.surface(pv)} and the predicate ${s.surface(nx)}: the noun ${bare(noun)} + 도, not -아/어도.`, (c) => isPredicate(c));
+      continue;
+    }
+    if (!nTop || !isNominal(nTop) || nTop.unconfirmed || nTop.pos === 'PRON' || s.cands[nx].some((c) => isPredicate(c) && c.confidence >= 0.5)) continue;
+    // only at the head of a clause or after an adnominal (가게 앞에서, 큰 사고 소식을): after anything else the verb form may well end its
+    // clause before the noun (보스턴으로 가 연극에, 국민에게 주지만 경제, 떠올리기만 해도 고기가)
+    if (!(pv < 0 || (pTop && isAdn(pTop)))) continue;
+    koPromote(s, i, (c) => c === noun, `${s.surface(i)} straight before the noun ${s.surface(nx)}: the noun ${bare(noun)}, not a verb form that ends its clause.`, (c) => isPredicate(c));
+  }
+}
+
 function ruleAfterAdnominal(s: KoSentence): void {
   for (let i = 1; i < s.n; i++) {
     if (!s.isWord(i)) continue;
@@ -631,7 +958,10 @@ function ruleAfterAdnominal(s: KoSentence): void {
     // an adnominal last in its clause before another adnominal reading (높은 산.: 산 "mountain", not 살다 + -(으)ㄴ): nothing follows for that
     // second adnominal to describe, so the word is the noun the first one describes
     const top = s.top(i);
-    const bound = s.cands[i].filter((c) => c.morph.NounType === 'Bound' && !c.unconfirmed && c.notes?.homonym !== 'undecided');
+    // a whole listed noun after an adnominal stays whole (중요한 시기예요: 시기 "period", not the bound 시 "hour" + something): a bound reading
+    // whose stem is shorter than the first reading's noun stem is no rival
+    const stemEnd = (c: Cand) => c.parts?.[0]?.end ?? 0;
+    const bound = s.cands[i].filter((c) => c.morph.NounType === 'Bound' && !c.unconfirmed && c.notes?.homonym !== 'undecided' && !(top && isNominal(top) && stemEnd(c) < stemEnd(top)));
     if (!bound.length && top && isAdn(top) && isPredicate(top) && !(s.next(i) >= 0 && isNominal(s.top(s.next(i))))) {
       koPromote(s, i, (c) => isNominal(c) && !c.unconfirmed && bareNominal(c), `After the adnominal ${s.surface(pv)}, with no noun after it, ${s.surface(i)} is the noun it describes.`, (c) => isPredicate(c));
       continue;
@@ -690,6 +1020,8 @@ export const KO_LOOKALIKE_RULES: readonly LookalikeRule[] = [
   { pick: '물다', meaning: /\bbite\b/u, among: ['묻다'], says: 'to bite', cue: (s, i) => { const w = subjectBefore(s, i, ['개', '고양이', '모기', '뱀', '벌레', '강아지']); return w ? `with the subject ${w}` : undefined; } },
   { pick: '묻다', meaning: /\bask\b/u, among: ['물다'], says: 'to ask', cue: objectIs(['길', '이름', '값', '나이', '이유', '안부', '질문', '의견']) },
   { pick: '사다', among: ['살다'], says: 'to buy (살다 "to live" takes no object but 삶 / 인생)', cue: anyObject(['삶', '인생', '생활', '일생', '세월']) },
+  { pick: '쓰다', meaning: /\bbitter\b/u, among: ['쓰다'], says: 'to be bitter', cue: (s, i) => { const t = subjBeforeLemma(s, i, ['커피', '약', '맛', '한약', '차', '술']); return t ? `with the subject ${t} (a taste)` : undefined; } },
+  { pick: '날다', meaning: /\bfly\b/u, among: ['나다'], says: 'to fly', cue: (s, i) => { const p = s.prev(i); const k = p >= 0 ? s.key(p) : ''; return ['높이', '낮게', '하늘을', '하늘에', '하늘로', '멀리'].includes(k) ? `after ${k}` : undefined; } },
   { pick: '짓다', meaning: /build|make|cook|compose/u, among: ['지다', '짖다'], says: 'to build, make', cue: objectIs(['집', '밥', '이름', '시', '옷', '미소', '죄', '건물', '농사', '표정']) },
 ];
 
@@ -842,6 +1174,13 @@ export function koOrderSentences(tokens: RawToken[], base: Cand[][], frozen: Rea
     const local = new Set<number>();
     for (const f of frozen) if (f >= r.start && f < r.end) local.add(f - r.start);
     const s = new KoSentence(tokens.slice(r.start, r.end), out.slice(r.start, r.end), local);
+    // a sentence of ONE word (a list item, a heading, a table cell) gives no context: the token order stands (batch 9). Only the question
+    // mark still says what it says (먹어요? is a question).
+    if (s.tokens.filter((t) => t.isWord).length <= 1) {
+      ruleMood(s, r.final);
+      for (let k = 0; k < s.n; k++) { koStrictlyFalling(s.cands[k]); out[r.start + k] = s.cands[k]; }
+      continue;
+    }
     ruleCopula(s);
     ruleCounters(s);
     ruleBareWords(s);
@@ -849,12 +1188,17 @@ export function koOrderSentences(tokens: RawToken[], base: Cand[][], frozen: Rea
     ruleNe(s);
     ruleAuxiliaries(s);
     ruleObjectPredicate(s);
+    ruleEvenIf(s);
+    ruleSplitBeforePredicate(s);
+    ruleAdnominalOrNoun(s);
+    ruleNounBeforeNoun(s);
     ruleAfterAdnominal(s);
     ruleLookalikes(s);
     ruleDeulleo(s);
     ruleHomonyms(s);
     ruleFinality(s);
     ruleDeterminers(s);
+    ruleInterjections(s);
     ruleComplement(s);
     ruleNegation(s);
     ruleLastPredicate(s, r.final);

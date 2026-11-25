@@ -56,10 +56,11 @@ function categoryOf(entry: KoLexEntry, stem: string): KoCat {
 }
 
 /** The predicate rows the lexicon (and the closed table of copulas and existentials) holds for a lemma and part of speech: the numbered homonym a numbered lemma names, else every entry of a bare spelling. */
-export function koPredicateRows(lemma: string, pos: string): { rows: KoRow[]; refused: string[] } {
+export function koPredicateRows(lemma: string, pos: string): { rows: KoRow[]; refused: string[]; notes: string[] } {
   const bare = koBareLemma(lemma);
   const refused: string[] = [];
-  if (!bare.endsWith('다') || bare.length < 2) return { rows: [], refused };
+  const notes: string[] = [];
+  if (!bare.endsWith('다') || bare.length < 2) return { rows: [], refused, notes };
   const key = koStemKey(bare, 'VV');
   const seen = new Set<string>();
   const entries: KoLexEntry[] = [];
@@ -76,8 +77,13 @@ export function koPredicateRows(lemma: string, pos: string): { rows: KoRow[]; re
   const prefer = closedOnly ? PREDICATE_TAGS.AUX : PREDICATE_TAGS[pos] ?? [];
   let pool: KoLexEntry[] = [];
   for (const tag of prefer) { pool = entries.filter((e) => e.tag === tag); if (pool.length) break; }
-  if (!pool.length && !PREDICATE_TAGS[pos] && !closedOnly) return { rows: [], refused };
-  if (!pool.length) pool = entries;
+  if (!pool.length && !PREDICATE_TAGS[pos] && !closedOnly) return { rows: [], refused, notes };
+  const fellBack = !pool.length;
+  if (fellBack) pool = entries;
+  // the lexicon may hold the lemma as both a verb and a descriptive verb (감사하다): the table is for the class the reading names
+  const otherTags = new Set(entries.filter((e) => !pool.includes(e) && (e.tag === 'VV' || e.tag === 'VA')).map((e) => e.tag));
+  if (otherTags.size && !fellBack) notes.push(`${bare} is also listed as ${otherTags.has('VA') ? 'a descriptive verb (adjective)' : 'an action verb'}; this table is for the ${pool[0]?.tag === 'VA' ? 'descriptive' : 'action'} verb the reading names.`);
+  if (fellBack && (pos === 'VERB' || pos === 'ADJ') && entries.length) notes.push(`${bare} is listed in the lexicon only as ${entries[0].tag === 'VA' ? 'a descriptive verb (adjective)' : 'an action verb'}; this table follows the reading, which names ${pos === 'VERB' ? 'an action verb' : 'a descriptive verb'}.`);
   const numbered = koHomonymNumber(lemma) !== undefined;
   let chosen = pool.filter((e) => koEntryLemma(e) === lemma);
   if (!chosen.length && !numbered) chosen = pool;
@@ -90,21 +96,22 @@ export function koPredicateRows(lemma: string, pos: string): { rows: KoRow[]; re
     if (light && lookupKoreanStem(head).some((h) => h.entry.lemma === head && ['NNG', 'NNP', 'XR', 'NR'].includes(h.entry.tag)) && (light[0] !== '되' || pos === 'VERB')) {
       const tag = pos === 'ADJ' ? 'VA' : 'VV';
       const entry: KoLexEntry = { lemma: bare, tag, irr: light[1] === 'Ha' ? 'Ha' : 'R', own: true };
-      return { rows: [{ lemma: bare, shown: bare, stem, cls: light[1], cat: tag === 'VA' ? 'A' : 'V', honSi: false, entry }], refused };
+      return { rows: [{ lemma: bare, shown: bare, stem, cls: light[1], cat: tag === 'VA' ? 'A' : 'V', honSi: false, entry }], refused, notes };
     }
   }
   for (const entry of chosen) {
     let cls: KoConjClass | undefined = entry.tag === 'VCP' ? 'Cop' : entry.tag === 'VCN' ? 'Neg' : entry.irr;
+    if (!cls && stem.endsWith('하')) cls = 'Ha'; // every 하다 predicate is a 하다 verb
     if (!cls) {
       // the source gives this entry no conjugation table: a shape that could be irregular is not guessed
       if (koShapeClasses(stem).length) { refused.push(`${koEntryLemma(entry)}: the dictionary gives no conjugation class and the stem's shape allows an irregular one`); continue; }
       cls = 'R';
     }
     const honSi = stem.endsWith('시') && (KO_HONORIFIC_SI_STEMS.has(stem) || /honorific/iu.test(entry.gloss ?? ''));
-    rows.push({ lemma: bare, shown: koEntryLemma(entry), stem, cls, cat: categoryOf(entry, stem), honSi, ...(entry.gloss ? { gloss: entry.gloss } : {}), entry });
+    rows.push({ lemma: bare, shown: koEntryLemma(entry), stem, cls, cat: fellBack && pos === 'VERB' && entry.tag === 'VA' && !EXIST.test(stem) ? 'V' : fellBack && pos === 'ADJ' && entry.tag === 'VV' && !EXIST.test(stem) ? 'A' : categoryOf(entry, stem), honSi, ...(entry.gloss ? { gloss: entry.gloss } : {}), entry });
   }
   rows.sort((a, b) => (a.entry.hom ?? 0) - (b.entry.hom ?? 0));
-  return { rows, refused };
+  return { rows, refused, notes };
 }
 
 // ───────────────────────────── slots, chains, forms ─────────────────────────────
@@ -127,10 +134,12 @@ export function koSlotChains(slot: string, row: Pick<KoRow, 'cat' | 'honSi' | 's
       const [, mood, level, tense] = p as [string, KoMood, KoLevel, KoTense];
       const pre = tense === 'Past' ? ['p-past'] : tense === 'Fut' ? ['p-fut'] : [];
       if (mood === 'Imp' || mood === 'Prop') {
-        if (cat !== 'V' || tense !== 'Pres') return undefined;
+        // an action verb has commands and suggestions, and so has 있다 (stay); an honorific verb has none at the plain and informal levels (계세요, 계십시오 only)
+        if (!(row.cat === 'V' || row.stem === '있') || tense !== 'Pres') return undefined;
+        if (honSi && (level === 'Haera' || level === 'Hae')) return undefined;
         if (mood === 'Imp') {
           // 가다, 오다 and their compounds also have 가거라, 오너라
-          if (level === 'Haera') return hon ? [['p-hon', 'imp-eura']] : row.stem.endsWith('가') ? [['imp-ara'], ['imp-geora']] : row.stem.endsWith('오') ? [['imp-ara'], ['imp-neora']] : [['imp-ara']];
+          if (level === 'Haera') return hon ? [['p-hon', 'imp-eura']] : row.stem.endsWith('가') || row.stem === '있' ? [['imp-ara'], ['imp-geora']] : row.stem.endsWith('오') ? [['imp-ara'], ['imp-neora']] : [['imp-ara']];
           if (level === 'Hae') return [[...H, 'hae']];
           if (level === 'Haeyo') return hon ? [['seyo'], ['p-hon', 'haeyo']] : [['haeyo']];
           return hon ? [['imp-sipsio']] : [['imp-bsio']];
@@ -145,7 +154,8 @@ export function koSlotChains(slot: string, row: Pick<KoRow, 'cat' | 'honSi' | 's
       if (mood === 'Int' && tense === 'Fut') return undefined;
       if (level === 'Haera') {
         if (mood === 'Ind') return [[...H, ...pre, action && tense === 'Pres' ? 'decl-neunda' : 'decl-da']];
-        return [[...H, ...pre, tense === 'Past' || action || cat === 'E' ? 'q-neunya' : 'q-nya']];
+        // -느냐 / -(으)냐 is the written and reported question; -니 and -냐 are what people say
+        return [[...H, ...pre, tense === 'Past' || action || cat === 'E' ? 'q-neunya' : 'q-nya'], [...H, ...pre, 'q-ni'], [...H, ...pre, 'q-nya']];
       }
       if (level === 'Hae') return [[...H, ...pre, (cat === 'C' || cat === 'N') && tense === 'Pres' && !hon ? 'hae-ya' : 'hae']];
       if (level === 'Haeyo') {
@@ -260,8 +270,10 @@ function predicateForms(row: KoRow): RowCells {
     if (slot.startsWith('stem:')) continue;
     const plainChains = koSlotChains(slot, row, false);
     const honChains = row.honSi ? undefined : koSlotChains(slot, row, true);
-    const plain = plainChains ? usual(gen(row, plainChains), row, slot) : [];
-    const hon = honChains ? usual(gen(row, honChains), row, slot) : [];
+    // -(으)냐 is the descriptive verb's question (먹으냐 is not said of a verb)
+    const dropEuNya = (fs: string[]): string[] => (row.cat === 'V' || row.cat === 'E' ? fs.filter((f) => !f.endsWith('으냐')) : fs);
+    const plain = plainChains ? dropEuNya(usual(gen(row, plainChains), row, slot)) : [];
+    const hon = honChains ? dropEuNya(usual(gen(row, honChains), row, slot)) : [];
     if (plain.length || hon.length) forms.set(slot, { plain, hon });
   }
   return { row, forms };
@@ -338,7 +350,7 @@ const HON_SYLLABLES = '시셔셨세신실십심';
 const signature = (r: KoRow): string => `${r.cls}|${r.cat}|${r.honSi ? 1 : 0}`;
 
 function predicateParadigm(lemma: string, pos: PartOfSpeech): GeneratedParadigm | undefined {
-  const { rows, refused } = koPredicateRows(lemma, pos);
+  const { rows, refused, notes: rowNotes } = koPredicateRows(lemma, pos);
   if (!rows.length) return undefined;
   const groupsBySig = new Map<string, KoRow[]>();
   for (const r of rows) groupsBySig.set(signature(r), [...(groupsBySig.get(signature(r)) ?? []), r]);
@@ -403,7 +415,8 @@ function predicateParadigm(lemma: string, pos: PartOfSpeech): GeneratedParadigm 
   if (first.entry.own && !first.gloss) notes.push(`${koBareLemma(lemma)} has no entry of its own in the lexicon: it is read as a noun or root plus its light verb (${first.cls === 'Ha' ? '하다' : '되다 / 시키다'}) and conjugates as that verb does.`);
   if (first.honSi) notes.push('This verb is itself honorific, so it has no further -(으)시- column; 시 + 어요 contracts to 세요 (계세요).');
   if (first.cat === 'V') notes.push('Before a noun an action verb shows tense: 먹는 (present) · 먹은 (past) · 먹을 (to come); a descriptive verb shows the present state: 예쁜.');
-  notes.push('Each form is generated by rule from the dictionary entry\'s conjugation class and read back through the analyser; a form the dictionary\'s table also gives is marked as agreeing, one it spells differently is marked as a disagreement with both shown.');
+  notes.push(...rowNotes);
+  notes.push("Each form is generated by rule from the dictionary entry's conjugation class; a sample of words is checked in our tests against the analyser and the dictionary's own tables. A form the dictionary's table also gives is marked as agreeing, one it spells differently is marked as a disagreement with both shown.");
   for (const r of refused) notes.push(`Left out: ${r}.`);
   return {
     kind: 'verb-conjugation',
@@ -421,8 +434,10 @@ const NOUN_TAGS: Readonly<Record<string, readonly string[]>> = { NOUN: ['NNG', '
 
 /** The particles of the noun table, with the row's plain label. */
 const NOUN_PARTICLES: ReadonlyArray<readonly [id: string, label: string]> = [
-  ['subject', 'subject 이/가'], ['topic', 'topic 은/는'], ['object', 'object 을/를'], ['of', 'of 의'], ['to', 'to, at (a time or a destination) 에'],
+  ['subject', 'subject 이/가'], ['topic', 'topic 은/는'], ['object', 'object 을/를'], ['of', 'of 의'], ['to', 'to, at (a place, a time) 에'],
+  ['to-person', 'to (a person) 에게'], ['to-person-hante', 'to (a person, spoken) 한테'], ['to-person-hon', 'to (a person one honours) 께'],
   ['at', 'at, from (a place) 에서'], ['by', 'by, toward 로/으로'], ['and', 'and, with 와/과'], ['also', 'also 도'], ['only', 'only 만'],
+  ['from', 'from (a starting point) 부터'], ['until', 'until, up to 까지'], ['than', 'than 보다'], ['like', 'like, as 처럼'],
 ];
 /** A pronoun that changes shape before a particle: 나 + 가 = 내가. */
 const FUSED_NOMINAL: Readonly<Record<string, Readonly<Record<string, string>>>> = {
@@ -467,21 +482,28 @@ function nominalParadigm(lemma: string, pos: PartOfSpeech): GeneratedParadigm | 
   const fusing = (e: KoLexEntry) => /\b(?:I|me|you|who)\b/u.test(e.gloss ?? '');
   const fused = entries.some(fusing) ? FUSED_NOMINAL[bare] ?? {} : {};
   const fusedFirst = entries.every(fusing);
+  // a person takes 에게 / 한테 / 께, not 에: a pronoun for a person (나, 너, 저, 누구) has no 에 row; 께 is for a person one honours, so not for 나 and 저
+  const person = entries.some(fusing);
+  const countable = pos === 'NOUN';
   const plural = `${bare}들`;
   const sound = hostSound(bare);
   const push = (slot: string, particle: string, number: 'Sing' | 'Plur', form: string, note?: string) => {
     cells.push({ features: { Slot: slot, Particle: particle, Number: number, ...(particle !== 'none' ? PARTICLES[particle].morph : {}) }, form, ...(note ? { note } : {}) });
   };
   push('p:none', 'none', 'Sing', bare);
-  push('p:none', 'none', 'Plur', plural, 'plural -들 (optional; Korean does not mark the plural unless it matters)');
+  if (countable) push('p:none', 'none', 'Plur', plural, 'plural -들 (optional; Korean does not mark the plural unless it matters)');
   for (const [id, label] of NOUN_PARTICLES) {
     const f = particleForm(id, sound);
     const fp = particleForm(id, 'L');
     if (!f || !fp) continue;
+    if (id === 'to' && person) continue;
+    if (id === 'to-person-hon' && (pos === 'NUM' || bare === '나' || bare === '저')) continue;
+    if (id.startsWith('to-person') && pos === 'NUM') continue;
     rowLabels.push([`p:${id}`, label]);
-    const forms = fused[id] ? (fusedFirst ? [fused[id], bare + f] : [bare + f, fused[id]]) : [bare + f];
+    // the fused subject (내가, 제가, 네가, 누가) is the only subject form of the pronoun it is for; the plain 나가 / 저가 / 너가 is not used
+    const forms = fused[id] ? (fusedFirst && id === 'subject' ? [fused[id]] : fusedFirst ? [fused[id], bare + f] : [bare + f, fused[id]]) : [bare + f];
     forms.forEach((form, i) => push(`p:${id}`, id, 'Sing', form, i === 0 ? PARTICLES[id].role : undefined));
-    push(`p:${id}`, id, 'Plur', plural + fp, PARTICLES[id].role);
+    if (countable) push(`p:${id}`, id, 'Plur', plural + fp, PARTICLES[id].role);
   }
   {
     const row: KoRow = { lemma: '이다', shown: '이다', stem: '이', cls: 'Cop', cat: 'C', honSi: false, entry: { lemma: '이다', tag: 'VCP' } };
@@ -499,12 +521,13 @@ function nominalParadigm(lemma: string, pos: PartOfSpeech): GeneratedParadigm | 
     `${bare}: a noun-like word has no inflection; the table shows the common particles, each in the shape its last sound asks for (${sound === 'V' ? 'after a vowel: 가, 는, 를, 로 …' : sound === 'L' ? 'after ㄹ: 이, 은, 을, 로 …' : 'after a consonant: 이, 은, 을, 으로 …'}), and the copula 이다 that makes it a statement (학생이다 · 의사다).`,
     'The dictionary gives no table of particle forms for a noun, so every cell here comes from the analyser\'s rules and is marked as such.',
   ];
+  if (!countable) notes.push(pos === 'PRON' ? 'A pronoun has no plural with -들 (that would be 나들, 너들, 저들): the plurals are separate words, 나 → 우리, 너 → 너희, 저 → 저희.' : 'A name, a numeral and a counter take no plural -들 here.');
   if (fused.subject) notes.push(fusedFirst ? `${bare} + 가 is written ${fused.subject}; the plain ${bare}가 is not used.` : `${bare} + 가 is written ${fused.subject} when ${bare} is the pronoun (${entries.filter(fusing).map((e) => koEntryLemma(e)).join(', ')}).`);
   if (entries.length > 1) notes.push(`${bare} names ${entries.length} entries (${entries.map((e) => koEntryLemma(e) + (e.gloss ? ` ${e.gloss}` : '')).join('; ')}); particles attach to all of them alike.`);
   return {
     kind: pos === 'PRON' ? 'pronoun-paradigm' : 'noun-declension',
     cells,
-    layout: { columns: { key: 'Number', values: [['Sing', 'singular'], ['Plur', 'with plural -들']] }, rows: { key: 'Slot', values: rowLabels } },
+    layout: { columns: { key: 'Number', values: countable ? [['Sing', 'singular'], ['Plur', 'with plural -들']] : [['Sing', 'with the particle']] }, rows: { key: 'Slot', values: rowLabels } },
     notes,
   };
 }

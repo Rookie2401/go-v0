@@ -30,6 +30,7 @@ const para = (lemma: string, pos: PartOfSpeech): GeneratedParadigm => {
 };
 /** The form of a slot in the plain or honorific column (the first form is the one shown). */
 const form = (p: GeneratedParadigm, slot: string, hon = false): string | undefined => p.cells.find((c) => c.features.Slot === slot && c.features.Honorific === (hon ? 'Subj' : 'No'))?.form;
+const forms = (p: GeneratedParadigm, slot: string, hon = false): string[] => p.cells.filter((c) => c.features.Slot === slot && c.features.Honorific === (hon ? 'Subj' : 'No')).map((c) => c.form);
 /** A noun cell by slot and number (the noun table has no honorific column). */
 const nform = (p: GeneratedParadigm, slot: string, number = 'Sing'): string | undefined => p.cells.find((c) => c.features.Slot === slot && c.features.Number === number)?.form;
 const nforms = (p: GeneratedParadigm, slot: string): string[] => p.cells.filter((c) => c.features.Slot === slot && c.features.Number === 'Sing').map((c) => c.form);
@@ -132,8 +133,12 @@ describe('the existentials and the copulas', () => {
       expect(form(p, 'fin:Ind:Haeyo:Pres')).toBe(`${stem}어요`);
       expect(form(p, 'fin:Ind:Haeyo:Pres', true)).toBe(`${stem}으세요`);
       expect(form(p, 'adn:pres', true)).toBe(`${stem}으신`); // the honorific follows the descriptive table
-      expect(p.cells.some((c) => c.features.Mood === 'Imp' || c.features.Mood === 'Prop')).toBe(false);
+      expect(p.cells.some((c) => c.features.Mood === 'Imp' || c.features.Mood === 'Prop')).toBe(lemma === '있다'); // only 있다 (stay) has commands
     }
+    const stay = para('있다', 'ADJ');
+    expect(forms(stay, 'fin:Imp:Haera:Pres')).toEqual(['있어라', '있거라']);
+    expect(form(stay, 'fin:Prop:Haera:Pres')).toBe('있자');
+    expect(form(stay, 'fin:Imp:Haeyo:Pres', true)).toBe('있으세요');
   });
 
   it('이다: the forms after a consonant-final noun, the vowel-final ones in the note', () => {
@@ -239,11 +244,11 @@ describe('homonyms', () => {
   });
 
   it('pronouns that change shape before a particle (나 + 가 = 내가), and the 저 that does not (저 "that" with 저 "I")', () => {
-    expect(nforms(para('나', 'PRON'), 'p:subject')).toEqual(['내가', '나가']);
+    expect(nforms(para('나', 'PRON'), 'p:subject')).toEqual(['내가']);
     expect(nform(para('나', 'PRON'), 'p:of')).toBe('내');
     expect(nform(para('누구', 'PRON'), 'p:subject')).toBe('누가');
     // 저 names "that" and "I" in the real lexicon: only the entry that is the pronoun takes the fused 제가
-    expect(nforms(para('저²', 'PRON'), 'p:subject')).toEqual(['제가', '저가']);
+    expect(nforms(para('저²', 'PRON'), 'p:subject')).toEqual(['제가']);
     expect(nforms(para('저¹', 'PRON'), 'p:subject')).toEqual(['저가']);
   });
 
@@ -520,5 +525,105 @@ describe.skipIf(!HAVE_DICT)('the generated cells against the dictionary\'s table
     expect(dict.length).toBeGreaterThan(40);
     // whichever record the shared pickRecord takes first, none of its cells is a disagreement with the entry it was attributed to
     expect(new Set(dict.map((c) => c.features.Entry)).size).toBe(1);
+  });
+});
+
+// ───────────────────────────── fix batch 1: the cells a form lights, pronouns, persons, honorific verbs ─────────────────────────────
+
+describe('GG1: an ending that is not a row of the table lights no wrong cell', () => {
+  const cellsOf = (lemma: string, pos: PartOfSpeech) => para(lemma, pos).cells.map((c) => ({ form: c.form, features: c.features, sources: ['generated' as const], status: 'generated' as const }));
+  const lit = (lemma: string, pos: PartOfSpeech, surface: string): string[] => {
+    const cells = cellsOf(lemma, pos);
+    const reading = koAnalyzeToken(surface).find((r) => r.lemma && koBareLemma(r.lemma) === lemma) ?? koAnalyzeToken(surface)[0];
+    return koCellsFor({ cells }, reading?.morph ?? {}, surface).map((c) => c.features.Slot);
+  };
+  const OFF_TABLE = ['먹지', '먹자마자', '먹으러', '먹었더니', '먹으려면', '먹으면서', '먹었네요', '먹는군요', '먹을게요', '먹을까요', '먹지요', '먹거라', '먹고서', '먹다가', '먹도록', '먹거나', '먹든지', '먹으므로', '먹는다고', '먹는대요', '먹잖아요', '먹거든요', '먹을수록', '먹었던', '먹을지', '먹는지', '먹었는데', '먹었으면', '먹었지만', '먹었으니까', '먹었고', '먹어도', '먹어야겠다', '먹는구나', '먹나요', '먹네', '먹을래', '먹는다면', '먹다니', '먹으려는'];
+  it('forty common endings that are not rows light at most one cell', () => {
+    expect(OFF_TABLE.length).toBeGreaterThanOrEqual(40);
+    const bad = OFF_TABLE.map((w) => [w, lit('먹다', 'VERB', w)] as const).filter(([, l]) => l.length > 1);
+    expect(bad).toEqual([]);
+    for (const w of ['먹었더니', '먹지요', '먹을게요', '먹자마자']) expect(lit('먹다', 'VERB', w), w).toEqual([]);
+  });
+  it('a form that is a row still lights its row(s)', () => {
+    expect(lit('먹다', 'VERB', '먹으면')).toEqual(['conn:if']);
+    expect(lit('먹다', 'VERB', '먹었어요').sort()).toEqual(['fin:Ind:Haeyo:Past', 'fin:Int:Haeyo:Past']);
+  });
+  it('the shared selectedCellKeys: Korean says none for an empty list; another language keeps the loose fallback', async () => {
+    const { selectedCellKeys } = await import('../../../packages/golearn-extension/src/content/enrich');
+    const { cellsForSelection } = await import('../../../src/core/paradigm');
+    const cells = cellsOf('먹다', 'VERB');
+    const pk = { languageId: 'ko', lemma: '먹다', pos: 'VERB' as const, kind: 'verb-conjugation' as const, cells, notes: [], sources: [], status: 'generated' as const };
+    const feats = { VerbForm: 'Conn', Connective: 'and-then' };
+    expect(selectedCellKeys(koAdapter, pk, feats, '먹었더니')).toEqual([]);
+    expect(cellsForSelection(pk, feats, '먹었더니').length).toBeGreaterThan(0); // what every other language still gets
+    const other = { lang: 'xx', cellsFor: () => [] } as never;
+    expect(selectedCellKeys(other, pk, { VerbForm: 'Conn' }, '먹고').length).toBeGreaterThan(0);
+  });
+});
+
+describe('GG3, GG4: nominal tables', () => {
+  const all = (p: GeneratedParadigm) => p.cells.map((c) => c.form);
+  it('no pronoun table holds 나들 / 너들 / 저들 / 누구들 / 나가 / 저가 / 너가 / 누구가; no plural column for a pronoun, name or numeral', () => {
+    for (const [w, pos] of [['나', 'PRON'], ['너', 'PRON'], ['저²', 'PRON'], ['누구', 'PRON'], ['서울', 'PROPN'], ['하나', 'NUM']] as Array<[string, PartOfSpeech]>) {
+      const p = para(w, pos);
+      const f = all(p);
+      for (const bad of ['나들', '너들', '저들', '누구들', '나가', '저가', '너가', '누구가', '서울들', '하나들']) expect(f, `${w}: ${bad}`).not.toContain(bad);
+      expect(f.some((x) => x.includes('들'))).toBe(false);
+      expect(p.layout!.columns.values.map(([v]) => v)).toEqual(['Sing']);
+    }
+    expect(nforms(para('나', 'PRON'), 'p:subject')).toEqual(['내가']);
+    expect(nforms(para('저²', 'PRON'), 'p:subject')).toEqual(['제가']);
+    expect(nforms(para('너', 'PRON'), 'p:subject')).toEqual(['네가']);
+    expect(nforms(para('누구', 'PRON'), 'p:subject')).toEqual(['누가']);
+    expect(para('학생', 'NOUN').cells.map((c) => c.form)).toContain('학생들이');
+  });
+  it('a person takes 에게 / 한테 / 께: the noun has both 에 and 에게, the pronoun for a person only the person rows', () => {
+    const n = para('학생', 'NOUN');
+    expect(nform(n, 'p:to')).toBe('학생에');
+    expect(nform(n, 'p:to-person')).toBe('학생에게');
+    expect(nform(n, 'p:to-person-hante')).toBe('학생한테');
+    expect(nform(n, 'p:to-person-hon')).toBe('학생께');
+    expect([nform(n, 'p:until'), nform(n, 'p:from'), nform(n, 'p:than'), nform(n, 'p:like')]).toEqual(['학생까지', '학생부터', '학생보다', '학생처럼']);
+    const i = para('나', 'PRON');
+    expect(slots(i)).not.toContain('p:to');
+    expect(nform(i, 'p:to-person')).toBe('나에게');
+    expect(slots(i)).not.toContain('p:to-person-hon');
+    expect(slots(para('누구', 'PRON'))).toContain('p:to-person-hon');
+  });
+  it('the particle in the word is its row: 학생에게 lights 에게, 서울까지 lights 까지, a chain that is not a row (서울에서는) lights none, never the word itself', () => {
+    const lit = (lemma: string, pos: PartOfSpeech, surface: string) => {
+      const cells = para(lemma, pos).cells.map((c) => ({ form: c.form, features: c.features, sources: ['generated' as const], status: 'generated' as const }));
+      const r = koAnalyzeToken(surface).find((x) => x.lemma && koBareLemma(x.lemma) === lemma);
+      return koCellsFor({ cells }, r?.morph ?? {}, surface).map((c) => c.features.Slot);
+    };
+    expect(lit('학생', 'NOUN', '학생에게')).toEqual(['p:to-person']);
+    expect(lit('서울', 'PROPN', '서울까지')).toEqual(['p:until']);
+    expect(lit('서울', 'PROPN', '서울에서는')).toEqual([]);
+    expect(lit('나', 'PRON', '나에게')).toEqual(['p:to-person']);
+    expect(lit('학생', 'NOUN', '학생')).toEqual(['p:none']);
+  });
+});
+
+describe('GG7, GG2, GG6: honorific verbs, questions, 하다 without a class, the card note', () => {
+  it('계시다 has no plain or informal command or suggestion, but 계세요 and 계십시오', () => {
+    const p = para('계시다', 'VERB');
+    expect(p.cells.some((c) => c.features.Slot === 'fin:Imp:Haera:Pres' || c.features.Slot === 'fin:Prop:Haera:Pres' || c.features.Slot === 'fin:Imp:Hae:Pres')).toBe(false);
+    expect(p.cells.some((c) => c.form === '계시어라' || c.form === '계셔라')).toBe(false);
+    expect(form(p, 'fin:Imp:Haeyo:Pres')).toBe('계세요');
+    expect(form(p, 'fin:Imp:Hasipsio:Pres')).toBe('계십시오');
+  });
+  it('the plain question has -니 and -냐 beside -느냐, and no 먹으냐', () => {
+    expect(forms(para('먹다', 'VERB'), 'fin:Int:Haera:Pres')).toEqual(['먹느냐', '먹니', '먹냐']);
+    expect(forms(para('예쁘다', 'ADJ'), 'fin:Int:Haera:Pres')).toEqual(['예쁘냐', '예쁘니']);
+    expect(para('먹다', 'VERB').cells.map((c) => c.form)).not.toContain('먹으냐');
+  });
+  it('a 하다 predicate with no class conjugates as 하다 (not 묵직하요)', () => {
+    const p = koAdapter.paradigm!('묵직하다', 'ADJ');
+    if (p) { expect(form(p, 'fin:Ind:Haeyo:Pres')).toBe('묵직해요'); expect(form(p, 'fin:Ind:Haeyo:Past')).toBe('묵직했어요'); }
+  });
+  it('the card note says what is true', () => {
+    const notes = para('먹다', 'VERB').notes.join(' ');
+    expect(notes).not.toMatch(/read back through the analyser/);
+    expect(notes).toMatch(/a sample of words is checked in our tests/);
   });
 });

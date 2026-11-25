@@ -220,7 +220,7 @@ const spells = (c: ParadigmCell, surface: string): boolean => sameText(c.form, s
 /**
  * The cells of a Korean paradigm that the selected reading occupies: the reading's features name the cells (an open mood such as
  * the 해요체 statement / question / command / suggestion names all four), then the form the reader clicked picks among them. A form no
- * feature names (the analyser read a union, or the cell vocabulary differs) falls back to every cell that spells it.
+ * feature names (the analyser read a union, or the cell vocabulary differs) falls back to every cell that spells it; a form no cell spells names NO cell (an empty list means none, not "unknown").
  */
 export function koCellsFor(paradigm: { cells: ParadigmCell[] }, features: Record<string, string>, surface?: string): ParadigmCell[] {
   const byFeatures = Object.keys(features).length ? paradigm.cells.filter((c) => koCellCompatible(c.features, features)) : [];
@@ -229,7 +229,8 @@ export function koCellsFor(paradigm: { cells: ParadigmCell[] }, features: Record
   if (exact.length) return exact;
   const anywhere = paradigm.cells.filter((c) => spells(c, surface));
   if (anywhere.length) return anywhere;
-  return byFeatures;
+  // no cell spells it: the ending is not one of the table's rows (먹었더니, 먹지요, 갈까요), and no cell is the reader's form
+  return [];
 }
 
 /** The distinct cells by key (a helper for callers that merge two lists). */

@@ -226,6 +226,16 @@ declarative ending").
 
 - 0.92: a lexicon stem with a chain every step of which is licensed, and no other reading within 0.15.
 - 0.80–0.88: several licensed readings (all are kept, best first; the reasons for the order are in `notes.context`).
+- **Doubt between homonyms never lowers the spelling against other analyses.** A balanced set is ranked as ONE reading
+  (the undecided one) at the strength any single word would have (의사가 is 의사 + 가 at the same band as 학교가, not below
+  의 + 사 + 가); the numbered readings of that set follow it, each lower. The doubt is shown inside the reading.
+- **A whole headword outranks a split of it.** A noun + derivational suffix, or a shorter stem + more endings, is offered
+  only where the lexicon has no headword for the whole stem, and never above a predicate analysis whose every step is
+  licensed (물어요 is 묻다 / 물다, not 물 + 어; 하여 is 하다).
+- **A reading consumes the whole token.** No reading is confident about a prefix of the token with the rest unexplained.
+- **No comma-joined sentence type.** Where the ending alone does not say statement, question, command or suggestion
+  (해요체 -아/어요, 해체 -아/어), the token carries no `Mood`; `notes.sentenceType` lists what the form allows, and the
+  sentence layer sets `Mood` from the punctuation (`?` → `Int`). (The card splits a listed Mood into separate readings.)
 - 0.60: a reading that needs a non-standard allomorph (는 after a consonant) or a spacing the standard does not allow.
 - ≤ 0.45 and `unconfirmed: true`: the stem is not in the lexicon (a name, a new word): the particle or ending chain
   is explained, the stem is offered as written, no gloss.

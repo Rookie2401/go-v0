@@ -5,7 +5,7 @@
  * product is the password hash; this test fails the day one appears anywhere a lemma or a unit id could pass (found by the linguistic
  * audit of the Korean pack, 2026-11-25).
  */
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { koBareLemma, koEntryLemma, koHomonymLemma, koHomonymNumber } from '../../../src/adapters/korean/index-store';
@@ -45,7 +45,7 @@ describe('a homonym number survives every path a lemma takes', () => {
 
   it('no source file but the password hash uses compatibility normalisation', () => {
     const found: string[] = [];
-    for (const dir of ['src', 'packages', 'scripts']) {
+    for (const dir of ['src', 'packages', 'scripts', 'server', 'infra'].filter((d) => existsSync(join(ROOT, d)))) {
       for (const file of sources(join(ROOT, dir))) {
         if (!/NFK[CD]/.test(readFileSync(file, 'utf8'))) continue;
         found.push(relative(ROOT, file).split(sep).join('/'));

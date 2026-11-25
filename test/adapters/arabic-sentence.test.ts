@@ -11,7 +11,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import type { AnalysisCandidate, AnalyzedToken } from '../../src/core/adapters';
 import { arWordCandidates } from '../../src/adapters/arabic/analyze';
 import { installArabicIndex, resetArabicIndexes, type ArabicFormIndex } from '../../src/adapters/arabic/index-store';
-import { arAnalyze, arRefine } from '../../src/adapters/arabic/sentence';
+import { arAnalyze, arIsPreferredOver, arRefine } from '../../src/adapters/arabic/sentence';
 import { arTokenize } from '../../src/adapters/arabic/text';
 import { AR_ANALYZER } from '../../src/adapters/arabic/version';
 
@@ -383,11 +383,38 @@ describe.skipIf(!fs.existsSync(MANIFEST))('with the full index', () => {
     expect(cands(a, 0).some((c) => c.notes?.identity === 'sentence' && c.pos === 'VERB')).toBe(false);
     expect(credited(cands(a, 0))).toEqual([]);
   });
-  it('R5 passive وُلِدَ: at the start of a clause or after وقد, before a name, an ال-noun with a preposition after it, في, عام: the verb وَلَدَ; a bare adjective after: the noun', () => {
-    expect(top(run('ولد محمد في القاهرة عام ١٩٥٠'), 0)).toMatchObject({ lemma: 'وَلَدَ', pos: 'VERB', confidence: 0.75 });
-    expect(top(run('وقد ولد الطفل في المستشفى'), 1)).toMatchObject({ lemma: 'وَلَدَ', pos: 'VERB' });
-    expect(credited(cands(run('ولد صغير يلعب في الحديقة'), 0)).filter((l) => l.includes('VERB'))).toEqual([]);
-    expect(top(run('ولد'), 0).notes?.identity).not.toBe('sentence');
+  it('R5 passive وُلِدَ is REORDER-ONLY (17 audited firings, 16 right): the verb goes first and says why, and stays under 0.5', () => {
+    for (const [t, i] of [['ولد محمد في القاهرة عام ١٩٥٠', 0], ['وقد ولد الطفل في المستشفى', 1]] as Array<[string, number]>) {
+      const v = top(run(t), i);
+      expect(v, t).toMatchObject({ lemma: 'وَلَدَ', pos: 'VERB' });
+      expect(v.confidence, t).toBeLessThan(0.5);
+      expect(v.notes?.identity, t).not.toBe('sentence');
+    }
+    expect(notesOf(top(run('ولد محمد في القاهرة عام ١٩٥٠'), 0), 'context')).toContain('Born');
+  });
+  it('R5 reorder-only windows never credit: a verb with its subject and a preposition, a noun after كل, هذا أمر مهم', () => {
+    for (const t of ['وضع البلاد في خطر', 'كل أمر مهم عنده', 'هذا أمر مهم']) {
+      const a = run(t);
+      for (const w of words(a)) expect(credited(w.candidates).length === 0 || w.candidates.every((c) => c.notes?.identity !== 'sentence' || c.confidence < 0.5), t).toBe(true);
+    }
+    const n = top(run('هذا أمر مهم'), 1);
+    expect(n.pos).toBe('NOUN');
+    expect(n.confidence).toBeLessThan(0.5);
+  });
+  it('item 6: a noun window never chooses between two noun lexemes by itself: من البرد is not "mail", عن الكذب is not "liar", في العلم is not decided', () => {
+    expect(cands(run('من البرد'), 1).filter((c) => c.lemma === 'بَرِيد').every((c) => c.confidence < 0.5)).toBe(true);
+    expect(cands(run('عن الكذب'), 1).filter((c) => c.lemma === 'كَاذِب').every((c) => c.confidence < 0.5)).toBe(true);
+    expect(top(run('في العلم'), 1).notes?.identity).not.toBe('sentence');
+    expect(credited(cands(run('في العلم'), 1)).length).toBeLessThanOrEqual(1);
+  });
+  it('the lām of command at the start of a clause is the jussive of the verb: فليكتب, وليكن; NEGATIVE: the lām of purpose after a verb', () => {
+    expect(top(run('فليكتب الطالب الدرس'), 0)).toMatchObject({ lemma: 'كَتَبَ', pos: 'VERB', confidence: 0.8 });
+    expect(top(run('وليكن الأمر كذلك'), 0)).toMatchObject({ lemma: 'كَانَ', pos: 'VERB' });
+    expect(notesOf(top(run('ذهب ليكتب'), 1), 'context')).not.toContain('lām of command');
+  });
+  it('the reviewed preferences are read through arIsPreferredOver (winner, loser): the table lists the loser\'s winners', () => {
+    expect(arIsPreferredOver('أَب|NOUN', 'آبَ|VERB')).toBe(true);
+    expect(arIsPreferredOver('آبَ|VERB', 'أَب|NOUN')).toBe(false);
   });
   it('the regression cases that need context: لَنْ يَكْتُبَ, لَمْ يَكْتُبْ, كِتَابُ الطَّالِبِ', () => {
     expect(top(run('لَمْ يَكْتُبْ'), 1)).toMatchObject({ lemma: 'كَتَبَ', morph: { Mood: 'Jus', Aspect: 'Imp' } });

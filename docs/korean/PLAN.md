@@ -211,6 +211,34 @@ Predicate side, each an independent dimension:
   `Eu` ㅡ deletion, `L` ㄹ deletion, `Ha` 하다/여). Present only when the form in hand shows the alternation.
 - `Contracted=Yes` when the written form fuses the stem's last vowel with the ending (봐요, 줘요, 돼요, 해요, 마셔요).
 
+#### The vocabulary as built (2026-11-25; the grammar copy has a line for every value, kept equal by test/language-packs/ko-pack.test.ts)
+
+| Key | Values |
+|---|---|
+| VerbForm | Fin Conn Adn Nmlz |
+| Tense | Past Pres |
+| Aspect | Pqp Prosp |
+| Mood | Ind Int Imp Prop Excl (absent where the ending does not say; `notes.sentenceType` lists what the form allows, and only a question mark sets Int) |
+| Modality | Presumptive Retrospective Necessitative |
+| Honorific | Subj |
+| SpeechLevel | Hae Haeyo Hasipsio Haera Hage Hao Lit |
+| Register | Lit (literary connectives and pre-finals: -거늘, -(으)사, -옵-) |
+| Quote | Ind |
+| Connective | and and-while while but so since because if intend purpose even-if only-if background then as-soon-as so-that adverbial as-if or whether because-busy the-more and-then neg inf after saying although as-i not-but besides habit as-you-know for-lit |
+| VerbType | Descriptive Cop Exist (있다, 없다, 계시다: one item each) |
+| Polarity | Pos Neg |
+| Voice | Pass Caus (only where the entry says so, docs/korean/voice-decisions.json does, or the analysis builds it: 되다 / 받다 / 당하다 / 시키다, -아/어지다) |
+| Irregular | D B S H Reu Reo U Ha L Eu |
+| Contracted, Fused, Topic, Complement | Yes |
+| NounType | Bound Clf |
+| Number | Plur |
+| Case | Nom Acc Gen Dat Loc Abl Ins Com Cmp Equ Ess Voc |
+| Particle | the family ids of korean/particles.ts (58), joined with + |
+| Focus | Also Only From UpTo Each Even Except Alt Any AtLeast Emph Accord LetAlone |
+| Polite | Hon |
+
+Notes a reading may carry: `homonym` (undecided, or the number), `homonyms`, `otherEntries`, `context` (why the sentence layer moved it), `derived` and `compound` (what a built word is made of), `spacing`, `spelling`, `rare`, `phrase`, `value` (a numeral), `hanja`, `glossOwn`, `sentenceType`, `koPos`, `koClass`.
+
 ### Word parts (`candidate.parts`)
 
 One `WordPart` per morpheme, in order. `text` is the morpheme's citation form (`먹`, `-었-`, `-습니다`, `은/는` is the

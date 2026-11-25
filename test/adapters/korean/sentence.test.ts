@@ -251,6 +251,12 @@ describe.skipIf(!HAVE_SHARDS)('with every shard installed', () => {
         ['운동장을 한 바퀴 돌았어요.', '바퀴'], ['책을 한 권 샀어요.', '권'], ['사과를 한 개 먹었어요.', '개'], ['전화를 한 번 했어요.', '번'],
         ['물을 한 잔 마셨어요.', '잔'], ['편지를 한 장 썼어요.', '장'],
       ] as const) it(`${s}: 한 is "one"`, () => expect(readIn(s, '한').top.pos, readIn(s, w).top.pos).toBe('NUM'));
+      // a counter keeps its particles: 한 before it is still "one" (batch-5 addendum)
+      for (const [s, w] of [
+        ['책을 한 권도 읽지 않았어요.', '권도'], ['사과를 한 개만 먹었어요.', '개만'], ['학생이 한 명도 없어요.', '명도'], ['물을 한 잔도 안 마셨어요.', '잔도'],
+        ['책을 한 권을 샀어요.', '권을'], ['아이가 한 명이 왔어요.', '명이'], ['사과를 한 개씩 나눠 줬어요.', '개씩'], ['돈이 한 장밖에 없어요.', '장밖에'],
+        ['고양이를 한 마리만 키워요.', '마리만'], ['전화를 한 번도 안 했어요.', '번도'], ['우유를 한 병씩 마셨어요.', '병씩'],
+      ] as const) it(`${s}: 한 is "one" before the counter ${w}`, () => expect(readIn(s, '한').top.pos, readIn(s, w).top.pos).toBe('NUM'));
       for (const s of ['공부를 한 사람이 왔어요.', '일을 한 시간이 길어요.', '숙제를 한 학생이 있어요.', '공부를 한 사람', '요리를 한 사람이 누구예요?', '운동을 한 사람은 피곤해요.']) {
         it(`${s}: 한 is 하다 "that did"`, () => expect(readIn(s, '한').top).toMatchObject({ lemma: '하다', pos: 'VERB', morph: { VerbForm: 'Adn' } }));
       }

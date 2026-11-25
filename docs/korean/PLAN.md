@@ -269,9 +269,15 @@ declarative ending").
 - **No comma-joined sentence type.** Where the ending alone does not say statement, question, command or suggestion
   (해요체 -아/어요, 해체 -아/어), the token carries no `Mood`; `notes.sentenceType` lists what the form allows, and the
   sentence layer sets `Mood` from the punctuation (`?` → `Int`). (The card splits a listed Mood into separate readings.)
-- **A reading the sentence promotes** takes the lower of the token's top confidence and 0.88; a reading a sure rule sets aside
-  is lowered by 0.20, never below 0.30; the list stays strictly falling. Every such change says why in `notes.context`, in words
-  a person reads (the bare headword and its meaning, never a raised number).
+- **A reading the sentence promotes** takes the lower of the token's top confidence and 0.88. Every reading it SUPERSEDES for a sure
+  reason goes to 0.45 or below, and at least 0.20 under the chosen one: the undecided reading and the other entries of a homonym
+  set when a cue chose one, the lexical reading when an auxiliary is promoted, the noun when the verb position chose the predicate.
+  The list stays strictly falling, and every change says why in `notes.context`, in words a person reads.
+- **Only a live rival is creditable.** The product credits every reading at 0.5 or more that is not unconfirmed, and its Reading
+  Analysis sends a word with more than six such readings with none. So a reading that is not a live rival sits at 0.45 or below
+  and is still listed for the card: the numbered readings behind an undecided one, a rival the counts never saw, a dropped-copula
+  or spacing reading, an auxiliary behind a lexical first reading, a reading the sentence set aside. A test keeps the share of
+  words with more than one creditable reading under a stated ceiling and no word above six.
 - **A full stop sets no Mood.** Only a question mark does (`Int`): 앉으세요. is a request and 가요. may be a statement or a suggestion.
 - 0.60: a reading that needs a non-standard allomorph (는 after a consonant) or a spacing the standard does not allow.
 - ≤ 0.45 and `unconfirmed: true`: the stem is not in the lexicon (a name, a new word): the particle or ending chain

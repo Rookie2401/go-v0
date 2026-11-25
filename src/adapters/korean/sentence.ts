@@ -2,7 +2,8 @@
  * The sentence layer of the Korean analyser (docs/korean/PLAN.md "Analysis", the last step): the readings of each word of ONE sentence,
  * ordered and marked by its neighbours. Token-local analysis is korean/analyze.ts (`koAnalyzeTokens`); this file only
  *   - MOVES a reading to the front, with the reason in `notes.context` (every change of order says why);
- *   - LOWERS the readings a sure rule sets aside (by 0.20, never below 0.30), so that the card no longer calls the word conflicted;
+ *   - LOWERS what a sure rule supersedes to 0.45 or below (under the credit line of 0.5; `notes.credit = 'set aside by the sentence'`),
+ *     so that the card no longer calls the word conflicted and the product credits only the chosen reading;
  *   - MARKS what only the sentence shows: the complement particle before 되다 / 아니다 (`morph.Complement=Yes`, JKC), the sentence type from
  *     a final question mark (`Mood=Int`, one value), negation by 안 / 못 / -지 않다 (`notes.negation`), the kind of numeral before a counter.
  * It never adds a reading, never removes one and never rewrites a lemma, a part of speech or a part. Where nothing decides, the order the
@@ -30,9 +31,12 @@ type Cand = AnalysisCandidate;
 
 /** A reading moved up by a rule takes the token's best confidence, at most this (PLAN: 0.80–0.88 for several licensed readings). */
 export const KO_CONTEXT_TOP = 0.88;
-/** A reading a sure rule sets aside loses this much, never below the floor. */
+/**
+ * A reading a sure rule supersedes is no longer a live rival: it goes to at most 0.45, below the product's credit line of 0.5 (and at least
+ * 0.20 below the chosen one), with `notes.credit = 'set aside by the sentence'`.
+ */
 const SET_ASIDE = 0.2;
-const SET_ASIDE_FLOOR = 0.3;
+const SUPERSEDED_MAX = 0.45;
 const r2 = (x: number): number => Math.round(x * 100) / 100;
 
 /** Strictly falling confidences down the list (the card takes the highest: the first must be it). */
@@ -147,13 +151,16 @@ export function koPromote(s: KoSentence, i: number, want: (c: Cand) => boolean, 
   if (k > 0 && s.mayMark(i)) chosen.confidence = Math.max(chosen.confidence, Math.min(top, KO_CONTEXT_TOP));
   const lowered = others.filter((c) => aside(c, chosen));
   if (k === 0 && !lowered.length) return false;
-  for (const c of lowered) {
-    const v = r2(Math.max(SET_ASIDE_FLOOR, Math.min(c.confidence, chosen.confidence - SET_ASIDE)));
-    if (v < c.confidence) c.confidence = v;
-    addContext(c, `Set aside: ${reason}`);
+  // every rule here decides for a sure reason: what it supersedes is no longer a live rival and goes below the credit line (0.5), so the
+  // product credits the chosen reading alone; the other analyses of the chosen word itself (kept) go there too, in their own order
+  const kept = others.filter((c) => !lowered.includes(c));
+  for (const c of [...kept, ...lowered]) {
+    const v = r2(Math.min(c.confidence, SUPERSEDED_MAX, chosen.confidence - SET_ASIDE));
+    if (v < c.confidence) c.confidence = Math.max(0.01, v);
+    c.notes = { ...(c.notes ?? {}), credit: 'set aside by the sentence' };
+    if (lowered.includes(c)) addContext(c, `Set aside: ${reason}`);
   }
   // the chosen reading first, then the others in their own order: kept readings before the ones set aside
-  const kept = others.filter((c) => !lowered.includes(c));
   s.cands[i] = [chosen, ...kept, ...lowered];
   addContext(chosen, reason);
   koStrictlyFalling(s.cands[i]);
@@ -183,12 +190,17 @@ const QUANTITY_WORDS = new Set(['몇', '여러', '수십', '수백', '수천', '
 /**
  * 한 after an object (or an adverb) and before a word that can be a counter: 하다 + -(으)ㄴ "that did" (공부를 한 사람, 일을 한 시간이 길다) unless
  * the object has another verb to belong to: the counter written bare and an action verb later in the clause (운동장을 한 바퀴 돌았다, 책을 한
- * 권 샀다, 전화를 한 번 했다). A counter with a particle is the head of the clause (한 사람이, 한 시간이): 하다. Audit LL1.
+ * 권 샀다, 전화를 한 번 했다). This test is for the ORDINARY NOUNS that can also count (사람, 시간, 학생 …): with a particle they are the head of
+ * the clause (한 사람이, 한 시간이): 하다. A word that is a counter first (권, 개, 명, 잔, 번, 장 …) keeps its particles and 한 before it is the
+ * numeral whatever they are (책을 한 권도, 사과를 한 개만, 물을 한 잔도). Audit LL1 and the batch-5 addendum.
  */
+const NOUN_LIKE_COUNTERS = new Set(['사람', '시간', '학생', '날', '해', '집', '곳', '분', '아이', '가지', '주일', '사이']);
 function hanIsDid(s: KoSentence, p: number, i: number): boolean {
   const pv = s.prev(p);
   const pt = pv >= 0 ? s.top(pv) : undefined;
   if (!pt || !(lastParticle(pt) === 'object' || isAdverb(pt))) return false;
+  const clf = s.cands[i].find((c) => c.pos === 'CLF' && !c.unconfirmed);
+  if (clf && !NOUN_LIKE_COUNTERS.has(bare(clf))) return false;
   const ct = s.top(i);
   if (ct && particlesOf(ct).length) return true;
   for (let j = i + 1; j < s.n; j++) {

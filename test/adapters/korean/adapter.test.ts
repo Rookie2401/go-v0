@@ -42,6 +42,27 @@ const orderProblems = (analyses: AnalyzedToken[]): string[] => {
 };
 const PREDICATE = ['VERB', 'ADJ', 'AUX'];
 
+/** The owner's regression sentences (brief XXI) and the cue sentences of the sentence layer, for the credit measurement. */
+const REGRESSION = [
+  '학생은 책을 읽어요.', '학생들이 학교에서 공부했습니다.', '학교에서 친구에게만 말했어요.', '저는 밥을 먹었습니다.', '선생님이 책을 읽으셨습니다.', '저는 음악을 들어요.',
+  '날씨가 추워요.', '저는 길을 몰라요.', '옷이 하얘요.', '저는 의사가 돼요.', '이 책은 좋습니다.', '어제 공부했어요.', '밥을 먹고 싶어요.', '동생이 밥을 먹고 있어요.',
+  '내일 갈 수 있어요.', '어제 학교에 가지 않았어요.', '저는 학생입니다.', '저는 학생이 아닙니다.', '방에 책이 있어요.',
+];
+const CUED = ['눈이 와요.', '눈을 감았어요.', '말을 했어요.', '차를 마셔요.', '편지를 썼어요.', '갈 수 있어요.', '학생 수가 많아요.', '저는 학생이에요.', '먹어 보세요.', '저 사람은 누구예요?', '안 가요.', '세 명이 왔어요.'];
+const creditable = (a: AnalyzedToken) => a.candidates.filter((c) => !c.unconfirmed && c.confidence >= 0.5);
+/** Words, the largest number of creditable readings, the share with more than one, and the cued words left with other than one. */
+function creditFigures(): { words: number; max: number; share: number; cuedBad: string[] } {
+  let words = 0, many = 0, max = 0;
+  const cuedBad: string[] = [];
+  for (const s of [...ALL, ...REGRESSION, ...CUED]) for (const a of analyse(s).analyses) {
+    if (!a.token.isWord || !a.candidates.length) continue;
+    const n = creditable(a).length;
+    words++; if (n > 1) many++; max = Math.max(max, n);
+    if (a.candidates.some((c) => c.notes?.credit === 'set aside by the sentence') && n !== 1) cuedBad.push(`${s} ${a.token.surface}: ${n}`);
+  }
+  return { words, max, share: many / words, cuedBad };
+}
+
 const SHARDS = path.resolve(__dirname, '../../../public/lexicon/ko/standard');
 const HAVE_SHARDS = fs.existsSync(path.join(SHARDS, 'manifest.json'));
 const fsSource = {
@@ -53,6 +74,17 @@ describe('the 40 sentences, core only', () => {
   beforeAll(() => { uninstallKoreanLexicon('kaikki-ko-lexicon'); installKoreanLexicon(KO_CORE); });
 
   it('has 40 sentences: 15 of prose, 15 of speech, 10 literary', () => expect([PROSE.length, SPEECH.length, LITERARY.length]).toEqual([15, 15, 10]));
+
+  it('credit: at most six creditable readings a word, under 20 % of words with more than one, one on every word a cue decided', () => {
+    const f = creditFigures();
+    console.log(`credit (core): ${f.words} words, max ${f.max}, ${(f.share * 100).toFixed(1)} % with more than one creditable reading`);
+    expect(f.max).toBeLessThanOrEqual(6);
+    expect(f.share).toBeLessThan(0.2);
+    expect(f.cuedBad).toEqual([]);
+    // a reading the sentence superseded says so and is below the credit line
+    const all = analyse('눈이 와요.').analyses[0].candidates;
+    expect(all.filter((c) => c.notes?.credit === 'set aside by the sentence').every((c) => c.confidence <= 0.45)).toBe(true);
+  });
 
   it('order = confidence over every token: the first reading strictly the highest, the list strictly falling', () => {
     const bad = ALL.flatMap((s) => orderProblems(analyse(s).analyses).map((x) => `${s}: ${x}`));
@@ -254,6 +286,14 @@ describe.skipIf(!HAVE_SHARDS)('core only against every shard loaded (through the
     await loader.ensure(['국화']);
     const { tokens, analyses } = analyse('국화');
     expect(koAdapter.pronunciation(tokens[0], analyses[0]).transliteration).toBe('gukhwa');
+  });
+  it('credit with the shards: the same bounds', async () => {
+    await loader.ensure([...REGRESSION, ...CUED].flatMap((s) => koAdapter.tokenize(s).filter((t) => t.isWord).map((t) => t.surface)));
+    const f = creditFigures();
+    console.log(`credit (shards): ${f.words} words, max ${f.max}, ${(f.share * 100).toFixed(1)} % with more than one creditable reading`);
+    expect(f.max).toBeLessThanOrEqual(6);
+    expect(f.share).toBeLessThan(0.2);
+    expect(f.cuedBad).toEqual([]);
   });
   it('keeps order = confidence with the shards', () => {
     expect(ALL.flatMap((s) => orderProblems(analyse(s).analyses).map((x) => `${s}: ${x}`))).toEqual([]);

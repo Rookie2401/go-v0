@@ -12,7 +12,6 @@ import type { ShardLoader, ShardSource } from '../../../../src/adapters/shared/s
 import { createGreekShardLoader } from '../../../../src/adapters/greek/shards';
 import { createHebrewShardLoader } from '../../../../src/adapters/hebrew/shards';
 import { createRussianShardLoader } from '../../../../src/adapters/russian/shards';
-import { createKoreanShardLoader } from '../../../../src/adapters/korean/shards';
 import type { UrlLoaderApi } from '../analysers/urlLoader';
 import { analyserExtras, getAnalyser } from '../parser/registry';
 
@@ -43,7 +42,11 @@ export function createLexiconPreparer(chromeApi: UrlLoaderApi | undefined, fetch
     let p = loaders.get(set);
     if (!p) {
       // the analyser chunk's own factory installs into the chunk's index store; the src factories serve only an analyser registered from src (tests)
-      const make = analyserExtras(set.slice(0, 2))?.createShardLoader ?? (set.startsWith('el/') ? createGreekShardLoader : set.startsWith('ru/') ? createRussianShardLoader : set.startsWith('ko/') ? createKoreanShardLoader : createHebrewShardLoader);
+      // Korean has NO src factory here on purpose: its loader needs the stem rules (korean/stems.ts, hangul.ts), about 7 KB that would sit in the
+      // content script of every page for the sake of tests; the Korean analyser chunk brings its own factory, and tests register it the same way
+      const fromChunk = analyserExtras(set.slice(0, 2))?.createShardLoader;
+      if (!fromChunk && set.startsWith('ko/')) { unavailable.add(set); p = Promise.resolve(undefined); loaders.set(set, p); return p; }
+      const make = fromChunk ?? (set.startsWith('el/') ? createGreekShardLoader : set.startsWith('ru/') ? createRussianShardLoader : createHebrewShardLoader);
       // the content script logs nothing (test/audit/security.bundle.test.ts): a missing set is remembered here and shows on the card as "not loaded"
       p = make(source, { base: set, maxLoaded: Math.max(maxLoaded, MAX_LOADED[set.slice(0, 2)] ?? 0) }).then((l) => l as ShardLoader, () => { unavailable.add(set); return undefined; });
       loaders.set(set, p);

@@ -44,7 +44,11 @@ describe.skipIf(!have)('the built extension', () => {
     // Belarusian, Bulgarian and Serbian text (language/cyrillic.ts, the Cyrillic branches of language/resolve.ts and active/pageLanguages.ts)
     // and loads the Russian form index's shards before a lookup (russian/shards.ts with its text helpers). content.js measured 581.4 KB
     // (575.5 KB on master 22be2d7e, which this branch has merged in).
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(585 * KB);
+    // 2026-11-25: 585 -> 588 KB for Korean: the content script tells a Hangul page from any other, knows the language's row, its voices and its
+    // lexicon set, and shows a homonym's headword without its number (lemma-display.ts). Measured 600,498 bytes = 586.4 KB (583.8 KB on master
+    // a822b1ab, built the same day). The Korean shard loader's stem rules are NOT here: lexicon/prepare.ts takes the factory from the analyser
+    // chunk (a static import had cost another 4.2 KB on every page).
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(588 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
@@ -69,7 +73,11 @@ describe.skipIf(!have)('the built extension', () => {
     // (about 12 KB). Measured 1,263,600 bytes = 1,234.0 KB on the merged tree (1,195.8 KB on 22be2d7e). No French analyser, word list or
     // lemma list is in the worker.
     // 2026-11-19 (release/ru-fr, both packs on master 3d92b264): 1,240 -> 1,270 KB. background.js measured 1,291,753 bytes = 1,261.5 KB with Russian and French.
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1270 * KB);
+    // 2026-11-25: 1,270 -> 1,315 KB for Korean, as for Russian and French before it: the worker holds what the popup card and the setup page
+    // ask it for: the pack manifest with its honest limits, the plain explanation of every feature value the analyser writes (speech levels,
+    // connectives, the 58 particle families), of 35 constructions, and the orientation. Measured 1,342,801 bytes = 1,311.3 KB (1,263.2 KB on
+    // master a822b1ab, built the same day). No Korean analyser, lexicon or Hangul table is in the worker: they are in analysers/ko.js (558 KB).
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1315 * KB);
     // 2026-10-21: 650 -> 760 KB; the GoTell redesign (aec73a36) and the GoListen playback refactor (9aae9cb0) brought app.js to 723 KB
     // (measured with the Biblia card of the reader screen, 0.8 KB, reverted). A ceiling again, not a target.
     // 2026-11-08: 760 -> 800 KB; master's build already measured 779 KB.

@@ -180,6 +180,25 @@ const TRIGGER_SINO = new Set(['일', '삼', '사', '오', '육', '칠', '팔', '
 /** Words of quantity a counter follows besides a numeral (몇 개, 여러 명, 한두 번). */
 const QUANTITY_WORDS = new Set(['몇', '여러', '수십', '수백', '수천', '서너', '두세', '한두', '두어', '대여섯', '예닐곱', '너덧', '댓']);
 
+/**
+ * 한 after an object (or an adverb) and before a word that can be a counter: 하다 + -(으)ㄴ "that did" (공부를 한 사람, 일을 한 시간이 길다) unless
+ * the object has another verb to belong to: the counter written bare and an action verb later in the clause (운동장을 한 바퀴 돌았다, 책을 한
+ * 권 샀다, 전화를 한 번 했다). A counter with a particle is the head of the clause (한 사람이, 한 시간이): 하다. Audit LL1.
+ */
+function hanIsDid(s: KoSentence, p: number, i: number): boolean {
+  const pv = s.prev(p);
+  const pt = pv >= 0 ? s.top(pv) : undefined;
+  if (!pt || !(lastParticle(pt) === 'object' || isAdverb(pt))) return false;
+  const ct = s.top(i);
+  if (ct && particlesOf(ct).length) return true;
+  for (let j = i + 1; j < s.n; j++) {
+    if (s.isPunct(j)) break;
+    const t = s.top(j);
+    if (t?.pos === 'VERB' && t.morph.VerbForm !== 'Adn') return false;
+  }
+  return true;
+}
+
 function ruleCounters(s: KoSentence): void {
   for (let i = 0; i < s.n; i++) {
     if (!s.isWord(i)) continue;
@@ -203,6 +222,11 @@ function ruleCounters(s: KoSentence): void {
     // a numeral WORD decides only where it is not also an everyday other word before this counter: 이 개 is "this dog" (Sino-Korean 이
     // does not count things), 너 is "you"; a Sino-Korean numeral counts only with a Sino-Korean counter (삼 년, 오 분)
     if (!digits && !(TRIGGER_NATIVE.has(pk) || (TRIGGER_SINO.has(pk) && SINO_COUNTERS.has(counter)))) continue;
+    if (!digits && pk === '한' && hanIsDid(s, p, i)) {
+      // 공부를 한 사람: 하다 + -(으)ㄴ "that did"; the word after it is the ordinary noun the clause describes
+      koPromote(s, i, (c) => c.pos !== 'CLF' && isNominal(c) && !c.unconfirmed && bare(c) === counter, `After 한 "that did" (${s.surface(p - 1 >= 0 ? p - 1 : p)} is its object), ${s.surface(i)} is the noun it describes, not a counter.`, (c) => c.pos === 'CLF');
+      continue;
+    }
     const before = s.surface(p);
     let which = '';
     if (digits) {
@@ -254,7 +278,7 @@ function ruleBareWords(s: KoSentence): void {
     if (k === '한') {
       // 한 + a counter: "one"; after an object or an adverb: 하다 + -(으)ㄴ (숙제를 한 학생, 열심히 한)
       const counterNext = nx >= 0 && s.cands[nx]?.some((c) => c.pos === 'CLF' && !c.unconfirmed);
-      if (counterNext) continue; // the counter rule decides
+      if (counterNext && !hanIsDid(s, i, nx)) continue; // the counter rule decided "one"
       if (prevTop && (lastParticle(prevTop) === 'object' || isAdverb(prevTop))) {
         koPromote(s, i, (c) => bare(c) === '하다' && c.pos === 'VERB' && isAdn(c), `After ${s.surface(pv)} (${isAdverb(prevTop) ? 'an adverb' : 'an object'}), 한 is 하다 with the adnominal -(으)ㄴ ("that did").`);
       }
@@ -607,6 +631,24 @@ function ruleComplement(s: KoSentence): void {
   }
 }
 
+/**
+ * The last word of a sentence with no other predicate, after an object or a place or before "!", is the predicate when it has a licensed
+ * predicate reading (불 켜!, 여기 서!, 문을 닫아.): a sentence needs its verb. Audit HH1.
+ */
+function ruleLastPredicate(s: KoSentence, finalPunct: string | undefined): void {
+  let last = -1;
+  for (let i = s.n - 1; i >= 0; i--) if (s.isWord(i)) { last = i; break; }
+  if (last < 0) return;
+  if (s.cands.some((cs, i) => i !== last && s.isWord(i) && isPredicate(cs[0]))) return;
+  const t = s.top(last);
+  if (!t || isPredicate(t)) return;
+  const pv = s.prev(last);
+  const pTop = pv >= 0 ? s.top(pv) : undefined;
+  const cue = finalPunct && /[!！]/u.test(finalPunct) ? 'before "!"' : pTop && ['object', 'to', 'at'].includes(lastParticle(pTop) ?? '') ? `after ${s.surface(pv)}` : pTop && bareNominal(pTop) && pTop.pos !== 'NUM' ? `after ${s.surface(pv)}` : '';
+  if (!cue) return;
+  koPromote(s, last, (c) => isPredicate(c) && c.pos !== 'AUX' && c.morph.VerbForm === 'Fin', `${s.surface(last)} ends a sentence that has no other predicate (${cue}): it is the predicate.`, (c) => !isPredicate(c));
+}
+
 /** The sentence-final word before a question mark: a form that leaves the sentence type open becomes a question (`Mood=Int`). */
 function ruleMood(s: KoSentence, finalPunct: string | undefined): void {
   if (!finalPunct || !/[?？]/u.test(finalPunct)) return; // a full stop does not decide: 앉으세요. is a request, 가요. a statement
@@ -680,6 +722,7 @@ export function koOrderSentences(tokens: RawToken[], base: Cand[][], frozen: Rea
     ruleDeterminers(s);
     ruleComplement(s);
     ruleNegation(s);
+    ruleLastPredicate(s, r.final);
     ruleMood(s, r.final);
     for (let k = 0; k < s.n; k++) { koStrictlyFalling(s.cands[k]); out[r.start + k] = s.cands[k]; }
   }

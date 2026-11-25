@@ -33,6 +33,7 @@ const orderProblems = (analyses: AnalyzedToken[]): string[] => {
   return out;
 };
 const ctx = (c: AnalysisCandidate): string => String(c.notes?.context ?? '');
+const isPredicateTop = (c: AnalysisCandidate): boolean => ['VERB', 'ADJ'].includes(c.pos ?? '');
 
 const CORE_SENTENCES = [
   '먹어 보세요.', '동생이 밥을 먹고 있어요.', '고기를 먹지 않아요.', '이것 좀 해 주세요.', '편지를 써 버렸어요.', '아이를 가게 했어요.',
@@ -244,6 +245,20 @@ describe.skipIf(!HAVE_SHARDS)('with every shard installed', () => {
     it('S6: -게 before 하다 / 되다 / 만들다 is the connective, not the 하게체 command', () => {
       expect(readIn('아이를 웃게 만들었어요.', '웃게').top.morph).toMatchObject({ VerbForm: 'Conn', Connective: 'adverbial' });
       expect(readIn('서울에 가게 됐어요.', '가게').top.morph).toMatchObject({ VerbForm: 'Conn', Connective: 'adverbial' });
+    });
+    describe('batch 4 (LL1): 한 after an object, by whether the object has another verb to belong to', () => {
+      for (const [s, w] of [
+        ['운동장을 한 바퀴 돌았어요.', '바퀴'], ['책을 한 권 샀어요.', '권'], ['사과를 한 개 먹었어요.', '개'], ['전화를 한 번 했어요.', '번'],
+        ['물을 한 잔 마셨어요.', '잔'], ['편지를 한 장 썼어요.', '장'],
+      ] as const) it(`${s}: 한 is "one"`, () => expect(readIn(s, '한').top.pos, readIn(s, w).top.pos).toBe('NUM'));
+      for (const s of ['공부를 한 사람이 왔어요.', '일을 한 시간이 길어요.', '숙제를 한 학생이 있어요.', '공부를 한 사람', '요리를 한 사람이 누구예요?', '운동을 한 사람은 피곤해요.']) {
+        it(`${s}: 한 is 하다 "that did"`, () => expect(readIn(s, '한').top).toMatchObject({ lemma: '하다', pos: 'VERB', morph: { VerbForm: 'Adn' } }));
+      }
+    });
+    it('batch 4 (HH1): the last word of a sentence with no other predicate is the predicate when it can be one', () => {
+      expect(isPredicateTop(readIn('불 켜!', '켜').top)).toBe(true);
+      expect(isPredicateTop(readIn('여기 서!', '서').top)).toBe(true);
+      expect(readIn('오늘 밤.', '밤').top.pos).toBe('NOUN');
     });
     it('batch 3: 한 before any counter reading is "one" (운동장을 한 바퀴), even after an object', () => {
       expect(readIn('운동장을 한 바퀴 돌았어요.', '한').top.pos).toBe('NUM');

@@ -17,6 +17,7 @@
  * A lemma id that the installed index does not hold is ignored (the analyser checks), so the list cannot invent a word.
  */
 import data from './identities.json';
+import { applyVocal, packVocal, splitVocal } from './text';
 
 export const AR_IDENTITIES: Readonly<Record<string, string | null>> = data as Record<string, string | null>;
 
@@ -37,6 +38,18 @@ export function arMainOf(key: string): ArMainReading | null | undefined {
   if (v === null) return null;
   const parts = v.split('+');
   return { proclitics: parts.slice(0, -1), lemmaId: parts[parts.length - 1] };
+}
+
+/**
+ * The same decision for a word printed WITH its vowels. A fully vocalized word can still belong to two lexemes (ذَهَبَ is "he went"
+ * and, as an accusative, "gold"; لَيْسَ and إِنَّ have several entries), and vocalized text is what a beginner reads, so the list may
+ * also hold a vocalized form as a key (the form in canonical spelling: `applyVocal(arKey(form), packVocal(form))`). Looked up before
+ * the bare key; a vocalized entry speaks only for exactly that vocalization.
+ */
+export function arMainOfVocalized(form: string): ArMainReading | null | undefined {
+  const { key, marks } = splitVocal(form);
+  if (!marks.some((m) => m.vowel || m.shadda || m.dagger)) return undefined;
+  return arMainOf(applyVocal(key, packVocal(form)));
 }
 
 /** How many keys are reviewed, and how many of them have a main reading (for the support notes and INDEX.md). */

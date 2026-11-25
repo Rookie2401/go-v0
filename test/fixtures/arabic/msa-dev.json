@@ -1,0 +1,5680 @@
+{
+ "_about": "DEVELOPMENT set for unvocalized Modern Standard Arabic prose (news, encyclopedia and simple narrative register). MACHINE-WRITTEN and MACHINE-ANNOTATED by the Arabic pack's builder (an AI model), NOT a human gold standard: lemmas, parts of speech and clitic breakdowns were written one token at a time from grammar knowledge and may contain mistakes. Every sentence is original; none is copied from a corpus. FROZEN on 2026-11-25, before the analyser read it. An independent auditor holds a separate held-out set. Tokens with \"skip\": true (proper names and words whose vocalized lemma the annotator was not sure of) are not scored. See docs/arabic/EVAL.md.",
+ "frozen": "2026-11-25",
+ "annotator": "the pack builder (AI), not a human",
+ "sentences": [
+  {
+   "id": "s01",
+   "text": "أعلنت وزارة الصحة عن تسجيل حالات جديدة في عدة مدن وفقا لما ذكرته وكالة الأنباء.",
+   "tokens": [
+    {
+     "surface": "أعلنت",
+     "lemma": "أَعْلَنَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "وزارة",
+     "lemma": "وِزَارَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الصحة",
+     "lemma": "صِحَّة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "صحة"
+     ]
+    },
+    {
+     "surface": "عن",
+     "lemma": "عَنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "تسجيل",
+     "lemma": "تَسْجِيل",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "حالات",
+     "lemma": "حَالَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "جديدة",
+     "lemma": "جَدِيد",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "عدة",
+     "lemma": "عِدَّة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "مدن",
+     "lemma": "مَدِينَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "وفقا",
+     "lemma": null,
+     "pos": "ADV",
+     "skip": true
+    },
+    {
+     "surface": "لما",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true,
+     "parts": [
+      "ل",
+      "ما"
+     ]
+    },
+    {
+     "surface": "ذكرته",
+     "lemma": "ذَكَرَ",
+     "pos": "VERB",
+     "parts": [
+      "ذكرت",
+      "ه"
+     ]
+    },
+    {
+     "surface": "وكالة",
+     "lemma": "وَكَالَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الأنباء",
+     "lemma": "نَبَأ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أنباء"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "text": "قال المتحدث باسم الحكومة إن المفاوضات ستستمر الأسبوع المقبل بحسب ما نقلته وسائل إعلام محلية.",
+   "tokens": [
+    {
+     "surface": "قال",
+     "lemma": "قَالَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المتحدث",
+     "lemma": "مُتَحَدِّث",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "متحدث"
+     ]
+    },
+    {
+     "surface": "باسم",
+     "lemma": "اِسْم",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "اسم"
+     ]
+    },
+    {
+     "surface": "الحكومة",
+     "lemma": "حُكُومَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "حكومة"
+     ]
+    },
+    {
+     "surface": "إن",
+     "lemma": null,
+     "pos": "PART",
+     "skip": true
+    },
+    {
+     "surface": "المفاوضات",
+     "lemma": null,
+     "pos": "NOUN",
+     "skip": true,
+     "parts": [
+      "ال",
+      "مفاوضات"
+     ]
+    },
+    {
+     "surface": "ستستمر",
+     "lemma": "اِسْتَمَرَّ",
+     "pos": "VERB",
+     "parts": [
+      "س",
+      "تستمر"
+     ]
+    },
+    {
+     "surface": "الأسبوع",
+     "lemma": "أُسْبُوع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أسبوع"
+     ]
+    },
+    {
+     "surface": "المقبل",
+     "lemma": "مُقْبِل",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "مقبل"
+     ]
+    },
+    {
+     "surface": "بحسب",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true,
+     "parts": [
+      "ب",
+      "حسب"
+     ]
+    },
+    {
+     "surface": "ما",
+     "lemma": null,
+     "pos": "PRON",
+     "skip": true
+    },
+    {
+     "surface": "نقلته",
+     "lemma": "نَقَلَ",
+     "pos": "VERB",
+     "parts": [
+      "نقلت",
+      "ه"
+     ]
+    },
+    {
+     "surface": "وسائل",
+     "lemma": "وَسِيلَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "إعلام",
+     "lemma": "إِعْلَام",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "محلية",
+     "lemma": "مَحَلِّيّ",
+     "pos": "ADJ"
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "text": "افتتح الرئيس مشروعا جديدا للطاقة الشمسية في الجنوب وسط اهتمام كبير من وسائل الإعلام.",
+   "tokens": [
+    {
+     "surface": "افتتح",
+     "lemma": "اِفْتَتَحَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الرئيس",
+     "lemma": "رَئِيس",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "رئيس"
+     ]
+    },
+    {
+     "surface": "مشروعا",
+     "lemma": "مَشْرُوع",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "جديدا",
+     "lemma": "جَدِيد",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "للطاقة",
+     "lemma": "طَاقَة",
+     "pos": "NOUN",
+     "parts": [
+      "ل",
+      "ل",
+      "طاقة"
+     ]
+    },
+    {
+     "surface": "الشمسية",
+     "lemma": "شَمْسِيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "شمسية"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الجنوب",
+     "lemma": "جَنُوب",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "جنوب"
+     ]
+    },
+    {
+     "surface": "وسط",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true
+    },
+    {
+     "surface": "اهتمام",
+     "lemma": "اِهْتِمَام",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "كبير",
+     "lemma": "كَبِير",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "وسائل",
+     "lemma": "وَسِيلَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الإعلام",
+     "lemma": "إِعْلَام",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "إعلام"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "text": "سافر الوفد إلى القاهرة صباح اليوم لحضور الاجتماع في وقت سابق من هذا الشهر.",
+   "tokens": [
+    {
+     "surface": "سافر",
+     "lemma": "سَافَرَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الوفد",
+     "lemma": "وَفْد",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "وفد"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "القاهرة",
+     "lemma": null,
+     "pos": "PROPN",
+     "skip": true
+    },
+    {
+     "surface": "صباح",
+     "lemma": "صَبَاح",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "اليوم",
+     "lemma": "يَوْم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "يوم"
+     ]
+    },
+    {
+     "surface": "لحضور",
+     "lemma": "حُضُور",
+     "pos": "NOUN",
+     "parts": [
+      "ل",
+      "حضور"
+     ]
+    },
+    {
+     "surface": "الاجتماع",
+     "lemma": "اِجْتِمَاع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "اجتماع"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "وقت",
+     "lemma": "وَقْت",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "سابق",
+     "lemma": "سَابِق",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "هذا",
+     "lemma": "هٰذَا",
+     "pos": "DET"
+    },
+    {
+     "surface": "الشهر",
+     "lemma": "شَهْر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شهر"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "text": "ارتفعت أسعار النفط بعد انخفاضها في الأسبوع الماضي وفقا لما ذكرته وكالة الأنباء.",
+   "tokens": [
+    {
+     "surface": "ارتفعت",
+     "lemma": "اِرْتَفَعَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "أسعار",
+     "lemma": "سِعْر",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "النفط",
+     "lemma": "نَفْط",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "نفط"
+     ]
+    },
+    {
+     "surface": "بعد",
+     "lemma": "بَعْدَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "انخفاضها",
+     "lemma": "اِنْخِفَاض",
+     "pos": "NOUN",
+     "parts": [
+      "انخفاض",
+      "ها"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الأسبوع",
+     "lemma": "أُسْبُوع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أسبوع"
+     ]
+    },
+    {
+     "surface": "الماضي",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true,
+     "parts": [
+      "ال",
+      "ماضي"
+     ]
+    },
+    {
+     "surface": "وفقا",
+     "lemma": null,
+     "pos": "ADV",
+     "skip": true
+    },
+    {
+     "surface": "لما",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true,
+     "parts": [
+      "ل",
+      "ما"
+     ]
+    },
+    {
+     "surface": "ذكرته",
+     "lemma": "ذَكَرَ",
+     "pos": "VERB",
+     "parts": [
+      "ذكرت",
+      "ه"
+     ]
+    },
+    {
+     "surface": "وكالة",
+     "lemma": "وَكَالَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الأنباء",
+     "lemma": "نَبَأ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أنباء"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "text": "يتوقع الخبراء أن ينمو الاقتصاد المحلي بنسبة كبيرة وسط اهتمام كبير من وسائل الإعلام.",
+   "tokens": [
+    {
+     "surface": "يتوقع",
+     "lemma": "تَوَقَّعَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الخبراء",
+     "lemma": "خَبِير",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "خبراء"
+     ]
+    },
+    {
+     "surface": "أن",
+     "lemma": null,
+     "pos": "PART",
+     "skip": true
+    },
+    {
+     "surface": "ينمو",
+     "lemma": "نَمَا",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الاقتصاد",
+     "lemma": "اِقْتِصَاد",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "اقتصاد"
+     ]
+    },
+    {
+     "surface": "المحلي",
+     "lemma": "مَحَلِّيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "محلي"
+     ]
+    },
+    {
+     "surface": "بنسبة",
+     "lemma": "نِسْبَة",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "نسبة"
+     ]
+    },
+    {
+     "surface": "كبيرة",
+     "lemma": "كَبِير",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "وسط",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true
+    },
+    {
+     "surface": "اهتمام",
+     "lemma": "اِهْتِمَام",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "كبير",
+     "lemma": "كَبِير",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "وسائل",
+     "lemma": "وَسِيلَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الإعلام",
+     "lemma": "إِعْلَام",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "إعلام"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "text": "تعمل الشركة في مجال التكنولوجيا منذ عشرين عاما.",
+   "tokens": [
+    {
+     "surface": "تعمل",
+     "lemma": "عَمِلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الشركة",
+     "lemma": "شَرِكَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شركة"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "مجال",
+     "lemma": "مَجَال",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "التكنولوجيا",
+     "lemma": null,
+     "pos": "NOUN",
+     "skip": true,
+     "parts": [
+      "ال",
+      "تكنولوجيا"
+     ]
+    },
+    {
+     "surface": "منذ",
+     "lemma": "مُنْذُ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "عشرين",
+     "lemma": "عِشْرُون",
+     "pos": "NUM"
+    },
+    {
+     "surface": "عاما",
+     "lemma": "عَام",
+     "pos": "NOUN"
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "text": "وصلت الطائرة إلى المطار متأخرة بسبب الأحوال الجوية في وقت سابق من هذا الشهر.",
+   "tokens": [
+    {
+     "surface": "وصلت",
+     "lemma": "وَصَلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الطائرة",
+     "lemma": "طَائِرَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "طائرة"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "المطار",
+     "lemma": "مَطَار",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مطار"
+     ]
+    },
+    {
+     "surface": "متأخرة",
+     "lemma": "مُتَأَخِّر",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "بسبب",
+     "lemma": "سَبَب",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "سبب"
+     ]
+    },
+    {
+     "surface": "الأحوال",
+     "lemma": "حَال",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أحوال"
+     ]
+    },
+    {
+     "surface": "الجوية",
+     "lemma": "جَوِّيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "جوية"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "وقت",
+     "lemma": "وَقْت",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "سابق",
+     "lemma": "سَابِق",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "هذا",
+     "lemma": "هٰذَا",
+     "pos": "DET"
+    },
+    {
+     "surface": "الشهر",
+     "lemma": "شَهْر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شهر"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "text": "فاز الفريق الوطني بالمباراة النهائية أمام جمهوره ويأمل الجميع في تحسن الأوضاع.",
+   "tokens": [
+    {
+     "surface": "فاز",
+     "lemma": "فَازَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الفريق",
+     "lemma": "فَرِيق",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "فريق"
+     ]
+    },
+    {
+     "surface": "الوطني",
+     "lemma": "وَطَنِيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "وطني"
+     ]
+    },
+    {
+     "surface": "بالمباراة",
+     "lemma": "مُبَارَاة",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "ال",
+      "مباراة"
+     ]
+    },
+    {
+     "surface": "النهائية",
+     "lemma": "نِهَائِيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "نهائية"
+     ]
+    },
+    {
+     "surface": "أمام",
+     "lemma": "أَمَامَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "جمهوره",
+     "lemma": "جُمْهُور",
+     "pos": "NOUN",
+     "parts": [
+      "جمهور",
+      "ه"
+     ]
+    },
+    {
+     "surface": "ويأمل",
+     "lemma": "أَمَلَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "يأمل"
+     ]
+    },
+    {
+     "surface": "الجميع",
+     "lemma": "جَمِيع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "جميع"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "تحسن",
+     "lemma": "تَحَسُّن",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الأوضاع",
+     "lemma": "وَضْع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أوضاع"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "text": "تقع المدينة القديمة على ضفة النهر الشرقية.",
+   "tokens": [
+    {
+     "surface": "تقع",
+     "lemma": "وَقَعَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المدينة",
+     "lemma": "مَدِينَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مدينة"
+     ]
+    },
+    {
+     "surface": "القديمة",
+     "lemma": "قَدِيم",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "قديمة"
+     ]
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "ضفة",
+     "lemma": "ضِفَّة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "النهر",
+     "lemma": "نَهْر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "نهر"
+     ]
+    },
+    {
+     "surface": "الشرقية",
+     "lemma": "شَرْقِيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "شرقية"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "text": "يعيش في هذه القرية نحو خمسة آلاف نسمة.",
+   "tokens": [
+    {
+     "surface": "يعيش",
+     "lemma": "عَاشَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "هذه",
+     "lemma": null,
+     "pos": "DET",
+     "skip": true
+    },
+    {
+     "surface": "القرية",
+     "lemma": "قَرْيَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "قرية"
+     ]
+    },
+    {
+     "surface": "نحو",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true
+    },
+    {
+     "surface": "خمسة",
+     "lemma": "خَمْسَة",
+     "pos": "NUM"
+    },
+    {
+     "surface": "آلاف",
+     "lemma": "أَلْف",
+     "pos": "NUM"
+    },
+    {
+     "surface": "نسمة",
+     "lemma": "نَسَمَة",
+     "pos": "NOUN"
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "text": "أصدرت المحكمة حكما بالسجن على المتهم بحسب ما نقلته وسائل إعلام محلية.",
+   "tokens": [
+    {
+     "surface": "أصدرت",
+     "lemma": "أَصْدَرَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المحكمة",
+     "lemma": "مَحْكَمَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "محكمة"
+     ]
+    },
+    {
+     "surface": "حكما",
+     "lemma": "حُكْم",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "بالسجن",
+     "lemma": "سِجْن",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "ال",
+      "سجن"
+     ]
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "المتهم",
+     "lemma": "مُتَّهَم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "متهم"
+     ]
+    },
+    {
+     "surface": "بحسب",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true,
+     "parts": [
+      "ب",
+      "حسب"
+     ]
+    },
+    {
+     "surface": "ما",
+     "lemma": null,
+     "pos": "PRON",
+     "skip": true
+    },
+    {
+     "surface": "نقلته",
+     "lemma": "نَقَلَ",
+     "pos": "VERB",
+     "parts": [
+      "نقلت",
+      "ه"
+     ]
+    },
+    {
+     "surface": "وسائل",
+     "lemma": "وَسِيلَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "إعلام",
+     "lemma": "إِعْلَام",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "محلية",
+     "lemma": "مَحَلِّيّ",
+     "pos": "ADJ"
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "text": "قرر المجلس تأجيل الاجتماع إلى الشهر القادم وسط اهتمام كبير من وسائل الإعلام.",
+   "tokens": [
+    {
+     "surface": "قرر",
+     "lemma": "قَرَّرَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المجلس",
+     "lemma": "مَجْلِس",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مجلس"
+     ]
+    },
+    {
+     "surface": "تأجيل",
+     "lemma": "تَأْجِيل",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الاجتماع",
+     "lemma": "اِجْتِمَاع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "اجتماع"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الشهر",
+     "lemma": "شَهْر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شهر"
+     ]
+    },
+    {
+     "surface": "القادم",
+     "lemma": "قَادِم",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "قادم"
+     ]
+    },
+    {
+     "surface": "وسط",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true
+    },
+    {
+     "surface": "اهتمام",
+     "lemma": "اِهْتِمَام",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "كبير",
+     "lemma": "كَبِير",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "وسائل",
+     "lemma": "وَسِيلَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الإعلام",
+     "lemma": "إِعْلَام",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "إعلام"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "text": "تزداد درجات الحرارة في فصل الصيف.",
+   "tokens": [
+    {
+     "surface": "تزداد",
+     "lemma": "اِزْدَادَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "درجات",
+     "lemma": "دَرَجَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الحرارة",
+     "lemma": "حَرَارَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "حرارة"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "فصل",
+     "lemma": "فَصْل",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الصيف",
+     "lemma": "صَيْف",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "صيف"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "text": "نشرت الصحيفة تقريرا مفصلا عن أوضاع اللاجئين في وقت سابق من هذا الشهر.",
+   "tokens": [
+    {
+     "surface": "نشرت",
+     "lemma": "نَشَرَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الصحيفة",
+     "lemma": "صَحِيفَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "صحيفة"
+     ]
+    },
+    {
+     "surface": "تقريرا",
+     "lemma": "تَقْرِير",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "مفصلا",
+     "lemma": "مُفَصَّل",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "عن",
+     "lemma": "عَنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "أوضاع",
+     "lemma": "وَضْع",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "اللاجئين",
+     "lemma": "لَاجِئ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "لاجئين"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "وقت",
+     "lemma": "وَقْت",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "سابق",
+     "lemma": "سَابِق",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "هذا",
+     "lemma": "هٰذَا",
+     "pos": "DET"
+    },
+    {
+     "surface": "الشهر",
+     "lemma": "شَهْر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شهر"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s16",
+   "text": "بدأ العام الدراسي الجديد في معظم المدارس.",
+   "tokens": [
+    {
+     "surface": "بدأ",
+     "lemma": "بَدَأَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "العام",
+     "lemma": "عَام",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "عام"
+     ]
+    },
+    {
+     "surface": "الدراسي",
+     "lemma": "دِرَاسِيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "دراسي"
+     ]
+    },
+    {
+     "surface": "الجديد",
+     "lemma": "جَدِيد",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "جديد"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "معظم",
+     "lemma": "مُعْظَم",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "المدارس",
+     "lemma": "مَدْرَسَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مدارس"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s17",
+   "text": "يحتاج الطلاب إلى مزيد من الوقت لإنهاء الامتحانات بحسب ما نقلته وسائل إعلام محلية.",
+   "tokens": [
+    {
+     "surface": "يحتاج",
+     "lemma": "اِحْتَاجَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الطلاب",
+     "lemma": "طَالِب",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "طلاب"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "مزيد",
+     "lemma": "مَزِيد",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الوقت",
+     "lemma": "وَقْت",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "وقت"
+     ]
+    },
+    {
+     "surface": "لإنهاء",
+     "lemma": "إِنْهَاء",
+     "pos": "NOUN",
+     "parts": [
+      "ل",
+      "إنهاء"
+     ]
+    },
+    {
+     "surface": "الامتحانات",
+     "lemma": "اِمْتِحَان",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "امتحانات"
+     ]
+    },
+    {
+     "surface": "بحسب",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true,
+     "parts": [
+      "ب",
+      "حسب"
+     ]
+    },
+    {
+     "surface": "ما",
+     "lemma": null,
+     "pos": "PRON",
+     "skip": true
+    },
+    {
+     "surface": "نقلته",
+     "lemma": "نَقَلَ",
+     "pos": "VERB",
+     "parts": [
+      "نقلت",
+      "ه"
+     ]
+    },
+    {
+     "surface": "وسائل",
+     "lemma": "وَسِيلَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "إعلام",
+     "lemma": "إِعْلَام",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "محلية",
+     "lemma": "مَحَلِّيّ",
+     "pos": "ADJ"
+    }
+   ]
+  },
+  {
+   "id": "s18",
+   "text": "تستضيف العاصمة مؤتمرا دوليا حول المناخ ويأمل الجميع في تحسن الأوضاع.",
+   "tokens": [
+    {
+     "surface": "تستضيف",
+     "lemma": "اِسْتَضَافَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "العاصمة",
+     "lemma": "عَاصِمَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "عاصمة"
+     ]
+    },
+    {
+     "surface": "مؤتمرا",
+     "lemma": "مُؤْتَمَر",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "دوليا",
+     "lemma": "دَوْلِيّ",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "حول",
+     "lemma": "حَوْلَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "المناخ",
+     "lemma": "مُنَاخ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مناخ"
+     ]
+    },
+    {
+     "surface": "ويأمل",
+     "lemma": "أَمَلَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "يأمل"
+     ]
+    },
+    {
+     "surface": "الجميع",
+     "lemma": "جَمِيع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "جميع"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "تحسن",
+     "lemma": "تَحَسُّن",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الأوضاع",
+     "lemma": "وَضْع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أوضاع"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s19",
+   "text": "أكد الوزير أن الحكومة ملتزمة بدعم المزارعين وفقا لما ذكرته وكالة الأنباء.",
+   "tokens": [
+    {
+     "surface": "أكد",
+     "lemma": "أَكَّدَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الوزير",
+     "lemma": "وَزِير",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "وزير"
+     ]
+    },
+    {
+     "surface": "أن",
+     "lemma": null,
+     "pos": "PART",
+     "skip": true
+    },
+    {
+     "surface": "الحكومة",
+     "lemma": "حُكُومَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "حكومة"
+     ]
+    },
+    {
+     "surface": "ملتزمة",
+     "lemma": "مُلْتَزِم",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "بدعم",
+     "lemma": "دَعْم",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "دعم"
+     ]
+    },
+    {
+     "surface": "المزارعين",
+     "lemma": "مُزَارِع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مزارعين"
+     ]
+    },
+    {
+     "surface": "وفقا",
+     "lemma": null,
+     "pos": "ADV",
+     "skip": true
+    },
+    {
+     "surface": "لما",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true,
+     "parts": [
+      "ل",
+      "ما"
+     ]
+    },
+    {
+     "surface": "ذكرته",
+     "lemma": "ذَكَرَ",
+     "pos": "VERB",
+     "parts": [
+      "ذكرت",
+      "ه"
+     ]
+    },
+    {
+     "surface": "وكالة",
+     "lemma": "وَكَالَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الأنباء",
+     "lemma": "نَبَأ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أنباء"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s20",
+   "text": "سقط المطر بغزارة طوال الليل.",
+   "tokens": [
+    {
+     "surface": "سقط",
+     "lemma": "سَقَطَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المطر",
+     "lemma": "مَطَر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مطر"
+     ]
+    },
+    {
+     "surface": "بغزارة",
+     "lemma": "غَزَارَة",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "غزارة"
+     ]
+    },
+    {
+     "surface": "طوال",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true
+    },
+    {
+     "surface": "الليل",
+     "lemma": "لَيْل",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "ليل"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s21",
+   "text": "تعد مصر من أقدم الحضارات في العالم.",
+   "tokens": [
+    {
+     "surface": "تعد",
+     "lemma": "عَدَّ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "مصر",
+     "lemma": null,
+     "pos": "PROPN",
+     "skip": true
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "أقدم",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true
+    },
+    {
+     "surface": "الحضارات",
+     "lemma": "حَضَارَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "حضارات"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "العالم",
+     "lemma": "عَالَم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "عالم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s22",
+   "text": "يشتهر نهر النيل بطوله الكبير.",
+   "tokens": [
+    {
+     "surface": "يشتهر",
+     "lemma": "اِشْتَهَرَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "نهر",
+     "lemma": "نَهْر",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "النيل",
+     "lemma": null,
+     "pos": "PROPN",
+     "skip": true
+    },
+    {
+     "surface": "بطوله",
+     "lemma": "طُول",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "طول",
+      "ه"
+     ]
+    },
+    {
+     "surface": "الكبير",
+     "lemma": "كَبِير",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "كبير"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s23",
+   "text": "تشكل الصحراء معظم مساحة البلاد.",
+   "tokens": [
+    {
+     "surface": "تشكل",
+     "lemma": "شَكَّلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الصحراء",
+     "lemma": "صَحْرَاء",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "صحراء"
+     ]
+    },
+    {
+     "surface": "معظم",
+     "lemma": "مُعْظَم",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "مساحة",
+     "lemma": "مِسَاحَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "البلاد",
+     "lemma": "بَلَد",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "بلاد"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s24",
+   "text": "ولد العالم المشهور في مدينة صغيرة على الساحل.",
+   "tokens": [
+    {
+     "surface": "ولد",
+     "lemma": "وَلَدَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "العالم",
+     "lemma": "عَالِم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "عالم"
+     ]
+    },
+    {
+     "surface": "المشهور",
+     "lemma": "مَشْهُور",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "مشهور"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "مدينة",
+     "lemma": "مَدِينَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "صغيرة",
+     "lemma": "صَغِير",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الساحل",
+     "lemma": "سَاحِل",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "ساحل"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s25",
+   "text": "تنقسم المملكة إداريا إلى ثلاث عشرة منطقة.",
+   "tokens": [
+    {
+     "surface": "تنقسم",
+     "lemma": "اِنْقَسَمَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المملكة",
+     "lemma": "مَمْلَكَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مملكة"
+     ]
+    },
+    {
+     "surface": "إداريا",
+     "lemma": null,
+     "pos": "ADV",
+     "skip": true
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "ثلاث",
+     "lemma": null,
+     "pos": "NUM",
+     "skip": true
+    },
+    {
+     "surface": "عشرة",
+     "lemma": null,
+     "pos": "NUM",
+     "skip": true
+    },
+    {
+     "surface": "منطقة",
+     "lemma": "مِنْطَقَة",
+     "pos": "NOUN"
+    }
+   ]
+  },
+  {
+   "id": "s26",
+   "text": "يعتمد اقتصادها على الزراعة والسياحة.",
+   "tokens": [
+    {
+     "surface": "يعتمد",
+     "lemma": "اِعْتَمَدَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "اقتصادها",
+     "lemma": "اِقْتِصَاد",
+     "pos": "NOUN",
+     "parts": [
+      "اقتصاد",
+      "ها"
+     ]
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الزراعة",
+     "lemma": "زِرَاعَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "زراعة"
+     ]
+    },
+    {
+     "surface": "والسياحة",
+     "lemma": "سِيَاحَة",
+     "pos": "NOUN",
+     "parts": [
+      "و",
+      "ال",
+      "سياحة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s27",
+   "text": "كتب المؤرخ كتابا طويلا عن تاريخ المنطقة.",
+   "tokens": [
+    {
+     "surface": "كتب",
+     "lemma": "كَتَبَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المؤرخ",
+     "lemma": "مُؤَرِّخ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مؤرخ"
+     ]
+    },
+    {
+     "surface": "كتابا",
+     "lemma": "كِتَاب",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "طويلا",
+     "lemma": "طَوِيل",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "عن",
+     "lemma": "عَنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "تاريخ",
+     "lemma": "تَارِيخ",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "المنطقة",
+     "lemma": "مِنْطَقَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "منطقة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s28",
+   "text": "تتميز الجزيرة بمناخها المعتدل وشواطئها الجميلة.",
+   "tokens": [
+    {
+     "surface": "تتميز",
+     "lemma": "تَمَيَّزَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الجزيرة",
+     "lemma": "جَزِيرَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "جزيرة"
+     ]
+    },
+    {
+     "surface": "بمناخها",
+     "lemma": "مُنَاخ",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "مناخ",
+      "ها"
+     ]
+    },
+    {
+     "surface": "المعتدل",
+     "lemma": "مُعْتَدِل",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "معتدل"
+     ]
+    },
+    {
+     "surface": "وشواطئها",
+     "lemma": "شَاطِئ",
+     "pos": "NOUN",
+     "parts": [
+      "و",
+      "شواطئ",
+      "ها"
+     ]
+    },
+    {
+     "surface": "الجميلة",
+     "lemma": "جَمِيل",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "جميلة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s29",
+   "text": "تعيش الطيور المهاجرة في الشتاء في المناطق الدافئة.",
+   "tokens": [
+    {
+     "surface": "تعيش",
+     "lemma": "عَاشَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الطيور",
+     "lemma": "طَيْر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "طيور"
+     ]
+    },
+    {
+     "surface": "المهاجرة",
+     "lemma": "مُهَاجِر",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "مهاجرة"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الشتاء",
+     "lemma": "شِتَاء",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شتاء"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "المناطق",
+     "lemma": "مِنْطَقَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مناطق"
+     ]
+    },
+    {
+     "surface": "الدافئة",
+     "lemma": "دَافِئ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "دافئة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s30",
+   "text": "أسس الملك الجامعة قبل قرون طويلة.",
+   "tokens": [
+    {
+     "surface": "أسس",
+     "lemma": "أَسَّسَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الملك",
+     "lemma": "مَلِك",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "ملك"
+     ]
+    },
+    {
+     "surface": "الجامعة",
+     "lemma": "جَامِعَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "جامعة"
+     ]
+    },
+    {
+     "surface": "قبل",
+     "lemma": "قَبْلَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "قرون",
+     "lemma": "قَرْن",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "طويلة",
+     "lemma": "طَوِيل",
+     "pos": "ADJ"
+    }
+   ]
+  },
+  {
+   "id": "s31",
+   "text": "يدرس الطلاب في الكلية علوم الحاسوب والرياضيات.",
+   "tokens": [
+    {
+     "surface": "يدرس",
+     "lemma": "دَرَسَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الطلاب",
+     "lemma": "طَالِب",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "طلاب"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الكلية",
+     "lemma": "كُلِّيَّة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "كلية"
+     ]
+    },
+    {
+     "surface": "علوم",
+     "lemma": "عِلْم",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الحاسوب",
+     "lemma": "حَاسُوب",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "حاسوب"
+     ]
+    },
+    {
+     "surface": "والرياضيات",
+     "lemma": null,
+     "pos": "NOUN",
+     "skip": true,
+     "parts": [
+      "و",
+      "ال",
+      "رياضيات"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s32",
+   "text": "يبلغ ارتفاع الجبل أكثر من ثلاثة آلاف متر.",
+   "tokens": [
+    {
+     "surface": "يبلغ",
+     "lemma": "بَلَغَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "ارتفاع",
+     "lemma": "اِرْتِفَاع",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الجبل",
+     "lemma": "جَبَل",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "جبل"
+     ]
+    },
+    {
+     "surface": "أكثر",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "ثلاثة",
+     "lemma": "ثَلَاثَة",
+     "pos": "NUM"
+    },
+    {
+     "surface": "آلاف",
+     "lemma": "أَلْف",
+     "pos": "NUM"
+    },
+    {
+     "surface": "متر",
+     "lemma": "مِتْر",
+     "pos": "NOUN"
+    }
+   ]
+  },
+  {
+   "id": "s33",
+   "text": "استيقظ الولد مبكرا وذهب إلى المدرسة في ذلك اليوم.",
+   "tokens": [
+    {
+     "surface": "استيقظ",
+     "lemma": "اِسْتَيْقَظَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الولد",
+     "lemma": "وَلَد",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "ولد"
+     ]
+    },
+    {
+     "surface": "مبكرا",
+     "lemma": null,
+     "pos": "ADV",
+     "skip": true
+    },
+    {
+     "surface": "وذهب",
+     "lemma": "ذَهَبَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "ذهب"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "المدرسة",
+     "lemma": "مَدْرَسَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مدرسة"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "ذلك",
+     "lemma": null,
+     "pos": "DET",
+     "skip": true
+    },
+    {
+     "surface": "اليوم",
+     "lemma": "يَوْم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "يوم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s34",
+   "text": "جلست الأم في المطبخ وأعدت الطعام للأطفال في ذلك اليوم.",
+   "tokens": [
+    {
+     "surface": "جلست",
+     "lemma": "جَلَسَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الأم",
+     "lemma": "أُمّ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أم"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "المطبخ",
+     "lemma": "مَطْبَخ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مطبخ"
+     ]
+    },
+    {
+     "surface": "وأعدت",
+     "lemma": "أَعَدَّ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "أعدت"
+     ]
+    },
+    {
+     "surface": "الطعام",
+     "lemma": "طَعَام",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "طعام"
+     ]
+    },
+    {
+     "surface": "للأطفال",
+     "lemma": "طِفْل",
+     "pos": "NOUN",
+     "parts": [
+      "ل",
+      "ل",
+      "أطفال"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "ذلك",
+     "lemma": null,
+     "pos": "DET",
+     "skip": true
+    },
+    {
+     "surface": "اليوم",
+     "lemma": "يَوْم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "يوم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s35",
+   "text": "سمع الرجل صوتا غريبا خلف الباب.",
+   "tokens": [
+    {
+     "surface": "سمع",
+     "lemma": "سَمِعَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الرجل",
+     "lemma": "رَجُل",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "رجل"
+     ]
+    },
+    {
+     "surface": "صوتا",
+     "lemma": "صَوْت",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "غريبا",
+     "lemma": "غَرِيب",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "خلف",
+     "lemma": "خَلْفَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الباب",
+     "lemma": "بَاب",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "باب"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s36",
+   "text": "فتحت البنت النافذة ونظرت إلى الحديقة.",
+   "tokens": [
+    {
+     "surface": "فتحت",
+     "lemma": "فَتَحَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "البنت",
+     "lemma": "بِنْت",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "بنت"
+     ]
+    },
+    {
+     "surface": "النافذة",
+     "lemma": "نَافِذَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "نافذة"
+     ]
+    },
+    {
+     "surface": "ونظرت",
+     "lemma": "نَظَرَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "نظرت"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الحديقة",
+     "lemma": "حَدِيقَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "حديقة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s37",
+   "text": "كان الجو باردا والسماء ملبدة بالغيوم.",
+   "tokens": [
+    {
+     "surface": "كان",
+     "lemma": "كَانَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الجو",
+     "lemma": "جَوّ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "جو"
+     ]
+    },
+    {
+     "surface": "باردا",
+     "lemma": "بَارِد",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "والسماء",
+     "lemma": "سَمَاء",
+     "pos": "NOUN",
+     "parts": [
+      "و",
+      "ال",
+      "سماء"
+     ]
+    },
+    {
+     "surface": "ملبدة",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true
+    },
+    {
+     "surface": "بالغيوم",
+     "lemma": "غَيْم",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "ال",
+      "غيوم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s38",
+   "text": "أحب الصغير أن يلعب مع أصدقائه في الشارع.",
+   "tokens": [
+    {
+     "surface": "أحب",
+     "lemma": "أَحَبَّ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الصغير",
+     "lemma": "صَغِير",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "صغير"
+     ]
+    },
+    {
+     "surface": "أن",
+     "lemma": null,
+     "pos": "PART",
+     "skip": true
+    },
+    {
+     "surface": "يلعب",
+     "lemma": "لَعِبَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "مع",
+     "lemma": "مَعَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "أصدقائه",
+     "lemma": "صَدِيق",
+     "pos": "NOUN",
+     "parts": [
+      "أصدقائ",
+      "ه"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الشارع",
+     "lemma": "شَارِع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شارع"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s39",
+   "text": "قال الأب لابنه إن العمل الجاد هو سر النجاح.",
+   "tokens": [
+    {
+     "surface": "قال",
+     "lemma": "قَالَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الأب",
+     "lemma": "أَب",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أب"
+     ]
+    },
+    {
+     "surface": "لابنه",
+     "lemma": "اِبْن",
+     "pos": "NOUN",
+     "parts": [
+      "ل",
+      "ابن",
+      "ه"
+     ]
+    },
+    {
+     "surface": "إن",
+     "lemma": null,
+     "pos": "PART",
+     "skip": true
+    },
+    {
+     "surface": "العمل",
+     "lemma": "عَمَل",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "عمل"
+     ]
+    },
+    {
+     "surface": "الجاد",
+     "lemma": "جَادّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "جاد"
+     ]
+    },
+    {
+     "surface": "هو",
+     "lemma": "هُوَ",
+     "pos": "PRON"
+    },
+    {
+     "surface": "سر",
+     "lemma": "سِرّ",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "النجاح",
+     "lemma": "نَجَاح",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "نجاح"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s40",
+   "text": "ركبنا القطار في الصباح الباكر ووصلنا قبل الظهر في ذلك اليوم.",
+   "tokens": [
+    {
+     "surface": "ركبنا",
+     "lemma": "رَكِبَ",
+     "pos": "VERB",
+     "parts": [
+      "ركب",
+      "نا"
+     ]
+    },
+    {
+     "surface": "القطار",
+     "lemma": "قِطَار",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "قطار"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الصباح",
+     "lemma": "صَبَاح",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "صباح"
+     ]
+    },
+    {
+     "surface": "الباكر",
+     "lemma": "بَاكِر",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "باكر"
+     ]
+    },
+    {
+     "surface": "ووصلنا",
+     "lemma": "وَصَلَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "وصل",
+      "نا"
+     ]
+    },
+    {
+     "surface": "قبل",
+     "lemma": "قَبْلَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الظهر",
+     "lemma": "ظُهْر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "ظهر"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "ذلك",
+     "lemma": null,
+     "pos": "DET",
+     "skip": true
+    },
+    {
+     "surface": "اليوم",
+     "lemma": "يَوْم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "يوم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s41",
+   "text": "لم يعرف أحد سبب غياب الرجل.",
+   "tokens": [
+    {
+     "surface": "لم",
+     "lemma": "لَمْ",
+     "pos": "PART"
+    },
+    {
+     "surface": "يعرف",
+     "lemma": "عَرَفَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "أحد",
+     "lemma": "أَحَد",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "سبب",
+     "lemma": "سَبَب",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "غياب",
+     "lemma": "غِيَاب",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الرجل",
+     "lemma": "رَجُل",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "رجل"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s42",
+   "text": "قضيت العطلة مع عائلتي في بيت جدي الكبير.",
+   "tokens": [
+    {
+     "surface": "قضيت",
+     "lemma": "قَضَى",
+     "pos": "VERB"
+    },
+    {
+     "surface": "العطلة",
+     "lemma": "عُطْلَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "عطلة"
+     ]
+    },
+    {
+     "surface": "مع",
+     "lemma": "مَعَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "عائلتي",
+     "lemma": "عَائِلَة",
+     "pos": "NOUN",
+     "parts": [
+      "عائلت",
+      "ي"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "بيت",
+     "lemma": "بَيْت",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "جدي",
+     "lemma": "جَدّ",
+     "pos": "NOUN",
+     "parts": [
+      "جد",
+      "ي"
+     ]
+    },
+    {
+     "surface": "الكبير",
+     "lemma": "كَبِير",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "كبير"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s43",
+   "text": "أخذ الصياد شباكه وخرج إلى البحر في ذلك اليوم.",
+   "tokens": [
+    {
+     "surface": "أخذ",
+     "lemma": "أَخَذَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الصياد",
+     "lemma": "صَيَّاد",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "صياد"
+     ]
+    },
+    {
+     "surface": "شباكه",
+     "lemma": "شَبَكَة",
+     "pos": "NOUN",
+     "parts": [
+      "شباك",
+      "ه"
+     ]
+    },
+    {
+     "surface": "وخرج",
+     "lemma": "خَرَجَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "خرج"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "البحر",
+     "lemma": "بَحْر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "بحر"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "ذلك",
+     "lemma": null,
+     "pos": "DET",
+     "skip": true
+    },
+    {
+     "surface": "اليوم",
+     "lemma": "يَوْم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "يوم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s44",
+   "text": "عاد الجنود إلى بيوتهم بعد انتهاء الحرب في ذلك اليوم.",
+   "tokens": [
+    {
+     "surface": "عاد",
+     "lemma": "عَادَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الجنود",
+     "lemma": "جُنْدِيّ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "جنود"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "بيوتهم",
+     "lemma": "بَيْت",
+     "pos": "NOUN",
+     "parts": [
+      "بيوت",
+      "هم"
+     ]
+    },
+    {
+     "surface": "بعد",
+     "lemma": "بَعْدَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "انتهاء",
+     "lemma": "اِنْتِهَاء",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الحرب",
+     "lemma": "حَرْب",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "حرب"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "ذلك",
+     "lemma": null,
+     "pos": "DET",
+     "skip": true
+    },
+    {
+     "surface": "اليوم",
+     "lemma": "يَوْم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "يوم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s45",
+   "text": "رأى الطفل قطة صغيرة تحت الشجرة.",
+   "tokens": [
+    {
+     "surface": "رأى",
+     "lemma": "رَأَى",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الطفل",
+     "lemma": "طِفْل",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "طفل"
+     ]
+    },
+    {
+     "surface": "قطة",
+     "lemma": "قِطَّة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "صغيرة",
+     "lemma": "صَغِير",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "تحت",
+     "lemma": "تَحْتَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الشجرة",
+     "lemma": "شَجَرَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شجرة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s46",
+   "text": "سألت المعلمة التلاميذ عن واجباتهم.",
+   "tokens": [
+    {
+     "surface": "سألت",
+     "lemma": "سَأَلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المعلمة",
+     "lemma": "مُعَلِّمَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "معلمة"
+     ]
+    },
+    {
+     "surface": "التلاميذ",
+     "lemma": "تِلْمِيذ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "تلاميذ"
+     ]
+    },
+    {
+     "surface": "عن",
+     "lemma": "عَنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "واجباتهم",
+     "lemma": "وَاجِب",
+     "pos": "NOUN",
+     "parts": [
+      "واجبات",
+      "هم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s47",
+   "text": "لا يستطيع أحد أن يعيش بلا ماء.",
+   "tokens": [
+    {
+     "surface": "لا",
+     "lemma": "لَا",
+     "pos": "PART"
+    },
+    {
+     "surface": "يستطيع",
+     "lemma": "اِسْتَطَاعَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "أحد",
+     "lemma": "أَحَد",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "أن",
+     "lemma": null,
+     "pos": "PART",
+     "skip": true
+    },
+    {
+     "surface": "يعيش",
+     "lemma": "عَاشَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "بلا",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true
+    },
+    {
+     "surface": "ماء",
+     "lemma": "مَاء",
+     "pos": "NOUN"
+    }
+   ]
+  },
+  {
+   "id": "s48",
+   "text": "يمتلك المتحف مجموعة كبيرة من القطع الأثرية.",
+   "tokens": [
+    {
+     "surface": "يمتلك",
+     "lemma": "اِمْتَلَكَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المتحف",
+     "lemma": "مَتْحَف",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "متحف"
+     ]
+    },
+    {
+     "surface": "مجموعة",
+     "lemma": "مَجْمُوعَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "كبيرة",
+     "lemma": "كَبِير",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "القطع",
+     "lemma": "قِطْعَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "قطع"
+     ]
+    },
+    {
+     "surface": "الأثرية",
+     "lemma": "أَثَرِيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "أثرية"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s49",
+   "text": "وقع الحادث على الطريق السريع قرب العاصمة.",
+   "tokens": [
+    {
+     "surface": "وقع",
+     "lemma": "وَقَعَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الحادث",
+     "lemma": "حَادِث",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "حادث"
+     ]
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الطريق",
+     "lemma": "طَرِيق",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "طريق"
+     ]
+    },
+    {
+     "surface": "السريع",
+     "lemma": "سَرِيع",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "سريع"
+     ]
+    },
+    {
+     "surface": "قرب",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true
+    },
+    {
+     "surface": "العاصمة",
+     "lemma": "عَاصِمَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "عاصمة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s50",
+   "text": "تحاول الحكومة خفض نسبة البطالة بين الشباب.",
+   "tokens": [
+    {
+     "surface": "تحاول",
+     "lemma": "حَاوَلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الحكومة",
+     "lemma": "حُكُومَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "حكومة"
+     ]
+    },
+    {
+     "surface": "خفض",
+     "lemma": "خَفْض",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "نسبة",
+     "lemma": "نِسْبَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "البطالة",
+     "lemma": "بَطَالَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "بطالة"
+     ]
+    },
+    {
+     "surface": "بين",
+     "lemma": "بَيْنَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الشباب",
+     "lemma": "شَابّ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شباب"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s51",
+   "text": "تحتفل البلاد باليوم الوطني كل عام.",
+   "tokens": [
+    {
+     "surface": "تحتفل",
+     "lemma": "اِحْتَفَلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "البلاد",
+     "lemma": "بَلَد",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "بلاد"
+     ]
+    },
+    {
+     "surface": "باليوم",
+     "lemma": "يَوْم",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "ال",
+      "يوم"
+     ]
+    },
+    {
+     "surface": "الوطني",
+     "lemma": "وَطَنِيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "وطني"
+     ]
+    },
+    {
+     "surface": "كل",
+     "lemma": null,
+     "pos": "NOUN",
+     "skip": true
+    },
+    {
+     "surface": "عام",
+     "lemma": "عَام",
+     "pos": "NOUN"
+    }
+   ]
+  },
+  {
+   "id": "s52",
+   "text": "يقف الزوار في طابور طويل أمام المتحف.",
+   "tokens": [
+    {
+     "surface": "يقف",
+     "lemma": "وَقَفَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الزوار",
+     "lemma": "زَائِر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "زوار"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "طابور",
+     "lemma": "طَابُور",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "طويل",
+     "lemma": "طَوِيل",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "أمام",
+     "lemma": "أَمَامَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "المتحف",
+     "lemma": "مَتْحَف",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "متحف"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s53",
+   "text": "كتبت المؤلفة روايتها الأولى في الثلاثين من عمرها.",
+   "tokens": [
+    {
+     "surface": "كتبت",
+     "lemma": "كَتَبَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المؤلفة",
+     "lemma": "مُؤَلِّفَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مؤلفة"
+     ]
+    },
+    {
+     "surface": "روايتها",
+     "lemma": "رِوَايَة",
+     "pos": "NOUN",
+     "parts": [
+      "روايت",
+      "ها"
+     ]
+    },
+    {
+     "surface": "الأولى",
+     "lemma": "أَوَّل",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "أولى"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الثلاثين",
+     "lemma": "ثَلَاثُون",
+     "pos": "NUM",
+     "parts": [
+      "ال",
+      "ثلاثين"
+     ]
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "عمرها",
+     "lemma": "عُمْر",
+     "pos": "NOUN",
+     "parts": [
+      "عمر",
+      "ها"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s54",
+   "text": "تساعد الأمم المتحدة الدول الفقيرة على مواجهة الجوع.",
+   "tokens": [
+    {
+     "surface": "تساعد",
+     "lemma": "سَاعَدَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الأمم",
+     "lemma": "أُمَّة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أمم"
+     ]
+    },
+    {
+     "surface": "المتحدة",
+     "lemma": "مُتَّحِد",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "متحدة"
+     ]
+    },
+    {
+     "surface": "الدول",
+     "lemma": "دَوْلَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "دول"
+     ]
+    },
+    {
+     "surface": "الفقيرة",
+     "lemma": "فَقِير",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "فقيرة"
+     ]
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "مواجهة",
+     "lemma": "مُوَاجَهَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الجوع",
+     "lemma": "جُوع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "جوع"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s55",
+   "text": "يأمل المزارعون في موسم زراعي جيد هذا العام.",
+   "tokens": [
+    {
+     "surface": "يأمل",
+     "lemma": "أَمَلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المزارعون",
+     "lemma": "مُزَارِع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مزارعون"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "موسم",
+     "lemma": "مَوْسِم",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "زراعي",
+     "lemma": "زِرَاعِيّ",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "جيد",
+     "lemma": "جَيِّد",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "هذا",
+     "lemma": "هٰذَا",
+     "pos": "DET"
+    },
+    {
+     "surface": "العام",
+     "lemma": "عَام",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "عام"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s56",
+   "text": "تنتج المصانع المحلية كميات كبيرة من الأدوية.",
+   "tokens": [
+    {
+     "surface": "تنتج",
+     "lemma": "أَنْتَجَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المصانع",
+     "lemma": "مَصْنَع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مصانع"
+     ]
+    },
+    {
+     "surface": "المحلية",
+     "lemma": "مَحَلِّيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "محلية"
+     ]
+    },
+    {
+     "surface": "كميات",
+     "lemma": "كَمِّيَّة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "كبيرة",
+     "lemma": "كَبِير",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الأدوية",
+     "lemma": "دَوَاء",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أدوية"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s57",
+   "text": "اجتمع الأصدقاء في المقهى وتحدثوا عن أحوال البلد.",
+   "tokens": [
+    {
+     "surface": "اجتمع",
+     "lemma": "اِجْتَمَعَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الأصدقاء",
+     "lemma": "صَدِيق",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أصدقاء"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "المقهى",
+     "lemma": null,
+     "pos": "NOUN",
+     "skip": true,
+     "parts": [
+      "ال",
+      "مقهى"
+     ]
+    },
+    {
+     "surface": "وتحدثوا",
+     "lemma": "تَحَدَّثَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "تحدثوا"
+     ]
+    },
+    {
+     "surface": "عن",
+     "lemma": "عَنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "أحوال",
+     "lemma": "حَال",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "البلد",
+     "lemma": "بَلَد",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "بلد"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s58",
+   "text": "يعمل والدي مهندسا في شركة كبيرة.",
+   "tokens": [
+    {
+     "surface": "يعمل",
+     "lemma": "عَمِلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "والدي",
+     "lemma": "وَالِد",
+     "pos": "NOUN",
+     "parts": [
+      "والد",
+      "ي"
+     ]
+    },
+    {
+     "surface": "مهندسا",
+     "lemma": "مُهَنْدِس",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "شركة",
+     "lemma": "شَرِكَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "كبيرة",
+     "lemma": "كَبِير",
+     "pos": "ADJ"
+    }
+   ]
+  },
+  {
+   "id": "s59",
+   "text": "تقدم الشركة خدمات متنوعة لعملائها في مختلف الدول.",
+   "tokens": [
+    {
+     "surface": "تقدم",
+     "lemma": "قَدَّمَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الشركة",
+     "lemma": "شَرِكَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شركة"
+     ]
+    },
+    {
+     "surface": "خدمات",
+     "lemma": "خِدْمَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "متنوعة",
+     "lemma": "مُتَنَوِّع",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "لعملائها",
+     "lemma": "عَمِيل",
+     "pos": "NOUN",
+     "parts": [
+      "ل",
+      "عملائ",
+      "ها"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "مختلف",
+     "lemma": "مُخْتَلِف",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "الدول",
+     "lemma": "دَوْلَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "دول"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s60",
+   "text": "قرأت في الصحيفة أن المطاعم الجديدة تفتح أبوابها غدا.",
+   "tokens": [
+    {
+     "surface": "قرأت",
+     "lemma": "قَرَأَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الصحيفة",
+     "lemma": "صَحِيفَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "صحيفة"
+     ]
+    },
+    {
+     "surface": "أن",
+     "lemma": null,
+     "pos": "PART",
+     "skip": true
+    },
+    {
+     "surface": "المطاعم",
+     "lemma": "مَطْعَم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مطاعم"
+     ]
+    },
+    {
+     "surface": "الجديدة",
+     "lemma": "جَدِيد",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "جديدة"
+     ]
+    },
+    {
+     "surface": "تفتح",
+     "lemma": "فَتَحَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "أبوابها",
+     "lemma": "بَاب",
+     "pos": "NOUN",
+     "parts": [
+      "أبواب",
+      "ها"
+     ]
+    },
+    {
+     "surface": "غدا",
+     "lemma": null,
+     "pos": "ADV",
+     "skip": true
+    }
+   ]
+  },
+  {
+   "id": "s61",
+   "text": "ذهبت مع زملائي إلى الملعب لمشاهدة المباراة.",
+   "tokens": [
+    {
+     "surface": "ذهبت",
+     "lemma": "ذَهَبَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "مع",
+     "lemma": "مَعَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "زملائي",
+     "lemma": "زَمِيل",
+     "pos": "NOUN",
+     "parts": [
+      "زملائ",
+      "ي"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الملعب",
+     "lemma": "مَلْعَب",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "ملعب"
+     ]
+    },
+    {
+     "surface": "لمشاهدة",
+     "lemma": "مُشَاهَدَة",
+     "pos": "NOUN",
+     "parts": [
+      "ل",
+      "مشاهدة"
+     ]
+    },
+    {
+     "surface": "المباراة",
+     "lemma": "مُبَارَاة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مباراة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s62",
+   "text": "تنتهي الدراسة في شهر يونيو وتبدأ العطلة الصيفية.",
+   "tokens": [
+    {
+     "surface": "تنتهي",
+     "lemma": "اِنْتَهَى",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الدراسة",
+     "lemma": "دِرَاسَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "دراسة"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "شهر",
+     "lemma": "شَهْر",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "يونيو",
+     "lemma": null,
+     "pos": "PROPN",
+     "skip": true
+    },
+    {
+     "surface": "وتبدأ",
+     "lemma": "بَدَأَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "تبدأ"
+     ]
+    },
+    {
+     "surface": "العطلة",
+     "lemma": "عُطْلَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "عطلة"
+     ]
+    },
+    {
+     "surface": "الصيفية",
+     "lemma": "صَيْفِيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "صيفية"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s63",
+   "text": "اتصل بي صديقي وأخبرني بأنه سيسافر غدا.",
+   "tokens": [
+    {
+     "surface": "اتصل",
+     "lemma": "اِتَّصَلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "بي",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true,
+     "parts": [
+      "ب",
+      "ي"
+     ]
+    },
+    {
+     "surface": "صديقي",
+     "lemma": "صَدِيق",
+     "pos": "NOUN",
+     "parts": [
+      "صديق",
+      "ي"
+     ]
+    },
+    {
+     "surface": "وأخبرني",
+     "lemma": "أَخْبَرَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "أخبر",
+      "ني"
+     ]
+    },
+    {
+     "surface": "بأنه",
+     "lemma": null,
+     "pos": "SCONJ",
+     "skip": true,
+     "parts": [
+      "ب",
+      "أن",
+      "ه"
+     ]
+    },
+    {
+     "surface": "سيسافر",
+     "lemma": "سَافَرَ",
+     "pos": "VERB",
+     "parts": [
+      "س",
+      "يسافر"
+     ]
+    },
+    {
+     "surface": "غدا",
+     "lemma": null,
+     "pos": "ADV",
+     "skip": true
+    }
+   ]
+  },
+  {
+   "id": "s64",
+   "text": "قال المدير إن الموظفين سيحصلون على مكافأة نهاية العام.",
+   "tokens": [
+    {
+     "surface": "قال",
+     "lemma": "قَالَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المدير",
+     "lemma": "مُدِير",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مدير"
+     ]
+    },
+    {
+     "surface": "إن",
+     "lemma": null,
+     "pos": "PART",
+     "skip": true
+    },
+    {
+     "surface": "الموظفين",
+     "lemma": "مُوَظَّف",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "موظفين"
+     ]
+    },
+    {
+     "surface": "سيحصلون",
+     "lemma": "حَصَلَ",
+     "pos": "VERB",
+     "parts": [
+      "س",
+      "يحصلون"
+     ]
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "مكافأة",
+     "lemma": "مُكَافَأَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "نهاية",
+     "lemma": "نِهَايَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "العام",
+     "lemma": "عَام",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "عام"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s65",
+   "text": "يستغرق السفر بالقطار ثلاث ساعات تقريبا.",
+   "tokens": [
+    {
+     "surface": "يستغرق",
+     "lemma": "اِسْتَغْرَقَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "السفر",
+     "lemma": "سَفَر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "سفر"
+     ]
+    },
+    {
+     "surface": "بالقطار",
+     "lemma": "قِطَار",
+     "pos": "NOUN",
+     "parts": [
+      "ب",
+      "ال",
+      "قطار"
+     ]
+    },
+    {
+     "surface": "ثلاث",
+     "lemma": null,
+     "pos": "NUM",
+     "skip": true
+    },
+    {
+     "surface": "ساعات",
+     "lemma": "سَاعَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "تقريبا",
+     "lemma": null,
+     "pos": "ADV",
+     "skip": true
+    }
+   ]
+  },
+  {
+   "id": "s66",
+   "text": "تضم المكتبة آلاف الكتب القديمة والمخطوطات النادرة.",
+   "tokens": [
+    {
+     "surface": "تضم",
+     "lemma": "ضَمَّ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المكتبة",
+     "lemma": "مَكْتَبَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مكتبة"
+     ]
+    },
+    {
+     "surface": "آلاف",
+     "lemma": "أَلْف",
+     "pos": "NUM"
+    },
+    {
+     "surface": "الكتب",
+     "lemma": "كِتَاب",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "كتب"
+     ]
+    },
+    {
+     "surface": "القديمة",
+     "lemma": "قَدِيم",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "قديمة"
+     ]
+    },
+    {
+     "surface": "والمخطوطات",
+     "lemma": "مَخْطُوطَة",
+     "pos": "NOUN",
+     "parts": [
+      "و",
+      "ال",
+      "مخطوطات"
+     ]
+    },
+    {
+     "surface": "النادرة",
+     "lemma": "نَادِر",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "نادرة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s67",
+   "text": "أرسل المعلم رسالة إلى أولياء الأمور يطلب فيها مقابلتهم.",
+   "tokens": [
+    {
+     "surface": "أرسل",
+     "lemma": "أَرْسَلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المعلم",
+     "lemma": "مُعَلِّم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "معلم"
+     ]
+    },
+    {
+     "surface": "رسالة",
+     "lemma": "رِسَالَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "أولياء",
+     "lemma": "وَلِيّ",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الأمور",
+     "lemma": "أَمْر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أمور"
+     ]
+    },
+    {
+     "surface": "يطلب",
+     "lemma": "طَلَبَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "فيها",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "parts": [
+      "في",
+      "ها"
+     ]
+    },
+    {
+     "surface": "مقابلتهم",
+     "lemma": "مُقَابَلَة",
+     "pos": "NOUN",
+     "parts": [
+      "مقابلت",
+      "هم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s68",
+   "text": "سيبقى الطقس حارا حتى نهاية الأسبوع.",
+   "tokens": [
+    {
+     "surface": "سيبقى",
+     "lemma": "بَقِيَ",
+     "pos": "VERB",
+     "parts": [
+      "س",
+      "يبقى"
+     ]
+    },
+    {
+     "surface": "الطقس",
+     "lemma": "طَقْس",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "طقس"
+     ]
+    },
+    {
+     "surface": "حارا",
+     "lemma": "حَارّ",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "حتى",
+     "lemma": "حَتَّى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "نهاية",
+     "lemma": "نِهَايَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الأسبوع",
+     "lemma": "أُسْبُوع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أسبوع"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s69",
+   "text": "تبحث الباحثة عن علاج جديد لهذا المرض.",
+   "tokens": [
+    {
+     "surface": "تبحث",
+     "lemma": "بَحَثَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الباحثة",
+     "lemma": "بَاحِث",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "باحثة"
+     ]
+    },
+    {
+     "surface": "عن",
+     "lemma": "عَنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "علاج",
+     "lemma": "عِلَاج",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "جديد",
+     "lemma": "جَدِيد",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "لهذا",
+     "lemma": "هٰذَا",
+     "pos": "DET",
+     "parts": [
+      "ل",
+      "هذا"
+     ]
+    },
+    {
+     "surface": "المرض",
+     "lemma": "مَرَض",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مرض"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s70",
+   "text": "وصل المسافرون متعبين بعد رحلة طويلة.",
+   "tokens": [
+    {
+     "surface": "وصل",
+     "lemma": "وَصَلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المسافرون",
+     "lemma": "مُسَافِر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مسافرون"
+     ]
+    },
+    {
+     "surface": "متعبين",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true
+    },
+    {
+     "surface": "بعد",
+     "lemma": "بَعْدَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "رحلة",
+     "lemma": "رِحْلَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "طويلة",
+     "lemma": "طَوِيل",
+     "pos": "ADJ"
+    }
+   ]
+  },
+  {
+   "id": "s71",
+   "text": "بعد أن أنهى الطالب دراسته في الجامعة عاد إلى قريته وفتح مكتبا صغيرا لتعليم الأطفال القراءة والكتابة.",
+   "tokens": [
+    {
+     "surface": "بعد",
+     "lemma": "بَعْدَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "أن",
+     "lemma": null,
+     "pos": "PART",
+     "skip": true
+    },
+    {
+     "surface": "أنهى",
+     "lemma": "أَنْهَى",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الطالب",
+     "lemma": "طَالِب",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "طالب"
+     ]
+    },
+    {
+     "surface": "دراسته",
+     "lemma": "دِرَاسَة",
+     "pos": "NOUN",
+     "parts": [
+      "دراست",
+      "ه"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الجامعة",
+     "lemma": "جَامِعَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "جامعة"
+     ]
+    },
+    {
+     "surface": "عاد",
+     "lemma": "عَادَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "قريته",
+     "lemma": "قَرْيَة",
+     "pos": "NOUN",
+     "parts": [
+      "قريت",
+      "ه"
+     ]
+    },
+    {
+     "surface": "وفتح",
+     "lemma": "فَتَحَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "فتح"
+     ]
+    },
+    {
+     "surface": "مكتبا",
+     "lemma": "مَكْتَب",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "صغيرا",
+     "lemma": "صَغِير",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "لتعليم",
+     "lemma": "تَعْلِيم",
+     "pos": "NOUN",
+     "parts": [
+      "ل",
+      "تعليم"
+     ]
+    },
+    {
+     "surface": "الأطفال",
+     "lemma": "طِفْل",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أطفال"
+     ]
+    },
+    {
+     "surface": "القراءة",
+     "lemma": "قِرَاءَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "قراءة"
+     ]
+    },
+    {
+     "surface": "والكتابة",
+     "lemma": "كِتَابَة",
+     "pos": "NOUN",
+     "parts": [
+      "و",
+      "ال",
+      "كتابة"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s72",
+   "text": "في صباح يوم الجمعة خرج سكان الحي إلى الساحة الكبيرة وشاركوا في الاحتفال الذي أقامته البلدية كل سنة.",
+   "tokens": [
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "صباح",
+     "lemma": "صَبَاح",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "يوم",
+     "lemma": "يَوْم",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الجمعة",
+     "lemma": "جُمْعَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "جمعة"
+     ]
+    },
+    {
+     "surface": "خرج",
+     "lemma": "خَرَجَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "سكان",
+     "lemma": "سَاكِن",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الحي",
+     "lemma": "حَيّ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "حي"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الساحة",
+     "lemma": "سَاحَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "ساحة"
+     ]
+    },
+    {
+     "surface": "الكبيرة",
+     "lemma": "كَبِير",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "كبيرة"
+     ]
+    },
+    {
+     "surface": "وشاركوا",
+     "lemma": "شَارَكَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "شاركوا"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الاحتفال",
+     "lemma": "اِحْتِفَال",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "احتفال"
+     ]
+    },
+    {
+     "surface": "الذي",
+     "lemma": "الَّذِي",
+     "pos": "PRON"
+    },
+    {
+     "surface": "أقامته",
+     "lemma": "أَقَامَ",
+     "pos": "VERB",
+     "parts": [
+      "أقامت",
+      "ه"
+     ]
+    },
+    {
+     "surface": "البلدية",
+     "lemma": null,
+     "pos": "NOUN",
+     "skip": true,
+     "parts": [
+      "ال",
+      "بلدية"
+     ]
+    },
+    {
+     "surface": "كل",
+     "lemma": null,
+     "pos": "NOUN",
+     "skip": true
+    },
+    {
+     "surface": "سنة",
+     "lemma": "سَنَة",
+     "pos": "NOUN"
+    }
+   ]
+  },
+  {
+   "id": "s73",
+   "text": "أعلنت الشركة أنها ستفتح فروعا جديدة في عدة دول عربية خلال السنوات القليلة القادمة وستوظف آلاف الشباب.",
+   "tokens": [
+    {
+     "surface": "أعلنت",
+     "lemma": "أَعْلَنَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الشركة",
+     "lemma": "شَرِكَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شركة"
+     ]
+    },
+    {
+     "surface": "أنها",
+     "lemma": null,
+     "pos": "SCONJ",
+     "skip": true,
+     "parts": [
+      "أن",
+      "ها"
+     ]
+    },
+    {
+     "surface": "ستفتح",
+     "lemma": "فَتَحَ",
+     "pos": "VERB",
+     "parts": [
+      "س",
+      "تفتح"
+     ]
+    },
+    {
+     "surface": "فروعا",
+     "lemma": "فَرْع",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "جديدة",
+     "lemma": "جَدِيد",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "عدة",
+     "lemma": "عِدَّة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "دول",
+     "lemma": "دَوْلَة",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "عربية",
+     "lemma": "عَرَبِيّ",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "خلال",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true
+    },
+    {
+     "surface": "السنوات",
+     "lemma": "سَنَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "سنوات"
+     ]
+    },
+    {
+     "surface": "القليلة",
+     "lemma": "قَلِيل",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "قليلة"
+     ]
+    },
+    {
+     "surface": "القادمة",
+     "lemma": "قَادِم",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "قادمة"
+     ]
+    },
+    {
+     "surface": "وستوظف",
+     "lemma": "وَظَّفَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "س",
+      "توظف"
+     ]
+    },
+    {
+     "surface": "آلاف",
+     "lemma": "أَلْف",
+     "pos": "NUM"
+    },
+    {
+     "surface": "الشباب",
+     "lemma": "شَابّ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شباب"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s74",
+   "text": "يقول علماء الآثار إن هذه المدينة القديمة كانت مركزا تجاريا مهما قبل أكثر من ألفي عام.",
+   "tokens": [
+    {
+     "surface": "يقول",
+     "lemma": "قَالَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "علماء",
+     "lemma": "عَالِم",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الآثار",
+     "lemma": "أَثَر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "آثار"
+     ]
+    },
+    {
+     "surface": "إن",
+     "lemma": null,
+     "pos": "PART",
+     "skip": true
+    },
+    {
+     "surface": "هذه",
+     "lemma": null,
+     "pos": "DET",
+     "skip": true
+    },
+    {
+     "surface": "المدينة",
+     "lemma": "مَدِينَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مدينة"
+     ]
+    },
+    {
+     "surface": "القديمة",
+     "lemma": "قَدِيم",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "قديمة"
+     ]
+    },
+    {
+     "surface": "كانت",
+     "lemma": "كَانَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "مركزا",
+     "lemma": "مَرْكَز",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "تجاريا",
+     "lemma": "تِجَارِيّ",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "مهما",
+     "lemma": "مُهِمّ",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "قبل",
+     "lemma": "قَبْلَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "أكثر",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "ألفي",
+     "lemma": "أَلْف",
+     "pos": "NUM"
+    },
+    {
+     "surface": "عام",
+     "lemma": "عَام",
+     "pos": "NOUN"
+    }
+   ]
+  },
+  {
+   "id": "s75",
+   "text": "تتكون الأسرة في الغالب من الأب والأم وثلاثة أو أربعة أطفال يعيشون معا في بيت واحد.",
+   "tokens": [
+    {
+     "surface": "تتكون",
+     "lemma": "تَكَوَّنَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الأسرة",
+     "lemma": "أُسْرَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أسرة"
+     ]
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الغالب",
+     "lemma": null,
+     "pos": "NOUN",
+     "skip": true,
+     "parts": [
+      "ال",
+      "غالب"
+     ]
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "الأب",
+     "lemma": "أَب",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أب"
+     ]
+    },
+    {
+     "surface": "والأم",
+     "lemma": "أُمّ",
+     "pos": "NOUN",
+     "parts": [
+      "و",
+      "ال",
+      "أم"
+     ]
+    },
+    {
+     "surface": "وثلاثة",
+     "lemma": "ثَلَاثَة",
+     "pos": "NUM",
+     "parts": [
+      "و",
+      "ثلاثة"
+     ]
+    },
+    {
+     "surface": "أو",
+     "lemma": "أَوْ",
+     "pos": "CONJ"
+    },
+    {
+     "surface": "أربعة",
+     "lemma": "أَرْبَعَة",
+     "pos": "NUM"
+    },
+    {
+     "surface": "أطفال",
+     "lemma": "طِفْل",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "يعيشون",
+     "lemma": "عَاشَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "معا",
+     "lemma": null,
+     "pos": "ADV",
+     "skip": true
+    },
+    {
+     "surface": "في",
+     "lemma": "فِي",
+     "pos": "ADP"
+    },
+    {
+     "surface": "بيت",
+     "lemma": "بَيْت",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "واحد",
+     "lemma": "وَاحِد",
+     "pos": "NUM"
+    }
+   ]
+  },
+  {
+   "id": "s76",
+   "text": "عندما وصل المسافر إلى القرية وجد الناس مجتمعين أمام المسجد ينتظرون وصول الشيخ الذي جاء من بلد بعيد.",
+   "tokens": [
+    {
+     "surface": "عندما",
+     "lemma": null,
+     "pos": "SCONJ",
+     "skip": true
+    },
+    {
+     "surface": "وصل",
+     "lemma": "وَصَلَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "المسافر",
+     "lemma": "مُسَافِر",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مسافر"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "القرية",
+     "lemma": "قَرْيَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "قرية"
+     ]
+    },
+    {
+     "surface": "وجد",
+     "lemma": "وَجَدَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الناس",
+     "lemma": "نَاس",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "ناس"
+     ]
+    },
+    {
+     "surface": "مجتمعين",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true
+    },
+    {
+     "surface": "أمام",
+     "lemma": "أَمَامَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "المسجد",
+     "lemma": "مَسْجِد",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مسجد"
+     ]
+    },
+    {
+     "surface": "ينتظرون",
+     "lemma": "اِنْتَظَرَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "وصول",
+     "lemma": "وُصُول",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الشيخ",
+     "lemma": "شَيْخ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "شيخ"
+     ]
+    },
+    {
+     "surface": "الذي",
+     "lemma": "الَّذِي",
+     "pos": "PRON"
+    },
+    {
+     "surface": "جاء",
+     "lemma": "جَاءَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "من",
+     "lemma": "مِنْ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "بلد",
+     "lemma": "بَلَد",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "بعيد",
+     "lemma": "بَعِيد",
+     "pos": "ADJ"
+    }
+   ]
+  },
+  {
+   "id": "s77",
+   "text": "لقد تغير شكل المدينة كثيرا خلال العقود الماضية فظهرت فيها أحياء جديدة وارتفعت المباني العالية.",
+   "tokens": [
+    {
+     "surface": "لقد",
+     "lemma": null,
+     "pos": "PART",
+     "skip": true
+    },
+    {
+     "surface": "تغير",
+     "lemma": "تَغَيَّرَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "شكل",
+     "lemma": "شَكْل",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "المدينة",
+     "lemma": "مَدِينَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مدينة"
+     ]
+    },
+    {
+     "surface": "كثيرا",
+     "lemma": null,
+     "pos": "ADV",
+     "skip": true
+    },
+    {
+     "surface": "خلال",
+     "lemma": null,
+     "pos": "ADP",
+     "skip": true
+    },
+    {
+     "surface": "العقود",
+     "lemma": "عَقْد",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "عقود"
+     ]
+    },
+    {
+     "surface": "الماضية",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true,
+     "parts": [
+      "ال",
+      "ماضية"
+     ]
+    },
+    {
+     "surface": "فظهرت",
+     "lemma": "ظَهَرَ",
+     "pos": "VERB",
+     "parts": [
+      "ف",
+      "ظهرت"
+     ]
+    },
+    {
+     "surface": "فيها",
+     "lemma": "فِي",
+     "pos": "ADP",
+     "parts": [
+      "في",
+      "ها"
+     ]
+    },
+    {
+     "surface": "أحياء",
+     "lemma": "حَيّ",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "جديدة",
+     "lemma": "جَدِيد",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "وارتفعت",
+     "lemma": "اِرْتَفَعَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "ارتفعت"
+     ]
+    },
+    {
+     "surface": "المباني",
+     "lemma": null,
+     "pos": "NOUN",
+     "skip": true,
+     "parts": [
+      "ال",
+      "مباني"
+     ]
+    },
+    {
+     "surface": "العالية",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true,
+     "parts": [
+      "ال",
+      "عالية"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s78",
+   "text": "ذهب الأخ الأكبر إلى السوق ليشتري بعض الفواكه والخضروات لأن الضيوف سيصلون مساء اليوم.",
+   "tokens": [
+    {
+     "surface": "ذهب",
+     "lemma": "ذَهَبَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الأخ",
+     "lemma": "أَخ",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أخ"
+     ]
+    },
+    {
+     "surface": "الأكبر",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true,
+     "parts": [
+      "ال",
+      "أكبر"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "السوق",
+     "lemma": "سُوق",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "سوق"
+     ]
+    },
+    {
+     "surface": "ليشتري",
+     "lemma": "اِشْتَرَى",
+     "pos": "VERB",
+     "parts": [
+      "ل",
+      "يشتري"
+     ]
+    },
+    {
+     "surface": "بعض",
+     "lemma": "بَعْض",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "الفواكه",
+     "lemma": "فَاكِهَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "فواكه"
+     ]
+    },
+    {
+     "surface": "والخضروات",
+     "lemma": null,
+     "pos": "NOUN",
+     "skip": true,
+     "parts": [
+      "و",
+      "ال",
+      "خضروات"
+     ]
+    },
+    {
+     "surface": "لأن",
+     "lemma": null,
+     "pos": "SCONJ",
+     "skip": true,
+     "parts": [
+      "ل",
+      "أن"
+     ]
+    },
+    {
+     "surface": "الضيوف",
+     "lemma": "ضَيْف",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "ضيوف"
+     ]
+    },
+    {
+     "surface": "سيصلون",
+     "lemma": "وَصَلَ",
+     "pos": "VERB",
+     "parts": [
+      "س",
+      "يصلون"
+     ]
+    },
+    {
+     "surface": "مساء",
+     "lemma": "مَسَاء",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "اليوم",
+     "lemma": "يَوْم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "يوم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s79",
+   "text": "تشير الدراسات الحديثة إلى أن النوم الكافي يساعد الإنسان على التركيز ويحسن قدرته على التعلم.",
+   "tokens": [
+    {
+     "surface": "تشير",
+     "lemma": "أَشَارَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الدراسات",
+     "lemma": "دِرَاسَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "دراسات"
+     ]
+    },
+    {
+     "surface": "الحديثة",
+     "lemma": "حَدِيث",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "حديثة"
+     ]
+    },
+    {
+     "surface": "إلى",
+     "lemma": "إِلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "أن",
+     "lemma": null,
+     "pos": "PART",
+     "skip": true
+    },
+    {
+     "surface": "النوم",
+     "lemma": "نَوْم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "نوم"
+     ]
+    },
+    {
+     "surface": "الكافي",
+     "lemma": null,
+     "pos": "ADJ",
+     "skip": true,
+     "parts": [
+      "ال",
+      "كافي"
+     ]
+    },
+    {
+     "surface": "يساعد",
+     "lemma": "سَاعَدَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الإنسان",
+     "lemma": "إِنْسَان",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "إنسان"
+     ]
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "التركيز",
+     "lemma": "تَرْكِيز",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "تركيز"
+     ]
+    },
+    {
+     "surface": "ويحسن",
+     "lemma": "حَسَّنَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "يحسن"
+     ]
+    },
+    {
+     "surface": "قدرته",
+     "lemma": "قُدْرَة",
+     "pos": "NOUN",
+     "parts": [
+      "قدرت",
+      "ه"
+     ]
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "التعلم",
+     "lemma": "تَعَلُّم",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "تعلم"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s80",
+   "text": "بعد مفاوضات طويلة وافق الطرفان على وقف إطلاق النار وتبادل الأسرى ورحب المجتمع الدولي بهذه الخطوة.",
+   "tokens": [
+    {
+     "surface": "بعد",
+     "lemma": "بَعْدَ",
+     "pos": "ADP"
+    },
+    {
+     "surface": "مفاوضات",
+     "lemma": null,
+     "pos": "NOUN",
+     "skip": true
+    },
+    {
+     "surface": "طويلة",
+     "lemma": "طَوِيل",
+     "pos": "ADJ"
+    },
+    {
+     "surface": "وافق",
+     "lemma": "وَافَقَ",
+     "pos": "VERB"
+    },
+    {
+     "surface": "الطرفان",
+     "lemma": "طَرَف",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "طرفان"
+     ]
+    },
+    {
+     "surface": "على",
+     "lemma": "عَلَى",
+     "pos": "ADP"
+    },
+    {
+     "surface": "وقف",
+     "lemma": "وَقْف",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "إطلاق",
+     "lemma": "إِطْلَاق",
+     "pos": "NOUN"
+    },
+    {
+     "surface": "النار",
+     "lemma": "نَار",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "نار"
+     ]
+    },
+    {
+     "surface": "وتبادل",
+     "lemma": "تَبَادُل",
+     "pos": "NOUN",
+     "parts": [
+      "و",
+      "تبادل"
+     ]
+    },
+    {
+     "surface": "الأسرى",
+     "lemma": "أَسِير",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "أسرى"
+     ]
+    },
+    {
+     "surface": "ورحب",
+     "lemma": "رَحَّبَ",
+     "pos": "VERB",
+     "parts": [
+      "و",
+      "رحب"
+     ]
+    },
+    {
+     "surface": "المجتمع",
+     "lemma": "مُجْتَمَع",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "مجتمع"
+     ]
+    },
+    {
+     "surface": "الدولي",
+     "lemma": "دَوْلِيّ",
+     "pos": "ADJ",
+     "parts": [
+      "ال",
+      "دولي"
+     ]
+    },
+    {
+     "surface": "بهذه",
+     "lemma": null,
+     "pos": "DET",
+     "skip": true,
+     "parts": [
+      "ب",
+      "هذه"
+     ]
+    },
+    {
+     "surface": "الخطوة",
+     "lemma": "خُطْوَة",
+     "pos": "NOUN",
+     "parts": [
+      "ال",
+      "خطوة"
+     ]
+    }
+   ]
+  }
+ ]
+}

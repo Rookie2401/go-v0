@@ -1,0 +1,1734 @@
+{
+ "_about": "Frozen regression cases for the Arabic analyser, written 2026-11-25 by the pack's quality package from grammar knowledge, NEVER from analyser output. One record per case; see docs/arabic/EVAL.md. Do not weaken or delete a case that fails: list it in EVAL.md as open.",
+ "frozen": "2026-11-25",
+ "cases": [
+  {
+   "id": "o01-kataba",
+   "source": "owner",
+   "text": "كَتَبَ",
+   "target": "كَتَبَ",
+   "expect": {
+    "lemma": "كَتَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing",
+     "Voice": "Act",
+     "Form": "I"
+    },
+    "root": "ك ت ب"
+   },
+   "note": "perfect 3rd person masculine singular"
+  },
+  {
+   "id": "o02-katabtu",
+   "source": "owner",
+   "text": "كَتَبْتُ",
+   "target": "كَتَبْتُ",
+   "expect": {
+    "lemma": "كَتَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "1",
+     "Number": "Sing"
+    }
+   },
+   "note": "perfect 1st person singular: the ending -tu"
+  },
+  {
+   "id": "o03-katabna",
+   "source": "owner",
+   "text": "كَتَبْنَا",
+   "target": "كَتَبْنَا",
+   "expect": {
+    "lemma": "كَتَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "1",
+     "Number": "Plur"
+    }
+   },
+   "note": "perfect 1st person plural: the ending -nā"
+  },
+  {
+   "id": "o04-taktubu",
+   "source": "owner",
+   "text": "تَكْتُبُ",
+   "target": "تَكْتُبُ",
+   "expect": {
+    "lemma": "كَتَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Imp",
+     "Mood": "Ind",
+     "Person": "2,3",
+     "Voice": "Act"
+    },
+    "oneReading": true
+   },
+   "note": "ambiguous: you (m. sg.) write or she writes. ONE reading with Person \"2,3\", never two readings with the first shown as decided"
+  },
+  {
+   "id": "o05-yaktubuna",
+   "source": "owner",
+   "text": "يَكْتُبُونَ",
+   "target": "يَكْتُبُونَ",
+   "expect": {
+    "lemma": "كَتَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Imp",
+     "Mood": "Ind",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Plur"
+    }
+   },
+   "note": "imperfect indicative 3rd person masculine plural"
+  },
+  {
+   "id": "o06-lam-yaktub",
+   "source": "owner",
+   "text": "لَمْ يَكْتُبْ",
+   "target": "يَكْتُبْ",
+   "expect": {
+    "lemma": "كَتَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Imp",
+     "Mood": "Jus",
+     "Person": "3",
+     "Number": "Sing"
+    }
+   },
+   "note": "jussive after لَمْ (the printed sukūn also says so)"
+  },
+  {
+   "id": "o07-lan-yaktuba",
+   "source": "owner",
+   "text": "لَنْ يَكْتُبَ",
+   "target": "يَكْتُبَ",
+   "expect": {
+    "lemma": "كَتَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Imp",
+     "Mood": "Sub",
+     "Person": "3",
+     "Number": "Sing"
+    }
+   },
+   "note": "subjunctive after لَنْ (the printed fatḥa also says so)"
+  },
+  {
+   "id": "o08-kutiba",
+   "source": "owner",
+   "text": "كُتِبَ",
+   "target": "كُتِبَ",
+   "expect": {
+    "lemma": "كَتَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Voice": "Pass",
+     "Person": "3",
+     "Number": "Sing"
+    }
+   },
+   "note": "passive perfect: it was written"
+  },
+  {
+   "id": "o09-qala",
+   "source": "owner",
+   "text": "قَالَ",
+   "target": "قَالَ",
+   "expect": {
+    "lemma": "قَالَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    },
+    "root": "ق و ل",
+    "notes": {
+     "rootClass": "hollow"
+    }
+   },
+   "note": "hollow verb, perfect"
+  },
+  {
+   "id": "o10-qul",
+   "source": "owner",
+   "text": "قُلْ",
+   "target": "قُلْ",
+   "expect": {
+    "lemma": "قَالَ",
+    "pos": "VERB",
+    "features": {
+     "Mood": "Imp",
+     "Person": "2",
+     "Gender": "Masc",
+     "Number": "Sing"
+    },
+    "notes": {
+     "rootClass": "hollow"
+    }
+   },
+   "note": "hollow verb, imperative: the lemma is قَالَ, not قَلَّ"
+  },
+  {
+   "id": "o11-yaidu",
+   "source": "owner",
+   "text": "يَعِدُ",
+   "target": "يَعِدُ",
+   "expect": {
+    "lemma": "وَعَدَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Imp",
+     "Mood": "Ind",
+     "Person": "3"
+    },
+    "root": "و ع د",
+    "notes": {
+     "rootClass": "assimilated"
+    }
+   },
+   "note": "assimilated verb: the wāw drops in the imperfect"
+  },
+  {
+   "id": "o12-irmi",
+   "source": "owner",
+   "text": "اِرْمِ",
+   "target": "اِرْمِ",
+   "expect": {
+    "lemma": "رَمَى",
+    "pos": "VERB",
+    "features": {
+     "Mood": "Imp",
+     "Person": "2",
+     "Gender": "Masc",
+     "Number": "Sing"
+    },
+    "root": "ر م ي",
+    "notes": {
+     "rootClass": "defective"
+    }
+   },
+   "note": "defective verb, imperative (the final weak letter is dropped)"
+  },
+  {
+   "id": "o13-istaghfara",
+   "source": "owner",
+   "text": "اِسْتَغْفَرَ",
+   "target": "اِسْتَغْفَرَ",
+   "expect": {
+    "lemma": "اِسْتَغْفَرَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "X",
+     "Person": "3"
+    },
+    "root": "غ ف ر"
+   },
+   "note": "Form X"
+  },
+  {
+   "id": "o14-taallama",
+   "source": "owner",
+   "text": "تَعَلَّمَ",
+   "target": "تَعَلَّمَ",
+   "expect": {
+    "lemma": "تَعَلَّمَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "V",
+     "Person": "3"
+    },
+    "root": "ع ل م"
+   },
+   "note": "Form V"
+  },
+  {
+   "id": "o15-kutub",
+   "source": "owner",
+   "text": "كُتُب",
+   "target": "كُتُب",
+   "expect": {
+    "lemma": "كِتَاب",
+    "pos": "NOUN",
+    "features": {
+     "Number": "Plur",
+     "PluralType": "Broken"
+    },
+    "root": "ك ت ب"
+   },
+   "note": "broken plural of كِتَاب (not of كَتَبَ)"
+  },
+  {
+   "id": "o16-muallimuna",
+   "source": "owner",
+   "text": "مُعَلِّمُونَ",
+   "target": "مُعَلِّمُونَ",
+   "expect": {
+    "lemma": "مُعَلِّم",
+    "pos": "NOUN",
+    "posAlt": [
+     "ADJ"
+    ],
+    "features": {
+     "Number": "Plur",
+     "Gender": "Masc",
+     "Case": "Nom",
+     "PluralType": "Sound"
+    },
+    "root": "ع ل م"
+   },
+   "note": "sound masculine plural, nominative"
+  },
+  {
+   "id": "o17-muallimat",
+   "source": "owner",
+   "text": "مُعَلِّمَات",
+   "target": "مُعَلِّمَات",
+   "expect": {
+    "lemma": "مُعَلِّمَة",
+    "pos": "NOUN",
+    "posAlt": [
+     "ADJ"
+    ],
+    "features": {
+     "Number": "Plur",
+     "Gender": "Fem",
+     "PluralType": "Sound"
+    }
+   },
+   "note": "sound feminine plural; the lemma is the feminine singular مُعَلِّمَة (the source may list it as a separate entry or only under مُعَلِّم: check the lemma)"
+  },
+  {
+   "id": "o18-kitabani",
+   "source": "owner",
+   "text": "كِتَابَانِ",
+   "target": "كِتَابَانِ",
+   "expect": {
+    "lemma": "كِتَاب",
+    "pos": "NOUN",
+    "features": {
+     "Number": "Dual",
+     "Case": "Nom"
+    }
+   },
+   "note": "dual nominative"
+  },
+  {
+   "id": "o19-kitabayni",
+   "source": "owner",
+   "text": "كِتَابَيْنِ",
+   "target": "كِتَابَيْنِ",
+   "expect": {
+    "lemma": "كِتَاب",
+    "pos": "NOUN",
+    "features": {
+     "Number": "Dual",
+     "Case": "Acc,Gen"
+    }
+   },
+   "note": "dual oblique: accusative and genitive share the form (one reading, Case \"Acc,Gen\")"
+  },
+  {
+   "id": "o20a-kitab-altalib",
+   "source": "owner",
+   "text": "كِتَابُ الطَّالِبِ",
+   "target": "كِتَابُ",
+   "expect": {
+    "lemma": "كِتَاب",
+    "pos": "NOUN",
+    "features": {
+     "Definite": "Cons",
+     "Case": "Nom",
+     "Number": "Sing"
+    }
+   },
+   "note": "first term of a construct (iḍāfa): Definite=Cons"
+  },
+  {
+   "id": "o20b-kitab-altalib",
+   "source": "owner",
+   "text": "كِتَابُ الطَّالِبِ",
+   "target": "الطَّالِبِ",
+   "expect": {
+    "lemma": "طَالِب",
+    "pos": "NOUN",
+    "posAlt": [
+     "ADJ"
+    ],
+    "features": {
+     "Definite": "Def",
+     "Case": "Gen"
+    },
+    "parts": [
+     {
+      "text": "ال",
+      "role": "prefix"
+     },
+     {
+      "text": "طالب",
+      "role": "stem"
+     }
+    ]
+   },
+   "note": "second term of the construct: definite, genitive (the printed kasra says so); the article is a part"
+  },
+  {
+   "id": "o21-kitabuhu",
+   "source": "owner",
+   "text": "كِتَابُهُ",
+   "target": "كِتَابُهُ",
+   "expect": {
+    "lemma": "كِتَاب",
+    "pos": "NOUN",
+    "features": {
+     "Definite": "Cons",
+     "Case": "Nom",
+     "Number": "Sing"
+    },
+    "parts": [
+     {
+      "text": "كتاب",
+      "role": "stem"
+     },
+     {
+      "text": "ه",
+      "role": "suffix"
+     }
+    ]
+   },
+   "note": "possessive suffix: his book"
+  },
+  {
+   "id": "o22-bilkitabi",
+   "source": "owner",
+   "text": "بِالْكِتَابِ",
+   "target": "بِالْكِتَابِ",
+   "expect": {
+    "lemma": "كِتَاب",
+    "pos": "NOUN",
+    "features": {
+     "Definite": "Def",
+     "Case": "Gen"
+    },
+    "parts": [
+     {
+      "text": "ب",
+      "role": "prefix"
+     },
+     {
+      "text": "ال",
+      "role": "prefix"
+     },
+     {
+      "text": "كتاب",
+      "role": "stem"
+     }
+    ]
+   },
+   "note": "preposition + article + noun; genitive printed"
+  },
+  {
+   "id": "o23-lilbayti",
+   "source": "owner",
+   "text": "لِلْبَيْتِ",
+   "target": "لِلْبَيْتِ",
+   "expect": {
+    "lemma": "بَيْت",
+    "pos": "NOUN",
+    "features": {
+     "Definite": "Def",
+     "Case": "Gen"
+    },
+    "parts": [
+     {
+      "text": "ل",
+      "role": "prefix"
+     },
+     {
+      "text": "ل",
+      "role": "prefix"
+     },
+     {
+      "text": "بيت",
+      "role": "stem"
+     }
+    ]
+   },
+   "note": "ل + ال written لل: the article's lām stands in the same letter. How the two lāms are cut out of the printed word is the analyser's choice; the part texts here assume ل | ل | بيت"
+  },
+  {
+   "id": "o24a-wajada",
+   "source": "owner",
+   "text": "وَجَدَ",
+   "target": "وَجَدَ",
+   "expect": {
+    "lemma": "وَجَدَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    },
+    "notParts": true,
+    "root": "و ج د",
+    "notes": {
+     "rootClass": "assimilated"
+    }
+   },
+   "note": "a verb, not و + جَدّ (the printed fatḥa on dāl rules the noun out as well)"
+  },
+  {
+   "id": "o24b-wajada-bare",
+   "source": "owner",
+   "text": "وجد",
+   "target": "وجد",
+   "expect": {
+    "lemma": "وَجَدَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3"
+    },
+    "alsoReadings": [
+     "جَدّ"
+    ],
+    "notParts": true
+   },
+   "note": "unvocalized: the verb leads; و + جَدّ (and the grandfather) only as a LOWER reading"
+  },
+  {
+   "id": "o25-raahu",
+   "source": "owner",
+   "text": "رَآهُ",
+   "target": "رَآهُ",
+   "expect": {
+    "lemma": "رَأَى",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3"
+    },
+    "parts": [
+     {
+      "text": "رآ",
+      "role": "stem"
+     },
+     {
+      "text": "ه",
+      "role": "suffix"
+     }
+    ],
+    "root": "ر ء ي"
+   },
+   "note": "to see + object pronoun: he saw him; the hamza seat is the madda alif"
+  },
+  {
+   "id": "o26-alshams",
+   "source": "owner",
+   "text": "الشَّمْس",
+   "target": "الشَّمْس",
+   "expect": {
+    "lemma": "شَمْس",
+    "pos": "NOUN",
+    "features": {
+     "Definite": "Def"
+    },
+    "parts": [
+     {
+      "text": "ال",
+      "role": "prefix"
+     },
+     {
+      "text": "شمس",
+      "role": "stem"
+     }
+    ]
+   },
+   "note": "sun letter: the shadda on šīn belongs to the article; the spelling is never changed"
+  },
+  {
+   "id": "o27-alqamar",
+   "source": "owner",
+   "text": "الْقَمَر",
+   "target": "الْقَمَر",
+   "expect": {
+    "lemma": "قَمَر",
+    "pos": "NOUN",
+    "features": {
+     "Definite": "Def"
+    },
+    "parts": [
+     {
+      "text": "ال",
+      "role": "prefix"
+     },
+     {
+      "text": "قمر",
+      "role": "stem"
+     }
+    ]
+   },
+   "note": "moon letter: the lām is pronounced (sukūn printed)"
+  },
+  {
+   "id": "o28-ktb",
+   "source": "owner",
+   "text": "كتب",
+   "target": "كتب",
+   "expect": {
+    "lemma": null,
+    "undecided": true,
+    "alsoReadings": [
+     "كَتَبَ",
+     "كِتَاب"
+    ]
+   },
+   "note": "unvocalized and alone: كَتَبَ, كُتِبَ, كُتُب (كِتَاب) … no lexeme may be credited"
+  },
+  {
+   "id": "o29-wbalktab",
+   "source": "owner",
+   "text": "وبالكتاب",
+   "target": "وبالكتاب",
+   "expect": {
+    "lemma": "كِتَاب",
+    "pos": "NOUN",
+    "features": {
+     "Definite": "Def"
+    },
+    "parts": [
+     {
+      "text": "و",
+      "role": "prefix"
+     },
+     {
+      "text": "ب",
+      "role": "prefix"
+     },
+     {
+      "text": "ال",
+      "role": "prefix"
+     },
+     {
+      "text": "كتاب",
+      "role": "stem"
+     }
+    ]
+   },
+   "note": "four parts: and + with + the + book"
+  },
+  {
+   "id": "o30-fsyktbwnha",
+   "source": "owner",
+   "text": "فسيكتبونها",
+   "target": "فسيكتبونها",
+   "expect": {
+    "lemma": "كَتَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Imp",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Plur"
+    },
+    "parts": [
+     {
+      "text": "ف",
+      "role": "prefix"
+     },
+     {
+      "text": "س",
+      "role": "prefix"
+     },
+     {
+      "text": "يكتبون",
+      "role": "stem"
+     },
+     {
+      "text": "ها",
+      "role": "suffix"
+     }
+    ]
+   },
+   "note": "and + will + they write + it (f.)"
+  },
+  {
+   "id": "o31-alima",
+   "source": "owner",
+   "text": "عَلِمَ",
+   "target": "عَلِمَ",
+   "expect": {
+    "lemma": "عَلِمَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "I",
+     "Person": "3"
+    },
+    "root": "ع ل م"
+   },
+   "note": "he knew (homonym family of علم)"
+  },
+  {
+   "id": "o32-allama",
+   "source": "owner",
+   "text": "عَلَّمَ",
+   "target": "عَلَّمَ",
+   "expect": {
+    "lemma": "عَلَّمَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "II",
+     "Person": "3"
+    },
+    "root": "ع ل م"
+   },
+   "note": "he taught"
+  },
+  {
+   "id": "o33-ilm",
+   "source": "owner",
+   "text": "عِلْم",
+   "target": "عِلْم",
+   "expect": {
+    "lemma": "عِلْم",
+    "pos": "NOUN",
+    "features": {
+     "Number": "Sing"
+    },
+    "root": "ع ل م"
+   },
+   "note": "knowledge"
+  },
+  {
+   "id": "o34-alam",
+   "source": "owner",
+   "text": "عَلَم",
+   "target": "عَلَم",
+   "expect": {
+    "lemma": "عَلَم",
+    "pos": "NOUN",
+    "features": {
+     "Number": "Sing"
+    },
+    "root": "ع ل م"
+   },
+   "note": "flag, banner (also: a proper name)"
+  },
+  {
+   "id": "o35-alam-world",
+   "source": "owner",
+   "text": "عَالَم",
+   "target": "عَالَم",
+   "expect": {
+    "lemma": "عَالَم",
+    "pos": "NOUN",
+    "features": {
+     "Number": "Sing"
+    },
+    "root": "ع ل م"
+   },
+   "note": "world (the fifth lexeme of the family; the key is عالم, with an alif)"
+  },
+  {
+   "id": "o36-ilm-bare",
+   "source": "owner",
+   "text": "علم",
+   "target": "علم",
+   "expect": {
+    "lemma": null,
+    "undecided": true,
+    "alsoReadings": [
+     "عَلِمَ",
+     "عَلَّمَ",
+     "عِلْم",
+     "عَلَم"
+    ]
+   },
+   "note": "unvocalized and alone: four lexemes share the key, none may be credited"
+  },
+  {
+   "id": "w-form-I",
+   "source": "builder",
+   "text": "ذَهَبَ",
+   "target": "ذَهَبَ",
+   "expect": {
+    "lemma": "ذَهَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "I",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    }
+   },
+   "note": "Form I, perfect"
+  },
+  {
+   "id": "w-form-II",
+   "source": "builder",
+   "text": "دَرَّسَ",
+   "target": "دَرَّسَ",
+   "expect": {
+    "lemma": "دَرَّسَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "II",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    }
+   },
+   "note": "Form II, perfect"
+  },
+  {
+   "id": "w-form-III",
+   "source": "builder",
+   "text": "كَاتَبَ",
+   "target": "كَاتَبَ",
+   "expect": {
+    "lemma": "كَاتَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "III",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    }
+   },
+   "note": "Form III, perfect"
+  },
+  {
+   "id": "w-form-IV",
+   "source": "builder",
+   "text": "أَرْسَلَ",
+   "target": "أَرْسَلَ",
+   "expect": {
+    "lemma": "أَرْسَلَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "IV",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    }
+   },
+   "note": "Form IV, perfect"
+  },
+  {
+   "id": "w-form-V",
+   "source": "builder",
+   "text": "تَكَلَّمَ",
+   "target": "تَكَلَّمَ",
+   "expect": {
+    "lemma": "تَكَلَّمَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "V",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    }
+   },
+   "note": "Form V, perfect"
+  },
+  {
+   "id": "w-form-VI",
+   "source": "builder",
+   "text": "تَكَاتَبَ",
+   "target": "تَكَاتَبَ",
+   "expect": {
+    "lemma": "تَكَاتَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "VI",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    }
+   },
+   "note": "Form VI, perfect"
+  },
+  {
+   "id": "w-form-VII",
+   "source": "builder",
+   "text": "اِنْكَسَرَ",
+   "target": "اِنْكَسَرَ",
+   "expect": {
+    "lemma": "اِنْكَسَرَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "VII",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    }
+   },
+   "note": "Form VII, perfect"
+  },
+  {
+   "id": "w-form-VIII",
+   "source": "builder",
+   "text": "اِجْتَمَعَ",
+   "target": "اِجْتَمَعَ",
+   "expect": {
+    "lemma": "اِجْتَمَعَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "VIII",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    }
+   },
+   "note": "Form VIII, perfect"
+  },
+  {
+   "id": "w-form-IX",
+   "source": "builder",
+   "text": "اِحْمَرَّ",
+   "target": "اِحْمَرَّ",
+   "expect": {
+    "lemma": "اِحْمَرَّ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "IX",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    }
+   },
+   "note": "Form IX, perfect"
+  },
+  {
+   "id": "w-form-X",
+   "source": "builder",
+   "text": "اِسْتَخْدَمَ",
+   "target": "اِسْتَخْدَمَ",
+   "expect": {
+    "lemma": "اِسْتَخْدَمَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Form": "X",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    }
+   },
+   "note": "Form X, perfect"
+  },
+  {
+   "id": "w-hollow-imperfect",
+   "source": "builder",
+   "text": "يَقُولُ",
+   "target": "يَقُولُ",
+   "expect": {
+    "lemma": "قَالَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Imp",
+     "Mood": "Ind",
+     "Person": "3"
+    }
+   },
+   "note": "hollow, imperfect: the lemma is the perfect قَالَ"
+  },
+  {
+   "id": "w-defective-perfect",
+   "source": "builder",
+   "text": "رَمَى",
+   "target": "رَمَى",
+   "expect": {
+    "lemma": "رَمَى",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3"
+    }
+   },
+   "note": "defective, perfect (final alif maqṣūra)"
+  },
+  {
+   "id": "w-defective-imperfect",
+   "source": "builder",
+   "text": "يَرْمِي",
+   "target": "يَرْمِي",
+   "expect": {
+    "lemma": "رَمَى",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Imp",
+     "Mood": "Ind",
+     "Person": "3"
+    }
+   },
+   "note": "defective, imperfect (final yāʾ)"
+  },
+  {
+   "id": "w-assimilated-perfect",
+   "source": "builder",
+   "text": "وَعَدَ",
+   "target": "وَعَدَ",
+   "expect": {
+    "lemma": "وَعَدَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3"
+    }
+   },
+   "note": "assimilated, perfect"
+  },
+  {
+   "id": "w-assimilated-imperative",
+   "source": "builder",
+   "text": "عِدْ",
+   "target": "عِدْ",
+   "expect": {
+    "lemma": "وَعَدَ",
+    "pos": "VERB",
+    "features": {
+     "Mood": "Imp",
+     "Person": "2"
+    }
+   },
+   "note": "assimilated, imperative: the wāw is gone"
+  },
+  {
+   "id": "w-geminate-perfect",
+   "source": "builder",
+   "text": "مَدَّ",
+   "target": "مَدَّ",
+   "expect": {
+    "lemma": "مَدَّ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3"
+    },
+    "root": "م د د",
+    "notes": {
+     "rootClass": "geminate"
+    }
+   },
+   "note": "geminate, perfect (the doubled radical)"
+  },
+  {
+   "id": "w-geminate-imperfect",
+   "source": "builder",
+   "text": "يَمُدُّ",
+   "target": "يَمُدُّ",
+   "expect": {
+    "lemma": "مَدَّ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Imp",
+     "Mood": "Ind",
+     "Person": "3"
+    }
+   },
+   "note": "geminate, imperfect indicative"
+  },
+  {
+   "id": "w-geminate-imperative",
+   "source": "builder",
+   "text": "مُدَّ",
+   "target": "مُدَّ",
+   "expect": {
+    "lemma": "مَدَّ",
+    "pos": "VERB",
+    "features": {
+     "Mood": "Imp",
+     "Person": "2"
+    }
+   },
+   "note": "geminate, imperative (fatḥa on the doubled letter)"
+  },
+  {
+   "id": "w-hamzated-perfect",
+   "source": "builder",
+   "text": "سَأَلَ",
+   "target": "سَأَلَ",
+   "expect": {
+    "lemma": "سَأَلَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3"
+    },
+    "notes": {
+     "rootClass": "hamzated"
+    }
+   },
+   "note": "hamzated, perfect"
+  },
+  {
+   "id": "w-hamzated-imperfect",
+   "source": "builder",
+   "text": "يَسْأَلُ",
+   "target": "يَسْأَلُ",
+   "expect": {
+    "lemma": "سَأَلَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Imp",
+     "Mood": "Ind",
+     "Person": "3"
+    }
+   },
+   "note": "hamzated, imperfect"
+  },
+  {
+   "id": "w-hamzated-imperative",
+   "source": "builder",
+   "text": "اِسْأَلْ",
+   "target": "اِسْأَلْ",
+   "expect": {
+    "lemma": "سَأَلَ",
+    "pos": "VERB",
+    "features": {
+     "Mood": "Imp",
+     "Person": "2"
+    }
+   },
+   "note": "hamzated, imperative (regular here; سَلْ is the other form)"
+  },
+  {
+   "id": "w-kana",
+   "source": "builder",
+   "text": "كَانَ",
+   "target": "كَانَ",
+   "expect": {
+    "pos": "VERB",
+    "posAlt": [
+     "AUX"
+    ],
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3",
+     "Gender": "Masc",
+     "Number": "Sing"
+    },
+    "lemma": "كَانَ"
+   },
+   "note": "to be (hollow); the lemma, not a \"noun\""
+  },
+  {
+   "id": "w-yakunu",
+   "source": "builder",
+   "text": "يَكُونُ",
+   "target": "يَكُونُ",
+   "expect": {
+    "pos": "VERB",
+    "posAlt": [
+     "AUX"
+    ],
+    "features": {
+     "Aspect": "Imp",
+     "Mood": "Ind",
+     "Person": "3"
+    },
+    "lemma": "كَانَ"
+   },
+   "note": "imperfect of كَانَ"
+  },
+  {
+   "id": "w-laysa",
+   "source": "builder",
+   "text": "لَيْسَ",
+   "target": "لَيْسَ",
+   "expect": {
+    "pos": "VERB",
+    "posAlt": [
+     "AUX"
+    ],
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3"
+    },
+    "lemma": "لَيْسَ"
+   },
+   "note": "the negative copula; a defective verb"
+  },
+  {
+   "id": "w-inna",
+   "source": "builder",
+   "text": "إِنَّ الطَّالِبَ مُجْتَهِدٌ",
+   "target": "إِنَّ",
+   "expect": {
+    "lemma": "إِنَّ",
+    "pos": "PART",
+    "posAlt": [
+     "SCONJ",
+     "CONJ",
+     "CCONJ"
+    ]
+   },
+   "note": "particle that governs the accusative; not a verb, not a noun"
+  },
+  {
+   "id": "w-inna-subject",
+   "source": "builder",
+   "text": "إِنَّ الطَّالِبَ مُجْتَهِدٌ",
+   "target": "الطَّالِبَ",
+   "expect": {
+    "lemma": "طَالِب",
+    "pos": "NOUN",
+    "posAlt": [
+     "ADJ"
+    ],
+    "features": {
+     "Case": "Acc",
+     "Definite": "Def"
+    },
+    "parts": [
+     {
+      "text": "ال",
+      "role": "prefix"
+     },
+     {
+      "text": "طالب",
+      "role": "stem"
+     }
+    ]
+   },
+   "note": "the subject of إِنَّ is accusative (printed fatḥa)"
+  },
+  {
+   "id": "w-alayhi",
+   "source": "builder",
+   "text": "عَلَيْهِ",
+   "target": "عَلَيْهِ",
+   "expect": {
+    "lemma": "عَلَى",
+    "pos": "ADP",
+    "parts": [
+     {
+      "text": "علي",
+      "role": "stem"
+     },
+     {
+      "text": "ه",
+      "role": "suffix"
+     }
+    ]
+   },
+   "note": "preposition + pronoun: عَلَى + ـهِ; the alif maqṣūra shows as yāʾ"
+  },
+  {
+   "id": "w-lahu",
+   "source": "builder",
+   "text": "لَهُ",
+   "target": "لَهُ",
+   "expect": {
+    "lemma": "لِ",
+    "pos": "ADP",
+    "parts": [
+     {
+      "text": "ل",
+      "role": "stem"
+     },
+     {
+      "text": "ه",
+      "role": "suffix"
+     }
+    ]
+   },
+   "note": "لِ + ـهُ (the lām takes fatḥa before a pronoun); lemma written as the source heads it"
+  },
+  {
+   "id": "w-minni",
+   "source": "builder",
+   "text": "مِنِّي",
+   "target": "مِنِّي",
+   "expect": {
+    "lemma": "مِنْ",
+    "pos": "ADP",
+    "parts": [
+     {
+      "text": "من",
+      "role": "stem"
+     },
+     {
+      "text": "ي",
+      "role": "suffix"
+     }
+    ]
+   },
+   "note": "مِنْ + ـنِي: the nūn is doubled before the 1st person pronoun"
+  },
+  {
+   "id": "w-katabahu",
+   "source": "builder",
+   "text": "كَتَبَهُ",
+   "target": "كَتَبَهُ",
+   "expect": {
+    "lemma": "كَتَبَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3"
+    },
+    "parts": [
+     {
+      "text": "كتب",
+      "role": "stem"
+     },
+     {
+      "text": "ه",
+      "role": "suffix"
+     }
+    ]
+   },
+   "note": "verb + object pronoun: he wrote it"
+  },
+  {
+   "id": "w-trap-bayt",
+   "source": "builder",
+   "text": "بيت",
+   "target": "بيت",
+   "expect": {
+    "lemma": "بَيْت",
+    "pos": "NOUN",
+    "notParts": true
+   },
+   "note": "a word, not ب + يت (a rival reading بَيَّتَ may exist and must not hide the noun)"
+  },
+  {
+   "id": "w-trap-kull",
+   "source": "builder",
+   "text": "كل",
+   "target": "كل",
+   "expect": {
+    "lemma": "كُلّ",
+    "pos": "NOUN",
+    "posAlt": [
+     "DET",
+     "ADJ",
+     "PRON"
+    ],
+    "notParts": true
+   },
+   "note": "a word (كُلّ all, every), not ك + ل; كَلَّ and كُلْ are rare rivals"
+  },
+  {
+   "id": "w-trap-walad",
+   "source": "builder",
+   "text": "ولد",
+   "target": "ولد",
+   "expect": {
+    "lemma": null,
+    "undecided": true,
+    "alsoReadings": [
+     "وَلَد",
+     "وَلَدَ"
+    ],
+    "notParts": true
+   },
+   "note": "a word (وَلَد boy, وَلَدَ he bore) and not و + لد; the two lexemes are equally plain: undecided"
+  },
+  {
+   "id": "w-trap-walad-vocalized",
+   "source": "builder",
+   "text": "وَلَدٌ",
+   "target": "وَلَدٌ",
+   "expect": {
+    "lemma": "وَلَد",
+    "pos": "NOUN",
+    "features": {
+     "Case": "Nom",
+     "Definite": "Ind",
+     "Number": "Sing"
+    },
+    "notParts": true
+   },
+   "note": "vocalized: a noun, indefinite nominative"
+  },
+  {
+   "id": "w-trap-sayyara",
+   "source": "builder",
+   "text": "سيارة",
+   "target": "سيارة",
+   "expect": {
+    "lemma": "سَيَّارَة",
+    "pos": "NOUN",
+    "notParts": true
+   },
+   "note": "car: not س + يارة (the future particle goes on verbs only)"
+  },
+  {
+   "id": "w-trap-wazir",
+   "source": "builder",
+   "text": "وزير",
+   "target": "وزير",
+   "expect": {
+    "lemma": "وَزِير",
+    "pos": "NOUN",
+    "notParts": true
+   },
+   "note": "minister: not و + زير"
+  },
+  {
+   "id": "w-trap-faqad",
+   "source": "builder",
+   "text": "فقد",
+   "target": "فقد",
+   "expect": {
+    "lemma": "قَدْ",
+    "pos": "PART",
+    "parts": [
+     {
+      "text": "ف",
+      "role": "prefix"
+     },
+     {
+      "text": "قد",
+      "role": "stem"
+     }
+    ],
+    "alsoReadings": [
+     "فَقَدَ"
+    ]
+   },
+   "note": "ف + قَدْ (and indeed) is more frequent in print than فَقَدَ (he lost), which must stay among the readings"
+  },
+  {
+   "id": "w-trap-laha",
+   "source": "builder",
+   "text": "لها",
+   "target": "لها",
+   "expect": {
+    "lemma": "لِ",
+    "pos": "ADP",
+    "parts": [
+     {
+      "text": "ل",
+      "role": "stem"
+     },
+     {
+      "text": "ها",
+      "role": "suffix"
+     }
+    ]
+   },
+   "note": "ل + ها (for her), a preposition with its pronoun"
+  },
+  {
+   "id": "w-trap-wahum",
+   "source": "builder",
+   "text": "وهم",
+   "target": "وهم",
+   "expect": {
+    "lemma": "هُمْ",
+    "pos": "PRON",
+    "parts": [
+     {
+      "text": "و",
+      "role": "prefix"
+     },
+     {
+      "text": "هم",
+      "role": "stem"
+     }
+    ],
+    "alsoReadings": [
+     "وَهْم"
+    ]
+   },
+   "note": "و + هُمْ (and they) leads; وَهْم (illusion) stays among the readings"
+  },
+  {
+   "id": "w-trap-fahm",
+   "source": "builder",
+   "text": "فهم",
+   "target": "فهم",
+   "expect": {
+    "lemma": null,
+    "undecided": true,
+    "alsoReadings": [
+     "فَهِمَ",
+     "هُمْ"
+    ]
+   },
+   "note": "فَهِمَ (he understood) and ف + هُمْ (so they) are both common: neither is credited without context"
+  },
+  {
+   "id": "w-trap-kama",
+   "source": "builder",
+   "text": "كما",
+   "target": "كما",
+   "expect": {
+    "lemma": "كَمَا",
+    "pos": "CONJ",
+    "posAlt": [
+     "SCONJ",
+     "CCONJ",
+     "ADV",
+     "PART"
+    ]
+   },
+   "note": "كَمَا (as, just as) is a fused particle and an entry of its own, not ك + مَا"
+  },
+  {
+   "id": "w-ta-marbuta",
+   "source": "builder",
+   "text": "مَدْرَسَتُهُ",
+   "target": "مَدْرَسَتُهُ",
+   "expect": {
+    "lemma": "مَدْرَسَة",
+    "pos": "NOUN",
+    "features": {
+     "Case": "Nom",
+     "Definite": "Cons"
+    },
+    "parts": [
+     {
+      "text": "مدرست",
+      "role": "stem"
+     },
+     {
+      "text": "ه",
+      "role": "suffix"
+     }
+    ]
+   },
+   "note": "ة is written ت before a suffix: his school"
+  },
+  {
+   "id": "w-hamza-perfect",
+   "source": "builder",
+   "text": "قَرَأَ",
+   "target": "قَرَأَ",
+   "expect": {
+    "lemma": "قَرَأَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Person": "3"
+    }
+   },
+   "note": "hamza on alif"
+  },
+  {
+   "id": "w-hamza-imperfect",
+   "source": "builder",
+   "text": "يَقْرَأُ",
+   "target": "يَقْرَأُ",
+   "expect": {
+    "lemma": "قَرَأَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Imp",
+     "Mood": "Ind",
+     "Person": "3"
+    }
+   },
+   "note": "same seat, different vowel"
+  },
+  {
+   "id": "w-hamza-noun",
+   "source": "builder",
+   "text": "قِرَاءَة",
+   "target": "قِرَاءَة",
+   "expect": {
+    "lemma": "قِرَاءَة",
+    "pos": "NOUN",
+    "features": {
+     "Number": "Sing"
+    },
+    "notLemma": "قَرَأَ"
+   },
+   "note": "verbal noun: its own lexeme, hamza on the line"
+  },
+  {
+   "id": "w-hamza-passive",
+   "source": "builder",
+   "text": "قُرِئَ",
+   "target": "قُرِئَ",
+   "expect": {
+    "lemma": "قَرَأَ",
+    "pos": "VERB",
+    "features": {
+     "Aspect": "Perf",
+     "Voice": "Pass",
+     "Person": "3"
+    }
+   },
+   "note": "passive: the seat becomes yāʾ after the kasra"
+  },
+  {
+   "id": "w-loose-akala",
+   "source": "builder",
+   "text": "اكل",
+   "target": "اكل",
+   "expect": {
+    "lemma": null,
+    "undecided": true,
+    "alsoReadings": [
+     "أَكَلَ"
+    ],
+    "restored": "أَكَلَ"
+   },
+   "note": "أكل written without its hamza: restored and flagged (notes.spelling = restored); several lexemes, so undecided"
+  },
+  {
+   "id": "w-loose-ila",
+   "source": "builder",
+   "text": "الى",
+   "target": "الى",
+   "expect": {
+    "lemma": "إِلَى",
+    "pos": "ADP",
+    "restored": "إِلَى"
+   },
+   "note": "إلى written الى: restored and flagged"
+  },
+  {
+   "id": "w-loose-madrasa",
+   "source": "builder",
+   "text": "مدرسه",
+   "target": "مدرسه",
+   "expect": {
+    "lemma": "مَدْرَسَة",
+    "pos": "NOUN",
+    "restored": "مَدْرَسَة"
+   },
+   "note": "مدرسة written with ه: restored and flagged (مُدَرِّسُه \"his teacher\" is a rival)"
+  },
+  {
+   "id": "w-participle-katib",
+   "source": "builder",
+   "text": "كَاتِب",
+   "target": "كَاتِب",
+   "expect": {
+    "lemma": "كَاتِب",
+    "pos": "NOUN",
+    "posAlt": [
+     "ADJ"
+    ],
+    "notLemma": "كَتَبَ"
+   },
+   "note": "writer: knowing كَتَبَ never marks كَاتِب"
+  },
+  {
+   "id": "w-participle-maktub",
+   "source": "builder",
+   "text": "مَكْتُوب",
+   "target": "مَكْتُوب",
+   "expect": {
+    "lemma": "مَكْتُوب",
+    "pos": "ADJ",
+    "posAlt": [
+     "NOUN"
+    ],
+    "notLemma": "كَتَبَ"
+   },
+   "note": "written (passive participle): its own lexeme"
+  },
+  {
+   "id": "w-verbal-noun-kitaba",
+   "source": "builder",
+   "text": "كِتَابَة",
+   "target": "كِتَابَة",
+   "expect": {
+    "lemma": "كِتَابَة",
+    "pos": "NOUN",
+    "notLemma": "كَتَبَ"
+   },
+   "note": "verbal noun: its own lexeme"
+  },
+  {
+   "id": "w-persian-pedaram",
+   "source": "builder",
+   "text": "پدرم در کتابخانه چای نوشید",
+   "target": "پدرم",
+   "expect": {
+    "lemma": null,
+    "notArabic": true
+   },
+   "note": "Persian: پ is not an Arabic letter; the fold to ب must not produce a confident Arabic lexeme"
+  },
+  {
+   "id": "w-persian-ketabkhane",
+   "source": "builder",
+   "text": "پدرم در کتابخانه چای نوشید",
+   "target": "کتابخانه",
+   "expect": {
+    "lemma": null,
+    "notArabic": true
+   },
+   "note": "Persian library; the Persian kāf folds to ك but the word is not Arabic"
+  },
+  {
+   "id": "w-persian-chay",
+   "source": "builder",
+   "text": "پدرم در کتابخانه چای نوشید",
+   "target": "چای",
+   "expect": {
+    "lemma": null,
+    "notArabic": true
+   },
+   "note": "Persian tea: چ and the final Persian yeh"
+  },
+  {
+   "id": "w-persian-goft",
+   "source": "builder",
+   "text": "او گفت که پدرش آمد",
+   "target": "گفت",
+   "expect": {
+    "lemma": null,
+    "notArabic": true
+   },
+   "note": "Persian \"said\": گ folds to ك and كَفَتَ would be a false Arabic reading"
+  },
+  {
+   "id": "w-dialect-egyptian",
+   "source": "builder",
+   "text": "انا مش عايز اروح هناك دلوقتي",
+   "target": "عايز",
+   "expect": {
+    "lemma": null,
+    "dialect": true
+   },
+   "note": "Egyptian (مش, عايز, دلوقتي): flagged notes.variety = dialect?, readings capped below 0.5"
+  },
+  {
+   "id": "w-dialect-levantine",
+   "source": "builder",
+   "text": "شو بدك تاكل هلق",
+   "target": "بدك",
+   "expect": {
+    "lemma": null,
+    "dialect": true
+   },
+   "note": "Levantine (شو, بدك, هلق): flagged, not read as Standard"
+  }
+ ]
+}

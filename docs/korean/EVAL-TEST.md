@@ -63,19 +63,19 @@ code (`93a3a31c`) still held these analysis faults, found on the audit's own bli
 - some verbs' bare -아/어 forms were read as nouns (불 켜! 여기 서!);
 - 공부를 한 사람 read 한 as the numeral.
 
-They were fixed afterwards (commits `6dfc31dc` to `b83785fa`), from the audit's sentences only. The test part was NOT run again:
+They were fixed afterwards (commits `6dfc31dc` to `ccaad140`, where the analyser was frozen), from the audit's sentences only. One of
+those fixes itself broke something for a few hours (bare 배 and 차 read as verbs) and was corrected in `ccaad140` before the freeze. The test part was NOT run again:
 it is run once. What the fixes did to the DEVELOPMENT part, the only comparison that is fair to make:
 
-| Development part, adapter mode | Measured code | After the fixes |
+| Development part, adapter mode | Measured code | Frozen code (`ccaad140`) |
 |---|---|---|
-| Right dictionary word, strict / lenient | 90.77 % / 93.98 % | 90.74 % / 93.94 % |
+| Right dictionary word, strict / lenient | 90.77 % / 93.98 % | 90.79 % / 93.99 % |
 | Forms not in train, strict / lenient | 86.16 % / 89.79 % | 86.20 % / 89.83 % |
-| Part of speech | 87.35 % | 87.35 % |
-| Chain exact | 89.29 % | 89.27 % |
+| Part of speech | 87.35 % | 87.38 % |
+| Chain exact | 89.29 % | 89.32 % |
 | Unconfirmed | 13.66 % | 13.67 % |
-| Confident and wrong | 4.93 % | 4.98 % |
+| Confident and wrong | 4.93 % | 4.93 % |
 
 So on this kind of text the fixes change almost nothing (they concern names, commands and Bible forms, which the treebank
 barely has), and the held-out figures above stand as a fair description of the code as it lands, within a few hundredths of a point.
-Two of the small losses are choices: a bare 내 is read as 나 with the possessive and a bare 서 as the verb 서다, where the treebank has 내
-and a noun 서 (five 어절 each in the development part).
+One choice costs a few 어절 against the treebank: a bare 내 is read as 나 with the possessive, where the treebank has 내.

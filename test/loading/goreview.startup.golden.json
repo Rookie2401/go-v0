@@ -1209,7 +1209,7 @@
   {
    "text": "저는 밥을 먹었습니다.",
    "summary": "저는=저²/PRON 밥을=밥/NOUN 먹었습니다=먹다/VERB",
-   "sha256": "01126876e7f2ebfa9a938a89b30c89155160eeb730b9c5a30fb1b0d2d3eb3029"
+   "sha256": "1c53795277474c93706d7642e3ab035d6e3aa288030b611905f84873e52eb268"
   },
   {
    "text": "선생님이 책을 읽으셨습니다.",
@@ -1229,7 +1229,7 @@
   {
    "text": "음악을 들어요.",
    "summary": "음악을=음악/NOUN 들어요=듣다/VERB",
-   "sha256": "4b9c85f20d5a6d77897da5e25af3653db554e5267264378d4adb8ce81dfb2f45"
+   "sha256": "4a270a68e1e16d2d58bad4766e6a23f93c5b8d38b8a27fee92ca939081cce2d9"
   },
   {
    "text": "날씨가 추워요.",
@@ -1239,7 +1239,7 @@
   {
    "text": "저는 길을 몰라요.",
    "summary": "저는=저²/PRON 길을=길/NOUN 몰라요=모르다/VERB",
-   "sha256": "0c30302e5fea7b5d0351c11d6502a293d0d30bd6f31efe4e03a48f55ea1fbea1"
+   "sha256": "94e75d05c8d35f90f994e6c90fa4d5caab887b41bb2dccc0fae94d116d5b235f"
   },
   {
    "text": "옷이 하얘요.",
@@ -1249,42 +1249,42 @@
   {
    "text": "저는 의사가 돼요.",
    "summary": "저는=저²/PRON 의사가=의사/NOUN 돼요=되다/VERB",
-   "sha256": "cacba5595496af045a5d3586bb43e21c8dc5bccd8dfe2572119e97ec69099741"
+   "sha256": "e2a3252eed23989bb107a5ae94dfe1b5b0086bab66f253edd101bf0fbd81ee22"
   },
   {
    "text": "이 책은 좋습니다.",
    "summary": "이=이/DET 책은=책/NOUN 좋습니다=좋다/ADJ",
-   "sha256": "3761670431292b47c4acfb27faaf0fc1ef07d6e7b50567b46024bf65a17dc7c5"
+   "sha256": "43cc064ce7b94187ae3e151dff1b4b3cb94406efdf93873e7ab1716393eb93b2"
   },
   {
    "text": "어제 공부했어요.",
    "summary": "어제=어제/NOUN 공부했어요=공부하다/VERB",
-   "sha256": "6cb160b7a09e035c3891fe03fa9dcf199b9dcc68dc751cd658c8ff5c1b4c0664"
+   "sha256": "e51642c0f75bf7e8efd3751dcf0941dd7e50fe06065e455673c420706c75e827"
   },
   {
    "text": "밥을 먹고 싶어요.",
    "summary": "밥을=밥/NOUN 먹고=먹다/VERB 싶어요=싶다/AUX",
-   "sha256": "680adda2175cbe69aa746d4c1018c276433777dbfd3748d8a43186063bc5e8a9"
+   "sha256": "75cde2f14ff6ea87135c717893e157dad2622f6fbb04d2a1871d6a420264b97c"
   },
   {
    "text": "내일 갈 수 있어요.",
    "summary": "내일=내일/ADV 갈=가다/VERB 수=수¹/NOUN 있어요=있다/ADJ",
-   "sha256": "fb90e9b9d7dadbf1391a972b209966407f363184a30b76611006976398238d6a"
+   "sha256": "1c3ce14685eea5f1d503bcde67f4a1bc56ae03cdf77b87e5772659b15e8215ae"
   },
   {
    "text": "어제 가지 않았어요.",
    "summary": "어제=어제/NOUN 가지=가다/VERB 않았어요=않다/AUX",
-   "sha256": "4222d38ec1eb0655fe5fee0db8ed1fc87f1b275e58ccebdca8b6b197f66cffed"
+   "sha256": "a9403d4b53f6c2f8822b504fb9364b942e415081d0c6189d414ca87a97ae5f5d"
   },
   {
    "text": "저는 학생입니다.",
    "summary": "저는=저²/PRON 학생입니다=학생/NOUN",
-   "sha256": "8654530e19788178c36359276eeb40c573ed715fe3c599d19182f6c7cddac089"
+   "sha256": "6a075119215370ae97680c1f012f9cfae25d6518013876cda3298896d3fff08d"
   },
   {
    "text": "방에 책이 있어요.",
    "summary": "방에=방/NOUN 책이=책/NOUN 있어요=있다/ADJ",
-   "sha256": "bb54dbfeb31a5c009fe9e58386d7f1d22c8599dc6b2903e20394ef9823d736e4"
+   "sha256": "b77b09ff190286fddebafc040048f0f124c472f2aadbcda459907b1248bb781d"
   },
   {
    "text": "Xyzqwk",

@@ -180,14 +180,16 @@ export const PACK_EVIDENCE: Readonly<Record<string, PackEvidence>> = Object.free
   },
   // Korean: an 어절 is a stem and a chain of particles or endings, so the analyser reads a STEM lexicon (the headwords of the pack's
   // Wiktionary dictionary and this product's marked supplement rows, filed by stem with their conjugation class): a compiled core of it,
-  // the rest in shards. The measurement row is added when the treebank's test part has been run, once, at the end; the development part
-  // was looked at while the rules were written, so it is not evidence.
+  // the rest in shards. Measured on the treebank's test part, run once at the end and not looked into (docs/korean/EVAL-TEST.md); the
+  // development part was looked at while the rules were written, so it is not evidence. The treebank's train part gave the lexicon its counts.
   ko: {
     lemmaSources: [
       { kind: 'analyser-lexicon', id: 'kaikki-ko-lexicon', label: 'the headwords of the pack’s Wiktionary dictionary, filed by stem, which the analyser reads itself', size: { count: 37006, unit: 'entries' }, source: 'docs/korean/INDEX.md' },
       formsIndex('ko', 'kaikki-ko@2026-10-30'),
     ],
-    lemmaMeasurements: [],
+    lemmaMeasurements: [
+      { id: 'ud-kaist-test', corpus: 'Korean expository prose and literature of the 1990s (the test part of UD Korean-Kaist)', gold: 'the Universal Dependencies Korean-Kaist treebank', goldKind: 'human-treebank', heldOut: true, items: 23865, lemmaAccuracy: 91.58, analyser: 'adapter-ko@1', measuredOn: '2026-11-25', source: 'docs/korean/EVAL-TEST.md' },
+    ],
   },
   // French: the analyser reads the lemmas of the pack's own dictionary (lemma, part of speech, gender; no meanings) beside its hand word
   // list, and the form index answers for the rest. Measured against a treebank annotated by people, with that lemma list loaded as it is in

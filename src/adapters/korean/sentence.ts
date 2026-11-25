@@ -474,7 +474,49 @@ function ruleObjectPredicate(s: KoSentence): void {
     if (!pTop || lastParticle(pTop) !== 'object') continue;
     const t = s.top(i);
     if (!t || isPredicate(t) || !isNominal(t) || particlesOf(t).length) continue;
+    // a numeral before a counter belongs to the object (책을 한 권, 운동장을 한 바퀴): it is not the verb
+    if (t.pos === 'NUM' && s.next(i) >= 0 && s.cands[s.next(i)].some((c) => c.pos === 'CLF' && !c.unconfirmed)) continue;
     koPromote(s, i, (c) => isPredicate(c) && c.pos === 'VERB', `After the object ${s.surface(pv)}, ${s.surface(i)} is a verb: a noun takes no object.`, (c) => !isPredicate(c));
+  }
+}
+
+/**
+ * An adnominal form (-(으)ㄴ, -는, -(으)ㄹ, -던) is followed by a nominal: when the next word has a BOUND-noun reading of its spelling (자
+ * "one who", 이 "person", 분, 것, 데, 바, 줄, 뿐 …: the lexicon's own bound nouns), that reading comes before a verb or another noun of the
+ * same spelling (죄 지은 자를: the one who sinned, not 자르다). The entry is the one the lexicon marks bound, never a number.
+ */
+function ruleAfterAdnominal(s: KoSentence): void {
+  for (let i = 1; i < s.n; i++) {
+    if (!s.isWord(i)) continue;
+    const pv = s.prev(i);
+    if (pv < 0 || !isAdn(s.top(pv))) continue;
+    const bound = s.cands[i].filter((c) => c.morph.NounType === 'Bound' && !c.unconfirmed && c.notes?.homonym !== 'undecided');
+    if (!bound.length || new Set(bound.map((c) => c.lemma)).size > 1) continue;
+    const b = bound[0];
+    if (s.top(i) === b) continue;
+    // 이 "person" is literary and 이 "tooth" ordinary: only after an action verb (믿는 이), never after a descriptive one (하얀 이 is teeth)
+    if (bare(b) === '이' && s.top(pv)?.pos !== 'VERB') continue;
+    koPromote(s, i, (c) => c === b, `After the adnominal ${s.surface(pv)} a noun follows: ${bare(b)} is the bound noun "${b.gloss ?? ''}".`);
+  }
+}
+
+/** Motion verbs after which a -(으)러 form is the purpose "(go) to do". */
+const MOTION = new Set(['가다', '오다', '다니다', '나가다', '나오다', '들어가다', '들어오다', '올라가다', '내려가다', '돌아가다', '돌아오다', '떠나다']);
+/**
+ * 들러: 들르다 "to stop by" + -어, or 들다 + the purpose ending -(으)러. Not before a motion verb it is 들르다 (들러 보다, 들러서, 들러 빵을 샀다); before
+ * one, a place with 에 before it still says 들르다 (집에 들러 갈게: stop by on the way), and anything else is left as it is (진지를 들러 오세요,
+ * the honorific 들다 "to eat", is the purpose reading).
+ */
+function ruleDeulleo(s: KoSentence): void {
+  for (let i = 0; i < s.n; i++) {
+    if (!s.isWord(i) || s.key(i) !== '들러') continue;
+    const nx = s.next(i);
+    const motion = nx >= 0 && MOTION.has(bare(s.top(nx)));
+    const pv = s.prev(i);
+    const place = pv >= 0 && ['to', 'at'].includes(lastParticle(s.top(pv)) ?? '');
+    if (motion && !place) continue;
+    const why = motion ? `after the place ${s.surface(pv)}` : 'not before a verb of motion';
+    koPromote(s, i, (c) => bare(c) === '들르다' && (nx >= 0 ? c.morph.VerbForm === 'Conn' : c.morph.VerbForm === 'Fin'), `들러 ${why}: 들르다 "to stop by" + -어 (not 들다 + -(으)러 "in order to").`);
   }
 }
 
@@ -630,7 +672,9 @@ export function koOrderSentences(tokens: RawToken[], base: Cand[][], frozen: Rea
     ruleNe(s);
     ruleAuxiliaries(s);
     ruleObjectPredicate(s);
+    ruleAfterAdnominal(s);
     ruleLookalikes(s);
+    ruleDeulleo(s);
     ruleHomonyms(s);
     ruleFinality(s);
     ruleDeterminers(s);

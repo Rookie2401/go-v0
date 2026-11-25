@@ -245,6 +245,27 @@ describe.skipIf(!HAVE_SHARDS)('with every shard installed', () => {
       expect(readIn('아이를 웃게 만들었어요.', '웃게').top.morph).toMatchObject({ VerbForm: 'Conn', Connective: 'adverbial' });
       expect(readIn('서울에 가게 됐어요.', '가게').top.morph).toMatchObject({ VerbForm: 'Conn', Connective: 'adverbial' });
     });
+    it('batch 3: 한 before any counter reading is "one" (운동장을 한 바퀴), even after an object', () => {
+      expect(readIn('운동장을 한 바퀴 돌았어요.', '한').top.pos).toBe('NUM');
+      expect(readIn('운동장을 한 바퀴 돌았어요.', '바퀴').top.pos).toBe('CLF');
+      expect(readIn('숙제를 한 학생이 왔어요.', '한').top.lemma).toBe('하다');
+    });
+    it('batch 3: after an adnominal, the bound noun (죄 지은 자를: "one who", 믿는 이는: "person")', () => {
+      const j = readIn('죄 지은 자를 사하여 주소서.', '자를').top;
+      expect(j.morph.NounType).toBe('Bound');
+      expect(j.gloss).toMatch(/person|one who/);
+      expect(readIn('믿는 이는 복이 있어요.', '이는').top.gloss).toMatch(/person/);
+      expect(readIn('하얀 이가 보여요.', '이가').top.morph.NounType).not.toBe('Bound');
+    });
+    it('batch 3: 들러 is 들르다 not before a verb of motion, or after a place; left alone before one with no place', () => {
+      expect(readIn('가게에 들러 빵을 샀어요.', '들러').top.lemma).toBe('들르다');
+      expect(readIn('집에 들러 갈게요.', '들러').top.lemma).toBe('들르다');
+      expect(String(readIn('진지를 들러 오세요.', '들러').top.notes?.context ?? '')).not.toMatch(/들르다/);
+    });
+    it('batch 3: 참고하고 / 계속하고 with an object before them are the predicates 참고하다 / 계속하다', () => {
+      expect(readIn('자료를 참고하고 썼어요.', '참고하고').top).toMatchObject({ lemma: '참고하다', pos: 'VERB' });
+      expect(readIn('일을 계속하고 있어요.', '계속하고').top).toMatchObject({ lemma: '계속하다', pos: 'VERB' });
+    });
     it('S8: no raised homonym number in any reason a person reads', () => {
       for (const s of [...CORE_SENTENCES, '배가 고파요.', '다리를 건너요.']) for (const a of koAdapter.analyze(koAdapter.tokenize(s))) for (const c of a.candidates) expect(ctx(c), s).not.toMatch(/[⁰¹²³⁴-⁹]/u);
     });

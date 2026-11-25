@@ -54,6 +54,27 @@ describe('a homonym number survives every path a lemma takes', () => {
     expect(lemmaEntryLabel('de', 'm²')).toBeUndefined();
   });
 
+  it('no Korean source file holds a raw control character (a backspace where a word boundary was meant, a NUL inside a template string)', () => {
+    // both happened in this pack: a regular expression with a literal backspace never matched, and literal NULs made git treat a source file as binary
+    const found: string[] = [];
+    const files = [...sources(join(ROOT, 'src', 'adapters', 'korean')), join(ROOT, 'src', 'adapters', 'ko.ts'), join(ROOT, 'src', 'dict', 'korean.ts'),
+      ...readdirSync(join(ROOT, 'scripts')).filter((n) => n.startsWith('ko-') && n.endsWith('.mts')).map((n) => join(ROOT, 'scripts', n)),
+      ...readdirSync(join(ROOT, 'src', 'adapters', 'korean', 'generated')).map((n) => join(ROOT, 'src', 'adapters', 'korean', 'generated', n)),
+      ...readdirSync(join(ROOT, 'test', 'adapters', 'korean')).filter((n) => n.endsWith('.ts')).map((n) => join(ROOT, 'test', 'adapters', 'korean', n))];
+    for (const file of files) {
+      const text = readFileSync(file, 'utf8');
+      for (let i = 0; i < text.length; i++) {
+        const c = text.charCodeAt(i);
+        // tab (9), line feed (10) and carriage return (13) are the only control characters a source file may hold
+        if ((c < 32 && c !== 9 && c !== 10 && c !== 13) || c === 127) {
+          found.push(relative(ROOT, file).split(sep).join('/') + ': U+' + c.toString(16).padStart(4, '0') + ' at ' + i);
+          break;
+        }
+      }
+    }
+    expect(found).toEqual([]);
+  });
+
   it('no source file but the password hash uses compatibility normalisation', () => {
     const found: string[] = [];
     for (const dir of ['src', 'packages', 'scripts', 'server', 'infra'].filter((d) => existsSync(join(ROOT, d)))) {

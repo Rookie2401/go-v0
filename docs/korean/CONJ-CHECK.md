@@ -3,18 +3,18 @@
 Generated 2026-11-25 by `scripts/ko-conj-check.mts` from `data/raw/kaikki-ko/kaikki.org-dictionary-Korean.jsonl`
 (Wiktionary via kaikki.org, CC BY-SA 4.0). 4729 verb and adjective entries with an infinitive, a sequential form and a
 conjugation table; 8+ without a class the engine can derive; 23 skipped (the copulas, non-Hangul
-headwords); 47 table cells whose tags map to no ending chain (rare cells: bare `indicative`, `connective` …). 115 s.
+headwords); 47 table cells whose tags map to no ending chain (rare cells: bare `indicative`, `connective` …). 113 s.
 
 The class of each entry is derived from its infinitive and sequential forms with `koDeriveClass` (conjugate.ts), the same
 derivation the lexicon build can use.
 
 ## Generation: the engine's forms for each table cell
 
-Overall **424441 / 425172 = 99.83 %**.
+Overall **424451 / 425172 = 99.83 %**.
 
 | class | agree | % |
 |---|---|---|
-| R | 202535 / 203246 | 99.65 % |
+| R | 202545 / 203246 | 99.66 % |
 | Ha | 196588 / 196604 | 99.99 % |
 | B | 11998 / 12002 | 99.97 % |
 | Reu | 7628 / 7628 | 100.00 % |
@@ -26,11 +26,11 @@ Overall **424441 / 425172 = 99.83 %**.
 
 ## Analysis: each table form read back to its lemma (a lexicon of that one entry)
 
-Overall **348431 / 349036 = 99.83 %** (target ≥ 99 %).
+Overall **348435 / 349036 = 99.83 %** (target ≥ 99 %).
 
 | class | read back | % |
 |---|---|---|
-| R | 163634 / 164197 | 99.66 % |
+| R | 163638 / 164197 | 99.66 % |
 | Ha | 163621 / 163655 | 99.98 % |
 | B | 10170 / 10178 | 99.92 % |
 | Reu | 6276 / 6276 | 100.00 % |
@@ -58,13 +58,11 @@ Overall **348431 / 349036 = 99.83 %** (target ≥ 99 %).
 
 | n | kind | examples |
 |---|---|---|
-| 433 | analyse | R | adj | 시장하시다: 시장하세요; 기다랗다: 기다래; 기다랗다: 기다래요; 기다랗다: 기다랬다 |
-| 130 | analyse | R | verb | 가시다: 가세요; 깨뜨리다: 깨다; 모시다: 모세요; 있으시다: 있으세요 |
+| 432 | analyse | R | adj | 기다랗다: 기다래; 기다랗다: 기다래요; 기다랗다: 기다랬다; 기다랗다: 기다랬어 |
+| 127 | analyse | R | verb | 깨뜨리다: 깨다; 모시다: 모세요; 있으시다: 있으신데; 화내다: 화낸데 |
 | 34 | analyse | Ha | adj | 고명하다: 고명한다; 고명하다: 고명하느냐; 고명하다: 고명하자; 고명하다: 고명하십시다 |
 | 16 | generate | R | adj | hon indicative informal non-past polite | 기다랗다: table 기다라세요, engine 기다랗으세요/기다랗으셔요/기다랗으시어요/기다랗아요; 기다랗다: table 기다라셔요, engine 기다랗으세요/기다랗으셔요/기다랗으시어요/기다랗아요; 가느다랗다: table 가느다라세요, engine 가느다랗으세요/가느다랗으셔요/가느다랗으시어요/가느다랗아요; 가느다랗다: table 가느다라셔요, engine 가느다랗으세요/가느다랗으셔요/가느다랗으시어요/가느다랗아요 |
 | 16 | generate | R | adj | hon informal interrogative non-past polite | 기다랗다: table 기다라세요, engine 기다랗으세요/기다랗으셔요/기다랗으시어요/기다랗아요; 기다랗다: table 기다라셔요, engine 기다랗으세요/기다랗으셔요/기다랗으시어요/기다랗아요; 가느다랗다: table 가느다라세요, engine 가느다랗으세요/가느다랗으셔요/가느다랗으시어요/가느다랗아요; 가느다랗다: table 가느다라셔요, engine 가느다랗으세요/가느다랗으셔요/가느다랗으시어요/가느다랗아요 |
-| 9 | generate | R | adj | indicative informal non-past polite | 시장하시다: table 시장하세요, engine 시장하셔요/시장하시어요; 기다랗다: table 기다래요, engine 기다랗아요; 가느다랗다: table 가느다래요, engine 가느다랗아요; 가엽다: table 가여워요, engine 가엽어요 |
-| 9 | generate | R | adj | informal interrogative non-past polite | 시장하시다: table 시장하세요, engine 시장하셔요/시장하시어요; 기다랗다: table 기다래요, engine 기다랗아요; 가느다랗다: table 가느다래요, engine 가느다랗아요; 가엽다: table 가여워요, engine 가엽어요 |
 | 9 | generate | R | adj | formal interrogative non-past | 기다랗다: table 기다라냐, engine 기다랗으냐/기다랗냐; 밭다: table 밭느냐, engine 밭으냐/밭냐; 가느다랗다: table 가느다라냐, engine 가느다랗으냐/가느다랗냐; 가엽다: table 가여우냐, engine 가엽으냐/가엽냐 |
 | 9 | generate | R | adj | contrastive informal | 기다랗다: table 기다란데, engine 기다랗은데; 밭다: table 밭는데, engine 밭은데; 가느다랗다: table 가느다란데, engine 가느다랗은데; 가엽다: table 가여운데, engine 가엽은데 |
 | 9 | generate | R | adj | hon formal indicative non-past | 기다랗다: table 기다라시다, engine 기다랗으시다/기다랗다; 밭다: table 밭으신다, engine 밭으시다/밭다; 가느다랗다: table 가느다라시다, engine 가느다랗으시다/가느다랗다; 가엽다: table 가여우시다, engine 가엽으시다/가엽다 |
@@ -72,11 +70,13 @@ Overall **348431 / 349036 = 99.83 %** (target ≥ 99 %).
 | 9 | generate | R | adj | hon contrastive informal | 기다랗다: table 기다라신데, engine 기다랗으신데/기다랗은데; 밭다: table 밭으시는데, engine 밭으신데/밭은데; 가느다랗다: table 가느다라신데, engine 가느다랗으신데/가느다랗은데; 가엽다: table 가여우신데, engine 가엽으신데/가엽은데 |
 | 8 | analyse | B | adj | 가깝다: 가까와; 가깝다: 가까와요; 가깝다: 가까왔음; 가깝다: 가까왔기 |
 | 8 | generate | R | adj | indicative informal non-past | 기다랗다: table 기다래, engine 기다랗아; 가느다랗다: table 가느다래, engine 가느다랗아; 가엽다: table 가여워, engine 가엽어; 높다랗다: table 높다래, engine 높다랗아 |
+| 8 | generate | R | adj | indicative informal non-past polite | 기다랗다: table 기다래요, engine 기다랗아요; 가느다랗다: table 가느다래요, engine 가느다랗아요; 가엽다: table 가여워요, engine 가엽어요; 높다랗다: table 높다래요, engine 높다랗아요 |
 | 8 | generate | R | adj | formal indicative past | 기다랗다: table 기다랬다, engine 기다랗았다; 가느다랗다: table 가느다랬다, engine 가느다랗았다; 가엽다: table 가여웠다, engine 가엽었다; 높다랗다: table 높다랬다, engine 높다랗았다 |
 | 8 | generate | R | adj | indicative informal past | 기다랗다: table 기다랬어, engine 기다랗았어; 가느다랗다: table 가느다랬어, engine 가느다랗았어; 가엽다: table 가여웠어, engine 가엽었어; 높다랗다: table 높다랬어, engine 높다랗았어 |
 | 8 | generate | R | adj | indicative informal past polite | 기다랗다: table 기다랬어요, engine 기다랗았어요; 가느다랗다: table 가느다랬어요, engine 가느다랗았어요; 가엽다: table 가여웠어요, engine 가엽었어요; 높다랗다: table 높다랬어요, engine 높다랗았어요 |
 | 8 | generate | R | adj | formal indicative past polite | 기다랗다: table 기다랬습니다, engine 기다랗았습니다; 가느다랗다: table 가느다랬습니다, engine 가느다랗았습니다; 가엽다: table 가여웠습니다, engine 가엽었습니다; 높다랗다: table 높다랬습니다, engine 높다랗았습니다 |
 | 8 | generate | R | adj | informal interrogative non-past | 기다랗다: table 기다래, engine 기다랗아; 가느다랗다: table 가느다래, engine 가느다랗아; 가엽다: table 가여워, engine 가엽어; 높다랗다: table 높다래, engine 높다랗아 |
+| 8 | generate | R | adj | informal interrogative non-past polite | 기다랗다: table 기다래요, engine 기다랗아요; 가느다랗다: table 가느다래요, engine 가느다랗아요; 가엽다: table 가여워요, engine 가엽어요; 높다랗다: table 높다래요, engine 높다랗아요 |
 | 8 | generate | R | adj | formal interrogative past | 기다랗다: table 기다랬느냐, engine 기다랗았느냐; 가느다랗다: table 가느다랬느냐, engine 가느다랗았느냐; 가엽다: table 가여웠느냐, engine 가엽었느냐; 높다랗다: table 높다랬느냐, engine 높다랗았느냐 |
 | 8 | generate | R | adj | informal interrogative past | 기다랗다: table 기다랬어, engine 기다랗았어; 가느다랗다: table 가느다랬어, engine 가느다랗았어; 가엽다: table 가여웠어, engine 가엽었어; 높다랗다: table 높다랬어, engine 높다랗았어 |
 | 8 | generate | R | adj | informal interrogative past polite | 기다랗다: table 기다랬어요, engine 기다랗았어요; 가느다랗다: table 가느다랬어요, engine 가느다랗았어요; 가엽다: table 가여웠어요, engine 가엽었어요; 높다랗다: table 높다랬어요, engine 높다랗았어요 |

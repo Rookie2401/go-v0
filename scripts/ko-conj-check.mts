@@ -119,7 +119,7 @@ for await (const line of rl) {
   const tag = adj ? 'VA' : 'VV';
   const stem = lemma.slice(0, -1);
   const gloss = e.senses?.[0]?.glosses?.[0] ?? '';
-  const honSi = stem.endsWith('시') && /honorific/iu.test(gloss);
+  const honSi = stem.endsWith('시') && /\bhonorific\b/iu.test(gloss);
   // (1) generation against the table
   let block = 0;
   const tableForms = new Set<string>();

@@ -700,7 +700,8 @@ underBothStates('fix batch 7: names, the honorific copula, greetings, -러, bare
   // greetings: the predicate first
   for (const [w, l] of [['감사합니다', '감사하다'], ['안녕하세요', '안녕하다'], ['고맙습니다', '고맙다']] as const) expect(koAnalyzeToken(w)[0].lemma, w).toBe(l);
   // a one-syllable or rare noun never outranks a common verb's bare -아/어 form
-  for (const [w, l] of [['서', '서다'], ['켜', '켜다'], ['퍼', '푸다'], ['건너', '건너다'], ['밀어', '밀다'], ['자라', '자라다']] as const) if (koAnalyzeToken(w).some((c) => c.lemma === l)) expect(koAnalyzeToken(w)[0].lemma, w).toBe(l);
+  // (서: the counts make the noun 서 at least a quarter as common as 서다, so the noun stays first at token level: fix batch 9)
+  for (const [w, l] of [['켜', '켜다'], ['퍼', '푸다'], ['건너', '건너다'], ['밀어', '밀다'], ['자라', '자라다']] as const) if (koAnalyzeToken(w).some((c) => c.lemma === l)) expect(koAnalyzeToken(w)[0].lemma, w).toBe(l);
   // 들러: 들르다 within the first two readings
   expect(koAnalyzeToken('들러').slice(0, 2).some((c) => c.lemma === '들르다')).toBe(true);
   // a final ending takes no case particle
@@ -754,4 +755,18 @@ underBothStates('fix batch 8: a name only where the unspaced reading would make 
   // unlisted compounds that begin with a surname syllable stay nouns
   for (const w of ['정부안을', '강변공원에', '김장철이', '정치개혁을', '한국학계는', '이사회비를']) { const c = koAnalyzeToken(w)[0]; expect(c.pos, w).toBe('NOUN'); expect(c.notes?.name, w).toBeUndefined(); }
   expect(koAnalyzeToken('주면서부터')[0].lemma).toBe('주다');
+});
+
+underBothStates('fix batch 9: bare one-syllable nouns against bare -아/어 forms, by the counts (core; core + shards)', () => {
+  const first = (w: string) => koAnalyzeToken(w)[0];
+  for (const w of ['배', '차', '파', '해', '비', '새', '재', '뼈', '벼', '떼']) {
+    const cs = koAnalyzeToken(w);
+    if (!cs.some((c) => c.pos === 'NOUN')) continue; // the noun is not in this lexicon state
+    expect(['NOUN', 'DET'], w).toContain(first(w).pos); // 새 "new" (DET) is commoner still: never the verb
+  }
+  for (const [w, l] of [['꺼', '끄다'], ['켜', '켜다'], ['퍼', '푸다'], ['건너', '건너다'], ['밀어', '밀다'], ['신어', '신다']] as const) {
+    if (!koAnalyzeToken(w).some((c) => c.lemma === l)) continue; // the verb is not in this lexicon state
+    expect(first(w).lemma, w).toBe(l);
+  }
+  if (koAnalyzeToken('밤새').some((c) => c.pos === 'NOUN')) expect(first('밤새').pos).not.toBe('VERB');
 });

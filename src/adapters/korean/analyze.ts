@@ -358,7 +358,7 @@ function predicateReadings(c: Ctx, stem: string, entry: KoLexEntry, sourceId: st
   const standaloneCopula = tag === 'VCP';
   for (const cls of classes) {
     // a verb that is itself honorific and ends in that 시 (계시다, 주무시다, 시장하시다): 시 + 어요 → 세요
-    const honSi = stem.endsWith('시') && /honorific/iu.test(entry.gloss ?? '');
+    const honSi = stem.endsWith('시') && /\bhonorific\b/iu.test(entry.gloss ?? '');
     const host: KoHost = { kind: 'stem', syls, cls, vowelNoun: standaloneCopula ? !!ctx.prevIsLatinOrDigit : undefined, honSi };
     for (const t of parseChain(c, 0, host, { slot: 0, kind, exist, hon: false, fut: false })) {
       const lemma = koEntryLemma(entry);
@@ -771,13 +771,21 @@ function rankAdjust(readings: Reading[]): void {
     if (r.stemTag === 'VCN' && r.parts.some((p) => p.ending && p.text.startsWith('-예'))) { r.cap = Math.min(r.cap, CAP.nonStandard); r.notes.spelling = 'standard: 아니에요'; }
     if (isQuoteContraction(r)) r.score -= readings.some((o) => o !== r && isPred(o) && !isQuoteContraction(o) && o.lemma !== r.lemma && o.parts.some((p) => p.ending?.tag === 'EF')) ? 3 : 0.3;
     if (r.notes.derived && r.stemTag === 'VV' && anyListedWhole && r.sourceId !== KO_SOURCE_IDS.rules && !hadaNoun(r)) r.score -= 1.5;
-    // a whole listed noun over a bare -아/어 form of a predicate (밤새 "overnight" over 밤새다 + -어)
-    // a one-syllable noun never outranks a common verb's bare -아/어 form (켜 "layer", 서 "west" below 켜다, 서다: 불 켜!, 여기 서!)
-    if (whole && r.stemTag === 'NNG' && [...r.stemKey].length === 1 && readings.some((o) => isPred(o) && (o.entry?.n ?? 0) > 0 && o.parts.length === 2 && (o.parts[1].ending?.id === 'hae' || o.parts[1].ending?.id === 'inf'))) r.score -= 2;
-    if (whole && (r.stemTag === 'NNG' || r.stemTag === 'NNB') && [...r.stemKey].length >= 2) {
+    // a whole listed noun against a verb's bare -아/어 form (배 "boat" / 배다 + -어; 서 "west" / 서다 + -어), decided by the COUNTS at every length:
+    // the verb comes first only when its count is at least FOUR times the noun's (a verb's count covers all its forms, of which the bare -아/어
+    // form is a small share) AND the noun's count is low (under 30); a noun with a count
+    // never loses to a verb with none; otherwise the noun keeps first place. The sentence layer alone promotes a verb against the counts.
+    if (whole && (r.stemTag === 'NNG' || r.stemTag === 'NNB') && !r.unconfirmed) {
       const inf = readings.filter((o) => isPred(o) && o.parts.length === 2 && (o.parts[1].ending?.id === 'hae' || o.parts[1].ending?.id === 'inf'));
-      const timeWord = /\b(overnight|night|day|morning|evening|today|yesterday|tomorrow|time|year|week|month|while)\b/iu.test(r.gloss ?? '');
-      if (inf.length && (timeWord || ((r.entry?.n ?? 0) > 0 && inf.every((o) => !(o.entry?.n ?? 0))))) r.score += 1;
+      if (inf.length) {
+        const nN = r.entry?.n ?? 0;
+        const vN = Math.max(0, ...inf.map((o) => o.entry?.n ?? 0));
+        // a time word the counts miss keeps its noun reading too (밤새 "overnight" over 밤새다 + -어)
+        const timeWord = /\b(overnight|night|morning|evening|today|yesterday|tomorrow)\b/iu.test(r.gloss ?? '');
+        const verbFirst = vN >= 4 * nN && nN < 30 && vN > 0 && !timeWord;
+        if (verbFirst) r.score -= 3;
+        else if (nN > 0 || timeWord) { r.score += 3; r.notes.context = 'a noun the counts know at least as well as the verb form of the same spelling'; }
+      }
     }
   }
   function c1(r: Reading): boolean { return [...r.stemKey].length === 1; }

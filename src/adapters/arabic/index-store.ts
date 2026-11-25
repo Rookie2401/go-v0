@@ -16,7 +16,7 @@
  * The index holds WORDS WITHOUT CLITICS: وبالكتاب is found by the analyser as و + ب + ال + كتاب (arabic/clitics.ts), never stored.
  * A row never invents anything: lemma, tags and vowels are the source's, verbatim.
  */
-import { applyVocal, arLoose } from './text';
+import { applyVocal, arLoose, hasBorrowedLetter } from './text';
 
 /**
  * One lexeme:
@@ -110,6 +110,8 @@ export function lookupArabicForm(key: string): ArIndexHit[] {
   const seen = new Set<string>();
   for (const index of INSTALLED.values()) rowsOf(index, key, false, direct, seen);
   const folded = arLoose(key);
+  // a borrowed letter (ڤيديو, پاريس): the dictionary spells the word with the Arabic letter, so the fold itself is a key to try
+  if (folded !== key && hasBorrowedLetter(key)) for (const index of INSTALLED.values()) rowsOf(index, folded, true, restored, seen);
   for (const index of INSTALLED.values()) for (const k of index.loose[folded] ?? []) if (k !== key) rowsOf(index, k, true, restored, seen);
   const byCount = (a: ArIndexHit, b: ArIndexHit): number => b.lemma[4] - a.lemma[4];
   return [...direct.sort(byCount), ...restored.sort(byCount)];

@@ -110,3 +110,82 @@ branch, never writes under OneDrive, never downloads. Shared registration lists 
 
 Order: A, D, S start at once; B starts on `tags.ts`, `clitics.ts`, `closed.ts` at once and on `analyze.ts` when A's core exists;
 C when B's candidates exist; F writes fixtures at once and measures when B lands.
+
+
+## Amendments after the first audit (2026-11-25)
+
+An independent audit (the "Arabic auditor" session) read this plan and `text.ts` at cc26468a. Where this section differs from the
+text above, this section is the rule.
+
+### Which lexeme a bare spelling credits
+
+Measured by the auditor on the extract weighted by the frequency list: 18.6 % of running words have no lexeme on their bare key,
+28.5 % one, 19.3 % two, 10.0 % three and 23.6 % four or more, before any clitic is cut. "Undecided, so no lexeme is credited" alone
+would therefore leave قال, كان, شيء, بعد and يوم without their lexeme. Three layers decide, in this order:
+
+1. **Structural priors** (automatic, `analyze.ts`). A rival reading does not make a word undecided when it is marginal against a
+   plain reading of another lexeme. Marginal: a passive, imperative, jussive-only, energetic, dual or second-person-feminine cell;
+   a first or second person against a third; a reading that needs a clitic cut against a whole word that is a lemma's own citation
+   form; a proper name against a common word. Plain: the lemma's head form, a third-person masculine singular active perfect or
+   imperfect, a singular or plural noun or adjective cell. One plain lexeme against marginal rivals only: 0.60,
+   `notes.identity = 'structural'`.
+2. **Reviewed identities** (`identities.json`, read through `identities.ts`). For the most frequent ambiguous keys, one entry each:
+   the lemma id that is the main reading (0.70, `notes.identity = 'main'`), or `null` for a pair a reader really has to choose
+   between (كتب, علم, ذهب: undecided whatever layer 1 says). A main reading may be a clitic chain ("ف+قَدْ|PART"), so that فقد, وقد,
+   وهم, كما and لها lead with the function words. The list is machine-drafted, reviewed word by word by the lead, and says so; a
+   key that is not in it gets layer 1 only.
+3. **The sentence and the printed vowels** raise or overturn both.
+
+A second segmentation is a rival like any other: the −0.05 a clitic costs only orders readings. Undecided: every reading ≤ 0.45,
+`notes.identity = 'undecided'`, and the item is the form.
+
+`count` no longer splits a key's frequency among the lemmas that share it (that gives every homograph the same share). It is the
+frequency of the keys a lexeme holds alone, plus the keys the identities list gives it.
+
+### One lemma string per lexeme
+
+- `arHeadForm` (text.ts) is the one spelling of a headword; the build and every hand-written headword go through it, and a test
+  over the whole core asserts it.
+- Two entries with the same vocalized headword and part of speech (about 400 sets) are ONE vocabulary item: one candidate, the
+  glosses of all of them shown and numbered. File order never chooses.
+- A participle or verbal noun is its own lexeme. When the source has an entry for it, the verb's table cell is dropped at build
+  time; when it has none, the reading's lemma is the cell's own form (كَاتِب), with `notes.derivedFrom` naming the verb. Knowing
+  كَتَبَ never marks كاتب.
+- `form:ar:<key>` is one unit for every reading of a spelling (كَتَبَ, كُتِبَ, كُتُب), as in Hebrew. Marking it credits no lemma.
+
+### Text
+
+`vocalMatch` compares only what a candidate SAYS: a letter it leaves bare is not evidence, implied vowels count as said, and the
+shadda print puts on a sun letter after the article is the article's. Decomposed input keys as composed input does. The Quranic
+sukūn and open tanwīn are read as vowels, and `arQuranicSpelling` gives a second, ordinary spelling to look up. A phrase ligature
+(ﷺ) is a symbol; a letter written onto a number is a word before the number; ڤ پ چ گ fold to ف ب ج ك for retrieval; a final Persian
+yeh is tried as ي and as ى.
+
+### Clitics the chain also covers
+
+لِـ and لَـ on verbs; ني on particles and prepositions; ـتمو before a pronoun; two object pronouns; the vocative يا written onto its
+word; fused particles (مما, عما, فيما, ألا, لئلا, كيلا, إنما) and ـئذ words as entries, not cuts.
+
+### What a learner sees
+
+- `Person=2,3` is one reading that says "you (m. sg.) or she", never two readings with the first shown as decided.
+- An inferred case is shown, marked inferred (`notes.case`, `notes.caseSource = 'inferred'`).
+- A dialect cap needs two markers, or one that Standard Arabic cannot produce.
+
+### Rights
+
+Only the kaikki extract and the frequency list are read by any build. Nothing from Lisān's built dictionary or corpus (its roots
+come partly from a GPL corpus; its texts have their own terms). Test sentences are written for the tests. The frequency list is
+subtitle text: it orders readings and is never evidence that a spelling is correct.
+
+### Measurement
+
+The Quran is one register, fully vocalized, and the easy case. A figure for unvocalized Modern Standard prose needs its own gold:
+UD Arabic-PUD (CC BY-SA 3.0) if the owner allows the download, otherwise at least 1,000 hand-annotated words frozen before the
+analyser reads them. Every accuracy figure is reported with the undecided share and the confident-and-wrong share beside it.
+
+### The Classical track
+
+Whether "Classical" is more than a label depends on how many lexemes the source marks as classical or modern only. The index build
+reports the count; if it is small, the report and the pack's limitations say that the Classical track has no classical dictionary
+behind it, and the owner is told before release.

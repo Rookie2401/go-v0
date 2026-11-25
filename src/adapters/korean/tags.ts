@@ -16,7 +16,7 @@
  * same tag sets, so the tags alone never say whether a row is honorific: korean/paradigm.ts decides that from the form.
  */
 import type { ParadigmCell } from '../../core';
-import { featureKey } from '../../core';
+import { featureKey } from '../../core/paradigm'; // the module itself, not the core barrel: a value import of the barrel would compile src/core/course.ts into the analyser
 
 export type KoLevel = 'Haera' | 'Hae' | 'Haeyo' | 'Hasipsio';
 export const KO_LEVELS: readonly KoLevel[] = ['Haera', 'Hae', 'Haeyo', 'Hasipsio'];

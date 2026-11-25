@@ -1193,103 +1193,103 @@
  "ko": [
   {
    "text": "학생들이 학교에서 공부했습니다.",
-   "summary": "학생들이=학생들이/? 학교에서=학교에서/? 공부했습니다=공부했습니다/?",
-   "sha256": "39666d10aa5968e8c770f38ee3512ce303ea92b41a562ef00627f8dac931695b"
+   "summary": "학생들이=학생/NOUN 학교에서=학교/NOUN 공부했습니다=공부하다/VERB",
+   "sha256": "b0c0218f3329360e0466d61eaf7902e67db3be842a4037e88303053d8b218e09"
   },
   {
    "text": "학생들이 학교에서 공부했습니다.",
-   "summary": "학생들이=학생들이/? 학교에서=학교에서/? 공부했습니다=공부했습니다/?",
-   "sha256": "39666d10aa5968e8c770f38ee3512ce303ea92b41a562ef00627f8dac931695b"
+   "summary": "학생들이=학생/NOUN 학교에서=학교/NOUN 공부했습니다=공부하다/VERB",
+   "sha256": "b0c0218f3329360e0466d61eaf7902e67db3be842a4037e88303053d8b218e09"
   },
   {
    "text": "학생들이 학교에서 공부했습니다.",
-   "summary": "학생들이=학생들이/? 학교에서=학교에서/? 공부했습니다=공부했습니다/?",
-   "sha256": "39666d10aa5968e8c770f38ee3512ce303ea92b41a562ef00627f8dac931695b"
+   "summary": "학생들이=학생/NOUN 학교에서=학교/NOUN 공부했습니다=공부하다/VERB",
+   "sha256": "b0c0218f3329360e0466d61eaf7902e67db3be842a4037e88303053d8b218e09"
   },
   {
    "text": "저는 밥을 먹었습니다.",
-   "summary": "저는=저는/? 밥을=밥을/? 먹었습니다=먹었습니다/?",
-   "sha256": "3910ce053df699b075a733ff5241714998c5bf40434a09ccc0718d0b836edce2"
+   "summary": "저는=저²/PRON 밥을=밥/NOUN 먹었습니다=먹다/VERB",
+   "sha256": "01126876e7f2ebfa9a938a89b30c89155160eeb730b9c5a30fb1b0d2d3eb3029"
   },
   {
    "text": "선생님이 책을 읽으셨습니다.",
-   "summary": "선생님이=선생님이/? 책을=책을/? 읽으셨습니다=읽으셨습니다/?",
-   "sha256": "58efde375baced9c265fe5d8cfe0b73209eb8619c18cfbc5948676a7e6db7e73"
+   "summary": "선생님이=선생님/NOUN 책을=책/NOUN 읽으셨습니다=읽다/VERB",
+   "sha256": "3e1dc1198d80727b0525acc0336de8800bad87ebd4de1607252b8aaf0aafda2c"
   },
   {
    "text": "학생은 책을 읽어요.",
-   "summary": "학생은=학생은/? 책을=책을/? 읽어요=읽어요/?",
-   "sha256": "b90222122ae83d3c168122ec0b0b4c42ca10a57e97d933ea2fd69d88cb523112"
+   "summary": "학생은=학생/NOUN 책을=책/NOUN 읽어요=읽다/VERB",
+   "sha256": "16404eac77e3a0e29751187ec78ca7eb24e9c218d0c533859f6dd609773ff06f"
   },
   {
    "text": "학교에서 친구에게만 말했어요.",
-   "summary": "학교에서=학교에서/? 친구에게만=친구에게만/? 말했어요=말했어요/?",
-   "sha256": "173c378c18c02fe51979233a25e47addc1dc8e29dea3a6247562a18b2d277d97"
+   "summary": "학교에서=학교/NOUN 친구에게만=친구/NOUN 말했어요=말하다/VERB",
+   "sha256": "fae4d1cbfe4887befbbb5e983c7021fa6bcfabd1b3c95b571ba4daef63d23351"
   },
   {
    "text": "음악을 들어요.",
-   "summary": "음악을=음악을/? 들어요=들어요/?",
-   "sha256": "83a04bed574574d42e16b727b56c339009a972b1d043fc3f9808d6bb171656a9"
+   "summary": "음악을=음악/NOUN 들어요=듣다/VERB",
+   "sha256": "4b9c85f20d5a6d77897da5e25af3653db554e5267264378d4adb8ce81dfb2f45"
   },
   {
    "text": "날씨가 추워요.",
-   "summary": "날씨가=날씨가/? 추워요=추워요/?",
-   "sha256": "9463a38fddbfdf686f235527a29b1d1ecdb2dc3435eaea647a58cced18f46627"
+   "summary": "날씨가=날씨/NOUN 추워요=춥다/ADJ",
+   "sha256": "ed18317f55be72285e62338fb0104040aff75a3e5ed7a10056cf38b45ad1647d"
   },
   {
    "text": "저는 길을 몰라요.",
-   "summary": "저는=저는/? 길을=길을/? 몰라요=몰라요/?",
-   "sha256": "f3a1a4b86a6e6670810274b34047a35241c719f22df05a67dc14677d261503bb"
+   "summary": "저는=저²/PRON 길을=길/NOUN 몰라요=모르다/VERB",
+   "sha256": "0c30302e5fea7b5d0351c11d6502a293d0d30bd6f31efe4e03a48f55ea1fbea1"
   },
   {
    "text": "옷이 하얘요.",
-   "summary": "옷이=옷이/? 하얘요=하얘요/?",
-   "sha256": "ba05b42e06fbcb4b867fdcf3bb43dde3b04fa0fa87477bfc49efd98d27ad81d5"
+   "summary": "옷이=옷/NOUN 하얘요=하얗다/ADJ",
+   "sha256": "67aa53f9eece5d98368764302ca216dccd66ba51650d08c1220be676fc3a612b"
   },
   {
    "text": "저는 의사가 돼요.",
-   "summary": "저는=저는/? 의사가=의사가/? 돼요=돼요/?",
-   "sha256": "2a306a4b33e4849ffd88a78d09be13507b234825c4a482097b4b35fcdb736745"
+   "summary": "저는=저²/PRON 의사가=의사/NOUN 돼요=되다/VERB",
+   "sha256": "cacba5595496af045a5d3586bb43e21c8dc5bccd8dfe2572119e97ec69099741"
   },
   {
    "text": "이 책은 좋습니다.",
-   "summary": "이=이/? 책은=책은/? 좋습니다=좋습니다/?",
-   "sha256": "8a1fa9099988c0bcd84899907c414346334039e93a540b98c64307567e71848a"
+   "summary": "이=이/DET 책은=책/NOUN 좋습니다=좋다/ADJ",
+   "sha256": "3761670431292b47c4acfb27faaf0fc1ef07d6e7b50567b46024bf65a17dc7c5"
   },
   {
    "text": "어제 공부했어요.",
-   "summary": "어제=어제/? 공부했어요=공부했어요/?",
-   "sha256": "cf8f1d08e5dba5438ac4437a150b90682bbd73604f7fa8aefb9c72dd39ff7a33"
+   "summary": "어제=어제/NOUN 공부했어요=공부하다/VERB",
+   "sha256": "6cb160b7a09e035c3891fe03fa9dcf199b9dcc68dc751cd658c8ff5c1b4c0664"
   },
   {
    "text": "밥을 먹고 싶어요.",
-   "summary": "밥을=밥을/? 먹고=먹고/? 싶어요=싶어요/?",
-   "sha256": "2930aff980126162c5b425ed15c3c0f7176b19a42783dccea88f0ccfa20e9459"
+   "summary": "밥을=밥/NOUN 먹고=먹다/VERB 싶어요=싶다/AUX",
+   "sha256": "680adda2175cbe69aa746d4c1018c276433777dbfd3748d8a43186063bc5e8a9"
   },
   {
    "text": "내일 갈 수 있어요.",
-   "summary": "내일=내일/? 갈=갈/? 수=수/? 있어요=있어요/?",
-   "sha256": "0d9d27f98897c7ae9080735cb0a186b0eb4e884b974b2fc641c86d00c1fd3b8b"
+   "summary": "내일=내일/ADV 갈=가다/VERB 수=수¹/NOUN 있어요=있다/ADJ",
+   "sha256": "fb90e9b9d7dadbf1391a972b209966407f363184a30b76611006976398238d6a"
   },
   {
    "text": "어제 가지 않았어요.",
-   "summary": "어제=어제/? 가지=가지/? 않았어요=않았어요/?",
-   "sha256": "f2f748c99e81673a9de1eed20f345c361f8451039a6b87f8af08d726683bff15"
+   "summary": "어제=어제/NOUN 가지=가다/VERB 않았어요=않다/AUX",
+   "sha256": "4222d38ec1eb0655fe5fee0db8ed1fc87f1b275e58ccebdca8b6b197f66cffed"
   },
   {
    "text": "저는 학생입니다.",
-   "summary": "저는=저는/? 학생입니다=학생입니다/?",
-   "sha256": "ba07bc827731a04704d264cfe0d271ffbabd80dbba920eedb68b50b63e1b46c6"
+   "summary": "저는=저²/PRON 학생입니다=학생/NOUN",
+   "sha256": "8654530e19788178c36359276eeb40c573ed715fe3c599d19182f6c7cddac089"
   },
   {
    "text": "방에 책이 있어요.",
-   "summary": "방에=방에/? 책이=책이/? 있어요=있어요/?",
-   "sha256": "6798a605ce7a5061f3977013811964fab7b9f4d5511e0d0906579023fabd025e"
+   "summary": "방에=방/NOUN 책이=책/NOUN 있어요=있다/ADJ",
+   "sha256": "bb54dbfeb31a5c009fe9e58386d7f1d22c8599dc6b2903e20394ef9823d736e4"
   },
   {
    "text": "Xyzqwk",
-   "summary": "Xyzqwk=Xyzqwk/?",
-   "sha256": "c00b3097df96b4b8ae168c53ad464e38274576f15c0840edbda24586578ab53c"
+   "summary": "Xyzqwk=?/?",
+   "sha256": "a6d8c5b4e3c87a4e982ecbc5fa531d72b8accec18e0b5a521c644930054cdad6"
   }
  ]
 }

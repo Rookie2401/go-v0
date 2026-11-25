@@ -25,7 +25,7 @@ export const KO_VERSION = '1';
  * when the built dictionary is on disk, so a rebuild that changes either must change both). `entries` is that manifest's figure, the same
  * definition the other packs use: dictionary entries after merging, with the numbered-homonym aliases and this product's supplement rows.
  */
-export const KO_DICTIONARY = { id: 'kaikki-ko@2026-10-30', entries: 58537, frequency: false };
+export const KO_DICTIONARY = { id: 'kaikki-ko@2026-10-30', entries: 58539, frequency: false };
 
 /**
  * Real selections the pack must read as stated. Each sentence is ordinary correct Korean; the first six are the owner's examples (brief XXI).

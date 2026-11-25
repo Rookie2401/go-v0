@@ -12,11 +12,11 @@ Reviewed inputs read by the build (hand-written, never written by it): docs/kore
 | | |
 |---|---|
 | lines read | 64,457 |
-| entries kept (rows) | 37,013 |
-| spellings (spelling and shared part of speech) | 33,041 |
+| entries kept (rows) | 37,015 |
+| spellings (spelling and shared part of speech) | 33,043 |
 | skipped | 27,436 |
 | entries merged into another (one etymology, or one word: see Granularity) | 47 |
-| stem keys (including Hanja keys) | 49,065 |
+| stem keys (including Hanja keys) | 49,067 |
 
 ### Kept, by Wiktionary part of speech → class
 
@@ -36,7 +36,7 @@ Reviewed inputs read by the build (hand-written, never written by it): docs/kore
 
 ### Rows by class
 
-NNG 27,595, VV 3,609, NNP 2,512, VA 1,321, MAG 847, IC 199, NNB 147, XSN 144, NR 136, MM 126, XR 124, NP 120, XPN 98, MAJ 23, XSV 6, XSA 6 (counters are NNB with `clf`: 100)
+NNG 27,596, VV 3,610, NNP 2,512, VA 1,321, MAG 847, IC 199, NNB 147, XSN 144, NR 136, MM 126, XR 124, NP 120, XPN 98, MAJ 23, XSV 6, XSA 6 (counters are NNB with `clf`: 100)
 
 ### Skipped
 
@@ -808,8 +808,8 @@ A SET is the spelling and the SHARED part of speech (koHomonymSetKey): 자 "rule
 
 Content words of the Kaist train file (276,744 counted morphemes of content classes, each spelling once):
 
-- alone (no number): 189,203 (68.4 %)
-- not in the lexicon: 43,866 (15.9 %)
+- alone (no number): 189,241 (68.4 %)
+- not in the lexicon: 43,828 (15.8 %)
 - main (decision): 23,252 (8.4 %)
 - balanced (decision): 18,034 (6.5 %)
 - balanced (default): 2,332 (0.8 %)
@@ -1100,7 +1100,7 @@ Derived here from each entry's class and shape WITHOUT the morphology package's 
 
 Read off the entry's OWN `infinitive` forms against the stem by exact jamo comparison (src/dict/korean.ts `koIrregularClass`); R = the infinitive is what a regular stem gives (ㅡ-deletion and ㄹ-stems included).
 
-### R (2,333)
+### R (2,334)
 
 있다, 되다¹, 없다, 않다, 보다, 지다¹, 지다², 지다³, 지다⁴, 아니다, 같다, 주다, 가다, 오다, 크다
 
@@ -1251,7 +1251,7 @@ Why each: 제 (allomorph of 저 (jeo, first-person singular polite pronoun) befo
 The card's short line is one flat list over the entries of the bare key. For a set with a MAIN entry the bare key holds only the main entry. For a BALANCED set each entry's first sense is prefixed (entry L), where L is the entry's homonym number through koEntryLabel (index-store.ts), the same rule the card uses: the source's number below 50, a letter for a number this product assigned (50 = a, 51 = b), x1, x2 for a supplement row (91 = x1). It is the identity number, not a position. When the bare key holds entries of more than one class (전 as noun, prefix, name, determiner) every entry's first sense also names its class: (noun), (prefix), (noun, entry 2).
 
 ### Noun and root rows with hada
-2788 rows (nouns and roots) have a verb or adjective X하다 built on them; 591 of them have no X하다 row of their own (the source's derived terms list it): 박치기, 역사, 역사, 역사, 역사, 숨바꼭질, 우물우물, 우물쭈물, 약혼, 시합, 복, 탓, 부산, 삼성, 벼슬, 사이, 글, 시기, 방학, 정류, 불굴, 진취, 창제, 목적, 특징, 전통, 전통, 시인, 감염, 암흑, 판결, 짓, 사정, 사정, 상대, 오염, 비밀, 싸움, 짝, 우려, 예산, 불만, 응시, 응시, 세모, 선교, 가발, 탈, 멀미, 이발, 멸종, 선전, 선전, 면접, 토착, 부패, 인수, 떠세, 구상, 여장.
+2789 rows (nouns and roots) have a verb or adjective X하다 built on them; 591 of them have no X하다 row of their own (the source's derived terms list it): 박치기, 역사, 역사, 역사, 역사, 숨바꼭질, 우물우물, 우물쭈물, 약혼, 시합, 복, 탓, 부산, 삼성, 벼슬, 사이, 글, 시기, 방학, 정류, 불굴, 진취, 창제, 목적, 특징, 전통, 전통, 시인, 감염, 암흑, 판결, 짓, 사정, 사정, 상대, 오염, 비밀, 싸움, 짝, 우려, 예산, 불만, 응시, 응시, 세모, 선교, 가발, 탈, 멀미, 이발, 멸종, 선전, 선전, 면접, 토착, 부패, 인수, 떠세, 구상, 여장.
 
 ## Voice
 
@@ -1284,9 +1284,9 @@ A row has a voice (and its base) when the entry itself says so in a sense (a glo
 
 ## Hanja, pronunciation, Hanja keys
 
-- entries with Hanja: 18,064 of 37,013
+- entries with Hanja: 18,065 of 37,015
 - entries with the source's own pronunciation respelling (differing from the headword): 10,462 (the core carries the same `pron` as the shards)
-- entries ALSO filed under a Hanja key (their Hanja is pure Hanja): 17,752; Hanja keys: 17,397; Hanja keys holding more than one entry: 335
+- entries ALSO filed under a Hanja key (their Hanja is pure Hanja): 17,753; Hanja keys: 17,398; Hanja keys holding more than one entry: 335
 
 ## Coverage of the Kaist train lemmas by a lexicon entry of the same part of speech
 
@@ -1299,12 +1299,12 @@ A headword counts as its main or its auxiliary predicate: the Kaist auxiliary ta
 | MAJ | 46 | 12 (26.1 %) | 4,498 | 1,225 (27.2 %) |
 | MM | 77 | 40 (51.9 %) | 5,799 | 5,546 (95.6 %) |
 | NNB | 197 | 176 (89.3 %) | 16,885 | 16,679 (98.8 %) |
-| NNG | 17,894 | 7,919 (44.3 %) | 144,223 | 119,972 (83.2 %) |
+| NNG | 17,894 | 7,920 (44.3 %) | 144,223 | 120,008 (83.2 %) |
 | NNP | 3,926 | 528 (13.4 %) | 12,762 | 5,661 (44.4 %) |
 | NP | 113 | 40 (35.4 %) | 9,114 | 8,545 (93.8 %) |
 | NR | 708 | 49 (6.9 %) | 6,364 | 2,171 (34.1 %) |
 | VA | 823 | 514 (62.5 %) | 17,053 | 16,574 (97.2 %) |
-| VV | 1,867 | 1,160 (62.1 %) | 33,936 | 32,755 (96.5 %) |
+| VV | 1,867 | 1,161 (62.2 %) | 33,936 | 32,757 (96.5 %) |
 | VX | 37 | 32 (86.5 %) | 14,050 | 14,026 (99.8 %) |
 | XPN | 21 | 14 (66.7 %) | 178 | 164 (92.1 %) |
 | XSA | 2 | 0 (0.0 %) | 619 | 0 (0.0 %) |
@@ -1323,7 +1323,7 @@ A headword counts as its main or its auxiliary predicate: the Kaist auxiliary ta
 
 **NNB**: 년대 161, 미크론 7, 마르크 6, 개소 5, 나노 4, 마지기 3, 등등 2, 밀리 2, 째 2, 테라 2, 평방킬로미터 2, 月 1, 궤짝 1, 기가 1, 단보 1, 메가 1, 월달 1, 줌 1, 켠 1, 평방킬로 1, 피코 1
 
-**NNG**: 리얼리즘 107, 버블 102, 분명 95, 비롯 81, 당연 69, 뿌치 61, 수용 60, 전형 58, 여전 52, 이곳 51, 지가 47, 충분 47, 언명 45, 데이지 44, 소설론 44, 편 44, 대단 43, 지향 43, 스스로 42, 불과 41, 복잡 40, 올림픽 40, 밀접 39, 심각 37, 명백 36, 물론 36, 부여 36, 연금사 36, 역설 35, 우리나라 35, 입 35, 급격 34, 문학론 34, 일대 34, 기복 33, 보좌관 33, 비슷 33, 생성 33, 마이크로 32, 증대 32, 바닥 31, 변혁 31, 성도 30, 부역 29, 실증 29, 적절 29, 포괄 29, 화성 29, 대조 28, 채택 28
+**NNG**: 리얼리즘 107, 버블 102, 분명 95, 비롯 81, 당연 69, 뿌치 61, 수용 60, 전형 58, 여전 52, 이곳 51, 지가 47, 충분 47, 언명 45, 데이지 44, 소설론 44, 편 44, 대단 43, 지향 43, 스스로 42, 불과 41, 복잡 40, 올림픽 40, 밀접 39, 심각 37, 명백 36, 물론 36, 연금사 36, 역설 35, 우리나라 35, 입 35, 급격 34, 문학론 34, 일대 34, 기복 33, 보좌관 33, 비슷 33, 생성 33, 마이크로 32, 증대 32, 바닥 31, 변혁 31, 성도 30, 부역 29, 실증 29, 적절 29, 포괄 29, 화성 29, 대조 28, 채택 28, 학파 28
 
 **NNP**: 고르비 101, 무애 99, 훈 97, 만해 91, 남훈 90, 임화 78, 가이아 57, 야마구치 56, 김남천 53, 서역 45, 옐친 41, 아귀날도 39, 아틸라 38, 소모사 31, 규슈 30, 남흉노 29, 다카하나다 29, 고르바초프 28, 레닌 28, 비잔틴 28, 포퍼 28, 라틴아메리카 27, 아스카 26, 은 24, 정지용 24, 도진카이 23, 미야자와리에 23, 뻬레스트로이카 23, 그리스인 21, 보옥 21, 북흉노 20, 서로마 20, 파라오 20, 베버 18, 안함광 16, 일본부 16, 꽁트 15, 루카치 15, 메소포타미아 15, 에프탈리테 15, 오동도 15, 다오카가쓰오 14, 루아 14, 산디니스타 14, 소 14, 소쉬르 14, 이치와카이 14, 일 14, 진 14, 트로이 14
 
@@ -1347,10 +1347,10 @@ A headword counts as its main or its auxiliary predicate: the Kaist auxiliary ta
 
 ## Supplement (docs/korean/lexicon-supplement.json)
 
-Hand-written rows for common words the SOURCE LACKS, read by the build and never written by it (131 lines). Every row is `own` and `glossOwn` (this product's, not Wiktionary's): the card's source line says so, and the dictionary shows its meaning labelled `own-wording`. A line never shadows a source entry; one that joins a homonym set of the source carries a hand-fixed number from 90 and takes part in the three states.
+Hand-written rows for common words the SOURCE LACKS, read by the build and never written by it (133 lines). Every row is `own` and `glossOwn` (this product's, not Wiktionary's): the card's source line says so, and the dictionary shows its meaning labelled `own-wording`. A line never shadows a source entry; one that joins a homonym set of the source carries a hand-fixed number from 90 and takes part in the three states.
 
-- rows: 131; by class: IC 2, MAG 28, MM 3, NNB 9, NNG 25, NNP 1, NP 1, VA 23, VV 35, XR 4
-- running-word coverage added, tokens of the Kaist train file, before → after: MAG 10,479 → 11,026 (types 440 → 468); MM 5,531 → 5,546 (types 37 → 40); NNB 16,533 → 16,679 (types 169 → 176); NNG 119,183 → 119,972 (types 7,897 → 7,919); NNP 5,658 → 5,661 (types 527 → 528); VA 15,650 → 16,574 (types 491 → 514); VV 32,437 → 32,755 (types 1,128 → 1,160); VX 14,022 → 14,026 (types 31 → 32)
+- rows: 133; by class: IC 2, MAG 28, MM 3, NNB 9, NNG 26, NNP 1, NP 1, VA 23, VV 36, XR 4
+- running-word coverage added, tokens of the Kaist train file, before → after: MAG 10,479 → 11,026 (types 440 → 468); MM 5,531 → 5,546 (types 37 → 40); NNB 16,533 → 16,679 (types 169 → 176); NNG 119,183 → 120,008 (types 7,897 → 7,920); NNP 5,658 → 5,661 (types 527 → 528); VA 15,650 → 16,574 (types 491 → 514); VV 32,437 → 32,757 (types 1,128 → 1,161); VX 14,022 → 14,026 (types 31 → 32)
 - the rows:
   - 자⁹¹ NNB 者 [balanced] count 124: person; one who
   - 구체⁹¹ NNG 具體 [main] count 113: concreteness (concrete detail)
@@ -1483,6 +1483,8 @@ Hand-written rows for common words the SOURCE LACKS, read by the build and never
   - 찢기다 VV R count 1: to be torn
   - 신기다 VV R: to put (shoes, socks) on someone
   - 두들기다 VV R count 3: to beat, to knock on
+  - 부여 NNG 附與 count 36: granting, bestowal
+  - 들어보다 VV R count 2: to listen to, to hear (and see)
 
 ## Core extras (docs/korean/core-extra.json)
 
@@ -1499,6 +1501,17 @@ Hand-written rows for common words the SOURCE LACKS, read by the build and never
 | shards | 26 (prefixes of up to 3 letters by koLexiconShardLetters; limit 600,000 bytes of JSON) |
 | shard bytes | 1.32 MB gzip, 5.4 MB plain |
 | largest shard | `ㅇ` 0.58 MB plain, 0.14 MB gzip |
-| core entries | 7,239 in 5,680 sets (4,423 also under a Hanja key); closed classes NP NR MM MAJ NNB XPN XSN XSV XSA and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
-| core bytes | 416,510 of rows, the file at most 420,000 bytes; forced by core-extra.json: 662 rows, 35,338 bytes (8.4 % of the budget); every field of a shard row is in the core row, `pron` included |
-| running words in the core | 74.5 % of the 308,335 counted morphemes of the classes the lexicon builds (95.4 % of the 240,751 the lexicon covers) have their headword in the core |
+| core entries | 7,240 in 5,681 sets (4,424 also under a Hanja key); closed classes NP NR MM MAJ NNB XPN XSN XSV XSA and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
+| core bytes | 416,574 of rows, the file at most 420,000 bytes; forced by core-extra.json: 662 rows, 35,338 bytes (8.4 % of the budget); every field of a shard row is in the core row, `pron` included |
+| running words in the core | 74.5 % of the 308,335 counted morphemes of the classes the lexicon builds (95.4 % of the 240,789 the lexicon covers) have their headword in the core |
+
+<!-- ko-data-checksums -->
+## Built data checksums (2026-11-25)
+
+Recomputed with `npm run ko:data-checksum` (scripts/ko-data-checksum.mts): the sha256 of one line per file, sorted by relative path, "path TAB sha256 of the file".
+
+| folder | files | bytes | sha256 |
+|---|---|---|---|
+| public/dict/ko | 852 | 55440074 | `fd4a41577e9f6e424bfead6abf735868b2a3a0c639d7c5f4f15c0c99e675b8c3` |
+| public/lexicon/ko | 27 | 1320907 | `14314cc76b6553d30d7c0834f4667e2819df8f80f0669cd1148fd721f93c289f` |
+<!-- /ko-data-checksums -->

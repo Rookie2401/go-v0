@@ -132,6 +132,8 @@
     {"lemma":"밟히다","tag":"VV","irr":"R","voice":"Pass","base":"밟다","gloss":"to be stepped on","why":"passive of 밟다; absent from the source"},
     {"lemma":"찢기다","tag":"VV","irr":"R","voice":"Pass","base":"찢다","gloss":"to be torn","why":"passive of 찢다; absent from the source"},
     {"lemma":"신기다","tag":"VV","irr":"R","voice":"Caus","base":"신다","gloss":"to put (shoes, socks) on someone","why":"causative of 신다; absent from the source"},
-    {"lemma":"두들기다","tag":"VV","irr":"R","gloss":"to beat, to knock on","why":"두들겨; absent from the source"}
+    {"lemma":"두들기다","tag":"VV","irr":"R","gloss":"to beat, to knock on","why":"두들겨; absent from the source"},
+    {"lemma":"부여","tag":"NNG","gloss":"granting, bestowal","hanja":"附與","why":"부여하다, 부여받다, 부여되다; the source has only the place name 부여"},
+    {"lemma":"들어보다","tag":"VV","irr":"R","gloss":"to listen to, to hear (and see)","why":"잘 들어보세요; written as one word; absent from the source"}
   ]
 }

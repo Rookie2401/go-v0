@@ -74,7 +74,7 @@ describe('verbs (fully vocalized: the page decides, one lexeme, 0.90)', () => {
     installArabicIndex(AR_CORE);
     for (const fn of fs.readdirSync(dir)) if (fn.endsWith('.json.gz')) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL(fn, dir))).toString('utf8')));
     try {
-      for (const [w, re] of [['رَأَى', /^to see\b/], ['وَجَدَ', /\bfind\b/], ['مَاتَ', /\bdie\b/], ['شَارِع', /\bstreet\b/], ['جَامِعَة', /\buniversity\b/]] as const) {
+      for (const [w, re] of [['رَأَى', /^to see\b/], ['وَجَدَ', /\bfind\b/], ['مَاتَ', /\bdie\b/], ['شَارِع', /\bstreet\b/], ['جَامِعَة', /\buniversity\b/], ['مَضَى', /^to pass\b/], ['خَطَر', /^danger\b/], ['قِصَّة', /^story\b/], ['شَكْل', /^shape\b/], ['نَالَ', /^to get\b/], ['نَشَرَ', /^to publish\b/]] as const) {
         const c = cands(w).find((x) => arKey(x.lemma ?? '') === arKey(w));
         expect(c, w).toBeTruthy();
         expect(c!.gloss, w).toMatch(re);

@@ -4265,6 +4265,108 @@
   ],
   "شَرْط|NOUN": [
    "condition"
+  ],
+  "أَحَد|NOUN": [
+   "one"
+  ],
+  "عَنَى|VERB": [
+   "mean"
+  ],
+  "شَكْل|NOUN": [
+   "shape",
+   "form"
+  ],
+  "قِصَّة|NOUN": [
+   "story"
+  ],
+  "مَضَى|VERB": [
+   "pass"
+  ],
+  "خَطَر|NOUN": [
+   "danger"
+  ],
+  "مَرَّ|VERB": [
+   "pass"
+  ],
+  "عَادِيّ|ADJ": [
+   "normal"
+  ],
+  "نَالَ|VERB": [
+   "get",
+   "obtain"
+  ],
+  "نَجَا|VERB": [
+   "survive"
+  ],
+  "نَوَى|VERB": [
+   "intend"
+  ],
+  "رَوَى|VERB": [
+   "tell",
+   "narrate"
+  ],
+  "وَعَدَ|VERB": [
+   "promise"
+  ],
+  "بَنَى|VERB": [
+   "build"
+  ],
+  "شَمَال|NOUN": [
+   "north"
+  ],
+  "شَأْن|NOUN": [
+   "matter"
+  ],
+  "قَرُبَ|VERB": [
+   "near"
+  ],
+  "حَرَسَ|VERB": [
+   "guard"
+  ],
+  "يَئِسَ|VERB": [
+   "hope"
+  ],
+  "خَابَ|VERB": [
+   "fail"
+  ],
+  "عَرَبِيّ|NOUN": [
+   "Arab"
+  ],
+  "زُبْدَة|NOUN": [
+   "butter"
+  ],
+  "صَارَ|VERB": [
+   "become"
+  ],
+  "آتَى|VERB": [
+   "give"
+  ],
+  "نَشَرَ|VERB": [
+   "publish"
+  ],
+  "فَاقَ|VERB": [
+   "exceed"
+  ],
+  "شَهِدَ|VERB": [
+   "witness"
+  ],
+  "تَاهَ|VERB": [
+   "lose"
+  ],
+  "هَابَ|VERB": [
+   "afraid"
+  ],
+  "شَاهِد|NOUN": [
+   "witness"
+  ],
+  "عَائِق|NOUN": [
+   "hindrance"
+  ],
+  "دَلَالَة|NOUN": [
+   "indication"
+  ],
+  "أَحَسَّ|VERB": [
+   "feel"
   ]
  }
 }

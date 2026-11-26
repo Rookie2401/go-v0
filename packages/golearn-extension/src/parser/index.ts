@@ -171,6 +171,7 @@ export function parseSelection(input: ParseInput): CardModel {
   let lemma: string | undefined; let pos: string | undefined; let gloss: string | undefined; let morphology: string | undefined;
   let confidence = 0; let provenance: CardProvenance = 'none'; let source; let unconfirmed = false;
   const basis: string[] = []; let pronunciation: string[] = []; const alternatives: Alternative[] = [];
+  let reviewHold: CardModel['reviewHold'];
   let notLoaded = false; let respelling: string | undefined; let romanizationScheme: string | undefined; let transliteration: string | undefined; let lemmaTransliteration: string | undefined;
   let features: FeatureItem[] = []; let role: string | undefined; const syntaxNotes: string[] = []; let syntax: SyntaxNote | undefined;
   let period: CardModel['period']; let variants: CardModel['variants']; let glossSource: string | undefined;
@@ -206,6 +207,7 @@ export function parseSelection(input: ParseInput): CardModel {
       provenance = provenanceOf(c);
       unconfirmed = !!c.unconfirmed;
       source = sourceOf(c);
+      reviewHold = reviewHoldOf(c, analyses[i].candidates);
       lemmaTransliteration = lemmaRomanOf(L, c.lemma, tokens[i].surface, transliteration);
       features = Object.entries(c.morph ?? {}).filter(([, v]) => typeof v === 'string' && v).map(([key, value]) => ({ key, value }));
       role = typeof c.role === 'string' && c.role ? c.role : undefined;
@@ -284,13 +286,30 @@ export function parseSelection(input: ParseInput): CardModel {
     ...base, lemma, pos, morphology, gloss, confidence, provenance, source, unconfirmed,
     phrases: phrases.map((p) => ({ display: p.display, kind: p.kind, gloss: p.gloss, confidence: clamp01(p.confidence) })),
     words: selected.length > 1 ? lines.slice(0, MAX_WORD_LINES) : [],
-    alternatives: alternatives.slice(0, 3), basis, notes, pronunciation, ...(notLoaded ? { lexiconNotLoaded: true } : {}), ...(respelling ? { respelling } : {}), ...(selected.length === 1 && best[0]?.notes?.homonym === 'undecided' ? { entryUndecided: true } : {}), ...(romanizationScheme ? { romanizationScheme } : {}), ...(transliteration ? { transliteration } : {}), ...(lemmaTransliteration ? { lemmaTransliteration } : {}), itemIds,
+    alternatives: alternatives.slice(0, 3), basis, notes, pronunciation, ...(reviewHold ? { reviewHold } : {}), ...(notLoaded ? { lexiconNotLoaded: true } : {}), ...(respelling ? { respelling } : {}), ...(selected.length === 1 && best[0]?.notes?.homonym === 'undecided' ? { entryUndecided: true } : {}), ...(romanizationScheme ? { romanizationScheme } : {}), ...(transliteration ? { transliteration } : {}), ...(lemmaTransliteration ? { lemmaTransliteration } : {}), itemIds,
     features, constructions, role, syntaxNotes, ...(syntax ? { syntax } : {}), sentenceWords, unitIds: unitIdsToAsk, formId: formUnit,
     ...(period ? { period } : {}), ...(variants ? { variants } : {}), ...(glossSource ? { glossSource } : {}), ...(wordAnalysis ? { wordAnalysis } : {}),
   };
 }
 
 /** A romanization only when the adapter gave one that is not just the word again (a Latin-script word has none). */
+/**
+ * The card's hold, from the notes a language's review gate writes on the reading (src/core/review-gate.ts: reviewGate 'yes', reviewReason, reviewKind,
+ * reviewRivals): language-neutral, keyed on the notes only. Each rival is resolved from the token's other readings, so it carries its own class and
+ * meaning (none when that reading is unconfirmed).
+ */
+function reviewHoldOf(c: { notes?: Record<string, string | string[]> }, all: ReadonlyArray<{ lemma?: string; pos?: string; gloss?: string; unconfirmed?: boolean; confidence: number }>): CardModel['reviewHold'] {
+  // held by the gate, or marked requires-review WITH a kind (a language whose reading is decided but gets no card); a reviewStatus without a kind (Biblical Aramaic) shows nothing new
+  if (!(c.notes?.reviewGate === 'yes' || (c.notes?.reviewKind && c.notes?.reviewStatus === 'requires-review'))) return undefined;
+  const one = (v: string | string[] | undefined): string => (Array.isArray(v) ? v[0] : v) ?? '';
+  const rivalNames = Array.isArray(c.notes?.reviewRivals) ? c.notes.reviewRivals : typeof c.notes?.reviewRivals === 'string' && c.notes.reviewRivals ? [c.notes.reviewRivals] : [];
+  const rivals = rivalNames.map((name) => {
+    const r = all.find((x) => x.lemma === name);
+    return { lemma: name, ...(r?.pos ? { pos: r.pos } : {}), ...(r && !r.unconfirmed && r.gloss ? { gloss: r.gloss } : {}) };
+  });
+  return { kind: one(c.notes.reviewKind) || 'other', reason: one(c.notes.reviewReason), rivals };
+}
+
 function romanOf(t: string | undefined, surface: string): string | undefined {
   const v = typeof t === 'string' ? t.normalize('NFC').trim() : '';
   return v && v !== surface.normalize('NFC').trim() ? v : undefined;
@@ -446,7 +465,8 @@ function itemIdsFor(L: Lang, selected: number[], tokens: RawToken[], best: Array
   const ids: string[] = [];
   selected.slice(0, MAX_ITEM_IDS).forEach((i, k) => {
     const c = best[k];
-    const creditable = c?.lemma && !c.unconfirmed && c.confidence >= LEMMA_MIN_CONFIDENCE;
+    // a reading the language's review gate holds back (src/core/review-gate.ts, notes.reviewGate) is credited to its written form, never to a lemma: it stays on the card, it is not drilled
+    const creditable = c?.lemma && !c.unconfirmed && c.confidence >= LEMMA_MIN_CONFIDENCE && c.notes?.reviewGate !== 'yes';
     ids.push(creditable ? `lemma:${L.lang}:${c!.lemma}${c!.pos ? ':' + c!.pos : ''}` : formId(L, tokens[i].surface));
   });
   if (!single) for (const p of phrases) if (p.pattern?.length) ids.push(`phrase:${L.lang}:${p.pattern.join('_')}`);

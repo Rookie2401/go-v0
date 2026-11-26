@@ -101,7 +101,16 @@ describe.skipIf(!DATA)('Korean exercises: the bare headword on the front, the ri
     expect(unitLabel(decidedSnow())).toBe('눈');
   });
 
-  it('(iii) the undecided bare item: the front is the bare headword, the back names every meaning of the spelling', async () => {
+  // REVERSED 2026-11-26 (the review gate, src/core/review-gate.ts, owner: no false or unknown word in the deck): the undecided bare item `lemma:ko:눈:NOUN` used to be
+  // ADMITTED showing every meaning. Its facts are now `requires-review` (the spelling stands for several words), so intake and recovery refuse it. The display code
+  // is kept (a card made before the gate, or by another path, still shows every meaning), and these tests say so below.
+  it('the engine status of the three: the main-set word and the decided homonym are admitted; the undecided bare item requires review', async () => {
+    expect((await unitFacts(TIME)).status).not.toBe('requires-review');
+    expect((await unitFacts(decidedSnow())).status).not.toBe('requires-review');
+    expect((await unitFacts(UNDECIDED)).status).toBe('requires-review');
+  });
+
+  it('(iii) the undecided bare item (display kept; no longer admitted): the front is the bare headword, the back names every meaning of the spelling', async () => {
     const e = (await build(UNDECIDED, 'written-recognition')) as Exercise;
     expect(e.prompt.stimulusText).toBe('눈');
     const shown = JSON.stringify([e.answerKey.explanation, e.answerKey.accepted]);

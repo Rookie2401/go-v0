@@ -459,7 +459,9 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     if (!rec && !read.cand) return undefined;
     // a lemma competes only with readings of OTHER words: its own inflected readings (Nom,Acc vs Acc …) are not a conflict about the lemma
     const rivals = read.all.filter((c) => c !== read.cand && (c.lemma !== read.cand!.lemma || c.pos !== read.cand!.pos));
-    const unit = rec?.unit ?? synth('lexeme', unitId, lemma, statusOf(read.cand!, [read.cand!, ...rivals]), sourceOf(read.cand), read.cand!.confidence, pos ? { pos } : {});
+    const baseUnit = rec?.unit ?? synth('lexeme', unitId, lemma, statusOf(read.cand!, [read.cand!, ...rivals]), sourceOf(read.cand), read.cand!.confidence, pos ? { pos } : {});
+    // a lemma whose own reading the language's review gate holds back (src/core/review-gate.ts: notes.reviewGate, with its reviewReason) requires review, whatever status a stored row carries
+    const unit = read.cand?.notes?.reviewGate === 'yes' && baseUnit.status !== 'invalidated' ? { ...baseUnit, status: 'requires-review' as const } : baseUnit;
     const forms = formsOfLemma(lemma, pos);
     const { examples, readings } = collect((o) => lemmaMatches(o, lemma, pos));
     const lexGloss = read.cand && !read.cand.unconfirmed && read.cand.gloss ? [read.cand.gloss] : [];

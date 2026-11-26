@@ -128,6 +128,12 @@ export interface CardModel {
   respelling?: string;
   /** The language's sharded word list could not be loaded for this lookup, so an unconfirmed reading is not evidence that the word is missing from it. */
   lexiconNotLoaded?: boolean;
+  /**
+   * The language's review gate holds this reading back from review (notes.reviewGate 'yes'): `kind` is its reviewKind ('two-words' when the sentence does not
+   * decide between two headwords, 'unlisted', 'no-meaning', 'undecided-entry', 'low-confidence', 'known-limit', 'other-listed-word', 'unwritten-copula', else 'other'),
+   * `reason` its one plain sentence, `rivals` the other headwords in play, best first, each with its own class and meaning when it has them.
+   */
+  reviewHold?: { kind: string; reason: string; rivals: Array<{ lemma: string; pos?: string; gloss?: string }> };
   /** The analyser could not tell which of several dictionary entries of this spelling the word is (an undecided homonym): no one entry's record is the word's. */
   entryUndecided?: boolean;
   romanizationScheme?: string;

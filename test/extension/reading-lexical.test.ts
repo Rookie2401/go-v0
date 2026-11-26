@@ -207,13 +207,15 @@ describe('homographs: every creditable reading is carried, best first, while Act
       if (!w || w.readings.length < 2 || w.readings.length > 6) continue;
       homographsFound.push(`${lang}:${surface} (${w.readings.length} readings)`);
       // GoLearn Active's own answer for the word: the form and the single best lemma, no more
-      expect(w.ids).toEqual([w.ids[0], w.readings[0]]);
-      expect(w.ids).toHaveLength(2);
+      // Korean: a best reading the review gate holds back (a two-sided form, an undecided homonym: notes.reviewGate) is credited to its written form only;
+      // Reading Analysis still counts every reading (src/core/review-gate.ts)
+      const held = lang === 'ko' && w.ids.length === 1;
+      expect(w.ids).toEqual(held ? [w.ids[0]] : [w.ids[0], w.readings[0]]);
       expect(new Set(w.readings).size).toBe(w.readings.length);
       const t = await build(lang, [surface], variety ? { varietyId: variety } : {});
       expect(t.words).toHaveLength(1);
       expect(t.words[0]!.word).toEqual([w.ids[0], ...w.readings]);
-      expect(t.words[0]!.word[1]).toBe(w.ids[1]); // best first
+      if (!held) expect(t.words[0]!.word[1]).toBe(w.ids[1]); // best first
       expect(t.words[0]!.occurrences).toBe(1);
       if (++checked >= 15) break;
     }

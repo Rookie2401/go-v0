@@ -144,6 +144,11 @@ const CSS = `
 .card__gloss--quote::after { content: '\\201D'; color: #a89c86; }
 .card__gloss.muted { font-size: 0.95em; color: #a89c86; }
 .kicker { letter-spacing: 0.12em; text-transform: uppercase; color: #a89c86; font-size: 0.66em; font-weight: 600; margin-top: 0.1em; }
+.twoWords, .holdNote { overflow-wrap: anywhere; max-width: 100%; }
+.twoWords .lead, .holdNote { color: #a89c86; font-size: 0.85em; margin-top: 0.5em; }
+.twoWord { display: flex; flex-wrap: wrap; gap: 0.2em 0.5em; align-items: baseline; margin-top: 0.35em; }
+.twoWord .lv { font-size: 1.05em; color: #d9cfbe; unicode-bidi: isolate; }
+.twoWord .twoGloss { min-width: 0; unicode-bidi: isolate; }
 .lemmaLine { display: flex; gap: 0.6em; align-items: baseline; flex-wrap: wrap; margin-top: 0.5em; }
 .lemmaLine .lv { font-size: 1.05em; color: #d9cfbe; }
 .translit { font-style: italic; color: #a89c86; font-size: 0.95em; line-height: 1.3; }
@@ -517,6 +522,18 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     // the sound, in the language's own script first (Korean [머걷씀니다]), then the romanization, labelled with its scheme when the analyser names one
     if (m.respelling && m.tokenCount === 1) rows.push(h('div', { class: 'translit wordTranslit', role: 'note', 'aria-label': 'pronunciation', title: 'Pronunciation, in the language’s own script', 'data-row': 'sound', lang: m.languageId }, m.respelling));
     if (wordRom) rows.push(h('div', { class: 'translit wordTranslit', role: 'note', 'aria-label': m.romanizationScheme && m.transliteration ? `transliteration: ${m.romanizationScheme}` : 'transliteration', title: m.romanizationScheme && m.transliteration ? m.romanizationScheme : wordRomSource, 'data-row': 'transliteration' }, wordRom));
+    // a reading the language's gate holds because the sentence does not decide between two words: no one word is the headline (the homonym 'undecided' look: both candidates, each with its meaning)
+    const two = m.reviewHold?.kind === 'two-words' && m.tokenCount === 1 && m.lemma ? m.reviewHold : undefined;
+    if (two) {
+      const words = [{ lemma: m.lemma!, pos: m.pos, gloss: m.wordAnalysis?.lexicalMeaning?.text ?? m.gloss }, ...two.rivals];
+      const shown = words.slice(0, 4);
+      const block = h('div', { class: 'twoWords', 'data-row': 'two-words' }, h('div', { class: 'lead' }, 'The sentence does not decide which of these words this is:'));
+      for (const x of shown) block.append(h('div', { class: 'twoWord', 'data-row': 'two-words-item' }, h('span', { class: 'lv', lang: m.languageId, dir: 'auto' }, displayLemma(m.languageId, x.lemma)), x.pos ? h('span', { class: 'pos' }, x.pos) : null, h('span', { class: 'twoGloss' }, x.gloss ? `— ${x.gloss}` : '— no meaning in the word list')));
+      if (words.length > shown.length) block.append(h('div', { class: 'lead', 'data-row': 'two-words-more' }, `and ${words.length - shown.length} more`));
+      rows.push(block);
+      parts.rows.replaceChildren(...rows);
+      return;
+    }
     rows.push(gloss);
     if (from) rows.push(h('div', { class: 'kicker' }, `Meaning · ${from}`));
     const lexicalMeaning = m.wordAnalysis?.lexicalMeaning;
@@ -1243,9 +1260,10 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     statusEl = h('div', { class: 'status', role: 'status', 'aria-live': 'polite' }, '');
     feedbackEl = h('div', { class: 'feedback', role: 'status', 'aria-live': 'polite' }, '');
     parts = { rows, pronNote, say, sources, sourcesBtn, deeper, deeperBtn, sentenceBox, sentenceBtn, variantsBox, variantsBtn, encounters, levelName, layers, fix, report, rateBtns };
+    const hold = m.reviewHold && !infoOnly ? h('div', { class: 'holdNote', role: 'note', 'data-row': 'review-hold' }, m.reviewHold.reason ? `Not added to review: ${m.reviewHold.reason}` : 'Not added to review.') : null;
     const wrapper = infoOnly
       ? h('div', { 'data-info-only': 'true' }, top, wordLine, rows, h('div', {}, sourcesBtn), sources, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, feedbackEl)
-      : h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, fix, feedbackEl, statusEl);
+      : h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, hold, encounters, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, fix, feedbackEl, statusEl);
     mountCard(wrapper, `GoLearn: ${m.surface}`);
     renderAll();
     pron.off = pronouncer.onChange?.(() => { checkPronunciation(renderToken); });

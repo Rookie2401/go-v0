@@ -51,7 +51,10 @@ describe.skipIf(!have)('the built extension', () => {
     // 2026-11-25, the pack's final code: 588 -> 589 KB. Since the line above the content script also waits for a language's lexicon before the
     // first scan where the pack asks for it (lexicon/prepare.ts, Korean only), tells the card when a word's entry is undecided or its lexicon
     // has not loaded (parser/cardModel.ts), and takes an entry's label off a gloss (lemma-display.ts). Measured 602,499 bytes = 588.4 KB.
-    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(589 * KB);
+    // 2026-11-25, the review hold: 589 -> 591 KB. The card now says so when a word is undecided between two different words (both shown, each with its class and
+    // meaning, no single answer in the headline) and shows why a held word is not added to review (parser/cardModel.ts reviewHold, popup/card.ts; any language that
+    // writes the review gate's notes, src/core/review-gate.ts). Measured 604,503 bytes = 590.3 KB.
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(591 * KB);
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.

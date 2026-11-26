@@ -37,7 +37,7 @@ import { ACTIVE_ORIGINS, type ProfileReply } from '../../packages/golearn-extens
 import { PENDING_IDENTITY, buildEncounterEvent } from '../../packages/golearn-extension/src/store';
 import { foldDeckItems } from '../../packages/goreview/src';
 import { planCurrentDeck } from '../../packages/goreview/app/deckModel';
-import { loadReviewModel } from '../../packages/goreview/app/workspace';
+import { loadReviewModel, refreshReviewModel } from '../../packages/goreview/app/workspace';
 import { createRepositoryApi } from '../../packages/repository-service/src/api';
 import { koAdapter } from '../../src/adapters/ko';
 import { selectText } from '../extension/dom';
@@ -470,17 +470,19 @@ describe.skipIf(!DATA_PRESENT)('Korean journey', () => {
       return { lookedIds: looked[0].subject.itemIds ?? [], markedIds: marked[0]?.subject.itemIds ?? [] };
     };
 
-    it('눈이 예뻐요 (no cue): the undecided reading credits the BARE lemma, never 눈¹ or 눈²', async () => {
+    // REVERSED 2026-11-26 (the review gate, src/core/review-gate.ts): the undecided reading used to credit the bare lemma 눈; it is now held back from GoReview
+    // (requires-review: the spelling stands for several words), so the encounter and the mark credit the written FORM only. Never 눈¹ or 눈².
+    it('눈이 예뻐요 (no cue): the undecided reading credits the FORM only, never the bare lemma and never 눈¹ or 눈²', async () => {
       const c = await creditOf('눈이', 1, 'seen');
-      expect(c.lookedIds).toEqual(['lemma:ko:눈:NOUN']);
-      expect(c.markedIds).toEqual(['lemma:ko:눈:NOUN']);
+      expect(c.lookedIds).toEqual(['form:ko:눈이']);
+      expect(c.markedIds).toEqual(['form:ko:눈이']);
       expect([...c.lookedIds, ...c.markedIds].join()).not.toMatch(SUPERSCRIPT);
     }, 60_000);
 
     it('눈이 와요 (cue: snow): the encounter and the mark credit the numbered entry for "snow", read from the lexicon at run time', async () => {
       const snow = SNOW();
       expect(snow).toMatch(/^눈[¹²³⁴-⁹]+$|^눈$/u);
-      const c = await creditOf('눈이', 0, 'seen');
+      const c = await creditOf('눈이', 0, 'recognized');   // a different level from the one the previous test marked on the same form
       expect(c.lookedIds).toEqual([`lemma:ko:${snow}:NOUN`]);
       expect(c.markedIds).toEqual([`lemma:ko:${snow}:NOUN`]);
       expect(c.lookedIds[0], 'the cue decided: a numbered lemma, not the bare one').not.toBe('lemma:ko:눈:NOUN');
@@ -510,7 +512,7 @@ describe.skipIf(!DATA_PRESENT)('Korean journey', () => {
       expect(deck.map((d) => d.itemId), 'the deck holds the ONE lexical card').toEqual(['card:written-recognition:' + LEMMA]);
       // the live load is bounded by the model's refresh deadline (workspace.ts refreshReviewModel / within): on a loaded machine it answers undefined until a model exists, so ask again
       let m: Awaited<ReturnType<typeof loadReviewModel>>;
-      for (let i = 0; i < 40 && !m; i++) m = await loadReviewModel(app.ctx);
+      for (let i = 0; i < 40 && !m; i++) { m = await loadReviewModel(app.ctx); if (!m) { await flush(250); m = await refreshReviewModel(app.ctx, { force: true }); } }
       if (!m) throw new Error('the review model did not load');
       const plan = (await planCurrentDeck(app.ctx, m)).plan;
       expect(plan.items.some((x) => /^card:.*:form:ko:먹/u.test(x.item.itemId))).toBe(false);

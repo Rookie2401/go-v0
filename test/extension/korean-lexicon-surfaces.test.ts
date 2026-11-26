@@ -101,6 +101,8 @@ describe.skipIf(!SHARDS_PRESENT)('Korean: Active and Reading Analysis read the f
         const card = parseSelection({ surface, languageId: 'ko', context: { kind: 'sentence', confidence: 0.9, sentence: s, selStart: w.start, selEnd: w.end } });
         const lemmaIds = w.ids.filter((id) => id.startsWith('lemma:'));
         if (card.unconfirmed || !card.lemma) { expect(lemmaIds, surface).toEqual([]); continue; }
+        // a reading the review gate holds back (T-A: another listed word could be meant, or two sides, an undecided entry ...) is credited to its form only, by the scan and by the card alike
+        if (card.reviewHold) { expect(lemmaIds, `${surface} is held: ${card.reviewHold.kind}`).toEqual([]); expect(card.itemIds.filter((id) => id.startsWith('lemma:')), surface).toEqual([]); continue; }
         expect(lemmaIds[0], surface).toBe(`lemma:ko:${card.lemma}:${card.pos}`);
       }
     }

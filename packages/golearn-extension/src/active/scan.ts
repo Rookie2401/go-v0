@@ -83,7 +83,8 @@ export function wordsOfText(raw: string, adapter: LanguageAdapter, languageId: s
     const lemmaId = (c: (typeof candidates)[number]): string => `lemma:${languageId}:${c.lemma}${c.pos ? ':' + c.pos : ''}`;
     const known = creditable(best);
     const readings: string[] = [];
-    if (known) { ids.push(lemmaId(best!)); readings.push(lemmaId(best!)); }
+    // a reading the language's review gate holds back (notes.reviewGate) is still KNOWN and still a reading (Reading Analysis counts it), but GoLearn Active credits its written form only
+    if (known) { if (best!.notes?.reviewGate !== 'yes') ids.push(lemmaId(best!)); readings.push(lemmaId(best!)); }
     for (const c of [...candidates].sort((a, b) => b.confidence - a.confidence)) {
       if (!creditable(c)) continue;
       const id = lemmaId(c);

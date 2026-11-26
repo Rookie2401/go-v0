@@ -246,7 +246,19 @@ export function referenceGloss(facts: UnitFacts): string | undefined {
  * Every accepted meaning: the lexicon glosses and their parts, then, sense by sense in the dictionary's order, the pieces of each
  * sense of at most four words with no bracket (a short sense whole and its parts; a long sense split as described above).
  */
-export function acceptedMeanings(facts: UnitFacts): string[] {
+/**
+ * A meaning that numbers several senses ("1. chief, leader 2. big") is several meanings: a number-dot FOLLOWED BY A SPACE AND A LETTER, at the start
+ * or after a space, is a separator between senses (a decimal point such as "3.5 mm jack" is not). A string without numbering comes back as it was.
+ */
+export function splitNumberedSenses(meaning: string): string[] {
+  if (!/(?:^|\s)\d+\.\s+\p{L}/u.test(meaning)) return [meaning];
+  const parts = meaning.split(/(?:^|\s)\d+\.\s+(?=\p{L})/u).map((p) => p.trim()).filter(Boolean);
+  return parts.length ? parts : [meaning];
+}
+
+export function acceptedMeanings(facts: UnitFacts, opts: { splitNumbers?: boolean } = {}): string[] {
+  // `splitNumbers: false` is the behaviour before numbering was a separator (scripts/accepted-meanings-survey.mts compares the two)
+  const split = opts.splitNumbers === false ? (g: string): string[] => [g] : splitNumberedSenses;
   // Keep the realized verb intact, and accept subject variants without ever accepting
   // a bare pronoun such as "He" as the meaning of ἦλθεν or ἦν.
   const inflected = reviewFacts(facts).wordAnalysis?.inflectedMeaning?.text;
@@ -255,8 +267,8 @@ export function acceptedMeanings(facts: UnitFacts): string[] {
   const { lexicon, dictionary } = glossSplit(facts);
   const out: string[] = [];
   const add = (p: string): void => { if (!out.includes(p)) out.push(p); };
-  for (const g of lexicon) glossParts(g).forEach(add);
-  for (const sense of dictionary) senseAnswers(sense).forEach(add);
+  for (const g of lexicon.flatMap(split)) glossParts(g).forEach(add);
+  for (const sense of dictionary.flatMap(split)) senseAnswers(sense).forEach(add);
   return out;
 }
 

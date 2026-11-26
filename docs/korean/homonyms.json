@@ -14247,6 +14247,15 @@
   },
   {
    "lemma": "만",
+   "tag": "NNB",
+   "hom": 91,
+   "set": "balanced",
+   "by": "decision",
+   "own": true,
+   "gloss": "after, in (an interval of time): 십 년 만에 after ten years"
+  },
+  {
+   "lemma": "만",
    "tag": "NNG",
    "hom": 2,
    "set": "balanced",

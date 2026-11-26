@@ -25,7 +25,7 @@ export const KO_VERSION = '1';
  * when the built dictionary is on disk, so a rebuild that changes either must change both). `entries` is that manifest's figure, the same
  * definition the other packs use: dictionary entries after merging, with the numbered-homonym aliases and this product's supplement rows.
  */
-export const KO_DICTIONARY = { id: 'kaikki-ko@2026-10-30', entries: 58510, frequency: false };
+export const KO_DICTIONARY = { id: 'kaikki-ko@2026-10-30', entries: 58512, frequency: false };
 
 /**
  * Real selections the pack must read as stated. Each sentence is ordinary correct Korean; the first six are the owner's examples (brief XXI).
@@ -84,7 +84,7 @@ export function koreanManifest(): PackManifest {
     thin: [
       'Korean is read by rules written for this product over a Wiktionary stem lexicon, not by a statistical analyser; the compiled core holds only the commonest words and the closed classes, and a stem the lexicon does not hold gets a reading marked unconfirmed that explains its particles and endings and offers the stem as written, with no meaning;',
       'there is no curated frequency list: the order of readings and the choice of the compiled core come from the lemma counts of one treebank (UD Korean-Kaist, train split), which is news and literary prose;',
-      'homonyms are numbered from the source (눈¹, 눈²) and 767 of the 2,496 sets of spelled-alike words have been reviewed by a person: an unreviewed set is kept open, and a word the sentence cannot decide is shown as undecided, with every candidate named, instead of being credited to one;',
+      'homonyms are numbered from the source (눈¹, 눈²) and for 769 of the 2,496 sets of spelled-alike words a decision was written for this pack by a language model, which no person has checked: a set with no decision is kept open, and a word the sentence cannot decide is shown as undecided, with every candidate named, instead of being credited to one;',
       'proper names are the weakest part: about 44 % of them are covered; numerals are thin;',
       'an irregular verb is recognised as irregular only where the source has a conjugation table for it; a stem with no table is read in every class its shape allows, and none is presented as certain;',
       'there is no audio of its own: a Korean device voice, if the browser has one, is synthetic practice only; pronunciation help is written, from rules and from the dictionary’s own respelling where it has one;',

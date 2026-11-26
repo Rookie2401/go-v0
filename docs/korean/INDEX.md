@@ -12,7 +12,7 @@ Reviewed inputs read by the build (hand-written, never written by it): docs/kore
 | | |
 |---|---|
 | lines read | 64,457 |
-| entries kept (rows) | 37,032 |
+| entries kept (rows) | 37,033 |
 | spellings (spelling and shared part of speech) | 33,052 |
 | skipped | 27,436 |
 | entries merged into another (one etymology, or one word: see Granularity) | 33 |
@@ -36,7 +36,7 @@ Reviewed inputs read by the build (hand-written, never written by it): docs/kore
 
 ### Rows by class
 
-NNG 27,618, VV 3,610, NNP 2,512, VA 1,321, MAG 847, IC 199, XSN 144, NNB 142, NR 136, MM 126, XR 124, NP 120, XPN 98, MAJ 23, XSV 6, XSA 6 (counters are NNB with `clf`: 95)
+NNG 27,618, VV 3,610, NNP 2,512, VA 1,321, MAG 847, IC 199, XSN 144, NNB 143, NR 136, MM 126, XR 124, NP 120, XPN 98, MAJ 23, XSV 6, XSA 6 (counters are NNB with `clf`: 95)
 
 ### Skipped
 
@@ -1284,7 +1284,7 @@ A row has a voice (and its base) when the entry itself says so in a sense (a glo
 
 ## Hanja, pronunciation, Hanja keys
 
-- entries with Hanja: 18,074 of 37,032
+- entries with Hanja: 18,074 of 37,033
 - entries with the source's own pronunciation respelling (differing from the headword): 10,463 (the core carries the same `pron` as the shards)
 - entries ALSO filed under a Hanja key (their Hanja is pure Hanja): 17,762; Hanja keys: 17,400; Hanja keys holding more than one entry: 341
 
@@ -1347,9 +1347,9 @@ A headword counts as its main or its auxiliary predicate: the Kaist auxiliary ta
 
 ## Supplement (docs/korean/lexicon-supplement.json)
 
-Hand-written rows for common words the SOURCE LACKS, read by the build and never written by it (136 lines). Every row is `own` and `glossOwn` (this product's, not Wiktionary's): the card's source line says so, and the dictionary shows its meaning labelled `own-wording`. A line never shadows a source entry; one that joins a homonym set of the source carries a hand-fixed number from 90 and takes part in the three states.
+Hand-written rows for common words the SOURCE LACKS, read by the build and never written by it (137 lines). Every row is `own` and `glossOwn` (this product's, not Wiktionary's): the card's source line says so, and the dictionary shows its meaning labelled `own-wording`. A line never shadows a source entry; one that joins a homonym set of the source carries a hand-fixed number from 90 and takes part in the three states.
 
-- rows: 136; by class: IC 2, MAG 28, MM 3, NNB 10, NNG 28, NNP 1, NP 1, VA 23, VV 36, XR 4
+- rows: 137; by class: IC 2, MAG 28, MM 3, NNB 11, NNG 28, NNP 1, NP 1, VA 23, VV 36, XR 4
 - running-word coverage added, tokens of the Kaist train file, before → after: MAG 10,479 → 11,026 (types 440 → 468); MM 5,531 → 5,546 (types 37 → 40); NNB 16,533 → 16,679 (types 169 → 176); NNG 119,315 → 120,142 (types 7,905 → 7,929); NNP 5,658 → 5,661 (types 527 → 528); VA 15,650 → 16,574 (types 491 → 514); VV 32,437 → 32,757 (types 1,128 → 1,161); VX 14,022 → 14,026 (types 31 → 32)
 - the rows:
   - 자⁹¹ NNB 者 [balanced] count 124: person; one who
@@ -1488,6 +1488,7 @@ Hand-written rows for common words the SOURCE LACKS, read by the build and never
   - 지구⁹¹ NNG 地球 [main] count 203: the Earth; the globe
   - 곡 NNB clf 曲: counter for pieces of music; a piece, a song
   - 주최 NNG 主催 count 2: hosting, sponsorship (of an event)
+  - 만⁹¹ NNB [balanced] count 20: after, in (an interval of time): 십 년 만에 after ten years
 
 ## Core extras (docs/korean/core-extra.json)
 
@@ -1504,8 +1505,8 @@ Hand-written rows for common words the SOURCE LACKS, read by the build and never
 | shards | 26 (prefixes of up to 3 letters by koLexiconShardLetters; limit 600,000 bytes of JSON) |
 | shard bytes | 1.32 MB gzip, 5.4 MB plain |
 | largest shard | `ㅇ` 0.58 MB plain, 0.14 MB gzip |
-| core entries | 7,247 in 5,685 sets (4,411 also under a Hanja key); closed classes NP NR MM MAJ NNB XPN XSN XSV XSA and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
-| core bytes | 416,601 of rows, the file at most 420,000 bytes; forced by core-extra.json: 735 rows, 39,612 bytes (9.4 % of the budget); every field of a shard row is in the core row, `pron` included |
+| core entries | 7,247 in 5,684 sets (4,410 also under a Hanja key); closed classes NP NR MM MAJ NNB XPN XSN XSV XSA and IC with a count ≥ 1 whole, then open classes by descending count; a set goes in whole or not at all |
+| core bytes | 416,652 of rows, the file at most 420,000 bytes; forced by core-extra.json: 736 rows, 39,714 bytes (9.5 % of the budget); every field of a shard row is in the core row, `pron` included |
 | running words in the core | 74.5 % of the 308,335 counted morphemes of the classes the lexicon builds (95.3 % of the 240,923 the lexicon covers) have their headword in the core |
 
 <!-- ko-data-checksums -->
@@ -1515,6 +1516,6 @@ Recomputed with `npm run ko:data-checksum` (scripts/ko-data-checksum.mts): the s
 
 | folder | files | bytes | sha256 |
 |---|---|---|---|
-| public/dict/ko | 852 | 55430928 | `cc99c1fbf51593b6677367c8fc92566d33f71d32cc8b3ba984d6b749693cacb3` |
-| public/lexicon/ko | 27 | 1321479 | `ba261e40a5a6c33d8f6d3b8c6ba101d8a88933129c0e243fa3c8460a0ffa51a9` |
+| public/dict/ko | 852 | 55431338 | `9d682448c2c0aacb08bba6fa734042517c0b09e46df48aa95df313a3ac58d353` |
+| public/lexicon/ko | 27 | 1321561 | `079958266830e3ebc6e3a4e0da6a13f118578b77e3dd1b824773d471cbf3a845` |
 <!-- /ko-data-checksums -->

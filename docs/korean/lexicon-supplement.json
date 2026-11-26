@@ -137,6 +137,7 @@
     {"lemma":"들어보다","tag":"VV","irr":"R","gloss":"to listen to, to hear (and see)","why":"잘 들어보세요; written as one word; absent from the source"},
     {"lemma":"지구","tag":"NNG","hom":91,"gloss":"the Earth; the globe","hanja":"地球","why":"지구는 둥글어요; the source files the Earth only as a proper noun and the noun row is \"district\""},
     {"lemma":"곡","tag":"NNB","clf":true,"gloss":"counter for pieces of music; a piece, a song","hanja":"曲","why":"노래를 한 곡 불렀어요; the source has 곡 only as \"valley\""},
-    {"lemma":"주최","tag":"NNG","gloss":"hosting, sponsorship (of an event)","hanja":"主催","why":"주최하다, 주최 측; absent from the source"}
+    {"lemma":"주최","tag":"NNG","gloss":"hosting, sponsorship (of an event)","hanja":"主催","why":"주최하다, 주최 측; absent from the source"},
+    {"lemma":"만","tag":"NNB","hom":91,"gloss":"after, in (an interval of time): 십 년 만에 after ten years","why":"십 년 만에 만났어요, 오 분 만에, 오랜만; the source has 만 only as the numeral, \"bay\" and the bound noun of expectation (\"worth doing\"), not the interval use"}
   ]
 }

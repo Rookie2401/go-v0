@@ -7,7 +7,7 @@ The regression table for the commonest Korean words (package W): `test/adapters/
 - Expectations are what a careful Korean teacher would say the word is, decided before the analyser was run; a corrected expectation is listed below. Nothing has been reviewed by a native speaker.
 - Every check runs in both lexicon states: the compiled core alone, and the core with every shard (skipped when public/lexicon/ko is not built). A word the core lacks is checked with the shards only.
 - Entries (779): the 300 commonest spellings of the lexicon, every pronoun with its case and fused forms, determiners, numerals, counters, question words, common adverbs and conjunctive adverbs, one-syllable nouns, and 2 to 3 forms of the commonest verbs and descriptive verbs. Each is read bare (token analysis) and in one to three short sentences (the whole adapter). Lemma (homonym number stripped), part of speech, a meaning keyword in the gloss, and the undecided flag are checked.
-- Blocks B and C (77 sentences): numerals before counters with their look-alikes, and noun + noun written with a space.
+- Blocks B and C (102 sentences): numerals before counters with their look-alikes, and noun + noun written with a space.
 - Frames (817 nouns, generated from the lexicon): noun + 이/가, 을/를, 은/는, 도, 에, 의, 만 by the pack's allomorph rule, bare and in a neutral sentence. The first reading must be that noun with that particle. A form that is itself a headword (시도, 그만) is not scored.
 - Block T (153 surfaces): written forms that are both noun + particle and a predicate form or a whole word. Each sentence names its side (noun, pred, whole). The bare form is "undecided" when two sides each have a counted word, and that side read confidently when only one has.
 - `known`, `frameKnown`, `twoSidedKnown` list the checks wrong at the commit above. The test fails on any other wrong reading and on any known check that starts passing.
@@ -20,6 +20,7 @@ The regression table for the commonest Korean words (package W): `test/adapters/
 | blocks B and C | 7 / 140 | 4 / 140 | 7 / 148 | 4 / 148 |
 | frames | 106 / 11244 | 60 / 11244 | 60 / 11096 | 20 / 11096 |
 | block T | 32 / 405 | 23 / 405 | 31 / 412 | 22 / 412 |
+| block K (contracted copula; added after the last round, not run at 29e35f1e) | — | 14 / 24 | — | 15 / 25 |
 
 ### Block T gate (right / total)
 
@@ -34,6 +35,8 @@ The regression table for the commonest Korean words (package W): `test/adapters/
 
 - 실을 | noun 실을 바늘에 꿰었어요. | wanted 실/NOUN | was 실/NOUN/thread 0.84 | now 싣다/VERB/to load onto a vehicle 0.84 (undecided, accepted by a correction) | core
 - 실을 | noun 실을 바늘에 꿰었어요. | wanted 실/NOUN | was 실/NOUN/thread 0.84 | now 싣다/VERB/to load onto a vehicle 0.84 (undecided, accepted by a correction) | shards
+
+Block K (the contracted copula after a vowel-final word before an ending that begins with a consonant letter: 갈 겁니다, 제 겁니다, 뭡니까, 접니다) was added after the last round, because the deck audit found the class. At eb3830f2 the analyser does not read it: 겁니다 / 겁니까 / 거니까 read 걸다, 건데요 걸다 "rich", and 뭡니까, 얼맙니까, 누굽니까, 어딥니까, 친굽니다, 접니다 are unconfirmed or read 절다; the forms 거예요, 거죠, 거고, 거야, 거면, 걸요, 거라서 and the verb 걸다 in its own sentences are right.
 
 ## The last round: the 44 first-month words
 
@@ -182,9 +185,26 @@ A word counts as fixed when every line of it is fixed or undecided; "FIXED, UNDE
 - 장 | topic bare 장은 | now 장/NOUN/sauce / head (of an organization) / mark/undecided 0.84 / 장/NOUN/sauce / head (of an organization) / mark/undecided 0.84
 - 해 | also 해도 있어요. | now 해/NOUN/sun; year / harm / the value of x/undecided 0.84
 
-## Known limits: still wrong at eb3830f2 (180 checks; ★ first months: 66)
+## Known limits: still wrong at 40895780 (195 checks; ★ first months: 88)
 
 word | sentence or frame | wanted | got | states
+
+### (k) a reading the analyser never produces: the contracted copula (block K)
+
+- ★ 거니까 | K: 제가 할 거니까 걱정 마세요. @거니까 | wanted 거/NOUN/thing or 것/NOUN/thing | got 걸다/VERB/to hang 0.92 | core+shards
+- ★ 건데요 | K: 내일 갈 건데요. @건데요 | wanted 거/NOUN/thing or 것/NOUN/thing | got 걸다/ADJ/to be rich 0.92 | core+shards
+- ★ 겁니까 | K: 언제 갈 겁니까? @겁니까 | wanted 거/NOUN/thing or 것/NOUN/thing | got 걸다/VERB/to hang 0.92 | core+shards
+- ★ 겁니까 | K: 이건 누구 겁니까? @겁니까 | wanted 거/NOUN/thing or 것/NOUN/thing | got 걸다/VERB/to hang 0.92 | core+shards
+- ★ 겁니다 | K: 그것은 제 겁니다. @겁니다 | wanted 거/NOUN/thing or 것/NOUN/thing | got 걸다/VERB/to hang 0.92 | core+shards
+- ★ 겁니다 | K: 내일 갈 겁니다. @겁니다 | wanted 거/NOUN/thing or 것/NOUN/thing | got 걸다/VERB/to hang 0.92 | core+shards
+- ★ 겁니다 | K: 밥을 먹을 겁니다. @겁니다 | wanted 거/NOUN/thing or 것/NOUN/thing | got 걸다/VERB/to hang 0.92 | core+shards
+- ★ 겁니다 | K: 비가 올 겁니다. @겁니다 | wanted 거/NOUN/thing or 것/NOUN/thing | got 걸다/VERB/to hang 0.92 | core+shards
+- ★ 누굽니까 | K: 저 사람은 누굽니까? @누굽니까 | wanted 누구/PRON/who | got 누굽니까/X//unconfirmed 0.45 | core+shards
+- ★ 뭡니까 | K: 이게 뭡니까? @뭡니까 | wanted 뭐/PRON/what or 무엇/PRON/what | got 뭡니까/X//unconfirmed 0.45 | core+shards
+- ★ 어딥니까 | K: 여기가 어딥니까? @어딥니까 | wanted 어디/PRON/where | got 어딥니까/X//unconfirmed 0.45 | core+shards
+- ★ 얼맙니까 | K: 이거 얼맙니까? @얼맙니까 | wanted 얼마/NOUN/how much | got 얼맙니까/X//unconfirmed 0.45 | core+shards
+- ★ 접니다 | K: 누구세요? 접니다. @접니다 | wanted 저/PRON/I | got 접니/NOUN//unconfirmed 0.45 | core+shards
+- 친굽니다 | K: 이 사람은 제 친굽니다. @친굽니다 | wanted 친구/NOUN/friend | got 친굽니/NOUN//unconfirmed 0.45 | core+shards
 
 ### (a) token order: a common word loses to a same-spelled word
 
@@ -268,6 +288,7 @@ word | sentence or frame | wanted | got | states
 - 재 | 바람에 재가 날려요. @재가 | wanted 재/NOUN/ash | got 재/NOUN/ash / mountain pass. compare 고개./undecided 0.92 (UNDECIDED: the set's undecided reading, or the wanted reading creditable beside it) | core+shards
 - 재 | 우리는 재를 넘어 마을로 갔어요. @재를 | wanted 재/NOUN/pass | got 재/NOUN/ash / mountain pass. compare 고개./undecided 0.92 (UNDECIDED: the set's undecided reading, or the wanted reading creditable beside it) | core+shards
 - 절 | 산속에 오래된 절이 있어요. @절이 | wanted 절/NOUN/temple,monastery | got 절/NOUN/a verse / bow / Buddhist monastery / tem/undecided 0.92 (UNDECIDED: the set's undecided reading, or the wanted reading creditable beside it) | core+shards
+- 접니다 | K: 그는 다리를 접니다. @접니다 | wanted 절다/VERB/limp,lame | got 절다/VERB/to be doused / to limp/undecided 0.92 (UNDECIDED: the set's undecided reading, or the wanted reading creditable beside it) | shards
 - 종 | 교회에서 종이 울렸어요. @종이 | wanted 종/NOUN/bell | got 종/NOUN/servant / bell (instrument) / tumour / b/undecided 0.84 (UNDECIDED: the set's undecided reading, or the wanted reading creditable beside it) | core+shards
 - 주장 | 형은 축구팀 주장이에요. @주장이에요 | wanted 주장/NOUN/representing,captain | got 주장/NOUN/claim, assertion 0.92 | core+shards
 - 쪽 | 책 십 쪽을 펴세요. @쪽을 | wanted 쪽/NOUN/page or 쪽/CLF/page | got 쪽/NOUN/side / page; part, piece / in a manner i/undecided 0.92 (UNDECIDED: the set's undecided reading, or the wanted reading creditable beside it) | core+shards
@@ -328,6 +349,15 @@ word | sentence or frame | wanted | got | states
 ### Noun + particle frames
 
 - ★ 가게 | topic 가게는 좋아요. | wanted 가게/NOUN + topic (count 5) | got 가다/VERB/to go 0.84 (UNDECIDED: the set's undecided reading, or the wanted reading creditable beside it) | core+shards
+- ★ 거 | also bare 거도 | wanted 거/PRON + also (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.92 | core+shards
+- ★ 거 | also 거도 있어요. | wanted 거/PRON + also (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.92 | core+shards
+- ★ 거 | object bare 거를 | wanted 거/PRON + object (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.92 | core+shards
+- ★ 거 | object 거를 봤어요. | wanted 거/PRON + object (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.92 | core+shards
+- ★ 거 | subject bare 거가 | wanted 거/PRON + subject (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.92 | core+shards
+- ★ 거 | subject 거가 있어요. | wanted 거/PRON + subject (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.92 | core+shards
+- ★ 거 | topic bare 거는 | wanted 거/PRON + topic (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.84 | core+shards
+- ★ 거 | topic 거는 좋아요. | wanted 거/PRON + topic (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.84 | core+shards
+- ★ 뭐 | subject 뭐가 있어요. | wanted 뭐/PRON + subject (count 20) | got 무엇/PRON/what; something, anything 0.84 (UNDECIDED: the set's undecided reading, or the wanted reading creditable beside it) | core+shards
 - ★ 오 | object 오를 봤어요. | wanted 오/PROPN+NOUN+NUM + object (count 5) | got 오르다/VERB/to go up 0.92 | core+shards
 - ★ 오 | subject 오가 있어요. | wanted 오/PROPN+NOUN+NUM + subject (count 5) | got 오가다/VERB/to come and go 0.84 | core+shards
 - ★ 오 | topic 오는 좋아요. | wanted 오/PROPN+NOUN+NUM + topic (count 5) | got 오다/VERB/to come; to fall (rain, snow) 0.92 | core+shards
@@ -343,14 +373,6 @@ word | sentence or frame | wanted | got | states
 - 각 | subject 각이 있어요. | wanted 각/NOUN + subject (count 129) | got 각/NOUN//unconfirmed 0.45 | core
 - 각 | topic bare 각은 | wanted 각/NOUN + topic (count 129) | got 각/NOUN//unconfirmed 0.45 | core
 - 각 | topic 각은 좋아요. | wanted 각/NOUN + topic (count 129) | got 각/NOUN//unconfirmed 0.45 | core
-- 거 | also bare 거도 | wanted 거/PRON + also (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.92 | core+shards
-- 거 | also 거도 있어요. | wanted 거/PRON + also (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.92 | core+shards
-- 거 | object bare 거를 | wanted 거/PRON + object (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.92 | core+shards
-- 거 | object 거를 봤어요. | wanted 거/PRON + object (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.92 | core+shards
-- 거 | subject bare 거가 | wanted 거/PRON + subject (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.92 | core+shards
-- 거 | subject 거가 있어요. | wanted 거/PRON + subject (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.92 | core+shards
-- 거 | topic bare 거는 | wanted 거/PRON + topic (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.84 | core+shards
-- 거 | topic 거는 좋아요. | wanted 거/PRON + topic (count 107) | got 거/NOUN/thing (spoken form of the bound noun for 0.84 | core+shards
 - 거의 | genitive bare 거의의 | wanted 거의/NOUN+ADV + of (count 170) | got 거의/NOUN//unconfirmed 0.45 | core
 - 거의 | genitive 거의의 이름을 알아요. | wanted 거의/NOUN+ADV + of (count 170) | got 거의/NOUN//unconfirmed 0.45 | core
 - 거의 | object bare 거의를 | wanted 거의/NOUN+ADV + object (count 170) | got 거의/NOUN//unconfirmed 0.45 | core
@@ -359,7 +381,6 @@ word | sentence or frame | wanted | got | states
 - 거의 | place 거의에 있어요. | wanted 거의/NOUN+ADV + to (count 170) | got 거의/NOUN//unconfirmed 0.45 | core
 - 거의 | subject bare 거의가 | wanted 거의/NOUN+ADV + subject (count 170) | got 거의/NOUN//unconfirmed 0.45 | core
 - 거의 | subject 거의가 있어요. | wanted 거의/NOUN+ADV + subject (count 170) | got 거의/NOUN//unconfirmed 0.45 | core
-- 뭐 | subject 뭐가 있어요. | wanted 뭐/PRON + subject (count 20) | got 무엇/PRON/what; something, anything 0.84 (UNDECIDED: the set's undecided reading, or the wanted reading creditable beside it) | core+shards
 - 비록 | genitive bare 비록의 | wanted 비록/NOUN+ADV + of (count 57) | got 비록/NOUN//unconfirmed 0.45 | core
 - 비록 | genitive 비록의 이름을 알아요. | wanted 비록/NOUN+ADV + of (count 57) | got 비록/NOUN//unconfirmed 0.45 | core
 - 비록 | object bare 비록을 | wanted 비록/NOUN+ADV + object (count 57) | got 비록/NOUN//unconfirmed 0.45 | core

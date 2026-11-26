@@ -348,6 +348,106 @@ for (const state of ['core', 'shards'] as const) {
     it('WW3: 노래를 한 곡 불렀어요 → 한 "one"', () => {
       expect(readIn('노래를 한 곡 불렀어요.', '한').top.pos).toBe('NUM');
     });
+    describe('last round (S-a to S-h)', () => {
+      const lemmaOf = (c: AnalysisCandidate) => (c.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, '');
+      const isPred = (c: AnalysisCandidate) => ['VERB', 'ADJ', 'AUX'].includes(c.pos ?? '');
+      const nounSide = (c: AnalysisCandidate) => ['NOUN', 'PROPN', 'PRON', 'NUM', 'CLF'].includes(c.pos ?? '');
+      const live = (c: AnalysisCandidate) => c.confidence >= 0.5 && !c.unconfirmed && !c.notes?.credit;
+      /** Undecided: a creditable reading on each side (the noun side and the predicate side, or two named lemmas). */
+      const undecided = (s: string, w: string, a: (c: AnalysisCandidate) => boolean, b: (c: AnalysisCandidate) => boolean) => {
+        const r = readIn(s, w);
+        expect(r.all.some((c) => a(c) && live(c)) && r.all.some((c) => b(c) && live(c)), `${s} ${w}: ${r.all.slice(0, 3).map((c) => `${c.lemma}/${c.pos}/${c.confidence}`).join(' ; ')}`).toBe(true);
+        expect(orderProblems(r.analyses)).toEqual([]);
+      };
+      // S-a, the auditor's blocker CCC1 and the sweep's predicate side: a clause-first adnominal before its noun; and the look-alikes
+      for (const [s, w] of [
+        ['우는 아이를 달랬다.', '우는'], ['노는 아이들이 많다.', '노는'], ['먹을 물을 주세요.', '먹을'], ['입을 옷이 없어요.', '입을'], ['신을 신발을 샀어요.', '신을'],
+        ['물을 사람이 없다.', '물을'], ['우는 소리가 들려요.', '우는'], ['노는 게 좋아요.', '노는'], ['엄마는 빨래를 개는 중이에요.', '개는'], ['남은 음식을 버렸어요.', '남은'],
+        ['낮은 의자에 앉았어요.', '낮은'], ['젖은 옷을 벗으세요.', '젖은'], ['자는 아이를 깨웠어요.', '자는'], ['웃는 얼굴이 좋아요.', '웃는'], ['아는 사람이 없어요.', '아는'],
+        ['사는 곳', '사는'], ['가는 길', '가는'], ['학교에 간 뒤에 전화해요.', '간'], ['일을 한 후에 쉬어요.', '한'],
+      ] as const) it(`S-a ${s}: ${w} is the predicate's adnominal`, () => { const t = readIn(s, w).top; expect(isPred(t), `${t.lemma} ${t.pos}`).toBe(true); });
+      // the same shape with the noun as likely (피는 꽃이 against 차는 값이: topic + subject is as common): undecided, never one confident side
+      // noun + 을 before a nominal in 에 / 에게 / (으)로 and a verb: position decides nothing, so never a confident noun
+      for (const [s, w] of [['먹을 곳에 가요.', '먹을'], ['입을 옷으로 갈아입었어요.', '입을'], ['신을 신발에 넣었어요.', '신을'], ['물을 사람에게 가세요.', '물을']] as const) {
+        it(`S-a ${s}: ${w} is the verb first or undecided, never a confident noun`, () => {
+          const r = readIn(s, w);
+          if (!isPred(r.top)) expect(r.all.some((c) => isPred(c) && live(c)), `${s}: ${r.top.lemma} ${r.top.pos}`).toBe(true);
+        });
+      }
+      for (const [s, w] of [['피는 꽃이 예뻐요.', '피는'], ['식은 밥을 먹었어요.', '식은'], ['실을 바늘에 꿰었어요.', '실을']] as const) {
+        it(`S-a ${s}: ${w} is undecided between the noun and the adnominal`, () => undecided(s, w, nounSide, isPred));
+      }
+      // the noun side that must keep passing (입을 벌리세요 needs 벌리다, a shard word)
+      for (const [s, w] of [...(state === 'shards' ? [['입을 벌리세요.', '입을']] as const : []), ['신을 벗으세요.', '신을'], ['물을 마셔요.', '물을'], ['피는 빨개요.', '피는'], ['이 물은 차가워요.', '물은'], ['차는 값이 비싸요.', '차는']] as const) {
+        it(`S-a ${s}: ${w} stays the noun`, () => { const t = readIn(s, w).top; expect(nounSide(t), `${t.lemma} ${t.pos}`).toBe(true); });
+      }
+      // S-b: the owner of a place noun; X도 Y도; a nominal after a determiner
+      for (const [s, w, lemma] of [['산 위에 집이 있어요.', '산', '산'], ['줄 끝에 서세요.', '줄', '줄'], ['하늘에 해도 달도 없어요.', '해도', '해'], ['하늘에 해도 달도 없어요.', '달도', '달'], ['이 실은 아주 질겨요.', '실은', '실']] as const) {
+        it(`S-b ${s}: ${w} is the noun ${lemma}`, () => { const t = readIn(s, w).top; expect(`${lemmaOf(t)}|${nounSide(t)}`).toBe(`${lemma}|true`); });
+      }
+      it('S-b look-alike: the same word twice is the verb repeated (가도 가도 끝이 없어요)', () => expect(isPred(readIn('가도 가도 끝이 없어요.', '가도').top)).toBe(true));
+      for (const [s, w] of [['나무에 가지만 남았어요.', '가지만'], ['간 기능이 나빠요.', '간'], ['남은 신경 쓰지 마세요.', '남은'], ['파는 몸에 좋아요.', '파는']] as const) {
+        it(`S-b ${s}: ${w} is undecided (no general rule)`, () => undecided(s, w, nounSide, isPred));
+      }
+      for (const [s, w, whole, split] of [['이번 주가 제일 바빠요.', '주가', '주가', '주'], ['이번 주도 바빠요.', '주도', '주도', '주'], ['자의 눈금을 읽으세요.', '자의', '자의', '자']] as const) {
+        it(`S-b ${s}: ${w} is undecided between the whole word and ${split} + particle`, () => undecided(s, w, (c) => lemmaOf(c) === whole, (c) => lemmaOf(c) === split));
+      }
+      // S-c (corrected): the other verb's adnominal stays creditable only as a live rival by the counts (a quarter of the chosen verb's);
+      // a cue that chose (a place name for 살다, an object for 사다) sets the other aside. [sentence, word, first lemma, second lemma,
+      // second creditable?, checked with the core alone too?]
+      for (const [s, w, first, second, open, core] of [
+        ['내일 갈 수 있어요.', '갈', '가다', '갈다', false, false], // the core alone never kept 갈다 open (as at 29e35f1e): shards only
+        ['한국에서 살 수 있어요.', '살', '살다', '사다', false, true],
+        ['친구에게 줄 선물을 샀어요.', '줄', '주다', '줄다', false, true],
+        ['어제 간 식당이 좋았어요.', '간', '가다', '갈다', false, true],
+        ['학교에 간 친구를 만났어요.', '간', '가다', '갈다', false, true],
+        ['갈 곳이 없어요.', '갈', '가다', '갈다', true, true],
+        ['살 집이 없어요.', '살', '살다', '사다', true, true],
+        ['알 수 없어요.', '알', '알다', '알', true, true],
+        ['팔 수 있어요.', '팔', '팔다', '팔', true, true],
+        ['줄 수 있어요.', '줄', '주다', '줄', true, true],
+        ['제가 산 책이에요.', '산', '살다', '산', true, true],
+      ] as const) {
+        if (state === 'core' && !core) continue;
+        it(`S-c ${s}: ${w} is ${first} first, ${second} ${open ? 'creditable' : 'set aside'}`, () => {
+          const r = readIn(s, w);
+          expect(lemmaOf(r.top)).toBe(first);
+          expect(r.all.some((c) => c !== r.top && lemmaOf(c) === second && live(c)), `${s}: ${r.all.slice(0, 3).map((c) => `${c.lemma}/${c.confidence}`).join(' ; ')}`).toBe(open);
+        });
+      }
+      // 사다 (52) beside 살다 (382): not a rare rival by the pack's test (it is counted 30 or more), so with no cue 산 is undecided
+      for (const s of ['어제 산 옷이에요.', '어제 산 책이에요.']) {
+        it(`S-c ${s}: 산 is 살다 or 사다 first with the other creditable`, () => {
+          const r = readIn(s, '산');
+          const other = lemmaOf(r.top) === '살다' ? '사다' : '살다';
+          expect(['살다', '사다']).toContain(lemmaOf(r.top));
+          expect(r.all.some((c) => c !== r.top && lemmaOf(c) === other && live(c))).toBe(true);
+        });
+      }
+      it('S-c look-alike: 옷을 사는 것 is 사다', () => expect(lemmaOf(readIn('옷을 사는 것을 좋아해요.', '사는').top)).toBe('사다'));
+      // S-d: Sino-Korean numerals (composed ones too) count minutes, native ones persons
+      for (const s of ['B: 이십 분 후에 출발해요.', '이십 분 후에 출발해요.', '십 분 기다렸어요.']) it(`S-d ${s}: 분 is the minute`, () => { const t = readIn(s, '분').top; expect(t.gloss ?? '').toMatch(/minute/u); expect(t.notes?.homonym).not.toBe('undecided'); });
+      it('S-d: 세 분이 오셨어요 → 분 "person"', () => expect(readIn('세 분이 오셨어요.', '분이').top.gloss ?? '').toMatch(/person|people/u));
+      it('S-d: 이십 is the number before the counter', () => expect(readIn('이십 분 후에 출발해요.', '이십').top.pos).toBe('NUM'));
+      // S-e: 아니면 between alternatives is the conjunction; after N이/가 the copula
+      for (const s of ['지금 아니면 내일 가요.', '커피 아니면 차?', '빨리 아니면 못 가요.']) it(`S-e ${s}: 아니면 is undecided between the conjunction and the copula`, () => undecided(s, '아니면', (c) => c.pos === 'CONJ', (c) => lemmaOf(c) === '아니다'));
+      it('S-e: 학생이 아니면 is 아니다, the conjunction set aside', () => { const r = readIn('학생이 아니면 들어오지 마세요.', '아니면'); expect(lemmaOf(r.top)).toBe('아니다'); expect(r.all.some((c) => c.pos === 'CONJ' && live(c))).toBe(false); });
+      // S-f: 만에 after an interval is the bound noun; 만 before a unit the numeral
+      for (const s of ['우리는 십 년 만에 만났어요.', '삼 일 만에 왔어요.']) it(`S-f ${s}: 만에 is the bound noun "after"`, () => { const t = readIn(s, '만에').top; expect(t.pos).toBe('NOUN'); expect(t.gloss ?? '').toMatch(/interval/u); });
+      for (const s of ['만 원이에요.', '만 명이 왔어요.']) it(`S-f ${s}: 만 is the numeral`, () => expect(readIn(s, '만').top.pos).toBe('NUM'));
+      // S-g: a numeral is not modified, unless a unit follows
+      for (const [s, w] of [['언니가 새 백을 샀어요.', '백을'], ['부드러운 천으로 옷을 만들었어요.', '천으로']] as const) it(`S-g ${s}: ${w} is the noun`, () => expect(readIn(s, w).top.pos).toBe('NOUN'));
+      for (const [s, w] of [['새 천 원짜리를 주세요.', '천'], ['그 백 명이 왔어요.', '백']] as const) it(`S-g ${s}: ${w} stays the numeral`, () => expect(readIn(s, w).top.pos).toBe('NUM'));
+      // S-h: X도 before 있다 / 없다 is a nominal; the progressive -고 있다 and -아도 되다 stay
+      for (const [s, w, lemma] of [['가게도 있어요.', '가게도', '가게'], ['사고도 있어요.', '사고도', '사고'], ['해도 있어요.', '해도', '해'], ['사도 있어요.', '사도', '사']] as const) {
+        it(`S-h ${s}: ${w} is ${lemma} + 도`, () => { const t = readIn(s, w).top; expect(`${lemmaOf(t)}|${String(t.morph.Particle ?? '')}`).toMatch(new RegExp(`^${lemma}\\|.*also`, 'u')); });
+      }
+      it('S-h: the whole word 사도 "apostle" stays creditable beside 사 + 도', () => { const r = readIn('사도 있어요.', '사도'); if (r.all.some((c) => lemmaOf(c) === '사도')) expect(r.all.some((c) => lemmaOf(c) === '사도' && live(c))).toBe(true); });
+      it('S-h look-alikes: 먹고 있어요 (the progressive), 먹어도 돼요 (permission)', () => {
+        expect(readIn('밥을 먹고 있어요.', '있어요').top.pos).toBe('AUX');
+        expect(lemmaOf(readIn('밥을 먹어도 돼요.', '먹어도').top)).toBe('먹다');
+      });
+    });
     describe('batch 11: the numeral + counter frame raises both readings, from below the floor if need be', () => {
       const lemmaOf = (c: AnalysisCandidate) => (c.lemma ?? '').replace(/[⁰¹²³⁴-⁹]+$/u, '');
       const isNumeral = (c: AnalysisCandidate) => c.pos === 'NUM' || (c.pos === 'DET' && /^(one|two|three|four|five|six|seven|eight|nine|ten)\b/u.test(c.gloss ?? ''));

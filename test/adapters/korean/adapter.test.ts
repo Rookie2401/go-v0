@@ -58,7 +58,10 @@ function creditFigures(): { words: number; max: number; share: number; cuedBad: 
     if (!a.token.isWord || !a.candidates.length) continue;
     const n = creditable(a).length;
     words++; if (n > 1) many++; max = Math.max(max, n);
-    if (a.candidates.some((c) => c.notes?.credit === 'set aside by the sentence') && n !== 1) cuedBad.push(`${s} ${a.token.surface}: ${n}`);
+    // a cue leaves one creditable reading, besides those the sentence left undecided on purpose (last round, S-c: 갈 수 is 가다 or 갈다,
+    // 어제 산 is 사다 or 살다 — the cue chose the adnominal, nothing chose the verb)
+    const open = a.candidates.filter((c) => c.notes?.undecidedBy && !c.unconfirmed && c.confidence >= 0.5).length;
+    if (a.candidates.some((c) => c.notes?.credit === 'set aside by the sentence') && n !== 1 + open) cuedBad.push(`${s} ${a.token.surface}: ${n}`);
   }
   return { words, max, share: many / words, cuedBad };
 }

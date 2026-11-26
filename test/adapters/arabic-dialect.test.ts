@@ -143,7 +143,7 @@ describe.skipIf(!fs.existsSync(MANIFEST))('an Egyptian line with the full index 
     const toks = arTokenize(LINE);
     const first = arAnalyze(toks);
     // the importer put a dictionary's readings (here: the word level's own, at 0.9) on every word and says they are given
-    const handed: AnalyzedToken[] = first.map((x) => (x.token.isWord ? { ...x, candidates: x.candidates.map((c) => ({ ...c, confidence: 0.9, notes: { ...c.notes, variety: undefined, context: undefined } as Record<string, string> })) } : x));
+    const handed: AnalyzedToken[] = first.map((x) => (x.token.isWord ? { ...x, candidates: x.candidates.map((c) => ({ ...c, confidence: 0.9, notes: Object.fromEntries(Object.entries(c.notes ?? {}).filter(([k]) => k !== 'variety' && k !== 'context')) as Record<string, string> })) } : x));
     const given = new Set(handed.map((x, i) => (x.token.isWord ? i : -1)).filter((i) => i >= 0));
     const out = arRefine(toks, handed, new Set([AR_ANALYZER]), given);
     for (const [i, w] of out.entries()) {

@@ -52,7 +52,10 @@ describe('verbs (fully vocalized: the page decides, one lexeme, 0.90)', () => {
     expect(cs).toHaveLength(1);
     expect(cs[0]).toMatchObject({ lemma: 'قَالَ', confidence: 0.9 });
     expect(cs[0].notes?.homonyms).toBe('2');
-    expect(cs[0].gloss).toMatch(/^1\. .*2\. /);
+    // ONE clean meaning (the lead sibling's), never a numbered string; the other word spelled the same goes to notes.homonymMeanings
+    expect(cs[0].gloss).not.toMatch(/(^|\s)\d+\.\s/);
+    expect(cs[0].gloss).toBe('to say');
+    expect(cs[0].notes?.homonymMeanings).toContain('nap');
   });
   it('قُلْ is the imperative of قَالَ (hollow root); يَعِدُ is of وَعَدَ (assimilated); اِرْمِ is of رَمَى (defective)', () => {
     expect(top('قُلْ')).toMatchObject({ lemma: 'قَالَ', morph: { Mood: 'Imp', Person: '2' } });
@@ -664,6 +667,7 @@ describe('batch 2 over the real index (compiled core, shards, shipped list and g
       const cs = cands(key);
       if (!cs.length) continue;
       read++;
+      for (const c of cs) expect(c.gloss ?? '', key).not.toMatch(/(^|\s)\d+\.\s/);
       const groups = new Set(cs.filter((c) => c.confidence >= 0.5 && c.lemma).map((c) => `${c.lemma}|${c.pos === 'ADJ' ? 'NOUN' : c.pos}`));
       expect(groups.size, key).toBeLessThanOrEqual(1);
     }
@@ -992,6 +996,7 @@ describe('every vocalized starter word of the Alphabet Sprint reads as itself (r
       checked++;
       const a = cands(form);
       const top1 = a[0];
+      if (a.some((c) => /(^|\s)\d+\.\s/.test(c.gloss ?? ''))) violations.push(`${form} (gloss) a numbered gloss`);
       if (!top1 || !reads(top1, h)) { violations.push(`${form} (a) top ${top1?.lemma}|${top1?.pos} ${top1?.confidence}`); continue; }
       if (top1.confidence < 0.5) undecided++;
       if (!cands(arKey(form)).some((c) => reads(c, h))) violations.push(`${form} (b) bare key does not offer it`);
@@ -1082,5 +1087,48 @@ describe('batch 9: the shards a word needs are the shards arLookupKeys asks for 
     const c = top('للبيت');
     expect(c).toMatchObject({ lemma: 'بَيْت' });
     expect(partTexts(c)).toEqual(['ل', 'ل', 'بيت']);
+  });
+});
+
+describe('batch 10: the demonstratives, relatives and pronouns are words of their own', () => {
+  const OWN: Array<[string, string]> = [
+    ['هٰذَا', 'هٰذَا'], ['هٰذِهِ', 'هٰذِهِ'], ['هٰذَانِ', 'هٰذَانِ'], ['هٰذَيْنِ', 'هٰذَيْنِ'], ['هَاتَانِ', 'هَاتَانِ'], ['هَاتَيْنِ', 'هَاتَيْنِ'], ['هٰؤُلَاءِ', 'هٰؤُلَاءِ'],
+    ['ذٰلِكَ', 'ذٰلِكَ'], ['تِلْكَ', 'تِلْكَ'], ['ذَانِكَ', 'ذَانِكَ'], ['أُولٰئِكَ', 'أُولٰئِكَ'], ['ذَاكَ', 'ذَاكَ'],
+    ['الَّذِي', 'الَّذِي'], ['الَّتِي', 'الَّتِي'], ['اللَّذَانِ', 'اللَّذَانِ'], ['اللَّذَيْنِ', 'اللَّذَيْنِ'], ['اللَّتَانِ', 'اللَّتَانِ'], ['اللَّتَيْنِ', 'اللَّتَيْنِ'],
+    ['الَّذِينَ', 'الَّذِينَ'], ['اللَّاتِي', 'اللَّاتِي'], ['اللَّوَاتِي', 'اللَّوَاتِي'], ['اللَّائِي', 'اللَّائِي'],
+    ['هُوَ', 'هُوَ'], ['هِيَ', 'هِيَ'], ['هُمَا', 'هُمَا'], ['هُمْ', 'هُمْ'], ['هُنَّ', 'هُنَّ'], ['أَنْتَ', 'أَنْتَ'], ['أَنْتِ', 'أَنْتِ'], ['أَنْتُمَا', 'أَنْتُمَا'], ['أَنْتُمْ', 'أَنْتُمْ'], ['أَنْتُنَّ', 'أَنْتُنَّ'], ['أَنَا', 'أَنَا'], ['نَحْنُ', 'نَحْنُ'],
+  ];
+  const same = (a: string | undefined, b: string): boolean => (a ?? '') === b || arKey(a ?? '') === arKey(b) && a?.normalize('NFC').replace(/[َٰ]/g, '') === b.normalize('NFC').replace(/[َٰ]/g, '');
+  it('each reads as its OWN lemma (not as a form of the masculine singular), vocalized and unvocalized, with the reviewed list overridden', () => {
+    useArIdentities({});
+    const bad: string[] = [];
+    for (const [form, lemma] of OWN) {
+      for (const w of [form, arKey(form)]) {
+        const c = top(w);
+        // unvocalized, a spelling shared by two words (أَنْتَ / أَنْتِ) may lead with either
+        const ok = w === form ? same(c?.lemma, lemma) : arKey(c?.lemma ?? '') === arKey(lemma);
+        if (!ok || c.pos !== 'PRON') bad.push(`${w} -> ${c?.lemma}|${c?.pos}`);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+  it('behind و / ف (and ب / ل for the demonstratives) they keep their own lemma and the conjunction or preposition is a prefix part', () => {
+    useArIdentities({});
+    const bad: string[] = [];
+    for (const [form, lemma] of OWN.filter(([f]) => !/^ال/.test(f))) {
+      for (const p of ['و', 'ف']) {
+        const c = top(p + arKey(form));
+        if (!c || arKey(c.lemma ?? '') !== arKey(lemma) || c.parts?.[0]?.kind !== 'prefix') bad.push(`${p}${arKey(form)} -> ${c?.lemma}`);
+      }
+    }
+    for (const [form, lemma] of [['هٰذِهِ', 'هٰذِهِ'], ['ذٰلِكَ', 'ذٰلِكَ'], ['تِلْكَ', 'تِلْكَ']]) for (const p of ['ب', 'ل']) { const c = top(p + arKey(form)); if (!c || !same(c.lemma, lemma)) bad.push(`${p}${arKey(form)} -> ${c?.lemma}`); }
+    expect(bad).toEqual([]);
+  });
+  it('the index\'s reading of the feminine as a form of the masculine word is named in notes.variants, not credited', () => {
+    useArIdentities({});
+    const c = top('تلك');
+    expect(c.lemma).toBe('تِلْكَ');
+    expect(c.notes?.variants === undefined || c.notes.variants === 'ذٰلِكَ').toBe(true);
+    expect(cands('تلك').some((x) => x.lemma === 'ذٰلِكَ')).toBe(false);
   });
 });

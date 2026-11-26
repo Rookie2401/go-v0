@@ -245,7 +245,7 @@ function unifyVariantHeads(readings: Reading[]): void {
   const groups = new Map<string, Reading[]>();
   for (const r of readings) {
     // verbs are never variants of each other (قَتَلَ form I and قَتَّلَ form II share a key and a gloss and are two lexemes)
-    if (r.derived || r.hand || r.viaLoose || r.pos === 'VERB' || r.pos === 'AUX') continue;
+    if (r.derived || r.hand || r.viaLoose || (r.pos !== 'NOUN' && r.pos !== 'ADJ')) continue;
     const gloss = r.info.gloss.trim();
     if (!gloss) continue;
     const key = `${r.segIx}|${groupId(r.pos)}|${gloss}|${arKey(r.head).replace(/[ؤئأإ]/g, 'ء').replace(/ي$/, '')}`;
@@ -815,17 +815,19 @@ function toCandidate(m: Merged, p: Printed, confidence: number, identity: string
   if (!m.rows[0].derived && !m.rows[0].hand) {
     const cls = groupOf(m.pos) ?? [m.pos];
     const memberPos = cls.filter((p) => lexemeIds(m.head, p).length > 0);
-    const ids = memberPos.flatMap((p) => lexemeIds(m.head, p));
-    if (ids.length > 1) {
-      const rows = ids.map((id) => lookupArabicLemma(id)).filter((r): r is ArLemmaRow => !!r);
-      const glosses = [...new Set(rows.map((r) => r[1]).filter(Boolean))];
-      gloss = glosses.length > 1 ? glosses.map((g, i) => `${i + 1}. ${g}`).join(' ') : glosses[0] ?? '';
-      const reading = [...new Set(m.rows.map((r) => r.info.root).filter((x): x is string => !!x))];
-      const all = [...new Set(rows.map((r) => r[5]).filter((x): x is string => !!x))];
-      root = reading[0] ?? all[0];
-      const perPos = Math.max(...memberPos.map((p) => lexemeIds(m.head, p).length));
-      if (perPos > 1) notes.homonyms = String(perPos);
+    // ONE clean meaning: the gloss of the lexeme that is CREDITED (its part of speech, and among homonym siblings the LEAD one); the others go to notes
+    const own = lexemeIds(m.head, m.pos).map((id) => lookupArabicLemma(id)).filter((r): r is ArLemmaRow => !!r);
+    const lead = own.find((r) => /(^|\|)Lead=Yes(\||$)/.test(r[3])) ?? own[0];
+    if (lead) {
+      gloss = lead[1] || gloss;
+      const rowRoots = [...new Set(m.rows.map((r) => r.info.root).filter((x): x is string => !!x))];
+      root = rowRoots[0] ?? lead[5] ?? root;
+      const siblings = [...new Set(own.filter((r) => r !== lead).map((r) => r[1]).filter((g) => g && g !== lead[1]))];
+      if (siblings.length) notes.homonymMeanings = `another word spelled the same: ${siblings.join('; ')}`;
+      if (own.length > 1) notes.homonyms = String(own.length);
     }
+    const others = [...new Set(memberPos.filter((p) => p !== m.pos).flatMap((p) => lexemeIds(m.head, p)).map((id) => lookupArabicLemma(id)?.[1]).filter((g): g is string => !!g && g !== gloss))];
+    if (others.length) notes.otherMeanings = others.join('; ');
     const alsoPos = memberPos.filter((p) => p !== m.pos);
     if (alsoPos.length) notes.alsoPos = alsoPos.join(',');
   }
@@ -913,9 +915,17 @@ function gatherReadings(env: Env): Reading[] {
       // the closed-class table: whole words (with a pronoun suffix or fused) only uncut; plain entries also as stems
       const conjChain = seg.enclitics.length === 0 && seg.proclitics.every((c) => c.id === 'wa' || c.id === 'fa' || c.id === 'a');
       for (const e of arClosedFor(stk)) {
+        // (the bare cell of a tanwīn alif or a feminine ة is a spelling for derived participles only)
+        if (tanwinAlif || feminineEnding) continue;
         if ((e.suffix || e.fusedOf) && cut && !conjChain) continue;
         if (rows.some((r) => !r.hand && sameHead(r.head, e.lemma, e.pos) && /ّ/.test(r.head) === /ّ/.test(e.lemma) && groupId(r.pos) === groupId(e.pos) && (!e.suffix || r.morph.Person === e.morph.Person))) continue;
         const r = readingFromClosed(env, segIx, stk, e);
+        if (r && e.formOf) {
+          // a lexeme of its own: the index's reading of this spelling as a FORM of the masculine word leaves the list and is named in notes.variants
+          for (let i = rows.length - 1; i >= 0; i--) if (!rows[i].hand && sameHead(rows[i].head, e.formOf, 'PRON')) rows.splice(i, 1);
+          r.variants = [e.formOf];
+          r.role = `${e.role ?? 'word'} (the index files it as a form of ${e.formOf})`;
+        }
         if (r) rows.push(r);
       }
       // a closed-class word spelled loosely (الى for إلى): restored, flagged, below any direct reading

@@ -999,6 +999,25 @@ function rankAdjust(readings: Reading[]): void {
       r.notes.context = 'a rarer row of another class of the same word, after the commoner one';
     }
   }
+  // FINAL ROUND, (M-a) A COUNTER + PARTICLE needs a numeral before it, which a token alone never has: a common noun of the same spelling
+  // and the same particles, counted above the faint level (more than 2: so not 번 "occasion" 2 beside 번 "times"), reads first, and the
+  // counter stays a live rival for the sentence layer's numeral + counter frame (개도 → 개 "dog" + 도, then 개 "item"; 두 개도 → the counter).
+  // (M-c) A ONE-SYLLABLE SURNAME + PARTICLE with no given name or title is the weaker reading beside a common noun of the same spelling
+  // counted above the faint level (김에 → 김 "laver" + 에, then the surname); the surname stays live.
+  const tailIds = (r: Reading) => r.parts.slice(1).map((p) => p.particle?.id ?? '?').join('+');
+  const weakNominal = (r: Reading) => !r.unconfirmed && r.parts.length >= 2 && r.parts.slice(1).every((p) => !!p.particle) && (
+    (r.stemTag === 'NNB' && !!r.entry?.clf) || (r.stemTag === 'NNP' && [...r.stemKey].length === 1));
+  for (const r of readings) {
+    if (!weakNominal(r)) continue;
+    const nouns = readings.filter((o) => o !== r && o.stemTag === 'NNG' && !o.unconfirmed && !o.notes.derived && o.stemKey === r.stemKey && tailIds(o) === tailIds(r) && (o.entry?.n ?? 0) > 2 && o.notes.credit === undefined);
+    if (!nouns.length) continue;
+    const raised = nouns.some((o) => o.score <= r.score);
+    for (const o of nouns) if (o.score <= r.score) { o.score = r.score + 0.05; o.cap = Math.max(o.cap, r.cap); }
+    // the counter it displaced stays live (the numeral frame needs it); a surname only when the counts know it at least as well as the noun
+    // (김 31 / 김 "laver" 5: live; a rarer surname 길 beside 길 "road" keeps the old rule: no rival)
+    if (r.stemTag === 'NNB' ? raised : (r.entry?.n ?? 0) >= Math.max(...nouns.map((o) => o.entry?.n ?? 0))) r.notes.liveWhole = 'yes';
+    r.notes.context = r.stemTag === 'NNB' ? 'a counter with no numeral before it: the common noun of the same letters first' : 'a surname alone: the common noun of the same letters first';
+  }
   /** A whole word that the adnominal rule may outrank by counts: a noun, name, pronoun or conjunction; not a determiner, a numeral or an
    *  adverb, nor any whole word beside a determiner, numeral or adverb row of the same letters. */
   function wholeFollowsCounts(r: Reading): boolean {
@@ -1214,7 +1233,7 @@ function finish(c: Ctx, readings: Reading[]): AnalysisCandidate[] {
       const r = x.r;
       const numberedAfterUndecided = !!r.entry?.hom && r.entry.set === 'balanced' && r.notes.homonym !== 'undecided' && undecided.has(`${koBareLemma(r.lemma)}|${r.pos}`);
       const droppedCopula = r.parts.some((p) => p.copula && p.je <= p.js);
-      const shortName = r.stemTag === 'NNP' && [...r.stemKey].length === 1;
+      const shortName = r.stemTag === 'NNP' && [...r.stemKey].length === 1 && !r.notes.liveWhole; // a surname kept live by the final round stays
       // an auxiliary reading is a rival only after a connective form, which the sentence layer sees (it raises the one it promotes)
       const auxRival = r.stemTag === 'VX' && list[0].r.stemTag !== 'VX';
       if (numberedAfterUndecided || droppedCopula || shortName || auxRival || koNeedsSpacing(r)) { r.cap = Math.min(r.cap, CAP.floor); r.notes.credit = 'not a live rival'; }

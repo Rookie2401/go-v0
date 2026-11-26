@@ -907,3 +907,21 @@ underBothStates('fix batch 11: the adnominal forms of every counted predicate re
   expect(bad).toEqual([]);
   expect(wholeRarer.length, wholeRarer.join('; ')).toBeLessThanOrEqual(WHOLE_RARER_CAP);
 });
+
+/** Final round (M-a, M-c): a counter + particle, or a one-syllable surname + particle, alone, is the weaker reading beside a common noun of
+ *  the same letters counted above the faint level; the counter it displaced (and a surname the counts know at least as well) stays live. */
+underBothStates('final round: a counter or a lone surname + particle after the common noun of the same letters (core; core + shards)', () => {
+  const live = (c: AnalysisCandidate | undefined) => !!c && !c.unconfirmed && c.confidence >= 0.5;
+  for (const form of ['개도', '개를', '명이', '명을', '살은', '살이', '장을', '장에']) {
+    const cs = koAnalyzeToken(form);
+    expect(cs[0].pos, form).toBe('NOUN');
+    expect(cs.some((c) => c.pos === 'CLF' && live(c)), `${form}: the counter stays live`).toBe(true);
+  }
+  // 번 "occasion" (count 2) is faint beside the counter 번 "times": the counter keeps first place
+  expect(koAnalyzeToken('번도')[0].pos).toBe('CLF');
+  const kim = koAnalyzeToken('김에');
+  expect(kim[0].pos).toBe('NOUN');
+  expect(kim.some((c) => c.pos === 'PROPN' && live(c)), '김에: the surname stays live').toBe(true);
+  // a surname with no common noun of its letters is untouched
+  expect(koAnalyzeToken('박이')[0].pos).toBe('PROPN');
+});

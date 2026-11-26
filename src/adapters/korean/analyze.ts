@@ -332,6 +332,10 @@ interface Reading {
 const kindOfTag = (tag: string): Kind => (tag === 'VA' ? 'A' : tag === 'VX' ? 'X' : tag === 'VCP' || tag === 'VCN' ? 'C' : 'V');
 const isExist = (stem: string): boolean => /[있없밌]$/u.test(stem) || stem === '계시';
 
+/** The core case and focus particles (이/가, 을/를, 은/는, 도, 의, 에, 에서, 와/과, 만, (으)로, 에게, 한테, 께, 부터, 까지): only a noun + these
+ *  is put before a same-spelled predicate form whatever the counts, and only these decide a split against a whole word by the counts. */
+const KO_CORE_PARTICLE_IDS: ReadonlySet<string> = new Set(['subject', 'object', 'topic', 'also', 'of', 'to', 'at', 'at-short', 'and', 'only', 'by', 'to-person', 'to-person-hante', 'to-person-hon', 'from', 'until']);
+
 let orderSeq = 0;
 function baseScore(entry: KoLexEntry | undefined, stemSyl: number, nMorph: number, violations: number): number {
   return Math.log10(1 + (entry?.n ?? 0)) + 0.3 * stemSyl - 0.35 * nMorph + (violations ? 0 : 0.5);
@@ -797,7 +801,9 @@ function rankAdjust(readings: Reading[]): void {
   for (const r of readings) {
     if (r.unconfirmed || !['NNG', 'NNB', 'NP', 'NR'].includes(r.stemTag) || !((r.entry?.n ?? 0) > 0) || r.parts.length < 2) continue;
     const tail = r.parts.slice(1);
-    if (!tail.every((p) => p.particle && p.particle.cls !== 'plural')) continue;
+    // the CORE case and focus particles only: a noun + (이)란, (이)랑, (이)나, (이)야, (이)라고, 요 … is ordered by the counts as any reading is
+    // (파란: 파랗다 + -ㄴ, not 파 + 란; 자라고: 자라다 + -고, not 자 + 라고)
+    if (!tail.every((p) => p.particle && KO_CORE_PARTICLE_IDS.has(p.particle.id))) continue;
     const tailText = tail.map((p) => p.text).join('');
     const nN = r.entry!.n!;
     const rivals = readings.filter((o) => {
@@ -813,22 +819,30 @@ function rankAdjust(readings: Reading[]): void {
     const sinoOne = [...r.stemKey].length === 1 && (!!r.entry?.hanja || lookupKoreanStem(r.stemKey).some((h) => h.entry.lemma === r.stemKey && !!h.entry.hanja && !KO_PREDICATE_TAGS.has(h.entry.tag)));
     if ((r.stemTag === 'NNB' || sinoOne) && rivals.some((o) => (o.entry?.n ?? 0) > nN)) continue;
     if (rivals.some((o) => (o.entry?.n ?? 0) >= 5 * nN)) continue;
+    // an ordinary adnominal (-(으)ㄴ, -는, -(으)ㄹ) of a predicate the counts know better than the noun stays first (빚은: 빚다 26 over 빚; 참을)
+    if (rivals.some((o) => isPlainAdn(o) && (o.entry?.n ?? 0) > nN)) continue;
     if (tail.some((p) => p.particle?.id === 'and-hago')) continue; // noun + 하고 against the 하다 verb is decided above
     if (!rivals.length) continue;
     // a whole listed word of the token itself (파도, 하나, 차도 "roadway") is not split into a noun + particle: it is the one raised over the
     // predicate instead, so that a noun reading still leads (차도: not 차다 + -아도)
-    const wholeWord = readings.find((o) => o !== r && !o.unconfirmed && o.parts.length === 1 && o.entry && !KO_PREDICATE_TAGS.has(o.stemTag));
+    // ... when the whole word has a count of its own (round eleven: at token level a whole listed word of two syllables or more with a count
+    // leads; the split stays second and creditable, and only the sentence layer gives the particle a job)
+    const wholeWord = readings.find((o) => o !== r && !o.unconfirmed && o.parts.length === 1 && o.entry && !KO_PREDICATE_TAGS.has(o.stemTag) && wholeLeads(o, r));
     if (wholeWord) {
       if (!wholeWord.notes.nounOverPredicate) { wholeWord.score += 5; wholeWord.notes.nounOverPredicate = 'yes'; }
       continue;
     }
+    if (r.notes.nounOverPredicate) continue;
     r.score += 5;
+    r.notes.nounOverPredicate = 'yes';
     r.notes.context = 'a listed noun and its particle, over a predicate form spelled the same (an adnominal needs the noun after it)';
-    for (const o of rivals) if ((o.entry?.n ?? 0) < nN) { o.cap = Math.min(o.cap, CAP.floor); o.notes.credit = 'not a live rival'; }
+    // the predicate stays second and a live rival the sentence layer may promote (물이 새는 지붕, 공을 차도) whenever it has a count: a bare
+    // surface of two sides is no confident single guess; a predicate with no count follows below the credit floor
+    for (const o of rivals) if ((o.entry?.n ?? 0) === 0) { o.cap = Math.min(o.cap, CAP.floor); o.notes.credit = 'not a live rival'; }
   }
   const nounPlusParticles = (r: Reading) => !r.unconfirmed && ['NNG', 'NNB', 'NP', 'NR'].includes(r.stemTag) && !r.notes.derived && r.parts.slice(1).every((p) => !!p.particle);
   const longestNoun = Math.max(0, ...readings.filter((r) => nounPlusParticles(r) && r.parts.length >= 2 && (r.entry?.n ?? 0) > 0).map((r) => [...r.stemKey].length));
-  for (const r of readings) if (nounPlusParticles(r) && r.parts.length >= 2 && [...r.stemKey].length < longestNoun) r.score -= 3;
+  for (const r of readings) if (nounPlusParticles(r) && r.parts.length >= 2 && [...r.stemKey].length < longestNoun && !splitHolds(r)) r.score -= 3;
   // a whole listed noun (any length), or a longer listed noun + its particles, is never outranked by a shorter noun + copula + ending (생일: not
   // 생 + 이다 + -ㄹ; 신임을: not 신 + 이 + -ㅁ + 을)
   if (readings.some((r) => nounPlusParticles(r) && (r.parts.length === 1 || (r.entry?.n ?? 0) > 0))) {
@@ -844,8 +858,173 @@ function rankAdjust(readings: Reading[]): void {
     const rivals = readings.filter((o) => o !== r && !o.unconfirmed && !fusedOrClosed(o) && (['NNG', 'NNB', 'MM', 'NNP', 'NP', 'NR', 'MAG', 'IC'].includes(o.stemTag) || (r.notes.fused !== undefined && KO_PREDICATE_TAGS.has(o.stemTag))));
     if (!rivals.length) continue;
     if (rivals.some((o) => (o.entry?.n ?? 0) >= 10 * baseN)) { r.notes.context = 'a same-spelled word the counts know ten times as well comes first'; continue; }
+    // round twelve: a determiner row that is itself a contracted determiner (뭔 "= 무슨") reads first, the fused pronoun second and live
+    const detVariant = r.notes.fused !== undefined ? rivals.find((o) => o.stemTag === 'MM' && o.parts.length === 1 && /^= /u.test(o.gloss ?? '')) : undefined;
+    if (detVariant) {
+      detVariant.score = Math.max(detVariant.score, r.score + 0.1); detVariant.cap = Math.max(detVariant.cap, r.cap); detVariant.notes.liveWhole = 'yes';
+      detVariant.notes.context = 'the contracted determiner, before the fused pronoun of the same letters';
+      continue;
+    }
+    // the same-spelled ordinary word stays second and CREDITABLE whatever its count (네 "yes", 네 "four", 전 "before", 날 "day"): the sentence
+    // layer may raise it
+    if (r.notes.fused !== undefined) for (const o of rivals) if (o.parts.length === 1 && ['IC', 'MM', 'NNG', 'NNB', 'NR', 'NP'].includes(o.stemTag) && o.notes.credit === undefined) o.notes.liveWhole = 'yes';
     r.score += 6;
     r.notes.context = r.notes.fused !== undefined ? 'the fused form of a pronoun and its particle, over a same-spelled word' : 'a closed-class word, over a same-spelled word';
+  }
+  // A WHOLE (or longer) LISTED NOUN against a shorter listed noun + CORE particles that covers the same letters (길이 "length" / 길 + 이;
+  // 불도 "Buddhism" / 불 + 도; 길이요 / 길 + 이 + 요): round eleven, the whole word leads when it has a count of its own (wholeLeads); the
+  // other stays second and live. A split noun with no count decides nothing.
+  for (const s of readings) {
+    if (!splitCandidate(s)) continue;
+    for (const l of longerOver(s)) {
+      const [win, lose] = wholeLeads(l, s) ? [l, s] : [s, l];
+      if (win.score <= lose.score) win.score = lose.score + 0.05;
+      win.notes.splitOrWhole = win === s ? 'the shorter noun and its particle (the whole word has no count, or is the same pronoun with its particle)' : 'the whole listed word, with a count of its own';
+      // the whole word with no count stays a creditable second side (불도 "Buddhism" beside 불 + 도): a bare two-sided surface is no single guess
+      if (win === s && l.parts.length === 1 && [...l.stemKey].length >= 2) l.notes.liveWhole = 'yes';
+    }
+  }
+  /** A shorter free noun (not a bound noun, counter or numeral, which wait for what stands before them) + a core particle over a longer
+   *  noun's last letters (길 + 이 against 길이). */
+  function splitCandidate(s: Reading): boolean {
+    return nounPlusParticles(s) && s.parts.length >= 2 && s.notes.fused === undefined && (s.entry?.n ?? 0) > 0 && (s.stemTag === 'NNG' || s.stemTag === 'NP');
+  }
+  function longerOver(s: Reading): Reading[] {
+    const sLen = s.parts[0].je;
+    return readings.filter((l) => {
+      if (l === s || l.notes.fused !== undefined || l.unconfirmed || l.notes.derived || !['NNG', 'NNB', 'NP', 'NR', 'NNP'].includes(l.stemTag)) return false;
+      if (!l.parts.slice(1).every((p) => !!p.particle)) return false;
+      const lEnd = l.parts[0].je;
+      if (lEnd <= sLen || !l.parts[0].text.startsWith(s.parts[0].text)) return false;
+      // ONE core particle over the longer word's last letters (길 + 이 / 길이; not 불 + 만 + 은 / 불만 + 은), and at most the polite 요 after
+      // the longer word, the same in both (길이요)
+      const p1 = s.parts[1];
+      if (!p1.particle || !KO_CORE_PARTICLE_IDS.has(p1.particle.id) || p1.je !== lEnd) return false;
+      const sRest = s.parts.slice(2).map((p) => p.particle?.id).join('+');
+      const lRest = l.parts.slice(1).map((p) => p.particle?.id).join('+');
+      return sRest === lRest && (lRest === '' || lRest === 'polite');
+    });
+  }
+  // THE ORDINARY ADNOMINAL of a listed predicate (-(으)ㄴ, -는, -(으)ㄹ) against a split of the same letters into a listed word + particles or
+  // copula (높이 + 는, 끝내 + 는, 속 + 이 + -ㄴ) whose word the counts know LESS well than the predicate, or into another predicate's
+  // connective or nominal form + a particle (나서는: not 나다 + -아서 + 는; 닮은: not 달다 + -ㅁ + 은): the adnominal comes first. A whole
+  // listed word (길, 돈, 이런) and a fused form are not touched; the other reading stays second and live.
+  for (const o of readings) {
+    if (!isPlainAdn(o)) continue;
+    const pN = o.entry?.n ?? 0;
+    if (pN <= 0) continue;
+    const over = readings.filter((r) => {
+      if (r === o || r.unconfirmed || r.score < o.score - 0.05 || r.notes.fused !== undefined) return false;
+      // round twelve: a WHOLE listed word against the plain adnominal (no pre-final ending: not 멀 + -시- + -ㄴ for 머신) follows the counts
+      // like any other pair (달 "moon" 39 / 달다 46; 권한, 울, 단 CONJ), except a determiner, a numeral and an adverb (이런, 한, 안, 늘, and
+      // 실은 "actually", which the counts alone would give to 싣다 at a cost to the whole side of block T): the learner's words, kept whole first
+      // round thirteen: by the round-nine test for a bare noun against a verb's bare -아/어 form, since a predicate's count covers all its
+      // forms: the adnominal leads only when the predicate's count is at least FOUR times the word's AND the word's is under 30 (달 39 / 달다
+      // 46: the noun; 단 3 / 달다 46: the adnominal); otherwise the word leads and the adnominal stays second and creditable
+      if (r.parts.length === 1) { const wN = lexCount(r); return o.parts.length === 2 && wholeFollowsCounts(r) && pN >= 4 * wN && wN < 30; }
+      if (fusedOrClosed(r)) return false;
+      if (KO_PREDICATE_TAGS.has(r.stemTag)) return !!r.parts[r.parts.length - 1].particle && r.parts.some((p) => p.ending && (p.ending.tag === 'EC' || p.ending.tag === 'ETN'));
+      const wN = Math.max(r.entry?.n ?? 0, 0);
+      return wN < pN;
+    });
+    if (!over.length) continue;
+    o.score = Math.max(...over.map((r) => r.score)) + 0.1; // above the undecided reading a set of homonyms builds later (+0.01)
+    o.notes.context = 'the adnominal of a predicate the counts know better than the word of the same letters';
+  }
+  // ROUND TWELVE (all token level):
+  // (1) a COMPOSED NUMERAL (구 + 조, 이 + 만, 이십 + 만) never outranks a reading of the token by a listed word with a count (구조 "structure",
+  //     이 + 만, 이십 + 만 "only twenty"): it stays second and creditable; the sentence layer raises it before a counter or unit
+  const numeralRule = (r: Reading) => r.sourceId === KO_SOURCE_IDS.rules && r.notes.numeral !== undefined;
+  const countedWord = readings.filter((r) => !numeralRule(r) && !r.unconfirmed && (r.entry?.n ?? 0) > 0 && r.cap >= CAP.assumed && r.notes.credit === undefined && r.stemTag !== 'VX');
+  if (countedWord.length) {
+    const top = countedWord.reduce((a, b) => (b.cap > a.cap || (b.cap === a.cap && b.score > a.score) ? b : a));
+    for (const r of readings) if (numeralRule(r)) { r.cap = Math.min(r.cap, top.cap); r.score = Math.min(r.score, top.score - 0.05); r.notes.context = 'a composed numeral, below a listed word of the same letters (the sentence raises it before a counter)'; }
+  }
+  // (2) an UNCONTRACTED -아/어 form of a stem ending in a vowel (지 + -어요: written so, it is rare; 지다 gives 져요) is ranked below a predicate
+  //     for which the same letters are the ordinary form (짓다 + -어요, ㅅ-irregular): 지어요, 지었어요 → 짓다
+  const firstSyl = (t: string) => koSyls(t.replace(/^-/u, '').slice(0, 1))?.[0];
+  const uncontracted = (r: Reading) => isPred(r) && !r.contracted && r.parts.length >= 2 && !!r.parts[1].ending && firstSyl(r.parts[1].text)?.l === 'ㅇ' && ['ㅏ', 'ㅓ'].includes(firstSyl(r.parts[1].text)?.v ?? '') && koSyls(r.stemKey)?.slice(-1)[0]?.t === '';
+  for (const r of readings) {
+    if (!uncontracted(r)) continue;
+    const normal = readings.filter((o) => o !== r && isPred(o) && !uncontracted(o) && (o.entry?.n ?? 0) > 0 && o.stemTag !== 'VX' && o.parts.length === r.parts.length && o.notes.credit === undefined);
+    if (!normal.length) continue;
+    const best = Math.max(...normal.map((o) => o.score));
+    if (r.score >= best) { r.score = best - 0.05; r.notes.context = 'the uncontracted spelling of a vowel stem, below a verb for which it is the ordinary form'; }
+  }
+  // (3) a LONGER listed predicate stem the counts know at least a tenth as well reads the token before a shorter stem + a longer ending
+  //     (지나요: 지나다 + -아요, not 지다 + -나 + 요)
+  for (const l of readings) {
+    if (!isPred(l) || l.notes.derived || l.stemTag === 'VX' || l.notes.credit !== undefined || !((l.entry?.n ?? 0) > 0)) continue;
+    const lLen = [...l.stemKey].length;
+    const shorter = readings.filter((s) => s !== l && isPred(s) && !s.notes.derived && s.stemTag !== 'VX' && [...s.stemKey].length < lLen && l.stemKey.startsWith(s.stemKey) && (l.entry!.n! * 10 >= (s.entry?.n ?? 0)) && s.score >= l.score);
+    if (!shorter.length) continue;
+    l.score = Math.max(...shorter.map((s) => s.score)) + 0.1;
+    l.notes.context = 'a longer listed verb stem reads the token, before a shorter stem with a longer ending';
+  }
+  // (4) a NOUN, PRONOUN OR NUMERAL + the polite 요 alone (나 + 요, 세 + 요: a fragment) is ranked below a counted predicate's ordinary
+  //     -아/어요 form (나다 → 나요, 세다 → 세요)
+  const politeFinal = readings.filter((o) => isPred(o) && o.stemTag !== 'VX' && (o.entry?.n ?? 0) > 0 && o.notes.credit === undefined && o.parts[o.parts.length - 1].ending?.tag === 'EF' && /요$/u.test(o.parts[o.parts.length - 1].text));
+  if (politeFinal.length) {
+    const best = Math.max(...politeFinal.map((o) => o.score));
+    const bestCap = Math.max(...politeFinal.map((o) => o.cap));
+    for (const r of readings) if (['NNG', 'NNB', 'NP', 'NR', 'NNP'].includes(r.stemTag) && r.parts.length === 2 && r.parts[1].particle?.id === 'polite' && r.cap <= bestCap && r.score >= best) {
+      r.score = best - 0.05; r.notes.context = 'a word + the polite 요 alone, below a predicate\'s ordinary polite form';
+    }
+  }
+  // (5) SAME-SPELLED WHOLE ROWS OF DIFFERENT CLASSES: the closed-class rows the build favours (interjection, adverb, numeral) give way to a
+  //     whole noun, pronoun or determiner row, or to the dictionary form of a verb, by the counts: an interjection whenever the other row's
+  //     count is at least its own; an adverb when it has no count and the other has one, or the other has five times its count; a numeral
+  //     only to a noun of count 5 or more and ten times its own (빵 bread 5 / 0, 공 ball 29 / 1; not 칠 8 / 1, 육 2 / 0); (약 drug, 정, 어디, 얘 PRON, 저런 DET; 보다 the verb 1644 / 121). Near counts keep the adverb first (안 "not"
+  //     124 / 135, 계속, 제일, 진짜): the sentence decides. The row that gives way stays a live, creditable rival (육 개월: the numeral)
+  const RANKED = ['IC', 'MAG', 'NR'];
+  for (const r of readings) {
+    if (r.parts.length !== 1 || !RANKED.includes(r.stemTag) || r.sourceId === KO_SOURCE_IDS.closed || r.unconfirmed) continue;
+    const rN = r.entry?.n ?? 0;
+    // a numeral row (whose counts the treebank keeps low: it writes digits) gives way only to a noun of count 5 or more, ten times its own
+    const beats = (oN: number) => (r.stemTag === 'IC' ? oN >= rN : r.stemTag === 'NR' ? oN >= 5 && oN >= 10 * rN : rN === 0 ? oN > 0 : oN >= 5 * rN);
+    const rivals = readings.filter((o) => o !== r && !o.unconfirmed && o.notes.credit === undefined && (
+      (o.parts.length === 1 && ['NNG', 'NP', 'MM'].includes(o.stemTag) && o.stemTag !== r.stemTag && beats(o.entry?.n ?? 0)) ||
+      (isPred(o) && o.stemTag !== 'VX' && koBareLemma(o.lemma) === r.lemma && beats(o.entry?.n ?? 0))));
+    if (!rivals.length) continue;
+    const best = rivals.reduce((a, b) => (b.score > a.score ? b : a));
+    if (r.score >= best.score || r.cap > best.cap) {
+      // the commoner whole row takes the rarer row's place (안 NOUN, then 안 ADV, still before 알다 + -ㄴ)
+      // ... but not past another closed-class row of the same letters that keeps its place (오: the numeral, then the noun, then 오 INTJ)
+      if (best.parts.length === 1 && !isPred(best)) {
+        const kept = readings.filter((o) => o !== r && o !== best && o.parts.length === 1 && RANKED.includes(o.stemTag) && !o.notes.liveWhole && o.score > best.score && o.score <= r.score);
+        const ceiling = kept.length ? Math.min(...kept.map((o) => o.score)) - 0.01 : r.score;
+        best.score = Math.max(best.score, Math.min(r.score, ceiling)); if (!kept.length) best.cap = Math.max(best.cap, r.cap);
+      }
+      r.score = Math.min(r.score, best.score - 0.05); r.cap = Math.min(r.cap, best.cap); r.notes.liveWhole = 'yes';
+      r.notes.context = 'a rarer row of another class of the same word, after the commoner one';
+    }
+  }
+  /** A whole word that the adnominal rule may outrank by counts: a noun, name, pronoun or conjunction; not a determiner, a numeral or an
+   *  adverb, nor any whole word beside a determiner, numeral or adverb row of the same letters. */
+  function wholeFollowsCounts(r: Reading): boolean {
+    // a determiner, numeral or adverb row of the same letters keeps the whole side first (안 NOUN beside 안 ADV "not")
+    const keptRow = (o: Reading) => o.parts.length === 1 && !o.unconfirmed && ['MM', 'NR', 'MAG'].includes(o.stemTag);
+    if (readings.some((o) => o !== r && keptRow(o) && (o.entry?.n ?? 0) > 0)) return false;
+    return ['NNG', 'NNB', 'NNP', 'NP', 'MAJ'].includes(r.stemTag);
+  }
+  /** The lexicon's own count of a whole word's spelling (a closed-table row carries a nominal count of its own). */
+  function lexCount(r: Reading): number {
+    return Math.max(0, ...lookupKoreanStem(r.stemKey).filter((h) => h.entry.lemma === r.stemKey && h.entry.tag === r.stemTag).map((h) => h.entry.n ?? 0), r.sourceId === KO_SOURCE_IDS.closed ? 0 : r.entry?.n ?? 0);
+  }
+  function isPlainAdn(o: Reading): boolean {
+    if (!isPred(o) || o.notes.derived) return false;
+    const last = o.parts[o.parts.length - 1];
+    return !!last.ending && ['adn-n', 'adn-neun', 'adn-l'].includes(last.ending.id);
+  }
+  /** Round eleven: a whole (or longer) listed word of two syllables or more with a count leads its split into a shorter noun + particle at
+   *  token level; a whole word with no count does not, nor a whole word against a pronoun + particle (아무도, 저의, 이의). */
+  function wholeLeads(l: Reading, s: Reading): boolean {
+    if ((l.entry?.n ?? 0) <= 0 || [...l.stemKey].length < 2) return false;
+    if (s.stemTag === 'NP') return false; // a pronoun with its particle is the pronoun's own form (아무 + 도, 저 + 의, 이 + 의)
+    return true;
+  }
+  function splitHolds(s: Reading): boolean {
+    return splitCandidate(s) && longerOver(s).some((l) => !wholeLeads(l, s));
   }
   function fusedOrClosed(r: Reading): boolean { return r.notes.fused !== undefined || (r.sourceId === KO_SOURCE_IDS.closed && ['MAJ', 'VCP', 'VCN', 'VA'].includes(r.stemTag) && r.cap >= CAP.full); }
   function c1(r: Reading): boolean { return [...r.stemKey].length === 1; }
@@ -1026,7 +1205,7 @@ function finish(c: Ctx, readings: Reading[]): AnalysisCandidate[] {
     // also a row the counts saw almost never beside a first reading they saw fifty times as often (와 "the jamo name", n 1, beside 오다)
     const topN = list[0].r.entry?.n ?? 0;
     const faint = (r: Reading) => !!r.entry && r.sourceId !== KO_SOURCE_IDS.closed && !r.unconfirmed && (r.entry.n ?? 0) > 0 && (r.entry.n ?? 0) <= 2 && (r.entry.n ?? 0) * 50 < topN;
-    for (const x of list.slice(1)) if (rareRow(x.r) || faint(x.r)) { x.r.cap = Math.min(x.r.cap, CAP.floor); x.r.notes.rare = 'not seen in the counts'; }
+    for (const x of list.slice(1)) if ((rareRow(x.r) || faint(x.r)) && !x.r.notes.liveWhole) { x.r.cap = Math.min(x.r.cap, CAP.floor); x.r.notes.rare = 'not seen in the counts'; }
     list = [list[0], ...list.slice(1).sort(order)];
   }
   if (list.length > 1) {
@@ -1148,10 +1327,10 @@ const clone = (xs: AnalysisCandidate[]): AnalysisCandidate[] => xs.map((x) => st
  * `ctx.prevIsLatinOrDigit`: the token before touches this one and is Latin letters or digits (KBS가, 2024년), so a particle-only or
  * copula-only token belongs to it. `ctx.prevKey`: the key of the token before, to check a particle written apart against it.
  */
-export function koAnalyzeToken(key: string, ctx: { prevKey?: string; prevIsLatinOrDigit?: boolean } = {}): AnalysisCandidate[] {
+export function koAnalyzeToken(key: string, ctx: { prevKey?: string; prevIsLatinOrDigit?: boolean; exclaim?: boolean } = {}): AnalysisCandidate[] {
   const gen = koLexiconGeneration(); // changes on every install, replacement and removal, so a reinstalled id never serves stale readings
   if (gen !== cacheGen) { cache.clear(); cacheGen = gen; }
-  const ck = `${key}\u0000${ctx.prevIsLatinOrDigit ? 1 : 0}\u0000${ctx.prevKey ?? ''}`;
+  const ck = `${key}\u0000${ctx.prevIsLatinOrDigit ? 1 : 0}\u0000${ctx.prevKey ?? ''}\u0000${ctx.exclaim ? 1 : 0}`;
   const hit = cache.get(ck);
   if (hit) { cache.delete(ck); cache.set(ck, hit); return clone(hit); }
   const out = analyzeUncached(key, ctx);
@@ -1160,7 +1339,7 @@ export function koAnalyzeToken(key: string, ctx: { prevKey?: string; prevIsLatin
   return clone(out);
 }
 
-function analyzeUncached(surface: string, ctx: { prevKey?: string; prevIsLatinOrDigit?: boolean }): AnalysisCandidate[] {
+function analyzeUncached(surface: string, ctx: { prevKey?: string; prevIsLatinOrDigit?: boolean; exclaim?: boolean }): AnalysisCandidate[] {
   const c = makeCtx(surface);
   if (!c.units.length) return [];
   if (!c.units.some((u) => isHangulSyllable(u.ch) || scriptOf(u.ch) === 'hanja')) return [];
@@ -1192,6 +1371,8 @@ function analyzeUncached(surface: string, ctx: { prevKey?: string; prevIsLatinOr
   if (!lexical && !readings.length) readings.push(...spacingOrName(c));
   if (!readings.length) readings.push(...unknownReadings(c));
   rankAdjust(readings);
+  // a word that opens the utterance and stands before a comma or an exclamation mark is the interjection when the lexicon has one (와, 정말)
+  if (ctx.exclaim) for (const r of readings) if (r.stemTag === 'IC' && r.parts.length === 1 && !r.unconfirmed) { r.score += 10; r.cap = Math.max(r.cap, CAP.full); r.notes.liveWhole = 'yes'; r.notes.context = 'an interjection opening the utterance, before a comma or an exclamation mark'; }
   // a noun + derivational suffix split is offered only when nothing reads the token whole
   const hasXsn = (r: Reading) => r.parts.some((x) => x.tag === 'XSN' && !x.particle);
   if (readings.some((r) => !hasXsn(r) && !r.unconfirmed && r.cap >= CAP.assumed)) for (let i = readings.length - 1; i >= 0; i--) if (hasXsn(readings[i])) readings.splice(i, 1);
@@ -1214,7 +1395,12 @@ export function koAnalyzeTokens(tokens: RawToken[]): AnalyzedToken[] {
     const touching = !!prev && prev.end === token.start;
     const prevCh = prev ? [...prev.surface].pop() ?? '' : '';
     const prevIsLatinOrDigit = touching && (scriptOf(prevCh) === 'latin' || scriptOf(prevCh) === 'digit');
-    const candidates = koAnalyzeToken(token.surface, { prevKey: prev?.isWord ? prev.normalized : undefined, prevIsLatinOrDigit });
+    // the first word of an utterance before a comma or an exclamation mark (와, 정말 …)
+    const next = tokens[i + 1];
+    let opens = true;
+    for (let k = i - 1; k >= 0; k--) { if (tokens[k].isWord) { opens = false; break; } if (/[.?!…]/u.test(tokens[k].surface)) break; }
+    const exclaim = opens && !!next && !next.isWord && /^[,!，！]/u.test(next.surface);
+    const candidates = koAnalyzeToken(token.surface, { prevKey: prev?.isWord ? prev.normalized : undefined, prevIsLatinOrDigit, exclaim });
     const syllables = syllablesOf(token.surface);
     if (syllables.length) for (const c of candidates) c.syllables = syllables;
     return { token, candidates, analyzer: KO_ANALYZER };

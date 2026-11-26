@@ -778,7 +778,10 @@ underBothStates('fix batch 10: every row of the fused table reads first, its pro
   // (the import is at the top of the file; FUSED and koResolveFused come from particles.ts)
   for (const [form, f] of Object.entries(KO_FUSED_PRONOUNS_T)) {
     const cs = koAnalyzeToken(form);
-    const c = cs[0];
+    // round twelve: a determiner row that is itself a contracted determiner (뭔 "= 무슨") reads first; the fused reading is then second and live
+    const det = cs[0]?.pos === 'DET' && /^= /u.test(cs[0].gloss ?? '');
+    if (det) expect(cs[1]?.confidence ?? 0, form).toBeGreaterThanOrEqual(0.5);
+    const c = det ? cs[1] : cs[0];
     expect(c.notes?.fused, form).toBeDefined();
     expect(koBareLemmaT(c.lemma ?? ''), form).toBe(f.pron);
     const pt = PARTICLES_T[f.particle];
@@ -798,15 +801,44 @@ underBothStates('fix batch 10 (YY): a listed noun + particle over a predicate fo
   expect(koAnalyzeToken('도와')[0].lemma).toBe('돕다'); // 도 "province" + 와 is no rival: the ending -아 is neither an adnominal nor -아/어도 nor written like 와
 });
 
-/** The commonest 400 nouns of the compiled core in six particle frames: the noun first, except the justified exceptions below (with why). */
-const FRAME_EXCEPTIONS: Record<string, string> = {
-  내는: 'bound 내 (I / my) is no free noun; 내다 + -는 (count 438 vs 326)', 내도: 'bound 내; 내다 + -아도 (438 vs 326)', 내가: 'the fused 나 + 가',
-  시도: 'the listed word 시도 itself', 거의: 'the listed adverb 거의 itself', 별도: 'the listed word 별도 itself', 인도: 'the listed word 인도 itself', 대가: 'the listed word 대가 itself',
-  해도: 'the listed word 해도 (chart); with the core alone 하다 + -여도 (4576 vs 75)', 채도: 'the listed word 채도 itself',
-  모두는: 'the same headword read as the adverb 모두', 모두도: 'the same headword read as the adverb 모두',
-  도는: 'one-syllable Sino-Korean 도 (道) against 돌다 + -는, which the counts know better (80 vs 71)',
-};
-underBothStates('fix batch 10 (YY): the commonest 400 nouns in six particle frames read as the noun (core; core + shards)', () => {
+/** The commonest 400 nouns of the compiled core in six particle frames: the noun first, except where the COUNTS say otherwise. The
+ *  exceptions are derived from the counts, not listed by hand (round eleven):
+ *    fused      the form is a fused pronoun form (내가 = 나 + 가);
+ *    whole      the form is itself a listed word (not a predicate) with a count of its own (시도 71 over 시 + 도; the split stays second
+ *               and creditable for the sentence layer), unless it is the split's own pronoun with its particle (아무도); when the noun is a
+ *               bound noun, counter or numeral the whole-word rule leaves it to the general order (either reading passes);
+ *    predicate  a predicate form of the same spelling comes first by the noun + particle rule's own count guards: the predicate's count
+ *               at least five times the noun's, or at least the noun's when the noun is bound or a one-syllable Sino-Korean form;
+ *    other class  the same headword in another class (모두 ADV) whose count is at least the noun's. */
+function frameVerdict(w: string, form: string): { expect: 'noun' | 'fused' | 'whole' | 'noun or whole' | 'predicate' | 'other class'; why: string } {
+  const NOUN_TAGS = ['NNG', 'NNB', 'NP', 'NR'];
+  const nounRows = lookupT(w).filter((h) => h.entry.lemma === w && NOUN_TAGS.includes(h.entry.tag));
+  const nN = Math.max(0, ...nounRows.map((h) => h.entry.n ?? 0));
+  const free = nounRows.some((h) => (h.entry.tag === 'NNG' || h.entry.tag === 'NP') && (h.entry.n ?? 0) === nN);
+  if (KO_FUSED_PRONOUNS_T[form]) return { expect: 'fused', why: `the fused form ${form}` };
+  const c = koAnalyzeToken(form)[0];
+  if (c && ['VERB', 'ADJ', 'AUX'].includes(c.pos ?? '')) {
+    const lemma = koBareLemmaT(c.lemma ?? '');
+    const pN = Math.max(0, ...lookupT(lemma.replace(/다$/u, '')).filter((h) => koBareLemmaT(h.entry.lemma) === lemma && /^V/u.test(h.entry.tag)).map((h) => h.entry.n ?? 0));
+    const sinoOne = [...w].length === 1 && nounRows.some((h) => !!h.entry.hanja);
+    if (pN >= 5 * nN || ((!free || sinoOne) && pN > nN)) return { expect: 'predicate', why: `${lemma} ${pN} against ${w} ${nN}${!free ? ' (bound)' : sinoOne ? ' (one-syllable Sino-Korean)' : ''}` };
+  }
+  const wholeRows = lookupT(form).filter((h) => h.entry.lemma === form && !/^V/u.test(h.entry.tag) && !/^X/u.test(h.entry.tag));
+  const wN = Math.max(-1, ...wholeRows.map((h) => h.entry.n ?? 0));
+  // round eleven: at token level a whole listed word with a count leads its split (the sentence layer alone gives the particle a job),
+  // except a pronoun that is the split's own pronoun with its particle (아무도); a whole word with no count does not
+  const samePron = nounRows.some((h) => h.entry.tag === 'NP' && (h.entry.n ?? 0) === nN); // a pronoun + particle (아무도, 저의) is not shadowed
+  const nounWhole = wholeRows.some((h) => ['NNG', 'NNB', 'NP', 'NR', 'NNP'].includes(h.entry.tag) && (h.entry.n ?? 0) > 0);
+  if (wholeRows.length && free && nounWhole && !samePron) return { expect: 'whole', why: `whole ${form} ${wN} (split noun ${w} ${nN})` };
+  if (wholeRows.length && free && wN > 0 && !nounWhole) return { expect: 'noun or whole', why: `a whole ${form} of another class (${wN}): the general order` };
+  if (wholeRows.length && !free) return { expect: 'noun or whole', why: `whole ${form} ${wN} against the bound noun, counter or numeral ${w} ${nN}: the general order` };
+  if (c && koBareLemmaT(c.lemma ?? '') === w && !['NOUN', 'PRON', 'NUM', 'CLF', 'PROPN'].includes(c.pos ?? '')) {
+    const oN = Math.max(0, ...lookupT(w).filter((h) => h.entry.lemma === w && !NOUN_TAGS.includes(h.entry.tag)).map((h) => h.entry.n ?? 0));
+    if (oN >= nN) return { expect: 'other class', why: `${w} ${c.pos} ${oN} against the noun ${nN}` };
+  }
+  return { expect: 'noun', why: `${w} ${nN}` };
+}
+underBothStates('fix batch 10 / 11: the commonest 400 nouns in six particle frames read as the counts say (core; core + shards)', () => {
   const nouns = new Map<string, number>();
   for (const rows of Object.values(KO_CORE_T.entries)) for (const e of rows) if (['NNG', 'NNB', 'NP', 'NR'].includes(e.tag) && (e.n ?? 0) >= 4 && /^[가-힣]+$/u.test(e.lemma)) nouns.set(e.lemma, Math.max(nouns.get(e.lemma) ?? 0, e.n ?? 0));
   const top = [...nouns].sort((a, b) => b[1] - a[1]).slice(0, 400).map(([w]) => w);
@@ -814,9 +846,64 @@ underBothStates('fix batch 10 (YY): the commonest 400 nouns in six particle fram
   const bad: string[] = [];
   for (const w of top) for (const form of [w + (fin(w) ? '을' : '를'), w + (fin(w) ? '은' : '는'), w + (fin(w) ? '이' : '가'), w + '도', w + '에', w + '의']) {
     const c = koAnalyzeToken(form)[0];
-    const ok = !!c && koBareLemmaT(c.lemma ?? '') === w && ['NOUN', 'PRON', 'NUM', 'CLF', 'PROPN'].includes(c.pos ?? '');
-    const homograph = !!c && koBareLemmaT(c.lemma ?? '') === form && ['NOUN', 'PRON', 'NUM', 'CLF', 'PROPN', 'ADV'].includes(c.pos ?? ''); // the frame form is itself a listed word (시도, 길이, 전도)
-    if (!ok && !homograph && !FRAME_EXCEPTIONS[form]) bad.push(`${form} → ${c?.lemma}/${c?.pos}`);
+    const v = frameVerdict(w, form);
+    const lemma = koBareLemmaT(c?.lemma ?? '');
+    const asNoun = !!c && lemma === w && ['NOUN', 'PRON', 'NUM', 'CLF', 'PROPN'].includes(c.pos ?? '');
+    const ok = v.expect === 'noun' ? asNoun
+      : v.expect === 'whole' ? lemma === form
+        : v.expect === 'noun or whole' ? asNoun || lemma === form
+          : v.expect === 'fused' ? lemma === KO_FUSED_PRONOUNS_T[form].pron
+          : v.expect === 'predicate' ? !!c && ['VERB', 'ADJ', 'AUX'].includes(c.pos ?? '')
+            : !!c && lemma === w;
+    if (!ok) bad.push(`${form} → ${c?.lemma}/${c?.pos} (counts: ${v.expect}, ${v.why})`);
   }
   expect(bad).toEqual([]);
+});
+
+/** Round eleven: every lexicon descriptive verb and verb with a count of 10 or more, in its -(으)ㄴ, -는 and -(으)ㄹ adnominal forms bare.
+ *  The first reading is that predicate, unless the counts say otherwise:
+ *    word + particle  a listed word + particle(s) or copula of the same letters whose word the counts know at least as well (물 + 은 / 묻다;
+ *                     끝내 ADV 17 + 는 / 끝내다 12; 속 500 + 이 + -ㄴ / 속이다 10);
+ *    other predicate  another predicate of the same form the counts know at least as well (산: 살다 over 사다);
+ *    whole word       a whole listed word of the same letters (길, 이런 DET, 한 NUM): ordered by the general rules, not by this one. Those the
+ *                     counts know LESS well than the predicate are capped by number (WHOLE_RARER_CAP) so that the list can only shrink.
+ *                     Justified (round thirteen): the determiners, numerals and adverbs (이런, 한, 안, 늘, 실은 …), and the common nouns
+ *                     the round-nine 4× rule keeps first, since a predicate's count covers all its forms (달 39 / 달다 46, 돌, 풀, 벌, 판, 민). */
+const WHOLE_RARER_CAP = 26;
+underBothStates('fix batch 11: the adnominal forms of every counted predicate read as that predicate unless the counts say otherwise (core; core + shards)', () => {
+  const NOM = ['NOUN', 'PRON', 'NUM', 'CLF', 'PROPN', 'ADV', 'DET', 'CONJ'];
+  const PRED = ['VERB', 'ADJ', 'AUX'];
+  const best = (stemOrForm: string, keep: (tag: string, lemma: string) => boolean) => Math.max(-1, ...lookupT(stemOrForm).filter((h) => keep(h.entry.tag, h.entry.lemma)).map((h) => h.entry.n ?? 0));
+  const preds = new Map<string, { lemma: string; tag: string; irr?: string; n: number }>();
+  for (const rows of Object.values(KO_CORE_T.entries)) for (const e of rows) if ((e.tag === 'VV' || e.tag === 'VA') && (e.n ?? 0) >= 10) {
+    const k = `${koBareLemmaT(e.lemma)}/${e.tag}`;
+    if (!preds.has(k) || preds.get(k)!.n < (e.n ?? 0)) preds.set(k, { lemma: koBareLemmaT(e.lemma), tag: e.tag, irr: (e as { irr?: string }).irr, n: e.n ?? 0 });
+  }
+  const bad: string[] = [];
+  const wholeRarer: string[] = [];
+  let checks = 0;
+  for (const p of preds.values()) {
+    const stem = koStemKey(p.lemma, p.tag);
+    const cls = p.irr ?? (stem.endsWith('하') ? 'Ha' : 'R');
+    for (const id of p.tag === 'VA' ? ['adn-n', 'adn-l'] : ['adn-n', 'adn-neun', 'adn-l']) for (const form of new Set(koGenerate(stem, cls as never, [koEnding(id)]))) {
+      checks++;
+      const c = koAnalyzeToken(form)[0];
+      const lemma = koBareLemmaT(c?.lemma ?? '');
+      if (c && lemma === p.lemma && PRED.includes(c.pos ?? '')) continue;
+      const line = `${form} (${p.lemma} ${p.n}) → ${c?.lemma}/${c?.pos}`;
+      if (!c) { bad.push(line); continue; }
+      if (PRED.includes(c.pos ?? '')) {
+        const oN = best(lemma.replace(/다$/u, ''), (_t, l) => koBareLemmaT(l) === lemma);
+        if (oN < p.n) bad.push(`${line} (other predicate ${oN})`);
+        continue;
+      }
+      if (!NOM.includes(c.pos ?? '')) { bad.push(line); continue; }
+      const wN = best(lemma, (t, l) => l === (c.lemma ?? '') || koBareLemmaT(l) === lemma ? !/^V/u.test(t) : false);
+      if (lemma === form && (c.parts?.length ?? 1) <= 1) { if (wN < p.n) wholeRarer.push(`${line} (whole ${wN})`); continue; }
+      if (wN < p.n) bad.push(`${line} (word ${wN})`);
+    }
+  }
+  expect(checks).toBeGreaterThan(1000);
+  expect(bad).toEqual([]);
+  expect(wholeRarer.length, wholeRarer.join('; ')).toBeLessThanOrEqual(WHOLE_RARER_CAP);
 });

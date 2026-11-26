@@ -353,7 +353,7 @@ describe('an account is optional and only keeps progress across devices', () => 
     // nothing on this page is the language list
     expect(rig.root.querySelector('#language-cards')).toBeNull();
     await rig.go('languages');
-    expect(rig.q('#account-line').textContent).toContain('On this device only');
+    expect(rig.q('#account-link').getAttribute('aria-label')).toContain('on this device only');
     expect(rig.createApiCalls).toHaveLength(0); // nothing was sent anywhere
   });
 
@@ -365,7 +365,7 @@ describe('an account is optional and only keeps progress across devices', () => 
     await rig.app.ready();
     expect(window.location.hash).toBe('#/languages');
     expect(rig.q('#language-cards')).toBeTruthy();
-    expect(rig.q('#account-line').getAttribute('data-state')).toBe('device');
+    expect(rig.q('#account-link').getAttribute('data-state')).toBe('device');
     expect(rig.root.querySelector('#flash')).toBeNull();
     expect(await sessionOf(rig.area)).toBeUndefined();
     expect(rig.createApiCalls).toHaveLength(0);
@@ -378,7 +378,7 @@ describe('an account is optional and only keeps progress across devices', () => 
     expect(rig.app.current()).toBe('languages');
     expect(window.location.hash).toBe('#/languages');
     expect(rig.q('#flash').textContent).toContain('Account created and signed in as new@example.org');
-    expect(rig.q('#account-line').getAttribute('data-state')).toBe('synced');
+    expect(rig.q('#account-link').getAttribute('data-state')).toBe('synced');
     // the note is shown once
     await rig.go('settings');
     await rig.go('languages');
@@ -421,7 +421,7 @@ describe('an account is optional and only keeps progress across devices', () => 
     expect(rig.local.uploads).toHaveLength(1);
     expect(rig.q('#flash').textContent).toContain('Uploaded 3 events from this device to your account');
     expect(rig.q('#flash').textContent).toContain('Progress is now synced to your account');
-    expect(rig.q('#account-line').textContent).toContain('Synced to your account as ana@example.org');
+    expect(rig.q('#account-link').getAttribute('aria-label')).toBe('Account: synced as ana@example.org');
     await rig.go('settings');
     expect(rig.q('#account-state').textContent).toBe('Synced to your account as ana@example.org');
     // the language chosen before the account is now also an enrolment on the account, and the session’s active one
@@ -467,7 +467,7 @@ describe('an account is optional and only keeps progress across devices', () => 
     expect(await rig.app.ctx.activeLanguage()).toMatchObject({ languageId: 'sq' });
     expect(rig.local.enrolments).toHaveLength(1);
     await rig.go('languages');
-    expect(rig.q('#account-line').textContent).toContain('On this device only');
+    expect(rig.q('#account-link').getAttribute('aria-label')).toContain('on this device only');
   });
 
   it('“Clear local data” is explicit: the first click only arms it, leaving it disarms it, the second clears the on-device Repository', async () => {
@@ -512,7 +512,7 @@ describe('after sign-in everything that needs doing happens by itself', () => {
     await until(() => /Albanian is ready/.test(cardStatus(rig, 'sq')));
     expect(cardStatus(rig, 'sq')).toContain('Taken from your account');
     await until(() => rig.root.querySelector('#next-note'));
-    expect(rig.q('#next-note').textContent).toContain('GoLearn Active');
+    expect(rig.q('#next-note').textContent).toBe('Albanian is ready.');
     // the account’s enrolment was used; no second one was made
     expect(rig.service.enrolments).toHaveLength(1);
   });
@@ -539,7 +539,7 @@ describe('after sign-in everything that needs doing happens by itself', () => {
     expect(rig.q('#settings-signin').getAttribute('href')).toBe('#/signin');
     await rig.go('languages');
     expect(rig.q('#language-cards [data-language="sq"] .mine').textContent).toContain('Downloaded · ready');
-    expect(rig.q('#next-note').textContent).toContain('GoLearn Active');
+    expect(rig.q('#next-note').textContent).toBe('Albanian is ready.');
   });
 
   it('nothing on the sign-in page names or changes the service address (2026-10-28)', async () => {

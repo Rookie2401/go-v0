@@ -384,14 +384,18 @@ export const cardOf = (rig: Rig, languageId: string): HTMLElement => rig.q(`#lan
 export const cardStatus = (rig: Rig, languageId: string): string => cardOf(rig, languageId).querySelector('.status')?.textContent ?? '';
 
 /**
- * Download a language the way a learner does: on its row on the languages page (a written standard or regional preference first,
- * when given). Waits until the download and the pack install have finished (the row says it is ready, or why it is not).
+ * Download a language the way a learner does: on its row on the languages page. With `variety`, the track's own row (“Honduras … Download”)
+ * or, for a written standard, its word in the question and then the pill under it; without, the row's first Download (a language with one
+ * track has one). Waits until the download and the pack install have finished (the row says it is ready, or why it is not).
  */
 export async function downloadLanguage(rig: Rig, languageId: string, variety?: string, timeout = 8000): Promise<string> {
   if (rig.app.current() !== 'languages') await rig.go('languages');
   const card = cardOf(rig, languageId);
-  if (variety !== undefined) choose(card.querySelector<HTMLSelectElement>('select.variety')!, variety);
-  card.querySelector<HTMLButtonElement>('[data-action="choose"]')!.click();
+  const standard = variety === undefined ? null : card.querySelector<HTMLInputElement>(`.standard-choice input[value="${variety}"]`);
+  if (standard) { standard.checked = true; standard.dispatchEvent(new Event('change', { bubbles: true })); }
+  const control = card.querySelector<HTMLButtonElement>(variety === undefined || standard ? '[data-action="choose"]' : `[data-action="choose"][data-option="${variety}"]`);
+  if (!control) throw new Error(`the ${languageId} row offers no Download${variety ? ` for ${variety}` : ''}`);
+  control.click();
   await until(() => /is ready|did not|is downloaded, but|cannot be downloaded|Choose the|two written|could not|no pack/i.test(cardStatus(rig, languageId)), timeout);
   await flush(5);
   return cardStatus(rig, languageId);

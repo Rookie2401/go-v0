@@ -243,3 +243,36 @@ describe('one Arabic word clicked inside an English sentence', () => {
     expect(plan.byLanguage.size).toBe(0);
   });
 });
+
+describe('a click on one word: the sentence and the declaration decide first (fix batch 2)', () => {
+  const resolve = createLanguageResolver({ adapters: { ar: arAdapter, sq: sqAdapter } });
+  const persianBlock = 'این کتاب خوب است و من آن را برای دوستم خواندم.';
+  const urduBlock = 'یہ کتاب اچھی ہے اور میں نے اسے اپنے دوست کے لیے پڑھا۔';
+  const arabicBlock = 'ذهب الولد إلى المدرسة مع أخيه ثم عاد إلى البيت في المساء.';
+  const click = (surface: string, sample: string, lang?: string) => resolve({ installed: ['ar'], teamDefault: 'ar', surface, sample, ...(lang ? { documentLanguage: { languageId: lang, source: 'element-lang' as const, confidence: 0.9 } } : {}) });
+
+  it('a declared language no pack reads wins: خوب, است and کتاب with lang="fa" (or ur) are refused', () => {
+    for (const w of ['خوب', 'است', 'کتاب']) {
+      expect(click(w, persianBlock, 'fa').languageId, w).toBeUndefined();
+      expect(click(w, arabicBlock, 'fa').languageId, `${w} on a fa page whose text looks Arabic`).toBeUndefined();
+    }
+    expect(click('خوب', urduBlock, 'ur').languageId).toBeUndefined();
+  });
+
+  it('the same words in a Persian or an Urdu paragraph with no lang are refused', () => {
+    for (const w of ['خوب', 'است', 'کتاب']) expect(click(w, persianBlock).languageId, w).toBeUndefined();
+    expect(click('اچھی', urduBlock).languageId).toBeUndefined();
+    expect(click('کتاب', urduBlock).languageId).toBeUndefined();
+  });
+
+  it('a lone Arabic word inside an English sentence is read, and so is a word of an Arabic paragraph with no lang', () => {
+    expect(click('كتاب', 'She said the word كتاب means book in the lesson we had on Monday afternoon.', 'en').languageId).toBe('ar');
+    expect(click('المدرسة', arabicBlock).languageId).toBe('ar');
+  });
+
+  it('a block declared as an Arabic dialect gets the dialect’s message, not an Arabic reading', () => {
+    const r = click('المدرسة', arabicBlock, 'arz');
+    expect(r.languageId).toBeUndefined();
+    expect(r.reasons.join(' ')).toMatch(/spoken dialect/);
+  });
+});

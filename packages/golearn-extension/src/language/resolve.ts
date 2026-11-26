@@ -250,6 +250,19 @@ function wordListShare(adapter: LanguageAdapter, sample: string): { hits: number
  */
 interface Detection { languageId?: string; confidence: number; reasons: string[]; against?: string }
 
+/** Languages written in the Arabic script that no pack reads: a page that declares one is never read as Arabic by a click. */
+const NON_ARABIC_SCRIPT_LANGS: ReadonlySet<string> = new Set(['fa', 'fas', 'per', 'prs', 'ur', 'urd', 'ps', 'pus', 'ckb', 'ku', 'kur', 'ug', 'uig', 'sd', 'snd', 'pnb', 'ks', 'dv']);
+const PERSIAN_WORDS: ReadonlySet<string> = new Set(['است', 'که', 'را', 'این', 'آن', 'برای', 'های']);
+const URDU_WORDS: ReadonlySet<string> = new Set(['ہے', 'کے', 'کی', 'میں', 'اور', 'کا']);
+/** Two or more of the commonest Persian (or Urdu) function words in a block: it is not Arabic (these words are not shared with Arabic). */
+function persianOrUrduWords(text: string): boolean {
+  const joiner = String.fromCharCode(0x200c);
+  const words = (text.match(/[\p{Script=Arabic}\u200c]+/gu) ?? []).map((w) => w.split(joiner).join(''));
+  const count = (set: ReadonlySet<string>): number => words.filter((w) => set.has(w)).length;
+  const miPrefix = (text.match(/(^|\s)می[\u200c ]?\p{Script=Arabic}/gu) ?? []).length; // the Persian present-tense prefix می, joined or with a gap
+  return count(PERSIAN_WORDS) + (miPrefix ? 1 : 0) >= 2 || count(URDU_WORDS) >= 2;
+}
+
 const r2 = (n: number): number => Math.round(n * 100) / 100;
 
 function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: string) => LanguageAdapter | undefined): Detection {
@@ -473,6 +486,22 @@ export function createLanguageResolver(options: ResolverOptions = {}): ResolveLa
       }
     }
 
+    // 3b. an Arabic learner on a page of another language of the Arabic script. A DECLARED language that no pack reads (fa, ur, ps, ckb, ug, sd ...) wins; a
+    //     declared Arabic dialect is the dialect's (said as such); an UNDECLARED block that is Persian or Urdu by its letters or its function words is refused.
+    //     None of these is read as Arabic by detection, by a click or by the learner's default.
+    if (installed.has('ar') && evidence.teamDefault && (() => { const m = mapLanguageTag(evidence.teamDefault!); return m.kind === 'pack' && m.languageId === 'ar'; })()) {
+      const tags = [evidence.documentLanguage?.tag ?? evidence.documentLanguage?.languageId, evidence.bookLanguage?.tag ?? evidence.bookLanguage?.languageId].filter((t): t is string => !!t);
+      const primary = (t: string): string => t.toLowerCase().split(/[-_]/u)[0] ?? '';
+      const other = tags.find((t) => NON_ARABIC_SCRIPT_LANGS.has(primary(t)));
+      if (other) return undetermined([...reasons, `the page declares "${other}", a language of the Arabic script that no pack reads: it is not read as Arabic — choose a language if the page is mislabelled`]);
+      const dialectTag = tags.find((t) => /^a(rz|pc|jp|fb|cm|ry|eb|pd)$/u.test(primary(t)));
+      if (dialectTag) { const m = mapLanguageTag(dialectTag); return undetermined([...reasons, m.kind === 'ambiguous' ? m.reason : `"${dialectTag}" is a spoken Arabic dialect, not analysed as Standard Arabic`]); }
+      const block = evidence.sample ?? evidence.surface ?? '';
+      if (arabicShare(block) >= 0.5 && (notArabicScript(block) || persianOrUrduWords(block))) {
+        const why = notArabicScript(block);
+        return undetermined([...reasons, `the text looks like ${why ? why.language : 'Persian or Urdu'} (${why ? why.evidence : 'its commonest function words'}), not Arabic as the pack reads it; the team default is not used against it — choose a language if this is wrong`]);
+      }
+    }
     // 4. detection from the sample
     if (evidence.sample) {
       const d = detect(evidence.sample, installed, adapterOf);
@@ -490,7 +519,17 @@ export function createLanguageResolver(options: ResolverOptions = {}): ResolveLa
     //     Arabic, so GoLearn Active does not underline a lone word (pageLanguages decides that per block).
     if (evidence.surface && evidence.teamDefault && installed.has('ar') && (() => { const m = mapLanguageTag(evidence.teamDefault!); return m.kind === 'pack' && m.languageId === 'ar'; })()) {
       const w = evidence.surface;
-      if (arabicShare(w) >= 0.5 && !notArabicScript(w, 0) && /\p{Script=Arabic}/u.test(w)) {
+      // (a) a DECLARED language that no pack reads, in the Arabic script (fa, ur, ps ...), always wins; (b) a declared Arabic dialect is the dialect's: never read as Arabic here
+      const declaredTags = [evidence.documentLanguage?.tag ?? evidence.documentLanguage?.languageId, evidence.bookLanguage?.tag ?? evidence.bookLanguage?.languageId].filter((t): t is string => !!t);
+      const primaryOf = (t: string): string => t.toLowerCase().split(/[-_]/u)[0] ?? '';
+      const declaredElsewhere = declaredTags.some((t) => NON_ARABIC_SCRIPT_LANGS.has(primaryOf(t)));
+      const dialect = declaredTags.map((t) => mapLanguageTag(t)).find((m) => m.kind === 'ambiguous');
+      if (dialect && dialect.kind === 'ambiguous' && declaredTags.some((t) => /^a(rz|pc|jp|fb|cm|ry|eb|pd)$/u.test(primaryOf(t)))) return undetermined([...reasons, dialect.reason]);
+      // (c) on an undeclared block of Arabic script the SENTENCE around the click decides: no letter Arabic lacks, and not Persian or Urdu by its function words
+      // (d) a lone Arabic word inside a block of another script has no Arabic-script sentence to test: the word itself is tested
+      const block = evidence.sample ?? w;
+      const sentenceOk = arabicShare(block) >= 0.5 ? !notArabicScript(block, 0) && !persianOrUrduWords(block) : true;
+      if (!declaredElsewhere && sentenceOk && arabicShare(w) >= 0.5 && !notArabicScript(w, 0) && /\p{Script=Arabic}/u.test(w)) {
         const m = mapLanguageTag(evidence.teamDefault);
         return { languageId: 'ar', ...(m.kind === 'pack' && m.varietyId ? { varietyId: m.varietyId } : {}), confidence: TEAM_DEFAULT_CONFIDENCE, basis: 'team-default', reasons: [...reasons, 'the learner reads Arabic, and the selected word is in the Arabic script with no letter of another language of it: a click on it is read as Arabic (the page itself is not claimed to be Arabic)'] };
       }

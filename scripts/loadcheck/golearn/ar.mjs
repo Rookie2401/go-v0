@@ -447,7 +447,7 @@ async function main() {
     ['الناس', { id: 's14', word: 'الناس' }, 'noun (people)', /^(ناس|انسان)$/],
   ];
   const results = {};
-  const undecidedOf = (card) => !!card && (/undecided|several readings|not certain|which of these|lemma is inferred|guess/i.test((card.text ?? '').replace(/Other possible readings:.*$/i, '')));
+  const undecidedOf = (card) => !!card && (/undecided|several readings|not certain|which of these|lemma is inferred|guess/i.test((card.text ?? '').replace(/Other possible readings:.*$/i, '').replace(/a guess from a pattern/gi, '').replace(/a spelling with several readings keeps them all/gi, '')));
   const run = async (list, tag, pg, extraOpts = {}) => {
     for (const [label, target, what, expect, extra] of list) {
       const r = await lookup(pg, target, { settleMs: 2500, metrics: true, ...extraOpts });
@@ -650,7 +650,7 @@ async function main() {
       ['persian', 'persian', [['پایتخت', { id: 'f1', word: 'پایتخت' }], ['چای', { id: 'f2', word: 'چای' }]]],
       ['persian-fa', 'persian-fa', [['پایتخت', { id: 'f1', word: 'پایتخت' }], ['کتاب', { id: 'f5', word: 'کتاب' }]]],
       ['urdu', 'urdu', [['کتاب', { id: 'u4', word: 'کتاب' }], ['شہر', { id: 'u2', word: 'شہر' }]]],
-      ['mixed', 'mixed', [['مدينة (m-ar)', { id: 'm-ar', word: 'مدينة' }], ['كتاب (m-word)', { id: 'm-word', word: 'كتاب' }], ['book (m-en)', { id: 'm-en', word: 'report' }], ['مش (m-dial)', { id: 'm-dial', word: 'مش' }], ['عايز (m-dial)', { id: 'm-dial', word: 'عايز' }], ['Brown (m-ar)', { id: 'm-ar', word: 'Brown' }]]],
+      ['mixed', 'mixed', [['مدينة (m-ar)', { id: 'm-ar', word: 'مدينة' }], ['كتاب (m-word)', { id: 'm-word', word: 'كتاب' }], ['book (m-en)', { id: 'm-en', word: 'report' }], ['مش (m-dial)', { id: 'm-dial', word: 'مش' }], ['عايز (m-dial)', { id: 'm-dial', word: 'وعايز' }], ['الشارع (m-dial)', { id: 'm-dial', word: 'الشارع' }], ['Brown (m-ar)', { id: 'm-ar', word: 'Brown' }]]],
     ];
     const gr = {};
     for (const [name, file, lks] of G) {
@@ -685,8 +685,9 @@ async function main() {
     const mlk = gr.mixed?.lookups ?? {};
     const wordClick = mlk['كتاب (m-word)'];
     step('G6', 'mixed.html: a click on كتاب inside the English sentence is read as Arabic', wordClick?.language === 'ar' && !!wordClick?.lemma ? 'PASS' : 'FAIL', { lookup: wordClick });
-    const dialClicks = ['مش (m-dial)', 'عايز (m-dial)'].map((k) => ({ k, text: (mlk[k]?.fullText ?? mlk[k]?.text ?? '').slice(0, 1400), language: mlk[k]?.language }));
-    step('G7', 'mixed.html: a click on a word of the dialect line says it looks like spoken Arabic (Egyptian) and is not analysed', dialClicks.some((d) => /looks like spoken Arabic/i.test(d.text)) ? 'PASS' : 'FAIL', { dialClicks });
+    const dialClicks = ['مش (m-dial)', 'عايز (m-dial)', 'الشارع (m-dial)'].map((k) => ({ k, text: (mlk[k]?.fullText ?? mlk[k]?.text ?? '').slice(0, 1400), language: mlk[k]?.language, err: mlk[k]?.err }));
+    const dialOk = (d) => /looks like spoken Arabic \(Egyptian\)/.test(d.text) && d.text.replace(/\s+/g, ' ').trim().length > 20 && !/MEANING|mashsha|sucked|marrow|\bLEMMA\b/i.test(d.text.replace(/Go deeper[\s\S]*$/, ''));
+    step('G7', 'mixed.html: a click on a word of the dialect line (مش, عايز, الشارع) shows the word and the dialect note, and no transliteration, MEANING section, lemma or gloss; the card is not empty', dialClicks.every(dialOk) ? 'PASS' : 'FAIL', { dialClicks, notOk: dialClicks.filter((d) => !dialOk(d)).map((d) => d.k) });
   }
 
   // ═════════ I. signed in, GoReview, Alphabet Sprint ═════════

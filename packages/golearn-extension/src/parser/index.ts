@@ -265,12 +265,20 @@ export function parseSelection(input: ParseInput): CardModel {
     if (selected.length > MAX_WORD_LINES) notes.push(`Showing the first ${MAX_WORD_LINES} of ${selected.length} words.`);
   }
 
-  const itemIds = itemIdsFor(L, selected, tokens, best, phrases, selected.length === 1);
+  // a flagged sentence (a spoken dialect) is never read as Standard: the word and the statement, no reading of any kind
+  const dialectNote = selected.length === 1 && best[0]?.notes?.variety === 'dialect?' ? notes.find((n) => n.startsWith('This sentence looks like spoken ')) : undefined;
+  if (dialectNote) {
+    lemma = undefined; pos = undefined; gloss = undefined; morphology = undefined; wordAnalysis = undefined; features = []; role = undefined; syntax = undefined;
+    transliteration = undefined; lemmaTransliteration = undefined; pronunciation = []; alternatives.length = 0; syntaxNotes.length = 0; constructions.length = 0; basis.length = 0;
+    variants = undefined; period = undefined; glossSource = undefined; source = undefined; unconfirmed = false; confidence = Math.min(confidence, 0.2); provenance = 'none';
+    notes.length = 0; notes.push(dialectNote);
+  }
+  const itemIds = dialectNote ? [formId(L, tokens[selected[0]].surface)] : itemIdsFor(L, selected, tokens, best, phrases, selected.length === 1);
   const single = selected.length === 1;
   const formUnit = single ? formId(L, tokens[selected[0]].surface) : undefined;
   const unitIdsToAsk = [...new Set([...itemIds, ...(formUnit ? [formUnit] : []), ...constructions.map((x) => x.unitId)])].slice(0, 24);
   const sentenceWords: SentenceWord[] = [];
-  if (kind !== 'none') {
+  if (kind !== 'none' && !dialectNote) {
     tokens.forEach((t, i) => {
       if (!t.isWord || sentenceWords.length >= MAX_SENTENCE_WORDS) return;
       const l = i === selected[0] || selected.includes(i) ? lines[selected.indexOf(i)] : lineOf(t, pick(analyses[i]));
@@ -280,7 +288,7 @@ export function parseSelection(input: ParseInput): CardModel {
   }
 
   return {
-    ...base, lemma, pos, morphology, gloss, confidence, provenance, source, unconfirmed,
+    ...base, ...(dialectNote ? { dialect: dialectNote } : {}), lemma, pos, morphology, gloss, confidence, provenance, source, unconfirmed,
     phrases: phrases.map((p) => ({ display: p.display, kind: p.kind, gloss: p.gloss, confidence: clamp01(p.confidence) })),
     words: selected.length > 1 ? lines.slice(0, MAX_WORD_LINES) : [],
     alternatives: alternatives.slice(0, 3), basis, notes, pronunciation, ...(transliteration ? { transliteration } : {}), ...(lemmaTransliteration ? { lemmaTransliteration } : {}), itemIds,

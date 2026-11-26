@@ -507,6 +507,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   function renderRows(): void {
     if (!parts || !model) return;
     const m = model; const v = view;
+    // a sentence the analyser took for a spoken dialect: the word (above) and the statement, and nothing that reads as a meaning
+    if (m.dialect) { parts.rows.replaceChildren(h('div', { class: 'card__text dialectNote', role: 'note', 'data-row': 'dialect-note' }, m.dialect)); return; }
     const { text, attr, muted, from } = meaningText(m, v);
     const gloss = h('div', { class: muted ? 'meaning card__gloss muted' : 'meaning card__gloss', 'data-row': 'meaning' }, h('span', { class: muted ? '' : 'card__gloss--quote' }, text), attr ? ' ' : null, attr ? h('span', { class: 'kicker attr' }, `(${attr})`) : null);
     const dictRom = v.enrichment.pronunciation?.romanization;

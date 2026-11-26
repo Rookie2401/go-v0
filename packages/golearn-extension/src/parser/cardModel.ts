@@ -94,6 +94,12 @@ export function contextLine(c: ContextReport): string {
 }
 
 export interface CardModel {
+  /**
+   * Set when the analyser recognised the sentence as a spoken dialect it does not analyse (a reading's `notes.variety === 'dialect?'`): the plain-words
+   * statement. The card then carries the word and this statement and NOTHING that reads as a meaning (no lemma, gloss, transliteration, form line or
+   * alternatives), and nothing is recorded for the click.
+   */
+  dialect?: string;
   languageId: string;
   packId: string;
   analyzerId: string;

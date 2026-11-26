@@ -363,7 +363,8 @@ export class LookupController {
       // several words selected (the owner, 2026-11-09): an information display only. The text, the audio and the information are shown; nothing
       // records the selection or anything done on its card, and the learner model is not asked about it, so nothing can tell how well the learner
       // knows a phrase. A single word is unchanged.
-      const infoOnly = card.tokenCount > 1;
+      // a phrase, or a word of a sentence the analyser took for a spoken dialect: shown, but nothing is written (no encounter, no mark, no profile)
+      const infoOnly = card.tokenCount > 1 || !!card.dialect;
       const view: Partial<CardView> = {
         languageName,
         gloss: askGloss ? { state: 'loading', senses: [] } : { state: 'idle', senses: [] },

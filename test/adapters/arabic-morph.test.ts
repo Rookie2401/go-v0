@@ -1009,3 +1009,34 @@ describe('every vocalized starter word of the Alphabet Sprint reads as itself (r
     installArabicIndex(fixture);
   });
 });
+
+describe('batch 8 over the real index (skipped when the shards are absent)', () => {
+  const dir = new URL('../../public/lexicon/ar/standard/', import.meta.url);
+  const have = fs.existsSync(new URL('manifest.json', dir));
+  it.skipIf(!have)('X1: the defective plural أَيْدٍ is not folded into the entry أَيْد; قَاضٍ, مَعَانٍ and the genitive كِتَابٍ are unaffected', async () => {
+    const zlib = await import('node:zlib');
+    const { AR_CORE } = await import('../../src/adapters/arabic/generated/core');
+    resetArabicIndexes();
+    installArabicIndex(AR_CORE);
+    for (const fn of fs.readdirSync(dir)) if (fn.endsWith('.json.gz')) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL(fn, dir))).toString('utf8')));
+    useArIdentities({});
+    useArPreferences({});
+    const a = cands('أَيْدٍ');
+    expect(a.some((c) => c.lemma === 'يَد')).toBe(true);
+    expect(a.some((c) => c.lemma === 'أَيْد' && c.confidence >= 0.5)).toBe(false);
+    expect(top('قَاضٍ')).toMatchObject({ lemma: 'قَاضٍ' });
+    expect(top('مَعَانٍ').lemma).toBe('مَعْنًى');
+    expect(top('كِتَابٍ')).toMatchObject({ lemma: 'كِتَاب' });
+    expect(top('كِتَابٍ').confidence).toBeGreaterThanOrEqual(0.5);
+    // X2: an entry made of a conjunction and a closed-class word is one group with the chain; the chain is credited (list empty)
+    for (const [w, lemma] of [['ولا', 'لَا'], ['ولكن', 'لٰكِنْ'], ['فلا', 'لَا'], ['وإن', 'إِنَّ']] as const) {
+      const c = top(w);
+      expect(c.lemma, w).toBe(lemma);
+      expect(c.parts?.[0]?.kind, w).toBe('prefix');
+      expect(c.confidence, w).toBeGreaterThanOrEqual(0.5);
+    }
+    expect(top('ولا').notes?.variants).toBe('وَلَا');
+    resetArabicIndexes();
+    installArabicIndex(fixture);
+  });
+});

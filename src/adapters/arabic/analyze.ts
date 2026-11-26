@@ -216,6 +216,9 @@ function unifyPluralEntries(readings: Reading[], key: string): void {
     for (const rB of readings) {
       if (rB === rA || rB.segIx !== rA.segIx || rB.derived || rB.hand || rB.viaLoose || arCanon(rB.head) === arCanon(rA.head) || (rB.pos !== 'NOUN' && rB.pos !== 'ADJ')) continue;
       if (!(rB.morph.PluralType ?? '').split(',').includes('Broken') || rB.citation) continue;
+      // (the plural's own row must end bare, like the head: the kasratān of أَيْدٍ, the plural of يَد, is part of that word and does not make it the entry أَيْد "strength")
+      const rBend = unpackVocal(rB.stemKey, rB.stemVocal)[rB.stemKey.length - 1];
+      if (rBend.vowel && rBend.vowel !== '\u0652') continue;
       if (!sameHead(rA.head, bareHead(applyVocal(rB.stemKey, rB.stemVocal)), rA.pos)) continue;
       const names = (r: Reading): boolean => !!listed && arKey(listed.lemmaId.split('|')[0]) === arKey(r.head) && sameHead(r.head, listed.lemmaId.split('|')[0], r.pos);
       // the CREDITED lemma is the own entry A (قِطَار, وَسَائِل), unless the reviewed list names the singular B for the key
@@ -525,6 +528,9 @@ function marginalByCell(m: Merged): boolean {
 }
 
 let PAGE_FULL = false;
+/** The printed word (canonical, as printed) of the reading being decided: set by readSurface. */
+let PRINTED_FORM = '';
+const exactForm = (m: Merged): boolean => m.rows.some((r) => arCanon(applyVocal(r.stemKey, r.stemVocal)) === PRINTED_FORM);
 /** The page is fully vocalized and its LAST letter is printed bare: a citation or pausal form (دَار, قَمَر), never a verb's or a case's ending. */
 let PAGE_BARE_END = false;
 /** Does the stem's last letter carry no vowel in this reading (a citation or pausal form)? */
@@ -545,6 +551,8 @@ function isMarginal(m: Merged, all: Merged[]): boolean {
     else if (passivePerfect3 && countOf(m) > 0 && rivals.length && rivals.every((o) => !noClitics(o) && countOf(o) < countOf(m))) { /* not marginal */ }
     else return true;
   }
+  // a fully vocalized page: a reading whose stored form is the printed word mark for mark outranks one that matches only after the ending is ignored
+  if (PAGE_FULL && noClitics(m) && !exactForm(m) && others.some((o) => noClitics(o) && exactForm(o) && !o.rows.every((r) => r.viaLoose))) return true;
   // a fully vocalized page whose last letter is printed bare is a citation or pausal form: a reading that needs a final vowel is marginal beside one that does not
   if (PAGE_BARE_END && noClitics(m) && !endsBare(m) && others.some((o) => noClitics(o) && endsBare(o) && !o.rows.every((r) => r.viaLoose))) return true;
   // ... and a pronoun ـهُ / ـكَ whose vowel the vocalized page does not print is not there (سَفِيه is the adjective, not سَفِيَ + ـهُ)
@@ -1016,6 +1024,7 @@ function readSurface(token: RawToken, text: string, at: number[] | undefined, qu
   const level = tashkilLevel(text);
   const printed: Printed = { map, surface: text, orig: token.surface, ...(at ? { at } : {}), level, any: level !== 'none', ...(restored ? { restored: true } : {}) };
   PAGE_FULL = level === 'full';
+  PRINTED_FORM = arCanon(text).replace(/ٱ/g, 'ا');
   PAGE_BARE_END = level === 'full' && !/[ً-ِْٰ]/.test(printedSlice(map, text, map.key.length - 1, map.key.length));
   PAGE_ANY = level !== 'none';
   const keys: Array<{ key: string }> = [{ key: surfaceKey }];
@@ -1034,6 +1043,17 @@ function readSurface(token: RawToken, text: string, at: number[] | undefined, qu
   }
   if (!merged.length) return [];
 
+  // وَلَا, وَلٰكِنْ, فَلَا, وَإِنْ: an entry of the source made of a conjunction and a closed-class word is the SAME word as the chain; the chain is credited, the entry named in notes.variants
+  for (let i = merged.length - 1; i >= 0; i--) {
+    const w = merged[i];
+    if (!noClitics(w) || !CLOSED_POS.has(w.pos) || w.rows.some((r) => r.viaLoose || r.derived || r.hand)) continue;
+    const wk = arKey(w.head);
+    const chain = merged.find((c) => c.seg.proclitics.length === 1 && CHAIN_PROCLITICS.has(c.seg.proclitics[0].id) && c.seg.enclitics.length === 0
+      && CLOSED_POS.has(c.pos) && !c.rows.some((r) => r.viaLoose || r.derived) && wk === c.seg.proclitics[0].text + arKey(c.head));
+    if (!chain) continue;
+    for (const r of chain.rows) r.variants = [...(r.variants ?? []), w.head];
+    merged.splice(i, 1);
+  }
   const partialKey = arKeyIsPartial(surfaceKey) || merged.some((m) => m.rows.some((r) => !r.hand && arKeyIsPartial(r.stemKey)));
   const verdict = decide(surfaceKey, merged, printed, partialKey);
   const base = (m: Merged): number => {
@@ -1076,7 +1096,7 @@ function readSurface(token: RawToken, text: string, at: number[] | undefined, qu
   const forms = new Set(scored.map((s) => vocalizedWord(s.m)));
   const count = (s: { m: Merged }): number => Math.max(...s.m.rows.map((r) => r.info.count));
   const derivedCut = (s: { m: Merged }): number => (s.m.rows[0].derived ? (noClitics(s.m) ? 1 : 2) : 0);
-  scored.sort((a, b) => (b.c - a.c) || (Number(b.top) - Number(a.top)) || (PAGE_FULL ? Number(b.m.citation) - Number(a.m.citation) : 0) || (Number(a.marginal) - Number(b.marginal)) || (derivedCut(a) - derivedCut(b)) || (count(b) - count(a))
+  scored.sort((a, b) => (b.c - a.c) || (Number(b.top) - Number(a.top)) || (PAGE_BARE_END ? Number(b.m.citation) - Number(a.m.citation) : 0) || (Number(a.marginal) - Number(b.marginal)) || (derivedCut(a) - derivedCut(b)) || (count(b) - count(a))
     || ((a.m.seg.proclitics.length + a.m.seg.enclitics.length) - (b.m.seg.proclitics.length + b.m.seg.enclitics.length)) || a.m.lexeme.localeCompare(b.m.lexeme));
 
   // cap: the best of each lexeme first, then the rest in order

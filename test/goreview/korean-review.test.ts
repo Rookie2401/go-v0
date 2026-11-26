@@ -30,6 +30,7 @@ import { openLocalRepository } from '../../packages/repository-local/src';
 import { createMemoryArea } from '../../packages/repository-sync/src';
 import { PACKS } from '../../packages/language-packs/src/registry';
 import { koAdapter } from '../../src/adapters/ko';
+import { koEntryOf } from '../../src/adapters/korean/review-gate';
 import { flush, until } from '../golearn-app/helpers';
 import { DICT_PRESENT, SHARDS_PRESENT, SNOW } from '../support/korean/lexicon';
 import { ctxOf, fakeAudio } from './exercises/support';
@@ -105,7 +106,8 @@ describe.skipIf(!DATA)('Korean exercises: the bare headword on the front, the ri
   // ADMITTED showing every meaning. Its facts are now `requires-review` (the spelling stands for several words), so intake and recovery refuse it. The display code
   // is kept (a card made before the gate, or by another path, still shows every meaning), and these tests say so below.
   it('the engine status of the three: the main-set word and the decided homonym are admitted; the undecided bare item requires review', async () => {
-    expect((await unitFacts(TIME)).status).not.toBe('requires-review');
+    // 시간 is held exactly while its lexicon entry carries the multi-sense flag (the meaning hold, the last rule of the gate): no model review has cleared it yet, or it has
+    expect((await unitFacts(TIME)).status === 'requires-review', 'the meaning hold follows the entry multi flag').toBe(koEntryOf('시간', 'NOUN')?.multi === true);
     expect((await unitFacts(decidedSnow())).status).not.toBe('requires-review');
     expect((await unitFacts(UNDECIDED)).status).toBe('requires-review');
   });

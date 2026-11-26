@@ -50,6 +50,18 @@ export interface ReviewGateOptions<C extends GateCandidate> {
    * for a word read in a sentence; a lemma read alone has every look-alike entry of its spelling as a rival, so it is not for that.
    */
   otherListedWord?: boolean;
+  /**
+   * With `otherListedWord`: the pack's count of a headword (0 or absent = unseen). Another listed headword then counts as a rival only if it is NOT rare: its count is at least `rivalCommonAt`
+   * (default 30) or at least a quarter of the chosen headword's count; no count = rare. Without this function every other listed word counts (any confidence). It is applied to this test
+   * ONLY: rule (c), the two-words hold, never reads a count.
+   */
+  rivalCount?: (candidate: C) => number;
+  rivalCommonAt?: number;
+  /**
+   * (e) LAST test, after every other has passed: the reading's own entry has a first meaning nobody has checked (several really different senses and no override, or a doubt the review left). The reading is marked
+   * `requires-review` with kind 'meaning-unreviewed' and NO `reviewGate`: the lemma is still credited, only the card is refused.
+   */
+  meaningUnreviewed?: (candidate: C) => boolean;
   /** The written form of the token the candidates belong to. */
   surface: string;
 }
@@ -77,12 +89,15 @@ export function reviewDecision<C extends GateCandidate>(candidate: C, all: reado
   const known = o.known?.(o.surface, candidate);
   if (known) return { kind: 'known-limit', reason: known };
   if (o.otherListedWord) {
-    const others = all.filter((r) => r !== candidate && !sameWord(r, candidate) && !!r.lemma && !r.unconfirmed && o.listed(r)).sort((x, y) => y.confidence - x.confidence);
+    const nChosen = o.rivalCount?.(candidate) ?? 0;
+    const notRare = (r: C): boolean => { if (!o.rivalCount) return true; const n = o.rivalCount(r); return n > 0 && (n >= (o.rivalCommonAt ?? 30) || n >= nChosen / 4); };
+    const others = all.filter((r) => r !== candidate && !sameWord(r, candidate) && !!r.lemma && !r.unconfirmed && o.listed(r) && notRare(r)).sort((x, y) => y.confidence - x.confidence);
     if (others.length) {
       const names = [...new Set(others.map((r) => r.lemma!))];
       return { kind: 'other-listed-word', rivals: names, reason: `The word list also has another word this form could be (${names.join(', ')}); a review card is only made from a form with one possible word.` };
     }
   }
+  if (o.meaningUnreviewed?.(candidate)) return { kind: 'meaning-unreviewed', reason: 'No one has checked that the first meaning shown for this word is the right one, so it is not added to review yet.' };
   return undefined;
 }
 
@@ -100,7 +115,8 @@ export function applyReviewGate<C extends GateCandidate>(candidates: readonly C[
     if (c.notes?.reviewStatus === 'requires-review') continue; // already questioned by the adapter itself for its own reason: left as it is
     const d = reviewDecision(c, candidates, o);
     if (!d) continue;
-    c.notes = { ...(c.notes ?? {}), reviewStatus: 'requires-review', reviewReason: d.reason, reviewGate: 'yes', reviewKind: d.kind, ...(d.rivals?.length ? { reviewRivals: d.rivals } : {}) };
+    // 'meaning-unreviewed' is a hold on the CARD only: no reviewGate, so the lemma is still credited
+    c.notes = { ...(c.notes ?? {}), reviewStatus: 'requires-review', reviewReason: d.reason, ...(d.kind === 'meaning-unreviewed' ? {} : { reviewGate: 'yes' }), reviewKind: d.kind, ...(d.rivals?.length ? { reviewRivals: d.rivals } : {}) };
     marked.push(c);
   }
   return marked;

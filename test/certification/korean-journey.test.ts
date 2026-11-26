@@ -40,6 +40,7 @@ import { planCurrentDeck } from '../../packages/goreview/app/deckModel';
 import { loadReviewModel, refreshReviewModel } from '../../packages/goreview/app/workspace';
 import { createRepositoryApi } from '../../packages/repository-service/src/api';
 import { koAdapter } from '../../src/adapters/ko';
+import { koEntryOf } from '../../src/adapters/korean/review-gate';
 import { selectText } from '../extension/dom';
 import { choose, flush, submit, type, until } from '../golearn-app/helpers';
 import { DATA_PRESENT, EMAIL, MIN, PASSWORD, createJourneyRig, q } from '../support/korean/journey-rig';
@@ -76,6 +77,9 @@ const MORPH = 'morph:ko:VERB:Mood=Ind|SpeechLevel=Hasipsio|Tense=Past|VerbForm=F
 const SUPERSCRIPT = /[⁰¹²³⁴-⁹]/u;
 const hex = (s: string): string => Buffer.from(s, 'utf8').toString('hex');
 
+// The meaning hold (the gate's last rule): while the lexicon entry of 먹다 carries the `multi` flag (its first meaning unchecked) GoReview refuses its card; the lemma is still credited
+// (steps 5-10, 15-16 and the identity block are unchanged). The review steps 12-14 then assert the HOLD; they run in full once the flag is cleared.
+const MEANING_HELD = koEntryOf('먹다', 'VERB')?.multi === true;
 const rig = DATA_PRESENT ? createJourneyRig() : undefined!;
 let learnerId = '';
 let enrolmentId = '';
@@ -318,6 +322,12 @@ describe.skipIf(!DATA_PRESENT)('Korean journey', () => {
     await until(() => !!rig.practiceRoot.querySelector('#candidates'), 8000);
     const row = rig.practiceRoot.querySelector(`#candidates li[data-unit="${LEMMA}"]`)!;
     expect(row, 'the candidate list holds 먹다').toBeTruthy();
+    if (MEANING_HELD) {
+      expect(row.getAttribute('data-decision'), 'the meaning hold: the candidate is not admitted').not.toBe('test-now');
+      const held = (await planCurrentDeck(reviewApp.ctx, (await loadReviewModel(reviewApp.ctx))!)).plan;
+      expect(held.items.map((x) => x.item.itemId), 'no card is planned for 먹다').toEqual([]);
+      return;
+    }
     expect(row.getAttribute('data-decision')).toBe('test-now');
     const m = (await loadReviewModel(reviewApp.ctx))!;
     expect(m.identity.languageId ?? 'ko').toBe('ko');
@@ -326,6 +336,7 @@ describe.skipIf(!DATA_PRESENT)('Korean journey', () => {
   });
 
   it('13. the item is reviewed: an exercise in Hangul is presented, the headword 먹다 is shown without a homonym number, the answer is revealed on flipping', async () => {
+    if (MEANING_HELD) return; // held for its card by the meaning hold (see MEANING_HELD)
     const out = await reviewOnce('good', 'start-session');
     expect(out.family).toBe('written-recognition');
     expect(out.front).toMatch(/[가-힣]/u);
@@ -338,6 +349,7 @@ describe.skipIf(!DATA_PRESENT)('Korean journey', () => {
   let schedule1: { due: string; phase: string; reps: number; lapses: number; stability: number; scheduledDays: number };
   const deckItem = async () => foldDeckItems(await rig.events(learnerId), rig.scheduler, { languageId: 'ko', now: rig.nowIso() }).find((d) => d.unitId === LEMMA)!;
   it('14. FSRS: a correct answer moved the schedule (due later, learning); a later correct one graduates it; an incorrect one lapses it', async () => {
+    if (MEANING_HELD) return; // no card to schedule while the hold stands
     const first = await deckItem();
     expect(first.schedule).toMatchObject({ reps: 1, lapses: 0, phase: 'learning' });
     expect(new Date(first.schedule.due).getTime()).toBeGreaterThan(rig.clockMs);
@@ -509,7 +521,7 @@ describe.skipIf(!DATA_PRESENT)('Korean journey', () => {
       await rig.signInPractice();
       await app.go('review'); await app.ready(); await flush(10);
       const deck = foldDeckItems(await rig.events(learnerId), rig.scheduler, { languageId: 'ko', now: rig.nowIso() }).filter((d) => d.itemId.includes('먹'));
-      expect(deck.map((d) => d.itemId), 'the deck holds the ONE lexical card').toEqual(['card:written-recognition:' + LEMMA]);
+      expect(deck.map((d) => d.itemId), 'the deck holds the ONE lexical card (none while the meaning hold stands, and never one per form)').toEqual(MEANING_HELD ? [] : ['card:written-recognition:' + LEMMA]);
       // the live load is bounded by the model's refresh deadline (workspace.ts refreshReviewModel / within): on a loaded machine it answers undefined until a model exists, so ask again
       let m: Awaited<ReturnType<typeof loadReviewModel>>;
       for (let i = 0; i < 40 && !m; i++) { m = await loadReviewModel(app.ctx); if (!m) { await flush(250); m = await refreshReviewModel(app.ctx, { force: true }); } }

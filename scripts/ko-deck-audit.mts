@@ -23,8 +23,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { AnalysisCandidate, AnalyzedToken, LanguageAdapter, RawToken } from '../src/core';
 import { koAdapter } from '../src/adapters/ko';
-import { koReviewGate, koHeadwordListed } from '../src/adapters/korean/review-gate';
+import { koReviewGate, koHeadwordListed, koEntryOf, PARTICLE_FORMS, CLOSING } from '../src/adapters/korean/review-gate';
 import readline from 'node:readline';
+import { KO_CORE } from '../src/adapters/korean/generated/core';
 import { koBareLemma, koEntryLemma, koSharedPos, lookupKoreanStem } from '../src/adapters/korean/index-store';
 import { createKoreanShardLoader } from '../src/adapters/korean/shards';
 import { wordsOfText } from '../packages/golearn-extension/src/active/scan';
@@ -40,7 +41,7 @@ export const TABLE_PATH = path.join(ROOT, 'test/adapters/korean/common-words.tab
 
 // ───────────────────────────── the analyser, gated and ungated ─────────────────────────────
 const cleaned = (c: AnalysisCandidate): AnalysisCandidate => {
-  if (c.notes?.reviewGate !== 'yes') return c;
+  if (c.notes?.reviewGate !== 'yes' && c.notes?.reviewKind === undefined) return c;
   const { reviewStatus: _s, reviewReason: _r, reviewGate: _g, reviewKind: _k, reviewRivals: _v, ...notes } = c.notes;
   return { ...c, notes };
 };
@@ -137,6 +138,10 @@ export interface Figures {
   aPrime: { releasedOcc: number; releasedUnits: Set<string>; releasedWords: Map<string, number>; part1Added: FalseCard[]; heldByA: number };
   /** the forms held as 'two-words': surface -> chosen and rival headword with their counts */
   twoWords: Map<string, { n: number; a: string; b: string; na: number; nb: number }>;
+  /** MEASURED ONLY: a particle-spelled token that follows a closing quote / bracket / number / Latin letters after ONE space (the treebank's own spacing): how many admitted occurrences, and how many of them were false */
+  spacedParticle: { n: number; bad: number; badSurfaces: Map<string, number>; okSurfaces: Map<string, number> };
+  /** the meaning hold (kind 'meaning-unreviewed'): occurrences, units, how many of the occurrences are entries of the compiled core, and the commonest words */
+  meaningHold: { occ: number; coreOcc: number; units: Set<string>; coreUnits: Set<string>; words: Map<string, number> };
   /** part 2 by rule (lenient, i..v) */
   byRule: Map<string, FalseCard[]>;
   /** the four test modes over the admitted occurrences: base gate, + T-A, + T-C, + both */
@@ -152,6 +157,7 @@ const REASONS: Array<[RegExp, string]> = [
   [/known to read wrongly/, 'known-limits list'],
 ];
 const KIND_LABEL: Record<string, string> = {
+  'meaning-unreviewed': 'the first meaning is unchecked (multi flag): the meaning hold',
   unlisted: 'not a listed headword (fragment, name, unattested compound)', 'no-meaning': 'no English meaning', 'low-confidence': 'below the card floor (0.8)',
   'undecided-entry': 'undecided homonym', 'two-words': 'two-sided form (a rival within the band)', 'known-limit': 'known-limits list', 'other-listed-word': 'another listed word could be meant (T-A)',
 };
@@ -221,7 +227,7 @@ export async function runAudit(sentences: AuditSentence[], opts: { trainForms?: 
     return why;
   };
   const fig: Figures = { sentences: sentences.length, tokens: 0, judged: 0, credited: 0, unitsWithout: 0, unitsWith: 0, admittedOccurrencesWithout: 0, admittedOccurrencesWith: 0,
-    falseWithout: 0, falseWith: [], byConvention: [], unknown: [], held: new Map(), heldWords: new Map(), byConf: new Map(), byPos: new Map(), meaningChecked: 0, meaningMiss: [], formWithout: 0, formFalseWithout: 0, cards: new Map(), byRule: new Map(), aPrime: { releasedOcc: 0, releasedUnits: new Set<string>(), releasedWords: new Map(), part1Added: [], heldByA: 0 }, twoWords: new Map(), modes: Object.fromEntries(['base', 'A', 'C', 'AC'].map((m) => [m, { occ: 0, units: new Set<string>(), part1: [], heldWords: new Map() }])) };
+    falseWithout: 0, falseWith: [], byConvention: [], unknown: [], held: new Map(), heldWords: new Map(), byConf: new Map(), byPos: new Map(), meaningChecked: 0, meaningMiss: [], formWithout: 0, formFalseWithout: 0, cards: new Map(), byRule: new Map(), meaningHold: { occ: 0, coreOcc: 0, units: new Set<string>(), coreUnits: new Set<string>(), words: new Map() }, spacedParticle: { n: 0, bad: 0, badSurfaces: new Map(), okSurfaces: new Map() }, aPrime: { releasedOcc: 0, releasedUnits: new Set<string>(), releasedWords: new Map(), part1Added: [], heldByA: 0 }, twoWords: new Map(), modes: Object.fromEntries(['base', 'A', 'C', 'AC'].map((m) => [m, { occ: 0, units: new Set<string>(), part1: [], heldWords: new Map() }])) };
   const unitsWithout = new Set<string>(); const unitsWith = new Set<string>();
   const train = opts.trainForms ?? new Set<string>();
   const bump = (m: Map<string, number>, k: string): void => { m.set(k, (m.get(k) ?? 0) + 1); };
@@ -235,7 +241,7 @@ export async function runAudit(sentences: AuditSentence[], opts: { trainForms?: 
     const wGa = wordsOfText(text, GATED, 'ko');
     const gaByStart = new Map(wGa.map((w) => [w.start, w]));
     const analyses = GATED.analyze(toks);
-    const goldAt = new Map<number, { lemma?: string; alts: string[]; excluded?: boolean; pos?: string }>();
+    const goldAt = new Map<number, { lemma?: string; alts: string[]; excluded?: string; pos?: string; tags: string[] }>();
     if (s.gold) {
       let cursor = 0;
       for (const row of s.gold.rows) {
@@ -244,7 +250,7 @@ export async function runAudit(sentences: AuditSentence[], opts: { trainForms?: 
         cursor = at + row.form.length;
         const g = deriveGold(row, text, train);
         const head = words.find((t) => t.start === at);
-        if (head) goldAt.set(head.start, { lemma: g.lemma, alts: g.alts, excluded: !!g.excluded, pos: g.pos });
+        if (head) goldAt.set(head.start, { lemma: g.lemma, alts: g.alts, excluded: g.excluded, pos: g.pos, tags: g.tags });
       }
     }
     const wantAt = new Map<string, { lemmas: string[]; means: string[] }>();
@@ -268,20 +274,37 @@ export async function runAudit(sentences: AuditSentence[], opts: { trainForms?: 
       if (!unitG) heldWhy = KIND_LABEL[String(best.notes?.reviewKind ?? '')] ?? reasonOf(best.notes?.reviewReason as string | undefined);
       else {
         const whyG = await admit('with', unitG);
-        if (whyG) heldWhy = whyG.startsWith('facts requires-review') ? 'facts: the lemma read alone is held by the gate' : `facts: ${whyG}`;
+        if (whyG && best.notes?.reviewKind === 'meaning-unreviewed') heldWhy = KIND_LABEL['meaning-unreviewed'];
+        else if (whyG) heldWhy = whyG.startsWith('facts requires-review') ? 'facts: the lemma read alone is held by the gate' : `facts: ${whyG}`;
         else admittedG = true;
       }
       if (admittedG) { fig.admittedOccurrencesWith++; unitsWith.add(unitG!); const cc = fig.cards.get(unitG!) ?? { n: 0, shown: shownCache.get(unitG!) ?? '' }; cc.n++; fig.cards.set(unitG!, cc); }
-      else if (admittedU) { bump(fig.held, heldWhy || 'other'); bump(fig.heldWords, `${u.surface} → ${lemma}`); }
+      else if (admittedU) {
+        bump(fig.held, heldWhy || 'other'); bump(fig.heldWords, `${u.surface} → ${lemma}`);
+        if (heldWhy === KIND_LABEL['meaning-unreviewed']) {
+          const mh = fig.meaningHold; mh.occ++; mh.units.add(unitU); bump(mh.words, `${u.surface} → ${lemma}`);
+          const e = koEntryOf(best.lemma, best.pos);
+          const inCore = !!e && Object.values(KO_CORE.entries).some((rows) => rows.some((r) => r.lemma === e.lemma && r.tag === e.tag && r.hom === e.hom && !!r.multi));
+          if (inCore) { mh.coreOcc++; mh.coreUnits.add(unitU); }
+        }
+      }
       // judged?
       const gold = goldAt.get(u.start);
       const wantObj = wantAt.get(u.surface);
       const want = wantObj?.lemmas;
       let verdict: { ok: boolean; part?: 1 | 2; gold: string; alts: string[]; why: string; rule?: string; goldListed?: boolean } | undefined;
       const nominal = !!best.parts?.some((p) => /nominali/i.test(p.role ?? ''));
-      if (gold && !gold.excluded && gold.lemma) {
+      // the gold head is a FUNCTION morpheme (a particle j*, an ending e*, a suffix, or the copula alone): a content card for it is false whatever its lemma string says
+      const isFunction = !!gold && ((!!gold.excluded?.startsWith('the 어절 is a bare particle') && gold.tags.every((t) => /^(j|e|xs)/u.test(t))) || (gold.tags[0] === 'jp' && gold.tags.every((t) => t === 'jp' || t.startsWith('e'))));
+      const notAWord = !!gold?.excluded && /^(punctuation|symbol|foreign)/u.test(gold.excluded);
+      if (isFunction) verdict = { ok: false, part: 1, gold: `(function morpheme ${gold!.tags.join('+')})`, alts: [], why: 'the gold head is a function morpheme (a particle, an ending, a suffix or the copula alone), not a word to drill', rule: 'function' };
+      else if (notAWord) verdict = { ok: false, part: 1, gold: `(${gold!.excluded})`, alts: [], why: 'the treebank does not treat this token as a word', rule: 'not-a-word' };
+      else if (gold && !gold.excluded && gold.lemma) {
         const ok = lemma === gold.lemma; const lenient = gold.alts.includes(lemma);
-        verdict = ok ? { ok: true, gold: gold.lemma, alts: gold.alts, why: '' }
+        const group = (p?: string): string => (PRED.has(p ?? '') ? 'pred' : 'other');
+        const clash = ok && !!gold.pos && !!best.pos && group(gold.pos) !== group(best.pos);
+        verdict = clash ? { ok: false, part: 1, gold: `${gold.lemma} (${gold.pos})`, alts: [], why: `the lemma string is the gold one but the class cannot be: gold ${gold.pos}, card ${best.pos}`, rule: 'class', goldListed: true }
+          : ok ? { ok: true, gold: gold.lemma, alts: gold.alts, why: '' }
           : lenient ? { ok: false, part: 2, rule: 'lenient', gold: gold.lemma, alts: gold.alts, why: RULE_TEXT.lenient }
             : (() => {
               const rule = conventionRule({ lemma, pos: best.pos ?? '', surface: u.surface, nominal }, { lemma: gold.lemma!, pos: gold.pos });
@@ -303,7 +326,7 @@ export async function runAudit(sentences: AuditSentence[], opts: { trainForms?: 
         if (kind === 'other-listed-word') {
           fig.aPrime.heldByA++;
           const nChosen = countOf(lemma);
-          if (rivalNames.every((r) => isRare(countOf(r), nChosen))) {
+          if (rivalNames.length > 0 && rivalNames.every((r) => isRare(countOf(r), nChosen))) {
             fig.aPrime.releasedOcc++; fig.aPrime.releasedUnits.add(unitU); bump(fig.aPrime.releasedWords, `${u.surface} → ${lemma}`);
             if (verdict && !verdict.ok && verdict.part === 1) fig.aPrime.part1Added.push({ sentence: text, surface: u.surface, lemma: best.lemma ?? '', pos: best.pos ?? '', unit: unitU, gold: verdict.gold, alts: verdict.alts, part: 1, why: verdict.why });
           }
@@ -327,6 +350,15 @@ export async function runAudit(sentences: AuditSentence[], opts: { trainForms?: 
         fig.meaningChecked++;
         const shown = (shownCache.get(unitG!) ?? '').toLowerCase();
         if (!wantObj.means.some((k) => shown.includes(k.toLowerCase()))) fig.meaningMiss.push({ ...card, shown, wanted: wantObj.means });
+      }
+      if (admittedG && PARTICLE_FORMS.has(u.surface)) {
+        const ix = toks.findIndex((t) => t.start === u.start);
+        const prev = toks[ix - 1];
+        if (prev && prev.end < u.start && text.slice(prev.end, u.start) === ' ' && (!prev.isWord || /^[A-Za-z]+$/u.test(prev.surface)) && CLOSING.test(prev.surface)) {
+          const sp = fig.spacedParticle; sp.n++;
+          const isBad = !!verdict && !verdict.ok && verdict.part === 1;
+          if (isBad) { sp.bad++; bump(sp.badSurfaces, u.surface); } else bump(sp.okSurfaces, u.surface);
+        }
       }
       if (admittedG) {
         const bad = !!(verdict && !verdict.ok && verdict.part === 1);
@@ -441,7 +473,7 @@ export async function meaningAudit(cards: Map<string, { n: number; shown: string
     if (!e0) { rep.unjoined.push(unit); continue; }
     const first = e0.senses[0];
     if (entry && !entry.glossOwn && first.gloss.toLowerCase().slice(0, 20) !== (entry.gloss ?? '').toLowerCase().slice(0, 20) && !(entry.gloss ?? '').toLowerCase().startsWith(first.gloss.toLowerCase().slice(0, 12))) rep.firstSenseDiffers++;
-    if (entry && !entry.glossOwn && first.tags.some((t) => MARGINAL.has(t)) && e0.senses.slice(1).some((x) => !x.tags.some((t) => MARGINAL.has(t)))) {
+    if (entry && !entry.glossOwn && (entry.gloss ?? '').toLowerCase().startsWith(first.gloss.toLowerCase().slice(0, 10)) && first.tags.some((t) => MARGINAL.has(t)) && e0.senses.slice(1).some((x) => !x.tags.some((t) => MARGINAL.has(t)))) {
       rep.marginal.push(`${unit}: first sense "${first.gloss}" is tagged ${first.tags.join('/')}; a later sense "${e0.senses.find((x, i) => i > 0 && !x.tags.some((t) => MARGINAL.has(t)))!.gloss}" is not (${c.n}x)`);
     }
   }
@@ -470,6 +502,10 @@ export function summary(name: string, fig: Figures): string[] {
   L.push('Part 2 by rule (every item is listed below under its rule, for the auditor to challenge):', '', ...bc.map(([r, n]) => `- ${RULE_TEXT[r]}: ${n}`), '');
   for (const [r, l] of [...fig.byRule].sort()) L.push(`Part 2, rule ${r === 'lenient' ? 'lenient' : r}: ${l.length}`, '', ...l.slice(0, 40).map((c) => `- ${c.surface} -> ${c.lemma} (${c.pos}), gold ${c.gold}: ${c.sentence}`), l.length > 40 ? `- ... and ${l.length - 40} more` : '', '');
   const base = fig.modes.base;
+  const sp = fig.spacedParticle;
+  const mh = fig.meaningHold;
+  L.push(`The meaning hold (kind meaning-unreviewed, last rule): ${mh.occ} admitted occurrences held (${(100 * mh.occ / Math.max(1, fig.admittedOccurrencesWithout)).toFixed(1)} % of those admitted without the gate), ${mh.units.size} units; of these ${mh.coreOcc} occurrences and ${mh.coreUnits.size} units are entries of the compiled core (they come back when the model review clears the flag). The twenty commonest words it holds:`, '', ...[...mh.words].sort((a, b) => b[1] - a[1]).slice(0, 20).map(([k, n]) => `- ${k}: ${n}`), '');
+  L.push(`Measured only, NOT in the product: a particle-spelled token after a closing quote, bracket, number or Latin letters with ONE space before it (the treebank's own spacing: '…' 의, 1 % 가). ${sp.n} admitted occurrences; ${sp.bad} of them are part-1 false cards (${[...sp.badSurfaces].map(([k, n]) => k + ' ' + n).join(', ') || 'none'}); the other ${sp.n - sp.bad} are right (${[...sp.okSurfaces].map(([k, n]) => k + ' ' + n).join(', ') || 'none'}).`, '');
   const ap = fig.aPrime;
   const aUnitsAfter = new Set([...base.units, ...ap.releasedUnits]);
   L.push("T-A' (measured only; the rival counts only if its lexicon count is at least 30 or at least a quarter of the chosen headword's; no count = rare):", '',
@@ -488,6 +524,9 @@ export function summary(name: string, fig: Figures): string[] {
   const kinds = { unlisted: ac.filter((c) => c.goldListed === false).length, rival: ac.filter((c) => c.goldListed !== false && c.goldRival).length, never: ac.filter((c) => c.goldListed !== false && !c.goldRival).length };
   L.push(`Residual kinds: ${kinds.unlisted} gold unlisted (no lexicon test can catch these), ${kinds.rival} right word was a rival candidate, ${kinds.never} never produced.`, '');
   if (fig.meaningMiss.length) L.push('Meaning misses (word, meaning shown, meaning wanted), counted as part-1 false cards:', '', ...fig.meaningMiss.map((c) => `- ${c.surface} -> ${c.lemma}: shown "${c.shown}", wanted ${c.wanted.join('/')}`), '');
+  const why = new Map<string, FalseCard[]>();
+  for (const c of fig.falseWith) { const k = c.rule === 'function' ? 'gold head is a function morpheme' : c.rule === 'class' ? 'same lemma string, a class gold cannot share' : c.rule === 'not-a-word' ? 'the treebank does not treat it as a word' : 'the headword is not the word in the sentence'; (why.get(k) ?? why.set(k, []).get(k)!).push(c); }
+  L.push('Part 1 by finding:', '', ...[...why].map(([k, l]) => `- ${k}: ${l.length}${l.length ? ' (commonest: ' + [...l.reduce((m, c) => m.set(c.surface, (m.get(c.surface) ?? 0) + 1), new Map<string, number>())].sort((a, b) => b[1] - a[1]).slice(0, 12).map(([k2, n]) => k2 + ' ' + n).join(', ') + ')' : ''}`), '');
   if (fig.falseWith.length) { L.push('Part 1, real false cards:', '', ...fig.falseWith.map((c) => `- ${c.surface} → ${c.lemma} (${c.pos}), gold ${c.gold}: ${c.sentence}`), ''); }
   if (fig.byConvention.length) { L.push('Part 2, false only by convention (gold, then the lenient alternatives):', '', ...fig.byConvention.slice(0, 60).map((c) => `- ${c.surface} → ${c.lemma} (${c.pos}), gold ${c.gold}, alternatives ${c.alts.join(', ') || '-'}: ${c.sentence}`), fig.byConvention.length > 60 ? `- … and ${fig.byConvention.length - 60} more` : '', ''); }
   if (fig.unknown.length) { L.push('Unknown or fragment cards:', '', ...fig.unknown.slice(0, 40).map((c) => `- ${c.surface} → ${c.lemma} (${c.pos}): ${c.sentence}`), ''); }

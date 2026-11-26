@@ -102,6 +102,8 @@ describe.skipIf(!SHARDS_PRESENT)('Korean: Active and Reading Analysis read the f
         const lemmaIds = w.ids.filter((id) => id.startsWith('lemma:'));
         if (card.unconfirmed || !card.lemma) { expect(lemmaIds, surface).toEqual([]); continue; }
         // a reading the review gate holds back (T-A: another listed word could be meant, or two sides, an undecided entry ...) is credited to its form only, by the scan and by the card alike
+        // the meaning hold refuses the CARD only: the lemma is still credited, by the scan and by the card alike
+        if (card.reviewHold?.kind === 'meaning-unreviewed') { expect(lemmaIds[0], surface).toBe(`lemma:ko:${card.lemma}:${card.pos}`); continue; }
         if (card.reviewHold) { expect(lemmaIds, `${surface} is held: ${card.reviewHold.kind}`).toEqual([]); expect(card.itemIds.filter((id) => id.startsWith('lemma:')), surface).toEqual([]); continue; }
         expect(lemmaIds[0], surface).toBe(`lemma:ko:${card.lemma}:${card.pos}`);
       }

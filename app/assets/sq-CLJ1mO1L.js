@@ -1,0 +1,1 @@
+import{p as e}from"./index-DkbpMVfL.js";export{e as adapter};

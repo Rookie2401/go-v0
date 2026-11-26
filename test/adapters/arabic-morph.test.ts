@@ -1040,3 +1040,47 @@ describe('batch 8 over the real index (skipped when the shards are absent)', () 
     installArabicIndex(fixture);
   });
 });
+
+describe('batch 9: the shards a word needs are the shards arLookupKeys asks for (real shards; skipped when absent)', () => {
+  const dir = new URL('../../public/lexicon/ar/standard/', import.meta.url);
+  const have = fs.existsSync(new URL('manifest.json', dir));
+  const WORDS = ['الْمَدْرَسَةِ', 'الْكُتُبِ', 'الشَّمْسُ', 'الْقَمَرُ', 'وبالكتاب', 'فسيكتبونها', 'للبيت', 'ٱلْعَٰلَمِينَ', 'مدرسته', 'كتابه', 'الى', 'قارىء', 'الْيَوْمَ', 'الْيَوْمُ', 'للكتاب', 'للطالب', 'لله'];
+  it.skipIf(!have)('core + ONLY the shards arLookupKeys names give the same candidates as every shard installed', async () => {
+    const zlib = await import('node:zlib');
+    const { AR_CORE } = await import('../../src/adapters/arabic/generated/core');
+    const { arLookupKeys } = await import('../../src/adapters/arabic/shards');
+    const { arShardLetters } = await import('../../src/adapters/arabic/text');
+    const manifest = JSON.parse(fs.readFileSync(new URL('manifest.json', dir), 'utf8')) as { shards: Record<string, { file: string }> };
+    const prefixes = Object.keys(manifest.shards).sort((a, b) => b.length - a.length);
+    const load = (file: string): ArabicFormIndex => JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL(file, dir))).toString('utf8'));
+    const shardFor = (key: string): string | undefined => { const letters = arShardLetters(key); return prefixes.find((p) => letters.startsWith(p)); };
+    const sig = (w: string): string => JSON.stringify(cands(w).map((c) => [c.lemma, c.pos, c.confidence, c.notes?.identity ?? '', (c.parts ?? []).map((p) => p.text).join('+')]));
+    useArIdentities();
+    useArPreferences();
+    // every shard
+    resetArabicIndexes();
+    installArabicIndex(AR_CORE);
+    for (const p of prefixes) installArabicIndex(load(manifest.shards[p].file));
+    const full = new Map(WORDS.map((w) => [w, sig(w)] as const));
+    const bad: string[] = [];
+    for (const w of WORDS) {
+      resetArabicIndexes();
+      installArabicIndex(AR_CORE);
+      const needed = new Set<string>();
+      for (const k of arLookupKeys(w)) { const p = shardFor(k); if (p) needed.add(p); }
+      for (const p of needed) installArabicIndex(load(manifest.shards[p].file));
+      if (sig(w) !== full.get(w)) bad.push(w);
+    }
+    expect(bad).toEqual([]);
+    useArIdentities({});
+    useArPreferences({});
+    resetArabicIndexes();
+    installArabicIndex(fixture);
+  });
+  it('item 1: للبيت is لِ + ال + بيت (the lām of a verb stem beginning with ل is marginal); ليكتب (one lām) is unaffected', () => {
+    // fixture: بَيْت is a noun; no verb لبيت is needed to state the structure of the rule, so check the cut shape only
+    const c = top('للبيت');
+    expect(c).toMatchObject({ lemma: 'بَيْت' });
+    expect(partTexts(c)).toEqual(['ل', 'ل', 'بيت']);
+  });
+});

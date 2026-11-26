@@ -11,7 +11,7 @@
  */
 import { createShardLoader, type ShardLoader, type ShardManifest, type ShardSource } from '../shared/shards';
 import { installArabicIndex, uninstallArabicIndex, type ArabicFormIndex } from './index-store';
-import { arKey, arLoose, arQuranicSpellings, arShardLetters, endsInFarsiYeh } from './text';
+import { arKey, arLoose, arQuranicSpellings, arShardLetters, arTypingVariants, endsInFarsiYeh } from './text';
 import { arStemKeys } from './clitics';
 
 export interface ArabicShardManifest extends ShardManifest {
@@ -36,6 +36,8 @@ export function arLookupKeys(word: string): string[] {
   };
   add(word);
   for (const v of arQuranicSpellings(word)) add(v.text);
+  // a hamza typed after a dotless yāʾ (قارىء, شىء): the keys the analyser will try instead
+  for (const v of arTypingVariants(arKey(word))) add(v);
   // a borrowed letter (ڤ پ چ گ) is looked up under the Arabic letter the dictionary writes
   for (const k of [...out]) { const folded = arLoose(k); if (folded !== k && /[ڤپچگ]/.test(k)) out.add(folded); }
   return [...out];

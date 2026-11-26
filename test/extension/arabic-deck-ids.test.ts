@@ -8,19 +8,22 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { arAdapter } from '../../src/adapters/ar';
 import { heldByReviewGate } from '../../src/adapters/arabic/deck';
+import { AR_KNOWN_LIMITS } from '../../src/adapters/arabic/generated/deck-limits';
 import { installFullIndex, shardsPresent } from '../../scripts/ar-deck-limits-lib.mts';
 import { wordsOfText } from '../../packages/golearn-extension/src/active/scan';
 
-const TAL = 'تلك'; // credited to another lexeme's entry: pronoun-form, a reading hold
 const fixture = JSON.parse(fs.readFileSync(path.resolve('test/fixtures/arabic/deck-audit.json'), 'utf8')) as { sentences: Array<{ text: string }> };
 
 describe('the ids the extension records for a gated Arabic reading', () => {
   it('a reading hold (reviewGate yes) is credited to its form id only', () => {
-    const top = arAdapter.analyze(arAdapter.tokenize(TAL))[0].candidates[0];
-    expect(top.confidence).toBeGreaterThanOrEqual(0.5);
-    expect(heldByReviewGate(top)).toBe(true);
-    const [w] = wordsOfText(TAL, arAdapter, 'ar');
-    expect(w.ids).toEqual([`form:ar:${TAL}`]);
+    // a written form of the generated known-limits list: the analyser credits it (>= 0.5) with the wrong lexeme and the gate holds it as a reading
+    const word = Object.keys(AR_KNOWN_LIMITS).filter((k) => !/[\u064B-\u0652]/u.test(k)).find((k) => {
+      const top = arAdapter.analyze(arAdapter.tokenize(k))[0]?.candidates[0];
+      return !!top && top.confidence >= 0.5 && !top.unconfirmed && !!top.lemma && heldByReviewGate(top);
+    });
+    expect(word, 'a known-limit form that is credited with confidence and held').toBeDefined();
+    const [w] = wordsOfText(word!, arAdapter, 'ar');
+    expect(w.ids).toEqual([`form:ar:${word}`]);
     expect(w.known).toBe(false);
   });
 

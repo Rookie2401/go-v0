@@ -27,6 +27,7 @@ import { createReviewEngine } from '../../packages/goreview/app/engine';
 import { packFactsFor } from '../../packages/goreview/app/packFacts';
 import { DEFAULT_PREFERENCES } from '../../packages/goreview/app/state';
 import { evidenceFor, ratingFor, registry } from '../../packages/goreview/src';
+import { acceptedMeanings } from '../../packages/goreview/src/exercises/shared';
 import { createPackRuntime } from '../../packages/language-packs/src/runtime';
 import { packFor } from '../../packages/language-packs/src';
 
@@ -219,6 +220,15 @@ export async function runDeckAudit(texts: AuditText[], opts: RunOptions = {}): P
           if (labelled && clean) problems.push(`the leading sense "${glosses[0]}" is labelled ${(shown?.tags ?? []).join('/')} while another sense is not`);
         } catch { /* no dictionary record: nothing to read labels from */ }
       }
+    }
+    if (kind === 'lemma' && facts) {
+      const cand0 = arAdapter.analyze(arAdapter.tokenize(head)).find((a) => a.token.isWord)?.candidates.find((c) => c.lemma === head && c.pos === pos);
+      // the card leads with the reading's own gloss (a hand gloss of the closed table included)
+      if (cand0?.gloss && glosses[0] !== cand0.gloss) problems.push(`the card leads with "${glosses[0]}", not with the reading's gloss "${cand0.gloss}"`);
+      // no answer comes from a sibling entry of the same headword, and none is a truncated alternative
+      const accepted = acceptedMeanings(facts);
+      const sibling = String(cand0?.notes?.homonymMeanings ?? '').replace(/^[^:]*:\s*/u, '').split(/\s*[;|]\s*/u).map((x) => x.trim().toLowerCase()).filter(Boolean);
+      for (const a of accepted) if (sibling.includes(a.toLowerCase())) problems.push(`an accepted answer "${a}" belongs to another entry of the headword`);
     }
     cards.push({ unitId: o.unitId, kind, head, ...(pos ? { pos } : {}), decision: o.decision, glosses, behind: b, problems, checked: b.some((x) => x.gold?.lemma || x.gold?.meaning) });
   }

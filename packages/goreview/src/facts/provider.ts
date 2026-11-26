@@ -469,6 +469,12 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     const { examples, readings } = collect((o) => lemmaMatches(o, lemma, pos));
     const lexGloss = read.cand && !read.cand.unconfirmed && read.cand.gloss ? [read.cand.gloss] : [];
     const g = await glossesOf(lemma, pos, lexGloss);
+    // a language held to the deck rule: the dictionary senses of ANOTHER entry that shares the headword (the analyser names them in notes.homonymMeanings,
+    // "another word spelled the same: To nap") are not answers for this card: the meaning shown and the senses of THIS entry are
+    if (holdsDeck(lang) && read.cand?.notes?.homonymMeanings) {
+      const other = String(read.cand.notes.homonymMeanings).replace(/^[^:]*:\s*/u, '').split(/\s*[;|]\s*/u).map((x) => x.trim().toLowerCase()).filter(Boolean);
+      g.glosses = g.glosses.filter((gl, i) => i < g.lexiconCount || !other.some((o) => gl.trim().toLowerCase().startsWith(o)));
+    }
     const constructionIds = [...new Set(forms.map((f) => f.constructionId).filter((c): c is string => !!c))];
     const group: FormGroup = { lemma, ...(pos ? { pos } : {}), forms };
     const featureDefsUsed: Record<string, FeatureDef> = { ...featureDefs };

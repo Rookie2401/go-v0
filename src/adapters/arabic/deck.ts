@@ -165,6 +165,19 @@ function sameLetters(c: AnalysisCandidate, surface: string): boolean {
 }
 /** The vocalized headwords of some readings, best first, once each, at most 6. */
 const headsOf = (cs: readonly AnalysisCandidate[]): string[] => [...new Set(cs.filter((c) => c.lemma).map((c) => arHeadForm(c.lemma!, c.pos ?? 'NOUN')))].slice(0, 6);
+/**
+ * Closed-class entries whose hand meaning the lead read and does not trust (2026-11-26): held BY LEMMA whatever their gloss source, with the reason of an
+ * unreviewed leading meaning. `pos` omitted = any part of speech. Tested in test/adapters/arabic-deck-gate.test.ts.
+ */
+export const AR_UNREVIEWED_CLOSED: ReadonlyArray<{ head: string; pos?: string; note: string }> = [
+  { head: '\u0628\u0643\u062B\u064A\u0631', note: 'the unvocalized head بكثير' },
+  { head: '\u0645', note: 'the abbreviation م' },
+  { head: '\u0625\u0650\u0644\u064E\u064A\u0652\u0647\u0650\u0645\u0652', note: 'whole-word adverb entry إِلَيْهِمْ' },
+  { head: '\u0625\u0650\u0644\u064E\u064A\u0652\u0643\u064F\u0645\u0652', note: 'whole-word adverb entry إِلَيْكُمْ' },
+  { head: '\u0644\u0650\u0645\u0651\u064E\u0627', note: 'لِمَّا' },
+  { head: '\u0645\u064E\u0627', pos: 'ADV', note: 'مَا as an adverb' },
+];
+const isUnreviewedClosed = (lemma: string, pos: string): boolean => AR_UNREVIEWED_CLOSED.some((e) => arHeadForm(e.head, e.pos ?? pos) === arHeadForm(lemma, pos) && (!e.pos || e.pos === pos));
 const lemmaKey = (c: AnalysisCandidate): string => `${c.lemma ?? ''}|${c.pos ?? ''}`;
 
 /** The known-limits entry of a written token: the printed (vocalized) form first, then its unvocalized key when the page printed no vowels. */
@@ -212,7 +225,9 @@ export function arDeckVerdict(surface: string, cands: readonly AnalysisCandidate
   if (badLemma) return { id: 'known-misread-lemma', reason: `${LIMIT.get('known-misread-lemma')!.reason} (${badLemma})` };
   const shown = top.gloss ?? closed ?? '';
   const merged = /^\s*1\.\s/u.test(shown) || !!text(notes.homonyms);
-  const handOk = closed !== undefined && !merged;
+  // a closed-class lexeme with a single hand-written meaning (the analyser says so: notes.glossSource = 'closed'), or a Rev / One row
+  const handOk = text(notes.glossSource) === 'closed' && !merged;
+  if (isUnreviewedClosed(top.lemma, top.pos)) return verdict('sense-unreviewed');
   const rowOk = !!row && arSenseOk(row) && (!text(notes.homonyms) || arSenseClass(row) === 'Rev');
   if (!handOk && !rowOk) return verdict('sense-unreviewed');
   return undefined;

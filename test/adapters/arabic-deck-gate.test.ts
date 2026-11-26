@@ -5,7 +5,7 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import type { AnalysisCandidate, AnalyzedToken, RawToken } from '../../src/core';
 import { installArabicIndex, uninstallArabicIndex, type ArabicFormIndex } from '../../src/adapters/arabic/index-store';
-import { AR_DECK_LIMITS, arDeckSenseWhenAbsent, arDeckVerdict, arLemmaRow, arMarkForDeck, arSenseClass } from '../../src/adapters/arabic/deck';
+import { AR_DECK_LIMITS, AR_UNREVIEWED_CLOSED, arDeckSenseWhenAbsent, arDeckVerdict, arLemmaRow, arMarkForDeck, arSenseClass } from '../../src/adapters/arabic/deck';
 import { AR_KNOWN_LIMITS, AR_LIMITED_LEMMAS } from '../../src/adapters/arabic/generated/deck-limits';
 import { arAdapter } from '../../src/adapters/ar';
 
@@ -224,5 +224,27 @@ describe('reviewKind and reviewRivals (the names the GoLearn card reads)', () =>
     const held = arMarkForDeck(toks, [{ token: toks[0], candidates: [cand(BAYT)], analyzer: 'ar' } as AnalyzedToken]);
     expect(held[0].candidates[0].notes).toMatchObject({ reviewKind: 'meaning-unreviewed', deckLimit: 'sense-unreviewed' });
     expect(held[0].candidates[0].notes?.reviewGate).toBeUndefined();
+  });
+});
+
+describe('closed-class eligibility with hand glosses, and the six the lead does not trust', () => {
+  const HAND = 'فِي';
+  it('a single hand gloss (glossSource closed) is eligible; the same word with a numbered or homonym-merged gloss is not', () => {
+    expect(id(PLAIN, [cand(HAND, { pos: 'ADP', gloss: 'in', notes: { glossSource: 'closed' } })])).toBeUndefined();
+  });
+  it.each(AR_UNREVIEWED_CLOSED.map((e) => [e.note, e] as const))('holds %s by lemma even when its row is Rev and its gloss a hand gloss', (_n, e) => {
+    const pos = e.pos ?? 'ADV';
+    const idx: ArabicFormIndex = { ...SYNTHETIC, id: 'deck-gate-test-closed', lemmas: { [`${e.head}|${pos}`]: [e.head, 'x', pos, 'Sense=Rev', 5] } };
+    installArabicIndex(idx);
+    try {
+      expect(id(PLAIN, [cand(e.head, { pos: pos as AnalysisCandidate['pos'], gloss: 'x', notes: { glossSource: 'closed' } })])).toBe('sense-unreviewed');
+      // the same shape of entry under another head passes
+      expect(id(PLAIN, [cand(KITAB, { gloss: 'x', notes: { glossSource: 'closed' } })])).toBeUndefined();
+    } finally { uninstallArabicIndex(idx.id); }
+  });
+  it('مَا as a pronoun is not in the list, as an adverb it is', () => {
+    const ma = AR_UNREVIEWED_CLOSED.find((e) => e.pos === 'ADV')!;
+    expect(ma.head).toBe('مَا');
+    expect(AR_UNREVIEWED_CLOSED.filter((e) => e.head === ma.head && !e.pos)).toEqual([]);
   });
 });

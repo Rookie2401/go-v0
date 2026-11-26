@@ -44,7 +44,7 @@ const show = (label: string, r: AuditResult): void => {
  * gloss is reviewed the entry must be deleted (the second assertion fails when a listed card is no longer a finding).
  */
 const OPEN_MEANING_FINDINGS: string[] = [];
-const isMeaning = (p: string): boolean => /leading meaning|does not begin|is labelled|numbered merge/u.test(p);
+const isMeaning = (p: string): boolean => /leading meaning|does not begin|is labelled|numbered merge|leads with|another entry/u.test(p);
 
 describe.skipIf(!shardsPresent())('the Arabic deck audit: real path, today\'s rules', () => {
   let r: AuditResult;

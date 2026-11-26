@@ -513,7 +513,7 @@ async function main() {
     const made = await msg({ type: 'golearn:create-account', baseUrl: SVC_URL, email, password, displayName: 'Rig' });
     await B.evalIn(ctl.s, `(async () => { location.hash = '#/languages'; location.reload(); return 1; })()`);
     await sleep(4000);
-    const page13 = await B.evalIn(ctl.s, `document.getElementById('account-line')?.innerText ?? document.body.innerText.slice(0, 300)`);
+    const page13 = await B.evalIn(ctl.s, `document.getElementById('account-link')?.getAttribute('aria-label') ?? document.getElementById('account-line')?.innerText ?? document.body.innerText.slice(0, 300)`);
     let acct = await readAccount();
     let enrol;
     if (!acct.enrolments?.some((e) => e.languageId === 'ru' && !e.ended)) {

@@ -1,11 +1,15 @@
 /**
  * Languages: the home of the application, where every first run ends up (redesigned 2026-11-11, docs/golearn/DESIGN-SYSTEM.md).
- * The top of the page says where the learner stands, once: the language they read in and what to do with it (or, on a first run, what
- * to do first), whether their progress is on this device only or synced to their account, and the way out to another app, GoReview
- * (“Review your words” and, beside it, the quiet “My words” for its vocabulary list; in the extension). Then the languages themselves: YOUR LANGUAGES and MORE LANGUAGES, each language a tile that lists its tracks, as in GoReview (screens/language.ts).
- * Nothing waits behind a closed section: the page's purpose is on the page. The guide to hearing the words is its own page under
- * Settings (Audio). The foot holds two quiet links: Help, and “How GoLearn reads pages”.
+ * The top of the page is the title and ONE thing under it (the owner, 2026-11-26: "Keep review, the header, and my account. Cut the
+ * rest"): the way to GoReview, a gold pill that says "Go to GoReview" (in the extension, once there is a language to have words in).
+ * The account is not on the page any more: it is the person at the top right of the bar (app.ts), as in GoReview. What was cut: the
+ * small line above the title, "<language> is ready" with how to start reading (the tile of the language being read in says "Reading
+ * now"; the page linked at the foot, "How GoLearn reads pages", says how to start), the sentence about the account, and "My words" (GoReview's own list, reached inside GoReview).
+ * Then the languages themselves: YOUR LANGUAGES and MORE LANGUAGES, each language a tile that lists its tracks, as in GoReview
+ * (screens/language.ts). The guide to hearing the words is its own page under Settings (Audio). The foot holds two quiet links: Help,
+ * and “How GoLearn reads pages”.
  */
+import { barIcon } from '../barIcons';
 import type { AppContext } from '../context';
 import { append, h } from '../dom';
 import { takeCheckEmail, takeFlash } from '../flash';
@@ -19,22 +23,15 @@ export const REVIEW_HREF = '../review/index.html';
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const flash = takeFlash(ctx);
   const checkEmail = takeCheckEmail(ctx);
-  const session = await ctx.state.getSession();
-  if (!view.alive()) return;
+  // one line for a screen reader only: that the language being read in is ready (screens/language.ts fills it)
   const next = h('div', { id: 'next-steps' });
   const list = h('div', { id: 'language-list' });
-  // GoReview is its own app: one plain way to it, once there is a language to have words in (the extension only: the hosted page has no words of its own)
+  // GoReview is its own app: one way to it, once there is a language to have words in (the extension only: the hosted page has no words of its own)
   const review = ctx.inExtension
     ? h('p', { class: 'home-actions', id: 'to-review', hidden: true },
-      h('a', { class: 'btn', id: 'open-review', href: REVIEW_HREF }, 'Review your words'),
-      h('a', { class: 'quiet-link', id: 'my-vocabulary', href: `${REVIEW_HREF}#/vocabulary` }, 'My words'))
+      h('a', { class: 'btn primary to-goreview', id: 'open-review', href: REVIEW_HREF }, h('span', {}, 'Go to GoReview'), barIcon(ctx.deps.doc, 'arrow')))
     : null;
-  const status = h('section', { class: 'home-status', id: 'languages', 'aria-label': 'Where you stand' },
-    next,
-    h('p', { class: 'account-line muted', id: 'account-line', 'data-state': session ? 'synced' : 'device' },
-      session ? `Synced to your account as ${session.email}. ` : 'On this device only. ',
-      h('a', { href: session ? '#/settings' : '#/signin' }, session ? 'Account settings' : 'Sign in to keep your progress across devices (optional)')),
-    review);
+  const status = h('section', { class: 'home-status', id: 'languages', 'aria-label': 'GoReview' }, next, review);
   append(el, [
     flash ? h('p', { class: 'notice', id: 'flash', role: 'status' }, flash) : null,
     checkEmail ? checkEmailNotice(ctx, checkEmail.email, checkEmail.sent) : null,

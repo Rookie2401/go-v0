@@ -22,7 +22,7 @@ and say only what the learner needs where they stand. Three rules decide most qu
 
 | Before (to 2026-11-10) | After |
 | --- | --- |
-| Top bar: brand, page title, **Status**, a cog | Top bar: brand, **Languages**, **Settings** (words, the current one underlined) |
+| Top bar: brand, page title, **Status**, a cog | Top bar: brand, **Languages**, **Settings** (words, the current one underlined). Since 2026-11-26 three symbols at the top right, in GoReview's manner: a globe (Languages), a person (the account), a cog (Settings) |
 | **Status** page: language, pack, Practise, five buttons to other pages | Gone. `#/home` leads to Languages, which says where the learner stands |
 | **Choose your languages**: two closed sections, LANGUAGE and AUDIO | **Languages** (the home): what you read in; *Your languages*; *More languages* ("Add a language" until 2026-11-26). Nothing closed |
 | Audio guide: a closed section under the language list | **Audio**: its own page under Settings, four parts that open, the first open |
@@ -38,7 +38,16 @@ Routes: `signin`, `languages` (home), `settings`, and under Settings `audio`, `p
 
 The popup keeps the owner's cut of 2026-10-28 (greeting, the brand as the one way to setup, the one switch *GoLearn Active*, one line
 about the page, the legend, the language): no link to GoReview, no sync line. The setup app's Languages page carries the one way to
-GoReview ("Review your words"), shown once a language is downloaded.
+GoReview ("Go to GoReview", a gold pill with an arrow; "Review your words" until 2026-11-26), shown once a language is downloaded.
+
+The head of the Languages page (the owner, 2026-11-26: "Keep review, the header, and my account. Cut the rest"; "have it say, go to
+GoReview"; "Move the account settings to the top right in the manner of GoReview"; "Change the language button from text to a
+symbol"): the title and its gold rule, then the pill, then the languages. Cut from the page: the small line above the title, "<language>
+is ready" with how to start reading (the tile of the language being read in says "Reading now"; one line stays for a screen reader),
+the sentence about the account, the first run's two sentences, and "My words". The account is the person in the top bar
+(`#account-link`): signed in it leads to Settings, whose first part is the account, and is named "Account: synced as <email>"; on a
+device of its own it leads to the optional sign-in and is named "Account: on this device only. Sign in to keep your progress across
+devices (optional)". Each symbol of the bar (`.top-icon`) carries its name as `aria-label` and as its tip.
 
 ## Tokens
 

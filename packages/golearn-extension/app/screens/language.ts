@@ -111,7 +111,7 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
       ? { kind: choice?.kind ?? 'variety', required: choice?.required ?? true, label: choice?.label ?? 'Choose a track', options }
       : undefined };
   });
-  // what to do next: at the top of the page when the page gives it a place, else above the rows
+  // the one line for a screen reader (see refresh): at the top of the page when the page gives it a place, else above the rows
   const next = slots.next ?? h('div', { id: 'next-steps' });
   // one list, two groups, each under its label: the rows are moved between them as languages are downloaded and removed
   const mineHead = h('li', { class: 'lang-group', id: 'my-languages', hidden: true }, h('h2', { id: 'my-languages-h' }, 'Your languages'));
@@ -393,19 +393,13 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
 
     arrange(new Set(rowsOf.filter((c) => c.row.classList.contains('chosen')).map((c) => c.row)));
 
-    // the top of the page says where the learner stands: what they read in and what to do with it, or (a first run) what to do first
+    // The top of the page no longer says where the learner stands in words (the owner, 2026-11-26: "Keep review, the header, and my
+    // account. Cut the rest"): the tile of the language being read in says “Reading now”, and its row says what a download did. One line
+    // stays for a screen reader, which cannot see where a tile stands: that the language being read in is ready.
     clear(next);
     const pack = active?.languageId ? ctx.deps.packs.packFor(active.languageId) : undefined;
     if (active && pack && progress.packs[pack.packId]?.ok === true) {
-      next.append(h('div', { class: 'home-ready', id: 'next-note', role: 'status' },
-        h('p', { class: 'lede' }, h('strong', {}, `${languageLabel(ctx, active.languageId, active.varietyId)} is ready. `)),
-        h('p', { class: 'muted' }, ctx.inExtension
-          ? 'To read with it, open a page in the language and switch on GoLearn Active in the extension popup. Then click any word.'
-          : 'To read with it, open a page in the language and switch on GoLearn Active in the extension popup. GoLearn reads pages as a browser extension; the link at the foot of this page says how it is installed.')));
-    } else if (!rows.length) {
-      next.append(h('div', { class: 'home-ready', id: 'first-note' },
-        h('p', { class: 'lede' }, 'Choose the language you want to read.'),
-        h('p', { class: 'muted' }, 'Downloading a language sets it up on this device. You can add others at any time.')));
+      next.append(h('p', { class: 'sr', id: 'next-note', role: 'status' }, `${languageLabel(ctx, active.languageId, active.varietyId)} is ready.`));
     }
   }
 

@@ -69,11 +69,13 @@ code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divide
 .topbar { display: flex; align-items: center; gap: var(--gap-3); background: var(--bg); border-bottom: 1px solid var(--divider); padding: .5rem clamp(1rem, 4vw, 3rem); position: sticky; top: 0; z-index: 5; }
 .brand { font-size: .82rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); }
 .topbar .brand:hover { text-decoration: none; color: var(--ink); }
-.top-actions { display: flex; align-items: center; gap: var(--gap-3); margin-inline-start: auto; }
-/* a place of the top bar: plain words; the one you are in carries a rule under it, not a filled shape */
-.top-link { color: var(--ink-soft); padding: .35rem .1rem; border-bottom: 2px solid transparent; }
-.top-link:hover { color: var(--ink); text-decoration: none; border-bottom-color: var(--rule-strong); }
-.top-link[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+.top-actions { display: flex; align-items: center; gap: .35rem; margin-inline-start: auto; }
+/* a place of the top bar: a symbol in a round target, as in GoReview's bar (its .cog); the one you are in is in the accent colour, and
+   Languages, the home, carries a rule under it as GoReview's Languages tab does */
+.top-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; color: var(--ink-soft); }
+.top-icon:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 5%, transparent); text-decoration: none; }
+.top-icon[aria-current="page"] { color: var(--accent); }
+#languages-link[aria-current="page"] { border-radius: 0; box-shadow: inset 0 -2px var(--accent); }
 .mark { display: inline-block; width: 1.1em; text-align: center; font-weight: 600; }
 .mark.done { color: var(--ok); }
 .mark.todo { color: var(--muted); }
@@ -214,8 +216,6 @@ details.fold > summary > h3 + *, details.fold > section.sub > :first-child { mar
 /* ───────────── the Languages page ─────────────
    what you read in, said once at the top; then your languages; then the ones you can add. A row is a name, one quiet line, and one action. */
 .home-status { margin: 0 0 var(--gap-4); }
-.home-status .lede strong { font-weight: 600; }
-.account-line { margin: .15rem 0 0; font-size: 1rem; }
 .home-actions { margin: var(--gap-3) 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap-2) var(--gap-4); }
 .status-note { font-weight: 600; margin: .4rem 0 1rem; }
 .status-note[data-state="synced"]::before { content: '✓ '; color: var(--ok); }
@@ -315,7 +315,7 @@ details.forgot { margin: 1rem 0; }
 /* motion: restrained and opacity-led, and only when the person has not asked for less */
 @keyframes screen-in { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: no-preference) {
-  button, .btn, .top-link { transition: border-color .15s, background-color .15s, color .15s, opacity .15s; }
+  button, .btn, .top-icon { transition: border-color .15s, background-color .15s, color .15s, opacity .15s; }
   .screen > h1, .screen > .body { animation: screen-in .22s ease-out both; }
 }
 
@@ -323,11 +323,9 @@ details.forgot { margin: 1rem 0; }
 .go-brand { display: inline-flex; align-items: center; gap: .5rem; flex-shrink: 0; color: var(--ink); text-decoration: none; }
 .go-brand-mark { display: block; width: 60px; height: 30px; background: currentColor; -webkit-mask: var(--go-brand-mask) center / contain no-repeat; mask: var(--go-brand-mask) center / contain no-repeat; }
 .go-brand:hover { text-decoration: none; }
-@media (max-width: 380px) { .go-brand-mark { width: 52px; height: 26px; } .top-actions { gap: var(--gap-2); } }
+@media (max-width: 380px) { .go-brand-mark { width: 52px; height: 26px; } .top-actions { gap: .1rem; } }
 
 /* the top of the Languages page: where the learner stands, set as the page's opening lines */
-.home-ready .lede { margin-bottom: .1rem; }
-.home-ready p.muted { margin-top: 0; }
 .lang-level::first-letter { text-transform: uppercase; }
 .download-one { justify-self: end; }
 @media (max-width: 640px) { .download-one { justify-self: start; } }
@@ -356,20 +354,17 @@ body:has(.screen[data-route="languages"]) .topbar { background: #211a15; border-
   line-height: .96;
   letter-spacing: -.042em;
 }
-.screen[data-route="languages"] > h1::before {
-  content: "Choose your language";
-  display: block;
-  margin-bottom: .55rem;
-  color: var(--ink);
-  font: 600 .83rem/1.5 var(--serif);
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
 .screen[data-route="languages"] > h1::after { content: ""; display: block; width: 2.2rem; height: 2px; margin: .75rem auto 0; background: var(--accent-soft); }
 .screen[data-route="languages"] .home-status { text-align: center; }
-.screen[data-route="languages"] .home-status .lede { font-size: 1.15rem; }
-.screen[data-route="languages"] .account-line { color: var(--ink-soft); font-style: italic; }
-.screen[data-route="languages"] .home-actions { justify-content: center; }
+.screen[data-route="languages"] .home-actions { justify-content: center; margin-top: 0; }
+/* the way to GoReview: the page's gold pill, with GoReview's arrow at its end */
+.screen[data-route="languages"] .to-goreview {
+  display: inline-flex; align-items: center; gap: .6rem; min-height: 2.75rem; padding: .5rem 1.7rem;
+  border: 1px solid var(--accent); border-radius: 999px; background: var(--accent); color: var(--accent-ink);
+  font: 600 1.05rem/1.3 var(--serif); letter-spacing: .04em; text-decoration: none;
+}
+.screen[data-route="languages"] .to-goreview:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); opacity: .9; text-decoration: none; }
+.screen[data-route="languages"] .to-goreview:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 /* a group: its name as a kicker between rules */
 .screen[data-route="languages"] .lang-rows { display: grid; gap: .8rem; }
 .screen[data-route="languages"] .lang-group { margin: 1.1rem 0 0; }

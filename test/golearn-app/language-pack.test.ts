@@ -101,7 +101,8 @@ describe('Languages: download your languages', () => {
     expect(rowsOf(rig, 'sq')[0].getAttribute('data-team')).toBeNull();
     expect(cardOf(rig, 'sq').getAttribute('data-state')).toBe('ready');
     expect(cardOf(rig, 'sq').querySelector('.installed')!.textContent).toMatch(/version 9, verified/);
-    expect(rig.q('#next-note').textContent).toMatch(/Albanian is ready.*open a page in the language and switch on GoLearn Active in the extension popup/);
+    expect(rig.q('#next-note').textContent).toBe('Albanian is ready.'); // for a screen reader; how to start reading is on "How GoLearn reads pages", linked at the foot
+    expect(rig.q('[data-language="sq"] .lang-reading').hidden).toBe(false);
     expect(rig.q('#screen').textContent).toContain('Show the checks');
   });
 
@@ -146,7 +147,7 @@ describe('Languages: download your languages', () => {
     expect(rig.packs.installs).toHaveLength(2);
     expect(rig.local.enrolments).toHaveLength(1); // no second enrolment
     await until(() => rig.root.querySelector('#next-note'));
-    expect(rig.q('#next-note').textContent).toContain('GoLearn Active');
+    expect(rig.q('#next-note').textContent).toBe('Albanian is ready.');
   });
 
   it('an installer that throws leaves the choice saved, says why, and offers Retry', async () => {

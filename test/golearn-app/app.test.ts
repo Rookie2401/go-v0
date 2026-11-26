@@ -32,11 +32,21 @@ describe('the router and the shell', () => {
       expect(rig.text(), screen.id).not.toMatch(/could not be shown/);
       expect(rig.q('.topbar .brand').textContent, screen.id).toBe('GoLearn');
       expect(rig.root.querySelector('.topbar #page-title, .topbar .page-title'), screen.id).toBeNull();
-      // the two places, named in words, on every page; the one the page belongs to is marked
+      // the places, at the top right as symbols in GoReview's manner (2026-11-26), on every page: Languages, the account, Settings. A symbol
+      // has no words of its own, so each link carries its name; the one the page belongs to is marked
       const languages = rig.q<HTMLAnchorElement>('#languages-link');
+      const account = rig.q<HTMLAnchorElement>('#account-link');
       const settings = rig.q<HTMLAnchorElement>('#settings-link');
-      expect([languages.getAttribute('href'), languages.textContent], screen.id).toEqual(['#/languages', 'Languages']);
-      expect([settings.getAttribute('href'), settings.textContent], screen.id).toEqual(['#/settings', 'Settings']);
+      expect([...rig.q('.top-actions').children].map((a) => a.id), screen.id).toEqual(['languages-link', 'account-link', 'settings-link']);
+      for (const a of [languages, account, settings]) {
+        expect([a.textContent, a.querySelectorAll('svg[aria-hidden="true"]').length, a.title === a.getAttribute('aria-label')], `${screen.id} ${a.id}`).toEqual(['', 1, true]);
+      }
+      expect([languages.getAttribute('href'), languages.getAttribute('aria-label')], screen.id).toEqual(['#/languages', 'Languages']);
+      expect([settings.getAttribute('href'), settings.getAttribute('aria-label')], screen.id).toEqual(['#/settings', 'Settings']);
+      // nobody is signed in: the person leads to the optional sign-in, and says the progress is on this device
+      expect([account.getAttribute('href'), account.getAttribute('data-state')], screen.id).toEqual(['#/signin', 'device']);
+      expect(account.getAttribute('aria-label'), screen.id).toBe('Account: on this device only. Sign in to keep your progress across devices (optional)');
+      expect(account.getAttribute('aria-current'), screen.id).toBe(screen.id === 'signin' ? 'page' : null);
       expect(languages.getAttribute('aria-current'), screen.id).toBe(screen.id === HOME_ID ? 'page' : null);
       expect(settings.getAttribute('aria-current'), screen.id).toBe(screen.group === 'settings' || screen.group === 'advanced' ? 'page' : null);
       expect(rig.root.querySelector('#status-link'), screen.id).toBeNull(); // the Status page is gone
@@ -152,15 +162,20 @@ describe('the router and the shell', () => {
     expect(rig.app.current()).toBe('languages');
     expect(window.location.hash).toBe('#/languages');
     await until(() => rig.root.querySelector('#next-note'));
-    // what the learner reads in, once, at the top; then the account line; then the one way to GoReview
-    expect(rig.q('#next-note .lede').textContent).toContain('Albanian is ready');
-    expect(rig.q('#account-line').textContent).toContain('On this device only');
-    expect(rig.q('#account-line').getAttribute('data-state')).toBe('device');
-    expect(rig.q<HTMLAnchorElement>('#account-line a').getAttribute('href')).toBe('#/signin');
-    expect(rig.q<HTMLAnchorElement>('#open-review').getAttribute('href')).toBe('../review/index.html');
+    // the top of the page is the title and the way to GoReview, nothing else (the owner, 2026-11-26: "Keep review, the header, and my
+    // account. Cut the rest"); the account is the person in the top bar
+    expect([...rig.q('#languages').children].map((x) => x.id)).toEqual(['next-steps', 'to-review']);
+    expect(rig.q('#languages').textContent).toBe('Albanian is ready.Go to GoReview');
+    // that the language is ready is said to a screen reader only: in sight, its tile says “Reading now”
+    expect([rig.q('#next-note').textContent, rig.q('#next-note').classList.contains('sr'), rig.q('#next-note').getAttribute('role')]).toEqual(['Albanian is ready.', true, 'status']);
+    expect(rig.root.querySelector('#account-line, #my-vocabulary, #first-note, .home-ready')).toBeNull();
+    expect(rig.text()).not.toMatch(/GoLearn Active|Review your words|My words|Synced to your account|On this device only/);
+    expect([rig.q('#account-link').getAttribute('data-state'), rig.q('#account-link').getAttribute('href')]).toEqual(['device', '#/signin']);
+    // the way to GoReview: the page's gold pill, its words and GoReview's arrow
+    const review = rig.q<HTMLAnchorElement>('#open-review');
+    expect([review.getAttribute('href'), review.textContent, review.querySelectorAll('svg[aria-hidden="true"]').length]).toEqual(['../review/index.html', 'Go to GoReview', 1]);
+    expect(review.classList.contains('to-goreview')).toBe(true);
     expect(rig.q('#to-review').hidden).toBe(false);
-    expect(rig.q<HTMLAnchorElement>('#my-vocabulary').getAttribute('href')).toBe('../review/index.html#/vocabulary'); // GoReview's list of the learner's words
-    expect(rig.q('#open-review').classList.contains('primary')).toBe(false); // a way out to another app is not this page's main action
     // the downloaded language stands under Your languages, the rest under More languages (GoReview's heading, 2026-11-26)
     expect(rig.q('#my-languages h2').textContent).toBe('Your languages');
     expect(rig.q('#more-languages h2').textContent).toBe('More languages');
@@ -182,11 +197,12 @@ describe('the router and the shell', () => {
     await flush();
   });
 
-  it('a first run says what to do first; “Review your words” waits until there is a language', async () => {
+  it('a first run has the title and the languages to choose from; “Go to GoReview” waits until there is a language', async () => {
     const rig = await makeRig({ extension: true, startRoute: 'languages' });
-    await until(() => rig.root.querySelector('#first-note'));
-    expect(rig.q('#first-note .lede').textContent).toBe('Choose the language you want to read.');
-    expect(rig.root.querySelector('#next-note')).toBeNull();
+    await until(() => rig.root.querySelector('#more-languages h2'));
+    expect(rig.root.querySelector('#first-note, #next-note')).toBeNull();
+    expect(rig.q('#languages').textContent).toBe('Go to GoReview'); // in the page, hidden
+    expect(rig.text()).not.toMatch(/Choose the language you want to read|Downloading a language sets it up/);
     expect(rig.q('#to-review').hidden).toBe(true);
     expect(rig.q('#my-languages').hidden).toBe(true);
     expect(rig.q('#more-languages h2').textContent).toBe('Choose a language');
@@ -235,14 +251,17 @@ describe('the router and the shell', () => {
     expect(rig.root.querySelectorAll('.pager a')).toHaveLength(0);
   });
 
-  it('the Languages page says "Synced to your account" once an account is signed in', async () => {
+  it('the person in the top bar says "synced" once an account is signed in, and leads to the account on Settings', async () => {
     const rig = await makeRig();
     await signIn(rig);
     await rig.go('settings');
     await rig.go('languages');
-    expect(rig.q('#account-line').textContent).toContain('Synced to your account');
-    expect(rig.q('#account-line').getAttribute('data-state')).toBe('synced');
-    expect(rig.q<HTMLAnchorElement>('#account-line a').getAttribute('href')).toBe('#/settings');
+    const account = rig.q<HTMLAnchorElement>('#account-link');
+    expect(account.getAttribute('aria-label')).toMatch(/^Account: synced as \S+@\S+$/);
+    expect(account.title).toBe(account.getAttribute('aria-label'));
+    expect([account.getAttribute('data-state'), account.getAttribute('href')]).toEqual(['synced', '#/settings']);
+    expect(rig.root.querySelector('#account-line')).toBeNull();
+    expect(rig.q('#screen').textContent).not.toMatch(/Synced to your account/);
   });
 
   it('no screen of the setup application mentions a team, a mission team or a leader', async () => {

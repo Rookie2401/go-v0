@@ -30,7 +30,7 @@ const opt: Record<string, string> = {};
 const flags = new Set<string>();
 for (let i = 0; i < args.length; i++) {
   if (!args[i].startsWith('--')) { console.error(`bad argument ${args[i]}`); process.exit(1); }
-  if (args[i] === '--no-write' || args[i] === '--no-preferences-reviewed') { flags.add(args[i].slice(2)); continue; }
+  if (args[i] === '--no-write' || args[i] === '--no-preferences-reviewed' || args[i] === '--no-gloss-choices') { flags.add(args[i].slice(2)); continue; }
   if (args[i + 1] === undefined) { console.error(`${args[i]} needs a value`); process.exit(1); }
   opt[args[i].slice(2)] = args[i + 1]; i++;
 }
@@ -49,6 +49,7 @@ const IDENTITIES = opt.identities;
 const AMBIGUOUS_OUT = opt['ambiguous-out'];
 const MAX_PREFIX = 3;
 for (const f of [INPUT, FREQ]) if (!fs.existsSync(f)) { console.error(`cannot read ${f}`); process.exit(1); }
+const GLOSS_CHOICES_PATH = opt['gloss-choices'] ?? 'src/adapters/arabic/gloss-choices.json';
 if (!['strip', 'keep', 'drop'].includes(DEFINITE)) { console.error('--definite must be strip, keep or drop'); process.exit(1); }
 
 // ───────────────────────────── source ─────────────────────────────
@@ -172,7 +173,7 @@ const stats = {
   headTrimmed: 0, headFromExpansion: 0, headUnvocalized: 0, headKeyMismatch: 0, noCanonical: 0,
   ruleChanged: {} as Record<string, number>, mergedIds: 0, homonymPairs: 0, homonymExtra: 0,
   participleDropped: 0, participleKept: 0,
-  rootEntries: 0, rootMalformed: 0, rootTemplate: 0, rootCategory: 0, rootBoth: 0, rootDisagree: 0, rootCategoryAmbiguous: 0, multiHeadEntries: 0, extraHeads: 0, multiCanonUnsplit: 0, aliasUncontracted: 0, vfFormFromRows: 0, firstPersonGender: 0, firstPersonMerged: 0, vfRowDisagree: 0, vfSubLines: 0, oneTableSplit: 0, participleEntries: 0, participleOf: 0, idClean: 0, idFail: 0, cliticExcluded: 0, noTableLemmas: 0, noTableWithRow: 0, noTableSpace: 0, adjFemPages: 0, adjFemPagesNew: 0, adjFemLemmas: 0, adjLemmas: 0, coreCompleted: 0, corePartial: 0, corePartialShare: 0, oneTableUnmatched: 0, vfFormFromHead: 0, unvocRows: {} as Record<string, number>, genderTag: 0, genderHead: 0, declUniform: 0, declMixed: 0,
+  rootEntries: 0, rootMalformed: 0, rootTemplate: 0, rootCategory: 0, rootBoth: 0, rootDisagree: 0, rootCategoryAmbiguous: 0, multiHeadEntries: 0, extraHeads: 0, multiCanonUnsplit: 0, aliasUncontracted: 0, vfFormFromRows: 0, firstPersonGender: 0, firstPersonMerged: 0, vfRowDisagree: 0, vfSubLines: 0, oneTableSplit: 0, glossChoiceTaken: 0, glossChanged: 0, participleEntries: 0, participleOf: 0, idClean: 0, idFail: 0, cliticExcluded: 0, noTableLemmas: 0, noTableWithRow: 0, noTableSpace: 0, adjFemPages: 0, adjFemPagesNew: 0, adjFemLemmas: 0, adjLemmas: 0, coreCompleted: 0, corePartial: 0, corePartialShare: 0, oneTableUnmatched: 0, vfFormFromHead: 0, unvocRows: {} as Record<string, number>, genderTag: 0, genderHead: 0, declUniform: 0, declMixed: 0,
   regCla: 0, regMsa: 0, resolvedByTier: { samePos: 0, nominal: 0, any: 0 } as Record<string, number>,
 };
 const invalidExamples: string[] = [];
@@ -184,7 +185,7 @@ const unresolved = new Map<string, number>();
 
 type Cell = [form: string, code: number];
 interface Ent {
-  pos: string; word: string; head: string; headRaw: string; etym: number; gloss: string; order: number;
+  pos: string; word: string; head: string; headRaw: string; etym: number; gloss: string; glossOld: string; senseGlosses: string[]; order: number;
   lex: Record<string, string>; root?: string; table: Cell[]; headline: Cell[]; citation?: number; lemma: number;
 }
 interface PageTarget { target: string; tags: string[]; form?: string }
@@ -243,6 +244,54 @@ function cellsOf(forms: Record<string, unknown>[], wantHeadline: boolean): Cell[
     out.push([form.normalize('NFC'), intern(tags)]);
   }
   return out;
+}
+
+// ───────────── the gloss of a lemma: a short, complete phrase ─────────────
+const DANGLING = /\s+(?:of|to|in|on|at|with|for|by|from|into|onto|about|as|a|an|the|and|or|that|which|who|whose|one's|someone's|something|something's)$/i;
+/** Removes bracketed segments whole (nested ones too); an unclosed bracket removes the rest of the text. */
+function stripBrackets(g: string): string {
+  let out = '';
+  let depth = 0;
+  for (const ch of g) { if (ch === '(' || ch === '[') depth++; else if ((ch === ')' || ch === ']') && depth > 0) depth--; else if (depth === 0) out += ch; }
+  return out;
+}
+function tidy(t: string): string {
+  let x = t.replace(/\s+/g, ' ').replace(/\s+([,;:.])/g, '$1').trim();
+  for (let i = 0; i < 4; i++) { const y = x.replace(/[\s,;:.\-–—]+$/g, '').replace(DANGLING, '').trim(); if (y === x) break; x = y; }
+  return x;
+}
+/** One gloss made short: no bracketed segments, cut at the first ";", at most two comma-separated alternatives, never cut inside a word, never an unclosed bracket. */
+function cleanGloss(raw: string, alts = 2): string {
+  let t = stripBrackets(raw).split(';')[0];
+  t = t.split(',').slice(0, alts).join(',');
+  t = tidy(t);
+  if (t.length > 60) { const sp = t.lastIndexOf(' ', 60); t = tidy(sp > 10 ? t.slice(0, sp) : t.slice(0, 60)); }
+  return t.length >= 2 ? t : '';
+}
+/** The fallback: the raw first gloss cut at a word boundary under 60 characters, its brackets balanced (an unclosed one cuts the text before it). */
+function rawGloss(raw: string): string {
+  let t = raw.trim();
+  const open = Math.max(t.lastIndexOf('('), t.lastIndexOf('['));
+  const close = Math.max(t.lastIndexOf(')'), t.lastIndexOf(']'));
+  if (open > close) t = t.slice(0, open);
+  if (t.length > 59) { const sp = t.lastIndexOf(' ', 59); t = sp > 10 ? t.slice(0, sp) : t.slice(0, 59); }
+  return tidy(t);
+}
+/** The sense of the gloss: the first sense, unless it is long (or, for a verb, is not a "to …" phrase) and one of the first three senses is shorter and fit. */
+function chooseGloss(real: Record<string, unknown>[], pos: string): string {
+  const withGloss = real.filter((x) => strs(x.glosses).length && !strs(x.tags).includes('no-gloss')).slice(0, 3);
+  const cands = withGloss.map((x) => cleanGloss(strs(x.glosses)[0])).filter((c) => c.length >= 2);
+  if (!cands.length) return withGloss.length ? rawGloss(strs(withGloss[0].glosses)[0]) : '';
+  let first = cands[0];
+  // a long first sense is tried with its first alternative alone ("day, period from sunrise to sunset" → "day")
+  if (first.length > 30 || (pos === 'VERB' && first.length > 20)) { const one = cleanGloss(strs(withGloss[0].glosses)[0], 1); if (one.length >= 2 && one.length < first.length) first = one; }
+  if (pos === 'VERB') {
+    if (first.startsWith('to ') && first.length <= 20) return first;
+    const to = [first, ...cands.slice(1)].filter((c) => c.startsWith('to ') && c.length > 3);
+    return to.length ? to.reduce((a, b) => (b.length < a.length ? b : a)) : first;
+  }
+  if (first.length <= 30) return first;
+  return cands.reduce((a, b) => (b.length < a.length ? b : a));
 }
 
 const EXP_LINE = /^#\s*(\S+)\s*\([^)]*\)(?:\s*\/[^/]*\/)?\s*:\s*(.+?)\s+of\s+(\S+)\s*\(/u;
@@ -372,7 +421,7 @@ const EXP_BARE = /^#\s*([a-z][a-z/ -]*?)\s+of\s+(\S+)\s*\(/u;
       if (root) stats.rootEntries++;
       const en = Number(e.etymology_number);
       const glossSense = lemmaSenses.find((s) => strs(s.glosses).length && !strs(s.tags).includes('no-gloss'));
-      const gloss = shortGloss(strs(glossSense?.glosses)[0] ?? '');
+      const glossOld = shortGloss(strs(glossSense?.glosses)[0] ?? '');
       // register: every sense carries a Classical / archaic / obsolete label → Cla; every sense carries Modern → Msa
       const real = lemmaSenses.filter((s) => !strs(s.tags).includes('no-gloss') || strs(s.glosses).length);
       for (const s of real) for (const t of strs(s.tags)) if (/^(Classical|archaic|obsolete|pre-Classical|post-Classical|dated|poetic|literary|rare|historical|dialectal|colloquial|Modern|modern|Standard|slang|vulgar|nonstandard|proscribed|regional|uncommon|formal|informal|Egypt|Levantine|Morocco|Yemen|Iraq|Kuwait|Palestine|Mauritania|al-Andalus)$/.test(t)) inc(registerTags, t);
@@ -436,7 +485,7 @@ const EXP_BARE = /^#\s*([a-z][a-z/ -]*?)\s+of\s+(\S+)\s*\(/u;
         if (decls.size === 1) { lex.Decl = [...decls][0]; stats.declUniform++; } else if (decls.size > 1) stats.declMixed++;
         if (isCla) { lex.Reg = 'Cla'; stats.regCla++; } else if (isMsa) { lex.Reg = 'Msa'; stats.regMsa++; }
         const citeTags = canonTags.length ? canonTags : ['canonical'];
-        ents.push({ pos: lpos, word, head: h.head, headRaw: h.head, etym: Number.isFinite(en) ? en : 9999, gloss, order, lex, root, table: tableCells, headline: cellsOf(grp.headline, true), citation: intern(citeTags), lemma: -1 });
+        ents.push({ pos: lpos, word, head: h.head, headRaw: h.head, etym: Number.isFinite(en) ? en : 9999, gloss: chooseGloss(real, lpos), glossOld, senseGlosses: real.map((x) => strs(x.glosses)[0] ?? '').filter(Boolean), order, lex, root, table: tableCells, headline: cellsOf(grp.headline, true), citation: intern(citeTags), lemma: -1 });
       }
     }
 
@@ -463,6 +512,8 @@ console.log(`read ${fmt(stats.lines)} lines: ${fmt(stats.lemmaEntries)} lemma en
 // ───────────────────────────── lemma ids ─────────────────────────────
 
 const lemmaIds: string[] = [];
+const glossChoices: Record<string, string[]> = !flags.has('no-gloss-choices') && fs.existsSync(GLOSS_CHOICES_PATH) ? ((JSON.parse(fs.readFileSync(GLOSS_CHOICES_PATH, 'utf8')) as { choices?: Record<string, string[]> }).choices ?? {}) : {};
+const glossChoiceNone: string[] = [];
 const lemmaRows: ArLemmaRow[] = [];
 const lemmaKeys: string[][] = [];
 const lemmaOfEnt: number[] = [];
@@ -471,11 +522,12 @@ const byKey = new Map<string, number[]>(); // key of a head → lemma numbers
   for (const en of ents) { en.head = arHeadForm(en.headRaw, en.pos); if (en.head !== arCanon(en.headRaw)) { stats.headChanged++; for (const x of ruleDiff(arCanon(en.headRaw), en.head)) inc(stats.ruleChanged, x); } }
   const groups = new Map<string, Ent[]>();
   for (const en of ents) { const g = `${en.head}|${en.pos}`; (groups.get(g) ?? groups.set(g, []).get(g)!).push(en); }
-  const cmp = (a: Ent, b: Ent): number => a.etym - b.etym || (a.gloss < b.gloss ? -1 : a.gloss > b.gloss ? 1 : 0) || a.order - b.order;
+  const cmp = (a: Ent, b: Ent): number => a.etym - b.etym || (a.glossOld < b.glossOld ? -1 : a.glossOld > b.glossOld ? 1 : 0) || a.order - b.order;
   const make = (en: Ent, id: string): number => {
     const n = lemmaIds.length;
     lemmaIds.push(id);
     const lexStr = Object.keys(en.lex).sort().map((k) => `${k}=${en.lex[k]}`).join('|');
+    if (en.gloss !== en.glossOld) stats.glossChanged++;
     lemmaRows.push(en.root ? [en.head, en.gloss, en.pos, lexStr, 0, en.root] : [en.head, en.gloss, en.pos, lexStr, 0]);
     lemmaKeys.push([]);
     const k = arKey(en.head);
@@ -495,6 +547,27 @@ const byKey = new Map<string, number[]>(); // key of a head → lemma numbers
     void idOf;
     if (nth > 1) { stats.homonymPairs++; stats.homonymExtra += nth - 1; }
     for (const m of members) lemmaOfEnt.push(m.lemma);
+    const kws = glossChoices[g];
+    if (kws) {
+      // the reviewed choice: the first source sense (over every entry of the head and part of speech) whose gloss holds a keyword as a whole word; the lead id of the lexeme and the entry
+      // that holds the sense take it, the other homonym siblings keep their own
+      const res = kws.map((k) => new RegExp(`(^|[^A-Za-z])${k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}($|[^A-Za-z])`, 'i'));
+      let hit: { m: Ent; text: string } | undefined;
+      // the keyword is looked for outside brackets, first in the FIRST alternative of a sense (a sense that merely mentions it later does not lead), then in any alternative;
+      // the text kept is the alternative that holds it ("to mark … on a surface, to write" → "to write")
+      const pick = (sg: string, firstOnly: boolean): string => {
+        const alts = stripBrackets(sg).split(';').flatMap((seg) => seg.split(','));
+        const hitAlt = (firstOnly ? alts.slice(0, 1) : alts).find((alt) => res.some((r) => r.test(alt)));
+        const t = hitAlt ? tidy(hitAlt) : '';
+        return t.length >= 2 ? t : '';
+      };
+      outer: for (const firstOnly of [true, false]) for (const m of members) for (const sg of m.senseGlosses) { const c = pick(sg, firstOnly); if (c) { hit = { m, text: c }; break outer; } }
+      if (hit) {
+        stats.glossChoiceTaken++;
+        lemmaRows[members[0].lemma][1] = hit.text;
+        lemmaRows[hit.m.lemma][1] = hit.text;
+      } else glossChoiceNone.push(g);
+    }
   }
 }
 // the root of a merged entry fills a gap of the entry it merged into
@@ -887,6 +960,14 @@ for (const k of keys) {
 for (const [k, ip] of idInfo) if (ip.n !== undefined) { const f = freq.get(k) ?? 0; if (f) { addTo(groupCount, groupOf[ip.n], f); identityApplied++; } }
 for (let l = 0; l < lemmaRows.length; l++) lemmaRows[l][4] = Math.round((groupCount.get(groupOf[l]) ?? 0) + SECOND_WEIGHT * (groupSecond.get(groupOf[l]) ?? 0));
 const zeroCount = lemmaRows.filter((r) => r[4] === 0).length;
+if (opt['gloss-of-file']) {
+  const oldGloss = new Map<string, string>();
+  for (const en of ents) oldGloss.set(lemmaIds[en.lemma], en.glossOld);
+  for (const h of fs.readFileSync(opt['gloss-of-file'], 'utf8').split(/\s+/).filter(Boolean)) {
+    const hits = lemmaIds.map((id, l) => ({ id, l })).filter((x) => lemmaRows[x.l][0] === arHeadForm(h, 'NOUN') || lemmaRows[x.l][0] === arHeadForm(h, 'VERB'));
+    for (const x of hits) console.log('gloss ' + x.id + ' :: ' + (oldGloss.get(x.id) ?? '') + ' => ' + lemmaRows[x.l][1]);
+  }
+}
 if (opt['counts-of-file']) {
   const heads = fs.readFileSync(opt['counts-of-file'], 'utf8').split(/\s+/).filter(Boolean);
   for (const h of heads) {
@@ -1150,6 +1231,8 @@ Lemma string convention: \`arHeadForm\` of \`arabic/text.ts\`.
 | lemma entries / form pages (of which "ar-verb form" pages) / lemma entries that also hold form-of senses | ${fmt(stats.lemmaEntries)} / ${fmt(stats.formPages)} (${fmt(stats.vfPages)}) / ${fmt(stats.mixedEntries)} |
 | pages that are only alternative spellings (alt-of) | ${fmt(stats.altOnlyEntries)} |
 | participle entries (verb class in the extract, head "active / passive participle of X"; made ADJ with VerbForm=Part, Voice, Of=verb) / of those with Of | ${fmt(stats.participleEntries)} / ${fmt(stats.participleOf)} |
+| lemma glosses changed by the clean-gloss rule (batch 6; counted before the reviewed choices) | ${fmt(stats.glossChanged)} |
+| reviewed gloss choices (gloss-choices.json): lexemes that took one / lexemes where no sense matched (keeping the default) | ${fmt(stats.glossChoiceTaken)} / ${fmt(glossChoiceNone.length)}: ${glossChoiceNone.join(', ')} |
 | lemma ids by part of speech | ${Object.entries(lemmaByPos).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${fmt(v)}`).join(', ')} |
 | lemma ids (with at least one row) | ${fmt(lemmaIds.length)} (${fmt(lemmasWithRows)}) |
 | head + POS pairs with more than one entry (extra ids \`|2\`, \`|3\` … ordered by etymology number, then first gloss) | ${fmt(stats.homonymPairs)} (${fmt(stats.homonymExtra)} extra ids) |

@@ -821,17 +821,22 @@ for (const [k, v] of Object.entries(identities)) {
   idInfo.set(k, { n, stem, raw: v });
   if (n !== undefined) { mainByKey.set(k, n); if (stem !== k && !mainByKey.has(stem) && !(stem in identities)) mainByKey.set(stem, n); }
 }
-// homonym siblings (one head, one part of speech): Homonyms=N on each, Lead=Yes on the lead id: the id the reviewed identities name, else the one whose sense a reviewed gloss choice matched, else the first
+// homonym siblings (one head, one part of speech): Homonyms=N on each, Lead=Yes on the lead id: a NUMBERED id the reviewed identities name, else the one whose sense a reviewed gloss choice matched, else the first
 const lexemeIds = new Map<string, number[]>();
 lemmaIds.forEach((id, l) => { const lx = id.split('|').slice(0, 2).join('|'); (lexemeIds.get(lx) ?? lexemeIds.set(lx, []).get(lx)!).push(l); });
 const leadOfLexeme = new Map<string, number>();
+const leadByReview: string[] = []; // lexemes whose lead is the entry a reviewed sense matched, where an identity named only the bare id
 {
   const named = new Set<number>(mainByKey.values());
   for (const [lx, ids] of lexemeIds) {
-    const lead = ids.find((l) => named.has(l)) ?? (reviewedHolder.has(lx) ? reviewedHolder.get(lx)! : ids[0]);
+    // an identity that names the bare id (no number) names the LEXEME, not its first source entry: only a numbered id picks an entry, and a reviewed sense outranks the first
+    const numbered = ids.find((l) => named.has(l) && lemmaIds[l].split('|').length > 2);
+    const lead = numbered ?? (reviewedHolder.has(lx) ? reviewedHolder.get(lx)! : ids[0]);
+    if (lead !== (ids.find((l) => named.has(l)) ?? lead)) leadByReview.push(lemmaIds[lead]);
     leadOfLexeme.set(lx, lead);
     if (ids.length > 1) { for (const l of ids) setLex(l, 'Homonyms', String(ids.length)); setLex(lead, 'Lead', 'Yes'); stats.homonymLexemes++; }
   }
+  console.log(`lead entry taken from a reviewed sense over a bare identity: ${leadByReview.length}: ${leadByReview.join(' ')}`);
 }
 const shareCounts = new Array<number>(lemmaIds.length).fill(0); // the old definition (frequency / holders): used only to admit closed classes to the core
 let identityApplied = 0;

@@ -65,6 +65,23 @@ describe('verbs (fully vocalized: the page decides, one lexeme, 0.90)', () => {
     expect(cs[0].gloss).toBe('to say');
     expect(cs[0].notes?.homonymMeanings).toContain('nap');
   });
+  it.skipIf(!fs.existsSync(new URL('../../public/lexicon/ar/standard/manifest.json', import.meta.url)))('the lead of homonym siblings is the entry whose sense was reviewed, not the first source entry (real index; skipped when the shards are absent): رَأَى leads with "to see"', async () => {
+    // an identity that names the bare id names the lexeme; it must not make the first source entry ("to deem true") the lead
+    const { AR_CORE } = await import('../../src/adapters/arabic/generated/core');
+    const zlib = await import('node:zlib');
+    const dir = new URL('../../public/lexicon/ar/standard/', import.meta.url);
+    resetArabicIndexes();
+    installArabicIndex(AR_CORE);
+    for (const fn of fs.readdirSync(dir)) if (fn.endsWith('.json.gz')) installArabicIndex(JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL(fn, dir))).toString('utf8')));
+    try {
+      for (const [w, re] of [['رَأَى', /^to see\b/], ['وَجَدَ', /\bfind\b/], ['مَاتَ', /\bdie\b/], ['شَارِع', /\bstreet\b/], ['جَامِعَة', /\buniversity\b/]] as const) {
+        const c = cands(w).find((x) => arKey(x.lemma ?? '') === arKey(w));
+        expect(c, w).toBeTruthy();
+        expect(c!.gloss, w).toMatch(re);
+        expect(Number(c!.notes?.homonyms), w).toBeGreaterThan(1);
+      }
+    } finally { resetArabicIndexes(); installArabicIndex(fixture); }
+  });
   it('قُلْ is the imperative of قَالَ (hollow root); يَعِدُ is of وَعَدَ (assimilated); اِرْمِ is of رَمَى (defective)', () => {
     expect(top('قُلْ')).toMatchObject({ lemma: 'قَالَ', morph: { Mood: 'Imp', Person: '2' } });
     expect(top('يَعِدُ')).toMatchObject({ lemma: 'وَعَدَ', morph: { Aspect: 'Imp', Mood: 'Ind' } });

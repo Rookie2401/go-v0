@@ -59,11 +59,11 @@ Lemma string convention: `arHeadForm` of `arabic/text.ts`.
 | core | 1676 lemmas (255 of closed classes, 2 seeded), 2597 keys, 12771 rows, 499,523 bytes of JSON (budget 500,000) |
 | core token coverage on ar_50k (running words whose key is a core key) | 55.94 % of 149,102,962 (clitic forms are not keys) |
 | identity checks accepted through a numbered sibling of the main id / through the loose fold | 2 / 2 (counted apart from the clean ones above) |
-| lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | 1,908 / 75 / 7 / 110 / 2 |
-| reviewed preferences (preferences-reviewed.json) merged / derived pairs they overrode / pairs removed by its balanced list / lexemes not in the index (skipped); derived pairs before the merge | 125 / 0 / 0 / 0; 1,294 |
-| preferences emitted: pairs / distinct losers / distinct winners | 1,400 / 1,238 / 602 |
+| lexeme preferences (--identities): candidate loser/winner pairs / dropped as one lexeme (same head, same part-of-speech group) / dropped as both directions (b) / dropped as balanced (c) / closed-class loser to open winner dropped (d) | 1,905 / 75 / 7 / 110 / 2 |
+| reviewed preferences (preferences-reviewed.json) merged / derived pairs they overrode / pairs removed by its balanced list / lexemes not in the index (skipped); derived pairs before the merge | 125 / 0 / 0 / 0; 1,291 |
+| preferences emitted: pairs / distinct losers / distinct winners | 1,397 / 1,236 / 601 |
 | lemma ids with count 0 (counts by lexeme group: own keys of the group, plus the weaker decided-key term, weight 0.25; before the group rule 22,516) | 21,102 of 27,089 |
-| identities file | src/adapters/arabic/identities.json: 870 keys credited to their main lemma; checked clean 869, failed 8 (7 naming a lemma id not in the index) |
+| identities file | src/adapters/arabic/identities.json: 867 keys credited to their main lemma; checked clean 866, failed 11 (10 naming a lemma id not in the index) |
 
 ## Count (order of readings)
 

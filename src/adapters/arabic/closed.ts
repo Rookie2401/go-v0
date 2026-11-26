@@ -23,6 +23,8 @@ export interface ArClosedEntry {
   morph: Record<string, string>;
   /** The function in plain words ("and", "in, within (+ genitive)"). */
   gloss: string;
+  /** The index files this word as a FORM of another lemma (تِلْكَ of ذٰلِكَ): here it is a lexeme of its own, and that lemma's reading is listed under notes.variants. */
+  formOf?: string;
   /** What it governs, in words: 'genitive', 'subjunctive', 'jussive', 'accusative subject', 'accusative'. */
   governs?: string;
   /** What kind of word it is ("negation", "future marker", "conditional", "pronoun suffix"…). */
@@ -46,34 +48,36 @@ const PRON_ROLE = 'independent pronoun';
 put('أَنَا', 'PRON', 'I', { morph: m('1', 'Sing'), role: PRON_ROLE });
 put('نَحْنُ', 'PRON', 'we', { morph: m('1', 'Plur'), role: PRON_ROLE });
 put('أَنْتَ', 'PRON', 'you (m. sg.)', { morph: m('2', 'Sing', 'Masc'), role: PRON_ROLE });
-put('أَنْتِ', 'PRON', 'you (f. sg.)', { morph: m('2', 'Sing', 'Fem'), role: PRON_ROLE });
-put('أَنْتُمَا', 'PRON', 'you two', { morph: m('2', 'Dual'), role: PRON_ROLE });
+put('أَنْتِ', 'PRON', 'you (f. sg.)', { formOf: 'أَنْتَ', morph: m('2', 'Sing', 'Fem'), role: PRON_ROLE });
+put('أَنْتُمَا', 'PRON', 'you two', { formOf: 'أَنْتُمْ', morph: m('2', 'Dual'), role: PRON_ROLE });
 put('أَنْتُمْ', 'PRON', 'you (m. pl.)', { morph: m('2', 'Plur', 'Masc'), role: PRON_ROLE });
-put('أَنْتُنَّ', 'PRON', 'you (f. pl.)', { morph: m('2', 'Plur', 'Fem'), role: PRON_ROLE });
+put('أَنْتُنَّ', 'PRON', 'you (f. pl.)', { formOf: 'أَنْتُمْ', morph: m('2', 'Plur', 'Fem'), role: PRON_ROLE });
 put('هُوَ', 'PRON', 'he, it', { morph: m('3', 'Sing', 'Masc'), role: PRON_ROLE });
 put('هِيَ', 'PRON', 'she, it', { morph: m('3', 'Sing', 'Fem'), role: PRON_ROLE });
-put('هُمَا', 'PRON', 'they two', { morph: m('3', 'Dual'), role: PRON_ROLE });
+put('هُمَا', 'PRON', 'they two', { formOf: 'هُمْ', morph: m('3', 'Dual'), role: PRON_ROLE });
 put('هُمْ', 'PRON', 'they (m.)', { morph: m('3', 'Plur', 'Masc'), role: PRON_ROLE });
-put('هُنَّ', 'PRON', 'they (f.)', { morph: m('3', 'Plur', 'Fem'), role: PRON_ROLE });
+put('هُنَّ', 'PRON', 'they (f.)', { formOf: 'هُمْ', morph: m('3', 'Plur', 'Fem'), role: PRON_ROLE });
 
 // ───────────────────────────── demonstratives ─────────────────────────────
 const DEM = 'demonstrative';
 put('هٰذَا', 'PRON', 'this (m. sg.)', { morph: { Number: 'Sing', Gender: 'Masc' }, role: DEM });
-put('هٰذِهِ', 'PRON', 'this (f. sg.)', { lemma: 'هٰذَا', morph: { Number: 'Sing', Gender: 'Fem' }, role: DEM });
-put('هٰذَانِ', 'PRON', 'these two (m., nominative)', { lemma: 'هٰذَا', morph: { Number: 'Dual', Gender: 'Masc', Case: 'Nom' }, role: DEM });
-put('هٰذَيْنِ', 'PRON', 'these two (m., accusative or genitive)', { lemma: 'هٰذَا', morph: { Number: 'Dual', Gender: 'Masc', Case: 'Acc,Gen' }, role: DEM });
-put('هَاتَانِ', 'PRON', 'these two (f., nominative)', { lemma: 'هٰذَا', morph: { Number: 'Dual', Gender: 'Fem', Case: 'Nom' }, role: DEM });
-put('هَاتَيْنِ', 'PRON', 'these two (f., accusative or genitive)', { lemma: 'هٰذَا', morph: { Number: 'Dual', Gender: 'Fem', Case: 'Acc,Gen' }, role: DEM });
-put('هٰؤُلَاءِ', 'PRON', 'these (people)', { lemma: 'هٰذَا', morph: { Number: 'Plur' }, role: DEM });
+put('هٰذِهِ', 'PRON', 'this (f. sg.)', { formOf: 'هٰذَا', morph: { Number: 'Sing', Gender: 'Fem' }, role: DEM });
+put('هٰذَانِ', 'PRON', 'these two (m., nominative)', { formOf: 'هٰذَا', morph: { Number: 'Dual', Gender: 'Masc', Case: 'Nom' }, role: DEM });
+put('هٰذَيْنِ', 'PRON', 'these two (m., accusative or genitive)', { formOf: 'هٰذَا', morph: { Number: 'Dual', Gender: 'Masc', Case: 'Acc,Gen' }, role: DEM });
+put('هَاتَانِ', 'PRON', 'these two (f., nominative)', { formOf: 'هٰذَا', morph: { Number: 'Dual', Gender: 'Fem', Case: 'Nom' }, role: DEM });
+put('هَاتَيْنِ', 'PRON', 'these two (f., accusative or genitive)', { formOf: 'هٰذَا', morph: { Number: 'Dual', Gender: 'Fem', Case: 'Acc,Gen' }, role: DEM });
+put('هٰؤُلَاءِ', 'PRON', 'these (people)', { formOf: 'هٰذَا', morph: { Number: 'Plur' }, role: DEM });
 put('ذٰلِكَ', 'PRON', 'that (m. sg.)', { morph: { Number: 'Sing', Gender: 'Masc' }, role: DEM });
-put('تِلْكَ', 'PRON', 'that (f. sg.)', { lemma: 'ذٰلِكَ', morph: { Number: 'Sing', Gender: 'Fem' }, role: DEM });
-put('أُولٰئِكَ', 'PRON', 'those (people)', { lemma: 'ذٰلِكَ', morph: { Number: 'Plur' }, role: DEM });
-put('ذٰاكَ', 'PRON', 'that (m. sg., more remote)', { lemma: 'ذٰلِكَ', morph: { Number: 'Sing', Gender: 'Masc' }, role: DEM });
-put('ذٰلِكُمْ', 'PRON', 'that (to you pl.)', { lemma: 'ذٰلِكَ', morph: { Number: 'Sing', Gender: 'Masc' }, role: DEM });
+put('تِلْكَ', 'PRON', 'that (f. sg.)', { formOf: 'ذٰلِكَ', morph: { Number: 'Sing', Gender: 'Fem' }, role: DEM });
+put('أُولٰئِكَ', 'PRON', 'those (people)', { formOf: 'ذٰلِكَ', morph: { Number: 'Plur' }, role: DEM });
+put('ذَانِكَ', 'PRON', 'those two (m., nominative)', { formOf: 'ذٰلِكَ', morph: { Number: 'Dual', Gender: 'Masc', Case: 'Nom' }, role: DEM });
+put('ذَيْنِكَ', 'PRON', 'those two (m., accusative or genitive)', { formOf: 'ذٰلِكَ', morph: { Number: 'Dual', Gender: 'Masc', Case: 'Acc,Gen' }, role: DEM });
+put('ذٰاكَ', 'PRON', 'that (m. sg., more remote)', { formOf: 'ذٰلِكَ', morph: { Number: 'Sing', Gender: 'Masc' }, role: DEM });
+put('ذٰلِكُمْ', 'PRON', 'that (to you pl.)', { formOf: 'ذٰلِكَ', morph: { Number: 'Sing', Gender: 'Masc' }, role: DEM });
 
 // ───────────────────────────── relatives and interrogatives ─────────────────────────────
 const REL = 'relative pronoun';
-const rel = (f: string, g: string, mm: Record<string, string>): void => put(f, 'PRON', g, { lemma: 'الَّذِي', morph: mm, role: REL });
+const rel = (f: string, g: string, mm: Record<string, string>): void => put(f, 'PRON', g, { ...(f === 'الَّذِي' ? {} : { formOf: 'الَّذِي' }), morph: mm, role: REL });
 rel('الَّذِي', 'who, which, that (m. sg.)', { Number: 'Sing', Gender: 'Masc' });
 rel('الَّتِي', 'who, which, that (f. sg.)', { Number: 'Sing', Gender: 'Fem' });
 rel('اللَّذَانِ', 'who, which (m. dual, nominative)', { Number: 'Dual', Gender: 'Masc', Case: 'Nom' });
@@ -231,6 +235,11 @@ export const AR_PRIORS: Readonly<Record<string, ArPrior>> = {
   قد: { lemma: 'قَدْ', pos: ['PART'] }, هو: { lemma: 'هُوَ', pos: ['PRON'] }, هي: { lemma: 'هِيَ', pos: ['PRON'] }, هل: { lemma: 'هَلْ', pos: ['PART'] },
   ثم: { lemma: 'ثُمَّ', pos: ['CONJ'] }, أو: { lemma: 'أَوْ', pos: ['CONJ'] }, بل: { lemma: 'بَلْ', pos: ['CONJ'] }, و: { lemma: 'وَ', pos: ['CONJ'] },
   ف: { lemma: 'فَ', pos: ['CONJ'] }, هذا: { lemma: 'هٰذَا', pos: ['PRON'] }, ذلك: { lemma: 'ذٰلِكَ', pos: ['PRON'] }, الذي: { lemma: 'الَّذِي', pos: ['PRON'] },
-  التي: { lemma: 'الَّتِي', pos: ['PRON'] }, الذين: { lemma: 'الَّذِي', pos: ['PRON'] }, مع: { lemma: 'مَعَ', pos: ['ADP'] }, عند: { lemma: 'عِنْدَ', pos: ['ADP'] },
+  التي: { lemma: 'الَّتِي', pos: ['PRON'] }, الذين: { lemma: 'الَّذِينَ', pos: ['PRON'] }, مع: { lemma: 'مَعَ', pos: ['ADP'] }, عند: { lemma: 'عِنْدَ', pos: ['ADP'] },
+  // the feminine, dual and plural demonstratives and relatives are words of their own (the index files them as forms of the masculine singular)
+  تلك: { lemma: 'تِلْكَ', pos: ['PRON'] }, أولئك: { lemma: 'أُولٰئِكَ', pos: ['PRON'] }, هؤلاء: { lemma: 'هٰؤُلَاءِ', pos: ['PRON'] }, هذه: { lemma: 'هٰذِهِ', pos: ['PRON'] },
+  هذان: { lemma: 'هٰذَانِ', pos: ['PRON'] }, هذين: { lemma: 'هٰذَيْنِ', pos: ['PRON'] }, هاتان: { lemma: 'هَاتَانِ', pos: ['PRON'] }, هاتين: { lemma: 'هَاتَيْنِ', pos: ['PRON'] },
+  اللذين: { lemma: 'اللَّذَيْنِ', pos: ['PRON'] }, اللذان: { lemma: 'اللَّذَانِ', pos: ['PRON'] }, اللتين: { lemma: 'اللَّتَيْنِ', pos: ['PRON'] }, اللتان: { lemma: 'اللَّتَانِ', pos: ['PRON'] },
+  اللاتي: { lemma: 'اللَّاتِي', pos: ['PRON'] }, اللواتي: { lemma: 'اللَّوَاتِي', pos: ['PRON'] },
   نحن: { lemma: 'نَحْنُ', pos: ['PRON'] }, أنا: { lemma: 'أَنَا', pos: ['PRON'] },
 };
